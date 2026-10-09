@@ -4372,8 +4372,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(1728, __c54, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4394,11 +4394,11 @@ export const configureExascaleProjectsLocationsCloudExadataInfrastructures: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3,
-    __c0,
-    3,
+    2145,
+    __c67,
+    1,
   ) as any as S.Schema<ConfigureExascaleProjectsLocationsCloudExadataInfrastructuresRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4418,8 +4418,8 @@ export const createProjectsLocationsAutonomousDatabases: API.OperationMethod<
   CreateProjectsLocationsAutonomousDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(2560, __c80, 0) as any as S.Schema<CreateProjectsLocationsAutonomousDatabasesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4440,11 +4440,11 @@ export const createProjectsLocationsCloudExadataInfrastructures: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    35,
-    __c4,
-    3,
+    3040,
+    __c95,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCloudExadataInfrastructuresRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4464,8 +4464,8 @@ export const createProjectsLocationsCloudVmClusters: API.OperationMethod<
   CreateProjectsLocationsCloudVmClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateProjectsLocationsCloudVmClustersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(3424, __c107, 0) as any as S.Schema<CreateProjectsLocationsCloudVmClustersRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4485,8 +4485,8 @@ export const createProjectsLocationsDbSystems: API.OperationMethod<
   CreateProjectsLocationsDbSystemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateProjectsLocationsDbSystemsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsDbSystemsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4506,8 +4506,8 @@ export const createProjectsLocationsExadbVmClusters: API.OperationMethod<
   CreateProjectsLocationsExadbVmClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateProjectsLocationsExadbVmClustersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(128, __c4, 0) as any as S.Schema<CreateProjectsLocationsExadbVmClustersRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4527,8 +4527,12 @@ export const createProjectsLocationsExascaleDbStorageVaults: API.OperationMethod
   CreateProjectsLocationsExascaleDbStorageVaultsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreateProjectsLocationsExascaleDbStorageVaultsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(
+    192,
+    __c6,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsExascaleDbStorageVaultsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4549,11 +4553,11 @@ export const createProjectsLocationsGoldengateConnectionAssignments: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
+    256,
     __c8,
-    2,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsGoldengateConnectionAssignmentsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4573,8 +4577,8 @@ export const createProjectsLocationsGoldengateConnections: API.OperationMethod<
   CreateProjectsLocationsGoldengateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<CreateProjectsLocationsGoldengateConnectionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(320, __c10, 0) as any as S.Schema<CreateProjectsLocationsGoldengateConnectionsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4594,8 +4598,8 @@ export const createProjectsLocationsGoldengateDeployments: API.OperationMethod<
   CreateProjectsLocationsGoldengateDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<CreateProjectsLocationsGoldengateDeploymentsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(416, __c13, 0) as any as S.Schema<CreateProjectsLocationsGoldengateDeploymentsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4615,8 +4619,8 @@ export const createProjectsLocationsOdbNetworks: API.OperationMethod<
   CreateProjectsLocationsOdbNetworksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<CreateProjectsLocationsOdbNetworksRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(480, __c15, 0) as any as S.Schema<CreateProjectsLocationsOdbNetworksRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4636,8 +4640,8 @@ export const createProjectsLocationsOdbNetworksOdbSubnets: API.OperationMethod<
   CreateProjectsLocationsOdbNetworksOdbSubnetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<CreateProjectsLocationsOdbNetworksOdbSubnetsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(544, __c17, 0) as any as S.Schema<CreateProjectsLocationsOdbNetworksOdbSubnetsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4657,8 +4661,8 @@ export const deleteProjectsLocationsAutonomousDatabases: API.OperationMethod<
   DeleteProjectsLocationsAutonomousDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<DeleteProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteProjectsLocationsAutonomousDatabasesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4679,11 +4683,11 @@ export const deleteProjectsLocationsCloudExadataInfrastructures: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    131,
-    __c16,
-    3,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCloudExadataInfrastructuresRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4703,8 +4707,8 @@ export const deleteProjectsLocationsCloudVmClusters: API.OperationMethod<
   DeleteProjectsLocationsCloudVmClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<DeleteProjectsLocationsCloudVmClustersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteProjectsLocationsCloudVmClustersRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4724,8 +4728,8 @@ export const deleteProjectsLocationsDbSystems: API.OperationMethod<
   DeleteProjectsLocationsDbSystemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<DeleteProjectsLocationsDbSystemsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(704, __c22, 0) as any as S.Schema<DeleteProjectsLocationsDbSystemsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4745,8 +4749,8 @@ export const deleteProjectsLocationsExadbVmClusters: API.OperationMethod<
   DeleteProjectsLocationsExadbVmClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<DeleteProjectsLocationsExadbVmClustersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteProjectsLocationsExadbVmClustersRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4767,11 +4771,11 @@ export const deleteProjectsLocationsExascaleDbStorageVaults: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    135,
-    __c16,
-    7,
+    768,
+    __c24,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsExascaleDbStorageVaultsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4792,11 +4796,11 @@ export const deleteProjectsLocationsGoldengateConnectionAssignments: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    136,
-    __c17,
+    800,
+    __c25,
     0,
   ) as any as S.Schema<DeleteProjectsLocationsGoldengateConnectionAssignmentsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4816,8 +4820,8 @@ export const deleteProjectsLocationsGoldengateConnections: API.OperationMethod<
   DeleteProjectsLocationsGoldengateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<DeleteProjectsLocationsGoldengateConnectionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteProjectsLocationsGoldengateConnectionsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4837,8 +4841,8 @@ export const deleteProjectsLocationsGoldengateDeployments: API.OperationMethod<
   DeleteProjectsLocationsGoldengateDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<DeleteProjectsLocationsGoldengateDeploymentsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteProjectsLocationsGoldengateDeploymentsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4858,8 +4862,8 @@ export const deleteProjectsLocationsOdbNetworks: API.OperationMethod<
   DeleteProjectsLocationsOdbNetworksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<DeleteProjectsLocationsOdbNetworksRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteProjectsLocationsOdbNetworksRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4879,8 +4883,8 @@ export const deleteProjectsLocationsOdbNetworksOdbSubnets: API.OperationMethod<
   DeleteProjectsLocationsOdbNetworksOdbSubnetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<DeleteProjectsLocationsOdbNetworksOdbSubnetsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteProjectsLocationsOdbNetworksOdbSubnetsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4900,8 +4904,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(960, __c30, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4921,8 +4925,8 @@ export const failoverProjectsLocationsAutonomousDatabases: API.OperationMethod<
   FailoverProjectsLocationsAutonomousDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<FailoverProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(992, __c31, 0) as any as S.Schema<FailoverProjectsLocationsAutonomousDatabasesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4943,11 +4947,11 @@ export const generateWalletProjectsLocationsAutonomousDatabases: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    145,
-    __c18,
+    1057,
+    __c33,
     1,
   ) as any as S.Schema<GenerateWalletProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GenerateAutonomousDatabaseWalletResponse>,
+  output: __S(1058, __c33, 2) as any as S.Schema<GenerateAutonomousDatabaseWalletResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4961,8 +4965,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<Location>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4980,8 +4984,8 @@ export const getProjectsLocationsAutonomousDatabases: API.OperationMethod<
   GetProjectsLocationsAutonomousDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AutonomousDatabase>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetProjectsLocationsAutonomousDatabasesRequest>,
+  output: __S(2607, __c81, 15) as any as S.Schema<AutonomousDatabase>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5000,11 +5004,11 @@ export const getProjectsLocationsCloudExadataInfrastructures: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    150,
-    __c18,
-    6,
+    1184,
+    __c37,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCloudExadataInfrastructuresRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CloudExadataInfrastructure>,
+  output: __S(3077, __c96, 5) as any as S.Schema<CloudExadataInfrastructure>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5022,8 +5026,8 @@ export const getProjectsLocationsCloudVmClusters: API.OperationMethod<
   GetProjectsLocationsCloudVmClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetProjectsLocationsCloudVmClustersRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<CloudVmCluster>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetProjectsLocationsCloudVmClustersRequest>,
+  output: __S(3522, __c110, 2) as any as S.Schema<CloudVmCluster>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5041,8 +5045,8 @@ export const getProjectsLocationsDatabases: API.OperationMethod<
   GetProjectsLocationsDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetProjectsLocationsDatabasesRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<Database>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetProjectsLocationsDatabasesRequest>,
+  output: __S(68, __c2, 4) as any as S.Schema<Database>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5060,8 +5064,8 @@ export const getProjectsLocationsDbSystems: API.OperationMethod<
   GetProjectsLocationsDbSystemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetProjectsLocationsDbSystemsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<DbSystem>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetProjectsLocationsDbSystemsRequest>,
+  output: __S(100, __c3, 4) as any as S.Schema<DbSystem>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5079,8 +5083,8 @@ export const getProjectsLocationsExadbVmClusters: API.OperationMethod<
   GetProjectsLocationsExadbVmClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetProjectsLocationsExadbVmClustersRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ExadbVmCluster>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetProjectsLocationsExadbVmClustersRequest>,
+  output: __S(163, __c5, 3) as any as S.Schema<ExadbVmCluster>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5098,8 +5102,8 @@ export const getProjectsLocationsExascaleDbStorageVaults: API.OperationMethod<
   GetProjectsLocationsExascaleDbStorageVaultsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetProjectsLocationsExascaleDbStorageVaultsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ExascaleDbStorageVault>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetProjectsLocationsExascaleDbStorageVaultsRequest>,
+  output: __S(227, __c7, 3) as any as S.Schema<ExascaleDbStorageVault>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5118,11 +5122,11 @@ export const getProjectsLocationsGoldengateConnectionAssignments: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    156,
-    __c19,
-    4,
+    1376,
+    __c43,
+    0,
   ) as any as S.Schema<GetProjectsLocationsGoldengateConnectionAssignmentsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GoldengateConnectionAssignment>,
+  output: __S(289, __c9, 1) as any as S.Schema<GoldengateConnectionAssignment>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5140,8 +5144,8 @@ export const getProjectsLocationsGoldengateConnections: API.OperationMethod<
   GetProjectsLocationsGoldengateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<GetProjectsLocationsGoldengateConnectionsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<GoldengateConnection>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetProjectsLocationsGoldengateConnectionsRequest>,
+  output: __S(394, __c12, 10) as any as S.Schema<GoldengateConnection>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5159,8 +5163,8 @@ export const getProjectsLocationsGoldengateDeployments: API.OperationMethod<
   GetProjectsLocationsGoldengateDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<GetProjectsLocationsGoldengateDeploymentsRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<GoldengateDeployment>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetProjectsLocationsGoldengateDeploymentsRequest>,
+  output: __S(461, __c14, 13) as any as S.Schema<GoldengateDeployment>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5178,8 +5182,8 @@ export const getProjectsLocationsOdbNetworks: API.OperationMethod<
   GetProjectsLocationsOdbNetworksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetProjectsLocationsOdbNetworksRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<OdbNetwork>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetProjectsLocationsOdbNetworksRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<OdbNetwork>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5197,8 +5201,8 @@ export const getProjectsLocationsOdbNetworksOdbSubnets: API.OperationMethod<
   GetProjectsLocationsOdbNetworksOdbSubnetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetProjectsLocationsOdbNetworksOdbSubnetsRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<OdbSubnet>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetProjectsLocationsOdbNetworksOdbSubnetsRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<OdbSubnet>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5216,8 +5220,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5235,8 +5239,8 @@ export const getProjectsLocationsPluggableDatabases: API.OperationMethod<
   GetProjectsLocationsPluggableDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetProjectsLocationsPluggableDatabasesRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<PluggableDatabase>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetProjectsLocationsPluggableDatabasesRequest>,
+  output: __S(1606, __c50, 6) as any as S.Schema<PluggableDatabase>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5255,11 +5259,11 @@ export const getRefreshableClonesProjectsLocationsAutonomousDatabases: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    170,
-    __c21,
-    2,
+    1632,
+    __c51,
+    0,
   ) as any as S.Schema<GetRefreshableClonesProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<AutonomousDatabaseRefreshableClones>,
+  output: __S(1635, __c51, 3) as any as S.Schema<AutonomousDatabaseRefreshableClones>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5274,8 +5278,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListLocationsResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(1666, __c52, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5296,11 +5300,11 @@ export const listProjectsLocationsAutonomousDatabaseBackups: API.PaginatedOperat
   ListAutonomousDatabaseBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    177,
-    __c22,
-    1,
+    1696,
+    __c53,
+    0,
   ) as any as S.Schema<ListProjectsLocationsAutonomousDatabaseBackupsRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<ListAutonomousDatabaseBackupsResponse>,
+  output: __S(1700, __c53, 4) as any as S.Schema<ListAutonomousDatabaseBackupsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5321,11 +5325,11 @@ export const listProjectsLocationsAutonomousDatabaseCharacterSets: API.Paginated
   ListAutonomousDatabaseCharacterSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    182,
-    __c22,
-    6,
+    1792,
+    __c56,
+    0,
   ) as any as S.Schema<ListProjectsLocationsAutonomousDatabaseCharacterSetsRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<ListAutonomousDatabaseCharacterSetsResponse>,
+  output: __S(1795, __c56, 3) as any as S.Schema<ListAutonomousDatabaseCharacterSetsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5345,8 +5349,8 @@ export const listProjectsLocationsAutonomousDatabases: API.PaginatedOperationMet
   GcpOpContext,
   ListAutonomousDatabasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<ListProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListAutonomousDatabasesResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListProjectsLocationsAutonomousDatabasesRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<ListAutonomousDatabasesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5366,8 +5370,8 @@ export const listProjectsLocationsAutonomousDbVersions: API.PaginatedOperationMe
   GcpOpContext,
   ListAutonomousDbVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<ListProjectsLocationsAutonomousDbVersionsRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<ListAutonomousDbVersionsResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListProjectsLocationsAutonomousDbVersionsRequest>,
+  output: __S(1859, __c58, 3) as any as S.Schema<ListAutonomousDbVersionsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5388,11 +5392,11 @@ export const listProjectsLocationsCloudExadataInfrastructures: API.PaginatedOper
   ListCloudExadataInfrastructuresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    193,
-    __c24,
-    1,
+    1888,
+    __c59,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCloudExadataInfrastructuresRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<ListCloudExadataInfrastructuresResponse>,
+  output: __S(1890, __c59, 2) as any as S.Schema<ListCloudExadataInfrastructuresResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5413,11 +5417,11 @@ export const listProjectsLocationsCloudExadataInfrastructuresDbServers: API.Pagi
   ListDbServersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    196,
-    __c24,
-    4,
+    1920,
+    __c60,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCloudExadataInfrastructuresDbServersRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<ListDbServersResponse>,
+  output: __S(1924, __c60, 4) as any as S.Schema<ListDbServersResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5437,8 +5441,8 @@ export const listProjectsLocationsCloudVmClusters: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCloudVmClustersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<ListProjectsLocationsCloudVmClustersRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<ListCloudVmClustersResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListProjectsLocationsCloudVmClustersRequest>,
+  output: __S(1954, __c61, 2) as any as S.Schema<ListCloudVmClustersResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5458,8 +5462,8 @@ export const listProjectsLocationsCloudVmClustersDbNodes: API.PaginatedOperation
   GcpOpContext,
   ListDbNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<ListProjectsLocationsCloudVmClustersDbNodesRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<ListDbNodesResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListProjectsLocationsCloudVmClustersDbNodesRequest>,
+  output: __S(2019, __c63, 3) as any as S.Schema<ListDbNodesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5479,8 +5483,8 @@ export const listProjectsLocationsDatabaseCharacterSets: API.PaginatedOperationM
   GcpOpContext,
   ListDatabaseCharacterSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<ListProjectsLocationsDatabaseCharacterSetsRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<ListDatabaseCharacterSetsResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListProjectsLocationsDatabaseCharacterSetsRequest>,
+  output: __S(2051, __c64, 3) as any as S.Schema<ListDatabaseCharacterSetsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5500,8 +5504,8 @@ export const listProjectsLocationsDatabases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDatabasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<ListProjectsLocationsDatabasesRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<ListDatabasesResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListProjectsLocationsDatabasesRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<ListDatabasesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5522,11 +5526,11 @@ export const listProjectsLocationsDbSystemInitialStorageSizes: API.PaginatedOper
   ListDbSystemInitialStorageSizesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    216,
-    __c27,
+    2112,
+    __c66,
     0,
   ) as any as S.Schema<ListProjectsLocationsDbSystemInitialStorageSizesRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<ListDbSystemInitialStorageSizesResponse>,
+  output: __S(2118, __c66, 6) as any as S.Schema<ListDbSystemInitialStorageSizesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5546,8 +5550,8 @@ export const listProjectsLocationsDbSystems: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDbSystemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<ListProjectsLocationsDbSystemsRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<ListDbSystemsResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListProjectsLocationsDbSystemsRequest>,
+  output: __S(2242, __c70, 2) as any as S.Schema<ListDbSystemsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5567,8 +5571,8 @@ export const listProjectsLocationsDbSystemShapes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDbSystemShapesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<ListProjectsLocationsDbSystemShapesRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<ListDbSystemShapesResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListProjectsLocationsDbSystemShapesRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<ListDbSystemShapesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5588,8 +5592,8 @@ export const listProjectsLocationsDbVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDbVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<ListProjectsLocationsDbVersionsRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<ListDbVersionsResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListProjectsLocationsDbVersionsRequest>,
+  output: __S(2308, __c72, 4) as any as S.Schema<ListDbVersionsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5609,8 +5613,8 @@ export const listProjectsLocationsEntitlements: API.PaginatedOperationMethod<
   GcpOpContext,
   ListEntitlementsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<ListProjectsLocationsEntitlementsRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<ListEntitlementsResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListProjectsLocationsEntitlementsRequest>,
+  output: __S(2340, __c73, 4) as any as S.Schema<ListEntitlementsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5630,8 +5634,8 @@ export const listProjectsLocationsExadbVmClusters: API.PaginatedOperationMethod<
   GcpOpContext,
   ListExadbVmClustersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<ListProjectsLocationsExadbVmClustersRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<ListExadbVmClustersResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListProjectsLocationsExadbVmClustersRequest>,
+  output: __S(2370, __c74, 2) as any as S.Schema<ListExadbVmClustersResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5651,8 +5655,8 @@ export const listProjectsLocationsExadbVmClustersDbNodes: API.PaginatedOperation
   GcpOpContext,
   ListDbNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<ListProjectsLocationsExadbVmClustersDbNodesRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<ListDbNodesResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListProjectsLocationsExadbVmClustersDbNodesRequest>,
+  output: __S(2019, __c63, 3) as any as S.Schema<ListDbNodesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5672,8 +5676,12 @@ export const listProjectsLocationsExascaleDbStorageVaults: API.PaginatedOperatio
   GcpOpContext,
   ListExascaleDbStorageVaultsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListProjectsLocationsExascaleDbStorageVaultsRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<ListExascaleDbStorageVaultsResponse>,
+  input: __S(
+    2432,
+    __c76,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsExascaleDbStorageVaultsRequest>,
+  output: __S(2434, __c76, 2) as any as S.Schema<ListExascaleDbStorageVaultsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5693,8 +5701,8 @@ export const listProjectsLocationsGiVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGiVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<ListProjectsLocationsGiVersionsRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<ListGiVersionsResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListProjectsLocationsGiVersionsRequest>,
+  output: __S(2467, __c77, 3) as any as S.Schema<ListGiVersionsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5714,8 +5722,12 @@ export const listProjectsLocationsGiVersionsMinorVersions: API.PaginatedOperatio
   GcpOpContext,
   ListMinorVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<ListProjectsLocationsGiVersionsMinorVersionsRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<ListMinorVersionsResponse>,
+  input: __S(
+    2496,
+    __c78,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsGiVersionsMinorVersionsRequest>,
+  output: __S(2499, __c78, 3) as any as S.Schema<ListMinorVersionsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5736,11 +5748,11 @@ export const listProjectsLocationsGoldengateConnectionAssignments: API.Paginated
   ListGoldengateConnectionAssignmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    255,
-    __c31,
-    7,
+    2528,
+    __c79,
+    0,
   ) as any as S.Schema<ListProjectsLocationsGoldengateConnectionAssignmentsRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<ListGoldengateConnectionAssignmentsResponse>,
+  output: __S(2530, __c79, 2) as any as S.Schema<ListGoldengateConnectionAssignmentsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5760,8 +5772,8 @@ export const listProjectsLocationsGoldengateConnections: API.PaginatedOperationM
   GcpOpContext,
   ListGoldengateConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<ListProjectsLocationsGoldengateConnectionsRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<ListGoldengateConnectionsResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListProjectsLocationsGoldengateConnectionsRequest>,
+  output: __S(2722, __c85, 2) as any as S.Schema<ListGoldengateConnectionsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5782,11 +5794,11 @@ export const listProjectsLocationsGoldengateConnectionTypes: API.PaginatedOperat
   ListGoldengateConnectionTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    261,
-    __c32,
-    5,
+    2752,
+    __c86,
+    0,
   ) as any as S.Schema<ListProjectsLocationsGoldengateConnectionTypesRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<ListGoldengateConnectionTypesResponse>,
+  output: __S(2755, __c86, 3) as any as S.Schema<ListGoldengateConnectionTypesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5807,11 +5819,11 @@ export const listProjectsLocationsGoldengateDeploymentEnvironments: API.Paginate
   ListGoldengateDeploymentEnvironmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    265,
-    __c33,
-    1,
+    2784,
+    __c87,
+    0,
   ) as any as S.Schema<ListProjectsLocationsGoldengateDeploymentEnvironmentsRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<ListGoldengateDeploymentEnvironmentsResponse>,
+  output: __S(2787, __c87, 3) as any as S.Schema<ListGoldengateDeploymentEnvironmentsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5831,8 +5843,8 @@ export const listProjectsLocationsGoldengateDeployments: API.PaginatedOperationM
   GcpOpContext,
   ListGoldengateDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<ListProjectsLocationsGoldengateDeploymentsRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<ListGoldengateDeploymentsResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<ListProjectsLocationsGoldengateDeploymentsRequest>,
+  output: __S(2818, __c88, 2) as any as S.Schema<ListGoldengateDeploymentsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5853,11 +5865,11 @@ export const listProjectsLocationsGoldengateDeploymentTypes: API.PaginatedOperat
   ListGoldengateDeploymentTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    272,
-    __c34,
+    2848,
+    __c89,
     0,
   ) as any as S.Schema<ListProjectsLocationsGoldengateDeploymentTypesRequest>,
-  output: __S(275, __c34, 3) as any as S.Schema<ListGoldengateDeploymentTypesResponse>,
+  output: __S(2851, __c89, 3) as any as S.Schema<ListGoldengateDeploymentTypesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5878,11 +5890,11 @@ export const listProjectsLocationsGoldengateDeploymentVersions: API.PaginatedOpe
   ListGoldengateDeploymentVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    276,
-    __c34,
-    4,
+    2880,
+    __c90,
+    0,
   ) as any as S.Schema<ListProjectsLocationsGoldengateDeploymentVersionsRequest>,
-  output: __S(280, __c35, 0) as any as S.Schema<ListGoldengateDeploymentVersionsResponse>,
+  output: __S(2884, __c90, 4) as any as S.Schema<ListGoldengateDeploymentVersionsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5902,8 +5914,8 @@ export const listProjectsLocationsOdbNetworks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOdbNetworksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<ListProjectsLocationsOdbNetworksRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<ListOdbNetworksResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<ListProjectsLocationsOdbNetworksRequest>,
+  output: __S(2914, __c91, 2) as any as S.Schema<ListOdbNetworksResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5923,8 +5935,8 @@ export const listProjectsLocationsOdbNetworksOdbSubnets: API.PaginatedOperationM
   GcpOpContext,
   ListOdbSubnetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<ListProjectsLocationsOdbNetworksOdbSubnetsRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<ListOdbSubnetsResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<ListProjectsLocationsOdbNetworksOdbSubnetsRequest>,
+  output: __S(2946, __c92, 2) as any as S.Schema<ListOdbSubnetsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5944,8 +5956,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<ListOperationsResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5965,8 +5977,8 @@ export const listProjectsLocationsPluggableDatabases: API.PaginatedOperationMeth
   GcpOpContext,
   ListPluggableDatabasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<ListProjectsLocationsPluggableDatabasesRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<ListPluggableDatabasesResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<ListProjectsLocationsPluggableDatabasesRequest>,
+  output: __S(3010, __c94, 2) as any as S.Schema<ListPluggableDatabasesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5987,8 +5999,8 @@ export const patchProjectsLocationsAutonomousDatabases: API.OperationMethod<
   PatchProjectsLocationsAutonomousDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<PatchProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(3104, __c97, 0) as any as S.Schema<PatchProjectsLocationsAutonomousDatabasesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6008,8 +6020,8 @@ export const patchProjectsLocationsExadbVmClusters: API.OperationMethod<
   PatchProjectsLocationsExadbVmClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<PatchProjectsLocationsExadbVmClustersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(3136, __c98, 0) as any as S.Schema<PatchProjectsLocationsExadbVmClustersRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6029,8 +6041,8 @@ export const refreshProjectsLocationsAutonomousDatabases: API.OperationMethod<
   RefreshProjectsLocationsAutonomousDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<RefreshProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(3169, __c99, 1) as any as S.Schema<RefreshProjectsLocationsAutonomousDatabasesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6051,11 +6063,11 @@ export const removeVirtualMachineProjectsLocationsExadbVmClusters: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    298,
-    __c37,
-    2,
+    3201,
+    __c100,
+    1,
   ) as any as S.Schema<RemoveVirtualMachineProjectsLocationsExadbVmClustersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6075,8 +6087,12 @@ export const restartProjectsLocationsAutonomousDatabases: API.OperationMethod<
   RestartProjectsLocationsAutonomousDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<RestartProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(
+    3232,
+    __c101,
+    0,
+  ) as any as S.Schema<RestartProjectsLocationsAutonomousDatabasesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6096,8 +6112,12 @@ export const restoreProjectsLocationsAutonomousDatabases: API.OperationMethod<
   RestoreProjectsLocationsAutonomousDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<RestoreProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(
+    3265,
+    __c102,
+    1,
+  ) as any as S.Schema<RestoreProjectsLocationsAutonomousDatabasesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6117,8 +6137,8 @@ export const startProjectsLocationsAutonomousDatabases: API.OperationMethod<
   StartProjectsLocationsAutonomousDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<StartProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(3296, __c103, 0) as any as S.Schema<StartProjectsLocationsAutonomousDatabasesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6138,8 +6158,12 @@ export const startProjectsLocationsGoldengateDeployments: API.OperationMethod<
   StartProjectsLocationsGoldengateDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<StartProjectsLocationsGoldengateDeploymentsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(
+    3328,
+    __c104,
+    0,
+  ) as any as S.Schema<StartProjectsLocationsGoldengateDeploymentsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6159,8 +6183,8 @@ export const stopProjectsLocationsAutonomousDatabases: API.OperationMethod<
   StopProjectsLocationsAutonomousDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<StopProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(3360, __c105, 0) as any as S.Schema<StopProjectsLocationsAutonomousDatabasesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6180,8 +6204,8 @@ export const stopProjectsLocationsGoldengateDeployments: API.OperationMethod<
   StopProjectsLocationsGoldengateDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<StopProjectsLocationsGoldengateDeploymentsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(3392, __c106, 0) as any as S.Schema<StopProjectsLocationsGoldengateDeploymentsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6202,11 +6226,11 @@ export const switchoverProjectsLocationsAutonomousDatabases: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    306,
-    __c38,
-    2,
+    3552,
+    __c111,
+    0,
   ) as any as S.Schema<SwitchoverProjectsLocationsAutonomousDatabasesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(2210, __c69, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6227,11 +6251,11 @@ export const testProjectsLocationsGoldengateConnectionAssignments: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    308,
-    __c38,
-    4,
+    3585,
+    __c112,
+    1,
   ) as any as S.Schema<TestProjectsLocationsGoldengateConnectionAssignmentsRequest>,
-  output: __S(311, __c38, 7) as any as S.Schema<TestGoldengateConnectionAssignmentResponse>,
+  output: __S(3588, __c112, 4) as any as S.Schema<TestGoldengateConnectionAssignmentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6241,574 +6265,27 @@ export const testProjectsLocationsGoldengateConnectionAssignments: API.Operation
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          dbSystemId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(100, __c3, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1/{+name}:cancel",
+            uri: "v1/{+parent}/dbSystems",
             baseUrl: "https://oracledatabase.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
+        identifier: "CreateProjectsLocationsDbSystemsRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          totalVmStorageSizeGb: S.optional(S.Number),
-          requestId: S.optional(S.String),
-          totalStorageSizeGb: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ConfigureExascaleCloudExadataInfrastructureRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:configureExascale",
-            baseUrl: "https://oracledatabase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigureExascaleProjectsLocationsCloudExadataInfrastructuresRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          details: S.optional(__S(5, __c0, 5)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(6, __c0, 6)),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
-          response: S.optional(__S(4, __c0, 4)),
-          done: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Operation" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ordsVersion: S.optional(S.String),
-          apexVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutonomousDatabaseApex" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hours: S.optional(S.Number),
-          nanos: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TimeOfDay" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dayOfWeek: S.optional(S.String),
-          stopTime: S.optional(__S(10, __c1, 2)),
-          startTime: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "ScheduledOperationDetails",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          kmsKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionKey" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          encryptionKey: S.optional(__S(13, __c1, 5)),
-          activationTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EncryptionKeyHistoryEntry",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomerContact" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          lifecycleDetails: S.optional(S.String),
-          disasterRecoveryRoleChangedTime: S.optional(S.String),
-          dataGuardRoleChangedTime: S.optional(S.String),
-          lagTimeDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutonomousDatabaseStandbySummary",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          high: S.optional(S.String),
-          low: S.optional(S.String),
-          medium: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AllConnectionStrings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          syntaxFormat: S.optional(S.String),
-          consumerGroup: S.optional(S.String),
-          protocol: S.optional(S.String),
-          displayName: S.optional(S.String),
-          sessionMode: S.optional(S.String),
-          isRegional: S.optional(S.Boolean),
-          tlsAuthentication: S.optional(S.String),
-          hostFormat: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabaseConnectionStringProfile",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allConnectionStrings: S.optional(__S(19, __c2, 3)),
-          profiles: S.optional(__S(21, __c2, 5)),
-          high: S.optional(S.String),
-          low: S.optional(S.String),
-          medium: S.optional(S.String),
-          dedicated: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutonomousDatabaseConnectionStrings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          databaseTransformsUri: S.optional(S.String),
-          mongoDbUri: S.optional(S.String),
-          graphStudioUri: S.optional(S.String),
-          machineLearningUserManagementUri: S.optional(S.String),
-          sqlDevWebUri: S.optional(S.String),
-          machineLearningNotebookUri: S.optional(S.String),
-          apexUri: S.optional(S.String),
-          ordsUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutonomousDatabaseConnectionUrls",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dbEdition: S.optional(S.String),
-          availableUpgradeVersions: S.optional(__S(8, __c1, 0)),
-          supportedCloneRegions: S.optional(__S(8, __c1, 0)),
-          nextLongTermBackupTime: S.optional(S.String),
-          usedDataStorageSizeTbs: S.optional(S.Number),
-          isLocalDataGuardEnabled: S.optional(S.Boolean),
-          privateEndpoint: S.optional(S.String),
-          maintenanceEndTime: S.optional(S.String),
-          permissionLevel: S.optional(S.String),
-          dataStorageSizeGb: S.optional(S.Number),
-          privateEndpointLabel: S.optional(S.String),
-          backupRetentionPeriodDays: S.optional(S.Number),
-          refreshableState: S.optional(S.String),
-          refreshableMode: S.optional(S.String),
-          failedDataRecoveryDuration: S.optional(S.String),
-          disasterRecoveryRoleChangedTime: S.optional(S.String),
-          maintenanceBeginTime: S.optional(S.String),
-          apexDetails: S.optional(__S(9, __c1, 1)),
-          scheduledOperationDetails: S.optional(__S(12, __c1, 4)),
-          encryptionKeyHistoryEntries: S.optional(__S(15, __c1, 7)),
-          dbVersion: S.optional(S.String),
-          memoryTableGbs: S.optional(S.Number),
-          mtlsConnectionRequired: S.optional(S.Boolean),
-          privateEndpointIp: S.optional(S.String),
-          databaseManagementState: S.optional(S.String),
-          localDisasterRecoveryType: S.optional(S.String),
-          customerContacts: S.optional(__S(17, __c2, 1)),
-          computeCount: S.optional(S.Number),
-          autonomousContainerDatabaseId: S.optional(S.String),
-          ocid: S.optional(S.String),
-          memoryPerOracleComputeUnitGbs: S.optional(S.Number),
-          serviceAgentEmail: S.optional(S.String),
-          lifecycleDetails: S.optional(S.String),
-          actualUsedDataStorageSizeTb: S.optional(S.Number),
-          state: S.optional(S.String),
-          dbWorkload: S.optional(S.String),
-          arePrimaryAllowlistedIpsUsed: S.optional(S.Boolean),
-          dataStorageSizeTb: S.optional(S.Number),
-          localStandbyDb: S.optional(__S(18, __c2, 2)),
-          localAdgAutoFailoverMaxDataLossLimitDuration: S.optional(S.Number),
-          connectionStrings: S.optional(__S(22, __c2, 6)),
-          totalAutoBackupStorageSizeGbs: S.optional(S.Number),
-          peerDbIds: S.optional(__S(8, __c1, 0)),
-          isStorageAutoScalingEnabled: S.optional(S.Boolean),
-          characterSet: S.optional(S.String),
-          dataSafeState: S.optional(S.String),
-          allocatedStorageSizeTb: S.optional(S.Number),
-          secretId: S.optional(S.String),
-          role: S.optional(S.String),
-          isAutoScalingEnabled: S.optional(S.Boolean),
-          dataGuardRoleChangedTime: S.optional(S.String),
-          ociUrl: S.optional(S.String),
-          encryptionKey: S.optional(__S(13, __c1, 5)),
-          openMode: S.optional(S.String),
-          refreshableClone: S.optional(S.Boolean),
-          operationsInsightsState: S.optional(S.String),
-          cpuCoreCount: S.optional(S.Number),
-          nCharacterSet: S.optional(S.String),
-          connectionUrls: S.optional(__S(23, __c2, 7)),
-          sqlWebDeveloperUrl: S.optional(S.String),
-          allowlistedIps: S.optional(__S(8, __c1, 0)),
-          vaultId: S.optional(S.String),
-          maintenanceScheduleType: S.optional(S.String),
-          localDataGuardEnabled: S.optional(S.Boolean),
-          localAdgAutoFailoverMaxDataLossLimit: S.optional(S.Number),
-          licenseType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutonomousDatabaseProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          autoRefreshFrequencySeconds: S.optional(S.Number),
-          autoRefreshPointLagSeconds: S.optional(S.Number),
-          autoRefreshStartTime: S.optional(S.String),
-          refreshableMode: S.optional(S.String),
-          cloneType: S.optional(S.String),
-          sourceType: S.optional(S.String),
-          autonomousDatabase: S.optional(S.String),
-          autonomousDatabaseBackup: S.optional(S.String),
-          backupTime: S.optional(S.String),
-          automaticBackupsReplicationEnabled: S.optional(S.Boolean),
-          useLatestAvailableBackup: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SourceConfig" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          properties: S.optional(__S(24, __c3, 0)),
-          cidr: S.optional(S.String),
-          sourceConfig: S.optional(__S(25, __c3, 1)),
-          labels: S.optional(__S(26, __c3, 2)),
-          adminPassword: S.optional(S.String),
-          database: S.optional(S.String),
-          odbNetwork: S.optional(S.String),
-          disasterRecoverySupportedLocations: S.optional(__S(8, __c1, 0)),
-          odbSubnet: S.optional(S.String),
-          adminPasswordSecretVersion: S.optional(S.String),
-          name: S.optional(S.String),
-          peerAutonomousDatabases: S.optional(__S(8, __c1, 0)),
-          displayName: S.optional(S.String),
-          network: S.optional(S.String),
-          entitlementId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutonomousDatabase" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          autonomousDatabaseId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/autonomousDatabases",
-            baseUrl: "https://oracledatabase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAutonomousDatabasesRequest",
-      });
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          hoursOfDay: S.optional(__S(29, __c3, 5)),
-          weeksOfMonth: S.optional(__S(29, __c3, 5)),
-          months: S.optional(__S(30, __c3, 6)),
-          preference: S.optional(S.String),
-          patchingMode: S.optional(S.String),
-          leadTimeWeek: S.optional(S.Number),
-          customActionTimeoutMins: S.optional(S.Number),
-          daysOfWeek: S.optional(__S(30, __c3, 6)),
-          isCustomActionTimeoutEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "MaintenanceWindow" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          availableVmStorageSizeGb: S.optional(S.Number),
-          totalVmStorageSizeGb: S.optional(S.Number),
-          totalStorageSizeGb: S.optional(S.Number),
-          availableStorageSizeGb: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ExascaleConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dbServerVersion: S.optional(S.String),
-          maxDbNodeStorageSizeGb: S.optional(S.Number),
-          dbNodeStorageSizeGb: S.optional(S.Number),
-          computeCount: S.optional(S.Number),
-          totalStorageSizeGb: S.optional(S.Number),
-          monthlyStorageServerVersion: S.optional(S.String),
-          shape: S.optional(S.String),
-          computeModel: S.optional(S.String),
-          state: S.optional(S.String),
-          maintenanceWindow: S.optional(__S(31, __c3, 7)),
-          storageServerVersion: S.optional(S.String),
-          nextMaintenanceRunId: S.optional(S.String),
-          storageServerType: S.optional(S.String),
-          memorySizeGb: S.optional(S.Number),
-          availableStorageSizeGb: S.optional(S.Number),
-          dataStorageSizeTb: S.optional(S.Number),
-          databaseServerType: S.optional(S.String),
-          nextMaintenanceRunTime: S.optional(S.String),
-          maxDataStorageTb: S.optional(S.Number),
-          maxCpuCount: S.optional(S.Number),
-          activatedStorageCount: S.optional(S.Number),
-          additionalStorageCount: S.optional(S.Number),
-          ociUrl: S.optional(S.String),
-          exascaleConfig: S.optional(__S(32, __c4, 0)),
-          cpuCount: S.optional(S.Number),
-          customerContacts: S.optional(__S(17, __c2, 1)),
-          maxMemoryGb: S.optional(S.Number),
-          ocid: S.optional(S.String),
-          monthlyDbServerVersion: S.optional(S.String),
-          nextSecurityMaintenanceRunTime: S.optional(S.String),
-          storageCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CloudExadataInfrastructureProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: S.optional(__S(33, __c4, 1)),
-          createTime: S.optional(S.String),
-          gcpOracleZone: S.optional(S.String),
-          labels: S.optional(__S(26, __c3, 2)),
-          entitlementId: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CloudExadataInfrastructure",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cloudExadataInfrastructureId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/cloudExadataInfrastructures",
-            baseUrl: "https://oracledatabase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCloudExadataInfrastructuresRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          connectionState: S.optional(S.String),
-          serviceAgentEmail: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IdentityConnector" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeZone" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          incidentLogsEnabled: S.optional(S.Boolean),
-          healthMonitoringEnabled: S.optional(S.Boolean),
-          diagnosticsEventsEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DataCollectionOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          hostname: S.optional(S.String),
-          dbNodeStorageSizeGb: S.optional(S.Number),
-          storageSizeGb: S.optional(S.Number),
-          storageManagementType: S.optional(S.String),
-          ocid: S.optional(S.String),
-          sshPublicKeys: S.optional(__S(8, __c1, 0)),
-          giVersion: S.optional(S.String),
-          memorySizeGb: S.optional(S.Number),
-          localBackupEnabled: S.optional(S.Boolean),
-          cpuCoreCount: S.optional(S.Number),
-          scanDns: S.optional(S.String),
-          dataStorageSizeTb: S.optional(S.Number),
-          clusterName: S.optional(S.String),
-          ocpuCount: S.optional(S.Number),
-          computeModel: S.optional(S.String),
-          domain: S.optional(S.String),
-          ociUrl: S.optional(S.String),
-          sparseDiskgroupEnabled: S.optional(S.Boolean),
-          scanListenerPortTcp: S.optional(S.Number),
-          diskRedundancy: S.optional(S.String),
-          scanIpIds: S.optional(__S(8, __c1, 0)),
-          scanDnsRecordId: S.optional(S.String),
-          vmFileSystemStorageType: S.optional(S.String),
-          timeZone: S.optional(__S(37, __c4, 5)),
-          nodeCount: S.optional(S.Number),
-          dbServerOcids: S.optional(__S(8, __c1, 0)),
-          licenseType: S.optional(S.String),
-          shape: S.optional(S.String),
-          compartmentId: S.optional(S.String),
-          diagnosticsDataCollectionOptions: S.optional(__S(38, __c4, 6)),
-          vmBackupStorageType: S.optional(S.String),
-          systemVersion: S.optional(S.String),
-          state: S.optional(S.String),
-          dnsListenerIp: S.optional(S.String),
-          hostnamePrefix: S.optional(S.String),
-          scanListenerPortTcpSsl: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CloudVmClusterProperties" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          exadataInfrastructure: S.optional(S.String),
-          exascaleDbStorageVault: S.optional(S.String),
-          identityConnector: S.optional(__S(36, __c4, 4)),
-          createTime: S.optional(S.String),
-          properties: S.optional(__S(39, __c4, 7)),
-          name: S.optional(S.String),
-          gcpOracleZone: S.optional(S.String),
-          odbNetwork: S.optional(S.String),
-          labels: S.optional(__S(26, __c3, 2)),
-          backupSubnetCidr: S.optional(S.String),
-          cidr: S.optional(S.String),
-          displayName: S.optional(S.String),
-          network: S.optional(S.String),
-          odbSubnet: S.optional(S.String),
-          backupOdbSubnet: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloudVmCluster" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          cloudVmClusterId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/cloudVmClusters",
-            baseUrl: "https://oracledatabase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCloudVmClustersRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          storageManagement: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DbSystemOptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          isDiagnosticsEventsEnabled: S.optional(S.Boolean),
-          isIncidentLogsEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DataCollectionOptionsDbSystem",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BackupDestinationDetails" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          autoIncrementalBackupWindow: S.optional(S.String),
-          autoBackupEnabled: S.optional(S.Boolean),
-          autoFullBackupDay: S.optional(S.String),
-          retentionPeriodDays: S.optional(S.Number),
-          backupDestinationDetails: S.optional(__S(45, __c5, 5)),
-          backupDeletionPolicy: S.optional(S.String),
-          autoFullBackupWindow: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DbBackupConfig" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           managementType: S.optional(S.String),
@@ -6817,18 +6294,38 @@ function __c5(j: number): any {
       ).annotate({ identifier: "DatabaseManagementConfig" });
   }
 }
-function __c6(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BackupDestinationDetails" });
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          autoIncrementalBackupWindow: S.optional(S.String),
+          autoBackupEnabled: S.optional(S.Boolean),
+          autoFullBackupDay: S.optional(S.String),
+          retentionPeriodDays: S.optional(S.Number),
+          backupDestinationDetails: S.optional(__S(65, __c2, 1)),
+          backupDeletionPolicy: S.optional(S.String),
+          autoFullBackupWindow: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DbBackupConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
           dbVersion: S.optional(S.String),
-          dbBackupConfig: S.optional(__S(46, __c5, 6)),
+          dbBackupConfig: S.optional(__S(66, __c2, 2)),
           state: S.optional(S.String),
-          databaseManagementConfig: S.optional(__S(47, __c5, 7)),
+          databaseManagementConfig: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "DatabaseProperties" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           dbName: S.optional(S.String),
@@ -6836,7 +6333,7 @@ function __c6(j: number): any {
           databaseId: S.optional(S.String),
           opsInsightsStatus: S.optional(S.String),
           createTime: S.optional(S.String),
-          properties: S.optional(__S(48, __c6, 0)),
+          properties: S.optional(__S(67, __c2, 3)),
           characterSet: S.optional(S.String),
           dbUniqueName: S.optional(S.String),
           pluggableDatabaseId: S.optional(S.String),
@@ -6851,37 +6348,56 @@ function __c6(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Database" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storageManagement: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DbSystemOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          isDiagnosticsEventsEnabled: S.optional(S.Boolean),
+          isIncidentLogsEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DataCollectionOptionsDbSystem",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
           dbVersion: S.optional(S.String),
           isUnifiedAuditingEnabled: S.optional(S.Boolean),
           displayName: S.optional(S.String),
-          database: S.optional(__S(49, __c6, 1)),
+          database: S.optional(__S(68, __c2, 4)),
         }),
       ).annotate({ identifier: "DbHome" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dbSystemOptions: S.optional(__S(42, __c5, 2)),
+          dbSystemOptions: S.optional(__S(96, __c3, 0)),
           domain: S.optional(S.String),
           computeModel: S.optional(S.String),
           privateIp: S.optional(S.String),
           initialDataStorageSizeGb: S.optional(S.Number),
-          sshPublicKeys: S.optional(__S(8, __c1, 0)),
+          sshPublicKeys: S.optional(__S(2688, __c84, 0)),
           lifecycleState: S.optional(S.String),
-          dataCollectionOptions: S.optional(__S(43, __c5, 3)),
+          dataCollectionOptions: S.optional(__S(97, __c3, 1)),
           memorySizeGb: S.optional(S.Number),
           nodeCount: S.optional(S.Number),
           computeCount: S.optional(S.Number),
           recoStorageSizeGb: S.optional(S.Number),
           shape: S.optional(S.String),
           ocid: S.optional(S.String),
-          timeZone: S.optional(__S(37, __c4, 5)),
+          timeZone: S.optional(__S(3456, __c108, 0)),
           hostnamePrefix: S.optional(S.String),
           licenseModel: S.optional(S.String),
           hostname: S.optional(S.String),
-          dbHome: S.optional(__S(50, __c6, 2)),
+          dbHome: S.optional(__S(98, __c3, 2)),
           dataStorageSizeGb: S.optional(S.Number),
           databaseEdition: S.optional(S.String),
         }),
@@ -6890,9 +6406,9 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          properties: S.optional(__S(51, __c6, 3)),
+          properties: S.optional(__S(99, __c3, 3)),
           odbSubnet: S.optional(S.String),
-          labels: S.optional(__S(26, __c3, 2)),
+          labels: S.optional(__S(2656, __c83, 0)),
           name: S.optional(S.String),
           ociUrl: S.optional(S.String),
           entitlementId: S.optional(S.String),
@@ -6901,92 +6417,17 @@ function __c6(j: number): any {
           gcpOracleZone: S.optional(S.String),
         }),
       ).annotate({ identifier: "DbSystem" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          dbSystemId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(52, __c6, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/dbSystems",
-            baseUrl: "https://oracledatabase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDbSystemsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          isHealthMonitoringEnabled: S.optional(S.Boolean),
-          isIncidentLogsEnabled: S.optional(S.Boolean),
-          isDiagnosticsEventsEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DataCollectionOptionsCommon",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sizeInGbsPerNode: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ExadbVmClusterStorageDetails",
-      });
   }
 }
-function __c7(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nodeCount: S.optional(S.Number),
-          hostname: S.optional(S.String),
-          scanListenerPortTcp: S.optional(S.Number),
-          memorySizeGb: S.optional(S.Number),
-          shapeAttribute: S.optional(S.String),
-          timeZone: S.optional(__S(37, __c4, 5)),
-          lifecycleState: S.optional(S.String),
-          additionalEcpuCountPerNode: S.optional(S.Number),
-          giVersion: S.optional(S.String),
-          hostnamePrefix: S.optional(S.String),
-          sshPublicKeys: S.optional(__S(8, __c1, 0)),
-          exascaleDbStorageVault: S.optional(S.String),
-          enabledEcpuCountPerNode: S.optional(S.Number),
-          ociUri: S.optional(S.String),
-          dataCollectionOptions: S.optional(__S(54, __c6, 6)),
-          gridImageId: S.optional(S.String),
-          vmFileSystemStorage: S.optional(__S(55, __c6, 7)),
-          licenseModel: S.optional(S.String),
-          clusterName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExadbVmClusterProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          entitlementId: S.optional(S.String),
-          labels: S.optional(__S(26, __c3, 2)),
-          gcpOracleZone: S.optional(S.String),
-          odbNetwork: S.optional(S.String),
-          createTime: S.optional(S.String),
-          properties: S.optional(__S(56, __c7, 0)),
-          name: S.optional(S.String),
-          odbSubnet: S.optional(S.String),
-          backupOdbSubnet: S.optional(S.String),
-          identityConnector: S.optional(__S(36, __c4, 4)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExadbVmCluster" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           exadbVmClusterId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(163, __c5, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6997,53 +6438,79 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsExadbVmClustersRequest",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          availableSizeGbs: S.optional(S.Number),
-          totalSizeGbs: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ExascaleDbStorageDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          availableShapeAttributes: S.optional(__S(59, __c7, 3)),
-          attachedShapeAttributes: S.optional(__S(59, __c7, 3)),
-          timeZone: S.optional(__S(37, __c4, 5)),
-          additionalFlashCachePercent: S.optional(S.Number),
-          ociUri: S.optional(S.String),
-          vmClusterIds: S.optional(__S(8, __c1, 0)),
-          description: S.optional(S.String),
-          exascaleDbStorageDetails: S.optional(__S(60, __c7, 4)),
-          state: S.optional(S.String),
-          ocid: S.optional(S.String),
-          vmClusterCount: S.optional(S.Number),
+          isHealthMonitoringEnabled: S.optional(S.Boolean),
+          isIncidentLogsEnabled: S.optional(S.Boolean),
+          isDiagnosticsEventsEnabled: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "ExascaleDbStorageVaultProperties",
+        identifier: "DataCollectionOptionsCommon",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          gcpOracleZone: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          entitlementId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          properties: S.optional(__S(61, __c7, 5)),
-          exadataInfrastructure: S.optional(S.String),
-          labels: S.optional(__S(26, __c3, 2)),
+          sizeInGbsPerNode: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "ExascaleDbStorageVault" });
-    case 7:
+      ).annotate({
+        identifier: "ExadbVmClusterStorageDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nodeCount: S.optional(S.Number),
+          hostname: S.optional(S.String),
+          scanListenerPortTcp: S.optional(S.Number),
+          memorySizeGb: S.optional(S.Number),
+          shapeAttribute: S.optional(S.String),
+          timeZone: S.optional(__S(3456, __c108, 0)),
+          lifecycleState: S.optional(S.String),
+          additionalEcpuCountPerNode: S.optional(S.Number),
+          giVersion: S.optional(S.String),
+          hostnamePrefix: S.optional(S.String),
+          sshPublicKeys: S.optional(__S(2688, __c84, 0)),
+          exascaleDbStorageVault: S.optional(S.String),
+          enabledEcpuCountPerNode: S.optional(S.Number),
+          ociUri: S.optional(S.String),
+          dataCollectionOptions: S.optional(__S(160, __c5, 0)),
+          gridImageId: S.optional(S.String),
+          vmFileSystemStorage: S.optional(__S(161, __c5, 1)),
+          licenseModel: S.optional(S.String),
+          clusterName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExadbVmClusterProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          entitlementId: S.optional(S.String),
+          labels: S.optional(__S(2656, __c83, 0)),
+          gcpOracleZone: S.optional(S.String),
+          odbNetwork: S.optional(S.String),
+          createTime: S.optional(S.String),
+          properties: S.optional(__S(162, __c5, 2)),
+          name: S.optional(S.String),
+          odbSubnet: S.optional(S.String),
+          backupOdbSubnet: S.optional(S.String),
+          identityConnector: S.optional(__S(3488, __c109, 0)),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExadbVmCluster" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           exascaleDbStorageVaultId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(227, __c7, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7056,7 +6523,72 @@ function __c7(j: number): any {
       });
   }
 }
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          availableSizeGbs: S.optional(S.Number),
+          totalSizeGbs: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ExascaleDbStorageDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          availableShapeAttributes: S.optional(__S(224, __c7, 0)),
+          attachedShapeAttributes: S.optional(__S(224, __c7, 0)),
+          timeZone: S.optional(__S(3456, __c108, 0)),
+          additionalFlashCachePercent: S.optional(S.Number),
+          ociUri: S.optional(S.String),
+          vmClusterIds: S.optional(__S(2688, __c84, 0)),
+          description: S.optional(S.String),
+          exascaleDbStorageDetails: S.optional(__S(225, __c7, 1)),
+          state: S.optional(S.String),
+          ocid: S.optional(S.String),
+          vmClusterCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ExascaleDbStorageVaultProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          gcpOracleZone: S.optional(S.String),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          entitlementId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          properties: S.optional(__S(226, __c7, 2)),
+          exadataInfrastructure: S.optional(S.String),
+          labels: S.optional(__S(2656, __c83, 0)),
+        }),
+      ).annotate({ identifier: "ExascaleDbStorageVault" });
+  }
+}
 function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          goldengateConnectionAssignmentId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(289, __c9, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/goldengateConnectionAssignments",
+            baseUrl: "https://oracledatabase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsGoldengateConnectionAssignmentsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7074,33 +6606,41 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          labels: S.optional(__S(26, __c3, 2)),
+          labels: S.optional(__S(2656, __c83, 0)),
           name: S.optional(S.String),
-          properties: S.optional(__S(64, __c8, 0)),
+          properties: S.optional(__S(288, __c9, 0)),
           createTime: S.optional(S.String),
           entitlementId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoldengateConnectionAssignment",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          goldengateConnectionAssignmentId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+          goldengateConnectionId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(394, __c12, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1/{+parent}/goldengateConnectionAssignments",
+            uri: "v1/{+parent}/goldengateConnections",
             baseUrl: "https://oracledatabase.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "CreateProjectsLocationsGoldengateConnectionAssignmentsRequest",
+        identifier: "CreateProjectsLocationsGoldengateConnectionsRequest",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           publicKeyFingerprint: S.optional(S.String),
@@ -7115,7 +6655,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoldengateOciObjectStorageConnectionProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           technologyType: S.optional(S.String),
@@ -7124,7 +6664,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoldengateGoogleBigQueryConnectionProperties",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           gcpOracleDatabaseId: S.optional(S.String),
@@ -7140,7 +6680,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoldengateOracleConnectionProperties",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           technologyType: S.optional(S.String),
@@ -7149,7 +6689,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoldengateHdfsConnectionProperties",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.optional(S.String),
@@ -7161,11 +6701,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoldengateMicrosoftFabricConnectionProperties",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           publicKeyFingerprint: S.optional(S.String),
@@ -7181,7 +6717,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoldengateOracleAIDataPlatformConnectionProperties",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           password: S.optional(S.String),
@@ -7196,7 +6732,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoldengateDatabricksConnectionProperties",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           connectionString: S.optional(S.String),
@@ -7208,7 +6744,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoldengateAzureSynapseAnalyticsConnectionProperties",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           accountKeySecret: S.optional(S.String),
@@ -7225,19 +6761,19 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoldengateAzureDataLakeStorageConnectionProperties",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "NameValuePair" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(361, __c11, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          additionalAttributes: S.optional(__S(77, __c9, 5)),
+          additionalAttributes: S.optional(__S(362, __c11, 10)),
           username: S.optional(S.String),
           sslCaFile: S.optional(S.String),
           technologyType: S.optional(S.String),
@@ -7252,7 +6788,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoldengateMicrosoftSqlserverConnectionProperties",
       });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           privateKeyFile: S.optional(S.String),
@@ -7267,11 +6803,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoldengateOracleNosqlConnectionProperties",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           password: S.optional(S.String),
@@ -7283,7 +6815,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoldengateAmazonRedshiftConnectionProperties",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           password: S.optional(S.String),
@@ -7312,7 +6844,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoldengateJavaMessageServiceConnectionProperties",
       });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           host: S.optional(S.String),
@@ -7321,7 +6853,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoldengateGenericConnectionProperties",
       });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           technologyType: S.optional(S.String),
@@ -7333,7 +6865,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoldengateAmazonS3ConnectionProperties",
       });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           technologyType: S.optional(S.String),
@@ -7351,7 +6883,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoldengateMongodbConnectionProperties",
       });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           technologyType: S.optional(S.String),
@@ -7365,14 +6897,14 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoldengateGoldengateConnectionProperties",
       });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           properties: S.optional(S.String),
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestIcebergCatalog" });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.String),
@@ -7382,34 +6914,30 @@ function __c10(j: number): any {
           polarisCatalog: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolarisIcebergCatalog" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           glueId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GlueIcebergCatalog" });
-    case 1:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
           branch: S.optional(S.String),
         }),
       ).annotate({ identifier: "NessieIcebergCatalog" });
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          restIcebergCatalog: S.optional(__S(86, __c10, 6)),
-          polarisIcebergCatalog: S.optional(__S(87, __c10, 7)),
+          restIcebergCatalog: S.optional(__S(371, __c11, 19)),
+          polarisIcebergCatalog: S.optional(__S(372, __c11, 20)),
           catalogType: S.optional(S.String),
-          glueIcebergCatalog: S.optional(__S(88, __c11, 0)),
-          nessieIcebergCatalog: S.optional(__S(89, __c11, 1)),
+          glueIcebergCatalog: S.optional(__S(373, __c11, 21)),
+          nessieIcebergCatalog: S.optional(__S(374, __c11, 22)),
         }),
       ).annotate({ identifier: "IcebergCatalog" });
-    case 3:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           accountKeySecret: S.optional(S.String),
@@ -7420,7 +6948,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "AzureDataLakeStorageIcebergStorage",
       });
-    case 4:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String),
@@ -7430,7 +6958,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleCloudStorageIcebergStorage",
       });
-    case 5:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           secretAccessKeySecret: S.optional(S.String),
@@ -7441,30 +6969,26 @@ function __c11(j: number): any {
           bucket: S.optional(S.String),
         }),
       ).annotate({ identifier: "AmazonS3IcebergStorage" });
-    case 6:
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          azureDataLakeStorageIcebergStorage: S.optional(__S(91, __c11, 3)),
-          googleCloudStorageIcebergStorage: S.optional(__S(92, __c11, 4)),
+          azureDataLakeStorageIcebergStorage: S.optional(__S(376, __c11, 24)),
+          googleCloudStorageIcebergStorage: S.optional(__S(377, __c11, 25)),
           storageType: S.optional(S.String),
-          amazonS3IcebergStorage: S.optional(__S(93, __c11, 5)),
+          amazonS3IcebergStorage: S.optional(__S(378, __c11, 26)),
         }),
       ).annotate({ identifier: "IcebergStorage" });
-    case 7:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           technologyType: S.optional(S.String),
-          catalog: S.optional(__S(90, __c11, 2)),
-          storage: S.optional(__S(94, __c11, 6)),
+          catalog: S.optional(__S(375, __c11, 23)),
+          storage: S.optional(__S(379, __c11, 27)),
         }),
       ).annotate({
         identifier: "GoldengateIcebergConnectionProperties",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           servers: S.optional(S.String),
@@ -7479,10 +7003,10 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoldengateElasticsearchConnectionProperties",
       });
-    case 1:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          additionalAttributes: S.optional(__S(77, __c9, 5)),
+          additionalAttributes: S.optional(__S(362, __c11, 10)),
           username: S.optional(S.String),
           dbSystemId: S.optional(S.String),
           passwordSecretVersion: S.optional(S.String),
@@ -7501,12 +7025,12 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoldengateMysqlConnectionProperties",
       });
-    case 2:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           technologyType: S.optional(S.String),
           password: S.optional(S.String),
-          additionalAttributes: S.optional(__S(77, __c9, 5)),
+          additionalAttributes: S.optional(__S(362, __c11, 10)),
           sslCaFile: S.optional(S.String),
           passwordSecretVersion: S.optional(S.String),
           sslKeyFile: S.optional(S.String),
@@ -7523,7 +7047,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoldengatePostgresqlConnectionProperties",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -7544,7 +7072,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoldengateKafkaSchemaRegistryConnectionProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           port: S.optional(S.Number),
@@ -7552,9 +7080,9 @@ function __c12(j: number): any {
           privateIpAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "KafkaBootstrapServer" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(385, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           keyStorePasswordSecretVersion: S.optional(S.String),
@@ -7573,14 +7101,14 @@ function __c12(j: number): any {
           keyStorePassword: S.optional(S.String),
           clusterId: S.optional(S.String),
           streamPoolId: S.optional(S.String),
-          bootstrapServers: S.optional(__S(101, __c12, 5)),
+          bootstrapServers: S.optional(__S(386, __c12, 2)),
           sslKeyPassword: S.optional(S.String),
           username: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoldengateKafkaConnectionProperties",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.optional(S.String),
@@ -7592,11 +7120,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoldengateAmazonKinesisConnectionProperties",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           trustStorePassword: S.optional(S.String),
@@ -7617,7 +7141,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoldengateRedisConnectionProperties",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           serviceAccountKeyFile: S.optional(S.String),
@@ -7626,7 +7150,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoldengateGooglePubsubConnectionProperties",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           password: S.optional(S.String),
@@ -7639,13 +7163,13 @@ function __c13(j: number): any {
           sslClientKeystashFile: S.optional(S.String),
           username: S.optional(S.String),
           host: S.optional(S.String),
-          additionalAttributes: S.optional(__S(77, __c9, 5)),
+          additionalAttributes: S.optional(__S(362, __c11, 10)),
           technologyType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoldengateDb2ConnectionProperties",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           connectionUrl: S.optional(S.String),
@@ -7660,83 +7184,91 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoldengateSnowflakeConnectionProperties",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          ociObjectStorageConnectionProperties: S.optional(__S(67, __c8, 3)),
-          googleBigQueryConnectionProperties: S.optional(__S(68, __c8, 4)),
-          oracleConnectionProperties: S.optional(__S(69, __c8, 5)),
-          hdfsConnectionProperties: S.optional(__S(70, __c8, 6)),
+          ociObjectStorageConnectionProperties: S.optional(__S(352, __c11, 0)),
+          googleBigQueryConnectionProperties: S.optional(__S(353, __c11, 1)),
+          oracleConnectionProperties: S.optional(__S(354, __c11, 2)),
+          hdfsConnectionProperties: S.optional(__S(355, __c11, 3)),
           lifecycleDetails: S.optional(S.String),
-          microsoftFabricConnectionProperties: S.optional(__S(71, __c8, 7)),
-          oracleAiDataPlatformConnectionProperties: S.optional(__S(72, __c9, 0)),
-          databricksConnectionProperties: S.optional(__S(73, __c9, 1)),
-          azureSynapseAnalyticsConnectionProperties: S.optional(__S(74, __c9, 2)),
-          googleCloudStorageConnectionProperties: S.optional(__S(68, __c8, 4)),
-          azureDataLakeStorageConnectionProperties: S.optional(__S(75, __c9, 3)),
-          microsoftSqlserverConnectionProperties: S.optional(__S(78, __c9, 6)),
-          oracleNosqlConnectionProperties: S.optional(__S(79, __c9, 7)),
+          microsoftFabricConnectionProperties: S.optional(__S(356, __c11, 4)),
+          oracleAiDataPlatformConnectionProperties: S.optional(__S(357, __c11, 5)),
+          databricksConnectionProperties: S.optional(__S(358, __c11, 6)),
+          azureSynapseAnalyticsConnectionProperties: S.optional(__S(359, __c11, 7)),
+          googleCloudStorageConnectionProperties: S.optional(__S(353, __c11, 1)),
+          azureDataLakeStorageConnectionProperties: S.optional(__S(360, __c11, 8)),
+          microsoftSqlserverConnectionProperties: S.optional(__S(363, __c11, 11)),
+          oracleNosqlConnectionProperties: S.optional(__S(364, __c11, 12)),
           lifecycleState: S.optional(S.String),
-          amazonRedshiftConnectionProperties: S.optional(__S(80, __c10, 0)),
-          javaMessageServiceConnectionProperties: S.optional(__S(81, __c10, 1)),
-          genericConnectionProperties: S.optional(__S(82, __c10, 2)),
-          amazonS3ConnectionProperties: S.optional(__S(83, __c10, 3)),
-          mongodbConnectionProperties: S.optional(__S(84, __c10, 4)),
-          goldengateConnectionProperties: S.optional(__S(85, __c10, 5)),
+          amazonRedshiftConnectionProperties: S.optional(__S(365, __c11, 13)),
+          javaMessageServiceConnectionProperties: S.optional(__S(366, __c11, 14)),
+          genericConnectionProperties: S.optional(__S(367, __c11, 15)),
+          amazonS3ConnectionProperties: S.optional(__S(368, __c11, 16)),
+          mongodbConnectionProperties: S.optional(__S(369, __c11, 17)),
+          goldengateConnectionProperties: S.optional(__S(370, __c11, 18)),
           displayName: S.optional(S.String),
-          icebergConnectionProperties: S.optional(__S(95, __c11, 7)),
-          elasticsearchConnectionProperties: S.optional(__S(96, __c12, 0)),
+          icebergConnectionProperties: S.optional(__S(380, __c11, 28)),
+          elasticsearchConnectionProperties: S.optional(__S(381, __c11, 29)),
           routingMethod: S.optional(S.String),
-          mysqlConnectionProperties: S.optional(__S(97, __c12, 1)),
+          mysqlConnectionProperties: S.optional(__S(382, __c11, 30)),
           updateTime: S.optional(S.String),
           description: S.optional(S.String),
-          ingressIpAddresses: S.optional(__S(8, __c1, 0)),
-          postgresqlConnectionProperties: S.optional(__S(98, __c12, 2)),
-          kafkaSchemaRegistryConnectionProperties: S.optional(__S(99, __c12, 3)),
-          kafkaConnectionProperties: S.optional(__S(102, __c12, 6)),
-          amazonKinesisConnectionProperties: S.optional(__S(103, __c12, 7)),
+          ingressIpAddresses: S.optional(__S(2688, __c84, 0)),
+          postgresqlConnectionProperties: S.optional(__S(383, __c11, 31)),
+          kafkaSchemaRegistryConnectionProperties: S.optional(__S(384, __c12, 0)),
+          kafkaConnectionProperties: S.optional(__S(387, __c12, 3)),
+          amazonKinesisConnectionProperties: S.optional(__S(388, __c12, 4)),
           connectionType: S.optional(S.String),
-          redisConnectionProperties: S.optional(__S(104, __c13, 0)),
-          googlePubsubConnectionProperties: S.optional(__S(105, __c13, 1)),
+          redisConnectionProperties: S.optional(__S(389, __c12, 5)),
+          googlePubsubConnectionProperties: S.optional(__S(390, __c12, 6)),
           ocid: S.optional(S.String),
-          db2ConnectionProperties: S.optional(__S(106, __c13, 2)),
-          snowflakeConnectionProperties: S.optional(__S(107, __c13, 3)),
+          db2ConnectionProperties: S.optional(__S(391, __c12, 7)),
+          snowflakeConnectionProperties: S.optional(__S(392, __c12, 8)),
         }),
       ).annotate({
         identifier: "GoldengateConnectionProperties",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           odbNetwork: S.optional(S.String),
-          labels: S.optional(__S(26, __c3, 2)),
+          labels: S.optional(__S(2656, __c83, 0)),
           odbSubnet: S.optional(S.String),
           entitlementId: S.optional(S.String),
           ociUrl: S.optional(S.String),
           gcpOracleZone: S.optional(S.String),
-          properties: S.optional(__S(108, __c13, 4)),
+          properties: S.optional(__S(393, __c12, 9)),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoldengateConnection" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          goldengateConnectionId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(109, __c13, 5).pipe(T.HttpBody())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          goldengateDeploymentId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(461, __c14, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1/{+parent}/goldengateConnections",
+            uri: "v1/{+parent}/goldengateDeployments",
             baseUrl: "https://oracledatabase.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "CreateProjectsLocationsGoldengateConnectionsRequest",
+        identifier: "CreateProjectsLocationsGoldengateDeploymentsRequest",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           administratorGroupId: S.optional(S.String),
@@ -7747,16 +7279,12 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoldengateGroupToRolesMapping",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           adminPasswordSecretVersion: S.optional(S.String),
           identityDomainId: S.optional(S.String),
-          groupRolesMapping: S.optional(__S(111, __c13, 7)),
+          groupRolesMapping: S.optional(__S(448, __c14, 0)),
           oggVersion: S.optional(S.String),
           deployment: S.optional(S.String),
           passwordSecretId: S.optional(S.String),
@@ -7766,7 +7294,7 @@ function __c14(j: number): any {
           certificate: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoldengateOggDeployment" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           diagnosticEndTime: S.optional(S.String),
@@ -7777,7 +7305,7 @@ function __c14(j: number): any {
           diagnosticStartTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentDiagnosticData" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -7787,9 +7315,9 @@ function __c14(j: number): any {
           compartmentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoldengateDeploymentLock" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
     case 4:
+      return S.Array(__S(451, __c14, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           bundleReleaseUpgradePeriodDays: S.optional(S.Number),
@@ -7801,15 +7329,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GoldengateMaintenanceConfig",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           ingressIpAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngressIp" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
     case 7:
+      return S.Array(__S(454, __c14, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           metadataOnly: S.optional(S.Boolean),
@@ -7820,11 +7348,7 @@ function __c14(j: number): any {
           compartmentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoldengateBackupSchedule" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           startHour: S.optional(S.Number),
@@ -7833,23 +7357,23 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GoldengateMaintenanceWindow",
       });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           availabilityDomain: S.optional(S.String),
           faultDomain: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoldengatePlacement" });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
+    case 11:
+      return S.Array(__S(458, __c14, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           loadBalancerSubnetId: S.optional(S.String),
           publicIpAddress: S.optional(S.String),
           lifecycleDetails: S.optional(S.String),
           privateIpAddress: S.optional(S.String),
-          oggData: S.optional(__S(112, __c14, 0)),
+          oggData: S.optional(__S(449, __c14, 1)),
           cpuCoreCount: S.optional(S.Number),
           deploymentRole: S.optional(S.String),
           nextMaintenanceActionType: S.optional(S.String),
@@ -7859,16 +7383,16 @@ function __c15(j: number): any {
           description: S.optional(S.String),
           upgradeRequiredTime: S.optional(S.String),
           deploymentBackupId: S.optional(S.String),
-          nsgIds: S.optional(__S(8, __c1, 0)),
+          nsgIds: S.optional(__S(2688, __c84, 0)),
           licenseModel: S.optional(S.String),
           updateTime: S.optional(S.String),
-          deploymentDiagnosticData: S.optional(__S(113, __c14, 1)),
+          deploymentDiagnosticData: S.optional(__S(450, __c14, 2)),
           lastBackupScheduleTime: S.optional(S.String),
           nextMaintenanceTime: S.optional(S.String),
           nextMaintenanceDescription: S.optional(S.String),
           healthy: S.optional(S.Boolean),
-          locks: S.optional(__S(115, __c14, 3)),
-          maintenanceConfig: S.optional(__S(116, __c14, 4)),
+          locks: S.optional(__S(452, __c14, 4)),
+          maintenanceConfig: S.optional(__S(453, __c14, 5)),
           nextBackupScheduleTime: S.optional(S.String),
           deploymentType: S.optional(S.String),
           isAutoScalingEnabled: S.optional(S.Boolean),
@@ -7878,20 +7402,20 @@ function __c15(j: number): any {
           environmentType: S.optional(S.String),
           isStorageUtilizationLimitExceeded: S.optional(S.Boolean),
           lifecycleState: S.optional(S.String),
-          ingressIps: S.optional(__S(118, __c14, 6)),
+          ingressIps: S.optional(__S(455, __c14, 7)),
           storageUtilizationBytes: S.optional(S.String),
           isPublic: S.optional(S.Boolean),
           isLatestVersion: S.optional(S.Boolean),
-          backupSchedule: S.optional(__S(119, __c14, 7)),
+          backupSchedule: S.optional(__S(456, __c14, 8)),
           lifecycleSubState: S.optional(S.String),
           loadBalancerId: S.optional(S.String),
-          maintenanceWindow: S.optional(__S(120, __c15, 0)),
-          placements: S.optional(__S(122, __c15, 2)),
+          maintenanceWindow: S.optional(__S(457, __c14, 9)),
+          placements: S.optional(__S(459, __c14, 11)),
         }),
       ).annotate({
         identifier: "GoldengateDeploymentProperties",
       });
-    case 4:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           entitlementId: S.optional(S.String),
@@ -7900,48 +7424,23 @@ function __c15(j: number): any {
           displayName: S.optional(S.String),
           ociUrl: S.optional(S.String),
           gcpOracleZone: S.optional(S.String),
-          properties: S.optional(__S(123, __c15, 3)),
+          properties: S.optional(__S(460, __c14, 12)),
           odbNetwork: S.optional(S.String),
           odbSubnet: S.optional(S.String),
-          labels: S.optional(__S(26, __c3, 2)),
+          labels: S.optional(__S(2656, __c83, 0)),
         }),
       ).annotate({ identifier: "GoldengateDeployment" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          goldengateDeploymentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(124, __c15, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/goldengateDeployments",
-            baseUrl: "https://oracledatabase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsGoldengateDeploymentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          entitlementId: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          network: S.optional(S.String),
-          labels: S.optional(__S(26, __c3, 2)),
-          state: S.optional(S.String),
-          gcpOracleZone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OdbNetwork" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           odbNetworkId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(126, __c15, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(512, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7959,21 +7458,26 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
+          entitlementId: S.optional(S.String),
           createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          network: S.optional(S.String),
+          labels: S.optional(__S(2656, __c83, 0)),
           state: S.optional(S.String),
-          labels: S.optional(__S(26, __c3, 2)),
-          purpose: S.optional(S.String),
-          cidrRange: S.optional(S.String),
+          gcpOracleZone: S.optional(S.String),
         }),
-      ).annotate({ identifier: "OdbSubnet" });
-    case 1:
+      ).annotate({ identifier: "OdbNetwork" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           odbSubnetId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c18, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7984,7 +7488,26 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsOdbNetworksOdbSubnetsRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          state: S.optional(S.String),
+          labels: S.optional(__S(2656, __c83, 0)),
+          purpose: S.optional(S.String),
+          cidrRange: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OdbSubnet" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -7999,7 +7522,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAutonomousDatabasesRequest",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -8015,7 +7542,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCloudExadataInfrastructuresRequest",
       });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8031,7 +7562,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCloudVmClustersRequest",
       });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -8046,7 +7581,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsDbSystemsRequest",
       });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8061,7 +7600,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsExadbVmClustersRequest",
       });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8078,7 +7621,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8095,7 +7638,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsGoldengateConnectionAssignmentsRequest",
       });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -8110,7 +7657,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsGoldengateConnectionsRequest",
       });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8125,7 +7676,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsGoldengateDeploymentsRequest",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -8140,7 +7695,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOdbNetworksRequest",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -8155,7 +7714,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOdbNetworksOdbSubnetsRequest",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8169,19 +7732,15 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOperationsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          peerAutonomousDatabase: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FailoverAutonomousDatabaseRequest",
-      });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(142, __c17, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1024, __c32, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8194,7 +7753,19 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          peerAutonomousDatabase: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FailoverAutonomousDatabaseRequest",
+      });
+  }
+}
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8210,7 +7781,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(144, __c18, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8229,7 +7800,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GenerateAutonomousDatabaseWalletResponse",
       });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8243,17 +7818,25 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
-          labels: S.optional(__S(26, __c3, 2)),
+          labels: S.optional(__S(2656, __c83, 0)),
           name: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
+          metadata: S.optional(__S(2176, __c68, 0)),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8267,7 +7850,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsAutonomousDatabasesRequest",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8281,7 +7868,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCloudExadataInfrastructuresRequest",
       });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8297,7 +7888,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8313,7 +7904,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDatabasesRequest",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8327,7 +7922,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDbSystemsRequest",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8341,7 +7940,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsExadbVmClustersRequest",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8355,7 +7958,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsExascaleDbStorageVaultsRequest",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8369,7 +7976,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsGoldengateConnectionAssignmentsRequest",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8383,7 +7994,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsGoldengateConnectionsRequest",
       });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8397,7 +8012,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsGoldengateDeploymentsRequest",
       });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8413,7 +8032,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8429,7 +8048,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOdbNetworksOdbSubnetsRequest",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8443,7 +8066,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8457,25 +8084,29 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsPluggableDatabasesRequest",
       });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(26, __c3, 2)),
+          tags: S.optional(__S(2656, __c83, 0)),
         }),
       ).annotate({ identifier: "DefinedTagValue" });
-    case 4:
-      return S.Record(S.String, __S(163, __c20, 3));
-    case 5:
+    case 1:
+      return S.Record(S.String, __S(1600, __c50, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           pdbDefault: S.optional(S.String),
-          allConnectionStrings: S.optional(__S(26, __c3, 2)),
+          allConnectionStrings: S.optional(__S(2656, __c83, 0)),
           pdbIpDefault: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PluggableDatabaseConnectionStrings",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           openMode: S.optional(S.String),
@@ -8485,42 +8116,42 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PluggableDatabaseNodeLevelDetails",
       });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(1603, __c50, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           containerDatabaseOcid: S.optional(S.String),
           operationsInsightsState: S.optional(S.String),
-          definedTags: S.optional(__S(164, __c20, 4)),
+          definedTags: S.optional(__S(1601, __c50, 1)),
           pdbName: S.optional(S.String),
           lifecycleState: S.optional(S.String),
-          databaseManagementConfig: S.optional(__S(47, __c5, 7)),
+          databaseManagementConfig: S.optional(__S(32, __c1, 0)),
           lifecycleDetails: S.optional(S.String),
-          connectionStrings: S.optional(__S(165, __c20, 5)),
-          pdbNodeLevelDetails: S.optional(__S(167, __c20, 7)),
+          connectionStrings: S.optional(__S(1602, __c50, 2)),
+          pdbNodeLevelDetails: S.optional(__S(1604, __c50, 4)),
           ocid: S.optional(S.String),
           compartmentId: S.optional(S.String),
-          freeformTags: S.optional(__S(26, __c3, 2)),
+          freeformTags: S.optional(__S(2656, __c83, 0)),
           isRestricted: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "PluggableDatabaseProperties",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(1605, __c50, 5)),
           ociUrl: S.optional(S.String),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PluggableDatabase" });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8534,7 +8165,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetRefreshableClonesProjectsLocationsAutonomousDatabasesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
@@ -8543,23 +8174,27 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "AutonomousDatabaseRefreshableClone",
       });
-    case 4:
-      return S.Array(__S(171, __c21, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1633, __c51, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          autonomousDatabaseRefreshableClones: S.optional(__S(172, __c21, 4)),
+          autonomousDatabaseRefreshableClones: S.optional(__S(1634, __c51, 2)),
         }),
       ).annotate({
         identifier: "AutonomousDatabaseRefreshableClones",
       });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(2688, __c84, 0).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -8571,20 +8206,20 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 7:
-      return S.Array(__S(148, __c18, 4));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1120, __c35, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(175, __c21, 7)),
+          locations: S.optional(__S(1665, __c52, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8601,7 +8236,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAutonomousDatabaseBackupsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           isAutomaticBackup: S.optional(S.Boolean),
@@ -8628,28 +8263,59 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "AutonomousDatabaseBackupProperties",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(178, __c22, 2)),
+          properties: S.optional(__S(1697, __c53, 1)),
           autonomousDatabase: S.optional(S.String),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(26, __c3, 2)),
+          labels: S.optional(__S(2656, __c83, 0)),
         }),
       ).annotate({ identifier: "AutonomousDatabaseBackup" });
+    case 3:
+      return S.Array(__S(1698, __c53, 2));
     case 4:
-      return S.Array(__S(179, __c22, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          autonomousDatabaseBackups: S.optional(__S(180, __c22, 4)),
+          autonomousDatabaseBackups: S.optional(__S(1699, __c53, 3)),
         }),
       ).annotate({
         identifier: "ListAutonomousDatabaseBackupsResponse",
       });
-    case 6:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://oracledatabase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -8666,7 +8332,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAutonomousDatabaseCharacterSetsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           characterSet: S.optional(S.String),
@@ -8676,22 +8342,22 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "AutonomousDatabaseCharacterSet",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(183, __c22, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1793, __c56, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          autonomousDatabaseCharacterSets: S.optional(__S(184, __c23, 0)),
+          autonomousDatabaseCharacterSets: S.optional(__S(1794, __c56, 2)),
         }),
       ).annotate({
         identifier: "ListAutonomousDatabaseCharacterSetsResponse",
       });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -8709,19 +8375,23 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAutonomousDatabasesRequest",
       });
-    case 3:
-      return S.Array(__S(27, __c3, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(2607, __c81, 15));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          autonomousDatabases: S.optional(__S(187, __c23, 3)),
-          unreachable: S.optional(__S(8, __c1, 0)),
+          autonomousDatabases: S.optional(__S(1825, __c57, 1)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAutonomousDatabasesResponse",
       });
-    case 5:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8737,7 +8407,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAutonomousDbVersionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dbWorkload: S.optional(S.String),
@@ -8746,22 +8416,22 @@ function __c23(j: number): any {
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutonomousDbVersion" });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1857, __c58, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          autonomousDbVersions: S.optional(__S(191, __c23, 7)),
+          autonomousDbVersions: S.optional(__S(1858, __c58, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAutonomousDbVersionsResponse",
       });
-    case 1:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -8779,19 +8449,23 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCloudExadataInfrastructuresRequest",
       });
+    case 1:
+      return S.Array(__S(3077, __c96, 5));
     case 2:
-      return S.Array(__S(34, __c4, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          cloudExadataInfrastructures: S.optional(__S(194, __c24, 2)),
-          unreachable: S.optional(__S(8, __c1, 0)),
+          cloudExadataInfrastructures: S.optional(__S(1889, __c59, 1)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCloudExadataInfrastructuresResponse",
       });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8807,7 +8481,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCloudExadataInfrastructuresDbServersRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           memorySizeGb: S.optional(S.Number),
@@ -8815,35 +8489,35 @@ function __c24(j: number): any {
           maxMemorySizeGb: S.optional(S.Number),
           state: S.optional(S.String),
           dbNodeStorageSizeGb: S.optional(S.Number),
-          dbNodeIds: S.optional(__S(8, __c1, 0)),
+          dbNodeIds: S.optional(__S(2688, __c84, 0)),
           ocpuCount: S.optional(S.Number),
           maxDbNodeStorageSizeGb: S.optional(S.Number),
           ocid: S.optional(S.String),
           vmCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DbServerProperties" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(197, __c24, 5)),
+          properties: S.optional(__S(1921, __c60, 1)),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DbServer" });
-    case 7:
-      return S.Array(__S(198, __c24, 6));
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(1922, __c60, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dbServers: S.optional(__S(199, __c24, 7)),
+          dbServers: S.optional(__S(1923, __c60, 3)),
         }),
       ).annotate({ identifier: "ListDbServersResponse" });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -8860,19 +8534,23 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCloudVmClustersRequest",
       });
+    case 1:
+      return S.Array(__S(3522, __c110, 2));
     case 2:
-      return S.Array(__S(40, __c5, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(8, __c1, 0)),
-          cloudVmClusters: S.optional(__S(202, __c25, 2)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
+          cloudVmClusters: S.optional(__S(1953, __c61, 1)),
         }),
       ).annotate({
         identifier: "ListCloudVmClustersResponse",
       });
-    case 4:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8888,7 +8566,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCloudVmClustersDbNodesRequest",
       });
-    case 5:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dbNodeStorageSizeGb: S.optional(S.Number),
@@ -8902,27 +8584,27 @@ function __c25(j: number): any {
           ocpuCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DbNodeProperties" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(205, __c25, 5)),
+          properties: S.optional(__S(2016, __c63, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "DbNode" });
-    case 7:
-      return S.Array(__S(206, __c25, 6));
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2017, __c63, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dbNodes: S.optional(__S(207, __c25, 7)),
+          dbNodes: S.optional(__S(2018, __c63, 2)),
         }),
       ).annotate({ identifier: "ListDbNodesResponse" });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8939,7 +8621,7 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDatabaseCharacterSetsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           characterSet: S.optional(S.String),
@@ -8947,18 +8629,22 @@ function __c26(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseCharacterSet" });
+    case 2:
+      return S.Array(__S(2049, __c64, 1));
     case 3:
-      return S.Array(__S(210, __c26, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          databaseCharacterSets: S.optional(__S(211, __c26, 3)),
+          databaseCharacterSets: S.optional(__S(2050, __c64, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDatabaseCharacterSetsResponse",
       });
-    case 5:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8975,18 +8661,18 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDatabasesRequest",
       });
-    case 6:
-      return S.Array(__S(49, __c6, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(68, __c2, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          databases: S.optional(__S(214, __c26, 6)),
+          databases: S.optional(__S(2081, __c65, 1)),
         }),
       ).annotate({ identifier: "ListDatabasesResponse" });
   }
 }
-function __c27(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9012,14 +8698,14 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "StorageSizeDetails" });
     case 2:
-      return S.Array(__S(217, __c27, 1));
+      return S.Array(__S(2113, __c66, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          launchFromBackupStorageSizeDetails: S.optional(__S(218, __c27, 2)),
+          launchFromBackupStorageSizeDetails: S.optional(__S(2114, __c66, 2)),
           storageManagement: S.optional(S.String),
           shapeType: S.optional(S.String),
-          storageSizeDetails: S.optional(__S(218, __c27, 2)),
+          storageSizeDetails: S.optional(__S(2114, __c66, 2)),
         }),
       ).annotate({
         identifier: "DbSystemInitialStorageSizeProperties",
@@ -9027,24 +8713,87 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(219, __c27, 3)),
+          properties: S.optional(__S(2115, __c66, 3)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DbSystemInitialStorageSize",
       });
     case 5:
-      return S.Array(__S(220, __c27, 4));
+      return S.Array(__S(2116, __c66, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dbSystemInitialStorageSizes: S.optional(__S(221, __c27, 5)),
+          dbSystemInitialStorageSizes: S.optional(__S(2117, __c66, 5)),
         }),
       ).annotate({
         identifier: "ListDbSystemInitialStorageSizesResponse",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          totalVmStorageSizeGb: S.optional(S.Number),
+          requestId: S.optional(S.String),
+          totalStorageSizeGb: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ConfigureExascaleCloudExadataInfrastructureRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2144, __c67, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:configureExascale",
+            baseUrl: "https://oracledatabase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigureExascaleProjectsLocationsCloudExadataInfrastructuresRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2176, __c68, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          details: S.optional(__S(2208, __c69, 0)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(2209, __c69, 1)),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(2176, __c68, 0)),
+          response: S.optional(__S(2176, __c68, 0)),
+          done: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -9062,21 +8811,21 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDbSystemsRequest",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(52, __c6, 4));
     case 1:
+      return S.Array(__S(100, __c3, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(8, __c1, 0)),
-          dbSystems: S.optional(__S(224, __c28, 0)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
+          dbSystems: S.optional(__S(2241, __c70, 1)),
         }),
       ).annotate({ identifier: "ListDbSystemsResponse" });
-    case 2:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -9093,7 +8842,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDbSystemShapesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           shape: S.optional(S.String),
@@ -9113,18 +8862,22 @@ function __c28(j: number): any {
           availableCoreCountPerNode: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DbSystemShape" });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2273, __c71, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dbSystemShapes: S.optional(__S(228, __c28, 4)),
+          dbSystemShapes: S.optional(__S(2274, __c71, 2)),
         }),
       ).annotate({
         identifier: "ListDbSystemShapesResponse",
       });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9141,7 +8894,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDbVersionsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           isPreviewDbVersion: S.optional(S.Boolean),
@@ -9151,27 +8904,27 @@ function __c28(j: number): any {
           isLatestForMajorVersion: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DbVersionProperties" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(231, __c28, 7)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DbVersion" });
-    case 1:
-      return S.Array(__S(232, __c29, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dbVersions: S.optional(__S(233, __c29, 1)),
+          properties: S.optional(__S(2305, __c72, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DbVersion" });
+    case 3:
+      return S.Array(__S(2306, __c72, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dbVersions: S.optional(__S(2307, __c72, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDbVersionsResponse" });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -9187,7 +8940,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsEntitlementsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cloudAccountHomeRegion: S.optional(S.String),
@@ -9196,27 +8949,27 @@ function __c29(j: number): any {
           cloudAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudAccountDetails" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           entitlementId: S.optional(S.String),
-          cloudAccountDetails: S.optional(__S(236, __c29, 4)),
+          cloudAccountDetails: S.optional(__S(2337, __c73, 1)),
           state: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Entitlement" });
-    case 6:
-      return S.Array(__S(237, __c29, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(2338, __c73, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          entitlements: S.optional(__S(238, __c29, 6)),
+          entitlements: S.optional(__S(2339, __c73, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListEntitlementsResponse" });
   }
 }
-function __c30(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9237,18 +8990,22 @@ function __c30(j: number): any {
         identifier: "ListProjectsLocationsExadbVmClustersRequest",
       });
     case 1:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(163, __c5, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(8, __c1, 0)),
-          exadbVmClusters: S.optional(__S(241, __c30, 1)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
+          exadbVmClusters: S.optional(__S(2369, __c74, 1)),
         }),
       ).annotate({
         identifier: "ListExadbVmClustersResponse",
       });
-    case 3:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -9264,7 +9021,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsExadbVmClustersDbNodesRequest",
       });
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -9282,19 +9043,23 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsExascaleDbStorageVaultsRequest",
       });
-    case 5:
-      return S.Array(__S(62, __c7, 6));
-    case 6:
+    case 1:
+      return S.Array(__S(227, __c7, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(8, __c1, 0)),
-          exascaleDbStorageVaults: S.optional(__S(245, __c30, 5)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
+          exascaleDbStorageVaults: S.optional(__S(2433, __c76, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListExascaleDbStorageVaultsResponse",
       });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -9311,27 +9076,27 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsGiVersionsRequest",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "GiVersion" });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
     case 2:
+      return S.Array(__S(2465, __c77, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          giVersions: S.optional(__S(249, __c31, 1)),
+          giVersions: S.optional(__S(2466, __c77, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListGiVersionsResponse" });
-    case 3:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9348,7 +9113,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsGiVersionsMinorVersionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           gridImageId: S.optional(S.String),
@@ -9356,18 +9121,22 @@ function __c31(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "MinorVersion" });
-    case 5:
-      return S.Array(__S(252, __c31, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2497, __c78, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          minorVersions: S.optional(__S(253, __c31, 5)),
+          minorVersions: S.optional(__S(2498, __c78, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListMinorVersionsResponse",
       });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -9385,23 +9154,294 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsGoldengateConnectionAssignmentsRequest",
       });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(65, __c8, 1));
     case 1:
+      return S.Array(__S(289, __c9, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(8, __c1, 0)),
-          goldengateConnectionAssignments: S.optional(__S(256, __c32, 0)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
+          goldengateConnectionAssignments: S.optional(__S(2529, __c79, 1)),
         }),
       ).annotate({
         identifier: "ListGoldengateConnectionAssignmentsResponse",
       });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          autonomousDatabaseId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2607, __c81, 15).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/autonomousDatabases",
+            baseUrl: "https://oracledatabase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAutonomousDatabasesRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ordsVersion: S.optional(S.String),
+          apexVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutonomousDatabaseApex" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hours: S.optional(S.Number),
+          nanos: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TimeOfDay" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dayOfWeek: S.optional(S.String),
+          stopTime: S.optional(__S(2593, __c81, 1)),
+          startTime: S.optional(__S(2593, __c81, 1)),
+        }),
+      ).annotate({
+        identifier: "ScheduledOperationDetails",
+      });
+    case 3:
+      return S.Array(__S(2594, __c81, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          kmsKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionKey" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionKey: S.optional(__S(2596, __c81, 4)),
+          activationTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EncryptionKeyHistoryEntry",
+      });
+    case 6:
+      return S.Array(__S(2597, __c81, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          lifecycleDetails: S.optional(S.String),
+          disasterRecoveryRoleChangedTime: S.optional(S.String),
+          dataGuardRoleChangedTime: S.optional(S.String),
+          lagTimeDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutonomousDatabaseStandbySummary",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          high: S.optional(S.String),
+          low: S.optional(S.String),
+          medium: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AllConnectionStrings" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          syntaxFormat: S.optional(S.String),
+          consumerGroup: S.optional(S.String),
+          protocol: S.optional(S.String),
+          displayName: S.optional(S.String),
+          sessionMode: S.optional(S.String),
+          isRegional: S.optional(S.Boolean),
+          tlsAuthentication: S.optional(S.String),
+          hostFormat: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseConnectionStringProfile",
+      });
+    case 10:
+      return S.Array(__S(2601, __c81, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          allConnectionStrings: S.optional(__S(2600, __c81, 8)),
+          profiles: S.optional(__S(2602, __c81, 10)),
+          high: S.optional(S.String),
+          low: S.optional(S.String),
+          medium: S.optional(S.String),
+          dedicated: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutonomousDatabaseConnectionStrings",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          databaseTransformsUri: S.optional(S.String),
+          mongoDbUri: S.optional(S.String),
+          graphStudioUri: S.optional(S.String),
+          machineLearningUserManagementUri: S.optional(S.String),
+          sqlDevWebUri: S.optional(S.String),
+          machineLearningNotebookUri: S.optional(S.String),
+          apexUri: S.optional(S.String),
+          ordsUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutonomousDatabaseConnectionUrls",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          dbEdition: S.optional(S.String),
+          availableUpgradeVersions: S.optional(__S(2688, __c84, 0)),
+          supportedCloneRegions: S.optional(__S(2688, __c84, 0)),
+          nextLongTermBackupTime: S.optional(S.String),
+          usedDataStorageSizeTbs: S.optional(S.Number),
+          isLocalDataGuardEnabled: S.optional(S.Boolean),
+          privateEndpoint: S.optional(S.String),
+          maintenanceEndTime: S.optional(S.String),
+          permissionLevel: S.optional(S.String),
+          dataStorageSizeGb: S.optional(S.Number),
+          privateEndpointLabel: S.optional(S.String),
+          backupRetentionPeriodDays: S.optional(S.Number),
+          refreshableState: S.optional(S.String),
+          refreshableMode: S.optional(S.String),
+          failedDataRecoveryDuration: S.optional(S.String),
+          disasterRecoveryRoleChangedTime: S.optional(S.String),
+          maintenanceBeginTime: S.optional(S.String),
+          apexDetails: S.optional(__S(2592, __c81, 0)),
+          scheduledOperationDetails: S.optional(__S(2595, __c81, 3)),
+          encryptionKeyHistoryEntries: S.optional(__S(2598, __c81, 6)),
+          dbVersion: S.optional(S.String),
+          memoryTableGbs: S.optional(S.Number),
+          mtlsConnectionRequired: S.optional(S.Boolean),
+          privateEndpointIp: S.optional(S.String),
+          databaseManagementState: S.optional(S.String),
+          localDisasterRecoveryType: S.optional(S.String),
+          customerContacts: S.optional(__S(2625, __c82, 1)),
+          computeCount: S.optional(S.Number),
+          autonomousContainerDatabaseId: S.optional(S.String),
+          ocid: S.optional(S.String),
+          memoryPerOracleComputeUnitGbs: S.optional(S.Number),
+          serviceAgentEmail: S.optional(S.String),
+          lifecycleDetails: S.optional(S.String),
+          actualUsedDataStorageSizeTb: S.optional(S.Number),
+          state: S.optional(S.String),
+          dbWorkload: S.optional(S.String),
+          arePrimaryAllowlistedIpsUsed: S.optional(S.Boolean),
+          dataStorageSizeTb: S.optional(S.Number),
+          localStandbyDb: S.optional(__S(2599, __c81, 7)),
+          localAdgAutoFailoverMaxDataLossLimitDuration: S.optional(S.Number),
+          connectionStrings: S.optional(__S(2603, __c81, 11)),
+          totalAutoBackupStorageSizeGbs: S.optional(S.Number),
+          peerDbIds: S.optional(__S(2688, __c84, 0)),
+          isStorageAutoScalingEnabled: S.optional(S.Boolean),
+          characterSet: S.optional(S.String),
+          dataSafeState: S.optional(S.String),
+          allocatedStorageSizeTb: S.optional(S.Number),
+          secretId: S.optional(S.String),
+          role: S.optional(S.String),
+          isAutoScalingEnabled: S.optional(S.Boolean),
+          dataGuardRoleChangedTime: S.optional(S.String),
+          ociUrl: S.optional(S.String),
+          encryptionKey: S.optional(__S(2596, __c81, 4)),
+          openMode: S.optional(S.String),
+          refreshableClone: S.optional(S.Boolean),
+          operationsInsightsState: S.optional(S.String),
+          cpuCoreCount: S.optional(S.Number),
+          nCharacterSet: S.optional(S.String),
+          connectionUrls: S.optional(__S(2604, __c81, 12)),
+          sqlWebDeveloperUrl: S.optional(S.String),
+          allowlistedIps: S.optional(__S(2688, __c84, 0)),
+          vaultId: S.optional(S.String),
+          maintenanceScheduleType: S.optional(S.String),
+          localDataGuardEnabled: S.optional(S.Boolean),
+          localAdgAutoFailoverMaxDataLossLimit: S.optional(S.Number),
+          licenseType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutonomousDatabaseProperties",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          autoRefreshFrequencySeconds: S.optional(S.Number),
+          autoRefreshPointLagSeconds: S.optional(S.Number),
+          autoRefreshStartTime: S.optional(S.String),
+          refreshableMode: S.optional(S.String),
+          cloneType: S.optional(S.String),
+          sourceType: S.optional(S.String),
+          autonomousDatabase: S.optional(S.String),
+          autonomousDatabaseBackup: S.optional(S.String),
+          backupTime: S.optional(S.String),
+          automaticBackupsReplicationEnabled: S.optional(S.Boolean),
+          useLatestAvailableBackup: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SourceConfig" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          properties: S.optional(__S(2605, __c81, 13)),
+          cidr: S.optional(S.String),
+          sourceConfig: S.optional(__S(2606, __c81, 14)),
+          labels: S.optional(__S(2656, __c83, 0)),
+          adminPassword: S.optional(S.String),
+          database: S.optional(S.String),
+          odbNetwork: S.optional(S.String),
+          disasterRecoverySupportedLocations: S.optional(__S(2688, __c84, 0)),
+          odbSubnet: S.optional(S.String),
+          adminPasswordSecretVersion: S.optional(S.String),
+          name: S.optional(S.String),
+          peerAutonomousDatabases: S.optional(__S(2688, __c84, 0)),
+          displayName: S.optional(S.String),
+          network: S.optional(S.String),
+          entitlementId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutonomousDatabase" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomerContact" });
+    case 1:
+      return S.Array(__S(2624, __c82, 0));
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9419,19 +9459,23 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsGoldengateConnectionsRequest",
       });
-    case 3:
-      return S.Array(__S(109, __c13, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(394, __c12, 10));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(8, __c1, 0)),
-          goldengateConnections: S.optional(__S(259, __c32, 3)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
+          goldengateConnections: S.optional(__S(2721, __c85, 1)),
         }),
       ).annotate({
         identifier: "ListGoldengateConnectionsResponse",
       });
-    case 5:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9448,31 +9492,31 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsGoldengateConnectionTypesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          technologyTypes: S.optional(__S(8, __c1, 0)),
+          technologyTypes: S.optional(__S(2688, __c84, 0)),
           connectionType: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoldengateConnectionType" });
-    case 7:
-      return S.Array(__S(262, __c32, 6));
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2753, __c86, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          goldengateConnectionTypes: S.optional(__S(263, __c32, 7)),
-          unreachable: S.optional(__S(8, __c1, 0)),
+          goldengateConnectionTypes: S.optional(__S(2754, __c86, 2)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({
         identifier: "ListGoldengateConnectionTypesResponse",
       });
-    case 1:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9488,7 +9532,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsGoldengateDeploymentEnvironmentsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
@@ -9506,19 +9550,23 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GoldengateDeploymentEnvironment",
       });
+    case 2:
+      return S.Array(__S(2785, __c87, 1));
     case 3:
-      return S.Array(__S(266, __c33, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          goldengateDeploymentEnvironments: S.optional(__S(267, __c33, 3)),
+          goldengateDeploymentEnvironments: S.optional(__S(2786, __c87, 2)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(8, __c1, 0)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({
         identifier: "ListGoldengateDeploymentEnvironmentsResponse",
       });
-    case 5:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -9536,21 +9584,21 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsGoldengateDeploymentsRequest",
       });
-    case 6:
-      return S.Array(__S(124, __c15, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(461, __c14, 13));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(8, __c1, 0)),
-          goldengateDeployments: S.optional(__S(270, __c33, 6)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
+          goldengateDeployments: S.optional(__S(2817, __c88, 1)),
         }),
       ).annotate({
         identifier: "ListGoldengateDeploymentsResponse",
       });
   }
 }
-function __c34(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9578,27 +9626,31 @@ function __c34(j: number): any {
           displayName: S.optional(S.String),
           oggVersion: S.optional(S.String),
           supportedTechnologiesUrl: S.optional(S.String),
-          supportedCapabilities: S.optional(__S(8, __c1, 0)),
-          targetTechnologies: S.optional(__S(8, __c1, 0)),
+          supportedCapabilities: S.optional(__S(2688, __c84, 0)),
+          targetTechnologies: S.optional(__S(2688, __c84, 0)),
           category: S.optional(S.String),
-          connectionTypes: S.optional(__S(8, __c1, 0)),
+          connectionTypes: S.optional(__S(2688, __c84, 0)),
           name: S.optional(S.String),
-          sourceTechnologies: S.optional(__S(8, __c1, 0)),
+          sourceTechnologies: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({ identifier: "GoldengateDeploymentType" });
     case 2:
-      return S.Array(__S(273, __c34, 1));
+      return S.Array(__S(2849, __c89, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(8, __c1, 0)),
-          goldengateDeploymentTypes: S.optional(__S(274, __c34, 2)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
+          goldengateDeploymentTypes: S.optional(__S(2850, __c89, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListGoldengateDeploymentTypesResponse",
       });
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9615,7 +9667,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsGoldengateDeploymentVersionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           securityFix: S.optional(S.Boolean),
@@ -9628,33 +9680,33 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GoldengateDeploymentVersionProperties",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(277, __c34, 5)),
+          properties: S.optional(__S(2881, __c90, 1)),
           name: S.optional(S.String),
           ocid: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoldengateDeploymentVersion",
       });
-    case 7:
-      return S.Array(__S(278, __c34, 6));
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(2882, __c90, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          goldengateDeploymentVersions: S.optional(__S(279, __c34, 7)),
-          unreachable: S.optional(__S(8, __c1, 0)),
+          goldengateDeploymentVersions: S.optional(__S(2883, __c90, 3)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListGoldengateDeploymentVersionsResponse",
       });
-    case 1:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -9672,17 +9724,21 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOdbNetworksRequest",
       });
+    case 1:
+      return S.Array(__S(512, __c16, 0));
     case 2:
-      return S.Array(__S(126, __c15, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          odbNetworks: S.optional(__S(282, __c35, 2)),
-          unreachable: S.optional(__S(8, __c1, 0)),
+          odbNetworks: S.optional(__S(2913, __c91, 1)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOdbNetworksResponse" });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -9700,17 +9756,21 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOdbNetworksOdbSubnetsRequest",
       });
-    case 5:
-      return S.Array(__S(128, __c16, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(8, __c1, 0)),
-          odbSubnets: S.optional(__S(285, __c35, 5)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
+          odbSubnets: S.optional(__S(2945, __c92, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOdbSubnetsResponse" });
-    case 7:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9728,21 +9788,21 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
+      return S.Array(__S(2210, __c69, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(8, __c1, 0)),
-          operations: S.optional(__S(288, __c36, 0)),
+          unreachable: S.optional(__S(2688, __c84, 0)),
+          operations: S.optional(__S(2977, __c93, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 2:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9759,24 +9819,132 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsPluggableDatabasesRequest",
       });
-    case 3:
-      return S.Array(__S(169, __c21, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(1606, __c50, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          pluggableDatabases: S.optional(__S(291, __c36, 3)),
+          pluggableDatabases: S.optional(__S(3009, __c94, 1)),
         }),
       ).annotate({
         identifier: "ListPluggableDatabasesResponse",
       });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudExadataInfrastructureId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3077, __c96, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/cloudExadataInfrastructures",
+            baseUrl: "https://oracledatabase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCloudExadataInfrastructuresRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          hoursOfDay: S.optional(__S(3072, __c96, 0)),
+          weeksOfMonth: S.optional(__S(3072, __c96, 0)),
+          months: S.optional(__S(3073, __c96, 1)),
+          preference: S.optional(S.String),
+          patchingMode: S.optional(S.String),
+          leadTimeWeek: S.optional(S.Number),
+          customActionTimeoutMins: S.optional(S.Number),
+          daysOfWeek: S.optional(__S(3073, __c96, 1)),
+          isCustomActionTimeoutEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MaintenanceWindow" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          availableVmStorageSizeGb: S.optional(S.Number),
+          totalVmStorageSizeGb: S.optional(S.Number),
+          totalStorageSizeGb: S.optional(S.Number),
+          availableStorageSizeGb: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ExascaleConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dbServerVersion: S.optional(S.String),
+          maxDbNodeStorageSizeGb: S.optional(S.Number),
+          dbNodeStorageSizeGb: S.optional(S.Number),
+          computeCount: S.optional(S.Number),
+          totalStorageSizeGb: S.optional(S.Number),
+          monthlyStorageServerVersion: S.optional(S.String),
+          shape: S.optional(S.String),
+          computeModel: S.optional(S.String),
+          state: S.optional(S.String),
+          maintenanceWindow: S.optional(__S(3074, __c96, 2)),
+          storageServerVersion: S.optional(S.String),
+          nextMaintenanceRunId: S.optional(S.String),
+          storageServerType: S.optional(S.String),
+          memorySizeGb: S.optional(S.Number),
+          availableStorageSizeGb: S.optional(S.Number),
+          dataStorageSizeTb: S.optional(S.Number),
+          databaseServerType: S.optional(S.String),
+          nextMaintenanceRunTime: S.optional(S.String),
+          maxDataStorageTb: S.optional(S.Number),
+          maxCpuCount: S.optional(S.Number),
+          activatedStorageCount: S.optional(S.Number),
+          additionalStorageCount: S.optional(S.Number),
+          ociUrl: S.optional(S.String),
+          exascaleConfig: S.optional(__S(3075, __c96, 3)),
+          cpuCount: S.optional(S.Number),
+          customerContacts: S.optional(__S(2625, __c82, 1)),
+          maxMemoryGb: S.optional(S.Number),
+          ocid: S.optional(S.String),
+          monthlyDbServerVersion: S.optional(S.String),
+          nextSecurityMaintenanceRunTime: S.optional(S.String),
+          storageCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CloudExadataInfrastructureProperties",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: S.optional(__S(3076, __c96, 4)),
+          createTime: S.optional(S.String),
+          gcpOracleZone: S.optional(S.String),
+          labels: S.optional(__S(2656, __c83, 0)),
+          entitlementId: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CloudExadataInfrastructure",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2607, __c81, 15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9787,13 +9955,17 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsAutonomousDatabasesRequest",
       });
-    case 6:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(163, __c5, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9804,7 +9976,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsExadbVmClustersRequest",
       });
-    case 7:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           refreshCutoffTime: S.optional(S.String),
@@ -9812,15 +9988,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "RefreshAutonomousDatabaseRequest",
       });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(295, __c36, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(3168, __c99, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9831,20 +10003,24 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "RefreshProjectsLocationsAutonomousDatabasesRequest",
       });
-    case 1:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          hostnames: S.optional(__S(8, __c1, 0)),
+          hostnames: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({
         identifier: "RemoveVirtualMachineExadbVmClusterRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(297, __c37, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(3200, __c100, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9855,11 +10031,15 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "RemoveVirtualMachineProjectsLocationsExadbVmClustersRequest",
       });
-    case 3:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9870,7 +10050,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "RestartProjectsLocationsAutonomousDatabasesRequest",
       });
-    case 4:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           restoreTime: S.optional(S.String),
@@ -9878,11 +10062,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "RestoreAutonomousDatabaseRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(300, __c37, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(3264, __c102, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9893,11 +10077,15 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "RestoreProjectsLocationsAutonomousDatabasesRequest",
       });
-    case 6:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9908,11 +10096,15 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "StartProjectsLocationsAutonomousDatabasesRequest",
       });
-    case 7:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9925,13 +10117,13 @@ function __c37(j: number): any {
       });
   }
 }
-function __c38(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9942,11 +10134,15 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "StopProjectsLocationsAutonomousDatabasesRequest",
       });
-    case 1:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9957,11 +10153,131 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "StopProjectsLocationsGoldengateDeploymentsRequest",
       });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          cloudVmClusterId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3522, __c110, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/cloudVmClusters",
+            baseUrl: "https://oracledatabase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCloudVmClustersRequest",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeZone" });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connectionState: S.optional(S.String),
+          serviceAgentEmail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IdentityConnector" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          incidentLogsEnabled: S.optional(S.Boolean),
+          healthMonitoringEnabled: S.optional(S.Boolean),
+          diagnosticsEventsEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DataCollectionOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hostname: S.optional(S.String),
+          dbNodeStorageSizeGb: S.optional(S.Number),
+          storageSizeGb: S.optional(S.Number),
+          storageManagementType: S.optional(S.String),
+          ocid: S.optional(S.String),
+          sshPublicKeys: S.optional(__S(2688, __c84, 0)),
+          giVersion: S.optional(S.String),
+          memorySizeGb: S.optional(S.Number),
+          localBackupEnabled: S.optional(S.Boolean),
+          cpuCoreCount: S.optional(S.Number),
+          scanDns: S.optional(S.String),
+          dataStorageSizeTb: S.optional(S.Number),
+          clusterName: S.optional(S.String),
+          ocpuCount: S.optional(S.Number),
+          computeModel: S.optional(S.String),
+          domain: S.optional(S.String),
+          ociUrl: S.optional(S.String),
+          sparseDiskgroupEnabled: S.optional(S.Boolean),
+          scanListenerPortTcp: S.optional(S.Number),
+          diskRedundancy: S.optional(S.String),
+          scanIpIds: S.optional(__S(2688, __c84, 0)),
+          scanDnsRecordId: S.optional(S.String),
+          vmFileSystemStorageType: S.optional(S.String),
+          timeZone: S.optional(__S(3456, __c108, 0)),
+          nodeCount: S.optional(S.Number),
+          dbServerOcids: S.optional(__S(2688, __c84, 0)),
+          licenseType: S.optional(S.String),
+          shape: S.optional(S.String),
+          compartmentId: S.optional(S.String),
+          diagnosticsDataCollectionOptions: S.optional(__S(3520, __c110, 0)),
+          vmBackupStorageType: S.optional(S.String),
+          systemVersion: S.optional(S.String),
+          state: S.optional(S.String),
+          dnsListenerIp: S.optional(S.String),
+          hostnamePrefix: S.optional(S.String),
+          scanListenerPortTcpSsl: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CloudVmClusterProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
+          exadataInfrastructure: S.optional(S.String),
+          exascaleDbStorageVault: S.optional(S.String),
+          identityConnector: S.optional(__S(3488, __c109, 0)),
+          createTime: S.optional(S.String),
+          properties: S.optional(__S(3521, __c110, 1)),
+          name: S.optional(S.String),
+          gcpOracleZone: S.optional(S.String),
+          odbNetwork: S.optional(S.String),
+          labels: S.optional(__S(2656, __c83, 0)),
+          backupSubnetCidr: S.optional(S.String),
+          cidr: S.optional(S.String),
+          displayName: S.optional(S.String),
+          network: S.optional(S.String),
+          odbSubnet: S.optional(S.String),
+          backupOdbSubnet: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudVmCluster" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(142, __c17, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1024, __c32, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9972,7 +10288,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "SwitchoverProjectsLocationsAutonomousDatabasesRequest",
       });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -9980,11 +10300,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "TestGoldengateConnectionAssignmentRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(307, __c38, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3584, __c112, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9995,7 +10315,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "TestProjectsLocationsGoldengateConnectionAssignmentsRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -10006,21 +10326,20 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "TestConnectionAssignmentError",
       });
-    case 6:
-      return S.Array(__S(309, __c38, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(3586, __c112, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           resultType: S.optional(S.String),
-          error: S.optional(__S(309, __c38, 5)),
-          errors: S.optional(__S(310, __c38, 6)),
+          error: S.optional(__S(3586, __c112, 2)),
+          errors: S.optional(__S(3587, __c112, 3)),
         }),
       ).annotate({
         identifier: "TestGoldengateConnectionAssignmentResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

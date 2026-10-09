@@ -513,8 +513,8 @@ export const activateCuratorsCuratedPackages: API.OperationMethod<
   ActivateCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ActivateCuratorsCuratedPackagesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CuratedPackage>,
+  input: __S(112, __c7, 0) as any as S.Schema<ActivateCuratorsCuratedPackagesRequest>,
+  output: __S(189, __c11, 13) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -533,8 +533,8 @@ export const activateCuratorsDataSegments: API.OperationMethod<
   ActivateCuratorsDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ActivateCuratorsDataSegmentsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DataSegment>,
+  input: __S(192, __c12, 0) as any as S.Schema<ActivateCuratorsDataSegmentsRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -553,8 +553,8 @@ export const createCuratorsCuratedPackages: API.OperationMethod<
   CreateCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateCuratorsCuratedPackagesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CuratedPackage>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreateCuratorsCuratedPackagesRequest>,
+  output: __S(189, __c11, 13) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -573,8 +573,8 @@ export const createCuratorsDataSegments: API.OperationMethod<
   CreateCuratorsDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateCuratorsDataSegmentsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DataSegment>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateCuratorsDataSegmentsRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -593,8 +593,8 @@ export const deactivateCuratorsCuratedPackages: API.OperationMethod<
   DeactivateCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeactivateCuratorsCuratedPackagesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CuratedPackage>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeactivateCuratorsCuratedPackagesRequest>,
+  output: __S(189, __c11, 13) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -613,8 +613,8 @@ export const deactivateCuratorsDataSegments: API.OperationMethod<
   DeactivateCuratorsDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeactivateCuratorsDataSegmentsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DataSegment>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeactivateCuratorsDataSegmentsRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -628,8 +628,8 @@ export const getCuratorsCuratedPackages: API.OperationMethod<
   GetCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetCuratorsCuratedPackagesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CuratedPackage>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetCuratorsCuratedPackagesRequest>,
+  output: __S(189, __c11, 13) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -643,8 +643,8 @@ export const getCuratorsDataSegments: API.OperationMethod<
   GetCuratorsDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetCuratorsDataSegmentsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DataSegment>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetCuratorsDataSegmentsRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -659,8 +659,8 @@ export const listCuratorsCuratedPackages: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCuratedPackagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListCuratorsCuratedPackagesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListCuratedPackagesResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListCuratorsCuratedPackagesRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<ListCuratedPackagesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -676,8 +676,8 @@ export const listCuratorsDataSegments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDataSegmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListCuratorsDataSegmentsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListDataSegmentsResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListCuratorsDataSegmentsRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<ListDataSegmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -693,8 +693,8 @@ export const listMediaPlanners: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMediaPlannersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListMediaPlannersRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListMediaPlannersResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListMediaPlannersRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<ListMediaPlannersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -714,8 +714,8 @@ export const patchCuratorsCuratedPackages: API.OperationMethod<
   PatchCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<PatchCuratorsCuratedPackagesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CuratedPackage>,
+  input: __S(80, __c5, 0) as any as S.Schema<PatchCuratorsCuratedPackagesRequest>,
+  output: __S(189, __c11, 13) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -734,8 +734,8 @@ export const patchCuratorsDataSegments: API.OperationMethod<
   PatchCuratorsDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<PatchCuratorsDataSegmentsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DataSegment>,
+  input: __S(96, __c6, 0) as any as S.Schema<PatchCuratorsDataSegmentsRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -743,262 +743,6 @@ export const patchCuratorsDataSegments: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ActivateCuratedPackageRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+name}:activate",
-            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateCuratorsCuratedPackagesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nanos: S.optional(S.Number),
-          units: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Money" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowlistedMediaPlanners: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "AccessControlSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          width: S.optional(S.String),
-          type: S.optional(S.String),
-          height: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdSize" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          videoPlcmtTypes: S.optional(__S(7, __c0, 7)),
-          selectionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VideoPlcmtTargeting" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          minimumHeight: S.optional(S.String),
-          minimumWidth: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VideoPlayerSizeTargeting" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          plcmtTargeting: S.optional(__S(8, __c1, 0)),
-          includedPlaybackMethods: S.optional(__S(7, __c0, 7)),
-          includedMaximumAdDurationTargeting: S.optional(S.String),
-          includedMimeTypes: S.optional(__S(7, __c0, 7)),
-          includedPlayerSizeTargeting: S.optional(__S(9, __c1, 1)),
-          minimumPredictedCompletionRatePercentage: S.optional(S.String),
-          includedContentDeliveryMethod: S.optional(S.String),
-          includedPositionTypes: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "PackageVideoTargeting" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          targetedCriteriaIds: S.optional(__S(3, __c0, 3)),
-          excludedCriteriaIds: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "CriteriaTargeting" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          selectionType: S.optional(S.String),
-          values: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "StringTargetingDimension" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          excludedTaxonomyIds: S.optional(__S(3, __c0, 3)),
-          targetedTaxonomyIds: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "TaxonomyTargeting" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          audienceTargeting: S.optional(__S(13, __c1, 5)),
-          videoAndAudioSignalsTargeting: S.optional(__S(12, __c1, 4)),
-          contentTargeting: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "PackagePublisherProvidedSignalsTargeting",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          includedMobileAppCategoryTargeting: S.optional(__S(3, __c0, 3)),
-          uriTargeting: S.optional(__S(12, __c1, 4)),
-          mobileAppTargeting: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "PackagePlacementTargeting",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          includedAdSizes: S.optional(__S(6, __c0, 6)),
-          includedEnvironment: S.optional(S.String),
-          videoTargeting: S.optional(__S(10, __c1, 2)),
-          includedDataSegments: S.optional(__S(3, __c0, 3)),
-          includedNativeInventoryTypes: S.optional(__S(7, __c0, 7)),
-          geoTargeting: S.optional(__S(11, __c1, 3)),
-          includedDeviceTypes: S.optional(__S(7, __c0, 7)),
-          includedRestrictedCategories: S.optional(__S(7, __c0, 7)),
-          includedAcceleratedMobilePageType: S.optional(S.String),
-          includedRewardedType: S.optional(S.String),
-          minimumPredictedViewabilityPercentage: S.optional(S.String),
-          publisherTargeting: S.optional(__S(12, __c1, 4)),
-          languageTargeting: S.optional(__S(12, __c1, 4)),
-          minimumPredictedClickThroughRatePercentageMillis: S.optional(S.String),
-          publisherProvidedSignalsTargeting: S.optional(__S(14, __c1, 6)),
-          includedOpenMeasurementTypes: S.optional(__S(7, __c0, 7)),
-          includedCreativeFormat: S.optional(S.String),
-          placementTargeting: S.optional(__S(15, __c1, 7)),
-          includedAuthorizedSellerStatuses: S.optional(__S(7, __c0, 7)),
-          verticalTargeting: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "PackageTargeting" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          floorPriceCpm: S.optional(__S(2, __c0, 2)),
-          millipercentOfMediaFee: S.optional(S.String),
-          name: S.optional(S.String),
-          feeCpm: S.optional(__S(2, __c0, 2)),
-          state: S.optional(S.String),
-          createTime: S.optional(S.String),
-          accessSettings: S.optional(__S(4, __c0, 4)),
-          targeting: S.optional(__S(16, __c2, 0)),
-          displayName: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          curationFeeVisibility: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CuratedPackage" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+name}:activate",
-            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateCuratorsDataSegmentsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          millipercentOfMediaFee: S.optional(S.String),
-          cpmFee: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          state: S.optional(S.String),
-          createTime: S.optional(S.String),
-          userListId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataSegment" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/curatedPackages",
-            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCuratorsCuratedPackagesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/dataSegments",
-            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCuratorsDataSegmentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+name}:deactivate",
-            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeactivateCuratorsCuratedPackagesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+name}:deactivate",
-            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeactivateCuratorsDataSegmentsRequest",
-      });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1014,7 +758,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetCuratorsCuratedPackagesRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1028,7 +776,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetCuratorsDataSegmentsRequest",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1045,18 +797,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListCuratorsCuratedPackagesRequest",
       });
-    case 3:
-      return S.Array(__S(17, __c2, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(189, __c11, 13));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          curatedPackages: S.optional(__S(27, __c3, 3)),
+          curatedPackages: S.optional(__S(33, __c2, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCuratedPackagesResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1072,12 +828,12 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListCuratorsDataSegmentsRequest",
       });
-    case 6:
-      return S.Array(__S(19, __c2, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(208, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          dataSegments: S.optional(__S(30, __c3, 6)),
+          dataSegments: S.optional(__S(49, __c3, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDataSegmentsResponse" });
@@ -1104,27 +860,31 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           accountId: S.optional(S.String),
-          ancestorNames: S.optional(__S(3, __c0, 3)),
+          ancestorNames: S.optional(__S(160, __c10, 0)),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "MediaPlanner" });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(65, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mediaPlanners: S.optional(__S(34, __c4, 2)),
+          mediaPlanners: S.optional(__S(66, __c4, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListMediaPlannersResponse",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(189, __c11, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1135,12 +895,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PatchCuratorsCuratedPackagesRequest",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(208, __c13, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1153,7 +917,294 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(144, __c9, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+name}:activate",
+            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateCuratorsCuratedPackagesRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nanos: S.optional(S.Number),
+          units: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Money" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ActivateCuratedPackageRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowlistedMediaPlanners: S.optional(__S(160, __c10, 0)),
+        }),
+      ).annotate({ identifier: "AccessControlSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          width: S.optional(S.String),
+          type: S.optional(S.String),
+          height: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdSize" });
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          videoPlcmtTypes: S.optional(__S(179, __c11, 3)),
+          selectionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VideoPlcmtTargeting" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          minimumHeight: S.optional(S.String),
+          minimumWidth: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VideoPlayerSizeTargeting" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          plcmtTargeting: S.optional(__S(180, __c11, 4)),
+          includedPlaybackMethods: S.optional(__S(179, __c11, 3)),
+          includedMaximumAdDurationTargeting: S.optional(S.String),
+          includedMimeTypes: S.optional(__S(179, __c11, 3)),
+          includedPlayerSizeTargeting: S.optional(__S(181, __c11, 5)),
+          minimumPredictedCompletionRatePercentage: S.optional(S.String),
+          includedContentDeliveryMethod: S.optional(S.String),
+          includedPositionTypes: S.optional(__S(179, __c11, 3)),
+        }),
+      ).annotate({ identifier: "PackageVideoTargeting" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          targetedCriteriaIds: S.optional(__S(160, __c10, 0)),
+          excludedCriteriaIds: S.optional(__S(160, __c10, 0)),
+        }),
+      ).annotate({ identifier: "CriteriaTargeting" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          selectionType: S.optional(S.String),
+          values: S.optional(__S(160, __c10, 0)),
+        }),
+      ).annotate({ identifier: "StringTargetingDimension" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          excludedTaxonomyIds: S.optional(__S(160, __c10, 0)),
+          targetedTaxonomyIds: S.optional(__S(160, __c10, 0)),
+        }),
+      ).annotate({ identifier: "TaxonomyTargeting" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          audienceTargeting: S.optional(__S(185, __c11, 9)),
+          videoAndAudioSignalsTargeting: S.optional(__S(184, __c11, 8)),
+          contentTargeting: S.optional(__S(185, __c11, 9)),
+        }),
+      ).annotate({
+        identifier: "PackagePublisherProvidedSignalsTargeting",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          includedMobileAppCategoryTargeting: S.optional(__S(160, __c10, 0)),
+          uriTargeting: S.optional(__S(184, __c11, 8)),
+          mobileAppTargeting: S.optional(__S(184, __c11, 8)),
+        }),
+      ).annotate({
+        identifier: "PackagePlacementTargeting",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          includedAdSizes: S.optional(__S(178, __c11, 2)),
+          includedEnvironment: S.optional(S.String),
+          videoTargeting: S.optional(__S(182, __c11, 6)),
+          includedDataSegments: S.optional(__S(160, __c10, 0)),
+          includedNativeInventoryTypes: S.optional(__S(179, __c11, 3)),
+          geoTargeting: S.optional(__S(183, __c11, 7)),
+          includedDeviceTypes: S.optional(__S(179, __c11, 3)),
+          includedRestrictedCategories: S.optional(__S(179, __c11, 3)),
+          includedAcceleratedMobilePageType: S.optional(S.String),
+          includedRewardedType: S.optional(S.String),
+          minimumPredictedViewabilityPercentage: S.optional(S.String),
+          publisherTargeting: S.optional(__S(184, __c11, 8)),
+          languageTargeting: S.optional(__S(184, __c11, 8)),
+          minimumPredictedClickThroughRatePercentageMillis: S.optional(S.String),
+          publisherProvidedSignalsTargeting: S.optional(__S(186, __c11, 10)),
+          includedOpenMeasurementTypes: S.optional(__S(179, __c11, 3)),
+          includedCreativeFormat: S.optional(S.String),
+          placementTargeting: S.optional(__S(187, __c11, 11)),
+          includedAuthorizedSellerStatuses: S.optional(__S(179, __c11, 3)),
+          verticalTargeting: S.optional(__S(183, __c11, 7)),
+        }),
+      ).annotate({ identifier: "PackageTargeting" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          floorPriceCpm: S.optional(__S(128, __c8, 0)),
+          millipercentOfMediaFee: S.optional(S.String),
+          name: S.optional(S.String),
+          feeCpm: S.optional(__S(128, __c8, 0)),
+          state: S.optional(S.String),
+          createTime: S.optional(S.String),
+          accessSettings: S.optional(__S(176, __c11, 0)),
+          targeting: S.optional(__S(188, __c11, 12)),
+          displayName: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          curationFeeVisibility: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CuratedPackage" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(144, __c9, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+name}:activate",
+            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateCuratorsDataSegmentsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          millipercentOfMediaFee: S.optional(S.String),
+          cpmFee: S.optional(__S(128, __c8, 0)),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          state: S.optional(S.String),
+          createTime: S.optional(S.String),
+          userListId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataSegment" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(189, __c11, 13).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/curatedPackages",
+            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCuratorsCuratedPackagesRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(208, __c13, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/dataSegments",
+            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCuratorsDataSegmentsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(144, __c9, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+name}:deactivate",
+            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeactivateCuratorsCuratedPackagesRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(144, __c9, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+name}:deactivate",
+            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeactivateCuratorsDataSegmentsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -454,8 +454,8 @@ export const createCustomRuleGroup: API.OperationMethod<
   CreateCustomRuleGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateCustomRuleGroupRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetCustomRuleGroupResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateCustomRuleGroupRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<GetCustomRuleGroupResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -469,8 +469,8 @@ export const createManagedRuleSet: API.OperationMethod<
   CreateManagedRuleSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateManagedRuleSetRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetManagedRuleSetResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateManagedRuleSetRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<GetManagedRuleSetResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -484,8 +484,8 @@ export const createWAF: API.OperationMethod<
   CreateWAFError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateWAFRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetWAFResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<CreateWAFRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<GetWAFResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -499,8 +499,8 @@ export const deleteCustomRuleGroup: API.OperationMethod<
   DeleteCustomRuleGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteCustomRuleGroupRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteCustomRuleGroupResponse2>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteCustomRuleGroupRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteCustomRuleGroupResponse2>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -514,8 +514,8 @@ export const deleteManagedRuleSet: API.OperationMethod<
   DeleteManagedRuleSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteManagedRuleSetRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteManagedRuleSetResponse2>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteManagedRuleSetRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteManagedRuleSetResponse2>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -529,8 +529,8 @@ export const deleteWAF: API.OperationMethod<
   DeleteWAFError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteWAFRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteWAFResponse2>,
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteWAFRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<DeleteWAFResponse2>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -544,8 +544,8 @@ export const getCustomRuleGroup: API.OperationMethod<
   GetCustomRuleGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetCustomRuleGroupRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetCustomRuleGroupResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetCustomRuleGroupRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<GetCustomRuleGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -559,8 +559,8 @@ export const getManagedRuleSet: API.OperationMethod<
   GetManagedRuleSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetManagedRuleSetRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetManagedRuleSetResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetManagedRuleSetRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<GetManagedRuleSetResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -574,8 +574,8 @@ export const getQuota: API.OperationMethod<
   GetQuotaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetQuotaRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetQuotaResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetQuotaRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetQuotaResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -589,8 +589,8 @@ export const getWAF: API.OperationMethod<
   GetWAFError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetWAFRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetWAFResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetWAFRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<GetWAFResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -604,8 +604,8 @@ export const listCustomRuleGroup: API.OperationMethod<
   ListCustomRuleGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListCustomRuleGroupRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListCustomRuleGroupResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListCustomRuleGroupRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ListCustomRuleGroupResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -619,8 +619,8 @@ export const listManagedRuleSets: API.OperationMethod<
   ListManagedRuleSetsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListManagedRuleSetsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListManagedRuleSetResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListManagedRuleSetsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListManagedRuleSetResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -634,8 +634,8 @@ export const listWAF: API.OperationMethod<
   ListWAFError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListWAFRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListWAFResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListWAFRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<ListWAFResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -649,8 +649,8 @@ export const patchManagedRuleSet: API.OperationMethod<
   PatchManagedRuleSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<PatchManagedRuleSetRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetManagedRuleSetResponse>,
+  input: __S(60, __c7, 4) as any as S.Schema<PatchManagedRuleSetRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<GetManagedRuleSetResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -664,8 +664,8 @@ export const updateCustomRuleGroup: API.OperationMethod<
   UpdateCustomRuleGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<UpdateCustomRuleGroupRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetCustomRuleGroupResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateCustomRuleGroupRequest>,
+  output: __S(95, __c11, 7) as any as S.Schema<GetCustomRuleGroupResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -679,8 +679,8 @@ export const updateWAF: API.OperationMethod<
   UpdateWAFError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<UpdateWAFRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetWAFResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateWAFRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<GetWAFResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -690,265 +690,6 @@ export const updateWAF: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          log: S.optional(S.Boolean),
-          logMsg: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Behavior" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConditionOperator" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          operator: __S(1, __c0, 1),
-          transformations: S.optional(__S(2, __c0, 2)),
-          variable: __S(1, __c0, 1),
-        }),
-      ).annotate({ identifier: "Condition" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          behavior: __S(0, __c0, 0),
-          conditions: __S(4, __c0, 4),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateCustomRule" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          name: S.String,
-          rules: __S(6, __c0, 6),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/regions/{region}/custom-rule-groups",
-            code: 200,
-            baseUrl: "https://alb-waf.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCustomRuleGroupRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          log: S.Boolean,
-          logMsg: S.optional(S.String),
-          severity: S.String,
-        }),
-      ).annotate({ identifier: "GetBehavior" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          behavior: __S(8, __c1, 0),
-          conditions: __S(4, __c0, 4),
-          description: S.optional(S.String),
-          id: S.Number,
-        }),
-      ).annotate({ identifier: "GetCustomRule" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          items: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "CRGUsage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          rules: __S(10, __c1, 2),
-          usage: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "GetCustomRuleGroupResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/regions/{region}/managed-rule-sets",
-            code: 200,
-            baseUrl: "https://alb-waf.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateManagedRuleSetRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-          mode: S.String,
-          severity: S.String,
-        }),
-      ).annotate({ identifier: "MRSRule" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-          groupName: S.String,
-          rules: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "MRSRuleGroup" });
-    case 2:
-      return S.Record(S.String, __S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groups: S.optional(__S(18, __c2, 2)),
-          name: S.String,
-          type: S.String,
-          usage: S.optional(__S(12, __c1, 4)),
-          version: S.String,
-        }),
-      ).annotate({
-        identifier: "GetManagedRuleSetResponse",
-      });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          customRuleGroupName: S.optional(S.String),
-          labels: S.optional(__S(20, __c2, 4)),
-          managedRuleSetName: S.optional(S.String),
-          name: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/regions/{region}/wafs",
-            code: 200,
-            baseUrl: "https://alb-waf.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateWAFRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          listenerNames: S.optional(__S(11, __c1, 3)),
-          loadBalancerName: S.String,
-        }),
-      ).annotate({ identifier: "WAFUsageItem" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          items: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "WAFUsage" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          customRuleGroupName: S.optional(S.String),
-          labels: S.optional(__S(20, __c2, 4)),
-          managedRuleSetName: S.optional(S.String),
-          name: S.String,
-          usage: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "GetWAFResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/projects/{projectId}/regions/{region}/custom-rule-groups/{name}",
-            code: 200,
-            baseUrl: "https://alb-waf.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCustomRuleGroupRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteCustomRuleGroupResponse2",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/projects/{projectId}/regions/{region}/managed-rule-sets/{name}",
-            code: 200,
-            baseUrl: "https://alb-waf.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteManagedRuleSetRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/projects/{projectId}/regions/{region}/wafs/{name}",
-            code: 200,
-            baseUrl: "https://alb-waf.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteWAFRequest" });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteWAFResponse2",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -967,7 +708,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -984,7 +725,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetManagedRuleSetRequest" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -998,30 +743,34 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetQuotaRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
           usage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CRGConfigQuota" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customRuleGroup: __S(17, __c2, 1),
+          managedRuleSet: __S(17, __c2, 1),
+          webApplicationFirewall: __S(17, __c2, 1),
+        }),
+      ).annotate({ identifier: "Quotas" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          customRuleGroup: __S(34, __c4, 2),
-          managedRuleSet: __S(34, __c4, 2),
-          webApplicationFirewall: __S(34, __c4, 2),
-        }),
-      ).annotate({ identifier: "Quotas" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           projectId: S.optional(S.String),
-          quotas: __S(35, __c4, 3),
+          quotas: __S(18, __c2, 2),
           region: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQuotaResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1036,7 +785,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWAFRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1054,22 +807,22 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListCustomRuleGroupRequest",
       });
-    case 7:
-      return S.Array(__S(13, __c1, 5));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(95, __c11, 7));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(39, __c4, 7)),
+          items: S.optional(__S(33, __c4, 1)),
           nextPageId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCustomRuleGroupResponse",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1087,29 +840,33 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListManagedRuleSetsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           type: S.String,
-          usage: S.optional(__S(12, __c1, 4)),
+          usage: S.optional(__S(104, __c13, 0)),
           version: S.String,
         }),
       ).annotate({
         identifier: "GetLimitedManagedRuleSetResponse",
       });
+    case 2:
+      return S.Array(__S(41, __c5, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(43, __c5, 3)),
+          items: S.optional(__S(42, __c5, 2)),
           nextPageId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListManagedRuleSetResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1125,18 +882,18 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListWAFRequest" });
-    case 6:
-      return S.Array(__S(25, __c3, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(148, __c18, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(46, __c5, 6)),
+          items: S.optional(__S(49, __c6, 1)),
           nextPageId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWAFResponse" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1145,22 +902,22 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "PatchMRSRule" });
     case 1:
-      return S.Record(S.String, __S(48, __c6, 0));
+      return S.Record(S.String, __S(56, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rules: __S(49, __c6, 1),
+          rules: __S(57, __c7, 1),
         }),
       ).annotate({ identifier: "PatchMRSRuleGroup" });
     case 3:
-      return S.Record(S.String, __S(50, __c6, 2));
+      return S.Record(S.String, __S(58, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          groups: __S(51, __c6, 3),
+          groups: __S(59, __c7, 3),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1172,13 +929,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchManagedRuleSetRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          rules: __S(6, __c0, 6),
+          rules: __S(98, __c12, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1190,14 +951,18 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateCustomRuleGroupRequest",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           customRuleGroupName: S.optional(S.String),
-          labels: S.optional(__S(20, __c2, 4)),
+          labels: S.optional(__S(144, __c18, 0)),
           managedRuleSetName: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1210,7 +975,305 @@ function __c6(j: number): any {
       ).annotate({ identifier: "UpdateWAFRequest" });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          name: S.String,
+          rules: __S(98, __c12, 2),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/regions/{region}/custom-rule-groups",
+            code: 200,
+            baseUrl: "https://alb-waf.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCustomRuleGroupRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConditionOperator" });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          operator: __S(88, __c11, 0),
+          transformations: S.optional(__S(89, __c11, 1)),
+          variable: __S(88, __c11, 0),
+        }),
+      ).annotate({ identifier: "Condition" });
+    case 3:
+      return S.Array(__S(90, __c11, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          log: S.Boolean,
+          logMsg: S.optional(S.String),
+          severity: S.String,
+        }),
+      ).annotate({ identifier: "GetBehavior" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          behavior: __S(92, __c11, 4),
+          conditions: __S(91, __c11, 3),
+          description: S.optional(S.String),
+          id: S.Number,
+        }),
+      ).annotate({ identifier: "GetCustomRule" });
+    case 6:
+      return S.Array(__S(93, __c11, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          rules: __S(94, __c11, 6),
+          usage: S.optional(__S(104, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "GetCustomRuleGroupResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          log: S.optional(S.Boolean),
+          logMsg: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Behavior" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          behavior: __S(96, __c12, 0),
+          conditions: __S(91, __c11, 3),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateCustomRule" });
+    case 2:
+      return S.Array(__S(97, __c12, 1));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          items: S.optional(__S(112, __c14, 0)),
+        }),
+      ).annotate({ identifier: "CRGUsage" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/regions/{region}/managed-rule-sets",
+            code: 200,
+            baseUrl: "https://alb-waf.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateManagedRuleSetRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+          mode: S.String,
+          severity: S.String,
+        }),
+      ).annotate({ identifier: "MRSRule" });
+    case 1:
+      return S.Record(S.String, __S(128, __c16, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+          groupName: S.String,
+          rules: S.optional(__S(129, __c16, 1)),
+        }),
+      ).annotate({ identifier: "MRSRuleGroup" });
+    case 3:
+      return S.Record(S.String, __S(130, __c16, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          groups: S.optional(__S(131, __c16, 3)),
+          name: S.String,
+          type: S.String,
+          usage: S.optional(__S(104, __c13, 0)),
+          version: S.String,
+        }),
+      ).annotate({
+        identifier: "GetManagedRuleSetResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          customRuleGroupName: S.optional(S.String),
+          labels: S.optional(__S(144, __c18, 0)),
+          managedRuleSetName: S.optional(S.String),
+          name: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/regions/{region}/wafs",
+            code: 200,
+            baseUrl: "https://alb-waf.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateWAFRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          listenerNames: S.optional(__S(112, __c14, 0)),
+          loadBalancerName: S.String,
+        }),
+      ).annotate({ identifier: "WAFUsageItem" });
+    case 2:
+      return S.Array(__S(145, __c18, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          items: S.optional(__S(146, __c18, 2)),
+        }),
+      ).annotate({ identifier: "WAFUsage" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          customRuleGroupName: S.optional(S.String),
+          labels: S.optional(__S(144, __c18, 0)),
+          managedRuleSetName: S.optional(S.String),
+          name: S.String,
+          usage: S.optional(__S(147, __c18, 3)),
+        }),
+      ).annotate({ identifier: "GetWAFResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/projects/{projectId}/regions/{region}/custom-rule-groups/{name}",
+            code: 200,
+            baseUrl: "https://alb-waf.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCustomRuleGroupRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteCustomRuleGroupResponse2",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/projects/{projectId}/regions/{region}/managed-rule-sets/{name}",
+            code: 200,
+            baseUrl: "https://alb-waf.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteManagedRuleSetRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/projects/{projectId}/regions/{region}/wafs/{name}",
+            code: 200,
+            baseUrl: "https://alb-waf.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteWAFRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteWAFResponse2",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

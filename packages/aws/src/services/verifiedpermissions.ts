@@ -91,7 +91,7 @@ export class ConflictException
     "ConflictException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      resources: /*@__PURE__*/ S.suspend(() => __S(139, __c17, 3)).annotate({
+      resources: /*@__PURE__*/ S.suspend(() => __S(1, __c0, 1)).annotate({
         identifier: "ResourceConflictList",
       }),
     },
@@ -1220,8 +1220,8 @@ export const batchGetPolicy: API.OperationMethod<
   BatchGetPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchGetPolicyInput>,
-  output: __S(11, __c1, 3) as any as S.Schema<BatchGetPolicyOutput>,
+  input: __S(1570, __c49, 2) as any as S.Schema<BatchGetPolicyInput>,
+  output: __S(1575, __c49, 7) as any as S.Schema<BatchGetPolicyOutput>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1244,8 +1244,8 @@ export const batchIsAuthorized: API.OperationMethod<
   BatchIsAuthorizedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<BatchIsAuthorizedInput>,
-  output: __S(35, __c4, 3) as any as S.Schema<BatchIsAuthorizedOutput>,
+  input: __S(34, __c1, 2) as any as S.Schema<BatchIsAuthorizedInput>,
+  output: __S(37, __c1, 5) as any as S.Schema<BatchIsAuthorizedOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1271,8 +1271,8 @@ export const batchIsAuthorizedWithToken: API.OperationMethod<
   BatchIsAuthorizedWithTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<BatchIsAuthorizedWithTokenInput>,
-  output: __S(41, __c5, 1) as any as S.Schema<BatchIsAuthorizedWithTokenOutput>,
+  input: __S(130, __c4, 2) as any as S.Schema<BatchIsAuthorizedWithTokenInput>,
+  output: __S(133, __c4, 5) as any as S.Schema<BatchIsAuthorizedWithTokenOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1306,8 +1306,8 @@ export const createIdentitySource: API.OperationMethod<
   CreateIdentitySourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateIdentitySourceInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<CreateIdentitySourceOutput>,
+  input: __S(160, __c5, 0) as any as S.Schema<CreateIdentitySourceInput>,
+  output: __S(291, __c9, 3) as any as S.Schema<CreateIdentitySourceOutput>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -1342,8 +1342,8 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CreatePolicyInput>,
-  output: __S(58, __c7, 2) as any as S.Schema<CreatePolicyOutput>,
+  input: __S(322, __c10, 2) as any as S.Schema<CreatePolicyInput>,
+  output: __S(384, __c12, 0) as any as S.Schema<CreatePolicyOutput>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -1373,8 +1373,8 @@ export const createPolicyStore: API.OperationMethod<
   CreatePolicyStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<CreatePolicyStoreInput>,
-  output: __S(65, __c8, 1) as any as S.Schema<CreatePolicyStoreOutput>,
+  input: __S(418, __c13, 2) as any as S.Schema<CreatePolicyStoreInput>,
+  output: __S(544, __c17, 0) as any as S.Schema<CreatePolicyStoreOutput>,
   errors: [ConflictException, ServiceQuotaExceededException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1400,8 +1400,8 @@ export const createPolicyStoreAlias: API.OperationMethod<
   CreatePolicyStoreAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<CreatePolicyStoreAliasInput>,
-  output: __S(67, __c8, 3) as any as S.Schema<CreatePolicyStoreAliasOutput>,
+  input: __S(576, __c18, 0) as any as S.Schema<CreatePolicyStoreAliasInput>,
+  output: __S(577, __c18, 1) as any as S.Schema<CreatePolicyStoreAliasOutput>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -1430,8 +1430,8 @@ export const createPolicyTemplate: API.OperationMethod<
   CreatePolicyTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CreatePolicyTemplateInput>,
-  output: __S(69, __c8, 5) as any as S.Schema<CreatePolicyTemplateOutput>,
+  input: __S(608, __c19, 0) as any as S.Schema<CreatePolicyTemplateInput>,
+  output: __S(640, __c20, 0) as any as S.Schema<CreatePolicyTemplateOutput>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -1456,8 +1456,8 @@ export const deleteIdentitySource: API.OperationMethod<
   DeleteIdentitySourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteIdentitySourceInput>,
-  output: __S(71, __c8, 7) as any as S.Schema<DeleteIdentitySourceOutput>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteIdentitySourceInput>,
+  output: __S(704, __c22, 0) as any as S.Schema<DeleteIdentitySourceOutput>,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1476,8 +1476,8 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeletePolicyInput>,
-  output: __S(71, __c8, 7) as any as S.Schema<DeletePolicyOutput>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeletePolicyInput>,
+  output: __S(704, __c22, 0) as any as S.Schema<DeletePolicyOutput>,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1496,8 +1496,8 @@ export const deletePolicyStore: API.OperationMethod<
   DeletePolicyStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeletePolicyStoreInput>,
-  output: __S(71, __c8, 7) as any as S.Schema<DeletePolicyStoreOutput>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeletePolicyStoreInput>,
+  output: __S(704, __c22, 0) as any as S.Schema<DeletePolicyStoreOutput>,
   errors: [InvalidStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1526,8 +1526,8 @@ export const deletePolicyStoreAlias: API.OperationMethod<
   DeletePolicyStoreAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeletePolicyStoreAliasInput>,
-  output: __S(71, __c8, 7) as any as S.Schema<DeletePolicyStoreAliasOutput>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeletePolicyStoreAliasInput>,
+  output: __S(704, __c22, 0) as any as S.Schema<DeletePolicyStoreAliasOutput>,
   errors: [InvalidStateException, ValidationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1549,8 +1549,8 @@ export const deletePolicyTemplate: API.OperationMethod<
   DeletePolicyTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeletePolicyTemplateInput>,
-  output: __S(71, __c8, 7) as any as S.Schema<DeletePolicyTemplateOutput>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeletePolicyTemplateInput>,
+  output: __S(704, __c22, 0) as any as S.Schema<DeletePolicyTemplateOutput>,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1567,8 +1567,8 @@ export const getIdentitySource: API.OperationMethod<
   GetIdentitySourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetIdentitySourceInput>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetIdentitySourceOutput>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetIdentitySourceInput>,
+  output: __S(866, __c27, 2) as any as S.Schema<GetIdentitySourceOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1585,8 +1585,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetPolicyInput>,
-  output: __S(83, __c10, 3) as any as S.Schema<GetPolicyOutput>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetPolicyInput>,
+  output: __S(929, __c29, 1) as any as S.Schema<GetPolicyOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1603,8 +1603,8 @@ export const getPolicyStore: API.OperationMethod<
   GetPolicyStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetPolicyStoreInput>,
-  output: __S(87, __c10, 7) as any as S.Schema<GetPolicyStoreOutput>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetPolicyStoreInput>,
+  output: __S(963, __c30, 3) as any as S.Schema<GetPolicyStoreOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1621,8 +1621,8 @@ export const getPolicyStoreAlias: API.OperationMethod<
   GetPolicyStoreAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetPolicyStoreAliasInput>,
-  output: __S(89, __c11, 1) as any as S.Schema<GetPolicyStoreAliasOutput>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetPolicyStoreAliasInput>,
+  output: __S(993, __c31, 1) as any as S.Schema<GetPolicyStoreAliasOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1639,8 +1639,8 @@ export const getPolicyTemplate: API.OperationMethod<
   GetPolicyTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetPolicyTemplateInput>,
-  output: __S(91, __c11, 3) as any as S.Schema<GetPolicyTemplateOutput>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetPolicyTemplateInput>,
+  output: __S(1025, __c32, 1) as any as S.Schema<GetPolicyTemplateOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1657,8 +1657,8 @@ export const getSchema: API.OperationMethod<
   GetSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetSchemaInput>,
-  output: __S(93, __c11, 5) as any as S.Schema<GetSchemaOutput>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetSchemaInput>,
+  output: __S(1057, __c33, 1) as any as S.Schema<GetSchemaOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1675,8 +1675,8 @@ export const isAuthorized: API.OperationMethod<
   IsAuthorizedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<IsAuthorizedInput>,
-  output: __S(95, __c11, 7) as any as S.Schema<IsAuthorizedOutput>,
+  input: __S(1088, __c34, 0) as any as S.Schema<IsAuthorizedInput>,
+  output: __S(1089, __c34, 1) as any as S.Schema<IsAuthorizedOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1700,8 +1700,8 @@ export const isAuthorizedWithToken: API.OperationMethod<
   IsAuthorizedWithTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<IsAuthorizedWithTokenInput>,
-  output: __S(97, __c12, 1) as any as S.Schema<IsAuthorizedWithTokenOutput>,
+  input: __S(1120, __c35, 0) as any as S.Schema<IsAuthorizedWithTokenInput>,
+  output: __S(1121, __c35, 1) as any as S.Schema<IsAuthorizedWithTokenOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1719,8 +1719,8 @@ export const listIdentitySources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IdentitySourceItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListIdentitySourcesInput>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListIdentitySourcesOutput>,
+  input: __S(1154, __c36, 2) as any as S.Schema<ListIdentitySourcesInput>,
+  output: __S(1158, __c36, 6) as any as S.Schema<ListIdentitySourcesOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1744,8 +1744,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PolicyItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListPoliciesInput>,
-  output: __S(112, __c14, 0) as any as S.Schema<ListPoliciesOutput>,
+  input: __S(1186, __c37, 2) as any as S.Schema<ListPoliciesInput>,
+  output: __S(1191, __c37, 7) as any as S.Schema<ListPoliciesOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1769,8 +1769,8 @@ export const listPolicyStoreAliases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PolicyStoreAliasItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListPolicyStoreAliasesInput>,
-  output: __S(117, __c14, 5) as any as S.Schema<ListPolicyStoreAliasesOutput>,
+  input: __S(1217, __c38, 1) as any as S.Schema<ListPolicyStoreAliasesInput>,
+  output: __S(1220, __c38, 4) as any as S.Schema<ListPolicyStoreAliasesOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1794,8 +1794,8 @@ export const listPolicyStores: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PolicyStoreItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListPolicyStoresInput>,
-  output: __S(121, __c15, 1) as any as S.Schema<ListPolicyStoresOutput>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListPolicyStoresInput>,
+  output: __S(1251, __c39, 3) as any as S.Schema<ListPolicyStoresOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1819,8 +1819,8 @@ export const listPolicyTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PolicyTemplateItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListPolicyTemplatesInput>,
-  output: __S(125, __c15, 5) as any as S.Schema<ListPolicyTemplatesOutput>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListPolicyTemplatesInput>,
+  output: __S(1283, __c40, 3) as any as S.Schema<ListPolicyTemplatesOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1848,8 +1848,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(1313, __c41, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1878,8 +1878,8 @@ export const putSchema: API.OperationMethod<
   PutSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<PutSchemaInput>,
-  output: __S(130, __c16, 2) as any as S.Schema<PutSchemaOutput>,
+  input: __S(1345, __c42, 1) as any as S.Schema<PutSchemaInput>,
+  output: __S(1346, __c42, 2) as any as S.Schema<PutSchemaOutput>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -1913,8 +1913,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<TagResourceInput>,
-  output: __S(71, __c8, 7) as any as S.Schema<TagResourceOutput>,
+  input: __S(1376, __c43, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(704, __c22, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1942,8 +1942,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<UntagResourceInput>,
-  output: __S(71, __c8, 7) as any as S.Schema<UntagResourceOutput>,
+  input: __S(1408, __c44, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(704, __c22, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1971,8 +1971,8 @@ export const updateIdentitySource: API.OperationMethod<
   UpdateIdentitySourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<UpdateIdentitySourceInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<UpdateIdentitySourceOutput>,
+  input: __S(1440, __c45, 0) as any as S.Schema<UpdateIdentitySourceInput>,
+  output: __S(291, __c9, 3) as any as S.Schema<UpdateIdentitySourceOutput>,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2016,8 +2016,8 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<UpdatePolicyInput>,
-  output: __S(58, __c7, 2) as any as S.Schema<UpdatePolicyOutput>,
+  input: __S(1473, __c46, 1) as any as S.Schema<UpdatePolicyInput>,
+  output: __S(384, __c12, 0) as any as S.Schema<UpdatePolicyOutput>,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -2045,8 +2045,8 @@ export const updatePolicyStore: API.OperationMethod<
   UpdatePolicyStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<UpdatePolicyStoreInput>,
-  output: __S(65, __c8, 1) as any as S.Schema<UpdatePolicyStoreOutput>,
+  input: __S(1504, __c47, 0) as any as S.Schema<UpdatePolicyStoreInput>,
+  output: __S(544, __c17, 0) as any as S.Schema<UpdatePolicyStoreOutput>,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2071,8 +2071,8 @@ export const updatePolicyTemplate: API.OperationMethod<
   UpdatePolicyTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<UpdatePolicyTemplateInput>,
-  output: __S(69, __c8, 5) as any as S.Schema<UpdatePolicyTemplateOutput>,
+  input: __S(1536, __c48, 0) as any as S.Schema<UpdatePolicyTemplateInput>,
+  output: __S(640, __c20, 0) as any as S.Schema<UpdatePolicyTemplateOutput>,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2083,99 +2083,89 @@ export const updatePolicyTemplate: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ policyStoreId: S.String, policyId: S.String })).annotate({
-        identifier: "BatchGetPolicyInputItem",
+      return S.suspend(() => S.Struct({ resourceId: S.String, resourceType: S.String })).annotate({
+        identifier: "ResourceConflict",
       });
     case 1:
       return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ requests: __S(1, __c0, 1) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "BatchGetPolicyInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ description: S.optional(SensitiveString), statement: SensitiveString }),
-      ).annotate({
-        identifier: "StaticPolicyDefinitionDetail",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ entityType: SensitiveString, entityId: SensitiveString }),
-      ).annotate({ identifier: "EntityIdentifier" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          policyTemplateId: S.String,
-          principal: S.optional(__S(4, __c0, 4)),
-          resource: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "TemplateLinkedPolicyDefinitionDetail",
-      });
-    case 6:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ static: __S(3, __c0, 3) }),
-        /*@__PURE__*/ S.Struct({ templateLinked: __S(5, __c0, 5) }),
-      ]);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          policyStoreId: S.String,
-          policyId: S.String,
-          policyType: S.String,
-          definition: __S(6, __c0, 6),
-          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BatchGetPolicyOutputItem" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          code: S.String,
-          policyStoreId: S.String,
-          policyId: S.String,
-          message: S.String,
+          principal: S.optional(__S(1600, __c50, 0)),
+          action: S.optional(__S(64, __c2, 0)),
+          resource: S.optional(__S(1600, __c50, 0)),
+          context: S.optional(__S(108, __c3, 12)),
         }),
-      ).annotate({ identifier: "BatchGetPolicyErrorItem" });
+      ).annotate({
+        identifier: "BatchIsAuthorizedInputItem",
+      });
+    case 1:
+      return S.Array(__S(32, __c1, 0));
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          entities: S.optional(__S(107, __c3, 11)),
+          requests: __S(33, __c1, 1),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "BatchIsAuthorizedInput" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ results: __S(8, __c1, 0), errors: __S(10, __c1, 2) }),
-      ).annotate({ identifier: "BatchGetPolicyOutput" });
+        S.Struct({
+          request: __S(32, __c1, 0),
+          decision: S.String,
+          determiningPolicies: __S(110, __c3, 14),
+          errors: __S(112, __c3, 16),
+        }),
+      ).annotate({
+        identifier: "BatchIsAuthorizedOutputItem",
+      });
     case 4:
-      return S.Array(
-        /*@__PURE__*/ S.suspend(() => __S(14, __c1, 6)).annotate({ identifier: "AttributeValue" }),
-      );
+      return S.Array(__S(35, __c1, 3));
     case 5:
+      return S.suspend(() => S.Struct({ results: __S(36, __c1, 4) })).annotate({
+        identifier: "BatchIsAuthorizedOutput",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ actionType: SensitiveString, actionId: SensitiveString }),
+      ).annotate({ identifier: "ActionIdentifier" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(
+        /*@__PURE__*/ S.suspend(() => __S(98, __c3, 2)).annotate({ identifier: "AttributeValue" }),
+      );
+    case 1:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(14, __c1, 6))
+        /*@__PURE__*/ S.suspend(() => __S(98, __c3, 2))
           .annotate({ identifier: "AttributeValue" })
           .pipe(S.optional),
       );
-    case 6:
+    case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({ boolean: S.Boolean }),
-        /*@__PURE__*/ S.Struct({ entityIdentifier: __S(4, __c0, 4) }),
+        /*@__PURE__*/ S.Struct({ entityIdentifier: __S(1600, __c50, 0) }),
         /*@__PURE__*/ S.Struct({ long: S.Number }),
         /*@__PURE__*/ S.Struct({ string: SensitiveString }),
         /*@__PURE__*/ S.Struct({
-          set: /*@__PURE__*/ S.suspend(() => __S(12, __c1, 4)).annotate({
+          set: /*@__PURE__*/ S.suspend(() => __S(96, __c3, 0)).annotate({
             identifier: "SetAttribute",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          record: /*@__PURE__*/ S.suspend(() => __S(13, __c1, 5)).annotate({
+          record: /*@__PURE__*/ S.suspend(() => __S(97, __c3, 1)).annotate({
             identifier: "RecordAttribute",
           }),
         }),
@@ -2184,43 +2174,39 @@ function __c1(j: number): any {
         /*@__PURE__*/ S.Struct({ datetime: SensitiveString }),
         /*@__PURE__*/ S.Struct({ duration: SensitiveString }),
       ]);
-    case 7:
+    case 3:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(14, __c1, 6))
+        /*@__PURE__*/ S.suspend(() => __S(98, __c3, 2))
           .annotate({ identifier: "AttributeValue" })
           .pipe(S.optional),
       );
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(4, __c0, 4));
-    case 1:
+    case 4:
+      return S.Array(__S(1600, __c50, 0));
+    case 5:
       return S.Array(
-        /*@__PURE__*/ S.suspend(() => __S(19, __c2, 3)).annotate({ identifier: "CedarTagValue" }),
+        /*@__PURE__*/ S.suspend(() => __S(103, __c3, 7)).annotate({ identifier: "CedarTagValue" }),
       );
-    case 2:
+    case 6:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(19, __c2, 3))
+        /*@__PURE__*/ S.suspend(() => __S(103, __c3, 7))
           .annotate({ identifier: "CedarTagValue" })
           .pipe(S.optional),
       );
-    case 3:
+    case 7:
       return S.Union([
         /*@__PURE__*/ S.Struct({ boolean: S.Boolean }),
-        /*@__PURE__*/ S.Struct({ entityIdentifier: __S(4, __c0, 4) }),
+        /*@__PURE__*/ S.Struct({ entityIdentifier: __S(1600, __c50, 0) }),
         /*@__PURE__*/ S.Struct({ long: S.Number }),
         /*@__PURE__*/ S.Struct({ string: SensitiveString }),
         /*@__PURE__*/ S.Struct({
-          set: /*@__PURE__*/ S.suspend(() => __S(17, __c2, 1)).annotate({
+          set: /*@__PURE__*/ S.suspend(() => __S(101, __c3, 5)).annotate({
             identifier: "CedarTagSetAttribute",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          record: /*@__PURE__*/ S.suspend(() => __S(18, __c2, 2)).annotate({
+          record: /*@__PURE__*/ S.suspend(() => __S(102, __c3, 6)).annotate({
             identifier: "CedarTagRecordAttribute",
           }),
         }),
@@ -2229,225 +2215,191 @@ function __c2(j: number): any {
         /*@__PURE__*/ S.Struct({ datetime: SensitiveString }),
         /*@__PURE__*/ S.Struct({ duration: SensitiveString }),
       ]);
-    case 4:
+    case 8:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(19, __c2, 3))
+        /*@__PURE__*/ S.suspend(() => __S(103, __c3, 7))
           .annotate({ identifier: "CedarTagValue" })
           .pipe(S.optional),
       );
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          identifier: __S(4, __c0, 4),
-          attributes: S.optional(__S(15, __c1, 7)),
-          parents: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(20, __c2, 4)),
+          identifier: __S(1600, __c50, 0),
+          attributes: S.optional(__S(99, __c3, 3)),
+          parents: S.optional(__S(100, __c3, 4)),
+          tags: S.optional(__S(104, __c3, 8)),
         }),
       ).annotate({ identifier: "EntityItem" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 10:
+      return S.Array(__S(105, __c3, 9));
+    case 11:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ entityList: __S(22, __c2, 6) }),
+        /*@__PURE__*/ S.Struct({ entityList: __S(106, __c3, 10) }),
         /*@__PURE__*/ S.Struct({ cedarJson: SensitiveString }),
       ]);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ actionType: SensitiveString, actionId: SensitiveString }),
-      ).annotate({ identifier: "ActionIdentifier" });
-    case 1:
+    case 12:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ contextMap: __S(15, __c1, 7) }),
+        /*@__PURE__*/ S.Struct({ contextMap: __S(99, __c3, 3) }),
         /*@__PURE__*/ S.Struct({ cedarJson: SensitiveString }),
       ]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principal: S.optional(__S(4, __c0, 4)),
-          action: S.optional(__S(24, __c3, 0)),
-          resource: S.optional(__S(4, __c0, 4)),
-          context: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "BatchIsAuthorizedInputItem",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          policyStoreId: S.String,
-          entities: S.optional(__S(23, __c2, 7)),
-          requests: __S(27, __c3, 3),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "BatchIsAuthorizedInput" });
-    case 5:
+    case 13:
       return S.suspend(() => S.Struct({ policyId: S.String })).annotate({
         identifier: "DeterminingPolicyItem",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 14:
+      return S.Array(__S(109, __c3, 13));
+    case 15:
       return S.suspend(() => S.Struct({ errorDescription: S.String })).annotate({
         identifier: "EvaluationErrorItem",
       });
+    case 16:
+      return S.Array(__S(111, __c3, 15));
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          request: __S(26, __c3, 2),
-          decision: S.String,
-          determiningPolicies: __S(30, __c3, 6),
-          errors: __S(32, __c4, 0),
-        }),
-      ).annotate({
-        identifier: "BatchIsAuthorizedOutputItem",
-      });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ results: __S(34, __c4, 2) })).annotate({
-        identifier: "BatchIsAuthorizedOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(__S(24, __c3, 0)),
-          resource: S.optional(__S(4, __c0, 4)),
-          context: S.optional(__S(25, __c3, 1)),
+          action: S.optional(__S(64, __c2, 0)),
+          resource: S.optional(__S(1600, __c50, 0)),
+          context: S.optional(__S(108, __c3, 12)),
         }),
       ).annotate({
         identifier: "BatchIsAuthorizedWithTokenInputItem",
       });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
           identityToken: S.optional(SensitiveString),
           accessToken: S.optional(SensitiveString),
-          entities: S.optional(__S(23, __c2, 7)),
-          requests: __S(37, __c4, 5),
+          entities: S.optional(__S(107, __c3, 11)),
+          requests: __S(129, __c4, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "BatchIsAuthorizedWithTokenInput",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          request: __S(36, __c4, 4),
+          request: __S(128, __c4, 0),
           decision: S.String,
-          determiningPolicies: __S(30, __c3, 6),
-          errors: __S(32, __c4, 0),
+          determiningPolicies: __S(110, __c3, 14),
+          errors: __S(112, __c3, 16),
         }),
       ).annotate({
         identifier: "BatchIsAuthorizedWithTokenOutputItem",
+      });
+    case 4:
+      return S.Array(__S(131, __c4, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          principal: S.optional(__S(1600, __c50, 0)),
+          results: __S(132, __c4, 4),
+        }),
+      ).annotate({
+        identifier: "BatchIsAuthorizedWithTokenOutput",
       });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          principal: S.optional(__S(4, __c0, 4)),
-          results: __S(40, __c5, 0),
-        }),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          policyStoreId: S.String,
+          configuration: __S(290, __c9, 2),
+          principalEntityType: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
-        identifier: "BatchIsAuthorizedWithTokenOutput",
-      });
-    case 2:
-      return S.Array(SensitiveString);
-    case 3:
-      return S.suspend(() => S.Struct({ groupEntityType: SensitiveString })).annotate({
-        identifier: "CognitoGroupConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userPoolArn: S.String,
-          clientIds: S.optional(__S(42, __c5, 2)),
-          groupConfiguration: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "CognitoUserPoolConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ groupClaim: SensitiveString, groupEntityType: SensitiveString }),
-      ).annotate({
-        identifier: "OpenIdConnectGroupConfiguration",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          principalIdClaim: S.optional(SensitiveString),
-          audiences: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "OpenIdConnectAccessTokenConfiguration",
+        identifier: "CreateIdentitySourceInput",
       });
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(SensitiveString);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ groupClaim: SensitiveString, groupEntityType: SensitiveString }),
+      ).annotate({
+        identifier: "OpenIdConnectGroupConfiguration",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           principalIdClaim: S.optional(SensitiveString),
-          clientIds: S.optional(__S(42, __c5, 2)),
+          audiences: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "OpenIdConnectAccessTokenConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          principalIdClaim: S.optional(SensitiveString),
+          clientIds: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({
         identifier: "OpenIdConnectIdentityTokenConfiguration",
       });
-    case 1:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ accessTokenOnly: __S(47, __c5, 7) }),
-        /*@__PURE__*/ S.Struct({ identityTokenOnly: __S(48, __c6, 0) }),
-      ]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          issuer: S.String,
-          entityIdPrefix: S.optional(SensitiveString),
-          groupConfiguration: S.optional(__S(45, __c5, 5)),
-          tokenSelection: __S(49, __c6, 1),
-        }),
-      ).annotate({
-        identifier: "OpenIdConnectConfiguration",
-      });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ cognitoUserPoolConfiguration: __S(44, __c5, 4) }),
-        /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: __S(50, __c6, 2) }),
+        /*@__PURE__*/ S.Struct({ accessTokenOnly: __S(257, __c8, 1) }),
+        /*@__PURE__*/ S.Struct({ identityTokenOnly: __S(258, __c8, 2) }),
       ]);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          policyStoreId: S.String,
-          configuration: __S(51, __c6, 3),
-          principalEntityType: S.optional(SensitiveString),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+          issuer: S.String,
+          entityIdPrefix: S.optional(SensitiveString),
+          groupConfiguration: S.optional(__S(256, __c8, 0)),
+          tokenSelection: __S(259, __c8, 3),
+        }),
       ).annotate({
-        identifier: "CreateIdentitySourceInput",
+        identifier: "OpenIdConnectConfiguration",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ groupEntityType: SensitiveString })).annotate({
+        identifier: "CognitoGroupConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          userPoolArn: S.String,
+          clientIds: S.optional(__S(192, __c6, 0)),
+          groupConfiguration: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({
+        identifier: "CognitoUserPoolConfiguration",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ cognitoUserPoolConfiguration: __S(289, __c9, 1) }),
+        /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: __S(260, __c8, 4) }),
+      ]);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -2458,77 +2410,101 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateIdentitySourceOutput",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ description: S.optional(SensitiveString), statement: SensitiveString }),
       ).annotate({ identifier: "StaticPolicyDefinition" });
-    case 7:
+    case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ static: __S(54, __c6, 6) }),
-        /*@__PURE__*/ S.Struct({ templateLinked: __S(5, __c0, 5) }),
+        /*@__PURE__*/ S.Struct({ static: __S(320, __c10, 0) }),
+        /*@__PURE__*/ S.Struct({ templateLinked: __S(1632, __c51, 0) }),
       ]);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           policyStoreId: S.String,
-          definition: __S(55, __c6, 7),
+          definition: __S(321, __c10, 1),
           name: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreatePolicyInput" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(64, __c2, 0));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
           policyId: S.String,
           policyType: S.String,
-          principal: S.optional(__S(4, __c0, 4)),
-          resource: S.optional(__S(4, __c0, 4)),
-          actions: S.optional(__S(57, __c7, 1)),
+          principal: S.optional(__S(1600, __c50, 0)),
+          resource: S.optional(__S(1600, __c50, 0)),
+          actions: S.optional(__S(352, __c11, 0)),
           createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           effect: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreatePolicyOutput" });
-    case 3:
-      return S.suspend(() => S.Struct({ mode: S.String })).annotate({
-        identifier: "ValidationSettings",
-      });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ key: S.String, encryptionContext: S.optional(__S(60, __c7, 4)) }),
-      ).annotate({ identifier: "KmsEncryptionSettings" });
-    case 6:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ kmsEncryptionSettings: __S(61, __c7, 5) }),
-        /*@__PURE__*/ S.Struct({ default: /*@__PURE__*/ S.Struct({}) }),
-      ]);
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c8(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ key: S.String, encryptionContext: S.optional(__S(448, __c14, 0)) }),
+      ).annotate({ identifier: "KmsEncryptionSettings" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ kmsEncryptionSettings: __S(416, __c13, 0) }),
+        /*@__PURE__*/ S.Struct({ default: /*@__PURE__*/ S.Struct({}) }),
+      ]);
+    case 2:
+      return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          validationSettings: __S(59, __c7, 3),
+          validationSettings: __S(512, __c16, 0),
           description: S.optional(SensitiveString),
           deletionProtection: S.optional(S.String),
-          encryptionSettings: S.optional(__S(62, __c7, 6)),
-          tags: S.optional(__S(63, __c7, 7)),
+          encryptionSettings: S.optional(__S(417, __c13, 1)),
+          tags: S.optional(__S(480, __c15, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreatePolicyStoreInput" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ mode: S.String })).annotate({
+        identifier: "ValidationSettings",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
@@ -2537,7 +2513,11 @@ function __c8(j: number): any {
           lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "CreatePolicyStoreOutput" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ aliasName: S.String, policyStoreId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2545,7 +2525,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreatePolicyStoreAliasInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           aliasName: S.String,
@@ -2556,7 +2536,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreatePolicyStoreAliasOutput",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -2568,7 +2552,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreatePolicyTemplateInput",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
@@ -2579,7 +2567,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreatePolicyTemplateOutput",
       });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ policyStoreId: S.String, identitySourceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2587,13 +2579,17 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteIdentitySourceInput",
       });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteIdentitySourceOutput",
       });
   }
 }
-function __c9(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2601,13 +2597,21 @@ function __c9(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeletePolicyInput" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ policyStoreId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeletePolicyStoreInput" });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ aliasName: S.String, deletionMode: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2615,7 +2619,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeletePolicyStoreAliasInput",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ policyStoreId: S.String, policyTemplateId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2623,114 +2631,124 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeletePolicyTemplateInput",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ policyStoreId: S.String, identitySourceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetIdentitySourceInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          clientIds: S.optional(__S(42, __c5, 2)),
+          clientIds: S.optional(__S(192, __c6, 0)),
           userPoolArn: S.optional(S.String),
           discoveryUrl: S.optional(S.String),
           openIdIssuer: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentitySourceDetails" });
-    case 6:
-      return S.suspend(() => S.Struct({ groupEntityType: S.optional(SensitiveString) })).annotate({
-        identifier: "CognitoGroupConfigurationDetail",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userPoolArn: S.String,
-          clientIds: __S(42, __c5, 2),
-          issuer: S.String,
-          groupConfiguration: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({
-        identifier: "CognitoUserPoolConfigurationDetail",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          cognitoUserPoolConfiguration: __S(79, __c9, 7),
-        }),
-        /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: __S(50, __c6, 2) }),
-      ]);
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          details: S.optional(__S(77, __c9, 5)),
+          details: S.optional(__S(865, __c27, 1)),
           identitySourceId: S.String,
           lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           policyStoreId: S.String,
           principalEntityType: SensitiveString,
-          configuration: S.optional(__S(80, __c10, 0)),
+          configuration: S.optional(__S(898, __c28, 2)),
         }),
       ).annotate({ identifier: "GetIdentitySourceOutput" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ groupEntityType: S.optional(SensitiveString) })).annotate({
+        identifier: "CognitoGroupConfigurationDetail",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          userPoolArn: S.String,
+          clientIds: __S(192, __c6, 0),
+          issuer: S.String,
+          groupConfiguration: S.optional(__S(896, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "CognitoUserPoolConfigurationDetail",
+      });
     case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ cognitoUserPoolConfiguration: __S(897, __c28, 1) }),
+        /*@__PURE__*/ S.Struct({ openIdConnectConfiguration: __S(260, __c8, 4) }),
+      ]);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ policyStoreId: S.String, policyId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetPolicyInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
           policyId: S.String,
           policyType: S.String,
-          principal: S.optional(__S(4, __c0, 4)),
-          resource: S.optional(__S(4, __c0, 4)),
-          actions: S.optional(__S(57, __c7, 1)),
-          definition: __S(6, __c0, 6),
+          principal: S.optional(__S(1600, __c50, 0)),
+          resource: S.optional(__S(1600, __c50, 0)),
+          actions: S.optional(__S(352, __c11, 0)),
+          definition: __S(1664, __c52, 0),
           createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           effect: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPolicyOutput" });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ policyStoreId: S.String, tags: S.optional(S.Boolean) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetPolicyStoreInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ key: S.String, encryptionContext: __S(60, __c7, 4) }),
+        S.Struct({ key: S.String, encryptionContext: __S(448, __c14, 0) }),
       ).annotate({ identifier: "KmsEncryptionState" });
-    case 6:
+    case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ kmsEncryptionState: __S(85, __c10, 5) }),
+        /*@__PURE__*/ S.Struct({ kmsEncryptionState: __S(961, __c30, 1) }),
         /*@__PURE__*/ S.Struct({ default: /*@__PURE__*/ S.Struct({}) }),
       ]);
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
           arn: S.String,
-          validationSettings: __S(59, __c7, 3),
+          validationSettings: __S(512, __c16, 0),
           createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           description: S.optional(SensitiveString),
           deletionProtection: S.optional(S.String),
-          encryptionState: S.optional(__S(86, __c10, 6)),
+          encryptionState: S.optional(__S(962, __c30, 2)),
           cedarVersion: S.optional(S.String),
-          tags: S.optional(__S(63, __c7, 7)),
+          tags: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "GetPolicyStoreOutput" });
   }
 }
-function __c11(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2750,13 +2768,17 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetPolicyStoreAliasOutput",
       });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ policyStoreId: S.String, policyTemplateId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetPolicyTemplateInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
@@ -2768,44 +2790,52 @@ function __c11(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPolicyTemplateOutput" });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ policyStoreId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetSchemaInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
           schema: SensitiveString,
           createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          namespaces: S.optional(__S(42, __c5, 2)),
+          namespaces: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "GetSchemaOutput" });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
-          principal: S.optional(__S(4, __c0, 4)),
-          action: S.optional(__S(24, __c3, 0)),
-          resource: S.optional(__S(4, __c0, 4)),
-          context: S.optional(__S(25, __c3, 1)),
-          entities: S.optional(__S(23, __c2, 7)),
+          principal: S.optional(__S(1600, __c50, 0)),
+          action: S.optional(__S(64, __c2, 0)),
+          resource: S.optional(__S(1600, __c50, 0)),
+          context: S.optional(__S(108, __c3, 12)),
+          entities: S.optional(__S(107, __c3, 11)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "IsAuthorizedInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           decision: S.String,
-          determiningPolicies: __S(30, __c3, 6),
-          errors: __S(32, __c4, 0),
+          determiningPolicies: __S(110, __c3, 14),
+          errors: __S(112, __c3, 16),
         }),
       ).annotate({ identifier: "IsAuthorizedOutput" });
   }
 }
-function __c12(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2813,10 +2843,10 @@ function __c12(j: number): any {
           policyStoreId: S.String,
           identityToken: S.optional(SensitiveString),
           accessToken: S.optional(SensitiveString),
-          action: S.optional(__S(24, __c3, 0)),
-          resource: S.optional(__S(4, __c0, 4)),
-          context: S.optional(__S(25, __c3, 1)),
-          entities: S.optional(__S(23, __c2, 7)),
+          action: S.optional(__S(64, __c2, 0)),
+          resource: S.optional(__S(1600, __c50, 0)),
+          context: S.optional(__S(108, __c3, 12)),
+          entities: S.optional(__S(107, __c3, 11)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "IsAuthorizedWithTokenInput",
@@ -2825,32 +2855,36 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           decision: S.String,
-          determiningPolicies: __S(30, __c3, 6),
-          errors: __S(32, __c4, 0),
-          principal: S.optional(__S(4, __c0, 4)),
+          determiningPolicies: __S(110, __c3, 14),
+          errors: __S(112, __c3, 16),
+          principal: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({
         identifier: "IsAuthorizedWithTokenOutput",
       });
-    case 2:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ principalEntityType: S.optional(SensitiveString) }),
       ).annotate({ identifier: "IdentitySourceFilter" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1152, __c36, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(__S(99, __c12, 3)),
+          filters: S.optional(__S(1153, __c36, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListIdentitySourcesInput" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          clientIds: S.optional(__S(42, __c5, 2)),
+          clientIds: S.optional(__S(192, __c6, 0)),
           userPoolArn: S.optional(S.String),
           discoveryUrl: S.optional(S.String),
           openIdIssuer: S.optional(S.String),
@@ -2858,103 +2892,103 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "IdentitySourceItemDetails",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          details: S.optional(__S(101, __c12, 5)),
+          details: S.optional(__S(1155, __c36, 3)),
           identitySourceId: S.String,
           lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           policyStoreId: S.String,
           principalEntityType: SensitiveString,
-          configuration: S.optional(__S(80, __c10, 0)),
+          configuration: S.optional(__S(898, __c28, 2)),
         }),
       ).annotate({ identifier: "IdentitySourceItem" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(1156, __c36, 4));
+    case 6:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), identitySources: __S(103, __c12, 7) }),
+        S.Struct({ nextToken: S.optional(S.String), identitySources: __S(1157, __c36, 5) }),
       ).annotate({
         identifier: "ListIdentitySourcesOutput",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([
         /*@__PURE__*/ S.Struct({ unspecified: S.Boolean }),
-        /*@__PURE__*/ S.Struct({ identifier: __S(4, __c0, 4) }),
+        /*@__PURE__*/ S.Struct({ identifier: __S(1600, __c50, 0) }),
       ]);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          principal: S.optional(__S(105, __c13, 1)),
-          resource: S.optional(__S(105, __c13, 1)),
+          principal: S.optional(__S(1184, __c37, 0)),
+          resource: S.optional(__S(1184, __c37, 0)),
           policyType: S.optional(S.String),
           policyTemplateId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyFilter" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filter: S.optional(__S(106, __c13, 2)),
+          filter: S.optional(__S(1185, __c37, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListPoliciesInput" });
-    case 4:
+    case 3:
       return S.suspend(() => S.Struct({ description: S.optional(SensitiveString) })).annotate({
         identifier: "StaticPolicyDefinitionItem",
       });
-    case 5:
+    case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ static: __S(108, __c13, 4) }),
-        /*@__PURE__*/ S.Struct({ templateLinked: __S(5, __c0, 5) }),
+        /*@__PURE__*/ S.Struct({ static: __S(1187, __c37, 3) }),
+        /*@__PURE__*/ S.Struct({ templateLinked: __S(1632, __c51, 0) }),
       ]);
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
           policyId: S.String,
           policyType: S.String,
-          principal: S.optional(__S(4, __c0, 4)),
-          resource: S.optional(__S(4, __c0, 4)),
-          actions: S.optional(__S(57, __c7, 1)),
-          definition: __S(109, __c13, 5),
+          principal: S.optional(__S(1600, __c50, 0)),
+          resource: S.optional(__S(1600, __c50, 0)),
+          actions: S.optional(__S(352, __c11, 0)),
+          definition: __S(1188, __c37, 4),
           createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           effect: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyItem" });
+    case 6:
+      return S.Array(__S(1189, __c37, 5));
     case 7:
-      return S.Array(__S(110, __c13, 6));
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), policies: __S(1190, __c37, 6) }),
+      ).annotate({ identifier: "ListPoliciesOutput" });
   }
 }
-function __c14(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), policies: __S(111, __c13, 7) }),
-      ).annotate({ identifier: "ListPoliciesOutput" });
-    case 1:
       return S.suspend(() => S.Struct({ policyStoreId: S.optional(S.String) })).annotate({
         identifier: "PolicyStoreAliasFilter",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filter: S.optional(__S(113, __c14, 1)),
+          filter: S.optional(__S(1216, __c38, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListPolicyStoreAliasesInput",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           aliasName: S.String,
@@ -2964,21 +2998,25 @@ function __c14(j: number): any {
           state: S.String,
         }),
       ).annotate({ identifier: "PolicyStoreAliasItem" });
+    case 3:
+      return S.Array(__S(1218, __c38, 2));
     case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), policyStoreAliases: __S(116, __c14, 4) }),
+        S.Struct({ nextToken: S.optional(S.String), policyStoreAliases: __S(1219, __c38, 3) }),
       ).annotate({
         identifier: "ListPolicyStoreAliasesOutput",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListPolicyStoresInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
@@ -2988,17 +3026,17 @@ function __c14(j: number): any {
           description: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "PolicyStoreItem" });
+    case 2:
+      return S.Array(__S(1249, __c39, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), policyStores: __S(1250, __c39, 2) }),
+      ).annotate({ identifier: "ListPolicyStoresOutput" });
   }
 }
-function __c15(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), policyStores: __S(120, __c15, 0) }),
-      ).annotate({ identifier: "ListPolicyStoresOutput" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
@@ -3006,7 +3044,7 @@ function __c15(j: number): any {
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListPolicyTemplatesInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
@@ -3017,33 +3055,37 @@ function __c15(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyTemplateItem" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1281, __c40, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), policyTemplates: __S(124, __c15, 4) }),
+        S.Struct({ nextToken: S.optional(S.String), policyTemplates: __S(1282, __c40, 2) }),
       ).annotate({
         identifier: "ListPolicyTemplatesOutput",
       });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(63, __c7, 7)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(480, __c15, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
   }
 }
-function __c16(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.Union([/*@__PURE__*/ S.Struct({ cedarJson: SensitiveString })]);
     case 1:
       return S.suspend(() =>
-        S.Struct({ policyStoreId: S.String, definition: __S(128, __c16, 0) }).pipe(
+        S.Struct({ policyStoreId: S.String, definition: __S(1344, __c42, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutSchemaInput" });
@@ -3051,59 +3093,79 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
-          namespaces: __S(42, __c5, 2),
+          namespaces: __S(192, __c6, 0),
           createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "PutSchemaOutput" });
-    case 3:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(63, __c7, 7) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(480, __c15, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 4:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(46, __c5, 6) }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: __S(224, __c7, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          policyStoreId: S.String,
-          identitySourceId: S.String,
-          updateConfiguration: __S(51, __c6, 3),
-          principalEntityType: S.optional(SensitiveString),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateIdentitySourceInput",
-      });
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ static: __S(3, __c0, 3) })]);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          policyStoreId: S.String,
-          policyId: S.String,
-          definition: S.optional(__S(134, __c16, 6)),
-          name: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdatePolicyInput" });
   }
 }
-function __c17(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
-          validationSettings: __S(59, __c7, 3),
+          identitySourceId: S.String,
+          updateConfiguration: __S(290, __c9, 2),
+          principalEntityType: S.optional(SensitiveString),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateIdentitySourceInput",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ static: __S(1696, __c53, 0) })]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          policyId: S.String,
+          definition: S.optional(__S(1472, __c46, 0)),
+          name: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdatePolicyInput" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          validationSettings: __S(512, __c16, 0),
           deletionProtection: S.optional(S.String),
           description: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdatePolicyStoreInput" });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           policyStoreId: S.String,
@@ -3115,15 +3177,94 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdatePolicyTemplateInput",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ resourceId: S.String, resourceType: S.String })).annotate({
-        identifier: "ResourceConflict",
-      });
-    case 3:
-      return S.Array(__S(138, __c17, 2));
   }
 }
-
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ policyStoreId: S.String, policyId: S.String })).annotate({
+        identifier: "BatchGetPolicyInputItem",
+      });
+    case 1:
+      return S.Array(__S(1568, __c49, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ requests: __S(1569, __c49, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchGetPolicyInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          policyStoreId: S.String,
+          policyId: S.String,
+          policyType: S.String,
+          definition: __S(1664, __c52, 0),
+          createdDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastUpdatedDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchGetPolicyOutputItem" });
+    case 4:
+      return S.Array(__S(1571, __c49, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          policyStoreId: S.String,
+          policyId: S.String,
+          message: S.String,
+        }),
+      ).annotate({ identifier: "BatchGetPolicyErrorItem" });
+    case 6:
+      return S.Array(__S(1573, __c49, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ results: __S(1572, __c49, 4), errors: __S(1574, __c49, 6) }),
+      ).annotate({ identifier: "BatchGetPolicyOutput" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ entityType: SensitiveString, entityId: SensitiveString }),
+      ).annotate({ identifier: "EntityIdentifier" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyTemplateId: S.String,
+          principal: S.optional(__S(1600, __c50, 0)),
+          resource: S.optional(__S(1600, __c50, 0)),
+        }),
+      ).annotate({
+        identifier: "TemplateLinkedPolicyDefinitionDetail",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ static: __S(1696, __c53, 0) }),
+        /*@__PURE__*/ S.Struct({ templateLinked: __S(1632, __c51, 0) }),
+      ]);
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ description: S.optional(SensitiveString), statement: SensitiveString }),
+      ).annotate({
+        identifier: "StaticPolicyDefinitionDetail",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

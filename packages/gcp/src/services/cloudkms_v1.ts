@@ -2095,11 +2095,11 @@ export const approveProjectsLocationsSingleTenantHsmInstancesProposals: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5,
-    __c0,
+    357,
+    __c44,
     5,
   ) as any as S.Schema<ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ApproveSingleTenantHsmInstanceProposalResponse>,
+  output: __S(358, __c44, 6) as any as S.Schema<ApproveSingleTenantHsmInstanceProposalResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2119,11 +2119,11 @@ export const asymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8,
-    __c1,
-    0,
+    457,
+    __c57,
+    1,
   ) as any as S.Schema<AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AsymmetricDecryptResponse>,
+  output: __S(458, __c57, 2) as any as S.Schema<AsymmetricDecryptResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2143,11 +2143,11 @@ export const asymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    12,
-    __c1,
-    4,
+    546,
+    __c68,
+    2,
   ) as any as S.Schema<AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AsymmetricSignResponse>,
+  output: __S(547, __c68, 3) as any as S.Schema<AsymmetricSignResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2166,8 +2166,8 @@ export const createProjectsLocationsEkmConnections: API.OperationMethod<
   CreateProjectsLocationsEkmConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateProjectsLocationsEkmConnectionsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<EkmConnection>,
+  input: __S(632, __c79, 0) as any as S.Schema<CreateProjectsLocationsEkmConnectionsRequest>,
+  output: __S(652, __c81, 4) as any as S.Schema<EkmConnection>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2186,8 +2186,8 @@ export const createProjectsLocationsKeyHandles: API.OperationMethod<
   CreateProjectsLocationsKeyHandlesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateProjectsLocationsKeyHandlesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(752, __c94, 0) as any as S.Schema<CreateProjectsLocationsKeyHandlesRequest>,
+  output: __S(770, __c96, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2206,8 +2206,8 @@ export const createProjectsLocationsKeyRings: API.OperationMethod<
   CreateProjectsLocationsKeyRingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateProjectsLocationsKeyRingsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<KeyRing>,
+  input: __S(864, __c108, 0) as any as S.Schema<CreateProjectsLocationsKeyRingsRequest>,
+  output: __S(872, __c109, 0) as any as S.Schema<KeyRing>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2226,8 +2226,8 @@ export const createProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
   CreateProjectsLocationsKeyRingsCryptoKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateProjectsLocationsKeyRingsCryptoKeysRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CryptoKey>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsKeyRingsCryptoKeysRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<CryptoKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2247,11 +2247,11 @@ export const createProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    39,
-    __c4,
-    7,
+    48,
+    __c6,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CryptoKeyVersion>,
+  output: __S(17, __c2, 1) as any as S.Schema<CryptoKeyVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2270,8 +2270,8 @@ export const createProjectsLocationsKeyRingsImportJobs: API.OperationMethod<
   CreateProjectsLocationsKeyRingsImportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateProjectsLocationsKeyRingsImportJobsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ImportJob>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateProjectsLocationsKeyRingsImportJobsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ImportJob>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2291,11 +2291,11 @@ export const createProjectsLocationsSingleTenantHsmInstances: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    45,
-    __c5,
-    5,
+    72,
+    __c9,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsSingleTenantHsmInstancesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  output: __S(770, __c96, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2315,11 +2315,11 @@ export const createProjectsLocationsSingleTenantHsmInstancesProposals: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    88,
+    __c11,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  output: __S(770, __c96, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2339,11 +2339,11 @@ export const decapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    57,
-    __c7,
+    113,
+    __c14,
     1,
   ) as any as S.Schema<DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DecapsulateResponse>,
+  output: __S(114, __c14, 2) as any as S.Schema<DecapsulateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2362,8 +2362,8 @@ export const decryptProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
   DecryptProjectsLocationsKeyRingsCryptoKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DecryptProjectsLocationsKeyRingsCryptoKeysRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<DecryptResponse>,
+  input: __S(121, __c15, 1) as any as S.Schema<DecryptProjectsLocationsKeyRingsCryptoKeysRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<DecryptResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2382,8 +2382,8 @@ export const deleteProjectsLocationsKeyRings: API.OperationMethod<
   DeleteProjectsLocationsKeyRingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteProjectsLocationsKeyRingsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteProjectsLocationsKeyRingsRequest>,
+  output: __S(770, __c96, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2402,8 +2402,8 @@ export const deleteProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
   DeleteProjectsLocationsKeyRingsCryptoKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteProjectsLocationsKeyRingsCryptoKeysRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteProjectsLocationsKeyRingsCryptoKeysRequest>,
+  output: __S(770, __c96, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2423,11 +2423,11 @@ export const deleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    64,
-    __c8,
+    144,
+    __c18,
     0,
   ) as any as S.Schema<DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  output: __S(770, __c96, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2447,11 +2447,11 @@ export const deleteProjectsLocationsSingleTenantHsmInstancesProposals: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    65,
-    __c8,
-    1,
+    152,
+    __c19,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Empty>,
+  output: __S(96, __c12, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2471,11 +2471,11 @@ export const destroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
-    __c8,
-    2,
+    160,
+    __c20,
+    0,
   ) as any as S.Schema<DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CryptoKeyVersion>,
+  output: __S(17, __c2, 1) as any as S.Schema<CryptoKeyVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2494,8 +2494,8 @@ export const encryptProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
   EncryptProjectsLocationsKeyRingsCryptoKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<EncryptProjectsLocationsKeyRingsCryptoKeysRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<EncryptResponse>,
+  input: __S(169, __c21, 1) as any as S.Schema<EncryptProjectsLocationsKeyRingsCryptoKeysRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<EncryptResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2515,11 +2515,11 @@ export const executeProjectsLocationsSingleTenantHsmInstancesProposals: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    70,
-    __c8,
-    6,
+    176,
+    __c22,
+    0,
   ) as any as S.Schema<ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  output: __S(770, __c96, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2537,11 +2537,11 @@ export const exportTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRingsCry
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    71,
-    __c8,
-    7,
+    184,
+    __c23,
+    0,
   ) as any as S.Schema<ExportTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<ExportTrustedKeyWrappedCryptoKeyVersionResponse>,
+  output: __S(185, __c23, 1) as any as S.Schema<ExportTrustedKeyWrappedCryptoKeyVersionResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2560,8 +2560,8 @@ export const generateRandomBytesProjectsLocations: API.OperationMethod<
   GenerateRandomBytesProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GenerateRandomBytesProjectsLocationsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GenerateRandomBytesResponse>,
+  input: __S(193, __c24, 1) as any as S.Schema<GenerateRandomBytesProjectsLocationsRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<GenerateRandomBytesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2575,8 +2575,8 @@ export const getAutokeyConfigFolders: API.OperationMethod<
   GetAutokeyConfigFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetAutokeyConfigFoldersRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<AutokeyConfig>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetAutokeyConfigFoldersRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<AutokeyConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2590,8 +2590,8 @@ export const getAutokeyConfigProjects: API.OperationMethod<
   GetAutokeyConfigProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetAutokeyConfigProjectsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<AutokeyConfig>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetAutokeyConfigProjectsRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<AutokeyConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2605,8 +2605,8 @@ export const getEffectiveAutokeyConfigFolders: API.OperationMethod<
   GetEffectiveAutokeyConfigFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetEffectiveAutokeyConfigFoldersRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ShowEffectiveAutokeyConfigResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetEffectiveAutokeyConfigFoldersRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<ShowEffectiveAutokeyConfigResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2620,8 +2620,8 @@ export const getEffectiveAutokeyConfigProjects: API.OperationMethod<
   GetEffectiveAutokeyConfigProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetEffectiveAutokeyConfigProjectsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ShowEffectiveAutokeyConfigResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetEffectiveAutokeyConfigProjectsRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<ShowEffectiveAutokeyConfigResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2639,14 +2639,14 @@ export const getEffectiveKeyAccessJustificationsEnrollmentConfigProjects: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    83,
-    __c10,
-    3,
+    248,
+    __c31,
+    0,
   ) as any as S.Schema<GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest>,
   output: __S(
-    85,
-    __c10,
-    5,
+    250,
+    __c31,
+    2,
   ) as any as S.Schema<ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2665,14 +2665,14 @@ export const getEffectiveKeyAccessJustificationsPolicyConfigProjects: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    86,
-    __c10,
-    6,
+    256,
+    __c32,
+    0,
   ) as any as S.Schema<GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest>,
   output: __S(
-    88,
-    __c11,
-    0,
+    257,
+    __c32,
+    1,
   ) as any as S.Schema<ShowEffectiveKeyAccessJustificationsPolicyConfigResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2687,8 +2687,8 @@ export const getEkmConfigProjectsLocations: API.OperationMethod<
   GetEkmConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetEkmConfigProjectsLocationsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<EkmConfig>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetEkmConfigProjectsLocationsRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<EkmConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2702,8 +2702,8 @@ export const getIamPolicyProjectsLocationsEkmConfig: API.OperationMethod<
   GetIamPolicyProjectsLocationsEkmConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetIamPolicyProjectsLocationsEkmConfigRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<Policy>,
+  input: __S(288, __c36, 0) as any as S.Schema<GetIamPolicyProjectsLocationsEkmConfigRequest>,
+  output: __S(303, __c37, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2717,8 +2717,8 @@ export const getIamPolicyProjectsLocationsEkmConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsEkmConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetIamPolicyProjectsLocationsEkmConnectionsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<Policy>,
+  input: __S(304, __c38, 0) as any as S.Schema<GetIamPolicyProjectsLocationsEkmConnectionsRequest>,
+  output: __S(303, __c37, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2732,8 +2732,8 @@ export const getIamPolicyProjectsLocationsKeyRings: API.OperationMethod<
   GetIamPolicyProjectsLocationsKeyRingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetIamPolicyProjectsLocationsKeyRingsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<Policy>,
+  input: __S(312, __c39, 0) as any as S.Schema<GetIamPolicyProjectsLocationsKeyRingsRequest>,
+  output: __S(303, __c37, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2751,11 +2751,11 @@ export const getIamPolicyProjectsLocationsKeyRingsCryptoKeys: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    102,
-    __c12,
-    6,
+    320,
+    __c40,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<Policy>,
+  output: __S(303, __c37, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2773,11 +2773,11 @@ export const getIamPolicyProjectsLocationsKeyRingsImportJobs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    103,
-    __c12,
-    7,
+    328,
+    __c41,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsKeyRingsImportJobsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<Policy>,
+  output: __S(303, __c37, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2791,8 +2791,8 @@ export const getKajPolicyConfigFolders: API.OperationMethod<
   GetKajPolicyConfigFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetKajPolicyConfigFoldersRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<KeyAccessJustificationsPolicyConfig>,
+  input: __S(336, __c42, 0) as any as S.Schema<GetKajPolicyConfigFoldersRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<KeyAccessJustificationsPolicyConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2806,8 +2806,8 @@ export const getKajPolicyConfigOrganizations: API.OperationMethod<
   GetKajPolicyConfigOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetKajPolicyConfigOrganizationsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<KeyAccessJustificationsPolicyConfig>,
+  input: __S(344, __c43, 0) as any as S.Schema<GetKajPolicyConfigOrganizationsRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<KeyAccessJustificationsPolicyConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2821,8 +2821,8 @@ export const getKajPolicyConfigProjects: API.OperationMethod<
   GetKajPolicyConfigProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetKajPolicyConfigProjectsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<KeyAccessJustificationsPolicyConfig>,
+  input: __S(360, __c45, 0) as any as S.Schema<GetKajPolicyConfigProjectsRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<KeyAccessJustificationsPolicyConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2836,8 +2836,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<Location>,
+  input: __S(368, __c46, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(376, __c47, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2851,8 +2851,8 @@ export const getProjectsLocationsEkmConnections: API.OperationMethod<
   GetProjectsLocationsEkmConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetProjectsLocationsEkmConnectionsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<EkmConnection>,
+  input: __S(384, __c48, 0) as any as S.Schema<GetProjectsLocationsEkmConnectionsRequest>,
+  output: __S(652, __c81, 4) as any as S.Schema<EkmConnection>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2866,8 +2866,8 @@ export const getProjectsLocationsKeyHandles: API.OperationMethod<
   GetProjectsLocationsKeyHandlesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<GetProjectsLocationsKeyHandlesRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<KeyHandle>,
+  input: __S(392, __c49, 0) as any as S.Schema<GetProjectsLocationsKeyHandlesRequest>,
+  output: __S(776, __c97, 0) as any as S.Schema<KeyHandle>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2881,8 +2881,8 @@ export const getProjectsLocationsKeyRings: API.OperationMethod<
   GetProjectsLocationsKeyRingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetProjectsLocationsKeyRingsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<KeyRing>,
+  input: __S(400, __c50, 0) as any as S.Schema<GetProjectsLocationsKeyRingsRequest>,
+  output: __S(872, __c109, 0) as any as S.Schema<KeyRing>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2896,8 +2896,8 @@ export const getProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
   GetProjectsLocationsKeyRingsCryptoKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetProjectsLocationsKeyRingsCryptoKeysRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CryptoKey>,
+  input: __S(408, __c51, 0) as any as S.Schema<GetProjectsLocationsKeyRingsCryptoKeysRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<CryptoKey>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2915,11 +2915,11 @@ export const getProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    113,
-    __c14,
-    1,
+    416,
+    __c52,
+    0,
   ) as any as S.Schema<GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CryptoKeyVersion>,
+  output: __S(17, __c2, 1) as any as S.Schema<CryptoKeyVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2933,8 +2933,8 @@ export const getProjectsLocationsKeyRingsImportJobs: API.OperationMethod<
   GetProjectsLocationsKeyRingsImportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetProjectsLocationsKeyRingsImportJobsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ImportJob>,
+  input: __S(424, __c53, 0) as any as S.Schema<GetProjectsLocationsKeyRingsImportJobsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ImportJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2948,8 +2948,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Operation>,
+  input: __S(432, __c54, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(770, __c96, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2963,8 +2963,8 @@ export const getProjectsLocationsRetiredResources: API.OperationMethod<
   GetProjectsLocationsRetiredResourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetProjectsLocationsRetiredResourcesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<RetiredResource>,
+  input: __S(440, __c55, 0) as any as S.Schema<GetProjectsLocationsRetiredResourcesRequest>,
+  output: __S(448, __c56, 0) as any as S.Schema<RetiredResource>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2978,8 +2978,8 @@ export const getProjectsLocationsSingleTenantHsmInstances: API.OperationMethod<
   GetProjectsLocationsSingleTenantHsmInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetProjectsLocationsSingleTenantHsmInstancesRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<SingleTenantHsmInstance>,
+  input: __S(464, __c58, 0) as any as S.Schema<GetProjectsLocationsSingleTenantHsmInstancesRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<SingleTenantHsmInstance>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2997,11 +2997,11 @@ export const getProjectsLocationsSingleTenantHsmInstancesProposals: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    119,
-    __c14,
-    7,
+    472,
+    __c59,
+    0,
   ) as any as S.Schema<GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<SingleTenantHsmInstanceProposal>,
+  output: __S(111, __c13, 7) as any as S.Schema<SingleTenantHsmInstanceProposal>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3019,11 +3019,11 @@ export const getPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    120,
-    __c15,
+    480,
+    __c60,
     0,
   ) as any as S.Schema<GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<PublicKey>,
+  output: __S(482, __c60, 2) as any as S.Schema<PublicKey>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3043,11 +3043,11 @@ export const importProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    124,
-    __c15,
-    4,
+    489,
+    __c61,
+    1,
   ) as any as S.Schema<ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CryptoKeyVersion>,
+  output: __S(17, __c2, 1) as any as S.Schema<CryptoKeyVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3067,11 +3067,11 @@ export const importTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRingsCry
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    126,
-    __c15,
-    6,
+    497,
+    __c62,
+    1,
   ) as any as S.Schema<ImportTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CryptoKeyVersion>,
+  output: __S(17, __c2, 1) as any as S.Schema<CryptoKeyVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3086,8 +3086,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<ListLocationsResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(506, __c63, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3103,8 +3103,8 @@ export const listProjectsLocationsEkmConnections: API.PaginatedOperationMethod<
   GcpOpContext,
   ListEkmConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListProjectsLocationsEkmConnectionsRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<ListEkmConnectionsResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<ListProjectsLocationsEkmConnectionsRequest>,
+  output: __S(514, __c64, 2) as any as S.Schema<ListEkmConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3120,8 +3120,8 @@ export const listProjectsLocationsKeyHandles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListKeyHandlesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<ListProjectsLocationsKeyHandlesRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<ListKeyHandlesResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<ListProjectsLocationsKeyHandlesRequest>,
+  output: __S(522, __c65, 2) as any as S.Schema<ListKeyHandlesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3137,8 +3137,8 @@ export const listProjectsLocationsKeyRings: API.PaginatedOperationMethod<
   GcpOpContext,
   ListKeyRingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListProjectsLocationsKeyRingsRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<ListKeyRingsResponse>,
+  input: __S(528, __c66, 0) as any as S.Schema<ListProjectsLocationsKeyRingsRequest>,
+  output: __S(530, __c66, 2) as any as S.Schema<ListKeyRingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3154,8 +3154,8 @@ export const listProjectsLocationsKeyRingsCryptoKeys: API.PaginatedOperationMeth
   GcpOpContext,
   ListCryptoKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ListProjectsLocationsKeyRingsCryptoKeysRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ListCryptoKeysResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<ListProjectsLocationsKeyRingsCryptoKeysRequest>,
+  output: __S(538, __c67, 2) as any as S.Schema<ListCryptoKeysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3175,11 +3175,11 @@ export const listProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Pagin
   ListCryptoKeyVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    142,
-    __c17,
-    6,
+    552,
+    __c69,
+    0,
   ) as any as S.Schema<ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<ListCryptoKeyVersionsResponse>,
+  output: __S(554, __c69, 2) as any as S.Schema<ListCryptoKeyVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3195,8 +3195,8 @@ export const listProjectsLocationsKeyRingsImportJobs: API.PaginatedOperationMeth
   GcpOpContext,
   ListImportJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListProjectsLocationsKeyRingsImportJobsRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<ListImportJobsResponse>,
+  input: __S(560, __c70, 0) as any as S.Schema<ListProjectsLocationsKeyRingsImportJobsRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<ListImportJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3212,8 +3212,8 @@ export const listProjectsLocationsRetiredResources: API.PaginatedOperationMethod
   GcpOpContext,
   ListRetiredResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ListProjectsLocationsRetiredResourcesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<ListRetiredResourcesResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<ListProjectsLocationsRetiredResourcesRequest>,
+  output: __S(570, __c71, 2) as any as S.Schema<ListRetiredResourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3230,11 +3230,11 @@ export const listProjectsLocationsSingleTenantHsmInstances: API.PaginatedOperati
   ListSingleTenantHsmInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    151,
-    __c18,
-    7,
+    576,
+    __c72,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSingleTenantHsmInstancesRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<ListSingleTenantHsmInstancesResponse>,
+  output: __S(578, __c72, 2) as any as S.Schema<ListSingleTenantHsmInstancesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3254,11 +3254,11 @@ export const listProjectsLocationsSingleTenantHsmInstancesProposals: API.Paginat
   ListSingleTenantHsmInstanceProposalsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    154,
-    __c19,
-    2,
+    584,
+    __c73,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<ListSingleTenantHsmInstanceProposalsResponse>,
+  output: __S(586, __c73, 2) as any as S.Schema<ListSingleTenantHsmInstanceProposalsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3279,11 +3279,11 @@ export const macSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    158,
-    __c19,
-    6,
+    593,
+    __c74,
+    1,
   ) as any as S.Schema<MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<MacSignResponse>,
+  output: __S(594, __c74, 2) as any as S.Schema<MacSignResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3303,11 +3303,11 @@ export const macVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    161,
-    __c20,
+    601,
+    __c75,
     1,
   ) as any as S.Schema<MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<MacVerifyResponse>,
+  output: __S(602, __c75, 2) as any as S.Schema<MacVerifyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3326,8 +3326,8 @@ export const patchProjectsLocationsEkmConnections: API.OperationMethod<
   PatchProjectsLocationsEkmConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<PatchProjectsLocationsEkmConnectionsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<EkmConnection>,
+  input: __S(608, __c76, 0) as any as S.Schema<PatchProjectsLocationsEkmConnectionsRequest>,
+  output: __S(652, __c81, 4) as any as S.Schema<EkmConnection>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3346,8 +3346,8 @@ export const patchProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
   PatchProjectsLocationsKeyRingsCryptoKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<PatchProjectsLocationsKeyRingsCryptoKeysRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CryptoKey>,
+  input: __S(616, __c77, 0) as any as S.Schema<PatchProjectsLocationsKeyRingsCryptoKeysRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<CryptoKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3367,11 +3367,11 @@ export const patchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    165,
-    __c20,
-    5,
+    624,
+    __c78,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CryptoKeyVersion>,
+  output: __S(17, __c2, 1) as any as S.Schema<CryptoKeyVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3391,11 +3391,11 @@ export const rawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    167,
-    __c20,
-    7,
+    657,
+    __c82,
+    1,
   ) as any as S.Schema<RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<RawDecryptResponse>,
+  output: __S(658, __c82, 2) as any as S.Schema<RawDecryptResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3415,11 +3415,11 @@ export const rawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    170,
-    __c21,
-    2,
+    665,
+    __c83,
+    1,
   ) as any as S.Schema<RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<RawEncryptResponse>,
+  output: __S(666, __c83, 2) as any as S.Schema<RawEncryptResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3439,11 +3439,11 @@ export const restoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    172,
-    __c21,
-    4,
+    672,
+    __c84,
+    0,
   ) as any as S.Schema<RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CryptoKeyVersion>,
+  output: __S(17, __c2, 1) as any as S.Schema<CryptoKeyVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3462,8 +3462,8 @@ export const setIamPolicyProjectsLocationsEkmConfig: API.OperationMethod<
   SetIamPolicyProjectsLocationsEkmConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<SetIamPolicyProjectsLocationsEkmConfigRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<Policy>,
+  input: __S(680, __c85, 0) as any as S.Schema<SetIamPolicyProjectsLocationsEkmConfigRequest>,
+  output: __S(303, __c37, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3482,8 +3482,8 @@ export const setIamPolicyProjectsLocationsEkmConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsEkmConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<SetIamPolicyProjectsLocationsEkmConnectionsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<Policy>,
+  input: __S(696, __c87, 0) as any as S.Schema<SetIamPolicyProjectsLocationsEkmConnectionsRequest>,
+  output: __S(303, __c37, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3502,8 +3502,8 @@ export const setIamPolicyProjectsLocationsKeyRings: API.OperationMethod<
   SetIamPolicyProjectsLocationsKeyRingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<SetIamPolicyProjectsLocationsKeyRingsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<Policy>,
+  input: __S(704, __c88, 0) as any as S.Schema<SetIamPolicyProjectsLocationsKeyRingsRequest>,
+  output: __S(303, __c37, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3523,11 +3523,11 @@ export const setIamPolicyProjectsLocationsKeyRingsCryptoKeys: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    177,
-    __c22,
-    1,
+    712,
+    __c89,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<Policy>,
+  output: __S(303, __c37, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3547,11 +3547,11 @@ export const setIamPolicyProjectsLocationsKeyRingsImportJobs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    178,
-    __c22,
-    2,
+    720,
+    __c90,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<Policy>,
+  output: __S(303, __c37, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3570,8 +3570,8 @@ export const testIamPermissionsProjectsLocationsEkmConfig: API.OperationMethod<
   TestIamPermissionsProjectsLocationsEkmConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<TestIamPermissionsProjectsLocationsEkmConfigRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(728, __c91, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsEkmConfigRequest>,
+  output: __S(736, __c92, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3591,11 +3591,11 @@ export const testIamPermissionsProjectsLocationsEkmConnections: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    181,
-    __c22,
-    5,
+    744,
+    __c93,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsEkmConnectionsRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(736, __c92, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3614,8 +3614,8 @@ export const testIamPermissionsProjectsLocationsKeyRings: API.OperationMethod<
   TestIamPermissionsProjectsLocationsKeyRingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<TestIamPermissionsProjectsLocationsKeyRingsRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(784, __c98, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsKeyRingsRequest>,
+  output: __S(736, __c92, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3635,11 +3635,11 @@ export const testIamPermissionsProjectsLocationsKeyRingsCryptoKeys: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    183,
-    __c22,
-    7,
+    792,
+    __c99,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(736, __c92, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3659,11 +3659,11 @@ export const testIamPermissionsProjectsLocationsKeyRingsImportJobs: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    184,
-    __c23,
+    800,
+    __c100,
     0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(736, __c92, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3682,8 +3682,8 @@ export const updateAutokeyConfigFolders: API.OperationMethod<
   UpdateAutokeyConfigFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<UpdateAutokeyConfigFoldersRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<AutokeyConfig>,
+  input: __S(808, __c101, 0) as any as S.Schema<UpdateAutokeyConfigFoldersRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<AutokeyConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3702,8 +3702,8 @@ export const updateAutokeyConfigProjects: API.OperationMethod<
   UpdateAutokeyConfigProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<UpdateAutokeyConfigProjectsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<AutokeyConfig>,
+  input: __S(816, __c102, 0) as any as S.Schema<UpdateAutokeyConfigProjectsRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<AutokeyConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3722,8 +3722,8 @@ export const updateEkmConfigProjectsLocations: API.OperationMethod<
   UpdateEkmConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<UpdateEkmConfigProjectsLocationsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<EkmConfig>,
+  input: __S(824, __c103, 0) as any as S.Schema<UpdateEkmConfigProjectsLocationsRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<EkmConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3742,8 +3742,8 @@ export const updateKajPolicyConfigFolders: API.OperationMethod<
   UpdateKajPolicyConfigFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<UpdateKajPolicyConfigFoldersRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<KeyAccessJustificationsPolicyConfig>,
+  input: __S(832, __c104, 0) as any as S.Schema<UpdateKajPolicyConfigFoldersRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<KeyAccessJustificationsPolicyConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3762,8 +3762,8 @@ export const updateKajPolicyConfigOrganizations: API.OperationMethod<
   UpdateKajPolicyConfigOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<UpdateKajPolicyConfigOrganizationsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<KeyAccessJustificationsPolicyConfig>,
+  input: __S(840, __c105, 0) as any as S.Schema<UpdateKajPolicyConfigOrganizationsRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<KeyAccessJustificationsPolicyConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3782,8 +3782,8 @@ export const updateKajPolicyConfigProjects: API.OperationMethod<
   UpdateKajPolicyConfigProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<UpdateKajPolicyConfigProjectsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<KeyAccessJustificationsPolicyConfig>,
+  input: __S(848, __c106, 0) as any as S.Schema<UpdateKajPolicyConfigProjectsRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<KeyAccessJustificationsPolicyConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3803,11 +3803,11 @@ export const updatePrimaryVersionProjectsLocationsKeyRingsCryptoKeys: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    192,
-    __c24,
-    0,
+    857,
+    __c107,
+    1,
   ) as any as S.Schema<UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CryptoKey>,
+  output: __S(41, __c5, 1) as any as S.Schema<CryptoKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3825,11 +3825,11 @@ export const verifyConnectivityProjectsLocationsEkmConnections: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    193,
-    __c24,
-    1,
+    880,
+    __c110,
+    0,
   ) as any as S.Schema<VerifyConnectivityProjectsLocationsEkmConnectionsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<VerifyConnectivityResponse>,
+  output: __S(96, __c12, 0) as any as S.Schema<VerifyConnectivityResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3841,62 +3841,21 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          signedChallenge: S.optional(S.String),
-          publicKeyPem: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChallengeReply" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          challengeReplies: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "QuorumReply" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requiredChallengeReplies: S.optional(__S(1, __c0, 1)),
-          quorumChallengeReplies: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "RequiredActionQuorumReply",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          quorumReply: S.optional(__S(2, __c0, 2)),
-          requiredActionQuorumReply: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ApproveSingleTenantHsmInstanceProposalRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          cryptoKeyId: S.optional(S.String.pipe(T.Query())),
+          skipInitialVersionCreation: S.optional(S.Boolean.pipe(T.Query())),
+          trustedWrappingEnabled: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1/{+name}:approve",
+            uri: "v1/{+parent}/cryptoKeys",
             baseUrl: "https://cloudkms.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
+        identifier: "CreateProjectsLocationsKeyRingsCryptoKeysRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ApproveSingleTenantHsmInstanceProposalResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ciphertext: S.optional(S.String),
-          ciphertextCrc32c: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AsymmetricDecryptRequest" });
   }
 }
 function __c1(j: number): any {
@@ -3904,226 +3863,22 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:asymmetricDecrypt",
-            baseUrl: "https://cloudkms.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-      });
+          googleCardCerts: S.optional(__S(640, __c80, 0)),
+          googlePartitionCerts: S.optional(__S(640, __c80, 0)),
+          caviumCerts: S.optional(__S(640, __c80, 0)),
+        }),
+      ).annotate({ identifier: "CertificateChains" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          plaintext: S.optional(S.String),
-          plaintextCrc32c: S.optional(S.String),
-          verifiedCiphertextCrc32c: S.optional(S.Boolean),
-          protectionLevel: S.optional(S.String),
+          format: S.optional(S.String),
+          content: S.optional(S.String),
+          certChains: S.optional(__S(8, __c1, 0)),
         }),
-      ).annotate({
-        identifier: "AsymmetricDecryptResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          externalMu: S.optional(S.String),
-          sha256: S.optional(S.String),
-          sha384: S.optional(S.String),
-          sha512: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Digest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          digest: S.optional(__S(10, __c1, 2)),
-          data: S.optional(S.String),
-          digestCrc32c: S.optional(S.String),
-          dataCrc32c: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AsymmetricSignRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:asymmetricSign",
-            baseUrl: "https://cloudkms.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          verifiedDigestCrc32c: S.optional(S.Boolean),
-          signature: S.optional(S.String),
-          protectionLevel: S.optional(S.String),
-          signatureCrc32c: S.optional(S.String),
-          verifiedDataCrc32c: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AsymmetricSignResponse" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rawDer: S.optional(S.String),
-          notAfterTime: S.optional(S.String),
-          subjectAlternativeDnsNames: S.optional(__S(14, __c1, 6)),
-          serialNumber: S.optional(S.String),
-          parsed: S.optional(S.Boolean),
-          issuer: S.optional(S.String),
-          notBeforeTime: S.optional(S.String),
-          sha256Fingerprint: S.optional(S.String),
-          subject: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Certificate" });
+      ).annotate({ identifier: "KeyOperationAttestation" });
   }
 }
 function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serverCertificates: S.optional(__S(16, __c2, 0)),
-          endpointFilter: S.optional(S.String),
-          hostname: S.optional(S.String),
-          serviceDirectoryService: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceResolver" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          cryptoSpacePath: S.optional(S.String),
-          keyManagementMode: S.optional(S.String),
-          serviceResolvers: S.optional(__S(18, __c2, 2)),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EkmConnection" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          ekmConnectionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/ekmConnections",
-            baseUrl: "https://cloudkms.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsEkmConnectionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKey: S.optional(S.String),
-          name: S.optional(S.String),
-          resourceTypeSelector: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyHandle" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          keyHandleId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/keyHandles",
-            baseUrl: "https://cloudkms.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsKeyHandlesRequest",
-      });
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(23, __c2, 7)),
-          metadata: S.optional(__S(23, __c2, 7)),
-          done: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          error: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyRing" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          keyRingId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/keyRings",
-            baseUrl: "https://cloudkms.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsKeyRingsRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allowedAccessReasons: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "KeyAccessJustificationsPolicy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          protectionLevel: S.optional(S.String),
-          algorithm: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CryptoKeyVersionTemplate" });
-  }
-}
-function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4138,22 +3893,6 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          googleCardCerts: S.optional(__S(14, __c1, 6)),
-          googlePartitionCerts: S.optional(__S(14, __c1, 6)),
-          caviumCerts: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "CertificateChains" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          format: S.optional(S.String),
-          content: S.optional(S.String),
-          certChains: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "KeyOperationAttestation" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           protectionLevel: S.optional(S.String),
           reimportEligible: S.optional(S.Boolean),
           trustedWrappingEnabled: S.optional(S.Boolean),
@@ -4164,58 +3903,73 @@ function __c4(j: number): any {
           hsmTrusted: S.optional(S.Boolean),
           name: S.optional(S.String),
           algorithm: S.optional(S.String),
-          externalProtectionLevelOptions: S.optional(__S(32, __c4, 0)),
+          externalProtectionLevelOptions: S.optional(__S(16, __c2, 0)),
           state: S.optional(S.String),
           importTime: S.optional(S.String),
           importJob: S.optional(S.String),
           generationFailureReason: S.optional(S.String),
           generateTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          attestation: S.optional(__S(34, __c4, 2)),
+          attestation: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "CryptoKeyVersion" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          keyAccessJustificationsPolicy: S.optional(__S(30, __c3, 6)),
+          allowedAccessReasons: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "KeyAccessJustificationsPolicy",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          protectionLevel: S.optional(S.String),
+          algorithm: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CryptoKeyVersionTemplate" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          keyAccessJustificationsPolicy: S.optional(__S(25, __c3, 1)),
           purpose: S.optional(S.String),
-          versionTemplate: S.optional(__S(31, __c3, 7)),
+          versionTemplate: S.optional(__S(40, __c5, 0)),
           name: S.optional(S.String),
           rotationPeriod: S.optional(S.String),
           nextRotationTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          primary: S.optional(__S(35, __c4, 3)),
+          primary: S.optional(__S(17, __c2, 1)),
           importOnly: S.optional(S.Boolean),
           destroyScheduledDuration: S.optional(S.String),
           cryptoKeyBackend: S.optional(S.String),
-          labels: S.optional(__S(36, __c4, 4)),
+          labels: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "CryptoKey" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cryptoKeyId: S.optional(S.String.pipe(T.Query())),
-          skipInitialVersionCreation: S.optional(S.Boolean.pipe(T.Query())),
-          trustedWrappingEnabled: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/cryptoKeys",
-            baseUrl: "https://cloudkms.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsKeyRingsCryptoKeysRequest",
-      });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4228,7 +3982,27 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          importJobId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/importJobs",
+            baseUrl: "https://cloudkms.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsKeyRingsImportJobsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4243,9 +4017,9 @@ function __c5(j: number): any {
           importMethod: S.optional(S.String),
           state: S.optional(S.String),
           expireEventTime: S.optional(S.String),
-          publicKey: S.optional(__S(40, __c5, 0)),
+          publicKey: S.optional(__S(64, __c8, 0)),
           name: S.optional(S.String),
-          attestation: S.optional(__S(34, __c4, 2)),
+          attestation: S.optional(__S(9, __c1, 1)),
           createTime: S.optional(S.String),
           generateTime: S.optional(S.String),
           protectionLevel: S.optional(S.String),
@@ -4254,49 +4028,16 @@ function __c5(j: number): any {
           expireTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImportJob" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          importJobId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/importJobs",
-            baseUrl: "https://cloudkms.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsKeyRingsImportJobsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          twoFactorPublicKeyPems: S.optional(__S(14, __c1, 6)),
-          totalApproverCount: S.optional(S.Number),
-          requiredApproverCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QuorumAuth" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          quorumAuth: S.optional(__S(43, __c5, 3)),
-          deleteTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          disableTime: S.optional(S.String),
-          state: S.optional(S.String),
-          unrefreshedDurationUntilDisable: S.optional(S.String),
-          keyPortabilityEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SingleTenantHsmInstance" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           singleTenantHsmInstanceId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(81, __c10, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4307,95 +4048,41 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsSingleTenantHsmInstancesRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DisableSingleTenantHsmInstance",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requiredApproverCount: S.optional(S.Number),
-          twoFactorPublicKeyPems: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "RegisterTwoFactorAuthKeys",
-      });
   }
 }
-function __c6(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          twoFactorPublicKeyPem: S.optional(S.String),
+          twoFactorPublicKeyPems: S.optional(__S(640, __c80, 0)),
+          totalApproverCount: S.optional(S.Number),
+          requiredApproverCount: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "RemoveQuorumMember" });
+      ).annotate({ identifier: "QuorumAuth" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          publicKeyPem: S.optional(S.String),
-          challenge: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Challenge" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          challenges: S.optional(__S(50, __c6, 2)),
-          requiredApproverCount: S.optional(S.Number),
-          approvedTwoFactorPublicKeyPems: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "QuorumParameters" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requiredApproverCount: S.optional(S.Number),
-          approvedTwoFactorPublicKeyPems: S.optional(__S(14, __c1, 6)),
-          requiredChallenges: S.optional(__S(50, __c6, 2)),
-          quorumChallenges: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "RequiredActionQuorumParameters",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          twoFactorPublicKeyPem: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpgradeKeyTrust" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          disableSingleTenantHsmInstance: S.optional(__S(46, __c5, 6)),
-          purgeTime: S.optional(S.String),
-          state: S.optional(S.String),
-          createTime: S.optional(S.String),
-          refreshSingleTenantHsmInstance: S.optional(__S(46, __c5, 6)),
-          registerTwoFactorAuthKeys: S.optional(__S(47, __c5, 7)),
-          removeQuorumMember: S.optional(__S(48, __c6, 0)),
-          expireTime: S.optional(S.String),
-          failureReason: S.optional(S.String),
-          deleteSingleTenantHsmInstance: S.optional(__S(46, __c5, 6)),
-          name: S.optional(S.String),
-          quorumParameters: S.optional(__S(51, __c6, 3)),
-          requiredActionQuorumParameters: S.optional(__S(52, __c6, 4)),
+          quorumAuth: S.optional(__S(80, __c10, 0)),
           deleteTime: S.optional(S.String),
-          upgradeKeyTrust: S.optional(__S(53, __c6, 5)),
-          enableSingleTenantHsmInstance: S.optional(__S(46, __c5, 6)),
-          addQuorumMember: S.optional(__S(48, __c6, 0)),
-          ttl: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          disableTime: S.optional(S.String),
+          state: S.optional(S.String),
+          unrefreshedDurationUntilDisable: S.optional(S.String),
+          keyPortabilityEnabled: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "SingleTenantHsmInstanceProposal",
-      });
-    case 7:
+      ).annotate({ identifier: "SingleTenantHsmInstance" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           singleTenantHsmInstanceProposalId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(111, __c13, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4408,7 +4095,94 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DisableSingleTenantHsmInstance",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requiredApproverCount: S.optional(S.Number),
+          twoFactorPublicKeyPems: S.optional(__S(640, __c80, 0)),
+        }),
+      ).annotate({
+        identifier: "RegisterTwoFactorAuthKeys",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          twoFactorPublicKeyPem: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RemoveQuorumMember" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          publicKeyPem: S.optional(S.String),
+          challenge: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Challenge" });
+    case 3:
+      return S.Array(__S(106, __c13, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          challenges: S.optional(__S(107, __c13, 3)),
+          requiredApproverCount: S.optional(S.Number),
+          approvedTwoFactorPublicKeyPems: S.optional(__S(640, __c80, 0)),
+        }),
+      ).annotate({ identifier: "QuorumParameters" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          requiredApproverCount: S.optional(S.Number),
+          approvedTwoFactorPublicKeyPems: S.optional(__S(640, __c80, 0)),
+          requiredChallenges: S.optional(__S(107, __c13, 3)),
+          quorumChallenges: S.optional(__S(107, __c13, 3)),
+        }),
+      ).annotate({
+        identifier: "RequiredActionQuorumParameters",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          twoFactorPublicKeyPem: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpgradeKeyTrust" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          disableSingleTenantHsmInstance: S.optional(__S(96, __c12, 0)),
+          purgeTime: S.optional(S.String),
+          state: S.optional(S.String),
+          createTime: S.optional(S.String),
+          refreshSingleTenantHsmInstance: S.optional(__S(96, __c12, 0)),
+          registerTwoFactorAuthKeys: S.optional(__S(104, __c13, 0)),
+          removeQuorumMember: S.optional(__S(105, __c13, 1)),
+          expireTime: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          deleteSingleTenantHsmInstance: S.optional(__S(96, __c12, 0)),
+          name: S.optional(S.String),
+          quorumParameters: S.optional(__S(108, __c13, 4)),
+          requiredActionQuorumParameters: S.optional(__S(109, __c13, 5)),
+          deleteTime: S.optional(S.String),
+          upgradeKeyTrust: S.optional(__S(110, __c13, 6)),
+          enableSingleTenantHsmInstance: S.optional(__S(96, __c12, 0)),
+          addQuorumMember: S.optional(__S(105, __c13, 1)),
+          ttl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SingleTenantHsmInstanceProposal",
+      });
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4421,7 +4195,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4442,7 +4216,11 @@ function __c7(j: number): any {
           sharedSecretCrc32c: S.optional(S.String),
         }),
       ).annotate({ identifier: "DecapsulateResponse" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ciphertext: S.optional(S.String),
@@ -4451,11 +4229,11 @@ function __c7(j: number): any {
           ciphertextCrc32c: S.optional(S.String),
         }),
       ).annotate({ identifier: "DecryptRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4466,7 +4244,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DecryptProjectsLocationsKeyRingsCryptoKeysRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           protectionLevel: S.optional(S.String),
@@ -4475,7 +4253,11 @@ function __c7(j: number): any {
           plaintext: S.optional(S.String),
         }),
       ).annotate({ identifier: "DecryptResponse" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4489,7 +4271,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsKeyRingsRequest",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4505,7 +4291,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4521,7 +4307,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4535,11 +4325,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4550,7 +4344,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           plaintextCrc32c: S.optional(S.String),
@@ -4559,11 +4357,11 @@ function __c8(j: number): any {
           additionalAuthenticatedData: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4574,7 +4372,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "EncryptProjectsLocationsKeyRingsCryptoKeysRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           verifiedPlaintextCrc32c: S.optional(S.Boolean),
@@ -4585,11 +4383,15 @@ function __c8(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptResponse" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4600,7 +4402,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4616,11 +4422,7 @@ function __c8(j: number): any {
         identifier:
           "ExportTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           wrappedKey: S.optional(S.String),
@@ -4629,7 +4431,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ExportTrustedKeyWrappedCryptoKeyVersionResponse",
       });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           protectionLevel: S.optional(S.String),
@@ -4638,11 +4444,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GenerateRandomBytesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(192, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4653,7 +4459,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GenerateRandomBytesProjectsLocationsRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
@@ -4662,7 +4468,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GenerateRandomBytesResponse",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4672,7 +4482,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetAutokeyConfigFoldersRequest",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyProject: S.optional(S.String),
@@ -4682,7 +4496,11 @@ function __c9(j: number): any {
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutokeyConfig" });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4692,7 +4510,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetAutokeyConfigProjectsRequest",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4708,7 +4530,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4719,14 +4541,18 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(80, __c10, 0)),
+          source: S.optional(__S(232, __c29, 0)),
           keyProjectResolutionMode: S.optional(S.String),
           keyProject: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ShowEffectiveAutokeyConfigResponse",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4740,7 +4566,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetEffectiveAutokeyConfigProjectsRequest",
       });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project: S.String.pipe(T.Label()),
@@ -4754,7 +4584,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           policyEnforcement: S.optional(S.Boolean),
@@ -4763,17 +4593,21 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "KeyAccessJustificationsEnrollmentConfig",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          externalConfig: S.optional(__S(84, __c10, 4)),
-          hardwareConfig: S.optional(__S(84, __c10, 4)),
-          softwareConfig: S.optional(__S(84, __c10, 4)),
+          externalConfig: S.optional(__S(249, __c31, 1)),
+          hardwareConfig: S.optional(__S(249, __c31, 1)),
+          softwareConfig: S.optional(__S(249, __c31, 1)),
         }),
       ).annotate({
         identifier: "ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse",
       });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project: S.String.pipe(T.Label()),
@@ -4787,29 +4621,33 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          effectiveKajPolicy: S.optional(__S(264, __c33, 0)),
+        }),
+      ).annotate({
+        identifier: "ShowEffectiveKeyAccessJustificationsPolicyConfigResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           defaultPolicyAvailable: S.optional(S.Boolean),
           name: S.optional(S.String),
-          defaultKeyAccessJustificationPolicy: S.optional(__S(30, __c3, 6)),
+          defaultKeyAccessJustificationPolicy: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "KeyAccessJustificationsPolicyConfig",
       });
   }
 }
-function __c11(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          effectiveKajPolicy: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({
-        identifier: "ShowEffectiveKeyAccessJustificationsPolicyConfigResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4819,14 +4657,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetEkmConfigProjectsLocationsRequest",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           defaultEkmConnection: S.optional(S.String),
         }),
       ).annotate({ identifier: "EkmConfig" });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -4841,29 +4687,29 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsEkmConfigRequest",
       });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(14, __c1, 6)),
+          exemptedMembers: S.optional(__S(640, __c80, 0)),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(296, __c37, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(93, __c11, 5)),
+          auditLogConfigs: S.optional(__S(297, __c37, 1)),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(298, __c37, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           expression: S.optional(S.String),
@@ -4872,26 +4718,30 @@ function __c12(j: number): any {
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(14, __c1, 6)),
-          condition: S.optional(__S(96, __c12, 0)),
+          members: S.optional(__S(640, __c80, 0)),
+          condition: S.optional(__S(300, __c37, 4)),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(301, __c37, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          auditConfigs: S.optional(__S(95, __c11, 7)),
+          auditConfigs: S.optional(__S(299, __c37, 3)),
           etag: S.optional(S.String),
           version: S.optional(S.Number),
-          bindings: S.optional(__S(98, __c12, 2)),
+          bindings: S.optional(__S(302, __c37, 6)),
         }),
       ).annotate({ identifier: "Policy" });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -4906,7 +4756,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsEkmConnectionsRequest",
       });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -4921,7 +4775,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsKeyRingsRequest",
       });
-    case 6:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4936,7 +4794,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest",
       });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4953,7 +4815,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4965,7 +4827,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetKajPolicyConfigFoldersRequest",
       });
-    case 1:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4975,7 +4841,67 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetKajPolicyConfigOrganizationsRequest",
       });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          signedChallenge: S.optional(S.String),
+          publicKeyPem: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChallengeReply" });
+    case 1:
+      return S.Array(__S(352, __c44, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          challengeReplies: S.optional(__S(353, __c44, 1)),
+        }),
+      ).annotate({ identifier: "QuorumReply" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          requiredChallengeReplies: S.optional(__S(353, __c44, 1)),
+          quorumChallengeReplies: S.optional(__S(353, __c44, 1)),
+        }),
+      ).annotate({
+        identifier: "RequiredActionQuorumReply",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          quorumReply: S.optional(__S(354, __c44, 2)),
+          requiredActionQuorumReply: S.optional(__S(355, __c44, 3)),
+        }),
+      ).annotate({
+        identifier: "ApproveSingleTenantHsmInstanceProposalRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(356, __c44, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:approve",
+            baseUrl: "https://cloudkms.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ApproveSingleTenantHsmInstanceProposalResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4985,7 +4911,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetKajPolicyConfigProjectsRequest",
       });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4995,17 +4925,25 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(23, __c2, 7)),
+          metadata: S.optional(__S(760, __c95, 0)),
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(__S(36, __c4, 4)),
+          labels: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "Location" });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5015,7 +4953,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsEkmConnectionsRequest",
       });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5025,7 +4967,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsKeyHandlesRequest",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5037,7 +4983,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5049,7 +4995,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsKeyRingsCryptoKeysRequest",
       });
-    case 1:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5059,7 +5009,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5070,7 +5024,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsKeyRingsImportJobsRequest",
       });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5080,7 +5038,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5090,7 +5052,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRetiredResourcesRequest",
       });
-    case 5:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deleteTime: S.optional(S.String),
@@ -5099,7 +5065,48 @@ function __c14(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "RetiredResource" });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ciphertext: S.optional(S.String),
+          ciphertextCrc32c: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AsymmetricDecryptRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(456, __c57, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:asymmetricDecrypt",
+            baseUrl: "https://cloudkms.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          plaintext: S.optional(S.String),
+          plaintextCrc32c: S.optional(S.String),
+          verifiedCiphertextCrc32c: S.optional(S.Boolean),
+          protectionLevel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AsymmetricDecryptResponse",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5109,7 +5116,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSingleTenantHsmInstancesRequest",
       });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5121,7 +5132,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5153,11 +5164,15 @@ function __c15(j: number): any {
           algorithm: S.optional(S.String),
           pemCrc32c: S.optional(S.String),
           protectionLevel: S.optional(S.String),
-          publicKey: S.optional(__S(121, __c15, 1)),
+          publicKey: S.optional(__S(481, __c60, 1)),
           pem: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublicKey" });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           rsaAesWrappedKey: S.optional(S.String),
@@ -5170,11 +5185,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ImportCryptoKeyVersionRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(123, __c15, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(488, __c61, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5185,7 +5200,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
       });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cryptoKeyVersion: S.optional(S.String),
@@ -5196,11 +5215,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ImportTrustedKeyWrappedCryptoKeyVersionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(125, __c15, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(496, __c62, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5212,11 +5231,15 @@ function __c15(j: number): any {
         identifier:
           "ImportTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
       });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          extraLocationTypes: S.optional(__S(14, __c1, 6).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(640, __c80, 0).pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5230,20 +5253,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(108, __c13, 4));
     case 1:
+      return S.Array(__S(376, __c47, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(128, __c16, 0)),
+          locations: S.optional(__S(505, __c63, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 2:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -5261,19 +5284,23 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsEkmConnectionsRequest",
       });
-    case 3:
-      return S.Array(__S(19, __c2, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(652, __c81, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
-          ekmConnections: S.optional(__S(131, __c16, 3)),
+          ekmConnections: S.optional(__S(513, __c64, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListEkmConnectionsResponse",
       });
-    case 5:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -5290,18 +5317,18 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsKeyHandlesRequest",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(776, __c97, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          keyHandles: S.optional(__S(134, __c16, 6)),
+          keyHandles: S.optional(__S(521, __c65, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListKeyHandlesResponse" });
   }
 }
-function __c17(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5322,16 +5349,20 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsKeyRingsRequest",
       });
     case 1:
-      return S.Array(__S(27, __c3, 3));
+      return S.Array(__S(872, __c109, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
-          keyRings: S.optional(__S(137, __c17, 1)),
+          keyRings: S.optional(__S(529, __c66, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListKeyRingsResponse" });
-    case 3:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -5350,17 +5381,69 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsKeyRingsCryptoKeysRequest",
       });
-    case 4:
-      return S.Array(__S(37, __c4, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(41, __c5, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
-          cryptoKeys: S.optional(__S(140, __c17, 4)),
+          cryptoKeys: S.optional(__S(537, __c67, 1)),
         }),
       ).annotate({ identifier: "ListCryptoKeysResponse" });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          externalMu: S.optional(S.String),
+          sha256: S.optional(S.String),
+          sha384: S.optional(S.String),
+          sha512: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Digest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          digest: S.optional(__S(544, __c68, 0)),
+          data: S.optional(S.String),
+          digestCrc32c: S.optional(S.String),
+          dataCrc32c: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AsymmetricSignRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(545, __c68, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:asymmetricSign",
+            baseUrl: "https://cloudkms.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          verifiedDigestCrc32c: S.optional(S.Boolean),
+          signature: S.optional(S.String),
+          protectionLevel: S.optional(S.String),
+          signatureCrc32c: S.optional(S.String),
+          verifiedDataCrc32c: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AsymmetricSignResponse" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5379,23 +5462,23 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
       });
-    case 7:
-      return S.Array(__S(35, __c4, 3));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(17, __c2, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
-          cryptoKeyVersions: S.optional(__S(143, __c17, 7)),
+          cryptoKeyVersions: S.optional(__S(553, __c69, 1)),
         }),
       ).annotate({
         identifier: "ListCryptoKeyVersionsResponse",
       });
-    case 1:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5413,17 +5496,21 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsKeyRingsImportJobsRequest",
       });
+    case 1:
+      return S.Array(__S(65, __c8, 1));
     case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          importJobs: S.optional(__S(146, __c18, 2)),
+          importJobs: S.optional(__S(561, __c70, 1)),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListImportJobsResponse" });
-    case 4:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -5439,19 +5526,23 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRetiredResourcesRequest",
       });
-    case 5:
-      return S.Array(__S(117, __c14, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(448, __c56, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          retiredResources: S.optional(__S(149, __c18, 5)),
+          retiredResources: S.optional(__S(569, __c71, 1)),
         }),
       ).annotate({
         identifier: "ListRetiredResourcesResponse",
       });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -5470,23 +5561,23 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSingleTenantHsmInstancesRequest",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(44, __c5, 4));
     case 1:
+      return S.Array(__S(81, __c10, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          singleTenantHsmInstances: S.optional(__S(152, __c19, 0)),
+          singleTenantHsmInstances: S.optional(__S(577, __c72, 1)),
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSingleTenantHsmInstancesResponse",
       });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -5505,30 +5596,34 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
       });
-    case 3:
-      return S.Array(__S(54, __c6, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(111, __c13, 7));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          singleTenantHsmInstanceProposals: S.optional(__S(155, __c19, 3)),
+          singleTenantHsmInstanceProposals: S.optional(__S(585, __c73, 1)),
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSingleTenantHsmInstanceProposalsResponse",
       });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataCrc32c: S.optional(S.String),
           data: S.optional(S.String),
         }),
       ).annotate({ identifier: "MacSignRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(157, __c19, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(592, __c74, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5539,7 +5634,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           protectionLevel: S.optional(S.String),
@@ -5551,7 +5646,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "MacSignResponse" });
   }
 }
-function __c20(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5566,7 +5661,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(160, __c20, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(600, __c75, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5588,12 +5683,16 @@ function __c20(j: number): any {
           verifiedSuccessIntegrity: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MacVerifyResponse" });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(652, __c81, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5604,12 +5703,16 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsEkmConnectionsRequest",
       });
-    case 4:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5620,12 +5723,16 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsKeyRingsCryptoKeysRequest",
       });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5636,7 +5743,79 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
       });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          ekmConnectionId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(652, __c81, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/ekmConnections",
+            baseUrl: "https://cloudkms.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsEkmConnectionsRequest",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rawDer: S.optional(S.String),
+          notAfterTime: S.optional(S.String),
+          subjectAlternativeDnsNames: S.optional(__S(640, __c80, 0)),
+          serialNumber: S.optional(S.String),
+          parsed: S.optional(S.Boolean),
+          issuer: S.optional(S.String),
+          notBeforeTime: S.optional(S.String),
+          sha256Fingerprint: S.optional(S.String),
+          subject: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Certificate" });
+    case 1:
+      return S.Array(__S(648, __c81, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          serverCertificates: S.optional(__S(649, __c81, 1)),
+          endpointFilter: S.optional(S.String),
+          hostname: S.optional(S.String),
+          serviceDirectoryService: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceResolver" });
+    case 3:
+      return S.Array(__S(650, __c81, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          cryptoSpacePath: S.optional(S.String),
+          keyManagementMode: S.optional(S.String),
+          serviceResolvers: S.optional(__S(651, __c81, 3)),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EkmConnection" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           additionalAuthenticatedDataCrc32c: S.optional(S.String),
@@ -5648,11 +5827,11 @@ function __c20(j: number): any {
           ciphertextCrc32c: S.optional(S.String),
         }),
       ).annotate({ identifier: "RawDecryptRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(166, __c20, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(656, __c82, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5663,11 +5842,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           verifiedInitializationVectorCrc32c: S.optional(S.Boolean),
@@ -5678,7 +5853,11 @@ function __c21(j: number): any {
           plaintextCrc32c: S.optional(S.String),
         }),
       ).annotate({ identifier: "RawDecryptResponse" });
-    case 1:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           initializationVectorCrc32c: S.optional(S.String),
@@ -5689,11 +5868,11 @@ function __c21(j: number): any {
           additionalAuthenticatedData: S.optional(S.String),
         }),
       ).annotate({ identifier: "RawEncryptRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(169, __c21, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5704,7 +5883,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           verifiedInitializationVectorCrc32c: S.optional(S.Boolean),
@@ -5719,11 +5898,15 @@ function __c21(j: number): any {
           initializationVectorCrc32c: S.optional(S.String),
         }),
       ).annotate({ identifier: "RawEncryptResponse" });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5734,18 +5917,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(99, __c12, 3)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 6:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(688, __c86, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5756,11 +5936,26 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsEkmConfigRequest",
       });
-    case 7:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(303, __c37, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(688, __c86, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5773,13 +5968,13 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(688, __c86, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5790,11 +5985,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsKeyRingsRequest",
       });
-    case 1:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(688, __c86, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5805,11 +6004,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest",
       });
-    case 2:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(688, __c86, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5820,19 +6023,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 4:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(179, __c22, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(736, __c92, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5843,11 +6042,27 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsEkmConfigRequest",
       });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(640, __c80, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(179, __c22, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(736, __c92, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5858,11 +6073,77 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsEkmConnectionsRequest",
       });
-    case 6:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          keyHandleId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(776, __c97, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/keyHandles",
+            baseUrl: "https://cloudkms.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsKeyHandlesRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(760, __c95, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(768, __c96, 0)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(760, __c95, 0)),
+          metadata: S.optional(__S(760, __c95, 0)),
+          done: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          error: S.optional(__S(769, __c96, 1)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKey: S.optional(S.String),
+          name: S.optional(S.String),
+          resourceTypeSelector: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyHandle" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(179, __c22, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(736, __c92, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5873,11 +6154,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsKeyRingsRequest",
       });
-    case 7:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(179, __c22, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(736, __c92, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5890,13 +6175,13 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(179, __c22, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(736, __c92, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5907,12 +6192,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest",
       });
-    case 1:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(77, __c9, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5923,12 +6212,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateAutokeyConfigFoldersRequest",
       });
-    case 2:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(77, __c9, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5939,12 +6232,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateAutokeyConfigProjectsRequest",
       });
-    case 3:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(280, __c35, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5955,12 +6252,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateEkmConfigProjectsLocationsRequest",
       });
-    case 4:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(87, __c10, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(264, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5971,12 +6272,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateKajPolicyConfigFoldersRequest",
       });
-    case 5:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(87, __c10, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(264, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5987,12 +6292,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateKajPolicyConfigOrganizationsRequest",
       });
-    case 6:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(87, __c10, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(264, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6003,7 +6312,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateKajPolicyConfigProjectsRequest",
       });
-    case 7:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cryptoKeyVersionId: S.optional(S.String),
@@ -6011,15 +6324,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateCryptoKeyPrimaryVersionRequest",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(191, __c23, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(856, __c107, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6030,7 +6339,42 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest",
       });
-    case 1:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          keyRingId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(872, __c109, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/keyRings",
+            baseUrl: "https://cloudkms.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsKeyRingsRequest",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyRing" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6046,7 +6390,6 @@ function __c24(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

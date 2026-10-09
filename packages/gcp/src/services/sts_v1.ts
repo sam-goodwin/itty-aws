@@ -169,7 +169,7 @@ export const getJwksOrganizationsLocationsWorkloadIdentityPoolsOpenid: API.Opera
     __c0,
     0,
   ) as any as S.Schema<GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleIdentityStsV1Jwks>,
+  output: __S(6, __c1, 2) as any as S.Schema<GoogleIdentityStsV1Jwks>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -187,11 +187,11 @@ export const getJwksProjectsLocationsWorkloadIdentityPoolsOpenid: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4,
-    __c0,
-    4,
+    8,
+    __c2,
+    0,
   ) as any as S.Schema<GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleIdentityStsV1Jwks>,
+  output: __S(6, __c1, 2) as any as S.Schema<GoogleIdentityStsV1Jwks>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -209,11 +209,11 @@ export const getOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsW
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5,
-    __c0,
-    5,
+    12,
+    __c3,
+    0,
   ) as any as S.Schema<GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleIdentityStsV1OpenIdProviderConfig>,
+  output: __S(17, __c4, 1) as any as S.Schema<GoogleIdentityStsV1OpenIdProviderConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -231,11 +231,11 @@ export const getOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_k
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8,
-    __c1,
+    20,
+    __c5,
     0,
   ) as any as S.Schema<GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleIdentityStsV1OpenIdProviderConfig>,
+  output: __S(17, __c4, 1) as any as S.Schema<GoogleIdentityStsV1OpenIdProviderConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -249,8 +249,8 @@ export const tokenV1: API.OperationMethod<
   TokenV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<TokenV1Request>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleIdentityStsV1ExchangeTokenResponse>,
+  input: __S(25, __c6, 1) as any as S.Schema<TokenV1Request>,
+  output: __S(26, __c6, 2) as any as S.Schema<GoogleIdentityStsV1ExchangeTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -273,7 +273,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kty: S.optional(S.String),
@@ -284,15 +288,19 @@ function __c0(j: number): any {
           kid: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleIdentityStsV1Jwk" });
+    case 1:
+      return S.Array(__S(4, __c1, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(2, __c0, 2)),
+          keys: S.optional(__S(5, __c1, 1)),
         }),
       ).annotate({ identifier: "GoogleIdentityStsV1Jwks" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -306,7 +314,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -321,16 +333,20 @@ function __c0(j: number): any {
         identifier:
           "GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           issuer: S.optional(S.String),
           jwks_uri: S.optional(S.String),
-          response_types_supported: S.optional(__S(6, __c0, 6)),
-          subject_types_supported: S.optional(__S(6, __c0, 6)),
-          id_token_signing_alg_values_supported: S.optional(__S(6, __c0, 6)),
+          response_types_supported: S.optional(__S(16, __c4, 0)),
+          subject_types_supported: S.optional(__S(16, __c4, 0)),
+          id_token_signing_alg_values_supported: S.optional(__S(16, __c4, 0)),
           authorization_endpoint: S.optional(S.String),
           token_endpoint: S.optional(S.String),
         }),
@@ -339,7 +355,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -356,7 +372,11 @@ function __c1(j: number): any {
         identifier:
           "GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           options: S.optional(S.String),
@@ -370,15 +390,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleIdentityStsV1ExchangeTokenRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(24, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/token", baseUrl: "https://sts.googleapis.com/" }),
         ),
       ).annotate({ identifier: "TokenV1Request" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           access_boundary_session_key: S.optional(S.String),
@@ -392,7 +412,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

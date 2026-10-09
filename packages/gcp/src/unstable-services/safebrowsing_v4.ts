@@ -607,8 +607,8 @@ export const createThreatHits: API.OperationMethod<
   CreateThreatHitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateThreatHitsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(20, __c1, 4) as any as S.Schema<CreateThreatHitsRequest>,
+  output: __S(21, __c1, 5) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -622,11 +622,11 @@ export const fetchThreatListUpdates: API.OperationMethod<
   FetchThreatListUpdatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<FetchThreatListUpdatesRequest>,
+  input: __S(68, __c4, 4) as any as S.Schema<FetchThreatListUpdatesRequest>,
   output: __S(
-    23,
-    __c2,
-    7,
+    105,
+    __c6,
+    9,
   ) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -641,8 +641,8 @@ export const findFullHashes: API.OperationMethod<
   FindFullHashesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<FindFullHashesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GoogleSecuritySafebrowsingV4FindFullHashesResponse>,
+  input: __S(114, __c7, 2) as any as S.Schema<FindFullHashesRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<GoogleSecuritySafebrowsingV4FindFullHashesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -656,11 +656,11 @@ export const findThreatMatches: API.OperationMethod<
   FindThreatMatchesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<FindThreatMatchesRequest>,
+  input: __S(177, __c11, 1) as any as S.Schema<FindThreatMatchesRequest>,
   output: __S(
-    38,
-    __c4,
-    6,
+    178,
+    __c11,
+    2,
   ) as any as S.Schema<GoogleSecuritySafebrowsingV4FindThreatMatchesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -674,8 +674,8 @@ export const getEncodedFullHashes: API.OperationMethod<
   GetEncodedFullHashesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetEncodedFullHashesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GoogleSecuritySafebrowsingV4FindFullHashesResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetEncodedFullHashesRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<GoogleSecuritySafebrowsingV4FindFullHashesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -688,11 +688,11 @@ export const getEncodedUpdates: API.OperationMethod<
   GetEncodedUpdatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetEncodedUpdatesRequest>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetEncodedUpdatesRequest>,
   output: __S(
-    23,
-    __c2,
-    7,
+    105,
+    __c6,
+    9,
   ) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -707,8 +707,8 @@ export const listThreatLists: API.OperationMethod<
   ListThreatListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListThreatListsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GoogleSecuritySafebrowsingV4ListThreatListsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListThreatListsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GoogleSecuritySafebrowsingV4ListThreatListsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -719,24 +719,39 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          clientVersion: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleSecuritySafebrowsingV4ClientInfo",
-      });
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/threatLists",
+            baseUrl: "https://safebrowsing.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListThreatListsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          url: S.optional(S.String),
-          hash: S.optional(S.String),
-          digest: S.optional(S.String),
+          threatEntryType: S.optional(S.String),
+          platformType: S.optional(S.String),
+          threatType: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleSecuritySafebrowsingV4ThreatEntry",
+        identifier: "GoogleSecuritySafebrowsingV4ThreatListDescriptor",
       });
     case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          threatLists: S.optional(__S(2, __c0, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleSecuritySafebrowsingV4ListThreatListsResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           remoteIp: S.optional(S.String),
@@ -747,9 +762,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatHitThreatSource",
       });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String),
@@ -758,23 +773,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatHitUserInfo",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          clientInfo: S.optional(__S(0, __c0, 0)),
-          entry: S.optional(__S(1, __c0, 1)),
+          clientInfo: S.optional(__S(32, __c2, 0)),
+          entry: S.optional(__S(48, __c3, 0)),
           platformType: S.optional(S.String),
-          resources: S.optional(__S(3, __c0, 3)),
-          userInfo: S.optional(__S(4, __c0, 4)),
+          resources: S.optional(__S(17, __c1, 1)),
+          userInfo: S.optional(__S(18, __c1, 2)),
           threatType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatHit",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(19, __c1, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -783,17 +798,42 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateThreatHitsRequest" });
-    case 7:
+    case 5:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientVersion: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleSecuritySafebrowsingV4ClientInfo",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          hash: S.optional(S.String),
+          digest: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleSecuritySafebrowsingV4ThreatEntry",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
@@ -801,39 +841,39 @@ function __c1(j: number): any {
           language: S.optional(S.String),
           deviceLocation: S.optional(S.String),
           maxDatabaseEntries: S.optional(S.Number),
-          supportedCompressions: S.optional(__S(8, __c1, 0)),
+          supportedCompressions: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({
         identifier:
           "GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           threatType: S.optional(S.String),
           platformType: S.optional(S.String),
           threatEntryType: S.optional(S.String),
           state: S.optional(S.String),
-          constraints: S.optional(__S(9, __c1, 1)),
+          constraints: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest",
       });
+    case 2:
+      return S.Array(__S(65, __c4, 1));
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          client: S.optional(__S(0, __c0, 0)),
-          listUpdateRequests: S.optional(__S(11, __c1, 3)),
+          client: S.optional(__S(32, __c2, 0)),
+          listUpdateRequests: S.optional(__S(66, __c4, 2)),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(67, __c4, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -844,7 +884,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "FetchThreatListUpdatesRequest",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           numEntries: S.optional(S.Number),
@@ -855,7 +905,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4RiceDeltaEncoding",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           prefixSize: S.optional(S.Number),
@@ -864,35 +914,31 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4RawHashes",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.Array(S.Number);
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          indices: S.optional(__S(16, __c2, 0)),
+          indices: S.optional(__S(98, __c6, 2)),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4RawIndices",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           compressionType: S.optional(S.String),
-          riceHashes: S.optional(__S(14, __c1, 6)),
-          rawHashes: S.optional(__S(15, __c1, 7)),
-          rawIndices: S.optional(__S(17, __c2, 1)),
-          riceIndices: S.optional(__S(14, __c1, 6)),
+          riceHashes: S.optional(__S(96, __c6, 0)),
+          rawHashes: S.optional(__S(97, __c6, 1)),
+          rawIndices: S.optional(__S(99, __c6, 3)),
+          riceIndices: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatEntrySet",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(100, __c6, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           sha256: S.optional(S.String),
@@ -900,27 +946,27 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4Checksum",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           newClientState: S.optional(S.String),
-          removals: S.optional(__S(19, __c2, 3)),
+          removals: S.optional(__S(101, __c6, 5)),
           platformType: S.optional(S.String),
           threatType: S.optional(S.String),
           threatEntryType: S.optional(S.String),
-          checksum: S.optional(__S(20, __c2, 4)),
+          checksum: S.optional(__S(102, __c6, 6)),
           responseType: S.optional(S.String),
-          additions: S.optional(__S(19, __c2, 3)),
+          additions: S.optional(__S(101, __c6, 5)),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(103, __c6, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          listUpdateResponses: S.optional(__S(22, __c2, 6)),
+          listUpdateResponses: S.optional(__S(104, __c6, 8)),
           minimumWaitDuration: S.optional(S.String),
         }),
       ).annotate({
@@ -928,40 +974,25 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(S.String);
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          platformTypes: S.optional(__S(8, __c1, 0)),
-          threatEntryTypes: S.optional(__S(8, __c1, 0)),
-          threatEntries: S.optional(__S(24, __c3, 0)),
-          threatTypes: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleSecuritySafebrowsingV4ThreatInfo",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          threatInfo: S.optional(__S(26, __c3, 2)),
-          clientStates: S.optional(__S(27, __c3, 3)),
-          apiClient: S.optional(__S(0, __c0, 0)),
-          client: S.optional(__S(0, __c0, 0)),
+          threatInfo: S.optional(__S(130, __c8, 2)),
+          clientStates: S.optional(__S(112, __c7, 0)),
+          apiClient: S.optional(__S(32, __c2, 0)),
+          client: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FindFullHashesRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(113, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -970,7 +1001,30 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FindFullHashesRequest" });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(48, __c3, 0));
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          platformTypes: S.optional(__S(80, __c5, 0)),
+          threatEntryTypes: S.optional(__S(80, __c5, 0)),
+          threatEntries: S.optional(__S(128, __c8, 0)),
+          threatTypes: S.optional(__S(129, __c8, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleSecuritySafebrowsingV4ThreatInfo",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -979,58 +1033,62 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(__S(31, __c3, 7)),
+          entries: S.optional(__S(145, __c9, 1)),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatEntryMetadata",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           threatEntryType: S.optional(S.String),
           platformType: S.optional(S.String),
-          threat: S.optional(__S(1, __c0, 1)),
+          threat: S.optional(__S(48, __c3, 0)),
           cacheDuration: S.optional(S.String),
           threatType: S.optional(S.String),
-          threatEntryMetadata: S.optional(__S(32, __c4, 0)),
+          threatEntryMetadata: S.optional(__S(146, __c9, 2)),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4ThreatMatch",
       });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(147, __c9, 3));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          matches: S.optional(__S(34, __c4, 2)),
+          matches: S.optional(__S(148, __c9, 4)),
           negativeCacheDuration: S.optional(S.String),
           minimumWaitDuration: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FindFullHashesResponse",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          threatInfo: S.optional(__S(26, __c3, 2)),
-          client: S.optional(__S(0, __c0, 0)),
+          threatInfo: S.optional(__S(130, __c8, 2)),
+          client: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FindThreatMatchesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(176, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1039,15 +1097,19 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FindThreatMatchesRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          matches: S.optional(__S(34, __c4, 2)),
+          matches: S.optional(__S(148, __c9, 4)),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV4FindThreatMatchesResponse",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.String.pipe(T.Query())),
@@ -1065,7 +1127,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1081,39 +1143,8 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEncodedUpdatesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/threatLists",
-            baseUrl: "https://safebrowsing.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListThreatListsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          threatEntryType: S.optional(S.String),
-          platformType: S.optional(S.String),
-          threatType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleSecuritySafebrowsingV4ThreatListDescriptor",
-      });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          threatLists: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleSecuritySafebrowsingV4ListThreatListsResponse",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

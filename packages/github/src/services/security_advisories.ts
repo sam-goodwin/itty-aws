@@ -800,8 +800,8 @@ export const createFork: API.OperationMethod<
   CreateForkError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateForkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateForkResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateForkRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<CreateForkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -819,8 +819,8 @@ export const createPrivateVulnerabilityReport: API.OperationMethod<
   CreatePrivateVulnerabilityReportError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreatePrivateVulnerabilityReportRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<RepositoryAdvisory>,
+  input: __S(98, __c6, 2) as any as S.Schema<CreatePrivateVulnerabilityReportRequest>,
+  output: __S(157, __c9, 13) as any as S.Schema<RepositoryAdvisory>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -838,8 +838,8 @@ export const createRepositoryAdvisory: API.OperationMethod<
   CreateRepositoryAdvisoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateRepositoryAdvisoryRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<RepositoryAdvisory>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateRepositoryAdvisoryRequest>,
+  output: __S(157, __c9, 13) as any as S.Schema<RepositoryAdvisory>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -858,8 +858,8 @@ export const createRepositoryAdvisoryCveRequest: API.OperationMethod<
   CreateRepositoryAdvisoryCveRequestError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateRepositoryAdvisoryCveRequestRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CreateRepositoryAdvisoryCveRequestResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateRepositoryAdvisoryCveRequestRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<CreateRepositoryAdvisoryCveRequestResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -873,8 +873,8 @@ export const getGlobalAdvisory: API.OperationMethod<
   GetGlobalAdvisoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetGlobalAdvisoryRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GlobalAdvisory>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetGlobalAdvisoryRequest>,
+  output: __S(229, __c14, 5) as any as S.Schema<GlobalAdvisory>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -888,8 +888,8 @@ export const getRepositoryAdvisory: API.OperationMethod<
   GetRepositoryAdvisoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetRepositoryAdvisoryRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<RepositoryAdvisory>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetRepositoryAdvisoryRequest>,
+  output: __S(157, __c9, 13) as any as S.Schema<RepositoryAdvisory>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -903,8 +903,8 @@ export const listGlobalAdvisories: API.OperationMethod<
   ListGlobalAdvisoriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListGlobalAdvisoriesRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListGlobalAdvisoriesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListGlobalAdvisoriesRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListGlobalAdvisoriesResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -918,8 +918,8 @@ export const listOrgRepositoryAdvisories: API.OperationMethod<
   ListOrgRepositoryAdvisoriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListOrgRepositoryAdvisoriesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListOrgRepositoryAdvisoriesResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<ListOrgRepositoryAdvisoriesRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<ListOrgRepositoryAdvisoriesResponse>,
   errors: [BadRequest, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -933,8 +933,8 @@ export const listRepositoryAdvisories: API.OperationMethod<
   ListRepositoryAdvisoriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListRepositoryAdvisoriesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListRepositoryAdvisoriesResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListRepositoryAdvisoriesRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<ListRepositoryAdvisoriesResponse>,
   errors: [BadRequest, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -952,8 +952,8 @@ export const updateRepositoryAdvisory: API.OperationMethod<
   UpdateRepositoryAdvisoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<UpdateRepositoryAdvisoryRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<RepositoryAdvisory>,
+  input: __S(64, __c4, 0) as any as S.Schema<UpdateRepositoryAdvisoryRequest>,
+  output: __S(157, __c9, 13) as any as S.Schema<RepositoryAdvisory>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -961,6 +961,121 @@ export const updateRepositoryAdvisory: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ghsa_id: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          cve_id: S.optional(S.String.pipe(T.Query())),
+          ecosystem: S.optional(S.String.pipe(T.Query())),
+          severity: S.optional(S.String.pipe(T.Query())),
+          cwes: S.optional(S.Unknown.pipe(T.Query())),
+          is_withdrawn: S.optional(S.Boolean.pipe(T.Query())),
+          affects: S.optional(S.Unknown.pipe(T.Query())),
+          published: S.optional(S.String.pipe(T.Query())),
+          updated: S.optional(S.String.pipe(T.Query())),
+          modified: S.optional(S.String.pipe(T.Query())),
+          epss_percentage: S.optional(S.String.pipe(T.Query())),
+          epss_percentile: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/advisories", code: 200 })),
+      ).annotate({
+        identifier: "ListGlobalAdvisoriesRequest",
+      });
+    case 1:
+      return S.Array(__S(229, __c14, 5));
+    case 2:
+      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListGlobalAdvisoriesResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          direction: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/security-advisories", code: 200 })),
+      ).annotate({
+        identifier: "ListOrgRepositoryAdvisoriesRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(157, __c9, 13));
+    case 1:
+      return S.suspend(() => __S(32, __c2, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListOrgRepositoryAdvisoriesResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          direction: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/security-advisories", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListRepositoryAdvisoriesRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          ghsa_id: S.String.pipe(T.Label()),
+          summary: S.optional(S.String),
+          description: S.optional(S.String),
+          cve_id: S.optional(S.NullOr(S.String)),
+          vulnerabilities: S.optional(__S(177, __c11, 1)),
+          cwe_ids: S.optional(S.NullOr(__S(128, __c8, 0))),
+          credits: S.optional(S.NullOr(__S(179, __c11, 3))),
+          severity: S.optional(S.NullOr(S.String)),
+          cvss_vector_string: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.String),
+          collaborating_users: S.optional(S.NullOr(__S(128, __c8, 0))),
+          collaborating_teams: S.optional(S.NullOr(__S(128, __c8, 0))),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/repos/{owner}/{repo}/security-advisories/{ghsa_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateRepositoryAdvisoryRequest",
+      });
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -980,41 +1095,32 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateForkResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ecosystem: S.String,
-          name: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          package: __S(2, __c0, 2),
+          package: __S(112, __c7, 0),
           vulnerable_version_range: S.optional(S.NullOr(S.String)),
           patched_versions: S.optional(S.NullOr(S.String)),
-          vulnerable_functions: S.optional(S.NullOr(__S(3, __c0, 3))),
+          vulnerable_functions: S.optional(S.NullOr(__S(113, __c7, 1))),
         }),
       ).annotate({
         identifier: "CreatePrivateVulnerabilityReportRequestVulnerabilitiesItem",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           summary: S.String,
           description: S.String,
-          vulnerabilities: S.optional(S.NullOr(__S(5, __c0, 5))),
-          cwe_ids: S.optional(S.NullOr(__S(6, __c0, 6))),
+          vulnerabilities: S.optional(S.NullOr(__S(97, __c6, 1))),
+          cwe_ids: S.optional(S.NullOr(__S(128, __c8, 0))),
           severity: S.optional(S.NullOr(S.String)),
           cvss_vector_string: S.optional(S.NullOr(S.String)),
           start_private_fork: S.optional(S.Boolean),
@@ -1030,9 +1136,26 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ecosystem: S.String,
+          name: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage",
+      });
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -1059,7 +1182,7 @@ function __c1(j: number): any {
           user_view_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SimpleUser" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -1068,16 +1191,8 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RepositoryAdvisoryIdentifiersItem",
       });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accepted: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "RepositoryAdvisorySubmission",
-      });
+      return S.Array(__S(130, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1090,35 +1205,18 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          package: S.NullOr(__S(12, __c1, 4)),
-          vulnerable_version_range: S.NullOr(S.String),
-          patched_versions: S.NullOr(S.String),
-          vulnerable_functions: S.NullOr(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "RepositoryAdvisoryVulnerability",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           vector_string: S.NullOr(S.String),
           score: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "RepositoryAdvisoryCvss" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          cvss_v3: S.optional(S.NullOr(__S(15, __c1, 7))),
-          cvss_v4: S.optional(S.NullOr(__S(15, __c1, 7))),
+          cvss_v3: S.optional(S.NullOr(__S(133, __c8, 5))),
+          cvss_v4: S.optional(S.NullOr(__S(133, __c8, 5))),
         }),
       ).annotate({ identifier: "CvssSeverities" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           cwe_id: S.String,
@@ -1127,8 +1225,33 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RepositoryAdvisoryCwesItem",
       });
+    case 8:
+      return S.Array(__S(135, __c8, 7));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accepted: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "RepositoryAdvisorySubmission",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          package: S.NullOr(__S(132, __c8, 4)),
+          vulnerable_version_range: S.NullOr(S.String),
+          patched_versions: S.NullOr(S.String),
+          vulnerable_functions: S.NullOr(__S(128, __c8, 0)),
+        }),
+      ).annotate({
+        identifier: "RepositoryAdvisoryVulnerability",
+      });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(145, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1139,24 +1262,20 @@ function __c2(j: number): any {
         identifier: "RepositoryAdvisoryCreditsItem",
       });
     case 4:
-      return S.Array(__S(19, __c2, 3));
+      return S.Array(__S(147, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          user: __S(8, __c1, 0),
+          user: __S(129, __c8, 1),
           type: S.String,
           state: S.String,
         }),
       ).annotate({ identifier: "RepositoryAdvisoryCredit" });
     case 6:
-      return S.Array(__S(21, __c2, 5));
+      return S.Array(__S(149, __c9, 5));
     case 7:
-      return S.Array(__S(8, __c1, 0));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(129, __c8, 1));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           pull: S.Boolean,
@@ -1166,7 +1285,7 @@ function __c3(j: number): any {
           admin: S.Boolean,
         }),
       ).annotate({ identifier: "TeamPermissions" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1187,7 +1306,7 @@ function __c3(j: number): any {
           enterprise_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NullableTeamSimple" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1198,7 +1317,7 @@ function __c3(j: number): any {
           privacy: S.optional(S.String),
           notification_setting: S.optional(S.String),
           permission: S.String,
-          permissions: S.optional(__S(24, __c3, 0)),
+          permissions: S.optional(__S(152, __c9, 8)),
           url: S.String,
           html_url: S.String,
           members_url: S.String,
@@ -1207,19 +1326,19 @@ function __c3(j: number): any {
           access_source: S.optional(S.String),
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
-          parent: S.NullOr(__S(25, __c3, 1)),
+          parent: S.NullOr(__S(153, __c9, 9)),
         }),
       ).annotate({ identifier: "Team" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(154, __c9, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(8, __c1, 0),
+          owner: __S(129, __c8, 1),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1263,7 +1382,7 @@ function __c3(j: number): any {
           hooks_url: S.String,
         }),
       ).annotate({ identifier: "SimpleRepository" });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           ghsa_id: S.String,
@@ -1273,57 +1392,33 @@ function __c3(j: number): any {
           summary: S.String,
           description: S.NullOr(S.String),
           severity: S.NullOr(S.String),
-          author: S.NullOr(__S(8, __c1, 0)),
-          publisher: S.NullOr(__S(8, __c1, 0)),
-          identifiers: __S(10, __c1, 2),
+          author: S.NullOr(__S(129, __c8, 1)),
+          publisher: S.NullOr(__S(129, __c8, 1)),
+          identifiers: __S(131, __c8, 3),
           state: S.String,
           created_at: S.NullOr(S.String),
           updated_at: S.NullOr(S.String),
           published_at: S.NullOr(S.String),
           closed_at: S.NullOr(S.String),
           withdrawn_at: S.NullOr(S.String),
-          submission: S.NullOr(__S(11, __c1, 3)),
-          vulnerabilities: S.NullOr(__S(14, __c1, 6)),
-          cvss: S.NullOr(__S(15, __c1, 7)),
-          cvss_severities: S.optional(S.NullOr(__S(16, __c2, 0))),
-          cwes: S.NullOr(__S(18, __c2, 2)),
-          cwe_ids: S.NullOr(__S(6, __c0, 6)),
-          credits: S.NullOr(__S(20, __c2, 4)),
-          credits_detailed: S.NullOr(__S(22, __c2, 6)),
-          collaborating_users: S.NullOr(__S(23, __c2, 7)),
-          collaborating_teams: S.NullOr(__S(27, __c3, 3)),
-          private_fork: S.NullOr(__S(28, __c3, 4)),
+          submission: S.NullOr(__S(144, __c9, 0)),
+          vulnerabilities: S.NullOr(__S(146, __c9, 2)),
+          cvss: S.NullOr(__S(133, __c8, 5)),
+          cvss_severities: S.optional(S.NullOr(__S(134, __c8, 6))),
+          cwes: S.NullOr(__S(136, __c8, 8)),
+          cwe_ids: S.NullOr(__S(128, __c8, 0)),
+          credits: S.NullOr(__S(148, __c9, 4)),
+          credits_detailed: S.NullOr(__S(150, __c9, 6)),
+          collaborating_users: S.NullOr(__S(151, __c9, 7)),
+          collaborating_teams: S.NullOr(__S(155, __c9, 11)),
+          private_fork: S.NullOr(__S(156, __c9, 12)),
         }),
       ).annotate({ identifier: "RepositoryAdvisory" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          package: __S(2, __c0, 2),
-          vulnerable_version_range: S.optional(S.NullOr(S.String)),
-          patched_versions: S.optional(S.NullOr(S.String)),
-          vulnerable_functions: S.optional(S.NullOr(__S(3, __c0, 3))),
-        }),
-      ).annotate({
-        identifier: "CreateRepositoryAdvisoryRequestVulnerabilitiesItem",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
   }
 }
-function __c4(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          login: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateRepositoryAdvisoryRequestCreditsItem",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1331,9 +1426,9 @@ function __c4(j: number): any {
           summary: S.String,
           description: S.String,
           cve_id: S.optional(S.NullOr(S.String)),
-          vulnerabilities: __S(31, __c3, 7),
-          cwe_ids: S.optional(S.NullOr(__S(6, __c0, 6))),
-          credits: S.optional(S.NullOr(__S(33, __c4, 1))),
+          vulnerabilities: __S(177, __c11, 1),
+          cwe_ids: S.optional(S.NullOr(__S(128, __c8, 0))),
+          credits: S.optional(S.NullOr(__S(179, __c11, 3))),
           severity: S.optional(S.NullOr(S.String)),
           cvss_vector_string: S.optional(S.NullOr(S.String)),
           start_private_fork: S.optional(S.Boolean),
@@ -1343,7 +1438,39 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateRepositoryAdvisoryRequest",
       });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          package: __S(112, __c7, 0),
+          vulnerable_version_range: S.optional(S.NullOr(S.String)),
+          patched_versions: S.optional(S.NullOr(S.String)),
+          vulnerable_functions: S.optional(S.NullOr(__S(113, __c7, 1))),
+        }),
+      ).annotate({
+        identifier: "CreateRepositoryAdvisoryRequestVulnerabilitiesItem",
+      });
+    case 1:
+      return S.Array(__S(176, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          login: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateRepositoryAdvisoryRequestCreditsItem",
+      });
     case 3:
+      return S.Array(__S(178, __c11, 2));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1359,50 +1486,54 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateRepositoryAdvisoryCveRequestRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateRepositoryAdvisoryCveRequestResponse",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ghsa_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/advisories/{ghsa_id}", code: 200 })),
       ).annotate({ identifier: "GetGlobalAdvisoryRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          package: S.NullOr(__S(12, __c1, 4)),
-          vulnerable_version_range: S.NullOr(S.String),
-          first_patched_version: S.NullOr(S.String),
-          vulnerable_functions: S.NullOr(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Vulnerability" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
   }
 }
-function __c5(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          package: S.NullOr(__S(132, __c8, 4)),
+          vulnerable_version_range: S.NullOr(S.String),
+          first_patched_version: S.NullOr(S.String),
+          vulnerable_functions: S.NullOr(__S(128, __c8, 0)),
+        }),
+      ).annotate({ identifier: "Vulnerability" });
+    case 1:
+      return S.Array(__S(224, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           percentage: S.optional(S.Number),
           percentile: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SecurityAdvisoryEpss" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          user: __S(8, __c1, 0),
+          user: __S(129, __c8, 1),
           type: S.String,
         }),
       ).annotate({
         identifier: "GlobalAdvisoryCreditsItem",
       });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(227, __c14, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           ghsa_id: S.String,
@@ -1415,22 +1546,26 @@ function __c5(j: number): any {
           type: S.String,
           severity: S.String,
           source_code_location: S.NullOr(S.String),
-          identifiers: S.NullOr(__S(10, __c1, 2)),
-          references: S.NullOr(__S(6, __c0, 6)),
+          identifiers: S.NullOr(__S(131, __c8, 3)),
+          references: S.NullOr(__S(128, __c8, 0)),
           published_at: S.String,
           updated_at: S.String,
           github_reviewed_at: S.NullOr(S.String),
           nvd_published_at: S.NullOr(S.String),
           withdrawn_at: S.NullOr(S.String),
-          vulnerabilities: S.NullOr(__S(39, __c4, 7)),
-          cvss: S.NullOr(__S(15, __c1, 7)),
-          cvss_severities: S.optional(S.NullOr(__S(16, __c2, 0))),
-          epss: S.optional(S.NullOr(__S(40, __c5, 0))),
-          cwes: S.NullOr(__S(18, __c2, 2)),
-          credits: S.NullOr(__S(42, __c5, 2)),
+          vulnerabilities: S.NullOr(__S(225, __c14, 1)),
+          cvss: S.NullOr(__S(133, __c8, 5)),
+          cvss_severities: S.optional(S.NullOr(__S(134, __c8, 6))),
+          epss: S.optional(S.NullOr(__S(226, __c14, 2))),
+          cwes: S.NullOr(__S(136, __c8, 8)),
+          credits: S.NullOr(__S(228, __c14, 4)),
         }),
       ).annotate({ identifier: "GlobalAdvisory" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1446,108 +1581,8 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetRepositoryAdvisoryRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ghsa_id: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          cve_id: S.optional(S.String.pipe(T.Query())),
-          ecosystem: S.optional(S.String.pipe(T.Query())),
-          severity: S.optional(S.String.pipe(T.Query())),
-          cwes: S.optional(S.Unknown.pipe(T.Query())),
-          is_withdrawn: S.optional(S.Boolean.pipe(T.Query())),
-          affects: S.optional(S.Unknown.pipe(T.Query())),
-          published: S.optional(S.String.pipe(T.Query())),
-          updated: S.optional(S.String.pipe(T.Query())),
-          modified: S.optional(S.String.pipe(T.Query())),
-          epss_percentage: S.optional(S.String.pipe(T.Query())),
-          epss_percentile: S.optional(S.String.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/advisories", code: 200 })),
-      ).annotate({
-        identifier: "ListGlobalAdvisoriesRequest",
-      });
-    case 6:
-      return S.Array(__S(43, __c5, 3));
-    case 7:
-      return S.suspend(() => __S(46, __c5, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListGlobalAdvisoriesResponse",
-      });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          direction: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/security-advisories", code: 200 })),
-      ).annotate({
-        identifier: "ListOrgRepositoryAdvisoriesRequest",
-      });
-    case 1:
-      return S.Array(__S(29, __c3, 5));
-    case 2:
-      return S.suspend(() => __S(49, __c6, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListOrgRepositoryAdvisoriesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          direction: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/security-advisories", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListRepositoryAdvisoriesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          ghsa_id: S.String.pipe(T.Label()),
-          summary: S.optional(S.String),
-          description: S.optional(S.String),
-          cve_id: S.optional(S.NullOr(S.String)),
-          vulnerabilities: S.optional(__S(31, __c3, 7)),
-          cwe_ids: S.optional(S.NullOr(__S(6, __c0, 6))),
-          credits: S.optional(S.NullOr(__S(33, __c4, 1))),
-          severity: S.optional(S.NullOr(S.String)),
-          cvss_vector_string: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.String),
-          collaborating_users: S.optional(S.NullOr(__S(6, __c0, 6))),
-          collaborating_teams: S.optional(S.NullOr(__S(6, __c0, 6))),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/repos/{owner}/{repo}/security-advisories/{ghsa_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateRepositoryAdvisoryRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

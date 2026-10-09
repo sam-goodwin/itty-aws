@@ -139,8 +139,8 @@ export const verifyAppsTokens: API.OperationMethod<
   VerifyAppsTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<VerifyAppsTokensRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<VerifyTokenResponse>,
+  input: __S(5, __c1, 1) as any as S.Schema<VerifyAppsTokensRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<VerifyTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -185,18 +185,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOrUpdateAppsTokensTagsRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           persona: S.optional(S.String),
         }),
       ).annotate({ identifier: "VerifyTokenRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
           appPackage: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -205,13 +209,12 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VerifyAppsTokensRequest" });
-    case 6:
+    case 2:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "VerifyTokenResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

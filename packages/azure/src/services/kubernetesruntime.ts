@@ -620,7 +620,7 @@ export const BgpPeersCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<BgpPeersCreateOrUpdateRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<BgpPeersCreateOrUpdateResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<BgpPeersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -634,8 +634,8 @@ export const DeleteBgpPeer: API.OperationMethod<
   DeleteBgpPeerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteBgpPeerRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteBgpPeerResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteBgpPeerRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteBgpPeerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -649,8 +649,8 @@ export const DeleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteLoadBalancerRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteLoadBalancerResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteLoadBalancerRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteLoadBalancerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -664,8 +664,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -679,8 +679,8 @@ export const DeleteStorageClass: API.OperationMethod<
   DeleteStorageClassError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteStorageClassRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteStorageClassResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteStorageClassRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteStorageClassResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -694,8 +694,8 @@ export const GetBgpPeer: API.OperationMethod<
   GetBgpPeerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetBgpPeerRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetBgpPeerResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetBgpPeerRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<GetBgpPeerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -709,8 +709,8 @@ export const GetLoadBalancer: API.OperationMethod<
   GetLoadBalancerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetLoadBalancerRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetLoadBalancerResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetLoadBalancerRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<GetLoadBalancerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -724,8 +724,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetServiceRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetServiceResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<GetServiceRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -739,8 +739,8 @@ export const GetStorageClass: API.OperationMethod<
   GetStorageClassError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetStorageClassRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetStorageClassResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetStorageClassRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<GetStorageClassResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -754,8 +754,8 @@ export const ListBgpPeers: API.OperationMethod<
   ListBgpPeersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListBgpPeersRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<BgpPeerListResult>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListBgpPeersRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<BgpPeerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -769,8 +769,8 @@ export const ListLoadBalancers: API.OperationMethod<
   ListLoadBalancersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListLoadBalancersRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<LoadBalancerListResult>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListLoadBalancersRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<LoadBalancerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -784,8 +784,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -799,8 +799,8 @@ export const ListServices: API.OperationMethod<
   ListServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListServicesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ServiceResourceListResult>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<ServiceResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -814,8 +814,8 @@ export const ListStorageClass: API.OperationMethod<
   ListStorageClassError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListStorageClassRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<StorageClassResourceListResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListStorageClassRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<StorageClassResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -829,8 +829,8 @@ export const LoadBalancersCreateOrUpdate: API.OperationMethod<
   LoadBalancersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<LoadBalancersCreateOrUpdateRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<LoadBalancersCreateOrUpdateResponse>,
+  input: __S(73, __c9, 1) as any as S.Schema<LoadBalancersCreateOrUpdateRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<LoadBalancersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -844,8 +844,8 @@ export const ServicesCreateOrUpdate: API.OperationMethod<
   ServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ServicesCreateOrUpdateRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ServicesCreateOrUpdateResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ServicesCreateOrUpdateRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<ServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -859,8 +859,8 @@ export const StorageClassCreateOrUpdate: API.OperationMethod<
   StorageClassCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<StorageClassCreateOrUpdateRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<StorageClassCreateOrUpdateResponse>,
+  input: __S(89, __c11, 1) as any as S.Schema<StorageClassCreateOrUpdateRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<StorageClassCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -874,8 +874,8 @@ export const UpdateStorageClass: API.OperationMethod<
   UpdateStorageClassError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<UpdateStorageClassRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<UpdateStorageClassResponse>,
+  input: __S(106, __c13, 2) as any as S.Schema<UpdateStorageClassRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<UpdateStorageClassResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -912,6 +912,22 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(16, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "BgpPeersCreateOrUpdateResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           createdBy: S.optional(S.String),
           createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
@@ -920,7 +936,11 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           myAsn: S.Number,
@@ -929,19 +949,11 @@ function __c0(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "BgpPeerProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "BgpPeersCreateOrUpdateResponse",
-      });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -955,11 +967,332 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteBgpPeerRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteBgpPeerResponse",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/loadBalancers",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListLoadBalancersRequest" });
+    case 1:
+      return S.Array(__S(160, __c20, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(41, __c5, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoadBalancerListResult" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.KubernetesRuntime/operations",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(49, __c6, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(50, __c6, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(51, __c6, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/services",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListServicesRequest" });
+    case 1:
+      return S.Array(__S(192, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(57, __c7, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ServiceResourceListResult",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/storageClasses",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListStorageClassRequest" });
+    case 1:
+      return S.Array(__S(216, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(65, __c8, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageClassResourceListResult",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          addresses: __S(176, __c22, 0),
+          serviceSelector: S.optional(__S(168, __c21, 0)),
+          advertiseMode: S.String,
+          bgpPeers: S.optional(__S(176, __c22, 0)),
+        }),
+      ).annotate({
+        identifier: "LoadBalancerPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          loadBalancerName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(72, __c9, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "LoadBalancersCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(169, __c21, 1)),
+        }),
+      ).annotate({
+        identifier: "LoadBalancersCreateOrUpdateResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          serviceName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(32, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/services/{serviceName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ServicesCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(200, __c25, 0)),
+        }),
+      ).annotate({
+        identifier: "ServicesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowVolumeExpansion: S.optional(S.String),
+          mountOptions: S.optional(__S(176, __c22, 0)),
+          provisioner: S.optional(S.String),
+          volumeBindingMode: S.optional(S.String),
+          accessModes: S.optional(__S(224, __c28, 0)),
+          dataResilience: S.optional(S.String),
+          failoverSpeed: S.optional(S.String),
+          limitations: S.optional(__S(176, __c22, 0)),
+          performance: S.optional(S.String),
+          priority: S.optional(S.Number),
+          typeProperties: __S(225, __c28, 1),
+        }),
+      ).annotate({
+        identifier: "StorageClassPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          storageClassName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(88, __c11, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StorageClassCreateOrUpdateRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(226, __c28, 2)),
+        }),
+      ).annotate({
+        identifier: "StorageClassCreateOrUpdateResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          backingStorageClassName: S.optional(S.String),
+          azureStorageAccountName: S.optional(S.String),
+          azureStorageAccountKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          server: S.optional(S.String),
+          share: S.optional(S.String),
+          subDir: S.optional(S.String),
+          mountPermissions: S.optional(S.String),
+          onDelete: S.optional(S.String),
+          source: S.optional(S.String),
+          username: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          domain: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageClassTypePropertiesUpdate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          allowVolumeExpansion: S.optional(S.String),
+          mountOptions: S.optional(__S(176, __c22, 0)),
+          accessModes: S.optional(__S(224, __c28, 0)),
+          dataResilience: S.optional(S.String),
+          failoverSpeed: S.optional(S.String),
+          limitations: S.optional(__S(176, __c22, 0)),
+          performance: S.optional(S.String),
+          priority: S.optional(S.Number),
+          typeProperties: S.optional(__S(104, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "StorageClassPropertiesUpdate",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          storageClassName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(105, __c13, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateStorageClassRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -977,7 +1310,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -993,7 +1326,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteServiceRequest" });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -1009,7 +1346,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteStorageClassRequest",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -1023,17 +1364,25 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBgpPeerRequest" });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "GetBgpPeerResponse" });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -1047,23 +1396,9 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLoadBalancerRequest" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          addresses: __S(13, __c1, 5),
-          serviceSelector: S.optional(__S(14, __c1, 6)),
-          advertiseMode: S.String,
-          bgpPeers: S.optional(__S(13, __c1, 5)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoadBalancerProperties" });
   }
 }
-function __c2(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1071,11 +1406,37 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(15, __c1, 7)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(169, __c21, 1)),
         }),
       ).annotate({ identifier: "GetLoadBalancerResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          addresses: __S(176, __c22, 0),
+          serviceSelector: S.optional(__S(168, __c21, 0)),
+          advertiseMode: S.String,
+          bgpPeers: S.optional(__S(176, __c22, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoadBalancerProperties" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -1089,24 +1450,36 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetServiceRequest" });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(200, __c25, 0)),
+        }),
+      ).annotate({ identifier: "GetServiceResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           rpObjectId: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "GetServiceResponse" });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -1120,9 +1493,27 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetStorageClassRequest" });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(226, __c28, 2)),
+        }),
+      ).annotate({ identifier: "GetStorageClassResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -1142,38 +1533,28 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "StorageClassTypeProperties",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           allowVolumeExpansion: S.optional(S.String),
-          mountOptions: S.optional(__S(13, __c1, 5)),
+          mountOptions: S.optional(__S(176, __c22, 0)),
           provisioner: S.optional(S.String),
           volumeBindingMode: S.optional(S.String),
-          accessModes: S.optional(__S(21, __c2, 5)),
+          accessModes: S.optional(__S(224, __c28, 0)),
           dataResilience: S.optional(S.String),
           failoverSpeed: S.optional(S.String),
-          limitations: S.optional(__S(13, __c1, 5)),
+          limitations: S.optional(__S(176, __c22, 0)),
           performance: S.optional(S.String),
           priority: S.optional(S.Number),
-          typeProperties: __S(22, __c2, 6),
+          typeProperties: __S(225, __c28, 1),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageClassProperties" });
   }
 }
-function __c3(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "GetStorageClassResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -1186,307 +1567,17 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBgpPeersRequest" });
+    case 1:
+      return S.Array(__S(144, __c18, 0));
     case 2:
-      return S.Array(__S(11, __c1, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(26, __c3, 2),
+          value: __S(233, __c29, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BgpPeerListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/loadBalancers",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListLoadBalancersRequest" });
-    case 5:
-      return S.Array(__S(16, __c2, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(29, __c3, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoadBalancerListResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.KubernetesRuntime/operations",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(32, __c4, 0)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(34, __c4, 2)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/services",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListServicesRequest" });
-    case 5:
-      return S.Array(__S(19, __c2, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(37, __c4, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ServiceResourceListResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/storageClasses",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListStorageClassRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(24, __c3, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(40, __c5, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageClassResourceListResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          addresses: __S(13, __c1, 5),
-          serviceSelector: S.optional(__S(14, __c1, 6)),
-          advertiseMode: S.String,
-          bgpPeers: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "LoadBalancerPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          loadBalancerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(42, __c5, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "LoadBalancersCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "LoadBalancersCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          serviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(6, __c0, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/services/{serviceName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ServicesCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "ServicesCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allowVolumeExpansion: S.optional(S.String),
-          mountOptions: S.optional(__S(13, __c1, 5)),
-          provisioner: S.optional(S.String),
-          volumeBindingMode: S.optional(S.String),
-          accessModes: S.optional(__S(21, __c2, 5)),
-          dataResilience: S.optional(S.String),
-          failoverSpeed: S.optional(S.String),
-          limitations: S.optional(__S(13, __c1, 5)),
-          performance: S.optional(S.String),
-          priority: S.optional(S.Number),
-          typeProperties: __S(22, __c2, 6),
-        }),
-      ).annotate({
-        identifier: "StorageClassPropertiesInput",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          storageClassName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(47, __c5, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StorageClassCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "StorageClassCreateOrUpdateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          backingStorageClassName: S.optional(S.String),
-          azureStorageAccountName: S.optional(S.String),
-          azureStorageAccountKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          server: S.optional(S.String),
-          share: S.optional(S.String),
-          subDir: S.optional(S.String),
-          mountPermissions: S.optional(S.String),
-          onDelete: S.optional(S.String),
-          source: S.optional(S.String),
-          username: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          domain: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageClassTypePropertiesUpdate",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          allowVolumeExpansion: S.optional(S.String),
-          mountOptions: S.optional(__S(13, __c1, 5)),
-          accessModes: S.optional(__S(21, __c2, 5)),
-          dataResilience: S.optional(S.String),
-          failoverSpeed: S.optional(S.String),
-          limitations: S.optional(__S(13, __c1, 5)),
-          performance: S.optional(S.String),
-          priority: S.optional(S.Number),
-          typeProperties: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "StorageClassPropertiesUpdate",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          storageClassName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(51, __c6, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/{resourceUri+}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateStorageClassRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

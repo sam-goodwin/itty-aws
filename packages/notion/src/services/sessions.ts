@@ -2062,7 +2062,7 @@ export const cancelSession: API.OperationMethod<
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelSessionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CancelSessionResponse>,
+  output: __S(24, __c3, 0) as any as S.Schema<CancelSessionResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2076,8 +2076,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetSessionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetSessionResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetSessionRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<GetSessionResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2093,8 +2093,8 @@ export const querySessionEvents: API.PaginatedOperationMethod<
   QuerySessionEventsResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(14, __c1, 6) as any as S.Schema<QuerySessionEventsRequest>,
-    output: __S(17, __c2, 1) as any as S.Schema<QuerySessionEventsResponse>,
+    input: __S(48, __c6, 0) as any as S.Schema<QuerySessionEventsRequest>,
+    output: __S(50, __c6, 2) as any as S.Schema<QuerySessionEventsResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -2118,8 +2118,8 @@ export const querySessions: API.PaginatedOperationMethod<
   QuerySessionsResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18, __c2, 2) as any as S.Schema<QuerySessionsRequest>,
-    output: __S(24, __c3, 0) as any as S.Schema<QuerySessionsResponse>,
+    input: __S(65, __c8, 1) as any as S.Schema<QuerySessionsRequest>,
+    output: __S(71, __c8, 7) as any as S.Schema<QuerySessionsResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -2141,8 +2141,8 @@ export const updateSession: API.OperationMethod<
   UpdateSessionError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<UpdateSessionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateSessionResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateSessionRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<UpdateSessionResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2158,30 +2158,11 @@ function __c0(j: number): any {
           event_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/sessions/{session_id}/cancel", code: 200 })),
       ).annotate({ identifier: "CancelSessionRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          label: S.String,
-        }),
-      ).annotate({
-        identifier: "CancelSessionResponseRequiredActionsItemOptionsItem",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action_id: S.String,
-          title: S.String,
-          options: __S(2, __c0, 2),
-        }),
-      ).annotate({
-        identifier: "CancelSessionResponseRequiredActionsItem",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -2191,7 +2172,38 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelSessionResponseError",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          label: S.String,
+        }),
+      ).annotate({
+        identifier: "CancelSessionResponseRequiredActionsItemOptionsItem",
+      });
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action_id: S.String,
+          title: S.String,
+          options: __S(17, __c2, 1),
+        }),
+      ).annotate({
+        identifier: "CancelSessionResponseRequiredActionsItem",
+      });
+    case 3:
+      return S.Array(__S(18, __c2, 2));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -2201,19 +2213,48 @@ function __c0(j: number): any {
           status: S.String,
           created_at: S.String,
           updated_at: S.String,
-          required_actions: S.optional(__S(4, __c0, 4)),
-          error: S.optional(__S(5, __c0, 5)),
+          required_actions: S.optional(__S(19, __c2, 3)),
+          error: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "CancelSessionResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           session_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/sessions/{session_id}", code: 200 })),
       ).annotate({ identifier: "GetSessionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          agent_id: S.String,
+          title: S.String,
+          status: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          created_by: __S(40, __c5, 0),
+          agent_version: S.NullOr(__S(41, __c5, 1)),
+          models: S.Unknown,
+          required_actions: S.optional(__S(19, __c2, 3)),
+          error: S.optional(__S(8, __c1, 0)),
+          trigger_type: S.optional(S.String),
+          type_labels: S.optional(S.NullOr(__S(42, __c5, 2))),
+          chat_user_emails: S.optional(S.NullOr(__S(42, __c5, 2))),
+          tool_types: S.optional(S.NullOr(__S(42, __c5, 2))),
+          tool_call_count: S.optional(S.NullOr(S.Number)),
+          credits_used: S.optional(S.NullOr(S.Number)),
+          runs_completed: S.optional(S.NullOr(S.Number)),
+          message_count: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "GetSessionResponse" });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2236,48 +2277,16 @@ function __c1(j: number): any {
       });
     case 2:
       return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          agent_id: S.String,
-          title: S.String,
-          status: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          created_by: __S(8, __c1, 0),
-          agent_version: S.NullOr(__S(9, __c1, 1)),
-          models: S.Unknown,
-          required_actions: S.optional(__S(4, __c0, 4)),
-          error: S.optional(__S(5, __c0, 5)),
-          trigger_type: S.optional(S.String),
-          type_labels: S.optional(S.NullOr(__S(10, __c1, 2))),
-          chat_user_emails: S.optional(S.NullOr(__S(10, __c1, 2))),
-          tool_types: S.optional(S.NullOr(__S(10, __c1, 2))),
-          tool_call_count: S.optional(S.NullOr(S.Number)),
-          credits_used: S.optional(S.NullOr(S.Number)),
-          runs_completed: S.optional(S.NullOr(S.Number)),
-          message_count: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "GetSessionResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          property: S.String,
-          direction: S.String,
-        }),
-      ).annotate({
-        identifier: "QuerySessionEventsRequestSortsItem",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           session_id: S.String.pipe(T.Label()),
           filter: S.optional(S.Unknown),
-          sorts: S.optional(__S(13, __c1, 5)),
+          sorts: S.optional(__S(57, __c7, 1)),
           start_cursor: S.optional(S.String),
           page_size: S.optional(S.Number),
         }).pipe(
@@ -2286,7 +2295,41 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "QuerySessionEventsRequest",
       });
-    case 7:
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          type: S.String,
+          session_event: S.Unknown,
+          results: __S(49, __c6, 1),
+          has_more: S.Boolean,
+          next_cursor: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "QuerySessionEventsResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          property: S.String,
+          direction: S.String,
+        }),
+      ).annotate({
+        identifier: "QuerySessionEventsRequestSortsItem",
+      });
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2295,50 +2338,31 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "QuerySessionEventsResponseResultsItemCase5RequiredActionsItemOptionsItem",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          type: S.String,
-          session_event: S.Unknown,
-          results: __S(16, __c2, 0),
-          has_more: S.Boolean,
-          next_cursor: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "QuerySessionEventsResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
           filter: S.optional(S.Unknown),
-          sorts: S.optional(__S(13, __c1, 5)),
+          sorts: S.optional(__S(57, __c7, 1)),
           start_cursor: S.optional(S.String),
           page_size: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/v1/sessions/query", code: 200 })),
       ).annotate({ identifier: "QuerySessionsRequest" });
+    case 2:
+      return S.Array(__S(64, __c8, 0));
     case 3:
-      return S.Array(__S(15, __c1, 7));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           action_id: S.String,
           title: S.String,
-          options: __S(19, __c2, 3),
+          options: __S(66, __c8, 2),
         }),
       ).annotate({
         identifier: "QuerySessionsResponseResultsItemRequiredActionsItem",
       });
+    case 4:
+      return S.Array(__S(67, __c8, 3));
     case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -2346,17 +2370,17 @@ function __c2(j: number): any {
           agent_id: S.String,
           title: S.String,
           status: S.String,
-          created_by: __S(8, __c1, 0),
-          agent_version: S.NullOr(__S(9, __c1, 1)),
+          created_by: __S(40, __c5, 0),
+          agent_version: S.NullOr(__S(41, __c5, 1)),
           models: S.Unknown,
           created_at: S.String,
           updated_at: S.String,
-          required_actions: S.optional(__S(21, __c2, 5)),
-          error: S.optional(__S(5, __c0, 5)),
+          required_actions: S.optional(__S(68, __c8, 4)),
+          error: S.optional(__S(8, __c1, 0)),
           trigger_type: S.optional(S.String),
-          type_labels: S.optional(S.NullOr(__S(10, __c1, 2))),
-          chat_user_emails: S.optional(S.NullOr(__S(10, __c1, 2))),
-          tool_types: S.optional(S.NullOr(__S(10, __c1, 2))),
+          type_labels: S.optional(S.NullOr(__S(42, __c5, 2))),
+          chat_user_emails: S.optional(S.NullOr(__S(42, __c5, 2))),
+          tool_types: S.optional(S.NullOr(__S(42, __c5, 2))),
           tool_call_count: S.optional(S.NullOr(S.Number)),
           credits_used: S.optional(S.NullOr(S.Number)),
           runs_completed: S.optional(S.NullOr(S.Number)),
@@ -2365,24 +2389,24 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "QuerySessionsResponseResultsItem",
       });
+    case 6:
+      return S.Array(__S(69, __c8, 5));
     case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           type: S.String,
           session: S.Unknown,
-          results: __S(23, __c2, 7),
+          results: __S(70, __c8, 6),
           has_more: S.Boolean,
           next_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "QuerySessionsResponse" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.Unknown.pipe(T.HttpBody()),
@@ -2390,7 +2414,6 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UpdateSessionRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

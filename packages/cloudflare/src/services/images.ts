@@ -523,8 +523,8 @@ export const createV1: API.OperationMethod<
   CreateV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateV1Request>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateV1Response>,
+  input: __S(72, __c18, 0) as any as S.Schema<CreateV1Request>,
+  output: __S(80, __c20, 0) as any as S.Schema<CreateV1Response>,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -542,8 +542,8 @@ export const createV1Variant: API.OperationMethod<
   CreateV1VariantError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateV1VariantRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateV1VariantResponse>,
+  input: __S(84, __c21, 0) as any as S.Schema<CreateV1VariantRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<CreateV1VariantResponse>,
   errors: [
     ImagesAccessNotEnabled,
     VariantNameNotAllowed,
@@ -567,8 +567,8 @@ export const createV2DirectUpload: API.OperationMethod<
   CreateV2DirectUploadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateV2DirectUploadRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateV2DirectUploadResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateV2DirectUploadRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateV2DirectUploadResponse>,
   errors: [
     ImagesAccessNotEnabled,
     ImageAlreadyExists,
@@ -588,8 +588,8 @@ export const deleteV1: API.OperationMethod<
   DeleteV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteV1Request>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteV1Response>,
+  input: __S(4, __c1, 0) as any as S.Schema<DeleteV1Request>,
+  output: __S(8, __c2, 0) as any as S.Schema<DeleteV1Response>,
   errors: [ImagesAccessNotEnabled, ImageNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -603,8 +603,8 @@ export const deleteV1Key: API.OperationMethod<
   DeleteV1KeyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteV1KeyRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteV1KeyResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteV1KeyRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<DeleteV1KeyResponse>,
   errors: [ImagesAccessNotEnabled, KeyNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -622,8 +622,8 @@ export const deleteV1Variant: API.OperationMethod<
   DeleteV1VariantError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteV1VariantRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteV1VariantResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteV1VariantRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<DeleteV1VariantResponse>,
   errors: [
     ImagesAccessNotEnabled,
     VariantNameNotAllowed,
@@ -643,8 +643,8 @@ export const getV1: API.OperationMethod<
   GetV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetV1Request>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetV1Response>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetV1Request>,
+  output: __S(80, __c20, 0) as any as S.Schema<GetV1Response>,
   errors: [ImagesAccessNotEnabled, ImageNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -658,8 +658,8 @@ export const getV1Blob: API.OperationMethod<
   GetV1BlobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetV1BlobRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetV1BlobResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetV1BlobRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<GetV1BlobResponse>,
   errors: [ImagesAccessNotEnabled, ImageNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -673,8 +673,8 @@ export const getV1Stat: API.OperationMethod<
   GetV1StatError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetV1StatRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetV1StatResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<GetV1StatRequest>,
+  output: __S(34, __c8, 2) as any as S.Schema<GetV1StatResponse>,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -692,8 +692,8 @@ export const getV1Variant: API.OperationMethod<
   GetV1VariantError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetV1VariantRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetV1VariantResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetV1VariantRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<GetV1VariantResponse>,
   errors: [
     ImagesAccessNotEnabled,
     VariantNameNotAllowed,
@@ -713,8 +713,8 @@ export const listV1Keys: API.OperationMethod<
   ListV1KeysError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListV1KeysRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ListV1KeysResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<ListV1KeysRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<ListV1KeysResponse>,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -728,8 +728,8 @@ export const listV1s: API.OperationMethod<
   ListV1sError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListV1sRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListV1sResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<ListV1sRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<ListV1sResponse>,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -743,8 +743,8 @@ export const listV1Variants: API.OperationMethod<
   ListV1VariantsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListV1VariantsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListV1VariantsResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<ListV1VariantsRequest>,
+  output: __S(54, __c13, 2) as any as S.Schema<ListV1VariantsResponse>,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -758,8 +758,8 @@ export const listV2s: API.OperationMethod<
   ListV2sError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListV2sRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListV2sResponse>,
+  input: __S(57, __c14, 1) as any as S.Schema<ListV2sRequest>,
+  output: __S(58, __c14, 2) as any as S.Schema<ListV2sResponse>,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -773,8 +773,8 @@ export const patchV1: API.OperationMethod<
   PatchV1Error,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<PatchV1Request>,
-  output: __S(2, __c0, 2) as any as S.Schema<PatchV1Response>,
+  input: __S(60, __c15, 0) as any as S.Schema<PatchV1Request>,
+  output: __S(80, __c20, 0) as any as S.Schema<PatchV1Response>,
   errors: [ImagesAccessNotEnabled, ImageNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -792,8 +792,8 @@ export const patchV1Variant: API.OperationMethod<
   PatchV1VariantError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<PatchV1VariantRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PatchV1VariantResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<PatchV1VariantRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<PatchV1VariantResponse>,
   errors: [
     ImagesAccessNotEnabled,
     VariantNameNotAllowed,
@@ -813,8 +813,8 @@ export const putV1Key: API.OperationMethod<
   PutV1KeyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<PutV1KeyRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<PutV1KeyResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<PutV1KeyRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<PutV1KeyResponse>,
   errors: [ImagesAccessNotEnabled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -824,74 +824,6 @@ export const putV1Key: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          id: S.optional(S.String),
-          creator: S.optional(S.String),
-          file: S.optional(S.Unknown),
-          metadata: S.optional(S.Unknown),
-          requireSignedURLs: S.optional(S.Boolean),
-          url: S.optional(S.String),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/images/v1", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateV1Request" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          creator: S.optional(S.NullOr(S.String)),
-          filename: S.optional(S.NullOr(S.String)),
-          meta: S.optional(S.NullOr(S.Unknown)),
-          requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-          uploaded: S.optional(S.NullOr(S.String)),
-          variants: S.optional(S.NullOr(__S(1, __c0, 1))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateV1Response" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fit: S.String,
-          height: S.Number,
-          metadata: S.String,
-          width: S.Number,
-        }),
-      ).annotate({
-        identifier: "V1VariantsCreateRequestOptions",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          id: S.String,
-          options: __S(3, __c0, 3),
-          neverRequireSignedURLs: S.optional(S.Boolean),
-        })
-          .pipe(
-            T.Http({ method: "POST", uri: "/accounts/{account_id}/images/v1/variants", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateV1VariantRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          options: __S(3, __c0, 3),
-          neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "V1VariantsCreateResponseVariant",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          variant: S.optional(S.NullOr(__S(5, __c0, 5))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateV1VariantResponse" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -912,11 +844,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateV2DirectUploadRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -925,7 +853,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateV2DirectUploadResponse",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -940,11 +872,19 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteV1Request" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteV1Response" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -959,7 +899,11 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteV1KeyRequest" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -968,15 +912,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "V1KeysDeleteResponseKeysItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(16, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(S.NullOr(__S(13, __c1, 5))),
+          keys: S.optional(S.NullOr(__S(17, __c4, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteV1KeyResponse" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -993,7 +941,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DeleteV1VariantRequest" });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1010,7 +958,11 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetV1Request" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1025,11 +977,15 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetV1BlobRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "GetV1BlobResponse",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1037,20 +993,24 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/images/v1/stats", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetV1StatRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           allowed: S.optional(S.NullOr(S.Number)),
           current: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "V1StatsGetResponseCount" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          count: S.optional(S.NullOr(__S(20, __c2, 4))),
+          count: S.optional(S.NullOr(__S(33, __c8, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetV1StatResponse" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1065,7 +1025,11 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetV1VariantRequest" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1075,7 +1039,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ListV1KeysRequest" });
   }
 }
-function __c3(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1091,24 +1055,32 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          images: S.optional(S.NullOr(__S(49, __c12, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListV1sResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           id: S.optional(S.NullOr(S.String)),
           creator: S.optional(S.NullOr(S.String)),
           filename: S.optional(S.NullOr(S.String)),
           meta: S.optional(S.NullOr(S.Unknown)),
           requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
           uploaded: S.optional(S.NullOr(S.String)),
-          variants: S.optional(S.NullOr(__S(1, __c0, 1))),
+          variants: S.optional(S.NullOr(__S(76, __c19, 0))),
         }),
       ).annotate({ identifier: "V1ListResponseImagesItem" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          images: S.optional(S.NullOr(__S(26, __c3, 2))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListV1sResponse" });
-    case 4:
+    case 1:
+      return S.Array(__S(48, __c12, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1118,21 +1090,25 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListV1VariantsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          hero: S.optional(S.NullOr(__S(5, __c0, 5))),
+          hero: S.optional(S.NullOr(__S(89, __c22, 1))),
         }),
       ).annotate({
         identifier: "V1VariantsListResponseVariants",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          variants: S.optional(S.NullOr(__S(29, __c3, 5))),
+          variants: S.optional(S.NullOr(__S(53, __c13, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListV1VariantsResponse" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ltFieldGtLtOperatorGt__: S.optional(
@@ -1140,31 +1116,31 @@ function __c3(j: number): any {
           ),
         }),
       ).annotate({ identifier: "V2ListRequestMeta" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           continuationToken: S.optional(S.String.pipe(T.Query("continuation_token"))),
           creator: S.optional(S.String.pipe(T.Query())),
-          meta: S.optional(__S(31, __c3, 7).pipe(T.DeepQuery("meta"))),
+          meta: S.optional(__S(56, __c14, 0).pipe(T.DeepQuery("meta"))),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           sortOrder: S.optional(S.String.pipe(T.Query("sort_order"))),
         })
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/images/v2", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListV2sRequest" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           continuationToken: S.optional(S.NullOr(S.String).pipe(T.Body("continuation_token"))),
-          images: S.optional(S.NullOr(__S(26, __c3, 2))),
+          images: S.optional(S.NullOr(__S(49, __c12, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListV2sResponse" });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1182,12 +1158,16 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchV1Request" });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           variantId: S.String.pipe(T.Label("variant_id")),
-          options: __S(3, __c0, 3),
+          options: __S(88, __c22, 0),
           neverRequireSignedURLs: S.optional(S.Boolean),
         })
           .pipe(
@@ -1199,7 +1179,11 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchV1VariantRequest" });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1216,7 +1200,98 @@ function __c4(j: number): any {
       ).annotate({ identifier: "PutV1KeyRequest" });
   }
 }
-
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          id: S.optional(S.String),
+          creator: S.optional(S.String),
+          file: S.optional(S.Unknown),
+          metadata: S.optional(S.Unknown),
+          requireSignedURLs: S.optional(S.Boolean),
+          url: S.optional(S.String),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/images/v1", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateV1Request" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          creator: S.optional(S.NullOr(S.String)),
+          filename: S.optional(S.NullOr(S.String)),
+          meta: S.optional(S.NullOr(S.Unknown)),
+          requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+          uploaded: S.optional(S.NullOr(S.String)),
+          variants: S.optional(S.NullOr(__S(76, __c19, 0))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateV1Response" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          id: S.String,
+          options: __S(88, __c22, 0),
+          neverRequireSignedURLs: S.optional(S.Boolean),
+        })
+          .pipe(
+            T.Http({ method: "POST", uri: "/accounts/{account_id}/images/v1/variants", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateV1VariantRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fit: S.String,
+          height: S.Number,
+          metadata: S.String,
+          width: S.Number,
+        }),
+      ).annotate({
+        identifier: "V1VariantsCreateRequestOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          options: __S(88, __c22, 0),
+          neverRequireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "V1VariantsCreateResponseVariant",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          variant: S.optional(S.NullOr(__S(89, __c22, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateV1VariantResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

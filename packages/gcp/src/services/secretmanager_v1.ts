@@ -649,8 +649,8 @@ export const accessProjectsLocationsSecretsVersions: API.OperationMethod<
   AccessProjectsLocationsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AccessProjectsLocationsSecretsVersionsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AccessSecretVersionResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<AccessProjectsLocationsSecretsVersionsRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<AccessSecretVersionResponse>,
   errors: [NotFound, Forbidden, SecretVersionNotEnabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -668,8 +668,8 @@ export const accessProjectsSecretsVersions: API.OperationMethod<
   AccessProjectsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AccessProjectsSecretsVersionsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AccessSecretVersionResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<AccessProjectsSecretsVersionsRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<AccessSecretVersionResponse>,
   errors: [NotFound, Forbidden, SecretVersionNotEnabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -688,8 +688,8 @@ export const addVersionProjectsLocationsSecrets: API.OperationMethod<
   AddVersionProjectsLocationsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AddVersionProjectsLocationsSecretsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(720, __c45, 0) as any as S.Schema<AddVersionProjectsLocationsSecretsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -708,8 +708,8 @@ export const addVersionProjectsSecrets: API.OperationMethod<
   AddVersionProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<AddVersionProjectsSecretsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(768, __c48, 0) as any as S.Schema<AddVersionProjectsSecretsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -728,8 +728,8 @@ export const createProjectsLocationsSecrets: API.OperationMethod<
   CreateProjectsLocationsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateProjectsLocationsSecretsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Secret>,
+  input: __S(784, __c49, 0) as any as S.Schema<CreateProjectsLocationsSecretsRequest>,
+  output: __S(829, __c51, 13) as any as S.Schema<Secret>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -743,8 +743,8 @@ export const createProjectsSecrets: API.OperationMethod<
   CreateProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateProjectsSecretsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Secret>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsSecretsRequest>,
+  output: __S(829, __c51, 13) as any as S.Schema<Secret>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -763,8 +763,8 @@ export const deleteProjectsLocationsSecrets: API.OperationMethod<
   DeleteProjectsLocationsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteProjectsLocationsSecretsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteProjectsLocationsSecretsRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -778,8 +778,8 @@ export const deleteProjectsSecrets: API.OperationMethod<
   DeleteProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteProjectsSecretsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteProjectsSecretsRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -798,8 +798,8 @@ export const destroyProjectsLocationsSecretsVersions: API.OperationMethod<
   DestroyProjectsLocationsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DestroyProjectsLocationsSecretsVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(64, __c4, 0) as any as S.Schema<DestroyProjectsLocationsSecretsVersionsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -818,8 +818,8 @@ export const destroyProjectsSecretsVersions: API.OperationMethod<
   DestroyProjectsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DestroyProjectsSecretsVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(96, __c6, 0) as any as S.Schema<DestroyProjectsSecretsVersionsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -838,8 +838,8 @@ export const disableProjectsLocationsSecretsVersions: API.OperationMethod<
   DisableProjectsLocationsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DisableProjectsLocationsSecretsVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(112, __c7, 0) as any as S.Schema<DisableProjectsLocationsSecretsVersionsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -858,8 +858,8 @@ export const disableProjectsSecretsVersions: API.OperationMethod<
   DisableProjectsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DisableProjectsSecretsVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(128, __c8, 0) as any as S.Schema<DisableProjectsSecretsVersionsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -878,8 +878,8 @@ export const enableManagedRotationProjectsLocationsSecrets: API.OperationMethod<
   EnableManagedRotationProjectsLocationsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<EnableManagedRotationProjectsLocationsSecretsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(144, __c9, 0) as any as S.Schema<EnableManagedRotationProjectsLocationsSecretsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -898,8 +898,8 @@ export const enableManagedRotationProjectsSecrets: API.OperationMethod<
   EnableManagedRotationProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<EnableManagedRotationProjectsSecretsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(176, __c11, 0) as any as S.Schema<EnableManagedRotationProjectsSecretsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -918,8 +918,8 @@ export const enableProjectsLocationsSecretsVersions: API.OperationMethod<
   EnableProjectsLocationsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<EnableProjectsLocationsSecretsVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(192, __c12, 0) as any as S.Schema<EnableProjectsLocationsSecretsVersionsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -938,8 +938,8 @@ export const enableProjectsSecretsVersions: API.OperationMethod<
   EnableProjectsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<EnableProjectsSecretsVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(208, __c13, 0) as any as S.Schema<EnableProjectsSecretsVersionsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -953,8 +953,8 @@ export const getIamPolicyProjectsLocationsSecrets: API.OperationMethod<
   GetIamPolicyProjectsLocationsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetIamPolicyProjectsLocationsSecretsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<Policy>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetIamPolicyProjectsLocationsSecretsRequest>,
+  output: __S(263, __c16, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -968,8 +968,8 @@ export const getIamPolicyProjectsSecrets: API.OperationMethod<
   GetIamPolicyProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetIamPolicyProjectsSecretsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<Policy>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetIamPolicyProjectsSecretsRequest>,
+  output: __S(263, __c16, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -983,8 +983,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<Location>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -998,8 +998,8 @@ export const getProjectsLocationsSecrets: API.OperationMethod<
   GetProjectsLocationsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetProjectsLocationsSecretsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Secret>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetProjectsLocationsSecretsRequest>,
+  output: __S(829, __c51, 13) as any as S.Schema<Secret>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1013,8 +1013,8 @@ export const getProjectsLocationsSecretsVersions: API.OperationMethod<
   GetProjectsLocationsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetProjectsLocationsSecretsVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetProjectsLocationsSecretsVersionsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1028,8 +1028,8 @@ export const getProjectsSecrets: API.OperationMethod<
   GetProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetProjectsSecretsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Secret>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetProjectsSecretsRequest>,
+  output: __S(829, __c51, 13) as any as S.Schema<Secret>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1043,8 +1043,8 @@ export const getProjectsSecretsVersions: API.OperationMethod<
   GetProjectsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetProjectsSecretsVersionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetProjectsSecretsVersionsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1059,8 +1059,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListLocationsResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1076,8 +1076,8 @@ export const listProjectsLocationsSecrets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSecretsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListProjectsLocationsSecretsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListSecretsResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListProjectsLocationsSecretsRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<ListSecretsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1093,8 +1093,8 @@ export const listProjectsLocationsSecretsVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSecretVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListProjectsLocationsSecretsVersionsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListSecretVersionsResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListProjectsLocationsSecretsVersionsRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<ListSecretVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1110,8 +1110,8 @@ export const listProjectsSecrets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSecretsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListProjectsSecretsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListSecretsResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListProjectsSecretsRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<ListSecretsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1127,8 +1127,8 @@ export const listProjectsSecretsVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSecretVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListProjectsSecretsVersionsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListSecretVersionsResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListProjectsSecretsVersionsRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<ListSecretVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1148,8 +1148,8 @@ export const patchProjectsLocationsSecrets: API.OperationMethod<
   PatchProjectsLocationsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<PatchProjectsLocationsSecretsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Secret>,
+  input: __S(496, __c31, 0) as any as S.Schema<PatchProjectsLocationsSecretsRequest>,
+  output: __S(829, __c51, 13) as any as S.Schema<Secret>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1163,8 +1163,8 @@ export const patchProjectsSecrets: API.OperationMethod<
   PatchProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<PatchProjectsSecretsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Secret>,
+  input: __S(512, __c32, 0) as any as S.Schema<PatchProjectsSecretsRequest>,
+  output: __S(829, __c51, 13) as any as S.Schema<Secret>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1183,8 +1183,8 @@ export const rotateSecretProjectsLocationsSecrets: API.OperationMethod<
   RotateSecretProjectsLocationsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<RotateSecretProjectsLocationsSecretsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(528, __c33, 0) as any as S.Schema<RotateSecretProjectsLocationsSecretsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1203,8 +1203,8 @@ export const rotateSecretProjectsSecrets: API.OperationMethod<
   RotateSecretProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<RotateSecretProjectsSecretsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<SecretVersion>,
+  input: __S(544, __c34, 0) as any as S.Schema<RotateSecretProjectsSecretsRequest>,
+  output: __S(758, __c47, 6) as any as S.Schema<SecretVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1223,8 +1223,8 @@ export const setIamPolicyProjectsLocationsSecrets: API.OperationMethod<
   SetIamPolicyProjectsLocationsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<SetIamPolicyProjectsLocationsSecretsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<Policy>,
+  input: __S(560, __c35, 0) as any as S.Schema<SetIamPolicyProjectsLocationsSecretsRequest>,
+  output: __S(263, __c16, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1243,8 +1243,8 @@ export const setIamPolicyProjectsSecrets: API.OperationMethod<
   SetIamPolicyProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<SetIamPolicyProjectsSecretsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<Policy>,
+  input: __S(592, __c37, 0) as any as S.Schema<SetIamPolicyProjectsSecretsRequest>,
+  output: __S(263, __c16, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1263,8 +1263,8 @@ export const testIamPermissionsProjectsLocationsSecrets: API.OperationMethod<
   TestIamPermissionsProjectsLocationsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<TestIamPermissionsProjectsLocationsSecretsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsSecretsRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1283,8 +1283,8 @@ export const testIamPermissionsProjectsSecrets: API.OperationMethod<
   TestIamPermissionsProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<TestIamPermissionsProjectsSecretsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<TestIamPermissionsProjectsSecretsRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1296,268 +1296,9 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}:access",
-            baseUrl: "https://secretmanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AccessProjectsLocationsSecretsVersionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dataCrc32c: S.optional(S.String),
-          data: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecretPayload" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          payload: S.optional(__S(1, __c0, 1)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccessSecretVersionResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}:access",
-            baseUrl: "https://secretmanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AccessProjectsSecretsVersionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          payload: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "AddSecretVersionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:addVersion",
-            baseUrl: "https://secretmanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddVersionProjectsLocationsSecretsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKeyVersionName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomerManagedEncryptionStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customerManagedEncryption: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "AutomaticStatus" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          customerManagedEncryption: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "ReplicaStatus" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          replicas: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "UserManagedStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(__S(7, __c0, 7)),
-          userManaged: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "ReplicationStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          scheduledDestroyTime: S.optional(S.String),
-          clientSpecifiedPayloadChecksum: S.optional(S.Boolean),
-          etag: S.optional(S.String),
-          replicationStatus: S.optional(__S(11, __c1, 3)),
-          name: S.optional(S.String),
-          customerManagedEncryption: S.optional(__S(6, __c0, 6)),
-          destroyTime: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecretVersion" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:addVersion",
-            baseUrl: "https://secretmanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddVersionProjectsSecretsRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          iamPolicyUidPrincipal: S.optional(S.String),
-          iamPolicyNamePrincipal: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourcePolicyMember" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKeyName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomerManagedEncryption",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          customerManagedEncryption: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "Automatic" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customerManagedEncryption: S.optional(__S(16, __c2, 0)),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Replica" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          replicas: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "UserManaged" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(__S(17, __c2, 1)),
-          userManaged: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "Replication" });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          error: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "ManagedRotationStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextRotationTime: S.optional(S.String),
-          rotationPeriod: S.optional(S.String),
-          managedRotationStatus: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "Rotation" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Topic" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(14, __c1, 6)),
-          policyMember: S.optional(__S(15, __c1, 7)),
-          replication: S.optional(__S(21, __c2, 5)),
-          etag: S.optional(S.String),
-          customerManagedEncryption: S.optional(__S(16, __c2, 0)),
-          rotation: S.optional(__S(26, __c3, 2)),
-          versionDestroyTtl: S.optional(S.String),
-          tags: S.optional(__S(14, __c1, 6)),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          topics: S.optional(__S(28, __c3, 4)),
-          ttl: S.optional(S.String),
-          versionAliases: S.optional(__S(14, __c1, 6)),
-          secretType: S.optional(S.String),
-          annotations: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "Secret" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          secretId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/secrets",
-            baseUrl: "https://secretmanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsSecretsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           secretId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(829, __c51, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1570,7 +1311,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1587,11 +1328,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSecretsRequest",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String.pipe(T.Query())),
@@ -1606,19 +1355,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsSecretsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DestroySecretVersionRequest",
-      });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1629,11 +1374,27 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DestroyProjectsLocationsSecretsVersionsRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DestroySecretVersionRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1644,11 +1405,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DestroyProjectsSecretsVersionsRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1659,11 +1424,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DisableProjectsLocationsSecretsVersionsRequest",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1676,7 +1445,26 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(161, __c10, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:enableManagedRotation",
+            baseUrl: "https://secretmanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableManagedRotationProjectsLocationsSecretsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1691,31 +1479,20 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cloudSqlSingleUserCredentials: S.optional(__S(40, __c5, 0)),
+          cloudSqlSingleUserCredentials: S.optional(__S(160, __c10, 0)),
         }),
       ).annotate({
         identifier: "EnableManagedRotationRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:enableManagedRotation",
-            baseUrl: "https://secretmanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableManagedRotationProjectsLocationsSecretsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(161, __c10, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1726,11 +1503,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "EnableManagedRotationProjectsSecretsRequest",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1741,11 +1522,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "EnableProjectsLocationsSecretsVersionsRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1756,7 +1541,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "EnableProjectsSecretsVersionsRequest",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -1771,7 +1560,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsSecretsRequest",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -1780,52 +1579,46 @@ function __c5(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(__S(47, __c5, 7)),
-          members: S.optional(__S(48, __c6, 0)),
+          condition: S.optional(__S(256, __c16, 0)),
+          members: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({ identifier: "Binding" });
     case 2:
-      return S.Array(__S(49, __c6, 1));
+      return S.Array(__S(257, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(__S(48, __c6, 0)),
+          exemptedMembers: S.optional(__S(240, __c15, 0)),
           logType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 4:
-      return S.Array(__S(51, __c6, 3));
+      return S.Array(__S(259, __c16, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(52, __c6, 4)),
+          auditLogConfigs: S.optional(__S(260, __c16, 4)),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 6:
-      return S.Array(__S(53, __c6, 5));
+      return S.Array(__S(261, __c16, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(__S(50, __c6, 2)),
-          auditConfigs: S.optional(__S(54, __c6, 6)),
+          bindings: S.optional(__S(258, __c16, 2)),
+          auditConfigs: S.optional(__S(262, __c16, 6)),
           version: S.optional(S.Number),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Policy" });
   }
 }
-function __c7(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1842,7 +1635,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsSecretsRequest",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1856,17 +1653,25 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(14, __c1, 6)),
-          metadata: S.optional(__S(22, __c2, 6)),
+          labels: S.optional(__S(800, __c50, 0)),
+          metadata: S.optional(__S(801, __c50, 1)),
         }),
       ).annotate({ identifier: "Location" });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1880,7 +1685,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSecretsRequest",
       });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1894,7 +1703,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSecretsVersionsRequest",
       });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1908,7 +1721,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetProjectsSecretsRequest",
       });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1922,11 +1739,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetProjectsSecretsVersionsRequest",
       });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          extraLocationTypes: S.optional(__S(48, __c6, 0).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(240, __c15, 0).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1940,20 +1761,20 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(58, __c7, 2));
     case 1:
+      return S.Array(__S(304, __c19, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(64, __c8, 0)),
+          locations: S.optional(__S(385, __c24, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1970,17 +1791,25 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSecretsRequest",
       });
-    case 3:
-      return S.Array(__S(29, __c3, 5));
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(829, __c51, 13));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          secrets: S.optional(__S(67, __c8, 3)),
+          secrets: S.optional(__S(416, __c26, 0)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListSecretsResponse" });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1997,12 +1826,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSecretsVersionsRequest",
       });
-    case 6:
-      return S.Array(__S(12, __c1, 4));
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(758, __c47, 6));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          versions: S.optional(__S(70, __c8, 6)),
+          versions: S.optional(__S(448, __c28, 0)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
@@ -2011,7 +1844,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2030,7 +1863,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsSecretsRequest",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2047,12 +1884,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsSecretsVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(829, __c51, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2063,12 +1904,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsSecretsRequest",
       });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(829, __c51, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2079,11 +1924,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PatchProjectsSecretsRequest",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2094,11 +1943,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "RotateSecretProjectsLocationsSecretsRequest",
       });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2109,18 +1962,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "RotateSecretProjectsSecretsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(55, __c6, 7)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c36, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2133,13 +1983,24 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(263, __c16, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c36, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2150,19 +2011,15 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsSecretsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(81, __c10, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(624, __c39, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2173,11 +2030,27 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsSecretsRequest",
       });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(240, __c15, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(81, __c10, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(624, __c39, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2190,7 +2063,297 @@ function __c10(j: number): any {
       });
   }
 }
-
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}:access",
+            baseUrl: "https://secretmanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AccessProjectsLocationsSecretsVersionsRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          payload: S.optional(__S(688, __c43, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccessSecretVersionResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataCrc32c: S.optional(S.String),
+          data: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecretPayload" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}:access",
+            baseUrl: "https://secretmanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AccessProjectsSecretsVersionsRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(736, __c46, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:addVersion",
+            baseUrl: "https://secretmanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddVersionProjectsLocationsSecretsRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          payload: S.optional(__S(688, __c43, 0)),
+        }),
+      ).annotate({ identifier: "AddSecretVersionRequest" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKeyVersionName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomerManagedEncryptionStatus",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customerManagedEncryption: S.optional(__S(752, __c47, 0)),
+        }),
+      ).annotate({ identifier: "AutomaticStatus" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          customerManagedEncryption: S.optional(__S(752, __c47, 0)),
+        }),
+      ).annotate({ identifier: "ReplicaStatus" });
+    case 3:
+      return S.Array(__S(754, __c47, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          replicas: S.optional(__S(755, __c47, 3)),
+        }),
+      ).annotate({ identifier: "UserManagedStatus" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(__S(753, __c47, 1)),
+          userManaged: S.optional(__S(756, __c47, 4)),
+        }),
+      ).annotate({ identifier: "ReplicationStatus" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          scheduledDestroyTime: S.optional(S.String),
+          clientSpecifiedPayloadChecksum: S.optional(S.Boolean),
+          etag: S.optional(S.String),
+          replicationStatus: S.optional(__S(757, __c47, 5)),
+          name: S.optional(S.String),
+          customerManagedEncryption: S.optional(__S(752, __c47, 0)),
+          destroyTime: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecretVersion" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(736, __c46, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:addVersion",
+            baseUrl: "https://secretmanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddVersionProjectsSecretsRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          secretId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(829, __c51, 13).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/secrets",
+            baseUrl: "https://secretmanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsSecretsRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          iamPolicyUidPrincipal: S.optional(S.String),
+          iamPolicyNamePrincipal: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourcePolicyMember" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKeyName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomerManagedEncryption",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customerManagedEncryption: S.optional(__S(817, __c51, 1)),
+        }),
+      ).annotate({ identifier: "Automatic" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          customerManagedEncryption: S.optional(__S(817, __c51, 1)),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Replica" });
+    case 4:
+      return S.Array(__S(819, __c51, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          replicas: S.optional(__S(820, __c51, 4)),
+        }),
+      ).annotate({ identifier: "UserManaged" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(__S(818, __c51, 2)),
+          userManaged: S.optional(__S(821, __c51, 5)),
+        }),
+      ).annotate({ identifier: "Replication" });
+    case 7:
+      return S.Array(__S(801, __c50, 1));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(823, __c51, 7)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          error: S.optional(__S(824, __c51, 8)),
+        }),
+      ).annotate({ identifier: "ManagedRotationStatus" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          nextRotationTime: S.optional(S.String),
+          rotationPeriod: S.optional(S.String),
+          managedRotationStatus: S.optional(__S(825, __c51, 9)),
+        }),
+      ).annotate({ identifier: "Rotation" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Topic" });
+    case 12:
+      return S.Array(__S(827, __c51, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(800, __c50, 0)),
+          policyMember: S.optional(__S(816, __c51, 0)),
+          replication: S.optional(__S(822, __c51, 6)),
+          etag: S.optional(S.String),
+          customerManagedEncryption: S.optional(__S(817, __c51, 1)),
+          rotation: S.optional(__S(826, __c51, 10)),
+          versionDestroyTtl: S.optional(S.String),
+          tags: S.optional(__S(800, __c50, 0)),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          topics: S.optional(__S(828, __c51, 12)),
+          ttl: S.optional(S.String),
+          versionAliases: S.optional(__S(800, __c50, 0)),
+          secretType: S.optional(S.String),
+          annotations: S.optional(__S(800, __c50, 0)),
+        }),
+      ).annotate({ identifier: "Secret" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

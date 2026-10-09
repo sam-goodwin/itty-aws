@@ -156,7 +156,7 @@ export class ValidationException
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(S.String),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(129, __c16, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(801, __c50, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -909,8 +909,8 @@ export const cancelBatchJobExecution: API.OperationMethod<
   CancelBatchJobExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CancelBatchJobExecutionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelBatchJobExecutionResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<CancelBatchJobExecutionRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<CancelBatchJobExecutionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -942,8 +942,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateApplicationResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -975,8 +975,8 @@ export const createDataSetExportTask: API.OperationMethod<
   CreateDataSetExportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateDataSetExportTaskRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateDataSetExportTaskResponse>,
+  input: __S(51, __c3, 3) as any as S.Schema<CreateDataSetExportTaskRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<CreateDataSetExportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1009,8 +1009,8 @@ export const createDataSetImportTask: API.OperationMethod<
   CreateDataSetImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateDataSetImportTaskRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateDataSetImportTaskResponse>,
+  input: __S(89, __c5, 9) as any as S.Schema<CreateDataSetImportTaskRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<CreateDataSetImportTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1044,8 +1044,8 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateDeploymentRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDeploymentResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreateDeploymentRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<CreateDeploymentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1077,8 +1077,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreateEnvironmentResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateEnvironmentRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<CreateEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1108,8 +1108,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1142,8 +1142,8 @@ export const deleteApplicationFromEnvironment: API.OperationMethod<
   DeleteApplicationFromEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteApplicationFromEnvironmentRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeleteApplicationFromEnvironmentResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteApplicationFromEnvironmentRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<DeleteApplicationFromEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1175,8 +1175,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1205,8 +1205,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetApplicationRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetApplicationResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(261, __c16, 5) as any as S.Schema<GetApplicationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1235,8 +1235,8 @@ export const getApplicationVersion: API.OperationMethod<
   GetApplicationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetApplicationVersionRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetApplicationVersionResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetApplicationVersionRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetApplicationVersionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1265,8 +1265,8 @@ export const getBatchJobExecution: API.OperationMethod<
   GetBatchJobExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetBatchJobExecutionRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetBatchJobExecutionResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetBatchJobExecutionRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<GetBatchJobExecutionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1298,8 +1298,8 @@ export const getDataSetDetails: API.OperationMethod<
   GetDataSetDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetDataSetDetailsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetDataSetDetailsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetDataSetDetailsRequest>,
+  output: __S(356, __c22, 4) as any as S.Schema<GetDataSetDetailsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1331,8 +1331,8 @@ export const getDataSetExportTask: API.OperationMethod<
   GetDataSetExportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetDataSetExportTaskRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetDataSetExportTaskResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetDataSetExportTaskRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<GetDataSetExportTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1361,8 +1361,8 @@ export const getDataSetImportTask: API.OperationMethod<
   GetDataSetImportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetDataSetImportTaskRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GetDataSetImportTaskResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetDataSetImportTaskRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<GetDataSetImportTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1391,8 +1391,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetDeploymentRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetDeploymentResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<GetDeploymentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1421,8 +1421,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetEnvironmentRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetEnvironmentResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(451, __c28, 3) as any as S.Schema<GetEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1449,8 +1449,8 @@ export const getSignedBluinsightsUrl: API.OperationMethod<
   GetSignedBluinsightsUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetSignedBluinsightsUrlRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GetSignedBluinsightsUrlResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetSignedBluinsightsUrlRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<GetSignedBluinsightsUrlResponse>,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1475,8 +1475,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(483, __c30, 3) as any as S.Schema<ListApplicationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1511,8 +1511,8 @@ export const listApplicationVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListApplicationVersionsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ListApplicationVersionsResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListApplicationVersionsRequest>,
+  output: __S(498, __c31, 2) as any as S.Schema<ListApplicationVersionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1550,8 +1550,8 @@ export const listBatchJobDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BatchJobDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListBatchJobDefinitionsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ListBatchJobDefinitionsResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListBatchJobDefinitionsRequest>,
+  output: __S(515, __c32, 3) as any as S.Schema<ListBatchJobDefinitionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1588,8 +1588,8 @@ export const listBatchJobExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BatchJobExecutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListBatchJobExecutionsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<ListBatchJobExecutionsResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListBatchJobExecutionsRequest>,
+  output: __S(531, __c33, 3) as any as S.Schema<ListBatchJobExecutionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1625,8 +1625,8 @@ export const listBatchJobRestartPoints: API.OperationMethod<
   ListBatchJobRestartPointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ListBatchJobRestartPointsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<ListBatchJobRestartPointsResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListBatchJobRestartPointsRequest>,
+  output: __S(547, __c34, 3) as any as S.Schema<ListBatchJobRestartPointsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1657,8 +1657,8 @@ export const listDataSetExportHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSetExportTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListDataSetExportHistoryRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListDataSetExportHistoryResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListDataSetExportHistoryRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<ListDataSetExportHistoryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1694,8 +1694,8 @@ export const listDataSetImportHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSetImportTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListDataSetImportHistoryRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<ListDataSetImportHistoryResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListDataSetImportHistoryRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<ListDataSetImportHistoryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1736,8 +1736,8 @@ export const listDataSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListDataSetsRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListDataSetsResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListDataSetsRequest>,
+  output: __S(611, __c38, 3) as any as S.Schema<ListDataSetsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1778,8 +1778,8 @@ export const listDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListDeploymentsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ListDeploymentsResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListDeploymentsRequest>,
+  output: __S(626, __c39, 2) as any as S.Schema<ListDeploymentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1814,8 +1814,8 @@ export const listEngineVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EngineVersionsSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListEngineVersionsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<ListEngineVersionsResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListEngineVersionsRequest>,
+  output: __S(643, __c40, 3) as any as S.Schema<ListEngineVersionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1849,8 +1849,8 @@ export const listEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<ListEnvironmentsResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(659, __c41, 3) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1884,8 +1884,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1915,8 +1915,8 @@ export const startApplication: API.OperationMethod<
   StartApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<StartApplicationRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<StartApplicationResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<StartApplicationRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<StartApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1948,8 +1948,8 @@ export const startBatchJob: API.OperationMethod<
   StartBatchJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<StartBatchJobRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<StartBatchJobResponse>,
+  input: __S(705, __c44, 1) as any as S.Schema<StartBatchJobRequest>,
+  output: __S(706, __c44, 2) as any as S.Schema<StartBatchJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1980,8 +1980,8 @@ export const stopApplication: API.OperationMethod<
   StopApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<StopApplicationRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<StopApplicationResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<StopApplicationRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<StopApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2012,8 +2012,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<TagResourceRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<TagResourceResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2043,8 +2043,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UntagResourceResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2074,8 +2074,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<UpdateApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2107,8 +2107,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<UpdateEnvironmentRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UpdateEnvironmentResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<UpdateEnvironmentRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<UpdateEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2125,6 +2125,1414 @@ export const updateEnvironment: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          engineType: S.String,
+          definition: __S(32, __c2, 0),
+          tags: S.optional(__S(16, __c1, 0)),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          kmsKeyId: S.optional(S.String),
+          roleArn: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateApplicationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationArn: S.String,
+          applicationId: S.String,
+          applicationVersion: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateApplicationResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ s3Location: S.String }),
+        /*@__PURE__*/ S.Struct({ content: S.String }),
+      ]);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ datasetName: S.String, externalLocation: __S(64, __c4, 0) }),
+      ).annotate({ identifier: "DataSetExportItem" });
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ s3Location: S.String }),
+        /*@__PURE__*/ S.Struct({ dataSets: __S(49, __c3, 1) }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          exportConfig: __S(50, __c3, 2),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          kmsKeyId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/applications/{applicationId}/dataset-export-task" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateDataSetExportTaskRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3Location: S.String })]);
+    case 1:
+      return S.suspend(() => S.Struct({ taskId: S.String })).annotate({
+        identifier: "CreateDataSetExportTaskResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.String,
+          encoding: S.optional(S.String),
+          compressed: S.optional(S.Boolean),
+          primaryKey: S.optional(__S(112, __c7, 0)),
+          alternateKeys: S.optional(__S(114, __c7, 2)),
+        }),
+      ).annotate({ identifier: "VsamAttributes" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.String,
+          encoding: S.optional(S.String),
+          memberFileExtensions: __S(96, __c6, 0),
+        }),
+      ).annotate({ identifier: "PoAttributes" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ format: S.String, encoding: S.optional(S.String) }),
+      ).annotate({ identifier: "PsAttributes" });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ vsam: __S(80, __c5, 0) }),
+        /*@__PURE__*/ S.Struct({ gdg: __S(115, __c7, 3) }),
+        /*@__PURE__*/ S.Struct({ po: __S(81, __c5, 1) }),
+        /*@__PURE__*/ S.Struct({ ps: __S(82, __c5, 2) }),
+      ]);
+    case 4:
+      return S.suspend(() => S.Struct({ min: S.Number, max: S.Number })).annotate({
+        identifier: "RecordLength",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          storageType: S.optional(S.String),
+          datasetName: S.String,
+          datasetOrg: __S(83, __c5, 3),
+          relativePath: S.optional(S.String),
+          recordLength: __S(84, __c5, 4),
+        }),
+      ).annotate({ identifier: "DataSet" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ dataSet: __S(85, __c5, 5), externalLocation: __S(64, __c4, 0) }),
+      ).annotate({ identifier: "DataSetImportItem" });
+    case 7:
+      return S.Array(__S(86, __c5, 6));
+    case 8:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ s3Location: S.String }),
+        /*@__PURE__*/ S.Struct({ dataSets: __S(87, __c5, 7) }),
+      ]);
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          importConfig: __S(88, __c5, 8),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/applications/{applicationId}/dataset-import-task" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateDataSetImportTaskRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), offset: S.Number, length: S.Number }),
+      ).annotate({ identifier: "PrimaryKey" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          offset: S.Number,
+          length: S.Number,
+          allowDuplicates: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AlternateKey" });
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ limit: S.optional(S.Number), rollDisposition: S.optional(S.String) }),
+      ).annotate({ identifier: "GdgAttributes" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String,
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          applicationVersion: S.Number,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/applications/{applicationId}/deployments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateDeploymentRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ deploymentId: S.String })).annotate({
+        identifier: "CreateDeploymentResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          instanceType: S.String,
+          description: S.optional(S.String),
+          engineType: S.String,
+          engineVersion: S.optional(S.String),
+          subnetIds: S.optional(__S(96, __c6, 0)),
+          securityGroupIds: S.optional(__S(96, __c6, 0)),
+          storageConfigurations: S.optional(__S(162, __c10, 2)),
+          publiclyAccessible: S.optional(S.Boolean),
+          highAvailabilityConfig: S.optional(__S(163, __c10, 3)),
+          tags: S.optional(__S(16, __c1, 0)),
+          preferredMaintenanceWindow: S.optional(S.String),
+          networkType: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          kmsKeyId: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/environments" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateEnvironmentRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ fileSystemId: S.String, mountPoint: S.String }).pipe(
+          S.encodeKeys({ fileSystemId: "file-system-id", mountPoint: "mount-point" }),
+        ),
+      ).annotate({ identifier: "EfsStorageConfiguration" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ efs: __S(160, __c10, 0) }),
+        /*@__PURE__*/ S.Struct({ fsx: __S(160, __c10, 0) }),
+      ]);
+    case 2:
+      return S.Array(__S(161, __c10, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ desiredCapacity: S.Number })).annotate({
+        identifier: "HighAvailabilityConfig",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ environmentId: S.String })).annotate({
+        identifier: "CreateEnvironmentResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/applications/{applicationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteApplicationRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteApplicationResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/applications/{applicationId}/environment/{environmentId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteApplicationFromEnvironmentRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteApplicationFromEnvironmentResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/environments/{environmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteEnvironmentRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetApplicationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationVersion: S.Number,
+          status: S.String,
+          statusReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeployedVersionSummary" });
+    case 2:
+      return S.suspend(() => S.Struct({ logType: S.String, logGroupName: S.String })).annotate({
+        identifier: "LogGroupSummary",
+      });
+    case 3:
+      return S.Array(__S(258, __c16, 2));
+    case 4:
+      return S.Array(S.Number);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          applicationId: S.String,
+          applicationArn: S.String,
+          status: S.String,
+          latestVersion: __S(272, __c17, 0),
+          deployedVersion: S.optional(__S(257, __c16, 1)),
+          engineType: S.String,
+          logGroups: S.optional(__S(259, __c16, 3)),
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          tags: S.optional(__S(16, __c1, 0)),
+          environmentId: S.optional(S.String),
+          targetGroupArns: S.optional(__S(96, __c6, 0)),
+          listenerArns: S.optional(__S(96, __c6, 0)),
+          listenerPorts: S.optional(__S(260, __c16, 4)),
+          loadBalancerDnsName: S.optional(S.String),
+          statusReason: S.optional(S.String),
+          kmsKeyId: S.optional(S.String),
+          roleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetApplicationResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationVersion: S.Number,
+          status: S.String,
+          statusReason: S.optional(S.String),
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "ApplicationVersionSummary",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          applicationVersion: S.Number.pipe(T.HttpLabel("applicationVersion")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/applications/{applicationId}/versions/{applicationVersion}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetApplicationVersionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          applicationVersion: S.Number,
+          description: S.optional(S.String),
+          definitionContent: S.String,
+          status: S.String,
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          statusReason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetApplicationVersionResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          executionId: S.String.pipe(T.HttpLabel("executionId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/applications/{applicationId}/batch-job-executions/{executionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetBatchJobExecutionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          executionId: S.String,
+          applicationId: S.String,
+          jobId: S.optional(S.String),
+          jobName: S.optional(S.String),
+          jobUser: S.optional(S.String),
+          jobType: S.optional(S.String),
+          status: S.String,
+          startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          statusReason: S.optional(S.String),
+          returnCode: S.optional(S.String),
+          batchJobIdentifier: S.optional(__S(340, __c21, 4)),
+          jobStepRestartMarker: S.optional(__S(338, __c21, 2)),
+        }),
+      ).annotate({
+        identifier: "GetBatchJobExecutionResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ fileName: S.String, folderPath: S.optional(S.String) }),
+      ).annotate({ identifier: "FileBatchJobIdentifier" });
+    case 1:
+      return S.suspend(() => S.Struct({ scriptName: S.String })).annotate({
+        identifier: "ScriptBatchJobIdentifier",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ fileName: S.String }),
+        /*@__PURE__*/ S.Struct({ scriptName: S.String }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.String,
+          keyPrefix: S.optional(S.String),
+          identifier: __S(336, __c21, 0),
+        }),
+      ).annotate({ identifier: "S3BatchJobIdentifier" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fromStep: S.String,
+          fromProcStep: S.optional(S.String),
+          toStep: S.optional(S.String),
+          toProcStep: S.optional(S.String),
+          stepCheckpoint: S.optional(S.Number),
+          skip: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "JobStepRestartMarker" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ executionId: S.String, jobStepRestartMarker: __S(338, __c21, 2) }),
+      ).annotate({
+        identifier: "RestartBatchJobIdentifier",
+      });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ fileBatchJobIdentifier: __S(320, __c20, 0) }),
+        /*@__PURE__*/ S.Struct({ scriptBatchJobIdentifier: __S(321, __c20, 1) }),
+        /*@__PURE__*/ S.Struct({ s3BatchJobIdentifier: __S(337, __c21, 1) }),
+        /*@__PURE__*/ S.Struct({ restartBatchJobIdentifier: __S(339, __c21, 3) }),
+      ]);
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          dataSetName: S.String.pipe(T.HttpLabel("dataSetName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/datasets/{dataSetName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDataSetDetailsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          encoding: S.optional(S.String),
+          recordFormat: S.optional(S.String),
+          compressed: S.optional(S.Boolean),
+          cacheAtStartup: S.optional(S.Boolean),
+          primaryKey: S.optional(__S(112, __c7, 0)),
+          alternateKeys: S.optional(__S(114, __c7, 2)),
+        }),
+      ).annotate({ identifier: "VsamDetailAttributes" });
+    case 2:
+      return S.suspend(() => S.Struct({ format: S.String, encoding: S.String })).annotate({
+        identifier: "PoDetailAttributes",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ vsam: __S(353, __c22, 1) }),
+        /*@__PURE__*/ S.Struct({ gdg: __S(115, __c7, 3) }),
+        /*@__PURE__*/ S.Struct({ po: __S(354, __c22, 2) }),
+        /*@__PURE__*/ S.Struct({ ps: __S(354, __c22, 2) }),
+      ]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dataSetName: S.String,
+          dataSetOrg: S.optional(__S(355, __c22, 3)),
+          recordLength: S.optional(S.Number),
+          location: S.optional(S.String),
+          blocksize: S.optional(S.Number),
+          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastReferencedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          fileSize: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetDataSetDetailsResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          taskId: S.String.pipe(T.HttpLabel("taskId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/applications/{applicationId}/dataset-export-tasks/{taskId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetDataSetExportTaskRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.String,
+          status: S.String,
+          summary: S.optional(__S(384, __c24, 0)),
+          statusReason: S.optional(S.String),
+          kmsKeyArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetDataSetExportTaskResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          total: S.Number,
+          succeeded: S.Number,
+          failed: S.Number,
+          pending: S.Number,
+          inProgress: S.Number,
+        }),
+      ).annotate({ identifier: "DataSetExportSummary" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          taskId: S.String.pipe(T.HttpLabel("taskId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/applications/{applicationId}/dataset-import-tasks/{taskId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetDataSetImportTaskRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ taskId: S.String, status: S.String, summary: S.optional(__S(384, __c24, 0)) }),
+      ).annotate({
+        identifier: "GetDataSetImportTaskResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.String.pipe(T.HttpLabel("deploymentId")),
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/applications/{applicationId}/deployments/{deploymentId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDeploymentRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.String,
+          applicationId: S.String,
+          environmentId: S.String,
+          applicationVersion: S.Number,
+          status: S.String,
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          statusReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetDeploymentResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/environments/{environmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetEnvironmentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "MaintenanceSchedule" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ schedule: S.optional(__S(449, __c28, 1)), engineVersion: S.optional(S.String) }),
+      ).annotate({ identifier: "PendingMaintenance" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          environmentArn: S.String,
+          environmentId: S.String,
+          instanceType: S.String,
+          status: S.String,
+          engineType: S.String,
+          engineVersion: S.String,
+          vpcId: S.String,
+          subnetIds: __S(96, __c6, 0),
+          securityGroupIds: __S(96, __c6, 0),
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          storageConfigurations: S.optional(__S(162, __c10, 2)),
+          tags: S.optional(__S(16, __c1, 0)),
+          highAvailabilityConfig: S.optional(__S(163, __c10, 3)),
+          publiclyAccessible: S.optional(S.Boolean),
+          actualCapacity: S.optional(S.Number),
+          loadBalancerArn: S.optional(S.String),
+          statusReason: S.optional(S.String),
+          preferredMaintenanceWindow: S.optional(S.String),
+          pendingMaintenance: S.optional(__S(450, __c28, 2)),
+          kmsKeyId: S.optional(S.String),
+          networkType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetEnvironmentResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "GET", uri: "/signed-bi-url" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetSignedBluinsightsUrlRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ signedBiUrl: S.String })).annotate({
+        identifier: "GetSignedBluinsightsUrlResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          names: S.optional(__S(96, __c6, 0)).pipe(T.HttpQuery("names")),
+          environmentId: S.optional(S.String).pipe(T.HttpQuery("environmentId")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListApplicationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          applicationId: S.String,
+          applicationArn: S.String,
+          applicationVersion: S.Number,
+          status: S.String,
+          engineType: S.String,
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          environmentId: S.optional(S.String),
+          lastStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          versionStatus: S.optional(S.String),
+          deploymentStatus: S.optional(S.String),
+          roleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationSummary" });
+    case 2:
+      return S.Array(__S(481, __c30, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ applications: __S(482, __c30, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListApplicationsResponse" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/versions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListApplicationVersionsRequest",
+      });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ applicationVersions: __S(497, __c31, 1), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListApplicationVersionsResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/batch-job-definitions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListBatchJobDefinitionsRequest",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ fileBatchJobDefinition: __S(320, __c20, 0) }),
+        /*@__PURE__*/ S.Struct({ scriptBatchJobDefinition: __S(321, __c20, 1) }),
+      ]);
+    case 2:
+      return S.Array(__S(513, __c32, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ batchJobDefinitions: __S(514, __c32, 2), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListBatchJobDefinitionsResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          executionIds: S.optional(__S(96, __c6, 0)).pipe(T.HttpQuery("executionIds")),
+          jobName: S.optional(S.String).pipe(T.HttpQuery("jobName")),
+          status: S.optional(S.String).pipe(T.HttpQuery("status")),
+          startedAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("startedAfter"),
+          ),
+          startedBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("startedBefore"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/batch-job-executions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListBatchJobExecutionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          executionId: S.String,
+          applicationId: S.String,
+          jobId: S.optional(S.String),
+          jobName: S.optional(S.String),
+          jobType: S.optional(S.String),
+          status: S.String,
+          startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          returnCode: S.optional(S.String),
+          batchJobIdentifier: S.optional(__S(340, __c21, 4)),
+        }),
+      ).annotate({ identifier: "BatchJobExecutionSummary" });
+    case 2:
+      return S.Array(__S(529, __c33, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ batchJobExecutions: __S(530, __c33, 2), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListBatchJobExecutionsResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          executionId: S.String.pipe(T.HttpLabel("executionId")),
+          authSecretsManagerArn: S.optional(S.String).pipe(T.HttpQuery("authSecretsManagerArn")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/applications/{applicationId}/batch-job-executions/{executionId}/steps",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListBatchJobRestartPointsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stepNumber: S.optional(S.Number),
+          stepName: S.optional(S.String),
+          procStepNumber: S.optional(S.Number),
+          procStepName: S.optional(S.String),
+          stepCondCode: S.optional(S.String),
+          stepRestartable: S.optional(S.Boolean),
+          stepCheckpoint: S.optional(S.Number),
+          stepCheckpointStatus: S.optional(S.String),
+          stepCheckpointTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "JobStep" });
+    case 2:
+      return S.Array(__S(545, __c34, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ batchJobSteps: S.optional(__S(546, __c34, 2)) })).annotate({
+        identifier: "ListBatchJobRestartPointsResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/dataset-export-tasks" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListDataSetExportHistoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ dataSetExportTasks: __S(577, __c36, 1), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListDataSetExportHistoryResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.String,
+          status: S.String,
+          summary: __S(384, __c24, 0),
+          statusReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataSetExportTask" });
+    case 1:
+      return S.Array(__S(576, __c36, 0));
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/dataset-import-tasks" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListDataSetImportHistoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ dataSetImportTasks: __S(577, __c36, 1), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListDataSetImportHistoryResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
+          nameFilter: S.optional(S.String).pipe(T.HttpQuery("nameFilter")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/datasets" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListDataSetsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dataSetName: S.String,
+          dataSetOrg: S.optional(S.String),
+          format: S.optional(S.String),
+          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastReferencedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DataSetSummary" });
+    case 2:
+      return S.Array(__S(609, __c38, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ dataSets: __S(610, __c38, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDataSetsResponse" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/deployments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListDeploymentsRequest" });
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ deployments: __S(625, __c39, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDeploymentsResponse" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          engineType: S.optional(S.String).pipe(T.HttpQuery("engineType")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/engine-versions" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListEngineVersionsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ engineType: S.String, engineVersion: S.String })).annotate({
+        identifier: "EngineVersionsSummary",
+      });
+    case 2:
+      return S.Array(__S(641, __c40, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ engineVersions: __S(642, __c40, 2), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListEngineVersionsResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          names: S.optional(__S(96, __c6, 0)).pipe(T.HttpQuery("names")),
+          engineType: S.optional(S.String).pipe(T.HttpQuery("engineType")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/environments" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListEnvironmentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          environmentArn: S.String,
+          environmentId: S.String,
+          instanceType: S.String,
+          status: S.String,
+          engineType: S.String,
+          engineVersion: S.String,
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          networkType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvironmentSummary" });
+    case 2:
+      return S.Array(__S(657, __c41, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ environments: __S(658, __c41, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEnvironmentsResponse" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ tags: __S(16, __c1, 0) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/applications/{applicationId}/start" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartApplicationRequest" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          batchJobIdentifier: __S(340, __c21, 4),
+          jobParams: S.optional(__S(704, __c44, 0)),
+          authSecretsManagerArn: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/applications/{applicationId}/batch-job" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartBatchJobRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ executionId: S.String })).annotate({
+        identifier: "StartBatchJobResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          forceStop: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/applications/{applicationId}/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopApplicationRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(16, __c1, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: __S(96, __c6, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          description: S.optional(S.String),
+          currentApplicationVersion: S.Number,
+          definition: S.optional(__S(32, __c2, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/applications/{applicationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateApplicationRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ applicationVersion: S.Number })).annotate({
+        identifier: "UpdateApplicationResponse",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+          desiredCapacity: S.optional(S.Number),
+          instanceType: S.optional(S.String),
+          engineVersion: S.optional(S.String),
+          preferredMaintenanceWindow: S.optional(S.String),
+          applyDuringMaintenanceWindow: S.optional(S.Boolean),
+          forceUpdate: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/environments/{environmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateEnvironmentRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(800, __c50, 0));
+  }
+}
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2152,1286 +3560,8 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelBatchJobExecutionResponse",
       });
-    case 2:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ s3Location: S.String }),
-        /*@__PURE__*/ S.Struct({ content: S.String }),
-      ]);
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          engineType: S.String,
-          definition: __S(2, __c0, 2),
-          tags: S.optional(__S(3, __c0, 3)),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          kmsKeyId: S.optional(S.String),
-          roleArn: S.optional(S.String),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateApplicationRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          applicationArn: S.String,
-          applicationId: S.String,
-          applicationVersion: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateApplicationResponse",
-      });
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ s3Location: S.String })]);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ datasetName: S.String, externalLocation: __S(6, __c0, 6) }),
-      ).annotate({ identifier: "DataSetExportItem" });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ s3Location: S.String }),
-        /*@__PURE__*/ S.Struct({ dataSets: __S(8, __c1, 0) }),
-      ]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          exportConfig: __S(9, __c1, 1),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          kmsKeyId: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/applications/{applicationId}/dataset-export-task" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateDataSetExportTaskRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ taskId: S.String })).annotate({
-        identifier: "CreateDataSetExportTaskResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), offset: S.Number, length: S.Number }),
-      ).annotate({ identifier: "PrimaryKey" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          offset: S.Number,
-          length: S.Number,
-          allowDuplicates: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AlternateKey" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          format: S.String,
-          encoding: S.optional(S.String),
-          compressed: S.optional(S.Boolean),
-          primaryKey: S.optional(__S(12, __c1, 4)),
-          alternateKeys: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "VsamAttributes" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ limit: S.optional(S.Number), rollDisposition: S.optional(S.String) }),
-      ).annotate({ identifier: "GdgAttributes" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          format: S.String,
-          encoding: S.optional(S.String),
-          memberFileExtensions: __S(17, __c2, 1),
-        }),
-      ).annotate({ identifier: "PoAttributes" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ format: S.String, encoding: S.optional(S.String) }),
-      ).annotate({ identifier: "PsAttributes" });
-    case 4:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ vsam: __S(15, __c1, 7) }),
-        /*@__PURE__*/ S.Struct({ gdg: __S(16, __c2, 0) }),
-        /*@__PURE__*/ S.Struct({ po: __S(18, __c2, 2) }),
-        /*@__PURE__*/ S.Struct({ ps: __S(19, __c2, 3) }),
-      ]);
-    case 5:
-      return S.suspend(() => S.Struct({ min: S.Number, max: S.Number })).annotate({
-        identifier: "RecordLength",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          storageType: S.optional(S.String),
-          datasetName: S.String,
-          datasetOrg: __S(20, __c2, 4),
-          relativePath: S.optional(S.String),
-          recordLength: __S(21, __c2, 5),
-        }),
-      ).annotate({ identifier: "DataSet" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ dataSet: __S(22, __c2, 6), externalLocation: __S(6, __c0, 6) }),
-      ).annotate({ identifier: "DataSetImportItem" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ s3Location: S.String }),
-        /*@__PURE__*/ S.Struct({ dataSets: __S(24, __c3, 0) }),
-      ]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          importConfig: __S(25, __c3, 1),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/applications/{applicationId}/dataset-import-task" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateDataSetImportTaskRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.String,
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          applicationVersion: S.Number,
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/applications/{applicationId}/deployments" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateDeploymentRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ deploymentId: S.String })).annotate({
-        identifier: "CreateDeploymentResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ fileSystemId: S.String, mountPoint: S.String }).pipe(
-          S.encodeKeys({ fileSystemId: "file-system-id", mountPoint: "mount-point" }),
-        ),
-      ).annotate({ identifier: "EfsStorageConfiguration" });
-    case 6:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ efs: __S(29, __c3, 5) }),
-        /*@__PURE__*/ S.Struct({ fsx: __S(29, __c3, 5) }),
-      ]);
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ desiredCapacity: S.Number })).annotate({
-        identifier: "HighAvailabilityConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          instanceType: S.String,
-          description: S.optional(S.String),
-          engineType: S.String,
-          engineVersion: S.optional(S.String),
-          subnetIds: S.optional(__S(17, __c2, 1)),
-          securityGroupIds: S.optional(__S(17, __c2, 1)),
-          storageConfigurations: S.optional(__S(31, __c3, 7)),
-          publiclyAccessible: S.optional(S.Boolean),
-          highAvailabilityConfig: S.optional(__S(32, __c4, 0)),
-          tags: S.optional(__S(3, __c0, 3)),
-          preferredMaintenanceWindow: S.optional(S.String),
-          networkType: S.optional(S.String),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          kmsKeyId: S.optional(S.String),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/environments" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateEnvironmentRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ environmentId: S.String })).annotate({
-        identifier: "CreateEnvironmentResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/applications/{applicationId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteApplicationRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteApplicationResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/applications/{applicationId}/environment/{environmentId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteApplicationFromEnvironmentRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteApplicationFromEnvironmentResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/environments/{environmentId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteEnvironmentRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetApplicationRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applicationVersion: S.Number,
-          status: S.String,
-          statusReason: S.optional(S.String),
-          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({
-        identifier: "ApplicationVersionSummary",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationVersion: S.Number,
-          status: S.String,
-          statusReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeployedVersionSummary" });
-    case 3:
-      return S.suspend(() => S.Struct({ logType: S.String, logGroupName: S.String })).annotate({
-        identifier: "LogGroupSummary",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          applicationId: S.String,
-          applicationArn: S.String,
-          status: S.String,
-          latestVersion: __S(41, __c5, 1),
-          deployedVersion: S.optional(__S(42, __c5, 2)),
-          engineType: S.String,
-          logGroups: S.optional(__S(44, __c5, 4)),
-          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          lastStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(3, __c0, 3)),
-          environmentId: S.optional(S.String),
-          targetGroupArns: S.optional(__S(17, __c2, 1)),
-          listenerArns: S.optional(__S(17, __c2, 1)),
-          listenerPorts: S.optional(__S(45, __c5, 5)),
-          loadBalancerDnsName: S.optional(S.String),
-          statusReason: S.optional(S.String),
-          kmsKeyId: S.optional(S.String),
-          roleArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetApplicationResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          applicationVersion: S.Number.pipe(T.HttpLabel("applicationVersion")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/applications/{applicationId}/versions/{applicationVersion}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetApplicationVersionRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          applicationVersion: S.Number,
-          description: S.optional(S.String),
-          definitionContent: S.String,
-          status: S.String,
-          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          statusReason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetApplicationVersionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          executionId: S.String.pipe(T.HttpLabel("executionId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/applications/{applicationId}/batch-job-executions/{executionId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetBatchJobExecutionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ fileName: S.String, folderPath: S.optional(S.String) }),
-      ).annotate({ identifier: "FileBatchJobIdentifier" });
-    case 3:
-      return S.suspend(() => S.Struct({ scriptName: S.String })).annotate({
-        identifier: "ScriptBatchJobIdentifier",
-      });
-    case 4:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ fileName: S.String }),
-        /*@__PURE__*/ S.Struct({ scriptName: S.String }),
-      ]);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.String,
-          keyPrefix: S.optional(S.String),
-          identifier: __S(52, __c6, 4),
-        }),
-      ).annotate({ identifier: "S3BatchJobIdentifier" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fromStep: S.String,
-          fromProcStep: S.optional(S.String),
-          toStep: S.optional(S.String),
-          toProcStep: S.optional(S.String),
-          stepCheckpoint: S.optional(S.Number),
-          skip: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "JobStepRestartMarker" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ executionId: S.String, jobStepRestartMarker: __S(54, __c6, 6) }),
-      ).annotate({
-        identifier: "RestartBatchJobIdentifier",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ fileBatchJobIdentifier: __S(50, __c6, 2) }),
-        /*@__PURE__*/ S.Struct({ scriptBatchJobIdentifier: __S(51, __c6, 3) }),
-        /*@__PURE__*/ S.Struct({ s3BatchJobIdentifier: __S(53, __c6, 5) }),
-        /*@__PURE__*/ S.Struct({ restartBatchJobIdentifier: __S(55, __c6, 7) }),
-      ]);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          executionId: S.String,
-          applicationId: S.String,
-          jobId: S.optional(S.String),
-          jobName: S.optional(S.String),
-          jobUser: S.optional(S.String),
-          jobType: S.optional(S.String),
-          status: S.String,
-          startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          statusReason: S.optional(S.String),
-          returnCode: S.optional(S.String),
-          batchJobIdentifier: S.optional(__S(56, __c7, 0)),
-          jobStepRestartMarker: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "GetBatchJobExecutionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          dataSetName: S.String.pipe(T.HttpLabel("dataSetName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/datasets/{dataSetName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetDataSetDetailsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          encoding: S.optional(S.String),
-          recordFormat: S.optional(S.String),
-          compressed: S.optional(S.Boolean),
-          cacheAtStartup: S.optional(S.Boolean),
-          primaryKey: S.optional(__S(12, __c1, 4)),
-          alternateKeys: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "VsamDetailAttributes" });
-    case 4:
-      return S.suspend(() => S.Struct({ format: S.String, encoding: S.String })).annotate({
-        identifier: "PoDetailAttributes",
-      });
-    case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ vsam: __S(59, __c7, 3) }),
-        /*@__PURE__*/ S.Struct({ gdg: __S(16, __c2, 0) }),
-        /*@__PURE__*/ S.Struct({ po: __S(60, __c7, 4) }),
-        /*@__PURE__*/ S.Struct({ ps: __S(60, __c7, 4) }),
-      ]);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dataSetName: S.String,
-          dataSetOrg: S.optional(__S(61, __c7, 5)),
-          recordLength: S.optional(S.Number),
-          location: S.optional(S.String),
-          blocksize: S.optional(S.Number),
-          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastReferencedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          fileSize: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetDataSetDetailsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          taskId: S.String.pipe(T.HttpLabel("taskId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/applications/{applicationId}/dataset-export-tasks/{taskId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetDataSetExportTaskRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          total: S.Number,
-          succeeded: S.Number,
-          failed: S.Number,
-          pending: S.Number,
-          inProgress: S.Number,
-        }),
-      ).annotate({ identifier: "DataSetExportSummary" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.String,
-          status: S.String,
-          summary: S.optional(__S(64, __c8, 0)),
-          statusReason: S.optional(S.String),
-          kmsKeyArn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetDataSetExportTaskResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          taskId: S.String.pipe(T.HttpLabel("taskId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/applications/{applicationId}/dataset-import-tasks/{taskId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetDataSetImportTaskRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ taskId: S.String, status: S.String, summary: S.optional(__S(64, __c8, 0)) }),
-      ).annotate({
-        identifier: "GetDataSetImportTaskResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentId: S.String.pipe(T.HttpLabel("deploymentId")),
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/applications/{applicationId}/deployments/{deploymentId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetDeploymentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentId: S.String,
-          applicationId: S.String,
-          environmentId: S.String,
-          applicationVersion: S.Number,
-          status: S.String,
-          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          statusReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetDeploymentResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/environments/{environmentId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetEnvironmentRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "MaintenanceSchedule" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          schedule: S.optional(__S(71, __c8, 7)),
-          engineVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PendingMaintenance" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          environmentArn: S.String,
-          environmentId: S.String,
-          instanceType: S.String,
-          status: S.String,
-          engineType: S.String,
-          engineVersion: S.String,
-          vpcId: S.String,
-          subnetIds: __S(17, __c2, 1),
-          securityGroupIds: __S(17, __c2, 1),
-          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          storageConfigurations: S.optional(__S(31, __c3, 7)),
-          tags: S.optional(__S(3, __c0, 3)),
-          highAvailabilityConfig: S.optional(__S(32, __c4, 0)),
-          publiclyAccessible: S.optional(S.Boolean),
-          actualCapacity: S.optional(S.Number),
-          loadBalancerArn: S.optional(S.String),
-          statusReason: S.optional(S.String),
-          preferredMaintenanceWindow: S.optional(S.String),
-          pendingMaintenance: S.optional(__S(72, __c9, 0)),
-          kmsKeyId: S.optional(S.String),
-          networkType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetEnvironmentResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.all(T.Http({ method: "GET", uri: "/signed-bi-url" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetSignedBluinsightsUrlRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ signedBiUrl: S.String })).annotate({
-        identifier: "GetSignedBluinsightsUrlResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          names: S.optional(__S(17, __c2, 1)).pipe(T.HttpQuery("names")),
-          environmentId: S.optional(S.String).pipe(T.HttpQuery("environmentId")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListApplicationsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          applicationId: S.String,
-          applicationArn: S.String,
-          applicationVersion: S.Number,
-          status: S.String,
-          engineType: S.String,
-          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          environmentId: S.optional(S.String),
-          lastStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          versionStatus: S.optional(S.String),
-          deploymentStatus: S.optional(S.String),
-          roleArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationSummary" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ applications: __S(78, __c9, 6), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListApplicationsResponse" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/versions" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListApplicationVersionsRequest",
-      });
-    case 1:
-      return S.Array(__S(41, __c5, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationVersions: __S(81, __c10, 1),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListApplicationVersionsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/batch-job-definitions" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListBatchJobDefinitionsRequest",
-      });
-    case 4:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ fileBatchJobDefinition: __S(50, __c6, 2) }),
-        /*@__PURE__*/ S.Struct({ scriptBatchJobDefinition: __S(51, __c6, 3) }),
-      ]);
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ batchJobDefinitions: __S(85, __c10, 5), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListBatchJobDefinitionsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          executionIds: S.optional(__S(17, __c2, 1)).pipe(T.HttpQuery("executionIds")),
-          jobName: S.optional(S.String).pipe(T.HttpQuery("jobName")),
-          status: S.optional(S.String).pipe(T.HttpQuery("status")),
-          startedAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-            T.HttpQuery("startedAfter"),
-          ),
-          startedBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-            T.HttpQuery("startedBefore"),
-          ),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/batch-job-executions" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListBatchJobExecutionsRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          executionId: S.String,
-          applicationId: S.String,
-          jobId: S.optional(S.String),
-          jobName: S.optional(S.String),
-          jobType: S.optional(S.String),
-          status: S.String,
-          startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          returnCode: S.optional(S.String),
-          batchJobIdentifier: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "BatchJobExecutionSummary" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          batchJobExecutions: __S(89, __c11, 1),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListBatchJobExecutionsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          executionId: S.String.pipe(T.HttpLabel("executionId")),
-          authSecretsManagerArn: S.optional(S.String).pipe(T.HttpQuery("authSecretsManagerArn")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/applications/{applicationId}/batch-job-executions/{executionId}/steps",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListBatchJobRestartPointsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          stepNumber: S.optional(S.Number),
-          stepName: S.optional(S.String),
-          procStepNumber: S.optional(S.Number),
-          procStepName: S.optional(S.String),
-          stepCondCode: S.optional(S.String),
-          stepRestartable: S.optional(S.Boolean),
-          stepCheckpoint: S.optional(S.Number),
-          stepCheckpointStatus: S.optional(S.String),
-          stepCheckpointTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "JobStep" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ batchJobSteps: S.optional(__S(93, __c11, 5)) })).annotate({
-        identifier: "ListBatchJobRestartPointsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/dataset-export-tasks" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListDataSetExportHistoryRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.String,
-          status: S.String,
-          summary: __S(64, __c8, 0),
-          statusReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataSetExportTask" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ dataSetExportTasks: __S(97, __c12, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDataSetExportHistoryResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/dataset-import-tasks" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListDataSetImportHistoryRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ dataSetImportTasks: __S(97, __c12, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDataSetImportHistoryResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
-          nameFilter: S.optional(S.String).pipe(T.HttpQuery("nameFilter")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/datasets" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListDataSetsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dataSetName: S.String,
-          dataSetOrg: S.optional(S.String),
-          format: S.optional(S.String),
-          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastReferencedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "DataSetSummary" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ dataSets: __S(103, __c12, 7), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListDataSetsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/deployments" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListDeploymentsRequest" });
-    case 2:
-      return S.Array(__S(69, __c8, 5));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ deployments: __S(106, __c13, 2), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListDeploymentsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          engineType: S.optional(S.String).pipe(T.HttpQuery("engineType")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/engine-versions" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListEngineVersionsRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ engineType: S.String, engineVersion: S.String })).annotate({
-        identifier: "EngineVersionsSummary",
-      });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ engineVersions: __S(110, __c13, 6), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListEngineVersionsResponse",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          names: S.optional(__S(17, __c2, 1)).pipe(T.HttpQuery("names")),
-          engineType: S.optional(S.String).pipe(T.HttpQuery("engineType")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/environments" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListEnvironmentsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          environmentArn: S.String,
-          environmentId: S.String,
-          instanceType: S.String,
-          status: S.String,
-          engineType: S.String,
-          engineVersion: S.String,
-          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          networkType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EnvironmentSummary" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ environments: __S(114, __c14, 2), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListEnvironmentsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ tags: __S(3, __c0, 3) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/applications/{applicationId}/start" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StartApplicationRequest" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          batchJobIdentifier: __S(56, __c7, 0),
-          jobParams: S.optional(__S(119, __c14, 7)),
-          authSecretsManagerArn: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/applications/{applicationId}/batch-job" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StartBatchJobRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ executionId: S.String })).annotate({
-        identifier: "StartBatchJobResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          forceStop: S.optional(S.Boolean),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/applications/{applicationId}/stop" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StopApplicationRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(3, __c0, 3),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(17, __c2, 1).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          description: S.optional(S.String),
-          currentApplicationVersion: S.Number,
-          definition: S.optional(__S(2, __c0, 2)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/applications/{applicationId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateApplicationRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({ applicationVersion: S.Number })).annotate({
-        identifier: "UpdateApplicationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-          desiredCapacity: S.optional(S.Number),
-          instanceType: S.optional(S.String),
-          engineVersion: S.optional(S.String),
-          preferredMaintenanceWindow: S.optional(S.String),
-          applyDuringMaintenanceWindow: S.optional(S.Boolean),
-          forceUpdate: S.optional(S.Boolean),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/environments/{environmentId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateEnvironmentRequest" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

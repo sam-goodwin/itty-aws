@@ -76,7 +76,7 @@ export const publishView: API.OperationMethod<
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<PublishViewRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PublishViewResponse>,
+  output: __S(2, __c1, 0) as any as S.Schema<PublishViewResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -90,8 +90,8 @@ export const updateView: API.OperationMethod<
   UpdateViewError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<UpdateViewRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateViewResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<UpdateViewRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<UpdateViewResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -105,8 +105,8 @@ export const viewsOpen: API.OperationMethod<
   ViewsOpenError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ViewsOpenRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ViewsOpenResponse>,
+  input: __S(7, __c3, 1) as any as S.Schema<ViewsOpenRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<ViewsOpenResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -120,8 +120,8 @@ export const viewsPush: API.OperationMethod<
   ViewsPushError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ViewsPushRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ViewsPushResponse>,
+  input: __S(8, __c4, 0) as any as S.Schema<ViewsPushRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<ViewsPushResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -139,14 +139,22 @@ function __c0(j: number): any {
           interactivity_pointer: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/views.publish", code: 200 })),
       ).annotate({ identifier: "PublishViewRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           view: S.Unknown,
         }),
       ).annotate({ identifier: "PublishViewResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view_id: S.optional(S.String),
@@ -155,17 +163,25 @@ function __c0(j: number): any {
           hash: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/views.update", code: 200 })),
       ).annotate({ identifier: "UpdateViewRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           trigger_id: S.optional(S.NullOr(S.String)),
           interactivity_pointer: S.optional(S.NullOr(S.String)),
-          view: __S(3, __c0, 3),
+          view: __S(6, __c3, 0),
         }).pipe(T.Http({ method: "POST", uri: "/views.open", code: 200 })),
       ).annotate({ identifier: "ViewsOpenRequest" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           trigger_id: S.optional(S.NullOr(S.String)),
@@ -175,7 +191,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "ViewsPushRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

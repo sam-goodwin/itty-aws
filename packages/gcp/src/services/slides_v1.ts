@@ -2271,8 +2271,8 @@ export const batchUpdatePresentations: API.OperationMethod<
   BatchUpdatePresentationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<BatchUpdatePresentationsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<BatchUpdatePresentationResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<BatchUpdatePresentationsRequest>,
+  output: __S(71, __c2, 7) as any as S.Schema<BatchUpdatePresentationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2286,8 +2286,8 @@ export const createPresentations: API.OperationMethod<
   CreatePresentationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<CreatePresentationsRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<Presentation>,
+  input: __S(192, __c6, 0) as any as S.Schema<CreatePresentationsRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<Presentation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2301,8 +2301,8 @@ export const getPresentations: API.OperationMethod<
   GetPresentationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<GetPresentationsRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<Presentation>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetPresentationsRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<Presentation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2316,8 +2316,8 @@ export const getPresentationsPages: API.OperationMethod<
   GetPresentationsPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<GetPresentationsPagesRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<Page>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetPresentationsPagesRequest>,
+  output: __S(185, __c5, 25) as any as S.Schema<Page>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2331,8 +2331,8 @@ export const getThumbnailPresentationsPages: API.OperationMethod<
   GetThumbnailPresentationsPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<GetThumbnailPresentationsPagesRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<Thumbnail>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetThumbnailPresentationsPagesRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<Thumbnail>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2366,78 +2366,6 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          relativeLink: S.optional(S.String),
-          pageObjectId: S.optional(S.String),
-          slideIndex: S.optional(S.Number),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Link" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          weight: S.optional(S.Number),
-          fontFamily: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WeightedFontFamily" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          red: S.optional(S.Number),
-          blue: S.optional(S.Number),
-          green: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RgbColor" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          themeColor: S.optional(S.String),
-          rgbColor: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "OpaqueColor" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          opaqueColor: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "OptionalColor" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          magnitude: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Dimension" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          link: S.optional(__S(3, __c0, 3)),
-          weightedFontFamily: S.optional(__S(4, __c0, 4)),
-          smallCaps: S.optional(S.Boolean),
-          bold: S.optional(S.Boolean),
-          backgroundColor: S.optional(__S(7, __c0, 7)),
-          baselineOffset: S.optional(S.String),
-          fontSize: S.optional(__S(8, __c1, 0)),
-          fontFamily: S.optional(S.String),
-          italic: S.optional(S.Boolean),
-          foregroundColor: S.optional(__S(7, __c0, 7)),
-          strikethrough: S.optional(S.Boolean),
-          underline: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TextStyle" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          columnIndex: S.optional(S.Number),
-          rowIndex: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TableCellLocation" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           startIndex: S.optional(S.Number),
           endIndex: S.optional(S.Number),
           type: S.optional(S.String),
@@ -2446,11 +2374,11 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          style: S.optional(__S(9, __c1, 1)),
+          style: S.optional(__S(102, __c3, 6)),
           objectId: S.optional(S.String),
-          cellLocation: S.optional(__S(10, __c1, 2)),
+          cellLocation: S.optional(__S(103, __c3, 7)),
           fields: S.optional(S.String),
-          textRange: S.optional(__S(11, __c1, 3)),
+          textRange: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "UpdateTextStyleRequest" });
     case 5:
@@ -2473,41 +2401,16 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          color: S.optional(__S(6, __c0, 6)),
-          alpha: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SolidFill" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          solidFill: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "TableBorderFill" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tableBorderFill: S.optional(__S(16, __c2, 0)),
-          weight: S.optional(__S(8, __c1, 0)),
-          dashStyle: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TableBorderProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           rowSpan: S.optional(S.Number),
           columnSpan: S.optional(S.Number),
-          location: S.optional(__S(10, __c1, 2)),
+          location: S.optional(__S(103, __c3, 7)),
         }),
       ).annotate({ identifier: "TableRange" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          tableBorderProperties: S.optional(__S(17, __c2, 1)),
-          tableRange: S.optional(__S(18, __c2, 2)),
+          tableBorderProperties: S.optional(__S(106, __c3, 10)),
+          tableRange: S.optional(__S(7, __c0, 7)),
           fields: S.optional(S.String),
           objectId: S.optional(S.String),
           borderPosition: S.optional(S.String),
@@ -2515,7 +2418,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateTableBorderPropertiesRequest",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           pageObjectIds: S.optional(__S(0, __c0, 0)),
@@ -2523,659 +2426,41 @@ function __c2(j: number): any {
           containsText: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "ReplaceAllTextRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MasterProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          color: S.optional(__S(5, __c0, 5)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ThemeColorPair" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          colors: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "ColorScheme" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          height: S.optional(__S(8, __c1, 0)),
-          width: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Size" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          size: S.optional(__S(25, __c3, 1)),
-          contentUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StretchedPictureFill" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          stretchedPictureFill: S.optional(__S(26, __c3, 2)),
-          solidFill: S.optional(__S(15, __c1, 7)),
-          propertyState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PageBackgroundFill" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          colorScheme: S.optional(__S(24, __c3, 0)),
-          pageBackgroundFill: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "PageProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          speakerNotesObjectId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NotesProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          startIndex: S.optional(S.Number),
-          endIndex: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TextRange" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ranges: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "ShapeTextAnchors" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ranges: S.optional(__S(31, __c3, 7)),
-          cellLocation: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "TableCellTextRanges" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cellRanges: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "TableCellAnchors" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          shapeTextAnchors: S.optional(__S(32, __c4, 0)),
-          tableCellAnchors: S.optional(__S(35, __c4, 3)),
-          objectId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ObjectAnchor" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          objectAnchors: S.optional(__S(37, __c4, 5)),
-          anchorId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CommentAnchor" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          user: S.optional(S.String),
-          me: S.optional(S.Boolean),
-          anonymous: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PostAuthor" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          postId: S.optional(S.String),
-          commentAction: S.optional(S.String),
-          author: S.optional(__S(40, __c5, 0)),
-          updateTime: S.optional(S.String),
-          content: S.optional(S.String),
-          assigneeEmail: S.optional(S.String),
-          fromCopiedPresentation: S.optional(S.Boolean),
-          fromImportedPresentation: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-          contentHtml: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Post" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          replies: S.optional(__S(42, __c5, 2)),
-          headPost: S.optional(__S(41, __c5, 1)),
-          anchorId: S.optional(S.String),
-          plainTextQuote: S.optional(S.String),
-          commentId: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CommentThread" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          style: S.optional(__S(9, __c1, 1)),
-          type: S.optional(S.String),
-          content: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutoText" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nestingLevel: S.optional(S.Number),
-          glyph: S.optional(S.String),
-          listId: S.optional(S.String),
-          bulletStyle: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "Bullet" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          indentEnd: S.optional(__S(8, __c1, 0)),
-          direction: S.optional(S.String),
-          spaceBelow: S.optional(__S(8, __c1, 0)),
-          lineSpacing: S.optional(S.Number),
-          spacingMode: S.optional(S.String),
-          alignment: S.optional(S.String),
-          spaceAbove: S.optional(__S(8, __c1, 0)),
-          indentStart: S.optional(__S(8, __c1, 0)),
-          indentFirstLine: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "ParagraphStyle" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          bullet: S.optional(__S(46, __c5, 6)),
-          style: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "ParagraphMarker" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          style: S.optional(__S(9, __c1, 1)),
-          content: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TextRun" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          startIndex: S.optional(S.Number),
-          autoText: S.optional(__S(45, __c5, 5)),
-          endIndex: S.optional(S.Number),
-          paragraphMarker: S.optional(__S(48, __c6, 0)),
-          textRun: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "TextElement" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          bulletStyle: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "NestingLevel" });
-    case 5:
-      return S.Record(S.String, __S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nestingLevel: S.optional(__S(53, __c6, 5)),
-          listId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "List" });
-    case 7:
-      return S.Record(S.String, __S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          textElements: S.optional(__S(51, __c6, 3)),
-          lists: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "TextContent" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lineSpacingReduction: S.optional(S.Number),
-          autofitType: S.optional(S.String),
-          fontScale: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Autofit" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          scaleY: S.optional(S.Number),
-          scaleX: S.optional(S.Number),
-          unit: S.optional(S.String),
-          shearY: S.optional(S.Number),
-          translateX: S.optional(S.Number),
-          shearX: S.optional(S.Number),
-          translateY: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AffineTransform" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          alignment: S.optional(S.String),
-          alpha: S.optional(S.Number),
-          type: S.optional(S.String),
-          color: S.optional(__S(6, __c0, 6)),
-          transform: S.optional(__S(58, __c7, 2)),
-          blurRadius: S.optional(__S(8, __c1, 0)),
-          rotateWithShape: S.optional(S.Boolean),
-          propertyState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Shadow" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          propertyState: S.optional(S.String),
-          solidFill: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "ShapeBackgroundFill" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          propertyState: S.optional(S.String),
-          weight: S.optional(__S(8, __c1, 0)),
-          dashStyle: S.optional(S.String),
-          outlineFill: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "Outline" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          autofit: S.optional(__S(57, __c7, 1)),
-          contentAlignment: S.optional(S.String),
-          shadow: S.optional(__S(59, __c7, 3)),
-          shapeBackgroundFill: S.optional(__S(60, __c7, 4)),
-          link: S.optional(__S(3, __c0, 3)),
-          outline: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({ identifier: "ShapeProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          parentObjectId: S.optional(S.String),
-          index: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Placeholder" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(__S(56, __c7, 0)),
-          shapeProperties: S.optional(__S(62, __c7, 6)),
-          shapeType: S.optional(S.String),
-          placeholder: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({ identifier: "Shape" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rightOffset: S.optional(S.Number),
-          bottomOffset: S.optional(S.Number),
-          leftOffset: S.optional(S.Number),
-          topOffset: S.optional(S.Number),
-          angle: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CropProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          alpha: S.optional(S.Number),
-          color: S.optional(__S(6, __c0, 6)),
-          position: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ColorStop" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          recolorStops: S.optional(__S(67, __c8, 3)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Recolor" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          outline: S.optional(__S(61, __c7, 5)),
-          cropProperties: S.optional(__S(65, __c8, 1)),
-          brightness: S.optional(S.Number),
-          recolor: S.optional(__S(68, __c8, 4)),
-          contrast: S.optional(S.Number),
-          transparency: S.optional(S.Number),
-          link: S.optional(__S(3, __c0, 3)),
-          shadow: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "ImageProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sourceUrl: S.optional(S.String),
-          imageProperties: S.optional(__S(69, __c8, 5)),
-          placeholder: S.optional(__S(63, __c7, 7)),
-          contentUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Image" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          shadow: S.optional(__S(59, __c7, 3)),
-          outline: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({
-        identifier: "SpeakerSpotlightProperties",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          speakerSpotlightProperties: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "SpeakerSpotlight" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          children: S.optional(S.suspend(() => __S(97, __c12, 1))),
-        }),
-      ).annotate({ identifier: "Group" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(__S(10, __c1, 2)),
-          tableBorderProperties: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "TableBorderCell" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tableBorderCells: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({ identifier: "TableBorderRow" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          solidFill: S.optional(__S(15, __c1, 7)),
-          propertyState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TableCellBackgroundFill" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tableCellBackgroundFill: S.optional(__S(78, __c9, 6)),
-          contentAlignment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TableCellProperties" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(__S(56, __c7, 0)),
-          location: S.optional(__S(10, __c1, 2)),
-          rowSpan: S.optional(S.Number),
-          tableCellProperties: S.optional(__S(79, __c9, 7)),
-          columnSpan: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TableCell" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          minRowHeight: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "TableRowProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tableCells: S.optional(__S(81, __c10, 1)),
-          tableRowProperties: S.optional(__S(82, __c10, 2)),
-          rowHeight: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "TableRow" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          columnWidth: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "TableColumnProperties" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          verticalBorderRows: S.optional(__S(77, __c9, 5)),
-          columns: S.optional(S.Number),
-          rows: S.optional(S.Number),
-          horizontalBorderRows: S.optional(__S(77, __c9, 5)),
-          tableRows: S.optional(__S(84, __c10, 4)),
-          tableColumns: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "Table" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          renderedText: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WordArt" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mute: S.optional(S.Boolean),
-          outline: S.optional(__S(61, __c7, 5)),
-          end: S.optional(S.Number),
-          start: S.optional(S.Number),
-          autoPlay: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "VideoProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          videoProperties: S.optional(__S(89, __c11, 1)),
-          source: S.optional(S.String),
-          id: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Video" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          chartImageProperties: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "SheetsChartProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sheetsChartProperties: S.optional(__S(91, __c11, 3)),
-          chartId: S.optional(S.Number),
-          contentUrl: S.optional(S.String),
-          spreadsheetId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SheetsChart" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          connectedObjectId: S.optional(S.String),
-          connectionSiteIndex: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LineConnection" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          weight: S.optional(__S(8, __c1, 0)),
-          endArrow: S.optional(S.String),
-          startConnection: S.optional(__S(93, __c11, 5)),
-          link: S.optional(__S(3, __c0, 3)),
-          lineFill: S.optional(__S(16, __c2, 0)),
-          endConnection: S.optional(__S(93, __c11, 5)),
-          dashStyle: S.optional(S.String),
-          startArrow: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LineProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          lineCategory: S.optional(S.String),
-          lineProperties: S.optional(__S(94, __c11, 6)),
-          lineType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Line" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          shape: S.optional(__S(64, __c8, 0)),
-          image: S.optional(__S(70, __c8, 6)),
-          speakerSpotlight: S.optional(__S(72, __c9, 0)),
-          description: S.optional(S.String),
-          elementGroup: S.optional(__S(73, __c9, 1)),
-          objectId: S.optional(S.String),
-          title: S.optional(S.String),
-          table: S.optional(__S(87, __c10, 7)),
-          transform: S.optional(__S(58, __c7, 2)),
-          wordArt: S.optional(__S(88, __c11, 0)),
-          video: S.optional(__S(90, __c11, 2)),
-          size: S.optional(__S(25, __c3, 1)),
-          sheetsChart: S.optional(__S(92, __c11, 4)),
-          line: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "PageElement" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          masterObjectId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LayoutProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          masterProperties: S.optional(__S(21, __c2, 5)),
-          pageProperties: S.optional(__S(28, __c3, 4)),
-          notesProperties: S.optional(__S(29, __c3, 5)),
-          commentAnchors: S.optional(__S(39, __c4, 7)),
-          objectId: S.optional(S.String),
-          commentsViewMode: S.optional(S.String),
-          comments: S.optional(__S(44, __c5, 4)),
-          pageElements: S.optional(__S(97, __c12, 1)),
-          layoutProperties: S.optional(__S(98, __c12, 2)),
-          revisionId: S.optional(S.String),
-          slideProperties: S.optional(S.suspend(() => __S(100, __c12, 4))),
-          pageType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Page" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          notesPage: S.optional(__S(99, __c12, 3)),
-          layoutObjectId: S.optional(S.String),
-          masterObjectId: S.optional(S.String),
-          isSkipped: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SlideProperties" });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
-          slideProperties: S.optional(__S(100, __c12, 4)),
+          slideProperties: S.optional(__S(186, __c5, 26)),
           fields: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateSlidePropertiesRequest",
       });
-    case 6:
+    case 11:
       return S.Array(S.Number);
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          rowIndices: S.optional(__S(102, __c12, 6)),
+          rowIndices: S.optional(__S(11, __c0, 11)),
           fields: S.optional(S.String),
-          tableRowProperties: S.optional(__S(82, __c10, 2)),
+          tableRowProperties: S.optional(__S(168, __c5, 8)),
           objectId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateTableRowPropertiesRequest",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          columnIndices: S.optional(__S(102, __c12, 6)),
-          tableColumnProperties: S.optional(__S(85, __c10, 5)),
+          columnIndices: S.optional(__S(11, __c0, 11)),
+          tableColumnProperties: S.optional(__S(171, __c5, 11)),
           fields: S.optional(S.String),
           objectId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateTableColumnPropertiesRequest",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -3185,7 +2470,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdatePageElementAltTextRequest",
       });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           lineCategory: S.optional(S.String),
@@ -3194,16 +2479,16 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateLineCategoryRequest",
       });
-    case 3:
+    case 16:
       return S.Record(S.String, S.String);
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
-          objectIds: S.optional(__S(107, __c13, 3)),
+          objectIds: S.optional(__S(16, __c0, 16)),
         }),
       ).annotate({ identifier: "DuplicateObjectRequest" });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           postId: S.optional(S.String),
@@ -3212,10 +2497,10 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteCommentReplyRequest",
       });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          cellLocation: S.optional(__S(10, __c1, 2)),
+          cellLocation: S.optional(__S(103, __c3, 7)),
           insertRight: S.optional(S.Boolean),
           number: S.optional(S.Number),
           tableObjectId: S.optional(S.String),
@@ -3223,7 +2508,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "InsertTableColumnsRequest",
       });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
@@ -3231,61 +2516,57 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "RefreshSheetsChartRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           fields: S.optional(S.String),
           objectId: S.optional(S.String),
-          pageProperties: S.optional(__S(28, __c3, 4)),
+          pageProperties: S.optional(__S(114, __c3, 18)),
         }),
       ).annotate({
         identifier: "UpdatePagePropertiesRequest",
       });
-    case 1:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           bulletPreset: S.optional(S.String),
           objectId: S.optional(S.String),
-          cellLocation: S.optional(__S(10, __c1, 2)),
-          textRange: S.optional(__S(11, __c1, 3)),
+          cellLocation: S.optional(__S(103, __c3, 7)),
+          textRange: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "CreateParagraphBulletsRequest",
       });
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          lineProperties: S.optional(__S(94, __c11, 6)),
+          lineProperties: S.optional(__S(180, __c5, 20)),
           objectId: S.optional(S.String),
           fields: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateLinePropertiesRequest",
       });
-    case 3:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
-          videoProperties: S.optional(__S(89, __c11, 1)),
+          videoProperties: S.optional(__S(175, __c5, 15)),
           fields: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateVideoPropertiesRequest",
       });
-    case 4:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          cellLocation: S.optional(__S(10, __c1, 2)),
+          cellLocation: S.optional(__S(103, __c3, 7)),
           objectId: S.optional(S.String),
           insertionIndex: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InsertTextRequest" });
-    case 5:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           imageUrl: S.optional(S.String),
@@ -3297,177 +2578,169 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ReplaceAllShapesWithImageRequest",
       });
-    case 6:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           tableObjectId: S.optional(S.String),
-          cellLocation: S.optional(__S(10, __c1, 2)),
+          cellLocation: S.optional(__S(103, __c3, 7)),
         }),
       ).annotate({ identifier: "DeleteTableRowRequest" });
-    case 7:
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          transform: S.optional(__S(58, __c7, 2)),
+          transform: S.optional(__S(144, __c4, 16)),
           pageObjectId: S.optional(S.String),
-          size: S.optional(__S(25, __c3, 1)),
+          size: S.optional(__S(111, __c3, 15)),
         }),
       ).annotate({ identifier: "PageElementProperties" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          elementProperties: S.optional(__S(119, __c14, 7)),
+          elementProperties: S.optional(__S(28, __c0, 28)),
           shapeType: S.optional(S.String),
           objectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateShapeRequest" });
-    case 1:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          cellLocation: S.optional(__S(10, __c1, 2)),
+          cellLocation: S.optional(__S(103, __c3, 7)),
           tableObjectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeleteTableColumnRequest" });
-    case 2:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
-          tableRange: S.optional(__S(18, __c2, 2)),
+          tableRange: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "MergeTableCellsRequest" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          transform: S.optional(__S(58, __c7, 2)),
+          transform: S.optional(__S(144, __c4, 16)),
           applyMode: S.optional(S.String),
           objectId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdatePageElementTransformRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          elementProperties: S.optional(__S(119, __c14, 7)),
+          elementProperties: S.optional(__S(28, __c0, 28)),
           objectId: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateImageRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           layoutPlaceholderObjectId: S.optional(S.String),
-          layoutPlaceholder: S.optional(__S(63, __c7, 7)),
+          layoutPlaceholder: S.optional(__S(149, __c4, 21)),
           objectId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "LayoutPlaceholderIdMapping",
       });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(34, __c1, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           predefinedLayout: S.optional(S.String),
           layoutId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LayoutReference" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          placeholderIdMappings: S.optional(__S(126, __c15, 6)),
-          slideLayoutReference: S.optional(__S(127, __c15, 7)),
+          placeholderIdMappings: S.optional(__S(35, __c1, 3)),
+          slideLayoutReference: S.optional(__S(36, __c1, 4)),
           insertionIndex: S.optional(S.Number),
           objectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateSlideRequest" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          cellLocation: S.optional(__S(10, __c1, 2)),
+          cellLocation: S.optional(__S(103, __c3, 7)),
           tableObjectId: S.optional(S.String),
           number: S.optional(S.Number),
           insertBelow: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "InsertTableRowsRequest" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
-          shapeProperties: S.optional(__S(62, __c7, 6)),
+          shapeProperties: S.optional(__S(148, __c4, 20)),
           fields: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateShapePropertiesRequest",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           fields: S.optional(S.String),
-          imageProperties: S.optional(__S(69, __c8, 5)),
+          imageProperties: S.optional(__S(155, __c4, 27)),
           objectId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateImagePropertiesRequest",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           commentId: S.optional(S.String),
-          post: S.optional(__S(41, __c5, 1)),
+          post: S.optional(__S(127, __c3, 31)),
         }),
       ).annotate({ identifier: "AddCommentReplyRequest" });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RerouteLineRequest" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           objectIds: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "UngroupObjectsRequest" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          textRange: S.optional(__S(11, __c1, 3)),
-          cellLocation: S.optional(__S(10, __c1, 2)),
+          textRange: S.optional(__S(3, __c0, 3)),
+          cellLocation: S.optional(__S(103, __c3, 7)),
           objectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeleteTextRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           rows: S.optional(S.Number),
-          elementProperties: S.optional(__S(119, __c14, 7)),
+          elementProperties: S.optional(__S(28, __c0, 28)),
           columns: S.optional(S.Number),
           objectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateTableRequest" });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          elementProperties: S.optional(__S(119, __c14, 7)),
+          elementProperties: S.optional(__S(28, __c0, 28)),
           objectId: S.optional(S.String),
           linkingMode: S.optional(S.String),
           chartId: S.optional(S.Number),
           spreadsheetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateSheetsChartRequest" });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
@@ -3475,23 +2748,23 @@ function __c17(j: number): any {
           commentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateCommentPostRequest" });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           childrenObjectIds: S.optional(__S(0, __c0, 0)),
           groupObjectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupObjectsRequest" });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          elementProperties: S.optional(__S(119, __c14, 7)),
+          elementProperties: S.optional(__S(28, __c0, 28)),
           source: S.optional(S.String),
           objectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateVideoRequest" });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           slideObjectIds: S.optional(__S(0, __c0, 0)),
@@ -3500,171 +2773,167 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateSlidesPositionRequest",
       });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           lineCategory: S.optional(S.String),
           category: S.optional(S.String),
           objectId: S.optional(S.String),
-          elementProperties: S.optional(__S(119, __c14, 7)),
+          elementProperties: S.optional(__S(28, __c0, 28)),
         }),
       ).annotate({ identifier: "CreateLineRequest" });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          cellLocation: S.optional(__S(10, __c1, 2)),
+          cellLocation: S.optional(__S(103, __c3, 7)),
           objectId: S.optional(S.String),
-          textRange: S.optional(__S(11, __c1, 3)),
+          textRange: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "TableCellTextAnchor" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          textRange: S.optional(__S(11, __c1, 3)),
+          textRange: S.optional(__S(3, __c0, 3)),
           objectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShapeTextAnchor" });
-    case 1:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          tableRange: S.optional(__S(18, __c2, 2)),
+          tableRange: S.optional(__S(7, __c0, 7)),
           objectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TableAnchor" });
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
           assigneeEmailAddress: S.optional(S.String),
           objectId: S.optional(S.String),
-          tableCellTextAnchor: S.optional(__S(143, __c17, 7)),
-          shapeTextAnchor: S.optional(__S(144, __c18, 0)),
-          tableAnchor: S.optional(__S(145, __c18, 1)),
+          tableCellTextAnchor: S.optional(__S(52, __c1, 20)),
+          shapeTextAnchor: S.optional(__S(53, __c1, 21)),
+          tableAnchor: S.optional(__S(54, __c1, 22)),
         }),
       ).annotate({ identifier: "InsertCommentRequest" });
-    case 3:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           fields: S.optional(S.String),
           objectId: S.optional(S.String),
-          textRange: S.optional(__S(11, __c1, 3)),
-          cellLocation: S.optional(__S(10, __c1, 2)),
-          style: S.optional(__S(47, __c5, 7)),
+          textRange: S.optional(__S(3, __c0, 3)),
+          cellLocation: S.optional(__S(103, __c3, 7)),
+          style: S.optional(__S(133, __c4, 5)),
         }),
       ).annotate({
         identifier: "UpdateParagraphStyleRequest",
       });
-    case 4:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          cellLocation: S.optional(__S(10, __c1, 2)),
-          textRange: S.optional(__S(11, __c1, 3)),
+          cellLocation: S.optional(__S(103, __c3, 7)),
+          textRange: S.optional(__S(3, __c0, 3)),
           objectId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeleteParagraphBulletsRequest",
       });
-    case 5:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           commentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeleteCommentRequest" });
-    case 6:
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          tableCellProperties: S.optional(__S(79, __c9, 7)),
+          tableCellProperties: S.optional(__S(165, __c5, 5)),
           fields: S.optional(S.String),
-          tableRange: S.optional(__S(18, __c2, 2)),
+          tableRange: S.optional(__S(7, __c0, 7)),
           objectId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateTableCellPropertiesRequest",
       });
-    case 7:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           replaceAllShapesWithSheetsChart: S.optional(__S(2, __c0, 2)),
-          updateTextStyle: S.optional(__S(12, __c1, 4)),
-          replaceImage: S.optional(__S(13, __c1, 5)),
-          updatePageElementsZOrder: S.optional(__S(14, __c1, 6)),
-          updateTableBorderProperties: S.optional(__S(19, __c2, 3)),
-          replaceAllText: S.optional(__S(20, __c2, 4)),
-          updateSlideProperties: S.optional(__S(101, __c12, 5)),
-          updateTableRowProperties: S.optional(__S(103, __c12, 7)),
-          updateTableColumnProperties: S.optional(__S(104, __c13, 0)),
-          updatePageElementAltText: S.optional(__S(105, __c13, 1)),
-          updateLineCategory: S.optional(__S(106, __c13, 2)),
-          duplicateObject: S.optional(__S(108, __c13, 4)),
-          deleteCommentReply: S.optional(__S(109, __c13, 5)),
-          insertTableColumns: S.optional(__S(110, __c13, 6)),
-          refreshSheetsChart: S.optional(__S(111, __c13, 7)),
-          updatePageProperties: S.optional(__S(112, __c14, 0)),
-          createParagraphBullets: S.optional(__S(113, __c14, 1)),
-          updateLineProperties: S.optional(__S(114, __c14, 2)),
-          updateVideoProperties: S.optional(__S(115, __c14, 3)),
-          insertText: S.optional(__S(116, __c14, 4)),
-          replaceAllShapesWithImage: S.optional(__S(117, __c14, 5)),
-          deleteTableRow: S.optional(__S(118, __c14, 6)),
-          createShape: S.optional(__S(120, __c15, 0)),
-          deleteTableColumn: S.optional(__S(121, __c15, 1)),
-          mergeTableCells: S.optional(__S(122, __c15, 2)),
-          updatePageElementTransform: S.optional(__S(123, __c15, 3)),
-          createImage: S.optional(__S(124, __c15, 4)),
-          createSlide: S.optional(__S(128, __c16, 0)),
-          insertTableRows: S.optional(__S(129, __c16, 1)),
-          updateShapeProperties: S.optional(__S(130, __c16, 2)),
-          updateImageProperties: S.optional(__S(131, __c16, 3)),
-          addCommentReply: S.optional(__S(132, __c16, 4)),
-          rerouteLine: S.optional(__S(133, __c16, 5)),
-          ungroupObjects: S.optional(__S(134, __c16, 6)),
-          deleteText: S.optional(__S(135, __c16, 7)),
-          createTable: S.optional(__S(136, __c17, 0)),
-          createSheetsChart: S.optional(__S(137, __c17, 1)),
-          updateCommentPost: S.optional(__S(138, __c17, 2)),
-          groupObjects: S.optional(__S(139, __c17, 3)),
-          createVideo: S.optional(__S(140, __c17, 4)),
-          updateSlidesPosition: S.optional(__S(141, __c17, 5)),
-          createLine: S.optional(__S(142, __c17, 6)),
-          insertComment: S.optional(__S(146, __c18, 2)),
-          updateParagraphStyle: S.optional(__S(147, __c18, 3)),
-          deleteObject: S.optional(__S(133, __c16, 5)),
-          unmergeTableCells: S.optional(__S(145, __c18, 1)),
-          deleteParagraphBullets: S.optional(__S(148, __c18, 4)),
-          deleteComment: S.optional(__S(149, __c18, 5)),
-          updateTableCellProperties: S.optional(__S(150, __c18, 6)),
+          updateTextStyle: S.optional(__S(4, __c0, 4)),
+          replaceImage: S.optional(__S(5, __c0, 5)),
+          updatePageElementsZOrder: S.optional(__S(6, __c0, 6)),
+          updateTableBorderProperties: S.optional(__S(8, __c0, 8)),
+          replaceAllText: S.optional(__S(9, __c0, 9)),
+          updateSlideProperties: S.optional(__S(10, __c0, 10)),
+          updateTableRowProperties: S.optional(__S(12, __c0, 12)),
+          updateTableColumnProperties: S.optional(__S(13, __c0, 13)),
+          updatePageElementAltText: S.optional(__S(14, __c0, 14)),
+          updateLineCategory: S.optional(__S(15, __c0, 15)),
+          duplicateObject: S.optional(__S(17, __c0, 17)),
+          deleteCommentReply: S.optional(__S(18, __c0, 18)),
+          insertTableColumns: S.optional(__S(19, __c0, 19)),
+          refreshSheetsChart: S.optional(__S(20, __c0, 20)),
+          updatePageProperties: S.optional(__S(21, __c0, 21)),
+          createParagraphBullets: S.optional(__S(22, __c0, 22)),
+          updateLineProperties: S.optional(__S(23, __c0, 23)),
+          updateVideoProperties: S.optional(__S(24, __c0, 24)),
+          insertText: S.optional(__S(25, __c0, 25)),
+          replaceAllShapesWithImage: S.optional(__S(26, __c0, 26)),
+          deleteTableRow: S.optional(__S(27, __c0, 27)),
+          createShape: S.optional(__S(29, __c0, 29)),
+          deleteTableColumn: S.optional(__S(30, __c0, 30)),
+          mergeTableCells: S.optional(__S(31, __c0, 31)),
+          updatePageElementTransform: S.optional(__S(32, __c1, 0)),
+          createImage: S.optional(__S(33, __c1, 1)),
+          createSlide: S.optional(__S(37, __c1, 5)),
+          insertTableRows: S.optional(__S(38, __c1, 6)),
+          updateShapeProperties: S.optional(__S(39, __c1, 7)),
+          updateImageProperties: S.optional(__S(40, __c1, 8)),
+          addCommentReply: S.optional(__S(41, __c1, 9)),
+          rerouteLine: S.optional(__S(42, __c1, 10)),
+          ungroupObjects: S.optional(__S(43, __c1, 11)),
+          deleteText: S.optional(__S(44, __c1, 12)),
+          createTable: S.optional(__S(45, __c1, 13)),
+          createSheetsChart: S.optional(__S(46, __c1, 14)),
+          updateCommentPost: S.optional(__S(47, __c1, 15)),
+          groupObjects: S.optional(__S(48, __c1, 16)),
+          createVideo: S.optional(__S(49, __c1, 17)),
+          updateSlidesPosition: S.optional(__S(50, __c1, 18)),
+          createLine: S.optional(__S(51, __c1, 19)),
+          insertComment: S.optional(__S(55, __c1, 23)),
+          updateParagraphStyle: S.optional(__S(56, __c1, 24)),
+          deleteObject: S.optional(__S(42, __c1, 10)),
+          unmergeTableCells: S.optional(__S(54, __c1, 22)),
+          deleteParagraphBullets: S.optional(__S(57, __c1, 25)),
+          deleteComment: S.optional(__S(58, __c1, 26)),
+          updateTableCellProperties: S.optional(__S(59, __c1, 27)),
         }),
       ).annotate({ identifier: "Request" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
+    case 29:
+      return S.Array(__S(60, __c1, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
           requiredRevisionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WriteControl" });
-    case 2:
+    case 31:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(152, __c19, 0)),
-          writeControl: S.optional(__S(153, __c19, 1)),
+          requests: S.optional(__S(61, __c1, 29)),
+          writeControl: S.optional(__S(62, __c1, 30)),
         }),
       ).annotate({
         identifier: "BatchUpdatePresentationRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           presentationId: S.String.pipe(T.Label()),
-          body: S.optional(__S(154, __c19, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(63, __c1, 31).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3675,13 +2944,13 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "BatchUpdatePresentationsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          post: S.optional(__S(41, __c5, 1)),
+          post: S.optional(__S(127, __c3, 31)),
         }),
       ).annotate({ identifier: "AddCommentReplyResponse" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           occurrencesChanged: S.optional(S.Number),
@@ -3689,76 +2958,733 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ReplaceAllShapesWithSheetsChartResponse",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          commentThread: S.optional(__S(43, __c5, 3)),
+          commentThread: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "InsertCommentResponse" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           occurrencesChanged: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ReplaceAllTextResponse" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          addCommentReply: S.optional(__S(156, __c19, 4)),
-          replaceAllShapesWithSheetsChart: S.optional(__S(157, __c19, 5)),
-          insertComment: S.optional(__S(158, __c19, 6)),
-          duplicateObject: S.optional(__S(133, __c16, 5)),
-          groupObjects: S.optional(__S(133, __c16, 5)),
-          createShape: S.optional(__S(133, __c16, 5)),
-          createTable: S.optional(__S(133, __c16, 5)),
-          replaceAllShapesWithImage: S.optional(__S(157, __c19, 5)),
-          createImage: S.optional(__S(133, __c16, 5)),
-          createLine: S.optional(__S(133, __c16, 5)),
-          createSlide: S.optional(__S(133, __c16, 5)),
-          createSheetsChart: S.optional(__S(111, __c13, 7)),
-          createVideo: S.optional(__S(133, __c16, 5)),
-          replaceAllText: S.optional(__S(159, __c19, 7)),
+          addCommentReply: S.optional(__S(65, __c2, 1)),
+          replaceAllShapesWithSheetsChart: S.optional(__S(66, __c2, 2)),
+          insertComment: S.optional(__S(67, __c2, 3)),
+          duplicateObject: S.optional(__S(42, __c1, 10)),
+          groupObjects: S.optional(__S(42, __c1, 10)),
+          createShape: S.optional(__S(42, __c1, 10)),
+          createTable: S.optional(__S(42, __c1, 10)),
+          replaceAllShapesWithImage: S.optional(__S(66, __c2, 2)),
+          createImage: S.optional(__S(42, __c1, 10)),
+          createLine: S.optional(__S(42, __c1, 10)),
+          createSlide: S.optional(__S(42, __c1, 10)),
+          createSheetsChart: S.optional(__S(20, __c0, 20)),
+          createVideo: S.optional(__S(42, __c1, 10)),
+          replaceAllText: S.optional(__S(68, __c2, 4)),
         }),
       ).annotate({ identifier: "Response" });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(69, __c2, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           presentationId: S.optional(S.String),
           commentUpdateState: S.optional(S.String),
-          writeControl: S.optional(__S(153, __c19, 1)),
-          replies: S.optional(__S(161, __c20, 1)),
+          writeControl: S.optional(__S(62, __c1, 30)),
+          replies: S.optional(__S(70, __c2, 6)),
         }),
       ).annotate({
         identifier: "BatchUpdatePresentationResponse",
       });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          relativeLink: S.optional(S.String),
+          pageObjectId: S.optional(S.String),
+          slideIndex: S.optional(S.Number),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Link" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          weight: S.optional(S.Number),
+          fontFamily: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WeightedFontFamily" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          red: S.optional(S.Number),
+          blue: S.optional(S.Number),
+          green: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RgbColor" });
     case 3:
-      return S.Array(__S(99, __c12, 3));
+      return S.suspend(() =>
+        S.Struct({
+          themeColor: S.optional(S.String),
+          rgbColor: S.optional(__S(98, __c3, 2)),
+        }),
+      ).annotate({ identifier: "OpaqueColor" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          locale: S.optional(S.String),
-          pageSize: S.optional(__S(25, __c3, 1)),
-          title: S.optional(S.String),
-          commentsViewMode: S.optional(S.String),
-          slides: S.optional(__S(163, __c20, 3)),
-          presentationId: S.optional(S.String),
-          layouts: S.optional(__S(163, __c20, 3)),
-          notesMaster: S.optional(__S(99, __c12, 3)),
-          masters: S.optional(__S(163, __c20, 3)),
-          revisionId: S.optional(S.String),
-          comments: S.optional(__S(44, __c5, 4)),
+          opaqueColor: S.optional(__S(99, __c3, 3)),
         }),
-      ).annotate({ identifier: "Presentation" });
+      ).annotate({ identifier: "OptionalColor" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(164, __c20, 4).pipe(T.HttpBody())),
+          unit: S.optional(S.String),
+          magnitude: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Dimension" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          link: S.optional(__S(96, __c3, 0)),
+          weightedFontFamily: S.optional(__S(97, __c3, 1)),
+          smallCaps: S.optional(S.Boolean),
+          bold: S.optional(S.Boolean),
+          backgroundColor: S.optional(__S(100, __c3, 4)),
+          baselineOffset: S.optional(S.String),
+          fontSize: S.optional(__S(101, __c3, 5)),
+          fontFamily: S.optional(S.String),
+          italic: S.optional(S.Boolean),
+          foregroundColor: S.optional(__S(100, __c3, 4)),
+          strikethrough: S.optional(S.Boolean),
+          underline: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TextStyle" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          columnIndex: S.optional(S.Number),
+          rowIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TableCellLocation" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          color: S.optional(__S(99, __c3, 3)),
+          alpha: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SolidFill" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          solidFill: S.optional(__S(104, __c3, 8)),
+        }),
+      ).annotate({ identifier: "TableBorderFill" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          tableBorderFill: S.optional(__S(105, __c3, 9)),
+          weight: S.optional(__S(101, __c3, 5)),
+          dashStyle: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TableBorderProperties" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MasterProperties" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          color: S.optional(__S(98, __c3, 2)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ThemeColorPair" });
+    case 13:
+      return S.Array(__S(108, __c3, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          colors: S.optional(__S(109, __c3, 13)),
+        }),
+      ).annotate({ identifier: "ColorScheme" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          height: S.optional(__S(101, __c3, 5)),
+          width: S.optional(__S(101, __c3, 5)),
+        }),
+      ).annotate({ identifier: "Size" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          size: S.optional(__S(111, __c3, 15)),
+          contentUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StretchedPictureFill" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          stretchedPictureFill: S.optional(__S(112, __c3, 16)),
+          solidFill: S.optional(__S(104, __c3, 8)),
+          propertyState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PageBackgroundFill" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          colorScheme: S.optional(__S(110, __c3, 14)),
+          pageBackgroundFill: S.optional(__S(113, __c3, 17)),
+        }),
+      ).annotate({ identifier: "PageProperties" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          speakerNotesObjectId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NotesProperties" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          startIndex: S.optional(S.Number),
+          endIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TextRange" });
+    case 21:
+      return S.Array(__S(116, __c3, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          ranges: S.optional(__S(117, __c3, 21)),
+        }),
+      ).annotate({ identifier: "ShapeTextAnchors" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          ranges: S.optional(__S(117, __c3, 21)),
+          cellLocation: S.optional(__S(103, __c3, 7)),
+        }),
+      ).annotate({ identifier: "TableCellTextRanges" });
+    case 24:
+      return S.Array(__S(119, __c3, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          cellRanges: S.optional(__S(120, __c3, 24)),
+        }),
+      ).annotate({ identifier: "TableCellAnchors" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          shapeTextAnchors: S.optional(__S(118, __c3, 22)),
+          tableCellAnchors: S.optional(__S(121, __c3, 25)),
+          objectId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ObjectAnchor" });
+    case 27:
+      return S.Array(__S(122, __c3, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          objectAnchors: S.optional(__S(123, __c3, 27)),
+          anchorId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommentAnchor" });
+    case 29:
+      return S.Array(__S(124, __c3, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          user: S.optional(S.String),
+          me: S.optional(S.Boolean),
+          anonymous: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PostAuthor" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          postId: S.optional(S.String),
+          commentAction: S.optional(S.String),
+          author: S.optional(__S(126, __c3, 30)),
+          updateTime: S.optional(S.String),
+          content: S.optional(S.String),
+          assigneeEmail: S.optional(S.String),
+          fromCopiedPresentation: S.optional(S.Boolean),
+          fromImportedPresentation: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+          contentHtml: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Post" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(127, __c3, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          replies: S.optional(__S(128, __c4, 0)),
+          headPost: S.optional(__S(127, __c3, 31)),
+          anchorId: S.optional(S.String),
+          plainTextQuote: S.optional(S.String),
+          commentId: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommentThread" });
+    case 2:
+      return S.Array(__S(129, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          style: S.optional(__S(102, __c3, 6)),
+          type: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutoText" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nestingLevel: S.optional(S.Number),
+          glyph: S.optional(S.String),
+          listId: S.optional(S.String),
+          bulletStyle: S.optional(__S(102, __c3, 6)),
+        }),
+      ).annotate({ identifier: "Bullet" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          indentEnd: S.optional(__S(101, __c3, 5)),
+          direction: S.optional(S.String),
+          spaceBelow: S.optional(__S(101, __c3, 5)),
+          lineSpacing: S.optional(S.Number),
+          spacingMode: S.optional(S.String),
+          alignment: S.optional(S.String),
+          spaceAbove: S.optional(__S(101, __c3, 5)),
+          indentStart: S.optional(__S(101, __c3, 5)),
+          indentFirstLine: S.optional(__S(101, __c3, 5)),
+        }),
+      ).annotate({ identifier: "ParagraphStyle" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          bullet: S.optional(__S(132, __c4, 4)),
+          style: S.optional(__S(133, __c4, 5)),
+        }),
+      ).annotate({ identifier: "ParagraphMarker" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          style: S.optional(__S(102, __c3, 6)),
+          content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TextRun" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          startIndex: S.optional(S.Number),
+          autoText: S.optional(__S(131, __c4, 3)),
+          endIndex: S.optional(S.Number),
+          paragraphMarker: S.optional(__S(134, __c4, 6)),
+          textRun: S.optional(__S(135, __c4, 7)),
+        }),
+      ).annotate({ identifier: "TextElement" });
+    case 9:
+      return S.Array(__S(136, __c4, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          bulletStyle: S.optional(__S(102, __c3, 6)),
+        }),
+      ).annotate({ identifier: "NestingLevel" });
+    case 11:
+      return S.Record(S.String, __S(138, __c4, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          nestingLevel: S.optional(__S(139, __c4, 11)),
+          listId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "List" });
+    case 13:
+      return S.Record(S.String, __S(140, __c4, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          textElements: S.optional(__S(137, __c4, 9)),
+          lists: S.optional(__S(141, __c4, 13)),
+        }),
+      ).annotate({ identifier: "TextContent" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          lineSpacingReduction: S.optional(S.Number),
+          autofitType: S.optional(S.String),
+          fontScale: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Autofit" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          scaleY: S.optional(S.Number),
+          scaleX: S.optional(S.Number),
+          unit: S.optional(S.String),
+          shearY: S.optional(S.Number),
+          translateX: S.optional(S.Number),
+          shearX: S.optional(S.Number),
+          translateY: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AffineTransform" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          alignment: S.optional(S.String),
+          alpha: S.optional(S.Number),
+          type: S.optional(S.String),
+          color: S.optional(__S(99, __c3, 3)),
+          transform: S.optional(__S(144, __c4, 16)),
+          blurRadius: S.optional(__S(101, __c3, 5)),
+          rotateWithShape: S.optional(S.Boolean),
+          propertyState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Shadow" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          propertyState: S.optional(S.String),
+          solidFill: S.optional(__S(104, __c3, 8)),
+        }),
+      ).annotate({ identifier: "ShapeBackgroundFill" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          propertyState: S.optional(S.String),
+          weight: S.optional(__S(101, __c3, 5)),
+          dashStyle: S.optional(S.String),
+          outlineFill: S.optional(__S(105, __c3, 9)),
+        }),
+      ).annotate({ identifier: "Outline" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          autofit: S.optional(__S(143, __c4, 15)),
+          contentAlignment: S.optional(S.String),
+          shadow: S.optional(__S(145, __c4, 17)),
+          shapeBackgroundFill: S.optional(__S(146, __c4, 18)),
+          link: S.optional(__S(96, __c3, 0)),
+          outline: S.optional(__S(147, __c4, 19)),
+        }),
+      ).annotate({ identifier: "ShapeProperties" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          parentObjectId: S.optional(S.String),
+          index: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Placeholder" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(__S(142, __c4, 14)),
+          shapeProperties: S.optional(__S(148, __c4, 20)),
+          shapeType: S.optional(S.String),
+          placeholder: S.optional(__S(149, __c4, 21)),
+        }),
+      ).annotate({ identifier: "Shape" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          rightOffset: S.optional(S.Number),
+          bottomOffset: S.optional(S.Number),
+          leftOffset: S.optional(S.Number),
+          topOffset: S.optional(S.Number),
+          angle: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CropProperties" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          alpha: S.optional(S.Number),
+          color: S.optional(__S(99, __c3, 3)),
+          position: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ColorStop" });
+    case 25:
+      return S.Array(__S(152, __c4, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          recolorStops: S.optional(__S(153, __c4, 25)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Recolor" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          outline: S.optional(__S(147, __c4, 19)),
+          cropProperties: S.optional(__S(151, __c4, 23)),
+          brightness: S.optional(S.Number),
+          recolor: S.optional(__S(154, __c4, 26)),
+          contrast: S.optional(S.Number),
+          transparency: S.optional(S.Number),
+          link: S.optional(__S(96, __c3, 0)),
+          shadow: S.optional(__S(145, __c4, 17)),
+        }),
+      ).annotate({ identifier: "ImageProperties" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          sourceUrl: S.optional(S.String),
+          imageProperties: S.optional(__S(155, __c4, 27)),
+          placeholder: S.optional(__S(149, __c4, 21)),
+          contentUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Image" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          shadow: S.optional(__S(145, __c4, 17)),
+          outline: S.optional(__S(147, __c4, 19)),
+        }),
+      ).annotate({
+        identifier: "SpeakerSpotlightProperties",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          speakerSpotlightProperties: S.optional(__S(157, __c4, 29)),
+        }),
+      ).annotate({ identifier: "SpeakerSpotlight" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          children: S.optional(S.suspend(() => __S(183, __c5, 23))),
+        }),
+      ).annotate({ identifier: "Group" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(__S(103, __c3, 7)),
+          tableBorderProperties: S.optional(__S(106, __c3, 10)),
+        }),
+      ).annotate({ identifier: "TableBorderCell" });
+    case 1:
+      return S.Array(__S(160, __c5, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tableBorderCells: S.optional(__S(161, __c5, 1)),
+        }),
+      ).annotate({ identifier: "TableBorderRow" });
+    case 3:
+      return S.Array(__S(162, __c5, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          solidFill: S.optional(__S(104, __c3, 8)),
+          propertyState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TableCellBackgroundFill" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          tableCellBackgroundFill: S.optional(__S(164, __c5, 4)),
+          contentAlignment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TableCellProperties" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(__S(142, __c4, 14)),
+          location: S.optional(__S(103, __c3, 7)),
+          rowSpan: S.optional(S.Number),
+          tableCellProperties: S.optional(__S(165, __c5, 5)),
+          columnSpan: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TableCell" });
+    case 7:
+      return S.Array(__S(166, __c5, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          minRowHeight: S.optional(__S(101, __c3, 5)),
+        }),
+      ).annotate({ identifier: "TableRowProperties" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          tableCells: S.optional(__S(167, __c5, 7)),
+          tableRowProperties: S.optional(__S(168, __c5, 8)),
+          rowHeight: S.optional(__S(101, __c3, 5)),
+        }),
+      ).annotate({ identifier: "TableRow" });
+    case 10:
+      return S.Array(__S(169, __c5, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          columnWidth: S.optional(__S(101, __c3, 5)),
+        }),
+      ).annotate({ identifier: "TableColumnProperties" });
+    case 12:
+      return S.Array(__S(171, __c5, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          verticalBorderRows: S.optional(__S(163, __c5, 3)),
+          columns: S.optional(S.Number),
+          rows: S.optional(S.Number),
+          horizontalBorderRows: S.optional(__S(163, __c5, 3)),
+          tableRows: S.optional(__S(170, __c5, 10)),
+          tableColumns: S.optional(__S(172, __c5, 12)),
+        }),
+      ).annotate({ identifier: "Table" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          renderedText: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WordArt" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          mute: S.optional(S.Boolean),
+          outline: S.optional(__S(147, __c4, 19)),
+          end: S.optional(S.Number),
+          start: S.optional(S.Number),
+          autoPlay: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "VideoProperties" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          videoProperties: S.optional(__S(175, __c5, 15)),
+          source: S.optional(S.String),
+          id: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Video" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          chartImageProperties: S.optional(__S(155, __c4, 27)),
+        }),
+      ).annotate({ identifier: "SheetsChartProperties" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          sheetsChartProperties: S.optional(__S(177, __c5, 17)),
+          chartId: S.optional(S.Number),
+          contentUrl: S.optional(S.String),
+          spreadsheetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SheetsChart" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          connectedObjectId: S.optional(S.String),
+          connectionSiteIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LineConnection" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          weight: S.optional(__S(101, __c3, 5)),
+          endArrow: S.optional(S.String),
+          startConnection: S.optional(__S(179, __c5, 19)),
+          link: S.optional(__S(96, __c3, 0)),
+          lineFill: S.optional(__S(105, __c3, 9)),
+          endConnection: S.optional(__S(179, __c5, 19)),
+          dashStyle: S.optional(S.String),
+          startArrow: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LineProperties" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          lineCategory: S.optional(S.String),
+          lineProperties: S.optional(__S(180, __c5, 20)),
+          lineType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Line" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          shape: S.optional(__S(150, __c4, 22)),
+          image: S.optional(__S(156, __c4, 28)),
+          speakerSpotlight: S.optional(__S(158, __c4, 30)),
+          description: S.optional(S.String),
+          elementGroup: S.optional(__S(159, __c4, 31)),
+          objectId: S.optional(S.String),
+          title: S.optional(S.String),
+          table: S.optional(__S(173, __c5, 13)),
+          transform: S.optional(__S(144, __c4, 16)),
+          wordArt: S.optional(__S(174, __c5, 14)),
+          video: S.optional(__S(176, __c5, 16)),
+          size: S.optional(__S(111, __c3, 15)),
+          sheetsChart: S.optional(__S(178, __c5, 18)),
+          line: S.optional(__S(181, __c5, 21)),
+        }),
+      ).annotate({ identifier: "PageElement" });
+    case 23:
+      return S.Array(__S(182, __c5, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          masterObjectId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LayoutProperties" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          masterProperties: S.optional(__S(107, __c3, 11)),
+          pageProperties: S.optional(__S(114, __c3, 18)),
+          notesProperties: S.optional(__S(115, __c3, 19)),
+          commentAnchors: S.optional(__S(125, __c3, 29)),
+          objectId: S.optional(S.String),
+          commentsViewMode: S.optional(S.String),
+          comments: S.optional(__S(130, __c4, 2)),
+          pageElements: S.optional(__S(183, __c5, 23)),
+          layoutProperties: S.optional(__S(184, __c5, 24)),
+          revisionId: S.optional(S.String),
+          slideProperties: S.optional(S.suspend(() => __S(186, __c5, 26))),
+          pageType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Page" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          notesPage: S.optional(__S(185, __c5, 25)),
+          layoutObjectId: S.optional(S.String),
+          masterObjectId: S.optional(S.String),
+          isSkipped: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SlideProperties" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(225, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3769,7 +3695,33 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CreatePresentationsRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(185, __c5, 25));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          locale: S.optional(S.String),
+          pageSize: S.optional(__S(111, __c3, 15)),
+          title: S.optional(S.String),
+          commentsViewMode: S.optional(S.String),
+          slides: S.optional(__S(224, __c7, 0)),
+          presentationId: S.optional(S.String),
+          layouts: S.optional(__S(224, __c7, 0)),
+          notesMaster: S.optional(__S(185, __c5, 25)),
+          masters: S.optional(__S(224, __c7, 0)),
+          revisionId: S.optional(S.String),
+          comments: S.optional(__S(130, __c4, 2)),
+        }),
+      ).annotate({ identifier: "Presentation" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           presentationId: S.String.pipe(T.Label()),
@@ -3782,7 +3734,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPresentationsRequest" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           commentsViewMode: S.optional(S.String.pipe(T.Query())),
@@ -3800,7 +3756,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3829,7 +3785,6 @@ function __c21(j: number): any {
       ).annotate({ identifier: "Thumbnail" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

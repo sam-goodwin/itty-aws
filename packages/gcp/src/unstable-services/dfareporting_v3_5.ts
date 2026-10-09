@@ -333,8 +333,8 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<UploadMediaRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreativeAssetMetadata>,
+  input: __S(12, __c0, 12) as any as S.Schema<UploadMediaRequest>,
+  output: __S(11, __c0, 11) as any as S.Schema<CreativeAssetMetadata>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -412,11 +412,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "DimensionValue" });
     case 7:
       return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           eventName: S.optional(S.String),
@@ -424,16 +420,16 @@ function __c1(j: number): any {
           clickThroughUrl: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "ClickTag" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(8, __c0, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativeAssetId" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           counterCustomEvents: S.optional(__S(5, __c0, 5)),
@@ -442,19 +438,19 @@ function __c1(j: number): any {
           idDimensionValue: S.optional(__S(6, __c0, 6)),
           warnedValidationRules: S.optional(__S(7, __c0, 7)),
           richMedia: S.optional(S.Boolean),
-          clickTags: S.optional(__S(9, __c1, 1)),
+          clickTags: S.optional(__S(9, __c0, 9)),
           id: S.optional(S.String),
           detectedFeatures: S.optional(__S(7, __c0, 7)),
-          assetIdentifier: S.optional(__S(10, __c1, 2)),
+          assetIdentifier: S.optional(__S(10, __c0, 10)),
           timerCustomEvents: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "CreativeAssetMetadata" });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(11, __c0, 11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -465,7 +461,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UploadMediaRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

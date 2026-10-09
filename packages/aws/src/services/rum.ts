@@ -521,8 +521,8 @@ export const batchCreateRumMetricDefinitions: API.OperationMethod<
   BatchCreateRumMetricDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BatchCreateRumMetricDefinitionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<BatchCreateRumMetricDefinitionsResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<BatchCreateRumMetricDefinitionsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<BatchCreateRumMetricDefinitionsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -558,8 +558,8 @@ export const batchDeleteRumMetricDefinitions: API.OperationMethod<
   BatchDeleteRumMetricDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<BatchDeleteRumMetricDefinitionsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<BatchDeleteRumMetricDefinitionsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<BatchDeleteRumMetricDefinitionsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<BatchDeleteRumMetricDefinitionsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -589,8 +589,8 @@ export const batchGetRumMetricDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MetricDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<BatchGetRumMetricDefinitionsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BatchGetRumMetricDefinitionsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<BatchGetRumMetricDefinitionsRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<BatchGetRumMetricDefinitionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -630,8 +630,8 @@ export const createAppMonitor: API.OperationMethod<
   CreateAppMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateAppMonitorRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreateAppMonitorResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateAppMonitorRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<CreateAppMonitorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -663,8 +663,8 @@ export const deleteAppMonitor: API.OperationMethod<
   DeleteAppMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteAppMonitorRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteAppMonitorResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteAppMonitorRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteAppMonitorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -697,8 +697,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -731,8 +731,8 @@ export const deleteRumMetricsDestination: API.OperationMethod<
   DeleteRumMetricsDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteRumMetricsDestinationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteRumMetricsDestinationResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteRumMetricsDestinationRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteRumMetricsDestinationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -762,8 +762,8 @@ export const getAppMonitor: API.OperationMethod<
   GetAppMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetAppMonitorRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetAppMonitorResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetAppMonitorRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<GetAppMonitorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -793,8 +793,8 @@ export const getAppMonitorData: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetAppMonitorDataRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetAppMonitorDataResponse>,
+  input: __S(131, __c16, 3) as any as S.Schema<GetAppMonitorDataRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<GetAppMonitorDataResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -831,8 +831,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetResourcePolicyResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetResourcePolicyRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -863,8 +863,8 @@ export const listAppMonitors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AppMonitorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListAppMonitorsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListAppMonitorsResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListAppMonitorsRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<ListAppMonitorsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -900,8 +900,8 @@ export const listRumMetricsDestinations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MetricDestinationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListRumMetricsDestinationsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ListRumMetricsDestinationsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListRumMetricsDestinationsRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<ListRumMetricsDestinationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -933,8 +933,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -961,8 +961,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<PutResourcePolicyResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<PutResourcePolicyRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -997,8 +997,8 @@ export const putRumEvents: API.OperationMethod<
   PutRumEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<PutRumEventsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<PutRumEventsResponse>,
+  input: __S(188, __c23, 4) as any as S.Schema<PutRumEventsRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<PutRumEventsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1031,8 +1031,8 @@ export const putRumMetricsDestination: API.OperationMethod<
   PutRumMetricsDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<PutRumMetricsDestinationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutRumMetricsDestinationResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<PutRumMetricsDestinationRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<PutRumMetricsDestinationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1070,8 +1070,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1092,8 +1092,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<UntagResourceRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1123,8 +1123,8 @@ export const updateAppMonitor: API.OperationMethod<
   UpdateAppMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<UpdateAppMonitorRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UpdateAppMonitorResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<UpdateAppMonitorRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateAppMonitorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1156,8 +1156,8 @@ export const updateRumMetricDefinition: API.OperationMethod<
   UpdateRumMetricDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<UpdateRumMetricDefinitionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateRumMetricDefinitionResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<UpdateRumMetricDefinitionRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<UpdateRumMetricDefinitionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1176,27 +1176,14 @@ export const updateRumMetricDefinition: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Array(__S(24, __c3, 0));
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          ValueKey: S.optional(S.String),
-          UnitLabel: S.optional(S.String),
-          DimensionKeys: S.optional(__S(0, __c0, 0)),
-          EventPattern: S.optional(S.String),
-          Namespace: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricDefinitionRequest" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           AppMonitorName: S.String.pipe(T.HttpLabel("AppMonitorName")),
           Destination: S.String,
           DestinationArn: S.optional(S.String),
-          MetricDefinitions: __S(2, __c0, 2),
+          MetricDefinitions: __S(0, __c0, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/rummetrics/{AppMonitorName}/metrics" }),
@@ -1210,32 +1197,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchCreateRumMetricDefinitionsRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          MetricDefinition: __S(1, __c0, 1),
+          MetricDefinition: __S(24, __c3, 0),
           ErrorCode: S.String,
           ErrorMessage: S.String,
         }),
       ).annotate({
         identifier: "BatchCreateRumMetricDefinitionsError",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          MetricDefinitionId: S.String,
-          Name: S.String,
-          ValueKey: S.optional(S.String),
-          UnitLabel: S.optional(S.String),
-          DimensionKeys: S.optional(__S(0, __c0, 0)),
-          EventPattern: S.optional(S.String),
-          Namespace: S.optional(S.String),
+          Errors: __S(3, __c0, 3),
+          MetricDefinitions: S.optional(__S(9, __c1, 1)),
         }),
-      ).annotate({ identifier: "MetricDefinition" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
+      ).annotate({
+        identifier: "BatchCreateRumMetricDefinitionsResponse",
+      });
   }
 }
 function __c1(j: number): any {
@@ -1243,21 +1225,49 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Errors: __S(5, __c0, 5),
-          MetricDefinitions: S.optional(__S(7, __c0, 7)),
+          MetricDefinitionId: S.String,
+          Name: S.String,
+          ValueKey: S.optional(S.String),
+          UnitLabel: S.optional(S.String),
+          DimensionKeys: S.optional(__S(16, __c2, 0)),
+          EventPattern: S.optional(S.String),
+          Namespace: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchCreateRumMetricDefinitionsResponse",
-      });
+      ).annotate({ identifier: "MetricDefinition" });
     case 1:
-      return S.Array(S.String);
-    case 2:
+      return S.Array(__S(8, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          ValueKey: S.optional(S.String),
+          UnitLabel: S.optional(S.String),
+          DimensionKeys: S.optional(__S(16, __c2, 0)),
+          EventPattern: S.optional(S.String),
+          Namespace: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricDefinitionRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppMonitorName: S.String.pipe(T.HttpLabel("AppMonitorName")),
           Destination: S.String.pipe(T.HttpQuery("destination")),
           DestinationArn: S.optional(S.String).pipe(T.HttpQuery("destinationArn")),
-          MetricDefinitionIds: __S(9, __c1, 1).pipe(T.HttpQuery("metricDefinitionIds")),
+          MetricDefinitionIds: __S(40, __c5, 0).pipe(T.HttpQuery("metricDefinitionIds")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/rummetrics/{AppMonitorName}/metrics" }),
@@ -1271,24 +1281,34 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BatchDeleteRumMetricDefinitionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ MetricDefinitionId: S.String, ErrorCode: S.String, ErrorMessage: S.String }),
       ).annotate({
         identifier: "BatchDeleteRumMetricDefinitionsError",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Errors: __S(12, __c1, 4),
-          MetricDefinitionIds: S.optional(__S(9, __c1, 1)),
+          Errors: __S(34, __c4, 2),
+          MetricDefinitionIds: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({
         identifier: "BatchDeleteRumMetricDefinitionsResponse",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppMonitorName: S.String.pipe(T.HttpLabel("AppMonitorName")),
@@ -1309,10 +1329,10 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BatchGetRumMetricDefinitionsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          MetricDefinitions: S.optional(__S(7, __c0, 7)),
+          MetricDefinitions: S.optional(__S(9, __c1, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1320,59 +1340,71 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          IdentityPoolId: S.optional(S.String),
-          ExcludedPages: S.optional(__S(9, __c1, 1)),
-          IncludedPages: S.optional(__S(9, __c1, 1)),
-          FavoritePages: S.optional(__S(9, __c1, 1)),
-          SessionSampleRate: S.optional(S.Number),
-          GuestRoleArn: S.optional(S.String),
-          AllowCookies: S.optional(S.Boolean),
-          Telemetries: S.optional(__S(9, __c1, 1)),
-          EnableXRay: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AppMonitorConfiguration" });
-    case 2:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
-        identifier: "CustomEvents",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Status: S.String, S3Uri: S.optional(S.String) })).annotate({
-        identifier: "JavaScriptSourceMaps",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ JavaScriptSourceMaps: S.optional(__S(19, __c2, 3)) }),
-      ).annotate({
-        identifier: "DeobfuscationConfiguration",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Domain: S.optional(S.String),
-          DomainList: S.optional(__S(9, __c1, 1)),
-          Tags: S.optional(__S(16, __c2, 0)),
-          AppMonitorConfiguration: S.optional(__S(17, __c2, 1)),
+          DomainList: S.optional(__S(40, __c5, 0)),
+          Tags: S.optional(__S(64, __c8, 0)),
+          AppMonitorConfiguration: S.optional(__S(72, __c9, 0)),
           CwLogEnabled: S.optional(S.Boolean),
-          CustomEvents: S.optional(__S(18, __c2, 2)),
-          DeobfuscationConfiguration: S.optional(__S(20, __c2, 4)),
+          CustomEvents: S.optional(__S(73, __c9, 1)),
+          DeobfuscationConfiguration: S.optional(__S(75, __c9, 3)),
           Platform: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/appmonitor" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateAppMonitorRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ Id: S.optional(S.String) })).annotate({
         identifier: "CreateAppMonitorResponse",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          IdentityPoolId: S.optional(S.String),
+          ExcludedPages: S.optional(__S(40, __c5, 0)),
+          IncludedPages: S.optional(__S(40, __c5, 0)),
+          FavoritePages: S.optional(__S(40, __c5, 0)),
+          SessionSampleRate: S.optional(S.Number),
+          GuestRoleArn: S.optional(S.String),
+          AllowCookies: S.optional(S.Boolean),
+          Telemetries: S.optional(__S(40, __c5, 0)),
+          EnableXRay: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AppMonitorConfiguration" });
+    case 1:
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
+        identifier: "CustomEvents",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Status: S.String, S3Uri: S.optional(S.String) })).annotate({
+        identifier: "JavaScriptSourceMaps",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ JavaScriptSourceMaps: S.optional(__S(74, __c9, 2)) }),
+      ).annotate({
+        identifier: "DeobfuscationConfiguration",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
           T.all(
@@ -1387,13 +1419,17 @@ function __c2(j: number): any {
       ).annotate({ identifier: "DeleteAppMonitorRequest" });
   }
 }
-function __c3(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAppMonitorResponse",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
@@ -1411,11 +1447,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteResourcePolicyRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ PolicyRevisionId: S.optional(S.String) })).annotate({
         identifier: "DeleteResourcePolicyResponse",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppMonitorName: S.String.pipe(T.HttpLabel("AppMonitorName")),
@@ -1434,66 +1474,74 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteRumMetricsDestinationRequest",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteRumMetricsDestinationResponse",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/appmonitor/{Name}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetAppMonitorRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ CwLogEnabled: S.optional(S.Boolean), CwLogGroup: S.optional(S.String) }),
       ).annotate({ identifier: "CwLog" });
-    case 7:
-      return S.suspend(() => S.Struct({ CwLog: S.optional(__S(30, __c3, 6)) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ CwLog: S.optional(__S(121, __c15, 1)) })).annotate({
         identifier: "DataStorage",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Domain: S.optional(S.String),
-          DomainList: S.optional(__S(9, __c1, 1)),
+          DomainList: S.optional(__S(40, __c5, 0)),
           Id: S.optional(S.String),
           Created: S.optional(S.String),
           LastModified: S.optional(S.String),
-          Tags: S.optional(__S(16, __c2, 0)),
+          Tags: S.optional(__S(64, __c8, 0)),
           State: S.optional(S.String),
-          AppMonitorConfiguration: S.optional(__S(17, __c2, 1)),
-          DataStorage: S.optional(__S(31, __c3, 7)),
-          CustomEvents: S.optional(__S(18, __c2, 2)),
-          DeobfuscationConfiguration: S.optional(__S(20, __c2, 4)),
+          AppMonitorConfiguration: S.optional(__S(72, __c9, 0)),
+          DataStorage: S.optional(__S(122, __c15, 2)),
+          CustomEvents: S.optional(__S(73, __c9, 1)),
+          DeobfuscationConfiguration: S.optional(__S(75, __c9, 3)),
           Platform: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppMonitor" });
-    case 1:
-      return S.suspend(() => S.Struct({ AppMonitor: S.optional(__S(32, __c4, 0)) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ AppMonitor: S.optional(__S(123, __c15, 3)) })).annotate({
         identifier: "GetAppMonitorResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ After: S.Number, Before: S.optional(S.Number) })).annotate({
         identifier: "TimeRange",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(9, __c1, 1)) }),
+        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(40, __c5, 0)) }),
       ).annotate({ identifier: "QueryFilter" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(129, __c16, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
-          TimeRange: __S(34, __c4, 2),
-          Filters: S.optional(__S(36, __c4, 4)),
+          TimeRange: __S(128, __c16, 0),
+          Filters: S.optional(__S(130, __c16, 2)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -1507,13 +1555,17 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAppMonitorDataRequest" });
-    case 6:
+    case 4:
       return S.suspend(() =>
-        S.Struct({ Events: S.optional(__S(9, __c1, 1)), NextToken: S.optional(S.String) }),
+        S.Struct({ Events: S.optional(__S(40, __c5, 0)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetAppMonitorDataResponse",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
           T.all(
@@ -1528,7 +1580,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "GetResourcePolicyRequest" });
   }
 }
-function __c5(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1536,7 +1588,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetResourcePolicyResponse",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1545,7 +1601,7 @@ function __c5(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/appmonitors" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListAppMonitorsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -1556,16 +1612,20 @@ function __c5(j: number): any {
           Platform: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppMonitorSummary" });
+    case 2:
+      return S.Array(__S(153, __c19, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          AppMonitorSummaries: S.optional(__S(43, __c5, 3)),
+          AppMonitorSummaries: S.optional(__S(154, __c19, 2)),
         }),
       ).annotate({ identifier: "ListAppMonitorsResponse" });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppMonitorName: S.String.pipe(T.HttpLabel("AppMonitorName")),
@@ -1584,7 +1644,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListRumMetricsDestinationsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Destination: S.optional(S.String),
@@ -1592,22 +1652,22 @@ function __c5(j: number): any {
           IamRoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricDestinationSummary" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(161, __c20, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Destinations: S.optional(__S(47, __c5, 7)),
+          Destinations: S.optional(__S(162, __c20, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListRumMetricsDestinationsResponse",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
           T.all(
@@ -1622,11 +1682,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ ResourceArn: S.String, Tags: __S(16, __c2, 0) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ ResourceArn: S.String, Tags: __S(64, __c8, 0) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
@@ -1643,7 +1707,11 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutResourcePolicyRequest" });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1651,11 +1719,11 @@ function __c6(j: number): any {
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppMonitorDetails" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ userId: S.optional(S.String), sessionId: S.optional(S.String) }),
       ).annotate({ identifier: "UserDetails" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1665,20 +1733,16 @@ function __c6(j: number): any {
           details: S.String,
         }),
       ).annotate({ identifier: "RumEvent" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(186, __c23, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Id: S.String.pipe(T.HttpLabel("Id")),
           BatchId: S.String,
-          AppMonitorDetails: __S(52, __c6, 4),
-          UserDetails: __S(53, __c6, 5),
-          RumEvents: __S(55, __c6, 7),
+          AppMonitorDetails: __S(184, __c23, 0),
+          UserDetails: __S(185, __c23, 1),
+          RumEvents: __S(187, __c23, 3),
           Alias: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1691,7 +1755,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutRumEventsRequest" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppMonitorName: S.String.pipe(T.HttpLabel("AppMonitorName")),
@@ -1711,11 +1779,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PutRumMetricsDestinationRequest",
       });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(16, __c2, 0),
+          Tags: __S(64, __c8, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -1727,11 +1799,15 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(9, __c1, 1).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(40, __c5, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1743,16 +1819,20 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
           Domain: S.optional(S.String),
-          DomainList: S.optional(__S(9, __c1, 1)),
-          AppMonitorConfiguration: S.optional(__S(17, __c2, 1)),
+          DomainList: S.optional(__S(40, __c5, 0)),
+          AppMonitorConfiguration: S.optional(__S(72, __c9, 0)),
           CwLogEnabled: S.optional(S.Boolean),
-          CustomEvents: S.optional(__S(18, __c2, 2)),
-          DeobfuscationConfiguration: S.optional(__S(20, __c2, 4)),
+          CustomEvents: S.optional(__S(73, __c9, 1)),
+          DeobfuscationConfiguration: S.optional(__S(75, __c9, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/appmonitor/{Name}" }),
@@ -1764,13 +1844,17 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateAppMonitorRequest" });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AppMonitorName: S.String.pipe(T.HttpLabel("AppMonitorName")),
           Destination: S.String,
           DestinationArn: S.optional(S.String),
-          MetricDefinition: __S(1, __c0, 1),
+          MetricDefinition: __S(24, __c3, 0),
           MetricDefinitionId: S.String,
         }).pipe(
           T.all(
@@ -1787,7 +1871,6 @@ function __c7(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

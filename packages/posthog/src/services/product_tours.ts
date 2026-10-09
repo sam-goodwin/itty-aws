@@ -286,8 +286,8 @@ export const createProductTour: API.OperationMethod<
   CreateProductTourError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateProductTourRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ProductTourSerializerCreateUpdateOnlyOutput>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateProductTourRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<ProductTourSerializerCreateUpdateOnlyOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -301,8 +301,8 @@ export const getProductTour: API.OperationMethod<
   GetProductTourError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetProductTourRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ProductTour>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetProductTourRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ProductTour>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -316,8 +316,8 @@ export const getProductToursDraftStatus: API.OperationMethod<
   GetProductToursDraftStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetProductToursDraftStatusRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DraftStatusResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetProductToursDraftStatusRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<DraftStatusResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -331,8 +331,8 @@ export const listProductTours: API.OperationMethod<
   ListProductToursError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListProductToursRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<PaginatedProductTourList>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListProductToursRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<PaginatedProductTourList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -346,8 +346,8 @@ export const productToursDestroy: API.OperationMethod<
   ProductToursDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ProductToursDestroyRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ProductToursDestroyResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<ProductToursDestroyRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<ProductToursDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -361,8 +361,8 @@ export const productToursDiscardDraftDestroy: API.OperationMethod<
   ProductToursDiscardDraftDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ProductToursDiscardDraftDestroyRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ProductTour>,
+  input: __S(104, __c13, 0) as any as S.Schema<ProductToursDiscardDraftDestroyRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ProductTour>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -376,8 +376,8 @@ export const productToursGenerateCreate: API.OperationMethod<
   ProductToursGenerateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ProductToursGenerateCreateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GenerateResponse>,
+  input: __S(113, __c14, 1) as any as S.Schema<ProductToursGenerateCreateRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<GenerateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -395,8 +395,8 @@ export const productToursPublishDraftCreate: API.OperationMethod<
   ProductToursPublishDraftCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ProductToursPublishDraftCreateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ProductTour>,
+  input: __S(0, __c0, 0) as any as S.Schema<ProductToursPublishDraftCreateRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ProductTour>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -410,8 +410,8 @@ export const updateProductTour: API.OperationMethod<
   UpdateProductTourError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<UpdateProductTourRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ProductTour>,
+  input: __S(8, __c1, 0) as any as S.Schema<UpdateProductTourRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ProductTour>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -429,8 +429,8 @@ export const updateProductToursDraftPartial: API.OperationMethod<
   UpdateProductToursDraftPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<UpdateProductToursDraftPartialRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ProductTour>,
+  input: __S(16, __c2, 0) as any as S.Schema<UpdateProductToursDraftPartialRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ProductTour>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -445,7 +445,7 @@ export const updateProductToursPartial: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<UpdateProductToursPartialRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ProductTourSerializerCreateUpdateOnlyOutput>,
+  output: __S(40, __c5, 0) as any as S.Schema<ProductTourSerializerCreateUpdateOnlyOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -455,236 +455,6 @@ export const updateProductToursPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          linked_flag_id: S.optional(S.NullOr(S.Number)),
-          targeting_flag_filters: S.optional(S.Unknown),
-          content: S.optional(S.Unknown),
-          auto_launch: S.optional(S.Boolean),
-          start_date: S.optional(S.NullOr(S.String)),
-          end_date: S.optional(S.NullOr(S.String)),
-          archived: S.optional(S.Boolean),
-          creation_context: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/product_tours/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateProductTourRequest" });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          team_id: S.optional(S.Number),
-          name: S.optional(S.String),
-          key: S.optional(S.String),
-          filters: S.optional(__S(1, __c0, 1)),
-          deleted: S.optional(S.Boolean),
-          active: S.optional(S.Boolean),
-          ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
-          version: S.optional(S.NullOr(S.Number)),
-          evaluation_runtime: S.optional(S.NullOr(S.Unknown)),
-          bucketing_identifier: S.optional(S.NullOr(S.Unknown)),
-          evaluation_contexts: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "MinimalFeatureFlag" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          internal_targeting_flag: S.optional(__S(3, __c0, 3)),
-          linked_flag: S.optional(__S(3, __c0, 3)),
-          content: S.optional(S.Unknown),
-          auto_launch: S.optional(S.Boolean),
-          start_date: S.optional(S.NullOr(S.String)),
-          end_date: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(4, __c0, 4))),
-          updated_at: S.optional(S.String),
-          archived: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ProductTourSerializerCreateUpdateOnlyOutput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/product_tours/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetProductTourRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          internal_targeting_flag: S.optional(__S(3, __c0, 3)),
-          linked_flag: S.optional(__S(3, __c0, 3)),
-          targeting_flag_filters: S.optional(S.NullOr(__S(1, __c0, 1))),
-          content: S.optional(S.Unknown),
-          draft_content: S.optional(S.Unknown),
-          has_draft: S.optional(S.Boolean),
-          auto_launch: S.optional(S.Boolean),
-          start_date: S.optional(S.NullOr(S.String)),
-          end_date: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(4, __c0, 4))),
-          updated_at: S.optional(S.String),
-          archived: S.optional(S.Boolean),
-          search_match_type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ProductTour" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/product_tours/{id}/draft_status/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProductToursDraftStatusRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          updated_at: S.optional(S.String),
-          has_draft: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DraftStatusResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/product_tours/", code: 200 }),
-        ),
-      ).annotate({ identifier: "ListProductToursRequest" });
-    case 3:
-      return S.Array(__S(7, __c0, 7));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "PaginatedProductTourList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/product_tours/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ProductToursDestroyRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ProductToursDestroyResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/product_tours/{id}/discard_draft/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ProductToursDiscardDraftDestroyRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(1, __c0, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          title: S.optional(S.String),
-          goal: S.optional(S.String),
-          steps: S.optional(__S(16, __c2, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/product_tours/{id}/generate/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ProductToursGenerateCreateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          step_id: S.optional(S.String),
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GenerateStepResponse" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          steps: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "GenerateResponse" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -709,7 +479,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ProductToursPublishDraftCreateRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -729,7 +503,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateProductTourRequest" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -785,7 +563,272 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          linked_flag_id: S.optional(S.NullOr(S.Number)),
+          targeting_flag_filters: S.optional(S.Unknown),
+          content: S.optional(S.Unknown),
+          auto_launch: S.optional(S.Boolean),
+          start_date: S.optional(S.NullOr(S.String)),
+          end_date: S.optional(S.NullOr(S.String)),
+          archived: S.optional(S.Boolean),
+          creation_context: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/product_tours/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateProductTourRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          internal_targeting_flag: S.optional(__S(49, __c6, 1)),
+          linked_flag: S.optional(__S(49, __c6, 1)),
+          content: S.optional(S.Unknown),
+          auto_launch: S.optional(S.Boolean),
+          start_date: S.optional(S.NullOr(S.String)),
+          end_date: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          created_by: S.optional(S.NullOr(__S(50, __c6, 2))),
+          updated_at: S.optional(S.String),
+          archived: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ProductTourSerializerCreateUpdateOnlyOutput",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          team_id: S.optional(S.Number),
+          name: S.optional(S.String),
+          key: S.optional(S.String),
+          filters: S.optional(__S(56, __c7, 0)),
+          deleted: S.optional(S.Boolean),
+          active: S.optional(S.Boolean),
+          ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
+          version: S.optional(S.NullOr(S.Number)),
+          evaluation_runtime: S.optional(S.NullOr(S.Unknown)),
+          bucketing_identifier: S.optional(S.NullOr(S.Unknown)),
+          evaluation_contexts: S.optional(__S(48, __c6, 0)),
+        }),
+      ).annotate({ identifier: "MinimalFeatureFlag" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(56, __c7, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/product_tours/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetProductTourRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          internal_targeting_flag: S.optional(__S(49, __c6, 1)),
+          linked_flag: S.optional(__S(49, __c6, 1)),
+          targeting_flag_filters: S.optional(S.NullOr(__S(56, __c7, 0))),
+          content: S.optional(S.Unknown),
+          draft_content: S.optional(S.Unknown),
+          has_draft: S.optional(S.Boolean),
+          auto_launch: S.optional(S.Boolean),
+          start_date: S.optional(S.NullOr(S.String)),
+          end_date: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          created_by: S.optional(S.NullOr(__S(50, __c6, 2))),
+          updated_at: S.optional(S.String),
+          archived: S.optional(S.Boolean),
+          search_match_type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ProductTour" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/product_tours/{id}/draft_status/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProductToursDraftStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          updated_at: S.optional(S.String),
+          has_draft: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DraftStatusResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/product_tours/", code: 200 }),
+        ),
+      ).annotate({ identifier: "ListProductToursRequest" });
+    case 1:
+      return S.Array(__S(72, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: S.optional(__S(89, __c11, 1)),
+        }),
+      ).annotate({ identifier: "PaginatedProductTourList" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/product_tours/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ProductToursDestroyRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ProductToursDestroyResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/product_tours/{id}/discard_draft/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ProductToursDiscardDraftDestroyRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(56, __c7, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          title: S.optional(S.String),
+          goal: S.optional(S.String),
+          steps: S.optional(__S(112, __c14, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/product_tours/{id}/generate/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ProductToursGenerateCreateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          step_id: S.optional(S.String),
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GenerateStepResponse" });
+    case 3:
+      return S.Array(__S(114, __c14, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          steps: S.optional(__S(115, __c14, 3)),
+        }),
+      ).annotate({ identifier: "GenerateResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

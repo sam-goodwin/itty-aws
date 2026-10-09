@@ -2124,8 +2124,8 @@ export const createAlertConfigReceiver: API.OperationMethod<
   CreateAlertConfigReceiverError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateAlertConfigReceiverRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AlertConfigReceiversResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<CreateAlertConfigReceiverRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<AlertConfigReceiversResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2139,8 +2139,8 @@ export const createAlertConfigRoute: API.OperationMethod<
   CreateAlertConfigRouteError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateAlertConfigRouteRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AlertConfigRouteResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<CreateAlertConfigRouteRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<AlertConfigRouteResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2154,8 +2154,8 @@ export const createAlertgroups: API.OperationMethod<
   CreateAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateAlertgroupsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<AlertGroupsResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<CreateAlertgroupsRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<AlertGroupsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2169,8 +2169,8 @@ export const createAlertRecord: API.OperationMethod<
   CreateAlertRecordError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateAlertRecordRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<AlertRecordsResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<CreateAlertRecordRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<AlertRecordsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2184,8 +2184,8 @@ export const createAlertrules: API.OperationMethod<
   CreateAlertrulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateAlertrulesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<AlertRulesResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<CreateAlertrulesRequest>,
+  output: __S(1841, __c115, 1) as any as S.Schema<AlertRulesResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2199,8 +2199,8 @@ export const createBackup: API.OperationMethod<
   CreateBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateBackupRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Message>,
+  input: __S(2016, __c126, 0) as any as S.Schema<CreateBackupRequest>,
+  output: __S(2032, __c127, 0) as any as S.Schema<Message>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2214,8 +2214,8 @@ export const createBackupSchedule: API.OperationMethod<
   CreateBackupScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateBackupScheduleRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<BackupSchedulePostResponse>,
+  input: __S(2256, __c141, 0) as any as S.Schema<CreateBackupScheduleRequest>,
+  output: __S(2257, __c141, 1) as any as S.Schema<BackupSchedulePostResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2229,8 +2229,8 @@ export const createCertCheck: API.OperationMethod<
   CreateCertCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateCertCheckRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<CertCheckResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCertCheckRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<CertCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2244,8 +2244,8 @@ export const createCredentials: API.OperationMethod<
   CreateCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateCredentialsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CreateCredentialsResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateCredentialsRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<CreateCredentialsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2259,8 +2259,8 @@ export const createElasticsearchCheck: API.OperationMethod<
   CreateElasticsearchCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CreateElasticsearchCheckRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ElasticsearchCheckResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateElasticsearchCheckRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<ElasticsearchCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2274,8 +2274,8 @@ export const createHttpCheck: API.OperationMethod<
   CreateHttpCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateHttpCheckRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<HttpCheckResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateHttpCheckRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<HttpCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2289,8 +2289,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<CreateInstanceResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<CreateInstanceRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<CreateInstanceResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2304,8 +2304,8 @@ export const createLogsAlertgroups: API.OperationMethod<
   CreateLogsAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<CreateLogsAlertgroupsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<AlertGroupsResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<CreateLogsAlertgroupsRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<AlertGroupsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2319,8 +2319,8 @@ export const createMongodbCheck: API.OperationMethod<
   CreateMongodbCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateMongodbCheckRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<MongodbCheckResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<CreateMongodbCheckRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<MongodbCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2334,8 +2334,8 @@ export const createMysqlCheck: API.OperationMethod<
   CreateMysqlCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateMysqlCheckRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<MysqlCheckResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<CreateMysqlCheckRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<MysqlCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2349,8 +2349,8 @@ export const createNetworkCheck: API.OperationMethod<
   CreateNetworkCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<CreateNetworkCheckRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<NetworkCheckResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<CreateNetworkCheckRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<NetworkCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2364,8 +2364,8 @@ export const createPingCheck: API.OperationMethod<
   CreatePingCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<CreatePingCheckRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PingCheckResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<CreatePingCheckRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<PingCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2379,8 +2379,8 @@ export const createPostgresqlCheck: API.OperationMethod<
   CreatePostgresqlCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<CreatePostgresqlCheckRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<PostgresqlCheckResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<CreatePostgresqlCheckRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PostgresqlCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2394,8 +2394,8 @@ export const createRabbitmqCheck: API.OperationMethod<
   CreateRabbitmqCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<CreateRabbitmqCheckRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<RabbitmqCheckResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<CreateRabbitmqCheckRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<RabbitmqCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2409,8 +2409,8 @@ export const createRedisCheck: API.OperationMethod<
   CreateRedisCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<CreateRedisCheckRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<RedisCheckResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<CreateRedisCheckRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<RedisCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2424,8 +2424,8 @@ export const createScrapeConfig: API.OperationMethod<
   CreateScrapeConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<CreateScrapeConfigRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ScrapeConfigsResponse>,
+  input: __S(580, __c36, 4) as any as S.Schema<CreateScrapeConfigRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ScrapeConfigsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2439,8 +2439,8 @@ export const deleteAlertConfigReceiver: API.OperationMethod<
   DeleteAlertConfigReceiverError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<DeleteAlertConfigReceiverRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AlertConfigReceiversResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<DeleteAlertConfigReceiverRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<AlertConfigReceiversResponse>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2454,8 +2454,8 @@ export const deleteAlertConfigRoute: API.OperationMethod<
   DeleteAlertConfigRouteError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DeleteAlertConfigRouteRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AlertConfigRouteResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<DeleteAlertConfigRouteRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<AlertConfigRouteResponse>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2469,8 +2469,8 @@ export const deleteAlertgroup: API.OperationMethod<
   DeleteAlertgroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<DeleteAlertgroupRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<AlertGroupsResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<DeleteAlertgroupRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<AlertGroupsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2484,8 +2484,8 @@ export const deleteAlertgroups: API.OperationMethod<
   DeleteAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<DeleteAlertgroupsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<AlertGroupsResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<DeleteAlertgroupsRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<AlertGroupsResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2499,8 +2499,8 @@ export const deleteAlertRecord: API.OperationMethod<
   DeleteAlertRecordError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<DeleteAlertRecordRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<AlertRecordsResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<DeleteAlertRecordRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<AlertRecordsResponse>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2514,8 +2514,8 @@ export const deleteAlertRecords: API.OperationMethod<
   DeleteAlertRecordsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<DeleteAlertRecordsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<AlertRecordsResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<DeleteAlertRecordsRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<AlertRecordsResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2529,8 +2529,8 @@ export const deleteAlertrule: API.OperationMethod<
   DeleteAlertruleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<DeleteAlertruleRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<AlertRulesResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<DeleteAlertruleRequest>,
+  output: __S(1841, __c115, 1) as any as S.Schema<AlertRulesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2544,8 +2544,8 @@ export const deleteAlertrules: API.OperationMethod<
   DeleteAlertrulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<DeleteAlertrulesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<AlertRulesResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<DeleteAlertrulesRequest>,
+  output: __S(1841, __c115, 1) as any as S.Schema<AlertRulesResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2559,8 +2559,8 @@ export const deleteCertCheck: API.OperationMethod<
   DeleteCertCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<DeleteCertCheckRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<CertCheckResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<DeleteCertCheckRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<CertCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2574,8 +2574,8 @@ export const deleteCredentials: API.OperationMethod<
   DeleteCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteCredentialsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Message>,
+  input: __S(912, __c57, 0) as any as S.Schema<DeleteCredentialsRequest>,
+  output: __S(2032, __c127, 0) as any as S.Schema<Message>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2593,8 +2593,8 @@ export const deleteCredentialsRemoteWriteConfig: API.OperationMethod<
   DeleteCredentialsRemoteWriteConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<DeleteCredentialsRemoteWriteConfigRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<CredentialsRemoteWriteDeleteResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<DeleteCredentialsRemoteWriteConfigRequest>,
+  output: __S(929, __c58, 1) as any as S.Schema<CredentialsRemoteWriteDeleteResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2608,8 +2608,8 @@ export const deleteElasticsearchCheck: API.OperationMethod<
   DeleteElasticsearchCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DeleteElasticsearchCheckRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ElasticsearchCheckResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<DeleteElasticsearchCheckRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<ElasticsearchCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2623,8 +2623,8 @@ export const deleteHttpCheck: API.OperationMethod<
   DeleteHttpCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<DeleteHttpCheckRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<HttpCheckResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<DeleteHttpCheckRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<HttpCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2638,8 +2638,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<InstanceResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<DeleteInstanceRequest>,
+  output: __S(2032, __c127, 0) as any as S.Schema<InstanceResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2653,8 +2653,8 @@ export const deleteLogsAlertgroup: API.OperationMethod<
   DeleteLogsAlertgroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<DeleteLogsAlertgroupRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<AlertGroupsResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<DeleteLogsAlertgroupRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<AlertGroupsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2668,8 +2668,8 @@ export const deleteMongodbCheck: API.OperationMethod<
   DeleteMongodbCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<DeleteMongodbCheckRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<MongodbCheckResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<DeleteMongodbCheckRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<MongodbCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2683,8 +2683,8 @@ export const deleteMysqlCheck: API.OperationMethod<
   DeleteMysqlCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<DeleteMysqlCheckRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<MysqlCheckResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<DeleteMysqlCheckRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<MysqlCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2698,8 +2698,8 @@ export const deleteNetworkCheck: API.OperationMethod<
   DeleteNetworkCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<DeleteNetworkCheckRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<NetworkCheckResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<DeleteNetworkCheckRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<NetworkCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2713,8 +2713,8 @@ export const deletePingCheck: API.OperationMethod<
   DeletePingCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<DeletePingCheckRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PingCheckResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<DeletePingCheckRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<PingCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2728,8 +2728,8 @@ export const deletePostgresqlCheck: API.OperationMethod<
   DeletePostgresqlCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<DeletePostgresqlCheckRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<PostgresqlCheckResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<DeletePostgresqlCheckRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PostgresqlCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2743,8 +2743,8 @@ export const deleteRabbitmqCheck: API.OperationMethod<
   DeleteRabbitmqCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<DeleteRabbitmqCheckRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<RabbitmqCheckResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<DeleteRabbitmqCheckRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<RabbitmqCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2758,8 +2758,8 @@ export const deleteRedisCheck: API.OperationMethod<
   DeleteRedisCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<DeleteRedisCheckRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<RedisCheckResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<DeleteRedisCheckRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<RedisCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2773,8 +2773,8 @@ export const deleteScrapeConfig: API.OperationMethod<
   DeleteScrapeConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<DeleteScrapeConfigRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<DeleteScrapeConfigResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<DeleteScrapeConfigRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<DeleteScrapeConfigResponse>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2788,8 +2788,8 @@ export const deleteScrapeConfigs: API.OperationMethod<
   DeleteScrapeConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<DeleteScrapeConfigsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ScrapeConfigsResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<DeleteScrapeConfigsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ScrapeConfigsResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2803,8 +2803,8 @@ export const getAlertConfigReceiver: API.OperationMethod<
   GetAlertConfigReceiverError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<GetAlertConfigReceiverRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<Receiver>,
+  input: __S(1280, __c80, 0) as any as S.Schema<GetAlertConfigReceiverRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<Receiver>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2818,8 +2818,8 @@ export const getAlertConfigRoute: API.OperationMethod<
   GetAlertConfigRouteError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetAlertConfigRouteRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AlertConfigRouteResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<GetAlertConfigRouteRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<AlertConfigRouteResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2833,8 +2833,8 @@ export const getAlertConfigs: API.OperationMethod<
   GetAlertConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetAlertConfigsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<GetAlertConfigsResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<GetAlertConfigsRequest>,
+  output: __S(1377, __c86, 1) as any as S.Schema<GetAlertConfigsResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2848,8 +2848,8 @@ export const getAlertgroup: API.OperationMethod<
   GetAlertgroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetAlertgroupRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<AlertGroupResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<GetAlertgroupRequest>,
+  output: __S(1424, __c89, 0) as any as S.Schema<AlertGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2863,8 +2863,8 @@ export const getAlertRecord: API.OperationMethod<
   GetAlertRecordError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetAlertRecordRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<AlertRecordResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<GetAlertRecordRequest>,
+  output: __S(1441, __c90, 1) as any as S.Schema<AlertRecordResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2878,8 +2878,8 @@ export const getAlertrule: API.OperationMethod<
   GetAlertruleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetAlertruleRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<AlertRuleResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<GetAlertruleRequest>,
+  output: __S(1457, __c91, 1) as any as S.Schema<AlertRuleResponse>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2893,8 +2893,8 @@ export const getCredentials: API.OperationMethod<
   GetCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetCredentialsRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<GetCredentialsResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<GetCredentialsRequest>,
+  output: __S(1473, __c92, 1) as any as S.Schema<GetCredentialsResponse>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2908,8 +2908,8 @@ export const getCredentialsRemoteWriteConfig: API.OperationMethod<
   GetCredentialsRemoteWriteConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetCredentialsRemoteWriteConfigRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<CredentialsRemoteWriteConfig>,
+  input: __S(1488, __c93, 0) as any as S.Schema<GetCredentialsRemoteWriteConfigRequest>,
+  output: __S(1504, __c94, 0) as any as S.Schema<CredentialsRemoteWriteConfig>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2923,8 +2923,8 @@ export const getGrafanaConfigs: API.OperationMethod<
   GetGrafanaConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetGrafanaConfigsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<GrafanaConfigs>,
+  input: __S(1520, __c95, 0) as any as S.Schema<GetGrafanaConfigsRequest>,
+  output: __S(1522, __c95, 2) as any as S.Schema<GrafanaConfigs>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2938,8 +2938,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetInstanceRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<GetInstanceResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(1539, __c96, 3) as any as S.Schema<GetInstanceResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2953,8 +2953,8 @@ export const getLogsAlertgroup: API.OperationMethod<
   GetLogsAlertgroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetLogsAlertgroupRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<AlertGroupResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<GetLogsAlertgroupRequest>,
+  output: __S(1424, __c89, 0) as any as S.Schema<AlertGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2968,8 +2968,8 @@ export const getLogsConfigs: API.OperationMethod<
   GetLogsConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetLogsConfigsRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<LogsConfigResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<GetLogsConfigsRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<LogsConfigResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2983,8 +2983,8 @@ export const getMetricsStorageRetention: API.OperationMethod<
   GetMetricsStorageRetentionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<GetMetricsStorageRetentionRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<GetMetricsStorageRetentionResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<GetMetricsStorageRetentionRequest>,
+  output: __S(1649, __c103, 1) as any as S.Schema<GetMetricsStorageRetentionResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2998,8 +2998,8 @@ export const getScrapeConfig: API.OperationMethod<
   GetScrapeConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<GetScrapeConfigRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<GetScrapeConfigResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<GetScrapeConfigRequest>,
+  output: __S(1665, __c104, 1) as any as S.Schema<GetScrapeConfigResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3013,8 +3013,8 @@ export const getTracesConfigs: API.OperationMethod<
   GetTracesConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<GetTracesConfigsRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<TracesConfigResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<GetTracesConfigsRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<TracesConfigResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3028,8 +3028,8 @@ export const listACL: API.OperationMethod<
   ListACLError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<ListACLRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<ListACLResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<ListACLRequest>,
+  output: __S(1697, __c106, 1) as any as S.Schema<ListACLResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3043,8 +3043,8 @@ export const listAlertConfigReceivers: API.OperationMethod<
   ListAlertConfigReceiversError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<ListAlertConfigReceiversRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AlertConfigReceiversResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<ListAlertConfigReceiversRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<AlertConfigReceiversResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3058,8 +3058,8 @@ export const listAlertConfigRoutes: API.OperationMethod<
   ListAlertConfigRoutesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListAlertConfigRoutesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AlertConfigRouteResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<ListAlertConfigRoutesRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<AlertConfigRouteResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3073,8 +3073,8 @@ export const listAlertgroups: API.OperationMethod<
   ListAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListAlertgroupsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<AlertGroupsResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<ListAlertgroupsRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<AlertGroupsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3088,8 +3088,8 @@ export const listAlertRecords: API.OperationMethod<
   ListAlertRecordsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListAlertRecordsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<AlertRecordsResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<ListAlertRecordsRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<AlertRecordsResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3103,8 +3103,8 @@ export const listAlertrules: API.OperationMethod<
   ListAlertrulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<ListAlertrulesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<AlertRulesResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<ListAlertrulesRequest>,
+  output: __S(1841, __c115, 1) as any as S.Schema<AlertRulesResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3118,8 +3118,8 @@ export const listBackupRetentions: API.OperationMethod<
   ListBackupRetentionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<ListBackupRetentionsRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<BackupRetentionResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<ListBackupRetentionsRequest>,
+  output: __S(1793, __c112, 1) as any as S.Schema<BackupRetentionResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3133,8 +3133,8 @@ export const listBackups: API.OperationMethod<
   ListBackupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListBackupsRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<BackupResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<ListBackupsRequest>,
+  output: __S(1857, __c116, 1) as any as S.Schema<BackupResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3148,8 +3148,8 @@ export const listBackupSchedules: API.OperationMethod<
   ListBackupSchedulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<ListBackupSchedulesRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<BackupScheduleResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<ListBackupSchedulesRequest>,
+  output: __S(1875, __c117, 3) as any as S.Schema<BackupScheduleResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3163,8 +3163,8 @@ export const listCertChecks: API.OperationMethod<
   ListCertChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ListCertChecksRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<CertCheckResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<ListCertChecksRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<CertCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3178,8 +3178,8 @@ export const listCredentials: API.OperationMethod<
   ListCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListCredentialsRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<ListCredentialsResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<ListCredentialsRequest>,
+  output: __S(1907, __c119, 3) as any as S.Schema<ListCredentialsResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3193,8 +3193,8 @@ export const listElasticsearchChecks: API.OperationMethod<
   ListElasticsearchChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListElasticsearchChecksRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ElasticsearchCheckResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<ListElasticsearchChecksRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<ElasticsearchCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3208,8 +3208,8 @@ export const listHttpChecks: API.OperationMethod<
   ListHttpChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ListHttpChecksRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<HttpCheckResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<ListHttpChecksRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<HttpCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3223,8 +3223,8 @@ export const listInstances: API.OperationMethod<
   ListInstancesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListInstancesRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<ListInstancesResponse>,
+  input: __S(1952, __c122, 0) as any as S.Schema<ListInstancesRequest>,
+  output: __S(1955, __c122, 3) as any as S.Schema<ListInstancesResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3238,8 +3238,8 @@ export const listLogsAlertgroups: API.OperationMethod<
   ListLogsAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<ListLogsAlertgroupsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<AlertGroupsResponse>,
+  input: __S(1968, __c123, 0) as any as S.Schema<ListLogsAlertgroupsRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<AlertGroupsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3253,8 +3253,8 @@ export const listMongodbChecks: API.OperationMethod<
   ListMongodbChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<ListMongodbChecksRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<MongodbCheckResponse>,
+  input: __S(1984, __c124, 0) as any as S.Schema<ListMongodbChecksRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<MongodbCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3268,8 +3268,8 @@ export const listMysqlChecks: API.OperationMethod<
   ListMysqlChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<ListMysqlChecksRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<MysqlCheckResponse>,
+  input: __S(2000, __c125, 0) as any as S.Schema<ListMysqlChecksRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<MysqlCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3283,8 +3283,8 @@ export const listNetworkChecks: API.OperationMethod<
   ListNetworkChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<ListNetworkChecksRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<NetworkCheckResponse>,
+  input: __S(2064, __c129, 0) as any as S.Schema<ListNetworkChecksRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<NetworkCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3298,8 +3298,8 @@ export const listOfferings: API.OperationMethod<
   ListOfferingsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<ListOfferingsRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<Offerings>,
+  input: __S(2080, __c130, 0) as any as S.Schema<ListOfferingsRequest>,
+  output: __S(2081, __c130, 1) as any as S.Schema<Offerings>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3313,8 +3313,8 @@ export const listPingChecks: API.OperationMethod<
   ListPingChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<ListPingChecksRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PingCheckResponse>,
+  input: __S(2112, __c132, 0) as any as S.Schema<ListPingChecksRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<PingCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3328,8 +3328,8 @@ export const listPlans: API.OperationMethod<
   ListPlansError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<ListPlansRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<PlansResponse>,
+  input: __S(2128, __c133, 0) as any as S.Schema<ListPlansRequest>,
+  output: __S(2129, __c133, 1) as any as S.Schema<PlansResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3343,8 +3343,8 @@ export const listPostgresqlChecks: API.OperationMethod<
   ListPostgresqlChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<ListPostgresqlChecksRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<PostgresqlCheckResponse>,
+  input: __S(2144, __c134, 0) as any as S.Schema<ListPostgresqlChecksRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PostgresqlCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3358,8 +3358,8 @@ export const listRabbitmqChecks: API.OperationMethod<
   ListRabbitmqChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<ListRabbitmqChecksRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<RabbitmqCheckResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<ListRabbitmqChecksRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<RabbitmqCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3373,8 +3373,8 @@ export const listRedisChecks: API.OperationMethod<
   ListRedisChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<ListRedisChecksRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<RedisCheckResponse>,
+  input: __S(2176, __c136, 0) as any as S.Schema<ListRedisChecksRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<RedisCheckResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3388,8 +3388,8 @@ export const listScrapeConfigs: API.OperationMethod<
   ListScrapeConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<ListScrapeConfigsRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<ListScrapeConfigsResponse>,
+  input: __S(2192, __c137, 0) as any as S.Schema<ListScrapeConfigsRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<ListScrapeConfigsResponse>,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3403,8 +3403,8 @@ export const partialUpdateAlertgroups: API.OperationMethod<
   PartialUpdateAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<PartialUpdateAlertgroupsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<AlertGroupsResponse>,
+  input: __S(2208, __c138, 0) as any as S.Schema<PartialUpdateAlertgroupsRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<AlertGroupsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3418,8 +3418,8 @@ export const partialUpdateAlertRecords: API.OperationMethod<
   PartialUpdateAlertRecordsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<PartialUpdateAlertRecordsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<AlertRecordsResponse>,
+  input: __S(2242, __c140, 2) as any as S.Schema<PartialUpdateAlertRecordsRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<AlertRecordsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3433,8 +3433,8 @@ export const partialUpdateAlertrules: API.OperationMethod<
   PartialUpdateAlertrulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<PartialUpdateAlertrulesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<AlertRulesResponse>,
+  input: __S(2274, __c142, 2) as any as S.Schema<PartialUpdateAlertrulesRequest>,
+  output: __S(1841, __c115, 1) as any as S.Schema<AlertRulesResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3448,8 +3448,8 @@ export const partialUpdateScrapeConfigs: API.OperationMethod<
   PartialUpdateScrapeConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<PartialUpdateScrapeConfigsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ScrapeConfigsResponse>,
+  input: __S(2297, __c143, 9) as any as S.Schema<PartialUpdateScrapeConfigsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ScrapeConfigsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3463,8 +3463,8 @@ export const restoreBackup: API.OperationMethod<
   RestoreBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<RestoreBackupRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Message>,
+  input: __S(2304, __c144, 0) as any as S.Schema<RestoreBackupRequest>,
+  output: __S(2032, __c127, 0) as any as S.Schema<Message>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3478,8 +3478,8 @@ export const updateACL: API.OperationMethod<
   UpdateACLError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<UpdateACLRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Message>,
+  input: __S(2320, __c145, 0) as any as S.Schema<UpdateACLRequest>,
+  output: __S(2032, __c127, 0) as any as S.Schema<Message>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3493,8 +3493,8 @@ export const updateAlertConfigReceiver: API.OperationMethod<
   UpdateAlertConfigReceiverError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<UpdateAlertConfigReceiverRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AlertConfigReceiversResponse>,
+  input: __S(2336, __c146, 0) as any as S.Schema<UpdateAlertConfigReceiverRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<AlertConfigReceiversResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3508,8 +3508,8 @@ export const updateAlertConfigRoute: API.OperationMethod<
   UpdateAlertConfigRouteError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<UpdateAlertConfigRouteRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AlertConfigRouteResponse>,
+  input: __S(2352, __c147, 0) as any as S.Schema<UpdateAlertConfigRouteRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<AlertConfigRouteResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3523,8 +3523,8 @@ export const updateAlertConfigs: API.OperationMethod<
   UpdateAlertConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<UpdateAlertConfigsRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<UpdateAlertConfigsResponse>,
+  input: __S(2373, __c148, 5) as any as S.Schema<UpdateAlertConfigsRequest>,
+  output: __S(2374, __c148, 6) as any as S.Schema<UpdateAlertConfigsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3538,8 +3538,8 @@ export const updateAlertgroup: API.OperationMethod<
   UpdateAlertgroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<UpdateAlertgroupRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<AlertGroupsResponse>,
+  input: __S(2384, __c149, 0) as any as S.Schema<UpdateAlertgroupRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<AlertGroupsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3553,8 +3553,8 @@ export const updateAlertgroups: API.OperationMethod<
   UpdateAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<UpdateAlertgroupsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<AlertGroupsResponse>,
+  input: __S(2400, __c150, 0) as any as S.Schema<UpdateAlertgroupsRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<AlertGroupsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3568,8 +3568,8 @@ export const updateAlertRecord: API.OperationMethod<
   UpdateAlertRecordError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<UpdateAlertRecordRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<AlertRecordsResponse>,
+  input: __S(2416, __c151, 0) as any as S.Schema<UpdateAlertRecordRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<AlertRecordsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3583,8 +3583,8 @@ export const updateAlertrule: API.OperationMethod<
   UpdateAlertruleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<UpdateAlertruleRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<AlertRulesResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<UpdateAlertruleRequest>,
+  output: __S(1841, __c115, 1) as any as S.Schema<AlertRulesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3602,8 +3602,8 @@ export const updateCredentialsRemoteWriteConfig: API.OperationMethod<
   UpdateCredentialsRemoteWriteConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<UpdateCredentialsRemoteWriteConfigRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<CredentialsRemoteWriteConfig>,
+  input: __S(48, __c3, 0) as any as S.Schema<UpdateCredentialsRemoteWriteConfigRequest>,
+  output: __S(1504, __c94, 0) as any as S.Schema<CredentialsRemoteWriteConfig>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3617,8 +3617,8 @@ export const updateGrafanaConfigs: API.OperationMethod<
   UpdateGrafanaConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<UpdateGrafanaConfigsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Message>,
+  input: __S(65, __c4, 1) as any as S.Schema<UpdateGrafanaConfigsRequest>,
+  output: __S(2032, __c127, 0) as any as S.Schema<Message>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3632,8 +3632,8 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<InstanceResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<UpdateInstanceRequest>,
+  output: __S(2032, __c127, 0) as any as S.Schema<InstanceResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3647,8 +3647,8 @@ export const updateLogsAlertgroup: API.OperationMethod<
   UpdateLogsAlertgroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<UpdateLogsAlertgroupRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<AlertGroupsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<UpdateLogsAlertgroupRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<AlertGroupsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3662,8 +3662,8 @@ export const updateLogsConfigs: API.OperationMethod<
   UpdateLogsConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<UpdateLogsConfigsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Message>,
+  input: __S(112, __c7, 0) as any as S.Schema<UpdateLogsConfigsRequest>,
+  output: __S(2032, __c127, 0) as any as S.Schema<Message>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3677,8 +3677,8 @@ export const updateMetricsStorageRetention: API.OperationMethod<
   UpdateMetricsStorageRetentionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<UpdateMetricsStorageRetentionRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Message>,
+  input: __S(128, __c8, 0) as any as S.Schema<UpdateMetricsStorageRetentionRequest>,
+  output: __S(2032, __c127, 0) as any as S.Schema<Message>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3692,8 +3692,8 @@ export const updateScrapeConfig: API.OperationMethod<
   UpdateScrapeConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<UpdateScrapeConfigRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ScrapeConfigsResponse>,
+  input: __S(146, __c9, 2) as any as S.Schema<UpdateScrapeConfigRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ScrapeConfigsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3707,8 +3707,8 @@ export const updateTracesConfigs: API.OperationMethod<
   UpdateTracesConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<UpdateTracesConfigsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Message>,
+  input: __S(160, __c10, 0) as any as S.Schema<UpdateTracesConfigsRequest>,
+  output: __S(2032, __c127, 0) as any as S.Schema<Message>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3718,430 +3718,6 @@ export const updateTracesConfigs: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authIdentity: S.optional(S.String),
-          authPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          authUsername: S.optional(S.String),
-          from: S.optional(S.String),
-          sendResolved: S.optional(S.Boolean),
-          smarthost: S.optional(S.String),
-          to: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateAlertConfigReceiverRequestEmailConfigsItem",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          apiUrl: S.optional(S.String),
-          priority: S.optional(S.String),
-          sendResolved: S.optional(S.Boolean),
-          tags: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateAlertConfigReceiverRequestOpsgenieConfigsItem",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          googleChat: S.optional(S.Boolean),
-          msTeams: S.optional(S.Boolean),
-          sendResolved: S.optional(S.Boolean),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateAlertConfigReceiverRequestWebHookConfigsItem",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          emailConfigs: S.optional(__S(1, __c0, 1)),
-          name: S.String,
-          opsgenieConfigs: S.optional(__S(3, __c0, 3)),
-          webHookConfigs: S.optional(__S(5, __c0, 5)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/alertconfigs/receivers",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAlertConfigReceiverRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          authIdentity: S.optional(S.String),
-          authPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          authUsername: S.optional(S.String),
-          from: S.optional(S.String),
-          sendResolved: S.optional(S.Boolean),
-          smarthost: S.optional(S.String),
-          to: S.String,
-        }),
-      ).annotate({ identifier: "EmailConfig" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          apiUrl: S.optional(S.String),
-          priority: S.optional(S.String),
-          sendResolved: S.optional(S.Boolean),
-          tags: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OpsgenieConfig" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          googleChat: S.optional(S.Boolean),
-          msTeams: S.optional(S.Boolean),
-          sendResolved: S.optional(S.Boolean),
-          url: S.String,
-        }),
-      ).annotate({ identifier: "WebHook" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          emailConfigs: S.optional(__S(8, __c1, 0)),
-          name: S.String,
-          opsgenieConfigs: S.optional(__S(10, __c1, 2)),
-          webHookConfigs: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Receivers" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(14, __c1, 6),
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "AlertConfigReceiversResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.Boolean),
-          groupBy: S.optional(__S(16, __c2, 0)),
-          groupInterval: S.optional(S.String),
-          groupWait: S.optional(S.String),
-          match: S.optional(S.Unknown),
-          matchRe: S.optional(S.Unknown),
-          matchers: S.optional(__S(16, __c2, 0)),
-          receiver: S.optional(S.String),
-          repeatInterval: S.optional(S.String),
-          routes: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateAlertConfigRouteRequestRoutesItem",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          continue: S.optional(S.Boolean),
-          groupBy: S.optional(__S(16, __c2, 0)),
-          groupInterval: S.optional(S.String),
-          groupWait: S.optional(S.String),
-          match: S.optional(S.Unknown),
-          matchRe: S.optional(S.Unknown),
-          matchers: S.optional(__S(16, __c2, 0)),
-          receiver: S.String,
-          repeatInterval: S.optional(S.String),
-          routes: S.optional(__S(19, __c2, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/alertconfigs/routes",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAlertConfigRouteRequest",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.Boolean),
-          groupBy: S.optional(__S(16, __c2, 0)),
-          groupInterval: S.optional(S.String),
-          groupWait: S.optional(S.String),
-          match: S.optional(__S(21, __c2, 5)),
-          matchRe: S.optional(__S(21, __c2, 5)),
-          matchers: S.optional(__S(16, __c2, 0)),
-          receiver: S.String,
-          repeatInterval: S.optional(S.String),
-          routes: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "RouteSerializer" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.Boolean),
-          groupBy: S.optional(__S(16, __c2, 0)),
-          groupInterval: S.optional(S.String),
-          groupWait: S.optional(S.String),
-          match: S.optional(__S(21, __c2, 5)),
-          matchRe: S.optional(__S(21, __c2, 5)),
-          matchers: S.optional(__S(16, __c2, 0)),
-          receiver: S.String,
-          repeatInterval: S.optional(S.String),
-          routes: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "Route" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(26, __c3, 2),
-          message: S.String,
-        }),
-      ).annotate({ identifier: "AlertConfigRouteResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          alert: S.optional(S.String),
-          annotations: S.optional(S.Unknown),
-          expr: S.String,
-          for: S.optional(S.String),
-          labels: S.optional(S.Unknown),
-          record: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateAlertgroupsRequestRulesItem",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          interval: S.optional(S.String),
-          name: S.String,
-          rules: __S(29, __c3, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/alertgroups",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateAlertgroupsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          alert: S.optional(S.String),
-          annotations: S.optional(__S(21, __c2, 5)),
-          expr: S.String,
-          for: S.optional(S.String),
-          labels: S.optional(__S(21, __c2, 5)),
-          record: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AlertRuleRecord" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          interval: S.optional(S.String),
-          name: S.String,
-          rules: __S(32, __c4, 0),
-        }),
-      ).annotate({ identifier: "AlertGroup" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(34, __c4, 2),
-          message: S.String,
-        }),
-      ).annotate({ identifier: "AlertGroupsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          expr: S.String,
-          labels: S.optional(S.Unknown),
-          record: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/alertgroups/{groupName}/records",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateAlertRecordRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expr: S.String,
-          labels: S.optional(__S(21, __c2, 5)),
-          record: S.String,
-        }),
-      ).annotate({ identifier: "AlertRecord" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(38, __c4, 6),
-          message: S.String,
-        }),
-      ).annotate({ identifier: "AlertRecordsResponse" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          alert: S.String,
-          annotations: S.optional(S.Unknown),
-          expr: S.String,
-          for: S.optional(S.String),
-          labels: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/alertgroups/{groupName}/alertrules",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateAlertrulesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          alert: S.String,
-          annotations: S.optional(__S(21, __c2, 5)),
-          expr: S.String,
-          for: S.optional(S.String),
-          labels: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "AlertRule" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(42, __c5, 2),
-          message: S.String,
-        }),
-      ).annotate({ identifier: "AlertRulesResponse" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          backupTarget: S.optional(__S(44, __c5, 4).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/backups",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateBackupRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.String,
-        }),
-      ).annotate({ identifier: "Message" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          backupTarget: S.optional(__S(44, __c5, 4).pipe(T.Query())),
-          schedule: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/backup-schedules",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBackupScheduleRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.String,
-          schedule: S.String,
-        }),
-      ).annotate({
-        identifier: "BackupSchedulePostResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4156,24 +3732,278 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateCertCheckRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           source: S.String,
         }),
       ).annotate({ identifier: "CertCheckChildResponse" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          certCheck: S.optional(__S(50, __c6, 2)),
-          certChecks: __S(51, __c6, 3),
+          certCheck: S.optional(__S(16, __c1, 0)),
+          certChecks: __S(17, __c1, 1),
           message: S.String,
         }),
       ).annotate({ identifier: "CertCheckResponse" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          alertName: S.String.pipe(T.Label()),
+          annotations: S.optional(S.Unknown),
+          expr: S.String,
+          for: S.optional(S.String),
+          labels: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/alertgroups/{groupName}/alertrules/{alertName}",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateAlertruleRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+          maxLimit: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/credentials/{username}/remote-write-limits",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCredentialsRemoteWriteConfigRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowAssignGrafanaAdmin: S.optional(S.Boolean),
+          apiUrl: S.String,
+          authUrl: S.String,
+          enabled: S.Boolean,
+          name: S.optional(S.String),
+          oauthClientId: S.String,
+          oauthClientSecret: S.String,
+          roleAttributePath: S.String,
+          roleAttributeStrict: S.optional(S.Boolean),
+          scopes: S.optional(S.String),
+          tokenUrl: S.String,
+          usePkce: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "UpdateGrafanaConfigsRequestGenericOauth",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          genericOauth: S.optional(__S(64, __c4, 0)),
+          publicReadAccess: S.optional(S.Boolean),
+          useStackitSso: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/grafana-configs",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateGrafanaConfigsRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          grafanaAdminEnabled: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          parameter: S.optional(S.Unknown),
+          planId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateInstanceRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          interval: S.optional(S.String),
+          rules: __S(1361, __c85, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/logs-alertgroups/{groupName}",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateLogsAlertgroupRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          retention: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/logs-configs",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateLogsConfigsRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          metricsRetentionTime1h: S.String,
+          metricsRetentionTime5m: S.String,
+          metricsRetentionTimeRaw: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/metrics-storage-retentions",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateMetricsStorageRetentionRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          modulus: S.optional(S.Number),
+          regex: S.optional(S.String),
+          replacement: S.optional(S.String),
+          separator: S.optional(S.String),
+          sourceLabels: S.optional(__S(674, __c42, 2)),
+          targetLabel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateScrapeConfigRequestMetricsRelabelConfigsItem",
+      });
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          basicAuth: S.optional(__S(672, __c42, 0)),
+          bearerToken: S.optional(S.String),
+          honorLabels: S.optional(S.Boolean),
+          honorTimeStamps: S.optional(S.Boolean),
+          metricsPath: S.String,
+          metricsRelabelConfigs: S.optional(__S(145, __c9, 1)),
+          params: S.optional(S.Unknown),
+          sampleLimit: S.optional(S.Number),
+          scheme: S.String,
+          scrapeInterval: S.String,
+          scrapeTimeout: S.String,
+          staticConfigs: __S(593, __c37, 1),
+          tlsConfig: S.optional(__S(673, __c42, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/scrapeconfigs/{jobName}",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateScrapeConfigRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          retention: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/traces-configs",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateTracesConfigsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4188,7 +4018,7 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateCredentialsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -4196,10 +4026,10 @@ function __c6(j: number): any {
           username: S.String,
         }),
       ).annotate({ identifier: "Credentials" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          credentials: __S(54, __c6, 6),
+          credentials: __S(177, __c11, 1),
           message: S.String,
         }),
       ).annotate({
@@ -4207,7 +4037,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4228,7 +4058,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateElasticsearchCheckRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4239,19 +4073,27 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ElasticsearchCheckChildResponse",
       });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
+    case 1:
+      return S.Array(__S(208, __c13, 0));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          elasticsearchCheck: S.optional(__S(57, __c7, 1)),
-          elasticsearchChecks: __S(58, __c7, 2),
+          elasticsearchCheck: S.optional(__S(208, __c13, 0)),
+          elasticsearchChecks: __S(209, __c13, 1),
           message: S.String,
         }),
       ).annotate({
         identifier: "ElasticsearchCheckResponse",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4266,26 +4108,34 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateHttpCheckRequest" });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           url: S.String,
         }),
       ).annotate({ identifier: "HttpCheckChildResponse" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(256, __c16, 0));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          httpCheck: S.optional(__S(61, __c7, 5)),
-          httpChecks: __S(62, __c7, 6),
+          httpCheck: S.optional(__S(256, __c16, 0)),
+          httpChecks: __S(257, __c16, 1),
           message: S.String,
         }),
       ).annotate({ identifier: "HttpCheckResponse" });
   }
 }
-function __c8(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4312,14 +4162,18 @@ function __c8(j: number): any {
           message: S.String,
         }),
       ).annotate({ identifier: "CreateInstanceResponse" });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           interval: S.optional(S.String),
           name: S.String,
-          rules: __S(29, __c3, 5),
+          rules: __S(1361, __c85, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4331,7 +4185,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateLogsAlertgroupsRequest",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4348,7 +4206,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateMongodbCheckRequest",
       });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4357,17 +4219,25 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "MongodbCheckChildResponse",
       });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          mongodbCheck: S.optional(__S(68, __c8, 4)),
-          mongodbChecks: __S(69, __c8, 5),
+          mongodbCheck: S.optional(__S(336, __c21, 0)),
+          mongodbChecks: __S(337, __c21, 1),
         }),
       ).annotate({ identifier: "MongodbCheckResponse" });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4384,17 +4254,21 @@ function __c8(j: number): any {
       ).annotate({ identifier: "CreateMysqlCheckRequest" });
   }
 }
-function __c9(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          mysqlCheck: S.optional(__S(68, __c8, 4)),
-          mysqlChecks: __S(69, __c8, 5),
+          mysqlCheck: S.optional(__S(336, __c21, 0)),
+          mysqlChecks: __S(337, __c21, 1),
         }),
       ).annotate({ identifier: "MysqlCheckResponse" });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4411,7 +4285,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateNetworkCheckRequest",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           address: S.String,
@@ -4420,17 +4298,25 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "NetworkCheckChildResponse",
       });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(416, __c26, 0));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          networkCheck: S.optional(__S(74, __c9, 2)),
-          networkChecks: __S(75, __c9, 3),
+          networkCheck: S.optional(__S(416, __c26, 0)),
+          networkChecks: __S(417, __c26, 1),
         }),
       ).annotate({ identifier: "NetworkCheckResponse" });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4445,15 +4331,23 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreatePingCheckRequest" });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          pingCheck: S.optional(__S(61, __c7, 5)),
-          pingChecks: __S(62, __c7, 6),
+          pingCheck: S.optional(__S(256, __c16, 0)),
+          pingChecks: __S(257, __c16, 1),
         }),
       ).annotate({ identifier: "PingCheckResponse" });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4472,17 +4366,21 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          postgresqlCheck: S.optional(__S(74, __c9, 2)),
-          postgresqlChecks: __S(75, __c9, 3),
+          postgresqlCheck: S.optional(__S(416, __c26, 0)),
+          postgresqlChecks: __S(417, __c26, 1),
         }),
       ).annotate({ identifier: "PostgresqlCheckResponse" });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4501,7 +4399,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "CreateRabbitmqCheckRequest",
       });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4512,17 +4414,21 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "RabbitMQCheckChildResponse",
       });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(528, __c33, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          rabbitmqCheck: S.optional(__S(82, __c10, 2)),
-          rabbitmqChecks: __S(83, __c10, 3),
+          rabbitmqCheck: S.optional(__S(528, __c33, 0)),
+          rabbitmqChecks: __S(529, __c33, 1),
         }),
       ).annotate({ identifier: "RabbitmqCheckResponse" });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4539,64 +4445,37 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateRedisCheckRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.String,
-          redisCheck: S.optional(__S(57, __c7, 1)),
-          redisChecks: __S(58, __c7, 2),
-        }),
-      ).annotate({ identifier: "RedisCheckResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateScrapeConfigRequestBasicAuth",
-      });
   }
 }
-function __c11(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          insecureSkipVerify: S.optional(S.Boolean),
+          message: S.String,
+          redisCheck: S.optional(__S(208, __c13, 0)),
+          redisChecks: __S(209, __c13, 1),
         }),
-      ).annotate({
-        identifier: "CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig",
-      });
-    case 1:
+      ).annotate({ identifier: "RedisCheckResponse" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          clientId: S.String,
-          clientSecret: S.String.pipe(T.SensitiveValue({})),
-          scopes: S.optional(__S(16, __c2, 0)),
-          tlsConfig: S.optional(__S(88, __c11, 0)),
-          tokenUrl: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateScrapeConfigRequestHttpSdConfigsItemOauth2",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          basicAuth: S.optional(__S(87, __c10, 7)),
-          oauth2: S.optional(__S(89, __c11, 1)),
+          basicAuth: S.optional(__S(672, __c42, 0)),
+          oauth2: S.optional(__S(656, __c41, 0)),
           refreshInterval: S.optional(S.String),
-          tlsConfig: S.optional(__S(88, __c11, 0)),
+          tlsConfig: S.optional(__S(673, __c42, 1)),
           url: S.String,
         }),
       ).annotate({
         identifier: "CreateScrapeConfigRequestHttpSdConfigsItem",
       });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 1:
+      return S.Array(__S(576, __c36, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -4604,50 +4483,35 @@ function __c11(j: number): any {
           regex: S.optional(S.String),
           replacement: S.optional(S.String),
           separator: S.optional(S.String),
-          sourceLabels: S.optional(__S(92, __c11, 4)),
+          sourceLabels: S.optional(__S(674, __c42, 2)),
           targetLabel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateScrapeConfigRequestMetricsRelabelConfigsItem",
       });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(S.Unknown),
-          targets: __S(16, __c2, 0),
-        }),
-      ).annotate({
-        identifier: "CreateScrapeConfigRequestStaticConfigsItem",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(578, __c36, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          basicAuth: S.optional(__S(87, __c10, 7)),
+          basicAuth: S.optional(__S(672, __c42, 0)),
           bearerToken: S.optional(S.String),
           honorLabels: S.optional(S.Boolean),
           honorTimeStamps: S.optional(S.Boolean),
-          httpSdConfigs: S.optional(__S(91, __c11, 3)),
+          httpSdConfigs: S.optional(__S(577, __c36, 1)),
           jobName: S.String,
           metricsPath: S.optional(S.String),
-          metricsRelabelConfigs: S.optional(__S(94, __c11, 6)),
-          oauth2: S.optional(__S(89, __c11, 1)),
+          metricsRelabelConfigs: S.optional(__S(579, __c36, 3)),
+          oauth2: S.optional(__S(656, __c41, 0)),
           params: S.optional(S.Unknown),
           sampleLimit: S.optional(S.Number),
           scheme: S.String,
           scrapeInterval: S.String,
           scrapeTimeout: S.String,
-          staticConfigs: __S(96, __c12, 0),
-          tlsConfig: S.optional(__S(88, __c11, 0)),
+          staticConfigs: __S(593, __c37, 1),
+          tlsConfig: S.optional(__S(673, __c42, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4659,42 +4523,61 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateScrapeConfigRequest",
       });
-    case 2:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(S.Unknown),
+          targets: __S(1040, __c65, 0),
+        }),
+      ).annotate({
+        identifier: "CreateScrapeConfigRequestStaticConfigsItem",
+      });
+    case 1:
+      return S.Array(__S(592, __c37, 0));
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           password: S.String.pipe(T.SensitiveValue({})),
           username: S.String,
         }),
       ).annotate({ identifier: "BasicAuth" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           insecureSkipVerify: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TLSConfig" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String,
           clientSecret: S.String.pipe(T.SensitiveValue({})),
-          scopes: S.optional(__S(16, __c2, 0)),
-          tlsConfig: S.optional(__S(99, __c12, 3)),
+          scopes: S.optional(__S(1040, __c65, 0)),
+          tlsConfig: S.optional(__S(609, __c38, 1)),
           tokenUrl: S.String,
         }),
       ).annotate({ identifier: "OAuth2" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          basicAuth: S.optional(__S(98, __c12, 2)),
-          oauth2: S.optional(__S(100, __c12, 4)),
+          basicAuth: S.optional(__S(608, __c38, 0)),
+          oauth2: S.optional(__S(610, __c38, 2)),
           refreshInterval: S.optional(S.String),
-          tlsConfig: S.optional(__S(99, __c12, 3)),
+          tlsConfig: S.optional(__S(609, __c38, 1)),
           url: S.String,
         }),
       ).annotate({ identifier: "HTTPServiceSD" });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(611, __c38, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -4702,58 +4585,105 @@ function __c12(j: number): any {
           regex: S.optional(S.String),
           replacement: S.optional(S.String),
           separator: S.optional(S.String),
-          sourceLabels: __S(16, __c2, 0),
+          sourceLabels: __S(1040, __c65, 0),
           targetLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricsRelabelConfig" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.Record(S.String, __S(16, __c2, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(613, __c38, 5));
+    case 7:
+      return S.Record(S.String, __S(1040, __c65, 0));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(21, __c2, 5)),
-          targets: __S(16, __c2, 0),
+          labels: S.optional(__S(1104, __c69, 0)),
+          targets: __S(1040, __c65, 0),
         }),
       ).annotate({ identifier: "StaticConfigs" });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(616, __c38, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          basicAuth: S.optional(__S(98, __c12, 2)),
+          basicAuth: S.optional(__S(608, __c38, 0)),
           bearerToken: S.optional(S.String),
           honorLabels: S.optional(S.Boolean),
           honorTimeStamps: S.optional(S.Boolean),
-          httpSdConfigs: S.optional(__S(102, __c12, 6)),
+          httpSdConfigs: S.optional(__S(612, __c38, 4)),
           jobName: S.String,
           metricsPath: S.optional(S.String),
-          metricsRelabelConfigs: S.optional(__S(104, __c13, 0)),
-          oauth2: S.optional(__S(100, __c12, 4)),
-          params: S.optional(__S(105, __c13, 1)),
+          metricsRelabelConfigs: S.optional(__S(614, __c38, 6)),
+          oauth2: S.optional(__S(610, __c38, 2)),
+          params: S.optional(__S(615, __c38, 7)),
           sampleLimit: S.optional(S.Number),
           scheme: S.optional(S.String),
           scrapeInterval: S.String,
           scrapeTimeout: S.String,
-          staticConfigs: __S(107, __c13, 3),
-          tlsConfig: S.optional(__S(99, __c12, 3)),
+          staticConfigs: __S(617, __c38, 9),
+          tlsConfig: S.optional(__S(609, __c38, 1)),
         }),
       ).annotate({ identifier: "Job" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(618, __c38, 10));
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(109, __c13, 5),
+          data: __S(624, __c39, 0),
           message: S.String,
         }),
       ).annotate({ identifier: "ScrapeConfigsResponse" });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String,
+          clientSecret: S.String.pipe(T.SensitiveValue({})),
+          scopes: S.optional(__S(1040, __c65, 0)),
+          tlsConfig: S.optional(__S(673, __c42, 1)),
+          tokenUrl: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateScrapeConfigRequestHttpSdConfigsItemOauth2",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateScrapeConfigRequestBasicAuth",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          insecureSkipVerify: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig",
+      });
+    case 2:
+      return S.Array(S.String);
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4772,7 +4702,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4791,7 +4721,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteAlertConfigRouteRequest",
       });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4806,12 +4740,16 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAlertgroupRequest" });
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          groupName: __S(16, __c2, 0).pipe(T.Query()),
+          groupName: __S(1040, __c65, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4821,7 +4759,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAlertgroupsRequest" });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4837,13 +4779,17 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAlertRecordRequest" });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
-          alertRecord: __S(16, __c2, 0).pipe(T.Query()),
+          alertRecord: __S(1040, __c65, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4855,7 +4801,151 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteAlertRecordsRequest",
       });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          emailConfigs: S.optional(__S(849, __c53, 1)),
+          name: S.String,
+          opsgenieConfigs: S.optional(__S(851, __c53, 3)),
+          webHookConfigs: S.optional(__S(853, __c53, 5)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/alertconfigs/receivers",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAlertConfigReceiverRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authIdentity: S.optional(S.String),
+          authPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          authUsername: S.optional(S.String),
+          from: S.optional(S.String),
+          sendResolved: S.optional(S.Boolean),
+          smarthost: S.optional(S.String),
+          to: S.String,
+        }),
+      ).annotate({ identifier: "EmailConfig" });
+    case 1:
+      return S.Array(__S(800, __c50, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          apiUrl: S.optional(S.String),
+          priority: S.optional(S.String),
+          sendResolved: S.optional(S.Boolean),
+          tags: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OpsgenieConfig" });
+    case 3:
+      return S.Array(__S(802, __c50, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          googleChat: S.optional(S.Boolean),
+          msTeams: S.optional(S.Boolean),
+          sendResolved: S.optional(S.Boolean),
+          url: S.String,
+        }),
+      ).annotate({ identifier: "WebHook" });
     case 5:
+      return S.Array(__S(804, __c50, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          emailConfigs: S.optional(__S(801, __c50, 1)),
+          name: S.String,
+          opsgenieConfigs: S.optional(__S(803, __c50, 3)),
+          webHookConfigs: S.optional(__S(805, __c50, 5)),
+        }),
+      ).annotate({ identifier: "Receivers" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(806, __c50, 6));
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(816, __c51, 0),
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "AlertConfigReceiversResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authIdentity: S.optional(S.String),
+          authPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          authUsername: S.optional(S.String),
+          from: S.optional(S.String),
+          sendResolved: S.optional(S.Boolean),
+          smarthost: S.optional(S.String),
+          to: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateAlertConfigReceiverRequestEmailConfigsItem",
+      });
+    case 1:
+      return S.Array(__S(848, __c53, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          apiUrl: S.optional(S.String),
+          priority: S.optional(S.String),
+          sendResolved: S.optional(S.Boolean),
+          tags: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateAlertConfigReceiverRequestOpsgenieConfigsItem",
+      });
+    case 3:
+      return S.Array(__S(850, __c53, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          googleChat: S.optional(S.Boolean),
+          msTeams: S.optional(S.Boolean),
+          sendResolved: S.optional(S.Boolean),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateAlertConfigReceiverRequestWebHookConfigsItem",
+      });
+    case 5:
+      return S.Array(__S(852, __c53, 4));
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4871,13 +4961,17 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAlertruleRequest" });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
-          alertName: __S(16, __c2, 0).pipe(T.Query()),
+          alertName: __S(1040, __c65, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4887,7 +4981,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAlertrulesRequest" });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4904,7 +5002,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "DeleteCertCheckRequest" });
   }
 }
-function __c15(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4921,7 +5019,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteCredentialsRequest" });
-    case 1:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4938,7 +5040,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteCredentialsRemoteWriteConfigRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxLimit: S.Number,
@@ -4947,7 +5049,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "CredentialsRemoteWriteDeleteResponse",
       });
-    case 3:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4964,7 +5070,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteElasticsearchCheckRequest",
       });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4979,7 +5089,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteHttpCheckRequest" });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -4993,7 +5107,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteInstanceRequest" });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5010,7 +5128,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteLogsAlertgroupRequest",
       });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5029,7 +5151,129 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          continue: S.optional(S.Boolean),
+          groupBy: S.optional(__S(1040, __c65, 0)),
+          groupInterval: S.optional(S.String),
+          groupWait: S.optional(S.String),
+          match: S.optional(S.Unknown),
+          matchRe: S.optional(S.Unknown),
+          matchers: S.optional(__S(1040, __c65, 0)),
+          receiver: S.String,
+          repeatInterval: S.optional(S.String),
+          routes: S.optional(__S(1122, __c70, 2)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/alertconfigs/routes",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAlertConfigRouteRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1056, __c66, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.Boolean),
+          groupBy: S.optional(__S(1040, __c65, 0)),
+          groupInterval: S.optional(S.String),
+          groupWait: S.optional(S.String),
+          match: S.optional(__S(1104, __c69, 0)),
+          matchRe: S.optional(__S(1104, __c69, 0)),
+          matchers: S.optional(__S(1040, __c65, 0)),
+          receiver: S.String,
+          repeatInterval: S.optional(S.String),
+          routes: S.optional(__S(1072, __c67, 0)),
+        }),
+      ).annotate({ identifier: "RouteSerializer" });
+    case 2:
+      return S.Array(__S(1073, __c67, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.Boolean),
+          groupBy: S.optional(__S(1040, __c65, 0)),
+          groupInterval: S.optional(S.String),
+          groupWait: S.optional(S.String),
+          match: S.optional(__S(1104, __c69, 0)),
+          matchRe: S.optional(__S(1104, __c69, 0)),
+          matchers: S.optional(__S(1040, __c65, 0)),
+          receiver: S.String,
+          repeatInterval: S.optional(S.String),
+          routes: S.optional(__S(1074, __c67, 2)),
+        }),
+      ).annotate({ identifier: "Route" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1075, __c67, 3),
+          message: S.String,
+        }),
+      ).annotate({ identifier: "AlertConfigRouteResponse" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.Boolean),
+          groupBy: S.optional(__S(1040, __c65, 0)),
+          groupInterval: S.optional(S.String),
+          groupWait: S.optional(S.String),
+          match: S.optional(S.Unknown),
+          matchRe: S.optional(S.Unknown),
+          matchers: S.optional(__S(1040, __c65, 0)),
+          receiver: S.optional(S.String),
+          repeatInterval: S.optional(S.String),
+          routes: S.optional(__S(1120, __c70, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateAlertConfigRouteRequestRoutesItem",
+      });
+    case 2:
+      return S.Array(__S(1121, __c70, 1));
+  }
+}
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5046,7 +5290,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteMysqlCheckRequest" });
-    case 1:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5063,7 +5311,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkCheckRequest",
       });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5078,7 +5330,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePingCheckRequest" });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5095,7 +5351,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeletePostgresqlCheckRequest",
       });
-    case 4:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5112,7 +5372,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeleteRabbitmqCheckRequest",
       });
-    case 5:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5127,7 +5391,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteRedisCheckRequest" });
-    case 6:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5144,10 +5412,14 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeleteScrapeConfigRequest",
       });
-    case 7:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(109, __c13, 5),
+          data: __S(624, __c39, 0),
           message: S.String,
         }),
       ).annotate({
@@ -5155,14 +5427,14 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          jobName: __S(16, __c2, 0).pipe(T.Query()),
+          jobName: __S(1040, __c65, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -5174,7 +5446,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeleteScrapeConfigsRequest",
       });
-    case 1:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5191,14 +5467,18 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetAlertConfigReceiverRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(13, __c1, 5),
+          data: __S(806, __c50, 6),
           message: S.String,
         }),
       ).annotate({ identifier: "Receiver" });
-    case 3:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5215,7 +5495,89 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetAlertConfigRouteRequest",
       });
-    case 4:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          interval: S.optional(S.String),
+          name: S.String,
+          rules: __S(1361, __c85, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/alertgroups",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateAlertgroupsRequest" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alert: S.optional(S.String),
+          annotations: S.optional(__S(1104, __c69, 0)),
+          expr: S.String,
+          for: S.optional(S.String),
+          labels: S.optional(__S(1104, __c69, 0)),
+          record: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AlertRuleRecord" });
+    case 1:
+      return S.Array(__S(1328, __c83, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          interval: S.optional(S.String),
+          name: S.String,
+          rules: __S(1329, __c83, 1),
+        }),
+      ).annotate({ identifier: "AlertGroup" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1330, __c83, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1344, __c84, 0),
+          message: S.String,
+        }),
+      ).annotate({ identifier: "AlertGroupsResponse" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alert: S.optional(S.String),
+          annotations: S.optional(S.Unknown),
+          expr: S.String,
+          for: S.optional(S.String),
+          labels: S.optional(S.Unknown),
+          record: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateAlertgroupsRequestRulesItem",
+      });
+    case 1:
+      return S.Array(__S(1360, __c85, 0));
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5229,7 +5591,18 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAlertConfigsRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1395, __c87, 3),
+          message: S.String,
+        }),
+      ).annotate({ identifier: "GetAlertConfigsResponse" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           opsgenieApiKey: S.optional(S.String),
@@ -5242,41 +5615,34 @@ function __c17(j: number): any {
           smtpSmarthost: S.optional(S.String),
         }),
       ).annotate({ identifier: "Global" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          equal: S.optional(__S(16, __c2, 0)),
-          sourceMatch: S.optional(__S(21, __c2, 5)),
-          sourceMatchRe: S.optional(__S(21, __c2, 5)),
-          sourceMatchers: S.optional(__S(16, __c2, 0)),
-          targetMatch: S.optional(__S(21, __c2, 5)),
-          targetMatchRe: S.optional(__S(21, __c2, 5)),
-          targetMatchers: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "InhibitRules" });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          global: S.optional(__S(141, __c17, 5)),
-          inhibitRules: S.optional(__S(143, __c17, 7)),
-          receivers: __S(14, __c1, 6),
-          route: __S(26, __c3, 2),
-        }),
-      ).annotate({ identifier: "Alert" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(144, __c18, 0),
-          message: S.String,
+          equal: S.optional(__S(1040, __c65, 0)),
+          sourceMatch: S.optional(__S(1104, __c69, 0)),
+          sourceMatchRe: S.optional(__S(1104, __c69, 0)),
+          sourceMatchers: S.optional(__S(1040, __c65, 0)),
+          targetMatch: S.optional(__S(1104, __c69, 0)),
+          targetMatchRe: S.optional(__S(1104, __c69, 0)),
+          targetMatchers: S.optional(__S(1040, __c65, 0)),
         }),
-      ).annotate({ identifier: "GetAlertConfigsResponse" });
+      ).annotate({ identifier: "InhibitRules" });
     case 2:
+      return S.Array(__S(1393, __c87, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          global: S.optional(__S(1392, __c87, 0)),
+          inhibitRules: S.optional(__S(1394, __c87, 2)),
+          receivers: __S(816, __c51, 0),
+          route: __S(1075, __c67, 3),
+        }),
+      ).annotate({ identifier: "Alert" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5291,14 +5657,22 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAlertgroupRequest" });
-    case 3:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(33, __c4, 1),
+          data: __S(1330, __c83, 2),
           message: S.String,
         }),
       ).annotate({ identifier: "AlertGroupResponse" });
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5314,14 +5688,18 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAlertRecordRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(37, __c4, 5),
+          data: __S(1616, __c101, 0),
           message: S.String,
         }),
       ).annotate({ identifier: "AlertRecordResponse" });
-    case 6:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5337,16 +5715,16 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAlertruleRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(41, __c5, 1),
+          data: __S(1824, __c114, 0),
           message: S.String,
         }),
       ).annotate({ identifier: "AlertRuleResponse" });
   }
 }
-function __c19(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5366,13 +5744,17 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          credentialsInfo: S.optional(__S(22, __c2, 6)),
+          credentialsInfo: S.optional(__S(1056, __c66, 0)),
           id: S.String,
           message: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "GetCredentialsResponse" });
-    case 2:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5389,7 +5771,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetCredentialsRemoteWriteConfigRequest",
       });
-    case 3:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           credentialsMaxLimit: S.Number,
@@ -5399,7 +5785,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CredentialsRemoteWriteConfig",
       });
-    case 4:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5413,7 +5803,7 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGrafanaConfigsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           allowAssignGrafanaAdmin: S.optional(S.Boolean),
@@ -5430,16 +5820,20 @@ function __c19(j: number): any {
           usePkce: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GrafanaOauth" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          genericOauth: S.optional(__S(157, __c19, 5)),
+          genericOauth: S.optional(__S(1521, __c95, 1)),
           message: S.String,
           publicReadAccess: S.optional(S.Boolean),
           useStackitSso: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GrafanaConfigs" });
-    case 7:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5453,11 +5847,7 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetInstanceRequest" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           alertMatchers: S.Number,
@@ -5481,7 +5871,7 @@ function __c20(j: number): any {
           tracesStorage: S.Number,
         }),
       ).annotate({ identifier: "PlanModel" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           alertingUrl: S.String,
@@ -5509,23 +5899,23 @@ function __c20(j: number): any {
           otlpHttpLogsUrl: S.String,
           otlpHttpTracesUrl: S.String,
           otlpTracesUrl: S.String,
-          plan: __S(160, __c20, 0),
+          plan: __S(1537, __c96, 1),
           pushMetricsUrl: S.String,
           targetsUrl: S.String,
           zipkinSpansUrl: S.String,
         }),
       ).annotate({ identifier: "InstanceSensitiveData" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           dashboardUrl: S.String,
           error: S.optional(S.NullOr(S.String)),
           id: S.String,
-          instance: __S(161, __c20, 1),
+          instance: __S(1538, __c96, 2),
           isUpdatable: S.optional(S.Boolean),
           message: S.String,
           name: S.optional(S.String),
-          parameters: S.optional(__S(22, __c2, 6)),
+          parameters: S.optional(__S(1056, __c66, 0)),
           planId: S.String,
           planName: S.String,
           planSchema: S.optional(S.String),
@@ -5533,7 +5923,11 @@ function __c20(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "GetInstanceResponse" });
-    case 3:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5548,7 +5942,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLogsAlertgroupRequest" });
-    case 4:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5562,20 +5960,75 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLogsConfigsRequest" });
-    case 5:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           retention: S.String,
         }),
       ).annotate({ identifier: "LogsConfig" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          config: __S(165, __c20, 5),
+          config: __S(1584, __c99, 0),
           message: S.String,
         }),
       ).annotate({ identifier: "LogsConfigResponse" });
-    case 7:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          expr: S.String,
+          labels: S.optional(S.Unknown),
+          record: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/alertgroups/{groupName}/records",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateAlertRecordRequest" });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expr: S.String,
+          labels: S.optional(__S(1104, __c69, 0)),
+          record: S.String,
+        }),
+      ).annotate({ identifier: "AlertRecord" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1616, __c101, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1632, __c102, 0),
+          message: S.String,
+        }),
+      ).annotate({ identifier: "AlertRecordsResponse" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5591,11 +6044,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetMetricsStorageRetentionRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
@@ -5606,7 +6055,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetMetricsStorageRetentionResponse",
       });
-    case 1:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5621,14 +6074,18 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetScrapeConfigRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(108, __c13, 4),
+          data: __S(618, __c38, 10),
           message: S.String,
         }),
       ).annotate({ identifier: "GetScrapeConfigResponse" });
-    case 3:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5642,7 +6099,11 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTracesConfigsRequest" });
-    case 4:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5656,14 +6117,18 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListACLRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          acl: __S(16, __c2, 0),
+          acl: __S(1040, __c65, 0),
           message: S.String,
         }),
       ).annotate({ identifier: "ListACLResponse" });
-    case 6:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5679,7 +6144,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListAlertConfigReceiversRequest",
       });
-    case 7:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5697,7 +6166,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5713,7 +6182,11 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAlertgroupsRequest" });
-    case 1:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5728,7 +6201,11 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAlertRecordsRequest" });
-    case 2:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5743,7 +6220,11 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAlertrulesRequest" });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5759,7 +6240,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListBackupRetentionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           alertConfigBackupRetention: S.String,
@@ -5769,12 +6250,67 @@ function __c22(j: number): any {
           scrapeConfigBackupRetention: S.String,
         }),
       ).annotate({ identifier: "BackupRetentionResponse" });
-    case 5:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          backupTarget: S.optional(__S(44, __c5, 4).pipe(T.Query())),
+          groupName: S.String.pipe(T.Label()),
+          alert: S.String,
+          annotations: S.optional(S.Unknown),
+          expr: S.String,
+          for: S.optional(S.String),
+          labels: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/alertgroups/{groupName}/alertrules",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateAlertrulesRequest" });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alert: S.String,
+          annotations: S.optional(__S(1104, __c69, 0)),
+          expr: S.String,
+          for: S.optional(S.String),
+          labels: S.optional(__S(1104, __c69, 0)),
+        }),
+      ).annotate({ identifier: "AlertRule" });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1824, __c114, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1840, __c115, 0),
+          message: S.String,
+        }),
+      ).annotate({ identifier: "AlertRulesResponse" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          backupTarget: S.optional(__S(2048, __c128, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5784,22 +6320,26 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBackupsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          alertConfigBackups: __S(16, __c2, 0),
-          alertRulesBackups: __S(16, __c2, 0),
-          grafanaBackups: __S(16, __c2, 0),
+          alertConfigBackups: __S(1040, __c65, 0),
+          alertRulesBackups: __S(1040, __c65, 0),
+          grafanaBackups: __S(1040, __c65, 0),
           message: S.String,
-          scrapeConfigBackups: __S(16, __c2, 0),
+          scrapeConfigBackups: __S(1040, __c65, 0),
         }),
       ).annotate({ identifier: "BackupResponse" });
-    case 7:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          backupTarget: S.optional(__S(44, __c5, 4).pipe(T.Query())),
+          backupTarget: S.optional(__S(2048, __c128, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5811,30 +6351,30 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListBackupSchedulesRequest",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           schedule: S.String,
           scheduleId: S.String,
         }),
       ).annotate({ identifier: "BackupSchedule" });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
     case 2:
+      return S.Array(__S(1873, __c117, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          alertConfigBackupSchedules: S.optional(__S(185, __c23, 1)),
-          alertRulesBackupSchedules: S.optional(__S(185, __c23, 1)),
-          grafanaBackupSchedules: S.optional(__S(185, __c23, 1)),
+          alertConfigBackupSchedules: S.optional(__S(1874, __c117, 2)),
+          alertRulesBackupSchedules: S.optional(__S(1874, __c117, 2)),
+          grafanaBackupSchedules: S.optional(__S(1874, __c117, 2)),
           message: S.String,
-          scrapeConfigBackupSchedules: S.optional(__S(185, __c23, 1)),
+          scrapeConfigBackupSchedules: S.optional(__S(1874, __c117, 2)),
         }),
       ).annotate({ identifier: "BackupScheduleResponse" });
-    case 3:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5848,7 +6388,11 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCertChecksRequest" });
-    case 4:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5862,27 +6406,27 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCredentialsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          credentialsInfo: S.optional(__S(22, __c2, 6)),
+          credentialsInfo: S.optional(__S(1056, __c66, 0)),
           description: S.optional(S.String),
           id: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "ServiceKeysList" });
-    case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1905, __c119, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          credentials: __S(190, __c23, 6),
+          credentials: __S(1906, __c119, 2),
           message: S.String,
         }),
       ).annotate({ identifier: "ListCredentialsResponse" });
   }
 }
-function __c24(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5900,7 +6444,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListElasticsearchChecksRequest",
       });
-    case 1:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5914,7 +6462,11 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListHttpChecksRequest" });
-    case 2:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5927,7 +6479,7 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListInstancesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.NullOr(S.String)),
@@ -5939,16 +6491,20 @@ function __c24(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "ProjectInstanceFull" });
-    case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1953, __c122, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          instances: __S(196, __c24, 4),
+          instances: __S(1954, __c122, 2),
           message: S.String,
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
-    case 6:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5964,7 +6520,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListLogsAlertgroupsRequest",
       });
-    case 7:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -5980,7 +6540,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "ListMongodbChecksRequest" });
   }
 }
-function __c25(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5996,7 +6556,46 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListMysqlChecksRequest" });
-    case 1:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          backupTarget: S.optional(__S(2048, __c128, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/backups",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateBackupRequest" });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.String,
+        }),
+      ).annotate({ identifier: "Message" });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -6010,7 +6609,11 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListNetworkChecksRequest" });
-    case 2:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -6023,7 +6626,22 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOfferingsRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+          documentationUrl: S.String,
+          imageUrl: S.String,
+          name: S.String,
+          plans: __S(2097, __c131, 1),
+          tags: __S(1040, __c65, 0),
+        }),
+      ).annotate({ identifier: "Offerings" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alertMatchers: S.Number,
@@ -6050,20 +6668,13 @@ function __c25(j: number): any {
           tracesStorage: S.Number,
         }),
       ).annotate({ identifier: "Plan" });
-    case 4:
-      return S.Array(__S(203, __c25, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-          documentationUrl: S.String,
-          imageUrl: S.String,
-          name: S.String,
-          plans: __S(204, __c25, 4),
-          tags: __S(16, __c2, 0),
-        }),
-      ).annotate({ identifier: "Offerings" });
-    case 6:
+    case 1:
+      return S.Array(__S(2096, __c131, 0));
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -6077,7 +6688,11 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPingChecksRequest" });
-    case 7:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -6090,18 +6705,18 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPlansRequest" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          plans: __S(204, __c25, 4),
+          plans: __S(2097, __c131, 1),
         }),
       ).annotate({ identifier: "PlansResponse" });
-    case 1:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -6117,7 +6732,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListPostgresqlChecksRequest",
       });
-    case 2:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -6133,7 +6752,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListRabbitmqChecksRequest",
       });
-    case 3:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -6147,7 +6770,11 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRedisChecksRequest" });
-    case 4:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -6161,24 +6788,16 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListScrapeConfigsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          interval: S.optional(S.String),
-          name: S.String,
-          rules: __S(29, __c3, 5),
-        }),
-      ).annotate({
-        identifier: "PartialUpdateAlertgroupsRequestBodyItem",
-      });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          body: __S(214, __c26, 6).pipe(T.HttpBody()),
+          body: __S(2225, __c139, 1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6192,7 +6811,23 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          interval: S.optional(S.String),
+          name: S.String,
+          rules: __S(1361, __c85, 1),
+        }),
+      ).annotate({
+        identifier: "PartialUpdateAlertgroupsRequestBodyItem",
+      });
+    case 1:
+      return S.Array(__S(2224, __c139, 0));
+  }
+}
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6205,14 +6840,14 @@ function __c27(j: number): any {
         identifier: "PartialUpdateAlertRecordsRequestBodyItem",
       });
     case 1:
-      return S.Array(__S(216, __c27, 0));
+      return S.Array(__S(2240, __c140, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
-          body: __S(217, __c27, 1).pipe(T.HttpBody()),
+          body: __S(2241, __c140, 1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6224,7 +6859,42 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "PartialUpdateAlertRecordsRequest",
       });
-    case 3:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          backupTarget: S.optional(__S(2048, __c128, 0).pipe(T.Query())),
+          schedule: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/instances/{instanceId}/backup-schedules",
+            code: 200,
+            baseUrl: "https://argus.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBackupScheduleRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.String,
+          schedule: S.String,
+        }),
+      ).annotate({
+        identifier: "BackupSchedulePostResponse",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alert: S.String,
@@ -6236,15 +6906,15 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "PartialUpdateAlertrulesRequestBodyItem",
       });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(2272, __c142, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
-          body: __S(220, __c27, 4).pipe(T.HttpBody()),
+          body: __S(2273, __c142, 1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6256,37 +6926,37 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "PartialUpdateAlertrulesRequest",
       });
-    case 6:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String,
           clientSecret: S.String.pipe(T.SensitiveValue({})),
-          scopes: S.optional(__S(92, __c11, 4)),
-          tlsConfig: S.optional(__S(88, __c11, 0)),
+          scopes: S.optional(__S(674, __c42, 2)),
+          tlsConfig: S.optional(__S(673, __c42, 1)),
           tokenUrl: S.String,
         }),
       ).annotate({
         identifier: "PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          basicAuth: S.optional(__S(87, __c10, 7)),
-          oauth2: S.optional(__S(222, __c27, 6)),
+          basicAuth: S.optional(__S(672, __c42, 0)),
+          oauth2: S.optional(__S(2288, __c143, 0)),
           refreshInterval: S.optional(S.String),
-          tlsConfig: S.optional(__S(88, __c11, 0)),
+          tlsConfig: S.optional(__S(673, __c42, 1)),
           url: S.String,
         }),
       ).annotate({
         identifier: "PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(223, __c27, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(2289, __c143, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -6294,56 +6964,56 @@ function __c28(j: number): any {
           regex: S.optional(S.String),
           replacement: S.optional(S.String),
           separator: S.optional(S.String),
-          sourceLabels: S.optional(__S(92, __c11, 4)),
+          sourceLabels: S.optional(__S(674, __c42, 2)),
           targetLabel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem",
       });
-    case 2:
-      return S.Array(__S(225, __c28, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(2291, __c143, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           labels: S.optional(S.Unknown),
-          targets: __S(92, __c11, 4),
+          targets: __S(674, __c42, 2),
         }),
       ).annotate({
         identifier: "PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem",
       });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(2293, __c143, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          basicAuth: S.optional(__S(87, __c10, 7)),
+          basicAuth: S.optional(__S(672, __c42, 0)),
           bearerToken: S.optional(S.String),
           honorLabels: S.optional(S.Boolean),
           honorTimeStamps: S.optional(S.Boolean),
-          httpSdConfigs: S.optional(__S(224, __c28, 0)),
+          httpSdConfigs: S.optional(__S(2290, __c143, 2)),
           jobName: S.String,
           metricsPath: S.optional(S.String),
-          metricsRelabelConfigs: S.optional(__S(226, __c28, 2)),
-          oauth2: S.optional(__S(89, __c11, 1)),
+          metricsRelabelConfigs: S.optional(__S(2292, __c143, 4)),
+          oauth2: S.optional(__S(656, __c41, 0)),
           params: S.optional(S.Unknown),
           sampleLimit: S.optional(S.Number),
           scheme: S.String,
           scrapeInterval: S.String,
           scrapeTimeout: S.String,
-          staticConfigs: __S(228, __c28, 4),
-          tlsConfig: S.optional(__S(88, __c11, 0)),
+          staticConfigs: __S(2294, __c143, 6),
+          tlsConfig: S.optional(__S(673, __c42, 1)),
         }),
       ).annotate({
         identifier: "PartialUpdateScrapeConfigsRequestBodyItem",
       });
-    case 6:
-      return S.Array(__S(229, __c28, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(2295, __c143, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          body: __S(230, __c28, 6).pipe(T.HttpBody()),
+          body: __S(2296, __c143, 8).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6357,7 +7027,7 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6375,12 +7045,16 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RestoreBackupRequest" });
-    case 1:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          acl: __S(16, __c2, 0),
+          acl: __S(1040, __c65, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6390,16 +7064,20 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateACLRequest" });
-    case 2:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           receiver: S.String.pipe(T.Label()),
-          emailConfigs: S.optional(__S(1, __c0, 1)),
+          emailConfigs: S.optional(__S(849, __c53, 1)),
           name: S.String,
-          opsgenieConfigs: S.optional(__S(3, __c0, 3)),
-          webHookConfigs: S.optional(__S(5, __c0, 5)),
+          opsgenieConfigs: S.optional(__S(851, __c53, 3)),
+          webHookConfigs: S.optional(__S(853, __c53, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6411,21 +7089,25 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "UpdateAlertConfigReceiverRequest",
       });
-    case 3:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           receiver: S.String.pipe(T.Label()),
           continue: S.optional(S.Boolean),
-          groupBy: S.optional(__S(16, __c2, 0)),
+          groupBy: S.optional(__S(1040, __c65, 0)),
           groupInterval: S.optional(S.String),
           groupWait: S.optional(S.String),
           match: S.optional(S.Unknown),
           matchRe: S.optional(S.Unknown),
-          matchers: S.optional(__S(16, __c2, 0)),
+          matchers: S.optional(__S(1040, __c65, 0)),
           repeatInterval: S.optional(S.String),
-          routes: S.optional(__S(19, __c2, 3)),
+          routes: S.optional(__S(1122, __c70, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6437,7 +7119,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "UpdateAlertConfigRouteRequest",
       });
-    case 4:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           opsgenieApiKey: S.optional(S.String),
@@ -6452,10 +7138,10 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "UpdateAlertConfigsRequestGlobal",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          equal: S.optional(__S(16, __c2, 0)),
+          equal: S.optional(__S(1040, __c65, 0)),
           sourceMatch: S.optional(S.Unknown),
           sourceMatchRe: S.optional(S.Unknown),
           targetMatch: S.optional(S.Unknown),
@@ -6464,48 +7150,44 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "UpdateAlertConfigsRequestInhibitRules",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          emailConfigs: S.optional(__S(1, __c0, 1)),
+          emailConfigs: S.optional(__S(849, __c53, 1)),
           name: S.String,
-          opsgenieConfigs: S.optional(__S(3, __c0, 3)),
-          webHookConfigs: S.optional(__S(5, __c0, 5)),
+          opsgenieConfigs: S.optional(__S(851, __c53, 3)),
+          webHookConfigs: S.optional(__S(853, __c53, 5)),
         }),
       ).annotate({
         identifier: "UpdateAlertConfigsRequestReceiversItem",
       });
-    case 7:
-      return S.Array(__S(238, __c29, 6));
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(2370, __c148, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           continue: S.optional(S.Boolean),
-          groupBy: S.optional(__S(16, __c2, 0)),
+          groupBy: S.optional(__S(1040, __c65, 0)),
           groupInterval: S.optional(S.String),
           groupWait: S.optional(S.String),
           match: S.optional(S.Unknown),
           matchRe: S.optional(S.Unknown),
           receiver: S.String,
           repeatInterval: S.optional(S.String),
-          routes: S.optional(__S(19, __c2, 3)),
+          routes: S.optional(__S(1122, __c70, 2)),
         }),
       ).annotate({
         identifier: "UpdateAlertConfigsRequestRoute",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          global: S.optional(__S(236, __c29, 4)),
-          inhibitRules: S.optional(__S(237, __c29, 5)),
-          receivers: __S(239, __c29, 7),
-          route: __S(240, __c30, 0),
+          global: S.optional(__S(2368, __c148, 0)),
+          inhibitRules: S.optional(__S(2369, __c148, 1)),
+          receivers: __S(2371, __c148, 3),
+          route: __S(2372, __c148, 4),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6517,23 +7199,27 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "UpdateAlertConfigsRequest",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(144, __c18, 0),
+          data: __S(1395, __c87, 3),
           message: S.String,
         }),
       ).annotate({
         identifier: "UpdateAlertConfigsResponse",
       });
-    case 3:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
           interval: S.optional(S.String),
-          rules: __S(29, __c3, 5),
+          rules: __S(1361, __c85, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6543,12 +7229,16 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAlertgroupRequest" });
-    case 4:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          body: __S(214, __c26, 6).pipe(T.HttpBody()),
+          body: __S(2225, __c139, 1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6558,7 +7248,11 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAlertgroupsRequest" });
-    case 5:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -6576,227 +7270,8 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAlertRecordRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          alertName: S.String.pipe(T.Label()),
-          annotations: S.optional(S.Unknown),
-          expr: S.String,
-          for: S.optional(S.String),
-          labels: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/alertgroups/{groupName}/alertrules/{alertName}",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateAlertruleRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-          maxLimit: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/credentials/{username}/remote-write-limits",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCredentialsRemoteWriteConfigRequest",
-      });
   }
 }
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowAssignGrafanaAdmin: S.optional(S.Boolean),
-          apiUrl: S.String,
-          authUrl: S.String,
-          enabled: S.Boolean,
-          name: S.optional(S.String),
-          oauthClientId: S.String,
-          oauthClientSecret: S.String,
-          roleAttributePath: S.String,
-          roleAttributeStrict: S.optional(S.Boolean),
-          scopes: S.optional(S.String),
-          tokenUrl: S.String,
-          usePkce: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "UpdateGrafanaConfigsRequestGenericOauth",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          genericOauth: S.optional(__S(248, __c31, 0)),
-          publicReadAccess: S.optional(S.Boolean),
-          useStackitSso: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/grafana-configs",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateGrafanaConfigsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          grafanaAdminEnabled: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          parameter: S.optional(S.Unknown),
-          planId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateInstanceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          interval: S.optional(S.String),
-          rules: __S(29, __c3, 5),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/logs-alertgroups/{groupName}",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateLogsAlertgroupRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          retention: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/logs-configs",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateLogsConfigsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          metricsRetentionTime1h: S.String,
-          metricsRetentionTime5m: S.String,
-          metricsRetentionTimeRaw: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/metrics-storage-retentions",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateMetricsStorageRetentionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          modulus: S.optional(S.Number),
-          regex: S.optional(S.String),
-          replacement: S.optional(S.String),
-          separator: S.optional(S.String),
-          sourceLabels: S.optional(__S(92, __c11, 4)),
-          targetLabel: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateScrapeConfigRequestMetricsRelabelConfigsItem",
-      });
-    case 7:
-      return S.Array(__S(254, __c31, 6));
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          basicAuth: S.optional(__S(87, __c10, 7)),
-          bearerToken: S.optional(S.String),
-          honorLabels: S.optional(S.Boolean),
-          honorTimeStamps: S.optional(S.Boolean),
-          metricsPath: S.String,
-          metricsRelabelConfigs: S.optional(__S(255, __c31, 7)),
-          params: S.optional(S.Unknown),
-          sampleLimit: S.optional(S.Number),
-          scheme: S.String,
-          scrapeInterval: S.String,
-          scrapeTimeout: S.String,
-          staticConfigs: __S(96, __c12, 0),
-          tlsConfig: S.optional(__S(88, __c11, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/scrapeconfigs/{jobName}",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateScrapeConfigRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          retention: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/instances/{instanceId}/traces-configs",
-            code: 200,
-            baseUrl: "https://argus.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateTracesConfigsRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

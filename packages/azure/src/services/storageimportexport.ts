@@ -500,8 +500,8 @@ export const CreateJob: API.OperationMethod<
   CreateJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateJobRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<JobResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateJobRequest>,
+  output: __S(45, __c2, 13) as any as S.Schema<JobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -515,8 +515,8 @@ export const DeleteJob: API.OperationMethod<
   DeleteJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteJobRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteJobResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteJobRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<DeleteJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -526,8 +526,8 @@ export type GetJobError = AzureOpError;
 /** Gets information about an existing job. */
 export const GetJob: API.OperationMethod<GetJobRequest, JobResponse, GetJobError, AzureOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(20, __c2, 4) as any as S.Schema<GetJobRequest>,
-    output: __S(17, __c2, 1) as any as S.Schema<JobResponse>,
+    input: __S(64, __c4, 0) as any as S.Schema<GetJobRequest>,
+    output: __S(45, __c2, 13) as any as S.Schema<JobResponse>,
     errors: [UnknownAzureError],
     protocol: AzureProtocol,
     retry: Retry.Retry,
@@ -541,8 +541,8 @@ export const GetLocation: API.OperationMethod<
   GetLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetLocationRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Location>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetLocationRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<Location>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -556,8 +556,8 @@ export const ListBitLockerKeys: API.OperationMethod<
   ListBitLockerKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListBitLockerKeysRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetBitLockerKeysResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListBitLockerKeysRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<GetBitLockerKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -571,8 +571,8 @@ export const ListJobByResourceGroup: API.OperationMethod<
   ListJobByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListJobByResourceGroupRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListJobsResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListJobByResourceGroupRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<ListJobsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -586,8 +586,8 @@ export const ListJobBySubscription: API.OperationMethod<
   ListJobBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListJobBySubscriptionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListJobsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListJobBySubscriptionRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<ListJobsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -601,8 +601,8 @@ export const ListLocations: API.OperationMethod<
   ListLocationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListLocationsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<LocationsResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListLocationsRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<LocationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -616,8 +616,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListOperationsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListOperationsResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(196, __c12, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -631,8 +631,8 @@ export const UpdateJob: API.OperationMethod<
   UpdateJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdateJobRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<JobResponse>,
+  input: __S(209, __c13, 1) as any as S.Schema<UpdateJobRequest>,
+  output: __S(45, __c2, 13) as any as S.Schema<JobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -640,6 +640,70 @@ export const UpdateJob: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          recipientName: S.optional(S.String),
+          streetAddress1: S.optional(S.String),
+          streetAddress2: S.optional(S.String),
+          city: S.optional(S.String),
+          stateOrProvince: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          countryOrRegion: S.optional(S.String),
+          phone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ShippingInformationInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          storageAccountId: S.optional(S.String),
+          jobType: S.optional(S.String),
+          returnAddress: S.optional(__S(32, __c2, 0)),
+          returnShipping: S.optional(__S(33, __c2, 1)),
+          shippingInformation: S.optional(__S(0, __c0, 0)),
+          deliveryPackage: S.optional(__S(34, __c2, 2)),
+          returnPackage: S.optional(__S(35, __c2, 3)),
+          diagnosticsPath: S.optional(S.String),
+          logLevel: S.optional(S.String),
+          backupDriveManifest: S.optional(S.Boolean),
+          state: S.optional(S.String),
+          cancelRequested: S.optional(S.Boolean),
+          percentComplete: S.optional(S.Number),
+          incompleteBlobListUri: S.optional(S.String),
+          driveList: S.optional(__S(37, __c2, 5)),
+          export: S.optional(__S(39, __c2, 7)),
+          provisioningState: S.optional(S.String),
+          encryptionKey: S.optional(__S(40, __c2, 8)),
+        }),
+      ).annotate({ identifier: "JobDetailsInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(S.Unknown),
+          properties: S.optional(__S(1, __c0, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}",
+            code: 200,
+            apiVersion: "2020-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateJobRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -665,19 +729,6 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          recipientName: S.optional(S.String),
-          streetAddress1: S.optional(S.String),
-          streetAddress2: S.optional(S.String),
-          city: S.optional(S.String),
-          stateOrProvince: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          countryOrRegion: S.optional(S.String),
-          phone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ShippingInformationInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           carrierName: S.String,
           trackingNumber: S.String,
           driveCount: S.optional(S.Number),
@@ -686,7 +737,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeliveryPackageInformation",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           carrierName: S.String,
@@ -695,7 +746,7 @@ function __c0(j: number): any {
           shipDate: S.String,
         }),
       ).annotate({ identifier: "PackageInformation" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           driveId: S.optional(S.String),
@@ -712,29 +763,23 @@ function __c0(j: number): any {
           bytesSucceeded: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DriveStatus" });
+    case 5:
+      return S.Array(__S(36, __c2, 4));
     case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          blobPath: S.optional(__S(7, __c0, 7)),
-          blobPathPrefix: S.optional(__S(7, __c0, 7)),
+          blobPath: S.optional(__S(16, __c1, 0)),
+          blobPathPrefix: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "ExportBlobList" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          blobList: S.optional(__S(8, __c1, 0)),
+          blobList: S.optional(__S(38, __c2, 6)),
           blobListBlobPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "Export" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           kekType: S.optional(S.String),
@@ -742,48 +787,7 @@ function __c1(j: number): any {
           kekVaultResourceID: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionKeyDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          storageAccountId: S.optional(S.String),
-          jobType: S.optional(S.String),
-          returnAddress: S.optional(__S(0, __c0, 0)),
-          returnShipping: S.optional(__S(1, __c0, 1)),
-          shippingInformation: S.optional(__S(2, __c0, 2)),
-          deliveryPackage: S.optional(__S(3, __c0, 3)),
-          returnPackage: S.optional(__S(4, __c0, 4)),
-          diagnosticsPath: S.optional(S.String),
-          logLevel: S.optional(S.String),
-          backupDriveManifest: S.optional(S.Boolean),
-          state: S.optional(S.String),
-          cancelRequested: S.optional(S.Boolean),
-          percentComplete: S.optional(S.Number),
-          incompleteBlobListUri: S.optional(S.String),
-          driveList: S.optional(__S(6, __c0, 6)),
-          export: S.optional(__S(9, __c1, 1)),
-          provisioningState: S.optional(S.String),
-          encryptionKey: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "JobDetailsInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(S.Unknown),
-          properties: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}",
-            code: 200,
-            apiVersion: "2020-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateJobRequest" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -794,7 +798,7 @@ function __c1(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobResponseSystemData" });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           recipientName: S.optional(S.String),
@@ -808,16 +812,16 @@ function __c1(j: number): any {
           additionalInformation: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShippingInformation" });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           storageAccountId: S.optional(S.String),
           jobType: S.optional(S.String),
-          returnAddress: S.optional(__S(0, __c0, 0)),
-          returnShipping: S.optional(__S(1, __c0, 1)),
-          shippingInformation: S.optional(__S(14, __c1, 6)),
-          deliveryPackage: S.optional(__S(3, __c0, 3)),
-          returnPackage: S.optional(__S(4, __c0, 4)),
+          returnAddress: S.optional(__S(32, __c2, 0)),
+          returnShipping: S.optional(__S(33, __c2, 1)),
+          shippingInformation: S.optional(__S(42, __c2, 10)),
+          deliveryPackage: S.optional(__S(34, __c2, 2)),
+          returnPackage: S.optional(__S(35, __c2, 3)),
           diagnosticsPath: S.optional(S.String),
           logLevel: S.optional(S.String),
           backupDriveManifest: S.optional(S.Boolean),
@@ -825,17 +829,13 @@ function __c1(j: number): any {
           cancelRequested: S.optional(S.Boolean),
           percentComplete: S.optional(S.Number),
           incompleteBlobListUri: S.optional(S.String),
-          driveList: S.optional(__S(6, __c0, 6)),
-          export: S.optional(__S(9, __c1, 1)),
+          driveList: S.optional(__S(37, __c2, 5)),
+          export: S.optional(__S(39, __c2, 7)),
           provisioningState: S.optional(S.String),
-          encryptionKey: S.optional(__S(10, __c1, 2)),
+          encryptionKey: S.optional(__S(40, __c2, 8)),
         }),
       ).annotate({ identifier: "JobDetails" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -843,20 +843,24 @@ function __c2(j: number): any {
           tenantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityDetails" });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          systemData: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(41, __c2, 9)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
           tags: S.optional(S.Unknown),
-          properties: S.optional(__S(15, __c1, 7)),
-          identity: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(43, __c2, 11)),
+          identity: S.optional(__S(44, __c2, 12)),
         }),
       ).annotate({ identifier: "JobResponse" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -871,11 +875,15 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteJobRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteJobResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -890,7 +898,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetJobRequest" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationName: S.String.pipe(T.Label()),
@@ -903,7 +915,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLocationRequest" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           recipientName: S.optional(S.String),
@@ -915,22 +931,22 @@ function __c2(j: number): any {
           countryOrRegion: S.optional(S.String),
           phone: S.optional(S.String),
           additionalShippingInformation: S.optional(S.String),
-          supportedCarriers: S.optional(__S(7, __c0, 7)),
-          alternateLocations: S.optional(__S(7, __c0, 7)),
+          supportedCarriers: S.optional(__S(16, __c1, 0)),
+          alternateLocations: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "LocationProperties" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(22, __c2, 6)),
+          properties: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "Location" });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -955,14 +971,18 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "DriveBitLockerKey" });
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(113, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(26, __c3, 2)),
+          value: S.optional(__S(114, __c7, 2)),
         }),
       ).annotate({ identifier: "GetBitLockerKeysResponse" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -980,16 +1000,24 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListJobByResourceGroupRequest",
       });
-    case 5:
-      return S.Array(__S(17, __c2, 1));
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(45, __c2, 13));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(29, __c3, 5)),
+          value: S.optional(__S(144, __c9, 0)),
         }),
       ).annotate({ identifier: "ListJobsResponse" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1008,7 +1036,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1022,14 +1050,18 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListLocationsRequest" });
     case 1:
-      return S.Array(__S(23, __c2, 7));
+      return S.Array(__S(97, __c6, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(33, __c4, 1)),
+          value: S.optional(__S(177, __c11, 1)),
         }),
       ).annotate({ identifier: "LocationsResponse" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1040,7 +1072,7 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -1049,36 +1081,36 @@ function __c4(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          display: __S(36, __c4, 4),
+          display: __S(193, __c12, 1),
         }),
       ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(194, __c12, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(38, __c4, 6)),
+          value: S.optional(__S(195, __c12, 3)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c5(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           cancelRequested: S.optional(S.Boolean),
           state: S.optional(S.String),
-          returnAddress: S.optional(__S(0, __c0, 0)),
-          returnShipping: S.optional(__S(1, __c0, 1)),
-          deliveryPackage: S.optional(__S(3, __c0, 3)),
+          returnAddress: S.optional(__S(32, __c2, 0)),
+          returnShipping: S.optional(__S(33, __c2, 1)),
+          deliveryPackage: S.optional(__S(34, __c2, 2)),
           logLevel: S.optional(S.String),
           backupDriveManifest: S.optional(S.Boolean),
-          driveList: S.optional(__S(6, __c0, 6)),
+          driveList: S.optional(__S(37, __c2, 5)),
         }),
       ).annotate({
         identifier: "UpdateJobRequestProperties",
@@ -1090,7 +1122,7 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
           tags: S.optional(S.Unknown),
-          properties: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(208, __c13, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1102,7 +1134,6 @@ function __c5(j: number): any {
       ).annotate({ identifier: "UpdateJobRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

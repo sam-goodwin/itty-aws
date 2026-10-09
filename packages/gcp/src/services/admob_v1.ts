@@ -541,8 +541,8 @@ export const generateAccountsMediationReport: API.OperationMethod<
   GenerateAccountsMediationReportError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GenerateAccountsMediationReportRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GenerateMediationReportResponse>,
+  input: __S(6, __c0, 6) as any as S.Schema<GenerateAccountsMediationReportRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<GenerateMediationReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -561,8 +561,8 @@ export const generateAccountsNetworkReport: API.OperationMethod<
   GenerateAccountsNetworkReportError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GenerateAccountsNetworkReportRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GenerateNetworkReportResponse>,
+  input: __S(54, __c3, 6) as any as S.Schema<GenerateAccountsNetworkReportRequest>,
+  output: __S(55, __c3, 7) as any as S.Schema<GenerateNetworkReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -576,8 +576,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetAccountsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PublisherAccount>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetAccountsRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<PublisherAccount>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -592,8 +592,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPublisherAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListAccountsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListPublisherAccountsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<ListPublisherAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -609,8 +609,8 @@ export const listAccountsAdUnits: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAdUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListAccountsAdUnitsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListAdUnitsResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListAccountsAdUnitsRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<ListAdUnitsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -626,8 +626,8 @@ export const listAccountsApps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListAccountsAppsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListAppsResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListAccountsAppsRequest>,
+  output: __S(133, __c8, 5) as any as S.Schema<ListAppsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -640,32 +640,15 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          currencyCode: S.optional(S.String),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocalizationSettings" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "StringList" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          matchesAny: S.optional(__S(2, __c0, 2)),
+          matchesAny: S.optional(__S(17, __c1, 1)),
           dimension: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MediationReportSpecDimensionFilter",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.Array(S.String);
-    case 6:
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           dimension: S.optional(S.String),
@@ -675,53 +658,34 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "MediationReportSpecSortCondition",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          month: S.optional(S.Number),
-          year: S.optional(S.Number),
-          day: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Admob_Date" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endDate: S.optional(__S(8, __c1, 0)),
-          startDate: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "DateRange" });
-    case 2:
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           maxReportRows: S.optional(S.Number),
-          localizationSettings: S.optional(__S(0, __c0, 0)),
+          localizationSettings: S.optional(__S(16, __c1, 0)),
           timeZone: S.optional(S.String),
-          dimensionFilters: S.optional(__S(4, __c0, 4)),
-          metrics: S.optional(__S(5, __c0, 5)),
-          sortConditions: S.optional(__S(7, __c0, 7)),
-          dateRange: S.optional(__S(9, __c1, 1)),
-          dimensions: S.optional(__S(5, __c0, 5)),
+          dimensionFilters: S.optional(__S(1, __c0, 1)),
+          metrics: S.optional(__S(18, __c1, 2)),
+          sortConditions: S.optional(__S(3, __c0, 3)),
+          dateRange: S.optional(__S(20, __c1, 4)),
+          dimensions: S.optional(__S(18, __c1, 2)),
         }),
       ).annotate({ identifier: "MediationReportSpec" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          reportSpec: S.optional(__S(10, __c1, 2)),
+          reportSpec: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "GenerateMediationReportRequest",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -732,6 +696,50 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GenerateAccountsMediationReportRequest",
       });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          row: S.optional(__S(25, __c1, 9)),
+          header: S.optional(__S(26, __c1, 10)),
+          footer: S.optional(__S(29, __c1, 13)),
+        }),
+      ).annotate({
+        identifier: "GenerateMediationReportResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.String),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocalizationSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "StringList" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          month: S.optional(S.Number),
+          year: S.optional(S.Number),
+          day: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Admob_Date" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          endDate: S.optional(__S(19, __c1, 3)),
+          startDate: S.optional(__S(19, __c1, 3)),
+        }),
+      ).annotate({ identifier: "DateRange" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -740,7 +748,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ReportRowDimensionValue" });
     case 6:
-      return S.Record(S.String, __S(13, __c1, 5));
+      return S.Record(S.String, __S(21, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -749,69 +757,61 @@ function __c1(j: number): any {
           microsValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportRowMetricValue" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(15, __c1, 7));
-    case 1:
+    case 8:
+      return S.Record(S.String, __S(23, __c1, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          dimensionValues: S.optional(__S(14, __c1, 6)),
-          metricValues: S.optional(__S(16, __c2, 0)),
+          dimensionValues: S.optional(__S(22, __c1, 6)),
+          metricValues: S.optional(__S(24, __c1, 8)),
         }),
       ).annotate({ identifier: "ReportRow" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          localizationSettings: S.optional(__S(0, __c0, 0)),
+          localizationSettings: S.optional(__S(16, __c1, 0)),
           reportingTimeZone: S.optional(S.String),
-          dateRange: S.optional(__S(9, __c1, 1)),
+          dateRange: S.optional(__S(20, __c1, 4)),
         }),
       ).annotate({ identifier: "ReportHeader" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportWarning" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(27, __c1, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           matchingRowCount: S.optional(S.String),
-          warnings: S.optional(__S(20, __c2, 4)),
+          warnings: S.optional(__S(28, __c1, 12)),
         }),
       ).annotate({ identifier: "ReportFooter" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          row: S.optional(__S(17, __c2, 1)),
-          header: S.optional(__S(18, __c2, 2)),
-          footer: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GenerateMediationReportResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dimension: S.optional(S.String),
-          matchesAny: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "NetworkReportSpecDimensionFilter",
-      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
+      return S.suspend(() =>
+        S.Struct({
+          dimension: S.optional(S.String),
+          matchesAny: S.optional(__S(17, __c1, 1)),
+        }),
+      ).annotate({
+        identifier: "NetworkReportSpecDimensionFilter",
+      });
     case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           order: S.optional(S.String),
@@ -821,34 +821,34 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "NetworkReportSpecSortCondition",
       });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          localizationSettings: S.optional(__S(0, __c0, 0)),
-          maxReportRows: S.optional(S.Number),
-          dimensionFilters: S.optional(__S(24, __c3, 0)),
-          timeZone: S.optional(S.String),
-          sortConditions: S.optional(__S(26, __c3, 2)),
-          dateRange: S.optional(__S(9, __c1, 1)),
-          dimensions: S.optional(__S(5, __c0, 5)),
-          metrics: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "NetworkReportSpec" });
+      return S.Array(__S(50, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          reportSpec: S.optional(__S(27, __c3, 3)),
+          localizationSettings: S.optional(__S(16, __c1, 0)),
+          maxReportRows: S.optional(S.Number),
+          dimensionFilters: S.optional(__S(49, __c3, 1)),
+          timeZone: S.optional(S.String),
+          sortConditions: S.optional(__S(51, __c3, 3)),
+          dateRange: S.optional(__S(20, __c1, 4)),
+          dimensions: S.optional(__S(18, __c1, 2)),
+          metrics: S.optional(__S(18, __c1, 2)),
+        }),
+      ).annotate({ identifier: "NetworkReportSpec" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          reportSpec: S.optional(__S(52, __c3, 4)),
         }),
       ).annotate({
         identifier: "GenerateNetworkReportRequest",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(53, __c3, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -859,17 +859,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GenerateAccountsNetworkReportRequest",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          header: S.optional(__S(18, __c2, 2)),
-          footer: S.optional(__S(21, __c2, 5)),
-          row: S.optional(__S(17, __c2, 1)),
+          header: S.optional(__S(26, __c1, 10)),
+          footer: S.optional(__S(29, __c1, 13)),
+          row: S.optional(__S(25, __c1, 9)),
         }),
       ).annotate({
         identifier: "GenerateNetworkReportResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -879,7 +883,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GetAccountsRequest" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -890,7 +894,11 @@ function __c4(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublisherAccount" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -899,18 +907,22 @@ function __c4(j: number): any {
           T.Http({ method: "GET", uri: "v1/accounts", baseUrl: "https://admob.googleapis.com/" }),
         ),
       ).annotate({ identifier: "ListAccountsRequest" });
+    case 1:
+      return S.Array(__S(80, __c5, 0));
     case 2:
-      return S.Array(__S(32, __c4, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          account: S.optional(__S(34, __c4, 2)),
+          account: S.optional(__S(97, __c6, 1)),
         }),
       ).annotate({
         identifier: "ListPublisherAccountsResponse",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -926,29 +938,29 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAccountsAdUnitsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
           name: S.optional(S.String),
           adFormat: S.optional(S.String),
           adUnitId: S.optional(S.String),
-          adTypes: S.optional(__S(1, __c0, 1)),
+          adTypes: S.optional(__S(32, __c2, 0)),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdUnit" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          adUnits: S.optional(__S(38, __c4, 6)),
+          adUnits: S.optional(__S(114, __c7, 2)),
         }),
       ).annotate({ identifier: "ListAdUnitsResponse" });
   }
 }
-function __c5(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -984,22 +996,21 @@ function __c5(j: number): any {
           appApprovalState: S.optional(S.String),
           appId: S.optional(S.String),
           platform: S.optional(S.String),
-          manualAppInfo: S.optional(__S(41, __c5, 1)),
-          linkedAppInfo: S.optional(__S(42, __c5, 2)),
+          manualAppInfo: S.optional(__S(129, __c8, 1)),
+          linkedAppInfo: S.optional(__S(130, __c8, 2)),
         }),
       ).annotate({ identifier: "App" });
     case 4:
-      return S.Array(__S(43, __c5, 3));
+      return S.Array(__S(131, __c8, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          apps: S.optional(__S(44, __c5, 4)),
+          apps: S.optional(__S(132, __c8, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAppsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

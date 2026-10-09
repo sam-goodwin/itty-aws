@@ -381,8 +381,8 @@ export const lookupCurrentConditions: API.OperationMethod<
   LookupCurrentConditionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<LookupCurrentConditionsRequest_>,
-  output: __S(14, __c1, 6) as any as S.Schema<LookupCurrentConditionsResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<LookupCurrentConditionsRequest_>,
+  output: __S(2, __c0, 2) as any as S.Schema<LookupCurrentConditionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -396,8 +396,8 @@ export const lookupForecast: API.OperationMethod<
   LookupForecastError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<LookupForecastRequest_>,
-  output: __S(20, __c2, 4) as any as S.Schema<LookupForecastResponse>,
+  input: __S(33, __c2, 1) as any as S.Schema<LookupForecastRequest_>,
+  output: __S(36, __c2, 4) as any as S.Schema<LookupForecastResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -411,8 +411,8 @@ export const lookupHeatmapTileMapTypesHeatmapTiles: API.OperationMethod<
   LookupHeatmapTileMapTypesHeatmapTilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<LookupHeatmapTileMapTypesHeatmapTilesRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<HttpBody>,
+  input: __S(64, __c4, 0) as any as S.Schema<LookupHeatmapTileMapTypesHeatmapTilesRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -426,8 +426,8 @@ export const lookupHistory: API.OperationMethod<
   LookupHistoryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<LookupHistoryRequest_>,
-  output: __S(29, __c3, 5) as any as S.Schema<LookupHistoryResponse>,
+  input: __S(81, __c5, 1) as any as S.Schema<LookupHistoryRequest_>,
+  output: __S(84, __c5, 4) as any as S.Schema<LookupHistoryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -439,12 +439,55 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          uaqiColorPalette: S.optional(S.String),
+          customLocalAqis: S.optional(__S(17, __c1, 1)),
+          universalAqi: S.optional(S.Boolean),
+          languageCode: S.optional(S.String),
+          location: S.optional(__S(18, __c1, 2)),
+          extraComputations: S.optional(__S(19, __c1, 3)),
+        }),
+      ).annotate({
+        identifier: "LookupCurrentConditionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/currentConditions:lookup",
+            baseUrl: "https://airquality.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "LookupCurrentConditionsRequest_",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          indexes: S.optional(__S(22, __c1, 6)),
+          healthRecommendations: S.optional(__S(23, __c1, 7)),
+          regionCode: S.optional(S.String),
+          pollutants: S.optional(__S(27, __c1, 11)),
+          dateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LookupCurrentConditionsResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           aqi: S.optional(S.String),
           regionCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomLocalAqi" });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(16, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -457,58 +500,27 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          uaqiColorPalette: S.optional(S.String),
-          customLocalAqis: S.optional(__S(1, __c0, 1)),
-          universalAqi: S.optional(S.Boolean),
-          languageCode: S.optional(S.String),
-          location: S.optional(__S(2, __c0, 2)),
-          extraComputations: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "LookupCurrentConditionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/currentConditions:lookup",
-            baseUrl: "https://airquality.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "LookupCurrentConditionsRequest_",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           green: S.optional(S.Number),
           alpha: S.optional(S.Number),
           red: S.optional(S.Number),
           blue: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Color" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
           dominantPollutant: S.optional(S.String),
-          color: S.optional(__S(6, __c0, 6)),
+          color: S.optional(__S(20, __c1, 4)),
           displayName: S.optional(S.String),
           aqiDisplay: S.optional(S.String),
           code: S.optional(S.String),
           aqi: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AirQualityIndex" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(21, __c1, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           pregnantWomen: S.optional(S.String),
@@ -520,51 +532,32 @@ function __c1(j: number): any {
           children: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthRecommendations" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           sources: S.optional(S.String),
           effects: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdditionalInfo" });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           units: S.optional(S.String),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Concentration" });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
-          additionalInfo: S.optional(__S(10, __c1, 2)),
+          additionalInfo: S.optional(__S(24, __c1, 8)),
           displayName: S.optional(S.String),
-          concentration: S.optional(__S(11, __c1, 3)),
+          concentration: S.optional(__S(25, __c1, 9)),
           fullName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Pollutant" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          indexes: S.optional(__S(8, __c1, 0)),
-          healthRecommendations: S.optional(__S(9, __c1, 1)),
-          regionCode: S.optional(S.String),
-          pollutants: S.optional(__S(13, __c1, 5)),
-          dateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LookupCurrentConditionsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Interval" });
+    case 11:
+      return S.Array(__S(26, __c1, 10));
   }
 }
 function __c2(j: number): any {
@@ -572,22 +565,22 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          extraComputations: S.optional(__S(3, __c0, 3)),
+          extraComputations: S.optional(__S(19, __c1, 3)),
           pageSize: S.optional(S.Number),
-          customLocalAqis: S.optional(__S(1, __c0, 1)),
+          customLocalAqis: S.optional(__S(17, __c1, 1)),
           languageCode: S.optional(S.String),
           pageToken: S.optional(S.String),
-          location: S.optional(__S(2, __c0, 2)),
+          location: S.optional(__S(18, __c1, 2)),
           universalAqi: S.optional(S.Boolean),
           dateTime: S.optional(S.String),
           uaqiColorPalette: S.optional(S.String),
-          period: S.optional(__S(15, __c1, 7)),
+          period: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "LookupForecastRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -599,23 +592,38 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          indexes: S.optional(__S(8, __c1, 0)),
-          pollutants: S.optional(__S(13, __c1, 5)),
-          healthRecommendations: S.optional(__S(9, __c1, 1)),
+          indexes: S.optional(__S(22, __c1, 6)),
+          pollutants: S.optional(__S(27, __c1, 11)),
+          healthRecommendations: S.optional(__S(23, __c1, 7)),
           dateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "HourlyForecast" });
     case 3:
-      return S.Array(__S(18, __c2, 2));
+      return S.Array(__S(34, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          hourlyForecasts: S.optional(__S(19, __c2, 3)),
+          hourlyForecasts: S.optional(__S(35, __c2, 3)),
         }),
       ).annotate({ identifier: "LookupForecastResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Interval" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoom: S.Number.pipe(T.Label()),
@@ -632,31 +640,31 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "LookupHeatmapTileMapTypesHeatmapTilesRequest",
       });
-    case 6:
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(22, __c2, 6));
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          contentType: S.optional(S.String),
+          extensions: S.optional(__S(66, __c4, 2)),
+          data: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpBody" });
   }
 }
-function __c3(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          contentType: S.optional(S.String),
-          extensions: S.optional(__S(23, __c2, 7)),
-          data: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpBody" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           hours: S.optional(S.Number),
-          period: S.optional(__S(15, __c1, 7)),
-          extraComputations: S.optional(__S(3, __c0, 3)),
-          customLocalAqis: S.optional(__S(1, __c0, 1)),
+          period: S.optional(__S(48, __c3, 0)),
+          extraComputations: S.optional(__S(19, __c1, 3)),
+          customLocalAqis: S.optional(__S(17, __c1, 1)),
           languageCode: S.optional(S.String),
-          location: S.optional(__S(2, __c0, 2)),
+          location: S.optional(__S(18, __c1, 2)),
           pageSize: S.optional(S.Number),
           uaqiColorPalette: S.optional(S.String),
           universalAqi: S.optional(S.Boolean),
@@ -664,10 +672,10 @@ function __c3(j: number): any {
           dateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "LookupHistoryRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -676,28 +684,27 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "LookupHistoryRequest_" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          pollutants: S.optional(__S(13, __c1, 5)),
-          healthRecommendations: S.optional(__S(9, __c1, 1)),
+          pollutants: S.optional(__S(27, __c1, 11)),
+          healthRecommendations: S.optional(__S(23, __c1, 7)),
           dateTime: S.optional(S.String),
-          indexes: S.optional(__S(8, __c1, 0)),
+          indexes: S.optional(__S(22, __c1, 6)),
         }),
       ).annotate({ identifier: "HourInfo" });
+    case 3:
+      return S.Array(__S(82, __c5, 2));
     case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String),
-          hoursInfo: S.optional(__S(28, __c3, 4)),
+          hoursInfo: S.optional(__S(83, __c5, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "LookupHistoryResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

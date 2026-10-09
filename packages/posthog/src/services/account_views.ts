@@ -164,8 +164,8 @@ export const createAccountView: API.OperationMethod<
   CreateAccountViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateAccountViewRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<AccountView>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateAccountViewRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<AccountView>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -179,8 +179,8 @@ export const getAccountView: API.OperationMethod<
   GetAccountViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetAccountViewRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<AccountView>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetAccountViewRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<AccountView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -194,8 +194,8 @@ export const listAccountViews: API.OperationMethod<
   ListAccountViewsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ListAccountViewsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ListAccountViewsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListAccountViewsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ListAccountViewsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -214,8 +214,8 @@ export const updateAccountViewsPartial: API.OperationMethod<
   UpdateAccountViewsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<UpdateAccountViewsPartialRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<AccountView>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateAccountViewsPartialRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<AccountView>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -244,7 +244,25 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AccountViewsDestroyResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String,
+          content: __S(19, __c2, 3),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/account_views/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateAccountViewRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nodeId: S.String,
@@ -253,39 +271,29 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccountViewMarkdownAttributes",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          attrs: __S(16, __c2, 0),
+        }),
+      ).annotate({ identifier: "AccountViewMarkdownNode" });
+    case 2:
+      return S.Array(__S(17, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          attrs: __S(2, __c0, 2),
-        }),
-      ).annotate({ identifier: "AccountViewMarkdownNode" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          content: __S(4, __c0, 4),
+          content: __S(18, __c2, 2),
         }),
       ).annotate({ identifier: "AccountViewContent" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String,
-          content: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/account_views/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateAccountViewRequest" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           visibility: S.String,
-          content: __S(5, __c0, 5),
+          content: __S(19, __c2, 3),
           text_content: S.String,
           version: S.Number,
           created_by: S.NullOr(S.Number),
@@ -299,7 +307,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "AccountView" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -314,7 +322,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountViewRequest" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -322,19 +334,23 @@ function __c1(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/account_views/", code: 200 }),
         ),
       ).annotate({ identifier: "ListAccountViewsRequest" });
+    case 1:
+      return S.Array(__S(20, __c2, 4));
     case 2:
-      return S.Array(__S(7, __c0, 7));
-    case 3:
-      return S.suspend(() => __S(10, __c1, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(33, __c4, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAccountViewsResponse",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          content: S.optional(__S(5, __c0, 5)),
+          content: S.optional(__S(19, __c2, 3)),
           visibility: S.optional(S.String),
           version: S.Number,
         }).pipe(
@@ -349,7 +365,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

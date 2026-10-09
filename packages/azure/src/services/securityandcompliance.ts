@@ -4701,7 +4701,7 @@ export const DeletePrivateEndpointConnectionsAdtAPI: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeletePrivateEndpointConnectionsAdtAPIRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePrivateEndpointConnectionsAdtAPIResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionsAdtAPIResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4715,8 +4715,8 @@ export const DeletePrivateEndpointConnectionsComp: API.OperationMethod<
   DeletePrivateEndpointConnectionsCompError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeletePrivateEndpointConnectionsCompRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePrivateEndpointConnectionsCompResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeletePrivateEndpointConnectionsCompRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionsCompResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4730,8 +4730,8 @@ export const DeletePrivateEndpointConnectionsForEDM: API.OperationMethod<
   DeletePrivateEndpointConnectionsForEDMError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeletePrivateEndpointConnectionsForEDMRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePrivateEndpointConnectionsForEDMResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeletePrivateEndpointConnectionsForEDMRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionsForEDMResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4746,14 +4746,14 @@ export const DeletePrivateEndpointConnectionsForMIPPolicySync: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4,
-    __c0,
-    4,
+    352,
+    __c44,
+    0,
   ) as any as S.Schema<DeletePrivateEndpointConnectionsForMIPPolicySyncRequest>,
   output: __S(
-    5,
-    __c0,
-    5,
+    360,
+    __c45,
+    0,
   ) as any as S.Schema<DeletePrivateEndpointConnectionsForMIPPolicySyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4769,14 +4769,14 @@ export const DeletePrivateEndpointConnectionsForSCCPowershell: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    6,
-    __c0,
-    6,
+    480,
+    __c60,
+    0,
   ) as any as S.Schema<DeletePrivateEndpointConnectionsForSCCPowershellRequest>,
   output: __S(
-    5,
-    __c0,
-    5,
+    360,
+    __c45,
+    0,
   ) as any as S.Schema<DeletePrivateEndpointConnectionsForSCCPowershellResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4791,8 +4791,8 @@ export const DeletePrivateEndpointConnectionsSec: API.OperationMethod<
   DeletePrivateEndpointConnectionsSecError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeletePrivateEndpointConnectionsSecRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePrivateEndpointConnectionsSecResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<DeletePrivateEndpointConnectionsSecRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionsSecResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4807,14 +4807,14 @@ export const DeletePrivateLinkServicesForM365ComplianceCenter: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8,
-    __c1,
+    728,
+    __c91,
     0,
   ) as any as S.Schema<DeletePrivateLinkServicesForM365ComplianceCenterRequest>,
   output: __S(
-    5,
-    __c0,
-    5,
+    360,
+    __c45,
+    0,
   ) as any as S.Schema<DeletePrivateLinkServicesForM365ComplianceCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4829,11 +4829,15 @@ export const DeletePrivateLinkServicesForM365SecurityCenter: API.OperationMethod
   DeletePrivateLinkServicesForM365SecurityCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeletePrivateLinkServicesForM365SecurityCenterRequest>,
+  input: __S(
+    848,
+    __c106,
+    0,
+  ) as any as S.Schema<DeletePrivateLinkServicesForM365SecurityCenterRequest>,
   output: __S(
-    1,
-    __c0,
-    1,
+    8,
+    __c1,
+    0,
   ) as any as S.Schema<DeletePrivateLinkServicesForM365SecurityCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4848,8 +4852,8 @@ export const DeletePrivateLinkServicesForMIPPolicySync: API.OperationMethod<
   DeletePrivateLinkServicesForMIPPolicySyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeletePrivateLinkServicesForMIPPolicySyncRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePrivateLinkServicesForMIPPolicySyncResponse>,
+  input: __S(888, __c111, 0) as any as S.Schema<DeletePrivateLinkServicesForMIPPolicySyncRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeletePrivateLinkServicesForMIPPolicySyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4864,14 +4868,14 @@ export const DeletePrivateLinkServicesForO365ManagementActivityAPI: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    11,
-    __c1,
-    3,
+    896,
+    __c112,
+    0,
   ) as any as S.Schema<DeletePrivateLinkServicesForO365ManagementActivityAPIRequest>,
   output: __S(
-    12,
-    __c1,
-    4,
+    897,
+    __c112,
+    1,
   ) as any as S.Schema<DeletePrivateLinkServicesForO365ManagementActivityAPIResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4886,8 +4890,8 @@ export const DeletePrivateLinkServicesForSCCPowershell: API.OperationMethod<
   DeletePrivateLinkServicesForSCCPowershellError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeletePrivateLinkServicesForSCCPowershellRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePrivateLinkServicesForSCCPowershellResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeletePrivateLinkServicesForSCCPowershellRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeletePrivateLinkServicesForSCCPowershellResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4901,8 +4905,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4916,8 +4920,8 @@ export const GetOperationResult: API.OperationMethod<
   GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetOperationResultRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<OperationResultsDescription>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetOperationResultRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<OperationResultsDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4931,8 +4935,8 @@ export const GetPrivateEndpointConnectionsAdtAPI: API.OperationMethod<
   GetPrivateEndpointConnectionsAdtAPIError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetPrivateEndpointConnectionsAdtAPIRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetPrivateEndpointConnectionsAdtAPIResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetPrivateEndpointConnectionsAdtAPIRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetPrivateEndpointConnectionsAdtAPIResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4946,8 +4950,8 @@ export const GetPrivateEndpointConnectionsComp: API.OperationMethod<
   GetPrivateEndpointConnectionsCompError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetPrivateEndpointConnectionsCompRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetPrivateEndpointConnectionsCompResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetPrivateEndpointConnectionsCompRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetPrivateEndpointConnectionsCompResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4961,8 +4965,8 @@ export const GetPrivateEndpointConnectionsForEDM: API.OperationMethod<
   GetPrivateEndpointConnectionsForEDMError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetPrivateEndpointConnectionsForEDMRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetPrivateEndpointConnectionsForEDMResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetPrivateEndpointConnectionsForEDMRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetPrivateEndpointConnectionsForEDMResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4976,11 +4980,15 @@ export const GetPrivateEndpointConnectionsForMIPPolicySync: API.OperationMethod<
   GetPrivateEndpointConnectionsForMIPPolicySyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetPrivateEndpointConnectionsForMIPPolicySyncRequest>,
+  input: __S(
+    104,
+    __c13,
+    0,
+  ) as any as S.Schema<GetPrivateEndpointConnectionsForMIPPolicySyncRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    120,
+    __c15,
+    0,
   ) as any as S.Schema<GetPrivateEndpointConnectionsForMIPPolicySyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4995,11 +5003,15 @@ export const GetPrivateEndpointConnectionsForSCCPowershell: API.OperationMethod<
   GetPrivateEndpointConnectionsForSCCPowershellError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetPrivateEndpointConnectionsForSCCPowershellRequest>,
+  input: __S(
+    128,
+    __c16,
+    0,
+  ) as any as S.Schema<GetPrivateEndpointConnectionsForSCCPowershellRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    120,
+    __c15,
+    0,
   ) as any as S.Schema<GetPrivateEndpointConnectionsForSCCPowershellResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5014,8 +5026,8 @@ export const GetPrivateEndpointConnectionsSec: API.OperationMethod<
   GetPrivateEndpointConnectionsSecError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetPrivateEndpointConnectionsSecRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetPrivateEndpointConnectionsSecResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetPrivateEndpointConnectionsSecRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetPrivateEndpointConnectionsSecResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5029,8 +5041,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5044,8 +5056,8 @@ export const GetPrivateLinkResourcesAdtAPI: API.OperationMethod<
   GetPrivateLinkResourcesAdtAPIError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetPrivateLinkResourcesAdtAPIRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetPrivateLinkResourcesAdtAPIResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetPrivateLinkResourcesAdtAPIRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<GetPrivateLinkResourcesAdtAPIResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5059,8 +5071,8 @@ export const GetPrivateLinkResourcesComp: API.OperationMethod<
   GetPrivateLinkResourcesCompError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetPrivateLinkResourcesCompRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetPrivateLinkResourcesCompResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetPrivateLinkResourcesCompRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<GetPrivateLinkResourcesCompResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5074,8 +5086,8 @@ export const GetPrivateLinkResourcesForMIPPolicySync: API.OperationMethod<
   GetPrivateLinkResourcesForMIPPolicySyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetPrivateLinkResourcesForMIPPolicySyncRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetPrivateLinkResourcesForMIPPolicySyncResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetPrivateLinkResourcesForMIPPolicySyncRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<GetPrivateLinkResourcesForMIPPolicySyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5089,8 +5101,8 @@ export const GetPrivateLinkResourcesForSCCPowershell: API.OperationMethod<
   GetPrivateLinkResourcesForSCCPowershellError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetPrivateLinkResourcesForSCCPowershellRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetPrivateLinkResourcesForSCCPowershellResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetPrivateLinkResourcesForSCCPowershellRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<GetPrivateLinkResourcesForSCCPowershellResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5104,8 +5116,8 @@ export const GetPrivateLinkResourcesSec: API.OperationMethod<
   GetPrivateLinkResourcesSecError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetPrivateLinkResourcesSecRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetPrivateLinkResourcesSecResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetPrivateLinkResourcesSecRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<GetPrivateLinkResourcesSecResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5119,8 +5131,8 @@ export const GetPrivateLinkServicesForEDMUpload: API.OperationMethod<
   GetPrivateLinkServicesForEDMUploadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetPrivateLinkServicesForEDMUploadRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetPrivateLinkServicesForEDMUploadResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetPrivateLinkServicesForEDMUploadRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<GetPrivateLinkServicesForEDMUploadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5134,11 +5146,15 @@ export const GetPrivateLinkServicesForM365ComplianceCenter: API.OperationMethod<
   GetPrivateLinkServicesForM365ComplianceCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetPrivateLinkServicesForM365ComplianceCenterRequest>,
+  input: __S(
+    296,
+    __c37,
+    0,
+  ) as any as S.Schema<GetPrivateLinkServicesForM365ComplianceCenterRequest>,
   output: __S(
-    60,
-    __c7,
-    4,
+    298,
+    __c37,
+    2,
   ) as any as S.Schema<GetPrivateLinkServicesForM365ComplianceCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5153,8 +5169,12 @@ export const GetPrivateLinkServicesForM365SecurityCenter: API.OperationMethod<
   GetPrivateLinkServicesForM365SecurityCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetPrivateLinkServicesForM365SecurityCenterRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetPrivateLinkServicesForM365SecurityCenterResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<GetPrivateLinkServicesForM365SecurityCenterRequest>,
+  output: __S(
+    314,
+    __c39,
+    2,
+  ) as any as S.Schema<GetPrivateLinkServicesForM365SecurityCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5168,8 +5188,8 @@ export const GetPrivateLinkServicesForMIPPolicySync: API.OperationMethod<
   GetPrivateLinkServicesForMIPPolicySyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetPrivateLinkServicesForMIPPolicySyncRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GetPrivateLinkServicesForMIPPolicySyncResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<GetPrivateLinkServicesForMIPPolicySyncRequest>,
+  output: __S(330, __c41, 2) as any as S.Schema<GetPrivateLinkServicesForMIPPolicySyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5184,14 +5204,14 @@ export const GetPrivateLinkServicesForO365ManagementActivityAPI: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    68,
-    __c8,
-    4,
+    336,
+    __c42,
+    0,
   ) as any as S.Schema<GetPrivateLinkServicesForO365ManagementActivityAPIRequest>,
   output: __S(
-    71,
-    __c8,
-    7,
+    338,
+    __c42,
+    2,
   ) as any as S.Schema<GetPrivateLinkServicesForO365ManagementActivityAPIResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5206,8 +5226,8 @@ export const GetPrivateLinkServicesForSCCPowershell: API.OperationMethod<
   GetPrivateLinkServicesForSCCPowershellError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetPrivateLinkServicesForSCCPowershellRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<GetPrivateLinkServicesForSCCPowershellResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<GetPrivateLinkServicesForSCCPowershellRequest>,
+  output: __S(370, __c46, 2) as any as S.Schema<GetPrivateLinkServicesForSCCPowershellResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5221,8 +5241,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListOperationsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<OperationListResult>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(380, __c47, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5236,11 +5256,15 @@ export const ListPrivateEndpointConnectionsAdtAPIByService: API.OperationMethod<
   ListPrivateEndpointConnectionsAdtAPIByServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListPrivateEndpointConnectionsAdtAPIByServiceRequest>,
+  input: __S(
+    384,
+    __c48,
+    0,
+  ) as any as S.Schema<ListPrivateEndpointConnectionsAdtAPIByServiceRequest>,
   output: __S(
-    82,
-    __c10,
-    2,
+    393,
+    __c49,
+    1,
   ) as any as S.Schema<ListPrivateEndpointConnectionsAdtAPIByServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5255,8 +5279,12 @@ export const ListPrivateEndpointConnectionsCompByService: API.OperationMethod<
   ListPrivateEndpointConnectionsCompByServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListPrivateEndpointConnectionsCompByServiceRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ListPrivateEndpointConnectionsCompByServiceResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<ListPrivateEndpointConnectionsCompByServiceRequest>,
+  output: __S(
+    393,
+    __c49,
+    1,
+  ) as any as S.Schema<ListPrivateEndpointConnectionsCompByServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5270,11 +5298,15 @@ export const ListPrivateEndpointConnectionsForEDMByService: API.OperationMethod<
   ListPrivateEndpointConnectionsForEDMByServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListPrivateEndpointConnectionsForEDMByServiceRequest>,
+  input: __S(
+    408,
+    __c51,
+    0,
+  ) as any as S.Schema<ListPrivateEndpointConnectionsForEDMByServiceRequest>,
   output: __S(
-    82,
-    __c10,
-    2,
+    393,
+    __c49,
+    1,
   ) as any as S.Schema<ListPrivateEndpointConnectionsForEDMByServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5290,14 +5322,14 @@ export const ListPrivateEndpointConnectionsForMIPPolicySyncByService: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    85,
-    __c10,
-    5,
+    416,
+    __c52,
+    0,
   ) as any as S.Schema<ListPrivateEndpointConnectionsForMIPPolicySyncByServiceRequest>,
   output: __S(
-    86,
-    __c10,
-    6,
+    424,
+    __c53,
+    0,
   ) as any as S.Schema<ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5313,14 +5345,14 @@ export const ListPrivateEndpointConnectionsForSCCPowershellByService: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    87,
-    __c10,
-    7,
+    432,
+    __c54,
+    0,
   ) as any as S.Schema<ListPrivateEndpointConnectionsForSCCPowershellByServiceRequest>,
   output: __S(
-    86,
-    __c10,
-    6,
+    424,
+    __c53,
+    0,
   ) as any as S.Schema<ListPrivateEndpointConnectionsForSCCPowershellByServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5335,8 +5367,8 @@ export const ListPrivateEndpointConnectionsSecByService: API.OperationMethod<
   ListPrivateEndpointConnectionsSecByServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListPrivateEndpointConnectionsSecByServiceRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ListPrivateEndpointConnectionsSecByServiceResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<ListPrivateEndpointConnectionsSecByServiceRequest>,
+  output: __S(393, __c49, 1) as any as S.Schema<ListPrivateEndpointConnectionsSecByServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5350,8 +5382,8 @@ export const ListPrivateLinkResourceByService: API.OperationMethod<
   ListPrivateLinkResourceByServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListPrivateLinkResourceByServiceRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ListPrivateLinkResourceByServiceResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<ListPrivateLinkResourceByServiceRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<ListPrivateLinkResourceByServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5365,8 +5397,8 @@ export const ListPrivateLinkResourcesAdtAPIByService: API.OperationMethod<
   ListPrivateLinkResourcesAdtAPIByServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListPrivateLinkResourcesAdtAPIByServiceRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ListPrivateLinkResourcesAdtAPIByServiceResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<ListPrivateLinkResourcesAdtAPIByServiceRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<ListPrivateLinkResourcesAdtAPIByServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5380,8 +5412,8 @@ export const ListPrivateLinkResourcesCompByService: API.OperationMethod<
   ListPrivateLinkResourcesCompByServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListPrivateLinkResourcesCompByServiceRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ListPrivateLinkResourcesCompByServiceResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<ListPrivateLinkResourcesCompByServiceRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<ListPrivateLinkResourcesCompByServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5396,13 +5428,13 @@ export const ListPrivateLinkResourcesForMIPPolicySyncByService: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    95,
-    __c11,
-    7,
+    496,
+    __c62,
+    0,
   ) as any as S.Schema<ListPrivateLinkResourcesForMIPPolicySyncByServiceRequest>,
   output: __S(
-    97,
-    __c12,
+    505,
+    __c63,
     1,
   ) as any as S.Schema<ListPrivateLinkResourcesForMIPPolicySyncByServiceResponse>,
   errors: [UnknownAzureError],
@@ -5419,13 +5451,13 @@ export const ListPrivateLinkResourcesForSCCPowershellByService: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    98,
-    __c12,
-    2,
+    512,
+    __c64,
+    0,
   ) as any as S.Schema<ListPrivateLinkResourcesForSCCPowershellByServiceRequest>,
   output: __S(
-    97,
-    __c12,
+    505,
+    __c63,
     1,
   ) as any as S.Schema<ListPrivateLinkResourcesForSCCPowershellByServiceResponse>,
   errors: [UnknownAzureError],
@@ -5441,8 +5473,8 @@ export const ListPrivateLinkResourcesSecByService: API.OperationMethod<
   ListPrivateLinkResourcesSecByServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListPrivateLinkResourcesSecByServiceRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ListPrivateLinkResourcesSecByServiceResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<ListPrivateLinkResourcesSecByServiceRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<ListPrivateLinkResourcesSecByServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5456,11 +5488,11 @@ export const ListPrivateLinkServicesForEDMUpload: API.OperationMethod<
   ListPrivateLinkServicesForEDMUploadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListPrivateLinkServicesForEDMUploadRequest>,
+  input: __S(528, __c66, 0) as any as S.Schema<ListPrivateLinkServicesForEDMUploadRequest>,
   output: __S(
-    104,
-    __c13,
-    0,
+    539,
+    __c67,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForEDMUploadDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5476,14 +5508,14 @@ export const ListPrivateLinkServicesForEDMUploadByResourceGroup: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    105,
-    __c13,
-    1,
+    544,
+    __c68,
+    0,
   ) as any as S.Schema<ListPrivateLinkServicesForEDMUploadByResourceGroupRequest>,
   output: __S(
-    104,
-    __c13,
-    0,
+    539,
+    __c67,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForEDMUploadDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5499,14 +5531,14 @@ export const ListPrivateLinkServicesForM365ComplianceCenter: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    106,
-    __c13,
-    2,
+    552,
+    __c69,
+    0,
   ) as any as S.Schema<ListPrivateLinkServicesForM365ComplianceCenterRequest>,
   output: __S(
-    110,
-    __c13,
-    6,
+    563,
+    __c70,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5522,14 +5554,14 @@ export const ListPrivateLinkServicesForM365ComplianceCenterByResourceGroup: API.
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    111,
-    __c13,
-    7,
+    568,
+    __c71,
+    0,
   ) as any as S.Schema<ListPrivateLinkServicesForM365ComplianceCenterByResourceGroupRequest>,
   output: __S(
-    110,
-    __c13,
-    6,
+    563,
+    __c70,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5544,11 +5576,11 @@ export const ListPrivateLinkServicesForM365SecurityCenter: API.OperationMethod<
   ListPrivateLinkServicesForM365SecurityCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListPrivateLinkServicesForM365SecurityCenterRequest>,
+  input: __S(576, __c72, 0) as any as S.Schema<ListPrivateLinkServicesForM365SecurityCenterRequest>,
   output: __S(
-    116,
-    __c14,
-    4,
+    587,
+    __c73,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5564,14 +5596,14 @@ export const ListPrivateLinkServicesForM365SecurityCenterByResourceGroup: API.Op
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    117,
-    __c14,
-    5,
+    592,
+    __c74,
+    0,
   ) as any as S.Schema<ListPrivateLinkServicesForM365SecurityCenterByResourceGroupRequest>,
   output: __S(
-    116,
-    __c14,
-    4,
+    587,
+    __c73,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5586,11 +5618,11 @@ export const ListPrivateLinkServicesForMIPPolicySync: API.OperationMethod<
   ListPrivateLinkServicesForMIPPolicySyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListPrivateLinkServicesForMIPPolicySyncRequest>,
+  input: __S(608, __c76, 0) as any as S.Schema<ListPrivateLinkServicesForMIPPolicySyncRequest>,
   output: __S(
-    122,
-    __c15,
-    2,
+    619,
+    __c77,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5606,14 +5638,14 @@ export const ListPrivateLinkServicesForMIPPolicySyncByResourceGroup: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    123,
-    __c15,
-    3,
+    624,
+    __c78,
+    0,
   ) as any as S.Schema<ListPrivateLinkServicesForMIPPolicySyncByResourceGroupRequest>,
   output: __S(
-    122,
-    __c15,
-    2,
+    619,
+    __c77,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5629,14 +5661,14 @@ export const ListPrivateLinkServicesForO365ManagementActivityAPI: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    124,
-    __c15,
-    4,
+    632,
+    __c79,
+    0,
   ) as any as S.Schema<ListPrivateLinkServicesForO365ManagementActivityAPIRequest>,
   output: __S(
-    128,
-    __c16,
-    0,
+    643,
+    __c80,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPIDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5652,14 +5684,14 @@ export const ListPrivateLinkServicesForO365ManagementActivityAPIByResourceGroup:
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    129,
-    __c16,
-    1,
+    648,
+    __c81,
+    0,
   ) as any as S.Schema<ListPrivateLinkServicesForO365ManagementActivityAPIByResourceGroupRequest>,
   output: __S(
-    128,
-    __c16,
-    0,
+    643,
+    __c80,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPIDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5674,11 +5706,11 @@ export const ListPrivateLinkServicesForSCCPowershell: API.OperationMethod<
   ListPrivateLinkServicesForSCCPowershellError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListPrivateLinkServicesForSCCPowershellRequest>,
+  input: __S(656, __c82, 0) as any as S.Schema<ListPrivateLinkServicesForSCCPowershellRequest>,
   output: __S(
-    134,
-    __c16,
-    6,
+    667,
+    __c83,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForSCCPowershellDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5694,14 +5726,14 @@ export const ListPrivateLinkServicesForSCCPowershellByResourceGroup: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    135,
-    __c16,
-    7,
+    672,
+    __c84,
+    0,
   ) as any as S.Schema<ListPrivateLinkServicesForSCCPowershellByResourceGroupRequest>,
   output: __S(
-    134,
-    __c16,
-    6,
+    667,
+    __c83,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForSCCPowershellDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5717,14 +5749,14 @@ export const PrivateEndpointConnectionsAdtAPICreateOrUpdate: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    137,
-    __c17,
-    1,
+    680,
+    __c85,
+    0,
   ) as any as S.Schema<PrivateEndpointConnectionsAdtAPICreateOrUpdateRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    120,
+    __c15,
+    0,
   ) as any as S.Schema<PrivateEndpointConnectionsAdtAPICreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5739,8 +5771,12 @@ export const PrivateEndpointConnectionsCompCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCompCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<PrivateEndpointConnectionsCompCreateOrUpdateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PrivateEndpointConnectionsCompCreateOrUpdateResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<PrivateEndpointConnectionsCompCreateOrUpdateRequest>,
+  output: __S(
+    120,
+    __c15,
+    0,
+  ) as any as S.Schema<PrivateEndpointConnectionsCompCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5755,14 +5791,14 @@ export const PrivateEndpointConnectionsForEDMCreateOrUpdate: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    139,
-    __c17,
-    3,
+    704,
+    __c88,
+    0,
   ) as any as S.Schema<PrivateEndpointConnectionsForEDMCreateOrUpdateRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    120,
+    __c15,
+    0,
   ) as any as S.Schema<PrivateEndpointConnectionsForEDMCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5778,14 +5814,14 @@ export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdate: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    140,
-    __c17,
-    4,
+    712,
+    __c89,
+    0,
   ) as any as S.Schema<PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateRequest>,
   output: __S(
-    141,
-    __c17,
-    5,
+    720,
+    __c90,
+    0,
   ) as any as S.Schema<PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5801,14 +5837,14 @@ export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdate: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    142,
-    __c17,
-    6,
+    736,
+    __c92,
+    0,
   ) as any as S.Schema<PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateRequest>,
   output: __S(
-    141,
-    __c17,
-    5,
+    720,
+    __c90,
+    0,
   ) as any as S.Schema<PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5823,8 +5859,12 @@ export const PrivateEndpointConnectionsSecCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsSecCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<PrivateEndpointConnectionsSecCreateOrUpdateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PrivateEndpointConnectionsSecCreateOrUpdateResponse>,
+  input: __S(744, __c93, 0) as any as S.Schema<PrivateEndpointConnectionsSecCreateOrUpdateRequest>,
+  output: __S(
+    120,
+    __c15,
+    0,
+  ) as any as S.Schema<PrivateEndpointConnectionsSecCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5839,14 +5879,14 @@ export const PrivateLinkServicesForEDMUploadCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    148,
-    __c18,
-    4,
+    754,
+    __c94,
+    2,
   ) as any as S.Schema<PrivateLinkServicesForEDMUploadCreateOrUpdateRequest>,
   output: __S(
-    150,
-    __c18,
-    6,
+    756,
+    __c94,
+    4,
   ) as any as S.Schema<PrivateLinkServicesForEDMUploadCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5862,14 +5902,14 @@ export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdate: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    153,
-    __c19,
+    769,
+    __c96,
     1,
   ) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequest>,
   output: __S(
-    156,
-    __c19,
-    4,
+    771,
+    __c96,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5885,14 +5925,14 @@ export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdate: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    158,
-    __c19,
-    6,
+    793,
+    __c99,
+    1,
   ) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequest>,
   output: __S(
-    160,
-    __c20,
-    0,
+    795,
+    __c99,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5908,14 +5948,14 @@ export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    162,
-    __c20,
-    2,
+    801,
+    __c100,
+    1,
   ) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequest>,
   output: __S(
-    164,
-    __c20,
-    4,
+    803,
+    __c100,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5931,14 +5971,14 @@ export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdate: API.
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    167,
-    __c20,
-    7,
+    810,
+    __c101,
+    2,
   ) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequest>,
   output: __S(
-    169,
-    __c21,
-    1,
+    812,
+    __c101,
+    4,
   ) as any as S.Schema<PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5954,14 +5994,14 @@ export const PrivateLinkServicesForSCCPowershellCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    171,
-    __c21,
-    3,
+    817,
+    __c102,
+    1,
   ) as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateRequest>,
   output: __S(
-    173,
-    __c21,
-    5,
+    819,
+    __c102,
+    3,
   ) as any as S.Schema<PrivateLinkServicesForSCCPowershellCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5976,8 +6016,8 @@ export const UpdatePrivateLinkServicesForEDMUpload: API.OperationMethod<
   UpdatePrivateLinkServicesForEDMUploadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadResponse>,
+  input: __S(824, __c103, 0) as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadRequest>,
+  output: __S(826, __c103, 2) as any as S.Schema<UpdatePrivateLinkServicesForEDMUploadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5992,14 +6032,14 @@ export const UpdatePrivateLinkServicesForM365ComplianceCenter: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    178,
-    __c22,
-    2,
+    840,
+    __c105,
+    0,
   ) as any as S.Schema<UpdatePrivateLinkServicesForM365ComplianceCenterRequest>,
   output: __S(
-    180,
-    __c22,
-    4,
+    842,
+    __c105,
+    2,
   ) as any as S.Schema<UpdatePrivateLinkServicesForM365ComplianceCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6015,14 +6055,14 @@ export const UpdatePrivateLinkServicesForM365SecurityCenter: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    181,
-    __c22,
-    5,
+    856,
+    __c107,
+    0,
   ) as any as S.Schema<UpdatePrivateLinkServicesForM365SecurityCenterRequest>,
   output: __S(
-    183,
-    __c22,
-    7,
+    858,
+    __c107,
+    2,
   ) as any as S.Schema<UpdatePrivateLinkServicesForM365SecurityCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6037,8 +6077,8 @@ export const UpdatePrivateLinkServicesForMIPPolicySync: API.OperationMethod<
   UpdatePrivateLinkServicesForMIPPolicySyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncResponse>,
+  input: __S(864, __c108, 0) as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncRequest>,
+  output: __S(866, __c108, 2) as any as S.Schema<UpdatePrivateLinkServicesForMIPPolicySyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6053,14 +6093,14 @@ export const UpdatePrivateLinkServicesForO365ManagementActivityAPI: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    187,
-    __c23,
-    3,
+    872,
+    __c109,
+    0,
   ) as any as S.Schema<UpdatePrivateLinkServicesForO365ManagementActivityAPIRequest>,
   output: __S(
-    189,
-    __c23,
-    5,
+    874,
+    __c109,
+    2,
   ) as any as S.Schema<UpdatePrivateLinkServicesForO365ManagementActivityAPIResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6075,8 +6115,8 @@ export const UpdatePrivateLinkServicesForSCCPowershell: API.OperationMethod<
   UpdatePrivateLinkServicesForSCCPowershellError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellResponse>,
+  input: __S(880, __c110, 0) as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellRequest>,
+  output: __S(882, __c110, 2) as any as S.Schema<UpdatePrivateLinkServicesForSCCPowershellResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6103,11 +6143,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeletePrivateEndpointConnectionsAdtAPIRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeletePrivateEndpointConnectionsAdtAPIResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6125,159 +6173,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeletePrivateEndpointConnectionsCompRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2021-03-08",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionsForEDMRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2021-03-08",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionsForMIPPolicySyncRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePrivateEndpointConnectionsForMIPPolicySyncResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2021-03-08",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionsForSCCPowershellRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2021-03-08",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionsSecRequest",
-      });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}",
-            code: 200,
-            apiVersion: "2021-03-08",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateLinkServicesForM365ComplianceCenterRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}",
-            code: 200,
-            apiVersion: "2021-03-08",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateLinkServicesForM365SecurityCenterRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}",
-            code: 200,
-            apiVersion: "2021-03-08",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateLinkServicesForMIPPolicySyncRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}",
-            code: 200,
-            apiVersion: "2021-03-08",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateLinkServicesForO365ManagementActivityAPIRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePrivateLinkServicesForO365ManagementActivityAPIResponse",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6294,7 +6194,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeletePrivateLinkServicesForSCCPowershellRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6309,13 +6213,17 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteServiceRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteServiceResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6346,7 +6254,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "OperationResultsDescription",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6364,7 +6276,57 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionsAdtAPIRequest",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpoint" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(64, __c8, 0)),
+          privateLinkServiceConnectionState: __S(65, __c8, 1),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c10, 0)),
+          properties: S.optional(__S(66, __c8, 2)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionsAdtAPIResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -6377,47 +6339,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionsAdtAPIResponseSystemData",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpoint" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(20, __c2, 4)),
-          privateLinkServiceConnectionState: __S(21, __c2, 5),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(19, __c2, 3)),
-          properties: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionsAdtAPIResponse",
-      });
   }
 }
-function __c3(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6437,7 +6361,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionsCompRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6455,7 +6383,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionsForEDMRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6473,7 +6405,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionsForMIPPolicySyncRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -6486,19 +6422,27 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionsForMIPPolicySyncResponseSystemData",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
-          properties: S.optional(__S(22, __c2, 6)),
+          systemData: S.optional(__S(112, __c14, 0)),
+          properties: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionsForMIPPolicySyncResponse",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6516,7 +6460,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionsForSCCPowershellRequest",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6534,7 +6482,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionsSecRequest",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6554,7 +6506,43 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(152, __c19, 0)),
+          requiredZoneNames: S.optional(__S(152, __c19, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(176, __c22, 0)),
+          properties: S.optional(__S(160, __c20, 0)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkResourceResponse",
+      });
+  }
+}
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6569,31 +6557,33 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourceResponseSystemData",
       });
-    case 1:
-      return S.Array(S.String);
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(33, __c4, 1)),
-          requiredZoneNames: S.optional(__S(33, __c4, 1)),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2021-03-08",
+          }),
+        ),
       ).annotate({
-        identifier: "PrivateLinkResourceProperties",
+        identifier: "DeletePrivateEndpointConnectionsForEDMRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c4, 0)),
-          properties: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkResourceResponse",
-      });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6611,19 +6601,23 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourcesAdtAPIRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(19, __c2, 3)),
-          properties: S.optional(__S(34, __c4, 2)),
+          systemData: S.optional(__S(80, __c10, 0)),
+          properties: S.optional(__S(160, __c20, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourcesAdtAPIResponse",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6641,7 +6635,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourcesCompRequest",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6661,7 +6659,23 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c28, 0)),
+          properties: S.optional(__S(160, __c20, 0)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkResourcesForMIPPolicySyncResponse",
+      });
+  }
+}
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6676,19 +6690,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourcesForMIPPolicySyncResponseSystemData",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
-          properties: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkResourcesForMIPPolicySyncResponse",
-      });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6706,7 +6712,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourcesForSCCPowershellRequest",
       });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6724,7 +6734,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourcesSecRequest",
       });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6741,31 +6755,73 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkServicesForEDMUploadRequest",
       });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GetPrivateLinkServicesForEDMUploadResponseIdentity",
+        identifier: "GetPrivateLinkServicesForEDMUploadResponseProperties",
       });
-    case 7:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c10, 0)),
+          kind: S.String,
+          location: S.String,
+          tags: S.optional(__S(280, __c35, 0)),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(288, __c36, 0)),
+          properties: S.optional(__S(249, __c31, 1)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkServicesForEDMUploadResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(176, __c22, 0)),
+          properties: S.optional(__S(66, __c8, 2)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnection",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(256, __c32, 0));
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           objectId: S.String,
         }),
       ).annotate({ identifier: "ServiceAccessPolicyEntry" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
     case 1:
+      return S.Array(__S(272, __c34, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           offerThroughput: S.optional(S.Number),
@@ -6774,7 +6830,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ServiceCosmosDbConfigurationInfo",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           authority: S.optional(S.String),
@@ -6784,19 +6840,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ServiceAuthenticationConfigurationInfo",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          origins: S.optional(__S(33, __c4, 1)),
-          headers: S.optional(__S(33, __c4, 1)),
-          methods: S.optional(__S(33, __c4, 1)),
+          origins: S.optional(__S(152, __c19, 0)),
+          headers: S.optional(__S(152, __c19, 0)),
+          methods: S.optional(__S(152, __c19, 0)),
           maxAge: S.optional(S.Number),
           allowCredentials: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ServiceCorsConfigurationInfo",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           storageAccountName: S.optional(S.String),
@@ -6804,57 +6860,31 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ServiceExportConfigurationInfo",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c4, 0)),
-          properties: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnection",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkServicesForEDMUploadResponseProperties",
-      });
   }
 }
-function __c7(j: number): any {
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(19, __c2, 3)),
-          kind: S.String,
-          location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(46, __c5, 6)),
-          properties: S.optional(__S(55, __c6, 7)),
         }),
       ).annotate({
-        identifier: "GetPrivateLinkServicesForEDMUploadResponse",
+        identifier: "GetPrivateLinkServicesForEDMUploadResponseIdentity",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6871,7 +6901,43 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkServicesForM365ComplianceCenterRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
+          publicNetworkAccess: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkServicesForM365ComplianceCenterResponseProperties",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(112, __c14, 0)),
+          kind: S.String,
+          location: S.String,
+          tags: S.optional(__S(280, __c35, 0)),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(297, __c37, 1)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkServicesForM365ComplianceCenterResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -6881,39 +6947,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkServicesForM365ComplianceCenterResponseIdentity",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkServicesForM365ComplianceCenterResponseProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
-          kind: S.String,
-          location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(58, __c7, 2)),
-          properties: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkServicesForM365ComplianceCenterResponse",
-      });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6930,7 +6968,43 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkServicesForM365SecurityCenterRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
+          publicNetworkAccess: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkServicesForM365SecurityCenterResponseProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(112, __c14, 0)),
+          kind: S.String,
+          location: S.String,
+          tags: S.optional(__S(280, __c35, 0)),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(320, __c40, 0)),
+          properties: S.optional(__S(313, __c39, 1)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkServicesForM365SecurityCenterResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -6940,43 +7014,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkServicesForM365SecurityCenterResponseIdentity",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkServicesForM365SecurityCenterResponseProperties",
-      });
   }
 }
-function __c8(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
-          kind: S.String,
-          location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(62, __c7, 6)),
-          properties: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkServicesForM365SecurityCenterResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6993,39 +7035,43 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkServicesForMIPPolicySyncRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetPrivateLinkServicesForMIPPolicySyncResponseProperties",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
+          systemData: S.optional(__S(224, __c28, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(46, __c5, 6)),
-          properties: S.optional(__S(66, __c8, 2)),
+          identity: S.optional(__S(288, __c36, 0)),
+          properties: S.optional(__S(329, __c41, 1)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkServicesForMIPPolicySyncResponse",
       });
-    case 4:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7042,43 +7088,77 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkServicesForO365ManagementActivityAPIRequest",
       });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetPrivateLinkServicesForO365ManagementActivityAPIResponseProperties",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(112, __c14, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(58, __c7, 2)),
-          properties: S.optional(__S(70, __c8, 6)),
+          identity: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(337, __c42, 1)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkServicesForO365ManagementActivityAPIResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2021-03-08",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionsForMIPPolicySyncRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePrivateEndpointConnectionsForMIPPolicySyncResponse",
+      });
+  }
+}
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7101,12 +7181,12 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
@@ -7118,18 +7198,22 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
+          systemData: S.optional(__S(224, __c28, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(46, __c5, 6)),
-          properties: S.optional(__S(73, __c9, 1)),
+          identity: S.optional(__S(288, __c36, 0)),
+          properties: S.optional(__S(369, __c46, 1)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkServicesForSCCPowershellResponse",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -7140,7 +7224,7 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -7149,27 +7233,27 @@ function __c9(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
           origin: S.optional(S.String),
-          display: S.optional(__S(76, __c9, 4)),
+          display: S.optional(__S(377, __c47, 1)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(378, __c47, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(78, __c9, 6)),
+          value: S.optional(__S(379, __c47, 3)),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c10(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7188,18 +7272,26 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsAdtAPIByServiceRequest",
       });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(256, __c32, 0));
     case 1:
-      return S.Array(__S(53, __c6, 5));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(81, __c10, 1)),
+          value: S.optional(__S(392, __c49, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsAdtAPIByServiceResponse",
       });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7216,7 +7308,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsCompByServiceRequest",
       });
-    case 4:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7233,7 +7329,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsForEDMByServiceRequest",
       });
-    case 5:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7250,16 +7350,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsForMIPPolicySyncByServiceRequest",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(54, __c6, 6)),
+          value: S.optional(__S(264, __c33, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponse",
       });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7278,7 +7386,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7297,7 +7405,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsSecByServiceRequest",
       });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7314,28 +7426,40 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourceByServiceRequest",
       });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c4, 0)),
-          properties: S.optional(__S(34, __c4, 2)),
+          systemData: S.optional(__S(176, __c22, 0)),
+          properties: S.optional(__S(160, __c20, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(456, __c57, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(91, __c11, 3)),
+          value: S.optional(__S(464, __c58, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPrivateLinkResourceByServiceResponse",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7352,7 +7476,33 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourcesAdtAPIByServiceRequest",
       });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2021-03-08",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionsForSCCPowershellRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7369,7 +7519,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourcesCompByServiceRequest",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7388,20 +7542,24 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(90, __c11, 2));
+      return S.Array(__S(456, __c57, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(96, __c12, 0)),
+          value: S.optional(__S(504, __c63, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPrivateLinkResourcesForMIPPolicySyncByServiceResponse",
       });
-    case 2:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7418,7 +7576,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourcesForSCCPowershellByServiceRequest",
       });
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7435,7 +7597,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourcesSecByServiceRequest",
       });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7450,54 +7616,58 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkServicesForEDMUploadRequest",
       });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForEDMUploadDescriptionProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(19, __c2, 3)),
+          systemData: S.optional(__S(80, __c10, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(46, __c5, 6)),
-          properties: S.optional(__S(101, __c12, 5)),
+          identity: S.optional(__S(288, __c36, 0)),
+          properties: S.optional(__S(536, __c67, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForEDMUploadDescription",
       });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(537, __c67, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(103, __c12, 7)),
+          value: S.optional(__S(538, __c67, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForEDMUploadDescriptionListResult",
       });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7513,7 +7683,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkServicesForEDMUploadByResourceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7528,50 +7702,58 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkServicesForM365ComplianceCenterRequest",
       });
-    case 3:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForM365ComplianceCenterDescriptionProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(112, __c14, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(58, __c7, 2)),
-          properties: S.optional(__S(107, __c13, 3)),
+          identity: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(560, __c70, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForM365ComplianceCenterDescription",
       });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(561, __c70, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(109, __c13, 5)),
+          value: S.optional(__S(562, __c70, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForM365ComplianceCenterDescriptionListResult",
       });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7589,7 +7771,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7606,50 +7788,58 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkServicesForM365SecurityCenterRequest",
       });
-    case 1:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForM365SecurityCenterDescriptionProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(112, __c14, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(62, __c7, 6)),
-          properties: S.optional(__S(113, __c14, 1)),
+          identity: S.optional(__S(320, __c40, 0)),
+          properties: S.optional(__S(584, __c73, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForM365SecurityCenterDescription",
       });
+    case 2:
+      return S.Array(__S(585, __c73, 1));
     case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(115, __c14, 3)),
+          value: S.optional(__S(586, __c73, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForM365SecurityCenterDescriptionListResult",
       });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7665,7 +7855,33 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkServicesForM365SecurityCenterByResourceGroupRequest",
       });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2021-03-08",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionsSecRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7680,54 +7896,58 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkServicesForMIPPolicySyncRequest",
       });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForMIPPolicySyncDescriptionProperties",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
+          systemData: S.optional(__S(224, __c28, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(46, __c5, 6)),
-          properties: S.optional(__S(119, __c14, 7)),
+          identity: S.optional(__S(288, __c36, 0)),
+          properties: S.optional(__S(616, __c77, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForMIPPolicySyncDescription",
       });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
     case 2:
+      return S.Array(__S(617, __c77, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(121, __c15, 1)),
+          value: S.optional(__S(618, __c77, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForMIPPolicySyncDescriptionListResult",
       });
-    case 3:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7743,7 +7963,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkServicesForMIPPolicySyncByResourceGroupRequest",
       });
-    case 4:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7758,54 +7982,58 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkServicesForO365ManagementActivityAPIRequest",
       });
-    case 5:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForO365ManagementActivityAPIDescriptionProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(112, __c14, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(58, __c7, 2)),
-          properties: S.optional(__S(125, __c15, 5)),
+          identity: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(640, __c80, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForO365ManagementActivityAPIDescription",
       });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(641, __c80, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(127, __c15, 7)),
+          value: S.optional(__S(642, __c80, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForO365ManagementActivityAPIDescriptionListResult",
       });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7821,7 +8049,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkServicesForO365ManagementActivityAPIByResourceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7836,50 +8068,58 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkServicesForSCCPowershellRequest",
       });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForSCCPowershellDescriptionProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
+          systemData: S.optional(__S(224, __c28, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(46, __c5, 6)),
-          properties: S.optional(__S(131, __c16, 3)),
+          identity: S.optional(__S(288, __c36, 0)),
+          properties: S.optional(__S(664, __c83, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForSCCPowershellDescription",
       });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(665, __c83, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(133, __c16, 5)),
+          value: S.optional(__S(666, __c83, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForSCCPowershellDescriptionListResult",
       });
-    case 7:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7897,25 +8137,16 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(15, __c1, 7)),
-          privateLinkServiceConnectionState: __S(21, __c2, 5),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionPropertiesInput",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(136, __c17, 0)),
+          properties: S.optional(__S(688, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7927,14 +8158,31 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionsAdtAPICreateOrUpdateRequest",
       });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(40, __c5, 0)),
+          privateLinkServiceConnectionState: __S(65, __c8, 1),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionPropertiesInput",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(136, __c17, 0)),
+          properties: S.optional(__S(688, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7946,14 +8194,18 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionsCompCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(136, __c17, 0)),
+          properties: S.optional(__S(688, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7965,14 +8217,18 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionsForEDMCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(136, __c17, 0)),
+          properties: S.optional(__S(688, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7984,26 +8240,55 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
-          properties: S.optional(__S(22, __c2, 6)),
+          systemData: S.optional(__S(112, __c14, 0)),
+          properties: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateResponse",
       });
-    case 6:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}",
+            code: 200,
+            apiVersion: "2021-03-08",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateLinkServicesForM365ComplianceCenterRequest",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(136, __c17, 0)),
+          properties: S.optional(__S(688, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8015,14 +8300,18 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(136, __c17, 0)),
+          properties: S.optional(__S(688, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8036,7 +8325,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8049,28 +8338,18 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionInput",
-      });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(146, __c18, 2)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(761, __c95, 1)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForEDMUploadCreateOrUpdateRequestProperties",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8078,10 +8357,10 @@ function __c18(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(144, __c18, 0)),
-          properties: S.optional(__S(147, __c18, 3)),
+          identity: S.optional(__S(752, __c94, 0)),
+          properties: S.optional(__S(753, __c94, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8093,59 +8372,65 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServicesForEDMUploadCreateOrUpdateRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForEDMUploadCreateOrUpdateResponseProperties",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(112, __c14, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(58, __c7, 2)),
-          properties: S.optional(__S(149, __c18, 5)),
+          identity: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(755, __c94, 3)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForEDMUploadCreateOrUpdateResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestIdentity",
-      });
   }
 }
-function __c19(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(146, __c18, 2)),
+          properties: S.optional(__S(688, __c86, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionInput",
+      });
+    case 1:
+      return S.Array(__S(760, __c95, 0));
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(761, __c95, 1)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
@@ -8159,10 +8444,10 @@ function __c19(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(151, __c18, 7)),
-          properties: S.optional(__S(152, __c19, 0)),
+          identity: S.optional(__S(776, __c97, 0)),
+          properties: S.optional(__S(768, __c96, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8177,6 +8462,54 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          provisioningState: S.optional(S.String),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
+          publicNetworkAccess: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(112, __c14, 0)),
+          kind: S.String,
+          location: S.String,
+          tags: S.optional(__S(344, __c43, 0)),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(784, __c98, 0)),
+          properties: S.optional(__S(770, __c96, 2)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponse",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestIdentity",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.optional(S.String),
@@ -8184,53 +8517,25 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseIdentity",
       });
-    case 3:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponseProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
-          kind: S.String,
-          location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(154, __c19, 2)),
-          properties: S.optional(__S(155, __c19, 3)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(146, __c18, 2)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(761, __c95, 1)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8238,10 +8543,10 @@ function __c19(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(151, __c18, 7)),
-          properties: S.optional(__S(157, __c19, 5)),
+          identity: S.optional(__S(776, __c97, 0)),
+          properties: S.optional(__S(792, __c99, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8253,57 +8558,57 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponseProperties",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(112, __c14, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(58, __c7, 2)),
-          properties: S.optional(__S(159, __c19, 7)),
+          identity: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(794, __c99, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForM365SecurityCenterCreateOrUpdateResponse",
       });
-    case 1:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(146, __c18, 2)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(761, __c95, 1)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8311,10 +8616,10 @@ function __c20(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(151, __c18, 7)),
-          properties: S.optional(__S(161, __c20, 1)),
+          identity: S.optional(__S(776, __c97, 0)),
+          properties: S.optional(__S(800, __c100, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8326,39 +8631,43 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponseProperties",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(112, __c14, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(58, __c7, 2)),
-          properties: S.optional(__S(163, __c20, 3)),
+          identity: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(802, __c100, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForMIPPolicySyncCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -8366,22 +8675,22 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestIdentity",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(146, __c18, 2)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(761, __c95, 1)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier:
           "PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestProperties",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8389,10 +8698,10 @@ function __c20(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(165, __c20, 5)),
-          properties: S.optional(__S(166, __c20, 6)),
+          identity: S.optional(__S(808, __c101, 0)),
+          properties: S.optional(__S(809, __c101, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8404,58 +8713,58 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier:
           "PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponseProperties",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(112, __c14, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(154, __c19, 2)),
-          properties: S.optional(__S(168, __c21, 0)),
+          identity: S.optional(__S(784, __c98, 0)),
+          properties: S.optional(__S(811, __c101, 3)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateResponse",
       });
-    case 2:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(146, __c18, 2)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(761, __c95, 1)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestProperties",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8463,10 +8772,10 @@ function __c21(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(151, __c18, 7)),
-          properties: S.optional(__S(170, __c21, 2)),
+          identity: S.optional(__S(776, __c97, 0)),
+          properties: S.optional(__S(816, __c102, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8478,54 +8787,50 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServicesForSCCPowershellCreateOrUpdateRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForSCCPowershellCreateOrUpdateResponseProperties",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(112, __c14, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(58, __c7, 2)),
-          properties: S.optional(__S(172, __c21, 4)),
+          identity: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(818, __c102, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkServicesForSCCPowershellCreateOrUpdateResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ServicesPropertiesUpdateParameters",
-      });
-    case 7:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(45, __c5, 5)),
-          properties: S.optional(__S(174, __c21, 6)),
+          tags: S.optional(__S(280, __c35, 0)),
+          properties: S.optional(__S(832, __c104, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8537,50 +8842,62 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForEDMUploadRequest",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForEDMUploadResponseProperties",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(19, __c2, 3)),
+          systemData: S.optional(__S(80, __c10, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(46, __c5, 6)),
-          properties: S.optional(__S(176, __c22, 0)),
+          identity: S.optional(__S(288, __c36, 0)),
+          properties: S.optional(__S(825, __c103, 1)),
         }),
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForEDMUploadResponse",
       });
-    case 2:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publicNetworkAccess: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ServicesPropertiesUpdateParameters",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(69, __c8, 5)),
-          properties: S.optional(__S(174, __c21, 6)),
+          tags: S.optional(__S(344, __c43, 0)),
+          properties: S.optional(__S(832, __c104, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8592,46 +8909,71 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForM365ComplianceCenterRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForM365ComplianceCenterResponseProperties",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(112, __c14, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(58, __c7, 2)),
-          properties: S.optional(__S(179, __c22, 3)),
+          identity: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(841, __c105, 1)),
         }),
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForM365ComplianceCenterResponse",
       });
-    case 5:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(45, __c5, 5)),
-          properties: S.optional(__S(174, __c21, 6)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}",
+            code: 200,
+            apiVersion: "2021-03-08",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateLinkServicesForM365SecurityCenterRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(280, __c35, 0)),
+          properties: S.optional(__S(832, __c104, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8643,41 +8985,41 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForM365SecurityCenterRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForM365SecurityCenterResponseProperties",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(112, __c14, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(58, __c7, 2)),
-          properties: S.optional(__S(182, __c22, 6)),
+          identity: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(857, __c107, 1)),
         }),
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForM365SecurityCenterResponse",
       });
   }
 }
-function __c23(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8685,8 +9027,8 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(45, __c5, 5)),
-          properties: S.optional(__S(174, __c21, 6)),
+          tags: S.optional(__S(280, __c35, 0)),
+          properties: S.optional(__S(832, __c104, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8702,12 +9044,12 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
@@ -8719,25 +9061,29 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
+          systemData: S.optional(__S(224, __c28, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(62, __c7, 6)),
-          properties: S.optional(__S(185, __c23, 1)),
+          identity: S.optional(__S(320, __c40, 0)),
+          properties: S.optional(__S(865, __c108, 1)),
         }),
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForMIPPolicySyncResponse",
       });
-    case 3:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(69, __c8, 5)),
-          properties: S.optional(__S(174, __c21, 6)),
+          tags: S.optional(__S(344, __c43, 0)),
+          properties: S.optional(__S(832, __c104, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8749,46 +9095,50 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForO365ManagementActivityAPIRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForO365ManagementActivityAPIResponseProperties",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(27, __c3, 3)),
+          systemData: S.optional(__S(112, __c14, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(58, __c7, 2)),
-          properties: S.optional(__S(188, __c23, 4)),
+          identity: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(873, __c109, 1)),
         }),
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForO365ManagementActivityAPIResponse",
       });
-    case 6:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(45, __c5, 5)),
-          properties: S.optional(__S(174, __c21, 6)),
+          tags: S.optional(__S(280, __c35, 0)),
+          properties: S.optional(__S(832, __c104, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8800,45 +9150,86 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForSCCPowershellRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(48, __c6, 0)),
-          cosmosDbConfiguration: S.optional(__S(49, __c6, 1)),
-          authenticationConfiguration: S.optional(__S(50, __c6, 2)),
-          corsConfiguration: S.optional(__S(51, __c6, 3)),
-          exportConfiguration: S.optional(__S(52, __c6, 4)),
-          privateEndpointConnections: S.optional(__S(54, __c6, 6)),
+          accessPolicies: S.optional(__S(273, __c34, 1)),
+          cosmosDbConfiguration: S.optional(__S(274, __c34, 2)),
+          authenticationConfiguration: S.optional(__S(275, __c34, 3)),
+          corsConfiguration: S.optional(__S(276, __c34, 4)),
+          exportConfiguration: S.optional(__S(277, __c34, 5)),
+          privateEndpointConnections: S.optional(__S(264, __c33, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForSCCPowershellResponseProperties",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(40, __c5, 0)),
+          systemData: S.optional(__S(224, __c28, 0)),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(280, __c35, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(62, __c7, 6)),
-          properties: S.optional(__S(191, __c23, 7)),
+          identity: S.optional(__S(320, __c40, 0)),
+          properties: S.optional(__S(881, __c110, 1)),
         }),
       ).annotate({
         identifier: "UpdatePrivateLinkServicesForSCCPowershellResponse",
       });
   }
 }
-
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}",
+            code: 200,
+            apiVersion: "2021-03-08",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateLinkServicesForMIPPolicySyncRequest",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}",
+            code: 200,
+            apiVersion: "2021-03-08",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateLinkServicesForO365ManagementActivityAPIRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePrivateLinkServicesForO365ManagementActivityAPIResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

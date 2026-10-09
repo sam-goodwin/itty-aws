@@ -30314,8 +30314,8 @@ export const createRuleForAccount: API.OperationMethod<
   CreateRuleForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateRuleForAccountRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateRuleResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<CreateRuleForAccountRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<CreateRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30329,8 +30329,8 @@ export const createRuleForZone: API.OperationMethod<
   CreateRuleForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateRuleForZoneRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateRuleResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<CreateRuleForZoneRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<CreateRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30344,8 +30344,8 @@ export const createRulesetForAccount: API.OperationMethod<
   CreateRulesetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateRulesetForAccountRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateRulesetResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<CreateRulesetForAccountRequest>,
+  output: __S(292, __c36, 4) as any as S.Schema<CreateRulesetResponse>,
   errors: [PhaseNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30359,8 +30359,8 @@ export const createRulesetForZone: API.OperationMethod<
   CreateRulesetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateRulesetForZoneRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateRulesetResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<CreateRulesetForZoneRequest>,
+  output: __S(292, __c36, 4) as any as S.Schema<CreateRulesetResponse>,
   errors: [PhaseNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30374,8 +30374,8 @@ export const deleteRuleForAccount: API.OperationMethod<
   DeleteRuleForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteRuleForAccountRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteRuleResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<DeleteRuleForAccountRequest>,
+  output: __S(314, __c39, 2) as any as S.Schema<DeleteRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30389,8 +30389,8 @@ export const deleteRuleForZone: API.OperationMethod<
   DeleteRuleForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteRuleForZoneRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteRuleResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<DeleteRuleForZoneRequest>,
+  output: __S(314, __c39, 2) as any as S.Schema<DeleteRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30404,8 +30404,8 @@ export const deleteRulesetForAccount: API.OperationMethod<
   DeleteRulesetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteRulesetForAccountRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteRulesetForAccountResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<DeleteRulesetForAccountRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<DeleteRulesetForAccountResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30419,8 +30419,8 @@ export const deleteRulesetForZone: API.OperationMethod<
   DeleteRulesetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteRulesetForZoneRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteRulesetForZoneResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteRulesetForZoneRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<DeleteRulesetForZoneResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30434,8 +30434,8 @@ export const deleteVersionForAccount: API.OperationMethod<
   DeleteVersionForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteVersionForAccountRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteVersionForAccountResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteVersionForAccountRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<DeleteVersionForAccountResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30449,8 +30449,8 @@ export const deleteVersionForZone: API.OperationMethod<
   DeleteVersionForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteVersionForZoneRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteVersionForZoneResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteVersionForZoneRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<DeleteVersionForZoneResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30464,8 +30464,8 @@ export const getPhasForAccount: API.OperationMethod<
   GetPhasForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetPhasForAccountRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetPhasResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetPhasForAccountRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetPhasResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30479,8 +30479,8 @@ export const getPhasForZone: API.OperationMethod<
   GetPhasForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetPhasForZoneRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetPhasResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetPhasForZoneRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetPhasResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30494,8 +30494,8 @@ export const getPhasVersionForAccount: API.OperationMethod<
   GetPhasVersionForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetPhasVersionForAccountRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetPhasVersionResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetPhasVersionForAccountRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<GetPhasVersionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30509,8 +30509,8 @@ export const getPhasVersionForZone: API.OperationMethod<
   GetPhasVersionForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetPhasVersionForZoneRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetPhasVersionResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetPhasVersionForZoneRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<GetPhasVersionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30524,8 +30524,8 @@ export const getRulesetForAccount: API.OperationMethod<
   GetRulesetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetRulesetForAccountRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetRulesetResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetRulesetForAccountRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetRulesetResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30539,8 +30539,8 @@ export const getRulesetForZone: API.OperationMethod<
   GetRulesetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetRulesetForZoneRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetRulesetResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetRulesetForZoneRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetRulesetResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30554,8 +30554,8 @@ export const getVersionForAccount: API.OperationMethod<
   GetVersionForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetVersionForAccountRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetVersionResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetVersionForAccountRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<GetVersionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30569,8 +30569,8 @@ export const getVersionForZone: API.OperationMethod<
   GetVersionForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetVersionForZoneRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetVersionResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetVersionForZoneRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<GetVersionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30586,8 +30586,8 @@ export const listPhasVersionsForAccount: API.PaginatedOperationMethod<
   PhasesVersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(43, __c5, 3) as any as S.Schema<ListPhasVersionsForAccountRequest>,
-    output: __S(46, __c5, 6) as any as S.Schema<ListPhasVersionsResponse>,
+    input: __S(120, __c15, 0) as any as S.Schema<ListPhasVersionsForAccountRequest>,
+    output: __S(130, __c16, 2) as any as S.Schema<ListPhasVersionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -30606,8 +30606,8 @@ export const listPhasVersionsForZone: API.PaginatedOperationMethod<
   PhasesVersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(47, __c5, 7) as any as S.Schema<ListPhasVersionsForZoneRequest>,
-    output: __S(46, __c5, 6) as any as S.Schema<ListPhasVersionsResponse>,
+    input: __S(136, __c17, 0) as any as S.Schema<ListPhasVersionsForZoneRequest>,
+    output: __S(130, __c16, 2) as any as S.Schema<ListPhasVersionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -30626,8 +30626,8 @@ export const listRulesetsForAccount: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(48, __c6, 0) as any as S.Schema<ListRulesetsForAccountRequest>,
-    output: __S(51, __c6, 3) as any as S.Schema<ListRulesetsResponse>,
+    input: __S(144, __c18, 0) as any as S.Schema<ListRulesetsForAccountRequest>,
+    output: __S(154, __c19, 2) as any as S.Schema<ListRulesetsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -30652,8 +30652,8 @@ export const listRulesetsForZone: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(52, __c6, 4) as any as S.Schema<ListRulesetsForZoneRequest>,
-    output: __S(51, __c6, 3) as any as S.Schema<ListRulesetsResponse>,
+    input: __S(160, __c20, 0) as any as S.Schema<ListRulesetsForZoneRequest>,
+    output: __S(154, __c19, 2) as any as S.Schema<ListRulesetsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -30678,8 +30678,8 @@ export const listVersionsForAccount: API.PaginatedOperationMethod<
   VersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(53, __c6, 5) as any as S.Schema<ListVersionsForAccountRequest>,
-    output: __S(51, __c6, 3) as any as S.Schema<ListVersionsResponse>,
+    input: __S(168, __c21, 0) as any as S.Schema<ListVersionsForAccountRequest>,
+    output: __S(154, __c19, 2) as any as S.Schema<ListVersionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -30698,8 +30698,8 @@ export const listVersionsForZone: API.PaginatedOperationMethod<
   VersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(54, __c6, 6) as any as S.Schema<ListVersionsForZoneRequest>,
-    output: __S(51, __c6, 3) as any as S.Schema<ListVersionsResponse>,
+    input: __S(176, __c22, 0) as any as S.Schema<ListVersionsForZoneRequest>,
+    output: __S(154, __c19, 2) as any as S.Schema<ListVersionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -30716,8 +30716,8 @@ export const patchRuleForAccount: API.OperationMethod<
   PatchRuleForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<PatchRuleForAccountRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<PatchRuleResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<PatchRuleForAccountRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<PatchRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30731,8 +30731,8 @@ export const patchRuleForZone: API.OperationMethod<
   PatchRuleForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<PatchRuleForZoneRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<PatchRuleResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<PatchRuleForZoneRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<PatchRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30750,8 +30750,8 @@ export const putPhasForAccount: API.OperationMethod<
   PutPhasForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<PutPhasForAccountRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<PutPhasResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<PutPhasForAccountRequest>,
+  output: __S(220, __c27, 4) as any as S.Schema<PutPhasResponse>,
   errors: [RulesetNotFound, PhaseNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30769,8 +30769,8 @@ export const putPhasForZone: API.OperationMethod<
   PutPhasForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<PutPhasForZoneRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<PutPhasResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<PutPhasForZoneRequest>,
+  output: __S(220, __c27, 4) as any as S.Schema<PutPhasResponse>,
   errors: [RulesetNotFound, PhaseNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30784,8 +30784,8 @@ export const updateRulesetForAccount: API.OperationMethod<
   UpdateRulesetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<UpdateRulesetForAccountRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpdateRulesetResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<UpdateRulesetForAccountRequest>,
+  output: __S(260, __c32, 4) as any as S.Schema<UpdateRulesetResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30799,8 +30799,8 @@ export const updateRulesetForZone: API.OperationMethod<
   UpdateRulesetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<UpdateRulesetForZoneRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpdateRulesetResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<UpdateRulesetForZoneRequest>,
+  output: __S(260, __c32, 4) as any as S.Schema<UpdateRulesetResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30810,1628 +30810,6 @@ export const updateRulesetForZone: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["position"],
-          [
-            "id",
-            "action",
-            "actionParameters",
-            "categories",
-            "description",
-            "enabled",
-            "exposedCredentialCheck",
-            "expression",
-            "logging",
-            "position",
-            "ratelimit",
-            "ref",
-          ],
-          ["position"],
-          ["position"],
-          ["position"],
-          ["position"],
-          [
-            "id",
-            "action",
-            "actionParameters",
-            "categories",
-            "description",
-            "enabled",
-            "exposedCredentialCheck",
-            "expression",
-            "logging",
-            "position",
-            "ratelimit",
-            "ref",
-          ],
-          ["position"],
-          ["position"],
-          ["position"],
-          ["position"],
-          ["position"],
-          ["position"],
-          ["position"],
-          ["position"],
-          [
-            "id",
-            "action",
-            "actionParameters",
-            "categories",
-            "description",
-            "enabled",
-            "exposedCredentialCheck",
-            "expression",
-            "logging",
-            "position",
-            "ratelimit",
-            "ref",
-          ],
-          ["position"],
-          [
-            "id",
-            "action",
-            "actionParameters",
-            "categories",
-            "description",
-            "enabled",
-            "exposedCredentialCheck",
-            "expression",
-            "logging",
-            "position",
-            "ratelimit",
-            "ref",
-          ],
-          ["position"],
-          ["position"],
-          [
-            "id",
-            "action",
-            "actionParameters",
-            "categories",
-            "description",
-            "enabled",
-            "exposedCredentialCheck",
-            "expression",
-            "logging",
-            "position",
-            "ratelimit",
-            "ref",
-          ],
-        ]),
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          rulesetId: S.String.pipe(T.Label("ruleset_id")),
-          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-          body: __S(0, __c0, 0).pipe(T.HttpBody()),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/rulesets/{ruleset_id}/rules",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateRuleForAccountRequest",
-      });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases(
-          [
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-          ],
-          {
-            key: "action",
-            values: [
-              "block",
-              "challenge",
-              "compress_response",
-              "ddos_dynamic",
-              "execute",
-              "force_connection_close",
-              "js_challenge",
-              "log",
-              "log_custom_field",
-              "managed_challenge",
-              "redirect",
-              "rewrite",
-              "route",
-              "score",
-              "serve_error",
-              "set_cache_control",
-              "set_cache_settings",
-              "set_cache_tags",
-              "set_config",
-              "skip",
-              "transform_response_html",
-            ],
-          },
-        ),
-      );
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          kind: S.String,
-          lastUpdated: S.String.pipe(T.Body("last_updated")),
-          name: S.String,
-          phase: S.String,
-          rules: __S(3, __c0, 3),
-          version: S.String,
-          description: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRuleResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          rulesetId: S.String.pipe(T.Label("ruleset_id")),
-          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-          body: __S(0, __c0, 0).pipe(T.HttpBody()),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/zones/{zone_id}/rulesets/{ruleset_id}/rules",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRuleForZoneRequest" });
-    case 6:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases(
-          [
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-          ],
-          {
-            key: "action",
-            values: [
-              "block",
-              "challenge",
-              "compress_response",
-              "ddos_dynamic",
-              "execute",
-              "force_connection_close",
-              "js_challenge",
-              "log",
-              "log_custom_field",
-              "managed_challenge",
-              "redirect",
-              "rewrite",
-              "route",
-              "score",
-              "serve_error",
-              "set_cache_control",
-              "set_cache_settings",
-              "set_cache_tags",
-              "set_config",
-              "skip",
-              "transform_response_html",
-            ],
-          },
-        ),
-      );
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-          description: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          phase: S.optional(S.String),
-          rules: S.optional(__S(7, __c0, 7)),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/rulesets", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateRulesetForAccountRequest",
-      });
-    case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases(
-          [
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-          ],
-          {
-            key: "action",
-            values: [
-              "block",
-              "challenge",
-              "compress_response",
-              "ddos_dynamic",
-              "execute",
-              "force_connection_close",
-              "js_challenge",
-              "log",
-              "log_custom_field",
-              "managed_challenge",
-              "redirect",
-              "rewrite",
-              "route",
-              "score",
-              "serve_error",
-              "set_cache_control",
-              "set_cache_settings",
-              "set_cache_tags",
-              "set_config",
-              "skip",
-              "transform_response_html",
-            ],
-          },
-        ),
-      );
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          kind: S.String,
-          lastUpdated: S.String.pipe(T.Body("last_updated")),
-          name: S.String,
-          phase: S.String,
-          rules: __S(10, __c1, 2),
-          version: S.String,
-          description: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRulesetResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-          description: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          phase: S.optional(S.String),
-          rules: S.optional(__S(7, __c0, 7)),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/rulesets", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateRulesetForZoneRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          rulesetId: S.String.pipe(T.Label("ruleset_id")),
-          ruleId: S.String.pipe(T.Label("rule_id")),
-          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteRuleForAccountRequest",
-      });
-    case 6:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases(
-          [
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-          ],
-          {
-            key: "action",
-            values: [
-              "block",
-              "challenge",
-              "compress_response",
-              "ddos_dynamic",
-              "execute",
-              "force_connection_close",
-              "js_challenge",
-              "log",
-              "log_custom_field",
-              "managed_challenge",
-              "redirect",
-              "rewrite",
-              "route",
-              "score",
-              "serve_error",
-              "set_cache_control",
-              "set_cache_settings",
-              "set_cache_tags",
-              "set_config",
-              "skip",
-              "transform_response_html",
-            ],
-          },
-        ),
-      );
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          kind: S.String,
-          lastUpdated: S.String.pipe(T.Body("last_updated")),
-          name: S.String,
-          phase: S.String,
-          rules: __S(15, __c1, 7),
-          version: S.String,
-          description: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteRuleResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          rulesetId: S.String.pipe(T.Label("ruleset_id")),
-          ruleId: S.String.pipe(T.Label("rule_id")),
-          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteRuleForZoneRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          rulesetId: S.String.pipe(T.Label("ruleset_id")),
-          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/rulesets/{ruleset_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteRulesetForAccountRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "DeleteRulesetForAccountResponse",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -32445,7 +30823,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteRulesetForZoneRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -32464,7 +30846,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteVersionForAccountRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -32483,7 +30869,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteVersionForZoneRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -32500,7 +30890,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "GetPhasForAccountRequest" });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(
@@ -32851,7 +31241,7 @@ function __c3(j: number): any {
         ),
       );
     case 1:
-      return S.Array(__S(24, __c3, 0));
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -32860,12 +31250,16 @@ function __c3(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
           phase: S.String,
-          rules: __S(25, __c3, 1),
+          rules: __S(33, __c4, 1),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPhasResponse" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -32880,7 +31274,11 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPhasForZoneRequest" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -32898,7 +31296,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPhasVersionForAccountRequest",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -33246,9 +31648,9 @@ function __c3(j: number): any {
           },
         ),
       );
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -33256,14 +31658,14 @@ function __c3(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
           phase: S.String,
-          rules: __S(30, __c3, 6),
+          rules: __S(57, __c7, 1),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPhasVersionResponse" });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -33283,7 +31685,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetPhasVersionForZoneRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -33300,7 +31706,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetRulesetForAccountRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -33648,9 +32058,9 @@ function __c4(j: number): any {
           },
         ),
       );
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(80, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -33658,12 +32068,16 @@ function __c4(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
           phase: S.String,
-          rules: __S(35, __c4, 3),
+          rules: __S(81, __c10, 1),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRulesetResponse" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -33672,7 +32086,11 @@ function __c4(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/rulesets/{ruleset_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRulesetForZoneRequest" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -33690,7 +32108,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetVersionForAccountRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -34038,13 +32460,9 @@ function __c4(j: number): any {
           },
         ),
       );
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
     case 1:
+      return S.Array(__S(104, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -34052,12 +32470,16 @@ function __c5(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
           phase: S.String,
-          rules: __S(40, __c5, 0),
+          rules: __S(105, __c13, 1),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetVersionResponse" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -34073,7 +32495,11 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetVersionForZoneRequest" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -34090,7 +32516,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListPhasVersionsForAccountRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -34104,16 +32534,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PhasesVersionsListResultItem",
       });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(128, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(45, __c5, 5).pipe(T.EnvelopePayload()),
+          result: __S(129, __c16, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPhasVersionsResponse" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -34132,7 +32566,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -34146,7 +32580,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListRulesetsForAccountRequest",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -34158,16 +32596,20 @@ function __c6(j: number): any {
           description: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListResultItem" });
+    case 1:
+      return S.Array(__S(152, __c19, 0));
     case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(50, __c6, 2).pipe(T.EnvelopePayload()),
+          result: __S(153, __c19, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRulesetsResponse" });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -34179,7 +32621,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListRulesetsForZoneRequest",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -34196,7 +32642,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListVersionsForAccountRequest",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -34213,7 +32663,35 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListVersionsForZoneRequest",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          rulesetId: S.String.pipe(T.Label("ruleset_id")),
+          ruleId: S.String.pipe(T.Label("rule_id")),
+          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
+          body: __S(192, __c24, 0).pipe(T.HttpBody()),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "PatchRuleForAccountRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["position"],
@@ -34304,30 +32782,6 @@ function __c6(j: number): any {
           ],
         ]),
       );
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          rulesetId: S.String.pipe(T.Label("ruleset_id")),
-          ruleId: S.String.pipe(T.Label("rule_id")),
-          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-          body: __S(55, __c6, 7).pipe(T.HttpBody()),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "PatchRuleForAccountRequest",
-      });
     case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -34677,7 +33131,7 @@ function __c7(j: number): any {
         ),
       );
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(193, __c24, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -34686,19 +33140,23 @@ function __c7(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
           phase: S.String,
-          rules: __S(58, __c7, 2),
+          rules: __S(194, __c24, 2),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchRuleResponse" });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           rulesetId: S.String.pipe(T.Label("ruleset_id")),
           ruleId: S.String.pipe(T.Label("rule_id")),
           dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-          body: __S(55, __c6, 7).pipe(T.HttpBody()),
+          body: __S(192, __c24, 0).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -34709,315 +33167,11 @@ function __c7(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchRuleForZoneRequest" });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases(
-          [
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-          ],
-          {
-            key: "action",
-            values: [
-              "block",
-              "challenge",
-              "compress_response",
-              "ddos_dynamic",
-              "execute",
-              "force_connection_close",
-              "js_challenge",
-              "log",
-              "log_custom_field",
-              "managed_challenge",
-              "redirect",
-              "rewrite",
-              "route",
-              "score",
-              "serve_error",
-              "set_cache_control",
-              "set_cache_settings",
-              "set_cache_tags",
-              "set_config",
-              "skip",
-              "transform_response_html",
-            ],
-          },
-        ),
-      );
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -35025,7 +33179,7 @@ function __c7(j: number): any {
           dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          rules: S.optional(__S(62, __c7, 6)),
+          rules: S.optional(__S(217, __c27, 1)),
         })
           .pipe(
             T.Http({
@@ -35038,15 +33192,13 @@ function __c7(j: number): any {
       ).annotate({ identifier: "PutPhasForAccountRequest" });
   }
 }
-function __c8(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
             [
-              "lastUpdated",
-              "version",
               "id",
               "action",
               "actionParameters",
@@ -35062,23 +33214,6 @@ function __c8(j: number): any {
             [
               "id",
               "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
               "actionParameters",
               "categories",
               "description",
@@ -35090,38 +33225,6 @@ function __c8(j: number): any {
               "ref",
             ],
             [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
               "id",
               "action",
               "actionParameters",
@@ -35137,23 +33240,6 @@ function __c8(j: number): any {
             [
               "id",
               "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
               "actionParameters",
               "categories",
               "description",
@@ -35165,98 +33251,6 @@ function __c8(j: number): any {
               "ref",
             ],
             [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "lastUpdated",
-              "version",
               "id",
               "action",
               "actionParameters",
@@ -35272,21 +33266,17 @@ function __c8(j: number): any {
             [
               "id",
               "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
               "actionParameters",
               "categories",
               "description",
+              "enabled",
               "exposedCredentialCheck",
+              "expression",
               "logging",
               "ratelimit",
+              "ref",
             ],
             [
-              "lastUpdated",
-              "version",
               "id",
               "action",
               "actionParameters",
@@ -35302,23 +33292,6 @@ function __c8(j: number): any {
             [
               "id",
               "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
-              "actionParameters",
-              "categories",
-              "description",
-              "exposedCredentialCheck",
-              "logging",
-              "ratelimit",
-            ],
-            [
-              "lastUpdated",
-              "version",
-              "id",
-              "action",
               "actionParameters",
               "categories",
               "description",
@@ -35330,8 +33303,6 @@ function __c8(j: number): any {
               "ref",
             ],
             [
-              "lastUpdated",
-              "version",
               "id",
               "action",
               "actionParameters",
@@ -35347,17 +33318,158 @@ function __c8(j: number): any {
             [
               "id",
               "action",
-              "enabled",
-              "expression",
-              "lastUpdated",
-              "ref",
-              "version",
               "actionParameters",
               "categories",
               "description",
+              "enabled",
               "exposedCredentialCheck",
+              "expression",
               "logging",
               "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
             ],
           ],
           {
@@ -35389,44 +33501,14 @@ function __c8(j: number): any {
         ),
       );
     case 1:
-      return S.Array(__S(64, __c8, 0));
+      return S.Array(__S(216, __c27, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          kind: S.String,
-          lastUpdated: S.String.pipe(T.Body("last_updated")),
-          name: S.String,
-          phase: S.String,
-          rules: __S(65, __c8, 1),
-          version: S.String,
-          description: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PutPhasResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
-          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          rules: S.optional(__S(62, __c7, 6)),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PutPhasForZoneRequest" });
-    case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
             [
+              "lastUpdated",
+              "version",
               "id",
               "action",
               "actionParameters",
@@ -35442,6 +33524,23 @@ function __c8(j: number): any {
             [
               "id",
               "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
               "actionParameters",
               "categories",
               "description",
@@ -35453,6 +33552,38 @@ function __c8(j: number): any {
               "ref",
             ],
             [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
               "id",
               "action",
               "actionParameters",
@@ -35468,6 +33599,23 @@ function __c8(j: number): any {
             [
               "id",
               "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
               "actionParameters",
               "categories",
               "description",
@@ -35479,6 +33627,98 @@ function __c8(j: number): any {
               "ref",
             ],
             [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
               "id",
               "action",
               "actionParameters",
@@ -35494,17 +33734,21 @@ function __c8(j: number): any {
             [
               "id",
               "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
               "actionParameters",
               "categories",
               "description",
-              "enabled",
               "exposedCredentialCheck",
-              "expression",
               "logging",
               "ratelimit",
-              "ref",
             ],
             [
+              "lastUpdated",
+              "version",
               "id",
               "action",
               "actionParameters",
@@ -35520,6 +33764,23 @@ function __c8(j: number): any {
             [
               "id",
               "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
               "actionParameters",
               "categories",
               "description",
@@ -35531,6 +33792,8 @@ function __c8(j: number): any {
               "ref",
             ],
             [
+              "lastUpdated",
+              "version",
               "id",
               "action",
               "actionParameters",
@@ -35546,158 +33809,17 @@ function __c8(j: number): any {
             [
               "id",
               "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
               "actionParameters",
               "categories",
               "description",
-              "enabled",
               "exposedCredentialCheck",
-              "expression",
               "logging",
               "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
-            ],
-            [
-              "id",
-              "action",
-              "actionParameters",
-              "categories",
-              "description",
-              "enabled",
-              "exposedCredentialCheck",
-              "expression",
-              "logging",
-              "ratelimit",
-              "ref",
             ],
           ],
           {
@@ -35728,9 +33850,530 @@ function __c8(j: number): any {
           },
         ),
       );
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(218, __c27, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          kind: S.String,
+          lastUpdated: S.String.pipe(T.Body("last_updated")),
+          name: S.String,
+          phase: S.String,
+          rules: __S(219, __c27, 3),
+          version: S.String,
+          description: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutPhasResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          rulesetId: S.String.pipe(T.Label("ruleset_id")),
+          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
+          body: __S(232, __c29, 0).pipe(T.HttpBody()),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/rulesets/{ruleset_id}/rules",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateRuleForAccountRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["position"],
+          [
+            "id",
+            "action",
+            "actionParameters",
+            "categories",
+            "description",
+            "enabled",
+            "exposedCredentialCheck",
+            "expression",
+            "logging",
+            "position",
+            "ratelimit",
+            "ref",
+          ],
+          ["position"],
+          ["position"],
+          ["position"],
+          ["position"],
+          [
+            "id",
+            "action",
+            "actionParameters",
+            "categories",
+            "description",
+            "enabled",
+            "exposedCredentialCheck",
+            "expression",
+            "logging",
+            "position",
+            "ratelimit",
+            "ref",
+          ],
+          ["position"],
+          ["position"],
+          ["position"],
+          ["position"],
+          ["position"],
+          ["position"],
+          ["position"],
+          ["position"],
+          [
+            "id",
+            "action",
+            "actionParameters",
+            "categories",
+            "description",
+            "enabled",
+            "exposedCredentialCheck",
+            "expression",
+            "logging",
+            "position",
+            "ratelimit",
+            "ref",
+          ],
+          ["position"],
+          [
+            "id",
+            "action",
+            "actionParameters",
+            "categories",
+            "description",
+            "enabled",
+            "exposedCredentialCheck",
+            "expression",
+            "logging",
+            "position",
+            "ratelimit",
+            "ref",
+          ],
+          ["position"],
+          ["position"],
+          [
+            "id",
+            "action",
+            "actionParameters",
+            "categories",
+            "description",
+            "enabled",
+            "exposedCredentialCheck",
+            "expression",
+            "logging",
+            "position",
+            "ratelimit",
+            "ref",
+          ],
+        ]),
+      );
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+          ],
+          {
+            key: "action",
+            values: [
+              "block",
+              "challenge",
+              "compress_response",
+              "ddos_dynamic",
+              "execute",
+              "force_connection_close",
+              "js_challenge",
+              "log",
+              "log_custom_field",
+              "managed_challenge",
+              "redirect",
+              "rewrite",
+              "route",
+              "score",
+              "serve_error",
+              "set_cache_control",
+              "set_cache_settings",
+              "set_cache_tags",
+              "set_config",
+              "skip",
+              "transform_response_html",
+            ],
+          },
+        ),
+      );
+    case 2:
+      return S.Array(__S(233, __c29, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          kind: S.String,
+          lastUpdated: S.String.pipe(T.Body("last_updated")),
+          name: S.String,
+          phase: S.String,
+          rules: __S(234, __c29, 2),
+          version: S.String,
+          description: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRuleResponse" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          rulesetPhase: S.String.pipe(T.Label("ruleset_phase")),
+          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          rules: S.optional(__S(217, __c27, 1)),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutPhasForZoneRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -35740,7 +34383,7 @@ function __c8(j: number): any {
           kind: S.optional(S.String),
           name: S.optional(S.String),
           phase: S.optional(S.String),
-          rules: S.optional(__S(69, __c8, 5)),
+          rules: S.optional(__S(257, __c32, 1)),
         })
           .pipe(
             T.Http({
@@ -35753,7 +34396,319 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateRulesetForAccountRequest",
       });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+          ],
+          {
+            key: "action",
+            values: [
+              "block",
+              "challenge",
+              "compress_response",
+              "ddos_dynamic",
+              "execute",
+              "force_connection_close",
+              "js_challenge",
+              "log",
+              "log_custom_field",
+              "managed_challenge",
+              "redirect",
+              "rewrite",
+              "route",
+              "score",
+              "serve_error",
+              "set_cache_control",
+              "set_cache_settings",
+              "set_cache_tags",
+              "set_config",
+              "skip",
+              "transform_response_html",
+            ],
+          },
+        ),
+      );
+    case 1:
+      return S.Array(__S(256, __c32, 0));
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -36101,13 +35056,9 @@ function __c8(j: number): any {
           },
         ),
       );
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(258, __c32, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -36115,12 +35066,16 @@ function __c9(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
           phase: S.String,
-          rules: __S(72, __c9, 0),
+          rules: __S(259, __c32, 3),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateRulesetResponse" });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -36130,7 +35085,7 @@ function __c9(j: number): any {
           kind: S.optional(S.String),
           name: S.optional(S.String),
           phase: S.optional(S.String),
-          rules: S.optional(__S(69, __c8, 5)),
+          rules: S.optional(__S(257, __c32, 1)),
         })
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/rulesets/{ruleset_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -36139,7 +35094,1183 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          rulesetId: S.String.pipe(T.Label("ruleset_id")),
+          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
+          body: __S(232, __c29, 0).pipe(T.HttpBody()),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/zones/{zone_id}/rulesets/{ruleset_id}/rules",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRuleForZoneRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
+          description: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          phase: S.optional(S.String),
+          rules: S.optional(__S(289, __c36, 1)),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/rulesets", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateRulesetForAccountRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+          ],
+          {
+            key: "action",
+            values: [
+              "block",
+              "challenge",
+              "compress_response",
+              "ddos_dynamic",
+              "execute",
+              "force_connection_close",
+              "js_challenge",
+              "log",
+              "log_custom_field",
+              "managed_challenge",
+              "redirect",
+              "rewrite",
+              "route",
+              "score",
+              "serve_error",
+              "set_cache_control",
+              "set_cache_settings",
+              "set_cache_tags",
+              "set_config",
+              "skip",
+              "transform_response_html",
+            ],
+          },
+        ),
+      );
+    case 1:
+      return S.Array(__S(288, __c36, 0));
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+          ],
+          {
+            key: "action",
+            values: [
+              "block",
+              "challenge",
+              "compress_response",
+              "ddos_dynamic",
+              "execute",
+              "force_connection_close",
+              "js_challenge",
+              "log",
+              "log_custom_field",
+              "managed_challenge",
+              "redirect",
+              "rewrite",
+              "route",
+              "score",
+              "serve_error",
+              "set_cache_control",
+              "set_cache_settings",
+              "set_cache_tags",
+              "set_config",
+              "skip",
+              "transform_response_html",
+            ],
+          },
+        ),
+      );
+    case 3:
+      return S.Array(__S(290, __c36, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          kind: S.String,
+          lastUpdated: S.String.pipe(T.Body("last_updated")),
+          name: S.String,
+          phase: S.String,
+          rules: __S(291, __c36, 3),
+          version: S.String,
+          description: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRulesetResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
+          description: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          phase: S.optional(S.String),
+          rules: S.optional(__S(289, __c36, 1)),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/rulesets", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateRulesetForZoneRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          rulesetId: S.String.pipe(T.Label("ruleset_id")),
+          ruleId: S.String.pipe(T.Label("rule_id")),
+          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteRuleForAccountRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "lastUpdated",
+              "version",
+              "id",
+              "action",
+              "actionParameters",
+              "categories",
+              "description",
+              "enabled",
+              "exposedCredentialCheck",
+              "expression",
+              "logging",
+              "ratelimit",
+              "ref",
+            ],
+            [
+              "id",
+              "action",
+              "enabled",
+              "expression",
+              "lastUpdated",
+              "ref",
+              "version",
+              "actionParameters",
+              "categories",
+              "description",
+              "exposedCredentialCheck",
+              "logging",
+              "ratelimit",
+            ],
+          ],
+          {
+            key: "action",
+            values: [
+              "block",
+              "challenge",
+              "compress_response",
+              "ddos_dynamic",
+              "execute",
+              "force_connection_close",
+              "js_challenge",
+              "log",
+              "log_custom_field",
+              "managed_challenge",
+              "redirect",
+              "rewrite",
+              "route",
+              "score",
+              "serve_error",
+              "set_cache_control",
+              "set_cache_settings",
+              "set_cache_tags",
+              "set_config",
+              "skip",
+              "transform_response_html",
+            ],
+          },
+        ),
+      );
+    case 1:
+      return S.Array(__S(312, __c39, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          kind: S.String,
+          lastUpdated: S.String.pipe(T.Body("last_updated")),
+          name: S.String,
+          phase: S.String,
+          rules: __S(313, __c39, 1),
+          version: S.String,
+          description: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteRuleResponse" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          rulesetId: S.String.pipe(T.Label("ruleset_id")),
+          ruleId: S.String.pipe(T.Label("rule_id")),
+          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteRuleForZoneRequest" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          rulesetId: S.String.pipe(T.Label("ruleset_id")),
+          dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/rulesets/{ruleset_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteRulesetForAccountRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "DeleteRulesetForAccountResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

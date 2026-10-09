@@ -5344,8 +5344,8 @@ export const acknowledgePurchasesProducts: API.OperationMethod<
   AcknowledgePurchasesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AcknowledgePurchasesProductsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AcknowledgePurchasesProductsResponse>,
+  input: __S(3361, __c105, 1) as any as S.Schema<AcknowledgePurchasesProductsRequest>,
+  output: __S(3392, __c106, 0) as any as S.Schema<AcknowledgePurchasesProductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5364,8 +5364,8 @@ export const acknowledgePurchasesSubscriptions: API.OperationMethod<
   AcknowledgePurchasesSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AcknowledgePurchasesSubscriptionsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AcknowledgePurchasesSubscriptionsResponse>,
+  input: __S(3970, __c124, 2) as any as S.Schema<AcknowledgePurchasesSubscriptionsRequest>,
+  output: __S(3392, __c106, 0) as any as S.Schema<AcknowledgePurchasesSubscriptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5385,11 +5385,11 @@ export const activateMonetizationOnetimeproductsPurchaseOptionsOffers: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7,
-    __c0,
-    7,
+    4384,
+    __c137,
+    0,
   ) as any as S.Schema<ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<OneTimeProductOffer>,
+  output: __S(4453, __c139, 5) as any as S.Schema<OneTimeProductOffer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5408,8 +5408,8 @@ export const activateMonetizationSubscriptionsBasePlans: API.OperationMethod<
   ActivateMonetizationSubscriptionsBasePlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ActivateMonetizationSubscriptionsBasePlansRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Subscription>,
+  input: __S(4896, __c153, 0) as any as S.Schema<ActivateMonetizationSubscriptionsBasePlansRequest>,
+  output: __S(5034, __c157, 10) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5429,11 +5429,11 @@ export const activateMonetizationSubscriptionsBasePlansOffers: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    39,
-    __c4,
-    7,
+    5632,
+    __c176,
+    0,
   ) as any as S.Schema<ActivateMonetizationSubscriptionsBasePlansOffersRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<SubscriptionOffer>,
+  output: __S(5708, __c178, 12) as any as S.Schema<SubscriptionOffer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5452,8 +5452,8 @@ export const addexternallyhostedEditsApks: API.OperationMethod<
   AddexternallyhostedEditsApksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<AddexternallyhostedEditsApksRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ApksAddExternallyHostedResponse>,
+  input: __S(6146, __c192, 2) as any as S.Schema<AddexternallyhostedEditsApksRequest>,
+  output: __S(6145, __c192, 1) as any as S.Schema<ApksAddExternallyHostedResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5472,8 +5472,8 @@ export const addTargetingApprecovery: API.OperationMethod<
   AddTargetingApprecoveryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<AddTargetingApprecoveryRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<AddTargetingResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<AddTargetingApprecoveryRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<AddTargetingResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5492,8 +5492,8 @@ export const archiveMonetizationSubscriptions: API.OperationMethod<
   ArchiveMonetizationSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ArchiveMonetizationSubscriptionsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Subscription>,
+  input: __S(480, __c15, 0) as any as S.Schema<ArchiveMonetizationSubscriptionsRequest>,
+  output: __S(5034, __c157, 10) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5512,8 +5512,8 @@ export const batchDeleteInappproducts: API.OperationMethod<
   BatchDeleteInappproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<BatchDeleteInappproductsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<BatchDeleteInappproductsResponse>,
+  input: __S(835, __c26, 3) as any as S.Schema<BatchDeleteInappproductsRequest>,
+  output: __S(3392, __c106, 0) as any as S.Schema<BatchDeleteInappproductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5532,8 +5532,8 @@ export const batchDeleteMonetizationOnetimeproducts: API.OperationMethod<
   BatchDeleteMonetizationOnetimeproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsResponse>,
+  input: __S(1187, __c37, 3) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsRequest>,
+  output: __S(3392, __c106, 0) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5553,14 +5553,14 @@ export const batchDeleteMonetizationOnetimeproductsPurchaseOptions: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    78,
-    __c9,
-    6,
+    1571,
+    __c49,
+    3,
   ) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest>,
   output: __S(
-    79,
-    __c9,
-    7,
+    1600,
+    __c50,
+    0,
   ) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5581,14 +5581,14 @@ export const batchDeleteMonetizationOnetimeproductsPurchaseOptionsOffers: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    83,
-    __c10,
+    1923,
+    __c60,
     3,
   ) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest>,
   output: __S(
-    79,
-    __c9,
-    7,
+    1600,
+    __c50,
+    0,
   ) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5603,8 +5603,8 @@ export const batchGetInappproducts: API.OperationMethod<
   BatchGetInappproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<BatchGetInappproductsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<InappproductsBatchGetResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<BatchGetInappproductsRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<InappproductsBatchGetResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5618,8 +5618,8 @@ export const batchGetMonetizationOnetimeproducts: API.OperationMethod<
   BatchGetMonetizationOnetimeproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<BatchGetMonetizationOnetimeproductsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<BatchGetOneTimeProductsResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<BatchGetMonetizationOnetimeproductsRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<BatchGetOneTimeProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5639,11 +5639,11 @@ export const batchGetMonetizationOnetimeproductsPurchaseOptionsOffers: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    113,
-    __c14,
-    1,
+    2211,
+    __c69,
+    3,
   ) as any as S.Schema<BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<BatchGetOneTimeProductOffersResponse>,
+  output: __S(2240, __c70, 0) as any as S.Schema<BatchGetOneTimeProductOffersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5657,8 +5657,8 @@ export const batchGetMonetizationSubscriptions: API.OperationMethod<
   BatchGetMonetizationSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<BatchGetMonetizationSubscriptionsRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<BatchGetSubscriptionsResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<BatchGetMonetizationSubscriptionsRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<BatchGetSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5678,11 +5678,11 @@ export const batchGetMonetizationSubscriptionsBasePlansOffers: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    122,
-    __c15,
-    2,
+    2403,
+    __c75,
+    3,
   ) as any as S.Schema<BatchGetMonetizationSubscriptionsBasePlansOffersRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<BatchGetSubscriptionOffersResponse>,
+  output: __S(2432, __c76, 0) as any as S.Schema<BatchGetSubscriptionOffersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5696,8 +5696,8 @@ export const batchgetOrders: API.OperationMethod<
   BatchgetOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<BatchgetOrdersRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<BatchGetOrdersResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<BatchgetOrdersRequest>,
+  output: __S(2498, __c78, 2) as any as S.Schema<BatchGetOrdersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5717,11 +5717,11 @@ export const batchMigratePricesMonetizationSubscriptionsBasePlans: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    149,
-    __c18,
-    5,
+    2562,
+    __c80,
+    2,
   ) as any as S.Schema<BatchMigratePricesMonetizationSubscriptionsBasePlansRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<BatchMigrateBasePlanPricesResponse>,
+  output: __S(2564, __c80, 4) as any as S.Schema<BatchMigrateBasePlanPricesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5740,8 +5740,8 @@ export const batchUpdateInappproducts: API.OperationMethod<
   BatchUpdateInappproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<BatchUpdateInappproductsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<InappproductsBatchUpdateResponse>,
+  input: __S(2627, __c82, 3) as any as S.Schema<BatchUpdateInappproductsRequest>,
+  output: __S(2628, __c82, 4) as any as S.Schema<InappproductsBatchUpdateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5760,8 +5760,8 @@ export const batchUpdateMonetizationOnetimeproducts: API.OperationMethod<
   BatchUpdateMonetizationOnetimeproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<BatchUpdateMonetizationOnetimeproductsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<BatchUpdateOneTimeProductsResponse>,
+  input: __S(2659, __c83, 3) as any as S.Schema<BatchUpdateMonetizationOnetimeproductsRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<BatchUpdateOneTimeProductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5781,11 +5781,11 @@ export const batchUpdateMonetizationOnetimeproductsPurchaseOptionsOffers: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    164,
-    __c20,
-    4,
+    2691,
+    __c84,
+    3,
   ) as any as S.Schema<BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<BatchUpdateOneTimeProductOffersResponse>,
+  output: __S(2240, __c70, 0) as any as S.Schema<BatchUpdateOneTimeProductOffersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5804,8 +5804,8 @@ export const batchUpdateMonetizationSubscriptions: API.OperationMethod<
   BatchUpdateMonetizationSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<BatchUpdateMonetizationSubscriptionsRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<BatchUpdateSubscriptionsResponse>,
+  input: __S(2723, __c85, 3) as any as S.Schema<BatchUpdateMonetizationSubscriptionsRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<BatchUpdateSubscriptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5825,11 +5825,11 @@ export const batchUpdateMonetizationSubscriptionsBasePlansOffers: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    172,
-    __c21,
-    4,
+    2755,
+    __c86,
+    3,
   ) as any as S.Schema<BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<BatchUpdateSubscriptionOffersResponse>,
+  output: __S(2432, __c76, 0) as any as S.Schema<BatchUpdateSubscriptionOffersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5849,11 +5849,11 @@ export const batchUpdateStatesMonetizationOnetimeproductsPurchaseOptions: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    178,
-    __c22,
-    2,
+    2789,
+    __c87,
+    5,
   ) as any as S.Schema<BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<BatchUpdatePurchaseOptionStatesResponse>,
+  output: __S(2112, __c66, 0) as any as S.Schema<BatchUpdatePurchaseOptionStatesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5873,11 +5873,11 @@ export const batchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffers: 
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    184,
-    __c23,
-    0,
+    2819,
+    __c88,
+    3,
   ) as any as S.Schema<BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<BatchUpdateOneTimeProductOfferStatesResponse>,
+  output: __S(2240, __c70, 0) as any as S.Schema<BatchUpdateOneTimeProductOfferStatesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5897,11 +5897,11 @@ export const batchUpdateStatesMonetizationSubscriptionsBasePlans: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    189,
-    __c23,
-    5,
+    2915,
+    __c91,
+    3,
   ) as any as S.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<BatchUpdateBasePlanStatesResponse>,
+  output: __S(2336, __c73, 0) as any as S.Schema<BatchUpdateBasePlanStatesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5921,11 +5921,11 @@ export const batchUpdateStatesMonetizationSubscriptionsBasePlansOffers: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    194,
-    __c24,
-    2,
+    2979,
+    __c93,
+    3,
   ) as any as S.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<BatchUpdateSubscriptionOfferStatesResponse>,
+  output: __S(2432, __c76, 0) as any as S.Schema<BatchUpdateSubscriptionOfferStatesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5939,8 +5939,8 @@ export const cancelApprecovery: API.OperationMethod<
   CancelApprecoveryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<CancelApprecoveryRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<CancelAppRecoveryResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<CancelApprecoveryRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CancelAppRecoveryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5960,11 +5960,11 @@ export const cancelMonetizationOnetimeproductsPurchaseOptionsOffers: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    196,
-    __c24,
-    4,
+    3072,
+    __c96,
+    0,
   ) as any as S.Schema<CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<OneTimeProductOffer>,
+  output: __S(4453, __c139, 5) as any as S.Schema<OneTimeProductOffer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5983,8 +5983,8 @@ export const cancelPurchasesSubscriptions: API.OperationMethod<
   CancelPurchasesSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<CancelPurchasesSubscriptionsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CancelPurchasesSubscriptionsResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<CancelPurchasesSubscriptionsRequest>,
+  output: __S(3392, __c106, 0) as any as S.Schema<CancelPurchasesSubscriptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6003,8 +6003,8 @@ export const cancelPurchasesSubscriptionsv2: API.OperationMethod<
   CancelPurchasesSubscriptionsv2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<CancelPurchasesSubscriptionsv2Request>,
-  output: __S(2, __c0, 2) as any as S.Schema<CancelSubscriptionPurchaseResponse>,
+  input: __S(3138, __c98, 2) as any as S.Schema<CancelPurchasesSubscriptionsv2Request>,
+  output: __S(3392, __c106, 0) as any as S.Schema<CancelSubscriptionPurchaseResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6018,8 +6018,8 @@ export const commitEdits: API.OperationMethod<
   CommitEditsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<CommitEditsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<AppEdit>,
+  input: __S(3168, __c99, 0) as any as S.Schema<CommitEditsRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<AppEdit>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6038,8 +6038,8 @@ export const consumePurchasesProducts: API.OperationMethod<
   ConsumePurchasesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<ConsumePurchasesProductsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ConsumePurchasesProductsResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<ConsumePurchasesProductsRequest>,
+  output: __S(3392, __c106, 0) as any as S.Schema<ConsumePurchasesProductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6058,8 +6058,8 @@ export const convertRegionPricesMonetization: API.OperationMethod<
   ConvertRegionPricesMonetizationError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<ConvertRegionPricesMonetizationRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<ConvertRegionPricesResponse>,
+  input: __S(3265, __c102, 1) as any as S.Schema<ConvertRegionPricesMonetizationRequest>,
+  output: __S(3268, __c102, 4) as any as S.Schema<ConvertRegionPricesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6078,8 +6078,8 @@ export const createApplicationsDeviceTierConfigs: API.OperationMethod<
   CreateApplicationsDeviceTierConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<CreateApplicationsDeviceTierConfigsRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<DeviceTierConfig>,
+  input: __S(3296, __c103, 0) as any as S.Schema<CreateApplicationsDeviceTierConfigsRequest>,
+  output: __S(3344, __c104, 16) as any as S.Schema<DeviceTierConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6093,8 +6093,8 @@ export const createApprecovery: API.OperationMethod<
   CreateApprecoveryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<CreateApprecoveryRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<AppRecoveryAction>,
+  input: __S(3426, __c107, 2) as any as S.Schema<CreateApprecoveryRequest>,
+  output: __S(3462, __c108, 6) as any as S.Schema<AppRecoveryAction>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6113,8 +6113,8 @@ export const createappstorehostedappAppstoreappsreview: API.OperationMethod<
   CreateappstorehostedappAppstoreappsreviewError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<CreateappstorehostedappAppstoreappsreviewRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<CreateAppStoreHostedAppResponse>,
+  input: __S(3489, __c109, 1) as any as S.Schema<CreateappstorehostedappAppstoreappsreviewRequest>,
+  output: __S(3490, __c109, 2) as any as S.Schema<CreateAppStoreHostedAppResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6128,8 +6128,8 @@ export const createEditsTracks: API.OperationMethod<
   CreateEditsTracksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<CreateEditsTracksRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<Track>,
+  input: __S(3521, __c110, 1) as any as S.Schema<CreateEditsTracksRequest>,
+  output: __S(3557, __c111, 5) as any as S.Schema<Track>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6149,11 +6149,11 @@ export const createexternaltransactionExternaltransactions: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    255,
-    __c31,
-    7,
+    3584,
+    __c112,
+    0,
   ) as any as S.Schema<CreateexternaltransactionExternaltransactionsRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<ExternalTransaction>,
+  output: __S(3622, __c113, 6) as any as S.Schema<ExternalTransaction>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6167,8 +6167,8 @@ export const createGrants: API.OperationMethod<
   CreateGrantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<CreateGrantsRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<Grant>,
+  input: __S(3648, __c114, 0) as any as S.Schema<CreateGrantsRequest>,
+  output: __S(3680, __c115, 0) as any as S.Schema<Grant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6187,8 +6187,8 @@ export const createMonetizationSubscriptions: API.OperationMethod<
   CreateMonetizationSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<CreateMonetizationSubscriptionsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Subscription>,
+  input: __S(3744, __c117, 0) as any as S.Schema<CreateMonetizationSubscriptionsRequest>,
+  output: __S(5034, __c157, 10) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6208,11 +6208,11 @@ export const createMonetizationSubscriptionsBasePlansOffers: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    260,
-    __c32,
-    4,
+    3776,
+    __c118,
+    0,
   ) as any as S.Schema<CreateMonetizationSubscriptionsBasePlansOffersRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<SubscriptionOffer>,
+  output: __S(5708, __c178, 12) as any as S.Schema<SubscriptionOffer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6231,8 +6231,8 @@ export const createSystemapksVariants: API.OperationMethod<
   CreateSystemapksVariantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<CreateSystemapksVariantsRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<Variant>,
+  input: __S(3808, __c119, 0) as any as S.Schema<CreateSystemapksVariantsRequest>,
+  output: __S(3842, __c120, 2) as any as S.Schema<Variant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6246,8 +6246,8 @@ export const createUsers: API.OperationMethod<
   CreateUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<CreateUsersRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<User>,
+  input: __S(3872, __c121, 0) as any as S.Schema<CreateUsersRequest>,
+  output: __S(3905, __c122, 1) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6261,8 +6261,8 @@ export const dataSafetyApplications: API.OperationMethod<
   DataSafetyApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<DataSafetyApplicationsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<SafetyLabelsUpdateResponse>,
+  input: __S(3937, __c123, 1) as any as S.Schema<DataSafetyApplicationsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<SafetyLabelsUpdateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6282,11 +6282,11 @@ export const deactivateMonetizationOnetimeproductsPurchaseOptionsOffers: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    270,
-    __c33,
-    6,
+    4000,
+    __c125,
+    0,
   ) as any as S.Schema<DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<OneTimeProductOffer>,
+  output: __S(4453, __c139, 5) as any as S.Schema<OneTimeProductOffer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6305,8 +6305,12 @@ export const deactivateMonetizationSubscriptionsBasePlans: API.OperationMethod<
   DeactivateMonetizationSubscriptionsBasePlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<DeactivateMonetizationSubscriptionsBasePlansRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Subscription>,
+  input: __S(
+    4032,
+    __c126,
+    0,
+  ) as any as S.Schema<DeactivateMonetizationSubscriptionsBasePlansRequest>,
+  output: __S(5034, __c157, 10) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6326,11 +6330,11 @@ export const deactivateMonetizationSubscriptionsBasePlansOffers: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    272,
-    __c34,
+    4064,
+    __c127,
     0,
   ) as any as S.Schema<DeactivateMonetizationSubscriptionsBasePlansOffersRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<SubscriptionOffer>,
+  output: __S(5708, __c178, 12) as any as S.Schema<SubscriptionOffer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6349,8 +6353,8 @@ export const deferPurchasesSubscriptions: API.OperationMethod<
   DeferPurchasesSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<DeferPurchasesSubscriptionsRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<SubscriptionPurchasesDeferResponse>,
+  input: __S(4098, __c128, 2) as any as S.Schema<DeferPurchasesSubscriptionsRequest>,
+  output: __S(4099, __c128, 3) as any as S.Schema<SubscriptionPurchasesDeferResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6369,8 +6373,8 @@ export const deferPurchasesSubscriptionsv2: API.OperationMethod<
   DeferPurchasesSubscriptionsv2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<DeferPurchasesSubscriptionsv2Request>,
-  output: __S(282, __c35, 2) as any as S.Schema<DeferSubscriptionPurchaseResponse>,
+  input: __S(4130, __c129, 2) as any as S.Schema<DeferPurchasesSubscriptionsv2Request>,
+  output: __S(4133, __c129, 5) as any as S.Schema<DeferSubscriptionPurchaseResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6384,8 +6388,8 @@ export const deleteallEditsImages: API.OperationMethod<
   DeleteallEditsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<DeleteallEditsImagesRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<ImagesDeleteAllResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<DeleteallEditsImagesRequest>,
+  output: __S(4161, __c130, 1) as any as S.Schema<ImagesDeleteAllResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6399,8 +6403,8 @@ export const deleteallEditsListings: API.OperationMethod<
   DeleteallEditsListingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<DeleteallEditsListingsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeleteallEditsListingsResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<DeleteallEditsListingsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteallEditsListingsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6414,8 +6418,8 @@ export const deleteEdits: API.OperationMethod<
   DeleteEditsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<DeleteEditsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeleteEditsResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<DeleteEditsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteEditsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6429,8 +6433,8 @@ export const deleteEditsImages: API.OperationMethod<
   DeleteEditsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<DeleteEditsImagesRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeleteEditsImagesResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<DeleteEditsImagesRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteEditsImagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6444,8 +6448,8 @@ export const deleteEditsListings: API.OperationMethod<
   DeleteEditsListingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<DeleteEditsListingsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeleteEditsListingsResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<DeleteEditsListingsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteEditsListingsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6459,8 +6463,8 @@ export const deleteGrants: API.OperationMethod<
   DeleteGrantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<DeleteGrantsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeleteGrantsResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<DeleteGrantsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteGrantsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6474,8 +6478,8 @@ export const deleteInappproducts: API.OperationMethod<
   DeleteInappproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<DeleteInappproductsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeleteInappproductsResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<DeleteInappproductsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteInappproductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6494,8 +6498,8 @@ export const deleteMonetizationOnetimeproducts: API.OperationMethod<
   DeleteMonetizationOnetimeproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<DeleteMonetizationOnetimeproductsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteMonetizationOnetimeproductsResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<DeleteMonetizationOnetimeproductsRequest>,
+  output: __S(3392, __c106, 0) as any as S.Schema<DeleteMonetizationOnetimeproductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6514,8 +6518,8 @@ export const deleteMonetizationSubscriptions: API.OperationMethod<
   DeleteMonetizationSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<DeleteMonetizationSubscriptionsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteMonetizationSubscriptionsResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<DeleteMonetizationSubscriptionsRequest>,
+  output: __S(3392, __c106, 0) as any as S.Schema<DeleteMonetizationSubscriptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6534,8 +6538,8 @@ export const deleteMonetizationSubscriptionsBasePlans: API.OperationMethod<
   DeleteMonetizationSubscriptionsBasePlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansRequest>,
+  output: __S(3392, __c106, 0) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6555,14 +6559,14 @@ export const deleteMonetizationSubscriptionsBasePlansOffers: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    296,
-    __c37,
+    4736,
+    __c148,
     0,
   ) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansOffersRequest>,
   output: __S(
-    2,
-    __c0,
-    2,
+    3392,
+    __c106,
+    0,
   ) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6577,8 +6581,8 @@ export const deleteUsers: API.OperationMethod<
   DeleteUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<DeleteUsersRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeleteUsersResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<DeleteUsersRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6592,8 +6596,8 @@ export const deployApprecovery: API.OperationMethod<
   DeployApprecoveryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<DeployApprecoveryRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeployAppRecoveryResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<DeployApprecoveryRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeployAppRecoveryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6607,8 +6611,8 @@ export const downloadGeneratedapks: API.OperationMethod<
   DownloadGeneratedapksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<DownloadGeneratedapksRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DownloadGeneratedapksResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<DownloadGeneratedapksRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DownloadGeneratedapksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6622,8 +6626,8 @@ export const downloadSystemapksVariants: API.OperationMethod<
   DownloadSystemapksVariantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<DownloadSystemapksVariantsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DownloadSystemapksVariantsResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<DownloadSystemapksVariantsRequest>,
+  output: __S(3392, __c106, 0) as any as S.Schema<DownloadSystemapksVariantsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6637,8 +6641,8 @@ export const enrollAppAppsigning: API.OperationMethod<
   EnrollAppAppsigningError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<EnrollAppAppsigningRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<EnrollAppResponse>,
+  input: __S(5123, __c160, 3) as any as S.Schema<EnrollAppAppsigningRequest>,
+  output: __S(5124, __c160, 4) as any as S.Schema<EnrollAppResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6652,8 +6656,8 @@ export const getApplicationsDeviceTierConfigs: API.OperationMethod<
   GetApplicationsDeviceTierConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<GetApplicationsDeviceTierConfigsRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<DeviceTierConfig>,
+  input: __S(5184, __c162, 0) as any as S.Schema<GetApplicationsDeviceTierConfigsRequest>,
+  output: __S(3344, __c104, 16) as any as S.Schema<DeviceTierConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6667,8 +6671,8 @@ export const getAppstorecatalogRecentappviews: API.OperationMethod<
   GetAppstorecatalogRecentappviewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<GetAppstorecatalogRecentappviewsRequest>,
-  output: __S(336, __c42, 0) as any as S.Schema<RecentAppView>,
+  input: __S(5216, __c163, 0) as any as S.Schema<GetAppstorecatalogRecentappviewsRequest>,
+  output: __S(5241, __c163, 25) as any as S.Schema<RecentAppView>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6678,8 +6682,8 @@ export type GetEditsError = NotFound | Forbidden | GcpOpError;
 /** Gets an app edit. */
 export const getEdits: API.OperationMethod<GetEditsRequest, AppEdit, GetEditsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(337, __c42, 1) as any as S.Schema<GetEditsRequest>,
-    output: __S(202, __c25, 2) as any as S.Schema<AppEdit>,
+    input: __S(5280, __c165, 0) as any as S.Schema<GetEditsRequest>,
+    output: __S(3200, __c100, 0) as any as S.Schema<AppEdit>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -6693,8 +6697,8 @@ export const getEditsCountryavailability: API.OperationMethod<
   GetEditsCountryavailabilityError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<GetEditsCountryavailabilityRequest>,
-  output: __S(341, __c42, 5) as any as S.Schema<TrackCountryAvailability>,
+  input: __S(5312, __c166, 0) as any as S.Schema<GetEditsCountryavailabilityRequest>,
+  output: __S(5315, __c166, 3) as any as S.Schema<TrackCountryAvailability>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6708,8 +6712,8 @@ export const getEditsDetails: API.OperationMethod<
   GetEditsDetailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<GetEditsDetailsRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<AppDetails>,
+  input: __S(5344, __c167, 0) as any as S.Schema<GetEditsDetailsRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<AppDetails>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6723,8 +6727,8 @@ export const getEditsExpansionfiles: API.OperationMethod<
   GetEditsExpansionfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<GetEditsExpansionfilesRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<ExpansionFile>,
+  input: __S(5408, __c169, 0) as any as S.Schema<GetEditsExpansionfilesRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<ExpansionFile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6738,8 +6742,8 @@ export const getEditsListings: API.OperationMethod<
   GetEditsListingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<GetEditsListingsRequest>,
-  output: __S(347, __c43, 3) as any as S.Schema<Listing>,
+  input: __S(5472, __c171, 0) as any as S.Schema<GetEditsListingsRequest>,
+  output: __S(5504, __c172, 0) as any as S.Schema<Listing>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6753,8 +6757,8 @@ export const getEditsTesters: API.OperationMethod<
   GetEditsTestersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<GetEditsTestersRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<Testers>,
+  input: __S(5536, __c173, 0) as any as S.Schema<GetEditsTestersRequest>,
+  output: __S(5568, __c174, 0) as any as S.Schema<Testers>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6768,8 +6772,8 @@ export const getEditsTracks: API.OperationMethod<
   GetEditsTracksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<GetEditsTracksRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<Track>,
+  input: __S(5600, __c175, 0) as any as S.Schema<GetEditsTracksRequest>,
+  output: __S(3557, __c111, 5) as any as S.Schema<Track>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6783,8 +6787,8 @@ export const getexternaltransactionExternaltransactions: API.OperationMethod<
   GetexternaltransactionExternaltransactionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<GetexternaltransactionExternaltransactionsRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<ExternalTransaction>,
+  input: __S(5760, __c180, 0) as any as S.Schema<GetexternaltransactionExternaltransactionsRequest>,
+  output: __S(3622, __c113, 6) as any as S.Schema<ExternalTransaction>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6798,8 +6802,8 @@ export const getInappproducts: API.OperationMethod<
   GetInappproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<GetInappproductsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<InAppProduct>,
+  input: __S(5792, __c181, 0) as any as S.Schema<GetInappproductsRequest>,
+  output: __S(2052, __c64, 4) as any as S.Schema<InAppProduct>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6813,8 +6817,8 @@ export const getMonetizationOnetimeproducts: API.OperationMethod<
   GetMonetizationOnetimeproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<GetMonetizationOnetimeproductsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<OneTimeProduct>,
+  input: __S(5824, __c182, 0) as any as S.Schema<GetMonetizationOnetimeproductsRequest>,
+  output: __S(2189, __c68, 13) as any as S.Schema<OneTimeProduct>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6828,8 +6832,8 @@ export const getMonetizationSubscriptions: API.OperationMethod<
   GetMonetizationSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<GetMonetizationSubscriptionsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Subscription>,
+  input: __S(5856, __c183, 0) as any as S.Schema<GetMonetizationSubscriptionsRequest>,
+  output: __S(5034, __c157, 10) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6843,8 +6847,12 @@ export const getMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   GetMonetizationSubscriptionsBasePlansOffersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<GetMonetizationSubscriptionsBasePlansOffersRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<SubscriptionOffer>,
+  input: __S(
+    5888,
+    __c184,
+    0,
+  ) as any as S.Schema<GetMonetizationSubscriptionsBasePlansOffersRequest>,
+  output: __S(5708, __c178, 12) as any as S.Schema<SubscriptionOffer>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6854,8 +6862,8 @@ export type GetOrdersError = NotFound | Forbidden | GcpOpError;
 /** Get order details for a single order. */
 export const getOrders: API.OperationMethod<GetOrdersRequest, Order, GetOrdersError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(356, __c44, 4) as any as S.Schema<GetOrdersRequest>,
-    output: __S(141, __c17, 5) as any as S.Schema<Order>,
+    input: __S(5920, __c185, 0) as any as S.Schema<GetOrdersRequest>,
+    output: __S(2543, __c79, 15) as any as S.Schema<Order>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -6869,8 +6877,8 @@ export const getproductpurchasev2PurchasesProductsv2: API.OperationMethod<
   Getproductpurchasev2PurchasesProductsv2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<Getproductpurchasev2PurchasesProductsv2Request>,
-  output: __S(364, __c45, 4) as any as S.Schema<ProductPurchaseV2>,
+  input: __S(5952, __c186, 0) as any as S.Schema<Getproductpurchasev2PurchasesProductsv2Request>,
+  output: __S(5959, __c186, 7) as any as S.Schema<ProductPurchaseV2>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6884,8 +6892,8 @@ export const getPurchasesProducts: API.OperationMethod<
   GetPurchasesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365, __c45, 5) as any as S.Schema<GetPurchasesProductsRequest>,
-  output: __S(366, __c45, 6) as any as S.Schema<ProductPurchase>,
+  input: __S(5984, __c187, 0) as any as S.Schema<GetPurchasesProductsRequest>,
+  output: __S(5985, __c187, 1) as any as S.Schema<ProductPurchase>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6899,8 +6907,8 @@ export const getPurchasesSubscriptionsv2: API.OperationMethod<
   GetPurchasesSubscriptionsv2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<GetPurchasesSubscriptionsv2Request>,
-  output: __S(391, __c48, 7) as any as S.Schema<SubscriptionPurchaseV2>,
+  input: __S(6016, __c188, 0) as any as S.Schema<GetPurchasesSubscriptionsv2Request>,
+  output: __S(6040, __c188, 24) as any as S.Schema<SubscriptionPurchaseV2>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6914,8 +6922,8 @@ export const getReviews: API.OperationMethod<
   GetReviewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<GetReviewsRequest>,
-  output: __S(399, __c49, 7) as any as S.Schema<Review>,
+  input: __S(6048, __c189, 0) as any as S.Schema<GetReviewsRequest>,
+  output: __S(6085, __c190, 5) as any as S.Schema<Review>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6929,8 +6937,8 @@ export const getSystemapksVariants: API.OperationMethod<
   GetSystemapksVariantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<GetSystemapksVariantsRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<Variant>,
+  input: __S(6208, __c194, 0) as any as S.Schema<GetSystemapksVariantsRequest>,
+  output: __S(3842, __c120, 2) as any as S.Schema<Variant>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6944,8 +6952,8 @@ export const insertEdits: API.OperationMethod<
   InsertEditsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<InsertEditsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<AppEdit>,
+  input: __S(6240, __c195, 0) as any as S.Schema<InsertEditsRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<AppEdit>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6959,8 +6967,8 @@ export const insertInappproducts: API.OperationMethod<
   InsertInappproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<InsertInappproductsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<InAppProduct>,
+  input: __S(6272, __c196, 0) as any as S.Schema<InsertInappproductsRequest>,
+  output: __S(2052, __c64, 4) as any as S.Schema<InAppProduct>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6975,8 +6983,8 @@ export const listApplicationsDeviceTierConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDeviceTierConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<ListApplicationsDeviceTierConfigsRequest>,
-  output: __S(405, __c50, 5) as any as S.Schema<ListDeviceTierConfigsResponse>,
+  input: __S(6304, __c197, 0) as any as S.Schema<ListApplicationsDeviceTierConfigsRequest>,
+  output: __S(6306, __c197, 2) as any as S.Schema<ListDeviceTierConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6991,8 +6999,8 @@ export const listApplicationsTracksReleases: API.OperationMethod<
   ListApplicationsTracksReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<ListApplicationsTracksReleasesRequest>,
-  output: __S(411, __c51, 3) as any as S.Schema<ListReleaseSummariesResponse>,
+  input: __S(6336, __c198, 0) as any as S.Schema<ListApplicationsTracksReleasesRequest>,
+  output: __S(6341, __c198, 5) as any as S.Schema<ListReleaseSummariesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7006,8 +7014,8 @@ export const listApprecovery: API.OperationMethod<
   ListApprecoveryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<ListApprecoveryRequest>,
-  output: __S(414, __c51, 6) as any as S.Schema<ListAppRecoveriesResponse>,
+  input: __S(6368, __c199, 0) as any as S.Schema<ListApprecoveryRequest>,
+  output: __S(6370, __c199, 2) as any as S.Schema<ListAppRecoveriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7022,8 +7030,8 @@ export const listAppstorecatalogRecentupdateevents: API.PaginatedOperationMethod
   GcpOpContext,
   ListRecentUpdateEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<ListAppstorecatalogRecentupdateeventsRequest>,
-  output: __S(418, __c52, 2) as any as S.Schema<ListRecentUpdateEventsResponse>,
+  input: __S(6400, __c200, 0) as any as S.Schema<ListAppstorecatalogRecentupdateeventsRequest>,
+  output: __S(6403, __c200, 3) as any as S.Schema<ListRecentUpdateEventsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7038,8 +7046,8 @@ export const listEditsApks: API.OperationMethod<
   ListEditsApksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<ListEditsApksRequest>,
-  output: __S(423, __c52, 7) as any as S.Schema<ApksListResponse>,
+  input: __S(6432, __c201, 0) as any as S.Schema<ListEditsApksRequest>,
+  output: __S(6434, __c201, 2) as any as S.Schema<ApksListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7053,8 +7061,8 @@ export const listEditsBundles: API.OperationMethod<
   ListEditsBundlesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<ListEditsBundlesRequest>,
-  output: __S(427, __c53, 3) as any as S.Schema<BundlesListResponse>,
+  input: __S(6496, __c203, 0) as any as S.Schema<ListEditsBundlesRequest>,
+  output: __S(6498, __c203, 2) as any as S.Schema<BundlesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7068,8 +7076,8 @@ export const listEditsImages: API.OperationMethod<
   ListEditsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<ListEditsImagesRequest>,
-  output: __S(429, __c53, 5) as any as S.Schema<ImagesListResponse>,
+  input: __S(6560, __c205, 0) as any as S.Schema<ListEditsImagesRequest>,
+  output: __S(6561, __c205, 1) as any as S.Schema<ImagesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7083,8 +7091,8 @@ export const listEditsListings: API.OperationMethod<
   ListEditsListingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<ListEditsListingsRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<ListingsListResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<ListEditsListingsRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<ListingsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7098,8 +7106,8 @@ export const listEditsTracks: API.OperationMethod<
   ListEditsTracksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<ListEditsTracksRequest>,
-  output: __S(435, __c54, 3) as any as S.Schema<TracksListResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListEditsTracksRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<TracksListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7113,8 +7121,8 @@ export const listGeneratedapks: API.OperationMethod<
   ListGeneratedapksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<ListGeneratedapksRequest>,
-  output: __S(483, __c60, 3) as any as S.Schema<GeneratedApksListResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListGeneratedapksRequest>,
+  output: __S(207, __c6, 15) as any as S.Schema<GeneratedApksListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7128,8 +7136,8 @@ export const listInappproducts: API.OperationMethod<
   ListInappproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<ListInappproductsRequest>,
-  output: __S(487, __c60, 7) as any as S.Schema<InappproductsListResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListInappproductsRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<InappproductsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7144,8 +7152,8 @@ export const listMonetizationOnetimeproducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOneTimeProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<ListMonetizationOnetimeproductsRequest>,
-  output: __S(489, __c61, 1) as any as S.Schema<ListOneTimeProductsResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListMonetizationOnetimeproductsRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<ListOneTimeProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7165,11 +7173,11 @@ export const listMonetizationOnetimeproductsPurchaseOptionsOffers: API.Paginated
   ListOneTimeProductOffersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    490,
-    __c61,
-    2,
+    320,
+    __c10,
+    0,
   ) as any as S.Schema<ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest>,
-  output: __S(491, __c61, 3) as any as S.Schema<ListOneTimeProductOffersResponse>,
+  output: __S(321, __c10, 1) as any as S.Schema<ListOneTimeProductOffersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7185,8 +7193,8 @@ export const listMonetizationSubscriptions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(492, __c61, 4) as any as S.Schema<ListMonetizationSubscriptionsRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<ListSubscriptionsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListMonetizationSubscriptionsRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<ListSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7202,8 +7210,8 @@ export const listMonetizationSubscriptionsBasePlansOffers: API.PaginatedOperatio
   GcpOpContext,
   ListSubscriptionOffersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(494, __c61, 6) as any as S.Schema<ListMonetizationSubscriptionsBasePlansOffersRequest>,
-  output: __S(495, __c61, 7) as any as S.Schema<ListSubscriptionOffersResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListMonetizationSubscriptionsBasePlansOffersRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<ListSubscriptionOffersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7218,8 +7226,8 @@ export const listPurchasesVoidedpurchases: API.OperationMethod<
   ListPurchasesVoidedpurchasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<ListPurchasesVoidedpurchasesRequest>,
-  output: __S(499, __c62, 3) as any as S.Schema<VoidedPurchasesListResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListPurchasesVoidedpurchasesRequest>,
+  output: __S(419, __c13, 3) as any as S.Schema<VoidedPurchasesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7233,8 +7241,8 @@ export const listReviews: API.OperationMethod<
   ListReviewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(500, __c62, 4) as any as S.Schema<ListReviewsRequest>,
-  output: __S(502, __c62, 6) as any as S.Schema<ReviewsListResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListReviewsRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<ReviewsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7248,8 +7256,8 @@ export const listSystemapksVariants: API.OperationMethod<
   ListSystemapksVariantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(503, __c62, 7) as any as S.Schema<ListSystemapksVariantsRequest>,
-  output: __S(505, __c63, 1) as any as S.Schema<SystemApksListResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListSystemapksVariantsRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<SystemApksListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7264,8 +7272,8 @@ export const listUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(506, __c63, 2) as any as S.Schema<ListUsersRequest>,
-  output: __S(508, __c63, 4) as any as S.Schema<ListUsersResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListUsersRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<ListUsersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7286,11 +7294,11 @@ export const migratePricesMonetizationSubscriptionsBasePlans: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    509,
-    __c63,
-    5,
+    576,
+    __c18,
+    0,
   ) as any as S.Schema<MigratePricesMonetizationSubscriptionsBasePlansRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<MigrateBasePlanPricesResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<MigrateBasePlanPricesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7304,8 +7312,8 @@ export const patchEditsDetails: API.OperationMethod<
   PatchEditsDetailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(510, __c63, 6) as any as S.Schema<PatchEditsDetailsRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<AppDetails>,
+  input: __S(608, __c19, 0) as any as S.Schema<PatchEditsDetailsRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<AppDetails>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7324,8 +7332,8 @@ export const patchEditsExpansionfiles: API.OperationMethod<
   PatchEditsExpansionfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(511, __c63, 7) as any as S.Schema<PatchEditsExpansionfilesRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<ExpansionFile>,
+  input: __S(640, __c20, 0) as any as S.Schema<PatchEditsExpansionfilesRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<ExpansionFile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7339,8 +7347,8 @@ export const patchEditsListings: API.OperationMethod<
   PatchEditsListingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<PatchEditsListingsRequest>,
-  output: __S(347, __c43, 3) as any as S.Schema<Listing>,
+  input: __S(672, __c21, 0) as any as S.Schema<PatchEditsListingsRequest>,
+  output: __S(5504, __c172, 0) as any as S.Schema<Listing>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7354,8 +7362,8 @@ export const patchEditsTesters: API.OperationMethod<
   PatchEditsTestersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(513, __c64, 1) as any as S.Schema<PatchEditsTestersRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<Testers>,
+  input: __S(704, __c22, 0) as any as S.Schema<PatchEditsTestersRequest>,
+  output: __S(5568, __c174, 0) as any as S.Schema<Testers>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7369,8 +7377,8 @@ export const patchEditsTracks: API.OperationMethod<
   PatchEditsTracksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(514, __c64, 2) as any as S.Schema<PatchEditsTracksRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<Track>,
+  input: __S(736, __c23, 0) as any as S.Schema<PatchEditsTracksRequest>,
+  output: __S(3557, __c111, 5) as any as S.Schema<Track>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7384,8 +7392,8 @@ export const patchGrants: API.OperationMethod<
   PatchGrantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(515, __c64, 3) as any as S.Schema<PatchGrantsRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<Grant>,
+  input: __S(768, __c24, 0) as any as S.Schema<PatchGrantsRequest>,
+  output: __S(3680, __c115, 0) as any as S.Schema<Grant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7399,8 +7407,8 @@ export const patchInappproducts: API.OperationMethod<
   PatchInappproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(516, __c64, 4) as any as S.Schema<PatchInappproductsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<InAppProduct>,
+  input: __S(800, __c25, 0) as any as S.Schema<PatchInappproductsRequest>,
+  output: __S(2052, __c64, 4) as any as S.Schema<InAppProduct>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7419,8 +7427,8 @@ export const patchMonetizationOnetimeproducts: API.OperationMethod<
   PatchMonetizationOnetimeproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(517, __c64, 5) as any as S.Schema<PatchMonetizationOnetimeproductsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<OneTimeProduct>,
+  input: __S(864, __c27, 0) as any as S.Schema<PatchMonetizationOnetimeproductsRequest>,
+  output: __S(2189, __c68, 13) as any as S.Schema<OneTimeProduct>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7439,8 +7447,8 @@ export const patchMonetizationSubscriptions: API.OperationMethod<
   PatchMonetizationSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(518, __c64, 6) as any as S.Schema<PatchMonetizationSubscriptionsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Subscription>,
+  input: __S(896, __c28, 0) as any as S.Schema<PatchMonetizationSubscriptionsRequest>,
+  output: __S(5034, __c157, 10) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7460,11 +7468,11 @@ export const patchMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    519,
-    __c64,
-    7,
+    928,
+    __c29,
+    0,
   ) as any as S.Schema<PatchMonetizationSubscriptionsBasePlansOffersRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<SubscriptionOffer>,
+  output: __S(5708, __c178, 12) as any as S.Schema<SubscriptionOffer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7478,8 +7486,8 @@ export const patchUsers: API.OperationMethod<
   PatchUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(520, __c65, 0) as any as S.Schema<PatchUsersRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<User>,
+  input: __S(960, __c30, 0) as any as S.Schema<PatchUsersRequest>,
+  output: __S(3905, __c122, 1) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7499,11 +7507,11 @@ export const refundexternaltransactionExternaltransactions: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    523,
-    __c65,
-    3,
+    994,
+    __c31,
+    2,
   ) as any as S.Schema<RefundexternaltransactionExternaltransactionsRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<ExternalTransaction>,
+  output: __S(3622, __c113, 6) as any as S.Schema<ExternalTransaction>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7517,8 +7525,8 @@ export const refundOrders: API.OperationMethod<
   RefundOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<RefundOrdersRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<RefundOrdersResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<RefundOrdersRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<RefundOrdersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7532,8 +7540,8 @@ export const replyReviews: API.OperationMethod<
   ReplyReviewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(526, __c65, 6) as any as S.Schema<ReplyReviewsRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<ReviewsReplyResponse>,
+  input: __S(1057, __c33, 1) as any as S.Schema<ReplyReviewsRequest>,
+  output: __S(1059, __c33, 3) as any as S.Schema<ReviewsReplyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7547,8 +7555,8 @@ export const reviewrefundOrders: API.OperationMethod<
   ReviewrefundOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(533, __c66, 5) as any as S.Schema<ReviewrefundOrdersRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ReviewrefundOrdersResponse>,
+  input: __S(1092, __c34, 4) as any as S.Schema<ReviewrefundOrdersRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<ReviewrefundOrdersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7567,8 +7575,8 @@ export const revokePurchasesSubscriptionsv2: API.OperationMethod<
   RevokePurchasesSubscriptionsv2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<RevokePurchasesSubscriptionsv2Request>,
-  output: __S(2, __c0, 2) as any as S.Schema<RevokeSubscriptionPurchaseResponse>,
+  input: __S(1123, __c35, 3) as any as S.Schema<RevokePurchasesSubscriptionsv2Request>,
+  output: __S(3392, __c106, 0) as any as S.Schema<RevokeSubscriptionPurchaseResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7587,8 +7595,8 @@ export const rotateAppSigningKeyAppsigning: API.OperationMethod<
   RotateAppSigningKeyAppsigningError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540, __c67, 4) as any as S.Schema<RotateAppSigningKeyAppsigningRequest>,
-  output: __S(541, __c67, 5) as any as S.Schema<RotateAppSigningKeyResponse>,
+  input: __S(1154, __c36, 2) as any as S.Schema<RotateAppSigningKeyAppsigningRequest>,
+  output: __S(1155, __c36, 3) as any as S.Schema<RotateAppSigningKeyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7607,8 +7615,8 @@ export const updateappstorehostedappAppstoreappsreview: API.OperationMethod<
   UpdateappstorehostedappAppstoreappsreviewError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(566, __c70, 6) as any as S.Schema<UpdateappstorehostedappAppstoreappsreviewRequest>,
-  output: __S(567, __c70, 7) as any as S.Schema<UpdateAppStoreHostedAppResponse>,
+  input: __S(1240, __c38, 24) as any as S.Schema<UpdateappstorehostedappAppstoreappsreviewRequest>,
+  output: __S(1241, __c38, 25) as any as S.Schema<UpdateAppStoreHostedAppResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7628,11 +7636,11 @@ export const updateappstorehostedapppublishstatusAppstoreappsreview: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    569,
-    __c71,
+    1249,
+    __c39,
     1,
   ) as any as S.Schema<UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UpdateAppStoreHostedAppPublishStatusResponse>,
+  output: __S(3392, __c106, 0) as any as S.Schema<UpdateAppStoreHostedAppPublishStatusResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7646,8 +7654,8 @@ export const updateEditsDetails: API.OperationMethod<
   UpdateEditsDetailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(570, __c71, 2) as any as S.Schema<UpdateEditsDetailsRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<AppDetails>,
+  input: __S(1280, __c40, 0) as any as S.Schema<UpdateEditsDetailsRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<AppDetails>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7666,8 +7674,8 @@ export const updateEditsExpansionfiles: API.OperationMethod<
   UpdateEditsExpansionfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(571, __c71, 3) as any as S.Schema<UpdateEditsExpansionfilesRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<ExpansionFile>,
+  input: __S(1312, __c41, 0) as any as S.Schema<UpdateEditsExpansionfilesRequest>,
+  output: __S(5440, __c170, 0) as any as S.Schema<ExpansionFile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7681,8 +7689,8 @@ export const updateEditsListings: API.OperationMethod<
   UpdateEditsListingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(572, __c71, 4) as any as S.Schema<UpdateEditsListingsRequest>,
-  output: __S(347, __c43, 3) as any as S.Schema<Listing>,
+  input: __S(1344, __c42, 0) as any as S.Schema<UpdateEditsListingsRequest>,
+  output: __S(5504, __c172, 0) as any as S.Schema<Listing>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7696,8 +7704,8 @@ export const updateEditsTesters: API.OperationMethod<
   UpdateEditsTestersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(573, __c71, 5) as any as S.Schema<UpdateEditsTestersRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<Testers>,
+  input: __S(1376, __c43, 0) as any as S.Schema<UpdateEditsTestersRequest>,
+  output: __S(5568, __c174, 0) as any as S.Schema<Testers>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7711,8 +7719,8 @@ export const updateEditsTracks: API.OperationMethod<
   UpdateEditsTracksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574, __c71, 6) as any as S.Schema<UpdateEditsTracksRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<Track>,
+  input: __S(1408, __c44, 0) as any as S.Schema<UpdateEditsTracksRequest>,
+  output: __S(3557, __c111, 5) as any as S.Schema<Track>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7726,8 +7734,8 @@ export const updateInappproducts: API.OperationMethod<
   UpdateInappproductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(575, __c71, 7) as any as S.Schema<UpdateInappproductsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<InAppProduct>,
+  input: __S(1440, __c45, 0) as any as S.Schema<UpdateInappproductsRequest>,
+  output: __S(2052, __c64, 4) as any as S.Schema<InAppProduct>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7746,8 +7754,8 @@ export const uploadapkAppstoreappsreview: API.OperationMethod<
   UploadapkAppstoreappsreviewError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c72, 0) as any as S.Schema<UploadapkAppstoreappsreviewRequest>,
-  output: __S(577, __c72, 1) as any as S.Schema<UploadApkResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<UploadapkAppstoreappsreviewRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<UploadApkResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7766,8 +7774,8 @@ export const uploadapkInternalappsharingartifacts: API.OperationMethod<
   UploadapkInternalappsharingartifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(578, __c72, 2) as any as S.Schema<UploadapkInternalappsharingartifactsRequest>,
-  output: __S(579, __c72, 3) as any as S.Schema<InternalAppSharingArtifact>,
+  input: __S(1504, __c47, 0) as any as S.Schema<UploadapkInternalappsharingartifactsRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<InternalAppSharingArtifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7787,11 +7795,11 @@ export const uploadappstoreapppolicydeclarationfileAppstoreappsreview: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    581,
-    __c72,
-    5,
+    1633,
+    __c51,
+    1,
   ) as any as S.Schema<UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest>,
-  output: __S(582, __c72, 6) as any as S.Schema<UploadAppStoreAppPolicyDeclarationFileResponse>,
+  output: __S(1634, __c51, 2) as any as S.Schema<UploadAppStoreAppPolicyDeclarationFileResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7810,8 +7818,8 @@ export const uploadbundleInternalappsharingartifacts: API.OperationMethod<
   UploadbundleInternalappsharingartifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(583, __c72, 7) as any as S.Schema<UploadbundleInternalappsharingartifactsRequest>,
-  output: __S(579, __c72, 3) as any as S.Schema<InternalAppSharingArtifact>,
+  input: __S(1664, __c52, 0) as any as S.Schema<UploadbundleInternalappsharingartifactsRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<InternalAppSharingArtifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7825,8 +7833,8 @@ export const uploadEditsApks: API.OperationMethod<
   UploadEditsApksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<UploadEditsApksRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<Apk>,
+  input: __S(1696, __c53, 0) as any as S.Schema<UploadEditsApksRequest>,
+  output: __S(6465, __c202, 1) as any as S.Schema<Apk>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7840,8 +7848,8 @@ export const uploadEditsBundles: API.OperationMethod<
   UploadEditsBundlesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(585, __c73, 1) as any as S.Schema<UploadEditsBundlesRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<Bundle>,
+  input: __S(1728, __c54, 0) as any as S.Schema<UploadEditsBundlesRequest>,
+  output: __S(6528, __c204, 0) as any as S.Schema<Bundle>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7860,8 +7868,8 @@ export const uploadEditsDeobfuscationfiles: API.OperationMethod<
   UploadEditsDeobfuscationfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(586, __c73, 2) as any as S.Schema<UploadEditsDeobfuscationfilesRequest>,
-  output: __S(588, __c73, 4) as any as S.Schema<DeobfuscationFilesUploadResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<UploadEditsDeobfuscationfilesRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<DeobfuscationFilesUploadResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7880,8 +7888,8 @@ export const uploadEditsExpansionfiles: API.OperationMethod<
   UploadEditsExpansionfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(589, __c73, 5) as any as S.Schema<UploadEditsExpansionfilesRequest>,
-  output: __S(590, __c73, 6) as any as S.Schema<ExpansionFilesUploadResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<UploadEditsExpansionfilesRequest>,
+  output: __S(1793, __c56, 1) as any as S.Schema<ExpansionFilesUploadResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7895,8 +7903,8 @@ export const uploadEditsImages: API.OperationMethod<
   UploadEditsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(591, __c73, 7) as any as S.Schema<UploadEditsImagesRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<ImagesUploadResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<UploadEditsImagesRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<ImagesUploadResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7915,8 +7923,8 @@ export const uploadimageAppstoreappsreview: API.OperationMethod<
   UploadimageAppstoreappsreviewError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(593, __c74, 1) as any as S.Schema<UploadimageAppstoreappsreviewRequest>,
-  output: __S(594, __c74, 2) as any as S.Schema<UploadImageResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<UploadimageAppstoreappsreviewRequest>,
+  output: __S(1857, __c58, 1) as any as S.Schema<UploadImageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7930,8 +7938,8 @@ export const validateEdits: API.OperationMethod<
   ValidateEditsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(595, __c74, 3) as any as S.Schema<ValidateEditsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<AppEdit>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ValidateEditsRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<AppEdit>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7943,597 +7951,23 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          developerPayload: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProductPurchasesAcknowledgeRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:acknowledge",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AcknowledgePurchasesProductsRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AcknowledgePurchasesProductsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          obfuscatedAccountId: S.optional(S.String),
-          obfuscatedProfileId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalAccountIds" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          developerPayload: S.optional(S.String),
-          externalAccountIds: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "SubscriptionPurchasesAcknowledgeRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          token: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:acknowledge",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AcknowledgePurchasesSubscriptionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.optional(S.String),
-          packageName: S.optional(S.String),
-          latencyTolerance: S.optional(S.String),
-          purchaseOptionId: S.optional(S.String),
-          offerId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ActivateOneTimeProductOfferRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          purchaseOptionId: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          offerId: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:activate",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OfferTag" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          units: S.optional(S.String),
-          nanos: S.optional(S.Number),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Money" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          relativeDiscount: S.optional(S.Number),
-          availability: S.optional(S.String),
-          absoluteDiscount: S.optional(__S(10, __c1, 2)),
-          regionCode: S.optional(S.String),
-          noOverride: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "OneTimeProductOfferRegionalPricingAndAvailabilityConfig",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          redemptionLimit: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OneTimeProductGameRewardOffer",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-          redemptionLimit: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OneTimeProductDiscountedOffer",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          priceChangeBehavior: S.optional(S.String),
-          startTime: S.optional(S.String),
-          releaseTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OneTimeProductPreOrderOffer",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RegionsVersion" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          offerTags: S.optional(__S(9, __c1, 1)),
-          productId: S.optional(S.String),
-          regionalPricingAndAvailabilityConfigs: S.optional(__S(12, __c1, 4)),
-          packageName: S.optional(S.String),
-          gameRewardOffer: S.optional(__S(13, __c1, 5)),
-          offerId: S.optional(S.String),
-          discountedOffer: S.optional(__S(14, __c1, 6)),
-          preOrderOffer: S.optional(__S(15, __c1, 7)),
-          state: S.optional(S.String),
-          regionsVersion: S.optional(__S(16, __c2, 0)),
-          purchaseOptionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OneTimeProductOffer" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.optional(S.String),
-          basePlanId: S.optional(S.String),
-          productId: S.optional(S.String),
-          latencyTolerance: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActivateBasePlanRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          basePlanId: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:activate",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateMonetizationSubscriptionsBasePlansRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          regionCode: S.optional(S.String),
-          newSubscriberAvailability: S.optional(S.Boolean),
-          price: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "RegionalBasePlanConfig" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          billingPeriodDuration: S.optional(S.String),
-          legacyCompatible: S.optional(S.Boolean),
-          gracePeriodDuration: S.optional(S.String),
-          prorationMode: S.optional(S.String),
-          resubscribeState: S.optional(S.String),
-          accountHoldDuration: S.optional(S.String),
-          legacyCompatibleSubscriptionOfferId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutoRenewingBasePlanType" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          usdPrice: S.optional(__S(10, __c1, 2)),
-          eurPrice: S.optional(__S(10, __c1, 2)),
-          newSubscriberAvailability: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "OtherRegionsBasePlanConfig",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          committedPaymentsCount: S.optional(S.Number),
-          renewalType: S.optional(S.String),
-          accountHoldDuration: S.optional(S.String),
-          billingPeriodDuration: S.optional(S.String),
-          prorationMode: S.optional(S.String),
-          resubscribeState: S.optional(S.String),
-          gracePeriodDuration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InstallmentsBasePlanType" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          billingPeriodDuration: S.optional(S.String),
-          timeExtension: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrepaidBasePlanType" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          regionalConfigs: S.optional(__S(21, __c2, 5)),
-          autoRenewingBasePlanType: S.optional(__S(22, __c2, 6)),
-          offerTags: S.optional(__S(9, __c1, 1)),
-          basePlanId: S.optional(S.String),
-          otherRegionsConfig: S.optional(__S(23, __c2, 7)),
-          installmentsBasePlanType: S.optional(__S(24, __c3, 0)),
-          prepaidBasePlanType: S.optional(__S(25, __c3, 1)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BasePlan" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          regionCodes: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "RestrictedPaymentCountries",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          title: S.optional(S.String),
-          benefits: S.optional(__S(28, __c3, 4)),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SubscriptionListing" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          regionCode: S.optional(S.String),
-          productAgeRatingTier: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RegionalProductAgeRatingInfo",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          streamingTaxType: S.optional(S.String),
-          taxTier: S.optional(S.String),
-          eligibleForStreamingServiceTaxRate: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RegionalTaxRateInfo" });
-    case 3:
-      return S.Record(S.String, __S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          regionalProductAgeRatingInfos: S.optional(__S(33, __c4, 1)),
-          isTokenizedDigitalAsset: S.optional(S.Boolean),
-          taxRateInfoByRegionCode: S.optional(__S(35, __c4, 3)),
-          productTaxCategoryCode: S.optional(S.String),
-          eeaWithdrawalRightType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SubscriptionTaxAndComplianceSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          basePlans: S.optional(__S(27, __c3, 3)),
-          restrictedPaymentCountries: S.optional(__S(29, __c3, 5)),
-          listings: S.optional(__S(31, __c3, 7)),
-          packageName: S.optional(S.String),
-          productId: S.optional(S.String),
-          archived: S.optional(S.Boolean),
-          taxAndComplianceSettings: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "Subscription" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          basePlanId: S.optional(S.String),
-          productId: S.optional(S.String),
-          latencyTolerance: S.optional(S.String),
-          offerId: S.optional(S.String),
-          packageName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ActivateSubscriptionOfferRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          offerId: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          basePlanId: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:activate",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateMonetizationSubscriptionsBasePlansOffersRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          specificSubscriptionInApp: S.optional(S.String),
-          thisSubscription: S.optional(__S(2, __c0, 2)),
-          anySubscriptionInApp: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "TargetingRuleScope" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "AcquisitionTargetingRule" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.optional(__S(40, __c5, 0)),
-          oncePerUser: S.optional(S.Boolean),
-          billingPeriodDuration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpgradeTargetingRule" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          acquisitionRule: S.optional(__S(41, __c5, 1)),
-          upgradeRule: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "SubscriptionOfferTargeting",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          free: S.optional(__S(2, __c0, 2)),
-          relativeDiscount: S.optional(S.Number),
-          price: S.optional(__S(10, __c1, 2)),
-          regionCode: S.optional(S.String),
-          absoluteDiscount: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "RegionalSubscriptionOfferPhaseConfig",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          usdPrice: S.optional(__S(10, __c1, 2)),
-          eurPrice: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "OtherRegionsSubscriptionOfferPhasePrices",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          free: S.optional(__S(2, __c0, 2)),
-          otherRegionsPrices: S.optional(__S(46, __c5, 6)),
-          absoluteDiscounts: S.optional(__S(46, __c5, 6)),
-          relativeDiscount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "OtherRegionsSubscriptionOfferPhaseConfig",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          recurrenceCount: S.optional(S.Number),
-          regionalConfigs: S.optional(__S(45, __c5, 5)),
-          otherRegionsConfig: S.optional(__S(47, __c5, 7)),
-          duration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SubscriptionOfferPhase" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          otherRegionsNewSubscriberAvailability: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "OtherRegionsSubscriptionOfferConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          regionCode: S.optional(S.String),
-          newSubscriberAvailability: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "RegionalSubscriptionOfferConfig",
-      });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targeting: S.optional(__S(43, __c5, 3)),
-          phases: S.optional(__S(49, __c6, 1)),
-          productId: S.optional(S.String),
-          offerTags: S.optional(__S(9, __c1, 1)),
-          offerId: S.optional(S.String),
-          state: S.optional(S.String),
-          packageName: S.optional(S.String),
-          basePlanId: S.optional(S.String),
-          otherRegionsConfig: S.optional(__S(50, __c6, 2)),
-          regionalConfigs: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "SubscriptionOffer" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          maxSdkVersion: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "UsesPermission" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nativeCodes: S.optional(__S(28, __c3, 4)),
-          fileSha256Base64: S.optional(S.String),
-          minimumSdk: S.optional(S.Number),
-          externallyHostedUrl: S.optional(S.String),
-          versionName: S.optional(S.String),
-          fileSize: S.optional(S.String),
-          fileSha1Base64: S.optional(S.String),
-          usesPermissions: S.optional(__S(55, __c6, 7)),
-          iconBase64: S.optional(S.String),
-          certificateBase64s: S.optional(__S(28, __c3, 4)),
-          packageName: S.optional(S.String),
-          applicationLabel: S.optional(S.String),
-          maximumSdk: S.optional(S.Number),
-          versionCode: S.optional(S.Number),
-          usesFeatures: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "ExternallyHostedApk" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          externallyHostedApk: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "ApksAddExternallyHostedRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          editId: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/externallyHosted",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddexternallyhostedEditsApksRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sdkLevels: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "AndroidSdks" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          isAllUsersRequested: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AllUsers" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          regionCode: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "Regions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          androidSdks: S.optional(__S(59, __c7, 3)),
-          allUsers: S.optional(__S(60, __c7, 4)),
-          regions: S.optional(__S(61, __c7, 5)),
+          androidSdks: S.optional(__S(64, __c2, 0)),
+          allUsers: S.optional(__S(65, __c2, 1)),
+          regions: S.optional(__S(66, __c2, 2)),
         }),
       ).annotate({ identifier: "TargetingUpdate" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          targetingUpdate: S.optional(__S(62, __c7, 6)),
+          targetingUpdate: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "AddTargetingRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           appRecoveryId: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(63, __c7, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8544,16 +7978,652 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "AddTargetingApprecoveryRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AddTargetingResponse",
       });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sdkLevels: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({ identifier: "AndroidSdks" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          isAllUsersRequested: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AllUsers" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          regionCode: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({ identifier: "Regions" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListEditsListingsRequest" });
+    case 1:
+      return S.Array(__S(5504, __c172, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          listings: S.optional(__S(97, __c3, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListingsListResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListEditsTracksRequest" });
+    case 1:
+      return S.Array(__S(3557, __c111, 5));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          tracks: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({ identifier: "TracksListResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          versionCode: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListGeneratedapksRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          splitId: S.optional(S.String),
+          downloadId: S.optional(S.String),
+          variantId: S.optional(S.Number),
+          moduleName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GeneratedSplitApk" });
+    case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          variantId: S.optional(S.Number),
+          downloadId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GeneratedStandaloneApk" });
+    case 4:
+      return S.Array(__S(163, __c5, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          sliceId: S.optional(S.String),
+          moduleName: S.optional(S.String),
+          version: S.optional(S.String),
+          downloadId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GeneratedAssetPackSlice" });
+    case 6:
+      return S.Array(__S(165, __c5, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          moduleName: S.optional(S.String),
+          downloadId: S.optional(S.String),
+          recoveryId: S.optional(S.String),
+          recoveryStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GeneratedRecoveryApk" });
+    case 8:
+      return S.Array(__S(167, __c5, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          deliveryType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetModuleMetadata" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          splitId: S.optional(S.String),
+          isMasterSplit: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SplitApkMetadata" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TextureCompressionFormat" });
+    case 12:
+      return S.Array(__S(171, __c5, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          alternatives: S.optional(__S(172, __c5, 12)),
+          value: S.optional(__S(172, __c5, 12)),
+        }),
+      ).annotate({
+        identifier: "TextureCompressionFormatTargeting",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(5088, __c159, 0)),
+          alternatives: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({ identifier: "LanguageTargeting" });
+    case 15:
+      return S.Array(__S(171, __c5, 11));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          alternatives: S.optional(__S(175, __c5, 15)),
+          value: S.optional(__S(175, __c5, 15)),
+        }),
+      ).annotate({ identifier: "AbiTargeting" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          densityAlias: S.optional(S.String),
+          densityDpi: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ScreenDensity" });
+    case 18:
+      return S.Array(__S(177, __c5, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          alternatives: S.optional(__S(178, __c5, 18)),
+          value: S.optional(__S(178, __c5, 18)),
+        }),
+      ).annotate({ identifier: "ScreenDensityTargeting" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          min: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SdkVersion" });
+    case 21:
+      return S.Array(__S(180, __c5, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(181, __c5, 21)),
+          alternatives: S.optional(__S(181, __c5, 21)),
+        }),
+      ).annotate({ identifier: "SdkVersionTargeting" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          abi: S.optional(__S(175, __c5, 15)),
+        }),
+      ).annotate({ identifier: "MultiAbi" });
+    case 24:
+      return S.Array(__S(183, __c5, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          alternatives: S.optional(__S(184, __c5, 24)),
+          value: S.optional(__S(184, __c5, 24)),
+        }),
+      ).annotate({ identifier: "MultiAbiTargeting" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          textureCompressionFormatTargeting: S.optional(__S(173, __c5, 13)),
+          languageTargeting: S.optional(__S(174, __c5, 14)),
+          abiTargeting: S.optional(__S(176, __c5, 16)),
+          screenDensityTargeting: S.optional(__S(179, __c5, 19)),
+          sdkVersionTargeting: S.optional(__S(182, __c5, 22)),
+          multiAbiTargeting: S.optional(__S(185, __c5, 25)),
+        }),
+      ).annotate({ identifier: "ApkTargeting" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          fusedModuleName: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({ identifier: "StandaloneApkMetadata" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          instantApkMetadata: S.optional(__S(170, __c5, 10)),
+          targeting: S.optional(__S(186, __c5, 26)),
+          standaloneApkMetadata: S.optional(__S(187, __c5, 27)),
+          path: S.optional(S.String),
+          assetSliceMetadata: S.optional(__S(170, __c5, 10)),
+          splitApkMetadata: S.optional(__S(170, __c5, 10)),
+        }),
+      ).annotate({ identifier: "ApkDescription" });
+    case 29:
+      return S.Array(__S(188, __c5, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          assetModuleMetadata: S.optional(__S(169, __c5, 9)),
+          apkDescription: S.optional(__S(189, __c5, 29)),
+        }),
+      ).annotate({ identifier: "AssetSliceSet" });
+    case 31:
+      return S.Array(__S(190, __c5, 30));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          exclude: S.optional(S.Boolean),
+          countryCodes: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({ identifier: "UserCountriesTargeting" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          featureName: S.optional(S.String),
+          featureVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DeviceFeature" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requiredFeature: S.optional(__S(193, __c6, 1)),
+        }),
+      ).annotate({ identifier: "DeviceFeatureTargeting" });
+    case 3:
+      return S.Array(__S(194, __c6, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          sdkVersionTargeting: S.optional(__S(182, __c5, 22)),
+          userCountriesTargeting: S.optional(__S(192, __c6, 0)),
+          deviceFeatureTargeting: S.optional(__S(195, __c6, 3)),
+        }),
+      ).annotate({ identifier: "ModuleTargeting" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          moduleType: S.optional(S.String),
+          name: S.optional(S.String),
+          dependencies: S.optional(__S(5088, __c159, 0)),
+          targeting: S.optional(__S(196, __c6, 4)),
+          deliveryType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ModuleMetadata" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          moduleMetadata: S.optional(__S(197, __c6, 5)),
+          apkDescription: S.optional(__S(189, __c5, 29)),
+        }),
+      ).annotate({ identifier: "ApkSet" });
+    case 7:
+      return S.Array(__S(198, __c6, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          sdkVersionTargeting: S.optional(__S(182, __c5, 22)),
+          textureCompressionFormatTargeting: S.optional(__S(173, __c5, 13)),
+          screenDensityTargeting: S.optional(__S(179, __c5, 19)),
+          abiTargeting: S.optional(__S(176, __c5, 16)),
+          multiAbiTargeting: S.optional(__S(185, __c5, 25)),
+        }),
+      ).annotate({ identifier: "VariantTargeting" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          apkSet: S.optional(__S(199, __c6, 7)),
+          targeting: S.optional(__S(200, __c6, 8)),
+          variantNumber: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SplitApkVariant" });
+    case 10:
+      return S.Array(__S(201, __c6, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.optional(S.String),
+          assetSliceSet: S.optional(__S(191, __c5, 31)),
+          variant: S.optional(__S(202, __c6, 10)),
+        }),
+      ).annotate({ identifier: "TargetingInfo" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          downloadId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GeneratedUniversalApk" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          generatedSplitApks: S.optional(__S(162, __c5, 2)),
+          unprotectedGeneratedStandaloneApks: S.optional(__S(164, __c5, 4)),
+          generatedStandaloneApks: S.optional(__S(164, __c5, 4)),
+          generatedAssetPackSlices: S.optional(__S(166, __c5, 6)),
+          generatedRecoveryModules: S.optional(__S(168, __c5, 8)),
+          targetingInfo: S.optional(__S(203, __c6, 11)),
+          certificateSha256Hash: S.optional(S.String),
+          generatedUniversalApk: S.optional(__S(204, __c6, 12)),
+          unprotectedGeneratedSplitApks: S.optional(__S(162, __c5, 2)),
+        }),
+      ).annotate({
+        identifier: "GeneratedApksPerSigningKey",
+      });
+    case 14:
+      return S.Array(__S(205, __c6, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          generatedApks: S.optional(__S(206, __c6, 14)),
+        }),
+      ).annotate({
+        identifier: "GeneratedApksListResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          startIndex: S.optional(S.Number.pipe(T.Query())),
+          token: S.optional(S.String.pipe(T.Query())),
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "androidpublisher/v3/applications/{packageName}/inappproducts",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListInappproductsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inappproduct: S.optional(__S(1984, __c62, 0)),
+          kind: S.optional(S.String),
+          tokenPagination: S.optional(__S(256, __c8, 0)),
+          pageInfo: S.optional(__S(257, __c8, 1)),
+        }),
+      ).annotate({
+        identifier: "InappproductsListResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          previousPageToken: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TokenPagination" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resultPerPage: S.optional(S.Number),
+          totalResults: S.optional(S.Number),
+          startIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PageInfo" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListMonetizationOnetimeproductsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          oneTimeProducts: S.optional(__S(2144, __c67, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListOneTimeProductsResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.String.pipe(T.Label()),
+          purchaseOptionId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          packageName: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          oneTimeProductOffers: S.optional(__S(2272, __c71, 0)),
+        }),
+      ).annotate({
+        identifier: "ListOneTimeProductOffersResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          showArchived: S.optional(S.Boolean.pipe(T.Query())),
+          packageName: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "androidpublisher/v3/applications/{packageName}/subscriptions",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListMonetizationSubscriptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptions: S.optional(__S(2368, __c74, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListSubscriptionsResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          basePlanId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListMonetizationSubscriptionsBasePlansOffersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionOffers: S.optional(__S(2464, __c77, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListSubscriptionOffersResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          includeQuantityBasedPartialRefund: S.optional(S.Boolean.pipe(T.Query())),
+          startTime: S.optional(S.String.pipe(T.Query())),
+          startIndex: S.optional(S.Number.pipe(T.Query())),
+          token: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.Number.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "androidpublisher/v3/applications/{packageName}/purchases/voidedpurchases",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPurchasesVoidedpurchasesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          purchaseTimeMillis: S.optional(S.String),
+          voidedQuantity: S.optional(S.Number),
+          voidedReason: S.optional(S.Number),
+          orderId: S.optional(S.String),
+          voidedSource: S.optional(S.Number),
+          purchaseToken: S.optional(S.String),
+          voidedTimeMillis: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VoidedPurchase" });
+    case 2:
+      return S.Array(__S(417, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          pageInfo: S.optional(__S(257, __c8, 1)),
+          voidedPurchases: S.optional(__S(418, __c13, 2)),
+          tokenPagination: S.optional(__S(256, __c8, 0)),
+        }),
+      ).annotate({
+        identifier: "VoidedPurchasesListResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          token: S.optional(S.String.pipe(T.Query())),
+          translationLanguage: S.optional(S.String.pipe(T.Query())),
+          startIndex: S.optional(S.Number.pipe(T.Query())),
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "androidpublisher/v3/applications/{packageName}/reviews",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListReviewsRequest" });
+    case 1:
+      return S.Array(__S(6085, __c190, 5));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reviews: S.optional(__S(449, __c14, 1)),
+          pageInfo: S.optional(__S(257, __c8, 1)),
+          tokenPagination: S.optional(__S(256, __c8, 0)),
+        }),
+      ).annotate({ identifier: "ReviewsListResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(3392, __c106, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8564,7 +8634,225 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ArchiveMonetizationSubscriptionsRequest",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          versionCode: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSystemapksVariantsRequest",
+      });
+    case 1:
+      return S.Array(__S(3842, __c120, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          variants: S.optional(__S(513, __c16, 1)),
+        }),
+      ).annotate({ identifier: "SystemApksListResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "androidpublisher/v3/{+parent}/users",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListUsersRequest" });
+    case 1:
+      return S.Array(__S(3905, __c122, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          users: S.optional(__S(545, __c17, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListUsersResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          basePlanId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2594, __c81, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:migratePrices",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "MigratePricesMonetizationSubscriptionsBasePlansRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5376, __c168, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchEditsDetailsRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expansionFileType: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          apkVersionCode: S.Number.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5440, __c170, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchEditsExpansionfilesRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+          language: S.String.pipe(T.Label()),
+          body: S.optional(__S(5504, __c172, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchEditsListingsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          editId: S.String.pipe(T.Label()),
+          track: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          body: S.optional(__S(5568, __c174, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchEditsTestersRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          track: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          body: S.optional(__S(3557, __c111, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchEditsTracksRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3680, __c115, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "androidpublisher/v3/{+name}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchGrantsRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          sku: S.String.pipe(T.Label()),
+          autoConvertMissingPrices: S.optional(S.Boolean.pipe(T.Query())),
+          latencyTolerance: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2052, __c64, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchInappproductsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           latencyTolerance: S.optional(S.String),
@@ -8574,21 +8862,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InappproductsDeleteRequest",
       });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(832, __c26, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(68, __c8, 4)),
+          requests: S.optional(__S(833, __c26, 1)),
         }),
       ).annotate({
         identifier: "InappproductsBatchDeleteRequest",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(834, __c26, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8599,7 +8887,335 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "BatchDeleteInappproductsRequest",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          packageName: S.String.pipe(T.Label()),
+          latencyTolerance: S.optional(S.String.pipe(T.Query())),
+          productId: S.String.pipe(T.Label()),
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(2189, __c68, 13).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "androidpublisher/v3/applications/{packageName}/onetimeproducts/{productId}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchMonetizationOnetimeproductsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          latencyTolerance: S.optional(S.String.pipe(T.Query())),
+          "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
+          productId: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(5034, __c157, 10).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchMonetizationSubscriptionsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+          productId: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          basePlanId: S.String.pipe(T.Label()),
+          latencyTolerance: S.optional(S.String.pipe(T.Query())),
+          packageName: S.String.pipe(T.Label()),
+          offerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5708, __c178, 12).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchMonetizationSubscriptionsBasePlansOffersRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3905, __c122, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "androidpublisher/v3/{+name}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchUsersRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          refundId: S.optional(S.String),
+          refundPreTaxAmount: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({ identifier: "PartialRefund" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          refundTime: S.optional(S.String),
+          partialRefund: S.optional(__S(992, __c31, 0)),
+          fullRefund: S.optional(__S(3392, __c106, 0)),
+        }),
+      ).annotate({
+        identifier: "RefundExternalTransactionRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(993, __c31, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/{+name}:refund",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RefundexternaltransactionExternaltransactionsRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          orderId: S.String.pipe(T.Label()),
+          revoke: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/orders/{orderId}:refund",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "RefundOrdersRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          replyText: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReviewsReplyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          reviewId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}:reply",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ReplyReviewsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          replyText: S.optional(S.String),
+          lastEdited: S.optional(__S(6112, __c191, 0)),
+        }),
+      ).annotate({ identifier: "ReviewReplyResult" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: S.optional(__S(1058, __c33, 2)),
+        }),
+      ).annotate({ identifier: "ReviewsReplyResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          administrativeArea: S.optional(S.String),
+          regionCode: S.optional(S.String),
+          locality: S.optional(S.String),
+          sublocality: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CoarseLocation" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(__S(1088, __c34, 0)),
+          consumptionTime: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          obfuscatedAccountId: S.optional(S.String),
+          obfuscatedProfileId: S.optional(S.String),
+          consumptionItemDescription: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConsumptionUsageEvent" });
+    case 2:
+      return S.Array(__S(1089, __c34, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          pendingRefundToken: S.optional(S.String),
+          refundPreference: S.optional(S.String),
+          consumptionUsageEvents: S.optional(__S(1090, __c34, 2)),
+          sampleContentProvided: S.optional(S.Boolean),
+          consumptionPercentageMilliunits: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "OrdersReviewRefundRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          orderId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1091, __c34, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/orders/{orderId}:reviewrefund",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReviewrefundOrdersRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RevocationContextItemBasedRefund",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fullRefund: S.optional(__S(3392, __c106, 0)),
+          proratedRefund: S.optional(__S(3392, __c106, 0)),
+          itemBasedRefund: S.optional(__S(1120, __c35, 0)),
+        }),
+      ).annotate({ identifier: "RevocationContext" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          revocationContext: S.optional(__S(1121, __c35, 1)),
+        }),
+      ).annotate({
+        identifier: "RevokeSubscriptionPurchaseRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          body: S.optional(__S(1122, __c35, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:revoke",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RevokePurchasesSubscriptionsv2Request",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          signingCertificateLineage: S.optional(S.String),
+          cloudKmsKeyAndCert: S.optional(__S(5153, __c161, 1)),
+        }),
+      ).annotate({ identifier: "RotatedCloudKmsKey" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          rotatedCloudKmsKey: S.optional(__S(1152, __c36, 0)),
+          keyRotationReason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RotateAppSigningKeyRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1153, __c36, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{name}/appSigning:rotateAppSigningKey",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RotateAppSigningKeyAppsigningRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          rotatedKeyCertificate: S.optional(__S(5154, __c161, 2)),
+        }),
+      ).annotate({
+        identifier: "RotateAppSigningKeyResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           latencyTolerance: S.optional(S.String),
@@ -8609,25 +9225,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteOneTimeProductRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
     case 1:
+      return S.Array(__S(1184, __c37, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(72, __c9, 0)),
+          requests: S.optional(__S(1185, __c37, 1)),
         }),
       ).annotate({
         identifier: "BatchDeleteOneTimeProductsRequest",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1186, __c37, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8638,7 +9250,405 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "BatchDeleteMonetizationOnetimeproductsRequest",
       });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          screenshotId: S.optional(__S(5088, __c159, 0)),
+          appIconId: S.optional(S.String),
+          appName: S.optional(S.String),
+          videoLink: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          shortDescription: S.optional(S.String),
+          fullDescription: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppStoreAppStoreListing" });
+    case 1:
+      return S.Array(__S(1216, __c38, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          documentId: S.optional(S.String),
+          nonExpiring: S.optional(S.Boolean),
+          expiryDate: S.optional(__S(5248, __c164, 0)),
+        }),
+      ).annotate({ identifier: "PolicyDocumentResponse" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PolicyStringResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PolicyBooleanResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PolicySingleChoiceResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({
+        identifier: "PolicyMultipleChoiceResponse",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          stringResponse: S.optional(__S(1219, __c38, 3)),
+          documentResponse: S.optional(__S(1218, __c38, 2)),
+          booleanResponse: S.optional(__S(1220, __c38, 4)),
+          singleChoiceResponse: S.optional(__S(1221, __c38, 5)),
+          questionId: S.optional(S.String),
+          multipleChoiceResponse: S.optional(__S(1222, __c38, 6)),
+        }),
+      ).annotate({ identifier: "NestedPolicyResponse" });
+    case 8:
+      return S.Array(__S(1223, __c38, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          responses: S.optional(__S(1224, __c38, 8)),
+        }),
+      ).annotate({ identifier: "Group" });
+    case 10:
+      return S.Array(__S(1225, __c38, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          groups: S.optional(__S(1226, __c38, 10)),
+        }),
+      ).annotate({ identifier: "PolicyGroupResponse" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          responses: S.optional(__S(1224, __c38, 8)),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyedGroup" });
+    case 13:
+      return S.Array(__S(1228, __c38, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          groups: S.optional(__S(1229, __c38, 13)),
+        }),
+      ).annotate({ identifier: "PolicyKeyedGroupResponse" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          questionId: S.optional(S.String),
+          documentResponse: S.optional(__S(1218, __c38, 2)),
+          groupResponse: S.optional(__S(1227, __c38, 11)),
+          multipleChoiceResponse: S.optional(__S(1222, __c38, 6)),
+          booleanResponse: S.optional(__S(1220, __c38, 4)),
+          singleChoiceResponse: S.optional(__S(1221, __c38, 5)),
+          keyedGroupResponse: S.optional(__S(1230, __c38, 14)),
+          stringResponse: S.optional(__S(1219, __c38, 3)),
+        }),
+      ).annotate({ identifier: "PolicyResponse" });
+    case 16:
+      return S.Array(__S(1231, __c38, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          declarationId: S.optional(S.String),
+          responses: S.optional(__S(1232, __c38, 16)),
+        }),
+      ).annotate({
+        identifier: "AppStoreAppPolicyDeclaration",
+      });
+    case 18:
+      return S.Array(__S(1233, __c38, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          developerWebsite: S.optional(S.String),
+          contactEmail: S.optional(S.String),
+          developerName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppStoreAppDetails" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          splitApkId: S.optional(__S(5088, __c159, 0)),
+          baseApkId: S.optional(S.String),
+          alreadyPublishedOnPlay: S.optional(S.Boolean),
+          versionCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppStoreAppActiveApkSet" });
+    case 21:
+      return S.Array(__S(1236, __c38, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          activeApkSets: S.optional(__S(1237, __c38, 21)),
+        }),
+      ).annotate({ identifier: "AppStoreAppActiveApks" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          activeLocalizedStoreListings: S.optional(__S(1217, __c38, 1)),
+          packageName: S.optional(S.String),
+          policyDeclarations: S.optional(__S(1234, __c38, 18)),
+          appDetails: S.optional(__S(1235, __c38, 19)),
+          activeApks: S.optional(__S(1238, __c38, 22)),
+        }),
+      ).annotate({
+        identifier: "UpdateAppStoreHostedAppRequest",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          appStorePackageName: S.String.pipe(T.Label()),
+          body: S.optional(__S(1239, __c38, 23).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps:update",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateappstorehostedappAppstoreappsreviewRequest",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          updateId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateAppStoreHostedAppResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publishState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateAppStoreHostedAppPublishStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          appStorePackageName: S.String.pipe(T.Label()),
+          body: S.optional(__S(1248, __c39, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}:updateAppStoreHostedAppPublishStatus",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5376, __c168, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateEditsDetailsRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+          expansionFileType: S.String.pipe(T.Label()),
+          apkVersionCode: S.Number.pipe(T.Label()),
+          body: S.optional(__S(5440, __c170, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateEditsExpansionfilesRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          language: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5504, __c172, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateEditsListingsRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          track: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5568, __c174, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateEditsTestersRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+          track: S.String.pipe(T.Label()),
+          body: S.optional(__S(3557, __c111, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateEditsTracksRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          latencyTolerance: S.optional(S.String.pipe(T.Query())),
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+          sku: S.String.pipe(T.Label()),
+          autoConvertMissingPrices: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(2052, __c64, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateInappproductsRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          appStorePackageName: S.String.pipe(T.Label()),
+          body: S.optional(__S(3392, __c106, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/apks:upload",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadapkAppstoreappsreviewRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apkId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UploadApkResponse" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/apk",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadapkInternalappsharingartifactsRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sha256: S.optional(S.String),
+          certificateFingerprint: S.optional(S.String),
+          downloadUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InternalAppSharingArtifact",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean),
@@ -8650,22 +9660,22 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeletePurchaseOptionRequest",
       });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(1568, __c49, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(76, __c9, 4)),
+          requests: S.optional(__S(1569, __c49, 1)),
         }),
       ).annotate({
         identifier: "BatchDeletePurchaseOptionsRequest",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(77, __c9, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1570, __c49, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8676,13 +9686,242 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse",
       });
   }
 }
-function __c10(j: number): any {
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UploadAppStoreAppPolicyDeclarationFileRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appStorePackageName: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/policyDeclarationFiles:upload",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fileId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UploadAppStoreAppPolicyDeclarationFileResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/bundle",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadbundleInternalappsharingartifactsRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          editId: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UploadEditsApksRequest" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ackBundleInstallationWarning: S.optional(S.Boolean.pipe(T.Query())),
+          deviceTierConfigId: S.optional(S.String.pipe(T.Query())),
+          packageName: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadEditsBundlesRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deobfuscationFileType: S.String.pipe(T.Label()),
+          apkVersionCode: S.Number.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadEditsDeobfuscationfilesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          symbolType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeobfuscationFile" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deobfuscationFile: S.optional(__S(1761, __c55, 1)),
+        }),
+      ).annotate({
+        identifier: "DeobfuscationFilesUploadResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apkVersionCode: S.Number.pipe(T.Label()),
+          expansionFileType: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadEditsExpansionfilesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expansionFile: S.optional(__S(5440, __c170, 0)),
+        }),
+      ).annotate({
+        identifier: "ExpansionFilesUploadResponse",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          language: S.String.pipe(T.Label()),
+          imageType: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          aiGeneratedState: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UploadEditsImagesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(__S(4224, __c132, 0)),
+        }),
+      ).annotate({ identifier: "ImagesUploadResponse" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appStorePackageName: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          body: S.optional(__S(3392, __c106, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/images:upload",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadimageAppstoreappsreviewRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          imageId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UploadImageResponse" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          editId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}:validate",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ValidateEditsRequest" });
+  }
+}
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8697,11 +9936,11 @@ function __c10(j: number): any {
         identifier: "DeleteOneTimeProductOfferRequest",
       });
     case 1:
-      return S.Array(__S(80, __c10, 0));
+      return S.Array(__S(1920, __c60, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(81, __c10, 1)),
+          requests: S.optional(__S(1921, __c60, 1)),
         }),
       ).annotate({
         identifier: "BatchDeleteOneTimeProductOffersRequest",
@@ -8712,7 +9951,7 @@ function __c10(j: number): any {
           packageName: S.String.pipe(T.Label()),
           purchaseOptionId: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(82, __c10, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1922, __c60, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8723,11 +9962,15 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
       });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(28, __c3, 4).pipe(T.Query())),
+          sku: S.optional(__S(5088, __c159, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8738,31 +9981,23 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "BatchGetInappproductsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          taxRateInfoByRegionCode: S.optional(__S(35, __c4, 3)),
-          regionalProductAgeRatingInfos: S.optional(__S(33, __c4, 1)),
-          eeaWithdrawalRightType: S.optional(S.String),
-          isTokenizedDigitalAsset: S.optional(S.Boolean),
-          productTaxCategoryCode: S.optional(S.String),
+          inappproduct: S.optional(__S(1984, __c62, 0)),
         }),
       ).annotate({
-        identifier: "ManagedProductTaxAndComplianceSettings",
+        identifier: "InappproductsBatchGetResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          benefits: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "InAppProductListing" });
-    case 7:
-      return S.Record(S.String, __S(86, __c10, 6));
   }
 }
-function __c11(j: number): any {
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2052, __c64, 4));
+  }
+}
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8771,40 +10006,60 @@ function __c11(j: number): any {
           currency: S.optional(S.String),
         }),
       ).annotate({ identifier: "Price" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taxRateInfoByRegionCode: S.optional(__S(4961, __c155, 1)),
+          regionalProductAgeRatingInfos: S.optional(__S(4929, __c154, 1)),
+          eeaWithdrawalRightType: S.optional(S.String),
+          isTokenizedDigitalAsset: S.optional(S.Boolean),
+          productTaxCategoryCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedProductTaxAndComplianceSettings",
+      });
     case 1:
-      return S.Record(S.String, __S(88, __c11, 0));
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          benefits: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({ identifier: "InAppProductListing" });
     case 2:
+      return S.Record(S.String, __S(2049, __c64, 1));
+    case 3:
+      return S.Record(S.String, __S(2016, __c63, 0));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           trialPeriod: S.optional(S.String),
-          managedProductTaxesAndComplianceSettings: S.optional(__S(85, __c10, 5)),
+          managedProductTaxesAndComplianceSettings: S.optional(__S(2048, __c64, 0)),
           status: S.optional(S.String),
           purchaseType: S.optional(S.String),
-          listings: S.optional(__S(87, __c10, 7)),
-          subscriptionTaxesAndComplianceSettings: S.optional(__S(36, __c4, 4)),
+          listings: S.optional(__S(2050, __c64, 2)),
+          subscriptionTaxesAndComplianceSettings: S.optional(__S(4962, __c155, 2)),
           subscriptionPeriod: S.optional(S.String),
           sku: S.optional(S.String),
-          defaultPrice: S.optional(__S(88, __c11, 0)),
+          defaultPrice: S.optional(__S(2016, __c63, 0)),
           packageName: S.optional(S.String),
-          prices: S.optional(__S(89, __c11, 1)),
+          prices: S.optional(__S(2051, __c64, 3)),
           defaultLanguage: S.optional(S.String),
           gracePeriod: S.optional(S.String),
         }),
       ).annotate({ identifier: "InAppProduct" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          inappproduct: S.optional(__S(91, __c11, 3)),
-        }),
-      ).annotate({
-        identifier: "InappproductsBatchGetResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          productIds: S.optional(__S(28, __c3, 4).pipe(T.Query())),
+          productIds: S.optional(__S(5088, __c159, 0).pipe(T.Query())),
           packageName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -8816,7 +10071,29 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "BatchGetMonetizationOnetimeproductsRequest",
       });
-    case 6:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          oneTimeProducts: S.optional(__S(2144, __c67, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchGetOneTimeProductsResponse",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2189, __c68, 13));
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String),
@@ -8825,34 +10102,30 @@ function __c11(j: number): any {
           taxTier: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegionalTaxConfig" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(2176, __c68, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          regionalTaxConfigs: S.optional(__S(95, __c11, 7)),
-          regionalProductAgeRatingInfos: S.optional(__S(33, __c4, 1)),
+          regionalTaxConfigs: S.optional(__S(2177, __c68, 1)),
+          regionalProductAgeRatingInfos: S.optional(__S(4929, __c154, 1)),
           productTaxCategoryCode: S.optional(S.String),
           isTokenizedDigitalAsset: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "OneTimeProductTaxAndComplianceSettings",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           availability: S.optional(S.String),
-          usdPrice: S.optional(__S(10, __c1, 2)),
-          eurPrice: S.optional(__S(10, __c1, 2)),
+          usdPrice: S.optional(__S(4512, __c141, 0)),
+          eurPrice: S.optional(__S(4512, __c141, 0)),
         }),
       ).annotate({
         identifier: "OneTimeProductPurchaseOptionNewRegionsConfig",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           withdrawalRightType: S.optional(S.String),
@@ -8860,7 +10133,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PurchaseOptionTaxAndComplianceSettings",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           rentalPeriod: S.optional(S.String),
@@ -8869,19 +10142,19 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "OneTimeProductRentPurchaseOption",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          price: S.optional(__S(10, __c1, 2)),
+          price: S.optional(__S(4512, __c141, 0)),
           regionCode: S.optional(S.String),
           availability: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig",
       });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(2182, __c68, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           multiQuantityEnabled: S.optional(S.Boolean),
@@ -8890,28 +10163,24 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "OneTimeProductBuyPurchaseOption",
       });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          newRegionsConfig: S.optional(__S(97, __c12, 1)),
-          taxAndComplianceSettings: S.optional(__S(98, __c12, 2)),
+          newRegionsConfig: S.optional(__S(2179, __c68, 3)),
+          taxAndComplianceSettings: S.optional(__S(2180, __c68, 4)),
           state: S.optional(S.String),
-          rentOption: S.optional(__S(99, __c12, 3)),
-          offerTags: S.optional(__S(9, __c1, 1)),
-          regionalPricingAndAvailabilityConfigs: S.optional(__S(101, __c12, 5)),
+          rentOption: S.optional(__S(2181, __c68, 5)),
+          offerTags: S.optional(__S(4545, __c142, 1)),
+          regionalPricingAndAvailabilityConfigs: S.optional(__S(2183, __c68, 7)),
           purchaseOptionId: S.optional(S.String),
-          buyOption: S.optional(__S(102, __c12, 6)),
+          buyOption: S.optional(__S(2184, __c68, 8)),
         }),
       ).annotate({
         identifier: "OneTimeProductPurchaseOption",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 10:
+      return S.Array(__S(2185, __c68, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -8919,32 +10188,26 @@ function __c13(j: number): any {
           languageCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "OneTimeProductListing" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
+    case 12:
+      return S.Array(__S(2187, __c68, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          taxAndComplianceSettings: S.optional(__S(96, __c12, 0)),
+          taxAndComplianceSettings: S.optional(__S(2178, __c68, 2)),
           packageName: S.optional(S.String),
-          restrictedPaymentCountries: S.optional(__S(29, __c3, 5)),
-          offerTags: S.optional(__S(9, __c1, 1)),
+          restrictedPaymentCountries: S.optional(__S(4992, __c156, 0)),
+          offerTags: S.optional(__S(4545, __c142, 1)),
           productId: S.optional(S.String),
-          purchaseOptions: S.optional(__S(104, __c13, 0)),
-          listings: S.optional(__S(106, __c13, 2)),
-          regionsVersion: S.optional(__S(16, __c2, 0)),
+          purchaseOptions: S.optional(__S(2186, __c68, 10)),
+          listings: S.optional(__S(2188, __c68, 12)),
+          regionsVersion: S.optional(__S(4416, __c138, 0)),
         }),
       ).annotate({ identifier: "OneTimeProduct" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          oneTimeProducts: S.optional(__S(108, __c13, 4)),
-        }),
-      ).annotate({
-        identifier: "BatchGetOneTimeProductsResponse",
-      });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
@@ -8955,27 +10218,23 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetOneTimeProductOfferRequest",
       });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(2208, __c69, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(111, __c13, 7)),
+          requests: S.optional(__S(2209, __c69, 1)),
         }),
       ).annotate({
         identifier: "BatchGetOneTimeProductOffersRequest",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
           purchaseOptionId: S.String.pipe(T.Label()),
-          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2210, __c69, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8986,21 +10245,33 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
       });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          oneTimeProductOffers: S.optional(__S(114, __c14, 2)),
+          oneTimeProductOffers: S.optional(__S(2272, __c71, 0)),
         }),
       ).annotate({
         identifier: "BatchGetOneTimeProductOffersResponse",
       });
-    case 4:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4453, __c139, 5));
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          productIds: S.optional(__S(28, __c3, 4).pipe(T.Query())),
+          productIds: S.optional(__S(5088, __c159, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -9011,17 +10282,29 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "BatchGetMonetizationSubscriptionsRequest",
       });
-    case 5:
-      return S.Array(__S(37, __c4, 5));
-    case 6:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptions: S.optional(__S(117, __c14, 5)),
+          subscriptions: S.optional(__S(2368, __c74, 0)),
         }),
       ).annotate({
         identifier: "BatchGetSubscriptionsResponse",
       });
-    case 7:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5034, __c157, 10));
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           basePlanId: S.optional(S.String),
@@ -9032,27 +10315,23 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetSubscriptionOfferRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
     case 1:
+      return S.Array(__S(2400, __c75, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(120, __c15, 0)),
+          requests: S.optional(__S(2401, __c75, 1)),
         }),
       ).annotate({
         identifier: "BatchGetSubscriptionOffersRequest",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
           basePlanId: S.String.pipe(T.Label()),
-          body: S.optional(__S(121, __c15, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2402, __c75, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9063,21 +10342,33 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "BatchGetMonetizationSubscriptionsBasePlansOffersRequest",
       });
-    case 3:
-      return S.Array(__S(53, __c6, 5));
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionOffers: S.optional(__S(123, __c15, 3)),
+          subscriptionOffers: S.optional(__S(2464, __c77, 0)),
         }),
       ).annotate({
         identifier: "BatchGetSubscriptionOffersResponse",
       });
-    case 5:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5708, __c178, 12));
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          orderIds: S.optional(__S(28, __c3, 4).pipe(T.Query())),
+          orderIds: S.optional(__S(5088, __c159, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -9086,70 +10377,78 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BatchgetOrdersRequest" });
-    case 6:
+    case 1:
+      return S.Array(__S(2543, __c79, 15));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          total: S.optional(__S(10, __c1, 2)),
-          tax: S.optional(__S(10, __c1, 2)),
+          orders: S.optional(__S(2497, __c78, 1)),
+        }),
+      ).annotate({ identifier: "BatchGetOrdersResponse" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          total: S.optional(__S(4512, __c141, 0)),
+          tax: S.optional(__S(4512, __c141, 0)),
         }),
       ).annotate({ identifier: "RefundDetails" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
           createTime: S.optional(S.String),
-          refundDetails: S.optional(__S(126, __c15, 6)),
+          refundDetails: S.optional(__S(2528, __c79, 0)),
           processTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartialRefundEvent" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(2529, __c79, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           eventTime: S.optional(S.String),
-          refundDetails: S.optional(__S(126, __c15, 6)),
+          refundDetails: S.optional(__S(2528, __c79, 0)),
           refundReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "RefundEvent" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           eventTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "CancellationEvent" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          partialRefundEvents: S.optional(__S(128, __c16, 0)),
-          refundEvent: S.optional(__S(129, __c16, 1)),
-          cancellationEvent: S.optional(__S(130, __c16, 2)),
-          processedEvent: S.optional(__S(130, __c16, 2)),
+          partialRefundEvents: S.optional(__S(2530, __c79, 2)),
+          refundEvent: S.optional(__S(2531, __c79, 3)),
+          cancellationEvent: S.optional(__S(2532, __c79, 4)),
+          processedEvent: S.optional(__S(2532, __c79, 4)),
         }),
       ).annotate({ identifier: "OrderHistory" });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           originalOfferPhase: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProrationPeriodDetails" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          baseDetails: S.optional(__S(2, __c0, 2)),
-          prorationPeriodDetails: S.optional(__S(132, __c16, 4)),
-          freeTrialDetails: S.optional(__S(2, __c0, 2)),
-          introductoryPriceDetails: S.optional(__S(2, __c0, 2)),
+          baseDetails: S.optional(__S(3392, __c106, 0)),
+          prorationPeriodDetails: S.optional(__S(2534, __c79, 6)),
+          freeTrialDetails: S.optional(__S(3392, __c106, 0)),
+          introductoryPriceDetails: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({ identifier: "OfferPhaseDetails" });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          offerPhaseDetails: S.optional(__S(133, __c16, 5)),
+          offerPhaseDetails: S.optional(__S(2535, __c79, 7)),
           servicePeriodEndTime: S.optional(S.String),
           servicePeriodStartTime: S.optional(S.String),
           offerPhase: S.optional(S.String),
@@ -9157,51 +10456,47 @@ function __c16(j: number): any {
           offerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionDetails" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           quantity: S.optional(S.Number),
-          rentalDetails: S.optional(__S(2, __c0, 2)),
+          rentalDetails: S.optional(__S(3392, __c106, 0)),
           purchaseOptionId: S.optional(S.String),
           offerId: S.optional(S.String),
-          preorderDetails: S.optional(__S(2, __c0, 2)),
+          preorderDetails: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({ identifier: "OneTimePurchaseDetails" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          tax: S.optional(__S(10, __c1, 2)),
-          paidAppDetails: S.optional(__S(2, __c0, 2)),
-          subscriptionDetails: S.optional(__S(134, __c16, 6)),
-          total: S.optional(__S(10, __c1, 2)),
-          listingPrice: S.optional(__S(10, __c1, 2)),
+          tax: S.optional(__S(4512, __c141, 0)),
+          paidAppDetails: S.optional(__S(3392, __c106, 0)),
+          subscriptionDetails: S.optional(__S(2536, __c79, 8)),
+          total: S.optional(__S(4512, __c141, 0)),
+          listingPrice: S.optional(__S(4512, __c141, 0)),
           productId: S.optional(S.String),
           productTitle: S.optional(S.String),
-          oneTimePurchaseDetails: S.optional(__S(135, __c16, 7)),
+          oneTimePurchaseDetails: S.optional(__S(2537, __c79, 9)),
         }),
       ).annotate({ identifier: "LineItem" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
+    case 11:
+      return S.Array(__S(2538, __c79, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           pointsDiscountRateMicros: S.optional(S.String),
-          pointsCouponValue: S.optional(__S(10, __c1, 2)),
+          pointsCouponValue: S.optional(__S(4512, __c141, 0)),
           pointsSpent: S.optional(S.String),
           pointsOfferId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PointsDetails" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           taxInclusive: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OrderDetails" });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           buyerState: S.optional(S.String),
@@ -9209,36 +10504,68 @@ function __c17(j: number): any {
           buyerCountry: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuyerAddress" });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          orderHistory: S.optional(__S(131, __c16, 3)),
+          orderHistory: S.optional(__S(2533, __c79, 5)),
           lastEventTime: S.optional(S.String),
-          total: S.optional(__S(10, __c1, 2)),
+          total: S.optional(__S(4512, __c141, 0)),
           salesChannel: S.optional(S.String),
           createTime: S.optional(S.String),
           purchaseToken: S.optional(S.String),
           orderId: S.optional(S.String),
-          lineItems: S.optional(__S(137, __c17, 1)),
-          developerRevenueInBuyerCurrency: S.optional(__S(10, __c1, 2)),
-          pointsDetails: S.optional(__S(138, __c17, 2)),
+          lineItems: S.optional(__S(2539, __c79, 11)),
+          developerRevenueInBuyerCurrency: S.optional(__S(4512, __c141, 0)),
+          pointsDetails: S.optional(__S(2540, __c79, 12)),
           state: S.optional(S.String),
-          orderDetails: S.optional(__S(139, __c17, 3)),
-          buyerAddress: S.optional(__S(140, __c17, 4)),
-          tax: S.optional(__S(10, __c1, 2)),
+          orderDetails: S.optional(__S(2541, __c79, 13)),
+          buyerAddress: S.optional(__S(2542, __c79, 14)),
+          tax: S.optional(__S(4512, __c141, 0)),
         }),
       ).annotate({ identifier: "Order" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          orders: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "BatchGetOrdersResponse" });
   }
 }
-function __c18(j: number): any {
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2594, __c81, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(2560, __c80, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchMigrateBasePlanPricesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2561, __c80, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchMigratePrices",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchMigratePricesMonetizationSubscriptionsBasePlansRequest",
+      });
+    case 3:
+      return S.Array(__S(32, __c1, 0));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          responses: S.optional(__S(2563, __c80, 3)),
+        }),
+      ).annotate({
+        identifier: "BatchMigrateBasePlanPricesResponse",
+      });
+  }
+}
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9251,64 +10578,28 @@ function __c18(j: number): any {
         identifier: "RegionalPriceMigrationConfig",
       });
     case 1:
-      return S.Array(__S(144, __c18, 0));
+      return S.Array(__S(2592, __c81, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          regionsVersion: S.optional(__S(16, __c2, 0)),
+          regionsVersion: S.optional(__S(4416, __c138, 0)),
           productId: S.optional(S.String),
           latencyTolerance: S.optional(S.String),
           packageName: S.optional(S.String),
           basePlanId: S.optional(S.String),
-          regionalPriceMigrations: S.optional(__S(145, __c18, 1)),
+          regionalPriceMigrations: S.optional(__S(2593, __c81, 1)),
         }),
       ).annotate({
         identifier: "MigrateBasePlanPricesRequest",
       });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(147, __c18, 3)),
-        }),
-      ).annotate({
-        identifier: "BatchMigrateBasePlanPricesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(148, __c18, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchMigratePrices",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchMigratePricesMonetizationSubscriptionsBasePlansRequest",
-      });
-    case 6:
-      return S.Array(__S(65, __c8, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          responses: S.optional(__S(150, __c18, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchMigrateBasePlanPricesResponse",
-      });
   }
 }
-function __c19(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inappproduct: S.optional(__S(90, __c11, 2)),
+          inappproduct: S.optional(__S(2052, __c64, 4)),
           sku: S.optional(S.String),
           autoConvertMissingPrices: S.optional(S.Boolean),
           allowMissing: S.optional(S.Boolean),
@@ -9319,11 +10610,11 @@ function __c19(j: number): any {
         identifier: "InappproductsUpdateRequest",
       });
     case 1:
-      return S.Array(__S(152, __c19, 0));
+      return S.Array(__S(2624, __c82, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(153, __c19, 1)),
+          requests: S.optional(__S(2625, __c82, 1)),
         }),
       ).annotate({
         identifier: "InappproductsBatchUpdateRequest",
@@ -9332,7 +10623,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(154, __c19, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2626, __c82, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9346,42 +10637,42 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          inappproducts: S.optional(__S(91, __c11, 3)),
+          inappproducts: S.optional(__S(1984, __c62, 0)),
         }),
       ).annotate({
         identifier: "InappproductsBatchUpdateResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          latencyTolerance: S.optional(S.String),
-          regionsVersion: S.optional(__S(16, __c2, 0)),
-          updateMask: S.optional(S.String),
-          allowMissing: S.optional(S.Boolean),
-          oneTimeProduct: S.optional(__S(107, __c13, 3)),
-        }),
-      ).annotate({
-        identifier: "UpdateOneTimeProductRequest",
-      });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(158, __c19, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateOneTimeProductsRequest",
-      });
   }
 }
-function __c20(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          latencyTolerance: S.optional(S.String),
+          regionsVersion: S.optional(__S(4416, __c138, 0)),
+          updateMask: S.optional(S.String),
+          allowMissing: S.optional(S.Boolean),
+          oneTimeProduct: S.optional(__S(2189, __c68, 13)),
+        }),
+      ).annotate({
+        identifier: "UpdateOneTimeProductRequest",
+      });
+    case 1:
+      return S.Array(__S(2656, __c83, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(2657, __c83, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchUpdateOneTimeProductsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(159, __c19, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2658, __c83, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9392,35 +10683,39 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "BatchUpdateMonetizationOnetimeproductsRequest",
       });
-    case 1:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
           allowMissing: S.optional(S.Boolean),
           latencyTolerance: S.optional(S.String),
-          regionsVersion: S.optional(__S(16, __c2, 0)),
-          oneTimeProductOffer: S.optional(__S(17, __c2, 1)),
+          regionsVersion: S.optional(__S(4416, __c138, 0)),
+          oneTimeProductOffer: S.optional(__S(4453, __c139, 5)),
         }),
       ).annotate({
         identifier: "UpdateOneTimeProductOfferRequest",
       });
+    case 1:
+      return S.Array(__S(2688, __c84, 0));
     case 2:
-      return S.Array(__S(161, __c20, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(162, __c20, 2)),
+          requests: S.optional(__S(2689, __c84, 1)),
         }),
       ).annotate({
         identifier: "BatchUpdateOneTimeProductOffersRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
           purchaseOptionId: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(163, __c20, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2690, __c84, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9431,37 +10726,37 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
       });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          regionsVersion: S.optional(__S(16, __c2, 0)),
+          regionsVersion: S.optional(__S(4416, __c138, 0)),
           latencyTolerance: S.optional(S.String),
           updateMask: S.optional(S.String),
-          subscription: S.optional(__S(37, __c4, 5)),
+          subscription: S.optional(__S(5034, __c157, 10)),
           allowMissing: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "UpdateSubscriptionRequest",
       });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(2720, __c85, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(166, __c20, 6)),
+          requests: S.optional(__S(2721, __c85, 1)),
         }),
       ).annotate({
         identifier: "BatchUpdateSubscriptionsRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(167, __c20, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2722, __c85, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9472,35 +10767,39 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "BatchUpdateMonetizationSubscriptionsRequest",
       });
-    case 1:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
           allowMissing: S.optional(S.Boolean),
           latencyTolerance: S.optional(S.String),
-          subscriptionOffer: S.optional(__S(53, __c6, 5)),
-          regionsVersion: S.optional(__S(16, __c2, 0)),
+          subscriptionOffer: S.optional(__S(5708, __c178, 12)),
+          regionsVersion: S.optional(__S(4416, __c138, 0)),
         }),
       ).annotate({
         identifier: "UpdateSubscriptionOfferRequest",
       });
+    case 1:
+      return S.Array(__S(2752, __c86, 0));
     case 2:
-      return S.Array(__S(169, __c21, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(170, __c21, 2)),
+          requests: S.optional(__S(2753, __c86, 1)),
         }),
       ).annotate({
         identifier: "BatchUpdateSubscriptionOffersRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
           basePlanId: S.String.pipe(T.Label()),
-          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2754, __c86, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9511,7 +10810,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest",
       });
-    case 5:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           purchaseOptionId: S.optional(S.String),
@@ -9522,7 +10825,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ActivatePurchaseOptionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
@@ -9533,35 +10836,31 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeactivatePurchaseOptionRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          activatePurchaseOptionRequest: S.optional(__S(173, __c21, 5)),
-          deactivatePurchaseOptionRequest: S.optional(__S(174, __c21, 6)),
+          activatePurchaseOptionRequest: S.optional(__S(2784, __c87, 0)),
+          deactivatePurchaseOptionRequest: S.optional(__S(2785, __c87, 1)),
         }),
       ).annotate({
         identifier: "UpdatePurchaseOptionStateRequest",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(2786, __c87, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(176, __c22, 0)),
+          requests: S.optional(__S(2787, __c87, 3)),
         }),
       ).annotate({
         identifier: "BatchUpdatePurchaseOptionStatesRequest",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(177, __c22, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2788, __c87, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9572,19 +10871,52 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest",
       });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deactivateOneTimeProductOfferRequest: S.optional(__S(2880, __c90, 0)),
+          cancelOneTimeProductOfferRequest: S.optional(__S(2848, __c89, 0)),
+          activateOneTimeProductOfferRequest: S.optional(__S(4480, __c140, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateOneTimeProductOfferStateRequest",
+      });
+    case 1:
+      return S.Array(__S(2816, __c88, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(2817, __c88, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchUpdateOneTimeProductOfferStatesRequest",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          offerId: S.optional(S.String),
-          latencyTolerance: S.optional(S.String),
-          purchaseOptionId: S.optional(S.String),
-          packageName: S.optional(S.String),
-          productId: S.optional(S.String),
-        }),
+          packageName: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          purchaseOptionId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2818, __c88, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchUpdateStates",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "DeactivateOneTimeProductOfferRequest",
+        identifier: "BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
       });
-    case 4:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           purchaseOptionId: S.optional(S.String),
@@ -9596,83 +10928,51 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "CancelOneTimeProductOfferRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          deactivateOneTimeProductOfferRequest: S.optional(__S(179, __c22, 3)),
-          cancelOneTimeProductOfferRequest: S.optional(__S(180, __c22, 4)),
-          activateOneTimeProductOfferRequest: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "UpdateOneTimeProductOfferStateRequest",
-      });
-    case 6:
-      return S.Array(__S(181, __c22, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateOneTimeProductOfferStatesRequest",
-      });
   }
 }
-function __c23(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          purchaseOptionId: S.String.pipe(T.Label()),
-          body: S.optional(__S(183, __c22, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers:batchUpdateStates",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.optional(S.String),
-          basePlanId: S.optional(S.String),
-          productId: S.optional(S.String),
+          offerId: S.optional(S.String),
           latencyTolerance: S.optional(S.String),
+          purchaseOptionId: S.optional(S.String),
+          packageName: S.optional(S.String),
+          productId: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "DeactivateBasePlanRequest",
+        identifier: "DeactivateOneTimeProductOfferRequest",
       });
-    case 2:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          activateBasePlanRequest: S.optional(__S(18, __c2, 2)),
-          deactivateBasePlanRequest: S.optional(__S(185, __c23, 1)),
+          activateBasePlanRequest: S.optional(__S(5056, __c158, 0)),
+          deactivateBasePlanRequest: S.optional(__S(2944, __c92, 0)),
         }),
       ).annotate({
         identifier: "UpdateBasePlanStateRequest",
       });
-    case 3:
-      return S.Array(__S(186, __c23, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(2912, __c91, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(187, __c23, 3)),
+          requests: S.optional(__S(2913, __c91, 1)),
         }),
       ).annotate({
         identifier: "BatchUpdateBasePlanStatesRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(188, __c23, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2914, __c91, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9683,7 +10983,66 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest",
       });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.optional(S.String),
+          basePlanId: S.optional(S.String),
+          productId: S.optional(S.String),
+          latencyTolerance: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeactivateBasePlanRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          activateSubscriptionOfferRequest: S.optional(__S(5728, __c179, 0)),
+          deactivateSubscriptionOfferRequest: S.optional(__S(3008, __c94, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateSubscriptionOfferStateRequest",
+      });
+    case 1:
+      return S.Array(__S(2976, __c93, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(2977, __c93, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchUpdateSubscriptionOfferStatesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          basePlanId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2978, __c93, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchUpdateStates",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.optional(S.String),
@@ -9695,52 +11054,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeactivateSubscriptionOfferRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          activateSubscriptionOfferRequest: S.optional(__S(38, __c4, 6)),
-          deactivateSubscriptionOfferRequest: S.optional(__S(190, __c23, 6)),
-        }),
-      ).annotate({
-        identifier: "UpdateSubscriptionOfferStateRequest",
-      });
   }
 }
-function __c24(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(191, __c23, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(192, __c24, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateSubscriptionOfferStatesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          basePlanId: S.String.pipe(T.Label()),
-          body: S.optional(__S(193, __c24, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchUpdateStates",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           appRecoveryId: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(3392, __c106, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9749,14 +11072,18 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CancelApprecoveryRequest" });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
           purchaseOptionId: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
           offerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(180, __c22, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2848, __c89, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9767,7 +11094,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
       });
-    case 5:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -9783,30 +11114,30 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "CancelPurchasesSubscriptionsRequest",
       });
-    case 6:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cancellationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "CancellationContext" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          cancellationContext: S.optional(__S(198, __c24, 6)),
+          cancellationContext: S.optional(__S(3136, __c98, 0)),
         }),
       ).annotate({
         identifier: "CancelSubscriptionPurchaseRequest",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
           token: S.String.pipe(T.Label()),
-          body: S.optional(__S(199, __c24, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(3137, __c98, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9817,7 +11148,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "CancelPurchasesSubscriptionsv2Request",
       });
-    case 1:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           editId: S.String.pipe(T.Label()),
@@ -9832,14 +11167,22 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CommitEditsRequest" });
-    case 2:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expiryTimeSeconds: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppEdit" });
-    case 3:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -9855,20 +11198,24 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ConsumePurchasesProductsRequest",
       });
-    case 4:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          price: S.optional(__S(10, __c1, 2)),
+          price: S.optional(__S(4512, __c141, 0)),
           productTaxCategoryCode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConvertRegionPricesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(204, __c25, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(3264, __c102, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9879,132 +11226,36 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ConvertRegionPricesMonetizationRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String),
-          price: S.optional(__S(10, __c1, 2)),
-          taxAmount: S.optional(__S(10, __c1, 2)),
+          price: S.optional(__S(4512, __c141, 0)),
+          taxAmount: S.optional(__S(4512, __c141, 0)),
         }),
       ).annotate({ identifier: "ConvertedRegionPrice" });
-    case 7:
-      return S.Record(S.String, __S(206, __c25, 6));
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Record(S.String, __S(3266, __c102, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          regionVersion: S.optional(__S(16, __c2, 0)),
-          convertedOtherRegionsPrice: S.optional(__S(46, __c5, 6)),
-          convertedRegionPrices: S.optional(__S(207, __c25, 7)),
+          regionVersion: S.optional(__S(4416, __c138, 0)),
+          convertedOtherRegionsPrice: S.optional(__S(5664, __c177, 0)),
+          convertedRegionPrices: S.optional(__S(3267, __c102, 3)),
         }),
       ).annotate({
         identifier: "ConvertRegionPricesResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          countryCodes: S.optional(__S(28, __c3, 4)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserCountrySet" });
-    case 2:
-      return S.Array(__S(209, __c26, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          level: S.optional(S.Number),
-          deviceGroupNames: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "DeviceTier" });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          deviceTiers: S.optional(__S(212, __c26, 4)),
-        }),
-      ).annotate({ identifier: "DeviceTierSet" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          buildBrand: S.optional(S.String),
-          buildDevice: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeviceId" });
-    case 7:
-      return S.Array(__S(214, __c26, 6));
   }
 }
-function __c27(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemFeature" });
-    case 1:
-      return S.Array(__S(216, __c27, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          manufacturer: S.optional(S.String),
-          model: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemOnChip" });
-    case 3:
-      return S.Array(__S(218, __c27, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          minBytes: S.optional(S.String),
-          maxBytes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeviceRam" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          includedDeviceIds: S.optional(__S(215, __c26, 7)),
-          excludedDeviceIds: S.optional(__S(215, __c26, 7)),
-          requiredSystemFeatures: S.optional(__S(217, __c27, 1)),
-          forbiddenSystemFeatures: S.optional(__S(217, __c27, 1)),
-          systemOnChips: S.optional(__S(219, __c27, 3)),
-          deviceRam: S.optional(__S(220, __c27, 4)),
-        }),
-      ).annotate({ identifier: "DeviceSelector" });
-    case 6:
-      return S.Array(__S(221, __c27, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deviceSelectors: S.optional(__S(222, __c27, 6)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeviceGroup" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(223, __c27, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          userCountrySets: S.optional(__S(210, __c26, 2)),
-          deviceTierConfigId: S.optional(S.String),
-          deviceTierSet: S.optional(__S(213, __c26, 5)),
-          deviceGroups: S.optional(__S(224, __c28, 0)),
-        }),
-      ).annotate({ identifier: "DeviceTierConfig" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           allowUnknownDevices: S.optional(S.Boolean.pipe(T.Query())),
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(225, __c28, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(3344, __c104, 16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10015,53 +11266,159 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "CreateApplicationsDeviceTierConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          versionCodeStart: S.optional(S.String),
-          versionCodeEnd: S.optional(S.String),
+          countryCodes: S.optional(__S(5088, __c159, 0)),
+          name: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AppVersionRange" });
+      ).annotate({ identifier: "UserCountrySet" });
+    case 1:
+      return S.Array(__S(3328, __c104, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          level: S.optional(S.Number),
+          deviceGroupNames: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({ identifier: "DeviceTier" });
+    case 3:
+      return S.Array(__S(3330, __c104, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          versionCodes: S.optional(__S(28, __c3, 4)),
+          deviceTiers: S.optional(__S(3331, __c104, 3)),
         }),
-      ).annotate({ identifier: "AppVersionList" });
+      ).annotate({ identifier: "DeviceTierSet" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          regions: S.optional(__S(61, __c7, 5)),
-          allUsers: S.optional(__S(60, __c7, 4)),
-          versionRange: S.optional(__S(227, __c28, 3)),
-          versionList: S.optional(__S(228, __c28, 4)),
-          androidSdks: S.optional(__S(59, __c7, 3)),
+          buildBrand: S.optional(S.String),
+          buildDevice: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Targeting" });
+      ).annotate({ identifier: "DeviceId" });
     case 6:
+      return S.Array(__S(3333, __c104, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemFeature" });
+    case 8:
+      return S.Array(__S(3335, __c104, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          manufacturer: S.optional(S.String),
+          model: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemOnChip" });
+    case 10:
+      return S.Array(__S(3337, __c104, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          minBytes: S.optional(S.String),
+          maxBytes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeviceRam" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          includedDeviceIds: S.optional(__S(3334, __c104, 6)),
+          excludedDeviceIds: S.optional(__S(3334, __c104, 6)),
+          requiredSystemFeatures: S.optional(__S(3336, __c104, 8)),
+          forbiddenSystemFeatures: S.optional(__S(3336, __c104, 8)),
+          systemOnChips: S.optional(__S(3338, __c104, 10)),
+          deviceRam: S.optional(__S(3339, __c104, 11)),
+        }),
+      ).annotate({ identifier: "DeviceSelector" });
+    case 13:
+      return S.Array(__S(3340, __c104, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          deviceSelectors: S.optional(__S(3341, __c104, 13)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeviceGroup" });
+    case 15:
+      return S.Array(__S(3342, __c104, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          userCountrySets: S.optional(__S(3329, __c104, 1)),
+          deviceTierConfigId: S.optional(S.String),
+          deviceTierSet: S.optional(__S(3332, __c104, 4)),
+          deviceGroups: S.optional(__S(3343, __c104, 15)),
+        }),
+      ).annotate({ identifier: "DeviceTierConfig" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          developerPayload: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProductPurchasesAcknowledgeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          body: S.optional(__S(3360, __c105, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/purchases/products/{productId}/tokens/{token}:acknowledge",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AcknowledgePurchasesProductsRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcknowledgePurchasesProductsResponse",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isRemoteInAppUpdateRequested: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RemoteInAppUpdate" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          targeting: S.optional(__S(229, __c28, 5)),
-          remoteInAppUpdate: S.optional(__S(230, __c28, 6)),
+          targeting: S.optional(__S(3458, __c108, 2)),
+          remoteInAppUpdate: S.optional(__S(3424, __c107, 0)),
         }),
       ).annotate({
         identifier: "CreateDraftAppRecoveryRequest",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(231, __c28, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(3425, __c107, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10070,7 +11427,34 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateApprecoveryRequest" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          versionCodeStart: S.optional(S.String),
+          versionCodeEnd: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppVersionRange" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          versionCodes: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({ identifier: "AppVersionList" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          regions: S.optional(__S(66, __c2, 2)),
+          allUsers: S.optional(__S(65, __c2, 1)),
+          versionRange: S.optional(__S(3456, __c108, 0)),
+          versionList: S.optional(__S(3457, __c108, 1)),
+          androidSdks: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "Targeting" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           versionCode: S.optional(S.String),
@@ -10080,28 +11464,32 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "RemoteInAppUpdateDataPerBundle",
       });
-    case 2:
-      return S.Array(__S(233, __c29, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(3459, __c108, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          remoteAppUpdateDataPerBundle: S.optional(__S(234, __c29, 2)),
+          remoteAppUpdateDataPerBundle: S.optional(__S(3460, __c108, 4)),
         }),
       ).annotate({ identifier: "RemoteInAppUpdateData" });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
           deployTime: S.optional(S.String),
-          remoteInAppUpdateData: S.optional(__S(235, __c29, 3)),
+          remoteInAppUpdateData: S.optional(__S(3461, __c108, 5)),
           status: S.optional(S.String),
-          targeting: S.optional(__S(229, __c28, 5)),
+          targeting: S.optional(__S(3458, __c108, 2)),
           cancelTime: S.optional(S.String),
           lastUpdateTime: S.optional(S.String),
           appRecoveryId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppRecoveryAction" });
-    case 5:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.optional(S.String),
@@ -10109,11 +11497,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "CreateAppStoreHostedAppRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appStorePackageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(237, __c29, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(3488, __c109, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10124,13 +11512,13 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "CreateappstorehostedappAppstoreappsreviewRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateAppStoreHostedAppResponse",
       });
   }
 }
-function __c30(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10145,7 +11533,7 @@ function __c30(j: number): any {
         S.Struct({
           packageName: S.String.pipe(T.Label()),
           editId: S.String.pipe(T.Label()),
-          body: S.optional(__S(240, __c30, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(3520, __c110, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10154,46 +11542,70 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateEditsTracksRequest" });
-    case 2:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          countries: S.optional(__S(28, __c3, 4)),
+          countries: S.optional(__S(5088, __c159, 0)),
           includeRestOfWorld: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CountryTargeting" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           language: S.optional(S.String),
           text: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalizedText" });
-    case 4:
-      return S.Array(__S(243, __c30, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3553, __c111, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          versionCodes: S.optional(__S(28, __c3, 4)),
+          versionCodes: S.optional(__S(5088, __c159, 0)),
           inAppUpdatePriority: S.optional(S.Number),
-          countryTargeting: S.optional(__S(242, __c30, 2)),
+          countryTargeting: S.optional(__S(3552, __c111, 0)),
           status: S.optional(S.String),
-          releaseNotes: S.optional(__S(244, __c30, 4)),
+          releaseNotes: S.optional(__S(3554, __c111, 2)),
           name: S.optional(S.String),
           userFraction: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TrackRelease" });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(3555, __c111, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           track: S.optional(S.String),
-          releases: S.optional(__S(246, __c30, 6)),
+          releases: S.optional(__S(3556, __c111, 4)),
         }),
       ).annotate({ identifier: "Track" });
   }
 }
-function __c31(j: number): any {
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          externalTransactionId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3622, __c113, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/{+parent}/externalTransactions",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateexternaltransactionExternaltransactionsRequest",
+      });
+  }
+}
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10232,8 +11644,8 @@ function __c31(j: number): any {
         S.Struct({
           externalTransactionToken: S.optional(S.String),
           migratedTransactionProgram: S.optional(S.String),
-          externalSubscription: S.optional(__S(251, __c31, 3)),
-          otherRecurringProduct: S.optional(__S(2, __c0, 2)),
+          externalSubscription: S.optional(__S(3619, __c113, 3)),
+          otherRecurringProduct: S.optional(__S(3392, __c106, 0)),
           initialExternalTransactionId: S.optional(S.String),
         }),
       ).annotate({
@@ -10254,57 +11666,31 @@ function __c31(j: number): any {
         S.Struct({
           createTime: S.optional(S.String),
           externalTransactionId: S.optional(S.String),
-          userTaxAddress: S.optional(__S(248, __c31, 0)),
-          oneTimeTransaction: S.optional(__S(249, __c31, 1)),
-          currentTaxAmount: S.optional(__S(88, __c11, 0)),
-          externalOfferDetails: S.optional(__S(250, __c31, 2)),
-          recurringTransaction: S.optional(__S(252, __c31, 4)),
-          externalContentLinkDetails: S.optional(__S(253, __c31, 5)),
-          originalTaxAmount: S.optional(__S(88, __c11, 0)),
+          userTaxAddress: S.optional(__S(3616, __c113, 0)),
+          oneTimeTransaction: S.optional(__S(3617, __c113, 1)),
+          currentTaxAmount: S.optional(__S(2016, __c63, 0)),
+          externalOfferDetails: S.optional(__S(3618, __c113, 2)),
+          recurringTransaction: S.optional(__S(3620, __c113, 4)),
+          externalContentLinkDetails: S.optional(__S(3621, __c113, 5)),
+          originalTaxAmount: S.optional(__S(2016, __c63, 0)),
           transactionState: S.optional(S.String),
-          currentPreTaxAmount: S.optional(__S(88, __c11, 0)),
+          currentPreTaxAmount: S.optional(__S(2016, __c63, 0)),
           transactionProgramCode: S.optional(S.Number),
-          originalPreTaxAmount: S.optional(__S(88, __c11, 0)),
+          originalPreTaxAmount: S.optional(__S(2016, __c63, 0)),
           transactionTime: S.optional(S.String),
-          testPurchase: S.optional(__S(2, __c0, 2)),
+          testPurchase: S.optional(__S(3392, __c106, 0)),
           packageName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalTransaction" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          externalTransactionId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(254, __c31, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/{+parent}/externalTransactions",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateexternaltransactionExternaltransactionsRequest",
-      });
   }
 }
-function __c32(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          packageName: S.optional(S.String),
-          appLevelPermissions: S.optional(__S(256, __c32, 0)),
-        }),
-      ).annotate({ identifier: "Grant" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(257, __c32, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(3680, __c115, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10313,13 +11699,35 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateGrantsRequest" });
-    case 3:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          packageName: S.optional(S.String),
+          appLevelPermissions: S.optional(__S(3712, __c116, 0)),
+        }),
+      ).annotate({ identifier: "Grant" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
           productId: S.optional(S.String.pipe(T.Query())),
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(5034, __c157, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10330,7 +11738,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "CreateMonetizationSubscriptionsRequest",
       });
-    case 4:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           basePlanId: S.String.pipe(T.Label()),
@@ -10338,7 +11750,7 @@ function __c32(j: number): any {
           productId: S.String.pipe(T.Label()),
           "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(53, __c6, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(5708, __c178, 12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10349,40 +11761,16 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "CreateMonetizationSubscriptionsBasePlansOffersRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          screenDensity: S.optional(S.Number),
-          supportedAbis: S.optional(__S(28, __c3, 4)),
-          supportedLocales: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "DeviceSpec" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uncompressedDexFiles: S.optional(S.Boolean),
-          uncompressedNativeLibraries: S.optional(S.Boolean),
-          rotated: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SystemApkOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deviceSpec: S.optional(__S(261, __c32, 5)),
-          variantId: S.optional(S.Number),
-          options: S.optional(__S(262, __c32, 6)),
-        }),
-      ).annotate({ identifier: "Variant" });
   }
 }
-function __c33(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
           versionCode: S.String.pipe(T.Label()),
-          body: S.optional(__S(263, __c32, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(3842, __c120, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10393,25 +11781,43 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "CreateSystemapksVariantsRequest",
       });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          screenDensity: S.optional(S.Number),
+          supportedAbis: S.optional(__S(5088, __c159, 0)),
+          supportedLocales: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({ identifier: "DeviceSpec" });
     case 1:
-      return S.Array(__S(257, __c32, 1));
+      return S.suspend(() =>
+        S.Struct({
+          uncompressedDexFiles: S.optional(S.Boolean),
+          uncompressedNativeLibraries: S.optional(S.Boolean),
+          rotated: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SystemApkOptions" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accessState: S.optional(S.String),
-          expirationTime: S.optional(S.String),
-          email: S.optional(S.String),
-          partial: S.optional(S.Boolean),
-          grants: S.optional(__S(265, __c33, 1)),
-          developerAccountPermissions: S.optional(__S(256, __c32, 0)),
-          name: S.optional(S.String),
+          deviceSpec: S.optional(__S(3840, __c120, 0)),
+          variantId: S.optional(S.Number),
+          options: S.optional(__S(3841, __c120, 1)),
         }),
-      ).annotate({ identifier: "User" });
-    case 3:
+      ).annotate({ identifier: "Variant" });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(266, __c33, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(3905, __c122, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10420,7 +11826,29 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateUsersRequest" });
-    case 4:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3680, __c115, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accessState: S.optional(S.String),
+          expirationTime: S.optional(S.String),
+          email: S.optional(S.String),
+          partial: S.optional(S.Boolean),
+          grants: S.optional(__S(3904, __c122, 0)),
+          developerAccountPermissions: S.optional(__S(3712, __c116, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "User" });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           safetyLabels: S.optional(S.String),
@@ -10428,11 +11856,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "SafetyLabelsUpdateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(268, __c33, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(3936, __c123, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10443,14 +11871,55 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "DataSafetyApplicationsRequest",
       });
-    case 6:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          obfuscatedAccountId: S.optional(S.String),
+          obfuscatedProfileId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalAccountIds" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          developerPayload: S.optional(S.String),
+          externalAccountIds: S.optional(__S(3968, __c124, 0)),
+        }),
+      ).annotate({
+        identifier: "SubscriptionPurchasesAcknowledgeRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          token: S.String.pipe(T.Label()),
+          body: S.optional(__S(3969, __c124, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:acknowledge",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AcknowledgePurchasesSubscriptionsRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           offerId: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
           purchaseOptionId: S.String.pipe(T.Label()),
-          body: S.optional(__S(179, __c22, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2880, __c90, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10461,13 +11930,17 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
       });
-    case 7:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
           basePlanId: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(185, __c23, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2944, __c92, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10480,7 +11953,7 @@ function __c33(j: number): any {
       });
   }
 }
-function __c34(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10489,7 +11962,7 @@ function __c34(j: number): any {
           basePlanId: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(190, __c23, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(3008, __c94, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10500,28 +11973,32 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeactivateMonetizationSubscriptionsBasePlansOffersRequest",
       });
-    case 1:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expectedExpiryTimeMillis: S.optional(S.String),
           desiredExpiryTimeMillis: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionDeferralInfo" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          deferralInfo: S.optional(__S(273, __c34, 1)),
+          deferralInfo: S.optional(__S(4096, __c128, 0)),
         }),
       ).annotate({
         identifier: "SubscriptionPurchasesDeferRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
           subscriptionId: S.String.pipe(T.Label()),
           token: S.String.pipe(T.Label()),
-          body: S.optional(__S(274, __c34, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(4097, __c128, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10532,7 +12009,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeferPurchasesSubscriptionsRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           newExpiryTimeMillis: S.optional(S.String),
@@ -10540,7 +12017,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "SubscriptionPurchasesDeferResponse",
       });
-    case 5:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deferDuration: S.optional(S.String),
@@ -10548,20 +12029,20 @@ function __c34(j: number): any {
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeferralContext" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          deferralContext: S.optional(__S(277, __c34, 5)),
+          deferralContext: S.optional(__S(4128, __c129, 0)),
         }),
       ).annotate({
         identifier: "DeferSubscriptionPurchaseRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
           token: S.String.pipe(T.Label()),
-          body: S.optional(__S(278, __c34, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(4129, __c129, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10572,28 +12053,28 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeferPurchasesSubscriptionsv2Request",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
           expiryTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ItemExpiryTimeDetails" });
-    case 1:
-      return S.Array(__S(280, __c35, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(4131, __c129, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          itemExpiryTimeDetails: S.optional(__S(281, __c35, 1)),
+          itemExpiryTimeDetails: S.optional(__S(4132, __c129, 4)),
         }),
       ).annotate({
         identifier: "DeferSubscriptionPurchaseResponse",
       });
-    case 3:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           editId: S.String.pipe(T.Label()),
@@ -10610,7 +12091,23 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteallEditsImagesRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deleted: S.optional(__S(4192, __c131, 0)),
+        }),
+      ).annotate({ identifier: "ImagesDeleteAllResponse" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4224, __c132, 0));
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -10620,15 +12117,11 @@ function __c35(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Image" });
-    case 5:
-      return S.Array(__S(284, __c35, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: S.optional(__S(285, __c35, 5)),
-        }),
-      ).annotate({ identifier: "ImagesDeleteAllResponse" });
-    case 7:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           editId: S.String.pipe(T.Label()),
@@ -10645,7 +12138,7 @@ function __c35(j: number): any {
       });
   }
 }
-function __c36(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10660,7 +12153,11 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteEditsRequest" });
-    case 1:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           language: S.String.pipe(T.Label()),
@@ -10676,7 +12173,11 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteEditsImagesRequest" });
-    case 2:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           editId: S.String.pipe(T.Label()),
@@ -10692,7 +12193,146 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "DeleteEditsListingsRequest",
       });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          purchaseOptionId: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          offerId: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          body: S.optional(__S(4480, __c140, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:activate",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegionsVersion" });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          relativeDiscount: S.optional(S.Number),
+          availability: S.optional(S.String),
+          absoluteDiscount: S.optional(__S(4512, __c141, 0)),
+          regionCode: S.optional(S.String),
+          noOverride: S.optional(__S(3392, __c106, 0)),
+        }),
+      ).annotate({
+        identifier: "OneTimeProductOfferRegionalPricingAndAvailabilityConfig",
+      });
+    case 1:
+      return S.Array(__S(4448, __c139, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          redemptionLimit: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OneTimeProductGameRewardOffer",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+          redemptionLimit: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OneTimeProductDiscountedOffer",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          priceChangeBehavior: S.optional(S.String),
+          startTime: S.optional(S.String),
+          releaseTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OneTimeProductPreOrderOffer",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          offerTags: S.optional(__S(4545, __c142, 1)),
+          productId: S.optional(S.String),
+          regionalPricingAndAvailabilityConfigs: S.optional(__S(4449, __c139, 1)),
+          packageName: S.optional(S.String),
+          gameRewardOffer: S.optional(__S(4450, __c139, 2)),
+          offerId: S.optional(S.String),
+          discountedOffer: S.optional(__S(4451, __c139, 3)),
+          preOrderOffer: S.optional(__S(4452, __c139, 4)),
+          state: S.optional(S.String),
+          regionsVersion: S.optional(__S(4416, __c138, 0)),
+          purchaseOptionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OneTimeProductOffer" });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.optional(S.String),
+          packageName: S.optional(S.String),
+          latencyTolerance: S.optional(S.String),
+          purchaseOptionId: S.optional(S.String),
+          offerId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ActivateOneTimeProductOfferRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          units: S.optional(S.String),
+          nanos: S.optional(S.Number),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Money" });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OfferTag" });
+    case 1:
+      return S.Array(__S(4544, __c142, 0));
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10704,7 +12344,11 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteGrantsRequest" });
-    case 4:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           latencyTolerance: S.optional(S.String.pipe(T.Query())),
@@ -10720,7 +12364,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "DeleteInappproductsRequest",
       });
-    case 5:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -10736,7 +12384,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "DeleteMonetizationOnetimeproductsRequest",
       });
-    case 6:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -10751,7 +12403,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "DeleteMonetizationSubscriptionsRequest",
       });
-    case 7:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           basePlanId: S.String.pipe(T.Label()),
@@ -10769,7 +12425,7 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10788,7 +12444,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "DeleteMonetizationSubscriptionsBasePlansOffersRequest",
       });
-    case 1:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10800,12 +12460,16 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteUsersRequest" });
-    case 2:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
           appRecoveryId: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(3392, __c106, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10814,7 +12478,11 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeployApprecoveryRequest" });
-    case 3:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           downloadId: S.String.pipe(T.Label()),
@@ -10830,7 +12498,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "DownloadGeneratedapksRequest",
       });
-    case 4:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -10846,48 +12518,221 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "DownloadSystemapksVariantsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cryptoKeyVersionResource: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloudKmsKey" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pemCertificate: S.optional(S.String),
-          cloudKmsKey: S.optional(__S(301, __c37, 5)),
-        }),
-      ).annotate({ identifier: "CloudKmsKeyAndCert" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cloudKmsKeyAndCert: S.optional(__S(302, __c37, 6)),
-        }),
-      ).annotate({ identifier: "EnrollNewApp" });
   }
 }
-function __c38(j: number): any {
+function __c153(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cloudKmsKey: S.optional(__S(301, __c37, 5)),
-        }),
-      ).annotate({ identifier: "EnrollExistingApp" });
-    case 1:
+          basePlanId: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          body: S.optional(__S(5056, __c158, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:activate",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateMonetizationSubscriptionsBasePlansRequest",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          enrollNewApp: S.optional(__S(303, __c37, 7)),
-          pemUploadCertificate: S.optional(S.String),
-          enrollExistingApp: S.optional(__S(304, __c38, 0)),
+          regionCode: S.optional(S.String),
+          productAgeRatingTier: S.optional(S.String),
         }),
-      ).annotate({ identifier: "EnrollAppRequest" });
+      ).annotate({
+        identifier: "RegionalProductAgeRatingInfo",
+      });
+    case 1:
+      return S.Array(__S(4928, __c154, 0));
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          streamingTaxType: S.optional(S.String),
+          taxTier: S.optional(S.String),
+          eligibleForStreamingServiceTaxRate: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RegionalTaxRateInfo" });
+    case 1:
+      return S.Record(S.String, __S(4960, __c155, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
+          regionalProductAgeRatingInfos: S.optional(__S(4929, __c154, 1)),
+          isTokenizedDigitalAsset: S.optional(S.Boolean),
+          taxRateInfoByRegionCode: S.optional(__S(4961, __c155, 1)),
+          productTaxCategoryCode: S.optional(S.String),
+          eeaWithdrawalRightType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SubscriptionTaxAndComplianceSettings",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regionCodes: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({
+        identifier: "RestrictedPaymentCountries",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regionCode: S.optional(S.String),
+          newSubscriberAvailability: S.optional(S.Boolean),
+          price: S.optional(__S(4512, __c141, 0)),
+        }),
+      ).annotate({ identifier: "RegionalBasePlanConfig" });
+    case 1:
+      return S.Array(__S(5024, __c157, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          billingPeriodDuration: S.optional(S.String),
+          legacyCompatible: S.optional(S.Boolean),
+          gracePeriodDuration: S.optional(S.String),
+          prorationMode: S.optional(S.String),
+          resubscribeState: S.optional(S.String),
+          accountHoldDuration: S.optional(S.String),
+          legacyCompatibleSubscriptionOfferId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutoRenewingBasePlanType" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          usdPrice: S.optional(__S(4512, __c141, 0)),
+          eurPrice: S.optional(__S(4512, __c141, 0)),
+          newSubscriberAvailability: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "OtherRegionsBasePlanConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          committedPaymentsCount: S.optional(S.Number),
+          renewalType: S.optional(S.String),
+          accountHoldDuration: S.optional(S.String),
+          billingPeriodDuration: S.optional(S.String),
+          prorationMode: S.optional(S.String),
+          resubscribeState: S.optional(S.String),
+          gracePeriodDuration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InstallmentsBasePlanType" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          billingPeriodDuration: S.optional(S.String),
+          timeExtension: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrepaidBasePlanType" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          regionalConfigs: S.optional(__S(5025, __c157, 1)),
+          autoRenewingBasePlanType: S.optional(__S(5026, __c157, 2)),
+          offerTags: S.optional(__S(4545, __c142, 1)),
+          basePlanId: S.optional(S.String),
+          otherRegionsConfig: S.optional(__S(5027, __c157, 3)),
+          installmentsBasePlanType: S.optional(__S(5028, __c157, 4)),
+          prepaidBasePlanType: S.optional(__S(5029, __c157, 5)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BasePlan" });
+    case 7:
+      return S.Array(__S(5030, __c157, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          title: S.optional(S.String),
+          benefits: S.optional(__S(5088, __c159, 0)),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubscriptionListing" });
+    case 9:
+      return S.Array(__S(5032, __c157, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          basePlans: S.optional(__S(5031, __c157, 7)),
+          restrictedPaymentCountries: S.optional(__S(4992, __c156, 0)),
+          listings: S.optional(__S(5033, __c157, 9)),
+          packageName: S.optional(S.String),
+          productId: S.optional(S.String),
+          archived: S.optional(S.Boolean),
+          taxAndComplianceSettings: S.optional(__S(4962, __c155, 2)),
+        }),
+      ).annotate({ identifier: "Subscription" });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.optional(S.String),
+          basePlanId: S.optional(S.String),
+          productId: S.optional(S.String),
+          latencyTolerance: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActivateBasePlanRequest" });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudKmsKeyAndCert: S.optional(__S(5153, __c161, 1)),
+        }),
+      ).annotate({ identifier: "EnrollNewApp" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cloudKmsKey: S.optional(__S(5152, __c161, 0)),
+        }),
+      ).annotate({ identifier: "EnrollExistingApp" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enrollNewApp: S.optional(__S(5120, __c160, 0)),
+          pemUploadCertificate: S.optional(S.String),
+          enrollExistingApp: S.optional(__S(5121, __c160, 1)),
+        }),
+      ).annotate({ identifier: "EnrollAppRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(305, __c38, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(5122, __c160, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10898,7 +12743,31 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "EnrollAppAppsigningRequest",
       });
-    case 3:
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          signingCertificate: S.optional(__S(5154, __c161, 2)),
+          uploadCertificate: S.optional(__S(5154, __c161, 2)),
+        }),
+      ).annotate({ identifier: "EnrollAppResponse" });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cryptoKeyVersionResource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudKmsKey" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pemCertificate: S.optional(S.String),
+          cloudKmsKey: S.optional(__S(5152, __c161, 0)),
+        }),
+      ).annotate({ identifier: "CloudKmsKeyAndCert" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           certificateHashSha256: S.optional(S.String),
@@ -10906,14 +12775,11 @@ function __c38(j: number): any {
           certificateHashSha1: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateHashes" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          signingCertificate: S.optional(__S(307, __c38, 3)),
-          uploadCertificate: S.optional(__S(307, __c38, 3)),
-        }),
-      ).annotate({ identifier: "EnrollAppResponse" });
-    case 5:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -10928,7 +12794,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetApplicationsDeviceTierConfigsRequest",
       });
-    case 6:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appStorePackageName: S.String.pipe(T.Label()),
@@ -10943,36 +12813,32 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetAppstorecatalogRecentappviewsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ramMbLessThanOrEqual: S.optional(S.String),
         }),
       ).annotate({ identifier: "RamSelector" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           socMake: S.optional(S.String),
           socModel: S.optional(S.String),
         }),
       ).annotate({ identifier: "SocSelector" });
-    case 1:
-      return S.Array(__S(312, __c39, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(5218, __c163, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          ramSelector: S.optional(__S(311, __c38, 7)),
-          socSelectors: S.optional(__S(313, __c39, 1)),
+          ramSelector: S.optional(__S(5217, __c163, 1)),
+          socSelectors: S.optional(__S(5219, __c163, 3)),
           deviceTypeSelector: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogDeviceSelector" });
-    case 3:
-      return S.Array(__S(314, __c39, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(5220, __c163, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           contactEmail: S.optional(S.String),
@@ -10980,64 +12846,60 @@ function __c39(j: number): any {
           websiteUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppContactInformation" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           deviceModel: S.optional(S.String),
           deviceBrand: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceIdentifier" });
-    case 6:
-      return S.Array(__S(317, __c39, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(5223, __c163, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           videoUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoAsset" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           imageUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageAsset" });
-    case 1:
-      return S.Array(__S(320, __c40, 0));
-    case 2:
+    case 11:
+      return S.Array(__S(5226, __c163, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          screenshots: S.optional(__S(321, __c40, 1)),
+          screenshots: S.optional(__S(5227, __c163, 11)),
         }),
       ).annotate({ identifier: "ScreenshotSet" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          video: S.optional(__S(319, __c39, 7)),
-          tabletSmallScreenshots: S.optional(__S(322, __c40, 2)),
+          video: S.optional(__S(5225, __c163, 9)),
+          tabletSmallScreenshots: S.optional(__S(5228, __c163, 12)),
           languageCode: S.optional(S.String),
           fullDescription: S.optional(S.String),
-          featureGraphic: S.optional(__S(320, __c40, 0)),
-          tabletRegularScreenshots: S.optional(__S(322, __c40, 2)),
-          phoneScreenshots: S.optional(__S(322, __c40, 2)),
+          featureGraphic: S.optional(__S(5226, __c163, 10)),
+          tabletRegularScreenshots: S.optional(__S(5228, __c163, 12)),
+          phoneScreenshots: S.optional(__S(5228, __c163, 12)),
           shortDescription: S.optional(S.String),
           appName: S.optional(S.String),
-          icon: S.optional(__S(320, __c40, 0)),
+          icon: S.optional(__S(5226, __c163, 10)),
         }),
       ).annotate({ identifier: "LocalizedStoreListing" });
-    case 4:
-      return S.Array(__S(323, __c40, 3));
-    case 5:
+    case 14:
+      return S.Array(__S(5229, __c163, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          localizedStoreListings: S.optional(__S(324, __c40, 4)),
+          localizedStoreListings: S.optional(__S(5230, __c163, 14)),
           defaultLanguageCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalizedStoreListings" });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           contactEmail: S.optional(S.String),
@@ -11047,7 +12909,7 @@ function __c40(j: number): any {
           address: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeveloperDetails" });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           requiresHardwareKeyboard: S.optional(S.Boolean),
@@ -11057,22 +12919,18 @@ function __c40(j: number): any {
           requiredKeyboardType: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsesConfiguration" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(327, __c40, 7));
-    case 1:
+    case 18:
+      return S.Array(__S(5233, __c163, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           screenSize: S.optional(S.String),
           density: S.optional(S.String),
         }),
       ).annotate({ identifier: "CompatibleScreen" });
-    case 2:
-      return S.Array(__S(329, __c41, 1));
-    case 3:
+    case 20:
+      return S.Array(__S(5235, __c163, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           targetSdkVersion: S.optional(S.String),
@@ -11080,28 +12938,65 @@ function __c41(j: number): any {
           minSdkVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogSdkVersion" });
-    case 4:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          supportedGlTextures: S.optional(__S(28, __c3, 4)),
-          usesConfigurations: S.optional(__S(328, __c41, 0)),
+          supportedGlTextures: S.optional(__S(5088, __c159, 0)),
+          usesConfigurations: S.optional(__S(5234, __c163, 18)),
           isScreenRequired: S.optional(S.Boolean),
           use32BitAbi: S.optional(S.String),
-          requiredSystemFeatures: S.optional(__S(28, __c3, 4)),
-          nativePlatforms: S.optional(__S(28, __c3, 4)),
+          requiredSystemFeatures: S.optional(__S(5088, __c159, 0)),
+          nativePlatforms: S.optional(__S(5088, __c159, 0)),
           requiresSmallestWidthDp: S.optional(S.String),
           glEsVersion: S.optional(S.Number),
-          compatibleScreens: S.optional(__S(330, __c41, 2)),
-          supportedScreens: S.optional(__S(256, __c32, 0)),
-          sdkVersion: S.optional(__S(331, __c41, 3)),
-          requiredSoftwareLibraries: S.optional(__S(28, __c3, 4)),
+          compatibleScreens: S.optional(__S(5236, __c163, 20)),
+          supportedScreens: S.optional(__S(3712, __c116, 0)),
+          sdkVersion: S.optional(__S(5237, __c163, 21)),
+          requiredSoftwareLibraries: S.optional(__S(5088, __c159, 0)),
         }),
       ).annotate({
         identifier: "DeviceCompatibilityRequirements",
       });
-    case 5:
-      return S.Array(__S(332, __c41, 4));
-    case 6:
+    case 23:
+      return S.Array(__S(5238, __c163, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          privacyPolicyUrl: S.optional(S.String),
+          lastPublishTime: S.optional(S.String),
+          excludedDevicesBySelector: S.optional(__S(5221, __c163, 5)),
+          hasInAppPurchases: S.optional(S.Boolean),
+          appContactInformation: S.optional(__S(5222, __c163, 6)),
+          salePriceInTheUnitedStates: S.optional(__S(4512, __c141, 0)),
+          appSubcategory: S.optional(S.String),
+          iarcCertificateId: S.optional(S.String),
+          activeVersionNames: S.optional(__S(5088, __c159, 0)),
+          appCategory: S.optional(S.String),
+          hasInAppAds: S.optional(S.Boolean),
+          isAdultOnlyAudience: S.optional(S.Boolean),
+          excludedDevicesByIdentifier: S.optional(__S(5224, __c163, 8)),
+          permissions: S.optional(__S(6177, __c193, 1)),
+          localizedStoreListings: S.optional(__S(5231, __c163, 15)),
+          packageName: S.optional(S.String),
+          developerDetails: S.optional(__S(5232, __c163, 16)),
+          deviceCompatibilityRequirements: S.optional(__S(5239, __c163, 23)),
+          priceInTheUnitedStates: S.optional(__S(4512, __c141, 0)),
+          permissionsSdk23: S.optional(__S(6177, __c193, 1)),
+          firstReleaseDate: S.optional(__S(5248, __c164, 0)),
+          deliveryToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CatalogAppView" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          appView: S.optional(__S(5240, __c163, 24)),
+        }),
+      ).annotate({ identifier: "RecentAppView" });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           year: S.optional(S.Number),
@@ -11109,44 +13004,11 @@ function __c41(j: number): any {
           day: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Androidpublisher_Date" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          privacyPolicyUrl: S.optional(S.String),
-          lastPublishTime: S.optional(S.String),
-          excludedDevicesBySelector: S.optional(__S(315, __c39, 3)),
-          hasInAppPurchases: S.optional(S.Boolean),
-          appContactInformation: S.optional(__S(316, __c39, 4)),
-          salePriceInTheUnitedStates: S.optional(__S(10, __c1, 2)),
-          appSubcategory: S.optional(S.String),
-          iarcCertificateId: S.optional(S.String),
-          activeVersionNames: S.optional(__S(28, __c3, 4)),
-          appCategory: S.optional(S.String),
-          hasInAppAds: S.optional(S.Boolean),
-          isAdultOnlyAudience: S.optional(S.Boolean),
-          excludedDevicesByIdentifier: S.optional(__S(318, __c39, 6)),
-          permissions: S.optional(__S(55, __c6, 7)),
-          localizedStoreListings: S.optional(__S(325, __c40, 5)),
-          packageName: S.optional(S.String),
-          developerDetails: S.optional(__S(326, __c40, 6)),
-          deviceCompatibilityRequirements: S.optional(__S(333, __c41, 5)),
-          priceInTheUnitedStates: S.optional(__S(10, __c1, 2)),
-          permissionsSdk23: S.optional(__S(55, __c6, 7)),
-          firstReleaseDate: S.optional(__S(334, __c41, 6)),
-          deliveryToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CatalogAppView" });
   }
 }
-function __c42(j: number): any {
+function __c165(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          appView: S.optional(__S(335, __c41, 7)),
-        }),
-      ).annotate({ identifier: "RecentAppView" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -11159,7 +13021,11 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEditsRequest" });
-    case 2:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           track: S.String.pipe(T.Label()),
@@ -11175,23 +13041,27 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "GetEditsCountryavailabilityRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           countryCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrackTargetedCountry" });
-    case 4:
-      return S.Array(__S(339, __c42, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(5313, __c166, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          countries: S.optional(__S(340, __c42, 4)),
+          countries: S.optional(__S(5314, __c166, 2)),
           syncWithProduction: S.optional(S.Boolean),
           restOfWorld: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TrackCountryAvailability" });
-    case 6:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -11204,7 +13074,11 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEditsDetailsRequest" });
-    case 7:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contactEmail: S.optional(S.String),
@@ -11215,7 +13089,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "AppDetails" });
   }
 }
-function __c43(j: number): any {
+function __c169(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11234,14 +13108,22 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "GetEditsExpansionfilesRequest",
       });
-    case 1:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileSize: S.optional(S.String),
           referencesVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ExpansionFile" });
-    case 2:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           language: S.String.pipe(T.Label()),
@@ -11255,7 +13137,11 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEditsListingsRequest" });
-    case 3:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fullDescription: S.optional(S.String),
@@ -11265,7 +13151,11 @@ function __c43(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "Listing" });
-    case 4:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           track: S.String.pipe(T.Label()),
@@ -11279,13 +13169,21 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEditsTestersRequest" });
-    case 5:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          googleGroups: S.optional(__S(28, __c3, 4)),
+          googleGroups: S.optional(__S(5088, __c159, 0)),
         }),
       ).annotate({ identifier: "Testers" });
-    case 6:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           track: S.String.pipe(T.Label()),
@@ -11299,7 +13197,167 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEditsTracksRequest" });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          offerId: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          basePlanId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5728, __c179, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:activate",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateMonetizationSubscriptionsBasePlansOffersRequest",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          usdPrice: S.optional(__S(4512, __c141, 0)),
+          eurPrice: S.optional(__S(4512, __c141, 0)),
+        }),
+      ).annotate({
+        identifier: "OtherRegionsSubscriptionOfferPhasePrices",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          specificSubscriptionInApp: S.optional(S.String),
+          thisSubscription: S.optional(__S(3392, __c106, 0)),
+          anySubscriptionInApp: S.optional(__S(3392, __c106, 0)),
+        }),
+      ).annotate({ identifier: "TargetingRuleScope" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.optional(__S(5696, __c178, 0)),
+        }),
+      ).annotate({ identifier: "AcquisitionTargetingRule" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.optional(__S(5696, __c178, 0)),
+          oncePerUser: S.optional(S.Boolean),
+          billingPeriodDuration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpgradeTargetingRule" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          acquisitionRule: S.optional(__S(5697, __c178, 1)),
+          upgradeRule: S.optional(__S(5698, __c178, 2)),
+        }),
+      ).annotate({
+        identifier: "SubscriptionOfferTargeting",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          free: S.optional(__S(3392, __c106, 0)),
+          relativeDiscount: S.optional(S.Number),
+          price: S.optional(__S(4512, __c141, 0)),
+          regionCode: S.optional(S.String),
+          absoluteDiscount: S.optional(__S(4512, __c141, 0)),
+        }),
+      ).annotate({
+        identifier: "RegionalSubscriptionOfferPhaseConfig",
+      });
+    case 5:
+      return S.Array(__S(5700, __c178, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          free: S.optional(__S(3392, __c106, 0)),
+          otherRegionsPrices: S.optional(__S(5664, __c177, 0)),
+          absoluteDiscounts: S.optional(__S(5664, __c177, 0)),
+          relativeDiscount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "OtherRegionsSubscriptionOfferPhaseConfig",
+      });
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          recurrenceCount: S.optional(S.Number),
+          regionalConfigs: S.optional(__S(5701, __c178, 5)),
+          otherRegionsConfig: S.optional(__S(5702, __c178, 6)),
+          duration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubscriptionOfferPhase" });
+    case 8:
+      return S.Array(__S(5703, __c178, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          otherRegionsNewSubscriberAvailability: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "OtherRegionsSubscriptionOfferConfig",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          regionCode: S.optional(S.String),
+          newSubscriberAvailability: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "RegionalSubscriptionOfferConfig",
+      });
+    case 11:
+      return S.Array(__S(5706, __c178, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          targeting: S.optional(__S(5699, __c178, 3)),
+          phases: S.optional(__S(5704, __c178, 8)),
+          productId: S.optional(S.String),
+          offerTags: S.optional(__S(4545, __c142, 1)),
+          offerId: S.optional(S.String),
+          state: S.optional(S.String),
+          packageName: S.optional(S.String),
+          basePlanId: S.optional(S.String),
+          otherRegionsConfig: S.optional(__S(5705, __c178, 9)),
+          regionalConfigs: S.optional(__S(5707, __c178, 11)),
+        }),
+      ).annotate({ identifier: "SubscriptionOffer" });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          basePlanId: S.optional(S.String),
+          productId: S.optional(S.String),
+          latencyTolerance: S.optional(S.String),
+          offerId: S.optional(S.String),
+          packageName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ActivateSubscriptionOfferRequest",
+      });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -11315,7 +13373,7 @@ function __c43(j: number): any {
       });
   }
 }
-function __c44(j: number): any {
+function __c181(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11330,7 +13388,11 @@ function __c44(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetInappproductsRequest" });
-    case 1:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -11345,7 +13407,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "GetMonetizationOnetimeproductsRequest",
       });
-    case 2:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -11360,7 +13426,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "GetMonetizationSubscriptionsRequest",
       });
-    case 3:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           basePlanId: S.String.pipe(T.Label()),
@@ -11377,7 +13447,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "GetMonetizationSubscriptionsBasePlansOffersRequest",
       });
-    case 4:
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -11390,7 +13464,11 @@ function __c44(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrdersRequest" });
-    case 5:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -11405,67 +13483,67 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "Getproductpurchasev2PurchasesProductsv2Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           purchaseState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PurchaseStateContext" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           preorderReleaseTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PreorderOfferDetails" });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           quantity: S.optional(S.Number),
-          preorderOfferDetails: S.optional(__S(359, __c44, 7)),
-          offerTags: S.optional(__S(28, __c3, 4)),
+          preorderOfferDetails: S.optional(__S(5954, __c186, 2)),
+          offerTags: S.optional(__S(5088, __c159, 0)),
           purchaseOptionId: S.optional(S.String),
-          rentOfferDetails: S.optional(__S(2, __c0, 2)),
+          rentOfferDetails: S.optional(__S(3392, __c106, 0)),
           consumptionState: S.optional(S.String),
           offerId: S.optional(S.String),
           refundableQuantity: S.optional(S.Number),
           offerToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductOfferDetails" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          productOfferDetails: S.optional(__S(360, __c45, 0)),
+          productOfferDetails: S.optional(__S(5955, __c186, 3)),
           productId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductLineItem" });
-    case 2:
-      return S.Array(__S(361, __c45, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(5956, __c186, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           fopType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TestPurchaseContext" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          purchaseStateContext: S.optional(__S(358, __c44, 6)),
+          purchaseStateContext: S.optional(__S(5953, __c186, 1)),
           kind: S.optional(S.String),
           purchaseCompletionTime: S.optional(S.String),
           acknowledgementState: S.optional(S.String),
           orderId: S.optional(S.String),
           regionCode: S.optional(S.String),
           obfuscatedExternalAccountId: S.optional(S.String),
-          productLineItem: S.optional(__S(362, __c45, 2)),
-          testPurchaseContext: S.optional(__S(363, __c45, 3)),
+          productLineItem: S.optional(__S(5957, __c186, 5)),
+          testPurchaseContext: S.optional(__S(5958, __c186, 6)),
           obfuscatedExternalProfileId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductPurchaseV2" });
-    case 5:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -11481,7 +13559,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetPurchasesProductsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String),
@@ -11501,7 +13579,11 @@ function __c45(j: number): any {
           acknowledgementState: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ProductPurchase" });
-    case 7:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -11516,11 +13598,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetPurchasesSubscriptionsv2Request",
       });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           obfuscatedExternalAccountId: S.optional(S.String),
@@ -11530,52 +13608,52 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ExternalAccountIdentifiers",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           reasonUserInput: S.optional(S.String),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "CancelSurveyResult" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          cancelSurveyResult: S.optional(__S(369, __c46, 1)),
+          cancelSurveyResult: S.optional(__S(6018, __c188, 2)),
           cancelTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UserInitiatedCancellation",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          systemInitiatedCancellation: S.optional(__S(2, __c0, 2)),
-          userInitiatedCancellation: S.optional(__S(370, __c46, 2)),
-          replacementCancellation: S.optional(__S(2, __c0, 2)),
-          developerInitiatedCancellation: S.optional(__S(2, __c0, 2)),
+          systemInitiatedCancellation: S.optional(__S(3392, __c106, 0)),
+          userInitiatedCancellation: S.optional(__S(6019, __c188, 3)),
+          replacementCancellation: S.optional(__S(3392, __c106, 0)),
+          developerInitiatedCancellation: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({ identifier: "CanceledStateContext" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           pendingOrderId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RenewalDeclinedContext" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          renewalDeclined: S.optional(__S(372, __c46, 4)),
+          renewalDeclined: S.optional(__S(6021, __c188, 5)),
         }),
       ).annotate({
         identifier: "InGracePeriodStateContext",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           allowExtendAfterTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrepaidPlan" });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           basePlanId: S.optional(S.String),
@@ -11584,11 +13662,7 @@ function __c46(j: number): any {
           replacementMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ItemReplacement" });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           originalOfferPhaseType: S.optional(S.String),
@@ -11596,46 +13670,46 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ProrationPeriodOfferPhase",
       });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          prorationPeriod: S.optional(__S(376, __c47, 0)),
-          basePrice: S.optional(__S(2, __c0, 2)),
-          freeTrial: S.optional(__S(2, __c0, 2)),
-          introductoryPrice: S.optional(__S(2, __c0, 2)),
+          prorationPeriod: S.optional(__S(6025, __c188, 9)),
+          basePrice: S.optional(__S(3392, __c106, 0)),
+          freeTrial: S.optional(__S(3392, __c106, 0)),
+          introductoryPrice: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({ identifier: "OfferPhase" });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           offerId: S.optional(S.String),
           basePlanId: S.optional(S.String),
-          offerTags: S.optional(__S(28, __c3, 4)),
+          offerTags: S.optional(__S(5088, __c159, 0)),
         }),
       ).annotate({ identifier: "OfferDetails" });
-    case 3:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           consentDeadlineTime: S.optional(S.String),
           state: S.optional(S.String),
-          newPrice: S.optional(__S(10, __c1, 2)),
+          newPrice: S.optional(__S(4512, __c141, 0)),
         }),
       ).annotate({
         identifier: "PriceStepUpConsentDetails",
       });
-    case 4:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           subsequentCommittedPaymentsCount: S.optional(S.Number),
           initialCommittedPaymentsCount: S.optional(S.Number),
-          pendingCancellation: S.optional(__S(2, __c0, 2)),
+          pendingCancellation: S.optional(__S(3392, __c106, 0)),
           remainingCommittedPaymentsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InstallmentPlan" });
-    case 5:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          newPrice: S.optional(__S(10, __c1, 2)),
+          newPrice: S.optional(__S(4512, __c141, 0)),
           priceChangeState: S.optional(S.String),
           priceChangeMode: S.optional(S.String),
           expectedNewPriceChargeTime: S.optional(S.String),
@@ -11643,60 +13717,56 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "SubscriptionItemPriceChangeDetails",
       });
-    case 6:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          recurringPrice: S.optional(__S(10, __c1, 2)),
-          priceStepUpConsentDetails: S.optional(__S(379, __c47, 3)),
-          installmentDetails: S.optional(__S(380, __c47, 4)),
+          recurringPrice: S.optional(__S(4512, __c141, 0)),
+          priceStepUpConsentDetails: S.optional(__S(6028, __c188, 12)),
+          installmentDetails: S.optional(__S(6029, __c188, 13)),
           autoRenewEnabled: S.optional(S.Boolean),
-          priceChangeDetails: S.optional(__S(381, __c47, 5)),
+          priceChangeDetails: S.optional(__S(6030, __c188, 14)),
         }),
       ).annotate({ identifier: "AutoRenewingPlan" });
-    case 7:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           promotionCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "VanityCode" });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          vanityCode: S.optional(__S(383, __c47, 7)),
-          oneTimeCode: S.optional(__S(2, __c0, 2)),
+          vanityCode: S.optional(__S(6032, __c188, 16)),
+          oneTimeCode: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({ identifier: "SignupPromotion" });
-    case 1:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeferredItemReplacement" });
-    case 2:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          prepaidPlan: S.optional(__S(374, __c46, 6)),
-          itemReplacement: S.optional(__S(375, __c46, 7)),
-          deferredItemRemoval: S.optional(__S(2, __c0, 2)),
+          prepaidPlan: S.optional(__S(6023, __c188, 7)),
+          itemReplacement: S.optional(__S(6024, __c188, 8)),
+          deferredItemRemoval: S.optional(__S(3392, __c106, 0)),
           expiryTime: S.optional(S.String),
-          offerPhase: S.optional(__S(377, __c47, 1)),
-          offerDetails: S.optional(__S(378, __c47, 2)),
-          autoRenewingPlan: S.optional(__S(382, __c47, 6)),
-          signupPromotion: S.optional(__S(384, __c48, 0)),
+          offerPhase: S.optional(__S(6026, __c188, 10)),
+          offerDetails: S.optional(__S(6027, __c188, 11)),
+          autoRenewingPlan: S.optional(__S(6031, __c188, 15)),
+          signupPromotion: S.optional(__S(6033, __c188, 17)),
           latestSuccessfulOrderId: S.optional(S.String),
-          deferredItemReplacement: S.optional(__S(385, __c48, 1)),
+          deferredItemReplacement: S.optional(__S(6034, __c188, 18)),
           productId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SubscriptionPurchaseLineItem",
       });
-    case 3:
-      return S.Array(__S(386, __c48, 2));
-    case 4:
+    case 20:
+      return S.Array(__S(6035, __c188, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           profileName: S.optional(S.String),
@@ -11706,43 +13776,43 @@ function __c48(j: number): any {
           givenName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscribeWithGoogleInfo" });
-    case 5:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           expiredPurchaseToken: S.optional(S.String),
-          expiredExternalAccountIdentifiers: S.optional(__S(368, __c46, 0)),
+          expiredExternalAccountIdentifiers: S.optional(__S(6017, __c188, 1)),
         }),
       ).annotate({ identifier: "OutOfAppPurchaseContext" });
-    case 6:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           autoResumeTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PausedStateContext" });
-    case 7:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          testPurchase: S.optional(__S(2, __c0, 2)),
-          externalAccountIdentifiers: S.optional(__S(368, __c46, 0)),
+          testPurchase: S.optional(__S(3392, __c106, 0)),
+          externalAccountIdentifiers: S.optional(__S(6017, __c188, 1)),
           subscriptionState: S.optional(S.String),
           kind: S.optional(S.String),
-          canceledStateContext: S.optional(__S(371, __c46, 3)),
-          inGracePeriodStateContext: S.optional(__S(373, __c46, 5)),
-          lineItems: S.optional(__S(387, __c48, 3)),
-          subscribeWithGoogleInfo: S.optional(__S(388, __c48, 4)),
-          onHoldStateContext: S.optional(__S(373, __c46, 5)),
+          canceledStateContext: S.optional(__S(6020, __c188, 4)),
+          inGracePeriodStateContext: S.optional(__S(6022, __c188, 6)),
+          lineItems: S.optional(__S(6036, __c188, 20)),
+          subscribeWithGoogleInfo: S.optional(__S(6037, __c188, 21)),
+          onHoldStateContext: S.optional(__S(6022, __c188, 6)),
           etag: S.optional(S.String),
           linkedPurchaseToken: S.optional(S.String),
           acknowledgementState: S.optional(S.String),
           regionCode: S.optional(S.String),
-          outOfAppPurchaseContext: S.optional(__S(389, __c48, 5)),
+          outOfAppPurchaseContext: S.optional(__S(6038, __c188, 22)),
           startTime: S.optional(S.String),
-          pausedStateContext: S.optional(__S(390, __c48, 6)),
+          pausedStateContext: S.optional(__S(6039, __c188, 23)),
         }),
       ).annotate({ identifier: "SubscriptionPurchaseV2" });
   }
 }
-function __c49(j: number): any {
+function __c189(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11758,21 +13828,18 @@ function __c49(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetReviewsRequest" });
-    case 1:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          seconds: S.optional(S.String),
-          nanos: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Timestamp" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lastModified: S.optional(__S(393, __c49, 1)),
+          lastModified: S.optional(__S(6112, __c191, 0)),
           text: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeveloperComment" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cpuMake: S.optional(S.String),
@@ -11788,13 +13855,13 @@ function __c49(j: number): any {
           screenWidthPx: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DeviceMetadata" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           device: S.optional(S.String),
           androidOsVersion: S.optional(S.Number),
           appVersionCode: S.optional(S.Number),
-          lastModified: S.optional(__S(393, __c49, 1)),
+          lastModified: S.optional(__S(6112, __c191, 0)),
           originalText: S.optional(S.String),
           appVersionName: S.optional(S.String),
           text: S.optional(S.String),
@@ -11802,29 +13869,101 @@ function __c49(j: number): any {
           thumbsDownCount: S.optional(S.Number),
           reviewerLanguage: S.optional(S.String),
           thumbsUpCount: S.optional(S.Number),
-          deviceMetadata: S.optional(__S(395, __c49, 3)),
+          deviceMetadata: S.optional(__S(6081, __c190, 1)),
         }),
       ).annotate({ identifier: "UserComment" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          developerComment: S.optional(__S(394, __c49, 2)),
-          userComment: S.optional(__S(396, __c49, 4)),
+          developerComment: S.optional(__S(6080, __c190, 0)),
+          userComment: S.optional(__S(6082, __c190, 2)),
         }),
       ).annotate({ identifier: "Comment" });
-    case 6:
-      return S.Array(__S(397, __c49, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(6083, __c190, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           authorName: S.optional(S.String),
           reviewId: S.optional(S.String),
-          comments: S.optional(__S(398, __c49, 6)),
+          comments: S.optional(__S(6084, __c190, 4)),
         }),
       ).annotate({ identifier: "Review" });
   }
 }
-function __c50(j: number): any {
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          seconds: S.optional(S.String),
+          nanos: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Timestamp" });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nativeCodes: S.optional(__S(5088, __c159, 0)),
+          fileSha256Base64: S.optional(S.String),
+          minimumSdk: S.optional(S.Number),
+          externallyHostedUrl: S.optional(S.String),
+          versionName: S.optional(S.String),
+          fileSize: S.optional(S.String),
+          fileSha1Base64: S.optional(S.String),
+          usesPermissions: S.optional(__S(6177, __c193, 1)),
+          iconBase64: S.optional(S.String),
+          certificateBase64s: S.optional(__S(5088, __c159, 0)),
+          packageName: S.optional(S.String),
+          applicationLabel: S.optional(S.String),
+          maximumSdk: S.optional(S.Number),
+          versionCode: S.optional(S.Number),
+          usesFeatures: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({ identifier: "ExternallyHostedApk" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          externallyHostedApk: S.optional(__S(6144, __c192, 0)),
+        }),
+      ).annotate({
+        identifier: "ApksAddExternallyHostedRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          editId: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+          body: S.optional(__S(6145, __c192, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/externallyHosted",
+            baseUrl: "https://androidpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddexternallyhostedEditsApksRequest",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          maxSdkVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "UsesPermission" });
+    case 1:
+      return S.Array(__S(6176, __c193, 0));
+  }
+}
+function __c194(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11842,11 +13981,15 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetSystemapksVariantsRequest",
       });
-    case 1:
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(202, __c25, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(3200, __c100, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11855,12 +13998,16 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertEditsRequest" });
-    case 2:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
           autoConvertMissingPrices: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2052, __c64, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11871,7 +14018,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "InsertInappproductsRequest",
       });
-    case 3:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -11887,18 +14038,22 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ListApplicationsDeviceTierConfigsRequest",
       });
-    case 4:
-      return S.Array(__S(225, __c28, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(3344, __c104, 16));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          deviceTierConfigs: S.optional(__S(404, __c50, 4)),
+          deviceTierConfigs: S.optional(__S(6305, __c197, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDeviceTierConfigsResponse",
       });
-    case 6:
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -11912,38 +14067,38 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ListApplicationsTracksReleasesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           versionCode: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ArtifactSummary" });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(407, __c50, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(6337, __c198, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           releaseLifecycleState: S.optional(S.String),
           releaseName: S.optional(S.String),
-          activeArtifacts: S.optional(__S(408, __c51, 0)),
+          activeArtifacts: S.optional(__S(6338, __c198, 2)),
           track: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReleaseSummary" });
-    case 2:
-      return S.Array(__S(409, __c51, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(6339, __c198, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          releases: S.optional(__S(410, __c51, 2)),
+          releases: S.optional(__S(6340, __c198, 4)),
         }),
       ).annotate({
         identifier: "ListReleaseSummariesResponse",
       });
-    case 4:
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           versionCode: S.optional(S.String.pipe(T.Query())),
@@ -11956,17 +14111,21 @@ function __c51(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListApprecoveryRequest" });
-    case 5:
-      return S.Array(__S(236, __c29, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(3462, __c108, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          recoveryActions: S.optional(__S(413, __c51, 5)),
+          recoveryActions: S.optional(__S(6369, __c199, 1)),
         }),
       ).annotate({
         identifier: "ListAppRecoveriesResponse",
       });
-    case 7:
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11984,11 +14143,7 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ListAppstorecatalogRecentupdateeventsRequest",
       });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           eventTime: S.optional(S.String),
@@ -11996,18 +14151,22 @@ function __c52(j: number): any {
           updateType: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecentUpdateEvent" });
-    case 1:
-      return S.Array(__S(416, __c52, 0));
     case 2:
+      return S.Array(__S(6401, __c200, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          recentUpdateEvents: S.optional(__S(417, __c52, 1)),
+          recentUpdateEvents: S.optional(__S(6402, __c200, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListRecentUpdateEventsResponse",
       });
-    case 3:
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -12020,32 +14179,36 @@ function __c52(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListEditsApksRequest" });
-    case 4:
+    case 1:
+      return S.Array(__S(6465, __c202, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          apks: S.optional(__S(6433, __c201, 1)),
+        }),
+      ).annotate({ identifier: "ApksListResponse" });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sha256: S.optional(S.String),
           sha1: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApkBinary" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           versionCode: S.optional(S.Number),
-          binary: S.optional(__S(420, __c52, 4)),
+          binary: S.optional(__S(6464, __c202, 0)),
         }),
       ).annotate({ identifier: "Apk" });
-    case 6:
-      return S.Array(__S(421, __c52, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          apks: S.optional(__S(422, __c52, 6)),
-        }),
-      ).annotate({ identifier: "ApksListResponse" });
   }
 }
-function __c53(j: number): any {
+function __c203(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12061,6 +14224,19 @@ function __c53(j: number): any {
         ),
       ).annotate({ identifier: "ListEditsBundlesRequest" });
     case 1:
+      return S.Array(__S(6528, __c204, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          bundles: S.optional(__S(6497, __c203, 1)),
+        }),
+      ).annotate({ identifier: "BundlesListResponse" });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sha1: S.optional(S.String),
@@ -12068,16 +14244,11 @@ function __c53(j: number): any {
           sha256: S.optional(S.String),
         }),
       ).annotate({ identifier: "Bundle" });
-    case 2:
-      return S.Array(__S(425, __c53, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          bundles: S.optional(__S(426, __c53, 2)),
-        }),
-      ).annotate({ identifier: "BundlesListResponse" });
-    case 4:
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
@@ -12092,1654 +14263,14 @@ function __c53(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListEditsImagesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          images: S.optional(__S(285, __c35, 5)),
+          images: S.optional(__S(4192, __c131, 0)),
         }),
       ).annotate({ identifier: "ImagesListResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListEditsListingsRequest" });
-    case 7:
-      return S.Array(__S(347, __c43, 3));
   }
 }
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          listings: S.optional(__S(431, __c53, 7)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListingsListResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListEditsTracksRequest" });
-    case 2:
-      return S.Array(__S(247, __c30, 7));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          tracks: S.optional(__S(434, __c54, 2)),
-        }),
-      ).annotate({ identifier: "TracksListResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          versionCode: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "androidpublisher/v3/applications/{packageName}/generatedApks/{versionCode}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListGeneratedapksRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          splitId: S.optional(S.String),
-          downloadId: S.optional(S.String),
-          variantId: S.optional(S.Number),
-          moduleName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GeneratedSplitApk" });
-    case 6:
-      return S.Array(__S(437, __c54, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          variantId: S.optional(S.Number),
-          downloadId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GeneratedStandaloneApk" });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(439, __c54, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sliceId: S.optional(S.String),
-          moduleName: S.optional(S.String),
-          version: S.optional(S.String),
-          downloadId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GeneratedAssetPackSlice" });
-    case 2:
-      return S.Array(__S(441, __c55, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          moduleName: S.optional(S.String),
-          downloadId: S.optional(S.String),
-          recoveryId: S.optional(S.String),
-          recoveryStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GeneratedRecoveryApk" });
-    case 4:
-      return S.Array(__S(443, __c55, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          deliveryType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssetModuleMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          splitId: S.optional(S.String),
-          isMasterSplit: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SplitApkMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TextureCompressionFormat" });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(447, __c55, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          alternatives: S.optional(__S(448, __c56, 0)),
-          value: S.optional(__S(448, __c56, 0)),
-        }),
-      ).annotate({
-        identifier: "TextureCompressionFormatTargeting",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(28, __c3, 4)),
-          alternatives: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "LanguageTargeting" });
-    case 3:
-      return S.Array(__S(447, __c55, 7));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          alternatives: S.optional(__S(451, __c56, 3)),
-          value: S.optional(__S(451, __c56, 3)),
-        }),
-      ).annotate({ identifier: "AbiTargeting" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          densityAlias: S.optional(S.String),
-          densityDpi: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ScreenDensity" });
-    case 6:
-      return S.Array(__S(453, __c56, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          alternatives: S.optional(__S(454, __c56, 6)),
-          value: S.optional(__S(454, __c56, 6)),
-        }),
-      ).annotate({ identifier: "ScreenDensityTargeting" });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          min: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SdkVersion" });
-    case 1:
-      return S.Array(__S(456, __c57, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(457, __c57, 1)),
-          alternatives: S.optional(__S(457, __c57, 1)),
-        }),
-      ).annotate({ identifier: "SdkVersionTargeting" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          abi: S.optional(__S(451, __c56, 3)),
-        }),
-      ).annotate({ identifier: "MultiAbi" });
-    case 4:
-      return S.Array(__S(459, __c57, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          alternatives: S.optional(__S(460, __c57, 4)),
-          value: S.optional(__S(460, __c57, 4)),
-        }),
-      ).annotate({ identifier: "MultiAbiTargeting" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          textureCompressionFormatTargeting: S.optional(__S(449, __c56, 1)),
-          languageTargeting: S.optional(__S(450, __c56, 2)),
-          abiTargeting: S.optional(__S(452, __c56, 4)),
-          screenDensityTargeting: S.optional(__S(455, __c56, 7)),
-          sdkVersionTargeting: S.optional(__S(458, __c57, 2)),
-          multiAbiTargeting: S.optional(__S(461, __c57, 5)),
-        }),
-      ).annotate({ identifier: "ApkTargeting" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fusedModuleName: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "StandaloneApkMetadata" });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          instantApkMetadata: S.optional(__S(446, __c55, 6)),
-          targeting: S.optional(__S(462, __c57, 6)),
-          standaloneApkMetadata: S.optional(__S(463, __c57, 7)),
-          path: S.optional(S.String),
-          assetSliceMetadata: S.optional(__S(446, __c55, 6)),
-          splitApkMetadata: S.optional(__S(446, __c55, 6)),
-        }),
-      ).annotate({ identifier: "ApkDescription" });
-    case 1:
-      return S.Array(__S(464, __c58, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          assetModuleMetadata: S.optional(__S(445, __c55, 5)),
-          apkDescription: S.optional(__S(465, __c58, 1)),
-        }),
-      ).annotate({ identifier: "AssetSliceSet" });
-    case 3:
-      return S.Array(__S(466, __c58, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          exclude: S.optional(S.Boolean),
-          countryCodes: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "UserCountriesTargeting" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          featureName: S.optional(S.String),
-          featureVersion: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DeviceFeature" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          requiredFeature: S.optional(__S(469, __c58, 5)),
-        }),
-      ).annotate({ identifier: "DeviceFeatureTargeting" });
-    case 7:
-      return S.Array(__S(470, __c58, 6));
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sdkVersionTargeting: S.optional(__S(458, __c57, 2)),
-          userCountriesTargeting: S.optional(__S(468, __c58, 4)),
-          deviceFeatureTargeting: S.optional(__S(471, __c58, 7)),
-        }),
-      ).annotate({ identifier: "ModuleTargeting" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          moduleType: S.optional(S.String),
-          name: S.optional(S.String),
-          dependencies: S.optional(__S(28, __c3, 4)),
-          targeting: S.optional(__S(472, __c59, 0)),
-          deliveryType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ModuleMetadata" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          moduleMetadata: S.optional(__S(473, __c59, 1)),
-          apkDescription: S.optional(__S(465, __c58, 1)),
-        }),
-      ).annotate({ identifier: "ApkSet" });
-    case 3:
-      return S.Array(__S(474, __c59, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sdkVersionTargeting: S.optional(__S(458, __c57, 2)),
-          textureCompressionFormatTargeting: S.optional(__S(449, __c56, 1)),
-          screenDensityTargeting: S.optional(__S(455, __c56, 7)),
-          abiTargeting: S.optional(__S(452, __c56, 4)),
-          multiAbiTargeting: S.optional(__S(461, __c57, 5)),
-        }),
-      ).annotate({ identifier: "VariantTargeting" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apkSet: S.optional(__S(475, __c59, 3)),
-          targeting: S.optional(__S(476, __c59, 4)),
-          variantNumber: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SplitApkVariant" });
-    case 6:
-      return S.Array(__S(477, __c59, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.optional(S.String),
-          assetSliceSet: S.optional(__S(467, __c58, 3)),
-          variant: S.optional(__S(478, __c59, 6)),
-        }),
-      ).annotate({ identifier: "TargetingInfo" });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          downloadId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GeneratedUniversalApk" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          generatedSplitApks: S.optional(__S(438, __c54, 6)),
-          unprotectedGeneratedStandaloneApks: S.optional(__S(440, __c55, 0)),
-          generatedStandaloneApks: S.optional(__S(440, __c55, 0)),
-          generatedAssetPackSlices: S.optional(__S(442, __c55, 2)),
-          generatedRecoveryModules: S.optional(__S(444, __c55, 4)),
-          targetingInfo: S.optional(__S(479, __c59, 7)),
-          certificateSha256Hash: S.optional(S.String),
-          generatedUniversalApk: S.optional(__S(480, __c60, 0)),
-          unprotectedGeneratedSplitApks: S.optional(__S(438, __c54, 6)),
-        }),
-      ).annotate({
-        identifier: "GeneratedApksPerSigningKey",
-      });
-    case 2:
-      return S.Array(__S(481, __c60, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          generatedApks: S.optional(__S(482, __c60, 2)),
-        }),
-      ).annotate({
-        identifier: "GeneratedApksListResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          startIndex: S.optional(S.Number.pipe(T.Query())),
-          token: S.optional(S.String.pipe(T.Query())),
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "androidpublisher/v3/applications/{packageName}/inappproducts",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListInappproductsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          previousPageToken: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TokenPagination" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resultPerPage: S.optional(S.Number),
-          totalResults: S.optional(S.Number),
-          startIndex: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PageInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          inappproduct: S.optional(__S(91, __c11, 3)),
-          kind: S.optional(S.String),
-          tokenPagination: S.optional(__S(485, __c60, 5)),
-          pageInfo: S.optional(__S(486, __c60, 6)),
-        }),
-      ).annotate({
-        identifier: "InappproductsListResponse",
-      });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListMonetizationOnetimeproductsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          oneTimeProducts: S.optional(__S(108, __c13, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListOneTimeProductsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.String.pipe(T.Label()),
-          purchaseOptionId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          packageName: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          oneTimeProductOffers: S.optional(__S(114, __c14, 2)),
-        }),
-      ).annotate({
-        identifier: "ListOneTimeProductOffersResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          showArchived: S.optional(S.Boolean.pipe(T.Query())),
-          packageName: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "androidpublisher/v3/applications/{packageName}/subscriptions",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListMonetizationSubscriptionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptions: S.optional(__S(117, __c14, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListSubscriptionsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          basePlanId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListMonetizationSubscriptionsBasePlansOffersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionOffers: S.optional(__S(123, __c15, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListSubscriptionOffersResponse",
-      });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          includeQuantityBasedPartialRefund: S.optional(S.Boolean.pipe(T.Query())),
-          startTime: S.optional(S.String.pipe(T.Query())),
-          startIndex: S.optional(S.Number.pipe(T.Query())),
-          token: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.Number.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "androidpublisher/v3/applications/{packageName}/purchases/voidedpurchases",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPurchasesVoidedpurchasesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          purchaseTimeMillis: S.optional(S.String),
-          voidedQuantity: S.optional(S.Number),
-          voidedReason: S.optional(S.Number),
-          orderId: S.optional(S.String),
-          voidedSource: S.optional(S.Number),
-          purchaseToken: S.optional(S.String),
-          voidedTimeMillis: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VoidedPurchase" });
-    case 2:
-      return S.Array(__S(497, __c62, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageInfo: S.optional(__S(486, __c60, 6)),
-          voidedPurchases: S.optional(__S(498, __c62, 2)),
-          tokenPagination: S.optional(__S(485, __c60, 5)),
-        }),
-      ).annotate({
-        identifier: "VoidedPurchasesListResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          token: S.optional(S.String.pipe(T.Query())),
-          translationLanguage: S.optional(S.String.pipe(T.Query())),
-          startIndex: S.optional(S.Number.pipe(T.Query())),
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "androidpublisher/v3/applications/{packageName}/reviews",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListReviewsRequest" });
-    case 5:
-      return S.Array(__S(399, __c49, 7));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reviews: S.optional(__S(501, __c62, 5)),
-          pageInfo: S.optional(__S(486, __c60, 6)),
-          tokenPagination: S.optional(__S(485, __c60, 5)),
-        }),
-      ).annotate({ identifier: "ReviewsListResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          versionCode: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSystemapksVariantsRequest",
-      });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(263, __c32, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          variants: S.optional(__S(504, __c63, 0)),
-        }),
-      ).annotate({ identifier: "SystemApksListResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "androidpublisher/v3/{+parent}/users",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListUsersRequest" });
-    case 3:
-      return S.Array(__S(266, __c33, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          users: S.optional(__S(507, __c63, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListUsersResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          basePlanId: S.String.pipe(T.Label()),
-          body: S.optional(__S(146, __c18, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}:migratePrices",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "MigratePricesMonetizationSubscriptionsBasePlansRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-          body: S.optional(__S(343, __c42, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchEditsDetailsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          expansionFileType: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          apkVersionCode: S.Number.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-          body: S.optional(__S(345, __c43, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchEditsExpansionfilesRequest",
-      });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-          language: S.String.pipe(T.Label()),
-          body: S.optional(__S(347, __c43, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchEditsListingsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          editId: S.String.pipe(T.Label()),
-          track: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(349, __c43, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchEditsTestersRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          track: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(247, __c30, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchEditsTracksRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(257, __c32, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "androidpublisher/v3/{+name}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchGrantsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          sku: S.String.pipe(T.Label()),
-          autoConvertMissingPrices: S.optional(S.Boolean.pipe(T.Query())),
-          latencyTolerance: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchInappproductsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          packageName: S.String.pipe(T.Label()),
-          latencyTolerance: S.optional(S.String.pipe(T.Query())),
-          productId: S.String.pipe(T.Label()),
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(107, __c13, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "androidpublisher/v3/applications/{packageName}/onetimeproducts/{productId}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchMonetizationOnetimeproductsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          latencyTolerance: S.optional(S.String.pipe(T.Query())),
-          "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
-          productId: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchMonetizationSubscriptionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          productId: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          basePlanId: S.String.pipe(T.Label()),
-          latencyTolerance: S.optional(S.String.pipe(T.Query())),
-          packageName: S.String.pipe(T.Label()),
-          offerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(53, __c6, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchMonetizationSubscriptionsBasePlansOffersRequest",
-      });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(266, __c33, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "androidpublisher/v3/{+name}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchUsersRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          refundId: S.optional(S.String),
-          refundPreTaxAmount: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "PartialRefund" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          refundTime: S.optional(S.String),
-          partialRefund: S.optional(__S(521, __c65, 1)),
-          fullRefund: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "RefundExternalTransactionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(522, __c65, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/{+name}:refund",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RefundexternaltransactionExternaltransactionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          orderId: S.String.pipe(T.Label()),
-          revoke: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/orders/{orderId}:refund",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "RefundOrdersRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          replyText: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReviewsReplyRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          reviewId: S.String.pipe(T.Label()),
-          body: S.optional(__S(525, __c65, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/reviews/{reviewId}:reply",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ReplyReviewsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          replyText: S.optional(S.String),
-          lastEdited: S.optional(__S(393, __c49, 1)),
-        }),
-      ).annotate({ identifier: "ReviewReplyResult" });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          result: S.optional(__S(527, __c65, 7)),
-        }),
-      ).annotate({ identifier: "ReviewsReplyResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          administrativeArea: S.optional(S.String),
-          regionCode: S.optional(S.String),
-          locality: S.optional(S.String),
-          sublocality: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CoarseLocation" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(__S(529, __c66, 1)),
-          consumptionTime: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          obfuscatedAccountId: S.optional(S.String),
-          obfuscatedProfileId: S.optional(S.String),
-          consumptionItemDescription: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConsumptionUsageEvent" });
-    case 3:
-      return S.Array(__S(530, __c66, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pendingRefundToken: S.optional(S.String),
-          refundPreference: S.optional(S.String),
-          consumptionUsageEvents: S.optional(__S(531, __c66, 3)),
-          sampleContentProvided: S.optional(S.Boolean),
-          consumptionPercentageMilliunits: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "OrdersReviewRefundRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          orderId: S.String.pipe(T.Label()),
-          body: S.optional(__S(532, __c66, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/orders/{orderId}:reviewrefund",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReviewrefundOrdersRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RevocationContextItemBasedRefund",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fullRefund: S.optional(__S(2, __c0, 2)),
-          proratedRefund: S.optional(__S(2, __c0, 2)),
-          itemBasedRefund: S.optional(__S(534, __c66, 6)),
-        }),
-      ).annotate({ identifier: "RevocationContext" });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          revocationContext: S.optional(__S(535, __c66, 7)),
-        }),
-      ).annotate({
-        identifier: "RevokeSubscriptionPurchaseRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(536, __c67, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:revoke",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RevokePurchasesSubscriptionsv2Request",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          signingCertificateLineage: S.optional(S.String),
-          cloudKmsKeyAndCert: S.optional(__S(302, __c37, 6)),
-        }),
-      ).annotate({ identifier: "RotatedCloudKmsKey" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rotatedCloudKmsKey: S.optional(__S(538, __c67, 2)),
-          keyRotationReason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RotateAppSigningKeyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(539, __c67, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{name}/appSigning:rotateAppSigningKey",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RotateAppSigningKeyAppsigningRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          rotatedKeyCertificate: S.optional(__S(307, __c38, 3)),
-        }),
-      ).annotate({
-        identifier: "RotateAppSigningKeyResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          screenshotId: S.optional(__S(28, __c3, 4)),
-          appIconId: S.optional(S.String),
-          appName: S.optional(S.String),
-          videoLink: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          shortDescription: S.optional(S.String),
-          fullDescription: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppStoreAppStoreListing" });
-    case 7:
-      return S.Array(__S(542, __c67, 6));
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          documentId: S.optional(S.String),
-          nonExpiring: S.optional(S.Boolean),
-          expiryDate: S.optional(__S(334, __c41, 6)),
-        }),
-      ).annotate({ identifier: "PolicyDocumentResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PolicyStringResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PolicyBooleanResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PolicySingleChoiceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "PolicyMultipleChoiceResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          stringResponse: S.optional(__S(545, __c68, 1)),
-          documentResponse: S.optional(__S(544, __c68, 0)),
-          booleanResponse: S.optional(__S(546, __c68, 2)),
-          singleChoiceResponse: S.optional(__S(547, __c68, 3)),
-          questionId: S.optional(S.String),
-          multipleChoiceResponse: S.optional(__S(548, __c68, 4)),
-        }),
-      ).annotate({ identifier: "NestedPolicyResponse" });
-    case 6:
-      return S.Array(__S(549, __c68, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          responses: S.optional(__S(550, __c68, 6)),
-        }),
-      ).annotate({ identifier: "Group" });
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(551, __c68, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groups: S.optional(__S(552, __c69, 0)),
-        }),
-      ).annotate({ identifier: "PolicyGroupResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          responses: S.optional(__S(550, __c68, 6)),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyedGroup" });
-    case 3:
-      return S.Array(__S(554, __c69, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groups: S.optional(__S(555, __c69, 3)),
-        }),
-      ).annotate({ identifier: "PolicyKeyedGroupResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          questionId: S.optional(S.String),
-          documentResponse: S.optional(__S(544, __c68, 0)),
-          groupResponse: S.optional(__S(553, __c69, 1)),
-          multipleChoiceResponse: S.optional(__S(548, __c68, 4)),
-          booleanResponse: S.optional(__S(546, __c68, 2)),
-          singleChoiceResponse: S.optional(__S(547, __c68, 3)),
-          keyedGroupResponse: S.optional(__S(556, __c69, 4)),
-          stringResponse: S.optional(__S(545, __c68, 1)),
-        }),
-      ).annotate({ identifier: "PolicyResponse" });
-    case 6:
-      return S.Array(__S(557, __c69, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          declarationId: S.optional(S.String),
-          responses: S.optional(__S(558, __c69, 6)),
-        }),
-      ).annotate({
-        identifier: "AppStoreAppPolicyDeclaration",
-      });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(559, __c69, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          developerWebsite: S.optional(S.String),
-          contactEmail: S.optional(S.String),
-          developerName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppStoreAppDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          splitApkId: S.optional(__S(28, __c3, 4)),
-          baseApkId: S.optional(S.String),
-          alreadyPublishedOnPlay: S.optional(S.Boolean),
-          versionCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppStoreAppActiveApkSet" });
-    case 3:
-      return S.Array(__S(562, __c70, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          activeApkSets: S.optional(__S(563, __c70, 3)),
-        }),
-      ).annotate({ identifier: "AppStoreAppActiveApks" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          activeLocalizedStoreListings: S.optional(__S(543, __c67, 7)),
-          packageName: S.optional(S.String),
-          policyDeclarations: S.optional(__S(560, __c70, 0)),
-          appDetails: S.optional(__S(561, __c70, 1)),
-          activeApks: S.optional(__S(564, __c70, 4)),
-        }),
-      ).annotate({
-        identifier: "UpdateAppStoreHostedAppRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          appStorePackageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(565, __c70, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps:update",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateappstorehostedappAppstoreappsreviewRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateAppStoreHostedAppResponse",
-      });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          publishState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateAppStoreHostedAppPublishStatusRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          appStorePackageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(568, __c71, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}:updateAppStoreHostedAppPublishStatus",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-          body: S.optional(__S(343, __c42, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/details",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateEditsDetailsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-          expansionFileType: S.String.pipe(T.Label()),
-          apkVersionCode: S.Number.pipe(T.Label()),
-          body: S.optional(__S(345, __c43, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateEditsExpansionfilesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          language: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-          body: S.optional(__S(347, __c43, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateEditsListingsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          track: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-          body: S.optional(__S(349, __c43, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/testers/{track}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateEditsTestersRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-          track: S.String.pipe(T.Label()),
-          body: S.optional(__S(247, __c30, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/tracks/{track}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateEditsTracksRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          latencyTolerance: S.optional(S.String.pipe(T.Query())),
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          sku: S.String.pipe(T.Label()),
-          autoConvertMissingPrices: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "androidpublisher/v3/applications/{packageName}/inappproducts/{sku}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateInappproductsRequest",
-      });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          appStorePackageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/apks:upload",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadapkAppstoreappsreviewRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apkId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UploadApkResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/apk",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadapkInternalappsharingartifactsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sha256: S.optional(S.String),
-          certificateFingerprint: S.optional(S.String),
-          downloadUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InternalAppSharingArtifact",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fileType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UploadAppStoreAppPolicyDeclarationFileRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          appStorePackageName: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(580, __c72, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/policyDeclarationFiles:upload",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fileId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UploadAppStoreAppPolicyDeclarationFileResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/internalappsharing/{packageName}/artifacts/bundle",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadbundleInternalappsharingartifactsRequest",
-      });
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          editId: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UploadEditsApksRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ackBundleInstallationWarning: S.optional(S.Boolean.pipe(T.Query())),
-          deviceTierConfigId: S.optional(S.String.pipe(T.Query())),
-          packageName: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadEditsBundlesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deobfuscationFileType: S.String.pipe(T.Label()),
-          apkVersionCode: S.Number.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadEditsDeobfuscationfilesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          symbolType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeobfuscationFile" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deobfuscationFile: S.optional(__S(587, __c73, 3)),
-        }),
-      ).annotate({
-        identifier: "DeobfuscationFilesUploadResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apkVersionCode: S.Number.pipe(T.Label()),
-          expansionFileType: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/apks/{apkVersionCode}/expansionFiles/{expansionFileType}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadEditsExpansionfilesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          expansionFile: S.optional(__S(345, __c43, 1)),
-        }),
-      ).annotate({
-        identifier: "ExpansionFilesUploadResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          language: S.String.pipe(T.Label()),
-          imageType: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          aiGeneratedState: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}/listings/{language}/{imageType}",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UploadEditsImagesRequest" });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(__S(284, __c35, 4)),
-        }),
-      ).annotate({ identifier: "ImagesUploadResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          appStorePackageName: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/images:upload",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadimageAppstoreappsreviewRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          imageId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UploadImageResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.String.pipe(T.Label()),
-          editId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidpublisher/v3/applications/{packageName}/edits/{editId}:validate",
-            baseUrl: "https://androidpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ValidateEditsRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

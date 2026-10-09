@@ -335,8 +335,8 @@ export const addProjectServicesTenancyUnits: API.OperationMethod<
   AddProjectServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AddProjectServicesTenancyUnitsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(81, __c10, 1) as any as S.Schema<AddProjectServicesTenancyUnitsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -355,8 +355,8 @@ export const applyProjectConfigServicesTenancyUnits: API.OperationMethod<
   ApplyProjectConfigServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ApplyProjectConfigServicesTenancyUnitsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(113, __c14, 1) as any as S.Schema<ApplyProjectConfigServicesTenancyUnitsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -375,8 +375,8 @@ export const attachProjectServicesTenancyUnits: API.OperationMethod<
   AttachProjectServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<AttachProjectServicesTenancyUnitsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(121, __c15, 1) as any as S.Schema<AttachProjectServicesTenancyUnitsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -390,8 +390,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CancelOperationsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Empty>,
+  input: __S(128, __c16, 0) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -410,8 +410,8 @@ export const createServicesTenancyUnits: API.OperationMethod<
   CreateServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateServicesTenancyUnitsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<TenancyUnit>,
+  input: __S(145, __c18, 1) as any as S.Schema<CreateServicesTenancyUnitsRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<TenancyUnit>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -425,8 +425,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteOperationsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Empty>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteOperationsRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -445,8 +445,8 @@ export const deleteProjectServicesTenancyUnits: API.OperationMethod<
   DeleteProjectServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteProjectServicesTenancyUnitsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectServicesTenancyUnitsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -465,8 +465,8 @@ export const deleteServicesTenancyUnits: API.OperationMethod<
   DeleteServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteServicesTenancyUnitsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteServicesTenancyUnitsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -480,8 +480,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetOperationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -496,8 +496,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ListOperationsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -513,8 +513,8 @@ export const listServicesTenancyUnits: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTenancyUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListServicesTenancyUnitsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListTenancyUnitsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListServicesTenancyUnitsRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<ListTenancyUnitsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -534,8 +534,8 @@ export const removeProjectServicesTenancyUnits: API.OperationMethod<
   RemoveProjectServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<RemoveProjectServicesTenancyUnitsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(56, __c7, 0) as any as S.Schema<RemoveProjectServicesTenancyUnitsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -550,8 +550,8 @@ export const searchServices: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchTenancyUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<SearchServicesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<SearchTenancyUnitsResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<SearchServicesRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<SearchTenancyUnitsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -571,8 +571,8 @@ export const undeleteProjectServicesTenancyUnits: API.OperationMethod<
   UndeleteProjectServicesTenancyUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<UndeleteProjectServicesTenancyUnitsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(72, __c9, 0) as any as S.Schema<UndeleteProjectServicesTenancyUnitsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -582,238 +582,10 @@ export const undeleteProjectServicesTenancyUnits: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(S.String),
-          members: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "PolicyBinding" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          policyBindings: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "TenantProjectPolicy" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-          tenantProjectRoles: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ServiceAccountConfig" });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BillingConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tenantProjectPolicy: S.optional(__S(3, __c0, 3)),
-          folder: S.optional(S.String),
-          serviceAccountConfig: S.optional(__S(4, __c0, 4)),
-          labels: S.optional(__S(5, __c0, 5)),
-          services: S.optional(__S(0, __c0, 0)),
-          billingConfig: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "TenantProjectConfig" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tag: S.optional(S.String),
-          projectConfig: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "AddTenantProjectRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
           body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:addProject",
-            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddProjectServicesTenancyUnitsRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(11, __c1, 3)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(10, __c1, 2)),
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(10, __c1, 2)),
-          error: S.optional(__S(12, __c1, 4)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectConfig: S.optional(__S(7, __c0, 7)),
-          tag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplyTenantProjectConfigRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:applyProjectConfig",
-            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplyProjectConfigServicesTenancyUnitsRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tag: S.optional(S.String),
-          externalResource: S.optional(S.String),
-          reservedResource: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AttachTenantProjectRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:attachProject",
-            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AttachProjectServicesTenancyUnitsRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CancelOperationsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tenancyUnitId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateTenancyUnitRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/tenancyUnits",
-            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateServicesTenancyUnitsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sourceTenantProject: S.optional(S.String),
-          migratedTenantProject: S.optional(S.String),
-          tag: S.optional(S.String),
-          resource: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TenantResource" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          consumer: S.optional(S.String),
-          createTime: S.optional(S.String),
-          service: S.optional(S.String),
-          tenantResources: S.optional(__S(23, __c2, 7)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TenancyUnit" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteOperationsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeleteTenantProjectRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -824,7 +596,23 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteProjectServicesTenancyUnitsRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeleteTenantProjectRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -838,7 +626,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteServicesTenancyUnitsRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -850,7 +642,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOperationsRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -866,21 +662,21 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
-      return S.Array(__S(13, __c1, 5));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(107, __c13, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
-          operations: S.optional(__S(31, __c3, 7)),
+          unreachable: S.optional(__S(96, __c12, 0)),
+          operations: S.optional(__S(33, __c4, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -897,20 +693,28 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListServicesTenancyUnitsRequest",
       });
-    case 2:
-      return S.Array(__S(24, __c3, 0));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          tenancyUnits: S.optional(__S(34, __c4, 2)),
+          tenancyUnits: S.optional(__S(48, __c6, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTenancyUnitsResponse" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(154, __c19, 2));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -921,7 +725,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "RemoveProjectServicesTenancyUnitsRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -936,20 +744,24 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SearchServicesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          tenancyUnits: S.optional(__S(34, __c4, 2)),
+          tenancyUnits: S.optional(__S(48, __c6, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchTenancyUnitsResponse",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -962,7 +774,258 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tag: S.optional(S.String),
+          projectConfig: S.optional(__S(94, __c11, 6)),
+        }),
+      ).annotate({ identifier: "AddTenantProjectRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(80, __c10, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:addProject",
+            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddProjectServicesTenancyUnitsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          members: S.optional(__S(96, __c12, 0)),
+        }),
+      ).annotate({ identifier: "PolicyBinding" });
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          policyBindings: S.optional(__S(89, __c11, 1)),
+        }),
+      ).annotate({ identifier: "TenantProjectPolicy" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          tenantProjectRoles: S.optional(__S(96, __c12, 0)),
+        }),
+      ).annotate({ identifier: "ServiceAccountConfig" });
+    case 4:
+      return S.Record(S.String, S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BillingConfig" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          tenantProjectPolicy: S.optional(__S(90, __c11, 2)),
+          folder: S.optional(S.String),
+          serviceAccountConfig: S.optional(__S(91, __c11, 3)),
+          labels: S.optional(__S(92, __c11, 4)),
+          services: S.optional(__S(96, __c12, 0)),
+          billingConfig: S.optional(__S(93, __c11, 5)),
+        }),
+      ).annotate({ identifier: "TenantProjectConfig" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(104, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(105, __c13, 1)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(104, __c13, 0)),
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(104, __c13, 0)),
+          error: S.optional(__S(106, __c13, 2)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectConfig: S.optional(__S(94, __c11, 6)),
+          tag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplyTenantProjectConfigRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:applyProjectConfig",
+            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplyProjectConfigServicesTenancyUnitsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tag: S.optional(S.String),
+          externalResource: S.optional(S.String),
+          reservedResource: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AttachTenantProjectRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:attachProject",
+            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AttachProjectServicesTenancyUnitsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(136, __c17, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CancelOperationsRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenancyUnitId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateTenancyUnitRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(144, __c18, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/tenancyUnits",
+            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateServicesTenancyUnitsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceTenantProject: S.optional(S.String),
+          migratedTenantProject: S.optional(S.String),
+          tag: S.optional(S.String),
+          resource: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TenantResource" });
+    case 1:
+      return S.Array(__S(152, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          consumer: S.optional(S.String),
+          createTime: S.optional(S.String),
+          service: S.optional(S.String),
+          tenantResources: S.optional(__S(153, __c19, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TenancyUnit" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteOperationsRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

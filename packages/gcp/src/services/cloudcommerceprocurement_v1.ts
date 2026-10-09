@@ -339,8 +339,8 @@ export const approvePlanChangeProvidersEntitlements: API.OperationMethod<
   ApprovePlanChangeProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ApprovePlanChangeProvidersEntitlementsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(29, __c7, 1) as any as S.Schema<ApprovePlanChangeProvidersEntitlementsRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -359,8 +359,8 @@ export const approveProvidersAccounts: API.OperationMethod<
   ApproveProvidersAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ApproveProvidersAccountsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(37, __c9, 1) as any as S.Schema<ApproveProvidersAccountsRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -379,8 +379,8 @@ export const approveProvidersEntitlements: API.OperationMethod<
   ApproveProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ApproveProvidersEntitlementsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(45, __c11, 1) as any as S.Schema<ApproveProvidersEntitlementsRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -394,8 +394,8 @@ export const getProvidersAccounts: API.OperationMethod<
   GetProvidersAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetProvidersAccountsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Account>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetProvidersAccountsRequest>,
+  output: __S(58, __c14, 2) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -409,8 +409,8 @@ export const getProvidersEntitlements: API.OperationMethod<
   GetProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetProvidersEntitlementsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Entitlement>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetProvidersEntitlementsRequest>,
+  output: __S(67, __c16, 3) as any as S.Schema<Entitlement>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -425,8 +425,8 @@ export const listProvidersAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListProvidersAccountsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListAccountsResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<ListProvidersAccountsRequest>,
+  output: __S(70, __c17, 2) as any as S.Schema<ListAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -442,8 +442,8 @@ export const listProvidersEntitlements: API.PaginatedOperationMethod<
   GcpOpContext,
   ListEntitlementsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListProvidersEntitlementsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ListEntitlementsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListProvidersEntitlementsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListEntitlementsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -463,8 +463,8 @@ export const patchProvidersEntitlements: API.OperationMethod<
   PatchProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<PatchProvidersEntitlementsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Entitlement>,
+  input: __S(4, __c1, 0) as any as S.Schema<PatchProvidersEntitlementsRequest>,
+  output: __S(67, __c16, 3) as any as S.Schema<Entitlement>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -483,8 +483,8 @@ export const rejectPlanChangeProvidersEntitlements: API.OperationMethod<
   RejectPlanChangeProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<RejectPlanChangeProvidersEntitlementsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(9, __c2, 1) as any as S.Schema<RejectPlanChangeProvidersEntitlementsRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -503,8 +503,8 @@ export const rejectProvidersAccounts: API.OperationMethod<
   RejectProvidersAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<RejectProvidersAccountsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(13, __c3, 1) as any as S.Schema<RejectProvidersAccountsRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -523,8 +523,8 @@ export const rejectProvidersEntitlements: API.OperationMethod<
   RejectProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<RejectProvidersEntitlementsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(17, __c4, 1) as any as S.Schema<RejectProvidersEntitlementsRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -538,8 +538,8 @@ export const resetProvidersAccounts: API.OperationMethod<
   ResetProvidersAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ResetProvidersAccountsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(20, __c5, 0) as any as S.Schema<ResetProvidersAccountsRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -558,8 +558,8 @@ export const suspendProvidersEntitlements: API.OperationMethod<
   SuspendProvidersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<SuspendProvidersEntitlementsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(25, __c6, 1) as any as S.Schema<SuspendProvidersEntitlementsRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -569,211 +569,6 @@ export const suspendProvidersEntitlements: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pendingPlanName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApproveEntitlementPlanChangeRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:approvePlanChange",
-            baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApprovePlanChangeProvidersEntitlementsRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.optional(S.String),
-          properties: S.optional(__S(3, __c0, 3)),
-          approvalName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApproveAccountRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:approve",
-            baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApproveProvidersAccountsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(3, __c0, 3)),
-          entitlementMigrated: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApproveEntitlementRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:approve",
-            baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApproveProvidersEntitlementsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProvidersAccountsRequest",
-      });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          reason: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Approval" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          createTime: S.optional(S.String),
-          inputProperties: S.optional(__S(9, __c1, 1)),
-          approvals: S.optional(__S(11, __c1, 3)),
-          resellerParentBillingAccount: S.optional(S.String),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Account" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProvidersEntitlementsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Consumer" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          newPendingOfferDuration: S.optional(S.String),
-          newPendingOffer: S.optional(S.String),
-          cancellationReason: S.optional(S.String),
-          product: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          plan: S.optional(S.String),
-          inputProperties: S.optional(__S(9, __c1, 1)),
-          usageReportingId: S.optional(S.String),
-          subscriptionEndTime: S.optional(S.String),
-          account: S.optional(S.String),
-          newOfferEndTime: S.optional(S.String),
-          provider: S.optional(S.String),
-          state: S.optional(S.String),
-          productExternalName: S.optional(S.String),
-          consumers: S.optional(__S(15, __c1, 7)),
-          entitlementBenefitIds: S.optional(__S(16, __c2, 0)),
-          messageToUser: S.optional(S.String),
-          name: S.optional(S.String),
-          newOfferStartTime: S.optional(S.String),
-          offerEndTime: S.optional(S.String),
-          orderId: S.optional(S.String),
-          newPendingPlan: S.optional(S.String),
-          offer: S.optional(S.String),
-          createTime: S.optional(S.String),
-          offerDuration: S.optional(S.String),
-          quoteExternalName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Entitlement" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/accounts",
-            baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProvidersAccountsRequest",
-      });
-    case 3:
-      return S.Array(__S(12, __c1, 4));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          accounts: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "ListAccountsResponse" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -790,25 +585,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListProvidersEntitlementsRequest",
       });
-    case 6:
-      return S.Array(__S(17, __c2, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(67, __c16, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          entitlements: S.optional(__S(22, __c2, 6)),
+          entitlements: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "ListEntitlementsResponse" });
   }
 }
-function __c3(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(67, __c16, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -819,7 +614,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PatchProvidersEntitlementsRequest",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pendingPlanName: S.optional(S.String),
@@ -828,11 +627,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "RejectEntitlementPlanChangeRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -843,18 +642,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "RejectPlanChangeProvidersEntitlementsRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           approvalName: S.optional(S.String),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "RejectAccountRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -865,17 +668,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "RejectProvidersAccountsRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "RejectEntitlementRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -886,11 +693,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "RejectProvidersEntitlementsRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -903,7 +714,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -917,7 +728,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(24, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -930,7 +741,247 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pendingPlanName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApproveEntitlementPlanChangeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(28, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:approvePlanChange",
+            baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApprovePlanChangeProvidersEntitlementsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+          properties: S.optional(__S(40, __c10, 0)),
+          approvalName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApproveAccountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(36, __c9, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:approve",
+            baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApproveProvidersAccountsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(40, __c10, 0)),
+          entitlementMigrated: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApproveEntitlementRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(44, __c11, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:approve",
+            baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApproveProvidersEntitlementsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          view: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProvidersAccountsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          reason: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Approval" });
+    case 1:
+      return S.Array(__S(56, __c14, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          createTime: S.optional(S.String),
+          inputProperties: S.optional(__S(52, __c13, 0)),
+          approvals: S.optional(__S(57, __c14, 1)),
+          resellerParentBillingAccount: S.optional(S.String),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Account" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProvidersEntitlementsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Consumer" });
+    case 1:
+      return S.Array(__S(64, __c16, 0));
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          newPendingOfferDuration: S.optional(S.String),
+          newPendingOffer: S.optional(S.String),
+          cancellationReason: S.optional(S.String),
+          product: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          plan: S.optional(S.String),
+          inputProperties: S.optional(__S(52, __c13, 0)),
+          usageReportingId: S.optional(S.String),
+          subscriptionEndTime: S.optional(S.String),
+          account: S.optional(S.String),
+          newOfferEndTime: S.optional(S.String),
+          provider: S.optional(S.String),
+          state: S.optional(S.String),
+          productExternalName: S.optional(S.String),
+          consumers: S.optional(__S(65, __c16, 1)),
+          entitlementBenefitIds: S.optional(__S(66, __c16, 2)),
+          messageToUser: S.optional(S.String),
+          name: S.optional(S.String),
+          newOfferStartTime: S.optional(S.String),
+          offerEndTime: S.optional(S.String),
+          orderId: S.optional(S.String),
+          newPendingPlan: S.optional(S.String),
+          offer: S.optional(S.String),
+          createTime: S.optional(S.String),
+          offerDuration: S.optional(S.String),
+          quoteExternalName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Entitlement" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/accounts",
+            baseUrl: "https://cloudcommerceprocurement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProvidersAccountsRequest",
+      });
+    case 1:
+      return S.Array(__S(58, __c14, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          accounts: S.optional(__S(69, __c17, 1)),
+        }),
+      ).annotate({ identifier: "ListAccountsResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

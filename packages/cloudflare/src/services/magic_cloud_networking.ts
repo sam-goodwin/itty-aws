@@ -9412,8 +9412,8 @@ export const applyOnRamp: API.OperationMethod<
   ApplyOnRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ApplyOnRampRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ApplyOnRampResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ApplyOnRampRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<ApplyOnRampResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9427,8 +9427,8 @@ export const createCatalogSync: API.OperationMethod<
   CreateCatalogSyncError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateCatalogSyncRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateCatalogSyncResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<CreateCatalogSyncRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<CreateCatalogSyncResponse>,
   errors: [FeatureNotEnabled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9442,8 +9442,8 @@ export const createCloudIntegration: API.OperationMethod<
   CreateCloudIntegrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateCloudIntegrationRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateCloudIntegrationResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<CreateCloudIntegrationRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<CreateCloudIntegrationResponse>,
   errors: [FeatureNotEnabled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9457,8 +9457,8 @@ export const createOnRamp: API.OperationMethod<
   CreateOnRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateOnRampRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<CreateOnRampResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<CreateOnRampRequest>,
+  output: __S(1432, __c44, 24) as any as S.Schema<CreateOnRampResponse>,
   errors: [FeatureNotEnabled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9476,8 +9476,8 @@ export const deleteCatalogSync: API.OperationMethod<
   DeleteCatalogSyncError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteCatalogSyncRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteCatalogSyncResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DeleteCatalogSyncRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<DeleteCatalogSyncResponse>,
   errors: [
     FeatureNotEnabled,
     Forbidden,
@@ -9501,8 +9501,8 @@ export const deleteCloudIntegration: API.OperationMethod<
   DeleteCloudIntegrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteCloudIntegrationRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteCloudIntegrationResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteCloudIntegrationRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<DeleteCloudIntegrationResponse>,
   errors: [
     FeatureNotEnabled,
     Forbidden,
@@ -9522,8 +9522,8 @@ export const deleteOnRamp: API.OperationMethod<
   DeleteOnRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteOnRampRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<DeleteOnRampResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteOnRampRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<DeleteOnRampResponse>,
   errors: [FeatureNotEnabled, Forbidden, OnRampNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9537,8 +9537,8 @@ export const discoverAllCloudIntegration: API.OperationMethod<
   DiscoverAllCloudIntegrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DiscoverAllCloudIntegrationRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<DiscoverAllCloudIntegrationResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DiscoverAllCloudIntegrationRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DiscoverAllCloudIntegrationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9552,8 +9552,8 @@ export const discoverCloudIntegration: API.OperationMethod<
   DiscoverCloudIntegrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DiscoverCloudIntegrationRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<DiscoverCloudIntegrationResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<DiscoverCloudIntegrationRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DiscoverCloudIntegrationResponse>,
   errors: [FeatureNotEnabled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9567,8 +9567,8 @@ export const exportOnRamp: API.OperationMethod<
   ExportOnRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ExportOnRampRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ExportOnRampResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ExportOnRampRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<ExportOnRampResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9582,8 +9582,8 @@ export const exportResource: API.OperationMethod<
   ExportResourceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ExportResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ExportResourceResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ExportResourceRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<ExportResourceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9601,8 +9601,8 @@ export const getCatalogSync: API.OperationMethod<
   GetCatalogSyncError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetCatalogSyncRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetCatalogSyncResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetCatalogSyncRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<GetCatalogSyncResponse>,
   errors: [
     FeatureNotEnabled,
     Forbidden,
@@ -9626,8 +9626,8 @@ export const getCloudIntegration: API.OperationMethod<
   GetCloudIntegrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetCloudIntegrationRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<GetCloudIntegrationResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetCloudIntegrationRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<GetCloudIntegrationResponse>,
   errors: [
     FeatureNotEnabled,
     Forbidden,
@@ -9647,8 +9647,8 @@ export const getOnRamp: API.OperationMethod<
   GetOnRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetOnRampRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GetOnRampResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetOnRampRequest>,
+  output: __S(408, __c12, 24) as any as S.Schema<GetOnRampResponse>,
   errors: [FeatureNotEnabled, Forbidden, OnRampNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9662,8 +9662,8 @@ export const getResource: API.OperationMethod<
   GetResourceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetResourceRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetResourceResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetResourceRequest>,
+  output: __S(457, __c14, 9) as any as S.Schema<GetResourceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9677,8 +9677,8 @@ export const initialSetupCloudIntegration: API.OperationMethod<
   InitialSetupCloudIntegrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<InitialSetupCloudIntegrationRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<InitialSetupCloudIntegrationResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<InitialSetupCloudIntegrationRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<InitialSetupCloudIntegrationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9697,8 +9697,8 @@ export const listCatalogSyncPrebuiltPolicies: API.PaginatedOperationMethod<
   CatalogSyncsPrebuiltPoliciesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(110, __c13, 6) as any as S.Schema<ListCatalogSyncPrebuiltPoliciesRequest>,
-    output: __S(114, __c14, 2) as any as S.Schema<ListCatalogSyncPrebuiltPoliciesResponse>,
+    input: __S(512, __c16, 0) as any as S.Schema<ListCatalogSyncPrebuiltPoliciesRequest>,
+    output: __S(516, __c16, 4) as any as S.Schema<ListCatalogSyncPrebuiltPoliciesResponse>,
     errors: [FeatureNotEnabled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -9717,8 +9717,8 @@ export const listCatalogSyncs: API.PaginatedOperationMethod<
   CatalogSyncsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(115, __c14, 3) as any as S.Schema<ListCatalogSyncsRequest>,
-    output: __S(118, __c14, 6) as any as S.Schema<ListCatalogSyncsResponse>,
+    input: __S(544, __c17, 0) as any as S.Schema<ListCatalogSyncsRequest>,
+    output: __S(547, __c17, 3) as any as S.Schema<ListCatalogSyncsResponse>,
     errors: [FeatureNotEnabled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -9737,8 +9737,8 @@ export const listCloudIntegrations: API.PaginatedOperationMethod<
   CloudIntegrationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(119, __c14, 7) as any as S.Schema<ListCloudIntegrationsRequest>,
-    output: __S(123, __c15, 3) as any as S.Schema<ListCloudIntegrationsResponse>,
+    input: __S(576, __c18, 0) as any as S.Schema<ListCloudIntegrationsRequest>,
+    output: __S(580, __c18, 4) as any as S.Schema<ListCloudIntegrationsResponse>,
     errors: [FeatureNotEnabled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -9755,8 +9755,8 @@ export const listOnRampAddressSpaces: API.OperationMethod<
   ListOnRampAddressSpacesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ListOnRampAddressSpacesRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<ListOnRampAddressSpacesResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListOnRampAddressSpacesRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<ListOnRampAddressSpacesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9772,8 +9772,8 @@ export const listOnRamps: API.PaginatedOperationMethod<
   OnRampsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(126, __c15, 6) as any as S.Schema<ListOnRampsRequest>,
-    output: __S(152, __c19, 0) as any as S.Schema<ListOnRampsResponse>,
+    input: __S(672, __c21, 0) as any as S.Schema<ListOnRampsRequest>,
+    output: __S(698, __c21, 26) as any as S.Schema<ListOnRampsResponse>,
     errors: [FeatureNotEnabled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -9792,8 +9792,8 @@ export const listResources: API.PaginatedOperationMethod<
   ResourcesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(153, __c19, 1) as any as S.Schema<ListResourcesRequest>,
-    output: __S(164, __c20, 4) as any as S.Schema<ListResourcesResponse>,
+    input: __S(704, __c22, 0) as any as S.Schema<ListResourcesRequest>,
+    output: __S(715, __c22, 11) as any as S.Schema<ListResourcesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -9820,8 +9820,8 @@ export const patchCatalogSync: API.OperationMethod<
   PatchCatalogSyncError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<PatchCatalogSyncRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<PatchCatalogSyncResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<PatchCatalogSyncRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<PatchCatalogSyncResponse>,
   errors: [
     FeatureNotEnabled,
     Forbidden,
@@ -9845,8 +9845,8 @@ export const patchCloudIntegration: API.OperationMethod<
   PatchCloudIntegrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<PatchCloudIntegrationRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<PatchCloudIntegrationResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<PatchCloudIntegrationRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<PatchCloudIntegrationResponse>,
   errors: [
     FeatureNotEnabled,
     Forbidden,
@@ -9866,8 +9866,8 @@ export const patchOnRamp: API.OperationMethod<
   PatchOnRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<PatchOnRampRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<PatchOnRampResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<PatchOnRampRequest>,
+  output: __S(824, __c25, 24) as any as S.Schema<PatchOnRampResponse>,
   errors: [FeatureNotEnabled, Forbidden, OnRampNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9881,8 +9881,8 @@ export const patchOnRampAddressSpace: API.OperationMethod<
   PatchOnRampAddressSpaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<PatchOnRampAddressSpaceRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PatchOnRampAddressSpaceResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<PatchOnRampAddressSpaceRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<PatchOnRampAddressSpaceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9896,8 +9896,8 @@ export const planOnRamp: API.OperationMethod<
   PlanOnRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<PlanOnRampRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PlanOnRampResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<PlanOnRampRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<PlanOnRampResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9911,8 +9911,8 @@ export const policyPreviewResource: API.OperationMethod<
   PolicyPreviewResourceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<PolicyPreviewResourceRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<PolicyPreviewResourceResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<PolicyPreviewResourceRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<PolicyPreviewResourceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9926,8 +9926,8 @@ export const putOnRampAddressSpace: API.OperationMethod<
   PutOnRampAddressSpaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<PutOnRampAddressSpaceRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PutOnRampAddressSpaceResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<PutOnRampAddressSpaceRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<PutOnRampAddressSpaceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -9945,8 +9945,8 @@ export const refreshCatalogSync: API.OperationMethod<
   RefreshCatalogSyncError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<RefreshCatalogSyncRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<RefreshCatalogSyncResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<RefreshCatalogSyncRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<RefreshCatalogSyncResponse>,
   errors: [
     FeatureNotEnabled,
     Forbidden,
@@ -9970,8 +9970,8 @@ export const updateCatalogSync: API.OperationMethod<
   UpdateCatalogSyncError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<UpdateCatalogSyncRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateCatalogSyncResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<UpdateCatalogSyncRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<UpdateCatalogSyncResponse>,
   errors: [
     FeatureNotEnabled,
     Forbidden,
@@ -9995,8 +9995,8 @@ export const updateCloudIntegration: API.OperationMethod<
   UpdateCloudIntegrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<UpdateCloudIntegrationRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<UpdateCloudIntegrationResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<UpdateCloudIntegrationRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<UpdateCloudIntegrationResponse>,
   errors: [
     FeatureNotEnabled,
     Forbidden,
@@ -10016,8 +10016,8 @@ export const updateOnRamp: API.OperationMethod<
   UpdateOnRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<UpdateOnRampRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<UpdateOnRampResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<UpdateOnRampRequest>,
+  output: __S(1112, __c34, 24) as any as S.Schema<UpdateOnRampResponse>,
   errors: [FeatureNotEnabled, Forbidden, OnRampNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -10025,6 +10025,2273 @@ export const updateOnRamp: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          providerId: S.String.pipe(T.Label("provider_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteCloudIntegrationRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          onrampId: S.String.pipe(T.Label("onramp_id")),
+          destroy: S.optional(S.Boolean.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteOnRampRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteOnRampResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/magic/cloud/providers/discover",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DiscoverAllCloudIntegrationRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "DiscoverAllCloudIntegrationResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          providerId: S.String.pipe(T.Label("provider_id")),
+          v2: S.optional(S.Boolean.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}/discover",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DiscoverCloudIntegrationRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          onrampId: S.String.pipe(T.Label("onramp_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/export",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ExportOnRampRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          desc: S.optional(S.Boolean.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+          providerId: S.optional(S.String.pipe(T.Query("provider_id"))),
+          region: S.optional(S.String.pipe(T.Query())),
+          resourceGroup: S.optional(S.String.pipe(T.Query("resource_group"))),
+          resourceId: S.optional(__S(1344, __c42, 0).pipe(T.Query("resource_id"))),
+          resourceType: S.optional(__S(224, __c7, 0).pipe(T.Query("resource_type"))),
+          search: S.optional(__S(1344, __c42, 0).pipe(T.Query())),
+          v2: S.optional(S.Boolean.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/magic/cloud/resources/export",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ExportResourceRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          syncId: S.String.pipe(T.Label("sync_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetCatalogSyncRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          description: S.String,
+          destinationId: S.String.pipe(T.Body("destination_id")),
+          destinationType: S.String.pipe(T.Body("destination_type")),
+          lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
+          name: S.String,
+          policy: S.String,
+          updateMode: S.String.pipe(T.Body("update_mode")),
+          errors: S.optional(S.NullOr(__S(1251, __c39, 3))),
+          includesDiscoveriesUntil: S.optional(
+            S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
+          ),
+          lastAttemptedUpdateAt: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_attempted_update_at")),
+          ),
+          lastSuccessfulUpdateAt: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_successful_update_at")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetCatalogSyncResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          providerId: S.String.pipe(T.Label("provider_id")),
+          status: S.optional(S.Boolean.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetCloudIntegrationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          discoveryProgress: __S(1312, __c41, 0).pipe(T.Body("discovery_progress")),
+          discoveryProgressV2: __S(1312, __c41, 0).pipe(T.Body("discovery_progress_v2")),
+          lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
+          lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
+          regions: __S(1344, __c42, 0),
+          credentialsGoodSince: S.optional(
+            S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
+          ),
+          credentialsMissingSince: S.optional(
+            S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
+          ),
+          credentialsRejectedSince: S.optional(
+            S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
+          ),
+          discoveryMessage: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message"))),
+          discoveryMessageV2: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message_v2"))),
+          inUseBy: S.optional(S.NullOr(__S(353, __c11, 1)).pipe(T.Body("in_use_by"))),
+          lastDiscoveryCompletedAt: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
+          ),
+          lastDiscoveryCompletedAtV2: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
+          ),
+          lastDiscoveryStartedAt: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
+          ),
+          lastDiscoveryStartedAtV2: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
+          ),
+          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+        }),
+      ).annotate({
+        identifier: "CloudIntegrationsGetResponseStatus",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          friendlyName: S.String.pipe(T.Body("friendly_name")),
+          lastUpdated: S.String.pipe(T.Body("last_updated")),
+          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
+          state: S.String,
+          stateV2: S.String.pipe(T.Body("state_v2")),
+          awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
+          azureSubscriptionId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_subscription_id"))),
+          azureTenantId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_tenant_id"))),
+          description: S.optional(S.NullOr(S.String)),
+          gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
+          gcpServiceAccountEmail: S.optional(
+            S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
+          ),
+          status: S.optional(S.NullOr(__S(321, __c10, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetCloudIntegrationResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          clientType: S.String.pipe(T.Body("client_type")),
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "CloudIntegrationsGetResponseStatusInUseByItem",
+      });
+    case 1:
+      return S.Array(__S(352, __c11, 0));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          onrampId: S.String.pipe(T.Label("onramp_id")),
+          plannedResources: S.optional(S.Boolean.pipe(T.Query("planned_resources"))),
+          postApplyResources: S.optional(S.Boolean.pipe(T.Query("post_apply_resources"))),
+          status: S.optional(S.Boolean.pipe(T.Query())),
+          vpcs: S.optional(S.Boolean.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetOnRampRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          diff: __S(1473, __c46, 1),
+          keysRequireReplace: __S(1344, __c42, 0).pipe(T.Body("keys_require_replace")),
+          monthlyCostEstimateDiff: __S(1472, __c46, 0).pipe(T.Body("monthly_cost_estimate_diff")),
+          plannedAction: S.String.pipe(T.Body("planned_action")),
+          resource: __S(416, __c13, 0),
+        }),
+      ).annotate({
+        identifier: "OnRampsGetResponsePlannedResourcesItem",
+      });
+    case 2:
+      return S.Array(__S(385, __c12, 1));
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(387, __c12, 3))),
+        }),
+      ).annotate({
+        identifier: "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem",
+      });
+    case 5:
+      return S.Array(__S(388, __c12, 4));
+    case 6:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(390, __c12, 6))),
+        }),
+      ).annotate({
+        identifier: "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem",
+      });
+    case 8:
+      return S.Array(__S(391, __c12, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenItems: __S(389, __c12, 5).pipe(T.Body("hidden_items")),
+          name: S.String,
+          visibleItems: __S(392, __c12, 8).pipe(T.Body("visible_items")),
+          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsGetResponsePostApplyResourcesValueSectionsItem",
+      });
+    case 10:
+      return S.Array(__S(393, __c12, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          config: __S(1441, __c45, 1),
+          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+          managed: S.Boolean,
+          monthlyCostEstimate: __S(1440, __c45, 0).pipe(T.Body("monthly_cost_estimate")),
+          name: S.String,
+          nativeId: S.String.pipe(T.Body("native_id")),
+          observations: __S(1443, __c45, 3),
+          providerIds: __S(1344, __c42, 0).pipe(T.Body("provider_ids")),
+          providerNamesById: __S(1444, __c45, 4).pipe(T.Body("provider_names_by_id")),
+          region: S.String,
+          resourceGroup: S.String.pipe(T.Body("resource_group")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          sections: __S(394, __c12, 10),
+          state: __S(1441, __c45, 1),
+          tags: __S(1444, __c45, 4),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          url: S.String,
+          managedBy: S.optional(S.NullOr(__S(1377, __c43, 1)).pipe(T.Body("managed_by"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsGetResponsePostApplyResourcesValue",
+      });
+    case 12:
+      return S.Record(S.String, __S(395, __c12, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          applyProgress: __S(1474, __c46, 2).pipe(T.Body("apply_progress")),
+          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
+          planProgress: __S(1474, __c46, 2).pipe(T.Body("plan_progress")),
+          routes: __S(1344, __c42, 0),
+          tunnels: __S(1344, __c42, 0),
+          lifecycleErrors: S.optional(
+            S.NullOr(__S(1251, __c39, 3)).pipe(T.Body("lifecycle_errors")),
+          ),
+        }),
+      ).annotate({ identifier: "OnRampsGetResponseStatus" });
+    case 14:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(398, __c12, 14))),
+        }),
+      ).annotate({
+        identifier: "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem",
+      });
+    case 16:
+      return S.Array(__S(399, __c12, 15));
+    case 17:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(401, __c12, 17))),
+        }),
+      ).annotate({
+        identifier: "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem",
+      });
+    case 19:
+      return S.Array(__S(402, __c12, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenItems: __S(400, __c12, 16).pipe(T.Body("hidden_items")),
+          name: S.String,
+          visibleItems: __S(403, __c12, 19).pipe(T.Body("visible_items")),
+          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsGetResponseVpcsByIdValueSectionsItem",
+      });
+    case 21:
+      return S.Array(__S(404, __c12, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          config: __S(1441, __c45, 1),
+          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+          managed: S.Boolean,
+          monthlyCostEstimate: __S(1440, __c45, 0).pipe(T.Body("monthly_cost_estimate")),
+          name: S.String,
+          nativeId: S.String.pipe(T.Body("native_id")),
+          observations: __S(1443, __c45, 3),
+          providerIds: __S(1344, __c42, 0).pipe(T.Body("provider_ids")),
+          providerNamesById: __S(1444, __c45, 4).pipe(T.Body("provider_names_by_id")),
+          region: S.String,
+          resourceGroup: S.String.pipe(T.Body("resource_group")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          sections: __S(405, __c12, 21),
+          state: __S(1441, __c45, 1),
+          tags: __S(1444, __c45, 4),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          url: S.String,
+          managedBy: S.optional(S.NullOr(__S(353, __c11, 1)).pipe(T.Body("managed_by"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsGetResponseVpcsByIdValue",
+      });
+    case 23:
+      return S.Record(S.String, __S(406, __c12, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
+          installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
+          installRoutesInMagicWan: S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
+          name: S.String,
+          type: S.String,
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          attachedHubs: S.optional(S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("attached_hubs"))),
+          attachedVpcs: S.optional(S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("attached_vpcs"))),
+          cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
+          description: S.optional(S.NullOr(S.String)),
+          hub: S.optional(S.NullOr(S.String)),
+          lastAppliedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_applied_at"))),
+          lastExportedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_exported_at"))),
+          lastPlannedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_planned_at"))),
+          manageHubToHubAttachments: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
+          ),
+          manageVpcToHubAttachments: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
+          ),
+          plannedMonthlyCostEstimate: S.optional(
+            S.NullOr(__S(1472, __c46, 0)).pipe(T.Body("planned_monthly_cost_estimate")),
+          ),
+          plannedResources: S.optional(
+            S.NullOr(__S(386, __c12, 2)).pipe(T.Body("planned_resources")),
+          ),
+          plannedResourcesUnavailable: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
+          ),
+          postApplyMonthlyCostEstimate: S.optional(
+            S.NullOr(__S(1440, __c45, 0)).pipe(T.Body("post_apply_monthly_cost_estimate")),
+          ),
+          postApplyResources: S.optional(
+            S.NullOr(__S(396, __c12, 12)).pipe(T.Body("post_apply_resources")),
+          ),
+          postApplyResourcesUnavailable: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
+          ),
+          region: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(__S(397, __c12, 13))),
+          vpc: S.optional(S.NullOr(S.String)),
+          vpcsById: S.optional(S.NullOr(__S(407, __c12, 23)).pipe(T.Body("vpcs_by_id"))),
+          vpcsByIdUnavailable: S.optional(
+            S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("vpcs_by_id_unavailable")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetOnRampResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          detail: S.String,
+          name: S.String,
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          title: S.String,
+        }),
+      ).annotate({
+        identifier: "OnRampsGetResponsePlannedResourcesItemResource",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          resourceId: S.String.pipe(T.Label("resource_id")),
+          v2: S.optional(S.Boolean.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/magic/cloud/resources/{resource_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetResourceRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(449, __c14, 1))),
+        }),
+      ).annotate({
+        identifier: "ResourcesGetResponseSectionsItemHiddenItemsItem",
+      });
+    case 3:
+      return S.Array(__S(450, __c14, 2));
+    case 4:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(452, __c14, 4))),
+        }),
+      ).annotate({
+        identifier: "ResourcesGetResponseSectionsItemVisibleItemsItem",
+      });
+    case 6:
+      return S.Array(__S(453, __c14, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenItems: __S(451, __c14, 3).pipe(T.Body("hidden_items")),
+          name: S.String,
+          visibleItems: __S(454, __c14, 6).pipe(T.Body("visible_items")),
+          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+        }),
+      ).annotate({
+        identifier: "ResourcesGetResponseSectionsItem",
+      });
+    case 8:
+      return S.Array(__S(455, __c14, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          config: __S(1441, __c45, 1),
+          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+          managed: S.Boolean,
+          monthlyCostEstimate: __S(1440, __c45, 0).pipe(T.Body("monthly_cost_estimate")),
+          name: S.String,
+          nativeId: S.String.pipe(T.Body("native_id")),
+          observations: __S(1443, __c45, 3),
+          providerIds: __S(1344, __c42, 0).pipe(T.Body("provider_ids")),
+          providerNamesById: __S(1444, __c45, 4).pipe(T.Body("provider_names_by_id")),
+          region: S.String,
+          resourceGroup: S.String.pipe(T.Body("resource_group")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          sections: __S(456, __c14, 8),
+          state: __S(1441, __c45, 1),
+          tags: __S(1444, __c45, 4),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          url: S.String,
+          managedBy: S.optional(S.NullOr(__S(353, __c11, 1)).pipe(T.Body("managed_by"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetResourceResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          providerId: S.String.pipe(T.Label("provider_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}/initial_setup",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "InitialSetupCloudIntegrationRequest",
+      });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["awsTrustPolicy", "itemType"],
+          ["azureConsentUrl", "integrationIdentityTag", "itemType", "tagCliCommand"],
+          ["integrationIdentityTag", "itemType", "tagCliCommand"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        __S(481, __c15, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "InitialSetupCloudIntegrationResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          destinationType: S.optional(S.String.pipe(T.Query("destination_type"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/prebuilt-policies",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListCatalogSyncPrebuiltPoliciesRequest",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          applicableDestinations: __S(513, __c16, 1).pipe(T.Body("applicable_destinations")),
+          policyDescription: S.String.pipe(T.Body("policy_description")),
+          policyName: S.String.pipe(T.Body("policy_name")),
+          policyString: S.String.pipe(T.Body("policy_string")),
+        }),
+      ).annotate({
+        identifier: "CatalogSyncsPrebuiltPoliciesListResultItem",
+      });
+    case 3:
+      return S.Array(__S(514, __c16, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(515, __c16, 3).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListCatalogSyncPrebuiltPoliciesResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/magic/cloud/catalog-syncs",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListCatalogSyncsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          description: S.String,
+          destinationId: S.String.pipe(T.Body("destination_id")),
+          destinationType: S.String.pipe(T.Body("destination_type")),
+          lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
+          name: S.String,
+          policy: S.String,
+          updateMode: S.String.pipe(T.Body("update_mode")),
+          errors: S.optional(S.NullOr(__S(1251, __c39, 3))),
+          includesDiscoveriesUntil: S.optional(
+            S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
+          ),
+          lastAttemptedUpdateAt: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_attempted_update_at")),
+          ),
+          lastSuccessfulUpdateAt: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_successful_update_at")),
+          ),
+        }),
+      ).annotate({
+        identifier: "CatalogSyncsListResultItem",
+      });
+    case 2:
+      return S.Array(__S(545, __c17, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(546, __c17, 2).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListCatalogSyncsResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          cloudflare: S.optional(S.Boolean.pipe(T.Query())),
+          desc: S.optional(S.Boolean.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+          status: S.optional(S.Boolean.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/magic/cloud/providers",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListCloudIntegrationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          discoveryProgress: __S(1312, __c41, 0).pipe(T.Body("discovery_progress")),
+          discoveryProgressV2: __S(1312, __c41, 0).pipe(T.Body("discovery_progress_v2")),
+          lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
+          lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
+          regions: __S(1344, __c42, 0),
+          credentialsGoodSince: S.optional(
+            S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
+          ),
+          credentialsMissingSince: S.optional(
+            S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
+          ),
+          credentialsRejectedSince: S.optional(
+            S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
+          ),
+          discoveryMessage: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message"))),
+          discoveryMessageV2: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message_v2"))),
+          inUseBy: S.optional(S.NullOr(__S(1377, __c43, 1)).pipe(T.Body("in_use_by"))),
+          lastDiscoveryCompletedAt: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
+          ),
+          lastDiscoveryCompletedAtV2: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
+          ),
+          lastDiscoveryStartedAt: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
+          ),
+          lastDiscoveryStartedAtV2: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
+          ),
+          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+        }),
+      ).annotate({
+        identifier: "CloudIntegrationsListResultItemStatus",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          friendlyName: S.String.pipe(T.Body("friendly_name")),
+          lastUpdated: S.String.pipe(T.Body("last_updated")),
+          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
+          state: S.String,
+          stateV2: S.String.pipe(T.Body("state_v2")),
+          awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
+          azureSubscriptionId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_subscription_id"))),
+          azureTenantId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_tenant_id"))),
+          description: S.optional(S.NullOr(S.String)),
+          gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
+          gcpServiceAccountEmail: S.optional(
+            S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
+          ),
+          status: S.optional(S.NullOr(__S(577, __c18, 1))),
+        }),
+      ).annotate({
+        identifier: "CloudIntegrationsListResultItem",
+      });
+    case 3:
+      return S.Array(__S(578, __c18, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(579, __c18, 3).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListCloudIntegrationsResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListOnRampAddressSpacesRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          prefixes: __S(1344, __c42, 0),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListOnRampAddressSpacesResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          desc: S.optional(S.Boolean.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+          status: S.optional(S.Boolean.pipe(T.Query())),
+          vpcs: S.optional(S.Boolean.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/accounts/{account_id}/magic/cloud/onramps", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListOnRampsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          diff: __S(1473, __c46, 1),
+          keysRequireReplace: __S(1536, __c48, 0).pipe(T.Body("keys_require_replace")),
+          monthlyCostEstimateDiff: __S(1472, __c46, 0).pipe(T.Body("monthly_cost_estimate_diff")),
+          plannedAction: S.String.pipe(T.Body("planned_action")),
+          resource: __S(1537, __c48, 1),
+        }),
+      ).annotate({
+        identifier: "OnRampsListResultItemPlannedResourcesItem",
+      });
+    case 2:
+      return S.Array(__S(673, __c21, 1));
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(675, __c21, 3))),
+        }),
+      ).annotate({
+        identifier: "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem",
+      });
+    case 5:
+      return S.Array(__S(676, __c21, 4));
+    case 6:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(678, __c21, 6))),
+        }),
+      ).annotate({
+        identifier: "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem",
+      });
+    case 8:
+      return S.Array(__S(679, __c21, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenItems: __S(677, __c21, 5).pipe(T.Body("hidden_items")),
+          name: S.String,
+          visibleItems: __S(680, __c21, 8).pipe(T.Body("visible_items")),
+          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsListResultItemPostApplyResourcesValueSectionsItem",
+      });
+    case 10:
+      return S.Array(__S(681, __c21, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          config: __S(1441, __c45, 1),
+          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+          managed: S.Boolean,
+          monthlyCostEstimate: __S(1440, __c45, 0).pipe(T.Body("monthly_cost_estimate")),
+          name: S.String,
+          nativeId: S.String.pipe(T.Body("native_id")),
+          observations: __S(1443, __c45, 3),
+          providerIds: __S(1344, __c42, 0).pipe(T.Body("provider_ids")),
+          providerNamesById: __S(1504, __c47, 0).pipe(T.Body("provider_names_by_id")),
+          region: S.String,
+          resourceGroup: S.String.pipe(T.Body("resource_group")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          sections: __S(682, __c21, 10),
+          state: __S(1441, __c45, 1),
+          tags: __S(1444, __c45, 4),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          url: S.String,
+          managedBy: S.optional(S.NullOr(__S(1539, __c48, 3)).pipe(T.Body("managed_by"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsListResultItemPostApplyResourcesValue",
+      });
+    case 12:
+      return S.Record(S.String, __S(683, __c21, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          applyProgress: __S(1474, __c46, 2).pipe(T.Body("apply_progress")),
+          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
+          planProgress: __S(1474, __c46, 2).pipe(T.Body("plan_progress")),
+          routes: __S(1344, __c42, 0),
+          tunnels: __S(1344, __c42, 0),
+          lifecycleErrors: S.optional(
+            S.NullOr(__S(1251, __c39, 3)).pipe(T.Body("lifecycle_errors")),
+          ),
+        }),
+      ).annotate({
+        identifier: "OnRampsListResultItemStatus",
+      });
+    case 14:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(686, __c21, 14))),
+        }),
+      ).annotate({
+        identifier: "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem",
+      });
+    case 16:
+      return S.Array(__S(687, __c21, 15));
+    case 17:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(689, __c21, 17))),
+        }),
+      ).annotate({
+        identifier: "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem",
+      });
+    case 19:
+      return S.Array(__S(690, __c21, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenItems: __S(688, __c21, 16).pipe(T.Body("hidden_items")),
+          name: S.String,
+          visibleItems: __S(691, __c21, 19).pipe(T.Body("visible_items")),
+          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsListResultItemVpcsByIdValueSectionsItem",
+      });
+    case 21:
+      return S.Array(__S(692, __c21, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          config: __S(1441, __c45, 1),
+          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+          managed: S.Boolean,
+          monthlyCostEstimate: __S(1440, __c45, 0).pipe(T.Body("monthly_cost_estimate")),
+          name: S.String,
+          nativeId: S.String.pipe(T.Body("native_id")),
+          observations: __S(1443, __c45, 3),
+          providerIds: __S(1344, __c42, 0).pipe(T.Body("provider_ids")),
+          providerNamesById: __S(1444, __c45, 4).pipe(T.Body("provider_names_by_id")),
+          region: S.String,
+          resourceGroup: S.String.pipe(T.Body("resource_group")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          sections: __S(693, __c21, 21),
+          state: __S(1441, __c45, 1),
+          tags: __S(1444, __c45, 4),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          url: S.String,
+          managedBy: S.optional(S.NullOr(__S(1377, __c43, 1)).pipe(T.Body("managed_by"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsListResultItemVpcsByIdValue",
+      });
+    case 23:
+      return S.Record(S.String, __S(694, __c21, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
+          installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
+          installRoutesInMagicWan: S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
+          name: S.String,
+          type: S.String,
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          attachedHubs: S.optional(S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("attached_hubs"))),
+          attachedVpcs: S.optional(S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("attached_vpcs"))),
+          cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
+          description: S.optional(S.NullOr(S.String)),
+          hub: S.optional(S.NullOr(S.String)),
+          lastAppliedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_applied_at"))),
+          lastExportedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_exported_at"))),
+          lastPlannedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_planned_at"))),
+          manageHubToHubAttachments: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
+          ),
+          manageVpcToHubAttachments: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
+          ),
+          plannedMonthlyCostEstimate: S.optional(
+            S.NullOr(__S(1472, __c46, 0)).pipe(T.Body("planned_monthly_cost_estimate")),
+          ),
+          plannedResources: S.optional(
+            S.NullOr(__S(674, __c21, 2)).pipe(T.Body("planned_resources")),
+          ),
+          plannedResourcesUnavailable: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
+          ),
+          postApplyMonthlyCostEstimate: S.optional(
+            S.NullOr(__S(1440, __c45, 0)).pipe(T.Body("post_apply_monthly_cost_estimate")),
+          ),
+          postApplyResources: S.optional(
+            S.NullOr(__S(684, __c21, 12)).pipe(T.Body("post_apply_resources")),
+          ),
+          postApplyResourcesUnavailable: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
+          ),
+          region: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(__S(685, __c21, 13))),
+          vpc: S.optional(S.NullOr(S.String)),
+          vpcsById: S.optional(S.NullOr(__S(695, __c21, 23)).pipe(T.Body("vpcs_by_id"))),
+          vpcsByIdUnavailable: S.optional(
+            S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("vpcs_by_id_unavailable")),
+          ),
+        }),
+      ).annotate({ identifier: "OnRampsListResultItem" });
+    case 25:
+      return S.Array(__S(696, __c21, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(697, __c21, 25).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListOnRampsResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          cloudflare: S.optional(S.Boolean.pipe(T.Query())),
+          desc: S.optional(S.Boolean.pipe(T.Query())),
+          managed: S.optional(S.Boolean.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+          providerId: S.optional(S.String.pipe(T.Query("provider_id"))),
+          region: S.optional(S.String.pipe(T.Query())),
+          resourceGroup: S.optional(S.String.pipe(T.Query("resource_group"))),
+          resourceId: S.optional(__S(1344, __c42, 0).pipe(T.Query("resource_id"))),
+          resourceType: S.optional(__S(224, __c7, 0).pipe(T.Query("resource_type"))),
+          search: S.optional(__S(1344, __c42, 0).pipe(T.Query())),
+          v2: S.optional(S.Boolean.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/magic/cloud/resources",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListResourcesRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(705, __c22, 1))),
+        }),
+      ).annotate({
+        identifier: "ResourcesListResultItemSectionsItemHiddenItemsItem",
+      });
+    case 3:
+      return S.Array(__S(706, __c22, 2));
+    case 4:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(708, __c22, 4))),
+        }),
+      ).annotate({
+        identifier: "ResourcesListResultItemSectionsItemVisibleItemsItem",
+      });
+    case 6:
+      return S.Array(__S(709, __c22, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenItems: __S(707, __c22, 3).pipe(T.Body("hidden_items")),
+          name: S.String,
+          visibleItems: __S(710, __c22, 6).pipe(T.Body("visible_items")),
+          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+        }),
+      ).annotate({
+        identifier: "ResourcesListResultItemSectionsItem",
+      });
+    case 8:
+      return S.Array(__S(711, __c22, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          config: __S(1441, __c45, 1),
+          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+          managed: S.Boolean,
+          monthlyCostEstimate: __S(1440, __c45, 0).pipe(T.Body("monthly_cost_estimate")),
+          name: S.String,
+          nativeId: S.String.pipe(T.Body("native_id")),
+          observations: __S(1443, __c45, 3),
+          providerIds: __S(1344, __c42, 0).pipe(T.Body("provider_ids")),
+          providerNamesById: __S(1444, __c45, 4).pipe(T.Body("provider_names_by_id")),
+          region: S.String,
+          resourceGroup: S.String.pipe(T.Body("resource_group")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          sections: __S(712, __c22, 8),
+          state: __S(1441, __c45, 1),
+          tags: __S(1444, __c45, 4),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          url: S.String,
+          managedBy: S.optional(S.NullOr(__S(353, __c11, 1)).pipe(T.Body("managed_by"))),
+        }),
+      ).annotate({ identifier: "ResourcesListResultItem" });
+    case 10:
+      return S.Array(__S(713, __c22, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(714, __c22, 10).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListResourcesResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          syncId: S.String.pipe(T.Label("sync_id")),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          policy: S.optional(S.String),
+          updateMode: S.optional(S.String.pipe(T.Body("update_mode"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchCatalogSyncRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          providerId: S.String.pipe(T.Label("provider_id")),
+          awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+          azureSubscriptionId: S.optional(S.String.pipe(T.Body("azure_subscription_id"))),
+          azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
+          description: S.optional(S.String),
+          friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
+          gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+          gcpServiceAccountEmail: S.optional(S.String.pipe(T.Body("gcp_service_account_email"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "PatchCloudIntegrationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          discoveryProgress: __S(1312, __c41, 0).pipe(T.Body("discovery_progress")),
+          discoveryProgressV2: __S(1312, __c41, 0).pipe(T.Body("discovery_progress_v2")),
+          lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
+          lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
+          regions: __S(1344, __c42, 0),
+          credentialsGoodSince: S.optional(
+            S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
+          ),
+          credentialsMissingSince: S.optional(
+            S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
+          ),
+          credentialsRejectedSince: S.optional(
+            S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
+          ),
+          discoveryMessage: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message"))),
+          discoveryMessageV2: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message_v2"))),
+          inUseBy: S.optional(S.NullOr(__S(1377, __c43, 1)).pipe(T.Body("in_use_by"))),
+          lastDiscoveryCompletedAt: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
+          ),
+          lastDiscoveryCompletedAtV2: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
+          ),
+          lastDiscoveryStartedAt: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
+          ),
+          lastDiscoveryStartedAtV2: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
+          ),
+          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+        }),
+      ).annotate({
+        identifier: "CloudIntegrationsEditResponseStatus",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          friendlyName: S.String.pipe(T.Body("friendly_name")),
+          lastUpdated: S.String.pipe(T.Body("last_updated")),
+          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
+          state: S.String,
+          stateV2: S.String.pipe(T.Body("state_v2")),
+          awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
+          azureSubscriptionId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_subscription_id"))),
+          azureTenantId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_tenant_id"))),
+          description: S.optional(S.NullOr(S.String)),
+          gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
+          gcpServiceAccountEmail: S.optional(
+            S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
+          ),
+          status: S.optional(S.NullOr(__S(769, __c24, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "PatchCloudIntegrationResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          onrampId: S.String.pipe(T.Label("onramp_id")),
+          attachedHubs: S.optional(__S(1344, __c42, 0).pipe(T.Body("attached_hubs"))),
+          attachedVpcs: S.optional(__S(1344, __c42, 0).pipe(T.Body("attached_vpcs"))),
+          description: S.optional(S.String),
+          installRoutesInCloud: S.optional(S.Boolean.pipe(T.Body("install_routes_in_cloud"))),
+          installRoutesInMagicWan: S.optional(
+            S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
+          ),
+          manageHubToHubAttachments: S.optional(
+            S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+          ),
+          manageVpcToHubAttachments: S.optional(
+            S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+          ),
+          name: S.optional(S.String),
+          vpc: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchOnRampRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          diff: __S(1473, __c46, 1),
+          keysRequireReplace: __S(1344, __c42, 0).pipe(T.Body("keys_require_replace")),
+          monthlyCostEstimateDiff: __S(1472, __c46, 0).pipe(T.Body("monthly_cost_estimate_diff")),
+          plannedAction: S.String.pipe(T.Body("planned_action")),
+          resource: __S(416, __c13, 0),
+        }),
+      ).annotate({
+        identifier: "OnRampsEditResponsePlannedResourcesItem",
+      });
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(803, __c25, 3))),
+        }),
+      ).annotate({
+        identifier: "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem",
+      });
+    case 5:
+      return S.Array(__S(804, __c25, 4));
+    case 6:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(806, __c25, 6))),
+        }),
+      ).annotate({
+        identifier: "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem",
+      });
+    case 8:
+      return S.Array(__S(807, __c25, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenItems: __S(805, __c25, 5).pipe(T.Body("hidden_items")),
+          name: S.String,
+          visibleItems: __S(808, __c25, 8).pipe(T.Body("visible_items")),
+          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsEditResponsePostApplyResourcesValueSectionsItem",
+      });
+    case 10:
+      return S.Array(__S(809, __c25, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          config: __S(1441, __c45, 1),
+          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+          managed: S.Boolean,
+          monthlyCostEstimate: __S(1440, __c45, 0).pipe(T.Body("monthly_cost_estimate")),
+          name: S.String,
+          nativeId: S.String.pipe(T.Body("native_id")),
+          observations: __S(1443, __c45, 3),
+          providerIds: __S(1344, __c42, 0).pipe(T.Body("provider_ids")),
+          providerNamesById: __S(1504, __c47, 0).pipe(T.Body("provider_names_by_id")),
+          region: S.String,
+          resourceGroup: S.String.pipe(T.Body("resource_group")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          sections: __S(810, __c25, 10),
+          state: __S(1441, __c45, 1),
+          tags: __S(1444, __c45, 4),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          url: S.String,
+          managedBy: S.optional(S.NullOr(__S(1377, __c43, 1)).pipe(T.Body("managed_by"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsEditResponsePostApplyResourcesValue",
+      });
+    case 12:
+      return S.Record(S.String, __S(811, __c25, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          applyProgress: __S(1474, __c46, 2).pipe(T.Body("apply_progress")),
+          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
+          planProgress: __S(1474, __c46, 2).pipe(T.Body("plan_progress")),
+          routes: __S(1344, __c42, 0),
+          tunnels: __S(1344, __c42, 0),
+          lifecycleErrors: S.optional(
+            S.NullOr(__S(1251, __c39, 3)).pipe(T.Body("lifecycle_errors")),
+          ),
+        }),
+      ).annotate({
+        identifier: "OnRampsEditResponseStatus",
+      });
+    case 14:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(814, __c25, 14))),
+        }),
+      ).annotate({
+        identifier: "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem",
+      });
+    case 16:
+      return S.Array(__S(815, __c25, 15));
+    case 17:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(817, __c25, 17))),
+        }),
+      ).annotate({
+        identifier: "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem",
+      });
+    case 19:
+      return S.Array(__S(818, __c25, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenItems: __S(816, __c25, 16).pipe(T.Body("hidden_items")),
+          name: S.String,
+          visibleItems: __S(819, __c25, 19).pipe(T.Body("visible_items")),
+          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsEditResponseVpcsByIdValueSectionsItem",
+      });
+    case 21:
+      return S.Array(__S(820, __c25, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          config: __S(1441, __c45, 1),
+          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+          managed: S.Boolean,
+          monthlyCostEstimate: __S(1440, __c45, 0).pipe(T.Body("monthly_cost_estimate")),
+          name: S.String,
+          nativeId: S.String.pipe(T.Body("native_id")),
+          observations: __S(1443, __c45, 3),
+          providerIds: __S(1344, __c42, 0).pipe(T.Body("provider_ids")),
+          providerNamesById: __S(1444, __c45, 4).pipe(T.Body("provider_names_by_id")),
+          region: S.String,
+          resourceGroup: S.String.pipe(T.Body("resource_group")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          sections: __S(821, __c25, 21),
+          state: __S(1441, __c45, 1),
+          tags: __S(1444, __c45, 4),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          url: S.String,
+          managedBy: S.optional(S.NullOr(__S(353, __c11, 1)).pipe(T.Body("managed_by"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsEditResponseVpcsByIdValue",
+      });
+    case 23:
+      return S.Record(S.String, __S(822, __c25, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
+          installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
+          installRoutesInMagicWan: S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
+          name: S.String,
+          type: S.String,
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          attachedHubs: S.optional(S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("attached_hubs"))),
+          attachedVpcs: S.optional(S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("attached_vpcs"))),
+          cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
+          description: S.optional(S.NullOr(S.String)),
+          hub: S.optional(S.NullOr(S.String)),
+          lastAppliedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_applied_at"))),
+          lastExportedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_exported_at"))),
+          lastPlannedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_planned_at"))),
+          manageHubToHubAttachments: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
+          ),
+          manageVpcToHubAttachments: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
+          ),
+          plannedMonthlyCostEstimate: S.optional(
+            S.NullOr(__S(1472, __c46, 0)).pipe(T.Body("planned_monthly_cost_estimate")),
+          ),
+          plannedResources: S.optional(
+            S.NullOr(__S(802, __c25, 2)).pipe(T.Body("planned_resources")),
+          ),
+          plannedResourcesUnavailable: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
+          ),
+          postApplyMonthlyCostEstimate: S.optional(
+            S.NullOr(__S(1440, __c45, 0)).pipe(T.Body("post_apply_monthly_cost_estimate")),
+          ),
+          postApplyResources: S.optional(
+            S.NullOr(__S(812, __c25, 12)).pipe(T.Body("post_apply_resources")),
+          ),
+          postApplyResourcesUnavailable: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
+          ),
+          region: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(__S(813, __c25, 13))),
+          vpc: S.optional(S.NullOr(S.String)),
+          vpcsById: S.optional(S.NullOr(__S(823, __c25, 23)).pipe(T.Body("vpcs_by_id"))),
+          vpcsByIdUnavailable: S.optional(
+            S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("vpcs_by_id_unavailable")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchOnRampResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          prefixes: __S(1344, __c42, 0),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "PatchOnRampAddressSpaceRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          onrampId: S.String.pipe(T.Label("onramp_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/plan",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PlanOnRampRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          policy: S.String,
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/magic/cloud/resources/policy-preview",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "PolicyPreviewResourceRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "PolicyPreviewResourceResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          prefixes: __S(1344, __c42, 0),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "PutOnRampAddressSpaceRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          syncId: S.String.pipe(T.Label("sync_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}/refresh",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "RefreshCatalogSyncRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          syncId: S.String.pipe(T.Label("sync_id")),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          policy: S.optional(S.String),
+          updateMode: S.optional(S.String.pipe(T.Body("update_mode"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateCatalogSyncRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          providerId: S.String.pipe(T.Label("provider_id")),
+          awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+          azureSubscriptionId: S.optional(S.String.pipe(T.Body("azure_subscription_id"))),
+          azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
+          description: S.optional(S.String),
+          friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
+          gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+          gcpServiceAccountEmail: S.optional(S.String.pipe(T.Body("gcp_service_account_email"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateCloudIntegrationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          discoveryProgress: __S(1312, __c41, 0).pipe(T.Body("discovery_progress")),
+          discoveryProgressV2: __S(1312, __c41, 0).pipe(T.Body("discovery_progress_v2")),
+          lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
+          lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
+          regions: __S(1344, __c42, 0),
+          credentialsGoodSince: S.optional(
+            S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
+          ),
+          credentialsMissingSince: S.optional(
+            S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
+          ),
+          credentialsRejectedSince: S.optional(
+            S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
+          ),
+          discoveryMessage: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message"))),
+          discoveryMessageV2: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message_v2"))),
+          inUseBy: S.optional(S.NullOr(__S(1377, __c43, 1)).pipe(T.Body("in_use_by"))),
+          lastDiscoveryCompletedAt: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
+          ),
+          lastDiscoveryCompletedAtV2: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
+          ),
+          lastDiscoveryStartedAt: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
+          ),
+          lastDiscoveryStartedAtV2: S.optional(
+            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
+          ),
+          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+        }),
+      ).annotate({
+        identifier: "CloudIntegrationsUpdateResponseStatus",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          friendlyName: S.String.pipe(T.Body("friendly_name")),
+          lastUpdated: S.String.pipe(T.Body("last_updated")),
+          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
+          state: S.String,
+          stateV2: S.String.pipe(T.Body("state_v2")),
+          awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
+          azureSubscriptionId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_subscription_id"))),
+          azureTenantId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_tenant_id"))),
+          description: S.optional(S.NullOr(S.String)),
+          gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
+          gcpServiceAccountEmail: S.optional(
+            S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
+          ),
+          status: S.optional(S.NullOr(__S(1057, __c33, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateCloudIntegrationResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          onrampId: S.String.pipe(T.Label("onramp_id")),
+          attachedHubs: S.optional(__S(1344, __c42, 0).pipe(T.Body("attached_hubs"))),
+          attachedVpcs: S.optional(__S(1344, __c42, 0).pipe(T.Body("attached_vpcs"))),
+          description: S.optional(S.String),
+          installRoutesInCloud: S.optional(S.Boolean.pipe(T.Body("install_routes_in_cloud"))),
+          installRoutesInMagicWan: S.optional(
+            S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
+          ),
+          manageHubToHubAttachments: S.optional(
+            S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+          ),
+          manageVpcToHubAttachments: S.optional(
+            S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+          ),
+          name: S.optional(S.String),
+          vpc: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateOnRampRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          diff: __S(1473, __c46, 1),
+          keysRequireReplace: __S(1536, __c48, 0).pipe(T.Body("keys_require_replace")),
+          monthlyCostEstimateDiff: __S(1472, __c46, 0).pipe(T.Body("monthly_cost_estimate_diff")),
+          plannedAction: S.String.pipe(T.Body("planned_action")),
+          resource: __S(1537, __c48, 1),
+        }),
+      ).annotate({
+        identifier: "OnRampsUpdateResponsePlannedResourcesItem",
+      });
+    case 2:
+      return S.Array(__S(1089, __c34, 1));
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(1091, __c34, 3))),
+        }),
+      ).annotate({
+        identifier: "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem",
+      });
+    case 5:
+      return S.Array(__S(1092, __c34, 4));
+    case 6:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(1094, __c34, 6))),
+        }),
+      ).annotate({
+        identifier: "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem",
+      });
+    case 8:
+      return S.Array(__S(1095, __c34, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenItems: __S(1093, __c34, 5).pipe(T.Body("hidden_items")),
+          name: S.String,
+          visibleItems: __S(1096, __c34, 8).pipe(T.Body("visible_items")),
+          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsUpdateResponsePostApplyResourcesValueSectionsItem",
+      });
+    case 10:
+      return S.Array(__S(1097, __c34, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          config: __S(1441, __c45, 1),
+          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+          managed: S.Boolean,
+          monthlyCostEstimate: __S(1440, __c45, 0).pipe(T.Body("monthly_cost_estimate")),
+          name: S.String,
+          nativeId: S.String.pipe(T.Body("native_id")),
+          observations: __S(1443, __c45, 3),
+          providerIds: __S(1344, __c42, 0).pipe(T.Body("provider_ids")),
+          providerNamesById: __S(1504, __c47, 0).pipe(T.Body("provider_names_by_id")),
+          region: S.String,
+          resourceGroup: S.String.pipe(T.Body("resource_group")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          sections: __S(1098, __c34, 10),
+          state: __S(1441, __c45, 1),
+          tags: __S(1444, __c45, 4),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          url: S.String,
+          managedBy: S.optional(S.NullOr(__S(1539, __c48, 3)).pipe(T.Body("managed_by"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsUpdateResponsePostApplyResourcesValue",
+      });
+    case 12:
+      return S.Record(S.String, __S(1099, __c34, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          applyProgress: __S(1474, __c46, 2).pipe(T.Body("apply_progress")),
+          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
+          planProgress: __S(1474, __c46, 2).pipe(T.Body("plan_progress")),
+          routes: __S(1344, __c42, 0),
+          tunnels: __S(1344, __c42, 0),
+          lifecycleErrors: S.optional(
+            S.NullOr(__S(1251, __c39, 3)).pipe(T.Body("lifecycle_errors")),
+          ),
+        }),
+      ).annotate({
+        identifier: "OnRampsUpdateResponseStatus",
+      });
+    case 14:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(1102, __c34, 14))),
+        }),
+      ).annotate({
+        identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem",
+      });
+    case 16:
+      return S.Array(__S(1103, __c34, 15));
+    case 17:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(1105, __c34, 17))),
+        }),
+      ).annotate({
+        identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem",
+      });
+    case 19:
+      return S.Array(__S(1106, __c34, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenItems: __S(1104, __c34, 16).pipe(T.Body("hidden_items")),
+          name: S.String,
+          visibleItems: __S(1107, __c34, 19).pipe(T.Body("visible_items")),
+          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItem",
+      });
+    case 21:
+      return S.Array(__S(1108, __c34, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          config: __S(1441, __c45, 1),
+          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+          managed: S.Boolean,
+          monthlyCostEstimate: __S(1440, __c45, 0).pipe(T.Body("monthly_cost_estimate")),
+          name: S.String,
+          nativeId: S.String.pipe(T.Body("native_id")),
+          observations: __S(1443, __c45, 3),
+          providerIds: __S(1344, __c42, 0).pipe(T.Body("provider_ids")),
+          providerNamesById: __S(1444, __c45, 4).pipe(T.Body("provider_names_by_id")),
+          region: S.String,
+          resourceGroup: S.String.pipe(T.Body("resource_group")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          sections: __S(1109, __c34, 21),
+          state: __S(1441, __c45, 1),
+          tags: __S(1444, __c45, 4),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          url: S.String,
+          managedBy: S.optional(S.NullOr(__S(1377, __c43, 1)).pipe(T.Body("managed_by"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsUpdateResponseVpcsByIdValue",
+      });
+    case 23:
+      return S.Record(S.String, __S(1110, __c34, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
+          installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
+          installRoutesInMagicWan: S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
+          name: S.String,
+          type: S.String,
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          attachedHubs: S.optional(S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("attached_hubs"))),
+          attachedVpcs: S.optional(S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("attached_vpcs"))),
+          cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
+          description: S.optional(S.NullOr(S.String)),
+          hub: S.optional(S.NullOr(S.String)),
+          lastAppliedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_applied_at"))),
+          lastExportedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_exported_at"))),
+          lastPlannedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_planned_at"))),
+          manageHubToHubAttachments: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
+          ),
+          manageVpcToHubAttachments: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
+          ),
+          plannedMonthlyCostEstimate: S.optional(
+            S.NullOr(__S(1472, __c46, 0)).pipe(T.Body("planned_monthly_cost_estimate")),
+          ),
+          plannedResources: S.optional(
+            S.NullOr(__S(1090, __c34, 2)).pipe(T.Body("planned_resources")),
+          ),
+          plannedResourcesUnavailable: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
+          ),
+          postApplyMonthlyCostEstimate: S.optional(
+            S.NullOr(__S(1440, __c45, 0)).pipe(T.Body("post_apply_monthly_cost_estimate")),
+          ),
+          postApplyResources: S.optional(
+            S.NullOr(__S(1100, __c34, 12)).pipe(T.Body("post_apply_resources")),
+          ),
+          postApplyResourcesUnavailable: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
+          ),
+          region: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(__S(1101, __c34, 13))),
+          vpc: S.optional(S.NullOr(S.String)),
+          vpcsById: S.optional(S.NullOr(__S(1111, __c34, 23)).pipe(T.Body("vpcs_by_id"))),
+          vpcsByIdUnavailable: S.optional(
+            S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("vpcs_by_id_unavailable")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateOnRampResponse" });
+  }
+}
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10041,11 +12308,19 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ApplyOnRampRequest" });
-    case 1:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "ApplyOnRampResponse",
       });
-    case 2:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -10065,42 +12340,11 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateCatalogSyncRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
-          loggableError: S.optional(S.NullOr(S.String).pipe(T.Body("loggable_error"))),
-          templateData: S.optional(S.NullOr(S.Unknown).pipe(T.Body("template_data"))),
-          traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
-        }),
-      ).annotate({
-        identifier: "CatalogSyncsCreateResponseErrorsValueMeta",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parameter: S.optional(S.NullOr(S.String)),
-          parameterValueIndex: S.optional(S.NullOr(S.Number).pipe(T.Body("parameter_value_index"))),
-          pointer: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CatalogSyncsCreateResponseErrorsValueSource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.Number,
-          message: S.String,
-          documentationUrl: S.optional(S.NullOr(S.String).pipe(T.Body("documentation_url"))),
-          meta: S.optional(S.NullOr(__S(3, __c0, 3))),
-          source: S.optional(S.NullOr(__S(4, __c0, 4))),
-        }),
-      ).annotate({
-        identifier: "CatalogSyncsCreateResponseErrorsValue",
-      });
-    case 6:
-      return S.Record(S.String, __S(5, __c0, 5));
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10111,7 +12355,7 @@ function __c0(j: number): any {
           name: S.String,
           policy: S.String,
           updateMode: S.String.pipe(T.Body("update_mode")),
-          errors: S.optional(S.NullOr(__S(6, __c0, 6))),
+          errors: S.optional(S.NullOr(__S(1251, __c39, 3))),
           includesDiscoveriesUntil: S.optional(
             S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
           ),
@@ -10127,7 +12371,46 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          l10nKey: S.optional(S.NullOr(S.String).pipe(T.Body("l10n_key"))),
+          loggableError: S.optional(S.NullOr(S.String).pipe(T.Body("loggable_error"))),
+          templateData: S.optional(S.NullOr(S.Unknown).pipe(T.Body("template_data"))),
+          traceId: S.optional(S.NullOr(S.String).pipe(T.Body("trace_id"))),
+        }),
+      ).annotate({
+        identifier: "CatalogSyncsCreateResponseErrorsValueMeta",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parameter: S.optional(S.NullOr(S.String)),
+          parameterValueIndex: S.optional(S.NullOr(S.Number).pipe(T.Body("parameter_value_index"))),
+          pointer: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CatalogSyncsCreateResponseErrorsValueSource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.Number,
+          message: S.String,
+          documentationUrl: S.optional(S.NullOr(S.String).pipe(T.Body("documentation_url"))),
+          meta: S.optional(S.NullOr(__S(1248, __c39, 0))),
+          source: S.optional(S.NullOr(__S(1249, __c39, 1))),
+        }),
+      ).annotate({
+        identifier: "CatalogSyncsCreateResponseErrorsValue",
+      });
+    case 3:
+      return S.Record(S.String, __S(1250, __c39, 2));
+  }
+}
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10152,35 +12435,11 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          done: S.Number,
-          total: S.Number,
-          unit: S.String,
-        }),
-      ).annotate({
-        identifier: "CloudIntegrationsCreateResponseStatusDiscoveryProgress",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          clientType: S.String.pipe(T.Body("client_type")),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "CloudIntegrationsCreateResponseStatusInUseByItem",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          discoveryProgress: __S(9, __c1, 1).pipe(T.Body("discovery_progress")),
-          discoveryProgressV2: __S(9, __c1, 1).pipe(T.Body("discovery_progress_v2")),
+          discoveryProgress: __S(1312, __c41, 0).pipe(T.Body("discovery_progress")),
+          discoveryProgressV2: __S(1312, __c41, 0).pipe(T.Body("discovery_progress_v2")),
           lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
           lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
-          regions: __S(10, __c1, 2),
+          regions: __S(1344, __c42, 0),
           credentialsGoodSince: S.optional(
             S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
           ),
@@ -10192,7 +12451,7 @@ function __c1(j: number): any {
           ),
           discoveryMessage: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message"))),
           discoveryMessageV2: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message_v2"))),
-          inUseBy: S.optional(S.NullOr(__S(12, __c1, 4)).pipe(T.Body("in_use_by"))),
+          inUseBy: S.optional(S.NullOr(__S(1377, __c43, 1)).pipe(T.Body("in_use_by"))),
           lastDiscoveryCompletedAt: S.optional(
             S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
           ),
@@ -10210,7 +12469,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CloudIntegrationsCreateResponseStatus",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10228,12 +12487,52 @@ function __c1(j: number): any {
           gcpServiceAccountEmail: S.optional(
             S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
           ),
-          status: S.optional(S.NullOr(__S(13, __c1, 5))),
+          status: S.optional(S.NullOr(__S(1281, __c40, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateCloudIntegrationResponse",
       });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.Number,
+          total: S.Number,
+          unit: S.String,
+        }),
+      ).annotate({
+        identifier: "CloudIntegrationsCreateResponseStatusDiscoveryProgress",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          clientType: S.String.pipe(T.Body("client_type")),
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "CloudIntegrationsCreateResponseStatusInUseByItem",
+      });
+    case 1:
+      return S.Array(__S(1376, __c43, 0));
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -10245,8 +12544,8 @@ function __c1(j: number): any {
           name: S.String,
           type: S.String,
           adoptedHubId: S.optional(S.String.pipe(T.Body("adopted_hub_id"))),
-          attachedHubs: S.optional(__S(10, __c1, 2).pipe(T.Body("attached_hubs"))),
-          attachedVpcs: S.optional(__S(10, __c1, 2).pipe(T.Body("attached_vpcs"))),
+          attachedHubs: S.optional(__S(1344, __c42, 0).pipe(T.Body("attached_hubs"))),
+          attachedVpcs: S.optional(__S(1344, __c42, 0).pipe(T.Body("attached_vpcs"))),
           cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
           description: S.optional(S.String),
           hubProviderId: S.optional(S.String.pipe(T.Body("hub_provider_id"))),
@@ -10268,9 +12567,294 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateOnRampRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          diff: __S(1473, __c46, 1),
+          keysRequireReplace: __S(1536, __c48, 0).pipe(T.Body("keys_require_replace")),
+          monthlyCostEstimateDiff: __S(1472, __c46, 0).pipe(T.Body("monthly_cost_estimate_diff")),
+          plannedAction: S.String.pipe(T.Body("planned_action")),
+          resource: __S(1537, __c48, 1),
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponsePlannedResourcesItem",
+      });
+    case 2:
+      return S.Array(__S(1409, __c44, 1));
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(1411, __c44, 3))),
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem",
+      });
+    case 5:
+      return S.Array(__S(1412, __c44, 4));
+    case 6:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(1414, __c44, 6))),
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem",
+      });
+    case 8:
+      return S.Array(__S(1415, __c44, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenItems: __S(1413, __c44, 5).pipe(T.Body("hidden_items")),
+          name: S.String,
+          visibleItems: __S(1416, __c44, 8).pipe(T.Body("visible_items")),
+          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponsePostApplyResourcesValueSectionsItem",
+      });
+    case 10:
+      return S.Array(__S(1417, __c44, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          config: __S(1441, __c45, 1),
+          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+          managed: S.Boolean,
+          monthlyCostEstimate: __S(1440, __c45, 0).pipe(T.Body("monthly_cost_estimate")),
+          name: S.String,
+          nativeId: S.String.pipe(T.Body("native_id")),
+          observations: __S(1443, __c45, 3),
+          providerIds: __S(1344, __c42, 0).pipe(T.Body("provider_ids")),
+          providerNamesById: __S(1504, __c47, 0).pipe(T.Body("provider_names_by_id")),
+          region: S.String,
+          resourceGroup: S.String.pipe(T.Body("resource_group")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          sections: __S(1418, __c44, 10),
+          state: __S(1441, __c45, 1),
+          tags: __S(1444, __c45, 4),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          url: S.String,
+          managedBy: S.optional(S.NullOr(__S(1539, __c48, 3)).pipe(T.Body("managed_by"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponsePostApplyResourcesValue",
+      });
+    case 12:
+      return S.Record(S.String, __S(1419, __c44, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          applyProgress: __S(1474, __c46, 2).pipe(T.Body("apply_progress")),
+          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
+          planProgress: __S(1474, __c46, 2).pipe(T.Body("plan_progress")),
+          routes: __S(1344, __c42, 0),
+          tunnels: __S(1344, __c42, 0),
+          lifecycleErrors: S.optional(
+            S.NullOr(__S(1251, __c39, 3)).pipe(T.Body("lifecycle_errors")),
+          ),
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponseStatus",
+      });
+    case 14:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(1422, __c44, 14))),
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem",
+      });
+    case 16:
+      return S.Array(__S(1423, __c44, 15));
+    case 17:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["itemType", "string"],
+          ["itemType", "yaml"],
+          ["itemType", "yamlDiff"],
+          ["itemType", "resourcePreview"],
+          ["itemType", "list"],
+        ]),
+      );
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          helpText: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(__S(1425, __c44, 17))),
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem",
+      });
+    case 19:
+      return S.Array(__S(1426, __c44, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenItems: __S(1424, __c44, 16).pipe(T.Body("hidden_items")),
+          name: S.String,
+          visibleItems: __S(1427, __c44, 19).pipe(T.Body("visible_items")),
+          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItem",
+      });
+    case 21:
+      return S.Array(__S(1428, __c44, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          config: __S(1441, __c45, 1),
+          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+          managed: S.Boolean,
+          monthlyCostEstimate: __S(1440, __c45, 0).pipe(T.Body("monthly_cost_estimate")),
+          name: S.String,
+          nativeId: S.String.pipe(T.Body("native_id")),
+          observations: __S(1443, __c45, 3),
+          providerIds: __S(1344, __c42, 0).pipe(T.Body("provider_ids")),
+          providerNamesById: __S(1444, __c45, 4).pipe(T.Body("provider_names_by_id")),
+          region: S.String,
+          resourceGroup: S.String.pipe(T.Body("resource_group")),
+          resourceType: S.String.pipe(T.Body("resource_type")),
+          sections: __S(1429, __c44, 21),
+          state: __S(1441, __c45, 1),
+          tags: __S(1444, __c45, 4),
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          url: S.String,
+          managedBy: S.optional(S.NullOr(__S(1377, __c43, 1)).pipe(T.Body("managed_by"))),
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponseVpcsByIdValue",
+      });
+    case 23:
+      return S.Record(S.String, __S(1430, __c44, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          cloudType: S.String.pipe(T.Body("cloud_type")),
+          dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
+          installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
+          installRoutesInMagicWan: S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
+          name: S.String,
+          type: S.String,
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          attachedHubs: S.optional(S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("attached_hubs"))),
+          attachedVpcs: S.optional(S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("attached_vpcs"))),
+          cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
+          description: S.optional(S.NullOr(S.String)),
+          hub: S.optional(S.NullOr(S.String)),
+          lastAppliedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_applied_at"))),
+          lastExportedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_exported_at"))),
+          lastPlannedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_planned_at"))),
+          manageHubToHubAttachments: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
+          ),
+          manageVpcToHubAttachments: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
+          ),
+          plannedMonthlyCostEstimate: S.optional(
+            S.NullOr(__S(1472, __c46, 0)).pipe(T.Body("planned_monthly_cost_estimate")),
+          ),
+          plannedResources: S.optional(
+            S.NullOr(__S(1410, __c44, 2)).pipe(T.Body("planned_resources")),
+          ),
+          plannedResourcesUnavailable: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
+          ),
+          postApplyMonthlyCostEstimate: S.optional(
+            S.NullOr(__S(1440, __c45, 0)).pipe(T.Body("post_apply_monthly_cost_estimate")),
+          ),
+          postApplyResources: S.optional(
+            S.NullOr(__S(1420, __c44, 12)).pipe(T.Body("post_apply_resources")),
+          ),
+          postApplyResourcesUnavailable: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
+          ),
+          region: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(__S(1421, __c44, 13))),
+          vpc: S.optional(S.NullOr(S.String)),
+          vpcsById: S.optional(S.NullOr(__S(1431, __c44, 23)).pipe(T.Body("vpcs_by_id"))),
+          vpcsByIdUnavailable: S.optional(
+            S.NullOr(__S(1344, __c42, 0)).pipe(T.Body("vpcs_by_id_unavailable")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateOnRampResponse" });
   }
 }
-function __c2(j: number): any {
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currency: S.String,
+          monthlyCost: S.Number.pipe(T.Body("monthly_cost")),
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponsePostApplyMonthlyCostEstimate",
+      });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          firstObservedAt: S.String.pipe(T.Body("first_observed_at")),
+          lastObservedAt: S.String.pipe(T.Body("last_observed_at")),
+          providerId: S.String.pipe(T.Body("provider_id")),
+          resourceId: S.String.pipe(T.Body("resource_id")),
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponsePostApplyResourcesValueObservationsValue",
+      });
+    case 3:
+      return S.Record(S.String, __S(1442, __c45, 2));
+    case 4:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10296,8 +12880,27 @@ function __c2(j: number): any {
         identifier: "OnRampsCreateResponsePlannedResourcesItemDiff",
       });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.Number,
+          total: S.Number,
+        }),
+      ).annotate({
+        identifier: "OnRampsCreateResponseStatusApplyProgress",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10310,114 +12913,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "OnRampsCreateResponsePlannedResourcesItemResource",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          diff: __S(17, __c2, 1),
-          keysRequireReplace: __S(18, __c2, 2).pipe(T.Body("keys_require_replace")),
-          monthlyCostEstimateDiff: __S(16, __c2, 0).pipe(T.Body("monthly_cost_estimate_diff")),
-          plannedAction: S.String.pipe(T.Body("planned_action")),
-          resource: __S(19, __c2, 3),
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponsePlannedResourcesItem",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.String,
-          monthlyCost: S.Number.pipe(T.Body("monthly_cost")),
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponsePostApplyMonthlyCostEstimate",
-      });
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          firstObservedAt: S.String.pipe(T.Body("first_observed_at")),
-          lastObservedAt: S.String.pipe(T.Body("last_observed_at")),
-          providerId: S.String.pipe(T.Body("provider_id")),
-          resourceId: S.String.pipe(T.Body("resource_id")),
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponsePostApplyResourcesValueObservationsValue",
-      });
-    case 1:
-      return S.Record(S.String, __S(24, __c3, 0));
     case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(27, __c3, 3))),
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(30, __c3, 6))),
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenItems: __S(29, __c3, 5).pipe(T.Body("hidden_items")),
-          name: S.String,
-          visibleItems: __S(32, __c4, 0).pipe(T.Body("visible_items")),
-          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponsePostApplyResourcesValueSectionsItem",
-      });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10427,208 +12923,13 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "OnRampsCreateResponsePostApplyResourcesValueManagedByItem",
       });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          config: __S(23, __c2, 7),
-          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-          managed: S.Boolean,
-          monthlyCostEstimate: __S(22, __c2, 6).pipe(T.Body("monthly_cost_estimate")),
-          name: S.String,
-          nativeId: S.String.pipe(T.Body("native_id")),
-          observations: __S(25, __c3, 1),
-          providerIds: __S(10, __c1, 2).pipe(T.Body("provider_ids")),
-          providerNamesById: __S(26, __c3, 2).pipe(T.Body("provider_names_by_id")),
-          region: S.String,
-          resourceGroup: S.String.pipe(T.Body("resource_group")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          sections: __S(34, __c4, 2),
-          state: __S(23, __c2, 7),
-          tags: __S(35, __c4, 3),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          url: S.String,
-          managedBy: S.optional(S.NullOr(__S(37, __c4, 5)).pipe(T.Body("managed_by"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponsePostApplyResourcesValue",
-      });
-    case 7:
-      return S.Record(S.String, __S(38, __c4, 6));
+    case 3:
+      return S.Array(__S(1538, __c48, 2));
   }
 }
-function __c5(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.Number,
-          total: S.Number,
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponseStatusApplyProgress",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applyProgress: __S(40, __c5, 0).pipe(T.Body("apply_progress")),
-          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
-          planProgress: __S(40, __c5, 0).pipe(T.Body("plan_progress")),
-          routes: __S(10, __c1, 2),
-          tunnels: __S(10, __c1, 2),
-          lifecycleErrors: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("lifecycle_errors"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponseStatus",
-      });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(42, __c5, 2))),
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItemHiddenItemsItem",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(45, __c5, 5))),
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItemVisibleItemsItem",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenItems: __S(44, __c5, 4).pipe(T.Body("hidden_items")),
-          name: S.String,
-          visibleItems: __S(47, __c5, 7).pipe(T.Body("visible_items")),
-          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponseVpcsByIdValueSectionsItem",
-      });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          config: __S(23, __c2, 7),
-          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-          managed: S.Boolean,
-          monthlyCostEstimate: __S(22, __c2, 6).pipe(T.Body("monthly_cost_estimate")),
-          name: S.String,
-          nativeId: S.String.pipe(T.Body("native_id")),
-          observations: __S(25, __c3, 1),
-          providerIds: __S(10, __c1, 2).pipe(T.Body("provider_ids")),
-          providerNamesById: __S(35, __c4, 3).pipe(T.Body("provider_names_by_id")),
-          region: S.String,
-          resourceGroup: S.String.pipe(T.Body("resource_group")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          sections: __S(49, __c6, 1),
-          state: __S(23, __c2, 7),
-          tags: __S(35, __c4, 3),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          url: S.String,
-          managedBy: S.optional(S.NullOr(__S(12, __c1, 4)).pipe(T.Body("managed_by"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsCreateResponseVpcsByIdValue",
-      });
-    case 3:
-      return S.Record(S.String, __S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
-          installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
-          installRoutesInMagicWan: S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
-          name: S.String,
-          type: S.String,
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          attachedHubs: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("attached_hubs"))),
-          attachedVpcs: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("attached_vpcs"))),
-          cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
-          description: S.optional(S.NullOr(S.String)),
-          hub: S.optional(S.NullOr(S.String)),
-          lastAppliedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_applied_at"))),
-          lastExportedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_exported_at"))),
-          lastPlannedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_planned_at"))),
-          manageHubToHubAttachments: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
-          ),
-          manageVpcToHubAttachments: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
-          ),
-          plannedMonthlyCostEstimate: S.optional(
-            S.NullOr(__S(16, __c2, 0)).pipe(T.Body("planned_monthly_cost_estimate")),
-          ),
-          plannedResources: S.optional(
-            S.NullOr(__S(21, __c2, 5)).pipe(T.Body("planned_resources")),
-          ),
-          plannedResourcesUnavailable: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
-          ),
-          postApplyMonthlyCostEstimate: S.optional(
-            S.NullOr(__S(22, __c2, 6)).pipe(T.Body("post_apply_monthly_cost_estimate")),
-          ),
-          postApplyResources: S.optional(
-            S.NullOr(__S(39, __c4, 7)).pipe(T.Body("post_apply_resources")),
-          ),
-          postApplyResourcesUnavailable: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
-          ),
-          region: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(__S(41, __c5, 1))),
-          vpc: S.optional(S.NullOr(S.String)),
-          vpcsById: S.optional(S.NullOr(__S(51, __c6, 3)).pipe(T.Body("vpcs_by_id"))),
-          vpcsByIdUnavailable: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("vpcs_by_id_unavailable")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateOnRampResponse" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -10644,7 +12945,11 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteCatalogSyncRequest" });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10652,2216 +12957,8 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteCatalogSyncResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          providerId: S.String.pipe(T.Label("provider_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteCloudIntegrationRequest",
-      });
   }
 }
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          onrampId: S.String.pipe(T.Label("onramp_id")),
-          destroy: S.optional(S.Boolean.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteOnRampRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteOnRampResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/magic/cloud/providers/discover",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DiscoverAllCloudIntegrationRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "DiscoverAllCloudIntegrationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          providerId: S.String.pipe(T.Label("provider_id")),
-          v2: S.optional(S.Boolean.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}/discover",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DiscoverCloudIntegrationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          onrampId: S.String.pipe(T.Label("onramp_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/export",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ExportOnRampRequest" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          desc: S.optional(S.Boolean.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
-          providerId: S.optional(S.String.pipe(T.Query("provider_id"))),
-          region: S.optional(S.String.pipe(T.Query())),
-          resourceGroup: S.optional(S.String.pipe(T.Query("resource_group"))),
-          resourceId: S.optional(__S(10, __c1, 2).pipe(T.Query("resource_id"))),
-          resourceType: S.optional(__S(62, __c7, 6).pipe(T.Query("resource_type"))),
-          search: S.optional(__S(10, __c1, 2).pipe(T.Query())),
-          v2: S.optional(S.Boolean.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/magic/cloud/resources/export",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ExportResourceRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          syncId: S.String.pipe(T.Label("sync_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetCatalogSyncRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          description: S.String,
-          destinationId: S.String.pipe(T.Body("destination_id")),
-          destinationType: S.String.pipe(T.Body("destination_type")),
-          lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
-          name: S.String,
-          policy: S.String,
-          updateMode: S.String.pipe(T.Body("update_mode")),
-          errors: S.optional(S.NullOr(__S(6, __c0, 6))),
-          includesDiscoveriesUntil: S.optional(
-            S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
-          ),
-          lastAttemptedUpdateAt: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_attempted_update_at")),
-          ),
-          lastSuccessfulUpdateAt: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_successful_update_at")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetCatalogSyncResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          providerId: S.String.pipe(T.Label("provider_id")),
-          status: S.optional(S.Boolean.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetCloudIntegrationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          clientType: S.String.pipe(T.Body("client_type")),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "CloudIntegrationsGetResponseStatusInUseByItem",
-      });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          discoveryProgress: __S(9, __c1, 1).pipe(T.Body("discovery_progress")),
-          discoveryProgressV2: __S(9, __c1, 1).pipe(T.Body("discovery_progress_v2")),
-          lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
-          lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
-          regions: __S(10, __c1, 2),
-          credentialsGoodSince: S.optional(
-            S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
-          ),
-          credentialsMissingSince: S.optional(
-            S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
-          ),
-          credentialsRejectedSince: S.optional(
-            S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
-          ),
-          discoveryMessage: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message"))),
-          discoveryMessageV2: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message_v2"))),
-          inUseBy: S.optional(S.NullOr(__S(68, __c8, 4)).pipe(T.Body("in_use_by"))),
-          lastDiscoveryCompletedAt: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
-          ),
-          lastDiscoveryCompletedAtV2: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
-          ),
-          lastDiscoveryStartedAt: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
-          ),
-          lastDiscoveryStartedAtV2: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
-          ),
-          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-        }),
-      ).annotate({
-        identifier: "CloudIntegrationsGetResponseStatus",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          friendlyName: S.String.pipe(T.Body("friendly_name")),
-          lastUpdated: S.String.pipe(T.Body("last_updated")),
-          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
-          state: S.String,
-          stateV2: S.String.pipe(T.Body("state_v2")),
-          awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
-          azureSubscriptionId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_subscription_id"))),
-          azureTenantId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_tenant_id"))),
-          description: S.optional(S.NullOr(S.String)),
-          gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
-          gcpServiceAccountEmail: S.optional(
-            S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
-          ),
-          status: S.optional(S.NullOr(__S(69, __c8, 5))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetCloudIntegrationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          onrampId: S.String.pipe(T.Label("onramp_id")),
-          plannedResources: S.optional(S.Boolean.pipe(T.Query("planned_resources"))),
-          postApplyResources: S.optional(S.Boolean.pipe(T.Query("post_apply_resources"))),
-          status: S.optional(S.Boolean.pipe(T.Query())),
-          vpcs: S.optional(S.Boolean.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetOnRampRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          detail: S.String,
-          name: S.String,
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          title: S.String,
-        }),
-      ).annotate({
-        identifier: "OnRampsGetResponsePlannedResourcesItemResource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          diff: __S(17, __c2, 1),
-          keysRequireReplace: __S(10, __c1, 2).pipe(T.Body("keys_require_replace")),
-          monthlyCostEstimateDiff: __S(16, __c2, 0).pipe(T.Body("monthly_cost_estimate_diff")),
-          plannedAction: S.String.pipe(T.Body("planned_action")),
-          resource: __S(72, __c9, 0),
-        }),
-      ).annotate({
-        identifier: "OnRampsGetResponsePlannedResourcesItem",
-      });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(75, __c9, 3))),
-        }),
-      ).annotate({
-        identifier: "OnRampsGetResponsePostApplyResourcesValueSectionsItemHiddenItemsItem",
-      });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(78, __c9, 6))),
-        }),
-      ).annotate({
-        identifier: "OnRampsGetResponsePostApplyResourcesValueSectionsItemVisibleItemsItem",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenItems: __S(77, __c9, 5).pipe(T.Body("hidden_items")),
-          name: S.String,
-          visibleItems: __S(80, __c10, 0).pipe(T.Body("visible_items")),
-          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsGetResponsePostApplyResourcesValueSectionsItem",
-      });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          config: __S(23, __c2, 7),
-          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-          managed: S.Boolean,
-          monthlyCostEstimate: __S(22, __c2, 6).pipe(T.Body("monthly_cost_estimate")),
-          name: S.String,
-          nativeId: S.String.pipe(T.Body("native_id")),
-          observations: __S(25, __c3, 1),
-          providerIds: __S(10, __c1, 2).pipe(T.Body("provider_ids")),
-          providerNamesById: __S(35, __c4, 3).pipe(T.Body("provider_names_by_id")),
-          region: S.String,
-          resourceGroup: S.String.pipe(T.Body("resource_group")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          sections: __S(82, __c10, 2),
-          state: __S(23, __c2, 7),
-          tags: __S(35, __c4, 3),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          url: S.String,
-          managedBy: S.optional(S.NullOr(__S(12, __c1, 4)).pipe(T.Body("managed_by"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsGetResponsePostApplyResourcesValue",
-      });
-    case 4:
-      return S.Record(S.String, __S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          applyProgress: __S(40, __c5, 0).pipe(T.Body("apply_progress")),
-          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
-          planProgress: __S(40, __c5, 0).pipe(T.Body("plan_progress")),
-          routes: __S(10, __c1, 2),
-          tunnels: __S(10, __c1, 2),
-          lifecycleErrors: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("lifecycle_errors"))),
-        }),
-      ).annotate({ identifier: "OnRampsGetResponseStatus" });
-    case 6:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(86, __c10, 6))),
-        }),
-      ).annotate({
-        identifier: "OnRampsGetResponseVpcsByIdValueSectionsItemHiddenItemsItem",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(89, __c11, 1))),
-        }),
-      ).annotate({
-        identifier: "OnRampsGetResponseVpcsByIdValueSectionsItemVisibleItemsItem",
-      });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenItems: __S(88, __c11, 0).pipe(T.Body("hidden_items")),
-          name: S.String,
-          visibleItems: __S(91, __c11, 3).pipe(T.Body("visible_items")),
-          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsGetResponseVpcsByIdValueSectionsItem",
-      });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          config: __S(23, __c2, 7),
-          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-          managed: S.Boolean,
-          monthlyCostEstimate: __S(22, __c2, 6).pipe(T.Body("monthly_cost_estimate")),
-          name: S.String,
-          nativeId: S.String.pipe(T.Body("native_id")),
-          observations: __S(25, __c3, 1),
-          providerIds: __S(10, __c1, 2).pipe(T.Body("provider_ids")),
-          providerNamesById: __S(35, __c4, 3).pipe(T.Body("provider_names_by_id")),
-          region: S.String,
-          resourceGroup: S.String.pipe(T.Body("resource_group")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          sections: __S(93, __c11, 5),
-          state: __S(23, __c2, 7),
-          tags: __S(35, __c4, 3),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          url: S.String,
-          managedBy: S.optional(S.NullOr(__S(68, __c8, 4)).pipe(T.Body("managed_by"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsGetResponseVpcsByIdValue",
-      });
-    case 7:
-      return S.Record(S.String, __S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
-          installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
-          installRoutesInMagicWan: S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
-          name: S.String,
-          type: S.String,
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          attachedHubs: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("attached_hubs"))),
-          attachedVpcs: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("attached_vpcs"))),
-          cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
-          description: S.optional(S.NullOr(S.String)),
-          hub: S.optional(S.NullOr(S.String)),
-          lastAppliedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_applied_at"))),
-          lastExportedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_exported_at"))),
-          lastPlannedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_planned_at"))),
-          manageHubToHubAttachments: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
-          ),
-          manageVpcToHubAttachments: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
-          ),
-          plannedMonthlyCostEstimate: S.optional(
-            S.NullOr(__S(16, __c2, 0)).pipe(T.Body("planned_monthly_cost_estimate")),
-          ),
-          plannedResources: S.optional(
-            S.NullOr(__S(74, __c9, 2)).pipe(T.Body("planned_resources")),
-          ),
-          plannedResourcesUnavailable: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
-          ),
-          postApplyMonthlyCostEstimate: S.optional(
-            S.NullOr(__S(22, __c2, 6)).pipe(T.Body("post_apply_monthly_cost_estimate")),
-          ),
-          postApplyResources: S.optional(
-            S.NullOr(__S(84, __c10, 4)).pipe(T.Body("post_apply_resources")),
-          ),
-          postApplyResourcesUnavailable: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
-          ),
-          region: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(__S(85, __c10, 5))),
-          vpc: S.optional(S.NullOr(S.String)),
-          vpcsById: S.optional(S.NullOr(__S(95, __c11, 7)).pipe(T.Body("vpcs_by_id"))),
-          vpcsByIdUnavailable: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("vpcs_by_id_unavailable")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetOnRampResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          resourceId: S.String.pipe(T.Label("resource_id")),
-          v2: S.optional(S.Boolean.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/magic/cloud/resources/{resource_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetResourceRequest" });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(98, __c12, 2))),
-        }),
-      ).annotate({
-        identifier: "ResourcesGetResponseSectionsItemHiddenItemsItem",
-      });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(101, __c12, 5))),
-        }),
-      ).annotate({
-        identifier: "ResourcesGetResponseSectionsItemVisibleItemsItem",
-      });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenItems: __S(100, __c12, 4).pipe(T.Body("hidden_items")),
-          name: S.String,
-          visibleItems: __S(103, __c12, 7).pipe(T.Body("visible_items")),
-          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-        }),
-      ).annotate({
-        identifier: "ResourcesGetResponseSectionsItem",
-      });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          config: __S(23, __c2, 7),
-          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-          managed: S.Boolean,
-          monthlyCostEstimate: __S(22, __c2, 6).pipe(T.Body("monthly_cost_estimate")),
-          name: S.String,
-          nativeId: S.String.pipe(T.Body("native_id")),
-          observations: __S(25, __c3, 1),
-          providerIds: __S(10, __c1, 2).pipe(T.Body("provider_ids")),
-          providerNamesById: __S(35, __c4, 3).pipe(T.Body("provider_names_by_id")),
-          region: S.String,
-          resourceGroup: S.String.pipe(T.Body("resource_group")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          sections: __S(105, __c13, 1),
-          state: __S(23, __c2, 7),
-          tags: __S(35, __c4, 3),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          url: S.String,
-          managedBy: S.optional(S.NullOr(__S(68, __c8, 4)).pipe(T.Body("managed_by"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetResourceResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          providerId: S.String.pipe(T.Label("provider_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}/initial_setup",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "InitialSetupCloudIntegrationRequest",
-      });
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["awsTrustPolicy", "itemType"],
-          ["azureConsentUrl", "integrationIdentityTag", "itemType", "tagCliCommand"],
-          ["integrationIdentityTag", "itemType", "tagCliCommand"],
-        ]),
-      );
-    case 5:
-      return S.suspend(() =>
-        __S(108, __c13, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "InitialSetupCloudIntegrationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          destinationType: S.optional(S.String.pipe(T.Query("destination_type"))),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/prebuilt-policies",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListCatalogSyncPrebuiltPoliciesRequest",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          applicableDestinations: __S(111, __c13, 7).pipe(T.Body("applicable_destinations")),
-          policyDescription: S.String.pipe(T.Body("policy_description")),
-          policyName: S.String.pipe(T.Body("policy_name")),
-          policyString: S.String.pipe(T.Body("policy_string")),
-        }),
-      ).annotate({
-        identifier: "CatalogSyncsPrebuiltPoliciesListResultItem",
-      });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(113, __c14, 1).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListCatalogSyncPrebuiltPoliciesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/magic/cloud/catalog-syncs",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListCatalogSyncsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          description: S.String,
-          destinationId: S.String.pipe(T.Body("destination_id")),
-          destinationType: S.String.pipe(T.Body("destination_type")),
-          lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
-          name: S.String,
-          policy: S.String,
-          updateMode: S.String.pipe(T.Body("update_mode")),
-          errors: S.optional(S.NullOr(__S(6, __c0, 6))),
-          includesDiscoveriesUntil: S.optional(
-            S.NullOr(S.String).pipe(T.Body("includes_discoveries_until")),
-          ),
-          lastAttemptedUpdateAt: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_attempted_update_at")),
-          ),
-          lastSuccessfulUpdateAt: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_successful_update_at")),
-          ),
-        }),
-      ).annotate({
-        identifier: "CatalogSyncsListResultItem",
-      });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(117, __c14, 5).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListCatalogSyncsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          cloudflare: S.optional(S.Boolean.pipe(T.Query())),
-          desc: S.optional(S.Boolean.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
-          status: S.optional(S.Boolean.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/magic/cloud/providers",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListCloudIntegrationsRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          discoveryProgress: __S(9, __c1, 1).pipe(T.Body("discovery_progress")),
-          discoveryProgressV2: __S(9, __c1, 1).pipe(T.Body("discovery_progress_v2")),
-          lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
-          lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
-          regions: __S(10, __c1, 2),
-          credentialsGoodSince: S.optional(
-            S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
-          ),
-          credentialsMissingSince: S.optional(
-            S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
-          ),
-          credentialsRejectedSince: S.optional(
-            S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
-          ),
-          discoveryMessage: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message"))),
-          discoveryMessageV2: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message_v2"))),
-          inUseBy: S.optional(S.NullOr(__S(12, __c1, 4)).pipe(T.Body("in_use_by"))),
-          lastDiscoveryCompletedAt: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
-          ),
-          lastDiscoveryCompletedAtV2: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
-          ),
-          lastDiscoveryStartedAt: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
-          ),
-          lastDiscoveryStartedAtV2: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
-          ),
-          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-        }),
-      ).annotate({
-        identifier: "CloudIntegrationsListResultItemStatus",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          friendlyName: S.String.pipe(T.Body("friendly_name")),
-          lastUpdated: S.String.pipe(T.Body("last_updated")),
-          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
-          state: S.String,
-          stateV2: S.String.pipe(T.Body("state_v2")),
-          awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
-          azureSubscriptionId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_subscription_id"))),
-          azureTenantId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_tenant_id"))),
-          description: S.optional(S.NullOr(S.String)),
-          gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
-          gcpServiceAccountEmail: S.optional(
-            S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
-          ),
-          status: S.optional(S.NullOr(__S(120, __c15, 0))),
-        }),
-      ).annotate({
-        identifier: "CloudIntegrationsListResultItem",
-      });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(122, __c15, 2).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListCloudIntegrationsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListOnRampAddressSpacesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          prefixes: __S(10, __c1, 2),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListOnRampAddressSpacesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          desc: S.optional(S.Boolean.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
-          status: S.optional(S.Boolean.pipe(T.Query())),
-          vpcs: S.optional(S.Boolean.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/accounts/{account_id}/magic/cloud/onramps", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListOnRampsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          diff: __S(17, __c2, 1),
-          keysRequireReplace: __S(18, __c2, 2).pipe(T.Body("keys_require_replace")),
-          monthlyCostEstimateDiff: __S(16, __c2, 0).pipe(T.Body("monthly_cost_estimate_diff")),
-          plannedAction: S.String.pipe(T.Body("planned_action")),
-          resource: __S(19, __c2, 3),
-        }),
-      ).annotate({
-        identifier: "OnRampsListResultItemPlannedResourcesItem",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(129, __c16, 1))),
-        }),
-      ).annotate({
-        identifier: "OnRampsListResultItemPostApplyResourcesValueSectionsItemHiddenItemsItem",
-      });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(132, __c16, 4))),
-        }),
-      ).annotate({
-        identifier: "OnRampsListResultItemPostApplyResourcesValueSectionsItemVisibleItemsItem",
-      });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenItems: __S(131, __c16, 3).pipe(T.Body("hidden_items")),
-          name: S.String,
-          visibleItems: __S(134, __c16, 6).pipe(T.Body("visible_items")),
-          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsListResultItemPostApplyResourcesValueSectionsItem",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          config: __S(23, __c2, 7),
-          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-          managed: S.Boolean,
-          monthlyCostEstimate: __S(22, __c2, 6).pipe(T.Body("monthly_cost_estimate")),
-          name: S.String,
-          nativeId: S.String.pipe(T.Body("native_id")),
-          observations: __S(25, __c3, 1),
-          providerIds: __S(10, __c1, 2).pipe(T.Body("provider_ids")),
-          providerNamesById: __S(26, __c3, 2).pipe(T.Body("provider_names_by_id")),
-          region: S.String,
-          resourceGroup: S.String.pipe(T.Body("resource_group")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          sections: __S(136, __c17, 0),
-          state: __S(23, __c2, 7),
-          tags: __S(35, __c4, 3),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          url: S.String,
-          managedBy: S.optional(S.NullOr(__S(37, __c4, 5)).pipe(T.Body("managed_by"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsListResultItemPostApplyResourcesValue",
-      });
-    case 2:
-      return S.Record(S.String, __S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          applyProgress: __S(40, __c5, 0).pipe(T.Body("apply_progress")),
-          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
-          planProgress: __S(40, __c5, 0).pipe(T.Body("plan_progress")),
-          routes: __S(10, __c1, 2),
-          tunnels: __S(10, __c1, 2),
-          lifecycleErrors: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("lifecycle_errors"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsListResultItemStatus",
-      });
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(140, __c17, 4))),
-        }),
-      ).annotate({
-        identifier: "OnRampsListResultItemVpcsByIdValueSectionsItemHiddenItemsItem",
-      });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(143, __c17, 7))),
-        }),
-      ).annotate({
-        identifier: "OnRampsListResultItemVpcsByIdValueSectionsItemVisibleItemsItem",
-      });
-    case 1:
-      return S.Array(__S(144, __c18, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenItems: __S(142, __c17, 6).pipe(T.Body("hidden_items")),
-          name: S.String,
-          visibleItems: __S(145, __c18, 1).pipe(T.Body("visible_items")),
-          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsListResultItemVpcsByIdValueSectionsItem",
-      });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          config: __S(23, __c2, 7),
-          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-          managed: S.Boolean,
-          monthlyCostEstimate: __S(22, __c2, 6).pipe(T.Body("monthly_cost_estimate")),
-          name: S.String,
-          nativeId: S.String.pipe(T.Body("native_id")),
-          observations: __S(25, __c3, 1),
-          providerIds: __S(10, __c1, 2).pipe(T.Body("provider_ids")),
-          providerNamesById: __S(35, __c4, 3).pipe(T.Body("provider_names_by_id")),
-          region: S.String,
-          resourceGroup: S.String.pipe(T.Body("resource_group")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          sections: __S(147, __c18, 3),
-          state: __S(23, __c2, 7),
-          tags: __S(35, __c4, 3),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          url: S.String,
-          managedBy: S.optional(S.NullOr(__S(12, __c1, 4)).pipe(T.Body("managed_by"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsListResultItemVpcsByIdValue",
-      });
-    case 5:
-      return S.Record(S.String, __S(148, __c18, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
-          installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
-          installRoutesInMagicWan: S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
-          name: S.String,
-          type: S.String,
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          attachedHubs: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("attached_hubs"))),
-          attachedVpcs: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("attached_vpcs"))),
-          cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
-          description: S.optional(S.NullOr(S.String)),
-          hub: S.optional(S.NullOr(S.String)),
-          lastAppliedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_applied_at"))),
-          lastExportedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_exported_at"))),
-          lastPlannedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_planned_at"))),
-          manageHubToHubAttachments: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
-          ),
-          manageVpcToHubAttachments: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
-          ),
-          plannedMonthlyCostEstimate: S.optional(
-            S.NullOr(__S(16, __c2, 0)).pipe(T.Body("planned_monthly_cost_estimate")),
-          ),
-          plannedResources: S.optional(
-            S.NullOr(__S(128, __c16, 0)).pipe(T.Body("planned_resources")),
-          ),
-          plannedResourcesUnavailable: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
-          ),
-          postApplyMonthlyCostEstimate: S.optional(
-            S.NullOr(__S(22, __c2, 6)).pipe(T.Body("post_apply_monthly_cost_estimate")),
-          ),
-          postApplyResources: S.optional(
-            S.NullOr(__S(138, __c17, 2)).pipe(T.Body("post_apply_resources")),
-          ),
-          postApplyResourcesUnavailable: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
-          ),
-          region: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(__S(139, __c17, 3))),
-          vpc: S.optional(S.NullOr(S.String)),
-          vpcsById: S.optional(S.NullOr(__S(149, __c18, 5)).pipe(T.Body("vpcs_by_id"))),
-          vpcsByIdUnavailable: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("vpcs_by_id_unavailable")),
-          ),
-        }),
-      ).annotate({ identifier: "OnRampsListResultItem" });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(151, __c18, 7).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListOnRampsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          cloudflare: S.optional(S.Boolean.pipe(T.Query())),
-          desc: S.optional(S.Boolean.pipe(T.Query())),
-          managed: S.optional(S.Boolean.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          providerId: S.optional(S.String.pipe(T.Query("provider_id"))),
-          region: S.optional(S.String.pipe(T.Query())),
-          resourceGroup: S.optional(S.String.pipe(T.Query("resource_group"))),
-          resourceId: S.optional(__S(10, __c1, 2).pipe(T.Query("resource_id"))),
-          resourceType: S.optional(__S(62, __c7, 6).pipe(T.Query("resource_type"))),
-          search: S.optional(__S(10, __c1, 2).pipe(T.Query())),
-          v2: S.optional(S.Boolean.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/magic/cloud/resources",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListResourcesRequest" });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(154, __c19, 2))),
-        }),
-      ).annotate({
-        identifier: "ResourcesListResultItemSectionsItemHiddenItemsItem",
-      });
-    case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(157, __c19, 5))),
-        }),
-      ).annotate({
-        identifier: "ResourcesListResultItemSectionsItemVisibleItemsItem",
-      });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenItems: __S(156, __c19, 4).pipe(T.Body("hidden_items")),
-          name: S.String,
-          visibleItems: __S(159, __c19, 7).pipe(T.Body("visible_items")),
-          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-        }),
-      ).annotate({
-        identifier: "ResourcesListResultItemSectionsItem",
-      });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          config: __S(23, __c2, 7),
-          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-          managed: S.Boolean,
-          monthlyCostEstimate: __S(22, __c2, 6).pipe(T.Body("monthly_cost_estimate")),
-          name: S.String,
-          nativeId: S.String.pipe(T.Body("native_id")),
-          observations: __S(25, __c3, 1),
-          providerIds: __S(10, __c1, 2).pipe(T.Body("provider_ids")),
-          providerNamesById: __S(35, __c4, 3).pipe(T.Body("provider_names_by_id")),
-          region: S.String,
-          resourceGroup: S.String.pipe(T.Body("resource_group")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          sections: __S(161, __c20, 1),
-          state: __S(23, __c2, 7),
-          tags: __S(35, __c4, 3),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          url: S.String,
-          managedBy: S.optional(S.NullOr(__S(68, __c8, 4)).pipe(T.Body("managed_by"))),
-        }),
-      ).annotate({ identifier: "ResourcesListResultItem" });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(163, __c20, 3).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListResourcesResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          syncId: S.String.pipe(T.Label("sync_id")),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          policy: S.optional(S.String),
-          updateMode: S.optional(S.String.pipe(T.Body("update_mode"))),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PatchCatalogSyncRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          providerId: S.String.pipe(T.Label("provider_id")),
-          awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
-          azureSubscriptionId: S.optional(S.String.pipe(T.Body("azure_subscription_id"))),
-          azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-          description: S.optional(S.String),
-          friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
-          gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
-          gcpServiceAccountEmail: S.optional(S.String.pipe(T.Body("gcp_service_account_email"))),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "PatchCloudIntegrationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          discoveryProgress: __S(9, __c1, 1).pipe(T.Body("discovery_progress")),
-          discoveryProgressV2: __S(9, __c1, 1).pipe(T.Body("discovery_progress_v2")),
-          lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
-          lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
-          regions: __S(10, __c1, 2),
-          credentialsGoodSince: S.optional(
-            S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
-          ),
-          credentialsMissingSince: S.optional(
-            S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
-          ),
-          credentialsRejectedSince: S.optional(
-            S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
-          ),
-          discoveryMessage: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message"))),
-          discoveryMessageV2: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message_v2"))),
-          inUseBy: S.optional(S.NullOr(__S(12, __c1, 4)).pipe(T.Body("in_use_by"))),
-          lastDiscoveryCompletedAt: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
-          ),
-          lastDiscoveryCompletedAtV2: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
-          ),
-          lastDiscoveryStartedAt: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
-          ),
-          lastDiscoveryStartedAtV2: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
-          ),
-          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-        }),
-      ).annotate({
-        identifier: "CloudIntegrationsEditResponseStatus",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          friendlyName: S.String.pipe(T.Body("friendly_name")),
-          lastUpdated: S.String.pipe(T.Body("last_updated")),
-          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
-          state: S.String,
-          stateV2: S.String.pipe(T.Body("state_v2")),
-          awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
-          azureSubscriptionId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_subscription_id"))),
-          azureTenantId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_tenant_id"))),
-          description: S.optional(S.NullOr(S.String)),
-          gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
-          gcpServiceAccountEmail: S.optional(
-            S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
-          ),
-          status: S.optional(S.NullOr(__S(167, __c20, 7))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "PatchCloudIntegrationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          onrampId: S.String.pipe(T.Label("onramp_id")),
-          attachedHubs: S.optional(__S(10, __c1, 2).pipe(T.Body("attached_hubs"))),
-          attachedVpcs: S.optional(__S(10, __c1, 2).pipe(T.Body("attached_vpcs"))),
-          description: S.optional(S.String),
-          installRoutesInCloud: S.optional(S.Boolean.pipe(T.Body("install_routes_in_cloud"))),
-          installRoutesInMagicWan: S.optional(
-            S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
-          ),
-          manageHubToHubAttachments: S.optional(
-            S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
-          ),
-          manageVpcToHubAttachments: S.optional(
-            S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
-          ),
-          name: S.optional(S.String),
-          vpc: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PatchOnRampRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          diff: __S(17, __c2, 1),
-          keysRequireReplace: __S(10, __c1, 2).pipe(T.Body("keys_require_replace")),
-          monthlyCostEstimateDiff: __S(16, __c2, 0).pipe(T.Body("monthly_cost_estimate_diff")),
-          plannedAction: S.String.pipe(T.Body("planned_action")),
-          resource: __S(72, __c9, 0),
-        }),
-      ).annotate({
-        identifier: "OnRampsEditResponsePlannedResourcesItem",
-      });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(172, __c21, 4))),
-        }),
-      ).annotate({
-        identifier: "OnRampsEditResponsePostApplyResourcesValueSectionsItemHiddenItemsItem",
-      });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(175, __c21, 7))),
-        }),
-      ).annotate({
-        identifier: "OnRampsEditResponsePostApplyResourcesValueSectionsItemVisibleItemsItem",
-      });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenItems: __S(174, __c21, 6).pipe(T.Body("hidden_items")),
-          name: S.String,
-          visibleItems: __S(177, __c22, 1).pipe(T.Body("visible_items")),
-          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsEditResponsePostApplyResourcesValueSectionsItem",
-      });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          config: __S(23, __c2, 7),
-          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-          managed: S.Boolean,
-          monthlyCostEstimate: __S(22, __c2, 6).pipe(T.Body("monthly_cost_estimate")),
-          name: S.String,
-          nativeId: S.String.pipe(T.Body("native_id")),
-          observations: __S(25, __c3, 1),
-          providerIds: __S(10, __c1, 2).pipe(T.Body("provider_ids")),
-          providerNamesById: __S(26, __c3, 2).pipe(T.Body("provider_names_by_id")),
-          region: S.String,
-          resourceGroup: S.String.pipe(T.Body("resource_group")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          sections: __S(179, __c22, 3),
-          state: __S(23, __c2, 7),
-          tags: __S(35, __c4, 3),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          url: S.String,
-          managedBy: S.optional(S.NullOr(__S(12, __c1, 4)).pipe(T.Body("managed_by"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsEditResponsePostApplyResourcesValue",
-      });
-    case 5:
-      return S.Record(S.String, __S(180, __c22, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          applyProgress: __S(40, __c5, 0).pipe(T.Body("apply_progress")),
-          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
-          planProgress: __S(40, __c5, 0).pipe(T.Body("plan_progress")),
-          routes: __S(10, __c1, 2),
-          tunnels: __S(10, __c1, 2),
-          lifecycleErrors: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("lifecycle_errors"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsEditResponseStatus",
-      });
-    case 7:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(183, __c22, 7))),
-        }),
-      ).annotate({
-        identifier: "OnRampsEditResponseVpcsByIdValueSectionsItemHiddenItemsItem",
-      });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(186, __c23, 2))),
-        }),
-      ).annotate({
-        identifier: "OnRampsEditResponseVpcsByIdValueSectionsItemVisibleItemsItem",
-      });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenItems: __S(185, __c23, 1).pipe(T.Body("hidden_items")),
-          name: S.String,
-          visibleItems: __S(188, __c23, 4).pipe(T.Body("visible_items")),
-          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsEditResponseVpcsByIdValueSectionsItem",
-      });
-    case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          config: __S(23, __c2, 7),
-          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-          managed: S.Boolean,
-          monthlyCostEstimate: __S(22, __c2, 6).pipe(T.Body("monthly_cost_estimate")),
-          name: S.String,
-          nativeId: S.String.pipe(T.Body("native_id")),
-          observations: __S(25, __c3, 1),
-          providerIds: __S(10, __c1, 2).pipe(T.Body("provider_ids")),
-          providerNamesById: __S(35, __c4, 3).pipe(T.Body("provider_names_by_id")),
-          region: S.String,
-          resourceGroup: S.String.pipe(T.Body("resource_group")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          sections: __S(190, __c23, 6),
-          state: __S(23, __c2, 7),
-          tags: __S(35, __c4, 3),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          url: S.String,
-          managedBy: S.optional(S.NullOr(__S(68, __c8, 4)).pipe(T.Body("managed_by"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsEditResponseVpcsByIdValue",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(191, __c23, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
-          installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
-          installRoutesInMagicWan: S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
-          name: S.String,
-          type: S.String,
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          attachedHubs: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("attached_hubs"))),
-          attachedVpcs: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("attached_vpcs"))),
-          cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
-          description: S.optional(S.NullOr(S.String)),
-          hub: S.optional(S.NullOr(S.String)),
-          lastAppliedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_applied_at"))),
-          lastExportedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_exported_at"))),
-          lastPlannedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_planned_at"))),
-          manageHubToHubAttachments: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
-          ),
-          manageVpcToHubAttachments: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
-          ),
-          plannedMonthlyCostEstimate: S.optional(
-            S.NullOr(__S(16, __c2, 0)).pipe(T.Body("planned_monthly_cost_estimate")),
-          ),
-          plannedResources: S.optional(
-            S.NullOr(__S(171, __c21, 3)).pipe(T.Body("planned_resources")),
-          ),
-          plannedResourcesUnavailable: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
-          ),
-          postApplyMonthlyCostEstimate: S.optional(
-            S.NullOr(__S(22, __c2, 6)).pipe(T.Body("post_apply_monthly_cost_estimate")),
-          ),
-          postApplyResources: S.optional(
-            S.NullOr(__S(181, __c22, 5)).pipe(T.Body("post_apply_resources")),
-          ),
-          postApplyResourcesUnavailable: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
-          ),
-          region: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(__S(182, __c22, 6))),
-          vpc: S.optional(S.NullOr(S.String)),
-          vpcsById: S.optional(S.NullOr(__S(192, __c24, 0)).pipe(T.Body("vpcs_by_id"))),
-          vpcsByIdUnavailable: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("vpcs_by_id_unavailable")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PatchOnRampResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          prefixes: __S(10, __c1, 2),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "PatchOnRampAddressSpaceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          onrampId: S.String.pipe(T.Label("onramp_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/plan",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PlanOnRampRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          policy: S.String,
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/magic/cloud/resources/policy-preview",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "PolicyPreviewResourceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "PolicyPreviewResourceResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          prefixes: __S(10, __c1, 2),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "PutOnRampAddressSpaceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          syncId: S.String.pipe(T.Label("sync_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}/refresh",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "RefreshCatalogSyncRequest",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          syncId: S.String.pipe(T.Label("sync_id")),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          policy: S.optional(S.String),
-          updateMode: S.optional(S.String.pipe(T.Body("update_mode"))),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "UpdateCatalogSyncRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          providerId: S.String.pipe(T.Label("provider_id")),
-          awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
-          azureSubscriptionId: S.optional(S.String.pipe(T.Body("azure_subscription_id"))),
-          azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-          description: S.optional(S.String),
-          friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
-          gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
-          gcpServiceAccountEmail: S.optional(S.String.pipe(T.Body("gcp_service_account_email"))),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateCloudIntegrationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          discoveryProgress: __S(9, __c1, 1).pipe(T.Body("discovery_progress")),
-          discoveryProgressV2: __S(9, __c1, 1).pipe(T.Body("discovery_progress_v2")),
-          lastDiscoveryStatus: S.String.pipe(T.Body("last_discovery_status")),
-          lastDiscoveryStatusV2: S.String.pipe(T.Body("last_discovery_status_v2")),
-          regions: __S(10, __c1, 2),
-          credentialsGoodSince: S.optional(
-            S.NullOr(S.String).pipe(T.Body("credentials_good_since")),
-          ),
-          credentialsMissingSince: S.optional(
-            S.NullOr(S.String).pipe(T.Body("credentials_missing_since")),
-          ),
-          credentialsRejectedSince: S.optional(
-            S.NullOr(S.String).pipe(T.Body("credentials_rejected_since")),
-          ),
-          discoveryMessage: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message"))),
-          discoveryMessageV2: S.optional(S.NullOr(S.String).pipe(T.Body("discovery_message_v2"))),
-          inUseBy: S.optional(S.NullOr(__S(12, __c1, 4)).pipe(T.Body("in_use_by"))),
-          lastDiscoveryCompletedAt: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at")),
-          ),
-          lastDiscoveryCompletedAtV2: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_completed_at_v2")),
-          ),
-          lastDiscoveryStartedAt: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at")),
-          ),
-          lastDiscoveryStartedAtV2: S.optional(
-            S.NullOr(S.String).pipe(T.Body("last_discovery_started_at_v2")),
-          ),
-          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-        }),
-      ).annotate({
-        identifier: "CloudIntegrationsUpdateResponseStatus",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          friendlyName: S.String.pipe(T.Body("friendly_name")),
-          lastUpdated: S.String.pipe(T.Body("last_updated")),
-          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
-          state: S.String,
-          stateV2: S.String.pipe(T.Body("state_v2")),
-          awsArn: S.optional(S.NullOr(S.String).pipe(T.Body("aws_arn"))),
-          azureSubscriptionId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_subscription_id"))),
-          azureTenantId: S.optional(S.NullOr(S.String).pipe(T.Body("azure_tenant_id"))),
-          description: S.optional(S.NullOr(S.String)),
-          gcpProjectId: S.optional(S.NullOr(S.String).pipe(T.Body("gcp_project_id"))),
-          gcpServiceAccountEmail: S.optional(
-            S.NullOr(S.String).pipe(T.Body("gcp_service_account_email")),
-          ),
-          status: S.optional(S.NullOr(__S(202, __c25, 2))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateCloudIntegrationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          onrampId: S.String.pipe(T.Label("onramp_id")),
-          attachedHubs: S.optional(__S(10, __c1, 2).pipe(T.Body("attached_hubs"))),
-          attachedVpcs: S.optional(__S(10, __c1, 2).pipe(T.Body("attached_vpcs"))),
-          description: S.optional(S.String),
-          installRoutesInCloud: S.optional(S.Boolean.pipe(T.Body("install_routes_in_cloud"))),
-          installRoutesInMagicWan: S.optional(
-            S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
-          ),
-          manageHubToHubAttachments: S.optional(
-            S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
-          ),
-          manageVpcToHubAttachments: S.optional(
-            S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
-          ),
-          name: S.optional(S.String),
-          vpc: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "UpdateOnRampRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          diff: __S(17, __c2, 1),
-          keysRequireReplace: __S(18, __c2, 2).pipe(T.Body("keys_require_replace")),
-          monthlyCostEstimateDiff: __S(16, __c2, 0).pipe(T.Body("monthly_cost_estimate_diff")),
-          plannedAction: S.String.pipe(T.Body("planned_action")),
-          resource: __S(19, __c2, 3),
-        }),
-      ).annotate({
-        identifier: "OnRampsUpdateResponsePlannedResourcesItem",
-      });
-    case 6:
-      return S.Array(__S(205, __c25, 5));
-    case 7:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(207, __c25, 7))),
-        }),
-      ).annotate({
-        identifier: "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemHiddenItemsItem",
-      });
-    case 1:
-      return S.Array(__S(208, __c26, 0));
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(210, __c26, 2))),
-        }),
-      ).annotate({
-        identifier: "OnRampsUpdateResponsePostApplyResourcesValueSectionsItemVisibleItemsItem",
-      });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenItems: __S(209, __c26, 1).pipe(T.Body("hidden_items")),
-          name: S.String,
-          visibleItems: __S(212, __c26, 4).pipe(T.Body("visible_items")),
-          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsUpdateResponsePostApplyResourcesValueSectionsItem",
-      });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          config: __S(23, __c2, 7),
-          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-          managed: S.Boolean,
-          monthlyCostEstimate: __S(22, __c2, 6).pipe(T.Body("monthly_cost_estimate")),
-          name: S.String,
-          nativeId: S.String.pipe(T.Body("native_id")),
-          observations: __S(25, __c3, 1),
-          providerIds: __S(10, __c1, 2).pipe(T.Body("provider_ids")),
-          providerNamesById: __S(26, __c3, 2).pipe(T.Body("provider_names_by_id")),
-          region: S.String,
-          resourceGroup: S.String.pipe(T.Body("resource_group")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          sections: __S(214, __c26, 6),
-          state: __S(23, __c2, 7),
-          tags: __S(35, __c4, 3),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          url: S.String,
-          managedBy: S.optional(S.NullOr(__S(37, __c4, 5)).pipe(T.Body("managed_by"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsUpdateResponsePostApplyResourcesValue",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(215, __c26, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applyProgress: __S(40, __c5, 0).pipe(T.Body("apply_progress")),
-          lifecycleState: S.String.pipe(T.Body("lifecycle_state")),
-          planProgress: __S(40, __c5, 0).pipe(T.Body("plan_progress")),
-          routes: __S(10, __c1, 2),
-          tunnels: __S(10, __c1, 2),
-          lifecycleErrors: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("lifecycle_errors"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsUpdateResponseStatus",
-      });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(218, __c27, 2))),
-        }),
-      ).annotate({
-        identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItemHiddenItemsItem",
-      });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["itemType", "string"],
-          ["itemType", "yaml"],
-          ["itemType", "yamlDiff"],
-          ["itemType", "resourcePreview"],
-          ["itemType", "list"],
-        ]),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          helpText: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(__S(221, __c27, 5))),
-        }),
-      ).annotate({
-        identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItemVisibleItemsItem",
-      });
-    case 7:
-      return S.Array(__S(222, __c27, 6));
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenItems: __S(220, __c27, 4).pipe(T.Body("hidden_items")),
-          name: S.String,
-          visibleItems: __S(223, __c27, 7).pipe(T.Body("visible_items")),
-          helpText: S.optional(S.NullOr(S.String).pipe(T.Body("help_text"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsUpdateResponseVpcsByIdValueSectionsItem",
-      });
-    case 1:
-      return S.Array(__S(224, __c28, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          config: __S(23, __c2, 7),
-          deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-          managed: S.Boolean,
-          monthlyCostEstimate: __S(22, __c2, 6).pipe(T.Body("monthly_cost_estimate")),
-          name: S.String,
-          nativeId: S.String.pipe(T.Body("native_id")),
-          observations: __S(25, __c3, 1),
-          providerIds: __S(10, __c1, 2).pipe(T.Body("provider_ids")),
-          providerNamesById: __S(35, __c4, 3).pipe(T.Body("provider_names_by_id")),
-          region: S.String,
-          resourceGroup: S.String.pipe(T.Body("resource_group")),
-          resourceType: S.String.pipe(T.Body("resource_type")),
-          sections: __S(225, __c28, 1),
-          state: __S(23, __c2, 7),
-          tags: __S(35, __c4, 3),
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          url: S.String,
-          managedBy: S.optional(S.NullOr(__S(12, __c1, 4)).pipe(T.Body("managed_by"))),
-        }),
-      ).annotate({
-        identifier: "OnRampsUpdateResponseVpcsByIdValue",
-      });
-    case 3:
-      return S.Record(S.String, __S(226, __c28, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          cloudType: S.String.pipe(T.Body("cloud_type")),
-          dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
-          installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
-          installRoutesInMagicWan: S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
-          name: S.String,
-          type: S.String,
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          attachedHubs: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("attached_hubs"))),
-          attachedVpcs: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("attached_vpcs"))),
-          cloudAsn: S.optional(S.NullOr(S.Number).pipe(T.Body("cloud_asn"))),
-          description: S.optional(S.NullOr(S.String)),
-          hub: S.optional(S.NullOr(S.String)),
-          lastAppliedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_applied_at"))),
-          lastExportedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_exported_at"))),
-          lastPlannedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_planned_at"))),
-          manageHubToHubAttachments: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("manage_hub_to_hub_attachments")),
-          ),
-          manageVpcToHubAttachments: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("manage_vpc_to_hub_attachments")),
-          ),
-          plannedMonthlyCostEstimate: S.optional(
-            S.NullOr(__S(16, __c2, 0)).pipe(T.Body("planned_monthly_cost_estimate")),
-          ),
-          plannedResources: S.optional(
-            S.NullOr(__S(206, __c25, 6)).pipe(T.Body("planned_resources")),
-          ),
-          plannedResourcesUnavailable: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("planned_resources_unavailable")),
-          ),
-          postApplyMonthlyCostEstimate: S.optional(
-            S.NullOr(__S(22, __c2, 6)).pipe(T.Body("post_apply_monthly_cost_estimate")),
-          ),
-          postApplyResources: S.optional(
-            S.NullOr(__S(216, __c27, 0)).pipe(T.Body("post_apply_resources")),
-          ),
-          postApplyResourcesUnavailable: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("post_apply_resources_unavailable")),
-          ),
-          region: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(__S(217, __c27, 1))),
-          vpc: S.optional(S.NullOr(S.String)),
-          vpcsById: S.optional(S.NullOr(__S(227, __c28, 3)).pipe(T.Body("vpcs_by_id"))),
-          vpcsByIdUnavailable: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("vpcs_by_id_unavailable")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "UpdateOnRampResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -378,8 +378,8 @@ export const activatePipeline: API.OperationMethod<
   ActivatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ActivatePipelineInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<ActivatePipelineOutput>,
+  input: __S(160, __c20, 0) as any as S.Schema<ActivatePipelineInput>,
+  output: __S(176, __c22, 0) as any as S.Schema<ActivatePipelineOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -406,8 +406,8 @@ export const addTags: API.OperationMethod<
   AddTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AddTagsInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<AddTagsOutput>,
+  input: __S(184, __c23, 0) as any as S.Schema<AddTagsInput>,
+  output: __S(192, __c24, 0) as any as S.Schema<AddTagsOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -449,8 +449,8 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreatePipelineInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreatePipelineOutput>,
+  input: __S(208, __c26, 0) as any as S.Schema<CreatePipelineInput>,
+  output: __S(209, __c26, 1) as any as S.Schema<CreatePipelineOutput>,
   errors: [InternalServiceError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -476,8 +476,8 @@ export const deactivatePipeline: API.OperationMethod<
   DeactivatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeactivatePipelineInput>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeactivatePipelineOutput>,
+  input: __S(216, __c27, 0) as any as S.Schema<DeactivatePipelineInput>,
+  output: __S(217, __c27, 1) as any as S.Schema<DeactivatePipelineOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -525,8 +525,8 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeletePipelineInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeletePipelineResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<DeletePipelineInput>,
+  output: __S(176, __c22, 0) as any as S.Schema<DeletePipelineResponse>,
   errors: [InternalServiceError, InvalidRequestException, PipelineNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -597,8 +597,8 @@ export const describeObjects: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PipelineObject
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DescribeObjectsInput>,
-  output: __S(19, __c2, 3) as any as S.Schema<DescribeObjectsOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<DescribeObjectsInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<DescribeObjectsOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -679,8 +679,8 @@ export const describePipelines: API.OperationMethod<
   DescribePipelinesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DescribePipelinesInput>,
-  output: __S(23, __c2, 7) as any as S.Schema<DescribePipelinesOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<DescribePipelinesInput>,
+  output: __S(43, __c5, 3) as any as S.Schema<DescribePipelinesOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -728,8 +728,8 @@ export const evaluateExpression: API.OperationMethod<
   EvaluateExpressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<EvaluateExpressionInput>,
-  output: __S(25, __c3, 1) as any as S.Schema<EvaluateExpressionOutput>,
+  input: __S(48, __c6, 0) as any as S.Schema<EvaluateExpressionInput>,
+  output: __S(49, __c6, 1) as any as S.Schema<EvaluateExpressionOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -811,8 +811,8 @@ export const getPipelineDefinition: API.OperationMethod<
   GetPipelineDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetPipelineDefinitionInput>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetPipelineDefinitionOutput>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetPipelineDefinitionInput>,
+  output: __S(57, __c7, 1) as any as S.Schema<GetPipelineDefinitionOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -860,8 +860,8 @@ export const listPipelines: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PipelineIdName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListPipelinesInput>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListPipelinesOutput>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListPipelinesInput>,
+  output: __S(75, __c9, 3) as any as S.Schema<ListPipelinesOutput>,
   errors: [InternalServiceError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -951,8 +951,8 @@ export const pollForTask: API.OperationMethod<
   PollForTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<PollForTaskInput>,
-  output: __S(40, __c5, 0) as any as S.Schema<PollForTaskOutput>,
+  input: __S(81, __c10, 1) as any as S.Schema<PollForTaskInput>,
+  output: __S(84, __c10, 4) as any as S.Schema<PollForTaskOutput>,
   errors: [InternalServiceError, InvalidRequestException, TaskNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1113,8 +1113,8 @@ export const putPipelineDefinition: API.OperationMethod<
   PutPipelineDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<PutPipelineDefinitionInput>,
-  output: __S(46, __c5, 6) as any as S.Schema<PutPipelineDefinitionOutput>,
+  input: __S(88, __c11, 0) as any as S.Schema<PutPipelineDefinitionInput>,
+  output: __S(100, __c12, 4) as any as S.Schema<PutPipelineDefinitionOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1170,8 +1170,8 @@ export const queryObjects: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Id
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<QueryObjectsInput>,
-  output: __S(52, __c6, 4) as any as S.Schema<QueryObjectsOutput>,
+  input: __S(108, __c13, 4) as any as S.Schema<QueryObjectsInput>,
+  output: __S(109, __c13, 5) as any as S.Schema<QueryObjectsOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1204,8 +1204,8 @@ export const removeTags: API.OperationMethod<
   RemoveTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<RemoveTagsInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<RemoveTagsOutput>,
+  input: __S(112, __c14, 0) as any as S.Schema<RemoveTagsInput>,
+  output: __S(192, __c24, 0) as any as S.Schema<RemoveTagsOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1262,8 +1262,8 @@ export const reportTaskProgress: API.OperationMethod<
   ReportTaskProgressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ReportTaskProgressInput>,
-  output: __S(55, __c6, 7) as any as S.Schema<ReportTaskProgressOutput>,
+  input: __S(120, __c15, 0) as any as S.Schema<ReportTaskProgressInput>,
+  output: __S(121, __c15, 1) as any as S.Schema<ReportTaskProgressOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1311,8 +1311,8 @@ export const reportTaskRunnerHeartbeat: API.OperationMethod<
   ReportTaskRunnerHeartbeatError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ReportTaskRunnerHeartbeatInput>,
-  output: __S(57, __c7, 1) as any as S.Schema<ReportTaskRunnerHeartbeatOutput>,
+  input: __S(128, __c16, 0) as any as S.Schema<ReportTaskRunnerHeartbeatInput>,
+  output: __S(129, __c16, 1) as any as S.Schema<ReportTaskRunnerHeartbeatOutput>,
   errors: [InternalServiceError, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1356,8 +1356,8 @@ export const setStatus: API.OperationMethod<
   SetStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<SetStatusInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<SetStatusResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<SetStatusInput>,
+  output: __S(192, __c24, 0) as any as S.Schema<SetStatusResponse>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1405,8 +1405,8 @@ export const setTaskStatus: API.OperationMethod<
   SetTaskStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<SetTaskStatusInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<SetTaskStatusOutput>,
+  input: __S(144, __c18, 0) as any as S.Schema<SetTaskStatusInput>,
+  output: __S(192, __c24, 0) as any as S.Schema<SetTaskStatusOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1565,8 +1565,8 @@ export const validatePipelineDefinition: API.OperationMethod<
   ValidatePipelineDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ValidatePipelineDefinitionInput>,
-  output: __S(46, __c5, 6) as any as S.Schema<ValidatePipelineDefinitionOutput>,
+  input: __S(152, __c19, 0) as any as S.Schema<ValidatePipelineDefinitionInput>,
+  output: __S(100, __c12, 4) as any as S.Schema<ValidatePipelineDefinitionOutput>,
   errors: [
     InternalServiceError,
     InvalidRequestException,
@@ -1582,39 +1582,22 @@ export const validatePipelineDefinition: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ id: S.String, stringValue: S.String })).annotate({
-        identifier: "ParameterValue",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           pipelineId: S.String,
-          parameterValues: S.optional(__S(1, __c0, 1)),
-          startTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          objectIds: __S(16, __c2, 0),
+          evaluateExpressions: S.optional(S.Boolean),
+          marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ActivatePipelineInput" });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "ActivatePipelineOutput",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+      ).annotate({ identifier: "DescribeObjectsInput" });
+    case 1:
       return S.suspend(() =>
-        S.Struct({ pipelineId: S.String, tags: __S(5, __c0, 5) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "AddTagsInput" });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "AddTagsOutput",
-      });
+        S.Struct({
+          pipelineObjects: __S(32, __c4, 0),
+          marker: S.optional(S.String),
+          hasMoreResults: S.optional(S.Boolean),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeObjectsOutput" });
   }
 }
 function __c1(j: number): any {
@@ -1622,96 +1605,62 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          uniqueId: S.String,
-          description: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreatePipelineInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ pipelineId: S.String }).pipe(ns)).annotate({
-        identifier: "CreatePipelineOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ pipelineId: S.String, cancelActive: S.optional(S.Boolean) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeactivatePipelineInput" });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeactivatePipelineOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ pipelineId: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeletePipelineInput" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pipelineId: S.String,
-          objectIds: __S(13, __c1, 5),
-          evaluateExpressions: S.optional(S.Boolean),
-          marker: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "DescribeObjectsInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           key: S.String,
           stringValue: S.optional(S.String),
           refValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "Field" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ id: S.String, name: S.String, fields: __S(16, __c2, 0) }),
+        S.Struct({ id: S.String, name: S.String, fields: __S(9, __c1, 1) }),
       ).annotate({ identifier: "PipelineObject" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(24, __c3, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          pipelineObjects: __S(18, __c2, 2),
-          marker: S.optional(S.String),
-          hasMoreResults: S.optional(S.Boolean),
-        }).pipe(ns),
-      ).annotate({ identifier: "DescribeObjectsOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ pipelineIds: __S(13, __c1, 5) }).pipe(
+        S.Struct({ pipelineIds: __S(16, __c2, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribePipelinesInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pipelineId: S.String,
           name: S.String,
-          fields: __S(16, __c2, 0),
+          fields: __S(9, __c1, 1),
           description: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(201, __c25, 1)),
         }),
       ).annotate({ identifier: "PipelineDescription" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ pipelineDescriptionList: __S(22, __c2, 6) }).pipe(ns),
+        S.Struct({ pipelineDescriptionList: __S(42, __c5, 2) }).pipe(ns),
       ).annotate({ identifier: "DescribePipelinesOutput" });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1723,7 +1672,11 @@ function __c3(j: number): any {
       return S.suspend(() => S.Struct({ evaluatedExpression: S.String }).pipe(ns)).annotate({
         identifier: "EvaluateExpressionOutput",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ pipelineId: S.String, version: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1731,31 +1684,35 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPipelineDefinitionInput",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ key: S.String, stringValue: S.String })).annotate({
-        identifier: "ParameterAttribute",
-      });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ id: S.String, attributes: __S(28, __c3, 4) })).annotate({
-        identifier: "ParameterObject",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          pipelineObjects: S.optional(__S(18, __c2, 2)),
-          parameterObjects: S.optional(__S(30, __c3, 6)),
-          parameterValues: S.optional(__S(1, __c0, 1)),
+          pipelineObjects: S.optional(__S(32, __c4, 0)),
+          parameterObjects: S.optional(__S(67, __c8, 3)),
+          parameterValues: S.optional(__S(169, __c21, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetPipelineDefinitionOutput",
       });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, stringValue: S.String })).annotate({
+        identifier: "ParameterAttribute",
+      });
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ id: S.String, attributes: __S(65, __c8, 1) })).annotate({
+        identifier: "ParameterObject",
+      });
+    case 3:
+      return S.Array(__S(66, __c8, 2));
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1768,136 +1725,150 @@ function __c4(j: number): any {
         S.Struct({ id: S.optional(S.String), name: S.optional(S.String) }),
       ).annotate({ identifier: "PipelineIdName" });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pipelineIdList: __S(34, __c4, 2),
+          pipelineIdList: __S(74, __c9, 2),
           marker: S.optional(S.String),
           hasMoreResults: S.optional(S.Boolean),
         }).pipe(ns),
       ).annotate({ identifier: "ListPipelinesOutput" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ document: S.optional(S.String), signature: S.optional(S.String) }),
       ).annotate({ identifier: "InstanceIdentity" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           workerGroup: S.String,
           hostname: S.optional(S.String),
-          instanceIdentity: S.optional(__S(36, __c4, 4)),
+          instanceIdentity: S.optional(__S(80, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PollForTaskInput" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(17, __c2, 1).pipe(S.optional));
-    case 7:
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(24, __c3, 0).pipe(S.optional));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
           pipelineId: S.optional(S.String),
           attemptId: S.optional(S.String),
-          objects: S.optional(__S(38, __c4, 6)),
+          objects: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({ identifier: "TaskObject" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ taskObject: S.optional(__S(83, __c10, 3)) }).pipe(ns),
+      ).annotate({ identifier: "PollForTaskOutput" });
   }
 }
-function __c5(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ taskObject: S.optional(__S(39, __c4, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "PollForTaskOutput",
-      });
-    case 1:
-      return S.suspend(() =>
         S.Struct({
           pipelineId: S.String,
-          pipelineObjects: __S(18, __c2, 2),
-          parameterObjects: S.optional(__S(30, __c3, 6)),
-          parameterValues: S.optional(__S(1, __c0, 1)),
+          pipelineObjects: __S(32, __c4, 0),
+          parameterObjects: S.optional(__S(67, __c8, 3)),
+          parameterValues: S.optional(__S(169, __c21, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutPipelineDefinitionInput",
       });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), errors: S.optional(__S(16, __c2, 0)) }),
+      ).annotate({ identifier: "ValidationError" });
+    case 1:
+      return S.Array(__S(96, __c12, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), errors: S.optional(__S(13, __c1, 5)) }),
-      ).annotate({ identifier: "ValidationError" });
+        S.Struct({ id: S.optional(S.String), warnings: S.optional(__S(16, __c2, 0)) }),
+      ).annotate({ identifier: "ValidationWarning" });
     case 3:
-      return S.Array(__S(42, __c5, 2));
+      return S.Array(__S(98, __c12, 2));
     case 4:
       return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), warnings: S.optional(__S(13, __c1, 5)) }),
-      ).annotate({ identifier: "ValidationWarning" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
         S.Struct({
-          validationErrors: S.optional(__S(43, __c5, 3)),
-          validationWarnings: S.optional(__S(45, __c5, 5)),
+          validationErrors: S.optional(__S(97, __c12, 1)),
+          validationWarnings: S.optional(__S(99, __c12, 3)),
           errored: S.Boolean,
         }).pipe(ns),
       ).annotate({
         identifier: "PutPipelineDefinitionOutput",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ type: S.optional(S.String), values: S.optional(__S(13, __c1, 5)) }),
-      ).annotate({ identifier: "Operator" });
   }
 }
-function __c6(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ fieldName: S.optional(S.String), operator: S.optional(__S(47, __c5, 7)) }),
-      ).annotate({ identifier: "Selector" });
+        S.Struct({ type: S.optional(S.String), values: S.optional(__S(16, __c2, 0)) }),
+      ).annotate({ identifier: "Operator" });
     case 1:
-      return S.Array(__S(48, __c6, 0));
+      return S.suspend(() =>
+        S.Struct({ fieldName: S.optional(S.String), operator: S.optional(__S(104, __c13, 0)) }),
+      ).annotate({ identifier: "Selector" });
     case 2:
-      return S.suspend(() => S.Struct({ selectors: S.optional(__S(49, __c6, 1)) })).annotate({
+      return S.Array(__S(105, __c13, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ selectors: S.optional(__S(106, __c13, 2)) })).annotate({
         identifier: "Query",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           pipelineId: S.String,
-          query: S.optional(__S(50, __c6, 2)),
+          query: S.optional(__S(107, __c13, 3)),
           sphere: S.String,
           marker: S.optional(S.String),
           limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "QueryObjectsInput" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          ids: S.optional(__S(13, __c1, 5)),
+          ids: S.optional(__S(16, __c2, 0)),
           marker: S.optional(S.String),
           hasMoreResults: S.optional(S.Boolean),
         }).pipe(ns),
       ).annotate({ identifier: "QueryObjectsOutput" });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ pipelineId: S.String, tagKeys: __S(13, __c1, 5) }).pipe(
+        S.Struct({ pipelineId: S.String, tagKeys: __S(16, __c2, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RemoveTagsInput" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ taskId: S.String, fields: S.optional(__S(16, __c2, 0)) }).pipe(
+        S.Struct({ taskId: S.String, fields: S.optional(__S(9, __c1, 1)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ReportTaskProgressInput" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ canceled: S.Boolean }).pipe(ns)).annotate({
         identifier: "ReportTaskProgressOutput",
       });
   }
 }
-function __c7(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1913,13 +1884,21 @@ function __c7(j: number): any {
       return S.suspend(() => S.Struct({ terminate: S.Boolean }).pipe(ns)).annotate({
         identifier: "ReportTaskRunnerHeartbeatOutput",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ pipelineId: S.String, objectIds: __S(13, __c1, 5), status: S.String }).pipe(
+        S.Struct({ pipelineId: S.String, objectIds: __S(16, __c2, 0), status: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "SetStatusInput" });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.String,
@@ -1929,20 +1908,122 @@ function __c7(j: number): any {
           errorStackTrace: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SetTaskStatusInput" });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pipelineId: S.String,
-          pipelineObjects: __S(18, __c2, 2),
-          parameterObjects: S.optional(__S(30, __c3, 6)),
-          parameterValues: S.optional(__S(1, __c0, 1)),
+          pipelineObjects: __S(32, __c4, 0),
+          parameterObjects: S.optional(__S(67, __c8, 3)),
+          parameterValues: S.optional(__S(169, __c21, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ValidatePipelineDefinitionInput",
       });
   }
 }
-
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pipelineId: S.String,
+          parameterValues: S.optional(__S(169, __c21, 1)),
+          startTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ActivatePipelineInput" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ id: S.String, stringValue: S.String })).annotate({
+        identifier: "ParameterValue",
+      });
+    case 1:
+      return S.Array(__S(168, __c21, 0));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "ActivatePipelineOutput",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ pipelineId: S.String, tags: __S(201, __c25, 1) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "AddTagsInput" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AddTagsOutput",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(200, __c25, 0));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          uniqueId: S.String,
+          description: S.optional(S.String),
+          tags: S.optional(__S(201, __c25, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreatePipelineInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ pipelineId: S.String }).pipe(ns)).annotate({
+        identifier: "CreatePipelineOutput",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ pipelineId: S.String, cancelActive: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeactivatePipelineInput" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeactivatePipelineOutput",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ pipelineId: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeletePipelineInput" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

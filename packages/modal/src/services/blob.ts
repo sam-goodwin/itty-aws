@@ -67,8 +67,8 @@ export const getBlob: API.OperationMethod<
   GetBlobError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetBlobRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetBlobResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetBlobRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<GetBlobResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -120,12 +120,6 @@ function __c0(j: number): any {
           multiparts: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "CreateBlobResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          blobId: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/BlobGet", code: 200 })),
-      ).annotate({ identifier: "GetBlobRequest" });
   }
 }
 function __c1(j: number): any {
@@ -133,12 +127,17 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          blobId: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/BlobGet", code: 200 })),
+      ).annotate({ identifier: "GetBlobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           downloadUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetBlobResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1081,8 +1081,8 @@ export const addSelectedRepoToOrgSecret: API.OperationMethod<
   AddSelectedRepoToOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddSelectedRepoToOrgSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddSelectedRepoToOrgSecretResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<AddSelectedRepoToOrgSecretRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<AddSelectedRepoToOrgSecretResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1096,8 +1096,8 @@ export const createOrUpdateOrgSecret: API.OperationMethod<
   CreateOrUpdateOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateOrUpdateOrgSecretRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateOrUpdateOrgSecretResponse>,
+  input: __S(1089, __c34, 1) as any as S.Schema<CreateOrUpdateOrgSecretRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<CreateOrUpdateOrgSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1111,8 +1111,8 @@ export const createOrUpdateRepoSecret: API.OperationMethod<
   CreateOrUpdateRepoSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateOrUpdateRepoSecretRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateOrUpdateRepoSecretResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<CreateOrUpdateRepoSecretRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<CreateOrUpdateRepoSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1126,8 +1126,8 @@ export const deleteOrgSecret: API.OperationMethod<
   DeleteOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteOrgSecretRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteOrgSecretResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<DeleteOrgSecretRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<DeleteOrgSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1141,8 +1141,8 @@ export const deleteRepoSecret: API.OperationMethod<
   DeleteRepoSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteRepoSecretRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteRepoSecretResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteRepoSecretRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<DeleteRepoSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1156,8 +1156,8 @@ export const getAlert: API.OperationMethod<
   GetAlertError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetAlertRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DependabotAlert>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetAlertRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DependabotAlert>,
   errors: [Forbidden, NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1171,8 +1171,8 @@ export const getOrgPublicKey: API.OperationMethod<
   GetOrgPublicKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetOrgPublicKeyRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DependabotPublicKey>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetOrgPublicKeyRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<DependabotPublicKey>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1186,8 +1186,8 @@ export const getOrgSecret: API.OperationMethod<
   GetOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetOrgSecretRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<OrganizationDependabotSecret>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetOrgSecretRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<OrganizationDependabotSecret>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1201,8 +1201,8 @@ export const getRepoPublicKey: API.OperationMethod<
   GetRepoPublicKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetRepoPublicKeyRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DependabotPublicKey>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetRepoPublicKeyRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<DependabotPublicKey>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1216,8 +1216,8 @@ export const getRepoSecret: API.OperationMethod<
   GetRepoSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetRepoSecretRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<DependabotSecret>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetRepoSecretRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<DependabotSecret>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1235,8 +1235,8 @@ export const listAlertsForEnterprise: API.OperationMethod<
   ListAlertsForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListAlertsForEnterpriseRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ListAlertsForEnterpriseResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListAlertsForEnterpriseRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<ListAlertsForEnterpriseResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1255,8 +1255,8 @@ export const listAlertsForOrg: API.OperationMethod<
   ListAlertsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListAlertsForOrgRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListAlertsForOrgResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListAlertsForOrgRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<ListAlertsForOrgResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1275,8 +1275,8 @@ export const listAlertsForRepo: API.OperationMethod<
   ListAlertsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListAlertsForRepoRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListAlertsForRepoResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListAlertsForRepoRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<ListAlertsForRepoResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1290,8 +1290,8 @@ export const listOrgSecrets: API.OperationMethod<
   ListOrgSecretsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListOrgSecretsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListOrgSecretsResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListOrgSecretsRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<ListOrgSecretsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1305,8 +1305,8 @@ export const listRepoSecrets: API.OperationMethod<
   ListRepoSecretsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListRepoSecretsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListRepoSecretsResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListRepoSecretsRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<ListRepoSecretsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1320,8 +1320,8 @@ export const listSelectedReposForOrgSecret: API.OperationMethod<
   ListSelectedReposForOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListSelectedReposForOrgSecretRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListSelectedReposForOrgSecretResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListSelectedReposForOrgSecretRequest>,
+  output: __S(621, __c19, 13) as any as S.Schema<ListSelectedReposForOrgSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1335,8 +1335,8 @@ export const removeSelectedRepoFromOrgSecret: API.OperationMethod<
   RemoveSelectedRepoFromOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1350,8 +1350,8 @@ export const repositoryAccessForEnterprise: API.OperationMethod<
   RepositoryAccessForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<RepositoryAccessForEnterpriseRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<DependabotRepositoryAccessDetails>,
+  input: __S(704, __c22, 0) as any as S.Schema<RepositoryAccessForEnterpriseRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<DependabotRepositoryAccessDetails>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1365,8 +1365,8 @@ export const repositoryAccessForOrg: API.OperationMethod<
   RepositoryAccessForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<RepositoryAccessForOrgRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<DependabotRepositoryAccessDetails>,
+  input: __S(768, __c24, 0) as any as S.Schema<RepositoryAccessForOrgRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<DependabotRepositoryAccessDetails>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1380,8 +1380,8 @@ export const setRepositoryAccessDefaultLevel: API.OperationMethod<
   SetRepositoryAccessDefaultLevelError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<SetRepositoryAccessDefaultLevelRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetRepositoryAccessDefaultLevelResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<SetRepositoryAccessDefaultLevelRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<SetRepositoryAccessDefaultLevelResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1398,8 +1398,12 @@ export const setRepositoryAccessDefaultLevelForEnterprise: API.OperationMethod<
   SetRepositoryAccessDefaultLevelForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<SetRepositoryAccessDefaultLevelForEnterpriseRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetRepositoryAccessDefaultLevelForEnterpriseResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<SetRepositoryAccessDefaultLevelForEnterpriseRequest>,
+  output: __S(
+    1056,
+    __c33,
+    0,
+  ) as any as S.Schema<SetRepositoryAccessDefaultLevelForEnterpriseResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1413,8 +1417,8 @@ export const setSelectedReposForOrgSecret: API.OperationMethod<
   SetSelectedReposForOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<SetSelectedReposForOrgSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetSelectedReposForOrgSecretResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<SetSelectedReposForOrgSecretRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<SetSelectedReposForOrgSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1435,8 +1439,8 @@ export const updateAlert: API.OperationMethod<
   UpdateAlertError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<UpdateAlertRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DependabotAlert>,
+  input: __S(929, __c29, 1) as any as S.Schema<UpdateAlertRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DependabotAlert>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, Gone, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1450,8 +1454,8 @@ export const updateRepositoryAccessForEnterprise: API.OperationMethod<
   UpdateRepositoryAccessForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<UpdateRepositoryAccessForEnterpriseRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateRepositoryAccessForEnterpriseResponse>,
+  input: __S(961, __c30, 1) as any as S.Schema<UpdateRepositoryAccessForEnterpriseRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<UpdateRepositoryAccessForEnterpriseResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1465,8 +1469,8 @@ export const updateRepositoryAccessForOrg: API.OperationMethod<
   UpdateRepositoryAccessForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<UpdateRepositoryAccessForOrgRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateRepositoryAccessForOrgResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<UpdateRepositoryAccessForOrgRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<UpdateRepositoryAccessForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1474,86 +1478,6 @@ export const updateRepositoryAccessForOrg: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          secret_name: S.String.pipe(T.Label()),
-          repository_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddSelectedRepoToOrgSecretRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AddSelectedRepoToOrgSecretResponse",
-      });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          secret_name: S.String.pipe(T.Label()),
-          encrypted_value: S.optional(S.String),
-          key_id: S.optional(S.String),
-          visibility: S.String,
-          selected_repository_ids: S.optional(__S(2, __c0, 2)),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/orgs/{org}/dependabot/secrets/{secret_name}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateOrUpdateOrgSecretRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateOrUpdateOrgSecretResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          secret_name: S.String.pipe(T.Label()),
-          encrypted_value: S.optional(S.String),
-          key_id: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/repos/{owner}/{repo}/dependabot/secrets/{secret_name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrUpdateRepoSecretRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          secret_name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/orgs/{org}/dependabot/secrets/{secret_name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteOrgSecretRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteOrgSecretResponse",
-      });
-  }
-}
-function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1569,7 +1493,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteRepoSecretRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1583,139 +1511,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAlertRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ecosystem: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "DependabotAlertPackage" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          package: S.optional(__S(10, __c1, 2)),
-          manifest_path: S.optional(S.String),
-          scope: S.optional(S.NullOr(S.String)),
-          relationship: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "DependabotAlertDependency",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          identifier: S.String,
-        }),
-      ).annotate({
-        identifier: "DependabotAlertSecurityVulnerabilityFirstPatchedVersion",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          package: __S(10, __c1, 2),
-          severity: S.String,
-          vulnerable_version_range: S.String,
-          first_patched_version: S.NullOr(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "DependabotAlertSecurityVulnerability",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          score: S.Number,
-          vector_string: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "DependabotAlertSecurityAdvisoryCvss",
-      });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          vector_string: S.NullOr(S.String),
-          score: S.NullOr(S.Number),
-        }),
-      ).annotate({ identifier: "CvssSeveritiesCvssV3" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cvss_v3: S.optional(S.NullOr(__S(16, __c2, 0))),
-          cvss_v4: S.optional(S.NullOr(__S(16, __c2, 0))),
-        }),
-      ).annotate({ identifier: "CvssSeverities" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          percentage: S.optional(S.Number),
-          percentile: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SecurityAdvisoryEpss" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cwe_id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "DependabotAlertSecurityAdvisoryCwesItem",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "DependabotAlertSecurityAdvisoryIdentifiersItem",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "DependabotAlertSecurityAdvisoryReferencesItem",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ghsa_id: S.String,
-          cve_id: S.NullOr(S.String),
-          summary: S.String,
-          description: S.String,
-          vulnerabilities: __S(14, __c1, 6),
-          severity: S.String,
-          classification: S.optional(S.String),
-          cvss: __S(15, __c1, 7),
-          cvss_severities: S.optional(S.NullOr(__S(17, __c2, 1))),
-          epss: S.optional(S.NullOr(__S(18, __c2, 2))),
-          cwes: __S(20, __c2, 4),
-          identifiers: __S(22, __c2, 6),
-          references: __S(24, __c3, 0),
-          published_at: S.String,
-          updated_at: S.String,
-          withdrawn_at: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "DependabotAlertSecurityAdvisory",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -1742,7 +1542,135 @@ function __c3(j: number): any {
           user_view_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "NullableSimpleUser" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ecosystem: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "DependabotAlertPackage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          package: S.optional(__S(96, __c3, 0)),
+          manifest_path: S.optional(S.String),
+          scope: S.optional(S.NullOr(S.String)),
+          relationship: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "DependabotAlertDependency",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String,
+        }),
+      ).annotate({
+        identifier: "DependabotAlertSecurityVulnerabilityFirstPatchedVersion",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          package: __S(96, __c3, 0),
+          severity: S.String,
+          vulnerable_version_range: S.String,
+          first_patched_version: S.NullOr(__S(98, __c3, 2)),
+        }),
+      ).annotate({
+        identifier: "DependabotAlertSecurityVulnerability",
+      });
+    case 4:
+      return S.Array(__S(99, __c3, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          score: S.Number,
+          vector_string: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "DependabotAlertSecurityAdvisoryCvss",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          vector_string: S.NullOr(S.String),
+          score: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "CvssSeveritiesCvssV3" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          cvss_v3: S.optional(S.NullOr(__S(102, __c3, 6))),
+          cvss_v4: S.optional(S.NullOr(__S(102, __c3, 6))),
+        }),
+      ).annotate({ identifier: "CvssSeverities" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          percentage: S.optional(S.Number),
+          percentile: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SecurityAdvisoryEpss" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          cwe_id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "DependabotAlertSecurityAdvisoryCwesItem",
+      });
+    case 10:
+      return S.Array(__S(105, __c3, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "DependabotAlertSecurityAdvisoryIdentifiersItem",
+      });
+    case 12:
+      return S.Array(__S(107, __c3, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "DependabotAlertSecurityAdvisoryReferencesItem",
+      });
+    case 14:
+      return S.Array(__S(109, __c3, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          ghsa_id: S.String,
+          cve_id: S.NullOr(S.String),
+          summary: S.String,
+          description: S.String,
+          vulnerabilities: __S(100, __c3, 4),
+          severity: S.String,
+          classification: S.optional(S.String),
+          cvss: __S(101, __c3, 5),
+          cvss_severities: S.optional(S.NullOr(__S(103, __c3, 7))),
+          epss: S.optional(S.NullOr(__S(104, __c3, 8))),
+          cwes: __S(106, __c3, 10),
+          identifiers: __S(108, __c3, 12),
+          references: __S(110, __c3, 14),
+          published_at: S.String,
+          updated_at: S.String,
+          withdrawn_at: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "DependabotAlertSecurityAdvisory",
+      });
+    case 16:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -1751,43 +1679,51 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DependabotAlertDismissalRequestSimpleRequester",
       });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           status: S.optional(S.String),
-          requester: S.optional(__S(27, __c3, 3)),
+          requester: S.optional(__S(112, __c3, 16)),
           created_at: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DependabotAlertDismissalRequestSimple",
       });
-    case 5:
-      return S.Array(__S(26, __c3, 2));
-    case 6:
+    case 18:
+      return S.Array(__S(64, __c2, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           number: S.Number,
           state: S.String,
-          dependency: __S(11, __c1, 3),
-          security_advisory: __S(25, __c3, 1),
-          security_vulnerability: __S(13, __c1, 5),
+          dependency: __S(97, __c3, 1),
+          security_advisory: __S(111, __c3, 15),
+          security_vulnerability: __S(99, __c3, 3),
           url: S.String,
           html_url: S.String,
           created_at: S.String,
           updated_at: S.String,
           dismissed_at: S.NullOr(S.String),
-          dismissed_by: S.NullOr(__S(26, __c3, 2)),
+          dismissed_by: S.NullOr(__S(64, __c2, 0)),
           dismissed_reason: S.NullOr(S.String),
           dismissed_comment: S.NullOr(S.String),
           fixed_at: S.NullOr(S.String),
           auto_dismissed_at: S.optional(S.NullOr(S.String)),
-          dismissal_request: S.optional(S.NullOr(__S(28, __c3, 4))),
-          assignees: S.optional(__S(29, __c3, 5)),
+          dismissal_request: S.optional(S.NullOr(__S(113, __c3, 17))),
+          assignees: S.optional(__S(114, __c3, 18)),
         }),
       ).annotate({ identifier: "DependabotAlert" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1797,7 +1733,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GetOrgPublicKeyRequest" });
   }
 }
-function __c4(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1806,7 +1742,11 @@ function __c4(j: number): any {
           key: S.String,
         }),
       ).annotate({ identifier: "DependabotPublicKey" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1815,7 +1755,11 @@ function __c4(j: number): any {
           T.Http({ method: "GET", uri: "/orgs/{org}/dependabot/secrets/{secret_name}", code: 200 }),
         ),
       ).annotate({ identifier: "GetOrgSecretRequest" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -1827,7 +1771,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "OrganizationDependabotSecret",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1840,7 +1788,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRepoPublicKeyRequest" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1854,7 +1806,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRepoSecretRequest" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -1862,7 +1818,11 @@ function __c4(j: number): any {
           updated_at: S.String,
         }),
       ).annotate({ identifier: "DependabotSecret" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
@@ -1887,14 +1847,53 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAlertsForEnterpriseRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() => __S(417, __c13, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListAlertsForEnterpriseResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          number: S.Number,
+          state: S.String,
+          dependency: __S(97, __c3, 1),
+          security_advisory: __S(111, __c3, 15),
+          security_vulnerability: __S(99, __c3, 3),
+          url: S.String,
+          html_url: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          dismissed_at: S.NullOr(S.String),
+          dismissed_by: S.NullOr(__S(64, __c2, 0)),
+          dismissed_reason: S.NullOr(S.String),
+          dismissed_comment: S.NullOr(S.String),
+          fixed_at: S.NullOr(S.String),
+          auto_dismissed_at: S.optional(S.NullOr(S.String)),
+          dismissal_request: S.optional(S.NullOr(__S(113, __c3, 17))),
+          assignees: S.optional(__S(114, __c3, 18)),
+          repository: __S(448, __c14, 0),
+        }),
+      ).annotate({
+        identifier: "DependabotAlertWithRepository",
+      });
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(26, __c3, 2),
+          owner: __S(64, __c2, 0),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1940,40 +1939,9 @@ function __c4(j: number): any {
       ).annotate({ identifier: "SimpleRepository" });
   }
 }
-function __c5(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          number: S.Number,
-          state: S.String,
-          dependency: __S(11, __c1, 3),
-          security_advisory: __S(25, __c3, 1),
-          security_vulnerability: __S(13, __c1, 5),
-          url: S.String,
-          html_url: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          dismissed_at: S.NullOr(S.String),
-          dismissed_by: S.NullOr(__S(26, __c3, 2)),
-          dismissed_reason: S.NullOr(S.String),
-          dismissed_comment: S.NullOr(S.String),
-          fixed_at: S.NullOr(S.String),
-          auto_dismissed_at: S.optional(S.NullOr(S.String)),
-          dismissal_request: S.optional(S.NullOr(__S(28, __c3, 4))),
-          assignees: S.optional(__S(29, __c3, 5)),
-          repository: __S(39, __c4, 7),
-        }),
-      ).annotate({
-        identifier: "DependabotAlertWithRepository",
-      });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() => __S(41, __c5, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListAlertsForEnterpriseResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1997,11 +1965,15 @@ function __c5(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/dependabot/alerts", code: 200 })),
       ).annotate({ identifier: "ListAlertsForOrgRequest" });
-    case 4:
-      return S.suspend(() => __S(41, __c5, 1).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(417, __c13, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAlertsForOrgResponse",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2026,15 +1998,15 @@ function __c5(j: number): any {
           T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/dependabot/alerts", code: 200 }),
         ),
       ).annotate({ identifier: "ListAlertsForRepoRequest" });
-    case 6:
-      return S.Array(__S(30, __c3, 6));
-    case 7:
-      return S.suspend(() => __S(46, __c5, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
+      return S.suspend(() => __S(513, __c16, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAlertsForRepoResponse",
       });
   }
 }
-function __c6(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2045,15 +2017,19 @@ function __c6(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/dependabot/secrets", code: 200 })),
       ).annotate({ identifier: "ListOrgSecretsRequest" });
     case 1:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(256, __c8, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          secrets: __S(49, __c6, 1),
+          secrets: __S(545, __c17, 1),
         }),
       ).annotate({ identifier: "ListOrgSecretsResponse" });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2064,16 +2040,20 @@ function __c6(j: number): any {
           T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/dependabot/secrets", code: 200 }),
         ),
       ).annotate({ identifier: "ListRepoSecretsRequest" });
-    case 4:
-      return S.Array(__S(37, __c4, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(352, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          secrets: __S(52, __c6, 4),
+          secrets: __S(577, __c18, 1),
         }),
       ).annotate({ identifier: "ListRepoSecretsResponse" });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -2090,13 +2070,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListSelectedReposForOrgSecretRequest",
       });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           admin: S.optional(S.Boolean),
@@ -2108,7 +2082,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "MinimalRepositoryPermissions",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -2118,7 +2092,7 @@ function __c7(j: number): any {
           html_url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CodeOfConduct" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -2128,7 +2102,7 @@ function __c7(j: number): any {
           node_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "MinimalRepositoryLicense" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -2136,7 +2110,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -2144,7 +2118,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
@@ -2154,45 +2128,41 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
     case 7:
+      return S.Array(__S(614, __c19, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(__S(62, __c7, 6)),
+          reviewers: S.optional(__S(615, __c19, 7)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(__S(59, __c7, 3)),
-          code_security: S.optional(__S(59, __c7, 3)),
-          dependabot_security_updates: S.optional(__S(59, __c7, 3)),
-          secret_scanning: S.optional(__S(59, __c7, 3)),
-          secret_scanning_push_protection: S.optional(__S(59, __c7, 3)),
-          secret_scanning_non_provider_patterns: S.optional(__S(59, __c7, 3)),
-          secret_scanning_ai_detection: S.optional(__S(59, __c7, 3)),
-          secret_scanning_delegated_alert_dismissal: S.optional(__S(60, __c7, 4)),
-          secret_scanning_delegated_bypass: S.optional(__S(59, __c7, 3)),
-          secret_scanning_delegated_bypass_options: S.optional(__S(63, __c7, 7)),
+          advanced_security: S.optional(__S(612, __c19, 4)),
+          code_security: S.optional(__S(612, __c19, 4)),
+          dependabot_security_updates: S.optional(__S(612, __c19, 4)),
+          secret_scanning: S.optional(__S(612, __c19, 4)),
+          secret_scanning_push_protection: S.optional(__S(612, __c19, 4)),
+          secret_scanning_non_provider_patterns: S.optional(__S(612, __c19, 4)),
+          secret_scanning_ai_detection: S.optional(__S(612, __c19, 4)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(613, __c19, 5)),
+          secret_scanning_delegated_bypass: S.optional(__S(612, __c19, 4)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(616, __c19, 8)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
-    case 1:
+    case 10:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(26, __c3, 2),
+          owner: __S(64, __c2, 0),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2248,7 +2218,7 @@ function __c8(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(55, __c6, 7)),
+          topics: S.optional(__S(640, __c20, 0)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -2263,35 +2233,45 @@ function __c8(j: number): any {
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(__S(56, __c7, 0)),
+          permissions: S.optional(__S(609, __c19, 1)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(__S(57, __c7, 1)),
-          license: S.optional(S.NullOr(__S(58, __c7, 2))),
+          code_of_conduct: S.optional(__S(610, __c19, 2)),
+          license: S.optional(S.NullOr(__S(611, __c19, 3))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(__S(64, __c8, 0))),
-          custom_properties: S.optional(__S(65, __c8, 1)),
+          security_and_analysis: S.optional(S.NullOr(__S(617, __c19, 9))),
+          custom_properties: S.optional(__S(618, __c19, 10)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
+    case 12:
+      return S.Array(__S(619, __c19, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          repositories: __S(67, __c8, 3),
+          repositories: __S(620, __c19, 12),
         }),
       ).annotate({
         identifier: "ListSelectedReposForOrgSecretResponse",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -2307,7 +2287,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "RemoveSelectedRepoFromOrgSecretRequest",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
@@ -2323,22 +2307,26 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "RepositoryAccessForEnterpriseRequest",
       });
-    case 7:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(39, __c4, 7)));
   }
 }
-function __c9(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(448, __c14, 0)));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           default_level: S.optional(S.NullOr(S.String)),
-          accessible_repositories: S.optional(__S(71, __c8, 7)),
+          accessible_repositories: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
         identifier: "DependabotRepositoryAccessDetails",
       });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -2350,7 +2338,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "RepositoryAccessForOrgRequest",
       });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -2365,7 +2357,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SetRepositoryAccessDefaultLevelRequest",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
@@ -2380,14 +2376,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SetRepositoryAccessDefaultLevelForEnterpriseRequest",
       });
-    case 4:
-      return S.Array(S.Number);
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
           secret_name: S.String.pipe(T.Label()),
-          selected_repository_ids: __S(76, __c9, 4),
+          selected_repository_ids: __S(896, __c28, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2398,7 +2396,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SetSelectedReposForOrgSecretRequest",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           custom_instructions: S.optional(S.String),
@@ -2408,7 +2416,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateAlertRequestAgentAssignment",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2417,8 +2425,8 @@ function __c9(j: number): any {
           state: S.optional(S.String),
           dismissed_reason: S.optional(S.String),
           dismissed_comment: S.optional(S.String),
-          assignees: S.optional(__S(55, __c6, 7)),
-          agent_assignment: S.optional(__S(78, __c9, 6)),
+          assignees: S.optional(__S(640, __c20, 0)),
+          agent_assignment: S.optional(__S(928, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2429,7 +2437,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "UpdateAlertRequest" });
   }
 }
-function __c10(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Number);
@@ -2437,8 +2445,8 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
-          repository_ids_to_add: S.optional(__S(80, __c10, 0)),
-          repository_ids_to_remove: S.optional(__S(80, __c10, 0)),
+          repository_ids_to_add: S.optional(__S(960, __c30, 0)),
+          repository_ids_to_remove: S.optional(__S(960, __c30, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2449,12 +2457,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateRepositoryAccessForEnterpriseRequest",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          repository_ids_to_add: S.optional(__S(76, __c9, 4)),
-          repository_ids_to_remove: S.optional(__S(76, __c9, 4)),
+          repository_ids_to_add: S.optional(__S(896, __c28, 0)),
+          repository_ids_to_remove: S.optional(__S(896, __c28, 0)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/orgs/{org}/dependabot/repository-access", code: 200 }),
         ),
@@ -2463,7 +2475,110 @@ function __c10(j: number): any {
       });
   }
 }
-
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          secret_name: S.String.pipe(T.Label()),
+          repository_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddSelectedRepoToOrgSecretRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AddSelectedRepoToOrgSecretResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          secret_name: S.String.pipe(T.Label()),
+          encrypted_value: S.optional(S.String),
+          key_id: S.optional(S.String),
+          visibility: S.String,
+          selected_repository_ids: S.optional(__S(1088, __c34, 0)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/orgs/{org}/dependabot/secrets/{secret_name}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateOrUpdateOrgSecretRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateOrUpdateOrgSecretResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          secret_name: S.String.pipe(T.Label()),
+          encrypted_value: S.optional(S.String),
+          key_id: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/repos/{owner}/{repo}/dependabot/secrets/{secret_name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrUpdateRepoSecretRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          secret_name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/orgs/{org}/dependabot/secrets/{secret_name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteOrgSecretRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteOrgSecretResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

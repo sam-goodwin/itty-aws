@@ -128,7 +128,7 @@ export const createPropertyAccessControl: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreatePropertyAccessControlRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PropertyAccessControlRule>,
+  output: __S(4, __c1, 0) as any as S.Schema<PropertyAccessControlRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -142,8 +142,8 @@ export const getPropertyAccessControl: API.OperationMethod<
   GetPropertyAccessControlError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetPropertyAccessControlRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PropertyAccessControlState>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetPropertyAccessControlRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<PropertyAccessControlState>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -157,8 +157,8 @@ export const propertyAccessControlsDestroy: API.OperationMethod<
   PropertyAccessControlsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<PropertyAccessControlsDestroyRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PropertyAccessControlsDestroyResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<PropertyAccessControlsDestroyRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<PropertyAccessControlsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -186,7 +186,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreatePropertyAccessControlRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -200,7 +204,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PropertyAccessControlRule",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -215,21 +223,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPropertyAccessControlRequest",
       });
-    case 3:
-      return S.Array(__S(1, __c0, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.Array(S.String);
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          access_controls: __S(3, __c0, 3),
-          available_access_levels: __S(4, __c0, 4),
+          access_controls: __S(9, __c2, 1),
+          available_access_levels: __S(10, __c2, 2),
           default_access_level: S.String,
         }),
       ).annotate({
         identifier: "PropertyAccessControlState",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -246,13 +258,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PropertyAccessControlsDestroyRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PropertyAccessControlsDestroyResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

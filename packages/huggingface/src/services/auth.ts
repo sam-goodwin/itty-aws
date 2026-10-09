@@ -143,7 +143,7 @@ export const getUserInfo: API.OperationMethod<
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetUserInfoRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetUserInfoResponse>,
+  output: __S(15, __c0, 15) as any as S.Schema<GetUserInfoResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -202,11 +202,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetUserInfoResponseBodyAuthAccessToken",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           sub: S.String,
@@ -214,18 +210,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetUserInfoResponseBodyAuthResource",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           accessToken: S.optional(__S(7, __c0, 7)),
           expiresAt: S.optional(S.String),
-          resource: S.optional(__S(8, __c1, 0)),
+          resource: S.optional(__S(8, __c0, 8)),
         }),
       ).annotate({
         identifier: "GetUserInfoResponseBodyAuth",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -235,9 +231,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetUserInfoResponseBodyOrgsItemResourceGroupsItem",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(10, __c0, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -253,17 +249,17 @@ function __c1(j: number): any {
           plan: S.optional(S.String),
           roleInOrg: S.optional(S.String),
           securityRestrictions: S.optional(__S(5, __c0, 5)),
-          resourceGroups: S.optional(__S(11, __c1, 3)),
+          resourceGroups: S.optional(__S(11, __c0, 11)),
         }),
       ).annotate({
         identifier: "GetUserInfoResponseBodyOrgsItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(12, __c0, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          auth: __S(9, __c1, 1),
+          auth: __S(9, __c0, 9),
           type: S.String,
           id: S.String,
           name: S.String,
@@ -275,16 +271,15 @@ function __c1(j: number): any {
           periodEnd: S.optional(S.NullOr(S.Number)),
           emailVerified: S.optional(S.Boolean),
           isPro: S.Boolean,
-          orgs: __S(13, __c1, 5),
+          orgs: __S(13, __c0, 13),
         }),
       ).annotate({ identifier: "GetUserInfoResponseBody" });
-    case 7:
-      return S.suspend(() => __S(14, __c1, 6).pipe(T.RawResponseRoot())).annotate({
+    case 15:
+      return S.suspend(() => __S(14, __c0, 14).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetUserInfoResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

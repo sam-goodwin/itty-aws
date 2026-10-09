@@ -3342,8 +3342,8 @@ export const addDataSource: API.OperationMethod<
   AddDataSourceError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddDataSourceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AddDataSourceResponse>,
+  input: __S(7488, __c234, 0) as any as S.Schema<AddDataSourceRequest>,
+  output: __S(7489, __c234, 1) as any as S.Schema<AddDataSourceResponse>,
   errors: [Forbidden, Conflict, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3357,8 +3357,8 @@ export const addOrgInvite: API.OperationMethod<
   AddOrgInviteError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AddOrgInviteRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(7936, __c248, 0) as any as S.Schema<AddOrgInviteRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3372,8 +3372,8 @@ export const addOrgUser: API.OperationMethod<
   AddOrgUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<AddOrgUserRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(8320, __c260, 0) as any as S.Schema<AddOrgUserRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3387,8 +3387,8 @@ export const addOrgUserToCurrentOrg: API.OperationMethod<
   AddOrgUserToCurrentOrgError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AddOrgUserToCurrentOrgRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(8736, __c273, 0) as any as S.Schema<AddOrgUserToCurrentOrgRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3402,8 +3402,8 @@ export const addTeamGroupApi: API.OperationMethod<
   AddTeamGroupApiError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<AddTeamGroupApiRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(9248, __c289, 0) as any as S.Schema<AddTeamGroupApiRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3417,8 +3417,8 @@ export const addTeamMember: API.OperationMethod<
   AddTeamMemberError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<AddTeamMemberRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(0, __c0, 0) as any as S.Schema<AddTeamMemberRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3432,8 +3432,8 @@ export const addTeamRole: API.OperationMethod<
   AddTeamRoleError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<AddTeamRoleRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(448, __c14, 0) as any as S.Schema<AddTeamRoleRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3447,8 +3447,8 @@ export const addUserRole: API.OperationMethod<
   AddUserRoleError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<AddUserRoleRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(832, __c26, 0) as any as S.Schema<AddUserRoleRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3462,8 +3462,8 @@ export const adminCreateUser: API.OperationMethod<
   AdminCreateUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<AdminCreateUserRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AdminCreateUserResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<AdminCreateUserRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<AdminCreateUserResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3477,8 +3477,8 @@ export const adminDeleteUser: API.OperationMethod<
   AdminDeleteUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<AdminDeleteUserRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(1728, __c54, 0) as any as S.Schema<AdminDeleteUserRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3492,8 +3492,8 @@ export const adminDisableUser: API.OperationMethod<
   AdminDisableUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<AdminDisableUserRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(2144, __c67, 0) as any as S.Schema<AdminDisableUserRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3507,8 +3507,8 @@ export const adminEnableUser: API.OperationMethod<
   AdminEnableUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<AdminEnableUserRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(2528, __c79, 0) as any as S.Schema<AdminEnableUserRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3522,8 +3522,8 @@ export const adminGetSettings: API.OperationMethod<
   AdminGetSettingsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<AdminGetSettingsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<AdminGetSettingsResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<AdminGetSettingsRequest>,
+  output: __S(2914, __c91, 2) as any as S.Schema<AdminGetSettingsResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3537,8 +3537,8 @@ export const adminGetStats: API.OperationMethod<
   AdminGetStatsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<AdminGetStatsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<AdminStats>,
+  input: __S(3264, __c102, 0) as any as S.Schema<AdminGetStatsRequest>,
+  output: __S(3265, __c102, 1) as any as S.Schema<AdminStats>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3552,8 +3552,8 @@ export const adminGetUserAuthTokens: API.OperationMethod<
   AdminGetUserAuthTokensError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<AdminGetUserAuthTokensRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AdminGetUserAuthTokensResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<AdminGetUserAuthTokensRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<AdminGetUserAuthTokensResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3567,8 +3567,8 @@ export const adminLogoutUser: API.OperationMethod<
   AdminLogoutUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<AdminLogoutUserRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4032, __c126, 0) as any as S.Schema<AdminLogoutUserRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3582,8 +3582,8 @@ export const adminProvisioningReloadAccessControl: API.OperationMethod<
   AdminProvisioningReloadAccessControlError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<AdminProvisioningReloadAccessControlRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<AdminProvisioningReloadAccessControlResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<AdminProvisioningReloadAccessControlRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<AdminProvisioningReloadAccessControlResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3597,8 +3597,8 @@ export const adminProvisioningReloadDashboards: API.OperationMethod<
   AdminProvisioningReloadDashboardsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<AdminProvisioningReloadDashboardsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4800, __c150, 0) as any as S.Schema<AdminProvisioningReloadDashboardsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3612,8 +3612,8 @@ export const adminProvisioningReloadDatasources: API.OperationMethod<
   AdminProvisioningReloadDatasourcesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<AdminProvisioningReloadDatasourcesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5152, __c161, 0) as any as S.Schema<AdminProvisioningReloadDatasourcesRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3627,8 +3627,8 @@ export const adminProvisioningReloadPlugins: API.OperationMethod<
   AdminProvisioningReloadPluginsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<AdminProvisioningReloadPluginsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5504, __c172, 0) as any as S.Schema<AdminProvisioningReloadPluginsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3642,8 +3642,8 @@ export const adminRevokeUserAuthToken: API.OperationMethod<
   AdminRevokeUserAuthTokenError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<AdminRevokeUserAuthTokenRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5856, __c183, 0) as any as S.Schema<AdminRevokeUserAuthTokenRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3657,8 +3657,8 @@ export const adminUpdateUserPassword: API.OperationMethod<
   AdminUpdateUserPasswordError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<AdminUpdateUserPasswordRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(6048, __c189, 0) as any as S.Schema<AdminUpdateUserPasswordRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3672,8 +3672,8 @@ export const adminUpdateUserPermissions: API.OperationMethod<
   AdminUpdateUserPermissionsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<AdminUpdateUserPermissionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(6080, __c190, 0) as any as S.Schema<AdminUpdateUserPermissionsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3687,8 +3687,8 @@ export const callDatasourceResourceWithUID: API.OperationMethod<
   CallDatasourceResourceWithUIDError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CallDatasourceResourceWithUIDRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(6112, __c191, 0) as any as S.Schema<CallDatasourceResourceWithUIDRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3702,8 +3702,8 @@ export const cancelSnapshot: API.OperationMethod<
   CancelSnapshotError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CancelSnapshotRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<CancelSnapshotResponse>,
+  input: __S(6144, __c192, 0) as any as S.Schema<CancelSnapshotRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<CancelSnapshotResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3717,8 +3717,8 @@ export const changeUserPassword: API.OperationMethod<
   ChangeUserPasswordError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ChangeUserPasswordRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(6208, __c194, 0) as any as S.Schema<ChangeUserPasswordRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3732,8 +3732,8 @@ export const checkDatasourceHealthWithUID: API.OperationMethod<
   CheckDatasourceHealthWithUIDError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CheckDatasourceHealthWithUIDRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(6240, __c195, 0) as any as S.Schema<CheckDatasourceHealthWithUIDRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3747,8 +3747,8 @@ export const cleanDataSourceCache: API.OperationMethod<
   CleanDataSourceCacheError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CleanDataSourceCacheRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CacheConfigResponse>,
+  input: __S(6272, __c196, 0) as any as S.Schema<CleanDataSourceCacheRequest>,
+  output: __S(6304, __c197, 0) as any as S.Schema<CacheConfigResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3762,8 +3762,8 @@ export const createAnnotation: API.OperationMethod<
   CreateAnnotationError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateAnnotationRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<CreateAnnotationResponse>,
+  input: __S(6336, __c198, 0) as any as S.Schema<CreateAnnotationRequest>,
+  output: __S(6337, __c198, 1) as any as S.Schema<CreateAnnotationResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3777,8 +3777,8 @@ export const createCloudMigrationToken: API.OperationMethod<
   CreateCloudMigrationTokenError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateCloudMigrationTokenRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<CreateAccessTokenResponseDTO>,
+  input: __S(6400, __c200, 0) as any as S.Schema<CreateCloudMigrationTokenRequest>,
+  output: __S(6401, __c200, 1) as any as S.Schema<CreateAccessTokenResponseDTO>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3792,8 +3792,8 @@ export const createCorrelation: API.OperationMethod<
   CreateCorrelationError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateCorrelationRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CreateCorrelationResponseBody>,
+  input: __S(6432, __c201, 0) as any as S.Schema<CreateCorrelationRequest>,
+  output: __S(6464, __c202, 0) as any as S.Schema<CreateCorrelationResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3807,8 +3807,8 @@ export const createDashboardSnapshot: API.OperationMethod<
   CreateDashboardSnapshotError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateDashboardSnapshotRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<CreateDashboardSnapshotResponse>,
+  input: __S(6561, __c205, 1) as any as S.Schema<CreateDashboardSnapshotRequest>,
+  output: __S(6562, __c205, 2) as any as S.Schema<CreateDashboardSnapshotResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3822,8 +3822,8 @@ export const createLibraryElement: API.OperationMethod<
   CreateLibraryElementError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CreateLibraryElementRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<LibraryElementResponse>,
+  input: __S(6592, __c206, 0) as any as S.Schema<CreateLibraryElementRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<LibraryElementResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3837,8 +3837,8 @@ export const createOrg: API.OperationMethod<
   CreateOrgError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<CreateOrgRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<CreateOrgResponse>,
+  input: __S(6720, __c210, 0) as any as S.Schema<CreateOrgRequest>,
+  output: __S(6721, __c210, 1) as any as S.Schema<CreateOrgResponse>,
   errors: [Forbidden, Conflict, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3852,8 +3852,8 @@ export const createPublicDashboard: API.OperationMethod<
   CreatePublicDashboardError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<CreatePublicDashboardRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<PublicDashboard>,
+  input: __S(6752, __c211, 0) as any as S.Schema<CreatePublicDashboardRequest>,
+  output: __S(6786, __c212, 2) as any as S.Schema<PublicDashboard>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3867,8 +3867,8 @@ export const createQuery: API.OperationMethod<
   CreateQueryError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<CreateQueryRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<QueryHistoryResponse>,
+  input: __S(6816, __c213, 0) as any as S.Schema<CreateQueryRequest>,
+  output: __S(6880, __c215, 0) as any as S.Schema<QueryHistoryResponse>,
   errors: [BadRequest, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3882,8 +3882,8 @@ export const createRecordingRule: API.OperationMethod<
   CreateRecordingRuleError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<CreateRecordingRuleRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<RecordingRuleJSON>,
+  input: __S(6912, __c216, 0) as any as S.Schema<CreateRecordingRuleRequest>,
+  output: __S(6976, __c218, 0) as any as S.Schema<RecordingRuleJSON>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3901,8 +3901,8 @@ export const createRecordingRuleWriteTarget: API.OperationMethod<
   CreateRecordingRuleWriteTargetError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<CreateRecordingRuleWriteTargetRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<PrometheusRemoteWriteTargetJSON>,
+  input: __S(7008, __c219, 0) as any as S.Schema<CreateRecordingRuleWriteTargetRequest>,
+  output: __S(7040, __c220, 0) as any as S.Schema<PrometheusRemoteWriteTargetJSON>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3916,8 +3916,8 @@ export const createReport: API.OperationMethod<
   CreateReportError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<CreateReportRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<CreateReportResponse>,
+  input: __S(7072, __c221, 0) as any as S.Schema<CreateReportRequest>,
+  output: __S(7073, __c221, 1) as any as S.Schema<CreateReportResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3931,8 +3931,8 @@ export const createRole: API.OperationMethod<
   CreateRoleError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<CreateRoleRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<RoleDTO>,
+  input: __S(7168, __c224, 0) as any as S.Schema<CreateRoleRequest>,
+  output: __S(7202, __c225, 2) as any as S.Schema<RoleDTO>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3946,8 +3946,8 @@ export const createServiceAccount: API.OperationMethod<
   CreateServiceAccountError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<CreateServiceAccountRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ServiceAccountDTO>,
+  input: __S(7232, __c226, 0) as any as S.Schema<CreateServiceAccountRequest>,
+  output: __S(7264, __c227, 0) as any as S.Schema<ServiceAccountDTO>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3961,8 +3961,8 @@ export const createSession: API.OperationMethod<
   CreateSessionError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<CreateSessionRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<CloudMigrationSessionResponseDTO>,
+  input: __S(7296, __c228, 0) as any as S.Schema<CreateSessionRequest>,
+  output: __S(7328, __c229, 0) as any as S.Schema<CloudMigrationSessionResponseDTO>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3976,8 +3976,8 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<CreateSnapshotRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<CreateSnapshotResponseDTO>,
+  input: __S(7360, __c230, 0) as any as S.Schema<CreateSnapshotRequest>,
+  output: __S(7361, __c230, 1) as any as S.Schema<CreateSnapshotResponseDTO>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -3991,8 +3991,8 @@ export const createTeam: API.OperationMethod<
   CreateTeamError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<CreateTeamRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<CreateTeamResponse>,
+  input: __S(7424, __c232, 0) as any as S.Schema<CreateTeamRequest>,
+  output: __S(7425, __c232, 1) as any as S.Schema<CreateTeamResponse>,
   errors: [Forbidden, Conflict, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4006,8 +4006,8 @@ export const createToken: API.OperationMethod<
   CreateTokenError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<CreateTokenRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<NewApiKeyResult>,
+  input: __S(7456, __c233, 0) as any as S.Schema<CreateTokenRequest>,
+  output: __S(7457, __c233, 1) as any as S.Schema<NewApiKeyResult>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4025,8 +4025,8 @@ export const datasourceProxyDELETEByUIDcalls: API.OperationMethod<
   DatasourceProxyDELETEByUIDcallsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<DatasourceProxyDELETEByUIDcallsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DatasourceProxyDELETEByUIDcallsResponse>,
+  input: __S(7616, __c238, 0) as any as S.Schema<DatasourceProxyDELETEByUIDcallsRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<DatasourceProxyDELETEByUIDcallsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4040,8 +4040,8 @@ export const datasourceProxyGETByUIDcalls: API.OperationMethod<
   DatasourceProxyGETByUIDcallsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DatasourceProxyGETByUIDcallsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DatasourceProxyGETByUIDcallsResponse>,
+  input: __S(7648, __c239, 0) as any as S.Schema<DatasourceProxyGETByUIDcallsRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<DatasourceProxyGETByUIDcallsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4055,8 +4055,8 @@ export const datasourceProxyPOSTByUIDcalls: API.OperationMethod<
   DatasourceProxyPOSTByUIDcallsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<DatasourceProxyPOSTByUIDcallsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DatasourceProxyPOSTByUIDcallsResponse>,
+  input: __S(7680, __c240, 0) as any as S.Schema<DatasourceProxyPOSTByUIDcallsRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<DatasourceProxyPOSTByUIDcallsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4070,8 +4070,8 @@ export const deleteAnnotation: API.OperationMethod<
   DeleteAnnotationError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<DeleteAnnotationRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(7712, __c241, 0) as any as S.Schema<DeleteAnnotationRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4085,8 +4085,8 @@ export const deleteCloudMigrationToken: API.OperationMethod<
   DeleteCloudMigrationTokenError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<DeleteCloudMigrationTokenRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteCloudMigrationTokenResponse>,
+  input: __S(7744, __c242, 0) as any as S.Schema<DeleteCloudMigrationTokenRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<DeleteCloudMigrationTokenResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4100,8 +4100,8 @@ export const deleteCorrelation: API.OperationMethod<
   DeleteCorrelationError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<DeleteCorrelationRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<DeleteCorrelationResponseBody>,
+  input: __S(7776, __c243, 0) as any as S.Schema<DeleteCorrelationRequest>,
+  output: __S(7777, __c243, 1) as any as S.Schema<DeleteCorrelationResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4115,8 +4115,8 @@ export const deleteDashboardSnapshot: API.OperationMethod<
   DeleteDashboardSnapshotError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<DeleteDashboardSnapshotRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(7808, __c244, 0) as any as S.Schema<DeleteDashboardSnapshotRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4130,8 +4130,8 @@ export const deleteDashboardSnapshotByDeleteKey: API.OperationMethod<
   DeleteDashboardSnapshotByDeleteKeyError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<DeleteDashboardSnapshotByDeleteKeyRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(7840, __c245, 0) as any as S.Schema<DeleteDashboardSnapshotByDeleteKeyRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4145,8 +4145,8 @@ export const deleteDataSourceByUID: API.OperationMethod<
   DeleteDataSourceByUIDError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DeleteDataSourceByUIDRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(7872, __c246, 0) as any as S.Schema<DeleteDataSourceByUIDRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4160,8 +4160,8 @@ export const deleteLibraryElementByUID: API.OperationMethod<
   DeleteLibraryElementByUIDError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<DeleteLibraryElementByUIDRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(7904, __c247, 0) as any as S.Schema<DeleteLibraryElementByUIDRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4175,8 +4175,8 @@ export const deleteLicenseToken: API.OperationMethod<
   DeleteLicenseTokenError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<DeleteLicenseTokenRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<DeleteLicenseTokenResponse>,
+  input: __S(8000, __c250, 0) as any as S.Schema<DeleteLicenseTokenRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<DeleteLicenseTokenResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4190,8 +4190,8 @@ export const deleteOrg: API.OperationMethod<
   DeleteOrgError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<DeleteOrgRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(8032, __c251, 0) as any as S.Schema<DeleteOrgRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4205,8 +4205,8 @@ export const deletePublicDashboard: API.OperationMethod<
   DeletePublicDashboardError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<DeletePublicDashboardRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(8064, __c252, 0) as any as S.Schema<DeletePublicDashboardRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4220,8 +4220,8 @@ export const deleteQuery: API.OperationMethod<
   DeleteQueryError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<DeleteQueryRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<QueryHistoryDeleteQueryResponse>,
+  input: __S(8096, __c253, 0) as any as S.Schema<DeleteQueryRequest>,
+  output: __S(8097, __c253, 1) as any as S.Schema<QueryHistoryDeleteQueryResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4235,8 +4235,8 @@ export const deleteRecordingRule: API.OperationMethod<
   DeleteRecordingRuleError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<DeleteRecordingRuleRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(8128, __c254, 0) as any as S.Schema<DeleteRecordingRuleRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4250,8 +4250,8 @@ export const deleteRecordingRuleWriteTarget: API.OperationMethod<
   DeleteRecordingRuleWriteTargetError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteRecordingRuleWriteTargetRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(8160, __c255, 0) as any as S.Schema<DeleteRecordingRuleWriteTargetRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4265,8 +4265,8 @@ export const deleteRole: API.OperationMethod<
   DeleteRoleError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<DeleteRoleRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(8192, __c256, 0) as any as S.Schema<DeleteRoleRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4280,8 +4280,8 @@ export const deleteServiceAccount: API.OperationMethod<
   DeleteServiceAccountError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<DeleteServiceAccountRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(8224, __c257, 0) as any as S.Schema<DeleteServiceAccountRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4295,8 +4295,8 @@ export const deleteSession: API.OperationMethod<
   DeleteSessionError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DeleteSessionRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<DeleteSessionResponse>,
+  input: __S(8256, __c258, 0) as any as S.Schema<DeleteSessionRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<DeleteSessionResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4310,8 +4310,8 @@ export const deleteTeam: API.OperationMethod<
   DeleteTeamError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<DeleteTeamRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(8288, __c259, 0) as any as S.Schema<DeleteTeamRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, Conflict, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4325,8 +4325,8 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<DeleteTokenRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(8352, __c261, 0) as any as S.Schema<DeleteTokenRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4340,8 +4340,8 @@ export const disableDataSourceCache: API.OperationMethod<
   DisableDataSourceCacheError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<DisableDataSourceCacheRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CacheConfigResponse>,
+  input: __S(8384, __c262, 0) as any as S.Schema<DisableDataSourceCacheRequest>,
+  output: __S(6304, __c197, 0) as any as S.Schema<CacheConfigResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4355,8 +4355,8 @@ export const enableDataSourceCache: API.OperationMethod<
   EnableDataSourceCacheError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<EnableDataSourceCacheRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CacheConfigResponse>,
+  input: __S(8416, __c263, 0) as any as S.Schema<EnableDataSourceCacheRequest>,
+  output: __S(6304, __c197, 0) as any as S.Schema<CacheConfigResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4370,8 +4370,8 @@ export const getAccessControlStatus: API.OperationMethod<
   GetAccessControlStatusError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetAccessControlStatusRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<AccessControlStatus>,
+  input: __S(8448, __c264, 0) as any as S.Schema<GetAccessControlStatusRequest>,
+  output: __S(8449, __c264, 1) as any as S.Schema<AccessControlStatus>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4385,8 +4385,8 @@ export const getAnnotation: API.OperationMethod<
   GetAnnotationError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetAnnotationRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<Annotation>,
+  input: __S(8480, __c265, 0) as any as S.Schema<GetAnnotationRequest>,
+  output: __S(8512, __c266, 0) as any as S.Schema<Annotation>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4400,8 +4400,8 @@ export const getAnnotations: API.OperationMethod<
   GetAnnotationsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetAnnotationsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<GetAnnotationsResponse>,
+  input: __S(8544, __c267, 0) as any as S.Schema<GetAnnotationsRequest>,
+  output: __S(8546, __c267, 2) as any as S.Schema<GetAnnotationsResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4415,8 +4415,8 @@ export const getAnnotationTags: API.OperationMethod<
   GetAnnotationTagsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetAnnotationTagsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<GetAnnotationTagsResponse>,
+  input: __S(8576, __c268, 0) as any as S.Schema<GetAnnotationTagsRequest>,
+  output: __S(8580, __c268, 4) as any as S.Schema<GetAnnotationTagsResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4430,8 +4430,8 @@ export const getCloudMigrationToken: API.OperationMethod<
   GetCloudMigrationTokenError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetCloudMigrationTokenRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GetAccessTokenResponseDTO>,
+  input: __S(8608, __c269, 0) as any as S.Schema<GetCloudMigrationTokenRequest>,
+  output: __S(8609, __c269, 1) as any as S.Schema<GetAccessTokenResponseDTO>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4445,8 +4445,8 @@ export const getCorrelation: API.OperationMethod<
   GetCorrelationError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetCorrelationRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<Correlation>,
+  input: __S(8640, __c270, 0) as any as S.Schema<GetCorrelationRequest>,
+  output: __S(6531, __c204, 3) as any as S.Schema<Correlation>,
   errors: [NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4460,8 +4460,8 @@ export const getCorrelations: API.OperationMethod<
   GetCorrelationsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetCorrelationsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<GetCorrelationsResponse>,
+  input: __S(8672, __c271, 0) as any as S.Schema<GetCorrelationsRequest>,
+  output: __S(8673, __c271, 1) as any as S.Schema<GetCorrelationsResponse>,
   errors: [NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4475,8 +4475,8 @@ export const getCorrelationsBySourceUID: API.OperationMethod<
   GetCorrelationsBySourceUIDError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetCorrelationsBySourceUIDRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<GetCorrelationsBySourceUIDResponse>,
+  input: __S(8768, __c274, 0) as any as S.Schema<GetCorrelationsBySourceUIDRequest>,
+  output: __S(8769, __c274, 1) as any as S.Schema<GetCorrelationsBySourceUIDResponse>,
   errors: [NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4490,8 +4490,8 @@ export const getCurrentOrg: API.OperationMethod<
   GetCurrentOrgError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetCurrentOrgRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<OrgDetailsDTO>,
+  input: __S(8800, __c275, 0) as any as S.Schema<GetCurrentOrgRequest>,
+  output: __S(8833, __c276, 1) as any as S.Schema<OrgDetailsDTO>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4505,8 +4505,8 @@ export const getCurrentOrgQuota: API.OperationMethod<
   GetCurrentOrgQuotaError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetCurrentOrgQuotaRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<GetCurrentOrgQuotaResponse>,
+  input: __S(8864, __c277, 0) as any as S.Schema<GetCurrentOrgQuotaRequest>,
+  output: __S(8865, __c277, 1) as any as S.Schema<GetCurrentOrgQuotaResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4520,8 +4520,8 @@ export const getDashboardSnapshot: API.OperationMethod<
   GetDashboardSnapshotError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetDashboardSnapshotRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<DashboardFullWithMeta>,
+  input: __S(8928, __c279, 0) as any as S.Schema<GetDashboardSnapshotRequest>,
+  output: __S(8963, __c280, 3) as any as S.Schema<DashboardFullWithMeta>,
   errors: [BadRequest, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4535,8 +4535,8 @@ export const getDataSourceByUID: API.OperationMethod<
   GetDataSourceByUIDError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetDataSourceByUIDRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DataSource>,
+  input: __S(8992, __c281, 0) as any as S.Schema<GetDataSourceByUIDRequest>,
+  output: __S(7585, __c237, 1) as any as S.Schema<DataSource>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4550,8 +4550,8 @@ export const getDataSourceCacheConfig: API.OperationMethod<
   GetDataSourceCacheConfigError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<GetDataSourceCacheConfigRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CacheConfigResponse>,
+  input: __S(9024, __c282, 0) as any as S.Schema<GetDataSourceCacheConfigRequest>,
+  output: __S(6304, __c197, 0) as any as S.Schema<CacheConfigResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4565,8 +4565,8 @@ export const getDataSources: API.OperationMethod<
   GetDataSourcesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetDataSourcesRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GetDataSourcesResponse>,
+  input: __S(9056, __c283, 0) as any as S.Schema<GetDataSourcesRequest>,
+  output: __S(9059, __c283, 3) as any as S.Schema<GetDataSourcesResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4580,8 +4580,8 @@ export const getHealth: API.OperationMethod<
   GetHealthError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<GetHealthRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<HealthResponse>,
+  input: __S(9088, __c284, 0) as any as S.Schema<GetHealthRequest>,
+  output: __S(9089, __c284, 1) as any as S.Schema<HealthResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4595,8 +4595,8 @@ export const getJWKS: API.OperationMethod<
   GetJWKSError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<GetJWKSRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<GetJWKSResponse>,
+  input: __S(9120, __c285, 0) as any as S.Schema<GetJWKSRequest>,
+  output: __S(9136, __c285, 16) as any as S.Schema<GetJWKSResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4610,8 +4610,8 @@ export const getLDAPStatus: API.OperationMethod<
   GetLDAPStatusError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<GetLDAPStatusRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(9216, __c288, 0) as any as S.Schema<GetLDAPStatusRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4625,8 +4625,8 @@ export const getLibraryElementByName: API.OperationMethod<
   GetLibraryElementByNameError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<GetLibraryElementByNameRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<LibraryElementArrayResponse>,
+  input: __S(9280, __c290, 0) as any as S.Schema<GetLibraryElementByNameRequest>,
+  output: __S(9281, __c290, 1) as any as S.Schema<LibraryElementArrayResponse>,
   errors: [NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4640,8 +4640,8 @@ export const getLibraryElementByUID: API.OperationMethod<
   GetLibraryElementByUIDError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<GetLibraryElementByUIDRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<LibraryElementResponse>,
+  input: __S(9344, __c292, 0) as any as S.Schema<GetLibraryElementByUIDRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<LibraryElementResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4655,8 +4655,8 @@ export const getLibraryElementConnections: API.OperationMethod<
   GetLibraryElementConnectionsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetLibraryElementConnectionsRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<LibraryElementConnectionsResponse>,
+  input: __S(9376, __c293, 0) as any as S.Schema<GetLibraryElementConnectionsRequest>,
+  output: __S(9379, __c293, 3) as any as S.Schema<LibraryElementConnectionsResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4670,8 +4670,8 @@ export const getLibraryElements: API.OperationMethod<
   GetLibraryElementsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<GetLibraryElementsRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<LibraryElementSearchResponse>,
+  input: __S(9408, __c294, 0) as any as S.Schema<GetLibraryElementsRequest>,
+  output: __S(9410, __c294, 2) as any as S.Schema<LibraryElementSearchResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4685,8 +4685,8 @@ export const getLicenseToken: API.OperationMethod<
   GetLicenseTokenError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<GetLicenseTokenRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<Token>,
+  input: __S(9440, __c295, 0) as any as S.Schema<GetLicenseTokenRequest>,
+  output: __S(9472, __c296, 0) as any as S.Schema<Token>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4700,8 +4700,8 @@ export const getMetadata: API.OperationMethod<
   GetMetadataError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<GetMetadataRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<GetMetadataResponse>,
+  input: __S(9504, __c297, 0) as any as S.Schema<GetMetadataRequest>,
+  output: __S(9536, __c298, 0) as any as S.Schema<GetMetadataResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4715,8 +4715,8 @@ export const getOrg: API.OperationMethod<
   GetOrgError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<GetOrgRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<OrgDetailsDTO>,
+  input: __S(9568, __c299, 0) as any as S.Schema<GetOrgRequest>,
+  output: __S(8833, __c276, 1) as any as S.Schema<OrgDetailsDTO>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4730,8 +4730,8 @@ export const getOrgByName: API.OperationMethod<
   GetOrgByNameError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<GetOrgByNameRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<OrgDetailsDTO>,
+  input: __S(9600, __c300, 0) as any as S.Schema<GetOrgByNameRequest>,
+  output: __S(8833, __c276, 1) as any as S.Schema<OrgDetailsDTO>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4745,8 +4745,8 @@ export const getOrgQuota: API.OperationMethod<
   GetOrgQuotaError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<GetOrgQuotaRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<GetOrgQuotaResponse>,
+  input: __S(9632, __c301, 0) as any as S.Schema<GetOrgQuotaRequest>,
+  output: __S(9664, __c302, 0) as any as S.Schema<GetOrgQuotaResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4760,8 +4760,8 @@ export const getOrgUsers: API.OperationMethod<
   GetOrgUsersError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<GetOrgUsersRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<GetOrgUsersResponse>,
+  input: __S(9696, __c303, 0) as any as S.Schema<GetOrgUsersRequest>,
+  output: __S(9697, __c303, 1) as any as S.Schema<GetOrgUsersResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4775,8 +4775,8 @@ export const getOrgUsersForCurrentOrg: API.OperationMethod<
   GetOrgUsersForCurrentOrgError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<GetOrgUsersForCurrentOrgRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<GetOrgUsersForCurrentOrgResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetOrgUsersForCurrentOrgRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<GetOrgUsersForCurrentOrgResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4790,8 +4790,8 @@ export const getOrgUsersForCurrentOrgLookup: API.OperationMethod<
   GetOrgUsersForCurrentOrgLookupError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<GetOrgUsersForCurrentOrgLookupRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GetOrgUsersForCurrentOrgLookupResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetOrgUsersForCurrentOrgLookupRequest>,
+  output: __S(67, __c2, 3) as any as S.Schema<GetOrgUsersForCurrentOrgLookupResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4805,8 +4805,8 @@ export const getPendingOrgInvites: API.OperationMethod<
   GetPendingOrgInvitesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GetPendingOrgInvitesRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<GetPendingOrgInvitesResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetPendingOrgInvitesRequest>,
+  output: __S(99, __c3, 3) as any as S.Schema<GetPendingOrgInvitesResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4820,8 +4820,8 @@ export const getProviderSettings: API.OperationMethod<
   GetProviderSettingsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<GetProviderSettingsRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<GetProviderSettingsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetProviderSettingsRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<GetProviderSettingsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4835,8 +4835,8 @@ export const getPublicAnnotations: API.OperationMethod<
   GetPublicAnnotationsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<GetPublicAnnotationsRequest>,
-  output: __S(230, __c28, 6) as any as S.Schema<GetPublicAnnotationsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetPublicAnnotationsRequest>,
+  output: __S(199, __c6, 7) as any as S.Schema<GetPublicAnnotationsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4850,8 +4850,8 @@ export const getPublicDashboard: API.OperationMethod<
   GetPublicDashboardError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<GetPublicDashboardRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<PublicDashboard>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetPublicDashboardRequest>,
+  output: __S(6786, __c212, 2) as any as S.Schema<PublicDashboard>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4865,8 +4865,8 @@ export const getRecordingRuleWriteTarget: API.OperationMethod<
   GetRecordingRuleWriteTargetError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<GetRecordingRuleWriteTargetRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<PrometheusRemoteWriteTargetJSON>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetRecordingRuleWriteTargetRequest>,
+  output: __S(7040, __c220, 0) as any as S.Schema<PrometheusRemoteWriteTargetJSON>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4880,8 +4880,8 @@ export const getReports: API.OperationMethod<
   GetReportsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<GetReportsRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<GetReportsResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetReportsRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<GetReportsResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4895,8 +4895,8 @@ export const getReportsByDashboardUID: API.OperationMethod<
   GetReportsByDashboardUIDError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<GetReportsByDashboardUIDRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<GetReportsByDashboardUIDResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetReportsByDashboardUIDRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<GetReportsByDashboardUIDResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4910,8 +4910,8 @@ export const getReportSettings: API.OperationMethod<
   GetReportSettingsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<GetReportSettingsRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<ReportSettings>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetReportSettingsRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<ReportSettings>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4925,8 +4925,8 @@ export const getResourceDependencies: API.OperationMethod<
   GetResourceDependenciesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<GetResourceDependenciesRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<ResourceDependenciesResponseDTO>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetResourceDependenciesRequest>,
+  output: __S(483, __c15, 3) as any as S.Schema<ResourceDependenciesResponseDTO>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4940,8 +4940,8 @@ export const getResourceDescription: API.OperationMethod<
   GetResourceDescriptionError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<GetResourceDescriptionRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<Description>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetResourceDescriptionRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<Description>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4955,8 +4955,8 @@ export const getResourcePermissions: API.OperationMethod<
   GetResourcePermissionsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<GetResourcePermissionsRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<GetResourcePermissionsResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetResourcePermissionsRequest>,
+  output: __S(547, __c17, 3) as any as S.Schema<GetResourcePermissionsResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4966,8 +4966,8 @@ export type GetRoleError = Forbidden | GrafanaOpError;
 /** Get a role. Get a role for the given UID. You need to have a permission with action `roles:read` and scope `roles:*`. */
 export const getRole: API.OperationMethod<GetRoleRequest, RoleDTO, GetRoleError, GrafanaOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(255, __c31, 7) as any as S.Schema<GetRoleRequest>,
-    output: __S(91, __c11, 3) as any as S.Schema<RoleDTO>,
+    input: __S(576, __c18, 0) as any as S.Schema<GetRoleRequest>,
+    output: __S(7202, __c225, 2) as any as S.Schema<RoleDTO>,
     errors: [Forbidden, UnknownGrafanaError],
     protocol: GrafanaProtocol,
     retry: Retry.Retry,
@@ -4981,8 +4981,8 @@ export const getRoleAssignments: API.OperationMethod<
   GetRoleAssignmentsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<GetRoleAssignmentsRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<RoleAssignmentsDTO>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetRoleAssignmentsRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<RoleAssignmentsDTO>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -4996,8 +4996,8 @@ export const getSAMLLogout: API.OperationMethod<
   GetSAMLLogoutError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<GetSAMLLogoutRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetSAMLLogoutResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetSAMLLogoutRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<GetSAMLLogoutResponse>,
   errors: [NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5011,8 +5011,8 @@ export const getServiceAccount: API.OperationMethod<
   GetServiceAccountError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<GetServiceAccountRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ServiceAccountDTO>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetServiceAccountRequest>,
+  output: __S(7264, __c227, 0) as any as S.Schema<ServiceAccountDTO>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5026,8 +5026,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<GetSessionRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<CloudMigrationSessionResponseDTO>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetSessionRequest>,
+  output: __S(7328, __c229, 0) as any as S.Schema<CloudMigrationSessionResponseDTO>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5041,8 +5041,8 @@ export const getSessionList: API.OperationMethod<
   GetSessionListError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<GetSessionListRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<CloudMigrationSessionListResponseDTO>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetSessionListRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<CloudMigrationSessionListResponseDTO>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5056,8 +5056,8 @@ export const getSettingsImage: API.OperationMethod<
   GetSettingsImageError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<GetSettingsImageRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<GetSettingsImageResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetSettingsImageRequest>,
+  output: __S(9536, __c298, 0) as any as S.Schema<GetSettingsImageResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5071,8 +5071,8 @@ export const getShapshotList: API.OperationMethod<
   GetShapshotListError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<GetShapshotListRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<SnapshotListResponseDTO>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetShapshotListRequest>,
+  output: __S(867, __c27, 3) as any as S.Schema<SnapshotListResponseDTO>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5086,8 +5086,8 @@ export const getSharingOptions: API.OperationMethod<
   GetSharingOptionsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<GetSharingOptionsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<GetSharingOptionsResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetSharingOptionsRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<GetSharingOptionsResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5101,8 +5101,8 @@ export const getSignedInUser: API.OperationMethod<
   GetSignedInUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<GetSignedInUserRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<UserProfileDTO>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetSignedInUserRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<UserProfileDTO>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5116,8 +5116,8 @@ export const getSignedInUserOrgList: API.OperationMethod<
   GetSignedInUserOrgListError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<GetSignedInUserOrgListRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<GetSignedInUserOrgListResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetSignedInUserOrgListRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<GetSignedInUserOrgListResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5131,8 +5131,8 @@ export const getSignedInUserTeamList: API.OperationMethod<
   GetSignedInUserTeamListError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<GetSignedInUserTeamListRequest>,
-  output: __S(280, __c35, 0) as any as S.Schema<GetSignedInUserTeamListResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetSignedInUserTeamListRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<GetSignedInUserTeamListResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5146,8 +5146,8 @@ export const getSLO: API.OperationMethod<
   GetSLOError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<GetSLORequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetSLOResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetSLORequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<GetSLOResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5161,8 +5161,8 @@ export const getSnapshot: API.OperationMethod<
   GetSnapshotError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<GetSnapshotRequest>,
-  output: __S(287, __c35, 7) as any as S.Schema<GetSnapshotResponseDTO>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetSnapshotRequest>,
+  output: __S(1189, __c37, 5) as any as S.Schema<GetSnapshotResponseDTO>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5176,8 +5176,8 @@ export const getStatus: API.OperationMethod<
   GetStatusError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<GetStatusRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<GetStatusResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetStatusRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<GetStatusResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5191,8 +5191,8 @@ export const getSyncStatus: API.OperationMethod<
   GetSyncStatusError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<GetSyncStatusRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<ActiveSyncStatusDTO>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetSyncStatusRequest>,
+  output: __S(1252, __c39, 4) as any as S.Schema<ActiveSyncStatusDTO>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5202,8 +5202,8 @@ export type GetTeamError = Forbidden | NotFound | GrafanaOpError;
 /** Get Team By ID. */
 export const getTeam: API.OperationMethod<GetTeamRequest, TeamDTO, GetTeamError, GrafanaOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(295, __c36, 7) as any as S.Schema<GetTeamRequest>,
-    output: __S(278, __c34, 6) as any as S.Schema<TeamDTO>,
+    input: __S(1280, __c40, 0) as any as S.Schema<GetTeamRequest>,
+    output: __S(1088, __c34, 0) as any as S.Schema<TeamDTO>,
     errors: [Forbidden, NotFound, UnknownGrafanaError],
     protocol: GrafanaProtocol,
     retry: Retry.Retry,
@@ -5217,8 +5217,8 @@ export const getTeamGroupsApi: API.OperationMethod<
   GetTeamGroupsApiError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<GetTeamGroupsApiRequest>,
-  output: __S(299, __c37, 3) as any as S.Schema<GetTeamGroupsApiResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetTeamGroupsApiRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<GetTeamGroupsApiResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5232,8 +5232,8 @@ export const getTeamLBACRulesApi: API.OperationMethod<
   GetTeamLBACRulesApiError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<GetTeamLBACRulesApiRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<TeamLBACRules>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetTeamLBACRulesApiRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<TeamLBACRules>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5247,8 +5247,8 @@ export const getTeamMembers: API.OperationMethod<
   GetTeamMembersError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<GetTeamMembersRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<GetTeamMembersResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetTeamMembersRequest>,
+  output: __S(1475, __c46, 3) as any as S.Schema<GetTeamMembersResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5262,8 +5262,8 @@ export const getTeamPreferences: API.OperationMethod<
   GetTeamPreferencesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<GetTeamPreferencesRequest>,
-  output: __S(311, __c38, 7) as any as S.Schema<PreferencesSpec>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetTeamPreferencesRequest>,
+  output: __S(1507, __c47, 3) as any as S.Schema<PreferencesSpec>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5277,8 +5277,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<GetUserRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<UserProfileDTO>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<UserProfileDTO>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5292,8 +5292,8 @@ export const getUserAuthTokens: API.OperationMethod<
   GetUserAuthTokensError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<GetUserAuthTokensRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetUserAuthTokensResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetUserAuthTokensRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<GetUserAuthTokensResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5307,8 +5307,8 @@ export const getUserByLoginOrEmail: API.OperationMethod<
   GetUserByLoginOrEmailError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<GetUserByLoginOrEmailRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<UserProfileDTO>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetUserByLoginOrEmailRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<UserProfileDTO>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5322,8 +5322,8 @@ export const getUserFromLDAP: API.OperationMethod<
   GetUserFromLDAPError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<GetUserFromLDAPRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(1632, __c51, 0) as any as S.Schema<GetUserFromLDAPRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5337,8 +5337,8 @@ export const getUserOrgList: API.OperationMethod<
   GetUserOrgListError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<GetUserOrgListRequest>,
-  output: __S(317, __c39, 5) as any as S.Schema<GetUserOrgListResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetUserOrgListRequest>,
+  output: __S(1665, __c52, 1) as any as S.Schema<GetUserOrgListResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5352,8 +5352,8 @@ export const getUserQuota: API.OperationMethod<
   GetUserQuotaError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<GetUserQuotaRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<GetUserQuotaResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetUserQuotaRequest>,
+  output: __S(9664, __c302, 0) as any as S.Schema<GetUserQuotaResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5367,8 +5367,8 @@ export const getUserQuotas: API.OperationMethod<
   GetUserQuotasError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<GetUserQuotasRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<GetUserQuotasResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<GetUserQuotasRequest>,
+  output: __S(9664, __c302, 0) as any as S.Schema<GetUserQuotasResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5382,8 +5382,8 @@ export const getUserTeams: API.OperationMethod<
   GetUserTeamsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<GetUserTeamsRequest>,
-  output: __S(321, __c40, 1) as any as S.Schema<GetUserTeamsResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetUserTeamsRequest>,
+  output: __S(1793, __c56, 1) as any as S.Schema<GetUserTeamsResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5397,8 +5397,8 @@ export const importDashboard: API.OperationMethod<
   ImportDashboardError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<ImportDashboardRequest>,
-  output: __S(325, __c40, 5) as any as S.Schema<ImportDashboardResponse>,
+  input: __S(1826, __c57, 2) as any as S.Schema<ImportDashboardRequest>,
+  output: __S(1827, __c57, 3) as any as S.Schema<ImportDashboardResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5412,8 +5412,8 @@ export const interpolateDashboard: API.OperationMethod<
   InterpolateDashboardError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<InterpolateDashboardRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<InterpolateDashboardResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<InterpolateDashboardRequest>,
+  output: __S(1857, __c58, 1) as any as S.Schema<InterpolateDashboardResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5427,8 +5427,8 @@ export const listAllProvidersSettings: API.OperationMethod<
   ListAllProvidersSettingsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<ListAllProvidersSettingsRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<ListAllProvidersSettingsResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListAllProvidersSettingsRequest>,
+  output: __S(1890, __c59, 2) as any as S.Schema<ListAllProvidersSettingsResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5442,8 +5442,8 @@ export const listDevices: API.OperationMethod<
   ListDevicesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<ListDevicesRequest>,
-  output: __S(334, __c41, 6) as any as S.Schema<ListDevicesResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListDevicesRequest>,
+  output: __S(1923, __c60, 3) as any as S.Schema<ListDevicesResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5457,8 +5457,8 @@ export const listPublicDashboards: API.OperationMethod<
   ListPublicDashboardsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<ListPublicDashboardsRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<PublicDashboardListResponseWithPagination>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListPublicDashboardsRequest>,
+  output: __S(1955, __c61, 3) as any as S.Schema<PublicDashboardListResponseWithPagination>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5472,8 +5472,8 @@ export const listRecordingRules: API.OperationMethod<
   ListRecordingRulesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<ListRecordingRulesRequest>,
-  output: __S(341, __c42, 5) as any as S.Schema<ListRecordingRulesResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListRecordingRulesRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<ListRecordingRulesResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5487,8 +5487,8 @@ export const listRoles: API.OperationMethod<
   ListRolesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<ListRolesRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<ListRolesResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListRolesRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<ListRolesResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5502,8 +5502,8 @@ export const listSortOptions: API.OperationMethod<
   ListSortOptionsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<ListSortOptionsRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<ListSortOptionsResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListSortOptionsRequest>,
+  output: __S(2113, __c66, 1) as any as S.Schema<ListSortOptionsResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5517,8 +5517,8 @@ export const listTeamRoles: API.OperationMethod<
   ListTeamRolesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<ListTeamRolesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListTeamRolesRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5532,8 +5532,8 @@ export const listTeamsRoles: API.OperationMethod<
   ListTeamsRolesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<ListTeamsRolesRequest>,
-  output: __S(350, __c43, 6) as any as S.Schema<ListTeamsRolesResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListTeamsRolesRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<ListTeamsRolesResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5547,8 +5547,8 @@ export const listTokens: API.OperationMethod<
   ListTokensError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<ListTokensRequest>,
-  output: __S(354, __c44, 2) as any as S.Schema<ListTokensResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListTokensRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<ListTokensResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5562,8 +5562,8 @@ export const listUserRoles: API.OperationMethod<
   ListUserRolesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<ListUserRolesRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<ListUserRolesResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListUserRolesRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<ListUserRolesResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5577,8 +5577,8 @@ export const listUsersRoles: API.OperationMethod<
   ListUsersRolesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<ListUsersRolesRequest>,
-  output: __S(350, __c43, 6) as any as S.Schema<ListUsersRolesResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListUsersRolesRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<ListUsersRolesResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5592,8 +5592,8 @@ export const massDeleteAnnotations: API.OperationMethod<
   MassDeleteAnnotationsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<MassDeleteAnnotationsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(2368, __c74, 0) as any as S.Schema<MassDeleteAnnotationsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5607,8 +5607,8 @@ export const patchProviderSettings: API.OperationMethod<
   PatchProviderSettingsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<PatchProviderSettingsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(2400, __c75, 0) as any as S.Schema<PatchProviderSettingsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5622,8 +5622,8 @@ export const patchQueryComment: API.OperationMethod<
   PatchQueryCommentError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<PatchQueryCommentRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<QueryHistoryResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<PatchQueryCommentRequest>,
+  output: __S(6880, __c215, 0) as any as S.Schema<QueryHistoryResponse>,
   errors: [BadRequest, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5637,8 +5637,8 @@ export const postACS: API.OperationMethod<
   PostACSError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<PostACSRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<PostACSResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<PostACSRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<PostACSResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5652,8 +5652,8 @@ export const postGraphiteAnnotation: API.OperationMethod<
   PostGraphiteAnnotationError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<PostGraphiteAnnotationRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<PostGraphiteAnnotationResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<PostGraphiteAnnotationRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<PostGraphiteAnnotationResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5667,8 +5667,8 @@ export const postLicenseToken: API.OperationMethod<
   PostLicenseTokenError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<PostLicenseTokenRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<Token>,
+  input: __S(2560, __c80, 0) as any as S.Schema<PostLicenseTokenRequest>,
+  output: __S(9472, __c296, 0) as any as S.Schema<Token>,
   errors: [BadRequest, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5682,8 +5682,8 @@ export const postRenewLicenseToken: API.OperationMethod<
   PostRenewLicenseTokenError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<PostRenewLicenseTokenRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<PostRenewLicenseTokenResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<PostRenewLicenseTokenRequest>,
+  output: __S(2593, __c81, 1) as any as S.Schema<PostRenewLicenseTokenResponse>,
   errors: [NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5697,8 +5697,8 @@ export const postSLO: API.OperationMethod<
   PostSLOError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<PostSLORequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<PostSLOResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<PostSLORequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<PostSLOResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5712,8 +5712,8 @@ export const postSyncUserWithLDAP: API.OperationMethod<
   PostSyncUserWithLDAPError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<PostSyncUserWithLDAPRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(2656, __c83, 0) as any as S.Schema<PostSyncUserWithLDAPRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5727,8 +5727,8 @@ export const queryMetricsWithExpressions: API.OperationMethod<
   QueryMetricsWithExpressionsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<QueryMetricsWithExpressionsRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<QueryDataResponse>,
+  input: __S(2689, __c84, 1) as any as S.Schema<QueryMetricsWithExpressionsRequest>,
+  output: __S(2743, __c85, 23) as any as S.Schema<QueryDataResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5742,8 +5742,8 @@ export const queryPublicDashboard: API.OperationMethod<
   QueryPublicDashboardError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<QueryPublicDashboardRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<QueryDataResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<QueryPublicDashboardRequest>,
+  output: __S(2743, __c85, 23) as any as S.Schema<QueryDataResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5757,8 +5757,8 @@ export const refreshLicenseStats: API.OperationMethod<
   RefreshLicenseStatsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<RefreshLicenseStatsRequest>,
-  output: __S(396, __c49, 4) as any as S.Schema<ActiveUserStats>,
+  input: __S(2784, __c87, 0) as any as S.Schema<RefreshLicenseStatsRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<ActiveUserStats>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5772,8 +5772,8 @@ export const reloadLDAPCfg: API.OperationMethod<
   ReloadLDAPCfgError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<ReloadLDAPCfgRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ReloadLDAPCfgResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<ReloadLDAPCfgRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<ReloadLDAPCfgResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5787,8 +5787,8 @@ export const removeOrgUser: API.OperationMethod<
   RemoveOrgUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<RemoveOrgUserRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(2848, __c89, 0) as any as S.Schema<RemoveOrgUserRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5802,8 +5802,8 @@ export const removeOrgUserForCurrentOrg: API.OperationMethod<
   RemoveOrgUserForCurrentOrgError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<RemoveOrgUserForCurrentOrgRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(2880, __c90, 0) as any as S.Schema<RemoveOrgUserForCurrentOrgRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5817,8 +5817,8 @@ export const removeProviderSettings: API.OperationMethod<
   RemoveProviderSettingsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<RemoveProviderSettingsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(2944, __c92, 0) as any as S.Schema<RemoveProviderSettingsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5832,8 +5832,8 @@ export const removeTeamGroupApiQuery: API.OperationMethod<
   RemoveTeamGroupApiQueryError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<RemoveTeamGroupApiQueryRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(2976, __c93, 0) as any as S.Schema<RemoveTeamGroupApiQueryRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5847,8 +5847,8 @@ export const removeTeamMember: API.OperationMethod<
   RemoveTeamMemberError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<RemoveTeamMemberRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(3008, __c94, 0) as any as S.Schema<RemoveTeamMemberRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5862,8 +5862,8 @@ export const removeTeamRole: API.OperationMethod<
   RemoveTeamRoleError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<RemoveTeamRoleRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(3040, __c95, 0) as any as S.Schema<RemoveTeamRoleRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5877,8 +5877,8 @@ export const removeUserRole: API.OperationMethod<
   RemoveUserRoleError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<RemoveUserRoleRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(3072, __c96, 0) as any as S.Schema<RemoveUserRoleRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5892,8 +5892,8 @@ export const renderReportCSVs: API.OperationMethod<
   RenderReportCSVsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<RenderReportCSVsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<RenderReportCSVsResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<RenderReportCSVsRequest>,
+  output: __S(9536, __c298, 0) as any as S.Schema<RenderReportCSVsResponse>,
   errors: [BadRequest, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5907,8 +5907,8 @@ export const renderReportPDFs: API.OperationMethod<
   RenderReportPDFsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<RenderReportPDFsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<RenderReportPDFsResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<RenderReportPDFsRequest>,
+  output: __S(9536, __c298, 0) as any as S.Schema<RenderReportPDFsResponse>,
   errors: [BadRequest, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5922,8 +5922,8 @@ export const revokeInvite: API.OperationMethod<
   RevokeInviteError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<RevokeInviteRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(3168, __c99, 0) as any as S.Schema<RevokeInviteRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5937,8 +5937,8 @@ export const revokeUserAuthToken: API.OperationMethod<
   RevokeUserAuthTokenError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<RevokeUserAuthTokenRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(3200, __c100, 0) as any as S.Schema<RevokeUserAuthTokenRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5952,8 +5952,16 @@ export const routeConvertPrometheusCortexDeleteNamespace: API.OperationMethod<
   RouteConvertPrometheusCortexDeleteNamespaceError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<RouteConvertPrometheusCortexDeleteNamespaceRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusCortexDeleteNamespaceResponse>,
+  input: __S(
+    3232,
+    __c101,
+    0,
+  ) as any as S.Schema<RouteConvertPrometheusCortexDeleteNamespaceRequest>,
+  output: __S(
+    4416,
+    __c138,
+    0,
+  ) as any as S.Schema<RouteConvertPrometheusCortexDeleteNamespaceResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5967,8 +5975,16 @@ export const routeConvertPrometheusCortexDeleteRuleGroup: API.OperationMethod<
   RouteConvertPrometheusCortexDeleteRuleGroupError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<RouteConvertPrometheusCortexDeleteRuleGroupRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusCortexDeleteRuleGroupResponse>,
+  input: __S(
+    3296,
+    __c103,
+    0,
+  ) as any as S.Schema<RouteConvertPrometheusCortexDeleteRuleGroupRequest>,
+  output: __S(
+    4416,
+    __c138,
+    0,
+  ) as any as S.Schema<RouteConvertPrometheusCortexDeleteRuleGroupResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5982,8 +5998,8 @@ export const routeConvertPrometheusCortexGetNamespace: API.OperationMethod<
   RouteConvertPrometheusCortexGetNamespaceError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<RouteConvertPrometheusCortexGetNamespaceRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusCortexGetNamespaceResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<RouteConvertPrometheusCortexGetNamespaceRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<RouteConvertPrometheusCortexGetNamespaceResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -5997,8 +6013,8 @@ export const routeConvertPrometheusCortexGetRuleGroup: API.OperationMethod<
   RouteConvertPrometheusCortexGetRuleGroupError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<RouteConvertPrometheusCortexGetRuleGroupRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusCortexGetRuleGroupResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<RouteConvertPrometheusCortexGetRuleGroupRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<RouteConvertPrometheusCortexGetRuleGroupResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6012,8 +6028,8 @@ export const routeConvertPrometheusCortexGetRules: API.OperationMethod<
   RouteConvertPrometheusCortexGetRulesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<RouteConvertPrometheusCortexGetRulesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusCortexGetRulesResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<RouteConvertPrometheusCortexGetRulesRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<RouteConvertPrometheusCortexGetRulesResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6027,8 +6043,12 @@ export const routeConvertPrometheusCortexPostRuleGroup: API.OperationMethod<
   RouteConvertPrometheusCortexPostRuleGroupError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupRequest>,
+  output: __S(
+    4416,
+    __c138,
+    0,
+  ) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6042,8 +6062,12 @@ export const routeConvertPrometheusCortexPostRuleGroups: API.OperationMethod<
   RouteConvertPrometheusCortexPostRuleGroupsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupsResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupsRequest>,
+  output: __S(
+    4416,
+    __c138,
+    0,
+  ) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupsResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6057,8 +6081,8 @@ export const routeConvertPrometheusDeleteNamespace: API.OperationMethod<
   RouteConvertPrometheusDeleteNamespaceError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<RouteConvertPrometheusDeleteNamespaceRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusDeleteNamespaceResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<RouteConvertPrometheusDeleteNamespaceRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<RouteConvertPrometheusDeleteNamespaceResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6072,8 +6096,8 @@ export const routeConvertPrometheusDeleteRuleGroup: API.OperationMethod<
   RouteConvertPrometheusDeleteRuleGroupError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<RouteConvertPrometheusDeleteRuleGroupRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusDeleteRuleGroupResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<RouteConvertPrometheusDeleteRuleGroupRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<RouteConvertPrometheusDeleteRuleGroupResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6087,8 +6111,8 @@ export const routeConvertPrometheusGetNamespace: API.OperationMethod<
   RouteConvertPrometheusGetNamespaceError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<RouteConvertPrometheusGetNamespaceRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusGetNamespaceResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<RouteConvertPrometheusGetNamespaceRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<RouteConvertPrometheusGetNamespaceResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6102,8 +6126,8 @@ export const routeConvertPrometheusGetRuleGroup: API.OperationMethod<
   RouteConvertPrometheusGetRuleGroupError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<RouteConvertPrometheusGetRuleGroupRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusGetRuleGroupResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<RouteConvertPrometheusGetRuleGroupRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<RouteConvertPrometheusGetRuleGroupResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6117,8 +6141,8 @@ export const routeConvertPrometheusGetRules: API.OperationMethod<
   RouteConvertPrometheusGetRulesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<RouteConvertPrometheusGetRulesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusGetRulesResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<RouteConvertPrometheusGetRulesRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<RouteConvertPrometheusGetRulesResponse>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6132,8 +6156,8 @@ export const routeConvertPrometheusPostRuleGroup: API.OperationMethod<
   RouteConvertPrometheusPostRuleGroupError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<RouteConvertPrometheusPostRuleGroupRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusPostRuleGroupResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<RouteConvertPrometheusPostRuleGroupRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<RouteConvertPrometheusPostRuleGroupResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6147,8 +6171,8 @@ export const routeConvertPrometheusPostRuleGroups: API.OperationMethod<
   RouteConvertPrometheusPostRuleGroupsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<RouteConvertPrometheusPostRuleGroupsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RouteConvertPrometheusPostRuleGroupsResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<RouteConvertPrometheusPostRuleGroupsRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<RouteConvertPrometheusPostRuleGroupsResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6162,8 +6186,8 @@ export const routeExportMuteTiming: API.OperationMethod<
   RouteExportMuteTimingError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<RouteExportMuteTimingRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<AlertingFileExport>,
+  input: __S(3776, __c118, 0) as any as S.Schema<RouteExportMuteTimingRequest>,
+  output: __S(3834, __c119, 26) as any as S.Schema<AlertingFileExport>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6177,8 +6201,8 @@ export const routeExportMuteTimings: API.OperationMethod<
   RouteExportMuteTimingsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<RouteExportMuteTimingsRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<AlertingFileExport>,
+  input: __S(3840, __c120, 0) as any as S.Schema<RouteExportMuteTimingsRequest>,
+  output: __S(3834, __c119, 26) as any as S.Schema<AlertingFileExport>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6192,8 +6216,8 @@ export const routeGetAlertRuleExport: API.OperationMethod<
   RouteGetAlertRuleExportError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<RouteGetAlertRuleExportRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<AlertingFileExport>,
+  input: __S(3872, __c121, 0) as any as S.Schema<RouteGetAlertRuleExportRequest>,
+  output: __S(3834, __c119, 26) as any as S.Schema<AlertingFileExport>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6207,8 +6231,8 @@ export const routeGetAlertRuleGroupExport: API.OperationMethod<
   RouteGetAlertRuleGroupExportError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<RouteGetAlertRuleGroupExportRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<AlertingFileExport>,
+  input: __S(3904, __c122, 0) as any as S.Schema<RouteGetAlertRuleGroupExportRequest>,
+  output: __S(3834, __c119, 26) as any as S.Schema<AlertingFileExport>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6222,8 +6246,8 @@ export const routeGetAlertRulesExport: API.OperationMethod<
   RouteGetAlertRulesExportError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<RouteGetAlertRulesExportRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<AlertingFileExport>,
+  input: __S(3936, __c123, 0) as any as S.Schema<RouteGetAlertRulesExportRequest>,
+  output: __S(3834, __c119, 26) as any as S.Schema<AlertingFileExport>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6237,8 +6261,8 @@ export const routeGetContactpointsExport: API.OperationMethod<
   RouteGetContactpointsExportError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<RouteGetContactpointsExportRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<AlertingFileExport>,
+  input: __S(3968, __c124, 0) as any as S.Schema<RouteGetContactpointsExportRequest>,
+  output: __S(3834, __c119, 26) as any as S.Schema<AlertingFileExport>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6252,8 +6276,8 @@ export const routeGetPolicyTreeExport: API.OperationMethod<
   RouteGetPolicyTreeExportError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<RouteGetPolicyTreeExportRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<AlertingFileExport>,
+  input: __S(4000, __c125, 0) as any as S.Schema<RouteGetPolicyTreeExportRequest>,
+  output: __S(3834, __c119, 26) as any as S.Schema<AlertingFileExport>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6267,8 +6291,8 @@ export const saveReportSettings: API.OperationMethod<
   SaveReportSettingsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457, __c57, 1) as any as S.Schema<SaveReportSettingsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4064, __c127, 0) as any as S.Schema<SaveReportSettingsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6281,8 +6305,8 @@ export const search: API.OperationMethod<
   SearchError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<SearchRequest>,
-  output: __S(461, __c57, 5) as any as S.Schema<SearchResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<SearchRequest>,
+  output: __S(4099, __c128, 3) as any as S.Schema<SearchResponse>,
   errors: [UnprocessableEntity, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6296,8 +6320,8 @@ export const searchDashboardSnapshots: API.OperationMethod<
   SearchDashboardSnapshotsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<SearchDashboardSnapshotsRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<SearchDashboardSnapshotsResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<SearchDashboardSnapshotsRequest>,
+  output: __S(4131, __c129, 3) as any as S.Schema<SearchDashboardSnapshotsResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6311,8 +6335,8 @@ export const searchDevices: API.OperationMethod<
   SearchDevicesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<SearchDevicesRequest>,
-  output: __S(469, __c58, 5) as any as S.Schema<SearchDeviceQueryResult>,
+  input: __S(4160, __c130, 0) as any as S.Schema<SearchDevicesRequest>,
+  output: __S(4163, __c130, 3) as any as S.Schema<SearchDeviceQueryResult>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6326,8 +6350,8 @@ export const searchOrgs: API.OperationMethod<
   SearchOrgsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<SearchOrgsRequest>,
-  output: __S(473, __c59, 1) as any as S.Schema<SearchOrgsResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<SearchOrgsRequest>,
+  output: __S(4195, __c131, 3) as any as S.Schema<SearchOrgsResponse>,
   errors: [Forbidden, Conflict, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6341,8 +6365,8 @@ export const searchOrgServiceAccountsWithPaging: API.OperationMethod<
   SearchOrgServiceAccountsWithPagingError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<SearchOrgServiceAccountsWithPagingRequest>,
-  output: __S(476, __c59, 4) as any as S.Schema<SearchOrgServiceAccountsResult>,
+  input: __S(4224, __c132, 0) as any as S.Schema<SearchOrgServiceAccountsWithPagingRequest>,
+  output: __S(4226, __c132, 2) as any as S.Schema<SearchOrgServiceAccountsResult>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6356,8 +6380,8 @@ export const searchOrgUsers: API.OperationMethod<
   SearchOrgUsersError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477, __c59, 5) as any as S.Schema<SearchOrgUsersRequest>,
-  output: __S(478, __c59, 6) as any as S.Schema<SearchOrgUsersQueryResult>,
+  input: __S(4256, __c133, 0) as any as S.Schema<SearchOrgUsersRequest>,
+  output: __S(4257, __c133, 1) as any as S.Schema<SearchOrgUsersQueryResult>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6371,8 +6395,8 @@ export const searchQueries: API.OperationMethod<
   SearchQueriesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479, __c59, 7) as any as S.Schema<SearchQueriesRequest>,
-  output: __S(482, __c60, 2) as any as S.Schema<QueryHistorySearchResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<SearchQueriesRequest>,
+  output: __S(4291, __c134, 3) as any as S.Schema<QueryHistorySearchResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6386,8 +6410,8 @@ export const searchTeamGroups: API.OperationMethod<
   SearchTeamGroupsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<SearchTeamGroupsRequest>,
-  output: __S(486, __c60, 6) as any as S.Schema<SearchTeamGroupsResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<SearchTeamGroupsRequest>,
+  output: __S(4323, __c135, 3) as any as S.Schema<SearchTeamGroupsResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6401,8 +6425,8 @@ export const searchTeams: API.OperationMethod<
   SearchTeamsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(487, __c60, 7) as any as S.Schema<SearchTeamsRequest>,
-  output: __S(488, __c61, 0) as any as S.Schema<SearchTeamQueryResult>,
+  input: __S(4352, __c136, 0) as any as S.Schema<SearchTeamsRequest>,
+  output: __S(4353, __c136, 1) as any as S.Schema<SearchTeamQueryResult>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6416,8 +6440,8 @@ export const searchUsers: API.OperationMethod<
   SearchUsersError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<SearchUsersRequest>,
-  output: __S(492, __c61, 4) as any as S.Schema<SearchUsersResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<SearchUsersRequest>,
+  output: __S(4449, __c139, 1) as any as S.Schema<SearchUsersResponse>,
   errors: [Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6431,8 +6455,8 @@ export const searchUsersWithPaging: API.OperationMethod<
   SearchUsersWithPagingError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(493, __c61, 5) as any as S.Schema<SearchUsersWithPagingRequest>,
-  output: __S(494, __c61, 6) as any as S.Schema<SearchUserQueryResult>,
+  input: __S(4512, __c141, 0) as any as S.Schema<SearchUsersWithPagingRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<SearchUserQueryResult>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6446,8 +6470,8 @@ export const sendReport: API.OperationMethod<
   SendReportError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(495, __c61, 7) as any as S.Schema<SendReportRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4544, __c142, 0) as any as S.Schema<SendReportRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6461,8 +6485,8 @@ export const sendTestEmail: API.OperationMethod<
   SendTestEmailError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<SendTestEmailRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4576, __c143, 0) as any as S.Schema<SendTestEmailRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6476,8 +6500,8 @@ export const setDataSourceCacheConfig: API.OperationMethod<
   SetDataSourceCacheConfigError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c62, 1) as any as S.Schema<SetDataSourceCacheConfigRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CacheConfigResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<SetDataSourceCacheConfigRequest>,
+  output: __S(6304, __c197, 0) as any as S.Schema<CacheConfigResponse>,
   errors: [BadRequest, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6491,8 +6515,8 @@ export const setResourcePermissions: API.OperationMethod<
   SetResourcePermissionsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(500, __c62, 4) as any as S.Schema<SetResourcePermissionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4642, __c145, 2) as any as S.Schema<SetResourcePermissionsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6510,8 +6534,8 @@ export const setResourcePermissionsForBuiltInRole: API.OperationMethod<
   SetResourcePermissionsForBuiltInRoleError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(501, __c62, 5) as any as S.Schema<SetResourcePermissionsForBuiltInRoleRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4672, __c146, 0) as any as S.Schema<SetResourcePermissionsForBuiltInRoleRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6525,8 +6549,8 @@ export const setResourcePermissionsForTeam: API.OperationMethod<
   SetResourcePermissionsForTeamError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(502, __c62, 6) as any as S.Schema<SetResourcePermissionsForTeamRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4704, __c147, 0) as any as S.Schema<SetResourcePermissionsForTeamRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6540,8 +6564,8 @@ export const setResourcePermissionsForUser: API.OperationMethod<
   SetResourcePermissionsForUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(503, __c62, 7) as any as S.Schema<SetResourcePermissionsForUserRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4736, __c148, 0) as any as S.Schema<SetResourcePermissionsForUserRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6555,8 +6579,8 @@ export const setRoleAssignments: API.OperationMethod<
   SetRoleAssignmentsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(504, __c63, 0) as any as S.Schema<SetRoleAssignmentsRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<RoleAssignmentsDTO>,
+  input: __S(4768, __c149, 0) as any as S.Schema<SetRoleAssignmentsRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<RoleAssignmentsDTO>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6570,8 +6594,8 @@ export const setTeamMemberships: API.OperationMethod<
   SetTeamMembershipsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<SetTeamMembershipsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4832, __c151, 0) as any as S.Schema<SetTeamMembershipsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6585,8 +6609,8 @@ export const setTeamRoles: API.OperationMethod<
   SetTeamRolesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(506, __c63, 2) as any as S.Schema<SetTeamRolesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4864, __c152, 0) as any as S.Schema<SetTeamRolesRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6600,8 +6624,8 @@ export const setUserRoles: API.OperationMethod<
   SetUserRolesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(507, __c63, 3) as any as S.Schema<SetUserRolesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4896, __c153, 0) as any as S.Schema<SetUserRolesRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6615,8 +6639,8 @@ export const starQuery: API.OperationMethod<
   StarQueryError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(508, __c63, 4) as any as S.Schema<StarQueryRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<QueryHistoryResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<StarQueryRequest>,
+  output: __S(6880, __c215, 0) as any as S.Schema<QueryHistoryResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6634,8 +6658,8 @@ export const testCreateRecordingRule: API.OperationMethod<
   TestCreateRecordingRuleError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(509, __c63, 5) as any as S.Schema<TestCreateRecordingRuleRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(4960, __c155, 0) as any as S.Schema<TestCreateRecordingRuleRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6649,8 +6673,8 @@ export const unstarQuery: API.OperationMethod<
   UnstarQueryError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(510, __c63, 6) as any as S.Schema<UnstarQueryRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<QueryHistoryResponse>,
+  input: __S(4992, __c156, 0) as any as S.Schema<UnstarQueryRequest>,
+  output: __S(6880, __c215, 0) as any as S.Schema<QueryHistoryResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6664,8 +6688,8 @@ export const updateAnnotation: API.OperationMethod<
   UpdateAnnotationError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(511, __c63, 7) as any as S.Schema<UpdateAnnotationRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5024, __c157, 0) as any as S.Schema<UpdateAnnotationRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6679,8 +6703,8 @@ export const updateAnnotationByAnnotationId: API.OperationMethod<
   UpdateAnnotationByAnnotationIdError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<UpdateAnnotationByAnnotationIdRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5056, __c158, 0) as any as S.Schema<UpdateAnnotationByAnnotationIdRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6694,8 +6718,8 @@ export const updateCorrelation: API.OperationMethod<
   UpdateCorrelationError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(514, __c64, 2) as any as S.Schema<UpdateCorrelationRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpdateCorrelationResponseBody>,
+  input: __S(5089, __c159, 1) as any as S.Schema<UpdateCorrelationRequest>,
+  output: __S(6464, __c202, 0) as any as S.Schema<UpdateCorrelationResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6709,8 +6733,8 @@ export const updateCurrentOrg: API.OperationMethod<
   UpdateCurrentOrgError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(515, __c64, 3) as any as S.Schema<UpdateCurrentOrgRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5120, __c160, 0) as any as S.Schema<UpdateCurrentOrgRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6724,8 +6748,8 @@ export const updateCurrentOrgAddress: API.OperationMethod<
   UpdateCurrentOrgAddressError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(516, __c64, 4) as any as S.Schema<UpdateCurrentOrgAddressRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5184, __c162, 0) as any as S.Schema<UpdateCurrentOrgAddressRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6739,8 +6763,8 @@ export const updateDataSourceByUID: API.OperationMethod<
   UpdateDataSourceByUIDError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(517, __c64, 5) as any as S.Schema<UpdateDataSourceByUIDRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateDataSourceByUIDResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<UpdateDataSourceByUIDRequest>,
+  output: __S(5217, __c163, 1) as any as S.Schema<UpdateDataSourceByUIDResponse>,
   errors: [Forbidden, Conflict, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6754,8 +6778,8 @@ export const updateFolderPermissions: API.OperationMethod<
   UpdateFolderPermissionsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(521, __c65, 1) as any as S.Schema<UpdateFolderPermissionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5250, __c164, 2) as any as S.Schema<UpdateFolderPermissionsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6769,8 +6793,8 @@ export const updateLibraryElement: API.OperationMethod<
   UpdateLibraryElementError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(522, __c65, 2) as any as S.Schema<UpdateLibraryElementRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<LibraryElementResponse>,
+  input: __S(5280, __c165, 0) as any as S.Schema<UpdateLibraryElementRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<LibraryElementResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6784,8 +6808,8 @@ export const updateOrg: API.OperationMethod<
   UpdateOrgError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(523, __c65, 3) as any as S.Schema<UpdateOrgRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5312, __c166, 0) as any as S.Schema<UpdateOrgRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6799,8 +6823,8 @@ export const updateOrgAddress: API.OperationMethod<
   UpdateOrgAddressError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<UpdateOrgAddressRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5344, __c167, 0) as any as S.Schema<UpdateOrgAddressRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6814,8 +6838,8 @@ export const updateOrgQuota: API.OperationMethod<
   UpdateOrgQuotaError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(525, __c65, 5) as any as S.Schema<UpdateOrgQuotaRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5376, __c168, 0) as any as S.Schema<UpdateOrgQuotaRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6829,8 +6853,8 @@ export const updateOrgUser: API.OperationMethod<
   UpdateOrgUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(526, __c65, 6) as any as S.Schema<UpdateOrgUserRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5408, __c169, 0) as any as S.Schema<UpdateOrgUserRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6844,8 +6868,8 @@ export const updateOrgUserForCurrentOrg: API.OperationMethod<
   UpdateOrgUserForCurrentOrgError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(527, __c65, 7) as any as S.Schema<UpdateOrgUserForCurrentOrgRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5440, __c170, 0) as any as S.Schema<UpdateOrgUserForCurrentOrgRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6859,8 +6883,8 @@ export const updateProviderSettings: API.OperationMethod<
   UpdateProviderSettingsError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<UpdateProviderSettingsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5472, __c171, 0) as any as S.Schema<UpdateProviderSettingsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6874,8 +6898,8 @@ export const updatePublicDashboard: API.OperationMethod<
   UpdatePublicDashboardError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(529, __c66, 1) as any as S.Schema<UpdatePublicDashboardRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<PublicDashboard>,
+  input: __S(5536, __c173, 0) as any as S.Schema<UpdatePublicDashboardRequest>,
+  output: __S(6786, __c212, 2) as any as S.Schema<PublicDashboard>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6889,8 +6913,8 @@ export const updateRecordingRule: API.OperationMethod<
   UpdateRecordingRuleError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<UpdateRecordingRuleRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<RecordingRuleJSON>,
+  input: __S(5568, __c174, 0) as any as S.Schema<UpdateRecordingRuleRequest>,
+  output: __S(6976, __c218, 0) as any as S.Schema<RecordingRuleJSON>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6904,8 +6928,8 @@ export const updateRole: API.OperationMethod<
   UpdateRoleError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<UpdateRoleRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<RoleDTO>,
+  input: __S(5600, __c175, 0) as any as S.Schema<UpdateRoleRequest>,
+  output: __S(7202, __c225, 2) as any as S.Schema<RoleDTO>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6919,8 +6943,8 @@ export const updateServiceAccount: API.OperationMethod<
   UpdateServiceAccountError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(532, __c66, 4) as any as S.Schema<UpdateServiceAccountRequest>,
-  output: __S(534, __c66, 6) as any as S.Schema<UpdateServiceAccountResponse>,
+  input: __S(5632, __c176, 0) as any as S.Schema<UpdateServiceAccountRequest>,
+  output: __S(5634, __c176, 2) as any as S.Schema<UpdateServiceAccountResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6934,8 +6958,8 @@ export const updateSignedInUser: API.OperationMethod<
   UpdateSignedInUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(535, __c66, 7) as any as S.Schema<UpdateSignedInUserRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5664, __c177, 0) as any as S.Schema<UpdateSignedInUserRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, Conflict, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6949,8 +6973,8 @@ export const updateTeam: API.OperationMethod<
   UpdateTeamError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<UpdateTeamRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5696, __c178, 0) as any as S.Schema<UpdateTeamRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, Conflict, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6964,8 +6988,8 @@ export const updateTeamLBACRulesApi: API.OperationMethod<
   UpdateTeamLBACRulesApiError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<UpdateTeamLBACRulesApiRequest>,
-  output: __S(538, __c67, 2) as any as S.Schema<UpdateTeamLBACRulesApiResponse>,
+  input: __S(5728, __c179, 0) as any as S.Schema<UpdateTeamLBACRulesApiRequest>,
+  output: __S(5729, __c179, 1) as any as S.Schema<UpdateTeamLBACRulesApiResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6979,8 +7003,8 @@ export const updateTeamMember: API.OperationMethod<
   UpdateTeamMemberError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<UpdateTeamMemberRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5760, __c180, 0) as any as S.Schema<UpdateTeamMemberRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -6994,8 +7018,8 @@ export const updateTeamPreferences: API.OperationMethod<
   UpdateTeamPreferencesError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(542, __c67, 6) as any as S.Schema<UpdateTeamPreferencesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5794, __c181, 2) as any as S.Schema<UpdateTeamPreferencesRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -7009,8 +7033,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(543, __c67, 7) as any as S.Schema<UpdateUserRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5824, __c182, 0) as any as S.Schema<UpdateUserRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, Conflict, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -7024,8 +7048,8 @@ export const updateUserEmail: API.OperationMethod<
   UpdateUserEmailError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<UpdateUserEmailRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<UpdateUserEmailResponse>,
+  input: __S(5888, __c184, 0) as any as S.Schema<UpdateUserEmailRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<UpdateUserEmailResponse>,
   errors: [UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -7039,8 +7063,8 @@ export const updateUserQuota: API.OperationMethod<
   UpdateUserQuotaError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c68, 1) as any as S.Schema<UpdateUserQuotaRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5920, __c185, 0) as any as S.Schema<UpdateUserQuotaRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -7054,8 +7078,8 @@ export const uploadSnapshot: API.OperationMethod<
   UploadSnapshotError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546, __c68, 2) as any as S.Schema<UploadSnapshotRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<UploadSnapshotResponse>,
+  input: __S(5952, __c186, 0) as any as S.Schema<UploadSnapshotRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<UploadSnapshotResponse>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -7069,8 +7093,8 @@ export const userSetUsingOrg: API.OperationMethod<
   UserSetUsingOrgError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547, __c68, 3) as any as S.Schema<UserSetUsingOrgRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SuccessResponseBody>,
+  input: __S(5984, __c187, 0) as any as S.Schema<UserSetUsingOrgRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<SuccessResponseBody>,
   errors: [BadRequest, Forbidden, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -7084,8 +7108,8 @@ export const viewPublicDashboard: API.OperationMethod<
   ViewPublicDashboardError,
   GrafanaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<ViewPublicDashboardRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<DashboardFullWithMeta>,
+  input: __S(6016, __c188, 0) as any as S.Schema<ViewPublicDashboardRequest>,
+  output: __S(8963, __c280, 3) as any as S.Schema<DashboardFullWithMeta>,
   errors: [BadRequest, Forbidden, NotFound, UnknownGrafanaError],
   protocol: GrafanaProtocol,
   retry: Retry.Retry,
@@ -7095,77 +7119,12 @@ export const viewPublicDashboard: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          access: S.optional(S.String),
-          basicAuth: S.optional(S.Boolean),
-          basicAuthUser: S.optional(S.String),
-          database: S.optional(S.String),
-          isDefault: S.optional(S.Boolean),
-          jsonData: S.optional(S.Unknown),
-          name: S.optional(S.String),
-          secureJsonData: S.optional(__S(0, __c0, 0)),
-          type: S.optional(S.String),
-          uid: S.optional(S.String),
-          url: S.optional(S.String),
-          user: S.optional(S.String),
-          withCredentials: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/datasources", code: 200 })),
-      ).annotate({ identifier: "AddDataSourceRequest" });
-    case 2:
-      return S.Record(S.String, S.Boolean);
-    case 3:
-      return S.Record(S.String, S.Boolean);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          access: S.optional(S.String),
-          accessControl: S.optional(__S(2, __c0, 2)),
-          basicAuth: S.optional(S.Boolean),
-          basicAuthUser: S.optional(S.String),
-          database: S.optional(S.String),
-          id: S.optional(S.Number),
-          isDefault: S.optional(S.Boolean),
-          jsonData: S.optional(S.Unknown),
-          name: S.optional(S.String),
-          orgId: S.optional(S.Number),
-          readOnly: S.optional(S.Boolean),
-          secureJsonFields: S.optional(__S(3, __c0, 3)),
-          type: S.optional(S.String),
-          typeLogoUrl: S.optional(S.String),
-          uid: S.optional(S.String),
-          url: S.optional(S.String),
-          user: S.optional(S.String),
-          version: S.optional(S.Number),
-          withCredentials: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DataSource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          datasource: __S(4, __c0, 4),
-          id: S.Number,
-          message: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "AddDataSourceResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          loginOrEmail: S.optional(S.String),
-          name: S.optional(S.String),
-          role: S.optional(S.String),
-          sendEmail: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/org/invites", code: 200 })),
-      ).annotate({ identifier: "AddOrgInviteRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SuccessResponseBody" });
+          team_id: S.String.pipe(T.Label()),
+          userId: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/teams/{team_id}/members", code: 200 })),
+      ).annotate({ identifier: "AddTeamMemberRequest" });
   }
 }
 function __c1(j: number): any {
@@ -7173,42 +7132,526 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          org_id: S.Number.pipe(T.Label()),
-          loginOrEmail: S.optional(S.String),
-          role: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org_id}/users", code: 200 })),
-      ).annotate({ identifier: "AddOrgUserRequest" });
+          query: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/org/users", code: 200 })),
+      ).annotate({
+        identifier: "GetOrgUsersForCurrentOrgRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(9729, __c304, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetOrgUsersForCurrentOrgResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/org/users/lookup", code: 200 })),
+      ).annotate({
+        identifier: "GetOrgUsersForCurrentOrgLookupRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          loginOrEmail: S.optional(S.String),
-          role: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/org/users", code: 200 })),
-      ).annotate({
-        identifier: "AddOrgUserToCurrentOrgRequest",
+          avatarUrl: S.optional(S.String),
+          login: S.optional(S.String),
+          uid: S.optional(S.String),
+          userId: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "UserLookupDTO" });
+    case 2:
+      return S.Array(__S(65, __c2, 1));
+    case 3:
+      return S.suspend(() => __S(66, __c2, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetOrgUsersForCurrentOrgLookupResponse",
       });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/org/invites", code: 200 })),
+      ).annotate({
+        identifier: "GetPendingOrgInvitesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          createdOn: S.optional(S.String),
+          email: S.optional(S.String),
+          emailSent: S.optional(S.Boolean),
+          emailSentOn: S.optional(S.String),
+          id: S.optional(S.Number),
+          invitedByEmail: S.optional(S.String),
+          invitedByLogin: S.optional(S.String),
+          invitedByName: S.optional(S.String),
+          name: S.optional(S.String),
+          orgId: S.optional(S.Number),
+          role: S.optional(S.String),
+          status: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TempUserDTO" });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
+      return S.suspend(() => __S(98, __c3, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetPendingOrgInvitesResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/sso-settings/{key}", code: 200 })),
+      ).annotate({
+        identifier: "GetProviderSettingsRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          provider: S.optional(S.String),
+          settings: S.optional(__S(6496, __c203, 0)),
+          source: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetProviderSettingsResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessToken: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/public/dashboards/{accessToken}/annotations", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetPublicAnnotationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataSourceRef" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          teamId: S.String.pipe(T.Label()),
-          groupId: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/teams/{teamId}/groups", code: 200 })),
-      ).annotate({ identifier: "AddTeamGroupApiRequest" });
+          exclude: S.optional(S.Boolean),
+          ids: S.optional(__S(9184, __c287, 0)),
+        }),
+      ).annotate({ identifier: "AnnotationPanelFilter" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          team_id: S.String.pipe(T.Label()),
-          userId: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/teams/{team_id}/members", code: 200 })),
-      ).annotate({ identifier: "AddTeamMemberRequest" });
+          limit: S.optional(S.Number),
+          matchAny: S.optional(S.Boolean),
+          tags: S.optional(__S(6368, __c199, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AnnotationTarget" });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          builtIn: S.optional(S.Number),
+          datasource: S.optional(__S(193, __c6, 1)),
+          enable: S.optional(S.Boolean),
+          filter: S.optional(__S(194, __c6, 2)),
+          hide: S.optional(S.Boolean),
+          iconColor: S.optional(S.String),
+          name: S.optional(S.String),
+          placement: S.optional(S.String),
+          target: S.optional(__S(195, __c6, 3)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AnnotationQuery" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          color: S.optional(S.String),
+          dashboardId: S.optional(S.Number),
+          dashboardUID: S.optional(S.String),
+          id: S.optional(S.Number),
+          isRegion: S.optional(S.Boolean),
+          panelId: S.optional(S.Number),
+          source: S.optional(__S(196, __c6, 4)),
+          tags: S.optional(__S(6368, __c199, 0)),
+          text: S.optional(S.String),
+          time: S.optional(S.Number),
+          timeEnd: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AnnotationEvent" });
+    case 6:
+      return S.Array(__S(197, __c6, 5));
+    case 7:
+      return S.suspend(() => __S(198, __c6, 6).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetPublicAnnotationsResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboardUid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dashboards/uid/{dashboardUid}/public-dashboards",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPublicDashboardRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/recording-rules/writer", code: 200 })),
+      ).annotate({
+        identifier: "GetRecordingRuleWriteTargetRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/reports", code: 200 })),
+      ).annotate({ identifier: "GetReportsRequest" });
+    case 1:
+      return S.suspend(() => __S(321, __c10, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetReportsResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.String),
+          dashboards: S.optional(__S(7138, __c223, 2)),
+          enableCsv: S.optional(S.Boolean),
+          enableDashboardUrl: S.optional(S.Boolean),
+          formats: S.optional(__S(6368, __c199, 0)),
+          id: S.optional(S.Number),
+          message: S.optional(S.String),
+          name: S.optional(S.String),
+          options: S.optional(__S(7139, __c223, 3)),
+          orgId: S.optional(S.Number),
+          recipients: S.optional(S.String),
+          replyTo: S.optional(S.String),
+          scaleFactor: S.optional(S.Number),
+          schedule: S.optional(__S(7140, __c223, 4)),
+          state: S.optional(S.String),
+          subject: S.optional(S.String),
+          uid: S.optional(S.String),
+          updated: S.optional(S.String),
+          urls: S.optional(__S(7142, __c223, 6)),
+          userId: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Report" });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/reports/dashboards/{uid}", code: 200 })),
+      ).annotate({
+        identifier: "GetReportsByDashboardUIDRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(321, __c10, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetReportsByDashboardUIDResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/reports/settings", code: 200 })),
+      ).annotate({ identifier: "GetReportSettingsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          branding: S.optional(__S(416, __c13, 0)),
+          embeddedImageTheme: S.optional(S.String),
+          footerFontFamily: S.optional(S.String),
+          footerItems: S.optional(__S(418, __c13, 2)),
+          id: S.optional(S.Number),
+          orgId: S.optional(S.Number),
+          pdfDashboardTitleEnabled: S.optional(S.Boolean),
+          pdfHeaderEnabled: S.optional(S.Boolean),
+          pdfTheme: S.optional(S.String),
+          pdfTimeRangeEnabled: S.optional(S.Boolean),
+          userId: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ReportSettings" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          emailFooterLink: S.optional(S.String),
+          emailFooterMode: S.optional(S.String),
+          emailFooterText: S.optional(S.String),
+          emailLogoUrl: S.optional(S.String),
+          reportLogoUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReportBrandingOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          color: S.optional(S.String),
+          fontSize: S.optional(S.String),
+          fontStyle: S.optional(S.String),
+          fontWeight: S.optional(S.String),
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FooterItem" });
+    case 2:
+      return S.Array(__S(417, __c13, 1));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.Number.pipe(T.Label()),
           roleUid: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/access-control/teams/{teamId}/roles", code: 200 })),
       ).annotate({ identifier: "AddTeamRoleRequest" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/cloudmigration/resources/dependencies", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetResourceDependenciesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dependencies: S.optional(__S(7392, __c231, 0)),
+          resourceType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceDependencyDTO" });
+    case 2:
+      return S.Array(__S(481, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resourceDependencies: S.optional(__S(482, __c15, 2)),
+        }),
+      ).annotate({
+        identifier: "ResourceDependenciesResponseDTO",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/access-control/{resource}/description", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetResourceDescriptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          builtInRoles: S.optional(S.Boolean),
+          serviceAccounts: S.optional(S.Boolean),
+          teams: S.optional(S.Boolean),
+          users: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Assignments" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assignments: S.optional(__S(513, __c16, 1)),
+          permissions: S.optional(__S(6368, __c199, 0)),
+        }),
+      ).annotate({ identifier: "Description" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          resourceID: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/access-control/{resource}/{resourceID}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetResourcePermissionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(__S(6368, __c199, 0)),
+          builtInRole: S.optional(S.String),
+          id: S.optional(S.Number),
+          isInherited: S.optional(S.Boolean),
+          isManaged: S.optional(S.Boolean),
+          isServiceAccount: S.optional(S.Boolean),
+          permission: S.optional(S.String),
+          roleName: S.optional(S.String),
+          team: S.optional(S.String),
+          teamAvatarUrl: S.optional(S.String),
+          teamId: S.optional(S.Number),
+          teamUid: S.optional(S.String),
+          userAvatarUrl: S.optional(S.String),
+          userId: S.optional(S.Number),
+          userLogin: S.optional(S.String),
+          userUid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourcePermissionDTO" });
+    case 2:
+      return S.Array(__S(545, __c17, 1));
+    case 3:
+      return S.suspend(() => __S(546, __c17, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetResourcePermissionsResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleUID: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/access-control/roles/{roleUID}", code: 200 })),
+      ).annotate({ identifier: "GetRoleRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleUID: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/access-control/roles/{roleUID}/assignments", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetRoleAssignmentsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role_uid: S.optional(S.String),
+          service_accounts: S.optional(__S(9184, __c287, 0)),
+          teams: S.optional(__S(9184, __c287, 0)),
+          users: S.optional(__S(9184, __c287, 0)),
+        }),
+      ).annotate({ identifier: "RoleAssignmentsDTO" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/logout/saml", code: 200 })),
+      ).annotate({ identifier: "GetSAMLLogoutRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccountId: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/serviceaccounts/{serviceAccountId}", code: 200 })),
+      ).annotate({ identifier: "GetServiceAccountRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/cloudmigration/migration/{uid}", code: 200 })),
+      ).annotate({ identifier: "GetSessionRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/cloudmigration/migration", code: 200 })),
+      ).annotate({ identifier: "GetSessionListRequest" });
+    case 1:
+      return S.Array(__S(7328, __c229, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sessions: S.optional(__S(769, __c24, 1)),
+        }),
+      ).annotate({
+        identifier: "CloudMigrationSessionListResponseDTO",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/reports/images/:image", code: 200 })),
+      ).annotate({ identifier: "GetSettingsImageRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.Number.pipe(T.Label()),
@@ -7216,7 +7659,292 @@ function __c1(j: number): any {
           roleUid: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/access-control/users/{userId}/roles", code: 200 })),
       ).annotate({ identifier: "AddUserRoleRequest" });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/cloudmigration/migration/{uid}/snapshots", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetShapshotListRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.String),
+          finished: S.optional(S.String),
+          sessionUid: S.optional(S.String),
+          status: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SnapshotDTO" });
+    case 2:
+      return S.Array(__S(865, __c27, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          snapshots: S.optional(__S(866, __c27, 2)),
+        }),
+      ).annotate({ identifier: "SnapshotListResponseDTO" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/snapshot/shared-options", code: 200 })),
+      ).annotate({ identifier: "GetSharingOptionsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          externalEnabled: S.optional(S.Boolean),
+          externalSnapshotName: S.optional(S.String),
+          externalSnapshotURL: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSharingOptionsResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
+      ).annotate({ identifier: "GetSignedInUserRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessControl: S.optional(__S(7552, __c236, 0)),
+          authLabels: S.optional(__S(6368, __c199, 0)),
+          avatarUrl: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          email: S.optional(S.String),
+          id: S.optional(S.Number),
+          isDisabled: S.optional(S.Boolean),
+          isExternal: S.optional(S.Boolean),
+          isExternallySynced: S.optional(S.Boolean),
+          isGrafanaAdmin: S.optional(S.Boolean),
+          isGrafanaAdminExternallySynced: S.optional(S.Boolean),
+          isProvisioned: S.optional(S.Boolean),
+          login: S.optional(S.String),
+          name: S.optional(S.String),
+          orgId: S.optional(S.Number),
+          theme: S.optional(S.String),
+          uid: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserProfileDTO" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/orgs", code: 200 })),
+      ).annotate({
+        identifier: "GetSignedInUserOrgListRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(1025, __c32, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetSignedInUserOrgListResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          orgId: S.optional(S.Number),
+          role: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserOrgDTO" });
+    case 1:
+      return S.Array(__S(1024, __c32, 0));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/teams", code: 200 })),
+      ).annotate({
+        identifier: "GetSignedInUserTeamListRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(1120, __c35, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetSignedInUserTeamListResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessControl: S.optional(__S(7552, __c236, 0)),
+          avatarUrl: S.optional(S.String),
+          email: S.optional(S.String),
+          externalUID: S.optional(S.String),
+          id: S.Number,
+          isProvisioned: S.Boolean,
+          memberCount: S.Number,
+          name: S.String,
+          orgId: S.Number,
+          permission: S.optional(S.Number),
+          uid: S.String,
+        }),
+      ).annotate({ identifier: "TeamDTO" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1088, __c34, 0));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/saml/slo", code: 200 })),
+      ).annotate({ identifier: "GetSLORequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.String.pipe(T.Label()),
+          snapshotUid: S.String.pipe(T.Label()),
+          resultPage: S.optional(S.Number.pipe(T.Query())),
+          resultLimit: S.optional(S.Number.pipe(T.Query())),
+          resultSortColumn: S.optional(S.String.pipe(T.Query())),
+          resultSortOrder: S.optional(S.String.pipe(T.Query())),
+          errorsOnly: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/cloudmigration/migration/{uid}/snapshot/{snapshotUid}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetSnapshotRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.optional(S.String),
+          message: S.optional(S.String),
+          name: S.optional(S.String),
+          parentName: S.optional(S.String),
+          refId: S.String,
+          status: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "MigrateDataResponseItemDTO",
+      });
+    case 2:
+      return S.Array(__S(1185, __c37, 1));
+    case 3:
+      return S.Record(S.String, S.Number);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          statuses: S.optional(__S(1187, __c37, 3)),
+          total: S.optional(S.Number),
+          types: S.optional(__S(1187, __c37, 3)),
+        }),
+      ).annotate({ identifier: "SnapshotResourceStats" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.String),
+          finished: S.optional(S.String),
+          results: S.optional(__S(1186, __c37, 2)),
+          sessionUid: S.optional(S.String),
+          stats: S.optional(__S(1188, __c37, 4)),
+          status: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetSnapshotResponseDTO" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/licensing/check", code: 200 })),
+      ).annotate({ identifier: "GetStatusRequest" });
+    case 1:
+      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetStatusResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/admin/ldap-sync-status", code: 200 })),
+      ).annotate({ identifier: "GetSyncStatusRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Error: S.optional(S.String),
+          Login: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FailedUser" });
+    case 2:
+      return S.Array(__S(1249, __c39, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Elapsed: S.optional(S.Number),
+          FailedUsers: S.optional(__S(1250, __c39, 2)),
+          MissingUserIds: S.optional(__S(9184, __c287, 0)),
+          Started: S.optional(S.String),
+          UpdatedUserIds: S.optional(__S(9184, __c287, 0)),
+        }),
+      ).annotate({ identifier: "SyncResult" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          nextSync: S.optional(S.String),
+          prevSync: S.optional(__S(1251, __c39, 3)),
+          schedule: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActiveSyncStatusDTO" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String.pipe(T.Label()),
+          accesscontrol: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/teams/{team_id}", code: 200 })),
+      ).annotate({ identifier: "GetTeamRequest" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -7226,7 +7954,7 @@ function __c1(j: number): any {
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }).pipe(T.Http({ method: "POST", uri: "/admin/users", code: 200 })),
       ).annotate({ identifier: "AdminCreateUserRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -7236,7 +7964,208 @@ function __c1(j: number): any {
       ).annotate({ identifier: "AdminCreateUserResponse" });
   }
 }
-function __c2(j: number): any {
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/teams/{teamId}/groups", code: 200 })),
+      ).annotate({ identifier: "GetTeamGroupsApiRequest" });
+    case 1:
+      return S.suspend(() => __S(1377, __c43, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetTeamGroupsApiResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          orgId: S.optional(S.Number),
+          teamId: S.optional(S.Number),
+          teamUid: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TeamGroupDTO" });
+    case 1:
+      return S.Array(__S(1376, __c43, 0));
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/datasources/uid/{uid}/lbac/teams", code: 200 })),
+      ).annotate({
+        identifier: "GetTeamLBACRulesApiRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(1441, __c45, 1)),
+        }),
+      ).annotate({ identifier: "TeamLBACRules" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(6368, __c199, 0)),
+          teamId: S.optional(S.String),
+          teamUid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TeamLBACRule" });
+    case 1:
+      return S.Array(__S(1440, __c45, 0));
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/teams/{team_id}/members", code: 200 })),
+      ).annotate({ identifier: "GetTeamMembersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          auth_module: S.optional(S.String),
+          avatarUrl: S.optional(S.String),
+          email: S.optional(S.String),
+          labels: S.optional(__S(6368, __c199, 0)),
+          login: S.optional(S.String),
+          name: S.optional(S.String),
+          orgId: S.optional(S.Number),
+          permission: S.optional(S.Number),
+          teamId: S.optional(S.Number),
+          teamUID: S.optional(S.String),
+          uid: S.optional(S.String),
+          userId: S.optional(S.Number),
+          userUID: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TeamMemberDTO" });
+    case 2:
+      return S.Array(__S(1473, __c46, 1));
+    case 3:
+      return S.suspend(() => __S(1474, __c46, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetTeamMembersResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/teams/{team_id}/preferences", code: 200 })),
+      ).annotate({
+        identifier: "GetTeamPreferencesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bookmarkUrls: S.optional(__S(6368, __c199, 0)),
+        }),
+      ).annotate({
+        identifier: "PreferencesNavbarPreference",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          homeTab: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PreferencesQueryHistoryPreference",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          homeDashboardUID: S.optional(S.String),
+          homeURL: S.optional(S.String),
+          language: S.optional(S.String),
+          navbar: S.optional(__S(1505, __c47, 1)),
+          queryHistory: S.optional(__S(1506, __c47, 2)),
+          theme: S.optional(S.String),
+          timezone: S.optional(S.String),
+          weekStart: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PreferencesSpec" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}", code: 200 })),
+      ).annotate({ identifier: "GetUserRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/auth-tokens", code: 200 })),
+      ).annotate({ identifier: "GetUserAuthTokensRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          loginOrEmail: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/users/lookup", code: 200 })),
+      ).annotate({
+        identifier: "GetUserByLoginOrEmailRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/admin/ldap/{user_name}", code: 200 })),
+      ).annotate({ identifier: "GetUserFromLDAPRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/orgs", code: 200 })),
+      ).annotate({ identifier: "GetUserOrgListRequest" });
+    case 1:
+      return S.suspend(() => __S(1025, __c32, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetUserOrgListResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/admin/users/{user_id}/quotas", code: 200 })),
+      ).annotate({ identifier: "GetUserQuotaRequest" });
+  }
+}
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7244,33 +8173,889 @@ function __c2(j: number): any {
           user_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/admin/users/{user_id}", code: 200 })),
       ).annotate({ identifier: "AdminDeleteUserRequest" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/quotas", code: 200 })),
+      ).annotate({ identifier: "GetUserQuotasRequest" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/teams", code: 200 })),
+      ).annotate({ identifier: "GetUserTeamsRequest" });
     case 1:
+      return S.suspend(() => __S(1120, __c35, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetUserTeamsResponse",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          pluginId: S.optional(S.String),
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportDashboardInput" });
+    case 1:
+      return S.Array(__S(1824, __c57, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dashboard: S.optional(S.Unknown),
+          folderId: S.optional(S.Number),
+          folderUid: S.optional(S.String),
+          inputs: S.optional(__S(1825, __c57, 1)),
+          overwrite: S.optional(S.Boolean),
+          path: S.optional(S.String),
+          pluginId: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/dashboards/import", code: 200 })),
+      ).annotate({ identifier: "ImportDashboardRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dashboardId: S.optional(S.Number),
+          description: S.optional(S.String),
+          folderId: S.optional(S.Number),
+          folderUid: S.optional(S.String),
+          imported: S.optional(S.Boolean),
+          importedRevision: S.optional(S.Number),
+          importedUri: S.optional(S.String),
+          importedUrl: S.optional(S.String),
+          path: S.optional(S.String),
+          pluginId: S.optional(S.String),
+          removed: S.optional(S.Boolean),
+          revision: S.optional(S.Number),
+          slug: S.optional(S.String),
+          title: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportDashboardResponse" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/dashboards/interpolate", code: 200 })),
+      ).annotate({
+        identifier: "InterpolateDashboardRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "InterpolateDashboardResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/sso-settings", code: 200 })),
+      ).annotate({
+        identifier: "ListAllProvidersSettingsRequest",
+      });
+    case 1:
+      return S.Array(__S(160, __c5, 0));
+    case 2:
+      return S.suspend(() => __S(1889, __c59, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListAllProvidersSettingsResponse",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/anonymous/devices", code: 200 })),
+      ).annotate({ identifier: "ListDevicesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          avatarUrl: S.optional(S.String),
+          clientIp: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          deviceId: S.optional(S.String),
+          lastSeenAt: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+          userAgent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeviceDTO" });
+    case 2:
+      return S.Array(__S(1921, __c60, 1));
+    case 3:
+      return S.suspend(() => __S(1922, __c60, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDevicesResponse",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/dashboards/public-dashboards", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListPublicDashboardsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          dashboardUid: S.optional(S.String),
+          isEnabled: S.optional(S.Boolean),
+          slug: S.optional(S.String),
+          title: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicDashboardListResponse",
+      });
+    case 2:
+      return S.Array(__S(1953, __c61, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number),
+          perPage: S.optional(S.Number),
+          publicDashboards: S.optional(__S(1954, __c61, 2)),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PublicDashboardListResponseWithPagination",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/recording-rules", code: 200 })),
+      ).annotate({
+        identifier: "ListRecordingRulesRequest",
+      });
+    case 1:
+      return S.Array(__S(6976, __c218, 0));
+    case 2:
+      return S.suspend(() => __S(1985, __c62, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListRecordingRulesResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          delegatable: S.optional(S.Boolean.pipe(T.Query())),
+          includeHidden: S.optional(S.Boolean.pipe(T.Query())),
+          targetOrgId: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/access-control/roles", code: 200 })),
+      ).annotate({ identifier: "ListRolesRequest" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7202, __c225, 2));
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2048, __c64, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListRolesResponse",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/search/sorting", code: 200 })),
+      ).annotate({ identifier: "ListSortOptionsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          meta: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListSortOptionsResponse" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/admin/users/{user_id}/disable", code: 200 })),
       ).annotate({ identifier: "AdminDisableUserRequest" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.Number.pipe(T.Label()),
+          targetOrgId: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/access-control/teams/{teamId}/roles", code: 200 })),
+      ).annotate({ identifier: "ListTeamRolesRequest" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          includeHidden: S.optional(S.Boolean),
+          orgId: S.optional(S.Number),
+          teamIds: S.optional(__S(9184, __c287, 0)),
+          userIds: S.optional(__S(9184, __c287, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/access-control/teams/roles/search", code: 200 })),
+      ).annotate({ identifier: "ListTeamsRolesRequest" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(2048, __c64, 0));
+    case 1:
+      return S.suspend(() => __S(2240, __c70, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListTeamsRolesResponse",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccountId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/serviceaccounts/{serviceAccountId}/tokens", code: 200 }),
+        ),
+      ).annotate({ identifier: "ListTokensRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.String),
+          expiration: S.optional(S.String),
+          hasExpired: S.optional(S.Boolean),
+          id: S.optional(S.Number),
+          isRevoked: S.optional(S.Boolean),
+          lastUsedAt: S.optional(S.String),
+          name: S.optional(S.String),
+          secondsUntilExpiration: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TokenDTO" });
     case 2:
+      return S.Array(__S(2273, __c71, 1));
+    case 3:
+      return S.suspend(() => __S(2274, __c71, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListTokensResponse",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.Number.pipe(T.Label()),
+          includeHidden: S.optional(S.Boolean.pipe(T.Query())),
+          targetOrgId: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/access-control/users/{userId}/roles", code: 200 })),
+      ).annotate({ identifier: "ListUserRolesRequest" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          includeHidden: S.optional(S.Boolean),
+          orgId: S.optional(S.Number),
+          teamIds: S.optional(__S(9184, __c287, 0)),
+          userIds: S.optional(__S(9184, __c287, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/access-control/users/roles/search", code: 200 })),
+      ).annotate({ identifier: "ListUsersRolesRequest" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotationId: S.optional(S.Number),
+          dashboardId: S.optional(S.Number),
+          dashboardUID: S.optional(S.String),
+          panelId: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/annotations/mass-delete", code: 200 })),
+      ).annotate({
+        identifier: "MassDeleteAnnotationsRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String.pipe(T.Label()),
+          settings: S.optional(__S(6496, __c203, 0)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/sso-settings/{key}", code: 200 })),
+      ).annotate({
+        identifier: "PatchProviderSettingsRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query_history_uid: S.String.pipe(T.Label()),
+          comment: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/query-history/{query_history_uid}", code: 200 })),
+      ).annotate({ identifier: "PatchQueryCommentRequest" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RelayState: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/saml/acs", code: 200 })),
+      ).annotate({ identifier: "PostACSRequest" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.String),
+          tags: S.optional(S.Unknown),
+          what: S.optional(S.String),
+          when: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/annotations/graphite", code: 200 })),
+      ).annotate({
+        identifier: "PostGraphiteAnnotationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "PostGraphiteAnnotationResponse",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/admin/users/{user_id}/enable", code: 200 })),
       ).annotate({ identifier: "AdminEnableUserRequest" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instance: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/licensing/token", code: 200 })),
+      ).annotate({ identifier: "PostLicenseTokenRequest" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/licensing/token/renew", code: 200 })),
+      ).annotate({
+        identifier: "PostRenewLicenseTokenRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
+        identifier: "PostRenewLicenseTokenResponse",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SAMLRequest: S.optional(S.String.pipe(T.Query())),
+          SAMLResponse: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/saml/slo", code: 200 })),
+      ).annotate({ identifier: "PostSLORequest" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/admin/ldap/sync/{user_id}", code: 200 })),
+      ).annotate({
+        identifier: "PostSyncUserWithLDAPRequest",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          debug: S.optional(S.Boolean),
+          from: S.String,
+          queries: __S(2688, __c84, 0),
+          to: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/ds/query", code: 200 })),
+      ).annotate({
+        identifier: "QueryMetricsWithExpressionsRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+          field: S.optional(S.String),
+          mapValue: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkTransformationConfig" });
+    case 1:
+      return S.Array(__S(2720, __c85, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          datasourceName: S.optional(S.String),
+          datasourceUid: S.optional(S.String),
+          panelsState: S.optional(S.Unknown),
+          query: S.optional(S.Unknown),
+          timeRange: S.optional(__S(7104, __c222, 0)),
+          transformations: S.optional(__S(2721, __c85, 1)),
+        }),
+      ).annotate({ identifier: "InternalDataLink" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          internal: S.optional(__S(2722, __c85, 2)),
+          targetBlank: S.optional(S.Boolean),
+          title: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataLink" });
+    case 4:
+      return S.Array(__S(2723, __c85, 3));
+    case 5:
+      return S.Array(S.Unknown);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          color: S.optional(S.String),
+          state: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Threshold" });
+    case 7:
+      return S.Array(__S(2726, __c85, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          steps: S.optional(__S(2727, __c85, 7)),
+        }),
+      ).annotate({ identifier: "ThresholdsConfig" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          color: S.optional(__S(6368, __c199, 0)),
+          description: S.optional(__S(6368, __c199, 0)),
+          icon: S.optional(__S(6368, __c199, 0)),
+          text: S.optional(__S(6368, __c199, 0)),
+        }),
+      ).annotate({ identifier: "EnumFieldConfig" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          enum: S.optional(__S(2729, __c85, 9)),
+        }),
+      ).annotate({ identifier: "FieldTypeConfig" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          color: S.optional(__S(6496, __c203, 0)),
+          custom: S.optional(__S(6496, __c203, 0)),
+          decimals: S.optional(S.Number),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          displayNameFromDS: S.optional(S.String),
+          filterable: S.optional(S.Boolean),
+          interval: S.optional(S.Number),
+          links: S.optional(__S(2724, __c85, 4)),
+          mappings: S.optional(__S(2725, __c85, 5)),
+          max: S.optional(S.Number),
+          min: S.optional(S.Number),
+          noValue: S.optional(S.String),
+          path: S.optional(S.String),
+          thresholds: S.optional(__S(2728, __c85, 8)),
+          type: S.optional(__S(2730, __c85, 10)),
+          unit: S.optional(S.String),
+          writeable: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FieldConfig" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(2731, __c85, 11)),
+          labels: S.optional(__S(7520, __c235, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Field" });
+    case 13:
+      return S.Array(__S(2732, __c85, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          inspect: S.optional(S.Number),
+          link: S.optional(S.String),
+          severity: S.optional(S.Number),
+          text: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Notice" });
+    case 15:
+      return S.Array(__S(2734, __c85, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          color: S.optional(__S(6496, __c203, 0)),
+          custom: S.optional(__S(6496, __c203, 0)),
+          decimals: S.optional(S.Number),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          displayNameFromDS: S.optional(S.String),
+          filterable: S.optional(S.Boolean),
+          interval: S.optional(S.Number),
+          links: S.optional(__S(2724, __c85, 4)),
+          mappings: S.optional(__S(2725, __c85, 5)),
+          max: S.optional(S.Number),
+          min: S.optional(S.Number),
+          noValue: S.optional(S.String),
+          path: S.optional(S.String),
+          thresholds: S.optional(__S(2728, __c85, 8)),
+          type: S.optional(__S(2730, __c85, 10)),
+          unit: S.optional(S.String),
+          value: S.optional(S.Number),
+          writeable: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "QueryStat" });
+    case 17:
+      return S.Array(__S(2736, __c85, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.optional(S.String),
+          custom: S.optional(S.Unknown),
+          dataTopic: S.optional(S.String),
+          executedQueryString: S.optional(S.String),
+          notices: S.optional(__S(2735, __c85, 15)),
+          path: S.optional(S.String),
+          pathSeparator: S.optional(S.String),
+          preferredVisualisationPluginId: S.optional(S.String),
+          preferredVisualisationType: S.optional(S.String),
+          stats: S.optional(__S(2737, __c85, 17)),
+          type: S.optional(S.String),
+          typeVersion: S.optional(__S(9184, __c287, 0)),
+          uniqueRowIdFields: S.optional(__S(9184, __c287, 0)),
+        }),
+      ).annotate({ identifier: "FrameMeta" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          Fields: S.optional(__S(2733, __c85, 13)),
+          Meta: S.optional(__S(2738, __c85, 18)),
+          Name: S.optional(S.String),
+          RefID: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Frame" });
+    case 20:
+      return S.Array(__S(2739, __c85, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          Error: S.optional(S.String),
+          ErrorSource: S.optional(S.String),
+          Frames: S.optional(__S(2740, __c85, 20)),
+          Status: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DataResponse" });
+    case 22:
+      return S.Record(S.String, __S(2741, __c85, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(2742, __c85, 22)),
+        }),
+      ).annotate({ identifier: "QueryDataResponse" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessToken: S.String.pipe(T.Label()),
+          panelId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/public/dashboards/{accessToken}/panels/{panelId}/query",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "QueryPublicDashboardRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/licensing/refresh-stats", code: 200 })),
+      ).annotate({
+        identifier: "RefreshLicenseStatsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          active_admins_and_editors: S.optional(S.Number),
+          active_anonymous_devices: S.optional(S.Number),
+          active_users: S.optional(S.Number),
+          active_viewers: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ActiveUserStats" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/admin/ldap/reload", code: 200 })),
+      ).annotate({ identifier: "ReloadLDAPCfgRequest" });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org_id: S.Number.pipe(T.Label()),
+          user_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org_id}/users/{user_id}", code: 200 })),
+      ).annotate({ identifier: "RemoveOrgUserRequest" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/org/users/{user_id}", code: 200 })),
+      ).annotate({
+        identifier: "RemoveOrgUserForCurrentOrgRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/admin/settings", code: 200 })),
       ).annotate({ identifier: "AdminGetSettingsRequest" });
-    case 4:
-      return S.Record(S.String, __S(0, __c0, 0));
-    case 5:
-      return S.suspend(() => __S(20, __c2, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Record(S.String, __S(7520, __c235, 0));
+    case 2:
+      return S.suspend(() => __S(2913, __c91, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "AdminGetSettingsResponse",
       });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/sso-settings/{key}", code: 200 })),
+      ).annotate({
+        identifier: "RemoveProviderSettingsRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.String.pipe(T.Label()),
+          groupId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/teams/{teamId}/groups", code: 200 })),
+      ).annotate({
+        identifier: "RemoveTeamGroupApiQueryRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String.pipe(T.Label()),
+          user_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/teams/{team_id}/members/{user_id}", code: 200 })),
+      ).annotate({ identifier: "RemoveTeamMemberRequest" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.Number.pipe(T.Label()),
+          roleUID: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/access-control/teams/{teamId}/roles/{roleUID}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "RemoveTeamRoleRequest" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.Number.pipe(T.Label()),
+          roleUID: S.String.pipe(T.Label()),
+          global: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/access-control/users/{userId}/roles/{roleUID}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "RemoveUserRoleRequest" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboards: S.optional(S.String.pipe(T.Query())),
+          title: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/reports/render/csvs", code: 200 })),
+      ).annotate({ identifier: "RenderReportCSVsRequest" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboards: S.optional(S.String.pipe(T.Query())),
+          orientation: S.optional(S.String.pipe(T.Query())),
+          layout: S.optional(S.String.pipe(T.Query())),
+          title: S.optional(S.String.pipe(T.Query())),
+          scaleFactor: S.optional(S.String.pipe(T.Query())),
+          includeTables: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/reports/render/pdfs", code: 200 })),
+      ).annotate({ identifier: "RenderReportPDFsRequest" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          invitation_code: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/org/invites/{invitation_code}/revoke", code: 200 }),
+        ),
+      ).annotate({ identifier: "RevokeInviteRequest" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authTokenId: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/user/revoke-auth-token", code: 200 })),
+      ).annotate({
+        identifier: "RevokeUserAuthTokenRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NamespaceTitle: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/convert/api/prom/rules/{NamespaceTitle}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RouteConvertPrometheusCortexDeleteNamespaceRequest",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/admin/stats", code: 200 })),
       ).annotate({ identifier: "AdminGetStatsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           activeAdmins: S.optional(S.Number),
@@ -7301,7 +9086,167 @@ function __c2(j: number): any {
       ).annotate({ identifier: "AdminStats" });
   }
 }
-function __c3(j: number): any {
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NamespaceTitle: S.String.pipe(T.Label()),
+          Group: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/convert/api/prom/rules/{NamespaceTitle}/{Group}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RouteConvertPrometheusCortexDeleteRuleGroupRequest",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NamespaceTitle: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/convert/api/prom/rules/{NamespaceTitle}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RouteConvertPrometheusCortexGetNamespaceRequest",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NamespaceTitle: S.String.pipe(T.Label()),
+          Group: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/convert/api/prom/rules/{NamespaceTitle}/{Group}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RouteConvertPrometheusCortexGetRuleGroupRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/convert/api/prom/rules", code: 200 })),
+      ).annotate({
+        identifier: "RouteConvertPrometheusCortexGetRulesRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NamespaceTitle: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/convert/api/prom/rules/{NamespaceTitle}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RouteConvertPrometheusCortexPostRuleGroupRequest",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/convert/api/prom/rules", code: 200 })),
+      ).annotate({
+        identifier: "RouteConvertPrometheusCortexPostRuleGroupsRequest",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NamespaceTitle: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RouteConvertPrometheusDeleteNamespaceRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NamespaceTitle: S.String.pipe(T.Label()),
+          Group: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}/{Group}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RouteConvertPrometheusDeleteRuleGroupRequest",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NamespaceTitle: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RouteConvertPrometheusGetNamespaceRequest",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NamespaceTitle: S.String.pipe(T.Label()),
+          Group: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}/{Group}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RouteConvertPrometheusGetRuleGroupRequest",
+      });
+  }
+}
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7311,7 +9256,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "AdminGetUserAuthTokensRequest",
       });
-    case 1:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AuthToken: S.optional(S.String),
@@ -7330,19 +9279,669 @@ function __c3(j: number): any {
           UserId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UserToken" });
+    case 1:
+      return S.Array(__S(3648, __c114, 0));
     case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() => __S(26, __c3, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(3649, __c114, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "AdminGetUserAuthTokensResponse",
       });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/convert/prometheus/config/v1/rules", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RouteConvertPrometheusGetRulesRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NamespaceTitle: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RouteConvertPrometheusPostRuleGroupRequest",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "POST", uri: "/convert/prometheus/config/v1/rules", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RouteConvertPrometheusPostRuleGroupsRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          download: S.optional(S.Boolean.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/provisioning/mute-timings/{name}/export", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RouteExportMuteTimingRequest",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          disableResolveMessage: S.optional(S.Boolean),
+          settings: S.optional(S.Unknown),
+          type: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReceiverExport" });
+    case 1:
+      return S.Array(__S(3808, __c119, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          orgId: S.optional(S.Number),
+          receivers: S.optional(__S(3809, __c119, 1)),
+        }),
+      ).annotate({ identifier: "ContactPointExport" });
+    case 3:
+      return S.Array(__S(3810, __c119, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.optional(S.Number),
+          to: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RelativeTimeRangeExport" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          datasourceUid: S.optional(S.String),
+          model: S.optional(__S(6496, __c203, 0)),
+          queryType: S.optional(S.String),
+          refId: S.optional(S.String),
+          relativeTimeRange: S.optional(__S(3812, __c119, 4)),
+        }),
+      ).annotate({ identifier: "AlertQueryExport" });
+    case 6:
+      return S.Array(__S(3813, __c119, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          active_time_intervals: S.optional(__S(6368, __c199, 0)),
+          group_by: S.optional(__S(6368, __c199, 0)),
+          group_interval: S.optional(S.String),
+          group_wait: S.optional(S.String),
+          mute_time_intervals: S.optional(__S(6368, __c199, 0)),
+          receiver: S.optional(S.String),
+          repeat_interval: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AlertRuleNotificationSettingsExport",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.optional(S.String),
+          metric: S.optional(S.String),
+          targetDatasourceUid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AlertRuleRecordExport" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(7520, __c235, 0)),
+          condition: S.optional(S.String),
+          dashboardUid: S.optional(S.String),
+          data: S.optional(__S(3814, __c119, 6)),
+          execErrState: S.optional(S.String),
+          for: S.optional(S.Number),
+          isPaused: S.optional(S.Boolean),
+          keepFiringFor: S.optional(S.Number),
+          labels: S.optional(__S(7520, __c235, 0)),
+          missing_series_evals_to_resolve: S.optional(S.Number),
+          noDataState: S.optional(S.String),
+          notification_settings: S.optional(__S(3815, __c119, 7)),
+          panelId: S.optional(S.Number),
+          record: S.optional(__S(3816, __c119, 8)),
+          title: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AlertRuleExport" });
+    case 10:
+      return S.Array(__S(3817, __c119, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          folder: S.optional(S.String),
+          interval: S.optional(S.Number),
+          name: S.optional(S.String),
+          orgId: S.optional(S.Number),
+          rules: S.optional(__S(3818, __c119, 10)),
+        }),
+      ).annotate({ identifier: "AlertRuleGroupExport" });
+    case 12:
+      return S.Array(__S(3819, __c119, 11));
+    case 13:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(3822, __c119, 14)));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          time_intervals: S.optional(__S(3821, __c119, 13)),
+        }),
+      ).annotate({ identifier: "TimeInterval" });
+    case 15:
+      return S.Array(__S(3822, __c119, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          orgId: S.optional(S.Number),
+          time_intervals: S.optional(__S(3823, __c119, 15)),
+        }),
+      ).annotate({ identifier: "MuteTimeIntervalExport" });
+    case 17:
+      return S.Array(__S(3824, __c119, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Type: S.optional(S.Number),
+          Value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Matcher" });
+    case 19:
+      return S.Array(__S(3826, __c119, 18));
+    case 20:
+      return S.Array(__S(9152, __c286, 0));
+    case 21:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(3830, __c119, 22)));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          active_time_intervals: S.optional(__S(6368, __c199, 0)),
+          continue: S.optional(S.Boolean),
+          group_by: S.optional(__S(6368, __c199, 0)),
+          group_interval: S.optional(S.String),
+          group_wait: S.optional(S.String),
+          match: S.optional(__S(7520, __c235, 0)),
+          match_re: S.optional(__S(7520, __c235, 0)),
+          matchers: S.optional(__S(3827, __c119, 19)),
+          mute_time_intervals: S.optional(__S(6368, __c199, 0)),
+          object_matchers: S.optional(__S(3828, __c119, 20)),
+          receiver: S.optional(S.String),
+          repeat_interval: S.optional(S.String),
+          routes: S.optional(__S(3829, __c119, 21)),
+        }),
+      ).annotate({ identifier: "RouteExport" });
+    case 23:
+      return S.Array(__S(3830, __c119, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          active_time_intervals: S.optional(__S(6368, __c199, 0)),
+          continue: S.optional(S.Boolean),
+          group_by: S.optional(__S(6368, __c199, 0)),
+          group_interval: S.optional(S.String),
+          group_wait: S.optional(S.String),
+          match: S.optional(__S(7520, __c235, 0)),
+          match_re: S.optional(__S(7520, __c235, 0)),
+          matchers: S.optional(__S(3827, __c119, 19)),
+          mute_time_intervals: S.optional(__S(6368, __c199, 0)),
+          object_matchers: S.optional(__S(3828, __c119, 20)),
+          orgId: S.optional(S.Number),
+          receiver: S.optional(S.String),
+          repeat_interval: S.optional(S.String),
+          routes: S.optional(__S(3831, __c119, 23)),
+        }),
+      ).annotate({ identifier: "NotificationPolicyExport" });
+    case 25:
+      return S.Array(__S(3832, __c119, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.Number),
+          contactPoints: S.optional(__S(3811, __c119, 3)),
+          groups: S.optional(__S(3820, __c119, 12)),
+          muteTimes: S.optional(__S(3825, __c119, 17)),
+          policies: S.optional(__S(3833, __c119, 25)),
+        }),
+      ).annotate({ identifier: "AlertingFileExport" });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          download: S.optional(S.Boolean.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/provisioning/mute-timings/export", code: 200 })),
+      ).annotate({
+        identifier: "RouteExportMuteTimingsRequest",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UID: S.String.pipe(T.Label()),
+          download: S.optional(S.Boolean.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/provisioning/alert-rules/{UID}/export", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RouteGetAlertRuleExportRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FolderUID: S.String.pipe(T.Label()),
+          Group: S.String.pipe(T.Label()),
+          download: S.optional(S.Boolean.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/provisioning/folder/{FolderUID}/rule-groups/{Group}/export",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RouteGetAlertRuleGroupExportRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          download: S.optional(S.Boolean.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
+          folderUid: S.optional(__S(6368, __c199, 0).pipe(T.Query())),
+          group: S.optional(S.String.pipe(T.Query())),
+          ruleUid: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/provisioning/alert-rules/export", code: 200 })),
+      ).annotate({
+        identifier: "RouteGetAlertRulesExportRequest",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          download: S.optional(S.Boolean.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
+          decrypt: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/provisioning/contact-points/export", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RouteGetContactpointsExportRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/v1/provisioning/policies/export", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RouteGetPolicyTreeExportRequest",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/admin/users/{user_id}/logout", code: 200 })),
       ).annotate({ identifier: "AdminLogoutUserRequest" });
-    case 5:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          branding: S.optional(__S(416, __c13, 0)),
+          embeddedImageTheme: S.optional(S.String),
+          footerFontFamily: S.optional(S.String),
+          footerItems: S.optional(__S(418, __c13, 2)),
+          id: S.optional(S.Number),
+          orgId: S.optional(S.Number),
+          pdfDashboardTitleEnabled: S.optional(S.Boolean),
+          pdfHeaderEnabled: S.optional(S.Boolean),
+          pdfTheme: S.optional(S.String),
+          pdfTimeRangeEnabled: S.optional(S.Boolean),
+          userId: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/reports/settings", code: 200 })),
+      ).annotate({
+        identifier: "SaveReportSettingsRequest",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String.pipe(T.Query())),
+          tag: S.optional(__S(6368, __c199, 0).pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          dashboardIds: S.optional(__S(9184, __c287, 0).pipe(T.Query())),
+          dashboardUIDs: S.optional(__S(6368, __c199, 0).pipe(T.Query())),
+          folderIds: S.optional(__S(9184, __c287, 0).pipe(T.Query())),
+          folderUIDs: S.optional(__S(6368, __c199, 0).pipe(T.Query())),
+          starred: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          permission: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          deleted: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/search", code: 200 })),
+      ).annotate({ identifier: "SearchRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          folderId: S.optional(S.Number),
+          folderTitle: S.optional(S.String),
+          folderUid: S.optional(S.String),
+          folderUrl: S.optional(S.String),
+          id: S.optional(S.Number),
+          isDeleted: S.optional(S.Boolean),
+          isStarred: S.optional(S.Boolean),
+          orgId: S.optional(S.Number),
+          permanentlyDeleteDate: S.optional(S.String),
+          slug: S.optional(S.String),
+          sortMeta: S.optional(S.Number),
+          sortMetaName: S.optional(S.String),
+          tags: S.optional(__S(9152, __c286, 0)),
+          title: S.optional(S.String),
+          type: S.optional(S.String),
+          uid: S.optional(S.String),
+          uri: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Hit" });
+    case 2:
+      return S.Array(__S(4097, __c128, 1));
+    case 3:
+      return S.suspend(() => __S(4098, __c128, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "SearchResponse",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/dashboard/snapshots", code: 200 })),
+      ).annotate({
+        identifier: "SearchDashboardSnapshotsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.String),
+          expires: S.optional(S.String),
+          external: S.optional(S.Boolean),
+          externalUrl: S.optional(S.String),
+          key: S.optional(S.String),
+          name: S.optional(S.String),
+          updated: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DashboardSnapshotDTO" });
+    case 2:
+      return S.Array(__S(4129, __c129, 1));
+    case 3:
+      return S.suspend(() => __S(4130, __c129, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "SearchDashboardSnapshotsResponse",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/anonymous/search", code: 200 })),
+      ).annotate({ identifier: "SearchDevicesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientIp: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          deviceId: S.optional(S.String),
+          lastSeenAt: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+          userAgent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeviceSearchHitDTO" });
+    case 2:
+      return S.Array(__S(4161, __c130, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          devices: S.optional(__S(4162, __c130, 2)),
+          page: S.optional(S.Number),
+          perPage: S.optional(S.Number),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SearchDeviceQueryResult" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          perpage: S.optional(S.Number.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs", code: 200 })),
+      ).annotate({ identifier: "SearchOrgsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OrgDTO" });
+    case 2:
+      return S.Array(__S(4193, __c131, 1));
+    case 3:
+      return S.suspend(() => __S(4194, __c131, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "SearchOrgsResponse",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Disabled: S.optional(S.Boolean.pipe(T.Query())),
+          expiredTokens: S.optional(S.Boolean.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          perpage: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/serviceaccounts/search", code: 200 })),
+      ).annotate({
+        identifier: "SearchOrgServiceAccountsWithPagingRequest",
+      });
+    case 1:
+      return S.Array(__S(7264, __c227, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number),
+          perPage: S.optional(S.Number),
+          serviceAccounts: S.optional(__S(4225, __c132, 1)),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SearchOrgServiceAccountsResult",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org_id}/users/search", code: 200 })),
+      ).annotate({ identifier: "SearchOrgUsersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          orgUsers: S.optional(__S(9729, __c304, 1)),
+          page: S.optional(S.Number),
+          perPage: S.optional(S.Number),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SearchOrgUsersQueryResult",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datasourceUid: S.optional(__S(6368, __c199, 0).pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          onlyStarred: S.optional(S.Boolean.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          from: S.optional(S.Number.pipe(T.Query())),
+          to: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/query-history", code: 200 })),
+      ).annotate({ identifier: "SearchQueriesRequest" });
+    case 1:
+      return S.Array(__S(6848, __c214, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number),
+          perPage: S.optional(S.Number),
+          queryHistory: S.optional(__S(4289, __c134, 1)),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QueryHistorySearchResult" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: S.optional(__S(4290, __c134, 2)),
+        }),
+      ).annotate({
+        identifier: "QueryHistorySearchResponse",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.Number.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perpage: S.optional(S.Number.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/teams/{teamId}/groups/search", code: 200 })),
+      ).annotate({ identifier: "SearchTeamGroupsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number),
+          perPage: S.optional(S.Number),
+          teamGroups: S.optional(__S(1377, __c43, 1)),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SearchTeamGroupsQueryResult",
+      });
+    case 2:
+      return S.Array(__S(4321, __c135, 1));
+    case 3:
+      return S.suspend(() => __S(4322, __c135, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "SearchTeamGroupsResponse",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          perpage: S.optional(S.Number.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          accesscontrol: S.optional(S.Boolean.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/teams/search", code: 200 })),
+      ).annotate({ identifier: "SearchTeamsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number),
+          perPage: S.optional(S.Number),
+          teams: S.optional(__S(1120, __c35, 0)),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SearchTeamQueryResult" });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "POST", uri: "/admin/provisioning/access-control/reload", code: 200 }),
@@ -7350,11 +9949,241 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "AdminProvisioningReloadAccessControlRequest",
       });
-    case 6:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AdminProvisioningReloadAccessControlResponse",
       });
-    case 7:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          perpage: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
+      ).annotate({ identifier: "SearchUsersRequest" });
+    case 1:
+      return S.suspend(() => __S(4481, __c140, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "SearchUsersResponse",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessControl: S.optional(__S(7552, __c236, 0)),
+          authLabels: S.optional(__S(6368, __c199, 0)),
+          avatarUrl: S.optional(S.String),
+          created: S.optional(S.String),
+          email: S.optional(S.String),
+          id: S.optional(S.Number),
+          isAdmin: S.optional(S.Boolean),
+          isDisabled: S.optional(S.Boolean),
+          isProvisioned: S.optional(S.Boolean),
+          lastSeenAt: S.optional(S.String),
+          lastSeenAtAge: S.optional(S.String),
+          login: S.optional(S.String),
+          name: S.optional(S.String),
+          role: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserSearchHitDTO" });
+    case 1:
+      return S.Array(__S(4480, __c140, 0));
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/search", code: 200 })),
+      ).annotate({
+        identifier: "SearchUsersWithPagingRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number),
+          perPage: S.optional(S.Number),
+          totalCount: S.optional(S.Number),
+          users: S.optional(__S(4481, __c140, 1)),
+        }),
+      ).annotate({ identifier: "SearchUserQueryResult" });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          emails: S.optional(S.String),
+          id: S.optional(S.String),
+          useEmailsFromReport: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/reports/email", code: 200 })),
+      ).annotate({ identifier: "SendReportRequest" });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboards: S.optional(__S(7138, __c223, 2)),
+          enableCsv: S.optional(S.Boolean),
+          enableDashboardUrl: S.optional(S.Boolean),
+          formats: S.optional(__S(6368, __c199, 0)),
+          message: S.optional(S.String),
+          name: S.optional(S.String),
+          options: S.optional(__S(7139, __c223, 3)),
+          recipients: S.optional(S.String),
+          replyTo: S.optional(S.String),
+          scaleFactor: S.optional(S.Number),
+          schedule: S.optional(__S(7140, __c223, 4)),
+          state: S.optional(S.String),
+          subject: S.optional(S.String),
+          urls: S.optional(__S(7142, __c223, 6)),
+        }).pipe(T.Http({ method: "POST", uri: "/reports/test-email", code: 200 })),
+      ).annotate({ identifier: "SendTestEmailRequest" });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataSourceUID: S.String.pipe(T.Label()),
+          dataSourceType: S.optional(S.String.pipe(T.Query())),
+          dataSourceID: S.optional(S.Number),
+          enabled: S.optional(S.Boolean),
+          ttlQueriesMs: S.optional(S.Number),
+          ttlResourcesMs: S.optional(S.Number),
+          useDefaultTTL: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/datasources/{dataSourceUID}/cache", code: 200 })),
+      ).annotate({
+        identifier: "SetDataSourceCacheConfigRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          builtInRole: S.optional(S.String),
+          permission: S.optional(S.String),
+          teamId: S.optional(S.Number),
+          userId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SetResourcePermissionCommand",
+      });
+    case 1:
+      return S.Array(__S(4640, __c145, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          resourceID: S.String.pipe(T.Label()),
+          permissions: S.optional(__S(4641, __c145, 1)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/access-control/{resource}/{resourceID}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "SetResourcePermissionsRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          resourceID: S.String.pipe(T.Label()),
+          builtInRole: S.String.pipe(T.Label()),
+          permission: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/access-control/{resource}/{resourceID}/builtInRoles/{builtInRole}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SetResourcePermissionsForBuiltInRoleRequest",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          resourceID: S.String.pipe(T.Label()),
+          teamID: S.Number.pipe(T.Label()),
+          permission: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/access-control/{resource}/{resourceID}/teams/{teamID}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SetResourcePermissionsForTeamRequest",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          resourceID: S.String.pipe(T.Label()),
+          userID: S.Number.pipe(T.Label()),
+          permission: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/access-control/{resource}/{resourceID}/users/{userID}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SetResourcePermissionsForUserRequest",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleUID: S.String.pipe(T.Label()),
+          service_accounts: S.optional(__S(9184, __c287, 0)),
+          teams: S.optional(__S(9184, __c287, 0)),
+          users: S.optional(__S(9184, __c287, 0)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/access-control/roles/{roleUID}/assignments", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "SetRoleAssignmentsRequest",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "POST", uri: "/admin/provisioning/dashboards/reload", code: 200 }),
@@ -7364,7 +10193,169 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String.pipe(T.Label()),
+          admins: S.optional(__S(6368, __c199, 0)),
+          members: S.optional(__S(6368, __c199, 0)),
+        }).pipe(T.Http({ method: "PUT", uri: "/teams/{team_id}/members", code: 200 })),
+      ).annotate({
+        identifier: "SetTeamMembershipsRequest",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.Number.pipe(T.Label()),
+          targetOrgId: S.optional(S.Number.pipe(T.Query())),
+          includeHidden: S.optional(S.Boolean),
+          roleUids: S.optional(__S(6368, __c199, 0)),
+        }).pipe(T.Http({ method: "PUT", uri: "/access-control/teams/{teamId}/roles", code: 200 })),
+      ).annotate({ identifier: "SetTeamRolesRequest" });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.Number.pipe(T.Label()),
+          targetOrgId: S.optional(S.Number.pipe(T.Query())),
+          global: S.optional(S.Boolean),
+          includeHidden: S.optional(S.Boolean),
+          roleUids: S.optional(__S(6368, __c199, 0)),
+        }).pipe(T.Http({ method: "PUT", uri: "/access-control/users/{userId}/roles", code: 200 })),
+      ).annotate({ identifier: "SetUserRolesRequest" });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query_history_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/query-history/star/{query_history_uid}", code: 200 }),
+        ),
+      ).annotate({ identifier: "StarQueryRequest" });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.optional(S.Boolean),
+          count: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          dest_data_source_uid: S.optional(S.String),
+          id: S.optional(S.String),
+          interval: S.optional(S.Number),
+          name: S.optional(S.String),
+          prom_name: S.optional(S.String),
+          queries: S.optional(__S(6944, __c217, 0)),
+          range: S.optional(S.Number),
+          target_ref_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/recording-rules/test", code: 200 })),
+      ).annotate({
+        identifier: "TestCreateRecordingRuleRequest",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query_history_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/query-history/star/{query_history_uid}", code: 200 }),
+        ),
+      ).annotate({ identifier: "UnstarQueryRequest" });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation_id: S.String.pipe(T.Label()),
+          data: S.optional(S.Unknown),
+          id: S.optional(S.Number),
+          tags: S.optional(__S(6368, __c199, 0)),
+          text: S.optional(S.String),
+          time: S.optional(S.Number),
+          timeEnd: S.optional(S.Number),
+        }).pipe(T.Http({ method: "PUT", uri: "/annotations/{annotation_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateAnnotationRequest" });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation_id: S.String.pipe(T.Label()),
+          data: S.optional(S.Unknown),
+          id: S.optional(S.Number),
+          tags: S.optional(__S(6368, __c199, 0)),
+          text: S.optional(S.String),
+          time: S.optional(S.Number),
+          timeEnd: S.optional(S.Number),
+        }).pipe(T.Http({ method: "PATCH", uri: "/annotations/{annotation_id}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateAnnotationByAnnotationIdRequest",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          target: S.optional(__S(6496, __c203, 0)),
+          transformations: S.optional(__S(6529, __c204, 1)),
+        }),
+      ).annotate({
+        identifier: "CorrelationConfigUpdateDTO",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sourceUID: S.String.pipe(T.Label()),
+          correlationUID: S.String.pipe(T.Label()),
+          config: S.optional(__S(5088, __c159, 0)),
+          description: S.optional(S.String),
+          label: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/datasources/uid/{sourceUID}/correlations/{correlationUID}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "UpdateCorrelationRequest" });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/org", code: 200 })),
+      ).annotate({ identifier: "UpdateCurrentOrgRequest" });
+  }
+}
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7374,7 +10365,189 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AdminProvisioningReloadDatasourcesRequest",
       });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address1: S.optional(S.String),
+          address2: S.optional(S.String),
+          city: S.optional(S.String),
+          country: S.optional(S.String),
+          state: S.optional(S.String),
+          zipcode: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/org/address", code: 200 })),
+      ).annotate({
+        identifier: "UpdateCurrentOrgAddressRequest",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.String.pipe(T.Label()),
+          access: S.optional(S.String),
+          basicAuth: S.optional(S.Boolean),
+          basicAuthUser: S.optional(S.String),
+          database: S.optional(S.String),
+          isDefault: S.optional(S.Boolean),
+          jsonData: S.optional(S.Unknown),
+          name: S.optional(S.String),
+          secureJsonData: S.optional(__S(7520, __c235, 0)),
+          type: S.optional(S.String),
+          url: S.optional(S.String),
+          user: S.optional(S.String),
+          version: S.optional(S.Number),
+          withCredentials: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/datasources/uid/{uid}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateDataSourceByUIDRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datasource: __S(7585, __c237, 1),
+          id: S.Number,
+          message: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "UpdateDataSourceByUIDResponse",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permission: S.optional(S.Number),
+          role: S.optional(S.String),
+          teamId: S.optional(S.Number),
+          userId: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DashboardACLUpdateItem" });
+    case 1:
+      return S.Array(__S(5248, __c164, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          folder_uid: S.String.pipe(T.Label()),
+          items: S.optional(__S(5249, __c164, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/folders/{folder_uid}/permissions", code: 200 })),
+      ).annotate({
+        identifier: "UpdateFolderPermissionsRequest",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          library_element_uid: S.String.pipe(T.Label()),
+          folderId: S.optional(S.Number),
+          folderUid: S.optional(S.String),
+          kind: S.optional(S.Number),
+          model: S.optional(S.Unknown),
+          name: S.optional(S.String),
+          uid: S.optional(S.String),
+          version: S.optional(S.Number),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/library-elements/{library_element_uid}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateLibraryElementRequest",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org_id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateOrgRequest" });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org_id: S.Number.pipe(T.Label()),
+          address1: S.optional(S.String),
+          address2: S.optional(S.String),
+          city: S.optional(S.String),
+          country: S.optional(S.String),
+          state: S.optional(S.String),
+          zipcode: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org_id}/address", code: 200 })),
+      ).annotate({ identifier: "UpdateOrgAddressRequest" });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org_id: S.Number.pipe(T.Label()),
+          quota_target: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number),
+          target: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org_id}/quotas/{quota_target}", code: 200 })),
+      ).annotate({ identifier: "UpdateOrgQuotaRequest" });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org_id: S.Number.pipe(T.Label()),
+          user_id: S.Number.pipe(T.Label()),
+          role: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org_id}/users/{user_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateOrgUserRequest" });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number.pipe(T.Label()),
+          role: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/org/users/{user_id}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateOrgUserForCurrentOrgRequest",
+      });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String.pipe(T.Label()),
+          id: S.optional(S.String),
+          provider: S.optional(S.String),
+          settings: S.optional(__S(6496, __c203, 0)),
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/sso-settings/{key}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateProviderSettingsRequest",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "POST", uri: "/admin/provisioning/plugins/reload", code: 200 }),
@@ -7382,7 +10555,230 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AdminProvisioningReloadPluginsRequest",
       });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboardUid: S.String.pipe(T.Label()),
+          uid: S.String.pipe(T.Label()),
+          accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          annotationsEnabled: S.optional(S.Boolean),
+          isEnabled: S.optional(S.Boolean),
+          share: S.optional(S.String),
+          timeSelectionEnabled: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/dashboards/uid/{dashboardUid}/public-dashboards/{uid}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdatePublicDashboardRequest",
+      });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.optional(S.Boolean),
+          count: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          dest_data_source_uid: S.optional(S.String),
+          id: S.optional(S.String),
+          interval: S.optional(S.Number),
+          name: S.optional(S.String),
+          prom_name: S.optional(S.String),
+          queries: S.optional(__S(6944, __c217, 0)),
+          range: S.optional(S.Number),
+          target_ref_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/recording-rules", code: 200 })),
+      ).annotate({
+        identifier: "UpdateRecordingRuleRequest",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleUID: S.String.pipe(T.Label()),
+          description: S.String,
+          displayName: S.String,
+          global: S.optional(S.Boolean),
+          group: S.String,
+          hidden: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          permissions: S.optional(__S(7201, __c225, 1)),
+        }).pipe(T.Http({ method: "PUT", uri: "/access-control/roles/{roleUID}", code: 200 })),
+      ).annotate({ identifier: "UpdateRoleRequest" });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccountId: S.Number.pipe(T.Label()),
+          isDisabled: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          role: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/serviceaccounts/{serviceAccountId}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateServiceAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accessControl: S.optional(__S(7552, __c236, 0)),
+          avatarUrl: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          id: S.optional(S.Number),
+          isDisabled: S.optional(S.Boolean),
+          isExternal: S.optional(S.Boolean),
+          login: S.optional(S.String),
+          name: S.optional(S.String),
+          orgId: S.optional(S.Number),
+          requiredBy: S.optional(S.String),
+          role: S.optional(S.String),
+          teams: S.optional(__S(6368, __c199, 0)),
+          tokens: S.optional(S.Number),
+          uid: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceAccountProfileDTO" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          message: S.optional(S.String),
+          name: S.optional(S.String),
+          serviceaccount: S.optional(__S(5633, __c176, 1)),
+        }),
+      ).annotate({
+        identifier: "UpdateServiceAccountResponse",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          login: S.optional(S.String),
+          name: S.optional(S.String),
+          theme: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/user", code: 200 })),
+      ).annotate({
+        identifier: "UpdateSignedInUserRequest",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String.pipe(T.Label()),
+          email: S.optional(S.String),
+          name: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/teams/{team_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateTeamRequest" });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.String.pipe(T.Label()),
+          rules: S.optional(__S(1441, __c45, 1)),
+        }).pipe(T.Http({ method: "PUT", uri: "/datasources/uid/{uid}/lbac/teams", code: 200 })),
+      ).annotate({
+        identifier: "UpdateTeamLBACRulesApiRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          message: S.optional(S.String),
+          name: S.optional(S.String),
+          rules: S.optional(__S(1441, __c45, 1)),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateTeamLBACRulesApiResponse",
+      });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String.pipe(T.Label()),
+          user_id: S.Number.pipe(T.Label()),
+          permission: S.optional(S.Number),
+        }).pipe(T.Http({ method: "PUT", uri: "/teams/{team_id}/members/{user_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateTeamMemberRequest" });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bookmarkUrls: S.optional(__S(6368, __c199, 0)),
+        }),
+      ).annotate({ identifier: "NavbarPreference" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          homeTab: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QueryHistoryPreference" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String.pipe(T.Label()),
+          homeDashboardId: S.optional(S.Number),
+          homeDashboardUID: S.optional(S.String),
+          language: S.optional(S.String),
+          navbar: S.optional(__S(5792, __c181, 0)),
+          queryHistory: S.optional(__S(5793, __c181, 1)),
+          theme: S.optional(S.String),
+          timezone: S.optional(S.String),
+          weekStart: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/teams/{team_id}/preferences", code: 200 })),
+      ).annotate({
+        identifier: "UpdateTeamPreferencesRequest",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number.pipe(T.Label()),
+          email: S.optional(S.String),
+          login: S.optional(S.String),
+          name: S.optional(S.String),
+          theme: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/users/{user_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateUserRequest" });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.Number.pipe(T.Label()),
@@ -7393,7 +10789,73 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AdminRevokeUserAuthTokenRequest",
       });
-    case 3:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/email/update", code: 200 })),
+      ).annotate({ identifier: "UpdateUserEmailRequest" });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number.pipe(T.Label()),
+          quota_target: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number),
+          target: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/admin/users/{user_id}/quotas/{quota_target}", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpdateUserQuotaRequest" });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.String.pipe(T.Label()),
+          snapshotUid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/cloudmigration/migration/{uid}/snapshot/{snapshotUid}/upload",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "UploadSnapshotRequest" });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/user/using/{org_id}", code: 200 })),
+      ).annotate({ identifier: "UserSetUsingOrgRequest" });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessToken: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/public/dashboards/{accessToken}", code: 200 })),
+      ).annotate({
+        identifier: "ViewPublicDashboardRequest",
+      });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.Number.pipe(T.Label()),
@@ -7402,7 +10864,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AdminUpdateUserPasswordRequest",
       });
-    case 4:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.Number.pipe(T.Label()),
@@ -7411,7 +10877,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AdminUpdateUserPermissionsRequest",
       });
-    case 5:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uid: S.String.pipe(T.Label()),
@@ -7426,7 +10896,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CallDatasourceResourceWithUIDRequest",
       });
-    case 6:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uid: S.String.pipe(T.Label()),
@@ -7439,13 +10913,17 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CancelSnapshotRequest" });
-    case 7:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelSnapshotResponse",
       });
   }
 }
-function __c5(j: number): any {
+function __c194(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7456,7 +10934,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ChangeUserPasswordRequest",
       });
-    case 1:
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uid: S.String.pipe(T.Label()),
@@ -7464,7 +10946,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CheckDatasourceHealthWithUIDRequest",
       });
-    case 2:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataSourceUID: S.String.pipe(T.Label()),
@@ -7474,7 +10960,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CleanDataSourceCacheRequest",
       });
-    case 3:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.String),
@@ -7489,39 +10979,47 @@ function __c5(j: number): any {
           useDefaultTTL: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CacheConfigResponse" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dashboardId: S.optional(S.Number),
           dashboardUID: S.optional(S.String),
           data: S.optional(S.Unknown),
           panelId: S.optional(S.Number),
-          tags: S.optional(__S(44, __c5, 4)),
+          tags: S.optional(__S(6368, __c199, 0)),
           text: S.String,
           time: S.optional(S.Number),
           timeEnd: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/annotations", code: 200 })),
       ).annotate({ identifier: "CreateAnnotationRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           message: S.String,
         }),
       ).annotate({ identifier: "CreateAnnotationResponse" });
-    case 7:
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/cloudmigration/token", code: 200 })),
       ).annotate({
         identifier: "CreateCloudMigrationTokenRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.String),
@@ -7529,33 +11027,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateAccessTokenResponseDTO",
       });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-          field: S.optional(S.String),
-          mapValue: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Transformation" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.String,
-          target: __S(49, __c6, 1),
-          transformations: S.optional(__S(51, __c6, 3)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CorrelationConfig" });
-    case 5:
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceUID: S.String.pipe(T.Label()),
-          config: S.optional(__S(52, __c6, 4)),
+          config: S.optional(__S(6530, __c204, 2)),
           description: S.optional(S.String),
           label: S.optional(S.String),
           provisioned: S.optional(S.Boolean),
@@ -7565,10 +11045,53 @@ function __c6(j: number): any {
           T.Http({ method: "POST", uri: "/datasources/uid/{sourceUID}/correlations", code: 200 }),
         ),
       ).annotate({ identifier: "CreateCorrelationRequest" });
-    case 6:
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(__S(52, __c6, 4)),
+          message: S.optional(S.String),
+          result: S.optional(__S(6531, __c204, 3)),
+        }),
+      ).annotate({
+        identifier: "CreateCorrelationResponseBody",
+      });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+          field: S.optional(S.String),
+          mapValue: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Transformation" });
+    case 1:
+      return S.Array(__S(6528, __c204, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.String,
+          target: __S(6496, __c203, 0),
+          transformations: S.optional(__S(6529, __c204, 1)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CorrelationConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(6530, __c204, 2)),
           description: S.optional(S.String),
           label: S.optional(S.String),
           orgId: S.optional(S.Number),
@@ -7579,30 +11102,21 @@ function __c6(j: number): any {
           uid: S.optional(S.String),
         }),
       ).annotate({ identifier: "Correlation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          result: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateCorrelationResponseBody",
-      });
   }
 }
-function __c7(j: number): any {
+function __c205(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Object: S.optional(__S(49, __c6, 1)),
+          Object: S.optional(__S(6496, __c203, 0)),
         }),
       ).annotate({ identifier: "Unstructured" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          dashboard: __S(56, __c7, 0),
+          dashboard: __S(6560, __c205, 0),
           deleteKey: S.optional(S.String),
           expires: S.optional(S.Number),
           external: S.optional(S.Boolean),
@@ -7625,7 +11139,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateDashboardSnapshotResponse",
       });
-    case 3:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           folderId: S.optional(S.Number),
@@ -7638,7 +11156,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateLibraryElementRequest",
       });
-    case 4:
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           avatarUrl: S.optional(S.String),
@@ -7648,19 +11170,23 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "LibraryElementDTOMetaUser",
       });
-    case 5:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           connectedDashboards: S.optional(S.Number),
           created: S.optional(S.String),
-          createdBy: S.optional(__S(60, __c7, 4)),
+          createdBy: S.optional(__S(6624, __c207, 0)),
           folderName: S.optional(S.String),
           folderUid: S.optional(S.String),
           updated: S.optional(S.String),
-          updatedBy: S.optional(__S(60, __c7, 4)),
+          updatedBy: S.optional(__S(6624, __c207, 0)),
         }),
       ).annotate({ identifier: "LibraryElementDTOMeta" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -7668,7 +11194,7 @@ function __c7(j: number): any {
           folderUid: S.optional(S.String),
           id: S.optional(S.Number),
           kind: S.optional(S.Number),
-          meta: S.optional(__S(61, __c7, 5)),
+          meta: S.optional(__S(6656, __c208, 0)),
           model: S.optional(S.Unknown),
           name: S.optional(S.String),
           orgId: S.optional(S.Number),
@@ -7678,15 +11204,19 @@ function __c7(j: number): any {
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LibraryElementDTO" });
-    case 7:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(62, __c7, 6)),
+          result: S.optional(__S(6657, __c208, 1)),
         }),
       ).annotate({ identifier: "LibraryElementResponse" });
   }
 }
-function __c8(j: number): any {
+function __c210(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7701,7 +11231,11 @@ function __c8(j: number): any {
           orgId: S.Number,
         }),
       ).annotate({ identifier: "CreateOrgResponse" });
-    case 2:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dashboardUid: S.String.pipe(T.Label()),
@@ -7721,16 +11255,20 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreatePublicDashboardRequest",
       });
-    case 3:
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           recipient: S.optional(S.String),
           uid: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailDTO" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(6784, __c212, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -7739,7 +11277,7 @@ function __c8(j: number): any {
           createdBy: S.optional(S.Number),
           dashboardUid: S.optional(S.String),
           isEnabled: S.optional(S.Boolean),
-          recipients: S.optional(__S(68, __c8, 4)),
+          recipients: S.optional(__S(6785, __c212, 1)),
           share: S.optional(S.String),
           timeSelectionEnabled: S.optional(S.Boolean),
           uid: S.optional(S.String),
@@ -7747,14 +11285,22 @@ function __c8(j: number): any {
           updatedBy: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PublicDashboard" });
-    case 6:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasourceUid: S.optional(S.String),
           queries: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/query-history", code: 200 })),
       ).annotate({ identifier: "CreateQueryRequest" });
-    case 7:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
@@ -7768,17 +11314,19 @@ function __c8(j: number): any {
       ).annotate({ identifier: "QueryHistoryDTO" });
   }
 }
-function __c9(j: number): any {
+function __c215(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(71, __c8, 7)),
+          result: S.optional(__S(6848, __c214, 0)),
         }),
       ).annotate({ identifier: "QueryHistoryResponse" });
-    case 1:
-      return S.Array(__S(49, __c6, 1));
-    case 2:
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean),
@@ -7789,14 +11337,24 @@ function __c9(j: number): any {
           interval: S.optional(S.Number),
           name: S.optional(S.String),
           prom_name: S.optional(S.String),
-          queries: S.optional(__S(73, __c9, 1)),
+          queries: S.optional(__S(6944, __c217, 0)),
           range: S.optional(S.Number),
           target_ref_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/recording-rules", code: 200 })),
       ).annotate({
         identifier: "CreateRecordingRuleRequest",
       });
-    case 3:
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6496, __c203, 0));
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean),
@@ -7807,12 +11365,16 @@ function __c9(j: number): any {
           interval: S.optional(S.Number),
           name: S.optional(S.String),
           prom_name: S.optional(S.String),
-          queries: S.optional(__S(73, __c9, 1)),
+          queries: S.optional(__S(6944, __c217, 0)),
           range: S.optional(S.Number),
           target_ref_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecordingRuleJSON" });
-    case 4:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           data_source_uid: S.optional(S.String),
@@ -7822,7 +11384,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateRecordingRuleWriteTargetRequest",
       });
-    case 5:
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           data_source_uid: S.optional(S.String),
@@ -7832,15 +11398,41 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PrometheusRemoteWriteTargetJSON",
       });
-    case 6:
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboards: S.optional(__S(7138, __c223, 2)),
+          enableCsv: S.optional(S.Boolean),
+          enableDashboardUrl: S.optional(S.Boolean),
+          formats: S.optional(__S(6368, __c199, 0)),
+          message: S.optional(S.String),
+          name: S.optional(S.String),
+          options: S.optional(__S(7139, __c223, 3)),
+          recipients: S.optional(S.String),
+          replyTo: S.optional(S.String),
+          scaleFactor: S.optional(S.Number),
+          schedule: S.optional(__S(7140, __c223, 4)),
+          state: S.optional(S.String),
+          subject: S.optional(S.String),
+          urls: S.optional(__S(7142, __c223, 6)),
+        }).pipe(T.Http({ method: "POST", uri: "/reports", code: 200 })),
+      ).annotate({ identifier: "CreateReportRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          name: S.optional(S.String),
-          uid: S.optional(S.String),
+          message: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ReportDashboardID" });
-    case 7:
+      ).annotate({ identifier: "CreateReportResponse" });
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String),
@@ -7849,19 +11441,27 @@ function __c9(j: number): any {
       ).annotate({ identifier: "ReportTimeRange" });
   }
 }
-function __c10(j: number): any {
+function __c223(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dashboard: S.optional(__S(78, __c9, 6)),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReportDashboardID" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dashboard: S.optional(__S(7136, __c223, 0)),
           reportVariables: S.optional(S.Unknown),
-          timeRange: S.optional(__S(79, __c9, 7)),
+          timeRange: S.optional(__S(7104, __c222, 0)),
         }),
       ).annotate({ identifier: "ReportDashboard" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
     case 2:
+      return S.Array(__S(7137, __c223, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           csvEncoding: S.optional(S.String),
@@ -7869,10 +11469,10 @@ function __c10(j: number): any {
           orientation: S.optional(S.String),
           pdfCombineOneFile: S.optional(S.Boolean),
           pdfShowTemplateVariables: S.optional(S.Boolean),
-          timeRange: S.optional(__S(79, __c9, 7)),
+          timeRange: S.optional(__S(7104, __c222, 0)),
         }),
       ).annotate({ identifier: "ReportOptions" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           dayOfMonth: S.optional(S.String),
@@ -7885,44 +11485,35 @@ function __c10(j: number): any {
           workdaysOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ReportSchedule" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportURLItem" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dashboards: S.optional(__S(81, __c10, 1)),
-          enableCsv: S.optional(S.Boolean),
-          enableDashboardUrl: S.optional(S.Boolean),
-          formats: S.optional(__S(44, __c5, 4)),
-          message: S.optional(S.String),
-          name: S.optional(S.String),
-          options: S.optional(__S(82, __c10, 2)),
-          recipients: S.optional(S.String),
-          replyTo: S.optional(S.String),
-          scaleFactor: S.optional(S.Number),
-          schedule: S.optional(__S(83, __c10, 3)),
-          state: S.optional(S.String),
-          subject: S.optional(S.String),
-          urls: S.optional(__S(85, __c10, 5)),
-        }).pipe(T.Http({ method: "POST", uri: "/reports", code: 200 })),
-      ).annotate({ identifier: "CreateReportRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateReportResponse" });
+      return S.Array(__S(7141, __c223, 5));
   }
 }
-function __c11(j: number): any {
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          global: S.optional(S.Boolean),
+          group: S.optional(S.String),
+          hidden: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          permissions: S.optional(__S(7201, __c225, 1)),
+          uid: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/access-control/roles", code: 200 })),
+      ).annotate({ identifier: "CreateRoleRequest" });
+  }
+}
+function __c225(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7934,21 +11525,8 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "Permission" });
     case 1:
-      return S.Array(__S(88, __c11, 0));
+      return S.Array(__S(7200, __c225, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          global: S.optional(S.Boolean),
-          group: S.optional(S.String),
-          hidden: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          permissions: S.optional(__S(89, __c11, 1)),
-          uid: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/access-control/roles", code: 200 })),
-      ).annotate({ identifier: "CreateRoleRequest" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           created: S.String,
@@ -7960,13 +11538,17 @@ function __c11(j: number): any {
           hidden: S.optional(S.Boolean),
           mapped: S.optional(S.Boolean),
           name: S.String,
-          permissions: S.optional(__S(89, __c11, 1)),
+          permissions: S.optional(__S(7201, __c225, 1)),
           uid: S.String,
           updated: S.String,
           version: S.Number,
         }),
       ).annotate({ identifier: "RoleDTO" });
-    case 4:
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isDisabled: S.optional(S.Boolean),
@@ -7976,10 +11558,14 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateServiceAccountRequest",
       });
-    case 5:
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accessControl: S.optional(__S(3, __c0, 3)),
+          accessControl: S.optional(__S(7552, __c236, 0)),
           avatarUrl: S.optional(S.String),
           id: S.optional(S.Number),
           isDisabled: S.optional(S.Boolean),
@@ -7992,13 +11578,21 @@ function __c11(j: number): any {
           uid: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceAccountDTO" });
-    case 6:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           authToken: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/cloudmigration/migration", code: 200 })),
       ).annotate({ identifier: "CreateSessionRequest" });
-    case 7:
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.String),
@@ -8011,20 +11605,18 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c230(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           uid: S.String.pipe(T.Label()),
-          resourceTypes: S.optional(__S(96, __c12, 0)),
+          resourceTypes: S.optional(__S(7392, __c231, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/cloudmigration/migration/{uid}/snapshot", code: 200 }),
         ),
       ).annotate({ identifier: "CreateSnapshotRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uid: S.optional(S.String),
@@ -8032,14 +11624,24 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateSnapshotResponseDTO",
       });
-    case 3:
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
           name: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/teams", code: 200 })),
       ).annotate({ identifier: "CreateTeamRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -8047,7 +11649,11 @@ function __c12(j: number): any {
           uid: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateTeamResponse" });
-    case 5:
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceAccountId: S.Number.pipe(T.Label()),
@@ -8057,7 +11663,7 @@ function __c12(j: number): any {
           T.Http({ method: "POST", uri: "/serviceaccounts/{serviceAccountId}/tokens", code: 200 }),
         ),
       ).annotate({ identifier: "CreateTokenRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -8065,7 +11671,84 @@ function __c12(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "NewApiKeyResult" });
-    case 7:
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          access: S.optional(S.String),
+          basicAuth: S.optional(S.Boolean),
+          basicAuthUser: S.optional(S.String),
+          database: S.optional(S.String),
+          isDefault: S.optional(S.Boolean),
+          jsonData: S.optional(S.Unknown),
+          name: S.optional(S.String),
+          secureJsonData: S.optional(__S(7520, __c235, 0)),
+          type: S.optional(S.String),
+          uid: S.optional(S.String),
+          url: S.optional(S.String),
+          user: S.optional(S.String),
+          withCredentials: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/datasources", code: 200 })),
+      ).annotate({ identifier: "AddDataSourceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datasource: __S(7585, __c237, 1),
+          id: S.Number,
+          message: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "AddDataSourceResponse" });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Boolean);
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Boolean);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          access: S.optional(S.String),
+          accessControl: S.optional(__S(7584, __c237, 0)),
+          basicAuth: S.optional(S.Boolean),
+          basicAuthUser: S.optional(S.String),
+          database: S.optional(S.String),
+          id: S.optional(S.Number),
+          isDefault: S.optional(S.Boolean),
+          jsonData: S.optional(S.Unknown),
+          name: S.optional(S.String),
+          orgId: S.optional(S.Number),
+          readOnly: S.optional(S.Boolean),
+          secureJsonFields: S.optional(__S(7552, __c236, 0)),
+          type: S.optional(S.String),
+          typeLogoUrl: S.optional(S.String),
+          uid: S.optional(S.String),
+          url: S.optional(S.String),
+          user: S.optional(S.String),
+          version: S.optional(S.Number),
+          withCredentials: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DataSource" });
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uid: S.String.pipe(T.Label()),
@@ -8082,7 +11765,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c239(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8099,7 +11782,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DatasourceProxyGETByUIDcallsRequest",
       });
-    case 1:
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uid: S.String.pipe(T.Label()),
@@ -8114,13 +11801,21 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DatasourceProxyPOSTByUIDcallsRequest",
       });
-    case 2:
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           annotation_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/annotations/{annotation_id}", code: 200 })),
       ).annotate({ identifier: "DeleteAnnotationRequest" });
-    case 3:
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uid: S.String.pipe(T.Label()),
@@ -8128,7 +11823,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteCloudMigrationTokenRequest",
       });
-    case 4:
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uid: S.String.pipe(T.Label()),
@@ -8141,7 +11840,7 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteCorrelationRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -8149,7 +11848,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteCorrelationResponseBody",
       });
-    case 6:
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String.pipe(T.Label()),
@@ -8157,7 +11860,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteDashboardSnapshotRequest",
       });
-    case 7:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deleteKey: S.String.pipe(T.Label()),
@@ -8167,7 +11874,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c246(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8177,7 +11884,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteDataSourceByUIDRequest",
       });
-    case 1:
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           library_element_uid: S.String.pipe(T.Label()),
@@ -8187,7 +11898,34 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteLibraryElementByUIDRequest",
       });
-    case 2:
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          loginOrEmail: S.optional(S.String),
+          name: S.optional(S.String),
+          role: S.optional(S.String),
+          sendEmail: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/org/invites", code: 200 })),
+      ).annotate({ identifier: "AddOrgInviteRequest" });
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SuccessResponseBody" });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           instance: S.optional(S.String),
@@ -8195,13 +11933,21 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteLicenseTokenRequest",
       });
-    case 3:
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org_id}", code: 200 })),
       ).annotate({ identifier: "DeleteOrgRequest" });
-    case 4:
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dashboardUid: S.String.pipe(T.Label()),
@@ -8216,13 +11962,17 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeletePublicDashboardRequest",
       });
-    case 5:
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query_history_uid: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/query-history/{query_history_uid}", code: 200 })),
       ).annotate({ identifier: "DeleteQueryRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -8231,7 +11981,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "QueryHistoryDeleteQueryResponse",
       });
-    case 7:
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           recordingRuleID: S.Number.pipe(T.Label()),
@@ -8241,7 +11995,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c255(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8249,7 +12003,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteRecordingRuleWriteTargetRequest",
       });
-    case 1:
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           roleUID: S.String.pipe(T.Label()),
@@ -8257,7 +12015,11 @@ function __c15(j: number): any {
           global: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/access-control/roles/{roleUID}", code: 200 })),
       ).annotate({ identifier: "DeleteRoleRequest" });
-    case 2:
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceAccountId: S.Number.pipe(T.Label()),
@@ -8267,19 +12029,43 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteServiceAccountRequest",
       });
-    case 3:
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uid: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/cloudmigration/migration/{uid}", code: 200 })),
       ).annotate({ identifier: "DeleteSessionRequest" });
-    case 4:
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/teams/{team_id}", code: 200 })),
       ).annotate({ identifier: "DeleteTeamRequest" });
-    case 5:
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org_id: S.Number.pipe(T.Label()),
+          loginOrEmail: S.optional(S.String),
+          role: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org_id}/users", code: 200 })),
+      ).annotate({ identifier: "AddOrgUserRequest" });
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceAccountId: S.Number.pipe(T.Label()),
@@ -8292,7 +12078,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteTokenRequest" });
-    case 6:
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataSourceUID: S.String.pipe(T.Label()),
@@ -8303,7 +12093,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DisableDataSourceCacheRequest",
       });
-    case 7:
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataSourceUID: S.String.pipe(T.Label()),
@@ -8316,7 +12110,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c264(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8330,13 +12124,21 @@ function __c16(j: number): any {
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AccessControlStatus" });
-    case 2:
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           annotation_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/annotations/{annotation_id}", code: 200 })),
       ).annotate({ identifier: "GetAnnotationRequest" });
-    case 3:
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alertId: S.optional(S.Number),
@@ -8352,7 +12154,7 @@ function __c16(j: number): any {
           newState: S.optional(S.String),
           panelId: S.optional(S.Number),
           prevState: S.optional(S.String),
-          tags: S.optional(__S(44, __c5, 4)),
+          tags: S.optional(__S(6368, __c199, 0)),
           text: S.optional(S.String),
           time: S.optional(S.Number),
           timeEnd: S.optional(S.Number),
@@ -8361,7 +12163,11 @@ function __c16(j: number): any {
           userUID: S.optional(S.String),
         }),
       ).annotate({ identifier: "Annotation" });
-    case 4:
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.Number.pipe(T.Query())),
@@ -8374,58 +12180,62 @@ function __c16(j: number): any {
           dashboardUID: S.optional(S.String.pipe(T.Query())),
           panelId: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          tags: S.optional(__S(44, __c5, 4).pipe(T.Query())),
+          tags: S.optional(__S(6368, __c199, 0).pipe(T.Query())),
           type: S.optional(S.String.pipe(T.Query())),
           matchAny: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/annotations", code: 200 })),
       ).annotate({ identifier: "GetAnnotationsRequest" });
-    case 5:
-      return S.Array(__S(131, __c16, 3));
-    case 6:
-      return S.suspend(() => __S(133, __c16, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(8512, __c266, 0));
+    case 2:
+      return S.suspend(() => __S(8545, __c267, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAnnotationsResponse",
       });
-    case 7:
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tag: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/annotations/tags", code: 200 })),
       ).annotate({ identifier: "GetAnnotationTagsRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           tag: S.optional(S.String),
         }),
       ).annotate({ identifier: "TagsDTO" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({ identifier: "FindTagsResult" });
+      return S.Array(__S(8577, __c268, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(138, __c17, 2)),
+          tags: S.optional(__S(8578, __c268, 2)),
+        }),
+      ).annotate({ identifier: "FindTagsResult" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          result: S.optional(__S(8579, __c268, 3)),
         }),
       ).annotate({
         identifier: "GetAnnotationTagsResponse",
       });
-    case 4:
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/cloudmigration/token", code: 200 })),
       ).annotate({
         identifier: "GetCloudMigrationTokenRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
@@ -8438,7 +12248,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetAccessTokenResponseDTO",
       });
-    case 6:
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceUID: S.String.pipe(T.Label()),
@@ -8451,25 +12265,46 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCorrelationRequest" });
-    case 7:
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
-          sourceUID: S.optional(__S(44, __c5, 4).pipe(T.Query())),
+          sourceUID: S.optional(__S(6368, __c199, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/datasources/correlations", code: 200 })),
       ).annotate({ identifier: "GetCorrelationsRequest" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(54, __c6, 6));
     case 1:
-      return S.suspend(() => __S(144, __c18, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(8704, __c272, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCorrelationsResponse",
       });
-    case 2:
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6531, __c204, 3));
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          loginOrEmail: S.optional(S.String),
+          role: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/org/users", code: 200 })),
+      ).annotate({
+        identifier: "AddOrgUserToCurrentOrgRequest",
+      });
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceUID: S.String.pipe(T.Label()),
@@ -8479,15 +12314,23 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetCorrelationsBySourceUIDRequest",
       });
-    case 3:
-      return S.suspend(() => __S(144, __c18, 0).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(8704, __c272, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCorrelationsBySourceUIDResponse",
       });
-    case 4:
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/org", code: 200 })),
       ).annotate({ identifier: "GetCurrentOrgRequest" });
-    case 5:
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           address1: S.optional(S.String),
@@ -8498,23 +12341,31 @@ function __c18(j: number): any {
           zipCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Address" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(__S(149, __c18, 5)),
+          address: S.optional(__S(8832, __c276, 0)),
           id: S.optional(S.Number),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrgDetailsDTO" });
-    case 7:
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/org/quotas", code: 200 })),
       ).annotate({
         identifier: "GetCurrentOrgQuotaRequest",
       });
+    case 1:
+      return S.suspend(() => __S(8897, __c278, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetCurrentOrgQuotaResponse",
+      });
   }
 }
-function __c19(j: number): any {
+function __c278(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8527,12 +12378,12 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "QuotaDTO" });
     case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
-      return S.suspend(() => __S(153, __c19, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetCurrentOrgQuotaResponse",
-      });
-    case 3:
+      return S.Array(__S(8896, __c278, 0));
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String.pipe(T.Label()),
@@ -8540,7 +12391,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetDashboardSnapshotRequest",
       });
-    case 4:
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           canAdd: S.optional(S.Boolean),
@@ -8548,16 +12403,16 @@ function __c19(j: number): any {
           canEdit: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AnnotationActions" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          dashboard: S.optional(__S(156, __c19, 4)),
+          dashboard: S.optional(__S(8960, __c280, 0)),
         }),
       ).annotate({ identifier: "AnnotationPermission" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          annotationsPermissions: S.optional(__S(157, __c19, 5)),
+          annotationsPermissions: S.optional(__S(8961, __c280, 1)),
           apiVersion: S.optional(S.String),
           canAdmin: S.optional(S.Boolean),
           canDelete: S.optional(S.Boolean),
@@ -8585,16 +12440,16 @@ function __c19(j: number): any {
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DashboardMeta" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           dashboard: S.optional(S.Unknown),
-          meta: S.optional(__S(158, __c19, 6)),
+          meta: S.optional(__S(8962, __c280, 2)),
         }),
       ).annotate({ identifier: "DashboardFullWithMeta" });
   }
 }
-function __c20(j: number): any {
+function __c281(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8604,7 +12459,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetDataSourceByUIDRequest",
       });
-    case 1:
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataSourceUID: S.String.pipe(T.Label()),
@@ -8613,11 +12472,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetDataSourceCacheConfigRequest",
       });
-    case 2:
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/datasources", code: 200 })),
       ).annotate({ identifier: "GetDataSourcesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           access: S.optional(S.String),
@@ -8637,17 +12500,21 @@ function __c20(j: number): any {
           user: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataSourceListItemDTO" });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
-      return S.suspend(() => __S(164, __c20, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(9057, __c283, 1));
+    case 3:
+      return S.suspend(() => __S(9058, __c283, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDataSourcesResponse",
       });
-    case 6:
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
       ).annotate({ identifier: "GetHealthRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiserver: S.optional(S.String),
@@ -8659,7 +12526,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "HealthResponse" });
   }
 }
-function __c21(j: number): any {
+function __c285(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8668,158 +12535,177 @@ function __c21(j: number): any {
     case 1:
       return S.Array(S.Number);
     case 2:
-      return S.Array(S.Number);
-    case 3:
       return S.suspend(() =>
         S.Struct({
           IP: S.optional(S.String),
-          Mask: S.optional(__S(170, __c21, 2)),
+          Mask: S.optional(__S(9121, __c285, 1)),
         }),
       ).annotate({ identifier: "IPNet" });
+    case 3:
+      return S.Array(__S(9122, __c285, 2));
     case 4:
-      return S.Array(__S(171, __c21, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           Critical: S.optional(S.Boolean),
-          Id: S.optional(__S(169, __c21, 1)),
-          Value: S.optional(__S(169, __c21, 1)),
+          Id: S.optional(__S(9184, __c287, 0)),
+          Value: S.optional(__S(9184, __c287, 0)),
         }),
       ).annotate({ identifier: "Extension" });
+    case 5:
+      return S.Array(__S(9124, __c285, 4));
     case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(__S(169, __c21, 1)),
+          Type: S.optional(__S(9184, __c287, 0)),
           Value: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "AttributeTypeAndValue" });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(9126, __c285, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           CommonName: S.optional(S.String),
-          Country: S.optional(__S(175, __c21, 7)),
-          ExtraNames: S.optional(__S(177, __c22, 1)),
-          Locality: S.optional(__S(44, __c5, 4)),
-          Names: S.optional(__S(177, __c22, 1)),
-          Organization: S.optional(__S(44, __c5, 4)),
-          OrganizationalUnit: S.optional(__S(44, __c5, 4)),
-          PostalCode: S.optional(__S(44, __c5, 4)),
-          Province: S.optional(__S(44, __c5, 4)),
+          Country: S.optional(__S(9152, __c286, 0)),
+          ExtraNames: S.optional(__S(9127, __c285, 7)),
+          Locality: S.optional(__S(6368, __c199, 0)),
+          Names: S.optional(__S(9127, __c285, 7)),
+          Organization: S.optional(__S(6368, __c199, 0)),
+          OrganizationalUnit: S.optional(__S(6368, __c199, 0)),
+          PostalCode: S.optional(__S(6368, __c199, 0)),
+          Province: S.optional(__S(6368, __c199, 0)),
           SerialNumber: S.optional(S.String),
-          StreetAddress: S.optional(__S(44, __c5, 4)),
+          StreetAddress: S.optional(__S(6368, __c199, 0)),
         }),
       ).annotate({ identifier: "Name" });
-    case 3:
-      return S.Array(__S(169, __c21, 1));
-    case 4:
+    case 9:
+      return S.Array(__S(9184, __c287, 0));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           IssuerDomainPolicy: S.optional(S.String),
           SubjectDomainPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyMapping" });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
+    case 11:
+      return S.Array(__S(9130, __c285, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          AuthorityKeyId: S.optional(__S(169, __c21, 1)),
+          AuthorityKeyId: S.optional(__S(9184, __c287, 0)),
           BasicConstraintsValid: S.optional(S.Boolean),
-          CRLDistributionPoints: S.optional(__S(44, __c5, 4)),
-          DNSNames: S.optional(__S(44, __c5, 4)),
-          EmailAddresses: S.optional(__S(44, __c5, 4)),
-          ExcludedDNSDomains: S.optional(__S(44, __c5, 4)),
-          ExcludedEmailAddresses: S.optional(__S(44, __c5, 4)),
-          ExcludedIPRanges: S.optional(__S(172, __c21, 4)),
-          ExcludedURIDomains: S.optional(__S(44, __c5, 4)),
-          ExtKeyUsage: S.optional(__S(169, __c21, 1)),
-          Extensions: S.optional(__S(174, __c21, 6)),
-          ExtraExtensions: S.optional(__S(174, __c21, 6)),
-          IPAddresses: S.optional(__S(44, __c5, 4)),
+          CRLDistributionPoints: S.optional(__S(6368, __c199, 0)),
+          DNSNames: S.optional(__S(6368, __c199, 0)),
+          EmailAddresses: S.optional(__S(6368, __c199, 0)),
+          ExcludedDNSDomains: S.optional(__S(6368, __c199, 0)),
+          ExcludedEmailAddresses: S.optional(__S(6368, __c199, 0)),
+          ExcludedIPRanges: S.optional(__S(9123, __c285, 3)),
+          ExcludedURIDomains: S.optional(__S(6368, __c199, 0)),
+          ExtKeyUsage: S.optional(__S(9184, __c287, 0)),
+          Extensions: S.optional(__S(9125, __c285, 5)),
+          ExtraExtensions: S.optional(__S(9125, __c285, 5)),
+          IPAddresses: S.optional(__S(6368, __c199, 0)),
           InhibitAnyPolicy: S.optional(S.Number),
           InhibitAnyPolicyZero: S.optional(S.Boolean),
           InhibitPolicyMapping: S.optional(S.Number),
           InhibitPolicyMappingZero: S.optional(S.Boolean),
           IsCA: S.optional(S.Boolean),
-          Issuer: S.optional(__S(178, __c22, 2)),
-          IssuingCertificateURL: S.optional(__S(44, __c5, 4)),
+          Issuer: S.optional(__S(9128, __c285, 8)),
+          IssuingCertificateURL: S.optional(__S(6368, __c199, 0)),
           KeyUsage: S.optional(S.Number),
           MaxPathLen: S.optional(S.Number),
           MaxPathLenZero: S.optional(S.Boolean),
           NotAfter: S.optional(S.String),
           NotBefore: S.optional(S.String),
-          OCSPServer: S.optional(__S(44, __c5, 4)),
-          PermittedDNSDomains: S.optional(__S(44, __c5, 4)),
+          OCSPServer: S.optional(__S(6368, __c199, 0)),
+          PermittedDNSDomains: S.optional(__S(6368, __c199, 0)),
           PermittedDNSDomainsCritical: S.optional(S.Boolean),
-          PermittedEmailAddresses: S.optional(__S(44, __c5, 4)),
-          PermittedIPRanges: S.optional(__S(172, __c21, 4)),
-          PermittedURIDomains: S.optional(__S(44, __c5, 4)),
-          Policies: S.optional(__S(44, __c5, 4)),
-          PolicyIdentifiers: S.optional(__S(179, __c22, 3)),
-          PolicyMappings: S.optional(__S(181, __c22, 5)),
+          PermittedEmailAddresses: S.optional(__S(6368, __c199, 0)),
+          PermittedIPRanges: S.optional(__S(9123, __c285, 3)),
+          PermittedURIDomains: S.optional(__S(6368, __c199, 0)),
+          Policies: S.optional(__S(6368, __c199, 0)),
+          PolicyIdentifiers: S.optional(__S(9129, __c285, 9)),
+          PolicyMappings: S.optional(__S(9131, __c285, 11)),
           PublicKey: S.optional(S.Unknown),
           PublicKeyAlgorithm: S.optional(S.Number),
-          Raw: S.optional(__S(169, __c21, 1)),
-          RawIssuer: S.optional(__S(169, __c21, 1)),
-          RawSignatureAlgorithm: S.optional(__S(169, __c21, 1)),
-          RawSubject: S.optional(__S(169, __c21, 1)),
-          RawSubjectPublicKeyInfo: S.optional(__S(169, __c21, 1)),
-          RawTBSCertificate: S.optional(__S(169, __c21, 1)),
+          Raw: S.optional(__S(9184, __c287, 0)),
+          RawIssuer: S.optional(__S(9184, __c287, 0)),
+          RawSignatureAlgorithm: S.optional(__S(9184, __c287, 0)),
+          RawSubject: S.optional(__S(9184, __c287, 0)),
+          RawSubjectPublicKeyInfo: S.optional(__S(9184, __c287, 0)),
+          RawTBSCertificate: S.optional(__S(9184, __c287, 0)),
           RequireExplicitPolicy: S.optional(S.Number),
           RequireExplicitPolicyZero: S.optional(S.Boolean),
           SerialNumber: S.optional(S.Number),
-          Signature: S.optional(__S(169, __c21, 1)),
+          Signature: S.optional(__S(9184, __c287, 0)),
           SignatureAlgorithm: S.optional(S.Number),
-          Subject: S.optional(__S(178, __c22, 2)),
-          SubjectKeyId: S.optional(__S(169, __c21, 1)),
-          URIs: S.optional(__S(44, __c5, 4)),
-          UnhandledCriticalExtensions: S.optional(__S(179, __c22, 3)),
-          UnknownExtKeyUsage: S.optional(__S(179, __c22, 3)),
+          Subject: S.optional(__S(9128, __c285, 8)),
+          SubjectKeyId: S.optional(__S(9184, __c287, 0)),
+          URIs: S.optional(__S(6368, __c199, 0)),
+          UnhandledCriticalExtensions: S.optional(__S(9129, __c285, 9)),
+          UnknownExtKeyUsage: S.optional(__S(9129, __c285, 9)),
           Version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Certificate" });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
+      return S.Array(__S(9132, __c285, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           Algorithm: S.optional(S.String),
-          CertificateThumbprintSHA1: S.optional(__S(169, __c21, 1)),
-          CertificateThumbprintSHA256: S.optional(__S(169, __c21, 1)),
-          Certificates: S.optional(__S(183, __c22, 7)),
+          CertificateThumbprintSHA1: S.optional(__S(9184, __c287, 0)),
+          CertificateThumbprintSHA256: S.optional(__S(9184, __c287, 0)),
+          Certificates: S.optional(__S(9133, __c285, 13)),
           CertificatesURL: S.optional(S.String),
           Key: S.optional(S.Unknown),
           KeyID: S.optional(S.String),
           Use: S.optional(S.String),
         }),
       ).annotate({ identifier: "JSONWebKey" });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
-    case 2:
+    case 15:
+      return S.Array(__S(9134, __c285, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(185, __c23, 1)),
+          keys: S.optional(__S(9135, __c285, 15)),
         }),
       ).annotate({ identifier: "GetJWKSResponse" });
-    case 3:
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/admin/ldap/status", code: 200 })),
       ).annotate({ identifier: "GetLDAPStatusRequest" });
-    case 4:
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.String.pipe(T.Label()),
+          groupId: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/teams/{teamId}/groups", code: 200 })),
+      ).annotate({ identifier: "AddTeamGroupApiRequest" });
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           library_element_name: S.String.pipe(T.Label()),
@@ -8833,17 +12719,25 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetLibraryElementByNameRequest",
       });
-    case 5:
-      return S.Array(__S(62, __c7, 6));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(189, __c23, 5)),
+          result: S.optional(__S(9312, __c291, 0)),
         }),
       ).annotate({
         identifier: "LibraryElementArrayResponse",
       });
-    case 7:
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6657, __c208, 1));
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           library_element_uid: S.String.pipe(T.Label()),
@@ -8855,7 +12749,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c293(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8877,7 +12771,7 @@ function __c24(j: number): any {
           connectionId: S.optional(S.Number),
           connectionUid: S.optional(S.String),
           created: S.optional(S.String),
-          createdBy: S.optional(__S(60, __c7, 4)),
+          createdBy: S.optional(__S(6624, __c207, 0)),
           elementId: S.optional(S.Number),
           id: S.optional(S.Number),
           kind: S.optional(S.Number),
@@ -8886,16 +12780,20 @@ function __c24(j: number): any {
         identifier: "LibraryElementConnectionDTO",
       });
     case 2:
-      return S.Array(__S(193, __c24, 1));
+      return S.Array(__S(9377, __c293, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(194, __c24, 2)),
+          result: S.optional(__S(9378, __c293, 2)),
         }),
       ).annotate({
         identifier: "LibraryElementConnectionsResponse",
       });
-    case 4:
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           searchString: S.optional(S.String.pipe(T.Query())),
@@ -8911,10 +12809,10 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetLibraryElementsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          elements: S.optional(__S(189, __c23, 5)),
+          elements: S.optional(__S(9312, __c291, 0)),
           page: S.optional(S.Number),
           perPage: S.optional(S.Number),
           totalCount: S.optional(S.Number),
@@ -8922,21 +12820,25 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "LibraryElementSearchResult",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(197, __c24, 5)),
+          result: S.optional(__S(9409, __c294, 1)),
         }),
       ).annotate({
         identifier: "LibraryElementSearchResponse",
       });
-    case 7:
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/licensing/token", code: 200 })),
       ).annotate({ identifier: "GetLicenseTokenRequest" });
   }
 }
-function __c25(j: number): any {
+function __c296(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8956,7 +12858,7 @@ function __c25(j: number): any {
           limit_by: S.optional(S.String),
           max_concurrent_user_sessions: S.optional(S.Number),
           nbf: S.optional(S.Number),
-          prod: S.optional(__S(175, __c21, 7)),
+          prod: S.optional(__S(9152, __c286, 0)),
           slug: S.optional(S.String),
           status: S.optional(S.Number),
           sub: S.optional(S.String),
@@ -8967,51 +12869,83 @@ function __c25(j: number): any {
           usage_billing: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Token" });
-    case 1:
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/saml/metadata", code: 200 })),
       ).annotate({ identifier: "GetMetadataRequest" });
-    case 2:
-      return S.suspend(() => __S(169, __c21, 1).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(9184, __c287, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetMetadataResponse",
       });
-    case 3:
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org_id}", code: 200 })),
       ).annotate({ identifier: "GetOrgRequest" });
-    case 4:
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org_name: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/name/{org_name}", code: 200 })),
       ).annotate({ identifier: "GetOrgByNameRequest" });
-    case 5:
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org_id}/quotas", code: 200 })),
       ).annotate({ identifier: "GetOrgQuotaRequest" });
-    case 6:
-      return S.suspend(() => __S(153, __c19, 1).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(8897, __c278, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOrgQuotaResponse",
       });
-    case 7:
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org_id}/users", code: 200 })),
       ).annotate({ identifier: "GetOrgUsersRequest" });
+    case 1:
+      return S.suspend(() => __S(9729, __c304, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetOrgUsersResponse",
+      });
   }
 }
-function __c26(j: number): any {
+function __c304(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accessControl: S.optional(__S(3, __c0, 3)),
-          authLabels: S.optional(__S(44, __c5, 4)),
+          accessControl: S.optional(__S(7552, __c236, 0)),
+          authLabels: S.optional(__S(6368, __c199, 0)),
           avatarUrl: S.optional(S.String),
           created: S.optional(S.String),
           email: S.optional(S.String),
@@ -9029,2976 +12963,9 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "OrgUserDTO" });
     case 1:
-      return S.Array(__S(208, __c26, 0));
-    case 2:
-      return S.suspend(() => __S(209, __c26, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetOrgUsersResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/org/users", code: 200 })),
-      ).annotate({
-        identifier: "GetOrgUsersForCurrentOrgRequest",
-      });
-    case 4:
-      return S.suspend(() => __S(209, __c26, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetOrgUsersForCurrentOrgResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/org/users/lookup", code: 200 })),
-      ).annotate({
-        identifier: "GetOrgUsersForCurrentOrgLookupRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          avatarUrl: S.optional(S.String),
-          login: S.optional(S.String),
-          uid: S.optional(S.String),
-          userId: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "UserLookupDTO" });
-    case 7:
-      return S.Array(__S(214, __c26, 6));
+      return S.Array(__S(9728, __c304, 0));
   }
 }
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(215, __c26, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetOrgUsersForCurrentOrgLookupResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/org/invites", code: 200 })),
-      ).annotate({
-        identifier: "GetPendingOrgInvitesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          createdOn: S.optional(S.String),
-          email: S.optional(S.String),
-          emailSent: S.optional(S.Boolean),
-          emailSentOn: S.optional(S.String),
-          id: S.optional(S.Number),
-          invitedByEmail: S.optional(S.String),
-          invitedByLogin: S.optional(S.String),
-          invitedByName: S.optional(S.String),
-          name: S.optional(S.String),
-          orgId: S.optional(S.Number),
-          role: S.optional(S.String),
-          status: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TempUserDTO" });
-    case 3:
-      return S.Array(__S(218, __c27, 2));
-    case 4:
-      return S.suspend(() => __S(219, __c27, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetPendingOrgInvitesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/sso-settings/{key}", code: 200 })),
-      ).annotate({
-        identifier: "GetProviderSettingsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          provider: S.optional(S.String),
-          settings: S.optional(__S(49, __c6, 1)),
-          source: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetProviderSettingsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accessToken: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/public/dashboards/{accessToken}/annotations", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetPublicAnnotationsRequest",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataSourceRef" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          exclude: S.optional(S.Boolean),
-          ids: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({ identifier: "AnnotationPanelFilter" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number),
-          matchAny: S.optional(S.Boolean),
-          tags: S.optional(__S(44, __c5, 4)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AnnotationTarget" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          builtIn: S.optional(S.Number),
-          datasource: S.optional(__S(224, __c28, 0)),
-          enable: S.optional(S.Boolean),
-          filter: S.optional(__S(225, __c28, 1)),
-          hide: S.optional(S.Boolean),
-          iconColor: S.optional(S.String),
-          name: S.optional(S.String),
-          placement: S.optional(S.String),
-          target: S.optional(__S(226, __c28, 2)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AnnotationQuery" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          color: S.optional(S.String),
-          dashboardId: S.optional(S.Number),
-          dashboardUID: S.optional(S.String),
-          id: S.optional(S.Number),
-          isRegion: S.optional(S.Boolean),
-          panelId: S.optional(S.Number),
-          source: S.optional(__S(227, __c28, 3)),
-          tags: S.optional(__S(44, __c5, 4)),
-          text: S.optional(S.String),
-          time: S.optional(S.Number),
-          timeEnd: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AnnotationEvent" });
-    case 5:
-      return S.Array(__S(228, __c28, 4));
-    case 6:
-      return S.suspend(() => __S(229, __c28, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetPublicAnnotationsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dashboardUid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dashboards/uid/{dashboardUid}/public-dashboards",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPublicDashboardRequest",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/recording-rules/writer", code: 200 })),
-      ).annotate({
-        identifier: "GetRecordingRuleWriteTargetRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/reports", code: 200 })),
-      ).annotate({ identifier: "GetReportsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.String),
-          dashboards: S.optional(__S(81, __c10, 1)),
-          enableCsv: S.optional(S.Boolean),
-          enableDashboardUrl: S.optional(S.Boolean),
-          formats: S.optional(__S(44, __c5, 4)),
-          id: S.optional(S.Number),
-          message: S.optional(S.String),
-          name: S.optional(S.String),
-          options: S.optional(__S(82, __c10, 2)),
-          orgId: S.optional(S.Number),
-          recipients: S.optional(S.String),
-          replyTo: S.optional(S.String),
-          scaleFactor: S.optional(S.Number),
-          schedule: S.optional(__S(83, __c10, 3)),
-          state: S.optional(S.String),
-          subject: S.optional(S.String),
-          uid: S.optional(S.String),
-          updated: S.optional(S.String),
-          urls: S.optional(__S(85, __c10, 5)),
-          userId: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Report" });
-    case 3:
-      return S.Array(__S(234, __c29, 2));
-    case 4:
-      return S.suspend(() => __S(235, __c29, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetReportsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/reports/dashboards/{uid}", code: 200 })),
-      ).annotate({
-        identifier: "GetReportsByDashboardUIDRequest",
-      });
-    case 6:
-      return S.suspend(() => __S(235, __c29, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetReportsByDashboardUIDResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/reports/settings", code: 200 })),
-      ).annotate({ identifier: "GetReportSettingsRequest" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          emailFooterLink: S.optional(S.String),
-          emailFooterMode: S.optional(S.String),
-          emailFooterText: S.optional(S.String),
-          emailLogoUrl: S.optional(S.String),
-          reportLogoUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReportBrandingOptions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          color: S.optional(S.String),
-          fontSize: S.optional(S.String),
-          fontStyle: S.optional(S.String),
-          fontWeight: S.optional(S.String),
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FooterItem" });
-    case 2:
-      return S.Array(__S(241, __c30, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          branding: S.optional(__S(240, __c30, 0)),
-          embeddedImageTheme: S.optional(S.String),
-          footerFontFamily: S.optional(S.String),
-          footerItems: S.optional(__S(242, __c30, 2)),
-          id: S.optional(S.Number),
-          orgId: S.optional(S.Number),
-          pdfDashboardTitleEnabled: S.optional(S.Boolean),
-          pdfHeaderEnabled: S.optional(S.Boolean),
-          pdfTheme: S.optional(S.String),
-          pdfTimeRangeEnabled: S.optional(S.Boolean),
-          userId: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ReportSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/cloudmigration/resources/dependencies", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetResourceDependenciesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dependencies: S.optional(__S(96, __c12, 0)),
-          resourceType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceDependencyDTO" });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceDependencies: S.optional(__S(246, __c30, 6)),
-        }),
-      ).annotate({
-        identifier: "ResourceDependenciesResponseDTO",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/access-control/{resource}/description", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetResourceDescriptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          builtInRoles: S.optional(S.Boolean),
-          serviceAccounts: S.optional(S.Boolean),
-          teams: S.optional(S.Boolean),
-          users: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Assignments" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          assignments: S.optional(__S(249, __c31, 1)),
-          permissions: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "Description" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          resourceID: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/access-control/{resource}/{resourceID}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetResourcePermissionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(__S(44, __c5, 4)),
-          builtInRole: S.optional(S.String),
-          id: S.optional(S.Number),
-          isInherited: S.optional(S.Boolean),
-          isManaged: S.optional(S.Boolean),
-          isServiceAccount: S.optional(S.Boolean),
-          permission: S.optional(S.String),
-          roleName: S.optional(S.String),
-          team: S.optional(S.String),
-          teamAvatarUrl: S.optional(S.String),
-          teamId: S.optional(S.Number),
-          teamUid: S.optional(S.String),
-          userAvatarUrl: S.optional(S.String),
-          userId: S.optional(S.Number),
-          userLogin: S.optional(S.String),
-          userUid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourcePermissionDTO" });
-    case 5:
-      return S.Array(__S(252, __c31, 4));
-    case 6:
-      return S.suspend(() => __S(253, __c31, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetResourcePermissionsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          roleUID: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/access-control/roles/{roleUID}", code: 200 })),
-      ).annotate({ identifier: "GetRoleRequest" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          roleUID: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/access-control/roles/{roleUID}/assignments", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetRoleAssignmentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          role_uid: S.optional(S.String),
-          service_accounts: S.optional(__S(169, __c21, 1)),
-          teams: S.optional(__S(169, __c21, 1)),
-          users: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({ identifier: "RoleAssignmentsDTO" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/logout/saml", code: 200 })),
-      ).annotate({ identifier: "GetSAMLLogoutRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccountId: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/serviceaccounts/{serviceAccountId}", code: 200 })),
-      ).annotate({ identifier: "GetServiceAccountRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/cloudmigration/migration/{uid}", code: 200 })),
-      ).annotate({ identifier: "GetSessionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/cloudmigration/migration", code: 200 })),
-      ).annotate({ identifier: "GetSessionListRequest" });
-    case 6:
-      return S.Array(__S(95, __c11, 7));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sessions: S.optional(__S(262, __c32, 6)),
-        }),
-      ).annotate({
-        identifier: "CloudMigrationSessionListResponseDTO",
-      });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/reports/images/:image", code: 200 })),
-      ).annotate({ identifier: "GetSettingsImageRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/cloudmigration/migration/{uid}/snapshots", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetShapshotListRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.String),
-          finished: S.optional(S.String),
-          sessionUid: S.optional(S.String),
-          status: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SnapshotDTO" });
-    case 3:
-      return S.Array(__S(266, __c33, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          snapshots: S.optional(__S(267, __c33, 3)),
-        }),
-      ).annotate({ identifier: "SnapshotListResponseDTO" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/snapshot/shared-options", code: 200 })),
-      ).annotate({ identifier: "GetSharingOptionsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          externalEnabled: S.optional(S.Boolean),
-          externalSnapshotName: S.optional(S.String),
-          externalSnapshotURL: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSharingOptionsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
-      ).annotate({ identifier: "GetSignedInUserRequest" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accessControl: S.optional(__S(3, __c0, 3)),
-          authLabels: S.optional(__S(44, __c5, 4)),
-          avatarUrl: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          email: S.optional(S.String),
-          id: S.optional(S.Number),
-          isDisabled: S.optional(S.Boolean),
-          isExternal: S.optional(S.Boolean),
-          isExternallySynced: S.optional(S.Boolean),
-          isGrafanaAdmin: S.optional(S.Boolean),
-          isGrafanaAdminExternallySynced: S.optional(S.Boolean),
-          isProvisioned: S.optional(S.Boolean),
-          login: S.optional(S.String),
-          name: S.optional(S.String),
-          orgId: S.optional(S.Number),
-          theme: S.optional(S.String),
-          uid: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserProfileDTO" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/orgs", code: 200 })),
-      ).annotate({
-        identifier: "GetSignedInUserOrgListRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          orgId: S.optional(S.Number),
-          role: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserOrgDTO" });
-    case 3:
-      return S.Array(__S(274, __c34, 2));
-    case 4:
-      return S.suspend(() => __S(275, __c34, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetSignedInUserOrgListResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/teams", code: 200 })),
-      ).annotate({
-        identifier: "GetSignedInUserTeamListRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accessControl: S.optional(__S(3, __c0, 3)),
-          avatarUrl: S.optional(S.String),
-          email: S.optional(S.String),
-          externalUID: S.optional(S.String),
-          id: S.Number,
-          isProvisioned: S.Boolean,
-          memberCount: S.Number,
-          name: S.String,
-          orgId: S.Number,
-          permission: S.optional(S.Number),
-          uid: S.String,
-        }),
-      ).annotate({ identifier: "TeamDTO" });
-    case 7:
-      return S.Array(__S(278, __c34, 6));
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(279, __c34, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetSignedInUserTeamListResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/saml/slo", code: 200 })),
-      ).annotate({ identifier: "GetSLORequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.String.pipe(T.Label()),
-          snapshotUid: S.String.pipe(T.Label()),
-          resultPage: S.optional(S.Number.pipe(T.Query())),
-          resultLimit: S.optional(S.Number.pipe(T.Query())),
-          resultSortColumn: S.optional(S.String.pipe(T.Query())),
-          resultSortOrder: S.optional(S.String.pipe(T.Query())),
-          errorsOnly: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/cloudmigration/migration/{uid}/snapshot/{snapshotUid}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetSnapshotRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          errorCode: S.optional(S.String),
-          message: S.optional(S.String),
-          name: S.optional(S.String),
-          parentName: S.optional(S.String),
-          refId: S.String,
-          status: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "MigrateDataResponseItemDTO",
-      });
-    case 4:
-      return S.Array(__S(283, __c35, 3));
-    case 5:
-      return S.Record(S.String, S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          statuses: S.optional(__S(285, __c35, 5)),
-          total: S.optional(S.Number),
-          types: S.optional(__S(285, __c35, 5)),
-        }),
-      ).annotate({ identifier: "SnapshotResourceStats" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.String),
-          finished: S.optional(S.String),
-          results: S.optional(__S(284, __c35, 4)),
-          sessionUid: S.optional(S.String),
-          stats: S.optional(__S(286, __c35, 6)),
-          status: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetSnapshotResponseDTO" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/licensing/check", code: 200 })),
-      ).annotate({ identifier: "GetStatusRequest" });
-    case 1:
-      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetStatusResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/admin/ldap-sync-status", code: 200 })),
-      ).annotate({ identifier: "GetSyncStatusRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Error: S.optional(S.String),
-          Login: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FailedUser" });
-    case 4:
-      return S.Array(__S(291, __c36, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Elapsed: S.optional(S.Number),
-          FailedUsers: S.optional(__S(292, __c36, 4)),
-          MissingUserIds: S.optional(__S(169, __c21, 1)),
-          Started: S.optional(S.String),
-          UpdatedUserIds: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({ identifier: "SyncResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          nextSync: S.optional(S.String),
-          prevSync: S.optional(__S(293, __c36, 5)),
-          schedule: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActiveSyncStatusDTO" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String.pipe(T.Label()),
-          accesscontrol: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/teams/{team_id}", code: 200 })),
-      ).annotate({ identifier: "GetTeamRequest" });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/teams/{teamId}/groups", code: 200 })),
-      ).annotate({ identifier: "GetTeamGroupsApiRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          orgId: S.optional(S.Number),
-          teamId: S.optional(S.Number),
-          teamUid: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TeamGroupDTO" });
-    case 2:
-      return S.Array(__S(297, __c37, 1));
-    case 3:
-      return S.suspend(() => __S(298, __c37, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetTeamGroupsApiResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/datasources/uid/{uid}/lbac/teams", code: 200 })),
-      ).annotate({
-        identifier: "GetTeamLBACRulesApiRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(44, __c5, 4)),
-          teamId: S.optional(S.String),
-          teamUid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TeamLBACRule" });
-    case 6:
-      return S.Array(__S(301, __c37, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(302, __c37, 6)),
-        }),
-      ).annotate({ identifier: "TeamLBACRules" });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/teams/{team_id}/members", code: 200 })),
-      ).annotate({ identifier: "GetTeamMembersRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          auth_module: S.optional(S.String),
-          avatarUrl: S.optional(S.String),
-          email: S.optional(S.String),
-          labels: S.optional(__S(44, __c5, 4)),
-          login: S.optional(S.String),
-          name: S.optional(S.String),
-          orgId: S.optional(S.Number),
-          permission: S.optional(S.Number),
-          teamId: S.optional(S.Number),
-          teamUID: S.optional(S.String),
-          uid: S.optional(S.String),
-          userId: S.optional(S.Number),
-          userUID: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TeamMemberDTO" });
-    case 2:
-      return S.Array(__S(305, __c38, 1));
-    case 3:
-      return S.suspend(() => __S(306, __c38, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetTeamMembersResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/teams/{team_id}/preferences", code: 200 })),
-      ).annotate({
-        identifier: "GetTeamPreferencesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bookmarkUrls: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "PreferencesNavbarPreference",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          homeTab: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PreferencesQueryHistoryPreference",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          homeDashboardUID: S.optional(S.String),
-          homeURL: S.optional(S.String),
-          language: S.optional(S.String),
-          navbar: S.optional(__S(309, __c38, 5)),
-          queryHistory: S.optional(__S(310, __c38, 6)),
-          theme: S.optional(S.String),
-          timezone: S.optional(S.String),
-          weekStart: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PreferencesSpec" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}", code: 200 })),
-      ).annotate({ identifier: "GetUserRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/auth-tokens", code: 200 })),
-      ).annotate({ identifier: "GetUserAuthTokensRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          loginOrEmail: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/users/lookup", code: 200 })),
-      ).annotate({
-        identifier: "GetUserByLoginOrEmailRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          user_name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/admin/ldap/{user_name}", code: 200 })),
-      ).annotate({ identifier: "GetUserFromLDAPRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/orgs", code: 200 })),
-      ).annotate({ identifier: "GetUserOrgListRequest" });
-    case 5:
-      return S.suspend(() => __S(275, __c34, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetUserOrgListResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/admin/users/{user_id}/quotas", code: 200 })),
-      ).annotate({ identifier: "GetUserQuotaRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/quotas", code: 200 })),
-      ).annotate({ identifier: "GetUserQuotasRequest" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/teams", code: 200 })),
-      ).annotate({ identifier: "GetUserTeamsRequest" });
-    case 1:
-      return S.suspend(() => __S(279, __c34, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetUserTeamsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          pluginId: S.optional(S.String),
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImportDashboardInput" });
-    case 3:
-      return S.Array(__S(322, __c40, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dashboard: S.optional(S.Unknown),
-          folderId: S.optional(S.Number),
-          folderUid: S.optional(S.String),
-          inputs: S.optional(__S(323, __c40, 3)),
-          overwrite: S.optional(S.Boolean),
-          path: S.optional(S.String),
-          pluginId: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/dashboards/import", code: 200 })),
-      ).annotate({ identifier: "ImportDashboardRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dashboardId: S.optional(S.Number),
-          description: S.optional(S.String),
-          folderId: S.optional(S.Number),
-          folderUid: S.optional(S.String),
-          imported: S.optional(S.Boolean),
-          importedRevision: S.optional(S.Number),
-          importedUri: S.optional(S.String),
-          importedUrl: S.optional(S.String),
-          path: S.optional(S.String),
-          pluginId: S.optional(S.String),
-          removed: S.optional(S.Boolean),
-          revision: S.optional(S.Number),
-          slug: S.optional(S.String),
-          title: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImportDashboardResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/dashboards/interpolate", code: 200 })),
-      ).annotate({
-        identifier: "InterpolateDashboardRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "InterpolateDashboardResponse",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/sso-settings", code: 200 })),
-      ).annotate({
-        identifier: "ListAllProvidersSettingsRequest",
-      });
-    case 1:
-      return S.Array(__S(222, __c27, 6));
-    case 2:
-      return S.suspend(() => __S(329, __c41, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListAllProvidersSettingsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/anonymous/devices", code: 200 })),
-      ).annotate({ identifier: "ListDevicesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          avatarUrl: S.optional(S.String),
-          clientIp: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          deviceId: S.optional(S.String),
-          lastSeenAt: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-          userAgent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeviceDTO" });
-    case 5:
-      return S.Array(__S(332, __c41, 4));
-    case 6:
-      return S.suspend(() => __S(333, __c41, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDevicesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/dashboards/public-dashboards", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListPublicDashboardsRequest",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          dashboardUid: S.optional(S.String),
-          isEnabled: S.optional(S.Boolean),
-          slug: S.optional(S.String),
-          title: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicDashboardListResponse",
-      });
-    case 1:
-      return S.Array(__S(336, __c42, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number),
-          perPage: S.optional(S.Number),
-          publicDashboards: S.optional(__S(337, __c42, 1)),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PublicDashboardListResponseWithPagination",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/recording-rules", code: 200 })),
-      ).annotate({
-        identifier: "ListRecordingRulesRequest",
-      });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() => __S(340, __c42, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListRecordingRulesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          delegatable: S.optional(S.Boolean.pipe(T.Query())),
-          includeHidden: S.optional(S.Boolean.pipe(T.Query())),
-          targetOrgId: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/access-control/roles", code: 200 })),
-      ).annotate({ identifier: "ListRolesRequest" });
-    case 7:
-      return S.Array(__S(91, __c11, 3));
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(343, __c42, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListRolesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/search/sorting", code: 200 })),
-      ).annotate({ identifier: "ListSortOptionsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          meta: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListSortOptionsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.Number.pipe(T.Label()),
-          targetOrgId: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/access-control/teams/{teamId}/roles", code: 200 })),
-      ).annotate({ identifier: "ListTeamRolesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          includeHidden: S.optional(S.Boolean),
-          orgId: S.optional(S.Number),
-          teamIds: S.optional(__S(169, __c21, 1)),
-          userIds: S.optional(__S(169, __c21, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/access-control/teams/roles/search", code: 200 })),
-      ).annotate({ identifier: "ListTeamsRolesRequest" });
-    case 5:
-      return S.Record(S.String, __S(343, __c42, 7));
-    case 6:
-      return S.suspend(() => __S(349, __c43, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListTeamsRolesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccountId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/serviceaccounts/{serviceAccountId}/tokens", code: 200 }),
-        ),
-      ).annotate({ identifier: "ListTokensRequest" });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.String),
-          expiration: S.optional(S.String),
-          hasExpired: S.optional(S.Boolean),
-          id: S.optional(S.Number),
-          isRevoked: S.optional(S.Boolean),
-          lastUsedAt: S.optional(S.String),
-          name: S.optional(S.String),
-          secondsUntilExpiration: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TokenDTO" });
-    case 1:
-      return S.Array(__S(352, __c44, 0));
-    case 2:
-      return S.suspend(() => __S(353, __c44, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListTokensResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.Number.pipe(T.Label()),
-          includeHidden: S.optional(S.Boolean.pipe(T.Query())),
-          targetOrgId: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/access-control/users/{userId}/roles", code: 200 })),
-      ).annotate({ identifier: "ListUserRolesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          includeHidden: S.optional(S.Boolean),
-          orgId: S.optional(S.Number),
-          teamIds: S.optional(__S(169, __c21, 1)),
-          userIds: S.optional(__S(169, __c21, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/access-control/users/roles/search", code: 200 })),
-      ).annotate({ identifier: "ListUsersRolesRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          annotationId: S.optional(S.Number),
-          dashboardId: S.optional(S.Number),
-          dashboardUID: S.optional(S.String),
-          panelId: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/annotations/mass-delete", code: 200 })),
-      ).annotate({
-        identifier: "MassDeleteAnnotationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String.pipe(T.Label()),
-          settings: S.optional(__S(49, __c6, 1)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/sso-settings/{key}", code: 200 })),
-      ).annotate({
-        identifier: "PatchProviderSettingsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          query_history_uid: S.String.pipe(T.Label()),
-          comment: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/query-history/{query_history_uid}", code: 200 })),
-      ).annotate({ identifier: "PatchQueryCommentRequest" });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          RelayState: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/saml/acs", code: 200 })),
-      ).annotate({ identifier: "PostACSRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.String),
-          tags: S.optional(S.Unknown),
-          what: S.optional(S.String),
-          when: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/annotations/graphite", code: 200 })),
-      ).annotate({
-        identifier: "PostGraphiteAnnotationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "PostGraphiteAnnotationResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          instance: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/licensing/token", code: 200 })),
-      ).annotate({ identifier: "PostLicenseTokenRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/licensing/token/renew", code: 200 })),
-      ).annotate({
-        identifier: "PostRenewLicenseTokenRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
-        identifier: "PostRenewLicenseTokenResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          SAMLRequest: S.optional(S.String.pipe(T.Query())),
-          SAMLResponse: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/saml/slo", code: 200 })),
-      ).annotate({ identifier: "PostSLORequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/admin/ldap/sync/{user_id}", code: 200 })),
-      ).annotate({
-        identifier: "PostSyncUserWithLDAPRequest",
-      });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          debug: S.optional(S.Boolean),
-          from: S.String,
-          queries: __S(368, __c46, 0),
-          to: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/ds/query", code: 200 })),
-      ).annotate({
-        identifier: "QueryMetricsWithExpressionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-          field: S.optional(S.String),
-          mapValue: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkTransformationConfig" });
-    case 3:
-      return S.Array(__S(370, __c46, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          datasourceName: S.optional(S.String),
-          datasourceUid: S.optional(S.String),
-          panelsState: S.optional(S.Unknown),
-          query: S.optional(S.Unknown),
-          timeRange: S.optional(__S(79, __c9, 7)),
-          transformations: S.optional(__S(371, __c46, 3)),
-        }),
-      ).annotate({ identifier: "InternalDataLink" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          internal: S.optional(__S(372, __c46, 4)),
-          targetBlank: S.optional(S.Boolean),
-          title: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataLink" });
-    case 6:
-      return S.Array(__S(373, __c46, 5));
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          color: S.optional(S.String),
-          state: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Threshold" });
-    case 1:
-      return S.Array(__S(376, __c47, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          steps: S.optional(__S(377, __c47, 1)),
-        }),
-      ).annotate({ identifier: "ThresholdsConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          color: S.optional(__S(44, __c5, 4)),
-          description: S.optional(__S(44, __c5, 4)),
-          icon: S.optional(__S(44, __c5, 4)),
-          text: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "EnumFieldConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enum: S.optional(__S(379, __c47, 3)),
-        }),
-      ).annotate({ identifier: "FieldTypeConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          color: S.optional(__S(49, __c6, 1)),
-          custom: S.optional(__S(49, __c6, 1)),
-          decimals: S.optional(S.Number),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          displayNameFromDS: S.optional(S.String),
-          filterable: S.optional(S.Boolean),
-          interval: S.optional(S.Number),
-          links: S.optional(__S(374, __c46, 6)),
-          mappings: S.optional(__S(375, __c46, 7)),
-          max: S.optional(S.Number),
-          min: S.optional(S.Number),
-          noValue: S.optional(S.String),
-          path: S.optional(S.String),
-          thresholds: S.optional(__S(378, __c47, 2)),
-          type: S.optional(__S(380, __c47, 4)),
-          unit: S.optional(S.String),
-          writeable: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "FieldConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(__S(381, __c47, 5)),
-          labels: S.optional(__S(0, __c0, 0)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Field" });
-    case 7:
-      return S.Array(__S(382, __c47, 6));
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          inspect: S.optional(S.Number),
-          link: S.optional(S.String),
-          severity: S.optional(S.Number),
-          text: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Notice" });
-    case 1:
-      return S.Array(__S(384, __c48, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          color: S.optional(__S(49, __c6, 1)),
-          custom: S.optional(__S(49, __c6, 1)),
-          decimals: S.optional(S.Number),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          displayNameFromDS: S.optional(S.String),
-          filterable: S.optional(S.Boolean),
-          interval: S.optional(S.Number),
-          links: S.optional(__S(374, __c46, 6)),
-          mappings: S.optional(__S(375, __c46, 7)),
-          max: S.optional(S.Number),
-          min: S.optional(S.Number),
-          noValue: S.optional(S.String),
-          path: S.optional(S.String),
-          thresholds: S.optional(__S(378, __c47, 2)),
-          type: S.optional(__S(380, __c47, 4)),
-          unit: S.optional(S.String),
-          value: S.optional(S.Number),
-          writeable: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "QueryStat" });
-    case 3:
-      return S.Array(__S(386, __c48, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.optional(S.String),
-          custom: S.optional(S.Unknown),
-          dataTopic: S.optional(S.String),
-          executedQueryString: S.optional(S.String),
-          notices: S.optional(__S(385, __c48, 1)),
-          path: S.optional(S.String),
-          pathSeparator: S.optional(S.String),
-          preferredVisualisationPluginId: S.optional(S.String),
-          preferredVisualisationType: S.optional(S.String),
-          stats: S.optional(__S(387, __c48, 3)),
-          type: S.optional(S.String),
-          typeVersion: S.optional(__S(169, __c21, 1)),
-          uniqueRowIdFields: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({ identifier: "FrameMeta" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Fields: S.optional(__S(383, __c47, 7)),
-          Meta: S.optional(__S(388, __c48, 4)),
-          Name: S.optional(S.String),
-          RefID: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Frame" });
-    case 6:
-      return S.Array(__S(389, __c48, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Error: S.optional(S.String),
-          ErrorSource: S.optional(S.String),
-          Frames: S.optional(__S(390, __c48, 6)),
-          Status: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DataResponse" });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(391, __c48, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(392, __c49, 0)),
-        }),
-      ).annotate({ identifier: "QueryDataResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accessToken: S.String.pipe(T.Label()),
-          panelId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/public/dashboards/{accessToken}/panels/{panelId}/query",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "QueryPublicDashboardRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/licensing/refresh-stats", code: 200 })),
-      ).annotate({
-        identifier: "RefreshLicenseStatsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          active_admins_and_editors: S.optional(S.Number),
-          active_anonymous_devices: S.optional(S.Number),
-          active_users: S.optional(S.Number),
-          active_viewers: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ActiveUserStats" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/admin/ldap/reload", code: 200 })),
-      ).annotate({ identifier: "ReloadLDAPCfgRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org_id: S.Number.pipe(T.Label()),
-          user_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org_id}/users/{user_id}", code: 200 })),
-      ).annotate({ identifier: "RemoveOrgUserRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/org/users/{user_id}", code: 200 })),
-      ).annotate({
-        identifier: "RemoveOrgUserForCurrentOrgRequest",
-      });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/sso-settings/{key}", code: 200 })),
-      ).annotate({
-        identifier: "RemoveProviderSettingsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.String.pipe(T.Label()),
-          groupId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/teams/{teamId}/groups", code: 200 })),
-      ).annotate({
-        identifier: "RemoveTeamGroupApiQueryRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String.pipe(T.Label()),
-          user_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/teams/{team_id}/members/{user_id}", code: 200 })),
-      ).annotate({ identifier: "RemoveTeamMemberRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.Number.pipe(T.Label()),
-          roleUID: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/access-control/teams/{teamId}/roles/{roleUID}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "RemoveTeamRoleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.Number.pipe(T.Label()),
-          roleUID: S.String.pipe(T.Label()),
-          global: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/access-control/users/{userId}/roles/{roleUID}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "RemoveUserRoleRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dashboards: S.optional(S.String.pipe(T.Query())),
-          title: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/reports/render/csvs", code: 200 })),
-      ).annotate({ identifier: "RenderReportCSVsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dashboards: S.optional(S.String.pipe(T.Query())),
-          orientation: S.optional(S.String.pipe(T.Query())),
-          layout: S.optional(S.String.pipe(T.Query())),
-          title: S.optional(S.String.pipe(T.Query())),
-          scaleFactor: S.optional(S.String.pipe(T.Query())),
-          includeTables: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/reports/render/pdfs", code: 200 })),
-      ).annotate({ identifier: "RenderReportPDFsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          invitation_code: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/org/invites/{invitation_code}/revoke", code: 200 }),
-        ),
-      ).annotate({ identifier: "RevokeInviteRequest" });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authTokenId: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/user/revoke-auth-token", code: 200 })),
-      ).annotate({
-        identifier: "RevokeUserAuthTokenRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          NamespaceTitle: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/convert/api/prom/rules/{NamespaceTitle}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RouteConvertPrometheusCortexDeleteNamespaceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          NamespaceTitle: S.String.pipe(T.Label()),
-          Group: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/convert/api/prom/rules/{NamespaceTitle}/{Group}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RouteConvertPrometheusCortexDeleteRuleGroupRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          NamespaceTitle: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/convert/api/prom/rules/{NamespaceTitle}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RouteConvertPrometheusCortexGetNamespaceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          NamespaceTitle: S.String.pipe(T.Label()),
-          Group: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/convert/api/prom/rules/{NamespaceTitle}/{Group}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RouteConvertPrometheusCortexGetRuleGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/convert/api/prom/rules", code: 200 })),
-      ).annotate({
-        identifier: "RouteConvertPrometheusCortexGetRulesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          NamespaceTitle: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/convert/api/prom/rules/{NamespaceTitle}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RouteConvertPrometheusCortexPostRuleGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/convert/api/prom/rules", code: 200 })),
-      ).annotate({
-        identifier: "RouteConvertPrometheusCortexPostRuleGroupsRequest",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          NamespaceTitle: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RouteConvertPrometheusDeleteNamespaceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          NamespaceTitle: S.String.pipe(T.Label()),
-          Group: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}/{Group}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RouteConvertPrometheusDeleteRuleGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          NamespaceTitle: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RouteConvertPrometheusGetNamespaceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          NamespaceTitle: S.String.pipe(T.Label()),
-          Group: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}/{Group}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RouteConvertPrometheusGetRuleGroupRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/convert/prometheus/config/v1/rules", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RouteConvertPrometheusGetRulesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          NamespaceTitle: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/convert/prometheus/config/v1/rules/{NamespaceTitle}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RouteConvertPrometheusPostRuleGroupRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "POST", uri: "/convert/prometheus/config/v1/rules", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RouteConvertPrometheusPostRuleGroupsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          download: S.optional(S.Boolean.pipe(T.Query())),
-          format: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/provisioning/mute-timings/{name}/export", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RouteExportMuteTimingRequest",
-      });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          disableResolveMessage: S.optional(S.Boolean),
-          settings: S.optional(S.Unknown),
-          type: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReceiverExport" });
-    case 1:
-      return S.Array(__S(424, __c53, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          orgId: S.optional(S.Number),
-          receivers: S.optional(__S(425, __c53, 1)),
-        }),
-      ).annotate({ identifier: "ContactPointExport" });
-    case 3:
-      return S.Array(__S(426, __c53, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          from: S.optional(S.Number),
-          to: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RelativeTimeRangeExport" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          datasourceUid: S.optional(S.String),
-          model: S.optional(__S(49, __c6, 1)),
-          queryType: S.optional(S.String),
-          refId: S.optional(S.String),
-          relativeTimeRange: S.optional(__S(428, __c53, 4)),
-        }),
-      ).annotate({ identifier: "AlertQueryExport" });
-    case 6:
-      return S.Array(__S(429, __c53, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          active_time_intervals: S.optional(__S(44, __c5, 4)),
-          group_by: S.optional(__S(44, __c5, 4)),
-          group_interval: S.optional(S.String),
-          group_wait: S.optional(S.String),
-          mute_time_intervals: S.optional(__S(44, __c5, 4)),
-          receiver: S.optional(S.String),
-          repeat_interval: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AlertRuleNotificationSettingsExport",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          from: S.optional(S.String),
-          metric: S.optional(S.String),
-          targetDatasourceUid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AlertRuleRecordExport" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
-          condition: S.optional(S.String),
-          dashboardUid: S.optional(S.String),
-          data: S.optional(__S(430, __c53, 6)),
-          execErrState: S.optional(S.String),
-          for: S.optional(S.Number),
-          isPaused: S.optional(S.Boolean),
-          keepFiringFor: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          missing_series_evals_to_resolve: S.optional(S.Number),
-          noDataState: S.optional(S.String),
-          notification_settings: S.optional(__S(431, __c53, 7)),
-          panelId: S.optional(S.Number),
-          record: S.optional(__S(432, __c54, 0)),
-          title: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AlertRuleExport" });
-    case 2:
-      return S.Array(__S(433, __c54, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          folder: S.optional(S.String),
-          interval: S.optional(S.Number),
-          name: S.optional(S.String),
-          orgId: S.optional(S.Number),
-          rules: S.optional(__S(434, __c54, 2)),
-        }),
-      ).annotate({ identifier: "AlertRuleGroupExport" });
-    case 4:
-      return S.Array(__S(435, __c54, 3));
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(438, __c54, 6)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          time_intervals: S.optional(__S(437, __c54, 5)),
-        }),
-      ).annotate({ identifier: "TimeInterval" });
-    case 7:
-      return S.Array(__S(438, __c54, 6));
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          orgId: S.optional(S.Number),
-          time_intervals: S.optional(__S(439, __c54, 7)),
-        }),
-      ).annotate({ identifier: "MuteTimeIntervalExport" });
-    case 1:
-      return S.Array(__S(440, __c55, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Type: S.optional(S.Number),
-          Value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Matcher" });
-    case 3:
-      return S.Array(__S(442, __c55, 2));
-    case 4:
-      return S.Array(__S(175, __c21, 7));
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(446, __c55, 6)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          active_time_intervals: S.optional(__S(44, __c5, 4)),
-          continue: S.optional(S.Boolean),
-          group_by: S.optional(__S(44, __c5, 4)),
-          group_interval: S.optional(S.String),
-          group_wait: S.optional(S.String),
-          match: S.optional(__S(0, __c0, 0)),
-          match_re: S.optional(__S(0, __c0, 0)),
-          matchers: S.optional(__S(443, __c55, 3)),
-          mute_time_intervals: S.optional(__S(44, __c5, 4)),
-          object_matchers: S.optional(__S(444, __c55, 4)),
-          receiver: S.optional(S.String),
-          repeat_interval: S.optional(S.String),
-          routes: S.optional(__S(445, __c55, 5)),
-        }),
-      ).annotate({ identifier: "RouteExport" });
-    case 7:
-      return S.Array(__S(446, __c55, 6));
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          active_time_intervals: S.optional(__S(44, __c5, 4)),
-          continue: S.optional(S.Boolean),
-          group_by: S.optional(__S(44, __c5, 4)),
-          group_interval: S.optional(S.String),
-          group_wait: S.optional(S.String),
-          match: S.optional(__S(0, __c0, 0)),
-          match_re: S.optional(__S(0, __c0, 0)),
-          matchers: S.optional(__S(443, __c55, 3)),
-          mute_time_intervals: S.optional(__S(44, __c5, 4)),
-          object_matchers: S.optional(__S(444, __c55, 4)),
-          orgId: S.optional(S.Number),
-          receiver: S.optional(S.String),
-          repeat_interval: S.optional(S.String),
-          routes: S.optional(__S(447, __c55, 7)),
-        }),
-      ).annotate({ identifier: "NotificationPolicyExport" });
-    case 1:
-      return S.Array(__S(448, __c56, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.Number),
-          contactPoints: S.optional(__S(427, __c53, 3)),
-          groups: S.optional(__S(436, __c54, 4)),
-          muteTimes: S.optional(__S(441, __c55, 1)),
-          policies: S.optional(__S(449, __c56, 1)),
-        }),
-      ).annotate({ identifier: "AlertingFileExport" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          download: S.optional(S.Boolean.pipe(T.Query())),
-          format: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/provisioning/mute-timings/export", code: 200 })),
-      ).annotate({
-        identifier: "RouteExportMuteTimingsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          UID: S.String.pipe(T.Label()),
-          download: S.optional(S.Boolean.pipe(T.Query())),
-          format: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/provisioning/alert-rules/{UID}/export", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RouteGetAlertRuleExportRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          FolderUID: S.String.pipe(T.Label()),
-          Group: S.String.pipe(T.Label()),
-          download: S.optional(S.Boolean.pipe(T.Query())),
-          format: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/provisioning/folder/{FolderUID}/rule-groups/{Group}/export",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RouteGetAlertRuleGroupExportRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          download: S.optional(S.Boolean.pipe(T.Query())),
-          format: S.optional(S.String.pipe(T.Query())),
-          folderUid: S.optional(__S(44, __c5, 4).pipe(T.Query())),
-          group: S.optional(S.String.pipe(T.Query())),
-          ruleUid: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/provisioning/alert-rules/export", code: 200 })),
-      ).annotate({
-        identifier: "RouteGetAlertRulesExportRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          download: S.optional(S.Boolean.pipe(T.Query())),
-          format: S.optional(S.String.pipe(T.Query())),
-          decrypt: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/provisioning/contact-points/export", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RouteGetContactpointsExportRequest",
-      });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/v1/provisioning/policies/export", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RouteGetPolicyTreeExportRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          branding: S.optional(__S(240, __c30, 0)),
-          embeddedImageTheme: S.optional(S.String),
-          footerFontFamily: S.optional(S.String),
-          footerItems: S.optional(__S(242, __c30, 2)),
-          id: S.optional(S.Number),
-          orgId: S.optional(S.Number),
-          pdfDashboardTitleEnabled: S.optional(S.Boolean),
-          pdfHeaderEnabled: S.optional(S.Boolean),
-          pdfTheme: S.optional(S.String),
-          pdfTimeRangeEnabled: S.optional(S.Boolean),
-          userId: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/reports/settings", code: 200 })),
-      ).annotate({
-        identifier: "SaveReportSettingsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          tag: S.optional(__S(44, __c5, 4).pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          dashboardIds: S.optional(__S(169, __c21, 1).pipe(T.Query())),
-          dashboardUIDs: S.optional(__S(44, __c5, 4).pipe(T.Query())),
-          folderIds: S.optional(__S(169, __c21, 1).pipe(T.Query())),
-          folderUIDs: S.optional(__S(44, __c5, 4).pipe(T.Query())),
-          starred: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          permission: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          deleted: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/search", code: 200 })),
-      ).annotate({ identifier: "SearchRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          folderId: S.optional(S.Number),
-          folderTitle: S.optional(S.String),
-          folderUid: S.optional(S.String),
-          folderUrl: S.optional(S.String),
-          id: S.optional(S.Number),
-          isDeleted: S.optional(S.Boolean),
-          isStarred: S.optional(S.Boolean),
-          orgId: S.optional(S.Number),
-          permanentlyDeleteDate: S.optional(S.String),
-          slug: S.optional(S.String),
-          sortMeta: S.optional(S.Number),
-          sortMetaName: S.optional(S.String),
-          tags: S.optional(__S(175, __c21, 7)),
-          title: S.optional(S.String),
-          type: S.optional(S.String),
-          uid: S.optional(S.String),
-          uri: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Hit" });
-    case 4:
-      return S.Array(__S(459, __c57, 3));
-    case 5:
-      return S.suspend(() => __S(460, __c57, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "SearchResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/dashboard/snapshots", code: 200 })),
-      ).annotate({
-        identifier: "SearchDashboardSnapshotsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.String),
-          expires: S.optional(S.String),
-          external: S.optional(S.Boolean),
-          externalUrl: S.optional(S.String),
-          key: S.optional(S.String),
-          name: S.optional(S.String),
-          updated: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DashboardSnapshotDTO" });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(463, __c57, 7));
-    case 1:
-      return S.suspend(() => __S(464, __c58, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "SearchDashboardSnapshotsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/anonymous/search", code: 200 })),
-      ).annotate({ identifier: "SearchDevicesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          clientIp: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          deviceId: S.optional(S.String),
-          lastSeenAt: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-          userAgent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeviceSearchHitDTO" });
-    case 4:
-      return S.Array(__S(467, __c58, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          devices: S.optional(__S(468, __c58, 4)),
-          page: S.optional(S.Number),
-          perPage: S.optional(S.Number),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SearchDeviceQueryResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          perpage: S.optional(S.Number.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs", code: 200 })),
-      ).annotate({ identifier: "SearchOrgsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OrgDTO" });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(471, __c58, 7));
-    case 1:
-      return S.suspend(() => __S(472, __c59, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "SearchOrgsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Disabled: S.optional(S.Boolean.pipe(T.Query())),
-          expiredTokens: S.optional(S.Boolean.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          perpage: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/serviceaccounts/search", code: 200 })),
-      ).annotate({
-        identifier: "SearchOrgServiceAccountsWithPagingRequest",
-      });
-    case 3:
-      return S.Array(__S(93, __c11, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number),
-          perPage: S.optional(S.Number),
-          serviceAccounts: S.optional(__S(475, __c59, 3)),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SearchOrgServiceAccountsResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          org_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org_id}/users/search", code: 200 })),
-      ).annotate({ identifier: "SearchOrgUsersRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          orgUsers: S.optional(__S(209, __c26, 1)),
-          page: S.optional(S.Number),
-          perPage: S.optional(S.Number),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SearchOrgUsersQueryResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          datasourceUid: S.optional(__S(44, __c5, 4).pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          onlyStarred: S.optional(S.Boolean.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          from: S.optional(S.Number.pipe(T.Query())),
-          to: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/query-history", code: 200 })),
-      ).annotate({ identifier: "SearchQueriesRequest" });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number),
-          perPage: S.optional(S.Number),
-          queryHistory: S.optional(__S(480, __c60, 0)),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QueryHistorySearchResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          result: S.optional(__S(481, __c60, 1)),
-        }),
-      ).annotate({
-        identifier: "QueryHistorySearchResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.Number.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perpage: S.optional(S.Number.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/teams/{teamId}/groups/search", code: 200 })),
-      ).annotate({ identifier: "SearchTeamGroupsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number),
-          perPage: S.optional(S.Number),
-          teamGroups: S.optional(__S(298, __c37, 2)),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SearchTeamGroupsQueryResult",
-      });
-    case 5:
-      return S.Array(__S(484, __c60, 4));
-    case 6:
-      return S.suspend(() => __S(485, __c60, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "SearchTeamGroupsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          perpage: S.optional(S.Number.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          accesscontrol: S.optional(S.Boolean.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/teams/search", code: 200 })),
-      ).annotate({ identifier: "SearchTeamsRequest" });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number),
-          perPage: S.optional(S.Number),
-          teams: S.optional(__S(279, __c34, 7)),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SearchTeamQueryResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          perpage: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
-      ).annotate({ identifier: "SearchUsersRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accessControl: S.optional(__S(3, __c0, 3)),
-          authLabels: S.optional(__S(44, __c5, 4)),
-          avatarUrl: S.optional(S.String),
-          created: S.optional(S.String),
-          email: S.optional(S.String),
-          id: S.optional(S.Number),
-          isAdmin: S.optional(S.Boolean),
-          isDisabled: S.optional(S.Boolean),
-          isProvisioned: S.optional(S.Boolean),
-          lastSeenAt: S.optional(S.String),
-          lastSeenAtAge: S.optional(S.String),
-          login: S.optional(S.String),
-          name: S.optional(S.String),
-          role: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserSearchHitDTO" });
-    case 3:
-      return S.Array(__S(490, __c61, 2));
-    case 4:
-      return S.suspend(() => __S(491, __c61, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "SearchUsersResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/search", code: 200 })),
-      ).annotate({
-        identifier: "SearchUsersWithPagingRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number),
-          perPage: S.optional(S.Number),
-          totalCount: S.optional(S.Number),
-          users: S.optional(__S(491, __c61, 3)),
-        }),
-      ).annotate({ identifier: "SearchUserQueryResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          emails: S.optional(S.String),
-          id: S.optional(S.String),
-          useEmailsFromReport: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/reports/email", code: 200 })),
-      ).annotate({ identifier: "SendReportRequest" });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dashboards: S.optional(__S(81, __c10, 1)),
-          enableCsv: S.optional(S.Boolean),
-          enableDashboardUrl: S.optional(S.Boolean),
-          formats: S.optional(__S(44, __c5, 4)),
-          message: S.optional(S.String),
-          name: S.optional(S.String),
-          options: S.optional(__S(82, __c10, 2)),
-          recipients: S.optional(S.String),
-          replyTo: S.optional(S.String),
-          scaleFactor: S.optional(S.Number),
-          schedule: S.optional(__S(83, __c10, 3)),
-          state: S.optional(S.String),
-          subject: S.optional(S.String),
-          urls: S.optional(__S(85, __c10, 5)),
-        }).pipe(T.Http({ method: "POST", uri: "/reports/test-email", code: 200 })),
-      ).annotate({ identifier: "SendTestEmailRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dataSourceUID: S.String.pipe(T.Label()),
-          dataSourceType: S.optional(S.String.pipe(T.Query())),
-          dataSourceID: S.optional(S.Number),
-          enabled: S.optional(S.Boolean),
-          ttlQueriesMs: S.optional(S.Number),
-          ttlResourcesMs: S.optional(S.Number),
-          useDefaultTTL: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/datasources/{dataSourceUID}/cache", code: 200 })),
-      ).annotate({
-        identifier: "SetDataSourceCacheConfigRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          builtInRole: S.optional(S.String),
-          permission: S.optional(S.String),
-          teamId: S.optional(S.Number),
-          userId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SetResourcePermissionCommand",
-      });
-    case 3:
-      return S.Array(__S(498, __c62, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          resourceID: S.String.pipe(T.Label()),
-          permissions: S.optional(__S(499, __c62, 3)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/access-control/{resource}/{resourceID}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "SetResourcePermissionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          resourceID: S.String.pipe(T.Label()),
-          builtInRole: S.String.pipe(T.Label()),
-          permission: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/access-control/{resource}/{resourceID}/builtInRoles/{builtInRole}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SetResourcePermissionsForBuiltInRoleRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          resourceID: S.String.pipe(T.Label()),
-          teamID: S.Number.pipe(T.Label()),
-          permission: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/access-control/{resource}/{resourceID}/teams/{teamID}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SetResourcePermissionsForTeamRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          resourceID: S.String.pipe(T.Label()),
-          userID: S.Number.pipe(T.Label()),
-          permission: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/access-control/{resource}/{resourceID}/users/{userID}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SetResourcePermissionsForUserRequest",
-      });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          roleUID: S.String.pipe(T.Label()),
-          service_accounts: S.optional(__S(169, __c21, 1)),
-          teams: S.optional(__S(169, __c21, 1)),
-          users: S.optional(__S(169, __c21, 1)),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/access-control/roles/{roleUID}/assignments", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "SetRoleAssignmentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String.pipe(T.Label()),
-          admins: S.optional(__S(44, __c5, 4)),
-          members: S.optional(__S(44, __c5, 4)),
-        }).pipe(T.Http({ method: "PUT", uri: "/teams/{team_id}/members", code: 200 })),
-      ).annotate({
-        identifier: "SetTeamMembershipsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.Number.pipe(T.Label()),
-          targetOrgId: S.optional(S.Number.pipe(T.Query())),
-          includeHidden: S.optional(S.Boolean),
-          roleUids: S.optional(__S(44, __c5, 4)),
-        }).pipe(T.Http({ method: "PUT", uri: "/access-control/teams/{teamId}/roles", code: 200 })),
-      ).annotate({ identifier: "SetTeamRolesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.Number.pipe(T.Label()),
-          targetOrgId: S.optional(S.Number.pipe(T.Query())),
-          global: S.optional(S.Boolean),
-          includeHidden: S.optional(S.Boolean),
-          roleUids: S.optional(__S(44, __c5, 4)),
-        }).pipe(T.Http({ method: "PUT", uri: "/access-control/users/{userId}/roles", code: 200 })),
-      ).annotate({ identifier: "SetUserRolesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          query_history_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/query-history/star/{query_history_uid}", code: 200 }),
-        ),
-      ).annotate({ identifier: "StarQueryRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.optional(S.Boolean),
-          count: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          dest_data_source_uid: S.optional(S.String),
-          id: S.optional(S.String),
-          interval: S.optional(S.Number),
-          name: S.optional(S.String),
-          prom_name: S.optional(S.String),
-          queries: S.optional(__S(73, __c9, 1)),
-          range: S.optional(S.Number),
-          target_ref_id: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/recording-rules/test", code: 200 })),
-      ).annotate({
-        identifier: "TestCreateRecordingRuleRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          query_history_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/query-history/star/{query_history_uid}", code: 200 }),
-        ),
-      ).annotate({ identifier: "UnstarQueryRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          annotation_id: S.String.pipe(T.Label()),
-          data: S.optional(S.Unknown),
-          id: S.optional(S.Number),
-          tags: S.optional(__S(44, __c5, 4)),
-          text: S.optional(S.String),
-          time: S.optional(S.Number),
-          timeEnd: S.optional(S.Number),
-        }).pipe(T.Http({ method: "PUT", uri: "/annotations/{annotation_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateAnnotationRequest" });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          annotation_id: S.String.pipe(T.Label()),
-          data: S.optional(S.Unknown),
-          id: S.optional(S.Number),
-          tags: S.optional(__S(44, __c5, 4)),
-          text: S.optional(S.String),
-          time: S.optional(S.Number),
-          timeEnd: S.optional(S.Number),
-        }).pipe(T.Http({ method: "PATCH", uri: "/annotations/{annotation_id}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateAnnotationByAnnotationIdRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          target: S.optional(__S(49, __c6, 1)),
-          transformations: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "CorrelationConfigUpdateDTO",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sourceUID: S.String.pipe(T.Label()),
-          correlationUID: S.String.pipe(T.Label()),
-          config: S.optional(__S(513, __c64, 1)),
-          description: S.optional(S.String),
-          label: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/datasources/uid/{sourceUID}/correlations/{correlationUID}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "UpdateCorrelationRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/org", code: 200 })),
-      ).annotate({ identifier: "UpdateCurrentOrgRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          address1: S.optional(S.String),
-          address2: S.optional(S.String),
-          city: S.optional(S.String),
-          country: S.optional(S.String),
-          state: S.optional(S.String),
-          zipcode: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/org/address", code: 200 })),
-      ).annotate({
-        identifier: "UpdateCurrentOrgAddressRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.String.pipe(T.Label()),
-          access: S.optional(S.String),
-          basicAuth: S.optional(S.Boolean),
-          basicAuthUser: S.optional(S.String),
-          database: S.optional(S.String),
-          isDefault: S.optional(S.Boolean),
-          jsonData: S.optional(S.Unknown),
-          name: S.optional(S.String),
-          secureJsonData: S.optional(__S(0, __c0, 0)),
-          type: S.optional(S.String),
-          url: S.optional(S.String),
-          user: S.optional(S.String),
-          version: S.optional(S.Number),
-          withCredentials: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/datasources/uid/{uid}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateDataSourceByUIDRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          datasource: __S(4, __c0, 4),
-          id: S.Number,
-          message: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "UpdateDataSourceByUIDResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          permission: S.optional(S.Number),
-          role: S.optional(S.String),
-          teamId: S.optional(S.Number),
-          userId: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DashboardACLUpdateItem" });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(519, __c64, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          folder_uid: S.String.pipe(T.Label()),
-          items: S.optional(__S(520, __c65, 0)),
-        }).pipe(T.Http({ method: "POST", uri: "/folders/{folder_uid}/permissions", code: 200 })),
-      ).annotate({
-        identifier: "UpdateFolderPermissionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          library_element_uid: S.String.pipe(T.Label()),
-          folderId: S.optional(S.Number),
-          folderUid: S.optional(S.String),
-          kind: S.optional(S.Number),
-          model: S.optional(S.Unknown),
-          name: S.optional(S.String),
-          uid: S.optional(S.String),
-          version: S.optional(S.Number),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/library-elements/{library_element_uid}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateLibraryElementRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org_id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateOrgRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org_id: S.Number.pipe(T.Label()),
-          address1: S.optional(S.String),
-          address2: S.optional(S.String),
-          city: S.optional(S.String),
-          country: S.optional(S.String),
-          state: S.optional(S.String),
-          zipcode: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org_id}/address", code: 200 })),
-      ).annotate({ identifier: "UpdateOrgAddressRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          org_id: S.Number.pipe(T.Label()),
-          quota_target: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number),
-          target: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org_id}/quotas/{quota_target}", code: 200 })),
-      ).annotate({ identifier: "UpdateOrgQuotaRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org_id: S.Number.pipe(T.Label()),
-          user_id: S.Number.pipe(T.Label()),
-          role: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org_id}/users/{user_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateOrgUserRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number.pipe(T.Label()),
-          role: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/org/users/{user_id}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateOrgUserForCurrentOrgRequest",
-      });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String.pipe(T.Label()),
-          id: S.optional(S.String),
-          provider: S.optional(S.String),
-          settings: S.optional(__S(49, __c6, 1)),
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/sso-settings/{key}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateProviderSettingsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dashboardUid: S.String.pipe(T.Label()),
-          uid: S.String.pipe(T.Label()),
-          accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          annotationsEnabled: S.optional(S.Boolean),
-          isEnabled: S.optional(S.Boolean),
-          share: S.optional(S.String),
-          timeSelectionEnabled: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/dashboards/uid/{dashboardUid}/public-dashboards/{uid}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdatePublicDashboardRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.optional(S.Boolean),
-          count: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          dest_data_source_uid: S.optional(S.String),
-          id: S.optional(S.String),
-          interval: S.optional(S.Number),
-          name: S.optional(S.String),
-          prom_name: S.optional(S.String),
-          queries: S.optional(__S(73, __c9, 1)),
-          range: S.optional(S.Number),
-          target_ref_id: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/recording-rules", code: 200 })),
-      ).annotate({
-        identifier: "UpdateRecordingRuleRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          roleUID: S.String.pipe(T.Label()),
-          description: S.String,
-          displayName: S.String,
-          global: S.optional(S.Boolean),
-          group: S.String,
-          hidden: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          permissions: S.optional(__S(89, __c11, 1)),
-        }).pipe(T.Http({ method: "PUT", uri: "/access-control/roles/{roleUID}", code: 200 })),
-      ).annotate({ identifier: "UpdateRoleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccountId: S.Number.pipe(T.Label()),
-          isDisabled: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          role: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/serviceaccounts/{serviceAccountId}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateServiceAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accessControl: S.optional(__S(3, __c0, 3)),
-          avatarUrl: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          id: S.optional(S.Number),
-          isDisabled: S.optional(S.Boolean),
-          isExternal: S.optional(S.Boolean),
-          login: S.optional(S.String),
-          name: S.optional(S.String),
-          orgId: S.optional(S.Number),
-          requiredBy: S.optional(S.String),
-          role: S.optional(S.String),
-          teams: S.optional(__S(44, __c5, 4)),
-          tokens: S.optional(S.Number),
-          uid: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceAccountProfileDTO" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          message: S.optional(S.String),
-          name: S.optional(S.String),
-          serviceaccount: S.optional(__S(533, __c66, 5)),
-        }),
-      ).annotate({
-        identifier: "UpdateServiceAccountResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          login: S.optional(S.String),
-          name: S.optional(S.String),
-          theme: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/user", code: 200 })),
-      ).annotate({
-        identifier: "UpdateSignedInUserRequest",
-      });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String.pipe(T.Label()),
-          email: S.optional(S.String),
-          name: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/teams/{team_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateTeamRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.String.pipe(T.Label()),
-          rules: S.optional(__S(302, __c37, 6)),
-        }).pipe(T.Http({ method: "PUT", uri: "/datasources/uid/{uid}/lbac/teams", code: 200 })),
-      ).annotate({
-        identifier: "UpdateTeamLBACRulesApiRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          message: S.optional(S.String),
-          name: S.optional(S.String),
-          rules: S.optional(__S(302, __c37, 6)),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateTeamLBACRulesApiResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String.pipe(T.Label()),
-          user_id: S.Number.pipe(T.Label()),
-          permission: S.optional(S.Number),
-        }).pipe(T.Http({ method: "PUT", uri: "/teams/{team_id}/members/{user_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateTeamMemberRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          bookmarkUrls: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "NavbarPreference" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          homeTab: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QueryHistoryPreference" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String.pipe(T.Label()),
-          homeDashboardId: S.optional(S.Number),
-          homeDashboardUID: S.optional(S.String),
-          language: S.optional(S.String),
-          navbar: S.optional(__S(540, __c67, 4)),
-          queryHistory: S.optional(__S(541, __c67, 5)),
-          theme: S.optional(S.String),
-          timezone: S.optional(S.String),
-          weekStart: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/teams/{team_id}/preferences", code: 200 })),
-      ).annotate({
-        identifier: "UpdateTeamPreferencesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number.pipe(T.Label()),
-          email: S.optional(S.String),
-          login: S.optional(S.String),
-          name: S.optional(S.String),
-          theme: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/users/{user_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateUserRequest" });
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/email/update", code: 200 })),
-      ).annotate({ identifier: "UpdateUserEmailRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number.pipe(T.Label()),
-          quota_target: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number),
-          target: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/admin/users/{user_id}/quotas/{quota_target}", code: 200 }),
-        ),
-      ).annotate({ identifier: "UpdateUserQuotaRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.String.pipe(T.Label()),
-          snapshotUid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/cloudmigration/migration/{uid}/snapshot/{snapshotUid}/upload",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "UploadSnapshotRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/user/using/{org_id}", code: 200 })),
-      ).annotate({ identifier: "UserSetUsingOrgRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accessToken: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/public/dashboards/{accessToken}", code: 200 })),
-      ).annotate({
-        identifier: "ViewPublicDashboardRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

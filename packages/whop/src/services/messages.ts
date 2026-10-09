@@ -280,8 +280,8 @@ export const createMessage: API.OperationMethod<
   CreateMessageError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateMessageRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Message>,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateMessageRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<Message>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -300,8 +300,8 @@ export const deleteMessage: API.OperationMethod<
   DeleteMessageError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteMessageRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteMessageResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteMessageRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<DeleteMessageResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -315,8 +315,8 @@ export const getMessage: API.OperationMethod<
   GetMessageError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetMessageRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Message>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetMessageRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<Message>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -337,8 +337,8 @@ export const listMessage: API.PaginatedOperationMethod<
   MessageListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(19, __c2, 3) as any as S.Schema<ListMessageRequest>,
-    output: __S(22, __c2, 6) as any as S.Schema<ListMessageResponse>,
+    input: __S(80, __c5, 0) as any as S.Schema<ListMessageRequest>,
+    output: __S(83, __c5, 3) as any as S.Schema<ListMessageResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -367,8 +367,8 @@ export const updateMessage: API.OperationMethod<
   UpdateMessageError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<UpdateMessageRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Message>,
+  input: __S(96, __c6, 0) as any as S.Schema<UpdateMessageRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<Message>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -381,71 +381,61 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
+          text: S.String,
         }),
       ).annotate({
-        identifier: "CreateMessageRequestAttachmentsItem",
+        identifier: "CreateMessageRequestPollOptionsItem",
       });
     case 1:
       return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          text: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateMessageRequestPollOptionsItem",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          options: __S(3, __c0, 3),
+          options: __S(1, __c0, 1),
         }),
       ).annotate({ identifier: "CreateMessageRequestPoll" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          attachments: S.optional(S.NullOr(__S(1, __c0, 1))),
+          attachments: S.optional(S.NullOr(__S(33, __c2, 1))),
           auto_detect_links: S.optional(S.NullOr(S.Boolean)),
           channel_id: S.String,
           content: S.String,
-          poll: S.optional(S.NullOr(__S(4, __c0, 4))),
+          poll: S.optional(S.NullOr(__S(2, __c0, 2))),
           replying_to_message_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/messages", code: 200 })),
       ).annotate({ identifier: "CreateMessageRequest" });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           text: S.String,
         }),
       ).annotate({ identifier: "MessagePollOptionsItem" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          options: S.NullOr(__S(8, __c1, 0)),
+          options: S.NullOr(__S(18, __c1, 2)),
         }),
       ).annotate({ identifier: "MessagePoll" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           option_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "MessagePollVotesItem" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(20, __c1, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -454,9 +444,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "MessageReactionCountsItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(22, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -464,7 +454,7 @@ function __c1(j: number): any {
           username: S.String,
         }),
       ).annotate({ identifier: "MessageUser" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           content: S.NullOr(S.String),
@@ -472,21 +462,35 @@ function __c1(j: number): any {
           id: S.String,
           is_edited: S.Boolean,
           is_pinned: S.Boolean,
-          mentions: __S(6, __c0, 6),
+          mentions: __S(16, __c1, 0),
           mentions_everyone: S.Boolean,
           message_type: S.String,
-          poll: S.NullOr(__S(9, __c1, 1)),
-          poll_votes: __S(11, __c1, 3),
-          reaction_counts: __S(13, __c1, 5),
+          poll: S.NullOr(__S(19, __c1, 3)),
+          poll_votes: __S(21, __c1, 5),
+          reaction_counts: __S(23, __c1, 7),
           replying_to_message_id: S.NullOr(S.String),
           updated_at: S.String,
-          user: __S(14, __c1, 6),
+          user: __S(24, __c1, 8),
           view_count: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "Message" });
   }
 }
 function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateMessageRequestAttachmentsItem",
+      });
+    case 1:
+      return S.Array(__S(32, __c2, 0));
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -498,13 +502,21 @@ function __c2(j: number): any {
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteMessageResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/messages/{id}", code: 200 })),
       ).annotate({ identifier: "GetMessageRequest" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -515,9 +527,9 @@ function __c2(j: number): any {
           direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/messages", code: 200 })),
       ).annotate({ identifier: "ListMessageRequest" });
-    case 4:
-      return S.Array(__S(15, __c1, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(25, __c1, 9));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -526,25 +538,28 @@ function __c2(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(20, __c2, 4),
-          page_info: __S(21, __c2, 5),
+          data: __S(81, __c5, 1),
+          page_info: __S(82, __c5, 2),
         }),
       ).annotate({ identifier: "ListMessageResponse" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          attachments: S.optional(S.NullOr(__S(1, __c0, 1))),
+          attachments: S.optional(S.NullOr(__S(33, __c2, 1))),
           content: S.optional(S.NullOr(S.String)),
           is_pinned: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PATCH", uri: "/messages/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateMessageRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

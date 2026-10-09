@@ -124,7 +124,7 @@ export const disableServiceRegional: API.OperationMethod<
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DisableServiceRegionalRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisableServiceRegionalResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<DisableServiceRegionalResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -138,8 +138,8 @@ export const enableServiceRegional: API.OperationMethod<
   EnableServiceRegionalError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<EnableServiceRegionalRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EnableServiceRegionalResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<EnableServiceRegionalRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<EnableServiceRegionalResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -153,8 +153,8 @@ export const getServiceStatusRegional: API.OperationMethod<
   GetServiceStatusRegionalError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetServiceStatusRegionalRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ServiceStatus>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetServiceStatusRegionalRequest>,
+  output: __S(38, __c4, 6) as any as S.Schema<ServiceStatus>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -168,8 +168,8 @@ export const listServiceStatusRegional: API.OperationMethod<
   ListServiceStatusRegionalError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListServiceStatusRegionalRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListServiceStatusRegionalResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListServiceStatusRegionalRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<ListServiceStatusRegionalResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -195,11 +195,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DisableServiceRegionalRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DisableServiceRegionalResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -216,7 +224,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "EnableServiceRegionalRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -233,16 +245,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetServiceStatusRegionalRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          hard: S.optional(__S(4, __c0, 4)),
-          soft: S.optional(__S(4, __c0, 4)),
+          hard: S.optional(__S(32, __c4, 0)),
+          soft: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "Dependencies" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -250,13 +266,9 @@ function __c0(j: number): any {
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionError" });
-    case 7:
+    case 3:
       return S.Record(S.String, S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.optional(S.String),
@@ -264,27 +276,31 @@ function __c1(j: number): any {
           projectScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "ParametersGeneral" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          general: S.optional(__S(8, __c1, 0)),
+          general: S.optional(__S(36, __c4, 4)),
         }),
       ).annotate({ identifier: "Parameters" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          dependencies: S.optional(__S(5, __c0, 5)),
+          dependencies: S.optional(__S(33, __c4, 1)),
           enablement: S.optional(S.String),
-          error: S.optional(__S(6, __c0, 6)),
-          labels: S.optional(__S(7, __c0, 7)),
+          error: S.optional(__S(34, __c4, 2)),
+          labels: S.optional(__S(35, __c4, 3)),
           lifecycle: S.optional(S.String),
-          parameters: S.optional(__S(9, __c1, 1)),
+          parameters: S.optional(__S(37, __c4, 5)),
           scope: S.optional(S.String),
           serviceId: S.optional(S.String),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceStatus" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -301,12 +317,12 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListServiceStatusRegionalRequest",
       });
-    case 4:
-      return S.Array(__S(10, __c1, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(38, __c4, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(12, __c1, 4)),
+          items: S.optional(__S(41, __c5, 1)),
           nextCursor: S.optional(S.String),
         }),
       ).annotate({
@@ -314,7 +330,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

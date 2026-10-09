@@ -78,7 +78,7 @@ export const addReminder: API.OperationMethod<
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AddReminderRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddReminderResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<AddReminderResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -92,8 +92,8 @@ export const completeReminder: API.OperationMethod<
   CompleteReminderError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CompleteReminderRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CompleteReminderResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CompleteReminderRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<CompleteReminderResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -107,8 +107,8 @@ export const deleteReminder: API.OperationMethod<
   DeleteReminderError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteReminderRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteReminderResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DeleteReminderRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<DeleteReminderResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -122,8 +122,8 @@ export const listReminders: API.OperationMethod<
   ListRemindersError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListRemindersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListRemindersResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListRemindersRequest>,
+  output: __S(22, __c5, 2) as any as S.Schema<ListRemindersResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -137,8 +137,8 @@ export const remindersInfo: API.OperationMethod<
   RemindersInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<RemindersInfoRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RemindersInfoResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<RemindersInfoRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<RemindersInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -157,51 +157,71 @@ function __c0(j: number): any {
           recurrence: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/reminders.add", code: 200 })),
       ).annotate({ identifier: "AddReminderRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           reminder: S.Unknown,
         }),
       ).annotate({ identifier: "AddReminderResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reminder: S.String,
           team_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/reminders.complete", code: 200 })),
       ).annotate({ identifier: "CompleteReminderRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
         }),
       ).annotate({ identifier: "CompleteReminderResponse" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reminder: S.String,
           team_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/reminders.delete", code: 200 })),
       ).annotate({ identifier: "DeleteReminderRequest" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/reminders.list", code: 200 })),
       ).annotate({ identifier: "ListRemindersRequest" });
-    case 6:
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          reminders: S.optional(__S(6, __c0, 6)),
+          reminders: S.optional(__S(21, __c5, 1)),
         }),
       ).annotate({ identifier: "ListRemindersResponse" });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -212,7 +232,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "RemindersInfoRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

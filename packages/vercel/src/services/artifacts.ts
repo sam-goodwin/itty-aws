@@ -193,8 +193,8 @@ export const artifactExists: API.OperationMethod<
   ArtifactExistsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ArtifactExistsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ArtifactExistsResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ArtifactExistsRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<ArtifactExistsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -213,8 +213,8 @@ export const artifactQuery: API.OperationMethod<
   ArtifactQueryError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ArtifactQueryRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ArtifactQueryResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ArtifactQueryRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<ArtifactQueryResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -228,8 +228,8 @@ export const deleteAllArtifacts: API.OperationMethod<
   DeleteAllArtifactsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteAllArtifactsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteAllArtifactsResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteAllArtifactsRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<DeleteAllArtifactsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -248,8 +248,8 @@ export const downloadArtifact: API.OperationMethod<
   DownloadArtifactError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DownloadArtifactRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DownloadArtifactResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<DownloadArtifactRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<DownloadArtifactResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -263,8 +263,8 @@ export const recordEvents: API.OperationMethod<
   RecordEventsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<RecordEventsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RecordEventsResponse>,
+  input: __S(30, __c7, 2) as any as S.Schema<RecordEventsRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<RecordEventsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -278,8 +278,8 @@ export const status: API.OperationMethod<
   StatusError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<StatusRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<StatusResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<StatusRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<StatusResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -298,8 +298,8 @@ export const uploadArtifact: API.OperationMethod<
   UploadArtifactError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<UploadArtifactRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<UploadArtifactResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<UploadArtifactRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UploadArtifactResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -314,29 +314,72 @@ function __c0(j: number): any {
           hash: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
+          contentLength: S.Number.pipe(T.Header("Content-Length")),
+          xArtifactDuration: S.optional(S.Number.pipe(T.Header("x-artifact-duration"))),
+          xArtifactClientCi: S.optional(S.String.pipe(T.Header("x-artifact-client-ci"))),
+          xArtifactClientInteractive: S.optional(
+            S.Number.pipe(T.Header("x-artifact-client-interactive")),
+          ),
+          xArtifactTag: S.optional(S.String.pipe(T.Header("x-artifact-tag"))),
+          xArtifactSha: S.optional(S.String.pipe(T.Header("x-artifact-sha"))),
+          xArtifactDirtyHash: S.optional(S.String.pipe(T.Header("x-artifact-dirty-hash"))),
+        }).pipe(T.Http({ method: "PUT", uri: "/v8/artifacts/{hash}", code: 200 })),
+      ).annotate({ identifier: "UploadArtifactRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          urls: __S(16, __c4, 0),
+        }),
+      ).annotate({ identifier: "UploadArtifactResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hash: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "HEAD", uri: "/v8/artifacts/{hash}", code: 200 })),
       ).annotate({ identifier: "ArtifactExistsRequest" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ArtifactExistsResponse",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          hashes: __S(2, __c0, 2),
+          hashes: __S(16, __c4, 0),
         }).pipe(T.Http({ method: "POST", uri: "/v8/artifacts", code: 200 })),
       ).annotate({ identifier: "ArtifactQueryRequest" });
-    case 4:
+    case 1:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 5:
-      return S.suspend(() => __S(4, __c0, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(13, __c3, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ArtifactQueryResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -345,7 +388,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteAllArtifactsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deletedCount: S.Number,
@@ -355,7 +398,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -373,7 +416,11 @@ function __c1(j: number): any {
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "DownloadArtifactResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sessionId: S.String,
@@ -385,9 +432,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RecordEventsRequestBodyItem",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(28, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -396,50 +443,26 @@ function __c1(j: number): any {
           xArtifactClientInteractive: S.optional(
             S.Number.pipe(T.Header("x-artifact-client-interactive")),
           ),
-          body: __S(11, __c1, 3).pipe(T.HttpBody()),
+          body: __S(29, __c7, 1).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v8/artifacts/events", code: 200 })),
       ).annotate({ identifier: "RecordEventsRequest" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v8/artifacts/status", code: 200 })),
       ).annotate({ identifier: "StatusRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "StatusResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          hash: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          contentLength: S.Number.pipe(T.Header("Content-Length")),
-          xArtifactDuration: S.optional(S.Number.pipe(T.Header("x-artifact-duration"))),
-          xArtifactClientCi: S.optional(S.String.pipe(T.Header("x-artifact-client-ci"))),
-          xArtifactClientInteractive: S.optional(
-            S.Number.pipe(T.Header("x-artifact-client-interactive")),
-          ),
-          xArtifactTag: S.optional(S.String.pipe(T.Header("x-artifact-tag"))),
-          xArtifactSha: S.optional(S.String.pipe(T.Header("x-artifact-sha"))),
-          xArtifactDirtyHash: S.optional(S.String.pipe(T.Header("x-artifact-dirty-hash"))),
-        }).pipe(T.Http({ method: "PUT", uri: "/v8/artifacts/{hash}", code: 200 })),
-      ).annotate({ identifier: "UploadArtifactRequest" });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          urls: __S(2, __c0, 2),
-        }),
-      ).annotate({ identifier: "UploadArtifactResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

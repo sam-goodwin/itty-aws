@@ -165,8 +165,8 @@ export const getTieredCaching: API.OperationMethod<
   GetTieredCachingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetTieredCachingRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetTieredCachingResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<GetTieredCachingRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<GetTieredCachingResponse>,
   errors: [
     InvalidObjectIdentifier,
     ZoneNotFound,
@@ -190,8 +190,8 @@ export const patchSmartRouting: API.OperationMethod<
   PatchSmartRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<PatchSmartRoutingRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PatchSmartRoutingResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<PatchSmartRoutingRequest>,
+  output: __S(5, __c2, 1) as any as S.Schema<PatchSmartRoutingResponse>,
   errors: [
     InvalidObjectIdentifier,
     NotAuthorized,
@@ -211,8 +211,8 @@ export const patchTieredCaching: API.OperationMethod<
   PatchTieredCachingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<PatchTieredCachingRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PatchTieredCachingResponse>,
+  input: __S(6, __c3, 0) as any as S.Schema<PatchTieredCachingRequest>,
+  output: __S(7, __c3, 1) as any as S.Schema<PatchTieredCachingResponse>,
   errors: [InvalidObjectIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -238,7 +238,11 @@ function __c0(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSmartRoutingResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -246,7 +250,7 @@ function __c0(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/argo/tiered_caching", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetTieredCachingRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -255,7 +259,11 @@ function __c0(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetTieredCachingResponse" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -264,7 +272,7 @@ function __c0(j: number): any {
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/argo/smart_routing", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchSmartRoutingRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -275,7 +283,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PatchSmartRoutingResponse",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -286,7 +298,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PatchTieredCachingRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -299,7 +311,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

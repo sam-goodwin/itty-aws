@@ -72,8 +72,8 @@ export const getSigningKey: API.OperationMethod<
   GetSigningKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetSigningKeyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetSigningKeyResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<GetSigningKeyRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<GetSigningKeyResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -87,8 +87,8 @@ export const hasSandboxAccess: API.OperationMethod<
   HasSandboxAccessError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<HasSandboxAccessRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HasSandboxAccessResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<HasSandboxAccessRequest>,
+  output: __S(6, __c3, 0) as any as S.Schema<HasSandboxAccessResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -102,8 +102,8 @@ export const isPreviewWarningEnabled: API.OperationMethod<
   IsPreviewWarningEnabledError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<IsPreviewWarningEnabledRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PreviewWarning>,
+  input: __S(8, __c4, 0) as any as S.Schema<IsPreviewWarningEnabledRequest>,
+  output: __S(9, __c4, 1) as any as S.Schema<PreviewWarning>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -117,8 +117,8 @@ export const isSandboxPublic: API.OperationMethod<
   IsSandboxPublicError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<IsSandboxPublicRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<IsSandboxPublicResponse>,
+  input: __S(10, __c5, 0) as any as S.Schema<IsSandboxPublicRequest>,
+  output: __S(6, __c3, 0) as any as S.Schema<IsSandboxPublicResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -132,8 +132,8 @@ export const isValidAuthToken: API.OperationMethod<
   IsValidAuthTokenError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<IsValidAuthTokenRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<IsValidAuthTokenResponse>,
+  input: __S(12, __c6, 0) as any as S.Schema<IsValidAuthTokenRequest>,
+  output: __S(6, __c3, 0) as any as S.Schema<IsValidAuthTokenResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -161,41 +161,6 @@ function __c0(j: number): any {
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSandboxIdFromSignedPreviewUrlTokenResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sandboxId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/preview/{sandboxId}/signing-key", code: 200 })),
-      ).annotate({ identifier: "GetSigningKeyRequest" });
-    case 3:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetSigningKeyResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sandboxId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/preview/{sandboxId}/access", code: 200 })),
-      ).annotate({ identifier: "HasSandboxAccessRequest" });
-    case 5:
-      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
-        identifier: "HasSandboxAccessResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sandboxId: S.String.pipe(T.Label()),
-          port: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/preview/{sandboxId}/preview-warning", code: 200 })),
-      ).annotate({
-        identifier: "IsPreviewWarningEnabledRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-        }),
-      ).annotate({ identifier: "PreviewWarning" });
   }
 }
 function __c1(j: number): any {
@@ -204,9 +169,64 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sandboxId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/preview/{sandboxId}/signing-key", code: 200 })),
+      ).annotate({ identifier: "GetSigningKeyRequest" });
+    case 1:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetSigningKeyResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/preview/{sandboxId}/access", code: 200 })),
+      ).annotate({ identifier: "HasSandboxAccessRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
+        identifier: "HasSandboxAccessResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          port: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/preview/{sandboxId}/preview-warning", code: 200 })),
+      ).annotate({
+        identifier: "IsPreviewWarningEnabledRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+        }),
+      ).annotate({ identifier: "PreviewWarning" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/preview/{sandboxId}/public", code: 200 })),
       ).annotate({ identifier: "IsSandboxPublicRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sandboxId: S.String.pipe(T.Label()),
@@ -217,7 +237,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "IsValidAuthTokenRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

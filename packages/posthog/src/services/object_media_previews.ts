@@ -115,7 +115,7 @@ export const createObjectMediaPreview: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateObjectMediaPreviewRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ObjectMediaPreviewOutput>,
+  output: __S(4, __c1, 0) as any as S.Schema<ObjectMediaPreviewOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -128,8 +128,8 @@ export const getObjectMediaPreview: API.OperationMethod<
   GetObjectMediaPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetObjectMediaPreviewRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ObjectMediaPreviewOutput>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetObjectMediaPreviewRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<ObjectMediaPreviewOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -143,8 +143,8 @@ export const getObjectMediaPreviewsPreferredForEvent: API.OperationMethod<
   GetObjectMediaPreviewsPreferredForEventError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetObjectMediaPreviewsPreferredForEventRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ObjectMediaPreviewOutput>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetObjectMediaPreviewsPreferredForEventRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<ObjectMediaPreviewOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -157,8 +157,8 @@ export const listObjectMediaPreviews: API.OperationMethod<
   ListObjectMediaPreviewsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListObjectMediaPreviewsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PaginatedObjectMediaPreviewListOutput>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListObjectMediaPreviewsRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<PaginatedObjectMediaPreviewListOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -171,8 +171,8 @@ export const objectMediaPreviewsDestroy: API.OperationMethod<
   ObjectMediaPreviewsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ObjectMediaPreviewsDestroyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ObjectMediaPreviewsDestroyResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<ObjectMediaPreviewsDestroyRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<ObjectMediaPreviewsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -185,8 +185,8 @@ export const updateObjectMediaPreview: API.OperationMethod<
   UpdateObjectMediaPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<UpdateObjectMediaPreviewRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ObjectMediaPreviewOutput>,
+  input: __S(24, __c6, 0) as any as S.Schema<UpdateObjectMediaPreviewRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<ObjectMediaPreviewOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -203,8 +203,8 @@ export const updateObjectMediaPreviewsPartial: API.OperationMethod<
   UpdateObjectMediaPreviewsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<UpdateObjectMediaPreviewsPartialRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ObjectMediaPreviewOutput>,
+  input: __S(28, __c7, 0) as any as S.Schema<UpdateObjectMediaPreviewsPartialRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<ObjectMediaPreviewOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -231,7 +231,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateObjectMediaPreviewRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -242,7 +246,11 @@ function __c0(j: number): any {
           metadata: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ObjectMediaPreviewOutput" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -257,7 +265,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetObjectMediaPreviewRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -271,7 +283,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetObjectMediaPreviewsPreferredForEventRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -287,20 +303,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListObjectMediaPreviewsRequest",
       });
-    case 5:
-      return S.Array(__S(1, __c0, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(5, __c0, 5)),
+          results: S.optional(__S(17, __c4, 1)),
         }),
       ).annotate({
         identifier: "PaginatedObjectMediaPreviewListOutput",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -315,15 +335,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ObjectMediaPreviewsDestroyRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ObjectMediaPreviewsDestroyResponse",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -342,7 +362,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateObjectMediaPreviewRequest",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -363,7 +387,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

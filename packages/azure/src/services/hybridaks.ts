@@ -1319,8 +1319,8 @@ export const AgentPoolCreateOrUpdate: API.OperationMethod<
   AgentPoolCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AgentPoolCreateOrUpdateRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AgentPoolCreateOrUpdateResponse>,
+  input: __S(4, __c0, 4) as any as S.Schema<AgentPoolCreateOrUpdateRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AgentPoolCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1334,8 +1334,8 @@ export const DeleteAgentPool: API.OperationMethod<
   DeleteAgentPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteAgentPoolRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteAgentPoolResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeleteAgentPoolRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<DeleteAgentPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1349,8 +1349,8 @@ export const DeleteHybridIdentityMetadata: API.OperationMethod<
   DeleteHybridIdentityMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteHybridIdentityMetadataRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteHybridIdentityMetadataResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteHybridIdentityMetadataRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<DeleteHybridIdentityMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1364,8 +1364,8 @@ export const DeleteKubernetesVersions: API.OperationMethod<
   DeleteKubernetesVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteKubernetesVersionsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteKubernetesVersionsResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<DeleteKubernetesVersionsRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<DeleteKubernetesVersionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1379,8 +1379,8 @@ export const DeleteProvisionedClusterInstance: API.OperationMethod<
   DeleteProvisionedClusterInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteProvisionedClusterInstanceRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteProvisionedClusterInstanceResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DeleteProvisionedClusterInstanceRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<DeleteProvisionedClusterInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1394,8 +1394,8 @@ export const DeleteVirtualNetwork: API.OperationMethod<
   DeleteVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteVirtualNetworkRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteVirtualNetworkResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<DeleteVirtualNetworkRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<DeleteVirtualNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1409,8 +1409,8 @@ export const DeleteVMSkus: API.OperationMethod<
   DeleteVMSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteVMSkusRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteVMSkusResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DeleteVMSkusRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<DeleteVMSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1424,8 +1424,8 @@ export const GetAgentPool: API.OperationMethod<
   GetAgentPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetAgentPoolRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetAgentPoolResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetAgentPoolRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<GetAgentPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1439,8 +1439,8 @@ export const GetHybridIdentityMetadata: API.OperationMethod<
   GetHybridIdentityMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetHybridIdentityMetadataRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetHybridIdentityMetadataResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetHybridIdentityMetadataRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<GetHybridIdentityMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1454,8 +1454,8 @@ export const GetKubernetesVersions: API.OperationMethod<
   GetKubernetesVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetKubernetesVersionsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetKubernetesVersionsResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetKubernetesVersionsRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<GetKubernetesVersionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1469,8 +1469,8 @@ export const GetProvisionedClusterInstance: API.OperationMethod<
   GetProvisionedClusterInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetProvisionedClusterInstanceRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetProvisionedClusterInstanceResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetProvisionedClusterInstanceRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<GetProvisionedClusterInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1484,8 +1484,12 @@ export const GetProvisionedClusterInstanceUpgradeProfile: API.OperationMethod<
   GetProvisionedClusterInstanceUpgradeProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetProvisionedClusterInstanceUpgradeProfileRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetProvisionedClusterInstanceUpgradeProfileResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetProvisionedClusterInstanceUpgradeProfileRequest>,
+  output: __S(
+    357,
+    __c11,
+    5,
+  ) as any as S.Schema<GetProvisionedClusterInstanceUpgradeProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1499,8 +1503,8 @@ export const GetVirtualNetwork: API.OperationMethod<
   GetVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetVirtualNetworkRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GetVirtualNetworkResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetVirtualNetworkRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<GetVirtualNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1514,8 +1518,8 @@ export const GetVMSkus: API.OperationMethod<
   GetVMSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetVMSkusRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetVMSkusResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetVMSkusRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<GetVMSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1529,8 +1533,8 @@ export const ListAgentPoolByProvisionedCluster: API.OperationMethod<
   ListAgentPoolByProvisionedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListAgentPoolByProvisionedClusterRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<AgentPoolListResult>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListAgentPoolByProvisionedClusterRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<AgentPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1544,8 +1548,8 @@ export const ListHybridIdentityMetadataByCluster: API.OperationMethod<
   ListHybridIdentityMetadataByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListHybridIdentityMetadataByClusterRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<HybridIdentityMetadataList>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListHybridIdentityMetadataByClusterRequest>,
+  output: __S(643, __c20, 3) as any as S.Schema<HybridIdentityMetadataList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1559,8 +1563,8 @@ export const ListKubernetesVersions: API.OperationMethod<
   ListKubernetesVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListKubernetesVersionsRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<KubernetesVersionProfileList>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListKubernetesVersionsRequest>,
+  output: __S(675, __c21, 3) as any as S.Schema<KubernetesVersionProfileList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1574,8 +1578,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListOperationsResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(708, __c22, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1589,8 +1593,12 @@ export const ListProvisionedClusterInstanceAdminKubeconfig: API.OperationMethod<
   ListProvisionedClusterInstanceAdminKubeconfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListProvisionedClusterInstanceAdminKubeconfigRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ListCredentialResponse>,
+  input: __S(
+    736,
+    __c23,
+    0,
+  ) as any as S.Schema<ListProvisionedClusterInstanceAdminKubeconfigRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<ListCredentialResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1604,8 +1612,8 @@ export const ListProvisionedClusterInstances: API.OperationMethod<
   ListProvisionedClusterInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListProvisionedClusterInstancesRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<ProvisionedClusterListResult>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListProvisionedClusterInstancesRequest>,
+  output: __S(803, __c25, 3) as any as S.Schema<ProvisionedClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1619,8 +1627,8 @@ export const ListProvisionedClusterInstanceUserKubeconfig: API.OperationMethod<
   ListProvisionedClusterInstanceUserKubeconfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListProvisionedClusterInstanceUserKubeconfigRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ListCredentialResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListProvisionedClusterInstanceUserKubeconfigRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<ListCredentialResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1634,8 +1642,8 @@ export const ListVirtualNetworkByResourceGroup: API.OperationMethod<
   ListVirtualNetworkByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListVirtualNetworkByResourceGroupRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<VirtualNetworksListResult>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListVirtualNetworkByResourceGroupRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<VirtualNetworksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1649,8 +1657,8 @@ export const ListVirtualNetworkBySubscription: API.OperationMethod<
   ListVirtualNetworkBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListVirtualNetworkBySubscriptionRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<VirtualNetworksListResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListVirtualNetworkBySubscriptionRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<VirtualNetworksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1664,8 +1672,8 @@ export const ListVMSkus: API.OperationMethod<
   ListVMSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListVMSkusRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<VmSkuProfileList>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListVMSkusRequest>,
+  output: __S(1028, __c32, 4) as any as S.Schema<VmSkuProfileList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1679,8 +1687,8 @@ export const ProvisionedClusterInstancesCreateOrUpdate: API.OperationMethod<
   ProvisionedClusterInstancesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateResponse>,
+  input: __S(1059, __c33, 3) as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1694,8 +1702,8 @@ export const PutHybridIdentityMetadata: API.OperationMethod<
   PutHybridIdentityMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<PutHybridIdentityMetadataRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<PutHybridIdentityMetadataResponse>,
+  input: __S(1089, __c34, 1) as any as S.Schema<PutHybridIdentityMetadataRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<PutHybridIdentityMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1709,8 +1717,8 @@ export const PutKubernetesVersions: API.OperationMethod<
   PutKubernetesVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<PutKubernetesVersionsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<PutKubernetesVersionsResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<PutKubernetesVersionsRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<PutKubernetesVersionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1724,8 +1732,8 @@ export const PutVMSkus: API.OperationMethod<
   PutVMSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<PutVMSkusRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<PutVMSkusResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<PutVMSkusRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<PutVMSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1739,8 +1747,8 @@ export const UpdateVirtualNetwork: API.OperationMethod<
   UpdateVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<UpdateVirtualNetworkRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<UpdateVirtualNetworkResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<UpdateVirtualNetworkRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<UpdateVirtualNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1754,8 +1762,8 @@ export const VirtualNetworksCreateOrUpdate: API.OperationMethod<
   VirtualNetworksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<VirtualNetworksCreateOrUpdateRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<VirtualNetworksCreateOrUpdateResponse>,
+  input: __S(1217, __c38, 1) as any as S.Schema<VirtualNetworksCreateOrUpdateRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<VirtualNetworksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1765,10 +1773,6 @@ export const VirtualNetworksCreateOrUpdate: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
@@ -1777,48 +1781,41 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AgentPoolUpdateProfileInput",
       });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           errorMessage: S.optional(S.String),
-          readyReplicas: S.optional(__S(3, __c0, 3)),
+          readyReplicas: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "AgentPoolPropertiesInputStatus",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           osType: S.optional(S.String),
           osSKU: S.optional(S.String),
-          nodeLabels: S.optional(__S(0, __c0, 0)),
-          nodeTaints: S.optional(__S(1, __c0, 1)),
+          nodeLabels: S.optional(__S(32, __c1, 0)),
+          nodeTaints: S.optional(__S(128, __c4, 0)),
           maxCount: S.optional(S.Number),
           minCount: S.optional(S.Number),
           enableAutoScaling: S.optional(S.Boolean),
           maxPods: S.optional(S.Number),
           count: S.optional(S.Number),
           vmSize: S.optional(S.String),
-          status: S.optional(__S(4, __c0, 4)),
+          status: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "AgentPoolPropertiesInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExtendedLocation" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
           agentPoolName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(0, __c0, 0)),
-          extendedLocation: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(32, __c1, 0)),
+          extendedLocation: S.optional(__S(160, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1830,9 +1827,71 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AgentPoolCreateOrUpdateRequest",
       });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(67, __c2, 3)),
+          tags: S.optional(__S(32, __c1, 0)),
+          extendedLocation: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "AgentPoolCreateOrUpdateResponse",
+      });
   }
 }
 function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          vmSize: S.optional(S.String),
+          kubernetesVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgentPoolUpdateProfile" });
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          currentState: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          readyReplicas: S.optional(__S(65, __c2, 1)),
+        }),
+      ).annotate({
+        identifier: "AgentPoolPropertiesStatus",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          osType: S.optional(S.String),
+          osSKU: S.optional(S.String),
+          nodeLabels: S.optional(__S(32, __c1, 0)),
+          nodeTaints: S.optional(__S(128, __c4, 0)),
+          maxCount: S.optional(S.Number),
+          minCount: S.optional(S.Number),
+          enableAutoScaling: S.optional(S.Boolean),
+          maxPods: S.optional(S.Number),
+          count: S.optional(S.Number),
+          vmSize: S.optional(S.String),
+          kubernetesVersion: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          status: S.optional(__S(66, __c2, 2)),
+        }),
+      ).annotate({ identifier: "AgentPoolProperties" });
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1845,59 +1904,28 @@ function __c1(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          count: S.optional(S.Number),
-          vmSize: S.optional(S.String),
-          kubernetesVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AgentPoolUpdateProfile" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          currentState: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          readyReplicas: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "AgentPoolPropertiesStatus",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          osType: S.optional(S.String),
-          osSKU: S.optional(S.String),
-          nodeLabels: S.optional(__S(0, __c0, 0)),
-          nodeTaints: S.optional(__S(1, __c0, 1)),
-          maxCount: S.optional(S.Number),
-          minCount: S.optional(S.Number),
-          enableAutoScaling: S.optional(S.Boolean),
-          maxPods: S.optional(S.Number),
-          count: S.optional(S.Number),
-          vmSize: S.optional(S.String),
-          kubernetesVersion: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          status: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "AgentPoolProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(12, __c1, 4)),
-          tags: S.optional(__S(0, __c0, 0)),
-          extendedLocation: S.optional(__S(6, __c0, 6)),
+          name: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AgentPoolCreateOrUpdateResponse",
-      });
-    case 6:
+      ).annotate({ identifier: "ExtendedLocation" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
@@ -1911,236 +1939,19 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAgentPoolRequest" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAgentPoolResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          connectedClusterResourceUri: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{connectedClusterResourceUri+}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
-            code: 200,
-            apiVersion: "2024-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHybridIdentityMetadataRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteHybridIdentityMetadataResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customLocationResourceUri: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{customLocationResourceUri+}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
-            code: 200,
-            apiVersion: "2024-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteKubernetesVersionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          connectedClusterResourceUri: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{connectedClusterResourceUri+}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
-            code: 200,
-            apiVersion: "2024-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProvisionedClusterInstanceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualNetworkName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
-            code: 200,
-            apiVersion: "2024-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteVirtualNetworkRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customLocationResourceUri: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{customLocationResourceUri+}/providers/Microsoft.HybridContainerService/skus/default",
-            code: 200,
-            apiVersion: "2024-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteVMSkusRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          connectedClusterResourceUri: S.String.pipe(T.Label()),
-          agentPoolName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{connectedClusterResourceUri+}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}",
-            code: 200,
-            apiVersion: "2024-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetAgentPoolRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(12, __c1, 4)),
-          tags: S.optional(__S(0, __c0, 0)),
-          extendedLocation: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "GetAgentPoolResponse" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          connectedClusterResourceUri: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{connectedClusterResourceUri+}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
-            code: 200,
-            apiVersion: "2024-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHybridIdentityMetadataRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUid: S.optional(S.String),
-          publicKey: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HybridIdentityMetadataProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: __S(25, __c3, 1),
-        }),
-      ).annotate({
-        identifier: "GetHybridIdentityMetadataResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customLocationResourceUri: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{customLocationResourceUri+}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
-            code: 200,
-            apiVersion: "2024-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetKubernetesVersionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          osType: S.optional(S.String),
-          osSku: S.optional(S.String),
-          ready: S.optional(S.Boolean),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "KubernetesVersionReadiness",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          readiness: S.optional(__S(29, __c3, 5)),
-          upgrades: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "KubernetesPatchVersions" });
-    case 7:
-      return S.Record(S.String, __S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          isPreview: S.optional(S.Boolean),
-          patchVersions: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "KubernetesVersionProperties",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          values: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "GetKubernetesVersionsResponseProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          extendedLocation: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GetKubernetesVersionsResponse",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
@@ -2155,7 +1966,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetProvisionedClusterInstanceRequest",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyData: S.optional(S.String),
@@ -2163,27 +1978,23 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "LinuxProfilePropertiesSshPublicKeysItem",
       });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          publicKeys: S.optional(__S(38, __c4, 6)),
+          publicKeys: S.optional(__S(289, __c9, 1)),
         }),
       ).annotate({
         identifier: "LinuxProfilePropertiesSsh",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ssh: S.optional(__S(39, __c4, 7)),
+          ssh: S.optional(__S(290, __c9, 2)),
         }),
       ).annotate({ identifier: "LinuxProfileProperties" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           hostIP: S.optional(S.String),
@@ -2191,15 +2002,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ControlPlaneProfileControlPlaneEndpoint",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           vmSize: S.optional(S.String),
-          controlPlaneEndpoint: S.optional(__S(41, __c5, 1)),
+          controlPlaneEndpoint: S.optional(__S(292, __c9, 4)),
         }),
       ).annotate({ identifier: "ControlPlaneProfile" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
@@ -2207,15 +2018,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "NetworkProfileLoadBalancerProfile",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          loadBalancerProfile: S.optional(__S(43, __c5, 3)),
+          loadBalancerProfile: S.optional(__S(294, __c9, 6)),
           networkPolicy: S.optional(S.String),
           podCidr: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkProfile" });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -2223,30 +2034,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "StorageProfileSmbCSIDriver",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          smbCsiDriver: S.optional(__S(45, __c5, 5)),
-          nfsCsiDriver: S.optional(__S(45, __c5, 5)),
+          smbCsiDriver: S.optional(__S(296, __c9, 8)),
+          nfsCsiDriver: S.optional(__S(296, __c9, 8)),
         }),
       ).annotate({ identifier: "StorageProfile" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           authorizedIPRanges: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterVMAccessProfile" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           osType: S.optional(S.String),
           osSKU: S.optional(S.String),
-          nodeLabels: S.optional(__S(0, __c0, 0)),
-          nodeTaints: S.optional(__S(1, __c0, 1)),
+          nodeLabels: S.optional(__S(32, __c1, 0)),
+          nodeTaints: S.optional(__S(128, __c4, 0)),
           maxCount: S.optional(S.Number),
           minCount: S.optional(S.Number),
           enableAutoScaling: S.optional(S.Boolean),
@@ -2257,23 +2064,23 @@ function __c6(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamedAgentPoolProfile" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 12:
+      return S.Array(__S(299, __c9, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          vnetSubnetIds: S.optional(__S(1, __c0, 1)),
+          vnetSubnetIds: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({
         identifier: "CloudProviderProfileInfraNetworkProfile",
       });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          infraNetworkProfile: S.optional(__S(50, __c6, 2)),
+          infraNetworkProfile: S.optional(__S(301, __c9, 13)),
         }),
       ).annotate({ identifier: "CloudProviderProfile" });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2282,19 +2089,19 @@ function __c6(j: number): any {
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddonStatusProfile" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 16:
+      return S.Array(__S(303, __c9, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          controlPlaneStatus: S.optional(__S(53, __c6, 5)),
+          controlPlaneStatus: S.optional(__S(304, __c9, 16)),
           currentState: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProvisionedClusterPropertiesStatus",
       });
-    case 7:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           azureHybridBenefit: S.optional(S.String),
@@ -2302,11 +2109,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ProvisionedClusterLicenseProfile",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           balance_similar_node_groups: S.optional(
@@ -2348,39 +2151,47 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ProvisionedClusterPropertiesAutoScalerProfile",
       });
-    case 1:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          linuxProfile: S.optional(__S(40, __c5, 0)),
-          controlPlane: S.optional(__S(42, __c5, 2)),
+          linuxProfile: S.optional(__S(291, __c9, 3)),
+          controlPlane: S.optional(__S(293, __c9, 5)),
           kubernetesVersion: S.optional(S.String),
-          networkProfile: S.optional(__S(44, __c5, 4)),
-          storageProfile: S.optional(__S(46, __c5, 6)),
-          clusterVMAccessProfile: S.optional(__S(47, __c5, 7)),
-          agentPoolProfiles: S.optional(__S(49, __c6, 1)),
-          cloudProviderProfile: S.optional(__S(51, __c6, 3)),
+          networkProfile: S.optional(__S(295, __c9, 7)),
+          storageProfile: S.optional(__S(297, __c9, 9)),
+          clusterVMAccessProfile: S.optional(__S(298, __c9, 10)),
+          agentPoolProfiles: S.optional(__S(300, __c9, 12)),
+          cloudProviderProfile: S.optional(__S(302, __c9, 14)),
           provisioningState: S.optional(S.String),
-          status: S.optional(__S(54, __c6, 6)),
-          licenseProfile: S.optional(__S(55, __c6, 7)),
-          autoScalerProfile: S.optional(__S(56, __c7, 0)),
+          status: S.optional(__S(305, __c9, 17)),
+          licenseProfile: S.optional(__S(306, __c9, 18)),
+          autoScalerProfile: S.optional(__S(307, __c9, 19)),
         }),
       ).annotate({
         identifier: "ProvisionedClusterProperties",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(57, __c7, 1)),
-          extendedLocation: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(308, __c9, 20)),
+          extendedLocation: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({
         identifier: "GetProvisionedClusterInstanceResponse",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
@@ -2395,7 +2206,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetProvisionedClusterInstanceUpgradeProfileRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kubernetesVersion: S.optional(S.String),
@@ -2404,44 +2215,44 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ProvisionedClusterPoolUpgradeProfileProperties",
       });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(353, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kubernetesVersion: S.optional(S.String),
           osType: S.optional(S.String),
-          upgrades: S.optional(__S(61, __c7, 5)),
+          upgrades: S.optional(__S(354, __c11, 2)),
         }),
       ).annotate({
         identifier: "ProvisionedClusterPoolUpgradeProfile",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          controlPlaneProfile: __S(62, __c7, 6),
+          controlPlaneProfile: __S(355, __c11, 3),
         }),
       ).annotate({
         identifier: "ProvisionedClusterUpgradeProfileProperties",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: __S(63, __c7, 7),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: __S(356, __c11, 4),
         }),
       ).annotate({
         identifier: "GetProvisionedClusterInstanceUpgradeProfileResponse",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2456,7 +2267,39 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVirtualNetworkRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(32, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(454, __c14, 6)),
+          extendedLocation: S.optional(__S(455, __c14, 7)),
+        }),
+      ).annotate({
+        identifier: "GetVirtualNetworkResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualNetworkPropertiesStatusOperationStatusError",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           mocGroup: S.optional(S.String),
@@ -2466,15 +2309,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "VirtualNetworkPropertiesInfraVnetProfileHci",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          hci: S.optional(__S(66, __c8, 2)),
+          hci: S.optional(__S(448, __c14, 0)),
         }),
       ).annotate({
         identifier: "VirtualNetworkPropertiesInfraVnetProfile",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           endIP: S.optional(S.String),
@@ -2483,54 +2326,41 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "VirtualNetworkPropertiesVipPoolItem",
       });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(450, __c14, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualNetworkPropertiesStatusOperationStatusError",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(70, __c8, 6)),
+          error: S.optional(__S(416, __c13, 0)),
           operationId: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VirtualNetworkPropertiesStatusOperationStatus",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          operationStatus: S.optional(__S(71, __c8, 7)),
+          operationStatus: S.optional(__S(452, __c14, 4)),
         }),
       ).annotate({
         identifier: "VirtualNetworkPropertiesStatus",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          infraVnetProfile: S.optional(__S(67, __c8, 3)),
-          vipPool: S.optional(__S(69, __c8, 5)),
-          vmipPool: S.optional(__S(69, __c8, 5)),
-          dnsServers: S.optional(__S(1, __c0, 1)),
+          infraVnetProfile: S.optional(__S(449, __c14, 1)),
+          vipPool: S.optional(__S(451, __c14, 3)),
+          vmipPool: S.optional(__S(451, __c14, 3)),
+          dnsServers: S.optional(__S(128, __c4, 0)),
           gateway: S.optional(S.String),
           ipAddressPrefix: S.optional(S.String),
           vlanID: S.optional(S.Number),
           provisioningState: S.optional(S.String),
-          status: S.optional(__S(72, __c9, 0)),
+          status: S.optional(__S(453, __c14, 5)),
         }),
       ).annotate({ identifier: "VirtualNetworkProperties" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -2539,22 +2369,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetVirtualNetworkResponseExtendedLocation",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(73, __c9, 1)),
-          extendedLocation: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "GetVirtualNetworkResponse",
-      });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customLocationResourceUri: S.String.pipe(T.Label()),
@@ -2567,52 +2386,64 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVMSkusRequest" });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "VmSkuCapabilities" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(512, __c16, 0));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          capabilities: S.optional(__S(78, __c9, 6)),
+          capabilities: S.optional(__S(513, __c16, 1)),
           name: S.optional(S.String),
           tier: S.optional(S.String),
           size: S.optional(S.String),
         }),
       ).annotate({ identifier: "VmSkuProperties" });
+    case 1:
+      return S.Array(__S(544, __c17, 0));
   }
 }
-function __c10(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          values: S.optional(__S(80, __c10, 0)),
+          values: S.optional(__S(545, __c17, 1)),
         }),
       ).annotate({
         identifier: "GetVMSkusResponseProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          extendedLocation: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(81, __c10, 1)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          extendedLocation: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(576, __c18, 0)),
         }),
       ).annotate({ identifier: "GetVMSkusResponse" });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
@@ -2627,16 +2458,20 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListAgentPoolByProvisionedClusterRequest",
       });
-    case 4:
-      return S.Array(__S(23, __c2, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(1408, __c44, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(84, __c10, 4)),
+          value: S.optional(__S(609, __c19, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentPoolListResult" });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
@@ -2651,32 +2486,32 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListHybridIdentityMetadataByClusterRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: __S(25, __c3, 1),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: __S(1472, __c46, 0),
         }),
       ).annotate({ identifier: "HybridIdentityMetadata" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(641, __c20, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(88, __c11, 0),
+          value: __S(642, __c20, 2),
         }),
       ).annotate({
         identifier: "HybridIdentityMetadataList",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customLocationResourceUri: S.String.pipe(T.Label()),
@@ -2691,29 +2526,33 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListKubernetesVersionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          extendedLocation: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(34, __c4, 2)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          extendedLocation: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1574, __c49, 6)),
         }),
       ).annotate({ identifier: "KubernetesVersionProfile" });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(673, __c21, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(92, __c11, 4)),
+          value: S.optional(__S(674, __c21, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "KubernetesVersionProfileList",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2724,7 +2563,7 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2733,30 +2572,30 @@ function __c11(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(95, __c11, 7)),
+          display: S.optional(__S(705, __c22, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(706, __c22, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(97, __c12, 1)),
+          value: S.optional(__S(707, __c22, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
@@ -2771,26 +2610,34 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListProvisionedClusterInstanceAdminKubeconfigRequest",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          kubeconfigs: S.optional(__S(78, __c9, 6)),
+          kubeconfigs: S.optional(__S(513, __c16, 1)),
         }),
       ).annotate({
         identifier: "ListCredentialResponseProperties",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           resourceId: S.optional(S.String),
           status: S.optional(S.String),
-          error: S.optional(__S(70, __c8, 6)),
-          properties: S.optional(__S(100, __c12, 4)),
+          error: S.optional(__S(416, __c13, 0)),
+          properties: S.optional(__S(768, __c24, 0)),
         }),
       ).annotate({ identifier: "ListCredentialResponse" });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
@@ -2805,33 +2652,60 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListProvisionedClusterInstancesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(57, __c7, 1)),
-          extendedLocation: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(308, __c9, 20)),
+          extendedLocation: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "ProvisionedCluster" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(104, __c13, 0)),
+          value: S.optional(__S(802, __c25, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProvisionedClusterListResult",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connectedClusterResourceUri: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{connectedClusterResourceUri+}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
+            code: 200,
+            apiVersion: "2024-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHybridIdentityMetadataRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteHybridIdentityMetadataResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
@@ -2846,7 +2720,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListProvisionedClusterInstanceUserKubeconfigRequest",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2862,31 +2740,39 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListVirtualNetworkByResourceGroupRequest",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(32, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(73, __c9, 1)),
-          extendedLocation: S.optional(__S(74, __c9, 2)),
+          properties: S.optional(__S(454, __c14, 6)),
+          extendedLocation: S.optional(__S(455, __c14, 7)),
         }),
       ).annotate({ identifier: "VirtualNetwork" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(960, __c30, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(109, __c13, 5)),
+          value: S.optional(__S(961, __c30, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VirtualNetworksListResult",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2903,7 +2789,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2922,7 +2808,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          values: S.optional(__S(80, __c10, 0)),
+          values: S.optional(__S(545, __c17, 1)),
         }),
       ).annotate({ identifier: "VmSkuProfileProperties" });
     case 2:
@@ -2931,27 +2817,31 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          extendedLocation: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(113, __c14, 1)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          extendedLocation: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1025, __c32, 1)),
         }),
       ).annotate({ identifier: "VmSkuProfile" });
     case 3:
-      return S.Array(__S(114, __c14, 2));
+      return S.Array(__S(1026, __c32, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(115, __c14, 3)),
+          value: S.optional(__S(1027, __c32, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VmSkuProfileList" });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           osType: S.optional(S.String),
           osSKU: S.optional(S.String),
-          nodeLabels: S.optional(__S(0, __c0, 0)),
-          nodeTaints: S.optional(__S(1, __c0, 1)),
+          nodeLabels: S.optional(__S(32, __c1, 0)),
+          nodeTaints: S.optional(__S(128, __c4, 0)),
           maxCount: S.optional(S.Number),
           minCount: S.optional(S.Number),
           enableAutoScaling: S.optional(S.Boolean),
@@ -2963,35 +2853,31 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "NamedAgentPoolProfileInput",
       });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(1056, __c33, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          linuxProfile: S.optional(__S(40, __c5, 0)),
-          controlPlane: S.optional(__S(42, __c5, 2)),
+          linuxProfile: S.optional(__S(291, __c9, 3)),
+          controlPlane: S.optional(__S(293, __c9, 5)),
           kubernetesVersion: S.optional(S.String),
-          networkProfile: S.optional(__S(44, __c5, 4)),
-          storageProfile: S.optional(__S(46, __c5, 6)),
-          clusterVMAccessProfile: S.optional(__S(47, __c5, 7)),
-          agentPoolProfiles: S.optional(__S(118, __c14, 6)),
-          cloudProviderProfile: S.optional(__S(51, __c6, 3)),
-          licenseProfile: S.optional(__S(55, __c6, 7)),
-          autoScalerProfile: S.optional(__S(56, __c7, 0)),
+          networkProfile: S.optional(__S(295, __c9, 7)),
+          storageProfile: S.optional(__S(297, __c9, 9)),
+          clusterVMAccessProfile: S.optional(__S(298, __c9, 10)),
+          agentPoolProfiles: S.optional(__S(1057, __c33, 1)),
+          cloudProviderProfile: S.optional(__S(302, __c9, 14)),
+          licenseProfile: S.optional(__S(306, __c9, 18)),
+          autoScalerProfile: S.optional(__S(307, __c9, 19)),
         }),
       ).annotate({
         identifier: "ProvisionedClusterPropertiesInput",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
-          properties: S.optional(__S(119, __c14, 7)),
-          extendedLocation: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(1058, __c33, 2)),
+          extendedLocation: S.optional(__S(160, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3003,7 +2889,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ProvisionedClusterInstancesCreateOrUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUid: S.optional(S.String),
@@ -3012,11 +2902,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "HybridIdentityMetadataPropertiesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
-          properties: __S(121, __c15, 1),
+          properties: __S(1088, __c34, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3028,11 +2918,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PutHybridIdentityMetadataRequest",
       });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customLocationResourceUri: S.String.pipe(T.Label()),
-          extendedLocation: S.optional(__S(6, __c0, 6)),
+          extendedLocation: S.optional(__S(160, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3044,11 +2938,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PutKubernetesVersionsRequest",
       });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customLocationResourceUri: S.String.pipe(T.Label()),
-          extendedLocation: S.optional(__S(6, __c0, 6)),
+          extendedLocation: S.optional(__S(160, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3058,13 +2956,17 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PutVMSkusRequest" });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualNetworkName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3076,28 +2978,32 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateVirtualNetworkRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(32, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(73, __c9, 1)),
-          extendedLocation: S.optional(__S(74, __c9, 2)),
+          properties: S.optional(__S(454, __c14, 6)),
+          extendedLocation: S.optional(__S(455, __c14, 7)),
         }),
       ).annotate({
         identifier: "UpdateVirtualNetworkResponse",
       });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          infraVnetProfile: S.optional(__S(67, __c8, 3)),
-          vipPool: S.optional(__S(69, __c8, 5)),
-          vmipPool: S.optional(__S(69, __c8, 5)),
-          dnsServers: S.optional(__S(1, __c0, 1)),
+          infraVnetProfile: S.optional(__S(449, __c14, 1)),
+          vipPool: S.optional(__S(451, __c14, 3)),
+          vmipPool: S.optional(__S(451, __c14, 3)),
+          dnsServers: S.optional(__S(128, __c4, 0)),
           gateway: S.optional(S.String),
           ipAddressPrefix: S.optional(S.String),
           vlanID: S.optional(S.Number),
@@ -3105,20 +3011,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "VirtualNetworkPropertiesInput",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualNetworkName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(127, __c15, 7)),
-          extendedLocation: S.optional(__S(74, __c9, 2)),
+          properties: S.optional(__S(1216, __c38, 0)),
+          extendedLocation: S.optional(__S(455, __c14, 7)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3130,24 +3032,265 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "VirtualNetworksCreateOrUpdateRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          tags: S.optional(__S(32, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(73, __c9, 1)),
-          extendedLocation: S.optional(__S(74, __c9, 2)),
+          properties: S.optional(__S(454, __c14, 6)),
+          extendedLocation: S.optional(__S(455, __c14, 7)),
         }),
       ).annotate({
         identifier: "VirtualNetworksCreateOrUpdateResponse",
       });
   }
 }
-
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customLocationResourceUri: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{customLocationResourceUri+}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
+            code: 200,
+            apiVersion: "2024-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteKubernetesVersionsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connectedClusterResourceUri: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{connectedClusterResourceUri+}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
+            code: 200,
+            apiVersion: "2024-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProvisionedClusterInstanceRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualNetworkName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
+            code: 200,
+            apiVersion: "2024-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteVirtualNetworkRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customLocationResourceUri: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{customLocationResourceUri+}/providers/Microsoft.HybridContainerService/skus/default",
+            code: 200,
+            apiVersion: "2024-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteVMSkusRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connectedClusterResourceUri: S.String.pipe(T.Label()),
+          agentPoolName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{connectedClusterResourceUri+}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}",
+            code: 200,
+            apiVersion: "2024-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetAgentPoolRequest" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(67, __c2, 3)),
+          tags: S.optional(__S(32, __c1, 0)),
+          extendedLocation: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "GetAgentPoolResponse" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connectedClusterResourceUri: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{connectedClusterResourceUri+}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
+            code: 200,
+            apiVersion: "2024-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHybridIdentityMetadataRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUid: S.optional(S.String),
+          publicKey: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HybridIdentityMetadataProperties",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: __S(1472, __c46, 0),
+        }),
+      ).annotate({
+        identifier: "GetHybridIdentityMetadataResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customLocationResourceUri: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{customLocationResourceUri+}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
+            code: 200,
+            apiVersion: "2024-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetKubernetesVersionsRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          osType: S.optional(S.String),
+          osSku: S.optional(S.String),
+          ready: S.optional(S.Boolean),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "KubernetesVersionReadiness",
+      });
+    case 1:
+      return S.Array(__S(1568, __c49, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          readiness: S.optional(__S(1569, __c49, 1)),
+          upgrades: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "KubernetesPatchVersions" });
+    case 3:
+      return S.Record(S.String, __S(1570, __c49, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          isPreview: S.optional(S.Boolean),
+          patchVersions: S.optional(__S(1571, __c49, 3)),
+        }),
+      ).annotate({
+        identifier: "KubernetesVersionProperties",
+      });
+    case 5:
+      return S.Array(__S(1572, __c49, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          values: S.optional(__S(1573, __c49, 5)),
+        }),
+      ).annotate({
+        identifier: "GetKubernetesVersionsResponseProperties",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          extendedLocation: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1574, __c49, 6)),
+        }),
+      ).annotate({
+        identifier: "GetKubernetesVersionsResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

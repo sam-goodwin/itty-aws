@@ -88,10 +88,10 @@ export class InvalidRequestException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Code: /*@__PURE__*/ S.optional(S.String),
       RequiredParameters: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(3, __c0, 3)).annotate({ identifier: "ParameterList" }),
+        /*@__PURE__*/ S.suspend(() => __S(0, __c0, 0)).annotate({ identifier: "ParameterList" }),
       ),
       MutuallyExclusiveParameters: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(3, __c0, 3)).annotate({ identifier: "ParameterList" }),
+        /*@__PURE__*/ S.suspend(() => __S(0, __c0, 0)).annotate({ identifier: "ParameterList" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(400),
@@ -114,7 +114,7 @@ export class ResourceNotFoundException
       Code: /*@__PURE__*/ S.optional(S.String),
       ResourceType: /*@__PURE__*/ S.optional(S.String),
       ResourceIds: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(3, __c0, 3)).annotate({ identifier: "PolicyIdList" }),
+        /*@__PURE__*/ S.suspend(() => __S(0, __c0, 0)).annotate({ identifier: "PolicyIdList" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(404),
@@ -492,8 +492,8 @@ export const createLifecyclePolicy: API.OperationMethod<
   CreateLifecyclePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateLifecyclePolicyRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<CreateLifecyclePolicyResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<CreateLifecyclePolicyRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<CreateLifecyclePolicyResponse>,
   errors: [InternalServerException, InvalidRequestException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -518,8 +518,8 @@ export const deleteLifecyclePolicy: API.OperationMethod<
   DeleteLifecyclePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteLifecyclePolicyRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DeleteLifecyclePolicyResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteLifecyclePolicyRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<DeleteLifecyclePolicyResponse>,
   errors: [InternalServerException, LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -543,8 +543,8 @@ export const getLifecyclePolicies: API.OperationMethod<
   GetLifecyclePoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetLifecyclePoliciesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetLifecyclePoliciesResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetLifecyclePoliciesRequest>,
+  output: __S(291, __c9, 3) as any as S.Schema<GetLifecyclePoliciesResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -570,8 +570,8 @@ export const getLifecyclePolicy: API.OperationMethod<
   GetLifecyclePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetLifecyclePolicyRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetLifecyclePolicyResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetLifecyclePolicyRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<GetLifecyclePolicyResponse>,
   errors: [InternalServerException, LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -592,8 +592,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -614,8 +614,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<TagResourceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<TagResourceResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -636,8 +636,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<UntagResourceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UntagResourceResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -662,8 +662,8 @@ export const updateLifecyclePolicy: API.OperationMethod<
   UpdateLifecyclePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<UpdateLifecyclePolicyRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UpdateLifecyclePolicyResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<UpdateLifecyclePolicyRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<UpdateLifecyclePolicyResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -680,46 +680,6 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Stages: S.optional(__S(0, __c0, 0)),
-          ExecutionHandlerService: S.optional(S.String),
-          ExecutionHandler: S.optional(S.String),
-          ExecuteOperationOnScriptFailure: S.optional(S.Boolean),
-          ExecutionTimeout: S.optional(S.Number),
-          MaximumRetryCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Script" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Location: S.optional(S.String),
-          Interval: S.optional(S.Number),
-          IntervalUnit: S.optional(S.String),
-          Times: S.optional(__S(3, __c0, 3)),
-          CronExpression: S.optional(S.String),
-          Scripts: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "CreateRule" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Count: S.optional(S.Number),
-          Interval: S.optional(S.Number),
-          IntervalUnit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RetainRule" });
   }
 }
 function __c1(j: number): any {
@@ -727,315 +687,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Count: S.optional(S.Number),
-          Interval: S.optional(S.Number),
-          IntervalUnit: S.optional(S.String),
-          AvailabilityZones: S.optional(__S(3, __c0, 3)),
-          AvailabilityZoneIds: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "FastRestoreRule" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Interval: S.optional(S.Number),
-          IntervalUnit: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CrossRegionCopyRetainRule",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          TargetRegion: S.optional(S.String),
-          Target: S.optional(S.String),
-          Encrypted: S.optional(S.Boolean),
-          CmkArn: S.optional(S.String),
-          CopyTags: S.optional(S.Boolean),
-          RetainRule: S.optional(__S(9, __c1, 1)),
-          DeprecateRule: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "CrossRegionCopyRule" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          TargetAccounts: S.optional(__S(3, __c0, 3)),
-          UnshareInterval: S.optional(S.Number),
-          UnshareIntervalUnit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ShareRule" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ RetentionArchiveTier: S.optional(__S(7, __c0, 7)) }),
-      ).annotate({ identifier: "ArchiveRetainRule" });
-    case 7:
-      return S.suspend(() => S.Struct({ RetainRule: S.optional(__S(14, __c1, 6)) })).annotate({
-        identifier: "ArchiveRule",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          CopyTags: S.optional(S.Boolean),
-          TagsToAdd: S.optional(__S(2, __c0, 2)),
-          VariableTags: S.optional(__S(2, __c0, 2)),
-          CreateRule: S.optional(__S(6, __c0, 6)),
-          RetainRule: S.optional(__S(7, __c0, 7)),
-          FastRestoreRule: S.optional(__S(8, __c1, 0)),
-          CrossRegionCopyRules: S.optional(__S(11, __c1, 3)),
-          ShareRules: S.optional(__S(13, __c1, 5)),
-          DeprecateRule: S.optional(__S(7, __c0, 7)),
-          ArchiveRule: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "Schedule" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ExcludeBootVolume: S.optional(S.Boolean),
-          NoReboot: S.optional(S.Boolean),
-          ExcludeDataVolumeTags: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "Parameters" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          EventType: S.optional(S.String),
-          SnapshotOwner: S.optional(__S(3, __c0, 3)),
-          DescriptionRegex: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventParameters" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String), Parameters: S.optional(__S(19, __c2, 3)) }),
-      ).annotate({ identifier: "EventSource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Encrypted: S.optional(S.Boolean), CmkArn: S.optional(S.String) }),
-      ).annotate({ identifier: "EncryptionConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Target: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(21, __c2, 5)),
-          RetainRule: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "CrossRegionCopyAction" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          CrossRegionCopy: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "Action" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ TargetRegion: S.optional(S.String) })).annotate({
-        identifier: "CrossRegionCopyTarget",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ExcludeBootVolumes: S.optional(S.Boolean),
-          ExcludeVolumeTypes: S.optional(__S(3, __c0, 3)),
-          ExcludeTags: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "Exclusions" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          PolicyType: S.optional(S.String),
-          ResourceTypes: S.optional(__S(0, __c0, 0)),
-          ResourceLocations: S.optional(__S(0, __c0, 0)),
-          TargetTags: S.optional(__S(2, __c0, 2)),
-          Schedules: S.optional(__S(17, __c2, 1)),
-          Parameters: S.optional(__S(18, __c2, 2)),
-          EventSource: S.optional(__S(20, __c2, 4)),
-          Actions: S.optional(__S(25, __c3, 1)),
-          PolicyLanguage: S.optional(S.String),
-          ResourceType: S.optional(S.String),
-          CreateInterval: S.optional(S.Number),
-          RetainInterval: S.optional(S.Number),
-          CopyTags: S.optional(S.Boolean),
-          CrossRegionCopyTargets: S.optional(__S(27, __c3, 3)),
-          ExtendDeletion: S.optional(S.Boolean),
-          Exclusions: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "PolicyDetails" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ExecutionRoleArn: S.optional(S.String),
-          Description: S.optional(S.String),
-          State: S.optional(S.String),
-          PolicyDetails: S.optional(__S(29, __c3, 5)),
-          Tags: S.optional(__S(30, __c3, 6)),
-          DefaultPolicy: S.optional(S.String),
-          CreateInterval: S.optional(S.Number),
-          RetainInterval: S.optional(S.Number),
-          CopyTags: S.optional(S.Boolean),
-          ExtendDeletion: S.optional(S.Boolean),
-          CrossRegionCopyTargets: S.optional(__S(27, __c3, 3)),
-          Exclusions: S.optional(__S(28, __c3, 4)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/policies" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateLifecyclePolicyRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ PolicyId: S.optional(S.String) })).annotate({
-        identifier: "CreateLifecyclePolicyResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ PolicyId: S.String.pipe(T.HttpLabel("PolicyId")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/policies/{PolicyId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteLifecyclePolicyRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteLifecyclePolicyResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          PolicyIds: S.optional(__S(3, __c0, 3)).pipe(T.HttpQuery("policyIds")),
-          State: S.optional(S.String).pipe(T.HttpQuery("state")),
-          ResourceTypes: S.optional(__S(0, __c0, 0)).pipe(T.HttpQuery("resourceTypes")),
-          TargetTags: S.optional(__S(3, __c0, 3)).pipe(T.HttpQuery("targetTags")),
-          TagsToAdd: S.optional(__S(3, __c0, 3)).pipe(T.HttpQuery("tagsToAdd")),
-          DefaultPolicyType: S.optional(S.String).pipe(T.HttpQuery("defaultPolicyType")),
-        }).pipe(T.all(T.Http({ method: "GET", uri: "/policies" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetLifecyclePoliciesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          PolicyId: S.optional(S.String),
-          Description: S.optional(S.String),
-          State: S.optional(S.String),
-          Tags: S.optional(__S(30, __c3, 6)),
-          PolicyType: S.optional(S.String),
-          DefaultPolicy: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "LifecyclePolicySummary" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ Policies: S.optional(__S(37, __c4, 5)) })).annotate({
-        identifier: "GetLifecyclePoliciesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ PolicyId: S.String.pipe(T.HttpLabel("PolicyId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/policies/{PolicyId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetLifecyclePolicyRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          PolicyId: S.optional(S.String),
-          Description: S.optional(S.String),
-          State: S.optional(S.String),
-          StatusMessage: S.optional(S.String),
-          ExecutionRoleArn: S.optional(S.String),
-          DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          DateModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          PolicyDetails: S.optional(__S(29, __c3, 5)),
-          Tags: S.optional(__S(30, __c3, 6)),
-          PolicyArn: S.optional(S.String),
-          DefaultPolicy: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "LifecyclePolicy" });
-    case 1:
-      return S.suspend(() => S.Struct({ Policy: S.optional(__S(40, __c5, 0)) })).annotate({
-        identifier: "GetLifecyclePolicyResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(30, __c3, 6)) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: S.optional(__S(30, __c3, 6)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: S.optional(__S(3, __c0, 3)).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: S.optional(__S(0, __c0, 0)).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1047,20 +700,24 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PolicyId: S.String.pipe(T.HttpLabel("PolicyId")),
           ExecutionRoleArn: S.optional(S.String),
           State: S.optional(S.String),
           Description: S.optional(S.String),
-          PolicyDetails: S.optional(__S(29, __c3, 5)),
+          PolicyDetails: S.optional(__S(219, __c6, 27)),
           CreateInterval: S.optional(S.Number),
           RetainInterval: S.optional(S.Number),
           CopyTags: S.optional(S.Boolean),
           ExtendDeletion: S.optional(S.Boolean),
-          CrossRegionCopyTargets: S.optional(__S(27, __c3, 3)),
-          Exclusions: S.optional(__S(28, __c3, 4)),
+          CrossRegionCopyTargets: S.optional(__S(217, __c6, 25)),
+          Exclusions: S.optional(__S(218, __c6, 26)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/policies/{PolicyId}" }),
@@ -1076,7 +733,374 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ExecutionRoleArn: S.optional(S.String),
+          Description: S.optional(S.String),
+          State: S.optional(S.String),
+          PolicyDetails: S.optional(__S(219, __c6, 27)),
+          Tags: S.optional(__S(160, __c5, 0)),
+          DefaultPolicy: S.optional(S.String),
+          CreateInterval: S.optional(S.Number),
+          RetainInterval: S.optional(S.Number),
+          CopyTags: S.optional(S.Boolean),
+          ExtendDeletion: S.optional(S.Boolean),
+          CrossRegionCopyTargets: S.optional(__S(217, __c6, 25)),
+          Exclusions: S.optional(__S(218, __c6, 26)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/policies" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateLifecyclePolicyRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ PolicyId: S.optional(S.String) })).annotate({
+        identifier: "CreateLifecyclePolicyResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Stages: S.optional(__S(128, __c4, 0)),
+          ExecutionHandlerService: S.optional(S.String),
+          ExecutionHandler: S.optional(S.String),
+          ExecuteOperationOnScriptFailure: S.optional(S.Boolean),
+          ExecutionTimeout: S.optional(S.Number),
+          MaximumRetryCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Script" });
+    case 3:
+      return S.Array(__S(194, __c6, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Location: S.optional(S.String),
+          Interval: S.optional(S.Number),
+          IntervalUnit: S.optional(S.String),
+          Times: S.optional(__S(0, __c0, 0)),
+          CronExpression: S.optional(S.String),
+          Scripts: S.optional(__S(195, __c6, 3)),
+        }),
+      ).annotate({ identifier: "CreateRule" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Count: S.optional(S.Number),
+          Interval: S.optional(S.Number),
+          IntervalUnit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RetainRule" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Count: S.optional(S.Number),
+          Interval: S.optional(S.Number),
+          IntervalUnit: S.optional(S.String),
+          AvailabilityZones: S.optional(__S(0, __c0, 0)),
+          AvailabilityZoneIds: S.optional(__S(0, __c0, 0)),
+        }),
+      ).annotate({ identifier: "FastRestoreRule" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Interval: S.optional(S.Number),
+          IntervalUnit: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CrossRegionCopyRetainRule",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          TargetRegion: S.optional(S.String),
+          Target: S.optional(S.String),
+          Encrypted: S.optional(S.Boolean),
+          CmkArn: S.optional(S.String),
+          CopyTags: S.optional(S.Boolean),
+          RetainRule: S.optional(__S(199, __c6, 7)),
+          DeprecateRule: S.optional(__S(199, __c6, 7)),
+        }),
+      ).annotate({ identifier: "CrossRegionCopyRule" });
+    case 9:
+      return S.Array(__S(200, __c6, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          TargetAccounts: S.optional(__S(0, __c0, 0)),
+          UnshareInterval: S.optional(S.Number),
+          UnshareIntervalUnit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ShareRule" });
+    case 11:
+      return S.Array(__S(202, __c6, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({ RetentionArchiveTier: S.optional(__S(197, __c6, 5)) }),
+      ).annotate({ identifier: "ArchiveRetainRule" });
+    case 13:
+      return S.suspend(() => S.Struct({ RetainRule: S.optional(__S(204, __c6, 12)) })).annotate({
+        identifier: "ArchiveRule",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          CopyTags: S.optional(S.Boolean),
+          TagsToAdd: S.optional(__S(193, __c6, 1)),
+          VariableTags: S.optional(__S(193, __c6, 1)),
+          CreateRule: S.optional(__S(196, __c6, 4)),
+          RetainRule: S.optional(__S(197, __c6, 5)),
+          FastRestoreRule: S.optional(__S(198, __c6, 6)),
+          CrossRegionCopyRules: S.optional(__S(201, __c6, 9)),
+          ShareRules: S.optional(__S(203, __c6, 11)),
+          DeprecateRule: S.optional(__S(197, __c6, 5)),
+          ArchiveRule: S.optional(__S(205, __c6, 13)),
+        }),
+      ).annotate({ identifier: "Schedule" });
+    case 15:
+      return S.Array(__S(206, __c6, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          ExcludeBootVolume: S.optional(S.Boolean),
+          NoReboot: S.optional(S.Boolean),
+          ExcludeDataVolumeTags: S.optional(__S(193, __c6, 1)),
+        }),
+      ).annotate({ identifier: "Parameters" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          EventType: S.optional(S.String),
+          SnapshotOwner: S.optional(__S(0, __c0, 0)),
+          DescriptionRegex: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventParameters" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({ Type: S.optional(S.String), Parameters: S.optional(__S(209, __c6, 17)) }),
+      ).annotate({ identifier: "EventSource" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({ Encrypted: S.optional(S.Boolean), CmkArn: S.optional(S.String) }),
+      ).annotate({ identifier: "EncryptionConfiguration" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          Target: S.optional(S.String),
+          EncryptionConfiguration: S.optional(__S(211, __c6, 19)),
+          RetainRule: S.optional(__S(199, __c6, 7)),
+        }),
+      ).annotate({ identifier: "CrossRegionCopyAction" });
+    case 21:
+      return S.Array(__S(212, __c6, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), CrossRegionCopy: S.optional(__S(213, __c6, 21)) }),
+      ).annotate({ identifier: "Action" });
+    case 23:
+      return S.Array(__S(214, __c6, 22));
+    case 24:
+      return S.suspend(() => S.Struct({ TargetRegion: S.optional(S.String) })).annotate({
+        identifier: "CrossRegionCopyTarget",
+      });
+    case 25:
+      return S.Array(__S(216, __c6, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          ExcludeBootVolumes: S.optional(S.Boolean),
+          ExcludeVolumeTypes: S.optional(__S(0, __c0, 0)),
+          ExcludeTags: S.optional(__S(193, __c6, 1)),
+        }),
+      ).annotate({ identifier: "Exclusions" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          PolicyType: S.optional(S.String),
+          ResourceTypes: S.optional(__S(128, __c4, 0)),
+          ResourceLocations: S.optional(__S(128, __c4, 0)),
+          TargetTags: S.optional(__S(193, __c6, 1)),
+          Schedules: S.optional(__S(207, __c6, 15)),
+          Parameters: S.optional(__S(208, __c6, 16)),
+          EventSource: S.optional(__S(210, __c6, 18)),
+          Actions: S.optional(__S(215, __c6, 23)),
+          PolicyLanguage: S.optional(S.String),
+          ResourceType: S.optional(S.String),
+          CreateInterval: S.optional(S.Number),
+          RetainInterval: S.optional(S.Number),
+          CopyTags: S.optional(S.Boolean),
+          CrossRegionCopyTargets: S.optional(__S(217, __c6, 25)),
+          ExtendDeletion: S.optional(S.Boolean),
+          Exclusions: S.optional(__S(218, __c6, 26)),
+        }),
+      ).annotate({ identifier: "PolicyDetails" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PolicyId: S.String.pipe(T.HttpLabel("PolicyId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/policies/{PolicyId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteLifecyclePolicyRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteLifecyclePolicyResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PolicyIds: S.optional(__S(0, __c0, 0)).pipe(T.HttpQuery("policyIds")),
+          State: S.optional(S.String).pipe(T.HttpQuery("state")),
+          ResourceTypes: S.optional(__S(128, __c4, 0)).pipe(T.HttpQuery("resourceTypes")),
+          TargetTags: S.optional(__S(0, __c0, 0)).pipe(T.HttpQuery("targetTags")),
+          TagsToAdd: S.optional(__S(0, __c0, 0)).pipe(T.HttpQuery("tagsToAdd")),
+          DefaultPolicyType: S.optional(S.String).pipe(T.HttpQuery("defaultPolicyType")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/policies" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetLifecyclePoliciesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PolicyId: S.optional(S.String),
+          Description: S.optional(S.String),
+          State: S.optional(S.String),
+          Tags: S.optional(__S(160, __c5, 0)),
+          PolicyType: S.optional(S.String),
+          DefaultPolicy: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LifecyclePolicySummary" });
+    case 2:
+      return S.Array(__S(289, __c9, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ Policies: S.optional(__S(290, __c9, 2)) })).annotate({
+        identifier: "GetLifecyclePoliciesResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PolicyId: S.String.pipe(T.HttpLabel("PolicyId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/policies/{PolicyId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetLifecyclePolicyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PolicyId: S.optional(S.String),
+          Description: S.optional(S.String),
+          State: S.optional(S.String),
+          StatusMessage: S.optional(S.String),
+          ExecutionRoleArn: S.optional(S.String),
+          DateCreated: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          DateModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          PolicyDetails: S.optional(__S(219, __c6, 27)),
+          Tags: S.optional(__S(160, __c5, 0)),
+          PolicyArn: S.optional(S.String),
+          DefaultPolicy: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LifecyclePolicy" });
+    case 2:
+      return S.suspend(() => S.Struct({ Policy: S.optional(__S(321, __c10, 1)) })).annotate({
+        identifier: "GetLifecyclePolicyResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(160, __c5, 0)) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          Tags: S.optional(__S(160, __c5, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

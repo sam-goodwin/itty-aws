@@ -127,8 +127,8 @@ export const createDataDeletionRequest: API.OperationMethod<
   CreateDataDeletionRequestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateDataDeletionRequestRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataDeletionRequest>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDataDeletionRequestRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<DataDeletionRequest>,
   errors: [Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -142,8 +142,8 @@ export const createDataDeletionRequestsPreview: API.OperationMethod<
   CreateDataDeletionRequestsPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateDataDeletionRequestsPreviewRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DataDeletionPreview>,
+  input: __S(12, __c3, 0) as any as S.Schema<CreateDataDeletionRequestsPreviewRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<DataDeletionPreview>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -157,8 +157,8 @@ export const getDataDeletionRequest: API.OperationMethod<
   GetDataDeletionRequestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetDataDeletionRequestRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataDeletionRequest>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetDataDeletionRequestRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<DataDeletionRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -172,8 +172,8 @@ export const listDataDeletionRequests: API.OperationMethod<
   ListDataDeletionRequestsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListDataDeletionRequestsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PaginatedDataDeletionRequestList>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListDataDeletionRequestsRequest>,
+  output: __S(22, __c5, 2) as any as S.Schema<PaginatedDataDeletionRequestList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -181,6 +181,27 @@ export const listDataDeletionRequests: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          query: S.String,
+          variables: S.optional(__S(5, __c1, 1)),
+          submission_id: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/data_deletion_requests/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDataDeletionRequestRequest",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -194,31 +215,18 @@ function __c0(j: number): any {
         identifier: "CreateDataDeletionRequestRequestVariablesValue",
       });
     case 1:
-      return S.Record(S.String, __S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          query: S.String,
-          variables: S.optional(__S(1, __c0, 1)),
-          submission_id: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/data_deletion_requests/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDataDeletionRequestRequest",
-      });
-    case 3:
+      return S.Record(S.String, __S(4, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           status: S.String,
           query: S.String,
-          variables: __S(1, __c0, 1),
+          variables: __S(5, __c1, 1),
           submission_id: S.NullOr(S.String),
           count: S.NullOr(S.Number),
           created_by_id: S.NullOr(S.Number),
@@ -229,12 +237,16 @@ function __c0(j: number): any {
           stats_calculated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "DataDeletionRequest" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           query: S.String,
-          variables: S.optional(__S(1, __c0, 1)),
+          variables: S.optional(__S(5, __c1, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -245,13 +257,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDataDeletionRequestsPreviewRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
         }),
       ).annotate({ identifier: "DataDeletionPreview" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -266,7 +282,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetDataDeletionRequestRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -282,26 +302,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListDataDeletionRequestsRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(3, __c0, 3));
     case 1:
+      return S.Array(__S(8, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(8, __c1, 0),
+          results: __S(21, __c5, 1),
         }),
       ).annotate({
         identifier: "PaginatedDataDeletionRequestList",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

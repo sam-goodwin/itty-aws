@@ -819,8 +819,8 @@ export const cloneZone: API.OperationMethod<
   CloneZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CloneZoneRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ZoneResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<CloneZoneRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<ZoneResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -834,8 +834,8 @@ export const createMoveCode: API.OperationMethod<
   CreateMoveCodeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateMoveCodeRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<MoveCodeResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<CreateMoveCodeRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<MoveCodeResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -849,8 +849,8 @@ export const createRecordSet: API.OperationMethod<
   CreateRecordSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateRecordSetRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<RecordSetResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<CreateRecordSetRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<RecordSetResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -864,8 +864,8 @@ export const createZone: API.OperationMethod<
   CreateZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateZoneRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ZoneResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<CreateZoneRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<ZoneResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -879,8 +879,8 @@ export const deleteMoveCode: API.OperationMethod<
   DeleteMoveCodeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteMoveCodeRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Message>,
+  input: __S(208, __c26, 0) as any as S.Schema<DeleteMoveCodeRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -894,8 +894,8 @@ export const deleteRecordSet: API.OperationMethod<
   DeleteRecordSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteRecordSetRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Message>,
+  input: __S(224, __c28, 0) as any as S.Schema<DeleteRecordSetRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -909,8 +909,8 @@ export const deleteZone: API.OperationMethod<
   DeleteZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteZoneRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Message>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteZoneRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -924,8 +924,8 @@ export const exportRecordSets: API.OperationMethod<
   ExportRecordSetsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ExportRecordSetsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ZoneDataExchange>,
+  input: __S(8, __c1, 0) as any as S.Schema<ExportRecordSetsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ZoneDataExchange>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -939,8 +939,8 @@ export const getRecordSet: API.OperationMethod<
   GetRecordSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetRecordSetRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<RecordSetResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetRecordSetRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<RecordSetResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -954,8 +954,8 @@ export const getZone: API.OperationMethod<
   GetZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetZoneRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ZoneResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetZoneRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<ZoneResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -969,8 +969,8 @@ export const getZone2: API.OperationMethod<
   GetZone2Error,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetZoneRequest2>,
-  output: __S(22, __c2, 6) as any as S.Schema<Message>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetZoneRequest2>,
+  output: __S(216, __c27, 0) as any as S.Schema<Message>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -984,8 +984,8 @@ export const importRecordSets: API.OperationMethod<
   ImportRecordSetsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ImportRecordSetsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ImportRecordSetsResponse>,
+  input: __S(42, __c5, 2) as any as S.Schema<ImportRecordSetsRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<ImportRecordSetsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1001,8 +1001,8 @@ export const listRecordSets: API.PaginatedOperationMethod<
   RecordSet
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(37, __c4, 5) as any as S.Schema<ListRecordSetsRequest>,
-    output: __S(39, __c4, 7) as any as S.Schema<ListRecordSetsResponse>,
+    input: __S(48, __c6, 0) as any as S.Schema<ListRecordSetsRequest>,
+    output: __S(50, __c6, 2) as any as S.Schema<ListRecordSetsResponse>,
     errors: [BadRequest, NotFound, UnknownStackitError],
     protocol: StackitProtocol,
     retry: Retry.Retry,
@@ -1027,8 +1027,8 @@ export const listZones: API.PaginatedOperationMethod<
   Zone
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(40, __c5, 0) as any as S.Schema<ListZonesRequest>,
-    output: __S(42, __c5, 2) as any as S.Schema<ListZonesResponse>,
+    input: __S(56, __c7, 0) as any as S.Schema<ListZonesRequest>,
+    output: __S(58, __c7, 2) as any as S.Schema<ListZonesResponse>,
     errors: [BadRequest, NotFound, UnknownStackitError],
     protocol: StackitProtocol,
     retry: Retry.Retry,
@@ -1051,8 +1051,8 @@ export const moveZone: API.OperationMethod<
   MoveZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<MoveZoneRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Message>,
+  input: __S(64, __c8, 0) as any as S.Schema<MoveZoneRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1066,8 +1066,8 @@ export const partialUpdateRecord: API.OperationMethod<
   PartialUpdateRecordError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<PartialUpdateRecordRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Message>,
+  input: __S(72, __c9, 0) as any as S.Schema<PartialUpdateRecordRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1081,8 +1081,8 @@ export const partialUpdateRecordSet: API.OperationMethod<
   PartialUpdateRecordSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<PartialUpdateRecordSetRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Message>,
+  input: __S(80, __c10, 0) as any as S.Schema<PartialUpdateRecordSetRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1096,8 +1096,8 @@ export const partialUpdateZone: API.OperationMethod<
   PartialUpdateZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<PartialUpdateZoneRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ZoneResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<PartialUpdateZoneRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<ZoneResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1111,8 +1111,8 @@ export const restoreRecordSet: API.OperationMethod<
   RestoreRecordSetError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<RestoreRecordSetRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Message>,
+  input: __S(96, __c12, 0) as any as S.Schema<RestoreRecordSetRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Message>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1126,8 +1126,8 @@ export const restoreZone: API.OperationMethod<
   RestoreZoneError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<RestoreZoneRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Message>,
+  input: __S(104, __c13, 0) as any as S.Schema<RestoreZoneRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Message>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1141,8 +1141,8 @@ export const validateMoveCode: API.OperationMethod<
   ValidateMoveCodeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ValidateMoveCodeRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Message>,
+  input: __S(112, __c14, 0) as any as S.Schema<ValidateMoveCodeRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<Message>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1150,265 +1150,6 @@ export const validateMoveCode: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          zoneId: S.String.pipe(T.Label()),
-          adjustRecords: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          dnsName: S.String,
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/zones/{zoneId}/clone",
-            code: 200,
-            baseUrl: "https://dns.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CloneZoneRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          observabilityInstanceId: S.String,
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DomainObservabilityExtension",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          observabilityExtension: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "DomainExtensions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Label" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          acl: S.String,
-          active: S.optional(S.Boolean),
-          contactEmail: S.optional(S.String),
-          creationFinished: S.String,
-          creationStarted: S.String,
-          defaultTTL: S.Number,
-          description: S.optional(S.String),
-          dnsName: S.String,
-          error: S.optional(S.String),
-          expireTime: S.Number,
-          extensions: S.optional(__S(2, __c0, 2)),
-          id: S.String,
-          isReverseZone: S.optional(S.Boolean),
-          labels: S.optional(__S(4, __c0, 4)),
-          labelsMap: S.optional(__S(5, __c0, 5)),
-          name: S.String,
-          negativeCache: S.Number,
-          primaries: S.optional(__S(6, __c0, 6)),
-          primaryNameServer: S.String,
-          recordCount: S.optional(S.Number),
-          refreshTime: S.Number,
-          retryTime: S.Number,
-          serialNumber: S.Number,
-          state: S.String,
-          type: S.String,
-          updateFinished: S.String,
-          updateStarted: S.String,
-          visibility: S.String,
-        }),
-      ).annotate({ identifier: "Zone" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          zone: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "ZoneResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          zoneId: S.String.pipe(T.Label()),
-          ttl: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/zones/{zoneId}/move-code",
-            code: 200,
-            baseUrl: "https://dns.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateMoveCodeRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          expiresAt: S.String,
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MoveCodeResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.String,
-        }),
-      ).annotate({ identifier: "RecordPayload" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          zoneId: S.String.pipe(T.Label()),
-          comment: S.optional(S.String),
-          name: S.String,
-          records: __S(12, __c1, 4),
-          ttl: S.optional(S.Number),
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/zones/{zoneId}/rrsets",
-            code: 200,
-            baseUrl: "https://dns.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateRecordSetRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.String,
-          id: S.String,
-        }),
-      ).annotate({ identifier: "Record" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.optional(S.Boolean),
-          comment: S.optional(S.String),
-          creationFinished: S.String,
-          creationStarted: S.String,
-          error: S.optional(S.String),
-          id: S.String,
-          name: S.String,
-          records: __S(15, __c1, 7),
-          state: S.String,
-          ttl: S.Number,
-          type: S.String,
-          updateFinished: S.String,
-          updateStarted: S.String,
-        }),
-      ).annotate({ identifier: "RecordSet" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          rrset: __S(16, __c2, 0),
-        }),
-      ).annotate({ identifier: "RecordSetResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          observabilityInstanceId: S.String,
-        }),
-      ).annotate({
-        identifier: "ZoneObservabilityExtension",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          observabilityExtension: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "ZoneExtensions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          acl: S.optional(S.String),
-          contactEmail: S.optional(S.String),
-          defaultTTL: S.optional(S.Number),
-          description: S.optional(S.String),
-          dnsName: S.String,
-          expireTime: S.optional(S.Number),
-          extensions: S.optional(__S(19, __c2, 3)),
-          isReverseZone: S.optional(S.Boolean),
-          labelsMap: S.optional(__S(5, __c0, 5)),
-          name: S.String,
-          negativeCache: S.optional(S.Number),
-          primaries: S.optional(__S(6, __c0, 6)),
-          refreshTime: S.optional(S.Number),
-          retryTime: S.optional(S.Number),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/zones",
-            code: 200,
-            baseUrl: "https://dns.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateZoneRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          zoneId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/projects/{projectId}/zones/{zoneId}/move-code",
-            code: 200,
-            baseUrl: "https://dns.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteMoveCodeRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Message" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          zoneId: S.String.pipe(T.Label()),
-          rrSetId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/projects/{projectId}/zones/{zoneId}/rrsets/{rrSetId}",
-            code: 200,
-            baseUrl: "https://dns.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRecordSetRequest" });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1424,7 +1165,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteZoneRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1440,25 +1185,29 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ExportRecordSetsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
-          content: S.optional(__S(6, __c0, 6)),
+          content: S.optional(__S(128, __c16, 0)),
           name: S.optional(S.String),
           ttl: S.optional(S.Number),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecordDataExchange" });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          rrSets: S.optional(__S(27, __c3, 3)),
+          rrSets: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "ZoneDataExchange" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1473,7 +1222,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRecordSetRequest" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1487,7 +1240,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetZoneRequest" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1503,13 +1260,13 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GetZoneRequest2" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
-          content: S.optional(__S(6, __c0, 6)),
+          content: S.optional(__S(128, __c16, 0)),
           name: S.optional(S.String),
           ttl: S.optional(S.Number),
           type: S.optional(S.String),
@@ -1518,7 +1275,7 @@ function __c4(j: number): any {
         identifier: "ZoneModelsImportRecordModel",
       });
     case 1:
-      return S.Array(__S(32, __c4, 0));
+      return S.Array(__S(40, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1526,7 +1283,7 @@ function __c4(j: number): any {
           zoneId: S.String.pipe(T.Label()),
           format: S.optional(S.String.pipe(T.Query())),
           importType: S.optional(S.String.pipe(T.Query())),
-          rrSets: S.optional(__S(33, __c4, 1)),
+          rrSets: S.optional(__S(41, __c5, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1551,10 +1308,14 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          summary: __S(35, __c4, 3),
+          summary: __S(43, __c5, 3),
         }),
       ).annotate({ identifier: "ImportRecordSetsResponse" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1602,21 +1363,21 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRecordSetsRequest" });
-    case 6:
-      return S.Array(__S(16, __c2, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(178, __c22, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           itemsPerPage: S.Number,
           message: S.optional(S.String),
-          rrSets: __S(38, __c4, 6),
+          rrSets: __S(49, __c6, 1),
           totalItems: S.Number,
           totalPages: S.Number,
         }),
       ).annotate({ identifier: "ListRecordSetsResponse" });
   }
 }
-function __c5(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1655,8 +1416,8 @@ function __c5(j: number): any {
           updateFinished_lt_: S.optional(S.String.pipe(T.Query("updateFinished[lt]"))),
           updateFinished_gte_: S.optional(S.String.pipe(T.Query("updateFinished[gte]"))),
           updateFinished_lte_: S.optional(S.String.pipe(T.Query("updateFinished[lte]"))),
-          labelKey_eq_: S.optional(__S(6, __c0, 6).pipe(T.Query("labelKey[eq]"))),
-          labelValue_eq_: S.optional(__S(6, __c0, 6).pipe(T.Query("labelValue[eq]"))),
+          labelKey_eq_: S.optional(__S(128, __c16, 0).pipe(T.Query("labelKey[eq]"))),
+          labelValue_eq_: S.optional(__S(128, __c16, 0).pipe(T.Query("labelValue[eq]"))),
           orderBy_dnsName_: S.optional(S.String.pipe(T.Query("orderBy[dnsName]"))),
           orderBy_name_: S.optional(S.String.pipe(T.Query("orderBy[name]"))),
           orderBy_recordCount_: S.optional(S.String.pipe(T.Query("orderBy[recordCount]"))),
@@ -1678,7 +1439,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListZonesRequest" });
     case 1:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(__S(141, __c17, 5));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1686,10 +1447,14 @@ function __c5(j: number): any {
           message: S.optional(S.String),
           totalItems: S.Number,
           totalPages: S.Number,
-          zones: __S(41, __c5, 1),
+          zones: __S(57, __c7, 1),
         }),
       ).annotate({ identifier: "ListZonesResponse" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1704,14 +1469,18 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MoveZoneRequest" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           zoneId: S.String.pipe(T.Label()),
           rrSetId: S.String.pipe(T.Label()),
           action: S.String,
-          records: __S(12, __c1, 4),
+          records: __S(185, __c23, 1),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1723,7 +1492,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PartialUpdateRecordRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1731,7 +1504,7 @@ function __c5(j: number): any {
           rrSetId: S.String.pipe(T.Label()),
           comment: S.optional(S.String),
           name: S.optional(S.String),
-          records: S.optional(__S(12, __c1, 4)),
+          records: S.optional(__S(185, __c23, 1)),
           ttl: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -1744,7 +1517,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PartialUpdateRecordSetRequest",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1754,11 +1531,11 @@ function __c5(j: number): any {
           defaultTTL: S.optional(S.Number),
           description: S.optional(S.String),
           expireTime: S.optional(S.Number),
-          extensions: S.optional(__S(19, __c2, 3)),
-          labelsMap: S.optional(__S(5, __c0, 5)),
+          extensions: S.optional(__S(201, __c25, 1)),
+          labelsMap: S.optional(__S(140, __c17, 4)),
           name: S.optional(S.String),
           negativeCache: S.optional(S.Number),
-          primaries: S.optional(__S(6, __c0, 6)),
+          primaries: S.optional(__S(128, __c16, 0)),
           refreshTime: S.optional(S.Number),
           retryTime: S.optional(S.Number),
         }).pipe(
@@ -1770,7 +1547,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PartialUpdateZoneRequest" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1787,7 +1568,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "RestoreRecordSetRequest" });
   }
 }
-function __c6(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1803,7 +1584,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RestoreZoneRequest" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1820,7 +1605,309 @@ function __c6(j: number): any {
       ).annotate({ identifier: "ValidateMoveCodeRequest" });
   }
 }
-
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          zoneId: S.String.pipe(T.Label()),
+          adjustRecords: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          dnsName: S.String,
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/zones/{zoneId}/clone",
+            code: 200,
+            baseUrl: "https://dns.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CloneZoneRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          observabilityInstanceId: S.String,
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DomainObservabilityExtension",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          observabilityExtension: S.optional(__S(136, __c17, 0)),
+        }),
+      ).annotate({ identifier: "DomainExtensions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Label" });
+    case 3:
+      return S.Array(__S(138, __c17, 2));
+    case 4:
+      return S.Record(S.String, S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          acl: S.String,
+          active: S.optional(S.Boolean),
+          contactEmail: S.optional(S.String),
+          creationFinished: S.String,
+          creationStarted: S.String,
+          defaultTTL: S.Number,
+          description: S.optional(S.String),
+          dnsName: S.String,
+          error: S.optional(S.String),
+          expireTime: S.Number,
+          extensions: S.optional(__S(137, __c17, 1)),
+          id: S.String,
+          isReverseZone: S.optional(S.Boolean),
+          labels: S.optional(__S(139, __c17, 3)),
+          labelsMap: S.optional(__S(140, __c17, 4)),
+          name: S.String,
+          negativeCache: S.Number,
+          primaries: S.optional(__S(128, __c16, 0)),
+          primaryNameServer: S.String,
+          recordCount: S.optional(S.Number),
+          refreshTime: S.Number,
+          retryTime: S.Number,
+          serialNumber: S.Number,
+          state: S.String,
+          type: S.String,
+          updateFinished: S.String,
+          updateStarted: S.String,
+          visibility: S.String,
+        }),
+      ).annotate({ identifier: "Zone" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          zone: __S(141, __c17, 5),
+        }),
+      ).annotate({ identifier: "ZoneResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          zoneId: S.String.pipe(T.Label()),
+          ttl: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/zones/{zoneId}/move-code",
+            code: 200,
+            baseUrl: "https://dns.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateMoveCodeRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          expiresAt: S.String,
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MoveCodeResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          zoneId: S.String.pipe(T.Label()),
+          comment: S.optional(S.String),
+          name: S.String,
+          records: __S(185, __c23, 1),
+          ttl: S.optional(S.Number),
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/zones/{zoneId}/rrsets",
+            code: 200,
+            baseUrl: "https://dns.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateRecordSetRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          rrset: __S(178, __c22, 2),
+        }),
+      ).annotate({ identifier: "RecordSetResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.String,
+          id: S.String,
+        }),
+      ).annotate({ identifier: "Record" });
+    case 1:
+      return S.Array(__S(176, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.optional(S.Boolean),
+          comment: S.optional(S.String),
+          creationFinished: S.String,
+          creationStarted: S.String,
+          error: S.optional(S.String),
+          id: S.String,
+          name: S.String,
+          records: __S(177, __c22, 1),
+          state: S.String,
+          ttl: S.Number,
+          type: S.String,
+          updateFinished: S.String,
+          updateStarted: S.String,
+        }),
+      ).annotate({ identifier: "RecordSet" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.String,
+        }),
+      ).annotate({ identifier: "RecordPayload" });
+    case 1:
+      return S.Array(__S(184, __c23, 0));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          acl: S.optional(S.String),
+          contactEmail: S.optional(S.String),
+          defaultTTL: S.optional(S.Number),
+          description: S.optional(S.String),
+          dnsName: S.String,
+          expireTime: S.optional(S.Number),
+          extensions: S.optional(__S(201, __c25, 1)),
+          isReverseZone: S.optional(S.Boolean),
+          labelsMap: S.optional(__S(140, __c17, 4)),
+          name: S.String,
+          negativeCache: S.optional(S.Number),
+          primaries: S.optional(__S(128, __c16, 0)),
+          refreshTime: S.optional(S.Number),
+          retryTime: S.optional(S.Number),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/zones",
+            code: 200,
+            baseUrl: "https://dns.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateZoneRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          observabilityInstanceId: S.String,
+        }),
+      ).annotate({
+        identifier: "ZoneObservabilityExtension",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          observabilityExtension: S.optional(__S(200, __c25, 0)),
+        }),
+      ).annotate({ identifier: "ZoneExtensions" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          zoneId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/projects/{projectId}/zones/{zoneId}/move-code",
+            code: 200,
+            baseUrl: "https://dns.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteMoveCodeRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Message" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          zoneId: S.String.pipe(T.Label()),
+          rrSetId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/projects/{projectId}/zones/{zoneId}/rrsets/{rrSetId}",
+            code: 200,
+            baseUrl: "https://dns.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRecordSetRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

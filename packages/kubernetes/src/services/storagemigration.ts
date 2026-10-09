@@ -884,14 +884,14 @@ export const createStoragemigrationV1beta1StorageVersionMigration: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    12,
-    __c1,
-    4,
+    352,
+    __c22,
+    0,
   ) as any as S.Schema<CreateStoragemigrationV1beta1StorageVersionMigrationRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    369,
+    __c23,
+    1,
   ) as any as S.Schema<IoK8sApiStoragemigrationV1beta1StorageVersionMigration>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -907,11 +907,11 @@ export const createStoragemigrationV1StorageVersionMigration: API.OperationMetho
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    15,
-    __c1,
-    7,
+    416,
+    __c26,
+    0,
   ) as any as S.Schema<CreateStoragemigrationV1StorageVersionMigrationRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
+  output: __S(433, __c27, 1) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -926,11 +926,11 @@ export const deleteStoragemigrationV1beta1CollectionStorageVersionMigration: API
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18,
-    __c2,
-    2,
+    448,
+    __c28,
+    0,
   ) as any as S.Schema<DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(468, __c29, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -948,11 +948,11 @@ export const deleteStoragemigrationV1beta1StorageVersionMigration: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    25,
-    __c3,
-    1,
+    496,
+    __c31,
+    0,
   ) as any as S.Schema<DeleteStoragemigrationV1beta1StorageVersionMigrationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(468, __c29, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -967,11 +967,11 @@ export const deleteStoragemigrationV1CollectionStorageVersionMigration: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    26,
-    __c3,
-    2,
+    512,
+    __c32,
+    0,
   ) as any as S.Schema<DeleteStoragemigrationV1CollectionStorageVersionMigrationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(468, __c29, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -986,11 +986,11 @@ export const deleteStoragemigrationV1StorageVersionMigration: API.OperationMetho
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    27,
-    __c3,
-    3,
+    528,
+    __c33,
+    0,
   ) as any as S.Schema<DeleteStoragemigrationV1StorageVersionMigrationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(468, __c29, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1004,8 +1004,8 @@ export const getStoragemigrationAPIGroup: API.OperationMethod<
   GetStoragemigrationAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetStoragemigrationAPIGroupRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetStoragemigrationAPIGroupRequest>,
+  output: __S(549, __c34, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1019,8 +1019,8 @@ export const getStoragemigrationV1APIResources: API.OperationMethod<
   GetStoragemigrationV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetStoragemigrationV1APIResourcesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetStoragemigrationV1APIResourcesRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1034,8 +1034,8 @@ export const getStoragemigrationV1beta1APIResources: API.OperationMethod<
   GetStoragemigrationV1beta1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetStoragemigrationV1beta1APIResourcesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetStoragemigrationV1beta1APIResourcesRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1050,14 +1050,14 @@ export const listStoragemigrationV1beta1StorageVersionMigration: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    39,
-    __c4,
-    7,
+    48,
+    __c3,
+    0,
   ) as any as S.Schema<ListStoragemigrationV1beta1StorageVersionMigrationRequest>,
   output: __S(
-    41,
-    __c5,
-    1,
+    50,
+    __c3,
+    2,
   ) as any as S.Schema<IoK8sApiStoragemigrationV1beta1StorageVersionMigrationList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -1072,11 +1072,11 @@ export const listStoragemigrationV1StorageVersionMigration: API.OperationMethod<
   ListStoragemigrationV1StorageVersionMigrationError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListStoragemigrationV1StorageVersionMigrationRequest>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListStoragemigrationV1StorageVersionMigrationRequest>,
   output: __S(
-    44,
-    __c5,
-    4,
+    66,
+    __c4,
+    2,
   ) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigrationList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -1096,14 +1096,14 @@ export const patchStoragemigrationV1beta1StorageVersionMigration: API.OperationM
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    45,
+    80,
     __c5,
-    5,
+    0,
   ) as any as S.Schema<PatchStoragemigrationV1beta1StorageVersionMigrationRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    369,
+    __c23,
+    1,
   ) as any as S.Schema<IoK8sApiStoragemigrationV1beta1StorageVersionMigration>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -1123,14 +1123,14 @@ export const patchStoragemigrationV1beta1StorageVersionMigrationStatus: API.Oper
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    46,
-    __c5,
-    6,
+    96,
+    __c6,
+    0,
   ) as any as S.Schema<PatchStoragemigrationV1beta1StorageVersionMigrationStatusRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    369,
+    __c23,
+    1,
   ) as any as S.Schema<IoK8sApiStoragemigrationV1beta1StorageVersionMigration>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -1145,8 +1145,12 @@ export const patchStoragemigrationV1StorageVersionMigration: API.OperationMethod
   PatchStoragemigrationV1StorageVersionMigrationError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<PatchStoragemigrationV1StorageVersionMigrationRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
+  input: __S(
+    112,
+    __c7,
+    0,
+  ) as any as S.Schema<PatchStoragemigrationV1StorageVersionMigrationRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1161,11 +1165,11 @@ export const patchStoragemigrationV1StorageVersionMigrationStatus: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    48,
-    __c6,
+    128,
+    __c8,
     0,
   ) as any as S.Schema<PatchStoragemigrationV1StorageVersionMigrationStatusRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
+  output: __S(433, __c27, 1) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1180,14 +1184,14 @@ export const readStoragemigrationV1beta1StorageVersionMigration: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    144,
+    __c9,
+    0,
   ) as any as S.Schema<ReadStoragemigrationV1beta1StorageVersionMigrationRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    369,
+    __c23,
+    1,
   ) as any as S.Schema<IoK8sApiStoragemigrationV1beta1StorageVersionMigration>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -1205,14 +1209,14 @@ export const readStoragemigrationV1beta1StorageVersionMigrationStatus: API.Opera
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    160,
+    __c10,
+    0,
   ) as any as S.Schema<ReadStoragemigrationV1beta1StorageVersionMigrationStatusRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    369,
+    __c23,
+    1,
   ) as any as S.Schema<IoK8sApiStoragemigrationV1beta1StorageVersionMigration>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -1227,8 +1231,12 @@ export const readStoragemigrationV1StorageVersionMigration: API.OperationMethod<
   ReadStoragemigrationV1StorageVersionMigrationError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ReadStoragemigrationV1StorageVersionMigrationRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
+  input: __S(
+    176,
+    __c11,
+    0,
+  ) as any as S.Schema<ReadStoragemigrationV1StorageVersionMigrationRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1243,11 +1251,11 @@ export const readStoragemigrationV1StorageVersionMigrationStatus: API.OperationM
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    52,
-    __c6,
-    4,
+    192,
+    __c12,
+    0,
   ) as any as S.Schema<ReadStoragemigrationV1StorageVersionMigrationStatusRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
+  output: __S(433, __c27, 1) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1266,14 +1274,14 @@ export const replaceStoragemigrationV1beta1StorageVersionMigration: API.Operatio
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    53,
-    __c6,
-    5,
+    208,
+    __c13,
+    0,
   ) as any as S.Schema<ReplaceStoragemigrationV1beta1StorageVersionMigrationRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    369,
+    __c23,
+    1,
   ) as any as S.Schema<IoK8sApiStoragemigrationV1beta1StorageVersionMigration>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -1293,14 +1301,14 @@ export const replaceStoragemigrationV1beta1StorageVersionMigrationStatus: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    54,
-    __c6,
-    6,
+    224,
+    __c14,
+    0,
   ) as any as S.Schema<ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    369,
+    __c23,
+    1,
   ) as any as S.Schema<IoK8sApiStoragemigrationV1beta1StorageVersionMigration>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -1316,11 +1324,11 @@ export const replaceStoragemigrationV1StorageVersionMigration: API.OperationMeth
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    240,
+    __c15,
+    0,
   ) as any as S.Schema<ReplaceStoragemigrationV1StorageVersionMigrationRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
+  output: __S(433, __c27, 1) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1335,11 +1343,11 @@ export const replaceStoragemigrationV1StorageVersionMigrationStatus: API.Operati
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    56,
-    __c7,
+    256,
+    __c16,
     0,
   ) as any as S.Schema<ReplaceStoragemigrationV1StorageVersionMigrationStatusRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
+  output: __S(433, __c27, 1) as any as S.Schema<IoK8sApiStoragemigrationV1StorageVersionMigration>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1354,11 +1362,11 @@ export const watchStoragemigrationV1beta1StorageVersionMigration: API.OperationM
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    57,
-    __c7,
-    1,
+    272,
+    __c17,
+    0,
   ) as any as S.Schema<WatchStoragemigrationV1beta1StorageVersionMigrationRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(288, __c18, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1373,11 +1381,11 @@ export const watchStoragemigrationV1beta1StorageVersionMigrationList: API.Operat
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    59,
-    __c7,
-    3,
+    304,
+    __c19,
+    0,
   ) as any as S.Schema<WatchStoragemigrationV1beta1StorageVersionMigrationListRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(288, __c18, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1391,8 +1399,12 @@ export const watchStoragemigrationV1StorageVersionMigration: API.OperationMethod
   WatchStoragemigrationV1StorageVersionMigrationError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<WatchStoragemigrationV1StorageVersionMigrationRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(
+    320,
+    __c20,
+    0,
+  ) as any as S.Schema<WatchStoragemigrationV1StorageVersionMigrationRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1407,11 +1419,11 @@ export const watchStoragemigrationV1StorageVersionMigrationList: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    336,
+    __c21,
+    0,
   ) as any as S.Schema<WatchStoragemigrationV1StorageVersionMigrationListRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(288, __c18, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1421,70 +1433,12 @@ export const watchStoragemigrationV1StorageVersionMigrationList: API.OperationMe
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/apis/storagemigration.k8s.io/v1/", code: 200 }),
+        ),
       ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1, __c0, 1)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          managedFields: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5, __c0, 5)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.String,
-          resource: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1GroupResource",
+        identifier: "GetStoragemigrationV1APIResourcesRequest",
       });
   }
 }
@@ -1493,99 +1447,32 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(7, __c0, 7),
+          categories: S.optional(__S(384, __c24, 0)),
+          group: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+          namespaced: S.Boolean,
+          shortNames: S.optional(__S(384, __c24, 0)),
+          singularName: S.String,
+          storageVersionHash: S.optional(S.String),
+          verbs: __S(384, __c24, 0),
+          version: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "IoK8sApiStoragemigrationV1beta1StorageVersionMigrationSpec",
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lastTransitionTime: S.String,
-          message: S.optional(S.String),
-          observedGeneration: S.optional(S.Number),
-          reason: S.String,
-          status: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Condition",
-      });
+      return S.Array(__S(16, __c1, 0));
     case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(__S(10, __c1, 2)),
-          resourceVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStoragemigrationV1beta1StorageVersionMigrationStatus",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-          status: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStoragemigrationV1beta1StorageVersionMigrationRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
+          groupVersion: S.String,
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-          status: S.optional(__S(11, __c1, 3)),
+          resources: __S(17, __c1, 1),
         }),
       ).annotate({
-        identifier: "IoK8sApiStoragemigrationV1beta1StorageVersionMigration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(__S(10, __c1, 2)),
-          resourceVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStoragemigrationV1StorageVersionMigrationStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-          status: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/storagemigration.k8s.io/v1/storageversionmigrations",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStoragemigrationV1StorageVersionMigrationRequest",
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
       });
   }
 }
@@ -1593,291 +1480,17 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-          status: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStoragemigrationV1StorageVersionMigration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          causes: S.optional(__S(20, __c2, 4)),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          retryAfterSeconds: S.optional(S.Number),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(21, __c2, 5)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(23, __c2, 7)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteStoragemigrationV1beta1StorageVersionMigrationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/storagemigration.k8s.io/v1/storageversionmigrations",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteStoragemigrationV1CollectionStorageVersionMigrationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/storagemigration.k8s.io/v1/storageversionmigrations/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteStoragemigrationV1StorageVersionMigrationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/apis/storagemigration.k8s.io/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetStoragemigrationAPIGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupVersion: S.String,
-          version: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          clientCIDR: S.String,
-          serverAddress: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(29, __c3, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.String,
-          preferredVersion: S.optional(__S(29, __c3, 5)),
-          serverAddressByClientCIDRs: S.optional(__S(31, __c3, 7)),
-          versions: __S(32, __c4, 0),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/apis/storagemigration.k8s.io/v1/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetStoragemigrationV1APIResourcesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(1, __c0, 1)),
-          group: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-          namespaced: S.Boolean,
-          shortNames: S.optional(__S(1, __c0, 1)),
-          singularName: S.String,
-          storageVersionHash: S.optional(S.String),
-          verbs: __S(1, __c0, 1),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          groupVersion: S.String,
-          kind: S.optional(S.String),
-          resources: __S(36, __c4, 4),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
-      });
-    case 6:
-      return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/apis/storagemigration.k8s.io/v1beta1/", code: 200 }),
         ),
       ).annotate({
         identifier: "GetStoragemigrationV1beta1APIResourcesRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -1902,24 +1515,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListStoragemigrationV1beta1StorageVersionMigrationRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(13, __c1, 5));
     case 1:
+      return S.Array(__S(369, __c23, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(40, __c5, 0),
+          items: __S(49, __c3, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(23, __c2, 7)),
+          metadata: S.optional(__S(481, __c30, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiStoragemigrationV1beta1StorageVersionMigrationList",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -1944,20 +1557,24 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListStoragemigrationV1StorageVersionMigrationRequest",
       });
-    case 3:
-      return S.Array(__S(16, __c2, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(433, __c27, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(43, __c5, 3),
+          items: __S(65, __c4, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(23, __c2, 7)),
+          metadata: S.optional(__S(481, __c30, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiStoragemigrationV1StorageVersionMigrationList",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1976,7 +1593,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchStoragemigrationV1beta1StorageVersionMigrationRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1995,7 +1616,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchStoragemigrationV1beta1StorageVersionMigrationStatusRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2016,7 +1641,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2037,7 +1662,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchStoragemigrationV1StorageVersionMigrationStatusRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2052,7 +1681,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReadStoragemigrationV1beta1StorageVersionMigrationRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2067,7 +1700,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReadStoragemigrationV1beta1StorageVersionMigrationStatusRequest",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2082,7 +1719,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReadStoragemigrationV1StorageVersionMigrationRequest",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2097,7 +1738,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReadStoragemigrationV1StorageVersionMigrationStatusRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2107,9 +1752,9 @@ function __c6(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-          status: S.optional(__S(11, __c1, 3)),
+          metadata: S.optional(__S(405, __c25, 5)),
+          spec: __S(407, __c25, 7),
+          status: S.optional(__S(368, __c23, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2120,7 +1765,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReplaceStoragemigrationV1beta1StorageVersionMigrationRequest",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2130,9 +1779,9 @@ function __c6(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-          status: S.optional(__S(11, __c1, 3)),
+          metadata: S.optional(__S(405, __c25, 5)),
+          spec: __S(407, __c25, 7),
+          status: S.optional(__S(368, __c23, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2143,7 +1792,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusRequest",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2153,9 +1806,9 @@ function __c6(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-          status: S.optional(__S(14, __c1, 6)),
+          metadata: S.optional(__S(405, __c25, 5)),
+          spec: __S(407, __c25, 7),
+          status: S.optional(__S(432, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2168,7 +1821,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2180,9 +1833,9 @@ function __c7(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-          status: S.optional(__S(14, __c1, 6)),
+          metadata: S.optional(__S(405, __c25, 5)),
+          spec: __S(407, __c25, 7),
+          status: S.optional(__S(432, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2193,7 +1846,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ReplaceStoragemigrationV1StorageVersionMigrationStatusRequest",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2219,7 +1876,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "WatchStoragemigrationV1beta1StorageVersionMigrationRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -2228,7 +1889,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1WatchEvent",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2253,7 +1918,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "WatchStoragemigrationV1beta1StorageVersionMigrationListRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2279,7 +1948,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "WatchStoragemigrationV1StorageVersionMigrationRequest",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2306,7 +1979,453 @@ function __c7(j: number): any {
       });
   }
 }
-
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(405, __c25, 5)),
+          spec: __S(407, __c25, 7),
+          status: S.optional(__S(368, __c23, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStoragemigrationV1beta1StorageVersionMigrationRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(__S(409, __c25, 9)),
+          resourceVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStoragemigrationV1beta1StorageVersionMigrationStatus",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(405, __c25, 5)),
+          spec: __S(407, __c25, 7),
+          status: S.optional(__S(368, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStoragemigrationV1beta1StorageVersionMigration",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 2:
+      return S.Array(__S(401, __c25, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 4:
+      return S.Array(__S(403, __c25, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(400, __c25, 0)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(384, __c24, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(400, __c25, 0)),
+          managedFields: S.optional(__S(402, __c25, 2)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(404, __c25, 4)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.String,
+          resource: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1GroupResource",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          resource: __S(406, __c25, 6),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStoragemigrationV1beta1StorageVersionMigrationSpec",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          lastTransitionTime: S.String,
+          message: S.optional(S.String),
+          observedGeneration: S.optional(S.Number),
+          reason: S.String,
+          status: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Condition",
+      });
+    case 9:
+      return S.Array(__S(408, __c25, 8));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(405, __c25, 5)),
+          spec: __S(407, __c25, 7),
+          status: S.optional(__S(432, __c27, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/storagemigration.k8s.io/v1/storageversionmigrations",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStoragemigrationV1StorageVersionMigrationRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(__S(409, __c25, 9)),
+          resourceVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStoragemigrationV1StorageVersionMigrationStatus",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(405, __c25, 5)),
+          spec: __S(407, __c25, 7),
+          status: S.optional(__S(432, __c27, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStoragemigrationV1StorageVersionMigration",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(464, __c29, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
+      });
+    case 2:
+      return S.Array(__S(465, __c29, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          causes: S.optional(__S(466, __c29, 2)),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          retryAfterSeconds: S.optional(S.Number),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(467, __c29, 3)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(481, __c30, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(480, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(464, __c29, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/storagemigration.k8s.io/v1beta1/storageversionmigrations/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteStoragemigrationV1beta1StorageVersionMigrationRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(464, __c29, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/storagemigration.k8s.io/v1/storageversionmigrations",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteStoragemigrationV1CollectionStorageVersionMigrationRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(464, __c29, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/storagemigration.k8s.io/v1/storageversionmigrations/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteStoragemigrationV1StorageVersionMigrationRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/apis/storagemigration.k8s.io/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetStoragemigrationAPIGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupVersion: S.String,
+          version: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientCIDR: S.String,
+          serverAddress: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
+      });
+    case 3:
+      return S.Array(__S(546, __c34, 2));
+    case 4:
+      return S.Array(__S(545, __c34, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.String,
+          preferredVersion: S.optional(__S(545, __c34, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(547, __c34, 3)),
+          versions: __S(548, __c34, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

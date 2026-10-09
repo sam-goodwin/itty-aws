@@ -2690,8 +2690,8 @@ export const createPage: API.OperationMethod<
   CreatePageError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreatePageRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreatePageResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<CreatePageRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreatePageResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2705,8 +2705,8 @@ export const getPage: API.OperationMethod<
   GetPageError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetPageRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetPageResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetPageRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetPageResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2720,8 +2720,8 @@ export const getPageMarkdown: API.OperationMethod<
   GetPageMarkdownError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetPageMarkdownRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PageMarkdownResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetPageMarkdownRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<PageMarkdownResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2735,8 +2735,8 @@ export const getPageProperty: API.OperationMethod<
   GetPagePropertyError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetPagePropertyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetPagePropertyResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetPagePropertyRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetPagePropertyResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2750,8 +2750,8 @@ export const movePage: API.OperationMethod<
   MovePageError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<MovePageRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<MovePageResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<MovePageRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<MovePageResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2765,8 +2765,8 @@ export const updatePage: API.OperationMethod<
   UpdatePageError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<UpdatePageRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdatePageResponse>,
+  input: __S(57, __c7, 1) as any as S.Schema<UpdatePageRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<UpdatePageResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2780,8 +2780,8 @@ export const updatePageMarkdown: API.OperationMethod<
   UpdatePageMarkdownError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<UpdatePageMarkdownRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PageMarkdownResponse>,
+  input: __S(70, __c8, 6) as any as S.Schema<UpdatePageMarkdownRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<PageMarkdownResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2791,43 +2791,55 @@ export const updatePageMarkdown: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 1:
       return S.Array(S.Unknown);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          filter_properties: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          filter_properties: S.optional(__S(8, __c1, 0).pipe(T.Query())),
           parent: S.optional(S.Unknown),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(0, __c0, 0)),
           icon: S.optional(S.NullOr(S.Unknown)),
           cover: S.optional(S.NullOr(S.Unknown)),
-          content: S.optional(__S(2, __c0, 2)),
-          children: S.optional(__S(2, __c0, 2)),
+          content: S.optional(__S(1, __c0, 1)),
+          children: S.optional(__S(1, __c0, 1)),
           markdown: S.optional(S.String),
           allow_async: S.optional(S.Boolean),
           template: S.optional(S.Unknown),
           position: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/v1/pages", code: 200 })),
       ).annotate({ identifier: "CreatePageRequest" });
-    case 4:
+    case 3:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreatePageResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_id: S.String.pipe(T.Label()),
-          filter_properties: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          filter_properties: S.optional(__S(8, __c1, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/pages/{page_id}", code: 200 })),
       ).annotate({ identifier: "GetPageRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPageResponse",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_id: S.String.pipe(T.Label()),
@@ -2836,7 +2848,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "GetPageMarkdownRequest" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2845,10 +2857,14 @@ function __c1(j: number): any {
           id: S.String,
           markdown: S.String,
           truncated: S.Boolean,
-          unknown_block_ids: __S(0, __c0, 0),
+          unknown_block_ids: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "PageMarkdownResponse" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_id: S.String.pipe(T.Label()),
@@ -2859,29 +2875,37 @@ function __c1(j: number): any {
           T.Http({ method: "GET", uri: "/v1/pages/{page_id}/properties/{property_id}", code: 200 }),
         ),
       ).annotate({ identifier: "GetPagePropertyRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPagePropertyResponse",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_id: S.String.pipe(T.Label()),
           parent: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/v1/pages/{page_id}/move", code: 200 })),
       ).annotate({ identifier: "MovePageRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "MovePageResponse",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           page_id: S.String.pipe(T.Label()),
-          filter_properties: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          properties: S.optional(__S(13, __c1, 5)),
+          filter_properties: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          properties: S.optional(__S(56, __c7, 0)),
           icon: S.optional(S.NullOr(S.Unknown)),
           cover: S.optional(S.NullOr(S.Unknown)),
           is_locked: S.optional(S.Boolean),
@@ -2891,13 +2915,13 @@ function __c1(j: number): any {
           is_archived: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/pages/{page_id}", code: 200 })),
       ).annotate({ identifier: "UpdatePageRequest" });
-    case 7:
+    case 2:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdatePageResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2930,11 +2954,11 @@ function __c2(j: number): any {
         identifier: "UpdatePageMarkdownRequestUpdateContentContentUpdatesItem",
       });
     case 3:
-      return S.Array(__S(18, __c2, 2));
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          content_updates: __S(19, __c2, 3),
+          content_updates: __S(67, __c8, 3),
           allow_deleting_content: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2955,17 +2979,16 @@ function __c2(j: number): any {
           page_id: S.String.pipe(T.Label()),
           allow_async: S.optional(S.Boolean),
           type: S.optional(S.String),
-          insert_content: S.optional(__S(16, __c2, 0)),
-          replace_content_range: S.optional(__S(17, __c2, 1)),
-          update_content: S.optional(__S(20, __c2, 4)),
-          replace_content: S.optional(__S(21, __c2, 5)),
+          insert_content: S.optional(__S(64, __c8, 0)),
+          replace_content_range: S.optional(__S(65, __c8, 1)),
+          update_content: S.optional(__S(68, __c8, 4)),
+          replace_content: S.optional(__S(69, __c8, 5)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/pages/{page_id}/markdown", code: 200 })),
       ).annotate({
         identifier: "UpdatePageMarkdownRequest",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -446,8 +446,8 @@ export const checkIsStarred: API.OperationMethod<
   CheckIsStarredError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CheckIsStarredRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CheckIsStarredResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<CheckIsStarredRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<CheckIsStarredResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -457,8 +457,8 @@ export type CreateError = Forbidden | NotFound | UnprocessableEntity | GithubOpE
 /** Create a gist Allows you to add a new gist with one or more files. > [!NOTE] > Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally. */
 export const create: API.OperationMethod<CreateRequest, GistSimple, CreateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(4, __c0, 4) as any as S.Schema<CreateRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<GistSimple>,
+    input: __S(258, __c16, 2) as any as S.Schema<CreateRequest>,
+    output: __S(331, __c20, 11) as any as S.Schema<GistSimple>,
     errors: [Forbidden, NotFound, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -472,8 +472,8 @@ export const createComment: API.OperationMethod<
   CreateCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateCommentRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GistComment>,
+  input: __S(336, __c21, 0) as any as S.Schema<CreateCommentRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<GistComment>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -487,8 +487,8 @@ export const Delete: API.OperationMethod<
   DeleteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DeleteRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<DeleteResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -502,8 +502,8 @@ export const deleteComment: API.OperationMethod<
   DeleteCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteCommentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteCommentResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteCommentRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<DeleteCommentResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -513,8 +513,8 @@ export type ForkError = Forbidden | NotFound | UnprocessableEntity | GithubOpErr
 /** Fork a gist */
 export const fork: API.OperationMethod<ForkRequest, BaseGist, ForkError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(24, __c3, 0) as any as S.Schema<ForkRequest>,
-    output: __S(27, __c3, 3) as any as S.Schema<BaseGist>,
+    input: __S(400, __c25, 0) as any as S.Schema<ForkRequest>,
+    output: __S(418, __c26, 2) as any as S.Schema<BaseGist>,
     errors: [Forbidden, NotFound, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -524,8 +524,8 @@ export type GetError = Forbidden | NotFound | GithubOpError;
 /** Get a gist Gets a specified gist. This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type. */
 export const get: API.OperationMethod<GetRequest, GistSimple, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(28, __c3, 4) as any as S.Schema<GetRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<GistSimple>,
+    input: __S(432, __c27, 0) as any as S.Schema<GetRequest>,
+    output: __S(331, __c20, 11) as any as S.Schema<GistSimple>,
     errors: [Forbidden, NotFound],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -539,8 +539,8 @@ export const getComment: API.OperationMethod<
   GetCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetCommentRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GistComment>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetCommentRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<GistComment>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -554,8 +554,8 @@ export const getRevision: API.OperationMethod<
   GetRevisionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetRevisionRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GistSimple>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetRevisionRequest>,
+  output: __S(331, __c20, 11) as any as S.Schema<GistSimple>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -565,8 +565,8 @@ export type ListError = Forbidden | GithubOpError;
 /** List gists for the authenticated user Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists: */
 export const list: API.OperationMethod<ListRequest, ListResponse, ListError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(31, __c3, 7) as any as S.Schema<ListRequest>,
-    output: __S(33, __c4, 1) as any as S.Schema<ListResponse>,
+    input: __S(32, __c2, 0) as any as S.Schema<ListRequest>,
+    output: __S(49, __c3, 1) as any as S.Schema<ListResponse>,
     errors: [Forbidden],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -580,8 +580,8 @@ export const listComments: API.OperationMethod<
   ListCommentsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListCommentsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListCommentsResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListCommentsRequest>,
+  output: __S(66, __c4, 2) as any as S.Schema<ListCommentsResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -595,8 +595,8 @@ export const listCommits: API.OperationMethod<
   ListCommitsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListCommitsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListCommitsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListCommitsRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<ListCommitsResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -610,8 +610,8 @@ export const listForks: API.OperationMethod<
   ListForksError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListForksRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListForksResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListForksRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<ListForksResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -625,8 +625,8 @@ export const listForUser: API.OperationMethod<
   ListForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListForUserRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListForUserResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListForUserRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<ListForUserResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -640,8 +640,8 @@ export const listPublic: API.OperationMethod<
   ListPublicError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListPublicRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListPublicResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListPublicRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<ListPublicResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -655,8 +655,8 @@ export const listStarred: API.OperationMethod<
   ListStarredError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListStarredRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListStarredResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListStarredRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<ListStarredResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -666,8 +666,8 @@ export type StarError = Forbidden | NotFound | GithubOpError;
 /** Star a gist Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)." */
 export const star: API.OperationMethod<StarRequest, StarResponse, StarError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(47, __c5, 7) as any as S.Schema<StarRequest>,
-    output: __S(1, __c0, 1) as any as S.Schema<StarResponse>,
+    input: __S(160, __c10, 0) as any as S.Schema<StarRequest>,
+    output: __S(240, __c15, 0) as any as S.Schema<StarResponse>,
     errors: [Forbidden, NotFound],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -681,8 +681,8 @@ export const unstar: API.OperationMethod<
   UnstarError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<UnstarRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UnstarResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<UnstarRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<UnstarResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -692,8 +692,8 @@ export type UpdateError = NotFound | UnprocessableEntity | GithubOpError;
 /** Update a gist Allows you to update a gist's description and to update, delete, or rename gist files. Files from the previous version of the gist that aren't explicitly changed during an edit are unchanged. At least one of `description` or `files` is required. This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type. */
 export const update: API.OperationMethod<UpdateRequest, GistSimple, UpdateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(51, __c6, 3) as any as S.Schema<UpdateRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<GistSimple>,
+    input: __S(194, __c12, 2) as any as S.Schema<UpdateRequest>,
+    output: __S(331, __c20, 11) as any as S.Schema<GistSimple>,
     errors: [NotFound, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -707,8 +707,8 @@ export const updateComment: API.OperationMethod<
   UpdateCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<UpdateCommentRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GistComment>,
+  input: __S(208, __c13, 0) as any as S.Schema<UpdateCommentRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<GistComment>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -721,29 +721,292 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           gist_id: S.String.pipe(T.Label()),
+          comment_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/gists/{gist_id}/comments/{comment_id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetCommentRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gist_id: S.String.pipe(T.Label()),
+          sha: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/gists/{gist_id}/{sha}", code: 200 })),
+      ).annotate({ identifier: "GetRevisionRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          since: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/gists", code: 200 })),
+      ).annotate({ identifier: "ListRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(418, __c26, 2));
+    case 1:
+      return S.suspend(() => __S(48, __c3, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gist_id: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/gists/{gist_id}/comments", code: 200 })),
+      ).annotate({ identifier: "ListCommentsRequest" });
+    case 1:
+      return S.Array(__S(352, __c22, 0));
+    case 2:
+      return S.suspend(() => __S(65, __c4, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListCommentsResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gist_id: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/gists/{gist_id}/commits", code: 200 })),
+      ).annotate({ identifier: "ListCommitsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          version: S.String,
+          user: S.NullOr(__S(272, __c17, 0)),
+          change_status: __S(304, __c19, 0),
+          committed_at: S.String,
+        }),
+      ).annotate({ identifier: "GistCommit" });
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
+      return S.suspend(() => __S(82, __c5, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListCommitsResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gist_id: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/gists/{gist_id}/forks", code: 200 })),
+      ).annotate({ identifier: "ListForksRequest" });
+    case 1:
+      return S.Array(__S(331, __c20, 11));
+    case 2:
+      return S.suspend(() => __S(97, __c6, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListForksResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          since: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/gists", code: 200 })),
+      ).annotate({ identifier: "ListForUserRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          since: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/gists/public", code: 200 })),
+      ).annotate({ identifier: "ListPublicRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          since: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/gists/starred", code: 200 })),
+      ).annotate({ identifier: "ListStarredRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gist_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PUT", uri: "/gists/{gist_id}/star", code: 200 })),
+      ).annotate({ identifier: "StarRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gist_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/gists/{gist_id}/star", code: 200 })),
+      ).annotate({ identifier: "UnstarRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          filename: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "UpdateRequestFilesValue" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(192, __c12, 0)));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          gist_id: S.String.pipe(T.Label()),
+          description: S.optional(S.String),
+          files: S.optional(__S(193, __c12, 1)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/gists/{gist_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gist_id: S.String.pipe(T.Label()),
+          comment_id: S.Number.pipe(T.Label()),
+          body: S.String,
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/gists/{gist_id}/comments/{comment_id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpdateCommentRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gist_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/gists/{gist_id}/star", code: 200 })),
       ).annotate({ identifier: "CheckIsStarredRequest" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CheckIsStarredResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
         }),
       ).annotate({ identifier: "CreateRequestFilesValue" });
-    case 3:
-      return S.Record(S.String, __S(2, __c0, 2));
-    case 4:
+    case 1:
+      return S.Record(S.String, __S(256, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          files: __S(3, __c0, 3),
+          files: __S(257, __c16, 1),
           public: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/gists", code: 200 })),
       ).annotate({ identifier: "CreateRequest" });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          login: S.String,
+          id: S.Number,
+          node_id: S.String,
+          avatar_url: S.String,
+          gravatar_id: S.NullOr(S.String),
+          url: S.String,
+          html_url: S.String,
+          followers_url: S.String,
+          following_url: S.String,
+          gists_url: S.String,
+          starred_url: S.String,
+          subscriptions_url: S.String,
+          organizations_url: S.String,
+          repos_url: S.String,
+          events_url: S.String,
+          received_events_url: S.String,
+          type: S.String,
+          site_admin: S.Boolean,
+          starred_at: S.optional(S.String),
+          user_view_type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NullableSimpleUser" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          total: S.optional(S.Number),
+          additions: S.optional(S.Number),
+          deletions: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GistHistoryChangeStatus" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborators: S.Number,
@@ -752,7 +1015,7 @@ function __c0(j: number): any {
           private_repos: S.Number,
         }),
       ).annotate({ identifier: "PublicUserPlan" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           login: S.String,
@@ -789,7 +1052,7 @@ function __c0(j: number): any {
           following: S.Number,
           created_at: S.String,
           updated_at: S.String,
-          plan: S.optional(__S(5, __c0, 5)),
+          plan: S.optional(__S(320, __c20, 0)),
           private_gists: S.optional(S.Number),
           total_private_repos: S.optional(S.Number),
           owned_private_repos: S.optional(S.Number),
@@ -797,70 +1060,31 @@ function __c0(j: number): any {
           collaborators: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PublicUser" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           url: S.optional(S.String),
-          user: S.optional(__S(6, __c0, 6)),
+          user: S.optional(__S(321, __c20, 1)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "GistSimpleForksItem" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          login: S.String,
-          id: S.Number,
-          node_id: S.String,
-          avatar_url: S.String,
-          gravatar_id: S.NullOr(S.String),
-          url: S.String,
-          html_url: S.String,
-          followers_url: S.String,
-          following_url: S.String,
-          gists_url: S.String,
-          starred_url: S.String,
-          subscriptions_url: S.String,
-          organizations_url: S.String,
-          repos_url: S.String,
-          events_url: S.String,
-          received_events_url: S.String,
-          type: S.String,
-          site_admin: S.Boolean,
-          starred_at: S.optional(S.String),
-          user_view_type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NullableSimpleUser" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          total: S.optional(S.Number),
-          additions: S.optional(S.Number),
-          deletions: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GistHistoryChangeStatus" });
     case 3:
+      return S.Array(__S(322, __c20, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(S.NullOr(__S(9, __c1, 1))),
+          user: S.optional(S.NullOr(__S(272, __c17, 0))),
           version: S.optional(S.String),
           committed_at: S.optional(S.String),
-          change_status: S.optional(__S(10, __c1, 2)),
+          change_status: S.optional(__S(304, __c19, 0)),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "GistHistory" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
     case 5:
+      return S.Array(__S(324, __c20, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.String),
@@ -872,15 +1096,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GistSimpleForkOfFilesValue",
       });
-    case 6:
-      return S.Record(S.String, __S(13, __c1, 5));
     case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Record(S.String, __S(326, __c20, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -891,22 +1109,22 @@ function __c2(j: number): any {
           git_pull_url: S.String,
           git_push_url: S.String,
           html_url: S.String,
-          files: __S(14, __c1, 6),
+          files: __S(327, __c20, 7),
           public: S.Boolean,
           created_at: S.String,
           updated_at: S.String,
           description: S.NullOr(S.String),
           comments: S.Number,
           comments_enabled: S.optional(S.Boolean),
-          user: S.NullOr(__S(9, __c1, 1)),
+          user: S.NullOr(__S(272, __c17, 0)),
           comments_url: S.String,
-          owner: S.optional(S.NullOr(__S(9, __c1, 1))),
+          owner: S.optional(S.NullOr(__S(272, __c17, 0))),
           truncated: S.optional(S.Boolean),
-          forks: S.optional(__S(15, __c1, 7)),
-          history: S.optional(__S(15, __c1, 7)),
+          forks: S.optional(__S(288, __c18, 0)),
+          history: S.optional(__S(288, __c18, 0)),
         }),
       ).annotate({ identifier: "GistSimpleForkOf" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.String),
@@ -919,14 +1137,14 @@ function __c2(j: number): any {
           encoding: S.optional(S.String),
         }),
       ).annotate({ identifier: "GistSimpleFilesValue" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(17, __c2, 1)));
-    case 3:
+    case 10:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(329, __c20, 9)));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          forks: S.optional(S.NullOr(__S(8, __c1, 0))),
-          history: S.optional(S.NullOr(__S(12, __c1, 4))),
-          fork_of: S.optional(S.NullOr(__S(16, __c2, 0))),
+          forks: S.optional(S.NullOr(__S(323, __c20, 3))),
+          history: S.optional(S.NullOr(__S(325, __c20, 5))),
+          fork_of: S.optional(S.NullOr(__S(328, __c20, 8))),
           url: S.optional(S.String),
           forks_url: S.optional(S.String),
           commits_url: S.optional(S.String),
@@ -935,7 +1153,7 @@ function __c2(j: number): any {
           git_pull_url: S.optional(S.String),
           git_push_url: S.optional(S.String),
           html_url: S.optional(S.String),
-          files: S.optional(__S(18, __c2, 2)),
+          files: S.optional(__S(330, __c20, 10)),
           public: S.optional(S.Boolean),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
@@ -944,37 +1162,53 @@ function __c2(j: number): any {
           comments_enabled: S.optional(S.Boolean),
           user: S.optional(S.NullOr(S.String)),
           comments_url: S.optional(S.String),
-          owner: S.optional(__S(9, __c1, 1)),
+          owner: S.optional(__S(272, __c17, 0)),
           truncated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GistSimple" });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           gist_id: S.String.pipe(T.Label()),
           body: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/gists/{gist_id}/comments", code: 200 })),
       ).annotate({ identifier: "CreateCommentRequest" });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           url: S.String,
           body: S.String,
-          user: S.NullOr(__S(9, __c1, 1)),
+          user: S.NullOr(__S(272, __c17, 0)),
           created_at: S.String,
           updated_at: S.String,
           author_association: S.String,
         }),
       ).annotate({ identifier: "GistComment" });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           gist_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/gists/{gist_id}", code: 200 })),
       ).annotate({ identifier: "DeleteRequest" });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           gist_id: S.String.pipe(T.Label()),
@@ -985,7 +1219,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "DeleteCommentRequest" });
   }
 }
-function __c3(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -993,7 +1227,11 @@ function __c3(j: number): any {
           gist_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/gists/{gist_id}/forks", code: 200 })),
       ).annotate({ identifier: "ForkRequest" });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.String),
@@ -1004,9 +1242,9 @@ function __c3(j: number): any {
           encoding: S.optional(S.String),
         }),
       ).annotate({ identifier: "BaseGistFilesValue" });
+    case 1:
+      return S.Record(S.String, __S(416, __c26, 0));
     case 2:
-      return S.Record(S.String, __S(25, __c3, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -1017,188 +1255,33 @@ function __c3(j: number): any {
           git_pull_url: S.String,
           git_push_url: S.String,
           html_url: S.String,
-          files: __S(26, __c3, 2),
+          files: __S(417, __c26, 1),
           public: S.Boolean,
           created_at: S.String,
           updated_at: S.String,
           description: S.NullOr(S.String),
           comments: S.Number,
           comments_enabled: S.optional(S.Boolean),
-          user: S.NullOr(__S(9, __c1, 1)),
+          user: S.NullOr(__S(272, __c17, 0)),
           comments_url: S.String,
-          owner: S.optional(__S(9, __c1, 1)),
+          owner: S.optional(__S(272, __c17, 0)),
           truncated: S.optional(S.Boolean),
-          forks: S.optional(__S(15, __c1, 7)),
-          history: S.optional(__S(15, __c1, 7)),
+          forks: S.optional(__S(288, __c18, 0)),
+          history: S.optional(__S(288, __c18, 0)),
         }),
       ).annotate({ identifier: "BaseGist" });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           gist_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/gists/{gist_id}", code: 200 })),
       ).annotate({ identifier: "GetRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          gist_id: S.String.pipe(T.Label()),
-          comment_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/gists/{gist_id}/comments/{comment_id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetCommentRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          gist_id: S.String.pipe(T.Label()),
-          sha: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/gists/{gist_id}/{sha}", code: 200 })),
-      ).annotate({ identifier: "GetRevisionRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          since: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/gists", code: 200 })),
-      ).annotate({ identifier: "ListRequest" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(27, __c3, 3));
-    case 1:
-      return S.suspend(() => __S(32, __c4, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          gist_id: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/gists/{gist_id}/comments", code: 200 })),
-      ).annotate({ identifier: "ListCommentsRequest" });
-    case 3:
-      return S.Array(__S(21, __c2, 5));
-    case 4:
-      return S.suspend(() => __S(35, __c4, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListCommentsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          gist_id: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/gists/{gist_id}/commits", code: 200 })),
-      ).annotate({ identifier: "ListCommitsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          version: S.String,
-          user: S.NullOr(__S(9, __c1, 1)),
-          change_status: __S(10, __c1, 2),
-          committed_at: S.String,
-        }),
-      ).annotate({ identifier: "GistCommit" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(39, __c4, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListCommitsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          gist_id: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/gists/{gist_id}/forks", code: 200 })),
-      ).annotate({ identifier: "ListForksRequest" });
-    case 2:
-      return S.Array(__S(19, __c2, 3));
-    case 3:
-      return S.suspend(() => __S(42, __c5, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListForksResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          since: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/gists", code: 200 })),
-      ).annotate({ identifier: "ListForUserRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          since: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/gists/public", code: 200 })),
-      ).annotate({ identifier: "ListPublicRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          since: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/gists/starred", code: 200 })),
-      ).annotate({ identifier: "ListStarredRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          gist_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "PUT", uri: "/gists/{gist_id}/star", code: 200 })),
-      ).annotate({ identifier: "StarRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          gist_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/gists/{gist_id}/star", code: 200 })),
-      ).annotate({ identifier: "UnstarRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          filename: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "UpdateRequestFilesValue" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(49, __c6, 1)));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          gist_id: S.String.pipe(T.Label()),
-          description: S.optional(S.String),
-          files: S.optional(__S(50, __c6, 2)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/gists/{gist_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          gist_id: S.String.pipe(T.Label()),
-          comment_id: S.Number.pipe(T.Label()),
-          body: S.String,
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/gists/{gist_id}/comments/{comment_id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "UpdateCommentRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

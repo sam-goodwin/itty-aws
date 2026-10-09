@@ -77,7 +77,7 @@ export const getConfig: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetConfigResponse>,
+  output: __S(2, __c1, 0) as any as S.Schema<GetConfigResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -91,8 +91,8 @@ export const putConfig: API.OperationMethod<
   PutConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<PutConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutConfigResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<PutConfigRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<PutConfigResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -113,7 +113,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetConfigRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -123,7 +127,11 @@ function __c0(j: number): any {
           setUpTag: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "GetConfigResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -142,7 +150,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "PutConfigRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -500,8 +500,8 @@ export const acceptResolutionCenterCase: API.OperationMethod<
   AcceptResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AcceptResolutionCenterCaseRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ResolutionCenterCase>,
+  input: __S(48, __c6, 0) as any as S.Schema<AcceptResolutionCenterCaseRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ResolutionCenterCase>,
   errors: [Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -515,8 +515,8 @@ export const appealResolutionCenterCase: API.OperationMethod<
   AppealResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<AppealResolutionCenterCaseRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ResolutionCenterCase>,
+  input: __S(80, __c10, 0) as any as S.Schema<AppealResolutionCenterCaseRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ResolutionCenterCase>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -530,8 +530,8 @@ export const createResolutionCenterCase: API.OperationMethod<
   CreateResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateResolutionCenterCaseRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ResolutionCenterCase>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateResolutionCenterCaseRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ResolutionCenterCase>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -545,8 +545,8 @@ export const denyResolutionCenterCase: API.OperationMethod<
   DenyResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DenyResolutionCenterCaseRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ResolutionCenterCase>,
+  input: __S(96, __c12, 0) as any as S.Schema<DenyResolutionCenterCaseRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ResolutionCenterCase>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -560,8 +560,8 @@ export const getResolutionCenterCase: API.OperationMethod<
   GetResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetResolutionCenterCaseRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ResolutionCenterCase>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetResolutionCenterCaseRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ResolutionCenterCase>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -575,8 +575,8 @@ export const getResolutionCenterCaseSummary: API.OperationMethod<
   GetResolutionCenterCaseSummaryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetResolutionCenterCaseSummaryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetResolutionCenterCaseSummaryResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetResolutionCenterCaseSummaryRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<GetResolutionCenterCaseSummaryResponse>,
   errors: [BadRequest],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -592,8 +592,8 @@ export const listResolutionCenterCaseEvents: API.PaginatedOperationMethod<
   ResolutionEvent
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(21, __c2, 5) as any as S.Schema<ListResolutionCenterCaseEventsRequest>,
-    output: __S(27, __c3, 3) as any as S.Schema<ListResolutionCenterCaseEventsResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListResolutionCenterCaseEventsRequest>,
+    output: __S(5, __c0, 5) as any as S.Schema<ListResolutionCenterCaseEventsResponse>,
     errors: [NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -619,8 +619,8 @@ export const listResolutionCenterCases: API.PaginatedOperationMethod<
   ResolutionCenterCase
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(28, __c3, 4) as any as S.Schema<ListResolutionCenterCasesRequest>,
-    output: __S(30, __c3, 6) as any as S.Schema<ListResolutionCenterCasesResponse>,
+    input: __S(16, __c2, 0) as any as S.Schema<ListResolutionCenterCasesRequest>,
+    output: __S(18, __c2, 2) as any as S.Schema<ListResolutionCenterCasesResponse>,
     errors: [Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -644,8 +644,8 @@ export const replyToResolutionCenterCase: API.OperationMethod<
   ReplyToResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ReplyToResolutionCenterCaseRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ResolutionCenterCase>,
+  input: __S(24, __c3, 0) as any as S.Schema<ReplyToResolutionCenterCaseRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ResolutionCenterCase>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -660,7 +660,7 @@ export const requestResolutionCenterCaseInfo: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<RequestResolutionCenterCaseInfoRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ResolutionCenterCase>,
+  output: __S(70, __c8, 6) as any as S.Schema<ResolutionCenterCase>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -674,8 +674,8 @@ export const withdrawResolutionCenterCase: API.OperationMethod<
   WithdrawResolutionCenterCaseError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<WithdrawResolutionCenterCaseRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ResolutionCenterCase>,
+  input: __S(40, __c5, 0) as any as S.Schema<WithdrawResolutionCenterCaseRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<ResolutionCenterCase>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -687,223 +687,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          direct_upload_id: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AcceptResolutionCenterCaseRequestAttachmentsItem",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          attachments: S.optional(__S(1, __c0, 1)),
-          message: S.optional(S.String),
-          terminate_membership: S.optional(S.Boolean),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases/{id}/accept", code: 200 })),
-      ).annotate({
-        identifier: "AcceptResolutionCenterCaseRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          title: S.String,
-        }),
-      ).annotate({ identifier: "AccountSummary" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.NullOr(S.String),
-          member_id: S.NullOr(S.String),
-          name: S.NullOr(S.String),
-          user_id: S.NullOr(S.String),
-          username: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ResolutionBuyer" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.String,
-          currency: S.String,
-          decimals: S.Number,
-          display_decimals: S.Number,
-        }),
-      ).annotate({ identifier: "Money" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.NullOr(S.String),
-          label: S.NullOr(S.String),
-          plan_id: S.NullOr(S.String),
-          plan_title: S.NullOr(S.String),
-          product_id: S.NullOr(S.String),
-          product_title: S.NullOr(S.String),
-          quantity: S.Number,
-          subtotal: S.NullOr(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "ReceiptLineItem" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          card_brand: S.NullOr(S.String),
-          card_last4: S.NullOr(S.String),
-          created_at: S.String,
-          id: S.String,
-          payment_method_type: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ResolutionPayment" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          account: S.NullOr(__S(3, __c0, 3)),
-          amount: S.Number,
-          available_actions: __S(4, __c0, 4),
-          buyer: __S(5, __c0, 5),
-          created_at: S.String,
-          currency: S.NullOr(S.String),
-          customer_appealed: S.Boolean,
-          escalated: S.Boolean,
-          id: S.String,
-          line_items: __S(8, __c1, 0),
-          outcome: S.NullOr(S.String),
-          payment: __S(9, __c1, 1),
-          plan_id: S.NullOr(S.String),
-          product_id: S.NullOr(S.String),
-          reason: S.String,
-          refund: S.NullOr(S.String),
-          response_due_at: S.NullOr(S.String),
-          status: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "ResolutionCenterCase" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          attachments: S.optional(__S(1, __c0, 1)),
-          message: S.String,
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases/{id}/appeal", code: 200 })),
-      ).annotate({
-        identifier: "AppealResolutionCenterCaseRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          attachments: S.optional(__S(1, __c0, 1)),
-          message: S.String,
-          reason: S.String,
-          receipt_id: S.String,
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases", code: 200 })),
-      ).annotate({
-        identifier: "CreateResolutionCenterCaseRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          attachments: S.optional(__S(1, __c0, 1)),
-          message: S.String,
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases/{id}/deny", code: 200 })),
-      ).annotate({
-        identifier: "DenyResolutionCenterCaseRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/resolution_center_cases/{id}", code: 200 })),
-      ).annotate({
-        identifier: "GetResolutionCenterCaseRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groups: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          account_id: S.optional(S.String.pipe(T.Query())),
-          user_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          reason: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          outcome: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          created_before: S.optional(S.String.pipe(T.Query())),
-          created_after: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/resolution_center_cases/summary", code: 200 })),
-      ).annotate({
-        identifier: "GetResolutionCenterCaseSummaryRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          customer_won: S.Number,
-          merchant_won: S.Number,
-          withdrawn: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetResolutionCenterCaseSummaryResponseGroupsOutcome",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          fraudulent: S.Number,
-          not_as_described: S.Number,
-          product_not_received: S.Number,
-          product_unacceptable: S.Number,
-          subscription_canceled: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetResolutionCenterCaseSummaryResponseGroupsReason",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          awaiting_customer: S.Number,
-          awaiting_merchant: S.Number,
-          closed: S.Number,
-          under_review: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetResolutionCenterCaseSummaryResponseGroupsStatus",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          outcome: S.optional(__S(16, __c2, 0)),
-          reason: S.optional(__S(17, __c2, 1)),
-          status: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "GetResolutionCenterCaseSummaryResponseGroups",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groups: __S(19, __c2, 3),
-          total: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetResolutionCenterCaseSummaryResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           id: S.String.pipe(T.Label()),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
@@ -913,7 +696,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListResolutionCenterCaseEventsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           content_type: S.NullOr(S.String),
@@ -922,17 +705,13 @@ function __c2(j: number): any {
           url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ResolutionAttachment" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          attachments: __S(23, __c2, 7),
+          attachments: __S(2, __c0, 2),
           created_at: S.String,
           details: S.NullOr(S.String),
           id: S.String,
@@ -941,9 +720,22 @@ function __c3(j: number): any {
           viewable_by_merchant: S.Boolean,
         }),
       ).annotate({ identifier: "ResolutionEvent" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(4, __c0, 4),
+          page_info: __S(8, __c1, 0),
+        }),
+      ).annotate({
+        identifier: "ListResolutionCenterCaseEventsResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -954,16 +746,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListResolutionCenterCaseEventsResponsePageInfo",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(25, __c3, 1),
-          page_info: __S(26, __c3, 2),
-        }),
-      ).annotate({
-        identifier: "ListResolutionCenterCaseEventsResponse",
-      });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -974,31 +761,35 @@ function __c3(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
           direction: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          reason: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          outcome: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          status: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          reason: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          outcome: S.optional(__S(72, __c9, 0).pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/resolution_center_cases", code: 200 })),
       ).annotate({
         identifier: "ListResolutionCenterCasesRequest",
       });
-    case 5:
-      return S.Array(__S(10, __c1, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(70, __c8, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(29, __c3, 5),
-          page_info: __S(26, __c3, 2),
+          data: __S(17, __c2, 1),
+          page_info: __S(8, __c1, 0),
         }),
       ).annotate({
         identifier: "ListResolutionCenterCasesResponse",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          attachments: S.optional(__S(1, __c0, 1)),
+          attachments: S.optional(__S(57, __c7, 1)),
           message: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases/{id}/reply", code: 200 })),
@@ -1013,7 +804,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          attachments: S.optional(__S(1, __c0, 1)),
+          attachments: S.optional(__S(57, __c7, 1)),
           message: S.optional(S.String),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(
@@ -1022,7 +813,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "RequestResolutionCenterCaseInfoRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1035,7 +830,251 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          attachments: S.optional(__S(57, __c7, 1)),
+          message: S.optional(S.String),
+          terminate_membership: S.optional(S.Boolean),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases/{id}/accept", code: 200 })),
+      ).annotate({
+        identifier: "AcceptResolutionCenterCaseRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          direct_upload_id: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AcceptResolutionCenterCaseRequestAttachmentsItem",
+      });
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+        }),
+      ).annotate({ identifier: "AccountSummary" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.NullOr(S.String),
+          member_id: S.NullOr(S.String),
+          name: S.NullOr(S.String),
+          user_id: S.NullOr(S.String),
+          username: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ResolutionBuyer" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.String,
+          currency: S.String,
+          decimals: S.Number,
+          display_decimals: S.Number,
+        }),
+      ).annotate({ identifier: "Money" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.NullOr(S.String),
+          label: S.NullOr(S.String),
+          plan_id: S.NullOr(S.String),
+          plan_title: S.NullOr(S.String),
+          product_id: S.NullOr(S.String),
+          product_title: S.NullOr(S.String),
+          quantity: S.Number,
+          subtotal: S.NullOr(__S(66, __c8, 2)),
+        }),
+      ).annotate({ identifier: "ReceiptLineItem" });
+    case 4:
+      return S.Array(__S(67, __c8, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          card_brand: S.NullOr(S.String),
+          card_last4: S.NullOr(S.String),
+          created_at: S.String,
+          id: S.String,
+          payment_method_type: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ResolutionPayment" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.NullOr(__S(64, __c8, 0)),
+          amount: S.Number,
+          available_actions: __S(72, __c9, 0),
+          buyer: __S(65, __c8, 1),
+          created_at: S.String,
+          currency: S.NullOr(S.String),
+          customer_appealed: S.Boolean,
+          escalated: S.Boolean,
+          id: S.String,
+          line_items: __S(68, __c8, 4),
+          outcome: S.NullOr(S.String),
+          payment: __S(69, __c8, 5),
+          plan_id: S.NullOr(S.String),
+          product_id: S.NullOr(S.String),
+          reason: S.String,
+          refund: S.NullOr(S.String),
+          response_due_at: S.NullOr(S.String),
+          status: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "ResolutionCenterCase" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          attachments: S.optional(__S(57, __c7, 1)),
+          message: S.String,
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases/{id}/appeal", code: 200 })),
+      ).annotate({
+        identifier: "AppealResolutionCenterCaseRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attachments: S.optional(__S(57, __c7, 1)),
+          message: S.String,
+          reason: S.String,
+          receipt_id: S.String,
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases", code: 200 })),
+      ).annotate({
+        identifier: "CreateResolutionCenterCaseRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          attachments: S.optional(__S(57, __c7, 1)),
+          message: S.String,
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/resolution_center_cases/{id}/deny", code: 200 })),
+      ).annotate({
+        identifier: "DenyResolutionCenterCaseRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/resolution_center_cases/{id}", code: 200 })),
+      ).annotate({
+        identifier: "GetResolutionCenterCaseRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groups: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          account_id: S.optional(S.String.pipe(T.Query())),
+          user_id: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          reason: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          outcome: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          created_before: S.optional(S.String.pipe(T.Query())),
+          created_after: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/resolution_center_cases/summary", code: 200 })),
+      ).annotate({
+        identifier: "GetResolutionCenterCaseSummaryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customer_won: S.Number,
+          merchant_won: S.Number,
+          withdrawn: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetResolutionCenterCaseSummaryResponseGroupsOutcome",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fraudulent: S.Number,
+          not_as_described: S.Number,
+          product_not_received: S.Number,
+          product_unacceptable: S.Number,
+          subscription_canceled: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetResolutionCenterCaseSummaryResponseGroupsReason",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          awaiting_customer: S.Number,
+          awaiting_merchant: S.Number,
+          closed: S.Number,
+          under_review: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetResolutionCenterCaseSummaryResponseGroupsStatus",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          outcome: S.optional(__S(113, __c14, 1)),
+          reason: S.optional(__S(114, __c14, 2)),
+          status: S.optional(__S(115, __c14, 3)),
+        }),
+      ).annotate({
+        identifier: "GetResolutionCenterCaseSummaryResponseGroups",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          groups: __S(116, __c14, 4),
+          total: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetResolutionCenterCaseSummaryResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

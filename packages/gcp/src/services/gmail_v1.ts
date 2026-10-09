@@ -1201,8 +1201,8 @@ export const batchDeleteUsersMessages: API.OperationMethod<
   BatchDeleteUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchDeleteUsersMessagesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<BatchDeleteUsersMessagesResponse>,
+  input: __S(625, __c39, 1) as any as S.Schema<BatchDeleteUsersMessagesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<BatchDeleteUsersMessagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1221,8 +1221,8 @@ export const batchModifyUsersMessages: API.OperationMethod<
   BatchModifyUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<BatchModifyUsersMessagesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<BatchModifyUsersMessagesResponse>,
+  input: __S(897, __c56, 1) as any as S.Schema<BatchModifyUsersMessagesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<BatchModifyUsersMessagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1236,8 +1236,8 @@ export const createUsersDrafts: API.OperationMethod<
   CreateUsersDraftsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateUsersDraftsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Draft>,
+  input: __S(1088, __c68, 0) as any as S.Schema<CreateUsersDraftsRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<Draft>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1251,8 +1251,8 @@ export const createUsersLabels: API.OperationMethod<
   CreateUsersLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateUsersLabelsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Label>,
+  input: __S(1312, __c82, 0) as any as S.Schema<CreateUsersLabelsRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<Label>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1271,8 +1271,8 @@ export const createUsersSettingsCseIdentities: API.OperationMethod<
   CreateUsersSettingsCseIdentitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateUsersSettingsCseIdentitiesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CseIdentity>,
+  input: __S(1504, __c94, 0) as any as S.Schema<CreateUsersSettingsCseIdentitiesRequest>,
+  output: __S(1521, __c95, 1) as any as S.Schema<CseIdentity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1291,8 +1291,8 @@ export const createUsersSettingsCseKeypairs: API.OperationMethod<
   CreateUsersSettingsCseKeypairsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateUsersSettingsCseKeypairsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CseKeyPair>,
+  input: __S(1584, __c99, 0) as any as S.Schema<CreateUsersSettingsCseKeypairsRequest>,
+  output: __S(1604, __c100, 4) as any as S.Schema<CseKeyPair>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1311,8 +1311,8 @@ export const createUsersSettingsDelegates: API.OperationMethod<
   CreateUsersSettingsDelegatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateUsersSettingsDelegatesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Delegate>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateUsersSettingsDelegatesRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<Delegate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1331,8 +1331,8 @@ export const createUsersSettingsFilters: API.OperationMethod<
   CreateUsersSettingsFiltersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateUsersSettingsFiltersRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<Filter>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateUsersSettingsFiltersRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<Filter>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1351,8 +1351,8 @@ export const createUsersSettingsForwardingAddresses: API.OperationMethod<
   CreateUsersSettingsForwardingAddressesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateUsersSettingsForwardingAddressesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ForwardingAddress>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreateUsersSettingsForwardingAddressesRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<ForwardingAddress>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1371,8 +1371,8 @@ export const createUsersSettingsSendAs: API.OperationMethod<
   CreateUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateUsersSettingsSendAsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<SendAs>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateUsersSettingsSendAsRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<SendAs>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1386,8 +1386,8 @@ export const deleteUsersDrafts: API.OperationMethod<
   DeleteUsersDraftsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteUsersDraftsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteUsersDraftsResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteUsersDraftsRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteUsersDraftsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1401,8 +1401,8 @@ export const deleteUsersLabels: API.OperationMethod<
   DeleteUsersLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteUsersLabelsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteUsersLabelsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteUsersLabelsRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteUsersLabelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1416,8 +1416,8 @@ export const deleteUsersMessages: API.OperationMethod<
   DeleteUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteUsersMessagesRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteUsersMessagesResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteUsersMessagesRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteUsersMessagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1436,8 +1436,8 @@ export const deleteUsersSettingsCseIdentities: API.OperationMethod<
   DeleteUsersSettingsCseIdentitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteUsersSettingsCseIdentitiesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteUsersSettingsCseIdentitiesResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteUsersSettingsCseIdentitiesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<DeleteUsersSettingsCseIdentitiesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1456,8 +1456,8 @@ export const deleteUsersSettingsDelegates: API.OperationMethod<
   DeleteUsersSettingsDelegatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteUsersSettingsDelegatesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteUsersSettingsDelegatesResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteUsersSettingsDelegatesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<DeleteUsersSettingsDelegatesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1476,8 +1476,8 @@ export const deleteUsersSettingsFilters: API.OperationMethod<
   DeleteUsersSettingsFiltersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteUsersSettingsFiltersRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteUsersSettingsFiltersResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteUsersSettingsFiltersRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<DeleteUsersSettingsFiltersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1496,8 +1496,8 @@ export const deleteUsersSettingsForwardingAddresses: API.OperationMethod<
   DeleteUsersSettingsForwardingAddressesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteUsersSettingsForwardingAddressesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteUsersSettingsForwardingAddressesResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteUsersSettingsForwardingAddressesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<DeleteUsersSettingsForwardingAddressesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1516,8 +1516,8 @@ export const deleteUsersSettingsSendAs: API.OperationMethod<
   DeleteUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteUsersSettingsSendAsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteUsersSettingsSendAsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeleteUsersSettingsSendAsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<DeleteUsersSettingsSendAsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1536,8 +1536,8 @@ export const deleteUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   DeleteUsersSettingsSendAsSmimeInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1551,8 +1551,8 @@ export const deleteUsersThreads: API.OperationMethod<
   DeleteUsersThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteUsersThreadsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteUsersThreadsResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteUsersThreadsRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteUsersThreadsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1571,8 +1571,8 @@ export const disableUsersSettingsCseKeypairs: API.OperationMethod<
   DisableUsersSettingsCseKeypairsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DisableUsersSettingsCseKeypairsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CseKeyPair>,
+  input: __S(304, __c19, 0) as any as S.Schema<DisableUsersSettingsCseKeypairsRequest>,
+  output: __S(1604, __c100, 4) as any as S.Schema<CseKeyPair>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1591,8 +1591,8 @@ export const enableUsersSettingsCseKeypairs: API.OperationMethod<
   EnableUsersSettingsCseKeypairsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<EnableUsersSettingsCseKeypairsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CseKeyPair>,
+  input: __S(320, __c20, 0) as any as S.Schema<EnableUsersSettingsCseKeypairsRequest>,
+  output: __S(1604, __c100, 4) as any as S.Schema<CseKeyPair>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1606,8 +1606,8 @@ export const getAutoForwardingUsersSettings: API.OperationMethod<
   GetAutoForwardingUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetAutoForwardingUsersSettingsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<AutoForwarding>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetAutoForwardingUsersSettingsRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<AutoForwarding>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1621,8 +1621,8 @@ export const getImapUsersSettings: API.OperationMethod<
   GetImapUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetImapUsersSettingsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ImapSettings>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetImapUsersSettingsRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<ImapSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1636,8 +1636,8 @@ export const getLanguageUsersSettings: API.OperationMethod<
   GetLanguageUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetLanguageUsersSettingsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<LanguageSettings>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetLanguageUsersSettingsRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<LanguageSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1651,8 +1651,8 @@ export const getPopUsersSettings: API.OperationMethod<
   GetPopUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetPopUsersSettingsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<PopSettings>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetPopUsersSettingsRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<PopSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1666,8 +1666,8 @@ export const getProfileUsers: API.OperationMethod<
   GetProfileUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetProfileUsersRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<Profile>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetProfileUsersRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<Profile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1681,8 +1681,8 @@ export const getUsersDrafts: API.OperationMethod<
   GetUsersDraftsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetUsersDraftsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Draft>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetUsersDraftsRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<Draft>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1696,8 +1696,8 @@ export const getUsersLabels: API.OperationMethod<
   GetUsersLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetUsersLabelsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Label>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetUsersLabelsRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<Label>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1711,8 +1711,8 @@ export const getUsersMessages: API.OperationMethod<
   GetUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetUsersMessagesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Message>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetUsersMessagesRequest>,
+  output: __S(1124, __c70, 4) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1726,8 @@ export const getUsersMessagesAttachments: API.OperationMethod<
   GetUsersMessagesAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetUsersMessagesAttachmentsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<MessagePartBody>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetUsersMessagesAttachmentsRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<MessagePartBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1741,8 @@ export const getUsersSettingsCseIdentities: API.OperationMethod<
   GetUsersSettingsCseIdentitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetUsersSettingsCseIdentitiesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CseIdentity>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetUsersSettingsCseIdentitiesRequest>,
+  output: __S(1521, __c95, 1) as any as S.Schema<CseIdentity>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1756,8 +1756,8 @@ export const getUsersSettingsCseKeypairs: API.OperationMethod<
   GetUsersSettingsCseKeypairsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetUsersSettingsCseKeypairsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CseKeyPair>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetUsersSettingsCseKeypairsRequest>,
+  output: __S(1604, __c100, 4) as any as S.Schema<CseKeyPair>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1771,8 +1771,8 @@ export const getUsersSettingsDelegates: API.OperationMethod<
   GetUsersSettingsDelegatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetUsersSettingsDelegatesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Delegate>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetUsersSettingsDelegatesRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<Delegate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1786,8 @@ export const getUsersSettingsFilters: API.OperationMethod<
   GetUsersSettingsFiltersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetUsersSettingsFiltersRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<Filter>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetUsersSettingsFiltersRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<Filter>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1801,8 @@ export const getUsersSettingsForwardingAddresses: API.OperationMethod<
   GetUsersSettingsForwardingAddressesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetUsersSettingsForwardingAddressesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ForwardingAddress>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetUsersSettingsForwardingAddressesRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<ForwardingAddress>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1816,8 +1816,8 @@ export const getUsersSettingsSendAs: API.OperationMethod<
   GetUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetUsersSettingsSendAsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<SendAs>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetUsersSettingsSendAsRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<SendAs>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1831,8 +1831,8 @@ export const getUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   GetUsersSettingsSendAsSmimeInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetUsersSettingsSendAsSmimeInfoRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<SmimeInfo>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetUsersSettingsSendAsSmimeInfoRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<SmimeInfo>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1846,8 +1846,8 @@ export const getUsersThreads: API.OperationMethod<
   GetUsersThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetUsersThreadsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Thread>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetUsersThreadsRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<Thread>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1861,8 +1861,8 @@ export const getVacationUsersSettings: API.OperationMethod<
   GetVacationUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetVacationUsersSettingsRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<VacationSettings>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetVacationUsersSettingsRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<VacationSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1876,8 +1876,8 @@ export const importUsersMessages: API.OperationMethod<
   ImportUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ImportUsersMessagesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Message>,
+  input: __S(800, __c50, 0) as any as S.Schema<ImportUsersMessagesRequest>,
+  output: __S(1124, __c70, 4) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1891,8 +1891,8 @@ export const insertUsersMessages: API.OperationMethod<
   InsertUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<InsertUsersMessagesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Message>,
+  input: __S(816, __c51, 0) as any as S.Schema<InsertUsersMessagesRequest>,
+  output: __S(1124, __c70, 4) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1911,8 +1911,8 @@ export const insertUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   InsertUsersSettingsSendAsSmimeInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<InsertUsersSettingsSendAsSmimeInfoRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<SmimeInfo>,
+  input: __S(832, __c52, 0) as any as S.Schema<InsertUsersSettingsSendAsSmimeInfoRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<SmimeInfo>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1927,8 +1927,8 @@ export const listUsersDrafts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDraftsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListUsersDraftsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ListDraftsResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListUsersDraftsRequest>,
+  output: __S(850, __c53, 2) as any as S.Schema<ListDraftsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1944,8 +1944,8 @@ export const listUsersHistory: API.PaginatedOperationMethod<
   GcpOpContext,
   ListHistoryResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListUsersHistoryRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListHistoryResponse>,
+  input: __S(865, __c54, 1) as any as S.Schema<ListUsersHistoryRequest>,
+  output: __S(874, __c54, 10) as any as S.Schema<ListHistoryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1960,8 +1960,8 @@ export const listUsersLabels: API.OperationMethod<
   ListUsersLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListUsersLabelsRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<ListLabelsResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListUsersLabelsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<ListLabelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1976,8 +1976,8 @@ export const listUsersMessages: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListUsersMessagesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListMessagesResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListUsersMessagesRequest>,
+  output: __S(929, __c58, 1) as any as S.Schema<ListMessagesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1993,8 +1993,8 @@ export const listUsersSettingsCseIdentities: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCseIdentitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListUsersSettingsCseIdentitiesRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<ListCseIdentitiesResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListUsersSettingsCseIdentitiesRequest>,
+  output: __S(946, __c59, 2) as any as S.Schema<ListCseIdentitiesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2010,8 +2010,8 @@ export const listUsersSettingsCseKeypairs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCseKeyPairsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListUsersSettingsCseKeypairsRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListCseKeyPairsResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListUsersSettingsCseKeypairsRequest>,
+  output: __S(962, __c60, 2) as any as S.Schema<ListCseKeyPairsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2026,8 +2026,8 @@ export const listUsersSettingsDelegates: API.OperationMethod<
   ListUsersSettingsDelegatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListUsersSettingsDelegatesRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<ListDelegatesResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListUsersSettingsDelegatesRequest>,
+  output: __S(978, __c61, 2) as any as S.Schema<ListDelegatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2041,8 +2041,8 @@ export const listUsersSettingsFilters: API.OperationMethod<
   ListUsersSettingsFiltersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListUsersSettingsFiltersRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ListFiltersResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListUsersSettingsFiltersRequest>,
+  output: __S(994, __c62, 2) as any as S.Schema<ListFiltersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2056,8 +2056,8 @@ export const listUsersSettingsForwardingAddresses: API.OperationMethod<
   ListUsersSettingsForwardingAddressesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListUsersSettingsForwardingAddressesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<ListForwardingAddressesResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListUsersSettingsForwardingAddressesRequest>,
+  output: __S(1010, __c63, 2) as any as S.Schema<ListForwardingAddressesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2071,8 +2071,8 @@ export const listUsersSettingsSendAs: API.OperationMethod<
   ListUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListUsersSettingsSendAsRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<ListSendAsResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListUsersSettingsSendAsRequest>,
+  output: __S(1026, __c64, 2) as any as S.Schema<ListSendAsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2086,8 +2086,8 @@ export const listUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   ListUsersSettingsSendAsSmimeInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ListUsersSettingsSendAsSmimeInfoRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<ListSmimeInfoResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListUsersSettingsSendAsSmimeInfoRequest>,
+  output: __S(1042, __c65, 2) as any as S.Schema<ListSmimeInfoResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2102,8 +2102,8 @@ export const listUsersThreads: API.PaginatedOperationMethod<
   GcpOpContext,
   ListThreadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ListUsersThreadsRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<ListThreadsResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListUsersThreadsRequest>,
+  output: __S(1058, __c66, 2) as any as S.Schema<ListThreadsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2118,8 +2118,8 @@ export const modifyUsersMessages: API.OperationMethod<
   ModifyUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ModifyUsersMessagesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Message>,
+  input: __S(1073, __c67, 1) as any as S.Schema<ModifyUsersMessagesRequest>,
+  output: __S(1124, __c70, 4) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2133,8 +2133,8 @@ export const modifyUsersThreads: API.OperationMethod<
   ModifyUsersThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ModifyUsersThreadsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Thread>,
+  input: __S(1153, __c72, 1) as any as S.Schema<ModifyUsersThreadsRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<Thread>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2153,8 +2153,8 @@ export const obliterateUsersSettingsCseKeypairs: API.OperationMethod<
   ObliterateUsersSettingsCseKeypairsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ObliterateUsersSettingsCseKeypairsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ObliterateUsersSettingsCseKeypairsResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ObliterateUsersSettingsCseKeypairsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ObliterateUsersSettingsCseKeypairsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2168,8 +2168,8 @@ export const patchUsersLabels: API.OperationMethod<
   PatchUsersLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<PatchUsersLabelsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Label>,
+  input: __S(1184, __c74, 0) as any as S.Schema<PatchUsersLabelsRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<Label>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2188,8 +2188,8 @@ export const patchUsersSettingsCseIdentities: API.OperationMethod<
   PatchUsersSettingsCseIdentitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<PatchUsersSettingsCseIdentitiesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CseIdentity>,
+  input: __S(1200, __c75, 0) as any as S.Schema<PatchUsersSettingsCseIdentitiesRequest>,
+  output: __S(1521, __c95, 1) as any as S.Schema<CseIdentity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2208,8 +2208,8 @@ export const patchUsersSettingsSendAs: API.OperationMethod<
   PatchUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<PatchUsersSettingsSendAsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<SendAs>,
+  input: __S(1216, __c76, 0) as any as S.Schema<PatchUsersSettingsSendAsRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<SendAs>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2223,8 +2223,8 @@ export const sendUsersDrafts: API.OperationMethod<
   SendUsersDraftsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<SendUsersDraftsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Message>,
+  input: __S(1232, __c77, 0) as any as S.Schema<SendUsersDraftsRequest>,
+  output: __S(1124, __c70, 4) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2238,8 +2238,8 @@ export const sendUsersMessages: API.OperationMethod<
   SendUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<SendUsersMessagesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Message>,
+  input: __S(1248, __c78, 0) as any as S.Schema<SendUsersMessagesRequest>,
+  output: __S(1124, __c70, 4) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2258,8 +2258,8 @@ export const setDefaultUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   SetDefaultUsersSettingsSendAsSmimeInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2273,8 +2273,8 @@ export const stopUsers: API.OperationMethod<
   StopUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<StopUsersRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<StopUsersResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<StopUsersRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<StopUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2288,8 +2288,8 @@ export const trashUsersMessages: API.OperationMethod<
   TrashUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<TrashUsersMessagesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Message>,
+  input: __S(1296, __c81, 0) as any as S.Schema<TrashUsersMessagesRequest>,
+  output: __S(1124, __c70, 4) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2303,8 +2303,8 @@ export const trashUsersThreads: API.OperationMethod<
   TrashUsersThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<TrashUsersThreadsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Thread>,
+  input: __S(1344, __c84, 0) as any as S.Schema<TrashUsersThreadsRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<Thread>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2318,8 +2318,8 @@ export const untrashUsersMessages: API.OperationMethod<
   UntrashUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<UntrashUsersMessagesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Message>,
+  input: __S(1360, __c85, 0) as any as S.Schema<UntrashUsersMessagesRequest>,
+  output: __S(1124, __c70, 4) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2333,8 +2333,8 @@ export const untrashUsersThreads: API.OperationMethod<
   UntrashUsersThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<UntrashUsersThreadsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Thread>,
+  input: __S(1376, __c86, 0) as any as S.Schema<UntrashUsersThreadsRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<Thread>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2353,8 +2353,8 @@ export const updateAutoForwardingUsersSettings: API.OperationMethod<
   UpdateAutoForwardingUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<UpdateAutoForwardingUsersSettingsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<AutoForwarding>,
+  input: __S(1392, __c87, 0) as any as S.Schema<UpdateAutoForwardingUsersSettingsRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<AutoForwarding>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2373,8 +2373,8 @@ export const updateImapUsersSettings: API.OperationMethod<
   UpdateImapUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<UpdateImapUsersSettingsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ImapSettings>,
+  input: __S(1408, __c88, 0) as any as S.Schema<UpdateImapUsersSettingsRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<ImapSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2393,8 +2393,8 @@ export const updateLanguageUsersSettings: API.OperationMethod<
   UpdateLanguageUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<UpdateLanguageUsersSettingsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<LanguageSettings>,
+  input: __S(1424, __c89, 0) as any as S.Schema<UpdateLanguageUsersSettingsRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<LanguageSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2408,8 +2408,8 @@ export const updatePopUsersSettings: API.OperationMethod<
   UpdatePopUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<UpdatePopUsersSettingsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<PopSettings>,
+  input: __S(1440, __c90, 0) as any as S.Schema<UpdatePopUsersSettingsRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<PopSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2423,8 +2423,8 @@ export const updateUsersDrafts: API.OperationMethod<
   UpdateUsersDraftsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<UpdateUsersDraftsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Draft>,
+  input: __S(1456, __c91, 0) as any as S.Schema<UpdateUsersDraftsRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<Draft>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2438,8 +2438,8 @@ export const updateUsersLabels: API.OperationMethod<
   UpdateUsersLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<UpdateUsersLabelsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Label>,
+  input: __S(1472, __c92, 0) as any as S.Schema<UpdateUsersLabelsRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<Label>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2458,8 +2458,8 @@ export const updateUsersSettingsSendAs: API.OperationMethod<
   UpdateUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<UpdateUsersSettingsSendAsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<SendAs>,
+  input: __S(1488, __c93, 0) as any as S.Schema<UpdateUsersSettingsSendAsRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<SendAs>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2478,8 +2478,8 @@ export const updateVacationUsersSettings: API.OperationMethod<
   UpdateVacationUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<UpdateVacationUsersSettingsRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<VacationSettings>,
+  input: __S(1536, __c96, 0) as any as S.Schema<UpdateVacationUsersSettingsRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<VacationSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2498,8 +2498,8 @@ export const verifyUsersSettingsSendAs: API.OperationMethod<
   VerifyUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<VerifyUsersSettingsSendAsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<VerifyUsersSettingsSendAsResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<VerifyUsersSettingsSendAsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<VerifyUsersSettingsSendAsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2513,8 +2513,8 @@ export const watchUsers: API.OperationMethod<
   WatchUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<WatchUsersRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<WatchResponse>,
+  input: __S(1569, __c98, 1) as any as S.Schema<WatchUsersRequest>,
+  output: __S(1570, __c98, 2) as any as S.Schema<WatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2524,286 +2524,10 @@ export const watchUsers: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ids: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteMessagesRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "gmail/v1/users/{userId}/messages/batchDelete",
-            baseUrl: "https://gmail.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteUsersMessagesRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BatchDeleteUsersMessagesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fieldId: S.optional(S.String),
-          selection: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClassificationLabelFieldValue",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          labelId: S.optional(S.String),
-          fields: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "ClassificationLabelValue" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ids: S.optional(__S(0, __c0, 0)),
-          removeClassificationLabelIds: S.optional(__S(0, __c0, 0)),
-          removeLabelIds: S.optional(__S(0, __c0, 0)),
-          addClassificationLabels: S.optional(__S(7, __c0, 7)),
-          addLabelIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchModifyMessagesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "gmail/v1/users/{userId}/messages/batchModify",
-            baseUrl: "https://gmail.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchModifyUsersMessagesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MessagePartHeader" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          attachmentId: S.optional(S.String),
-          size: S.optional(S.Number),
-          data: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MessagePartBody" });
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(14, __c1, 6)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          headers: S.optional(__S(11, __c1, 3)),
-          body: S.optional(__S(12, __c1, 4)),
-          mimeType: S.optional(S.String),
-          filename: S.optional(S.String),
-          parts: S.optional(__S(13, __c1, 5)),
-          partId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MessagePart" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          threadId: S.optional(S.String),
-          snippet: S.optional(S.String),
-          classificationLabelValues: S.optional(__S(7, __c0, 7)),
-          labelIds: S.optional(__S(0, __c0, 0)),
-          internalDate: S.optional(S.String),
-          historyId: S.optional(S.String),
-          raw: S.optional(S.String),
-          sizeEstimate: S.optional(S.Number),
-          id: S.optional(S.String),
-          payload: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "Message" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(__S(15, __c1, 7)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Draft" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "gmail/v1/users/{userId}/drafts",
-            baseUrl: "https://gmail.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateUsersDraftsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          backgroundColor: S.optional(S.String),
-          textColor: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LabelColor" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          threadsUnread: S.optional(S.Number),
-          messageListVisibility: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          threadsTotal: S.optional(S.Number),
-          labelListVisibility: S.optional(S.String),
-          id: S.optional(S.String),
-          messagesUnread: S.optional(S.Number),
-          messagesTotal: S.optional(S.Number),
-          color: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "Label" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "gmail/v1/users/{userId}/labels",
-            baseUrl: "https://gmail.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateUsersLabelsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          signingKeyPairId: S.optional(S.String),
-          encryptionKeyPairId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignAndEncryptKeyPairs" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          primaryKeyPairId: S.optional(S.String),
-          emailAddress: S.optional(S.String),
-          signAndEncryptKeyPairs: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "CseIdentity" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "gmail/v1/users/{userId}/settings/cse/identities",
-            baseUrl: "https://gmail.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateUsersSettingsCseIdentitiesRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HardwareKeyMetadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kaclsUri: S.optional(S.String),
-          kaclsData: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KaclsKeyMetadata" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          privateKeyMetadataId: S.optional(S.String),
-          hardwareKeyMetadata: S.optional(__S(24, __c3, 0)),
-          kaclsKeyMetadata: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "CsePrivateKeyMetadata" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enablementState: S.optional(S.String),
-          disableTime: S.optional(S.String),
-          subjectEmailAddresses: S.optional(__S(0, __c0, 0)),
-          pem: S.optional(S.String),
-          pkcs7: S.optional(S.String),
-          keyPairId: S.optional(S.String),
-          privateKeyMetadata: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "CseKeyPair" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          chainValidation: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "gmail/v1/users/{userId}/settings/cse/keypairs",
-            baseUrl: "https://gmail.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateUsersSettingsCseKeypairsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          delegateEmail: S.optional(S.String),
-          verificationStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Delegate" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2816,7 +2540,37 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          delegateEmail: S.optional(S.String),
+          verificationStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Delegate" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+          body: S.optional(__S(50, __c3, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "gmail/v1/users/{userId}/settings/filters",
+            baseUrl: "https://gmail.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateUsersSettingsFiltersRequest",
+      });
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2835,8 +2589,8 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          removeLabelIds: S.optional(__S(0, __c0, 0)),
-          addLabelIds: S.optional(__S(0, __c0, 0)),
+          removeLabelIds: S.optional(__S(656, __c41, 0)),
+          addLabelIds: S.optional(__S(656, __c41, 0)),
           forward: S.optional(S.String),
         }),
       ).annotate({ identifier: "FilterAction" });
@@ -2844,37 +2598,19 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          criteria: S.optional(__S(32, __c4, 0)),
-          action: S.optional(__S(33, __c4, 1)),
+          criteria: S.optional(__S(48, __c3, 0)),
+          action: S.optional(__S(49, __c3, 1)),
         }),
       ).annotate({ identifier: "Filter" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "gmail/v1/users/{userId}/settings/filters",
-            baseUrl: "https://gmail.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateUsersSettingsFiltersRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          verificationStatus: S.optional(S.String),
-          forwardingEmail: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ForwardingAddress" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2885,30 +2621,6 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateUsersSettingsForwardingAddressesRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          securityMode: S.optional(S.String),
-          host: S.optional(S.String),
-          username: S.optional(S.String),
-          password: S.optional(S.String),
-          port: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SmtpMsa" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          treatAsAlias: S.optional(S.Boolean),
-          isPrimary: S.optional(S.Boolean),
-          replyToAddress: S.optional(S.String),
-          verificationStatus: S.optional(S.String),
-          displayName: S.optional(S.String),
-          isDefault: S.optional(S.Boolean),
-          smtpMsa: S.optional(__S(38, __c4, 6)),
-          sendAsEmail: S.optional(S.String),
-          signature: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SendAs" });
   }
 }
 function __c5(j: number): any {
@@ -2916,8 +2628,19 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          verificationStatus: S.optional(S.String),
+          forwardingEmail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ForwardingAddress" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(113, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2928,7 +2651,39 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateUsersSettingsSendAsRequest",
       });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          securityMode: S.optional(S.String),
+          host: S.optional(S.String),
+          username: S.optional(S.String),
+          password: S.optional(S.String),
+          port: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SmtpMsa" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          treatAsAlias: S.optional(S.Boolean),
+          isPrimary: S.optional(S.Boolean),
+          replyToAddress: S.optional(S.String),
+          verificationStatus: S.optional(S.String),
+          displayName: S.optional(S.String),
+          isDefault: S.optional(S.Boolean),
+          smtpMsa: S.optional(__S(112, __c7, 0)),
+          sendAsEmail: S.optional(S.String),
+          signature: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SendAs" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -2941,11 +2696,19 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteUsersDraftsRequest" });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteUsersDraftsResponse",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -2958,7 +2721,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteUsersLabelsRequest" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -2973,7 +2740,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteUsersMessagesRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -2988,7 +2759,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteUsersSettingsCseIdentitiesRequest",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           delegateEmail: S.String.pipe(T.Label()),
@@ -3003,7 +2778,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteUsersSettingsDelegatesRequest",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3020,7 +2799,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3037,7 +2816,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteUsersSettingsForwardingAddressesRequest",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3052,7 +2835,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteUsersSettingsSendAsRequest",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -3068,7 +2855,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteUsersSettingsSendAsSmimeInfoRequest",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3083,12 +2874,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteUsersThreadsRequest",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyPairId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(144, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3099,12 +2894,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DisableUsersSettingsCseKeypairsRequest",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
           keyPairId: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(144, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3115,7 +2914,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "EnableUsersSettingsCseKeypairsRequest",
       });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3129,7 +2932,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetAutoForwardingUsersSettingsRequest",
       });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           emailAddress: S.optional(S.String),
@@ -3139,7 +2946,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "AutoForwarding" });
   }
 }
-function __c7(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3155,7 +2962,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetImapUsersSettingsRequest",
       });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -3164,7 +2975,11 @@ function __c7(j: number): any {
           maxFolderSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ImapSettings" });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3178,13 +2993,21 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetLanguageUsersSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayLanguage: S.optional(S.String),
         }),
       ).annotate({ identifier: "LanguageSettings" });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3198,14 +3021,22 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetPopUsersSettingsRequest",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessWindow: S.optional(S.String),
           disposition: S.optional(S.String),
         }),
       ).annotate({ identifier: "PopSettings" });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3217,7 +3048,7 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProfileUsersRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           emailAddress: S.optional(S.String),
@@ -3228,7 +3059,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "Profile" });
   }
 }
-function __c8(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3244,7 +3075,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUsersDraftsRequest" });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -3257,11 +3092,15 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUsersLabelsRequest" });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          metadataHeaders: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          metadataHeaders: S.optional(__S(656, __c41, 0).pipe(T.Query())),
           id: S.String.pipe(T.Label()),
           format: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -3272,7 +3111,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUsersMessagesRequest" });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -3288,7 +3131,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetUsersMessagesAttachmentsRequest",
       });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3303,7 +3150,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetUsersSettingsCseIdentitiesRequest",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyPairId: S.String.pipe(T.Label()),
@@ -3318,7 +3169,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetUsersSettingsCseKeypairsRequest",
       });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           delegateEmail: S.String.pipe(T.Label()),
@@ -3333,7 +3188,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetUsersSettingsDelegatesRequest",
       });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -3350,7 +3209,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3367,7 +3226,52 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetUsersSettingsForwardingAddressesRequest",
       });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ids: S.optional(__S(656, __c41, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchDeleteMessagesRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+          body: S.optional(__S(624, __c39, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "gmail/v1/users/{userId}/messages/batchDelete",
+            baseUrl: "https://gmail.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteUsersMessagesRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BatchDeleteUsersMessagesResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3382,7 +3286,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetUsersSettingsSendAsRequest",
       });
-    case 2:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3398,7 +3306,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetUsersSettingsSendAsSmimeInfoRequest",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expiration: S.optional(S.String),
@@ -3410,12 +3322,16 @@ function __c9(j: number): any {
           encryptedKeyPassword: S.optional(S.String),
         }),
       ).annotate({ identifier: "SmimeInfo" });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          metadataHeaders: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          metadataHeaders: S.optional(__S(656, __c41, 0).pipe(T.Query())),
           format: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -3425,18 +3341,30 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUsersThreadsRequest" });
-    case 5:
-      return S.Array(__S(15, __c1, 7));
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1124, __c70, 4));
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           snippet: S.optional(S.String),
-          messages: S.optional(__S(77, __c9, 5)),
+          messages: S.optional(__S(736, __c46, 0)),
           historyId: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Thread" });
-    case 7:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3452,7 +3380,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3467,7 +3395,11 @@ function __c10(j: number): any {
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "VacationSettings" });
-    case 1:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3475,7 +3407,7 @@ function __c10(j: number): any {
           deleted: S.optional(S.Boolean.pipe(T.Query())),
           internalDateSource: S.optional(S.String.pipe(T.Query())),
           processForCalendar: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1124, __c70, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3486,13 +3418,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ImportUsersMessagesRequest",
       });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deleted: S.optional(S.Boolean.pipe(T.Query())),
           internalDateSource: S.optional(S.String.pipe(T.Query())),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1124, __c70, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3503,12 +3439,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "InsertUsersMessagesRequest",
       });
-    case 3:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
           sendAsEmail: S.String.pipe(T.Label()),
-          body: S.optional(__S(75, __c9, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(704, __c44, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3519,7 +3459,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "InsertUsersSettingsSendAsSmimeInfoRequest",
       });
-    case 4:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3535,30 +3479,30 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsersDraftsRequest" });
-    case 5:
-      return S.Array(__S(16, __c2, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(1136, __c71, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           resultSizeEstimate: S.optional(S.Number),
-          drafts: S.optional(__S(85, __c10, 5)),
+          drafts: S.optional(__S(849, __c53, 1)),
         }),
       ).annotate({ identifier: "ListDraftsResponse" });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c11(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           userId: S.String.pipe(T.Label()),
           startHistoryId: S.optional(S.String.pipe(T.Query())),
-          historyTypes: S.optional(__S(87, __c10, 7).pipe(T.Query())),
+          historyTypes: S.optional(__S(864, __c54, 0).pipe(T.Query())),
           labelId: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -3568,58 +3512,58 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsersHistoryRequest" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(15, __c1, 7)),
+          message: S.optional(__S(1124, __c70, 4)),
         }),
       ).annotate({ identifier: "HistoryMessageAdded" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
     case 3:
+      return S.Array(__S(866, __c54, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          labelIds: S.optional(__S(0, __c0, 0)),
-          message: S.optional(__S(15, __c1, 7)),
+          labelIds: S.optional(__S(656, __c41, 0)),
+          message: S.optional(__S(1124, __c70, 4)),
         }),
       ).annotate({ identifier: "HistoryLabelAdded" });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
     case 5:
+      return S.Array(__S(868, __c54, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(15, __c1, 7)),
-          labelIds: S.optional(__S(0, __c0, 0)),
+          message: S.optional(__S(1124, __c70, 4)),
+          labelIds: S.optional(__S(656, __c41, 0)),
         }),
       ).annotate({ identifier: "HistoryLabelRemoved" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
     case 7:
+      return S.Array(__S(870, __c54, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          messagesAdded: S.optional(__S(90, __c11, 2)),
-          labelsAdded: S.optional(__S(92, __c11, 4)),
-          messages: S.optional(__S(77, __c9, 5)),
-          messagesDeleted: S.optional(__S(90, __c11, 2)),
-          labelsRemoved: S.optional(__S(94, __c11, 6)),
+          messagesAdded: S.optional(__S(867, __c54, 3)),
+          labelsAdded: S.optional(__S(869, __c54, 5)),
+          messages: S.optional(__S(736, __c46, 0)),
+          messagesDeleted: S.optional(__S(867, __c54, 3)),
+          labelsRemoved: S.optional(__S(871, __c54, 7)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "History" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 9:
+      return S.Array(__S(872, __c54, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           historyId: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          history: S.optional(__S(96, __c12, 0)),
+          history: S.optional(__S(873, __c54, 9)),
         }),
       ).annotate({ identifier: "ListHistoryResponse" });
-    case 2:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3631,22 +3575,81 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsersLabelsRequest" });
-    case 3:
-      return S.Array(__S(19, __c2, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(1329, __c83, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(99, __c12, 3)),
+          labels: S.optional(__S(881, __c55, 1)),
         }),
       ).annotate({ identifier: "ListLabelsResponse" });
-    case 5:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ids: S.optional(__S(656, __c41, 0)),
+          removeClassificationLabelIds: S.optional(__S(656, __c41, 0)),
+          removeLabelIds: S.optional(__S(656, __c41, 0)),
+          addClassificationLabels: S.optional(__S(915, __c57, 3)),
+          addLabelIds: S.optional(__S(656, __c41, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchModifyMessagesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+          body: S.optional(__S(896, __c56, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "gmail/v1/users/{userId}/messages/batchModify",
+            baseUrl: "https://gmail.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchModifyUsersMessagesRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fieldId: S.optional(S.String),
+          selection: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClassificationLabelFieldValue",
+      });
+    case 1:
+      return S.Array(__S(912, __c57, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          labelId: S.optional(S.String),
+          fields: S.optional(__S(913, __c57, 1)),
+        }),
+      ).annotate({ identifier: "ClassificationLabelValue" });
+    case 3:
+      return S.Array(__S(914, __c57, 2));
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           includeSpamTrash: S.optional(S.Boolean.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           userId: S.String.pipe(T.Label()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          labelIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          labelIds: S.optional(__S(656, __c41, 0).pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -3656,15 +3659,19 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsersMessagesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          messages: S.optional(__S(77, __c9, 5)),
+          messages: S.optional(__S(736, __c46, 0)),
           resultSizeEstimate: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListMessagesResponse" });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3680,22 +3687,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListUsersSettingsCseIdentitiesRequest",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(22, __c2, 6));
     case 1:
+      return S.Array(__S(1521, __c95, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          cseIdentities: S.optional(__S(104, __c13, 0)),
+          cseIdentities: S.optional(__S(945, __c59, 1)),
         }),
       ).annotate({
         identifier: "ListCseIdentitiesResponse",
       });
-    case 2:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3711,16 +3718,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListUsersSettingsCseKeypairsRequest",
       });
-    case 3:
-      return S.Array(__S(28, __c3, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(1604, __c100, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          cseKeyPairs: S.optional(__S(107, __c13, 3)),
+          cseKeyPairs: S.optional(__S(961, __c60, 1)),
         }),
       ).annotate({ identifier: "ListCseKeyPairsResponse" });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3734,17 +3745,17 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListUsersSettingsDelegatesRequest",
       });
-    case 6:
-      return S.Array(__S(30, __c3, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          delegates: S.optional(__S(110, __c13, 6)),
+          delegates: S.optional(__S(977, __c61, 1)),
         }),
       ).annotate({ identifier: "ListDelegatesResponse" });
   }
 }
-function __c14(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3761,14 +3772,18 @@ function __c14(j: number): any {
         identifier: "ListUsersSettingsFiltersRequest",
       });
     case 1:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(50, __c3, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(113, __c14, 1)),
+          filter: S.optional(__S(993, __c62, 1)),
         }),
       ).annotate({ identifier: "ListFiltersResponse" });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3782,17 +3797,21 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListUsersSettingsForwardingAddressesRequest",
       });
-    case 4:
-      return S.Array(__S(36, __c4, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(80, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          forwardingAddresses: S.optional(__S(116, __c14, 4)),
+          forwardingAddresses: S.optional(__S(1009, __c63, 1)),
         }),
       ).annotate({
         identifier: "ListForwardingAddressesResponse",
       });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3806,19 +3825,19 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListUsersSettingsSendAsRequest",
       });
-    case 7:
-      return S.Array(__S(39, __c4, 7));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(113, __c7, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          sendAs: S.optional(__S(119, __c14, 7)),
+          sendAs: S.optional(__S(1025, __c64, 1)),
         }),
       ).annotate({ identifier: "ListSendAsResponse" });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sendAsEmail: S.String.pipe(T.Label()),
@@ -3833,18 +3852,22 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListUsersSettingsSendAsSmimeInfoRequest",
       });
+    case 1:
+      return S.Array(__S(704, __c44, 0));
     case 2:
-      return S.Array(__S(75, __c9, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          smimeInfo: S.optional(__S(122, __c15, 2)),
+          smimeInfo: S.optional(__S(1041, __c65, 1)),
         }),
       ).annotate({ identifier: "ListSmimeInfoResponse" });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          labelIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          labelIds: S.optional(__S(656, __c41, 0).pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           includeSpamTrash: S.optional(S.Boolean.pipe(T.Query())),
@@ -3858,35 +3881,35 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsersThreadsRequest" });
-    case 5:
-      return S.Array(__S(78, __c9, 6));
-    case 6:
+    case 1:
+      return S.Array(__S(752, __c47, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          threads: S.optional(__S(125, __c15, 5)),
+          threads: S.optional(__S(1057, __c66, 1)),
           nextPageToken: S.optional(S.String),
           resultSizeEstimate: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListThreadsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          addLabelIds: S.optional(__S(0, __c0, 0)),
-          removeClassificationLabelIds: S.optional(__S(0, __c0, 0)),
-          addClassificationLabels: S.optional(__S(7, __c0, 7)),
-          removeLabelIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ModifyMessageRequest" });
   }
 }
-function __c16(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          addLabelIds: S.optional(__S(656, __c41, 0)),
+          removeClassificationLabelIds: S.optional(__S(656, __c41, 0)),
+          addClassificationLabels: S.optional(__S(915, __c57, 3)),
+          removeLabelIds: S.optional(__S(656, __c41, 0)),
+        }),
+      ).annotate({ identifier: "ModifyMessageRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           userId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(__S(127, __c15, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1072, __c67, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3897,19 +3920,104 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ModifyUsersMessagesRequest",
       });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          removeLabelIds: S.optional(__S(0, __c0, 0)),
-          addLabelIds: S.optional(__S(0, __c0, 0)),
+          userId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1136, __c71, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "gmail/v1/users/{userId}/drafts",
+            baseUrl: "https://gmail.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateUsersDraftsRequest" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attachmentId: S.optional(S.String),
+          size: S.optional(S.Number),
+          data: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MessagePartBody" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MessagePartHeader" });
+    case 1:
+      return S.Array(__S(1120, __c70, 0));
+    case 2:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1123, __c70, 3)));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          headers: S.optional(__S(1121, __c70, 1)),
+          body: S.optional(__S(1104, __c69, 0)),
+          mimeType: S.optional(S.String),
+          filename: S.optional(S.String),
+          parts: S.optional(__S(1122, __c70, 2)),
+          partId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MessagePart" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          threadId: S.optional(S.String),
+          snippet: S.optional(S.String),
+          classificationLabelValues: S.optional(__S(915, __c57, 3)),
+          labelIds: S.optional(__S(656, __c41, 0)),
+          internalDate: S.optional(S.String),
+          historyId: S.optional(S.String),
+          raw: S.optional(S.String),
+          sizeEstimate: S.optional(S.Number),
+          id: S.optional(S.String),
+          payload: S.optional(__S(1123, __c70, 3)),
+        }),
+      ).annotate({ identifier: "Message" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(__S(1124, __c70, 4)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Draft" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          removeLabelIds: S.optional(__S(656, __c41, 0)),
+          addLabelIds: S.optional(__S(656, __c41, 0)),
         }),
       ).annotate({ identifier: "ModifyThreadRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1152, __c72, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3920,12 +4028,16 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ModifyUsersThreadsRequest",
       });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyPairId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(144, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3936,12 +4048,16 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ObliterateUsersSettingsCseKeypairsRequest",
       });
-    case 4:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1329, __c83, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3950,12 +4066,16 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchUsersLabelsRequest" });
-    case 5:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           emailAddress: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1521, __c95, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3966,12 +4086,16 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PatchUsersSettingsCseIdentitiesRequest",
       });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
           sendAsEmail: S.String.pipe(T.Label()),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(113, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3982,11 +4106,15 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PatchUsersSettingsSendAsRequest",
       });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1136, __c71, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3997,13 +4125,13 @@ function __c16(j: number): any {
       ).annotate({ identifier: "SendUsersDraftsRequest" });
   }
 }
-function __c17(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1124, __c70, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4012,7 +4140,11 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SendUsersMessagesRequest" });
-    case 1:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sendAsEmail: S.String.pipe(T.Label()),
@@ -4028,7 +4160,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "SetDefaultUsersSettingsSendAsSmimeInfoRequest",
       });
-    case 2:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -4040,7 +4176,11 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopUsersRequest" });
-    case 3:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -4055,7 +4195,54 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "TrashUsersMessagesRequest",
       });
-    case 4:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1329, __c83, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "gmail/v1/users/{userId}/labels",
+            baseUrl: "https://gmail.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateUsersLabelsRequest" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          backgroundColor: S.optional(S.String),
+          textColor: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LabelColor" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          threadsUnread: S.optional(S.Number),
+          messageListVisibility: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          threadsTotal: S.optional(S.Number),
+          labelListVisibility: S.optional(S.String),
+          id: S.optional(S.String),
+          messagesUnread: S.optional(S.Number),
+          messagesTotal: S.optional(S.Number),
+          color: S.optional(__S(1328, __c83, 0)),
+        }),
+      ).annotate({ identifier: "Label" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -4068,7 +4255,11 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TrashUsersThreadsRequest" });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -4083,7 +4274,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UntrashUsersMessagesRequest",
       });
-    case 6:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -4098,11 +4293,15 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UntrashUsersThreadsRequest",
       });
-    case 7:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(352, __c22, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4115,13 +4314,13 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(384, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4132,11 +4331,15 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "UpdateImapUsersSettingsRequest",
       });
-    case 1:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(416, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4147,11 +4350,15 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "UpdateLanguageUsersSettingsRequest",
       });
-    case 2:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c28, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4162,12 +4369,16 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "UpdatePopUsersSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1136, __c71, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4176,12 +4387,16 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateUsersDraftsRequest" });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1329, __c83, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4190,12 +4405,16 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateUsersLabelsRequest" });
-    case 5:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sendAsEmail: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(113, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4206,11 +4425,53 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "UpdateUsersSettingsSendAsRequest",
       });
-    case 6:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(80, __c10, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1521, __c95, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "gmail/v1/users/{userId}/settings/cse/identities",
+            baseUrl: "https://gmail.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateUsersSettingsCseIdentitiesRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          signingKeyPairId: S.optional(S.String),
+          encryptionKeyPairId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignAndEncryptKeyPairs" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          primaryKeyPairId: S.optional(S.String),
+          emailAddress: S.optional(S.String),
+          signAndEncryptKeyPairs: S.optional(__S(1520, __c95, 0)),
+        }),
+      ).annotate({ identifier: "CseIdentity" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+          body: S.optional(__S(784, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4221,7 +4482,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "UpdateVacationUsersSettingsRequest",
       });
-    case 7:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -4238,12 +4503,12 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labelIds: S.optional(__S(0, __c0, 0)),
+          labelIds: S.optional(__S(656, __c41, 0)),
           topicName: S.optional(S.String),
           labelFilterBehavior: S.optional(S.String),
           labelFilterAction: S.optional(S.String),
@@ -4253,7 +4518,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c98, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4271,7 +4536,65 @@ function __c19(j: number): any {
       ).annotate({ identifier: "WatchResponse" });
   }
 }
-
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+          chainValidation: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1604, __c100, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "gmail/v1/users/{userId}/settings/cse/keypairs",
+            baseUrl: "https://gmail.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateUsersSettingsCseKeypairsRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HardwareKeyMetadata" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kaclsUri: S.optional(S.String),
+          kaclsData: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KaclsKeyMetadata" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          privateKeyMetadataId: S.optional(S.String),
+          hardwareKeyMetadata: S.optional(__S(1600, __c100, 0)),
+          kaclsKeyMetadata: S.optional(__S(1601, __c100, 1)),
+        }),
+      ).annotate({ identifier: "CsePrivateKeyMetadata" });
+    case 3:
+      return S.Array(__S(1602, __c100, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          enablementState: S.optional(S.String),
+          disableTime: S.optional(S.String),
+          subjectEmailAddresses: S.optional(__S(656, __c41, 0)),
+          pem: S.optional(S.String),
+          pkcs7: S.optional(S.String),
+          keyPairId: S.optional(S.String),
+          privateKeyMetadata: S.optional(__S(1603, __c100, 3)),
+        }),
+      ).annotate({ identifier: "CseKeyPair" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

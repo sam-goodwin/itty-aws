@@ -786,8 +786,8 @@ export const addUsers: API.OperationMethod<
   AddUsersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddUsersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<AddUsersResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<AddUsersRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AddUsersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -801,8 +801,8 @@ export const changeUserRole: API.OperationMethod<
   ChangeUserRoleError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ChangeUserRoleRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ChangeUserRoleResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ChangeUserRoleRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ChangeUserRoleResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -816,8 +816,8 @@ export const createResourceGroup: API.OperationMethod<
   CreateResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateResourceGroupRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateResourceGroupResponse>,
+  input: __S(28, __c3, 4) as any as S.Schema<CreateResourceGroupRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<CreateResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -831,8 +831,8 @@ export const deleteResourceGroup: API.OperationMethod<
   DeleteResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteResourceGroupRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteResourceGroupResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteResourceGroupRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<DeleteResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -846,8 +846,8 @@ export const getResourceGroup: API.OperationMethod<
   GetResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetResourceGroupRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetResourceGroupResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetResourceGroupRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<GetResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -861,8 +861,8 @@ export const getResourceGroups: API.OperationMethod<
   GetResourceGroupsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetResourceGroupsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetResourceGroupsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetResourceGroupsRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<GetResourceGroupsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -876,8 +876,8 @@ export const joinConfigureAuto: API.OperationMethod<
   JoinConfigureAutoError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<JoinConfigureAutoRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<JoinConfigureAutoResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<JoinConfigureAutoRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<JoinConfigureAutoResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -891,8 +891,8 @@ export const removeUser: API.OperationMethod<
   RemoveUserError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<RemoveUserRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<RemoveUserResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<RemoveUserRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<RemoveUserResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -906,8 +906,8 @@ export const updateResourceGroup: API.OperationMethod<
   UpdateResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<UpdateResourceGroupRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdateResourceGroupResponse>,
+  input: __S(73, __c9, 1) as any as S.Schema<UpdateResourceGroupRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<UpdateResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -917,22 +917,13 @@ export const updateResourceGroup: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          user: S.String,
-          role: S.String,
-        }),
-      ).annotate({
-        identifier: "AddUsersRequestUsersItemCase1",
-      });
-    case 1:
       return S.Array(S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           resourceGroupId: S.String.pipe(T.Label()),
-          users: __S(1, __c0, 1),
+          users: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -941,7 +932,25 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddUsersRequest" });
+    case 2:
+      return S.Array(S.Unknown);
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          autoJoin: S.optional(S.Unknown),
+          spendLimits: S.optional(__S(8, __c1, 0)),
+          users: __S(10, __c1, 2),
+          resources: __S(2, __c0, 2),
+        }),
+      ).annotate({ identifier: "AddUsersResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           total: S.optional(S.Number),
@@ -953,7 +962,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddUsersResponseSpendLimits",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -968,25 +977,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddUsersResponseUsersItem",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          autoJoin: S.optional(S.Unknown),
-          spendLimits: S.optional(__S(3, __c0, 3)),
-          users: __S(5, __c0, 5),
-          resources: __S(6, __c0, 6),
-        }),
-      ).annotate({ identifier: "AddUsersResponse" });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1012,29 +1007,42 @@ function __c1(j: number): any {
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           autoJoin: S.optional(S.Unknown),
-          spendLimits: S.optional(__S(3, __c0, 3)),
-          users: __S(5, __c0, 5),
-          resources: __S(9, __c1, 1),
+          spendLimits: S.optional(__S(8, __c1, 0)),
+          users: __S(10, __c1, 2),
+          resources: __S(17, __c2, 1),
         }),
       ).annotate({ identifier: "ChangeUserRoleResponse" });
-    case 3:
-      return S.Array(__S(0, __c0, 0));
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user: S.String,
+          role: S.String,
+        }),
+      ).annotate({
+        identifier: "AddUsersRequestUsersItemCase1",
+      });
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           type: S.String,
         }),
       ).annotate({ identifier: "RepoId" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(26, __c3, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           description: S.optional(S.String),
-          users: S.optional(__S(11, __c1, 3)),
-          repos: S.optional(__S(13, __c1, 5)),
+          users: S.optional(__S(25, __c3, 1)),
+          repos: S.optional(__S(27, __c3, 3)),
           autoJoin: S.optional(S.Unknown),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/organizations/{name}/resource-groups", code: 200 }),
@@ -1042,27 +1050,27 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateResourceGroupRequest",
       });
-    case 7:
+    case 5:
       return S.Array(S.Unknown);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           autoJoin: S.optional(S.Unknown),
-          spendLimits: S.optional(__S(3, __c0, 3)),
-          users: __S(5, __c0, 5),
-          resources: __S(15, __c1, 7),
+          spendLimits: S.optional(__S(8, __c1, 0)),
+          users: __S(10, __c1, 2),
+          resources: __S(29, __c3, 5),
         }),
       ).annotate({
         identifier: "CreateResourceGroupResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1077,7 +1085,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteResourceGroupRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
@@ -1085,7 +1093,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteResourceGroupResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1098,21 +1110,25 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetResourceGroupRequest" });
-    case 4:
+    case 1:
       return S.Array(S.Unknown);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           autoJoin: S.optional(S.Unknown),
-          spendLimits: S.optional(__S(3, __c0, 3)),
-          users: __S(5, __c0, 5),
-          resources: __S(20, __c2, 4),
+          spendLimits: S.optional(__S(8, __c1, 0)),
+          users: __S(10, __c1, 2),
+          resources: __S(41, __c5, 1),
         }),
       ).annotate({ identifier: "GetResourceGroupResponse" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1120,33 +1136,33 @@ function __c2(j: number): any {
           T.Http({ method: "GET", uri: "/api/organizations/{name}/resource-groups", code: 200 }),
         ),
       ).annotate({ identifier: "GetResourceGroupsRequest" });
-    case 7:
+    case 1:
       return S.Array(S.Unknown);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           autoJoin: S.optional(S.Unknown),
-          spendLimits: S.optional(__S(3, __c0, 3)),
-          users: __S(5, __c0, 5),
-          resources: __S(23, __c2, 7),
+          spendLimits: S.optional(__S(8, __c1, 0)),
+          users: __S(10, __c1, 2),
+          resources: __S(49, __c6, 1),
         }),
       ).annotate({
         identifier: "GetResourceGroupsResponseBodyItem",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() => __S(25, __c3, 1).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(50, __c6, 2));
+    case 4:
+      return S.suspend(() => __S(51, __c6, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetResourceGroupsResponse",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1160,23 +1176,27 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "JoinConfigureAutoRequest" });
-    case 4:
+    case 1:
       return S.Array(S.Unknown);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           autoJoin: S.optional(S.Unknown),
-          spendLimits: S.optional(__S(3, __c0, 3)),
-          users: __S(5, __c0, 5),
-          resources: __S(28, __c3, 4),
+          spendLimits: S.optional(__S(8, __c1, 0)),
+          users: __S(10, __c1, 2),
+          resources: __S(57, __c7, 1),
         }),
       ).annotate({
         identifier: "JoinConfigureAutoResponse",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1190,25 +1210,25 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveUserRequest" });
-    case 7:
+    case 1:
       return S.Array(S.Unknown);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           autoJoin: S.optional(S.Unknown),
-          spendLimits: S.optional(__S(3, __c0, 3)),
-          users: __S(5, __c0, 5),
-          resources: __S(31, __c3, 7),
+          spendLimits: S.optional(__S(8, __c1, 0)),
+          users: __S(10, __c1, 2),
+          resources: __S(65, __c8, 1),
         }),
       ).annotate({ identifier: "RemoveUserResponse" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           total: S.optional(S.NullOr(S.Number)),
@@ -1220,13 +1240,13 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateResourceGroupRequestSpendLimits",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           resourceGroupId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
-          spendLimits: S.optional(__S(33, __c4, 1)),
+          spendLimits: S.optional(__S(72, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1237,25 +1257,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateResourceGroupRequest",
       });
-    case 3:
+    case 2:
       return S.Array(S.Unknown);
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           autoJoin: S.optional(S.Unknown),
-          spendLimits: S.optional(__S(3, __c0, 3)),
-          users: __S(5, __c0, 5),
-          resources: __S(35, __c4, 3),
+          spendLimits: S.optional(__S(8, __c1, 0)),
+          users: __S(10, __c1, 2),
+          resources: __S(74, __c9, 2),
         }),
       ).annotate({
         identifier: "UpdateResourceGroupResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

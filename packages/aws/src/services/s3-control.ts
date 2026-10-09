@@ -1531,7 +1531,7 @@ export interface Region {
   Bucket: string;
   BucketAccountId?: string;
 }
-const Region = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<Region>;
+const Region = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<Region>;
 export type RegionCreationList = Region[];
 export interface CreateMultiRegionAccessPointInput {
   Name: string;
@@ -2841,8 +2841,8 @@ export const associateAccessGrantsIdentityCenter: API.OperationMethod<
   AssociateAccessGrantsIdentityCenterError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateAccessGrantsIdentityCenterRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateAccessGrantsIdentityCenterResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<AssociateAccessGrantsIdentityCenterRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<AssociateAccessGrantsIdentityCenterResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2872,8 +2872,8 @@ export const createAccessGrant: API.OperationMethod<
   CreateAccessGrantError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateAccessGrantRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateAccessGrantResult>,
+  input: __S(672, __c21, 0) as any as S.Schema<CreateAccessGrantRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<CreateAccessGrantResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2899,8 +2899,8 @@ export const createAccessGrantsInstance: API.OperationMethod<
   CreateAccessGrantsInstanceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateAccessGrantsInstanceRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateAccessGrantsInstanceResult>,
+  input: __S(800, __c25, 0) as any as S.Schema<CreateAccessGrantsInstanceRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<CreateAccessGrantsInstanceResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2934,8 +2934,8 @@ export const createAccessGrantsLocation: API.OperationMethod<
   CreateAccessGrantsLocationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateAccessGrantsLocationRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateAccessGrantsLocationResult>,
+  input: __S(832, __c26, 0) as any as S.Schema<CreateAccessGrantsLocationRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<CreateAccessGrantsLocationResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2978,8 +2978,8 @@ export const createAccessPoint: API.OperationMethod<
   CreateAccessPointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateAccessPointRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateAccessPointResult>,
+  input: __S(864, __c27, 0) as any as S.Schema<CreateAccessPointRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<CreateAccessPointResult>,
   errors: [AccessPointAlreadyOwnedByYou, InvalidRequest],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3014,8 +3014,8 @@ export const createAccessPointForObjectLambda: API.OperationMethod<
   CreateAccessPointForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateAccessPointForObjectLambdaRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateAccessPointForObjectLambdaResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<CreateAccessPointForObjectLambdaRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<CreateAccessPointForObjectLambdaResult>,
   errors: [
     AccessPointAlreadyOwnedByYou,
     InvalidRequest,
@@ -3074,8 +3074,8 @@ export const createBucket: API.OperationMethod<
   CreateBucketError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateBucketRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CreateBucketResult>,
+  input: __S(1089, __c34, 1) as any as S.Schema<CreateBucketRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<CreateBucketResult>,
   errors: [BucketAlreadyExists, BucketAlreadyOwnedByYou],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3119,8 +3119,8 @@ export const createJob: API.OperationMethod<
   CreateJobError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<CreateJobRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<CreateJobResult>,
+  input: __S(1120, __c35, 0) as any as S.Schema<CreateJobRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<CreateJobResult>,
   errors: [
     BadRequestException,
     IdempotencyException,
@@ -3166,8 +3166,8 @@ export const createMultiRegionAccessPoint: API.OperationMethod<
   CreateMultiRegionAccessPointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CreateMultiRegionAccessPointRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<CreateMultiRegionAccessPointResult>,
+  input: __S(1280, __c40, 0) as any as S.Schema<CreateMultiRegionAccessPointRequest>,
+  output: __S(1281, __c40, 1) as any as S.Schema<CreateMultiRegionAccessPointResult>,
   errors: [InvalidRequest],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3199,8 +3199,8 @@ export const createStorageLensGroup: API.OperationMethod<
   CreateStorageLensGroupError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<CreateStorageLensGroupRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<CreateStorageLensGroupResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<CreateStorageLensGroupRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<CreateStorageLensGroupResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3222,8 +3222,8 @@ export const deleteAccessGrant: API.OperationMethod<
   DeleteAccessGrantError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<DeleteAccessGrantRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<DeleteAccessGrantResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<DeleteAccessGrantRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<DeleteAccessGrantResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3245,8 +3245,8 @@ export const deleteAccessGrantsInstance: API.OperationMethod<
   DeleteAccessGrantsInstanceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DeleteAccessGrantsInstanceRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<DeleteAccessGrantsInstanceResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<DeleteAccessGrantsInstanceRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<DeleteAccessGrantsInstanceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3268,8 +3268,8 @@ export const deleteAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   DeleteAccessGrantsInstanceResourcePolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<DeleteAccessGrantsInstanceResourcePolicyRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<DeleteAccessGrantsInstanceResourcePolicyResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DeleteAccessGrantsInstanceResourcePolicyRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<DeleteAccessGrantsInstanceResourcePolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3291,8 +3291,8 @@ export const deleteAccessGrantsLocation: API.OperationMethod<
   DeleteAccessGrantsLocationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<DeleteAccessGrantsLocationRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<DeleteAccessGrantsLocationResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<DeleteAccessGrantsLocationRequest>,
+  output: __S(1505, __c47, 1) as any as S.Schema<DeleteAccessGrantsLocationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3320,8 +3320,8 @@ export const deleteAccessPoint: API.OperationMethod<
   DeleteAccessPointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<DeleteAccessPointRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<DeleteAccessPointResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<DeleteAccessPointRequest>,
+  output: __S(1537, __c48, 1) as any as S.Schema<DeleteAccessPointResponse>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3350,8 +3350,8 @@ export const deleteAccessPointForObjectLambda: API.OperationMethod<
   DeleteAccessPointForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DeleteAccessPointForObjectLambdaRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<DeleteAccessPointForObjectLambdaResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DeleteAccessPointForObjectLambdaRequest>,
+  output: __S(1569, __c49, 1) as any as S.Schema<DeleteAccessPointForObjectLambdaResponse>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3380,8 +3380,8 @@ export const deleteAccessPointPolicy: API.OperationMethod<
   DeleteAccessPointPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<DeleteAccessPointPolicyRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<DeleteAccessPointPolicyResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<DeleteAccessPointPolicyRequest>,
+  output: __S(1601, __c50, 1) as any as S.Schema<DeleteAccessPointPolicyResponse>,
   errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3411,8 +3411,8 @@ export const deleteAccessPointPolicyForObjectLambda: API.OperationMethod<
   DeleteAccessPointPolicyForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<DeleteAccessPointPolicyForObjectLambdaRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<DeleteAccessPointPolicyForObjectLambdaResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DeleteAccessPointPolicyForObjectLambdaRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<DeleteAccessPointPolicyForObjectLambdaResponse>,
   errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3437,8 +3437,8 @@ export const deleteAccessPointScope: API.OperationMethod<
   DeleteAccessPointScopeError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<DeleteAccessPointScopeRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DeleteAccessPointScopeResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<DeleteAccessPointScopeRequest>,
+  output: __S(1665, __c52, 1) as any as S.Schema<DeleteAccessPointScopeResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3470,8 +3470,8 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteBucketRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<DeleteBucketResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<DeleteBucketRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<DeleteBucketResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3512,8 +3512,8 @@ export const deleteBucketLifecycleConfiguration: API.OperationMethod<
   DeleteBucketLifecycleConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<DeleteBucketLifecycleConfigurationRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<DeleteBucketLifecycleConfigurationResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<DeleteBucketLifecycleConfigurationRequest>,
+  output: __S(1729, __c54, 1) as any as S.Schema<DeleteBucketLifecycleConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3560,8 +3560,8 @@ export const deleteBucketPolicy: API.OperationMethod<
   DeleteBucketPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<DeleteBucketPolicyRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<DeleteBucketPolicyResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<DeleteBucketPolicyRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<DeleteBucketPolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3607,8 +3607,8 @@ export const deleteBucketReplication: API.OperationMethod<
   DeleteBucketReplicationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<DeleteBucketReplicationRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<DeleteBucketReplicationResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<DeleteBucketReplicationRequest>,
+  output: __S(1793, __c56, 1) as any as S.Schema<DeleteBucketReplicationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3642,8 +3642,8 @@ export const deleteBucketTagging: API.OperationMethod<
   DeleteBucketTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<DeleteBucketTaggingRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<DeleteBucketTaggingResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<DeleteBucketTaggingRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<DeleteBucketTaggingResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3681,8 +3681,8 @@ export const deleteJobTagging: API.OperationMethod<
   DeleteJobTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<DeleteJobTaggingRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteJobTaggingResult>,
+  input: __S(1856, __c58, 0) as any as S.Schema<DeleteJobTaggingRequest>,
+  output: __S(1857, __c58, 1) as any as S.Schema<DeleteJobTaggingResult>,
   errors: [InternalServiceException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3725,8 +3725,8 @@ export const deleteMultiRegionAccessPoint: API.OperationMethod<
   DeleteMultiRegionAccessPointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<DeleteMultiRegionAccessPointRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<DeleteMultiRegionAccessPointResult>,
+  input: __S(1888, __c59, 0) as any as S.Schema<DeleteMultiRegionAccessPointRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<DeleteMultiRegionAccessPointResult>,
   errors: [NoSuchMultiRegionAccessPoint, InvalidRequest],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3758,8 +3758,8 @@ export const deletePublicAccessBlock: API.OperationMethod<
   DeletePublicAccessBlockError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<DeletePublicAccessBlockRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<DeletePublicAccessBlockResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<DeletePublicAccessBlockRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<DeletePublicAccessBlockResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3786,8 +3786,8 @@ export const deleteStorageLensConfiguration: API.OperationMethod<
   DeleteStorageLensConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<DeleteStorageLensConfigurationRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<DeleteStorageLensConfigurationResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<DeleteStorageLensConfigurationRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<DeleteStorageLensConfigurationResponse>,
   errors: [NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3815,8 +3815,8 @@ export const deleteStorageLensConfigurationTagging: API.OperationMethod<
   DeleteStorageLensConfigurationTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<DeleteStorageLensConfigurationTaggingRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<DeleteStorageLensConfigurationTaggingResult>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DeleteStorageLensConfigurationTaggingRequest>,
+  output: __S(2017, __c63, 1) as any as S.Schema<DeleteStorageLensConfigurationTaggingResult>,
   errors: [NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3841,8 +3841,8 @@ export const deleteStorageLensGroup: API.OperationMethod<
   DeleteStorageLensGroupError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<DeleteStorageLensGroupRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<DeleteStorageLensGroupResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<DeleteStorageLensGroupRequest>,
+  output: __S(2049, __c64, 1) as any as S.Schema<DeleteStorageLensGroupResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3880,8 +3880,8 @@ export const describeJob: API.OperationMethod<
   DescribeJobError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<DescribeJobRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<DescribeJobResult>,
+  input: __S(2080, __c65, 0) as any as S.Schema<DescribeJobRequest>,
+  output: __S(2085, __c65, 5) as any as S.Schema<DescribeJobResult>,
   errors: [
     BadRequestException,
     InternalServiceException,
@@ -3917,8 +3917,8 @@ export const describeMultiRegionAccessPointOperation: API.OperationMethod<
   DescribeMultiRegionAccessPointOperationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<DescribeMultiRegionAccessPointOperationRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<DescribeMultiRegionAccessPointOperationResult>,
+  input: __S(2144, __c67, 0) as any as S.Schema<DescribeMultiRegionAccessPointOperationRequest>,
+  output: __S(2152, __c67, 8) as any as S.Schema<DescribeMultiRegionAccessPointOperationResult>,
   errors: [InvalidRequest],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3944,8 +3944,8 @@ export const dissociateAccessGrantsIdentityCenter: API.OperationMethod<
   DissociateAccessGrantsIdentityCenterError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<DissociateAccessGrantsIdentityCenterRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<DissociateAccessGrantsIdentityCenterResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<DissociateAccessGrantsIdentityCenterRequest>,
+  output: __S(2209, __c69, 1) as any as S.Schema<DissociateAccessGrantsIdentityCenterResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3967,8 +3967,8 @@ export const getAccessGrant: API.OperationMethod<
   GetAccessGrantError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetAccessGrantRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<GetAccessGrantResult>,
+  input: __S(2240, __c70, 0) as any as S.Schema<GetAccessGrantRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<GetAccessGrantResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3992,8 +3992,8 @@ export const getAccessGrantsInstance: API.OperationMethod<
   GetAccessGrantsInstanceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<GetAccessGrantsInstanceRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<GetAccessGrantsInstanceResult>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetAccessGrantsInstanceRequest>,
+  output: __S(2273, __c71, 1) as any as S.Schema<GetAccessGrantsInstanceResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4019,8 +4019,8 @@ export const getAccessGrantsInstanceForPrefix: API.OperationMethod<
   GetAccessGrantsInstanceForPrefixError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<GetAccessGrantsInstanceForPrefixRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<GetAccessGrantsInstanceForPrefixResult>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetAccessGrantsInstanceForPrefixRequest>,
+  output: __S(2305, __c72, 1) as any as S.Schema<GetAccessGrantsInstanceForPrefixResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4042,8 +4042,8 @@ export const getAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   GetAccessGrantsInstanceResourcePolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<GetAccessGrantsInstanceResourcePolicyRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<GetAccessGrantsInstanceResourcePolicyResult>,
+  input: __S(2336, __c73, 0) as any as S.Schema<GetAccessGrantsInstanceResourcePolicyRequest>,
+  output: __S(2337, __c73, 1) as any as S.Schema<GetAccessGrantsInstanceResourcePolicyResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4065,8 +4065,8 @@ export const getAccessGrantsLocation: API.OperationMethod<
   GetAccessGrantsLocationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<GetAccessGrantsLocationRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<GetAccessGrantsLocationResult>,
+  input: __S(2368, __c74, 0) as any as S.Schema<GetAccessGrantsLocationRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<GetAccessGrantsLocationResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4094,8 +4094,8 @@ export const getAccessPoint: API.OperationMethod<
   GetAccessPointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<GetAccessPointRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<GetAccessPointResult>,
+  input: __S(2400, __c75, 0) as any as S.Schema<GetAccessPointRequest>,
+  output: __S(2402, __c75, 2) as any as S.Schema<GetAccessPointResult>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4120,8 +4120,8 @@ export const getAccessPointConfigurationForObjectLambda: API.OperationMethod<
   GetAccessPointConfigurationForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<GetAccessPointConfigurationForObjectLambdaRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<GetAccessPointConfigurationForObjectLambdaResult>,
+  input: __S(2432, __c76, 0) as any as S.Schema<GetAccessPointConfigurationForObjectLambdaRequest>,
+  output: __S(2433, __c76, 1) as any as S.Schema<GetAccessPointConfigurationForObjectLambdaResult>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4149,8 +4149,8 @@ export const getAccessPointForObjectLambda: API.OperationMethod<
   GetAccessPointForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<GetAccessPointForObjectLambdaRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<GetAccessPointForObjectLambdaResult>,
+  input: __S(2464, __c77, 0) as any as S.Schema<GetAccessPointForObjectLambdaRequest>,
+  output: __S(2465, __c77, 1) as any as S.Schema<GetAccessPointForObjectLambdaResult>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4174,8 +4174,8 @@ export const getAccessPointPolicy: API.OperationMethod<
   GetAccessPointPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<GetAccessPointPolicyRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<GetAccessPointPolicyResult>,
+  input: __S(2496, __c78, 0) as any as S.Schema<GetAccessPointPolicyRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<GetAccessPointPolicyResult>,
   errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4205,8 +4205,8 @@ export const getAccessPointPolicyForObjectLambda: API.OperationMethod<
   GetAccessPointPolicyForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<GetAccessPointPolicyForObjectLambdaRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<GetAccessPointPolicyForObjectLambdaResult>,
+  input: __S(2528, __c79, 0) as any as S.Schema<GetAccessPointPolicyForObjectLambdaRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<GetAccessPointPolicyForObjectLambdaResult>,
   errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4231,8 +4231,8 @@ export const getAccessPointPolicyStatus: API.OperationMethod<
   GetAccessPointPolicyStatusError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<GetAccessPointPolicyStatusRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<GetAccessPointPolicyStatusResult>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetAccessPointPolicyStatusRequest>,
+  output: __S(2561, __c80, 1) as any as S.Schema<GetAccessPointPolicyStatusResult>,
   errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4252,8 +4252,8 @@ export const getAccessPointPolicyStatusForObjectLambda: API.OperationMethod<
   GetAccessPointPolicyStatusForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<GetAccessPointPolicyStatusForObjectLambdaRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GetAccessPointPolicyStatusForObjectLambdaResult>,
+  input: __S(2624, __c82, 0) as any as S.Schema<GetAccessPointPolicyStatusForObjectLambdaRequest>,
+  output: __S(2625, __c82, 1) as any as S.Schema<GetAccessPointPolicyStatusForObjectLambdaResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4276,8 +4276,8 @@ export const getAccessPointScope: API.OperationMethod<
   GetAccessPointScopeError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<GetAccessPointScopeRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<GetAccessPointScopeResult>,
+  input: __S(2656, __c83, 0) as any as S.Schema<GetAccessPointScopeRequest>,
+  output: __S(2657, __c83, 1) as any as S.Schema<GetAccessPointScopeResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4315,8 +4315,8 @@ export const getBucket: API.OperationMethod<
   GetBucketError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<GetBucketRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<GetBucketResult>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetBucketRequest>,
+  output: __S(2689, __c84, 1) as any as S.Schema<GetBucketResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4365,8 +4365,8 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
   GetBucketLifecycleConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<GetBucketLifecycleConfigurationRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<GetBucketLifecycleConfigurationResult>,
+  input: __S(2720, __c85, 0) as any as S.Schema<GetBucketLifecycleConfigurationRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<GetBucketLifecycleConfigurationResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4416,8 +4416,8 @@ export const getBucketPolicy: API.OperationMethod<
   GetBucketPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<GetBucketPolicyRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<GetBucketPolicyResult>,
+  input: __S(2784, __c87, 0) as any as S.Schema<GetBucketPolicyRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<GetBucketPolicyResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4471,8 +4471,8 @@ export const getBucketReplication: API.OperationMethod<
   GetBucketReplicationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetBucketReplicationRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<GetBucketReplicationResult>,
+  input: __S(2816, __c88, 0) as any as S.Schema<GetBucketReplicationRequest>,
+  output: __S(2817, __c88, 1) as any as S.Schema<GetBucketReplicationResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4513,8 +4513,8 @@ export const getBucketTagging: API.OperationMethod<
   GetBucketTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<GetBucketTaggingRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<GetBucketTaggingResult>,
+  input: __S(2880, __c90, 0) as any as S.Schema<GetBucketTaggingRequest>,
+  output: __S(2881, __c90, 1) as any as S.Schema<GetBucketTaggingResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4561,8 +4561,8 @@ export const getBucketVersioning: API.OperationMethod<
   GetBucketVersioningError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<GetBucketVersioningRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<GetBucketVersioningResult>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GetBucketVersioningRequest>,
+  output: __S(2913, __c91, 1) as any as S.Schema<GetBucketVersioningResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4588,8 +4588,8 @@ export const getDataAccess: API.OperationMethod<
   GetDataAccessError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<GetDataAccessRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<GetDataAccessResult>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetDataAccessRequest>,
+  output: __S(2946, __c92, 2) as any as S.Schema<GetDataAccessResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4627,8 +4627,8 @@ export const getJobTagging: API.OperationMethod<
   GetJobTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<GetJobTaggingRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<GetJobTaggingResult>,
+  input: __S(2976, __c93, 0) as any as S.Schema<GetJobTaggingRequest>,
+  output: __S(2977, __c93, 1) as any as S.Schema<GetJobTaggingResult>,
   errors: [InternalServiceException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4662,8 +4662,8 @@ export const getMultiRegionAccessPoint: API.OperationMethod<
   GetMultiRegionAccessPointError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<GetMultiRegionAccessPointRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<GetMultiRegionAccessPointResult>,
+  input: __S(3008, __c94, 0) as any as S.Schema<GetMultiRegionAccessPointRequest>,
+  output: __S(3009, __c94, 1) as any as S.Schema<GetMultiRegionAccessPointResult>,
   errors: [NoSuchMultiRegionAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4694,8 +4694,8 @@ export const getMultiRegionAccessPointPolicy: API.OperationMethod<
   GetMultiRegionAccessPointPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetMultiRegionAccessPointPolicyRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<GetMultiRegionAccessPointPolicyResult>,
+  input: __S(3072, __c96, 0) as any as S.Schema<GetMultiRegionAccessPointPolicyRequest>,
+  output: __S(3076, __c96, 4) as any as S.Schema<GetMultiRegionAccessPointPolicyResult>,
   errors: [NoSuchMultiRegionAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4727,8 +4727,8 @@ export const getMultiRegionAccessPointPolicyStatus: API.OperationMethod<
   GetMultiRegionAccessPointPolicyStatusError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<GetMultiRegionAccessPointPolicyStatusRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<GetMultiRegionAccessPointPolicyStatusResult>,
+  input: __S(3104, __c97, 0) as any as S.Schema<GetMultiRegionAccessPointPolicyStatusRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<GetMultiRegionAccessPointPolicyStatusResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4762,8 +4762,8 @@ export const getMultiRegionAccessPointRoutes: API.OperationMethod<
   GetMultiRegionAccessPointRoutesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<GetMultiRegionAccessPointRoutesRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<GetMultiRegionAccessPointRoutesResult>,
+  input: __S(3136, __c98, 0) as any as S.Schema<GetMultiRegionAccessPointRoutesRequest>,
+  output: __S(3137, __c98, 1) as any as S.Schema<GetMultiRegionAccessPointRoutesResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4792,8 +4792,8 @@ export const getPublicAccessBlock: API.OperationMethod<
   GetPublicAccessBlockError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<GetPublicAccessBlockRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<GetPublicAccessBlockOutput>,
+  input: __S(3200, __c100, 0) as any as S.Schema<GetPublicAccessBlockRequest>,
+  output: __S(3201, __c100, 1) as any as S.Schema<GetPublicAccessBlockOutput>,
   errors: [NoSuchPublicAccessBlockConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4819,8 +4819,8 @@ export const getStorageLensConfiguration: API.OperationMethod<
   GetStorageLensConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<GetStorageLensConfigurationRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<GetStorageLensConfigurationResult>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GetStorageLensConfigurationRequest>,
+  output: __S(3233, __c101, 1) as any as S.Schema<GetStorageLensConfigurationResult>,
   errors: [NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4848,8 +4848,8 @@ export const getStorageLensConfigurationTagging: API.OperationMethod<
   GetStorageLensConfigurationTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<GetStorageLensConfigurationTaggingRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<GetStorageLensConfigurationTaggingResult>,
+  input: __S(3296, __c103, 0) as any as S.Schema<GetStorageLensConfigurationTaggingRequest>,
+  output: __S(3297, __c103, 1) as any as S.Schema<GetStorageLensConfigurationTaggingResult>,
   errors: [NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4874,8 +4874,8 @@ export const getStorageLensGroup: API.OperationMethod<
   GetStorageLensGroupError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<GetStorageLensGroupRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<GetStorageLensGroupResult>,
+  input: __S(3360, __c105, 0) as any as S.Schema<GetStorageLensGroupRequest>,
+  output: __S(3361, __c105, 1) as any as S.Schema<GetStorageLensGroupResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4898,8 +4898,8 @@ export const listAccessGrants: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<ListAccessGrantsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<ListAccessGrantsResult>,
+  input: __S(3392, __c106, 0) as any as S.Schema<ListAccessGrantsRequest>,
+  output: __S(3395, __c106, 3) as any as S.Schema<ListAccessGrantsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4927,8 +4927,8 @@ export const listAccessGrantsInstances: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<ListAccessGrantsInstancesRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<ListAccessGrantsInstancesResult>,
+  input: __S(3424, __c107, 0) as any as S.Schema<ListAccessGrantsInstancesRequest>,
+  output: __S(3427, __c107, 3) as any as S.Schema<ListAccessGrantsInstancesResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4956,8 +4956,8 @@ export const listAccessGrantsLocations: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<ListAccessGrantsLocationsRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<ListAccessGrantsLocationsResult>,
+  input: __S(3456, __c108, 0) as any as S.Schema<ListAccessGrantsLocationsRequest>,
+  output: __S(3459, __c108, 3) as any as S.Schema<ListAccessGrantsLocationsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4999,8 +4999,8 @@ export const listAccessPoints: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<ListAccessPointsRequest>,
-  output: __S(304, __c38, 0) as any as S.Schema<ListAccessPointsResult>,
+  input: __S(3488, __c109, 0) as any as S.Schema<ListAccessPointsRequest>,
+  output: __S(3489, __c109, 1) as any as S.Schema<ListAccessPointsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5031,8 +5031,8 @@ export const listAccessPointsForDirectoryBuckets: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   AccessPoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<ListAccessPointsForDirectoryBucketsRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<ListAccessPointsForDirectoryBucketsResult>,
+  input: __S(3552, __c111, 0) as any as S.Schema<ListAccessPointsForDirectoryBucketsRequest>,
+  output: __S(3553, __c111, 1) as any as S.Schema<ListAccessPointsForDirectoryBucketsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5069,8 +5069,8 @@ export const listAccessPointsForObjectLambda: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   ObjectLambdaAccessPoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<ListAccessPointsForObjectLambdaRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<ListAccessPointsForObjectLambdaResult>,
+  input: __S(3584, __c112, 0) as any as S.Schema<ListAccessPointsForObjectLambdaRequest>,
+  output: __S(3587, __c112, 3) as any as S.Schema<ListAccessPointsForObjectLambdaResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5099,8 +5099,8 @@ export const listCallerAccessGrants: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   ListCallerAccessGrantsEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<ListCallerAccessGrantsRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<ListCallerAccessGrantsResult>,
+  input: __S(3616, __c113, 0) as any as S.Schema<ListCallerAccessGrantsRequest>,
+  output: __S(3619, __c113, 3) as any as S.Schema<ListCallerAccessGrantsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5146,8 +5146,8 @@ export const listJobs: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<ListJobsRequest>,
-  output: __S(319, __c39, 7) as any as S.Schema<ListJobsResult>,
+  input: __S(3649, __c114, 1) as any as S.Schema<ListJobsRequest>,
+  output: __S(3652, __c114, 4) as any as S.Schema<ListJobsResult>,
   errors: [InternalServiceException, InvalidNextTokenException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5189,8 +5189,8 @@ export const listMultiRegionAccessPoints: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<ListMultiRegionAccessPointsRequest>,
-  output: __S(322, __c40, 2) as any as S.Schema<ListMultiRegionAccessPointsResult>,
+  input: __S(3680, __c115, 0) as any as S.Schema<ListMultiRegionAccessPointsRequest>,
+  output: __S(3682, __c115, 2) as any as S.Schema<ListMultiRegionAccessPointsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5221,8 +5221,8 @@ export const listRegionalBuckets: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<ListRegionalBucketsRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<ListRegionalBucketsResult>,
+  input: __S(3712, __c116, 0) as any as S.Schema<ListRegionalBucketsRequest>,
+  output: __S(3715, __c116, 3) as any as S.Schema<ListRegionalBucketsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5256,8 +5256,8 @@ export const listStorageLensConfigurations: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<ListStorageLensConfigurationsRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<ListStorageLensConfigurationsResult>,
+  input: __S(3744, __c117, 0) as any as S.Schema<ListStorageLensConfigurationsRequest>,
+  output: __S(3747, __c117, 3) as any as S.Schema<ListStorageLensConfigurationsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5284,8 +5284,8 @@ export const listStorageLensGroups: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<ListStorageLensGroupsRequest>,
-  output: __S(334, __c41, 6) as any as S.Schema<ListStorageLensGroupsResult>,
+  input: __S(3776, __c118, 0) as any as S.Schema<ListStorageLensGroupsRequest>,
+  output: __S(3779, __c118, 3) as any as S.Schema<ListStorageLensGroupsResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5332,8 +5332,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(336, __c42, 0) as any as S.Schema<ListTagsForResourceResult>,
+  input: __S(3808, __c119, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(3809, __c119, 1) as any as S.Schema<ListTagsForResourceResult>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5355,8 +5355,8 @@ export const putAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   PutAccessGrantsInstanceResourcePolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<PutAccessGrantsInstanceResourcePolicyRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<PutAccessGrantsInstanceResourcePolicyResult>,
+  input: __S(3840, __c120, 0) as any as S.Schema<PutAccessGrantsInstanceResourcePolicyRequest>,
+  output: __S(3841, __c120, 1) as any as S.Schema<PutAccessGrantsInstanceResourcePolicyResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5384,8 +5384,12 @@ export const putAccessPointConfigurationForObjectLambda: API.OperationMethod<
   PutAccessPointConfigurationForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<PutAccessPointConfigurationForObjectLambdaRequest>,
-  output: __S(340, __c42, 4) as any as S.Schema<PutAccessPointConfigurationForObjectLambdaResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<PutAccessPointConfigurationForObjectLambdaRequest>,
+  output: __S(
+    3873,
+    __c121,
+    1,
+  ) as any as S.Schema<PutAccessPointConfigurationForObjectLambdaResponse>,
   errors: [NoSuchAccessPoint, InvalidRequest],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5413,8 +5417,8 @@ export const putAccessPointPolicy: API.OperationMethod<
   PutAccessPointPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<PutAccessPointPolicyRequest>,
-  output: __S(342, __c42, 6) as any as S.Schema<PutAccessPointPolicyResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<PutAccessPointPolicyRequest>,
+  output: __S(3905, __c122, 1) as any as S.Schema<PutAccessPointPolicyResponse>,
   errors: [NoSuchAccessPoint, MalformedPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5444,8 +5448,8 @@ export const putAccessPointPolicyForObjectLambda: API.OperationMethod<
   PutAccessPointPolicyForObjectLambdaError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<PutAccessPointPolicyForObjectLambdaRequest>,
-  output: __S(344, __c43, 0) as any as S.Schema<PutAccessPointPolicyForObjectLambdaResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<PutAccessPointPolicyForObjectLambdaRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<PutAccessPointPolicyForObjectLambdaResponse>,
   errors: [NoSuchAccessPoint, MalformedPolicy],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5470,8 +5474,8 @@ export const putAccessPointScope: API.OperationMethod<
   PutAccessPointScopeError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<PutAccessPointScopeRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<PutAccessPointScopeResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<PutAccessPointScopeRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<PutAccessPointScopeResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5503,8 +5507,8 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
   PutBucketLifecycleConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<PutBucketLifecycleConfigurationRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<PutBucketLifecycleConfigurationResponse>,
+  input: __S(65, __c2, 1) as any as S.Schema<PutBucketLifecycleConfigurationRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<PutBucketLifecycleConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5552,8 +5556,8 @@ export const putBucketPolicy: API.OperationMethod<
   PutBucketPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<PutBucketPolicyRequest>,
-  output: __S(351, __c43, 7) as any as S.Schema<PutBucketPolicyResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<PutBucketPolicyRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<PutBucketPolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5643,8 +5647,8 @@ export const putBucketReplication: API.OperationMethod<
   PutBucketReplicationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<PutBucketReplicationRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<PutBucketReplicationResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<PutBucketReplicationRequest>,
+  output: __S(129, __c4, 1) as any as S.Schema<PutBucketReplicationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5716,8 +5720,8 @@ export const putBucketTagging: API.OperationMethod<
   PutBucketTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<PutBucketTaggingRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<PutBucketTaggingResponse>,
+  input: __S(161, __c5, 1) as any as S.Schema<PutBucketTaggingRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<PutBucketTaggingResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5784,8 +5788,8 @@ export const putBucketVersioning: API.OperationMethod<
   PutBucketVersioningError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<PutBucketVersioningRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<PutBucketVersioningResponse>,
+  input: __S(193, __c6, 1) as any as S.Schema<PutBucketVersioningRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<PutBucketVersioningResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5851,8 +5855,8 @@ export const putJobTagging: API.OperationMethod<
   PutJobTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<PutJobTaggingRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<PutJobTaggingResult>,
+  input: __S(224, __c7, 0) as any as S.Schema<PutJobTaggingRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<PutJobTaggingResult>,
   errors: [
     InternalServiceException,
     NotFoundException,
@@ -5893,8 +5897,8 @@ export const putMultiRegionAccessPointPolicy: API.OperationMethod<
   PutMultiRegionAccessPointPolicyError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<PutMultiRegionAccessPointPolicyRequest>,
-  output: __S(363, __c45, 3) as any as S.Schema<PutMultiRegionAccessPointPolicyResult>,
+  input: __S(256, __c8, 0) as any as S.Schema<PutMultiRegionAccessPointPolicyRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<PutMultiRegionAccessPointPolicyResult>,
   errors: [NoSuchMultiRegionAccessPoint, InvalidRequest],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5927,8 +5931,8 @@ export const putPublicAccessBlock: API.OperationMethod<
   PutPublicAccessBlockError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<PutPublicAccessBlockRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<PutPublicAccessBlockResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<PutPublicAccessBlockRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<PutPublicAccessBlockResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5956,8 +5960,8 @@ export const putStorageLensConfiguration: API.OperationMethod<
   PutStorageLensConfigurationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<PutStorageLensConfigurationRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<PutStorageLensConfigurationResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<PutStorageLensConfigurationRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<PutStorageLensConfigurationResponse>,
   errors: [InvalidRequest, MissingBucketLevelActivityMetrics],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5984,8 +5988,8 @@ export const putStorageLensConfigurationTagging: API.OperationMethod<
   PutStorageLensConfigurationTaggingError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<PutStorageLensConfigurationTaggingRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<PutStorageLensConfigurationTaggingResult>,
+  input: __S(352, __c11, 0) as any as S.Schema<PutStorageLensConfigurationTaggingRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<PutStorageLensConfigurationTaggingResult>,
   errors: [NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6031,8 +6035,8 @@ export const submitMultiRegionAccessPointRoutes: API.OperationMethod<
   SubmitMultiRegionAccessPointRoutesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<SubmitMultiRegionAccessPointRoutesRequest>,
-  output: __S(371, __c46, 3) as any as S.Schema<SubmitMultiRegionAccessPointRoutesResult>,
+  input: __S(384, __c12, 0) as any as S.Schema<SubmitMultiRegionAccessPointRoutesRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<SubmitMultiRegionAccessPointRoutesResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6078,8 +6082,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<TagResourceRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<TagResourceResult>,
+  input: __S(416, __c13, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<TagResourceResult>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6126,8 +6130,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<UntagResourceResult>,
+  input: __S(449, __c14, 1) as any as S.Schema<UntagResourceRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<UntagResourceResult>,
   errors: [NoSuchAccessPoint],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6153,8 +6157,8 @@ export const updateAccessGrantsLocation: API.OperationMethod<
   UpdateAccessGrantsLocationError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377, __c47, 1) as any as S.Schema<UpdateAccessGrantsLocationRequest>,
-  output: __S(378, __c47, 2) as any as S.Schema<UpdateAccessGrantsLocationResult>,
+  input: __S(480, __c15, 0) as any as S.Schema<UpdateAccessGrantsLocationRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<UpdateAccessGrantsLocationResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6195,8 +6199,8 @@ export const updateJobPriority: API.OperationMethod<
   UpdateJobPriorityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379, __c47, 3) as any as S.Schema<UpdateJobPriorityRequest>,
-  output: __S(380, __c47, 4) as any as S.Schema<UpdateJobPriorityResult>,
+  input: __S(512, __c16, 0) as any as S.Schema<UpdateJobPriorityRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<UpdateJobPriorityResult>,
   errors: [
     BadRequestException,
     InternalServiceException,
@@ -6246,8 +6250,8 @@ export const updateJobStatus: API.OperationMethod<
   UpdateJobStatusError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381, __c47, 5) as any as S.Schema<UpdateJobStatusRequest>,
-  output: __S(382, __c47, 6) as any as S.Schema<UpdateJobStatusResult>,
+  input: __S(544, __c17, 0) as any as S.Schema<UpdateJobStatusRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<UpdateJobStatusResult>,
   errors: [
     BadRequestException,
     InternalServiceException,
@@ -6280,8 +6284,8 @@ export const updateStorageLensGroup: API.OperationMethod<
   UpdateStorageLensGroupError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<UpdateStorageLensGroupRequest>,
-  output: __S(384, __c48, 0) as any as S.Schema<UpdateStorageLensGroupResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<UpdateStorageLensGroupRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<UpdateStorageLensGroupResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6291,6 +6295,671 @@ export const updateStorageLensGroup: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          Name: S.String.pipe(T.HttpLabel("Name")),
+          Policy: S.String,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v20180820/accesspointforobjectlambda/{Name}/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutAccessPointPolicyForObjectLambdaRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutAccessPointPolicyForObjectLambdaResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          Name: S.String.pipe(T.HttpLabel("Name"), T.ContextParam("AccessPointName")),
+          Scope: __S(962, __c30, 2),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v20180820/accesspoint/{Name}/scope" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({
+              RequiresAccountId: { value: true },
+              UseS3ExpressControlEndpoint: { value: true },
+            }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutAccessPointScopeRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutAccessPointScopeResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Rules: S.optional(__S(2762, __c86, 10)) })).annotate({
+        identifier: "LifecycleConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          LifecycleConfiguration: S.optional(__S(64, __c2, 0))
+            .pipe(T.HttpPayload(), T.XmlName("LifecycleConfiguration"))
+            .annotate({ identifier: "LifecycleConfiguration" }),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v20180820/bucket/{Bucket}/lifecycleconfiguration" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketLifecycleConfigurationRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketLifecycleConfigurationResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ConfirmRemoveSelfBucketAccess: S.optional(S.Boolean).pipe(
+            T.HttpHeader("x-amz-confirm-remove-self-bucket-access"),
+          ),
+          Policy: S.String,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v20180820/bucket/{Bucket}/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "PutBucketPolicyRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketPolicyResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ReplicationConfiguration: __S(2863, __c89, 15)
+            .pipe(T.HttpPayload(), T.XmlName("ReplicationConfiguration"))
+            .annotate({ identifier: "ReplicationConfiguration" }),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v20180820/bucket/{Bucket}/replication" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketReplicationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketReplicationResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ TagSet: __S(1248, __c39, 0) })).annotate({
+        identifier: "Tagging",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Tagging: __S(160, __c5, 0).pipe(T.HttpPayload(), T.XmlName("Tagging")).annotate({
+            identifier: "Tagging",
+          }),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v20180820/bucket/{Bucket}/tagging" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "PutBucketTaggingRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketTaggingResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MFADelete: S.optional(S.String).pipe(T.XmlName("MfaDelete")),
+          Status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VersioningConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          MFA: S.optional(S.String).pipe(T.HttpHeader("x-amz-mfa")),
+          VersioningConfiguration: __S(192, __c6, 0)
+            .pipe(T.HttpPayload(), T.XmlName("VersioningConfiguration"))
+            .annotate({ identifier: "VersioningConfiguration" }),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v20180820/bucket/{Bucket}/versioning" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketVersioningRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketVersioningResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          JobId: S.String.pipe(T.HttpLabel("JobId")),
+          Tags: __S(1248, __c39, 0),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v20180820/jobs/{JobId}/tagging" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "PutJobTaggingRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutJobTaggingResult",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+          Details: __S(2176, __c68, 0),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/v20180820/async-requests/mrap/put-policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutMultiRegionAccessPointPolicyRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ RequestTokenARN: S.optional(S.String) }).pipe(ns)).annotate(
+        {
+          identifier: "PutMultiRegionAccessPointPolicyResult",
+        },
+      );
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PublicAccessBlockConfiguration: __S(896, __c28, 0)
+            .pipe(T.HttpPayload(), T.XmlName("PublicAccessBlockConfiguration"))
+            .annotate({ identifier: "PublicAccessBlockConfiguration" }),
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v20180820/configuration/publicAccessBlock" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutPublicAccessBlockRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutPublicAccessBlockResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigId: S.String.pipe(T.HttpLabel("ConfigId")),
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          StorageLensConfiguration: __S(3291, __c102, 27),
+          Tags: S.optional(__S(3329, __c104, 1)),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v20180820/storagelens/{ConfigId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutStorageLensConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutStorageLensConfigurationResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigId: S.String.pipe(T.HttpLabel("ConfigId")),
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          Tags: __S(3329, __c104, 1),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v20180820/storagelens/{ConfigId}/tagging" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutStorageLensConfigurationTaggingRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutStorageLensConfigurationTaggingResult",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          Mrap: S.String.pipe(T.HttpLabel("Mrap")),
+          RouteUpdates: __S(3169, __c99, 1),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PATCH", uri: "/v20180820/mrap/instances/{Mrap+}/routes" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "SubmitMultiRegionAccessPointRoutesRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "SubmitMultiRegionAccessPointRoutesResult",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn"), T.ContextParam("ResourceArn")),
+          Tags: __S(705, __c22, 1),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/v20180820/tags/{ResourceArn+}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "TagResourceResult",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn"), T.ContextParam("ResourceArn")),
+          TagKeys: __S(448, __c14, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "DELETE", uri: "/v20180820/tags/{ResourceArn+}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UntagResourceResult",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          AccessGrantsLocationId: S.String.pipe(T.HttpLabel("AccessGrantsLocationId")),
+          IAMRoleArn: S.String,
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "PUT",
+              uri: "/v20180820/accessgrantsinstance/location/{AccessGrantsLocationId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateAccessGrantsLocationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CreatedAt: S.optional(T.DateFromString),
+          AccessGrantsLocationId: S.optional(S.String),
+          AccessGrantsLocationArn: S.optional(S.String),
+          LocationScope: S.optional(S.String),
+          IAMRoleArn: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "UpdateAccessGrantsLocationResult",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          JobId: S.String.pipe(T.HttpLabel("JobId")),
+          Priority: S.Number.pipe(T.HttpQuery("priority")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/v20180820/jobs/{JobId}/priority" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "UpdateJobPriorityRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ JobId: S.String, Priority: S.Number }).pipe(ns)).annotate({
+        identifier: "UpdateJobPriorityResult",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          JobId: S.String.pipe(T.HttpLabel("JobId")),
+          RequestedJobStatus: S.String.pipe(T.HttpQuery("requestedJobStatus")),
+          StatusUpdateReason: S.optional(S.String).pipe(T.HttpQuery("statusUpdateReason")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/v20180820/jobs/{JobId}/status" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "UpdateJobStatusRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          JobId: S.optional(S.String),
+          Status: S.optional(S.String),
+          StatusUpdateReason: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "UpdateJobStatusResult" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String.pipe(T.HttpLabel("Name")),
+          AccountId: S.String.pipe(
+            T.HttpHeader("x-amz-account-id"),
+            T.ContextParam("AccountId"),
+            T.HostLabel(),
+          ),
+          StorageLensGroup: __S(1384, __c43, 8),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v20180820/storagelensgroup/{Name}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ RequiresAccountId: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateStorageLensGroupRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateStorageLensGroupResponse",
+      });
+  }
+}
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6320,25 +6989,19 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AssociateAccessGrantsIdentityCenterResponse",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ S3SubPrefix: S.optional(S.String) })).annotate({
-        identifier: "AccessGrantsLocationConfiguration",
-      });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ GranteeType: S.optional(S.String), GranteeIdentifier: S.optional(S.String) }),
-      ).annotate({ identifier: "Grantee" });
-    case 4:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 5:
-      return S.Array(
-        /*@__PURE__*/ __S(4, __c0, 4)
-          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
-          .annotate({ identifier: "Tag" }),
-      );
-    case 6:
+        S.Struct({ Bucket: S.String, BucketAccountId: S.optional(S.String) }),
+      ).annotate({ identifier: "Region" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -6347,12 +7010,12 @@ function __c0(j: number): any {
             T.HostLabel(),
           ),
           AccessGrantsLocationId: S.String,
-          AccessGrantsLocationConfiguration: S.optional(__S(2, __c0, 2)),
-          Grantee: __S(3, __c0, 3),
+          AccessGrantsLocationConfiguration: S.optional(__S(768, __c24, 0)),
+          Grantee: __S(736, __c23, 0),
           Permission: S.String,
           ApplicationArn: S.optional(S.String),
           S3PrefixType: S.optional(S.String),
-          Tags: S.optional(__S(5, __c0, 5)),
+          Tags: S.optional(__S(705, __c22, 1)),
         }).pipe(
           T.all(
             ns,
@@ -6366,15 +7029,15 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateAccessGrantRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreatedAt: S.optional(T.DateFromString),
           AccessGrantId: S.optional(S.String),
           AccessGrantArn: S.optional(S.String),
-          Grantee: S.optional(__S(3, __c0, 3)),
+          Grantee: S.optional(__S(736, __c23, 0)),
           AccessGrantsLocationId: S.optional(S.String),
-          AccessGrantsLocationConfiguration: S.optional(__S(2, __c0, 2)),
+          AccessGrantsLocationConfiguration: S.optional(__S(768, __c24, 0)),
           Permission: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
           GrantScope: S.optional(S.String),
@@ -6382,7 +7045,37 @@ function __c0(j: number): any {
       ).annotate({ identifier: "CreateAccessGrantResult" });
   }
 }
-function __c1(j: number): any {
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(704, __c22, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
+          .annotate({ identifier: "Tag" }),
+      );
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ GranteeType: S.optional(S.String), GranteeIdentifier: S.optional(S.String) }),
+      ).annotate({ identifier: "Grantee" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ S3SubPrefix: S.optional(S.String) })).annotate({
+        identifier: "AccessGrantsLocationConfiguration",
+      });
+  }
+}
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6393,7 +7086,7 @@ function __c1(j: number): any {
             T.HostLabel(),
           ),
           IdentityCenterArn: S.optional(S.String),
-          Tags: S.optional(__S(5, __c0, 5)),
+          Tags: S.optional(__S(705, __c22, 1)),
         }).pipe(
           T.all(
             ns,
@@ -6422,7 +7115,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAccessGrantsInstanceResult",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -6432,7 +7129,7 @@ function __c1(j: number): any {
           ),
           LocationScope: S.String,
           IAMRoleArn: S.String,
-          Tags: S.optional(__S(5, __c0, 5)),
+          Tags: S.optional(__S(705, __c22, 1)),
         }).pipe(
           T.all(
             ns,
@@ -6448,7 +7145,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAccessGrantsLocationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreatedAt: S.optional(T.DateFromString),
@@ -6460,37 +7157,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAccessGrantsLocationResult",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ VpcId: S.String })).annotate({
-        identifier: "VpcConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          BlockPublicAcls: S.optional(S.Boolean).pipe(T.XmlName("BlockPublicAcls")),
-          IgnorePublicAcls: S.optional(S.Boolean).pipe(T.XmlName("IgnorePublicAcls")),
-          BlockPublicPolicy: S.optional(S.Boolean).pipe(T.XmlName("BlockPublicPolicy")),
-          RestrictPublicBuckets: S.optional(S.Boolean).pipe(T.XmlName("RestrictPublicBuckets")),
-        }),
-      ).annotate({
-        identifier: "PublicAccessBlockConfiguration",
-      });
-    case 6:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Prefix")));
-    case 7:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Permission")));
   }
 }
-function __c2(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Prefixes: S.optional(__S(14, __c1, 6)).pipe(T.XmlName("Prefixes")),
-          Permissions: S.optional(__S(15, __c1, 7)).pipe(T.XmlName("Permissions")),
-        }),
-      ).annotate({ identifier: "Scope" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -6500,11 +7171,11 @@ function __c2(j: number): any {
           ),
           Name: S.String.pipe(T.HttpLabel("Name"), T.ContextParam("AccessPointName")),
           Bucket: S.String.pipe(T.ContextParam("Bucket")),
-          VpcConfiguration: S.optional(__S(12, __c1, 4)),
-          PublicAccessBlockConfiguration: S.optional(__S(13, __c1, 5)),
+          VpcConfiguration: S.optional(__S(928, __c29, 0)),
+          PublicAccessBlockConfiguration: S.optional(__S(896, __c28, 0)),
           BucketAccountId: S.optional(S.String),
-          Scope: S.optional(__S(16, __c2, 0)),
-          Tags: S.optional(__S(5, __c0, 5)),
+          Scope: S.optional(__S(962, __c30, 2)),
+          Tags: S.optional(__S(705, __c22, 1)),
         }).pipe(
           T.all(
             ns,
@@ -6518,53 +7189,53 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateAccessPointRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ AccessPointArn: S.optional(S.String), Alias: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "CreateAccessPointResult" });
-    case 3:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AllowedFeature")));
-    case 4:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Action")));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ FunctionArn: S.String, FunctionPayload: S.optional(S.String) }),
-      ).annotate({ identifier: "AwsLambdaTransformation" });
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ AwsLambda: __S(21, __c2, 5) })]);
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Actions: __S(20, __c2, 4),
-          ContentTransformation: __S(22, __c2, 6),
+          BlockPublicAcls: S.optional(S.Boolean).pipe(T.XmlName("BlockPublicAcls")),
+          IgnorePublicAcls: S.optional(S.Boolean).pipe(T.XmlName("IgnorePublicAcls")),
+          BlockPublicPolicy: S.optional(S.Boolean).pipe(T.XmlName("BlockPublicPolicy")),
+          RestrictPublicBuckets: S.optional(S.Boolean).pipe(T.XmlName("RestrictPublicBuckets")),
         }),
       ).annotate({
-        identifier: "ObjectLambdaTransformationConfiguration",
+        identifier: "PublicAccessBlockConfiguration",
       });
   }
 }
-function __c3(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(
-        /*@__PURE__*/ __S(23, __c2, 7)
-          .pipe(/*@__PURE__*/ T.XmlName("TransformationConfiguration"))
-          .annotate({
-            identifier: "ObjectLambdaTransformationConfiguration",
-          }),
-      );
+      return S.suspend(() => S.Struct({ VpcId: S.String })).annotate({
+        identifier: "VpcConfiguration",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Prefix")));
     case 1:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Permission")));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          SupportingAccessPoint: S.String,
-          CloudWatchMetricsEnabled: S.optional(S.Boolean),
-          AllowedFeatures: S.optional(__S(19, __c2, 3)),
-          TransformationConfigurations: __S(24, __c3, 0),
+          Prefixes: S.optional(__S(960, __c30, 0)).pipe(T.XmlName("Prefixes")),
+          Permissions: S.optional(__S(961, __c30, 1)).pipe(T.XmlName("Permissions")),
         }),
-      ).annotate({
-        identifier: "ObjectLambdaConfiguration",
-      });
-    case 2:
+      ).annotate({ identifier: "Scope" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -6573,7 +7244,7 @@ function __c3(j: number): any {
             T.HostLabel(),
           ),
           Name: S.String.pipe(T.HttpLabel("Name")),
-          Configuration: __S(25, __c3, 1),
+          Configuration: __S(1030, __c32, 6),
         }).pipe(
           T.all(
             ns,
@@ -6589,34 +7260,81 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAccessPointForObjectLambdaRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Value: S.optional(S.String),
-          Status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ObjectLambdaAccessPointAlias",
-      });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ObjectLambdaAccessPointArn: S.optional(S.String),
-          Alias: S.optional(__S(27, __c3, 3)),
+          Alias: S.optional(__S(1056, __c33, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "CreateAccessPointForObjectLambdaResult",
       });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AllowedFeature")));
+    case 1:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Action")));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ FunctionArn: S.String, FunctionPayload: S.optional(S.String) }),
+      ).annotate({ identifier: "AwsLambdaTransformation" });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ AwsLambda: __S(1026, __c32, 2) })]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Actions: __S(1025, __c32, 1),
+          ContentTransformation: __S(1027, __c32, 3),
+        }),
+      ).annotate({
+        identifier: "ObjectLambdaTransformationConfiguration",
+      });
     case 5:
+      return S.Array(
+        /*@__PURE__*/ __S(1028, __c32, 4)
+          .pipe(/*@__PURE__*/ T.XmlName("TransformationConfiguration"))
+          .annotate({
+            identifier: "ObjectLambdaTransformationConfiguration",
+          }),
+      );
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          SupportingAccessPoint: S.String,
+          CloudWatchMetricsEnabled: S.optional(S.Boolean),
+          AllowedFeatures: S.optional(__S(1024, __c32, 0)),
+          TransformationConfigurations: __S(1029, __c32, 5),
+        }),
+      ).annotate({
+        identifier: "ObjectLambdaConfiguration",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Value: S.optional(S.String), Status: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ObjectLambdaAccessPointAlias",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ LocationConstraint: S.optional(S.String) })).annotate({
         identifier: "CreateBucketConfiguration",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ACL: S.optional(S.String).pipe(T.HttpHeader("x-amz-acl")),
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          CreateBucketConfiguration: S.optional(__S(29, __c3, 5))
+          CreateBucketConfiguration: S.optional(__S(1088, __c34, 0))
             .pipe(T.HttpPayload(), T.XmlName("CreateBucketConfiguration"))
             .annotate({ identifier: "CreateBucketConfiguration" }),
           GrantFullControl: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-full-control")),
@@ -6643,7 +7361,7 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateBucketRequest" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
@@ -6652,381 +7370,9 @@ function __c3(j: number): any {
       ).annotate({ identifier: "CreateBucketResult" });
   }
 }
-function __c4(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          FunctionArn: S.optional(S.String),
-          InvocationSchemaVersion: S.optional(S.String),
-          UserArguments: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "LambdaInvokeOperation" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          TypeIdentifier: S.optional(S.String),
-          Identifier: S.optional(S.String),
-          DisplayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "S3Grantee" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Grantee: S.optional(__S(34, __c4, 2)), Permission: S.optional(S.String) }),
-      ).annotate({ identifier: "S3Grant" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          CacheControl: S.optional(S.String),
-          ContentDisposition: S.optional(S.String),
-          ContentEncoding: S.optional(S.String),
-          ContentLanguage: S.optional(S.String),
-          UserMetadata: S.optional(__S(37, __c4, 5)),
-          ContentLength: S.optional(S.Number),
-          ContentMD5: S.optional(S.String),
-          ContentType: S.optional(S.String),
-          HttpExpiresDate: S.optional(T.DateFromString),
-          RequesterCharged: S.optional(S.Boolean),
-          SSEAlgorithm: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "S3ObjectMetadata" });
-    case 7:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "S3Tag",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Days: S.optional(S.Number), Years: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "S3ObjectLockEventHoldDuration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          TargetResource: S.optional(S.String),
-          CannedAccessControlList: S.optional(S.String),
-          AccessControlGrants: S.optional(__S(36, __c4, 4)),
-          MetadataDirective: S.optional(S.String),
-          AnnotationDirective: S.optional(S.String),
-          ModifiedSinceConstraint: S.optional(T.DateFromString),
-          NewObjectMetadata: S.optional(__S(38, __c4, 6)),
-          NewObjectTagging: S.optional(__S(40, __c5, 0)),
-          RedirectLocation: S.optional(S.String),
-          RequesterPays: S.optional(S.Boolean),
-          StorageClass: S.optional(S.String),
-          UnModifiedSinceConstraint: S.optional(T.DateFromString),
-          SSEAwsKmsKeyId: S.optional(S.String),
-          TargetKeyPrefix: S.optional(S.String),
-          ObjectLockLegalHoldStatus: S.optional(S.String),
-          ObjectLockMode: S.optional(S.String),
-          ObjectLockRetainUntilDate: S.optional(T.DateFromString),
-          BucketKeyEnabled: S.optional(S.Boolean),
-          ChecksumAlgorithm: S.optional(S.String),
-          ObjectLockEventHold: S.optional(S.String),
-          ObjectLockEventHoldDuration: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "S3CopyObjectOperation" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ID: S.optional(S.String), DisplayName: S.optional(S.String) }),
-      ).annotate({ identifier: "S3ObjectOwner" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Owner: __S(43, __c5, 3), Grants: S.optional(__S(36, __c4, 4)) }),
-      ).annotate({ identifier: "S3AccessControlList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AccessControlList: S.optional(__S(44, __c5, 4)),
-          CannedAccessControlList: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "S3AccessControlPolicy" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ AccessControlPolicy: S.optional(__S(45, __c5, 5)) }),
-      ).annotate({ identifier: "S3SetObjectAclOperation" });
-    case 7:
-      return S.suspend(() => S.Struct({ TagSet: S.optional(__S(40, __c5, 0)) })).annotate({
-        identifier: "S3SetObjectTaggingOperation",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "S3DeleteObjectTaggingOperation",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ExpirationInDays: S.optional(S.Number),
-          GlacierJobTier: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "S3InitiateRestoreObjectOperation",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
-        identifier: "S3ObjectLockLegalHold",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ LegalHold: __S(50, __c6, 2) })).annotate({
-        identifier: "S3SetObjectLegalHoldOperation",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Days: S.optional(S.Number), Years: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "S3ObjectLockRetentionEventHoldDuration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          RetainUntilDate: S.optional(T.DateFromString),
-          Mode: S.optional(S.String),
-          EventHold: S.optional(S.String),
-          EventHoldDuration: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "S3Retention" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ BypassGovernanceRetention: S.optional(S.Boolean), Retention: __S(53, __c6, 5) }),
-      ).annotate({
-        identifier: "S3SetObjectRetentionOperation",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "S3ReplicateObjectOperation",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ChecksumAlgorithm: S.optional(S.String),
-          ChecksumType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "S3ComputeObjectChecksumOperation",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ KMSKeyArn: S.String, BucketKeyEnabled: S.optional(S.Boolean) }).pipe(
-          T.XmlName("SSE-KMS"),
-        ),
-      ).annotate({
-        identifier: "S3UpdateObjectEncryptionSSEKMS",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          SSEKMS: S.optional(__S(57, __c7, 1))
-            .pipe(T.XmlName("SSE-KMS"))
-            .annotate({ identifier: "S3UpdateObjectEncryptionSSEKMS" }),
-        }),
-      ).annotate({ identifier: "ObjectEncryption" });
-    case 3:
-      return S.suspend(() => S.Struct({ ObjectEncryption: S.optional(__S(58, __c7, 2)) })).annotate(
-        {
-          identifier: "S3UpdateObjectEncryptionOperation",
-        },
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          LambdaInvoke: S.optional(__S(33, __c4, 1)),
-          S3PutObjectCopy: S.optional(__S(42, __c5, 2)),
-          S3PutObjectAcl: S.optional(__S(46, __c5, 6)),
-          S3PutObjectTagging: S.optional(__S(47, __c5, 7)),
-          S3DeleteObjectTagging: S.optional(__S(48, __c6, 0)),
-          S3InitiateRestoreObject: S.optional(__S(49, __c6, 1)),
-          S3PutObjectLegalHold: S.optional(__S(51, __c6, 3)),
-          S3PutObjectRetention: S.optional(__S(54, __c6, 6)),
-          S3ReplicateObject: S.optional(__S(55, __c6, 7)),
-          S3ComputeObjectChecksum: S.optional(__S(56, __c7, 0)),
-          S3UpdateObjectEncryption: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "JobOperation" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.optional(S.String),
-          Format: S.optional(S.String),
-          Enabled: S.Boolean,
-          Prefix: S.optional(S.String),
-          ReportScope: S.optional(S.String),
-          ExpectedBucketOwner: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobReport" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Format: S.String, Fields: S.optional(__S(62, __c7, 6)) }),
-      ).annotate({ identifier: "JobManifestSpec" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ObjectArn: S.String, ObjectVersionId: S.optional(S.String), ETag: S.String }),
-      ).annotate({ identifier: "JobManifestLocation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Spec: __S(63, __c7, 7), Location: __S(64, __c8, 0) }),
-      ).annotate({ identifier: "JobManifest" });
-    case 2:
-      return S.suspend(() => S.Struct({}).pipe(T.XmlName("SSE-S3"))).annotate({
-        identifier: "SSES3Encryption",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ KeyId: S.String }).pipe(T.XmlName("SSE-KMS"))).annotate({
-        identifier: "SSEKMSEncryption",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          SSES3: S.optional(__S(66, __c8, 2))
-            .pipe(T.XmlName("SSE-S3"))
-            .annotate({ identifier: "SSES3Encryption" }),
-          SSEKMS: S.optional(__S(67, __c8, 3))
-            .pipe(T.XmlName("SSE-KMS"))
-            .annotate({ identifier: "SSEKMSEncryption" }),
-        }),
-      ).annotate({
-        identifier: "GeneratedManifestEncryption",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ExpectedManifestBucketOwner: S.optional(S.String),
-          Bucket: S.String,
-          ManifestPrefix: S.optional(S.String),
-          ManifestEncryption: S.optional(__S(68, __c8, 4)),
-          ManifestFormat: S.String,
-        }),
-      ).annotate({ identifier: "S3ManifestOutputLocation" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          MatchAnyPrefix: S.optional(__S(71, __c8, 7)),
-          MatchAnySuffix: S.optional(__S(71, __c8, 7)),
-          MatchAnySubstring: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "KeyNameConstraint" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "SSES3Filter",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ KmsKeyArn: S.optional(S.String), BucketKeyEnabled: S.optional(S.Boolean) }),
-      ).annotate({ identifier: "SSEKMSFilter" });
-    case 4:
-      return S.suspend(() => S.Struct({ KmsKeyArn: S.optional(S.String) })).annotate({
-        identifier: "DSSEKMSFilter",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "SSECFilter",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "NotSSEFilter",
-      });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          SSES3: /*@__PURE__*/ __S(74, __c9, 2).pipe(/*@__PURE__*/ T.XmlName("SSE-S3")).annotate({
-            identifier: "SSES3Filter",
-          }),
-        }),
-        /*@__PURE__*/ S.Struct({
-          SSEKMS: /*@__PURE__*/ __S(75, __c9, 3).pipe(/*@__PURE__*/ T.XmlName("SSE-KMS")).annotate({
-            identifier: "SSEKMSFilter",
-          }),
-        }),
-        /*@__PURE__*/ S.Struct({
-          DSSEKMS: /*@__PURE__*/ __S(76, __c9, 4)
-            .pipe(/*@__PURE__*/ T.XmlName("DSSE-KMS"))
-            .annotate({
-              identifier: "DSSEKMSFilter",
-            }),
-        }),
-        /*@__PURE__*/ S.Struct({
-          SSEC: /*@__PURE__*/ __S(77, __c9, 5).pipe(/*@__PURE__*/ T.XmlName("SSE-C")).annotate({
-            identifier: "SSECFilter",
-          }),
-        }),
-        /*@__PURE__*/ S.Struct({
-          NOTSSE: /*@__PURE__*/ __S(78, __c9, 6).pipe(/*@__PURE__*/ T.XmlName("NOT-SSE")).annotate({
-            identifier: "NotSSEFilter",
-          }),
-        }),
-      ]);
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(
-        /*@__PURE__*/ __S(79, __c9, 7).pipe(/*@__PURE__*/ T.XmlName("ObjectEncryption")),
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          EligibleForReplication: S.optional(S.Boolean),
-          CreatedAfter: S.optional(T.DateFromString),
-          CreatedBefore: S.optional(T.DateFromString),
-          ObjectReplicationStatuses: S.optional(__S(70, __c8, 6)),
-          KeyNameConstraint: S.optional(__S(72, __c9, 0)),
-          ObjectSizeGreaterThanBytes: S.optional(S.Number),
-          ObjectSizeLessThanBytes: S.optional(S.Number),
-          MatchAnyStorageClass: S.optional(__S(73, __c9, 1)),
-          MatchAnyObjectEncryption: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({
-        identifier: "JobManifestGeneratorFilter",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ExpectedBucketOwner: S.optional(S.String),
-          SourceBucket: S.String,
-          ManifestOutputLocation: S.optional(__S(69, __c8, 5)),
-          Filter: S.optional(__S(81, __c10, 1)),
-          EnableManifestOutput: S.Boolean,
-        }),
-      ).annotate({ identifier: "S3JobManifestGenerator" });
-    case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ S3JobManifestGenerator: __S(82, __c10, 2) })]);
-    case 4:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7035,15 +7381,15 @@ function __c10(j: number): any {
             T.HostLabel(),
           ),
           ConfirmationRequired: S.optional(S.Boolean),
-          Operation: __S(60, __c7, 4),
-          Report: __S(61, __c7, 5),
+          Operation: __S(1210, __c37, 26),
+          Report: __S(1211, __c37, 27),
           ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
-          Manifest: S.optional(__S(65, __c8, 1)),
+          Manifest: S.optional(__S(1215, __c37, 31)),
           Description: S.optional(S.String),
           Priority: S.Number,
           RoleArn: S.String,
-          Tags: S.optional(__S(40, __c5, 0)),
-          ManifestGenerator: S.optional(__S(83, __c10, 3)),
+          Tags: S.optional(__S(1248, __c39, 0)),
+          ManifestGenerator: S.optional(__S(1233, __c38, 17)),
         }).pipe(
           T.all(
             ns,
@@ -7057,35 +7403,388 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateJobRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ JobId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "CreateJobResult",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Bucket: S.String, BucketAccountId: S.optional(S.String) }),
-      ).annotate({ identifier: "Region" });
-    case 7:
-      return S.Array(
-        /*@__PURE__*/ Region.pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({
-          identifier: "Region",
-        }),
-      );
   }
 }
-function __c11(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "S3Tag",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Name: S.String,
-          PublicAccessBlock: S.optional(__S(13, __c1, 5)),
-          Regions: __S(87, __c10, 7),
+          FunctionArn: S.optional(S.String),
+          InvocationSchemaVersion: S.optional(S.String),
+          UserArguments: S.optional(__S(1184, __c37, 0)),
+        }),
+      ).annotate({ identifier: "LambdaInvokeOperation" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TypeIdentifier: S.optional(S.String),
+          Identifier: S.optional(S.String),
+          DisplayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3Grantee" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Grantee: S.optional(__S(1186, __c37, 2)), Permission: S.optional(S.String) }),
+      ).annotate({ identifier: "S3Grant" });
+    case 4:
+      return S.Array(__S(1187, __c37, 3));
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          CacheControl: S.optional(S.String),
+          ContentDisposition: S.optional(S.String),
+          ContentEncoding: S.optional(S.String),
+          ContentLanguage: S.optional(S.String),
+          UserMetadata: S.optional(__S(1189, __c37, 5)),
+          ContentLength: S.optional(S.Number),
+          ContentMD5: S.optional(S.String),
+          ContentType: S.optional(S.String),
+          HttpExpiresDate: S.optional(T.DateFromString),
+          RequesterCharged: S.optional(S.Boolean),
+          SSEAlgorithm: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3ObjectMetadata" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Days: S.optional(S.Number), Years: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "S3ObjectLockEventHoldDuration",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          TargetResource: S.optional(S.String),
+          CannedAccessControlList: S.optional(S.String),
+          AccessControlGrants: S.optional(__S(1188, __c37, 4)),
+          MetadataDirective: S.optional(S.String),
+          AnnotationDirective: S.optional(S.String),
+          ModifiedSinceConstraint: S.optional(T.DateFromString),
+          NewObjectMetadata: S.optional(__S(1190, __c37, 6)),
+          NewObjectTagging: S.optional(__S(1248, __c39, 0)),
+          RedirectLocation: S.optional(S.String),
+          RequesterPays: S.optional(S.Boolean),
+          StorageClass: S.optional(S.String),
+          UnModifiedSinceConstraint: S.optional(T.DateFromString),
+          SSEAwsKmsKeyId: S.optional(S.String),
+          TargetKeyPrefix: S.optional(S.String),
+          ObjectLockLegalHoldStatus: S.optional(S.String),
+          ObjectLockMode: S.optional(S.String),
+          ObjectLockRetainUntilDate: S.optional(T.DateFromString),
+          BucketKeyEnabled: S.optional(S.Boolean),
+          ChecksumAlgorithm: S.optional(S.String),
+          ObjectLockEventHold: S.optional(S.String),
+          ObjectLockEventHoldDuration: S.optional(__S(1191, __c37, 7)),
+        }),
+      ).annotate({ identifier: "S3CopyObjectOperation" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({ ID: S.optional(S.String), DisplayName: S.optional(S.String) }),
+      ).annotate({ identifier: "S3ObjectOwner" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({ Owner: __S(1193, __c37, 9), Grants: S.optional(__S(1188, __c37, 4)) }),
+      ).annotate({ identifier: "S3AccessControlList" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          AccessControlList: S.optional(__S(1194, __c37, 10)),
+          CannedAccessControlList: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3AccessControlPolicy" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({ AccessControlPolicy: S.optional(__S(1195, __c37, 11)) }),
+      ).annotate({ identifier: "S3SetObjectAclOperation" });
+    case 13:
+      return S.suspend(() => S.Struct({ TagSet: S.optional(__S(1248, __c39, 0)) })).annotate({
+        identifier: "S3SetObjectTaggingOperation",
+      });
+    case 14:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "S3DeleteObjectTaggingOperation",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          ExpirationInDays: S.optional(S.Number),
+          GlacierJobTier: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "CreateMultiRegionAccessPointInput",
+        identifier: "S3InitiateRestoreObjectOperation",
+      });
+    case 16:
+      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
+        identifier: "S3ObjectLockLegalHold",
+      });
+    case 17:
+      return S.suspend(() => S.Struct({ LegalHold: __S(1200, __c37, 16) })).annotate({
+        identifier: "S3SetObjectLegalHoldOperation",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({ Days: S.optional(S.Number), Years: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "S3ObjectLockRetentionEventHoldDuration",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          RetainUntilDate: S.optional(T.DateFromString),
+          Mode: S.optional(S.String),
+          EventHold: S.optional(S.String),
+          EventHoldDuration: S.optional(__S(1202, __c37, 18)),
+        }),
+      ).annotate({ identifier: "S3Retention" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          BypassGovernanceRetention: S.optional(S.Boolean),
+          Retention: __S(1203, __c37, 19),
+        }),
+      ).annotate({
+        identifier: "S3SetObjectRetentionOperation",
+      });
+    case 21:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "S3ReplicateObjectOperation",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          ChecksumAlgorithm: S.optional(S.String),
+          ChecksumType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "S3ComputeObjectChecksumOperation",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({ KMSKeyArn: S.String, BucketKeyEnabled: S.optional(S.Boolean) }).pipe(
+          T.XmlName("SSE-KMS"),
+        ),
+      ).annotate({
+        identifier: "S3UpdateObjectEncryptionSSEKMS",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          SSEKMS: S.optional(__S(1207, __c37, 23))
+            .pipe(T.XmlName("SSE-KMS"))
+            .annotate({ identifier: "S3UpdateObjectEncryptionSSEKMS" }),
+        }),
+      ).annotate({ identifier: "ObjectEncryption" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({ ObjectEncryption: S.optional(__S(1208, __c37, 24)) }),
+      ).annotate({
+        identifier: "S3UpdateObjectEncryptionOperation",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          LambdaInvoke: S.optional(__S(1185, __c37, 1)),
+          S3PutObjectCopy: S.optional(__S(1192, __c37, 8)),
+          S3PutObjectAcl: S.optional(__S(1196, __c37, 12)),
+          S3PutObjectTagging: S.optional(__S(1197, __c37, 13)),
+          S3DeleteObjectTagging: S.optional(__S(1198, __c37, 14)),
+          S3InitiateRestoreObject: S.optional(__S(1199, __c37, 15)),
+          S3PutObjectLegalHold: S.optional(__S(1201, __c37, 17)),
+          S3PutObjectRetention: S.optional(__S(1204, __c37, 20)),
+          S3ReplicateObject: S.optional(__S(1205, __c37, 21)),
+          S3ComputeObjectChecksum: S.optional(__S(1206, __c37, 22)),
+          S3UpdateObjectEncryption: S.optional(__S(1209, __c37, 25)),
+        }),
+      ).annotate({ identifier: "JobOperation" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.optional(S.String),
+          Format: S.optional(S.String),
+          Enabled: S.Boolean,
+          Prefix: S.optional(S.String),
+          ReportScope: S.optional(S.String),
+          ExpectedBucketOwner: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobReport" });
+    case 28:
+      return S.Array(S.String);
+    case 29:
+      return S.suspend(() =>
+        S.Struct({ Format: S.String, Fields: S.optional(__S(1212, __c37, 28)) }),
+      ).annotate({ identifier: "JobManifestSpec" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({ ObjectArn: S.String, ObjectVersionId: S.optional(S.String), ETag: S.String }),
+      ).annotate({ identifier: "JobManifestLocation" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({ Spec: __S(1213, __c37, 29), Location: __S(1214, __c37, 30) }),
+      ).annotate({ identifier: "JobManifest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.XmlName("SSE-S3"))).annotate({
+        identifier: "SSES3Encryption",
       });
     case 1:
+      return S.suspend(() => S.Struct({ KeyId: S.String }).pipe(T.XmlName("SSE-KMS"))).annotate({
+        identifier: "SSEKMSEncryption",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          SSES3: S.optional(__S(1216, __c38, 0))
+            .pipe(T.XmlName("SSE-S3"))
+            .annotate({ identifier: "SSES3Encryption" }),
+          SSEKMS: S.optional(__S(1217, __c38, 1))
+            .pipe(T.XmlName("SSE-KMS"))
+            .annotate({ identifier: "SSEKMSEncryption" }),
+        }),
+      ).annotate({
+        identifier: "GeneratedManifestEncryption",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ExpectedManifestBucketOwner: S.optional(S.String),
+          Bucket: S.String,
+          ManifestPrefix: S.optional(S.String),
+          ManifestEncryption: S.optional(__S(1218, __c38, 2)),
+          ManifestFormat: S.String,
+        }),
+      ).annotate({ identifier: "S3ManifestOutputLocation" });
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          MatchAnyPrefix: S.optional(__S(1221, __c38, 5)),
+          MatchAnySuffix: S.optional(__S(1221, __c38, 5)),
+          MatchAnySubstring: S.optional(__S(1221, __c38, 5)),
+        }),
+      ).annotate({ identifier: "KeyNameConstraint" });
+    case 7:
+      return S.Array(S.String);
+    case 8:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "SSES3Filter",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({ KmsKeyArn: S.optional(S.String), BucketKeyEnabled: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "SSEKMSFilter" });
+    case 10:
+      return S.suspend(() => S.Struct({ KmsKeyArn: S.optional(S.String) })).annotate({
+        identifier: "DSSEKMSFilter",
+      });
+    case 11:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "SSECFilter",
+      });
+    case 12:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "NotSSEFilter",
+      });
+    case 13:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          SSES3: /*@__PURE__*/ __S(1224, __c38, 8)
+            .pipe(/*@__PURE__*/ T.XmlName("SSE-S3"))
+            .annotate({
+              identifier: "SSES3Filter",
+            }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          SSEKMS: /*@__PURE__*/ __S(1225, __c38, 9)
+            .pipe(/*@__PURE__*/ T.XmlName("SSE-KMS"))
+            .annotate({
+              identifier: "SSEKMSFilter",
+            }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          DSSEKMS: /*@__PURE__*/ __S(1226, __c38, 10)
+            .pipe(/*@__PURE__*/ T.XmlName("DSSE-KMS"))
+            .annotate({
+              identifier: "DSSEKMSFilter",
+            }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          SSEC: /*@__PURE__*/ __S(1227, __c38, 11).pipe(/*@__PURE__*/ T.XmlName("SSE-C")).annotate({
+            identifier: "SSECFilter",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          NOTSSE: /*@__PURE__*/ __S(1228, __c38, 12)
+            .pipe(/*@__PURE__*/ T.XmlName("NOT-SSE"))
+            .annotate({
+              identifier: "NotSSEFilter",
+            }),
+        }),
+      ]);
+    case 14:
+      return S.Array(
+        /*@__PURE__*/ __S(1229, __c38, 13).pipe(/*@__PURE__*/ T.XmlName("ObjectEncryption")),
+      );
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          EligibleForReplication: S.optional(S.Boolean),
+          CreatedAfter: S.optional(T.DateFromString),
+          CreatedBefore: S.optional(T.DateFromString),
+          ObjectReplicationStatuses: S.optional(__S(1220, __c38, 4)),
+          KeyNameConstraint: S.optional(__S(1222, __c38, 6)),
+          ObjectSizeGreaterThanBytes: S.optional(S.Number),
+          ObjectSizeLessThanBytes: S.optional(S.Number),
+          MatchAnyStorageClass: S.optional(__S(1223, __c38, 7)),
+          MatchAnyObjectEncryption: S.optional(__S(1230, __c38, 14)),
+        }),
+      ).annotate({
+        identifier: "JobManifestGeneratorFilter",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          ExpectedBucketOwner: S.optional(S.String),
+          SourceBucket: S.String,
+          ManifestOutputLocation: S.optional(__S(1219, __c38, 3)),
+          Filter: S.optional(__S(1231, __c38, 15)),
+          EnableManifestOutput: S.Boolean,
+        }),
+      ).annotate({ identifier: "S3JobManifestGenerator" });
+    case 17:
+      return S.Union([/*@__PURE__*/ S.Struct({ S3JobManifestGenerator: __S(1232, __c38, 16) })]);
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1152, __c36, 0));
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7094,7 +7793,7 @@ function __c11(j: number): any {
             T.HostLabel(),
           ),
           ClientToken: S.String.pipe(T.IdempotencyToken()),
-          Details: __S(88, __c11, 0),
+          Details: __S(1313, __c41, 1),
         }).pipe(
           T.all(
             ns,
@@ -7110,79 +7809,37 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateMultiRegionAccessPointRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ RequestTokenARN: S.optional(S.String) }).pipe(ns)).annotate(
         {
           identifier: "CreateMultiRegionAccessPointResult",
         },
       );
-    case 3:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Prefix")));
-    case 4:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Suffix")));
-    case 5:
-      return S.Array(
-        /*@__PURE__*/ __S(39, __c4, 7)
-          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
-          .annotate({ identifier: "S3Tag" }),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ DaysGreaterThan: S.optional(S.Number), DaysLessThan: S.optional(S.Number) }),
-      ).annotate({ identifier: "MatchObjectAge" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ BytesGreaterThan: S.optional(S.Number), BytesLessThan: S.optional(S.Number) }),
-      ).annotate({ identifier: "MatchObjectSize" });
   }
 }
-function __c12(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          MatchAnyPrefix: S.optional(__S(91, __c11, 3)),
-          MatchAnySuffix: S.optional(__S(92, __c11, 4)),
-          MatchAnyTag: S.optional(__S(93, __c11, 5)),
-          MatchObjectAge: S.optional(__S(94, __c11, 6)),
-          MatchObjectSize: S.optional(__S(95, __c11, 7)),
+      return S.Array(
+        /*@__PURE__*/ Region.pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({
+          identifier: "Region",
         }),
-      ).annotate({
-        identifier: "StorageLensGroupAndOperator",
-      });
+      );
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MatchAnyPrefix: S.optional(__S(91, __c11, 3)),
-          MatchAnySuffix: S.optional(__S(92, __c11, 4)),
-          MatchAnyTag: S.optional(__S(93, __c11, 5)),
-          MatchObjectAge: S.optional(__S(94, __c11, 6)),
-          MatchObjectSize: S.optional(__S(95, __c11, 7)),
+          Name: S.String,
+          PublicAccessBlock: S.optional(__S(896, __c28, 0)),
+          Regions: __S(1312, __c41, 0),
         }),
       ).annotate({
-        identifier: "StorageLensGroupOrOperator",
+        identifier: "CreateMultiRegionAccessPointInput",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MatchAnyPrefix: S.optional(__S(91, __c11, 3)),
-          MatchAnySuffix: S.optional(__S(92, __c11, 4)),
-          MatchAnyTag: S.optional(__S(93, __c11, 5)),
-          MatchObjectAge: S.optional(__S(94, __c11, 6)),
-          MatchObjectSize: S.optional(__S(95, __c11, 7)),
-          And: S.optional(__S(96, __c12, 0)),
-          Or: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({ identifier: "StorageLensGroupFilter" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          Filter: __S(98, __c12, 2),
-          StorageLensGroupArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageLensGroup" });
-    case 4:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7190,8 +7847,8 @@ function __c12(j: number): any {
             T.ContextParam("AccountId"),
             T.HostLabel(),
           ),
-          StorageLensGroup: __S(99, __c12, 3),
-          Tags: S.optional(__S(5, __c0, 5)),
+          StorageLensGroup: __S(1384, __c43, 8),
+          Tags: S.optional(__S(705, __c22, 1)),
         }).pipe(
           T.all(
             ns,
@@ -7207,11 +7864,81 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateStorageLensGroupRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateStorageLensGroupResponse",
       });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Prefix")));
+    case 1:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Suffix")));
+    case 2:
+      return S.Array(
+        /*@__PURE__*/ __S(1152, __c36, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
+          .annotate({ identifier: "S3Tag" }),
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ DaysGreaterThan: S.optional(S.Number), DaysLessThan: S.optional(S.Number) }),
+      ).annotate({ identifier: "MatchObjectAge" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ BytesGreaterThan: S.optional(S.Number), BytesLessThan: S.optional(S.Number) }),
+      ).annotate({ identifier: "MatchObjectSize" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          MatchAnyPrefix: S.optional(__S(1376, __c43, 0)),
+          MatchAnySuffix: S.optional(__S(1377, __c43, 1)),
+          MatchAnyTag: S.optional(__S(1378, __c43, 2)),
+          MatchObjectAge: S.optional(__S(1379, __c43, 3)),
+          MatchObjectSize: S.optional(__S(1380, __c43, 4)),
+        }),
+      ).annotate({
+        identifier: "StorageLensGroupAndOperator",
+      });
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          MatchAnyPrefix: S.optional(__S(1376, __c43, 0)),
+          MatchAnySuffix: S.optional(__S(1377, __c43, 1)),
+          MatchAnyTag: S.optional(__S(1378, __c43, 2)),
+          MatchObjectAge: S.optional(__S(1379, __c43, 3)),
+          MatchObjectSize: S.optional(__S(1380, __c43, 4)),
+        }),
+      ).annotate({
+        identifier: "StorageLensGroupOrOperator",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          MatchAnyPrefix: S.optional(__S(1376, __c43, 0)),
+          MatchAnySuffix: S.optional(__S(1377, __c43, 1)),
+          MatchAnyTag: S.optional(__S(1378, __c43, 2)),
+          MatchObjectAge: S.optional(__S(1379, __c43, 3)),
+          MatchObjectSize: S.optional(__S(1380, __c43, 4)),
+          And: S.optional(__S(1381, __c43, 5)),
+          Or: S.optional(__S(1382, __c43, 6)),
+        }),
+      ).annotate({ identifier: "StorageLensGroupFilter" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Filter: __S(1383, __c43, 7),
+          StorageLensGroupArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageLensGroup" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7236,13 +7963,13 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAccessGrantRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessGrantResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7271,7 +7998,11 @@ function __c13(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessGrantsInstanceResponse",
       });
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7294,11 +8025,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteAccessGrantsInstanceResourcePolicyRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessGrantsInstanceResourcePolicyResponse",
       });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7325,11 +8060,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteAccessGrantsLocationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessGrantsLocationResponse",
       });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7351,13 +8090,13 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAccessPointRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessPointResponse",
       });
   }
 }
-function __c14(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7387,7 +8126,11 @@ function __c14(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessPointForObjectLambdaResponse",
       });
-    case 2:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7411,11 +8154,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteAccessPointPolicyRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessPointPolicyResponse",
       });
-    case 4:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7442,11 +8189,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteAccessPointPolicyForObjectLambdaRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessPointPolicyForObjectLambdaResponse",
       });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7473,13 +8224,13 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteAccessPointScopeRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessPointScopeResponse",
       });
   }
 }
-function __c15(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7507,7 +8258,11 @@ function __c15(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketResponse",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7531,11 +8286,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteBucketLifecycleConfigurationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketLifecycleConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7559,11 +8318,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteBucketPolicyRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketPolicyResponse",
       });
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7587,13 +8350,13 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteBucketReplicationRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketReplicationResponse",
       });
   }
 }
-function __c16(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7623,7 +8386,11 @@ function __c16(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketTaggingResponse",
       });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7645,15 +8412,15 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteJobTaggingRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteJobTaggingResult",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ Name: S.String })).annotate({
-        identifier: "DeleteMultiRegionAccessPointInput",
-      });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7662,7 +8429,7 @@ function __c16(j: number): any {
             T.HostLabel(),
           ),
           ClientToken: S.String.pipe(T.IdempotencyToken()),
-          Details: __S(132, __c16, 4),
+          Details: __S(1920, __c60, 0),
         }).pipe(
           T.all(
             ns,
@@ -7678,13 +8445,25 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeleteMultiRegionAccessPointRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ RequestTokenARN: S.optional(S.String) }).pipe(ns)).annotate(
         {
           identifier: "DeleteMultiRegionAccessPointResult",
         },
       );
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.String })).annotate({
+        identifier: "DeleteMultiRegionAccessPointInput",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7707,15 +8486,15 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeletePublicAccessBlockRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeletePublicAccessBlockResponse",
       });
-    case 1:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConfigId: S.String.pipe(T.HttpLabel("ConfigId")),
@@ -7739,11 +8518,15 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeleteStorageLensConfigurationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteStorageLensConfigurationResponse",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConfigId: S.String.pipe(T.HttpLabel("ConfigId")),
@@ -7767,11 +8550,15 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeleteStorageLensConfigurationTaggingRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteStorageLensConfigurationTaggingResult",
       });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
@@ -7795,11 +8582,15 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeleteStorageLensGroupRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteStorageLensGroupResponse",
       });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7821,9 +8612,52 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ FailureCode: S.optional(S.String), FailureReason: S.optional(S.String) }),
+      ).annotate({ identifier: "JobFailure" });
+    case 2:
+      return S.Array(__S(2081, __c65, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Format: S.optional(S.String),
+          Location: S.optional(__S(1214, __c37, 30)),
+        }),
+      ).annotate({
+        identifier: "S3GeneratedManifestDescriptor",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          JobId: S.optional(S.String),
+          ConfirmationRequired: S.optional(S.Boolean),
+          Description: S.optional(S.String),
+          JobArn: S.optional(S.String),
+          Status: S.optional(S.String),
+          Manifest: S.optional(__S(1215, __c37, 31)),
+          Operation: S.optional(__S(1210, __c37, 26)),
+          Priority: S.optional(S.Number),
+          ProgressSummary: S.optional(__S(2113, __c66, 1)),
+          StatusUpdateReason: S.optional(S.String),
+          FailureReasons: S.optional(__S(2082, __c65, 2)),
+          Report: S.optional(__S(1211, __c37, 27)),
+          CreationTime: S.optional(T.DateFromString),
+          TerminationDate: S.optional(T.DateFromString),
+          RoleArn: S.optional(S.String),
+          SuspendedDate: S.optional(T.DateFromString),
+          SuspendedCause: S.optional(S.String),
+          ManifestGenerator: S.optional(__S(1233, __c38, 17)),
+          GeneratedManifestDescriptor: S.optional(__S(2083, __c65, 3)),
+        }),
+      ).annotate({ identifier: "JobDescriptor" });
+    case 5:
+      return S.suspend(() => S.Struct({ Job: S.optional(__S(2084, __c65, 4)) }).pipe(ns)).annotate({
+        identifier: "DescribeJobResult",
+      });
   }
 }
-function __c18(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7835,53 +8669,14 @@ function __c18(j: number): any {
           TotalNumberOfTasks: S.optional(S.Number),
           NumberOfTasksSucceeded: S.optional(S.Number),
           NumberOfTasksFailed: S.optional(S.Number),
-          Timers: S.optional(__S(144, __c18, 0)),
+          Timers: S.optional(__S(2112, __c66, 0)),
         }),
       ).annotate({ identifier: "JobProgressSummary" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ FailureCode: S.optional(S.String), FailureReason: S.optional(S.String) }),
-      ).annotate({ identifier: "JobFailure" });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Format: S.optional(S.String),
-          Location: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "S3GeneratedManifestDescriptor",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          JobId: S.optional(S.String),
-          ConfirmationRequired: S.optional(S.Boolean),
-          Description: S.optional(S.String),
-          JobArn: S.optional(S.String),
-          Status: S.optional(S.String),
-          Manifest: S.optional(__S(65, __c8, 1)),
-          Operation: S.optional(__S(60, __c7, 4)),
-          Priority: S.optional(S.Number),
-          ProgressSummary: S.optional(__S(145, __c18, 1)),
-          StatusUpdateReason: S.optional(S.String),
-          FailureReasons: S.optional(__S(147, __c18, 3)),
-          Report: S.optional(__S(61, __c7, 5)),
-          CreationTime: S.optional(T.DateFromString),
-          TerminationDate: S.optional(T.DateFromString),
-          RoleArn: S.optional(S.String),
-          SuspendedDate: S.optional(T.DateFromString),
-          SuspendedCause: S.optional(S.String),
-          ManifestGenerator: S.optional(__S(83, __c10, 3)),
-          GeneratedManifestDescriptor: S.optional(__S(148, __c18, 4)),
-        }),
-      ).annotate({ identifier: "JobDescriptor" });
-    case 6:
-      return S.suspend(() => S.Struct({ Job: S.optional(__S(149, __c18, 5)) }).pipe(ns)).annotate({
-        identifier: "DescribeJobResult",
-      });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7905,20 +8700,12 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DescribeMultiRegionAccessPointOperationRequest",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Name: S.String, Policy: S.String })).annotate({
-        identifier: "PutMultiRegionAccessPointPolicyInput",
-      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          CreateMultiRegionAccessPointRequest: S.optional(__S(88, __c11, 0)),
-          DeleteMultiRegionAccessPointRequest: S.optional(__S(132, __c16, 4)),
-          PutMultiRegionAccessPointPolicyRequest: S.optional(__S(152, __c19, 0)),
+          CreateMultiRegionAccessPointRequest: S.optional(__S(1313, __c41, 1)),
+          DeleteMultiRegionAccessPointRequest: S.optional(__S(1920, __c60, 0)),
+          PutMultiRegionAccessPointPolicyRequest: S.optional(__S(2176, __c68, 0)),
         }),
       ).annotate({ identifier: "AsyncRequestParameters" });
     case 2:
@@ -7929,12 +8716,12 @@ function __c19(j: number): any {
       });
     case 3:
       return S.Array(
-        /*@__PURE__*/ __S(154, __c19, 2).pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({
+        /*@__PURE__*/ __S(2146, __c67, 2).pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({
           identifier: "MultiRegionAccessPointRegionalResponse",
         }),
       );
     case 4:
-      return S.suspend(() => S.Struct({ Regions: S.optional(__S(155, __c19, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ Regions: S.optional(__S(2147, __c67, 3)) })).annotate({
         identifier: "MultiRegionAccessPointsAsyncResponse",
       });
     case 5:
@@ -7949,8 +8736,8 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          MultiRegionAccessPointDetails: S.optional(__S(156, __c19, 4)),
-          ErrorDetails: S.optional(__S(157, __c19, 5)),
+          MultiRegionAccessPointDetails: S.optional(__S(2148, __c67, 4)),
+          ErrorDetails: S.optional(__S(2149, __c67, 5)),
         }),
       ).annotate({ identifier: "AsyncResponseDetails" });
     case 7:
@@ -7959,22 +8746,30 @@ function __c19(j: number): any {
           CreationTime: S.optional(T.DateFromString),
           Operation: S.optional(S.String),
           RequestTokenARN: S.optional(S.String),
-          RequestParameters: S.optional(__S(153, __c19, 1)),
+          RequestParameters: S.optional(__S(2145, __c67, 1)),
           RequestStatus: S.optional(S.String),
-          ResponseDetails: S.optional(__S(158, __c19, 6)),
+          ResponseDetails: S.optional(__S(2150, __c67, 6)),
         }),
       ).annotate({ identifier: "AsyncOperation" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
-        S.Struct({ AsyncOperation: S.optional(__S(159, __c19, 7)) }).pipe(ns),
+        S.Struct({ AsyncOperation: S.optional(__S(2151, __c67, 7)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeMultiRegionAccessPointOperationResult",
       });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.String, Policy: S.String })).annotate({
+        identifier: "PutMultiRegionAccessPointPolicyInput",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -7997,11 +8792,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DissociateAccessGrantsIdentityCenterRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DissociateAccessGrantsIdentityCenterResponse",
       });
-    case 3:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8023,21 +8822,25 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAccessGrantRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreatedAt: S.optional(T.DateFromString),
           AccessGrantId: S.optional(S.String),
           AccessGrantArn: S.optional(S.String),
-          Grantee: S.optional(__S(3, __c0, 3)),
+          Grantee: S.optional(__S(736, __c23, 0)),
           Permission: S.optional(S.String),
           AccessGrantsLocationId: S.optional(S.String),
-          AccessGrantsLocationConfiguration: S.optional(__S(2, __c0, 2)),
+          AccessGrantsLocationConfiguration: S.optional(__S(768, __c24, 0)),
           GrantScope: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetAccessGrantResult" });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8060,7 +8863,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetAccessGrantsInstanceRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccessGrantsInstanceArn: S.optional(S.String),
@@ -8073,7 +8876,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetAccessGrantsInstanceResult",
       });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8097,11 +8904,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetAccessGrantsInstanceForPrefixRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccessGrantsInstanceArn: S.optional(S.String),
@@ -8110,7 +8913,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetAccessGrantsInstanceForPrefixResult",
       });
-    case 1:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8133,7 +8940,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetAccessGrantsInstanceResourcePolicyRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Policy: S.optional(S.String),
@@ -8143,7 +8950,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetAccessGrantsInstanceResourcePolicyResult",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8170,7 +8981,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetAccessGrantsLocationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreatedAt: S.optional(T.DateFromString),
@@ -8182,7 +8993,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetAccessGrantsLocationResult",
       });
-    case 5:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8204,20 +9019,20 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAccessPointRequest" });
-    case 6:
+    case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Bucket: S.optional(S.String),
           NetworkOrigin: S.optional(S.String),
-          VpcConfiguration: S.optional(__S(12, __c1, 4)),
-          PublicAccessBlockConfiguration: S.optional(__S(13, __c1, 5)),
+          VpcConfiguration: S.optional(__S(928, __c29, 0)),
+          PublicAccessBlockConfiguration: S.optional(__S(896, __c28, 0)),
           CreationDate: S.optional(T.DateFromString),
           Alias: S.optional(S.String),
           AccessPointArn: S.optional(S.String),
-          Endpoints: S.optional(__S(174, __c21, 6)),
+          Endpoints: S.optional(__S(2401, __c75, 1)),
           BucketAccountId: S.optional(S.String),
           DataSourceId: S.optional(S.String),
           DataSourceType: S.optional(S.String),
@@ -8225,7 +9040,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetAccessPointResult" });
   }
 }
-function __c22(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8256,11 +9071,15 @@ function __c22(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Configuration: S.optional(__S(25, __c3, 1)) }).pipe(ns),
+        S.Struct({ Configuration: S.optional(__S(1030, __c32, 6)) }).pipe(ns),
       ).annotate({
         identifier: "GetAccessPointConfigurationForObjectLambdaResult",
       });
-    case 2:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8284,18 +9103,22 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetAccessPointForObjectLambdaRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          PublicAccessBlockConfiguration: S.optional(__S(13, __c1, 5)),
+          PublicAccessBlockConfiguration: S.optional(__S(896, __c28, 0)),
           CreationDate: S.optional(T.DateFromString),
-          Alias: S.optional(__S(27, __c3, 3)),
+          Alias: S.optional(__S(1056, __c33, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetAccessPointForObjectLambdaResult",
       });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8319,11 +9142,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetAccessPointPolicyRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ Policy: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GetAccessPointPolicyResult",
       });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8347,13 +9174,13 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetAccessPointPolicyForObjectLambdaRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ Policy: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GetAccessPointPolicyForObjectLambdaResult",
       });
   }
 }
-function __c23(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8381,15 +9208,23 @@ function __c23(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ IsPublic: S.optional(S.Boolean).pipe(T.XmlName("IsPublic")) }),
-      ).annotate({ identifier: "PolicyStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ PolicyStatus: S.optional(__S(185, __c23, 1)) }).pipe(ns),
+        S.Struct({ PolicyStatus: S.optional(__S(2592, __c81, 0)) }).pipe(ns),
       ).annotate({
         identifier: "GetAccessPointPolicyStatusResult",
       });
-    case 3:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ IsPublic: S.optional(S.Boolean).pipe(T.XmlName("IsPublic")) }),
+      ).annotate({ identifier: "PolicyStatus" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8416,13 +9251,17 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetAccessPointPolicyStatusForObjectLambdaRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ PolicyStatus: S.optional(__S(185, __c23, 1)) }).pipe(ns),
+        S.Struct({ PolicyStatus: S.optional(__S(2592, __c81, 0)) }).pipe(ns),
       ).annotate({
         identifier: "GetAccessPointPolicyStatusForObjectLambdaResult",
       });
-    case 5:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8449,11 +9288,17 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetAccessPointScopeRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ Scope: S.optional(__S(16, __c2, 0)) }).pipe(ns)).annotate({
-        identifier: "GetAccessPointScopeResult",
-      });
-    case 7:
+    case 1:
+      return S.suspend(() => S.Struct({ Scope: S.optional(__S(962, __c30, 2)) }).pipe(ns)).annotate(
+        {
+          identifier: "GetAccessPointScopeResult",
+        },
+      );
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8475,11 +9320,7 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBucketRequest" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.optional(S.String),
@@ -8487,7 +9328,11 @@ function __c24(j: number): any {
           CreationDate: S.optional(T.DateFromString),
         }).pipe(ns),
       ).annotate({ identifier: "GetBucketResult" });
-    case 1:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8511,7 +9356,17 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetBucketLifecycleConfigurationRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Rules: S.optional(__S(2762, __c86, 10)) }).pipe(ns),
+      ).annotate({
+        identifier: "GetBucketLifecycleConfigurationResult",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Date: S.optional(T.DateFromString),
@@ -8519,26 +9374,26 @@ function __c24(j: number): any {
           ExpiredObjectDeleteMarker: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LifecycleExpiration" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Prefix: S.optional(S.String),
-          Tags: S.optional(__S(40, __c5, 0)),
+          Tags: S.optional(__S(1248, __c39, 0)),
           ObjectSizeGreaterThan: S.optional(S.Number),
           ObjectSizeLessThan: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LifecycleRuleAndOperator" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Prefix: S.optional(S.String),
-          Tag: S.optional(__S(39, __c4, 7)),
-          And: S.optional(__S(195, __c24, 3)),
+          Tag: S.optional(__S(1152, __c36, 0)),
+          And: S.optional(__S(2753, __c86, 1)),
           ObjectSizeGreaterThan: S.optional(S.Number),
           ObjectSizeLessThan: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LifecycleRuleFilter" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Date: S.optional(T.DateFromString),
@@ -8546,13 +9401,13 @@ function __c24(j: number): any {
           StorageClass: S.optional(S.String),
         }),
       ).annotate({ identifier: "Transition" });
-    case 6:
+    case 4:
       return S.Array(
-        /*@__PURE__*/ __S(197, __c24, 5).pipe(/*@__PURE__*/ T.XmlName("Transition")).annotate({
+        /*@__PURE__*/ __S(2755, __c86, 3).pipe(/*@__PURE__*/ T.XmlName("Transition")).annotate({
           identifier: "Transition",
         }),
       );
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           NoncurrentDays: S.optional(S.Number),
@@ -8561,19 +9416,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "NoncurrentVersionTransition",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.Array(
-        /*@__PURE__*/ __S(199, __c24, 7)
+        /*@__PURE__*/ __S(2757, __c86, 5)
           .pipe(/*@__PURE__*/ T.XmlName("NoncurrentVersionTransition"))
           .annotate({
             identifier: "NoncurrentVersionTransition",
           }),
       );
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           NoncurrentDays: S.optional(S.Number),
@@ -8582,36 +9433,34 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "NoncurrentVersionExpiration",
       });
-    case 2:
+    case 8:
       return S.suspend(() => S.Struct({ DaysAfterInitiation: S.optional(S.Number) })).annotate({
         identifier: "AbortIncompleteMultipartUpload",
       });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          Expiration: S.optional(__S(194, __c24, 2)),
+          Expiration: S.optional(__S(2752, __c86, 0)),
           ID: S.optional(S.String),
-          Filter: S.optional(__S(196, __c24, 4)),
+          Filter: S.optional(__S(2754, __c86, 2)),
           Status: S.String,
-          Transitions: S.optional(__S(198, __c24, 6)),
-          NoncurrentVersionTransitions: S.optional(__S(200, __c25, 0)),
-          NoncurrentVersionExpiration: S.optional(__S(201, __c25, 1)),
-          AbortIncompleteMultipartUpload: S.optional(__S(202, __c25, 2)),
+          Transitions: S.optional(__S(2756, __c86, 4)),
+          NoncurrentVersionTransitions: S.optional(__S(2758, __c86, 6)),
+          NoncurrentVersionExpiration: S.optional(__S(2759, __c86, 7)),
+          AbortIncompleteMultipartUpload: S.optional(__S(2760, __c86, 8)),
         }),
       ).annotate({ identifier: "LifecycleRule" });
-    case 4:
+    case 10:
       return S.Array(
-        /*@__PURE__*/ __S(203, __c25, 3).pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
+        /*@__PURE__*/ __S(2761, __c86, 9).pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
           identifier: "LifecycleRule",
         }),
       );
-    case 5:
-      return S.suspend(() => S.Struct({ Rules: S.optional(__S(204, __c25, 4)) }).pipe(ns)).annotate(
-        {
-          identifier: "GetBucketLifecycleConfigurationResult",
-        },
-      );
-    case 6:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8633,13 +9482,13 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBucketPolicyRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ Policy: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GetBucketPolicyResult",
       });
   }
 }
-function __c26(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8667,113 +9516,113 @@ function __c26(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Prefix: S.optional(S.String), Tags: S.optional(__S(40, __c5, 0)) }),
+        S.Struct({ ReplicationConfiguration: S.optional(__S(2863, __c89, 15)) }).pipe(ns),
       ).annotate({
-        identifier: "ReplicationRuleAndOperator",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Prefix: S.optional(S.String),
-          Tag: S.optional(__S(39, __c4, 7)),
-          And: S.optional(__S(209, __c26, 1)),
-        }),
-      ).annotate({ identifier: "ReplicationRuleFilter" });
-    case 3:
-      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
-        identifier: "SseKmsEncryptedObjects",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
-        identifier: "ReplicaModifications",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          SseKmsEncryptedObjects: S.optional(__S(211, __c26, 3)),
-          ReplicaModifications: S.optional(__S(212, __c26, 4)),
-        }),
-      ).annotate({ identifier: "SourceSelectionCriteria" });
-    case 6:
-      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
-        identifier: "ExistingObjectReplication",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ Minutes: S.optional(S.Number) })).annotate({
-        identifier: "ReplicationTimeValue",
+        identifier: "GetBucketReplicationResult",
       });
   }
 }
-function __c27(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Status: S.String, Time: __S(215, __c26, 7) })).annotate({
-        identifier: "ReplicationTime",
+      return S.suspend(() =>
+        S.Struct({ Prefix: S.optional(S.String), Tags: S.optional(__S(1248, __c39, 0)) }),
+      ).annotate({
+        identifier: "ReplicationRuleAndOperator",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Prefix: S.optional(S.String),
+          Tag: S.optional(__S(1152, __c36, 0)),
+          And: S.optional(__S(2848, __c89, 0)),
+        }),
+      ).annotate({ identifier: "ReplicationRuleFilter" });
+    case 2:
+      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
+        identifier: "SseKmsEncryptedObjects",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
+        identifier: "ReplicaModifications",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SseKmsEncryptedObjects: S.optional(__S(2850, __c89, 2)),
+          ReplicaModifications: S.optional(__S(2851, __c89, 3)),
+        }),
+      ).annotate({ identifier: "SourceSelectionCriteria" });
+    case 5:
+      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
+        identifier: "ExistingObjectReplication",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ Minutes: S.optional(S.Number) })).annotate({
+        identifier: "ReplicationTimeValue",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Status: S.String, Time: __S(2854, __c89, 6) })).annotate({
+        identifier: "ReplicationTime",
+      });
+    case 8:
       return S.suspend(() => S.Struct({ Owner: S.String })).annotate({
         identifier: "AccessControlTranslation",
       });
-    case 2:
+    case 9:
       return S.suspend(() => S.Struct({ ReplicaKmsKeyID: S.optional(S.String) })).annotate({
         identifier: "EncryptionConfiguration",
       });
-    case 3:
+    case 10:
       return S.suspend(() =>
-        S.Struct({ Status: S.String, EventThreshold: S.optional(__S(215, __c26, 7)) }),
+        S.Struct({ Status: S.String, EventThreshold: S.optional(__S(2854, __c89, 6)) }),
       ).annotate({ identifier: "Metrics" });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           Account: S.optional(S.String),
           Bucket: S.String,
-          ReplicationTime: S.optional(__S(216, __c27, 0)),
-          AccessControlTranslation: S.optional(__S(217, __c27, 1)),
-          EncryptionConfiguration: S.optional(__S(218, __c27, 2)),
-          Metrics: S.optional(__S(219, __c27, 3)),
+          ReplicationTime: S.optional(__S(2855, __c89, 7)),
+          AccessControlTranslation: S.optional(__S(2856, __c89, 8)),
+          EncryptionConfiguration: S.optional(__S(2857, __c89, 9)),
+          Metrics: S.optional(__S(2858, __c89, 10)),
           StorageClass: S.optional(S.String),
         }),
       ).annotate({ identifier: "Destination" });
-    case 5:
+    case 12:
       return S.suspend(() => S.Struct({ Status: S.String })).annotate({
         identifier: "DeleteMarkerReplication",
       });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           ID: S.optional(S.String),
           Priority: S.optional(S.Number),
           Prefix: S.optional(S.String),
-          Filter: S.optional(__S(210, __c26, 2)),
+          Filter: S.optional(__S(2849, __c89, 1)),
           Status: S.String,
-          SourceSelectionCriteria: S.optional(__S(213, __c26, 5)),
-          ExistingObjectReplication: S.optional(__S(214, __c26, 6)),
-          Destination: __S(220, __c27, 4),
-          DeleteMarkerReplication: S.optional(__S(221, __c27, 5)),
+          SourceSelectionCriteria: S.optional(__S(2852, __c89, 4)),
+          ExistingObjectReplication: S.optional(__S(2853, __c89, 5)),
+          Destination: __S(2859, __c89, 11),
+          DeleteMarkerReplication: S.optional(__S(2860, __c89, 12)),
           Bucket: S.String,
         }),
       ).annotate({ identifier: "ReplicationRule" });
-    case 7:
+    case 14:
       return S.Array(
-        /*@__PURE__*/ __S(222, __c27, 6).pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
+        /*@__PURE__*/ __S(2861, __c89, 13).pipe(/*@__PURE__*/ T.XmlName("Rule")).annotate({
           identifier: "ReplicationRule",
         }),
       );
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Role: S.String, Rules: __S(223, __c27, 7) })).annotate({
+    case 15:
+      return S.suspend(() => S.Struct({ Role: S.String, Rules: __S(2862, __c89, 14) })).annotate({
         identifier: "ReplicationConfiguration",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ReplicationConfiguration: S.optional(__S(224, __c28, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetBucketReplicationResult",
-      });
-    case 2:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8795,11 +9644,15 @@ function __c28(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBucketTaggingRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ TagSet: __S(40, __c5, 0) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ TagSet: __S(1248, __c39, 0) }).pipe(ns)).annotate({
         identifier: "GetBucketTaggingResult",
       });
-    case 4:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8823,7 +9676,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetBucketVersioningRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
@@ -8832,7 +9685,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetBucketVersioningResult",
       });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8859,7 +9716,7 @@ function __c28(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDataAccessRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccessKeyId: S.optional(SensitiveString),
@@ -8868,19 +9725,19 @@ function __c28(j: number): any {
           Expiration: S.optional(T.DateFromString),
         }),
       ).annotate({ identifier: "Credentials" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Credentials: S.optional(__S(231, __c28, 7)),
+          Credentials: S.optional(__S(2945, __c92, 1)),
           MatchedGrantTarget: S.optional(S.String),
-          Grantee: S.optional(__S(3, __c0, 3)),
+          Grantee: S.optional(__S(736, __c23, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "GetDataAccessResult" });
-    case 1:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8902,11 +9759,15 @@ function __c29(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetJobTaggingRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(40, __c5, 0)) }).pipe(ns)).annotate({
-        identifier: "GetJobTaggingResult",
-      });
-    case 3:
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1248, __c39, 0)) }).pipe(ns)).annotate(
+        { identifier: "GetJobTaggingResult" },
+      );
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -8930,7 +9791,17 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetMultiRegionAccessPointRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AccessPoint: S.optional(__S(3042, __c95, 2)) }).pipe(ns),
+      ).annotate({
+        identifier: "GetMultiRegionAccessPointResult",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.optional(S.String),
@@ -8938,34 +9809,28 @@ function __c29(j: number): any {
           BucketAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegionReport" });
-    case 5:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(236, __c29, 4).pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({
+        /*@__PURE__*/ __S(3040, __c95, 0).pipe(/*@__PURE__*/ T.XmlName("Region")).annotate({
           identifier: "RegionReport",
         }),
       );
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Alias: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString),
-          PublicAccessBlock: S.optional(__S(13, __c1, 5)),
+          PublicAccessBlock: S.optional(__S(896, __c28, 0)),
           Status: S.optional(S.String),
-          Regions: S.optional(__S(237, __c29, 5)),
+          Regions: S.optional(__S(3041, __c95, 1)),
         }),
       ).annotate({
         identifier: "MultiRegionAccessPointReport",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ AccessPoint: S.optional(__S(238, __c29, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetMultiRegionAccessPointResult",
-      });
   }
 }
-function __c30(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9002,19 +9867,23 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Established: S.optional(__S(241, __c30, 1)),
-          Proposed: S.optional(__S(242, __c30, 2)),
+          Established: S.optional(__S(3073, __c96, 1)),
+          Proposed: S.optional(__S(3074, __c96, 2)),
         }),
       ).annotate({
         identifier: "MultiRegionAccessPointPolicyDocument",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Policy: S.optional(__S(243, __c30, 3)) }).pipe(ns),
+        S.Struct({ Policy: S.optional(__S(3075, __c96, 3)) }).pipe(ns),
       ).annotate({
         identifier: "GetMultiRegionAccessPointPolicyResult",
       });
-    case 5:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9038,13 +9907,17 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetMultiRegionAccessPointPolicyStatusRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Established: S.optional(__S(185, __c23, 1)) }).pipe(ns),
+        S.Struct({ Established: S.optional(__S(2592, __c81, 0)) }).pipe(ns),
       ).annotate({
         identifier: "GetMultiRegionAccessPointPolicyStatusResult",
       });
-    case 7:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9068,9 +9941,15 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetMultiRegionAccessPointRoutesRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Mrap: S.optional(S.String), Routes: S.optional(__S(3169, __c99, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "GetMultiRegionAccessPointRoutesResult",
+      });
   }
 }
-function __c31(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9084,17 +9963,15 @@ function __c31(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(248, __c31, 0).pipe(/*@__PURE__*/ T.XmlName("Route")).annotate({
+        /*@__PURE__*/ __S(3168, __c99, 0).pipe(/*@__PURE__*/ T.XmlName("Route")).annotate({
           identifier: "MultiRegionAccessPointRoute",
         }),
       );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Mrap: S.optional(S.String), Routes: S.optional(__S(249, __c31, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetMultiRegionAccessPointRoutesResult",
-      });
-    case 3:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9117,17 +9994,21 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetPublicAccessBlockRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          PublicAccessBlockConfiguration: S.optional(__S(13, __c1, 5))
+          PublicAccessBlockConfiguration: S.optional(__S(896, __c28, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "PublicAccessBlockConfiguration" }),
         }).pipe(ns),
       ).annotate({
         identifier: "GetPublicAccessBlockOutput",
       });
-    case 5:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConfigId: S.String.pipe(T.HttpLabel("ConfigId")),
@@ -9151,11 +10032,25 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetStorageLensConfigurationRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          StorageLensConfiguration: S.optional(__S(3291, __c102, 27))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "StorageLensConfiguration" }),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetStorageLensConfigurationResult",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ IsEnabled: S.optional(S.Boolean) })).annotate({
         identifier: "ActivityMetrics",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Delimiter: S.optional(S.String),
@@ -9163,127 +10058,115 @@ function __c31(j: number): any {
           MinStorageBytesPercentage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SelectionCriteria" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           IsEnabled: S.optional(S.Boolean),
-          SelectionCriteria: S.optional(__S(255, __c31, 7)),
+          SelectionCriteria: S.optional(__S(3265, __c102, 1)),
         }),
       ).annotate({
         identifier: "PrefixLevelStorageMetrics",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ StorageMetrics: __S(256, __c32, 0) })).annotate({
-        identifier: "PrefixLevel",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ IsEnabled: S.optional(S.Boolean) })).annotate({
-        identifier: "AdvancedCostOptimizationMetrics",
-      });
     case 3:
-      return S.suspend(() => S.Struct({ IsEnabled: S.optional(S.Boolean) })).annotate({
-        identifier: "AdvancedDataProtectionMetrics",
+      return S.suspend(() => S.Struct({ StorageMetrics: __S(3266, __c102, 2) })).annotate({
+        identifier: "PrefixLevel",
       });
     case 4:
       return S.suspend(() => S.Struct({ IsEnabled: S.optional(S.Boolean) })).annotate({
-        identifier: "DetailedStatusCodesMetrics",
+        identifier: "AdvancedCostOptimizationMetrics",
       });
     case 5:
       return S.suspend(() => S.Struct({ IsEnabled: S.optional(S.Boolean) })).annotate({
-        identifier: "AdvancedPerformanceMetrics",
+        identifier: "AdvancedDataProtectionMetrics",
       });
     case 6:
+      return S.suspend(() => S.Struct({ IsEnabled: S.optional(S.Boolean) })).annotate({
+        identifier: "DetailedStatusCodesMetrics",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ IsEnabled: S.optional(S.Boolean) })).annotate({
+        identifier: "AdvancedPerformanceMetrics",
+      });
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          ActivityMetrics: S.optional(__S(254, __c31, 6)),
-          PrefixLevel: S.optional(__S(257, __c32, 1)),
-          AdvancedCostOptimizationMetrics: S.optional(__S(258, __c32, 2)),
-          AdvancedDataProtectionMetrics: S.optional(__S(259, __c32, 3)),
-          DetailedStatusCodesMetrics: S.optional(__S(260, __c32, 4)),
-          AdvancedPerformanceMetrics: S.optional(__S(261, __c32, 5)),
+          ActivityMetrics: S.optional(__S(3264, __c102, 0)),
+          PrefixLevel: S.optional(__S(3267, __c102, 3)),
+          AdvancedCostOptimizationMetrics: S.optional(__S(3268, __c102, 4)),
+          AdvancedDataProtectionMetrics: S.optional(__S(3269, __c102, 5)),
+          DetailedStatusCodesMetrics: S.optional(__S(3270, __c102, 6)),
+          AdvancedPerformanceMetrics: S.optional(__S(3271, __c102, 7)),
         }),
       ).annotate({ identifier: "BucketLevel" });
-    case 7:
+    case 9:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Arn")));
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Arn")));
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          Include: S.optional(__S(263, __c32, 7)),
-          Exclude: S.optional(__S(264, __c33, 0)),
+          Include: S.optional(__S(3273, __c102, 9)),
+          Exclude: S.optional(__S(3274, __c102, 10)),
         }),
       ).annotate({
         identifier: "StorageLensGroupLevelSelectionCriteria",
       });
-    case 2:
+    case 12:
       return S.suspend(() =>
-        S.Struct({ SelectionCriteria: S.optional(__S(265, __c33, 1)) }),
+        S.Struct({ SelectionCriteria: S.optional(__S(3275, __c102, 11)) }),
       ).annotate({ identifier: "StorageLensGroupLevel" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          ActivityMetrics: S.optional(__S(254, __c31, 6)),
-          BucketLevel: S.optional(__S(262, __c32, 6)),
-          AdvancedCostOptimizationMetrics: S.optional(__S(258, __c32, 2)),
-          AdvancedDataProtectionMetrics: S.optional(__S(259, __c32, 3)),
-          DetailedStatusCodesMetrics: S.optional(__S(260, __c32, 4)),
-          AdvancedPerformanceMetrics: S.optional(__S(261, __c32, 5)),
-          StorageLensGroupLevel: S.optional(__S(266, __c33, 2)),
+          ActivityMetrics: S.optional(__S(3264, __c102, 0)),
+          BucketLevel: S.optional(__S(3272, __c102, 8)),
+          AdvancedCostOptimizationMetrics: S.optional(__S(3268, __c102, 4)),
+          AdvancedDataProtectionMetrics: S.optional(__S(3269, __c102, 5)),
+          DetailedStatusCodesMetrics: S.optional(__S(3270, __c102, 6)),
+          AdvancedPerformanceMetrics: S.optional(__S(3271, __c102, 7)),
+          StorageLensGroupLevel: S.optional(__S(3276, __c102, 12)),
         }),
       ).annotate({ identifier: "AccountLevel" });
-    case 4:
+    case 14:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Arn")));
-    case 5:
+    case 15:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Region")));
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          Buckets: S.optional(__S(268, __c33, 4)),
-          Regions: S.optional(__S(269, __c33, 5)),
+          Buckets: S.optional(__S(3278, __c102, 14)),
+          Regions: S.optional(__S(3279, __c102, 15)),
         }),
       ).annotate({ identifier: "Include" });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          Buckets: S.optional(__S(268, __c33, 4)),
-          Regions: S.optional(__S(269, __c33, 5)),
+          Buckets: S.optional(__S(3278, __c102, 14)),
+          Regions: S.optional(__S(3279, __c102, 15)),
         }),
       ).annotate({ identifier: "Exclude" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 18:
       return S.suspend(() => S.Struct({}).pipe(T.XmlName("SSE-S3"))).annotate({
         identifier: "SSES3",
       });
-    case 1:
+    case 19:
       return S.suspend(() => S.Struct({ KeyId: S.String }).pipe(T.XmlName("SSE-KMS"))).annotate({
         identifier: "SSEKMS",
       });
-    case 2:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          SSES3: S.optional(__S(272, __c34, 0))
+          SSES3: S.optional(__S(3282, __c102, 18))
             .pipe(T.XmlName("SSE-S3"))
             .annotate({ identifier: "SSES3" }),
-          SSEKMS: S.optional(__S(273, __c34, 1))
+          SSEKMS: S.optional(__S(3283, __c102, 19))
             .pipe(T.XmlName("SSE-KMS"))
             .annotate({ identifier: "SSEKMS" }),
         }),
       ).annotate({
         identifier: "StorageLensDataExportEncryption",
       });
-    case 3:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           Format: S.String,
@@ -9291,70 +10174,60 @@ function __c34(j: number): any {
           AccountId: S.String,
           Arn: S.String,
           Prefix: S.optional(S.String),
-          Encryption: S.optional(__S(274, __c34, 2)),
+          Encryption: S.optional(__S(3284, __c102, 20)),
         }),
       ).annotate({ identifier: "S3BucketDestination" });
-    case 4:
+    case 22:
       return S.suspend(() => S.Struct({ IsEnabled: S.Boolean })).annotate({
         identifier: "CloudWatchMetrics",
       });
-    case 5:
+    case 23:
       return S.suspend(() =>
-        S.Struct({ IsEnabled: S.Boolean, Encryption: S.optional(__S(274, __c34, 2)) }),
+        S.Struct({ IsEnabled: S.Boolean, Encryption: S.optional(__S(3284, __c102, 20)) }),
       ).annotate({
         identifier: "StorageLensTableDestination",
       });
-    case 6:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          S3BucketDestination: S.optional(__S(275, __c34, 3)),
-          CloudWatchMetrics: S.optional(__S(276, __c34, 4)),
-          StorageLensTableDestination: S.optional(__S(277, __c34, 5)),
+          S3BucketDestination: S.optional(__S(3285, __c102, 21)),
+          CloudWatchMetrics: S.optional(__S(3286, __c102, 22)),
+          StorageLensTableDestination: S.optional(__S(3287, __c102, 23)),
         }),
       ).annotate({ identifier: "StorageLensDataExport" });
-    case 7:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          S3BucketDestination: S.optional(__S(275, __c34, 3)),
-          StorageLensTableDestination: S.optional(__S(277, __c34, 5)),
+          S3BucketDestination: S.optional(__S(3285, __c102, 21)),
+          StorageLensTableDestination: S.optional(__S(3287, __c102, 23)),
         }),
       ).annotate({
         identifier: "StorageLensExpandedPrefixesDataExport",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 26:
       return S.suspend(() => S.Struct({ Arn: S.String })).annotate({
         identifier: "StorageLensAwsOrg",
       });
-    case 1:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
-          AccountLevel: __S(267, __c33, 3),
-          Include: S.optional(__S(270, __c33, 6)),
-          Exclude: S.optional(__S(271, __c33, 7)),
-          DataExport: S.optional(__S(278, __c34, 6)),
-          ExpandedPrefixesDataExport: S.optional(__S(279, __c34, 7)),
+          AccountLevel: __S(3277, __c102, 13),
+          Include: S.optional(__S(3280, __c102, 16)),
+          Exclude: S.optional(__S(3281, __c102, 17)),
+          DataExport: S.optional(__S(3288, __c102, 24)),
+          ExpandedPrefixesDataExport: S.optional(__S(3289, __c102, 25)),
           IsEnabled: S.Boolean,
-          AwsOrg: S.optional(__S(280, __c35, 0)),
+          AwsOrg: S.optional(__S(3290, __c102, 26)),
           StorageLensArn: S.optional(S.String),
           PrefixDelimiter: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageLensConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          StorageLensConfiguration: S.optional(__S(281, __c35, 1))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "StorageLensConfiguration" }),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "GetStorageLensConfigurationResult",
-      });
-    case 3:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConfigId: S.String.pipe(T.HttpLabel("ConfigId")),
@@ -9378,21 +10251,31 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetStorageLensConfigurationTaggingRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Tags: S.optional(__S(3329, __c104, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "GetStorageLensConfigurationTaggingResult",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "StorageLensTag",
       });
-    case 5:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(284, __c35, 4).pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({
+        /*@__PURE__*/ __S(3328, __c104, 0).pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({
           identifier: "StorageLensTag",
         }),
       );
-    case 6:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(285, __c35, 5)) }).pipe(ns)).annotate({
-        identifier: "GetStorageLensConfigurationTaggingResult",
-      });
-    case 7:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
@@ -9416,21 +10299,21 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetStorageLensGroupRequest",
       });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          StorageLensGroup: S.optional(__S(99, __c12, 3))
+          StorageLensGroup: S.optional(__S(1384, __c43, 8))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "StorageLensGroup" }),
         }).pipe(ns),
       ).annotate({
         identifier: "GetStorageLensGroupResult",
       });
-    case 1:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9458,34 +10341,38 @@ function __c36(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListAccessGrantsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreatedAt: S.optional(T.DateFromString),
           AccessGrantId: S.optional(S.String),
           AccessGrantArn: S.optional(S.String),
-          Grantee: S.optional(__S(3, __c0, 3)),
+          Grantee: S.optional(__S(736, __c23, 0)),
           Permission: S.optional(S.String),
           AccessGrantsLocationId: S.optional(S.String),
-          AccessGrantsLocationConfiguration: S.optional(__S(2, __c0, 2)),
+          AccessGrantsLocationConfiguration: S.optional(__S(768, __c24, 0)),
           GrantScope: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAccessGrantEntry" });
-    case 3:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(290, __c36, 2).pipe(/*@__PURE__*/ T.XmlName("AccessGrant")).annotate({
+        /*@__PURE__*/ __S(3393, __c106, 1).pipe(/*@__PURE__*/ T.XmlName("AccessGrant")).annotate({
           identifier: "ListAccessGrantEntry",
         }),
       );
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          AccessGrantsList: S.optional(__S(291, __c36, 3)),
+          AccessGrantsList: S.optional(__S(3394, __c106, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "ListAccessGrantsResult" });
-    case 5:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9510,7 +10397,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ListAccessGrantsInstancesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccessGrantsInstanceId: S.optional(S.String),
@@ -9523,28 +10410,28 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ListAccessGrantsInstanceEntry",
       });
-    case 7:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(294, __c36, 6)
+        /*@__PURE__*/ __S(3425, __c107, 1)
           .pipe(/*@__PURE__*/ T.XmlName("AccessGrantsInstance"))
           .annotate({
             identifier: "ListAccessGrantsInstanceEntry",
           }),
       );
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          AccessGrantsInstancesList: S.optional(__S(295, __c36, 7)),
+          AccessGrantsInstancesList: S.optional(__S(3426, __c107, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAccessGrantsInstancesResult",
       });
-    case 1:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9570,7 +10457,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListAccessGrantsLocationsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreatedAt: S.optional(T.DateFromString),
@@ -9582,24 +10469,28 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListAccessGrantsLocationsEntry",
       });
-    case 3:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(298, __c37, 2)
+        /*@__PURE__*/ __S(3457, __c108, 1)
           .pipe(/*@__PURE__*/ T.XmlName("AccessGrantsLocation"))
           .annotate({
             identifier: "ListAccessGrantsLocationsEntry",
           }),
       );
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          AccessGrantsLocationsList: S.optional(__S(299, __c37, 3)),
+          AccessGrantsLocationsList: S.optional(__S(3458, __c108, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAccessGrantsLocationsResult",
       });
-    case 5:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9625,12 +10516,23 @@ function __c37(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListAccessPointsRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccessPointList: S.optional(__S(3521, __c110, 1)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListAccessPointsResult" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           NetworkOrigin: S.String,
-          VpcConfiguration: S.optional(__S(12, __c1, 4)),
+          VpcConfiguration: S.optional(__S(928, __c29, 0)),
           Bucket: S.String,
           AccessPointArn: S.optional(S.String),
           Alias: S.optional(S.String),
@@ -9639,24 +10541,17 @@ function __c37(j: number): any {
           DataSourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessPoint" });
-    case 7:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(302, __c37, 6).pipe(/*@__PURE__*/ T.XmlName("AccessPoint")).annotate({
+        /*@__PURE__*/ __S(3520, __c110, 0).pipe(/*@__PURE__*/ T.XmlName("AccessPoint")).annotate({
           identifier: "AccessPoint",
         }),
       );
   }
 }
-function __c38(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AccessPointList: S.optional(__S(303, __c37, 7)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "ListAccessPointsResult" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9685,16 +10580,20 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListAccessPointsForDirectoryBucketsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          AccessPointList: S.optional(__S(303, __c37, 7)),
+          AccessPointList: S.optional(__S(3521, __c110, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAccessPointsForDirectoryBucketsResult",
       });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9719,32 +10618,36 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListAccessPointsForObjectLambdaRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           ObjectLambdaAccessPointArn: S.optional(S.String),
-          Alias: S.optional(__S(27, __c3, 3)),
+          Alias: S.optional(__S(1056, __c33, 0)),
         }),
       ).annotate({ identifier: "ObjectLambdaAccessPoint" });
-    case 5:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(308, __c38, 4)
+        /*@__PURE__*/ __S(3585, __c112, 1)
           .pipe(/*@__PURE__*/ T.XmlName("ObjectLambdaAccessPoint"))
           .annotate({
             identifier: "ObjectLambdaAccessPoint",
           }),
       );
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ObjectLambdaAccessPointList: S.optional(__S(309, __c38, 5)),
+          ObjectLambdaAccessPointList: S.optional(__S(3586, __c112, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAccessPointsForObjectLambdaResult",
       });
-    case 7:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9771,11 +10674,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListCallerAccessGrantsRequest",
       });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Permission: S.optional(S.String),
@@ -9785,24 +10684,28 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListCallerAccessGrantsEntry",
       });
-    case 1:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(312, __c39, 0).pipe(/*@__PURE__*/ T.XmlName("AccessGrant")).annotate({
+        /*@__PURE__*/ __S(3617, __c113, 1).pipe(/*@__PURE__*/ T.XmlName("AccessGrant")).annotate({
           identifier: "ListCallerAccessGrantsEntry",
         }),
       );
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          CallerAccessGrantsList: S.optional(__S(313, __c39, 1)),
+          CallerAccessGrantsList: S.optional(__S(3618, __c113, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListCallerAccessGrantsResult",
       });
-    case 3:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9810,7 +10713,7 @@ function __c39(j: number): any {
             T.ContextParam("AccountId"),
             T.HostLabel(),
           ),
-          JobStatuses: S.optional(__S(315, __c39, 3)).pipe(T.HttpQuery("jobStatuses")),
+          JobStatuses: S.optional(__S(3648, __c114, 0)).pipe(T.HttpQuery("jobStatuses")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -9826,7 +10729,7 @@ function __c39(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListJobsRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
@@ -9836,20 +10739,20 @@ function __c39(j: number): any {
           Status: S.optional(S.String),
           CreationTime: S.optional(T.DateFromString),
           TerminationDate: S.optional(T.DateFromString),
-          ProgressSummary: S.optional(__S(145, __c18, 1)),
+          ProgressSummary: S.optional(__S(2113, __c66, 1)),
         }),
       ).annotate({ identifier: "JobListDescriptor" });
-    case 6:
-      return S.Array(__S(317, __c39, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(3650, __c114, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Jobs: S.optional(__S(318, __c39, 6)) }).pipe(
+        S.Struct({ NextToken: S.optional(S.String), Jobs: S.optional(__S(3651, __c114, 3)) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListJobsResult" });
   }
 }
-function __c40(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9878,20 +10781,24 @@ function __c40(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(238, __c29, 6).pipe(/*@__PURE__*/ T.XmlName("AccessPoint")).annotate({
+        /*@__PURE__*/ __S(3042, __c95, 2).pipe(/*@__PURE__*/ T.XmlName("AccessPoint")).annotate({
           identifier: "MultiRegionAccessPointReport",
         }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AccessPoints: S.optional(__S(321, __c40, 1)),
+          AccessPoints: S.optional(__S(3681, __c115, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListMultiRegionAccessPointsResult",
       });
-    case 3:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9920,7 +10827,7 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListRegionalBucketsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String,
@@ -9930,22 +10837,28 @@ function __c40(j: number): any {
           OutpostId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegionalBucket" });
-    case 5:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(324, __c40, 4).pipe(/*@__PURE__*/ T.XmlName("RegionalBucket")).annotate({
-          identifier: "RegionalBucket",
-        }),
+        /*@__PURE__*/ __S(3713, __c116, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("RegionalBucket"))
+          .annotate({
+            identifier: "RegionalBucket",
+          }),
       );
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          RegionalBucketList: S.optional(__S(325, __c40, 5)),
+          RegionalBucketList: S.optional(__S(3714, __c116, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListRegionalBucketsResult",
       });
-    case 7:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -9969,11 +10882,7 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListStorageLensConfigurationsRequest",
       });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
@@ -9984,19 +10893,19 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListStorageLensConfigurationEntry",
       });
-    case 1:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(328, __c41, 0)
+        /*@__PURE__*/ __S(3745, __c117, 1)
           .pipe(/*@__PURE__*/ T.XmlName("StorageLensConfiguration"))
           .annotate({
             identifier: "ListStorageLensConfigurationEntry",
           }),
       );
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          StorageLensConfigurationList: S.optional(__S(329, __c41, 1)).pipe(
+          StorageLensConfigurationList: S.optional(__S(3746, __c117, 2)).pipe(
             T.XmlName("StorageLensConfiguration"),
             T.XmlFlattened(),
           ),
@@ -10004,7 +10913,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListStorageLensConfigurationsResult",
       });
-    case 3:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -10028,25 +10941,25 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListStorageLensGroupsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Name: S.String, StorageLensGroupArn: S.String, HomeRegion: S.String }),
       ).annotate({
         identifier: "ListStorageLensGroupEntry",
       });
-    case 5:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(332, __c41, 4)
+        /*@__PURE__*/ __S(3777, __c118, 1)
           .pipe(/*@__PURE__*/ T.XmlName("StorageLensGroup"))
           .annotate({
             identifier: "ListStorageLensGroupEntry",
           }),
       );
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          StorageLensGroupList: S.optional(__S(333, __c41, 5)).pipe(
+          StorageLensGroupList: S.optional(__S(3778, __c118, 2)).pipe(
             T.XmlName("StorageLensGroup"),
             T.XmlFlattened(),
           ),
@@ -10054,7 +10967,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListStorageLensGroupsResult",
       });
-    case 7:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -10078,15 +10995,15 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(5, __c0, 5)) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(705, __c22, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResult",
       });
-    case 1:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -10111,7 +11028,7 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "PutAccessGrantsInstanceResourcePolicyRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Policy: S.optional(S.String),
@@ -10121,7 +11038,11 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "PutAccessGrantsInstanceResourcePolicyResult",
       });
-    case 3:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -10130,7 +11051,7 @@ function __c42(j: number): any {
             T.HostLabel(),
           ),
           Name: S.String.pipe(T.HttpLabel("Name")),
-          Configuration: __S(25, __c3, 1),
+          Configuration: __S(1030, __c32, 6),
         }).pipe(
           T.all(
             ns,
@@ -10149,11 +11070,15 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "PutAccessPointConfigurationForObjectLambdaRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutAccessPointConfigurationForObjectLambdaResponse",
       });
-    case 5:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(
@@ -10178,626 +11103,12 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "PutAccessPointPolicyRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutAccessPointPolicyResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          Name: S.String.pipe(T.HttpLabel("Name")),
-          Policy: S.String,
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v20180820/accesspointforobjectlambda/{Name}/policy" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutAccessPointPolicyForObjectLambdaRequest",
-      });
   }
 }
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutAccessPointPolicyForObjectLambdaResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          Name: S.String.pipe(T.HttpLabel("Name"), T.ContextParam("AccessPointName")),
-          Scope: __S(16, __c2, 0),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v20180820/accesspoint/{Name}/scope" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({
-              RequiresAccountId: { value: true },
-              UseS3ExpressControlEndpoint: { value: true },
-            }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutAccessPointScopeRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutAccessPointScopeResponse",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Rules: S.optional(__S(204, __c25, 4)) })).annotate({
-        identifier: "LifecycleConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          LifecycleConfiguration: S.optional(__S(347, __c43, 3))
-            .pipe(T.HttpPayload(), T.XmlName("LifecycleConfiguration"))
-            .annotate({ identifier: "LifecycleConfiguration" }),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v20180820/bucket/{Bucket}/lifecycleconfiguration" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketLifecycleConfigurationRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketLifecycleConfigurationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ConfirmRemoveSelfBucketAccess: S.optional(S.Boolean).pipe(
-            T.HttpHeader("x-amz-confirm-remove-self-bucket-access"),
-          ),
-          Policy: S.String,
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v20180820/bucket/{Bucket}/policy" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "PutBucketPolicyRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketPolicyResponse",
-      });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ReplicationConfiguration: __S(224, __c28, 0)
-            .pipe(T.HttpPayload(), T.XmlName("ReplicationConfiguration"))
-            .annotate({ identifier: "ReplicationConfiguration" }),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v20180820/bucket/{Bucket}/replication" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketReplicationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketReplicationResponse",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ TagSet: __S(40, __c5, 0) })).annotate({
-        identifier: "Tagging",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Tagging: __S(354, __c44, 2).pipe(T.HttpPayload(), T.XmlName("Tagging")).annotate({
-            identifier: "Tagging",
-          }),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v20180820/bucket/{Bucket}/tagging" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "PutBucketTaggingRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketTaggingResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          MFADelete: S.optional(S.String).pipe(T.XmlName("MfaDelete")),
-          Status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VersioningConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          MFA: S.optional(S.String).pipe(T.HttpHeader("x-amz-mfa")),
-          VersioningConfiguration: __S(357, __c44, 5)
-            .pipe(T.HttpPayload(), T.XmlName("VersioningConfiguration"))
-            .annotate({ identifier: "VersioningConfiguration" }),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v20180820/bucket/{Bucket}/versioning" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketVersioningRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketVersioningResponse",
-      });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          JobId: S.String.pipe(T.HttpLabel("JobId")),
-          Tags: __S(40, __c5, 0),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v20180820/jobs/{JobId}/tagging" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "PutJobTaggingRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutJobTaggingResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          ClientToken: S.String.pipe(T.IdempotencyToken()),
-          Details: __S(152, __c19, 0),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/v20180820/async-requests/mrap/put-policy" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutMultiRegionAccessPointPolicyRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ RequestTokenARN: S.optional(S.String) }).pipe(ns)).annotate(
-        {
-          identifier: "PutMultiRegionAccessPointPolicyResult",
-        },
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          PublicAccessBlockConfiguration: __S(13, __c1, 5)
-            .pipe(T.HttpPayload(), T.XmlName("PublicAccessBlockConfiguration"))
-            .annotate({ identifier: "PublicAccessBlockConfiguration" }),
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v20180820/configuration/publicAccessBlock" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutPublicAccessBlockRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutPublicAccessBlockResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigId: S.String.pipe(T.HttpLabel("ConfigId")),
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          StorageLensConfiguration: __S(281, __c35, 1),
-          Tags: S.optional(__S(285, __c35, 5)),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v20180820/storagelens/{ConfigId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutStorageLensConfigurationRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutStorageLensConfigurationResponse",
-      });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigId: S.String.pipe(T.HttpLabel("ConfigId")),
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          Tags: __S(285, __c35, 5),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v20180820/storagelens/{ConfigId}/tagging" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutStorageLensConfigurationTaggingRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutStorageLensConfigurationTaggingResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          Mrap: S.String.pipe(T.HttpLabel("Mrap")),
-          RouteUpdates: __S(249, __c31, 1),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PATCH", uri: "/v20180820/mrap/instances/{Mrap+}/routes" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "SubmitMultiRegionAccessPointRoutesRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "SubmitMultiRegionAccessPointRoutesResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn"), T.ContextParam("ResourceArn")),
-          Tags: __S(5, __c0, 5),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/v20180820/tags/{ResourceArn+}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResult",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn"), T.ContextParam("ResourceArn")),
-          TagKeys: __S(374, __c46, 6).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "DELETE", uri: "/v20180820/tags/{ResourceArn+}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UntagResourceResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          AccessGrantsLocationId: S.String.pipe(T.HttpLabel("AccessGrantsLocationId")),
-          IAMRoleArn: S.String,
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({
-              method: "PUT",
-              uri: "/v20180820/accessgrantsinstance/location/{AccessGrantsLocationId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateAccessGrantsLocationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          CreatedAt: S.optional(T.DateFromString),
-          AccessGrantsLocationId: S.optional(S.String),
-          AccessGrantsLocationArn: S.optional(S.String),
-          LocationScope: S.optional(S.String),
-          IAMRoleArn: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateAccessGrantsLocationResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          JobId: S.String.pipe(T.HttpLabel("JobId")),
-          Priority: S.Number.pipe(T.HttpQuery("priority")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/v20180820/jobs/{JobId}/priority" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "UpdateJobPriorityRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ JobId: S.String, Priority: S.Number }).pipe(ns)).annotate({
-        identifier: "UpdateJobPriorityResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          JobId: S.String.pipe(T.HttpLabel("JobId")),
-          RequestedJobStatus: S.String.pipe(T.HttpQuery("requestedJobStatus")),
-          StatusUpdateReason: S.optional(S.String).pipe(T.HttpQuery("statusUpdateReason")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/v20180820/jobs/{JobId}/status" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "UpdateJobStatusRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          JobId: S.optional(S.String),
-          Status: S.optional(S.String),
-          StatusUpdateReason: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "UpdateJobStatusResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String.pipe(T.HttpLabel("Name")),
-          AccountId: S.String.pipe(
-            T.HttpHeader("x-amz-account-id"),
-            T.ContextParam("AccountId"),
-            T.HostLabel(),
-          ),
-          StorageLensGroup: __S(99, __c12, 3),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v20180820/storagelensgroup/{Name}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ RequiresAccountId: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateStorageLensGroupRequest",
-      });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UpdateStorageLensGroupResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

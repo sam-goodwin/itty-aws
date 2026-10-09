@@ -163,8 +163,8 @@ export const createSandbox: API.OperationMethod<
   CreateSandboxError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateSandboxRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SandboxEnvironmentDTO>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateSandboxRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<SandboxEnvironmentDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -178,8 +178,8 @@ export const getSandbox: API.OperationMethod<
   GetSandboxError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetSandboxRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SandboxEnvironmentDTO>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetSandboxRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<SandboxEnvironmentDTO>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -193,8 +193,8 @@ export const listSandbox: API.OperationMethod<
   ListSandboxError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ListSandboxRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PaginatedSandboxEnvironmentDTOList>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListSandboxRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<PaginatedSandboxEnvironmentDTOList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -208,8 +208,8 @@ export const sandboxDestroy: API.OperationMethod<
   SandboxDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<SandboxDestroyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SandboxDestroyResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<SandboxDestroyRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<SandboxDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -223,8 +223,8 @@ export const updateSandboxPartial: API.OperationMethod<
   UpdateSandboxPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateSandboxPartialRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SandboxEnvironmentDTO>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateSandboxPartialRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<SandboxEnvironmentDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -234,16 +234,14 @@ export const updateSandboxPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.String,
           network_access_level: S.optional(S.String),
-          allowed_domains: S.optional(__S(0, __c0, 0)),
+          allowed_domains: S.optional(__S(4, __c1, 0)),
           include_default_domains: S.optional(S.Boolean),
-          repositories: S.optional(__S(0, __c0, 0)),
+          repositories: S.optional(__S(4, __c1, 0)),
           environment_variables: S.optional(S.Unknown),
           private: S.optional(S.Boolean),
           custom_image_id: S.optional(S.NullOr(S.String)),
@@ -255,9 +253,15 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSandboxRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -267,25 +271,25 @@ function __c0(j: number): any {
           last_name: S.String,
           email: S.String,
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2, __c0, 2))),
+          hedgehog_config: S.optional(S.NullOr(__S(5, __c1, 1))),
           role_at_organization: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskUserBasicInfo" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           network_access_level: S.String,
-          allowed_domains: S.optional(__S(0, __c0, 0)),
+          allowed_domains: S.optional(__S(4, __c1, 0)),
           include_default_domains: S.Boolean,
-          repositories: S.optional(__S(0, __c0, 0)),
+          repositories: S.optional(__S(4, __c1, 0)),
           has_environment_variables: S.optional(S.Boolean),
-          environment_variable_keys: S.optional(__S(0, __c0, 0)),
+          environment_variable_keys: S.optional(__S(4, __c1, 0)),
           private: S.Boolean,
           internal: S.Boolean,
-          effective_domains: S.optional(__S(0, __c0, 0)),
-          created_by: S.optional(S.NullOr(__S(3, __c0, 3))),
+          effective_domains: S.optional(__S(4, __c1, 0)),
+          created_by: S.optional(S.NullOr(__S(6, __c1, 2))),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
           custom_image_id: S.optional(S.NullOr(S.String)),
@@ -293,7 +297,11 @@ function __c0(j: number): any {
           custom_image_status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SandboxEnvironmentDTO" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -306,7 +314,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSandboxRequest" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -320,24 +332,24 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSandboxRequest" });
-    case 7:
-      return S.Array(__S(4, __c0, 4));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(7, __c1, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(7, __c0, 7),
+          results: __S(13, __c3, 1),
         }),
       ).annotate({
         identifier: "PaginatedSandboxEnvironmentDTOList",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -350,20 +362,24 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SandboxDestroyRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SandboxDestroyResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           network_access_level: S.optional(S.String),
-          allowed_domains: S.optional(__S(0, __c0, 0)),
+          allowed_domains: S.optional(__S(4, __c1, 0)),
           include_default_domains: S.optional(S.Boolean),
-          repositories: S.optional(__S(0, __c0, 0)),
+          repositories: S.optional(__S(4, __c1, 0)),
           environment_variables: S.optional(S.Unknown),
           private: S.optional(S.Boolean),
           custom_image_id: S.optional(S.NullOr(S.String)),
@@ -379,7 +395,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

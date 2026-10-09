@@ -138,7 +138,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(335, __c41, 7)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(3745, __c117, 1)).annotate({
           identifier: "ValidationExceptionFields",
         }),
       ),
@@ -2321,8 +2321,8 @@ export const associatePermission: API.OperationMethod<
   AssociatePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AssociatePermissionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AssociatePermissionResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<AssociatePermissionRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AssociatePermissionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2356,8 +2356,8 @@ export const batchDeleteDocument: API.OperationMethod<
   BatchDeleteDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BatchDeleteDocumentRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<BatchDeleteDocumentResponse>,
+  input: __S(66, __c2, 2) as any as S.Schema<BatchDeleteDocumentRequest>,
+  output: __S(67, __c2, 3) as any as S.Schema<BatchDeleteDocumentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2399,8 +2399,8 @@ export const batchPutDocument: API.OperationMethod<
   BatchPutDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<BatchPutDocumentRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<BatchPutDocumentResponse>,
+  input: __S(170, __c5, 10) as any as S.Schema<BatchPutDocumentRequest>,
+  output: __S(171, __c5, 11) as any as S.Schema<BatchPutDocumentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2431,8 +2431,8 @@ export const cancelSubscription: API.OperationMethod<
   CancelSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CancelSubscriptionRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<CancelSubscriptionResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<CancelSubscriptionRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<CancelSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2464,8 +2464,8 @@ export const chat: API.OperationMethod<
   ChatError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ChatInput>,
-  output: __S(79, __c9, 7) as any as S.Schema<ChatOutput>,
+  input: __S(453, __c14, 5) as any as S.Schema<ChatInput>,
+  output: __S(460, __c14, 12) as any as S.Schema<ChatOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2500,8 +2500,8 @@ export const chatSync: API.OperationMethod<
   ChatSyncError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ChatSyncInput>,
-  output: __S(86, __c10, 6) as any as S.Schema<ChatSyncOutput>,
+  input: __S(642, __c20, 2) as any as S.Schema<ChatSyncInput>,
+  output: __S(644, __c20, 4) as any as S.Schema<ChatSyncOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2533,8 +2533,8 @@ export const checkDocumentAccess: API.OperationMethod<
   CheckDocumentAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<CheckDocumentAccessRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<CheckDocumentAccessResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<CheckDocumentAccessRequest>,
+  output: __S(713, __c22, 9) as any as S.Schema<CheckDocumentAccessResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2564,8 +2564,8 @@ export const createAnonymousWebExperienceUrl: API.OperationMethod<
   CreateAnonymousWebExperienceUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<CreateAnonymousWebExperienceUrlRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<CreateAnonymousWebExperienceUrlResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<CreateAnonymousWebExperienceUrlRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<CreateAnonymousWebExperienceUrlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2603,8 +2603,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<CreateApplicationResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<CreateApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2637,8 +2637,8 @@ export const createChatResponseConfiguration: API.OperationMethod<
   CreateChatResponseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<CreateChatResponseConfigurationRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<CreateChatResponseConfigurationResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<CreateChatResponseConfigurationRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<CreateChatResponseConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2671,8 +2671,8 @@ export const createDataAccessor: API.OperationMethod<
   CreateDataAccessorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<CreateDataAccessorRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<CreateDataAccessorResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<CreateDataAccessorRequest>,
+  output: __S(1025, __c32, 1) as any as S.Schema<CreateDataAccessorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2707,8 +2707,8 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<CreateDataSourceRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<CreateDataSourceResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<CreateDataSourceRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<CreateDataSourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2745,8 +2745,8 @@ export const createIndex: API.OperationMethod<
   CreateIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<CreateIndexRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<CreateIndexResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<CreateIndexRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<CreateIndexResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2779,8 +2779,8 @@ export const createPlugin: API.OperationMethod<
   CreatePluginError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<CreatePluginRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<CreatePluginResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<CreatePluginRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<CreatePluginResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2813,8 +2813,8 @@ export const createRetriever: API.OperationMethod<
   CreateRetrieverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<CreateRetrieverRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<CreateRetrieverResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<CreateRetrieverRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<CreateRetrieverResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2850,8 +2850,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<CreateSubscriptionRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<CreateSubscriptionResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<CreateSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2883,8 +2883,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<CreateUserRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<CreateUserResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<CreateUserRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<CreateUserResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2917,8 +2917,8 @@ export const createWebExperience: API.OperationMethod<
   CreateWebExperienceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<CreateWebExperienceRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<CreateWebExperienceResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<CreateWebExperienceRequest>,
+  output: __S(1505, __c47, 1) as any as S.Schema<CreateWebExperienceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2950,8 +2950,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2982,8 +2982,8 @@ export const deleteAttachment: API.OperationMethod<
   DeleteAttachmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<DeleteAttachmentRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteAttachmentResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<DeleteAttachmentRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteAttachmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3013,8 +3013,8 @@ export const deleteChatControlsConfiguration: API.OperationMethod<
   DeleteChatControlsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<DeleteChatControlsConfigurationRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<DeleteChatControlsConfigurationResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DeleteChatControlsConfigurationRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<DeleteChatControlsConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3044,8 +3044,8 @@ export const deleteChatResponseConfiguration: API.OperationMethod<
   DeleteChatResponseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<DeleteChatResponseConfigurationRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<DeleteChatResponseConfigurationResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<DeleteChatResponseConfigurationRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<DeleteChatResponseConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3077,8 +3077,8 @@ export const deleteConversation: API.OperationMethod<
   DeleteConversationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<DeleteConversationRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteConversationResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<DeleteConversationRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteConversationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3110,8 +3110,8 @@ export const deleteDataAccessor: API.OperationMethod<
   DeleteDataAccessorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<DeleteDataAccessorRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteDataAccessorResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<DeleteDataAccessorRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteDataAccessorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3142,8 +3142,8 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<DeleteDataSourceRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteDataSourceResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<DeleteDataSourceRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteDataSourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3176,8 +3176,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteGroupRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteGroupResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<DeleteGroupRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3208,8 +3208,8 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<DeleteIndexRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteIndexResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<DeleteIndexRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteIndexResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3240,8 +3240,8 @@ export const deletePlugin: API.OperationMethod<
   DeletePluginError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<DeletePluginRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeletePluginResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<DeletePluginRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeletePluginResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3272,8 +3272,8 @@ export const deleteRetriever: API.OperationMethod<
   DeleteRetrieverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<DeleteRetrieverRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteRetrieverResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<DeleteRetrieverRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteRetrieverResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3304,8 +3304,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<DeleteUserRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteUserResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteUserResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3336,8 +3336,8 @@ export const deleteWebExperience: API.OperationMethod<
   DeleteWebExperienceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<DeleteWebExperienceRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteWebExperienceResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<DeleteWebExperienceRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteWebExperienceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3368,8 +3368,8 @@ export const disassociatePermission: API.OperationMethod<
   DisassociatePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<DisassociatePermissionRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DisassociatePermissionResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DisassociatePermissionRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DisassociatePermissionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3399,8 +3399,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<GetApplicationRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<GetApplicationResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<GetApplicationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3430,8 +3430,8 @@ export const getChatControlsConfiguration: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TopicConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<GetChatControlsConfigurationRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<GetChatControlsConfigurationResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<GetChatControlsConfigurationRequest>,
+  output: __S(2115, __c66, 3) as any as S.Schema<GetChatControlsConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3466,8 +3466,8 @@ export const getChatResponseConfiguration: API.OperationMethod<
   GetChatResponseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<GetChatResponseConfigurationRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<GetChatResponseConfigurationResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<GetChatResponseConfigurationRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<GetChatResponseConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3496,8 +3496,8 @@ export const getDataAccessor: API.OperationMethod<
   GetDataAccessorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<GetDataAccessorRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<GetDataAccessorResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<GetDataAccessorRequest>,
+  output: __S(2209, __c69, 1) as any as S.Schema<GetDataAccessorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3526,8 +3526,8 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetDataSourceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<GetDataSourceResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<GetDataSourceRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<GetDataSourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3556,8 +3556,8 @@ export const getDocumentContent: API.OperationMethod<
   GetDocumentContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<GetDocumentContentRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<GetDocumentContentResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetDocumentContentRequest>,
+  output: __S(2273, __c71, 1) as any as S.Schema<GetDocumentContentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3587,8 +3587,8 @@ export const getGroup: API.OperationMethod<
   GetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<GetGroupRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<GetGroupResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetGroupRequest>,
+  output: __S(2307, __c72, 3) as any as S.Schema<GetGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3618,8 +3618,8 @@ export const getIndex: API.OperationMethod<
   GetIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetIndexRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<GetIndexResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<GetIndexRequest>,
+  output: __S(2339, __c73, 3) as any as S.Schema<GetIndexResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3652,8 +3652,8 @@ export const getMedia: API.OperationMethod<
   GetMediaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<GetMediaRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<GetMediaResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<GetMediaRequest>,
+  output: __S(2401, __c75, 1) as any as S.Schema<GetMediaResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3684,8 +3684,8 @@ export const getPlugin: API.OperationMethod<
   GetPluginError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<GetPluginRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<GetPluginResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<GetPluginRequest>,
+  output: __S(2433, __c76, 1) as any as S.Schema<GetPluginResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3714,8 +3714,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<GetPolicyRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<GetPolicyResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<GetPolicyRequest>,
+  output: __S(2465, __c77, 1) as any as S.Schema<GetPolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3744,8 +3744,8 @@ export const getRetriever: API.OperationMethod<
   GetRetrieverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetRetrieverRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<GetRetrieverResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<GetRetrieverRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<GetRetrieverResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3775,8 +3775,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<GetUserRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<GetUserResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<GetUserResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3806,8 +3806,8 @@ export const getWebExperience: API.OperationMethod<
   GetWebExperienceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetWebExperienceRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<GetWebExperienceResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetWebExperienceRequest>,
+  output: __S(2561, __c80, 1) as any as S.Schema<GetWebExperienceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3838,8 +3838,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Application
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(2627, __c82, 3) as any as S.Schema<ListApplicationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3875,8 +3875,8 @@ export const listAttachments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Attachment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<ListAttachmentsRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<ListAttachmentsResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ListAttachmentsRequest>,
+  output: __S(2659, __c83, 3) as any as S.Schema<ListAttachmentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3913,8 +3913,8 @@ export const listChatResponseConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChatResponseConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<ListChatResponseConfigurationsRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<ListChatResponseConfigurationsResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ListChatResponseConfigurationsRequest>,
+  output: __S(2691, __c84, 3) as any as S.Schema<ListChatResponseConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3951,8 +3951,8 @@ export const listConversations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Conversation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<ListConversationsRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<ListConversationsResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListConversationsRequest>,
+  output: __S(2723, __c85, 3) as any as S.Schema<ListConversationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3989,8 +3989,8 @@ export const listDataAccessors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataAccessor
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListDataAccessorsRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<ListDataAccessorsResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<ListDataAccessorsRequest>,
+  output: __S(2755, __c86, 3) as any as S.Schema<ListDataAccessorsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4026,8 +4026,8 @@ export const listDataSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<ListDataSourcesRequest>,
-  output: __S(251, __c31, 3) as any as S.Schema<ListDataSourcesResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<ListDataSourcesRequest>,
+  output: __S(2787, __c87, 3) as any as S.Schema<ListDataSourcesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4064,8 +4064,8 @@ export const listDataSourceSyncJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSourceSyncJob
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<ListDataSourceSyncJobsRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<ListDataSourceSyncJobsResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<ListDataSourceSyncJobsRequest>,
+  output: __S(2820, __c88, 4) as any as S.Schema<ListDataSourceSyncJobsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4102,8 +4102,8 @@ export const listDocuments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DocumentDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<ListDocumentsRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<ListDocumentsResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<ListDocumentsRequest>,
+  output: __S(2851, __c89, 3) as any as S.Schema<ListDocumentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4140,8 +4140,8 @@ export const listGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<ListGroupsRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<ListGroupsResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<ListGroupsRequest>,
+  output: __S(2883, __c90, 3) as any as S.Schema<ListGroupsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4178,8 +4178,8 @@ export const listIndices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Index
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<ListIndicesRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<ListIndicesResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<ListIndicesRequest>,
+  output: __S(2915, __c91, 3) as any as S.Schema<ListIndicesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4216,8 +4216,8 @@ export const listMessages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Message
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<ListMessagesRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<ListMessagesResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<ListMessagesRequest>,
+  output: __S(2947, __c92, 3) as any as S.Schema<ListMessagesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4254,8 +4254,8 @@ export const listPluginActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<ListPluginActionsRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<ListPluginActionsResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<ListPluginActionsRequest>,
+  output: __S(3010, __c94, 2) as any as S.Schema<ListPluginActionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4291,8 +4291,8 @@ export const listPlugins: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Plugin
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<ListPluginsRequest>,
-  output: __S(280, __c35, 0) as any as S.Schema<ListPluginsResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<ListPluginsRequest>,
+  output: __S(3043, __c95, 3) as any as S.Schema<ListPluginsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4327,8 +4327,8 @@ export const listPluginTypeActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<ListPluginTypeActionsRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<ListPluginTypeActionsResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ListPluginTypeActionsRequest>,
+  output: __S(3010, __c94, 2) as any as S.Schema<ListPluginTypeActionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4362,8 +4362,8 @@ export const listPluginTypeMetadata: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PluginTypeMetadataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<ListPluginTypeMetadataRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<ListPluginTypeMetadataResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<ListPluginTypeMetadataRequest>,
+  output: __S(3107, __c97, 3) as any as S.Schema<ListPluginTypeMetadataResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4398,8 +4398,8 @@ export const listRetrievers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Retriever
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<ListRetrieversRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<ListRetrieversResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<ListRetrieversRequest>,
+  output: __S(3139, __c98, 3) as any as S.Schema<ListRetrieversResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4436,8 +4436,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<ListSubscriptionsRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<ListSubscriptionsResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<ListSubscriptionsRequest>,
+  output: __S(3171, __c99, 3) as any as S.Schema<ListSubscriptionsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4473,8 +4473,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(295, __c36, 7) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(3201, __c100, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4504,8 +4504,8 @@ export const listWebExperiences: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WebExperience
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<ListWebExperiencesRequest>,
-  output: __S(299, __c37, 3) as any as S.Schema<ListWebExperiencesResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<ListWebExperiencesRequest>,
+  output: __S(3235, __c101, 3) as any as S.Schema<ListWebExperiencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4540,8 +4540,8 @@ export const putFeedback: API.OperationMethod<
   PutFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<PutFeedbackRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<PutFeedbackResponse>,
+  input: __S(3265, __c102, 1) as any as S.Schema<PutFeedbackRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<PutFeedbackResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4576,8 +4576,8 @@ export const putGroup: API.OperationMethod<
   PutGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<PutGroupRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<PutGroupResponse>,
+  input: __S(3301, __c103, 5) as any as S.Schema<PutGroupRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<PutGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4610,8 +4610,8 @@ export const searchRelevantContent: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RelevantContent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<SearchRelevantContentRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<SearchRelevantContentResponse>,
+  input: __S(3330, __c104, 2) as any as S.Schema<SearchRelevantContentRequest>,
+  output: __S(3334, __c104, 6) as any as S.Schema<SearchRelevantContentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4649,8 +4649,8 @@ export const startDataSourceSyncJob: API.OperationMethod<
   StartDataSourceSyncJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<StartDataSourceSyncJobRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<StartDataSourceSyncJobResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<StartDataSourceSyncJobRequest>,
+  output: __S(3361, __c105, 1) as any as S.Schema<StartDataSourceSyncJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4682,8 +4682,8 @@ export const stopDataSourceSyncJob: API.OperationMethod<
   StopDataSourceSyncJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<StopDataSourceSyncJobRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<StopDataSourceSyncJobResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<StopDataSourceSyncJobRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<StopDataSourceSyncJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4714,8 +4714,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<TagResourceResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4745,8 +4745,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UntagResourceResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4780,8 +4780,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<UpdateApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4813,8 +4813,8 @@ export const updateChatControlsConfiguration: API.OperationMethod<
   UpdateChatControlsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<UpdateChatControlsConfigurationRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<UpdateChatControlsConfigurationResponse>,
+  input: __S(3522, __c110, 2) as any as S.Schema<UpdateChatControlsConfigurationRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<UpdateChatControlsConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4846,8 +4846,8 @@ export const updateChatResponseConfiguration: API.OperationMethod<
   UpdateChatResponseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<UpdateChatResponseConfigurationRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<UpdateChatResponseConfigurationResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<UpdateChatResponseConfigurationRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<UpdateChatResponseConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4878,8 +4878,8 @@ export const updateDataAccessor: API.OperationMethod<
   UpdateDataAccessorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<UpdateDataAccessorRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateDataAccessorResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<UpdateDataAccessorRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<UpdateDataAccessorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4910,8 +4910,8 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<UpdateDataSourceRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateDataSourceResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<UpdateDataSourceRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<UpdateDataSourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4943,8 +4943,8 @@ export const updateIndex: API.OperationMethod<
   UpdateIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<UpdateIndexRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateIndexResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<UpdateIndexRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<UpdateIndexResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4977,8 +4977,8 @@ export const updatePlugin: API.OperationMethod<
   UpdatePluginError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<UpdatePluginRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdatePluginResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<UpdatePluginRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<UpdatePluginResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5011,8 +5011,8 @@ export const updateRetriever: API.OperationMethod<
   UpdateRetrieverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<UpdateRetrieverRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateRetrieverResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<UpdateRetrieverRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<UpdateRetrieverResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5044,8 +5044,8 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<UpdateSubscriptionRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<UpdateSubscriptionResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<UpdateSubscriptionRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<UpdateSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5077,8 +5077,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<UpdateUserRequest>,
-  output: __S(332, __c41, 4) as any as S.Schema<UpdateUserResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<UpdateUserRequest>,
+  output: __S(3809, __c119, 1) as any as S.Schema<UpdateUserResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5110,8 +5110,8 @@ export const updateWebExperience: API.OperationMethod<
   UpdateWebExperienceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<UpdateWebExperienceRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateWebExperienceResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<UpdateWebExperienceRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<UpdateWebExperienceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5129,24 +5129,22 @@ export const updateWebExperience: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           conditionOperator: S.String,
           conditionKey: S.String,
-          conditionValues: __S(0, __c0, 0),
+          conditionValues: __S(32, __c1, 0),
         }),
       ).annotate({ identifier: "PermissionCondition" });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           statementId: S.String,
-          actions: __S(0, __c0, 0),
-          conditions: S.optional(__S(2, __c0, 2)),
+          actions: __S(32, __c1, 0),
+          conditions: S.optional(__S(1, __c0, 1)),
           principal: S.String,
         }).pipe(
           T.all(
@@ -5161,22 +5159,32 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociatePermissionRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() => S.Struct({ statement: S.optional(S.String) })).annotate({
         identifier: "AssociatePermissionResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ documentId: S.String })).annotate({
         identifier: "DeleteDocument",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           indexId: S.String.pipe(T.HttpLabel("indexId")),
-          documents: __S(6, __c0, 6),
+          documents: __S(65, __c2, 1),
           dataSourceSyncId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5194,55 +5202,40 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchDeleteDocumentRequest",
       });
+    case 3:
+      return S.suspend(() => S.Struct({ failedDocuments: S.optional(__S(97, __c3, 1)) })).annotate({
+        identifier: "BatchDeleteDocumentResponse",
+      });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          error: S.optional(__S(128, __c4, 0)),
+          dataSourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FailedDocument" });
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ errorMessage: S.optional(S.String), errorCode: S.optional(S.String) }),
       ).annotate({ identifier: "ErrorDetail" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          error: S.optional(__S(8, __c1, 0)),
-          dataSourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FailedDocument" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ failedDocuments: S.optional(__S(10, __c1, 2)) })).annotate({
-        identifier: "BatchDeleteDocumentResponse",
-      });
-    case 4:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-        /*@__PURE__*/ S.Struct({ stringListValue: __S(0, __c0, 0) }),
-        /*@__PURE__*/ S.Struct({ longValue: S.Number }),
-        /*@__PURE__*/ S.Struct({
-          dateValue: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
-        }),
-      ]);
-    case 5:
-      return S.suspend(() => S.Struct({ name: S.String, value: __S(12, __c1, 4) })).annotate({
-        identifier: "DocumentAttribute",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ bucket: S.String, key: S.String })).annotate({
-        identifier: "S3",
-      });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
         /*@__PURE__*/ S.Struct({ blob: T.Blob }),
-        /*@__PURE__*/ S.Struct({ s3: __S(15, __c1, 7) }),
+        /*@__PURE__*/ S.Struct({ s3: __S(288, __c9, 0) }),
       ]);
     case 1:
       return S.suspend(() =>
@@ -5262,121 +5255,42 @@ function __c2(j: number): any {
       ).annotate({ identifier: "PrincipalGroup" });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ user: __S(17, __c2, 1) }),
-        /*@__PURE__*/ S.Struct({ group: __S(18, __c2, 2) }),
+        /*@__PURE__*/ S.Struct({ user: __S(161, __c5, 1) }),
+        /*@__PURE__*/ S.Struct({ group: __S(162, __c5, 2) }),
       ]);
     case 4:
-      return S.Array(__S(19, __c2, 3));
+      return S.Array(__S(163, __c5, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ principals: __S(20, __c2, 4), memberRelation: S.optional(S.String) }),
+        S.Struct({ principals: __S(164, __c5, 4), memberRelation: S.optional(S.String) }),
       ).annotate({ identifier: "AccessControl" });
     case 6:
-      return S.Array(__S(21, __c2, 5));
+      return S.Array(__S(165, __c5, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ accessControls: __S(22, __c2, 6), memberRelation: S.optional(S.String) }),
+        S.Struct({ accessControls: __S(166, __c5, 6), memberRelation: S.optional(S.String) }),
       ).annotate({ identifier: "AccessConfiguration" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          operator: S.String,
-          value: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "DocumentAttributeCondition",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          value: S.optional(__S(12, __c1, 4)),
-          attributeValueOperator: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DocumentAttributeTarget" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          condition: S.optional(__S(24, __c3, 0)),
-          target: S.optional(__S(25, __c3, 1)),
-          documentContentOperator: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InlineDocumentEnrichmentConfiguration",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          invocationCondition: S.optional(__S(24, __c3, 0)),
-          lambdaArn: S.optional(S.String),
-          s3BucketName: S.optional(S.String),
-          roleArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HookConfiguration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          inlineConfigurations: S.optional(__S(27, __c3, 3)),
-          preExtractionHookConfiguration: S.optional(__S(28, __c3, 4)),
-          postExtractionHookConfiguration: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "DocumentEnrichmentConfiguration",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ imageExtractionStatus: S.String })).annotate({
-        identifier: "ImageExtractionConfiguration",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ audioExtractionStatus: S.String })).annotate({
-        identifier: "AudioExtractionConfiguration",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ videoExtractionStatus: S.String })).annotate({
-        identifier: "VideoExtractionConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          imageExtractionConfiguration: S.optional(__S(30, __c3, 6)),
-          audioExtractionConfiguration: S.optional(__S(31, __c3, 7)),
-          videoExtractionConfiguration: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "MediaExtractionConfiguration",
-      });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          attributes: S.optional(__S(14, __c1, 6)),
-          content: S.optional(__S(16, __c2, 0)),
+          attributes: S.optional(__S(320, __c10, 0)),
+          content: S.optional(__S(160, __c5, 0)),
           contentType: S.optional(S.String),
           title: S.optional(S.String),
-          accessConfiguration: S.optional(__S(23, __c2, 7)),
-          documentEnrichmentConfiguration: S.optional(__S(29, __c3, 5)),
-          mediaExtractionConfiguration: S.optional(__S(33, __c4, 1)),
+          accessConfiguration: S.optional(__S(167, __c5, 7)),
+          documentEnrichmentConfiguration: S.optional(__S(261, __c8, 5)),
+          mediaExtractionConfiguration: S.optional(__S(265, __c8, 9)),
         }),
       ).annotate({ identifier: "Document" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(168, __c5, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           indexId: S.String.pipe(T.HttpLabel("indexId")),
-          documents: __S(35, __c4, 3),
+          documents: __S(169, __c5, 9),
           roleArn: S.optional(S.String),
           dataSourceSyncId: S.optional(S.String),
         }).pipe(
@@ -5393,11 +5307,125 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "BatchPutDocumentRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ failedDocuments: S.optional(__S(10, __c1, 2)) })).annotate({
+    case 11:
+      return S.suspend(() => S.Struct({ failedDocuments: S.optional(__S(97, __c3, 1)) })).annotate({
         identifier: "BatchPutDocumentResponse",
       });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+        /*@__PURE__*/ S.Struct({ stringListValue: __S(32, __c1, 0) }),
+        /*@__PURE__*/ S.Struct({ longValue: S.Number }),
+        /*@__PURE__*/ S.Struct({
+          dateValue: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+        }),
+      ]);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, value: __S(192, __c6, 0) })).annotate({
+        identifier: "DocumentAttribute",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          operator: S.String,
+          value: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "DocumentAttributeCondition",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: S.optional(__S(192, __c6, 0)),
+          attributeValueOperator: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DocumentAttributeTarget" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          condition: S.optional(__S(256, __c8, 0)),
+          target: S.optional(__S(257, __c8, 1)),
+          documentContentOperator: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InlineDocumentEnrichmentConfiguration",
+      });
+    case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          invocationCondition: S.optional(__S(256, __c8, 0)),
+          lambdaArn: S.optional(S.String),
+          s3BucketName: S.optional(S.String),
+          roleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HookConfiguration" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          inlineConfigurations: S.optional(__S(259, __c8, 3)),
+          preExtractionHookConfiguration: S.optional(__S(260, __c8, 4)),
+          postExtractionHookConfiguration: S.optional(__S(260, __c8, 4)),
+        }),
+      ).annotate({
+        identifier: "DocumentEnrichmentConfiguration",
+      });
     case 6:
+      return S.suspend(() => S.Struct({ imageExtractionStatus: S.String })).annotate({
+        identifier: "ImageExtractionConfiguration",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ audioExtractionStatus: S.String })).annotate({
+        identifier: "AudioExtractionConfiguration",
+      });
+    case 8:
+      return S.suspend(() => S.Struct({ videoExtractionStatus: S.String })).annotate({
+        identifier: "VideoExtractionConfiguration",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          imageExtractionConfiguration: S.optional(__S(262, __c8, 6)),
+          audioExtractionConfiguration: S.optional(__S(263, __c8, 7)),
+          videoExtractionConfiguration: S.optional(__S(264, __c8, 8)),
+        }),
+      ).annotate({
+        identifier: "MediaExtractionConfiguration",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ bucket: S.String, key: S.String })).annotate({
+        identifier: "S3",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(224, __c7, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -5418,142 +5446,73 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CancelSubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ type: S.optional(S.String) })).annotate({
         identifier: "SubscriptionDetails",
       });
   }
 }
-function __c5(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionArn: S.optional(S.String),
-          currentSubscription: S.optional(__S(39, __c4, 7)),
-          nextSubscription: S.optional(__S(39, __c4, 7)),
+          currentSubscription: S.optional(__S(384, __c12, 0)),
+          nextSubscription: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({
         identifier: "CancelSubscriptionResponse",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ pluginId: S.String })).annotate({
-        identifier: "PluginConfiguration",
-      });
-    case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ pluginConfiguration: __S(41, __c5, 1) })]);
-    case 3:
-      return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<AttributeFilter> => __S(44, __c5, 4)).annotate({
-          identifier: "AttributeFilter",
-        }),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          andAllFilters: S.optional(
-            S.suspend(() => __S(43, __c5, 3)).annotate({ identifier: "AttributeFilters" }),
-          ),
-          orAllFilters: S.optional(
-            S.suspend(() => __S(43, __c5, 3)).annotate({ identifier: "AttributeFilters" }),
-          ),
-          notFilter: S.optional(
-            S.suspend((): S.Schema<AttributeFilter> => __S(44, __c5, 4)).annotate({
-              identifier: "AttributeFilter",
-            }),
-          ),
-          equalsTo: S.optional(__S(13, __c1, 5)),
-          containsAll: S.optional(__S(13, __c1, 5)),
-          containsAny: S.optional(__S(13, __c1, 5)),
-          greaterThan: S.optional(__S(13, __c1, 5)),
-          greaterThanOrEquals: S.optional(__S(13, __c1, 5)),
-          lessThan: S.optional(__S(13, __c1, 5)),
-          lessThanOrEquals: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "AttributeFilter" });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           chatMode: S.optional(S.String),
-          chatModeConfiguration: S.optional(__S(42, __c5, 2)),
-          attributeFilter: S.optional(__S(44, __c5, 4)),
+          chatModeConfiguration: S.optional(__S(481, __c15, 1)),
+          attributeFilter: S.optional(__S(513, __c16, 1)),
         }),
       ).annotate({ identifier: "ConfigurationEvent" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ userMessage: S.String })).annotate({
         identifier: "TextInputEvent",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ conversationId: S.String, attachmentId: S.String }),
-      ).annotate({ identifier: "ConversationSource" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ conversation: __S(47, __c5, 7) })]);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(T.Blob),
-          name: S.optional(S.String),
-          copyFrom: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "AttachmentInput" });
     case 2:
-      return S.suspend(() => S.Struct({ attachment: S.optional(__S(49, __c6, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ attachment: S.optional(__S(482, __c15, 2)) })).annotate({
         identifier: "AttachmentInputEvent",
       });
     case 3:
-      return S.suspend(() => S.Struct({ value: S.Any })).annotate({
-        identifier: "ActionExecutionPayloadField",
-      });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(51, __c6, 3).pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pluginId: S.String,
-          payload: __S(52, __c6, 4),
-          payloadFieldNameSeparator: S.String,
-        }),
-      ).annotate({ identifier: "ActionExecutionEvent" });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "EndOfInputEvent",
-      });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ responseMap: __S(55, __c6, 7) })).annotate({
+      return S.suspend(() => S.Struct({ responseMap: __S(483, __c15, 3) })).annotate({
         identifier: "AuthChallengeResponseEvent",
       });
-    case 1:
+    case 4:
       return T.InputEventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ configurationEvent: __S(45, __c5, 5) }),
-          /*@__PURE__*/ S.Struct({ textEvent: __S(46, __c5, 6) }),
-          /*@__PURE__*/ S.Struct({ attachmentEvent: __S(50, __c6, 2) }),
-          /*@__PURE__*/ S.Struct({ actionExecutionEvent: __S(53, __c6, 5) }),
-          /*@__PURE__*/ S.Struct({ endOfInputEvent: __S(54, __c6, 6) }),
-          /*@__PURE__*/ S.Struct({ authChallengeResponseEvent: __S(56, __c7, 0) }),
+          /*@__PURE__*/ S.Struct({ configurationEvent: __S(448, __c14, 0) }),
+          /*@__PURE__*/ S.Struct({ textEvent: __S(449, __c14, 1) }),
+          /*@__PURE__*/ S.Struct({ attachmentEvent: __S(450, __c14, 2) }),
+          /*@__PURE__*/ S.Struct({ actionExecutionEvent: __S(578, __c18, 2) }),
+          /*@__PURE__*/ S.Struct({ endOfInputEvent: __S(608, __c19, 0) }),
+          /*@__PURE__*/ S.Struct({ authChallengeResponseEvent: __S(451, __c14, 3) }),
         ]),
       );
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           userId: S.optional(S.String).pipe(T.HttpQuery("userId")),
-          userGroups: S.optional(__S(0, __c0, 0)).pipe(T.HttpQuery("userGroups")),
+          userGroups: S.optional(__S(32, __c1, 0)).pipe(T.HttpQuery("userGroups")),
           conversationId: S.optional(S.String).pipe(T.HttpQuery("conversationId")),
           parentMessageId: S.optional(S.String).pipe(T.HttpQuery("parentMessageId")),
           clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-          inputStream: S.optional(__S(57, __c7, 1)).pipe(T.HttpPayload()),
+          inputStream: S.optional(__S(452, __c14, 4)).pipe(T.HttpPayload()),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/applications/{applicationId}/conversations" }),
@@ -5565,7 +5524,7 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ChatInput" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           systemMessageType: S.optional(S.String),
@@ -5575,15 +5534,145 @@ function __c7(j: number): any {
           systemMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextOutputEvent" });
-    case 4:
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          conversationId: S.optional(S.String),
+          userMessageId: S.optional(S.String),
+          systemMessageId: S.optional(S.String),
+          sourceAttributions: S.optional(__S(587, __c18, 11)),
+          finalTextMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetadataEvent" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          conversationId: S.optional(S.String),
+          userMessageId: S.optional(S.String),
+          systemMessageId: S.optional(S.String),
+          pluginId: S.optional(S.String),
+          pluginType: S.optional(S.String),
+          payload: S.optional(__S(591, __c18, 15)),
+          payloadFieldNameSeparator: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActionReviewEvent" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          conversationId: S.optional(S.String),
+          userMessageId: S.optional(S.String),
+          systemMessageId: S.optional(S.String),
+          attachment: S.optional(__S(592, __c18, 16)),
+        }),
+      ).annotate({ identifier: "FailedAttachmentEvent" });
+    case 10:
+      return S.suspend(() => S.Struct({ authorizationUrl: S.String })).annotate({
+        identifier: "AuthChallengeRequestEvent",
+      });
+    case 11:
+      return T.EventStream(
+        /*@__PURE__*/ S.Union([
+          /*@__PURE__*/ S.Struct({ textEvent: __S(454, __c14, 6) }),
+          /*@__PURE__*/ S.Struct({ metadataEvent: __S(455, __c14, 7) }),
+          /*@__PURE__*/ S.Struct({ actionReviewEvent: __S(456, __c14, 8) }),
+          /*@__PURE__*/ S.Struct({ failedAttachmentEvent: __S(457, __c14, 9) }),
+          /*@__PURE__*/ S.Struct({ authChallengeRequestEvent: __S(458, __c14, 10) }),
+        ]),
+      );
+    case 12:
+      return S.suspend(() =>
+        S.Struct({ outputStream: S.optional(__S(459, __c14, 11)).pipe(T.HttpPayload()) }),
+      ).annotate({ identifier: "ChatOutput" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ pluginId: S.String })).annotate({
+        identifier: "PluginConfiguration",
+      });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ pluginConfiguration: __S(480, __c15, 0) })]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(T.Blob),
+          name: S.optional(S.String),
+          copyFrom: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "AttachmentInput" });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(
+        /*@__PURE__*/ S.suspend((): S.Schema<AttributeFilter> => __S(513, __c16, 1)).annotate({
+          identifier: "AttributeFilter",
+        }),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          andAllFilters: S.optional(
+            S.suspend(() => __S(512, __c16, 0)).annotate({ identifier: "AttributeFilters" }),
+          ),
+          orAllFilters: S.optional(
+            S.suspend(() => __S(512, __c16, 0)).annotate({ identifier: "AttributeFilters" }),
+          ),
+          notFilter: S.optional(
+            S.suspend((): S.Schema<AttributeFilter> => __S(513, __c16, 1)).annotate({
+              identifier: "AttributeFilter",
+            }),
+          ),
+          equalsTo: S.optional(__S(224, __c7, 0)),
+          containsAll: S.optional(__S(224, __c7, 0)),
+          containsAny: S.optional(__S(224, __c7, 0)),
+          greaterThan: S.optional(__S(224, __c7, 0)),
+          greaterThanOrEquals: S.optional(__S(224, __c7, 0)),
+          lessThan: S.optional(__S(224, __c7, 0)),
+          lessThanOrEquals: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({ identifier: "AttributeFilter" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ conversationId: S.String, attachmentId: S.String }),
+      ).annotate({ identifier: "ConversationSource" });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ conversation: __S(544, __c17, 0) })]);
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ value: S.Any })).annotate({
+        identifier: "ActionExecutionPayloadField",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(576, __c18, 0).pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pluginId: S.String,
+          payload: __S(577, __c18, 1),
+          payloadFieldNameSeparator: S.String,
+        }),
+      ).annotate({ identifier: "ActionExecutionEvent" });
+    case 3:
       return S.suspend(() => S.Struct({ text: S.optional(S.String) })).annotate({
         identifier: "SnippetExcerpt",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({ mediaId: S.optional(S.String), mediaMimeType: S.optional(S.String) }),
       ).annotate({ identifier: "ImageSourceDetails" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           mediaId: S.optional(S.String),
@@ -5593,7 +5682,7 @@ function __c7(j: number): any {
           audioExtractionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AudioSourceDetails" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           mediaId: S.optional(S.String),
@@ -5603,30 +5692,26 @@ function __c7(j: number): any {
           videoExtractionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoSourceDetails" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ imageSourceDetails: __S(61, __c7, 5) }),
-        /*@__PURE__*/ S.Struct({ audioSourceDetails: __S(62, __c7, 6) }),
-        /*@__PURE__*/ S.Struct({ videoSourceDetails: __S(63, __c7, 7) }),
+        /*@__PURE__*/ S.Struct({ imageSourceDetails: __S(580, __c18, 4) }),
+        /*@__PURE__*/ S.Struct({ audioSourceDetails: __S(581, __c18, 5) }),
+        /*@__PURE__*/ S.Struct({ videoSourceDetails: __S(582, __c18, 6) }),
       ]);
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           beginOffset: S.optional(S.Number),
           endOffset: S.optional(S.Number),
-          snippetExcerpt: S.optional(__S(60, __c7, 4)),
+          snippetExcerpt: S.optional(__S(579, __c18, 3)),
           mediaId: S.optional(S.String),
           mediaMimeType: S.optional(S.String),
-          sourceDetails: S.optional(__S(64, __c8, 0)),
+          sourceDetails: S.optional(__S(583, __c18, 7)),
         }),
       ).annotate({ identifier: "TextSegment" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(584, __c18, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -5634,37 +5719,23 @@ function __c8(j: number): any {
           url: S.optional(S.String),
           citationNumber: S.optional(S.Number),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          textMessageSegments: S.optional(__S(66, __c8, 2)),
+          textMessageSegments: S.optional(__S(585, __c18, 9)),
           documentId: S.optional(S.String),
           indexId: S.optional(S.String),
           datasourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceAttribution" });
-    case 4:
-      return S.Array(__S(67, __c8, 3)).pipe(/*@__PURE__*/ T.Sparse());
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          conversationId: S.optional(S.String),
-          userMessageId: S.optional(S.String),
-          systemMessageId: S.optional(S.String),
-          sourceAttributions: S.optional(__S(68, __c8, 4)),
-          finalTextMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetadataEvent" });
-    case 6:
+    case 11:
+      return S.Array(__S(586, __c18, 10)).pipe(/*@__PURE__*/ T.Sparse());
+    case 12:
       return S.suspend(() =>
         S.Struct({ value: S.optional(S.Any), displayValue: S.optional(S.Any) }),
       ).annotate({
         identifier: "ActionReviewPayloadFieldAllowedValue",
       });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
+      return S.Array(__S(588, __c18, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -5672,71 +5743,40 @@ function __c9(j: number): any {
           displayDescription: S.optional(S.String),
           type: S.optional(S.String),
           value: S.optional(S.Any),
-          allowedValues: S.optional(__S(71, __c8, 7)),
+          allowedValues: S.optional(__S(589, __c18, 13)),
           allowedFormat: S.optional(S.String),
           arrayItemJsonSchema: S.optional(S.Any),
           required: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ActionReviewPayloadField" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(72, __c9, 0).pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          conversationId: S.optional(S.String),
-          userMessageId: S.optional(S.String),
-          systemMessageId: S.optional(S.String),
-          pluginId: S.optional(S.String),
-          pluginType: S.optional(S.String),
-          payload: S.optional(__S(73, __c9, 1)),
-          payloadFieldNameSeparator: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActionReviewEvent" });
-    case 3:
+    case 15:
+      return S.Record(S.String, /*@__PURE__*/ __S(590, __c18, 14).pipe(S.optional));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           status: S.optional(S.String),
-          error: S.optional(__S(8, __c1, 0)),
+          error: S.optional(__S(128, __c4, 0)),
           attachmentId: S.optional(S.String),
           conversationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttachmentOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          conversationId: S.optional(S.String),
-          userMessageId: S.optional(S.String),
-          systemMessageId: S.optional(S.String),
-          attachment: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({ identifier: "FailedAttachmentEvent" });
-    case 5:
-      return S.suspend(() => S.Struct({ authorizationUrl: S.String })).annotate({
-        identifier: "AuthChallengeRequestEvent",
-      });
-    case 6:
-      return T.EventStream(
-        /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ textEvent: __S(59, __c7, 3) }),
-          /*@__PURE__*/ S.Struct({ metadataEvent: __S(69, __c8, 5) }),
-          /*@__PURE__*/ S.Struct({ actionReviewEvent: __S(74, __c9, 2) }),
-          /*@__PURE__*/ S.Struct({ failedAttachmentEvent: __S(76, __c9, 4) }),
-          /*@__PURE__*/ S.Struct({ authChallengeRequestEvent: __S(77, __c9, 5) }),
-        ]),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ outputStream: S.optional(__S(78, __c9, 6)).pipe(T.HttpPayload()) }),
-      ).annotate({ identifier: "ChatOutput" });
   }
 }
-function __c10(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(49, __c6, 1));
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "EndOfInputEvent",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(482, __c15, 2));
     case 1:
-      return S.suspend(() => S.Struct({ responseMap: __S(55, __c6, 7) })).annotate({
+      return S.suspend(() => S.Struct({ responseMap: __S(483, __c15, 3) })).annotate({
         identifier: "AuthChallengeResponse",
       });
     case 2:
@@ -5744,16 +5784,16 @@ function __c10(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           userId: S.optional(S.String).pipe(T.HttpQuery("userId")),
-          userGroups: S.optional(__S(0, __c0, 0)).pipe(T.HttpQuery("userGroups")),
+          userGroups: S.optional(__S(32, __c1, 0)).pipe(T.HttpQuery("userGroups")),
           userMessage: S.optional(S.String),
-          attachments: S.optional(__S(80, __c10, 0)),
-          actionExecution: S.optional(__S(53, __c6, 5)),
-          authChallengeResponse: S.optional(__S(81, __c10, 1)),
+          attachments: S.optional(__S(640, __c20, 0)),
+          actionExecution: S.optional(__S(578, __c18, 2)),
+          authChallengeResponse: S.optional(__S(641, __c20, 1)),
           conversationId: S.optional(S.String),
           parentMessageId: S.optional(S.String),
-          attributeFilter: S.optional(__S(44, __c5, 4)),
+          attributeFilter: S.optional(__S(513, __c16, 1)),
           chatMode: S.optional(S.String),
-          chatModeConfiguration: S.optional(__S(42, __c5, 2)),
+          chatModeConfiguration: S.optional(__S(481, __c15, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -5767,34 +5807,42 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ChatSyncInput" });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pluginId: S.optional(S.String),
-          pluginType: S.optional(S.String),
-          payload: S.optional(__S(73, __c9, 1)),
-          payloadFieldNameSeparator: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActionReview" });
-    case 4:
       return S.suspend(() => S.Struct({ authorizationUrl: S.String })).annotate({
         identifier: "AuthChallengeRequest",
       });
-    case 5:
-      return S.Array(__S(75, __c9, 3));
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           conversationId: S.optional(S.String),
           systemMessage: S.optional(S.String),
           systemMessageId: S.optional(S.String),
           userMessageId: S.optional(S.String),
-          actionReview: S.optional(__S(83, __c10, 3)),
-          authChallengeRequest: S.optional(__S(84, __c10, 4)),
-          sourceAttributions: S.optional(__S(68, __c8, 4)),
-          failedAttachments: S.optional(__S(85, __c10, 5)),
+          actionReview: S.optional(__S(672, __c21, 0)),
+          authChallengeRequest: S.optional(__S(643, __c20, 3)),
+          sourceAttributions: S.optional(__S(587, __c18, 11)),
+          failedAttachments: S.optional(__S(673, __c21, 1)),
         }),
       ).annotate({ identifier: "ChatSyncOutput" });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pluginId: S.optional(S.String),
+          pluginType: S.optional(S.String),
+          payload: S.optional(__S(591, __c18, 15)),
+          payloadFieldNameSeparator: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActionReview" });
+    case 1:
+      return S.Array(__S(592, __c18, 16));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -5818,62 +5866,58 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "CheckDocumentAccessRequest",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), type: S.optional(S.String) }),
       ).annotate({ identifier: "AssociatedGroup" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
     case 2:
+      return S.Array(__S(705, __c22, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({ id: S.optional(S.String), type: S.optional(S.String) }),
       ).annotate({ identifier: "AssociatedUser" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
     case 4:
+      return S.Array(__S(707, __c22, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           memberRelation: S.optional(S.String),
-          users: S.optional(__S(91, __c11, 3)),
-          groups: S.optional(__S(89, __c11, 1)),
+          users: S.optional(__S(708, __c22, 4)),
+          groups: S.optional(__S(706, __c22, 2)),
         }),
       ).annotate({ identifier: "DocumentAclCondition" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          memberRelation: S.optional(S.String),
-          conditions: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({ identifier: "DocumentAclMembership" });
+      return S.Array(__S(709, __c22, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allowlist: S.optional(__S(94, __c11, 6)),
-          denyList: S.optional(__S(94, __c11, 6)),
+          memberRelation: S.optional(S.String),
+          conditions: S.optional(__S(710, __c22, 6)),
         }),
-      ).annotate({ identifier: "DocumentAcl" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+      ).annotate({ identifier: "DocumentAclMembership" });
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          userGroups: S.optional(__S(89, __c11, 1)),
-          userAliases: S.optional(__S(91, __c11, 3)),
+          allowlist: S.optional(__S(711, __c22, 7)),
+          denyList: S.optional(__S(711, __c22, 7)),
+        }),
+      ).annotate({ identifier: "DocumentAcl" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          userGroups: S.optional(__S(706, __c22, 2)),
+          userAliases: S.optional(__S(708, __c22, 4)),
           hasAccess: S.optional(S.Boolean),
-          documentAcl: S.optional(__S(95, __c11, 7)),
+          documentAcl: S.optional(__S(712, __c22, 8)),
         }),
       ).annotate({
         identifier: "CheckDocumentAccessResponse",
       });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -5895,41 +5939,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateAnonymousWebExperienceUrlRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ anonymousUrl: S.optional(S.String) })).annotate({
         identifier: "CreateAnonymousWebExperienceUrlResponse",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ kmsKeyId: S.optional(SensitiveString) })).annotate({
-        identifier: "EncryptionConfiguration",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ attachmentsControlMode: S.String })).annotate({
-        identifier: "AttachmentsConfiguration",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ qAppsControlMode: S.String })).annotate({
-        identifier: "QAppsConfiguration",
-      });
   }
 }
-function __c13(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ personalizationControlMode: S.String })).annotate({
-        identifier: "PersonalizationConfiguration",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ clientNamespace: S.String })).annotate({
-        identifier: "QuickSightConfiguration",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
@@ -5937,52 +5955,83 @@ function __c13(j: number): any {
           identityType: S.optional(S.String),
           iamIdentityProviderArn: S.optional(S.String),
           identityCenterInstanceArn: S.optional(S.String),
-          clientIdsForOIDC: S.optional(__S(0, __c0, 0)),
+          clientIdsForOIDC: S.optional(__S(32, __c1, 0)),
           description: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(99, __c12, 3)),
-          tags: S.optional(__S(101, __c12, 5)),
+          encryptionConfiguration: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(801, __c25, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          attachmentsConfiguration: S.optional(__S(102, __c12, 6)),
-          qAppsConfiguration: S.optional(__S(103, __c12, 7)),
-          personalizationConfiguration: S.optional(__S(104, __c13, 0)),
-          quickSightConfiguration: S.optional(__S(105, __c13, 1)),
+          attachmentsConfiguration: S.optional(__S(928, __c29, 0)),
+          qAppsConfiguration: S.optional(__S(896, __c28, 0)),
+          personalizationConfiguration: S.optional(__S(897, __c28, 1)),
+          quickSightConfiguration: S.optional(__S(864, __c27, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateApplicationRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ applicationId: S.optional(S.String), applicationArn: S.optional(S.String) }),
       ).annotate({
         identifier: "CreateApplicationResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          responseLength: S.optional(S.String),
-          targetAudience: S.optional(S.String),
-          perspective: S.optional(S.String),
-          outputStyle: S.optional(S.String),
-          identity: S.optional(S.String),
-          tone: S.optional(S.String),
-          customInstructions: S.optional(S.String),
-          examples: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InstructionCollection" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ instructionCollection: S.optional(__S(108, __c13, 4)) }),
-      ).annotate({ identifier: "ResponseConfiguration" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(109, __c13, 5).pipe(S.optional));
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(800, __c25, 0));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ kmsKeyId: S.optional(SensitiveString) })).annotate({
+        identifier: "EncryptionConfiguration",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ clientNamespace: S.String })).annotate({
+        identifier: "QuickSightConfiguration",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ qAppsControlMode: S.String })).annotate({
+        identifier: "QAppsConfiguration",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ personalizationControlMode: S.String })).annotate({
+        identifier: "PersonalizationConfiguration",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ attachmentsControlMode: S.String })).annotate({
+        identifier: "AttachmentsConfiguration",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           displayName: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          responseConfigurations: __S(110, __c13, 6),
-          tags: S.optional(__S(101, __c12, 5)),
+          responseConfigurations: __S(994, __c31, 2),
+          tags: S.optional(__S(801, __c25, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -5999,56 +6048,49 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateChatResponseConfigurationRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ chatResponseConfigurationId: S.String, chatResponseConfigurationArn: S.String }),
       ).annotate({
         identifier: "CreateChatResponseConfigurationResponse",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ documentAttributeFilter: __S(44, __c5, 4) })).annotate({
-        identifier: "ActionFilterConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ action: S.String, filterConfiguration: S.optional(__S(113, __c14, 1)) }),
-      ).annotate({ identifier: "ActionConfiguration" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ idcTrustedTokenIssuerArn: S.String })).annotate({
-        identifier: "DataAccessorIdcTrustedTokenIssuerConfiguration",
-      });
-    case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          idcTrustedTokenIssuerConfiguration: __S(116, __c14, 4),
-        }),
-      ]);
-    case 6:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          authenticationType: S.String,
-          authenticationConfiguration: S.optional(__S(117, __c14, 5)),
-          externalIds: S.optional(__S(0, __c0, 0)),
+          responseLength: S.optional(S.String),
+          targetAudience: S.optional(S.String),
+          perspective: S.optional(S.String),
+          outputStyle: S.optional(S.String),
+          identity: S.optional(S.String),
+          tone: S.optional(S.String),
+          customInstructions: S.optional(S.String),
+          examples: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "DataAccessorAuthenticationDetail",
-      });
-    case 7:
+      ).annotate({ identifier: "InstructionCollection" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ instructionCollection: S.optional(__S(992, __c31, 0)) }),
+      ).annotate({ identifier: "ResponseConfiguration" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(993, __c31, 1).pipe(S.optional));
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           principal: S.String,
-          actionConfigurations: __S(115, __c14, 3),
+          actionConfigurations: __S(1090, __c34, 2),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           displayName: SensitiveString,
-          authenticationDetail: S.optional(__S(118, __c14, 6)),
-          tags: S.optional(__S(101, __c12, 5)),
+          authenticationDetail: S.optional(__S(1058, __c33, 2)),
+          tags: S.optional(__S(801, __c25, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/applications/{applicationId}/dataaccessors" }),
@@ -6062,11 +6104,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreateDataAccessorRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dataAccessorId: S.String,
@@ -6076,27 +6114,63 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "CreateDataAccessorResponse",
       });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ idcTrustedTokenIssuerArn: S.String })).annotate({
+        identifier: "DataAccessorIdcTrustedTokenIssuerConfiguration",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          idcTrustedTokenIssuerConfiguration: __S(1056, __c33, 0),
+        }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          authenticationType: S.String,
+          authenticationConfiguration: S.optional(__S(1057, __c33, 1)),
+          externalIds: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "DataAccessorAuthenticationDetail",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ documentAttributeFilter: __S(513, __c16, 1) })).annotate({
+        identifier: "ActionFilterConfiguration",
+      });
     case 1:
       return S.suspend(() =>
-        S.Struct({ subnetIds: __S(0, __c0, 0), securityGroupIds: __S(0, __c0, 0) }),
-      ).annotate({
-        identifier: "DataSourceVpcConfiguration",
-      });
+        S.Struct({ action: S.String, filterConfiguration: S.optional(__S(1088, __c34, 0)) }),
+      ).annotate({ identifier: "ActionConfiguration" });
     case 2:
+      return S.Array(__S(1089, __c34, 1));
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           indexId: S.String.pipe(T.HttpLabel("indexId")),
           displayName: S.String,
           configuration: S.Any,
-          vpcConfiguration: S.optional(__S(121, __c15, 1)),
+          vpcConfiguration: S.optional(__S(1152, __c36, 0)),
           description: S.optional(S.String),
-          tags: S.optional(__S(101, __c12, 5)),
+          tags: S.optional(__S(801, __c25, 1)),
           syncSchedule: S.optional(S.String),
           roleArn: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          documentEnrichmentConfiguration: S.optional(__S(29, __c3, 5)),
-          mediaExtractionConfiguration: S.optional(__S(33, __c4, 1)),
+          documentEnrichmentConfiguration: S.optional(__S(261, __c8, 5)),
+          mediaExtractionConfiguration: S.optional(__S(265, __c8, 9)),
         }).pipe(
           T.all(
             T.Http({
@@ -6111,23 +6185,33 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateDataSourceRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ dataSourceId: S.optional(S.String), dataSourceArn: S.optional(S.String) }),
       ).annotate({ identifier: "CreateDataSourceResponse" });
-    case 4:
-      return S.suspend(() => S.Struct({ units: S.optional(S.Number) })).annotate({
-        identifier: "IndexCapacityConfiguration",
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ subnetIds: __S(32, __c1, 0), securityGroupIds: __S(32, __c1, 0) }),
+      ).annotate({
+        identifier: "DataSourceVpcConfiguration",
       });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           displayName: S.String,
           description: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(101, __c12, 5)),
-          capacityConfiguration: S.optional(__S(124, __c15, 4)),
+          tags: S.optional(__S(801, __c25, 1)),
+          capacityConfiguration: S.optional(__S(1216, __c38, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6140,67 +6224,32 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateIndexRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ indexId: S.optional(S.String), indexArn: S.optional(S.String) }),
       ).annotate({ identifier: "CreateIndexResponse" });
-    case 7:
-      return S.suspend(() => S.Struct({ secretArn: S.String, roleArn: S.String })).annotate({
-        identifier: "BasicAuthConfiguration",
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ units: S.optional(S.Number) })).annotate({
+        identifier: "IndexCapacityConfiguration",
       });
   }
 }
-function __c16(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          secretArn: S.String,
-          roleArn: S.String,
-          authorizationUrl: S.optional(S.String),
-          tokenUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OAuth2ClientCredentialConfiguration",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ idcApplicationArn: S.String, roleArn: S.String })).annotate(
-        { identifier: "IdcAuthConfiguration" },
-      );
-    case 2:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ basicAuthConfiguration: __S(127, __c15, 7) }),
-        /*@__PURE__*/ S.Struct({
-          oAuth2ClientCredentialConfiguration: __S(128, __c16, 0),
-        }),
-        /*@__PURE__*/ S.Struct({ noAuthConfiguration: __S(54, __c6, 6) }),
-        /*@__PURE__*/ S.Struct({ idcAuthConfiguration: __S(129, __c16, 1) }),
-      ]);
-    case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ payload: SensitiveString }),
-        /*@__PURE__*/ S.Struct({ s3: __S(15, __c1, 7) }),
-      ]);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-          apiSchemaType: S.String,
-          apiSchema: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({
-        identifier: "CustomPluginConfiguration",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           displayName: S.String,
           type: S.String,
-          authConfiguration: __S(130, __c16, 2),
+          authConfiguration: __S(1283, __c40, 3),
           serverUrl: S.optional(S.String),
-          customPluginConfiguration: S.optional(__S(132, __c16, 4)),
-          tags: S.optional(__S(101, __c12, 5)),
+          customPluginConfiguration: S.optional(__S(1285, __c40, 5)),
+          tags: S.optional(__S(801, __c25, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6213,7 +6262,7 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreatePluginRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pluginId: S.optional(S.String),
@@ -6221,85 +6270,67 @@ function __c16(j: number): any {
           buildStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreatePluginResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          boostingLevel: S.String,
-          boostingType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NumberAttributeBoostingConfiguration",
-      });
   }
 }
-function __c17(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.suspend(() => S.Struct({ secretArn: S.String, roleArn: S.String })).annotate({
+        identifier: "BasicAuthConfiguration",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          boostingLevel: S.String,
-          attributeValueBoosting: S.optional(__S(136, __c17, 0)),
+          secretArn: S.String,
+          roleArn: S.String,
+          authorizationUrl: S.optional(S.String),
+          tokenUrl: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "StringAttributeBoostingConfiguration",
+        identifier: "OAuth2ClientCredentialConfiguration",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          boostingLevel: S.String,
-          boostingDurationInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DateAttributeBoostingConfiguration",
-      });
+      return S.suspend(() => S.Struct({ idcApplicationArn: S.String, roleArn: S.String })).annotate(
+        { identifier: "IdcAuthConfiguration" },
+      );
     case 3:
-      return S.suspend(() => S.Struct({ boostingLevel: S.String })).annotate({
-        identifier: "StringListAttributeBoostingConfiguration",
-      });
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ basicAuthConfiguration: __S(1280, __c40, 0) }),
+        /*@__PURE__*/ S.Struct({
+          oAuth2ClientCredentialConfiguration: __S(1281, __c40, 1),
+        }),
+        /*@__PURE__*/ S.Struct({ noAuthConfiguration: __S(608, __c19, 0) }),
+        /*@__PURE__*/ S.Struct({ idcAuthConfiguration: __S(1282, __c40, 2) }),
+      ]);
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ numberConfiguration: __S(135, __c16, 7) }),
-        /*@__PURE__*/ S.Struct({ stringConfiguration: __S(137, __c17, 1) }),
-        /*@__PURE__*/ S.Struct({ dateConfiguration: __S(138, __c17, 2) }),
-        /*@__PURE__*/ S.Struct({
-          stringListConfiguration: __S(139, __c17, 3),
-        }),
+        /*@__PURE__*/ S.Struct({ payload: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ s3: __S(288, __c9, 0) }),
       ]);
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(140, __c17, 4).pipe(S.optional));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          indexId: S.String,
-          version: S.optional(S.Number),
-          boostingOverride: S.optional(__S(141, __c17, 5)),
+          description: S.String,
+          apiSchemaType: S.String,
+          apiSchema: S.optional(__S(1284, __c40, 4)),
         }),
-      ).annotate({ identifier: "NativeIndexConfiguration" });
-    case 7:
-      return S.suspend(() => S.Struct({ indexId: S.String })).annotate({
-        identifier: "KendraIndexConfiguration",
+      ).annotate({
+        identifier: "CustomPluginConfiguration",
       });
   }
 }
-function __c18(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ nativeIndexConfiguration: __S(142, __c17, 6) }),
-        /*@__PURE__*/ S.Struct({ kendraIndexConfiguration: __S(143, __c17, 7) }),
-      ]);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           type: S.String,
           displayName: S.String,
-          configuration: __S(144, __c18, 0),
+          configuration: __S(1353, __c42, 9),
           roleArn: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(101, __c12, 5)),
+          tags: S.optional(__S(801, __c25, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/applications/{applicationId}/retrievers" }),
@@ -6311,20 +6342,82 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateRetrieverRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ retrieverId: S.optional(S.String), retrieverArn: S.optional(S.String) }),
       ).annotate({ identifier: "CreateRetrieverResponse" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          boostingLevel: S.String,
+          boostingType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NumberAttributeBoostingConfiguration",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          boostingLevel: S.String,
+          attributeValueBoosting: S.optional(__S(1345, __c42, 1)),
+        }),
+      ).annotate({
+        identifier: "StringAttributeBoostingConfiguration",
+      });
     case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ user: S.String }),
-        /*@__PURE__*/ S.Struct({ group: S.String }),
-      ]);
+      return S.suspend(() =>
+        S.Struct({
+          boostingLevel: S.String,
+          boostingDurationInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DateAttributeBoostingConfiguration",
+      });
     case 4:
+      return S.suspend(() => S.Struct({ boostingLevel: S.String })).annotate({
+        identifier: "StringListAttributeBoostingConfiguration",
+      });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ numberConfiguration: __S(1344, __c42, 0) }),
+        /*@__PURE__*/ S.Struct({ stringConfiguration: __S(1346, __c42, 2) }),
+        /*@__PURE__*/ S.Struct({ dateConfiguration: __S(1347, __c42, 3) }),
+        /*@__PURE__*/ S.Struct({ stringListConfiguration: __S(1348, __c42, 4) }),
+      ]);
+    case 6:
+      return S.Record(S.String, /*@__PURE__*/ __S(1349, __c42, 5).pipe(S.optional));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          indexId: S.String,
+          version: S.optional(S.Number),
+          boostingOverride: S.optional(__S(1350, __c42, 6)),
+        }),
+      ).annotate({ identifier: "NativeIndexConfiguration" });
+    case 8:
+      return S.suspend(() => S.Struct({ indexId: S.String })).annotate({
+        identifier: "KendraIndexConfiguration",
+      });
+    case 9:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ nativeIndexConfiguration: __S(1351, __c42, 7) }),
+        /*@__PURE__*/ S.Struct({ kendraIndexConfiguration: __S(1352, __c42, 8) }),
+      ]);
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          principal: __S(147, __c18, 3),
+          principal: __S(1408, __c44, 0),
           type: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -6340,37 +6433,36 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "CreateSubscriptionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.String),
           subscriptionArn: S.optional(S.String),
-          currentSubscription: S.optional(__S(39, __c4, 7)),
-          nextSubscription: S.optional(__S(39, __c4, 7)),
+          currentSubscription: S.optional(__S(384, __c12, 0)),
+          nextSubscription: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({
         identifier: "CreateSubscriptionResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          indexId: S.optional(S.String),
-          dataSourceId: S.optional(S.String),
-          userId: S.String,
-        }),
-      ).annotate({ identifier: "UserAlias" });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
   }
 }
-function __c19(j: number): any {
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ user: S.String }),
+        /*@__PURE__*/ S.Struct({ group: S.String }),
+      ]);
+  }
+}
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           userId: S.String,
-          userAliases: S.optional(__S(151, __c18, 7)),
+          userAliases: S.optional(__S(1473, __c46, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6383,35 +6475,25 @@ function __c19(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateUserRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ authenticationUrl: S.String })).annotate({
-        identifier: "SamlProviderConfiguration",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ secretsArn: S.String, secretsRole: S.String })).annotate({
-        identifier: "OpenIDConnectProviderConfiguration",
-      });
-    case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ samlConfiguration: __S(153, __c19, 1) }),
-        /*@__PURE__*/ S.Struct({ openIDConnectConfiguration: __S(154, __c19, 2) }),
-      ]);
-    case 4:
-      return S.suspend(() => S.Struct({ enabledBrowserExtensions: __S(0, __c0, 0) })).annotate({
-        identifier: "BrowserExtensionConfiguration",
-      });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          customCSSUrl: S.optional(S.String),
-          logoUrl: S.optional(S.String),
-          fontUrl: S.optional(S.String),
-          faviconUrl: S.optional(S.String),
+          indexId: S.optional(S.String),
+          dataSourceId: S.optional(S.String),
+          userId: S.String,
         }),
-      ).annotate({
-        identifier: "CustomizationConfiguration",
-      });
-    case 6:
+      ).annotate({ identifier: "UserAlias" });
+    case 1:
+      return S.Array(__S(1472, __c46, 0));
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6419,13 +6501,13 @@ function __c19(j: number): any {
           subtitle: S.optional(S.String),
           welcomeMessage: S.optional(S.String),
           samplePromptsControlMode: S.optional(S.String),
-          origins: S.optional(__S(0, __c0, 0)),
+          origins: S.optional(__S(32, __c1, 0)),
           roleArn: S.optional(S.String),
-          tags: S.optional(__S(101, __c12, 5)),
+          tags: S.optional(__S(801, __c25, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          identityProviderConfiguration: S.optional(__S(155, __c19, 3)),
-          browserExtensionConfiguration: S.optional(__S(156, __c19, 4)),
-          customizationConfiguration: S.optional(__S(157, __c19, 5)),
+          identityProviderConfiguration: S.optional(__S(1538, __c48, 2)),
+          browserExtensionConfiguration: S.optional(__S(1539, __c48, 3)),
+          customizationConfiguration: S.optional(__S(1540, __c48, 4)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/applications/{applicationId}/experiences" }),
@@ -6439,7 +6521,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CreateWebExperienceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ webExperienceId: S.optional(S.String), webExperienceArn: S.optional(S.String) }),
       ).annotate({
@@ -6447,7 +6529,39 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ authenticationUrl: S.String })).annotate({
+        identifier: "SamlProviderConfiguration",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ secretsArn: S.String, secretsRole: S.String })).annotate({
+        identifier: "OpenIDConnectProviderConfiguration",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ samlConfiguration: __S(1536, __c48, 0) }),
+        /*@__PURE__*/ S.Struct({ openIDConnectConfiguration: __S(1537, __c48, 1) }),
+      ]);
+    case 3:
+      return S.suspend(() => S.Struct({ enabledBrowserExtensions: __S(32, __c1, 0) })).annotate({
+        identifier: "BrowserExtensionConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          customCSSUrl: S.optional(S.String),
+          logoUrl: S.optional(S.String),
+          fontUrl: S.optional(S.String),
+          faviconUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomizationConfiguration",
+      });
+  }
+}
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6462,7 +6576,11 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteApplicationRequest" });
-    case 1:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6483,7 +6601,11 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAttachmentRequest" });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
           T.all(
@@ -6498,11 +6620,19 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteChatControlsConfigurationRequest",
       });
-    case 3:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteChatControlsConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6523,7 +6653,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteChatResponseConfigurationRequest",
       });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           conversationId: S.String.pipe(T.HttpLabel("conversationId")),
@@ -6545,7 +6679,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteConversationRequest",
       });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6566,7 +6704,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteDataAccessorRequest",
       });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6588,7 +6730,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "DeleteDataSourceRequest" });
   }
 }
-function __c21(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6611,7 +6753,11 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteGroupRequest" });
-    case 1:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6627,7 +6773,11 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteIndexRequest" });
-    case 2:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6643,7 +6793,11 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeletePluginRequest" });
-    case 3:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6662,7 +6816,11 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteRetrieverRequest" });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6678,7 +6836,11 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteUserRequest" });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6699,7 +6861,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteWebExperienceRequest",
       });
-    case 6:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6717,7 +6883,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DisassociatePermissionRequest",
       });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
           T.all(
@@ -6730,22 +6900,9 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetApplicationRequest" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({ attachmentsControlMode: S.optional(S.String) })).annotate({
         identifier: "AppliedAttachmentsConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          autoSubscribe: S.optional(S.String),
-          defaultSubscriptionType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutoSubscriptionConfiguration",
       });
     case 2:
       return S.suspend(() =>
@@ -6759,19 +6916,36 @@ function __c22(j: number): any {
           roleArn: S.optional(S.String),
           status: S.optional(S.String),
           description: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(99, __c12, 3)),
+          encryptionConfiguration: S.optional(__S(832, __c26, 0)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          error: S.optional(__S(8, __c1, 0)),
-          attachmentsConfiguration: S.optional(__S(176, __c22, 0)),
-          qAppsConfiguration: S.optional(__S(103, __c12, 7)),
-          personalizationConfiguration: S.optional(__S(104, __c13, 0)),
-          autoSubscriptionConfiguration: S.optional(__S(177, __c22, 1)),
-          clientIdsForOIDC: S.optional(__S(0, __c0, 0)),
-          quickSightConfiguration: S.optional(__S(105, __c13, 1)),
+          error: S.optional(__S(128, __c4, 0)),
+          attachmentsConfiguration: S.optional(__S(2049, __c64, 1)),
+          qAppsConfiguration: S.optional(__S(896, __c28, 0)),
+          personalizationConfiguration: S.optional(__S(897, __c28, 1)),
+          autoSubscriptionConfiguration: S.optional(__S(2080, __c65, 0)),
+          clientIdsForOIDC: S.optional(__S(32, __c1, 0)),
+          quickSightConfiguration: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          autoSubscribe: S.optional(S.String),
+          defaultSubscriptionType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutoSubscriptionConfiguration",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6790,97 +6964,100 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetChatControlsConfigurationRequest",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ control: S.String })).annotate({
-        identifier: "AppliedOrchestrationConfiguration",
-      });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          blockedPhrases: S.optional(__S(0, __c0, 0)),
+          blockedPhrases: S.optional(__S(32, __c1, 0)),
           systemMessageOverride: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BlockedPhrasesConfiguration",
       });
-    case 6:
+    case 2:
+      return S.suspend(() => S.Struct({ creatorModeControl: S.String })).annotate({
+        identifier: "AppliedCreatorModeConfiguration",
+      });
+    case 3:
       return S.suspend(() =>
-        S.Struct({ userIds: S.optional(__S(0, __c0, 0)), userGroups: S.optional(__S(0, __c0, 0)) }),
-      ).annotate({ identifier: "UsersAndGroups" });
-    case 7:
-      return S.suspend(() => S.Struct({ systemMessageOverride: S.optional(S.String) })).annotate({
-        identifier: "ContentBlockerRule",
+        S.Struct({
+          responseScope: S.optional(S.String),
+          orchestrationConfiguration: S.optional(__S(2144, __c67, 0)),
+          blockedPhrases: S.optional(__S(2113, __c66, 1)),
+          topicConfigurations: S.optional(__S(2154, __c67, 10)),
+          creatorModeConfiguration: S.optional(__S(2114, __c66, 2)),
+          nextToken: S.optional(S.String),
+          hallucinationReductionConfiguration: S.optional(__S(2155, __c67, 11)),
+        }),
+      ).annotate({
+        identifier: "GetChatControlsConfigurationResponse",
       });
   }
 }
-function __c23(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ control: S.String })).annotate({
+        identifier: "AppliedOrchestrationConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          userIds: S.optional(__S(32, __c1, 0)),
+          userGroups: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "UsersAndGroups" });
+    case 2:
+      return S.suspend(() => S.Struct({ systemMessageOverride: S.optional(S.String) })).annotate({
+        identifier: "ContentBlockerRule",
+      });
+    case 3:
       return S.suspend(() =>
         S.Struct({ indexId: S.optional(S.String), dataSourceId: S.optional(S.String) }),
       ).annotate({ identifier: "EligibleDataSource" });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ eligibleDataSources: S.optional(__S(185, __c23, 1)) }),
-      ).annotate({ identifier: "ContentRetrievalRule" });
-    case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ contentBlockerRule: __S(183, __c22, 7) }),
-        /*@__PURE__*/ S.Struct({ contentRetrievalRule: __S(186, __c23, 2) }),
-      ]);
     case 4:
+      return S.Array(__S(2147, __c67, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ eligibleDataSources: S.optional(__S(2148, __c67, 4)) }),
+      ).annotate({ identifier: "ContentRetrievalRule" });
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ contentBlockerRule: __S(2146, __c67, 2) }),
+        /*@__PURE__*/ S.Struct({ contentRetrievalRule: __S(2149, __c67, 5) }),
+      ]);
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          includedUsersAndGroups: S.optional(__S(182, __c22, 6)),
-          excludedUsersAndGroups: S.optional(__S(182, __c22, 6)),
+          includedUsersAndGroups: S.optional(__S(2145, __c67, 1)),
+          excludedUsersAndGroups: S.optional(__S(2145, __c67, 1)),
           ruleType: S.String,
-          ruleConfiguration: S.optional(__S(187, __c23, 3)),
+          ruleConfiguration: S.optional(__S(2150, __c67, 6)),
         }),
       ).annotate({ identifier: "Rule" });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(2151, __c67, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          exampleChatMessages: S.optional(__S(0, __c0, 0)),
-          rules: __S(189, __c23, 5),
+          exampleChatMessages: S.optional(__S(32, __c1, 0)),
+          rules: __S(2152, __c67, 8),
         }),
       ).annotate({ identifier: "TopicConfiguration" });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ creatorModeControl: S.String })).annotate({
-        identifier: "AppliedCreatorModeConfiguration",
-      });
-    case 1:
+    case 10:
+      return S.Array(__S(2153, __c67, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({ hallucinationReductionControl: S.optional(S.String) }),
       ).annotate({
         identifier: "HallucinationReductionConfiguration",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          responseScope: S.optional(S.String),
-          orchestrationConfiguration: S.optional(__S(180, __c22, 4)),
-          blockedPhrases: S.optional(__S(181, __c22, 5)),
-          topicConfigurations: S.optional(__S(191, __c23, 7)),
-          creatorModeConfiguration: S.optional(__S(192, __c24, 0)),
-          nextToken: S.optional(S.String),
-          hallucinationReductionConfiguration: S.optional(__S(193, __c24, 1)),
-        }),
-      ).annotate({
-        identifier: "GetChatControlsConfigurationResponse",
-      });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6901,32 +7078,36 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetChatResponseConfigurationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          responseConfigurations: S.optional(__S(110, __c13, 6)),
+          responseConfigurations: S.optional(__S(994, __c31, 2)),
           responseConfigurationSummary: S.optional(S.String),
           status: S.optional(S.String),
-          error: S.optional(__S(8, __c1, 0)),
+          error: S.optional(__S(128, __c4, 0)),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "ChatResponseConfigurationDetail",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           chatResponseConfigurationId: S.optional(S.String),
           chatResponseConfigurationArn: S.optional(S.String),
           displayName: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          inUseConfiguration: S.optional(__S(196, __c24, 4)),
-          lastUpdateConfiguration: S.optional(__S(196, __c24, 4)),
+          inUseConfiguration: S.optional(__S(2177, __c68, 1)),
+          lastUpdateConfiguration: S.optional(__S(2177, __c68, 1)),
         }),
       ).annotate({
         identifier: "GetChatResponseConfigurationResponse",
       });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -6945,7 +7126,7 @@ function __c24(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDataAccessorRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(SensitiveString),
@@ -6954,15 +7135,15 @@ function __c24(j: number): any {
           applicationId: S.optional(S.String),
           idcApplicationArn: S.optional(S.String),
           principal: S.optional(S.String),
-          actionConfigurations: S.optional(__S(115, __c14, 3)),
-          authenticationDetail: S.optional(__S(118, __c14, 6)),
+          actionConfigurations: S.optional(__S(1090, __c34, 2)),
+          authenticationDetail: S.optional(__S(1058, __c33, 2)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GetDataAccessorResponse" });
   }
 }
-function __c25(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6994,19 +7175,23 @@ function __c25(j: number): any {
           displayName: S.optional(S.String),
           type: S.optional(S.String),
           configuration: S.optional(S.Any),
-          vpcConfiguration: S.optional(__S(121, __c15, 1)),
+          vpcConfiguration: S.optional(__S(1152, __c36, 0)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           description: S.optional(S.String),
           status: S.optional(S.String),
           syncSchedule: S.optional(S.String),
           roleArn: S.optional(S.String),
-          error: S.optional(__S(8, __c1, 0)),
-          documentEnrichmentConfiguration: S.optional(__S(29, __c3, 5)),
-          mediaExtractionConfiguration: S.optional(__S(33, __c4, 1)),
+          error: S.optional(__S(128, __c4, 0)),
+          documentEnrichmentConfiguration: S.optional(__S(261, __c8, 5)),
+          mediaExtractionConfiguration: S.optional(__S(265, __c8, 9)),
         }),
       ).annotate({ identifier: "GetDataSourceResponse" });
-    case 2:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7030,11 +7215,15 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetDocumentContentRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ presignedUrl: S.String, mimeType: S.String })).annotate({
         identifier: "GetDocumentContentResponse",
       });
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7055,26 +7244,26 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetGroupRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          errorDetail: S.optional(__S(8, __c1, 0)),
+          errorDetail: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "GroupStatusDetail" });
-    case 6:
-      return S.Array(__S(205, __c25, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2305, __c72, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(205, __c25, 5)),
-          statusHistory: S.optional(__S(206, __c25, 6)),
+          status: S.optional(__S(2305, __c72, 1)),
+          statusHistory: S.optional(__S(2306, __c72, 2)),
         }),
       ).annotate({ identifier: "GetGroupResponse" });
   }
 }
-function __c26(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7095,27 +7284,15 @@ function __c26(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          search: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DocumentAttributeConfiguration",
-      });
-    case 2:
-      return S.Array(__S(209, __c26, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           indexedTextBytes: S.optional(S.Number),
           indexedTextDocumentCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TextDocumentStatistics" });
-    case 4:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ textDocumentStatistics: S.optional(__S(211, __c26, 3)) }),
+        S.Struct({ textDocumentStatistics: S.optional(__S(2337, __c73, 1)) }),
       ).annotate({ identifier: "IndexStatistics" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.optional(S.String),
@@ -7127,13 +7304,33 @@ function __c26(j: number): any {
           description: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          capacityConfiguration: S.optional(__S(124, __c15, 4)),
-          documentAttributeConfigurations: S.optional(__S(210, __c26, 2)),
-          error: S.optional(__S(8, __c1, 0)),
-          indexStatistics: S.optional(__S(212, __c26, 4)),
+          capacityConfiguration: S.optional(__S(1216, __c38, 0)),
+          documentAttributeConfigurations: S.optional(__S(2369, __c74, 1)),
+          error: S.optional(__S(128, __c4, 0)),
+          indexStatistics: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({ identifier: "GetIndexResponse" });
-    case 6:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          search: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DocumentAttributeConfiguration",
+      });
+    case 1:
+      return S.Array(__S(2368, __c74, 0));
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7154,13 +7351,13 @@ function __c26(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetMediaRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ mediaBytes: S.optional(T.Blob), mediaMimeType: S.optional(S.String) }),
       ).annotate({ identifier: "GetMediaResponse" });
   }
 }
-function __c27(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7186,8 +7383,8 @@ function __c27(j: number): any {
           displayName: S.optional(S.String),
           type: S.optional(S.String),
           serverUrl: S.optional(S.String),
-          authConfiguration: S.optional(__S(130, __c16, 2)),
-          customPluginConfiguration: S.optional(__S(132, __c16, 4)),
+          authConfiguration: S.optional(__S(1283, __c40, 3)),
+          customPluginConfiguration: S.optional(__S(1285, __c40, 5)),
           buildStatus: S.optional(S.String),
           pluginArn: S.optional(S.String),
           state: S.optional(S.String),
@@ -7195,7 +7392,11 @@ function __c27(j: number): any {
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GetPluginResponse" });
-    case 2:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
           T.all(
@@ -7208,11 +7409,15 @@ function __c27(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetPolicyRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ policy: S.optional(S.String) })).annotate({
         identifier: "GetPolicyResponse",
       });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7231,7 +7436,7 @@ function __c27(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetRetrieverRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.optional(S.String),
@@ -7240,13 +7445,17 @@ function __c27(j: number): any {
           type: S.optional(S.String),
           status: S.optional(S.String),
           displayName: S.optional(S.String),
-          configuration: S.optional(__S(144, __c18, 0)),
+          configuration: S.optional(__S(1353, __c42, 9)),
           roleArn: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GetRetrieverResponse" });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7262,13 +7471,13 @@ function __c27(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetUserRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ userAliases: S.optional(__S(151, __c18, 7)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ userAliases: S.optional(__S(1473, __c46, 1)) })).annotate({
         identifier: "GetUserResponse",
       });
   }
 }
-function __c28(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7292,17 +7501,6 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metadataXML: S.String,
-          roleArn: S.String,
-          userIdAttribute: S.String,
-          userGroupAttribute: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SamlConfiguration" });
-    case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ samlConfiguration: __S(225, __c28, 1) })]);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           applicationId: S.optional(S.String),
           webExperienceId: S.optional(S.String),
           webExperienceArn: S.optional(S.String),
@@ -7314,16 +7512,35 @@ function __c28(j: number): any {
           subtitle: S.optional(S.String),
           welcomeMessage: S.optional(S.String),
           samplePromptsControlMode: S.optional(S.String),
-          origins: S.optional(__S(0, __c0, 0)),
+          origins: S.optional(__S(32, __c1, 0)),
           roleArn: S.optional(S.String),
-          identityProviderConfiguration: S.optional(__S(155, __c19, 3)),
-          authenticationConfiguration: S.optional(__S(226, __c28, 2)),
-          error: S.optional(__S(8, __c1, 0)),
-          browserExtensionConfiguration: S.optional(__S(156, __c19, 4)),
-          customizationConfiguration: S.optional(__S(157, __c19, 5)),
+          identityProviderConfiguration: S.optional(__S(1538, __c48, 2)),
+          authenticationConfiguration: S.optional(__S(2593, __c81, 1)),
+          error: S.optional(__S(128, __c4, 0)),
+          browserExtensionConfiguration: S.optional(__S(1539, __c48, 3)),
+          customizationConfiguration: S.optional(__S(1540, __c48, 4)),
         }),
       ).annotate({ identifier: "GetWebExperienceResponse" });
-    case 4:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadataXML: S.String,
+          roleArn: S.String,
+          userIdAttribute: S.String,
+          userGroupAttribute: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SamlConfiguration" });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ samlConfiguration: __S(2592, __c81, 0) })]);
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -7332,7 +7549,7 @@ function __c28(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListApplicationsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -7341,18 +7558,21 @@ function __c28(j: number): any {
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
           identityType: S.optional(S.String),
-          quickSightConfiguration: S.optional(__S(105, __c13, 1)),
+          quickSightConfiguration: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "Application" });
-    case 6:
-      return S.Array(__S(229, __c28, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2625, __c82, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), applications: S.optional(__S(230, __c28, 6)) }),
+        S.Struct({
+          nextToken: S.optional(S.String),
+          applications: S.optional(__S(2626, __c82, 2)),
+        }),
       ).annotate({ identifier: "ListApplicationsResponse" });
   }
 }
-function __c29(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7379,22 +7599,26 @@ function __c29(j: number): any {
           attachmentId: S.optional(S.String),
           conversationId: S.optional(S.String),
           name: S.optional(S.String),
-          copyFrom: S.optional(__S(48, __c6, 0)),
+          copyFrom: S.optional(__S(545, __c17, 1)),
           fileType: S.optional(S.String),
           fileSize: S.optional(S.Number),
           md5chksum: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
-          error: S.optional(__S(8, __c1, 0)),
+          error: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "Attachment" });
     case 2:
-      return S.Array(__S(233, __c29, 1));
+      return S.Array(__S(2657, __c83, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ attachments: S.optional(__S(234, __c29, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ attachments: S.optional(__S(2658, __c83, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAttachmentsResponse" });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7416,7 +7640,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListChatResponseConfigurationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           chatResponseConfigurationId: S.String,
@@ -7430,12 +7654,12 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ChatResponseConfiguration",
       });
-    case 6:
-      return S.Array(__S(237, __c29, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2689, __c84, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          chatResponseConfigurations: S.optional(__S(238, __c29, 6)),
+          chatResponseConfigurations: S.optional(__S(2690, __c84, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7443,7 +7667,7 @@ function __c29(j: number): any {
       });
   }
 }
-function __c30(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7472,17 +7696,21 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "Conversation" });
     case 2:
-      return S.Array(__S(241, __c30, 1));
+      return S.Array(__S(2721, __c85, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          conversations: S.optional(__S(242, __c30, 2)),
+          conversations: S.optional(__S(2722, __c85, 2)),
         }),
       ).annotate({
         identifier: "ListConversationsResponse",
       });
-    case 4:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7499,7 +7727,7 @@ function __c30(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListDataAccessorsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(SensitiveString),
@@ -7507,17 +7735,17 @@ function __c30(j: number): any {
           dataAccessorArn: S.optional(S.String),
           idcApplicationArn: S.optional(S.String),
           principal: S.optional(S.String),
-          authenticationDetail: S.optional(__S(118, __c14, 6)),
+          authenticationDetail: S.optional(__S(1058, __c33, 2)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DataAccessor" });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2753, __c86, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          dataAccessors: S.optional(__S(246, __c30, 6)),
+          dataAccessors: S.optional(__S(2754, __c86, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7525,7 +7753,7 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7560,12 +7788,16 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "DataSource" });
     case 2:
-      return S.Array(__S(249, __c31, 1));
+      return S.Array(__S(2785, __c87, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ dataSources: S.optional(__S(250, __c31, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ dataSources: S.optional(__S(2786, __c87, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDataSourcesResponse" });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataSourceId: S.String.pipe(T.HttpLabel("dataSourceId")),
@@ -7596,7 +7828,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListDataSourceSyncJobsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           documentsAdded: S.optional(S.String),
@@ -7606,36 +7838,36 @@ function __c31(j: number): any {
           documentsScanned: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataSourceSyncJobMetrics" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           executionId: S.optional(S.String),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
-          error: S.optional(__S(8, __c1, 0)),
+          error: S.optional(__S(128, __c4, 0)),
           dataSourceErrorCode: S.optional(S.String),
-          metrics: S.optional(__S(253, __c31, 5)),
+          metrics: S.optional(__S(2817, __c88, 1)),
         }),
       ).annotate({ identifier: "DataSourceSyncJob" });
-    case 7:
-      return S.Array(__S(254, __c31, 6));
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(2818, __c88, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ history: S.optional(__S(255, __c31, 7)), nextToken: S.optional(S.String) }),
+        S.Struct({ history: S.optional(__S(2819, __c88, 3)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDataSourceSyncJobsResponse",
       });
-    case 1:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           indexId: S.String.pipe(T.HttpLabel("indexId")),
-          dataSourceIds: S.optional(__S(0, __c0, 0)).pipe(T.HttpQuery("dataSourceIds")),
+          dataSourceIds: S.optional(__S(32, __c1, 0)).pipe(T.HttpQuery("dataSourceIds")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -7652,26 +7884,30 @@ function __c32(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListDocumentsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           documentId: S.optional(S.String),
           status: S.optional(S.String),
-          error: S.optional(__S(8, __c1, 0)),
+          error: S.optional(__S(128, __c4, 0)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DocumentDetails" });
+    case 2:
+      return S.Array(__S(2849, __c89, 1));
     case 3:
-      return S.Array(__S(258, __c32, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          documentDetailList: S.optional(__S(259, __c32, 3)),
+          documentDetailList: S.optional(__S(2850, __c89, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDocumentsResponse" });
-    case 5:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7696,21 +7932,21 @@ function __c32(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListGroupsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ groupName: S.optional(S.String) })).annotate({
         identifier: "GroupSummary",
       });
-    case 7:
-      return S.Array(__S(262, __c32, 6));
+    case 2:
+      return S.Array(__S(2881, __c90, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(2882, __c90, 2)) }),
+      ).annotate({ identifier: "ListGroupsResponse" });
   }
 }
-function __c33(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(263, __c32, 7)) }),
-      ).annotate({ identifier: "ListGroupsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7727,7 +7963,7 @@ function __c33(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListIndicesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -7737,13 +7973,17 @@ function __c33(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "Index" });
+    case 2:
+      return S.Array(__S(2913, __c91, 1));
     case 3:
-      return S.Array(__S(266, __c33, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), indices: S.optional(__S(267, __c33, 3)) }),
+        S.Struct({ nextToken: S.optional(S.String), indices: S.optional(__S(2914, __c91, 2)) }),
       ).annotate({ identifier: "ListIndicesResponse" });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           conversationId: S.String.pipe(T.HttpLabel("conversationId")),
@@ -7765,30 +8005,30 @@ function __c33(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListMessagesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           messageId: S.optional(S.String),
           body: S.optional(S.String),
           time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           type: S.optional(S.String),
-          attachments: S.optional(__S(85, __c10, 5)),
-          sourceAttribution: S.optional(__S(68, __c8, 4)),
-          actionReview: S.optional(__S(83, __c10, 3)),
-          actionExecution: S.optional(__S(53, __c6, 5)),
+          attachments: S.optional(__S(673, __c21, 1)),
+          sourceAttribution: S.optional(__S(587, __c18, 11)),
+          actionReview: S.optional(__S(672, __c21, 0)),
+          actionExecution: S.optional(__S(578, __c18, 2)),
         }),
       ).annotate({ identifier: "Message" });
-    case 7:
-      return S.Array(__S(270, __c33, 6));
+    case 2:
+      return S.Array(__S(2945, __c92, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ messages: S.optional(__S(2946, __c92, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListMessagesResponse" });
   }
 }
-function __c34(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ messages: S.optional(__S(271, __c33, 7)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListMessagesResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7809,7 +8049,11 @@ function __c34(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListPluginActionsRequest" });
-    case 2:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           actionIdentifier: S.optional(S.String),
@@ -7818,15 +8062,19 @@ function __c34(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionSummary" });
-    case 3:
-      return S.Array(__S(274, __c34, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(3008, __c94, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(275, __c34, 3)) }),
+        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(3009, __c94, 1)) }),
       ).annotate({
         identifier: "ListPluginActionsResponse",
       });
-    case 5:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7843,7 +8091,7 @@ function __c34(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListPluginsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pluginId: S.optional(S.String),
@@ -7856,17 +8104,17 @@ function __c34(j: number): any {
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Plugin" });
-    case 7:
-      return S.Array(__S(278, __c34, 6));
+    case 2:
+      return S.Array(__S(3041, __c95, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), plugins: S.optional(__S(3042, __c95, 2)) }),
+      ).annotate({ identifier: "ListPluginsResponse" });
   }
 }
-function __c35(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), plugins: S.optional(__S(279, __c34, 7)) }),
-      ).annotate({ identifier: "ListPluginsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           pluginType: S.String.pipe(T.HttpLabel("pluginType")),
@@ -7885,7 +8133,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListPluginTypeActionsRequest",
       });
-    case 2:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -7903,7 +8155,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListPluginTypeMetadataRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -7913,18 +8165,19 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PluginTypeMetadataSummary",
       });
-    case 4:
-      return S.Array(__S(283, __c35, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3105, __c97, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          items: S.optional(__S(284, __c35, 4)),
-        }),
+        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(3106, __c97, 2)) }),
       ).annotate({
         identifier: "ListPluginTypeMetadataResponse",
       });
-    case 6:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7941,7 +8194,7 @@ function __c35(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListRetrieversRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.optional(S.String),
@@ -7951,17 +8204,17 @@ function __c35(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Retriever" });
+    case 2:
+      return S.Array(__S(3137, __c98, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ retrievers: S.optional(__S(3138, __c98, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRetrieversResponse" });
   }
 }
-function __c36(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(287, __c35, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ retrievers: S.optional(__S(288, __c36, 0)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListRetrieversResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -7978,28 +8231,32 @@ function __c36(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListSubscriptionsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.String),
           subscriptionArn: S.optional(S.String),
-          principal: S.optional(__S(147, __c18, 3)),
-          currentSubscription: S.optional(__S(39, __c4, 7)),
-          nextSubscription: S.optional(__S(39, __c4, 7)),
+          principal: S.optional(__S(1408, __c44, 0)),
+          currentSubscription: S.optional(__S(384, __c12, 0)),
+          nextSubscription: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({ identifier: "Subscription" });
-    case 4:
-      return S.Array(__S(291, __c36, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3169, __c99, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          subscriptions: S.optional(__S(292, __c36, 4)),
+          subscriptions: S.optional(__S(3170, __c99, 2)),
         }),
       ).annotate({
         identifier: "ListSubscriptionsResponse",
       });
-    case 6:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceARN: S.String.pipe(T.HttpLabel("resourceARN")) }).pipe(
           T.all(
@@ -8014,13 +8271,13 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(101, __c12, 5)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(801, __c25, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c37(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8052,17 +8309,21 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "WebExperience" });
     case 2:
-      return S.Array(__S(297, __c37, 1));
+      return S.Array(__S(3233, __c101, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          webExperiences: S.optional(__S(298, __c37, 2)),
+          webExperiences: S.optional(__S(3234, __c101, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListWebExperiencesResponse",
       });
-    case 4:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           usefulness: S.String,
@@ -8073,7 +8334,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "MessageUsefulnessFeedback",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -8081,7 +8342,7 @@ function __c37(j: number): any {
           conversationId: S.String.pipe(T.HttpLabel("conversationId")),
           messageId: S.String.pipe(T.HttpLabel("messageId")),
           messageCopiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          messageUsefulness: S.optional(__S(300, __c37, 4)),
+          messageUsefulness: S.optional(__S(3264, __c102, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -8096,31 +8357,31 @@ function __c37(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutFeedbackRequest" });
-    case 6:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ groupName: S.String, type: S.optional(S.String) }),
       ).annotate({ identifier: "MemberGroup" });
-    case 7:
-      return S.Array(__S(302, __c37, 6));
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(3296, __c103, 0));
+    case 2:
       return S.suspend(() => S.Struct({ userId: S.String, type: S.optional(S.String) })).annotate({
         identifier: "MemberUser",
       });
-    case 1:
-      return S.Array(__S(304, __c38, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(3298, __c103, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          memberGroups: S.optional(__S(303, __c37, 7)),
-          memberUsers: S.optional(__S(305, __c38, 1)),
-          s3PathForGroupMembers: S.optional(__S(15, __c1, 7)),
+          memberGroups: S.optional(__S(3297, __c103, 1)),
+          memberUsers: S.optional(__S(3299, __c103, 3)),
+          s3PathForGroupMembers: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "GroupMembers" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -8128,7 +8389,7 @@ function __c38(j: number): any {
           groupName: S.String,
           dataSourceId: S.optional(S.String),
           type: S.String,
-          groupMembers: __S(306, __c38, 2),
+          groupMembers: __S(3300, __c103, 4),
           roleArn: S.optional(S.String),
         }).pipe(
           T.all(
@@ -8144,19 +8405,23 @@ function __c38(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutGroupRequest" });
-    case 4:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ retrieverId: S.String })).annotate({
         identifier: "RetrieverContentSource",
       });
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ retriever: __S(308, __c38, 4) })]);
-    case 6:
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ retriever: __S(3328, __c104, 0) })]);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           queryText: S.String,
-          contentSource: __S(309, __c38, 5),
-          attributeFilter: S.optional(__S(44, __c5, 4)),
+          contentSource: __S(3329, __c104, 1),
+          attributeFilter: S.optional(__S(513, __c16, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -8172,37 +8437,37 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "SearchRelevantContentRequest",
       });
-    case 7:
+    case 3:
       return S.suspend(() => S.Struct({ scoreConfidence: S.optional(S.String) })).annotate({
         identifier: "ScoreAttributes",
       });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
           documentId: S.optional(S.String),
           documentTitle: S.optional(S.String),
           documentUri: S.optional(S.String),
-          documentAttributes: S.optional(__S(14, __c1, 6)),
-          scoreAttributes: S.optional(__S(311, __c38, 7)),
+          documentAttributes: S.optional(__S(320, __c10, 0)),
+          scoreAttributes: S.optional(__S(3331, __c104, 3)),
         }),
       ).annotate({ identifier: "RelevantContent" });
-    case 1:
-      return S.Array(__S(312, __c39, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(3332, __c104, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          relevantContent: S.optional(__S(313, __c39, 1)),
+          relevantContent: S.optional(__S(3333, __c104, 5)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchRelevantContentResponse",
       });
-    case 3:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataSourceId: S.String.pipe(T.HttpLabel("dataSourceId")),
@@ -8224,11 +8489,15 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "StartDataSourceSyncJobRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ executionId: S.optional(S.String) })).annotate({
         identifier: "StartDataSourceSyncJobResponse",
       });
-    case 5:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataSourceId: S.String.pipe(T.HttpLabel("dataSourceId")),
@@ -8250,11 +8519,15 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "StopDataSourceSyncJobRequest",
       });
-    case 6:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceARN: S.String.pipe(T.HttpLabel("resourceARN")),
-          tags: __S(101, __c12, 5),
+          tags: __S(801, __c25, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/tags/{resourceARN}" }),
@@ -8266,11 +8539,15 @@ function __c39(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceARN: S.String.pipe(T.HttpLabel("resourceARN")),
-          tagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(32, __c1, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/v1/tags/{resourceARN}" }),
@@ -8284,7 +8561,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c40(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8294,10 +8571,10 @@ function __c40(j: number): any {
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           roleArn: S.optional(S.String),
-          attachmentsConfiguration: S.optional(__S(102, __c12, 6)),
-          qAppsConfiguration: S.optional(__S(103, __c12, 7)),
-          personalizationConfiguration: S.optional(__S(104, __c13, 0)),
-          autoSubscriptionConfiguration: S.optional(__S(177, __c22, 1)),
+          attachmentsConfiguration: S.optional(__S(928, __c29, 0)),
+          qAppsConfiguration: S.optional(__S(896, __c28, 0)),
+          personalizationConfiguration: S.optional(__S(897, __c28, 1)),
+          autoSubscriptionConfiguration: S.optional(__S(2080, __c65, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/applications/{applicationId}" }),
@@ -8309,32 +8586,36 @@ function __c40(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateApplicationRequest" });
-    case 1:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          blockedPhrasesToCreateOrUpdate: S.optional(__S(0, __c0, 0)),
-          blockedPhrasesToDelete: S.optional(__S(0, __c0, 0)),
+          blockedPhrasesToCreateOrUpdate: S.optional(__S(32, __c1, 0)),
+          blockedPhrasesToDelete: S.optional(__S(32, __c1, 0)),
           systemMessageOverride: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BlockedPhrasesConfigurationUpdate",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ creatorModeControl: S.String })).annotate({
         identifier: "CreatorModeConfiguration",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           responseScope: S.optional(S.String),
-          orchestrationConfiguration: S.optional(__S(180, __c22, 4)),
-          blockedPhrasesConfigurationUpdate: S.optional(__S(321, __c40, 1)),
-          topicConfigurationsToCreateOrUpdate: S.optional(__S(191, __c23, 7)),
-          topicConfigurationsToDelete: S.optional(__S(191, __c23, 7)),
-          creatorModeConfiguration: S.optional(__S(322, __c40, 2)),
-          hallucinationReductionConfiguration: S.optional(__S(193, __c24, 1)),
+          orchestrationConfiguration: S.optional(__S(2144, __c67, 0)),
+          blockedPhrasesConfigurationUpdate: S.optional(__S(3520, __c110, 0)),
+          topicConfigurationsToCreateOrUpdate: S.optional(__S(2154, __c67, 10)),
+          topicConfigurationsToDelete: S.optional(__S(2154, __c67, 10)),
+          creatorModeConfiguration: S.optional(__S(3521, __c110, 1)),
+          hallucinationReductionConfiguration: S.optional(__S(2155, __c67, 11)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/applications/{applicationId}/chatcontrols" }),
@@ -8348,13 +8629,17 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "UpdateChatControlsConfigurationRequest",
       });
-    case 4:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           chatResponseConfigurationId: S.String.pipe(T.HttpLabel("chatResponseConfigurationId")),
           displayName: S.optional(S.String),
-          responseConfigurations: __S(110, __c13, 6),
+          responseConfigurations: __S(994, __c31, 2),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -8372,13 +8657,17 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "UpdateChatResponseConfigurationRequest",
       });
-    case 5:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           dataAccessorId: S.String.pipe(T.HttpLabel("dataAccessorId")),
-          actionConfigurations: __S(115, __c14, 3),
-          authenticationDetail: S.optional(__S(118, __c14, 6)),
+          actionConfigurations: __S(1090, __c34, 2),
+          authenticationDetail: S.optional(__S(1058, __c33, 2)),
           displayName: S.optional(SensitiveString),
         }).pipe(
           T.all(
@@ -8396,7 +8685,11 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "UpdateDataAccessorRequest",
       });
-    case 6:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -8404,12 +8697,12 @@ function __c40(j: number): any {
           dataSourceId: S.String.pipe(T.HttpLabel("dataSourceId")),
           displayName: S.optional(S.String),
           configuration: S.optional(S.Any),
-          vpcConfiguration: S.optional(__S(121, __c15, 1)),
+          vpcConfiguration: S.optional(__S(1152, __c36, 0)),
           description: S.optional(S.String),
           syncSchedule: S.optional(S.String),
           roleArn: S.optional(S.String),
-          documentEnrichmentConfiguration: S.optional(__S(29, __c3, 5)),
-          mediaExtractionConfiguration: S.optional(__S(33, __c4, 1)),
+          documentEnrichmentConfiguration: S.optional(__S(261, __c8, 5)),
+          mediaExtractionConfiguration: S.optional(__S(265, __c8, 9)),
         }).pipe(
           T.all(
             T.Http({
@@ -8424,15 +8717,19 @@ function __c40(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateDataSourceRequest" });
-    case 7:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           indexId: S.String.pipe(T.HttpLabel("indexId")),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          capacityConfiguration: S.optional(__S(124, __c15, 4)),
-          documentAttributeConfigurations: S.optional(__S(210, __c26, 2)),
+          capacityConfiguration: S.optional(__S(1216, __c38, 0)),
+          documentAttributeConfigurations: S.optional(__S(2369, __c74, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/applications/{applicationId}/indices/{indexId}" }),
@@ -8446,7 +8743,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "UpdateIndexRequest" });
   }
 }
-function __c41(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8456,8 +8753,8 @@ function __c41(j: number): any {
           displayName: S.optional(S.String),
           state: S.optional(S.String),
           serverUrl: S.optional(S.String),
-          customPluginConfiguration: S.optional(__S(132, __c16, 4)),
-          authConfiguration: S.optional(__S(130, __c16, 2)),
+          customPluginConfiguration: S.optional(__S(1285, __c40, 5)),
+          authConfiguration: S.optional(__S(1283, __c40, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/applications/{applicationId}/plugins/{pluginId}" }),
@@ -8469,12 +8766,16 @@ function __c41(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdatePluginRequest" });
-    case 1:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           retrieverId: S.String.pipe(T.HttpLabel("retrieverId")),
-          configuration: S.optional(__S(144, __c18, 0)),
+          configuration: S.optional(__S(1353, __c42, 9)),
           displayName: S.optional(S.String),
           roleArn: S.optional(S.String),
         }).pipe(
@@ -8491,7 +8792,21 @@ function __c41(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateRetrieverRequest" });
-    case 2:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(3744, __c117, 0));
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -8513,13 +8828,17 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "UpdateSubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           userId: S.String.pipe(T.HttpLabel("userId")),
-          userAliasesToUpdate: S.optional(__S(151, __c18, 7)),
-          userAliasesToDelete: S.optional(__S(151, __c18, 7)),
+          userAliasesToUpdate: S.optional(__S(1473, __c46, 1)),
+          userAliasesToDelete: S.optional(__S(1473, __c46, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/applications/{applicationId}/users/{userId}" }),
@@ -8531,29 +8850,33 @@ function __c41(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateUserRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          userAliasesAdded: S.optional(__S(151, __c18, 7)),
-          userAliasesUpdated: S.optional(__S(151, __c18, 7)),
-          userAliasesDeleted: S.optional(__S(151, __c18, 7)),
+          userAliasesAdded: S.optional(__S(1473, __c46, 1)),
+          userAliasesUpdated: S.optional(__S(1473, __c46, 1)),
+          userAliasesDeleted: S.optional(__S(1473, __c46, 1)),
         }),
       ).annotate({ identifier: "UpdateUserResponse" });
-    case 5:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           webExperienceId: S.String.pipe(T.HttpLabel("webExperienceId")),
           roleArn: S.optional(S.String),
-          authenticationConfiguration: S.optional(__S(226, __c28, 2)),
+          authenticationConfiguration: S.optional(__S(2593, __c81, 1)),
           title: S.optional(S.String),
           subtitle: S.optional(S.String),
           welcomeMessage: S.optional(S.String),
           samplePromptsControlMode: S.optional(S.String),
-          identityProviderConfiguration: S.optional(__S(155, __c19, 3)),
-          origins: S.optional(__S(0, __c0, 0)),
-          browserExtensionConfiguration: S.optional(__S(156, __c19, 4)),
-          customizationConfiguration: S.optional(__S(157, __c19, 5)),
+          identityProviderConfiguration: S.optional(__S(1538, __c48, 2)),
+          origins: S.optional(__S(32, __c1, 0)),
+          browserExtensionConfiguration: S.optional(__S(1539, __c48, 3)),
+          customizationConfiguration: S.optional(__S(1540, __c48, 4)),
         }).pipe(
           T.all(
             T.Http({
@@ -8570,15 +8893,8 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "UpdateWebExperienceRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 7:
-      return S.Array(__S(334, __c41, 6));
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

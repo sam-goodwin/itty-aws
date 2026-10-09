@@ -341,8 +341,8 @@ export const createProjectsRegistrationsTopicSubscriptions: API.OperationMethod<
   CreateProjectsRegistrationsTopicSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateProjectsRegistrationsTopicSubscriptionsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<TopicSubscription>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsRegistrationsTopicSubscriptionsRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<TopicSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -361,8 +361,8 @@ export const deleteProjectsRegistrationsTopicSubscriptions: API.OperationMethod<
   DeleteProjectsRegistrationsTopicSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteProjectsRegistrationsTopicSubscriptionsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteProjectsRegistrationsTopicSubscriptionsRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -376,8 +376,8 @@ export const getProjectsRegistrationsTopicSubscriptions: API.OperationMethod<
   GetProjectsRegistrationsTopicSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetProjectsRegistrationsTopicSubscriptionsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<TopicSubscription>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetProjectsRegistrationsTopicSubscriptionsRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<TopicSubscription>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -392,8 +392,8 @@ export const listProjectsRegistrationsTopicSubscriptions: API.PaginatedOperation
   GcpOpContext,
   ListTopicSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListProjectsRegistrationsTopicSubscriptionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListTopicSubscriptionsResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListProjectsRegistrationsTopicSubscriptionsRequest>,
+  output: __S(66, __c4, 2) as any as S.Schema<ListTopicSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -413,8 +413,8 @@ export const patchProjectsRegistrationsTopicSubscriptions: API.OperationMethod<
   PatchProjectsRegistrationsTopicSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<PatchProjectsRegistrationsTopicSubscriptionsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<TopicSubscription>,
+  input: __S(80, __c5, 0) as any as S.Schema<PatchProjectsRegistrationsTopicSubscriptionsRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<TopicSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -428,8 +428,8 @@ export const sendProjectsMessages: API.OperationMethod<
   SendProjectsMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<SendProjectsMessagesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Message>,
+  input: __S(111, __c6, 15) as any as S.Schema<SendProjectsMessagesRequest>,
+  output: __S(109, __c6, 13) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -441,17 +441,9 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          topicName: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TopicSubscription" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           topicName: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -462,7 +454,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateProjectsRegistrationsTopicSubscriptionsRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          topicName: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TopicSubscription" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -473,11 +481,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsRegistrationsTopicSubscriptionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -487,7 +499,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetProjectsRegistrationsTopicSubscriptionsRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -503,12 +519,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListProjectsRegistrationsTopicSubscriptionsRequest",
       });
-    case 6:
-      return S.Array(__S(0, __c0, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          topicSubscriptions: S.optional(__S(6, __c0, 6)),
+          topicSubscriptions: S.optional(__S(65, __c4, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -516,21 +532,25 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://fcm.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchProjectsRegistrationsTopicSubscriptionsRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.optional(S.String),
@@ -538,55 +558,51 @@ function __c1(j: number): any {
           image: S.optional(S.String),
         }),
       ).annotate({ identifier: "Notification" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           analyticsLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "FcmOptions" });
-    case 3:
+    case 2:
       return S.Record(S.String, S.Unknown);
-    case 4:
+    case 3:
       return S.Record(S.String, S.String);
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           image: S.optional(S.String),
           analyticsLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApnsFcmOptions" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          payload: S.optional(__S(11, __c1, 3)),
+          payload: S.optional(__S(98, __c6, 2)),
           liveActivityToken: S.optional(S.String),
-          headers: S.optional(__S(12, __c1, 4)),
-          fcmOptions: S.optional(__S(13, __c1, 5)),
+          headers: S.optional(__S(99, __c6, 3)),
+          fcmOptions: S.optional(__S(100, __c6, 4)),
         }),
       ).annotate({ identifier: "ApnsConfig" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           link: S.optional(S.String),
           analyticsLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebpushFcmOptions" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(__S(12, __c1, 4)),
-          notification: S.optional(__S(11, __c1, 3)),
-          data: S.optional(__S(12, __c1, 4)),
-          fcmOptions: S.optional(__S(15, __c1, 7)),
+          headers: S.optional(__S(99, __c6, 3)),
+          notification: S.optional(__S(98, __c6, 2)),
+          data: S.optional(__S(99, __c6, 3)),
+          fcmOptions: S.optional(__S(102, __c6, 6)),
         }),
       ).annotate({ identifier: "WebpushConfig" });
-    case 1:
+    case 8:
       return S.Array(S.String);
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           green: S.optional(S.Number),
@@ -595,15 +611,15 @@ function __c2(j: number): any {
           alpha: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Color" });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           lightOffDuration: S.optional(S.String),
           lightOnDuration: S.optional(S.String),
-          color: S.optional(__S(18, __c2, 2)),
+          color: S.optional(__S(105, __c6, 9)),
         }),
       ).annotate({ identifier: "LightSettings" });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           channelId: S.optional(S.String),
@@ -613,7 +629,7 @@ function __c2(j: number): any {
           bypassProxyNotification: S.optional(S.Boolean),
           defaultVibrateTimings: S.optional(S.Boolean),
           title: S.optional(S.String),
-          bodyLocArgs: S.optional(__S(17, __c2, 1)),
+          bodyLocArgs: S.optional(__S(104, __c6, 8)),
           titleLocKey: S.optional(S.String),
           image: S.optional(S.String),
           sound: S.optional(S.String),
@@ -621,67 +637,63 @@ function __c2(j: number): any {
           localOnly: S.optional(S.Boolean),
           icon: S.optional(S.String),
           bodyLocKey: S.optional(S.String),
-          titleLocArgs: S.optional(__S(17, __c2, 1)),
+          titleLocArgs: S.optional(__S(104, __c6, 8)),
           proxy: S.optional(S.String),
           defaultLightSettings: S.optional(S.Boolean),
           body: S.optional(S.String),
-          vibrateTimings: S.optional(__S(17, __c2, 1)),
+          vibrateTimings: S.optional(__S(104, __c6, 8)),
           tag: S.optional(S.String),
           color: S.optional(S.String),
           visibility: S.optional(S.String),
-          lightSettings: S.optional(__S(19, __c2, 3)),
+          lightSettings: S.optional(__S(106, __c6, 10)),
           eventTime: S.optional(S.String),
           sticky: S.optional(S.Boolean),
           clickAction: S.optional(S.String),
         }),
       ).annotate({ identifier: "AndroidNotification" });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(12, __c1, 4)),
-          fcmOptions: S.optional(__S(10, __c1, 2)),
+          data: S.optional(__S(99, __c6, 3)),
+          fcmOptions: S.optional(__S(97, __c6, 1)),
           ttl: S.optional(S.String),
           collapseKey: S.optional(S.String),
           restrictedPackageName: S.optional(S.String),
           priority: S.optional(S.String),
           directBootOk: S.optional(S.Boolean),
-          notification: S.optional(__S(20, __c2, 4)),
+          notification: S.optional(__S(107, __c6, 11)),
           bandwidthConstrainedOk: S.optional(S.Boolean),
           restrictedSatelliteOk: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AndroidConfig" });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           fid: S.optional(S.String),
-          notification: S.optional(__S(9, __c1, 1)),
-          fcmOptions: S.optional(__S(10, __c1, 2)),
+          notification: S.optional(__S(96, __c6, 0)),
+          fcmOptions: S.optional(__S(97, __c6, 1)),
           token: S.optional(S.String),
-          apns: S.optional(__S(14, __c1, 6)),
-          data: S.optional(__S(12, __c1, 4)),
+          apns: S.optional(__S(101, __c6, 5)),
+          data: S.optional(__S(99, __c6, 3)),
           condition: S.optional(S.String),
           topic: S.optional(S.String),
-          webpush: S.optional(__S(16, __c2, 0)),
+          webpush: S.optional(__S(103, __c6, 7)),
           name: S.optional(S.String),
-          android: S.optional(__S(21, __c2, 5)),
+          android: S.optional(__S(108, __c6, 12)),
         }),
       ).annotate({ identifier: "Message" });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(22, __c2, 6)),
+          message: S.optional(__S(109, __c6, 13)),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SendMessageRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(110, __c6, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -694,7 +706,6 @@ function __c3(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

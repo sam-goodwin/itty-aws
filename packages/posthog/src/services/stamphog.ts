@@ -457,7 +457,7 @@ export const createStamphogRepoConfig: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateStamphogRepoConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StamphogRepoConfig>,
+  output: __S(4, __c1, 0) as any as S.Schema<StamphogRepoConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -471,8 +471,8 @@ export const createStamphogRepoConfigsSyncInstallation: API.OperationMethod<
   CreateStamphogRepoConfigsSyncInstallationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateStamphogRepoConfigsSyncInstallationRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<StamphogSyncInstallationResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateStamphogRepoConfigsSyncInstallationRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<StamphogSyncInstallationResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -486,8 +486,8 @@ export const createStamphogReviewRun: API.OperationMethod<
   CreateStamphogReviewRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateStamphogReviewRunRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ReviewRequestResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<CreateStamphogReviewRunRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<ReviewRequestResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -501,8 +501,8 @@ export const getStamphogDigestRun: API.OperationMethod<
   GetStamphogDigestRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetStamphogDigestRunRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DigestRun>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetStamphogDigestRunRequest>,
+  output: __S(63, __c15, 3) as any as S.Schema<DigestRun>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -516,8 +516,8 @@ export const getStamphogPullRequest: API.OperationMethod<
   GetStamphogPullRequestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetStamphogPullRequestRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<StamphogPullRequest>,
+  input: __S(64, __c16, 0) as any as S.Schema<GetStamphogPullRequestRequest>,
+  output: __S(68, __c17, 0) as any as S.Schema<StamphogPullRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -531,8 +531,8 @@ export const getStamphogRepoConfig: API.OperationMethod<
   GetStamphogRepoConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetStamphogRepoConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StamphogRepoConfig>,
+  input: __S(72, __c18, 0) as any as S.Schema<GetStamphogRepoConfigRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<StamphogRepoConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -546,8 +546,8 @@ export const getStamphogRepoConfigsAvailableRepository: API.OperationMethod<
   GetStamphogRepoConfigsAvailableRepositoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetStamphogRepoConfigsAvailableRepositoryRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<StamphogAvailableRepositories>,
+  input: __S(76, __c19, 0) as any as S.Schema<GetStamphogRepoConfigsAvailableRepositoryRequest>,
+  output: __S(77, __c19, 1) as any as S.Schema<StamphogAvailableRepositories>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -561,8 +561,8 @@ export const getStamphogReviewRun: API.OperationMethod<
   GetStamphogReviewRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetStamphogReviewRunRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ReviewRun>,
+  input: __S(80, __c20, 0) as any as S.Schema<GetStamphogReviewRunRequest>,
+  output: __S(55, __c13, 3) as any as S.Schema<ReviewRun>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -576,8 +576,8 @@ export const listStamphogDigestRuns: API.OperationMethod<
   ListStamphogDigestRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListStamphogDigestRunsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<PaginatedDigestRunList>,
+  input: __S(84, __c21, 0) as any as S.Schema<ListStamphogDigestRunsRequest>,
+  output: __S(86, __c21, 2) as any as S.Schema<PaginatedDigestRunList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -591,8 +591,8 @@ export const listStamphogPullRequests: API.OperationMethod<
   ListStamphogPullRequestsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListStamphogPullRequestsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<PaginatedStamphogPullRequestList>,
+  input: __S(88, __c22, 0) as any as S.Schema<ListStamphogPullRequestsRequest>,
+  output: __S(90, __c22, 2) as any as S.Schema<PaginatedStamphogPullRequestList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -606,8 +606,8 @@ export const listStamphogRepoConfigs: API.OperationMethod<
   ListStamphogRepoConfigsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListStamphogRepoConfigsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PaginatedStamphogRepoConfigList>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListStamphogRepoConfigsRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<PaginatedStamphogRepoConfigList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -621,8 +621,8 @@ export const listStamphogReviewRuns: API.OperationMethod<
   ListStamphogReviewRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListStamphogReviewRunsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<PaginatedReviewRunList>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListStamphogReviewRunsRequest>,
+  output: __S(26, __c6, 2) as any as S.Schema<PaginatedReviewRunList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -636,8 +636,8 @@ export const stamphogRepoConfigsAddRepositoryCreate: API.OperationMethod<
   StamphogRepoConfigsAddRepositoryCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<StamphogRepoConfigsAddRepositoryCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StamphogRepoConfig>,
+  input: __S(28, __c7, 0) as any as S.Schema<StamphogRepoConfigsAddRepositoryCreateRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<StamphogRepoConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -651,8 +651,8 @@ export const stamphogRepoConfigsDestroy: API.OperationMethod<
   StamphogRepoConfigsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<StamphogRepoConfigsDestroyRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<StamphogRepoConfigsDestroyResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<StamphogRepoConfigsDestroyRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<StamphogRepoConfigsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -666,8 +666,8 @@ export const stamphogRepoConfigsInstallInfoRetrieve: API.OperationMethod<
   StamphogRepoConfigsInstallInfoRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<StamphogRepoConfigsInstallInfoRetrieveRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<StamphogInstallInfo>,
+  input: __S(36, __c9, 0) as any as S.Schema<StamphogRepoConfigsInstallInfoRetrieveRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<StamphogInstallInfo>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -681,8 +681,8 @@ export const updateStamphogRepoConfig: API.OperationMethod<
   UpdateStamphogRepoConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdateStamphogRepoConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StamphogRepoConfig>,
+  input: __S(40, __c10, 0) as any as S.Schema<UpdateStamphogRepoConfigRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<StamphogRepoConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -696,8 +696,8 @@ export const updateStamphogRepoConfigsPartial: API.OperationMethod<
   UpdateStamphogRepoConfigsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UpdateStamphogRepoConfigsPartialRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StamphogRepoConfig>,
+  input: __S(44, __c11, 0) as any as S.Schema<UpdateStamphogRepoConfigsPartialRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<StamphogRepoConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -726,7 +726,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateStamphogRepoConfigRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -742,7 +746,11 @@ function __c0(j: number): any {
           updated_at: S.String,
         }),
       ).annotate({ identifier: "StamphogRepoConfig" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -759,11 +767,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateStamphogRepoConfigsSyncInstallationRequest",
       });
-    case 3:
-      return S.Array(__S(1, __c0, 1));
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -772,309 +776,37 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "StamphogDiscoveredInstallation",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          synced: __S(3, __c0, 3),
-          skipped: __S(4, __c0, 4),
+          synced: __S(12, __c3, 0),
+          skipped: __S(16, __c4, 0),
           available_count: S.Number,
           app_not_installed: S.Boolean,
-          installations: __S(6, __c0, 6),
+          installations: __S(10, __c2, 2),
         }),
       ).annotate({
         identifier: "StamphogSyncInstallationResponse",
       });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          repository: S.String,
-          pr_number: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/stamphog/review_runs/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStamphogReviewRunRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          gate_blocked: S.Boolean,
-          final_verdict: S.String,
-        }),
-      ).annotate({ identifier: "GateResultSummary" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          stamphog_version: S.String,
-          reviewer_exit_code: S.Number,
-        }),
-      ).annotate({ identifier: "ReviewOutputSummary" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          reasoning: S.NullOr(S.String),
-          showstoppers: S.NullOr(__S(4, __c0, 4)),
-          review_body: S.NullOr(S.String),
-          change_summary: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ReviewReasoning" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          pull_request: S.String,
-          repository: S.String,
-          pr_number: S.Number,
-          pr_url: S.String,
-          title: S.String,
-          author_login: S.String,
-          head_sha: S.String,
-          head_branch: S.String,
-          delivery_id: S.NullOr(S.String),
-          trigger: S.String,
-          status: S.String,
-          verdict: S.String,
-          gate_result: __S(9, __c1, 1),
-          output: __S(10, __c1, 2) as any as S.Schema<ReviewOutputSummary>,
-          reasoning: S.NullOr(__S(11, __c1, 3)),
-          error: S.String,
-          posted_review_id: S.NullOr(S.Number),
-          verdict_posted_at: S.NullOr(S.String),
-          approval_dismissed_at: S.NullOr(S.String),
-          created_at: S.String,
-          updated_at: S.String,
-          completed_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ReviewRun" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          run: __S(12, __c1, 4),
-          created: S.Boolean,
-        }),
-      ).annotate({ identifier: "ReviewRequestResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/stamphog/digest_runs/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetStamphogDigestRunRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pr_number: S.Number,
-          title: S.String,
-          url: S.String,
-          author_login: S.String,
-          summary: S.String,
-          repository: S.String,
-        }),
-      ).annotate({ identifier: "DigestSummaryPR" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          headline: S.String,
-          prs: __S(16, __c2, 0),
-        }),
-      ).annotate({ identifier: "DigestSummary" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          audience_key: S.String,
-          slack_channel_id: S.String,
-          slack_channel_name: S.String,
-          resolution_source: S.String,
-          status: S.String,
-          pr_count: S.Number,
-          summary: __S(17, __c2, 1),
-          slack_message_ts: S.String,
-          error: S.String,
-          created_at: S.String,
-          posted_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "DigestRun" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/stamphog/pull_requests/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetStamphogPullRequestRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          repository: S.String,
-          pr_number: S.Number,
-          title: S.String,
-          author_login: S.String,
-          pr_url: S.String,
-          head_branch: S.String,
-          merged: S.Boolean,
-          merged_at: S.NullOr(S.String),
-          merge_commit_sha: S.String,
-          additions: S.Number,
-          deletions: S.Number,
-          changed_files: S.Number,
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "StamphogPullRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/stamphog/repo_configs/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetStamphogRepoConfigRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/stamphog/repo_configs/available_repositories/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetStamphogRepoConfigsAvailableRepositoryRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          repositories: __S(4, __c0, 4),
-          total_count: S.Number,
-          has_installation: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "StamphogAvailableRepositories",
-      });
-  }
-}
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/stamphog/review_runs/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetStamphogReviewRunRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          slack_channel_id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/stamphog/digest_runs/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListStamphogDigestRunsRequest",
-      });
-    case 2:
-      return S.Array(__S(18, __c2, 2));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(26, __c3, 2),
-        }),
-      ).annotate({ identifier: "PaginatedDigestRunList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          merged: S.optional(S.Boolean.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          pr_number: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/stamphog/pull_requests/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListStamphogPullRequestsRequest",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(29, __c3, 5),
-        }),
-      ).annotate({
-        identifier: "PaginatedStamphogPullRequestList",
-      });
-    case 7:
+      return S.Array(__S(4, __c1, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1090,22 +822,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListStamphogRepoConfigsRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(3, __c0, 3),
+          results: __S(12, __c3, 0),
         }),
       ).annotate({
         identifier: "PaginatedStamphogRepoConfigList",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1125,18 +857,22 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListStamphogReviewRunsRequest",
       });
+    case 1:
+      return S.Array(__S(55, __c13, 3));
     case 2:
-      return S.Array(__S(12, __c1, 4));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(34, __c4, 2),
+          results: __S(25, __c6, 1),
         }),
       ).annotate({ identifier: "PaginatedReviewRunList" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1151,7 +887,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StamphogRepoConfigsAddRepositoryCreateRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1166,11 +906,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StamphogRepoConfigsDestroyRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "StamphogRepoConfigsDestroyResponse",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1184,11 +928,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StamphogRepoConfigsInstallInfoRetrieveRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           app_slug: S.String,
@@ -1196,7 +936,11 @@ function __c5(j: number): any {
           authorize_url: S.String,
         }),
       ).annotate({ identifier: "StamphogInstallInfo" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1217,7 +961,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateStamphogRepoConfigRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1240,7 +988,326 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          repository: S.String,
+          pr_number: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/stamphog/review_runs/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStamphogReviewRunRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          run: __S(55, __c13, 3),
+          created: S.Boolean,
+        }),
+      ).annotate({ identifier: "ReviewRequestResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gate_blocked: S.Boolean,
+          final_verdict: S.String,
+        }),
+      ).annotate({ identifier: "GateResultSummary" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stamphog_version: S.String,
+          reviewer_exit_code: S.Number,
+        }),
+      ).annotate({ identifier: "ReviewOutputSummary" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reasoning: S.NullOr(S.String),
+          showstoppers: S.NullOr(__S(16, __c4, 0)),
+          review_body: S.NullOr(S.String),
+          change_summary: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ReviewReasoning" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          pull_request: S.String,
+          repository: S.String,
+          pr_number: S.Number,
+          pr_url: S.String,
+          title: S.String,
+          author_login: S.String,
+          head_sha: S.String,
+          head_branch: S.String,
+          delivery_id: S.NullOr(S.String),
+          trigger: S.String,
+          status: S.String,
+          verdict: S.String,
+          gate_result: __S(52, __c13, 0),
+          output: __S(53, __c13, 1) as any as S.Schema<ReviewOutputSummary>,
+          reasoning: S.NullOr(__S(54, __c13, 2)),
+          error: S.String,
+          posted_review_id: S.NullOr(S.Number),
+          verdict_posted_at: S.NullOr(S.String),
+          approval_dismissed_at: S.NullOr(S.String),
+          created_at: S.String,
+          updated_at: S.String,
+          completed_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ReviewRun" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/stamphog/digest_runs/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetStamphogDigestRunRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pr_number: S.Number,
+          title: S.String,
+          url: S.String,
+          author_login: S.String,
+          summary: S.String,
+          repository: S.String,
+        }),
+      ).annotate({ identifier: "DigestSummaryPR" });
+    case 1:
+      return S.Array(__S(60, __c15, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          headline: S.String,
+          prs: __S(61, __c15, 1),
+        }),
+      ).annotate({ identifier: "DigestSummary" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          audience_key: S.String,
+          slack_channel_id: S.String,
+          slack_channel_name: S.String,
+          resolution_source: S.String,
+          status: S.String,
+          pr_count: S.Number,
+          summary: __S(62, __c15, 2),
+          slack_message_ts: S.String,
+          error: S.String,
+          created_at: S.String,
+          posted_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "DigestRun" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/stamphog/pull_requests/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetStamphogPullRequestRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          repository: S.String,
+          pr_number: S.Number,
+          title: S.String,
+          author_login: S.String,
+          pr_url: S.String,
+          head_branch: S.String,
+          merged: S.Boolean,
+          merged_at: S.NullOr(S.String),
+          merge_commit_sha: S.String,
+          additions: S.Number,
+          deletions: S.Number,
+          changed_files: S.Number,
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "StamphogPullRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/stamphog/repo_configs/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetStamphogRepoConfigRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/stamphog/repo_configs/available_repositories/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetStamphogRepoConfigsAvailableRepositoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          repositories: __S(16, __c4, 0),
+          total_count: S.Number,
+          has_installation: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "StamphogAvailableRepositories",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/stamphog/review_runs/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetStamphogReviewRunRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          slack_channel_id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/stamphog/digest_runs/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListStamphogDigestRunsRequest",
+      });
+    case 1:
+      return S.Array(__S(63, __c15, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(85, __c21, 1),
+        }),
+      ).annotate({ identifier: "PaginatedDigestRunList" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          merged: S.optional(S.Boolean.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          pr_number: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/stamphog/pull_requests/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListStamphogPullRequestsRequest",
+      });
+    case 1:
+      return S.Array(__S(68, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(89, __c22, 1),
+        }),
+      ).annotate({
+        identifier: "PaginatedStamphogPullRequestList",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -2176,8 +2176,8 @@ export const batchCreateProjectsLocationsNotes: API.OperationMethod<
   BatchCreateProjectsLocationsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<BatchCreateProjectsLocationsNotesRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<BatchCreateNotesResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<BatchCreateProjectsLocationsNotesRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<BatchCreateNotesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2196,8 +2196,8 @@ export const batchCreateProjectsLocationsOccurrences: API.OperationMethod<
   BatchCreateProjectsLocationsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<BatchCreateProjectsLocationsOccurrencesRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<BatchCreateOccurrencesResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<BatchCreateProjectsLocationsOccurrencesRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<BatchCreateOccurrencesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2216,8 +2216,8 @@ export const batchCreateProjectsNotes: API.OperationMethod<
   BatchCreateProjectsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<BatchCreateProjectsNotesRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<BatchCreateNotesResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<BatchCreateProjectsNotesRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<BatchCreateNotesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2236,8 +2236,8 @@ export const batchCreateProjectsOccurrences: API.OperationMethod<
   BatchCreateProjectsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<BatchCreateProjectsOccurrencesRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<BatchCreateOccurrencesResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<BatchCreateProjectsOccurrencesRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<BatchCreateOccurrencesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2256,8 +2256,8 @@ export const createProjectsLocationsNotes: API.OperationMethod<
   CreateProjectsLocationsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<CreateProjectsLocationsNotesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Note>,
+  input: __S(2016, __c63, 0) as any as S.Schema<CreateProjectsLocationsNotesRequest>,
+  output: __S(1405, __c43, 29) as any as S.Schema<Note>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2276,8 +2276,8 @@ export const createProjectsLocationsOccurrences: API.OperationMethod<
   CreateProjectsLocationsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<CreateProjectsLocationsOccurrencesRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<Occurrence>,
+  input: __S(2048, __c64, 0) as any as S.Schema<CreateProjectsLocationsOccurrencesRequest>,
+  output: __S(1928, __c60, 8) as any as S.Schema<Occurrence>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2291,8 +2291,8 @@ export const createProjectsNotes: API.OperationMethod<
   CreateProjectsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<CreateProjectsNotesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Note>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsNotesRequest>,
+  output: __S(1405, __c43, 29) as any as S.Schema<Note>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2311,8 +2311,8 @@ export const createProjectsOccurrences: API.OperationMethod<
   CreateProjectsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<CreateProjectsOccurrencesRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<Occurrence>,
+  input: __S(32, __c1, 0) as any as S.Schema<CreateProjectsOccurrencesRequest>,
+  output: __S(1928, __c60, 8) as any as S.Schema<Occurrence>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2331,8 +2331,8 @@ export const deleteProjectsLocationsNotes: API.OperationMethod<
   DeleteProjectsLocationsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<DeleteProjectsLocationsNotesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteProjectsLocationsNotesRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2351,8 +2351,8 @@ export const deleteProjectsLocationsOccurrences: API.OperationMethod<
   DeleteProjectsLocationsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<DeleteProjectsLocationsOccurrencesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteProjectsLocationsOccurrencesRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2366,8 +2366,8 @@ export const deleteProjectsNotes: API.OperationMethod<
   DeleteProjectsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteProjectsNotesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteProjectsNotesRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2386,8 +2386,8 @@ export const deleteProjectsOccurrences: API.OperationMethod<
   DeleteProjectsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<DeleteProjectsOccurrencesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteProjectsOccurrencesRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2406,8 +2406,8 @@ export const exportSBOMProjectsLocationsResources: API.OperationMethod<
   ExportSBOMProjectsLocationsResourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ExportSBOMProjectsLocationsResourcesRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<ExportSBOMResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ExportSBOMProjectsLocationsResourcesRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<ExportSBOMResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2426,8 +2426,8 @@ export const exportSBOMProjectsResources: API.OperationMethod<
   ExportSBOMProjectsResourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ExportSBOMProjectsResourcesRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<ExportSBOMResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<ExportSBOMProjectsResourcesRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<ExportSBOMResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2446,8 +2446,8 @@ export const getIamPolicyProjectsLocationsNotes: API.OperationMethod<
   GetIamPolicyProjectsLocationsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<GetIamPolicyProjectsLocationsNotesRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<Policy>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetIamPolicyProjectsLocationsNotesRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2466,8 +2466,8 @@ export const getIamPolicyProjectsLocationsOccurrences: API.OperationMethod<
   GetIamPolicyProjectsLocationsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<GetIamPolicyProjectsLocationsOccurrencesRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<Policy>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetIamPolicyProjectsLocationsOccurrencesRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2486,8 +2486,8 @@ export const getIamPolicyProjectsNotes: API.OperationMethod<
   GetIamPolicyProjectsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<GetIamPolicyProjectsNotesRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<Policy>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetIamPolicyProjectsNotesRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2506,8 +2506,8 @@ export const getIamPolicyProjectsOccurrences: API.OperationMethod<
   GetIamPolicyProjectsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<GetIamPolicyProjectsOccurrencesRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<Policy>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetIamPolicyProjectsOccurrencesRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2521,8 +2521,8 @@ export const getNotesProjectsLocationsOccurrences: API.OperationMethod<
   GetNotesProjectsLocationsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<GetNotesProjectsLocationsOccurrencesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Note>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetNotesProjectsLocationsOccurrencesRequest>,
+  output: __S(1405, __c43, 29) as any as S.Schema<Note>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2536,8 +2536,8 @@ export const getNotesProjectsOccurrences: API.OperationMethod<
   GetNotesProjectsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<GetNotesProjectsOccurrencesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Note>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetNotesProjectsOccurrencesRequest>,
+  output: __S(1405, __c43, 29) as any as S.Schema<Note>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2551,8 +2551,8 @@ export const getProjectsLocationsNotes: API.OperationMethod<
   GetProjectsLocationsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<GetProjectsLocationsNotesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Note>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetProjectsLocationsNotesRequest>,
+  output: __S(1405, __c43, 29) as any as S.Schema<Note>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2566,8 +2566,8 @@ export const getProjectsLocationsOccurrences: API.OperationMethod<
   GetProjectsLocationsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<GetProjectsLocationsOccurrencesRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<Occurrence>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetProjectsLocationsOccurrencesRequest>,
+  output: __S(1928, __c60, 8) as any as S.Schema<Occurrence>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2581,8 +2581,8 @@ export const getProjectsNotes: API.OperationMethod<
   GetProjectsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<GetProjectsNotesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Note>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetProjectsNotesRequest>,
+  output: __S(1405, __c43, 29) as any as S.Schema<Note>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2596,8 +2596,8 @@ export const getProjectsOccurrences: API.OperationMethod<
   GetProjectsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<GetProjectsOccurrencesRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<Occurrence>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetProjectsOccurrencesRequest>,
+  output: __S(1928, __c60, 8) as any as S.Schema<Occurrence>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2615,11 +2615,11 @@ export const getVulnerabilitySummaryProjectsLocationsOccurrences: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    190,
-    __c23,
-    6,
+    672,
+    __c21,
+    0,
   ) as any as S.Schema<GetVulnerabilitySummaryProjectsLocationsOccurrencesRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<VulnerabilityOccurrencesSummary>,
+  output: __S(706, __c22, 2) as any as S.Schema<VulnerabilityOccurrencesSummary>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2633,8 +2633,8 @@ export const getVulnerabilitySummaryProjectsOccurrences: API.OperationMethod<
   GetVulnerabilitySummaryProjectsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<GetVulnerabilitySummaryProjectsOccurrencesRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<VulnerabilityOccurrencesSummary>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetVulnerabilitySummaryProjectsOccurrencesRequest>,
+  output: __S(706, __c22, 2) as any as S.Schema<VulnerabilityOccurrencesSummary>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2649,8 +2649,8 @@ export const listProjectsLocationsNotes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ListProjectsLocationsNotesRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<ListNotesResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListProjectsLocationsNotesRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<ListNotesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2666,8 +2666,8 @@ export const listProjectsLocationsNotesOccurrences: API.PaginatedOperationMethod
   GcpOpContext,
   ListNoteOccurrencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<ListProjectsLocationsNotesOccurrencesRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<ListNoteOccurrencesResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListProjectsLocationsNotesOccurrencesRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<ListNoteOccurrencesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2683,8 +2683,8 @@ export const listProjectsLocationsOccurrences: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOccurrencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<ListProjectsLocationsOccurrencesRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<ListOccurrencesResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListProjectsLocationsOccurrencesRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<ListOccurrencesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2700,8 +2700,8 @@ export const listProjectsNotes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<ListProjectsNotesRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<ListNotesResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListProjectsNotesRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<ListNotesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2717,8 +2717,8 @@ export const listProjectsNotesOccurrences: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNoteOccurrencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<ListProjectsNotesOccurrencesRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<ListNoteOccurrencesResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListProjectsNotesOccurrencesRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<ListNoteOccurrencesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2734,8 +2734,8 @@ export const listProjectsOccurrences: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOccurrencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<ListProjectsOccurrencesRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<ListOccurrencesResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListProjectsOccurrencesRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<ListOccurrencesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2755,8 +2755,8 @@ export const patchProjectsLocationsNotes: API.OperationMethod<
   PatchProjectsLocationsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<PatchProjectsLocationsNotesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Note>,
+  input: __S(1056, __c33, 0) as any as S.Schema<PatchProjectsLocationsNotesRequest>,
+  output: __S(1405, __c43, 29) as any as S.Schema<Note>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2775,8 +2775,8 @@ export const patchProjectsLocationsOccurrences: API.OperationMethod<
   PatchProjectsLocationsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<PatchProjectsLocationsOccurrencesRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<Occurrence>,
+  input: __S(1088, __c34, 0) as any as S.Schema<PatchProjectsLocationsOccurrencesRequest>,
+  output: __S(1928, __c60, 8) as any as S.Schema<Occurrence>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2790,8 +2790,8 @@ export const patchProjectsNotes: API.OperationMethod<
   PatchProjectsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<PatchProjectsNotesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Note>,
+  input: __S(1120, __c35, 0) as any as S.Schema<PatchProjectsNotesRequest>,
+  output: __S(1405, __c43, 29) as any as S.Schema<Note>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2810,8 +2810,8 @@ export const patchProjectsOccurrences: API.OperationMethod<
   PatchProjectsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<PatchProjectsOccurrencesRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<Occurrence>,
+  input: __S(1152, __c36, 0) as any as S.Schema<PatchProjectsOccurrencesRequest>,
+  output: __S(1928, __c60, 8) as any as S.Schema<Occurrence>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2830,8 +2830,8 @@ export const setIamPolicyProjectsLocationsNotes: API.OperationMethod<
   SetIamPolicyProjectsLocationsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<SetIamPolicyProjectsLocationsNotesRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<Policy>,
+  input: __S(1408, __c44, 0) as any as S.Schema<SetIamPolicyProjectsLocationsNotesRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2850,8 +2850,8 @@ export const setIamPolicyProjectsLocationsOccurrences: API.OperationMethod<
   SetIamPolicyProjectsLocationsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<SetIamPolicyProjectsLocationsOccurrencesRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<Policy>,
+  input: __S(1472, __c46, 0) as any as S.Schema<SetIamPolicyProjectsLocationsOccurrencesRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2870,8 +2870,8 @@ export const setIamPolicyProjectsNotes: API.OperationMethod<
   SetIamPolicyProjectsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<SetIamPolicyProjectsNotesRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<Policy>,
+  input: __S(1504, __c47, 0) as any as S.Schema<SetIamPolicyProjectsNotesRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2890,8 +2890,8 @@ export const setIamPolicyProjectsOccurrences: API.OperationMethod<
   SetIamPolicyProjectsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<SetIamPolicyProjectsOccurrencesRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<Policy>,
+  input: __S(1536, __c48, 0) as any as S.Schema<SetIamPolicyProjectsOccurrencesRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2910,8 +2910,8 @@ export const testIamPermissionsProjectsLocationsNotes: API.OperationMethod<
   TestIamPermissionsProjectsLocationsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<TestIamPermissionsProjectsLocationsNotesRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsNotesRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2931,11 +2931,11 @@ export const testIamPermissionsProjectsLocationsOccurrences: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    215,
-    __c26,
-    7,
+    1632,
+    __c51,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsOccurrencesRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(1600, __c50, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2954,8 +2954,8 @@ export const testIamPermissionsProjectsNotes: API.OperationMethod<
   TestIamPermissionsProjectsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<TestIamPermissionsProjectsNotesRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<TestIamPermissionsProjectsNotesRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2974,8 +2974,8 @@ export const testIamPermissionsProjectsOccurrences: API.OperationMethod<
   TestIamPermissionsProjectsOccurrencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<TestIamPermissionsProjectsOccurrencesRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<TestIamPermissionsProjectsOccurrencesRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2985,46 +2985,742 @@ export const testIamPermissionsProjectsOccurrences: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "SecretNote",
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          noteId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1405, __c43, 29).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/notes",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsNotesRequest",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1928, __c60, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/occurrences",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsOccurrencesRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsNotesRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOccurrencesRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsNotesRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsOccurrencesRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:exportSBOM",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExportSBOMProjectsLocationsResourcesRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudStorageLocation: S.optional(__S(1344, __c42, 0)),
+        }),
+      ).annotate({ identifier: "ExportSBOMRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          humanReadableName: S.optional(S.String),
+          discoveryOccurrence: S.optional(S.String),
         }),
-      ).annotate({ identifier: "DSSEHint" });
+      ).annotate({ identifier: "ExportSBOMResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:exportSBOM",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExportSBOMProjectsResourcesRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(321, __c10, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsNotesRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestedPolicyVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GetPolicyOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(__S(320, __c10, 0)),
+        }),
+      ).annotate({ identifier: "GetIamPolicyRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          location: S.optional(S.String),
+          expression: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expr" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          condition: S.optional(__S(352, __c11, 0)),
+          members: S.optional(__S(1216, __c38, 0)),
+          role: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Binding" });
+    case 2:
+      return S.Array(__S(353, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.Number),
+          bindings: S.optional(__S(354, __c11, 2)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Policy" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(321, __c10, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsOccurrencesRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(321, __c10, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsNotesRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(321, __c10, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsOccurrencesRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/notes",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNotesProjectsLocationsOccurrencesRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/notes",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNotesProjectsOccurrencesRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsNotesRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsOccurrencesRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetProjectsNotesRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsOccurrencesRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/occurrences:vulnerabilitySummary",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetVulnerabilitySummaryProjectsLocationsOccurrencesRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          totalCount: S.optional(S.String),
+          resourceUri: S.optional(S.String),
+          fixableCount: S.optional(S.String),
+          severity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FixableTotalByDigest" });
+    case 1:
+      return S.Array(__S(704, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          hint: S.optional(__S(1, __c0, 1)),
+          counts: S.optional(__S(705, __c22, 1)),
+          unreachable: S.optional(__S(1216, __c38, 0)),
         }),
-      ).annotate({ identifier: "DSSEAttestationNote" });
-    case 3:
+      ).annotate({
+        identifier: "VulnerabilityOccurrencesSummary",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/occurrences:vulnerabilitySummary",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetVulnerabilitySummaryProjectsOccurrencesRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/notes",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsNotesRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          notes: S.optional(__S(1312, __c41, 0)),
+          unreachable: S.optional(__S(1216, __c38, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListNotesResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/occurrences",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsNotesOccurrencesRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          occurrences: S.optional(__S(1792, __c56, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListNoteOccurrencesResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/occurrences",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsOccurrencesRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(1216, __c38, 0)),
+          occurrences: S.optional(__S(1792, __c56, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOccurrencesResponse" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/notes",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListProjectsNotesRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/occurrences",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsNotesOccurrencesRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/occurrences",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsOccurrencesRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1405, __c43, 29).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsNotesRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1928, __c60, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsOccurrencesRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1405, __c43, 29).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsNotesRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1928, __c60, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsOccurrencesRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1281, __c40, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/notes:batchCreate",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsLocationsNotesRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           v1Name: S.optional(S.String),
-          v2Blob: S.optional(__S(3, __c0, 3)),
+          v2Blob: S.optional(__S(1216, __c38, 0)),
           v2Name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Fingerprint" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUrl: S.optional(S.String),
-          fingerprint: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ImageNote" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          format: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SBOMReferenceNote" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -3035,134 +3731,60 @@ function __c0(j: number): any {
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Version" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          digestBytes: S.optional(S.String),
-          algo: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Digest" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          maintainer: S.optional(S.String),
-          description: S.optional(S.String),
-          latestVersion: S.optional(__S(7, __c0, 7)),
-          architecture: S.optional(S.String),
-          cpeUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Distribution" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           comments: S.optional(S.String),
           expression: S.optional(S.String),
         }),
       ).annotate({ identifier: "License" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          maintainer: S.optional(S.String),
-          name: S.optional(S.String),
-          cpeUri: S.optional(S.String),
-          description: S.optional(S.String),
-          version: S.optional(__S(7, __c0, 7)),
-          digest: S.optional(__S(9, __c1, 1)),
-          url: S.optional(S.String),
-          packageType: S.optional(S.String),
-          architecture: S.optional(S.String),
-          distribution: S.optional(__S(11, __c1, 3)),
-          license: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "PackageNote" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
           label: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelatedUrl" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(1251, __c39, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           updateId: S.optional(S.String),
           revision: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Identity" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           categoryId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Category" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(1254, __c39, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(__S(16, __c2, 0)),
+          identity: S.optional(__S(1253, __c39, 5)),
           supportUrl: S.optional(S.String),
           lastPublishedTimestamp: S.optional(S.String),
           description: S.optional(S.String),
           title: S.optional(S.String),
-          categories: S.optional(__S(18, __c2, 2)),
-          kbArticleIds: S.optional(__S(3, __c0, 3)),
+          categories: S.optional(__S(1255, __c39, 7)),
+          kbArticleIds: S.optional(__S(1216, __c38, 0)),
         }),
       ).annotate({ identifier: "WindowsUpdate" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           cpeUri: S.optional(S.String),
-          cve: S.optional(__S(3, __c0, 3)),
+          cve: S.optional(__S(1216, __c38, 0)),
           classification: S.optional(S.String),
           severity: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpgradeDistribution" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          windowsUpdate: S.optional(__S(19, __c2, 3)),
-          package: S.optional(S.String),
-          version: S.optional(__S(7, __c0, 7)),
-          distributions: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "UpgradeNote" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "DeploymentNote" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileLevel: S.optional(S.Number),
-          severity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CisBenchmark" });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           cpeUri: S.optional(S.String),
@@ -3170,93 +3792,24 @@ function __c3(j: number): any {
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComplianceVersion" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          impact: S.optional(S.String),
-          title: S.optional(S.String),
-          scanInstructions: S.optional(S.String),
-          rationale: S.optional(S.String),
-          cisBenchmark: S.optional(__S(24, __c3, 0)),
-          remediation: S.optional(S.String),
-          version: S.optional(__S(26, __c3, 2)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ComplianceNote" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          builderVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BuildNote" });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           details: S.optional(S.String),
           justificationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Justification" });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          remediationUri: S.optional(__S(14, __c1, 6)),
+          remediationUri: S.optional(__S(1251, __c39, 3)),
           remediationType: S.optional(S.String),
           details: S.optional(S.String),
         }),
       ).annotate({ identifier: "Remediation" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          vulnerabilityId: S.optional(S.String),
-          impacts: S.optional(__S(3, __c0, 3)),
-          relatedUris: S.optional(__S(15, __c1, 7)),
-          state: S.optional(S.String),
-          cve: S.optional(S.String),
-          justification: S.optional(__S(29, __c3, 5)),
-          shortDescription: S.optional(S.String),
-          longDescription: S.optional(S.String),
-          remediations: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "Assessment" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          publisherNamespace: S.optional(S.String),
-          issuingAuthority: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Publisher" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          genericUri: S.optional(S.String),
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Product" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          assessment: S.optional(__S(32, __c4, 0)),
-          longDescription: S.optional(S.String),
-          publisher: S.optional(__S(33, __c4, 1)),
-          languageCode: S.optional(S.String),
-          product: S.optional(__S(34, __c4, 2)),
-          title: S.optional(S.String),
-          shortDescription: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VulnerabilityAssessmentNote",
-      });
-    case 4:
+    case 13:
+      return S.Array(__S(1260, __c39, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           privilegesRequired: S.optional(S.String),
@@ -3281,10 +3834,199 @@ function __c4(j: number): any {
           vulnerableSystemConfidentialityImpact: S.optional(S.String),
         }),
       ).annotate({ identifier: "CVSS" });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(1405, __c43, 29));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          affectedVersionStart: S.optional(__S(7, __c0, 7)),
+          notes: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({ identifier: "BatchCreateNotesRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          notes: S.optional(__S(1312, __c41, 0)),
+        }),
+      ).annotate({ identifier: "BatchCreateNotesResponse" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1405, __c43, 29));
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "SecretNote",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          humanReadableName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DSSEHint" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hint: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({ identifier: "DSSEAttestationNote" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUrl: S.optional(S.String),
+          fingerprint: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({ identifier: "ImageNote" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SBOMReferenceNote" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          digestBytes: S.optional(S.String),
+          algo: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Digest" });
+    case 5:
+      return S.Array(__S(1380, __c43, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          maintainer: S.optional(S.String),
+          description: S.optional(S.String),
+          latestVersion: S.optional(__S(1249, __c39, 1)),
+          architecture: S.optional(S.String),
+          cpeUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Distribution" });
+    case 7:
+      return S.Array(__S(1382, __c43, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          maintainer: S.optional(S.String),
+          name: S.optional(S.String),
+          cpeUri: S.optional(S.String),
+          description: S.optional(S.String),
+          version: S.optional(__S(1249, __c39, 1)),
+          digest: S.optional(__S(1381, __c43, 5)),
+          url: S.optional(S.String),
+          packageType: S.optional(S.String),
+          architecture: S.optional(S.String),
+          distribution: S.optional(__S(1383, __c43, 7)),
+          license: S.optional(__S(1250, __c39, 2)),
+        }),
+      ).annotate({ identifier: "PackageNote" });
+    case 9:
+      return S.Array(__S(1257, __c39, 9));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          windowsUpdate: S.optional(__S(1256, __c39, 8)),
+          package: S.optional(S.String),
+          version: S.optional(__S(1249, __c39, 1)),
+          distributions: S.optional(__S(1385, __c43, 9)),
+        }),
+      ).annotate({ identifier: "UpgradeNote" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.optional(__S(1216, __c38, 0)),
+        }),
+      ).annotate({ identifier: "DeploymentNote" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          profileLevel: S.optional(S.Number),
+          severity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CisBenchmark" });
+    case 13:
+      return S.Array(__S(1258, __c39, 10));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          impact: S.optional(S.String),
+          title: S.optional(S.String),
+          scanInstructions: S.optional(S.String),
+          rationale: S.optional(S.String),
+          cisBenchmark: S.optional(__S(1388, __c43, 12)),
+          remediation: S.optional(S.String),
+          version: S.optional(__S(1389, __c43, 13)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComplianceNote" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          builderVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BuildNote" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          vulnerabilityId: S.optional(S.String),
+          impacts: S.optional(__S(1216, __c38, 0)),
+          relatedUris: S.optional(__S(1252, __c39, 4)),
+          state: S.optional(S.String),
+          cve: S.optional(S.String),
+          justification: S.optional(__S(1259, __c39, 11)),
+          shortDescription: S.optional(S.String),
+          longDescription: S.optional(S.String),
+          remediations: S.optional(__S(1261, __c39, 13)),
+        }),
+      ).annotate({ identifier: "Assessment" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          publisherNamespace: S.optional(S.String),
+          issuingAuthority: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Publisher" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          genericUri: S.optional(S.String),
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Product" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          assessment: S.optional(__S(1392, __c43, 16)),
+          longDescription: S.optional(S.String),
+          publisher: S.optional(__S(1393, __c43, 17)),
+          languageCode: S.optional(S.String),
+          product: S.optional(__S(1394, __c43, 18)),
+          title: S.optional(S.String),
+          shortDescription: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VulnerabilityAssessmentNote",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          affectedVersionStart: S.optional(__S(1249, __c39, 1)),
           isObsolete: S.optional(S.Boolean),
           packageType: S.optional(S.String),
           description: S.optional(S.String),
@@ -3292,17 +4034,17 @@ function __c4(j: number): any {
           vendor: S.optional(S.String),
           fixedCpeUri: S.optional(S.String),
           affectedCpeUri: S.optional(S.String),
-          affectedVersionEnd: S.optional(__S(7, __c0, 7)),
+          affectedVersionEnd: S.optional(__S(1249, __c39, 1)),
           fixedPackage: S.optional(S.String),
-          fixedVersion: S.optional(__S(7, __c0, 7)),
+          fixedVersion: S.optional(__S(1249, __c39, 1)),
           sourceUpdateTime: S.optional(S.String),
           source: S.optional(S.String),
           severityName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Detail" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 21:
+      return S.Array(__S(1396, __c43, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           userInteraction: S.optional(S.String),
@@ -3318,1646 +4060,84 @@ function __c4(j: number): any {
           privilegesRequired: S.optional(S.String),
         }),
       ).annotate({ identifier: "CVSSv3" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "KnowledgeBase" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 24:
+      return S.Array(__S(1399, __c43, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          fixingKbs: S.optional(__S(41, __c5, 1)),
+          fixingKbs: S.optional(__S(1400, __c43, 24)),
           cpeUri: S.optional(S.String),
           description: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "WindowsDetail" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 26:
+      return S.Array(__S(1401, __c43, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           advisoryPublishTime: S.optional(S.String),
-          cvssV2: S.optional(__S(36, __c4, 4)),
-          details: S.optional(__S(38, __c4, 6)),
+          cvssV2: S.optional(__S(1262, __c39, 14)),
+          details: S.optional(__S(1397, __c43, 21)),
           cvssScore: S.optional(S.Number),
-          cvssV4: S.optional(__S(36, __c4, 4)),
+          cvssV4: S.optional(__S(1262, __c39, 14)),
           sourceUpdateTime: S.optional(S.String),
-          cvssV3: S.optional(__S(39, __c4, 7)),
+          cvssV3: S.optional(__S(1398, __c43, 22)),
           severity: S.optional(S.String),
-          windowsDetails: S.optional(__S(43, __c5, 3)),
+          windowsDetails: S.optional(__S(1402, __c43, 26)),
           cvssVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "VulnerabilityNote" });
-    case 5:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           analysisKind: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveryNote" });
-    case 6:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          secret: S.optional(__S(0, __c0, 0)),
+          secret: S.optional(__S(1344, __c42, 0)),
           shortDescription: S.optional(S.String),
-          dsseAttestation: S.optional(__S(2, __c0, 2)),
-          attestation: S.optional(__S(2, __c0, 2)),
-          image: S.optional(__S(5, __c0, 5)),
+          dsseAttestation: S.optional(__S(1377, __c43, 1)),
+          attestation: S.optional(__S(1377, __c43, 1)),
+          image: S.optional(__S(1378, __c43, 2)),
           name: S.optional(S.String),
           expirationTime: S.optional(S.String),
-          sbomReference: S.optional(__S(6, __c0, 6)),
+          sbomReference: S.optional(__S(1379, __c43, 3)),
           longDescription: S.optional(S.String),
-          package: S.optional(__S(13, __c1, 5)),
+          package: S.optional(__S(1384, __c43, 8)),
           createTime: S.optional(S.String),
-          relatedNoteNames: S.optional(__S(3, __c0, 3)),
-          relatedUrl: S.optional(__S(15, __c1, 7)),
+          relatedNoteNames: S.optional(__S(1216, __c38, 0)),
+          relatedUrl: S.optional(__S(1252, __c39, 4)),
           kind: S.optional(S.String),
-          upgrade: S.optional(__S(22, __c2, 6)),
-          deployment: S.optional(__S(23, __c2, 7)),
-          compliance: S.optional(__S(27, __c3, 3)),
+          upgrade: S.optional(__S(1386, __c43, 10)),
+          deployment: S.optional(__S(1387, __c43, 11)),
+          compliance: S.optional(__S(1390, __c43, 14)),
           updateTime: S.optional(S.String),
-          aiSkillAnalysis: S.optional(__S(0, __c0, 0)),
-          build: S.optional(__S(28, __c3, 4)),
-          vulnerabilityAssessment: S.optional(__S(35, __c4, 3)),
-          vulnerability: S.optional(__S(44, __c5, 4)),
-          discovery: S.optional(__S(45, __c5, 5)),
+          aiSkillAnalysis: S.optional(__S(1344, __c42, 0)),
+          build: S.optional(__S(1391, __c43, 15)),
+          vulnerabilityAssessment: S.optional(__S(1395, __c43, 19)),
+          vulnerability: S.optional(__S(1403, __c43, 27)),
+          discovery: S.optional(__S(1404, __c43, 28)),
         }),
       ).annotate({ identifier: "Note" });
-    case 7:
-      return S.Record(S.String, __S(46, __c5, 6));
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          notes: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "BatchCreateNotesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/notes:batchCreate",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsLocationsNotesRequest",
-      });
-    case 2:
-      return S.Array(__S(46, __c5, 6));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          notes: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "BatchCreateNotesResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          message: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecretStatus" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          registry: S.optional(S.String),
-          layerCount: S.optional(S.Number),
-          repository: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BaseImage" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          index: S.optional(S.Number),
-          diffId: S.optional(S.String),
-          chainId: S.optional(S.String),
-          command: S.optional(S.String),
-          baseImages: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "LayerDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          filePath: S.optional(S.String),
-          lineNumber: S.optional(S.Number),
-          layerDetails: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "GrafeasV1FileLocation" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fileLocation: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "SecretLocation" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          statuses: S.optional(__S(53, __c6, 5)),
-          locations: S.optional(__S(59, __c7, 3)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecretOccurrence" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          arguments: S.optional(S.String),
-          directive: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Layer" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          distance: S.optional(S.Number),
-          layerInfo: S.optional(__S(62, __c7, 6)),
-          baseResourceUrl: S.optional(S.String),
-          fingerprint: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ImageOccurrence" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          compactJwt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Jwt" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          signature: S.optional(S.String),
-          publicKeyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Signature" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          jwts: S.optional(__S(65, __c8, 1)),
-          serializedPayload: S.optional(S.String),
-          signatures: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({ identifier: "AttestationOccurrence" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          keyid: S.optional(S.String),
-          sig: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EnvelopeSignature" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          payload: S.optional(S.String),
-          payloadType: S.optional(S.String),
-          signatures: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({ identifier: "Envelope" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          definedInMaterial: S.optional(S.String),
-          environment: S.optional(__S(72, __c9, 0)),
-          entryPoint: S.optional(S.String),
-          type: S.optional(S.String),
-          arguments: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({ identifier: "SlsaRecipe" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          arguments: S.optional(S.Boolean),
-          materials: S.optional(S.Boolean),
-          environment: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SlsaCompleteness" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          buildInvocationId: S.optional(S.String),
-          completeness: S.optional(__S(74, __c9, 2)),
-          reproducible: S.optional(S.Boolean),
-          buildStartedOn: S.optional(S.String),
-          buildFinishedOn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SlsaMetadata" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          digest: S.optional(__S(76, __c9, 4)),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Material" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SlsaBuilder" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          recipe: S.optional(__S(73, __c9, 1)),
-          metadata: S.optional(__S(75, __c9, 3)),
-          materials: S.optional(__S(78, __c9, 6)),
-          builder: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "SlsaProvenance" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          digest: S.optional(__S(76, __c9, 4)),
-          entryPoint: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          configSource: S.optional(__S(81, __c10, 1)),
-          environment: S.optional(__S(72, __c9, 0)),
-          parameters: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          materials: S.optional(S.Boolean),
-          environment: S.optional(S.Boolean),
-          parameters: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          buildFinishedOn: S.optional(S.String),
-          buildInvocationId: S.optional(S.String),
-          buildStartedOn: S.optional(S.String),
-          completeness: S.optional(__S(83, __c10, 3)),
-          reproducible: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata",
-      });
-    case 5:
-      return S.Array(__S(77, __c9, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          invocation: S.optional(__S(82, __c10, 2)),
-          metadata: S.optional(__S(84, __c10, 4)),
-          buildConfig: S.optional(__S(72, __c9, 0)),
-          materials: S.optional(__S(85, __c10, 5)),
-          builder: S.optional(__S(79, __c9, 7)),
-          buildType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SlsaProvenanceZeroTwo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          digest: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "Subject" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          entryPoint: S.optional(S.String),
-          definedInMaterial: S.optional(S.String),
-          type: S.optional(S.String),
-          environment: S.optional(__S(89, __c11, 1)),
-          arguments: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "Recipe" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          materials: S.optional(S.Boolean),
-          arguments: S.optional(S.Boolean),
-          environment: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Completeness" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          buildInvocationId: S.optional(S.String),
-          buildFinishedOn: S.optional(S.String),
-          buildStartedOn: S.optional(S.String),
-          completeness: S.optional(__S(91, __c11, 3)),
-          reproducible: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Metadata" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          recipe: S.optional(__S(90, __c11, 2)),
-          builderConfig: S.optional(__S(79, __c9, 7)),
-          materials: S.optional(__S(3, __c0, 3)),
-          metadata: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "InTotoProvenance" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          slsaProvenance: S.optional(__S(80, __c10, 0)),
-          _type: S.optional(S.String),
-          slsaProvenanceZeroTwo: S.optional(__S(86, __c10, 6)),
-          predicateType: S.optional(S.String),
-          subject: S.optional(__S(88, __c11, 0)),
-          provenance: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({ identifier: "InTotoStatement" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          envelope: S.optional(__S(71, __c8, 7)),
-          statement: S.optional(__S(94, __c11, 6)),
-        }),
-      ).annotate({
-        identifier: "DSSEAttestationOccurrence",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          mimeType: S.optional(S.String),
-          digest: S.optional(__S(76, __c9, 4)),
-          referrerId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SbomReferenceIntotoPredicate",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          predicateType: S.optional(S.String),
-          subject: S.optional(__S(88, __c11, 0)),
-          predicate: S.optional(__S(96, __c12, 0)),
-          _type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SbomReferenceIntotoPayload",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          payloadType: S.optional(S.String),
-          signatures: S.optional(__S(70, __c8, 6)),
-          payload: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({ identifier: "SBOMReferenceOccurrence" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.String),
-          undeployTime: S.optional(S.String),
-          userEmail: S.optional(S.String),
-          resourceUri: S.optional(__S(3, __c0, 3)),
-          platform: S.optional(S.String),
-          config: S.optional(S.String),
-          deployTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeploymentOccurrence" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          reason: S.optional(S.String),
-          displayCommand: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NonCompliantFile" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(__S(25, __c3, 1)),
-          nonComplianceReason: S.optional(S.String),
-          nonCompliantFiles: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({ identifier: "ComplianceOccurrence" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sbomState: S.optional(S.String),
-          error: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SBOMStatus" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          analysisType: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "AnalysisCompleted" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(89, __c11, 1)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sbomStatus: S.optional(__S(103, __c12, 7)),
-          analysisCompleted: S.optional(__S(104, __c13, 0)),
-          files: S.optional(__S(88, __c11, 0)),
-          analysisError: S.optional(__S(106, __c13, 2)),
-          cpe: S.optional(S.String),
-          archiveTime: S.optional(S.String),
-          lastVulnerabilityUpdateTime: S.optional(S.String),
-          continuousAnalysis: S.optional(S.String),
-          analysisStatus: S.optional(S.String),
-          lastScanTime: S.optional(S.String),
-          analysisStatusError: S.optional(__S(105, __c13, 1)),
-        }),
-      ).annotate({ identifier: "DiscoveryOccurrence" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          package: S.optional(S.String),
-          windowsUpdate: S.optional(__S(19, __c2, 3)),
-          parsedVersion: S.optional(__S(7, __c0, 7)),
-          distribution: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "UpgradeOccurrence" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cpeUri: S.optional(S.String),
-          version: S.optional(__S(7, __c0, 7)),
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          architecture: S.optional(S.String),
-          cpeUri: S.optional(S.String),
-          version: S.optional(__S(7, __c0, 7)),
-          packageType: S.optional(S.String),
-          license: S.optional(__S(12, __c1, 4)),
-          location: S.optional(__S(110, __c13, 6)),
-        }),
-      ).annotate({ identifier: "PackageOccurrence" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(57, __c7, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          affectedPackage: S.optional(S.String),
-          packageType: S.optional(S.String),
-          fixAvailable: S.optional(S.Boolean),
-          fixedCpeUri: S.optional(S.String),
-          affectedCpeUri: S.optional(S.String),
-          fileLocation: S.optional(__S(112, __c14, 0)),
-          fixedVersion: S.optional(__S(7, __c0, 7)),
-          fixedPackage: S.optional(S.String),
-          effectiveSeverity: S.optional(S.String),
-          affectedVersion: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "PackageIssue" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          percentile: S.optional(S.Number),
-          score: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ExploitPredictionScoringSystem",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          knownRansomwareCampaignUse: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CISAKnownExploitedVulnerabilities",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          epss: S.optional(__S(115, __c14, 3)),
-          cisaKev: S.optional(__S(116, __c14, 4)),
-        }),
-      ).annotate({ identifier: "Risk" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cve: S.optional(S.String),
-          remediations: S.optional(__S(31, __c3, 7)),
-          relatedUris: S.optional(__S(15, __c1, 7)),
-          impacts: S.optional(__S(3, __c0, 3)),
-          noteName: S.optional(S.String),
-          vulnerabilityId: S.optional(S.String),
-          state: S.optional(S.String),
-          justification: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "VexAssessment" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          longDescription: S.optional(S.String),
-          fixAvailable: S.optional(S.Boolean),
-          shortDescription: S.optional(S.String),
-          packageIssue: S.optional(__S(114, __c14, 2)),
-          risk: S.optional(__S(117, __c14, 5)),
-          severity: S.optional(S.String),
-          extraDetails: S.optional(S.String),
-          cvssVersion: S.optional(S.String),
-          effectiveSeverity: S.optional(S.String),
-          relatedUrls: S.optional(__S(15, __c1, 7)),
-          cvssScore: S.optional(S.Number),
-          cvssv3: S.optional(__S(36, __c4, 4)),
-          cvssV2: S.optional(__S(36, __c4, 4)),
-          type: S.optional(S.String),
-          vexAssessment: S.optional(__S(118, __c14, 6)),
-          cvssV4: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "VulnerabilityOccurrence" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          maxSeverity: S.optional(S.String),
-          scanStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MaliciousContentStaticResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          verdict: S.optional(S.String),
-          scanStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkspacePolicyResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          promptCount: S.optional(S.String),
-          toolUsePromptCount: S.optional(S.String),
-          cacheCount: S.optional(S.String),
-          candidateCount: S.optional(S.String),
-          thinkingCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TokenUsage" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          modelId: S.optional(S.String),
-          tokenUsage: S.optional(__S(122, __c15, 2)),
-          scanStatus: S.optional(S.String),
-          maxSeverity: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MaliciousContentLLMResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          maliciousContentStaticResult: S.optional(__S(120, __c15, 0)),
-          workspacePolicy: S.optional(__S(121, __c15, 1)),
-          maliciousContentLlmResult: S.optional(__S(123, __c15, 3)),
-          malwareScan: S.optional(__S(121, __c15, 1)),
-        }),
-      ).annotate({ identifier: "PerScannerVerdict" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          lineNumber: S.optional(S.String),
-          filePath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FindingLocation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          details: S.optional(S.String),
-          scanner: S.optional(S.String),
-          location: S.optional(__S(125, __c15, 5)),
-          severity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Finding" });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          maxSeverity: S.optional(S.String),
-          perScannerVerdict: S.optional(__S(124, __c15, 4)),
-          skillName: S.optional(S.String),
-          findings: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({
-        identifier: "AISkillAnalysisOccurrence",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          env: S.optional(__S(3, __c0, 3)),
-          dir: S.optional(S.String),
-          args: S.optional(__S(3, __c0, 3)),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          waitFor: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Command" });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AliasContext" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          aliasContext: S.optional(__S(131, __c16, 3)),
-          revisionId: S.optional(S.String),
-          hostUri: S.optional(S.String),
-          gerritProject: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GerritSourceContext" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          repoName: S.optional(S.String),
-          projectId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProjectRepoId" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectRepoId: S.optional(__S(133, __c16, 5)),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RepoId" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          revisionId: S.optional(S.String),
-          aliasContext: S.optional(__S(131, __c16, 3)),
-          repoId: S.optional(__S(134, __c16, 6)),
-        }),
-      ).annotate({ identifier: "CloudRepoSourceContext" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          revisionId: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GitSourceContext" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          gerrit: S.optional(__S(132, __c16, 4)),
-          labels: S.optional(__S(76, __c9, 4)),
-          cloudRepo: S.optional(__S(135, __c16, 7)),
-          git: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({ identifier: "SourceContext" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Hash" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          fileHash: S.optional(__S(140, __c17, 4)),
-        }),
-      ).annotate({ identifier: "FileHashes" });
-    case 6:
-      return S.Record(S.String, __S(141, __c17, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          artifactStorageSourceUri: S.optional(S.String),
-          context: S.optional(__S(137, __c17, 1)),
-          additionalContexts: S.optional(__S(138, __c17, 2)),
-          fileHashes: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "Source" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          checksum: S.optional(S.String),
-          names: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Artifact" });
-    case 1:
-      return S.Array(__S(144, __c18, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          commands: S.optional(__S(130, __c16, 2)),
-          sourceProvenance: S.optional(__S(143, __c17, 7)),
-          startTime: S.optional(S.String),
-          buildOptions: S.optional(__S(76, __c9, 4)),
-          endTime: S.optional(S.String),
-          projectId: S.optional(S.String),
-          triggerId: S.optional(S.String),
-          creator: S.optional(S.String),
-          createTime: S.optional(S.String),
-          builtArtifacts: S.optional(__S(145, __c18, 1)),
-          id: S.optional(S.String),
-          logsUri: S.optional(S.String),
-          builderVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BuildProvenance" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          annotations: S.optional(__S(72, __c9, 0)),
-          digest: S.optional(__S(76, __c9, 4)),
-          downloadLocation: S.optional(S.String),
-          uri: S.optional(S.String),
-          mediaType: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceDescriptor" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          builderDependencies: S.optional(__S(148, __c18, 4)),
-          id: S.optional(S.String),
-          version: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "ProvenanceBuilder" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          startedOn: S.optional(S.String),
-          invocationId: S.optional(S.String),
-          finishedOn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BuildMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          builder: S.optional(__S(149, __c18, 5)),
-          byproducts: S.optional(__S(148, __c18, 4)),
-          metadata: S.optional(__S(150, __c18, 6)),
-        }),
-      ).annotate({ identifier: "RunDetails" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          buildType: S.optional(S.String),
-          externalParameters: S.optional(__S(72, __c9, 0)),
-          resolvedDependencies: S.optional(__S(148, __c18, 4)),
-          internalParameters: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({ identifier: "BuildDefinition" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          runDetails: S.optional(__S(151, __c18, 7)),
-          buildDefinition: S.optional(__S(152, __c19, 0)),
-        }),
-      ).annotate({ identifier: "SlsaProvenanceV1" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          predicateType: S.optional(S.String),
-          subject: S.optional(__S(88, __c11, 0)),
-          predicate: S.optional(__S(153, __c19, 1)),
-          _type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InTotoSlsaProvenanceV1" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provenanceBytes: S.optional(S.String),
-          intotoStatement: S.optional(__S(94, __c11, 6)),
-          provenance: S.optional(__S(146, __c18, 2)),
-          inTotoSlsaProvenanceV1: S.optional(__S(154, __c19, 2)),
-          intotoProvenance: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({ identifier: "BuildOccurrence" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          secret: S.optional(__S(60, __c7, 4)),
-          image: S.optional(__S(63, __c7, 7)),
-          attestation: S.optional(__S(68, __c8, 4)),
-          dsseAttestation: S.optional(__S(95, __c11, 7)),
-          sbomReference: S.optional(__S(98, __c12, 2)),
-          name: S.optional(S.String),
-          deployment: S.optional(__S(99, __c12, 3)),
-          compliance: S.optional(__S(102, __c12, 6)),
-          updateTime: S.optional(S.String),
-          discovery: S.optional(__S(107, __c13, 3)),
-          upgrade: S.optional(__S(108, __c13, 4)),
-          noteName: S.optional(S.String),
-          package: S.optional(__S(111, __c13, 7)),
-          envelope: S.optional(__S(71, __c8, 7)),
-          vulnerability: S.optional(__S(119, __c14, 7)),
-          advisoryPublishTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          aiSkillAnalysis: S.optional(__S(128, __c16, 0)),
-          resourceUri: S.optional(S.String),
-          build: S.optional(__S(155, __c19, 3)),
-          kind: S.optional(S.String),
-          remediation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Occurrence" });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          occurrences: S.optional(__S(157, __c19, 5)),
-        }),
-      ).annotate({
-        identifier: "BatchCreateOccurrencesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(158, __c19, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/occurrences:batchCreate",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsLocationsOccurrencesRequest",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/notes:batchCreate",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsNotesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(158, __c19, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/occurrences:batchCreate",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsOccurrencesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          noteId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/notes",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsNotesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(156, __c19, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/occurrences",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsOccurrencesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          noteId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/notes",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsNotesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(156, __c19, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/occurrences",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsOccurrencesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsNotesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOccurrencesRequest",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsNotesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsOccurrencesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cloudStorageLocation: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ExportSBOMRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(170, __c21, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:exportSBOM",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExportSBOMProjectsLocationsResourcesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          discoveryOccurrence: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExportSBOMResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(170, __c21, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:exportSBOM",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExportSBOMProjectsResourcesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          requestedPolicyVersion: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GetPolicyOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(174, __c21, 6)),
-        }),
-      ).annotate({ identifier: "GetIamPolicyRequest" });
-  }
-}
-function __c22(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(175, __c21, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsNotesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          location: S.optional(S.String),
-          expression: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          condition: S.optional(__S(177, __c22, 1)),
-          members: S.optional(__S(3, __c0, 3)),
-          role: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Binding" });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.Number),
-          bindings: S.optional(__S(179, __c22, 3)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Policy" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(175, __c21, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsOccurrencesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(175, __c21, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsNotesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(175, __c21, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsOccurrencesRequest",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/notes",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNotesProjectsLocationsOccurrencesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/notes",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNotesProjectsOccurrencesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsNotesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsOccurrencesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetProjectsNotesRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsOccurrencesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/occurrences:vulnerabilitySummary",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetVulnerabilitySummaryProjectsLocationsOccurrencesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          totalCount: S.optional(S.String),
-          resourceUri: S.optional(S.String),
-          fixableCount: S.optional(S.String),
-          severity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FixableTotalByDigest" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(191, __c23, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          counts: S.optional(__S(192, __c24, 0)),
-          unreachable: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "VulnerabilityOccurrencesSummary",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/occurrences:vulnerabilitySummary",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetVulnerabilitySummaryProjectsOccurrencesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/notes",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsNotesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          notes: S.optional(__S(50, __c6, 2)),
-          unreachable: S.optional(__S(3, __c0, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListNotesResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/occurrences",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsNotesOccurrencesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          occurrences: S.optional(__S(157, __c19, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListNoteOccurrencesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/occurrences",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsOccurrencesRequest",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unreachable: S.optional(__S(3, __c0, 3)),
-          occurrences: S.optional(__S(157, __c19, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOccurrencesResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/notes",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListProjectsNotesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/occurrences",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsNotesOccurrencesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/occurrences",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsOccurrencesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsNotesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(156, __c19, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsOccurrencesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsNotesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(156, __c19, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://containeranalysis.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsOccurrencesRequest",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(180, __c22, 4)),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1440, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4968,11 +4148,25 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsNotesRequest",
       });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(355, __c11, 3)),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1440, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4983,11 +4177,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsOccurrencesRequest",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1440, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4998,11 +4196,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsNotesRequest",
       });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1440, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5013,19 +4215,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsOccurrencesRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(213, __c26, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5036,11 +4234,27 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsNotesRequest",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(1216, __c38, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(213, __c26, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5053,13 +4267,13 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(213, __c26, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5070,11 +4284,15 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsNotesRequest",
       });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(213, __c26, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5087,7 +4305,936 @@ function __c27(j: number): any {
       });
   }
 }
-
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/occurrences:batchCreate",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsLocationsOccurrencesRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          occurrences: S.optional(__S(1792, __c56, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchCreateOccurrencesRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1928, __c60, 8));
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          message: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecretStatus" });
+    case 1:
+      return S.Array(__S(1824, __c57, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          registry: S.optional(S.String),
+          layerCount: S.optional(S.Number),
+          repository: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BaseImage" });
+    case 3:
+      return S.Array(__S(1826, __c57, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          index: S.optional(S.Number),
+          diffId: S.optional(S.String),
+          chainId: S.optional(S.String),
+          command: S.optional(S.String),
+          baseImages: S.optional(__S(1827, __c57, 3)),
+        }),
+      ).annotate({ identifier: "LayerDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          filePath: S.optional(S.String),
+          lineNumber: S.optional(S.Number),
+          layerDetails: S.optional(__S(1828, __c57, 4)),
+        }),
+      ).annotate({ identifier: "GrafeasV1FileLocation" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          fileLocation: S.optional(__S(1829, __c57, 5)),
+        }),
+      ).annotate({ identifier: "SecretLocation" });
+    case 7:
+      return S.Array(__S(1830, __c57, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          statuses: S.optional(__S(1825, __c57, 1)),
+          locations: S.optional(__S(1831, __c57, 7)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecretOccurrence" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          arguments: S.optional(S.String),
+          directive: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Layer" });
+    case 10:
+      return S.Array(__S(1833, __c57, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          distance: S.optional(S.Number),
+          layerInfo: S.optional(__S(1834, __c57, 10)),
+          baseResourceUrl: S.optional(S.String),
+          fingerprint: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({ identifier: "ImageOccurrence" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          compactJwt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Jwt" });
+    case 13:
+      return S.Array(__S(1836, __c57, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          signature: S.optional(S.String),
+          publicKeyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Signature" });
+    case 15:
+      return S.Array(__S(1838, __c57, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          jwts: S.optional(__S(1837, __c57, 13)),
+          serializedPayload: S.optional(S.String),
+          signatures: S.optional(__S(1839, __c57, 15)),
+        }),
+      ).annotate({ identifier: "AttestationOccurrence" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          keyid: S.optional(S.String),
+          sig: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvelopeSignature" });
+    case 18:
+      return S.Array(__S(1841, __c57, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          payload: S.optional(S.String),
+          payloadType: S.optional(S.String),
+          signatures: S.optional(__S(1842, __c57, 18)),
+        }),
+      ).annotate({ identifier: "Envelope" });
+    case 20:
+      return S.Record(S.String, S.Unknown);
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          definedInMaterial: S.optional(S.String),
+          environment: S.optional(__S(1844, __c57, 20)),
+          entryPoint: S.optional(S.String),
+          type: S.optional(S.String),
+          arguments: S.optional(__S(1844, __c57, 20)),
+        }),
+      ).annotate({ identifier: "SlsaRecipe" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          arguments: S.optional(S.Boolean),
+          materials: S.optional(S.Boolean),
+          environment: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SlsaCompleteness" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          buildInvocationId: S.optional(S.String),
+          completeness: S.optional(__S(1846, __c57, 22)),
+          reproducible: S.optional(S.Boolean),
+          buildStartedOn: S.optional(S.String),
+          buildFinishedOn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SlsaMetadata" });
+    case 24:
+      return S.Record(S.String, S.String);
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          digest: S.optional(__S(1848, __c57, 24)),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Material" });
+    case 26:
+      return S.Array(__S(1849, __c57, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SlsaBuilder" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          recipe: S.optional(__S(1845, __c57, 21)),
+          metadata: S.optional(__S(1847, __c57, 23)),
+          materials: S.optional(__S(1850, __c57, 26)),
+          builder: S.optional(__S(1851, __c57, 27)),
+        }),
+      ).annotate({ identifier: "SlsaProvenance" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          digest: S.optional(__S(1848, __c57, 24)),
+          entryPoint: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          configSource: S.optional(__S(1853, __c57, 29)),
+          environment: S.optional(__S(1844, __c57, 20)),
+          parameters: S.optional(__S(1844, __c57, 20)),
+        }),
+      ).annotate({
+        identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          materials: S.optional(S.Boolean),
+          environment: S.optional(S.Boolean),
+          parameters: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildFinishedOn: S.optional(S.String),
+          buildInvocationId: S.optional(S.String),
+          buildStartedOn: S.optional(S.String),
+          completeness: S.optional(__S(1855, __c57, 31)),
+          reproducible: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata",
+      });
+    case 1:
+      return S.Array(__S(1849, __c57, 25));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          invocation: S.optional(__S(1854, __c57, 30)),
+          metadata: S.optional(__S(1856, __c58, 0)),
+          buildConfig: S.optional(__S(1844, __c57, 20)),
+          materials: S.optional(__S(1857, __c58, 1)),
+          builder: S.optional(__S(1851, __c57, 27)),
+          buildType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SlsaProvenanceZeroTwo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          digest: S.optional(__S(1848, __c57, 24)),
+        }),
+      ).annotate({ identifier: "Subject" });
+    case 4:
+      return S.Array(__S(1859, __c58, 3));
+    case 5:
+      return S.Array(__S(1844, __c57, 20));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          entryPoint: S.optional(S.String),
+          definedInMaterial: S.optional(S.String),
+          type: S.optional(S.String),
+          environment: S.optional(__S(1861, __c58, 5)),
+          arguments: S.optional(__S(1861, __c58, 5)),
+        }),
+      ).annotate({ identifier: "Recipe" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          materials: S.optional(S.Boolean),
+          arguments: S.optional(S.Boolean),
+          environment: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Completeness" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          buildInvocationId: S.optional(S.String),
+          buildFinishedOn: S.optional(S.String),
+          buildStartedOn: S.optional(S.String),
+          completeness: S.optional(__S(1863, __c58, 7)),
+          reproducible: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Metadata" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          recipe: S.optional(__S(1862, __c58, 6)),
+          builderConfig: S.optional(__S(1851, __c57, 27)),
+          materials: S.optional(__S(1216, __c38, 0)),
+          metadata: S.optional(__S(1864, __c58, 8)),
+        }),
+      ).annotate({ identifier: "InTotoProvenance" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          slsaProvenance: S.optional(__S(1852, __c57, 28)),
+          _type: S.optional(S.String),
+          slsaProvenanceZeroTwo: S.optional(__S(1858, __c58, 2)),
+          predicateType: S.optional(S.String),
+          subject: S.optional(__S(1860, __c58, 4)),
+          provenance: S.optional(__S(1865, __c58, 9)),
+        }),
+      ).annotate({ identifier: "InTotoStatement" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          envelope: S.optional(__S(1843, __c57, 19)),
+          statement: S.optional(__S(1866, __c58, 10)),
+        }),
+      ).annotate({
+        identifier: "DSSEAttestationOccurrence",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          mimeType: S.optional(S.String),
+          digest: S.optional(__S(1848, __c57, 24)),
+          referrerId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SbomReferenceIntotoPredicate",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          predicateType: S.optional(S.String),
+          subject: S.optional(__S(1860, __c58, 4)),
+          predicate: S.optional(__S(1868, __c58, 12)),
+          _type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SbomReferenceIntotoPayload",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          payloadType: S.optional(S.String),
+          signatures: S.optional(__S(1842, __c57, 18)),
+          payload: S.optional(__S(1869, __c58, 13)),
+        }),
+      ).annotate({ identifier: "SBOMReferenceOccurrence" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.String),
+          undeployTime: S.optional(S.String),
+          userEmail: S.optional(S.String),
+          resourceUri: S.optional(__S(1216, __c38, 0)),
+          platform: S.optional(S.String),
+          config: S.optional(S.String),
+          deployTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeploymentOccurrence" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          reason: S.optional(S.String),
+          displayCommand: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NonCompliantFile" });
+    case 17:
+      return S.Array(__S(1872, __c58, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(__S(1258, __c39, 10)),
+          nonComplianceReason: S.optional(S.String),
+          nonCompliantFiles: S.optional(__S(1873, __c58, 17)),
+        }),
+      ).annotate({ identifier: "ComplianceOccurrence" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          sbomState: S.optional(S.String),
+          error: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SBOMStatus" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          analysisType: S.optional(__S(1216, __c38, 0)),
+        }),
+      ).annotate({ identifier: "AnalysisCompleted" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(1861, __c58, 5)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 22:
+      return S.Array(__S(1877, __c58, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          sbomStatus: S.optional(__S(1875, __c58, 19)),
+          analysisCompleted: S.optional(__S(1876, __c58, 20)),
+          files: S.optional(__S(1860, __c58, 4)),
+          analysisError: S.optional(__S(1878, __c58, 22)),
+          cpe: S.optional(S.String),
+          archiveTime: S.optional(S.String),
+          lastVulnerabilityUpdateTime: S.optional(S.String),
+          continuousAnalysis: S.optional(S.String),
+          analysisStatus: S.optional(S.String),
+          lastScanTime: S.optional(S.String),
+          analysisStatusError: S.optional(__S(1877, __c58, 21)),
+        }),
+      ).annotate({ identifier: "DiscoveryOccurrence" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          package: S.optional(S.String),
+          windowsUpdate: S.optional(__S(1256, __c39, 8)),
+          parsedVersion: S.optional(__S(1249, __c39, 1)),
+          distribution: S.optional(__S(1257, __c39, 9)),
+        }),
+      ).annotate({ identifier: "UpgradeOccurrence" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          cpeUri: S.optional(S.String),
+          version: S.optional(__S(1249, __c39, 1)),
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Location" });
+    case 26:
+      return S.Array(__S(1881, __c58, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          architecture: S.optional(S.String),
+          cpeUri: S.optional(S.String),
+          version: S.optional(__S(1249, __c39, 1)),
+          packageType: S.optional(S.String),
+          license: S.optional(__S(1250, __c39, 2)),
+          location: S.optional(__S(1882, __c58, 26)),
+        }),
+      ).annotate({ identifier: "PackageOccurrence" });
+    case 28:
+      return S.Array(__S(1829, __c57, 5));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          affectedPackage: S.optional(S.String),
+          packageType: S.optional(S.String),
+          fixAvailable: S.optional(S.Boolean),
+          fixedCpeUri: S.optional(S.String),
+          affectedCpeUri: S.optional(S.String),
+          fileLocation: S.optional(__S(1884, __c58, 28)),
+          fixedVersion: S.optional(__S(1249, __c39, 1)),
+          fixedPackage: S.optional(S.String),
+          effectiveSeverity: S.optional(S.String),
+          affectedVersion: S.optional(__S(1249, __c39, 1)),
+        }),
+      ).annotate({ identifier: "PackageIssue" });
+    case 30:
+      return S.Array(__S(1885, __c58, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          percentile: S.optional(S.Number),
+          score: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ExploitPredictionScoringSystem",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          knownRansomwareCampaignUse: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CISAKnownExploitedVulnerabilities",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          epss: S.optional(__S(1887, __c58, 31)),
+          cisaKev: S.optional(__S(1888, __c59, 0)),
+        }),
+      ).annotate({ identifier: "Risk" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cve: S.optional(S.String),
+          remediations: S.optional(__S(1261, __c39, 13)),
+          relatedUris: S.optional(__S(1252, __c39, 4)),
+          impacts: S.optional(__S(1216, __c38, 0)),
+          noteName: S.optional(S.String),
+          vulnerabilityId: S.optional(S.String),
+          state: S.optional(S.String),
+          justification: S.optional(__S(1259, __c39, 11)),
+        }),
+      ).annotate({ identifier: "VexAssessment" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          longDescription: S.optional(S.String),
+          fixAvailable: S.optional(S.Boolean),
+          shortDescription: S.optional(S.String),
+          packageIssue: S.optional(__S(1886, __c58, 30)),
+          risk: S.optional(__S(1889, __c59, 1)),
+          severity: S.optional(S.String),
+          extraDetails: S.optional(S.String),
+          cvssVersion: S.optional(S.String),
+          effectiveSeverity: S.optional(S.String),
+          relatedUrls: S.optional(__S(1252, __c39, 4)),
+          cvssScore: S.optional(S.Number),
+          cvssv3: S.optional(__S(1262, __c39, 14)),
+          cvssV2: S.optional(__S(1262, __c39, 14)),
+          type: S.optional(S.String),
+          vexAssessment: S.optional(__S(1890, __c59, 2)),
+          cvssV4: S.optional(__S(1262, __c39, 14)),
+        }),
+      ).annotate({ identifier: "VulnerabilityOccurrence" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          maxSeverity: S.optional(S.String),
+          scanStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MaliciousContentStaticResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          verdict: S.optional(S.String),
+          scanStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkspacePolicyResult" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          promptCount: S.optional(S.String),
+          toolUsePromptCount: S.optional(S.String),
+          cacheCount: S.optional(S.String),
+          candidateCount: S.optional(S.String),
+          thinkingCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TokenUsage" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.optional(S.String),
+          tokenUsage: S.optional(__S(1894, __c59, 6)),
+          scanStatus: S.optional(S.String),
+          maxSeverity: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MaliciousContentLLMResult",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          maliciousContentStaticResult: S.optional(__S(1892, __c59, 4)),
+          workspacePolicy: S.optional(__S(1893, __c59, 5)),
+          maliciousContentLlmResult: S.optional(__S(1895, __c59, 7)),
+          malwareScan: S.optional(__S(1893, __c59, 5)),
+        }),
+      ).annotate({ identifier: "PerScannerVerdict" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          lineNumber: S.optional(S.String),
+          filePath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FindingLocation" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          details: S.optional(S.String),
+          scanner: S.optional(S.String),
+          location: S.optional(__S(1897, __c59, 9)),
+          severity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Finding" });
+    case 11:
+      return S.Array(__S(1898, __c59, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          maxSeverity: S.optional(S.String),
+          perScannerVerdict: S.optional(__S(1896, __c59, 8)),
+          skillName: S.optional(S.String),
+          findings: S.optional(__S(1899, __c59, 11)),
+        }),
+      ).annotate({
+        identifier: "AISkillAnalysisOccurrence",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          env: S.optional(__S(1216, __c38, 0)),
+          dir: S.optional(S.String),
+          args: S.optional(__S(1216, __c38, 0)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          waitFor: S.optional(__S(1216, __c38, 0)),
+        }),
+      ).annotate({ identifier: "Command" });
+    case 14:
+      return S.Array(__S(1901, __c59, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AliasContext" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          aliasContext: S.optional(__S(1903, __c59, 15)),
+          revisionId: S.optional(S.String),
+          hostUri: S.optional(S.String),
+          gerritProject: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GerritSourceContext" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          repoName: S.optional(S.String),
+          projectId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectRepoId" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          projectRepoId: S.optional(__S(1905, __c59, 17)),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RepoId" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          revisionId: S.optional(S.String),
+          aliasContext: S.optional(__S(1903, __c59, 15)),
+          repoId: S.optional(__S(1906, __c59, 18)),
+        }),
+      ).annotate({ identifier: "CloudRepoSourceContext" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          revisionId: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GitSourceContext" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          gerrit: S.optional(__S(1904, __c59, 16)),
+          labels: S.optional(__S(1848, __c57, 24)),
+          cloudRepo: S.optional(__S(1907, __c59, 19)),
+          git: S.optional(__S(1908, __c59, 20)),
+        }),
+      ).annotate({ identifier: "SourceContext" });
+    case 22:
+      return S.Array(__S(1909, __c59, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Hash" });
+    case 24:
+      return S.Array(__S(1911, __c59, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          fileHash: S.optional(__S(1912, __c59, 24)),
+        }),
+      ).annotate({ identifier: "FileHashes" });
+    case 26:
+      return S.Record(S.String, __S(1913, __c59, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          artifactStorageSourceUri: S.optional(S.String),
+          context: S.optional(__S(1909, __c59, 21)),
+          additionalContexts: S.optional(__S(1910, __c59, 22)),
+          fileHashes: S.optional(__S(1914, __c59, 26)),
+        }),
+      ).annotate({ identifier: "Source" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          checksum: S.optional(S.String),
+          names: S.optional(__S(1216, __c38, 0)),
+        }),
+      ).annotate({ identifier: "Artifact" });
+    case 29:
+      return S.Array(__S(1916, __c59, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          commands: S.optional(__S(1902, __c59, 14)),
+          sourceProvenance: S.optional(__S(1915, __c59, 27)),
+          startTime: S.optional(S.String),
+          buildOptions: S.optional(__S(1848, __c57, 24)),
+          endTime: S.optional(S.String),
+          projectId: S.optional(S.String),
+          triggerId: S.optional(S.String),
+          creator: S.optional(S.String),
+          createTime: S.optional(S.String),
+          builtArtifacts: S.optional(__S(1917, __c59, 29)),
+          id: S.optional(S.String),
+          logsUri: S.optional(S.String),
+          builderVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BuildProvenance" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          annotations: S.optional(__S(1844, __c57, 20)),
+          digest: S.optional(__S(1848, __c57, 24)),
+          downloadLocation: S.optional(S.String),
+          uri: S.optional(S.String),
+          mediaType: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceDescriptor" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1919, __c59, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          builderDependencies: S.optional(__S(1920, __c60, 0)),
+          id: S.optional(S.String),
+          version: S.optional(__S(1848, __c57, 24)),
+        }),
+      ).annotate({ identifier: "ProvenanceBuilder" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          startedOn: S.optional(S.String),
+          invocationId: S.optional(S.String),
+          finishedOn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BuildMetadata" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          builder: S.optional(__S(1921, __c60, 1)),
+          byproducts: S.optional(__S(1920, __c60, 0)),
+          metadata: S.optional(__S(1922, __c60, 2)),
+        }),
+      ).annotate({ identifier: "RunDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          buildType: S.optional(S.String),
+          externalParameters: S.optional(__S(1844, __c57, 20)),
+          resolvedDependencies: S.optional(__S(1920, __c60, 0)),
+          internalParameters: S.optional(__S(1844, __c57, 20)),
+        }),
+      ).annotate({ identifier: "BuildDefinition" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          runDetails: S.optional(__S(1923, __c60, 3)),
+          buildDefinition: S.optional(__S(1924, __c60, 4)),
+        }),
+      ).annotate({ identifier: "SlsaProvenanceV1" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          predicateType: S.optional(S.String),
+          subject: S.optional(__S(1860, __c58, 4)),
+          predicate: S.optional(__S(1925, __c60, 5)),
+          _type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InTotoSlsaProvenanceV1" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          provenanceBytes: S.optional(S.String),
+          intotoStatement: S.optional(__S(1866, __c58, 10)),
+          provenance: S.optional(__S(1918, __c59, 30)),
+          inTotoSlsaProvenanceV1: S.optional(__S(1926, __c60, 6)),
+          intotoProvenance: S.optional(__S(1865, __c58, 9)),
+        }),
+      ).annotate({ identifier: "BuildOccurrence" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          secret: S.optional(__S(1832, __c57, 8)),
+          image: S.optional(__S(1835, __c57, 11)),
+          attestation: S.optional(__S(1840, __c57, 16)),
+          dsseAttestation: S.optional(__S(1867, __c58, 11)),
+          sbomReference: S.optional(__S(1870, __c58, 14)),
+          name: S.optional(S.String),
+          deployment: S.optional(__S(1871, __c58, 15)),
+          compliance: S.optional(__S(1874, __c58, 18)),
+          updateTime: S.optional(S.String),
+          discovery: S.optional(__S(1879, __c58, 23)),
+          upgrade: S.optional(__S(1880, __c58, 24)),
+          noteName: S.optional(S.String),
+          package: S.optional(__S(1883, __c58, 27)),
+          envelope: S.optional(__S(1843, __c57, 19)),
+          vulnerability: S.optional(__S(1891, __c59, 3)),
+          advisoryPublishTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          aiSkillAnalysis: S.optional(__S(1900, __c59, 12)),
+          resourceUri: S.optional(S.String),
+          build: S.optional(__S(1927, __c60, 7)),
+          kind: S.optional(S.String),
+          remediation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Occurrence" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1281, __c40, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/notes:batchCreate",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsNotesRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/occurrences:batchCreate",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsOccurrencesRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          noteId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1405, __c43, 29).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/notes",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsNotesRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1928, __c60, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/occurrences",
+            baseUrl: "https://containeranalysis.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsOccurrencesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

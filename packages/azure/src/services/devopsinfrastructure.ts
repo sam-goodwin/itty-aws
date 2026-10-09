@@ -778,8 +778,8 @@ export const DeletePool: API.OperationMethod<
   DeletePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeletePoolRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeletePoolResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeletePoolRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeletePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -793,8 +793,8 @@ export const DeletePoolResources: API.OperationMethod<
   DeletePoolResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeletePoolResourcesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeletePoolResourcesResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeletePoolResourcesRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeletePoolResourcesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -808,8 +808,8 @@ export const GetPool: API.OperationMethod<
   GetPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetPoolRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetPoolResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetPoolRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<GetPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -823,8 +823,8 @@ export const ListImageVersionByImage: API.OperationMethod<
   ListImageVersionByImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListImageVersionByImageRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ImageVersionListResult>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListImageVersionByImageRequest>,
+  output: __S(420, __c13, 4) as any as S.Schema<ImageVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -838,8 +838,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListOperationsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListOperationsResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -853,8 +853,8 @@ export const ListPoolByResourceGroup: API.OperationMethod<
   ListPoolByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListPoolByResourceGroupRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<PoolListResult>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListPoolByResourceGroupRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<PoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -868,8 +868,8 @@ export const ListPoolBySubscription: API.OperationMethod<
   ListPoolBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListPoolBySubscriptionRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<PoolListResult>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListPoolBySubscriptionRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<PoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -883,8 +883,8 @@ export const ListResourceDetailByPool: API.OperationMethod<
   ListResourceDetailByPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListResourceDetailByPoolRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ResourceDetailsObjectListResult>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListResourceDetailByPoolRequest>,
+  output: __S(580, __c18, 4) as any as S.Schema<ResourceDetailsObjectListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -898,8 +898,8 @@ export const ListSkuByLocation: API.OperationMethod<
   ListSkuByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListSkuByLocationRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ResourceSkuListResult>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListSkuByLocationRequest>,
+  output: __S(621, __c19, 13) as any as S.Schema<ResourceSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -913,8 +913,8 @@ export const PoolsCreateOrUpdate: API.OperationMethod<
   PoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<PoolsCreateOrUpdateRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<PoolsCreateOrUpdateResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<PoolsCreateOrUpdateRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<PoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -928,8 +928,8 @@ export const SubscriptionUsagesUsages: API.OperationMethod<
   SubscriptionUsagesUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<SubscriptionUsagesUsagesRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<PagedQuota>,
+  input: __S(160, __c5, 0) as any as S.Schema<SubscriptionUsagesUsagesRequest>,
+  output: __S(164, __c5, 4) as any as S.Schema<PagedQuota>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -943,8 +943,8 @@ export const UpdatePool: API.OperationMethod<
   UpdatePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<UpdatePoolRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<UpdatePoolResponse>,
+  input: __S(193, __c6, 1) as any as S.Schema<UpdatePoolRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<UpdatePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -981,7 +981,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckNameAvailabilityResult",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -996,19 +1000,195 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePoolRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeletePoolResponse",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          resourceIds: __S(4, __c0, 4),
+          tags: S.optional(__S(384, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(401, __c12, 17)),
+          identity: S.optional(__S(129, __c4, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
+            code: 200,
+            apiVersion: "2026-06-02",
+          }),
+        ),
+      ).annotate({
+        identifier: "PoolsCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(403, __c12, 19)),
+        }),
+      ).annotate({
+        identifier: "PoolsCreateOrUpdateResponseIdentity",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(320, __c10, 0)),
+          tags: S.optional(__S(384, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(401, __c12, 17)),
+          identity: S.optional(__S(97, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "PoolsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(64, __c2, 0)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "PoolsCreateOrUpdateRequestIdentity",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/locations/{location}/usages",
+            code: 200,
+            apiVersion: "2026-06-02",
+          }),
+        ),
+      ).annotate({
+        identifier: "SubscriptionUsagesUsagesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          localizedValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuotaName" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(__S(161, __c5, 1)),
+          id: S.String,
+          unit: S.String,
+          currentValue: S.Number,
+          limit: S.Number,
+        }),
+      ).annotate({ identifier: "Quota" });
+    case 3:
+      return S.Array(__S(162, __c5, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(163, __c5, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PagedQuota" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          maximumConcurrency: S.optional(S.Number),
+          organizationProfile: S.optional(__S(387, __c12, 3)),
+          agentProfile: S.optional(__S(389, __c12, 5)),
+          fabricProfile: S.optional(__S(399, __c12, 15)),
+          devCenterProjectResourceId: S.optional(S.String),
+          runtimeConfiguration: S.optional(__S(400, __c12, 16)),
+        }),
+      ).annotate({ identifier: "PoolUpdateProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          identity: S.optional(__S(129, __c4, 1)),
+          tags: S.optional(__S(384, __c12, 0)),
+          properties: S.optional(__S(192, __c6, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
+            code: 200,
+            apiVersion: "2026-06-02",
+          }),
+        ),
+      ).annotate({ identifier: "UpdatePoolRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(403, __c12, 19)),
+        }),
+      ).annotate({
+        identifier: "UpdatePoolResponseIdentity",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(320, __c10, 0)),
+          tags: S.optional(__S(384, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(401, __c12, 17)),
+          identity: S.optional(__S(194, __c6, 2)),
+        }),
+      ).annotate({ identifier: "UpdatePoolResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          resourceIds: __S(256, __c8, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1020,7 +1200,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeletePoolResourcesRequest",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1035,7 +1225,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPoolRequest" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1048,7 +1242,33 @@ function __c0(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c1(j: number): any {
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(403, __c12, 19)),
+        }),
+      ).annotate({ identifier: "GetPoolResponseIdentity" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(320, __c10, 0)),
+          tags: S.optional(__S(384, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(401, __c12, 17)),
+          identity: S.optional(__S(352, __c11, 0)),
+        }),
+      ).annotate({ identifier: "GetPoolResponse" });
+  }
+}
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -1058,8 +1278,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
-          users: S.optional(__S(9, __c1, 1)),
-          groups: S.optional(__S(9, __c1, 1)),
+          users: S.optional(__S(385, __c12, 1)),
+          groups: S.optional(__S(385, __c12, 1)),
         }),
       ).annotate({
         identifier: "AzureDevOpsPermissionProfile",
@@ -1069,7 +1289,7 @@ function __c1(j: number): any {
         S.Struct({
           kind: S.String,
           organizations: S.optional(S.Unknown),
-          permissionProfile: S.optional(__S(10, __c1, 2)),
+          permissionProfile: S.optional(__S(386, __c12, 2)),
           alias: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrganizationProfile" });
@@ -1087,7 +1307,7 @@ function __c1(j: number): any {
         S.Struct({
           kind: S.String,
           resourcePredictions: S.optional(S.Unknown),
-          resourcePredictionsProfile: S.optional(__S(12, __c1, 4)),
+          resourcePredictionsProfile: S.optional(__S(388, __c12, 4)),
           maxAgentLifetime: S.optional(S.String),
           gracePeriodTimeSpan: S.optional(S.String),
         }),
@@ -1103,36 +1323,32 @@ function __c1(j: number): any {
         S.Struct({
           resourceId: S.optional(S.String),
           wellKnownImageName: S.optional(S.String),
-          aliases: S.optional(__S(9, __c1, 1)),
+          aliases: S.optional(__S(385, __c12, 1)),
           buffer: S.optional(S.String),
           ephemeralType: S.optional(S.String),
         }),
       ).annotate({ identifier: "PoolImage" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(391, __c12, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           certificateStoreLocation: S.optional(S.String),
           certificateStoreName: S.optional(S.String),
-          observedCertificates: __S(9, __c1, 1),
+          observedCertificates: __S(385, __c12, 1),
           keyExportable: S.Boolean,
         }),
       ).annotate({
         identifier: "SecretsManagementSettings",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          secretsManagementSettings: S.optional(__S(17, __c2, 1)),
+          secretsManagementSettings: S.optional(__S(393, __c12, 9)),
           logonType: S.optional(S.String),
         }),
       ).annotate({ identifier: "OsProfile" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           caching: S.optional(S.String),
@@ -1141,87 +1357,65 @@ function __c2(j: number): any {
           driveLetter: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataDisk" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(395, __c12, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           osDiskStorageAccountType: S.optional(S.String),
-          dataDisks: S.optional(__S(20, __c2, 4)),
+          dataDisks: S.optional(__S(396, __c12, 12)),
         }),
       ).annotate({ identifier: "StorageProfile" });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           subnetId: S.optional(S.String),
           staticIpAddressCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NetworkProfile" });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
-          sku: S.optional(__S(14, __c1, 6)),
-          images: S.optional(__S(16, __c2, 0)),
-          osProfile: S.optional(__S(18, __c2, 2)),
-          storageProfile: S.optional(__S(21, __c2, 5)),
-          networkProfile: S.optional(__S(22, __c2, 6)),
+          sku: S.optional(__S(390, __c12, 6)),
+          images: S.optional(__S(392, __c12, 8)),
+          osProfile: S.optional(__S(394, __c12, 10)),
+          storageProfile: S.optional(__S(397, __c12, 13)),
+          networkProfile: S.optional(__S(398, __c12, 14)),
         }),
       ).annotate({ identifier: "FabricProfile" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           workFolder: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuntimeConfiguration" });
-    case 1:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           maximumConcurrency: S.Number,
-          organizationProfile: __S(11, __c1, 3),
-          agentProfile: __S(13, __c1, 5),
-          fabricProfile: __S(23, __c2, 7),
+          organizationProfile: __S(387, __c12, 3),
+          agentProfile: __S(389, __c12, 5),
+          fabricProfile: __S(399, __c12, 15),
           devCenterProjectResourceId: S.optional(S.String),
-          runtimeConfiguration: S.optional(__S(24, __c3, 0)),
+          runtimeConfiguration: S.optional(__S(400, __c12, 16)),
         }),
       ).annotate({ identifier: "PoolProperties" });
-    case 2:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(26, __c3, 2)));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "GetPoolResponseIdentity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(25, __c3, 1)),
-          identity: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "GetPoolResponse" });
-    case 6:
+    case 19:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(402, __c12, 18)));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1238,36 +1432,36 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListImageVersionByImageRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.String,
         }),
       ).annotate({ identifier: "ImageVersionProperties" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(31, __c3, 7)),
+          systemData: S.optional(__S(320, __c10, 0)),
+          properties: S.optional(__S(417, __c13, 1)),
         }),
       ).annotate({ identifier: "ImageVersion" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(418, __c13, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(33, __c4, 1),
+          value: __S(419, __c13, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageVersionListResult" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1278,7 +1472,7 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -1287,28 +1481,28 @@ function __c4(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(36, __c4, 4)),
+          display: S.optional(__S(449, __c14, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(450, __c14, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(38, __c4, 6)),
+          value: S.optional(__S(451, __c14, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c5(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1326,16 +1520,24 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListPoolByResourceGroupRequest",
       });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(353, __c11, 1));
     case 1:
-      return S.Array(__S(29, __c3, 5));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(41, __c5, 1),
+          value: __S(512, __c16, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PoolListResult" });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1350,7 +1552,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListPoolBySubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1367,7 +1573,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListResourceDetailByPoolRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -1377,32 +1583,32 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ResourceDetailsObjectProperties",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(45, __c5, 5)),
+          systemData: S.optional(__S(320, __c10, 0)),
+          properties: S.optional(__S(577, __c18, 1)),
         }),
       ).annotate({ identifier: "ResourceDetailsObject" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(578, __c18, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(47, __c5, 7),
+          value: __S(579, __c18, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ResourceDetailsObjectListResult",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1416,255 +1622,88 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSkuByLocationRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           value: S.String,
         }),
       ).annotate({ identifier: "ResourceSkuCapabilities" });
+    case 2:
+      return S.Array(__S(609, __c19, 1));
     case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          name: __S(4, __c0, 4),
-          capabilities: __S(51, __c6, 3),
+          name: __S(256, __c8, 0),
+          capabilities: __S(610, __c19, 2),
         }),
       ).annotate({ identifier: "ResourceSkuZoneDetails" });
+    case 4:
+      return S.Array(__S(611, __c19, 3));
     case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          zones: __S(4, __c0, 4),
-          zoneDetails: __S(53, __c6, 5),
+          zones: __S(256, __c8, 0),
+          zoneDetails: __S(612, __c19, 4),
         }),
       ).annotate({ identifier: "ResourceSkuLocationInfo" });
+    case 6:
+      return S.Array(__S(613, __c19, 5));
     case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(4, __c0, 4)),
-          zones: S.optional(__S(4, __c0, 4)),
+          locations: S.optional(__S(256, __c8, 0)),
+          zones: S.optional(__S(256, __c8, 0)),
         }),
       ).annotate({
         identifier: "ResourceSkuRestrictionInfo",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          values: __S(4, __c0, 4),
-          restrictionInfo: __S(56, __c7, 0),
+          values: __S(256, __c8, 0),
+          restrictionInfo: __S(615, __c19, 7),
           reasonCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuRestrictions" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(616, __c19, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String,
           tier: S.String,
           size: S.String,
           family: S.String,
-          locations: __S(4, __c0, 4),
-          locationInfo: __S(55, __c6, 7),
-          capabilities: __S(51, __c6, 3),
-          restrictions: __S(58, __c7, 2),
+          locations: __S(256, __c8, 0),
+          locationInfo: __S(614, __c19, 6),
+          capabilities: __S(610, __c19, 2),
+          restrictions: __S(617, __c19, 9),
         }),
       ).annotate({ identifier: "ResourceSkuProperties" });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(59, __c7, 3)),
+          systemData: S.optional(__S(320, __c10, 0)),
+          properties: S.optional(__S(618, __c19, 10)),
         }),
       ).annotate({ identifier: "ResourceSku" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(619, __c19, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          value: __S(61, __c7, 5),
+          value: __S(620, __c19, 12),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuListResult" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(3, __c0, 3)));
   }
 }
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({
-        identifier: "PoolsCreateOrUpdateRequestIdentity",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(25, __c3, 1)),
-          identity: S.optional(__S(64, __c8, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
-            code: 200,
-            apiVersion: "2026-06-02",
-          }),
-        ),
-      ).annotate({
-        identifier: "PoolsCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "PoolsCreateOrUpdateResponseIdentity",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(25, __c3, 1)),
-          identity: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({
-        identifier: "PoolsCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/locations/{location}/usages",
-            code: 200,
-            apiVersion: "2026-06-02",
-          }),
-        ),
-      ).annotate({
-        identifier: "SubscriptionUsagesUsagesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          localizedValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QuotaName" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(__S(69, __c8, 5)),
-          id: S.String,
-          unit: S.String,
-          currentValue: S.Number,
-          limit: S.Number,
-        }),
-      ).annotate({ identifier: "Quota" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(71, __c8, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PagedQuota" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          maximumConcurrency: S.optional(S.Number),
-          organizationProfile: S.optional(__S(11, __c1, 3)),
-          agentProfile: S.optional(__S(13, __c1, 5)),
-          fabricProfile: S.optional(__S(23, __c2, 7)),
-          devCenterProjectResourceId: S.optional(S.String),
-          runtimeConfiguration: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "PoolUpdateProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(64, __c8, 0)),
-          tags: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(73, __c9, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
-            code: 200,
-            apiVersion: "2026-06-02",
-          }),
-        ),
-      ).annotate({ identifier: "UpdatePoolRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "UpdatePoolResponseIdentity",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(25, __c3, 1)),
-          identity: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({ identifier: "UpdatePoolResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

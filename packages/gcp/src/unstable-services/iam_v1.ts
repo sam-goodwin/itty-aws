@@ -1960,11 +1960,11 @@ export const addAttestationRuleProjectsLocationsWorkloadIdentityPools: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2,
-    __c0,
-    2,
+    840,
+    __c105,
+    0,
   ) as any as S.Schema<AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1984,11 +1984,11 @@ export const addAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7,
-    __c0,
-    7,
+    952,
+    __c119,
+    0,
   ) as any as S.Schema<AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2007,8 +2007,8 @@ export const createLocationsWorkforcePools: API.OperationMethod<
   CreateLocationsWorkforcePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateLocationsWorkforcePoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1040, __c130, 0) as any as S.Schema<CreateLocationsWorkforcePoolsRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2027,8 +2027,8 @@ export const createLocationsWorkforcePoolsProviders: API.OperationMethod<
   CreateLocationsWorkforcePoolsProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateLocationsWorkforcePoolsProvidersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1152, __c144, 0) as any as S.Schema<CreateLocationsWorkforcePoolsProvidersRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2047,8 +2047,8 @@ export const createLocationsWorkforcePoolsProvidersKeys: API.OperationMethod<
   CreateLocationsWorkforcePoolsProvidersKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateLocationsWorkforcePoolsProvidersKeysRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1280, __c160, 0) as any as S.Schema<CreateLocationsWorkforcePoolsProvidersKeysRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2068,11 +2068,11 @@ export const createLocationsWorkforcePoolsProvidersScimTenants: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    28,
-    __c3,
-    4,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<CreateLocationsWorkforcePoolsProvidersScimTenantsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<WorkforcePoolProviderScimTenant>,
+  output: __S(8, __c1, 0) as any as S.Schema<WorkforcePoolProviderScimTenant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2092,11 +2092,11 @@ export const createLocationsWorkforcePoolsProvidersScimTenantsTokens: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    30,
-    __c3,
-    6,
+    96,
+    __c12,
+    0,
   ) as any as S.Schema<CreateLocationsWorkforcePoolsProvidersScimTenantsTokensRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<WorkforcePoolProviderScimToken>,
+  output: __S(104, __c13, 0) as any as S.Schema<WorkforcePoolProviderScimToken>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2115,8 +2115,8 @@ export const createOrganizationsRoles: API.OperationMethod<
   CreateOrganizationsRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateOrganizationsRolesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Role>,
+  input: __S(208, __c26, 0) as any as S.Schema<CreateOrganizationsRolesRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2135,8 +2135,8 @@ export const createProjectsLocationsOauthClients: API.OperationMethod<
   CreateProjectsLocationsOauthClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateProjectsLocationsOauthClientsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<OauthClient>,
+  input: __S(320, __c40, 0) as any as S.Schema<CreateProjectsLocationsOauthClientsRequest>,
+  output: __S(328, __c41, 0) as any as S.Schema<OauthClient>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2155,8 +2155,12 @@ export const createProjectsLocationsOauthClientsCredentials: API.OperationMethod
   CreateProjectsLocationsOauthClientsCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateProjectsLocationsOauthClientsCredentialsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<OauthClientCredential>,
+  input: __S(
+    432,
+    __c54,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsOauthClientsCredentialsRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<OauthClientCredential>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2175,8 +2179,8 @@ export const createProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
   CreateProjectsLocationsWorkloadIdentityPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(464, __c58, 0) as any as S.Schema<CreateProjectsLocationsWorkloadIdentityPoolsRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2196,11 +2200,11 @@ export const createProjectsLocationsWorkloadIdentityPoolsNamespaces: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    488,
+    __c61,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsWorkloadIdentityPoolsNamespacesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2220,11 +2224,11 @@ export const createProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdenti
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    51,
-    __c6,
-    3,
+    504,
+    __c63,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2244,11 +2248,11 @@ export const createProjectsLocationsWorkloadIdentityPoolsProviders: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    57,
-    __c7,
-    1,
+    520,
+    __c65,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsWorkloadIdentityPoolsProvidersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2268,11 +2272,11 @@ export const createProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    59,
-    __c7,
-    3,
+    536,
+    __c67,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2286,8 +2290,8 @@ export const createProjectsRoles: API.OperationMethod<
   CreateProjectsRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateProjectsRolesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Role>,
+  input: __S(552, __c69, 0) as any as S.Schema<CreateProjectsRolesRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2307,8 +2311,8 @@ export const createProjectsServiceAccounts: API.OperationMethod<
   CreateProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreateProjectsServiceAccountsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ServiceAccount>,
+  input: __S(561, __c70, 1) as any as S.Schema<CreateProjectsServiceAccountsRequest>,
+  output: __S(568, __c71, 0) as any as S.Schema<ServiceAccount>,
   errors: [ServiceAccountQuotaExceeded, NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2327,8 +2331,8 @@ export const createProjectsServiceAccountsKeys: API.OperationMethod<
   CreateProjectsServiceAccountsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateProjectsServiceAccountsKeysRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ServiceAccountKey>,
+  input: __S(577, __c72, 1) as any as S.Schema<CreateProjectsServiceAccountsKeysRequest>,
+  output: __S(586, __c73, 2) as any as S.Schema<ServiceAccountKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2347,8 +2351,8 @@ export const deleteLocationsWorkforcePools: API.OperationMethod<
   DeleteLocationsWorkforcePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteLocationsWorkforcePoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(592, __c74, 0) as any as S.Schema<DeleteLocationsWorkforcePoolsRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2367,8 +2371,8 @@ export const deleteLocationsWorkforcePoolsProviders: API.OperationMethod<
   DeleteLocationsWorkforcePoolsProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteLocationsWorkforcePoolsProvidersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(600, __c75, 0) as any as S.Schema<DeleteLocationsWorkforcePoolsProvidersRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2387,8 +2391,8 @@ export const deleteLocationsWorkforcePoolsProvidersKeys: API.OperationMethod<
   DeleteLocationsWorkforcePoolsProvidersKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteLocationsWorkforcePoolsProvidersKeysRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(608, __c76, 0) as any as S.Schema<DeleteLocationsWorkforcePoolsProvidersKeysRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2408,11 +2412,11 @@ export const deleteLocationsWorkforcePoolsProvidersScimTenants: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    72,
-    __c9,
+    616,
+    __c77,
     0,
   ) as any as S.Schema<DeleteLocationsWorkforcePoolsProvidersScimTenantsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<WorkforcePoolProviderScimTenant>,
+  output: __S(8, __c1, 0) as any as S.Schema<WorkforcePoolProviderScimTenant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2432,11 +2436,11 @@ export const deleteLocationsWorkforcePoolsProvidersScimTenantsTokens: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    73,
-    __c9,
-    1,
+    624,
+    __c78,
+    0,
   ) as any as S.Schema<DeleteLocationsWorkforcePoolsProvidersScimTenantsTokensRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<WorkforcePoolProviderScimToken>,
+  output: __S(104, __c13, 0) as any as S.Schema<WorkforcePoolProviderScimToken>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2455,8 +2459,8 @@ export const deleteLocationsWorkforcePoolsSubjects: API.OperationMethod<
   DeleteLocationsWorkforcePoolsSubjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteLocationsWorkforcePoolsSubjectsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(632, __c79, 0) as any as S.Schema<DeleteLocationsWorkforcePoolsSubjectsRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2475,8 +2479,8 @@ export const deleteOrganizationsRoles: API.OperationMethod<
   DeleteOrganizationsRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteOrganizationsRolesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Role>,
+  input: __S(640, __c80, 0) as any as S.Schema<DeleteOrganizationsRolesRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2495,8 +2499,8 @@ export const deleteProjectsLocationsOauthClients: API.OperationMethod<
   DeleteProjectsLocationsOauthClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteProjectsLocationsOauthClientsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<OauthClient>,
+  input: __S(648, __c81, 0) as any as S.Schema<DeleteProjectsLocationsOauthClientsRequest>,
+  output: __S(328, __c41, 0) as any as S.Schema<OauthClient>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2515,8 +2519,12 @@ export const deleteProjectsLocationsOauthClientsCredentials: API.OperationMethod
   DeleteProjectsLocationsOauthClientsCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteProjectsLocationsOauthClientsCredentialsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Empty>,
+  input: __S(
+    656,
+    __c82,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsOauthClientsCredentialsRequest>,
+  output: __S(664, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2535,8 +2543,8 @@ export const deleteProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
   DeleteProjectsLocationsWorkloadIdentityPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(672, __c84, 0) as any as S.Schema<DeleteProjectsLocationsWorkloadIdentityPoolsRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2556,11 +2564,11 @@ export const deleteProjectsLocationsWorkloadIdentityPoolsNamespaces: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    80,
-    __c10,
+    680,
+    __c85,
     0,
   ) as any as S.Schema<DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2580,11 +2588,11 @@ export const deleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdenti
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    81,
-    __c10,
-    1,
+    688,
+    __c86,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2604,11 +2612,11 @@ export const deleteProjectsLocationsWorkloadIdentityPoolsProviders: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    82,
-    __c10,
-    2,
+    696,
+    __c87,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsWorkloadIdentityPoolsProvidersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2628,11 +2636,11 @@ export const deleteProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    83,
-    __c10,
-    3,
+    704,
+    __c88,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2646,8 +2654,8 @@ export const deleteProjectsRoles: API.OperationMethod<
   DeleteProjectsRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteProjectsRolesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Role>,
+  input: __S(712, __c89, 0) as any as S.Schema<DeleteProjectsRolesRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2666,8 +2674,8 @@ export const deleteProjectsServiceAccounts: API.OperationMethod<
   DeleteProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeleteProjectsServiceAccountsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Empty>,
+  input: __S(720, __c90, 0) as any as S.Schema<DeleteProjectsServiceAccountsRequest>,
+  output: __S(664, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2686,8 +2694,8 @@ export const deleteProjectsServiceAccountsKeys: API.OperationMethod<
   DeleteProjectsServiceAccountsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<DeleteProjectsServiceAccountsKeysRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Empty>,
+  input: __S(728, __c91, 0) as any as S.Schema<DeleteProjectsServiceAccountsKeysRequest>,
+  output: __S(664, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2706,8 +2714,8 @@ export const disableProjectsServiceAccounts: API.OperationMethod<
   DisableProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<DisableProjectsServiceAccountsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Empty>,
+  input: __S(736, __c92, 0) as any as S.Schema<DisableProjectsServiceAccountsRequest>,
+  output: __S(664, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2726,8 +2734,8 @@ export const disableProjectsServiceAccountsKeys: API.OperationMethod<
   DisableProjectsServiceAccountsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DisableProjectsServiceAccountsKeysRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Empty>,
+  input: __S(744, __c93, 0) as any as S.Schema<DisableProjectsServiceAccountsKeysRequest>,
+  output: __S(664, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2746,8 +2754,8 @@ export const enableProjectsServiceAccounts: API.OperationMethod<
   EnableProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<EnableProjectsServiceAccountsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Empty>,
+  input: __S(752, __c94, 0) as any as S.Schema<EnableProjectsServiceAccountsRequest>,
+  output: __S(664, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2766,8 +2774,8 @@ export const enableProjectsServiceAccountsKeys: API.OperationMethod<
   EnableProjectsServiceAccountsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<EnableProjectsServiceAccountsKeysRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Empty>,
+  input: __S(760, __c95, 0) as any as S.Schema<EnableProjectsServiceAccountsKeysRequest>,
+  output: __S(664, __c83, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2786,8 +2794,8 @@ export const getIamPolicyLocationsWorkforcePools: API.OperationMethod<
   GetIamPolicyLocationsWorkforcePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetIamPolicyLocationsWorkforcePoolsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<Policy>,
+  input: __S(768, __c96, 0) as any as S.Schema<GetIamPolicyLocationsWorkforcePoolsRequest>,
+  output: __S(790, __c98, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2807,11 +2815,11 @@ export const getIamPolicyLocationsWorkforcePoolsProvidersScimTenants: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    102,
-    __c12,
-    6,
+    800,
+    __c100,
+    0,
   ) as any as S.Schema<GetIamPolicyLocationsWorkforcePoolsProvidersScimTenantsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<Policy>,
+  output: __S(790, __c98, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2831,11 +2839,11 @@ export const getIamPolicyProjectsLocationsWorkloadIdentityPools: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    103,
-    __c12,
-    7,
+    808,
+    __c101,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<Policy>,
+  output: __S(790, __c98, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2854,8 +2862,8 @@ export const getIamPolicyProjectsServiceAccounts: API.OperationMethod<
   GetIamPolicyProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetIamPolicyProjectsServiceAccountsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<Policy>,
+  input: __S(816, __c102, 0) as any as S.Schema<GetIamPolicyProjectsServiceAccountsRequest>,
+  output: __S(790, __c98, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2869,8 +2877,8 @@ export const getLocationsWorkforcePools: API.OperationMethod<
   GetLocationsWorkforcePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetLocationsWorkforcePoolsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<WorkforcePool>,
+  input: __S(824, __c103, 0) as any as S.Schema<GetLocationsWorkforcePoolsRequest>,
+  output: __S(1051, __c131, 3) as any as S.Schema<WorkforcePool>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2884,8 +2892,8 @@ export const getLocationsWorkforcePoolsOperations: API.OperationMethod<
   GetLocationsWorkforcePoolsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetLocationsWorkforcePoolsOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(832, __c104, 0) as any as S.Schema<GetLocationsWorkforcePoolsOperationsRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2899,8 +2907,8 @@ export const getLocationsWorkforcePoolsProviders: API.OperationMethod<
   GetLocationsWorkforcePoolsProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetLocationsWorkforcePoolsProvidersRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<WorkforcePoolProvider>,
+  input: __S(872, __c109, 0) as any as S.Schema<GetLocationsWorkforcePoolsProvidersRequest>,
+  output: __S(1183, __c147, 7) as any as S.Schema<WorkforcePoolProvider>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2914,8 +2922,8 @@ export const getLocationsWorkforcePoolsProvidersKeys: API.OperationMethod<
   GetLocationsWorkforcePoolsProvidersKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetLocationsWorkforcePoolsProvidersKeysRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<WorkforcePoolProviderKey>,
+  input: __S(880, __c110, 0) as any as S.Schema<GetLocationsWorkforcePoolsProvidersKeysRequest>,
+  output: __S(1296, __c162, 0) as any as S.Schema<WorkforcePoolProviderKey>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2933,11 +2941,11 @@ export const getLocationsWorkforcePoolsProvidersKeysOperations: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    109,
-    __c13,
-    5,
+    888,
+    __c111,
+    0,
   ) as any as S.Schema<GetLocationsWorkforcePoolsProvidersKeysOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2952,11 +2960,11 @@ export const getLocationsWorkforcePoolsProvidersOperations: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    110,
-    __c13,
-    6,
+    896,
+    __c112,
+    0,
   ) as any as S.Schema<GetLocationsWorkforcePoolsProvidersOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2971,11 +2979,11 @@ export const getLocationsWorkforcePoolsProvidersScimTenants: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    111,
-    __c13,
-    7,
+    904,
+    __c113,
+    0,
   ) as any as S.Schema<GetLocationsWorkforcePoolsProvidersScimTenantsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<WorkforcePoolProviderScimTenant>,
+  output: __S(8, __c1, 0) as any as S.Schema<WorkforcePoolProviderScimTenant>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2993,11 +3001,11 @@ export const getLocationsWorkforcePoolsProvidersScimTenantsTokens: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    112,
-    __c14,
+    912,
+    __c114,
     0,
   ) as any as S.Schema<GetLocationsWorkforcePoolsProvidersScimTenantsTokensRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<WorkforcePoolProviderScimToken>,
+  output: __S(104, __c13, 0) as any as S.Schema<WorkforcePoolProviderScimToken>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3011,8 +3019,12 @@ export const getLocationsWorkforcePoolsSubjectsOperations: API.OperationMethod<
   GetLocationsWorkforcePoolsSubjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetLocationsWorkforcePoolsSubjectsOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(
+    920,
+    __c115,
+    0,
+  ) as any as S.Schema<GetLocationsWorkforcePoolsSubjectsOperationsRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3026,8 +3038,8 @@ export const getOrganizationsRoles: API.OperationMethod<
   GetOrganizationsRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetOrganizationsRolesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Role>,
+  input: __S(928, __c116, 0) as any as S.Schema<GetOrganizationsRolesRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3041,8 +3053,8 @@ export const getProjectsLocationsOauthClients: API.OperationMethod<
   GetProjectsLocationsOauthClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetProjectsLocationsOauthClientsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<OauthClient>,
+  input: __S(936, __c117, 0) as any as S.Schema<GetProjectsLocationsOauthClientsRequest>,
+  output: __S(328, __c41, 0) as any as S.Schema<OauthClient>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3056,8 +3068,8 @@ export const getProjectsLocationsOauthClientsCredentials: API.OperationMethod<
   GetProjectsLocationsOauthClientsCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetProjectsLocationsOauthClientsCredentialsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<OauthClientCredential>,
+  input: __S(944, __c118, 0) as any as S.Schema<GetProjectsLocationsOauthClientsCredentialsRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<OauthClientCredential>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3071,8 +3083,8 @@ export const getProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
   GetProjectsLocationsWorkloadIdentityPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<WorkloadIdentityPool>,
+  input: __S(960, __c120, 0) as any as S.Schema<GetProjectsLocationsWorkloadIdentityPoolsRequest>,
+  output: __S(483, __c60, 3) as any as S.Schema<WorkloadIdentityPool>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3090,11 +3102,11 @@ export const getProjectsLocationsWorkloadIdentityPoolsNamespaces: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    118,
-    __c14,
-    6,
+    968,
+    __c121,
+    0,
   ) as any as S.Schema<GetProjectsLocationsWorkloadIdentityPoolsNamespacesRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<WorkloadIdentityPoolNamespace>,
+  output: __S(497, __c62, 1) as any as S.Schema<WorkloadIdentityPoolNamespace>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3112,11 +3124,11 @@ export const getProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitie
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    119,
-    __c14,
-    7,
+    976,
+    __c122,
+    0,
   ) as any as S.Schema<GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<WorkloadIdentityPoolManagedIdentity>,
+  output: __S(512, __c64, 0) as any as S.Schema<WorkloadIdentityPoolManagedIdentity>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3134,11 +3146,11 @@ export const getProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitie
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    120,
-    __c15,
+    984,
+    __c123,
     0,
   ) as any as S.Schema<GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3156,11 +3168,11 @@ export const getProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitie
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    121,
-    __c15,
-    1,
+    992,
+    __c124,
+    0,
   ) as any as S.Schema<GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3178,11 +3190,11 @@ export const getProjectsLocationsWorkloadIdentityPoolsNamespacesOperations: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    122,
-    __c15,
-    2,
+    1000,
+    __c125,
+    0,
   ) as any as S.Schema<GetProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3200,11 +3212,11 @@ export const getProjectsLocationsWorkloadIdentityPoolsOperations: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    123,
-    __c15,
-    3,
+    1008,
+    __c126,
+    0,
   ) as any as S.Schema<GetProjectsLocationsWorkloadIdentityPoolsOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3222,11 +3234,11 @@ export const getProjectsLocationsWorkloadIdentityPoolsProviders: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    124,
-    __c15,
-    4,
+    1016,
+    __c127,
+    0,
   ) as any as S.Schema<GetProjectsLocationsWorkloadIdentityPoolsProvidersRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<WorkloadIdentityPoolProvider>,
+  output: __S(532, __c66, 4) as any as S.Schema<WorkloadIdentityPoolProvider>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3244,11 +3256,11 @@ export const getProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    125,
-    __c15,
-    5,
+    1024,
+    __c128,
+    0,
   ) as any as S.Schema<GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<WorkloadIdentityPoolProviderKey>,
+  output: __S(544, __c68, 0) as any as S.Schema<WorkloadIdentityPoolProviderKey>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3266,11 +3278,11 @@ export const getProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperations: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    126,
-    __c15,
-    6,
+    1032,
+    __c129,
+    0,
   ) as any as S.Schema<GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3288,11 +3300,11 @@ export const getProjectsLocationsWorkloadIdentityPoolsProvidersOperations: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    127,
-    __c15,
-    7,
+    1056,
+    __c132,
+    0,
   ) as any as S.Schema<GetProjectsLocationsWorkloadIdentityPoolsProvidersOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3306,8 +3318,8 @@ export const getProjectsRoles: API.OperationMethod<
   GetProjectsRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetProjectsRolesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Role>,
+  input: __S(1064, __c133, 0) as any as S.Schema<GetProjectsRolesRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3321,8 +3333,8 @@ export const getProjectsServiceAccounts: API.OperationMethod<
   GetProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetProjectsServiceAccountsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ServiceAccount>,
+  input: __S(1072, __c134, 0) as any as S.Schema<GetProjectsServiceAccountsRequest>,
+  output: __S(568, __c71, 0) as any as S.Schema<ServiceAccount>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3336,8 +3348,8 @@ export const getProjectsServiceAccountsKeys: API.OperationMethod<
   GetProjectsServiceAccountsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetProjectsServiceAccountsKeysRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ServiceAccountKey>,
+  input: __S(1080, __c135, 0) as any as S.Schema<GetProjectsServiceAccountsKeysRequest>,
+  output: __S(586, __c73, 2) as any as S.Schema<ServiceAccountKey>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3347,8 +3359,8 @@ export type GetRolesError = NotFound | Forbidden | GcpOpError;
 /** Gets the definition of a Role. */
 export const getRoles: API.OperationMethod<GetRolesRequest, Role, GetRolesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(131, __c16, 3) as any as S.Schema<GetRolesRequest>,
-    output: __S(31, __c3, 7) as any as S.Schema<Role>,
+    input: __S(1088, __c136, 0) as any as S.Schema<GetRolesRequest>,
+    output: __S(224, __c28, 0) as any as S.Schema<Role>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3362,8 +3374,8 @@ export const lintPolicyIamPolicies: API.OperationMethod<
   LintPolicyIamPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<LintPolicyIamPoliciesRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<LintPolicyResponse>,
+  input: __S(1097, __c137, 1) as any as S.Schema<LintPolicyIamPoliciesRequest>,
+  output: __S(1100, __c137, 4) as any as S.Schema<LintPolicyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3382,11 +3394,11 @@ export const listAttestationRulesProjectsLocationsWorkloadIdentityPools: API.Pag
   ListAttestationRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    137,
-    __c17,
-    1,
+    1104,
+    __c138,
+    0,
   ) as any as S.Schema<ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListAttestationRulesResponse>,
+  output: __S(1112, __c139, 0) as any as S.Schema<ListAttestationRulesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3406,11 +3418,11 @@ export const listAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespace
   ListAttestationRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    140,
-    __c17,
-    4,
+    1128,
+    __c141,
+    0,
   ) as any as S.Schema<ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListAttestationRulesResponse>,
+  output: __S(1112, __c139, 0) as any as S.Schema<ListAttestationRulesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3426,8 +3438,8 @@ export const listLocationsWorkforcePools: API.PaginatedOperationMethod<
   GcpOpContext,
   ListWorkforcePoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListLocationsWorkforcePoolsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListWorkforcePoolsResponse>,
+  input: __S(1136, __c142, 0) as any as S.Schema<ListLocationsWorkforcePoolsRequest>,
+  output: __S(1138, __c142, 2) as any as S.Schema<ListWorkforcePoolsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3443,8 +3455,8 @@ export const listLocationsWorkforcePoolsProviders: API.PaginatedOperationMethod<
   GcpOpContext,
   ListWorkforcePoolProvidersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListLocationsWorkforcePoolsProvidersRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<ListWorkforcePoolProvidersResponse>,
+  input: __S(1144, __c143, 0) as any as S.Schema<ListLocationsWorkforcePoolsProvidersRequest>,
+  output: __S(1146, __c143, 2) as any as S.Schema<ListWorkforcePoolProvidersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3460,8 +3472,8 @@ export const listLocationsWorkforcePoolsProvidersKeys: API.PaginatedOperationMet
   GcpOpContext,
   ListWorkforcePoolProviderKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<ListLocationsWorkforcePoolsProvidersKeysRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ListWorkforcePoolProviderKeysResponse>,
+  input: __S(1184, __c148, 0) as any as S.Schema<ListLocationsWorkforcePoolsProvidersKeysRequest>,
+  output: __S(1186, __c148, 2) as any as S.Schema<ListWorkforcePoolProviderKeysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3481,11 +3493,11 @@ export const listLocationsWorkforcePoolsProvidersScimTenants: API.PaginatedOpera
   ListWorkforcePoolProviderScimTenantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    150,
-    __c18,
-    6,
+    1192,
+    __c149,
+    0,
   ) as any as S.Schema<ListLocationsWorkforcePoolsProvidersScimTenantsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<ListWorkforcePoolProviderScimTenantsResponse>,
+  output: __S(1194, __c149, 2) as any as S.Schema<ListWorkforcePoolProviderScimTenantsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3505,11 +3517,11 @@ export const listLocationsWorkforcePoolsProvidersScimTenantsTokens: API.Paginate
   ListWorkforcePoolProviderScimTokensResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    153,
-    __c19,
-    1,
+    1200,
+    __c150,
+    0,
   ) as any as S.Schema<ListLocationsWorkforcePoolsProvidersScimTenantsTokensRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<ListWorkforcePoolProviderScimTokensResponse>,
+  output: __S(1202, __c150, 2) as any as S.Schema<ListWorkforcePoolProviderScimTokensResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3525,8 +3537,8 @@ export const listOrganizationsRoles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRolesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ListOrganizationsRolesRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<ListRolesResponse>,
+  input: __S(1208, __c151, 0) as any as S.Schema<ListOrganizationsRolesRequest>,
+  output: __S(1216, __c152, 0) as any as S.Schema<ListRolesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3542,8 +3554,8 @@ export const listProjectsLocationsOauthClients: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOauthClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ListProjectsLocationsOauthClientsRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<ListOauthClientsResponse>,
+  input: __S(1232, __c154, 0) as any as S.Schema<ListProjectsLocationsOauthClientsRequest>,
+  output: __S(1234, __c154, 2) as any as S.Schema<ListOauthClientsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3558,8 +3570,12 @@ export const listProjectsLocationsOauthClientsCredentials: API.OperationMethod<
   ListProjectsLocationsOauthClientsCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListProjectsLocationsOauthClientsCredentialsRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListOauthClientCredentialsResponse>,
+  input: __S(
+    1240,
+    __c155,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsOauthClientsCredentialsRequest>,
+  output: __S(1242, __c155, 2) as any as S.Schema<ListOauthClientCredentialsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3574,8 +3590,8 @@ export const listProjectsLocationsWorkloadIdentityPools: API.PaginatedOperationM
   GcpOpContext,
   ListWorkloadIdentityPoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<ListWorkloadIdentityPoolsResponse>,
+  input: __S(1248, __c156, 0) as any as S.Schema<ListProjectsLocationsWorkloadIdentityPoolsRequest>,
+  output: __S(1250, __c156, 2) as any as S.Schema<ListWorkloadIdentityPoolsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3595,11 +3611,11 @@ export const listProjectsLocationsWorkloadIdentityPoolsNamespaces: API.Paginated
   ListWorkloadIdentityPoolNamespacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    168,
-    __c21,
+    1256,
+    __c157,
     0,
   ) as any as S.Schema<ListProjectsLocationsWorkloadIdentityPoolsNamespacesRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<ListWorkloadIdentityPoolNamespacesResponse>,
+  output: __S(1258, __c157, 2) as any as S.Schema<ListWorkloadIdentityPoolNamespacesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3619,11 +3635,15 @@ export const listProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentiti
   ListWorkloadIdentityPoolManagedIdentitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    171,
-    __c21,
-    3,
+    1264,
+    __c158,
+    0,
   ) as any as S.Schema<ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<ListWorkloadIdentityPoolManagedIdentitiesResponse>,
+  output: __S(
+    1266,
+    __c158,
+    2,
+  ) as any as S.Schema<ListWorkloadIdentityPoolManagedIdentitiesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3643,11 +3663,11 @@ export const listProjectsLocationsWorkloadIdentityPoolsProviders: API.PaginatedO
   ListWorkloadIdentityPoolProvidersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    174,
-    __c21,
-    6,
+    1272,
+    __c159,
+    0,
   ) as any as S.Schema<ListProjectsLocationsWorkloadIdentityPoolsProvidersRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListWorkloadIdentityPoolProvidersResponse>,
+  output: __S(1274, __c159, 2) as any as S.Schema<ListWorkloadIdentityPoolProvidersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3667,11 +3687,11 @@ export const listProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.Pagina
   ListWorkloadIdentityPoolProviderKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    177,
-    __c22,
-    1,
+    1304,
+    __c163,
+    0,
   ) as any as S.Schema<ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListWorkloadIdentityPoolProviderKeysResponse>,
+  output: __S(1306, __c163, 2) as any as S.Schema<ListWorkloadIdentityPoolProviderKeysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3687,8 +3707,8 @@ export const listProjectsRoles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRolesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<ListProjectsRolesRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<ListRolesResponse>,
+  input: __S(1312, __c164, 0) as any as S.Schema<ListProjectsRolesRequest>,
+  output: __S(1216, __c152, 0) as any as S.Schema<ListRolesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3704,8 +3724,8 @@ export const listProjectsServiceAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServiceAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListProjectsServiceAccountsRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<ListServiceAccountsResponse>,
+  input: __S(1320, __c165, 0) as any as S.Schema<ListProjectsServiceAccountsRequest>,
+  output: __S(1322, __c165, 2) as any as S.Schema<ListServiceAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3720,8 +3740,8 @@ export const listProjectsServiceAccountsKeys: API.OperationMethod<
   ListProjectsServiceAccountsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<ListProjectsServiceAccountsKeysRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListServiceAccountKeysResponse>,
+  input: __S(1328, __c166, 0) as any as S.Schema<ListProjectsServiceAccountsKeysRequest>,
+  output: __S(1330, __c166, 2) as any as S.Schema<ListServiceAccountKeysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3736,8 +3756,8 @@ export const listRoles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRolesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ListRolesRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<ListRolesResponse>,
+  input: __S(1336, __c167, 0) as any as S.Schema<ListRolesRequest>,
+  output: __S(1216, __c152, 0) as any as S.Schema<ListRolesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3757,8 +3777,8 @@ export const patchLocationsWorkforcePools: API.OperationMethod<
   PatchLocationsWorkforcePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<PatchLocationsWorkforcePoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1344, __c168, 0) as any as S.Schema<PatchLocationsWorkforcePoolsRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3777,8 +3797,8 @@ export const patchLocationsWorkforcePoolsProviders: API.OperationMethod<
   PatchLocationsWorkforcePoolsProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<PatchLocationsWorkforcePoolsProvidersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1352, __c169, 0) as any as S.Schema<PatchLocationsWorkforcePoolsProvidersRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3798,11 +3818,11 @@ export const patchLocationsWorkforcePoolsProvidersScimTenants: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    190,
-    __c23,
-    6,
+    1360,
+    __c170,
+    0,
   ) as any as S.Schema<PatchLocationsWorkforcePoolsProvidersScimTenantsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<WorkforcePoolProviderScimTenant>,
+  output: __S(8, __c1, 0) as any as S.Schema<WorkforcePoolProviderScimTenant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3822,11 +3842,11 @@ export const patchLocationsWorkforcePoolsProvidersScimTenantsTokens: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    191,
-    __c23,
-    7,
+    1368,
+    __c171,
+    0,
   ) as any as S.Schema<PatchLocationsWorkforcePoolsProvidersScimTenantsTokensRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<WorkforcePoolProviderScimToken>,
+  output: __S(104, __c13, 0) as any as S.Schema<WorkforcePoolProviderScimToken>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3845,8 +3865,8 @@ export const patchOrganizationsRoles: API.OperationMethod<
   PatchOrganizationsRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<PatchOrganizationsRolesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Role>,
+  input: __S(1376, __c172, 0) as any as S.Schema<PatchOrganizationsRolesRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3865,8 +3885,8 @@ export const patchProjectsLocationsOauthClients: API.OperationMethod<
   PatchProjectsLocationsOauthClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<PatchProjectsLocationsOauthClientsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<OauthClient>,
+  input: __S(16, __c2, 0) as any as S.Schema<PatchProjectsLocationsOauthClientsRequest>,
+  output: __S(328, __c41, 0) as any as S.Schema<OauthClient>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3885,12 +3905,8 @@ export const patchProjectsLocationsOauthClientsCredentials: API.OperationMethod<
   PatchProjectsLocationsOauthClientsCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    194,
-    __c24,
-    2,
-  ) as any as S.Schema<PatchProjectsLocationsOauthClientsCredentialsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<OauthClientCredential>,
+  input: __S(24, __c3, 0) as any as S.Schema<PatchProjectsLocationsOauthClientsCredentialsRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<OauthClientCredential>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3909,8 +3925,8 @@ export const patchProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
   PatchProjectsLocationsWorkloadIdentityPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<PatchProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(32, __c4, 0) as any as S.Schema<PatchProjectsLocationsWorkloadIdentityPoolsRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3930,11 +3946,11 @@ export const patchProjectsLocationsWorkloadIdentityPoolsNamespaces: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    196,
-    __c24,
-    4,
+    40,
+    __c5,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsWorkloadIdentityPoolsNamespacesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3954,11 +3970,11 @@ export const patchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentit
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    197,
-    __c24,
-    5,
+    48,
+    __c6,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3978,11 +3994,11 @@ export const patchProjectsLocationsWorkloadIdentityPoolsProviders: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    198,
-    __c24,
-    6,
+    56,
+    __c7,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsWorkloadIdentityPoolsProvidersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3996,8 +4012,8 @@ export const patchProjectsRoles: API.OperationMethod<
   PatchProjectsRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<PatchProjectsRolesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Role>,
+  input: __S(64, __c8, 0) as any as S.Schema<PatchProjectsRolesRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4016,8 +4032,8 @@ export const patchProjectsServiceAccounts: API.OperationMethod<
   PatchProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<PatchProjectsServiceAccountsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ServiceAccount>,
+  input: __S(73, __c9, 1) as any as S.Schema<PatchProjectsServiceAccountsRequest>,
+  output: __S(568, __c71, 0) as any as S.Schema<ServiceAccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4036,8 +4052,8 @@ export const queryAuditableServicesIamPolicies: API.OperationMethod<
   QueryAuditableServicesIamPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<QueryAuditableServicesIamPoliciesRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<QueryAuditableServicesResponse>,
+  input: __S(81, __c10, 1) as any as S.Schema<QueryAuditableServicesIamPoliciesRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<QueryAuditableServicesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4056,8 +4072,8 @@ export const queryGrantableRolesRoles: API.OperationMethod<
   QueryGrantableRolesRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<QueryGrantableRolesRolesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<QueryGrantableRolesResponse>,
+  input: __S(89, __c11, 1) as any as S.Schema<QueryGrantableRolesRolesRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<QueryGrantableRolesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4076,8 +4092,8 @@ export const queryTestablePermissionsPermissions: API.OperationMethod<
   QueryTestablePermissionsPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<QueryTestablePermissionsPermissionsRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<QueryTestablePermissionsResponse>,
+  input: __S(113, __c14, 1) as any as S.Schema<QueryTestablePermissionsPermissionsRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<QueryTestablePermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4097,11 +4113,11 @@ export const removeAttestationRuleProjectsLocationsWorkloadIdentityPools: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    215,
-    __c26,
-    7,
+    120,
+    __c15,
+    0,
   ) as any as S.Schema<RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4121,11 +4137,11 @@ export const removeAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespac
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    216,
-    __c27,
+    128,
+    __c16,
     0,
   ) as any as S.Schema<RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4145,11 +4161,11 @@ export const revokeSessionsLocationsWorkforcePoolsSubjects: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    217,
-    __c27,
-    1,
+    136,
+    __c17,
+    0,
   ) as any as S.Schema<RevokeSessionsLocationsWorkforcePoolsSubjectsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4169,11 +4185,11 @@ export const setAttestationRulesProjectsLocationsWorkloadIdentityPools: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    219,
-    __c27,
-    3,
+    144,
+    __c18,
+    0,
   ) as any as S.Schema<SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4193,11 +4209,11 @@ export const setAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespaces
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    220,
-    __c27,
-    4,
+    160,
+    __c20,
+    0,
   ) as any as S.Schema<SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4216,8 +4232,8 @@ export const setIamPolicyLocationsWorkforcePools: API.OperationMethod<
   SetIamPolicyLocationsWorkforcePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<SetIamPolicyLocationsWorkforcePoolsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<Policy>,
+  input: __S(168, __c21, 0) as any as S.Schema<SetIamPolicyLocationsWorkforcePoolsRequest>,
+  output: __S(790, __c98, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4237,11 +4253,11 @@ export const setIamPolicyLocationsWorkforcePoolsProvidersScimTenants: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    223,
-    __c27,
-    7,
+    184,
+    __c23,
+    0,
   ) as any as S.Schema<SetIamPolicyLocationsWorkforcePoolsProvidersScimTenantsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<Policy>,
+  output: __S(790, __c98, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4261,11 +4277,11 @@ export const setIamPolicyProjectsLocationsWorkloadIdentityPools: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    224,
-    __c28,
+    192,
+    __c24,
     0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<Policy>,
+  output: __S(790, __c98, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4284,8 +4300,8 @@ export const setIamPolicyProjectsServiceAccounts: API.OperationMethod<
   SetIamPolicyProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<SetIamPolicyProjectsServiceAccountsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<Policy>,
+  input: __S(200, __c25, 0) as any as S.Schema<SetIamPolicyProjectsServiceAccountsRequest>,
+  output: __S(790, __c98, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4304,8 +4320,8 @@ export const signBlobProjectsServiceAccounts: API.OperationMethod<
   SignBlobProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<SignBlobProjectsServiceAccountsRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<SignBlobResponse>,
+  input: __S(233, __c29, 1) as any as S.Schema<SignBlobProjectsServiceAccountsRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<SignBlobResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4324,8 +4340,8 @@ export const signJwtProjectsServiceAccounts: API.OperationMethod<
   SignJwtProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<SignJwtProjectsServiceAccountsRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<SignJwtResponse>,
+  input: __S(241, __c30, 1) as any as S.Schema<SignJwtProjectsServiceAccountsRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<SignJwtResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4344,8 +4360,8 @@ export const testIamPermissionsLocationsWorkforcePools: API.OperationMethod<
   TestIamPermissionsLocationsWorkforcePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<TestIamPermissionsLocationsWorkforcePoolsRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<TestIamPermissionsLocationsWorkforcePoolsRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4365,11 +4381,11 @@ export const testIamPermissionsLocationsWorkforcePoolsProvidersScimTenants: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    234,
-    __c29,
-    2,
+    264,
+    __c33,
+    0,
   ) as any as S.Schema<TestIamPermissionsLocationsWorkforcePoolsProvidersScimTenantsRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(256, __c32, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4389,11 +4405,11 @@ export const testIamPermissionsProjectsLocationsWorkloadIdentityPools: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    235,
-    __c29,
-    3,
+    272,
+    __c34,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(256, __c32, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4412,8 +4428,8 @@ export const testIamPermissionsProjectsServiceAccounts: API.OperationMethod<
   TestIamPermissionsProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<TestIamPermissionsProjectsServiceAccountsRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<TestIamPermissionsProjectsServiceAccountsRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4432,8 +4448,8 @@ export const undeleteLocationsWorkforcePools: API.OperationMethod<
   UndeleteLocationsWorkforcePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<UndeleteLocationsWorkforcePoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(288, __c36, 0) as any as S.Schema<UndeleteLocationsWorkforcePoolsRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4452,8 +4468,8 @@ export const undeleteLocationsWorkforcePoolsProviders: API.OperationMethod<
   UndeleteLocationsWorkforcePoolsProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<UndeleteLocationsWorkforcePoolsProvidersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(296, __c37, 0) as any as S.Schema<UndeleteLocationsWorkforcePoolsProvidersRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4472,8 +4488,8 @@ export const undeleteLocationsWorkforcePoolsProvidersKeys: API.OperationMethod<
   UndeleteLocationsWorkforcePoolsProvidersKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<UndeleteLocationsWorkforcePoolsProvidersKeysRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(304, __c38, 0) as any as S.Schema<UndeleteLocationsWorkforcePoolsProvidersKeysRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4493,11 +4509,11 @@ export const undeleteLocationsWorkforcePoolsProvidersScimTenants: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    240,
-    __c30,
+    312,
+    __c39,
     0,
   ) as any as S.Schema<UndeleteLocationsWorkforcePoolsProvidersScimTenantsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<WorkforcePoolProviderScimTenant>,
+  output: __S(8, __c1, 0) as any as S.Schema<WorkforcePoolProviderScimTenant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4516,8 +4532,8 @@ export const undeleteLocationsWorkforcePoolsSubjects: API.OperationMethod<
   UndeleteLocationsWorkforcePoolsSubjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<UndeleteLocationsWorkforcePoolsSubjectsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(344, __c43, 0) as any as S.Schema<UndeleteLocationsWorkforcePoolsSubjectsRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4536,8 +4552,8 @@ export const undeleteOrganizationsRoles: API.OperationMethod<
   UndeleteOrganizationsRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<UndeleteOrganizationsRolesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Role>,
+  input: __S(352, __c44, 0) as any as S.Schema<UndeleteOrganizationsRolesRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4556,8 +4572,8 @@ export const undeleteProjectsLocationsOauthClients: API.OperationMethod<
   UndeleteProjectsLocationsOauthClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<UndeleteProjectsLocationsOauthClientsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<OauthClient>,
+  input: __S(368, __c46, 0) as any as S.Schema<UndeleteProjectsLocationsOauthClientsRequest>,
+  output: __S(328, __c41, 0) as any as S.Schema<OauthClient>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4577,11 +4593,11 @@ export const undeleteProjectsLocationsWorkloadIdentityPools: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    245,
-    __c30,
-    5,
+    376,
+    __c47,
+    0,
   ) as any as S.Schema<UndeleteProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4601,11 +4617,11 @@ export const undeleteProjectsLocationsWorkloadIdentityPoolsNamespaces: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    246,
-    __c30,
-    6,
+    384,
+    __c48,
+    0,
   ) as any as S.Schema<UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4625,11 +4641,11 @@ export const undeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIden
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    247,
-    __c30,
-    7,
+    392,
+    __c49,
+    0,
   ) as any as S.Schema<UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4649,11 +4665,11 @@ export const undeleteProjectsLocationsWorkloadIdentityPoolsProviders: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    248,
-    __c31,
+    400,
+    __c50,
     0,
   ) as any as S.Schema<UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4673,11 +4689,11 @@ export const undeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    249,
-    __c31,
-    1,
+    408,
+    __c51,
+    0,
   ) as any as S.Schema<UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  output: __S(859, __c107, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4691,8 +4707,8 @@ export const undeleteProjectsRoles: API.OperationMethod<
   UndeleteProjectsRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<UndeleteProjectsRolesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<Role>,
+  input: __S(416, __c52, 0) as any as S.Schema<UndeleteProjectsRolesRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4711,8 +4727,8 @@ export const undeleteProjectsServiceAccounts: API.OperationMethod<
   UndeleteProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<UndeleteProjectsServiceAccountsRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<UndeleteServiceAccountResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<UndeleteProjectsServiceAccountsRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<UndeleteServiceAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4731,8 +4747,8 @@ export const updateProjectsServiceAccounts: API.OperationMethod<
   UpdateProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<UpdateProjectsServiceAccountsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ServiceAccount>,
+  input: __S(448, __c56, 0) as any as S.Schema<UpdateProjectsServiceAccountsRequest>,
+  output: __S(568, __c71, 0) as any as S.Schema<ServiceAccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4751,8 +4767,8 @@ export const uploadProjectsServiceAccountsKeys: API.OperationMethod<
   UploadProjectsServiceAccountsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<UploadProjectsServiceAccountsKeysRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ServiceAccountKey>,
+  input: __S(457, __c57, 1) as any as S.Schema<UploadProjectsServiceAccountsKeysRequest>,
+  output: __S(586, __c73, 2) as any as S.Schema<ServiceAccountKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4764,291 +4780,9 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          googleCloudResource: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AttestationRule" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          attestationRule: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "AddAttestationRuleRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:addAttestationRule",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(3, __c0, 3)),
-          error: S.optional(__S(5, __c0, 5)),
-          response: S.optional(__S(3, __c0, 3)),
-          done: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:addAttestationRule",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceConfig" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowedServices: S.optional(__S(9, __c1, 1)),
-          disableProgrammaticSignin: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AccessRestrictions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          accessRestrictions: S.optional(__S(10, __c1, 2)),
-          disabled: S.optional(S.Boolean),
-          sessionDuration: S.optional(S.String),
-          state: S.optional(S.String),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          parent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkforcePool" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workforcePoolId: S.optional(S.String.pipe(T.Query())),
-          location: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+location}/workforcePools",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLocationsWorkforcePoolsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          thumbprint: S.optional(S.String),
-          plainText: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          queryParameters: S.optional(__S(13, __c1, 5)),
-          clientSecret: S.optional(__S(15, __c1, 7)),
-          issuerUri: S.optional(S.String),
-          attributesType: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client",
-      });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          additionalScopes: S.optional(__S(18, __c2, 2)),
-          assertionClaimsBehavior: S.optional(S.String),
-          responseType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          webSsoConfig: S.optional(__S(19, __c2, 3)),
-          clientId: S.optional(S.String),
-          jwksJson: S.optional(S.String),
-          clientSecret: S.optional(__S(15, __c1, 7)),
-          issuerUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIamAdminV1WorkforcePoolProviderOidc",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          idpMetadataXml: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIamAdminV1WorkforcePoolProviderSaml",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: S.optional(S.Boolean),
-          detailedAuditLogging: S.optional(S.Boolean),
-          extraAttributesOauth2Client: S.optional(__S(16, __c2, 0)),
-          attributeMapping: S.optional(__S(17, __c2, 1)),
-          oidc: S.optional(__S(20, __c2, 4)),
-          name: S.optional(S.String),
-          scimUsage: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          extendedAttributesOauth2Client: S.optional(__S(16, __c2, 0)),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          saml: S.optional(__S(21, __c2, 5)),
-          attributeCondition: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkforcePoolProvider" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          workforcePoolProviderId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/providers",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLocationsWorkforcePoolsProvidersRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          format: S.optional(S.String),
-          keySpec: S.optional(S.String),
-          notAfterTime: S.optional(S.String),
-          notBeforeTime: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyData" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          expireTime: S.optional(S.String),
-          use: S.optional(S.String),
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          keyData: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "WorkforcePoolProviderKey" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          workforcePoolProviderKeyId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/keys",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLocationsWorkforcePoolsProvidersKeysRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          baseUri: S.optional(S.String),
-          claimMapping: S.optional(__S(17, __c2, 1)),
-          purgeTime: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          serviceAgent: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WorkforcePoolProviderScimTenant",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           workforcePoolProviderScimTenantId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5059,23 +4793,251 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateLocationsWorkforcePoolsProvidersScimTenantsRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          securityToken: S.optional(S.String),
-          name: S.optional(S.String),
           state: S.optional(S.String),
+          baseUri: S.optional(S.String),
+          claimMapping: S.optional(__S(1160, __c145, 0)),
+          purgeTime: S.optional(S.String),
+          name: S.optional(S.String),
           displayName: S.optional(S.String),
+          serviceAgent: S.optional(S.String),
+          description: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "WorkforcePoolProviderScimToken",
+        identifier: "WorkforcePoolProviderScimTenant",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(328, __c41, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsOauthClientsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(440, __c55, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsOauthClientsCredentialsRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(483, __c60, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsWorkloadIdentityPoolsRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(497, __c62, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsWorkloadIdentityPoolsNamespacesRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(512, __c64, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(532, __c66, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsWorkloadIdentityPoolsProvidersRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(224, __c28, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsRolesRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccount: S.optional(__S(568, __c71, 0)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PatchServiceAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsServiceAccountsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fullResourceName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "QueryAuditableServicesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(80, __c10, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/iamPolicies:queryAuditableServices",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "QueryAuditableServicesIamPoliciesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuditableService" });
+    case 3:
+      return S.Array(__S(82, __c10, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          services: S.optional(__S(83, __c10, 3)),
+        }),
+      ).annotate({
+        identifier: "QueryAuditableServicesResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          view: S.optional(S.String),
+          pageSize: S.optional(S.Number),
+          pageToken: S.optional(S.String),
+          fullResourceName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "QueryGrantableRolesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/roles:queryGrantableRoles",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "QueryGrantableRolesRolesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          roles: S.optional(__S(1224, __c153, 0)),
+        }),
+      ).annotate({
+        identifier: "QueryGrantableRolesResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workforcePoolProviderScimTokenId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(104, __c13, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5086,34 +5048,278 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateLocationsWorkforcePoolsProvidersScimTenantsTokensRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          title: S.optional(S.String),
-          stage: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-          includedPermissions: S.optional(__S(18, __c2, 2)),
-          name: S.optional(S.String),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Role" });
   }
 }
-function __c4(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(__S(31, __c3, 7)),
-          roleId: S.optional(S.String),
+          securityToken: S.optional(S.String),
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          displayName: S.optional(S.String),
         }),
-      ).annotate({ identifier: "CreateRoleRequest" });
+      ).annotate({
+        identifier: "WorkforcePoolProviderScimToken",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number),
+          pageToken: S.optional(S.String),
+          fullResourceName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "QueryTestablePermissionsRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
+          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/permissions:queryTestablePermissions",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "QueryTestablePermissionsPermissionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiDisabled: S.optional(S.Boolean),
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          stage: S.optional(S.String),
+          onlyInPredefinedRoles: S.optional(S.Boolean),
+          primaryPermission: S.optional(S.String),
+          customRolesSupportLevel: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Permission" });
+    case 3:
+      return S.Array(__S(114, __c14, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(115, __c14, 3)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "QueryTestablePermissionsResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(848, __c106, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:removeAttestationRule",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(848, __c106, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:removeAttestationRule",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:revokeSessions",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RevokeSessionsLocationsWorkforcePoolsSubjectsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setAttestationRules",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attestationRules: S.optional(__S(1120, __c140, 0)),
+        }),
+      ).annotate({
+        identifier: "SetAttestationRulesRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setAttestationRules",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setIamPolicy",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyLocationsWorkforcePoolsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          policy: S.optional(__S(790, __c98, 6)),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setIamPolicy",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyLocationsWorkforcePoolsProvidersScimTenantsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setIamPolicy",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyProjectsLocationsWorkloadIdentityPoolsRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setIamPolicy",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyProjectsServiceAccountsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(216, __c27, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5124,30 +5330,271 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateOrganizationsRolesRequest",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(__S(224, __c28, 0)),
+          roleId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateRoleRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          disabled: S.optional(S.Boolean),
-          allowedScopes: S.optional(__S(18, __c2, 2)),
-          clientId: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          allowedRedirectUris: S.optional(__S(18, __c2, 2)),
+          title: S.optional(S.String),
+          stage: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+          includedPermissions: S.optional(__S(1168, __c146, 0)),
           name: S.optional(S.String),
-          allowedGrantTypes: S.optional(__S(34, __c4, 2)),
-          state: S.optional(S.String),
-          clientType: S.optional(S.String),
+          etag: S.optional(S.String),
         }),
-      ).annotate({ identifier: "OauthClient" });
-    case 4:
+      ).annotate({ identifier: "Role" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bytesToSign: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignBlobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:signBlob",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SignBlobProjectsServiceAccountsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          signature: S.optional(S.String),
+          keyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignBlobResponse" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          payload: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignJwtRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(240, __c30, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:signJwt",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SignJwtProjectsServiceAccountsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          keyId: S.optional(S.String),
+          signedJwt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignJwtResponse" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(256, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsLocationsWorkforcePoolsRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(1168, __c146, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(256, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsLocationsWorkforcePoolsProvidersScimTenantsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(256, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsWorkloadIdentityPoolsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(256, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsServiceAccountsRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteLocationsWorkforcePoolsRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteLocationsWorkforcePoolsProvidersRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteLocationsWorkforcePoolsProvidersKeysRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteLocationsWorkforcePoolsProvidersScimTenantsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           oauthClientId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(328, __c41, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5158,21 +5605,251 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsOauthClientsRequest",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
+          description: S.optional(S.String),
           displayName: S.optional(S.String),
-          clientSecret: S.optional(S.String),
-          name: S.optional(S.String),
           disabled: S.optional(S.Boolean),
+          allowedScopes: S.optional(__S(1168, __c146, 0)),
+          clientId: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          allowedRedirectUris: S.optional(__S(1168, __c146, 0)),
+          name: S.optional(S.String),
+          allowedGrantTypes: S.optional(__S(336, __c42, 0)),
+          state: S.optional(S.String),
+          clientType: S.optional(S.String),
         }),
-      ).annotate({ identifier: "OauthClientCredential" });
-    case 6:
+      ).annotate({ identifier: "OauthClient" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteLocationsWorkforcePoolsSubjectsRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(360, __c45, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteOrganizationsRolesRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UndeleteRoleRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteProjectsLocationsOauthClientsRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteProjectsLocationsWorkloadIdentityPoolsRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(360, __c45, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteProjectsRolesRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:undelete",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteProjectsServiceAccountsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          restoredAccount: S.optional(__S(568, __c71, 0)),
+        }),
+      ).annotate({
+        identifier: "UndeleteServiceAccountResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           oauthClientCredentialId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(440, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5183,66 +5860,71 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsOauthClientsCredentialsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          caPools: S.optional(__S(17, __c2, 1)),
-          useDefaultSharedCa: S.optional(S.Boolean),
-          lifetime: S.optional(S.String),
-          keyAlgorithm: S.optional(S.String),
-          rotationWindowPercentage: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "InlineCertificateIssuanceConfig",
-      });
   }
 }
-function __c5(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          pemCertificate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IntermediateCA" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          trustDefaultSharedCa: S.optional(S.Boolean),
-          intermediateCas: S.optional(__S(41, __c5, 1)),
-          trustAnchors: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "TrustStore" });
-    case 3:
-      return S.Record(S.String, __S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          additionalTrustBundles: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "InlineTrustConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expireTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          state: S.optional(S.String),
-          description: S.optional(S.String),
-          disabled: S.optional(S.Boolean),
-          inlineCertificateIssuanceConfig: S.optional(__S(39, __c4, 7)),
-          inlineTrustConfig: S.optional(__S(44, __c5, 4)),
-          mode: S.optional(S.String),
+          clientSecret: S.optional(S.String),
           name: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "WorkloadIdentityPool" });
-    case 6:
+      ).annotate({ identifier: "OauthClientCredential" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(568, __c71, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "UpdateProjectsServiceAccountsRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publicKeyData: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UploadServiceAccountKeyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(456, __c57, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}/keys:upload",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadProjectsServiceAccountsKeysRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workloadIdentityPoolId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(483, __c60, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5253,35 +5935,74 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsWorkloadIdentityPoolsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          principalSubject: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OwnerService" });
   }
 }
-function __c6(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          ownerService: S.optional(__S(47, __c5, 7)),
-          disabled: S.optional(S.Boolean),
+          pemCertificate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IntermediateCA" });
+    case 1:
+      return S.Array(__S(472, __c59, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          trustDefaultSharedCa: S.optional(S.Boolean),
+          intermediateCas: S.optional(__S(473, __c59, 1)),
+          trustAnchors: S.optional(__S(473, __c59, 1)),
+        }),
+      ).annotate({ identifier: "TrustStore" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          caPools: S.optional(__S(1160, __c145, 0)),
+          useDefaultSharedCa: S.optional(S.Boolean),
+          lifetime: S.optional(S.String),
+          keyAlgorithm: S.optional(S.String),
+          rotationWindowPercentage: S.optional(S.Number),
         }),
       ).annotate({
-        identifier: "WorkloadIdentityPoolNamespace",
+        identifier: "InlineCertificateIssuanceConfig",
       });
     case 1:
+      return S.Record(S.String, __S(474, __c59, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          additionalTrustBundles: S.optional(__S(481, __c60, 1)),
+        }),
+      ).annotate({ identifier: "InlineTrustConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          expireTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          state: S.optional(S.String),
+          description: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
+          inlineCertificateIssuanceConfig: S.optional(__S(480, __c60, 0)),
+          inlineTrustConfig: S.optional(__S(482, __c60, 2)),
+          mode: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkloadIdentityPool" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           workloadIdentityPoolNamespaceId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(497, __c62, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5292,24 +6013,39 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsWorkloadIdentityPoolsNamespacesRequest",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          expireTime: S.optional(S.String),
-          state: S.optional(S.String),
+          principalSubject: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OwnerService" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           description: S.optional(S.String),
+          expireTime: S.optional(S.String),
           name: S.optional(S.String),
+          state: S.optional(S.String),
+          ownerService: S.optional(__S(496, __c62, 0)),
           disabled: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "WorkloadIdentityPoolManagedIdentity",
+        identifier: "WorkloadIdentityPoolNamespace",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workloadIdentityPoolManagedIdentityId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(512, __c64, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5321,61 +6057,32 @@ function __c6(j: number): any {
         identifier:
           "CreateProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          idpMetadataXml: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Saml" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          trustStore: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "X509" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Aws" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allowedAudiences: S.optional(__S(18, __c2, 2)),
-          jwksJson: S.optional(S.String),
-          issuerUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Oidc" });
   }
 }
-function __c7(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attributeMapping: S.optional(__S(17, __c2, 1)),
-          saml: S.optional(__S(52, __c6, 4)),
-          attributeCondition: S.optional(S.String),
           expireTime: S.optional(S.String),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          disabled: S.optional(S.Boolean),
-          x509: S.optional(__S(53, __c6, 5)),
-          aws: S.optional(__S(54, __c6, 6)),
-          oidc: S.optional(__S(55, __c6, 7)),
           state: S.optional(S.String),
+          description: S.optional(S.String),
           name: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "WorkloadIdentityPoolProvider",
+        identifier: "WorkloadIdentityPoolManagedIdentity",
       });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workloadIdentityPoolProviderId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(532, __c66, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5386,24 +6093,65 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsWorkloadIdentityPoolsProvidersRequest",
       });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idpMetadataXml: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Saml" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          trustStore: S.optional(__S(474, __c59, 2)),
+        }),
+      ).annotate({ identifier: "X509" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          use: S.optional(S.String),
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Aws" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          allowedAudiences: S.optional(__S(1168, __c146, 0)),
+          jwksJson: S.optional(S.String),
+          issuerUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Oidc" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          attributeMapping: S.optional(__S(1160, __c145, 0)),
+          saml: S.optional(__S(528, __c66, 0)),
+          attributeCondition: S.optional(S.String),
           expireTime: S.optional(S.String),
-          keyData: S.optional(__S(24, __c3, 0)),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
+          x509: S.optional(__S(529, __c66, 1)),
+          aws: S.optional(__S(530, __c66, 2)),
+          oidc: S.optional(__S(531, __c66, 3)),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "WorkloadIdentityPoolProviderKey",
+        identifier: "WorkloadIdentityPoolProvider",
       });
-    case 3:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           workloadIdentityPoolProviderKeyId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(544, __c68, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5414,11 +6162,31 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest",
       });
-    case 4:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          use: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          keyData: S.optional(__S(1288, __c161, 0)),
+        }),
+      ).annotate({
+        identifier: "WorkloadIdentityPoolProviderKey",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(216, __c27, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5429,7 +6197,39 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectsRolesRequest",
       });
-    case 5:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccount: S.optional(__S(568, __c71, 0)),
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateServiceAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(560, __c70, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}/serviceAccounts",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsServiceAccountsRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uniqueId: S.optional(S.String),
@@ -5443,33 +6243,9 @@ function __c7(j: number): any {
           oauth2ClientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceAccount" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccount: S.optional(__S(61, __c7, 5)),
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateServiceAccountRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}/serviceAccounts",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsServiceAccountsRequest",
-      });
   }
 }
-function __c8(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5484,7 +6260,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c72, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5495,16 +6271,20 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateProjectsServiceAccountsKeysRequest",
       });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtendedStatus" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(584, __c73, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           keyOrigin: S.optional(S.String),
@@ -5512,7 +6292,7 @@ function __c8(j: number): any {
           disabled: S.optional(S.Boolean),
           keyType: S.optional(S.String),
           privateKeyType: S.optional(S.String),
-          extendedStatus: S.optional(__S(67, __c8, 3)),
+          extendedStatus: S.optional(__S(585, __c73, 1)),
           publicKeyData: S.optional(S.String),
           disableReason: S.optional(S.String),
           name: S.optional(S.String),
@@ -5521,7 +6301,11 @@ function __c8(j: number): any {
           keyAlgorithm: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceAccountKey" });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5531,7 +6315,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteLocationsWorkforcePoolsRequest",
       });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5541,7 +6329,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteLocationsWorkforcePoolsProvidersRequest",
       });
-    case 7:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5553,7 +6345,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5566,7 +6358,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteLocationsWorkforcePoolsProvidersScimTenantsRequest",
       });
-    case 1:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5576,7 +6372,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteLocationsWorkforcePoolsProvidersScimTenantsTokensRequest",
       });
-    case 2:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5586,7 +6386,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteLocationsWorkforcePoolsSubjectsRequest",
       });
-    case 3:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5597,7 +6401,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationsRolesRequest",
       });
-    case 4:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5607,7 +6415,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOauthClientsRequest",
       });
-    case 5:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5617,11 +6429,19 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOauthClientsCredentialsRequest",
       });
-    case 6:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 7:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5633,7 +6453,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5645,7 +6465,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesRequest",
       });
-    case 1:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5656,7 +6480,11 @@ function __c10(j: number): any {
         identifier:
           "DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
       });
-    case 2:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5666,7 +6494,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsWorkloadIdentityPoolsProvidersRequest",
       });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5676,7 +6508,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest",
       });
-    case 4:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5687,7 +6523,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsRolesRequest",
       });
-    case 5:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5697,7 +6537,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsServiceAccountsRequest",
       });
-    case 6:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5707,11 +6551,15 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsServiceAccountsKeysRequest",
       });
-    case 7:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5724,13 +6572,13 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5741,11 +6589,15 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DisableProjectsServiceAccountsKeysRequest",
       });
-    case 1:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5756,11 +6608,15 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "EnableProjectsServiceAccountsRequest",
       });
-    case 2:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(664, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5771,23 +6627,15 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "EnableProjectsServiceAccountsKeysRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requestedPolicyVersion: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GetPolicyOptions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(91, __c11, 3)),
-        }),
-      ).annotate({ identifier: "GetIamPolicyRequest" });
-    case 5:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(777, __c97, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5798,7 +6646,68 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyLocationsWorkforcePoolsRequest",
       });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestedPolicyVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GetPolicyOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(__S(776, __c97, 0)),
+        }),
+      ).annotate({ identifier: "GetIamPolicyRequest" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          condition: S.optional(__S(792, __c99, 0)),
+          members: S.optional(__S(1168, __c146, 0)),
+        }),
+      ).annotate({ identifier: "Binding" });
+    case 1:
+      return S.Array(__S(784, __c98, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(1168, __c146, 0)),
+        }),
+      ).annotate({ identifier: "AuditLogConfig" });
+    case 3:
+      return S.Array(__S(786, __c98, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          auditLogConfigs: S.optional(__S(787, __c98, 3)),
+          service: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuditConfig" });
+    case 5:
+      return S.Array(__S(788, __c98, 4));
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          bindings: S.optional(__S(785, __c98, 1)),
+          version: S.optional(S.Number),
+          auditConfigs: S.optional(__S(789, __c98, 5)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Policy" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -5807,52 +6716,15 @@ function __c11(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          condition: S.optional(__S(94, __c11, 6)),
-          members: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "Binding" });
   }
 }
-function __c12(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "AuditLogConfig" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          auditLogConfigs: S.optional(__S(98, __c12, 2)),
-          service: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuditConfig" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bindings: S.optional(__S(96, __c12, 0)),
-          version: S.optional(S.Number),
-          auditConfigs: S.optional(__S(100, __c12, 4)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Policy" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(777, __c97, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5863,11 +6735,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyLocationsWorkforcePoolsProvidersScimTenantsRequest",
       });
-    case 7:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(777, __c97, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5880,7 +6756,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5897,7 +6773,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsServiceAccountsRequest",
       });
-    case 1:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5907,7 +6787,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetLocationsWorkforcePoolsRequest",
       });
-    case 2:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5917,7 +6801,78 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetLocationsWorkforcePoolsOperationsRequest",
       });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(848, __c106, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:addAttestationRule",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attestationRule: S.optional(__S(864, __c108, 0)),
+        }),
+      ).annotate({
+        identifier: "AddAttestationRuleRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(856, __c107, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(857, __c107, 1)),
+        }),
+      ).annotate({ identifier: "Status" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(856, __c107, 0)),
+          error: S.optional(__S(858, __c107, 2)),
+          response: S.optional(__S(856, __c107, 0)),
+          done: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          googleCloudResource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AttestationRule" });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5927,7 +6882,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetLocationsWorkforcePoolsProvidersRequest",
       });
-    case 4:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5937,7 +6896,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetLocationsWorkforcePoolsProvidersKeysRequest",
       });
-    case 5:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5947,7 +6910,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetLocationsWorkforcePoolsProvidersKeysOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5957,7 +6924,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetLocationsWorkforcePoolsProvidersOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5969,7 +6940,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5981,7 +6952,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetLocationsWorkforcePoolsProvidersScimTenantsTokensRequest",
       });
-    case 1:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5991,7 +6966,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetLocationsWorkforcePoolsSubjectsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6001,7 +6980,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsRolesRequest",
       });
-    case 3:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6011,7 +6994,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOauthClientsRequest",
       });
-    case 4:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6021,7 +7008,31 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOauthClientsCredentialsRequest",
       });
-    case 5:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(848, __c106, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:addAttestationRule",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6031,7 +7042,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsWorkloadIdentityPoolsRequest",
       });
-    case 6:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6041,7 +7056,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsWorkloadIdentityPoolsNamespacesRequest",
       });
-    case 7:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6053,7 +7072,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6066,7 +7085,11 @@ function __c15(j: number): any {
         identifier:
           "GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6077,7 +7100,11 @@ function __c15(j: number): any {
         identifier:
           "GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6087,7 +7114,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6097,7 +7128,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsWorkloadIdentityPoolsOperationsRequest",
       });
-    case 4:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6107,7 +7142,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsWorkloadIdentityPoolsProvidersRequest",
       });
-    case 5:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6117,7 +7156,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest",
       });
-    case 6:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6127,7 +7170,64 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workforcePoolId: S.optional(S.String.pipe(T.Query())),
+          location: S.String.pipe(T.Label()),
+          body: S.optional(__S(1051, __c131, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+location}/workforcePools",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLocationsWorkforcePoolsRequest",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceConfig" });
+    case 1:
+      return S.Array(__S(1048, __c131, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allowedServices: S.optional(__S(1049, __c131, 1)),
+          disableProgrammaticSignin: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AccessRestrictions" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          accessRestrictions: S.optional(__S(1050, __c131, 2)),
+          disabled: S.optional(S.Boolean),
+          sessionDuration: S.optional(S.String),
+          state: S.optional(S.String),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          parent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkforcePool" });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6139,7 +7239,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6149,7 +7249,11 @@ function __c16(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetProjectsRolesRequest" });
-    case 1:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6159,7 +7263,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetProjectsServiceAccountsRequest",
       });
-    case 2:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6170,7 +7278,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetProjectsServiceAccountsKeysRequest",
       });
-    case 3:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6178,17 +7290,21 @@ function __c16(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetRolesRequest" });
-    case 4:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(94, __c11, 6)),
+          condition: S.optional(__S(792, __c99, 0)),
           fullResourceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "LintPolicyRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(132, __c16, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1096, __c137, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6199,7 +7315,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "LintPolicyIamPoliciesRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           severity: S.optional(S.String),
@@ -6210,19 +7326,19 @@ function __c16(j: number): any {
           debugMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "LintResult" });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(1098, __c137, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          lintResults: S.optional(__S(135, __c16, 7)),
+          lintResults: S.optional(__S(1099, __c137, 3)),
         }),
       ).annotate({ identifier: "LintPolicyResponse" });
-    case 1:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6239,18 +7355,30 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest",
       });
-    case 2:
-      return S.Array(__S(0, __c0, 0));
-    case 3:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          attestationRules: S.optional(__S(138, __c17, 2)),
+          attestationRules: S.optional(__S(1120, __c140, 0)),
         }),
       ).annotate({
         identifier: "ListAttestationRulesResponse",
       });
-    case 4:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(864, __c108, 0));
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6268,7 +7396,11 @@ function __c17(j: number): any {
         identifier:
           "ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
       });
-    case 5:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String.pipe(T.Query())),
@@ -6286,20 +7418,20 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListLocationsWorkforcePoolsRequest",
       });
-    case 6:
-      return S.Array(__S(11, __c1, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(1051, __c131, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workforcePools: S.optional(__S(142, __c17, 6)),
+          workforcePools: S.optional(__S(1137, __c142, 1)),
         }),
       ).annotate({
         identifier: "ListWorkforcePoolsResponse",
       });
   }
 }
-function __c18(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6319,17 +7451,144 @@ function __c18(j: number): any {
         identifier: "ListLocationsWorkforcePoolsProvidersRequest",
       });
     case 1:
-      return S.Array(__S(22, __c2, 6));
+      return S.Array(__S(1183, __c147, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workforcePoolProviders: S.optional(__S(145, __c18, 1)),
+          workforcePoolProviders: S.optional(__S(1145, __c143, 1)),
         }),
       ).annotate({
         identifier: "ListWorkforcePoolProvidersResponse",
       });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workforcePoolProviderId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1183, __c147, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/providers",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLocationsWorkforcePoolsProvidersRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          thumbprint: S.optional(S.String),
+          plainText: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1177, __c147, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          queryParameters: S.optional(__S(1176, __c147, 0)),
+          clientSecret: S.optional(__S(1178, __c147, 2)),
+          issuerUri: S.optional(S.String),
+          attributesType: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          additionalScopes: S.optional(__S(1168, __c146, 0)),
+          assertionClaimsBehavior: S.optional(S.String),
+          responseType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          webSsoConfig: S.optional(__S(1180, __c147, 4)),
+          clientId: S.optional(S.String),
+          jwksJson: S.optional(S.String),
+          clientSecret: S.optional(__S(1178, __c147, 2)),
+          issuerUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIamAdminV1WorkforcePoolProviderOidc",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          idpMetadataXml: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIamAdminV1WorkforcePoolProviderSaml",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          disabled: S.optional(S.Boolean),
+          detailedAuditLogging: S.optional(S.Boolean),
+          extraAttributesOauth2Client: S.optional(__S(1179, __c147, 3)),
+          attributeMapping: S.optional(__S(1160, __c145, 0)),
+          oidc: S.optional(__S(1181, __c147, 5)),
+          name: S.optional(S.String),
+          scimUsage: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          extendedAttributesOauth2Client: S.optional(__S(1179, __c147, 3)),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          saml: S.optional(__S(1182, __c147, 6)),
+          attributeCondition: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkforcePoolProvider" });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6346,18 +7605,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListLocationsWorkforcePoolsProvidersKeysRequest",
       });
-    case 4:
-      return S.Array(__S(25, __c3, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(1296, __c162, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workforcePoolProviderKeys: S.optional(__S(148, __c18, 4)),
+          workforcePoolProviderKeys: S.optional(__S(1185, __c148, 1)),
         }),
       ).annotate({
         identifier: "ListWorkforcePoolProviderKeysResponse",
       });
-    case 6:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -6374,22 +7637,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListLocationsWorkforcePoolsProvidersScimTenantsRequest",
       });
-    case 7:
-      return S.Array(__S(27, __c3, 3));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          workforcePoolProviderScimTenants: S.optional(__S(151, __c18, 7)),
+          workforcePoolProviderScimTenants: S.optional(__S(1193, __c149, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListWorkforcePoolProviderScimTenantsResponse",
       });
-    case 1:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -6406,18 +7669,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListLocationsWorkforcePoolsProvidersScimTenantsTokensRequest",
       });
+    case 1:
+      return S.Array(__S(104, __c13, 0));
     case 2:
-      return S.Array(__S(29, __c3, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          workforcePoolProviderScimTokens: S.optional(__S(154, __c19, 2)),
+          workforcePoolProviderScimTokens: S.optional(__S(1201, __c150, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListWorkforcePoolProviderScimTokensResponse",
       });
-    case 4:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6435,16 +7702,28 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsRolesRequest",
       });
-    case 5:
-      return S.Array(__S(31, __c3, 7));
-    case 6:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(__S(157, __c19, 5)),
+          roles: S.optional(__S(1224, __c153, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRolesResponse" });
-    case 7:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(224, __c28, 0));
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6461,20 +7740,20 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOauthClientsRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(35, __c4, 3));
     case 1:
+      return S.Array(__S(328, __c41, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          oauthClients: S.optional(__S(160, __c20, 0)),
+          oauthClients: S.optional(__S(1233, __c154, 1)),
         }),
       ).annotate({ identifier: "ListOauthClientsResponse" });
-    case 2:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -6488,17 +7767,21 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOauthClientsCredentialsRequest",
       });
-    case 3:
-      return S.Array(__S(37, __c4, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(440, __c55, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          oauthClientCredentials: S.optional(__S(163, __c20, 3)),
+          oauthClientCredentials: S.optional(__S(1241, __c155, 1)),
         }),
       ).annotate({
         identifier: "ListOauthClientCredentialsResponse",
       });
-    case 5:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -6515,20 +7798,20 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsWorkloadIdentityPoolsRequest",
       });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(483, __c60, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workloadIdentityPools: S.optional(__S(166, __c20, 6)),
+          workloadIdentityPools: S.optional(__S(1249, __c156, 1)),
         }),
       ).annotate({
         identifier: "ListWorkloadIdentityPoolsResponse",
       });
   }
 }
-function __c21(j: number): any {
+function __c157(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6548,17 +7831,21 @@ function __c21(j: number): any {
         identifier: "ListProjectsLocationsWorkloadIdentityPoolsNamespacesRequest",
       });
     case 1:
-      return S.Array(__S(48, __c6, 0));
+      return S.Array(__S(497, __c62, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          workloadIdentityPoolNamespaces: S.optional(__S(169, __c21, 1)),
+          workloadIdentityPoolNamespaces: S.optional(__S(1257, __c157, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListWorkloadIdentityPoolNamespacesResponse",
       });
-    case 3:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6575,18 +7862,22 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
       });
-    case 4:
-      return S.Array(__S(50, __c6, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(512, __c64, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workloadIdentityPoolManagedIdentities: S.optional(__S(172, __c21, 4)),
+          workloadIdentityPoolManagedIdentities: S.optional(__S(1265, __c158, 1)),
         }),
       ).annotate({
         identifier: "ListWorkloadIdentityPoolManagedIdentitiesResponse",
       });
-    case 6:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -6603,22 +7894,70 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsWorkloadIdentityPoolsProvidersRequest",
       });
-    case 7:
-      return S.Array(__S(56, __c7, 0));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(532, __c66, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          workloadIdentityPoolProviders: S.optional(__S(175, __c21, 7)),
+          workloadIdentityPoolProviders: S.optional(__S(1273, __c159, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListWorkloadIdentityPoolProvidersResponse",
       });
-    case 1:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workforcePoolProviderKeyId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1296, __c162, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/keys",
+            baseUrl: "https://iam.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLocationsWorkforcePoolsProvidersKeysRequest",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(S.String),
+          keySpec: S.optional(S.String),
+          notAfterTime: S.optional(S.String),
+          notBeforeTime: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyData" });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expireTime: S.optional(S.String),
+          use: S.optional(S.String),
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          keyData: S.optional(__S(1288, __c161, 0)),
+        }),
+      ).annotate({ identifier: "WorkforcePoolProviderKey" });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -6635,18 +7974,22 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest",
       });
+    case 1:
+      return S.Array(__S(544, __c68, 0));
     case 2:
-      return S.Array(__S(58, __c7, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workloadIdentityPoolProviderKeys: S.optional(__S(178, __c22, 2)),
+          workloadIdentityPoolProviderKeys: S.optional(__S(1305, __c163, 1)),
         }),
       ).annotate({
         identifier: "ListWorkloadIdentityPoolProviderKeysResponse",
       });
-    case 4:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6662,7 +8005,11 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProjectsRolesRequest" });
-    case 5:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6678,26 +8025,26 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsServiceAccountsRequest",
       });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(568, __c71, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          accounts: S.optional(__S(182, __c22, 6)),
+          accounts: S.optional(__S(1321, __c165, 1)),
         }),
       ).annotate({
         identifier: "ListServiceAccountsResponse",
       });
   }
 }
-function __c23(j: number): any {
+function __c166(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          keyTypes: S.optional(__S(34, __c4, 2).pipe(T.Query())),
+          keyTypes: S.optional(__S(336, __c42, 0).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "v1/{+name}/keys", baseUrl: "https://iam.googleapis.com/" }),
         ),
@@ -6705,16 +8052,20 @@ function __c23(j: number): any {
         identifier: "ListProjectsServiceAccountsKeysRequest",
       });
     case 1:
-      return S.Array(__S(68, __c8, 4));
+      return S.Array(__S(586, __c73, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(185, __c23, 1)),
+          keys: S.optional(__S(1329, __c166, 1)),
         }),
       ).annotate({
         identifier: "ListServiceAccountKeysResponse",
       });
-    case 3:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6724,48 +8075,64 @@ function __c23(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "v1/roles", baseUrl: "https://iam.googleapis.com/" })),
       ).annotate({ identifier: "ListRolesRequest" });
-    case 4:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1051, __c131, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchLocationsWorkforcePoolsRequest",
       });
-    case 5:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1183, __c147, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchLocationsWorkforcePoolsProvidersRequest",
       });
-    case 6:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchLocationsWorkforcePoolsProvidersScimTenantsRequest",
       });
-    case 7:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(104, __c13, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
         ),
@@ -6774,810 +8141,22 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c28, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchOrganizationsRolesRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsOauthClientsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsOauthClientsCredentialsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsWorkloadIdentityPoolsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsWorkloadIdentityPoolsNamespacesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsWorkloadIdentityPoolsProvidersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsRolesRequest",
-      });
   }
 }
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccount: S.optional(__S(61, __c7, 5)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PatchServiceAccountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(200, __c25, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsServiceAccountsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fullResourceName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "QueryAuditableServicesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(202, __c25, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/iamPolicies:queryAuditableServices",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "QueryAuditableServicesIamPoliciesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuditableService" });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          services: S.optional(__S(205, __c25, 5)),
-        }),
-      ).annotate({
-        identifier: "QueryAuditableServicesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          view: S.optional(S.String),
-          pageSize: S.optional(S.Number),
-          pageToken: S.optional(S.String),
-          fullResourceName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "QueryGrantableRolesRequest",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(207, __c25, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/roles:queryGrantableRoles",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "QueryGrantableRolesRolesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          roles: S.optional(__S(157, __c19, 5)),
-        }),
-      ).annotate({
-        identifier: "QueryGrantableRolesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number),
-          pageToken: S.optional(S.String),
-          fullResourceName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "QueryTestablePermissionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(210, __c26, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/permissions:queryTestablePermissions",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "QueryTestablePermissionsPermissionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiDisabled: S.optional(S.Boolean),
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          stage: S.optional(S.String),
-          onlyInPredefinedRoles: S.optional(S.Boolean),
-          primaryPermission: S.optional(S.String),
-          customRolesSupportLevel: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Permission" });
-    case 5:
-      return S.Array(__S(212, __c26, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(213, __c26, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "QueryTestablePermissionsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:removeAttestationRule",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsRequest",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:removeAttestationRule",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:revokeSessions",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RevokeSessionsLocationsWorkforcePoolsSubjectsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          attestationRules: S.optional(__S(138, __c17, 2)),
-        }),
-      ).annotate({
-        identifier: "SetAttestationRulesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(218, __c27, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setAttestationRules",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(218, __c27, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setAttestationRules",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          policy: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(221, __c27, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setIamPolicy",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyLocationsWorkforcePoolsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(221, __c27, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setIamPolicy",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyLocationsWorkforcePoolsProvidersScimTenantsRequest",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(221, __c27, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setIamPolicy",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyProjectsLocationsWorkloadIdentityPoolsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(221, __c27, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setIamPolicy",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyProjectsServiceAccountsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          bytesToSign: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignBlobRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(226, __c28, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:signBlob",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SignBlobProjectsServiceAccountsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          signature: S.optional(S.String),
-          keyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignBlobResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          payload: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignJwtRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(229, __c28, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:signJwt",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SignJwtProjectsServiceAccountsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          keyId: S.optional(S.String),
-          signedJwt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignJwtResponse" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsLocationsWorkforcePoolsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsLocationsWorkforcePoolsProvidersScimTenantsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsWorkloadIdentityPoolsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsServiceAccountsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteLocationsWorkforcePoolsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteLocationsWorkforcePoolsProvidersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteLocationsWorkforcePoolsProvidersKeysRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteLocationsWorkforcePoolsProvidersScimTenantsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteLocationsWorkforcePoolsSubjectsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UndeleteRoleRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(242, __c30, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteOrganizationsRolesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteProjectsLocationsOauthClientsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteProjectsLocationsWorkloadIdentityPoolsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(242, __c30, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteProjectsRolesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:undelete",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteProjectsServiceAccountsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          restoredAccount: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({
-        identifier: "UndeleteServiceAccountResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://iam.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "UpdateProjectsServiceAccountsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          publicKeyData: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UploadServiceAccountKeyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(254, __c31, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}/keys:upload",
-            baseUrl: "https://iam.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadProjectsServiceAccountsKeysRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

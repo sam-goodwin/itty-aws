@@ -245,8 +245,8 @@ export const troubleshootIam: API.OperationMethod<
   input: __S(2, __c0, 2) as any as S.Schema<TroubleshootIamRequest>,
   output: __S(
     18,
-    __c2,
-    2,
+    __c0,
+    18,
   ) as any as S.Schema<GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -322,81 +322,72 @@ function __c0(j: number): any {
       });
     case 7:
       return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.Array(S.String);
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(8, __c1, 0)),
+          exemptedMembers: S.optional(__S(8, __c0, 8)),
         }),
       ).annotate({
         identifier: "GoogleIamV1AuditLogConfig",
       });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 10:
+      return S.Array(__S(9, __c0, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(10, __c1, 2)),
+          auditLogConfigs: S.optional(__S(10, __c0, 10)),
         }),
       ).annotate({ identifier: "GoogleIamV1AuditConfig" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(11, __c0, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(8, __c1, 0)),
+          members: S.optional(__S(8, __c0, 8)),
           role: S.optional(S.String),
           condition: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "GoogleIamV1Binding" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 14:
+      return S.Array(__S(13, __c0, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(12, __c1, 4)),
-          bindings: S.optional(__S(14, __c1, 6)),
+          auditConfigs: S.optional(__S(12, __c0, 12)),
+          bindings: S.optional(__S(14, __c0, 14)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleIamV1Policy" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           fullResourceName: S.optional(S.String),
           access: S.optional(S.String),
           bindingExplanations: S.optional(__S(7, __c0, 7)),
           relevance: S.optional(S.String),
-          policy: S.optional(__S(15, __c1, 7)),
+          policy: S.optional(__S(15, __c0, 15)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterV1betaExplainedPolicy",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 17:
+      return S.Array(__S(16, __c0, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           access: S.optional(S.String),
-          explainedPolicies: S.optional(__S(17, __c2, 1)),
+          explainedPolicies: S.optional(__S(17, __c0, 17)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

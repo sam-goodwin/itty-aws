@@ -4246,7 +4246,7 @@ export const ActivateCertificateAuthority: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ActivateCertificateAuthorityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ActivateCertificateAuthorityResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<ActivateCertificateAuthorityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4260,8 +4260,8 @@ export const AssetEndpointProfilesCreateOrReplace: API.OperationMethod<
   AssetEndpointProfilesCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<AssetEndpointProfilesCreateOrReplaceRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<AssetEndpointProfilesCreateOrReplaceResponse>,
+  input: __S(65, __c2, 1) as any as S.Schema<AssetEndpointProfilesCreateOrReplaceRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<AssetEndpointProfilesCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4275,8 +4275,8 @@ export const AssetsCreateOrReplace: API.OperationMethod<
   AssetsCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<AssetsCreateOrReplaceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<AssetsCreateOrReplaceResponse>,
+  input: __S(641, __c20, 1) as any as S.Schema<AssetsCreateOrReplaceRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<AssetsCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4290,8 +4290,8 @@ export const CertificateAuthoritiesCreateOrReplace: API.OperationMethod<
   CertificateAuthoritiesCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CertificateAuthoritiesCreateOrReplaceRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CertificateAuthoritiesCreateOrReplaceResponse>,
+  input: __S(1601, __c50, 1) as any as S.Schema<CertificateAuthoritiesCreateOrReplaceRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<CertificateAuthoritiesCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4305,8 +4305,8 @@ export const CertificateAuthoritiesRevokeAndRotate: API.OperationMethod<
   CertificateAuthoritiesRevokeAndRotateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CertificateAuthoritiesRevokeAndRotateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CertificateAuthoritiesRevokeAndRotateResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<CertificateAuthoritiesRevokeAndRotateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CertificateAuthoritiesRevokeAndRotateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4320,8 +4320,8 @@ export const CertificatePoliciesCreateOrReplace: API.OperationMethod<
   CertificatePoliciesCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CertificatePoliciesCreateOrReplaceRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CertificatePoliciesCreateOrReplaceResponse>,
+  input: __S(2721, __c85, 1) as any as S.Schema<CertificatePoliciesCreateOrReplaceRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<CertificatePoliciesCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4335,8 +4335,8 @@ export const DeleteAsset: API.OperationMethod<
   DeleteAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteAssetRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DeleteAssetResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<DeleteAssetRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<DeleteAssetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4350,8 +4350,8 @@ export const DeleteAssetEndpointProfile: API.OperationMethod<
   DeleteAssetEndpointProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteAssetEndpointProfileRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAssetEndpointProfileResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<DeleteAssetEndpointProfileRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteAssetEndpointProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4365,8 +4365,8 @@ export const DeleteCertificateAuthority: API.OperationMethod<
   DeleteCertificateAuthorityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteCertificateAuthorityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteCertificateAuthorityResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<DeleteCertificateAuthorityRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteCertificateAuthorityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4380,8 +4380,8 @@ export const DeleteCertificatePolicy: API.OperationMethod<
   DeleteCertificatePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteCertificatePolicyRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DeleteCertificatePolicyResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<DeleteCertificatePolicyRequest>,
+  output: __S(3937, __c123, 1) as any as S.Schema<DeleteCertificatePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4395,8 +4395,8 @@ export const DeleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteNamespaceRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DeleteNamespaceResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteNamespaceRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<DeleteNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4410,8 +4410,8 @@ export const DeleteNamespaceAsset: API.OperationMethod<
   DeleteNamespaceAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteNamespaceAssetRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DeleteNamespaceAssetResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteNamespaceAssetRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<DeleteNamespaceAssetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4425,8 +4425,8 @@ export const DeleteNamespaceDevice: API.OperationMethod<
   DeleteNamespaceDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteNamespaceDeviceRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DeleteNamespaceDeviceResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteNamespaceDeviceRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<DeleteNamespaceDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4440,8 +4440,8 @@ export const DeleteNamespaceDiscoveredAsset: API.OperationMethod<
   DeleteNamespaceDiscoveredAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteNamespaceDiscoveredAssetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteNamespaceDiscoveredAssetResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteNamespaceDiscoveredAssetRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteNamespaceDiscoveredAssetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4455,8 +4455,8 @@ export const DeleteNamespaceDiscoveredDevice: API.OperationMethod<
   DeleteNamespaceDiscoveredDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteNamespaceDiscoveredDeviceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteNamespaceDiscoveredDeviceResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteNamespaceDiscoveredDeviceRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteNamespaceDiscoveredDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4470,8 +4470,8 @@ export const DeleteRegistryDevice: API.OperationMethod<
   DeleteRegistryDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteRegistryDeviceRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DeleteRegistryDeviceResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteRegistryDeviceRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<DeleteRegistryDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4485,8 +4485,8 @@ export const DeleteSchema: API.OperationMethod<
   DeleteSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteSchemaRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DeleteSchemaResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteSchemaRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<DeleteSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4500,8 +4500,8 @@ export const DeleteSchemaRegistry: API.OperationMethod<
   DeleteSchemaRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteSchemaRegistryRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DeleteSchemaRegistryResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteSchemaRegistryRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<DeleteSchemaRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4515,8 +4515,8 @@ export const DeleteSchemaVersion: API.OperationMethod<
   DeleteSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteSchemaVersionRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DeleteSchemaVersionResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteSchemaVersionRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<DeleteSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4530,8 +4530,8 @@ export const ExecuteNamespaceAssetAction: API.OperationMethod<
   ExecuteNamespaceAssetActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ExecuteNamespaceAssetActionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<NamespaceAssetExecuteActionResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ExecuteNamespaceAssetActionRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<NamespaceAssetExecuteActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4545,8 +4545,8 @@ export const GetAsset: API.OperationMethod<
   GetAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetAssetRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetAssetResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetAssetRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<GetAssetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4560,8 +4560,8 @@ export const GetAssetEndpointProfile: API.OperationMethod<
   GetAssetEndpointProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetAssetEndpointProfileRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetAssetEndpointProfileResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetAssetEndpointProfileRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<GetAssetEndpointProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4575,8 +4575,8 @@ export const GetAsyncOperationStatus: API.OperationMethod<
   GetAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetAsyncOperationStatusRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GetAsyncOperationStatusResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetAsyncOperationStatusRequest>,
+  output: __S(935, __c29, 7) as any as S.Schema<GetAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4590,8 +4590,8 @@ export const GetBillingContainer: API.OperationMethod<
   GetBillingContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetBillingContainerRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<GetBillingContainerResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetBillingContainerRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<GetBillingContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4605,8 +4605,8 @@ export const GetCertificateAuthority: API.OperationMethod<
   GetCertificateAuthorityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetCertificateAuthorityRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetCertificateAuthorityResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetCertificateAuthorityRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<GetCertificateAuthorityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4620,8 +4620,8 @@ export const GetCertificatePolicy: API.OperationMethod<
   GetCertificatePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetCertificatePolicyRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetCertificatePolicyResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetCertificatePolicyRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<GetCertificatePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4635,8 +4635,8 @@ export const GetNamespace: API.OperationMethod<
   GetNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetNamespaceRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<GetNamespaceResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetNamespaceRequest>,
+  output: __S(1184, __c37, 0) as any as S.Schema<GetNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4650,8 +4650,8 @@ export const GetNamespaceAsset: API.OperationMethod<
   GetNamespaceAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetNamespaceAssetRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetNamespaceAssetResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetNamespaceAssetRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<GetNamespaceAssetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4665,8 +4665,8 @@ export const GetNamespaceDevice: API.OperationMethod<
   GetNamespaceDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetNamespaceDeviceRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<GetNamespaceDeviceResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetNamespaceDeviceRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<GetNamespaceDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4680,8 +4680,8 @@ export const GetNamespaceDiscoveredAsset: API.OperationMethod<
   GetNamespaceDiscoveredAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetNamespaceDiscoveredAssetRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<GetNamespaceDiscoveredAssetResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetNamespaceDiscoveredAssetRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<GetNamespaceDiscoveredAssetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4695,8 +4695,8 @@ export const GetNamespaceDiscoveredDevice: API.OperationMethod<
   GetNamespaceDiscoveredDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetNamespaceDiscoveredDeviceRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<GetNamespaceDiscoveredDeviceResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetNamespaceDiscoveredDeviceRequest>,
+  output: __S(1734, __c54, 6) as any as S.Schema<GetNamespaceDiscoveredDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4710,8 +4710,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<GetOperationStatusRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GetOperationStatusResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(935, __c29, 7) as any as S.Schema<GetOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4725,8 +4725,8 @@ export const GetRegistryDevice: API.OperationMethod<
   GetRegistryDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<GetRegistryDeviceRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<GetRegistryDeviceResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetRegistryDeviceRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<GetRegistryDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4740,8 +4740,8 @@ export const GetSchema: API.OperationMethod<
   GetSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<GetSchemaRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<GetSchemaResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetSchemaRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<GetSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4755,8 +4755,8 @@ export const GetSchemaRegistry: API.OperationMethod<
   GetSchemaRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<GetSchemaRegistryRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<GetSchemaRegistryResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetSchemaRegistryRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<GetSchemaRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4770,8 +4770,8 @@ export const GetSchemaVersion: API.OperationMethod<
   GetSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<GetSchemaVersionRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<GetSchemaVersionResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetSchemaVersionRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GetSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4785,8 +4785,8 @@ export const ListAssetByResourceGroup: API.OperationMethod<
   ListAssetByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListAssetByResourceGroupRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<AssetListResult>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListAssetByResourceGroupRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<AssetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4800,8 +4800,8 @@ export const ListAssetBySubscription: API.OperationMethod<
   ListAssetBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListAssetBySubscriptionRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<AssetListResult>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListAssetBySubscriptionRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<AssetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4815,8 +4815,8 @@ export const ListAssetEndpointProfileByResourceGroup: API.OperationMethod<
   ListAssetEndpointProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<ListAssetEndpointProfileByResourceGroupRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<AssetEndpointProfileListResult>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListAssetEndpointProfileByResourceGroupRequest>,
+  output: __S(2274, __c71, 2) as any as S.Schema<AssetEndpointProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4830,8 +4830,8 @@ export const ListAssetEndpointProfileBySubscription: API.OperationMethod<
   ListAssetEndpointProfileBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ListAssetEndpointProfileBySubscriptionRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<AssetEndpointProfileListResult>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListAssetEndpointProfileBySubscriptionRequest>,
+  output: __S(2274, __c71, 2) as any as S.Schema<AssetEndpointProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4845,8 +4845,8 @@ export const ListBillingContainerBySubscription: API.OperationMethod<
   ListBillingContainerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListBillingContainerBySubscriptionRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<BillingContainerListResult>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListBillingContainerBySubscriptionRequest>,
+  output: __S(2371, __c74, 3) as any as S.Schema<BillingContainerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4860,8 +4860,8 @@ export const ListCertificateAuthorityByNamespace: API.OperationMethod<
   ListCertificateAuthorityByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<ListCertificateAuthorityByNamespaceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<CertificateAuthorityListResult>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListCertificateAuthorityByNamespaceRequest>,
+  output: __S(2403, __c75, 3) as any as S.Schema<CertificateAuthorityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4875,8 +4875,8 @@ export const ListCertificatePolicyByCertificateAuthority: API.OperationMethod<
   ListCertificatePolicyByCertificateAuthorityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<ListCertificatePolicyByCertificateAuthorityRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<CertificatePolicyListResult>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ListCertificatePolicyByCertificateAuthorityRequest>,
+  output: __S(2435, __c76, 3) as any as S.Schema<CertificatePolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4890,8 +4890,8 @@ export const ListNamespaceAssetByNamespace: API.OperationMethod<
   ListNamespaceAssetByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<ListNamespaceAssetByNamespaceRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<NamespaceAssetListResult>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListNamespaceAssetByNamespaceRequest>,
+  output: __S(2467, __c77, 3) as any as S.Schema<NamespaceAssetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4905,8 +4905,8 @@ export const ListNamespaceByResourceGroup: API.OperationMethod<
   ListNamespaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<ListNamespaceByResourceGroupRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<NamespaceListResult>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ListNamespaceByResourceGroupRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<NamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4920,8 +4920,8 @@ export const ListNamespaceBySubscription: API.OperationMethod<
   ListNamespaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<ListNamespaceBySubscriptionRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<NamespaceListResult>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListNamespaceBySubscriptionRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<NamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4935,8 +4935,8 @@ export const ListNamespaceDeviceByNamespace: API.OperationMethod<
   ListNamespaceDeviceByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<ListNamespaceDeviceByNamespaceRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<NamespaceDeviceListResult>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ListNamespaceDeviceByNamespaceRequest>,
+  output: __S(2595, __c81, 3) as any as S.Schema<NamespaceDeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4950,8 +4950,8 @@ export const ListNamespaceDiscoveredAssetByNamespace: API.OperationMethod<
   ListNamespaceDiscoveredAssetByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<ListNamespaceDiscoveredAssetByNamespaceRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<NamespaceDiscoveredAssetListResult>,
+  input: __S(2624, __c82, 0) as any as S.Schema<ListNamespaceDiscoveredAssetByNamespaceRequest>,
+  output: __S(2627, __c82, 3) as any as S.Schema<NamespaceDiscoveredAssetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4965,8 +4965,8 @@ export const ListNamespaceDiscoveredDeviceByNamespace: API.OperationMethod<
   ListNamespaceDiscoveredDeviceByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<ListNamespaceDiscoveredDeviceByNamespaceRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<NamespaceDiscoveredDeviceListResult>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ListNamespaceDiscoveredDeviceByNamespaceRequest>,
+  output: __S(2658, __c83, 2) as any as S.Schema<NamespaceDiscoveredDeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4980,8 +4980,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<ListOperationsResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2692, __c84, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4995,8 +4995,8 @@ export const ListRegistryDeviceByNamespace: API.OperationMethod<
   ListRegistryDeviceByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<ListRegistryDeviceByNamespaceRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<RegistryDeviceListResult>,
+  input: __S(2816, __c88, 0) as any as S.Schema<ListRegistryDeviceByNamespaceRequest>,
+  output: __S(2819, __c88, 3) as any as S.Schema<RegistryDeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5010,8 +5010,8 @@ export const ListSchemaBySchemaRegistry: API.OperationMethod<
   ListSchemaBySchemaRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<ListSchemaBySchemaRegistryRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<SchemaListResult>,
+  input: __S(2848, __c89, 0) as any as S.Schema<ListSchemaBySchemaRegistryRequest>,
+  output: __S(2851, __c89, 3) as any as S.Schema<SchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5025,8 +5025,8 @@ export const ListSchemaRegistryByResourceGroup: API.OperationMethod<
   ListSchemaRegistryByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<ListSchemaRegistryByResourceGroupRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<SchemaRegistryListResult>,
+  input: __S(2880, __c90, 0) as any as S.Schema<ListSchemaRegistryByResourceGroupRequest>,
+  output: __S(2914, __c91, 2) as any as S.Schema<SchemaRegistryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5040,8 +5040,8 @@ export const ListSchemaRegistryBySubscription: API.OperationMethod<
   ListSchemaRegistryBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<ListSchemaRegistryBySubscriptionRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<SchemaRegistryListResult>,
+  input: __S(2944, __c92, 0) as any as S.Schema<ListSchemaRegistryBySubscriptionRequest>,
+  output: __S(2914, __c91, 2) as any as S.Schema<SchemaRegistryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5055,8 +5055,8 @@ export const ListSchemaVersionBySchema: API.OperationMethod<
   ListSchemaVersionBySchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<ListSchemaVersionBySchemaRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<SchemaVersionListResult>,
+  input: __S(2976, __c93, 0) as any as S.Schema<ListSchemaVersionBySchemaRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<SchemaVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5070,8 +5070,8 @@ export const MigrateNamespace: API.OperationMethod<
   MigrateNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<MigrateNamespaceRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<NamespaceMigrateResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<MigrateNamespaceRequest>,
+  output: __S(3011, __c94, 3) as any as S.Schema<NamespaceMigrateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5085,8 +5085,8 @@ export const NamespaceAssetsCreateOrReplace: API.OperationMethod<
   NamespaceAssetsCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<NamespaceAssetsCreateOrReplaceRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<NamespaceAssetsCreateOrReplaceResponse>,
+  input: __S(3041, __c95, 1) as any as S.Schema<NamespaceAssetsCreateOrReplaceRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<NamespaceAssetsCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5100,8 +5100,8 @@ export const NamespaceDevicesCreateOrReplace: API.OperationMethod<
   NamespaceDevicesCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<NamespaceDevicesCreateOrReplaceRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<NamespaceDevicesCreateOrReplaceResponse>,
+  input: __S(3073, __c96, 1) as any as S.Schema<NamespaceDevicesCreateOrReplaceRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<NamespaceDevicesCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5115,8 +5115,8 @@ export const NamespaceDiscoveredAssetsCreateOrReplace: API.OperationMethod<
   NamespaceDiscoveredAssetsCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceResponse>,
+  input: __S(3105, __c97, 1) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5130,8 +5130,8 @@ export const NamespaceDiscoveredDevicesCreateOrReplace: API.OperationMethod<
   NamespaceDiscoveredDevicesCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceResponse>,
+  input: __S(3137, __c98, 1) as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceRequest>,
+  output: __S(1734, __c54, 6) as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5145,8 +5145,8 @@ export const NamespacesCreateOrReplace: API.OperationMethod<
   NamespacesCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<NamespacesCreateOrReplaceRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<NamespacesCreateOrReplaceResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<NamespacesCreateOrReplaceRequest>,
+  output: __S(3233, __c101, 1) as any as S.Schema<NamespacesCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5160,8 +5160,8 @@ export const RegistryDevicesCreateOrReplace: API.OperationMethod<
   RegistryDevicesCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<RegistryDevicesCreateOrReplaceRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<RegistryDevicesCreateOrReplaceResponse>,
+  input: __S(3329, __c104, 1) as any as S.Schema<RegistryDevicesCreateOrReplaceRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<RegistryDevicesCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5175,8 +5175,8 @@ export const SchemaRegistriesCreateOrReplace: API.OperationMethod<
   SchemaRegistriesCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<SchemaRegistriesCreateOrReplaceRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<SchemaRegistriesCreateOrReplaceResponse>,
+  input: __S(3361, __c105, 1) as any as S.Schema<SchemaRegistriesCreateOrReplaceRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<SchemaRegistriesCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5190,8 +5190,8 @@ export const SchemasCreateOrReplace: API.OperationMethod<
   SchemasCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<SchemasCreateOrReplaceRequest>,
-  output: __S(275, __c34, 3) as any as S.Schema<SchemasCreateOrReplaceResponse>,
+  input: __S(3393, __c106, 1) as any as S.Schema<SchemasCreateOrReplaceRequest>,
+  output: __S(3394, __c106, 2) as any as S.Schema<SchemasCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5205,8 +5205,8 @@ export const SchemaVersionsCreateOrReplace: API.OperationMethod<
   SchemaVersionsCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<SchemaVersionsCreateOrReplaceRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<SchemaVersionsCreateOrReplaceResponse>,
+  input: __S(3425, __c107, 1) as any as S.Schema<SchemaVersionsCreateOrReplaceRequest>,
+  output: __S(3426, __c107, 2) as any as S.Schema<SchemaVersionsCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5220,8 +5220,8 @@ export const UpdateAsset: API.OperationMethod<
   UpdateAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<UpdateAssetRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<UpdateAssetResponse>,
+  input: __S(3458, __c108, 2) as any as S.Schema<UpdateAssetRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<UpdateAssetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5235,8 +5235,8 @@ export const UpdateAssetEndpointProfile: API.OperationMethod<
   UpdateAssetEndpointProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<UpdateAssetEndpointProfileRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateAssetEndpointProfileResponse>,
+  input: __S(3491, __c109, 3) as any as S.Schema<UpdateAssetEndpointProfileRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<UpdateAssetEndpointProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5250,8 +5250,8 @@ export const UpdateCertificateAuthority: API.OperationMethod<
   UpdateCertificateAuthorityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<UpdateCertificateAuthorityRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<UpdateCertificateAuthorityResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<UpdateCertificateAuthorityRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<UpdateCertificateAuthorityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5265,8 +5265,8 @@ export const UpdateCertificatePolicy: API.OperationMethod<
   UpdateCertificatePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<UpdateCertificatePolicyRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<UpdateCertificatePolicyResponse>,
+  input: __S(3586, __c112, 2) as any as S.Schema<UpdateCertificatePolicyRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<UpdateCertificatePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5280,8 +5280,8 @@ export const UpdateNamespace: API.OperationMethod<
   UpdateNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<UpdateNamespaceRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<UpdateNamespaceResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<UpdateNamespaceRequest>,
+  output: __S(1184, __c37, 0) as any as S.Schema<UpdateNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5295,8 +5295,8 @@ export const UpdateNamespaceAsset: API.OperationMethod<
   UpdateNamespaceAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<UpdateNamespaceAssetRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<UpdateNamespaceAssetResponse>,
+  input: __S(3681, __c115, 1) as any as S.Schema<UpdateNamespaceAssetRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<UpdateNamespaceAssetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5310,8 +5310,8 @@ export const UpdateNamespaceDevice: API.OperationMethod<
   UpdateNamespaceDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<UpdateNamespaceDeviceRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<UpdateNamespaceDeviceResponse>,
+  input: __S(3719, __c116, 7) as any as S.Schema<UpdateNamespaceDeviceRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<UpdateNamespaceDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5325,8 +5325,8 @@ export const UpdateNamespaceDiscoveredAsset: API.OperationMethod<
   UpdateNamespaceDiscoveredAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<UpdateNamespaceDiscoveredAssetRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<UpdateNamespaceDiscoveredAssetResponse>,
+  input: __S(3778, __c118, 2) as any as S.Schema<UpdateNamespaceDiscoveredAssetRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<UpdateNamespaceDiscoveredAssetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5340,8 +5340,8 @@ export const UpdateNamespaceDiscoveredDevice: API.OperationMethod<
   UpdateNamespaceDiscoveredDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<UpdateNamespaceDiscoveredDeviceRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<UpdateNamespaceDiscoveredDeviceResponse>,
+  input: __S(3814, __c119, 6) as any as S.Schema<UpdateNamespaceDiscoveredDeviceRequest>,
+  output: __S(1734, __c54, 6) as any as S.Schema<UpdateNamespaceDiscoveredDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5355,8 +5355,8 @@ export const UpdateRegistryDevice: API.OperationMethod<
   UpdateRegistryDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<UpdateRegistryDeviceRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<UpdateRegistryDeviceResponse>,
+  input: __S(3841, __c120, 1) as any as S.Schema<UpdateRegistryDeviceRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<UpdateRegistryDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5370,8 +5370,8 @@ export const UpdateSchemaRegistry: API.OperationMethod<
   UpdateSchemaRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<UpdateSchemaRegistryRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<UpdateSchemaRegistryResponse>,
+  input: __S(3873, __c121, 1) as any as S.Schema<UpdateSchemaRegistryRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<UpdateSchemaRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5399,68 +5399,40 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateCertificateAuthorityRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ActivateCertificateAuthorityResponse",
       });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          usernameSecretName: S.String,
-          passwordSecretName: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({
-        identifier: "UsernamePasswordCredentials",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          certificateSecretName: S.String,
-        }),
-      ).annotate({ identifier: "X509Credentials" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.String,
-          usernamePasswordCredentials: S.optional(__S(3, __c0, 3)),
-          x509Credentials: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Authentication" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetAddress: S.String,
           endpointProfileType: S.String,
-          authentication: S.optional(__S(5, __c0, 5)),
+          authentication: S.optional(__S(225, __c7, 1)),
           additionalConfiguration: S.optional(S.String),
           discoveredAssetEndpointProfileRef: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AssetEndpointProfilePropertiesInput",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "ExtendedLocation" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           assetEndpointProfileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(128, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(6, __c0, 6)),
-          extendedLocation: __S(7, __c0, 7),
+          properties: S.optional(__S(64, __c2, 0)),
+          extendedLocation: __S(96, __c3, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5472,7 +5444,28 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AssetEndpointProfilesCreateOrReplaceRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "ExtendedLocation" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -5483,6 +5476,37 @@ function __c1(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          usernameSecretName: S.String,
+          passwordSecretName: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({
+        identifier: "UsernamePasswordCredentials",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          certificateSecretName: S.String,
+        }),
+      ).annotate({ identifier: "X509Credentials" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.String,
+          usernamePasswordCredentials: S.optional(__S(192, __c6, 0)),
+          x509Credentials: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({ identifier: "Authentication" });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5493,11 +5517,11 @@ function __c1(j: number): any {
         identifier: "AssetEndpointProfileStatusError",
       });
     case 3:
-      return S.Array(__S(10, __c1, 2));
+      return S.Array(__S(226, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(11, __c1, 3)),
+          errors: S.optional(__S(227, __c7, 3)),
         }),
       ).annotate({
         identifier: "AssetEndpointProfileStatus",
@@ -5508,82 +5532,291 @@ function __c1(j: number): any {
           uuid: S.optional(S.String),
           targetAddress: S.String,
           endpointProfileType: S.String,
-          authentication: S.optional(__S(5, __c0, 5)),
+          authentication: S.optional(__S(225, __c7, 1)),
           additionalConfiguration: S.optional(S.String),
           discoveredAssetEndpointProfileRef: S.optional(S.String),
-          status: S.optional(__S(12, __c1, 4)),
+          status: S.optional(__S(228, __c7, 4)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AssetEndpointProfileProperties",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(13, __c1, 5)),
-          extendedLocation: __S(7, __c0, 7),
+          properties: S.optional(__S(229, __c7, 5)),
+          extendedLocation: __S(96, __c3, 0),
         }),
       ).annotate({
         identifier: "AssetEndpointProfilesCreateOrReplaceResponse",
       });
-    case 7:
-      return S.Record(S.String, S.Unknown);
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteNamespaceRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          assetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteNamespaceAssetRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteNamespaceDeviceRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          discoveredAssetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteNamespaceDiscoveredAssetRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          discoveredDeviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteNamespaceDiscoveredDeviceRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          registryDeviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices/{registryDeviceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRegistryDeviceRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaRegistryName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSchemaRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaRegistryName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSchemaRegistryRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaRegistryName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          schemaVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSchemaVersionRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          assetName: S.String.pipe(T.Label()),
+          managementActionName: S.String,
+          managementGroupName: S.String,
+          payload: S.optional(__S(672, __c21, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}/executeAction",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExecuteNamespaceAssetActionRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          path: S.String,
-          retain: S.optional(S.String),
+          status: S.String,
+          managementActionName: S.String,
+          managementGroupName: S.String,
+          assetResourceId: S.String,
+          response: S.optional(S.String),
+          error: S.optional(__S(610, __c19, 2)),
         }),
-      ).annotate({ identifier: "Topic" });
+      ).annotate({
+        identifier: "NamespaceAssetExecuteActionResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          info: S.optional(S.String),
+          correlationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ErrorDetails" });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          dataSource: S.String,
-          dataPointConfiguration: S.optional(S.String),
-          observabilityMode: S.optional(S.String),
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          details: S.optional(__S(609, __c19, 1)),
         }),
-      ).annotate({ identifier: "DataPoint" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          datasetConfiguration: S.optional(S.String),
-          topic: S.optional(__S(17, __c2, 1)),
-          dataPoints: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "Dataset" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          eventNotifier: S.String,
-          eventConfiguration: S.optional(S.String),
-          topic: S.optional(__S(17, __c2, 1)),
-          observabilityMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Event" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
+      ).annotate({ identifier: "Error" });
   }
 }
-function __c3(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5601,13 +5834,13 @@ function __c3(j: number): any {
           softwareRevision: S.optional(S.String),
           documentationUri: S.optional(S.String),
           serialNumber: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
-          discoveredAssetRefs: S.optional(__S(16, __c2, 0)),
+          attributes: S.optional(__S(672, __c21, 0)),
+          discoveredAssetRefs: S.optional(__S(704, __c22, 0)),
           defaultDatasetsConfiguration: S.optional(S.String),
           defaultEventsConfiguration: S.optional(S.String),
-          defaultTopic: S.optional(__S(17, __c2, 1)),
-          datasets: S.optional(__S(21, __c2, 5)),
-          events: S.optional(__S(23, __c2, 7)),
+          defaultTopic: S.optional(__S(768, __c24, 0)),
+          datasets: S.optional(__S(772, __c24, 4)),
+          events: S.optional(__S(774, __c24, 6)),
         }),
       ).annotate({ identifier: "AssetPropertiesInput" });
     case 1:
@@ -5616,10 +5849,10 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           assetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(128, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(24, __c3, 0)),
-          extendedLocation: __S(7, __c0, 7),
+          properties: S.optional(__S(640, __c20, 0)),
+          extendedLocation: __S(96, __c3, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5634,13 +5867,35 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(780, __c24, 12)),
+          extendedLocation: __S(96, __c3, 0),
         }),
-      ).annotate({ identifier: "AssetStatusError" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+      ).annotate({
+        identifier: "AssetsCreateOrReplaceResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           schemaRegistryNamespace: S.String,
@@ -5648,29 +5903,79 @@ function __c3(j: number): any {
           schemaVersion: S.String,
         }),
       ).annotate({ identifier: "MessageSchemaReference" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          retain: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Topic" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          dataSource: S.String,
+          dataPointConfiguration: S.optional(S.String),
+          observabilityMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataPoint" });
+    case 2:
+      return S.Array(__S(769, __c24, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          datasetConfiguration: S.optional(S.String),
+          topic: S.optional(__S(768, __c24, 0)),
+          dataPoints: S.optional(__S(770, __c24, 2)),
+        }),
+      ).annotate({ identifier: "Dataset" });
+    case 4:
+      return S.Array(__S(771, __c24, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          messageSchemaReference: S.optional(__S(28, __c3, 4)),
+          eventNotifier: S.String,
+          eventConfiguration: S.optional(S.String),
+          topic: S.optional(__S(768, __c24, 0)),
+          observabilityMode: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AssetStatusDataset" });
+      ).annotate({ identifier: "Event" });
     case 6:
-      return S.Array(__S(29, __c3, 5));
+      return S.Array(__S(773, __c24, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(27, __c3, 3)),
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetStatusError" });
+    case 8:
+      return S.Array(__S(775, __c24, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          messageSchemaReference: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({ identifier: "AssetStatusDataset" });
+    case 10:
+      return S.Array(__S(777, __c24, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(776, __c24, 8)),
           version: S.optional(S.Number),
-          datasets: S.optional(__S(30, __c3, 6)),
-          events: S.optional(__S(30, __c3, 6)),
+          datasets: S.optional(__S(778, __c24, 10)),
+          events: S.optional(__S(778, __c24, 10)),
         }),
       ).annotate({ identifier: "AssetStatus" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -5688,33 +5993,1013 @@ function __c4(j: number): any {
           softwareRevision: S.optional(S.String),
           documentationUri: S.optional(S.String),
           serialNumber: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
-          discoveredAssetRefs: S.optional(__S(16, __c2, 0)),
+          attributes: S.optional(__S(672, __c21, 0)),
+          discoveredAssetRefs: S.optional(__S(704, __c22, 0)),
           defaultDatasetsConfiguration: S.optional(S.String),
           defaultEventsConfiguration: S.optional(S.String),
-          defaultTopic: S.optional(__S(17, __c2, 1)),
-          datasets: S.optional(__S(21, __c2, 5)),
-          events: S.optional(__S(23, __c2, 7)),
-          status: S.optional(__S(31, __c3, 7)),
+          defaultTopic: S.optional(__S(768, __c24, 0)),
+          datasets: S.optional(__S(772, __c24, 4)),
+          events: S.optional(__S(774, __c24, 6)),
+          status: S.optional(__S(779, __c24, 11)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssetProperties" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          assetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetAssetRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(780, __c24, 12)),
+          extendedLocation: __S(96, __c3, 0),
+        }),
+      ).annotate({ identifier: "GetAssetResponse" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          assetEndpointProfileName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAssetEndpointProfileRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/locations/{location}/asyncOperationStatuses/{operationId}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAsyncOperationStatusRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(933, __c29, 5)));
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(932, __c29, 4)));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          info: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "ErrorAdditionalInfo" });
+    case 3:
+      return S.Array(__S(930, __c29, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(929, __c29, 1)),
+          additionalInfo: S.optional(__S(931, __c29, 3)),
+        }),
+      ).annotate({ identifier: "ErrorDetail" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(928, __c29, 0)),
+          error: S.optional(__S(932, __c29, 4)),
+        }),
+      ).annotate({ identifier: "OperationStatusResult" });
+    case 6:
+      return S.Array(__S(933, __c29, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(934, __c29, 6)),
+          error: S.optional(__S(932, __c29, 4)),
+        }),
+      ).annotate({
+        identifier: "GetAsyncOperationStatusResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          billingContainerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers/{billingContainerName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBillingContainerRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(32, __c4, 0)),
-          extendedLocation: __S(7, __c0, 7),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(992, __c31, 0)),
+          etag: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "AssetsCreateOrReplaceResponse",
+        identifier: "GetBillingContainerResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BillingContainerProperties",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          certificateAuthorityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCertificateAuthorityRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          certificateAuthorityName: S.String.pipe(T.Label()),
+          certificatePolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/certificatePolicies/{certificatePolicyName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCertificatePolicyRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetNamespaceRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InboundCallerIdentity" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1121, __c35, 1)));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(1122, __c35, 2)),
+        }),
+      ).annotate({
+        identifier: "GetNamespaceResponseIdentity",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NamespaceLinkingError" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          availability: S.optional(S.String),
+          allocationWeight: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MessagingEndpointProvisioning",
       });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.optional(S.String),
+          address: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          deviceAddress: S.optional(S.String),
+          inboundCallerIdentity: S.optional(__S(1120, __c35, 0)),
+          linkingState: S.optional(S.String),
+          linkingError: S.optional(__S(1152, __c36, 0)),
+          provisioning: S.optional(__S(1153, __c36, 1)),
+        }),
+      ).annotate({ identifier: "MessagingEndpoint" });
+    case 3:
+      return S.Record(S.String, __S(1154, __c36, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          endpoints: S.optional(__S(1155, __c36, 3)),
+        }),
+      ).annotate({ identifier: "Messaging" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.String,
+          address: S.String,
+          scopeId: S.String,
+          resourceId: S.String,
+        }),
+      ).annotate({ identifier: "ManagementEndpoint" });
+    case 6:
+      return S.Record(S.String, __S(1157, __c36, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          endpoints: S.optional(__S(1158, __c36, 6)),
+        }),
+      ).annotate({ identifier: "Management" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.String,
+          resourceId: S.String,
+          inboundCallerIdentity: __S(1120, __c35, 0),
+          linkingState: S.optional(S.String),
+          linkingError: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "ProvisioningEndpoint" });
+    case 9:
+      return S.Record(S.String, __S(1160, __c36, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          endpoints: S.optional(__S(1161, __c36, 9)),
+        }),
+      ).annotate({ identifier: "NamespaceProvisioning" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          messaging: S.optional(__S(1156, __c36, 4)),
+          management: S.optional(__S(1159, __c36, 7)),
+          provisioning: S.optional(__S(1162, __c36, 10)),
+          outboundIdentity: S.optional(__S(1120, __c35, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NamespaceProperties" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1163, __c36, 11)),
+          identity: S.optional(__S(1123, __c35, 3)),
+        }),
+      ).annotate({ identifier: "GetNamespaceResponse" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          assetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetNamespaceAssetRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.Number),
+          lastTransitionTime: S.optional(S.String),
+          error: S.optional(__S(610, __c19, 2)),
+        }),
+      ).annotate({ identifier: "StatusConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          lastTransitionTime: S.optional(S.String),
+          lastUpdateTime: S.optional(S.String),
+          message: S.optional(S.String),
+          reasonCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HealthState" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deviceName: S.String,
+          endpointName: S.String,
+        }),
+      ).annotate({ identifier: "DeviceRef" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          target: S.String,
+        }),
+      ).annotate({ identifier: "DatasetDestination" });
+    case 2:
+      return S.Array(__S(1281, __c40, 1));
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          dataSource: S.String,
+          dataPointConfiguration: S.optional(S.String),
+          typeRef: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespaceDatasetDataPoint",
+      });
+    case 1:
+      return S.Array(__S(1312, __c41, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          dataSource: S.optional(S.String),
+          typeRef: S.optional(S.String),
+          datasetConfiguration: S.optional(S.String),
+          destinations: S.optional(__S(1282, __c40, 2)),
+          dataPoints: S.optional(__S(1313, __c41, 1)),
+        }),
+      ).annotate({ identifier: "NamespaceDataset" });
+    case 3:
+      return S.Array(__S(1314, __c41, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          dataSource: S.optional(S.String),
+          eventConfiguration: S.optional(S.String),
+          destinations: S.optional(__S(1282, __c40, 2)),
+          typeRef: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NamespaceEvent" });
+    case 5:
+      return S.Array(__S(1316, __c41, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          dataSource: S.optional(S.String),
+          eventGroupConfiguration: S.optional(S.String),
+          defaultDestinations: S.optional(__S(1282, __c40, 2)),
+          typeRef: S.optional(S.String),
+          events: S.optional(__S(1317, __c41, 5)),
+        }),
+      ).annotate({ identifier: "NamespaceEventGroup" });
+    case 7:
+      return S.Array(__S(1318, __c41, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          streamConfiguration: S.optional(S.String),
+          typeRef: S.optional(S.String),
+          destinations: S.optional(__S(1282, __c40, 2)),
+        }),
+      ).annotate({ identifier: "NamespaceStream" });
+    case 9:
+      return S.Array(__S(1320, __c41, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          actionConfiguration: S.optional(S.String),
+          targetUri: S.String,
+          typeRef: S.optional(S.String),
+          topic: S.optional(S.String),
+          actionType: S.optional(S.String),
+          timeoutInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ManagementAction" });
+    case 11:
+      return S.Array(__S(1322, __c41, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          dataSource: S.optional(S.String),
+          managementGroupConfiguration: S.optional(S.String),
+          typeRef: S.optional(S.String),
+          defaultTopic: S.optional(S.String),
+          defaultTimeoutInSeconds: S.optional(S.Number),
+          actions: S.optional(__S(1323, __c41, 11)),
+        }),
+      ).annotate({ identifier: "ManagementGroup" });
+    case 13:
+      return S.Array(__S(1324, __c41, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          messageSchemaReference: S.optional(__S(736, __c23, 0)),
+          error: S.optional(__S(610, __c19, 2)),
+        }),
+      ).annotate({
+        identifier: "NamespaceAssetStatusDataset",
+      });
+    case 15:
+      return S.Array(__S(1326, __c41, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          events: S.optional(__S(1327, __c41, 15)),
+        }),
+      ).annotate({
+        identifier: "NamespaceAssetStatusEventGroup",
+      });
+    case 17:
+      return S.Array(__S(1328, __c41, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          requestMessageSchemaReference: S.optional(__S(736, __c23, 0)),
+          responseMessageSchemaReference: S.optional(__S(736, __c23, 0)),
+          error: S.optional(__S(610, __c19, 2)),
+        }),
+      ).annotate({
+        identifier: "NamespaceAssetStatusManagementAction",
+      });
+    case 19:
+      return S.Array(__S(1330, __c41, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          actions: S.optional(__S(1331, __c41, 19)),
+        }),
+      ).annotate({
+        identifier: "NamespaceAssetStatusManagementGroup",
+      });
+    case 21:
+      return S.Array(__S(1332, __c41, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(1248, __c39, 0)),
+          datasets: S.optional(__S(1327, __c41, 15)),
+          eventGroups: S.optional(__S(1329, __c41, 17)),
+          streams: S.optional(__S(1327, __c41, 15)),
+          managementGroups: S.optional(__S(1333, __c41, 21)),
+          healthState: S.optional(__S(1249, __c39, 1)),
+        }),
+      ).annotate({ identifier: "NamespaceAssetStatus" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          externalAssetId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          deviceRef: __S(1280, __c40, 0),
+          assetTypeRefs: S.optional(__S(704, __c22, 0)),
+          version: S.optional(S.Number),
+          lastTransitionTime: S.optional(S.String),
+          manufacturer: S.optional(S.String),
+          manufacturerUri: S.optional(S.String),
+          model: S.optional(S.String),
+          productCode: S.optional(S.String),
+          hardwareRevision: S.optional(S.String),
+          softwareRevision: S.optional(S.String),
+          documentationUri: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          attributes: S.optional(__S(672, __c21, 0)),
+          discoveredAssetRefs: S.optional(__S(704, __c22, 0)),
+          defaultDatasetsConfiguration: S.optional(S.String),
+          defaultEventsConfiguration: S.optional(S.String),
+          defaultStreamsConfiguration: S.optional(S.String),
+          defaultManagementGroupsConfiguration: S.optional(S.String),
+          defaultDatasetsDestinations: S.optional(__S(1282, __c40, 2)),
+          defaultEventsDestinations: S.optional(__S(1282, __c40, 2)),
+          defaultStreamsDestinations: S.optional(__S(1282, __c40, 2)),
+          datasets: S.optional(__S(1315, __c41, 3)),
+          eventGroups: S.optional(__S(1319, __c41, 7)),
+          streams: S.optional(__S(1321, __c41, 9)),
+          managementGroups: S.optional(__S(1325, __c41, 13)),
+          status: S.optional(__S(1334, __c41, 22)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NamespaceAssetProperties" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1335, __c41, 23)),
+          extendedLocation: __S(96, __c3, 0),
+        }),
+      ).annotate({
+        identifier: "GetNamespaceAssetResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNamespaceDeviceRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.optional(S.String),
+          address: S.String,
+        }),
+      ).annotate({ identifier: "DeviceMessagingEndpoint" });
+    case 1:
+      return S.Record(S.String, __S(1408, __c44, 0));
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          certificateSecretName: S.String,
+          keySecretName: S.optional(S.String),
+          intermediateCertificatesSecretName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "X509CertificateCredentials",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.String,
+          usernamePasswordCredentials: S.optional(__S(192, __c6, 0)),
+          x509Credentials: S.optional(__S(1440, __c45, 0)),
+        }),
+      ).annotate({ identifier: "HostAuthentication" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          trustList: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TrustSettings" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.String,
+          address: S.String,
+          version: S.optional(S.String),
+          authentication: S.optional(__S(1441, __c45, 1)),
+          trustSettings: S.optional(__S(1442, __c45, 2)),
+          additionalConfiguration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InboundEndpoints" });
+    case 4:
+      return S.Record(S.String, __S(1443, __c45, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          assigned: __S(1409, __c44, 1),
+          unassigned: S.optional(__S(1409, __c44, 1)),
+        }),
+      ).annotate({ identifier: "OutboundEndpoints" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          inbound: S.optional(__S(1444, __c45, 4)),
+          outbound: S.optional(__S(1445, __c45, 5)),
+        }),
+      ).annotate({ identifier: "MessagingEndpoints" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(610, __c19, 2)),
+          healthState: S.optional(__S(1249, __c39, 1)),
+        }),
+      ).annotate({ identifier: "DeviceStatusEndpoint" });
+    case 8:
+      return S.Record(S.String, __S(1447, __c45, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          inbound: S.optional(__S(1448, __c45, 8)),
+        }),
+      ).annotate({ identifier: "DeviceStatusEndpoints" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(1248, __c39, 0)),
+          endpoints: S.optional(__S(1449, __c45, 9)),
+        }),
+      ).annotate({ identifier: "DeviceStatus" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          externalDeviceId: S.optional(S.String),
+          discoveredDeviceRef: S.optional(S.String),
+          manufacturer: S.optional(S.String),
+          model: S.optional(S.String),
+          operatingSystem: S.optional(S.String),
+          operatingSystemVersion: S.optional(S.String),
+          endpoints: S.optional(__S(1446, __c45, 6)),
+          attributes: S.optional(__S(672, __c21, 0)),
+          status: S.optional(__S(1450, __c45, 10)),
+          version: S.optional(S.Number),
+          lastTransitionTime: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespaceDeviceProperties",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1451, __c45, 11)),
+          etag: S.optional(S.String),
+          extendedLocation: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "GetNamespaceDeviceResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          discoveredAssetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNamespaceDiscoveredAssetRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1281, __c40, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          dataSource: S.String,
+          dataPointConfiguration: S.optional(S.String),
+          lastUpdatedOn: S.optional(S.String),
+          typeRef: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredDatasetDataPoint",
+      });
+    case 2:
+      return S.Array(__S(1537, __c48, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          dataSource: S.optional(S.String),
+          typeRef: S.optional(S.String),
+          datasetConfiguration: S.optional(S.String),
+          destinations: S.optional(__S(1282, __c40, 2)),
+          dataPoints: S.optional(__S(1538, __c48, 2)),
+          lastUpdatedOn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredDataset",
+      });
+    case 4:
+      return S.Array(__S(1539, __c48, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          dataSource: S.optional(S.String),
+          eventConfiguration: S.optional(S.String),
+          destinations: S.optional(__S(1282, __c40, 2)),
+          typeRef: S.optional(S.String),
+          lastUpdatedOn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NamespaceDiscoveredEvent" });
+    case 6:
+      return S.Array(__S(1541, __c48, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          dataSource: S.optional(S.String),
+          eventGroupConfiguration: S.optional(S.String),
+          defaultDestinations: S.optional(__S(1282, __c40, 2)),
+          typeRef: S.optional(S.String),
+          events: S.optional(__S(1542, __c48, 6)),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredEventGroup",
+      });
+    case 8:
+      return S.Array(__S(1543, __c48, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          streamConfiguration: S.optional(S.String),
+          typeRef: S.optional(S.String),
+          destinations: S.optional(__S(1282, __c40, 2)),
+          lastUpdatedOn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredStream",
+      });
+    case 10:
+      return S.Array(__S(1545, __c48, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          actionConfiguration: S.optional(S.String),
+          targetUri: S.String,
+          typeRef: S.optional(S.String),
+          topic: S.optional(S.String),
+          actionType: S.optional(S.String),
+          timeoutInSeconds: S.optional(S.Number),
+          lastUpdatedOn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredManagementAction",
+      });
+    case 12:
+      return S.Array(__S(1547, __c48, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          managementGroupConfiguration: S.optional(S.String),
+          typeRef: S.optional(S.String),
+          dataSource: S.optional(S.String),
+          defaultTopic: S.optional(S.String),
+          defaultTimeoutInSeconds: S.optional(S.Number),
+          actions: S.optional(__S(1548, __c48, 12)),
+          lastUpdatedOn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredManagementGroup",
+      });
+    case 14:
+      return S.Array(__S(1549, __c48, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          deviceRef: __S(1280, __c40, 0),
+          displayName: S.optional(S.String),
+          assetTypeRefs: S.optional(__S(704, __c22, 0)),
+          description: S.optional(S.String),
+          discoveryId: S.String,
+          externalAssetId: S.optional(S.String),
+          version: S.Number,
+          manufacturer: S.optional(S.String),
+          manufacturerUri: S.optional(S.String),
+          model: S.optional(S.String),
+          productCode: S.optional(S.String),
+          hardwareRevision: S.optional(S.String),
+          softwareRevision: S.optional(S.String),
+          documentationUri: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          attributes: S.optional(__S(672, __c21, 0)),
+          defaultDatasetsConfiguration: S.optional(S.String),
+          defaultEventsConfiguration: S.optional(S.String),
+          defaultStreamsConfiguration: S.optional(S.String),
+          defaultManagementGroupsConfiguration: S.optional(S.String),
+          defaultDatasetsDestinations: S.optional(__S(1536, __c48, 0)),
+          defaultEventsDestinations: S.optional(__S(1536, __c48, 0)),
+          defaultStreamsDestinations: S.optional(__S(1536, __c48, 0)),
+          datasets: S.optional(__S(1540, __c48, 4)),
+          eventGroups: S.optional(__S(1544, __c48, 8)),
+          streams: S.optional(__S(1546, __c48, 10)),
+          managementGroups: S.optional(__S(1550, __c48, 14)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredAssetProperties",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1551, __c48, 15)),
+          extendedLocation: __S(96, __c3, 0),
+        }),
+      ).annotate({
+        identifier: "GetNamespaceDiscoveredAssetResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           certificateAuthorityType: S.String,
@@ -5723,16 +7008,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CertificateAuthorityPropertiesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           certificateAuthorityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(128, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(34, __c4, 2)),
+          properties: S.optional(__S(1600, __c50, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5744,7 +7029,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CertificateAuthoritiesCreateOrReplaceRequest",
       });
-    case 4:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -5758,21 +7047,466 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CertificateAuthorityProperties",
       });
-    case 5:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(36, __c4, 4)),
+          properties: S.optional(__S(1632, __c51, 0)),
         }),
       ).annotate({
         identifier: "CertificateAuthoritiesCreateOrReplaceResponse",
       });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          discoveredDeviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNamespaceDiscoveredDeviceRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.String,
+          address: S.String,
+          version: S.optional(S.String),
+          supportedAuthenticationMethods: S.optional(__S(1728, __c54, 0)),
+          additionalConfiguration: S.optional(S.String),
+          lastUpdatedOn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DiscoveredInboundEndpoints",
+      });
+    case 2:
+      return S.Record(S.String, __S(1729, __c54, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          assigned: __S(1409, __c44, 1),
+        }),
+      ).annotate({
+        identifier: "DiscoveredOutboundEndpoints",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          inbound: S.optional(__S(1730, __c54, 2)),
+          outbound: S.optional(__S(1731, __c54, 3)),
+        }),
+      ).annotate({
+        identifier: "DiscoveredMessagingEndpoints",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          externalDeviceId: S.optional(S.String),
+          endpoints: S.optional(__S(1732, __c54, 4)),
+          manufacturer: S.optional(S.String),
+          model: S.optional(S.String),
+          operatingSystem: S.optional(S.String),
+          operatingSystemVersion: S.optional(S.String),
+          attributes: S.optional(__S(672, __c21, 0)),
+          discoveryId: S.String,
+          version: S.Number,
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredDeviceProperties",
+      });
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1733, __c54, 5)),
+          extendedLocation: __S(96, __c3, 0),
+        }),
+      ).annotate({
+        identifier: "GetNamespaceDiscoveredDeviceResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/locations/{location}/operationStatuses/{operationId}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOperationStatusRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          registryDeviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices/{registryDeviceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetRegistryDeviceRequest" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enablementState: S.String,
+          uuid: S.optional(S.String),
+          externalDeviceId: S.optional(S.String),
+          manufacturer: S.optional(S.String),
+          model: S.optional(S.String),
+          hardwareRevision: S.optional(S.String),
+          softwareRevision: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegistryDeviceProperties" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1824, __c57, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetRegistryDeviceResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaRegistryName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSchemaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({ identifier: "GetSchemaResponse" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          format: S.String,
+          schemaType: S.String,
+          provisioningState: S.optional(S.String),
+          tags: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "SchemaProperties" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaRegistryName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSchemaRegistryRequest" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          namespace: S.String,
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          storageAccountContainerUrl: S.String,
+          outboundIdentity: S.optional(__S(1120, __c35, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchemaRegistryProperties" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1984, __c62, 0)),
+          identity: S.optional(__S(1123, __c35, 3)),
+        }),
+      ).annotate({
+        identifier: "GetSchemaRegistryResponse",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaRegistryName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          schemaVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSchemaVersionRequest" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({ identifier: "GetSchemaVersionResponse" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          description: S.optional(S.String),
+          schemaContent: S.String,
+          hash: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchemaVersionProperties" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAssetByResourceGroupRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(832, __c26, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2176, __c68, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetListResult" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/assets",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAssetBySubscriptionRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAssetEndpointProfileByResourceGroupRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(229, __c7, 5)),
+          extendedLocation: __S(96, __c3, 0),
+        }),
+      ).annotate({ identifier: "AssetEndpointProfile" });
+    case 1:
+      return S.Array(__S(2272, __c71, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2273, __c71, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AssetEndpointProfileListResult",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAssetEndpointProfileBySubscriptionRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5790,22 +7524,403 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CertificateAuthoritiesRevokeAndRotateRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          validityPeriodInDays: S.Number,
-        }),
-      ).annotate({
-        identifier: "CertificatePolicyConfiguration",
-      });
   }
 }
-function __c5(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          certificate: S.optional(__S(39, __c4, 7)),
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBillingContainerBySubscriptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(992, __c31, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BillingContainer" });
+    case 2:
+      return S.Array(__S(2369, __c74, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2370, __c74, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BillingContainerListResult",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCertificateAuthorityByNamespaceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1632, __c51, 0)),
+        }),
+      ).annotate({ identifier: "CertificateAuthority" });
+    case 2:
+      return S.Array(__S(2401, __c75, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2402, __c75, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CertificateAuthorityListResult",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          certificateAuthorityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/certificatePolicies",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCertificatePolicyByCertificateAuthorityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(2753, __c86, 1)),
+        }),
+      ).annotate({ identifier: "CertificatePolicy" });
+    case 2:
+      return S.Array(__S(2433, __c76, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2434, __c76, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CertificatePolicyListResult",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNamespaceAssetByNamespaceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1335, __c41, 23)),
+          extendedLocation: __S(96, __c3, 0),
+        }),
+      ).annotate({ identifier: "NamespaceAsset" });
+    case 2:
+      return S.Array(__S(2465, __c77, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2466, __c77, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NamespaceAssetListResult" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNamespaceByResourceGroupRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1184, __c37, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2528, __c79, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NamespaceListResult" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/namespaces",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNamespaceBySubscriptionRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNamespaceDeviceByNamespaceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1451, __c45, 11)),
+          etag: S.optional(S.String),
+          extendedLocation: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "NamespaceDevice" });
+    case 2:
+      return S.Array(__S(2593, __c81, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2594, __c81, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespaceDeviceListResult",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNamespaceDiscoveredAssetByNamespaceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1551, __c48, 15)),
+          extendedLocation: __S(96, __c3, 0),
+        }),
+      ).annotate({ identifier: "NamespaceDiscoveredAsset" });
+    case 2:
+      return S.Array(__S(2625, __c82, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2626, __c82, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredAssetListResult",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNamespaceDiscoveredDeviceByNamespaceRequest",
+      });
+    case 1:
+      return S.Array(__S(1734, __c54, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2657, __c83, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredDeviceListResult",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.DeviceRegistry/operations",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(2689, __c84, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(2690, __c84, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(2691, __c84, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          certificate: S.optional(__S(2752, __c86, 0)),
         }),
       ).annotate({
         identifier: "CertificatePolicyPropertiesInput",
@@ -5818,7 +7933,7 @@ function __c5(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           certificateAuthorityName: S.String.pipe(T.Label()),
           certificatePolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(2720, __c85, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5830,29 +7945,469 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CertificatePoliciesCreateOrReplaceRequest",
       });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validityPeriodInDays: S.Number,
+        }),
+      ).annotate({
+        identifier: "CertificatePolicyConfiguration",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           uuid: S.optional(S.String),
-          certificate: S.optional(__S(39, __c4, 7)),
+          certificate: S.optional(__S(2752, __c86, 0)),
         }),
       ).annotate({
         identifier: "CertificatePolicyProperties",
       });
-    case 3:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(42, __c5, 2)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(2753, __c86, 1)),
         }),
       ).annotate({
         identifier: "CertificatePoliciesCreateOrReplaceResponse",
       });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRegistryDeviceByNamespaceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1824, __c57, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegistryDevice" });
+    case 2:
+      return S.Array(__S(2817, __c88, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2818, __c88, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegistryDeviceListResult" });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaRegistryName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSchemaBySchemaRegistryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({ identifier: "Schema" });
+    case 2:
+      return S.Array(__S(2849, __c89, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2850, __c89, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchemaListResult" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSchemaRegistryByResourceGroupRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1984, __c62, 0)),
+          identity: S.optional(__S(1123, __c35, 3)),
+        }),
+      ).annotate({ identifier: "SchemaRegistry" });
+    case 1:
+      return S.Array(__S(2912, __c91, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2913, __c91, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchemaRegistryListResult" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/schemaRegistries",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSchemaRegistryBySubscriptionRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaRegistryName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSchemaVersionBySchemaRequest",
+      });
+    case 1:
+      return S.Array(__S(2080, __c65, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2977, __c93, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchemaVersionListResult" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          scope: S.optional(S.String),
+          resourceIds: S.optional(__S(704, __c22, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/migrate",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "MigrateNamespaceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.String),
+          result: S.optional(S.String),
+          error: S.optional(__S(610, __c19, 2)),
+        }),
+      ).annotate({ identifier: "MigrateResult" });
+    case 2:
+      return S.Array(__S(3009, __c94, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          migrateResults: S.optional(__S(3010, __c94, 2)),
+        }),
+      ).annotate({ identifier: "NamespaceMigrateResponse" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          externalAssetId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          deviceRef: __S(1280, __c40, 0),
+          assetTypeRefs: S.optional(__S(704, __c22, 0)),
+          manufacturer: S.optional(S.String),
+          manufacturerUri: S.optional(S.String),
+          model: S.optional(S.String),
+          productCode: S.optional(S.String),
+          hardwareRevision: S.optional(S.String),
+          softwareRevision: S.optional(S.String),
+          documentationUri: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          attributes: S.optional(__S(672, __c21, 0)),
+          discoveredAssetRefs: S.optional(__S(704, __c22, 0)),
+          defaultDatasetsConfiguration: S.optional(S.String),
+          defaultEventsConfiguration: S.optional(S.String),
+          defaultStreamsConfiguration: S.optional(S.String),
+          defaultManagementGroupsConfiguration: S.optional(S.String),
+          defaultDatasetsDestinations: S.optional(__S(1282, __c40, 2)),
+          defaultEventsDestinations: S.optional(__S(1282, __c40, 2)),
+          defaultStreamsDestinations: S.optional(__S(1282, __c40, 2)),
+          datasets: S.optional(__S(1315, __c41, 3)),
+          eventGroups: S.optional(__S(1319, __c41, 7)),
+          streams: S.optional(__S(1321, __c41, 9)),
+          managementGroups: S.optional(__S(1325, __c41, 13)),
+        }),
+      ).annotate({
+        identifier: "NamespaceAssetPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          assetName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3040, __c95, 0)),
+          extendedLocation: __S(96, __c3, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "NamespaceAssetsCreateOrReplaceRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          externalDeviceId: S.optional(S.String),
+          discoveredDeviceRef: S.optional(S.String),
+          manufacturer: S.optional(S.String),
+          model: S.optional(S.String),
+          operatingSystem: S.optional(S.String),
+          operatingSystemVersion: S.optional(S.String),
+          endpoints: S.optional(__S(1446, __c45, 6)),
+          attributes: S.optional(__S(672, __c21, 0)),
+        }),
+      ).annotate({
+        identifier: "NamespaceDevicePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3072, __c96, 0)),
+          extendedLocation: S.optional(__S(96, __c3, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "NamespaceDevicesCreateOrReplaceRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deviceRef: __S(1280, __c40, 0),
+          displayName: S.optional(S.String),
+          assetTypeRefs: S.optional(__S(704, __c22, 0)),
+          description: S.optional(S.String),
+          discoveryId: S.String,
+          externalAssetId: S.optional(S.String),
+          version: S.Number,
+          manufacturer: S.optional(S.String),
+          manufacturerUri: S.optional(S.String),
+          model: S.optional(S.String),
+          productCode: S.optional(S.String),
+          hardwareRevision: S.optional(S.String),
+          softwareRevision: S.optional(S.String),
+          documentationUri: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          attributes: S.optional(__S(672, __c21, 0)),
+          defaultDatasetsConfiguration: S.optional(S.String),
+          defaultEventsConfiguration: S.optional(S.String),
+          defaultStreamsConfiguration: S.optional(S.String),
+          defaultManagementGroupsConfiguration: S.optional(S.String),
+          defaultDatasetsDestinations: S.optional(__S(1536, __c48, 0)),
+          defaultEventsDestinations: S.optional(__S(1536, __c48, 0)),
+          defaultStreamsDestinations: S.optional(__S(1536, __c48, 0)),
+          datasets: S.optional(__S(1540, __c48, 4)),
+          eventGroups: S.optional(__S(1544, __c48, 8)),
+          streams: S.optional(__S(1546, __c48, 10)),
+          managementGroups: S.optional(__S(1550, __c48, 14)),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredAssetPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          discoveredAssetName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3104, __c97, 0)),
+          extendedLocation: __S(96, __c3, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "NamespaceDiscoveredAssetsCreateOrReplaceRequest",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          externalDeviceId: S.optional(S.String),
+          endpoints: S.optional(__S(1732, __c54, 4)),
+          manufacturer: S.optional(S.String),
+          model: S.optional(S.String),
+          operatingSystem: S.optional(S.String),
+          operatingSystemVersion: S.optional(S.String),
+          attributes: S.optional(__S(672, __c21, 0)),
+          discoveryId: S.String,
+          version: S.Number,
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredDevicePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          discoveredDeviceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3136, __c98, 0)),
+          extendedLocation: __S(96, __c3, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "NamespaceDiscoveredDevicesCreateOrReplaceRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5867,11 +8422,486 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAssetRequest" });
-    case 5:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAssetResponse",
       });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3302, __c103, 6)),
+          identity: S.optional(__S(3265, __c102, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "NamespacesCreateOrReplaceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(1163, __c36, 11)),
+          identity: S.optional(__S(1123, __c35, 3)),
+        }),
+      ).annotate({
+        identifier: "NamespacesCreateOrReplaceResponse",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(3200, __c100, 0)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(3264, __c102, 0)),
+        }),
+      ).annotate({
+        identifier: "NamespacesCreateOrReplaceRequestIdentity",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.optional(S.String),
+          address: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          inboundCallerIdentity: S.optional(__S(1120, __c35, 0)),
+          provisioning: S.optional(__S(1153, __c36, 1)),
+        }),
+      ).annotate({ identifier: "MessagingEndpointInput" });
+    case 1:
+      return S.Record(S.String, __S(3296, __c103, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          endpoints: S.optional(__S(3297, __c103, 1)),
+        }),
+      ).annotate({ identifier: "MessagingInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.String,
+          resourceId: S.String,
+          inboundCallerIdentity: __S(1120, __c35, 0),
+        }),
+      ).annotate({
+        identifier: "ProvisioningEndpointInput",
+      });
+    case 4:
+      return S.Record(S.String, __S(3299, __c103, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          endpoints: S.optional(__S(3300, __c103, 4)),
+        }),
+      ).annotate({
+        identifier: "NamespaceProvisioningInput",
+      });
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          messaging: S.optional(__S(3298, __c103, 2)),
+          management: S.optional(__S(1159, __c36, 7)),
+          provisioning: S.optional(__S(3301, __c103, 5)),
+          outboundIdentity: S.optional(__S(1120, __c35, 0)),
+        }),
+      ).annotate({ identifier: "NamespacePropertiesInput" });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enablementState: S.String,
+          externalDeviceId: S.optional(S.String),
+          manufacturer: S.optional(S.String),
+          model: S.optional(S.String),
+          hardwareRevision: S.optional(S.String),
+          softwareRevision: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RegistryDevicePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          registryDeviceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3328, __c104, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices/{registryDeviceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RegistryDevicesCreateOrReplaceRequest",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String,
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          storageAccountContainerUrl: S.String,
+          outboundIdentity: S.optional(__S(1120, __c35, 0)),
+        }),
+      ).annotate({
+        identifier: "SchemaRegistryPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaRegistryName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3360, __c105, 0)),
+          identity: S.optional(__S(3265, __c102, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SchemaRegistriesCreateOrReplaceRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          format: S.String,
+          schemaType: S.String,
+          tags: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "SchemaPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaRegistryName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3392, __c106, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SchemasCreateOrReplaceRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "SchemasCreateOrReplaceResponse",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          schemaContent: S.String,
+        }),
+      ).annotate({
+        identifier: "SchemaVersionPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaRegistryName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          schemaVersionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3424, __c107, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SchemaVersionsCreateOrReplaceRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({
+        identifier: "SchemaVersionsCreateOrReplaceResponse",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          retain: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TopicUpdate" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          manufacturer: S.optional(S.String),
+          manufacturerUri: S.optional(S.String),
+          model: S.optional(S.String),
+          productCode: S.optional(S.String),
+          hardwareRevision: S.optional(S.String),
+          softwareRevision: S.optional(S.String),
+          documentationUri: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          attributes: S.optional(__S(672, __c21, 0)),
+          defaultDatasetsConfiguration: S.optional(S.String),
+          defaultEventsConfiguration: S.optional(S.String),
+          defaultTopic: S.optional(__S(3456, __c108, 0)),
+          datasets: S.optional(__S(772, __c24, 4)),
+          events: S.optional(__S(774, __c24, 6)),
+        }),
+      ).annotate({ identifier: "AssetUpdateProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          assetName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(3457, __c108, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateAssetRequest" });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          certificateSecretName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "X509CredentialsUpdate" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.optional(S.String),
+          usernamePasswordCredentials: S.optional(__S(3520, __c110, 0)),
+          x509Credentials: S.optional(__S(3488, __c109, 0)),
+        }),
+      ).annotate({ identifier: "AuthenticationUpdate" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          targetAddress: S.optional(S.String),
+          endpointProfileType: S.optional(S.String),
+          authentication: S.optional(__S(3489, __c109, 1)),
+          additionalConfiguration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AssetEndpointProfileUpdateProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          assetEndpointProfileName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(3490, __c109, 2)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAssetEndpointProfileRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          usernameSecretName: S.optional(S.String),
+          passwordSecretName: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "UsernamePasswordCredentialsUpdate",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          certificateAuthorityName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCertificateAuthorityRequest",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validityPeriodInDays: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CertificatePolicyUpdatePropertiesCertificate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          certificate: S.optional(__S(3584, __c112, 0)),
+        }),
+      ).annotate({
+        identifier: "CertificatePolicyUpdateProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          certificateAuthorityName: S.String.pipe(T.Label()),
+          certificatePolicyName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3585, __c112, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/certificatePolicies/{certificatePolicyName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCertificatePolicyRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          identity: S.optional(__S(3265, __c102, 1)),
+          tags: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(3302, __c103, 6)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateNamespaceRequest" });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5888,7 +8918,366 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteAssetEndpointProfileRequest",
       });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          assetTypeRefs: S.optional(__S(704, __c22, 0)),
+          manufacturer: S.optional(S.String),
+          manufacturerUri: S.optional(S.String),
+          model: S.optional(S.String),
+          productCode: S.optional(S.String),
+          hardwareRevision: S.optional(S.String),
+          softwareRevision: S.optional(S.String),
+          documentationUri: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          attributes: S.optional(__S(672, __c21, 0)),
+          defaultDatasetsConfiguration: S.optional(S.String),
+          defaultEventsConfiguration: S.optional(S.String),
+          defaultStreamsConfiguration: S.optional(S.String),
+          defaultManagementGroupsConfiguration: S.optional(S.String),
+          defaultDatasetsDestinations: S.optional(__S(1282, __c40, 2)),
+          defaultEventsDestinations: S.optional(__S(1282, __c40, 2)),
+          defaultStreamsDestinations: S.optional(__S(1282, __c40, 2)),
+          datasets: S.optional(__S(1315, __c41, 3)),
+          eventGroups: S.optional(__S(1319, __c41, 7)),
+          streams: S.optional(__S(1321, __c41, 9)),
+          managementGroups: S.optional(__S(1325, __c41, 13)),
+        }),
+      ).annotate({
+        identifier: "NamespaceAssetUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          assetName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(3680, __c115, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNamespaceAssetRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          certificateSecretName: S.optional(S.String),
+          keySecretName: S.optional(S.String),
+          intermediateCertificatesSecretName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "X509CertificateCredentialsUpdate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.optional(S.String),
+          usernamePasswordCredentials: S.optional(__S(3520, __c110, 0)),
+          x509Credentials: S.optional(__S(3712, __c116, 0)),
+        }),
+      ).annotate({ identifier: "HostAuthenticationUpdate" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.optional(S.String),
+          address: S.optional(S.String),
+          version: S.optional(S.String),
+          authentication: S.optional(__S(3713, __c116, 1)),
+          trustSettings: S.optional(__S(1442, __c45, 2)),
+          additionalConfiguration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InboundEndpointsUpdate" });
+    case 3:
+      return S.Record(S.String, __S(3714, __c116, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          assigned: S.optional(__S(3745, __c117, 1)),
+          unassigned: S.optional(__S(3745, __c117, 1)),
+        }),
+      ).annotate({ identifier: "OutboundEndpointsUpdate" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          inbound: S.optional(__S(3715, __c116, 3)),
+          outbound: S.optional(__S(3716, __c116, 4)),
+        }),
+      ).annotate({ identifier: "MessagingEndpointsUpdate" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          operatingSystemVersion: S.optional(S.String),
+          endpoints: S.optional(__S(3717, __c116, 5)),
+          attributes: S.optional(__S(672, __c21, 0)),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "NamespaceDeviceUpdateProperties",
+      });
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(3718, __c116, 6)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNamespaceDeviceRequest",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.optional(S.String),
+          address: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeviceMessagingEndpointUpdate",
+      });
+    case 1:
+      return S.Record(S.String, __S(3744, __c117, 0));
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deviceName: S.optional(S.String),
+          endpointName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeviceRefUpdate" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deviceRef: S.optional(__S(3776, __c118, 0)),
+          displayName: S.optional(S.String),
+          assetTypeRefs: S.optional(__S(704, __c22, 0)),
+          description: S.optional(S.String),
+          discoveryId: S.optional(S.String),
+          version: S.optional(S.Number),
+          manufacturer: S.optional(S.String),
+          manufacturerUri: S.optional(S.String),
+          model: S.optional(S.String),
+          productCode: S.optional(S.String),
+          hardwareRevision: S.optional(S.String),
+          softwareRevision: S.optional(S.String),
+          documentationUri: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          attributes: S.optional(__S(672, __c21, 0)),
+          defaultDatasetsConfiguration: S.optional(S.String),
+          defaultEventsConfiguration: S.optional(S.String),
+          defaultStreamsConfiguration: S.optional(S.String),
+          defaultManagementGroupsConfiguration: S.optional(S.String),
+          defaultDatasetsDestinations: S.optional(__S(1536, __c48, 0)),
+          defaultEventsDestinations: S.optional(__S(1536, __c48, 0)),
+          defaultStreamsDestinations: S.optional(__S(1536, __c48, 0)),
+          datasets: S.optional(__S(1540, __c48, 4)),
+          eventGroups: S.optional(__S(1544, __c48, 8)),
+          streams: S.optional(__S(1546, __c48, 10)),
+          managementGroups: S.optional(__S(1550, __c48, 14)),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredAssetUpdateProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          discoveredAssetName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(3777, __c118, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNamespaceDiscoveredAssetRequest",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          endpointType: S.optional(S.String),
+          address: S.optional(S.String),
+          version: S.optional(S.String),
+          supportedAuthenticationMethods: S.optional(__S(3808, __c119, 0)),
+          additionalConfiguration: S.optional(S.String),
+          lastUpdatedOn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DiscoveredInboundEndpointsUpdate",
+      });
+    case 2:
+      return S.Record(S.String, __S(3809, __c119, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          assigned: S.optional(__S(3745, __c117, 1)),
+        }),
+      ).annotate({
+        identifier: "DiscoveredOutboundEndpointsUpdate",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          inbound: S.optional(__S(3810, __c119, 2)),
+          outbound: S.optional(__S(3811, __c119, 3)),
+        }),
+      ).annotate({
+        identifier: "DiscoveredMessagingEndpointsUpdate",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          externalDeviceId: S.optional(S.String),
+          endpoints: S.optional(__S(3812, __c119, 4)),
+          operatingSystemVersion: S.optional(S.String),
+          attributes: S.optional(__S(672, __c21, 0)),
+          discoveryId: S.optional(S.String),
+          version: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "NamespaceDiscoveredDeviceUpdateProperties",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          discoveredDeviceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(3813, __c119, 5)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNamespaceDiscoveredDeviceRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enablementState: S.optional(S.String),
+          manufacturer: S.optional(S.String),
+          model: S.optional(S.String),
+          hardwareRevision: S.optional(S.String),
+          softwareRevision: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RegistryDeviceUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          namespaceName: S.String.pipe(T.Label()),
+          registryDeviceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(3840, __c120, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices/{registryDeviceName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateRegistryDeviceRequest",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          outboundIdentity: S.optional(__S(1120, __c35, 0)),
+        }),
+      ).annotate({
+        identifier: "SchemaRegistryUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaRegistryName: S.String.pipe(T.Label()),
+          identity: S.optional(__S(3265, __c102, 1)),
+          tags: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(3872, __c121, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
+            code: 200,
+            apiVersion: "2026-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateSchemaRegistryRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5908,7 +9297,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5933,3062 +9322,8 @@ function __c6(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteCertificatePolicyResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteNamespaceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          assetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteNamespaceAssetRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteNamespaceDeviceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          discoveredAssetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteNamespaceDiscoveredAssetRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          discoveredDeviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteNamespaceDiscoveredDeviceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          registryDeviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices/{registryDeviceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRegistryDeviceRequest",
-      });
   }
 }
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaRegistryName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSchemaRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaRegistryName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSchemaRegistryRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaRegistryName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          schemaVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSchemaVersionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          assetName: S.String.pipe(T.Label()),
-          managementActionName: S.String,
-          managementGroupName: S.String,
-          payload: S.optional(__S(15, __c1, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}/executeAction",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExecuteNamespaceAssetActionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          info: S.optional(S.String),
-          correlationId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ErrorDetails" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          details: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({ identifier: "Error" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          managementActionName: S.String,
-          managementGroupName: S.String,
-          assetResourceId: S.String,
-          response: S.optional(S.String),
-          error: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "NamespaceAssetExecuteActionResponse",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          assetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetAssetRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(32, __c4, 0)),
-          extendedLocation: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "GetAssetResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          assetEndpointProfileName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAssetEndpointProfileRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/locations/{location}/asyncOperationStatuses/{operationId}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAsyncOperationStatusRequest",
-      });
-    case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(73, __c9, 1)));
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(72, __c9, 0)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          info: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "ErrorAdditionalInfo" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(69, __c8, 5)),
-          additionalInfo: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "ErrorDetail" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(68, __c8, 4)),
-          error: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({ identifier: "OperationStatusResult" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(74, __c9, 2)),
-          error: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "GetAsyncOperationStatusResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          billingContainerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers/{billingContainerName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBillingContainerRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BillingContainerProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(77, __c9, 5)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetBillingContainerResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          certificateAuthorityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCertificateAuthorityRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          certificateAuthorityName: S.String.pipe(T.Label()),
-          certificatePolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/certificatePolicies/{certificatePolicyName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCertificatePolicyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetNamespaceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InboundCallerIdentity" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NamespaceLinkingError" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          availability: S.optional(S.String),
-          allocationWeight: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MessagingEndpointProvisioning",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.optional(S.String),
-          address: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          deviceAddress: S.optional(S.String),
-          inboundCallerIdentity: S.optional(__S(82, __c10, 2)),
-          linkingState: S.optional(S.String),
-          linkingError: S.optional(__S(83, __c10, 3)),
-          provisioning: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "MessagingEndpoint" });
-    case 6:
-      return S.Record(S.String, __S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endpoints: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "Messaging" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.String,
-          address: S.String,
-          scopeId: S.String,
-          resourceId: S.String,
-        }),
-      ).annotate({ identifier: "ManagementEndpoint" });
-    case 1:
-      return S.Record(S.String, __S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          endpoints: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "Management" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.String,
-          resourceId: S.String,
-          inboundCallerIdentity: __S(82, __c10, 2),
-          linkingState: S.optional(S.String),
-          linkingError: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "ProvisioningEndpoint" });
-    case 4:
-      return S.Record(S.String, __S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endpoints: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "NamespaceProvisioning" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          messaging: S.optional(__S(87, __c10, 7)),
-          management: S.optional(__S(90, __c11, 2)),
-          provisioning: S.optional(__S(93, __c11, 5)),
-          outboundIdentity: S.optional(__S(82, __c10, 2)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NamespaceProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(95, __c11, 7)));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(96, __c12, 0)),
-        }),
-      ).annotate({
-        identifier: "GetNamespaceResponseIdentity",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(94, __c11, 6)),
-          identity: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({ identifier: "GetNamespaceResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          assetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetNamespaceAssetRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deviceName: S.String,
-          endpointName: S.String,
-        }),
-      ).annotate({ identifier: "DeviceRef" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          target: S.String,
-        }),
-      ).annotate({ identifier: "DatasetDestination" });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          dataSource: S.String,
-          dataPointConfiguration: S.optional(S.String),
-          typeRef: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespaceDatasetDataPoint",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          dataSource: S.optional(S.String),
-          typeRef: S.optional(S.String),
-          datasetConfiguration: S.optional(S.String),
-          destinations: S.optional(__S(102, __c12, 6)),
-          dataPoints: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({ identifier: "NamespaceDataset" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          dataSource: S.optional(S.String),
-          eventConfiguration: S.optional(S.String),
-          destinations: S.optional(__S(102, __c12, 6)),
-          typeRef: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NamespaceEvent" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          dataSource: S.optional(S.String),
-          eventGroupConfiguration: S.optional(S.String),
-          defaultDestinations: S.optional(__S(102, __c12, 6)),
-          typeRef: S.optional(S.String),
-          events: S.optional(__S(108, __c13, 4)),
-        }),
-      ).annotate({ identifier: "NamespaceEventGroup" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          streamConfiguration: S.optional(S.String),
-          typeRef: S.optional(S.String),
-          destinations: S.optional(__S(102, __c12, 6)),
-        }),
-      ).annotate({ identifier: "NamespaceStream" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          actionConfiguration: S.optional(S.String),
-          targetUri: S.String,
-          typeRef: S.optional(S.String),
-          topic: S.optional(S.String),
-          actionType: S.optional(S.String),
-          timeoutInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ManagementAction" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          dataSource: S.optional(S.String),
-          managementGroupConfiguration: S.optional(S.String),
-          typeRef: S.optional(S.String),
-          defaultTopic: S.optional(S.String),
-          defaultTimeoutInSeconds: S.optional(S.Number),
-          actions: S.optional(__S(114, __c14, 2)),
-        }),
-      ).annotate({ identifier: "ManagementGroup" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.Number),
-          lastTransitionTime: S.optional(S.String),
-          error: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({ identifier: "StatusConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          messageSchemaReference: S.optional(__S(28, __c3, 4)),
-          error: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "NamespaceAssetStatusDataset",
-      });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          events: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({
-        identifier: "NamespaceAssetStatusEventGroup",
-      });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          requestMessageSchemaReference: S.optional(__S(28, __c3, 4)),
-          responseMessageSchemaReference: S.optional(__S(28, __c3, 4)),
-          error: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "NamespaceAssetStatusManagementAction",
-      });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          actions: S.optional(__S(123, __c15, 3)),
-        }),
-      ).annotate({
-        identifier: "NamespaceAssetStatusManagementGroup",
-      });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          lastTransitionTime: S.optional(S.String),
-          lastUpdateTime: S.optional(S.String),
-          message: S.optional(S.String),
-          reasonCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HealthState" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(__S(117, __c14, 5)),
-          datasets: S.optional(__S(119, __c14, 7)),
-          eventGroups: S.optional(__S(121, __c15, 1)),
-          streams: S.optional(__S(119, __c14, 7)),
-          managementGroups: S.optional(__S(125, __c15, 5)),
-          healthState: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({ identifier: "NamespaceAssetStatus" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          externalAssetId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          deviceRef: __S(100, __c12, 4),
-          assetTypeRefs: S.optional(__S(16, __c2, 0)),
-          version: S.optional(S.Number),
-          lastTransitionTime: S.optional(S.String),
-          manufacturer: S.optional(S.String),
-          manufacturerUri: S.optional(S.String),
-          model: S.optional(S.String),
-          productCode: S.optional(S.String),
-          hardwareRevision: S.optional(S.String),
-          softwareRevision: S.optional(S.String),
-          documentationUri: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
-          discoveredAssetRefs: S.optional(__S(16, __c2, 0)),
-          defaultDatasetsConfiguration: S.optional(S.String),
-          defaultEventsConfiguration: S.optional(S.String),
-          defaultStreamsConfiguration: S.optional(S.String),
-          defaultManagementGroupsConfiguration: S.optional(S.String),
-          defaultDatasetsDestinations: S.optional(__S(102, __c12, 6)),
-          defaultEventsDestinations: S.optional(__S(102, __c12, 6)),
-          defaultStreamsDestinations: S.optional(__S(102, __c12, 6)),
-          datasets: S.optional(__S(106, __c13, 2)),
-          eventGroups: S.optional(__S(110, __c13, 6)),
-          streams: S.optional(__S(112, __c14, 0)),
-          managementGroups: S.optional(__S(116, __c14, 4)),
-          status: S.optional(__S(127, __c15, 7)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NamespaceAssetProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(128, __c16, 0)),
-          extendedLocation: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "GetNamespaceAssetResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNamespaceDeviceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          certificateSecretName: S.String,
-          keySecretName: S.optional(S.String),
-          intermediateCertificatesSecretName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "X509CertificateCredentials",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.String,
-          usernamePasswordCredentials: S.optional(__S(3, __c0, 3)),
-          x509Credentials: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({ identifier: "HostAuthentication" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          trustList: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TrustSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.String,
-          address: S.String,
-          version: S.optional(S.String),
-          authentication: S.optional(__S(132, __c16, 4)),
-          trustSettings: S.optional(__S(133, __c16, 5)),
-          additionalConfiguration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InboundEndpoints" });
-    case 7:
-      return S.Record(S.String, __S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.optional(S.String),
-          address: S.String,
-        }),
-      ).annotate({ identifier: "DeviceMessagingEndpoint" });
-    case 1:
-      return S.Record(S.String, __S(136, __c17, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          assigned: __S(137, __c17, 1),
-          unassigned: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({ identifier: "OutboundEndpoints" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          inbound: S.optional(__S(135, __c16, 7)),
-          outbound: S.optional(__S(138, __c17, 2)),
-        }),
-      ).annotate({ identifier: "MessagingEndpoints" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(62, __c7, 6)),
-          healthState: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({ identifier: "DeviceStatusEndpoint" });
-    case 5:
-      return S.Record(S.String, __S(140, __c17, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          inbound: S.optional(__S(141, __c17, 5)),
-        }),
-      ).annotate({ identifier: "DeviceStatusEndpoints" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(__S(117, __c14, 5)),
-          endpoints: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "DeviceStatus" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          externalDeviceId: S.optional(S.String),
-          discoveredDeviceRef: S.optional(S.String),
-          manufacturer: S.optional(S.String),
-          model: S.optional(S.String),
-          operatingSystem: S.optional(S.String),
-          operatingSystemVersion: S.optional(S.String),
-          endpoints: S.optional(__S(139, __c17, 3)),
-          attributes: S.optional(__S(15, __c1, 7)),
-          status: S.optional(__S(143, __c17, 7)),
-          version: S.optional(S.Number),
-          lastTransitionTime: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespaceDeviceProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(144, __c18, 0)),
-          etag: S.optional(S.String),
-          extendedLocation: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "GetNamespaceDeviceResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          discoveredAssetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNamespaceDiscoveredAssetRequest",
-      });
-    case 3:
-      return S.Array(__S(101, __c12, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          dataSource: S.String,
-          dataPointConfiguration: S.optional(S.String),
-          lastUpdatedOn: S.optional(S.String),
-          typeRef: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredDatasetDataPoint",
-      });
-    case 5:
-      return S.Array(__S(148, __c18, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          dataSource: S.optional(S.String),
-          typeRef: S.optional(S.String),
-          datasetConfiguration: S.optional(S.String),
-          destinations: S.optional(__S(102, __c12, 6)),
-          dataPoints: S.optional(__S(149, __c18, 5)),
-          lastUpdatedOn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredDataset",
-      });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          dataSource: S.optional(S.String),
-          eventConfiguration: S.optional(S.String),
-          destinations: S.optional(__S(102, __c12, 6)),
-          typeRef: S.optional(S.String),
-          lastUpdatedOn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NamespaceDiscoveredEvent" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          dataSource: S.optional(S.String),
-          eventGroupConfiguration: S.optional(S.String),
-          defaultDestinations: S.optional(__S(102, __c12, 6)),
-          typeRef: S.optional(S.String),
-          events: S.optional(__S(153, __c19, 1)),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredEventGroup",
-      });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          streamConfiguration: S.optional(S.String),
-          typeRef: S.optional(S.String),
-          destinations: S.optional(__S(102, __c12, 6)),
-          lastUpdatedOn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredStream",
-      });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          actionConfiguration: S.optional(S.String),
-          targetUri: S.String,
-          typeRef: S.optional(S.String),
-          topic: S.optional(S.String),
-          actionType: S.optional(S.String),
-          timeoutInSeconds: S.optional(S.Number),
-          lastUpdatedOn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredManagementAction",
-      });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          managementGroupConfiguration: S.optional(S.String),
-          typeRef: S.optional(S.String),
-          dataSource: S.optional(S.String),
-          defaultTopic: S.optional(S.String),
-          defaultTimeoutInSeconds: S.optional(S.Number),
-          actions: S.optional(__S(159, __c19, 7)),
-          lastUpdatedOn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredManagementGroup",
-      });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deviceRef: __S(100, __c12, 4),
-          displayName: S.optional(S.String),
-          assetTypeRefs: S.optional(__S(16, __c2, 0)),
-          description: S.optional(S.String),
-          discoveryId: S.String,
-          externalAssetId: S.optional(S.String),
-          version: S.Number,
-          manufacturer: S.optional(S.String),
-          manufacturerUri: S.optional(S.String),
-          model: S.optional(S.String),
-          productCode: S.optional(S.String),
-          hardwareRevision: S.optional(S.String),
-          softwareRevision: S.optional(S.String),
-          documentationUri: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
-          defaultDatasetsConfiguration: S.optional(S.String),
-          defaultEventsConfiguration: S.optional(S.String),
-          defaultStreamsConfiguration: S.optional(S.String),
-          defaultManagementGroupsConfiguration: S.optional(S.String),
-          defaultDatasetsDestinations: S.optional(__S(147, __c18, 3)),
-          defaultEventsDestinations: S.optional(__S(147, __c18, 3)),
-          defaultStreamsDestinations: S.optional(__S(147, __c18, 3)),
-          datasets: S.optional(__S(151, __c18, 7)),
-          eventGroups: S.optional(__S(155, __c19, 3)),
-          streams: S.optional(__S(157, __c19, 5)),
-          managementGroups: S.optional(__S(161, __c20, 1)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredAssetProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(162, __c20, 2)),
-          extendedLocation: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "GetNamespaceDiscoveredAssetResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          discoveredDeviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNamespaceDiscoveredDeviceRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.String,
-          address: S.String,
-          version: S.optional(S.String),
-          supportedAuthenticationMethods: S.optional(__S(165, __c20, 5)),
-          additionalConfiguration: S.optional(S.String),
-          lastUpdatedOn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DiscoveredInboundEndpoints",
-      });
-    case 7:
-      return S.Record(S.String, __S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          assigned: __S(137, __c17, 1),
-        }),
-      ).annotate({
-        identifier: "DiscoveredOutboundEndpoints",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          inbound: S.optional(__S(167, __c20, 7)),
-          outbound: S.optional(__S(168, __c21, 0)),
-        }),
-      ).annotate({
-        identifier: "DiscoveredMessagingEndpoints",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          externalDeviceId: S.optional(S.String),
-          endpoints: S.optional(__S(169, __c21, 1)),
-          manufacturer: S.optional(S.String),
-          model: S.optional(S.String),
-          operatingSystem: S.optional(S.String),
-          operatingSystemVersion: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
-          discoveryId: S.String,
-          version: S.Number,
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredDeviceProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(170, __c21, 2)),
-          extendedLocation: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "GetNamespaceDiscoveredDeviceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/locations/{location}/operationStatuses/{operationId}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOperationStatusRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          registryDeviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices/{registryDeviceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetRegistryDeviceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enablementState: S.String,
-          uuid: S.optional(S.String),
-          externalDeviceId: S.optional(S.String),
-          manufacturer: S.optional(S.String),
-          model: S.optional(S.String),
-          hardwareRevision: S.optional(S.String),
-          softwareRevision: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RegistryDeviceProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(174, __c21, 6)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetRegistryDeviceResponse",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaRegistryName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSchemaRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          format: S.String,
-          schemaType: S.String,
-          provisioningState: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "SchemaProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(177, __c22, 1)),
-        }),
-      ).annotate({ identifier: "GetSchemaResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaRegistryName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSchemaRegistryRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          namespace: S.String,
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          storageAccountContainerUrl: S.String,
-          outboundIdentity: S.optional(__S(82, __c10, 2)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchemaRegistryProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(180, __c22, 4)),
-          identity: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "GetSchemaRegistryResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaRegistryName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          schemaVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSchemaVersionRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          description: S.optional(S.String),
-          schemaContent: S.String,
-          hash: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchemaVersionProperties" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(183, __c22, 7)),
-        }),
-      ).annotate({ identifier: "GetSchemaVersionResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAssetByResourceGroupRequest",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(186, __c23, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssetListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/assets",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAssetBySubscriptionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAssetEndpointProfileByResourceGroupRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(13, __c1, 5)),
-          extendedLocation: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "AssetEndpointProfile" });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(191, __c23, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AssetEndpointProfileListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAssetEndpointProfileBySubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBillingContainerBySubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(77, __c9, 5)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BillingContainer" });
-    case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(196, __c24, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BillingContainerListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCertificateAuthorityByNamespaceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "CertificateAuthority" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(199, __c24, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(200, __c25, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CertificateAuthorityListResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          certificateAuthorityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/certificatePolicies",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCertificatePolicyByCertificateAuthorityRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "CertificatePolicy" });
-    case 4:
-      return S.Array(__S(203, __c25, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(204, __c25, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CertificatePolicyListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNamespaceAssetByNamespaceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(128, __c16, 0)),
-          extendedLocation: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "NamespaceAsset" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(208, __c26, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NamespaceAssetListResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNamespaceByResourceGroupRequest",
-      });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(211, __c26, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NamespaceListResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/namespaces",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNamespaceBySubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNamespaceDeviceByNamespaceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(144, __c18, 0)),
-          etag: S.optional(S.String),
-          extendedLocation: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "NamespaceDevice" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(215, __c26, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(216, __c27, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespaceDeviceListResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNamespaceDiscoveredAssetByNamespaceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(162, __c20, 2)),
-          extendedLocation: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "NamespaceDiscoveredAsset" });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(220, __c27, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredAssetListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNamespaceDiscoveredDeviceByNamespaceRequest",
-      });
-    case 7:
-      return S.Array(__S(171, __c21, 3));
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(223, __c27, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredDeviceListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.DeviceRegistry/operations",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(226, __c28, 2)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(228, __c28, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRegistryDeviceByNamespaceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(174, __c21, 6)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RegistryDevice" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(231, __c28, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(232, __c29, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RegistryDeviceListResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaRegistryName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSchemaBySchemaRegistryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(177, __c22, 1)),
-        }),
-      ).annotate({ identifier: "Schema" });
-    case 4:
-      return S.Array(__S(235, __c29, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(236, __c29, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchemaListResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSchemaRegistryByResourceGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(180, __c22, 4)),
-          identity: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({ identifier: "SchemaRegistry" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(239, __c29, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(240, __c30, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchemaRegistryListResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/schemaRegistries",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSchemaRegistryBySubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaRegistryName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSchemaVersionBySchemaRequest",
-      });
-    case 4:
-      return S.Array(__S(184, __c23, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(244, __c30, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchemaVersionListResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          scope: S.optional(S.String),
-          resourceIds: S.optional(__S(16, __c2, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/migrate",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "MigrateNamespaceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(S.String),
-          result: S.optional(S.String),
-          error: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({ identifier: "MigrateResult" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(247, __c30, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          migrateResults: S.optional(__S(248, __c31, 0)),
-        }),
-      ).annotate({ identifier: "NamespaceMigrateResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          externalAssetId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          deviceRef: __S(100, __c12, 4),
-          assetTypeRefs: S.optional(__S(16, __c2, 0)),
-          manufacturer: S.optional(S.String),
-          manufacturerUri: S.optional(S.String),
-          model: S.optional(S.String),
-          productCode: S.optional(S.String),
-          hardwareRevision: S.optional(S.String),
-          softwareRevision: S.optional(S.String),
-          documentationUri: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
-          discoveredAssetRefs: S.optional(__S(16, __c2, 0)),
-          defaultDatasetsConfiguration: S.optional(S.String),
-          defaultEventsConfiguration: S.optional(S.String),
-          defaultStreamsConfiguration: S.optional(S.String),
-          defaultManagementGroupsConfiguration: S.optional(S.String),
-          defaultDatasetsDestinations: S.optional(__S(102, __c12, 6)),
-          defaultEventsDestinations: S.optional(__S(102, __c12, 6)),
-          defaultStreamsDestinations: S.optional(__S(102, __c12, 6)),
-          datasets: S.optional(__S(106, __c13, 2)),
-          eventGroups: S.optional(__S(110, __c13, 6)),
-          streams: S.optional(__S(112, __c14, 0)),
-          managementGroups: S.optional(__S(116, __c14, 4)),
-        }),
-      ).annotate({
-        identifier: "NamespaceAssetPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          assetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(250, __c31, 2)),
-          extendedLocation: __S(7, __c0, 7),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "NamespaceAssetsCreateOrReplaceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          externalDeviceId: S.optional(S.String),
-          discoveredDeviceRef: S.optional(S.String),
-          manufacturer: S.optional(S.String),
-          model: S.optional(S.String),
-          operatingSystem: S.optional(S.String),
-          operatingSystemVersion: S.optional(S.String),
-          endpoints: S.optional(__S(139, __c17, 3)),
-          attributes: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "NamespaceDevicePropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(252, __c31, 4)),
-          extendedLocation: S.optional(__S(7, __c0, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "NamespaceDevicesCreateOrReplaceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          deviceRef: __S(100, __c12, 4),
-          displayName: S.optional(S.String),
-          assetTypeRefs: S.optional(__S(16, __c2, 0)),
-          description: S.optional(S.String),
-          discoveryId: S.String,
-          externalAssetId: S.optional(S.String),
-          version: S.Number,
-          manufacturer: S.optional(S.String),
-          manufacturerUri: S.optional(S.String),
-          model: S.optional(S.String),
-          productCode: S.optional(S.String),
-          hardwareRevision: S.optional(S.String),
-          softwareRevision: S.optional(S.String),
-          documentationUri: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
-          defaultDatasetsConfiguration: S.optional(S.String),
-          defaultEventsConfiguration: S.optional(S.String),
-          defaultStreamsConfiguration: S.optional(S.String),
-          defaultManagementGroupsConfiguration: S.optional(S.String),
-          defaultDatasetsDestinations: S.optional(__S(147, __c18, 3)),
-          defaultEventsDestinations: S.optional(__S(147, __c18, 3)),
-          defaultStreamsDestinations: S.optional(__S(147, __c18, 3)),
-          datasets: S.optional(__S(151, __c18, 7)),
-          eventGroups: S.optional(__S(155, __c19, 3)),
-          streams: S.optional(__S(157, __c19, 5)),
-          managementGroups: S.optional(__S(161, __c20, 1)),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredAssetPropertiesInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          discoveredAssetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(254, __c31, 6)),
-          extendedLocation: __S(7, __c0, 7),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "NamespaceDiscoveredAssetsCreateOrReplaceRequest",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          externalDeviceId: S.optional(S.String),
-          endpoints: S.optional(__S(169, __c21, 1)),
-          manufacturer: S.optional(S.String),
-          model: S.optional(S.String),
-          operatingSystem: S.optional(S.String),
-          operatingSystemVersion: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
-          discoveryId: S.String,
-          version: S.Number,
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredDevicePropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          discoveredDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(256, __c32, 0)),
-          extendedLocation: __S(7, __c0, 7),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "NamespaceDiscoveredDevicesCreateOrReplaceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.optional(S.String),
-          address: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          inboundCallerIdentity: S.optional(__S(82, __c10, 2)),
-          provisioning: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "MessagingEndpointInput" });
-    case 3:
-      return S.Record(S.String, __S(258, __c32, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          endpoints: S.optional(__S(259, __c32, 3)),
-        }),
-      ).annotate({ identifier: "MessagingInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.String,
-          resourceId: S.String,
-          inboundCallerIdentity: __S(82, __c10, 2),
-        }),
-      ).annotate({
-        identifier: "ProvisioningEndpointInput",
-      });
-    case 6:
-      return S.Record(S.String, __S(261, __c32, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endpoints: S.optional(__S(262, __c32, 6)),
-        }),
-      ).annotate({
-        identifier: "NamespaceProvisioningInput",
-      });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          messaging: S.optional(__S(260, __c32, 4)),
-          management: S.optional(__S(90, __c11, 2)),
-          provisioning: S.optional(__S(263, __c32, 7)),
-          outboundIdentity: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({ identifier: "NamespacePropertiesInput" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(45, __c5, 5)));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(265, __c33, 1)),
-        }),
-      ).annotate({
-        identifier: "NamespacesCreateOrReplaceRequestIdentity",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(264, __c33, 0)),
-          identity: S.optional(__S(266, __c33, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "NamespacesCreateOrReplaceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(94, __c11, 6)),
-          identity: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "NamespacesCreateOrReplaceResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enablementState: S.String,
-          externalDeviceId: S.optional(S.String),
-          manufacturer: S.optional(S.String),
-          model: S.optional(S.String),
-          hardwareRevision: S.optional(S.String),
-          softwareRevision: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RegistryDevicePropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          registryDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(269, __c33, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices/{registryDeviceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RegistryDevicesCreateOrReplaceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String,
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          storageAccountContainerUrl: S.String,
-          outboundIdentity: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({
-        identifier: "SchemaRegistryPropertiesInput",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaRegistryName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(271, __c33, 7)),
-          identity: S.optional(__S(266, __c33, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SchemaRegistriesCreateOrReplaceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          format: S.String,
-          schemaType: S.String,
-          tags: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "SchemaPropertiesInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaRegistryName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(273, __c34, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SchemasCreateOrReplaceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(177, __c22, 1)),
-        }),
-      ).annotate({
-        identifier: "SchemasCreateOrReplaceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          schemaContent: S.String,
-        }),
-      ).annotate({
-        identifier: "SchemaVersionPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaRegistryName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          schemaVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(276, __c34, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SchemaVersionsCreateOrReplaceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(183, __c22, 7)),
-        }),
-      ).annotate({
-        identifier: "SchemaVersionsCreateOrReplaceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          retain: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TopicUpdate" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          manufacturer: S.optional(S.String),
-          manufacturerUri: S.optional(S.String),
-          model: S.optional(S.String),
-          productCode: S.optional(S.String),
-          hardwareRevision: S.optional(S.String),
-          softwareRevision: S.optional(S.String),
-          documentationUri: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
-          defaultDatasetsConfiguration: S.optional(S.String),
-          defaultEventsConfiguration: S.optional(S.String),
-          defaultTopic: S.optional(__S(279, __c34, 7)),
-          datasets: S.optional(__S(21, __c2, 5)),
-          events: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "AssetUpdateProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          assetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(280, __c35, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateAssetRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          usernameSecretName: S.optional(S.String),
-          passwordSecretName: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "UsernamePasswordCredentialsUpdate",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          certificateSecretName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "X509CredentialsUpdate" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.optional(S.String),
-          usernamePasswordCredentials: S.optional(__S(282, __c35, 2)),
-          x509Credentials: S.optional(__S(283, __c35, 3)),
-        }),
-      ).annotate({ identifier: "AuthenticationUpdate" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targetAddress: S.optional(S.String),
-          endpointProfileType: S.optional(S.String),
-          authentication: S.optional(__S(284, __c35, 4)),
-          additionalConfiguration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AssetEndpointProfileUpdateProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          assetEndpointProfileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(285, __c35, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAssetEndpointProfileRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          certificateAuthorityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCertificateAuthorityRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          validityPeriodInDays: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CertificatePolicyUpdatePropertiesCertificate",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          certificate: S.optional(__S(288, __c36, 0)),
-        }),
-      ).annotate({
-        identifier: "CertificatePolicyUpdateProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          certificateAuthorityName: S.String.pipe(T.Label()),
-          certificatePolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(289, __c36, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/certificatePolicies/{certificatePolicyName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCertificatePolicyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(266, __c33, 2)),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(264, __c33, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateNamespaceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          assetTypeRefs: S.optional(__S(16, __c2, 0)),
-          manufacturer: S.optional(S.String),
-          manufacturerUri: S.optional(S.String),
-          model: S.optional(S.String),
-          productCode: S.optional(S.String),
-          hardwareRevision: S.optional(S.String),
-          softwareRevision: S.optional(S.String),
-          documentationUri: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
-          defaultDatasetsConfiguration: S.optional(S.String),
-          defaultEventsConfiguration: S.optional(S.String),
-          defaultStreamsConfiguration: S.optional(S.String),
-          defaultManagementGroupsConfiguration: S.optional(S.String),
-          defaultDatasetsDestinations: S.optional(__S(102, __c12, 6)),
-          defaultEventsDestinations: S.optional(__S(102, __c12, 6)),
-          defaultStreamsDestinations: S.optional(__S(102, __c12, 6)),
-          datasets: S.optional(__S(106, __c13, 2)),
-          eventGroups: S.optional(__S(110, __c13, 6)),
-          streams: S.optional(__S(112, __c14, 0)),
-          managementGroups: S.optional(__S(116, __c14, 4)),
-        }),
-      ).annotate({
-        identifier: "NamespaceAssetUpdateProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          assetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(292, __c36, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNamespaceAssetRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          certificateSecretName: S.optional(S.String),
-          keySecretName: S.optional(S.String),
-          intermediateCertificatesSecretName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "X509CertificateCredentialsUpdate",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.optional(S.String),
-          usernamePasswordCredentials: S.optional(__S(282, __c35, 2)),
-          x509Credentials: S.optional(__S(294, __c36, 6)),
-        }),
-      ).annotate({ identifier: "HostAuthenticationUpdate" });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.optional(S.String),
-          address: S.optional(S.String),
-          version: S.optional(S.String),
-          authentication: S.optional(__S(295, __c36, 7)),
-          trustSettings: S.optional(__S(133, __c16, 5)),
-          additionalConfiguration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InboundEndpointsUpdate" });
-    case 1:
-      return S.Record(S.String, __S(296, __c37, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.optional(S.String),
-          address: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeviceMessagingEndpointUpdate",
-      });
-    case 3:
-      return S.Record(S.String, __S(298, __c37, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          assigned: S.optional(__S(299, __c37, 3)),
-          unassigned: S.optional(__S(299, __c37, 3)),
-        }),
-      ).annotate({ identifier: "OutboundEndpointsUpdate" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          inbound: S.optional(__S(297, __c37, 1)),
-          outbound: S.optional(__S(300, __c37, 4)),
-        }),
-      ).annotate({ identifier: "MessagingEndpointsUpdate" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          operatingSystemVersion: S.optional(S.String),
-          endpoints: S.optional(__S(301, __c37, 5)),
-          attributes: S.optional(__S(15, __c1, 7)),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "NamespaceDeviceUpdateProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(302, __c37, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNamespaceDeviceRequest",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          deviceName: S.optional(S.String),
-          endpointName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeviceRefUpdate" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deviceRef: S.optional(__S(304, __c38, 0)),
-          displayName: S.optional(S.String),
-          assetTypeRefs: S.optional(__S(16, __c2, 0)),
-          description: S.optional(S.String),
-          discoveryId: S.optional(S.String),
-          version: S.optional(S.Number),
-          manufacturer: S.optional(S.String),
-          manufacturerUri: S.optional(S.String),
-          model: S.optional(S.String),
-          productCode: S.optional(S.String),
-          hardwareRevision: S.optional(S.String),
-          softwareRevision: S.optional(S.String),
-          documentationUri: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
-          defaultDatasetsConfiguration: S.optional(S.String),
-          defaultEventsConfiguration: S.optional(S.String),
-          defaultStreamsConfiguration: S.optional(S.String),
-          defaultManagementGroupsConfiguration: S.optional(S.String),
-          defaultDatasetsDestinations: S.optional(__S(147, __c18, 3)),
-          defaultEventsDestinations: S.optional(__S(147, __c18, 3)),
-          defaultStreamsDestinations: S.optional(__S(147, __c18, 3)),
-          datasets: S.optional(__S(151, __c18, 7)),
-          eventGroups: S.optional(__S(155, __c19, 3)),
-          streams: S.optional(__S(157, __c19, 5)),
-          managementGroups: S.optional(__S(161, __c20, 1)),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredAssetUpdateProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          discoveredAssetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(305, __c38, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNamespaceDiscoveredAssetRequest",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          endpointType: S.optional(S.String),
-          address: S.optional(S.String),
-          version: S.optional(S.String),
-          supportedAuthenticationMethods: S.optional(__S(307, __c38, 3)),
-          additionalConfiguration: S.optional(S.String),
-          lastUpdatedOn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DiscoveredInboundEndpointsUpdate",
-      });
-    case 5:
-      return S.Record(S.String, __S(308, __c38, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assigned: S.optional(__S(299, __c37, 3)),
-        }),
-      ).annotate({
-        identifier: "DiscoveredOutboundEndpointsUpdate",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          inbound: S.optional(__S(309, __c38, 5)),
-          outbound: S.optional(__S(310, __c38, 6)),
-        }),
-      ).annotate({
-        identifier: "DiscoveredMessagingEndpointsUpdate",
-      });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          externalDeviceId: S.optional(S.String),
-          endpoints: S.optional(__S(311, __c38, 7)),
-          operatingSystemVersion: S.optional(S.String),
-          attributes: S.optional(__S(15, __c1, 7)),
-          discoveryId: S.optional(S.String),
-          version: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "NamespaceDiscoveredDeviceUpdateProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          discoveredDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(312, __c39, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNamespaceDiscoveredDeviceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enablementState: S.optional(S.String),
-          manufacturer: S.optional(S.String),
-          model: S.optional(S.String),
-          hardwareRevision: S.optional(S.String),
-          softwareRevision: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RegistryDeviceUpdateProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          namespaceName: S.String.pipe(T.Label()),
-          registryDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(314, __c39, 2)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices/{registryDeviceName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateRegistryDeviceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          outboundIdentity: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({
-        identifier: "SchemaRegistryUpdateProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaRegistryName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(266, __c33, 2)),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(316, __c39, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
-            code: 200,
-            apiVersion: "2026-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateSchemaRegistryRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

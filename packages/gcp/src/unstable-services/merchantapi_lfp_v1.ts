@@ -298,8 +298,8 @@ export const deleteAccountsLfpStores: API.OperationMethod<
   DeleteAccountsLfpStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteAccountsLfpStoresRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteAccountsLfpStoresRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -313,8 +313,8 @@ export const getAccountsLfpMerchantStates: API.OperationMethod<
   GetAccountsLfpMerchantStatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetAccountsLfpMerchantStatesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<LfpMerchantState>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetAccountsLfpMerchantStatesRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<LfpMerchantState>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -328,8 +328,8 @@ export const getAccountsLfpStores: API.OperationMethod<
   GetAccountsLfpStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetAccountsLfpStoresRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<LfpStore>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetAccountsLfpStoresRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<LfpStore>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -348,8 +348,8 @@ export const insertAccountsLfpInventories: API.OperationMethod<
   InsertAccountsLfpInventoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<InsertAccountsLfpInventoriesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<LfpInventory>,
+  input: __S(41, __c5, 1) as any as S.Schema<InsertAccountsLfpInventoriesRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<LfpInventory>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -363,8 +363,8 @@ export const insertAccountsLfpSales: API.OperationMethod<
   InsertAccountsLfpSalesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<InsertAccountsLfpSalesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<LfpSale>,
+  input: __S(57, __c7, 1) as any as S.Schema<InsertAccountsLfpSalesRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<LfpSale>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -383,8 +383,8 @@ export const insertAccountsLfpStores: API.OperationMethod<
   InsertAccountsLfpStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<InsertAccountsLfpStoresRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<LfpStore>,
+  input: __S(64, __c8, 0) as any as S.Schema<InsertAccountsLfpStoresRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<LfpStore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -399,8 +399,8 @@ export const listAccountsLfpStores: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLfpStoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListAccountsLfpStoresRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListLfpStoresResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListAccountsLfpStoresRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListLfpStoresResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -409,6 +409,36 @@ export const listAccountsLfpStores: API.PaginatedOperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          targetAccount: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "lfp/v1/{+parent}/lfpStores",
+            baseUrl: "https://merchantapi.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountsLfpStoresRequest",
+      });
+    case 1:
+      return S.Array(__S(33, __c4, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          lfpStores: S.optional(__S(1, __c0, 1)),
+        }),
+      ).annotate({ identifier: "ListLfpStoresResponse" });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -428,7 +458,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -442,7 +476,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAccountsLfpMerchantStatesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           instockServingVerificationState: S.optional(S.String),
@@ -454,9 +488,9 @@ function __c0(j: number): any {
           productPageType: S.optional(S.String),
         }),
       ).annotate({ identifier: "CountrySettings" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           matchingStateHint: S.optional(S.String),
@@ -464,9 +498,9 @@ function __c0(j: number): any {
           storeCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "LfpStoreState" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(19, __c2, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           submittedProducts: S.optional(S.String),
@@ -475,21 +509,21 @@ function __c0(j: number): any {
           submittedEntries: S.optional(S.String),
         }),
       ).annotate({ identifier: "InventoryStats" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          countrySettings: S.optional(__S(4, __c0, 4)),
+          countrySettings: S.optional(__S(18, __c2, 2)),
           linkedGbps: S.optional(S.String),
-          storeStates: S.optional(__S(6, __c0, 6)),
-          inventoryStats: S.optional(__S(7, __c0, 7)),
+          storeStates: S.optional(__S(20, __c2, 4)),
+          inventoryStats: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "LfpMerchantState" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -503,12 +537,16 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAccountsLfpStoresRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          gcidCategory: S.optional(__S(10, __c1, 2)),
+          gcidCategory: S.optional(__S(32, __c4, 0)),
           phoneNumber: S.optional(S.String),
           targetAccount: S.optional(S.String),
           matchingState: S.optional(S.String),
@@ -521,14 +559,11 @@ function __c1(j: number): any {
           placeId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LfpStore" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          amountMicros: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Price" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pickupMethod: S.optional(S.String),
@@ -544,14 +579,14 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           offerId: S.optional(S.String),
           feedLabel: S.optional(S.String),
-          price: S.optional(__S(12, __c1, 4)),
+          price: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "LfpInventory" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -562,7 +597,22 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "InsertAccountsLfpInventoriesRequest",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amountMicros: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Price" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           saleTime: S.optional(S.String),
@@ -570,7 +620,7 @@ function __c1(j: number): any {
           regionCode: S.optional(S.String),
           name: S.optional(S.String),
           gtin: S.optional(S.String),
-          price: S.optional(__S(12, __c1, 4)),
+          price: S.optional(__S(48, __c6, 0)),
           feedLabel: S.optional(S.String),
           quantity: S.optional(S.String),
           contentLanguage: S.optional(S.String),
@@ -579,15 +629,11 @@ function __c1(j: number): any {
           offerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LfpSale" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -598,11 +644,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "InsertAccountsLfpSalesRequest",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -613,35 +663,8 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "InsertAccountsLfpStoresRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          targetAccount: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "lfp/v1/{+parent}/lfpStores",
-            baseUrl: "https://merchantapi.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountsLfpStoresRequest",
-      });
-    case 3:
-      return S.Array(__S(11, __c1, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          lfpStores: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "ListLfpStoresResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

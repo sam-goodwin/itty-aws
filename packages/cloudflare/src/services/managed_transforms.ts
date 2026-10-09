@@ -158,8 +158,8 @@ export const listManagedTransforms: API.OperationMethod<
   ListManagedTransformsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ListManagedTransformsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListManagedTransformsResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListManagedTransformsRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<ListManagedTransformsResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -173,8 +173,8 @@ export const patchManagedTransform: API.OperationMethod<
   PatchManagedTransformError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<PatchManagedTransformRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PatchManagedTransformResponse>,
+  input: __S(14, __c3, 2) as any as S.Schema<PatchManagedTransformRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<PatchManagedTransformResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -197,7 +197,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeleteManagedTransformResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -207,56 +211,60 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListManagedTransformsRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           enabled: S.Boolean,
           hasConflict: S.Boolean.pipe(T.Body("has_conflict")),
-          conflictsWith: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("conflicts_with"))),
+          conflictsWith: S.optional(S.NullOr(__S(8, __c2, 0)).pipe(T.Body("conflicts_with"))),
         }),
       ).annotate({
         identifier: "ListResponseManagedRequestHeadersItem",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          managedRequestHeaders: __S(5, __c0, 5).pipe(T.Body("managed_request_headers")),
-          managedResponseHeaders: __S(5, __c0, 5).pipe(T.Body("managed_response_headers")),
+          managedRequestHeaders: __S(10, __c2, 2).pipe(T.Body("managed_request_headers")),
+          managedResponseHeaders: __S(10, __c2, 2).pipe(T.Body("managed_response_headers")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListManagedTransformsResponse",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           enabled: S.Boolean,
           hasConflict: S.optional(S.Boolean.pipe(T.Body("has_conflict"))),
-          conflictsWith: S.optional(__S(3, __c0, 3).pipe(T.Body("conflicts_with"))),
+          conflictsWith: S.optional(__S(8, __c2, 0).pipe(T.Body("conflicts_with"))),
         }),
       ).annotate({
         identifier: "EditRequestManagedRequestHeadersItem",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
+      return S.Array(__S(12, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           managedRequestHeaders: S.optional(
-            __S(8, __c1, 0).pipe(T.Body("managed_request_headers")),
+            __S(13, __c3, 1).pipe(T.Body("managed_request_headers")),
           ),
           managedResponseHeaders: S.optional(
-            __S(8, __c1, 0).pipe(T.Body("managed_response_headers")),
+            __S(13, __c3, 1).pipe(T.Body("managed_response_headers")),
           ),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/managed_headers", code: 200 }))
@@ -266,7 +274,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -246,8 +246,8 @@ export const createSubscriptions: API.OperationMethod<
   CreateSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateSubscriptionsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Operation>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateSubscriptionsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<Operation>,
   errors: [
     NotFound,
     Forbidden,
@@ -274,8 +274,8 @@ export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteSubscriptionsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Operation>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteSubscriptionsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<Operation>,
   errors: [
     NotFound,
     Forbidden,
@@ -296,8 +296,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetOperationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Operation>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -315,8 +315,8 @@ export const getSubscriptions: API.OperationMethod<
   GetSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetSubscriptionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Subscription>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetSubscriptionsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, WorkspaceEventsScopeInsufficient, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -335,8 +335,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListSubscriptionsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListSubscriptionsResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListSubscriptionsRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<ListSubscriptionsResponse>,
   errors: [NotFound, Forbidden, WorkspaceEventsScopeInsufficient, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -357,8 +357,8 @@ export const patchSubscriptions: API.OperationMethod<
   PatchSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<PatchSubscriptionsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchSubscriptionsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<Operation>,
   errors: [
     NotFound,
     Forbidden,
@@ -385,8 +385,8 @@ export const reactivateSubscriptions: API.OperationMethod<
   ReactivateSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ReactivateSubscriptionsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Operation>,
+  input: __S(9, __c1, 1) as any as S.Schema<ReactivateSubscriptionsRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<Operation>,
   errors: [
     NotFound,
     Forbidden,
@@ -401,6 +401,95 @@ export const reactivateSubscriptions: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://workspaceevents.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchSubscriptionsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ReactivateSubscriptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:reactivate",
+            baseUrl: "https://workspaceevents.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReactivateSubscriptionsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/subscriptions",
+            baseUrl: "https://workspaceevents.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSubscriptionsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(25, __c3, 1)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(26, __c3, 2)),
+          metadata: S.optional(__S(24, __c3, 0)),
+          name: S.optional(S.String),
+          response: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -427,11 +516,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           expireTime: S.optional(S.String),
-          eventTypes: S.optional(__S(0, __c0, 0)),
+          eventTypes: S.optional(__S(32, __c4, 0)),
           ttl: S.optional(S.String),
           createTime: S.optional(S.String),
-          notificationEndpoint: S.optional(__S(1, __c0, 1)),
-          payloadOptions: S.optional(__S(2, __c0, 2)),
+          notificationEndpoint: S.optional(__S(33, __c4, 1)),
+          payloadOptions: S.optional(__S(34, __c4, 2)),
           name: S.optional(S.String),
           uid: S.optional(S.String),
           userAuthority: S.optional(S.String),
@@ -439,55 +528,18 @@ function __c0(j: number): any {
           targetResource: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
           state: S.optional(S.String),
-          driveOptions: S.optional(__S(3, __c0, 3)),
+          driveOptions: S.optional(__S(35, __c4, 3)),
           etag: S.optional(S.String),
           authority: S.optional(S.String),
           updateTime: S.optional(S.String),
           serviceAccountAuthority: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subscription" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/subscriptions",
-            baseUrl: "https://workspaceevents.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSubscriptionsRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(8, __c1, 0)),
-          metadata: S.optional(__S(6, __c0, 6)),
-          name: S.optional(S.String),
-          response: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -504,7 +556,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteSubscriptionsRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -516,7 +572,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOperationsRequest" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -528,7 +588,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSubscriptionsRequest" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -542,60 +606,19 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSubscriptionsRequest" });
-    case 6:
-      return S.Array(__S(4, __c0, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(36, __c4, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          subscriptions: S.optional(__S(14, __c1, 6)),
+          subscriptions: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({
         identifier: "ListSubscriptionsResponse",
       });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://workspaceevents.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchSubscriptionsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ReactivateSubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:reactivate",
-            baseUrl: "https://workspaceevents.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReactivateSubscriptionsRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1029,8 +1029,8 @@ export const cancelPreviewDeployments: API.OperationMethod<
   CancelPreviewDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelPreviewDeploymentsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(417, __c13, 1) as any as S.Schema<CancelPreviewDeploymentsRequest>,
+  output: __S(536, __c16, 24) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1044,8 +1044,8 @@ export const deleteDeployments: API.OperationMethod<
   DeleteDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteDeploymentsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteDeploymentsRequest>,
+  output: __S(536, __c16, 24) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1059,8 +1059,8 @@ export const getDeployments: API.OperationMethod<
   GetDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetDeploymentsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<Deployment>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetDeploymentsRequest>,
+  output: __S(614, __c19, 6) as any as S.Schema<Deployment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1074,8 +1074,8 @@ export const getIamPolicyDeployments: API.OperationMethod<
   GetIamPolicyDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetIamPolicyDeploymentsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<Policy>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetIamPolicyDeploymentsRequest>,
+  output: __S(711, __c22, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1089,8 +1089,8 @@ export const getManifests: API.OperationMethod<
   GetManifestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetManifestsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Manifest>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetManifestsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<Manifest>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1104,8 +1104,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetOperationsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(536, __c16, 24) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1119,8 +1119,8 @@ export const getResources: API.OperationMethod<
   GetResourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetResourcesRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<Resource>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetResourcesRequest>,
+  output: __S(43, __c1, 11) as any as S.Schema<Resource>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1134,8 +1134,8 @@ export const insertDeployments: API.OperationMethod<
   InsertDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<InsertDeploymentsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(64, __c2, 0) as any as S.Schema<InsertDeploymentsRequest>,
+  output: __S(536, __c16, 24) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1150,8 +1150,8 @@ export const listDeployments: API.PaginatedOperationMethod<
   GcpOpContext,
   DeploymentsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListDeploymentsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DeploymentsListResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<ListDeploymentsRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<DeploymentsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1167,8 +1167,8 @@ export const listManifests: API.PaginatedOperationMethod<
   GcpOpContext,
   ManifestsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListManifestsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ManifestsListResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListManifestsRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<ManifestsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1184,8 +1184,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   OperationsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<OperationsListResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<OperationsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1201,8 +1201,8 @@ export const listResources: API.PaginatedOperationMethod<
   GcpOpContext,
   ResourcesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListResourcesRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<ResourcesListResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListResourcesRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<ResourcesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1218,8 +1218,8 @@ export const listTypes: API.PaginatedOperationMethod<
   GcpOpContext,
   TypesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListTypesRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<TypesListResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListTypesRequest>,
+  output: __S(227, __c7, 3) as any as S.Schema<TypesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1234,8 +1234,8 @@ export const patchDeployments: API.OperationMethod<
   PatchDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<PatchDeploymentsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(256, __c8, 0) as any as S.Schema<PatchDeploymentsRequest>,
+  output: __S(536, __c16, 24) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1254,8 +1254,8 @@ export const setIamPolicyDeployments: API.OperationMethod<
   SetIamPolicyDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<SetIamPolicyDeploymentsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<Policy>,
+  input: __S(289, __c9, 1) as any as S.Schema<SetIamPolicyDeploymentsRequest>,
+  output: __S(711, __c22, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1269,8 +1269,8 @@ export const stopDeployments: API.OperationMethod<
   StopDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<StopDeploymentsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(321, __c10, 1) as any as S.Schema<StopDeploymentsRequest>,
+  output: __S(536, __c16, 24) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1289,8 +1289,8 @@ export const testIamPermissionsDeployments: API.OperationMethod<
   TestIamPermissionsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<TestIamPermissionsDeploymentsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<TestPermissionsResponse>,
+  input: __S(353, __c11, 1) as any as S.Schema<TestIamPermissionsDeploymentsRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<TestPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1304,8 +1304,8 @@ export const updateDeployments: API.OperationMethod<
   UpdateDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<UpdateDeploymentsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(384, __c12, 0) as any as S.Schema<UpdateDeploymentsRequest>,
+  output: __S(536, __c16, 24) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1315,528 +1315,6 @@ export const updateDeployments: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          fingerprint: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeploymentsCancelPreviewRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.String.pipe(T.Label()),
-          deployment: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/cancelPreview",
-            baseUrl: "https://deploymentmanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelPreviewDeploymentsRequest",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zonalIgmIds: S.optional(__S(2, __c0, 2)),
-          zoneToIgmIds: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "SetAutoscalerLinkOperationMetadata",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allocatedPriority: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "FirewallPolicyRuleOperationMetadata",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          data: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "OperationDetails" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(6, __c0, 6));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          error: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo",
-      });
-    case 3:
-      return S.Record(S.String, __S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientOperationId: S.optional(S.String),
-          perLocationOperations: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "SetCommonInstanceMetadataOperationMetadata",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OperationWarningsItemDataItem",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(14, __c1, 6)),
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationWarningsItem" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          repairCategory: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          unhealthyReason: S.optional(S.String),
-          healthStatus: S.optional(S.String),
-          availabilitySloStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetHealthOperationMetadataHealthInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          healthInfo: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "GetHealthOperationMetadata",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          targetComponentVersions: S.optional(__S(3, __c0, 3)),
-          currentComponentVersions: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GetVersionOperationMetadataSbomInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          inlineSbomInfo: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "GetVersionOperationMetadata",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          troubleshootOutput: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InstancesTroubleshootOperationMetadata",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          failedToCreateVmCount: S.optional(S.Number),
-          targetVmCount: S.optional(S.Number),
-          deletedVmCount: S.optional(S.Number),
-          createdVmCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "BulkInsertOperationStatus",
-      });
-    case 7:
-      return S.Record(S.String, __S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          machineType: S.optional(S.String),
-          perLocationStatus: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "InstancesBulkInsertOperationMetadata",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          stackEntries: S.optional(__S(2, __c0, 2)),
-          detail: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DebugInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.optional(S.String),
-          metadatas: S.optional(__S(3, __c0, 3)),
-          domain: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ErrorInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          futureLimit: S.optional(S.Number),
-          metricName: S.optional(S.String),
-          rolloutStatus: S.optional(S.String),
-          limitName: S.optional(S.String),
-          limit: S.optional(S.Number),
-          dimensions: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "QuotaExceededInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          locale: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocalizedMessage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HelpLink" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "Help" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          errorInfo: S.optional(__S(26, __c3, 2)),
-          quotaInfo: S.optional(__S(27, __c3, 3)),
-          localizedMessage: S.optional(__S(28, __c3, 4)),
-          help: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "OperationErrorErrorsItemErrorDetailsItem",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          debugInfo: S.optional(__S(25, __c3, 1)),
-          arguments: S.optional(__S(2, __c0, 2)),
-          message: S.optional(S.String),
-          code: S.optional(S.String),
-          location: S.optional(S.String),
-          errorDetails: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "OperationErrorErrorsItem" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "OperationError" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targetId: S.optional(S.String),
-          endTime: S.optional(S.String),
-          setAutoscalerLinkOperationMetadata: S.optional(__S(4, __c0, 4)),
-          creationTimestamp: S.optional(S.String),
-          firewallPolicyRuleOperationMetadata: S.optional(__S(5, __c0, 5)),
-          details: S.optional(__S(7, __c0, 7)),
-          setCommonInstanceMetadataOperationMetadata: S.optional(__S(12, __c1, 4)),
-          selfLink: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          warnings: S.optional(__S(16, __c2, 0)),
-          operationType: S.optional(S.String),
-          startTime: S.optional(S.String),
-          statusMessage: S.optional(S.String),
-          getHealthOperationMetadata: S.optional(__S(18, __c2, 2)),
-          operationGroupId: S.optional(S.String),
-          getVersionOperationMetadata: S.optional(__S(20, __c2, 4)),
-          region: S.optional(S.String),
-          progress: S.optional(S.Number),
-          insertTime: S.optional(S.String),
-          status: S.optional(S.String),
-          selfLinkWithId: S.optional(S.String),
-          user: S.optional(S.String),
-          instancesTroubleshootOperationMetadata: S.optional(__S(21, __c2, 5)),
-          clientOperationId: S.optional(S.String),
-          httpErrorMessage: S.optional(S.String),
-          kind: S.optional(S.String),
-          httpErrorStatusCode: S.optional(S.Number),
-          instancesBulkInsertOperationMetadata: S.optional(__S(24, __c3, 0)),
-          id: S.optional(S.String),
-          zone: S.optional(S.String),
-          error: S.optional(__S(36, __c4, 4)),
-          targetLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          deletePolicy: S.optional(S.String.pipe(T.Query())),
-          "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-          deployment: S.String.pipe(T.Label()),
-          project: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
-            baseUrl: "https://deploymentmanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDeploymentsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.String.pipe(T.Label()),
-          "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-          deployment: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
-            baseUrl: "https://deploymentmanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetDeploymentsRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigFile" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          content: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImportFile" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(__S(40, __c5, 0)),
-          imports: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "TargetConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeploymentUpdateLabelEntry",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          manifest: S.optional(S.String),
-          description: S.optional(S.String),
-          labels: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "DeploymentUpdate" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeploymentLabelEntry" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          operation: S.optional(__S(37, __c4, 5)),
-          manifest: S.optional(S.String),
-          description: S.optional(S.String),
-          fingerprint: S.optional(S.String),
-          id: S.optional(S.String),
-          target: S.optional(__S(43, __c5, 3)),
-          insertTime: S.optional(S.String),
-          update: S.optional(__S(46, __c5, 6)),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          labels: S.optional(__S(48, __c6, 0)),
-          selfLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Deployment" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-          optionsRequestedPolicyVersion: S.optional(S.Number.pipe(T.Query())),
-          resource: S.String.pipe(T.Label()),
-          project: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/getIamPolicy",
-            baseUrl: "https://deploymentmanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyDeploymentsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-          location: S.optional(S.String),
-          description: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          members: S.optional(__S(2, __c0, 2)),
-          role: S.optional(S.String),
-          condition: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "Binding" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "AuditLogConfig" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "AuditConfig" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          bindings: S.optional(__S(53, __c6, 5)),
-          etag: S.optional(S.String),
-          version: S.optional(S.Number),
-          auditConfigs: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "Policy" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          deployment: S.String.pipe(T.Label()),
-          "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-          project: S.String.pipe(T.Label()),
-          manifest: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests/{manifest}",
-            baseUrl: "https://deploymentmanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetManifestsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          imports: S.optional(__S(42, __c5, 2)),
-          config: S.optional(__S(40, __c5, 0)),
-          selfLink: S.optional(S.String),
-          expandedConfig: S.optional(S.String),
-          manifestSizeBytes: S.optional(S.String),
-          id: S.optional(S.String),
-          manifestSizeLimitBytes: S.optional(S.String),
-          insertTime: S.optional(S.String),
-          layout: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Manifest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          operation: S.String.pipe(T.Label()),
-          "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-          project: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "deploymentmanager/v2/projects/{project}/global/operations/{operation}",
-            baseUrl: "https://deploymentmanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetOperationsRequest" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           project: S.String.pipe(T.Label()),
@@ -1851,99 +1329,95 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetResourcesRequest" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           gcpIamPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceAccessControl" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          quotaInfo: S.optional(__S(27, __c3, 3)),
-          help: S.optional(__S(31, __c3, 7)),
-          localizedMessage: S.optional(__S(28, __c3, 4)),
-          errorInfo: S.optional(__S(26, __c3, 2)),
+          quotaInfo: S.optional(__S(485, __c15, 5)),
+          help: S.optional(__S(489, __c15, 9)),
+          localizedMessage: S.optional(__S(486, __c15, 6)),
+          errorInfo: S.optional(__S(484, __c15, 4)),
         }),
       ).annotate({
         identifier: "ResourceUpdateErrorErrorsItemErrorDetailsItem",
       });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
     case 2:
+      return S.Array(__S(33, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          arguments: S.optional(__S(2, __c0, 2)),
+          arguments: S.optional(__S(448, __c14, 0)),
           message: S.optional(S.String),
           location: S.optional(S.String),
-          debugInfo: S.optional(__S(25, __c3, 1)),
+          debugInfo: S.optional(__S(483, __c15, 3)),
           code: S.optional(S.String),
-          errorDetails: S.optional(__S(65, __c8, 1)),
+          errorDetails: S.optional(__S(34, __c1, 2)),
         }),
       ).annotate({
         identifier: "ResourceUpdateErrorErrorsItem",
       });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({ identifier: "ResourceUpdateError" });
+      return S.Array(__S(35, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(14, __c1, 6)),
+          errors: S.optional(__S(36, __c1, 4)),
+        }),
+      ).annotate({ identifier: "ResourceUpdateError" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(482, __c15, 2)),
           code: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ResourceUpdateWarningsItem",
       });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
     case 7:
+      return S.Array(__S(38, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          accessControl: S.optional(__S(63, __c7, 7)),
+          accessControl: S.optional(__S(32, __c1, 0)),
           properties: S.optional(S.String),
-          error: S.optional(__S(68, __c8, 4)),
+          error: S.optional(__S(37, __c1, 5)),
           state: S.optional(S.String),
           finalProperties: S.optional(S.String),
           manifest: S.optional(S.String),
-          warnings: S.optional(__S(70, __c8, 6)),
+          warnings: S.optional(__S(39, __c1, 7)),
           intent: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceUpdate" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(14, __c1, 6)),
+          data: S.optional(__S(482, __c15, 2)),
           code: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceWarningsItem" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
+    case 10:
+      return S.Array(__S(41, __c1, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          update: S.optional(__S(71, __c8, 7)),
+          update: S.optional(__S(40, __c1, 8)),
           finalProperties: S.optional(S.String),
           properties: S.optional(S.String),
-          accessControl: S.optional(__S(63, __c7, 7)),
+          accessControl: S.optional(__S(32, __c1, 0)),
           name: S.optional(S.String),
-          warnings: S.optional(__S(73, __c9, 1)),
+          warnings: S.optional(__S(42, __c1, 10)),
           manifest: S.optional(S.String),
           url: S.optional(S.String),
           type: S.optional(S.String),
@@ -1951,14 +1425,18 @@ function __c9(j: number): any {
           insertTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Resource" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
           createPolicy: S.optional(S.String.pipe(T.Query())),
           preview: S.optional(S.Boolean.pipe(T.Query())),
           project: S.String.pipe(T.Label()),
-          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(614, __c19, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1967,7 +1445,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertDeploymentsRequest" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1983,16 +1465,20 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDeploymentsRequest" });
-    case 5:
-      return S.Array(__S(49, __c6, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(614, __c19, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(__S(77, __c9, 5)),
+          deployments: S.optional(__S(97, __c3, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentsListResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deployment: S.String.pipe(T.Label()),
@@ -2009,20 +1495,20 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListManifestsRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(60, __c7, 4));
     case 1:
+      return S.Array(__S(768, __c24, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          manifests: S.optional(__S(80, __c10, 0)),
+          manifests: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "ManifestsListResponse" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -2038,16 +1524,20 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
-      return S.Array(__S(37, __c4, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(536, __c16, 24));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(83, __c10, 3)),
+          operations: S.optional(__S(161, __c5, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationsListResponse" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2064,18 +1554,18 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListResourcesRequest" });
-    case 6:
-      return S.Array(__S(74, __c9, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(43, __c1, 11));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(86, __c10, 6)),
+          resources: S.optional(__S(193, __c6, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourcesListResponse" });
   }
 }
-function __c11(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2100,19 +1590,23 @@ function __c11(j: number): any {
           insertTime: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          operation: S.optional(__S(37, __c4, 5)),
+          operation: S.optional(__S(536, __c16, 24)),
         }),
       ).annotate({ identifier: "Type" });
     case 2:
-      return S.Array(__S(89, __c11, 1));
+      return S.Array(__S(225, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          types: S.optional(__S(90, __c11, 2)),
+          types: S.optional(__S(226, __c7, 2)),
         }),
       ).annotate({ identifier: "TypesListResponse" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           preview: S.optional(S.Boolean.pipe(T.Query())),
@@ -2121,7 +1615,7 @@ function __c11(j: number): any {
           deletePolicy: S.optional(S.String.pipe(T.Query())),
           "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
           createPolicy: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(614, __c19, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2130,21 +1624,25 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchDeploymentsRequest" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          bindings: S.optional(__S(53, __c6, 5)),
+          bindings: S.optional(__S(706, __c22, 2)),
           etag: S.optional(S.String),
-          policy: S.optional(__S(58, __c7, 2)),
+          policy: S.optional(__S(711, __c22, 7)),
         }),
       ).annotate({ identifier: "GlobalSetPolicyRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
           project: S.String.pipe(T.Label()),
-          body: S.optional(__S(93, __c11, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(288, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2155,22 +1653,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyDeploymentsRequest",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fingerprint: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentsStopRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project: S.String.pipe(T.Label()),
           deployment: S.String.pipe(T.Label()),
-          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(320, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2179,19 +1677,23 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopDeploymentsRequest" });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(2, __c0, 2)),
+          permissions: S.optional(__S(448, __c14, 0)),
         }),
       ).annotate({ identifier: "TestPermissionsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project: S.String.pipe(T.Label()),
           resource: S.String.pipe(T.Label()),
           "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(97, __c12, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(352, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2202,7 +1704,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsDeploymentsRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project: S.String.pipe(T.Label()),
@@ -2211,7 +1717,7 @@ function __c12(j: number): any {
           "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
           deletePolicy: S.optional(S.String.pipe(T.Query())),
           preview: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(614, __c19, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2222,7 +1728,552 @@ function __c12(j: number): any {
       ).annotate({ identifier: "UpdateDeploymentsRequest" });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fingerprint: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeploymentsCancelPreviewRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.String.pipe(T.Label()),
+          deployment: S.String.pipe(T.Label()),
+          body: S.optional(__S(416, __c13, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/cancelPreview",
+            baseUrl: "https://deploymentmanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelPreviewDeploymentsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OperationWarningsItemDataItem",
+      });
+    case 2:
+      return S.Array(__S(481, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          stackEntries: S.optional(__S(448, __c14, 0)),
+          detail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DebugInfo" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+          metadatas: S.optional(__S(480, __c15, 0)),
+          domain: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ErrorInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          futureLimit: S.optional(S.Number),
+          metricName: S.optional(S.String),
+          rolloutStatus: S.optional(S.String),
+          limitName: S.optional(S.String),
+          limit: S.optional(S.Number),
+          dimensions: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({ identifier: "QuotaExceededInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          locale: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocalizedMessage" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HelpLink" });
+    case 8:
+      return S.Array(__S(487, __c15, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(488, __c15, 8)),
+        }),
+      ).annotate({ identifier: "Help" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zonalIgmIds: S.optional(__S(448, __c14, 0)),
+          zoneToIgmIds: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({
+        identifier: "SetAutoscalerLinkOperationMetadata",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          allocatedPriority: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "FirewallPolicyRuleOperationMetadata",
+      });
+    case 2:
+      return S.Record(S.String, S.Unknown);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          data: S.optional(__S(514, __c16, 2)),
+        }),
+      ).annotate({ identifier: "OperationDetails" });
+    case 4:
+      return S.Array(__S(514, __c16, 2));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(516, __c16, 4)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          error: S.optional(__S(517, __c16, 5)),
+        }),
+      ).annotate({
+        identifier: "SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo",
+      });
+    case 7:
+      return S.Record(S.String, __S(518, __c16, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          clientOperationId: S.optional(S.String),
+          perLocationOperations: S.optional(__S(519, __c16, 7)),
+        }),
+      ).annotate({
+        identifier: "SetCommonInstanceMetadataOperationMetadata",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(482, __c15, 2)),
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationWarningsItem" });
+    case 10:
+      return S.Array(__S(521, __c16, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          repairCategory: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          unhealthyReason: S.optional(S.String),
+          healthStatus: S.optional(S.String),
+          availabilitySloStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetHealthOperationMetadataHealthInfo",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          healthInfo: S.optional(__S(523, __c16, 11)),
+        }),
+      ).annotate({
+        identifier: "GetHealthOperationMetadata",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          targetComponentVersions: S.optional(__S(480, __c15, 0)),
+          currentComponentVersions: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({
+        identifier: "GetVersionOperationMetadataSbomInfo",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          inlineSbomInfo: S.optional(__S(525, __c16, 13)),
+        }),
+      ).annotate({
+        identifier: "GetVersionOperationMetadata",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          troubleshootOutput: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InstancesTroubleshootOperationMetadata",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          failedToCreateVmCount: S.optional(S.Number),
+          targetVmCount: S.optional(S.Number),
+          deletedVmCount: S.optional(S.Number),
+          createdVmCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "BulkInsertOperationStatus",
+      });
+    case 17:
+      return S.Record(S.String, __S(528, __c16, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          machineType: S.optional(S.String),
+          perLocationStatus: S.optional(__S(529, __c16, 17)),
+        }),
+      ).annotate({
+        identifier: "InstancesBulkInsertOperationMetadata",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          errorInfo: S.optional(__S(484, __c15, 4)),
+          quotaInfo: S.optional(__S(485, __c15, 5)),
+          localizedMessage: S.optional(__S(486, __c15, 6)),
+          help: S.optional(__S(489, __c15, 9)),
+        }),
+      ).annotate({
+        identifier: "OperationErrorErrorsItemErrorDetailsItem",
+      });
+    case 20:
+      return S.Array(__S(531, __c16, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          debugInfo: S.optional(__S(483, __c15, 3)),
+          arguments: S.optional(__S(448, __c14, 0)),
+          message: S.optional(S.String),
+          code: S.optional(S.String),
+          location: S.optional(S.String),
+          errorDetails: S.optional(__S(532, __c16, 20)),
+        }),
+      ).annotate({ identifier: "OperationErrorErrorsItem" });
+    case 22:
+      return S.Array(__S(533, __c16, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(534, __c16, 22)),
+        }),
+      ).annotate({ identifier: "OperationError" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          targetId: S.optional(S.String),
+          endTime: S.optional(S.String),
+          setAutoscalerLinkOperationMetadata: S.optional(__S(512, __c16, 0)),
+          creationTimestamp: S.optional(S.String),
+          firewallPolicyRuleOperationMetadata: S.optional(__S(513, __c16, 1)),
+          details: S.optional(__S(515, __c16, 3)),
+          setCommonInstanceMetadataOperationMetadata: S.optional(__S(520, __c16, 8)),
+          selfLink: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          warnings: S.optional(__S(522, __c16, 10)),
+          operationType: S.optional(S.String),
+          startTime: S.optional(S.String),
+          statusMessage: S.optional(S.String),
+          getHealthOperationMetadata: S.optional(__S(524, __c16, 12)),
+          operationGroupId: S.optional(S.String),
+          getVersionOperationMetadata: S.optional(__S(526, __c16, 14)),
+          region: S.optional(S.String),
+          progress: S.optional(S.Number),
+          insertTime: S.optional(S.String),
+          status: S.optional(S.String),
+          selfLinkWithId: S.optional(S.String),
+          user: S.optional(S.String),
+          instancesTroubleshootOperationMetadata: S.optional(__S(527, __c16, 15)),
+          clientOperationId: S.optional(S.String),
+          httpErrorMessage: S.optional(S.String),
+          kind: S.optional(S.String),
+          httpErrorStatusCode: S.optional(S.Number),
+          instancesBulkInsertOperationMetadata: S.optional(__S(530, __c16, 18)),
+          id: S.optional(S.String),
+          zone: S.optional(S.String),
+          error: S.optional(__S(535, __c16, 23)),
+          targetLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deletePolicy: S.optional(S.String.pipe(T.Query())),
+          "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+          deployment: S.String.pipe(T.Label()),
+          project: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
+            baseUrl: "https://deploymentmanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDeploymentsRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.String.pipe(T.Label()),
+          "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+          deployment: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}",
+            baseUrl: "https://deploymentmanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetDeploymentsRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(640, __c20, 0)),
+          imports: S.optional(__S(642, __c20, 2)),
+        }),
+      ).annotate({ identifier: "TargetConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeploymentUpdateLabelEntry",
+      });
+    case 2:
+      return S.Array(__S(609, __c19, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          manifest: S.optional(S.String),
+          description: S.optional(S.String),
+          labels: S.optional(__S(610, __c19, 2)),
+        }),
+      ).annotate({ identifier: "DeploymentUpdate" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeploymentLabelEntry" });
+    case 5:
+      return S.Array(__S(612, __c19, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          operation: S.optional(__S(536, __c16, 24)),
+          manifest: S.optional(S.String),
+          description: S.optional(S.String),
+          fingerprint: S.optional(S.String),
+          id: S.optional(S.String),
+          target: S.optional(__S(608, __c19, 0)),
+          insertTime: S.optional(S.String),
+          update: S.optional(__S(611, __c19, 3)),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          labels: S.optional(__S(613, __c19, 5)),
+          selfLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Deployment" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigFile" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportFile" });
+    case 2:
+      return S.Array(__S(641, __c20, 1));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+          optionsRequestedPolicyVersion: S.optional(S.Number.pipe(T.Query())),
+          resource: S.String.pipe(T.Label()),
+          project: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "deploymentmanager/v2/projects/{project}/global/deployments/{resource}/getIamPolicy",
+            baseUrl: "https://deploymentmanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyDeploymentsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+          location: S.optional(S.String),
+          description: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expr" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          members: S.optional(__S(448, __c14, 0)),
+          role: S.optional(S.String),
+          condition: S.optional(__S(704, __c22, 0)),
+        }),
+      ).annotate({ identifier: "Binding" });
+    case 2:
+      return S.Array(__S(705, __c22, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({ identifier: "AuditLogConfig" });
+    case 4:
+      return S.Array(__S(707, __c22, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          auditLogConfigs: S.optional(__S(708, __c22, 4)),
+        }),
+      ).annotate({ identifier: "AuditConfig" });
+    case 6:
+      return S.Array(__S(709, __c22, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          bindings: S.optional(__S(706, __c22, 2)),
+          etag: S.optional(S.String),
+          version: S.optional(S.Number),
+          auditConfigs: S.optional(__S(710, __c22, 6)),
+        }),
+      ).annotate({ identifier: "Policy" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deployment: S.String.pipe(T.Label()),
+          "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+          project: S.String.pipe(T.Label()),
+          manifest: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests/{manifest}",
+            baseUrl: "https://deploymentmanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetManifestsRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          imports: S.optional(__S(642, __c20, 2)),
+          config: S.optional(__S(640, __c20, 0)),
+          selfLink: S.optional(S.String),
+          expandedConfig: S.optional(S.String),
+          manifestSizeBytes: S.optional(S.String),
+          id: S.optional(S.String),
+          manifestSizeLimitBytes: S.optional(S.String),
+          insertTime: S.optional(S.String),
+          layout: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Manifest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          operation: S.String.pipe(T.Label()),
+          "header.bypassBillingFilter": S.optional(S.Boolean.pipe(T.Query())),
+          project: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "deploymentmanager/v2/projects/{project}/global/operations/{operation}",
+            baseUrl: "https://deploymentmanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetOperationsRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

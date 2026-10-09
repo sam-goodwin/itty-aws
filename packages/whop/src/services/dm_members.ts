@@ -143,7 +143,7 @@ export const createDmMember: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateDmMemberRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DmMember>,
+  output: __S(8, __c1, 0) as any as S.Schema<DmMember>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -162,8 +162,8 @@ export const deleteDmMember: API.OperationMethod<
   DeleteDmMemberError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteDmMemberRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDmMemberResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteDmMemberRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteDmMemberResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -182,8 +182,8 @@ export const getDmMember: API.OperationMethod<
   GetDmMemberError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetDmMemberRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DmMember>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetDmMemberRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DmMember>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -204,8 +204,8 @@ export const listDmMember: API.PaginatedOperationMethod<
   DmMemberListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(5, __c0, 5) as any as S.Schema<ListDmMemberRequest>,
-    output: __S(9, __c1, 1) as any as S.Schema<ListDmMemberResponse>,
+    input: __S(32, __c4, 0) as any as S.Schema<ListDmMemberRequest>,
+    output: __S(36, __c4, 4) as any as S.Schema<ListDmMemberResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -234,8 +234,8 @@ export const updateDmMember: API.OperationMethod<
   UpdateDmMemberError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<UpdateDmMemberRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DmMember>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateDmMemberRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DmMember>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -251,7 +251,11 @@ function __c0(j: number): any {
           user_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/dm_members", code: 200 })),
       ).annotate({ identifier: "CreateDmMemberRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -262,23 +266,35 @@ function __c0(j: number): any {
           user_id: S.String,
         }),
       ).annotate({ identifier: "DmMember" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/dm_members/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteDmMemberRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteDmMemberResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/dm_members/{id}", code: 200 })),
       ).annotate({ identifier: "GetDmMemberRequest" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -288,7 +304,7 @@ function __c0(j: number): any {
           channel_id: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/dm_members", code: 200 })),
       ).annotate({ identifier: "ListDmMemberRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -298,13 +314,9 @@ function __c0(j: number): any {
           user_id: S.String,
         }),
       ).annotate({ identifier: "DmMemberListItem" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -313,14 +325,18 @@ function __c1(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(7, __c0, 7),
-          page_info: __S(8, __c1, 0),
+          data: __S(34, __c4, 2),
+          page_info: __S(35, __c4, 3),
         }),
       ).annotate({ identifier: "ListDmMemberResponse" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -330,7 +346,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UpdateDmMemberRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

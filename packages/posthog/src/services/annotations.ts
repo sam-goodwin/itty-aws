@@ -223,8 +223,8 @@ export const createAnnotation: API.OperationMethod<
   CreateAnnotationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateAnnotationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Annotation>,
+  input: __S(4, __c1, 0) as any as S.Schema<CreateAnnotationRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<Annotation>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -238,8 +238,8 @@ export const getAnnotation: API.OperationMethod<
   GetAnnotationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetAnnotationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Annotation>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetAnnotationRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<Annotation>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -253,8 +253,8 @@ export const listAnnotations: API.OperationMethod<
   ListAnnotationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListAnnotationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PaginatedAnnotationList>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListAnnotationsRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<PaginatedAnnotationList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -268,8 +268,8 @@ export const updateAnnotation: API.OperationMethod<
   UpdateAnnotationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<UpdateAnnotationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Annotation>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateAnnotationRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<Annotation>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -283,8 +283,8 @@ export const updateAnnotationsPartial: API.OperationMethod<
   UpdateAnnotationsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateAnnotationsPartialRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Annotation>,
+  input: __S(24, __c6, 0) as any as S.Schema<UpdateAnnotationsPartialRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<Annotation>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -312,7 +312,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AnnotationsDestroyResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -329,9 +333,13 @@ function __c0(j: number): any {
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/annotations/", code: 200 }),
         ),
       ).annotate({ identifier: "CreateAnnotationRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -341,11 +349,11 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(3, __c0, 3))),
+          hedgehog_config: S.optional(S.NullOr(__S(8, __c2, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -358,7 +366,7 @@ function __c0(j: number): any {
           insight_short_id: S.optional(S.NullOr(S.String)),
           insight_name: S.optional(S.NullOr(S.String)),
           insight_derived_name: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(4, __c0, 4))),
+          created_by: S.optional(S.NullOr(__S(9, __c2, 1))),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.String),
           deleted: S.optional(S.Boolean),
@@ -367,7 +375,11 @@ function __c0(j: number): any {
           hidden_in_user_interface: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "Annotation" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -376,7 +388,11 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/annotations/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "GetAnnotationRequest" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -387,22 +403,22 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/annotations/", code: 200 }),
         ),
       ).annotate({ identifier: "ListAnnotationsRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(5, __c0, 5));
     case 1:
+      return S.Array(__S(10, __c2, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(8, __c1, 0)),
+          results: S.optional(__S(17, __c4, 1)),
         }),
       ).annotate({ identifier: "PaginatedAnnotationList" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -420,7 +436,11 @@ function __c1(j: number): any {
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/annotations/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateAnnotationRequest" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -446,7 +466,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

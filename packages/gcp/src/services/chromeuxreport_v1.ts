@@ -251,8 +251,8 @@ export const queryHistoryRecordRecords: API.OperationMethod<
   QueryHistoryRecordRecordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<QueryHistoryRecordRecordsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<QueryHistoryResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<QueryHistoryRecordRecordsRequest>,
+  output: __S(14, __c0, 14) as any as S.Schema<QueryHistoryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -266,8 +266,8 @@ export const queryRecordRecords: API.OperationMethod<
   QueryRecordRecordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<QueryRecordRecordsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<QueryResponse>,
+  input: __S(33, __c2, 1) as any as S.Schema<QueryRecordRecordsRequest>,
+  output: __S(42, __c2, 10) as any as S.Schema<QueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -277,21 +277,19 @@ export const queryRecordRecords: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
           formFactor: S.optional(S.String),
           origin: S.optional(S.String),
-          metrics: S.optional(__S(0, __c0, 0)),
+          metrics: S.optional(__S(16, __c1, 0)),
           collectionPeriodCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryHistoryRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -302,66 +300,47 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "QueryHistoryRecordRecordsRequest",
       });
-    case 3:
+    case 2:
       return S.Array(S.Unknown);
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          p75s: S.optional(__S(3, __c0, 3)),
+          p75s: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "TimeseriesPercentiles" });
-    case 5:
+    case 4:
       return S.Array(S.Number);
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          densities: S.optional(__S(5, __c0, 5)),
+          densities: S.optional(__S(4, __c0, 4)),
           end: S.optional(S.Unknown),
           start: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "TimeseriesBin" });
+    case 6:
+      return S.Array(__S(5, __c0, 5));
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          fractions: S.optional(__S(5, __c0, 5)),
+          fractions: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "FractionTimeseries" });
-    case 1:
-      return S.Record(S.String, __S(8, __c1, 0));
-    case 2:
+    case 8:
+      return S.Record(S.String, __S(7, __c0, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          percentilesTimeseries: S.optional(__S(4, __c0, 4)),
-          histogramTimeseries: S.optional(__S(7, __c0, 7)),
-          fractionTimeseries: S.optional(__S(9, __c1, 1)),
+          percentilesTimeseries: S.optional(__S(3, __c0, 3)),
+          histogramTimeseries: S.optional(__S(6, __c0, 6)),
+          fractionTimeseries: S.optional(__S(8, __c0, 8)),
         }),
       ).annotate({ identifier: "MetricTimeseries" });
-    case 3:
-      return S.Record(S.String, __S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          day: S.optional(S.Number),
-          month: S.optional(S.Number),
-          year: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Chromeuxreport_Date" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          lastDate: S.optional(__S(12, __c1, 4)),
-          firstDate: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "CollectionPeriod" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 10:
+      return S.Record(S.String, __S(9, __c0, 9));
+    case 11:
+      return S.Array(__S(18, __c1, 2));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -369,6 +348,49 @@ function __c1(j: number): any {
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "HistoryKey" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          metrics: S.optional(__S(10, __c0, 10)),
+          collectionPeriods: S.optional(__S(11, __c0, 11)),
+          key: S.optional(__S(12, __c0, 12)),
+        }),
+      ).annotate({ identifier: "HistoryRecord" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          record: S.optional(__S(13, __c0, 13)),
+          urlNormalizationDetails: S.optional(__S(19, __c1, 3)),
+        }),
+      ).annotate({ identifier: "QueryHistoryResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          day: S.optional(S.Number),
+          month: S.optional(S.Number),
+          year: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Chromeuxreport_Date" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lastDate: S.optional(__S(17, __c1, 1)),
+          firstDate: S.optional(__S(17, __c1, 1)),
+        }),
+      ).annotate({ identifier: "CollectionPeriod" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          originalUrl: S.optional(S.String),
+          normalizedUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UrlNormalization" });
   }
 }
 function __c2(j: number): any {
@@ -376,39 +398,17 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(__S(11, __c1, 3)),
-          collectionPeriods: S.optional(__S(14, __c1, 6)),
-          key: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "HistoryRecord" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          originalUrl: S.optional(S.String),
-          normalizedUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UrlNormalization" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          record: S.optional(__S(16, __c2, 0)),
-          urlNormalizationDetails: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "QueryHistoryResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           url: S.optional(S.String),
           effectiveConnectionType: S.optional(S.String),
           origin: S.optional(S.String),
-          metrics: S.optional(__S(0, __c0, 0)),
+          metrics: S.optional(__S(16, __c1, 0)),
           formFactor: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -419,7 +419,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "QueryRecordRecordsRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           origin: S.optional(S.String),
@@ -428,19 +428,15 @@ function __c2(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "Key" });
-    case 6:
+    case 3:
       return S.Record(S.String, S.Number);
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           p75: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Percentiles" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           start: S.optional(S.Unknown),
@@ -448,36 +444,35 @@ function __c3(j: number): any {
           end: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Bin" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(37, __c2, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          fractions: S.optional(__S(22, __c2, 6)),
-          percentiles: S.optional(__S(23, __c2, 7)),
-          histogram: S.optional(__S(25, __c3, 1)),
+          fractions: S.optional(__S(35, __c2, 3)),
+          percentiles: S.optional(__S(36, __c2, 4)),
+          histogram: S.optional(__S(38, __c2, 6)),
         }),
       ).annotate({ identifier: "Metric" });
-    case 3:
-      return S.Record(S.String, __S(26, __c3, 2));
-    case 4:
+    case 8:
+      return S.Record(S.String, __S(39, __c2, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          key: S.optional(__S(21, __c2, 5)),
-          metrics: S.optional(__S(27, __c3, 3)),
-          collectionPeriod: S.optional(__S(13, __c1, 5)),
+          key: S.optional(__S(34, __c2, 2)),
+          metrics: S.optional(__S(40, __c2, 8)),
+          collectionPeriod: S.optional(__S(18, __c1, 2)),
         }),
       ).annotate({ identifier: "Chromeuxreport_Record" });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          urlNormalizationDetails: S.optional(__S(17, __c2, 1)),
-          record: S.optional(__S(28, __c3, 4)),
+          urlNormalizationDetails: S.optional(__S(19, __c1, 3)),
+          record: S.optional(__S(41, __c2, 9)),
         }),
       ).annotate({ identifier: "QueryResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

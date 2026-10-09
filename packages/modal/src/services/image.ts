@@ -288,8 +288,8 @@ export const getImageBuildChain: API.OperationMethod<
   GetImageBuildChainError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetImageBuildChainRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetImageBuildChainResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetImageBuildChainRequest>,
+  output: __S(19, __c1, 3) as any as S.Schema<GetImageBuildChainResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -302,8 +302,8 @@ export const imageFromId: API.OperationMethod<
   ImageFromIdError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ImageFromIdRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ImageFromIdResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ImageFromIdRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<ImageFromIdResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -316,8 +316,8 @@ export const imageGetByTag: API.OperationMethod<
   ImageGetByTagError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ImageGetByTagRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ImageGetByTagResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ImageGetByTagRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<ImageGetByTagResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -330,8 +330,8 @@ export const imageGetOrCreate: API.OperationMethod<
   ImageGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ImageGetOrCreateRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ImageGetOrCreateResponse>,
+  input: __S(92, __c5, 12) as any as S.Schema<ImageGetOrCreateRequest>,
+  output: __S(94, __c5, 14) as any as S.Schema<ImageGetOrCreateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -344,8 +344,8 @@ export const imageListTags: API.OperationMethod<
   ImageListTagsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ImageListTagsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ImageListTagsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ImageListTagsRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<ImageListTagsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -358,8 +358,8 @@ export const imageTagRevisions: API.OperationMethod<
   ImageTagRevisionsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ImageTagRevisionsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ImageTagRevisionsResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ImageTagRevisionsRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<ImageTagRevisionsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -372,8 +372,8 @@ export const publishImage: API.OperationMethod<
   PublishImageError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<PublishImageRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<PublishImageResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<PublishImageRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<PublishImageResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -394,7 +394,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteImageResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
@@ -408,7 +412,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetImageBuildChainRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
@@ -418,17 +422,21 @@ function __c0(j: number): any {
           builderTaskId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageBuildStep" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          buildSteps: S.optional(__S(4, __c0, 4)),
+          buildSteps: S.optional(__S(18, __c1, 2)),
         }),
       ).annotate({
         identifier: "GetImageBuildChainResponse",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
@@ -436,30 +444,34 @@ function __c0(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ImageFromId", code: 200 }),
         ),
       ).annotate({ identifier: "ImageFromIdRequest" });
-    case 7:
-      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          imageId: S.optional(S.String),
+          metadata: S.optional(__S(49, __c3, 1)),
+        }),
+      ).annotate({ identifier: "ImageFromIdResponse" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pythonVersionInfo: S.optional(S.String),
-          pythonPackages: S.optional(__S(7, __c0, 7)),
+          pythonPackages: S.optional(__S(48, __c3, 0)),
           workdir: S.optional(S.String),
           libcVersionInfo: S.optional(S.String),
           imageBuilderVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageMetadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          imageId: S.optional(S.String),
-          metadata: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "ImageFromIdResponse" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tag: S.optional(S.String),
@@ -468,37 +480,37 @@ function __c1(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ImageGetByTag", code: 200 }),
         ),
       ).annotate({ identifier: "ImageGetByTagRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageGetByTagResponse" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
           dockerTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "BaseImage" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(80, __c5, 0));
+    case 2:
       return S.Array(S.String);
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.String),
           data: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageContextFile" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(83, __c5, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -506,14 +518,14 @@ function __c2(j: number): any {
           gpuType: S.optional(S.String),
         }),
       ).annotate({ identifier: "GPUConfig" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           registryAuthType: S.optional(S.String),
           secretId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageRegistryConfig" });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           args: S.optional(S.String),
@@ -523,15 +535,15 @@ function __c2(j: number): any {
           methodName: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionInput" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           definition: S.optional(S.String),
           globals: S.optional(S.String),
-          input: S.optional(__S(19, __c2, 3)),
+          input: S.optional(__S(87, __c5, 7)),
         }),
       ).annotate({ identifier: "BuildFunction" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
@@ -541,37 +553,33 @@ function __c2(j: number): any {
           subPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeMount" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 10:
+      return S.Array(__S(89, __c5, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          baseImages: S.optional(__S(13, __c1, 5)),
-          dockerfileCommands: S.optional(__S(14, __c1, 6)),
-          contextFiles: S.optional(__S(16, __c2, 0)),
+          baseImages: S.optional(__S(81, __c5, 1)),
+          dockerfileCommands: S.optional(__S(82, __c5, 2)),
+          contextFiles: S.optional(__S(84, __c5, 4)),
           version: S.optional(S.String),
-          secretIds: S.optional(__S(14, __c1, 6)),
+          secretIds: S.optional(__S(82, __c5, 2)),
           contextMountId: S.optional(S.String),
-          gpuConfig: S.optional(__S(17, __c2, 1)),
-          imageRegistryConfig: S.optional(__S(18, __c2, 2)),
+          gpuConfig: S.optional(__S(85, __c5, 5)),
+          imageRegistryConfig: S.optional(__S(86, __c5, 6)),
           buildFunctionDef: S.optional(S.String),
           buildFunctionGlobals: S.optional(S.String),
           runtime: S.optional(S.String),
           runtimeDebug: S.optional(S.Boolean),
-          buildFunction: S.optional(__S(20, __c2, 4)),
-          buildArgs: S.optional(__S(7, __c0, 7)),
-          volumeMounts: S.optional(__S(22, __c2, 6)),
+          buildFunction: S.optional(__S(88, __c5, 8)),
+          buildArgs: S.optional(__S(48, __c3, 0)),
+          volumeMounts: S.optional(__S(90, __c5, 10)),
           arch: S.optional(S.String),
         }),
       ).annotate({ identifier: "Image" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(__S(23, __c2, 7)),
+          image: S.optional(__S(91, __c5, 11)),
           appId: S.optional(S.String),
           existingImageId: S.optional(S.String),
           buildFunctionId: S.optional(S.String),
@@ -584,7 +592,7 @@ function __c3(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ImageGetOrCreate", code: 200 }),
         ),
       ).annotate({ identifier: "ImageGetOrCreateRequest" });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -598,15 +606,19 @@ function __c3(j: number): any {
           propagationReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "GenericResult" });
-    case 2:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
-          result: S.optional(__S(25, __c3, 1)),
-          metadata: S.optional(__S(8, __c1, 0)),
+          result: S.optional(__S(93, __c5, 13)),
+          metadata: S.optional(__S(49, __c3, 1)),
         }),
       ).annotate({ identifier: "ImageGetOrCreateResponse" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentName: S.optional(S.String),
@@ -617,7 +629,7 @@ function __c3(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ImageListTags", code: 200 }),
         ),
       ).annotate({ identifier: "ImageListTagsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           tag: S.optional(S.String),
@@ -627,17 +639,21 @@ function __c3(j: number): any {
           updatedAt: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ImageListTagsItem" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(97, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(29, __c3, 5)),
+          items: S.optional(__S(98, __c6, 2)),
           nextPageToken: S.optional(S.String),
           environmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageListTagsResponse" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tag: S.optional(S.String),
@@ -648,11 +664,7 @@ function __c3(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ImageTagRevisions", code: 200 }),
         ),
       ).annotate({ identifier: "ImageTagRevisionsRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
@@ -661,12 +673,12 @@ function __c4(j: number): any {
           publishedBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageTagRevisionsItem" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(33, __c4, 1)),
+          items: S.optional(__S(114, __c7, 2)),
           nextPageToken: S.optional(S.String),
           tag: S.optional(S.String),
           environmentName: S.optional(S.String),
@@ -674,7 +686,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ImageTagRevisionsResponse",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
@@ -685,7 +701,7 @@ function __c4(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ImagePublish", code: 200 }),
         ),
       ).annotate({ identifier: "PublishImageRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
@@ -694,7 +710,6 @@ function __c4(j: number): any {
       ).annotate({ identifier: "PublishImageResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

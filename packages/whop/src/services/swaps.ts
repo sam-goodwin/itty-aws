@@ -252,8 +252,8 @@ export const createSwapQuote: API.OperationMethod<
   CreateSwapQuoteError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateSwapQuoteRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateSwapQuoteResponse>,
+  input: __S(5, __c1, 1) as any as S.Schema<CreateSwapQuoteRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<CreateSwapQuoteResponse>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -267,8 +267,8 @@ export const getSwap: API.OperationMethod<
   GetSwapError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetSwapRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetSwapResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetSwapRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<GetSwapResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -282,8 +282,8 @@ export const listSwaps: API.OperationMethod<
   ListSwapsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ListSwapsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ListSwapsResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListSwapsRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<ListSwapsResponse>,
   errors: [Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -333,16 +333,20 @@ function __c0(j: number): any {
           user_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CreateSwapResponse" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           amount: S.String,
           from_address: S.optional(S.NullOr(S.String)),
           from_chain: S.optional(S.NullOr(S.Unknown)),
           from_token: S.String,
-          metadata: S.optional(__S(3, __c0, 3)),
+          metadata: S.optional(__S(4, __c1, 0)),
           slippage_bps: S.optional(S.NullOr(S.Number)),
           to_address: S.optional(S.NullOr(S.String)),
           to_chain: S.optional(S.NullOr(S.Unknown)),
@@ -350,7 +354,7 @@ function __c0(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/swaps/quote", code: 200 })),
       ).annotate({ identifier: "CreateSwapQuoteRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           amount_in: S.String,
@@ -360,28 +364,26 @@ function __c0(j: number): any {
           estimated_duration_seconds: S.optional(S.NullOr(S.Number)),
           fee_bps: S.Number,
           from_address: S.optional(S.NullOr(S.String)),
-          from_token: __S(3, __c0, 3),
-          metadata: __S(3, __c0, 3),
+          from_token: __S(4, __c1, 0),
+          metadata: __S(4, __c1, 0),
           object: S.String,
           rate: S.String,
           requires_token_approval: S.optional(S.NullOr(S.Boolean)),
           to_address: S.optional(S.NullOr(S.String)),
-          to_token: __S(3, __c0, 3),
+          to_token: __S(4, __c1, 0),
         }),
       ).annotate({ identifier: "CreateSwapQuoteResponse" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/swaps/{id}", code: 200 })),
       ).annotate({ identifier: "GetSwapRequest" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
@@ -389,18 +391,28 @@ function __c1(j: number): any {
           id: S.String,
           object: S.String,
           status: S.String,
-          tx_hashes: __S(7, __c0, 7),
+          tx_hashes: __S(12, __c3, 0),
           user_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "GetSwapResponse" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           user_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/swaps", code: 200 })),
       ).annotate({ identifier: "ListSwapsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
@@ -408,23 +420,22 @@ function __c1(j: number): any {
           id: S.String,
           object: S.String,
           status: S.String,
-          tx_hashes: __S(7, __c0, 7),
+          tx_hashes: __S(12, __c3, 0),
           user_id: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "ListSwapsResponseDataItem",
       });
+    case 2:
+      return S.Array(__S(17, __c4, 1));
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(11, __c1, 3),
+          data: __S(18, __c4, 2),
         }),
       ).annotate({ identifier: "ListSwapsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

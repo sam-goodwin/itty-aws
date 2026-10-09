@@ -597,8 +597,8 @@ export const createCompany: API.OperationMethod<
   CreateCompanyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateCompanyRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Company>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateCompanyRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<Company>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -612,8 +612,8 @@ export const getCompany: API.OperationMethod<
   GetCompanyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetCompanyRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Company>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetCompanyRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<Company>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -634,8 +634,8 @@ export const listCompany: API.PaginatedOperationMethod<
   CompanyListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(15, __c1, 7) as any as S.Schema<ListCompanyRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<ListCompanyResponse>,
+    input: __S(48, __c6, 0) as any as S.Schema<ListCompanyRequest>,
+    output: __S(52, __c6, 4) as any as S.Schema<ListCompanyResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -664,8 +664,8 @@ export const updateCompany: API.OperationMethod<
   UpdateCompanyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<UpdateCompanyRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Company>,
+  input: __S(58, __c7, 2) as any as S.Schema<UpdateCompanyRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<Company>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -712,27 +712,6 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateApiKeyCompanyResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({ identifier: "CreateCompanyRequestLogo" });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          country: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          logo: S.optional(S.NullOr(__S(5, __c0, 5))),
-          metadata: S.optional(S.NullOr(__S(6, __c0, 6))),
-          parent_company_id: S.optional(S.NullOr(S.String)),
-          send_customer_emails: S.optional(S.NullOr(S.Boolean)),
-          title: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/companies", code: 200 })),
-      ).annotate({ identifier: "CreateCompanyRequest" });
   }
 }
 function __c1(j: number): any {
@@ -740,12 +719,22 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "CompanyFeaturedAffiliateProduct",
-      });
+          country: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          logo: S.optional(S.NullOr(__S(32, __c4, 0))),
+          metadata: S.optional(S.NullOr(__S(16, __c2, 0))),
+          parent_company_id: S.optional(S.NullOr(S.String)),
+          send_customer_emails: S.optional(S.NullOr(S.Boolean)),
+          title: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/companies", code: 200 })),
+      ).annotate({ identifier: "CreateCompanyRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -760,7 +749,20 @@ function __c1(j: number): any {
           username: S.String,
         }),
       ).annotate({ identifier: "CompanyOwnerUser" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "CompanyFeaturedAffiliateProduct",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -768,37 +770,55 @@ function __c1(j: number): any {
           website: S.String,
         }),
       ).annotate({ identifier: "CompanySocialLinksItem" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           affiliate_instructions: S.NullOr(S.String),
           created_at: S.String,
           description: S.NullOr(S.String),
-          featured_affiliate_product: S.NullOr(__S(8, __c1, 0)),
+          featured_affiliate_product: S.NullOr(__S(24, __c3, 0)),
           id: S.String,
-          logo: S.NullOr(__S(9, __c1, 1)),
+          logo: S.NullOr(__S(17, __c2, 1)),
           member_count: S.Number,
-          metadata: S.NullOr(__S(6, __c0, 6)),
-          owner_user: __S(10, __c1, 2),
+          metadata: S.NullOr(__S(16, __c2, 0)),
+          owner_user: __S(18, __c2, 2),
           published_reviews_count: S.Number,
           route: S.String,
           send_customer_emails: S.Boolean,
-          social_links: __S(12, __c1, 4),
+          social_links: __S(26, __c3, 2),
           target_audience: S.NullOr(S.String),
           title: S.String,
           updated_at: S.String,
           verified: S.Boolean,
         }),
       ).annotate({ identifier: "Company" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({ identifier: "CreateCompanyRequestLogo" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/companies/{id}", code: 200 })),
       ).annotate({ identifier: "GetCompanyRequest" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -811,20 +831,16 @@ function __c1(j: number): any {
           created_after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/companies", code: 200 })),
       ).annotate({ identifier: "ListCompanyRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
           description: S.NullOr(S.String),
           id: S.String,
-          logo: S.NullOr(__S(9, __c1, 1)),
+          logo: S.NullOr(__S(17, __c2, 1)),
           member_count: S.Number,
-          metadata: S.NullOr(__S(6, __c0, 6)),
-          owner_user: __S(10, __c1, 2),
+          metadata: S.NullOr(__S(16, __c2, 0)),
+          owner_user: __S(18, __c2, 2),
           published_reviews_count: S.Number,
           route: S.String,
           send_customer_emails: S.Boolean,
@@ -834,9 +850,9 @@ function __c2(j: number): any {
           verified: S.Boolean,
         }),
       ).annotate({ identifier: "CompanyListItem" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -845,17 +861,21 @@ function __c2(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(17, __c2, 1),
-          page_info: __S(18, __c2, 2),
-        }),
-      ).annotate({ identifier: "ListCompanyResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(S.NullOr(__S(5, __c0, 5))),
+          data: __S(50, __c6, 2),
+          page_info: __S(51, __c6, 3),
+        }),
+      ).annotate({ identifier: "ListCompanyResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.NullOr(__S(32, __c4, 0))),
           order: S.optional(S.NullOr(S.String)),
           title: S.optional(S.NullOr(S.String)),
           url: S.String,
@@ -865,28 +885,27 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateCompanyRequestSocialLinksItem",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           affiliate_application_required: S.optional(S.NullOr(S.Boolean)),
           affiliate_instructions: S.optional(S.NullOr(S.String)),
-          banner_image: S.optional(S.NullOr(__S(5, __c0, 5))),
+          banner_image: S.optional(S.NullOr(__S(32, __c4, 0))),
           description: S.optional(S.NullOr(S.String)),
           featured_affiliate_product_id: S.optional(S.NullOr(S.String)),
-          logo: S.optional(S.NullOr(__S(5, __c0, 5))),
+          logo: S.optional(S.NullOr(__S(32, __c4, 0))),
           route: S.optional(S.NullOr(S.String)),
           send_customer_emails: S.optional(S.NullOr(S.Boolean)),
-          social_links: S.optional(S.NullOr(__S(21, __c2, 5))),
+          social_links: S.optional(S.NullOr(__S(57, __c7, 1))),
           target_audience: S.optional(S.NullOr(S.String)),
           title: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/companies/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateCompanyRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

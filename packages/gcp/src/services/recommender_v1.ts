@@ -710,8 +710,12 @@ export const getBillingAccountsLocationsInsightTypesInsights: API.OperationMetho
   GetBillingAccountsLocationsInsightTypesInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<GetBillingAccountsLocationsInsightTypesInsightsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
+  input: __S(
+    1120,
+    __c35,
+    0,
+  ) as any as S.Schema<GetBillingAccountsLocationsInsightTypesInsightsRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -729,11 +733,11 @@ export const getBillingAccountsLocationsRecommendersRecommendations: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8,
-    __c1,
+    1568,
+    __c49,
     0,
   ) as any as S.Schema<GetBillingAccountsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -747,8 +751,12 @@ export const getConfigBillingAccountsLocationsInsightTypes: API.OperationMethod<
   GetConfigBillingAccountsLocationsInsightTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetConfigBillingAccountsLocationsInsightTypesRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GoogleCloudRecommenderV1InsightTypeConfig>,
+  input: __S(
+    1696,
+    __c53,
+    0,
+  ) as any as S.Schema<GetConfigBillingAccountsLocationsInsightTypesRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<GoogleCloudRecommenderV1InsightTypeConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -762,8 +770,12 @@ export const getConfigBillingAccountsLocationsRecommenders: API.OperationMethod<
   GetConfigBillingAccountsLocationsRecommendersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetConfigBillingAccountsLocationsRecommendersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GoogleCloudRecommenderV1RecommenderConfig>,
+  input: __S(
+    1792,
+    __c56,
+    0,
+  ) as any as S.Schema<GetConfigBillingAccountsLocationsRecommendersRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<GoogleCloudRecommenderV1RecommenderConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -777,8 +789,8 @@ export const getConfigOrganizationsLocationsInsightTypes: API.OperationMethod<
   GetConfigOrganizationsLocationsInsightTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetConfigOrganizationsLocationsInsightTypesRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GoogleCloudRecommenderV1InsightTypeConfig>,
+  input: __S(1856, __c58, 0) as any as S.Schema<GetConfigOrganizationsLocationsInsightTypesRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<GoogleCloudRecommenderV1InsightTypeConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -792,8 +804,8 @@ export const getConfigOrganizationsLocationsRecommenders: API.OperationMethod<
   GetConfigOrganizationsLocationsRecommendersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetConfigOrganizationsLocationsRecommendersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GoogleCloudRecommenderV1RecommenderConfig>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetConfigOrganizationsLocationsRecommendersRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<GoogleCloudRecommenderV1RecommenderConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -807,8 +819,8 @@ export const getConfigProjectsLocationsInsightTypes: API.OperationMethod<
   GetConfigProjectsLocationsInsightTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetConfigProjectsLocationsInsightTypesRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GoogleCloudRecommenderV1InsightTypeConfig>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetConfigProjectsLocationsInsightTypesRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<GoogleCloudRecommenderV1InsightTypeConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -822,8 +834,8 @@ export const getConfigProjectsLocationsRecommenders: API.OperationMethod<
   GetConfigProjectsLocationsRecommendersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetConfigProjectsLocationsRecommendersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GoogleCloudRecommenderV1RecommenderConfig>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetConfigProjectsLocationsRecommendersRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<GoogleCloudRecommenderV1RecommenderConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -837,8 +849,8 @@ export const getFoldersLocationsInsightTypesInsights: API.OperationMethod<
   GetFoldersLocationsInsightTypesInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetFoldersLocationsInsightTypesInsightsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetFoldersLocationsInsightTypesInsightsRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -852,8 +864,8 @@ export const getFoldersLocationsRecommendersRecommendations: API.OperationMethod
   GetFoldersLocationsRecommendersRecommendationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetFoldersLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetFoldersLocationsRecommendersRecommendationsRequest>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -867,8 +879,8 @@ export const getOrganizationsLocationsInsightTypesInsights: API.OperationMethod<
   GetOrganizationsLocationsInsightTypesInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetOrganizationsLocationsInsightTypesInsightsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetOrganizationsLocationsInsightTypesInsightsRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -886,11 +898,11 @@ export const getOrganizationsLocationsRecommendersRecommendations: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    39,
-    __c4,
-    7,
+    160,
+    __c5,
+    0,
   ) as any as S.Schema<GetOrganizationsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -904,8 +916,8 @@ export const getProjectsLocationsInsightTypesInsights: API.OperationMethod<
   GetProjectsLocationsInsightTypesInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetProjectsLocationsInsightTypesInsightsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetProjectsLocationsInsightTypesInsightsRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -923,11 +935,11 @@ export const getProjectsLocationsRecommendersRecommendations: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    41,
-    __c5,
-    1,
+    224,
+    __c7,
+    0,
   ) as any as S.Schema<GetProjectsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -946,11 +958,11 @@ export const listBillingAccountsLocationsInsightTypesInsights: API.PaginatedOper
   GoogleCloudRecommenderV1ListInsightsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    42,
-    __c5,
-    2,
+    256,
+    __c8,
+    0,
   ) as any as S.Schema<ListBillingAccountsLocationsInsightTypesInsightsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GoogleCloudRecommenderV1ListInsightsResponse>,
+  output: __S(289, __c9, 1) as any as S.Schema<GoogleCloudRecommenderV1ListInsightsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -970,11 +982,15 @@ export const listBillingAccountsLocationsRecommendersRecommendations: API.Pagina
   GoogleCloudRecommenderV1ListRecommendationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    45,
-    __c5,
-    5,
+    320,
+    __c10,
+    0,
   ) as any as S.Schema<ListBillingAccountsLocationsRecommendersRecommendationsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GoogleCloudRecommenderV1ListRecommendationsResponse>,
+  output: __S(
+    353,
+    __c11,
+    1,
+  ) as any as S.Schema<GoogleCloudRecommenderV1ListRecommendationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -990,8 +1006,8 @@ export const listFoldersLocationsInsightTypesInsights: API.PaginatedOperationMet
   GcpOpContext,
   GoogleCloudRecommenderV1ListInsightsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListFoldersLocationsInsightTypesInsightsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GoogleCloudRecommenderV1ListInsightsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListFoldersLocationsInsightTypesInsightsRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<GoogleCloudRecommenderV1ListInsightsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1011,11 +1027,15 @@ export const listFoldersLocationsRecommendersRecommendations: API.PaginatedOpera
   GoogleCloudRecommenderV1ListRecommendationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    416,
+    __c13,
+    0,
   ) as any as S.Schema<ListFoldersLocationsRecommendersRecommendationsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GoogleCloudRecommenderV1ListRecommendationsResponse>,
+  output: __S(
+    353,
+    __c11,
+    1,
+  ) as any as S.Schema<GoogleCloudRecommenderV1ListRecommendationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1031,8 +1051,12 @@ export const listOrganizationsLocationsInsightTypesInsights: API.PaginatedOperat
   GcpOpContext,
   GoogleCloudRecommenderV1ListInsightsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListOrganizationsLocationsInsightTypesInsightsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GoogleCloudRecommenderV1ListInsightsResponse>,
+  input: __S(
+    448,
+    __c14,
+    0,
+  ) as any as S.Schema<ListOrganizationsLocationsInsightTypesInsightsRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<GoogleCloudRecommenderV1ListInsightsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1052,11 +1076,15 @@ export const listOrganizationsLocationsRecommendersRecommendations: API.Paginate
   GoogleCloudRecommenderV1ListRecommendationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    51,
-    __c6,
-    3,
+    480,
+    __c15,
+    0,
   ) as any as S.Schema<ListOrganizationsLocationsRecommendersRecommendationsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GoogleCloudRecommenderV1ListRecommendationsResponse>,
+  output: __S(
+    353,
+    __c11,
+    1,
+  ) as any as S.Schema<GoogleCloudRecommenderV1ListRecommendationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1072,8 +1100,8 @@ export const listProjectsLocationsInsightTypesInsights: API.PaginatedOperationMe
   GcpOpContext,
   GoogleCloudRecommenderV1ListInsightsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListProjectsLocationsInsightTypesInsightsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GoogleCloudRecommenderV1ListInsightsResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListProjectsLocationsInsightTypesInsightsRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<GoogleCloudRecommenderV1ListInsightsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1093,11 +1121,15 @@ export const listProjectsLocationsRecommendersRecommendations: API.PaginatedOper
   GoogleCloudRecommenderV1ListRecommendationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    53,
-    __c6,
-    5,
+    544,
+    __c17,
+    0,
   ) as any as S.Schema<ListProjectsLocationsRecommendersRecommendationsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GoogleCloudRecommenderV1ListRecommendationsResponse>,
+  output: __S(
+    353,
+    __c11,
+    1,
+  ) as any as S.Schema<GoogleCloudRecommenderV1ListRecommendationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1118,11 +1150,11 @@ export const markAcceptedBillingAccountsLocationsInsightTypesInsights: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    576,
+    __c18,
+    0,
   ) as any as S.Schema<MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
+  output: __S(1154, __c36, 2) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1142,11 +1174,11 @@ export const markAcceptedFoldersLocationsInsightTypesInsights: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    56,
-    __c7,
+    640,
+    __c20,
     0,
   ) as any as S.Schema<MarkAcceptedFoldersLocationsInsightTypesInsightsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
+  output: __S(1154, __c36, 2) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1166,11 +1198,11 @@ export const markAcceptedOrganizationsLocationsInsightTypesInsights: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    57,
-    __c7,
-    1,
+    672,
+    __c21,
+    0,
   ) as any as S.Schema<MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
+  output: __S(1154, __c36, 2) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1190,11 +1222,11 @@ export const markAcceptedProjectsLocationsInsightTypesInsights: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    58,
-    __c7,
-    2,
+    704,
+    __c22,
+    0,
   ) as any as S.Schema<MarkAcceptedProjectsLocationsInsightTypesInsightsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
+  output: __S(1154, __c36, 2) as any as S.Schema<GoogleCloudRecommenderV1Insight>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1214,11 +1246,11 @@ export const markClaimedBillingAccountsLocationsRecommendersRecommendations: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    60,
-    __c7,
-    4,
+    736,
+    __c23,
+    0,
   ) as any as S.Schema<MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1238,11 +1270,11 @@ export const markClaimedFoldersLocationsRecommendersRecommendations: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    800,
+    __c25,
+    0,
   ) as any as S.Schema<MarkClaimedFoldersLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1262,11 +1294,11 @@ export const markClaimedOrganizationsLocationsRecommendersRecommendations: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    62,
-    __c7,
-    6,
+    832,
+    __c26,
+    0,
   ) as any as S.Schema<MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1286,11 +1318,11 @@ export const markClaimedProjectsLocationsRecommendersRecommendations: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    864,
+    __c27,
+    0,
   ) as any as S.Schema<MarkClaimedProjectsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1310,11 +1342,11 @@ export const markDismissedBillingAccountsLocationsRecommendersRecommendations: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    65,
-    __c8,
-    1,
+    896,
+    __c28,
+    0,
   ) as any as S.Schema<MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1334,11 +1366,11 @@ export const markDismissedFoldersLocationsRecommendersRecommendations: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
-    __c8,
-    2,
+    960,
+    __c30,
+    0,
   ) as any as S.Schema<MarkDismissedFoldersLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1358,11 +1390,11 @@ export const markDismissedOrganizationsLocationsRecommendersRecommendations: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
-    __c8,
-    3,
+    992,
+    __c31,
+    0,
   ) as any as S.Schema<MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1382,11 +1414,11 @@ export const markDismissedProjectsLocationsRecommendersRecommendations: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    68,
-    __c8,
-    4,
+    1024,
+    __c32,
+    0,
   ) as any as S.Schema<MarkDismissedProjectsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1406,11 +1438,11 @@ export const markFailedBillingAccountsLocationsRecommendersRecommendations: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    69,
-    __c8,
-    5,
+    1056,
+    __c33,
+    0,
   ) as any as S.Schema<MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1430,11 +1462,11 @@ export const markFailedFoldersLocationsRecommendersRecommendations: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    70,
-    __c8,
-    6,
+    1088,
+    __c34,
+    0,
   ) as any as S.Schema<MarkFailedFoldersLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1454,11 +1486,11 @@ export const markFailedOrganizationsLocationsRecommendersRecommendations: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    71,
-    __c8,
-    7,
+    1248,
+    __c39,
+    0,
   ) as any as S.Schema<MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1478,11 +1510,11 @@ export const markFailedProjectsLocationsRecommendersRecommendations: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    72,
-    __c9,
+    1280,
+    __c40,
     0,
   ) as any as S.Schema<MarkFailedProjectsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1502,11 +1534,11 @@ export const markSucceededBillingAccountsLocationsRecommendersRecommendations: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    73,
-    __c9,
-    1,
+    1312,
+    __c41,
+    0,
   ) as any as S.Schema<MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1526,11 +1558,11 @@ export const markSucceededFoldersLocationsRecommendersRecommendations: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    74,
-    __c9,
-    2,
+    1344,
+    __c42,
+    0,
   ) as any as S.Schema<MarkSucceededFoldersLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1550,11 +1582,11 @@ export const markSucceededOrganizationsLocationsRecommendersRecommendations: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    75,
-    __c9,
-    3,
+    1376,
+    __c43,
+    0,
   ) as any as S.Schema<MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1574,11 +1606,11 @@ export const markSucceededProjectsLocationsRecommendersRecommendations: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    76,
-    __c9,
-    4,
+    1408,
+    __c44,
+    0,
   ) as any as S.Schema<MarkSucceededProjectsLocationsRecommendersRecommendationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
+  output: __S(1617, __c50, 17) as any as S.Schema<GoogleCloudRecommenderV1Recommendation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1598,11 +1630,11 @@ export const updateConfigBillingAccountsLocationsInsightTypes: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    77,
-    __c9,
-    5,
+    1440,
+    __c45,
+    0,
   ) as any as S.Schema<UpdateConfigBillingAccountsLocationsInsightTypesRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GoogleCloudRecommenderV1InsightTypeConfig>,
+  output: __S(1760, __c55, 0) as any as S.Schema<GoogleCloudRecommenderV1InsightTypeConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1622,11 +1654,11 @@ export const updateConfigBillingAccountsLocationsRecommenders: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    78,
-    __c9,
-    6,
+    1472,
+    __c46,
+    0,
   ) as any as S.Schema<UpdateConfigBillingAccountsLocationsRecommendersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GoogleCloudRecommenderV1RecommenderConfig>,
+  output: __S(1824, __c57, 0) as any as S.Schema<GoogleCloudRecommenderV1RecommenderConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1645,8 +1677,12 @@ export const updateConfigOrganizationsLocationsInsightTypes: API.OperationMethod
   UpdateConfigOrganizationsLocationsInsightTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<UpdateConfigOrganizationsLocationsInsightTypesRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GoogleCloudRecommenderV1InsightTypeConfig>,
+  input: __S(
+    1504,
+    __c47,
+    0,
+  ) as any as S.Schema<UpdateConfigOrganizationsLocationsInsightTypesRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<GoogleCloudRecommenderV1InsightTypeConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1666,11 +1702,11 @@ export const updateConfigOrganizationsLocationsRecommenders: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    80,
-    __c10,
+    1536,
+    __c48,
     0,
   ) as any as S.Schema<UpdateConfigOrganizationsLocationsRecommendersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GoogleCloudRecommenderV1RecommenderConfig>,
+  output: __S(1824, __c57, 0) as any as S.Schema<GoogleCloudRecommenderV1RecommenderConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1689,8 +1725,8 @@ export const updateConfigProjectsLocationsInsightTypes: API.OperationMethod<
   UpdateConfigProjectsLocationsInsightTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<UpdateConfigProjectsLocationsInsightTypesRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GoogleCloudRecommenderV1InsightTypeConfig>,
+  input: __S(1632, __c51, 0) as any as S.Schema<UpdateConfigProjectsLocationsInsightTypesRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<GoogleCloudRecommenderV1InsightTypeConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1709,8 +1745,8 @@ export const updateConfigProjectsLocationsRecommenders: API.OperationMethod<
   UpdateConfigProjectsLocationsRecommendersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<UpdateConfigProjectsLocationsRecommendersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GoogleCloudRecommenderV1RecommenderConfig>,
+  input: __S(1664, __c52, 0) as any as S.Schema<UpdateConfigProjectsLocationsRecommendersRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<GoogleCloudRecommenderV1RecommenderConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1731,51 +1767,7 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "GetBillingAccountsLocationsInsightTypesInsightsRequest",
-      });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          stateMetadata: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1InsightStateInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          recommendation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1InsightRecommendationReference",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          severity: S.optional(S.String),
-          etag: S.optional(S.String),
-          content: S.optional(__S(1, __c0, 1)),
-          stateInfo: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          associatedRecommendations: S.optional(__S(5, __c0, 5)),
-          insightSubtype: S.optional(S.String),
-          observationPeriod: S.optional(S.String),
-          targetResources: S.optional(__S(6, __c0, 6)),
-          lastRefreshTime: S.optional(S.String),
-          category: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1Insight",
+        identifier: "GetConfigProjectsLocationsInsightTypesRequest",
       });
   }
 }
@@ -1793,66 +1785,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "GetBillingAccountsLocationsRecommendersRecommendationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kgCO2e: S.optional(S.Number),
-          duration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1SustainabilityProjection",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(1, __c0, 1)),
-          risks: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1ReliabilityProjection",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nanos: S.optional(S.Number),
-          units: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleTypeMoney" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(S.String),
-          costInLocalCurrency: S.optional(__S(12, __c1, 4)),
-          cost: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1CostProjection",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1SecurityProjection",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          sustainabilityProjection: S.optional(__S(9, __c1, 1)),
-          service: S.optional(S.String),
-          reliabilityProjection: S.optional(__S(11, __c1, 3)),
-          costProjection: S.optional(__S(13, __c1, 5)),
-          securityProjection: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1Impact",
+        identifier: "GetConfigProjectsLocationsRecommendersRequest",
       });
   }
 }
@@ -1861,53 +1794,17 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          matchesPattern: S.optional(S.String),
-        }),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://recommender.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "GoogleCloudRecommenderV1ValueMatcher",
+        identifier: "GetFoldersLocationsInsightTypesInsightsRequest",
       });
-    case 1:
-      return S.Record(S.String, __S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          valueMatcher: S.optional(__S(16, __c2, 0)),
-          sourcePath: S.optional(S.String),
-          resource: S.optional(S.String),
-          pathValueMatchers: S.optional(__S(17, __c2, 1)),
-          action: S.optional(S.String),
-          path: S.optional(S.String),
-          resourceType: S.optional(S.String),
-          sourceResource: S.optional(S.String),
-          pathFilters: S.optional(__S(1, __c0, 1)),
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1Operation",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          operations: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1OperationGroup",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          operationGroups: S.optional(__S(21, __c2, 5)),
-          overview: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1RecommendationContent",
-      });
-    case 7:
-      return S.Array(__S(15, __c1, 7));
   }
 }
 function __c3(j: number): any {
@@ -1915,36 +1812,6 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          insight: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1RecommendationInsightReference",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          priority: S.optional(S.String),
-          xorGroupId: S.optional(S.String),
-          lastRefreshTime: S.optional(S.String),
-          targetResources: S.optional(__S(6, __c0, 6)),
-          recommenderSubtype: S.optional(S.String),
-          description: S.optional(S.String),
-          primaryImpact: S.optional(__S(15, __c1, 7)),
-          content: S.optional(__S(22, __c2, 6)),
-          additionalImpact: S.optional(__S(23, __c2, 7)),
-          etag: S.optional(S.String),
-          name: S.optional(S.String),
-          stateInfo: S.optional(__S(3, __c0, 3)),
-          associatedInsights: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1Recommendation",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1954,57 +1821,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "GetConfigBillingAccountsLocationsInsightTypesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          params: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1InsightTypeGenerationConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          revisionId: S.optional(S.String),
-          insightTypeGenerationConfig: S.optional(__S(28, __c3, 4)),
-          annotations: S.optional(__S(2, __c0, 2)),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1InsightTypeConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://recommender.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConfigBillingAccountsLocationsRecommendersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(2, __c0, 2)),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          revisionId: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          etag: S.optional(S.String),
-          recommenderGenerationConfig: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1RecommenderConfig",
+        identifier: "GetFoldersLocationsRecommendersRecommendationsRequest",
       });
   }
 }
@@ -2022,105 +1839,7 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "GetConfigOrganizationsLocationsInsightTypesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://recommender.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConfigOrganizationsLocationsRecommendersRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://recommender.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConfigProjectsLocationsInsightTypesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://recommender.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConfigProjectsLocationsRecommendersRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://recommender.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFoldersLocationsInsightTypesInsightsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://recommender.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFoldersLocationsRecommendersRecommendationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://recommender.googleapis.com/",
-          }),
-        ),
-      ).annotate({
         identifier: "GetOrganizationsLocationsInsightTypesInsightsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://recommender.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationsLocationsRecommendersRecommendationsRequest",
       });
   }
 }
@@ -2138,9 +1857,31 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({
+        identifier: "GetOrganizationsLocationsRecommendersRecommendationsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://recommender.googleapis.com/",
+          }),
+        ),
+      ).annotate({
         identifier: "GetProjectsLocationsInsightTypesInsightsRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2154,7 +1895,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRecommendersRecommendationsRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2171,18 +1916,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListBillingAccountsLocationsInsightTypesInsightsRequest",
       });
-    case 3:
-      return S.Array(__S(7, __c0, 7));
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1154, __c36, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          insights: S.optional(__S(43, __c5, 3)),
+          insights: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecommenderV1ListInsightsResponse",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2199,12 +1952,16 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListBillingAccountsLocationsRecommendersRecommendationsRequest",
       });
-    case 6:
-      return S.Array(__S(26, __c3, 2));
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1617, __c50, 17));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          recommendations: S.optional(__S(46, __c5, 6)),
+          recommendations: S.optional(__S(352, __c11, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2212,7 +1969,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2231,7 +1988,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListFoldersLocationsInsightTypesInsightsRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2248,7 +2009,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListFoldersLocationsRecommendersRecommendationsRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2265,7 +2030,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsInsightTypesInsightsRequest",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2282,7 +2051,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsRecommendersRecommendationsRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2299,7 +2072,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsInsightTypesInsightsRequest",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -2316,20 +2093,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRecommendersRecommendationsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          stateMetadata: S.optional(__S(2, __c0, 2)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1MarkInsightAcceptedRequest",
-      });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(608, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2342,13 +2114,26 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stateMetadata: S.optional(__S(1217, __c38, 1)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1MarkInsightAcceptedRequest",
+      });
+  }
+}
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(608, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2359,11 +2144,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "MarkAcceptedFoldersLocationsInsightTypesInsightsRequest",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(608, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2374,11 +2163,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(608, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2389,20 +2182,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "MarkAcceptedProjectsLocationsInsightTypesInsightsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          stateMetadata: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1MarkRecommendationClaimedRequest",
-      });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2413,11 +2201,28 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          stateMetadata: S.optional(__S(1217, __c38, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1MarkRecommendationClaimedRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2428,11 +2233,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "MarkClaimedFoldersLocationsRecommendersRecommendationsRequest",
       });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2443,11 +2252,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2460,21 +2273,13 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommenderV1MarkRecommendationDismissedRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(928, __c29, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2485,11 +2290,27 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest",
       });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1MarkRecommendationDismissedRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(928, __c29, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2500,11 +2321,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "MarkDismissedFoldersLocationsRecommendersRecommendationsRequest",
       });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(928, __c29, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2515,11 +2340,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(928, __c29, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2530,11 +2359,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "MarkDismissedProjectsLocationsRecommendersRecommendationsRequest",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2545,11 +2378,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest",
       });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2560,11 +2397,89 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "MarkFailedFoldersLocationsRecommendersRecommendationsRequest",
       });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://recommender.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBillingAccountsLocationsInsightTypesInsightsRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          recommendation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1InsightRecommendationReference",
+      });
+    case 1:
+      return S.Array(__S(1152, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          severity: S.optional(S.String),
+          etag: S.optional(S.String),
+          content: S.optional(__S(1216, __c38, 0)),
+          stateInfo: S.optional(__S(1184, __c37, 0)),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          associatedRecommendations: S.optional(__S(1153, __c36, 1)),
+          insightSubtype: S.optional(S.String),
+          observationPeriod: S.optional(S.String),
+          targetResources: S.optional(__S(1185, __c37, 1)),
+          lastRefreshTime: S.optional(S.String),
+          category: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1Insight",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          stateMetadata: S.optional(__S(1217, __c38, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1InsightStateInfo",
+      });
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2577,13 +2492,13 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2594,11 +2509,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "MarkFailedProjectsLocationsRecommendersRecommendationsRequest",
       });
-    case 1:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2609,11 +2528,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2624,11 +2547,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "MarkSucceededFoldersLocationsRecommendersRecommendationsRequest",
       });
-    case 3:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2639,11 +2566,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest",
       });
-    case 4:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2654,13 +2585,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "MarkSucceededProjectsLocationsRecommendersRecommendationsRequest",
       });
-    case 5:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2671,13 +2606,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateConfigBillingAccountsLocationsInsightTypesRequest",
       });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2688,13 +2627,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateConfigBillingAccountsLocationsRecommendersRequest",
       });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2707,7 +2650,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2715,7 +2658,7 @@ function __c10(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2726,13 +2669,178 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateConfigOrganizationsLocationsRecommendersRequest",
       });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://recommender.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBillingAccountsLocationsRecommendersRecommendationsRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kgCO2e: S.optional(S.Number),
+          duration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1SustainabilityProjection",
+      });
     case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(1216, __c38, 0)),
+          risks: S.optional(__S(1601, __c50, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1ReliabilityProjection",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nanos: S.optional(S.Number),
+          units: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleTypeMoney" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.optional(S.String),
+          costInLocalCurrency: S.optional(__S(1603, __c50, 3)),
+          cost: S.optional(__S(1603, __c50, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1CostProjection",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(1216, __c38, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1SecurityProjection",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          sustainabilityProjection: S.optional(__S(1600, __c50, 0)),
+          service: S.optional(S.String),
+          reliabilityProjection: S.optional(__S(1602, __c50, 2)),
+          costProjection: S.optional(__S(1604, __c50, 4)),
+          securityProjection: S.optional(__S(1605, __c50, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1Impact",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          matchesPattern: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1ValueMatcher",
+      });
+    case 8:
+      return S.Record(S.String, __S(1607, __c50, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          valueMatcher: S.optional(__S(1607, __c50, 7)),
+          sourcePath: S.optional(S.String),
+          resource: S.optional(S.String),
+          pathValueMatchers: S.optional(__S(1608, __c50, 8)),
+          action: S.optional(S.String),
+          path: S.optional(S.String),
+          resourceType: S.optional(S.String),
+          sourceResource: S.optional(S.String),
+          pathFilters: S.optional(__S(1216, __c38, 0)),
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1Operation",
+      });
+    case 10:
+      return S.Array(__S(1609, __c50, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          operations: S.optional(__S(1610, __c50, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1OperationGroup",
+      });
+    case 12:
+      return S.Array(__S(1611, __c50, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          operationGroups: S.optional(__S(1612, __c50, 12)),
+          overview: S.optional(__S(1216, __c38, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1RecommendationContent",
+      });
+    case 14:
+      return S.Array(__S(1606, __c50, 6));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          insight: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1RecommendationInsightReference",
+      });
+    case 16:
+      return S.Array(__S(1615, __c50, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          priority: S.optional(S.String),
+          xorGroupId: S.optional(S.String),
+          lastRefreshTime: S.optional(S.String),
+          targetResources: S.optional(__S(1185, __c37, 1)),
+          recommenderSubtype: S.optional(S.String),
+          description: S.optional(S.String),
+          primaryImpact: S.optional(__S(1606, __c50, 6)),
+          content: S.optional(__S(1613, __c50, 13)),
+          additionalImpact: S.optional(__S(1614, __c50, 14)),
+          etag: S.optional(S.String),
+          name: S.optional(S.String),
+          stateInfo: S.optional(__S(1184, __c37, 0)),
+          associatedInsights: S.optional(__S(1616, __c50, 16)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1Recommendation",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2743,13 +2851,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateConfigProjectsLocationsInsightTypesRequest",
       });
-    case 2:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2762,7 +2874,126 @@ function __c10(j: number): any {
       });
   }
 }
-
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://recommender.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConfigBillingAccountsLocationsInsightTypesRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          params: S.optional(__S(1216, __c38, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1InsightTypeGenerationConfig",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          revisionId: S.optional(S.String),
+          insightTypeGenerationConfig: S.optional(__S(1728, __c54, 0)),
+          annotations: S.optional(__S(1217, __c38, 1)),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1InsightTypeConfig",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://recommender.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConfigBillingAccountsLocationsRecommendersRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(1217, __c38, 1)),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          revisionId: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          etag: S.optional(S.String),
+          recommenderGenerationConfig: S.optional(__S(1728, __c54, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommenderV1RecommenderConfig",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://recommender.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConfigOrganizationsLocationsInsightTypesRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://recommender.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConfigOrganizationsLocationsRecommendersRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

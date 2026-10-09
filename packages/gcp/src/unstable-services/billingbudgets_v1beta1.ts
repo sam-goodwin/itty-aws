@@ -248,8 +248,8 @@ export const createBillingAccountsBudgets: API.OperationMethod<
   CreateBillingAccountsBudgetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateBillingAccountsBudgetsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1Budget>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateBillingAccountsBudgetsRequest>,
+  output: __S(28, __c1, 12) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1Budget>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -268,8 +268,8 @@ export const deleteBillingAccountsBudgets: API.OperationMethod<
   DeleteBillingAccountsBudgetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteBillingAccountsBudgetsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteBillingAccountsBudgetsRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -283,8 +283,8 @@ export const getBillingAccountsBudgets: API.OperationMethod<
   GetBillingAccountsBudgetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetBillingAccountsBudgetsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1Budget>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetBillingAccountsBudgetsRequest>,
+  output: __S(28, __c1, 12) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1Budget>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -299,8 +299,8 @@ export const listBillingAccountsBudgets: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListBillingAccountsBudgetsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListBillingAccountsBudgetsRequest>,
+  output: __S(66, __c4, 2) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -320,8 +320,8 @@ export const patchBillingAccountsBudgets: API.OperationMethod<
   PatchBillingAccountsBudgetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<PatchBillingAccountsBudgetsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1Budget>,
+  input: __S(81, __c5, 1) as any as S.Schema<PatchBillingAccountsBudgetsRequest>,
+  output: __S(28, __c1, 12) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1Budget>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -329,6 +329,33 @@ export const patchBillingAccountsBudgets: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          budget: S.optional(__S(28, __c1, 12)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/budgets",
+            baseUrl: "https://billingbudgets.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBillingAccountsBudgetsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -343,8 +370,8 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          startDate: S.optional(__S(1, __c0, 1)),
-          endDate: S.optional(__S(1, __c0, 1)),
+          startDate: S.optional(__S(17, __c1, 1)),
+          endDate: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBudgetsV1beta1CustomPeriod",
@@ -352,18 +379,18 @@ function __c0(j: number): any {
     case 3:
       return S.Array(S.Unknown);
     case 4:
-      return S.Record(S.String, __S(3, __c0, 3));
+      return S.Record(S.String, __S(19, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resourceAncestors: S.optional(__S(0, __c0, 0)),
-          creditTypes: S.optional(__S(0, __c0, 0)),
-          subaccounts: S.optional(__S(0, __c0, 0)),
-          services: S.optional(__S(0, __c0, 0)),
-          customPeriod: S.optional(__S(2, __c0, 2)),
-          labels: S.optional(__S(4, __c0, 4)),
+          resourceAncestors: S.optional(__S(16, __c1, 0)),
+          creditTypes: S.optional(__S(16, __c1, 0)),
+          subaccounts: S.optional(__S(16, __c1, 0)),
+          services: S.optional(__S(16, __c1, 0)),
+          customPeriod: S.optional(__S(18, __c1, 2)),
+          labels: S.optional(__S(20, __c1, 4)),
           calendarPeriod: S.optional(S.String),
-          projects: S.optional(__S(0, __c0, 0)),
+          projects: S.optional(__S(16, __c1, 0)),
           creditTypesTreatment: S.optional(S.String),
         }),
       ).annotate({
@@ -381,23 +408,19 @@ function __c0(j: number): any {
           nanos: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleTypeMoney" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          lastPeriodAmount: S.optional(__S(6, __c0, 6)),
-          specifiedAmount: S.optional(__S(7, __c0, 7)),
+          lastPeriodAmount: S.optional(__S(22, __c1, 6)),
+          specifiedAmount: S.optional(__S(23, __c1, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBudgetsV1beta1BudgetAmount",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          monitoringNotificationChannels: S.optional(__S(0, __c0, 0)),
+          monitoringNotificationChannels: S.optional(__S(16, __c1, 0)),
           schemaVersion: S.optional(S.String),
           enableProjectLevelRecipients: S.optional(S.Boolean),
           disableDefaultIamRecipients: S.optional(S.Boolean),
@@ -406,7 +429,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBillingBudgetsV1beta1AllUpdatesRule",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           thresholdPercent: S.optional(S.Number),
@@ -415,47 +438,28 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBillingBudgetsV1beta1ThresholdRule",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(26, __c1, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          budgetFilter: S.optional(__S(5, __c0, 5)),
-          amount: S.optional(__S(8, __c1, 0)),
+          budgetFilter: S.optional(__S(21, __c1, 5)),
+          amount: S.optional(__S(24, __c1, 8)),
           name: S.optional(S.String),
-          allUpdatesRule: S.optional(__S(9, __c1, 1)),
+          allUpdatesRule: S.optional(__S(25, __c1, 9)),
           ownershipScope: S.optional(S.String),
           displayName: S.optional(S.String),
-          thresholdRules: S.optional(__S(11, __c1, 3)),
+          thresholdRules: S.optional(__S(27, __c1, 11)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBudgetsV1beta1Budget",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          budget: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/budgets",
-            baseUrl: "https://billingbudgets.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBillingAccountsBudgetsRequest",
-      });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -469,15 +473,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteBillingAccountsBudgetsRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -491,7 +495,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetBillingAccountsBudgetsRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.optional(S.String.pipe(T.Query())),
@@ -508,31 +516,35 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListBillingAccountsBudgetsRequest",
       });
-    case 3:
-      return S.Array(__S(12, __c1, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(28, __c1, 12));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          budgets: S.optional(__S(19, __c2, 3)),
+          budgets: S.optional(__S(65, __c4, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          budget: S.optional(__S(12, __c1, 4)),
+          budget: S.optional(__S(28, __c1, 12)),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -545,7 +557,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

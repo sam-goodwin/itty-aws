@@ -727,8 +727,8 @@ export const describeEntitiesDetectionV2Job: API.OperationMethod<
   DescribeEntitiesDetectionV2JobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DescribeEntitiesDetectionV2JobRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DescribeEntitiesDetectionV2JobResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<DescribeEntitiesDetectionV2JobRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<DescribeEntitiesDetectionV2JobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -756,8 +756,8 @@ export const describeICD10CMInferenceJob: API.OperationMethod<
   DescribeICD10CMInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DescribeICD10CMInferenceJobRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DescribeICD10CMInferenceJobResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<DescribeICD10CMInferenceJobRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<DescribeICD10CMInferenceJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -785,8 +785,8 @@ export const describePHIDetectionJob: API.OperationMethod<
   DescribePHIDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DescribePHIDetectionJobRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DescribePHIDetectionJobResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DescribePHIDetectionJobRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<DescribePHIDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -814,8 +814,8 @@ export const describeRxNormInferenceJob: API.OperationMethod<
   DescribeRxNormInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DescribeRxNormInferenceJobRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DescribeRxNormInferenceJobResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DescribeRxNormInferenceJobRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<DescribeRxNormInferenceJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -842,8 +842,8 @@ export const describeSNOMEDCTInferenceJob: API.OperationMethod<
   DescribeSNOMEDCTInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DescribeSNOMEDCTInferenceJobRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DescribeSNOMEDCTInferenceJobResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DescribeSNOMEDCTInferenceJobRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<DescribeSNOMEDCTInferenceJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -876,8 +876,8 @@ export const detectEntities: API.OperationMethod<
   DetectEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DetectEntitiesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DetectEntitiesResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DetectEntitiesRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DetectEntitiesResponse>,
   errors: [
     InternalServerException,
     InvalidEncodingException,
@@ -919,8 +919,8 @@ export const detectEntitiesV2: API.OperationMethod<
   DetectEntitiesV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DetectEntitiesV2Request>,
-  output: __S(17, __c2, 1) as any as S.Schema<DetectEntitiesV2Response>,
+  input: __S(56, __c7, 0) as any as S.Schema<DetectEntitiesV2Request>,
+  output: __S(34, __c4, 2) as any as S.Schema<DetectEntitiesV2Response>,
   errors: [
     InternalServerException,
     InvalidEncodingException,
@@ -953,8 +953,8 @@ export const detectPHI: API.OperationMethod<
   DetectPHIError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DetectPHIRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DetectPHIResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<DetectPHIRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DetectPHIResponse>,
   errors: [
     InternalServerException,
     InvalidEncodingException,
@@ -988,8 +988,8 @@ export const inferICD10CM: API.OperationMethod<
   InferICD10CMError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<InferICD10CMRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<InferICD10CMResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<InferICD10CMRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<InferICD10CMResponse>,
   errors: [
     InternalServerException,
     InvalidEncodingException,
@@ -1022,8 +1022,8 @@ export const inferRxNorm: API.OperationMethod<
   InferRxNormError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<InferRxNormRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<InferRxNormResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<InferRxNormRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<InferRxNormResponse>,
   errors: [
     InternalServerException,
     InvalidEncodingException,
@@ -1054,8 +1054,8 @@ export const inferSNOMEDCT: API.OperationMethod<
   InferSNOMEDCTError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<InferSNOMEDCTRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<InferSNOMEDCTResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<InferSNOMEDCTRequest>,
+  output: __S(103, __c12, 7) as any as S.Schema<InferSNOMEDCTResponse>,
   errors: [
     InternalServerException,
     InvalidEncodingException,
@@ -1084,8 +1084,8 @@ export const listEntitiesDetectionV2Jobs: API.OperationMethod<
   ListEntitiesDetectionV2JobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListEntitiesDetectionV2JobsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListEntitiesDetectionV2JobsResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListEntitiesDetectionV2JobsRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<ListEntitiesDetectionV2JobsResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1112,8 +1112,8 @@ export const listICD10CMInferenceJobs: API.OperationMethod<
   ListICD10CMInferenceJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListICD10CMInferenceJobsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListICD10CMInferenceJobsResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListICD10CMInferenceJobsRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<ListICD10CMInferenceJobsResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1141,8 +1141,8 @@ export const listPHIDetectionJobs: API.OperationMethod<
   ListPHIDetectionJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListPHIDetectionJobsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListPHIDetectionJobsResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListPHIDetectionJobsRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<ListPHIDetectionJobsResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1169,8 +1169,8 @@ export const listRxNormInferenceJobs: API.OperationMethod<
   ListRxNormInferenceJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListRxNormInferenceJobsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListRxNormInferenceJobsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListRxNormInferenceJobsRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<ListRxNormInferenceJobsResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1197,8 +1197,8 @@ export const listSNOMEDCTInferenceJobs: API.OperationMethod<
   ListSNOMEDCTInferenceJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListSNOMEDCTInferenceJobsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListSNOMEDCTInferenceJobsResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListSNOMEDCTInferenceJobsRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<ListSNOMEDCTInferenceJobsResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1226,8 +1226,8 @@ export const startEntitiesDetectionV2Job: API.OperationMethod<
   StartEntitiesDetectionV2JobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<StartEntitiesDetectionV2JobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<StartEntitiesDetectionV2JobResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<StartEntitiesDetectionV2JobRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StartEntitiesDetectionV2JobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1256,8 +1256,8 @@ export const startICD10CMInferenceJob: API.OperationMethod<
   StartICD10CMInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<StartICD10CMInferenceJobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<StartICD10CMInferenceJobResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<StartICD10CMInferenceJobRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StartICD10CMInferenceJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1285,8 +1285,8 @@ export const startPHIDetectionJob: API.OperationMethod<
   StartPHIDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<StartPHIDetectionJobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<StartPHIDetectionJobResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<StartPHIDetectionJobRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StartPHIDetectionJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1315,8 +1315,8 @@ export const startRxNormInferenceJob: API.OperationMethod<
   StartRxNormInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<StartRxNormInferenceJobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<StartRxNormInferenceJobResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<StartRxNormInferenceJobRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StartRxNormInferenceJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1343,8 +1343,8 @@ export const startSNOMEDCTInferenceJob: API.OperationMethod<
   StartSNOMEDCTInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<StartSNOMEDCTInferenceJobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<StartSNOMEDCTInferenceJobResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<StartSNOMEDCTInferenceJobRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StartSNOMEDCTInferenceJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1370,8 +1370,8 @@ export const stopEntitiesDetectionV2Job: API.OperationMethod<
   StopEntitiesDetectionV2JobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<StopEntitiesDetectionV2JobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<StopEntitiesDetectionV2JobResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<StopEntitiesDetectionV2JobRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StopEntitiesDetectionV2JobResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1392,8 +1392,8 @@ export const stopICD10CMInferenceJob: API.OperationMethod<
   StopICD10CMInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<StopICD10CMInferenceJobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<StopICD10CMInferenceJobResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<StopICD10CMInferenceJobRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StopICD10CMInferenceJobResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1414,8 +1414,8 @@ export const stopPHIDetectionJob: API.OperationMethod<
   StopPHIDetectionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<StopPHIDetectionJobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<StopPHIDetectionJobResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<StopPHIDetectionJobRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StopPHIDetectionJobResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1436,8 +1436,8 @@ export const stopRxNormInferenceJob: API.OperationMethod<
   StopRxNormInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<StopRxNormInferenceJobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<StopRxNormInferenceJobResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<StopRxNormInferenceJobRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StopRxNormInferenceJobResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1459,8 +1459,8 @@ export const stopSNOMEDCTInferenceJob: API.OperationMethod<
   StopSNOMEDCTInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<StopSNOMEDCTInferenceJobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<StopSNOMEDCTInferenceJobResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<StopSNOMEDCTInferenceJobRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<StopSNOMEDCTInferenceJobResponse>,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1481,58 +1481,13 @@ function __c0(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
-        identifier: "DescribeEntitiesDetectionV2JobRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ S3Bucket: S.String, S3Key: S.optional(S.String) }),
-      ).annotate({ identifier: "InputDataConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          JobId: S.optional(S.String),
-          JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
-          Message: S.optional(S.String),
-          SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(1, __c0, 1)),
-          OutputDataConfig: S.optional(__S(1, __c0, 1)),
-          LanguageCode: S.optional(S.String),
-          DataAccessRoleArn: S.optional(S.String),
-          ManifestFilePath: S.optional(S.String),
-          KMSKey: S.optional(S.String),
-          ModelVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ComprehendMedicalAsyncJobProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ComprehendMedicalAsyncJobProperties: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "DescribeEntitiesDetectionV2JobResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ JobId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeICD10CMInferenceJobRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ JobId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
         identifier: "DescribePHIDetectionJobRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1540,7 +1495,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DescribeRxNormInferenceJobRequest",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1550,7 +1509,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1558,13 +1517,30 @@ function __c1(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DetectEntitiesRequest" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Score: S.optional(S.Number) }),
-      ).annotate({ identifier: "Trait" });
+        S.Struct({ Type: S.optional(S.String), Attribute: S.optional(__S(40, __c5, 0)) }),
+      ).annotate({ identifier: "UnmappedAttribute" });
+    case 1:
+      return S.Array(__S(32, __c4, 0));
     case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Entities: __S(43, __c5, 3),
+          UnmappedAttributes: S.optional(__S(33, __c4, 1)),
+          PaginationToken: S.optional(S.String),
+          ModelVersion: S.String,
+        }),
+      ).annotate({ identifier: "DetectEntitiesResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
@@ -1576,12 +1552,12 @@ function __c1(j: number): any {
           EndOffset: S.optional(S.Number),
           Text: S.optional(S.String),
           Category: S.optional(S.String),
-          Traits: S.optional(__S(10, __c1, 2)),
+          Traits: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({ identifier: "Attribute" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.Number),
@@ -1591,58 +1567,61 @@ function __c1(j: number): any {
           Text: S.optional(S.String),
           Category: S.optional(S.String),
           Type: S.optional(S.String),
-          Traits: S.optional(__S(10, __c1, 2)),
-          Attributes: S.optional(__S(12, __c1, 4)),
+          Traits: S.optional(__S(49, __c6, 1)),
+          Attributes: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "Entity" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String), Attribute: S.optional(__S(11, __c1, 3)) }),
-      ).annotate({ identifier: "UnmappedAttribute" });
+    case 3:
+      return S.Array(__S(42, __c5, 2));
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
       return S.suspend(() =>
-        S.Struct({
-          Entities: __S(14, __c1, 6),
-          UnmappedAttributes: S.optional(__S(16, __c2, 0)),
-          PaginationToken: S.optional(S.String),
-          ModelVersion: S.String,
-        }),
-      ).annotate({ identifier: "DetectEntitiesResponse" });
-    case 2:
+        S.Struct({ Name: S.optional(S.String), Score: S.optional(S.Number) }),
+      ).annotate({ identifier: "Trait" });
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Text: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DetectEntitiesV2Request" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Text: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DetectPHIRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Entities: __S(14, __c1, 6),
+          Entities: __S(43, __c5, 3),
           PaginationToken: S.optional(S.String),
           ModelVersion: S.String,
         }),
       ).annotate({ identifier: "DetectPHIResponse" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Text: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "InferICD10CMRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
@@ -1652,16 +1631,41 @@ function __c2(j: number): any {
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
           Text: S.optional(S.String),
-          Traits: S.optional(__S(10, __c1, 2)),
+          Traits: S.optional(__S(49, __c6, 1)),
           Category: S.optional(S.String),
           RelationshipType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ICD10CMAttribute" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.Number),
+          Text: S.optional(S.String),
+          Category: S.optional(S.String),
+          Type: S.optional(S.String),
+          Score: S.optional(S.Number),
+          BeginOffset: S.optional(S.Number),
+          EndOffset: S.optional(S.Number),
+          Attributes: S.optional(__S(74, __c9, 2)),
+          Traits: S.optional(__S(49, __c6, 1)),
+          ICD10CMConcepts: S.optional(__S(81, __c10, 1)),
+        }),
+      ).annotate({ identifier: "ICD10CMEntity" });
+    case 4:
+      return S.Array(__S(75, __c9, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Entities: __S(76, __c9, 4),
+          PaginationToken: S.optional(S.String),
+          ModelVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InferICD10CMResponse" });
   }
 }
-function __c3(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1672,39 +1676,18 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ICD10CMConcept" });
     case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.optional(S.Number),
-          Text: S.optional(S.String),
-          Category: S.optional(S.String),
-          Type: S.optional(S.String),
-          Score: S.optional(S.Number),
-          BeginOffset: S.optional(S.Number),
-          EndOffset: S.optional(S.Number),
-          Attributes: S.optional(__S(23, __c2, 7)),
-          Traits: S.optional(__S(10, __c1, 2)),
-          ICD10CMConcepts: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "ICD10CMEntity" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Entities: __S(27, __c3, 3),
-          PaginationToken: S.optional(S.String),
-          ModelVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InferICD10CMResponse" });
-    case 5:
+      return S.Array(__S(80, __c10, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Text: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "InferRxNormRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
@@ -1714,16 +1697,12 @@ function __c3(j: number): any {
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
           Text: S.optional(S.String),
-          Traits: S.optional(__S(10, __c1, 2)),
+          Traits: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({ identifier: "RxNormAttribute" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.Number),
@@ -1733,28 +1712,32 @@ function __c4(j: number): any {
           Score: S.optional(S.Number),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
-          Attributes: S.optional(__S(31, __c3, 7)),
-          Traits: S.optional(__S(10, __c1, 2)),
-          RxNormConcepts: S.optional(__S(25, __c3, 1)),
+          Attributes: S.optional(__S(90, __c11, 2)),
+          Traits: S.optional(__S(49, __c6, 1)),
+          RxNormConcepts: S.optional(__S(81, __c10, 1)),
         }),
       ).annotate({ identifier: "RxNormEntity" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(91, __c11, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          Entities: __S(33, __c4, 1),
+          Entities: __S(92, __c11, 4),
           PaginationToken: S.optional(S.String),
           ModelVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "InferRxNormResponse" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Text: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "InferSNOMEDCTRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Category: S.optional(S.String),
@@ -1766,13 +1749,13 @@ function __c4(j: number): any {
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
           Text: S.optional(S.String),
-          Traits: S.optional(__S(10, __c1, 2)),
-          SNOMEDCTConcepts: S.optional(__S(25, __c3, 1)),
+          Traits: S.optional(__S(49, __c6, 1)),
+          SNOMEDCTConcepts: S.optional(__S(81, __c10, 1)),
         }),
       ).annotate({ identifier: "SNOMEDCTAttribute" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(97, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.Number),
@@ -1782,18 +1765,14 @@ function __c4(j: number): any {
           Score: S.optional(S.Number),
           BeginOffset: S.optional(S.Number),
           EndOffset: S.optional(S.Number),
-          Attributes: S.optional(__S(37, __c4, 5)),
-          Traits: S.optional(__S(10, __c1, 2)),
-          SNOMEDCTConcepts: S.optional(__S(25, __c3, 1)),
+          Attributes: S.optional(__S(98, __c12, 2)),
+          Traits: S.optional(__S(49, __c6, 1)),
+          SNOMEDCTConcepts: S.optional(__S(81, __c10, 1)),
         }),
       ).annotate({ identifier: "SNOMEDCTEntity" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(99, __c12, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Edition: S.optional(S.String),
@@ -1801,21 +1780,39 @@ function __c5(j: number): any {
           VersionDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "SNOMEDCTDetails" });
-    case 1:
+    case 6:
       return S.suspend(() => S.Struct({ OriginalTextCharacters: S.optional(S.Number) })).annotate({
         identifier: "Characters",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          Entities: __S(39, __c4, 7),
+          Entities: __S(100, __c12, 4),
           PaginationToken: S.optional(S.String),
           ModelVersion: S.optional(S.String),
-          SNOMEDCTDetails: S.optional(__S(40, __c5, 0)),
-          Characters: S.optional(__S(41, __c5, 1)),
+          SNOMEDCTDetails: S.optional(__S(101, __c12, 5)),
+          Characters: S.optional(__S(102, __c12, 6)),
         }),
       ).annotate({ identifier: "InferSNOMEDCTResponse" });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Filter: S.optional(__S(112, __c14, 0)),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListEntitiesDetectionV2JobsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobName: S.optional(S.String),
@@ -1826,31 +1823,25 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ComprehendMedicalAsyncJobFilter",
       });
-    case 4:
+    case 1:
+      return S.Array(__S(256, __c32, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(43, __c5, 3)),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEntitiesDetectionV2JobsRequest",
-      });
-    case 5:
-      return S.Array(__S(2, __c0, 2));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ComprehendMedicalAsyncJobPropertiesList: S.optional(__S(45, __c5, 5)),
+          ComprehendMedicalAsyncJobPropertiesList: S.optional(__S(113, __c14, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListEntitiesDetectionV2JobsResponse",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(43, __c5, 3)),
+          Filter: S.optional(__S(112, __c14, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1859,43 +1850,55 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(43, __c5, 3)),
+          Filter: S.optional(__S(112, __c14, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListPHIDetectionJobsRequest",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(43, __c5, 3)),
+          Filter: S.optional(__S(112, __c14, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListRxNormInferenceJobsRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(43, __c5, 3)),
+          Filter: S.optional(__S(112, __c14, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListSNOMEDCTInferenceJobsRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(1, __c0, 1),
-          OutputDataConfig: __S(1, __c0, 1),
+          InputDataConfig: __S(264, __c33, 0),
+          OutputDataConfig: __S(264, __c33, 0),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -1905,15 +1908,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "StartEntitiesDetectionV2JobRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ JobId: S.optional(S.String) })).annotate({
         identifier: "StartEntitiesDetectionV2JobResponse",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(1, __c0, 1),
-          OutputDataConfig: __S(1, __c0, 1),
+          InputDataConfig: __S(264, __c33, 0),
+          OutputDataConfig: __S(264, __c33, 0),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -1923,11 +1934,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "StartICD10CMInferenceJobRequest",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(1, __c0, 1),
-          OutputDataConfig: __S(1, __c0, 1),
+          InputDataConfig: __S(264, __c33, 0),
+          OutputDataConfig: __S(264, __c33, 0),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -1937,11 +1952,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "StartPHIDetectionJobRequest",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(1, __c0, 1),
-          OutputDataConfig: __S(1, __c0, 1),
+          InputDataConfig: __S(264, __c33, 0),
+          OutputDataConfig: __S(264, __c33, 0),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -1953,13 +1972,13 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          InputDataConfig: __S(1, __c0, 1),
-          OutputDataConfig: __S(1, __c0, 1),
+          InputDataConfig: __S(264, __c33, 0),
+          OutputDataConfig: __S(264, __c33, 0),
           DataAccessRoleArn: S.String,
           JobName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -1969,7 +1988,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "StartSNOMEDCTInferenceJobRequest",
       });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1977,7 +2000,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "StopEntitiesDetectionV2JobRequest",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1985,7 +2012,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "StopICD10CMInferenceJobRequest",
       });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1993,7 +2024,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "StopPHIDetectionJobRequest",
       });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2001,7 +2036,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "StopRxNormInferenceJobRequest",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2011,7 +2050,75 @@ function __c7(j: number): any {
       });
   }
 }
-
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ JobId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeEntitiesDetectionV2JobRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ComprehendMedicalAsyncJobProperties: S.optional(__S(256, __c32, 0)),
+        }),
+      ).annotate({
+        identifier: "DescribeEntitiesDetectionV2JobResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          JobId: S.optional(S.String),
+          JobName: S.optional(S.String),
+          JobStatus: S.optional(S.String),
+          Message: S.optional(S.String),
+          SubmitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          InputDataConfig: S.optional(__S(264, __c33, 0)),
+          OutputDataConfig: S.optional(__S(264, __c33, 0)),
+          LanguageCode: S.optional(S.String),
+          DataAccessRoleArn: S.optional(S.String),
+          ManifestFilePath: S.optional(S.String),
+          KMSKey: S.optional(S.String),
+          ModelVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ComprehendMedicalAsyncJobProperties",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ S3Bucket: S.String, S3Key: S.optional(S.String) }),
+      ).annotate({ identifier: "InputDataConfig" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ JobId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeICD10CMInferenceJobRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -263,7 +263,7 @@ export const fetchMultiDailyMetricsTimeSeriesLocations: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<FetchMultiDailyMetricsTimeSeriesLocationsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<FetchMultiDailyMetricsTimeSeriesResponse>,
+  output: __S(8, __c0, 8) as any as S.Schema<FetchMultiDailyMetricsTimeSeriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -277,8 +277,8 @@ export const getDailyMetricsTimeSeriesLocations: API.OperationMethod<
   GetDailyMetricsTimeSeriesLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetDailyMetricsTimeSeriesLocationsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetDailyMetricsTimeSeriesResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetDailyMetricsTimeSeriesLocationsRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<GetDailyMetricsTimeSeriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -293,8 +293,8 @@ export const listLocationsSearchkeywordsImpressionsMonthly: API.PaginatedOperati
   GcpOpContext,
   ListSearchKeywordImpressionsMonthlyResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListLocationsSearchkeywordsImpressionsMonthlyRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListSearchKeywordImpressionsMonthlyResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListLocationsSearchkeywordsImpressionsMonthlyRequest>,
+  output: __S(52, __c3, 4) as any as S.Schema<ListSearchKeywordImpressionsMonthlyResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -330,44 +330,47 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          day: S.optional(S.Number),
-          year: S.optional(S.Number),
-          month: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "Businessprofileperformance_Date",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          date: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "DatedValue" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          datedValues: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "TimeSeries" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           nanos: S.optional(S.Number),
           minutes: S.optional(S.Number),
           hours: S.optional(S.Number),
           seconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TimeOfDay" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          timeOfDay: S.optional(__S(6, __c0, 6)),
+          timeOfDay: S.optional(__S(2, __c0, 2)),
           dayOfWeek: S.optional(S.String),
         }),
       ).annotate({ identifier: "DailySubEntityType" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          timeSeries: S.optional(__S(19, __c1, 3)),
+          dailyMetric: S.optional(S.String),
+          dailySubEntityType: S.optional(__S(3, __c0, 3)),
+        }),
+      ).annotate({ identifier: "DailyMetricTimeSeries" });
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dailyMetricTimeSeries: S.optional(__S(5, __c0, 5)),
+        }),
+      ).annotate({
+        identifier: "MultiDailyMetricTimeSeries",
+      });
+    case 7:
+      return S.Array(__S(6, __c0, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          multiDailyMetricTimeSeries: S.optional(__S(7, __c0, 7)),
+        }),
+      ).annotate({
+        identifier: "FetchMultiDailyMetricsTimeSeriesResponse",
+      });
   }
 }
 function __c1(j: number): any {
@@ -375,32 +378,33 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          timeSeries: S.optional(__S(5, __c0, 5)),
-          dailyMetric: S.optional(S.String),
-          dailySubEntityType: S.optional(__S(7, __c0, 7)),
+          day: S.optional(S.Number),
+          year: S.optional(S.Number),
+          month: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "DailyMetricTimeSeries" });
+      ).annotate({
+        identifier: "Businessprofileperformance_Date",
+      });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          date: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "DatedValue" });
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dailyMetricTimeSeries: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "MultiDailyMetricTimeSeries",
-      });
+      return S.Array(__S(17, __c1, 1));
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          multiDailyMetricTimeSeries: S.optional(__S(11, __c1, 3)),
+          datedValues: S.optional(__S(18, __c1, 2)),
         }),
-      ).annotate({
-        identifier: "FetchMultiDailyMetricsTimeSeriesResponse",
-      });
-    case 5:
+      ).annotate({ identifier: "TimeSeries" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "dailySubEntityType.timeOfDay.hours": S.optional(S.Number.pipe(T.Query())),
@@ -426,15 +430,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetDailyMetricsTimeSeriesLocationsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          timeSeries: S.optional(__S(5, __c0, 5)),
+          timeSeries: S.optional(__S(19, __c1, 3)),
         }),
       ).annotate({
         identifier: "GetDailyMetricsTimeSeriesResponse",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "monthlyRange.startMonth.year": S.optional(S.Number.pipe(T.Query())),
@@ -456,30 +464,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListLocationsSearchkeywordsImpressionsMonthlyRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           threshold: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "InsightsValue" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           searchKeyword: S.optional(S.String),
-          insightsValue: S.optional(__S(16, __c2, 0)),
+          insightsValue: S.optional(__S(49, __c3, 1)),
         }),
       ).annotate({ identifier: "SearchKeywordCount" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
     case 3:
+      return S.Array(__S(50, __c3, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          searchKeywordsCounts: S.optional(__S(18, __c2, 2)),
+          searchKeywordsCounts: S.optional(__S(51, __c3, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -487,7 +491,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

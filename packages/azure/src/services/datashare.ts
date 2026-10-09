@@ -1955,7 +1955,7 @@ export const ActivateEmailRegistrationEmail: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ActivateEmailRegistrationEmailRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailRegistration>,
+  output: __S(16, __c1, 0) as any as S.Schema<EmailRegistration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1969,8 +1969,8 @@ export const CancelShareSubscriptionSynchronization: API.OperationMethod<
   CancelShareSubscriptionSynchronizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelShareSubscriptionSynchronizationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ShareSubscriptionSynchronization>,
+  input: __S(32, __c2, 0) as any as S.Schema<CancelShareSubscriptionSynchronizationRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<ShareSubscriptionSynchronization>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1984,8 +1984,8 @@ export const CreateAccount: API.OperationMethod<
   CreateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateAccountRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateAccountResponse>,
+  input: __S(273, __c17, 1) as any as S.Schema<CreateAccountRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<CreateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1999,8 +1999,8 @@ export const CreateDataSet: API.OperationMethod<
   CreateDataSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateDataSetRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateDataSetResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<CreateDataSetRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<CreateDataSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2014,8 +2014,8 @@ export const CreateDataSetMapping: API.OperationMethod<
   CreateDataSetMappingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateDataSetMappingRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateDataSetMappingResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<CreateDataSetMappingRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<CreateDataSetMappingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2029,8 +2029,8 @@ export const CreateInvitation: API.OperationMethod<
   CreateInvitationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateInvitationRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateInvitationResponse>,
+  input: __S(977, __c61, 1) as any as S.Schema<CreateInvitationRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<CreateInvitationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2044,8 +2044,8 @@ export const CreateShare: API.OperationMethod<
   CreateShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateShareRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CreateShareResponse>,
+  input: __S(1057, __c66, 1) as any as S.Schema<CreateShareRequest>,
+  output: __S(1073, __c67, 1) as any as S.Schema<CreateShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2059,8 +2059,8 @@ export const CreateShareSubscription: API.OperationMethod<
   CreateShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateShareSubscriptionRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateShareSubscriptionResponse>,
+  input: __S(1089, __c68, 1) as any as S.Schema<CreateShareSubscriptionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateShareSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2074,8 +2074,8 @@ export const CreateSynchronizationSettings: API.OperationMethod<
   CreateSynchronizationSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateSynchronizationSettingsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateSynchronizationSettingsResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<CreateSynchronizationSettingsRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<CreateSynchronizationSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2089,8 +2089,8 @@ export const CreateTrigger: API.OperationMethod<
   CreateTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateTriggerRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateTriggerResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<CreateTriggerRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<CreateTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2104,8 +2104,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<OperationResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<OperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2119,8 +2119,8 @@ export const DeleteDataSet: API.OperationMethod<
   DeleteDataSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteDataSetRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteDataSetResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<DeleteDataSetRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<DeleteDataSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2134,8 +2134,8 @@ export const DeleteDataSetMapping: API.OperationMethod<
   DeleteDataSetMappingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteDataSetMappingRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteDataSetMappingResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DeleteDataSetMappingRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<DeleteDataSetMappingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2149,8 +2149,8 @@ export const DeleteInvitation: API.OperationMethod<
   DeleteInvitationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteInvitationRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteInvitationResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteInvitationRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<DeleteInvitationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2164,8 +2164,8 @@ export const DeleteShare: API.OperationMethod<
   DeleteShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteShareRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<OperationResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteShareRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<OperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2179,8 +2179,8 @@ export const DeleteShareSubscription: API.OperationMethod<
   DeleteShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteShareSubscriptionRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<OperationResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteShareSubscriptionRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<OperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2194,8 +2194,8 @@ export const DeleteSynchronizationSettings: API.OperationMethod<
   DeleteSynchronizationSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteSynchronizationSettingsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<OperationResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteSynchronizationSettingsRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<OperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2209,8 +2209,8 @@ export const DeleteTrigger: API.OperationMethod<
   DeleteTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteTriggerRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<OperationResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteTriggerRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<OperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2224,8 +2224,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetAccountRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetAccountResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetAccountRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<GetAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2239,8 +2239,8 @@ export const GetConsumerInvitation: API.OperationMethod<
   GetConsumerInvitationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetConsumerInvitationRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetConsumerInvitationResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetConsumerInvitationRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<GetConsumerInvitationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2254,8 +2254,8 @@ export const GetDataSet: API.OperationMethod<
   GetDataSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetDataSetRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetDataSetResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetDataSetRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<GetDataSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2269,8 +2269,8 @@ export const GetDataSetMapping: API.OperationMethod<
   GetDataSetMappingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetDataSetMappingRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetDataSetMappingResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetDataSetMappingRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<GetDataSetMappingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2284,8 +2284,8 @@ export const GetInvitation: API.OperationMethod<
   GetInvitationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetInvitationRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetInvitationResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetInvitationRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<GetInvitationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2299,8 +2299,8 @@ export const GetProviderShareSubscriptionByShare: API.OperationMethod<
   GetProviderShareSubscriptionByShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetProviderShareSubscriptionByShareRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetProviderShareSubscriptionByShareResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetProviderShareSubscriptionByShareRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<GetProviderShareSubscriptionByShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2314,8 +2314,8 @@ export const GetShare: API.OperationMethod<
   GetShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetShareRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetShareResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetShareRequest>,
+  output: __S(1073, __c67, 1) as any as S.Schema<GetShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2329,8 +2329,8 @@ export const GetShareSubscription: API.OperationMethod<
   GetShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetShareSubscriptionRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetShareSubscriptionResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetShareSubscriptionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<GetShareSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2344,8 +2344,8 @@ export const GetSynchronizationSettings: API.OperationMethod<
   GetSynchronizationSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetSynchronizationSettingsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetSynchronizationSettingsResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetSynchronizationSettingsRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<GetSynchronizationSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2359,8 +2359,8 @@ export const GetTrigger: API.OperationMethod<
   GetTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetTriggerRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetTriggerResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetTriggerRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<GetTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2374,8 +2374,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListAccountByResourceGroupRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<AccountList>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListAccountByResourceGroupRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<AccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2389,8 +2389,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListAccountBySubscriptionRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<AccountList>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListAccountBySubscriptionRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<AccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2404,8 +2404,8 @@ export const ListConsumerInvitationInvitations: API.OperationMethod<
   ListConsumerInvitationInvitationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListConsumerInvitationInvitationsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ConsumerInvitationList>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListConsumerInvitationInvitationsRequest>,
+  output: __S(563, __c35, 3) as any as S.Schema<ConsumerInvitationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2419,8 +2419,8 @@ export const ListConsumerSourceDataSetByShareSubscription: API.OperationMethod<
   ListConsumerSourceDataSetByShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListConsumerSourceDataSetByShareSubscriptionRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ConsumerSourceDataSetList>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListConsumerSourceDataSetByShareSubscriptionRequest>,
+  output: __S(580, __c36, 4) as any as S.Schema<ConsumerSourceDataSetList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2434,8 +2434,8 @@ export const ListDataSetByShare: API.OperationMethod<
   ListDataSetByShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListDataSetByShareRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<DataSetList>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListDataSetByShareRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<DataSetList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2449,8 +2449,8 @@ export const ListDataSetMappingByShareSubscription: API.OperationMethod<
   ListDataSetMappingByShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListDataSetMappingByShareSubscriptionRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<DataSetMappingList>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListDataSetMappingByShareSubscriptionRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<DataSetMappingList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2464,8 +2464,8 @@ export const ListInvitationByShare: API.OperationMethod<
   ListInvitationByShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListInvitationByShareRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<InvitationList>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListInvitationByShareRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<InvitationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2479,8 +2479,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListOperationsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<OperationList>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(685, __c42, 13) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2494,8 +2494,8 @@ export const ListProviderShareSubscriptionByShare: API.OperationMethod<
   ListProviderShareSubscriptionByShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListProviderShareSubscriptionByShareRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ProviderShareSubscriptionList>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListProviderShareSubscriptionByShareRequest>,
+  output: __S(690, __c43, 2) as any as S.Schema<ProviderShareSubscriptionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2509,8 +2509,8 @@ export const ListShareByAccount: API.OperationMethod<
   ListShareByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListShareByAccountRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ShareList>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListShareByAccountRequest>,
+  output: __S(706, __c44, 2) as any as S.Schema<ShareList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2524,8 +2524,8 @@ export const ListShareSubscriptionByAccount: API.OperationMethod<
   ListShareSubscriptionByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListShareSubscriptionByAccountRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<ShareSubscriptionList>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListShareSubscriptionByAccountRequest>,
+  output: __S(723, __c45, 3) as any as S.Schema<ShareSubscriptionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2540,11 +2540,11 @@ export const ListShareSubscriptionSourceShareSynchronizationSettings: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    100,
-    __c12,
-    4,
+    736,
+    __c46,
+    0,
   ) as any as S.Schema<ListShareSubscriptionSourceShareSynchronizationSettingsRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<SourceShareSynchronizationSettingList>,
+  output: __S(739, __c46, 3) as any as S.Schema<SourceShareSynchronizationSettingList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2558,8 +2558,8 @@ export const ListShareSubscriptionSynchronizationDetails: API.OperationMethod<
   ListShareSubscriptionSynchronizationDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListShareSubscriptionSynchronizationDetailsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<SynchronizationDetailsList>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListShareSubscriptionSynchronizationDetailsRequest>,
+  output: __S(802, __c50, 2) as any as S.Schema<SynchronizationDetailsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2573,8 +2573,8 @@ export const ListShareSubscriptionSynchronizations: API.OperationMethod<
   ListShareSubscriptionSynchronizationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListShareSubscriptionSynchronizationsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ShareSubscriptionSynchronizationList>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListShareSubscriptionSynchronizationsRequest>,
+  output: __S(818, __c51, 2) as any as S.Schema<ShareSubscriptionSynchronizationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2588,8 +2588,8 @@ export const ListShareSynchronizationDetails: API.OperationMethod<
   ListShareSynchronizationDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListShareSynchronizationDetailsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<SynchronizationDetailsList>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListShareSynchronizationDetailsRequest>,
+  output: __S(802, __c50, 2) as any as S.Schema<SynchronizationDetailsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2603,8 +2603,8 @@ export const ListShareSynchronizations: API.OperationMethod<
   ListShareSynchronizationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListShareSynchronizationsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<ShareSynchronizationList>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListShareSynchronizationsRequest>,
+  output: __S(851, __c53, 3) as any as S.Schema<ShareSynchronizationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2618,8 +2618,8 @@ export const ListSynchronizationSettingsByShare: API.OperationMethod<
   ListSynchronizationSettingsByShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListSynchronizationSettingsByShareRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<SynchronizationSettingList>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListSynchronizationSettingsByShareRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<SynchronizationSettingList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2633,8 +2633,8 @@ export const ListTriggerByShareSubscription: API.OperationMethod<
   ListTriggerByShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListTriggerByShareSubscriptionRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<TriggerList>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListTriggerByShareSubscriptionRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<TriggerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2648,8 +2648,8 @@ export const ProviderShareSubscriptionsAdjust: API.OperationMethod<
   ProviderShareSubscriptionsAdjustError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ProviderShareSubscriptionsAdjustRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ProviderShareSubscriptionsAdjustResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<ProviderShareSubscriptionsAdjustRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<ProviderShareSubscriptionsAdjustResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2663,8 +2663,8 @@ export const ProviderShareSubscriptionsReinstate: API.OperationMethod<
   ProviderShareSubscriptionsReinstateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ProviderShareSubscriptionsReinstateRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ProviderShareSubscriptionsReinstateResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<ProviderShareSubscriptionsReinstateRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<ProviderShareSubscriptionsReinstateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2678,8 +2678,8 @@ export const RegisterEmailRegistrationEmail: API.OperationMethod<
   RegisterEmailRegistrationEmailError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<RegisterEmailRegistrationEmailRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailRegistration>,
+  input: __S(944, __c59, 0) as any as S.Schema<RegisterEmailRegistrationEmailRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<EmailRegistration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2693,8 +2693,8 @@ export const RejectConsumerInvitationInvitation: API.OperationMethod<
   RejectConsumerInvitationInvitationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<RejectConsumerInvitationInvitationRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<RejectConsumerInvitationInvitationResponse>,
+  input: __S(961, __c60, 1) as any as S.Schema<RejectConsumerInvitationInvitationRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<RejectConsumerInvitationInvitationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2708,8 +2708,8 @@ export const RevokeProviderShareSubscription: API.OperationMethod<
   RevokeProviderShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<RevokeProviderShareSubscriptionRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<RevokeProviderShareSubscriptionResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<RevokeProviderShareSubscriptionRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<RevokeProviderShareSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2723,8 +2723,8 @@ export const ShareSubscriptionsSynchronize: API.OperationMethod<
   ShareSubscriptionsSynchronizeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ShareSubscriptionsSynchronizeRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ShareSubscriptionSynchronization>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ShareSubscriptionsSynchronizeRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<ShareSubscriptionSynchronization>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2738,8 +2738,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateAccountResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<UpdateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2764,7 +2764,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateEmailRegistrationEmailRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           activationCode: S.optional(S.String),
@@ -2774,7 +2778,11 @@ function __c0(j: number): any {
           tenantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailRegistration" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2793,7 +2801,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelShareSubscriptionSynchronizationRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           durationMs: S.optional(S.Number),
@@ -2807,28 +2819,301 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ShareSubscriptionSynchronization",
       });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAccountRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(81, __c5, 1)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          details: S.optional(__S(80, __c5, 0)),
+          message: S.String,
+          target: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataShareErrorInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String),
+          error: S.optional(__S(81, __c5, 1)),
+          startTime: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareName: S.String.pipe(T.Label()),
+          dataSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets/{dataSetName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDataSetRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareSubscriptionName: S.String.pipe(T.Label()),
+          dataSetMappingName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDataSetMappingRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareName: S.String.pipe(T.Label()),
+          invitationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteInvitationRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteShareRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareSubscriptionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteShareSubscriptionRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareName: S.String.pipe(T.Label()),
+          synchronizationSettingName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSynchronizationSettingsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareSubscriptionName: S.String.pipe(T.Label()),
+          triggerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTriggerRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetAccountRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.String.pipe(T.Label()),
+          invitationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.DataShare/locations/{location}/consumerInvitations/{invitationId}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConsumerInvitationRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataSetCount: S.optional(S.Number),
+          description: S.optional(S.String),
+          expirationDate: S.optional(S.String),
+          invitationId: S.String,
+          invitationStatus: S.optional(S.String),
+          location: S.optional(S.String),
+          providerEmail: S.optional(S.String),
+          providerName: S.optional(S.String),
+          providerTenantName: S.optional(S.String),
+          respondedAt: S.optional(S.String),
+          sentAt: S.optional(S.String),
+          shareName: S.optional(S.String),
+          termsOfUse: S.optional(S.String),
+          userEmail: S.optional(S.String),
+          userName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConsumerInvitationProperties",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          systemData: S.optional(__S(320, __c20, 0)),
+          type: S.optional(S.String),
+          properties: __S(240, __c15, 0),
+        }),
+      ).annotate({
+        identifier: "GetConsumerInvitationResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityInput" });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AccountPropertiesInput",
-      });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          identity: __S(5, __c0, 5),
-          properties: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(304, __c19, 0)),
+          identity: __S(272, __c17, 0),
+          properties: S.optional(__S(288, __c18, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2840,19 +3125,18 @@ function __c0(j: number): any {
       ).annotate({ identifier: "CreateAccountRequest" });
   }
 }
-function __c1(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.String),
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AccountPropertiesInput",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2875,522 +3159,34 @@ function __c1(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(320, __c20, 0)),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          identity: __S(9, __c1, 1),
-          properties: S.optional(__S(10, __c1, 2)),
+          tags: S.optional(__S(304, __c19, 0)),
+          identity: __S(305, __c19, 1),
+          properties: S.optional(__S(306, __c19, 2)),
         }),
       ).annotate({ identifier: "CreateAccountResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareName: S.String.pipe(T.Label()),
-          dataSetName: S.String.pipe(T.Label()),
-          kind: S.String,
-          properties: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets/{dataSetName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateDataSetRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          type: S.optional(S.String),
-          kind: S.String,
-          properties: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "CreateDataSetResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareSubscriptionName: S.String.pipe(T.Label()),
-          dataSetMappingName: S.String.pipe(T.Label()),
-          kind: S.String,
-          properties: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDataSetMappingRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          type: S.optional(S.String),
-          kind: S.String,
-          properties: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "CreateDataSetMappingResponse",
-      });
   }
 }
-function __c2(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          expirationDate: S.optional(S.String),
-          targetActiveDirectoryId: S.optional(S.String),
-          targetEmail: S.optional(S.String),
-          targetObjectId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InvitationPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareName: S.String.pipe(T.Label()),
-          invitationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(16, __c2, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateInvitationRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          expirationDate: S.optional(S.String),
-          invitationId: S.optional(S.String),
-          invitationStatus: S.optional(S.String),
-          respondedAt: S.optional(S.String),
-          sentAt: S.optional(S.String),
-          targetActiveDirectoryId: S.optional(S.String),
-          targetEmail: S.optional(S.String),
-          targetObjectId: S.optional(S.String),
-          userEmail: S.optional(S.String),
-          userName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InvitationProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          type: S.optional(S.String),
-          properties: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "CreateInvitationResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          shareKind: S.optional(S.String),
-          terms: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SharePropertiesInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(20, __c2, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateShareRequest" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          description: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          shareKind: S.optional(S.String),
-          terms: S.optional(S.String),
-          userEmail: S.optional(S.String),
-          userName: S.optional(S.String),
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ShareProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          type: S.optional(S.String),
-          properties: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "CreateShareResponse" });
+      ).annotate({ identifier: "SystemData" });
   }
 }
-function __c3(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          expirationDate: S.optional(S.String),
-          invitationId: S.String,
-          sourceShareLocation: S.String,
-        }),
-      ).annotate({
-        identifier: "ShareSubscriptionPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareSubscriptionName: S.String.pipe(T.Label()),
-          properties: __S(24, __c3, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateShareSubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.String),
-          expirationDate: S.optional(S.String),
-          invitationId: S.String,
-          providerEmail: S.optional(S.String),
-          providerName: S.optional(S.String),
-          providerTenantName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          shareDescription: S.optional(S.String),
-          shareKind: S.optional(S.String),
-          shareName: S.optional(S.String),
-          shareSubscriptionStatus: S.optional(S.String),
-          shareTerms: S.optional(S.String),
-          sourceShareLocation: S.String,
-          userEmail: S.optional(S.String),
-          userName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ShareSubscriptionProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          type: S.optional(S.String),
-          properties: __S(26, __c3, 2),
-        }),
-      ).annotate({
-        identifier: "CreateShareSubscriptionResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareName: S.String.pipe(T.Label()),
-          synchronizationSettingName: S.String.pipe(T.Label()),
-          kind: S.String,
-          properties: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSynchronizationSettingsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareSubscriptionName: S.String.pipe(T.Label()),
-          triggerName: S.String.pipe(T.Label()),
-          kind: S.String,
-          properties: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateTriggerRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAccountRequest" });
-    case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(32, __c4, 0)));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          details: S.optional(__S(31, __c3, 7)),
-          message: S.String,
-          target: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataShareErrorInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String),
-          error: S.optional(__S(32, __c4, 0)),
-          startTime: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareName: S.String.pipe(T.Label()),
-          dataSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets/{dataSetName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDataSetRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareSubscriptionName: S.String.pipe(T.Label()),
-          dataSetMappingName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDataSetMappingRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareName: S.String.pipe(T.Label()),
-          invitationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteInvitationRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteShareRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareSubscriptionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteShareSubscriptionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareName: S.String.pipe(T.Label()),
-          synchronizationSettingName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSynchronizationSettingsRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareSubscriptionName: S.String.pipe(T.Label()),
-          triggerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTriggerRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetAccountRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.String.pipe(T.Label()),
-          invitationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.DataShare/locations/{location}/consumerInvitations/{invitationId}",
-            code: 200,
-            apiVersion: "2021-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConsumerInvitationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataSetCount: S.optional(S.Number),
-          description: S.optional(S.String),
-          expirationDate: S.optional(S.String),
-          invitationId: S.String,
-          invitationStatus: S.optional(S.String),
-          location: S.optional(S.String),
-          providerEmail: S.optional(S.String),
-          providerName: S.optional(S.String),
-          providerTenantName: S.optional(S.String),
-          respondedAt: S.optional(S.String),
-          sentAt: S.optional(S.String),
-          shareName: S.optional(S.String),
-          termsOfUse: S.optional(S.String),
-          userEmail: S.optional(S.String),
-          userName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConsumerInvitationProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          type: S.optional(S.String),
-          properties: __S(43, __c5, 3),
-        }),
-      ).annotate({
-        identifier: "GetConsumerInvitationResponse",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3407,7 +3203,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDataSetRequest" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3424,7 +3224,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDataSetMappingRequest" });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3443,7 +3247,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "GetInvitationRequest" });
   }
 }
-function __c6(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3464,7 +3268,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProviderShareSubscriptionByShareRequest",
       });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           consumerEmail: S.optional(S.String),
@@ -3481,19 +3289,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ProviderShareSubscriptionProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(320, __c20, 0)),
           type: S.optional(S.String),
-          properties: S.optional(__S(49, __c6, 1)),
+          properties: S.optional(__S(400, __c25, 0)),
         }),
       ).annotate({
         identifier: "GetProviderShareSubscriptionByShareResponse",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3509,7 +3321,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetShareRequest" });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3527,7 +3343,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetShareSubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3546,7 +3366,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetSynchronizationSettingsRequest",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3563,7 +3387,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTriggerRequest" });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3582,18 +3410,22 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(307, __c19, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(56, __c7, 0),
+          value: __S(496, __c31, 0),
         }),
       ).annotate({ identifier: "AccountList" });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3609,7 +3441,49 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListAccountBySubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareName: S.String.pipe(T.Label()),
+          dataSetName: S.String.pipe(T.Label()),
+          kind: S.String,
+          properties: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets/{dataSetName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateDataSetRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          systemData: S.optional(__S(320, __c20, 0)),
+          type: S.optional(S.String),
+          kind: S.String,
+          properties: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "CreateDataSetResponse" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
@@ -3624,26 +3498,30 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListConsumerInvitationInvitationsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(320, __c20, 0)),
           type: S.optional(S.String),
-          properties: __S(43, __c5, 3),
+          properties: __S(240, __c15, 0),
         }),
       ).annotate({ identifier: "ConsumerInvitation" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(561, __c35, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(61, __c7, 5),
+          value: __S(562, __c35, 2),
         }),
       ).annotate({ identifier: "ConsumerInvitationList" });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3662,11 +3540,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListConsumerSourceDataSetByShareSubscriptionRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dataSetId: S.optional(S.String),
@@ -3678,28 +3552,32 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ConsumerSourceDataSetProperties",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(320, __c20, 0)),
           type: S.optional(S.String),
-          properties: S.optional(__S(64, __c8, 0)),
+          properties: S.optional(__S(577, __c36, 1)),
         }),
       ).annotate({ identifier: "ConsumerSourceDataSet" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
     case 3:
+      return S.Array(__S(578, __c36, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(66, __c8, 2),
+          value: __S(579, __c36, 3),
         }),
       ).annotate({
         identifier: "ConsumerSourceDataSetList",
       });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3720,28 +3598,36 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListDataSetByShareRequest",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(320, __c20, 0)),
           type: S.optional(S.String),
           kind: S.String,
         }),
       ).annotate({ identifier: "DataSet" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(608, __c38, 0));
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(70, __c8, 6),
+          value: __S(609, __c38, 1),
         }),
       ).annotate({ identifier: "DataSetList" });
   }
 }
-function __c9(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3764,7 +3650,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListDataSetMappingByShareSubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3785,16 +3675,20 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListInvitationByShareRequest",
       });
+    case 1:
+      return S.Array(__S(993, __c62, 1));
     case 2:
-      return S.Array(__S(19, __c2, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(74, __c9, 2),
+          value: __S(657, __c41, 1),
         }),
       ).annotate({ identifier: "InvitationList" });
-    case 4:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -3805,7 +3699,7 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -3814,7 +3708,7 @@ function __c9(j: number): any {
           resource: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationModelProperties" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           blobDuration: S.optional(S.String),
@@ -3824,28 +3718,24 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "OperationMetaLogSpecification",
       });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(674, __c42, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "DimensionProperties" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(676, __c42, 4));
+    case 6:
       return S.Array(S.String);
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           aggregationType: S.optional(S.String),
-          dimensions: S.optional(__S(81, __c10, 1)),
+          dimensions: S.optional(__S(677, __c42, 5)),
           displayDescription: S.optional(S.String),
           displayName: S.optional(S.String),
           enableRegionalMdmAccount: S.optional(S.String),
@@ -3853,55 +3743,55 @@ function __c10(j: number): any {
           internalMetricName: S.optional(S.String),
           name: S.optional(S.String),
           resourceIdDimensionNameOverride: S.optional(S.String),
-          supportedAggregationTypes: S.optional(__S(82, __c10, 2)),
-          supportedTimeGrainTypes: S.optional(__S(82, __c10, 2)),
+          supportedAggregationTypes: S.optional(__S(678, __c42, 6)),
+          supportedTimeGrainTypes: S.optional(__S(678, __c42, 6)),
           unit: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OperationMetaMetricSpecification",
       });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(679, __c42, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(__S(79, __c9, 7)),
-          metricSpecifications: S.optional(__S(84, __c10, 4)),
+          logSpecifications: S.optional(__S(675, __c42, 3)),
+          metricSpecifications: S.optional(__S(680, __c42, 8)),
         }),
       ).annotate({
         identifier: "OperationMetaServiceSpecification",
       });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(85, __c10, 5)),
+          serviceSpecification: S.optional(__S(681, __c42, 9)),
         }),
       ).annotate({
         identifier: "OperationMetaPropertyInfo",
       });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(77, __c9, 5)),
+          display: S.optional(__S(673, __c42, 1)),
           name: S.optional(S.String),
           origin: S.optional(S.String),
-          properties: S.optional(__S(86, __c10, 6)),
+          properties: S.optional(__S(682, __c42, 10)),
         }),
       ).annotate({ identifier: "OperationModel" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 12:
+      return S.Array(__S(683, __c42, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(88, __c11, 0),
+          value: __S(684, __c42, 12),
         }),
       ).annotate({ identifier: "OperationList" });
-    case 2:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3920,18 +3810,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListProviderShareSubscriptionByShareRequest",
       });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(401, __c25, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(91, __c11, 3),
+          value: __S(689, __c43, 1),
         }),
       ).annotate({
         identifier: "ProviderShareSubscriptionList",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3951,18 +3845,18 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListShareByAccountRequest",
       });
-    case 6:
-      return S.Array(__S(23, __c2, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(1073, __c67, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(94, __c11, 6),
+          value: __S(705, __c44, 1),
         }),
       ).annotate({ identifier: "ShareList" });
   }
 }
-function __c12(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3989,21 +3883,25 @@ function __c12(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(320, __c20, 0)),
           type: S.optional(S.String),
-          properties: __S(26, __c3, 2),
+          properties: __S(1120, __c70, 0),
         }),
       ).annotate({ identifier: "ShareSubscription" });
     case 2:
-      return S.Array(__S(97, __c12, 1));
+      return S.Array(__S(721, __c45, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(98, __c12, 2),
+          value: __S(722, __c45, 2),
         }),
       ).annotate({ identifier: "ShareSubscriptionList" });
-    case 4:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4022,7 +3920,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListShareSubscriptionSourceShareSynchronizationSettingsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
@@ -4030,20 +3928,62 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "SourceShareSynchronizationSetting",
       });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(737, __c46, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(102, __c12, 6),
+          value: __S(738, __c46, 2),
         }),
       ).annotate({
         identifier: "SourceShareSynchronizationSettingList",
       });
   }
 }
-function __c13(j: number): any {
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareSubscriptionName: S.String.pipe(T.Label()),
+          dataSetMappingName: S.String.pipe(T.Label()),
+          kind: S.String,
+          properties: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings/{dataSetMappingName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDataSetMappingRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          systemData: S.optional(__S(320, __c20, 0)),
+          type: S.optional(S.String),
+          kind: S.String,
+          properties: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "CreateDataSetMappingResponse",
+      });
+  }
+}
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4067,7 +4007,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListShareSubscriptionSynchronizationDetailsRequest",
       });
-    case 1:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataSetId: S.optional(S.String),
@@ -4087,18 +4031,22 @@ function __c13(j: number): any {
           vCore: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SynchronizationDetails" });
+    case 1:
+      return S.Array(__S(800, __c50, 0));
     case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(106, __c13, 2),
+          value: __S(801, __c50, 1),
         }),
       ).annotate({
         identifier: "SynchronizationDetailsList",
       });
-    case 4:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4119,18 +4067,22 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListShareSubscriptionSynchronizationsRequest",
       });
-    case 5:
-      return S.Array(__S(3, __c0, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(109, __c13, 5),
+          value: __S(817, __c51, 1),
         }),
       ).annotate({
         identifier: "ShareSubscriptionSynchronizationList",
       });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4162,7 +4114,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4201,15 +4153,19 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "ShareSynchronization" });
     case 2:
-      return S.Array(__S(113, __c14, 1));
+      return S.Array(__S(849, __c53, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(114, __c14, 2),
+          value: __S(850, __c53, 2),
         }),
       ).annotate({ identifier: "ShareSynchronizationList" });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4228,16 +4184,20 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListSynchronizationSettingsByShareRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(70, __c8, 6),
+          value: __S(609, __c38, 1),
         }),
       ).annotate({
         identifier: "SynchronizationSettingList",
       });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4256,17 +4216,9 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListTriggerByShareSubscriptionRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          expirationDate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProviderShareSubscriptionPropertiesInput",
-      });
   }
 }
-function __c15(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4276,7 +4228,7 @@ function __c15(j: number): any {
           accountName: S.String.pipe(T.Label()),
           shareName: S.String.pipe(T.Label()),
           providerShareSubscriptionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(119, __c14, 7)),
+          properties: S.optional(__S(912, __c57, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4288,7 +4240,23 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ProviderShareSubscriptionsAdjustRequest",
       });
-    case 1:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expirationDate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProviderShareSubscriptionPropertiesInput",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4296,7 +4264,7 @@ function __c15(j: number): any {
           accountName: S.String.pipe(T.Label()),
           shareName: S.String.pipe(T.Label()),
           providerShareSubscriptionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(119, __c14, 7)),
+          properties: S.optional(__S(912, __c57, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4308,7 +4276,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ProviderShareSubscriptionsReinstateRequest",
       });
-    case 2:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
@@ -4323,7 +4295,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "RegisterEmailRegistrationEmailRequest",
       });
-    case 3:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invitationId: S.String,
@@ -4331,11 +4307,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ConsumerInvitationPropertiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          properties: __S(123, __c15, 3),
+          properties: __S(960, __c60, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4347,7 +4323,73 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "RejectConsumerInvitationInvitationRequest",
       });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expirationDate: S.optional(S.String),
+          targetActiveDirectoryId: S.optional(S.String),
+          targetEmail: S.optional(S.String),
+          targetObjectId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InvitationPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareName: S.String.pipe(T.Label()),
+          invitationName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(976, __c61, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations/{invitationName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateInvitationRequest" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expirationDate: S.optional(S.String),
+          invitationId: S.optional(S.String),
+          invitationStatus: S.optional(S.String),
+          respondedAt: S.optional(S.String),
+          sentAt: S.optional(S.String),
+          targetActiveDirectoryId: S.optional(S.String),
+          targetEmail: S.optional(S.String),
+          targetObjectId: S.optional(S.String),
+          userEmail: S.optional(S.String),
+          userName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InvitationProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          systemData: S.optional(__S(320, __c20, 0)),
+          type: S.optional(S.String),
+          properties: S.optional(__S(992, __c62, 0)),
+        }),
+      ).annotate({ identifier: "CreateInvitationResponse" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4366,7 +4408,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "RevokeProviderShareSubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4385,13 +4431,17 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ShareSubscriptionsSynchronizeRequest",
       });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(304, __c19, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4403,7 +4453,184 @@ function __c15(j: number): any {
       ).annotate({ identifier: "UpdateAccountRequest" });
   }
 }
-
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          shareKind: S.optional(S.String),
+          terms: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SharePropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1056, __c66, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateShareRequest" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.String),
+          description: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          shareKind: S.optional(S.String),
+          terms: S.optional(S.String),
+          userEmail: S.optional(S.String),
+          userName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ShareProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          systemData: S.optional(__S(320, __c20, 0)),
+          type: S.optional(S.String),
+          properties: S.optional(__S(1072, __c67, 0)),
+        }),
+      ).annotate({ identifier: "CreateShareResponse" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expirationDate: S.optional(S.String),
+          invitationId: S.String,
+          sourceShareLocation: S.String,
+        }),
+      ).annotate({
+        identifier: "ShareSubscriptionPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareSubscriptionName: S.String.pipe(T.Label()),
+          properties: __S(1088, __c68, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateShareSubscriptionRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          systemData: S.optional(__S(320, __c20, 0)),
+          type: S.optional(S.String),
+          properties: __S(1120, __c70, 0),
+        }),
+      ).annotate({
+        identifier: "CreateShareSubscriptionResponse",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.String),
+          expirationDate: S.optional(S.String),
+          invitationId: S.String,
+          providerEmail: S.optional(S.String),
+          providerName: S.optional(S.String),
+          providerTenantName: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          shareDescription: S.optional(S.String),
+          shareKind: S.optional(S.String),
+          shareName: S.optional(S.String),
+          shareSubscriptionStatus: S.optional(S.String),
+          shareTerms: S.optional(S.String),
+          sourceShareLocation: S.String,
+          userEmail: S.optional(S.String),
+          userName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ShareSubscriptionProperties",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareName: S.String.pipe(T.Label()),
+          synchronizationSettingName: S.String.pipe(T.Label()),
+          kind: S.String,
+          properties: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSynchronizationSettingsRequest",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareSubscriptionName: S.String.pipe(T.Label()),
+          triggerName: S.String.pipe(T.Label()),
+          kind: S.String,
+          properties: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}",
+            code: 200,
+            apiVersion: "2021-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateTriggerRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

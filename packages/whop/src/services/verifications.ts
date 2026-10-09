@@ -888,7 +888,7 @@ export const createVerification: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateVerificationRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateVerificationResponse>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -902,8 +902,8 @@ export const getVerification: API.OperationMethod<
   GetVerificationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetVerificationRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetVerificationResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetVerificationRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<GetVerificationResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -917,8 +917,8 @@ export const listVerifications: API.OperationMethod<
   ListVerificationsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListVerificationsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ListVerificationsResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListVerificationsRequest>,
+  output: __S(70, __c4, 6) as any as S.Schema<ListVerificationsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -932,8 +932,8 @@ export const updateVerification: API.OperationMethod<
   UpdateVerificationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UpdateVerificationRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<UpdateVerificationResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<UpdateVerificationRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<UpdateVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -956,6 +956,60 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          action_url: S.optional(S.String),
+          details_label: S.optional(S.String),
+          details_required: S.optional(S.Boolean),
+          details_visible_for: S.optional(__S(17, __c1, 1)),
+          errors: S.optional(__S(32, __c2, 0)),
+          id: S.String,
+          label: S.String,
+          optional: S.optional(S.Boolean),
+          options: S.optional(__S(33, __c2, 1)),
+          requirement: S.String,
+          response_type: S.optional(S.String),
+          selection_mode: S.optional(S.String),
+          supporting_documents: S.optional(__S(22, __c1, 6)),
+          supporting_files_explanation_allowed: S.optional(S.Boolean),
+          supporting_files_required: S.optional(S.Boolean),
+          supporting_files_visible_for: S.optional(__S(17, __c1, 1)),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateVerificationResponseRequestedInformationItem",
+      });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.NullOr(__S(16, __c1, 0))),
+          business_name: S.optional(S.NullOr(S.String)),
+          business_structure: S.optional(S.NullOr(S.String)),
+          country: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          date_of_birth: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          kind: S.optional(S.String),
+          last_name: S.optional(S.NullOr(S.String)),
+          phone: S.optional(S.NullOr(S.String)),
+          requested_information: S.optional(__S(2, __c0, 2)),
+          required_documents: S.optional(__S(24, __c1, 8)),
+          session_url: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateVerificationResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           city: S.optional(S.NullOr(S.String)),
           country: S.optional(S.NullOr(S.String)),
           line1: S.optional(S.String),
@@ -966,9 +1020,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateVerificationResponseAddress",
       });
-    case 2:
+    case 1:
       return S.Array(S.String);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -977,24 +1031,16 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateVerificationResponseRequestedInformationItemErrorsItem",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.Array(S.String);
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           part_number: S.Number,
           url: S.String,
         }),
       ).annotate({ identifier: "FileMultipartUrl" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(19, __c1, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           content_type: S.NullOr(S.String),
@@ -1003,7 +1049,7 @@ function __c1(j: number): any {
           id: S.String,
           multipart_chunk_size: S.optional(S.NullOr(S.Number)),
           multipart_upload_id: S.optional(S.NullOr(S.String)),
-          multipart_upload_urls: S.optional(S.NullOr(__S(7, __c0, 7))),
+          multipart_upload_urls: S.optional(S.NullOr(__S(20, __c1, 4))),
           object: S.String,
           size: S.NullOr(S.Number),
           upload_headers: S.optional(S.Unknown),
@@ -1013,35 +1059,9 @@ function __c1(j: number): any {
           visibility: S.String,
         }),
       ).annotate({ identifier: "File" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action_url: S.optional(S.String),
-          details_label: S.optional(S.String),
-          details_required: S.optional(S.Boolean),
-          details_visible_for: S.optional(__S(2, __c0, 2)),
-          errors: S.optional(__S(4, __c0, 4)),
-          id: S.String,
-          label: S.String,
-          optional: S.optional(S.Boolean),
-          options: S.optional(__S(5, __c0, 5)),
-          requirement: S.String,
-          response_type: S.optional(S.String),
-          selection_mode: S.optional(S.String),
-          supporting_documents: S.optional(__S(9, __c1, 1)),
-          supporting_files_explanation_allowed: S.optional(S.Boolean),
-          supporting_files_required: S.optional(S.Boolean),
-          supporting_files_visible_for: S.optional(__S(2, __c0, 2)),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateVerificationResponseRequestedInformationItem",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(21, __c1, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           document: S.optional(S.String),
@@ -1051,72 +1071,56 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateVerificationResponseRequiredDocumentsItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.NullOr(__S(1, __c0, 1))),
-          business_name: S.optional(S.NullOr(S.String)),
-          business_structure: S.optional(S.NullOr(S.String)),
-          country: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.String),
-          date_of_birth: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          kind: S.optional(S.String),
-          last_name: S.optional(S.NullOr(S.String)),
-          phone: S.optional(S.NullOr(S.String)),
-          requested_information: S.optional(__S(11, __c1, 3)),
-          required_documents: S.optional(__S(13, __c1, 5)),
-          session_url: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateVerificationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/verifications/{id}", code: 200 })),
-      ).annotate({ identifier: "GetVerificationRequest" });
+    case 8:
+      return S.Array(__S(23, __c1, 7));
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(18, __c1, 2));
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/verifications/{id}", code: 200 })),
+      ).annotate({ identifier: "GetVerificationRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action_url: S.optional(S.String),
           details_label: S.optional(S.String),
           details_required: S.optional(S.Boolean),
-          details_visible_for: S.optional(__S(2, __c0, 2)),
-          errors: S.optional(__S(4, __c0, 4)),
+          details_visible_for: S.optional(__S(17, __c1, 1)),
+          errors: S.optional(__S(32, __c2, 0)),
           id: S.String,
           label: S.String,
           optional: S.optional(S.Boolean),
-          options: S.optional(__S(5, __c0, 5)),
+          options: S.optional(__S(33, __c2, 1)),
           requirement: S.String,
           response_type: S.optional(S.String),
           selection_mode: S.optional(S.String),
-          supporting_documents: S.optional(__S(9, __c1, 1)),
+          supporting_documents: S.optional(__S(22, __c1, 6)),
           supporting_files_explanation_allowed: S.optional(S.Boolean),
           supporting_files_required: S.optional(S.Boolean),
-          supporting_files_visible_for: S.optional(__S(2, __c0, 2)),
+          supporting_files_visible_for: S.optional(__S(17, __c1, 1)),
           type: S.String,
         }),
       ).annotate({
         identifier: "GetVerificationResponseRequestedInformationItem",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.NullOr(__S(1, __c0, 1))),
+          address: S.optional(S.NullOr(__S(16, __c1, 0))),
           business_name: S.optional(S.NullOr(S.String)),
           business_structure: S.optional(S.NullOr(S.String)),
           country: S.optional(S.NullOr(S.String)),
@@ -1128,14 +1132,18 @@ function __c2(j: number): any {
           kind: S.optional(S.String),
           last_name: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
-          requested_information: S.optional(__S(17, __c2, 1)),
-          required_documents: S.optional(__S(13, __c1, 5)),
+          requested_information: S.optional(__S(50, __c3, 2)),
+          required_documents: S.optional(__S(24, __c1, 8)),
           session_url: S.optional(S.NullOr(S.String)),
           status: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetVerificationResponse" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -1144,38 +1152,38 @@ function __c2(j: number): any {
           direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/verifications", code: 200 })),
       ).annotate({ identifier: "ListVerificationsRequest" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(18, __c1, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           action_url: S.optional(S.String),
           details_label: S.optional(S.String),
           details_required: S.optional(S.Boolean),
-          details_visible_for: S.optional(__S(2, __c0, 2)),
-          errors: S.optional(__S(20, __c2, 4)),
+          details_visible_for: S.optional(__S(17, __c1, 1)),
+          errors: S.optional(__S(65, __c4, 1)),
           id: S.String,
           label: S.String,
           optional: S.optional(S.Boolean),
-          options: S.optional(__S(2, __c0, 2)),
+          options: S.optional(__S(17, __c1, 1)),
           requirement: S.String,
           response_type: S.optional(S.String),
           selection_mode: S.optional(S.String),
-          supporting_documents: S.optional(__S(9, __c1, 1)),
+          supporting_documents: S.optional(__S(22, __c1, 6)),
           supporting_files_explanation_allowed: S.optional(S.Boolean),
           supporting_files_required: S.optional(S.Boolean),
-          supporting_files_visible_for: S.optional(__S(2, __c0, 2)),
+          supporting_files_visible_for: S.optional(__S(17, __c1, 1)),
           type: S.String,
         }),
       ).annotate({
         identifier: "ListVerificationsResponseDataItemRequestedInformationItem",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(66, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.NullOr(__S(1, __c0, 1))),
+          address: S.optional(S.NullOr(__S(16, __c1, 0))),
           business_name: S.optional(S.NullOr(S.String)),
           business_structure: S.optional(S.NullOr(S.String)),
           country: S.optional(S.NullOr(S.String)),
@@ -1187,8 +1195,8 @@ function __c2(j: number): any {
           kind: S.optional(S.String),
           last_name: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
-          requested_information: S.optional(__S(22, __c2, 6)),
-          required_documents: S.optional(__S(13, __c1, 5)),
+          requested_information: S.optional(__S(67, __c4, 3)),
+          required_documents: S.optional(__S(24, __c1, 8)),
           session_url: S.optional(S.NullOr(S.String)),
           status: S.optional(S.String),
           updated_at: S.optional(S.String),
@@ -1196,21 +1204,21 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListVerificationsResponseDataItem",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(68, __c4, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(24, __c3, 0)),
+          data: S.optional(__S(69, __c4, 5)),
         }),
       ).annotate({
         identifier: "ListVerificationsResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1219,36 +1227,36 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateVerificationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action_url: S.optional(S.String),
           details_label: S.optional(S.String),
           details_required: S.optional(S.Boolean),
-          details_visible_for: S.optional(__S(2, __c0, 2)),
-          errors: S.optional(__S(4, __c0, 4)),
+          details_visible_for: S.optional(__S(17, __c1, 1)),
+          errors: S.optional(__S(32, __c2, 0)),
           id: S.String,
           label: S.String,
           optional: S.optional(S.Boolean),
-          options: S.optional(__S(5, __c0, 5)),
+          options: S.optional(__S(33, __c2, 1)),
           requirement: S.String,
           response_type: S.optional(S.String),
           selection_mode: S.optional(S.String),
-          supporting_documents: S.optional(__S(9, __c1, 1)),
+          supporting_documents: S.optional(__S(22, __c1, 6)),
           supporting_files_explanation_allowed: S.optional(S.Boolean),
           supporting_files_required: S.optional(S.Boolean),
-          supporting_files_visible_for: S.optional(__S(2, __c0, 2)),
+          supporting_files_visible_for: S.optional(__S(17, __c1, 1)),
           type: S.String,
         }),
       ).annotate({
         identifier: "UpdateVerificationResponseRequestedInformationItem",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.NullOr(__S(1, __c0, 1))),
+          address: S.optional(S.NullOr(__S(16, __c1, 0))),
           business_name: S.optional(S.NullOr(S.String)),
           business_structure: S.optional(S.NullOr(S.String)),
           country: S.optional(S.NullOr(S.String)),
@@ -1260,8 +1268,8 @@ function __c3(j: number): any {
           kind: S.optional(S.String),
           last_name: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
-          requested_information: S.optional(__S(28, __c3, 4)),
-          required_documents: S.optional(__S(13, __c1, 5)),
+          requested_information: S.optional(__S(82, __c5, 2)),
+          required_documents: S.optional(__S(24, __c1, 8)),
           session_url: S.optional(S.NullOr(S.String)),
           status: S.optional(S.String),
           updated_at: S.optional(S.String),
@@ -1271,7 +1279,6 @@ function __c3(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

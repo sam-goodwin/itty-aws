@@ -1216,8 +1216,8 @@ export const canvasesConnectorsCall: API.OperationMethod<
   CanvasesConnectorsCallError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CanvasesConnectorsCallRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CanvasConnectorCallResult>,
+  input: __S(280, __c35, 0) as any as S.Schema<CanvasesConnectorsCallRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<CanvasConnectorCallResult>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1231,8 +1231,8 @@ export const canvasesDestroy: API.OperationMethod<
   CanvasesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CanvasesDestroyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CanvasesDestroyResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<CanvasesDestroyRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<CanvasesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1246,8 +1246,8 @@ export const canvasesEditCreate: API.OperationMethod<
   CanvasesEditCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CanvasesEditCreateRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CanvasSourcePublishResponse>,
+  input: __S(306, __c38, 2) as any as S.Schema<CanvasesEditCreateRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<CanvasSourcePublishResponse>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1261,8 +1261,8 @@ export const canvasesLayoutPatchCreate: API.OperationMethod<
   CanvasesLayoutPatchCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CanvasesLayoutPatchCreateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CanvasLayoutPublishResponse>,
+  input: __S(347, __c43, 3) as any as S.Schema<CanvasesLayoutPatchCreateRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<CanvasLayoutPublishResponse>,
   errors: [BadRequest, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1276,8 +1276,8 @@ export const canvasesLayoutPublishCreate: API.OperationMethod<
   CanvasesLayoutPublishCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CanvasesLayoutPublishCreateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CanvasLayoutPublishResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<CanvasesLayoutPublishCreateRequest>,
+  output: __S(352, __c44, 0) as any as S.Schema<CanvasLayoutPublishResponse>,
   errors: [BadRequest, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1291,8 +1291,8 @@ export const canvasesPublishCreate: API.OperationMethod<
   CanvasesPublishCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CanvasesPublishCreateRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CanvasSourcePublishResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<CanvasesPublishCreateRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<CanvasSourcePublishResponse>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1306,8 +1306,8 @@ export const canvasesPublishCurrentVersionCreate: API.OperationMethod<
   CanvasesPublishCurrentVersionCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CanvasesPublishCurrentVersionCreateRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CanvasBuild>,
+  input: __S(0, __c0, 0) as any as S.Schema<CanvasesPublishCurrentVersionCreateRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CanvasBuild>,
   errors: [Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1321,8 +1321,8 @@ export const canvasesValidateCreate: API.OperationMethod<
   CanvasesValidateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CanvasesValidateCreateRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CanvasValidateResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CanvasesValidateCreateRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CanvasValidateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1336,8 +1336,8 @@ export const createCanvase: API.OperationMethod<
   CreateCanvaseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateCanvaseRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Canvas>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateCanvaseRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<Canvas>,
   errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1351,8 +1351,8 @@ export const createCanvasesBuildAction: API.OperationMethod<
   CreateCanvasesBuildActionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateCanvasesBuildActionRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CanvasBuild>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateCanvasesBuildActionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CanvasBuild>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1366,8 +1366,8 @@ export const createCanvasesDraft: API.OperationMethod<
   CreateCanvasesDraftError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateCanvasesDraftRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<CanvasSourceDraftResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateCanvasesDraftRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<CanvasSourceDraftResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1381,8 +1381,8 @@ export const createCanvasesHome: API.OperationMethod<
   CreateCanvasesHomeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreateCanvasesHomeRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Canvas>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateCanvasesHomeRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<Canvas>,
   errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1396,8 +1396,8 @@ export const createCanvasesPromote: API.OperationMethod<
   CreateCanvasesPromoteError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateCanvasesPromoteRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CanvasBuild>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateCanvasesPromoteRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CanvasBuild>,
   errors: [Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1411,8 +1411,8 @@ export const createCanvasesReportError: API.OperationMethod<
   CreateCanvasesReportErrorError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateCanvasesReportErrorRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<CreateCanvasesReportErrorResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateCanvasesReportErrorRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<CreateCanvasesReportErrorResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1426,8 +1426,8 @@ export const createCanvasesRequestAgent: API.OperationMethod<
   CreateCanvasesRequestAgentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CreateCanvasesRequestAgentRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<CreateCanvasesRequestAgentResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateCanvasesRequestAgentRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<CreateCanvasesRequestAgentResponse>,
   errors: [Forbidden, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1441,8 +1441,8 @@ export const createCanvasesRequestFix: API.OperationMethod<
   CreateCanvasesRequestFixError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CreateCanvasesRequestFixRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<CreateCanvasesRequestFixResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateCanvasesRequestFixRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<CreateCanvasesRequestFixResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1456,8 +1456,8 @@ export const createCanvasesRevert: API.OperationMethod<
   CreateCanvasesRevertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateCanvasesRevertRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CanvasBuild>,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateCanvasesRevertRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CanvasBuild>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1471,8 +1471,8 @@ export const getCanvase: API.OperationMethod<
   GetCanvaseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetCanvaseRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Canvas>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetCanvaseRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<Canvas>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1486,8 +1486,8 @@ export const getCanvasesAction: API.OperationMethod<
   GetCanvasesActionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetCanvasesActionRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<CanvasActionsResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetCanvasesActionRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<CanvasActionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1501,8 +1501,8 @@ export const getCanvasesBuild: API.OperationMethod<
   GetCanvasesBuildError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetCanvasesBuildRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<CanvasBuildsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetCanvasesBuildRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<CanvasBuildsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1516,8 +1516,8 @@ export const getCanvasesComment: API.OperationMethod<
   GetCanvasesCommentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetCanvasesCommentRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<CanvasCommentDetail>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetCanvasesCommentRequest>,
+  output: __S(156, __c19, 4) as any as S.Schema<CanvasCommentDetail>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1531,8 +1531,8 @@ export const getCanvasesConnector: API.OperationMethod<
   GetCanvasesConnectorError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetCanvasesConnectorRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<CanvasConnectorsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetCanvasesConnectorRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<CanvasConnectorsResponse>,
   errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1546,8 +1546,8 @@ export const getCanvasesDraft: API.OperationMethod<
   GetCanvasesDraftError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetCanvasesDraftRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<GetCanvasesDraftResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetCanvasesDraftRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<GetCanvasesDraftResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1561,8 +1561,8 @@ export const getCanvasesLayout: API.OperationMethod<
   GetCanvasesLayoutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetCanvasesLayoutRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<CanvasLayoutWithComponentsResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetCanvasesLayoutRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<CanvasLayoutWithComponentsResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1576,8 +1576,8 @@ export const getCanvasesSource: API.OperationMethod<
   GetCanvasesSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetCanvasesSourceRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<CanvasSourceResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetCanvasesSourceRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<CanvasSourceResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1591,8 +1591,8 @@ export const getCanvasesState: API.OperationMethod<
   GetCanvasesStateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetCanvasesStateRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<CanvasStateResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetCanvasesStateRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<CanvasStateResponse>,
   errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1606,8 +1606,8 @@ export const getCanvasesStateValue: API.OperationMethod<
   GetCanvasesStateValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetCanvasesStateValueRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<CanvasStateValueResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetCanvasesStateValueRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<CanvasStateValueResponse>,
   errors: [BadRequest, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1621,8 +1621,8 @@ export const getCanvasesVersion: API.OperationMethod<
   GetCanvasesVersionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetCanvasesVersionRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<PaginatedCanvasVersionList>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetCanvasesVersionRequest>,
+  output: __S(227, __c28, 3) as any as S.Schema<PaginatedCanvasVersionList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1636,8 +1636,8 @@ export const getCanvasesView: API.OperationMethod<
   GetCanvasesViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetCanvasesViewRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<CanvasViewResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetCanvasesViewRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<CanvasViewResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1651,8 +1651,8 @@ export const invokeCanvasesAction: API.OperationMethod<
   InvokeCanvasesActionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<InvokeCanvasesActionRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<CanvasActionResult>,
+  input: __S(240, __c30, 0) as any as S.Schema<InvokeCanvasesActionRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<CanvasActionResult>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1666,8 +1666,8 @@ export const listCanvases: API.OperationMethod<
   ListCanvasesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListCanvasesRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<PaginatedCanvasList>,
+  input: __S(248, __c31, 0) as any as S.Schema<ListCanvasesRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<PaginatedCanvasList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1681,8 +1681,8 @@ export const listCanvasesComments: API.OperationMethod<
   ListCanvasesCommentsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListCanvasesCommentsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<CanvasCommentsResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<ListCanvasesCommentsRequest>,
+  output: __S(259, __c32, 3) as any as S.Schema<CanvasCommentsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1696,8 +1696,8 @@ export const setCanvasesState: API.OperationMethod<
   SetCanvasesStateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<SetCanvasesStateRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<CanvasStateEntry>,
+  input: __S(264, __c33, 0) as any as S.Schema<SetCanvasesStateRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<CanvasStateEntry>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1711,8 +1711,8 @@ export const updateCanvasesPartial: API.OperationMethod<
   UpdateCanvasesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<UpdateCanvasesPartialRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Canvas>,
+  input: __S(272, __c34, 0) as any as S.Schema<UpdateCanvasesPartialRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<Canvas>,
   errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1722,364 +1722,6 @@ export const updateCanvasesPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          approval_token: S.optional(S.String),
-          provider: S.String,
-          tool: S.String,
-          arguments: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/canvases/{id}/connectors/call/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CanvasesConnectorsCallRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          approval_token: S.NullOr(S.String),
-          status: S.String,
-          result: S.NullOr(__S(0, __c0, 0)),
-          detail: S.String,
-          truncated: S.Boolean,
-          connect_path: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CanvasConnectorCallResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/canvases/{id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CanvasesDestroyRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CanvasesDestroyResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          op: S.optional(S.String),
-          path: S.String,
-          content: S.optional(S.NullOr(S.String)),
-          old_string: S.optional(S.String),
-          new_string: S.optional(S.String),
-          replace_all: S.optional(S.Boolean),
-          new_path: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CanvasSourceEditOperation",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          insights: __S(7, __c0, 7),
-          inlineQueries: S.Boolean,
-          captureEvents: __S(7, __c0, 7),
-          state: S.optional(__S(8, __c1, 0)),
-          actions: S.optional(__S(7, __c0, 7)),
-          agentRequests: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CanvasPostHogCapabilities",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          origins: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "CanvasNetworkCapabilities",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.String,
-          tools: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "CanvasConnectorDeclaration",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          posthog: __S(9, __c1, 1),
-          network: __S(10, __c1, 2),
-          connectors: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "CanvasCapabilities" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          operations: S.optional(__S(6, __c0, 6)),
-          capabilities: S.optional(__S(13, __c1, 5)),
-          prompt: S.optional(S.String),
-          name: S.optional(S.String),
-          expected_current_version_id: S.NullOr(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/canvases/{id}/edit/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CanvasesEditCreateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          kind: S.String,
-          channel_id: S.String,
-          current_version_id: S.NullOr(S.String),
-          published_build_id: S.NullOr(S.String),
-          created_at: S.String,
-          url: S.String,
-        }),
-      ).annotate({ identifier: "CanvasSummary" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          severity: S.String,
-          code: S.String,
-          message: S.String,
-          path: S.optional(S.String),
-          line: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CanvasDiagnostic" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          build_status: S.String,
-          diagnostics: __S(17, __c2, 1),
-        }),
-      ).annotate({ identifier: "CanvasPublishedBuild" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          canvas: __S(15, __c1, 7),
-          current_version_id: S.String,
-          diagnostics: __S(17, __c2, 1),
-          build: __S(18, __c2, 2),
-        }),
-      ).annotate({
-        identifier: "CanvasSourcePublishResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          columns: S.Number,
-          rowHeight: S.Number,
-          gap: S.Number,
-        }),
-      ).annotate({ identifier: "CanvasGrid" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          status: S.String,
-          component: S.optional(S.NullOr(S.String)),
-          version: S.optional(S.NullOr(S.String)),
-          x: S.Number,
-          y: S.Number,
-          w: S.Number,
-          h: S.Number,
-          config: S.optional(S.NullOr(__S(0, __c0, 0))),
-          prompt: S.optional(S.NullOr(S.String)),
-          generationTaskId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "CanvasPlacement" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          component: S.optional(S.NullOr(S.String)),
-          version: S.optional(S.NullOr(S.String)),
-          x: S.optional(S.Number),
-          y: S.optional(S.Number),
-          w: S.optional(S.Number),
-          h: S.optional(S.Number),
-          config: S.optional(S.NullOr(__S(0, __c0, 0))),
-          prompt: S.optional(S.NullOr(S.String)),
-          generationTaskId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "CanvasPlacementChanges" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          op: S.String,
-          grid: S.optional(__S(20, __c2, 4)),
-          placement: S.optional(__S(21, __c2, 5)),
-          id: S.optional(S.String),
-          changes: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "CanvasLayoutPatchOperation",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          operations: __S(24, __c3, 0),
-          prompt: S.optional(S.String),
-          expected_current_version_id: S.NullOr(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/canvases/{id}/layout/patch/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CanvasesLayoutPatchCreateRequest",
-      });
-    case 2:
-      return S.Array(__S(21, __c2, 5));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          schemaVersion: S.Number,
-          grid: __S(20, __c2, 4),
-          placements: __S(26, __c3, 2),
-        }),
-      ).annotate({ identifier: "CanvasLayout" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          canvas: __S(15, __c1, 7),
-          layout: __S(27, __c3, 3),
-          current_version_id: S.String,
-        }),
-      ).annotate({
-        identifier: "CanvasLayoutPublishResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          layout: __S(27, __c3, 3),
-          prompt: S.optional(S.String),
-          expected_current_version_id: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/canvases/{id}/layout/publish/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CanvasesLayoutPublishCreateRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          encoding: S.String,
-          contentType: S.String,
-          content: S.String,
-        }),
-      ).annotate({ identifier: "CanvasSourceAsset" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          defaultW: S.Number,
-          defaultH: S.Number,
-          minW: S.Number,
-          minH: S.Number,
-          maxW: S.optional(S.Number),
-          maxH: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CanvasComponentSize" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          size: __S(33, __c4, 1),
-          configSchema: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "CanvasComponentMeta" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          schemaVersion: S.Number,
-          files: __S(30, __c3, 6),
-          assets: S.optional(__S(32, __c4, 0)),
-          entryHtml: S.String,
-          dependencies: S.optional(__S(30, __c3, 6)),
-          canvasSdkVersion: S.optional(S.String),
-          component: S.optional(__S(34, __c4, 2)),
-          capabilities: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "CanvasSourceProject" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          project: __S(35, __c4, 3),
-          prompt: S.optional(S.String),
-          name: S.optional(S.String),
-          expected_current_version_id: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/canvases/{id}/publish/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CanvasesPublishCreateRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2095,7 +1737,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CanvasesPublishCurrentVersionCreateRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.String,
@@ -2103,33 +1749,29 @@ function __c4(j: number): any {
           sizeBytes: S.Number,
         }),
       ).annotate({ identifier: "CanvasArtifactAsset" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           entryHtml: S.String,
-          assets: __S(39, __c4, 7),
-          dependencies: __S(30, __c3, 6),
+          assets: __S(9, __c1, 1),
+          dependencies: __S(384, __c48, 0),
           canvasSdkVersion: S.String,
           legacyComponentPath: S.optional(S.NullOr(S.String)),
           legacyCode: S.optional(S.NullOr(S.String)),
-          capabilities: __S(0, __c0, 0),
-          component: S.optional(S.NullOr(__S(0, __c0, 0))),
+          capabilities: __S(288, __c36, 0),
+          component: S.optional(S.NullOr(__S(288, __c36, 0))),
         }),
       ).annotate({ identifier: "CanvasArtifactManifest" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           source_version_id: S.String,
           build_status: S.String,
-          diagnostics: __S(17, __c2, 1),
-          manifest: S.optional(S.NullOr(__S(40, __c5, 0))),
+          diagnostics: __S(329, __c41, 1),
+          manifest: S.optional(S.NullOr(__S(10, __c1, 2))),
           integrity: S.NullOr(S.String),
           artifact_url: S.NullOr(S.String),
           pinned: S.Boolean,
@@ -2137,12 +1779,16 @@ function __c5(j: number): any {
           finished_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CanvasBuild" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          project: __S(35, __c4, 3),
+          project: __S(402, __c50, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2153,14 +1799,18 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CanvasesValidateCreateRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           valid: S.Boolean,
-          diagnostics: __S(17, __c2, 1),
+          diagnostics: __S(329, __c41, 1),
         }),
       ).annotate({ identifier: "CanvasValidateResponse" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2171,7 +1821,11 @@ function __c5(j: number): any {
           template_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/canvases/", code: 200 })),
       ).annotate({ identifier: "CreateCanvaseRequest" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -2181,11 +1835,15 @@ function __c5(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(0, __c0, 0))),
+          hedgehog_config: S.optional(S.NullOr(__S(288, __c36, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2199,14 +1857,18 @@ function __c5(j: number): any {
           pinned_at: S.NullOr(S.String),
           current_version_id: S.NullOr(S.String),
           published_build_id: S.NullOr(S.String),
-          component_meta: S.NullOr(__S(34, __c4, 2)),
-          created_by: __S(45, __c5, 5),
+          component_meta: S.NullOr(__S(393, __c49, 1)),
+          created_by: __S(32, __c4, 0),
           created_at: S.String,
           updated_at: S.String,
           url: S.String,
         }),
       ).annotate({ identifier: "Canvas" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2225,14 +1887,14 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          project: __S(35, __c4, 3),
+          project: __S(402, __c50, 2),
           prompt: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2248,28 +1910,32 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           widens: S.Boolean,
-          insights_added: __S(7, __c0, 7),
-          capture_events_added: __S(7, __c0, 7),
+          insights_added: __S(336, __c42, 0),
+          capture_events_added: __S(336, __c42, 0),
           inline_queries_enabled: S.Boolean,
           agent_requests_enabled: S.Boolean,
-          network_origins_added: __S(7, __c0, 7),
-          state_scopes_added: __S(7, __c0, 7),
-          actions_added: __S(7, __c0, 7),
-          connectors_added: __S(12, __c1, 4),
+          network_origins_added: __S(336, __c42, 0),
+          state_scopes_added: __S(336, __c42, 0),
+          actions_added: __S(336, __c42, 0),
+          connectors_added: __S(341, __c42, 5),
         }),
       ).annotate({ identifier: "CanvasCapabilityWidening" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           version_id: S.String,
-          build: __S(41, __c5, 1),
-          diagnostics: __S(17, __c2, 1),
-          capability_widening: __S(49, __c6, 1),
+          build: __S(11, __c1, 3),
+          diagnostics: __S(329, __c41, 1),
+          capability_widening: __S(57, __c7, 1),
         }),
       ).annotate({
         identifier: "CanvasSourceDraftResponse",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2279,7 +1945,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateCanvasesHomeRequest",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2296,7 +1966,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateCanvasesPromoteRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2313,11 +1987,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateCanvasesReportErrorRequest",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateCanvasesReportErrorResponse",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2335,7 +2017,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2354,7 +2036,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateCanvasesRequestFixRequest",
       });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2371,7 +2057,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateCanvasesRevertRequest",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2380,7 +2070,11 @@ function __c7(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/canvases/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "GetCanvaseRequest" });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2388,7 +2082,7 @@ function __c7(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/canvases/actions/", code: 200 }),
         ),
       ).annotate({ identifier: "GetCanvasesActionRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           verb: S.String,
@@ -2397,15 +2091,19 @@ function __c7(j: number): any {
           usage: S.String,
         }),
       ).annotate({ identifier: "CanvasActionDefinition" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(129, __c16, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(61, __c7, 5),
+          actions: __S(130, __c16, 2),
         }),
       ).annotate({ identifier: "CanvasActionsResponse" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2420,21 +2118,25 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCanvasesBuildRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(41, __c5, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           published_build_id: S.NullOr(S.String),
           current_version_id: S.NullOr(S.String),
-          builds: __S(64, __c8, 0),
+          builds: __S(144, __c18, 0),
         }),
       ).annotate({ identifier: "CanvasBuildsResponse" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(11, __c1, 3));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2454,7 +2156,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetCanvasesCommentRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -2469,7 +2171,7 @@ function __c8(j: number): any {
           height: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CanvasCommentAnchor" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2478,22 +2180,26 @@ function __c8(j: number): any {
           content_next_offset: S.NullOr(S.Number),
           author: S.NullOr(S.String),
           created_at: S.String,
-          anchor: S.NullOr(__S(67, __c8, 3)),
+          anchor: S.NullOr(__S(153, __c19, 1)),
           canvas_version_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CanvasCommentEntry" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(154, __c19, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           resolved: S.Boolean,
-          comments: __S(69, __c8, 5),
+          comments: __S(155, __c19, 3),
           next: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CanvasCommentDetail" });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2508,23 +2214,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetCanvasesConnectorRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           summary: S.String,
           is_read_only: S.Boolean,
-          input_schema: __S(0, __c0, 0),
+          input_schema: __S(288, __c36, 0),
           usage: S.String,
         }),
       ).annotate({ identifier: "CanvasConnectorTool" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
     case 2:
+      return S.Array(__S(161, __c20, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           provider: S.String,
@@ -2532,18 +2234,22 @@ function __c9(j: number): any {
           kind: S.String,
           connected: S.NullOr(S.Boolean),
           connect_path: S.String,
-          tools: __S(73, __c9, 1),
+          tools: __S(162, __c20, 2),
         }),
       ).annotate({ identifier: "CanvasConnector" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
     case 4:
+      return S.Array(__S(163, __c20, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          connectors: __S(75, __c9, 3),
+          connectors: __S(164, __c20, 4),
         }),
       ).annotate({ identifier: "CanvasConnectorsResponse" });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2556,28 +2262,28 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCanvasesDraftRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version_id: S.String,
           prompt: S.NullOr(S.String),
-          created_by: S.NullOr(__S(45, __c5, 5)),
+          created_by: S.NullOr(__S(32, __c4, 0)),
           created_at: S.String,
           build_status: S.NullOr(S.String),
           build_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CanvasDraft" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(79, __c9, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(169, __c21, 1));
+    case 3:
+      return S.suspend(() => __S(170, __c21, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCanvasesDraftResponse",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2592,30 +2298,38 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCanvasesLayoutRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          canvas: __S(312, __c39, 0),
+          layout: __S(363, __c45, 3),
+          current_version_id: S.NullOr(S.String),
+          component_lifecycles: S.optional(__S(185, __c23, 1)),
+        }),
+      ).annotate({
+        identifier: "CanvasLayoutWithComponentsResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           canvas_id: S.String,
           requested_version_id: S.NullOr(S.String),
           published_build_id: S.NullOr(S.String),
           current_version_id: S.NullOr(S.String),
-          builds: __S(64, __c8, 0),
+          builds: __S(144, __c18, 0),
         }),
       ).annotate({ identifier: "CanvasComponentLifecycle" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          canvas: __S(15, __c1, 7),
-          layout: __S(27, __c3, 3),
-          current_version_id: S.NullOr(S.String),
-          component_lifecycles: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({
-        identifier: "CanvasLayoutWithComponentsResponse",
-      });
-    case 5:
+    case 1:
+      return S.Array(__S(184, __c23, 0));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2629,15 +2343,19 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCanvasesSourceRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          canvas: __S(15, __c1, 7),
-          project: __S(35, __c4, 3),
+          canvas: __S(312, __c39, 0),
+          project: __S(402, __c50, 2),
           current_version_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CanvasSourceResponse" });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2656,9 +2374,19 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCanvasesStateRequest" });
+    case 1:
+      return S.Array(__S(208, __c26, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: __S(201, __c25, 1),
+          next_offset: S.NullOr(S.Number),
+          complete: S.Boolean,
+        }),
+      ).annotate({ identifier: "CanvasStateResponse" });
   }
 }
-function __c11(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2669,17 +2397,11 @@ function __c11(j: number): any {
           updated_at: S.String,
         }),
       ).annotate({ identifier: "CanvasStateEntry" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          entries: __S(89, __c11, 1),
-          next_offset: S.NullOr(S.Number),
-          complete: S.Boolean,
-        }),
-      ).annotate({ identifier: "CanvasStateResponse" });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2699,7 +2421,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetCanvasesStateValueRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scope: S.String,
@@ -2712,7 +2434,11 @@ function __c11(j: number): any {
           complete: S.Boolean,
         }),
       ).annotate({ identifier: "CanvasStateValueResponse" });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2729,7 +2455,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetCanvasesVersionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2737,28 +2463,28 @@ function __c11(j: number): any {
           prompt: S.NullOr(S.String),
           task_id: S.NullOr(S.String),
           draft: S.Boolean,
-          created_by: S.NullOr(__S(45, __c5, 5)),
+          created_by: S.NullOr(__S(32, __c4, 0)),
           created_at: S.String,
         }),
       ).annotate({ identifier: "CanvasVersion" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(225, __c28, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(95, __c11, 7),
+          results: __S(226, __c28, 2),
         }),
       ).annotate({
         identifier: "PaginatedCanvasVersionList",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2771,26 +2497,30 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCanvasesViewRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          canvas: __S(46, __c5, 6),
-          published_build: S.NullOr(__S(41, __c5, 1)),
+          canvas: __S(40, __c5, 0),
+          published_build: S.NullOr(__S(11, __c1, 3)),
           current_version_id: S.NullOr(S.String),
           has_active_build: S.Boolean,
-          source: S.optional(S.NullOr(__S(35, __c4, 3))),
-          layout: S.optional(S.NullOr(__S(27, __c3, 3))),
-          component_lifecycles: S.optional(__S(83, __c10, 3)),
+          source: S.optional(S.NullOr(__S(402, __c50, 2))),
+          layout: S.optional(S.NullOr(__S(363, __c45, 3))),
+          component_lifecycles: S.optional(__S(185, __c23, 1)),
           sandbox_document_url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CanvasViewResponse" });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           verb: S.String,
-          payload: S.optional(__S(0, __c0, 0)),
+          payload: S.optional(__S(288, __c36, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2801,14 +2531,18 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "InvokeCanvasesActionRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           verb: S.String,
-          result: __S(0, __c0, 0),
+          result: __S(288, __c36, 0),
         }),
       ).annotate({ identifier: "CanvasActionResult" });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2820,20 +2554,20 @@ function __c12(j: number): any {
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/canvases/", code: 200 })),
       ).annotate({ identifier: "ListCanvasesRequest" });
-    case 6:
-      return S.Array(__S(46, __c5, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(102, __c12, 6),
+          results: __S(249, __c31, 1),
         }),
       ).annotate({ identifier: "PaginatedCanvasList" });
   }
 }
-function __c13(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2866,15 +2600,19 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "CanvasCommentSummary" });
     case 2:
-      return S.Array(__S(105, __c13, 1));
+      return S.Array(__S(257, __c32, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          comments: __S(106, __c13, 2),
+          comments: __S(258, __c32, 2),
           next: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CanvasCommentsResponse" });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2890,7 +2628,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SetCanvasesStateRequest" });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2908,7 +2650,412 @@ function __c13(j: number): any {
       });
   }
 }
-
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          approval_token: S.optional(S.String),
+          provider: S.String,
+          tool: S.String,
+          arguments: S.optional(__S(288, __c36, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/canvases/{id}/connectors/call/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CanvasesConnectorsCallRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          approval_token: S.NullOr(S.String),
+          status: S.String,
+          result: S.NullOr(__S(288, __c36, 0)),
+          detail: S.String,
+          truncated: S.Boolean,
+          connect_path: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CanvasConnectorCallResult",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/canvases/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CanvasesDestroyRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CanvasesDestroyResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          op: S.optional(S.String),
+          path: S.String,
+          content: S.optional(S.NullOr(S.String)),
+          old_string: S.optional(S.String),
+          new_string: S.optional(S.String),
+          replace_all: S.optional(S.Boolean),
+          new_path: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CanvasSourceEditOperation",
+      });
+    case 1:
+      return S.Array(__S(304, __c38, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          operations: S.optional(__S(305, __c38, 1)),
+          capabilities: S.optional(__S(342, __c42, 6)),
+          prompt: S.optional(S.String),
+          name: S.optional(S.String),
+          expected_current_version_id: S.NullOr(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/canvases/{id}/edit/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CanvasesEditCreateRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          kind: S.String,
+          channel_id: S.String,
+          current_version_id: S.NullOr(S.String),
+          published_build_id: S.NullOr(S.String),
+          created_at: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "CanvasSummary" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          build_status: S.String,
+          diagnostics: __S(329, __c41, 1),
+        }),
+      ).annotate({ identifier: "CanvasPublishedBuild" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          canvas: __S(312, __c39, 0),
+          current_version_id: S.String,
+          diagnostics: __S(329, __c41, 1),
+          build: __S(320, __c40, 0),
+        }),
+      ).annotate({
+        identifier: "CanvasSourcePublishResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          severity: S.String,
+          code: S.String,
+          message: S.String,
+          path: S.optional(S.String),
+          line: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CanvasDiagnostic" });
+    case 1:
+      return S.Array(__S(328, __c41, 0));
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          insights: __S(336, __c42, 0),
+          inlineQueries: S.Boolean,
+          captureEvents: __S(336, __c42, 0),
+          state: S.optional(__S(337, __c42, 1)),
+          actions: S.optional(__S(336, __c42, 0)),
+          agentRequests: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CanvasPostHogCapabilities",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          origins: __S(336, __c42, 0),
+        }),
+      ).annotate({
+        identifier: "CanvasNetworkCapabilities",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.String,
+          tools: __S(336, __c42, 0),
+        }),
+      ).annotate({
+        identifier: "CanvasConnectorDeclaration",
+      });
+    case 5:
+      return S.Array(__S(340, __c42, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          posthog: __S(338, __c42, 2),
+          network: __S(339, __c42, 3),
+          connectors: S.optional(__S(341, __c42, 5)),
+        }),
+      ).annotate({ identifier: "CanvasCapabilities" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          component: S.optional(S.NullOr(S.String)),
+          version: S.optional(S.NullOr(S.String)),
+          x: S.optional(S.Number),
+          y: S.optional(S.Number),
+          w: S.optional(S.Number),
+          h: S.optional(S.Number),
+          config: S.optional(S.NullOr(__S(288, __c36, 0))),
+          prompt: S.optional(S.NullOr(S.String)),
+          generationTaskId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "CanvasPlacementChanges" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          op: S.String,
+          grid: S.optional(__S(360, __c45, 0)),
+          placement: S.optional(__S(361, __c45, 1)),
+          id: S.optional(S.String),
+          changes: S.optional(__S(344, __c43, 0)),
+        }),
+      ).annotate({
+        identifier: "CanvasLayoutPatchOperation",
+      });
+    case 2:
+      return S.Array(__S(345, __c43, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          operations: __S(346, __c43, 2),
+          prompt: S.optional(S.String),
+          expected_current_version_id: S.NullOr(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/canvases/{id}/layout/patch/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CanvasesLayoutPatchCreateRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          canvas: __S(312, __c39, 0),
+          layout: __S(363, __c45, 3),
+          current_version_id: S.String,
+        }),
+      ).annotate({
+        identifier: "CanvasLayoutPublishResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          columns: S.Number,
+          rowHeight: S.Number,
+          gap: S.Number,
+        }),
+      ).annotate({ identifier: "CanvasGrid" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          status: S.String,
+          component: S.optional(S.NullOr(S.String)),
+          version: S.optional(S.NullOr(S.String)),
+          x: S.Number,
+          y: S.Number,
+          w: S.Number,
+          h: S.Number,
+          config: S.optional(S.NullOr(__S(288, __c36, 0))),
+          prompt: S.optional(S.NullOr(S.String)),
+          generationTaskId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "CanvasPlacement" });
+    case 2:
+      return S.Array(__S(361, __c45, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          schemaVersion: S.Number,
+          grid: __S(360, __c45, 0),
+          placements: __S(362, __c45, 2),
+        }),
+      ).annotate({ identifier: "CanvasLayout" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          layout: __S(363, __c45, 3),
+          prompt: S.optional(S.String),
+          expected_current_version_id: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/canvases/{id}/layout/publish/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CanvasesLayoutPublishCreateRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          project: __S(402, __c50, 2),
+          prompt: S.optional(S.String),
+          name: S.optional(S.String),
+          expected_current_version_id: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/canvases/{id}/publish/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CanvasesPublishCreateRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          defaultW: S.Number,
+          defaultH: S.Number,
+          minW: S.Number,
+          minH: S.Number,
+          maxW: S.optional(S.Number),
+          maxH: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CanvasComponentSize" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          size: __S(392, __c49, 0),
+          configSchema: S.optional(__S(288, __c36, 0)),
+        }),
+      ).annotate({ identifier: "CanvasComponentMeta" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          encoding: S.String,
+          contentType: S.String,
+          content: S.String,
+        }),
+      ).annotate({ identifier: "CanvasSourceAsset" });
+    case 1:
+      return S.Record(S.String, __S(400, __c50, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          schemaVersion: S.Number,
+          files: __S(384, __c48, 0),
+          assets: S.optional(__S(401, __c50, 1)),
+          entryHtml: S.String,
+          dependencies: S.optional(__S(384, __c48, 0)),
+          canvasSdkVersion: S.optional(S.String),
+          component: S.optional(__S(393, __c49, 1)),
+          capabilities: S.optional(__S(342, __c42, 6)),
+        }),
+      ).annotate({ identifier: "CanvasSourceProject" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

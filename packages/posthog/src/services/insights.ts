@@ -8864,8 +8864,8 @@ export const createInsight: API.OperationMethod<
   CreateInsightError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateInsightRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<InsightOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<CreateInsightRequest>,
+  output: __S(410, __c25, 10) as any as S.Schema<InsightOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8879,8 +8879,8 @@ export const createInsightsSharingPassword: API.OperationMethod<
   CreateInsightsSharingPasswordError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateInsightsSharingPasswordRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<SharingConfiguration>,
+  input: __S(416, __c26, 0) as any as S.Schema<CreateInsightsSharingPasswordRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<SharingConfiguration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8894,8 +8894,8 @@ export const createInsightsViewed: API.OperationMethod<
   CreateInsightsViewedError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateInsightsViewedRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateInsightsViewedResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<CreateInsightsViewedRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<CreateInsightsViewedResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8908,8 +8908,8 @@ export const getInsight: API.OperationMethod<
   GetInsightError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetInsightRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<InsightOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetInsightRequest>,
+  output: __S(410, __c25, 10) as any as S.Schema<InsightOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8923,8 +8923,8 @@ export const getInsightsActivity: API.OperationMethod<
   GetInsightsActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetInsightsActivityRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ActivityLogPaginatedResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetInsightsActivityRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<ActivityLogPaginatedResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8938,8 +8938,8 @@ export const getInsightsAllActivity: API.OperationMethod<
   GetInsightsAllActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetInsightsAllActivityRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ActivityLogPaginatedResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetInsightsAllActivityRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<ActivityLogPaginatedResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8953,8 +8953,8 @@ export const getInsightsMyLastViewed: API.OperationMethod<
   GetInsightsMyLastViewedError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetInsightsMyLastViewedRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetInsightsMyLastViewedResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetInsightsMyLastViewedRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<GetInsightsMyLastViewedResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8967,8 +8967,8 @@ export const getInsightsThreshold: API.OperationMethod<
   GetInsightsThresholdError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetInsightsThresholdRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ThresholdWithAlert>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetInsightsThresholdRequest>,
+  output: __S(30, __c1, 14) as any as S.Schema<ThresholdWithAlert>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8982,8 +8982,8 @@ export const getInsightsTrending: API.OperationMethod<
   GetInsightsTrendingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetInsightsTrendingRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<PaginatedTrendingInsightList>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetInsightsTrendingRequest>,
+  output: __S(36, __c2, 4) as any as S.Schema<PaginatedTrendingInsightList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8997,8 +8997,8 @@ export const insightsBulkDeleteCreate: API.OperationMethod<
   InsightsBulkDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<InsightsBulkDeleteCreateRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<InsightBulkDeleteResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<InsightsBulkDeleteCreateRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<InsightBulkDeleteResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9012,8 +9012,8 @@ export const insightsBulkRestoreCreate: API.OperationMethod<
   InsightsBulkRestoreCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<InsightsBulkRestoreCreateRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<InsightBulkRestoreResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<InsightsBulkRestoreCreateRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<InsightBulkRestoreResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9027,8 +9027,8 @@ export const insightsBulkSetTestAccountFilterCreate: API.OperationMethod<
   InsightsBulkSetTestAccountFilterCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<InsightsBulkSetTestAccountFilterCreateRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<InsightBulkSetTestAccountFilterResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<InsightsBulkSetTestAccountFilterCreateRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<InsightBulkSetTestAccountFilterResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9042,8 +9042,8 @@ export const insightsBulkUpdateTagsCreate: API.OperationMethod<
   InsightsBulkUpdateTagsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<InsightsBulkUpdateTagsCreateRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<BulkUpdateTagsResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<InsightsBulkUpdateTagsCreateRequest>,
+  output: __S(117, __c7, 5) as any as S.Schema<BulkUpdateTagsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9056,8 +9056,8 @@ export const insightsCancelCreate: API.OperationMethod<
   InsightsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<InsightsCancelCreateRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<InsightsCancelCreateResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<InsightsCancelCreateRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<InsightsCancelCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9071,8 +9071,8 @@ export const insightsDestroy: API.OperationMethod<
   InsightsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<InsightsDestroyRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<InsightsDestroyResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<InsightsDestroyRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<InsightsDestroyResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9090,8 +9090,8 @@ export const insightsGenerateMetadataCreate: API.OperationMethod<
   InsightsGenerateMetadataCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<InsightsGenerateMetadataCreateRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<InsightsGenerateMetadataCreateResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<InsightsGenerateMetadataCreateRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<InsightsGenerateMetadataCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9105,8 +9105,8 @@ export const insightsSharingPasswordsDestroy: API.OperationMethod<
   InsightsSharingPasswordsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<InsightsSharingPasswordsDestroyRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<InsightsSharingPasswordsDestroyResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<InsightsSharingPasswordsDestroyRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<InsightsSharingPasswordsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9119,8 +9119,8 @@ export const insightsSharingRefreshCreate: API.OperationMethod<
   InsightsSharingRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<InsightsSharingRefreshCreateRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<SharingConfiguration>,
+  input: __S(208, __c13, 0) as any as S.Schema<InsightsSharingRefreshCreateRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<SharingConfiguration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9133,8 +9133,8 @@ export const listInsights: API.OperationMethod<
   ListInsightsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListInsightsRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<PaginatedInsightListOutput>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListInsightsRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<PaginatedInsightListOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9147,8 +9147,8 @@ export const listInsightsSharing: API.OperationMethod<
   ListInsightsSharingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListInsightsSharingRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ListInsightsSharingResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListInsightsSharingRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<ListInsightsSharingResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9161,8 +9161,8 @@ export const listInsightsThresholds: API.OperationMethod<
   ListInsightsThresholdsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListInsightsThresholdsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<PaginatedThresholdWithAlertList>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListInsightsThresholdsRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<PaginatedThresholdWithAlertList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9175,8 +9175,8 @@ export const updateInsight: API.OperationMethod<
   UpdateInsightError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<UpdateInsightRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<InsightOutput>,
+  input: __S(272, __c17, 0) as any as S.Schema<UpdateInsightRequest>,
+  output: __S(410, __c25, 10) as any as S.Schema<InsightOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9189,8 +9189,8 @@ export const updateInsightsPartial: API.OperationMethod<
   UpdateInsightsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<UpdateInsightsPartialRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<InsightOutput>,
+  input: __S(288, __c18, 0) as any as S.Schema<UpdateInsightsPartialRequest>,
+  output: __S(410, __c25, 10) as any as S.Schema<InsightOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9200,389 +9200,6 @@ export const updateInsightsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          group_type_index: S.optional(S.NullOr(S.Number)),
-          histogram_bin_count: S.optional(S.NullOr(S.Number)),
-          normalize_url: S.optional(S.NullOr(S.Boolean)),
-          property: S.optional(S.Unknown),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Breakdown" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          breakdown: S.optional(S.NullOr(S.Unknown)),
-          breakdown_group_type_index: S.optional(S.NullOr(S.Number)),
-          breakdown_hide_other_aggregation: S.optional(S.NullOr(S.Boolean)),
-          breakdown_histogram_bin_count: S.optional(S.NullOr(S.Number)),
-          breakdown_limit: S.optional(S.NullOr(S.Number)),
-          breakdown_normalize_url: S.optional(S.NullOr(S.Boolean)),
-          breakdown_path_cleaning: S.optional(S.NullOr(S.Boolean)),
-          breakdown_type: S.optional(S.NullOr(S.String)),
-          breakdowns: S.optional(S.NullOr(__S(1, __c0, 1))),
-        }),
-      ).annotate({ identifier: "BreakdownFilter" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          date_from: S.optional(S.String),
-          date_to: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResolvedDateRangeResponse",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(S.Number);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.optional(S.NullOr(S.String)),
-          derived_name: S.optional(S.NullOr(S.String)),
-          query: S.optional(S.NullOr(S.Unknown)),
-          order: S.optional(S.NullOr(S.Number)),
-          deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(7, __c0, 7)),
-          description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(8, __c1, 0)),
-          favorited: S.optional(S.Boolean),
-          _create_in_folder: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/insights/", code: 200 })),
-      ).annotate({ identifier: "CreateInsightRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          dashboard_id: S.optional(S.Number),
-          deleted: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "DashboardTileBasic" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(6, __c0, 6))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          breakdown_filter: S.optional(S.NullOr(__S(2, __c0, 2))),
-          date_from: S.optional(S.NullOr(S.String)),
-          date_to: S.optional(S.NullOr(S.String)),
-          explicitDate: S.optional(S.NullOr(S.Boolean)),
-          filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-          interval: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(14, __c1, 6))),
-        }),
-      ).annotate({ identifier: "DashboardFilter" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          breakdown_filter: S.optional(S.NullOr(__S(2, __c0, 2))),
-          date_from: S.optional(S.NullOr(S.String)),
-          date_to: S.optional(S.NullOr(S.String)),
-          explicitDate: S.optional(S.NullOr(S.Boolean)),
-          filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-          ignoreDashboardFilters: S.optional(S.NullOr(S.Boolean)),
-          interval: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(16, __c2, 0))),
-        }),
-      ).annotate({ identifier: "TileFilters" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dashboard: S.optional(S.NullOr(__S(15, __c1, 7))),
-          tile: S.optional(S.NullOr(__S(17, __c2, 1))),
-          overridden_dashboard: S.optional(S.NullOr(__S(15, __c1, 7))),
-        }),
-      ).annotate({
-        identifier: "InsightFilterOverrideContext",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          short_id: S.optional(S.String),
-          name: S.optional(S.NullOr(S.String)),
-          derived_name: S.optional(S.NullOr(S.String)),
-          query: S.optional(S.NullOr(S.Unknown)),
-          order: S.optional(S.NullOr(S.Number)),
-          deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(7, __c0, 7)),
-          dashboard_tiles: S.optional(__S(11, __c1, 3)),
-          last_refresh: S.optional(S.NullOr(S.String)),
-          cache_target_age: S.optional(S.NullOr(S.String)),
-          next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
-          result: S.optional(S.Unknown),
-          hasMore: S.optional(S.NullOr(S.Boolean)),
-          columns: S.optional(S.NullOr(__S(3, __c0, 3))),
-          created_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(12, __c1, 4))),
-          description: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
-          favorited: S.optional(S.Boolean),
-          last_modified_at: S.optional(S.String),
-          last_modified_by: S.optional(S.NullOr(__S(12, __c1, 4))),
-          is_sample: S.optional(S.Boolean),
-          effective_restriction_level: S.optional(S.Number),
-          effective_privilege_level: S.optional(S.Number),
-          user_access_level: S.optional(S.NullOr(S.String)),
-          timezone: S.optional(S.NullOr(S.String)),
-          is_cached: S.optional(S.Boolean),
-          query_status: S.optional(S.Unknown),
-          hogql: S.optional(S.NullOr(S.String)),
-          types: S.optional(S.NullOr(__S(8, __c1, 0))),
-          resolved_date_range: S.optional(S.NullOr(__S(5, __c0, 5))),
-          query_scan: S.optional(S.Unknown),
-          warnings: S.optional(S.NullOr(__S(13, __c1, 5))),
-          alerts: S.optional(__S(8, __c1, 0)),
-          filter_override_context: S.optional(S.NullOr(__S(18, __c2, 2))),
-          last_viewed_at: S.optional(S.NullOr(S.String)),
-          search_match_type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "InsightOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          insight_id: S.Number.pipe(T.Label()),
-          enabled: S.optional(S.Boolean),
-          settings: S.optional(S.Unknown),
-          password_required: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/insights/{insight_id}/sharing/passwords/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateInsightsSharingPasswordRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          created_at: S.optional(S.String),
-          note: S.optional(S.NullOr(S.String)),
-          created_by_email: S.optional(S.String),
-          is_active: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SharePassword" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          settings: S.optional(S.Unknown),
-          password_required: S.optional(S.Boolean),
-          share_passwords: S.optional(__S(22, __c2, 6)),
-          user_access_level: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "SharingConfiguration" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          insight_ids: __S(7, __c0, 7),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/insights/viewed/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateInsightsViewedRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateInsightsViewedResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          filters_override: S.optional(S.String.pipe(T.Query())),
-          format: S.optional(S.String.pipe(T.Query())),
-          from_dashboard: S.optional(S.Number.pipe(T.Query())),
-          include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
-          refresh: S.optional(S.String.pipe(T.Query())),
-          variables_override: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/insights/{id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetInsightRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/insights/{id}/activity/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetInsightsActivityRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          action: S.optional(S.String),
-          field: S.optional(S.String),
-          before: S.optional(S.Unknown),
-          after: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "Change" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          source: S.optional(S.Unknown),
-          target: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "Merge" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          job_type: S.optional(S.String),
-          job_id: S.optional(S.String),
-          payload: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "Trigger" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          changes: S.optional(__S(29, __c3, 5)),
-          merge: S.optional(__S(30, __c3, 6)),
-          trigger: S.optional(__S(31, __c3, 7)),
-          name: S.optional(S.String),
-          short_id: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Detail" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          user: S.optional(S.NullOr(S.Unknown)),
-          activity: S.optional(S.String),
-          scope: S.optional(S.String),
-          item_id: S.optional(S.String),
-          detail: S.optional(__S(32, __c4, 0)),
-          created_at: S.optional(S.String),
-          is_system: S.optional(S.Boolean),
-          was_impersonated: S.optional(S.Boolean),
-          client: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ActivityLogEntry" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(34, __c4, 2)),
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          total_count: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ActivityLogPaginatedResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/insights/activity/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetInsightsAllActivityRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/insights/my_last_viewed/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetInsightsMyLastViewedRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GetInsightsMyLastViewedResponse",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -9600,38 +9217,40 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           lower: S.optional(S.NullOr(S.Number)),
           upper: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "InsightsThresholdBounds" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          bounds: S.optional(S.NullOr(__S(40, __c5, 0))),
+          bounds: S.optional(S.NullOr(__S(17, __c1, 1))),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "InsightThreshold" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           name: S.optional(S.String),
-          configuration: S.optional(__S(41, __c5, 1)),
+          configuration: S.optional(__S(18, __c1, 2)),
         }),
       ).annotate({ identifier: "Threshold" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertCondition" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
@@ -9643,16 +9262,16 @@ function __c5(j: number): any {
           display_label: S.String,
         }),
       ).annotate({ identifier: "AlertDelivery" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
     case 6:
+      return S.Array(__S(21, __c1, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           calculated_value: S.optional(S.NullOr(S.Number)),
           state: S.optional(S.String),
-          error: S.optional(S.NullOr(__S(4, __c0, 4))),
+          error: S.optional(S.NullOr(__S(16, __c1, 0))),
           targets_notified: S.optional(S.Boolean),
           anomaly_scores: S.optional(S.Unknown),
           triggered_points: S.optional(S.Unknown),
@@ -9665,16 +9284,12 @@ function __c5(j: number): any {
           investigation_notebook_short_id: S.optional(S.NullOr(S.String)),
           notification_sent_at: S.optional(S.NullOr(S.String)),
           notification_suppressed_by_agent: S.optional(S.Boolean),
-          deliveries: S.optional(S.NullOr(__S(45, __c5, 5))),
+          deliveries: S.optional(S.NullOr(__S(22, __c1, 6))),
         }),
       ).annotate({ identifier: "AlertCheck" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(23, __c1, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           start: S.optional(S.String),
@@ -9683,35 +9298,35 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "AlertScheduleRestrictionWindow",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 10:
+      return S.Array(__S(25, __c1, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          blocked_windows: S.optional(__S(49, __c6, 1)),
+          blocked_windows: S.optional(__S(26, __c1, 10)),
         }),
       ).annotate({ identifier: "AlertScheduleRestriction" });
-    case 3:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(12, __c1, 4))),
+          created_by: S.optional(S.NullOr(__S(337, __c21, 1))),
           created_at: S.optional(S.String),
           insight: S.optional(S.Number),
           insight_short_id: S.optional(S.String),
           insight_display_name: S.optional(S.String),
           llm_detector_available: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
-          subscribed_users: S.optional(__S(7, __c0, 7)),
-          threshold: S.optional(__S(42, __c5, 2)),
-          condition: S.optional(S.NullOr(__S(43, __c5, 3))),
+          subscribed_users: S.optional(__S(320, __c20, 0)),
+          threshold: S.optional(__S(19, __c1, 3)),
+          condition: S.optional(S.NullOr(__S(20, __c1, 4))),
           state: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           last_notified_at: S.optional(S.NullOr(S.String)),
           last_checked_at: S.optional(S.NullOr(S.String)),
           schedule_start_time: S.optional(S.NullOr(S.String)),
           next_check_at: S.optional(S.NullOr(S.String)),
-          checks: S.optional(__S(47, __c5, 7)),
+          checks: S.optional(__S(24, __c1, 8)),
           checks_total: S.optional(S.NullOr(S.Number)),
           config: S.optional(S.NullOr(S.Unknown)),
           detector_config: S.optional(S.NullOr(S.Unknown)),
@@ -9719,7 +9334,7 @@ function __c6(j: number): any {
           calculation_interval: S.optional(S.String),
           snoozed_until: S.optional(S.NullOr(S.String)),
           skip_weekend: S.optional(S.NullOr(S.Boolean)),
-          schedule_restriction: S.optional(S.NullOr(__S(50, __c6, 2))),
+          schedule_restriction: S.optional(S.NullOr(__S(27, __c1, 11))),
           last_value: S.optional(S.NullOr(S.Number)),
           investigation_agent_enabled: S.optional(S.Boolean),
           investigation_gates_notifications: S.optional(S.Boolean),
@@ -9727,19 +9342,23 @@ function __c6(j: number): any {
           search_match_type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Alert" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 13:
+      return S.Array(__S(28, __c1, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           name: S.optional(S.String),
-          configuration: S.optional(__S(41, __c5, 1)),
-          alerts: S.optional(__S(52, __c6, 4)),
+          configuration: S.optional(__S(18, __c1, 2)),
+          alerts: S.optional(__S(29, __c1, 13)),
         }),
       ).annotate({ identifier: "ThresholdWithAlert" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -9758,13 +9377,9 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetInsightsTrendingRequest",
       });
-    case 7:
-      return S.Array(__S(12, __c1, 4));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(337, __c21, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -9772,14 +9387,14 @@ function __c7(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           derived_name: S.optional(S.NullOr(S.String)),
           query: S.optional(S.Unknown),
-          dashboards: S.optional(__S(7, __c0, 7)),
-          dashboard_tiles: __S(11, __c1, 3),
+          dashboards: S.optional(__S(320, __c20, 0)),
+          dashboard_tiles: __S(369, __c23, 1),
           description: S.optional(S.NullOr(S.String)),
           last_refresh: S.NullOr(S.String),
           refreshing: S.Boolean,
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(352, __c22, 0)),
           updated_at: S.String,
-          created_by: __S(12, __c1, 4),
+          created_by: __S(337, __c21, 1),
           created_at: S.NullOr(S.String),
           last_modified_at: S.optional(S.String),
           favorited: S.optional(S.Boolean),
@@ -9787,29 +9402,33 @@ function __c7(j: number): any {
           last_viewed_at: S.NullOr(S.String),
           search_match_type: S.NullOr(S.String),
           view_count: S.Number,
-          viewers: __S(55, __c6, 7),
-          last_modified_by: __S(12, __c1, 4),
+          viewers: __S(33, __c2, 1),
+          last_modified_by: __S(337, __c21, 1),
         }),
       ).annotate({ identifier: "TrendingInsight" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(34, __c2, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(57, __c7, 1),
+          results: __S(35, __c2, 3),
         }),
       ).annotate({
         identifier: "PaginatedTrendingInsightList",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           format: S.optional(S.String.pipe(T.Query())),
-          ids: __S(7, __c0, 7),
+          ids: __S(320, __c20, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9820,7 +9439,20 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "InsightsBulkDeleteCreateRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deleted: __S(65, __c4, 1),
+          skipped: __S(67, __c4, 3),
+        }),
+      ).annotate({
+        identifier: "InsightBulkDeleteResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -9829,9 +9461,9 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "InsightBulkOperationResult",
       });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -9840,27 +9472,18 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "InsightBulkOperationSkipped",
       });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
+    case 3:
+      return S.Array(__S(66, __c4, 2));
   }
 }
-function __c8(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          deleted: __S(61, __c7, 5),
-          skipped: __S(63, __c7, 7),
-        }),
-      ).annotate({
-        identifier: "InsightBulkDeleteResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           project_id: S.String.pipe(T.Label()),
           format: S.optional(S.String.pipe(T.Query())),
-          ids: __S(7, __c0, 7),
+          ids: __S(320, __c20, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9871,16 +9494,20 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InsightsBulkRestoreCreateRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          restored: __S(61, __c7, 5),
-          skipped: __S(63, __c7, 7),
+          restored: __S(65, __c4, 1),
+          skipped: __S(67, __c4, 3),
         }),
       ).annotate({
         identifier: "InsightBulkRestoreResponse",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -9896,7 +9523,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InsightsBulkSetTestAccountFilterCreateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           updated: S.Number,
@@ -9908,14 +9535,18 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InsightBulkSetTestAccountFilterResponse",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           format: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(7, __c0, 7)),
+          ids: S.optional(__S(320, __c20, 0)),
           action: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(384, __c24, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9926,36 +9557,36 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InsightsBulkUpdateTagsCreateRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(384, __c24, 0)),
         }),
       ).annotate({ identifier: "BulkUpdateTagsItem" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "BulkUpdateTagsError" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(115, __c7, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          updated: S.optional(__S(71, __c8, 7)),
-          skipped: S.optional(__S(73, __c9, 1)),
+          updated: S.optional(__S(114, __c7, 2)),
+          skipped: S.optional(__S(116, __c7, 4)),
         }),
       ).annotate({ identifier: "BulkUpdateTagsResponse" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -9965,9 +9596,9 @@ function __c9(j: number): any {
           query: S.optional(S.NullOr(S.Unknown)),
           order: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(7, __c0, 7)),
+          dashboards: S.optional(__S(320, __c20, 0)),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(352, __c22, 0)),
           favorited: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
         }).pipe(
@@ -9976,7 +9607,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "InsightsCancelCreateRequest",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -9986,7 +9621,11 @@ function __c9(j: number): any {
           T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/insights/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "InsightsDestroyRequest" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -9996,9 +9635,9 @@ function __c9(j: number): any {
           query: S.optional(S.NullOr(S.Unknown)),
           order: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(7, __c0, 7)),
+          dashboards: S.optional(__S(320, __c20, 0)),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(352, __c22, 0)),
           favorited: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
         }).pipe(
@@ -10011,11 +9650,19 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "InsightsGenerateMetadataCreateRequest",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "InsightsGenerateMetadataCreateResponse",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10033,7 +9680,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10053,7 +9700,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "InsightsSharingRefreshCreateRequest",
       });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10080,20 +9731,24 @@ function __c10(j: number): any {
           user: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/insights/", code: 200 })),
       ).annotate({ identifier: "ListInsightsRequest" });
+    case 1:
+      return S.Array(__S(410, __c25, 10));
     case 2:
-      return S.Array(__S(19, __c2, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(82, __c10, 2)),
+          results: S.optional(__S(225, __c14, 1)),
         }),
       ).annotate({
         identifier: "PaginatedInsightListOutput",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10108,13 +9763,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListInsightsSharingRequest",
       });
-    case 5:
-      return S.Array(__S(23, __c2, 7));
-    case 6:
-      return S.suspend(() => __S(85, __c10, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(434, __c27, 2));
+    case 2:
+      return S.suspend(() => __S(241, __c15, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListInsightsSharingResponse",
       });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10131,24 +9790,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListInsightsThresholdsRequest",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(53, __c6, 5));
     case 1:
+      return S.Array(__S(30, __c1, 14));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(88, __c11, 0)),
+          results: S.optional(__S(257, __c16, 1)),
         }),
       ).annotate({
         identifier: "PaginatedThresholdWithAlertList",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10160,16 +9819,20 @@ function __c11(j: number): any {
           query: S.optional(S.NullOr(S.Unknown)),
           order: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(7, __c0, 7)),
+          dashboards: S.optional(__S(320, __c20, 0)),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(352, __c22, 0)),
           favorited: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/insights/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateInsightRequest" });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10181,9 +9844,9 @@ function __c11(j: number): any {
           query: S.optional(S.NullOr(S.Unknown)),
           order: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(7, __c0, 7)),
+          dashboards: S.optional(__S(320, __c20, 0)),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(352, __c22, 0)),
           favorited: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
         }).pipe(
@@ -10194,7 +9857,435 @@ function __c11(j: number): any {
       });
   }
 }
-
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+          include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.optional(S.NullOr(S.String)),
+          derived_name: S.optional(S.NullOr(S.String)),
+          query: S.optional(S.NullOr(S.Unknown)),
+          order: S.optional(S.NullOr(S.Number)),
+          deleted: S.optional(S.Boolean),
+          dashboards: S.optional(__S(320, __c20, 0)),
+          description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(352, __c22, 0)),
+          favorited: S.optional(S.Boolean),
+          _create_in_folder: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/insights/", code: 200 })),
+      ).annotate({ identifier: "CreateInsightRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(336, __c21, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          dashboard_id: S.optional(S.Number),
+          deleted: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "DashboardTileBasic" });
+    case 1:
+      return S.Array(__S(368, __c23, 0));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          group_type_index: S.optional(S.NullOr(S.Number)),
+          histogram_bin_count: S.optional(S.NullOr(S.Number)),
+          normalize_url: S.optional(S.NullOr(S.Boolean)),
+          property: S.optional(S.Unknown),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Breakdown" });
+    case 1:
+      return S.Array(__S(400, __c25, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          breakdown: S.optional(S.NullOr(S.Unknown)),
+          breakdown_group_type_index: S.optional(S.NullOr(S.Number)),
+          breakdown_hide_other_aggregation: S.optional(S.NullOr(S.Boolean)),
+          breakdown_histogram_bin_count: S.optional(S.NullOr(S.Number)),
+          breakdown_limit: S.optional(S.NullOr(S.Number)),
+          breakdown_normalize_url: S.optional(S.NullOr(S.Boolean)),
+          breakdown_path_cleaning: S.optional(S.NullOr(S.Boolean)),
+          breakdown_type: S.optional(S.NullOr(S.String)),
+          breakdowns: S.optional(S.NullOr(__S(401, __c25, 1))),
+        }),
+      ).annotate({ identifier: "BreakdownFilter" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          date_from: S.optional(S.String),
+          date_to: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResolvedDateRangeResponse",
+      });
+    case 4:
+      return S.Array(S.Unknown);
+    case 5:
+      return S.Array(S.Unknown);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          breakdown_filter: S.optional(S.NullOr(__S(402, __c25, 2))),
+          date_from: S.optional(S.NullOr(S.String)),
+          date_to: S.optional(S.NullOr(S.String)),
+          explicitDate: S.optional(S.NullOr(S.Boolean)),
+          filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
+          interval: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(405, __c25, 5))),
+        }),
+      ).annotate({ identifier: "DashboardFilter" });
+    case 7:
+      return S.Array(S.Unknown);
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          breakdown_filter: S.optional(S.NullOr(__S(402, __c25, 2))),
+          date_from: S.optional(S.NullOr(S.String)),
+          date_to: S.optional(S.NullOr(S.String)),
+          explicitDate: S.optional(S.NullOr(S.Boolean)),
+          filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
+          ignoreDashboardFilters: S.optional(S.NullOr(S.Boolean)),
+          interval: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(407, __c25, 7))),
+        }),
+      ).annotate({ identifier: "TileFilters" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          dashboard: S.optional(S.NullOr(__S(406, __c25, 6))),
+          tile: S.optional(S.NullOr(__S(408, __c25, 8))),
+          overridden_dashboard: S.optional(S.NullOr(__S(406, __c25, 6))),
+        }),
+      ).annotate({
+        identifier: "InsightFilterOverrideContext",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          short_id: S.optional(S.String),
+          name: S.optional(S.NullOr(S.String)),
+          derived_name: S.optional(S.NullOr(S.String)),
+          query: S.optional(S.NullOr(S.Unknown)),
+          order: S.optional(S.NullOr(S.Number)),
+          deleted: S.optional(S.Boolean),
+          dashboards: S.optional(__S(320, __c20, 0)),
+          dashboard_tiles: S.optional(__S(369, __c23, 1)),
+          last_refresh: S.optional(S.NullOr(S.String)),
+          cache_target_age: S.optional(S.NullOr(S.String)),
+          next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
+          result: S.optional(S.Unknown),
+          hasMore: S.optional(S.NullOr(S.Boolean)),
+          columns: S.optional(S.NullOr(__S(384, __c24, 0))),
+          created_at: S.optional(S.NullOr(S.String)),
+          created_by: S.optional(S.NullOr(__S(337, __c21, 1))),
+          description: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.String),
+          tags: S.optional(__S(352, __c22, 0)),
+          favorited: S.optional(S.Boolean),
+          last_modified_at: S.optional(S.String),
+          last_modified_by: S.optional(S.NullOr(__S(337, __c21, 1))),
+          is_sample: S.optional(S.Boolean),
+          effective_restriction_level: S.optional(S.Number),
+          effective_privilege_level: S.optional(S.Number),
+          user_access_level: S.optional(S.NullOr(S.String)),
+          timezone: S.optional(S.NullOr(S.String)),
+          is_cached: S.optional(S.Boolean),
+          query_status: S.optional(S.Unknown),
+          hogql: S.optional(S.NullOr(S.String)),
+          types: S.optional(S.NullOr(__S(352, __c22, 0))),
+          resolved_date_range: S.optional(S.NullOr(__S(403, __c25, 3))),
+          query_scan: S.optional(S.Unknown),
+          warnings: S.optional(S.NullOr(__S(404, __c25, 4))),
+          alerts: S.optional(__S(352, __c22, 0)),
+          filter_override_context: S.optional(S.NullOr(__S(409, __c25, 9))),
+          last_viewed_at: S.optional(S.NullOr(S.String)),
+          search_match_type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "InsightOutput" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          insight_id: S.Number.pipe(T.Label()),
+          enabled: S.optional(S.Boolean),
+          settings: S.optional(S.Unknown),
+          password_required: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/insights/{insight_id}/sharing/passwords/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateInsightsSharingPasswordRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          created_at: S.optional(S.String),
+          note: S.optional(S.NullOr(S.String)),
+          created_by_email: S.optional(S.String),
+          is_active: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SharePassword" });
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          settings: S.optional(S.Unknown),
+          password_required: S.optional(S.Boolean),
+          share_passwords: S.optional(__S(433, __c27, 1)),
+          user_access_level: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "SharingConfiguration" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+          insight_ids: __S(320, __c20, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/insights/viewed/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateInsightsViewedRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateInsightsViewedResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          filters_override: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
+          from_dashboard: S.optional(S.Number.pipe(T.Query())),
+          include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
+          refresh: S.optional(S.String.pipe(T.Query())),
+          variables_override: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/insights/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetInsightRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/insights/{id}/activity/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetInsightsActivityRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          action: S.optional(S.String),
+          field: S.optional(S.String),
+          before: S.optional(S.Unknown),
+          after: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "Change" });
+    case 1:
+      return S.Array(__S(512, __c32, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          source: S.optional(S.Unknown),
+          target: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "Merge" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          job_type: S.optional(S.String),
+          job_id: S.optional(S.String),
+          payload: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "Trigger" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          changes: S.optional(__S(513, __c32, 1)),
+          merge: S.optional(__S(514, __c32, 2)),
+          trigger: S.optional(__S(515, __c32, 3)),
+          name: S.optional(S.String),
+          short_id: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Detail" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          user: S.optional(S.NullOr(S.Unknown)),
+          activity: S.optional(S.String),
+          scope: S.optional(S.String),
+          item_id: S.optional(S.String),
+          detail: S.optional(__S(516, __c32, 4)),
+          created_at: S.optional(S.String),
+          is_system: S.optional(S.Boolean),
+          was_impersonated: S.optional(S.Boolean),
+          client: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ActivityLogEntry" });
+    case 6:
+      return S.Array(__S(517, __c32, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(518, __c32, 6)),
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          total_count: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ActivityLogPaginatedResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/insights/activity/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetInsightsAllActivityRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/insights/my_last_viewed/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetInsightsMyLastViewedRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GetInsightsMyLastViewedResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

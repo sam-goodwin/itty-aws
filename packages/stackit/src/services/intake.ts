@@ -434,8 +434,8 @@ export const createIntake: API.OperationMethod<
   CreateIntakeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateIntakeRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<IntakeResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateIntakeRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<IntakeResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -449,8 +449,8 @@ export const createIntakeRunner: API.OperationMethod<
   CreateIntakeRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateIntakeRunnerRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<IntakeRunnerResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateIntakeRunnerRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<IntakeRunnerResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -464,8 +464,8 @@ export const createIntakeUser: API.OperationMethod<
   CreateIntakeUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateIntakeUserRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IntakeUserResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateIntakeUserRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<IntakeUserResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -479,8 +479,8 @@ export const deleteIntake: API.OperationMethod<
   DeleteIntakeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteIntakeRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteIntakeResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteIntakeRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<DeleteIntakeResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -494,8 +494,8 @@ export const deleteIntakeRunner: API.OperationMethod<
   DeleteIntakeRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteIntakeRunnerRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteIntakeRunnerResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteIntakeRunnerRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<DeleteIntakeRunnerResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -509,8 +509,8 @@ export const deleteIntakeUser: API.OperationMethod<
   DeleteIntakeUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteIntakeUserRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteIntakeUserResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DeleteIntakeUserRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<DeleteIntakeUserResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -524,8 +524,8 @@ export const getIntake: API.OperationMethod<
   GetIntakeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetIntakeRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<IntakeResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetIntakeRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<IntakeResponse>,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -539,8 +539,8 @@ export const getIntakeRunner: API.OperationMethod<
   GetIntakeRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetIntakeRunnerRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<IntakeRunnerResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetIntakeRunnerRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<IntakeRunnerResponse>,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -554,8 +554,8 @@ export const getIntakeUser: API.OperationMethod<
   GetIntakeUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetIntakeUserRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IntakeUserResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetIntakeUserRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<IntakeUserResponse>,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -569,8 +569,8 @@ export const listIntakeRunners: API.OperationMethod<
   ListIntakeRunnersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListIntakeRunnersRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ListIntakeRunnersResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListIntakeRunnersRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListIntakeRunnersResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -584,8 +584,8 @@ export const listIntakes: API.OperationMethod<
   ListIntakesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListIntakesRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListIntakesResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListIntakesRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ListIntakesResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -599,8 +599,8 @@ export const listIntakeUsers: API.OperationMethod<
   ListIntakeUsersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListIntakeUsersRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListIntakeUsersResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListIntakeUsersRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ListIntakeUsersResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -614,8 +614,8 @@ export const updateIntake: API.OperationMethod<
   UpdateIntakeError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<UpdateIntakeRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<IntakeResponse>,
+  input: __S(43, __c5, 3) as any as S.Schema<UpdateIntakeRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<IntakeResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -629,8 +629,8 @@ export const updateIntakeRunner: API.OperationMethod<
   UpdateIntakeRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UpdateIntakeRunnerRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<IntakeRunnerResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateIntakeRunnerRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<IntakeRunnerResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -644,8 +644,8 @@ export const updateIntakeUser: API.OperationMethod<
   UpdateIntakeUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<UpdateIntakeUserRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IntakeUserResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateIntakeUserRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<IntakeUserResponse>,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -657,43 +657,243 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          personalAccessToken: S.String,
-          tokenEndpoint: S.String,
-        }),
-      ).annotate({ identifier: "DremioAuth" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dremio: S.optional(__S(0, __c0, 0)),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "CatalogAuth" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          auth: S.optional(__S(1, __c0, 1)),
-          namespace: S.optional(S.String),
-          partitionBy: S.optional(S.NullOr(__S(2, __c0, 2))),
-          partitioning: S.optional(S.String),
-          tableName: S.optional(S.String),
-          uri: S.String,
-          warehouse: S.String,
-        }),
-      ).annotate({ identifier: "IntakeCatalog" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          intakeRunnerId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intake-runners/{intakeRunnerId}",
+            code: 200,
+            baseUrl: "https://intake.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetIntakeRunnerRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
-          catalog: __S(3, __c0, 3),
+          intakeId: S.String.pipe(T.Label()),
+          intakeUserId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intakes/{intakeId}/users/{intakeUserId}",
+            code: 200,
+            baseUrl: "https://intake.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetIntakeUserRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intake-runners",
+            code: 200,
+            baseUrl: "https://intake.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListIntakeRunnersRequest" });
+    case 1:
+      return S.Array(__S(96, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          intakeRunners: __S(17, __c2, 1),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListIntakeRunnersResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intakes",
+            code: 200,
+            baseUrl: "https://intake.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListIntakesRequest" });
+    case 1:
+      return S.Array(__S(84, __c10, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          intakes: __S(25, __c3, 1),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListIntakesResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          intakeId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intakes/{intakeId}/users",
+            code: 200,
+            baseUrl: "https://intake.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListIntakeUsersRequest" });
+    case 1:
+      return S.Array(__S(113, __c14, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          intakeUsers: __S(33, __c4, 1),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListIntakeUsersResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          personalAccessToken: S.optional(S.String),
+          tokenEndpoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DremioAuthPatch" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dremio: S.optional(__S(40, __c5, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CatalogAuthPatch" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          auth: S.optional(__S(41, __c5, 1)),
+          namespace: S.optional(S.String),
+          partitionBy: S.optional(S.NullOr(__S(82, __c10, 2))),
+          partitioning: S.optional(S.String),
+          tableName: S.optional(S.String),
+          uri: S.optional(S.String),
+          warehouse: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IntakeCatalogPatch" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          intakeId: S.String.pipe(T.Label()),
+          catalog: S.optional(__S(42, __c5, 2)),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          intakeRunnerId: S.String,
+          labels: S.optional(S.NullOr(__S(72, __c9, 0))),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intakes/{intakeId}",
+            code: 200,
+            baseUrl: "https://intake.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateIntakeRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          intakeRunnerId: S.String.pipe(T.Label()),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          labels: S.optional(S.NullOr(__S(72, __c9, 0))),
+          maxMessageSizeKiB: S.optional(S.Number),
+          maxMessagesPerHour: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intake-runners/{intakeRunnerId}",
+            code: 200,
+            baseUrl: "https://intake.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateIntakeRunnerRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          intakeId: S.String.pipe(T.Label()),
+          intakeUserId: S.String.pipe(T.Label()),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          labels: S.optional(S.NullOr(__S(72, __c9, 0))),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intakes/{intakeId}/users/{intakeUserId}",
+            code: 200,
+            baseUrl: "https://intake.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateIntakeUserRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          catalog: __S(83, __c10, 3),
           description: S.optional(S.String),
           displayName: S.String,
           intakeRunnerId: S.String,
-          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
+          labels: S.optional(S.NullOr(__S(72, __c9, 0))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -703,10 +903,48 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateIntakeRequest" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          catalog: __S(3, __c0, 3),
+          personalAccessToken: S.String,
+          tokenEndpoint: S.String,
+        }),
+      ).annotate({ identifier: "DremioAuth" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dremio: S.optional(__S(80, __c10, 0)),
+          type: S.String,
+        }),
+      ).annotate({ identifier: "CatalogAuth" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          auth: S.optional(__S(81, __c10, 1)),
+          namespace: S.optional(S.String),
+          partitionBy: S.optional(S.NullOr(__S(82, __c10, 2))),
+          partitioning: S.optional(S.String),
+          tableName: S.optional(S.String),
+          uri: S.String,
+          warehouse: S.String,
+        }),
+      ).annotate({ identifier: "IntakeCatalog" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          catalog: __S(83, __c10, 3),
           create_time: S.String,
           deadLetterTopic: S.String,
           description: S.optional(S.String),
@@ -714,21 +952,25 @@ function __c0(j: number): any {
           failure_message: S.optional(S.String),
           id: S.String,
           intakeRunnerId: S.String,
-          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
+          labels: S.optional(S.NullOr(__S(72, __c9, 0))),
           state: S.String,
           topic: S.String,
           undeliveredMessageCount: S.optional(S.Number),
           uri: S.String,
         }),
       ).annotate({ identifier: "IntakeResponse" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.String,
-          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
+          labels: S.optional(S.NullOr(__S(72, __c9, 0))),
           maxMessageSizeKiB: S.Number,
           maxMessagesPerHour: S.Number,
         }).pipe(
@@ -744,7 +986,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -753,14 +995,18 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           displayName: S.String,
           id: S.String,
-          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
+          labels: S.optional(S.NullOr(__S(72, __c9, 0))),
           maxMessageSizeKiB: S.Number,
           maxMessagesPerHour: S.Number,
           state: S.String,
           uri: S.String,
         }),
       ).annotate({ identifier: "IntakeRunnerResponse" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -768,7 +1014,7 @@ function __c1(j: number): any {
           intakeId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.String,
-          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
+          labels: S.optional(S.NullOr(__S(72, __c9, 0))),
           password: S.String.pipe(T.SensitiveValue({})),
           type: S.optional(S.String),
         }).pipe(
@@ -780,28 +1026,36 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateIntakeUserRequest" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           java: S.String,
           librdkafka: S.String,
         }),
       ).annotate({ identifier: "ClientConfig" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          clientConfig: S.optional(__S(10, __c1, 2)),
+          clientConfig: S.optional(__S(112, __c14, 0)),
           create_time: S.String,
           description: S.optional(S.String),
           displayName: S.String,
           id: S.String,
-          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
+          labels: S.optional(S.NullOr(__S(72, __c9, 0))),
           state: S.String,
           type: S.String,
           user: S.String,
         }),
       ).annotate({ identifier: "IntakeUserResponse" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -817,11 +1071,19 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteIntakeRequest" });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteIntakeResponse",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -839,7 +1101,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteIntakeRunnerRequest",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -857,7 +1123,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DeleteIntakeUserRequest" });
   }
 }
-function __c2(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -874,215 +1140,8 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetIntakeRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          intakeRunnerId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intake-runners/{intakeRunnerId}",
-            code: 200,
-            baseUrl: "https://intake.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetIntakeRunnerRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          intakeId: S.String.pipe(T.Label()),
-          intakeUserId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intakes/{intakeId}/users/{intakeUserId}",
-            code: 200,
-            baseUrl: "https://intake.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetIntakeUserRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intake-runners",
-            code: 200,
-            baseUrl: "https://intake.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListIntakeRunnersRequest" });
-    case 4:
-      return S.Array(__S(8, __c1, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          intakeRunners: __S(20, __c2, 4),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListIntakeRunnersResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intakes",
-            code: 200,
-            baseUrl: "https://intake.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListIntakesRequest" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          intakes: __S(23, __c2, 7),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListIntakesResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          intakeId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intakes/{intakeId}/users",
-            code: 200,
-            baseUrl: "https://intake.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListIntakeUsersRequest" });
-    case 2:
-      return S.Array(__S(11, __c1, 3));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          intakeUsers: __S(26, __c3, 2),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListIntakeUsersResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          personalAccessToken: S.optional(S.String),
-          tokenEndpoint: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DremioAuthPatch" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dremio: S.optional(__S(28, __c3, 4)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CatalogAuthPatch" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          auth: S.optional(__S(29, __c3, 5)),
-          namespace: S.optional(S.String),
-          partitionBy: S.optional(S.NullOr(__S(2, __c0, 2))),
-          partitioning: S.optional(S.String),
-          tableName: S.optional(S.String),
-          uri: S.optional(S.String),
-          warehouse: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IntakeCatalogPatch" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          intakeId: S.String.pipe(T.Label()),
-          catalog: S.optional(__S(30, __c3, 6)),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          intakeRunnerId: S.String,
-          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intakes/{intakeId}",
-            code: 200,
-            baseUrl: "https://intake.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateIntakeRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          intakeRunnerId: S.String.pipe(T.Label()),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
-          maxMessageSizeKiB: S.optional(S.Number),
-          maxMessagesPerHour: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intake-runners/{intakeRunnerId}",
-            code: 200,
-            baseUrl: "https://intake.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateIntakeRunnerRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          intakeId: S.String.pipe(T.Label()),
-          intakeUserId: S.String.pipe(T.Label()),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          labels: S.optional(S.NullOr(__S(4, __c0, 4))),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1beta/projects/{projectId}/regions/{regionId}/intakes/{intakeId}/users/{intakeUserId}",
-            code: 200,
-            baseUrl: "https://intake.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateIntakeUserRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

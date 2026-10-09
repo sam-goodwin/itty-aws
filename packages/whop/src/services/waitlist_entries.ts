@@ -202,8 +202,8 @@ export const approveAllWaitlistEntries: API.OperationMethod<
   ApproveAllWaitlistEntriesError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ApproveAllWaitlistEntriesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ApproveAllWaitlistEntriesResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ApproveAllWaitlistEntriesRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<ApproveAllWaitlistEntriesResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -217,8 +217,8 @@ export const approveWaitlistEntry: API.OperationMethod<
   ApproveWaitlistEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ApproveWaitlistEntryRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<WaitlistEntry>,
+  input: __S(8, __c2, 0) as any as S.Schema<ApproveWaitlistEntryRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<WaitlistEntry>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -232,8 +232,8 @@ export const cancelWaitlistEntry: API.OperationMethod<
   CancelWaitlistEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CancelWaitlistEntryRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<WaitlistEntry>,
+  input: __S(16, __c4, 0) as any as S.Schema<CancelWaitlistEntryRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<WaitlistEntry>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -247,8 +247,8 @@ export const createWaitlistEntry: API.OperationMethod<
   CreateWaitlistEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateWaitlistEntryRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<WaitlistEntry>,
+  input: __S(22, __c5, 2) as any as S.Schema<CreateWaitlistEntryRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<WaitlistEntry>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -262,8 +262,8 @@ export const denyWaitlistEntry: API.OperationMethod<
   DenyWaitlistEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DenyWaitlistEntryRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<WaitlistEntry>,
+  input: __S(24, __c6, 0) as any as S.Schema<DenyWaitlistEntryRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<WaitlistEntry>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -277,8 +277,8 @@ export const getWaitlistEntry: API.OperationMethod<
   GetWaitlistEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetWaitlistEntryRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<WaitlistEntry>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetWaitlistEntryRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<WaitlistEntry>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -294,8 +294,8 @@ export const listWaitlistEntries: API.PaginatedOperationMethod<
   WaitlistEntry
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(12, __c1, 4) as any as S.Schema<ListWaitlistEntriesRequest>,
-    output: __S(15, __c1, 7) as any as S.Schema<ListWaitlistEntriesResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListWaitlistEntriesRequest>,
+    output: __S(3, __c0, 3) as any as S.Schema<ListWaitlistEntriesResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -317,6 +317,51 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          first: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          last: S.optional(S.Number.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          plan_id: S.optional(S.String.pipe(T.Query())),
+          account_id: S.optional(S.String.pipe(T.Query())),
+          product_id: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          created_before: S.optional(S.String.pipe(T.Query())),
+          created_after: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/waitlist_entries", code: 200 })),
+      ).annotate({
+        identifier: "ListWaitlistEntriesRequest",
+      });
+    case 1:
+      return S.Array(__S(14, __c3, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          end_cursor: S.NullOr(S.String),
+          has_next_page: S.Boolean,
+          has_previous_page: S.Boolean,
+          start_cursor: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "ListWaitlistEntriesResponsePageInfo",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1, __c0, 1),
+          page_info: __S(2, __c0, 2),
+        }),
+      ).annotate({
+        identifier: "ListWaitlistEntriesResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           account_id: S.String,
           plan_id: S.optional(S.String),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -334,7 +379,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApproveAllWaitlistEntriesResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -343,7 +392,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApproveWaitlistEntryRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           answer: S.String,
@@ -353,16 +406,16 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "WaitlistEntryCustomFieldResponse",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(12, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           approval_failure_reason: S.NullOr(S.String),
           buyer_account_id: S.NullOr(S.String),
           created_at: S.String,
-          custom_field_responses: __S(4, __c0, 4),
+          custom_field_responses: __S(13, __c3, 1),
           id: S.String,
           membership_id: S.NullOr(S.String),
           metadata: S.Unknown,
@@ -373,7 +426,11 @@ function __c0(j: number): any {
           user_id: S.String,
         }),
       ).annotate({ identifier: "WaitlistEntry" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -382,7 +439,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelWaitlistEntryRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           answer: S.String,
@@ -391,16 +452,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateWaitlistEntryRequestCustomFieldResponsesItem",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
+      return S.Array(__S(20, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          custom_field_responses: S.optional(__S(8, __c1, 0)),
+          custom_field_responses: S.optional(__S(21, __c5, 1)),
           metadata: S.optional(S.Unknown),
           plan_id: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -408,63 +465,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateWaitlistEntryRequest",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/waitlist_entries/{id}/deny", code: 200 })),
       ).annotate({ identifier: "DenyWaitlistEntryRequest" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/waitlist_entries/{id}", code: 200 })),
       ).annotate({ identifier: "GetWaitlistEntryRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          first: S.optional(S.Number.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          last: S.optional(S.Number.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          plan_id: S.optional(S.String.pipe(T.Query())),
-          account_id: S.optional(S.String.pipe(T.Query())),
-          product_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          created_before: S.optional(S.String.pipe(T.Query())),
-          created_after: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/waitlist_entries", code: 200 })),
-      ).annotate({
-        identifier: "ListWaitlistEntriesRequest",
-      });
-    case 5:
-      return S.Array(__S(5, __c0, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          end_cursor: S.NullOr(S.String),
-          has_next_page: S.Boolean,
-          has_previous_page: S.Boolean,
-          start_cursor: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "ListWaitlistEntriesResponsePageInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(13, __c1, 5),
-          page_info: __S(14, __c1, 6),
-        }),
-      ).annotate({
-        identifier: "ListWaitlistEntriesResponse",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

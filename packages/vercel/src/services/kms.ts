@@ -918,8 +918,8 @@ export const activateKmsSigningKey: API.OperationMethod<
   ActivateKmsSigningKeyError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ActivateKmsSigningKeyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ActivateKmsSigningKeyResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ActivateKmsSigningKeyRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<ActivateKmsSigningKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -933,8 +933,8 @@ export const createKmsIssuer: API.OperationMethod<
   CreateKmsIssuerError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateKmsIssuerRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateKmsIssuerResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateKmsIssuerRequest>,
+  output: __S(164, __c10, 4) as any as S.Schema<CreateKmsIssuerResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -948,8 +948,8 @@ export const createKmsIssuerPolicy: API.OperationMethod<
   CreateKmsIssuerPolicyError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateKmsIssuerPolicyRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateKmsIssuerPolicyResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateKmsIssuerPolicyRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<CreateKmsIssuerPolicyResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -963,8 +963,8 @@ export const createKmsSigningKey: API.OperationMethod<
   CreateKmsSigningKeyError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateKmsSigningKeyRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateKmsSigningKeyResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<CreateKmsSigningKeyRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<CreateKmsSigningKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -978,8 +978,8 @@ export const deleteKmsIssuer: API.OperationMethod<
   DeleteKmsIssuerError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteKmsIssuerRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteKmsIssuerResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteKmsIssuerRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<DeleteKmsIssuerResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -993,8 +993,8 @@ export const deleteKmsIssuerPolicy: API.OperationMethod<
   DeleteKmsIssuerPolicyError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteKmsIssuerPolicyRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteKmsIssuerPolicyResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeleteKmsIssuerPolicyRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<DeleteKmsIssuerPolicyResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1008,8 +1008,8 @@ export const getKmsIssuer: API.OperationMethod<
   GetKmsIssuerError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetKmsIssuerRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetKmsIssuerResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetKmsIssuerRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetKmsIssuerResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1023,8 +1023,8 @@ export const listKmsIssuers: API.OperationMethod<
   ListKmsIssuersError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListKmsIssuersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListKmsIssuersResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<ListKmsIssuersRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<ListKmsIssuersResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1038,8 +1038,8 @@ export const revokeKmsSigningKey: API.OperationMethod<
   RevokeKmsSigningKeyError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<RevokeKmsSigningKeyRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<RevokeKmsSigningKeyResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<RevokeKmsSigningKeyRequest>,
+  output: __S(36, __c2, 4) as any as S.Schema<RevokeKmsSigningKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1053,8 +1053,8 @@ export const signKmsMessage: API.OperationMethod<
   SignKmsMessageError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<SignKmsMessageRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<SignKmsMessageResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<SignKmsMessageRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<SignKmsMessageResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1068,8 +1068,8 @@ export const signKmsToken: API.OperationMethod<
   SignKmsTokenError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<SignKmsTokenRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<SignKmsTokenResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<SignKmsTokenRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<SignKmsTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1083,8 +1083,8 @@ export const updateKmsIssuer: API.OperationMethod<
   UpdateKmsIssuerError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdateKmsIssuerRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<UpdateKmsIssuerResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<UpdateKmsIssuerRequest>,
+  output: __S(84, __c5, 4) as any as S.Schema<UpdateKmsIssuerResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1098,8 +1098,8 @@ export const updateKmsIssuerPolicy: API.OperationMethod<
   UpdateKmsIssuerPolicyError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<UpdateKmsIssuerPolicyRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<UpdateKmsIssuerPolicyResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<UpdateKmsIssuerPolicyRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<UpdateKmsIssuerPolicyResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1112,216 +1112,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           issuerId: S.String.pipe(T.Label()),
-          keyId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          revokePreviousAfterHours: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/kms/issuers/{issuerId}/keys/{keyId}/activate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateKmsSigningKeyRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          alg: S.optional(S.String),
-          key_ops: S.optional(__S(1, __c0, 1)),
-          kid: S.optional(S.String),
-          kty: S.optional(S.String),
-          use: S.optional(S.String),
-          x5c: S.optional(__S(1, __c0, 1)),
-          x5t_S256: S.optional(S.String.pipe(T.Body("x5t#S256"))),
-        }),
-      ).annotate({
-        identifier: "ActivateKmsSigningKeyResponsePublicKey",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          activateAt: S.optional(S.String),
-          activatedAt: S.optional(S.String),
-          algorithm: S.String,
-          certificatePem: S.optional(S.String),
-          createdAt: S.String,
-          importKeyId: S.optional(S.String),
-          issuerId: S.String,
-          keyId: S.String,
-          publicKey: S.optional(__S(2, __c0, 2)),
-          publicKeyFingerprint: S.String,
-          publicKeyPem: S.optional(S.String),
-          revokeAt: S.optional(S.String),
-          status: S.String,
-          updatedAt: S.String,
-        }),
-      ).annotate({
-        identifier: "ActivateKmsSigningKeyResponse",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          name: S.String,
-          algorithm: S.optional(S.String),
-          claimsSchema: S.optional(__S(4, __c0, 4)),
-          policy: S.optional(S.Unknown),
-          importKey: S.optional(S.String),
-          importKeyId: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/kms/issuers", code: 200 })),
-      ).annotate({ identifier: "CreateKmsIssuerRequest" });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          activateAt: S.optional(S.String),
-          activatedAt: S.optional(S.String),
-          algorithm: S.String,
-          certificatePem: S.optional(S.String),
-          createdAt: S.String,
-          importKeyId: S.optional(S.String),
-          issuerId: S.String,
-          keyId: S.String,
-          publicKey: S.optional(__S(2, __c0, 2)),
-          publicKeyFingerprint: S.String,
-          publicKeyPem: S.optional(S.String),
-          revokeAt: S.optional(S.String),
-          status: S.String,
-          updatedAt: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateKmsIssuerResponseSigningKeysItem",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          algorithm: S.String,
-          claimsSchema: S.optional(__S(4, __c0, 4)),
-          createdAt: S.String,
-          id: S.String,
-          managedBy: S.optional(S.String),
-          name: S.String,
-          origin: S.String,
-          ownerId: S.String,
-          policies: __S(6, __c0, 6),
-          signingKeys: __S(8, __c1, 0),
-          updatedAt: S.String,
-        }),
-      ).annotate({ identifier: "CreateKmsIssuerResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          issuerId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          kind: S.String,
-          projectId: S.String,
-          environments: __S(1, __c0, 1),
-          tokenClaims: S.optional(__S(4, __c0, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/kms/issuers/{issuerId}/policies", code: 200 })),
-      ).annotate({
-        identifier: "CreateKmsIssuerPolicyRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateKmsIssuerPolicyResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          issuerId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          activation: S.optional(S.String),
-          revokePreviousAfterHours: S.optional(S.Number),
-          revokePreviousAt: S.optional(S.Unknown),
-          importKey: S.optional(S.String),
-          importKeyId: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/kms/issuers/{issuerId}/keys", code: 200 })),
-      ).annotate({
-        identifier: "CreateKmsSigningKeyRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          activateAt: S.optional(S.String),
-          activatedAt: S.optional(S.String),
-          algorithm: S.String,
-          certificatePem: S.optional(S.String),
-          createdAt: S.String,
-          importKeyId: S.optional(S.String),
-          issuerId: S.String,
-          keyId: S.String,
-          publicKey: S.optional(__S(2, __c0, 2)),
-          publicKeyFingerprint: S.String,
-          publicKeyPem: S.optional(S.String),
-          revokeAt: S.optional(S.String),
-          status: S.String,
-          updatedAt: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateKmsSigningKeyResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          issuerId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/kms/issuers/{issuerId}", code: 200 })),
-      ).annotate({ identifier: "DeleteKmsIssuerRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteKmsIssuerResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          issuerId: S.String.pipe(T.Label()),
-          kind: S.String.pipe(T.Label()),
-          policyKey: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/kms/issuers/{issuerId}/policies/{kind}/{policyKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteKmsIssuerPolicyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          issuerId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/kms/issuers/{issuerId}", code: 200 })),
       ).annotate({ identifier: "GetKmsIssuerRequest" });
-    case 2:
+    case 1:
       return S.Array(S.Unknown);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           activateAt: S.optional(S.String),
@@ -1332,7 +1129,7 @@ function __c2(j: number): any {
           importKeyId: S.optional(S.String),
           issuerId: S.String,
           keyId: S.String,
-          publicKey: S.optional(__S(2, __c0, 2)),
+          publicKey: S.optional(__S(144, __c9, 0)),
           publicKeyFingerprint: S.String,
           publicKeyPem: S.optional(S.String),
           revokeAt: S.optional(S.String),
@@ -1342,25 +1139,29 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetKmsIssuerResponseSigningKeysItem",
       });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
     case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           algorithm: S.String,
-          claimsSchema: S.optional(__S(4, __c0, 4)),
+          claimsSchema: S.optional(__S(176, __c11, 0)),
           createdAt: S.String,
           id: S.String,
           managedBy: S.optional(S.String),
           name: S.String,
           origin: S.String,
           ownerId: S.String,
-          policies: __S(18, __c2, 2),
-          signingKeys: __S(20, __c2, 4),
+          policies: __S(1, __c0, 1),
+          signingKeys: __S(3, __c0, 3),
           updatedAt: S.String,
         }),
       ).annotate({ identifier: "GetKmsIssuerResponse" });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -1369,29 +1170,25 @@ function __c2(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/kms/issuers", code: 200 })),
       ).annotate({ identifier: "ListKmsIssuersRequest" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
     case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.Array(S.Unknown);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           alg: S.optional(S.String),
-          key_ops: S.optional(__S(23, __c2, 7)),
+          key_ops: S.optional(__S(17, __c1, 1)),
           kid: S.optional(S.String),
           kty: S.optional(S.String),
           use: S.optional(S.String),
-          x5c: S.optional(__S(23, __c2, 7)),
+          x5c: S.optional(__S(17, __c1, 1)),
           x5t_S256: S.optional(S.String.pipe(T.Body("x5t#S256"))),
         }),
       ).annotate({
         identifier: "ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKey",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           activateAt: S.optional(S.String),
@@ -1402,7 +1199,7 @@ function __c3(j: number): any {
           importKeyId: S.optional(S.String),
           issuerId: S.String,
           keyId: S.String,
-          publicKey: S.optional(__S(25, __c3, 1)),
+          publicKey: S.optional(__S(19, __c1, 3)),
           publicKeyFingerprint: S.String,
           publicKeyPem: S.optional(S.String),
           revokeAt: S.optional(S.String),
@@ -1412,29 +1209,29 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListKmsIssuersResponseIssuersItemSigningKeysItem",
       });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(20, __c1, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           algorithm: S.String,
-          claimsSchema: S.optional(__S(4, __c0, 4)),
+          claimsSchema: S.optional(__S(176, __c11, 0)),
           createdAt: S.String,
           id: S.String,
           managedBy: S.optional(S.String),
           name: S.String,
           origin: S.String,
           ownerId: S.String,
-          policies: __S(24, __c3, 0),
-          signingKeys: __S(27, __c3, 3),
+          policies: __S(18, __c1, 2),
+          signingKeys: __S(21, __c1, 5),
           updatedAt: S.String,
         }),
       ).annotate({
         identifier: "ListKmsIssuersResponseIssuersItem",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(22, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -1443,16 +1240,16 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListKmsIssuersResponsePagination",
       });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          issuers: __S(29, __c3, 5),
-          pagination: __S(30, __c3, 6),
+          issuers: __S(23, __c1, 7),
+          pagination: __S(24, __c1, 8),
         }),
       ).annotate({ identifier: "ListKmsIssuersResponse" });
   }
 }
-function __c4(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1484,7 +1281,7 @@ function __c4(j: number): any {
           importKeyId: S.optional(S.String),
           issuerId: S.String,
           keyId: S.String,
-          publicKey: S.optional(__S(2, __c0, 2)),
+          publicKey: S.optional(__S(144, __c9, 0)),
           publicKeyFingerprint: S.String,
           publicKeyPem: S.optional(S.String),
           revokeAt: S.optional(S.String),
@@ -1495,26 +1292,30 @@ function __c4(j: number): any {
         identifier: "RevokeKmsSigningKeyResponseSigningKeysItem",
       });
     case 3:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(34, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           algorithm: S.String,
-          claimsSchema: S.optional(__S(4, __c0, 4)),
+          claimsSchema: S.optional(__S(176, __c11, 0)),
           createdAt: S.String,
           id: S.String,
           managedBy: S.optional(S.String),
           name: S.String,
           origin: S.String,
           ownerId: S.String,
-          policies: __S(33, __c4, 1),
-          signingKeys: __S(35, __c4, 3),
+          policies: __S(33, __c2, 1),
+          signingKeys: __S(35, __c2, 3),
           updatedAt: S.String,
         }),
       ).annotate({
         identifier: "RevokeKmsSigningKeyResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           issuerId: S.String.pipe(T.Label()),
@@ -1523,7 +1324,7 @@ function __c4(j: number): any {
           T.Http({ method: "POST", uri: "/v1/kms/issuers/{issuerId}/sign/message", code: 200 }),
         ),
       ).annotate({ identifier: "SignKmsMessageRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           algorithm: S.String,
@@ -1532,7 +1333,11 @@ function __c4(j: number): any {
           signature: S.String,
         }),
       ).annotate({ identifier: "SignKmsMessageResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           issuerId: S.String.pipe(T.Label()),
@@ -1543,11 +1348,7 @@ function __c4(j: number): any {
           T.Http({ method: "POST", uri: "/v1/kms/issuers/{issuerId}/sign/token", code: 200 }),
         ),
       ).annotate({ identifier: "SignKmsTokenRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           algorithm: S.String,
@@ -1556,19 +1357,23 @@ function __c5(j: number): any {
           token: S.String,
         }),
       ).annotate({ identifier: "SignKmsTokenResponse" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           issuerId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String),
-          claimsSchema: S.optional(S.NullOr(__S(4, __c0, 4))),
+          claimsSchema: S.optional(S.NullOr(__S(176, __c11, 0))),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/kms/issuers/{issuerId}", code: 200 })),
       ).annotate({ identifier: "UpdateKmsIssuerRequest" });
-    case 2:
+    case 1:
       return S.Array(S.Unknown);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           activateAt: S.optional(S.String),
@@ -1579,7 +1384,7 @@ function __c5(j: number): any {
           importKeyId: S.optional(S.String),
           issuerId: S.String,
           keyId: S.String,
-          publicKey: S.optional(__S(2, __c0, 2)),
+          publicKey: S.optional(__S(144, __c9, 0)),
           publicKeyFingerprint: S.String,
           publicKeyPem: S.optional(S.String),
           revokeAt: S.optional(S.String),
@@ -1589,25 +1394,29 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateKmsIssuerResponseSigningKeysItem",
       });
+    case 3:
+      return S.Array(__S(82, __c5, 2));
     case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           algorithm: S.String,
-          claimsSchema: S.optional(__S(4, __c0, 4)),
+          claimsSchema: S.optional(__S(176, __c11, 0)),
           createdAt: S.String,
           id: S.String,
           managedBy: S.optional(S.String),
           name: S.String,
           origin: S.String,
           ownerId: S.String,
-          policies: __S(42, __c5, 2),
-          signingKeys: __S(44, __c5, 4),
+          policies: __S(81, __c5, 1),
+          signingKeys: __S(83, __c5, 3),
           updatedAt: S.String,
         }),
       ).annotate({ identifier: "UpdateKmsIssuerResponse" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           issuerId: S.String.pipe(T.Label()),
@@ -1615,8 +1424,8 @@ function __c5(j: number): any {
           policyKey: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          environments: S.optional(__S(1, __c0, 1)),
-          tokenClaims: S.optional(S.NullOr(__S(4, __c0, 4))),
+          environments: S.optional(__S(128, __c8, 0)),
+          tokenClaims: S.optional(S.NullOr(__S(176, __c11, 0))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1627,13 +1436,247 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateKmsIssuerPolicyRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateKmsIssuerPolicyResponse",
       });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          issuerId: S.String.pipe(T.Label()),
+          keyId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          revokePreviousAfterHours: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/kms/issuers/{issuerId}/keys/{keyId}/activate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateKmsSigningKeyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          activateAt: S.optional(S.String),
+          activatedAt: S.optional(S.String),
+          algorithm: S.String,
+          certificatePem: S.optional(S.String),
+          createdAt: S.String,
+          importKeyId: S.optional(S.String),
+          issuerId: S.String,
+          keyId: S.String,
+          publicKey: S.optional(__S(144, __c9, 0)),
+          publicKeyFingerprint: S.String,
+          publicKeyPem: S.optional(S.String),
+          revokeAt: S.optional(S.String),
+          status: S.String,
+          updatedAt: S.String,
+        }),
+      ).annotate({
+        identifier: "ActivateKmsSigningKeyResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alg: S.optional(S.String),
+          key_ops: S.optional(__S(128, __c8, 0)),
+          kid: S.optional(S.String),
+          kty: S.optional(S.String),
+          use: S.optional(S.String),
+          x5c: S.optional(__S(128, __c8, 0)),
+          x5t_S256: S.optional(S.String.pipe(T.Body("x5t#S256"))),
+        }),
+      ).annotate({
+        identifier: "ActivateKmsSigningKeyResponsePublicKey",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          name: S.String,
+          algorithm: S.optional(S.String),
+          claimsSchema: S.optional(__S(176, __c11, 0)),
+          policy: S.optional(S.Unknown),
+          importKey: S.optional(S.String),
+          importKeyId: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/kms/issuers", code: 200 })),
+      ).annotate({ identifier: "CreateKmsIssuerRequest" });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          activateAt: S.optional(S.String),
+          activatedAt: S.optional(S.String),
+          algorithm: S.String,
+          certificatePem: S.optional(S.String),
+          createdAt: S.String,
+          importKeyId: S.optional(S.String),
+          issuerId: S.String,
+          keyId: S.String,
+          publicKey: S.optional(__S(144, __c9, 0)),
+          publicKeyFingerprint: S.String,
+          publicKeyPem: S.optional(S.String),
+          revokeAt: S.optional(S.String),
+          status: S.String,
+          updatedAt: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateKmsIssuerResponseSigningKeysItem",
+      });
+    case 3:
+      return S.Array(__S(162, __c10, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          algorithm: S.String,
+          claimsSchema: S.optional(__S(176, __c11, 0)),
+          createdAt: S.String,
+          id: S.String,
+          managedBy: S.optional(S.String),
+          name: S.String,
+          origin: S.String,
+          ownerId: S.String,
+          policies: __S(161, __c10, 1),
+          signingKeys: __S(163, __c10, 3),
+          updatedAt: S.String,
+        }),
+      ).annotate({ identifier: "CreateKmsIssuerResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          issuerId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          kind: S.String,
+          projectId: S.String,
+          environments: __S(128, __c8, 0),
+          tokenClaims: S.optional(__S(176, __c11, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/kms/issuers/{issuerId}/policies", code: 200 })),
+      ).annotate({
+        identifier: "CreateKmsIssuerPolicyRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateKmsIssuerPolicyResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          issuerId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          activation: S.optional(S.String),
+          revokePreviousAfterHours: S.optional(S.Number),
+          revokePreviousAt: S.optional(S.Unknown),
+          importKey: S.optional(S.String),
+          importKeyId: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/kms/issuers/{issuerId}/keys", code: 200 })),
+      ).annotate({
+        identifier: "CreateKmsSigningKeyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          activateAt: S.optional(S.String),
+          activatedAt: S.optional(S.String),
+          algorithm: S.String,
+          certificatePem: S.optional(S.String),
+          createdAt: S.String,
+          importKeyId: S.optional(S.String),
+          issuerId: S.String,
+          keyId: S.String,
+          publicKey: S.optional(__S(144, __c9, 0)),
+          publicKeyFingerprint: S.String,
+          publicKeyPem: S.optional(S.String),
+          revokeAt: S.optional(S.String),
+          status: S.String,
+          updatedAt: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateKmsSigningKeyResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          issuerId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/kms/issuers/{issuerId}", code: 200 })),
+      ).annotate({ identifier: "DeleteKmsIssuerRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteKmsIssuerResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          issuerId: S.String.pipe(T.Label()),
+          kind: S.String.pipe(T.Label()),
+          policyKey: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/kms/issuers/{issuerId}/policies/{kind}/{policyKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteKmsIssuerPolicyRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

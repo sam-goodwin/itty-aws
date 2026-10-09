@@ -439,8 +439,8 @@ export const getReviewHogReview: API.OperationMethod<
   GetReviewHogReviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<GetReviewHogReviewRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ReviewDetail>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetReviewHogReviewRequest>,
+  output: __S(105, __c6, 9) as any as S.Schema<ReviewDetail>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -454,8 +454,8 @@ export const getReviewHogReviewsPerspectiveStat: API.OperationMethod<
   GetReviewHogReviewsPerspectiveStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetReviewHogReviewsPerspectiveStatRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ReviewPerspectiveStats>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetReviewHogReviewsPerspectiveStatRequest>,
+  output: __S(131, __c8, 3) as any as S.Schema<ReviewPerspectiveStats>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -469,8 +469,8 @@ export const listReviewHogBlindSpots: API.OperationMethod<
   ListReviewHogBlindSpotsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListReviewHogBlindSpotsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListReviewHogBlindSpotsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListReviewHogBlindSpotsRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<ListReviewHogBlindSpotsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -484,8 +484,8 @@ export const listReviewHogPerspectives: API.OperationMethod<
   ListReviewHogPerspectivesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListReviewHogPerspectivesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ListReviewHogPerspectivesResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListReviewHogPerspectivesRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<ListReviewHogPerspectivesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -499,8 +499,8 @@ export const listReviewHogResolution: API.OperationMethod<
   ListReviewHogResolutionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListReviewHogResolutionRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListReviewHogResolutionResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListReviewHogResolutionRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<ListReviewHogResolutionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -514,8 +514,8 @@ export const listReviewHogReviews: API.OperationMethod<
   ListReviewHogReviewsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListReviewHogReviewsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ReviewRecentReviewsPage>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListReviewHogReviewsRequest>,
+  output: __S(243, __c15, 3) as any as S.Schema<ReviewRecentReviewsPage>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -529,8 +529,8 @@ export const listReviewHogValidators: API.OperationMethod<
   ListReviewHogValidatorsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListReviewHogValidatorsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListReviewHogValidatorsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListReviewHogValidatorsRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<ListReviewHogValidatorsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -544,8 +544,8 @@ export const reviewHogReviewsTriggerCreate: API.OperationMethod<
   ReviewHogReviewsTriggerCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ReviewHogReviewsTriggerCreateRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ReviewTriggerResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<ReviewHogReviewsTriggerCreateRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<ReviewTriggerResponse>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -559,8 +559,8 @@ export const updateReviewHogBlindSpotsPartial: API.OperationMethod<
   UpdateReviewHogBlindSpotsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UpdateReviewHogBlindSpotsPartialRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ReviewBlindSpotsConfig>,
+  input: __S(32, __c2, 0) as any as S.Schema<UpdateReviewHogBlindSpotsPartialRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<ReviewBlindSpotsConfig>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -574,8 +574,8 @@ export const updateReviewHogPerspectivesPartial: API.OperationMethod<
   UpdateReviewHogPerspectivesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<UpdateReviewHogPerspectivesPartialRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ReviewPerspectiveConfig>,
+  input: __S(48, __c3, 0) as any as S.Schema<UpdateReviewHogPerspectivesPartialRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<ReviewPerspectiveConfig>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -589,8 +589,8 @@ export const updateReviewHogResolutionPartial: API.OperationMethod<
   UpdateReviewHogResolutionPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<UpdateReviewHogResolutionPartialRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ReviewResolutionConfig>,
+  input: __S(64, __c4, 0) as any as S.Schema<UpdateReviewHogResolutionPartialRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<ReviewResolutionConfig>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -604,8 +604,8 @@ export const updateReviewHogValidatorsPartial: API.OperationMethod<
   UpdateReviewHogValidatorsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<UpdateReviewHogValidatorsPartialRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ReviewValidatorConfig>,
+  input: __S(80, __c5, 0) as any as S.Schema<UpdateReviewHogValidatorsPartialRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<ReviewValidatorConfig>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -615,301 +615,6 @@ export const updateReviewHogValidatorsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/review_hog/reviews/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetReviewHogReviewRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          review_stage: S.String,
-          done: S.NullOr(S.Number),
-          total: S.NullOr(S.Number),
-        }),
-      ).annotate({ identifier: "ReviewProgress" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resolution_status: S.String,
-          done: S.Number,
-          total: S.Number,
-          fixed: S.Number,
-          needs_attention: S.Number,
-        }),
-      ).annotate({ identifier: "ReviewResolutionStatus" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          chunk_id: S.Number,
-          chunk_type: S.NullOr(S.String),
-          files: __S(3, __c0, 3),
-          perspectives: __S(3, __c0, 3),
-          skipped: __S(3, __c0, 3),
-          reason: S.String,
-        }),
-      ).annotate({ identifier: "ReviewSelectionChunk" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          roster: __S(3, __c0, 3),
-          chunks: __S(5, __c0, 5),
-        }),
-      ).annotate({
-        identifier: "ReviewPerspectiveSelection",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.Number,
-          end: S.NullOr(S.Number),
-        }),
-      ).annotate({ identifier: "ReviewFindingLineRange" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.String,
-          file: S.String,
-          lines: __S(8, __c1, 0),
-          body: S.String,
-          suggestion: S.String,
-          effective_priority: S.String,
-          reviewer_priority: S.String,
-          source_perspective: S.NullOr(S.String),
-          validator_category: S.NullOr(S.String),
-          validator_note: S.String,
-        }),
-      ).annotate({ identifier: "ReviewFinding" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          repository: S.String,
-          pr_number: S.NullOr(S.Number),
-          pr_title: S.NullOr(S.String),
-          pr_author: S.NullOr(S.String),
-          additions: S.NullOr(S.Number),
-          deletions: S.NullOr(S.Number),
-          changed_files: S.NullOr(S.Number),
-          head_branch: S.String,
-          github_url: S.String,
-          run_count: S.Number,
-          last_run_at: S.NullOr(S.String),
-          published: S.Boolean,
-          in_progress: S.Boolean,
-          progress: S.NullOr(__S(1, __c0, 1)),
-          resolution: S.NullOr(__S(2, __c0, 2)),
-          must_fix_count: S.Number,
-          should_fix_count: S.Number,
-          consider_count: S.Number,
-          candidate_count: S.Number,
-          dismissed_count: S.Number,
-          files_reviewed: S.NullOr(S.Number),
-          chunk_count: S.NullOr(S.Number),
-          perspective_count: S.NullOr(S.Number),
-          perspective_issue_count: S.NullOr(S.Number),
-          blind_spot_issue_count: S.NullOr(S.Number),
-          head_sha: S.NullOr(S.String),
-          perspective_selection: S.NullOr(__S(6, __c0, 6)),
-          report_markdown: S.String,
-          run_urgency_threshold: S.NullOr(S.String),
-          findings: __S(10, __c1, 2),
-          dismissed_findings: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "ReviewDetail" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          scope: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/review_hog/reviews/perspective_stats/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetReviewHogReviewsPerspectiveStatRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          skill_name: S.String,
-          raised: S.Number,
-          kept: S.Number,
-          dismissed: S.Number,
-        }),
-      ).annotate({
-        identifier: "ReviewPerspectiveStatItem",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          report_count: S.Number,
-          perspectives: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "ReviewPerspectiveStats" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/review_hog/blind_spots/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListReviewHogBlindSpotsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          skill_name: S.String,
-          active: S.Boolean,
-          description: S.String,
-          body: S.String,
-        }),
-      ).annotate({ identifier: "ReviewBlindSpotsConfig" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() => __S(18, __c2, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListReviewHogBlindSpotsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/review_hog/perspectives/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListReviewHogPerspectivesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          skill_name: S.String,
-          enabled: S.Boolean,
-          description: S.String,
-          body: S.String,
-        }),
-      ).annotate({ identifier: "ReviewPerspectiveConfig" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() => __S(22, __c2, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListReviewHogPerspectivesResponse",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/review_hog/resolution/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListReviewHogResolutionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          scope: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/review_hog/reviews/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListReviewHogReviewsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          repository: S.String,
-          pr_number: S.NullOr(S.Number),
-          pr_title: S.NullOr(S.String),
-          pr_author: S.NullOr(S.String),
-          additions: S.NullOr(S.Number),
-          deletions: S.NullOr(S.Number),
-          changed_files: S.NullOr(S.Number),
-          head_branch: S.String,
-          github_url: S.String,
-          run_count: S.Number,
-          last_run_at: S.NullOr(S.String),
-          published: S.Boolean,
-          in_progress: S.Boolean,
-          progress: S.NullOr(__S(1, __c0, 1)),
-          resolution: S.NullOr(__S(2, __c0, 2)),
-          must_fix_count: S.Number,
-          should_fix_count: S.Number,
-          consider_count: S.Number,
-          candidate_count: S.Number,
-          dismissed_count: S.Number,
-          files_reviewed: S.NullOr(S.Number),
-          chunk_count: S.NullOr(S.Number),
-          perspective_count: S.NullOr(S.Number),
-          perspective_issue_count: S.NullOr(S.Number),
-          blind_spot_issue_count: S.NullOr(S.Number),
-        }),
-      ).annotate({ identifier: "ReviewRecentReview" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(27, __c3, 3),
-          has_more: S.Boolean,
-        }),
-      ).annotate({ identifier: "ReviewRecentReviewsPage" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -923,7 +628,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListReviewHogValidatorsRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -939,7 +648,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ReviewHogReviewsTriggerCreateRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           workflow_id: S.String,
@@ -948,7 +657,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "ReviewTriggerResponse" });
   }
 }
-function __c4(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -966,7 +675,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateReviewHogBlindSpotsPartialRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -982,7 +695,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateReviewHogPerspectivesPartialRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -998,7 +715,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateReviewHogResolutionPartialRequest",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1016,7 +737,329 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/review_hog/reviews/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetReviewHogReviewRequest",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          chunk_id: S.Number,
+          chunk_type: S.NullOr(S.String),
+          files: __S(97, __c6, 1),
+          perspectives: __S(97, __c6, 1),
+          skipped: __S(97, __c6, 1),
+          reason: S.String,
+        }),
+      ).annotate({ identifier: "ReviewSelectionChunk" });
+    case 3:
+      return S.Array(__S(98, __c6, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          roster: __S(97, __c6, 1),
+          chunks: __S(99, __c6, 3),
+        }),
+      ).annotate({
+        identifier: "ReviewPerspectiveSelection",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.Number,
+          end: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "ReviewFindingLineRange" });
+    case 6:
+      return S.Array(__S(101, __c6, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          file: S.String,
+          lines: __S(102, __c6, 6),
+          body: S.String,
+          suggestion: S.String,
+          effective_priority: S.String,
+          reviewer_priority: S.String,
+          source_perspective: S.NullOr(S.String),
+          validator_category: S.NullOr(S.String),
+          validator_note: S.String,
+        }),
+      ).annotate({ identifier: "ReviewFinding" });
+    case 8:
+      return S.Array(__S(103, __c6, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          repository: S.String,
+          pr_number: S.NullOr(S.Number),
+          pr_title: S.NullOr(S.String),
+          pr_author: S.NullOr(S.String),
+          additions: S.NullOr(S.Number),
+          deletions: S.NullOr(S.Number),
+          changed_files: S.NullOr(S.Number),
+          head_branch: S.String,
+          github_url: S.String,
+          run_count: S.Number,
+          last_run_at: S.NullOr(S.String),
+          published: S.Boolean,
+          in_progress: S.Boolean,
+          progress: S.NullOr(__S(112, __c7, 0)),
+          resolution: S.NullOr(__S(113, __c7, 1)),
+          must_fix_count: S.Number,
+          should_fix_count: S.Number,
+          consider_count: S.Number,
+          candidate_count: S.Number,
+          dismissed_count: S.Number,
+          files_reviewed: S.NullOr(S.Number),
+          chunk_count: S.NullOr(S.Number),
+          perspective_count: S.NullOr(S.Number),
+          perspective_issue_count: S.NullOr(S.Number),
+          blind_spot_issue_count: S.NullOr(S.Number),
+          head_sha: S.NullOr(S.String),
+          perspective_selection: S.NullOr(__S(100, __c6, 4)),
+          report_markdown: S.String,
+          run_urgency_threshold: S.NullOr(S.String),
+          findings: __S(104, __c6, 8),
+          dismissed_findings: __S(104, __c6, 8),
+        }),
+      ).annotate({ identifier: "ReviewDetail" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          review_stage: S.String,
+          done: S.NullOr(S.Number),
+          total: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "ReviewProgress" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resolution_status: S.String,
+          done: S.Number,
+          total: S.Number,
+          fixed: S.Number,
+          needs_attention: S.Number,
+        }),
+      ).annotate({ identifier: "ReviewResolutionStatus" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          scope: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/review_hog/reviews/perspective_stats/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetReviewHogReviewsPerspectiveStatRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          skill_name: S.String,
+          raised: S.Number,
+          kept: S.Number,
+          dismissed: S.Number,
+        }),
+      ).annotate({
+        identifier: "ReviewPerspectiveStatItem",
+      });
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          report_count: S.Number,
+          perspectives: __S(130, __c8, 2),
+        }),
+      ).annotate({ identifier: "ReviewPerspectiveStats" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/review_hog/blind_spots/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListReviewHogBlindSpotsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(176, __c11, 0));
+    case 1:
+      return S.suspend(() => __S(160, __c10, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListReviewHogBlindSpotsResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          skill_name: S.String,
+          active: S.Boolean,
+          description: S.String,
+          body: S.String,
+        }),
+      ).annotate({ identifier: "ReviewBlindSpotsConfig" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/review_hog/perspectives/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListReviewHogPerspectivesRequest",
+      });
+    case 1:
+      return S.Array(__S(208, __c13, 0));
+    case 2:
+      return S.suspend(() => __S(193, __c12, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListReviewHogPerspectivesResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          skill_name: S.String,
+          enabled: S.Boolean,
+          description: S.String,
+          body: S.String,
+        }),
+      ).annotate({ identifier: "ReviewPerspectiveConfig" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/review_hog/resolution/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListReviewHogResolutionRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          scope: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/review_hog/reviews/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListReviewHogReviewsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          repository: S.String,
+          pr_number: S.NullOr(S.Number),
+          pr_title: S.NullOr(S.String),
+          pr_author: S.NullOr(S.String),
+          additions: S.NullOr(S.Number),
+          deletions: S.NullOr(S.Number),
+          changed_files: S.NullOr(S.Number),
+          head_branch: S.String,
+          github_url: S.String,
+          run_count: S.Number,
+          last_run_at: S.NullOr(S.String),
+          published: S.Boolean,
+          in_progress: S.Boolean,
+          progress: S.NullOr(__S(112, __c7, 0)),
+          resolution: S.NullOr(__S(113, __c7, 1)),
+          must_fix_count: S.Number,
+          should_fix_count: S.Number,
+          consider_count: S.Number,
+          candidate_count: S.Number,
+          dismissed_count: S.Number,
+          files_reviewed: S.NullOr(S.Number),
+          chunk_count: S.NullOr(S.Number),
+          perspective_count: S.NullOr(S.Number),
+          perspective_issue_count: S.NullOr(S.Number),
+          blind_spot_issue_count: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "ReviewRecentReview" });
+    case 2:
+      return S.Array(__S(241, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(242, __c15, 2),
+          has_more: S.Boolean,
+        }),
+      ).annotate({ identifier: "ReviewRecentReviewsPage" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

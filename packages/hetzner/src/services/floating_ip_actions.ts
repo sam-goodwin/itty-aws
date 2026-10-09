@@ -370,7 +370,7 @@ export const assignFloatingIp: API.OperationMethod<
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AssignFloatingIpRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AssignFloatingIpResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<AssignFloatingIpResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -384,8 +384,8 @@ export const changeFloatingIpDnsPtr: API.OperationMethod<
   ChangeFloatingIpDnsPtrError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ChangeFloatingIpDnsPtrRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ChangeFloatingIpDnsPtrResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ChangeFloatingIpDnsPtrRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ChangeFloatingIpDnsPtrResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -399,8 +399,8 @@ export const changeFloatingIpProtection: API.OperationMethod<
   ChangeFloatingIpProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ChangeFloatingIpProtectionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ChangeFloatingIpProtectionResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ChangeFloatingIpProtectionRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ChangeFloatingIpProtectionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -414,8 +414,8 @@ export const getFloatingIpsAction: API.OperationMethod<
   GetFloatingIpsActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetFloatingIpsActionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetFloatingIpsActionResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetFloatingIpsActionRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetFloatingIpsActionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -431,8 +431,8 @@ export const listFloatingIpActions: API.PaginatedOperationMethod<
   ListFloatingIpActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16, __c2, 0) as any as S.Schema<ListFloatingIpActionsRequest>,
-    output: __S(21, __c2, 5) as any as S.Schema<ListFloatingIpActionsResponse>,
+    input: __S(40, __c5, 0) as any as S.Schema<ListFloatingIpActionsRequest>,
+    output: __S(43, __c5, 3) as any as S.Schema<ListFloatingIpActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -457,8 +457,8 @@ export const listFloatingIpsActions: API.PaginatedOperationMethod<
   ListFloatingIpsActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(23, __c2, 7) as any as S.Schema<ListFloatingIpsActionsRequest>,
-    output: __S(26, __c3, 2) as any as S.Schema<ListFloatingIpsActionsResponse>,
+    input: __S(57, __c7, 1) as any as S.Schema<ListFloatingIpsActionsRequest>,
+    output: __S(60, __c7, 4) as any as S.Schema<ListFloatingIpsActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -481,8 +481,8 @@ export const unassignFloatingIp: API.OperationMethod<
   UnassignFloatingIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<UnassignFloatingIpRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<UnassignFloatingIpResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<UnassignFloatingIpRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<UnassignFloatingIpResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -502,14 +502,39 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "AssignFloatingIpResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(1, __c0, 1),
+        }),
+      ).annotate({ identifier: "AssignFloatingIpResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
           type: S.String,
         }),
       ).annotate({
         identifier: "AssignFloatingIpResponseActionResourcesItem",
       });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -518,28 +543,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssignFloatingIpResponseActionError",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "AssignFloatingIpResponseAction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "AssignFloatingIpResponse" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -551,7 +559,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ChangeFloatingIpDnsPtrRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -560,25 +568,25 @@ function __c0(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeFloatingIpDnsPtrResponseAction",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(7, __c0, 7),
+          action: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "ChangeFloatingIpDnsPtrResponse",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -593,7 +601,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ChangeFloatingIpProtectionRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -602,21 +610,25 @@ function __c1(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeFloatingIpProtectionResponseAction",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(10, __c1, 2),
+          action: __S(25, __c3, 1),
         }),
       ).annotate({
         identifier: "ChangeFloatingIpProtectionResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -624,7 +636,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetFloatingIpsActionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -633,32 +645,30 @@ function __c1(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "GetFloatingIpsActionResponseAction",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(13, __c1, 5),
+          action: __S(33, __c4, 1),
         }),
       ).annotate({
         identifier: "GetFloatingIpsActionResponse",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          sort: S.optional(__S(15, __c1, 7).pipe(T.Query())),
-          status: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          sort: S.optional(__S(48, __c6, 0).pipe(T.Query())),
+          status: S.optional(__S(48, __c6, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/floating_ips/{id}/actions", code: 200 })),
@@ -674,15 +684,30 @@ function __c2(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ListFloatingIpActionsResponseActionsItem",
       });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(41, __c5, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          actions: __S(42, __c5, 2),
+          meta: __S(50, __c6, 2),
+        }),
+      ).annotate({
+        identifier: "ListFloatingIpActionsResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -695,42 +720,33 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListFloatingIpActionsResponseMetaPagination",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(19, __c2, 3),
+          pagination: __S(49, __c6, 1),
         }),
       ).annotate({
         identifier: "ListFloatingIpActionsResponseMeta",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          actions: __S(18, __c2, 2),
-          meta: __S(20, __c2, 4),
-        }),
-      ).annotate({
-        identifier: "ListFloatingIpActionsResponse",
-      });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-          sort: S.optional(__S(15, __c1, 7).pipe(T.Query())),
-          status: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          id: S.optional(__S(56, __c7, 0).pipe(T.Query())),
+          sort: S.optional(__S(48, __c6, 0).pipe(T.Query())),
+          status: S.optional(__S(48, __c6, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/floating_ips/actions", code: 200 })),
       ).annotate({
         identifier: "ListFloatingIpsActionsRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -739,24 +755,28 @@ function __c3(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ListFloatingIpsActionsResponseActionsItem",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(58, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(25, __c3, 1),
-          meta: __S(20, __c2, 4),
+          actions: __S(59, __c7, 3),
+          meta: __S(50, __c6, 2),
         }),
       ).annotate({
         identifier: "ListFloatingIpsActionsResponse",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -764,7 +784,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UnassignFloatingIpRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -773,23 +793,22 @@ function __c3(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "UnassignFloatingIpResponseAction",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(28, __c3, 4),
+          action: __S(65, __c8, 1),
         }),
       ).annotate({
         identifier: "UnassignFloatingIpResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

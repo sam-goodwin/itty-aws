@@ -695,8 +695,8 @@ export const createDiscoveryV1NamespacedEndpointSlice: API.OperationMethod<
   CreateDiscoveryV1NamespacedEndpointSliceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateDiscoveryV1NamespacedEndpointSliceRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSlice>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateDiscoveryV1NamespacedEndpointSliceRequest>,
+  output: __S(159, __c9, 15) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSlice>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -711,11 +711,11 @@ export const deleteDiscoveryV1CollectionNamespacedEndpointSlice: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19,
-    __c2,
-    3,
+    160,
+    __c10,
+    0,
   ) as any as S.Schema<DeleteDiscoveryV1CollectionNamespacedEndpointSliceRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(180, __c11, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -729,8 +729,8 @@ export const deleteDiscoveryV1NamespacedEndpointSlice: API.OperationMethod<
   DeleteDiscoveryV1NamespacedEndpointSliceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteDiscoveryV1NamespacedEndpointSliceRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteDiscoveryV1NamespacedEndpointSliceRequest>,
+  output: __S(180, __c11, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -744,8 +744,8 @@ export const getDiscoveryAPIGroup: API.OperationMethod<
   GetDiscoveryAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetDiscoveryAPIGroupRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetDiscoveryAPIGroupRequest>,
+  output: __S(229, __c14, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -759,8 +759,8 @@ export const getDiscoveryV1APIResources: API.OperationMethod<
   GetDiscoveryV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetDiscoveryV1APIResourcesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetDiscoveryV1APIResourcesRequest>,
+  output: __S(243, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -774,8 +774,8 @@ export const listDiscoveryV1EndpointSliceForAllNamespaces: API.OperationMethod<
   ListDiscoveryV1EndpointSliceForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListDiscoveryV1EndpointSliceForAllNamespacesRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSliceList>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListDiscoveryV1EndpointSliceForAllNamespacesRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSliceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -789,8 +789,8 @@ export const listDiscoveryV1NamespacedEndpointSlice: API.OperationMethod<
   ListDiscoveryV1NamespacedEndpointSliceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListDiscoveryV1NamespacedEndpointSliceRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSliceList>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListDiscoveryV1NamespacedEndpointSliceRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSliceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -808,8 +808,8 @@ export const patchDiscoveryV1NamespacedEndpointSlice: API.OperationMethod<
   PatchDiscoveryV1NamespacedEndpointSliceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<PatchDiscoveryV1NamespacedEndpointSliceRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSlice>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchDiscoveryV1NamespacedEndpointSliceRequest>,
+  output: __S(159, __c9, 15) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSlice>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -823,8 +823,8 @@ export const readDiscoveryV1NamespacedEndpointSlice: API.OperationMethod<
   ReadDiscoveryV1NamespacedEndpointSliceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ReadDiscoveryV1NamespacedEndpointSliceRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSlice>,
+  input: __S(16, __c1, 0) as any as S.Schema<ReadDiscoveryV1NamespacedEndpointSliceRequest>,
+  output: __S(159, __c9, 15) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSlice>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -842,8 +842,8 @@ export const replaceDiscoveryV1NamespacedEndpointSlice: API.OperationMethod<
   ReplaceDiscoveryV1NamespacedEndpointSliceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ReplaceDiscoveryV1NamespacedEndpointSliceRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSlice>,
+  input: __S(32, __c2, 0) as any as S.Schema<ReplaceDiscoveryV1NamespacedEndpointSliceRequest>,
+  output: __S(159, __c9, 15) as any as S.Schema<IoK8sApiDiscoveryV1EndpointSlice>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -858,11 +858,11 @@ export const watchDiscoveryV1EndpointSliceListForAllNamespaces: API.OperationMet
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    44,
-    __c5,
-    4,
+    48,
+    __c3,
+    0,
   ) as any as S.Schema<WatchDiscoveryV1EndpointSliceListForAllNamespacesRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(64, __c4, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -876,8 +876,8 @@ export const watchDiscoveryV1NamespacedEndpointSlice: API.OperationMethod<
   WatchDiscoveryV1NamespacedEndpointSliceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<WatchDiscoveryV1NamespacedEndpointSliceRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(80, __c5, 0) as any as S.Schema<WatchDiscoveryV1NamespacedEndpointSliceRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -891,8 +891,8 @@ export const watchDiscoveryV1NamespacedEndpointSliceList: API.OperationMethod<
   WatchDiscoveryV1NamespacedEndpointSliceListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<WatchDiscoveryV1NamespacedEndpointSliceListRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(96, __c6, 0) as any as S.Schema<WatchDiscoveryV1NamespacedEndpointSliceListRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -902,455 +902,6 @@ export const watchDiscoveryV1NamespacedEndpointSliceList: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ready: S.optional(S.Boolean),
-          serving: S.optional(S.Boolean),
-          terminating: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiDiscoveryV1EndpointConditions",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiDiscoveryV1ForNode",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          forNodes: S.optional(__S(4, __c0, 4)),
-          forZones: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiDiscoveryV1EndpointHints",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldPath: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1ObjectReference",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          addresses: __S(0, __c0, 0),
-          conditions: S.optional(__S(1, __c0, 1)),
-          deprecatedTopology: S.optional(__S(2, __c0, 2)),
-          hints: S.optional(__S(5, __c0, 5)),
-          hostname: S.optional(S.String),
-          nodeName: S.optional(S.String),
-          targetRef: S.optional(__S(6, __c0, 6)),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiDiscoveryV1Endpoint",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(2, __c0, 2)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(0, __c0, 0)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(2, __c0, 2)),
-          managedFields: S.optional(__S(10, __c1, 2)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(12, __c1, 4)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          appProtocol: S.optional(S.String),
-          name: S.optional(S.String),
-          port: S.optional(S.Number),
-          protocol: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiDiscoveryV1EndpointPort",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          addressType: S.String,
-          apiVersion: S.optional(S.String),
-          endpoints: S.optional(__S(8, __c1, 0)),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(13, __c1, 5)),
-          ports: S.optional(__S(15, __c1, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDiscoveryV1NamespacedEndpointSliceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          addressType: S.String,
-          apiVersion: S.optional(S.String),
-          endpoints: S.optional(__S(8, __c1, 0)),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(13, __c1, 5)),
-          ports: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiDiscoveryV1EndpointSlice",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(18, __c2, 2)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDiscoveryV1CollectionNamespacedEndpointSliceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          causes: S.optional(__S(21, __c2, 5)),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          retryAfterSeconds: S.optional(S.Number),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(22, __c2, 6)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(24, __c3, 0)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(18, __c2, 2)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDiscoveryV1NamespacedEndpointSliceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/discovery.k8s.io/", code: 200 })),
-      ).annotate({
-        identifier: "GetDiscoveryAPIGroupRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupVersion: S.String,
-          version: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          clientCIDR: S.String,
-          serverAddress: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.Array(__S(28, __c3, 4));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.String,
-          preferredVersion: S.optional(__S(28, __c3, 4)),
-          serverAddressByClientCIDRs: S.optional(__S(30, __c3, 6)),
-          versions: __S(31, __c3, 7),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/discovery.k8s.io/v1/", code: 200 })),
-      ).annotate({
-        identifier: "GetDiscoveryV1APIResourcesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(0, __c0, 0)),
-          group: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-          namespaced: S.Boolean,
-          shortNames: S.optional(__S(0, __c0, 0)),
-          singularName: S.String,
-          storageVersionHash: S.optional(S.String),
-          verbs: __S(0, __c0, 0),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
-      });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          groupVersion: S.String,
-          kind: S.optional(S.String),
-          resources: __S(35, __c4, 3),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          watch: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/apis/discovery.k8s.io/v1/endpointslices", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListDiscoveryV1EndpointSliceForAllNamespacesRequest",
-      });
-    case 6:
-      return S.Array(__S(17, __c2, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          items: __S(38, __c4, 6),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiDiscoveryV1EndpointSliceList",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          watch: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDiscoveryV1NamespacedEndpointSliceRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1370,7 +921,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchDiscoveryV1NamespacedEndpointSliceRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1386,7 +941,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ReadDiscoveryV1NamespacedEndpointSliceRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1397,10 +956,10 @@ function __c5(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           addressType: S.String,
           apiVersion: S.optional(S.String),
-          endpoints: S.optional(__S(8, __c1, 0)),
+          endpoints: S.optional(__S(151, __c9, 7)),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(13, __c1, 5)),
-          ports: S.optional(__S(15, __c1, 7)),
+          metadata: S.optional(__S(156, __c9, 12)),
+          ports: S.optional(__S(158, __c9, 14)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1411,7 +970,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ReplaceDiscoveryV1NamespacedEndpointSliceRequest",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -1436,7 +999,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "WatchDiscoveryV1EndpointSliceListForAllNamespacesRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -1445,7 +1012,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1WatchEvent",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1472,7 +1043,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "WatchDiscoveryV1NamespacedEndpointSliceRequest",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1500,7 +1075,483 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          addressType: S.String,
+          apiVersion: S.optional(S.String),
+          endpoints: S.optional(__S(151, __c9, 7)),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(156, __c9, 12)),
+          ports: S.optional(__S(158, __c9, 14)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDiscoveryV1NamespacedEndpointSliceRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ready: S.optional(S.Boolean),
+          serving: S.optional(S.Boolean),
+          terminating: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiDiscoveryV1EndpointConditions",
+      });
+    case 1:
+      return S.Record(S.String, S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiDiscoveryV1ForNode",
+      });
+    case 3:
+      return S.Array(__S(146, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          forNodes: S.optional(__S(147, __c9, 3)),
+          forZones: S.optional(__S(147, __c9, 3)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiDiscoveryV1EndpointHints",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldPath: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1ObjectReference",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          addresses: __S(128, __c8, 0),
+          conditions: S.optional(__S(144, __c9, 0)),
+          deprecatedTopology: S.optional(__S(145, __c9, 1)),
+          hints: S.optional(__S(148, __c9, 4)),
+          hostname: S.optional(S.String),
+          nodeName: S.optional(S.String),
+          targetRef: S.optional(__S(149, __c9, 5)),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiDiscoveryV1Endpoint",
+      });
+    case 7:
+      return S.Array(__S(150, __c9, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 9:
+      return S.Array(__S(152, __c9, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 11:
+      return S.Array(__S(154, __c9, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(145, __c9, 1)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(128, __c8, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(145, __c9, 1)),
+          managedFields: S.optional(__S(153, __c9, 9)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(155, __c9, 11)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          appProtocol: S.optional(S.String),
+          name: S.optional(S.String),
+          port: S.optional(S.Number),
+          protocol: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiDiscoveryV1EndpointPort",
+      });
+    case 14:
+      return S.Array(__S(157, __c9, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          addressType: S.String,
+          apiVersion: S.optional(S.String),
+          endpoints: S.optional(__S(151, __c9, 7)),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(156, __c9, 12)),
+          ports: S.optional(__S(158, __c9, 14)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiDiscoveryV1EndpointSlice",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(176, __c11, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDiscoveryV1CollectionNamespacedEndpointSliceRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
+      });
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          causes: S.optional(__S(178, __c11, 2)),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          retryAfterSeconds: S.optional(S.Number),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(179, __c11, 3)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(193, __c12, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(176, __c11, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDiscoveryV1NamespacedEndpointSliceRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/discovery.k8s.io/", code: 200 })),
+      ).annotate({
+        identifier: "GetDiscoveryAPIGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupVersion: S.String,
+          version: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientCIDR: S.String,
+          serverAddress: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
+      });
+    case 3:
+      return S.Array(__S(226, __c14, 2));
+    case 4:
+      return S.Array(__S(225, __c14, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.String,
+          preferredVersion: S.optional(__S(225, __c14, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(227, __c14, 3)),
+          versions: __S(228, __c14, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/discovery.k8s.io/v1/", code: 200 })),
+      ).annotate({
+        identifier: "GetDiscoveryV1APIResourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          categories: S.optional(__S(128, __c8, 0)),
+          group: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+          namespaced: S.Boolean,
+          shortNames: S.optional(__S(128, __c8, 0)),
+          singularName: S.String,
+          storageVersionHash: S.optional(S.String),
+          verbs: __S(128, __c8, 0),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
+      });
+    case 2:
+      return S.Array(__S(241, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          groupVersion: S.String,
+          kind: S.optional(S.String),
+          resources: __S(242, __c15, 2),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          watch: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/apis/discovery.k8s.io/v1/endpointslices", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListDiscoveryV1EndpointSliceForAllNamespacesRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(159, __c9, 15));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          items: __S(272, __c17, 0),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(193, __c12, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiDiscoveryV1EndpointSliceList",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          watch: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDiscoveryV1NamespacedEndpointSliceRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -161,8 +161,8 @@ export const createApiKey: API.OperationMethod<
   CreateApiKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateApiKeyRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ApiKeyResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateApiKeyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ApiKeyResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -176,8 +176,8 @@ export const deleteApiKey: API.OperationMethod<
   DeleteApiKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteApiKeyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteApiKeyResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteApiKeyRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<DeleteApiKeyResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -191,8 +191,8 @@ export const deleteApiKeyForUser: API.OperationMethod<
   DeleteApiKeyForUserError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteApiKeyForUserRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteApiKeyForUserResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DeleteApiKeyForUserRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<DeleteApiKeyForUserResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -206,8 +206,8 @@ export const getApiKey: API.OperationMethod<
   GetApiKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetApiKeyRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ApiKeyList>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetApiKeyRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<ApiKeyList>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -221,8 +221,8 @@ export const getCurrentApiKey: API.OperationMethod<
   GetCurrentApiKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetCurrentApiKeyRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ApiKeyList>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetCurrentApiKeyRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<ApiKeyList>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -236,8 +236,8 @@ export const listApiKeys: API.OperationMethod<
   ListApiKeysError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ListApiKeysRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ListApiKeysResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<ListApiKeysRequest>,
+  output: __S(34, __c8, 2) as any as S.Schema<ListApiKeysResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -247,38 +247,54 @@ export const listApiKeys: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
           name: S.String,
-          permissions: __S(0, __c0, 0),
+          permissions: __S(4, __c1, 0),
           expiresAt: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/api-keys", code: 200 })),
       ).annotate({ identifier: "CreateApiKeyRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           value: S.String,
           createdAt: S.String,
-          permissions: __S(0, __c0, 0),
+          permissions: __S(4, __c1, 0),
           expiresAt: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ApiKeyResponse" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "DELETE", uri: "/api-keys/{name}", code: 200 })),
       ).annotate({ identifier: "DeleteApiKeyRequest" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteApiKeyResponse",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -288,20 +304,28 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteApiKeyForUserRequest",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/api-keys/{name}", code: 200 })),
       ).annotate({ identifier: "GetApiKeyRequest" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           value: S.String,
           createdAt: S.String,
-          permissions: __S(0, __c0, 0),
+          permissions: __S(4, __c1, 0),
           lastUsedAt: S.NullOr(S.String),
           expiresAt: S.NullOr(S.String),
           userId: S.String,
@@ -310,7 +334,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "ApiKeyList" });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -318,21 +342,24 @@ function __c1(j: number): any {
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/api-keys/current", code: 200 })),
       ).annotate({ identifier: "GetCurrentApiKeyRequest" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/api-keys", code: 200 })),
       ).annotate({ identifier: "ListApiKeysRequest" });
+    case 1:
+      return S.Array(__S(24, __c6, 0));
     case 2:
-      return S.Array(__S(7, __c0, 7));
-    case 3:
-      return S.suspend(() => __S(10, __c1, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(33, __c8, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListApiKeysResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

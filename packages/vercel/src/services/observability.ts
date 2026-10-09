@@ -182,8 +182,8 @@ export const getObservabilityConfigurationProjects: API.OperationMethod<
   GetObservabilityConfigurationProjectsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetObservabilityConfigurationProjectsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetObservabilityConfigurationProjectsResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetObservabilityConfigurationProjectsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GetObservabilityConfigurationProjectsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -196,8 +196,8 @@ export const getObservabilitySchema: API.OperationMethod<
   GetObservabilitySchemaError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetObservabilitySchemaRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetObservabilitySchemaResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetObservabilitySchemaRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetObservabilitySchemaResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -214,8 +214,8 @@ export const getObservabilitySchemaByMetricId: API.OperationMethod<
   GetObservabilitySchemaByMetricIdError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetObservabilitySchemaByMetricIdRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetObservabilitySchemaByMetricIdResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetObservabilitySchemaByMetricIdRequest>,
+  output: __S(30, __c3, 6) as any as S.Schema<GetObservabilitySchemaByMetricIdResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -233,8 +233,8 @@ export const updateObservabilityConfigurationProject: API.OperationMethod<
   UpdateObservabilityConfigurationProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<UpdateObservabilityConfigurationProjectRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<UpdateObservabilityConfigurationProjectResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateObservabilityConfigurationProjectRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<UpdateObservabilityConfigurationProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -268,7 +268,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateObservabilityQueryResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -283,7 +287,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetObservabilityConfigurationProjectsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           disabledAt: S.Number,
@@ -293,27 +297,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetObservabilityConfigurationProjectsResponseDisabledProjectsItem",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          disabledProjects: __S(5, __c0, 5),
+          disabledProjects: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "GetObservabilityConfigurationProjectsResponse",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/observability/schema", code: 200 })),
       ).annotate({
         identifier: "GetObservabilitySchemaRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
@@ -322,17 +326,21 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetObservabilitySchemaResponseMetricsItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          metrics: __S(9, __c1, 1),
+          metrics: __S(18, __c2, 2),
         }),
       ).annotate({
         identifier: "GetObservabilitySchemaResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           metricId: S.String.pipe(T.Label()),
@@ -340,9 +348,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetObservabilitySchemaByMetricIdRequest",
       });
-    case 4:
+    case 1:
       return S.Array(S.String);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -352,32 +360,32 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetObservabilitySchemaByMetricIdResponseBodyItemDimensionsItem",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(26, __c3, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          aggregations: __S(12, __c1, 4),
+          aggregations: __S(25, __c3, 1),
           defaultAggregation: S.String,
           description: S.String,
-          dimensions: __S(14, __c1, 6),
+          dimensions: __S(27, __c3, 3),
           id: S.String,
           unit: S.String,
         }),
       ).annotate({
         identifier: "GetObservabilitySchemaByMetricIdResponseBodyItem",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() => __S(16, __c2, 0).pipe(T.RawResponseRoot())).annotate({
+    case 5:
+      return S.Array(__S(28, __c3, 4));
+    case 6:
+      return S.suspend(() => __S(29, __c3, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetObservabilitySchemaByMetricIdResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -394,7 +402,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateObservabilityConfigurationProjectRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           disabledAt: S.optional(S.Number),
@@ -405,7 +413,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

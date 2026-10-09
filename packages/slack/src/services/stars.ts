@@ -118,7 +118,7 @@ export const addStar: API.OperationMethod<
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AddStarRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddStarResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<AddStarResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -134,8 +134,8 @@ export const listStars: API.PaginatedOperationMethod<
   ListStarsResponseItemsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(2, __c0, 2) as any as S.Schema<ListStarsRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<ListStarsResponse>,
+    input: __S(16, __c2, 0) as any as S.Schema<ListStarsRequest>,
+    output: __S(20, __c2, 4) as any as S.Schema<ListStarsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -158,8 +158,8 @@ export const removeStar: API.OperationMethod<
   RemoveStarError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<RemoveStarRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RemoveStarResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<RemoveStarRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RemoveStarResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -177,13 +177,21 @@ function __c0(j: number): any {
           timestamp: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/stars.add", code: 200 })),
       ).annotate({ identifier: "AddStarRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
         }),
       ).annotate({ identifier: "AddStarResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number.pipe(T.Query())),
@@ -193,7 +201,7 @@ function __c0(j: number): any {
           team_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/stars.list", code: 200 })),
       ).annotate({ identifier: "ListStarsRequest" });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -207,9 +215,9 @@ function __c0(j: number): any {
           { key: "type", values: ["message", "file", "file_comment", "channel", "im", "group"] },
         ),
       );
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           next_cursor: S.optional(S.String),
@@ -217,16 +225,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListStarsResponseResponseMetadata",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          items: __S(4, __c0, 4),
+          items: __S(18, __c2, 2),
           paging: S.optional(S.Unknown),
-          response_metadata: S.optional(__S(5, __c0, 5)),
+          response_metadata: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "ListStarsResponse" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.optional(S.String),
@@ -237,7 +249,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "RemoveStarRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

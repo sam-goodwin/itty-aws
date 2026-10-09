@@ -522,8 +522,8 @@ export const batchExecuteStatement: API.OperationMethod<
   BatchExecuteStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BatchExecuteStatementInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<BatchExecuteStatementOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<BatchExecuteStatementInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<BatchExecuteStatementOutput>,
   errors: [
     ActiveSessionsExceededException,
     ActiveStatementsExceededException,
@@ -555,8 +555,8 @@ export const cancelStatement: API.OperationMethod<
   CancelStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CancelStatementRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CancelStatementResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<CancelStatementRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<CancelStatementResponse>,
   errors: [
     DatabaseConnectionException,
     InternalServerException,
@@ -586,8 +586,8 @@ export const describeStatement: API.OperationMethod<
   DescribeStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DescribeStatementRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DescribeStatementResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DescribeStatementRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<DescribeStatementResponse>,
   errors: [
     ActiveWaitingRequestsExceededException,
     InternalServerException,
@@ -628,8 +628,8 @@ export const describeTable: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ColumnMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DescribeTableRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DescribeTableResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DescribeTableRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<DescribeTableResponse>,
   errors: [
     DatabaseConnectionException,
     InternalServerException,
@@ -677,8 +677,8 @@ export const executeStatement: API.OperationMethod<
   ExecuteStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ExecuteStatementInput>,
-  output: __S(16, __c2, 0) as any as S.Schema<ExecuteStatementOutput>,
+  input: __S(56, __c7, 0) as any as S.Schema<ExecuteStatementInput>,
+  output: __S(57, __c7, 1) as any as S.Schema<ExecuteStatementOutput>,
   errors: [
     ActiveSessionsExceededException,
     ActiveStatementsExceededException,
@@ -710,8 +710,8 @@ export const getStatementResult: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Field[]
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetStatementResultRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetStatementResultResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetStatementResultRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<GetStatementResultResponse>,
   errors: [
     ActiveWaitingRequestsExceededException,
     InternalServerException,
@@ -742,8 +742,8 @@ export const getStatementResultV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   QueryRecords
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetStatementResultV2Request>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetStatementResultV2Response>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetStatementResultV2Request>,
+  output: __S(75, __c9, 3) as any as S.Schema<GetStatementResultV2Response>,
   errors: [
     ActiveWaitingRequestsExceededException,
     InternalServerException,
@@ -785,8 +785,8 @@ export const listDatabases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListDatabasesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListDatabasesResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListDatabasesRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<ListDatabasesResponse>,
   errors: [
     DatabaseConnectionException,
     InternalServerException,
@@ -834,8 +834,8 @@ export const listSchemas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListSchemasRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ListSchemasResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListSchemasRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<ListSchemasResponse>,
   errors: [
     DatabaseConnectionException,
     InternalServerException,
@@ -871,8 +871,8 @@ export const listSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SessionData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListSessionsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListSessionsResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListSessionsRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<ListSessionsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -904,8 +904,8 @@ export const listStatements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StatementData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListStatementsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListStatementsResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListStatementsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<ListStatementsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -947,8 +947,8 @@ export const listTables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TableMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListTablesRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ListTablesResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListTablesRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<ListTablesResponse>,
   errors: [
     DatabaseConnectionException,
     InternalServerException,
@@ -971,24 +971,16 @@ export const listTables: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() => S.Struct({ name: S.String, value: S.String })).annotate({
-        identifier: "SqlParameter",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          Sqls: __S(0, __c0, 0),
+          Sqls: __S(16, __c2, 0),
           ClusterIdentifier: S.optional(S.String),
           SecretArn: S.optional(S.String),
           DbUser: S.optional(S.String),
           Database: S.optional(S.String),
           WithEvent: S.optional(S.Boolean),
           StatementName: S.optional(S.String),
-          Parameters: S.optional(__S(2, __c0, 2)),
+          Parameters: S.optional(__S(9, __c1, 1)),
           WorkgroupName: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           ResultFormat: S.optional(S.String),
@@ -1000,14 +992,14 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchExecuteStatementInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ClusterIdentifier: S.optional(S.String),
           DbUser: S.optional(S.String),
-          DbGroups: S.optional(__S(0, __c0, 0)),
+          DbGroups: S.optional(__S(16, __c2, 0)),
           Database: S.optional(S.String),
           SecretArn: S.optional(S.String),
           WorkgroupName: S.optional(S.String),
@@ -1019,27 +1011,47 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchExecuteStatementOutput",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Id: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CancelStatementRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.Boolean) })).annotate({
-        identifier: "CancelStatementResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Id: S.String, WaitTimeSeconds: S.optional(S.Number) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DescribeStatementRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ name: S.String, value: S.String })).annotate({
+        identifier: "SqlParameter",
+      });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CancelStatementRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Status: S.optional(S.Boolean) })).annotate({
+        identifier: "CancelStatementResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String, WaitTimeSeconds: S.optional(S.Number) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeStatementRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
@@ -1055,9 +1067,9 @@ function __c1(j: number): any {
           HasResultSet: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SubStatementData" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
@@ -1076,8 +1088,8 @@ function __c1(j: number): any {
           ResultRows: S.optional(S.Number),
           ResultSize: S.optional(S.Number),
           RedshiftQueryId: S.optional(S.Number),
-          QueryParameters: S.optional(__S(2, __c0, 2)),
-          SubStatements: S.optional(__S(9, __c1, 1)),
+          QueryParameters: S.optional(__S(9, __c1, 1)),
+          SubStatements: S.optional(__S(34, __c4, 2)),
           WorkgroupName: S.optional(S.String),
           ResultFormat: S.optional(S.String),
           SessionId: S.optional(S.String),
@@ -1086,7 +1098,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DescribeStatementResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -1101,7 +1117,19 @@ function __c1(j: number): any {
           WorkgroupName: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeTableRequest" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TableName: S.optional(S.String),
+          ColumnList: S.optional(__S(49, __c6, 1)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DescribeTableResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isCaseSensitive: S.optional(S.Boolean),
@@ -1119,17 +1147,13 @@ function __c1(j: number): any {
           columnDefault: S.optional(S.String),
         }),
       ).annotate({ identifier: "ColumnMetadata" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          TableName: S.optional(S.String),
-          ColumnList: S.optional(__S(13, __c1, 5)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DescribeTableResponse" });
-    case 7:
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Sql: S.String,
@@ -1139,7 +1163,7 @@ function __c1(j: number): any {
           Database: S.optional(S.String),
           WithEvent: S.optional(S.Boolean),
           StatementName: S.optional(S.String),
-          Parameters: S.optional(__S(2, __c0, 2)),
+          Parameters: S.optional(__S(9, __c1, 1)),
           WorkgroupName: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           ResultFormat: S.optional(S.String),
@@ -1148,18 +1172,14 @@ function __c1(j: number): any {
           WaitTimeSeconds: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ExecuteStatementInput" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ClusterIdentifier: S.optional(S.String),
           DbUser: S.optional(S.String),
-          DbGroups: S.optional(__S(0, __c0, 0)),
+          DbGroups: S.optional(__S(16, __c2, 0)),
           Database: S.optional(S.String),
           SecretArn: S.optional(S.String),
           WorkgroupName: S.optional(S.String),
@@ -1169,7 +1189,11 @@ function __c2(j: number): any {
           HasResultSet: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ExecuteStatementOutput" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
@@ -1179,7 +1203,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetStatementResultRequest",
       });
-    case 2:
+    case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ isNull: S.Boolean }),
         /*@__PURE__*/ S.Struct({ booleanValue: S.Boolean }),
@@ -1188,22 +1212,26 @@ function __c2(j: number): any {
         /*@__PURE__*/ S.Struct({ stringValue: S.String }),
         /*@__PURE__*/ S.Struct({ blobValue: T.Blob }),
       ]);
+    case 2:
+      return S.Array(__S(65, __c8, 1));
     case 3:
-      return S.Array(__S(18, __c2, 2));
+      return S.Array(__S(66, __c8, 2));
     case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          Records: __S(20, __c2, 4),
-          ColumnMetadata: S.optional(__S(13, __c1, 5)),
+          Records: __S(67, __c8, 3),
+          ColumnMetadata: S.optional(__S(49, __c6, 1)),
           TotalNumRows: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetStatementResultResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
@@ -1213,19 +1241,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetStatementResultV2Request",
       });
-    case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ CSVRecords: S.String })]);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
     case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ CSVRecords: S.String })]);
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Records: __S(24, __c3, 0),
-          ColumnMetadata: S.optional(__S(13, __c1, 5)),
+          Records: __S(74, __c9, 2),
+          ColumnMetadata: S.optional(__S(49, __c6, 1)),
           TotalNumRows: S.optional(S.Number),
           ResultFormat: S.optional(S.String),
           NextToken: S.optional(S.String),
@@ -1233,7 +1257,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetStatementResultV2Response",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -1245,11 +1273,15 @@ function __c3(j: number): any {
           WorkgroupName: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDatabasesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Databases: S.optional(__S(0, __c0, 0)), NextToken: S.optional(S.String) }),
+        S.Struct({ Databases: S.optional(__S(16, __c2, 0)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDatabasesResponse" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -1263,11 +1295,15 @@ function __c3(j: number): any {
           WorkgroupName: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListSchemasRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Schemas: S.optional(__S(0, __c0, 0)), NextToken: S.optional(S.String) }),
+        S.Struct({ Schemas: S.optional(__S(16, __c2, 0)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSchemasResponse" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
@@ -1280,7 +1316,7 @@ function __c3(j: number): any {
           Database: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListSessionsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SessionId: S.String,
@@ -1296,17 +1332,17 @@ function __c3(j: number): any {
           CurrentStatementId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SessionData" });
+    case 2:
+      return S.Array(__S(97, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Sessions: __S(98, __c12, 2), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSessionsResponse" });
   }
 }
-function __c4(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Sessions: __S(32, __c4, 0), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListSessionsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
@@ -1319,30 +1355,34 @@ function __c4(j: number): any {
           WorkgroupName: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListStatementsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
           QueryString: S.optional(S.String),
-          QueryStrings: S.optional(__S(0, __c0, 0)),
+          QueryStrings: S.optional(__S(16, __c2, 0)),
           SecretArn: S.optional(S.String),
           Status: S.optional(S.String),
           StatementName: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          QueryParameters: S.optional(__S(2, __c0, 2)),
+          QueryParameters: S.optional(__S(9, __c1, 1)),
           IsBatchStatement: S.optional(S.Boolean),
           ResultFormat: S.optional(S.String),
           SessionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "StatementData" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(105, __c13, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Statements: __S(36, __c4, 4), NextToken: S.optional(S.String) }),
+        S.Struct({ Statements: __S(106, __c13, 2), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListStatementsResponse" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterIdentifier: S.optional(S.String),
@@ -1357,7 +1397,7 @@ function __c4(j: number): any {
           WorkgroupName: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTablesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1365,19 +1405,14 @@ function __c4(j: number): any {
           schema: S.optional(S.String),
         }),
       ).annotate({ identifier: "TableMember" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(113, __c14, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Tables: S.optional(__S(40, __c5, 0)), NextToken: S.optional(S.String) }),
+        S.Struct({ Tables: S.optional(__S(114, __c14, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTablesResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

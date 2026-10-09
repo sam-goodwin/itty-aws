@@ -130,7 +130,7 @@ export interface ConfigureLogsForChannelResponse {
 }
 export type LoggingStrategy = "VENDED_LOGS" | "LEGACY_CLOUDWATCH" | (string & {});
 export type __listOfLoggingStrategies = LoggingStrategy[];
-const __listOfLoggingStrategies = __S(0, __c0, 0) as any as S.Schema<__listOfLoggingStrategies>;
+const __listOfLoggingStrategies = __S(1632, __c51, 0) as any as S.Schema<__listOfLoggingStrategies>;
 export type AdsInteractionPublishOptInEventType =
   | "RAW_ADS_RESPONSE"
   | "RAW_ADS_REQUEST"
@@ -144,7 +144,7 @@ export type AdsInteractionPublishOptInEventType =
   | "PRE_MANIFEST_INSERTION_FUNCTION_COMPLETED"
   | (string & {});
 export type __adsInteractionPublishOptInEventTypesList = AdsInteractionPublishOptInEventType[];
-const __adsInteractionPublishOptInEventTypesList = /*@__PURE__*/ __L.at(__c0, 3);
+const __adsInteractionPublishOptInEventTypesList = /*@__PURE__*/ __L.at(__c56, 0);
 export type AdsInteractionExcludeEventType =
   | "AD_MARKER_FOUND"
   | "NON_AD_MARKER_FOUND"
@@ -291,7 +291,7 @@ export interface RequestOutputItem {
 export type RequestOutputs = RequestOutputItem[];
 export type PlaybackMode = "LOOP" | "LINEAR" | (string & {});
 export type __mapOf__string = { [key: string]: string | undefined };
-const __mapOf__string = /*@__PURE__*/ __L.at(__c1, 5);
+const __mapOf__string = /*@__PURE__*/ __L.at(__c63, 0);
 export type Tier = "BASIC" | "STANDARD" | (string & {});
 export interface TimeShiftConfiguration {
   MaxTimeDelaySeconds: number;
@@ -360,7 +360,7 @@ export interface AvailMatchingCriteria {
   Operator: Operator;
 }
 export type __listOfAvailMatchingCriteria = AvailMatchingCriteria[];
-const __listOfAvailMatchingCriteria = /*@__PURE__*/ __L.at(__c3, 1);
+const __listOfAvailMatchingCriteria = /*@__PURE__*/ __L.at(__c68, 1);
 export interface PrefetchConsumption {
   AvailMatchingCriteria?: AvailMatchingCriteria[];
   EndTime: Date;
@@ -456,7 +456,7 @@ export interface AdBreak {
   AdBreakMetadata?: KeyValuePair[];
 }
 export type __listOfAdBreak = AdBreak[];
-const __listOfAdBreak = /*@__PURE__*/ __L.at(__c5, 2);
+const __listOfAdBreak = /*@__PURE__*/ __L.at(__c2, 7);
 export type RelativePosition = "BEFORE_PROGRAM" | "AFTER_PROGRAM" | (string & {});
 export interface Transition {
   DurationMillis?: number;
@@ -483,13 +483,13 @@ export interface AlternateMedia {
   DurationMillis?: number;
 }
 export type __listOfAlternateMedia = AlternateMedia[];
-const __listOfAlternateMedia = /*@__PURE__*/ __L.at(__c5, 7);
+const __listOfAlternateMedia = /*@__PURE__*/ __L.at(__c2, 10);
 export interface AudienceMedia {
   Audience?: string;
   AlternateMedia?: AlternateMedia[];
 }
 export type __listOfAudienceMedia = AudienceMedia[];
-const __listOfAudienceMedia = /*@__PURE__*/ __L.at(__c6, 1);
+const __listOfAudienceMedia = /*@__PURE__*/ __L.at(__c2, 12);
 export interface CreateProgramRequest {
   AdBreaks?: AdBreak[];
   ChannelName: string;
@@ -541,7 +541,7 @@ export interface SegmentDeliveryConfiguration {
   Name?: string;
 }
 export type __listOfSegmentDeliveryConfiguration = SegmentDeliveryConfiguration[];
-const __listOfSegmentDeliveryConfiguration = /*@__PURE__*/ __L.at(__c7, 1);
+const __listOfSegmentDeliveryConfiguration = /*@__PURE__*/ __L.at(__c4, 5);
 export interface CreateSourceLocationRequest {
   AccessConfiguration?: AccessConfiguration;
   DefaultSegmentDeliveryConfiguration?: DefaultSegmentDeliveryConfiguration;
@@ -722,7 +722,7 @@ export interface ScheduleAdBreak {
   VodSourceName?: string;
 }
 export type __listOfScheduleAdBreak = ScheduleAdBreak[];
-const __listOfScheduleAdBreak = /*@__PURE__*/ __L.at(__c11, 0);
+const __listOfScheduleAdBreak = /*@__PURE__*/ __L.at(__c25, 2);
 export type ScheduleEntryType = "PROGRAM" | "FILLER_SLATE" | "ALTERNATE_MEDIA" | (string & {});
 export interface ScheduleEntry {
   ApproximateDurationSeconds?: number;
@@ -738,7 +738,7 @@ export interface ScheduleEntry {
   Audiences?: string[];
 }
 export type __listOfScheduleEntry = ScheduleEntry[];
-const __listOfScheduleEntry = /*@__PURE__*/ __L.at(__c11, 2);
+const __listOfScheduleEntry = /*@__PURE__*/ __L.at(__c25, 4);
 export interface GetChannelScheduleResponse {
   Items?: ScheduleEntry[];
   NextToken?: string;
@@ -787,7 +787,7 @@ export interface FunctionRef {
   Alias?: string;
 }
 export type __listOfFunctionsRef = FunctionRef[];
-const __listOfFunctionsRef = /*@__PURE__*/ __L.at(__c12, 1);
+const __listOfFunctionsRef = /*@__PURE__*/ __L.at(__c27, 4);
 export interface ConcurrentExecutorConfiguration {
   Runtime: RuntimeType;
   Output: { [key: string]: string | undefined };
@@ -997,7 +997,7 @@ export interface ListAlertsRequest {
   ResourceArn: string;
 }
 export type __listOf__string = string[];
-const __listOf__string = __S(15, __c1, 7) as any as S.Schema<__listOf__string>;
+const __listOf__string = __S(1888, __c59, 0) as any as S.Schema<__listOf__string>;
 export type AlertCategory = "SCHEDULING_ERROR" | "PLAYBACK_WARNING" | "INFO" | (string & {});
 export interface Alert {
   AlertCode: string;
@@ -1008,7 +1008,7 @@ export interface Alert {
   Category?: AlertCategory;
 }
 export type __listOfAlert = Alert[];
-const __listOfAlert = /*@__PURE__*/ __L.at(__c16, 1);
+const __listOfAlert = /*@__PURE__*/ __L.at(__c32, 2);
 export interface ListAlertsResponse {
   Items?: Alert[];
   NextToken?: string;
@@ -1032,7 +1032,7 @@ export interface Channel {
   Audiences?: string[];
 }
 export type __listOfChannel = Channel[];
-const __listOfChannel = /*@__PURE__*/ __L.at(__c16, 5);
+const __listOfChannel = /*@__PURE__*/ __L.at(__c33, 2);
 export interface ListChannelsResponse {
   Items?: Channel[];
   NextToken?: string;
@@ -1055,7 +1055,7 @@ export interface Function {
   Arn?: string;
 }
 export type __listOfFunctionsResponse = Function[];
-const __listOfFunctionsResponse = /*@__PURE__*/ __L.at(__c17, 0);
+const __listOfFunctionsResponse = /*@__PURE__*/ __L.at(__c34, 1);
 export interface ListFunctionsResponse {
   Items?: Function[];
   NextToken?: string;
@@ -1075,7 +1075,7 @@ export interface LiveSource {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfLiveSource = LiveSource[];
-const __listOfLiveSource = /*@__PURE__*/ __L.at(__c17, 4);
+const __listOfLiveSource = /*@__PURE__*/ __L.at(__c35, 2);
 export interface ListLiveSourcesResponse {
   Items?: LiveSource[];
   NextToken?: string;
@@ -1116,7 +1116,7 @@ export interface PlaybackConfiguration {
   BeaconingConfiguration?: BeaconingConfiguration;
 }
 export type __listOfPlaybackConfiguration = PlaybackConfiguration[];
-const __listOfPlaybackConfiguration = /*@__PURE__*/ __L.at(__c18, 0);
+const __listOfPlaybackConfiguration = /*@__PURE__*/ __L.at(__c36, 2);
 export interface ListPlaybackConfigurationsResponse {
   Items?: (PlaybackConfiguration & {
     LogConfiguration: LogConfiguration & { EnabledLoggingStrategies: __listOfLoggingStrategies };
@@ -1144,7 +1144,7 @@ export interface PrefetchSchedule {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfPrefetchSchedule = PrefetchSchedule[];
-const __listOfPrefetchSchedule = /*@__PURE__*/ __L.at(__c18, 4);
+const __listOfPrefetchSchedule = /*@__PURE__*/ __L.at(__c37, 2);
 export interface ListPrefetchSchedulesResponse {
   Items?: PrefetchSchedule[];
   NextToken?: string;
@@ -1165,7 +1165,7 @@ export interface SourceLocation {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfSourceLocation = SourceLocation[];
-const __listOfSourceLocation = /*@__PURE__*/ __L.at(__c19, 0);
+const __listOfSourceLocation = /*@__PURE__*/ __L.at(__c38, 2);
 export interface ListSourceLocationsResponse {
   Items?: SourceLocation[];
   NextToken?: string;
@@ -1191,7 +1191,7 @@ export interface VodSource {
   VodSourceName: string;
 }
 export type __listOfVodSource = VodSource[];
-const __listOfVodSource = /*@__PURE__*/ __L.at(__c19, 6);
+const __listOfVodSource = /*@__PURE__*/ __L.at(__c40, 2);
 export interface ListVodSourcesResponse {
   Items?: VodSource[];
   NextToken?: string;
@@ -1413,8 +1413,8 @@ export const configureLogsForChannel: API.OperationMethod<
   ConfigureLogsForChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ConfigureLogsForChannelRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ConfigureLogsForChannelResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ConfigureLogsForChannelRequest>,
+  output: __S(1601, __c50, 1) as any as S.Schema<ConfigureLogsForChannelResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1431,8 +1431,8 @@ export const configureLogsForPlaybackConfiguration: API.OperationMethod<
   ConfigureLogsForPlaybackConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ConfigureLogsForPlaybackConfigurationRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ConfigureLogsForPlaybackConfigurationResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ConfigureLogsForPlaybackConfigurationRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<ConfigureLogsForPlaybackConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1449,8 +1449,8 @@ export const createChannel: API.OperationMethod<
   CreateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateChannelRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateChannelResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<CreateChannelRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<CreateChannelResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1467,8 +1467,8 @@ export const createLiveSource: API.OperationMethod<
   CreateLiveSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateLiveSourceRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CreateLiveSourceResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<CreateLiveSourceRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<CreateLiveSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1488,8 +1488,8 @@ export const createPrefetchSchedule: API.OperationMethod<
   CreatePrefetchScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreatePrefetchScheduleRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreatePrefetchScheduleResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<CreatePrefetchScheduleRequest>,
+  output: __S(2145, __c67, 1) as any as S.Schema<CreatePrefetchScheduleResponse>,
   errors: [BadRequestException, PlaybackConfigurationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1506,8 +1506,8 @@ export const createProgram: API.OperationMethod<
   CreateProgramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateProgramRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<CreateProgramResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateProgramRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CreateProgramResponse>,
   errors: [BadRequestException, ChannelNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1524,8 +1524,8 @@ export const createSourceLocation: API.OperationMethod<
   CreateSourceLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateSourceLocationRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<CreateSourceLocationResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<CreateSourceLocationRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<CreateSourceLocationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1542,8 +1542,8 @@ export const createVodSource: API.OperationMethod<
   CreateVodSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateVodSourceRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<CreateVodSourceResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<CreateVodSourceRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<CreateVodSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1560,8 +1560,8 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteChannelRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeleteChannelResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteChannelRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteChannelResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1578,8 +1578,8 @@ export const deleteChannelPolicy: API.OperationMethod<
   DeleteChannelPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteChannelPolicyRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeleteChannelPolicyResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteChannelPolicyRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteChannelPolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1596,8 +1596,8 @@ export const deleteFunction: API.OperationMethod<
   DeleteFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteFunctionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeleteFunctionResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteFunctionRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteFunctionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1614,8 +1614,8 @@ export const deleteLiveSource: API.OperationMethod<
   DeleteLiveSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteLiveSourceRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeleteLiveSourceResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteLiveSourceRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteLiveSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1632,8 +1632,8 @@ export const deletePlaybackConfiguration: API.OperationMethod<
   DeletePlaybackConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeletePlaybackConfigurationRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<DeletePlaybackConfigurationResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeletePlaybackConfigurationRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<DeletePlaybackConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1653,8 +1653,8 @@ export const deletePrefetchSchedule: API.OperationMethod<
   DeletePrefetchScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeletePrefetchScheduleRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeletePrefetchScheduleResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeletePrefetchScheduleRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeletePrefetchScheduleResponse>,
   errors: [BadRequestException, PrefetchScheduleNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1671,8 +1671,8 @@ export const deleteProgram: API.OperationMethod<
   DeleteProgramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteProgramRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeleteProgramResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteProgramRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteProgramResponse>,
   errors: [BadRequestException, ProgramNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1689,8 +1689,8 @@ export const deleteSourceLocation: API.OperationMethod<
   DeleteSourceLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteSourceLocationRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeleteSourceLocationResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteSourceLocationRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteSourceLocationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1707,8 +1707,8 @@ export const deleteVodSource: API.OperationMethod<
   DeleteVodSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteVodSourceRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeleteVodSourceResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteVodSourceRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteVodSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1725,8 +1725,8 @@ export const describeChannel: API.OperationMethod<
   DescribeChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DescribeChannelRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DescribeChannelResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<DescribeChannelRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<DescribeChannelResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1743,8 +1743,8 @@ export const describeLiveSource: API.OperationMethod<
   DescribeLiveSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DescribeLiveSourceRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DescribeLiveSourceResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<DescribeLiveSourceRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<DescribeLiveSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1761,8 +1761,8 @@ export const describeProgram: API.OperationMethod<
   DescribeProgramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DescribeProgramRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DescribeProgramResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<DescribeProgramRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DescribeProgramResponse>,
   errors: [BadRequestException, ProgramNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1779,8 +1779,8 @@ export const describeSourceLocation: API.OperationMethod<
   DescribeSourceLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DescribeSourceLocationRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<DescribeSourceLocationResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<DescribeSourceLocationRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<DescribeSourceLocationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1797,8 +1797,8 @@ export const describeVodSource: API.OperationMethod<
   DescribeVodSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DescribeVodSourceRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<DescribeVodSourceResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<DescribeVodSourceRequest>,
+  output: __S(739, __c23, 3) as any as S.Schema<DescribeVodSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1815,8 +1815,8 @@ export const getChannelPolicy: API.OperationMethod<
   GetChannelPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetChannelPolicyRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetChannelPolicyResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetChannelPolicyRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<GetChannelPolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1834,8 +1834,8 @@ export const getChannelSchedule: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScheduleEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetChannelScheduleRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<GetChannelScheduleResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetChannelScheduleRequest>,
+  output: __S(805, __c25, 5) as any as S.Schema<GetChannelScheduleResponse>,
   errors: [BadRequestException, ChannelNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1858,8 +1858,8 @@ export const getFunction: API.OperationMethod<
   GetFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetFunctionRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<GetFunctionResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetFunctionRequest>,
+  output: __S(871, __c27, 7) as any as S.Schema<GetFunctionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1876,8 +1876,8 @@ export const getPlaybackConfiguration: API.OperationMethod<
   GetPlaybackConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetPlaybackConfigurationRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<GetPlaybackConfigurationResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetPlaybackConfigurationRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<GetPlaybackConfigurationResponse>,
   errors: [PlaybackConfigurationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1897,8 +1897,8 @@ export const getPrefetchSchedule: API.OperationMethod<
   GetPrefetchScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetPrefetchScheduleRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<GetPrefetchScheduleResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetPrefetchScheduleRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<GetPrefetchScheduleResponse>,
   errors: [BadRequestException, PrefetchScheduleNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1916,8 +1916,8 @@ export const listAlerts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Alert
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<ListAlertsRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<ListAlertsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListAlertsRequest>,
+  output: __S(1027, __c32, 3) as any as S.Schema<ListAlertsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1941,8 +1941,8 @@ export const listChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Channel
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListChannelsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListChannelsResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListChannelsRequest>,
+  output: __S(1059, __c33, 3) as any as S.Schema<ListChannelsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1966,8 +1966,8 @@ export const listFunctions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Function
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListFunctionsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<ListFunctionsResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListFunctionsRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<ListFunctionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1991,8 +1991,8 @@ export const listLiveSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LiveSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListLiveSourcesRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ListLiveSourcesResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListLiveSourcesRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<ListLiveSourcesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2016,8 +2016,8 @@ export const listPlaybackConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PlaybackConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListPlaybackConfigurationsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<ListPlaybackConfigurationsResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListPlaybackConfigurationsRequest>,
+  output: __S(1155, __c36, 3) as any as S.Schema<ListPlaybackConfigurationsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2044,8 +2044,8 @@ export const listPrefetchSchedules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PrefetchSchedule
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<ListPrefetchSchedulesRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ListPrefetchSchedulesResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListPrefetchSchedulesRequest>,
+  output: __S(1187, __c37, 3) as any as S.Schema<ListPrefetchSchedulesResponse>,
   errors: [BadRequestException, PlaybackConfigurationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2069,8 +2069,8 @@ export const listSourceLocations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceLocation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ListSourceLocationsRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<ListSourceLocationsResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListSourceLocationsRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<ListSourceLocationsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2093,8 +2093,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2112,8 +2112,8 @@ export const listVodSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VodSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ListVodSourcesRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<ListVodSourcesResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListVodSourcesRequest>,
+  output: __S(1283, __c40, 3) as any as S.Schema<ListVodSourcesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2136,8 +2136,8 @@ export const putChannelPolicy: API.OperationMethod<
   PutChannelPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<PutChannelPolicyRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PutChannelPolicyResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<PutChannelPolicyRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<PutChannelPolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2154,8 +2154,8 @@ export const putFunction: API.OperationMethod<
   PutFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<PutFunctionRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<PutFunctionResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<PutFunctionRequest>,
+  output: __S(871, __c27, 7) as any as S.Schema<PutFunctionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2172,8 +2172,8 @@ export const putPlaybackConfiguration: API.OperationMethod<
   PutPlaybackConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<PutPlaybackConfigurationRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<PutPlaybackConfigurationResponse>,
+  input: __S(1377, __c43, 1) as any as S.Schema<PutPlaybackConfigurationRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<PutPlaybackConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2190,8 +2190,8 @@ export const startChannel: API.OperationMethod<
   StartChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<StartChannelRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<StartChannelResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<StartChannelRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<StartChannelResponse>,
   errors: [BadRequestException, ChannelNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2208,8 +2208,8 @@ export const stopChannel: API.OperationMethod<
   StopChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<StopChannelRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<StopChannelResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<StopChannelRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<StopChannelResponse>,
   errors: [BadRequestException, ChannelNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2226,8 +2226,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<TagResourceResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<TagResourceResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2244,8 +2244,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2262,8 +2262,8 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<UpdateChannelRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<UpdateChannelResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<UpdateChannelRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<UpdateChannelResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2280,8 +2280,8 @@ export const updateLiveSource: API.OperationMethod<
   UpdateLiveSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<UpdateLiveSourceRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UpdateLiveSourceResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<UpdateLiveSourceRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<UpdateLiveSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2298,8 +2298,8 @@ export const updateProgram: API.OperationMethod<
   UpdateProgramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<UpdateProgramRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<UpdateProgramResponse>,
+  input: __S(1666, __c52, 2) as any as S.Schema<UpdateProgramRequest>,
+  output: __S(1667, __c52, 3) as any as S.Schema<UpdateProgramResponse>,
   errors: [BadRequestException, ProgramNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2316,8 +2316,8 @@ export const updateSourceLocation: API.OperationMethod<
   UpdateSourceLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<UpdateSourceLocationRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<UpdateSourceLocationResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<UpdateSourceLocationRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<UpdateSourceLocationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2334,8 +2334,8 @@ export const updateVodSource: API.OperationMethod<
   UpdateVodSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<UpdateVodSourceRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<UpdateVodSourceResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<UpdateVodSourceRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<UpdateVodSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2346,10 +2346,1620 @@ export const updateVodSource: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          DurationMillis: S.optional(S.Number),
+          RelativePosition: S.String,
+          RelativeProgram: S.optional(S.String),
+          ScheduledStartTimeMillis: S.optional(S.Number),
+          Type: S.String,
+        }),
+      ).annotate({ identifier: "Transition" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ChannelName: S.String, LogTypes: __S(0, __c0, 0) }).pipe(
+        S.Struct({ Transition: __S(0, __c0, 0), ClipRange: S.optional(__S(72, __c2, 8)) }),
+      ).annotate({ identifier: "ScheduleConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AdBreaks: S.optional(__listOfAdBreak),
+          ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
+          LiveSourceName: S.optional(S.String),
+          ProgramName: S.String.pipe(T.HttpLabel("ProgramName")),
+          ScheduleConfiguration: __S(1, __c0, 1),
+          SourceLocationName: S.String,
+          VodSourceName: S.optional(S.String),
+          AudienceMedia: S.optional(__listOfAudienceMedia),
+          Tags: S.optional(__mapOf__string),
+        })
+          .pipe(S.encodeKeys({ Tags: "tags" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/channel/{ChannelName}/program/{ProgramName}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "CreateProgramRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AdBreaks: S.optional(__listOfAdBreak),
+          Arn: S.optional(S.String),
+          ChannelName: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LiveSourceName: S.optional(S.String),
+          ProgramName: S.optional(S.String),
+          ScheduledStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SourceLocationName: S.optional(S.String),
+          VodSourceName: S.optional(S.String),
+          ClipRange: S.optional(__S(72, __c2, 8)),
+          DurationMillis: S.optional(S.Number),
+          AudienceMedia: S.optional(__listOfAudienceMedia),
+          Tags: S.optional(__mapOf__string),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "CreateProgramResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AvailNum: S.optional(S.Number),
+          AvailsExpected: S.optional(S.Number),
+          SpliceEventId: S.optional(S.Number),
+          UniqueProgramId: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SpliceInsertMessage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SegmentationEventId: S.optional(S.Number),
+          SegmentationUpidType: S.optional(S.Number),
+          SegmentationUpid: S.optional(S.String),
+          SegmentationTypeId: S.optional(S.Number),
+          SegmentNum: S.optional(S.Number),
+          SegmentsExpected: S.optional(S.Number),
+          SubSegmentNum: S.optional(S.Number),
+          SubSegmentsExpected: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SegmentationDescriptor" });
+    case 2:
+      return S.Array(__S(65, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ SegmentationDescriptors: S.optional(__S(66, __c2, 2)) }),
+      ).annotate({ identifier: "TimeSignalMessage" });
+    case 4:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "KeyValuePair",
+      });
+    case 5:
+      return S.Array(__S(68, __c2, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          MessageType: S.optional(S.String),
+          OffsetMillis: S.Number,
+          Slate: S.optional(__S(1856, __c58, 0)),
+          SpliceInsertMessage: S.optional(__S(64, __c2, 0)),
+          TimeSignalMessage: S.optional(__S(67, __c2, 3)),
+          AdBreakMetadata: S.optional(__S(69, __c2, 5)),
+        }),
+      ).annotate({ identifier: "AdBreak" });
+    case 7:
+      return S.Array(__S(70, __c2, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          EndOffsetMillis: S.optional(S.Number),
+          StartOffsetMillis: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ClipRange" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          SourceLocationName: S.optional(S.String),
+          LiveSourceName: S.optional(S.String),
+          VodSourceName: S.optional(S.String),
+          ClipRange: S.optional(__S(72, __c2, 8)),
+          ScheduledStartTimeMillis: S.optional(S.Number),
+          AdBreaks: S.optional(__listOfAdBreak),
+          DurationMillis: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AlternateMedia" });
+    case 10:
+      return S.Array(__S(73, __c2, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          Audience: S.optional(S.String),
+          AlternateMedia: S.optional(__listOfAlternateMedia),
+        }),
+      ).annotate({ identifier: "AudienceMedia" });
+    case 12:
+      return S.Array(__S(75, __c2, 11));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccessConfiguration: S.optional(__S(129, __c4, 1)),
+          DefaultSegmentDeliveryConfiguration: S.optional(__S(130, __c4, 2)),
+          HttpConfiguration: __S(131, __c4, 3),
+          SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
+          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
+          Tags: S.optional(__mapOf__string),
+        })
+          .pipe(S.encodeKeys({ Tags: "tags" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/sourceLocation/{SourceLocationName}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateSourceLocationRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HeaderName: S.optional(S.String),
+          SecretArn: S.optional(S.String),
+          SecretStringKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SecretsManagerAccessTokenConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccessType: S.optional(S.String),
+          SecretsManagerAccessTokenConfiguration: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "AccessConfiguration" });
+    case 2:
+      return S.suspend(() => S.Struct({ BaseUrl: S.optional(S.String) })).annotate({
+        identifier: "DefaultSegmentDeliveryConfiguration",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ BaseUrl: S.String })).annotate({
+        identifier: "HttpConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ BaseUrl: S.optional(S.String), Name: S.optional(S.String) }),
+      ).annotate({
+        identifier: "SegmentDeliveryConfiguration",
+      });
+    case 5:
+      return S.Array(__S(132, __c4, 4));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccessConfiguration: S.optional(__S(129, __c4, 1)),
+          Arn: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          DefaultSegmentDeliveryConfiguration: S.optional(__S(130, __c4, 2)),
+          HttpConfiguration: S.optional(__S(131, __c4, 3)),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
+          SourceLocationName: S.optional(S.String),
+          Tags: S.optional(__mapOf__string),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({
+        identifier: "CreateSourceLocationResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HttpPackageConfigurations: __S(2081, __c65, 1),
+          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
+          Tags: S.optional(__mapOf__string),
+          VodSourceName: S.String.pipe(T.HttpLabel("VodSourceName")),
+        })
+          .pipe(S.encodeKeys({ Tags: "tags" }))
+          .pipe(
+            T.all(
+              T.Http({
+                method: "POST",
+                uri: "/sourceLocation/{SourceLocationName}/vodSource/{VodSourceName}",
+              }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "CreateVodSourceRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          HttpPackageConfigurations: S.optional(__S(2081, __c65, 1)),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SourceLocationName: S.optional(S.String),
+          Tags: S.optional(__mapOf__string),
+          VodSourceName: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "CreateVodSourceResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/channel/{ChannelName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteChannelRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteChannelResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/channel/{ChannelName}/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteChannelPolicyRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ FunctionId: S.String.pipe(T.HttpLabel("FunctionId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/function/{FunctionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteFunctionRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          LiveSourceName: S.String.pipe(T.HttpLabel("LiveSourceName")),
+          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/sourceLocation/{SourceLocationName}/liveSource/{LiveSourceName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteLiveSourceRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/playbackConfiguration/{Name}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeletePlaybackConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePlaybackConfigurationResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String.pipe(T.HttpLabel("Name")),
+          PlaybackConfigurationName: S.String.pipe(T.HttpLabel("PlaybackConfigurationName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/prefetchSchedule/{PlaybackConfigurationName}/{Name}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeletePrefetchScheduleRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
+          ProgramName: S.String.pipe(T.HttpLabel("ProgramName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/channel/{ChannelName}/program/{ProgramName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteProgramRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/sourceLocation/{SourceLocationName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteSourceLocationRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
+          VodSourceName: S.String.pipe(T.HttpLabel("VodSourceName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/sourceLocation/{SourceLocationName}/vodSource/{VodSourceName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteVodSourceRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/channel/{ChannelName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeChannelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          ChannelName: S.optional(S.String),
+          ChannelState: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          FillerSlate: S.optional(__S(1856, __c58, 0)),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Outputs: S.optional(__S(1923, __c60, 3)),
+          PlaybackMode: S.optional(S.String),
+          Tags: S.optional(__mapOf__string),
+          Tier: S.optional(S.String),
+          LogConfiguration: __S(608, __c19, 0),
+          TimeShiftConfiguration: S.optional(__S(1952, __c61, 0)),
+          Audiences: S.optional(__S(1888, __c59, 0)),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "DescribeChannelResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ LogTypes: S.optional(__S(1632, __c51, 0)) })).annotate({
+        identifier: "LogConfigurationForChannel",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          LiveSourceName: S.String.pipe(T.HttpLabel("LiveSourceName")),
+          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/sourceLocation/{SourceLocationName}/liveSource/{LiveSourceName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeLiveSourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          HttpPackageConfigurations: S.optional(__S(2081, __c65, 1)),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LiveSourceName: S.optional(S.String),
+          SourceLocationName: S.optional(S.String),
+          Tags: S.optional(__mapOf__string),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({
+        identifier: "DescribeLiveSourceResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
+          ProgramName: S.String.pipe(T.HttpLabel("ProgramName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/channel/{ChannelName}/program/{ProgramName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeProgramRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/sourceLocation/{SourceLocationName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeSourceLocationRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
+          VodSourceName: S.String.pipe(T.HttpLabel("VodSourceName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/sourceLocation/{SourceLocationName}/vodSource/{VodSourceName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeVodSourceRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ OffsetMillis: S.Number })).annotate({
+        identifier: "AdBreakOpportunity",
+      });
+    case 2:
+      return S.Array(__S(737, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AdBreakOpportunities: S.optional(__S(738, __c23, 2)),
+          Arn: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          HttpPackageConfigurations: S.optional(__S(2081, __c65, 1)),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SourceLocationName: S.optional(S.String),
+          Tags: S.optional(__mapOf__string),
+          VodSourceName: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({
+        identifier: "DescribeVodSourceResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/channel/{ChannelName}/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetChannelPolicyRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Policy: S.optional(S.String) })).annotate({
+        identifier: "GetChannelPolicyResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
+          DurationMinutes: S.optional(S.String).pipe(T.HttpQuery("durationMinutes")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          Audience: S.optional(S.String).pipe(T.HttpQuery("audience")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/channel/{ChannelName}/schedule" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetChannelScheduleRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApproximateDurationSeconds: S.optional(S.Number),
+          ApproximateStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SourceLocationName: S.optional(S.String),
+          VodSourceName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScheduleAdBreak" });
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApproximateDurationSeconds: S.optional(S.Number),
+          ApproximateStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Arn: S.String,
+          ChannelName: S.String,
+          LiveSourceName: S.optional(S.String),
+          ProgramName: S.String,
+          ScheduleAdBreaks: S.optional(__listOfScheduleAdBreak),
+          ScheduleEntryType: S.optional(S.String),
+          SourceLocationName: S.String,
+          VodSourceName: S.optional(S.String),
+          Audiences: S.optional(__S(1888, __c59, 0)),
+        }),
+      ).annotate({ identifier: "ScheduleEntry" });
+    case 4:
+      return S.Array(__S(803, __c25, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(__listOfScheduleEntry), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetChannelScheduleResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ FunctionId: S.String.pipe(T.HttpLabel("FunctionId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/function/{FunctionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetFunctionRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Runtime: S.String,
+          Output: S.optional(__mapOf__string),
+          MethodType: S.String,
+          RequestTimeoutMilliseconds: S.Number,
+          Url: S.String,
+          Body: S.optional(S.String),
+          Headers: S.optional(__mapOf__string),
+        }),
+      ).annotate({ identifier: "HttpRequestConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Runtime: S.String,
+          Output: S.optional(__mapOf__string),
+          MethodType: S.String,
+          RequestTimeoutMilliseconds: S.Number,
+          Url: S.String,
+          Body: S.optional(S.String),
+          Headers: S.optional(__mapOf__string),
+          TargetService: S.String,
+          TargetRegion: S.String,
+        }),
+      ).annotate({
+        identifier: "AwsServiceRequestConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Runtime: S.String, Output: S.optional(__mapOf__string) }),
+      ).annotate({
+        identifier: "CustomOutputConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          RunCondition: S.optional(S.String),
+          FunctionId: S.optional(S.String),
+          Alias: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FunctionRef" });
+    case 4:
+      return S.Array(__S(867, __c27, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Runtime: S.String,
+          Output: __mapOf__string,
+          FunctionList: __listOfFunctionsRef,
+          TimeoutMilliseconds: S.Number,
+          MaxConcurrency: S.Number,
+        }),
+      ).annotate({
+        identifier: "ConcurrentExecutorConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Runtime: S.String,
+          Output: S.optional(__mapOf__string),
+          FunctionList: __listOfFunctionsRef,
+          TimeoutMilliseconds: S.Number,
+        }),
+      ).annotate({
+        identifier: "SequentialExecutorConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          FunctionId: S.String,
+          FunctionType: S.String,
+          Description: S.optional(S.String),
+          HttpRequestConfiguration: S.optional(__S(864, __c27, 0)),
+          AwsServiceRequestConfiguration: S.optional(__S(865, __c27, 1)),
+          CustomOutputConfiguration: S.optional(__S(866, __c27, 2)),
+          ConcurrentExecutorConfiguration: S.optional(__S(869, __c27, 5)),
+          SequentialExecutorConfiguration: S.optional(__S(870, __c27, 6)),
+          VastRequestConfiguration: S.optional(__S(864, __c27, 0)),
+          Tags: S.optional(__mapOf__string),
+          Arn: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "GetFunctionResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/playbackConfiguration/{Name}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPlaybackConfigurationRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Mode: S.optional(S.String),
+          Value: S.optional(S.String),
+          FillPolicy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AvailSuppression" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EndUrl: S.optional(S.String), StartUrl: S.optional(S.String) }),
+      ).annotate({ identifier: "Bumper" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AdSegmentUrlPrefix: S.optional(S.String),
+          ContentSegmentUrlPrefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CdnConfiguration" });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ __mapOf__string.pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ManifestEndpointPrefix: S.optional(S.String),
+          DualStackManifestEndpointPrefix: S.optional(S.String),
+          MpdLocation: S.optional(S.String),
+          OriginManifestType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DashConfiguration" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ManifestEndpointPrefix: S.optional(S.String),
+          DualStackManifestEndpointPrefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HlsConfiguration" });
+    case 6:
+      return S.suspend(() => S.Struct({ AdSequencingMode: S.optional(S.String) })).annotate({
+        identifier: "PreRollVastResponse",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ VastResponse: S.optional(__S(934, __c29, 6)) })).annotate({
+        identifier: "PreRollAdDecisionServerConfiguration",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          AdDecisionServerUrl: S.optional(S.String),
+          MaxDurationSeconds: S.optional(S.Number),
+          AdDecisionServerConfiguration: S.optional(__S(935, __c29, 7)),
+        }),
+      ).annotate({ identifier: "LivePreRollConfiguration" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          PercentEnabled: S.Number,
+          EnabledLoggingStrategies: S.optional(__listOfLoggingStrategies),
+          AdsInteractionLog: S.optional(__S(1793, __c56, 1)),
+          ManifestServiceInteractionLog: S.optional(__S(1794, __c56, 2)),
+        }),
+      ).annotate({ identifier: "LogConfiguration" });
+    case 10:
+      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
+        identifier: "AdMarkerPassthrough",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({ AdMarkerPassthrough: S.optional(__S(938, __c29, 10)) }),
+      ).annotate({ identifier: "ManifestProcessingRules" });
+    case 12:
+      return S.suspend(() => S.Struct({ StreamingMediaFileConditioning: S.String })).annotate({
+        identifier: "AdConditioningConfiguration",
+      });
+    case 13:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          Method: S.optional(S.String),
+          Body: S.optional(S.String),
+          Headers: S.optional(__S(941, __c29, 13)),
+          CompressRequest: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpRequest" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          HttpRequest: S.optional(__S(942, __c29, 14)),
+          VastResponse: S.optional(__S(934, __c29, 6)),
+        }),
+      ).annotate({
+        identifier: "AdDecisionServerConfiguration",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          MinimumUnfilledDuration: S.Number,
+          PublisherId: S.String,
+          Region: S.String,
+          OpenRtbTemplate: S.String,
+        }),
+      ).annotate({
+        identifier: "YieldOptimizationConfiguration",
+      });
+    case 17:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          AdsRequestTimeoutMilliseconds: S.optional(S.Number),
+          LiveMaximumAdsPersonalizationTimeMilliseconds: S.optional(S.Number),
+          VodMaximumAdsPersonalizationTimeMilliseconds: S.optional(S.Number),
+          PrefetchAdsRequestTimeoutMilliseconds: S.optional(S.Number),
+          PrefetchMaximumAdsPersonalizationTimeMilliseconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AdsPersonalizationTimeouts",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          MaxConcurrentAdsRequests: S.optional(S.Number),
+          EnableVodVastParallelization: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AdsPersonalizationConcurrency",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          ReportingMode: S.String,
+          AdditionalEventTypes: S.optional(__S(1632, __c51, 0)),
+        }),
+      ).annotate({
+        identifier: "ClientSideBeaconingConfiguration",
+      });
+    case 21:
+      return S.suspend(() => S.Struct({ ClientSide: S.optional(__S(948, __c29, 20)) })).annotate({
+        identifier: "BeaconingConfiguration",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AdDecisionServerUrl: S.optional(S.String),
+          AvailSuppression: S.optional(__S(928, __c29, 0)),
+          Bumper: S.optional(__S(929, __c29, 1)),
+          CdnConfiguration: S.optional(__S(930, __c29, 2)),
+          ConfigurationAliases: S.optional(__S(931, __c29, 3)),
+          DashConfiguration: S.optional(__S(932, __c29, 4)),
+          HlsConfiguration: S.optional(__S(933, __c29, 5)),
+          InsertionMode: S.optional(S.String),
+          LivePreRollConfiguration: S.optional(__S(936, __c29, 8)),
+          LogConfiguration: S.optional(__S(937, __c29, 9)),
+          ManifestProcessingRules: S.optional(__S(939, __c29, 11)),
+          Name: S.optional(S.String),
+          PersonalizationThresholdSeconds: S.optional(S.Number),
+          PlaybackConfigurationArn: S.optional(S.String),
+          PlaybackEndpointPrefix: S.optional(S.String),
+          DualStackPlaybackEndpointPrefix: S.optional(S.String),
+          SessionInitializationEndpointPrefix: S.optional(S.String),
+          DualStackSessionInitializationEndpointPrefix: S.optional(S.String),
+          SlateAdUrl: S.optional(S.String),
+          Tags: S.optional(__mapOf__string),
+          TranscodeProfileName: S.optional(S.String),
+          VideoContentSourceUrl: S.optional(S.String),
+          AdConditioningConfiguration: S.optional(__S(940, __c29, 12)),
+          AdDecisionServerConfiguration: S.optional(__S(943, __c29, 15)),
+          YieldOptimizationConfiguration: S.optional(__S(944, __c29, 16)),
+          FunctionMapping: S.optional(__S(945, __c29, 17)),
+          AdsPersonalizationTimeouts: S.optional(__S(946, __c29, 18)),
+          AdsPersonalizationConcurrency: S.optional(__S(947, __c29, 19)),
+          BeaconingConfiguration: S.optional(__S(949, __c29, 21)),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({
+        identifier: "GetPlaybackConfigurationResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String.pipe(T.HttpLabel("Name")),
+          PlaybackConfigurationName: S.String.pipe(T.HttpLabel("PlaybackConfigurationName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/prefetchSchedule/{PlaybackConfigurationName}/{Name}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPrefetchScheduleRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Consumption: S.optional(__S(2178, __c68, 2)),
+          Name: S.optional(S.String),
+          PlaybackConfigurationName: S.optional(S.String),
+          Retrieval: S.optional(__S(2181, __c68, 5)),
+          ScheduleType: S.optional(S.String),
+          RecurringPrefetchConfiguration: S.optional(__S(2184, __c68, 8)),
+          StreamId: S.optional(S.String),
+          Tags: S.optional(__mapOf__string),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({
+        identifier: "GetPrefetchScheduleResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          ResourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/alerts" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListAlertsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AlertCode: S.String,
+          AlertMessage: S.String,
+          LastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          RelatedResourceArns: __listOf__string,
+          ResourceArn: S.String,
+          Category: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Alert" });
+    case 2:
+      return S.Array(__S(1025, __c32, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(__listOfAlert), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAlertsResponse" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/channels" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListChannelsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          ChannelName: S.String,
+          ChannelState: S.String,
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          FillerSlate: S.optional(__S(1856, __c58, 0)),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Outputs: __S(1923, __c60, 3),
+          PlaybackMode: S.String,
+          Tags: S.optional(__mapOf__string),
+          Tier: S.String,
+          LogConfiguration: __S(608, __c19, 0),
+          Audiences: S.optional(__S(1888, __c59, 0)),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "Channel" });
+    case 2:
+      return S.Array(__S(1057, __c33, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(__listOfChannel), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListChannelsResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/functions" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListFunctionsRequest" });
+    case 1:
+      return S.Array(__S(871, __c27, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(__listOfFunctionsResponse), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListFunctionsResponse" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/sourceLocation/{SourceLocationName}/liveSources" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListLiveSourcesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          HttpPackageConfigurations: __S(2081, __c65, 1),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LiveSourceName: S.String,
+          SourceLocationName: S.String,
+          Tags: S.optional(__mapOf__string),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "LiveSource" });
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(__listOfLiveSource), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListLiveSourcesResponse" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/playbackConfigurations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListPlaybackConfigurationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AdDecisionServerUrl: S.optional(S.String),
+          AvailSuppression: S.optional(__S(928, __c29, 0)),
+          Bumper: S.optional(__S(929, __c29, 1)),
+          CdnConfiguration: S.optional(__S(930, __c29, 2)),
+          ConfigurationAliases: S.optional(__S(931, __c29, 3)),
+          DashConfiguration: S.optional(__S(932, __c29, 4)),
+          HlsConfiguration: S.optional(__S(933, __c29, 5)),
+          InsertionMode: S.optional(S.String),
+          LivePreRollConfiguration: S.optional(__S(936, __c29, 8)),
+          LogConfiguration: S.optional(__S(937, __c29, 9)),
+          ManifestProcessingRules: S.optional(__S(939, __c29, 11)),
+          Name: S.optional(S.String),
+          PersonalizationThresholdSeconds: S.optional(S.Number),
+          PlaybackConfigurationArn: S.optional(S.String),
+          PlaybackEndpointPrefix: S.optional(S.String),
+          DualStackPlaybackEndpointPrefix: S.optional(S.String),
+          SessionInitializationEndpointPrefix: S.optional(S.String),
+          DualStackSessionInitializationEndpointPrefix: S.optional(S.String),
+          SlateAdUrl: S.optional(S.String),
+          Tags: S.optional(__mapOf__string),
+          TranscodeProfileName: S.optional(S.String),
+          VideoContentSourceUrl: S.optional(S.String),
+          AdConditioningConfiguration: S.optional(__S(940, __c29, 12)),
+          AdDecisionServerConfiguration: S.optional(__S(943, __c29, 15)),
+          YieldOptimizationConfiguration: S.optional(__S(944, __c29, 16)),
+          FunctionMapping: S.optional(__S(945, __c29, 17)),
+          AdsPersonalizationTimeouts: S.optional(__S(946, __c29, 18)),
+          AdsPersonalizationConcurrency: S.optional(__S(947, __c29, 19)),
+          BeaconingConfiguration: S.optional(__S(949, __c29, 21)),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "PlaybackConfiguration" });
+    case 2:
+      return S.Array(__S(1153, __c36, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Items: S.optional(__listOfPlaybackConfiguration),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListPlaybackConfigurationsResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          PlaybackConfigurationName: S.String.pipe(T.HttpLabel("PlaybackConfigurationName")),
+          ScheduleType: S.optional(S.String),
+          StreamId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/prefetchSchedule/{PlaybackConfigurationName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListPrefetchSchedulesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          Consumption: S.optional(__S(2178, __c68, 2)),
+          Name: S.String,
+          PlaybackConfigurationName: S.String,
+          Retrieval: S.optional(__S(2181, __c68, 5)),
+          ScheduleType: S.optional(S.String),
+          RecurringPrefetchConfiguration: S.optional(__S(2184, __c68, 8)),
+          StreamId: S.optional(S.String),
+          Tags: S.optional(__mapOf__string),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "PrefetchSchedule" });
+    case 2:
+      return S.Array(__S(1185, __c37, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(__listOfPrefetchSchedule), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListPrefetchSchedulesResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/sourceLocations" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListSourceLocationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccessConfiguration: S.optional(__S(129, __c4, 1)),
+          Arn: S.String,
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          DefaultSegmentDeliveryConfiguration: S.optional(__S(130, __c4, 2)),
+          HttpConfiguration: __S(131, __c4, 3),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
+          SourceLocationName: S.String,
+          Tags: S.optional(__mapOf__string),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "SourceLocation" });
+    case 2:
+      return S.Array(__S(1217, __c38, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(__listOfSourceLocation), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListSourceLocationsResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Tags: S.optional(__mapOf__string) }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/sourceLocation/{SourceLocationName}/vodSources" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListVodSourcesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          HttpPackageConfigurations: __S(2081, __c65, 1),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SourceLocationName: S.String,
+          Tags: S.optional(__mapOf__string),
+          VodSourceName: S.String,
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "VodSource" });
+    case 2:
+      return S.Array(__S(1281, __c40, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(__listOfVodSource), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListVodSourcesResponse" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")), Policy: S.String }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/channel/{ChannelName}/policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutChannelPolicyRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FunctionId: S.String.pipe(T.HttpLabel("FunctionId")),
+          FunctionType: S.String,
+          Description: S.optional(S.String),
+          HttpRequestConfiguration: S.optional(__S(864, __c27, 0)),
+          AwsServiceRequestConfiguration: S.optional(__S(865, __c27, 1)),
+          CustomOutputConfiguration: S.optional(__S(866, __c27, 2)),
+          ConcurrentExecutorConfiguration: S.optional(__S(869, __c27, 5)),
+          SequentialExecutorConfiguration: S.optional(__S(870, __c27, 6)),
+          VastRequestConfiguration: S.optional(__S(864, __c27, 0)),
+          Tags: S.optional(__mapOf__string),
+        })
+          .pipe(S.encodeKeys({ Tags: "tags" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/function/{FunctionId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "PutFunctionRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MpdLocation: S.optional(S.String),
+          OriginManifestType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DashConfigurationForPut" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AdDecisionServerUrl: S.optional(S.String),
+          AvailSuppression: S.optional(__S(928, __c29, 0)),
+          Bumper: S.optional(__S(929, __c29, 1)),
+          CdnConfiguration: S.optional(__S(930, __c29, 2)),
+          ConfigurationAliases: S.optional(__S(931, __c29, 3)),
+          DashConfiguration: S.optional(__S(1376, __c43, 0)),
+          InsertionMode: S.optional(S.String),
+          LivePreRollConfiguration: S.optional(__S(936, __c29, 8)),
+          ManifestProcessingRules: S.optional(__S(939, __c29, 11)),
+          Name: S.String,
+          PersonalizationThresholdSeconds: S.optional(S.Number),
+          SlateAdUrl: S.optional(S.String),
+          Tags: S.optional(__mapOf__string),
+          TranscodeProfileName: S.optional(S.String),
+          VideoContentSourceUrl: S.optional(S.String),
+          AdConditioningConfiguration: S.optional(__S(940, __c29, 12)),
+          AdDecisionServerConfiguration: S.optional(__S(943, __c29, 15)),
+          YieldOptimizationConfiguration: S.optional(__S(944, __c29, 16)),
+          FunctionMapping: S.optional(__S(945, __c29, 17)),
+          AdsPersonalizationTimeouts: S.optional(__S(946, __c29, 18)),
+          AdsPersonalizationConcurrency: S.optional(__S(947, __c29, 19)),
+          BeaconingConfiguration: S.optional(__S(949, __c29, 21)),
+        })
+          .pipe(S.encodeKeys({ Tags: "tags" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/playbackConfiguration" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "PutPlaybackConfigurationRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")) }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/channel/{ChannelName}/start" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartChannelRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")) }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/channel/{ChannelName}/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopChannelRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: __mapOf__string })
+          .pipe(S.encodeKeys({ Tags: "tags" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagKeys: __listOf__string.pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
+          FillerSlate: S.optional(__S(1856, __c58, 0)),
+          Outputs: __S(1985, __c62, 1),
+          TimeShiftConfiguration: S.optional(__S(1952, __c61, 0)),
+          Audiences: S.optional(__S(1888, __c59, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/channel/{ChannelName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateChannelRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HttpPackageConfigurations: __S(2081, __c65, 1),
+          LiveSourceName: S.String.pipe(T.HttpLabel("LiveSourceName")),
+          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/sourceLocation/{SourceLocationName}/liveSource/{LiveSourceName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateLiveSourceRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ChannelName: S.String, LogTypes: __S(1632, __c51, 0) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/configureLogs/channel" }),
             svc,
@@ -2362,38 +3972,136 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfigureLogsForChannelRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ChannelName: S.optional(S.String), LogTypes: S.optional(__S(0, __c0, 0)) }),
+        S.Struct({ ChannelName: S.optional(S.String), LogTypes: S.optional(__S(1632, __c51, 0)) }),
       ).annotate({
         identifier: "ConfigureLogsForChannelResponse",
       });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          PublishOptInEventTypes: S.optional(__adsInteractionPublishOptInEventTypesList),
-          ExcludeEventTypes: S.optional(__adsInteractionExcludeEventTypesList),
+          ScheduledStartTimeMillis: S.optional(S.Number),
+          DurationMillis: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "AdsInteractionLog" });
-    case 5:
+      ).annotate({ identifier: "UpdateProgramTransition" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          PublishOptInEventTypes: S.optional(__manifestServicePublishOptInEventTypesList),
-          ExcludeEventTypes: S.optional(__manifestServiceExcludeEventTypesList),
+          Transition: S.optional(__S(1664, __c52, 0)),
+          ClipRange: S.optional(__S(72, __c2, 8)),
         }),
       ).annotate({
-        identifier: "ManifestServiceInteractionLog",
+        identifier: "UpdateProgramScheduleConfiguration",
       });
-    case 6:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AdBreaks: S.optional(__listOfAdBreak),
+          ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
+          ProgramName: S.String.pipe(T.HttpLabel("ProgramName")),
+          ScheduleConfiguration: __S(1665, __c52, 1),
+          AudienceMedia: S.optional(__listOfAudienceMedia),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/channel/{ChannelName}/program/{ProgramName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateProgramRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AdBreaks: S.optional(__listOfAdBreak),
+          Arn: S.optional(S.String),
+          ChannelName: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ProgramName: S.optional(S.String),
+          SourceLocationName: S.optional(S.String),
+          VodSourceName: S.optional(S.String),
+          LiveSourceName: S.optional(S.String),
+          ClipRange: S.optional(__S(72, __c2, 8)),
+          DurationMillis: S.optional(S.Number),
+          ScheduledStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          AudienceMedia: S.optional(__listOfAudienceMedia),
+          Tags: S.optional(__mapOf__string),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({ identifier: "UpdateProgramResponse" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccessConfiguration: S.optional(__S(129, __c4, 1)),
+          DefaultSegmentDeliveryConfiguration: S.optional(__S(130, __c4, 2)),
+          HttpConfiguration: __S(131, __c4, 3),
+          SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
+          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/sourceLocation/{SourceLocationName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateSourceLocationRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          HttpPackageConfigurations: __S(2081, __c65, 1),
+          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
+          VodSourceName: S.String.pipe(T.HttpLabel("VodSourceName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/sourceLocation/{SourceLocationName}/vodSource/{VodSourceName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateVodSourceRequest" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PercentEnabled: S.Number,
           PlaybackConfigurationName: S.String,
           EnabledLoggingStrategies: S.optional(__listOfLoggingStrategies),
-          AdsInteractionLog: S.optional(__S(4, __c0, 4)),
-          ManifestServiceInteractionLog: S.optional(__S(5, __c0, 5)),
+          AdsInteractionLog: S.optional(__S(1793, __c56, 1)),
+          ManifestServiceInteractionLog: S.optional(__S(1794, __c56, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/configureLogs/playbackConfiguration" }),
@@ -2407,76 +4115,55 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfigureLogsForPlaybackConfigurationRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PercentEnabled: S.Number,
           PlaybackConfigurationName: S.optional(S.String),
           EnabledLoggingStrategies: S.optional(__listOfLoggingStrategies),
-          AdsInteractionLog: S.optional(__S(4, __c0, 4)),
-          ManifestServiceInteractionLog: S.optional(__S(5, __c0, 5)),
+          AdsInteractionLog: S.optional(__S(1793, __c56, 1)),
+          ManifestServiceInteractionLog: S.optional(__S(1794, __c56, 2)),
         }),
       ).annotate({
         identifier: "ConfigureLogsForPlaybackConfigurationResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ SourceLocationName: S.optional(S.String), VodSourceName: S.optional(S.String) }),
-      ).annotate({ identifier: "SlateSource" });
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ManifestWindowSeconds: S.optional(S.Number),
-          MinBufferTimeSeconds: S.optional(S.Number),
-          MinUpdatePeriodSeconds: S.optional(S.Number),
-          SuggestedPresentationDelaySeconds: S.optional(S.Number),
+          PublishOptInEventTypes: S.optional(__adsInteractionPublishOptInEventTypesList),
+          ExcludeEventTypes: S.optional(__adsInteractionExcludeEventTypesList),
         }),
-      ).annotate({ identifier: "DashPlaylistSettings" });
+      ).annotate({ identifier: "AdsInteractionLog" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ManifestWindowSeconds: S.optional(S.Number),
-          AdMarkupType: S.optional(__S(0, __c0, 0)),
+          PublishOptInEventTypes: S.optional(__manifestServicePublishOptInEventTypesList),
+          ExcludeEventTypes: S.optional(__manifestServiceExcludeEventTypesList),
         }),
-      ).annotate({ identifier: "HlsPlaylistSettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DashPlaylistSettings: S.optional(__S(9, __c1, 1)),
-          HlsPlaylistSettings: S.optional(__S(10, __c1, 2)),
-          ManifestName: S.String,
-          SourceGroup: S.String,
-        }),
-      ).annotate({ identifier: "RequestOutputItem" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 6:
-      return S.suspend(() => S.Struct({ MaxTimeDelaySeconds: S.Number })).annotate({
-        identifier: "TimeShiftConfiguration",
+      ).annotate({
+        identifier: "ManifestServiceInteractionLog",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c2(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
-          FillerSlate: S.optional(__S(8, __c1, 0)),
-          Outputs: __S(12, __c1, 4),
+          FillerSlate: S.optional(__S(1856, __c58, 0)),
+          Outputs: __S(1985, __c62, 1),
           PlaybackMode: S.String,
           Tags: S.optional(__mapOf__string),
           Tier: S.optional(S.String),
-          TimeShiftConfiguration: S.optional(__S(14, __c1, 6)),
-          Audiences: S.optional(__S(15, __c1, 7)),
+          TimeShiftConfiguration: S.optional(__S(1952, __c61, 0)),
+          Audiences: S.optional(__S(1888, __c59, 0)),
         })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
@@ -2490,46 +4177,107 @@ function __c2(j: number): any {
             ),
           ),
       ).annotate({ identifier: "CreateChannelRequest" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SourceLocationName: S.optional(S.String), VodSourceName: S.optional(S.String) }),
+      ).annotate({ identifier: "SlateSource" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ManifestWindowSeconds: S.optional(S.Number),
+          MinBufferTimeSeconds: S.optional(S.Number),
+          MinUpdatePeriodSeconds: S.optional(S.Number),
+          SuggestedPresentationDelaySeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DashPlaylistSettings" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DashPlaylistSettings: S.optional(__S(9, __c1, 1)),
-          HlsPlaylistSettings: S.optional(__S(10, __c1, 2)),
+          ManifestWindowSeconds: S.optional(S.Number),
+          AdMarkupType: S.optional(__S(1632, __c51, 0)),
+        }),
+      ).annotate({ identifier: "HlsPlaylistSettings" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DashPlaylistSettings: S.optional(__S(1920, __c60, 0)),
+          HlsPlaylistSettings: S.optional(__S(1921, __c60, 1)),
           ManifestName: S.String,
           PlaybackUrl: S.String,
           DualStackPlaybackUrl: S.optional(S.String),
           SourceGroup: S.String,
         }),
       ).annotate({ identifier: "ResponseOutputItem" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
     case 3:
+      return S.Array(__S(1922, __c60, 2));
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ MaxTimeDelaySeconds: S.Number })).annotate({
+        identifier: "TimeShiftConfiguration",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DashPlaylistSettings: S.optional(__S(1920, __c60, 0)),
+          HlsPlaylistSettings: S.optional(__S(1921, __c60, 1)),
+          ManifestName: S.String,
+          SourceGroup: S.String,
+        }),
+      ).annotate({ identifier: "RequestOutputItem" });
+    case 1:
+      return S.Array(__S(1984, __c62, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           ChannelName: S.optional(S.String),
           ChannelState: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FillerSlate: S.optional(__S(8, __c1, 0)),
+          FillerSlate: S.optional(__S(1856, __c58, 0)),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Outputs: S.optional(__S(18, __c2, 2)),
+          Outputs: S.optional(__S(1923, __c60, 3)),
           PlaybackMode: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
           Tier: S.optional(S.String),
-          TimeShiftConfiguration: S.optional(__S(14, __c1, 6)),
-          Audiences: S.optional(__S(15, __c1, 7)),
+          TimeShiftConfiguration: S.optional(__S(1952, __c61, 0)),
+          Audiences: S.optional(__S(1888, __c59, 0)),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "CreateChannelResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Path: S.String, SourceGroup: S.String, Type: S.String }),
-      ).annotate({ identifier: "HttpPackageConfiguration" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          HttpPackageConfigurations: __S(21, __c2, 5),
+          HttpPackageConfigurations: __S(2081, __c65, 1),
           LiveSourceName: S.String.pipe(T.HttpLabel("LiveSourceName")),
           SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
           Tags: S.optional(__mapOf__string),
@@ -2549,12 +4297,26 @@ function __c2(j: number): any {
             ),
           ),
       ).annotate({ identifier: "CreateLiveSourceRequest" });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Path: S.String, SourceGroup: S.String, Type: S.String }),
+      ).annotate({ identifier: "HttpPackageConfiguration" });
+    case 1:
+      return S.Array(__S(2080, __c65, 0));
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HttpPackageConfigurations: S.optional(__S(21, __c2, 5)),
+          HttpPackageConfigurations: S.optional(__S(2081, __c65, 1)),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LiveSourceName: S.optional(S.String),
           SourceLocationName: S.optional(S.String),
@@ -2563,14 +4325,63 @@ function __c2(j: number): any {
       ).annotate({ identifier: "CreateLiveSourceResponse" });
   }
 }
-function __c3(j: number): any {
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Consumption: S.optional(__S(2178, __c68, 2)),
+          Name: S.String.pipe(T.HttpLabel("Name")),
+          PlaybackConfigurationName: S.String.pipe(T.HttpLabel("PlaybackConfigurationName")),
+          Retrieval: S.optional(__S(2181, __c68, 5)),
+          RecurringPrefetchConfiguration: S.optional(__S(2184, __c68, 8)),
+          ScheduleType: S.optional(S.String),
+          StreamId: S.optional(S.String),
+          Tags: S.optional(__mapOf__string),
+        })
+          .pipe(S.encodeKeys({ Tags: "tags" }))
+          .pipe(
+            T.all(
+              T.Http({
+                method: "POST",
+                uri: "/prefetchSchedule/{PlaybackConfigurationName}/{Name}",
+              }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreatePrefetchScheduleRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Consumption: S.optional(__S(2178, __c68, 2)),
+          Name: S.optional(S.String),
+          PlaybackConfigurationName: S.optional(S.String),
+          Retrieval: S.optional(__S(2181, __c68, 5)),
+          RecurringPrefetchConfiguration: S.optional(__S(2184, __c68, 8)),
+          ScheduleType: S.optional(S.String),
+          StreamId: S.optional(S.String),
+          Tags: S.optional(__mapOf__string),
+        }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({
+        identifier: "CreatePrefetchScheduleResponse",
+      });
+  }
+}
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ DynamicVariable: S.String, Operator: S.String })).annotate({
         identifier: "AvailMatchingCriteria",
       });
     case 1:
-      return S.Array(__S(24, __c3, 0));
+      return S.Array(__S(2176, __c68, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2598,8 +4409,8 @@ function __c3(j: number): any {
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TrafficShapingType: S.optional(S.String),
-          TrafficShapingRetrievalWindow: S.optional(__S(27, __c3, 3)),
-          TrafficShapingTpsConfiguration: S.optional(__S(28, __c3, 4)),
+          TrafficShapingRetrievalWindow: S.optional(__S(2179, __c68, 3)),
+          TrafficShapingTpsConfiguration: S.optional(__S(2180, __c68, 4)),
         }),
       ).annotate({ identifier: "PrefetchRetrieval" });
     case 6:
@@ -2615,1647 +4426,23 @@ function __c3(j: number): any {
           DynamicVariables: S.optional(__mapOf__string),
           DelayAfterAvailEndSeconds: S.optional(S.Number),
           TrafficShapingType: S.optional(S.String),
-          TrafficShapingRetrievalWindow: S.optional(__S(27, __c3, 3)),
-          TrafficShapingTpsConfiguration: S.optional(__S(28, __c3, 4)),
+          TrafficShapingRetrievalWindow: S.optional(__S(2179, __c68, 3)),
+          TrafficShapingTpsConfiguration: S.optional(__S(2180, __c68, 4)),
         }),
       ).annotate({ identifier: "RecurringRetrieval" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          RecurringConsumption: __S(30, __c3, 6),
-          RecurringRetrieval: __S(31, __c3, 7),
+          RecurringConsumption: __S(2182, __c68, 6),
+          RecurringRetrieval: __S(2183, __c68, 7),
         }),
       ).annotate({
         identifier: "RecurringPrefetchConfiguration",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Consumption: S.optional(__S(26, __c3, 2)),
-          Name: S.String.pipe(T.HttpLabel("Name")),
-          PlaybackConfigurationName: S.String.pipe(T.HttpLabel("PlaybackConfigurationName")),
-          Retrieval: S.optional(__S(29, __c3, 5)),
-          RecurringPrefetchConfiguration: S.optional(__S(32, __c4, 0)),
-          ScheduleType: S.optional(S.String),
-          StreamId: S.optional(S.String),
-          Tags: S.optional(__mapOf__string),
-        })
-          .pipe(S.encodeKeys({ Tags: "tags" }))
-          .pipe(
-            T.all(
-              T.Http({
-                method: "POST",
-                uri: "/prefetchSchedule/{PlaybackConfigurationName}/{Name}",
-              }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "CreatePrefetchScheduleRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          Consumption: S.optional(__S(26, __c3, 2)),
-          Name: S.optional(S.String),
-          PlaybackConfigurationName: S.optional(S.String),
-          Retrieval: S.optional(__S(29, __c3, 5)),
-          RecurringPrefetchConfiguration: S.optional(__S(32, __c4, 0)),
-          ScheduleType: S.optional(S.String),
-          StreamId: S.optional(S.String),
-          Tags: S.optional(__mapOf__string),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "CreatePrefetchScheduleResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AvailNum: S.optional(S.Number),
-          AvailsExpected: S.optional(S.Number),
-          SpliceEventId: S.optional(S.Number),
-          UniqueProgramId: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SpliceInsertMessage" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          SegmentationEventId: S.optional(S.Number),
-          SegmentationUpidType: S.optional(S.Number),
-          SegmentationUpid: S.optional(S.String),
-          SegmentationTypeId: S.optional(S.Number),
-          SegmentNum: S.optional(S.Number),
-          SegmentsExpected: S.optional(S.Number),
-          SubSegmentNum: S.optional(S.Number),
-          SubSegmentsExpected: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SegmentationDescriptor" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ SegmentationDescriptors: S.optional(__S(37, __c4, 5)) }),
-      ).annotate({ identifier: "TimeSignalMessage" });
-    case 7:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "KeyValuePair",
-      });
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          MessageType: S.optional(S.String),
-          OffsetMillis: S.Number,
-          Slate: S.optional(__S(8, __c1, 0)),
-          SpliceInsertMessage: S.optional(__S(35, __c4, 3)),
-          TimeSignalMessage: S.optional(__S(38, __c4, 6)),
-          AdBreakMetadata: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "AdBreak" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DurationMillis: S.optional(S.Number),
-          RelativePosition: S.String,
-          RelativeProgram: S.optional(S.String),
-          ScheduledStartTimeMillis: S.optional(S.Number),
-          Type: S.String,
-        }),
-      ).annotate({ identifier: "Transition" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          EndOffsetMillis: S.optional(S.Number),
-          StartOffsetMillis: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ClipRange" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Transition: __S(43, __c5, 3), ClipRange: S.optional(__S(44, __c5, 4)) }),
-      ).annotate({ identifier: "ScheduleConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          SourceLocationName: S.optional(S.String),
-          LiveSourceName: S.optional(S.String),
-          VodSourceName: S.optional(S.String),
-          ClipRange: S.optional(__S(44, __c5, 4)),
-          ScheduledStartTimeMillis: S.optional(S.Number),
-          AdBreaks: S.optional(__listOfAdBreak),
-          DurationMillis: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AlternateMedia" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Audience: S.optional(S.String),
-          AlternateMedia: S.optional(__listOfAlternateMedia),
-        }),
-      ).annotate({ identifier: "AudienceMedia" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AdBreaks: S.optional(__listOfAdBreak),
-          ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
-          LiveSourceName: S.optional(S.String),
-          ProgramName: S.String.pipe(T.HttpLabel("ProgramName")),
-          ScheduleConfiguration: __S(45, __c5, 5),
-          SourceLocationName: S.String,
-          VodSourceName: S.optional(S.String),
-          AudienceMedia: S.optional(__listOfAudienceMedia),
-          Tags: S.optional(__mapOf__string),
-        })
-          .pipe(S.encodeKeys({ Tags: "tags" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/channel/{ChannelName}/program/{ProgramName}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "CreateProgramRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AdBreaks: S.optional(__listOfAdBreak),
-          Arn: S.optional(S.String),
-          ChannelName: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LiveSourceName: S.optional(S.String),
-          ProgramName: S.optional(S.String),
-          ScheduledStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          SourceLocationName: S.optional(S.String),
-          VodSourceName: S.optional(S.String),
-          ClipRange: S.optional(__S(44, __c5, 4)),
-          DurationMillis: S.optional(S.Number),
-          AudienceMedia: S.optional(__listOfAudienceMedia),
-          Tags: S.optional(__mapOf__string),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({ identifier: "CreateProgramResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          HeaderName: S.optional(S.String),
-          SecretArn: S.optional(S.String),
-          SecretStringKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SecretsManagerAccessTokenConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AccessType: S.optional(S.String),
-          SecretsManagerAccessTokenConfiguration: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "AccessConfiguration" });
-    case 6:
-      return S.suspend(() => S.Struct({ BaseUrl: S.optional(S.String) })).annotate({
-        identifier: "DefaultSegmentDeliveryConfiguration",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ BaseUrl: S.String })).annotate({
-        identifier: "HttpConfiguration",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ BaseUrl: S.optional(S.String), Name: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SegmentDeliveryConfiguration",
-      });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AccessConfiguration: S.optional(__S(53, __c6, 5)),
-          DefaultSegmentDeliveryConfiguration: S.optional(__S(54, __c6, 6)),
-          HttpConfiguration: __S(55, __c6, 7),
-          SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
-          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
-          Tags: S.optional(__mapOf__string),
-        })
-          .pipe(S.encodeKeys({ Tags: "tags" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/sourceLocation/{SourceLocationName}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "CreateSourceLocationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AccessConfiguration: S.optional(__S(53, __c6, 5)),
-          Arn: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DefaultSegmentDeliveryConfiguration: S.optional(__S(54, __c6, 6)),
-          HttpConfiguration: S.optional(__S(55, __c6, 7)),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
-          SourceLocationName: S.optional(S.String),
-          Tags: S.optional(__mapOf__string),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "CreateSourceLocationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          HttpPackageConfigurations: __S(21, __c2, 5),
-          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
-          Tags: S.optional(__mapOf__string),
-          VodSourceName: S.String.pipe(T.HttpLabel("VodSourceName")),
-        })
-          .pipe(S.encodeKeys({ Tags: "tags" }))
-          .pipe(
-            T.all(
-              T.Http({
-                method: "POST",
-                uri: "/sourceLocation/{SourceLocationName}/vodSource/{VodSourceName}",
-              }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "CreateVodSourceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HttpPackageConfigurations: S.optional(__S(21, __c2, 5)),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          SourceLocationName: S.optional(S.String),
-          Tags: S.optional(__mapOf__string),
-          VodSourceName: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({ identifier: "CreateVodSourceResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/channel/{ChannelName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteChannelRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteChannelResponse",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/channel/{ChannelName}/policy" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteChannelPolicyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ FunctionId: S.String.pipe(T.HttpLabel("FunctionId")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/function/{FunctionId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteFunctionRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          LiveSourceName: S.String.pipe(T.HttpLabel("LiveSourceName")),
-          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/sourceLocation/{SourceLocationName}/liveSource/{LiveSourceName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteLiveSourceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/playbackConfiguration/{Name}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeletePlaybackConfigurationRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePlaybackConfigurationResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String.pipe(T.HttpLabel("Name")),
-          PlaybackConfigurationName: S.String.pipe(T.HttpLabel("PlaybackConfigurationName")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/prefetchSchedule/{PlaybackConfigurationName}/{Name}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeletePrefetchScheduleRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
-          ProgramName: S.String.pipe(T.HttpLabel("ProgramName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/channel/{ChannelName}/program/{ProgramName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteProgramRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/sourceLocation/{SourceLocationName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteSourceLocationRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
-          VodSourceName: S.String.pipe(T.HttpLabel("VodSourceName")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/sourceLocation/{SourceLocationName}/vodSource/{VodSourceName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteVodSourceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/channel/{ChannelName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeChannelRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ LogTypes: S.optional(__S(0, __c0, 0)) })).annotate({
-        identifier: "LogConfigurationForChannel",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          ChannelName: S.optional(S.String),
-          ChannelState: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FillerSlate: S.optional(__S(8, __c1, 0)),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Outputs: S.optional(__S(18, __c2, 2)),
-          PlaybackMode: S.optional(S.String),
-          Tags: S.optional(__mapOf__string),
-          Tier: S.optional(S.String),
-          LogConfiguration: __S(74, __c9, 2),
-          TimeShiftConfiguration: S.optional(__S(14, __c1, 6)),
-          Audiences: S.optional(__S(15, __c1, 7)),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({ identifier: "DescribeChannelResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          LiveSourceName: S.String.pipe(T.HttpLabel("LiveSourceName")),
-          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/sourceLocation/{SourceLocationName}/liveSource/{LiveSourceName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeLiveSourceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HttpPackageConfigurations: S.optional(__S(21, __c2, 5)),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LiveSourceName: S.optional(S.String),
-          SourceLocationName: S.optional(S.String),
-          Tags: S.optional(__mapOf__string),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "DescribeLiveSourceResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
-          ProgramName: S.String.pipe(T.HttpLabel("ProgramName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/channel/{ChannelName}/program/{ProgramName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeProgramRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/sourceLocation/{SourceLocationName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeSourceLocationRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
-          VodSourceName: S.String.pipe(T.HttpLabel("VodSourceName")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/sourceLocation/{SourceLocationName}/vodSource/{VodSourceName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeVodSourceRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ OffsetMillis: S.Number })).annotate({
-        identifier: "AdBreakOpportunity",
-      });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AdBreakOpportunities: S.optional(__S(82, __c10, 2)),
-          Arn: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HttpPackageConfigurations: S.optional(__S(21, __c2, 5)),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          SourceLocationName: S.optional(S.String),
-          Tags: S.optional(__mapOf__string),
-          VodSourceName: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "DescribeVodSourceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/channel/{ChannelName}/policy" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetChannelPolicyRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ Policy: S.optional(S.String) })).annotate({
-        identifier: "GetChannelPolicyResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
-          DurationMinutes: S.optional(S.String).pipe(T.HttpQuery("durationMinutes")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          Audience: S.optional(S.String).pipe(T.HttpQuery("audience")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/channel/{ChannelName}/schedule" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetChannelScheduleRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ApproximateDurationSeconds: S.optional(S.Number),
-          ApproximateStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          SourceLocationName: S.optional(S.String),
-          VodSourceName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScheduleAdBreak" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApproximateDurationSeconds: S.optional(S.Number),
-          ApproximateStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Arn: S.String,
-          ChannelName: S.String,
-          LiveSourceName: S.optional(S.String),
-          ProgramName: S.String,
-          ScheduleAdBreaks: S.optional(__listOfScheduleAdBreak),
-          ScheduleEntryType: S.optional(S.String),
-          SourceLocationName: S.String,
-          VodSourceName: S.optional(S.String),
-          Audiences: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "ScheduleEntry" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(__listOfScheduleEntry), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetChannelScheduleResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ FunctionId: S.String.pipe(T.HttpLabel("FunctionId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/function/{FunctionId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetFunctionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Runtime: S.String,
-          Output: S.optional(__mapOf__string),
-          MethodType: S.String,
-          RequestTimeoutMilliseconds: S.Number,
-          Url: S.String,
-          Body: S.optional(S.String),
-          Headers: S.optional(__mapOf__string),
-        }),
-      ).annotate({ identifier: "HttpRequestConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Runtime: S.String,
-          Output: S.optional(__mapOf__string),
-          MethodType: S.String,
-          RequestTimeoutMilliseconds: S.Number,
-          Url: S.String,
-          Body: S.optional(S.String),
-          Headers: S.optional(__mapOf__string),
-          TargetService: S.String,
-          TargetRegion: S.String,
-        }),
-      ).annotate({
-        identifier: "AwsServiceRequestConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Runtime: S.String, Output: S.optional(__mapOf__string) }),
-      ).annotate({
-        identifier: "CustomOutputConfiguration",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          RunCondition: S.optional(S.String),
-          FunctionId: S.optional(S.String),
-          Alias: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FunctionRef" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Runtime: S.String,
-          Output: __mapOf__string,
-          FunctionList: __listOfFunctionsRef,
-          TimeoutMilliseconds: S.Number,
-          MaxConcurrency: S.Number,
-        }),
-      ).annotate({
-        identifier: "ConcurrentExecutorConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Runtime: S.String,
-          Output: S.optional(__mapOf__string),
-          FunctionList: __listOfFunctionsRef,
-          TimeoutMilliseconds: S.Number,
-        }),
-      ).annotate({
-        identifier: "SequentialExecutorConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          FunctionId: S.String,
-          FunctionType: S.String,
-          Description: S.optional(S.String),
-          HttpRequestConfiguration: S.optional(__S(93, __c11, 5)),
-          AwsServiceRequestConfiguration: S.optional(__S(94, __c11, 6)),
-          CustomOutputConfiguration: S.optional(__S(95, __c11, 7)),
-          ConcurrentExecutorConfiguration: S.optional(__S(98, __c12, 2)),
-          SequentialExecutorConfiguration: S.optional(__S(99, __c12, 3)),
-          VastRequestConfiguration: S.optional(__S(93, __c11, 5)),
-          Tags: S.optional(__mapOf__string),
-          Arn: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({ identifier: "GetFunctionResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/playbackConfiguration/{Name}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetPlaybackConfigurationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Mode: S.optional(S.String),
-          Value: S.optional(S.String),
-          FillPolicy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AvailSuppression" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ EndUrl: S.optional(S.String), StartUrl: S.optional(S.String) }),
-      ).annotate({ identifier: "Bumper" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AdSegmentUrlPrefix: S.optional(S.String),
-          ContentSegmentUrlPrefix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CdnConfiguration" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __mapOf__string.pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ManifestEndpointPrefix: S.optional(S.String),
-          DualStackManifestEndpointPrefix: S.optional(S.String),
-          MpdLocation: S.optional(S.String),
-          OriginManifestType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DashConfiguration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ManifestEndpointPrefix: S.optional(S.String),
-          DualStackManifestEndpointPrefix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HlsConfiguration" });
-    case 4:
-      return S.suspend(() => S.Struct({ AdSequencingMode: S.optional(S.String) })).annotate({
-        identifier: "PreRollVastResponse",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ VastResponse: S.optional(__S(108, __c13, 4)) })).annotate({
-        identifier: "PreRollAdDecisionServerConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AdDecisionServerUrl: S.optional(S.String),
-          MaxDurationSeconds: S.optional(S.Number),
-          AdDecisionServerConfiguration: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({ identifier: "LivePreRollConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          PercentEnabled: S.Number,
-          EnabledLoggingStrategies: S.optional(__listOfLoggingStrategies),
-          AdsInteractionLog: S.optional(__S(4, __c0, 4)),
-          ManifestServiceInteractionLog: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "LogConfiguration" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
-        identifier: "AdMarkerPassthrough",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ AdMarkerPassthrough: S.optional(__S(112, __c14, 0)) }),
-      ).annotate({ identifier: "ManifestProcessingRules" });
-    case 2:
-      return S.suspend(() => S.Struct({ StreamingMediaFileConditioning: S.String })).annotate({
-        identifier: "AdConditioningConfiguration",
-      });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Method: S.optional(S.String),
-          Body: S.optional(S.String),
-          Headers: S.optional(__S(115, __c14, 3)),
-          CompressRequest: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          HttpRequest: S.optional(__S(116, __c14, 4)),
-          VastResponse: S.optional(__S(108, __c13, 4)),
-        }),
-      ).annotate({
-        identifier: "AdDecisionServerConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          MinimumUnfilledDuration: S.Number,
-          PublisherId: S.String,
-          Region: S.String,
-          OpenRtbTemplate: S.String,
-        }),
-      ).annotate({
-        identifier: "YieldOptimizationConfiguration",
-      });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AdsRequestTimeoutMilliseconds: S.optional(S.Number),
-          LiveMaximumAdsPersonalizationTimeMilliseconds: S.optional(S.Number),
-          VodMaximumAdsPersonalizationTimeMilliseconds: S.optional(S.Number),
-          PrefetchAdsRequestTimeoutMilliseconds: S.optional(S.Number),
-          PrefetchMaximumAdsPersonalizationTimeMilliseconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AdsPersonalizationTimeouts",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          MaxConcurrentAdsRequests: S.optional(S.Number),
-          EnableVodVastParallelization: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AdsPersonalizationConcurrency",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ReportingMode: S.String,
-          AdditionalEventTypes: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "ClientSideBeaconingConfiguration",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ ClientSide: S.optional(__S(122, __c15, 2)) })).annotate({
-        identifier: "BeaconingConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          AdDecisionServerUrl: S.optional(S.String),
-          AvailSuppression: S.optional(__S(102, __c12, 6)),
-          Bumper: S.optional(__S(103, __c12, 7)),
-          CdnConfiguration: S.optional(__S(104, __c13, 0)),
-          ConfigurationAliases: S.optional(__S(105, __c13, 1)),
-          DashConfiguration: S.optional(__S(106, __c13, 2)),
-          HlsConfiguration: S.optional(__S(107, __c13, 3)),
-          InsertionMode: S.optional(S.String),
-          LivePreRollConfiguration: S.optional(__S(110, __c13, 6)),
-          LogConfiguration: S.optional(__S(111, __c13, 7)),
-          ManifestProcessingRules: S.optional(__S(113, __c14, 1)),
-          Name: S.optional(S.String),
-          PersonalizationThresholdSeconds: S.optional(S.Number),
-          PlaybackConfigurationArn: S.optional(S.String),
-          PlaybackEndpointPrefix: S.optional(S.String),
-          DualStackPlaybackEndpointPrefix: S.optional(S.String),
-          SessionInitializationEndpointPrefix: S.optional(S.String),
-          DualStackSessionInitializationEndpointPrefix: S.optional(S.String),
-          SlateAdUrl: S.optional(S.String),
-          Tags: S.optional(__mapOf__string),
-          TranscodeProfileName: S.optional(S.String),
-          VideoContentSourceUrl: S.optional(S.String),
-          AdConditioningConfiguration: S.optional(__S(114, __c14, 2)),
-          AdDecisionServerConfiguration: S.optional(__S(117, __c14, 5)),
-          YieldOptimizationConfiguration: S.optional(__S(118, __c14, 6)),
-          FunctionMapping: S.optional(__S(119, __c14, 7)),
-          AdsPersonalizationTimeouts: S.optional(__S(120, __c15, 0)),
-          AdsPersonalizationConcurrency: S.optional(__S(121, __c15, 1)),
-          BeaconingConfiguration: S.optional(__S(123, __c15, 3)),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "GetPlaybackConfigurationResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String.pipe(T.HttpLabel("Name")),
-          PlaybackConfigurationName: S.String.pipe(T.HttpLabel("PlaybackConfigurationName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/prefetchSchedule/{PlaybackConfigurationName}/{Name}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetPrefetchScheduleRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          Consumption: S.optional(__S(26, __c3, 2)),
-          Name: S.optional(S.String),
-          PlaybackConfigurationName: S.optional(S.String),
-          Retrieval: S.optional(__S(29, __c3, 5)),
-          ScheduleType: S.optional(S.String),
-          RecurringPrefetchConfiguration: S.optional(__S(32, __c4, 0)),
-          StreamId: S.optional(S.String),
-          Tags: S.optional(__mapOf__string),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "GetPrefetchScheduleResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          ResourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-        }).pipe(T.all(T.Http({ method: "GET", uri: "/alerts" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListAlertsRequest" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AlertCode: S.String,
-          AlertMessage: S.String,
-          LastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          RelatedResourceArns: __listOf__string,
-          ResourceArn: S.String,
-          Category: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Alert" });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(__listOfAlert), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListAlertsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(T.all(T.Http({ method: "GET", uri: "/channels" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListChannelsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.String,
-          ChannelName: S.String,
-          ChannelState: S.String,
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FillerSlate: S.optional(__S(8, __c1, 0)),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Outputs: __S(18, __c2, 2),
-          PlaybackMode: S.String,
-          Tags: S.optional(__mapOf__string),
-          Tier: S.String,
-          LogConfiguration: __S(74, __c9, 2),
-          Audiences: S.optional(__S(15, __c1, 7)),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({ identifier: "Channel" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(__listOfChannel), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListChannelsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-        }).pipe(T.all(T.Http({ method: "GET", uri: "/functions" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListFunctionsRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(100, __c12, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(__listOfFunctionsResponse), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListFunctionsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/sourceLocation/{SourceLocationName}/liveSources" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListLiveSourcesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.String,
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HttpPackageConfigurations: __S(21, __c2, 5),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LiveSourceName: S.String,
-          SourceLocationName: S.String,
-          Tags: S.optional(__mapOf__string),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({ identifier: "LiveSource" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(__listOfLiveSource), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListLiveSourcesResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/playbackConfigurations" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListPlaybackConfigurationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AdDecisionServerUrl: S.optional(S.String),
-          AvailSuppression: S.optional(__S(102, __c12, 6)),
-          Bumper: S.optional(__S(103, __c12, 7)),
-          CdnConfiguration: S.optional(__S(104, __c13, 0)),
-          ConfigurationAliases: S.optional(__S(105, __c13, 1)),
-          DashConfiguration: S.optional(__S(106, __c13, 2)),
-          HlsConfiguration: S.optional(__S(107, __c13, 3)),
-          InsertionMode: S.optional(S.String),
-          LivePreRollConfiguration: S.optional(__S(110, __c13, 6)),
-          LogConfiguration: S.optional(__S(111, __c13, 7)),
-          ManifestProcessingRules: S.optional(__S(113, __c14, 1)),
-          Name: S.optional(S.String),
-          PersonalizationThresholdSeconds: S.optional(S.Number),
-          PlaybackConfigurationArn: S.optional(S.String),
-          PlaybackEndpointPrefix: S.optional(S.String),
-          DualStackPlaybackEndpointPrefix: S.optional(S.String),
-          SessionInitializationEndpointPrefix: S.optional(S.String),
-          DualStackSessionInitializationEndpointPrefix: S.optional(S.String),
-          SlateAdUrl: S.optional(S.String),
-          Tags: S.optional(__mapOf__string),
-          TranscodeProfileName: S.optional(S.String),
-          VideoContentSourceUrl: S.optional(S.String),
-          AdConditioningConfiguration: S.optional(__S(114, __c14, 2)),
-          AdDecisionServerConfiguration: S.optional(__S(117, __c14, 5)),
-          YieldOptimizationConfiguration: S.optional(__S(118, __c14, 6)),
-          FunctionMapping: S.optional(__S(119, __c14, 7)),
-          AdsPersonalizationTimeouts: S.optional(__S(120, __c15, 0)),
-          AdsPersonalizationConcurrency: S.optional(__S(121, __c15, 1)),
-          BeaconingConfiguration: S.optional(__S(123, __c15, 3)),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({ identifier: "PlaybackConfiguration" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Items: S.optional(__listOfPlaybackConfiguration),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListPlaybackConfigurationsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-          PlaybackConfigurationName: S.String.pipe(T.HttpLabel("PlaybackConfigurationName")),
-          ScheduleType: S.optional(S.String),
-          StreamId: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/prefetchSchedule/{PlaybackConfigurationName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListPrefetchSchedulesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.String,
-          Consumption: S.optional(__S(26, __c3, 2)),
-          Name: S.String,
-          PlaybackConfigurationName: S.String,
-          Retrieval: S.optional(__S(29, __c3, 5)),
-          ScheduleType: S.optional(S.String),
-          RecurringPrefetchConfiguration: S.optional(__S(32, __c4, 0)),
-          StreamId: S.optional(S.String),
-          Tags: S.optional(__mapOf__string),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({ identifier: "PrefetchSchedule" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(__listOfPrefetchSchedule), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListPrefetchSchedulesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/sourceLocations" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListSourceLocationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AccessConfiguration: S.optional(__S(53, __c6, 5)),
-          Arn: S.String,
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DefaultSegmentDeliveryConfiguration: S.optional(__S(54, __c6, 6)),
-          HttpConfiguration: __S(55, __c6, 7),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
-          SourceLocationName: S.String,
-          Tags: S.optional(__mapOf__string),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({ identifier: "SourceLocation" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(__listOfSourceLocation), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListSourceLocationsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__mapOf__string) }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/sourceLocation/{SourceLocationName}/vodSources" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListVodSourcesRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.String,
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HttpPackageConfigurations: __S(21, __c2, 5),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          SourceLocationName: S.String,
-          Tags: S.optional(__mapOf__string),
-          VodSourceName: S.String,
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({ identifier: "VodSource" });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(__listOfVodSource), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListVodSourcesResponse" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")), Policy: S.String }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/channel/{ChannelName}/policy" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "PutChannelPolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          FunctionId: S.String.pipe(T.HttpLabel("FunctionId")),
-          FunctionType: S.String,
-          Description: S.optional(S.String),
-          HttpRequestConfiguration: S.optional(__S(93, __c11, 5)),
-          AwsServiceRequestConfiguration: S.optional(__S(94, __c11, 6)),
-          CustomOutputConfiguration: S.optional(__S(95, __c11, 7)),
-          ConcurrentExecutorConfiguration: S.optional(__S(98, __c12, 2)),
-          SequentialExecutorConfiguration: S.optional(__S(99, __c12, 3)),
-          VastRequestConfiguration: S.optional(__S(93, __c11, 5)),
-          Tags: S.optional(__mapOf__string),
-        })
-          .pipe(S.encodeKeys({ Tags: "tags" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/function/{FunctionId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "PutFunctionRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MpdLocation: S.optional(S.String),
-          OriginManifestType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DashConfigurationForPut" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AdDecisionServerUrl: S.optional(S.String),
-          AvailSuppression: S.optional(__S(102, __c12, 6)),
-          Bumper: S.optional(__S(103, __c12, 7)),
-          CdnConfiguration: S.optional(__S(104, __c13, 0)),
-          ConfigurationAliases: S.optional(__S(105, __c13, 1)),
-          DashConfiguration: S.optional(__S(162, __c20, 2)),
-          InsertionMode: S.optional(S.String),
-          LivePreRollConfiguration: S.optional(__S(110, __c13, 6)),
-          ManifestProcessingRules: S.optional(__S(113, __c14, 1)),
-          Name: S.String,
-          PersonalizationThresholdSeconds: S.optional(S.Number),
-          SlateAdUrl: S.optional(S.String),
-          Tags: S.optional(__mapOf__string),
-          TranscodeProfileName: S.optional(S.String),
-          VideoContentSourceUrl: S.optional(S.String),
-          AdConditioningConfiguration: S.optional(__S(114, __c14, 2)),
-          AdDecisionServerConfiguration: S.optional(__S(117, __c14, 5)),
-          YieldOptimizationConfiguration: S.optional(__S(118, __c14, 6)),
-          FunctionMapping: S.optional(__S(119, __c14, 7)),
-          AdsPersonalizationTimeouts: S.optional(__S(120, __c15, 0)),
-          AdsPersonalizationConcurrency: S.optional(__S(121, __c15, 1)),
-          BeaconingConfiguration: S.optional(__S(123, __c15, 3)),
-        })
-          .pipe(S.encodeKeys({ Tags: "tags" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/playbackConfiguration" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "PutPlaybackConfigurationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")) }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/channel/{ChannelName}/start" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StartChannelRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ChannelName: S.String.pipe(T.HttpLabel("ChannelName")) }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/channel/{ChannelName}/stop" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StopChannelRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: __mapOf__string })
-          .pipe(S.encodeKeys({ Tags: "tags" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __listOf__string.pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
-          FillerSlate: S.optional(__S(8, __c1, 0)),
-          Outputs: __S(12, __c1, 4),
-          TimeShiftConfiguration: S.optional(__S(14, __c1, 6)),
-          Audiences: S.optional(__S(15, __c1, 7)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/channel/{ChannelName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateChannelRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          HttpPackageConfigurations: __S(21, __c2, 5),
-          LiveSourceName: S.String.pipe(T.HttpLabel("LiveSourceName")),
-          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/sourceLocation/{SourceLocationName}/liveSource/{LiveSourceName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateLiveSourceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ScheduledStartTimeMillis: S.optional(S.Number),
-          DurationMillis: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "UpdateProgramTransition" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Transition: S.optional(__S(170, __c21, 2)),
-          ClipRange: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "UpdateProgramScheduleConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          AdBreaks: S.optional(__listOfAdBreak),
-          ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
-          ProgramName: S.String.pipe(T.HttpLabel("ProgramName")),
-          ScheduleConfiguration: __S(171, __c21, 3),
-          AudienceMedia: S.optional(__listOfAudienceMedia),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/channel/{ChannelName}/program/{ProgramName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateProgramRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AdBreaks: S.optional(__listOfAdBreak),
-          Arn: S.optional(S.String),
-          ChannelName: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ProgramName: S.optional(S.String),
-          SourceLocationName: S.optional(S.String),
-          VodSourceName: S.optional(S.String),
-          LiveSourceName: S.optional(S.String),
-          ClipRange: S.optional(__S(44, __c5, 4)),
-          DurationMillis: S.optional(S.Number),
-          ScheduledStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AudienceMedia: S.optional(__listOfAudienceMedia),
-          Tags: S.optional(__mapOf__string),
-        }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({ identifier: "UpdateProgramResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AccessConfiguration: S.optional(__S(53, __c6, 5)),
-          DefaultSegmentDeliveryConfiguration: S.optional(__S(54, __c6, 6)),
-          HttpConfiguration: __S(55, __c6, 7),
-          SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
-          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/sourceLocation/{SourceLocationName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateSourceLocationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          HttpPackageConfigurations: __S(21, __c2, 5),
-          SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
-          VodSourceName: S.String.pipe(T.HttpLabel("VodSourceName")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/sourceLocation/{SourceLocationName}/vodSource/{VodSourceName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateVodSourceRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

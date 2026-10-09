@@ -588,7 +588,7 @@ export const billingActivateAuthorizeCreate: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<BillingActivateAuthorizeCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BillingActivateAuthorizeCreateResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<BillingActivateAuthorizeCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -601,8 +601,8 @@ export const billingActivateAuthorizeStatusCreate: API.OperationMethod<
   BillingActivateAuthorizeStatusCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BillingActivateAuthorizeStatusCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BillingActivateAuthorizeStatusCreateResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<BillingActivateAuthorizeStatusCreateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<BillingActivateAuthorizeStatusCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -615,8 +615,8 @@ export const billingActivateCreate: API.OperationMethod<
   BillingActivateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BillingActivateCreateRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<BillingActivateCreateResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<BillingActivateCreateRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<BillingActivateCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -630,8 +630,8 @@ export const billingAlertsDestinationsDeleteCreate: API.OperationMethod<
   BillingAlertsDestinationsDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<BillingAlertsDestinationsDeleteCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BillingAlertsDestinationsDeleteCreateResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<BillingAlertsDestinationsDeleteCreateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<BillingAlertsDestinationsDeleteCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -644,8 +644,8 @@ export const billingAlertsDestroy: API.OperationMethod<
   BillingAlertsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BillingAlertsDestroyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<BillingAlertsDestroyResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<BillingAlertsDestroyRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<BillingAlertsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -658,8 +658,8 @@ export const billingDeactivateCreate: API.OperationMethod<
   BillingDeactivateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<BillingDeactivateCreateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<BillingDeactivateCreateResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<BillingDeactivateCreateRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<BillingDeactivateCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -672,8 +672,8 @@ export const billingGetInvoicesRetrieve: API.OperationMethod<
   BillingGetInvoicesRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<BillingGetInvoicesRetrieveRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BillingGetInvoicesRetrieveResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<BillingGetInvoicesRetrieveRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<BillingGetInvoicesRetrieveResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -687,8 +687,8 @@ export const billingSpendExportRetrieve: API.OperationMethod<
   BillingSpendExportRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<BillingSpendExportRetrieveRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BillingSpendExportRetrieveResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<BillingSpendExportRetrieveRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<BillingSpendExportRetrieveResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -701,8 +701,8 @@ export const billingStartupsApplyCreate: API.OperationMethod<
   BillingStartupsApplyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<BillingStartupsApplyCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BillingStartupsApplyCreateResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<BillingStartupsApplyCreateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<BillingStartupsApplyCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -715,8 +715,8 @@ export const billingTrialsActivateCreate: API.OperationMethod<
   BillingTrialsActivateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<BillingTrialsActivateCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BillingTrialsActivateCreateResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<BillingTrialsActivateCreateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<BillingTrialsActivateCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -729,8 +729,8 @@ export const billingTrialsCancelCreate: API.OperationMethod<
   BillingTrialsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<BillingTrialsCancelCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BillingTrialsCancelCreateResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<BillingTrialsCancelCreateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<BillingTrialsCancelCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -744,8 +744,8 @@ export const billingUsageExportRetrieve: API.OperationMethod<
   BillingUsageExportRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<BillingUsageExportRetrieveRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BillingUsageExportRetrieveResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<BillingUsageExportRetrieveRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<BillingUsageExportRetrieveResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -758,8 +758,8 @@ export const createBillingAlert: API.OperationMethod<
   CreateBillingAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateBillingAlertRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<BillingAlertConfigurationOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateBillingAlertRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<BillingAlertConfigurationOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -773,8 +773,8 @@ export const createBillingAlertsCheckNow: API.OperationMethod<
   CreateBillingAlertsCheckNowError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateBillingAlertsCheckNowRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<BillingAlertCheckNowResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateBillingAlertsCheckNowRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<BillingAlertCheckNowResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -788,8 +788,8 @@ export const createBillingAlertsDestination: API.OperationMethod<
   CreateBillingAlertsDestinationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateBillingAlertsDestinationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<BillingAlertDestinationResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateBillingAlertsDestinationRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<BillingAlertDestinationResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -802,8 +802,8 @@ export const createBillingCouponsClaim: API.OperationMethod<
   CreateBillingCouponsClaimError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateBillingCouponsClaimRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateBillingCouponsClaimResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateBillingCouponsClaimRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateBillingCouponsClaimResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -816,8 +816,8 @@ export const createBillingCreditsPurchase: API.OperationMethod<
   CreateBillingCreditsPurchaseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateBillingCreditsPurchaseRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateBillingCreditsPurchaseResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateBillingCreditsPurchaseRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateBillingCreditsPurchaseResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -830,8 +830,8 @@ export const createBillingSubscriptionSwitchPlan: API.OperationMethod<
   CreateBillingSubscriptionSwitchPlanError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateBillingSubscriptionSwitchPlanRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateBillingSubscriptionSwitchPlanResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateBillingSubscriptionSwitchPlanRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateBillingSubscriptionSwitchPlanResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -844,8 +844,8 @@ export const getBillingAlert: API.OperationMethod<
   GetBillingAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetBillingAlertRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<BillingAlertConfigurationOutput>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetBillingAlertRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<BillingAlertConfigurationOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -858,8 +858,8 @@ export const getBillingCouponsOverview: API.OperationMethod<
   GetBillingCouponsOverviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetBillingCouponsOverviewRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetBillingCouponsOverviewResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetBillingCouponsOverviewRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetBillingCouponsOverviewResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -872,8 +872,8 @@ export const getBillingCreditsOverview: API.OperationMethod<
   GetBillingCreditsOverviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetBillingCreditsOverviewRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetBillingCreditsOverviewResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetBillingCreditsOverviewRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetBillingCreditsOverviewResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -887,8 +887,8 @@ export const getBillingPeriod: API.OperationMethod<
   GetBillingPeriodError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetBillingPeriodRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<BillingPeriodResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetBillingPeriodRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<BillingPeriodResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -901,8 +901,8 @@ export const getBillingPortal: API.OperationMethod<
   GetBillingPortalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetBillingPortalRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetBillingPortalResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetBillingPortalRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetBillingPortalResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -916,8 +916,8 @@ export const getBillingSpend: API.OperationMethod<
   GetBillingSpendError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetBillingSpendRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BillingTimeSeriesResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetBillingSpendRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<BillingTimeSeriesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -930,8 +930,8 @@ export const getBillingUsage: API.OperationMethod<
   GetBillingUsageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetBillingUsageRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BillingTimeSeriesResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetBillingUsageRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<BillingTimeSeriesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -945,8 +945,8 @@ export const getBillingUsageTeamOption: API.OperationMethod<
   GetBillingUsageTeamOptionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetBillingUsageTeamOptionRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<BillingTeamOptionsResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetBillingUsageTeamOptionRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<BillingTeamOptionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -959,8 +959,8 @@ export const listBilling: API.OperationMethod<
   ListBillingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListBillingRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<BillingOverviewResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListBillingRequest>,
+  output: __S(212, __c26, 4) as any as S.Schema<BillingOverviewResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -973,8 +973,8 @@ export const listBillingAlerts: API.OperationMethod<
   ListBillingAlertsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListBillingAlertsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<PaginatedBillingAlertConfigurationListOutput>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListBillingAlertsRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<PaginatedBillingAlertConfigurationListOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -988,8 +988,8 @@ export const listBillingAlertsEvents: API.OperationMethod<
   ListBillingAlertsEventsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListBillingAlertsEventsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<PaginatedBillingAlertEventList>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListBillingAlertsEventsRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<PaginatedBillingAlertEventList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1002,8 +1002,8 @@ export const updateBillingAlert: API.OperationMethod<
   UpdateBillingAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<UpdateBillingAlertRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<BillingAlertConfigurationOutput>,
+  input: __S(232, __c29, 0) as any as S.Schema<UpdateBillingAlertRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<BillingAlertConfigurationOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1016,8 +1016,8 @@ export const updateBillingAlertsPartial: API.OperationMethod<
   UpdateBillingAlertsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<UpdateBillingAlertsPartialRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<BillingAlertConfigurationOutput>,
+  input: __S(256, __c32, 0) as any as S.Schema<UpdateBillingAlertsPartialRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<BillingAlertConfigurationOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1030,8 +1030,8 @@ export const updateBillingLicensePartial: API.OperationMethod<
   UpdateBillingLicensePartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<UpdateBillingLicensePartialRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateBillingLicensePartialResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<UpdateBillingLicensePartialRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateBillingLicensePartialResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1049,11 +1049,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BillingActivateAuthorizeCreateRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "BillingActivateAuthorizeCreateResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           plan: S.String,
@@ -1064,110 +1072,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BillingActivateAuthorizeStatusCreateRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          plan: S.String,
-          billing_limit: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/api/billing/activate/", code: 200 })),
-      ).annotate({
-        identifier: "BillingActivateCreateRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BillingActivateCreateResponse",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          hog_function_ids: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/billing/alerts/{id}/destinations/delete/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BillingAlertsDestinationsDeleteCreateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/organizations/{organization_id}/billing/alerts/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BillingAlertsDestroyRequest",
-      });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          plan: S.String,
-          billing_limit: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/api/billing/deactivate/", code: 200 })),
-      ).annotate({
-        identifier: "BillingDeactivateCreateRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BillingDeactivateCreateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/get_invoices/", code: 200 })),
-      ).annotate({
-        identifier: "BillingGetInvoicesRetrieveRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          after: S.optional(S.String.pipe(T.Query())),
-          breakdowns: S.optional(S.String.pipe(T.Query())),
-          end_date: S.optional(S.String.pipe(T.Query())),
-          interval: S.optional(S.String.pipe(T.Query())),
-          page_size: S.optional(S.Number.pipe(T.Query())),
-          start_date: S.optional(S.String.pipe(T.Query())),
-          team_ids: S.optional(S.String.pipe(T.Query())),
-          top_projects: S.optional(S.Number.pipe(T.Query())),
-          usage_types: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/billing/spend/export/", code: 200 })),
-      ).annotate({
-        identifier: "BillingSpendExportRetrieveRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          plan: S.String,
-          billing_limit: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/api/billing/startups/apply/", code: 200 })),
-      ).annotate({
-        identifier: "BillingStartupsApplyCreateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          plan: S.String,
-          billing_limit: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/api/billing/trials/activate/", code: 200 })),
-      ).annotate({
-        identifier: "BillingTrialsActivateCreateRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           plan: S.String,
@@ -1176,7 +1085,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BillingTrialsCancelCreateRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -1194,34 +1107,9 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(5, __c0, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          slack_workspace_id: S.optional(S.Number),
-          slack_channel_id: S.optional(S.String),
-          slack_channel_name: S.optional(S.String),
-          webhook_url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BillingAlertDestinationCreateData",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          delete: S.optional(__S(16, __c2, 0)),
-          create: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "BillingAlertDestinationChanges",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -1237,7 +1125,7 @@ function __c2(j: number): any {
           evaluation_delay_hours: S.optional(S.Number),
           cooldown_hours: S.optional(S.Number),
           snoozed_until: S.optional(S.NullOr(S.String)),
-          destination_changes: S.optional(__S(19, __c2, 3)),
+          destination_changes: S.optional(__S(59, __c7, 3)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1248,18 +1136,22 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateBillingAlertRequest",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          hog_function_ids: __S(5, __c0, 5),
+          hog_function_ids: __S(248, __c31, 0),
         }),
       ).annotate({
         identifier: "BillingAlertDestinationSummary",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1286,7 +1178,7 @@ function __c2(j: number): any {
           last_checked_at: S.NullOr(S.String),
           last_notified_at: S.NullOr(S.String),
           consecutive_failures: S.Number,
-          destinations: __S(22, __c2, 6),
+          destinations: __S(49, __c6, 1),
           created_at: S.String,
           updated_at: S.NullOr(S.String),
         }),
@@ -1295,7 +1187,36 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(248, __c31, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          slack_workspace_id: S.optional(S.Number),
+          slack_channel_id: S.optional(S.String),
+          slack_channel_name: S.optional(S.String),
+          webhook_url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BillingAlertDestinationCreateData",
+      });
+    case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          delete: S.optional(__S(56, __c7, 0)),
+          create: S.optional(__S(58, __c7, 2)),
+        }),
+      ).annotate({
+        identifier: "BillingAlertDestinationChanges",
+      });
+  }
+}
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1313,6 +1234,22 @@ function __c3(j: number): any {
         identifier: "CreateBillingAlertsCheckNowRequest",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          event: S.optional(S.NullOr(__S(72, __c9, 0))),
+          dispatched_destinations: S.Number,
+          preview: S.Boolean,
+          threshold_breached: S.Boolean,
+          current_value: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "BillingAlertCheckNowResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1340,19 +1277,11 @@ function __c3(j: number): any {
           reason: S.String,
         }),
       ).annotate({ identifier: "BillingAlertEvent" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          event: S.optional(S.NullOr(__S(25, __c3, 1))),
-          dispatched_destinations: S.Number,
-          preview: S.Boolean,
-          threshold_breached: S.Boolean,
-          current_value: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "BillingAlertCheckNowResponse",
-      });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -1372,15 +1301,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateBillingAlertsDestinationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          hog_function_ids: __S(5, __c0, 5),
+          hog_function_ids: __S(248, __c31, 0),
         }),
       ).annotate({
         identifier: "BillingAlertDestinationResponse",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           plan: S.String,
@@ -1389,7 +1322,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateBillingCouponsClaimRequest",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           plan: S.String,
@@ -1398,7 +1335,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateBillingCreditsPurchaseRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           plan: S.String,
@@ -1411,7 +1352,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1426,7 +1367,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBillingAlertRequest" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/billing/coupons/overview/", code: 200 }),
@@ -1434,7 +1379,32 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetBillingCouponsOverviewRequest",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          plan: S.String,
+          billing_limit: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/api/billing/activate/", code: 200 })),
+      ).annotate({
+        identifier: "BillingActivateCreateRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BillingActivateCreateResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/billing/credits/overview/", code: 200 }),
@@ -1442,22 +1412,34 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetBillingCreditsOverviewRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/period/", code: 200 })),
       ).annotate({ identifier: "GetBillingPeriodRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           current_period_start: S.NullOr(S.String),
           current_period_end: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "BillingPeriodResponse" });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/portal/", code: 200 })),
       ).annotate({ identifier: "GetBillingPortalRequest" });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -1471,40 +1453,48 @@ function __c4(j: number): any {
           usage_types: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/billing/spend/", code: 200 })),
       ).annotate({ identifier: "GetBillingSpendRequest" });
-    case 7:
-      return S.Array(S.Number);
   }
 }
-function __c5(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           label: S.optional(S.String),
-          data: S.optional(__S(39, __c4, 7)),
-          dates: S.optional(__S(5, __c0, 5)),
+          data: S.optional(__S(184, __c23, 0)),
+          dates: S.optional(__S(248, __c31, 0)),
           breakdown_type: S.optional(S.NullOr(S.String)),
           breakdown_value: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "BillingTimeSeriesPoint" });
     case 1:
-      return S.Array(__S(40, __c5, 0));
+      return S.Array(__S(176, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           type: S.optional(S.String),
           customer_id: S.optional(S.Number),
-          results: __S(41, __c5, 1),
-          team_id_options: S.optional(__S(39, __c4, 7)),
+          results: __S(177, __c22, 1),
+          team_id_options: S.optional(__S(184, __c23, 0)),
           next: S.optional(S.String),
           total_count: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "BillingTimeSeriesResponse",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -1518,7 +1508,11 @@ function __c5(j: number): any {
           usage_types: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/billing/usage/", code: 200 })),
       ).annotate({ identifier: "GetBillingUsageRequest" });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/billing/usage/team_options/", code: 200 }),
@@ -1526,33 +1520,33 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetBillingUsageTeamOptionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          team_id_options: __S(39, __c4, 7),
+          team_id_options: __S(184, __c23, 0),
         }),
       ).annotate({
         identifier: "BillingTeamOptionsResponse",
       });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/", code: 200 })),
       ).annotate({ identifier: "ListBillingRequest" });
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
     case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.Array(__S(209, __c26, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           partner_name: S.String,
         }),
       ).annotate({ identifier: "BillingManagedByPartner" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           customer_id: S.optional(S.NullOr(S.String)),
@@ -1575,8 +1569,8 @@ function __c6(j: number): any {
           startup_program_label_previous: S.optional(S.NullOr(S.String)),
           stripe_portal_url: S.optional(S.String),
           external_billing_provider_invoices_url: S.optional(S.String),
-          products: S.optional(__S(48, __c6, 0)),
-          available_product_features: S.optional(__S(5, __c0, 5)),
+          products: S.optional(__S(210, __c26, 2)),
+          available_product_features: S.optional(__S(248, __c31, 0)),
           usage_summary: S.optional(S.Unknown),
           billing_period: S.optional(S.Unknown),
           custom_limits_usd: S.optional(S.Unknown),
@@ -1586,10 +1580,14 @@ function __c6(j: number): any {
           account_owner: S.optional(S.Unknown),
           customer_trust_scores: S.optional(S.Unknown),
           never_drop_data: S.optional(S.Boolean),
-          billing_managed_by_partner: S.NullOr(__S(49, __c6, 1)),
+          billing_managed_by_partner: S.NullOr(__S(211, __c26, 3)),
         }),
       ).annotate({ identifier: "BillingOverviewResponse" });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -1603,20 +1601,24 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBillingAlertsRequest" });
-    case 4:
-      return S.Array(__S(23, __c2, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(50, __c6, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(52, __c6, 4),
+          results: __S(217, __c27, 1),
         }),
       ).annotate({
         identifier: "PaginatedBillingAlertConfigurationListOutput",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -1633,24 +1635,24 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListBillingAlertsEventsRequest",
       });
-    case 7:
-      return S.Array(__S(25, __c3, 1));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(72, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(55, __c6, 7),
+          results: __S(225, __c28, 1),
         }),
       ).annotate({
         identifier: "PaginatedBillingAlertEventList",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -1667,7 +1669,7 @@ function __c7(j: number): any {
           evaluation_delay_hours: S.optional(S.Number),
           cooldown_hours: S.optional(S.Number),
           snoozed_until: S.optional(S.NullOr(S.String)),
-          destination_changes: S.optional(__S(19, __c2, 3)),
+          destination_changes: S.optional(__S(59, __c7, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1678,7 +1680,37 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateBillingAlertRequest",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          hog_function_ids: __S(248, __c31, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/billing/alerts/{id}/destinations/delete/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BillingAlertsDestinationsDeleteCreateRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -1695,7 +1727,7 @@ function __c7(j: number): any {
           evaluation_delay_hours: S.optional(S.Number),
           cooldown_hours: S.optional(S.Number),
           snoozed_until: S.optional(S.NullOr(S.String)),
-          destination_changes: S.optional(__S(19, __c2, 3)),
+          destination_changes: S.optional(__S(59, __c7, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1706,7 +1738,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateBillingAlertsPartialRequest",
       });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           plan: S.optional(S.String),
@@ -1717,7 +1753,98 @@ function __c7(j: number): any {
       });
   }
 }
-
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/organizations/{organization_id}/billing/alerts/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BillingAlertsDestroyRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          plan: S.String,
+          billing_limit: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/api/billing/deactivate/", code: 200 })),
+      ).annotate({
+        identifier: "BillingDeactivateCreateRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BillingDeactivateCreateResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/get_invoices/", code: 200 })),
+      ).annotate({
+        identifier: "BillingGetInvoicesRetrieveRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          after: S.optional(S.String.pipe(T.Query())),
+          breakdowns: S.optional(S.String.pipe(T.Query())),
+          end_date: S.optional(S.String.pipe(T.Query())),
+          interval: S.optional(S.String.pipe(T.Query())),
+          page_size: S.optional(S.Number.pipe(T.Query())),
+          start_date: S.optional(S.String.pipe(T.Query())),
+          team_ids: S.optional(S.String.pipe(T.Query())),
+          top_projects: S.optional(S.Number.pipe(T.Query())),
+          usage_types: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/billing/spend/export/", code: 200 })),
+      ).annotate({
+        identifier: "BillingSpendExportRetrieveRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          plan: S.String,
+          billing_limit: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/api/billing/startups/apply/", code: 200 })),
+      ).annotate({
+        identifier: "BillingStartupsApplyCreateRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          plan: S.String,
+          billing_limit: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/api/billing/trials/activate/", code: 200 })),
+      ).annotate({
+        identifier: "BillingTrialsActivateCreateRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

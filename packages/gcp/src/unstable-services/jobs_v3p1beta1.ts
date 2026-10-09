@@ -1164,8 +1164,8 @@ export const batchDeleteProjectsJobs: API.OperationMethod<
   BatchDeleteProjectsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BatchDeleteProjectsJobsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(385, __c12, 1) as any as S.Schema<BatchDeleteProjectsJobsRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1179,8 +1179,8 @@ export const completeProjects: API.OperationMethod<
   CompleteProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CompleteProjectsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CompleteQueryResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<CompleteProjectsRequest>,
+  output: __S(451, __c14, 3) as any as S.Schema<CompleteQueryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1199,8 +1199,8 @@ export const createProjectsClientEvents: API.OperationMethod<
   CreateProjectsClientEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateProjectsClientEventsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ClientEvent>,
+  input: __S(547, __c17, 3) as any as S.Schema<CreateProjectsClientEventsRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<ClientEvent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1219,8 +1219,8 @@ export const createProjectsCompanies: API.OperationMethod<
   CreateProjectsCompaniesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateProjectsCompaniesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Company>,
+  input: __S(609, __c19, 1) as any as S.Schema<CreateProjectsCompaniesRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<Company>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1234,8 +1234,8 @@ export const createProjectsJobs: API.OperationMethod<
   CreateProjectsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateProjectsJobsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Job>,
+  input: __S(705, __c22, 1) as any as S.Schema<CreateProjectsJobsRequest>,
+  output: __S(748, __c23, 12) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1254,8 +1254,8 @@ export const deleteProjectsCompanies: API.OperationMethod<
   DeleteProjectsCompaniesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteProjectsCompaniesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteProjectsCompaniesRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1269,8 +1269,8 @@ export const deleteProjectsJobs: API.OperationMethod<
   DeleteProjectsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteProjectsJobsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectsJobsRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1284,8 +1284,8 @@ export const getProjectsCompanies: API.OperationMethod<
   GetProjectsCompaniesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetProjectsCompaniesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Company>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetProjectsCompaniesRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<Company>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1299,8 +1299,8 @@ export const getProjectsJobs: API.OperationMethod<
   GetProjectsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetProjectsJobsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Job>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetProjectsJobsRequest>,
+  output: __S(748, __c23, 12) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1314,8 +1314,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<Operation>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetProjectsOperationsRequest>,
+  output: __S(100, __c3, 4) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1330,8 +1330,8 @@ export const listProjectsCompanies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCompaniesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListProjectsCompaniesRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListCompaniesResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListProjectsCompaniesRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<ListCompaniesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1347,8 +1347,8 @@ export const listProjectsJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListProjectsJobsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListJobsResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListProjectsJobsRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<ListJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1363,8 +1363,8 @@ export const patchProjectsCompanies: API.OperationMethod<
   PatchProjectsCompaniesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<PatchProjectsCompaniesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Company>,
+  input: __S(193, __c6, 1) as any as S.Schema<PatchProjectsCompaniesRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<Company>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1378,8 +1378,8 @@ export const patchProjectsJobs: API.OperationMethod<
   PatchProjectsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<PatchProjectsJobsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Job>,
+  input: __S(225, __c7, 1) as any as S.Schema<PatchProjectsJobsRequest>,
+  output: __S(748, __c23, 12) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1398,8 +1398,8 @@ export const searchForAlertProjectsJobs: API.OperationMethod<
   SearchForAlertProjectsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<SearchForAlertProjectsJobsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<SearchJobsResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<SearchForAlertProjectsJobsRequest>,
+  output: __S(326, __c10, 6) as any as S.Schema<SearchJobsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1413,8 +1413,8 @@ export const searchProjectsJobs: API.OperationMethod<
   SearchProjectsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<SearchProjectsJobsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<SearchJobsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<SearchProjectsJobsRequest>,
+  output: __S(326, __c10, 6) as any as S.Schema<SearchJobsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1424,351 +1424,6 @@ export const searchProjectsJobs: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BatchDeleteJobsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v3p1beta1/{+parent}/jobs:batchDelete",
-            baseUrl: "https://jobs.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteProjectsJobsRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.optional(S.String.pipe(T.Query())),
-          languageCodes: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          companyName: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v3p1beta1/{+name}:complete",
-            baseUrl: "https://jobs.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CompleteProjectsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          suggestion: S.optional(S.String),
-          type: S.optional(S.String),
-          imageUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CompletionResult" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResponseMetadata" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          completionResults: S.optional(__S(6, __c0, 6)),
-          metadata: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "CompleteQueryResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          jobs: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "JobEvent" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          eventId: S.optional(S.String),
-          parentEventId: S.optional(S.String),
-          jobEvent: S.optional(__S(9, __c1, 1)),
-          createTime: S.optional(S.String),
-          extraInfo: S.optional(__S(10, __c1, 2)),
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientEvent" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientEvent: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "CreateClientEventRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v3p1beta1/{+parent}/clientEvents",
-            baseUrl: "https://jobs.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsClientEventsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sortingCode: S.optional(S.String),
-          administrativeArea: S.optional(S.String),
-          locality: S.optional(S.String),
-          organization: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          recipients: S.optional(__S(3, __c0, 3)),
-          revision: S.optional(S.Number),
-          postalCode: S.optional(S.String),
-          sublocality: S.optional(S.String),
-          addressLines: S.optional(__S(3, __c0, 3)),
-          regionCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PostalAddress" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          latitude: S.optional(S.Number),
-          longitude: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LatLng" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          locationType: S.optional(S.String),
-          postalAddress: S.optional(__S(14, __c1, 6)),
-          latLng: S.optional(__S(15, __c1, 7)),
-          radiusInMiles: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          headquartersLocation: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "CompanyDerivedInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          keywordSearchableJobCustomAttributes: S.optional(__S(3, __c0, 3)),
-          websiteUri: S.optional(S.String),
-          careerSiteUri: S.optional(S.String),
-          suspended: S.optional(S.Boolean),
-          hiringAgency: S.optional(S.Boolean),
-          derivedInfo: S.optional(__S(17, __c2, 1)),
-          name: S.optional(S.String),
-          imageUri: S.optional(S.String),
-          headquartersAddress: S.optional(S.String),
-          eeoText: S.optional(S.String),
-          size: S.optional(S.String),
-          externalId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Company" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          company: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "CreateCompanyRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v3p1beta1/{+parent}/companies",
-            baseUrl: "https://jobs.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsCompaniesRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          emails: S.optional(__S(3, __c0, 3)),
-          instruction: S.optional(S.String),
-          uris: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ApplicationInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          stringValues: S.optional(__S(3, __c0, 3)),
-          longValues: S.optional(__S(3, __c0, 3)),
-          filterable: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CustomAttribute" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          disableStreetAddressResolution: S.optional(S.Boolean),
-          htmlSanitization: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProcessingOptions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nanos: S.optional(S.Number),
-          currencyCode: S.optional(S.String),
-          units: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Money" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          minCompensation: S.optional(__S(26, __c3, 2)),
-          maxCompensation: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "CompensationRange" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          amount: S.optional(__S(26, __c3, 2)),
-          unit: S.optional(S.String),
-          expectedUnitsPerYear: S.optional(S.Number),
-          range: S.optional(__S(27, __c3, 3)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CompensationEntry" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annualizedBaseCompensationRange: S.optional(__S(27, __c3, 3)),
-          entries: S.optional(__S(29, __c3, 5)),
-          annualizedTotalCompensationRange: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "CompensationInfo" });
-    case 7:
-      return S.Array(__S(16, __c2, 0));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          jobCategories: S.optional(__S(21, __c2, 5)),
-          locations: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "JobDerivedInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          postingRegion: S.optional(S.String),
-          name: S.optional(S.String),
-          postingPublishTime: S.optional(S.String),
-          jobBenefits: S.optional(__S(21, __c2, 5)),
-          qualifications: S.optional(S.String),
-          applicationInfo: S.optional(__S(22, __c2, 6)),
-          postingUpdateTime: S.optional(S.String),
-          customAttributes: S.optional(__S(24, __c3, 0)),
-          jobEndTime: S.optional(S.String),
-          description: S.optional(S.String),
-          requisitionId: S.optional(S.String),
-          processingOptions: S.optional(__S(25, __c3, 1)),
-          promotionValue: S.optional(S.Number),
-          responsibilities: S.optional(S.String),
-          employmentTypes: S.optional(__S(21, __c2, 5)),
-          degreeTypes: S.optional(__S(21, __c2, 5)),
-          companyName: S.optional(S.String),
-          compensationInfo: S.optional(__S(30, __c3, 6)),
-          addresses: S.optional(__S(3, __c0, 3)),
-          derivedInfo: S.optional(__S(32, __c4, 0)),
-          incentives: S.optional(S.String),
-          companyDisplayName: S.optional(S.String),
-          visibility: S.optional(S.String),
-          jobStartTime: S.optional(S.String),
-          department: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          postingCreateTime: S.optional(S.String),
-          jobLevel: S.optional(S.String),
-          postingExpireTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Job" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          job: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "CreateJobRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v3p1beta1/{+parent}/jobs",
-            baseUrl: "https://jobs.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsJobsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v3p1beta1/{+name}",
-            baseUrl: "https://jobs.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsCompaniesRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1782,7 +1437,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsJobsRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1796,7 +1455,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetProjectsCompaniesRequest",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1810,7 +1473,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "GetProjectsJobsRequest" });
   }
 }
-function __c5(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1829,11 +1492,11 @@ function __c5(j: number): any {
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.Array(__S(41, __c5, 1));
+      return S.Array(__S(97, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(42, __c5, 2)),
+          details: S.optional(__S(98, __c3, 2)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -1842,13 +1505,17 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          response: S.optional(__S(41, __c5, 1)),
+          response: S.optional(__S(97, __c3, 1)),
           done: S.optional(S.Boolean),
-          error: S.optional(__S(43, __c5, 3)),
-          metadata: S.optional(__S(41, __c5, 1)),
+          error: S.optional(__S(99, __c3, 3)),
+          metadata: S.optional(__S(97, __c3, 1)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1865,19 +1532,19 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProjectsCompaniesRequest",
       });
-    case 6:
-      return S.Array(__S(18, __c2, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(641, __c20, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          companies: S.optional(__S(46, __c5, 6)),
-          metadata: S.optional(__S(7, __c0, 7)),
+          companies: S.optional(__S(129, __c4, 1)),
+          metadata: S.optional(__S(480, __c15, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCompaniesResponse" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1896,27 +1563,31 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectsJobsRequest" });
     case 1:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(748, __c23, 12));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          jobs: S.optional(__S(49, __c6, 1)),
-          metadata: S.optional(__S(7, __c0, 7)),
+          jobs: S.optional(__S(161, __c5, 1)),
+          metadata: S.optional(__S(480, __c15, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListJobsResponse" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          company: S.optional(__S(18, __c2, 2)),
+          company: S.optional(__S(641, __c20, 1)),
         }),
       ).annotate({ identifier: "UpdateCompanyRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(51, __c6, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(192, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1927,18 +1598,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchProjectsCompaniesRequest",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          job: S.optional(__S(33, __c4, 1)),
+          job: S.optional(__S(748, __c23, 12)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateJobRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(53, __c6, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1947,85 +1622,6 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchProjectsJobsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          distanceInMiles: S.optional(S.Number),
-          address: S.optional(S.String),
-          telecommutePreference: S.optional(S.String),
-          latLng: S.optional(__S(15, __c1, 7)),
-          regionCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocationFilter" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimestampRange" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          units: S.optional(__S(21, __c2, 5)),
-          includeJobsWithUnspecifiedCompensationRange: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          range: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "CompensationFilter" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hours: S.optional(S.Number),
-          nanos: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TimeOfDay" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          travelDuration: S.optional(S.String),
-          allowImpreciseAddresses: S.optional(S.Boolean),
-          roadTraffic: S.optional(S.String),
-          commuteMethod: S.optional(S.String),
-          startCoordinates: S.optional(__S(15, __c1, 7)),
-          departureTime: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "CommuteFilter" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          locationFilters: S.optional(__S(56, __c7, 0)),
-          employmentTypes: S.optional(__S(21, __c2, 5)),
-          publishTimeRange: S.optional(__S(57, __c7, 1)),
-          companyDisplayNames: S.optional(__S(3, __c0, 3)),
-          query: S.optional(S.String),
-          compensationFilter: S.optional(__S(58, __c7, 2)),
-          disableSpellCheck: S.optional(S.Boolean),
-          customAttributeFilter: S.optional(S.String),
-          jobCategories: S.optional(__S(21, __c2, 5)),
-          companyNames: S.optional(__S(3, __c0, 3)),
-          excludedJobs: S.optional(__S(3, __c0, 3)),
-          queryLanguageCode: S.optional(S.String),
-          commuteFilter: S.optional(__S(60, __c7, 4)),
-          languageCodes: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "JobQuery" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          histogramQuery: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HistogramQuery" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
   }
 }
 function __c8(j: number): any {
@@ -2033,95 +1629,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          importanceLevel: S.optional(S.String),
-          rankingExpression: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomRankingInfo" });
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          bucketBounds: S.optional(__S(65, __c8, 1)),
-          requiresMinMax: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "NumericBucketingOption" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          stringValueHistogram: S.optional(S.Boolean),
-          key: S.optional(S.String),
-          longValueHistogramBucketingOption: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({
-        identifier: "CustomAttributeHistogramRequest",
-      });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bucketingOption: S.optional(__S(66, __c8, 2)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CompensationHistogramRequest",
-      });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customAttributeHistogramFacets: S.optional(__S(68, __c8, 4)),
-          compensationHistogramFacets: S.optional(__S(70, __c8, 6)),
-          simpleHistogramFacets: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "HistogramFacets" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          deviceType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeviceInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.String),
-          sessionId: S.optional(S.String),
-          deviceInfo: S.optional(__S(72, __c9, 0)),
-          userId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RequestMetadata" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          orderBy: S.optional(S.String),
-          searchMode: S.optional(S.String),
-          jobQuery: S.optional(__S(61, __c7, 5)),
-          histogramQueries: S.optional(__S(63, __c7, 7)),
-          enableBroadening: S.optional(S.Boolean),
-          pageSize: S.optional(S.Number),
-          diversificationLevel: S.optional(S.String),
-          customRankingInfo: S.optional(__S(64, __c8, 0)),
-          requirePreciseResultSize: S.optional(S.Boolean),
-          histogramFacets: S.optional(__S(71, __c8, 7)),
-          jobView: S.optional(S.String),
-          offset: S.optional(S.Number),
-          pageToken: S.optional(S.String),
-          disableKeywordMatch: S.optional(S.Boolean),
-          requestMetadata: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({ identifier: "SearchJobsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(307, __c9, 19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2132,87 +1641,245 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SearchForAlertProjectsJobsRequest",
       });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          distanceInMiles: S.optional(S.Number),
+          address: S.optional(S.String),
+          telecommutePreference: S.optional(S.String),
+          latLng: S.optional(__S(673, __c21, 1)),
+          regionCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocationFilter" });
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimestampRange" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          units: S.optional(__S(736, __c23, 0)),
+          includeJobsWithUnspecifiedCompensationRange: S.optional(S.Boolean),
+          type: S.optional(S.String),
+          range: S.optional(__S(742, __c23, 6)),
+        }),
+      ).annotate({ identifier: "CompensationFilter" });
     case 4:
       return S.suspend(() =>
         S.Struct({
+          hours: S.optional(S.Number),
+          nanos: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TimeOfDay" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          travelDuration: S.optional(S.String),
+          allowImpreciseAddresses: S.optional(S.Boolean),
+          roadTraffic: S.optional(S.String),
+          commuteMethod: S.optional(S.String),
+          startCoordinates: S.optional(__S(673, __c21, 1)),
+          departureTime: S.optional(__S(292, __c9, 4)),
+        }),
+      ).annotate({ identifier: "CommuteFilter" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          locationFilters: S.optional(__S(289, __c9, 1)),
+          employmentTypes: S.optional(__S(736, __c23, 0)),
+          publishTimeRange: S.optional(__S(290, __c9, 2)),
+          companyDisplayNames: S.optional(__S(512, __c16, 0)),
+          query: S.optional(S.String),
+          compensationFilter: S.optional(__S(291, __c9, 3)),
+          disableSpellCheck: S.optional(S.Boolean),
+          customAttributeFilter: S.optional(S.String),
+          jobCategories: S.optional(__S(736, __c23, 0)),
+          companyNames: S.optional(__S(512, __c16, 0)),
+          excludedJobs: S.optional(__S(512, __c16, 0)),
+          queryLanguageCode: S.optional(S.String),
+          commuteFilter: S.optional(__S(293, __c9, 5)),
+          languageCodes: S.optional(__S(512, __c16, 0)),
+        }),
+      ).annotate({ identifier: "JobQuery" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
           histogramQuery: S.optional(S.String),
-          histogram: S.optional(__S(10, __c1, 2)),
+        }),
+      ).annotate({ identifier: "HistogramQuery" });
+    case 8:
+      return S.Array(__S(295, __c9, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          importanceLevel: S.optional(S.String),
+          rankingExpression: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomRankingInfo" });
+    case 10:
+      return S.Array(S.Number);
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          bucketBounds: S.optional(__S(298, __c9, 10)),
+          requiresMinMax: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "NumericBucketingOption" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          stringValueHistogram: S.optional(S.Boolean),
+          key: S.optional(S.String),
+          longValueHistogramBucketingOption: S.optional(__S(299, __c9, 11)),
+        }),
+      ).annotate({
+        identifier: "CustomAttributeHistogramRequest",
+      });
+    case 13:
+      return S.Array(__S(300, __c9, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          bucketingOption: S.optional(__S(299, __c9, 11)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CompensationHistogramRequest",
+      });
+    case 15:
+      return S.Array(__S(302, __c9, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          customAttributeHistogramFacets: S.optional(__S(301, __c9, 13)),
+          compensationHistogramFacets: S.optional(__S(303, __c9, 15)),
+          simpleHistogramFacets: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({ identifier: "HistogramFacets" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          deviceType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeviceInfo" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.String),
+          sessionId: S.optional(S.String),
+          deviceInfo: S.optional(__S(305, __c9, 17)),
+          userId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RequestMetadata" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          orderBy: S.optional(S.String),
+          searchMode: S.optional(S.String),
+          jobQuery: S.optional(__S(294, __c9, 6)),
+          histogramQueries: S.optional(__S(296, __c9, 8)),
+          enableBroadening: S.optional(S.Boolean),
+          pageSize: S.optional(S.Number),
+          diversificationLevel: S.optional(S.String),
+          customRankingInfo: S.optional(__S(297, __c9, 9)),
+          requirePreciseResultSize: S.optional(S.Boolean),
+          histogramFacets: S.optional(__S(304, __c9, 16)),
+          jobView: S.optional(S.String),
+          offset: S.optional(S.Number),
+          pageToken: S.optional(S.String),
+          disableKeywordMatch: S.optional(S.Boolean),
+          requestMetadata: S.optional(__S(306, __c9, 18)),
+        }),
+      ).annotate({ identifier: "SearchJobsRequest" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          histogramQuery: S.optional(S.String),
+          histogram: S.optional(__S(576, __c18, 0)),
         }),
       ).annotate({ identifier: "HistogramQueryResult" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 21:
+      return S.Array(__S(308, __c9, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           to: S.optional(S.Number),
           from: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BucketRange" });
-    case 7:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          range: S.optional(__S(78, __c9, 6)),
+          range: S.optional(__S(310, __c9, 22)),
           count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BucketizedCount" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
+    case 24:
+      return S.Array(__S(311, __c9, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           minValue: S.optional(S.Number),
           maxValue: S.optional(S.Number),
-          counts: S.optional(__S(80, __c10, 0)),
+          counts: S.optional(__S(312, __c9, 24)),
         }),
       ).annotate({ identifier: "NumericBucketingResult" });
-    case 2:
+    case 26:
       return S.Record(S.String, S.Number);
-    case 3:
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          longValueHistogramResult: S.optional(__S(81, __c10, 1)),
+          longValueHistogramResult: S.optional(__S(313, __c9, 25)),
           key: S.optional(S.String),
-          stringValueHistogramResult: S.optional(__S(82, __c10, 2)),
+          stringValueHistogramResult: S.optional(__S(314, __c9, 26)),
         }),
       ).annotate({
         identifier: "CustomAttributeHistogramResult",
       });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 28:
+      return S.Array(__S(315, __c9, 27));
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(82, __c10, 2)),
+          values: S.optional(__S(314, __c9, 26)),
           searchType: S.optional(S.String),
         }),
       ).annotate({ identifier: "HistogramResult" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 30:
+      return S.Array(__S(317, __c9, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          result: S.optional(__S(81, __c10, 1)),
+          result: S.optional(__S(313, __c9, 25)),
         }),
       ).annotate({
         identifier: "CompensationHistogramResult",
       });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87, __c10, 7));
+      return S.Array(__S(319, __c9, 31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          customAttributeHistogramResults: S.optional(__S(84, __c10, 4)),
-          simpleHistogramResults: S.optional(__S(86, __c10, 6)),
-          compensationHistogramResults: S.optional(__S(88, __c11, 0)),
+          customAttributeHistogramResults: S.optional(__S(316, __c9, 28)),
+          simpleHistogramResults: S.optional(__S(318, __c9, 30)),
+          compensationHistogramResults: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({ identifier: "HistogramResults" });
     case 2:
@@ -2225,7 +1892,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          jobLocation: S.optional(__S(16, __c2, 0)),
+          jobLocation: S.optional(__S(674, __c21, 2)),
           travelDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommuteInfo" });
@@ -2235,32 +1902,36 @@ function __c11(j: number): any {
           searchTextSnippet: S.optional(S.String),
           jobSummary: S.optional(S.String),
           jobTitleSnippet: S.optional(S.String),
-          job: S.optional(__S(33, __c4, 1)),
-          commuteInfo: S.optional(__S(91, __c11, 3)),
+          job: S.optional(__S(748, __c23, 12)),
+          commuteInfo: S.optional(__S(323, __c10, 3)),
         }),
       ).annotate({ identifier: "MatchingJob" });
     case 5:
-      return S.Array(__S(92, __c11, 4));
+      return S.Array(__S(324, __c10, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          histogramQueryResults: S.optional(__S(77, __c9, 5)),
+          histogramQueryResults: S.optional(__S(309, __c9, 21)),
           nextPageToken: S.optional(S.String),
           broadenedQueryJobsCount: S.optional(S.Number),
           estimatedTotalSize: S.optional(S.Number),
           totalSize: S.optional(S.Number),
-          histogramResults: S.optional(__S(89, __c11, 1)),
-          metadata: S.optional(__S(7, __c0, 7)),
-          locationFilters: S.optional(__S(31, __c3, 7)),
-          spellCorrection: S.optional(__S(90, __c11, 2)),
-          matchingJobs: S.optional(__S(93, __c11, 5)),
+          histogramResults: S.optional(__S(321, __c10, 1)),
+          metadata: S.optional(__S(480, __c15, 0)),
+          locationFilters: S.optional(__S(746, __c23, 10)),
+          spellCorrection: S.optional(__S(322, __c10, 2)),
+          matchingJobs: S.optional(__S(325, __c10, 5)),
         }),
       ).annotate({ identifier: "SearchJobsResponse" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(307, __c9, 19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2273,7 +1944,387 @@ function __c11(j: number): any {
       });
   }
 }
-
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchDeleteJobsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v3p1beta1/{+parent}/jobs:batchDelete",
+            baseUrl: "https://jobs.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteProjectsJobsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.optional(S.String.pipe(T.Query())),
+          languageCodes: S.optional(__S(512, __c16, 0).pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          companyName: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v3p1beta1/{+name}:complete",
+            baseUrl: "https://jobs.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CompleteProjectsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          suggestion: S.optional(S.String),
+          type: S.optional(S.String),
+          imageUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CompletionResult" });
+    case 2:
+      return S.Array(__S(449, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          completionResults: S.optional(__S(450, __c14, 2)),
+          metadata: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({ identifier: "CompleteQueryResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResponseMetadata" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          jobs: S.optional(__S(512, __c16, 0)),
+        }),
+      ).annotate({ identifier: "JobEvent" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          eventId: S.optional(S.String),
+          parentEventId: S.optional(S.String),
+          jobEvent: S.optional(__S(544, __c17, 0)),
+          createTime: S.optional(S.String),
+          extraInfo: S.optional(__S(576, __c18, 0)),
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientEvent" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientEvent: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "CreateClientEventRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(546, __c17, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v3p1beta1/{+parent}/clientEvents",
+            baseUrl: "https://jobs.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsClientEventsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company: S.optional(__S(641, __c20, 1)),
+        }),
+      ).annotate({ identifier: "CreateCompanyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(608, __c19, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v3p1beta1/{+parent}/companies",
+            baseUrl: "https://jobs.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsCompaniesRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          headquartersLocation: S.optional(__S(674, __c21, 2)),
+        }),
+      ).annotate({ identifier: "CompanyDerivedInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          keywordSearchableJobCustomAttributes: S.optional(__S(512, __c16, 0)),
+          websiteUri: S.optional(S.String),
+          careerSiteUri: S.optional(S.String),
+          suspended: S.optional(S.Boolean),
+          hiringAgency: S.optional(S.Boolean),
+          derivedInfo: S.optional(__S(640, __c20, 0)),
+          name: S.optional(S.String),
+          imageUri: S.optional(S.String),
+          headquartersAddress: S.optional(S.String),
+          eeoText: S.optional(S.String),
+          size: S.optional(S.String),
+          externalId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Company" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sortingCode: S.optional(S.String),
+          administrativeArea: S.optional(S.String),
+          locality: S.optional(S.String),
+          organization: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          recipients: S.optional(__S(512, __c16, 0)),
+          revision: S.optional(S.Number),
+          postalCode: S.optional(S.String),
+          sublocality: S.optional(S.String),
+          addressLines: S.optional(__S(512, __c16, 0)),
+          regionCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PostalAddress" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          latitude: S.optional(S.Number),
+          longitude: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LatLng" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          locationType: S.optional(S.String),
+          postalAddress: S.optional(__S(672, __c21, 0)),
+          latLng: S.optional(__S(673, __c21, 1)),
+          radiusInMiles: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Location" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          job: S.optional(__S(748, __c23, 12)),
+        }),
+      ).annotate({ identifier: "CreateJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(704, __c22, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v3p1beta1/{+parent}/jobs",
+            baseUrl: "https://jobs.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsJobsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          emails: S.optional(__S(512, __c16, 0)),
+          instruction: S.optional(S.String),
+          uris: S.optional(__S(512, __c16, 0)),
+        }),
+      ).annotate({ identifier: "ApplicationInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          stringValues: S.optional(__S(512, __c16, 0)),
+          longValues: S.optional(__S(512, __c16, 0)),
+          filterable: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CustomAttribute" });
+    case 3:
+      return S.Record(S.String, __S(738, __c23, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          disableStreetAddressResolution: S.optional(S.Boolean),
+          htmlSanitization: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProcessingOptions" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nanos: S.optional(S.Number),
+          currencyCode: S.optional(S.String),
+          units: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Money" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          minCompensation: S.optional(__S(741, __c23, 5)),
+          maxCompensation: S.optional(__S(741, __c23, 5)),
+        }),
+      ).annotate({ identifier: "CompensationRange" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          amount: S.optional(__S(741, __c23, 5)),
+          unit: S.optional(S.String),
+          expectedUnitsPerYear: S.optional(S.Number),
+          range: S.optional(__S(742, __c23, 6)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CompensationEntry" });
+    case 8:
+      return S.Array(__S(743, __c23, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          annualizedBaseCompensationRange: S.optional(__S(742, __c23, 6)),
+          entries: S.optional(__S(744, __c23, 8)),
+          annualizedTotalCompensationRange: S.optional(__S(742, __c23, 6)),
+        }),
+      ).annotate({ identifier: "CompensationInfo" });
+    case 10:
+      return S.Array(__S(674, __c21, 2));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          jobCategories: S.optional(__S(736, __c23, 0)),
+          locations: S.optional(__S(746, __c23, 10)),
+        }),
+      ).annotate({ identifier: "JobDerivedInfo" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          postingRegion: S.optional(S.String),
+          name: S.optional(S.String),
+          postingPublishTime: S.optional(S.String),
+          jobBenefits: S.optional(__S(736, __c23, 0)),
+          qualifications: S.optional(S.String),
+          applicationInfo: S.optional(__S(737, __c23, 1)),
+          postingUpdateTime: S.optional(S.String),
+          customAttributes: S.optional(__S(739, __c23, 3)),
+          jobEndTime: S.optional(S.String),
+          description: S.optional(S.String),
+          requisitionId: S.optional(S.String),
+          processingOptions: S.optional(__S(740, __c23, 4)),
+          promotionValue: S.optional(S.Number),
+          responsibilities: S.optional(S.String),
+          employmentTypes: S.optional(__S(736, __c23, 0)),
+          degreeTypes: S.optional(__S(736, __c23, 0)),
+          companyName: S.optional(S.String),
+          compensationInfo: S.optional(__S(745, __c23, 9)),
+          addresses: S.optional(__S(512, __c16, 0)),
+          derivedInfo: S.optional(__S(747, __c23, 11)),
+          incentives: S.optional(S.String),
+          companyDisplayName: S.optional(S.String),
+          visibility: S.optional(S.String),
+          jobStartTime: S.optional(S.String),
+          department: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          postingCreateTime: S.optional(S.String),
+          jobLevel: S.optional(S.String),
+          postingExpireTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Job" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v3p1beta1/{+name}",
+            baseUrl: "https://jobs.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsCompaniesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

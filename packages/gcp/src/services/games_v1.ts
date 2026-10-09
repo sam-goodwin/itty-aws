@@ -1347,8 +1347,8 @@ export const batchRecordEventsGameStats: API.OperationMethod<
   BatchRecordEventsGameStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<BatchRecordEventsGameStatsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<BatchRecordEventsResponse>,
+  input: __S(629, __c39, 5) as any as S.Schema<BatchRecordEventsGameStatsRequest>,
+  output: __S(634, __c39, 10) as any as S.Schema<BatchRecordEventsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1362,8 +1362,8 @@ export const checkRevisions: API.OperationMethod<
   CheckRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CheckRevisionsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RevisionCheckResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<CheckRevisionsRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<RevisionCheckResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1377,8 +1377,8 @@ export const gamesPlayerTokensRecall: API.OperationMethod<
   GamesPlayerTokensRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GamesPlayerTokensRecallRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<RetrieveGamesPlayerTokensResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GamesPlayerTokensRecallRequest>,
+  output: __S(722, __c45, 2) as any as S.Schema<RetrieveGamesPlayerTokensResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1397,8 +1397,8 @@ export const generatePlayGroupingApiTokenAccesstokens: API.OperationMethod<
   GeneratePlayGroupingApiTokenAccesstokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GeneratePlayGroupingApiTokenAccesstokensRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GeneratePlayGroupingApiTokenResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<GeneratePlayGroupingApiTokenAccesstokensRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<GeneratePlayGroupingApiTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1417,8 +1417,12 @@ export const generateRecallPlayGroupingApiTokenAccesstokens: API.OperationMethod
   GenerateRecallPlayGroupingApiTokenAccesstokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GenerateRecallPlayGroupingApiTokenAccesstokensRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GenerateRecallPlayGroupingApiTokenResponse>,
+  input: __S(
+    816,
+    __c51,
+    0,
+  ) as any as S.Schema<GenerateRecallPlayGroupingApiTokenAccesstokensRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<GenerateRecallPlayGroupingApiTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1432,8 +1436,8 @@ export const getApplications: API.OperationMethod<
   GetApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetApplicationsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Application>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetApplicationsRequest>,
+  output: __S(841, __c52, 9) as any as S.Schema<Application>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1452,8 +1456,8 @@ export const getEndPointApplications: API.OperationMethod<
   GetEndPointApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetEndPointApplicationsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<EndPoint>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetEndPointApplicationsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EndPoint>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1467,8 +1471,8 @@ export const getLeaderboards: API.OperationMethod<
   GetLeaderboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetLeaderboardsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Leaderboard>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetLeaderboardsRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<Leaderboard>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1482,8 +1486,8 @@ export const getMetagameConfigMetagame: API.OperationMethod<
   GetMetagameConfigMetagameError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetMetagameConfigMetagameRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<MetagameConfig>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetMetagameConfigMetagameRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<MetagameConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1497,8 +1501,8 @@ export const getMultipleApplicationPlayerIdsPlayers: API.OperationMethod<
   GetMultipleApplicationPlayerIdsPlayersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetMultipleApplicationPlayerIdsPlayersRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetMultipleApplicationPlayerIdsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetMultipleApplicationPlayerIdsPlayersRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<GetMultipleApplicationPlayerIdsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1512,8 +1516,8 @@ export const getPlayers: API.OperationMethod<
   GetPlayersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetPlayersRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<Player>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetPlayersRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<Player>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1527,8 +1531,8 @@ export const getScopedPlayerIdsPlayers: API.OperationMethod<
   GetScopedPlayerIdsPlayersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetScopedPlayerIdsPlayersRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ScopedPlayerIds>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetScopedPlayerIdsPlayersRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<ScopedPlayerIds>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1543,8 +1547,8 @@ export const getScores: API.PaginatedOperationMethod<
   GcpOpContext,
   PlayerLeaderboardScore
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetScoresRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<PlayerLeaderboardScoreListResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetScoresRequest>,
+  output: __S(148, __c9, 4) as any as S.Schema<PlayerLeaderboardScoreListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1559,8 +1563,8 @@ export const getSnapshots: API.OperationMethod<
   GetSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetSnapshotsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Snapshot>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetSnapshotsRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<Snapshot>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1574,8 +1578,8 @@ export const getStats: API.OperationMethod<
   GetStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetStatsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<StatsResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetStatsRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<StatsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1589,8 +1593,8 @@ export const getTokensRecall: API.OperationMethod<
   GetTokensRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetTokensRecallRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<RetrievePlayerTokensResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetTokensRecallRequest>,
+  output: __S(210, __c13, 2) as any as S.Schema<RetrievePlayerTokensResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1604,8 +1608,8 @@ export const incrementAchievements: API.OperationMethod<
   IncrementAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<IncrementAchievementsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<AchievementIncrementResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<IncrementAchievementsRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<AchievementIncrementResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1619,8 +1623,8 @@ export const lastTokenFromAllDeveloperGamesRecall: API.OperationMethod<
   LastTokenFromAllDeveloperGamesRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<LastTokenFromAllDeveloperGamesRecallRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<RetrieveDeveloperGamesLastPlayerTokenResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<LastTokenFromAllDeveloperGamesRecallRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<RetrieveDeveloperGamesLastPlayerTokenResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1634,8 +1638,8 @@ export const linkPersonaRecall: API.OperationMethod<
   LinkPersonaRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<LinkPersonaRecallRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<LinkPersonaResponse>,
+  input: __S(273, __c17, 1) as any as S.Schema<LinkPersonaRecallRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<LinkPersonaResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1650,8 +1654,8 @@ export const listAchievementDefinitions: API.PaginatedOperationMethod<
   GcpOpContext,
   AchievementDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListAchievementDefinitionsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<AchievementDefinitionsListResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListAchievementDefinitionsRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<AchievementDefinitionsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1667,8 +1671,8 @@ export const listAchievements: API.PaginatedOperationMethod<
   GcpOpContext,
   PlayerAchievement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListAchievementsRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<PlayerAchievementListResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListAchievementsRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<PlayerAchievementListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1684,8 +1688,8 @@ export const listByPlayerEvents: API.PaginatedOperationMethod<
   GcpOpContext,
   PlayerEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListByPlayerEventsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<PlayerEventListResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListByPlayerEventsRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<PlayerEventListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1701,8 +1705,8 @@ export const listCategoriesByPlayerMetagame: API.PaginatedOperationMethod<
   GcpOpContext,
   Category
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListCategoriesByPlayerMetagameRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<CategoryListResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListCategoriesByPlayerMetagameRequest>,
+  output: __S(355, __c22, 3) as any as S.Schema<CategoryListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1718,8 +1722,8 @@ export const listDefinitionsEvents: API.PaginatedOperationMethod<
   GcpOpContext,
   EventDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListDefinitionsEventsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<EventDefinitionListResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListDefinitionsEventsRequest>,
+  output: __S(373, __c23, 5) as any as S.Schema<EventDefinitionListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1735,8 +1739,8 @@ export const listLeaderboards: API.PaginatedOperationMethod<
   GcpOpContext,
   Leaderboard
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListLeaderboardsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<LeaderboardListResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListLeaderboardsRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<LeaderboardListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1752,8 +1756,8 @@ export const listPlayers: API.PaginatedOperationMethod<
   GcpOpContext,
   Player
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListPlayersRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<PlayerListResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListPlayersRequest>,
+  output: __S(402, __c25, 2) as any as S.Schema<PlayerListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1769,8 +1773,8 @@ export const listScores: API.PaginatedOperationMethod<
   GcpOpContext,
   LeaderboardEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListScoresRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<LeaderboardScores>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListScoresRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<LeaderboardScores>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1790,8 @@ export const listSnapshots: API.PaginatedOperationMethod<
   GcpOpContext,
   Snapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListSnapshotsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<SnapshotListResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListSnapshotsRequest>,
+  output: __S(450, __c28, 2) as any as S.Schema<SnapshotListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1803,8 +1807,8 @@ export const listWindowScores: API.PaginatedOperationMethod<
   GcpOpContext,
   LeaderboardEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListWindowScoresRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<LeaderboardScores>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListWindowScoresRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<LeaderboardScores>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1819,8 +1823,8 @@ export const playedApplications: API.OperationMethod<
   PlayedApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<PlayedApplicationsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<PlayedApplicationsResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<PlayedApplicationsRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<PlayedApplicationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1834,8 +1838,8 @@ export const recordEvents: API.OperationMethod<
   RecordEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<RecordEventsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<EventUpdateResponse>,
+  input: __S(502, __c31, 6) as any as S.Schema<RecordEventsRequest>,
+  output: __S(507, __c31, 11) as any as S.Schema<EventUpdateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1849,8 +1853,8 @@ export const resetPersonaRecall: API.OperationMethod<
   ResetPersonaRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ResetPersonaRecallRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<ResetPersonaResponse>,
+  input: __S(513, __c32, 1) as any as S.Schema<ResetPersonaRecallRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<ResetPersonaResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1864,8 +1868,8 @@ export const revealAchievements: API.OperationMethod<
   RevealAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<RevealAchievementsRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<AchievementRevealResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<RevealAchievementsRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<AchievementRevealResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1884,8 +1888,8 @@ export const setStepsAtLeastAchievements: API.OperationMethod<
   SetStepsAtLeastAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<SetStepsAtLeastAchievementsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<AchievementSetStepsAtLeastResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<SetStepsAtLeastAchievementsRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<AchievementSetStepsAtLeastResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1899,8 +1903,8 @@ export const submitMultipleScores: API.OperationMethod<
   SubmitMultipleScoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<SubmitMultipleScoresRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<PlayerScoreListResponse>,
+  input: __S(579, __c36, 3) as any as S.Schema<SubmitMultipleScoresRequest>,
+  output: __S(581, __c36, 5) as any as S.Schema<PlayerScoreListResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1914,8 +1918,8 @@ export const submitScores: API.OperationMethod<
   SubmitScoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<SubmitScoresRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<PlayerScoreResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<SubmitScoresRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<PlayerScoreResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1929,8 +1933,8 @@ export const unlinkPersonaRecall: API.OperationMethod<
   UnlinkPersonaRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<UnlinkPersonaRecallRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<UnlinkPersonaResponse>,
+  input: __S(641, __c40, 1) as any as S.Schema<UnlinkPersonaRecallRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<UnlinkPersonaResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1944,8 +1948,8 @@ export const unlockAchievements: API.OperationMethod<
   UnlockAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<UnlockAchievementsRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<AchievementUnlockResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<UnlockAchievementsRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<AchievementUnlockResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1964,8 +1968,8 @@ export const updateMultipleAchievements: API.OperationMethod<
   UpdateMultipleAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<UpdateMultipleAchievementsRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<AchievementUpdateMultipleResponse>,
+  input: __S(677, __c42, 5) as any as S.Schema<UpdateMultipleAchievementsRequest>,
+  output: __S(680, __c42, 8) as any as S.Schema<AchievementUpdateMultipleResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1979,8 +1983,8 @@ export const verifyApplications: API.OperationMethod<
   VerifyApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<VerifyApplicationsRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<ApplicationVerifyResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<VerifyApplicationsRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<ApplicationVerifyResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1988,6 +1992,1154 @@ export const verifyApplications: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.optional(S.String.pipe(T.Query())),
+          endPointType: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/applications/getEndPoint",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEndPointApplicationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndPoint" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          language: S.optional(S.String.pipe(T.Query())),
+          leaderboardId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/leaderboards/{leaderboardId}",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetLeaderboardsRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          iconUrl: S.optional(S.String),
+          name: S.optional(S.String),
+          order: S.optional(S.String),
+          id: S.optional(S.String),
+          isIconUrlDefault: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Leaderboard" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/metagameConfig",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMetagameConfigMetagameRequest",
+      });
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          playerLevels: S.optional(__S(49, __c3, 1)),
+          currentVersion: S.optional(S.Number),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetagameConfig" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          maxExperiencePoints: S.optional(S.String),
+          level: S.optional(S.Number),
+          minExperiencePoints: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlayerLevel" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationIds: S.optional(__S(736, __c46, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/players/me/multipleApplicationPlayerIds",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMultipleApplicationPlayerIdsPlayersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          playerId: S.optional(S.String),
+          applicationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationPlayerId" });
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          playerIds: S.optional(__S(82, __c5, 2)),
+        }),
+      ).annotate({
+        identifier: "GetMultipleApplicationPlayerIdsResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          playerIdConsistencyToken: S.optional(S.String.pipe(T.Query())),
+          playerId: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/players/{playerId}",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetPlayersRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currentExperiencePoints: S.optional(S.String),
+          currentLevel: S.optional(__S(64, __c4, 0)),
+          nextLevel: S.optional(__S(64, __c4, 0)),
+          lastLevelUpTimestampMillis: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlayerExperienceInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          familyName: S.optional(S.String),
+          givenName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlayerName" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          profileVisible: S.optional(S.Boolean),
+          friendsListVisibility: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProfileSettings" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          experienceInfo: S.optional(__S(112, __c7, 0)),
+          gamePlayerId: S.optional(S.String),
+          name: S.optional(__S(113, __c7, 1)),
+          bannerUrlPortrait: S.optional(S.String),
+          kind: S.optional(S.String),
+          originalPlayerId: S.optional(S.String),
+          avatarImageUrl: S.optional(S.String),
+          bannerUrlLandscape: S.optional(S.String),
+          displayName: S.optional(S.String),
+          title: S.optional(S.String),
+          friendStatus: S.optional(S.String),
+          profileSettings: S.optional(__S(114, __c7, 2)),
+          playerId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Player" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/players/me/scopedIds",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetScopedPlayerIdsPlayersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          gamePlayerId: S.optional(S.String),
+          developerPlayerKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScopedPlayerIds" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          includeRankType: S.optional(S.String.pipe(T.Query())),
+          playerId: S.String.pipe(T.Label()),
+          leaderboardId: S.String.pipe(T.Label()),
+          timeSpan: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetScoresRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          formattedRank: S.optional(S.String),
+          formattedNumScores: S.optional(S.String),
+          rank: S.optional(S.String),
+          numScores: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LeaderboardScoreRank" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scoreTag: S.optional(S.String),
+          socialRank: S.optional(__S(145, __c9, 1)),
+          publicRank: S.optional(__S(145, __c9, 1)),
+          timeSpan: S.optional(S.String),
+          kind: S.optional(S.String),
+          leaderboard_id: S.optional(S.String),
+          writeTimestamp: S.optional(S.String),
+          scoreValue: S.optional(S.String),
+          scoreString: S.optional(S.String),
+          friendsRank: S.optional(__S(145, __c9, 1)),
+        }),
+      ).annotate({ identifier: "PlayerLeaderboardScore" });
+    case 3:
+      return S.Array(__S(146, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          player: S.optional(__S(115, __c7, 3)),
+          items: __S(147, __c9, 3),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PlayerLeaderboardScoreListResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          snapshotId: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/snapshots/{snapshotId}",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetSnapshotsRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          height: S.optional(S.Number),
+          width: S.optional(S.Number),
+          mime_type: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SnapshotImage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          driveId: S.optional(S.String),
+          durationMillis: S.optional(S.String),
+          lastModifiedMillis: S.optional(S.String),
+          title: S.optional(S.String),
+          uniqueName: S.optional(S.String),
+          coverImage: S.optional(__S(176, __c11, 0)),
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+          description: S.optional(S.String),
+          type: S.optional(S.String),
+          progressValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Snapshot" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/stats",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetStatsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          churn_probability: S.optional(S.Number),
+          num_sessions: S.optional(S.Number),
+          num_purchases: S.optional(S.Number),
+          days_since_last_played: S.optional(S.Number),
+          spend_percentile: S.optional(S.Number),
+          num_sessions_percentile: S.optional(S.Number),
+          spend_probability: S.optional(S.Number),
+          high_spender_probability: S.optional(S.Number),
+          total_spend_next_28_days: S.optional(S.Number),
+          kind: S.optional(S.String),
+          avg_session_length_minutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "StatsResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/recall/tokens/{sessionId}",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetTokensRecallRequest" });
+    case 1:
+      return S.Array(__S(752, __c47, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tokens: S.optional(__S(209, __c13, 1)),
+        }),
+      ).annotate({
+        identifier: "RetrievePlayerTokensResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stepsToIncrement: S.Number.pipe(T.Query()),
+          achievementId: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/achievements/{achievementId}/increment",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "IncrementAchievementsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currentSteps: S.optional(S.Number),
+          kind: S.optional(S.String),
+          newlyUnlocked: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AchievementIncrementResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/recall/developerGamesLastPlayerToken/{sessionId}",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "LastTokenFromAllDeveloperGamesRecallRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          gamePlayerToken: S.optional(__S(768, __c48, 0)),
+        }),
+      ).annotate({
+        identifier: "RetrieveDeveloperGamesLastPlayerTokenResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ttl: S.optional(S.String),
+          sessionId: S.optional(S.String),
+          conflictingLinksResolutionPolicy: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          token: S.optional(S.String),
+          cardinalityConstraint: S.optional(S.String),
+          persona: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkPersonaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(272, __c17, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/recall:linkPersona",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "LinkPersonaRecallRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkPersonaResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/achievements",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAchievementDefinitionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          unlockedIconUrl: S.optional(S.String),
+          formattedTotalSteps: S.optional(S.String),
+          initialState: S.optional(S.String),
+          id: S.optional(S.String),
+          achievementType: S.optional(S.String),
+          isRevealedIconUrlDefault: S.optional(S.Boolean),
+          revealedIconUrl: S.optional(S.String),
+          experiencePoints: S.optional(S.String),
+          description: S.optional(S.String),
+          achievementLifecycleState: S.optional(S.String),
+          kind: S.optional(S.String),
+          isUnlockedIconUrlDefault: S.optional(S.Boolean),
+          totalSteps: S.optional(S.Number),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AchievementDefinition" });
+    case 2:
+      return S.Array(__S(289, __c18, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(290, __c18, 2),
+          nextPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AchievementDefinitionsListResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          playerId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/players/{playerId}/achievements",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListAchievementsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          experiencePoints: S.optional(S.String),
+          lastUpdatedTimestamp: S.optional(S.String),
+          formattedCurrentStepsString: S.optional(S.String),
+          achievementState: S.optional(S.String),
+          currentSteps: S.optional(S.Number),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlayerAchievement" });
+    case 2:
+      return S.Array(__S(305, __c19, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          items: __S(306, __c19, 2),
+        }),
+      ).annotate({
+        identifier: "PlayerAchievementListResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          language: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/events",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListByPlayerEventsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          items: __S(337, __c21, 1),
+        }),
+      ).annotate({ identifier: "PlayerEventListResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          numEvents: S.optional(S.String),
+          kind: S.optional(S.String),
+          definitionId: S.optional(S.String),
+          playerId: S.optional(S.String),
+          formattedNumEvents: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlayerEvent" });
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection: S.String.pipe(T.Label()),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          playerId: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/players/{playerId}/categories/{collection}",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCategoriesByPlayerMetagameRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          experiencePoints: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Category" });
+    case 2:
+      return S.Array(__S(353, __c22, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          items: __S(354, __c22, 2),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CategoryListResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/eventDefinitions",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDefinitionsEventsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          childId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventChild" });
+    case 2:
+      return S.Array(__S(369, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          imageUrl: S.optional(S.String),
+          childEvents: S.optional(__S(370, __c23, 2)),
+          description: S.optional(S.String),
+          id: S.optional(S.String),
+          kind: S.optional(S.String),
+          isDefaultImageUrl: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          visibility: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventDefinition" });
+    case 4:
+      return S.Array(__S(371, __c23, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(372, __c23, 4),
+          nextPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EventDefinitionListResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/leaderboards",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListLeaderboardsRequest" });
+    case 1:
+      return S.Array(__S(32, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          items: __S(385, __c24, 1),
+        }),
+      ).annotate({ identifier: "LeaderboardListResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          collection: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/players/me/players/{collection}",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListPlayersRequest" });
+    case 1:
+      return S.Array(__S(115, __c7, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          items: __S(401, __c25, 1),
+        }),
+      ).annotate({ identifier: "PlayerListResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection: S.String.pipe(T.Label()),
+          leaderboardId: S.String.pipe(T.Label()),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          timeSpan: S.String.pipe(T.Query()),
+          language: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/leaderboards/{leaderboardId}/scores/{collection}",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListScoresRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          player: S.optional(__S(115, __c7, 3)),
+          scoreValue: S.optional(S.String),
+          formattedScoreRank: S.optional(S.String),
+          scoreTag: S.optional(S.String),
+          writeTimestampMillis: S.optional(S.String),
+          scoreRank: S.optional(S.String),
+          kind: S.optional(S.String),
+          formattedScore: S.optional(S.String),
+          timeSpan: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LeaderboardEntry" });
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          prevPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          numScores: S.optional(S.String),
+          items: __S(433, __c27, 1),
+          playerScore: S.optional(__S(432, __c27, 0)),
+        }),
+      ).annotate({ identifier: "LeaderboardScores" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          playerId: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/players/{playerId}/snapshots",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListSnapshotsRequest" });
+    case 1:
+      return S.Array(__S(177, __c11, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(449, __c28, 1),
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SnapshotListResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resultsAbove: S.optional(S.Number.pipe(T.Query())),
+          timeSpan: S.String.pipe(T.Query()),
+          leaderboardId: S.String.pipe(T.Label()),
+          collection: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+          returnTopIfAbsent: S.optional(S.Boolean.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/leaderboards/{leaderboardId}/window/{collection}",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListWindowScoresRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/applications/played",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PlayedApplicationsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PlayedApplicationsResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          definitionId: S.optional(S.String),
+          kind: S.optional(S.String),
+          updateCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventUpdateRequest" });
+    case 1:
+      return S.Array(__S(496, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          periodEndMillis: S.optional(S.String),
+          periodStartMillis: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventPeriodRange" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          updates: S.optional(__S(497, __c31, 1)),
+          timePeriod: S.optional(__S(498, __c31, 2)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventPeriodUpdate" });
+    case 4:
+      return S.Array(__S(499, __c31, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          timePeriods: S.optional(__S(500, __c31, 4)),
+          requestId: S.optional(S.String),
+          kind: S.optional(S.String),
+          currentTimeMillis: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventRecordRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          language: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(501, __c31, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/events",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "RecordEventsRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          failureCause: S.optional(S.String),
+          kind: S.optional(S.String),
+          range: S.optional(__S(498, __c31, 2)),
+        }),
+      ).annotate({ identifier: "EventBatchRecordFailure" });
+    case 8:
+      return S.Array(__S(503, __c31, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          eventId: S.optional(S.String),
+          failureCause: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventRecordFailure" });
+    case 10:
+      return S.Array(__S(505, __c31, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          batchFailures: S.optional(__S(504, __c31, 8)),
+          playerEvents: S.optional(__S(337, __c21, 1)),
+          eventFailures: S.optional(__S(506, __c31, 10)),
+        }),
+      ).annotate({ identifier: "EventUpdateResponse" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          persona: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResetPersonaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(512, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/recall:resetPersona",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ResetPersonaRecallRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          unlinked: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ResetPersonaResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          achievementId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/achievements/{achievementId}/reveal",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RevealAchievementsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          currentState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AchievementRevealResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          steps: S.Number.pipe(T.Query()),
+          achievementId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/achievements/{achievementId}/setStepsAtLeast",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetStepsAtLeastAchievementsRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          signature: S.optional(S.String),
+          leaderboardId: S.optional(S.String),
+          scoreTag: S.optional(S.String),
+          score: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScoreSubmission" });
+    case 1:
+      return S.Array(__S(576, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scores: S.optional(__S(577, __c36, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PlayerScoreSubmissionList",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          language: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(578, __c36, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/leaderboards/scores",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SubmitMultipleScoresRequest",
+      });
+    case 4:
+      return S.Array(__S(594, __c37, 2));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          submittedScores: S.optional(__S(580, __c36, 4)),
+        }),
+      ).annotate({ identifier: "PlayerScoreListResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scoreTag: S.optional(S.String),
+          score: S.optional(S.String),
+          formattedScore: S.optional(S.String),
+          kind: S.optional(S.String),
+          timeSpan: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlayerScore" });
+    case 1:
+      return S.Array(__S(592, __c37, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unbeatenScores: S.optional(__S(593, __c37, 1)),
+          kind: S.optional(S.String),
+          leaderboardId: S.optional(S.String),
+          beatenScoreTimeSpans: S.optional(__S(848, __c53, 0)),
+          formattedScore: S.optional(S.String),
+          scoreTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlayerScoreResponse" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          score: S.String.pipe(T.Query()),
+          leaderboardId: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+          scoreTag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/leaderboards/{leaderboardId}/scores",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "SubmitScoresRequest" });
+  }
+}
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2000,24 +3152,24 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PropertyValue" });
     case 1:
-      return S.Record(S.String, __S(0, __c0, 0));
+      return S.Record(S.String, __S(624, __c39, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
           eventName: S.optional(S.String),
           eventTime: S.optional(S.String),
-          eventProperties: S.optional(__S(1, __c0, 1)),
+          eventProperties: S.optional(__S(625, __c39, 1)),
         }),
       ).annotate({ identifier: "PlayerGameEvent" });
     case 3:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(626, __c39, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           salt: S.optional(S.String),
           requestTime: S.optional(S.String),
-          events: S.optional(__S(3, __c0, 3)),
+          events: S.optional(__S(627, __c39, 3)),
           droidGuardBlob: S.optional(S.String),
           packageName: S.optional(S.String),
         }),
@@ -2026,7 +3178,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           playerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(628, __c39, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2040,30 +3192,193 @@ function __c0(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(630, __c39, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(7, __c0, 7)),
+          details: S.optional(__S(631, __c39, 7)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
-    case 1:
-      return S.Record(S.String, __S(8, __c1, 0));
-    case 2:
+    case 9:
+      return S.Record(S.String, __S(632, __c39, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          failedRequests: S.optional(__S(9, __c1, 1)),
+          failedRequests: S.optional(__S(633, __c39, 9)),
         }),
       ).annotate({
         identifier: "BatchRecordEventsResponse",
       });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+          persona: S.optional(S.String),
+          sessionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UnlinkPersonaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(640, __c40, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/recall:unlinkPersona",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UnlinkPersonaRecallRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          achievementId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/achievements/{achievementId}/unlock",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UnlockAchievementsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          newlyUnlocked: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AchievementUnlockResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          steps: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GamesAchievementSetStepsAtLeast",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+          steps: S.optional(S.Number),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GamesAchievementIncrement",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          setStepsAtLeastPayload: S.optional(__S(672, __c42, 0)),
+          achievementId: S.optional(S.String),
+          kind: S.optional(S.String),
+          updateType: S.optional(S.String),
+          incrementPayload: S.optional(__S(673, __c42, 1)),
+        }),
+      ).annotate({ identifier: "AchievementUpdateRequest" });
     case 3:
+      return S.Array(__S(674, __c42, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          updates: S.optional(__S(675, __c42, 3)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AchievementUpdateMultipleRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(676, __c42, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1/achievements/updateMultiple",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateMultipleAchievementsRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          currentSteps: S.optional(S.Number),
+          achievementId: S.optional(S.String),
+          kind: S.optional(S.String),
+          newlyUnlocked: S.optional(S.Boolean),
+          updateOccurred: S.optional(S.Boolean),
+          currentState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AchievementUpdateResponse",
+      });
+    case 7:
+      return S.Array(__S(678, __c42, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          updatedAchievements: S.optional(__S(679, __c42, 7)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AchievementUpdateMultipleResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1/applications/{applicationId}/verify",
+            baseUrl: "https://games.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "VerifyApplicationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          player_id: S.optional(S.String),
+          alternate_player_id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationVerifyResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientRevision: S.String.pipe(T.Query()),
@@ -2075,7 +3390,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CheckRevisionsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -2083,12 +3398,14 @@ function __c1(j: number): any {
           revisionStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "RevisionCheckResponse" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          applicationIds: S.optional(__S(13, __c1, 5).pipe(T.Query())),
+          applicationIds: S.optional(__S(736, __c46, 0).pipe(T.Query())),
           sessionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -2100,7 +3417,27 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GamesPlayerTokensRecallRequest",
       });
-    case 7:
+    case 1:
+      return S.Array(__S(768, __c48, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          gamePlayerTokens: S.optional(__S(721, __c45, 1)),
+        }),
+      ).annotate({
+        identifier: "RetrieveGamesPlayerTokensResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.String),
@@ -2110,26 +3447,20 @@ function __c1(j: number): any {
       ).annotate({ identifier: "RecallToken" });
   }
 }
-function __c2(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          recallToken: S.optional(__S(15, __c1, 7)),
+          recallToken: S.optional(__S(752, __c47, 0)),
           applicationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GamePlayerToken" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          gamePlayerTokens: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "RetrieveGamesPlayerTokensResponse",
-      });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           persona: S.optional(S.String.pipe(T.Query())),
@@ -2144,21 +3475,29 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GeneratePlayGroupingApiTokenAccesstokensRequest",
       });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tokenValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlayGroupingApiToken" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          token: S.optional(__S(20, __c2, 4)),
+          token: S.optional(__S(800, __c50, 0)),
         }),
       ).annotate({
         identifier: "GeneratePlayGroupingApiTokenResponse",
       });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           recallSessionId: S.optional(S.String.pipe(T.Query())),
@@ -2174,7 +3513,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GenerateRecallPlayGroupingApiTokenAccesstokensRequest",
       });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.Label()),
@@ -2188,11 +3531,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetApplicationsRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           primary: S.optional(S.String),
@@ -2200,8 +3539,6 @@ function __c3(j: number): any {
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationCategory" });
-    case 1:
-      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2237,16 +3574,16 @@ function __c3(j: number): any {
           platformType: S.optional(S.String),
           acquisitionUri: S.optional(S.String),
           kind: S.optional(S.String),
-          androidInstance: S.optional(__S(26, __c3, 2)),
+          androidInstance: S.optional(__S(834, __c52, 2)),
           turnBasedPlay: S.optional(S.Boolean),
           name: S.optional(S.String),
-          webInstance: S.optional(__S(27, __c3, 3)),
-          iosInstance: S.optional(__S(28, __c3, 4)),
+          webInstance: S.optional(__S(835, __c52, 3)),
+          iosInstance: S.optional(__S(836, __c52, 4)),
           realtimePlay: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Instance" });
     case 6:
-      return S.Array(__S(29, __c3, 5));
+      return S.Array(__S(837, __c52, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2257,1232 +3594,34 @@ function __c3(j: number): any {
           width: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ImageAsset" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(839, __c52, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(__S(24, __c3, 0)),
+          category: S.optional(__S(833, __c52, 1)),
           description: S.optional(S.String),
-          enabledFeatures: S.optional(__S(25, __c3, 1)),
+          enabledFeatures: S.optional(__S(848, __c53, 0)),
           leaderboard_count: S.optional(S.Number),
           themeColor: S.optional(S.String),
           id: S.optional(S.String),
           achievement_count: S.optional(S.Number),
           name: S.optional(S.String),
-          instances: S.optional(__S(30, __c3, 6)),
+          instances: S.optional(__S(838, __c52, 6)),
           kind: S.optional(S.String),
           author: S.optional(S.String),
-          assets: S.optional(__S(32, __c4, 0)),
+          assets: S.optional(__S(840, __c52, 8)),
           lastUpdatedTimestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "Application" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.optional(S.String.pipe(T.Query())),
-          endPointType: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/applications/getEndPoint",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEndPointApplicationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EndPoint" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          language: S.optional(S.String.pipe(T.Query())),
-          leaderboardId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/leaderboards/{leaderboardId}",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetLeaderboardsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          iconUrl: S.optional(S.String),
-          name: S.optional(S.String),
-          order: S.optional(S.String),
-          id: S.optional(S.String),
-          isIconUrlDefault: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Leaderboard" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/metagameConfig",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMetagameConfigMetagameRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          maxExperiencePoints: S.optional(S.String),
-          level: S.optional(S.Number),
-          minExperiencePoints: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlayerLevel" });
   }
 }
-function __c5(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          playerLevels: S.optional(__S(40, __c5, 0)),
-          currentVersion: S.optional(S.Number),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetagameConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationIds: S.optional(__S(13, __c1, 5).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/players/me/multipleApplicationPlayerIds",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMultipleApplicationPlayerIdsPlayersRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          playerId: S.optional(S.String),
-          applicationId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationPlayerId" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          playerIds: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "GetMultipleApplicationPlayerIdsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          playerIdConsistencyToken: S.optional(S.String.pipe(T.Query())),
-          playerId: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/players/{playerId}",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetPlayersRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          currentExperiencePoints: S.optional(S.String),
-          currentLevel: S.optional(__S(39, __c4, 7)),
-          nextLevel: S.optional(__S(39, __c4, 7)),
-          lastLevelUpTimestampMillis: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlayerExperienceInfo" });
+      return S.Array(S.String);
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          familyName: S.optional(S.String),
-          givenName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlayerName" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          profileVisible: S.optional(S.Boolean),
-          friendsListVisibility: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProfileSettings" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          experienceInfo: S.optional(__S(47, __c5, 7)),
-          gamePlayerId: S.optional(S.String),
-          name: S.optional(__S(48, __c6, 0)),
-          bannerUrlPortrait: S.optional(S.String),
-          kind: S.optional(S.String),
-          originalPlayerId: S.optional(S.String),
-          avatarImageUrl: S.optional(S.String),
-          bannerUrlLandscape: S.optional(S.String),
-          displayName: S.optional(S.String),
-          title: S.optional(S.String),
-          friendStatus: S.optional(S.String),
-          profileSettings: S.optional(__S(49, __c6, 1)),
-          playerId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Player" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/players/me/scopedIds",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetScopedPlayerIdsPlayersRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          gamePlayerId: S.optional(S.String),
-          developerPlayerKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScopedPlayerIds" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          includeRankType: S.optional(S.String.pipe(T.Query())),
-          playerId: S.String.pipe(T.Label()),
-          leaderboardId: S.String.pipe(T.Label()),
-          timeSpan: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          language: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetScoresRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          formattedRank: S.optional(S.String),
-          formattedNumScores: S.optional(S.String),
-          rank: S.optional(S.String),
-          numScores: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LeaderboardScoreRank" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scoreTag: S.optional(S.String),
-          socialRank: S.optional(__S(54, __c6, 6)),
-          publicRank: S.optional(__S(54, __c6, 6)),
-          timeSpan: S.optional(S.String),
-          kind: S.optional(S.String),
-          leaderboard_id: S.optional(S.String),
-          writeTimestamp: S.optional(S.String),
-          scoreValue: S.optional(S.String),
-          scoreString: S.optional(S.String),
-          friendsRank: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "PlayerLeaderboardScore" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          player: S.optional(__S(50, __c6, 2)),
-          items: __S(56, __c7, 0),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PlayerLeaderboardScoreListResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          snapshotId: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/snapshots/{snapshotId}",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetSnapshotsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          height: S.optional(S.Number),
-          width: S.optional(S.Number),
-          mime_type: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SnapshotImage" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          driveId: S.optional(S.String),
-          durationMillis: S.optional(S.String),
-          lastModifiedMillis: S.optional(S.String),
-          title: S.optional(S.String),
-          uniqueName: S.optional(S.String),
-          coverImage: S.optional(__S(59, __c7, 3)),
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-          description: S.optional(S.String),
-          type: S.optional(S.String),
-          progressValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Snapshot" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/stats",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetStatsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          churn_probability: S.optional(S.Number),
-          num_sessions: S.optional(S.Number),
-          num_purchases: S.optional(S.Number),
-          days_since_last_played: S.optional(S.Number),
-          spend_percentile: S.optional(S.Number),
-          num_sessions_percentile: S.optional(S.Number),
-          spend_probability: S.optional(S.Number),
-          high_spender_probability: S.optional(S.Number),
-          total_spend_next_28_days: S.optional(S.Number),
-          kind: S.optional(S.String),
-          avg_session_length_minutes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "StatsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/recall/tokens/{sessionId}",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetTokensRecallRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tokens: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "RetrievePlayerTokensResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          stepsToIncrement: S.Number.pipe(T.Query()),
-          achievementId: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/achievements/{achievementId}/increment",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "IncrementAchievementsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          currentSteps: S.optional(S.Number),
-          kind: S.optional(S.String),
-          newlyUnlocked: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AchievementIncrementResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/recall/developerGamesLastPlayerToken/{sessionId}",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "LastTokenFromAllDeveloperGamesRecallRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          gamePlayerToken: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "RetrieveDeveloperGamesLastPlayerTokenResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ttl: S.optional(S.String),
-          sessionId: S.optional(S.String),
-          conflictingLinksResolutionPolicy: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          token: S.optional(S.String),
-          cardinalityConstraint: S.optional(S.String),
-          persona: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkPersonaRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/recall:linkPersona",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "LinkPersonaRecallRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkPersonaResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          language: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/achievements",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAchievementDefinitionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          unlockedIconUrl: S.optional(S.String),
-          formattedTotalSteps: S.optional(S.String),
-          initialState: S.optional(S.String),
-          id: S.optional(S.String),
-          achievementType: S.optional(S.String),
-          isRevealedIconUrlDefault: S.optional(S.Boolean),
-          revealedIconUrl: S.optional(S.String),
-          experiencePoints: S.optional(S.String),
-          description: S.optional(S.String),
-          achievementLifecycleState: S.optional(S.String),
-          kind: S.optional(S.String),
-          isUnlockedIconUrlDefault: S.optional(S.Boolean),
-          totalSteps: S.optional(S.Number),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AchievementDefinition" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(75, __c9, 3),
-          nextPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AchievementDefinitionsListResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          language: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          playerId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/players/{playerId}/achievements",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListAchievementsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          experiencePoints: S.optional(S.String),
-          lastUpdatedTimestamp: S.optional(S.String),
-          formattedCurrentStepsString: S.optional(S.String),
-          achievementState: S.optional(S.String),
-          currentSteps: S.optional(S.Number),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlayerAchievement" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          items: __S(79, __c9, 7),
-        }),
-      ).annotate({
-        identifier: "PlayerAchievementListResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          language: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/events",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListByPlayerEventsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          numEvents: S.optional(S.String),
-          kind: S.optional(S.String),
-          definitionId: S.optional(S.String),
-          playerId: S.optional(S.String),
-          formattedNumEvents: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlayerEvent" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          items: __S(83, __c10, 3),
-        }),
-      ).annotate({ identifier: "PlayerEventListResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          collection: S.String.pipe(T.Label()),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          playerId: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/players/{playerId}/categories/{collection}",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCategoriesByPlayerMetagameRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          experiencePoints: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Category" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          items: __S(87, __c10, 7),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CategoryListResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          language: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/eventDefinitions",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDefinitionsEventsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          childId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventChild" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          imageUrl: S.optional(S.String),
-          childEvents: S.optional(__S(91, __c11, 3)),
-          description: S.optional(S.String),
-          id: S.optional(S.String),
-          kind: S.optional(S.String),
-          isDefaultImageUrl: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          visibility: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventDefinition" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(93, __c11, 5),
-          nextPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EventDefinitionListResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          language: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/leaderboards",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListLeaderboardsRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(37, __c4, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          items: __S(96, __c12, 0),
-        }),
-      ).annotate({ identifier: "LeaderboardListResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          collection: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/players/me/players/{collection}",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListPlayersRequest" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          items: __S(99, __c12, 3),
-        }),
-      ).annotate({ identifier: "PlayerListResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          collection: S.String.pipe(T.Label()),
-          leaderboardId: S.String.pipe(T.Label()),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          timeSpan: S.String.pipe(T.Query()),
-          language: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/leaderboards/{leaderboardId}/scores/{collection}",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListScoresRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          player: S.optional(__S(50, __c6, 2)),
-          scoreValue: S.optional(S.String),
-          formattedScoreRank: S.optional(S.String),
-          scoreTag: S.optional(S.String),
-          writeTimestampMillis: S.optional(S.String),
-          scoreRank: S.optional(S.String),
-          kind: S.optional(S.String),
-          formattedScore: S.optional(S.String),
-          timeSpan: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LeaderboardEntry" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          prevPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          numScores: S.optional(S.String),
-          items: __S(103, __c12, 7),
-          playerScore: S.optional(__S(102, __c12, 6)),
-        }),
-      ).annotate({ identifier: "LeaderboardScores" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          playerId: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/players/{playerId}/snapshots",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListSnapshotsRequest" });
-    case 2:
-      return S.Array(__S(60, __c7, 4));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(106, __c13, 2),
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SnapshotListResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resultsAbove: S.optional(S.Number.pipe(T.Query())),
-          timeSpan: S.String.pipe(T.Query()),
-          leaderboardId: S.String.pipe(T.Label()),
-          collection: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-          returnTopIfAbsent: S.optional(S.Boolean.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/leaderboards/{leaderboardId}/window/{collection}",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListWindowScoresRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/applications/played",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PlayedApplicationsRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PlayedApplicationsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          definitionId: S.optional(S.String),
-          kind: S.optional(S.String),
-          updateCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventUpdateRequest" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          periodEndMillis: S.optional(S.String),
-          periodStartMillis: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventPeriodRange" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          updates: S.optional(__S(112, __c14, 0)),
-          timePeriod: S.optional(__S(113, __c14, 1)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventPeriodUpdate" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          timePeriods: S.optional(__S(115, __c14, 3)),
-          requestId: S.optional(S.String),
-          kind: S.optional(S.String),
-          currentTimeMillis: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventRecordRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          language: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(116, __c14, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/events",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "RecordEventsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          failureCause: S.optional(S.String),
-          kind: S.optional(S.String),
-          range: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({ identifier: "EventBatchRecordFailure" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          eventId: S.optional(S.String),
-          failureCause: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventRecordFailure" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          batchFailures: S.optional(__S(119, __c14, 7)),
-          playerEvents: S.optional(__S(83, __c10, 3)),
-          eventFailures: S.optional(__S(121, __c15, 1)),
-        }),
-      ).annotate({ identifier: "EventUpdateResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          persona: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResetPersonaRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(123, __c15, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/recall:resetPersona",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ResetPersonaRecallRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          unlinked: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ResetPersonaResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          achievementId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/achievements/{achievementId}/reveal",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RevealAchievementsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          currentState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AchievementRevealResponse",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          steps: S.Number.pipe(T.Query()),
-          achievementId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/achievements/{achievementId}/setStepsAtLeast",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetStepsAtLeastAchievementsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          signature: S.optional(S.String),
-          leaderboardId: S.optional(S.String),
-          scoreTag: S.optional(S.String),
-          score: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScoreSubmission" });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          scores: S.optional(__S(130, __c16, 2)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PlayerScoreSubmissionList",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          language: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(131, __c16, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/leaderboards/scores",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SubmitMultipleScoresRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scoreTag: S.optional(S.String),
-          score: S.optional(S.String),
-          formattedScore: S.optional(S.String),
-          kind: S.optional(S.String),
-          timeSpan: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlayerScore" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          unbeatenScores: S.optional(__S(134, __c16, 6)),
-          kind: S.optional(S.String),
-          leaderboardId: S.optional(S.String),
-          beatenScoreTimeSpans: S.optional(__S(25, __c3, 1)),
-          formattedScore: S.optional(S.String),
-          scoreTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlayerScoreResponse" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          submittedScores: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({ identifier: "PlayerScoreListResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          score: S.String.pipe(T.Query()),
-          leaderboardId: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-          scoreTag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/leaderboards/{leaderboardId}/scores",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "SubmitScoresRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-          persona: S.optional(S.String),
-          sessionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UnlinkPersonaRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(139, __c17, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/recall:unlinkPersona",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UnlinkPersonaRecallRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          achievementId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/achievements/{achievementId}/unlock",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UnlockAchievementsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          newlyUnlocked: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AchievementUnlockResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          steps: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GamesAchievementSetStepsAtLeast",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          steps: S.optional(S.Number),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GamesAchievementIncrement",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          setStepsAtLeastPayload: S.optional(__S(143, __c17, 7)),
-          achievementId: S.optional(S.String),
-          kind: S.optional(S.String),
-          updateType: S.optional(S.String),
-          incrementPayload: S.optional(__S(144, __c18, 0)),
-        }),
-      ).annotate({ identifier: "AchievementUpdateRequest" });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updates: S.optional(__S(146, __c18, 2)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AchievementUpdateMultipleRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(147, __c18, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1/achievements/updateMultiple",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateMultipleAchievementsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          currentSteps: S.optional(S.Number),
-          achievementId: S.optional(S.String),
-          kind: S.optional(S.String),
-          newlyUnlocked: S.optional(S.Boolean),
-          updateOccurred: S.optional(S.Boolean),
-          currentState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AchievementUpdateResponse",
-      });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updatedAchievements: S.optional(__S(150, __c18, 6)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AchievementUpdateMultipleResponse",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1/applications/{applicationId}/verify",
-            baseUrl: "https://games.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "VerifyApplicationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          player_id: S.optional(S.String),
-          alternate_player_id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationVerifyResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

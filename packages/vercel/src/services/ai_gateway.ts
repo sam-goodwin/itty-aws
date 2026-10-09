@@ -530,8 +530,8 @@ export const archiveAiGatewayBudget: API.OperationMethod<
   ArchiveAiGatewayBudgetError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ArchiveAiGatewayBudgetRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AiGatewayBudget>,
+  input: __S(224, __c14, 0) as any as S.Schema<ArchiveAiGatewayBudgetRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<AiGatewayBudget>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -545,8 +545,8 @@ export const archiveAiGatewayBudgetDefault: API.OperationMethod<
   ArchiveAiGatewayBudgetDefaultError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ArchiveAiGatewayBudgetDefaultRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ArchiveAiGatewayBudgetDefaultResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ArchiveAiGatewayBudgetDefaultRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<ArchiveAiGatewayBudgetDefaultResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -560,8 +560,8 @@ export const createAiGatewayRule: API.OperationMethod<
   CreateAiGatewayRuleError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateAiGatewayRuleRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AiGatewayRule>,
+  input: __S(288, __c18, 0) as any as S.Schema<CreateAiGatewayRuleRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<AiGatewayRule>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -580,8 +580,8 @@ export const createAiGatewayVirtualModelConfig: API.OperationMethod<
   CreateAiGatewayVirtualModelConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateAiGatewayVirtualModelConfigRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<AiGatewayVirtualModelConfig>,
+  input: __S(320, __c20, 0) as any as S.Schema<CreateAiGatewayVirtualModelConfigRequest>,
+  output: __S(347, __c21, 11) as any as S.Schema<AiGatewayVirtualModelConfig>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -595,8 +595,8 @@ export const deleteAiGatewayRule: API.OperationMethod<
   DeleteAiGatewayRuleError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteAiGatewayRuleRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteAiGatewayRuleResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteAiGatewayRuleRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteAiGatewayRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -614,8 +614,8 @@ export const deleteAiGatewayVirtualModelConfig: API.OperationMethod<
   DeleteAiGatewayVirtualModelConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteAiGatewayVirtualModelConfigRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteAiGatewayVirtualModelConfigResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteAiGatewayVirtualModelConfigRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteAiGatewayVirtualModelConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -633,8 +633,8 @@ export const deleteAiGatewayVirtualModelConfigBySlug: API.OperationMethod<
   DeleteAiGatewayVirtualModelConfigBySlugError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteAiGatewayVirtualModelConfigBySlugRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteAiGatewayVirtualModelConfigBySlugResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteAiGatewayVirtualModelConfigBySlugRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteAiGatewayVirtualModelConfigBySlugResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -648,8 +648,8 @@ export const getAiGatewayVirtualModelConfig: API.OperationMethod<
   GetAiGatewayVirtualModelConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetAiGatewayVirtualModelConfigRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetAiGatewayVirtualModelConfigResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetAiGatewayVirtualModelConfigRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<GetAiGatewayVirtualModelConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -667,8 +667,8 @@ export const getAiGatewayVirtualModelConfigBySlug: API.OperationMethod<
   GetAiGatewayVirtualModelConfigBySlugError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetAiGatewayVirtualModelConfigBySlugRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<AiGatewayVirtualModelConfig>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetAiGatewayVirtualModelConfigBySlugRequest>,
+  output: __S(347, __c21, 11) as any as S.Schema<AiGatewayVirtualModelConfig>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -682,8 +682,8 @@ export const listAiGatewayBudgetDefaults: API.OperationMethod<
   ListAiGatewayBudgetDefaultsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListAiGatewayBudgetDefaultsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<AiGatewayBudgetDefaultList>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListAiGatewayBudgetDefaultsRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<AiGatewayBudgetDefaultList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -697,8 +697,8 @@ export const listAiGatewayBudgets: API.OperationMethod<
   ListAiGatewayBudgetsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListAiGatewayBudgetsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<AiGatewayBudgetList>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListAiGatewayBudgetsRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<AiGatewayBudgetList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -712,8 +712,8 @@ export const listAiGatewayRules: API.OperationMethod<
   ListAiGatewayRulesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListAiGatewayRulesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<AiGatewayRuleList>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListAiGatewayRulesRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<AiGatewayRuleList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -731,8 +731,8 @@ export const listAiGatewayVirtualModelConfigs: API.OperationMethod<
   ListAiGatewayVirtualModelConfigsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListAiGatewayVirtualModelConfigsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<AiGatewayVirtualModelConfigList>,
+  input: __S(114, __c7, 2) as any as S.Schema<ListAiGatewayVirtualModelConfigsRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<AiGatewayVirtualModelConfigList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -746,8 +746,8 @@ export const updateAiGatewayRule: API.OperationMethod<
   UpdateAiGatewayRuleError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UpdateAiGatewayRuleRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AiGatewayRule>,
+  input: __S(128, __c8, 0) as any as S.Schema<UpdateAiGatewayRuleRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<AiGatewayRule>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -765,8 +765,8 @@ export const updateAiGatewayVirtualModelConfig: API.OperationMethod<
   UpdateAiGatewayVirtualModelConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<UpdateAiGatewayVirtualModelConfigRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<AiGatewayVirtualModelConfig>,
+  input: __S(144, __c9, 0) as any as S.Schema<UpdateAiGatewayVirtualModelConfigRequest>,
+  output: __S(347, __c21, 11) as any as S.Schema<AiGatewayVirtualModelConfig>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -784,8 +784,8 @@ export const updateAiGatewayVirtualModelConfigBySlug: API.OperationMethod<
   UpdateAiGatewayVirtualModelConfigBySlugError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<UpdateAiGatewayVirtualModelConfigBySlugRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<AiGatewayVirtualModelConfig>,
+  input: __S(160, __c10, 0) as any as S.Schema<UpdateAiGatewayVirtualModelConfigBySlugRequest>,
+  output: __S(347, __c21, 11) as any as S.Schema<AiGatewayVirtualModelConfig>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -799,8 +799,8 @@ export const upsertAiGatewayBudget: API.OperationMethod<
   UpsertAiGatewayBudgetError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<UpsertAiGatewayBudgetRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AiGatewayBudget>,
+  input: __S(176, __c11, 0) as any as S.Schema<UpsertAiGatewayBudgetRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<AiGatewayBudget>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -814,8 +814,8 @@ export const upsertAiGatewayBudgetDefault: API.OperationMethod<
   UpsertAiGatewayBudgetDefaultError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<UpsertAiGatewayBudgetDefaultRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<AiGatewayBudgetDefault>,
+  input: __S(208, __c13, 0) as any as S.Schema<UpsertAiGatewayBudgetDefaultRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<AiGatewayBudgetDefault>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -825,236 +825,6 @@ export const upsertAiGatewayBudgetDefault: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          scopeType: S.String.pipe(T.Query()),
-          projectId: S.optional(S.String.pipe(T.Query())),
-          userId: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/ai-gateway/budgets", code: 200 })),
-      ).annotate({
-        identifier: "ArchiveAiGatewayBudgetRequest",
-      });
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          alertThresholds: S.optional(__S(1, __c0, 1)),
-          archived: S.Boolean,
-          createdAt: S.Number,
-          currentByokSpend: S.Number,
-          currentSpend: S.Number,
-          includeByokInQuota: S.Boolean,
-          limitAmount: S.Number,
-          name: S.optional(S.String),
-          quotaEntityId: S.String,
-          refreshPeriod: S.String,
-          scopeId: S.String,
-          scopeType: S.String,
-          source: S.optional(S.String),
-          updatedAt: S.Number,
-        }),
-      ).annotate({ identifier: "AiGatewayBudget" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          scopeType: S.String.pipe(T.Query()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/ai-gateway/budgets/defaults", code: 200 })),
-      ).annotate({
-        identifier: "ArchiveAiGatewayBudgetDefaultRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ArchiveAiGatewayBudgetDefaultResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/ai-gateway/rules", code: 200 })),
-      ).annotate({
-        identifier: "CreateAiGatewayRuleRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.optional(S.String),
-          rewriteModel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AiGatewayRuleAction" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          model: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AiGatewayRuleMatch" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(__S(6, __c0, 6)),
-          createdAt: S.Number,
-          createdBy: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          enabled: S.Boolean,
-          match: S.optional(__S(7, __c0, 7)),
-          ownerId: S.String,
-          ruleId: S.String,
-          type: S.String,
-          updatedAt: S.Number,
-          updatedBy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AiGatewayRule" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/ai-gateway/virtual-model-configs", code: 200 })),
-      ).annotate({
-        identifier: "CreateAiGatewayVirtualModelConfigRequest",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          geoRegion: S.optional(S.String),
-          providerRegion: S.optional(S.String),
-          scope: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AiGatewayVirtualModelConfigInferenceRegionProvidersValue",
-      });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(12, __c1, 4)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          geoRegion: S.optional(S.String),
-          providerRegion: S.optional(S.String),
-          providers: S.optional(__S(13, __c1, 5)),
-          scope: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AiGatewayVirtualModelConfigInferenceRegion",
-      });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.Record(S.String, __S(16, __c2, 0));
-    case 2:
-      return S.Record(S.String, S.Number);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          byok: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "AiGatewayVirtualModelConfigProviderTimeouts",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cost: S.optional(__S(16, __c2, 0)),
-          tps: S.optional(__S(16, __c2, 0)),
-          ttft: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "AiGatewayVirtualModelConfigSelectorOptions",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allowFallbackFromFast: S.optional(S.Boolean),
-          baseUrl: S.optional(S.String),
-          byokCredentialIds: S.optional(__S(10, __c1, 2)),
-          caching: S.optional(S.String),
-          createdAt: S.Number,
-          createdBy: S.optional(S.String),
-          deleted: S.Boolean,
-          description: S.optional(S.String),
-          disallowPromptTraining: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          has: S.optional(__S(11, __c1, 3)),
-          hipaaCompliant: S.optional(S.Boolean),
-          inferenceRegion: S.optional(__S(14, __c1, 6)),
-          instanceId: S.optional(S.String),
-          kind: S.String,
-          models: S.optional(__S(15, __c1, 7)),
-          modelSlug: S.optional(S.String),
-          observabilityTags: S.optional(__S(10, __c1, 2)),
-          ownerId: S.String,
-          providerOnly: S.optional(__S(10, __c1, 2)),
-          providerOptions: S.optional(__S(17, __c2, 1)),
-          providerOrder: S.optional(__S(10, __c1, 2)),
-          providerTimeouts: S.optional(__S(19, __c2, 3)),
-          selector: S.optional(S.String),
-          selectorOptions: S.optional(__S(20, __c2, 4)),
-          serviceTier: S.optional(S.String),
-          sort: S.optional(S.String),
-          speed: S.optional(S.String),
-          status: S.String,
-          updatedAt: S.Number,
-          updatedBy: S.optional(S.String),
-          virtualModelSlug: S.String,
-          visibility: S.optional(S.String),
-          zeroDataRetention: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AiGatewayVirtualModelConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ruleId: S.String.pipe(T.Query()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/ai-gateway/rules", code: 200 })),
-      ).annotate({
-        identifier: "DeleteAiGatewayRuleRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteAiGatewayRuleResponse",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ownerId: S.optional(S.String.pipe(T.Query())),
-          virtualModelSlug: S.String.pipe(T.Query()),
-          updatedBy: S.optional(S.String.pipe(T.Query())),
-          actingIp: S.optional(S.String.pipe(T.Query())),
-          actingUserAgent: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/ai-gateway/virtual-model-configs", code: 200 })),
-      ).annotate({
-        identifier: "DeleteAiGatewayVirtualModelConfigRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           vmcSlug: S.String.pipe(T.Label()),
@@ -1074,7 +844,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAiGatewayVirtualModelConfigBySlugRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.optional(S.String.pipe(T.Query())),
@@ -1087,22 +861,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetAiGatewayVirtualModelConfigRequest",
       });
-    case 3:
-      return S.Array(__S(21, __c2, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cursor: S.NullOr(S.String),
-          virtualModelConfigs: __S(27, __c3, 3),
-        }),
-      ).annotate({
-        identifier: "AiGatewayVirtualModelConfigList",
-      });
-    case 5:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAiGatewayVirtualModelConfigResponse",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vmcSlug: S.String.pipe(T.Label()),
@@ -1115,7 +882,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetAiGatewayVirtualModelConfigBySlugRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -1123,6 +894,16 @@ function __c3(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/ai-gateway/budgets/defaults/list", code: 200 })),
       ).annotate({
         identifier: "ListAiGatewayBudgetDefaultsRequest",
+      });
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          defaults: __S(49, __c3, 1),
+        }),
+      ).annotate({
+        identifier: "AiGatewayBudgetDefaultList",
       });
   }
 }
@@ -1132,7 +913,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
-          alertThresholds: S.optional(__S(1, __c0, 1)),
+          alertThresholds: S.optional(__S(240, __c15, 0)),
           createdAt: S.Number,
           limitAmount: S.Number,
           refreshPeriod: S.String,
@@ -1140,17 +921,11 @@ function __c4(j: number): any {
           updatedAt: S.Number,
         }),
       ).annotate({ identifier: "AiGatewayBudgetDefault" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          defaults: __S(33, __c4, 1),
-        }),
-      ).annotate({
-        identifier: "AiGatewayBudgetDefaultList",
-      });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scopeType: S.optional(S.String.pipe(T.Query())),
@@ -1160,15 +935,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAiGatewayBudgetsRequest",
       });
-    case 4:
-      return S.Array(__S(2, __c0, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(256, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          budgets: __S(36, __c4, 4),
+          budgets: __S(81, __c5, 1),
         }),
       ).annotate({ identifier: "AiGatewayBudgetList" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           includeDisabled: S.optional(S.Boolean.pipe(T.Query(), T.StringEncoded())),
@@ -1178,19 +957,30 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAiGatewayRulesRequest",
       });
-    case 7:
-      return S.Array(__S(8, __c1, 0));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(306, __c19, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          rules: __S(39, __c4, 7),
+          rules: __S(97, __c6, 1),
         }),
       ).annotate({ identifier: "AiGatewayRuleList" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(347, __c21, 11));
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cursor: S.NullOr(S.String),
+          virtualModelConfigs: __S(112, __c7, 0),
+        }),
+      ).annotate({
+        identifier: "AiGatewayVirtualModelConfigList",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ownerId: S.optional(S.String.pipe(T.Query())),
@@ -1204,7 +994,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListAiGatewayVirtualModelConfigsRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -1213,7 +1007,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateAiGatewayRuleRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -1222,7 +1020,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateAiGatewayVirtualModelConfigRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vmcSlug: S.String.pipe(T.Label()),
@@ -1238,9 +1040,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateAiGatewayVirtualModelConfigBySlugRequest",
       });
-    case 5:
-      return S.Array(S.Number);
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -1251,12 +1055,22 @@ function __c5(j: number): any {
           limitAmount: S.Number,
           refreshPeriod: S.optional(S.String),
           includeByokInQuota: S.optional(S.Boolean),
-          alertThresholds: S.optional(__S(45, __c5, 5)),
+          alertThresholds: S.optional(__S(192, __c12, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/ai-gateway/budgets", code: 200 })),
       ).annotate({
         identifier: "UpsertAiGatewayBudgetRequest",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -1264,14 +1078,275 @@ function __c5(j: number): any {
           scopeType: S.String,
           limitAmount: S.Number,
           refreshPeriod: S.optional(S.String),
-          alertThresholds: S.optional(__S(45, __c5, 5)),
+          alertThresholds: S.optional(__S(192, __c12, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/ai-gateway/budgets/defaults", code: 200 })),
       ).annotate({
         identifier: "UpsertAiGatewayBudgetDefaultRequest",
       });
   }
 }
-
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scopeType: S.String.pipe(T.Query()),
+          projectId: S.optional(S.String.pipe(T.Query())),
+          userId: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/ai-gateway/budgets", code: 200 })),
+      ).annotate({
+        identifier: "ArchiveAiGatewayBudgetRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          alertThresholds: S.optional(__S(240, __c15, 0)),
+          archived: S.Boolean,
+          createdAt: S.Number,
+          currentByokSpend: S.Number,
+          currentSpend: S.Number,
+          includeByokInQuota: S.Boolean,
+          limitAmount: S.Number,
+          name: S.optional(S.String),
+          quotaEntityId: S.String,
+          refreshPeriod: S.String,
+          scopeId: S.String,
+          scopeType: S.String,
+          source: S.optional(S.String),
+          updatedAt: S.Number,
+        }),
+      ).annotate({ identifier: "AiGatewayBudget" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scopeType: S.String.pipe(T.Query()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/ai-gateway/budgets/defaults", code: 200 })),
+      ).annotate({
+        identifier: "ArchiveAiGatewayBudgetDefaultRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ArchiveAiGatewayBudgetDefaultResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/ai-gateway/rules", code: 200 })),
+      ).annotate({
+        identifier: "CreateAiGatewayRuleRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+          rewriteModel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AiGatewayRuleAction" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          model: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AiGatewayRuleMatch" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(__S(304, __c19, 0)),
+          createdAt: S.Number,
+          createdBy: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          enabled: S.Boolean,
+          match: S.optional(__S(305, __c19, 1)),
+          ownerId: S.String,
+          ruleId: S.String,
+          type: S.String,
+          updatedAt: S.Number,
+          updatedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AiGatewayRule" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/ai-gateway/virtual-model-configs", code: 200 })),
+      ).annotate({
+        identifier: "CreateAiGatewayVirtualModelConfigRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          geoRegion: S.optional(S.String),
+          providerRegion: S.optional(S.String),
+          scope: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AiGatewayVirtualModelConfigInferenceRegionProvidersValue",
+      });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(338, __c21, 2)));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          geoRegion: S.optional(S.String),
+          providerRegion: S.optional(S.String),
+          providers: S.optional(__S(339, __c21, 3)),
+          scope: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AiGatewayVirtualModelConfigInferenceRegion",
+      });
+    case 5:
+      return S.Array(S.Unknown);
+    case 6:
+      return S.Record(S.String, S.Unknown);
+    case 7:
+      return S.Record(S.String, __S(342, __c21, 6));
+    case 8:
+      return S.Record(S.String, S.Number);
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          byok: S.optional(__S(344, __c21, 8)),
+        }),
+      ).annotate({
+        identifier: "AiGatewayVirtualModelConfigProviderTimeouts",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          cost: S.optional(__S(342, __c21, 6)),
+          tps: S.optional(__S(342, __c21, 6)),
+          ttft: S.optional(__S(342, __c21, 6)),
+        }),
+      ).annotate({
+        identifier: "AiGatewayVirtualModelConfigSelectorOptions",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          allowFallbackFromFast: S.optional(S.Boolean),
+          baseUrl: S.optional(S.String),
+          byokCredentialIds: S.optional(__S(336, __c21, 0)),
+          caching: S.optional(S.String),
+          createdAt: S.Number,
+          createdBy: S.optional(S.String),
+          deleted: S.Boolean,
+          description: S.optional(S.String),
+          disallowPromptTraining: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          has: S.optional(__S(337, __c21, 1)),
+          hipaaCompliant: S.optional(S.Boolean),
+          inferenceRegion: S.optional(__S(340, __c21, 4)),
+          instanceId: S.optional(S.String),
+          kind: S.String,
+          models: S.optional(__S(341, __c21, 5)),
+          modelSlug: S.optional(S.String),
+          observabilityTags: S.optional(__S(336, __c21, 0)),
+          ownerId: S.String,
+          providerOnly: S.optional(__S(336, __c21, 0)),
+          providerOptions: S.optional(__S(343, __c21, 7)),
+          providerOrder: S.optional(__S(336, __c21, 0)),
+          providerTimeouts: S.optional(__S(345, __c21, 9)),
+          selector: S.optional(S.String),
+          selectorOptions: S.optional(__S(346, __c21, 10)),
+          serviceTier: S.optional(S.String),
+          sort: S.optional(S.String),
+          speed: S.optional(S.String),
+          status: S.String,
+          updatedAt: S.Number,
+          updatedBy: S.optional(S.String),
+          virtualModelSlug: S.String,
+          visibility: S.optional(S.String),
+          zeroDataRetention: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AiGatewayVirtualModelConfig",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ruleId: S.String.pipe(T.Query()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/ai-gateway/rules", code: 200 })),
+      ).annotate({
+        identifier: "DeleteAiGatewayRuleRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteAiGatewayRuleResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownerId: S.optional(S.String.pipe(T.Query())),
+          virtualModelSlug: S.String.pipe(T.Query()),
+          updatedBy: S.optional(S.String.pipe(T.Query())),
+          actingIp: S.optional(S.String.pipe(T.Query())),
+          actingUserAgent: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/ai-gateway/virtual-model-configs", code: 200 })),
+      ).annotate({
+        identifier: "DeleteAiGatewayVirtualModelConfigRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

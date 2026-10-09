@@ -865,8 +865,8 @@ export const createAccessPoint: API.OperationMethod<
   CreateAccessPointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateAccessPointRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<AccessPointDescription>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateAccessPointRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<AccessPointDescription>,
   errors: [
     AccessPointAlreadyExists,
     AccessPointLimitExceeded,
@@ -959,8 +959,8 @@ export const createFileSystem: API.OperationMethod<
   CreateFileSystemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateFileSystemRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FileSystemDescription>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateFileSystemRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<FileSystemDescription>,
   errors: [
     BadRequest,
     FileSystemAlreadyExists,
@@ -1110,8 +1110,8 @@ export const createMountTarget: API.OperationMethod<
   CreateMountTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateMountTargetRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<MountTargetDescription>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateMountTargetRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<MountTargetDescription>,
   errors: [
     AvailabilityZonesMismatch,
     BadRequest,
@@ -1175,8 +1175,8 @@ export const createReplicationConfiguration: API.OperationMethod<
   CreateReplicationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateReplicationConfigurationRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ReplicationConfigurationDescription>,
+  input: __S(74, __c9, 2) as any as S.Schema<CreateReplicationConfigurationRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<ReplicationConfigurationDescription>,
   errors: [
     BadRequest,
     ConflictException,
@@ -1214,8 +1214,8 @@ export const createTags: API.OperationMethod<
   CreateTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateTagsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreateTagsResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateTagsRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<CreateTagsResponse>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1240,8 +1240,8 @@ export const deleteAccessPoint: API.OperationMethod<
   DeleteAccessPointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteAccessPointRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteAccessPointResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteAccessPointRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteAccessPointResponse>,
   errors: [AccessPointNotFound, BadRequest, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1283,8 +1283,8 @@ export const deleteFileSystem: API.OperationMethod<
   DeleteFileSystemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteFileSystemRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteFileSystemResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteFileSystemRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteFileSystemResponse>,
   errors: [BadRequest, FileSystemInUse, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1310,8 +1310,8 @@ export const deleteFileSystemPolicy: API.OperationMethod<
   DeleteFileSystemPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteFileSystemPolicyRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteFileSystemPolicyResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteFileSystemPolicyRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteFileSystemPolicyResponse>,
   errors: [BadRequest, FileSystemNotFound, IncorrectFileSystemLifeCycleState, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1355,8 +1355,8 @@ export const deleteMountTarget: API.OperationMethod<
   DeleteMountTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteMountTargetRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteMountTargetResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteMountTargetRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteMountTargetResponse>,
   errors: [BadRequest, DependencyTimeout, InternalServerError, MountTargetNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1384,8 +1384,8 @@ export const deleteReplicationConfiguration: API.OperationMethod<
   DeleteReplicationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteReplicationConfigurationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteReplicationConfigurationResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteReplicationConfigurationRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<DeleteReplicationConfigurationResponse>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError, ReplicationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1411,8 +1411,8 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteTagsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteTagsResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteTagsRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteTagsResponse>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1441,8 +1441,8 @@ export const describeAccessPoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccessPointDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DescribeAccessPointsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DescribeAccessPointsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DescribeAccessPointsRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<DescribeAccessPointsResponse>,
   errors: [AccessPointNotFound, BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1465,8 +1465,8 @@ export const describeAccountPreferences: API.OperationMethod<
   DescribeAccountPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DescribeAccountPreferencesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DescribeAccountPreferencesResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<DescribeAccountPreferencesRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<DescribeAccountPreferencesResponse>,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1489,8 +1489,8 @@ export const describeBackupPolicy: API.OperationMethod<
   DescribeBackupPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DescribeBackupPolicyRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<BackupPolicyDescription>,
+  input: __S(184, __c23, 0) as any as S.Schema<DescribeBackupPolicyRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<BackupPolicyDescription>,
   errors: [
     BadRequest,
     FileSystemNotFound,
@@ -1521,8 +1521,8 @@ export const describeFileSystemPolicy: API.OperationMethod<
   DescribeFileSystemPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DescribeFileSystemPolicyRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<FileSystemPolicyDescription>,
+  input: __S(200, __c25, 0) as any as S.Schema<DescribeFileSystemPolicyRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<FileSystemPolicyDescription>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError, PolicyNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1567,8 +1567,8 @@ export const describeFileSystems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FileSystemDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DescribeFileSystemsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DescribeFileSystemsResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<DescribeFileSystemsRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<DescribeFileSystemsResponse>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1602,8 +1602,8 @@ export const describeLifecycleConfiguration: API.OperationMethod<
   DescribeLifecycleConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DescribeLifecycleConfigurationRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<LifecycleConfigurationDescription>,
+  input: __S(224, __c28, 0) as any as S.Schema<DescribeLifecycleConfigurationRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<LifecycleConfigurationDescription>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1634,8 +1634,8 @@ export const describeMountTargets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MountTargetDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DescribeMountTargetsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DescribeMountTargetsResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<DescribeMountTargetsRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<DescribeMountTargetsResponse>,
   errors: [
     AccessPointNotFound,
     BadRequest,
@@ -1679,8 +1679,8 @@ export const describeMountTargetSecurityGroups: API.OperationMethod<
   DescribeMountTargetSecurityGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DescribeMountTargetSecurityGroupsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<DescribeMountTargetSecurityGroupsResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<DescribeMountTargetSecurityGroupsRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<DescribeMountTargetSecurityGroupsResponse>,
   errors: [BadRequest, IncorrectMountTargetState, InternalServerError, MountTargetNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1706,8 +1706,8 @@ export const describeReplicationConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReplicationConfigurationDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DescribeReplicationConfigurationsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DescribeReplicationConfigurationsResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<DescribeReplicationConfigurationsRequest>,
+  output: __S(258, __c32, 2) as any as S.Schema<DescribeReplicationConfigurationsResponse>,
   errors: [
     BadRequest,
     FileSystemNotFound,
@@ -1750,8 +1750,8 @@ export const describeTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DescribeTagsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DescribeTagsResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<DescribeTagsRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<DescribeTagsResponse>,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1783,8 +1783,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [AccessPointNotFound, BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1828,8 +1828,8 @@ export const modifyMountTargetSecurityGroups: API.OperationMethod<
   ModifyMountTargetSecurityGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ModifyMountTargetSecurityGroupsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ModifyMountTargetSecurityGroupsResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<ModifyMountTargetSecurityGroupsRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<ModifyMountTargetSecurityGroupsResponse>,
   errors: [
     BadRequest,
     IncorrectMountTargetState,
@@ -1861,8 +1861,8 @@ export const putAccountPreferences: API.OperationMethod<
   PutAccountPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<PutAccountPreferencesRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PutAccountPreferencesResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<PutAccountPreferencesRequest>,
+  output: __S(289, __c36, 1) as any as S.Schema<PutAccountPreferencesResponse>,
   errors: [BadRequest, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1885,8 +1885,8 @@ export const putBackupPolicy: API.OperationMethod<
   PutBackupPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<PutBackupPolicyRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<BackupPolicyDescription>,
+  input: __S(296, __c37, 0) as any as S.Schema<PutBackupPolicyRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<BackupPolicyDescription>,
   errors: [
     BadRequest,
     FileSystemNotFound,
@@ -1926,8 +1926,8 @@ export const putFileSystemPolicy: API.OperationMethod<
   PutFileSystemPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<PutFileSystemPolicyRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<FileSystemPolicyDescription>,
+  input: __S(304, __c38, 0) as any as S.Schema<PutFileSystemPolicyRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<FileSystemPolicyDescription>,
   errors: [
     BadRequest,
     FileSystemNotFound,
@@ -2007,8 +2007,8 @@ export const putLifecycleConfiguration: API.OperationMethod<
   PutLifecycleConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<PutLifecycleConfigurationRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<LifecycleConfigurationDescription>,
+  input: __S(312, __c39, 0) as any as S.Schema<PutLifecycleConfigurationRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<LifecycleConfigurationDescription>,
   errors: [BadRequest, FileSystemNotFound, IncorrectFileSystemLifeCycleState, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2033,8 +2033,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<TagResourceRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<TagResourceResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<TagResourceResponse>,
   errors: [AccessPointNotFound, BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2059,8 +2059,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<UntagResourceResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [AccessPointNotFound, BadRequest, FileSystemNotFound, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2086,8 +2086,8 @@ export const updateFileSystem: API.OperationMethod<
   UpdateFileSystemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<UpdateFileSystemRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FileSystemDescription>,
+  input: __S(336, __c42, 0) as any as S.Schema<UpdateFileSystemRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<FileSystemDescription>,
   errors: [
     BadRequest,
     FileSystemNotFound,
@@ -2124,8 +2124,8 @@ export const updateFileSystemProtection: API.OperationMethod<
   UpdateFileSystemProtectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<UpdateFileSystemProtectionRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<FileSystemProtectionDescription>,
+  input: __S(344, __c43, 0) as any as S.Schema<UpdateFileSystemProtectionRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<FileSystemProtectionDescription>,
   errors: [
     BadRequest,
     FileSystemNotFound,
@@ -2145,33 +2145,13 @@ export const updateFileSystemProtection: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.Array(S.Number);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Uid: S.Number, Gid: S.Number, SecondaryGids: S.optional(__S(2, __c0, 2)) }),
-      ).annotate({ identifier: "PosixUser" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ OwnerUid: S.Number, OwnerGid: S.Number, Permissions: S.String }),
-      ).annotate({ identifier: "CreationInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Path: S.optional(S.String), CreationInfo: S.optional(__S(4, __c0, 4)) }),
-      ).annotate({ identifier: "RootDirectory" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.String.pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(1, __c0, 1)),
+          Tags: S.optional(__S(9, __c1, 1)),
           FileSystemId: S.String,
-          PosixUser: S.optional(__S(3, __c0, 3)),
-          RootDirectory: S.optional(__S(5, __c0, 5)),
+          PosixUser: S.optional(__S(17, __c2, 1)),
+          RootDirectory: S.optional(__S(19, __c2, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/2015-02-01/access-points" }),
@@ -2183,24 +2163,52 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateAccessPointRequest" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Uid: S.Number, Gid: S.Number, SecondaryGids: S.optional(__S(16, __c2, 0)) }),
+      ).annotate({ identifier: "PosixUser" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ OwnerUid: S.Number, OwnerGid: S.Number, Permissions: S.String }),
+      ).annotate({ identifier: "CreationInfo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Path: S.optional(S.String), CreationInfo: S.optional(__S(18, __c2, 2)) }),
+      ).annotate({ identifier: "RootDirectory" });
+    case 4:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String),
           Name: S.optional(S.String),
-          Tags: S.optional(__S(1, __c0, 1)),
+          Tags: S.optional(__S(9, __c1, 1)),
           AccessPointId: S.optional(S.String),
           AccessPointArn: S.optional(S.String),
           FileSystemId: S.optional(S.String),
-          PosixUser: S.optional(__S(3, __c0, 3)),
-          RootDirectory: S.optional(__S(5, __c0, 5)),
+          PosixUser: S.optional(__S(17, __c2, 1)),
+          RootDirectory: S.optional(__S(19, __c2, 3)),
           OwnerId: S.optional(S.String),
           LifeCycleState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessPointDescription" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2213,7 +2221,7 @@ function __c1(j: number): any {
           ProvisionedThroughputInMibps: S.optional(S.Number),
           AvailabilityZoneName: S.optional(S.String),
           Backup: S.optional(S.Boolean),
-          Tags: S.optional(__S(1, __c0, 1)),
+          Tags: S.optional(__S(9, __c1, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/2015-02-01/file-systems" }),
@@ -2225,7 +2233,11 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateFileSystemRequest" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Value: S.Number,
@@ -2235,13 +2247,7 @@ function __c1(j: number): any {
           ValueInArchive: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FileSystemSize" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ReplicationOverwriteProtection: S.optional(S.String) }),
-      ).annotate({
-        identifier: "FileSystemProtectionDescription",
-      });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           OwnerId: S.String,
@@ -2252,7 +2258,7 @@ function __c1(j: number): any {
           LifeCycleState: S.String,
           Name: S.optional(S.String),
           NumberOfMountTargets: S.Number,
-          SizeInBytes: __S(9, __c1, 1),
+          SizeInBytes: __S(32, __c4, 0),
           PerformanceMode: S.String,
           Encrypted: S.optional(S.Boolean),
           KmsKeyId: S.optional(S.String),
@@ -2260,13 +2266,25 @@ function __c1(j: number): any {
           ProvisionedThroughputInMibps: S.optional(S.Number),
           AvailabilityZoneName: S.optional(S.String),
           AvailabilityZoneId: S.optional(S.String),
-          Tags: __S(1, __c0, 1),
-          FileSystemProtection: S.optional(__S(10, __c1, 2)),
+          Tags: __S(9, __c1, 1),
+          FileSystemProtection: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "FileSystemDescription" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ReplicationOverwriteProtection: S.optional(S.String) }),
+      ).annotate({
+        identifier: "FileSystemProtectionDescription",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FileSystemId: S.String,
@@ -2274,7 +2292,7 @@ function __c1(j: number): any {
           IpAddress: S.optional(S.String),
           Ipv6Address: S.optional(S.String),
           IpAddressType: S.optional(S.String),
-          SecurityGroups: S.optional(__S(12, __c1, 4)),
+          SecurityGroups: S.optional(__S(56, __c7, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/2015-02-01/mount-targets" }),
@@ -2286,7 +2304,17 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateMountTargetRequest" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OwnerId: S.optional(S.String),
@@ -2302,7 +2330,11 @@ function __c1(j: number): any {
           VpcId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MountTargetDescription" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Region: S.optional(S.String),
@@ -2312,17 +2344,13 @@ function __c1(j: number): any {
           RoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "DestinationToCreate" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
     case 1:
+      return S.Array(__S(72, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           SourceFileSystemId: S.String.pipe(T.HttpLabel("SourceFileSystemId")),
-          Destinations: __S(16, __c2, 0),
+          Destinations: __S(73, __c9, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -2339,7 +2367,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateReplicationConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Status: S.String,
@@ -2351,9 +2383,9 @@ function __c2(j: number): any {
           RoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Destination" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(80, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           SourceFileSystemId: S.String,
@@ -2361,17 +2393,21 @@ function __c2(j: number): any {
           SourceFileSystemArn: S.String,
           OriginalSourceFileSystemArn: S.String,
           CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Destinations: __S(19, __c2, 3),
+          Destinations: __S(81, __c10, 1),
           SourceFileSystemOwnerId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReplicationConfigurationDescription",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FileSystemId: S.String.pipe(T.HttpLabel("FileSystemId")),
-          Tags: __S(1, __c0, 1),
+          Tags: __S(9, __c1, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/2015-02-01/create-tags/{FileSystemId}" }),
@@ -2383,11 +2419,19 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateTagsRequest" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateTagsResponse",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccessPointId: S.String.pipe(T.HttpLabel("AccessPointId")) }).pipe(
           T.all(
@@ -2402,7 +2446,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "DeleteAccessPointRequest" });
   }
 }
-function __c3(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2417,7 +2461,11 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteFileSystemRequest" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FileSystemId: S.String.pipe(T.HttpLabel("FileSystemId")) }).pipe(
           T.all(
@@ -2432,7 +2480,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteFileSystemPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MountTargetId: S.String.pipe(T.HttpLabel("MountTargetId")) }).pipe(
           T.all(
@@ -2445,7 +2497,11 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteMountTargetRequest" });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceFileSystemId: S.String.pipe(T.HttpLabel("SourceFileSystemId")),
@@ -2466,15 +2522,23 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteReplicationConfigurationRequest",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteReplicationConfigurationResponse",
       });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FileSystemId: S.String.pipe(T.HttpLabel("FileSystemId")),
-          TagKeys: __S(12, __c1, 4),
+          TagKeys: __S(56, __c7, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/2015-02-01/delete-tags/{FileSystemId}" }),
@@ -2486,7 +2550,11 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteTagsRequest" });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -2506,22 +2574,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeAccessPointsRequest",
       });
-    case 7:
-      return S.Array(__S(7, __c0, 7));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(20, __c2, 4));
+    case 2:
       return S.suspend(() =>
-        S.Struct({
-          AccessPoints: S.optional(__S(31, __c3, 7)),
-          NextToken: S.optional(S.String),
-        }),
+        S.Struct({ AccessPoints: S.optional(__S(161, __c20, 1)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeAccessPointsResponse",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(
@@ -2536,22 +2601,33 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeAccountPreferencesRequest",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ResourceIdType: S.optional(S.String), Resources: S.optional(__S(34, __c4, 2)) }),
-      ).annotate({ identifier: "ResourceIdPreference" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ResourceIdPreference: S.optional(__S(35, __c4, 3)),
+          ResourceIdPreference: S.optional(__S(177, __c22, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeAccountPreferencesResponse",
       });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceIdType: S.optional(S.String),
+          Resources: S.optional(__S(176, __c22, 0)),
+        }),
+      ).annotate({ identifier: "ResourceIdPreference" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FileSystemId: S.String.pipe(T.HttpLabel("FileSystemId")) }).pipe(
           T.all(
@@ -2566,17 +2642,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeBackupPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Status: S.String })).annotate({
         identifier: "BackupPolicy",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ BackupPolicy: S.optional(__S(38, __c4, 6)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ BackupPolicy: S.optional(__S(192, __c24, 0)) })).annotate({
         identifier: "BackupPolicyDescription",
       });
   }
 }
-function __c5(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2593,13 +2673,21 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DescribeFileSystemPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FileSystemId: S.optional(S.String), Policy: S.optional(S.String) }),
       ).annotate({
         identifier: "FileSystemPolicyDescription",
       });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
@@ -2619,19 +2707,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DescribeFileSystemsRequest",
       });
-    case 3:
-      return S.Array(__S(11, __c1, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(33, __c4, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          FileSystems: S.optional(__S(43, __c5, 3)),
+          FileSystems: S.optional(__S(217, __c27, 1)),
           NextMarker: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeFileSystemsResponse",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FileSystemId: S.String.pipe(T.HttpLabel("FileSystemId")) }).pipe(
           T.all(
@@ -2649,7 +2741,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DescribeLifecycleConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TransitionToIA: S.optional(S.String),
@@ -2657,19 +2753,19 @@ function __c5(j: number): any {
           TransitionToArchive: S.optional(S.String),
         }),
       ).annotate({ identifier: "LifecyclePolicy" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(232, __c29, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ LifecyclePolicies: S.optional(__S(47, __c5, 7)) }),
+        S.Struct({ LifecyclePolicies: S.optional(__S(233, __c29, 1)) }),
       ).annotate({
         identifier: "LifecycleConfigurationDescription",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
@@ -2690,19 +2786,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DescribeMountTargetsRequest",
       });
+    case 1:
+      return S.Array(__S(64, __c8, 0));
     case 2:
-      return S.Array(__S(14, __c1, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          MountTargets: S.optional(__S(50, __c6, 2)),
+          MountTargets: S.optional(__S(241, __c30, 1)),
           NextMarker: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeMountTargetsResponse",
       });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MountTargetId: S.String.pipe(T.HttpLabel("MountTargetId")) }).pipe(
           T.all(
@@ -2720,11 +2820,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DescribeMountTargetSecurityGroupsRequest",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ SecurityGroups: __S(12, __c1, 4) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ SecurityGroups: __S(56, __c7, 0) })).annotate({
         identifier: "DescribeMountTargetSecurityGroupsResponse",
       });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FileSystemId: S.optional(S.String).pipe(T.HttpQuery("FileSystemId")),
@@ -2743,22 +2847,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DescribeReplicationConfigurationsRequest",
       });
-    case 7:
-      return S.Array(__S(20, __c2, 4));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(82, __c10, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Replications: S.optional(__S(55, __c6, 7)),
+          Replications: S.optional(__S(257, __c32, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeReplicationConfigurationsResponse",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
@@ -2775,15 +2879,19 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeTagsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          Tags: __S(1, __c0, 1),
+          Tags: __S(9, __c1, 1),
           NextMarker: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeTagsResponse" });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
@@ -2802,17 +2910,21 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(1, __c0, 1)), NextToken: S.optional(S.String) }),
+        S.Struct({ Tags: S.optional(__S(9, __c1, 1)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MountTargetId: S.String.pipe(T.HttpLabel("MountTargetId")),
-          SecurityGroups: S.optional(__S(12, __c1, 4)),
+          SecurityGroups: S.optional(__S(56, __c7, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -2829,7 +2941,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ModifyMountTargetSecurityGroupsRequest",
       });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceIdType: S.String }).pipe(
           T.all(
@@ -2844,21 +2960,21 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PutAccountPreferencesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceIdPreference: S.optional(__S(35, __c4, 3)) }),
+        S.Struct({ ResourceIdPreference: S.optional(__S(177, __c22, 1)) }),
       ).annotate({
         identifier: "PutAccountPreferencesResponse",
       });
   }
 }
-function __c8(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           FileSystemId: S.String.pipe(T.HttpLabel("FileSystemId")),
-          BackupPolicy: __S(38, __c4, 6),
+          BackupPolicy: __S(192, __c24, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/2015-02-01/file-systems/{FileSystemId}/backup-policy" }),
@@ -2870,7 +2986,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutBackupPolicyRequest" });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FileSystemId: S.String.pipe(T.HttpLabel("FileSystemId")),
@@ -2889,11 +3009,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PutFileSystemPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FileSystemId: S.String.pipe(T.HttpLabel("FileSystemId")),
-          LifecyclePolicies: __S(47, __c5, 7),
+          LifecyclePolicies: __S(233, __c29, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -2910,11 +3034,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PutLifecycleConfigurationRequest",
       });
-    case 3:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-          Tags: __S(1, __c0, 1),
+          Tags: __S(9, __c1, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/2015-02-01/resource-tags/{ResourceId}" }),
@@ -2926,11 +3054,15 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String.pipe(T.HttpLabel("ResourceId")),
-          TagKeys: __S(12, __c1, 4).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(56, __c7, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/2015-02-01/resource-tags/{ResourceId}" }),
@@ -2942,7 +3074,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FileSystemId: S.String.pipe(T.HttpLabel("FileSystemId")),
@@ -2959,7 +3095,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateFileSystemRequest" });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FileSystemId: S.String.pipe(T.HttpLabel("FileSystemId")),
@@ -2979,7 +3119,6 @@ function __c8(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

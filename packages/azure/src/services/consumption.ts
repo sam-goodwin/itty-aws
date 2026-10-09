@@ -1685,8 +1685,8 @@ export const BudgetsCreateOrUpdate: API.OperationMethod<
   BudgetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<BudgetsCreateOrUpdateRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<BudgetsCreateOrUpdateResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<BudgetsCreateOrUpdateRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<BudgetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1700,8 +1700,8 @@ export const DeleteBudget: API.OperationMethod<
   DeleteBudgetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteBudgetRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteBudgetResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteBudgetRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<DeleteBudgetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1715,8 +1715,8 @@ export const DownloadPriceSheetByBillingAccountPeriod: API.OperationMethod<
   DownloadPriceSheetByBillingAccountPeriodError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DownloadPriceSheetByBillingAccountPeriodRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<OperationStatus>,
+  input: __S(272, __c17, 0) as any as S.Schema<DownloadPriceSheetByBillingAccountPeriodRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1730,8 +1730,8 @@ export const GetAggregatedCostByManagementGroup: API.OperationMethod<
   GetAggregatedCostByManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetAggregatedCostByManagementGroupRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetAggregatedCostByManagementGroupResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetAggregatedCostByManagementGroupRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<GetAggregatedCostByManagementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1746,14 +1746,14 @@ export const GetAggregatedCostForBillingPeriodByManagementGroup: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    26,
-    __c3,
-    2,
+    576,
+    __c36,
+    0,
   ) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    578,
+    __c36,
+    2,
   ) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1768,8 +1768,8 @@ export const GetBalanceByBillingAccount: API.OperationMethod<
   GetBalanceByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetBalanceByBillingAccountRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetBalanceByBillingAccountResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetBalanceByBillingAccountRequest>,
+  output: __S(611, __c38, 3) as any as S.Schema<GetBalanceByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1783,8 +1783,8 @@ export const GetBalanceForBillingPeriodByBillingAccount: API.OperationMethod<
   GetBalanceForBillingPeriodByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountRequest>,
+  output: __S(611, __c38, 3) as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1798,8 @@ export const GetBudget: API.OperationMethod<
   GetBudgetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetBudgetRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetBudgetResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<GetBudgetRequest>,
+  output: __S(656, __c41, 0) as any as S.Schema<GetBudgetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1813,8 +1813,8 @@ export const GetCredit: API.OperationMethod<
   GetCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetCreditRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetCreditResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetCreditRequest>,
+  output: __S(675, __c42, 3) as any as S.Schema<GetCreditResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1828,8 +1828,8 @@ export const GetPriceSheet: API.OperationMethod<
   GetPriceSheetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetPriceSheetRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetPriceSheetResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetPriceSheetRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<GetPriceSheetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1843,8 +1843,8 @@ export const GetPriceSheetByBillingPeriod: API.OperationMethod<
   GetPriceSheetByBillingPeriodError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetPriceSheetByBillingPeriodRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetPriceSheetByBillingPeriodResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetPriceSheetByBillingPeriodRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<GetPriceSheetByBillingPeriodResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1858,8 +1858,8 @@ export const GetReservationRecommendationDetail: API.OperationMethod<
   GetReservationRecommendationDetailError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetReservationRecommendationDetailRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetReservationRecommendationDetailResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetReservationRecommendationDetailRequest>,
+  output: __S(105, __c6, 9) as any as S.Schema<GetReservationRecommendationDetailResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1873,8 +1873,8 @@ export const GetTag: API.OperationMethod<
   GetTagError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetTagRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetTagResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetTagRequest>,
+  output: __S(117, __c7, 5) as any as S.Schema<GetTagResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1888,8 +1888,8 @@ export const ListBudgets: API.OperationMethod<
   ListBudgetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListBudgetsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<BudgetsListResult>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListBudgetsRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<BudgetsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1903,8 +1903,8 @@ export const ListCharges: API.OperationMethod<
   ListChargesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListChargesRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ChargesListResult>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListChargesRequest>,
+  output: __S(147, __c9, 3) as any as S.Schema<ChargesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1918,8 +1918,8 @@ export const ListEventByBillingAccount: API.OperationMethod<
   ListEventByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListEventByBillingAccountRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<Events>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListEventByBillingAccountRequest>,
+  output: __S(179, __c11, 3) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1933,8 +1933,8 @@ export const ListEventByBillingProfile: API.OperationMethod<
   ListEventByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListEventByBillingProfileRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<Events>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListEventByBillingProfileRequest>,
+  output: __S(179, __c11, 3) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1948,8 +1948,8 @@ export const ListLotByBillingAccount: API.OperationMethod<
   ListLotByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListLotByBillingAccountRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<Lots>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListLotByBillingAccountRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<Lots>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1963,8 +1963,8 @@ export const ListLotByBillingProfile: API.OperationMethod<
   ListLotByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListLotByBillingProfileRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<Lots>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListLotByBillingProfileRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<Lots>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1978,8 +1978,8 @@ export const ListLotByCustomer: API.OperationMethod<
   ListLotByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListLotByCustomerRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<Lots>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListLotByCustomerRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<Lots>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1993,8 +1993,8 @@ export const ListMarketplaces: API.OperationMethod<
   ListMarketplacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListMarketplacesRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<MarketplacesListResult>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListMarketplacesRequest>,
+  output: __S(292, __c18, 4) as any as S.Schema<MarketplacesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2008,8 +2008,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<OperationListResult>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(308, __c19, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2023,8 +2023,8 @@ export const ListReservationRecommendations: API.OperationMethod<
   ListReservationRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListReservationRecommendationsRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ReservationRecommendationsListResult>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListReservationRecommendationsRequest>,
+  output: __S(324, __c20, 4) as any as S.Schema<ReservationRecommendationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2038,8 +2038,8 @@ export const ListReservationsDetailByReservationOrder: API.OperationMethod<
   ListReservationsDetailByReservationOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListReservationsDetailByReservationOrderRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ReservationDetailsListResult>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListReservationsDetailByReservationOrderRequest>,
+  output: __S(355, __c22, 3) as any as S.Schema<ReservationDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2053,8 +2053,8 @@ export const ListReservationsDetails: API.OperationMethod<
   ListReservationsDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListReservationsDetailsRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ReservationDetailsListResult>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListReservationsDetailsRequest>,
+  output: __S(355, __c22, 3) as any as S.Schema<ReservationDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2068,8 +2068,8 @@ export const ListReservationsSummaries: API.OperationMethod<
   ListReservationsSummariesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListReservationsSummariesRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ReservationSummariesListResult>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListReservationsSummariesRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<ReservationSummariesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2083,8 +2083,8 @@ export const ListReservationsSummaryByReservationOrder: API.OperationMethod<
   ListReservationsSummaryByReservationOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListReservationsSummaryByReservationOrderRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ReservationSummariesListResult>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListReservationsSummaryByReservationOrderRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<ReservationSummariesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2098,8 +2098,8 @@ export const ListReservationTransactionByBillingProfile: API.OperationMethod<
   ListReservationTransactionByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListReservationTransactionByBillingProfileRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<ModernReservationTransactionsListResult>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListReservationTransactionByBillingProfileRequest>,
+  output: __S(436, __c27, 4) as any as S.Schema<ModernReservationTransactionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2113,8 +2113,8 @@ export const ListReservationTransactions: API.OperationMethod<
   ListReservationTransactionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ListReservationTransactionsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<ReservationTransactionsListResult>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListReservationTransactionsRequest>,
+  output: __S(452, __c28, 4) as any as S.Schema<ReservationTransactionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2128,8 +2128,8 @@ export const ListUsageDetails: API.OperationMethod<
   ListUsageDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListUsageDetailsRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<UsageDetailsListResult>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListUsageDetailsRequest>,
+  output: __S(467, __c29, 3) as any as S.Schema<UsageDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2144,11 +2144,11 @@ export const ReservationsDetailsListByReservationOrderAndReservation: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    130,
-    __c16,
-    2,
+    544,
+    __c34,
+    0,
   ) as any as S.Schema<ReservationsDetailsListByReservationOrderAndReservationRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ReservationDetailsListResult>,
+  output: __S(355, __c22, 3) as any as S.Schema<ReservationDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2163,11 +2163,11 @@ export const ReservationsSummariesListByReservationOrderAndReservation: API.Oper
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    131,
-    __c16,
-    3,
+    560,
+    __c35,
+    0,
   ) as any as S.Schema<ReservationsSummariesListByReservationOrderAndReservationRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ReservationSummariesListResult>,
+  output: __S(403, __c25, 3) as any as S.Schema<ReservationSummariesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2179,67 +2179,12 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          startDate: S.String,
-          endDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BudgetTimePeriod" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          operator: S.String,
-          values: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "BudgetComparisonExpression",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "BudgetFilterProperties" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          and: S.optional(__S(4, __c0, 4)),
-          dimensions: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "BudgetFilter" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          operator: S.String,
-          threshold: S.Number,
-          contactEmails: __S(1, __c0, 1),
-          contactRoles: S.optional(__S(1, __c0, 1)),
-          contactGroups: S.optional(__S(1, __c0, 1)),
-          thresholdType: S.optional(S.String),
-          locale: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Notification" });
-    case 7:
-      return S.Record(S.String, __S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           category: S.String,
           amount: S.Number,
           timeGrain: S.String,
-          timePeriod: __S(0, __c0, 0),
-          filter: S.optional(__S(5, __c0, 5)),
-          notifications: S.optional(__S(7, __c0, 7)),
+          timePeriod: __S(32, __c2, 0),
+          filter: S.optional(__S(36, __c2, 4)),
+          notifications: S.optional(__S(38, __c2, 6)),
         }),
       ).annotate({ identifier: "BudgetPropertiesInput" });
     case 1:
@@ -2247,7 +2192,7 @@ function __c1(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           budgetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(0, __c0, 0)),
           eTag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2263,6 +2208,23 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(40, __c2, 8)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BudgetsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           createdBy: S.optional(S.String),
           createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
@@ -2271,40 +2233,90 @@ function __c1(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startDate: S.String,
+          endDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BudgetTimePeriod" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          operator: S.String,
+          values: __S(48, __c3, 0),
+        }),
+      ).annotate({
+        identifier: "BudgetComparisonExpression",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(__S(33, __c2, 1)),
+          tags: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({ identifier: "BudgetFilterProperties" });
     case 3:
+      return S.Array(__S(34, __c2, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          and: S.optional(__S(35, __c2, 3)),
+          dimensions: S.optional(__S(33, __c2, 1)),
+          tags: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({ identifier: "BudgetFilter" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          operator: S.String,
+          threshold: S.Number,
+          contactEmails: __S(48, __c3, 0),
+          contactRoles: S.optional(__S(48, __c3, 0)),
+          contactGroups: S.optional(__S(48, __c3, 0)),
+          thresholdType: S.optional(S.String),
+          locale: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Notification" });
+    case 6:
+      return S.Record(S.String, __S(37, __c2, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           amount: S.optional(S.Number),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "CurrentSpend" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           category: S.String,
           amount: S.Number,
           timeGrain: S.String,
-          timePeriod: __S(0, __c0, 0),
-          filter: S.optional(__S(5, __c0, 5)),
-          currentSpend: S.optional(__S(11, __c1, 3)),
-          notifications: S.optional(__S(7, __c0, 7)),
-          forecastSpend: S.optional(__S(11, __c1, 3)),
+          timePeriod: __S(32, __c2, 0),
+          filter: S.optional(__S(36, __c2, 4)),
+          currentSpend: S.optional(__S(39, __c2, 7)),
+          notifications: S.optional(__S(38, __c2, 6)),
+          forecastSpend: S.optional(__S(39, __c2, 7)),
         }),
       ).annotate({ identifier: "BudgetProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(12, __c1, 4)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BudgetsCreateOrUpdateResponse",
-      });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -2318,410 +2330,15 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteBudgetRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteBudgetResponse",
       });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccountId: S.String.pipe(T.Label()),
-          billingPeriodName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/download",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DownloadPriceSheetByBillingAccountPeriodRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          downloadUrl: S.optional(S.String),
-          validTill: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PricesheetDownloadProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          properties: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "OperationStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          managementGroupId: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Consumption/aggregatedcost",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAggregatedCostByManagementGroupRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(S.suspend(() => __S(24, __c3, 0))),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "ManagementGroupAggregatedCostResult",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          billingPeriodId: S.optional(S.String),
-          usageStart: S.optional(S.String),
-          usageEnd: S.optional(S.String),
-          azureCharges: S.optional(S.Number),
-          marketplaceCharges: S.optional(S.Number),
-          chargesBilledSeparately: S.optional(S.Number),
-          currency: S.optional(S.String),
-          children: S.optional(__S(22, __c2, 6)),
-          includedSubscriptions: S.optional(__S(23, __c2, 7)),
-          excludedSubscriptions: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "ManagementGroupAggregatedCostProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(24, __c3, 0)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "GetAggregatedCostByManagementGroupResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          managementGroupId: S.String.pipe(T.Label()),
-          billingPeriodName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/aggregatedCost",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAggregatedCostForBillingPeriodByManagementGroupRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(24, __c3, 0)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "GetAggregatedCostForBillingPeriodByManagementGroupResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccountId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/balances",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBalanceByBillingAccountRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "BalancePropertiesNewPurchasesDetailsItem",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.optional(S.String),
-          beginningBalance: S.optional(S.Number),
-          endingBalance: S.optional(S.Number),
-          newPurchases: S.optional(S.Number),
-          adjustments: S.optional(S.Number),
-          utilized: S.optional(S.Number),
-          serviceOverage: S.optional(S.Number),
-          chargesBilledSeparately: S.optional(S.Number),
-          totalOverage: S.optional(S.Number),
-          totalUsage: S.optional(S.Number),
-          azureMarketplaceServiceCharges: S.optional(S.Number),
-          billingFrequency: S.optional(S.String),
-          priceHidden: S.optional(S.Boolean),
-          overageRefund: S.optional(S.Number),
-          newPurchasesDetails: S.optional(__S(31, __c3, 7)),
-          adjustmentDetails: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "BalanceProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(32, __c4, 0)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "GetBalanceByBillingAccountResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccountId: S.String.pipe(T.Label()),
-          billingPeriodName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/balances",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBalanceForBillingPeriodByBillingAccountRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label()),
-          budgetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{scope+}/providers/Microsoft.Consumption/budgets/{budgetName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetBudgetRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(12, __c1, 4)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetBudgetResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccountId: S.String.pipe(T.Label()),
-          billingProfileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/credits/balanceSummary",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetCreditRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Amount" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.optional(S.String),
-          value: S.optional(S.Number),
-          exchangeRate: S.optional(S.Number),
-          exchangeRateMonth: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AmountWithExchangeRate" });
-  }
-}
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          estimatedBalance: S.optional(__S(38, __c4, 6)),
-          currentBalance: S.optional(__S(38, __c4, 6)),
-          estimatedBalanceInBillingCurrency: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "CreditBalanceSummary" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resellerId: S.optional(S.String),
-          resellerDescription: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Reseller" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          balanceSummary: S.optional(__S(40, __c5, 0)),
-          pendingCreditAdjustments: S.optional(__S(38, __c4, 6)),
-          expiredCredit: S.optional(__S(38, __c4, 6)),
-          pendingEligibleCharges: S.optional(__S(38, __c4, 6)),
-          creditCurrency: S.optional(S.String),
-          billingCurrency: S.optional(S.String),
-          reseller: S.optional(__S(41, __c5, 1)),
-          isEstimatedBalance: S.optional(S.Boolean),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreditSummaryProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(42, __c5, 2)),
-          eTag: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "GetCreditResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetPriceSheetRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          meterName: S.optional(S.String),
-          meterCategory: S.optional(S.String),
-          meterSubCategory: S.optional(S.String),
-          unit: S.optional(S.String),
-          meterLocation: S.optional(S.String),
-          totalIncludedQuantity: S.optional(S.Number),
-          pretaxStandardRate: S.optional(S.Number),
-          serviceName: S.optional(S.String),
-          serviceTier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MeterDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          term: S.optional(S.String),
-          marketPrice: S.optional(S.Number),
-          effectivePrice: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SavingsPlan" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          billingPeriodId: S.optional(S.String),
-          meterId: S.optional(S.String),
-          meterDetails: S.optional(__S(45, __c5, 5)),
-          unitOfMeasure: S.optional(S.String),
-          includedQuantity: S.optional(S.Number),
-          partNumber: S.optional(S.String),
-          unitPrice: S.optional(S.Number),
-          currencyCode: S.optional(S.String),
-          offerId: S.optional(S.String),
-          savingsPlan: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "PriceSheetProperties" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pricesheets: S.optional(__S(48, __c6, 0)),
-          nextLink: S.optional(S.String),
-          download: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "PriceSheetModel" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(49, __c6, 1)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "GetPriceSheetResponse" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2740,21 +2357,25 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetPriceSheetByBillingPeriodRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(49, __c6, 1)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(724, __c45, 4)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(528, __c33, 0)),
         }),
       ).annotate({
         identifier: "GetPriceSheetByBillingPeriodResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceScope: S.String.pipe(T.Label()),
@@ -2776,10 +2397,10 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetReservationRecommendationDetailRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          appliedScopes: S.optional(__S(23, __c2, 7)),
+          appliedScopes: S.optional(__S(512, __c32, 0)),
           onDemandRate: S.optional(S.Number),
           product: S.optional(S.String),
           region: S.optional(S.String),
@@ -2789,7 +2410,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReservationRecommendationDetailsResourceProperties",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           onDemandCost: S.optional(S.Number),
@@ -2803,16 +2424,12 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReservationRecommendationDetailsCalculatedSavingsProperties",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(98, __c6, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          calculatedSavings: S.optional(__S(56, __c7, 0)),
+          calculatedSavings: S.optional(__S(99, __c6, 3)),
           lookBackPeriod: S.optional(S.Number),
           recommendedQuantity: S.optional(S.Number),
           reservationOrderTerm: S.optional(S.String),
@@ -2822,21 +2439,21 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ReservationRecommendationDetailsSavingsProperties",
       });
-    case 2:
+    case 5:
       return S.Array(S.Number);
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           firstConsumptionDate: S.optional(S.String),
           lastConsumptionDate: S.optional(S.String),
           lookBackUnitType: S.optional(S.String),
-          usageData: S.optional(__S(58, __c7, 2)),
+          usageData: S.optional(__S(101, __c6, 5)),
           usageGrain: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReservationRecommendationDetailsUsageProperties",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           totalRetailUsageInCUs: S.optional(S.Number),
@@ -2844,39 +2461,43 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ReservationRecommendationDetailsProjectedUsageProperties",
       });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           currency: S.optional(S.String),
-          resource: S.optional(__S(54, __c6, 6)),
+          resource: S.optional(__S(97, __c6, 1)),
           resourceGroup: S.optional(S.String),
-          savings: S.optional(__S(57, __c7, 1)),
+          savings: S.optional(__S(100, __c6, 4)),
           scope: S.optional(S.String),
-          usage: S.optional(__S(59, __c7, 3)),
+          usage: S.optional(__S(102, __c6, 6)),
           managementGroupId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          projectedUsage: S.optional(__S(60, __c7, 4)),
+          projectedUsage: S.optional(__S(103, __c6, 7)),
         }),
       ).annotate({
         identifier: "ReservationRecommendationDetailsProperties",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
           location: S.optional(S.String),
           sku: S.optional(S.String),
-          properties: S.optional(__S(61, __c7, 5)),
+          properties: S.optional(__S(104, __c6, 8)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(528, __c33, 0)),
         }),
       ).annotate({
         identifier: "GetReservationRecommendationDetailResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -2889,41 +2510,41 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTagRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
+      return S.Array(S.String);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          value: S.optional(__S(64, __c8, 0)),
+          value: S.optional(__S(113, __c7, 1)),
         }),
       ).annotate({ identifier: "Tag" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
     case 3:
+      return S.Array(__S(114, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(66, __c8, 2)),
+          tags: S.optional(__S(115, __c7, 3)),
           nextLink: S.optional(S.String),
           previousLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TagProperties" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(67, __c8, 3)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(116, __c7, 4)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTagResponse" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -2936,12 +2557,12 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBudgetsRequest" });
-    case 6:
-      return S.Array(__S(36, __c4, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(656, __c41, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(70, __c8, 6)),
+          value: S.optional(__S(129, __c8, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BudgetsListResult" });
@@ -2972,20 +2593,24 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
           kind: S.String,
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChargeSummary" });
     case 2:
-      return S.Array(__S(73, __c9, 1));
+      return S.Array(__S(145, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(74, __c9, 2)),
+          value: S.optional(__S(146, __c9, 2)),
         }),
       ).annotate({ identifier: "ChargesListResult" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
@@ -3001,16 +2626,20 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListEventByBillingAccountRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           transactionDate: S.optional(S.String),
           description: S.optional(S.String),
-          newCredit: S.optional(__S(38, __c4, 6)),
-          adjustments: S.optional(__S(38, __c4, 6)),
-          creditExpired: S.optional(__S(38, __c4, 6)),
-          charges: S.optional(__S(38, __c4, 6)),
-          closedBalance: S.optional(__S(38, __c4, 6)),
+          newCredit: S.optional(__S(688, __c43, 0)),
+          adjustments: S.optional(__S(688, __c43, 0)),
+          creditExpired: S.optional(__S(688, __c43, 0)),
+          charges: S.optional(__S(688, __c43, 0)),
+          closedBalance: S.optional(__S(688, __c43, 0)),
           billingAccountId: S.optional(S.String),
           billingAccountDisplayName: S.optional(S.String),
           eventType: S.optional(S.String),
@@ -3019,44 +2648,44 @@ function __c9(j: number): any {
           billingProfileDisplayName: S.optional(S.String),
           lotId: S.optional(S.String),
           lotSource: S.optional(S.String),
-          canceledCredit: S.optional(__S(38, __c4, 6)),
+          canceledCredit: S.optional(__S(688, __c43, 0)),
           creditCurrency: S.optional(S.String),
           billingCurrency: S.optional(S.String),
-          reseller: S.optional(__S(41, __c5, 1)),
-          creditExpiredInBillingCurrency: S.optional(__S(39, __c4, 7)),
-          newCreditInBillingCurrency: S.optional(__S(39, __c4, 7)),
-          adjustmentsInBillingCurrency: S.optional(__S(39, __c4, 7)),
-          chargesInBillingCurrency: S.optional(__S(39, __c4, 7)),
-          closedBalanceInBillingCurrency: S.optional(__S(39, __c4, 7)),
+          reseller: S.optional(__S(690, __c43, 2)),
+          creditExpiredInBillingCurrency: S.optional(__S(689, __c43, 1)),
+          newCreditInBillingCurrency: S.optional(__S(689, __c43, 1)),
+          adjustmentsInBillingCurrency: S.optional(__S(689, __c43, 1)),
+          chargesInBillingCurrency: S.optional(__S(689, __c43, 1)),
+          closedBalanceInBillingCurrency: S.optional(__S(689, __c43, 1)),
           isEstimatedBalance: S.optional(S.Boolean),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventProperties" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(77, __c9, 5)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(176, __c11, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventSummary" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(79, __c9, 7)),
+          value: S.optional(__S(178, __c11, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "Events" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
@@ -3074,7 +2703,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListEventByBillingProfileRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
@@ -3090,11 +2723,15 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListLotByBillingAccountRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          originalAmount: S.optional(__S(38, __c4, 6)),
-          closedBalance: S.optional(__S(38, __c4, 6)),
+          originalAmount: S.optional(__S(688, __c43, 0)),
+          closedBalance: S.optional(__S(688, __c43, 0)),
           source: S.optional(S.String),
           startDate: S.optional(S.String),
           expirationDate: S.optional(S.String),
@@ -3103,36 +2740,40 @@ function __c10(j: number): any {
           status: S.optional(S.String),
           creditCurrency: S.optional(S.String),
           billingCurrency: S.optional(S.String),
-          originalAmountInBillingCurrency: S.optional(__S(39, __c4, 7)),
-          closedBalanceInBillingCurrency: S.optional(__S(39, __c4, 7)),
-          reseller: S.optional(__S(41, __c5, 1)),
+          originalAmountInBillingCurrency: S.optional(__S(689, __c43, 1)),
+          closedBalanceInBillingCurrency: S.optional(__S(689, __c43, 1)),
+          reseller: S.optional(__S(690, __c43, 2)),
           isEstimatedBalance: S.optional(S.Boolean),
           eTag: S.optional(S.String),
           OrganizationType: S.optional(S.String),
-          usedAmount: S.optional(__S(38, __c4, 6)),
+          usedAmount: S.optional(__S(688, __c43, 0)),
         }),
       ).annotate({ identifier: "LotProperties" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(83, __c10, 3)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(224, __c14, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "LotSummary" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(85, __c10, 5)),
+          value: S.optional(__S(226, __c14, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "Lots" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
@@ -3150,7 +2791,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3167,7 +2808,47 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListLotByCustomerRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccountId: S.String.pipe(T.Label()),
+          billingPeriodName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/download",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DownloadPriceSheetByBillingAccountPeriodRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          downloadUrl: S.optional(S.String),
+          validTill: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PricesheetDownloadProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          properties: S.optional(__S(273, __c17, 1)),
+        }),
+      ).annotate({ identifier: "OperationStatus" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -3183,7 +2864,7 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListMarketplacesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           billingPeriodId: S.optional(S.String),
@@ -3214,28 +2895,32 @@ function __c11(j: number): any {
           isRecurringCharge: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MarketplaceProperties" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(90, __c11, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(289, __c18, 1)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(528, __c33, 0)),
         }),
       ).annotate({ identifier: "Marketplace" });
+    case 3:
+      return S.Array(__S(290, __c18, 2));
     case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(92, __c11, 4)),
+          value: S.optional(__S(291, __c18, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MarketplacesListResult" });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -3246,7 +2931,7 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -3255,28 +2940,28 @@ function __c11(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          display: S.optional(__S(95, __c11, 7)),
+          display: S.optional(__S(305, __c19, 1)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(306, __c19, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(97, __c12, 1)),
+          value: S.optional(__S(307, __c19, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceScope: S.String.pipe(T.Label()),
@@ -3292,7 +2977,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListReservationRecommendationsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -3305,28 +2990,28 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ReservationRecommendationSystemData",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(100, __c12, 4)),
+          systemData: S.optional(__S(321, __c20, 1)),
           location: S.optional(S.String),
           sku: S.optional(S.String),
           etag: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(528, __c33, 0)),
           kind: S.String,
         }),
       ).annotate({
         identifier: "ReservationRecommendation",
       });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(322, __c20, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(102, __c12, 6)),
+          value: S.optional(__S(323, __c20, 3)),
           nextLink: S.optional(S.String),
           previousLink: S.optional(S.String),
         }),
@@ -3335,7 +3020,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3353,7 +3038,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListReservationsDetailByReservationOrderRequest",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reservationOrderId: S.optional(S.String),
@@ -3371,30 +3060,34 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ReservationDetailProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(105, __c13, 1)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(352, __c22, 0)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(528, __c33, 0)),
         }),
       ).annotate({ identifier: "ReservationDetail" });
+    case 2:
+      return S.Array(__S(353, __c22, 1));
     case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(107, __c13, 3)),
+          value: S.optional(__S(354, __c22, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReservationDetailsListResult",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceScope: S.String.pipe(T.Label()),
@@ -3414,7 +3107,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListReservationsDetailsRequest",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceScope: S.String.pipe(T.Label()),
@@ -3435,7 +3132,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListReservationsSummariesRequest",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reservationOrderId: S.optional(S.String),
@@ -3457,34 +3158,34 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ReservationSummaryProperties",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(111, __c13, 7)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(400, __c25, 0)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(528, __c33, 0)),
         }),
       ).annotate({ identifier: "ReservationSummary" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
     case 2:
+      return S.Array(__S(401, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(113, __c14, 1)),
+          value: S.optional(__S(402, __c25, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReservationSummariesListResult",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
@@ -3501,7 +3202,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListReservationsSummaryByReservationOrderRequest",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
@@ -3518,7 +3223,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListReservationTransactionByBillingProfileRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           amount: S.optional(S.Number),
@@ -3545,35 +3250,35 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ModernReservationTransactionProperties",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: __S(117, __c14, 5),
-          tags: S.optional(__S(1, __c0, 1)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(433, __c27, 1),
+          tags: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({
         identifier: "ModernReservationTransaction",
       });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(434, __c27, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(119, __c14, 7)),
+          value: S.optional(__S(435, __c27, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ModernReservationTransactionsListResult",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
@@ -3591,7 +3296,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListReservationTransactionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           eventDate: S.optional(S.String),
@@ -3621,29 +3326,33 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "LegacyReservationTransactionProperties",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(122, __c15, 2)),
-          tags: S.optional(__S(1, __c0, 1)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(449, __c28, 1)),
+          tags: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "ReservationTransaction" });
+    case 3:
+      return S.Array(__S(450, __c28, 2));
     case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(124, __c15, 4)),
+          value: S.optional(__S(451, __c28, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReservationTransactionsListResult",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -3661,32 +3370,115 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsageDetailsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
           kind: S.String,
           etag: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(528, __c33, 0)),
         }),
       ).annotate({ identifier: "UsageDetail" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(465, __c29, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(128, __c16, 0)),
+          value: S.optional(__S(466, __c29, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageDetailsListResult" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          managementGroupId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Consumption/aggregatedcost",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAggregatedCostByManagementGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(498, __c31, 2)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({
+        identifier: "GetAggregatedCostByManagementGroupResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(S.suspend(() => __S(498, __c31, 2))),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({
+        identifier: "ManagementGroupAggregatedCostResult",
+      });
+    case 1:
+      return S.Array(__S(496, __c31, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          billingPeriodId: S.optional(S.String),
+          usageStart: S.optional(S.String),
+          usageEnd: S.optional(S.String),
+          azureCharges: S.optional(S.Number),
+          marketplaceCharges: S.optional(S.Number),
+          chargesBilledSeparately: S.optional(S.Number),
+          currency: S.optional(S.String),
+          children: S.optional(__S(497, __c31, 1)),
+          includedSubscriptions: S.optional(__S(512, __c32, 0)),
+          excludedSubscriptions: S.optional(__S(512, __c32, 0)),
+        }),
+      ).annotate({
+        identifier: "ManagementGroupAggregatedCostProperties",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
@@ -3703,7 +3495,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ReservationsDetailsListByReservationOrderAndReservationRequest",
       });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
@@ -3723,7 +3519,326 @@ function __c16(j: number): any {
       });
   }
 }
-
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          managementGroupId: S.String.pipe(T.Label()),
+          billingPeriodName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/aggregatedCost",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAggregatedCostForBillingPeriodByManagementGroupRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(498, __c31, 2)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(577, __c36, 1)),
+        }),
+      ).annotate({
+        identifier: "GetAggregatedCostForBillingPeriodByManagementGroupResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccountId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/balances",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBalanceByBillingAccountRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "BalancePropertiesNewPurchasesDetailsItem",
+      });
+    case 1:
+      return S.Array(__S(608, __c38, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          currency: S.optional(S.String),
+          beginningBalance: S.optional(S.Number),
+          endingBalance: S.optional(S.Number),
+          newPurchases: S.optional(S.Number),
+          adjustments: S.optional(S.Number),
+          utilized: S.optional(S.Number),
+          serviceOverage: S.optional(S.Number),
+          chargesBilledSeparately: S.optional(S.Number),
+          totalOverage: S.optional(S.Number),
+          totalUsage: S.optional(S.Number),
+          azureMarketplaceServiceCharges: S.optional(S.Number),
+          billingFrequency: S.optional(S.String),
+          priceHidden: S.optional(S.Boolean),
+          overageRefund: S.optional(S.Number),
+          newPurchasesDetails: S.optional(__S(609, __c38, 1)),
+          adjustmentDetails: S.optional(__S(609, __c38, 1)),
+        }),
+      ).annotate({ identifier: "BalanceProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(610, __c38, 2)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({
+        identifier: "GetBalanceByBillingAccountResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccountId: S.String.pipe(T.Label()),
+          billingPeriodName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/balances",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBalanceForBillingPeriodByBillingAccountRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          budgetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{scope+}/providers/Microsoft.Consumption/budgets/{budgetName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetBudgetRequest" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(40, __c2, 8)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetBudgetResponse" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccountId: S.String.pipe(T.Label()),
+          billingProfileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/credits/balanceSummary",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetCreditRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          estimatedBalance: S.optional(__S(688, __c43, 0)),
+          currentBalance: S.optional(__S(688, __c43, 0)),
+          estimatedBalanceInBillingCurrency: S.optional(__S(689, __c43, 1)),
+        }),
+      ).annotate({ identifier: "CreditBalanceSummary" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          balanceSummary: S.optional(__S(673, __c42, 1)),
+          pendingCreditAdjustments: S.optional(__S(688, __c43, 0)),
+          expiredCredit: S.optional(__S(688, __c43, 0)),
+          pendingEligibleCharges: S.optional(__S(688, __c43, 0)),
+          creditCurrency: S.optional(S.String),
+          billingCurrency: S.optional(S.String),
+          reseller: S.optional(__S(690, __c43, 2)),
+          isEstimatedBalance: S.optional(S.Boolean),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreditSummaryProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(674, __c42, 2)),
+          eTag: S.optional(S.String),
+          tags: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({ identifier: "GetCreditResponse" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currency: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Amount" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          currency: S.optional(S.String),
+          value: S.optional(S.Number),
+          exchangeRate: S.optional(S.Number),
+          exchangeRateMonth: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AmountWithExchangeRate" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resellerId: S.optional(S.String),
+          resellerDescription: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Reseller" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetPriceSheetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(724, __c45, 4)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({ identifier: "GetPriceSheetResponse" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          meterName: S.optional(S.String),
+          meterCategory: S.optional(S.String),
+          meterSubCategory: S.optional(S.String),
+          unit: S.optional(S.String),
+          meterLocation: S.optional(S.String),
+          totalIncludedQuantity: S.optional(S.Number),
+          pretaxStandardRate: S.optional(S.Number),
+          serviceName: S.optional(S.String),
+          serviceTier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MeterDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          term: S.optional(S.String),
+          marketPrice: S.optional(S.Number),
+          effectivePrice: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SavingsPlan" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          billingPeriodId: S.optional(S.String),
+          meterId: S.optional(S.String),
+          meterDetails: S.optional(__S(720, __c45, 0)),
+          unitOfMeasure: S.optional(S.String),
+          includedQuantity: S.optional(S.Number),
+          partNumber: S.optional(S.String),
+          unitPrice: S.optional(S.Number),
+          currencyCode: S.optional(S.String),
+          offerId: S.optional(S.String),
+          savingsPlan: S.optional(__S(721, __c45, 1)),
+        }),
+      ).annotate({ identifier: "PriceSheetProperties" });
+    case 3:
+      return S.Array(__S(722, __c45, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          pricesheets: S.optional(__S(723, __c45, 3)),
+          nextLink: S.optional(S.String),
+          download: S.optional(__S(720, __c45, 0)),
+        }),
+      ).annotate({ identifier: "PriceSheetModel" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

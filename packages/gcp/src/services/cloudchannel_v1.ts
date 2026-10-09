@@ -1813,8 +1813,8 @@ export const activateAccountsCustomersEntitlements: API.OperationMethod<
   ActivateAccountsCustomersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ActivateAccountsCustomersEntitlementsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ActivateAccountsCustomersEntitlementsRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1833,8 +1833,8 @@ export const cancelAccountsCustomersEntitlements: API.OperationMethod<
   CancelAccountsCustomersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CancelAccountsCustomersEntitlementsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2112, __c66, 0) as any as S.Schema<CancelAccountsCustomersEntitlementsRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1848,8 +1848,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CancelOperationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2464, __c77, 0) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1868,8 +1868,8 @@ export const changeOfferAccountsCustomersEntitlements: API.OperationMethod<
   ChangeOfferAccountsCustomersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ChangeOfferAccountsCustomersEntitlementsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2945, __c92, 1) as any as S.Schema<ChangeOfferAccountsCustomersEntitlementsRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1888,8 +1888,12 @@ export const changeParametersAccountsCustomersEntitlements: API.OperationMethod<
   ChangeParametersAccountsCustomersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ChangeParametersAccountsCustomersEntitlementsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    3041,
+    __c95,
+    1,
+  ) as any as S.Schema<ChangeParametersAccountsCustomersEntitlementsRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1909,11 +1913,11 @@ export const changeRenewalSettingsAccountsCustomersEntitlements: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20,
-    __c2,
-    4,
+    3073,
+    __c96,
+    1,
   ) as any as S.Schema<ChangeRenewalSettingsAccountsCustomersEntitlementsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1932,11 +1936,11 @@ export const checkCloudIdentityAccountsExistAccounts: API.OperationMethod<
   CheckCloudIdentityAccountsExistAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CheckCloudIdentityAccountsExistAccountsRequest>,
+  input: __S(1, __c0, 1) as any as S.Schema<CheckCloudIdentityAccountsExistAccountsRequest>,
   output: __S(
-    25,
-    __c3,
-    1,
+    4,
+    __c0,
+    4,
   ) as any as S.Schema<GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1956,8 +1960,8 @@ export const createAccountsChannelPartnerLinks: API.OperationMethod<
   CreateAccountsChannelPartnerLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateAccountsChannelPartnerLinksRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerLink>,
+  input: __S(32, __c1, 0) as any as S.Schema<CreateAccountsChannelPartnerLinksRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1977,11 +1981,11 @@ export const createAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    41,
-    __c5,
-    1,
+    128,
+    __c4,
+    0,
   ) as any as S.Schema<CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerRepricingConfig>,
+  output: __S(256, __c8, 0) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerRepricingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2000,8 +2004,8 @@ export const createAccountsChannelPartnerLinksCustomers: API.OperationMethod<
   CreateAccountsChannelPartnerLinksCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateAccountsChannelPartnerLinksCustomersRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GoogleCloudChannelV1Customer>,
+  input: __S(288, __c9, 0) as any as S.Schema<CreateAccountsChannelPartnerLinksCustomersRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<GoogleCloudChannelV1Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2020,8 +2024,8 @@ export const createAccountsCustomers: API.OperationMethod<
   CreateAccountsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateAccountsCustomersRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GoogleCloudChannelV1Customer>,
+  input: __S(384, __c12, 0) as any as S.Schema<CreateAccountsCustomersRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<GoogleCloudChannelV1Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2041,11 +2045,11 @@ export const createAccountsCustomersCustomerRepricingConfigs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    416,
+    __c13,
+    0,
   ) as any as S.Schema<CreateAccountsCustomersCustomerRepricingConfigsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GoogleCloudChannelV1CustomerRepricingConfig>,
+  output: __S(448, __c14, 0) as any as S.Schema<GoogleCloudChannelV1CustomerRepricingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2064,8 +2068,8 @@ export const createAccountsCustomersEntitlements: API.OperationMethod<
   CreateAccountsCustomersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateAccountsCustomersEntitlementsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(481, __c15, 1) as any as S.Schema<CreateAccountsCustomersEntitlementsRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2085,11 +2089,11 @@ export const deleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    58,
-    __c7,
-    2,
+    576,
+    __c18,
+    0,
   ) as any as S.Schema<DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2528, __c79, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2108,8 +2112,8 @@ export const deleteAccountsChannelPartnerLinksCustomers: API.OperationMethod<
   DeleteAccountsChannelPartnerLinksCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteAccountsChannelPartnerLinksCustomersRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteAccountsChannelPartnerLinksCustomersRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2128,8 +2132,8 @@ export const deleteAccountsCustomers: API.OperationMethod<
   DeleteAccountsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteAccountsCustomersRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteAccountsCustomersRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2149,11 +2153,11 @@ export const deleteAccountsCustomersCustomerRepricingConfigs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    672,
+    __c21,
+    0,
   ) as any as S.Schema<DeleteAccountsCustomersCustomerRepricingConfigsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2528, __c79, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2167,8 +2171,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteOperationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(704, __c22, 0) as any as S.Schema<DeleteOperationsRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2187,8 +2191,8 @@ export const fetchReportResultsAccountsReportJobs: API.OperationMethod<
   FetchReportResultsAccountsReportJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<FetchReportResultsAccountsReportJobsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<GoogleCloudChannelV1FetchReportResultsResponse>,
+  input: __S(737, __c23, 1) as any as S.Schema<FetchReportResultsAccountsReportJobsRequest>,
+  output: __S(743, __c23, 7) as any as S.Schema<GoogleCloudChannelV1FetchReportResultsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2202,8 +2206,8 @@ export const getAccountsChannelPartnerLinks: API.OperationMethod<
   GetAccountsChannelPartnerLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetAccountsChannelPartnerLinksRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerLink>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetAccountsChannelPartnerLinksRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerLink>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2221,11 +2225,11 @@ export const getAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    79,
-    __c9,
-    7,
+    896,
+    __c28,
+    0,
   ) as any as S.Schema<GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerRepricingConfig>,
+  output: __S(256, __c8, 0) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerRepricingConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2239,8 +2243,8 @@ export const getAccountsChannelPartnerLinksCustomers: API.OperationMethod<
   GetAccountsChannelPartnerLinksCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetAccountsChannelPartnerLinksCustomersRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GoogleCloudChannelV1Customer>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetAccountsChannelPartnerLinksCustomersRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<GoogleCloudChannelV1Customer>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2254,8 +2258,8 @@ export const getAccountsCustomers: API.OperationMethod<
   GetAccountsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetAccountsCustomersRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GoogleCloudChannelV1Customer>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetAccountsCustomersRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<GoogleCloudChannelV1Customer>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2269,8 +2273,8 @@ export const getAccountsCustomersCustomerRepricingConfigs: API.OperationMethod<
   GetAccountsCustomersCustomerRepricingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetAccountsCustomersCustomerRepricingConfigsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GoogleCloudChannelV1CustomerRepricingConfig>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetAccountsCustomersCustomerRepricingConfigsRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<GoogleCloudChannelV1CustomerRepricingConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2284,8 +2288,8 @@ export const getAccountsCustomersEntitlements: API.OperationMethod<
   GetAccountsCustomersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetAccountsCustomersEntitlementsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GoogleCloudChannelV1Entitlement>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetAccountsCustomersEntitlementsRequest>,
+  output: __S(548, __c17, 4) as any as S.Schema<GoogleCloudChannelV1Entitlement>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2299,8 +2303,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetOperationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2319,8 +2323,8 @@ export const importAccountsChannelPartnerLinksCustomers: API.OperationMethod<
   ImportAccountsChannelPartnerLinksCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ImportAccountsChannelPartnerLinksCustomersRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GoogleCloudChannelV1Customer>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ImportAccountsChannelPartnerLinksCustomersRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<GoogleCloudChannelV1Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2339,8 +2343,8 @@ export const importAccountsCustomers: API.OperationMethod<
   ImportAccountsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ImportAccountsCustomersRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GoogleCloudChannelV1Customer>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ImportAccountsCustomersRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<GoogleCloudChannelV1Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2355,8 +2359,12 @@ export const listAccountsChannelPartnerLinks: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudChannelV1ListChannelPartnerLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListAccountsChannelPartnerLinksRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<GoogleCloudChannelV1ListChannelPartnerLinksResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListAccountsChannelPartnerLinksRequest>,
+  output: __S(
+    1186,
+    __c37,
+    2,
+  ) as any as S.Schema<GoogleCloudChannelV1ListChannelPartnerLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2376,14 +2384,14 @@ export const listAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API.
   GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    91,
-    __c11,
-    3,
+    1216,
+    __c38,
+    0,
   ) as any as S.Schema<ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>,
   output: __S(
-    93,
-    __c11,
-    5,
+    1218,
+    __c38,
+    2,
   ) as any as S.Schema<GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2400,8 +2408,8 @@ export const listAccountsChannelPartnerLinksCustomers: API.PaginatedOperationMet
   GcpOpContext,
   GoogleCloudChannelV1ListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListAccountsChannelPartnerLinksCustomersRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GoogleCloudChannelV1ListCustomersResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListAccountsChannelPartnerLinksCustomersRequest>,
+  output: __S(1281, __c40, 1) as any as S.Schema<GoogleCloudChannelV1ListCustomersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2417,8 +2425,8 @@ export const listAccountsCustomers: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudChannelV1ListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListAccountsCustomersRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GoogleCloudChannelV1ListCustomersResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListAccountsCustomersRequest>,
+  output: __S(1281, __c40, 1) as any as S.Schema<GoogleCloudChannelV1ListCustomersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2434,11 +2442,15 @@ export const listAccountsCustomersCustomerRepricingConfigs: API.PaginatedOperati
   GcpOpContext,
   GoogleCloudChannelV1ListCustomerRepricingConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListAccountsCustomersCustomerRepricingConfigsRequest>,
+  input: __S(
+    1344,
+    __c42,
+    0,
+  ) as any as S.Schema<ListAccountsCustomersCustomerRepricingConfigsRequest>,
   output: __S(
-    100,
-    __c12,
-    4,
+    1346,
+    __c42,
+    2,
   ) as any as S.Schema<GoogleCloudChannelV1ListCustomerRepricingConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2455,8 +2467,8 @@ export const listAccountsCustomersEntitlements: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudChannelV1ListEntitlementsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListAccountsCustomersEntitlementsRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<GoogleCloudChannelV1ListEntitlementsResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListAccountsCustomersEntitlementsRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<GoogleCloudChannelV1ListEntitlementsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2472,8 +2484,8 @@ export const listAccountsOffers: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudChannelV1ListOffersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListAccountsOffersRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GoogleCloudChannelV1ListOffersResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ListAccountsOffersRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<GoogleCloudChannelV1ListOffersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2489,8 +2501,8 @@ export const listAccountsReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudChannelV1ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListAccountsReportsRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<GoogleCloudChannelV1ListReportsResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListAccountsReportsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<GoogleCloudChannelV1ListReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2506,8 +2518,8 @@ export const listAccountsSkuGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudChannelV1ListSkuGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListAccountsSkuGroupsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<GoogleCloudChannelV1ListSkuGroupsResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListAccountsSkuGroupsRequest>,
+  output: __S(1731, __c54, 3) as any as S.Schema<GoogleCloudChannelV1ListSkuGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2523,11 +2535,11 @@ export const listAccountsSkuGroupsBillableSkus: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudChannelV1ListSkuGroupBillableSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListAccountsSkuGroupsBillableSkusRequest>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListAccountsSkuGroupsBillableSkusRequest>,
   output: __S(
-    138,
-    __c17,
-    2,
+    1763,
+    __c55,
+    3,
   ) as any as S.Schema<GoogleCloudChannelV1ListSkuGroupBillableSkusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2548,11 +2560,15 @@ export const listEntitlementChangesAccountsCustomersEntitlements: API.PaginatedO
   GoogleCloudChannelV1ListEntitlementChangesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    139,
-    __c17,
-    3,
+    1792,
+    __c56,
+    0,
   ) as any as S.Schema<ListEntitlementChangesAccountsCustomersEntitlementsRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<GoogleCloudChannelV1ListEntitlementChangesResponse>,
+  output: __S(
+    1795,
+    __c56,
+    3,
+  ) as any as S.Schema<GoogleCloudChannelV1ListEntitlementChangesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2568,8 +2584,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2585,8 +2601,8 @@ export const listProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudChannelV1ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<ListProductsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<GoogleCloudChannelV1ListProductsResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListProductsRequest>,
+  output: __S(1858, __c58, 2) as any as S.Schema<GoogleCloudChannelV1ListProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2602,8 +2618,8 @@ export const listProductsSkus: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudChannelV1ListSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListProductsSkusRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<GoogleCloudChannelV1ListSkusResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListProductsSkusRequest>,
+  output: __S(1890, __c59, 2) as any as S.Schema<GoogleCloudChannelV1ListSkusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2619,8 +2635,8 @@ export const listPurchasableOffersAccountsCustomers: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudChannelV1ListPurchasableOffersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListPurchasableOffersAccountsCustomersRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<GoogleCloudChannelV1ListPurchasableOffersResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListPurchasableOffersAccountsCustomersRequest>,
+  output: __S(1921, __c60, 1) as any as S.Schema<GoogleCloudChannelV1ListPurchasableOffersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2636,8 +2652,8 @@ export const listPurchasableSkusAccountsCustomers: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudChannelV1ListPurchasableSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ListPurchasableSkusAccountsCustomersRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<GoogleCloudChannelV1ListPurchasableSkusResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListPurchasableSkusAccountsCustomersRequest>,
+  output: __S(1987, __c62, 3) as any as S.Schema<GoogleCloudChannelV1ListPurchasableSkusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2653,8 +2669,8 @@ export const listSubscribersAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudChannelV1ListSubscribersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListSubscribersAccountsRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GoogleCloudChannelV1ListSubscribersResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListSubscribersAccountsRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<GoogleCloudChannelV1ListSubscribersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2670,8 +2686,8 @@ export const listSubscribersIntegrators: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudChannelV1ListSubscribersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListSubscribersIntegratorsRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GoogleCloudChannelV1ListSubscribersResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListSubscribersIntegratorsRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<GoogleCloudChannelV1ListSubscribersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2691,8 +2707,12 @@ export const listTransferableOffersAccounts: API.OperationMethod<
   ListTransferableOffersAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<ListTransferableOffersAccountsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleCloudChannelV1ListTransferableOffersResponse>,
+  input: __S(2145, __c67, 1) as any as S.Schema<ListTransferableOffersAccountsRequest>,
+  output: __S(
+    2146,
+    __c67,
+    2,
+  ) as any as S.Schema<GoogleCloudChannelV1ListTransferableOffersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2711,8 +2731,8 @@ export const listTransferableSkusAccounts: API.OperationMethod<
   ListTransferableSkusAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<ListTransferableSkusAccountsRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<GoogleCloudChannelV1ListTransferableSkusResponse>,
+  input: __S(2177, __c68, 1) as any as S.Schema<ListTransferableSkusAccountsRequest>,
+  output: __S(2181, __c68, 5) as any as S.Schema<GoogleCloudChannelV1ListTransferableSkusResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2726,8 +2746,8 @@ export const lookupOfferAccountsCustomersEntitlements: API.OperationMethod<
   LookupOfferAccountsCustomersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<LookupOfferAccountsCustomersEntitlementsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<GoogleCloudChannelV1Offer>,
+  input: __S(2208, __c69, 0) as any as S.Schema<LookupOfferAccountsCustomersEntitlementsRequest>,
+  output: __S(1552, __c48, 16) as any as S.Schema<GoogleCloudChannelV1Offer>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2746,8 +2766,8 @@ export const patchAccountsChannelPartnerLinks: API.OperationMethod<
   PatchAccountsChannelPartnerLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<PatchAccountsChannelPartnerLinksRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerLink>,
+  input: __S(2241, __c70, 1) as any as S.Schema<PatchAccountsChannelPartnerLinksRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2767,11 +2787,11 @@ export const patchAccountsChannelPartnerLinksChannelPartnerRepricingConfigs: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    175,
-    __c21,
-    7,
+    2272,
+    __c71,
+    0,
   ) as any as S.Schema<PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerRepricingConfig>,
+  output: __S(256, __c8, 0) as any as S.Schema<GoogleCloudChannelV1ChannelPartnerRepricingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2790,8 +2810,8 @@ export const patchAccountsChannelPartnerLinksCustomers: API.OperationMethod<
   PatchAccountsChannelPartnerLinksCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<PatchAccountsChannelPartnerLinksCustomersRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GoogleCloudChannelV1Customer>,
+  input: __S(2304, __c72, 0) as any as S.Schema<PatchAccountsChannelPartnerLinksCustomersRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<GoogleCloudChannelV1Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2805,8 +2825,8 @@ export const patchAccountsCustomers: API.OperationMethod<
   PatchAccountsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<PatchAccountsCustomersRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GoogleCloudChannelV1Customer>,
+  input: __S(2336, __c73, 0) as any as S.Schema<PatchAccountsCustomersRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<GoogleCloudChannelV1Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2826,11 +2846,11 @@ export const patchAccountsCustomersCustomerRepricingConfigs: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    178,
-    __c22,
-    2,
+    2368,
+    __c74,
+    0,
   ) as any as S.Schema<PatchAccountsCustomersCustomerRepricingConfigsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GoogleCloudChannelV1CustomerRepricingConfig>,
+  output: __S(448, __c14, 0) as any as S.Schema<GoogleCloudChannelV1CustomerRepricingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2849,8 +2869,8 @@ export const provisionCloudIdentityAccountsCustomers: API.OperationMethod<
   ProvisionCloudIdentityAccountsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ProvisionCloudIdentityAccountsCustomersRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2402, __c75, 2) as any as S.Schema<ProvisionCloudIdentityAccountsCustomersRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2865,14 +2885,14 @@ export const queryEligibleBillingAccountsAccountsCustomers: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    182,
-    __c22,
-    6,
+    2432,
+    __c76,
+    0,
   ) as any as S.Schema<QueryEligibleBillingAccountsAccountsCustomersRequest>,
   output: __S(
-    188,
-    __c23,
-    4,
+    2438,
+    __c76,
+    6,
   ) as any as S.Schema<GoogleCloudChannelV1QueryEligibleBillingAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2887,8 +2907,8 @@ export const registerAccounts: API.OperationMethod<
   RegisterAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<RegisterAccountsRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GoogleCloudChannelV1RegisterSubscriberResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<RegisterAccountsRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<GoogleCloudChannelV1RegisterSubscriberResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2907,8 +2927,8 @@ export const registerSubscriberIntegrators: API.OperationMethod<
   RegisterSubscriberIntegratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<RegisterSubscriberIntegratorsRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GoogleCloudChannelV1RegisterSubscriberResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<RegisterSubscriberIntegratorsRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<GoogleCloudChannelV1RegisterSubscriberResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2922,8 +2942,8 @@ export const runAccountsReports: API.OperationMethod<
   RunAccountsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<RunAccountsReportsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2689, __c84, 1) as any as S.Schema<RunAccountsReportsRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2943,11 +2963,11 @@ export const startPaidServiceAccountsCustomersEntitlements: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    195,
-    __c24,
-    3,
+    2720,
+    __c85,
+    0,
   ) as any as S.Schema<StartPaidServiceAccountsCustomersEntitlementsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2966,8 +2986,8 @@ export const suspendAccountsCustomersEntitlements: API.OperationMethod<
   SuspendAccountsCustomersEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<SuspendAccountsCustomersEntitlementsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2752, __c86, 0) as any as S.Schema<SuspendAccountsCustomersEntitlementsRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2986,8 +3006,8 @@ export const transferEntitlementsAccountsCustomers: API.OperationMethod<
   TransferEntitlementsAccountsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<TransferEntitlementsAccountsCustomersRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2785, __c87, 1) as any as S.Schema<TransferEntitlementsAccountsCustomersRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3007,11 +3027,11 @@ export const transferEntitlementsToGoogleAccountsCustomers: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    200,
-    __c25,
-    0,
+    2817,
+    __c88,
+    1,
   ) as any as S.Schema<TransferEntitlementsToGoogleAccountsCustomersRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3025,8 +3045,8 @@ export const unregisterAccounts: API.OperationMethod<
   UnregisterAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<UnregisterAccountsRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GoogleCloudChannelV1UnregisterSubscriberResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<UnregisterAccountsRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<GoogleCloudChannelV1UnregisterSubscriberResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3045,8 +3065,8 @@ export const unregisterSubscriberIntegrators: API.OperationMethod<
   UnregisterSubscriberIntegratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<UnregisterSubscriberIntegratorsRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GoogleCloudChannelV1UnregisterSubscriberResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<UnregisterSubscriberIntegratorsRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<GoogleCloudChannelV1UnregisterSubscriberResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3058,229 +3078,17 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1ActivateEntitlementRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:activate",
-            baseUrl: "https://cloudchannel.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateAccountsCustomersEntitlementsRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(3, __c0, 3)),
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleRpcStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(2, __c0, 2)),
-          error: S.optional(__S(4, __c0, 4)),
-          response: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          done: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningOperation",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://cloudchannel.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelAccountsCustomersEntitlementsRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleLongrunningCancelOperationRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://cloudchannel.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CancelOperationsRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleProtobufEmpty",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          boolValue: S.optional(S.Boolean),
-          protoValue: S.optional(__S(2, __c0, 2)),
-          doubleValue: S.optional(S.Number),
-          stringValue: S.optional(S.String),
-          int64Value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1Value",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(__S(10, __c1, 2)),
-          editable: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1Parameter",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          billingAccount: S.optional(S.String),
-          offer: S.optional(S.String),
-          parameters: S.optional(__S(12, __c1, 4)),
-          priceReferenceId: S.optional(S.String),
-          purchaseOrderId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1ChangeOfferRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:changeOffer",
-            baseUrl: "https://cloudchannel.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ChangeOfferAccountsCustomersEntitlementsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          purchaseOrderId: S.optional(S.String),
-          parameters: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1ChangeParametersRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:changeParameters",
-            baseUrl: "https://cloudchannel.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ChangeParametersAccountsCustomersEntitlementsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(S.Number),
-          periodType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1Period",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resizeUnitCount: S.optional(S.Boolean),
-          paymentPlan: S.optional(S.String),
-          paymentCycle: S.optional(__S(17, __c2, 1)),
-          enableRenewal: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1RenewalSettings",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          renewalSettings: S.optional(__S(18, __c2, 2)),
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1ChangeRenewalSettingsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:changeRenewalSettings",
-            baseUrl: "https://cloudchannel.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ChangeRenewalSettingsAccountsCustomersEntitlementsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           primaryAdminEmail: S.optional(S.String),
           domain: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3291,7 +3099,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CheckCloudIdentityAccountsExistAccountsRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           customerType: S.optional(S.String),
@@ -3304,65 +3112,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1CloudIdentityCustomerAccount",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          cloudIdentityAccounts: S.optional(__S(24, __c3, 0)),
+          cloudIdentityAccounts: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          instituteSize: S.optional(S.String),
-          instituteType: S.optional(S.String),
-          website: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1EduData",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customerType: S.optional(S.String),
-          isDomainVerified: S.optional(S.Boolean),
-          eduData: S.optional(__S(26, __c3, 2)),
-          languageCode: S.optional(S.String),
-          adminConsoleUri: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-          alternateEmail: S.optional(S.String),
-          primaryDomain: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1CloudIdentityInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resellerCloudIdentityId: S.optional(S.String),
-          name: S.optional(S.String),
-          inviteLinkUri: S.optional(S.String),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          linkState: S.optional(S.String),
-          channelPartnerCloudIdentityInfo: S.optional(__S(27, __c3, 3)),
-          publicId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1ChannelPartnerLink",
-      });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3373,21 +3141,53 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAccountsChannelPartnerLinksRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          day: S.optional(S.Number),
-          year: S.optional(S.Number),
-          month: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeDate" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          skuGroup: S.optional(S.String),
+          instituteSize: S.optional(S.String),
+          instituteType: S.optional(S.String),
+          website: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudChannelV1SkuGroupCondition",
+        identifier: "GoogleCloudChannelV1EduData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customerType: S.optional(S.String),
+          isDomainVerified: S.optional(S.Boolean),
+          eduData: S.optional(__S(64, __c2, 0)),
+          languageCode: S.optional(S.String),
+          adminConsoleUri: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+          alternateEmail: S.optional(S.String),
+          primaryDomain: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1CloudIdentityInfo",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resellerCloudIdentityId: S.optional(S.String),
+          name: S.optional(S.String),
+          inviteLinkUri: S.optional(S.String),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          linkState: S.optional(S.String),
+          channelPartnerCloudIdentityInfo: S.optional(__S(65, __c2, 1)),
+          publicId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1ChannelPartnerLink",
       });
   }
 }
@@ -3396,21 +3196,64 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          skuGroupCondition: S.optional(__S(31, __c3, 7)),
-        }),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/channelPartnerRepricingConfigs",
+            baseUrl: "https://cloudchannel.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "GoogleCloudChannelV1RepricingCondition",
+        identifier: "CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypeDecimal" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          day: S.optional(S.Number),
+          year: S.optional(S.Number),
+          month: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleTypeDate" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          skuGroup: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1SkuGroupCondition",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          skuGroupCondition: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1RepricingCondition",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          percentage: S.optional(__S(33, __c4, 1)),
+          percentage: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1PercentageAdjustment",
@@ -3418,7 +3261,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          percentageAdjustment: S.optional(__S(34, __c4, 2)),
+          percentageAdjustment: S.optional(__S(226, __c7, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1RepricingAdjustment",
@@ -3426,15 +3269,15 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          repricingCondition: S.optional(__S(32, __c4, 0)),
+          repricingCondition: S.optional(__S(225, __c7, 1)),
           rebillingBasis: S.optional(S.String),
-          adjustment: S.optional(__S(35, __c4, 3)),
+          adjustment: S.optional(__S(227, __c7, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ConditionalOverride",
       });
     case 5:
-      return S.Array(__S(36, __c4, 4));
+      return S.Array(__S(228, __c7, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3446,55 +3289,67 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          effectiveInvoiceMonth: S.optional(__S(30, __c3, 6)),
-          conditionalOverrides: S.optional(__S(37, __c4, 5)),
-          adjustment: S.optional(__S(35, __c4, 3)),
+          effectiveInvoiceMonth: S.optional(__S(192, __c6, 0)),
+          conditionalOverrides: S.optional(__S(229, __c7, 5)),
+          adjustment: S.optional(__S(227, __c7, 3)),
           rebillingBasis: S.optional(S.String),
-          channelPartnerGranularity: S.optional(__S(7, __c0, 7)),
-          entitlementGranularity: S.optional(__S(38, __c4, 6)),
+          channelPartnerGranularity: S.optional(__S(2496, __c78, 0)),
+          entitlementGranularity: S.optional(__S(230, __c7, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1RepricingConfig",
       });
   }
 }
-function __c5(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          repricingConfig: S.optional(__S(39, __c4, 7)),
+          repricingConfig: S.optional(__S(231, __c7, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ChannelPartnerRepricingConfig",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(354, __c11, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1/{+parent}/channelPartnerRepricingConfigs",
+            uri: "v1/{+parent}/customers",
             baseUrl: "https://cloudchannel.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest",
+        identifier: "CreateAccountsChannelPartnerLinksCustomersRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sublocality: S.optional(S.String),
           sortingCode: S.optional(S.String),
-          recipients: S.optional(__S(42, __c5, 2)),
+          recipients: S.optional(__S(320, __c10, 0)),
           administrativeArea: S.optional(S.String),
-          addressLines: S.optional(__S(42, __c5, 2)),
+          addressLines: S.optional(__S(320, __c10, 0)),
           languageCode: S.optional(S.String),
           organization: S.optional(S.String),
           regionCode: S.optional(S.String),
@@ -3503,7 +3358,7 @@ function __c5(j: number): any {
           locality: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypePostalAddress" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           phone: S.optional(S.String),
@@ -3516,18 +3371,18 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1ContactInfo",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String),
-          orgPostalAddress: S.optional(__S(43, __c5, 3)),
+          orgPostalAddress: S.optional(__S(352, __c11, 0)),
           updateTime: S.optional(S.String),
           cloudIdentityId: S.optional(S.String),
           channelPartnerId: S.optional(S.String),
-          cloudIdentityInfo: S.optional(__S(27, __c3, 3)),
+          cloudIdentityInfo: S.optional(__S(65, __c2, 1)),
           createTime: S.optional(S.String),
           domain: S.optional(S.String),
-          primaryContactInfo: S.optional(__S(44, __c5, 4)),
+          primaryContactInfo: S.optional(__S(353, __c11, 1)),
           orgDisplayName: S.optional(S.String),
           correlationId: S.optional(S.String),
           name: S.optional(S.String),
@@ -3537,26 +3392,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1Customer",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/customers",
-            baseUrl: "https://cloudchannel.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsChannelPartnerLinksCustomersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(354, __c11, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3569,23 +3413,13 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          repricingConfig: S.optional(__S(39, __c4, 7)),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1CustomerRepricingConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3596,74 +3430,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateAccountsCustomersCustomerRepricingConfigsRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String),
-          trial: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1TrialSettings",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          skuId: S.optional(S.String),
-          productId: S.optional(S.String),
-          provisioningId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1ProvisionedService",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          baseEntitlement: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1AssociationInfo",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          renewalSettings: S.optional(__S(18, __c2, 2)),
-          endTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1CommitmentSettings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          trialSettings: S.optional(__S(50, __c6, 2)),
-          parameters: S.optional(__S(12, __c1, 4)),
-          provisionedService: S.optional(__S(51, __c6, 3)),
-          updateTime: S.optional(S.String),
-          suspensionReasons: S.optional(__S(52, __c6, 4)),
-          billingAccount: S.optional(S.String),
-          associationInfo: S.optional(__S(53, __c6, 5)),
-          name: S.optional(S.String),
-          purchaseOrderId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          createTime: S.optional(S.String),
-          offer: S.optional(S.String),
-          commitmentSettings: S.optional(__S(54, __c6, 6)),
-          priceReferenceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1Entitlement",
-      });
   }
 }
-function __c7(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entitlement: S.optional(__S(55, __c6, 7)),
+          repricingConfig: S.optional(__S(231, __c7, 7)),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1CustomerRepricingConfig",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entitlement: S.optional(__S(548, __c17, 4)),
           requestId: S.optional(S.String),
         }),
       ).annotate({
@@ -3673,7 +3461,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(480, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3684,7 +3472,79 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateAccountsCustomersEntitlementsRequest",
       });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          skuId: S.optional(S.String),
+          productId: S.optional(S.String),
+          provisioningId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1ProvisionedService",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String),
+          trial: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1TrialSettings",
+      });
+    case 1:
+      return S.Array(S.String);
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          baseEntitlement: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1AssociationInfo",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          renewalSettings: S.optional(__S(3136, __c98, 0)),
+          endTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1CommitmentSettings",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          trialSettings: S.optional(__S(544, __c17, 0)),
+          parameters: S.optional(__S(3009, __c94, 1)),
+          provisionedService: S.optional(__S(512, __c16, 0)),
+          updateTime: S.optional(S.String),
+          suspensionReasons: S.optional(__S(545, __c17, 1)),
+          billingAccount: S.optional(S.String),
+          associationInfo: S.optional(__S(546, __c17, 2)),
+          name: S.optional(S.String),
+          purchaseOrderId: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          createTime: S.optional(S.String),
+          offer: S.optional(S.String),
+          commitmentSettings: S.optional(__S(547, __c17, 3)),
+          priceReferenceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1Entitlement",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3698,7 +3558,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3712,7 +3576,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsChannelPartnerLinksCustomersRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3726,7 +3594,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsCustomersRequest",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3740,7 +3612,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsCustomersCustomerRepricingConfigsRequest",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3752,25 +3628,25 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteOperationsRequest" });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          partitionKeys: S.optional(__S(42, __c5, 2)),
+          partitionKeys: S.optional(__S(320, __c10, 0)),
           pageSize: S.optional(S.Number),
           pageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1FetchReportResultsRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           reportJob: S.String.pipe(T.Label()),
-          body: S.optional(__S(63, __c7, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(736, __c23, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3781,75 +3657,54 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "FetchReportResultsAccountsReportJobsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleTypeTimeZone" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          minutes: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-          timeZone: S.optional(__S(65, __c8, 1)),
-          day: S.optional(S.Number),
-          month: S.optional(S.Number),
-          hours: S.optional(S.Number),
-          nanos: S.optional(S.Number),
-          utcOffset: S.optional(S.String),
-          year: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeDateTime" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          invoiceStartDate: S.optional(__S(30, __c3, 6)),
-          invoiceEndDate: S.optional(__S(30, __c3, 6)),
-          usageStartDateTime: S.optional(__S(66, __c8, 2)),
-          usageEndDateTime: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1DateRange",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dataType: S.optional(S.String),
-          displayName: S.optional(S.String),
-          columnId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1Column",
-      });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          columns: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1Report",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          precedingDateRange: S.optional(__S(67, __c8, 3)),
-          report: S.optional(__S(70, __c8, 6)),
+          precedingDateRange: S.optional(__S(834, __c26, 2)),
+          report: S.optional(__S(802, __c25, 2)),
           rowCount: S.optional(S.String),
-          dateRange: S.optional(__S(67, __c8, 3)),
+          dateRange: S.optional(__S(834, __c26, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ReportResultsMetadata",
       });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          stringValue: S.optional(S.String),
+          intValue: S.optional(S.String),
+          decimalValue: S.optional(__S(160, __c5, 0)),
+          dateValue: S.optional(__S(192, __c6, 0)),
+          moneyValue: S.optional(__S(768, __c24, 0)),
+          dateTimeValue: S.optional(__S(833, __c26, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1ReportValue",
+      });
+    case 4:
+      return S.Array(__S(739, __c23, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(740, __c23, 4)),
+          partitionKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudChannelV1Row" });
+    case 6:
+      return S.Array(__S(741, __c23, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          reportMetadata: S.optional(__S(738, __c23, 2)),
+          rows: S.optional(__S(742, __c23, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1FetchReportResultsResponse",
+      });
   }
 }
-function __c9(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3859,41 +3714,74 @@ function __c9(j: number): any {
           nanos: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleTypeMoney" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataType: S.optional(S.String),
+          displayName: S.optional(S.String),
+          columnId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1Column",
+      });
+    case 1:
+      return S.Array(__S(800, __c25, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          columns: S.optional(__S(801, __c25, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1Report",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleTypeTimeZone" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          stringValue: S.optional(S.String),
-          intValue: S.optional(S.String),
-          decimalValue: S.optional(__S(33, __c4, 1)),
-          dateValue: S.optional(__S(30, __c3, 6)),
-          moneyValue: S.optional(__S(72, __c9, 0)),
-          dateTimeValue: S.optional(__S(66, __c8, 2)),
+          minutes: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+          timeZone: S.optional(__S(832, __c26, 0)),
+          day: S.optional(S.Number),
+          month: S.optional(S.Number),
+          hours: S.optional(S.Number),
+          nanos: S.optional(S.Number),
+          utcOffset: S.optional(S.String),
+          year: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1ReportValue",
-      });
+      ).annotate({ identifier: "GoogleTypeDateTime" });
     case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(74, __c9, 2)),
-          partitionKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudChannelV1Row" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          reportMetadata: S.optional(__S(71, __c8, 7)),
-          rows: S.optional(__S(76, __c9, 4)),
+          invoiceStartDate: S.optional(__S(192, __c6, 0)),
+          invoiceEndDate: S.optional(__S(192, __c6, 0)),
+          usageStartDateTime: S.optional(__S(833, __c26, 1)),
+          usageEndDateTime: S.optional(__S(833, __c26, 1)),
         }),
       ).annotate({
-        identifier: "GoogleCloudChannelV1FetchReportResultsResponse",
+        identifier: "GoogleCloudChannelV1DateRange",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3908,7 +3796,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetAccountsChannelPartnerLinksRequest",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3924,7 +3816,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3940,7 +3832,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAccountsChannelPartnerLinksCustomersRequest",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3954,7 +3850,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAccountsCustomersRequest",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3968,7 +3868,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAccountsCustomersCustomerRepricingConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3982,7 +3886,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAccountsCustomersEntitlementsRequest",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3994,7 +3902,30 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOperationsRequest" });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1120, __c35, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/customers:import",
+            baseUrl: "https://cloudchannel.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportAccountsChannelPartnerLinksCustomersRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           primaryAdminEmail: S.optional(S.String),
@@ -4008,26 +3939,15 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1ImportCustomerRequest",
       });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/customers:import",
-            baseUrl: "https://cloudchannel.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportAccountsChannelPartnerLinksCustomersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1120, __c35, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4040,7 +3960,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4060,17 +3980,21 @@ function __c11(j: number): any {
         identifier: "ListAccountsChannelPartnerLinksRequest",
       });
     case 1:
-      return S.Array(__S(28, __c3, 4));
+      return S.Array(__S(96, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          channelPartnerLinks: S.optional(__S(89, __c11, 1)),
+          channelPartnerLinks: S.optional(__S(1185, __c37, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListChannelPartnerLinksResponse",
       });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4087,18 +4011,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest",
       });
-    case 4:
-      return S.Array(__S(40, __c5, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          channelPartnerRepricingConfigs: S.optional(__S(92, __c11, 4)),
+          channelPartnerRepricingConfigs: S.optional(__S(1217, __c38, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4115,22 +4043,26 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListAccountsChannelPartnerLinksCustomersRequest",
       });
-    case 7:
-      return S.Array(__S(45, __c5, 5));
   }
 }
-function __c12(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(354, __c11, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          customers: S.optional(__S(95, __c11, 7)),
+          customers: S.optional(__S(1280, __c40, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListCustomersResponse",
       });
-    case 1:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4147,7 +4079,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAccountsCustomersRequest",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4164,18 +4100,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAccountsCustomersCustomerRepricingConfigsRequest",
       });
-    case 3:
-      return S.Array(__S(48, __c6, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          customerRepricingConfigs: S.optional(__S(99, __c12, 3)),
+          customerRepricingConfigs: S.optional(__S(1345, __c42, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListCustomerRepricingConfigsResponse",
       });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4191,12 +4131,10 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAccountsCustomersEntitlementsRequest",
       });
-    case 6:
-      return S.Array(__S(55, __c6, 7));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          entitlements: S.optional(__S(102, __c12, 6)),
+          entitlements: S.optional(__S(1408, __c44, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4204,7 +4142,13 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(548, __c17, 4));
+  }
+}
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4226,33 +4170,21 @@ function __c13(j: number): any {
         identifier: "ListAccountsOffersRequest",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          trialPeriod: S.optional(__S(17, __c2, 1)),
-          billingAccount: S.optional(S.String),
-          paymentType: S.optional(S.String),
-          paymentCycle: S.optional(__S(17, __c2, 1)),
-          paymentPlan: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudChannelV1Plan" });
+      return S.Array(__S(1552, __c48, 16));
     case 2:
-      return S.Array(__S(10, __c1, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          minValue: S.optional(__S(10, __c1, 2)),
-          allowedValues: S.optional(__S(106, __c13, 2)),
-          parameterType: S.optional(S.String),
-          optional: S.optional(S.Boolean),
-          maxValue: S.optional(__S(10, __c1, 2)),
+          nextPageToken: S.optional(S.String),
+          offers: S.optional(__S(1441, __c45, 1)),
         }),
       ).annotate({
-        identifier: "GoogleCloudChannelV1ParameterDefinition",
+        identifier: "GoogleCloudChannelV1ListOffersResponse",
       });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
@@ -4262,155 +4194,171 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1Media",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          defaultLogo: S.optional(__S(109, __c13, 5)),
+          defaultLogo: S.optional(__S(1472, __c46, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1MarketingInfo",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          marketingInfo: S.optional(__S(110, __c13, 6)),
+          marketingInfo: S.optional(__S(1473, __c46, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1Product",
       });
   }
 }
-function __c14(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          marketingInfo: S.optional(__S(110, __c13, 6)),
-          product: S.optional(__S(111, __c13, 7)),
+          marketingInfo: S.optional(__S(1473, __c46, 1)),
+          product: S.optional(__S(1474, __c46, 2)),
         }),
       ).annotate({ identifier: "GoogleCloudChannelV1Sku" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          trialPeriod: S.optional(__S(3104, __c97, 0)),
+          billingAccount: S.optional(S.String),
+          paymentType: S.optional(S.String),
+          paymentCycle: S.optional(__S(3104, __c97, 0)),
+          paymentPlan: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudChannelV1Plan" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(__S(2976, __c93, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedCustomerTypes: S.optional(__S(113, __c14, 1)),
-          allowedRegions: S.optional(__S(42, __c5, 2)),
-          promotionalOrderTypes: S.optional(__S(113, __c14, 1)),
+          name: S.optional(S.String),
+          minValue: S.optional(__S(2976, __c93, 0)),
+          allowedValues: S.optional(__S(1537, __c48, 1)),
+          parameterType: S.optional(S.String),
+          optional: S.optional(S.Boolean),
+          maxValue: S.optional(__S(2976, __c93, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1ParameterDefinition",
+      });
+    case 3:
+      return S.Array(__S(1538, __c48, 2));
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          allowedCustomerTypes: S.optional(__S(1540, __c48, 4)),
+          allowedRegions: S.optional(__S(320, __c10, 0)),
+          promotionalOrderTypes: S.optional(__S(1540, __c48, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1CustomerConstraints",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          customerConstraints: S.optional(__S(114, __c14, 2)),
+          customerConstraints: S.optional(__S(1541, __c48, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1Constraints",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           discountPercentage: S.optional(S.Number),
-          discountAbsolute: S.optional(__S(72, __c9, 0)),
+          discountAbsolute: S.optional(__S(768, __c24, 0)),
           discountType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1DiscountComponent",
       });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(1543, __c48, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          effectivePrice: S.optional(__S(72, __c9, 0)),
-          basePrice: S.optional(__S(72, __c9, 0)),
+          effectivePrice: S.optional(__S(768, __c24, 0)),
+          basePrice: S.optional(__S(768, __c24, 0)),
           externalPriceUri: S.optional(S.String),
-          discountComponents: S.optional(__S(117, __c14, 5)),
-          pricePeriod: S.optional(__S(17, __c2, 1)),
+          discountComponents: S.optional(__S(1544, __c48, 8)),
+          pricePeriod: S.optional(__S(3104, __c97, 0)),
           discount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1Price",
       });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           lastResource: S.optional(S.Number),
-          price: S.optional(__S(118, __c14, 6)),
+          price: S.optional(__S(1545, __c48, 9)),
           firstResource: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1PriceTier",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(1546, __c48, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          priceTiers: S.optional(__S(120, __c15, 0)),
+          priceTiers: S.optional(__S(1547, __c48, 11)),
           periodType: S.optional(S.String),
           lastPeriod: S.optional(S.Number),
           firstPeriod: S.optional(S.Number),
-          price: S.optional(__S(118, __c14, 6)),
+          price: S.optional(__S(1545, __c48, 9)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1PricePhase",
       });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
+    case 13:
+      return S.Array(__S(1548, __c48, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          pricePhases: S.optional(__S(122, __c15, 2)),
-          price: S.optional(__S(118, __c14, 6)),
+          pricePhases: S.optional(__S(1549, __c48, 13)),
+          price: S.optional(__S(1545, __c48, 9)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1PriceByResource",
       });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 15:
+      return S.Array(__S(1550, __c48, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           endTime: S.optional(S.String),
-          plan: S.optional(__S(105, __c13, 1)),
+          plan: S.optional(__S(1536, __c48, 0)),
           dealCode: S.optional(S.String),
-          parameterDefinitions: S.optional(__S(108, __c13, 4)),
-          sku: S.optional(__S(112, __c14, 0)),
-          constraints: S.optional(__S(115, __c14, 3)),
-          priceByResources: S.optional(__S(124, __c15, 4)),
+          parameterDefinitions: S.optional(__S(1539, __c48, 3)),
+          sku: S.optional(__S(1504, __c47, 0)),
+          constraints: S.optional(__S(1542, __c48, 6)),
+          priceByResources: S.optional(__S(1551, __c48, 15)),
           startTime: S.optional(S.String),
-          marketingInfo: S.optional(__S(110, __c13, 6)),
+          marketingInfo: S.optional(__S(1473, __c46, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1Offer",
       });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          offers: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1ListOffersResponse",
-      });
   }
 }
-function __c16(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4430,17 +4378,84 @@ function __c16(j: number): any {
         identifier: "ListAccountsReportsRequest",
       });
     case 1:
-      return S.Array(__S(70, __c8, 6));
+      return S.Array(__S(802, __c25, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          reports: S.optional(__S(129, __c16, 1)),
+          reports: S.optional(__S(1569, __c49, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListReportsResponse",
       });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:activate",
+            baseUrl: "https://cloudchannel.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateAccountsCustomersEntitlementsRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1ActivateEntitlementRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1664, __c52, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(1696, __c53, 0)),
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleRpcStatus" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(1664, __c52, 0)),
+          error: S.optional(__S(1697, __c53, 1)),
+          response: S.optional(__S(1664, __c52, 0)),
+          name: S.optional(S.String),
+          done: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunningOperation",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4456,7 +4471,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAccountsSkuGroupsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4465,18 +4480,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1SkuGroup",
       });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1729, __c54, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          skuGroups: S.optional(__S(133, __c16, 5)),
+          skuGroups: S.optional(__S(1730, __c54, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListSkuGroupsResponse",
       });
-    case 7:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4492,11 +4511,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAccountsSkuGroupsBillableSkusRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sku: S.optional(S.String),
@@ -4507,18 +4522,22 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1BillableSku",
       });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
     case 2:
+      return S.Array(__S(1761, __c55, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          billableSkus: S.optional(__S(137, __c17, 1)),
+          billableSkus: S.optional(__S(1762, __c55, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListSkuGroupBillableSkusResponse",
       });
-    case 3:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4535,14 +4554,14 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListEntitlementChangesAccountsCustomersEntitlementsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           entitlement: S.optional(S.String),
-          parameters: S.optional(__S(12, __c1, 4)),
+          parameters: S.optional(__S(3009, __c94, 1)),
           activationReason: S.optional(S.String),
           otherChangeReason: S.optional(S.String),
-          provisionedService: S.optional(__S(51, __c6, 3)),
+          provisionedService: S.optional(__S(512, __c16, 0)),
           operatorType: S.optional(S.String),
           suspensionReason: S.optional(S.String),
           cancellationReason: S.optional(S.String),
@@ -4554,18 +4573,22 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1EntitlementChange",
       });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1793, __c56, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          entitlementChanges: S.optional(__S(141, __c17, 5)),
+          entitlementChanges: S.optional(__S(1794, __c56, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListEntitlementChangesResponse",
       });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4581,23 +4604,23 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(5, __c0, 5));
     case 1:
+      return S.Array(__S(1698, __c53, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(42, __c5, 2)),
+          unreachable: S.optional(__S(320, __c10, 0)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(144, __c18, 0)),
+          operations: S.optional(__S(1825, __c57, 1)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account: S.optional(S.String.pipe(T.Query())),
@@ -4612,18 +4635,22 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProductsRequest" });
-    case 3:
-      return S.Array(__S(111, __c13, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(1474, __c46, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(__S(147, __c18, 3)),
+          products: S.optional(__S(1857, __c58, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListProductsResponse",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4639,12 +4666,12 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProductsSkusRequest" });
-    case 6:
-      return S.Array(__S(112, __c14, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(1504, __c47, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          skus: S.optional(__S(150, __c18, 6)),
+          skus: S.optional(__S(1889, __c59, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4652,7 +4679,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4679,24 +4706,32 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          offer: S.optional(__S(125, __c15, 5)),
-          priceReferenceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1PurchasableOffer",
-      });
-    case 2:
-      return S.Array(__S(153, __c19, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          purchasableOffers: S.optional(__S(154, __c19, 2)),
+          purchasableOffers: S.optional(__S(1953, __c61, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListPurchasableOffersResponse",
       });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          offer: S.optional(__S(1552, __c48, 16)),
+          priceReferenceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1PurchasableOffer",
+      });
+    case 1:
+      return S.Array(__S(1952, __c61, 0));
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4716,20 +4751,20 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListPurchasableSkusAccountsCustomersRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(112, __c14, 0)),
+          sku: S.optional(__S(1504, __c47, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1PurchasableSku",
       });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1985, __c62, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          purchasableSkus: S.optional(__S(158, __c19, 6)),
+          purchasableSkus: S.optional(__S(1986, __c62, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4737,7 +4772,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4756,17 +4791,25 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListSubscribersAccountsRequest",
       });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           topic: S.optional(S.String),
-          serviceAccounts: S.optional(__S(42, __c5, 2)),
+          serviceAccounts: S.optional(__S(320, __c10, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListSubscribersResponse",
       });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4783,7 +4826,30 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListSubscribersIntegratorsRequest",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://cloudchannel.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelAccountsCustomersEntitlementsRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sku: S.optional(S.String),
@@ -4797,11 +4863,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1ListTransferableOffersRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(163, __c20, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2144, __c67, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4812,16 +4878,20 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListTransferableOffersAccountsRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          transferableOffers: S.optional(__S(154, __c19, 2)),
+          transferableOffers: S.optional(__S(1953, __c61, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListTransferableOffersResponse",
       });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerName: S.optional(S.String),
@@ -4834,11 +4904,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1ListTransferableSkusRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(166, __c20, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2176, __c68, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4849,11 +4919,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListTransferableSkusAccountsRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -4863,28 +4929,32 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1TransferEligibility",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          transferEligibility: S.optional(__S(168, __c21, 0)),
-          legacySku: S.optional(__S(112, __c14, 0)),
-          sku: S.optional(__S(112, __c14, 0)),
+          transferEligibility: S.optional(__S(2178, __c68, 2)),
+          legacySku: S.optional(__S(1504, __c47, 0)),
+          sku: S.optional(__S(1504, __c47, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1TransferableSku",
       });
-    case 2:
-      return S.Array(__S(169, __c21, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(2179, __c68, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          transferableSkus: S.optional(__S(170, __c21, 2)),
+          transferableSkus: S.optional(__S(2180, __c68, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ListTransferableSkusResponse",
       });
-    case 4:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entitlement: S.String.pipe(T.Label()),
@@ -4898,20 +4968,24 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "LookupOfferAccountsCustomersEntitlementsRequest",
       });
-    case 5:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          channelPartnerLink: S.optional(__S(28, __c3, 4)),
+          channelPartnerLink: S.optional(__S(96, __c3, 0)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1UpdateChannelPartnerLinkRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(173, __c21, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2240, __c70, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4922,11 +4996,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "PatchAccountsChannelPartnerLinksRequest",
       });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4939,14 +5017,14 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(354, __c11, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4957,12 +5035,16 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "PatchAccountsChannelPartnerLinksCustomersRequest",
       });
-    case 1:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(354, __c11, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4973,11 +5055,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "PatchAccountsCustomersRequest",
       });
-    case 2:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4988,7 +5074,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "PatchAccountsCustomersCustomerRepricingConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           givenName: S.optional(S.String),
@@ -4998,21 +5088,21 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1AdminUser",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
-          cloudIdentityInfo: S.optional(__S(27, __c3, 3)),
-          user: S.optional(__S(179, __c22, 3)),
+          cloudIdentityInfo: S.optional(__S(65, __c2, 1)),
+          user: S.optional(__S(2400, __c75, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1ProvisionCloudIdentityRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(180, __c22, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2401, __c75, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5023,11 +5113,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ProvisionCloudIdentityAccountsCustomersRequest",
       });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          skus: S.optional(__S(42, __c5, 2).pipe(T.Query())),
+          skus: S.optional(__S(320, __c10, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5038,7 +5132,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "QueryEligibleBillingAccountsAccountsCustomersRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
@@ -5050,40 +5144,90 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1BillingAccount",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          billingAccount: S.optional(__S(183, __c22, 7)),
+          billingAccount: S.optional(__S(2433, __c76, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1BillingAccountPurchaseInfo",
       });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(2434, __c76, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          billingAccountPurchaseInfos: S.optional(__S(185, __c23, 1)),
-          skus: S.optional(__S(42, __c5, 2)),
+          billingAccountPurchaseInfos: S.optional(__S(2435, __c76, 3)),
+          skus: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1SkuPurchaseGroup",
       });
-    case 3:
-      return S.Array(__S(186, __c23, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(2436, __c76, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          skuPurchaseGroups: S.optional(__S(187, __c23, 3)),
+          skuPurchaseGroups: S.optional(__S(2437, __c76, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1QueryEligibleBillingAccountsResponse",
       });
-    case 5:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2496, __c78, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://cloudchannel.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CancelOperationsRequest" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleLongrunningCancelOperationRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleProtobufEmpty",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.String.pipe(T.Label()),
+          body: S.optional(__S(2592, __c81, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+account}:register",
+            baseUrl: "https://cloudchannel.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "RegisterAccountsRequest" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceAccount: S.optional(S.String),
@@ -5093,20 +5237,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GoogleCloudChannelV1RegisterSubscriberRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          account: S.String.pipe(T.Label()),
-          body: S.optional(__S(189, __c23, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+account}:register",
-            baseUrl: "https://cloudchannel.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "RegisterAccountsRequest" });
-    case 7:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           topic: S.optional(S.String),
@@ -5116,13 +5251,13 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           integrator: S.String.pipe(T.Label()),
-          body: S.optional(__S(189, __c23, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2592, __c81, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5133,21 +5268,25 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "RegisterSubscriberIntegratorsRequest",
       });
-    case 1:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
           languageCode: S.optional(S.String),
-          dateRange: S.optional(__S(67, __c8, 3)),
+          dateRange: S.optional(__S(834, __c26, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1RunReportJobRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(193, __c24, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2688, __c84, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5158,11 +5297,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "RunAccountsReportsRequest",
       });
-    case 3:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5173,11 +5316,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "StartPaidServiceAccountsCustomersEntitlementsRequest",
       });
-    case 4:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5188,21 +5335,25 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "SuspendAccountsCustomersEntitlementsRequest",
       });
-    case 5:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          entitlements: S.optional(__S(102, __c12, 6)),
+          entitlements: S.optional(__S(1408, __c44, 0)),
           authToken: S.optional(S.String),
           requestId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1TransferEntitlementsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(197, __c24, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2784, __c87, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5213,24 +5364,24 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "TransferEntitlementsAccountsCustomersRequest",
       });
-    case 7:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          entitlements: S.optional(__S(102, __c12, 6)),
+          entitlements: S.optional(__S(1408, __c44, 0)),
           requestId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudChannelV1TransferEntitlementsToGoogleRequest",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(199, __c24, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5241,21 +5392,15 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "TransferEntitlementsToGoogleAccountsCustomersRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          account: S.optional(S.String),
-          integrator: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudChannelV1UnregisterSubscriberRequest",
-      });
-    case 2:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account: S.String.pipe(T.Label()),
-          body: S.optional(__S(201, __c25, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2880, __c90, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5266,11 +5411,29 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UnregisterAccountsRequest",
       });
-    case 3:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.optional(S.String),
+          integrator: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1UnregisterSubscriberRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrator: S.String.pipe(T.Label()),
-          body: S.optional(__S(201, __c25, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2880, __c90, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5283,7 +5446,155 @@ function __c25(j: number): any {
       });
   }
 }
-
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+          billingAccount: S.optional(S.String),
+          offer: S.optional(S.String),
+          parameters: S.optional(__S(3009, __c94, 1)),
+          priceReferenceId: S.optional(S.String),
+          purchaseOrderId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1ChangeOfferRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2944, __c92, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:changeOffer",
+            baseUrl: "https://cloudchannel.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ChangeOfferAccountsCustomersEntitlementsRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          boolValue: S.optional(S.Boolean),
+          protoValue: S.optional(__S(1664, __c52, 0)),
+          doubleValue: S.optional(S.Number),
+          stringValue: S.optional(S.String),
+          int64Value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1Value",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(__S(2976, __c93, 0)),
+          editable: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1Parameter",
+      });
+    case 1:
+      return S.Array(__S(3008, __c94, 0));
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+          purchaseOrderId: S.optional(S.String),
+          parameters: S.optional(__S(3009, __c94, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1ChangeParametersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(3040, __c95, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:changeParameters",
+            baseUrl: "https://cloudchannel.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ChangeParametersAccountsCustomersEntitlementsRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          renewalSettings: S.optional(__S(3136, __c98, 0)),
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1ChangeRenewalSettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(3072, __c96, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:changeRenewalSettings",
+            baseUrl: "https://cloudchannel.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ChangeRenewalSettingsAccountsCustomersEntitlementsRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.optional(S.Number),
+          periodType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1Period",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resizeUnitCount: S.optional(S.Boolean),
+          paymentPlan: S.optional(S.String),
+          paymentCycle: S.optional(__S(3104, __c97, 0)),
+          enableRenewal: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudChannelV1RenewalSettings",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

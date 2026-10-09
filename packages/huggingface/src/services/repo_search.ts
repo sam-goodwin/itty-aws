@@ -1342,8 +1342,8 @@ export const quickSearchPost: API.OperationMethod<
   QuickSearchPostError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<QuickSearchPostRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<QuickSearchPostResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<QuickSearchPostRequest>,
+  output: __S(31, __c1, 15) as any as S.Schema<QuickSearchPostResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1357,8 +1357,8 @@ export const searchFullText: API.OperationMethod<
   SearchFullTextError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<SearchFullTextRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<SearchFullTextResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<SearchFullTextRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<SearchFullTextResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1372,8 +1372,8 @@ export const searchQuick: API.OperationMethod<
   SearchQuickError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<SearchQuickRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<SearchQuickResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<SearchQuickRequest>,
+  output: __S(31, __c1, 15) as any as S.Schema<SearchQuickResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1383,8 +1383,6 @@ export const searchQuick: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           q: S.optional(S.String.pipe(T.Query())),
@@ -1395,17 +1393,23 @@ function __c0(j: number): any {
           orgsFilter: S.optional(S.Unknown.pipe(T.Query())),
           reposFilter: S.optional(S.Unknown.pipe(T.Query())),
           pipelines: S.optional(S.Unknown.pipe(T.Query())),
-          exclude: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          exclude: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           namespace: S.optional(S.String.pipe(T.Query())),
           includeInvitees: S.optional(S.Unknown.pipe(T.Query())),
           repoName: S.optional(S.String.pipe(T.Query())),
           repoType: S.optional(S.Unknown.pipe(T.Query())),
           discussionId: S.optional(S.String.pipe(T.Query())),
           discussionCollectionName: S.optional(S.String.pipe(T.Query())),
-          spacesTags: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          spacesTags: S.optional(__S(16, __c1, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/api/quicksearch", code: 200 })),
       ).annotate({ identifier: "QuickSearchPostRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -1416,9 +1420,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "QuickSearchPostResponseDatasetsItem",
       });
+    case 2:
+      return S.Array(__S(17, __c1, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -1429,9 +1433,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "QuickSearchPostResponseOrgsItem",
       });
+    case 4:
+      return S.Array(__S(19, __c1, 3));
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -1443,13 +1447,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "QuickSearchPostResponseSpacesItem",
       });
+    case 6:
+      return S.Array(__S(21, __c1, 5));
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -1460,9 +1460,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "QuickSearchPostResponseUsersItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(23, __c1, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -1472,9 +1472,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "QuickSearchPostResponsePapersItem",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(25, __c1, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -1484,9 +1484,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "QuickSearchPostResponseCollectionsItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(27, __c1, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -1497,39 +1497,39 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "QuickSearchPostResponseBlogsItem",
       });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
+    case 14:
+      return S.Array(__S(29, __c1, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          datasets: __S(18, __c1, 2),
+          datasetsCount: S.Number,
+          models: __S(18, __c1, 2),
+          modelsCount: S.Number,
+          orgs: __S(20, __c1, 4),
+          q: S.String,
+          spaces: __S(22, __c1, 6),
+          spacesCount: S.Number,
+          users: __S(24, __c1, 8),
+          papers: __S(26, __c1, 10),
+          papersCount: S.Number,
+          collections: __S(28, __c1, 12),
+          collectionsCount: S.Number,
+          buckets: __S(26, __c1, 10),
+          bucketsCount: S.Number,
+          containers: __S(26, __c1, 10),
+          containersCount: S.Number,
+          kernels: __S(26, __c1, 10),
+          kernelsCount: S.Number,
+          blogs: __S(30, __c1, 14),
+          blogsCount: S.Number,
+        }),
+      ).annotate({ identifier: "QuickSearchPostResponse" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          datasets: __S(3, __c0, 3),
-          datasetsCount: S.Number,
-          models: __S(3, __c0, 3),
-          modelsCount: S.Number,
-          orgs: __S(5, __c0, 5),
-          q: S.String,
-          spaces: __S(7, __c0, 7),
-          spacesCount: S.Number,
-          users: __S(9, __c1, 1),
-          papers: __S(11, __c1, 3),
-          papersCount: S.Number,
-          collections: __S(13, __c1, 5),
-          collectionsCount: S.Number,
-          buckets: __S(11, __c1, 3),
-          bucketsCount: S.Number,
-          containers: __S(11, __c1, 3),
-          containersCount: S.Number,
-          kernels: __S(11, __c1, 3),
-          kernelsCount: S.Number,
-          blogs: __S(15, __c1, 7),
-          blogsCount: S.Number,
-        }),
-      ).annotate({ identifier: "QuickSearchPostResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           q: S.optional(S.String.pipe(T.Query())),
@@ -1539,11 +1539,15 @@ function __c2(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/search/full-text", code: 200 })),
       ).annotate({ identifier: "SearchFullTextRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SearchFullTextResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           q: S.optional(S.String.pipe(T.Query())),
@@ -1554,19 +1558,18 @@ function __c2(j: number): any {
           orgsFilter: S.optional(S.Unknown.pipe(T.Query())),
           reposFilter: S.optional(S.Unknown.pipe(T.Query())),
           pipelines: S.optional(S.Unknown.pipe(T.Query())),
-          exclude: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          exclude: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           namespace: S.optional(S.String.pipe(T.Query())),
           includeInvitees: S.optional(S.Unknown.pipe(T.Query())),
           repoName: S.optional(S.String.pipe(T.Query())),
           repoType: S.optional(S.Unknown.pipe(T.Query())),
           discussionId: S.optional(S.String.pipe(T.Query())),
           discussionCollectionName: S.optional(S.String.pipe(T.Query())),
-          spacesTags: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          spacesTags: S.optional(__S(16, __c1, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/quicksearch", code: 200 })),
       ).annotate({ identifier: "SearchQuickRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

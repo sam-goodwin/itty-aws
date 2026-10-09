@@ -441,8 +441,8 @@ export const generateReports: API.OperationMethod<
   GenerateReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GenerateReportsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Report>,
+  input: __S(80, __c5, 0) as any as S.Schema<GenerateReportsRequest>,
+  output: __S(110, __c6, 14) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -456,8 +456,8 @@ export const getByCustomerIdConversion: API.OperationMethod<
   GetByCustomerIdConversionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetByCustomerIdConversionRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ConversionList>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetByCustomerIdConversionRequest>,
+  output: __S(134, __c8, 6) as any as S.Schema<ConversionList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -471,8 +471,8 @@ export const getConversion: API.OperationMethod<
   GetConversionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetConversionRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ConversionList>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetConversionRequest>,
+  output: __S(134, __c8, 6) as any as S.Schema<ConversionList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -486,8 +486,8 @@ export const getFileReports: API.OperationMethod<
   GetFileReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetFileReportsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetFileReportsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetFileReportsRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<GetFileReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -501,8 +501,8 @@ export const getIdMappingFileReports: API.OperationMethod<
   GetIdMappingFileReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetIdMappingFileReportsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<IdMappingFile>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetIdMappingFileReportsRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<IdMappingFile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -516,8 +516,8 @@ export const getReports: API.OperationMethod<
   GetReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetReportsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Report>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetReportsRequest>,
+  output: __S(110, __c6, 14) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -531,8 +531,8 @@ export const insertConversion: API.OperationMethod<
   InsertConversionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<InsertConversionRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ConversionList>,
+  input: __S(0, __c0, 0) as any as S.Schema<InsertConversionRequest>,
+  output: __S(134, __c8, 6) as any as S.Schema<ConversionList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -546,8 +546,8 @@ export const listSavedColumns: API.OperationMethod<
   ListSavedColumnsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListSavedColumnsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<SavedColumnList>,
+  input: __S(16, __c1, 0) as any as S.Schema<ListSavedColumnsRequest>,
+  output: __S(19, __c1, 3) as any as S.Schema<SavedColumnList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -561,8 +561,8 @@ export const requestReports: API.OperationMethod<
   RequestReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<RequestReportsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Report>,
+  input: __S(32, __c2, 0) as any as S.Schema<RequestReportsRequest>,
+  output: __S(110, __c6, 14) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -581,8 +581,8 @@ export const updateAvailabilityConversion: API.OperationMethod<
   UpdateAvailabilityConversionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UpdateAvailabilityConversionRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<UpdateAvailabilityResponse>,
+  input: __S(51, __c3, 3) as any as S.Schema<UpdateAvailabilityConversionRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<UpdateAvailabilityResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -596,8 +596,8 @@ export const updateConversion: API.OperationMethod<
   UpdateConversionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<UpdateConversionRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ConversionList>,
+  input: __S(64, __c4, 0) as any as S.Schema<UpdateConversionRequest>,
+  output: __S(134, __c8, 6) as any as S.Schema<ConversionList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -605,6 +605,144 @@ export const updateConversion: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(134, __c8, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "doubleclicksearch/v2/conversion",
+            baseUrl: "https://doubleclicksearch.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertConversionRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Label()),
+          agencyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/savedcolumns",
+            baseUrl: "https://doubleclicksearch.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListSavedColumnsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          savedColumnName: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SavedColumn" });
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(18, __c1, 2)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SavedColumnList" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(105, __c6, 9).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "doubleclicksearch/v2/reports",
+            baseUrl: "https://doubleclicksearch.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "RequestReportsRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          segmentationName: S.optional(S.String),
+          availabilityTimestamp: S.optional(S.String),
+          advertiserId: S.optional(S.String),
+          agencyId: S.optional(S.String),
+          segmentationId: S.optional(S.String),
+          segmentationType: S.optional(S.String),
+          customerId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Availability" });
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          availabilities: S.optional(__S(49, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "UpdateAvailabilityRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(50, __c3, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "doubleclicksearch/v2/conversion/updateAvailability",
+            baseUrl: "https://doubleclicksearch.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAvailabilityConversionRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(134, __c8, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "doubleclicksearch/v2/conversion",
+            baseUrl: "https://doubleclicksearch.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateConversionRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(105, __c6, 9).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "doubleclicksearch/v2/reports/generate",
+            baseUrl: "https://doubleclicksearch.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GenerateReportsRequest" });
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -627,12 +765,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           operator: S.optional(S.String),
-          column: S.optional(__S(0, __c0, 0)),
-          values: S.optional(__S(1, __c0, 1)),
+          column: S.optional(__S(96, __c6, 0)),
+          values: S.optional(__S(97, __c6, 1)),
         }),
       ).annotate({ identifier: "ReportRequestFiltersItem" });
     case 3:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(98, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -643,21 +781,17 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ReportRequestTimeRange" });
     case 5:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(96, __c6, 0));
     case 6:
       return S.suspend(() =>
         S.Struct({
           sortOrder: S.optional(S.String),
-          column: S.optional(__S(0, __c0, 0)),
+          column: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "ReportRequestOrderByItem" });
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(102, __c6, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.optional(S.String),
@@ -669,67 +803,55 @@ function __c1(j: number): any {
           agencyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportRequestReportScope" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           downloadFormat: S.optional(S.String),
           maxRowsPerFile: S.optional(S.Number),
           verifySingleTimeZone: S.optional(S.Boolean),
-          filters: S.optional(__S(3, __c0, 3)),
+          filters: S.optional(__S(99, __c6, 3)),
           reportType: S.optional(S.String),
-          timeRange: S.optional(__S(4, __c0, 4)),
-          columns: S.optional(__S(5, __c0, 5)),
+          timeRange: S.optional(__S(100, __c6, 4)),
+          columns: S.optional(__S(101, __c6, 5)),
           includeRemovedEntities: S.optional(S.Boolean),
           statisticsCurrency: S.optional(S.String),
-          orderBy: S.optional(__S(7, __c0, 7)),
+          orderBy: S.optional(__S(103, __c6, 7)),
           startRow: S.optional(S.Number),
-          reportScope: S.optional(__S(8, __c1, 0)),
+          reportScope: S.optional(__S(104, __c6, 8)),
           includeDeletedEntities: S.optional(S.Boolean),
           rowCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ReportRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "doubleclicksearch/v2/reports/generate",
-            baseUrl: "https://doubleclicksearch.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GenerateReportsRequest" });
-    case 3:
+    case 10:
       return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(106, __c6, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           byteCount: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportFilesItem" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 13:
+      return S.Array(__S(108, __c6, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           statisticsTimeZone: S.optional(S.String),
           statisticsCurrencyCode: S.optional(S.String),
-          rows: S.optional(__S(12, __c1, 4)),
+          rows: S.optional(__S(107, __c6, 11)),
           kind: S.optional(S.String),
           rowCount: S.optional(S.Number),
           id: S.optional(S.String),
-          request: S.optional(__S(9, __c1, 1)),
-          files: S.optional(__S(14, __c1, 6)),
+          request: S.optional(__S(105, __c6, 9)),
+          files: S.optional(__S(109, __c6, 13)),
           isReportReady: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Report" });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -756,32 +878,36 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetByCustomerIdConversionRequest",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDimension" });
+    case 1:
+      return S.Array(__S(128, __c8, 0));
     case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CustomMetric" });
+    case 3:
+      return S.Array(__S(130, __c8, 2));
     case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           segmentationName: S.optional(S.String),
           type: S.optional(S.String),
           campaignId: S.optional(S.String),
           productCountry: S.optional(S.String),
-          customDimension: S.optional(__S(18, __c2, 2)),
+          customDimension: S.optional(__S(129, __c8, 1)),
           currencyCode: S.optional(S.String),
           productId: S.optional(S.String),
           customerId: S.optional(S.String),
@@ -809,23 +935,23 @@ function __c2(j: number): any {
           adUserDataConsent: S.optional(S.String),
           criterionId: S.optional(S.String),
           quantityMillis: S.optional(S.String),
-          customMetric: S.optional(__S(20, __c2, 4)),
+          customMetric: S.optional(__S(131, __c8, 3)),
           conversionModifiedTimestamp: S.optional(S.String),
           adGroupId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Conversion" });
+    case 5:
+      return S.Array(__S(132, __c8, 4));
     case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          conversion: S.optional(__S(22, __c2, 6)),
+          conversion: S.optional(__S(133, __c8, 5)),
         }),
       ).annotate({ identifier: "ConversionList" });
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -850,7 +976,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetConversionRequest" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportFragment: S.Number.pipe(T.Label()),
@@ -863,11 +993,19 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFileReportsRequest" });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetFileReportsResponse",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
@@ -882,7 +1020,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetIdMappingFileReportsRequest",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportId: S.String.pipe(T.Label()),
@@ -894,115 +1036,8 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetReportsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "doubleclicksearch/v2/conversion",
-            baseUrl: "https://doubleclicksearch.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertConversionRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Label()),
-          agencyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/savedcolumns",
-            baseUrl: "https://doubleclicksearch.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListSavedColumnsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          savedColumnName: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SavedColumn" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(32, __c4, 0)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SavedColumnList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "doubleclicksearch/v2/reports",
-            baseUrl: "https://doubleclicksearch.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "RequestReportsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          segmentationName: S.optional(S.String),
-          availabilityTimestamp: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-          agencyId: S.optional(S.String),
-          segmentationId: S.optional(S.String),
-          segmentationType: S.optional(S.String),
-          customerId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Availability" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          availabilities: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "UpdateAvailabilityRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "doubleclicksearch/v2/conversion/updateAvailability",
-            baseUrl: "https://doubleclicksearch.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAvailabilityConversionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "doubleclicksearch/v2/conversion",
-            baseUrl: "https://doubleclicksearch.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateConversionRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

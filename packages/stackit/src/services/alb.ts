@@ -514,8 +514,8 @@ export const createCredentials: API.OperationMethod<
   CreateCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateCredentialsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateCredentialsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<CreateCredentialsRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<CreateCredentialsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -529,8 +529,8 @@ export const createLoadBalancer: API.OperationMethod<
   CreateLoadBalancerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateLoadBalancerRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<LoadBalancer>,
+  input: __S(320, __c10, 0) as any as S.Schema<CreateLoadBalancerRequest>,
+  output: __S(377, __c11, 25) as any as S.Schema<LoadBalancer>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -544,8 +544,8 @@ export const deleteCredentials: API.OperationMethod<
   DeleteCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteCredentialsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeleteCredentialsResponse2>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteCredentialsRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<DeleteCredentialsResponse2>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -559,8 +559,8 @@ export const deleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteLoadBalancerRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeleteLoadBalancerResponse2>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteLoadBalancerRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<DeleteLoadBalancerResponse2>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -574,8 +574,8 @@ export const getCredentials: API.OperationMethod<
   GetCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetCredentialsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetCredentialsResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetCredentialsRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<GetCredentialsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -589,8 +589,8 @@ export const getLoadBalancer: API.OperationMethod<
   GetLoadBalancerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetLoadBalancerRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<LoadBalancer>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetLoadBalancerRequest>,
+  output: __S(377, __c11, 25) as any as S.Schema<LoadBalancer>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -604,8 +604,8 @@ export const getQuota: API.OperationMethod<
   GetQuotaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetQuotaRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetQuotaResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetQuotaRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetQuotaResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -619,8 +619,8 @@ export const listCredentials: API.OperationMethod<
   ListCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListCredentialsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListCredentialsResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<ListCredentialsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<ListCredentialsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -634,8 +634,8 @@ export const listLoadBalancers: API.OperationMethod<
   ListLoadBalancersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListLoadBalancersRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListLoadBalancersResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<ListLoadBalancersRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<ListLoadBalancersResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -649,8 +649,8 @@ export const listPlans: API.OperationMethod<
   ListPlansError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListPlansRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ListPlansResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<ListPlansRequest>,
+  output: __S(99, __c3, 3) as any as S.Schema<ListPlansResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -664,8 +664,8 @@ export const updateCredentials: API.OperationMethod<
   UpdateCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<UpdateCredentialsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UpdateCredentialsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<UpdateCredentialsRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<UpdateCredentialsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -679,8 +679,8 @@ export const updateLoadBalancer: API.OperationMethod<
   UpdateLoadBalancerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<UpdateLoadBalancerRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<LoadBalancer>,
+  input: __S(160, __c5, 0) as any as S.Schema<UpdateLoadBalancerRequest>,
+  output: __S(377, __c11, 25) as any as S.Schema<LoadBalancer>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -694,8 +694,8 @@ export const updateTargetPool: API.OperationMethod<
   UpdateTargetPoolError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<UpdateTargetPoolRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<TargetPool>,
+  input: __S(192, __c6, 0) as any as S.Schema<UpdateTargetPoolRequest>,
+  output: __S(390, __c12, 6) as any as S.Schema<TargetPool>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -709,375 +709,6 @@ function __c0(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
-          displayName: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          username: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/credentials",
-            code: 200,
-            baseUrl: "https://alb.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateCredentialsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          credentialsRef: S.optional(S.String),
-          displayName: S.optional(S.String),
-          region: S.optional(S.String),
-          username: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CredentialsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          credential: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateCredentialsResponse",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          ttl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CookiePersistence" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          exactMatch: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpHeader" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          exactMatch: S.optional(S.String),
-          prefix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Path" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cookiePersistence: S.optional(__S(4, __c0, 4)),
-          headers: S.optional(__S(6, __c0, 6)),
-          path: S.optional(__S(7, __c0, 7)),
-          queryParameters: S.optional(__S(6, __c0, 6)),
-          targetPool: S.optional(S.String),
-          webSocket: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Rule" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          rules: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "HostConfig" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          hosts: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "ProtocolOptionsHTTP" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          certificateIds: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "CertificateConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          certificateConfig: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "ProtocolOptionsHTTPS" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          http: S.optional(__S(12, __c1, 4)),
-          https: S.optional(__S(15, __c1, 7)),
-          name: S.optional(S.String),
-          port: S.optional(S.Number),
-          protocol: S.optional(S.String),
-          wafConfigName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Listener" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          networkId: S.optional(S.String),
-          role: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Network" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowedSourceRanges: S.optional(__S(13, __c1, 5)),
-          ipBlockListName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LoadbalancerOptionAccessControl",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          credentialsRef: S.optional(S.String),
-          pushUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoadbalancerOptionLogs" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          credentialsRef: S.optional(S.String),
-          pushUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LoadbalancerOptionMetrics",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          logs: S.optional(__S(21, __c2, 5)),
-          metrics: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "LoadbalancerOptionObservability",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accessControl: S.optional(__S(20, __c2, 4)),
-          ephemeralAddress: S.optional(S.Boolean),
-          observability: S.optional(__S(23, __c2, 7)),
-          privateNetworkOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "LoadBalancerOptions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          customCa: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          skipCertificateValidation: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TlsConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          okStatuses: S.optional(__S(13, __c1, 5)),
-          path: S.optional(S.String),
-          tls: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "HttpHealthChecks" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          altPort: S.optional(S.Number),
-          healthyThreshold: S.optional(S.Number),
-          httpHealthChecks: S.optional(__S(26, __c3, 2)),
-          interval: S.optional(S.String),
-          intervalJitter: S.optional(S.String),
-          timeout: S.optional(S.String),
-          unhealthyThreshold: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ActiveHealthCheck" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          ip: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Target" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          activeHealthCheck: S.optional(__S(27, __c3, 3)),
-          name: S.optional(S.String),
-          targetPort: S.optional(S.Number),
-          targets: S.optional(__S(29, __c3, 5)),
-          tlsConfig: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "TargetPool" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          disableTargetSecurityGroupAssignment: S.optional(S.Boolean),
-          externalAddress: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
-          listeners: S.optional(__S(17, __c2, 1)),
-          name: S.optional(S.String),
-          networks: S.optional(__S(19, __c2, 3)),
-          options: S.optional(__S(24, __c3, 0)),
-          planId: S.optional(S.String),
-          targetPools: S.optional(__S(31, __c3, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/load-balancers",
-            code: 200,
-            baseUrl: "https://alb.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLoadBalancerRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoadBalancerError" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecurityGroup" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          disableTargetSecurityGroupAssignment: S.optional(S.Boolean),
-          errors: S.optional(__S(34, __c4, 2)),
-          externalAddress: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
-          listeners: S.optional(__S(17, __c2, 1)),
-          loadBalancerSecurityGroup: S.optional(__S(35, __c4, 3)),
-          name: S.optional(S.String),
-          networks: S.optional(__S(19, __c2, 3)),
-          options: S.optional(__S(24, __c3, 0)),
-          planId: S.optional(S.String),
-          privateAddress: S.optional(S.String),
-          region: S.optional(S.String),
-          status: S.optional(S.String),
-          targetPools: S.optional(__S(31, __c3, 7)),
-          targetSecurityGroup: S.optional(__S(35, __c4, 3)),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoadBalancer" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          credentialsRef: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/projects/{projectId}/regions/{region}/credentials/{credentialsRef}",
-            code: 200,
-            baseUrl: "https://alb.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCredentialsRequest" });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteCredentialsResponse2",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/projects/{projectId}/regions/{region}/load-balancers/{name}",
-            code: 200,
-            baseUrl: "https://alb.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteLoadBalancerRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          credentialsRef: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/projects/{projectId}/regions/{region}/credentials/{credentialsRef}",
-            code: 200,
-            baseUrl: "https://alb.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetCredentialsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          credential: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "GetCredentialsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/projects/{projectId}/regions/{region}/load-balancers/{name}",
-            code: 200,
-            baseUrl: "https://alb.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetLoadBalancerRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1087,7 +718,7 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetQuotaRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxCredentials: S.optional(S.Number),
@@ -1098,7 +729,11 @@ function __c5(j: number): any {
           usedLoadBalancers: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetQuotaResponse" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1112,17 +747,17 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCredentialsRequest" });
-    case 6:
-      return S.Array(__S(1, __c0, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          credentials: S.optional(__S(46, __c5, 6)),
+          credentials: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({ identifier: "ListCredentialsResponse" });
   }
 }
-function __c6(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1141,17 +776,21 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListLoadBalancersRequest" });
     case 1:
-      return S.Array(__S(36, __c4, 4));
+      return S.Array(__S(377, __c11, 25));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          loadBalancers: S.optional(__S(49, __c6, 1)),
+          loadBalancers: S.optional(__S(65, __c2, 1)),
           nextPageId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListLoadBalancersResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           region: S.String.pipe(T.Label()),
@@ -1164,7 +803,7 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPlansRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -1175,15 +814,19 @@ function __c6(j: number): any {
           region: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlanDetails" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          validPlans: S.optional(__S(53, __c6, 5)),
+          validPlans: S.optional(__S(98, __c3, 2)),
         }),
       ).annotate({ identifier: "ListPlansResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1203,7 +846,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "UpdateCredentialsRequest" });
   }
 }
-function __c7(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1213,12 +856,12 @@ function __c7(j: number): any {
           name: S.String.pipe(T.Label()),
           disableTargetSecurityGroupAssignment: S.optional(S.Boolean),
           externalAddress: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
-          listeners: S.optional(__S(17, __c2, 1)),
-          networks: S.optional(__S(19, __c2, 3)),
-          options: S.optional(__S(24, __c3, 0)),
+          labels: S.optional(__S(352, __c11, 0)),
+          listeners: S.optional(__S(365, __c11, 13)),
+          networks: S.optional(__S(367, __c11, 15)),
+          options: S.optional(__S(372, __c11, 20)),
           planId: S.optional(S.String),
-          targetPools: S.optional(__S(31, __c3, 7)),
+          targetPools: S.optional(__S(373, __c11, 21)),
           version: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1231,17 +874,21 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateLoadBalancerRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           targetPoolName: S.String.pipe(T.Label()),
-          activeHealthCheck: S.optional(__S(27, __c3, 3)),
+          activeHealthCheck: S.optional(__S(387, __c12, 3)),
           targetPort: S.optional(S.Number),
-          targets: S.optional(__S(29, __c3, 5)),
-          tlsConfig: S.optional(__S(25, __c3, 1)),
+          targets: S.optional(__S(389, __c12, 5)),
+          tlsConfig: S.optional(__S(385, __c12, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1253,7 +900,399 @@ function __c7(j: number): any {
       ).annotate({ identifier: "UpdateTargetPoolRequest" });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          displayName: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          username: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/credentials",
+            code: 200,
+            baseUrl: "https://alb.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateCredentialsRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          credential: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateCredentialsResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          credentialsRef: S.optional(S.String),
+          displayName: S.optional(S.String),
+          region: S.optional(S.String),
+          username: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CredentialsResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          disableTargetSecurityGroupAssignment: S.optional(S.Boolean),
+          externalAddress: S.optional(S.String),
+          labels: S.optional(__S(352, __c11, 0)),
+          listeners: S.optional(__S(365, __c11, 13)),
+          name: S.optional(S.String),
+          networks: S.optional(__S(367, __c11, 15)),
+          options: S.optional(__S(372, __c11, 20)),
+          planId: S.optional(S.String),
+          targetPools: S.optional(__S(373, __c11, 21)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/load-balancers",
+            code: 200,
+            baseUrl: "https://alb.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLoadBalancerRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          ttl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CookiePersistence" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          exactMatch: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpHeader" });
+    case 3:
+      return S.Array(__S(354, __c11, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          exactMatch: S.optional(S.String),
+          prefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Path" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cookiePersistence: S.optional(__S(353, __c11, 1)),
+          headers: S.optional(__S(355, __c11, 3)),
+          path: S.optional(__S(356, __c11, 4)),
+          queryParameters: S.optional(__S(355, __c11, 3)),
+          targetPool: S.optional(S.String),
+          webSocket: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Rule" });
+    case 6:
+      return S.Array(__S(357, __c11, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          rules: S.optional(__S(358, __c11, 6)),
+        }),
+      ).annotate({ identifier: "HostConfig" });
+    case 8:
+      return S.Array(__S(359, __c11, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          hosts: S.optional(__S(360, __c11, 8)),
+        }),
+      ).annotate({ identifier: "ProtocolOptionsHTTP" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          certificateIds: S.optional(__S(384, __c12, 0)),
+        }),
+      ).annotate({ identifier: "CertificateConfig" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          certificateConfig: S.optional(__S(362, __c11, 10)),
+        }),
+      ).annotate({ identifier: "ProtocolOptionsHTTPS" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          http: S.optional(__S(361, __c11, 9)),
+          https: S.optional(__S(363, __c11, 11)),
+          name: S.optional(S.String),
+          port: S.optional(S.Number),
+          protocol: S.optional(S.String),
+          wafConfigName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Listener" });
+    case 13:
+      return S.Array(__S(364, __c11, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.optional(S.String),
+          role: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Network" });
+    case 15:
+      return S.Array(__S(366, __c11, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          allowedSourceRanges: S.optional(__S(384, __c12, 0)),
+          ipBlockListName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LoadbalancerOptionAccessControl",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          credentialsRef: S.optional(S.String),
+          pushUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoadbalancerOptionLogs" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          credentialsRef: S.optional(S.String),
+          pushUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LoadbalancerOptionMetrics",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          logs: S.optional(__S(369, __c11, 17)),
+          metrics: S.optional(__S(370, __c11, 18)),
+        }),
+      ).annotate({
+        identifier: "LoadbalancerOptionObservability",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          accessControl: S.optional(__S(368, __c11, 16)),
+          ephemeralAddress: S.optional(S.Boolean),
+          observability: S.optional(__S(371, __c11, 19)),
+          privateNetworkOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LoadBalancerOptions" });
+    case 21:
+      return S.Array(__S(390, __c12, 6));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoadBalancerError" });
+    case 23:
+      return S.Array(__S(374, __c11, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecurityGroup" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          disableTargetSecurityGroupAssignment: S.optional(S.Boolean),
+          errors: S.optional(__S(375, __c11, 23)),
+          externalAddress: S.optional(S.String),
+          labels: S.optional(__S(352, __c11, 0)),
+          listeners: S.optional(__S(365, __c11, 13)),
+          loadBalancerSecurityGroup: S.optional(__S(376, __c11, 24)),
+          name: S.optional(S.String),
+          networks: S.optional(__S(367, __c11, 15)),
+          options: S.optional(__S(372, __c11, 20)),
+          planId: S.optional(S.String),
+          privateAddress: S.optional(S.String),
+          region: S.optional(S.String),
+          status: S.optional(S.String),
+          targetPools: S.optional(__S(373, __c11, 21)),
+          targetSecurityGroup: S.optional(__S(376, __c11, 24)),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoadBalancer" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customCa: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          skipCertificateValidation: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TlsConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          okStatuses: S.optional(__S(384, __c12, 0)),
+          path: S.optional(S.String),
+          tls: S.optional(__S(385, __c12, 1)),
+        }),
+      ).annotate({ identifier: "HttpHealthChecks" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          altPort: S.optional(S.Number),
+          healthyThreshold: S.optional(S.Number),
+          httpHealthChecks: S.optional(__S(386, __c12, 2)),
+          interval: S.optional(S.String),
+          intervalJitter: S.optional(S.String),
+          timeout: S.optional(S.String),
+          unhealthyThreshold: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ActiveHealthCheck" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          ip: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Target" });
+    case 5:
+      return S.Array(__S(388, __c12, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          activeHealthCheck: S.optional(__S(387, __c12, 3)),
+          name: S.optional(S.String),
+          targetPort: S.optional(S.Number),
+          targets: S.optional(__S(389, __c12, 5)),
+          tlsConfig: S.optional(__S(385, __c12, 1)),
+        }),
+      ).annotate({ identifier: "TargetPool" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          credentialsRef: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/projects/{projectId}/regions/{region}/credentials/{credentialsRef}",
+            code: 200,
+            baseUrl: "https://alb.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCredentialsRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteCredentialsResponse2",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/projects/{projectId}/regions/{region}/load-balancers/{name}",
+            code: 200,
+            baseUrl: "https://alb.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteLoadBalancerRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          credentialsRef: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/projects/{projectId}/regions/{region}/credentials/{credentialsRef}",
+            code: 200,
+            baseUrl: "https://alb.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetCredentialsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          credential: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({ identifier: "GetCredentialsResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/projects/{projectId}/regions/{region}/load-balancers/{name}",
+            code: 200,
+            baseUrl: "https://alb.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetLoadBalancerRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

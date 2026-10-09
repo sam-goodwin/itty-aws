@@ -247,8 +247,8 @@ export const getOrganizationAuditLogs: API.PaginatedOperationMethod<
   AuditLog
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(11, __c1, 3) as any as S.Schema<GetOrganizationAuditLogsRequest>,
-    output: __S(15, __c1, 7) as any as S.Schema<PaginatedAuditLogs>,
+    input: __S(22, __c1, 6) as any as S.Schema<GetOrganizationAuditLogsRequest>,
+    output: __S(26, __c1, 10) as any as S.Schema<PaginatedAuditLogs>,
     errors: [UnknownDaytonaError],
     protocol: DaytonaProtocol,
     retry: Retry.Retry,
@@ -286,39 +286,39 @@ function __c0(j: number): any {
           targets: __S(3, __c0, 3),
         }),
       ).annotate({ identifier: "AuditScenarios" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          eq: S.optional(S.String),
-          not: S.optional(S.String),
-          in: S.optional(__S(5, __c0, 5)),
-          notIn: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "StringFilter" });
-    case 7:
-      return S.Array(S.Number);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Number);
+      return S.Array(S.String);
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          eq: S.optional(S.String),
+          not: S.optional(S.String),
+          in: S.optional(__S(16, __c1, 0)),
+          notIn: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "StringFilter" });
+    case 2:
+      return S.Array(S.Number);
+    case 3:
+      return S.Array(S.Number);
+    case 4:
       return S.suspend(() =>
         S.Struct({
           eq: S.optional(S.Number),
           not: S.optional(S.Number),
-          in: S.optional(__S(7, __c0, 7)),
-          notIn: S.optional(__S(8, __c1, 0)),
+          in: S.optional(__S(18, __c1, 2)),
+          notIn: S.optional(__S(19, __c1, 3)),
           gte: S.optional(S.Number),
           lte: S.optional(S.Number),
           gt: S.optional(S.Number),
           lt: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IntFilter" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           gte: S.optional(S.String),
@@ -327,7 +327,7 @@ function __c1(j: number): any {
           lt: S.optional(S.String),
         }),
       ).annotate({ identifier: "DateFilter" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
@@ -336,23 +336,23 @@ function __c1(j: number): any {
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
           nextToken: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          actorId: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          actorEmail: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          actorApiKeyPrefix: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          actorApiKeySuffix: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          action: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          targetType: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          targetId: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          statusCode: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          createdAt: S.optional(__S(10, __c1, 2).pipe(T.Query())),
+          id: S.optional(__S(17, __c1, 1).pipe(T.Query())),
+          actorId: S.optional(__S(17, __c1, 1).pipe(T.Query())),
+          actorEmail: S.optional(__S(17, __c1, 1).pipe(T.Query())),
+          actorApiKeyPrefix: S.optional(__S(17, __c1, 1).pipe(T.Query())),
+          actorApiKeySuffix: S.optional(__S(17, __c1, 1).pipe(T.Query())),
+          action: S.optional(__S(17, __c1, 1).pipe(T.Query())),
+          targetType: S.optional(__S(17, __c1, 1).pipe(T.Query())),
+          targetId: S.optional(__S(17, __c1, 1).pipe(T.Query())),
+          statusCode: S.optional(__S(20, __c1, 4).pipe(T.Query())),
+          createdAt: S.optional(__S(21, __c1, 5).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/audit/organizations/{organizationId}", code: 200 })),
       ).annotate({
         identifier: "GetOrganizationAuditLogsRequest",
       });
-    case 4:
+    case 7:
       return S.Record(S.String, S.Unknown);
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -369,16 +369,16 @@ function __c1(j: number): any {
           ipAddress: S.optional(S.String),
           userAgent: S.optional(S.String),
           source: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
+          metadata: S.optional(__S(23, __c1, 7)),
           createdAt: S.String,
         }),
       ).annotate({ identifier: "AuditLog" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 9:
+      return S.Array(__S(24, __c1, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          items: __S(14, __c1, 6),
+          items: __S(25, __c1, 9),
           total: S.Number,
           page: S.Number,
           totalPages: S.Number,
@@ -387,7 +387,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "PaginatedAuditLogs" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

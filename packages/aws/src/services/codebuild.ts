@@ -1539,8 +1539,8 @@ export const batchDeleteBuilds: API.OperationMethod<
   BatchDeleteBuildsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BatchDeleteBuildsInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<BatchDeleteBuildsOutput>,
+  input: __S(1136, __c71, 0) as any as S.Schema<BatchDeleteBuildsInput>,
+  output: __S(1137, __c71, 1) as any as S.Schema<BatchDeleteBuildsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1557,8 +1557,8 @@ export const batchGetBuildBatches: API.OperationMethod<
   BatchGetBuildBatchesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<BatchGetBuildBatchesInput>,
-  output: __S(45, __c5, 5) as any as S.Schema<BatchGetBuildBatchesOutput>,
+  input: __S(1264, __c79, 0) as any as S.Schema<BatchGetBuildBatchesInput>,
+  output: __S(1266, __c79, 2) as any as S.Schema<BatchGetBuildBatchesOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1575,8 +1575,8 @@ export const batchGetBuilds: API.OperationMethod<
   BatchGetBuildsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<BatchGetBuildsInput>,
-  output: __S(55, __c6, 7) as any as S.Schema<BatchGetBuildsOutput>,
+  input: __S(1440, __c90, 0) as any as S.Schema<BatchGetBuildsInput>,
+  output: __S(1442, __c90, 2) as any as S.Schema<BatchGetBuildsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1593,8 +1593,8 @@ export const batchGetCommandExecutions: API.OperationMethod<
   BatchGetCommandExecutionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<BatchGetCommandExecutionsInput>,
-  output: __S(59, __c7, 3) as any as S.Schema<BatchGetCommandExecutionsOutput>,
+  input: __S(1504, __c94, 0) as any as S.Schema<BatchGetCommandExecutionsInput>,
+  output: __S(1505, __c94, 1) as any as S.Schema<BatchGetCommandExecutionsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1611,8 +1611,8 @@ export const batchGetFleets: API.OperationMethod<
   BatchGetFleetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<BatchGetFleetsInput>,
-  output: __S(72, __c9, 0) as any as S.Schema<BatchGetFleetsOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<BatchGetFleetsInput>,
+  output: __S(2, __c0, 2) as any as S.Schema<BatchGetFleetsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1629,8 +1629,8 @@ export const batchGetProjects: API.OperationMethod<
   BatchGetProjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<BatchGetProjectsInput>,
-  output: __S(85, __c10, 5) as any as S.Schema<BatchGetProjectsOutput>,
+  input: __S(48, __c3, 0) as any as S.Schema<BatchGetProjectsInput>,
+  output: __S(50, __c3, 2) as any as S.Schema<BatchGetProjectsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1647,8 +1647,8 @@ export const batchGetReportGroups: API.OperationMethod<
   BatchGetReportGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<BatchGetReportGroupsInput>,
-  output: __S(91, __c11, 3) as any as S.Schema<BatchGetReportGroupsOutput>,
+  input: __S(112, __c7, 0) as any as S.Schema<BatchGetReportGroupsInput>,
+  output: __S(114, __c7, 2) as any as S.Schema<BatchGetReportGroupsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1665,8 +1665,8 @@ export const batchGetReports: API.OperationMethod<
   BatchGetReportsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<BatchGetReportsInput>,
-  output: __S(98, __c12, 2) as any as S.Schema<BatchGetReportsOutput>,
+  input: __S(160, __c10, 0) as any as S.Schema<BatchGetReportsInput>,
+  output: __S(166, __c10, 6) as any as S.Schema<BatchGetReportsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1683,8 +1683,8 @@ export const batchGetSandboxes: API.OperationMethod<
   BatchGetSandboxesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<BatchGetSandboxesInput>,
-  output: __S(105, __c13, 1) as any as S.Schema<BatchGetSandboxesOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<BatchGetSandboxesInput>,
+  output: __S(178, __c11, 2) as any as S.Schema<BatchGetSandboxesOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1705,8 +1705,8 @@ export const createFleet: API.OperationMethod<
   CreateFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<CreateFleetInput>,
-  output: __S(108, __c13, 4) as any as S.Schema<CreateFleetOutput>,
+  input: __S(208, __c13, 0) as any as S.Schema<CreateFleetInput>,
+  output: __S(225, __c14, 1) as any as S.Schema<CreateFleetOutput>,
   errors: [AccountLimitExceededException, InvalidInputException, ResourceAlreadyExistsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1727,8 +1727,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<CreateProjectInput>,
-  output: __S(110, __c13, 6) as any as S.Schema<CreateProjectOutput>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateProjectInput>,
+  output: __S(256, __c16, 0) as any as S.Schema<CreateProjectOutput>,
   errors: [AccountLimitExceededException, InvalidInputException, ResourceAlreadyExistsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1749,8 +1749,8 @@ export const createReportGroup: API.OperationMethod<
   CreateReportGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<CreateReportGroupInput>,
-  output: __S(112, __c14, 0) as any as S.Schema<CreateReportGroupOutput>,
+  input: __S(272, __c17, 0) as any as S.Schema<CreateReportGroupInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<CreateReportGroupOutput>,
   errors: [AccountLimitExceededException, InvalidInputException, ResourceAlreadyExistsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1781,8 +1781,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<CreateWebhookInput>,
-  output: __S(114, __c14, 2) as any as S.Schema<CreateWebhookOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<CreateWebhookInput>,
+  output: __S(320, __c20, 0) as any as S.Schema<CreateWebhookOutput>,
   errors: [
     InvalidInputException,
     OAuthProviderException,
@@ -1804,8 +1804,8 @@ export const deleteBuildBatch: API.OperationMethod<
   DeleteBuildBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<DeleteBuildBatchInput>,
-  output: __S(116, __c14, 4) as any as S.Schema<DeleteBuildBatchOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteBuildBatchInput>,
+  output: __S(337, __c21, 1) as any as S.Schema<DeleteBuildBatchOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1822,8 +1822,8 @@ export const deleteFleet: API.OperationMethod<
   DeleteFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<DeleteFleetInput>,
-  output: __S(118, __c14, 6) as any as S.Schema<DeleteFleetOutput>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteFleetInput>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteFleetOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1840,8 +1840,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<DeleteProjectInput>,
-  output: __S(118, __c14, 6) as any as S.Schema<DeleteProjectOutput>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteProjectInput>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteProjectOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1858,8 +1858,8 @@ export const deleteReport: API.OperationMethod<
   DeleteReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteReportInput>,
-  output: __S(118, __c14, 6) as any as S.Schema<DeleteReportOutput>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteReportInput>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteReportOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1876,8 +1876,8 @@ export const deleteReportGroup: API.OperationMethod<
   DeleteReportGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<DeleteReportGroupInput>,
-  output: __S(118, __c14, 6) as any as S.Schema<DeleteReportGroupOutput>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeleteReportGroupInput>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteReportGroupOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1894,8 +1894,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<DeleteResourcePolicyInput>,
-  output: __S(118, __c14, 6) as any as S.Schema<DeleteResourcePolicyOutput>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteResourcePolicyInput>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteResourcePolicyOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1915,8 +1915,8 @@ export const deleteSourceCredentials: API.OperationMethod<
   DeleteSourceCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DeleteSourceCredentialsInput>,
-  output: __S(124, __c15, 4) as any as S.Schema<DeleteSourceCredentialsOutput>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteSourceCredentialsInput>,
+  output: __S(464, __c29, 0) as any as S.Schema<DeleteSourceCredentialsOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1939,8 +1939,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<DeleteWebhookInput>,
-  output: __S(118, __c14, 6) as any as S.Schema<DeleteWebhookOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteWebhookInput>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteWebhookOutput>,
   errors: [InvalidInputException, OAuthProviderException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1958,8 +1958,8 @@ export const describeCodeCoverages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CodeCoverage
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<DescribeCodeCoveragesInput>,
-  output: __S(129, __c16, 1) as any as S.Schema<DescribeCodeCoveragesOutput>,
+  input: __S(496, __c31, 0) as any as S.Schema<DescribeCodeCoveragesInput>,
+  output: __S(499, __c31, 3) as any as S.Schema<DescribeCodeCoveragesOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1986,8 +1986,8 @@ export const describeTestCases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TestCase
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<DescribeTestCasesInput>,
-  output: __S(134, __c16, 6) as any as S.Schema<DescribeTestCasesOutput>,
+  input: __S(513, __c32, 1) as any as S.Schema<DescribeTestCasesInput>,
+  output: __S(516, __c32, 4) as any as S.Schema<DescribeTestCasesOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2013,8 +2013,8 @@ export const getReportGroupTrend: API.OperationMethod<
   GetReportGroupTrendError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetReportGroupTrendInput>,
-  output: __S(139, __c17, 3) as any as S.Schema<GetReportGroupTrendOutput>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetReportGroupTrendInput>,
+  output: __S(532, __c33, 4) as any as S.Schema<GetReportGroupTrendOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2034,8 +2034,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetResourcePolicyInput>,
-  output: __S(141, __c17, 5) as any as S.Schema<GetResourcePolicyOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetResourcePolicyInput>,
+  output: __S(545, __c34, 1) as any as S.Schema<GetResourcePolicyOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2057,8 +2057,8 @@ export const importSourceCredentials: API.OperationMethod<
   ImportSourceCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ImportSourceCredentialsInput>,
-  output: __S(124, __c15, 4) as any as S.Schema<ImportSourceCredentialsOutput>,
+  input: __S(560, __c35, 0) as any as S.Schema<ImportSourceCredentialsInput>,
+  output: __S(464, __c29, 0) as any as S.Schema<ImportSourceCredentialsOutput>,
   errors: [AccountLimitExceededException, InvalidInputException, ResourceAlreadyExistsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2078,8 +2078,8 @@ export const invalidateProjectCache: API.OperationMethod<
   InvalidateProjectCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<InvalidateProjectCacheInput>,
-  output: __S(118, __c14, 6) as any as S.Schema<InvalidateProjectCacheOutput>,
+  input: __S(576, __c36, 0) as any as S.Schema<InvalidateProjectCacheInput>,
+  output: __S(368, __c23, 0) as any as S.Schema<InvalidateProjectCacheOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2097,8 +2097,8 @@ export const listBuildBatches: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListBuildBatchesInput>,
-  output: __S(146, __c18, 2) as any as S.Schema<ListBuildBatchesOutput>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListBuildBatchesInput>,
+  output: __S(624, __c39, 0) as any as S.Schema<ListBuildBatchesOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2125,8 +2125,8 @@ export const listBuildBatchesForProject: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<ListBuildBatchesForProjectInput>,
-  output: __S(148, __c18, 4) as any as S.Schema<ListBuildBatchesForProjectOutput>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListBuildBatchesForProjectInput>,
+  output: __S(656, __c41, 0) as any as S.Schema<ListBuildBatchesForProjectOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2150,8 +2150,8 @@ export const listBuilds: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListBuildsInput>,
-  output: __S(146, __c18, 2) as any as S.Schema<ListBuildsOutput>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListBuildsInput>,
+  output: __S(624, __c39, 0) as any as S.Schema<ListBuildsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2174,8 +2174,8 @@ export const listBuildsForProject: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ListBuildsForProjectInput>,
-  output: __S(148, __c18, 4) as any as S.Schema<ListBuildsForProjectOutput>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListBuildsForProjectInput>,
+  output: __S(656, __c41, 0) as any as S.Schema<ListBuildsForProjectOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2197,8 +2197,8 @@ export const listCommandExecutionsForSandbox: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CommandExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<ListCommandExecutionsForSandboxInput>,
-  output: __S(152, __c19, 0) as any as S.Schema<ListCommandExecutionsForSandboxOutput>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListCommandExecutionsForSandboxInput>,
+  output: __S(705, __c44, 1) as any as S.Schema<ListCommandExecutionsForSandboxOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2221,8 +2221,8 @@ export const listCuratedEnvironmentImages: API.OperationMethod<
   ListCuratedEnvironmentImagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListCuratedEnvironmentImagesInput>,
-  output: __S(160, __c20, 0) as any as S.Schema<ListCuratedEnvironmentImagesOutput>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListCuratedEnvironmentImagesInput>,
+  output: __S(727, __c45, 7) as any as S.Schema<ListCuratedEnvironmentImagesOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2240,8 +2240,8 @@ export const listFleets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListFleetsInput>,
-  output: __S(162, __c20, 2) as any as S.Schema<ListFleetsOutput>,
+  input: __S(736, __c46, 0) as any as S.Schema<ListFleetsInput>,
+  output: __S(737, __c46, 1) as any as S.Schema<ListFleetsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2265,8 +2265,8 @@ export const listProjects: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<ListProjectsInput>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListProjectsOutput>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListProjectsInput>,
+  output: __S(768, __c48, 0) as any as S.Schema<ListProjectsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2285,8 +2285,8 @@ export const listReportGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListReportGroupsInput>,
-  output: __S(166, __c20, 6) as any as S.Schema<ListReportGroupsOutput>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListReportGroupsInput>,
+  output: __S(785, __c49, 1) as any as S.Schema<ListReportGroupsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2310,8 +2310,8 @@ export const listReports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<ListReportsInput>,
-  output: __S(168, __c21, 0) as any as S.Schema<ListReportsOutput>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListReportsInput>,
+  output: __S(801, __c50, 1) as any as S.Schema<ListReportsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2338,8 +2338,8 @@ export const listReportsForReportGroup: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListReportsForReportGroupInput>,
-  output: __S(170, __c21, 2) as any as S.Schema<ListReportsForReportGroupOutput>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListReportsForReportGroupInput>,
+  output: __S(817, __c51, 1) as any as S.Schema<ListReportsForReportGroupOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2363,8 +2363,8 @@ export const listSandboxes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListSandboxesInput>,
-  output: __S(146, __c18, 2) as any as S.Schema<ListSandboxesOutput>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListSandboxesInput>,
+  output: __S(624, __c39, 0) as any as S.Schema<ListSandboxesOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2391,8 +2391,8 @@ export const listSandboxesForProject: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<ListSandboxesForProjectInput>,
-  output: __S(148, __c18, 4) as any as S.Schema<ListSandboxesForProjectOutput>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListSandboxesForProjectInput>,
+  output: __S(656, __c41, 0) as any as S.Schema<ListSandboxesForProjectOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2416,8 +2416,8 @@ export const listSharedProjects: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ListSharedProjectsInput>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListSharedProjectsOutput>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListSharedProjectsInput>,
+  output: __S(768, __c48, 0) as any as S.Schema<ListSharedProjectsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2441,8 +2441,8 @@ export const listSharedReportGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<ListSharedReportGroupsInput>,
-  output: __S(175, __c21, 7) as any as S.Schema<ListSharedReportGroupsOutput>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListSharedReportGroupsInput>,
+  output: __S(881, __c55, 1) as any as S.Schema<ListSharedReportGroupsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2465,8 +2465,8 @@ export const listSourceCredentials: API.OperationMethod<
   ListSourceCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListSourceCredentialsInput>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListSourceCredentialsOutput>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListSourceCredentialsInput>,
+  output: __S(899, __c56, 3) as any as S.Schema<ListSourceCredentialsOutput>,
   errors: [InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2487,8 +2487,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<PutResourcePolicyInput>,
-  output: __S(181, __c22, 5) as any as S.Schema<PutResourcePolicyOutput>,
+  input: __S(912, __c57, 0) as any as S.Schema<PutResourcePolicyInput>,
+  output: __S(913, __c57, 1) as any as S.Schema<PutResourcePolicyOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2509,8 +2509,8 @@ export const retryBuild: API.OperationMethod<
   RetryBuildError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<RetryBuildInput>,
-  output: __S(183, __c22, 7) as any as S.Schema<RetryBuildOutput>,
+  input: __S(928, __c58, 0) as any as S.Schema<RetryBuildInput>,
+  output: __S(944, __c59, 0) as any as S.Schema<RetryBuildOutput>,
   errors: [AccountLimitExceededException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2527,8 +2527,8 @@ export const retryBuildBatch: API.OperationMethod<
   RetryBuildBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<RetryBuildBatchInput>,
-  output: __S(185, __c23, 1) as any as S.Schema<RetryBuildBatchOutput>,
+  input: __S(960, __c60, 0) as any as S.Schema<RetryBuildBatchInput>,
+  output: __S(976, __c61, 0) as any as S.Schema<RetryBuildBatchOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2553,8 +2553,8 @@ export const startBuild: API.OperationMethod<
   StartBuildError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<StartBuildInput>,
-  output: __S(183, __c22, 7) as any as S.Schema<StartBuildOutput>,
+  input: __S(992, __c62, 0) as any as S.Schema<StartBuildInput>,
+  output: __S(944, __c59, 0) as any as S.Schema<StartBuildOutput>,
   errors: [AccountLimitExceededException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2571,8 +2571,8 @@ export const startBuildBatch: API.OperationMethod<
   StartBuildBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<StartBuildBatchInput>,
-  output: __S(185, __c23, 1) as any as S.Schema<StartBuildBatchOutput>,
+  input: __S(1008, __c63, 0) as any as S.Schema<StartBuildBatchInput>,
+  output: __S(976, __c61, 0) as any as S.Schema<StartBuildBatchOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2592,8 +2592,8 @@ export const startCommandExecution: API.OperationMethod<
   StartCommandExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<StartCommandExecutionInput>,
-  output: __S(189, __c23, 5) as any as S.Schema<StartCommandExecutionOutput>,
+  input: __S(1024, __c64, 0) as any as S.Schema<StartCommandExecutionInput>,
+  output: __S(1025, __c64, 1) as any as S.Schema<StartCommandExecutionOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2614,8 +2614,8 @@ export const startSandbox: API.OperationMethod<
   StartSandboxError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<StartSandboxInput>,
-  output: __S(191, __c23, 7) as any as S.Schema<StartSandboxOutput>,
+  input: __S(1040, __c65, 0) as any as S.Schema<StartSandboxInput>,
+  output: __S(1056, __c66, 0) as any as S.Schema<StartSandboxOutput>,
   errors: [AccountSuspendedException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2635,8 +2635,8 @@ export const startSandboxConnection: API.OperationMethod<
   StartSandboxConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<StartSandboxConnectionInput>,
-  output: __S(194, __c24, 2) as any as S.Schema<StartSandboxConnectionOutput>,
+  input: __S(1072, __c67, 0) as any as S.Schema<StartSandboxConnectionInput>,
+  output: __S(1074, __c67, 2) as any as S.Schema<StartSandboxConnectionOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2653,8 +2653,8 @@ export const stopBuild: API.OperationMethod<
   StopBuildError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<StopBuildInput>,
-  output: __S(183, __c22, 7) as any as S.Schema<StopBuildOutput>,
+  input: __S(1088, __c68, 0) as any as S.Schema<StopBuildInput>,
+  output: __S(944, __c59, 0) as any as S.Schema<StopBuildOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2671,8 +2671,8 @@ export const stopBuildBatch: API.OperationMethod<
   StopBuildBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<StopBuildBatchInput>,
-  output: __S(185, __c23, 1) as any as S.Schema<StopBuildBatchOutput>,
+  input: __S(1104, __c69, 0) as any as S.Schema<StopBuildBatchInput>,
+  output: __S(976, __c61, 0) as any as S.Schema<StopBuildBatchOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2689,8 +2689,8 @@ export const stopSandbox: API.OperationMethod<
   StopSandboxError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<StopSandboxInput>,
-  output: __S(191, __c23, 7) as any as S.Schema<StopSandboxOutput>,
+  input: __S(1120, __c70, 0) as any as S.Schema<StopSandboxInput>,
+  output: __S(1056, __c66, 0) as any as S.Schema<StopSandboxOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2711,8 +2711,8 @@ export const updateFleet: API.OperationMethod<
   UpdateFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<UpdateFleetInput>,
-  output: __S(108, __c13, 4) as any as S.Schema<UpdateFleetOutput>,
+  input: __S(1184, __c74, 0) as any as S.Schema<UpdateFleetInput>,
+  output: __S(225, __c14, 1) as any as S.Schema<UpdateFleetOutput>,
   errors: [AccountLimitExceededException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2729,8 +2729,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<UpdateProjectInput>,
-  output: __S(110, __c13, 6) as any as S.Schema<UpdateProjectOutput>,
+  input: __S(1200, __c75, 0) as any as S.Schema<UpdateProjectInput>,
+  output: __S(256, __c16, 0) as any as S.Schema<UpdateProjectOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2776,8 +2776,8 @@ export const updateProjectVisibility: API.OperationMethod<
   UpdateProjectVisibilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<UpdateProjectVisibilityInput>,
-  output: __S(201, __c25, 1) as any as S.Schema<UpdateProjectVisibilityOutput>,
+  input: __S(1216, __c76, 0) as any as S.Schema<UpdateProjectVisibilityInput>,
+  output: __S(1217, __c76, 1) as any as S.Schema<UpdateProjectVisibilityOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2797,8 +2797,8 @@ export const updateReportGroup: API.OperationMethod<
   UpdateReportGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<UpdateReportGroupInput>,
-  output: __S(112, __c14, 0) as any as S.Schema<UpdateReportGroupOutput>,
+  input: __S(1232, __c77, 0) as any as S.Schema<UpdateReportGroupInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<UpdateReportGroupOutput>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2821,8 +2821,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<UpdateWebhookInput>,
-  output: __S(114, __c14, 2) as any as S.Schema<UpdateWebhookOutput>,
+  input: __S(1248, __c78, 0) as any as S.Schema<UpdateWebhookInput>,
+  output: __S(320, __c20, 0) as any as S.Schema<UpdateWebhookOutput>,
   errors: [InvalidInputException, OAuthProviderException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2833,474 +2833,35 @@ export const updateWebhook: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
-        S.Struct({ ids: __S(0, __c0, 0) }).pipe(
+        S.Struct({ names: __S(1168, __c73, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({ identifier: "BatchDeleteBuildsInput" });
+      ).annotate({ identifier: "BatchGetFleetsInput" });
+    case 1:
+      return S.Array(__S(39, __c2, 7));
     case 2:
       return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), statusCode: S.optional(S.String) }),
-      ).annotate({ identifier: "BuildNotDeleted" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
         S.Struct({
-          buildsDeleted: S.optional(__S(0, __c0, 0)),
-          buildsNotDeleted: S.optional(__S(3, __c0, 3)),
+          fleets: S.optional(__S(1, __c0, 1)),
+          fleetsNotFound: S.optional(__S(1168, __c73, 0)),
         }),
-      ).annotate({ identifier: "BatchDeleteBuildsOutput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ids: __S(0, __c0, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "BatchGetBuildBatchesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ statusCode: S.optional(S.String), message: S.optional(S.String) }),
-      ).annotate({ identifier: "PhaseContext" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
+      ).annotate({ identifier: "BatchGetFleetsOutput" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          phaseType: S.optional(S.String),
-          phaseStatus: S.optional(S.String),
-          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          durationInSeconds: S.optional(S.Number),
-          contexts: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "BuildBatchPhase" });
+        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
     case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ fetchSubmodules: S.Boolean })).annotate({
-        identifier: "GitSubmodulesConfig",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ type: S.String, resource: S.optional(S.String) })).annotate(
-        { identifier: "SourceAuth" },
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ context: S.optional(S.String), targetUrl: S.optional(S.String) }),
-      ).annotate({ identifier: "BuildStatusConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          location: S.optional(S.String),
-          gitCloneDepth: S.optional(S.Number),
-          gitSubmodulesConfig: S.optional(__S(10, __c1, 2)),
-          buildspec: S.optional(S.String),
-          auth: S.optional(__S(11, __c1, 3)),
-          reportBuildStatus: S.optional(S.Boolean),
-          buildStatusConfig: S.optional(__S(12, __c1, 4)),
-          insecureSsl: S.optional(S.Boolean),
-          sourceIdentifier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProjectSource" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ sourceIdentifier: S.String, sourceVersion: S.String }),
-      ).annotate({ identifier: "ProjectSourceVersion" });
+      return S.Array(__S(16, __c1, 0));
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          sha256sum: S.optional(S.String),
-          md5sum: S.optional(S.String),
-          overrideArtifactName: S.optional(S.Boolean),
-          encryptionDisabled: S.optional(S.Boolean),
-          artifactIdentifier: S.optional(S.String),
-          bucketOwnerAccess: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BuildArtifacts" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          location: S.optional(S.String),
-          modes: S.optional(__S(19, __c2, 3)),
-          cacheNamespace: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProjectCache" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          vCpu: S.optional(S.Number),
-          memory: S.optional(S.Number),
-          disk: S.optional(S.Number),
-          machineType: S.optional(S.String),
-          instanceType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ComputeConfiguration" });
-    case 6:
-      return S.suspend(() => S.Struct({ fleetArn: S.optional(S.String) })).annotate({
-        identifier: "ProjectFleet",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ name: S.String, value: S.String, type: S.optional(S.String) }),
-      ).annotate({ identifier: "EnvironmentVariable" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ credential: S.String, credentialProvider: S.String }),
-      ).annotate({ identifier: "RegistryCredential" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ status: S.optional(S.String), message: S.optional(S.String) }),
-      ).annotate({ identifier: "DockerServerStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          computeType: S.String,
-          securityGroupIds: S.optional(__S(0, __c0, 0)),
-          status: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "DockerServer" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          image: S.String,
-          computeType: S.String,
-          computeConfiguration: S.optional(__S(21, __c2, 5)),
-          fleet: S.optional(__S(22, __c2, 6)),
-          environmentVariables: S.optional(__S(24, __c3, 0)),
-          privilegedMode: S.optional(S.Boolean),
-          certificate: S.optional(S.String),
-          registryCredential: S.optional(__S(25, __c3, 1)),
-          imagePullCredentialsType: S.optional(S.String),
-          dockerServer: S.optional(__S(27, __c3, 3)),
-          hostKernel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProjectEnvironment" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          groupName: S.optional(S.String),
-          streamName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloudWatchLogsConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          location: S.optional(S.String),
-          encryptionDisabled: S.optional(S.Boolean),
-          bucketOwnerAccess: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "S3LogsConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cloudWatchLogs: S.optional(__S(29, __c3, 5)),
-          s3Logs: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "LogsConfig" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          vpcId: S.optional(S.String),
-          subnets: S.optional(__S(0, __c0, 0)),
-          securityGroupIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "VpcConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          mountPoint: S.optional(S.String),
-          identifier: S.optional(S.String),
-          mountOptions: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProjectFileSystemLocation",
-      });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          maximumBuildsAllowed: S.optional(S.Number),
-          computeTypesAllowed: S.optional(__S(0, __c0, 0)),
-          fleetsAllowed: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "BatchRestrictions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceRole: S.optional(S.String),
-          combineArtifacts: S.optional(S.Boolean),
-          restrictions: S.optional(__S(35, __c4, 3)),
-          timeoutInMins: S.optional(S.Number),
-          batchReportMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProjectBuildBatchConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          identifier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResolvedArtifact" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          arn: S.optional(S.String),
-          requestedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          buildStatus: S.optional(S.String),
-          primaryArtifact: S.optional(__S(37, __c4, 5)),
-          secondaryArtifacts: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "BuildSummary" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          identifier: S.optional(S.String),
-          dependsOn: S.optional(__S(0, __c0, 0)),
-          ignoreFailure: S.optional(S.Boolean),
-          currentBuildSummary: S.optional(__S(39, __c4, 7)),
-          priorBuildSummaryList: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "BuildGroup" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          arn: S.optional(S.String),
-          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          currentPhase: S.optional(S.String),
-          buildBatchStatus: S.optional(S.String),
-          sourceVersion: S.optional(S.String),
-          resolvedSourceVersion: S.optional(S.String),
-          projectName: S.optional(S.String),
-          phases: S.optional(__S(9, __c1, 1)),
-          source: S.optional(__S(13, __c1, 5)),
-          secondarySources: S.optional(__S(14, __c1, 6)),
-          secondarySourceVersions: S.optional(__S(16, __c2, 0)),
-          artifacts: S.optional(__S(17, __c2, 1)),
-          secondaryArtifacts: S.optional(__S(18, __c2, 2)),
-          cache: S.optional(__S(20, __c2, 4)),
-          environment: S.optional(__S(28, __c3, 4)),
-          serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(31, __c3, 7)),
-          buildTimeoutInMinutes: S.optional(S.Number),
-          queuedTimeoutInMinutes: S.optional(S.Number),
-          complete: S.optional(S.Boolean),
-          initiator: S.optional(S.String),
-          vpcConfig: S.optional(__S(32, __c4, 0)),
-          encryptionKey: S.optional(S.String),
-          buildBatchNumber: S.optional(S.Number),
-          fileSystemLocations: S.optional(__S(34, __c4, 2)),
-          buildBatchConfig: S.optional(__S(36, __c4, 4)),
-          buildGroups: S.optional(__S(42, __c5, 2)),
-          debugSessionEnabled: S.optional(S.Boolean),
-          reportArns: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "BuildBatch" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          buildBatches: S.optional(__S(44, __c5, 4)),
-          buildBatchesNotFound: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchGetBuildBatchesOutput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ids: __S(0, __c0, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "BatchGetBuildsInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupName: S.optional(S.String),
-          streamName: S.optional(S.String),
-          deepLink: S.optional(S.String),
-          s3DeepLink: S.optional(S.String),
-          cloudWatchLogsArn: S.optional(S.String),
-          s3LogsArn: S.optional(S.String),
-          cloudWatchLogs: S.optional(__S(29, __c3, 5)),
-          s3Logs: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "LogsLocation" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ subnetId: S.optional(S.String), networkInterfaceId: S.optional(S.String) }),
-      ).annotate({ identifier: "NetworkInterface" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ExportedEnvironmentVariable",
-      });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ sessionEnabled: S.optional(S.Boolean), sessionTarget: S.optional(S.String) }),
-      ).annotate({ identifier: "DebugSession" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          autoRetryLimit: S.optional(S.Number),
-          autoRetryNumber: S.optional(S.Number),
-          nextAutoRetry: S.optional(S.String),
-          previousAutoRetry: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutoRetryConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          arn: S.optional(S.String),
-          buildNumber: S.optional(S.Number),
-          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          currentPhase: S.optional(S.String),
-          buildStatus: S.optional(S.String),
-          sourceVersion: S.optional(S.String),
-          resolvedSourceVersion: S.optional(S.String),
-          projectName: S.optional(S.String),
-          phases: S.optional(__S(9, __c1, 1)),
-          source: S.optional(__S(13, __c1, 5)),
-          secondarySources: S.optional(__S(14, __c1, 6)),
-          secondarySourceVersions: S.optional(__S(16, __c2, 0)),
-          artifacts: S.optional(__S(17, __c2, 1)),
-          secondaryArtifacts: S.optional(__S(18, __c2, 2)),
-          cache: S.optional(__S(20, __c2, 4)),
-          environment: S.optional(__S(28, __c3, 4)),
-          serviceRole: S.optional(S.String),
-          logs: S.optional(__S(47, __c5, 7)),
-          timeoutInMinutes: S.optional(S.Number),
-          queuedTimeoutInMinutes: S.optional(S.Number),
-          buildComplete: S.optional(S.Boolean),
-          initiator: S.optional(S.String),
-          vpcConfig: S.optional(__S(32, __c4, 0)),
-          networkInterface: S.optional(__S(48, __c6, 0)),
-          encryptionKey: S.optional(S.String),
-          exportedEnvironmentVariables: S.optional(__S(50, __c6, 2)),
-          reportArns: S.optional(__S(0, __c0, 0)),
-          fileSystemLocations: S.optional(__S(34, __c4, 2)),
-          debugSession: S.optional(__S(51, __c6, 3)),
-          buildBatchArn: S.optional(S.String),
-          autoRetryConfig: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "Build" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          builds: S.optional(__S(54, __c6, 6)),
-          buildsNotFound: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "BatchGetBuildsOutput" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ sandboxId: S.String, commandExecutionIds: __S(0, __c0, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "BatchGetCommandExecutionsInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          sandboxId: S.optional(S.String),
-          submitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-          command: S.optional(SensitiveString),
-          type: S.optional(S.String),
-          exitCode: S.optional(S.String),
-          standardOutputContent: S.optional(SensitiveString),
-          standardErrContent: S.optional(SensitiveString),
-          logs: S.optional(__S(47, __c5, 7)),
-          sandboxArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CommandExecution" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          commandExecutions: S.optional(__S(58, __c7, 2)),
-          commandExecutionsNotFound: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchGetCommandExecutionsOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ names: __S(0, __c0, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "BatchGetFleetsInput" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.String),
@@ -3308,56 +2869,43 @@ function __c7(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetStatus" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({
-          metricType: S.optional(S.String),
-          targetValue: S.optional(S.Number),
-        }),
+        S.Struct({ metricType: S.optional(S.String), targetValue: S.optional(S.Number) }),
       ).annotate({
         identifier: "TargetTrackingScalingConfiguration",
       });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(33, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           scalingType: S.optional(S.String),
-          targetTrackingScalingConfigs: S.optional(__S(63, __c7, 7)),
+          targetTrackingScalingConfigs: S.optional(__S(34, __c2, 2)),
           maxCapacity: S.optional(S.Number),
           desiredCapacity: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ScalingConfigurationOutput",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           effect: S.String,
-          entities: __S(0, __c0, 0),
+          entities: __S(1168, __c73, 0),
         }),
       ).annotate({ identifier: "FleetProxyRule" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(36, __c2, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           defaultBehavior: S.optional(S.String),
-          orderedProxyRules: S.optional(__S(66, __c8, 2)),
+          orderedProxyRules: S.optional(__S(37, __c2, 5)),
         }),
       ).annotate({ identifier: "ProxyConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -3365,40 +2913,88 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(__S(61, __c7, 5)),
+          status: S.optional(__S(32, __c2, 0)),
           baseCapacity: S.optional(S.Number),
           environmentType: S.optional(S.String),
           computeType: S.optional(S.String),
-          computeConfiguration: S.optional(__S(21, __c2, 5)),
-          scalingConfiguration: S.optional(__S(64, __c8, 0)),
+          computeConfiguration: S.optional(__S(1328, __c83, 0)),
+          scalingConfiguration: S.optional(__S(35, __c2, 3)),
           overflowBehavior: S.optional(S.String),
-          vpcConfig: S.optional(__S(32, __c4, 0)),
-          proxyConfiguration: S.optional(__S(67, __c8, 3)),
+          vpcConfig: S.optional(__S(1329, __c83, 1)),
+          proxyConfiguration: S.optional(__S(38, __c2, 6)),
           imageId: S.optional(S.String),
           fleetServiceRole: S.optional(S.String),
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({ identifier: "Fleet" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
   }
 }
-function __c9(j: number): any {
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ names: __S(1168, __c73, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchGetProjectsInput" });
+    case 1:
+      return S.Array(__S(97, __c6, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          projects: S.optional(__S(49, __c3, 1)),
+          projectsNotFound: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({ identifier: "BatchGetProjectsOutput" });
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fleets: S.optional(__S(71, __c8, 7)),
-          fleetsNotFound: S.optional(__S(0, __c0, 0)),
+          type: S.String,
+          pattern: S.String,
+          excludeMatchedPattern: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "BatchGetFleetsOutput" });
+      ).annotate({ identifier: "WebhookFilter" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ names: __S(0, __c0, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "BatchGetProjectsInput" });
+      return S.Array(__S(64, __c4, 0));
     case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, domain: S.optional(S.String), scope: S.String }),
+      ).annotate({ identifier: "ScopeConfiguration" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          requiresCommentApproval: S.String,
+          approverRoles: S.optional(__S(1360, __c85, 0)),
+        }),
+      ).annotate({ identifier: "PullRequestBuildPolicy" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          payloadUrl: S.optional(S.String),
+          secret: S.optional(S.String),
+          branchFilter: S.optional(S.String),
+          filterGroups: S.optional(__S(66, __c4, 2)),
+          buildType: S.optional(S.String),
+          manualCreation: S.optional(S.Boolean),
+          lastModifiedSecret: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          scopeConfiguration: S.optional(__S(67, __c4, 3)),
+          status: S.optional(S.String),
+          statusMessage: S.optional(S.String),
+          pullRequestBuildPolicy: S.optional(__S(68, __c4, 4)),
+        }),
+      ).annotate({ identifier: "Webhook" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -3413,83 +3009,43 @@ function __c9(j: number): any {
           bucketOwnerAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectArtifacts" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          pattern: S.String,
-          excludeMatchedPattern: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "WebhookFilter" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ name: S.String, domain: S.optional(S.String), scope: S.String }),
-      ).annotate({ identifier: "ScopeConfiguration" });
+    case 1:
+      return S.Array(__S(80, __c5, 0));
   }
 }
-function __c10(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          requiresCommentApproval: S.String,
-          approverRoles: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "PullRequestBuildPolicy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          payloadUrl: S.optional(S.String),
-          secret: S.optional(S.String),
-          branchFilter: S.optional(S.String),
-          filterGroups: S.optional(__S(78, __c9, 6)),
-          buildType: S.optional(S.String),
-          manualCreation: S.optional(S.Boolean),
-          lastModifiedSecret: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          scopeConfiguration: S.optional(__S(79, __c9, 7)),
-          status: S.optional(S.String),
-          statusMessage: S.optional(S.String),
-          pullRequestBuildPolicy: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "Webhook" });
-    case 2:
-      return S.suspend(() =>
         S.Struct({ badgeEnabled: S.optional(S.Boolean), badgeRequestUrl: S.optional(S.String) }),
       ).annotate({ identifier: "ProjectBadge" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           arn: S.optional(S.String),
           description: S.optional(S.String),
-          source: S.optional(__S(13, __c1, 5)),
-          secondarySources: S.optional(__S(14, __c1, 6)),
+          source: S.optional(__S(1347, __c84, 3)),
+          secondarySources: S.optional(__S(1348, __c84, 4)),
           sourceVersion: S.optional(S.String),
-          secondarySourceVersions: S.optional(__S(16, __c2, 0)),
-          artifacts: S.optional(__S(74, __c9, 2)),
-          secondaryArtifacts: S.optional(__S(75, __c9, 3)),
-          cache: S.optional(__S(20, __c2, 4)),
-          environment: S.optional(__S(28, __c3, 4)),
+          secondarySourceVersions: S.optional(__S(1350, __c84, 6)),
+          artifacts: S.optional(__S(80, __c5, 0)),
+          secondaryArtifacts: S.optional(__S(81, __c5, 1)),
+          cache: S.optional(__S(1376, __c86, 0)),
+          environment: S.optional(__S(1357, __c84, 13)),
           serviceRole: S.optional(S.String),
           timeoutInMinutes: S.optional(S.Number),
           queuedTimeoutInMinutes: S.optional(S.Number),
           encryptionKey: S.optional(S.String),
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(17, __c1, 1)),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          webhook: S.optional(__S(81, __c10, 1)),
-          vpcConfig: S.optional(__S(32, __c4, 0)),
-          badge: S.optional(__S(82, __c10, 2)),
-          logsConfig: S.optional(__S(31, __c3, 7)),
-          fileSystemLocations: S.optional(__S(34, __c4, 2)),
-          buildBatchConfig: S.optional(__S(36, __c4, 4)),
+          webhook: S.optional(__S(69, __c4, 5)),
+          vpcConfig: S.optional(__S(1329, __c83, 1)),
+          badge: S.optional(__S(96, __c6, 0)),
+          logsConfig: S.optional(__S(1280, __c80, 0)),
+          fileSystemLocations: S.optional(__S(1359, __c84, 15)),
+          buildBatchConfig: S.optional(__S(1297, __c81, 1)),
           concurrentBuildLimit: S.optional(S.Number),
           projectVisibility: S.optional(S.String),
           publicProjectAlias: S.optional(S.String),
@@ -3497,24 +3053,34 @@ function __c10(j: number): any {
           autoRetryLimit: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Project" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          projects: S.optional(__S(84, __c10, 4)),
-          projectsNotFound: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "BatchGetProjectsOutput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ reportGroupArns: __S(0, __c0, 0) }).pipe(
+        S.Struct({ reportGroupArns: __S(1168, __c73, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchGetReportGroupsInput",
       });
-    case 7:
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reportGroups: S.optional(__S(113, __c7, 1)),
+          reportGroupsNotFound: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchGetReportGroupsOutput",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.optional(S.String),
@@ -3525,58 +3091,51 @@ function __c10(j: number): any {
           encryptionDisabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "S3ReportExportConfig" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           exportConfigType: S.optional(S.String),
-          s3Destination: S.optional(__S(87, __c10, 7)),
+          s3Destination: S.optional(__S(128, __c8, 0)),
         }),
       ).annotate({ identifier: "ReportExportConfig" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          exportConfig: S.optional(__S(88, __c11, 0)),
+          exportConfig: S.optional(__S(129, __c8, 1)),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(17, __c1, 1)),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportGroup" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          reportGroups: S.optional(__S(90, __c11, 2)),
-          reportGroupsNotFound: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchGetReportGroupsOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ reportArns: __S(0, __c0, 0) }).pipe(
+        S.Struct({ reportArns: __S(1168, __c73, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchGetReportsInput" });
-    case 5:
+    case 1:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           total: S.Number,
-          statusCounts: __S(93, __c11, 5),
+          statusCounts: __S(161, __c10, 1),
           durationInNanoSeconds: S.Number,
         }),
       ).annotate({ identifier: "TestReportSummary" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           lineCoveragePercentage: S.optional(S.Number),
@@ -3589,11 +3148,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CodeCoverageReportSummary",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -3604,28 +3159,45 @@ function __c12(j: number): any {
           status: S.optional(S.String),
           created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           expired: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          exportConfig: S.optional(__S(88, __c11, 0)),
+          exportConfig: S.optional(__S(129, __c8, 1)),
           truncated: S.optional(S.Boolean),
-          testSummary: S.optional(__S(94, __c11, 6)),
-          codeCoverageSummary: S.optional(__S(95, __c11, 7)),
+          testSummary: S.optional(__S(162, __c10, 2)),
+          codeCoverageSummary: S.optional(__S(163, __c10, 3)),
         }),
       ).annotate({ identifier: "Report" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(164, __c10, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          reports: S.optional(__S(97, __c12, 1)),
-          reportsNotFound: S.optional(__S(0, __c0, 0)),
+          reports: S.optional(__S(165, __c10, 5)),
+          reportsNotFound: S.optional(__S(1168, __c73, 0)),
         }),
       ).annotate({ identifier: "BatchGetReportsOutput" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ids: __S(0, __c0, 0) }).pipe(
+        S.Struct({ ids: __S(1168, __c73, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchGetSandboxesInput" });
-    case 4:
+    case 1:
+      return S.Array(__S(195, __c12, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxes: S.optional(__S(177, __c11, 1)),
+          sandboxesNotFound: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({ identifier: "BatchGetSandboxesOutput" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           phaseType: S.optional(S.String),
@@ -3633,12 +3205,12 @@ function __c12(j: number): any {
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           durationInSeconds: S.optional(S.Number),
-          contexts: S.optional(__S(7, __c0, 7)),
+          contexts: S.optional(__S(1393, __c87, 1)),
         }),
       ).annotate({ identifier: "SandboxSessionPhase" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3646,13 +3218,13 @@ function __c12(j: number): any {
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           currentPhase: S.optional(S.String),
-          phases: S.optional(__S(101, __c12, 5)),
+          phases: S.optional(__S(193, __c12, 1)),
           resolvedSourceVersion: S.optional(S.String),
-          logs: S.optional(__S(47, __c5, 7)),
-          networkInterface: S.optional(__S(48, __c6, 0)),
+          logs: S.optional(__S(1488, __c93, 0)),
+          networkInterface: S.optional(__S(1456, __c91, 0)),
         }),
       ).annotate({ identifier: "SandboxSession" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3662,19 +3234,19 @@ function __c12(j: number): any {
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
-          source: S.optional(__S(13, __c1, 5)),
+          source: S.optional(__S(1347, __c84, 3)),
           sourceVersion: S.optional(S.String),
-          secondarySources: S.optional(__S(14, __c1, 6)),
-          secondarySourceVersions: S.optional(__S(16, __c2, 0)),
-          environment: S.optional(__S(28, __c3, 4)),
-          fileSystemLocations: S.optional(__S(34, __c4, 2)),
+          secondarySources: S.optional(__S(1348, __c84, 4)),
+          secondarySourceVersions: S.optional(__S(1350, __c84, 6)),
+          environment: S.optional(__S(1357, __c84, 13)),
+          fileSystemLocations: S.optional(__S(1359, __c84, 15)),
           timeoutInMinutes: S.optional(S.Number),
           queuedTimeoutInMinutes: S.optional(S.Number),
-          vpcConfig: S.optional(__S(32, __c4, 0)),
-          logConfig: S.optional(__S(31, __c3, 7)),
+          vpcConfig: S.optional(__S(1329, __c83, 1)),
+          logConfig: S.optional(__S(1280, __c80, 0)),
           encryptionKey: S.optional(S.String),
           serviceRole: S.optional(S.String),
-          currentSession: S.optional(__S(102, __c12, 6)),
+          currentSession: S.optional(__S(194, __c12, 2)),
         }),
       ).annotate({ identifier: "Sandbox" });
   }
@@ -3682,134 +3254,165 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sandboxes: S.optional(__S(104, __c13, 0)),
-          sandboxesNotFound: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "BatchGetSandboxesOutput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          scalingType: S.optional(S.String),
-          targetTrackingScalingConfigs: S.optional(__S(63, __c7, 7)),
-          maxCapacity: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ScalingConfigurationInput",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           baseCapacity: S.Number,
           environmentType: S.String,
           computeType: S.String,
-          computeConfiguration: S.optional(__S(21, __c2, 5)),
-          scalingConfiguration: S.optional(__S(106, __c13, 2)),
+          computeConfiguration: S.optional(__S(1328, __c83, 0)),
+          scalingConfiguration: S.optional(__S(224, __c14, 0)),
           overflowBehavior: S.optional(S.String),
-          vpcConfig: S.optional(__S(32, __c4, 0)),
-          proxyConfiguration: S.optional(__S(67, __c8, 3)),
+          vpcConfig: S.optional(__S(1329, __c83, 1)),
+          proxyConfiguration: S.optional(__S(38, __c2, 6)),
           imageId: S.optional(S.String),
           fleetServiceRole: S.optional(S.String),
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(17, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateFleetInput" });
-    case 4:
-      return S.suspend(() => S.Struct({ fleet: S.optional(__S(70, __c8, 6)) })).annotate({
-        identifier: "CreateFleetOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          source: __S(13, __c1, 5),
-          secondarySources: S.optional(__S(14, __c1, 6)),
-          sourceVersion: S.optional(S.String),
-          secondarySourceVersions: S.optional(__S(16, __c2, 0)),
-          artifacts: __S(74, __c9, 2),
-          secondaryArtifacts: S.optional(__S(75, __c9, 3)),
-          cache: S.optional(__S(20, __c2, 4)),
-          environment: __S(28, __c3, 4),
-          serviceRole: S.String,
-          timeoutInMinutes: S.optional(S.Number),
-          queuedTimeoutInMinutes: S.optional(S.Number),
-          encryptionKey: S.optional(S.String),
-          tags: S.optional(__S(69, __c8, 5)),
-          vpcConfig: S.optional(__S(32, __c4, 0)),
-          badgeEnabled: S.optional(S.Boolean),
-          logsConfig: S.optional(__S(31, __c3, 7)),
-          fileSystemLocations: S.optional(__S(34, __c4, 2)),
-          buildBatchConfig: S.optional(__S(36, __c4, 4)),
-          concurrentBuildLimit: S.optional(S.Number),
-          autoRetryLimit: S.optional(S.Number),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateProjectInput" });
-    case 6:
-      return S.suspend(() => S.Struct({ project: S.optional(__S(83, __c10, 3)) })).annotate({
-        identifier: "CreateProjectOutput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-          exportConfig: __S(88, __c11, 0),
-          tags: S.optional(__S(69, __c8, 5)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateReportGroupInput" });
   }
 }
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ reportGroup: S.optional(__S(89, __c11, 1)) })).annotate({
-        identifier: "CreateReportGroupOutput",
+      return S.suspend(() =>
+        S.Struct({
+          scalingType: S.optional(S.String),
+          targetTrackingScalingConfigs: S.optional(__S(34, __c2, 2)),
+          maxCapacity: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ScalingConfigurationInput",
       });
     case 1:
+      return S.suspend(() => S.Struct({ fleet: S.optional(__S(39, __c2, 7)) })).annotate({
+        identifier: "CreateFleetOutput",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          source: __S(1347, __c84, 3),
+          secondarySources: S.optional(__S(1348, __c84, 4)),
+          sourceVersion: S.optional(S.String),
+          secondarySourceVersions: S.optional(__S(1350, __c84, 6)),
+          artifacts: __S(80, __c5, 0),
+          secondaryArtifacts: S.optional(__S(81, __c5, 1)),
+          cache: S.optional(__S(1376, __c86, 0)),
+          environment: __S(1357, __c84, 13),
+          serviceRole: S.String,
+          timeoutInMinutes: S.optional(S.Number),
+          queuedTimeoutInMinutes: S.optional(S.Number),
+          encryptionKey: S.optional(S.String),
+          tags: S.optional(__S(17, __c1, 1)),
+          vpcConfig: S.optional(__S(1329, __c83, 1)),
+          badgeEnabled: S.optional(S.Boolean),
+          logsConfig: S.optional(__S(1280, __c80, 0)),
+          fileSystemLocations: S.optional(__S(1359, __c84, 15)),
+          buildBatchConfig: S.optional(__S(1297, __c81, 1)),
+          concurrentBuildLimit: S.optional(S.Number),
+          autoRetryLimit: S.optional(S.Number),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateProjectInput" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ project: S.optional(__S(97, __c6, 1)) })).annotate({
+        identifier: "CreateProjectOutput",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+          exportConfig: __S(129, __c8, 1),
+          tags: S.optional(__S(17, __c1, 1)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateReportGroupInput" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ reportGroup: S.optional(__S(144, __c9, 0)) })).annotate({
+        identifier: "CreateReportGroupOutput",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectName: S.String,
           branchFilter: S.optional(S.String),
-          filterGroups: S.optional(__S(78, __c9, 6)),
+          filterGroups: S.optional(__S(66, __c4, 2)),
           buildType: S.optional(S.String),
           manualCreation: S.optional(S.Boolean),
-          scopeConfiguration: S.optional(__S(79, __c9, 7)),
-          pullRequestBuildPolicy: S.optional(__S(80, __c10, 0)),
+          scopeConfiguration: S.optional(__S(67, __c4, 3)),
+          pullRequestBuildPolicy: S.optional(__S(68, __c4, 4)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateWebhookInput" });
-    case 2:
-      return S.suspend(() => S.Struct({ webhook: S.optional(__S(81, __c10, 1)) })).annotate({
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ webhook: S.optional(__S(69, __c4, 5)) })).annotate({
         identifier: "CreateWebhookOutput",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteBuildBatchInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.String),
-          buildsDeleted: S.optional(__S(0, __c0, 0)),
-          buildsNotDeleted: S.optional(__S(3, __c0, 3)),
+          buildsDeleted: S.optional(__S(1168, __c73, 0)),
+          buildsNotDeleted: S.optional(__S(1153, __c72, 1)),
         }),
       ).annotate({ identifier: "DeleteBuildBatchOutput" });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteFleetInput" });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteFleetOutput",
       });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -3817,7 +3420,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "DeleteProjectInput" });
   }
 }
-function __c15(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3825,13 +3428,21 @@ function __c15(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteReportInput" });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String, deleteReports: S.optional(S.Boolean) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteReportGroupInput" });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -3839,7 +3450,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteResourcePolicyInput",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -3847,17 +3462,29 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteSourceCredentialsInput",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ arn: S.optional(S.String) })).annotate({
         identifier: "DeleteSourceCredentialsOutput",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ projectName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteWebhookInput" });
-    case 6:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportArn: S.String,
@@ -3871,7 +3498,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DescribeCodeCoveragesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3886,35 +3513,35 @@ function __c15(j: number): any {
           expired: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "CodeCoverage" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(497, __c31, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          codeCoverages: S.optional(__S(128, __c16, 0)),
+          codeCoverages: S.optional(__S(498, __c31, 2)),
         }),
       ).annotate({
         identifier: "DescribeCodeCoveragesOutput",
       });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ status: S.optional(S.String), keyword: S.optional(S.String) }),
       ).annotate({ identifier: "TestCaseFilter" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           reportArn: S.String,
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filter: S.optional(__S(130, __c16, 2)),
+          filter: S.optional(__S(512, __c32, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeTestCasesInput" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           reportArn: S.optional(S.String),
@@ -3928,13 +3555,17 @@ function __c16(j: number): any {
           testSuiteName: S.optional(S.String),
         }),
       ).annotate({ identifier: "TestCase" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(514, __c32, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), testCases: S.optional(__S(133, __c16, 5)) }),
+        S.Struct({ nextToken: S.optional(S.String), testCases: S.optional(__S(515, __c32, 3)) }),
       ).annotate({ identifier: "DescribeTestCasesOutput" });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportGroupArn: S.String,
@@ -3942,11 +3573,7 @@ function __c16(j: number): any {
           trendField: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetReportGroupTrendInput" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           average: S.optional(S.String),
@@ -3954,32 +3581,40 @@ function __c17(j: number): any {
           min: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportGroupTrendStats" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({ reportArn: S.optional(S.String), data: S.optional(S.String) }),
       ).annotate({ identifier: "ReportWithRawData" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
     case 3:
+      return S.Array(__S(530, __c33, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          stats: S.optional(__S(136, __c17, 0)),
-          rawData: S.optional(__S(138, __c17, 2)),
+          stats: S.optional(__S(529, __c33, 1)),
+          rawData: S.optional(__S(531, __c33, 3)),
         }),
       ).annotate({
         identifier: "GetReportGroupTrendOutput",
       });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetResourcePolicyInput" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ policy: S.optional(S.String) })).annotate({
         identifier: "GetResourcePolicyOutput",
       });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
@@ -3991,7 +3626,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ImportSourceCredentialsInput",
       });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ projectName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4001,30 +3640,42 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
-        identifier: "BuildBatchFilter",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(144, __c18, 0)),
+          filter: S.optional(__S(608, __c38, 0)),
           maxResults: S.optional(S.Number),
           sortOrder: S.optional(S.String),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListBuildBatchesInput" });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
+        identifier: "BuildBatchFilter",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ids: S.optional(__S(0, __c0, 0)), nextToken: S.optional(S.String) }),
+        S.Struct({ ids: S.optional(__S(1168, __c73, 0)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListBuildBatchesOutput" });
-    case 3:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectName: S.optional(S.String),
-          filter: S.optional(__S(144, __c18, 0)),
+          filter: S.optional(__S(608, __c38, 0)),
           maxResults: S.optional(S.Number),
           sortOrder: S.optional(S.String),
           nextToken: S.optional(S.String),
@@ -4032,19 +3683,31 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListBuildBatchesForProjectInput",
       });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ids: S.optional(__S(0, __c0, 0)), nextToken: S.optional(S.String) }),
+        S.Struct({ ids: S.optional(__S(1168, __c73, 0)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListBuildBatchesForProjectOutput",
       });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ sortOrder: S.optional(S.String), nextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListBuildsInput" });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectName: S.String,
@@ -4054,7 +3717,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListBuildsForProjectInput",
       });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sandboxId: S.String,
@@ -4065,20 +3732,20 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListCommandExecutionsForSandboxInput",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          commandExecutions: S.optional(__S(58, __c7, 2)),
+          commandExecutions: S.optional(__S(1520, __c95, 0)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCommandExecutionsForSandboxOutput",
       });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4086,40 +3753,37 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListCuratedEnvironmentImagesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          versions: S.optional(__S(0, __c0, 0)),
+          versions: S.optional(__S(1168, __c73, 0)),
         }),
       ).annotate({ identifier: "EnvironmentImage" });
+    case 2:
+      return S.Array(__S(721, __c45, 1));
     case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ language: S.optional(S.String), images: S.optional(__S(155, __c19, 3)) }),
+        S.Struct({ language: S.optional(S.String), images: S.optional(__S(722, __c45, 2)) }),
       ).annotate({ identifier: "EnvironmentLanguage" });
+    case 4:
+      return S.Array(__S(723, __c45, 3));
     case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
       return S.suspend(() =>
-        S.Struct({
-          platform: S.optional(S.String),
-          languages: S.optional(__S(157, __c19, 5)),
-        }),
+        S.Struct({ platform: S.optional(S.String), languages: S.optional(__S(724, __c45, 4)) }),
       ).annotate({ identifier: "EnvironmentPlatform" });
+    case 6:
+      return S.Array(__S(725, __c45, 5));
     case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ platforms: S.optional(__S(159, __c19, 7)) })).annotate({
+      return S.suspend(() => S.Struct({ platforms: S.optional(__S(726, __c45, 6)) })).annotate({
         identifier: "ListCuratedEnvironmentImagesOutput",
       });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(SensitiveString),
@@ -4128,11 +3792,15 @@ function __c20(j: number): any {
           sortBy: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListFleetsInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), fleets: S.optional(__S(0, __c0, 0)) }),
+        S.Struct({ nextToken: S.optional(S.String), fleets: S.optional(__S(1168, __c73, 0)) }),
       ).annotate({ identifier: "ListFleetsOutput" });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sortBy: S.optional(S.String),
@@ -4140,11 +3808,19 @@ function __c20(j: number): any {
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListProjectsInput" });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), projects: S.optional(__S(0, __c0, 0)) }),
+        S.Struct({ nextToken: S.optional(S.String), projects: S.optional(__S(1168, __c73, 0)) }),
       ).annotate({ identifier: "ListProjectsOutput" });
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sortOrder: S.optional(S.String),
@@ -4153,46 +3829,57 @@ function __c20(j: number): any {
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListReportGroupsInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), reportGroups: S.optional(__S(0, __c0, 0)) }),
+        S.Struct({
+          nextToken: S.optional(S.String),
+          reportGroups: S.optional(__S(1168, __c73, 0)),
+        }),
       ).annotate({ identifier: "ListReportGroupsOutput" });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sortOrder: S.optional(S.String),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filter: S.optional(__S(144, __c18, 0)),
+          filter: S.optional(__S(608, __c38, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListReportsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), reports: S.optional(__S(1168, __c73, 0)) }),
+      ).annotate({ identifier: "ListReportsOutput" });
   }
 }
-function __c21(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), reports: S.optional(__S(0, __c0, 0)) }),
-      ).annotate({ identifier: "ListReportsOutput" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           reportGroupArn: S.String,
           nextToken: S.optional(S.String),
           sortOrder: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filter: S.optional(__S(144, __c18, 0)),
+          filter: S.optional(__S(608, __c38, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListReportsForReportGroupInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), reports: S.optional(__S(0, __c0, 0)) }),
+        S.Struct({ nextToken: S.optional(S.String), reports: S.optional(__S(1168, __c73, 0)) }),
       ).annotate({
         identifier: "ListReportsForReportGroupOutput",
       });
-    case 3:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -4200,7 +3887,11 @@ function __c21(j: number): any {
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListSandboxesInput" });
-    case 4:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectName: S.String,
@@ -4211,7 +3902,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSandboxesForProjectInput",
       });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sortBy: S.optional(S.String),
@@ -4220,7 +3915,11 @@ function __c21(j: number): any {
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListSharedProjectsInput" });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sortOrder: S.optional(S.String),
@@ -4231,15 +3930,18 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSharedReportGroupsInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), reportGroups: S.optional(__S(0, __c0, 0)) }),
+        S.Struct({
+          nextToken: S.optional(S.String),
+          reportGroups: S.optional(__S(1168, __c73, 0)),
+        }),
       ).annotate({
         identifier: "ListSharedReportGroupsOutput",
       });
   }
 }
-function __c22(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4259,36 +3961,48 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "SourceCredentialsInfo" });
     case 2:
-      return S.Array(__S(177, __c22, 1));
+      return S.Array(__S(897, __c56, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ sourceCredentialsInfos: S.optional(__S(178, __c22, 2)) }),
+        S.Struct({ sourceCredentialsInfos: S.optional(__S(898, __c56, 2)) }),
       ).annotate({
         identifier: "ListSourceCredentialsOutput",
       });
-    case 4:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ policy: S.String, resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutResourcePolicyInput" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ resourceArn: S.optional(S.String) })).annotate({
         identifier: "PutResourcePolicyOutput",
       });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.optional(S.String), idempotencyToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RetryBuildInput" });
-    case 7:
-      return S.suspend(() => S.Struct({ build: S.optional(__S(53, __c6, 5)) })).annotate({
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ build: S.optional(__S(1476, __c92, 4)) })).annotate({
         identifier: "RetryBuildOutput",
       });
   }
 }
-function __c23(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4298,64 +4012,76 @@ function __c23(j: number): any {
           retryType: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RetryBuildBatchInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ buildBatch: S.optional(__S(43, __c5, 3)) })).annotate({
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ buildBatch: S.optional(__S(1318, __c82, 6)) })).annotate({
         identifier: "RetryBuildBatchOutput",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectName: S.String,
-          secondarySourcesOverride: S.optional(__S(14, __c1, 6)),
-          secondarySourcesVersionOverride: S.optional(__S(16, __c2, 0)),
+          secondarySourcesOverride: S.optional(__S(1348, __c84, 4)),
+          secondarySourcesVersionOverride: S.optional(__S(1350, __c84, 6)),
           sourceVersion: S.optional(S.String),
-          artifactsOverride: S.optional(__S(74, __c9, 2)),
-          secondaryArtifactsOverride: S.optional(__S(75, __c9, 3)),
-          environmentVariablesOverride: S.optional(__S(24, __c3, 0)),
+          artifactsOverride: S.optional(__S(80, __c5, 0)),
+          secondaryArtifactsOverride: S.optional(__S(81, __c5, 1)),
+          environmentVariablesOverride: S.optional(__S(1353, __c84, 9)),
           sourceTypeOverride: S.optional(S.String),
           sourceLocationOverride: S.optional(S.String),
-          sourceAuthOverride: S.optional(__S(11, __c1, 3)),
+          sourceAuthOverride: S.optional(__S(1345, __c84, 1)),
           gitCloneDepthOverride: S.optional(S.Number),
-          gitSubmodulesConfigOverride: S.optional(__S(10, __c1, 2)),
+          gitSubmodulesConfigOverride: S.optional(__S(1344, __c84, 0)),
           buildspecOverride: S.optional(S.String),
           insecureSslOverride: S.optional(S.Boolean),
           reportBuildStatusOverride: S.optional(S.Boolean),
-          buildStatusConfigOverride: S.optional(__S(12, __c1, 4)),
+          buildStatusConfigOverride: S.optional(__S(1346, __c84, 2)),
           environmentTypeOverride: S.optional(S.String),
           imageOverride: S.optional(S.String),
           computeTypeOverride: S.optional(S.String),
           certificateOverride: S.optional(S.String),
-          cacheOverride: S.optional(__S(20, __c2, 4)),
+          cacheOverride: S.optional(__S(1376, __c86, 0)),
           serviceRoleOverride: S.optional(S.String),
           privilegedModeOverride: S.optional(S.Boolean),
           timeoutInMinutesOverride: S.optional(S.Number),
           queuedTimeoutInMinutesOverride: S.optional(S.Number),
           encryptionKeyOverride: S.optional(S.String),
           idempotencyToken: S.optional(S.String),
-          logsConfigOverride: S.optional(__S(31, __c3, 7)),
-          registryCredentialOverride: S.optional(__S(25, __c3, 1)),
+          logsConfigOverride: S.optional(__S(1280, __c80, 0)),
+          registryCredentialOverride: S.optional(__S(1354, __c84, 10)),
           imagePullCredentialsTypeOverride: S.optional(S.String),
           debugSessionEnabled: S.optional(S.Boolean),
-          fleetOverride: S.optional(__S(22, __c2, 6)),
+          fleetOverride: S.optional(__S(1351, __c84, 7)),
           autoRetryLimitOverride: S.optional(S.Number),
           hostKernelOverride: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartBuildInput" });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectName: S.String,
-          secondarySourcesOverride: S.optional(__S(14, __c1, 6)),
-          secondarySourcesVersionOverride: S.optional(__S(16, __c2, 0)),
+          secondarySourcesOverride: S.optional(__S(1348, __c84, 4)),
+          secondarySourcesVersionOverride: S.optional(__S(1350, __c84, 6)),
           sourceVersion: S.optional(S.String),
-          artifactsOverride: S.optional(__S(74, __c9, 2)),
-          secondaryArtifactsOverride: S.optional(__S(75, __c9, 3)),
-          environmentVariablesOverride: S.optional(__S(24, __c3, 0)),
+          artifactsOverride: S.optional(__S(80, __c5, 0)),
+          secondaryArtifactsOverride: S.optional(__S(81, __c5, 1)),
+          environmentVariablesOverride: S.optional(__S(1353, __c84, 9)),
           sourceTypeOverride: S.optional(S.String),
           sourceLocationOverride: S.optional(S.String),
-          sourceAuthOverride: S.optional(__S(11, __c1, 3)),
+          sourceAuthOverride: S.optional(__S(1345, __c84, 1)),
           gitCloneDepthOverride: S.optional(S.Number),
-          gitSubmodulesConfigOverride: S.optional(__S(10, __c1, 2)),
+          gitSubmodulesConfigOverride: S.optional(__S(1344, __c84, 0)),
           buildspecOverride: S.optional(S.String),
           insecureSslOverride: S.optional(S.Boolean),
           reportBuildBatchStatusOverride: S.optional(S.Boolean),
@@ -4363,21 +4089,25 @@ function __c23(j: number): any {
           imageOverride: S.optional(S.String),
           computeTypeOverride: S.optional(S.String),
           certificateOverride: S.optional(S.String),
-          cacheOverride: S.optional(__S(20, __c2, 4)),
+          cacheOverride: S.optional(__S(1376, __c86, 0)),
           serviceRoleOverride: S.optional(S.String),
           privilegedModeOverride: S.optional(S.Boolean),
           buildTimeoutInMinutesOverride: S.optional(S.Number),
           queuedTimeoutInMinutesOverride: S.optional(S.Number),
           encryptionKeyOverride: S.optional(S.String),
           idempotencyToken: S.optional(S.String),
-          logsConfigOverride: S.optional(__S(31, __c3, 7)),
-          registryCredentialOverride: S.optional(__S(25, __c3, 1)),
+          logsConfigOverride: S.optional(__S(1280, __c80, 0)),
+          registryCredentialOverride: S.optional(__S(1354, __c84, 10)),
           imagePullCredentialsTypeOverride: S.optional(S.String),
-          buildBatchConfigOverride: S.optional(__S(36, __c4, 4)),
+          buildBatchConfigOverride: S.optional(__S(1297, __c81, 1)),
           debugSessionEnabled: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartBuildBatchInput" });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sandboxId: S.String,
@@ -4387,26 +4117,34 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "StartCommandExecutionInput",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ commandExecution: S.optional(__S(57, __c7, 1)) })).annotate(
-        {
-          identifier: "StartCommandExecutionOutput",
-        },
-      );
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ commandExecution: S.optional(__S(1536, __c96, 0)) }),
+      ).annotate({
+        identifier: "StartCommandExecutionOutput",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectName: S.optional(S.String),
           idempotencyToken: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartSandboxInput" });
-    case 7:
-      return S.suspend(() => S.Struct({ sandbox: S.optional(__S(103, __c12, 7)) })).annotate({
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ sandbox: S.optional(__S(195, __c12, 3)) })).annotate({
         identifier: "StartSandboxOutput",
       });
   }
 }
-function __c24(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4425,74 +4163,127 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "SSMSession" });
     case 2:
-      return S.suspend(() => S.Struct({ ssmSession: S.optional(__S(193, __c24, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ ssmSession: S.optional(__S(1073, __c67, 1)) })).annotate({
         identifier: "StartSandboxConnectionOutput",
       });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopBuildInput" });
-    case 4:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopBuildBatchInput" });
-    case 5:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopSandboxInput" });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ids: __S(1168, __c73, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchDeleteBuildsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          buildsDeleted: S.optional(__S(1168, __c73, 0)),
+          buildsNotDeleted: S.optional(__S(1153, __c72, 1)),
+        }),
+      ).annotate({ identifier: "BatchDeleteBuildsOutput" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), statusCode: S.optional(S.String) }),
+      ).annotate({ identifier: "BuildNotDeleted" });
+    case 1:
+      return S.Array(__S(1152, __c72, 0));
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           baseCapacity: S.optional(S.Number),
           environmentType: S.optional(S.String),
           computeType: S.optional(S.String),
-          computeConfiguration: S.optional(__S(21, __c2, 5)),
-          scalingConfiguration: S.optional(__S(106, __c13, 2)),
+          computeConfiguration: S.optional(__S(1328, __c83, 0)),
+          scalingConfiguration: S.optional(__S(224, __c14, 0)),
           overflowBehavior: S.optional(S.String),
-          vpcConfig: S.optional(__S(32, __c4, 0)),
-          proxyConfiguration: S.optional(__S(67, __c8, 3)),
+          vpcConfig: S.optional(__S(1329, __c83, 1)),
+          proxyConfiguration: S.optional(__S(38, __c2, 6)),
           imageId: S.optional(S.String),
           fleetServiceRole: S.optional(S.String),
-          tags: S.optional(__S(69, __c8, 5)),
+          tags: S.optional(__S(17, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateFleetInput" });
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          source: S.optional(__S(13, __c1, 5)),
-          secondarySources: S.optional(__S(14, __c1, 6)),
+          source: S.optional(__S(1347, __c84, 3)),
+          secondarySources: S.optional(__S(1348, __c84, 4)),
           sourceVersion: S.optional(S.String),
-          secondarySourceVersions: S.optional(__S(16, __c2, 0)),
-          artifacts: S.optional(__S(74, __c9, 2)),
-          secondaryArtifacts: S.optional(__S(75, __c9, 3)),
-          cache: S.optional(__S(20, __c2, 4)),
-          environment: S.optional(__S(28, __c3, 4)),
+          secondarySourceVersions: S.optional(__S(1350, __c84, 6)),
+          artifacts: S.optional(__S(80, __c5, 0)),
+          secondaryArtifacts: S.optional(__S(81, __c5, 1)),
+          cache: S.optional(__S(1376, __c86, 0)),
+          environment: S.optional(__S(1357, __c84, 13)),
           serviceRole: S.optional(S.String),
           timeoutInMinutes: S.optional(S.Number),
           queuedTimeoutInMinutes: S.optional(S.Number),
           encryptionKey: S.optional(S.String),
-          tags: S.optional(__S(69, __c8, 5)),
-          vpcConfig: S.optional(__S(32, __c4, 0)),
+          tags: S.optional(__S(17, __c1, 1)),
+          vpcConfig: S.optional(__S(1329, __c83, 1)),
           badgeEnabled: S.optional(S.Boolean),
-          logsConfig: S.optional(__S(31, __c3, 7)),
-          fileSystemLocations: S.optional(__S(34, __c4, 2)),
-          buildBatchConfig: S.optional(__S(36, __c4, 4)),
+          logsConfig: S.optional(__S(1280, __c80, 0)),
+          fileSystemLocations: S.optional(__S(1359, __c84, 15)),
+          buildBatchConfig: S.optional(__S(1297, __c81, 1)),
           concurrentBuildLimit: S.optional(S.Number),
           autoRetryLimit: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateProjectInput" });
   }
 }
-function __c25(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4514,28 +4305,520 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateProjectVisibilityOutput",
       });
-    case 2:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
-          exportConfig: S.optional(__S(88, __c11, 0)),
-          tags: S.optional(__S(69, __c8, 5)),
+          exportConfig: S.optional(__S(129, __c8, 1)),
+          tags: S.optional(__S(17, __c1, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateReportGroupInput" });
-    case 3:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectName: S.String,
           branchFilter: S.optional(S.String),
           rotateSecret: S.optional(S.Boolean),
-          filterGroups: S.optional(__S(78, __c9, 6)),
+          filterGroups: S.optional(__S(66, __c4, 2)),
           buildType: S.optional(S.String),
-          pullRequestBuildPolicy: S.optional(__S(80, __c10, 0)),
+          pullRequestBuildPolicy: S.optional(__S(68, __c4, 4)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateWebhookInput" });
   }
 }
-
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ids: __S(1168, __c73, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchGetBuildBatchesInput",
+      });
+    case 1:
+      return S.Array(__S(1318, __c82, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          buildBatches: S.optional(__S(1265, __c79, 1)),
+          buildBatchesNotFound: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchGetBuildBatchesOutput",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudWatchLogs: S.optional(__S(1424, __c89, 0)),
+          s3Logs: S.optional(__S(1425, __c89, 1)),
+        }),
+      ).annotate({ identifier: "LogsConfig" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maximumBuildsAllowed: S.optional(S.Number),
+          computeTypesAllowed: S.optional(__S(1168, __c73, 0)),
+          fleetsAllowed: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({ identifier: "BatchRestrictions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          serviceRole: S.optional(S.String),
+          combineArtifacts: S.optional(S.Boolean),
+          restrictions: S.optional(__S(1296, __c81, 0)),
+          timeoutInMins: S.optional(S.Number),
+          batchReportMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectBuildBatchConfig" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          identifier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResolvedArtifact" });
+    case 1:
+      return S.Array(__S(1312, __c82, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          requestedOn: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          buildStatus: S.optional(S.String),
+          primaryArtifact: S.optional(__S(1312, __c82, 0)),
+          secondaryArtifacts: S.optional(__S(1313, __c82, 1)),
+        }),
+      ).annotate({ identifier: "BuildSummary" });
+    case 3:
+      return S.Array(__S(1314, __c82, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.optional(S.String),
+          dependsOn: S.optional(__S(1168, __c73, 0)),
+          ignoreFailure: S.optional(S.Boolean),
+          currentBuildSummary: S.optional(__S(1314, __c82, 2)),
+          priorBuildSummaryList: S.optional(__S(1315, __c82, 3)),
+        }),
+      ).annotate({ identifier: "BuildGroup" });
+    case 5:
+      return S.Array(__S(1316, __c82, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          arn: S.optional(S.String),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          currentPhase: S.optional(S.String),
+          buildBatchStatus: S.optional(S.String),
+          sourceVersion: S.optional(S.String),
+          resolvedSourceVersion: S.optional(S.String),
+          projectName: S.optional(S.String),
+          phases: S.optional(__S(1409, __c88, 1)),
+          source: S.optional(__S(1347, __c84, 3)),
+          secondarySources: S.optional(__S(1348, __c84, 4)),
+          secondarySourceVersions: S.optional(__S(1350, __c84, 6)),
+          artifacts: S.optional(__S(1410, __c88, 2)),
+          secondaryArtifacts: S.optional(__S(1411, __c88, 3)),
+          cache: S.optional(__S(1376, __c86, 0)),
+          environment: S.optional(__S(1357, __c84, 13)),
+          serviceRole: S.optional(S.String),
+          logConfig: S.optional(__S(1280, __c80, 0)),
+          buildTimeoutInMinutes: S.optional(S.Number),
+          queuedTimeoutInMinutes: S.optional(S.Number),
+          complete: S.optional(S.Boolean),
+          initiator: S.optional(S.String),
+          vpcConfig: S.optional(__S(1329, __c83, 1)),
+          encryptionKey: S.optional(S.String),
+          buildBatchNumber: S.optional(S.Number),
+          fileSystemLocations: S.optional(__S(1359, __c84, 15)),
+          buildBatchConfig: S.optional(__S(1297, __c81, 1)),
+          buildGroups: S.optional(__S(1317, __c82, 5)),
+          debugSessionEnabled: S.optional(S.Boolean),
+          reportArns: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({ identifier: "BuildBatch" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vCpu: S.optional(S.Number),
+          memory: S.optional(S.Number),
+          disk: S.optional(S.Number),
+          machineType: S.optional(S.String),
+          instanceType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComputeConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          vpcId: S.optional(S.String),
+          subnets: S.optional(__S(1168, __c73, 0)),
+          securityGroupIds: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({ identifier: "VpcConfig" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ fetchSubmodules: S.Boolean })).annotate({
+        identifier: "GitSubmodulesConfig",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ type: S.String, resource: S.optional(S.String) })).annotate(
+        { identifier: "SourceAuth" },
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ context: S.optional(S.String), targetUrl: S.optional(S.String) }),
+      ).annotate({ identifier: "BuildStatusConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          location: S.optional(S.String),
+          gitCloneDepth: S.optional(S.Number),
+          gitSubmodulesConfig: S.optional(__S(1344, __c84, 0)),
+          buildspec: S.optional(S.String),
+          auth: S.optional(__S(1345, __c84, 1)),
+          reportBuildStatus: S.optional(S.Boolean),
+          buildStatusConfig: S.optional(__S(1346, __c84, 2)),
+          insecureSsl: S.optional(S.Boolean),
+          sourceIdentifier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectSource" });
+    case 4:
+      return S.Array(__S(1347, __c84, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ sourceIdentifier: S.String, sourceVersion: S.String }),
+      ).annotate({ identifier: "ProjectSourceVersion" });
+    case 6:
+      return S.Array(__S(1349, __c84, 5));
+    case 7:
+      return S.suspend(() => S.Struct({ fleetArn: S.optional(S.String) })).annotate({
+        identifier: "ProjectFleet",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, value: S.String, type: S.optional(S.String) }),
+      ).annotate({ identifier: "EnvironmentVariable" });
+    case 9:
+      return S.Array(__S(1352, __c84, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({ credential: S.String, credentialProvider: S.String }),
+      ).annotate({ identifier: "RegistryCredential" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({ status: S.optional(S.String), message: S.optional(S.String) }),
+      ).annotate({ identifier: "DockerServerStatus" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          computeType: S.String,
+          securityGroupIds: S.optional(__S(1168, __c73, 0)),
+          status: S.optional(__S(1355, __c84, 11)),
+        }),
+      ).annotate({ identifier: "DockerServer" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          image: S.String,
+          computeType: S.String,
+          computeConfiguration: S.optional(__S(1328, __c83, 0)),
+          fleet: S.optional(__S(1351, __c84, 7)),
+          environmentVariables: S.optional(__S(1353, __c84, 9)),
+          privilegedMode: S.optional(S.Boolean),
+          certificate: S.optional(S.String),
+          registryCredential: S.optional(__S(1354, __c84, 10)),
+          imagePullCredentialsType: S.optional(S.String),
+          dockerServer: S.optional(__S(1356, __c84, 12)),
+          hostKernel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectEnvironment" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          mountPoint: S.optional(S.String),
+          identifier: S.optional(S.String),
+          mountOptions: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProjectFileSystemLocation",
+      });
+    case 15:
+      return S.Array(__S(1358, __c84, 14));
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          location: S.optional(S.String),
+          modes: S.optional(__S(1360, __c85, 0)),
+          cacheNamespace: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectCache" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ statusCode: S.optional(S.String), message: S.optional(S.String) }),
+      ).annotate({ identifier: "PhaseContext" });
+    case 1:
+      return S.Array(__S(1392, __c87, 0));
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          phaseType: S.optional(S.String),
+          phaseStatus: S.optional(S.String),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          durationInSeconds: S.optional(S.Number),
+          contexts: S.optional(__S(1393, __c87, 1)),
+        }),
+      ).annotate({ identifier: "BuildBatchPhase" });
+    case 1:
+      return S.Array(__S(1408, __c88, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          sha256sum: S.optional(S.String),
+          md5sum: S.optional(S.String),
+          overrideArtifactName: S.optional(S.Boolean),
+          encryptionDisabled: S.optional(S.Boolean),
+          artifactIdentifier: S.optional(S.String),
+          bucketOwnerAccess: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BuildArtifacts" });
+    case 3:
+      return S.Array(__S(1410, __c88, 2));
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          groupName: S.optional(S.String),
+          streamName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudWatchLogsConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          location: S.optional(S.String),
+          encryptionDisabled: S.optional(S.Boolean),
+          bucketOwnerAccess: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3LogsConfig" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ids: __S(1168, __c73, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchGetBuildsInput" });
+    case 1:
+      return S.Array(__S(1476, __c92, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          builds: S.optional(__S(1441, __c90, 1)),
+          buildsNotFound: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({ identifier: "BatchGetBuildsOutput" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ subnetId: S.optional(S.String), networkInterfaceId: S.optional(S.String) }),
+      ).annotate({ identifier: "NetworkInterface" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ExportedEnvironmentVariable",
+      });
+    case 1:
+      return S.Array(__S(1472, __c92, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ sessionEnabled: S.optional(S.Boolean), sessionTarget: S.optional(S.String) }),
+      ).annotate({ identifier: "DebugSession" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          autoRetryLimit: S.optional(S.Number),
+          autoRetryNumber: S.optional(S.Number),
+          nextAutoRetry: S.optional(S.String),
+          previousAutoRetry: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutoRetryConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          arn: S.optional(S.String),
+          buildNumber: S.optional(S.Number),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          currentPhase: S.optional(S.String),
+          buildStatus: S.optional(S.String),
+          sourceVersion: S.optional(S.String),
+          resolvedSourceVersion: S.optional(S.String),
+          projectName: S.optional(S.String),
+          phases: S.optional(__S(1409, __c88, 1)),
+          source: S.optional(__S(1347, __c84, 3)),
+          secondarySources: S.optional(__S(1348, __c84, 4)),
+          secondarySourceVersions: S.optional(__S(1350, __c84, 6)),
+          artifacts: S.optional(__S(1410, __c88, 2)),
+          secondaryArtifacts: S.optional(__S(1411, __c88, 3)),
+          cache: S.optional(__S(1376, __c86, 0)),
+          environment: S.optional(__S(1357, __c84, 13)),
+          serviceRole: S.optional(S.String),
+          logs: S.optional(__S(1488, __c93, 0)),
+          timeoutInMinutes: S.optional(S.Number),
+          queuedTimeoutInMinutes: S.optional(S.Number),
+          buildComplete: S.optional(S.Boolean),
+          initiator: S.optional(S.String),
+          vpcConfig: S.optional(__S(1329, __c83, 1)),
+          networkInterface: S.optional(__S(1456, __c91, 0)),
+          encryptionKey: S.optional(S.String),
+          exportedEnvironmentVariables: S.optional(__S(1473, __c92, 1)),
+          reportArns: S.optional(__S(1168, __c73, 0)),
+          fileSystemLocations: S.optional(__S(1359, __c84, 15)),
+          debugSession: S.optional(__S(1474, __c92, 2)),
+          buildBatchArn: S.optional(S.String),
+          autoRetryConfig: S.optional(__S(1475, __c92, 3)),
+        }),
+      ).annotate({ identifier: "Build" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupName: S.optional(S.String),
+          streamName: S.optional(S.String),
+          deepLink: S.optional(S.String),
+          s3DeepLink: S.optional(S.String),
+          cloudWatchLogsArn: S.optional(S.String),
+          s3LogsArn: S.optional(S.String),
+          cloudWatchLogs: S.optional(__S(1424, __c89, 0)),
+          s3Logs: S.optional(__S(1425, __c89, 1)),
+        }),
+      ).annotate({ identifier: "LogsLocation" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ sandboxId: S.String, commandExecutionIds: __S(1168, __c73, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchGetCommandExecutionsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          commandExecutions: S.optional(__S(1520, __c95, 0)),
+          commandExecutionsNotFound: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchGetCommandExecutionsOutput",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1536, __c96, 0));
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          sandboxId: S.optional(S.String),
+          submitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          status: S.optional(S.String),
+          command: S.optional(SensitiveString),
+          type: S.optional(S.String),
+          exitCode: S.optional(S.String),
+          standardOutputContent: S.optional(SensitiveString),
+          standardErrContent: S.optional(SensitiveString),
+          logs: S.optional(__S(1488, __c93, 0)),
+          sandboxArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommandExecution" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

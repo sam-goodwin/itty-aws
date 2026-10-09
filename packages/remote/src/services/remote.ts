@@ -9973,8 +9973,8 @@ export const createAuthOauth2Token: API.OperationMethod<
   CreateAuthOauth2TokenError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateAuthOauth2TokenRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateAuthOauth2TokenResponse>,
+  input: __S(10176, __c318, 0) as any as S.Schema<CreateAuthOauth2TokenRequest>,
+  output: __S(10177, __c318, 1) as any as S.Schema<CreateAuthOauth2TokenResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -9992,8 +9992,8 @@ export const createBulkEmploymentJob: API.OperationMethod<
   CreateBulkEmploymentJobError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateBulkEmploymentJobRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateBulkEmploymentJobResponse>,
+  input: __S(10850, __c339, 2) as any as S.Schema<CreateBulkEmploymentJobRequest>,
+  output: __S(10880, __c340, 0) as any as S.Schema<CreateBulkEmploymentJobResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10012,8 +10012,8 @@ export const createCompany: API.OperationMethod<
   CreateCompanyError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateCompanyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CompanyCreationResponse>,
+  input: __S(11296, __c353, 0) as any as S.Schema<CreateCompanyRequest>,
+  output: __S(11297, __c353, 1) as any as S.Schema<CompanyCreationResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10027,8 +10027,8 @@ export const createCompanyCreateToken: API.OperationMethod<
   CreateCompanyCreateTokenError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateCompanyCreateTokenRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CompanyTokenResponse>,
+  input: __S(11712, __c366, 0) as any as S.Schema<CreateCompanyCreateTokenRequest>,
+  output: __S(11713, __c366, 1) as any as S.Schema<CompanyTokenResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10042,8 +10042,8 @@ export const createCompanyDepartment: API.OperationMethod<
   CreateCompanyDepartmentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateCompanyDepartmentRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CompanyDepartmentCreatedResponse>,
+  input: __S(12064, __c377, 0) as any as S.Schema<CreateCompanyDepartmentRequest>,
+  output: __S(12065, __c377, 1) as any as S.Schema<CompanyDepartmentCreatedResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10057,8 +10057,8 @@ export const createCompanyManager: API.OperationMethod<
   CreateCompanyManagerError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateCompanyManagerRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CompanyManagerData>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCompanyManagerRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<CompanyManagerData>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10072,8 +10072,8 @@ export const createCompanyPricingPlan: API.OperationMethod<
   CreateCompanyPricingPlanError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateCompanyPricingPlanRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreatePricingPlanResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<CreateCompanyPricingPlanRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<CreatePricingPlanResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10087,8 +10087,8 @@ export const createContractAmendment: API.OperationMethod<
   CreateContractAmendmentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateContractAmendmentRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ContractAmendmentResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<CreateContractAmendmentRequest>,
+  output: __S(1220, __c38, 4) as any as S.Schema<ContractAmendmentResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10105,8 +10105,8 @@ export const createContractAmendmentsAutomatable: API.OperationMethod<
   CreateContractAmendmentsAutomatableError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateContractAmendmentsAutomatableRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ContractAmendmentAutomatableResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<CreateContractAmendmentsAutomatableRequest>,
+  output: __S(1666, __c52, 2) as any as S.Schema<ContractAmendmentAutomatableResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10124,8 +10124,8 @@ export const createContractorInvoiceSchedule: API.OperationMethod<
   CreateContractorInvoiceScheduleError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CreateContractorInvoiceScheduleRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<CreateContractorInvoiceScheduleResponse>,
+  input: __S(2082, __c65, 2) as any as S.Schema<CreateContractorInvoiceScheduleRequest>,
+  output: __S(2091, __c65, 11) as any as S.Schema<CreateContractorInvoiceScheduleResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10143,8 +10143,8 @@ export const createContractorsEligibilityQuestionnaire: API.OperationMethod<
   CreateContractorsEligibilityQuestionnaireError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CreateContractorsEligibilityQuestionnaireRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<EligibilityQuestionnaireResponse>,
+  input: __S(2593, __c81, 1) as any as S.Schema<CreateContractorsEligibilityQuestionnaireRequest>,
+  output: __S(2594, __c81, 2) as any as S.Schema<EligibilityQuestionnaireResponse>,
   errors: [Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10161,8 +10161,8 @@ export const createContractorsEmploymentContractDocument: API.OperationMethod<
   CreateContractorsEmploymentContractDocumentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateContractorsEmploymentContractDocumentRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<CreateContractDocumentResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<CreateContractorsEmploymentContractDocumentRequest>,
+  output: __S(3107, __c97, 3) as any as S.Schema<CreateContractDocumentResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10180,11 +10180,11 @@ export const createContractorsEmploymentContractDocumentSign: API.OperationMetho
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    62,
-    __c7,
-    6,
+    3552,
+    __c111,
+    0,
   ) as any as S.Schema<CreateContractorsEmploymentContractDocumentSignRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Forbidden, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10204,11 +10204,11 @@ export const createContractorsEmploymentContractorCorSubscription: API.Operation
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    65,
-    __c8,
-    1,
+    3968,
+    __c124,
+    0,
   ) as any as S.Schema<CreateContractorsEmploymentContractorCorSubscriptionRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10226,11 +10226,11 @@ export const createContractorsEmploymentContractorPlusSubscription: API.Operatio
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
-    __c8,
-    2,
+    4352,
+    __c136,
+    0,
   ) as any as S.Schema<CreateContractorsEmploymentContractorPlusSubscriptionRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Forbidden, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10250,11 +10250,11 @@ export const createContractorsEmploymentCorTerminationRequest: API.OperationMeth
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
-    __c8,
-    3,
+    4704,
+    __c147,
+    0,
   ) as any as S.Schema<CreateContractorsEmploymentCorTerminationRequestRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<CorTerminationRequestCreatedResponse>,
+  output: __S(4706, __c147, 2) as any as S.Schema<CorTerminationRequestCreatedResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10273,8 +10273,8 @@ export const createContractorsEmploymentTimesheet: API.OperationMethod<
   CreateContractorsEmploymentTimesheetError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<CreateContractorsEmploymentTimesheetRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<ContractorTimesheetResponse>,
+  input: __S(5186, __c162, 2) as any as S.Schema<CreateContractorsEmploymentTimesheetRequest>,
+  output: __S(5191, __c162, 7) as any as S.Schema<ContractorTimesheetResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10288,8 +10288,8 @@ export const createCostCalculatorEstimation: API.OperationMethod<
   CreateCostCalculatorEstimationError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<CreateCostCalculatorEstimationRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<CostCalculatorEstimateResponse>,
+  input: __S(5568, __c174, 0) as any as S.Schema<CreateCostCalculatorEstimationRequest>,
+  output: __S(5577, __c174, 9) as any as S.Schema<CostCalculatorEstimateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10303,8 +10303,8 @@ export const createCostCalculatorEstimationCsv: API.OperationMethod<
   CreateCostCalculatorEstimationCsvError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<CreateCostCalculatorEstimationCsvRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<CostCalculatorEstimateCSVResponse>,
+  input: __S(6112, __c191, 0) as any as S.Schema<CreateCostCalculatorEstimationCsvRequest>,
+  output: __S(6145, __c192, 1) as any as S.Schema<CostCalculatorEstimateCSVResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10318,8 +10318,8 @@ export const createCostCalculatorEstimationPdf: API.OperationMethod<
   CreateCostCalculatorEstimationPdfError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<CreateCostCalculatorEstimationPdfRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<CostCalculatorEstimatePDFResponse>,
+  input: __S(6624, __c207, 0) as any as S.Schema<CreateCostCalculatorEstimationPdfRequest>,
+  output: __S(6145, __c192, 1) as any as S.Schema<CostCalculatorEstimatePDFResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10333,8 +10333,8 @@ export const createCurrencyConverterEffective: API.OperationMethod<
   CreateCurrencyConverterEffectiveError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<CreateCurrencyConverterEffectiveRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ConvertCurrencyResponse>,
+  input: __S(7072, __c221, 0) as any as S.Schema<CreateCurrencyConverterEffectiveRequest>,
+  output: __S(7106, __c222, 2) as any as S.Schema<ConvertCurrencyResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10348,8 +10348,8 @@ export const createCurrencyConverterRaw: API.OperationMethod<
   CreateCurrencyConverterRawError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<CreateCurrencyConverterRawRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ConvertCurrencyResponse>,
+  input: __S(7488, __c234, 0) as any as S.Schema<CreateCurrencyConverterRawRequest>,
+  output: __S(7106, __c222, 2) as any as S.Schema<ConvertCurrencyResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10363,8 +10363,8 @@ export const createCustomField: API.OperationMethod<
   CreateCustomFieldError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<CreateCustomFieldRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<CreateEmploymentCustomFieldResponse>,
+  input: __S(7872, __c246, 0) as any as S.Schema<CreateCustomFieldRequest>,
+  output: __S(7874, __c246, 2) as any as S.Schema<CreateEmploymentCustomFieldResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10378,8 +10378,8 @@ export const createDocument: API.OperationMethod<
   CreateDocumentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<CreateDocumentRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<UploadFileResponse>,
+  input: __S(8256, __c258, 0) as any as S.Schema<CreateDocumentRequest>,
+  output: __S(8289, __c259, 1) as any as S.Schema<UploadFileResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10398,8 +10398,8 @@ export const createEmployeeDocument: API.OperationMethod<
   CreateEmployeeDocumentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<CreateEmployeeDocumentRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<UploadFileResponse>,
+  input: __S(8672, __c271, 0) as any as S.Schema<CreateEmployeeDocumentRequest>,
+  output: __S(8289, __c259, 1) as any as S.Schema<UploadFileResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10417,8 +10417,8 @@ export const createEmployeeExpens: API.OperationMethod<
   CreateEmployeeExpensError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<CreateEmployeeExpensRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(9024, __c282, 0) as any as S.Schema<CreateEmployeeExpensRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10436,8 +10436,8 @@ export const createEmployeeTimeoff: API.OperationMethod<
   CreateEmployeeTimeoffError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<CreateEmployeeTimeoffRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<TimeoffResponse>,
+  input: __S(9152, __c286, 0) as any as S.Schema<CreateEmployeeTimeoffRequest>,
+  output: __S(9217, __c288, 1) as any as S.Schema<TimeoffResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10455,8 +10455,8 @@ export const createEmployeeTimeoffCancel: API.OperationMethod<
   CreateEmployeeTimeoffCancelError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<CreateEmployeeTimeoffCancelRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<TimeoffResponse>,
+  input: __S(9280, __c290, 0) as any as S.Schema<CreateEmployeeTimeoffCancelRequest>,
+  output: __S(9217, __c288, 1) as any as S.Schema<TimeoffResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10475,8 +10475,8 @@ export const createEmployment: API.OperationMethod<
   CreateEmploymentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<CreateEmploymentRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<EmploymentCreationResponse>,
+  input: __S(9312, __c291, 0) as any as S.Schema<CreateEmploymentRequest>,
+  output: __S(9346, __c292, 2) as any as S.Schema<EmploymentCreationResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10493,8 +10493,8 @@ export const createEmploymentContractEligibility: API.OperationMethod<
   CreateEmploymentContractEligibilityError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<CreateEmploymentContractEligibilityRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(9376, __c293, 0) as any as S.Schema<CreateEmploymentContractEligibilityRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10512,8 +10512,8 @@ export const createEmploymentContractOrigin: API.OperationMethod<
   CreateEmploymentContractOriginError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<CreateEmploymentContractOriginRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(9408, __c294, 0) as any as S.Schema<CreateEmploymentContractOriginRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10531,8 +10531,8 @@ export const createEmploymentContractorInvoicesPreview: API.OperationMethod<
   CreateEmploymentContractorInvoicesPreviewError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<CreateEmploymentContractorInvoicesPreviewRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<ContractorInvoicePreviewResponse>,
+  input: __S(9440, __c295, 0) as any as S.Schema<CreateEmploymentContractorInvoicesPreviewRequest>,
+  output: __S(9442, __c295, 2) as any as S.Schema<ContractorInvoicePreviewResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10552,8 +10552,8 @@ export const createEmploymentEngagementAgreementDetail: API.OperationMethod<
   CreateEmploymentEngagementAgreementDetailError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(9504, __c297, 0) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10573,8 +10573,8 @@ export const createEmploymentEngagementAgreementDetail2: API.OperationMethod<
   CreateEmploymentEngagementAgreementDetail2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequest2>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(9568, __c299, 0) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequest2>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10592,8 +10592,8 @@ export const createEmploymentInvite: API.OperationMethod<
   CreateEmploymentInviteError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<CreateEmploymentInviteRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(9600, __c300, 0) as any as S.Schema<CreateEmploymentInviteRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10612,8 +10612,8 @@ export const createEmploymentJobTitleEligibilityCheck: API.OperationMethod<
   CreateEmploymentJobTitleEligibilityCheckError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<CreateEmploymentJobTitleEligibilityCheckRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<JobTitleEligibilityCheckResponse>,
+  input: __S(9632, __c301, 0) as any as S.Schema<CreateEmploymentJobTitleEligibilityCheckRequest>,
+  output: __S(9666, __c302, 2) as any as S.Schema<JobTitleEligibilityCheckResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10627,8 +10627,8 @@ export const createExpens: API.OperationMethod<
   CreateExpensError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<CreateExpensRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<ExpenseResponse>,
+  input: __S(9696, __c303, 0) as any as S.Schema<CreateExpensRequest>,
+  output: __S(9729, __c304, 1) as any as S.Schema<ExpenseResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10642,8 +10642,8 @@ export const createIdentityVerificationDecline: API.OperationMethod<
   CreateIdentityVerificationDeclineError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<CreateIdentityVerificationDeclineRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(9760, __c305, 0) as any as S.Schema<CreateIdentityVerificationDeclineRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10657,8 +10657,8 @@ export const createIdentityVerificationVerify: API.OperationMethod<
   CreateIdentityVerificationVerifyError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<CreateIdentityVerificationVerifyRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(9792, __c306, 0) as any as S.Schema<CreateIdentityVerificationVerifyRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10672,8 +10672,8 @@ export const createIncentive: API.OperationMethod<
   CreateIncentiveError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<CreateIncentiveRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<IncentiveResponse>,
+  input: __S(9824, __c307, 0) as any as S.Schema<CreateIncentiveRequest>,
+  output: __S(9857, __c308, 1) as any as S.Schema<IncentiveResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10691,8 +10691,8 @@ export const createIncentivesRecurring: API.OperationMethod<
   CreateIncentivesRecurringError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<CreateIncentivesRecurringRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<RecurringIncentiveResponse>,
+  input: __S(9920, __c310, 0) as any as S.Schema<CreateIncentivesRecurringRequest>,
+  output: __S(9922, __c310, 2) as any as S.Schema<RecurringIncentiveResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10710,8 +10710,8 @@ export const createJobTitleScreening: API.OperationMethod<
   CreateJobTitleScreeningError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<CreateJobTitleScreeningRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateJobTitleScreeningResponse>,
+  input: __S(9986, __c312, 2) as any as S.Schema<CreateJobTitleScreeningRequest>,
+  output: __S(10880, __c340, 0) as any as S.Schema<CreateJobTitleScreeningResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10725,8 +10725,8 @@ export const createMagicLink: API.OperationMethod<
   CreateMagicLinkError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<CreateMagicLinkRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<MagicLinkResponse>,
+  input: __S(10016, __c313, 0) as any as S.Schema<CreateMagicLinkRequest>,
+  output: __S(10018, __c313, 2) as any as S.Schema<MagicLinkResponse>,
   errors: [UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10740,8 +10740,8 @@ export const createOffboarding: API.OperationMethod<
   CreateOffboardingError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<CreateOffboardingRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<OffboardingResponse>,
+  input: __S(10050, __c314, 2) as any as S.Schema<CreateOffboardingRequest>,
+  output: __S(10081, __c315, 1) as any as S.Schema<OffboardingResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10761,11 +10761,11 @@ export const createOnboardingEmploymentPreOnboardingDocumentSign: API.OperationM
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    174,
-    __c21,
-    6,
+    10144,
+    __c317,
+    0,
   ) as any as S.Schema<CreateOnboardingEmploymentPreOnboardingDocumentSignRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10784,11 +10784,11 @@ export const createOnboardingEmploymentPreOnboardingRequirementAcknowledge: API.
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    175,
-    __c21,
-    7,
+    10208,
+    __c319,
+    0,
   ) as any as S.Schema<CreateOnboardingEmploymentPreOnboardingRequirementAcknowledgeRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<CreatePreOnboardingAcknowledgementResponse>,
+  output: __S(10210, __c319, 2) as any as S.Schema<CreatePreOnboardingAcknowledgementResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10807,11 +10807,11 @@ export const createOnboardingEmploymentPreOnboardingRequirementDocument: API.Ope
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    179,
-    __c22,
-    3,
+    10272,
+    __c321,
+    0,
   ) as any as S.Schema<CreateOnboardingEmploymentPreOnboardingRequirementDocumentRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<CreatePreOnboardingDocumentResponse>,
+  output: __S(10274, __c321, 2) as any as S.Schema<CreatePreOnboardingDocumentResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10830,8 +10830,8 @@ export const createPayItemsBulk: API.OperationMethod<
   CreatePayItemsBulkError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<CreatePayItemsBulkRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<BulkCreatePayItemsResponse>,
+  input: __S(10306, __c322, 2) as any as S.Schema<CreatePayItemsBulkRequest>,
+  output: __S(10312, __c322, 8) as any as S.Schema<BulkCreatePayItemsResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10845,8 +10845,8 @@ export const createPayrollRunGlReport: API.OperationMethod<
   CreatePayrollRunGlReportError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<CreatePayrollRunGlReportRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<GLReportResponse>,
+  input: __S(10400, __c325, 0) as any as S.Schema<CreatePayrollRunGlReportRequest>,
+  output: __S(10434, __c326, 2) as any as S.Schema<GLReportResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10860,8 +10860,8 @@ export const createProbationCompletionLetter: API.OperationMethod<
   CreateProbationCompletionLetterError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<CreateProbationCompletionLetterRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<ProbationCompletionLetterResponse>,
+  input: __S(10464, __c327, 0) as any as S.Schema<CreateProbationCompletionLetterRequest>,
+  output: __S(10498, __c328, 2) as any as S.Schema<ProbationCompletionLetterResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10879,8 +10879,8 @@ export const createProbationExtension: API.OperationMethod<
   CreateProbationExtensionError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<CreateProbationExtensionRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<ProbationExtensionResponse>,
+  input: __S(10528, __c329, 0) as any as S.Schema<CreateProbationExtensionRequest>,
+  output: __S(10562, __c330, 2) as any as S.Schema<ProbationExtensionResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10894,8 +10894,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<CreateProjectRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<ProjectResponse>,
+  input: __S(10592, __c331, 0) as any as S.Schema<CreateProjectRequest>,
+  output: __S(10657, __c333, 1) as any as S.Schema<ProjectResponse>,
   errors: [Forbidden, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10909,8 +10909,8 @@ export const createRiskReserve: API.OperationMethod<
   CreateRiskReserveError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<CreateRiskReserveRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(10688, __c334, 0) as any as S.Schema<CreateRiskReserveRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10927,11 +10927,11 @@ export const createSandboxBenefitRenewalRequest: API.OperationMethod<
   CreateSandboxBenefitRenewalRequestError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<CreateSandboxBenefitRenewalRequestRequest>,
+  input: __S(10720, __c335, 0) as any as S.Schema<CreateSandboxBenefitRenewalRequestRequest>,
   output: __S(
-    218,
-    __c27,
-    2,
+    10721,
+    __c335,
+    1,
   ) as any as S.Schema<BenefitRenewalRequestsCreateBenefitRenewalRequestResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
@@ -10950,8 +10950,12 @@ export const createSandboxCompanyBypassEligibilityCheck: API.OperationMethod<
   CreateSandboxCompanyBypassEligibilityCheckError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<CreateSandboxCompanyBypassEligibilityCheckRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(
+    10816,
+    __c338,
+    0,
+  ) as any as S.Schema<CreateSandboxCompanyBypassEligibilityCheckRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10969,8 +10973,8 @@ export const createSandboxCompanyLegalEntity: API.OperationMethod<
   CreateSandboxCompanyLegalEntityError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<CreateSandboxCompanyLegalEntityRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<CreateSandboxCompanyLegalEntityResponse>,
+  input: __S(10912, __c341, 0) as any as S.Schema<CreateSandboxCompanyLegalEntityRequest>,
+  output: __S(10914, __c341, 2) as any as S.Schema<CreateSandboxCompanyLegalEntityResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -10989,11 +10993,11 @@ export const createSandboxCompanyLegalEntityActivateGlobalPayroll: API.Operation
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    223,
-    __c27,
-    7,
+    10944,
+    __c342,
+    0,
   ) as any as S.Schema<CreateSandboxCompanyLegalEntityActivateGlobalPayrollRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11012,11 +11016,11 @@ export const createSandboxCompanyLegalEntitySetCreditRiskStatus: API.OperationMe
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    224,
-    __c28,
+    10976,
+    __c343,
     0,
   ) as any as S.Schema<CreateSandboxCompanyLegalEntitySetCreditRiskStatusRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11034,8 +11038,8 @@ export const createSandboxContractorsEmploymentRate: API.OperationMethod<
   CreateSandboxContractorsEmploymentRateError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<CreateSandboxContractorsEmploymentRateRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<SandboxContractorRateResponse>,
+  input: __S(11008, __c344, 0) as any as S.Schema<CreateSandboxContractorsEmploymentRateRequest>,
+  output: __S(11009, __c344, 1) as any as S.Schema<SandboxContractorRateResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11053,8 +11057,8 @@ export const createSandboxEmployment: API.OperationMethod<
   CreateSandboxEmploymentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<CreateSandboxEmploymentRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<EmploymentCreationResponse>,
+  input: __S(11072, __c346, 0) as any as S.Schema<CreateSandboxEmploymentRequest>,
+  output: __S(9346, __c292, 2) as any as S.Schema<EmploymentCreationResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11073,11 +11077,11 @@ export const createSandboxEmploymentJobTitleEligibilityCheck: API.OperationMetho
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    230,
-    __c28,
-    6,
+    11104,
+    __c347,
+    0,
   ) as any as S.Schema<CreateSandboxEmploymentJobTitleEligibilityCheckRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<JobTitleEligibilityCheckResponse>,
+  output: __S(9666, __c302, 2) as any as S.Schema<JobTitleEligibilityCheckResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11095,8 +11099,12 @@ export const createSandboxEmploymentJobTitleReviewApprove: API.OperationMethod<
   CreateSandboxEmploymentJobTitleReviewApproveError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<CreateSandboxEmploymentJobTitleReviewApproveRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<JobTitleReviewDecisionResponse>,
+  input: __S(
+    11136,
+    __c348,
+    0,
+  ) as any as S.Schema<CreateSandboxEmploymentJobTitleReviewApproveRequest>,
+  output: __S(11170, __c349, 2) as any as S.Schema<JobTitleReviewDecisionResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11114,8 +11122,12 @@ export const createSandboxEmploymentJobTitleReviewReject: API.OperationMethod<
   CreateSandboxEmploymentJobTitleReviewRejectError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<CreateSandboxEmploymentJobTitleReviewRejectRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<JobTitleReviewDecisionResponse>,
+  input: __S(
+    11200,
+    __c350,
+    0,
+  ) as any as S.Schema<CreateSandboxEmploymentJobTitleReviewRejectRequest>,
+  output: __S(11170, __c349, 2) as any as S.Schema<JobTitleReviewDecisionResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11132,8 +11144,8 @@ export const createSandboxWebhookCallbacksTrigger: API.OperationMethod<
   CreateSandboxWebhookCallbacksTriggerError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<CreateSandboxWebhookCallbacksTriggerRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(11232, __c351, 0) as any as S.Schema<CreateSandboxWebhookCallbacksTriggerRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11147,8 +11159,8 @@ export const createSdkTelemetryError: API.OperationMethod<
   CreateSdkTelemetryErrorError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<CreateSdkTelemetryErrorRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateSdkTelemetryErrorResponse>,
+  input: __S(11266, __c352, 2) as any as S.Schema<CreateSdkTelemetryErrorRequest>,
+  output: __S(10880, __c340, 0) as any as S.Schema<CreateSdkTelemetryErrorResponse>,
   errors: [BadRequest, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11167,8 +11179,8 @@ export const createSsoConfiguration: API.OperationMethod<
   CreateSsoConfigurationError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<CreateSsoConfigurationRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<CreateSSOConfigurationResponse>,
+  input: __S(11328, __c354, 0) as any as S.Schema<CreateSsoConfigurationRequest>,
+  output: __S(11330, __c354, 2) as any as S.Schema<CreateSSOConfigurationResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11182,8 +11194,8 @@ export const createTimeoff: API.OperationMethod<
   CreateTimeoffError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<CreateTimeoffRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<TimeoffResponse>,
+  input: __S(11360, __c355, 0) as any as S.Schema<CreateTimeoffRequest>,
+  output: __S(9217, __c288, 1) as any as S.Schema<TimeoffResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11197,8 +11209,8 @@ export const createTimeoffApprove: API.OperationMethod<
   CreateTimeoffApproveError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<CreateTimeoffApproveRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<TimeoffResponse>,
+  input: __S(11392, __c356, 0) as any as S.Schema<CreateTimeoffApproveRequest>,
+  output: __S(9217, __c288, 1) as any as S.Schema<TimeoffResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11212,8 +11224,8 @@ export const createTimeoffCancel: API.OperationMethod<
   CreateTimeoffCancelError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<CreateTimeoffCancelRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<TimeoffResponse>,
+  input: __S(11424, __c357, 0) as any as S.Schema<CreateTimeoffCancelRequest>,
+  output: __S(9217, __c288, 1) as any as S.Schema<TimeoffResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11227,8 +11239,8 @@ export const createTimeoffCancelRequestApprove: API.OperationMethod<
   CreateTimeoffCancelRequestApproveError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<CreateTimeoffCancelRequestApproveRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(11456, __c358, 0) as any as S.Schema<CreateTimeoffCancelRequestApproveRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11242,8 +11254,8 @@ export const createTimeoffCancelRequestDecline: API.OperationMethod<
   CreateTimeoffCancelRequestDeclineError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<CreateTimeoffCancelRequestDeclineRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(11488, __c359, 0) as any as S.Schema<CreateTimeoffCancelRequestDeclineRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11257,8 +11269,8 @@ export const createTimeoffDecline: API.OperationMethod<
   CreateTimeoffDeclineError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<CreateTimeoffDeclineRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<TimeoffResponse>,
+  input: __S(11520, __c360, 0) as any as S.Schema<CreateTimeoffDeclineRequest>,
+  output: __S(9217, __c288, 1) as any as S.Schema<TimeoffResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11272,8 +11284,8 @@ export const createTimesheetApprove: API.OperationMethod<
   CreateTimesheetApproveError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<CreateTimesheetApproveRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<MinimalTimesheetResponse>,
+  input: __S(11552, __c361, 0) as any as S.Schema<CreateTimesheetApproveRequest>,
+  output: __S(11555, __c361, 3) as any as S.Schema<MinimalTimesheetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11287,8 +11299,8 @@ export const createTimesheetSendBack: API.OperationMethod<
   CreateTimesheetSendBackError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<CreateTimesheetSendBackRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<SentBackTimesheetResponse>,
+  input: __S(11584, __c362, 0) as any as S.Schema<CreateTimesheetSendBackRequest>,
+  output: __S(11587, __c362, 3) as any as S.Schema<SentBackTimesheetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11302,8 +11314,8 @@ export const createWebhookCallback: API.OperationMethod<
   CreateWebhookCallbackError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<CreateWebhookCallbackRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<WebhookCallbackResponse>,
+  input: __S(11616, __c363, 0) as any as S.Schema<CreateWebhookCallbackRequest>,
+  output: __S(11681, __c365, 1) as any as S.Schema<WebhookCallbackResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11317,8 +11329,8 @@ export const createWebhookEventsReplay: API.OperationMethod<
   CreateWebhookEventsReplayError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<CreateWebhookEventsReplayRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(11744, __c367, 0) as any as S.Schema<CreateWebhookEventsReplayRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11332,8 +11344,8 @@ export const deleteCompanyManager: API.OperationMethod<
   DeleteCompanyManagerError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<DeleteCompanyManagerRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(11776, __c368, 0) as any as S.Schema<DeleteCompanyManagerRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11352,14 +11364,14 @@ export const deleteContractorsEmploymentContractorCorSubscription: API.Operation
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    263,
-    __c32,
-    7,
+    11808,
+    __c369,
+    0,
   ) as any as S.Schema<DeleteContractorsEmploymentContractorCorSubscriptionRequest>,
   output: __S(
-    264,
-    __c33,
-    0,
+    11809,
+    __c369,
+    1,
   ) as any as S.Schema<DeleteContractorsEmploymentContractorCorSubscriptionResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
@@ -11379,8 +11391,8 @@ export const deleteIncentive: API.OperationMethod<
   DeleteIncentiveError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<DeleteIncentiveRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(11840, __c370, 0) as any as S.Schema<DeleteIncentiveRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11398,8 +11410,8 @@ export const deleteIncentivesRecurring: API.OperationMethod<
   DeleteIncentivesRecurringError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<DeleteIncentivesRecurringRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<DeleteRecurringIncentiveResponse>,
+  input: __S(11872, __c371, 0) as any as S.Schema<DeleteIncentivesRecurringRequest>,
+  output: __S(11875, __c371, 3) as any as S.Schema<DeleteRecurringIncentiveResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11418,11 +11430,11 @@ export const deleteOnboardingEmploymentPreOnboardingRequirementAcknowledge: API.
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    270,
-    __c33,
-    6,
+    11904,
+    __c372,
+    0,
   ) as any as S.Schema<DeleteOnboardingEmploymentPreOnboardingRequirementAcknowledgeRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11441,8 +11453,8 @@ export const deletePayItem: API.OperationMethod<
   DeletePayItemError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<DeletePayItemRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(11936, __c373, 0) as any as S.Schema<DeletePayItemRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11460,8 +11472,8 @@ export const deleteSandboxEmployment: API.OperationMethod<
   DeleteSandboxEmploymentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<DeleteSandboxEmploymentRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(11968, __c374, 0) as any as S.Schema<DeleteSandboxEmploymentRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11475,8 +11487,8 @@ export const deleteWebhookCallback: API.OperationMethod<
   DeleteWebhookCallbackError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<DeleteWebhookCallbackRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(12000, __c375, 0) as any as S.Schema<DeleteWebhookCallbackRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11490,8 +11502,8 @@ export const getAdpSubscriptionCancellations: API.OperationMethod<
   GetAdpSubscriptionCancellationsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<GetAdpSubscriptionCancellationsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(12032, __c376, 0) as any as S.Schema<GetAdpSubscriptionCancellationsRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11505,8 +11517,8 @@ export const getAdpSubscriptionChanges: API.OperationMethod<
   GetAdpSubscriptionChangesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<GetAdpSubscriptionChangesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(12128, __c379, 0) as any as S.Schema<GetAdpSubscriptionChangesRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11520,8 +11532,8 @@ export const getAdpSubscriptionOrders: API.OperationMethod<
   GetAdpSubscriptionOrdersError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<GetAdpSubscriptionOrdersRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(12160, __c380, 0) as any as S.Schema<GetAdpSubscriptionOrdersRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11535,8 +11547,8 @@ export const getAdpSubscriptionStatus: API.OperationMethod<
   GetAdpSubscriptionStatusError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<GetAdpSubscriptionStatusRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(12192, __c381, 0) as any as S.Schema<GetAdpSubscriptionStatusRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11550,8 +11562,8 @@ export const getAdpUserAssignments: API.OperationMethod<
   GetAdpUserAssignmentsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<GetAdpUserAssignmentsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(12224, __c382, 0) as any as S.Schema<GetAdpUserAssignmentsRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11565,8 +11577,8 @@ export const getAdpUserUnassignments: API.OperationMethod<
   GetAdpUserUnassignmentsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<GetAdpUserUnassignmentsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(12256, __c383, 0) as any as S.Schema<GetAdpUserUnassignmentsRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11580,8 +11592,8 @@ export const getBenefitOffers: API.OperationMethod<
   GetBenefitOffersError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<GetBenefitOffersRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<BenefitOfferByEmploymentResponse>,
+  input: __S(12288, __c384, 0) as any as S.Schema<GetBenefitOffersRequest>,
+  output: __S(12298, __c384, 10) as any as S.Schema<BenefitOfferByEmploymentResponse>,
   errors: [NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11595,8 +11607,8 @@ export const getBenefitOffersCountrySummaries: API.OperationMethod<
   GetBenefitOffersCountrySummariesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<GetBenefitOffersCountrySummariesRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<CountrySummariesResponse>,
+  input: __S(12448, __c389, 0) as any as S.Schema<GetBenefitOffersCountrySummariesRequest>,
+  output: __S(12457, __c389, 9) as any as S.Schema<CountrySummariesResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11610,11 +11622,11 @@ export const getBenefitRenewalRequest: API.OperationMethod<
   GetBenefitRenewalRequestError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<GetBenefitRenewalRequestRequest>,
+  input: __S(12480, __c390, 0) as any as S.Schema<GetBenefitRenewalRequestRequest>,
   output: __S(
-    309,
-    __c38,
-    5,
+    12481,
+    __c390,
+    1,
   ) as any as S.Schema<BenefitRenewalRequestsBenefitRenewalRequestResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
@@ -11633,11 +11645,11 @@ export const getBenefitRenewalRequests: API.OperationMethod<
   GetBenefitRenewalRequestsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<GetBenefitRenewalRequestsRequest>,
+  input: __S(12512, __c391, 0) as any as S.Schema<GetBenefitRenewalRequestsRequest>,
   output: __S(
-    313,
-    __c39,
-    1,
+    12515,
+    __c391,
+    3,
   ) as any as S.Schema<BenefitRenewalRequestsListBenefitRenewalRequestResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
@@ -11652,11 +11664,11 @@ export const getBenefitRenewalRequestSchema: API.OperationMethod<
   GetBenefitRenewalRequestSchemaError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<GetBenefitRenewalRequestSchemaRequest>,
+  input: __S(12544, __c392, 0) as any as S.Schema<GetBenefitRenewalRequestSchemaRequest>,
   output: __S(
-    315,
-    __c39,
-    3,
+    12576,
+    __c393,
+    0,
   ) as any as S.Schema<BenefitRenewalRequestsBenefitRenewalRequestFormResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
@@ -11671,8 +11683,8 @@ export const getBillingDocument: API.OperationMethod<
   GetBillingDocumentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<GetBillingDocumentRequest>,
-  output: __S(321, __c40, 1) as any as S.Schema<BillingDocumentResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetBillingDocumentRequest>,
+  output: __S(101, __c3, 5) as any as S.Schema<BillingDocumentResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11690,8 +11702,8 @@ export const getBillingDocumentBreakdown: API.OperationMethod<
   GetBillingDocumentBreakdownError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<GetBillingDocumentBreakdownRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<BillingDocumentBreakdownResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetBillingDocumentBreakdownRequest>,
+  output: __S(132, __c4, 4) as any as S.Schema<BillingDocumentBreakdownResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11705,8 +11717,8 @@ export const getBillingDocumentPdf: API.OperationMethod<
   GetBillingDocumentPdfError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<GetBillingDocumentPdfRequest>,
-  output: __S(328, __c41, 0) as any as S.Schema<GetBillingDocumentPdfResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetBillingDocumentPdfRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GetBillingDocumentPdfResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11720,8 +11732,8 @@ export const getBillingDocuments: API.OperationMethod<
   GetBillingDocumentsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<GetBillingDocumentsRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<BillingDocumentsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetBillingDocumentsRequest>,
+  output: __S(228, __c7, 4) as any as S.Schema<BillingDocumentsResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11735,8 +11747,8 @@ export const getBulkEmploymentJob: API.OperationMethod<
   GetBulkEmploymentJobError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<GetBulkEmploymentJobRequest>,
-  output: __S(340, __c42, 4) as any as S.Schema<BulkEmploymentImportJobResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetBulkEmploymentJobRequest>,
+  output: __S(262, __c8, 6) as any as S.Schema<BulkEmploymentImportJobResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11750,8 +11762,8 @@ export const getBulkEmploymentJobRows: API.OperationMethod<
   GetBulkEmploymentJobRowsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<GetBulkEmploymentJobRowsRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<ImportJobRowsResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetBulkEmploymentJobRowsRequest>,
+  output: __S(308, __c9, 20) as any as S.Schema<ImportJobRowsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11765,8 +11777,8 @@ export const getCompanies: API.OperationMethod<
   GetCompaniesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<GetCompaniesRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<CompaniesResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetCompaniesRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<CompaniesResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11780,8 +11792,8 @@ export const getCompaniesSchema: API.OperationMethod<
   GetCompaniesSchemaError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<GetCompaniesSchemaRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<CompanyFormResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetCompaniesSchemaRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<CompanyFormResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11795,8 +11807,8 @@ export const getCompany: API.OperationMethod<
   GetCompanyError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<GetCompanyRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CompanyResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetCompanyRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<CompanyResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11810,8 +11822,8 @@ export const getCompanyActions: API.OperationMethod<
   GetCompanyActionsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<GetCompanyActionsRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<CompanyActionsResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetCompanyActionsRequest>,
+  output: __S(548, __c17, 4) as any as S.Schema<CompanyActionsResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11825,8 +11837,8 @@ export const getCompanyComplianceProfile: API.OperationMethod<
   GetCompanyComplianceProfileError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<GetCompanyComplianceProfileRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<CompanyComplianceProfileResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetCompanyComplianceProfileRequest>,
+  output: __S(771, __c24, 3) as any as S.Schema<CompanyComplianceProfileResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11844,8 +11856,8 @@ export const getCompanyCostCenterAllocations: API.OperationMethod<
   GetCompanyCostCenterAllocationsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<GetCompanyCostCenterAllocationsRequest>,
-  output: __S(385, __c48, 1) as any as S.Schema<ListCompanyCostCenterAllocationsResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetCompanyCostCenterAllocationsRequest>,
+  output: __S(804, __c25, 4) as any as S.Schema<ListCompanyCostCenterAllocationsResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11859,8 +11871,8 @@ export const getCompanyCurrencies: API.OperationMethod<
   GetCompanyCurrenciesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<GetCompanyCurrenciesRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<CompanyCurrenciesResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetCompanyCurrenciesRequest>,
+  output: __S(868, __c27, 4) as any as S.Schema<CompanyCurrenciesResponse>,
   errors: [NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11874,8 +11886,8 @@ export const getCompanyDepartments: API.OperationMethod<
   GetCompanyDepartmentsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<GetCompanyDepartmentsRequest>,
-  output: __S(394, __c49, 2) as any as S.Schema<ListCompanyDepartmentsPaginatedResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetCompanyDepartmentsRequest>,
+  output: __S(899, __c28, 3) as any as S.Schema<ListCompanyDepartmentsPaginatedResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11892,8 +11904,8 @@ export const getCompanyEmploymentOnboardingReservesStatus: API.OperationMethod<
   GetCompanyEmploymentOnboardingReservesStatusError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<GetCompanyEmploymentOnboardingReservesStatusRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<OnboardingReservesStatusResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetCompanyEmploymentOnboardingReservesStatusRequest>,
+  output: __S(930, __c29, 2) as any as S.Schema<OnboardingReservesStatusResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11907,8 +11919,8 @@ export const getCompanyLegalEntities: API.OperationMethod<
   GetCompanyLegalEntitiesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<GetCompanyLegalEntitiesRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<ListCompanyLegalEntitiesResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetCompanyLegalEntitiesRequest>,
+  output: __S(964, __c30, 4) as any as S.Schema<ListCompanyLegalEntitiesResponse>,
   errors: [NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11922,8 +11934,12 @@ export const getCompanyLegalEntityAdministrativeDetails: API.OperationMethod<
   GetCompanyLegalEntityAdministrativeDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<GetCompanyLegalEntityAdministrativeDetailsRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<GetCompanyLegalEntityAdministrativeDetailsResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetCompanyLegalEntityAdministrativeDetailsRequest>,
+  output: __S(
+    1024,
+    __c32,
+    0,
+  ) as any as S.Schema<GetCompanyLegalEntityAdministrativeDetailsResponse>,
   errors: [NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11937,8 +11953,8 @@ export const getCompanyLegalEntityContractorEligibility: API.OperationMethod<
   GetCompanyLegalEntityContractorEligibilityError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<GetCompanyLegalEntityContractorEligibilityRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<ContractorEligibilityResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetCompanyLegalEntityContractorEligibilityRequest>,
+  output: __S(1060, __c33, 4) as any as S.Schema<ContractorEligibilityResponse>,
   errors: [NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11952,8 +11968,8 @@ export const getCompanyLegalEntityPayCodes: API.OperationMethod<
   GetCompanyLegalEntityPayCodesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<GetCompanyLegalEntityPayCodesRequest>,
-  output: __S(414, __c51, 6) as any as S.Schema<ListPayCodesResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetCompanyLegalEntityPayCodesRequest>,
+  output: __S(1092, __c34, 4) as any as S.Schema<ListPayCodesResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11967,8 +11983,8 @@ export const getCompanyManager: API.OperationMethod<
   GetCompanyManagerError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<GetCompanyManagerRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<CompanyManagerResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetCompanyManagerRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<CompanyManagerResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11982,8 +11998,8 @@ export const getCompanyManagers: API.OperationMethod<
   GetCompanyManagersError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<GetCompanyManagersRequest>,
-  output: __S(420, __c52, 4) as any as S.Schema<CompanyManagersResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetCompanyManagersRequest>,
+  output: __S(1251, __c39, 3) as any as S.Schema<CompanyManagersResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -11997,8 +12013,8 @@ export const getCompanyPricingPlans: API.OperationMethod<
   GetCompanyPricingPlansError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<GetCompanyPricingPlansRequest>,
-  output: __S(424, __c53, 0) as any as S.Schema<ListCompanyPricingPlansResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetCompanyPricingPlansRequest>,
+  output: __S(1283, __c40, 3) as any as S.Schema<ListCompanyPricingPlansResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12012,8 +12028,8 @@ export const getCompanyProductPrices: API.OperationMethod<
   GetCompanyProductPricesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<GetCompanyProductPricesRequest>,
-  output: __S(429, __c53, 5) as any as S.Schema<ListProductPricesResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetCompanyProductPricesRequest>,
+  output: __S(1316, __c41, 4) as any as S.Schema<ListProductPricesResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12027,8 +12043,8 @@ export const getCompanyWebhookCallbacks: API.OperationMethod<
   GetCompanyWebhookCallbacksError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<GetCompanyWebhookCallbacksRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<ListWebhookCallbacksResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetCompanyWebhookCallbacksRequest>,
+  output: __S(1346, __c42, 2) as any as S.Schema<ListWebhookCallbacksResponse>,
   errors: [NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12042,8 +12058,8 @@ export const getContractAmendment: API.OperationMethod<
   GetContractAmendmentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<GetContractAmendmentRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ContractAmendmentResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetContractAmendmentRequest>,
+  output: __S(1220, __c38, 4) as any as S.Schema<ContractAmendmentResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12057,8 +12073,8 @@ export const getContractAmendments: API.OperationMethod<
   GetContractAmendmentsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<GetContractAmendmentsRequest>,
-  output: __S(438, __c54, 6) as any as S.Schema<ListContractAmendmentResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetContractAmendmentsRequest>,
+  output: __S(1412, __c44, 4) as any as S.Schema<ListContractAmendmentResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12072,8 +12088,8 @@ export const getContractAmendmentsSchema: API.OperationMethod<
   GetContractAmendmentsSchemaError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<GetContractAmendmentsSchemaRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<ContractAmendmentFormResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetContractAmendmentsSchemaRequest>,
+  output: __S(12576, __c393, 0) as any as S.Schema<ContractAmendmentFormResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12087,8 +12103,8 @@ export const getContractorInvoice: API.OperationMethod<
   GetContractorInvoiceError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<GetContractorInvoiceRequest>,
-  output: __S(446, __c55, 6) as any as S.Schema<ContractorInvoiceResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetContractorInvoiceRequest>,
+  output: __S(1474, __c46, 2) as any as S.Schema<ContractorInvoiceResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12102,8 +12118,8 @@ export const getContractorInvoices: API.OperationMethod<
   GetContractorInvoicesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<GetContractorInvoicesRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<ListContractorInvoicesResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetContractorInvoicesRequest>,
+  output: __S(1539, __c48, 3) as any as S.Schema<ListContractorInvoicesResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12122,8 +12138,8 @@ export const getContractorInvoiceSchedule: API.OperationMethod<
   GetContractorInvoiceScheduleError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<GetContractorInvoiceScheduleRequest>,
-  output: __S(454, __c56, 6) as any as S.Schema<ContractorInvoiceScheduleResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetContractorInvoiceScheduleRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<ContractorInvoiceScheduleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12137,8 +12153,8 @@ export const getContractorInvoiceSchedules: API.OperationMethod<
   GetContractorInvoiceSchedulesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<GetContractorInvoiceSchedulesRequest>,
-  output: __S(458, __c57, 2) as any as S.Schema<ListContractorInvoiceSchedulesResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetContractorInvoiceSchedulesRequest>,
+  output: __S(1699, __c53, 3) as any as S.Schema<ListContractorInvoiceSchedulesResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12152,8 +12168,8 @@ export const getContractorsCorTerminationRequests: API.OperationMethod<
   GetContractorsCorTerminationRequestsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<GetContractorsCorTerminationRequestsRequest>,
-  output: __S(463, __c57, 7) as any as S.Schema<IndexCorTerminationRequestsResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GetContractorsCorTerminationRequestsRequest>,
+  output: __S(1731, __c54, 3) as any as S.Schema<IndexCorTerminationRequestsResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12170,8 +12186,8 @@ export const getContractorsEmploymentContractDocument: API.OperationMethod<
   GetContractorsEmploymentContractDocumentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<GetContractorsEmploymentContractDocumentRequest>,
-  output: __S(469, __c58, 5) as any as S.Schema<ContractDocumentResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetContractorsEmploymentContractDocumentRequest>,
+  output: __S(1796, __c56, 4) as any as S.Schema<ContractDocumentResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12188,8 +12204,12 @@ export const getContractorsEmploymentContractorCurrencies: API.OperationMethod<
   GetContractorsEmploymentContractorCurrenciesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<GetContractorsEmploymentContractorCurrenciesRequest>,
-  output: __S(473, __c59, 1) as any as S.Schema<ContractorCurrencyResponse>,
+  input: __S(
+    1856,
+    __c58,
+    0,
+  ) as any as S.Schema<GetContractorsEmploymentContractorCurrenciesRequest>,
+  output: __S(1859, __c58, 3) as any as S.Schema<ContractorCurrencyResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12207,11 +12227,11 @@ export const getContractorsEmploymentContractorSubscriptions: API.OperationMetho
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    474,
+    1888,
     __c59,
-    2,
+    0,
   ) as any as S.Schema<GetContractorsEmploymentContractorSubscriptionsRequest>,
-  output: __S(480, __c60, 0) as any as S.Schema<ContractorSubscriptionSummariesResponse>,
+  output: __S(1894, __c59, 6) as any as S.Schema<ContractorSubscriptionSummariesResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12229,11 +12249,11 @@ export const getContractorsEmploymentCorTerminationRequest: API.OperationMethod<
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    481,
+    1920,
     __c60,
-    1,
+    0,
   ) as any as S.Schema<GetContractorsEmploymentCorTerminationRequestRequest>,
-  output: __S(482, __c60, 2) as any as S.Schema<CorTerminationRequestResponse>,
+  output: __S(1921, __c60, 1) as any as S.Schema<CorTerminationRequestResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12251,8 +12271,8 @@ export const getContractorsEmploymentRates: API.OperationMethod<
   GetContractorsEmploymentRatesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<GetContractorsEmploymentRatesRequest>,
-  output: __S(486, __c60, 6) as any as S.Schema<ListContractorRatesResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetContractorsEmploymentRatesRequest>,
+  output: __S(1955, __c61, 3) as any as S.Schema<ListContractorRatesResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12270,11 +12290,11 @@ export const getContractorsSchemasEligibilityQuestionnaire: API.OperationMethod<
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    487,
-    __c60,
-    7,
+    1984,
+    __c62,
+    0,
   ) as any as S.Schema<GetContractorsSchemasEligibilityQuestionnaireRequest>,
-  output: __S(489, __c61, 1) as any as S.Schema<EligibilityQuestionnaireJSONSchemaResponse>,
+  output: __S(1986, __c62, 2) as any as S.Schema<EligibilityQuestionnaireJSONSchemaResponse>,
   errors: [Forbidden, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12288,8 +12308,8 @@ export const getCostCalculatorCountries: API.OperationMethod<
   GetCostCalculatorCountriesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(490, __c61, 2) as any as S.Schema<GetCostCalculatorCountriesRequest>,
-  output: __S(494, __c61, 6) as any as S.Schema<CostCalculatorListCountryResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<GetCostCalculatorCountriesRequest>,
+  output: __S(2020, __c63, 4) as any as S.Schema<CostCalculatorListCountryResponse>,
   errors: [UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12303,8 +12323,8 @@ export const getCostCalculatorRegionFields: API.OperationMethod<
   GetCostCalculatorRegionFieldsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(495, __c61, 7) as any as S.Schema<GetCostCalculatorRegionFieldsRequest>,
-  output: __S(498, __c62, 2) as any as S.Schema<JSONSchemaResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetCostCalculatorRegionFieldsRequest>,
+  output: __S(2051, __c64, 3) as any as S.Schema<JSONSchemaResponse>,
   errors: [UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12318,8 +12338,8 @@ export const getCountries: API.OperationMethod<
   GetCountriesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(499, __c62, 3) as any as S.Schema<GetCountriesRequest>,
-  output: __S(501, __c62, 5) as any as S.Schema<CountriesResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<GetCountriesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<CountriesResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12333,8 +12353,8 @@ export const getCountry: API.OperationMethod<
   GetCountryError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(502, __c62, 6) as any as S.Schema<GetCountryRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<CountryFormResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<GetCountryRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<CountryFormResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12352,8 +12372,8 @@ export const getCountryContractorContractDetails: API.OperationMethod<
   GetCountryContractorContractDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(503, __c62, 7) as any as S.Schema<GetCountryContractorContractDetailsRequest>,
-  output: __S(505, __c63, 1) as any as S.Schema<ContractorContractDetailsResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetCountryContractorContractDetailsRequest>,
+  output: __S(2274, __c71, 2) as any as S.Schema<ContractorContractDetailsResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12367,8 +12387,8 @@ export const getCountryHoliday: API.OperationMethod<
   GetCountryHolidayError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(506, __c63, 2) as any as S.Schema<GetCountryHolidayRequest>,
-  output: __S(509, __c63, 5) as any as S.Schema<HolidaysResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetCountryHolidayRequest>,
+  output: __S(2307, __c72, 3) as any as S.Schema<HolidaysResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12386,8 +12406,8 @@ export const getCountryLegalEntityForm: API.OperationMethod<
   GetCountryLegalEntityFormError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(510, __c63, 6) as any as S.Schema<GetCountryLegalEntityFormRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<CountryFormResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<GetCountryLegalEntityFormRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<CountryFormResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12401,8 +12421,8 @@ export const getCustomFields: API.OperationMethod<
   GetCustomFieldsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(511, __c63, 7) as any as S.Schema<GetCustomFieldsRequest>,
-  output: __S(514, __c64, 2) as any as S.Schema<ListEmploymentCustomFieldsResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<GetCustomFieldsRequest>,
+  output: __S(2371, __c74, 3) as any as S.Schema<ListEmploymentCustomFieldsResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12416,8 +12436,8 @@ export const getCustomFieldValue: API.OperationMethod<
   GetCustomFieldValueError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(515, __c64, 3) as any as S.Schema<GetCustomFieldValueRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<EmploymentCustomFieldValueResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<GetCustomFieldValueRequest>,
+  output: __S(2434, __c76, 2) as any as S.Schema<EmploymentCustomFieldValueResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12431,8 +12451,8 @@ export const getDirectOffboardings: API.OperationMethod<
   GetDirectOffboardingsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<GetDirectOffboardingsRequest>,
-  output: __S(523, __c65, 3) as any as S.Schema<ListDirectOffboardingResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<GetDirectOffboardingsRequest>,
+  output: __S(2468, __c77, 4) as any as S.Schema<ListDirectOffboardingResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12446,8 +12466,8 @@ export const getEmployeeAddress: API.OperationMethod<
   GetEmployeeAddressError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<GetEmployeeAddressRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<GetEmployeeAddressRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12461,8 +12481,8 @@ export const getEmployeeBankAccount: API.OperationMethod<
   GetEmployeeBankAccountError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(529, __c66, 1) as any as S.Schema<GetEmployeeBankAccountRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetEmployeeBankAccountRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12476,8 +12496,8 @@ export const getEmployeeCurrent: API.OperationMethod<
   GetEmployeeCurrentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<GetEmployeeCurrentRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<GetEmployeeCurrentRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [Forbidden, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12491,8 +12511,8 @@ export const getEmployeeDocument: API.OperationMethod<
   GetEmployeeDocumentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<GetEmployeeDocumentRequest>,
-  output: __S(534, __c66, 6) as any as S.Schema<DownloadDocumentResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetEmployeeDocumentRequest>,
+  output: __S(2691, __c84, 3) as any as S.Schema<DownloadDocumentResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12506,8 +12526,8 @@ export const getEmployeeDocuments: API.OperationMethod<
   GetEmployeeDocumentsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(535, __c66, 7) as any as S.Schema<GetEmployeeDocumentsRequest>,
-  output: __S(537, __c67, 1) as any as S.Schema<ListDocumentsResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<GetEmployeeDocumentsRequest>,
+  output: __S(2722, __c85, 2) as any as S.Schema<ListDocumentsResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12521,8 +12541,8 @@ export const getEmployeeEmergencyContact: API.OperationMethod<
   GetEmployeeEmergencyContactError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(538, __c67, 2) as any as S.Schema<GetEmployeeEmergencyContactRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<GetEmployeeEmergencyContactRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12536,8 +12556,8 @@ export const getEmployeeExpenseCategories: API.OperationMethod<
   GetEmployeeExpenseCategoriesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<GetEmployeeExpenseCategoriesRequest>,
-  output: __S(543, __c67, 7) as any as S.Schema<ListExpenseCategoriesResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<GetEmployeeExpenseCategoriesRequest>,
+  output: __S(2851, __c89, 3) as any as S.Schema<ListExpenseCategoriesResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12551,8 +12571,8 @@ export const getEmployeeExpenses: API.OperationMethod<
   GetEmployeeExpensesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<GetEmployeeExpensesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<GetEmployeeExpensesRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12566,8 +12586,8 @@ export const getEmployeeIncentives: API.OperationMethod<
   GetEmployeeIncentivesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c68, 1) as any as S.Schema<GetEmployeeIncentivesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GetEmployeeIncentivesRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12581,8 +12601,8 @@ export const getEmployeeLeavePolicies: API.OperationMethod<
   GetEmployeeLeavePoliciesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546, __c68, 2) as any as S.Schema<GetEmployeeLeavePoliciesRequest>,
-  output: __S(549, __c68, 5) as any as S.Schema<ListLeavePoliciesDetailsResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetEmployeeLeavePoliciesRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<ListLeavePoliciesDetailsResponse>,
   errors: [NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12596,8 +12616,8 @@ export const getEmployeeLeavePoliciesSummary: API.OperationMethod<
   GetEmployeeLeavePoliciesSummaryError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(550, __c68, 6) as any as S.Schema<GetEmployeeLeavePoliciesSummaryRequest>,
-  output: __S(556, __c69, 4) as any as S.Schema<ListLeavePoliciesSummaryResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<GetEmployeeLeavePoliciesSummaryRequest>,
+  output: __S(3045, __c95, 5) as any as S.Schema<ListLeavePoliciesSummaryResponse>,
   errors: [NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12611,8 +12631,8 @@ export const getEmployeePayslipFiles: API.OperationMethod<
   GetEmployeePayslipFilesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(557, __c69, 5) as any as S.Schema<GetEmployeePayslipFilesRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<ListPayslipFilesResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<GetEmployeePayslipFilesRequest>,
+  output: __S(3078, __c96, 6) as any as S.Schema<ListPayslipFilesResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12626,8 +12646,8 @@ export const getEmployeePayslips: API.OperationMethod<
   GetEmployeePayslipsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(564, __c70, 4) as any as S.Schema<GetEmployeePayslipsRequest>,
-  output: __S(571, __c71, 3) as any as S.Schema<ListEmployeePayslipsResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<GetEmployeePayslipsRequest>,
+  output: __S(3143, __c98, 7) as any as S.Schema<ListEmployeePayslipsResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12641,8 +12661,8 @@ export const getEmployeePersonalDetails: API.OperationMethod<
   GetEmployeePersonalDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(572, __c71, 4) as any as S.Schema<GetEmployeePersonalDetailsRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<GetEmployeePersonalDetailsRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12656,8 +12676,8 @@ export const getEmployeePersonalInformation: API.OperationMethod<
   GetEmployeePersonalInformationError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(573, __c71, 5) as any as S.Schema<GetEmployeePersonalInformationRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<GetEmployeePersonalInformationRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12671,8 +12691,8 @@ export const getEmployeeTimeoff: API.OperationMethod<
   GetEmployeeTimeoffError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574, __c71, 6) as any as S.Schema<GetEmployeeTimeoffRequest>,
-  output: __S(577, __c72, 1) as any as S.Schema<ListTimeoffResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GetEmployeeTimeoffRequest>,
+  output: __S(3266, __c102, 2) as any as S.Schema<ListTimeoffResponse>,
   errors: [BadRequest, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12686,8 +12706,8 @@ export const getEmployeeTimesheets: API.OperationMethod<
   GetEmployeeTimesheetsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(578, __c72, 2) as any as S.Schema<GetEmployeeTimesheetsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<GetEmployeeTimesheetsRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12706,8 +12726,8 @@ export const getEmployment: API.OperationMethod<
   GetEmploymentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(579, __c72, 3) as any as S.Schema<GetEmploymentRequest>,
-  output: __S(591, __c73, 7) as any as S.Schema<EmploymentShowResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<GetEmploymentRequest>,
+  output: __S(3332, __c104, 4) as any as S.Schema<EmploymentShowResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12721,8 +12741,8 @@ export const getEmploymentBackgroundCheck: API.OperationMethod<
   GetEmploymentBackgroundCheckError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c74, 0) as any as S.Schema<GetEmploymentBackgroundCheckRequest>,
-  output: __S(597, __c74, 5) as any as S.Schema<BackgroundChecksBackgroundCheckResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<GetEmploymentBackgroundCheckRequest>,
+  output: __S(3429, __c107, 5) as any as S.Schema<BackgroundChecksBackgroundCheckResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12741,8 +12761,8 @@ export const getEmploymentBasicInformation: API.OperationMethod<
   GetEmploymentBasicInformationError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(598, __c74, 6) as any as S.Schema<GetEmploymentBasicInformationRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<GetEmploymentBasicInformationRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12760,8 +12780,8 @@ export const getEmploymentBenefitOffers: API.OperationMethod<
   GetEmploymentBenefitOffersError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(599, __c74, 7) as any as S.Schema<GetEmploymentBenefitOffersRequest>,
-  output: __S(605, __c75, 5) as any as S.Schema<EmploymentsBenefitOffersListBenefitOffers>,
+  input: __S(3488, __c109, 0) as any as S.Schema<GetEmploymentBenefitOffersRequest>,
+  output: __S(3494, __c109, 6) as any as S.Schema<EmploymentsBenefitOffersListBenefitOffers>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12779,8 +12799,12 @@ export const getEmploymentBenefitOffersSchema: API.OperationMethod<
   GetEmploymentBenefitOffersSchemaError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(606, __c75, 6) as any as S.Schema<GetEmploymentBenefitOffersSchemaRequest>,
-  output: __S(610, __c76, 2) as any as S.Schema<UnifiedEmploymentsBenefitOffersJSONSchemaResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<GetEmploymentBenefitOffersSchemaRequest>,
+  output: __S(
+    3524,
+    __c110,
+    4,
+  ) as any as S.Schema<UnifiedEmploymentsBenefitOffersJSONSchemaResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12797,8 +12821,8 @@ export const getEmploymentCompanyStructureNodes: API.OperationMethod<
   GetEmploymentCompanyStructureNodesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(611, __c76, 3) as any as S.Schema<GetEmploymentCompanyStructureNodesRequest>,
-  output: __S(617, __c77, 1) as any as S.Schema<CompanyStructureNodesResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<GetEmploymentCompanyStructureNodesRequest>,
+  output: __S(3622, __c113, 6) as any as S.Schema<CompanyStructureNodesResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12812,8 +12836,8 @@ export const getEmploymentContractDocuments: API.OperationMethod<
   GetEmploymentContractDocumentsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(618, __c77, 2) as any as S.Schema<GetEmploymentContractDocumentsRequest>,
-  output: __S(624, __c78, 0) as any as S.Schema<IndexContractDocumentsResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<GetEmploymentContractDocumentsRequest>,
+  output: __S(3654, __c114, 6) as any as S.Schema<IndexContractDocumentsResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12831,8 +12855,8 @@ export const getEmploymentContracts: API.OperationMethod<
   GetEmploymentContractsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(625, __c78, 1) as any as S.Schema<GetEmploymentContractsRequest>,
-  output: __S(630, __c78, 6) as any as S.Schema<ListEmploymentContractResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<GetEmploymentContractsRequest>,
+  output: __S(3685, __c115, 5) as any as S.Schema<ListEmploymentContractResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12851,11 +12875,11 @@ export const getEmploymentContractsEmploymentPendingChanges: API.OperationMethod
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    631,
-    __c78,
-    7,
+    3712,
+    __c116,
+    0,
   ) as any as S.Schema<GetEmploymentContractsEmploymentPendingChangesRequest>,
-  output: __S(635, __c79, 3) as any as S.Schema<EmploymentContractPendingChangesResponse>,
+  output: __S(3716, __c116, 4) as any as S.Schema<EmploymentContractPendingChangesResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12874,8 +12898,8 @@ export const getEmploymentCostCenterAllocations: API.OperationMethod<
   GetEmploymentCostCenterAllocationsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(636, __c79, 4) as any as S.Schema<GetEmploymentCostCenterAllocationsRequest>,
-  output: __S(638, __c79, 6) as any as S.Schema<ListCostCenterAllocationsResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<GetEmploymentCostCenterAllocationsRequest>,
+  output: __S(3746, __c117, 2) as any as S.Schema<ListCostCenterAllocationsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12889,8 +12913,8 @@ export const getEmploymentCustomFields: API.OperationMethod<
   GetEmploymentCustomFieldsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(639, __c79, 7) as any as S.Schema<GetEmploymentCustomFieldsRequest>,
-  output: __S(643, __c80, 3) as any as S.Schema<ListEmploymentCustomFieldValuePaginatedResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<GetEmploymentCustomFieldsRequest>,
+  output: __S(3780, __c118, 4) as any as S.Schema<ListEmploymentCustomFieldValuePaginatedResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12907,8 +12931,8 @@ export const getEmploymentEmploymentAgreementDownload: API.OperationMethod<
   GetEmploymentEmploymentAgreementDownloadError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(644, __c80, 4) as any as S.Schema<GetEmploymentEmploymentAgreementDownloadRequest>,
-  output: __S(328, __c41, 0) as any as S.Schema<GetEmploymentEmploymentAgreementDownloadResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<GetEmploymentEmploymentAgreementDownloadRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GetEmploymentEmploymentAgreementDownloadResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12925,8 +12949,8 @@ export const getEmploymentEmploymentAgreementPreview: API.OperationMethod<
   GetEmploymentEmploymentAgreementPreviewError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(645, __c80, 5) as any as S.Schema<GetEmploymentEmploymentAgreementPreviewRequest>,
-  output: __S(647, __c80, 7) as any as S.Schema<EmploymentAgreementPreviewResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<GetEmploymentEmploymentAgreementPreviewRequest>,
+  output: __S(3842, __c120, 2) as any as S.Schema<EmploymentAgreementPreviewResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12945,8 +12969,8 @@ export const getEmploymentEngagementAgreementDetails: API.OperationMethod<
   GetEmploymentEngagementAgreementDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(648, __c81, 0) as any as S.Schema<GetEmploymentEngagementAgreementDetailsRequest>,
-  output: __S(653, __c81, 5) as any as S.Schema<EmploymentEngagementAgreementDetailsResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<GetEmploymentEngagementAgreementDetailsRequest>,
+  output: __S(3908, __c122, 4) as any as S.Schema<EmploymentEngagementAgreementDetailsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12965,8 +12989,8 @@ export const getEmploymentEngagementAgreementDetails2: API.OperationMethod<
   GetEmploymentEngagementAgreementDetails2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(654, __c81, 6) as any as S.Schema<GetEmploymentEngagementAgreementDetailsRequest2>,
-  output: __S(653, __c81, 5) as any as S.Schema<EmploymentEngagementAgreementDetailsResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<GetEmploymentEngagementAgreementDetailsRequest2>,
+  output: __S(3908, __c122, 4) as any as S.Schema<EmploymentEngagementAgreementDetailsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12980,8 +13004,8 @@ export const getEmploymentFiles: API.OperationMethod<
   GetEmploymentFilesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(655, __c81, 7) as any as S.Schema<GetEmploymentFilesRequest>,
-  output: __S(659, __c82, 3) as any as S.Schema<ListFilesResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<GetEmploymentFilesRequest>,
+  output: __S(4004, __c125, 4) as any as S.Schema<ListFilesResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -12995,8 +13019,8 @@ export const getEmploymentJob: API.OperationMethod<
   GetEmploymentJobError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(660, __c82, 4) as any as S.Schema<GetEmploymentJobRequest>,
-  output: __S(666, __c83, 2) as any as S.Schema<EmploymentJobResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<GetEmploymentJobRequest>,
+  output: __S(4038, __c126, 6) as any as S.Schema<EmploymentJobResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13010,8 +13034,8 @@ export const getEmploymentOnboardingSteps: API.OperationMethod<
   GetEmploymentOnboardingStepsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(667, __c83, 3) as any as S.Schema<GetEmploymentOnboardingStepsRequest>,
-  output: __S(673, __c84, 1) as any as S.Schema<EmploymentOnboardingStepsResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<GetEmploymentOnboardingStepsRequest>,
+  output: __S(4070, __c127, 6) as any as S.Schema<EmploymentOnboardingStepsResponse>,
   errors: [NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13030,8 +13054,8 @@ export const getEmployments: API.OperationMethod<
   GetEmploymentsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(674, __c84, 2) as any as S.Schema<GetEmploymentsRequest>,
-  output: __S(678, __c84, 6) as any as S.Schema<ListEmploymentsResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<GetEmploymentsRequest>,
+  output: __S(4100, __c128, 4) as any as S.Schema<ListEmploymentsResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13045,8 +13069,8 @@ export const getEmploymentsBulk: API.OperationMethod<
   GetEmploymentsBulkError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(679, __c84, 7) as any as S.Schema<GetEmploymentsBulkRequest>,
-  output: __S(683, __c85, 3) as any as S.Schema<EmploymentsBulkResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<GetEmploymentsBulkRequest>,
+  output: __S(4130, __c129, 2) as any as S.Schema<EmploymentsBulkResponse>,
   errors: [BadRequest, Forbidden, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13060,8 +13084,8 @@ export const getExpens: API.OperationMethod<
   GetExpensError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(684, __c85, 4) as any as S.Schema<GetExpensRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<ExpenseResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<GetExpensRequest>,
+  output: __S(9729, __c304, 1) as any as S.Schema<ExpenseResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13075,8 +13099,8 @@ export const getExpenses: API.OperationMethod<
   GetExpensesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(685, __c85, 5) as any as S.Schema<GetExpensesRequest>,
-  output: __S(688, __c86, 0) as any as S.Schema<ListExpenseResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<GetExpensesRequest>,
+  output: __S(4227, __c132, 3) as any as S.Schema<ListExpenseResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13094,8 +13118,8 @@ export const getExpensesCategories: API.OperationMethod<
   GetExpensesCategoriesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(689, __c86, 1) as any as S.Schema<GetExpensesCategoriesRequest>,
-  output: __S(543, __c67, 7) as any as S.Schema<ListExpenseCategoriesResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<GetExpensesCategoriesRequest>,
+  output: __S(2851, __c89, 3) as any as S.Schema<ListExpenseCategoriesResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13114,8 +13138,8 @@ export const getExpensReceipt: API.OperationMethod<
   GetExpensReceiptError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(690, __c86, 2) as any as S.Schema<GetExpensReceiptRequest>,
-  output: __S(691, __c86, 3) as any as S.Schema<GetExpensReceiptResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<GetExpensReceiptRequest>,
+  output: __S(4289, __c134, 1) as any as S.Schema<GetExpensReceiptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13129,8 +13153,8 @@ export const getFile: API.OperationMethod<
   GetFileError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(692, __c86, 4) as any as S.Schema<GetFileRequest>,
-  output: __S(695, __c86, 7) as any as S.Schema<DownloadFileResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<GetFileRequest>,
+  output: __S(4323, __c135, 3) as any as S.Schema<DownloadFileResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13144,8 +13168,8 @@ export const getHelpCenterArticle: API.OperationMethod<
   GetHelpCenterArticleError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696, __c87, 0) as any as S.Schema<GetHelpCenterArticleRequest>,
-  output: __S(699, __c87, 3) as any as S.Schema<HelpCenterArticleResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<GetHelpCenterArticleRequest>,
+  output: __S(4387, __c137, 3) as any as S.Schema<HelpCenterArticleResponse>,
   errors: [NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13159,8 +13183,8 @@ export const getIdentityCurrent: API.OperationMethod<
   GetIdentityCurrentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(700, __c87, 4) as any as S.Schema<GetIdentityCurrentRequest>,
-  output: __S(701, __c87, 5) as any as S.Schema<GetIdentityCurrentResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<GetIdentityCurrentRequest>,
+  output: __S(4417, __c138, 1) as any as S.Schema<GetIdentityCurrentResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13174,8 +13198,8 @@ export const getIdentityVerification: API.OperationMethod<
   GetIdentityVerificationError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(702, __c87, 6) as any as S.Schema<GetIdentityVerificationRequest>,
-  output: __S(705, __c88, 1) as any as S.Schema<IdentityVerificationResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<GetIdentityVerificationRequest>,
+  output: __S(4451, __c139, 3) as any as S.Schema<IdentityVerificationResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13189,8 +13213,8 @@ export const getIncentive: API.OperationMethod<
   GetIncentiveError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(706, __c88, 2) as any as S.Schema<GetIncentiveRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<IncentiveResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<GetIncentiveRequest>,
+  output: __S(9857, __c308, 1) as any as S.Schema<IncentiveResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13204,8 +13228,8 @@ export const getIncentives: API.OperationMethod<
   GetIncentivesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(707, __c88, 3) as any as S.Schema<GetIncentivesRequest>,
-  output: __S(710, __c88, 6) as any as S.Schema<ListIncentivesResponse>,
+  input: __S(4512, __c141, 0) as any as S.Schema<GetIncentivesRequest>,
+  output: __S(4515, __c141, 3) as any as S.Schema<ListIncentivesResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13223,8 +13247,8 @@ export const getIncentivesRecurring: API.OperationMethod<
   GetIncentivesRecurringError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(711, __c88, 7) as any as S.Schema<GetIncentivesRecurringRequest>,
-  output: __S(714, __c89, 2) as any as S.Schema<ListRecurringIncentivesResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<GetIncentivesRecurringRequest>,
+  output: __S(4547, __c142, 3) as any as S.Schema<ListRecurringIncentivesResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13238,8 +13262,8 @@ export const getJobTitleScreening: API.OperationMethod<
   GetJobTitleScreeningError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(715, __c89, 3) as any as S.Schema<GetJobTitleScreeningRequest>,
-  output: __S(720, __c90, 0) as any as S.Schema<JobTitleScreeningResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<GetJobTitleScreeningRequest>,
+  output: __S(4581, __c143, 5) as any as S.Schema<JobTitleScreeningResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13253,8 +13277,8 @@ export const getLeavePoliciesDetail: API.OperationMethod<
   GetLeavePoliciesDetailError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(721, __c90, 1) as any as S.Schema<GetLeavePoliciesDetailRequest>,
-  output: __S(549, __c68, 5) as any as S.Schema<ListLeavePoliciesDetailsResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<GetLeavePoliciesDetailRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<ListLeavePoliciesDetailsResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13268,8 +13292,8 @@ export const getLeavePoliciesSummary: API.OperationMethod<
   GetLeavePoliciesSummaryError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(722, __c90, 2) as any as S.Schema<GetLeavePoliciesSummaryRequest>,
-  output: __S(556, __c69, 4) as any as S.Schema<ListLeavePoliciesSummaryResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<GetLeavePoliciesSummaryRequest>,
+  output: __S(3045, __c95, 5) as any as S.Schema<ListLeavePoliciesSummaryResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13283,8 +13307,8 @@ export const getOffboarding: API.OperationMethod<
   GetOffboardingError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(723, __c90, 3) as any as S.Schema<GetOffboardingRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<OffboardingResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<GetOffboardingRequest>,
+  output: __S(10081, __c315, 1) as any as S.Schema<OffboardingResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13298,8 +13322,8 @@ export const getOffboardingById: API.OperationMethod<
   GetOffboardingByIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(724, __c90, 4) as any as S.Schema<GetOffboardingByIdRequest>,
-  output: __S(727, __c90, 7) as any as S.Schema<V2OffboardingResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<GetOffboardingByIdRequest>,
+  output: __S(4738, __c148, 2) as any as S.Schema<V2OffboardingResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13313,8 +13337,8 @@ export const getOffboardings: API.OperationMethod<
   GetOffboardingsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(728, __c91, 0) as any as S.Schema<GetOffboardingsRequest>,
-  output: __S(731, __c91, 3) as any as S.Schema<ListOffboardingResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<GetOffboardingsRequest>,
+  output: __S(4834, __c151, 2) as any as S.Schema<ListOffboardingResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13328,8 +13352,8 @@ export const getOffboardings2: API.OperationMethod<
   GetOffboardings2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(732, __c91, 4) as any as S.Schema<GetOffboardingsRequest2>,
-  output: __S(735, __c91, 7) as any as S.Schema<V2ListOffboardingResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<GetOffboardingsRequest2>,
+  output: __S(4867, __c152, 3) as any as S.Schema<V2ListOffboardingResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13347,8 +13371,8 @@ export const getOffboardingsEmployment: API.OperationMethod<
   GetOffboardingsEmploymentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c92, 0) as any as S.Schema<GetOffboardingsEmploymentRequest>,
-  output: __S(731, __c91, 3) as any as S.Schema<ListOffboardingResponse>,
+  input: __S(4896, __c153, 0) as any as S.Schema<GetOffboardingsEmploymentRequest>,
+  output: __S(4834, __c151, 2) as any as S.Schema<ListOffboardingResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13365,8 +13389,12 @@ export const getOnboardingEmploymentPreOnboardingDocument: API.OperationMethod<
   GetOnboardingEmploymentPreOnboardingDocumentError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(737, __c92, 1) as any as S.Schema<GetOnboardingEmploymentPreOnboardingDocumentRequest>,
-  output: __S(741, __c92, 5) as any as S.Schema<ShowPreOnboardingDocumentResponse>,
+  input: __S(
+    4928,
+    __c154,
+    0,
+  ) as any as S.Schema<GetOnboardingEmploymentPreOnboardingDocumentRequest>,
+  output: __S(4932, __c154, 4) as any as S.Schema<ShowPreOnboardingDocumentResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13384,11 +13412,11 @@ export const getOnboardingEmploymentPreOnboardingRequirements: API.OperationMeth
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    742,
-    __c92,
-    6,
+    4960,
+    __c155,
+    0,
   ) as any as S.Schema<GetOnboardingEmploymentPreOnboardingRequirementsRequest>,
-  output: __S(745, __c93, 1) as any as S.Schema<IndexPreOnboardingRequirementsResponse>,
+  output: __S(4963, __c155, 3) as any as S.Schema<IndexPreOnboardingRequirementsResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13402,8 +13430,8 @@ export const getPayItems: API.OperationMethod<
   GetPayItemsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(746, __c93, 2) as any as S.Schema<GetPayItemsRequest>,
-  output: __S(749, __c93, 5) as any as S.Schema<ListPayItemsResponse>,
+  input: __S(4992, __c156, 0) as any as S.Schema<GetPayItemsRequest>,
+  output: __S(4995, __c156, 3) as any as S.Schema<ListPayItemsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13417,8 +13445,8 @@ export const getPayrollCalendar: API.OperationMethod<
   GetPayrollCalendarError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(750, __c93, 6) as any as S.Schema<GetPayrollCalendarRequest>,
-  output: __S(756, __c94, 4) as any as S.Schema<PayrollCalendarsResponse>,
+  input: __S(5024, __c157, 0) as any as S.Schema<GetPayrollCalendarRequest>,
+  output: __S(5028, __c157, 4) as any as S.Schema<PayrollCalendarsResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13432,8 +13460,8 @@ export const getPayrollCalendars: API.OperationMethod<
   GetPayrollCalendarsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(757, __c94, 5) as any as S.Schema<GetPayrollCalendarsRequest>,
-  output: __S(761, __c95, 1) as any as S.Schema<PayrollCalendarsEORResponse>,
+  input: __S(5088, __c159, 0) as any as S.Schema<GetPayrollCalendarsRequest>,
+  output: __S(5092, __c159, 4) as any as S.Schema<PayrollCalendarsEORResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13447,8 +13475,8 @@ export const getPayrollRun: API.OperationMethod<
   GetPayrollRunError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(762, __c95, 2) as any as S.Schema<GetPayrollRunRequest>,
-  output: __S(767, __c95, 7) as any as S.Schema<PayrollRunResponse>,
+  input: __S(5120, __c160, 0) as any as S.Schema<GetPayrollRunRequest>,
+  output: __S(5122, __c160, 2) as any as S.Schema<PayrollRunResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13462,8 +13490,8 @@ export const getPayrollRunEmployeeDetails: API.OperationMethod<
   GetPayrollRunEmployeeDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c96, 0) as any as S.Schema<GetPayrollRunEmployeeDetailsRequest>,
-  output: __S(770, __c96, 2) as any as S.Schema<EmployeeDetailsResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<GetPayrollRunEmployeeDetailsRequest>,
+  output: __S(5250, __c164, 2) as any as S.Schema<EmployeeDetailsResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13477,8 +13505,8 @@ export const getPayrollRunGlReport: API.OperationMethod<
   GetPayrollRunGlReportError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(771, __c96, 3) as any as S.Schema<GetPayrollRunGlReportRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<GLReportResponse>,
+  input: __S(5280, __c165, 0) as any as S.Schema<GetPayrollRunGlReportRequest>,
+  output: __S(10434, __c326, 2) as any as S.Schema<GLReportResponse>,
   errors: [NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13492,8 +13520,8 @@ export const getPayrollRunGlReportDownload: API.OperationMethod<
   GetPayrollRunGlReportDownloadError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(772, __c96, 4) as any as S.Schema<GetPayrollRunGlReportDownloadRequest>,
-  output: __S(328, __c41, 0) as any as S.Schema<GetPayrollRunGlReportDownloadResponse>,
+  input: __S(5312, __c166, 0) as any as S.Schema<GetPayrollRunGlReportDownloadRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GetPayrollRunGlReportDownloadResponse>,
   errors: [NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13507,8 +13535,8 @@ export const getPayrollRuns: API.OperationMethod<
   GetPayrollRunsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(773, __c96, 5) as any as S.Schema<GetPayrollRunsRequest>,
-  output: __S(776, __c97, 0) as any as S.Schema<ListPayrollRunResponse>,
+  input: __S(5344, __c167, 0) as any as S.Schema<GetPayrollRunsRequest>,
+  output: __S(5347, __c167, 3) as any as S.Schema<ListPayrollRunResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13522,8 +13550,8 @@ export const getPayslipPdf: API.OperationMethod<
   GetPayslipPdfError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(777, __c97, 1) as any as S.Schema<GetPayslipPdfRequest>,
-  output: __S(778, __c97, 2) as any as S.Schema<GetPayslipPdfResponse>,
+  input: __S(5376, __c168, 0) as any as S.Schema<GetPayslipPdfRequest>,
+  output: __S(5377, __c168, 1) as any as S.Schema<GetPayslipPdfResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13537,8 +13565,8 @@ export const getPayslips: API.OperationMethod<
   GetPayslipsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(779, __c97, 3) as any as S.Schema<GetPayslipsRequest>,
-  output: __S(783, __c97, 7) as any as S.Schema<ListPayslipsResponse>,
+  input: __S(5408, __c169, 0) as any as S.Schema<GetPayslipsRequest>,
+  output: __S(5412, __c169, 4) as any as S.Schema<ListPayslipsResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13552,8 +13580,8 @@ export const getPricingPlanPartnerTemplates: API.OperationMethod<
   GetPricingPlanPartnerTemplatesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c98, 0) as any as S.Schema<GetPricingPlanPartnerTemplatesRequest>,
-  output: __S(788, __c98, 4) as any as S.Schema<ListPricingPlanPartnerTemplatesResponse>,
+  input: __S(5440, __c170, 0) as any as S.Schema<GetPricingPlanPartnerTemplatesRequest>,
+  output: __S(5444, __c170, 4) as any as S.Schema<ListPricingPlanPartnerTemplatesResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13567,8 +13595,8 @@ export const getProbationCompletionLetter: API.OperationMethod<
   GetProbationCompletionLetterError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(789, __c98, 5) as any as S.Schema<GetProbationCompletionLetterRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<ProbationCompletionLetterResponse>,
+  input: __S(5472, __c171, 0) as any as S.Schema<GetProbationCompletionLetterRequest>,
+  output: __S(10498, __c328, 2) as any as S.Schema<ProbationCompletionLetterResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13582,8 +13610,8 @@ export const getProbationExtension: API.OperationMethod<
   GetProbationExtensionError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(790, __c98, 6) as any as S.Schema<GetProbationExtensionRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<ProbationExtensionResponse>,
+  input: __S(5504, __c172, 0) as any as S.Schema<GetProbationExtensionRequest>,
+  output: __S(10562, __c330, 2) as any as S.Schema<ProbationExtensionResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13597,8 +13625,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(791, __c98, 7) as any as S.Schema<GetProjectRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<ProjectResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(10657, __c333, 1) as any as S.Schema<ProjectResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13612,8 +13640,8 @@ export const getProjectEligibleLeads: API.OperationMethod<
   GetProjectEligibleLeadsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(792, __c99, 0) as any as S.Schema<GetProjectEligibleLeadsRequest>,
-  output: __S(794, __c99, 2) as any as S.Schema<ListEligibleLeadsResponse>,
+  input: __S(5696, __c178, 0) as any as S.Schema<GetProjectEligibleLeadsRequest>,
+  output: __S(5698, __c178, 2) as any as S.Schema<ListEligibleLeadsResponse>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13627,8 +13655,8 @@ export const getProjects: API.OperationMethod<
   GetProjectsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(795, __c99, 3) as any as S.Schema<GetProjectsRequest>,
-  output: __S(798, __c99, 6) as any as S.Schema<ListProjectsResponse>,
+  input: __S(5728, __c179, 0) as any as S.Schema<GetProjectsRequest>,
+  output: __S(5731, __c179, 3) as any as S.Schema<ListProjectsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13642,8 +13670,8 @@ export const getResignation: API.OperationMethod<
   GetResignationError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(799, __c99, 7) as any as S.Schema<GetResignationRequest>,
-  output: __S(801, __c100, 1) as any as S.Schema<ResignationResponse>,
+  input: __S(5760, __c180, 0) as any as S.Schema<GetResignationRequest>,
+  output: __S(5762, __c180, 2) as any as S.Schema<ResignationResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13662,8 +13690,8 @@ export const getResignationResignationLetter: API.OperationMethod<
   GetResignationResignationLetterError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(802, __c100, 2) as any as S.Schema<GetResignationResignationLetterRequest>,
-  output: __S(803, __c100, 3) as any as S.Schema<GetResignationResignationLetterResponse>,
+  input: __S(5792, __c181, 0) as any as S.Schema<GetResignationResignationLetterRequest>,
+  output: __S(5793, __c181, 1) as any as S.Schema<GetResignationResignationLetterResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13677,8 +13705,8 @@ export const getScimGroup: API.OperationMethod<
   GetScimGroupError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(804, __c100, 4) as any as S.Schema<GetScimGroupRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<IntegrationsScimGroup>,
+  input: __S(5824, __c182, 0) as any as S.Schema<GetScimGroupRequest>,
+  output: __S(5858, __c183, 2) as any as S.Schema<IntegrationsScimGroup>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13692,8 +13720,8 @@ export const getScimGroups: API.OperationMethod<
   GetScimGroupsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(809, __c101, 1) as any as S.Schema<GetScimGroupsRequest>,
-  output: __S(811, __c101, 3) as any as S.Schema<IntegrationsScimGroupListResponse>,
+  input: __S(5920, __c185, 0) as any as S.Schema<GetScimGroupsRequest>,
+  output: __S(5922, __c185, 2) as any as S.Schema<IntegrationsScimGroupListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13707,8 +13735,8 @@ export const getScimUser: API.OperationMethod<
   GetScimUserError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(812, __c101, 4) as any as S.Schema<GetScimUserRequest>,
-  output: __S(818, __c102, 2) as any as S.Schema<IntegrationsScimUser>,
+  input: __S(5952, __c186, 0) as any as S.Schema<GetScimUserRequest>,
+  output: __S(5989, __c187, 5) as any as S.Schema<IntegrationsScimUser>,
   errors: [Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13722,8 +13750,8 @@ export const getScimUsers: API.OperationMethod<
   GetScimUsersError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(819, __c102, 3) as any as S.Schema<GetScimUsersRequest>,
-  output: __S(821, __c102, 5) as any as S.Schema<IntegrationsScimUserListResponse>,
+  input: __S(6016, __c188, 0) as any as S.Schema<GetScimUsersRequest>,
+  output: __S(6018, __c188, 2) as any as S.Schema<IntegrationsScimUserListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13737,8 +13765,8 @@ export const getSsoConfiguration: API.OperationMethod<
   GetSsoConfigurationError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(822, __c102, 6) as any as S.Schema<GetSsoConfigurationRequest>,
-  output: __S(824, __c103, 0) as any as S.Schema<SSOConfigurationResponse>,
+  input: __S(6048, __c189, 0) as any as S.Schema<GetSsoConfigurationRequest>,
+  output: __S(6050, __c189, 2) as any as S.Schema<SSOConfigurationResponse>,
   errors: [BadRequest, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13752,8 +13780,8 @@ export const getSsoConfigurationDetails: API.OperationMethod<
   GetSsoConfigurationDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(825, __c103, 1) as any as S.Schema<GetSsoConfigurationDetailsRequest>,
-  output: __S(827, __c103, 3) as any as S.Schema<SSOConfigurationDetailsResponse>,
+  input: __S(6080, __c190, 0) as any as S.Schema<GetSsoConfigurationDetailsRequest>,
+  output: __S(6082, __c190, 2) as any as S.Schema<SSOConfigurationDetailsResponse>,
   errors: [BadRequest, NotFound, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13767,8 +13795,8 @@ export const getTestSchema: API.OperationMethod<
   GetTestSchemaError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(828, __c103, 4) as any as S.Schema<GetTestSchemaRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<CompanyFormResponse>,
+  input: __S(6176, __c193, 0) as any as S.Schema<GetTestSchemaRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<CompanyFormResponse>,
   errors: [UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13782,8 +13810,8 @@ export const getTimeoff: API.OperationMethod<
   GetTimeoffError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(829, __c103, 5) as any as S.Schema<GetTimeoffRequest>,
-  output: __S(577, __c72, 1) as any as S.Schema<ListTimeoffResponse>,
+  input: __S(6208, __c194, 0) as any as S.Schema<GetTimeoffRequest>,
+  output: __S(3266, __c102, 2) as any as S.Schema<ListTimeoffResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13797,8 +13825,8 @@ export const getTimeoffById: API.OperationMethod<
   GetTimeoffByIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(830, __c103, 6) as any as S.Schema<GetTimeoffByIdRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<TimeoffResponse>,
+  input: __S(6240, __c195, 0) as any as S.Schema<GetTimeoffByIdRequest>,
+  output: __S(9217, __c288, 1) as any as S.Schema<TimeoffResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13812,8 +13840,8 @@ export const getTimeoffTypes: API.OperationMethod<
   GetTimeoffTypesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(831, __c103, 7) as any as S.Schema<GetTimeoffTypesRequest>,
-  output: __S(835, __c104, 3) as any as S.Schema<ListTimeoffTypesResponse>,
+  input: __S(6272, __c196, 0) as any as S.Schema<GetTimeoffTypesRequest>,
+  output: __S(6276, __c196, 4) as any as S.Schema<ListTimeoffTypesResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13827,8 +13855,8 @@ export const getTimesheet: API.OperationMethod<
   GetTimesheetError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(836, __c104, 4) as any as S.Schema<GetTimesheetRequest>,
-  output: __S(843, __c105, 3) as any as S.Schema<TimesheetResponse>,
+  input: __S(6304, __c197, 0) as any as S.Schema<GetTimesheetRequest>,
+  output: __S(6306, __c197, 2) as any as S.Schema<TimesheetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13842,8 +13870,8 @@ export const getTimesheets: API.OperationMethod<
   GetTimesheetsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(844, __c105, 4) as any as S.Schema<GetTimesheetsRequest>,
-  output: __S(847, __c105, 7) as any as S.Schema<ListTimesheetsResponse>,
+  input: __S(6368, __c199, 0) as any as S.Schema<GetTimesheetsRequest>,
+  output: __S(6371, __c199, 3) as any as S.Schema<ListTimesheetsResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13857,8 +13885,8 @@ export const getTravelLetterRequest: API.OperationMethod<
   GetTravelLetterRequestError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c106, 0) as any as S.Schema<GetTravelLetterRequestRequest>,
-  output: __S(852, __c106, 4) as any as S.Schema<TravelLetterResponse>,
+  input: __S(6400, __c200, 0) as any as S.Schema<GetTravelLetterRequestRequest>,
+  output: __S(6497, __c203, 1) as any as S.Schema<TravelLetterResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13872,8 +13900,8 @@ export const getTravelLetterRequests: API.OperationMethod<
   GetTravelLetterRequestsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(853, __c106, 5) as any as S.Schema<GetTravelLetterRequestsRequest>,
-  output: __S(856, __c107, 0) as any as S.Schema<ListTravelLettersResponse>,
+  input: __S(6528, __c204, 0) as any as S.Schema<GetTravelLetterRequestsRequest>,
+  output: __S(6531, __c204, 3) as any as S.Schema<ListTravelLettersResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13892,8 +13920,8 @@ export const getV1ContractorInvoicesIdPayInDetails: API.OperationMethod<
   GetV1ContractorInvoicesIdPayInDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(857, __c107, 1) as any as S.Schema<GetV1ContractorInvoicesIdPayInDetailsRequest>,
-  output: __S(863, __c107, 7) as any as S.Schema<ContractorInvoicePayInDetailsResponse>,
+  input: __S(6560, __c205, 0) as any as S.Schema<GetV1ContractorInvoicesIdPayInDetailsRequest>,
+  output: __S(6566, __c205, 6) as any as S.Schema<ContractorInvoicePayInDetailsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13907,8 +13935,8 @@ export const getWebhookEvents: API.OperationMethod<
   GetWebhookEventsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c108, 0) as any as S.Schema<GetWebhookEventsRequest>,
-  output: __S(868, __c108, 4) as any as S.Schema<ListWebhookEventsResponse>,
+  input: __S(6592, __c206, 0) as any as S.Schema<GetWebhookEventsRequest>,
+  output: __S(6596, __c206, 4) as any as S.Schema<ListWebhookEventsResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13922,8 +13950,8 @@ export const getWorkAuthorizationRequest: API.OperationMethod<
   GetWorkAuthorizationRequestError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(869, __c108, 5) as any as S.Schema<GetWorkAuthorizationRequestRequest>,
-  output: __S(872, __c109, 0) as any as S.Schema<WorkAuthorizationRequestResponse>,
+  input: __S(6656, __c208, 0) as any as S.Schema<GetWorkAuthorizationRequestRequest>,
+  output: __S(6721, __c210, 1) as any as S.Schema<WorkAuthorizationRequestResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13937,8 +13965,8 @@ export const getWorkAuthorizationRequests: API.OperationMethod<
   GetWorkAuthorizationRequestsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(873, __c109, 1) as any as S.Schema<GetWorkAuthorizationRequestsRequest>,
-  output: __S(876, __c109, 4) as any as S.Schema<ListWorkAuthorizationRequestsResponse>,
+  input: __S(6752, __c211, 0) as any as S.Schema<GetWorkAuthorizationRequestsRequest>,
+  output: __S(6755, __c211, 3) as any as S.Schema<ListWorkAuthorizationRequestsResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13956,8 +13984,8 @@ export const patchV1CompaniesCompanyId: API.OperationMethod<
   PatchV1CompaniesCompanyIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(877, __c109, 5) as any as S.Schema<PatchV1CompaniesCompanyIdRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CompanyResponse>,
+  input: __S(6784, __c212, 0) as any as S.Schema<PatchV1CompaniesCompanyIdRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<CompanyResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13975,8 +14003,8 @@ export const patchV1CompaniesCompanyId2: API.OperationMethod<
   PatchV1CompaniesCompanyId2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(878, __c109, 6) as any as S.Schema<PatchV1CompaniesCompanyId2Request>,
-  output: __S(9, __c1, 1) as any as S.Schema<CompanyResponse>,
+  input: __S(6816, __c213, 0) as any as S.Schema<PatchV1CompaniesCompanyId2Request>,
+  output: __S(513, __c16, 1) as any as S.Schema<CompanyResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -13994,8 +14022,8 @@ export const patchV1CompanyManagersUserId: API.OperationMethod<
   PatchV1CompanyManagersUserIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(881, __c110, 1) as any as S.Schema<PatchV1CompanyManagersUserIdRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<CompanyManagerResponse>,
+  input: __S(6848, __c214, 0) as any as S.Schema<PatchV1CompanyManagersUserIdRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<CompanyManagerResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14013,8 +14041,8 @@ export const patchV1CompanyManagersUserId2: API.OperationMethod<
   PatchV1CompanyManagersUserId2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(882, __c110, 2) as any as S.Schema<PatchV1CompanyManagersUserId2Request>,
-  output: __S(416, __c52, 0) as any as S.Schema<CompanyManagerResponse>,
+  input: __S(6912, __c216, 0) as any as S.Schema<PatchV1CompanyManagersUserId2Request>,
+  output: __S(1152, __c36, 0) as any as S.Schema<CompanyManagerResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14032,8 +14060,8 @@ export const patchV1ContractorInvoiceSchedulesId: API.OperationMethod<
   PatchV1ContractorInvoiceSchedulesIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(883, __c110, 3) as any as S.Schema<PatchV1ContractorInvoiceSchedulesIdRequest>,
-  output: __S(454, __c56, 6) as any as S.Schema<ContractorInvoiceScheduleResponse>,
+  input: __S(6944, __c217, 0) as any as S.Schema<PatchV1ContractorInvoiceSchedulesIdRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<ContractorInvoiceScheduleResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14051,8 +14079,8 @@ export const patchV1ContractorInvoiceSchedulesId2: API.OperationMethod<
   PatchV1ContractorInvoiceSchedulesId2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(884, __c110, 4) as any as S.Schema<PatchV1ContractorInvoiceSchedulesId2Request>,
-  output: __S(454, __c56, 6) as any as S.Schema<ContractorInvoiceScheduleResponse>,
+  input: __S(6976, __c218, 0) as any as S.Schema<PatchV1ContractorInvoiceSchedulesId2Request>,
+  output: __S(1633, __c51, 1) as any as S.Schema<ContractorInvoiceScheduleResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14071,11 +14099,11 @@ export const patchV1CustomFieldsCustomFieldIdValuesEmploymentId: API.OperationMe
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    885,
-    __c110,
-    5,
+    7008,
+    __c219,
+    0,
   ) as any as S.Schema<PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<EmploymentCustomFieldValueResponse>,
+  output: __S(2434, __c76, 2) as any as S.Schema<EmploymentCustomFieldValueResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14094,11 +14122,11 @@ export const patchV1CustomFieldsCustomFieldIdValuesEmploymentId2: API.OperationM
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    886,
-    __c110,
-    6,
+    7040,
+    __c220,
+    0,
   ) as any as S.Schema<PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2Request>,
-  output: __S(518, __c64, 6) as any as S.Schema<EmploymentCustomFieldValueResponse>,
+  output: __S(2434, __c76, 2) as any as S.Schema<EmploymentCustomFieldValueResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14116,8 +14144,8 @@ export const patchV1EmployeeTimeoffId: API.OperationMethod<
   PatchV1EmployeeTimeoffIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(887, __c110, 7) as any as S.Schema<PatchV1EmployeeTimeoffIdRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<TimeoffResponse>,
+  input: __S(7136, __c223, 0) as any as S.Schema<PatchV1EmployeeTimeoffIdRequest>,
+  output: __S(9217, __c288, 1) as any as S.Schema<TimeoffResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14135,8 +14163,8 @@ export const patchV1EmployeeTimeoffId2: API.OperationMethod<
   PatchV1EmployeeTimeoffId2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(888, __c111, 0) as any as S.Schema<PatchV1EmployeeTimeoffId2Request>,
-  output: __S(126, __c15, 6) as any as S.Schema<TimeoffResponse>,
+  input: __S(7168, __c224, 0) as any as S.Schema<PatchV1EmployeeTimeoffId2Request>,
+  output: __S(9217, __c288, 1) as any as S.Schema<TimeoffResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14155,8 +14183,8 @@ export const patchV1EmploymentsEmploymentId: API.OperationMethod<
   PatchV1EmploymentsEmploymentIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(889, __c111, 1) as any as S.Schema<PatchV1EmploymentsEmploymentIdRequest>,
-  output: __S(891, __c111, 3) as any as S.Schema<EmploymentResponse>,
+  input: __S(7200, __c225, 0) as any as S.Schema<PatchV1EmploymentsEmploymentIdRequest>,
+  output: __S(7233, __c226, 1) as any as S.Schema<EmploymentResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14175,8 +14203,8 @@ export const patchV1EmploymentsEmploymentId2: API.OperationMethod<
   PatchV1EmploymentsEmploymentId2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(892, __c111, 4) as any as S.Schema<PatchV1EmploymentsEmploymentId2Request>,
-  output: __S(891, __c111, 3) as any as S.Schema<EmploymentResponse>,
+  input: __S(7264, __c227, 0) as any as S.Schema<PatchV1EmploymentsEmploymentId2Request>,
+  output: __S(7233, __c226, 1) as any as S.Schema<EmploymentResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14195,8 +14223,8 @@ export const patchV1ExpensesId: API.OperationMethod<
   PatchV1ExpensesIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(893, __c111, 5) as any as S.Schema<PatchV1ExpensesIdRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<ExpenseResponse>,
+  input: __S(7296, __c228, 0) as any as S.Schema<PatchV1ExpensesIdRequest>,
+  output: __S(9729, __c304, 1) as any as S.Schema<ExpenseResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14215,8 +14243,8 @@ export const patchV1ExpensesId2: API.OperationMethod<
   PatchV1ExpensesId2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(894, __c111, 6) as any as S.Schema<PatchV1ExpensesId2Request>,
-  output: __S(151, __c18, 7) as any as S.Schema<ExpenseResponse>,
+  input: __S(7328, __c229, 0) as any as S.Schema<PatchV1ExpensesId2Request>,
+  output: __S(9729, __c304, 1) as any as S.Schema<ExpenseResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14235,8 +14263,8 @@ export const patchV1IncentivesId: API.OperationMethod<
   PatchV1IncentivesIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(895, __c111, 7) as any as S.Schema<PatchV1IncentivesIdRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<IncentiveResponse>,
+  input: __S(7360, __c230, 0) as any as S.Schema<PatchV1IncentivesIdRequest>,
+  output: __S(9857, __c308, 1) as any as S.Schema<IncentiveResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14255,8 +14283,8 @@ export const patchV1IncentivesId2: API.OperationMethod<
   PatchV1IncentivesId2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c112, 0) as any as S.Schema<PatchV1IncentivesId2Request>,
-  output: __S(157, __c19, 5) as any as S.Schema<IncentiveResponse>,
+  input: __S(7392, __c231, 0) as any as S.Schema<PatchV1IncentivesId2Request>,
+  output: __S(9857, __c308, 1) as any as S.Schema<IncentiveResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14275,8 +14303,8 @@ export const patchV1SandboxEmploymentsEmploymentId: API.OperationMethod<
   PatchV1SandboxEmploymentsEmploymentIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(897, __c112, 1) as any as S.Schema<PatchV1SandboxEmploymentsEmploymentIdRequest>,
-  output: __S(891, __c111, 3) as any as S.Schema<EmploymentResponse>,
+  input: __S(7424, __c232, 0) as any as S.Schema<PatchV1SandboxEmploymentsEmploymentIdRequest>,
+  output: __S(7233, __c226, 1) as any as S.Schema<EmploymentResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14295,8 +14323,8 @@ export const patchV1SandboxEmploymentsEmploymentId2: API.OperationMethod<
   PatchV1SandboxEmploymentsEmploymentId2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(898, __c112, 2) as any as S.Schema<PatchV1SandboxEmploymentsEmploymentId2Request>,
-  output: __S(891, __c111, 3) as any as S.Schema<EmploymentResponse>,
+  input: __S(7456, __c233, 0) as any as S.Schema<PatchV1SandboxEmploymentsEmploymentId2Request>,
+  output: __S(7233, __c226, 1) as any as S.Schema<EmploymentResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14310,8 +14338,8 @@ export const patchV1TimeoffId: API.OperationMethod<
   PatchV1TimeoffIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(899, __c112, 3) as any as S.Schema<PatchV1TimeoffIdRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<TimeoffResponse>,
+  input: __S(7520, __c235, 0) as any as S.Schema<PatchV1TimeoffIdRequest>,
+  output: __S(9217, __c288, 1) as any as S.Schema<TimeoffResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14325,8 +14353,8 @@ export const patchV1TimeoffId2: API.OperationMethod<
   PatchV1TimeoffId2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(900, __c112, 4) as any as S.Schema<PatchV1TimeoffId2Request>,
-  output: __S(126, __c15, 6) as any as S.Schema<TimeoffResponse>,
+  input: __S(7552, __c236, 0) as any as S.Schema<PatchV1TimeoffId2Request>,
+  output: __S(9217, __c288, 1) as any as S.Schema<TimeoffResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14340,8 +14368,8 @@ export const patchV1TravelLetterRequestsId: API.OperationMethod<
   PatchV1TravelLetterRequestsIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(901, __c112, 5) as any as S.Schema<PatchV1TravelLetterRequestsIdRequest>,
-  output: __S(852, __c106, 4) as any as S.Schema<TravelLetterResponse>,
+  input: __S(7584, __c237, 0) as any as S.Schema<PatchV1TravelLetterRequestsIdRequest>,
+  output: __S(6497, __c203, 1) as any as S.Schema<TravelLetterResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14355,8 +14383,8 @@ export const patchV1TravelLetterRequestsId2: API.OperationMethod<
   PatchV1TravelLetterRequestsId2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(902, __c112, 6) as any as S.Schema<PatchV1TravelLetterRequestsId2Request>,
-  output: __S(852, __c106, 4) as any as S.Schema<TravelLetterResponse>,
+  input: __S(7616, __c238, 0) as any as S.Schema<PatchV1TravelLetterRequestsId2Request>,
+  output: __S(6497, __c203, 1) as any as S.Schema<TravelLetterResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14373,8 +14401,8 @@ export const patchV1WorkAuthorizationRequestsId: API.OperationMethod<
   PatchV1WorkAuthorizationRequestsIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(903, __c112, 7) as any as S.Schema<PatchV1WorkAuthorizationRequestsIdRequest>,
-  output: __S(872, __c109, 0) as any as S.Schema<WorkAuthorizationRequestResponse>,
+  input: __S(7648, __c239, 0) as any as S.Schema<PatchV1WorkAuthorizationRequestsIdRequest>,
+  output: __S(6721, __c210, 1) as any as S.Schema<WorkAuthorizationRequestResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14391,8 +14419,8 @@ export const patchV1WorkAuthorizationRequestsId2: API.OperationMethod<
   PatchV1WorkAuthorizationRequestsId2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(904, __c113, 0) as any as S.Schema<PatchV1WorkAuthorizationRequestsId2Request>,
-  output: __S(872, __c109, 0) as any as S.Schema<WorkAuthorizationRequestResponse>,
+  input: __S(7680, __c240, 0) as any as S.Schema<PatchV1WorkAuthorizationRequestsId2Request>,
+  output: __S(6721, __c210, 1) as any as S.Schema<WorkAuthorizationRequestResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14411,8 +14439,8 @@ export const patchV2EmploymentsEmploymentId: API.OperationMethod<
   PatchV2EmploymentsEmploymentIdError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(905, __c113, 1) as any as S.Schema<PatchV2EmploymentsEmploymentIdRequest>,
-  output: __S(891, __c111, 3) as any as S.Schema<EmploymentResponse>,
+  input: __S(7712, __c241, 0) as any as S.Schema<PatchV2EmploymentsEmploymentIdRequest>,
+  output: __S(7233, __c226, 1) as any as S.Schema<EmploymentResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14431,8 +14459,8 @@ export const patchV2EmploymentsEmploymentId2: API.OperationMethod<
   PatchV2EmploymentsEmploymentId2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(906, __c113, 2) as any as S.Schema<PatchV2EmploymentsEmploymentId2Request>,
-  output: __S(891, __c111, 3) as any as S.Schema<EmploymentResponse>,
+  input: __S(7744, __c242, 0) as any as S.Schema<PatchV2EmploymentsEmploymentId2Request>,
+  output: __S(7233, __c226, 1) as any as S.Schema<EmploymentResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14446,8 +14474,8 @@ export const postV1CurrencyConverterEffective2: API.OperationMethod<
   PostV1CurrencyConverterEffective2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(907, __c113, 3) as any as S.Schema<PostV1CurrencyConverterEffective2Request>,
-  output: __S(104, __c13, 0) as any as S.Schema<ConvertCurrencyResponse>,
+  input: __S(7776, __c243, 0) as any as S.Schema<PostV1CurrencyConverterEffective2Request>,
+  output: __S(7106, __c222, 2) as any as S.Schema<ConvertCurrencyResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14465,11 +14493,11 @@ export const postV1EmploymentsEmploymentIdRiskReserveProofOfPayments: API.Operat
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    908,
-    __c113,
-    4,
+    7808,
+    __c244,
+    0,
   ) as any as S.Schema<PostV1EmploymentsEmploymentIdRiskReserveProofOfPaymentsRequest>,
-  output: __S(910, __c113, 6) as any as S.Schema<RiskReserveProofOfPaymentResponse>,
+  output: __S(7841, __c245, 1) as any as S.Schema<RiskReserveProofOfPaymentResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14488,11 +14516,11 @@ export const postV1SandboxEmploymentsEmploymentIdRiskReserveProofOfPaymentsAppro
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    911,
-    __c113,
-    7,
+    7936,
+    __c248,
+    0,
   ) as any as S.Schema<PostV1SandboxEmploymentsEmploymentIdRiskReserveProofOfPaymentsApproveRequest>,
-  output: __S(910, __c113, 6) as any as S.Schema<RiskReserveProofOfPaymentResponse>,
+  output: __S(7841, __c245, 1) as any as S.Schema<RiskReserveProofOfPaymentResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14510,8 +14538,12 @@ export const putCompanyLegalEntityAdministrativeDetails: API.OperationMethod<
   PutCompanyLegalEntityAdministrativeDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c114, 0) as any as S.Schema<PutCompanyLegalEntityAdministrativeDetailsRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<PutCompanyLegalEntityAdministrativeDetailsResponse>,
+  input: __S(7968, __c249, 0) as any as S.Schema<PutCompanyLegalEntityAdministrativeDetailsRequest>,
+  output: __S(
+    1024,
+    __c32,
+    0,
+  ) as any as S.Schema<PutCompanyLegalEntityAdministrativeDetailsResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14530,8 +14562,8 @@ export const putEmployeeAddress: API.OperationMethod<
   PutEmployeeAddressError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(913, __c114, 1) as any as S.Schema<PutEmployeeAddressRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8000, __c250, 0) as any as S.Schema<PutEmployeeAddressRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14550,8 +14582,8 @@ export const putEmployeeBankAccount: API.OperationMethod<
   PutEmployeeBankAccountError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(914, __c114, 2) as any as S.Schema<PutEmployeeBankAccountRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8032, __c251, 0) as any as S.Schema<PutEmployeeBankAccountRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14570,8 +14602,8 @@ export const putEmployeeEmergencyContact: API.OperationMethod<
   PutEmployeeEmergencyContactError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(915, __c114, 3) as any as S.Schema<PutEmployeeEmergencyContactRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8064, __c252, 0) as any as S.Schema<PutEmployeeEmergencyContactRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14590,8 +14622,8 @@ export const putEmployeeFederalTaxes: API.OperationMethod<
   PutEmployeeFederalTaxesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(916, __c114, 4) as any as S.Schema<PutEmployeeFederalTaxesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(8096, __c253, 0) as any as S.Schema<PutEmployeeFederalTaxesRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14610,8 +14642,8 @@ export const putEmployeePersonalDetails: API.OperationMethod<
   PutEmployeePersonalDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(917, __c114, 5) as any as S.Schema<PutEmployeePersonalDetailsRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8128, __c254, 0) as any as S.Schema<PutEmployeePersonalDetailsRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14630,8 +14662,8 @@ export const putEmployeeStateTax: API.OperationMethod<
   PutEmployeeStateTaxError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(918, __c114, 6) as any as S.Schema<PutEmployeeStateTaxRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(8160, __c255, 0) as any as S.Schema<PutEmployeeStateTaxRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14651,8 +14683,8 @@ export const putEmploymentAddressDetails: API.OperationMethod<
   PutEmploymentAddressDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(919, __c114, 7) as any as S.Schema<PutEmploymentAddressDetailsRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8192, __c256, 0) as any as S.Schema<PutEmploymentAddressDetailsRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14672,8 +14704,8 @@ export const putEmploymentAdministrativeDetails: API.OperationMethod<
   PutEmploymentAdministrativeDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(920, __c115, 0) as any as S.Schema<PutEmploymentAdministrativeDetailsRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8224, __c257, 0) as any as S.Schema<PutEmploymentAdministrativeDetailsRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14693,8 +14725,8 @@ export const putEmploymentBankAccountDetails: API.OperationMethod<
   PutEmploymentBankAccountDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(921, __c115, 1) as any as S.Schema<PutEmploymentBankAccountDetailsRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8352, __c261, 0) as any as S.Schema<PutEmploymentBankAccountDetailsRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14713,8 +14745,8 @@ export const putEmploymentBasicInformation: API.OperationMethod<
   PutEmploymentBasicInformationError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(922, __c115, 2) as any as S.Schema<PutEmploymentBasicInformationRequest>,
-  output: __S(891, __c111, 3) as any as S.Schema<EmploymentResponse>,
+  input: __S(8384, __c262, 0) as any as S.Schema<PutEmploymentBasicInformationRequest>,
+  output: __S(7233, __c226, 1) as any as S.Schema<EmploymentResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14733,8 +14765,8 @@ export const putEmploymentBasicInformation2: API.OperationMethod<
   PutEmploymentBasicInformation2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(923, __c115, 3) as any as S.Schema<PutEmploymentBasicInformationRequest2>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8416, __c263, 0) as any as S.Schema<PutEmploymentBasicInformationRequest2>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14752,8 +14784,8 @@ export const putEmploymentBenefitOffers: API.OperationMethod<
   PutEmploymentBenefitOffersError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(924, __c115, 4) as any as S.Schema<PutEmploymentBenefitOffersRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(8448, __c264, 0) as any as S.Schema<PutEmploymentBenefitOffersRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14773,8 +14805,8 @@ export const putEmploymentBillingAddressDetails: API.OperationMethod<
   PutEmploymentBillingAddressDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(925, __c115, 5) as any as S.Schema<PutEmploymentBillingAddressDetailsRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8480, __c265, 0) as any as S.Schema<PutEmploymentBillingAddressDetailsRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14794,8 +14826,8 @@ export const putEmploymentContractDetails: API.OperationMethod<
   PutEmploymentContractDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(926, __c115, 6) as any as S.Schema<PutEmploymentContractDetailsRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8512, __c266, 0) as any as S.Schema<PutEmploymentContractDetailsRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14815,8 +14847,8 @@ export const putEmploymentEmergencyContact: API.OperationMethod<
   PutEmploymentEmergencyContactError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(927, __c115, 7) as any as S.Schema<PutEmploymentEmergencyContactRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8544, __c267, 0) as any as S.Schema<PutEmploymentEmergencyContactRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14836,8 +14868,8 @@ export const putEmploymentFederalTaxes: API.OperationMethod<
   PutEmploymentFederalTaxesError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c116, 0) as any as S.Schema<PutEmploymentFederalTaxesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(8576, __c268, 0) as any as S.Schema<PutEmploymentFederalTaxesRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14857,8 +14889,8 @@ export const putEmploymentFederalTaxes2: API.OperationMethod<
   PutEmploymentFederalTaxes2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(929, __c116, 1) as any as S.Schema<PutEmploymentFederalTaxesRequest2>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(8608, __c269, 0) as any as S.Schema<PutEmploymentFederalTaxesRequest2>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14877,8 +14909,8 @@ export const putEmploymentPersonalDetails: API.OperationMethod<
   PutEmploymentPersonalDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(930, __c116, 2) as any as S.Schema<PutEmploymentPersonalDetailsRequest>,
-  output: __S(891, __c111, 3) as any as S.Schema<EmploymentResponse>,
+  input: __S(8640, __c270, 0) as any as S.Schema<PutEmploymentPersonalDetailsRequest>,
+  output: __S(7233, __c226, 1) as any as S.Schema<EmploymentResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14898,8 +14930,8 @@ export const putEmploymentPersonalDetails2: API.OperationMethod<
   PutEmploymentPersonalDetails2Error,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(931, __c116, 3) as any as S.Schema<PutEmploymentPersonalDetailsRequest2>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8704, __c272, 0) as any as S.Schema<PutEmploymentPersonalDetailsRequest2>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14919,8 +14951,8 @@ export const putEmploymentPricingPlanDetails: API.OperationMethod<
   PutEmploymentPricingPlanDetailsError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(932, __c116, 4) as any as S.Schema<PutEmploymentPricingPlanDetailsRequest>,
-  output: __S(528, __c66, 0) as any as S.Schema<EmploymentDetailsOnlyResponse>,
+  input: __S(8736, __c273, 0) as any as S.Schema<PutEmploymentPricingPlanDetailsRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<EmploymentDetailsOnlyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14938,8 +14970,8 @@ export const putResignationValidate: API.OperationMethod<
   PutResignationValidateError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(933, __c116, 5) as any as S.Schema<PutResignationValidateRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(8768, __c274, 0) as any as S.Schema<PutResignationValidateRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14957,8 +14989,8 @@ export const putSandboxCompanyDefaultLegalEntity: API.OperationMethod<
   PutSandboxCompanyDefaultLegalEntityError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(934, __c116, 6) as any as S.Schema<PutSandboxCompanyDefaultLegalEntityRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(8800, __c275, 0) as any as S.Schema<PutSandboxCompanyDefaultLegalEntityRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14976,8 +15008,8 @@ export const putSandboxContractAmendmentApprove: API.OperationMethod<
   PutSandboxContractAmendmentApproveError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(935, __c116, 7) as any as S.Schema<PutSandboxContractAmendmentApproveRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ContractAmendmentResponse>,
+  input: __S(8832, __c276, 0) as any as S.Schema<PutSandboxContractAmendmentApproveRequest>,
+  output: __S(1220, __c38, 4) as any as S.Schema<ContractAmendmentResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -14995,8 +15027,8 @@ export const putSandboxContractAmendmentCancel: API.OperationMethod<
   PutSandboxContractAmendmentCancelError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(936, __c117, 0) as any as S.Schema<PutSandboxContractAmendmentCancelRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(8864, __c277, 0) as any as S.Schema<PutSandboxContractAmendmentCancelRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -15010,8 +15042,8 @@ export const updateBenefitRenewalRequest: API.OperationMethod<
   UpdateBenefitRenewalRequestError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(937, __c117, 1) as any as S.Schema<UpdateBenefitRenewalRequestRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(8896, __c278, 0) as any as S.Schema<UpdateBenefitRenewalRequestRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -15025,8 +15057,8 @@ export const updateCancelOnboarding: API.OperationMethod<
   UpdateCancelOnboardingError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(938, __c117, 2) as any as S.Schema<UpdateCancelOnboardingRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SuccessResponse>,
+  input: __S(8928, __c279, 0) as any as S.Schema<UpdateCancelOnboardingRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<SuccessResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -15046,8 +15078,8 @@ export const updatePayItem: API.OperationMethod<
   UpdatePayItemError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(939, __c117, 3) as any as S.Schema<UpdatePayItemRequest>,
-  output: __S(941, __c117, 5) as any as S.Schema<PayItemResponse>,
+  input: __S(8960, __c280, 0) as any as S.Schema<UpdatePayItemRequest>,
+  output: __S(8962, __c280, 2) as any as S.Schema<PayItemResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -15061,8 +15093,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(942, __c117, 6) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<ProjectResponse>,
+  input: __S(8992, __c281, 0) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(10657, __c333, 1) as any as S.Schema<ProjectResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -15076,8 +15108,8 @@ export const updateWebhookCallback: API.OperationMethod<
   UpdateWebhookCallbackError,
   RemoteOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(943, __c117, 7) as any as S.Schema<UpdateWebhookCallbackRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<WebhookCallbackResponse>,
+  input: __S(9120, __c285, 0) as any as S.Schema<UpdateWebhookCallbackRequest>,
+  output: __S(11681, __c365, 1) as any as S.Schema<WebhookCallbackResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownRemoteError],
   protocol: RemoteProtocol,
   retry: Retry.Retry,
@@ -15089,64 +15121,528 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/auth/oauth2/token", code: 200 })),
+          actions: S.optional(S.String.pipe(T.Query())),
+          company_id: S.optional(S.String),
+          email: S.String,
+          name: S.String,
+          role: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/company-managers", code: 200 })),
       ).annotate({
-        identifier: "CreateAuthOauth2TokenRequest",
+        identifier: "CreateCompanyManagerRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          is_pending_primary_billing_contact: S.Boolean,
+          is_primary_billing_contact: S.Boolean,
+          legal_entity_slug: S.String,
+        }),
+      ).annotate({
+        identifier: "CompanyManagerBillingContactStatus",
       });
     case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateAuthOauth2TokenResponse",
+      return S.Array(__S(32, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          billing_contacts: __S(33, __c1, 1),
+          company_id: S.String,
+          role: S.String,
+          user_email: S.String,
+          user_id: S.String,
+          user_name: S.String,
+        }),
+      ).annotate({ identifier: "CompanyManager" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company_manager: __S(34, __c1, 2),
+        }),
+      ).annotate({ identifier: "CompanyManagerData" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billing_document_id: S.String.pipe(T.Label()),
+          company_id: S.optional(S.String.pipe(T.Query())),
+          include_unrecognized_types: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/billing-documents/{billing_document_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetBillingDocumentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          billing_document_amount: S.Number,
+          billing_document_currency: S.NullOr(S.String),
+          employment_id: S.optional(S.NullOr(S.String)),
+          source_amount: S.optional(S.Number),
+          source_currency: S.optional(S.NullOr(S.String)),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "BillingDocumentAmountItem",
+      });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          billing_document_currency: S.String,
+          billing_document_number: S.String,
+          billing_document_period: S.String,
+          billing_document_type: S.String,
+          company_id: S.String,
+          id: S.String,
+          issued_date: S.String,
+          items: __S(98, __c3, 2),
+          total: S.Number,
+        }),
+      ).annotate({ identifier: "BillingDocument" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          billing_document: __S(99, __c3, 3),
+        }),
+      ).annotate({
+        identifier: "BillingDocumentResponseData",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(100, __c3, 4),
+        }),
+      ).annotate({ identifier: "BillingDocumentResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billing_document_id: S.String.pipe(T.Label()),
+          type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/billing-documents/{billing_document_id}/breakdown",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBillingDocumentBreakdownRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          country_code: S.NullOr(S.String),
+          description: S.String,
+          employment_id: S.NullOr(S.String),
+          fx_rate: S.String,
+          invoice_amount: S.Number,
+          invoice_currency: S.NullOr(S.String),
+          invoice_number: S.String,
+          invoice_period: S.String,
+          source_amount: S.Number,
+          source_currency: S.NullOr(S.String),
+          type: S.String,
+          variance_from_invoice: S.NullOr(S.String),
+          variance_from_invoice_amount: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "BillingDocumentBreakdownItem",
+      });
+    case 2:
+      return S.Array(__S(129, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          billing_document_breakdown: __S(130, __c4, 2),
+        }),
+      ).annotate({
+        identifier: "BillingDocumentBreakdownResponseData",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(131, __c4, 3),
+        }),
+      ).annotate({
+        identifier: "BillingDocumentBreakdownResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billing_document_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/billing-documents/{billing_document_id}/pdf",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBillingDocumentPdfRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetBillingDocumentPdfResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          period: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          page_size: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/billing-documents", code: 200 })),
+      ).annotate({
+        identifier: "GetBillingDocumentsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bill_from: S.optional(S.NullOr(S.String)),
+          billing_document_period: S.optional(S.String),
+          billing_document_type: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BillingDocumentsResponseDataBillingDocumentsItem",
+      });
+    case 2:
+      return S.Array(__S(225, __c7, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          billing_documents: __S(226, __c7, 2),
+          current_page: S.Number,
+          total_count: S.Number,
+          total_pages: S.Number,
+        }),
+      ).annotate({
+        identifier: "BillingDocumentsResponseData",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(227, __c7, 3),
+        }),
+      ).annotate({ identifier: "BillingDocumentsResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          job_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/bulk-employment-jobs/{job_id}", code: 200 })),
+      ).annotate({
+        identifier: "GetBulkEmploymentJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          index: S.Number,
+          name: S.String,
+          sample_data: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "BulkEmploymentImportJobColumnMappingSourceColumnsItem",
+      });
+    case 2:
+      return S.Array(__S(257, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          auto_mapped_columns: S.optional(__S(704, __c22, 0)),
+          mapping: S.Unknown,
+          source_columns: __S(258, __c8, 2),
+          unmapped_column_count: S.Number,
+          unmapped_required_field_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "BulkEmploymentImportJobColumnMapping",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BulkEmploymentImportJobLegalEntity",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          column_mapping: S.optional(S.NullOr(__S(259, __c8, 3))),
+          display_name: S.optional(S.String),
+          errors: S.optional(__S(704, __c22, 0)),
+          failed_count: S.Number,
+          finished_at: S.NullOr(S.String),
+          id: S.String,
+          imported_count: S.optional(S.Number),
+          inserted_at: S.String,
+          inserted_by: S.Unknown,
+          legal_entity: S.optional(S.NullOr(__S(260, __c8, 4))),
+          metadata: S.Unknown,
+          name: S.String,
+          processed_count: S.Number,
+          stage: S.String,
+          status: S.String,
+          total_count: S.Number,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "BulkEmploymentImportJob" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(261, __c8, 5),
+        }),
+      ).annotate({
+        identifier: "BulkEmploymentImportJobResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          job_id: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          page_size: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/bulk-employment-jobs/{job_id}/rows", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetBulkEmploymentJobRowsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          failed_to_assign: S.Number,
+          job_stage: S.String,
+          needs_changes: S.Number,
+          ready_to_submit: S.Number,
+          successfully_assigned: S.Number,
+          total: S.Number,
+        }),
+      ).annotate({
+        identifier: "ImportJobRowsResponseDataAggregatesTeamMemberCounts",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          activate_global_payroll: S.optional(S.Boolean),
-          send_invitation: S.optional(S.Boolean),
+          team_member_counts: S.optional(__S(289, __c9, 1)),
         }),
       ).annotate({
-        identifier: "BulkEmploymentEmployeePayload",
+        identifier: "ImportJobRowsResponseDataAggregates",
       });
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          country_code: S.String,
-          employees: __S(3, __c0, 3),
-          send_invitation: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/bulk-employment-jobs", code: 200 })),
+          error: S.Number,
+          valid: S.Number,
+        }),
       ).annotate({
-        identifier: "CreateBulkEmploymentJobRequest",
+        identifier: "ImportJobRowsResponseDataCountsByColumnValue",
       });
+    case 4:
+      return S.Record(S.String, __S(291, __c9, 3));
     case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateBulkEmploymentJobResponse",
+      return S.suspend(() =>
+        S.Struct({
+          deleted: S.Number,
+          error: S.Number,
+          imported: S.Number,
+          pending: S.Number,
+          retryable: S.Number,
+          skipped: S.Number,
+          successful: S.Number,
+          unprocessable: S.Number,
+        }),
+      ).annotate({
+        identifier: "ImportJobRowsResponseDataCountsByStatus",
       });
     case 6:
+      return S.Record(S.String, S.Unknown);
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          address_details_json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
-          bank_account_details_json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
-          action: S.optional(S.String.pipe(T.Query())),
-          async: S.optional(S.Boolean.pipe(T.Query())),
-          scope: S.optional(S.String.pipe(T.Query())),
-          address_details: S.optional(S.Unknown),
-          bank_account_details: S.optional(S.Unknown),
-          company_owner_email: S.String,
-          company_owner_name: S.String,
-          country_code: S.String,
-          desired_currency: S.String,
-          email_domain: S.optional(S.String),
-          external_id: S.optional(S.String),
+          registered: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ImportJobRowMetadataLoginEmailSignalsPersonal",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          personal: S.optional(__S(295, __c9, 7)),
+          sso_enforced: S.optional(S.Boolean),
+          work: S.optional(__S(295, __c9, 7)),
+        }),
+      ).annotate({
+        identifier: "ImportJobRowMetadataLoginEmailSignals",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          login_email_signals: S.optional(__S(296, __c9, 8)),
+        }),
+      ).annotate({ identifier: "ImportJobRowMetadata" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
           name: S.String,
-          phone_number: S.optional(S.String),
-          terms_of_service_accepted_at: S.String,
-          tax_number: S.optional(S.String),
-          registration_number: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/companies", code: 200 })),
-      ).annotate({ identifier: "CreateCompanyRequest" });
-    case 7:
+          slug: S.String,
+        }),
+      ).annotate({
+        identifier: "ImportJobRowRowErrorDetailsAmbiguousItemCreatedBy",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.NullOr(S.Number),
+          created_by: S.NullOr(__S(298, __c9, 10)),
+          effective_date: S.NullOr(S.String),
+          employee_identifier: S.NullOr(S.String),
+          end_date: S.NullOr(S.String),
+          inserted_at: S.NullOr(S.String),
+          occurrence: S.NullOr(S.String),
+          pay_item: S.NullOr(S.String),
+          slug: S.String,
+        }),
+      ).annotate({
+        identifier: "ImportJobRowRowErrorDetailsAmbiguousItem",
+      });
+    case 12:
+      return S.Array(__S(299, __c9, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          ambiguous: S.optional(__S(300, __c9, 12)),
+        }),
+      ).annotate({
+        identifier: "ImportJobRowRowErrorDetails",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(S.NullOr(S.String)),
+          field_name: S.optional(S.NullOr(S.String)),
+          messages: __S(704, __c22, 0),
+        }),
+      ).annotate({ identifier: "ImportJobRowError" });
+    case 15:
+      return S.Array(__S(302, __c9, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(320, __c10, 0),
+          errors: __S(294, __c9, 6),
+          metadata: S.optional(__S(297, __c9, 9)),
+          row_error_details: S.optional(__S(301, __c9, 13)),
+          row_errors: S.optional(S.Unknown),
+          row_number: S.Number,
+          schema_variant_id: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+          submission_errors: S.optional(__S(303, __c9, 15)),
+        }),
+      ).annotate({ identifier: "ImportJobRow" });
+    case 17:
+      return S.Array(__S(304, __c9, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          failures: __S(305, __c9, 17),
+          imported: __S(305, __c9, 17),
+          pending: __S(305, __c9, 17),
+          retryable: __S(305, __c9, 17),
+          skipped: __S(305, __c9, 17),
+          successes: __S(305, __c9, 17),
+          unprocessable: __S(305, __c9, 17),
+        }),
+      ).annotate({
+        identifier: "ImportJobRowsResponseDataRows",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          aggregates: S.optional(__S(290, __c9, 2)),
+          counts_by_column: S.optional(__S(292, __c9, 4)),
+          counts_by_status: __S(293, __c9, 5),
+          current_page: S.Number,
+          ordered_rows: S.optional(__S(2112, __c66, 0)),
+          rows: __S(306, __c9, 18),
+          total_count: S.Number,
+          total_pages: S.Number,
+        }),
+      ).annotate({
+        identifier: "ImportJobRowsResponseData",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(307, __c9, 19),
+        }),
+      ).annotate({ identifier: "ImportJobRowsResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/companies", code: 200 })),
+      ).annotate({ identifier: "GetCompaniesRequest" });
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          companies: S.optional(__S(353, __c11, 1)),
+        }),
+      ).annotate({ identifier: "CompaniesResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           address_details: S.Unknown,
@@ -15171,116 +15667,93 @@ function __c0(j: number): any {
       ).annotate({ identifier: "Company" });
   }
 }
-function __c1(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          company: S.optional(__S(7, __c0, 7)),
+          country_code: S.String.pipe(T.Query()),
+          form: S.String.pipe(T.Query()),
+          json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/companies/schema", code: 200 })),
+      ).annotate({
+        identifier: "GetCompaniesSchemaRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "CompanyFormResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/companies/{company_id}", code: 200 })),
+      ).annotate({ identifier: "GetCompanyRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({ identifier: "CompanyResponseData" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(8, __c1, 0),
+          data: __S(512, __c16, 0),
         }),
       ).annotate({ identifier: "CompanyResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "CompanyCreationResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          company_id: S.String.pipe(T.Label()),
-          scope: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/companies/{company_id}/create-token", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateCompanyCreateTokenRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          access_token: S.String.pipe(T.SensitiveValue({})),
-          expires_in: S.Number,
-          refresh_token: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({ identifier: "CompanyTokenResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          company_id: S.String,
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/company-departments", code: 200 })),
-      ).annotate({
-        identifier: "CreateCompanyDepartmentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          company_id: S.String,
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "CompanyDepartment" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          company_department: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "CompanyDepartmentCreatedResponse",
-      });
   }
 }
-function __c2(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(S.String.pipe(T.Query())),
-          company_id: S.optional(S.String),
-          email: S.String,
-          name: S.String,
-          role: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/company-managers", code: 200 })),
-      ).annotate({
-        identifier: "CreateCompanyManagerRequest",
-      });
+          company_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/companies/{company_id}/actions", code: 200 })),
+      ).annotate({ identifier: "GetCompanyActionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          is_pending_primary_billing_contact: S.Boolean,
-          is_primary_billing_contact: S.Boolean,
-          legal_entity_slug: S.String,
+          legal_entity_id: S.optional(S.NullOr(S.String)),
+          required: S.Boolean,
+          type: S.String,
         }),
-      ).annotate({
-        identifier: "CompanyManagerBillingContactStatus",
-      });
+      ).annotate({ identifier: "CompanyAction" });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(545, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          billing_contacts: __S(18, __c2, 2),
-          company_id: S.String,
-          role: S.String,
-          user_email: S.String,
-          user_id: S.String,
-          user_name: S.String,
+          actions: S.optional(__S(546, __c17, 2)),
         }),
-      ).annotate({ identifier: "CompanyManager" });
+      ).annotate({
+        identifier: "CompanyActionsResponseData",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          company_manager: __S(19, __c2, 3),
+          data: __S(547, __c17, 3),
         }),
-      ).annotate({ identifier: "CompanyManagerData" });
-    case 5:
+      ).annotate({ identifier: "CompanyActionsResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -15291,1332 +15764,22 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateCompanyPricingPlanRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          name: S.String,
-          symbol: S.String,
-        }),
-      ).annotate({ identifier: "CurrencyDefinition" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          currency: __S(22, __c2, 6),
-        }),
-      ).annotate({ identifier: "Price" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(S.String),
-          features: S.optional(__S(24, __c3, 0)),
-          frequency: S.String,
-          identifier: S.optional(S.String),
-          name: S.String,
-          short_name: S.optional(S.String),
-          tier: S.String,
-        }),
-      ).annotate({ identifier: "Product" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          base_price: __S(23, __c2, 7),
-          end_date: S.NullOr(S.String),
-          id: S.String,
-          price: __S(23, __c2, 7),
-          product: __S(25, __c3, 1),
-          start_date: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "PricingPlan" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pricing_plan: __S(26, __c3, 2),
+          pricing_plan: __S(608, __c19, 0),
         }),
       ).annotate({
         identifier: "CreatePricingPlanResponseData",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(27, __c3, 3),
+          data: __S(577, __c18, 1),
         }),
       ).annotate({
         identifier: "CreatePricingPlanResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
-          amendment_contract_id: S.String,
-          contract_amendment: S.Unknown,
-          employment_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/contract-amendments", code: 200 })),
-      ).annotate({
-        identifier: "CreateContractAmendmentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          salary_decrease_reason: S.optional(S.String),
-          salary_decrease_reason_description: S.optional(S.NullOr(S.String)),
-          was_employee_informed: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SalaryDecreaseDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          additional_comments: S.optional(S.NullOr(S.String)),
-          effective_date: S.optional(S.String),
-          reason_for_change: S.optional(S.NullOr(S.String)),
-          reason_for_change_description: S.optional(S.NullOr(S.String)),
-          salary_decrease_details: S.optional(S.NullOr(__S(30, __c3, 6))),
-        }),
-      ).annotate({ identifier: "RequestDetails" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          amendment_contract_id: S.NullOr(S.String),
-          changes: S.Unknown,
-          employment_id: S.String,
-          id: S.String,
-          request_details: __S(31, __c3, 7),
-          requested_by: S.String,
-          status: S.String,
-          submitted_at: S.String,
-          zendesk_ticket_url: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ContractAmendment" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          contract_amendment: __S(32, __c4, 0),
-        }),
-      ).annotate({
-        identifier: "ContractAmendmentResponseData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "ContractAmendmentResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
-          amendment_contract_id: S.String,
-          contract_amendment: S.Unknown,
-          employment_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/contract-amendments/automatable", code: 200 })),
-      ).annotate({
-        identifier: "CreateContractAmendmentsAutomatableRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          automatable: S.optional(S.Boolean),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContractAmendmentAutomatableResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "ContractAmendmentAutomatableResponse",
-      });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          description: S.String,
-        }),
-      ).annotate({
-        identifier: "ContractorInvoiceScheduleItem",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.NullOr(S.String),
-          custom_days: S.optional(S.NullOr(__S(38, __c4, 6))),
-          employment_id: S.String,
-          items: __S(40, __c5, 0),
-          note: S.optional(S.String),
-          nr_occurrences: S.optional(S.Number),
-          number: S.optional(S.String),
-          periodicity: S.String,
-          start_date: S.String,
-        }),
-      ).annotate({
-        identifier: "ContractorInvoiceScheduleCreateParams",
-      });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          contractor_invoice_schedules: __S(42, __c5, 2),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/contractor-invoice-schedules", code: 200 })),
-      ).annotate({
-        identifier: "CreateContractorInvoiceScheduleRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(__S(44, __c5, 4)),
-          description: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItem",
-      });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.optional(__S(44, __c5, 4)),
-          custom_days: S.optional(__S(44, __c5, 4)),
-          employment_id: S.optional(__S(44, __c5, 4)),
-          items: S.optional(__S(46, __c5, 6)),
-          note: S.optional(__S(24, __c3, 0)),
-          nr_occurrences: S.optional(__S(44, __c5, 4)),
-          number: S.optional(__S(24, __c3, 0)),
-          periodicity: S.optional(__S(44, __c5, 4)),
-          start_date: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "ContractorInvoiceScheduleCreateResponseFailureErrors",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.NullOr(S.String),
-          custom_days: S.optional(S.NullOr(__S(38, __c4, 6))),
-          employment_id: S.String,
-          errors: __S(47, __c5, 7),
-          items: __S(40, __c5, 0),
-          note: S.optional(S.String),
-          nr_occurrences: S.optional(S.Number),
-          number: S.optional(S.String),
-          periodicity: S.String,
-          start_date: S.String,
-        }),
-      ).annotate({
-        identifier: "ContractorInvoiceScheduleCreateResponseFailure",
-      });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.NullOr(S.String),
-          custom_days: S.optional(S.NullOr(__S(38, __c4, 6))),
-          employment_id: S.String,
-          id: S.String,
-          items: __S(40, __c5, 0),
-          note: S.optional(S.String),
-          nr_occurrences: S.optional(S.Number),
-          number: S.optional(S.String),
-          periodicity: S.String,
-          start_date: S.String,
-        }),
-      ).annotate({
-        identifier: "ContractorInvoiceScheduleCreateResponseSuccess",
-      });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          failures: __S(49, __c6, 1),
-          successes: __S(51, __c6, 3),
-        }),
-      ).annotate({
-        identifier: "CreateContractorInvoiceScheduleResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(52, __c6, 4),
-        }),
-      ).annotate({
-        identifier: "CreateContractorInvoiceScheduleResponse",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
-          employment_slug: S.String,
-          responses: __S(54, __c6, 6),
-          type: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/contractors/eligibility-questionnaire", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateContractorsEligibilityQuestionnaireRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          is_blocking: S.Boolean,
-          questions: S.Unknown,
-          responses: S.Unknown,
-          slug: S.String,
-          submitted_at: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "EligibilityQuestionnaire" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(56, __c7, 0),
-        }),
-      ).annotate({
-        identifier: "EligibilityQuestionnaireResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          contract_document: S.Unknown,
-          skip_ai_checks: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/contractors/employments/{employment_id}/contract-documents",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateContractorsEmploymentContractDocumentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          status: S.String,
-        }),
-      ).annotate({ identifier: "ContractDocument" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          contract_document: __S(59, __c7, 3),
-        }),
-      ).annotate({
-        identifier: "CreateContractDocumentResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(60, __c7, 4),
-        }),
-      ).annotate({
-        identifier: "CreateContractDocumentResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          contract_document_id: S.String.pipe(T.Label()),
-          signature: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/contractors/employments/{employment_id}/contract-documents/{contract_document_id}/sign",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateContractorsEmploymentContractDocumentSignRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SuccessResponseData" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(63, __c7, 7),
-        }),
-      ).annotate({ identifier: "SuccessResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/contractors/employments/{employment_id}/contractor-cor-subscription",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateContractorsEmploymentContractorCorSubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          operation: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/contractors/employments/{employment_id}/contractor-plus-subscription",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateContractorsEmploymentContractorPlusSubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/contractors/employments/{employment_id}/cor-termination-requests",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateContractorsEmploymentCorTerminationRequestRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          employment_deactivation_date: S.NullOr(S.String),
-          id: S.String,
-          status: S.String,
-          termination_date: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CorTerminationRequestCreatedResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(68, __c8, 4),
-        }),
-      ).annotate({
-        identifier: "CorTerminationRequestCreatedResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          clock_in: S.String,
-          clock_out: S.String,
-          notes: S.optional(S.NullOr(S.String)),
-          timezone: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ContractorTimeTrackingParams",
-      });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          end_date: S.String,
-          start_date: S.String,
-          time_trackings: __S(71, __c8, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/contractors/employments/{employment_id}/timesheets",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateContractorsEmploymentTimesheetRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hours: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HoursAndMinutes" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          clock_in: S.String,
-          clock_out: S.String,
-          notes: S.NullOr(S.String),
-          timezone: S.String,
-          total_hours: __S(73, __c9, 1),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "ContractorTimeTracking" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          break_hours: __S(73, __c9, 1),
-          country_code: S.String,
-          employment_id: S.String,
-          end_date: S.String,
-          id: S.String,
-          notes: S.NullOr(S.String),
-          on_call_hours: __S(73, __c9, 1),
-          regular_hours: __S(73, __c9, 1),
-          start_date: S.String,
-          submitted_at: S.NullOr(S.String),
-          time_trackings: __S(75, __c9, 3),
-          total_hours: __S(73, __c9, 1),
-        }),
-      ).annotate({ identifier: "ContractorTimesheet" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          timesheet: __S(76, __c9, 4),
-        }),
-      ).annotate({
-        identifier: "ContractorTimesheetResponseData",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "ContractorTimesheetResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_group_slug: S.String,
-          benefit_tier_slug: S.String,
-        }),
-      ).annotate({
-        identifier: "CostCalculatorBenefitParam",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(S.Number),
-          months: S.optional(S.Number),
-          percent: S.optional(S.Number),
-          quoted_amount: S.optional(S.Number),
-          text: S.String,
-        }),
-      ).annotate({ identifier: "CostCalculatorDiscount" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          age: S.optional(S.Number),
-          annual_gross_salary: S.optional(S.Number),
-          annual_gross_salary_in_employer_currency: S.optional(S.Number),
-          annual_total_cost: S.optional(S.Number),
-          annual_total_cost_in_employer_currency: S.optional(S.Number),
-          benefits: S.optional(__S(80, __c10, 0)),
-          discount: S.optional(__S(81, __c10, 1)),
-          employment_term: S.optional(S.String),
-          region_slug: S.String,
-          regional_to_employer_exchange_rate: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CostCalculatorEmploymentParam",
-      });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          company_name: S.optional(S.String),
-          employer_currency_slug: S.String,
-          employments: __S(83, __c10, 3),
-          global_discount: S.optional(__S(81, __c10, 1)),
-          include_benefits: S.optional(S.Boolean),
-          include_cost_breakdowns: S.optional(S.Boolean),
-          include_management_fee: S.optional(S.Boolean),
-          include_premium_benefits: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/cost-calculator/estimation", code: 200 })),
-      ).annotate({
-        identifier: "CreateCostCalculatorEstimationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          alpha_2_code: S.String,
-          code: S.String,
-          features: S.optional(__S(24, __c3, 0)),
-          name: S.String,
-          slug: S.String,
-        }),
-      ).annotate({ identifier: "MinimalCountry" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          description: S.NullOr(S.String),
-          name: S.String,
-          zendesk_article_id: S.NullOr(S.String),
-          zendesk_article_url: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "CostCalculatorCost" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          name: S.optional(S.String),
-          slug: S.String,
-          symbol: S.String,
-        }),
-      ).annotate({ identifier: "Currency" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          annual_amount: S.Number,
-          monthly_amount: S.Number,
-          months: S.Number,
-          text: S.String,
-        }),
-      ).annotate({
-        identifier: "CostCalculatorDiscountResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          annual_benefits_breakdown: S.optional(__S(87, __c10, 7)),
-          annual_benefits_total: S.optional(S.Number),
-          annual_contributions_breakdown: S.optional(__S(87, __c10, 7)),
-          annual_contributions_total: S.Number,
-          annual_gross_salary: S.Number,
-          annual_indirect_tax: S.optional(S.Number),
-          annual_management_fee: S.optional(S.Number),
-          annual_total: S.Number,
-          currency: __S(88, __c11, 0),
-          discount: S.optional(__S(89, __c11, 1)),
-          extra_statutory_payments_breakdown: S.optional(__S(87, __c10, 7)),
-          extra_statutory_payments_total: S.Number,
-          fringe_benefits_tax_breakdown: S.optional(__S(87, __c10, 7)),
-          fringe_benefits_tax_total: S.optional(S.Number),
-          monthly_benefits_breakdown: S.optional(__S(87, __c10, 7)),
-          monthly_benefits_total: S.optional(S.Number),
-          monthly_contributions_breakdown: S.optional(__S(87, __c10, 7)),
-          monthly_contributions_total: S.Number,
-          monthly_fringe_benefits_tax_breakdown: S.optional(__S(87, __c10, 7)),
-          monthly_fringe_benefits_tax_total: S.optional(S.Number),
-          monthly_gross_salary: S.Number,
-          monthly_indirect_tax: S.optional(S.Number),
-          monthly_management_fee: S.optional(S.Number),
-          monthly_tce: S.Number,
-          monthly_total: S.Number,
-        }),
-      ).annotate({ identifier: "CostCalculatorCosts" });
-    case 3:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(92, __c11, 4)));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          child_regions: S.optional(__S(91, __c11, 3)),
-          code: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          slug: S.String,
-          status: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "MinimalRegion" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          country: __S(85, __c10, 5),
-          country_benefits_details_url: S.NullOr(S.String),
-          country_guide_url: S.NullOr(S.String),
-          employer_currency_costs: __S(90, __c11, 2),
-          has_extra_statutory_payment: S.Boolean,
-          has_fringe_benefits_tax: S.optional(S.Boolean),
-          minimum_onboarding_time: S.NullOr(S.Number),
-          region: __S(92, __c11, 4),
-          regional_currency_costs: __S(90, __c11, 2),
-        }),
-      ).annotate({ identifier: "CostCalculatorEmployment" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          employments: S.optional(__S(94, __c11, 6)),
-        }),
-      ).annotate({
-        identifier: "CostCalculatorEstimateResponseData",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(95, __c11, 7),
-        }),
-      ).annotate({
-        identifier: "CostCalculatorEstimateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          company_name: S.optional(S.String),
-          employer_currency_slug: S.String,
-          employments: __S(83, __c10, 3),
-          global_discount: S.optional(__S(81, __c10, 1)),
-          include_benefits: S.optional(S.Boolean),
-          include_cost_breakdowns: S.optional(S.Boolean),
-          include_management_fee: S.optional(S.Boolean),
-          include_premium_benefits: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/cost-calculator/estimation-csv", code: 200 })),
-      ).annotate({
-        identifier: "CreateCostCalculatorEstimationCsvRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.String,
-        }),
-      ).annotate({
-        identifier: "CostCalculatorEstimateCSVResponseData",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(98, __c12, 2),
-        }),
-      ).annotate({
-        identifier: "CostCalculatorEstimateCSVResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          company_name: S.optional(S.String),
-          employer_currency_slug: S.String,
-          employments: __S(83, __c10, 3),
-          global_discount: S.optional(__S(81, __c10, 1)),
-          include_benefits: S.optional(S.Boolean),
-          include_cost_breakdowns: S.optional(S.Boolean),
-          include_management_fee: S.optional(S.Boolean),
-          include_premium_benefits: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/cost-calculator/estimation-pdf", code: 200 })),
-      ).annotate({
-        identifier: "CreateCostCalculatorEstimationPdfRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          source_currency: S.String,
-          target_currency: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/currency-converter/effective", code: 200 })),
-      ).annotate({
-        identifier: "CreateCurrencyConverterEffectiveRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          exchange_rate: S.Number,
-          source_amount: S.Number,
-          source_currency: __S(22, __c2, 6),
-          target_amount: S.Number,
-          target_currency: __S(22, __c2, 6),
-        }),
-      ).annotate({ identifier: "ConvertCurrency" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conversion_data: __S(102, __c12, 6),
-        }),
-      ).annotate({
-        identifier: "ConvertCurrencyResponseData",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(103, __c12, 7),
-        }),
-      ).annotate({ identifier: "ConvertCurrencyResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          source_currency: S.String,
-          target_currency: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/currency-converter/raw", code: 200 })),
-      ).annotate({
-        identifier: "CreateCurrencyConverterRawRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/custom-fields", code: 200 })),
-      ).annotate({ identifier: "CreateCustomFieldRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data_entry_access: S.String,
-          id: S.String,
-          metadata: S.NullOr(S.Unknown),
-          name: S.String,
-          required: S.Boolean,
-          type: S.String,
-          visibility_scope: S.String,
-        }),
-      ).annotate({ identifier: "EmploymentCustomField" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          custom_field: __S(107, __c13, 3),
-        }),
-      ).annotate({
-        identifier: "CreateEmploymentCustomFieldResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(108, __c13, 4),
-        }),
-      ).annotate({
-        identifier: "CreateEmploymentCustomFieldResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String,
-          file: S.String,
-          sub_type: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/documents", code: 200, contentType: "multipart" }),
-        ),
-      ).annotate({ identifier: "CreateDocumentRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          inserted_at: S.String,
-          name: S.String,
-          sub_type: S.optional(S.NullOr(S.String)),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "File" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          file: __S(111, __c13, 7),
-        }),
-      ).annotate({ identifier: "UploadFileResponseData" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(112, __c14, 0)),
-        }),
-      ).annotate({ identifier: "UploadFileResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          file: S.String,
-          sub_type: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/employee/documents",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmployeeDocumentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "Base64File" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          category: S.optional(S.NullOr(S.String)),
-          currency: S.String,
-          expense_category_slug: S.optional(S.NullOr(S.String)),
-          expense_date: S.String,
-          receipt: S.optional(__S(115, __c14, 3)),
-          receipts: S.optional(__S(116, __c14, 4)),
-          tax_amount: S.optional(S.Number),
-          timezone: S.optional(S.String),
-          title: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/employee/expenses", code: 200 })),
-      ).annotate({
-        identifier: "CreateEmployeeExpensRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          day: S.optional(S.String),
-          hours: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TimeoffDaysParams" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          document: S.optional(__S(115, __c14, 3)),
-          end_date: S.String,
-          leave_policy_variant_id: S.String,
-          notes: S.optional(S.String),
-          start_date: S.String,
-          timeoff_days: __S(119, __c14, 7),
-          timezone: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/employee/timeoff", code: 200 })),
-      ).annotate({
-        identifier: "CreateEmployeeTimeoffRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          leave_policy_variant_slug: S.String,
-          leave_type: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "LeavePolicy" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          day: S.String,
-          hours: S.Number,
-          minutes: S.Number,
-        }),
-      ).annotate({ identifier: "TimeoffDay" });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          approved_at: S.optional(S.NullOr(S.String)),
-          approver_id: S.optional(S.NullOr(S.String)),
-          automatic: S.optional(S.Boolean),
-          cancel_reason: S.optional(S.NullOr(S.String)),
-          cancelled_at: S.optional(S.NullOr(S.String)),
-          document: S.optional(__S(111, __c13, 7)),
-          employment_id: S.String,
-          end_date: S.String,
-          id: S.String,
-          leave_policy: __S(121, __c15, 1),
-          leave_policy_variant_id: S.optional(S.NullOr(S.String)),
-          notes: S.optional(S.NullOr(S.String)),
-          start_date: S.String,
-          status: S.String,
-          timeoff_days: __S(123, __c15, 3),
-          timeoff_type: S.String,
-          timezone: S.String,
-          total_minutes: S.Number,
-        }),
-      ).annotate({ identifier: "Timeoff" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          timeoff: __S(124, __c15, 4),
-        }),
-      ).annotate({ identifier: "TimeoffResponseData" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(125, __c15, 5),
-        }),
-      ).annotate({ identifier: "TimeoffResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          cancel_reason: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/employee/timeoff/{id}/cancel", code: 200 })),
-      ).annotate({
-        identifier: "CreateEmployeeTimeoffCancelRequest",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
-          basic_information: S.Unknown,
-          bill_to_legal_entity_id: S.optional(S.String),
-          company_id: S.optional(S.String),
-          country_code: S.String,
-          engaged_by_entity_slug: S.optional(S.String),
-          engaged_by_legal_entity_id: S.optional(S.String),
-          external_id: S.optional(S.String),
-          partner_external_id: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/employments", code: 200 })),
-      ).annotate({ identifier: "CreateEmploymentRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          basic_information: S.optional(S.Unknown),
-          company_id: S.optional(S.String),
-          country_code: S.optional(S.String),
-          created_at: S.optional(S.String),
-          employment_lifecycle_stage: S.optional(S.String),
-          full_name: S.optional(S.String),
-          id: S.optional(S.String),
-          job_title: S.optional(S.NullOr(S.String)),
-          login_email: S.optional(S.String),
-          partner_external_id: S.optional(S.NullOr(S.String)),
-          personal_email: S.optional(S.String),
-          provisional_start_date: S.optional(S.String),
-          type: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EmploymentBasicResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          employment: S.optional(__S(129, __c16, 1)),
-        }),
-      ).annotate({
-        identifier: "EmploymentCreationResponseData",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(130, __c16, 2)),
-        }),
-      ).annotate({
-        identifier: "EmploymentCreationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          eligible_to_work_in_residing_country: S.String,
-          employer_or_work_restrictions: S.Boolean,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/employments/{employment_id}/contract-eligibility",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmploymentContractEligibilityRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          contract_origin: S.String,
-          template_type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/employments/{employment_id}/contract-origin",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmploymentContractOriginRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          currency: S.NullOr(S.String),
-          items: __S(40, __c5, 0),
-          note: S.optional(S.NullOr(S.String)),
-          number: S.optional(S.NullOr(S.String)),
-          start_date: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/employments/{employment_id}/contractor-invoices/preview",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmploymentContractorInvoicesPreviewRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "ContractorInvoicePreviewResponseDataContractorInvoicePreview",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contractor_invoice_preview: __S(135, __c16, 7),
-        }),
-      ).annotate({
-        identifier: "ContractorInvoicePreviewResponseData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(136, __c17, 0),
-        }),
-      ).annotate({
-        identifier: "ContractorInvoicePreviewResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          id: S.optional(S.String),
-          name: S.String,
-          size: S.optional(S.Number),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EngagementAgreementDetailsFileParams",
-      });
-    case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowances_details: S.optional(S.NullOr(__S(44, __c5, 4))),
-          available_pto: S.optional(S.NullOr(S.Number)),
-          break_time_per_day: S.optional(S.NullOr(S.Number)),
-          business_expenses: S.optional(S.NullOr(S.String)),
-          cba: S.optional(S.NullOr(S.String)),
-          cba_document: S.optional(S.NullOr(__S(139, __c17, 3))),
-          covenants: S.optional(S.NullOr(__S(44, __c5, 4))),
-          has_allowances: S.optional(S.NullOr(S.String)),
-          has_bonus: S.optional(S.NullOr(S.String)),
-          has_business_expenses: S.optional(S.NullOr(S.String)),
-          has_business_presence: S.optional(S.String),
-          has_cba: S.optional(S.NullOr(S.String)),
-          has_commissions: S.optional(S.NullOr(S.String)),
-          has_covenants: S.optional(S.NullOr(S.String)),
-          has_illness_remuneration: S.optional(S.NullOr(S.String)),
-          has_overtime_compensation: S.optional(S.NullOr(S.String)),
-          has_pension_scheme: S.optional(S.NullOr(S.String)),
-          has_signing_bonus: S.optional(S.NullOr(S.String)),
-          has_similar_roles: S.optional(S.String),
-          has_similar_work_conditions: S.optional(S.NullOr(S.String)),
-          illness_remuneration_details: S.optional(S.NullOr(S.String)),
-          max_annual_gross_salary: S.optional(S.NullOr(S.Number)),
-          min_annual_gross_salary: S.optional(S.NullOr(S.Number)),
-          overtime_compensation_begins: S.optional(S.NullOr(S.Number)),
-          overtime_compensation_type: S.optional(S.NullOr(S.String)),
-          overtime_pay_percentage: S.optional(S.NullOr(S.Number)),
-          pension_scheme: S.optional(S.NullOr(S.String)),
-          similar_roles: S.optional(S.NullOr(S.String)),
-          similar_work_conditions_details: S.optional(S.NullOr(S.String)),
-          work_hours_per_week: S.optional(S.NullOr(S.Number)),
-          working_days: S.optional(S.NullOr(__S(44, __c5, 4))),
-        }),
-      ).annotate({
-        identifier: "CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          engagement_agreement_details: __S(140, __c17, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/employments/{employment_id}/engagement-agreement-details",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmploymentEngagementAgreementDetailRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          engagement_agreement_details: __S(140, __c17, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/employments/{employment_id}/engagement-agreement-details",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmploymentEngagementAgreementDetailRequest2",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/employments/{employment_id}/invite", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEmploymentInviteRequest",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          job_title: S.optional(S.String),
-          role_description: S.optional(S.String),
-          role_is_onsite: S.optional(S.String),
-          role_requires_license: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/employments/{employment_id}/job-title-eligibility-check",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmploymentJobTitleEligibilityCheckRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          check_id: S.optional(S.NullOr(S.String)),
-          verdict: S.String,
-        }),
-      ).annotate({ identifier: "JobTitleEligibilityCheck" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          job_title_eligibility_check: __S(145, __c18, 1),
-        }),
-      ).annotate({
-        identifier: "JobTitleEligibilityCheckResponseData",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(146, __c18, 2),
-        }),
-      ).annotate({
-        identifier: "JobTitleEligibilityCheckResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          category: S.optional(S.NullOr(S.String)),
-          currency: S.String,
-          employment_id: S.String,
-          expense_category_slug: S.optional(S.NullOr(S.String)),
-          expense_date: S.String,
-          receipt: S.optional(__S(115, __c14, 3)),
-          receipts: S.optional(__S(116, __c14, 4)),
-          reviewed_at: S.optional(S.String),
-          reviewer_id: S.optional(S.String),
-          tax_amount: S.optional(S.Number),
-          timezone: S.optional(S.String),
-          title: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/expenses", code: 200 })),
-      ).annotate({ identifier: "CreateExpensRequest" });
-    case 5:
-      return S.Array(__S(111, __c13, 7));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          expense: S.Unknown,
-        }),
-      ).annotate({ identifier: "ExpenseResponseData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(150, __c18, 6),
-        }),
-      ).annotate({ identifier: "ExpenseResponse" });
   }
 }
 function __c19(j: number): any {
@@ -16624,103 +15787,15 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/identity-verification/{employment_id}/decline",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIdentityVerificationDeclineRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/identity-verification/{employment_id}/verify",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIdentityVerificationVerifyRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          amount_tax_type: S.String,
-          effective_date: S.String,
-          note: S.optional(S.NullOr(S.String)),
-          employment_id: S.String,
-          period_end: S.optional(S.NullOr(S.String)),
-          period_start: S.optional(S.NullOr(S.String)),
-          type: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/incentives", code: 200 })),
-      ).annotate({ identifier: "CreateIncentiveRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          amount_tax_type: S.String,
-          effective_date: S.NullOr(S.String),
-          employment_id: S.String,
-          expected_payout_date: S.optional(S.NullOr(S.String)),
+          base_price: __S(640, __c20, 0),
+          end_date: S.NullOr(S.String),
           id: S.String,
-          note: S.optional(S.NullOr(S.String)),
-          payroll_output_category: S.optional(S.String),
-          period_end: S.optional(S.NullOr(S.String)),
-          period_start: S.optional(S.NullOr(S.String)),
-          recurring_incentive_id: S.optional(S.NullOr(S.String)),
-          status: S.String,
-          type: S.String,
-          type_label: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Incentive" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          incentive: __S(155, __c19, 3),
-        }),
-      ).annotate({ identifier: "IncentiveResponseData" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(156, __c19, 4)),
-        }),
-      ).annotate({ identifier: "IncentiveResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          amount_tax_type: S.String,
-          effective_date: S.String,
-          note: S.optional(S.NullOr(S.String)),
-          duration_in_months: S.optional(S.String),
-          employment_id: S.String,
-          type: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/incentives/recurring", code: 200 })),
-      ).annotate({
-        identifier: "CreateIncentivesRecurringRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          amount_tax_type: S.String,
-          employment_id: S.String,
-          end_date: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          note: S.optional(S.NullOr(S.String)),
+          price: __S(640, __c20, 0),
+          product: __S(672, __c21, 0),
           start_date: S.String,
-          status: S.String,
           type: S.String,
         }),
-      ).annotate({ identifier: "RecurringIncentive" });
+      ).annotate({ identifier: "PricingPlan" });
   }
 }
 function __c20(j: number): any {
@@ -16728,58 +15803,10 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          recurring_incentive: __S(159, __c19, 7),
+          amount: S.Number,
+          currency: __S(736, __c23, 0),
         }),
-      ).annotate({
-        identifier: "RecurringIncentiveResponseData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(160, __c20, 0)),
-        }),
-      ).annotate({
-        identifier: "RecurringIncentiveResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          job_title: S.String,
-          role_description: S.optional(S.String),
-          role_is_onsite: S.optional(S.String),
-          role_requires_license: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateJobTitleScreeningRequestItemsItem",
-      });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(163, __c20, 3),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/job-title-screenings", code: 200 })),
-      ).annotate({
-        identifier: "CreateJobTitleScreeningRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/magic-link", code: 200 })),
-      ).annotate({ identifier: "CreateMagicLinkRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-        }),
-      ).annotate({ identifier: "MagicLinkResponseData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(166, __c20, 6),
-        }),
-      ).annotate({ identifier: "MagicLinkResponse" });
+      ).annotate({ identifier: "Price" });
   }
 }
 function __c21(j: number): any {
@@ -16787,1953 +15814,38 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          date: S.optional(S.NullOr(S.String)),
-          note: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.String),
+          features: S.optional(__S(704, __c22, 0)),
+          frequency: S.String,
+          identifier: S.optional(S.String),
+          name: S.String,
+          short_name: S.optional(S.String),
+          tier: S.String,
         }),
-      ).annotate({
-        identifier: "TerminationDetailsParamsEmployeeAwareness",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          acknowledge_termination_procedure: S.optional(S.NullOr(S.Boolean)),
-          additional_comments: S.optional(S.NullOr(S.String)),
-          agrees_to_pto_amount: S.optional(S.NullOr(S.Boolean)),
-          agrees_to_pto_amount_notes: S.optional(S.NullOr(S.String)),
-          confidential: S.Boolean,
-          customer_informed_employee: S.optional(S.NullOr(S.Boolean)),
-          employee_awareness: S.optional(__S(168, __c21, 0)),
-          personal_email: S.optional(S.String),
-          proposed_termination_date: S.String,
-          reason_description: S.String,
-          risk_assessment_reasons: __S(169, __c21, 1),
-          termination_reason: S.String,
-          termination_reason_files: S.optional(__S(116, __c14, 4)),
-          timesheet_file: S.optional(__S(115, __c14, 3)),
-          will_challenge_termination: S.Boolean,
-          will_challenge_termination_description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TerminationDetailsParams" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String,
-          termination_details: __S(170, __c21, 2),
-          type: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/offboardings", code: 200 })),
-      ).annotate({ identifier: "CreateOffboardingRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          offboarding: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "Offboarding" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(172, __c21, 4)),
-        }),
-      ).annotate({ identifier: "OffboardingResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          signature: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/onboarding/employments/{employment_id}/pre-onboarding-documents/{id}/sign",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOnboardingEmploymentPreOnboardingDocumentSignRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          requirement_slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/onboarding/employments/{employment_id}/pre-onboarding-requirements/{requirement_slug}/acknowledge",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOnboardingEmploymentPreOnboardingRequirementAcknowledgeRequest",
-      });
+      ).annotate({ identifier: "Product" });
   }
 }
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "CreatePreOnboardingAcknowledgementResponseDataPreOnboardingAcknowledgement",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pre_onboarding_acknowledgement: __S(176, __c22, 0),
-        }),
-      ).annotate({
-        identifier: "CreatePreOnboardingAcknowledgementResponseData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(177, __c22, 1),
-        }),
-      ).annotate({
-        identifier: "CreatePreOnboardingAcknowledgementResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          requirement_slug: S.String.pipe(T.Label()),
-          skip_initial_signature_email: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/onboarding/employments/{employment_id}/pre-onboarding-requirements/{requirement_slug}/documents",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOnboardingEmploymentPreOnboardingRequirementDocumentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pre_onboarding_document: __S(176, __c22, 0),
-        }),
-      ).annotate({
-        identifier: "CreatePreOnboardingDocumentResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(180, __c22, 4),
-        }),
-      ).annotate({
-        identifier: "CreatePreOnboardingDocumentResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          adjustment_effective_date: S.optional(S.String),
-          correction_effective_date: S.optional(S.String),
-          hourly_rate: S.optional(S.Number),
-          hourly_rate_currency_code: S.optional(S.NullOr(S.String)),
-          is_deduction: S.optional(S.Boolean),
-          pay_rate: S.optional(S.Number),
-          payout_amount: S.optional(S.Number),
-          payout_currency_code: S.optional(S.String),
-          shift_code: S.optional(S.String),
-          work_day_duration: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PayItemProviderDataParams",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          code: S.optional(S.String),
-          currency: S.optional(S.NullOr(S.String)),
-          effective_date: S.String,
-          employment_id: S.String,
-          end_date: S.optional(S.NullOr(S.String)),
-          external_import_code: S.optional(S.String),
-          provider_data: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({ identifier: "PayItemParams" });
+      return S.Array(S.String);
   }
 }
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(183, __c22, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          pay_items: __S(184, __c23, 0),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/pay-items/bulk", code: 200 })),
-      ).annotate({
-        identifier: "CreatePayItemsBulkRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(S.Unknown),
-          row_number: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PayItemBulkCreateFailures",
-      });
-    case 3:
-      return S.Array(__S(186, __c23, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          correction_effective_date: S.optional(S.String),
-          hourly_rate: S.optional(S.Number),
-          hourly_rate_currency_code: S.optional(S.NullOr(S.String)),
-          pay_rate: S.optional(S.Number),
-          shift_code: S.optional(S.String),
-          work_day_duration: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PayItemProviderData" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
           code: S.String,
-          effective_date: S.String,
-          employment_id: S.String,
-          end_date: S.NullOr(S.String),
-          id: S.String,
-          provider_data: __S(188, __c23, 4),
-          replaced_ids: __S(24, __c3, 0),
+          name: S.String,
+          symbol: S.String,
         }),
-      ).annotate({ identifier: "PayItem" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pay_item: __S(189, __c23, 5),
-          row_number: S.Number,
-        }),
-      ).annotate({
-        identifier: "PayItemBulkCreateSuccesses",
-      });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
+      ).annotate({ identifier: "CurrencyDefinition" });
   }
 }
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          failures: __S(187, __c23, 3),
-          successes: __S(191, __c23, 7),
-        }),
-      ).annotate({
-        identifier: "BulkCreatePayItemsResponseData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(192, __c24, 0),
-        }),
-      ).annotate({
-        identifier: "BulkCreatePayItemsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          payroll_run_id: S.String.pipe(T.Label()),
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/payroll-runs/{payroll_run_id}/gl-reports",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePayrollRunGlReportRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          inserted_at: S.String,
-          status: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "GLReport" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          gl_report: S.optional(__S(195, __c24, 3)),
-        }),
-      ).annotate({ identifier: "GLReportResponseData" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(196, __c24, 4)),
-        }),
-      ).annotate({ identifier: "GLReportResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/probation-completion-letter", code: 200 })),
-      ).annotate({
-        identifier: "CreateProbationCompletionLetterRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String,
-          id: S.String,
-          letter: S.NullOr(__S(111, __c13, 7)),
-          status: S.String,
-          submitted_at: S.String,
-          zendesk_ticket_url: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "ProbationCompletionLetter",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          probation_completion_letter: __S(199, __c24, 7),
-        }),
-      ).annotate({
-        identifier: "ProbationCompletionLetterResponseData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(200, __c25, 0),
-        }),
-      ).annotate({
-        identifier: "ProbationCompletionLetterResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          additional_details: S.optional(S.String),
-          date_of_discussion_with_employee: S.optional(S.String),
-          duration_of_extension_in_days: S.Number,
-          employment_id: S.String,
-          reason_for_extension: S.String,
-          supporting_document: S.optional(__S(115, __c14, 3)),
-          was_employee_informed: S.Boolean,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/probation-extensions", code: 200 })),
-      ).annotate({
-        identifier: "CreateProbationExtensionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String,
-          id: S.String,
-          requested_by: S.String,
-          status: S.String,
-          submitted_at: S.String,
-          zendesk_ticket_url: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ProbationExtension" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          probation_extension: __S(203, __c25, 3),
-        }),
-      ).annotate({
-        identifier: "ProbationExtensionResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(204, __c25, 4)),
-        }),
-      ).annotate({
-        identifier: "ProbationExtensionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          end_date: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          start_date: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/projects", code: 200 })),
-      ).annotate({ identifier: "CreateProjectRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          currency: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ProjectBudget" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          budget: S.NullOr(__S(207, __c25, 7)),
-          code: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          end_date: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          lead_ids: __S(24, __c3, 0),
-          name: S.String,
-          start_date: S.optional(S.NullOr(S.String)),
-          status: S.String,
-          team_member_ids: __S(24, __c3, 0),
-        }),
-      ).annotate({ identifier: "Project" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.optional(__S(208, __c26, 0)),
-        }),
-      ).annotate({ identifier: "ProjectResponseData" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(209, __c26, 1),
-        }),
-      ).annotate({ identifier: "ProjectResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          employment_slug: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/risk-reserve", code: 200 })),
-      ).annotate({ identifier: "CreateRiskReserveRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_group_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/sandbox/benefit-renewal-requests", code: 200 })),
-      ).annotate({
-        identifier: "CreateSandboxBenefitRenewalRequestRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          country_code: S.String,
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "BenefitRenewalRequestsMinimalBenefitGroup",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-          display_cost: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "NullableMinimalBenefitTier",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_tier: S.NullOr(__S(214, __c26, 6)),
-          updated_at: S.String,
-        }),
-      ).annotate({
-        identifier: "BenefitRenewalRequestsMinimalBenefitRenewalResponse",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_group: __S(213, __c26, 5),
-          benefit_renewal_response: S.NullOr(__S(215, __c26, 7)),
-          coverage_end_date: S.String,
-          coverage_start_date: S.String,
-          current_benefit_tier: S.optional(S.NullOr(__S(214, __c26, 6))),
-          id: S.String,
-          number_of_affected_employees: S.Number,
-          renewal_selection_end_date: S.String,
-          renewal_selection_instructions: S.String,
-          renewal_selection_start_date: S.String,
-        }),
-      ).annotate({
-        identifier: "BenefitRenewalRequestsBenefitRenewalRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_renewal_request: __S(216, __c27, 0),
-        }),
-      ).annotate({
-        identifier: "BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(217, __c27, 1),
-        }),
-      ).annotate({
-        identifier: "BenefitRenewalRequestsCreateBenefitRenewalRequestResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          company_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/sandbox/companies/{company_id}/bypass-eligibility-checks",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSandboxCompanyBypassEligibilityCheckRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          company_id: S.String.pipe(T.Label()),
-          country_code: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/sandbox/companies/{company_id}/legal-entities",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSandboxCompanyLegalEntityRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          legal_entity_id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateSandboxCompanyLegalEntityResponseData",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(221, __c27, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateSandboxCompanyLegalEntityResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          company_id: S.String.pipe(T.Label()),
-          legal_entity_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/sandbox/companies/{company_id}/legal-entities/{legal_entity_id}/activate-global-payroll",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSandboxCompanyLegalEntityActivateGlobalPayrollRequest",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          company_id: S.String.pipe(T.Label()),
-          legal_entity_id: S.String.pipe(T.Label()),
-          credit_risk_status: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/sandbox/companies/{company_id}/legal-entities/{legal_entity_id}/set-credit-risk-status",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSandboxCompanyLegalEntitySetCreditRiskStatusRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          amount: S.String,
-          pay_frequency: S.optional(S.NullOr(S.String)),
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/sandbox/contractors/employments/{employment_id}/rates",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSandboxContractorsEmploymentRateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.String,
-          currency: __S(22, __c2, 6),
-        }),
-      ).annotate({ identifier: "MoneyResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          amount: __S(226, __c28, 2),
-          contract_expiration_date: S.NullOr(S.String),
-          contract_start_date: S.NullOr(S.String),
-          id: S.String,
-          pay_frequency: S.NullOr(S.String),
-          service_end_date: S.NullOr(S.String),
-          service_start_date: S.NullOr(S.String),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "ContractorRate" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(227, __c28, 3),
-        }),
-      ).annotate({
-        identifier: "SandboxContractorRateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          basic_information: S.Unknown,
-          bill_to_legal_entity_id: S.optional(S.String),
-          company_id: S.optional(S.String),
-          country_code: S.String,
-          engaged_by_entity_slug: S.optional(S.String),
-          engaged_by_legal_entity_id: S.optional(S.String),
-          external_id: S.optional(S.String),
-          partner_external_id: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/sandbox/employments", code: 200 })),
-      ).annotate({
-        identifier: "CreateSandboxEmploymentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          job_title: S.optional(S.String),
-          role_description: S.String,
-          verdict: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/sandbox/employments/{employment_id}/job-title-eligibility-check",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSandboxEmploymentJobTitleEligibilityCheckRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          notes: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/sandbox/employments/{employment_id}/job-title-review/approve",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSandboxEmploymentJobTitleReviewApproveRequest",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          employment_status: S.String,
-        }),
-      ).annotate({
-        identifier: "JobTitleReviewDecisionResponseDataJobTitleReview",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          job_title_review: __S(232, __c29, 0),
-        }),
-      ).annotate({
-        identifier: "JobTitleReviewDecisionResponseData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(233, __c29, 1),
-        }),
-      ).annotate({
-        identifier: "JobTitleReviewDecisionResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          notes: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/sandbox/employments/{employment_id}/job-title-review/reject",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSandboxEmploymentJobTitleReviewRejectRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/sandbox/webhook-callbacks/trigger", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateSandboxWebhookCallbacksTriggerRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.String,
-          component_stack: S.optional(S.NullOr(__S(24, __c3, 0))),
-          message: S.String,
-          name: S.String,
-          severity: S.String,
-          stack: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateSdkTelemetryErrorRequestError",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.String,
-          sdk_version: S.String,
-          timestamp: S.String,
-          url: S.String,
-          user_agent: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateSdkTelemetryErrorRequestMetadata",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          context: S.optional(S.NullOr(S.Unknown)),
-          error: __S(237, __c29, 5),
-          metadata: __S(238, __c29, 6),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/sdk/telemetry-errors", code: 200 })),
-      ).annotate({
-        identifier: "CreateSdkTelemetryErrorRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          certificate: S.String,
-          domain: S.String,
-          identity_provider_url: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/sso-configuration", code: 200 })),
-      ).annotate({
-        identifier: "CreateSsoConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          audience_uri: S.String,
-          certificate: S.String,
-          domain: S.String,
-          identity_provider_url: S.String,
-          sso_url: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateSSOConfigurationResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(241, __c30, 1),
-        }),
-      ).annotate({
-        identifier: "CreateSSOConfigurationResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          document: S.optional(__S(115, __c14, 3)),
-          employment_id: S.String,
-          end_date: S.String,
-          leave_policy_variant_id: S.optional(S.String),
-          notes: S.optional(S.String),
-          start_date: S.String,
-          timeoff_days: __S(119, __c14, 7),
-          timeoff_type: S.optional(S.String),
-          timezone: S.String,
-          approved_at: S.String,
-          approver_id: S.NullOr(S.String),
-          status: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/timeoff", code: 200 })),
-      ).annotate({ identifier: "CreateTimeoffRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          timeoff_id: S.String.pipe(T.Label()),
-          approver_id: S.NullOr(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/timeoff/{timeoff_id}/approve", code: 200 })),
-      ).annotate({
-        identifier: "CreateTimeoffApproveRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          timeoff_id: S.String.pipe(T.Label()),
-          cancel_reason: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/timeoff/{timeoff_id}/cancel", code: 200 })),
-      ).annotate({
-        identifier: "CreateTimeoffCancelRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timeoff_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/timeoff/{timeoff_id}/cancel-request/approve",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTimeoffCancelRequestApproveRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          timeoff_id: S.String.pipe(T.Label()),
-          decline_reason: S.NullOr(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/timeoff/{timeoff_id}/cancel-request/decline",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTimeoffCancelRequestDeclineRequest",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          timeoff_id: S.String.pipe(T.Label()),
-          decline_reason: S.NullOr(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/timeoff/{timeoff_id}/decline", code: 200 })),
-      ).annotate({
-        identifier: "CreateTimeoffDeclineRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          timesheet_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/timesheets/{timesheet_id}/approve", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateTimesheetApproveRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          approval_required: S.Boolean,
-          country_code: S.String,
-          employment_id: S.String,
-          end_date: S.String,
-          id: S.String,
-          notes: S.NullOr(S.String),
-          start_date: S.String,
-          status: S.String,
-          submitted_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "MinimalTimesheet" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          timesheet: __S(250, __c31, 2),
-        }),
-      ).annotate({
-        identifier: "MinimalTimesheetResponseData",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(251, __c31, 3)),
-        }),
-      ).annotate({ identifier: "MinimalTimesheetResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          timesheet_id: S.String.pipe(T.Label()),
-          sent_back_reason: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/timesheets/{timesheet_id}/send-back", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateTimesheetSendBackRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          sent_back: S.Boolean,
-          sent_back_reason: S.String,
-          status: S.String,
-        }),
-      ).annotate({ identifier: "SentBackTimesheet" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          timesheet: __S(254, __c31, 6),
-        }),
-      ).annotate({
-        identifier: "SentBackTimesheetResponseData",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(255, __c31, 7)),
-        }),
-      ).annotate({
-        identifier: "SentBackTimesheetResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscribe_to_all_events: S.optional(S.Boolean),
-          subscribed_events: S.optional(__S(169, __c21, 1)),
-          url: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/webhook-callbacks", code: 200 })),
-      ).annotate({
-        identifier: "CreateWebhookCallbackRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          signing_key: S.optional(S.String),
-          subscribe_to_all_events: S.optional(S.Boolean),
-          subscribed_events: S.optional(__S(169, __c21, 1)),
-          url: S.String,
-        }),
-      ).annotate({ identifier: "WebhookCallback" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_callback: __S(258, __c32, 2),
-        }),
-      ).annotate({
-        identifier: "WebhookCallbackResponseData",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(259, __c32, 3),
-        }),
-      ).annotate({ identifier: "WebhookCallbackResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/webhook-events/replay", code: 200 })),
-      ).annotate({
-        identifier: "CreateWebhookEventsReplayRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/company-managers/{user_id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteCompanyManagerRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/contractors/employments/{employment_id}/contractor-cor-subscription",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteContractorsEmploymentContractorCorSubscriptionRequest",
-      });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteContractorsEmploymentContractorCorSubscriptionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/incentives/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteIncentiveRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/incentives/recurring/{id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteIncentivesRecurringRequest",
-      });
-    case 3:
-      return S.Array(__S(155, __c19, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          already_scheduled_incentives: __S(267, __c33, 3),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeleteRecurringIncentiveResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(268, __c33, 4),
-        }),
-      ).annotate({
-        identifier: "DeleteRecurringIncentiveResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-          requirement_slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/onboarding/employments/{employment_id}/pre-onboarding-requirements/{requirement_slug}/acknowledge",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOnboardingEmploymentPreOnboardingRequirementAcknowledgeRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/pay-items/{id}", code: 200 })),
-      ).annotate({ identifier: "DeletePayItemRequest" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          employment_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v1/sandbox/employments/{employment_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteSandboxEmploymentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/webhook-callbacks/{id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteWebhookCallbackRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          eventUrl: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/adp/subscription-cancellations", code: 200 })),
-      ).annotate({
-        identifier: "GetAdpSubscriptionCancellationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          eventUrl: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/adp/subscription-changes", code: 200 })),
-      ).annotate({
-        identifier: "GetAdpSubscriptionChangesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          eventUrl: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/adp/subscription-orders", code: 200 })),
-      ).annotate({
-        identifier: "GetAdpSubscriptionOrdersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          eventUrl: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/adp/subscription-status", code: 200 })),
-      ).annotate({
-        identifier: "GetAdpSubscriptionStatusRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          eventUrl: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/adp/user-assignments", code: 200 })),
-      ).annotate({
-        identifier: "GetAdpUserAssignmentsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          eventUrl: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/adp/user-unassignments", code: 200 })),
-      ).annotate({
-        identifier: "GetAdpUserUnassignmentsRequest",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/benefit-offers", code: 200 })),
-      ).annotate({ identifier: "GetBenefitOffersRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          policy_end_date: S.String,
-          policy_start_date: S.String,
-        }),
-      ).annotate({ identifier: "BenefitGroup" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "BenefitProvider" });
-    case 3:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(282, __c35, 2)));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-          id: S.String,
-          name: S.String,
-          providers: __S(283, __c35, 3),
-        }),
-      ).annotate({ identifier: "BenefitTier" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          employee_cost: S.Number,
-          employer_cost: S.Number,
-        }),
-      ).annotate({ identifier: "Costs" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          costs: S.NullOr(__S(285, __c35, 5)),
-          coverage_end_date: S.String,
-          coverage_start_date: S.String,
-          id: S.String,
-          name: S.String,
-          projected_costs: S.NullOr(__S(285, __c35, 5)),
-          provider: S.NullOr(__S(282, __c35, 2)),
-          status: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "Benefit" });
-    case 7:
-      return S.Array(__S(286, __c35, 6));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_group: __S(281, __c35, 1),
-          benefit_tier: S.NullOr(__S(284, __c35, 4)),
-          benefits: __S(287, __c35, 7),
-          costs: S.NullOr(__S(285, __c35, 5)),
-        }),
-      ).annotate({ identifier: "BenefitOffer" });
-    case 1:
-      return S.Array(__S(288, __c36, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          name: S.String,
-          subdivision_type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CountrySubdivision" });
-    case 3:
-      return S.Array(__S(290, __c36, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          alpha_2_code: S.String,
-          code: S.String,
-          contractor_products_available: S.optional(__S(169, __c21, 1)),
-          country_subdivisions: S.optional(S.NullOr(__S(291, __c36, 3))),
-          employment_agreement_preview_available: S.optional(S.Boolean),
-          eor_onboarding: S.optional(S.Boolean),
-          locked_benefits: S.optional(S.String),
-          name: S.String,
-          region: S.optional(S.String),
-          subregion: S.optional(S.NullOr(S.String)),
-          supported_json_schemas: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "Country" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          country: __S(292, __c36, 4),
-          given_name: S.NullOr(S.String),
-          id: S.String,
-          name: S.String,
-          surname: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "BenefitOffersEmployment" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_offers: __S(289, __c36, 1),
-          costs: S.NullOr(__S(285, __c35, 5)),
-          employment: __S(293, __c36, 5),
-        }),
-      ).annotate({
-        identifier: "BenefitOffersByEmployment",
-      });
-    case 7:
-      return S.Array(__S(294, __c36, 6));
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_offers_by_employment: __S(295, __c36, 7),
-          company_id: S.String,
-          currency: __S(88, __c11, 0),
-        }),
-      ).annotate({
-        identifier: "BenefitOfferByEmploymentResponseData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(296, __c37, 0),
-        }),
-      ).annotate({
-        identifier: "BenefitOfferByEmploymentResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/v1/benefit-offers/country-summaries", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetBenefitOffersCountrySummariesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          number_of_employees_enrolled: S.Number,
-          number_of_employees_offered: S.Number,
-        }),
-      ).annotate({ identifier: "EmployeeStats" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_tier: __S(284, __c35, 4),
-          employee_stats: __S(299, __c37, 3),
-        }),
-      ).annotate({ identifier: "OfferedBenefitTier" });
-    case 5:
-      return S.Array(__S(300, __c37, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_group: __S(281, __c35, 1),
-          employee_stats: __S(299, __c37, 3),
-          offered_benefit_tiers: __S(301, __c37, 5),
-        }),
-      ).annotate({ identifier: "OfferedBenefitGroup" });
-    case 7:
-      return S.Array(__S(302, __c37, 6));
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          country: __S(292, __c36, 4),
-          employee_stats: __S(299, __c37, 3),
-          offered_benefit_groups: __S(303, __c37, 7),
-        }),
-      ).annotate({ identifier: "CountrySummary" });
-    case 1:
-      return S.Array(__S(304, __c38, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          company_id: S.String,
-          country_summaries: __S(305, __c38, 1),
-        }),
-      ).annotate({
-        identifier: "CountrySummariesResponseData",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(306, __c38, 2),
-        }),
-      ).annotate({ identifier: "CountrySummariesResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_renewal_request_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/benefit-renewal-requests/{benefit_renewal_request_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBenefitRenewalRequestRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(217, __c27, 1),
-        }),
-      ).annotate({
-        identifier: "BenefitRenewalRequestsBenefitRenewalRequestResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          page_size: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/benefit-renewal-requests", code: 200 })),
-      ).annotate({
-        identifier: "GetBenefitRenewalRequestsRequest",
-      });
-    case 7:
-      return S.Array(__S(216, __c27, 0));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_renewal_requests: S.optional(__S(311, __c38, 7)),
-          current_page: S.optional(S.Number),
-          total_count: S.optional(S.Number),
-          total_pages: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "BenefitRenewalRequestsListBenefitRenewalRequestResponseData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(312, __c39, 0)),
-        }),
-      ).annotate({
-        identifier: "BenefitRenewalRequestsListBenefitRenewalRequestResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_renewal_request_id: S.String.pipe(T.Label()),
-          json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/benefit-renewal-requests/{benefit_renewal_request_id}/schema",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBenefitRenewalRequestSchemaRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "BenefitRenewalRequestsBenefitRenewalRequestFormResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          billing_document_id: S.String.pipe(T.Label()),
-          company_id: S.optional(S.String.pipe(T.Query())),
-          include_unrecognized_types: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/billing-documents/{billing_document_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetBillingDocumentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          billing_document_amount: S.Number,
-          billing_document_currency: S.NullOr(S.String),
-          employment_id: S.optional(S.NullOr(S.String)),
-          source_amount: S.optional(S.Number),
-          source_currency: S.optional(S.NullOr(S.String)),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "BillingDocumentAmountItem",
-      });
-    case 6:
-      return S.Array(__S(317, __c39, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          billing_document_currency: S.String,
-          billing_document_number: S.String,
-          billing_document_period: S.String,
-          billing_document_type: S.String,
-          company_id: S.String,
-          id: S.String,
-          issued_date: S.String,
-          items: __S(318, __c39, 6),
-          total: S.Number,
-        }),
-      ).annotate({ identifier: "BillingDocument" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          billing_document: __S(319, __c39, 7),
-        }),
-      ).annotate({
-        identifier: "BillingDocumentResponseData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(320, __c40, 0),
-        }),
-      ).annotate({ identifier: "BillingDocumentResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          billing_document_id: S.String.pipe(T.Label()),
-          type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/billing-documents/{billing_document_id}/breakdown",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBillingDocumentBreakdownRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          country_code: S.NullOr(S.String),
-          description: S.String,
-          employment_id: S.NullOr(S.String),
-          fx_rate: S.String,
-          invoice_amount: S.Number,
-          invoice_currency: S.NullOr(S.String),
-          invoice_number: S.String,
-          invoice_period: S.String,
-          source_amount: S.Number,
-          source_currency: S.NullOr(S.String),
-          type: S.String,
-          variance_from_invoice: S.NullOr(S.String),
-          variance_from_invoice_amount: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "BillingDocumentBreakdownItem",
-      });
-    case 4:
-      return S.Array(__S(323, __c40, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          billing_document_breakdown: __S(324, __c40, 4),
-        }),
-      ).annotate({
-        identifier: "BillingDocumentBreakdownResponseData",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(325, __c40, 5),
-        }),
-      ).annotate({
-        identifier: "BillingDocumentBreakdownResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          billing_document_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/billing-documents/{billing_document_id}/pdf",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBillingDocumentPdfRequest",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetBillingDocumentPdfResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          period: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          page_size: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/billing-documents", code: 200 })),
-      ).annotate({
-        identifier: "GetBillingDocumentsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          bill_from: S.optional(S.NullOr(S.String)),
-          billing_document_period: S.optional(S.String),
-          billing_document_type: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BillingDocumentsResponseDataBillingDocumentsItem",
-      });
-    case 3:
-      return S.Array(__S(330, __c41, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          billing_documents: __S(331, __c41, 3),
-          current_page: S.Number,
-          total_count: S.Number,
-          total_pages: S.Number,
-        }),
-      ).annotate({
-        identifier: "BillingDocumentsResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(332, __c41, 4),
-        }),
-      ).annotate({ identifier: "BillingDocumentsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          job_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/bulk-employment-jobs/{job_id}", code: 200 })),
-      ).annotate({
-        identifier: "GetBulkEmploymentJobRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          index: S.Number,
-          name: S.String,
-          sample_data: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "BulkEmploymentImportJobColumnMappingSourceColumnsItem",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(335, __c41, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          auto_mapped_columns: S.optional(__S(24, __c3, 0)),
-          mapping: S.Unknown,
-          source_columns: __S(336, __c42, 0),
-          unmapped_column_count: S.Number,
-          unmapped_required_field_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "BulkEmploymentImportJobColumnMapping",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BulkEmploymentImportJobLegalEntity",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          column_mapping: S.optional(S.NullOr(__S(337, __c42, 1))),
-          display_name: S.optional(S.String),
-          errors: S.optional(__S(24, __c3, 0)),
-          failed_count: S.Number,
-          finished_at: S.NullOr(S.String),
-          id: S.String,
-          imported_count: S.optional(S.Number),
-          inserted_at: S.String,
-          inserted_by: S.Unknown,
-          legal_entity: S.optional(S.NullOr(__S(338, __c42, 2))),
-          metadata: S.Unknown,
-          name: S.String,
-          processed_count: S.Number,
-          stage: S.String,
-          status: S.String,
-          total_count: S.Number,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "BulkEmploymentImportJob" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(339, __c42, 3),
-        }),
-      ).annotate({
-        identifier: "BulkEmploymentImportJobResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          job_id: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          page_size: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/bulk-employment-jobs/{job_id}/rows", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetBulkEmploymentJobRowsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          failed_to_assign: S.Number,
-          job_stage: S.String,
-          needs_changes: S.Number,
-          ready_to_submit: S.Number,
-          successfully_assigned: S.Number,
-          total: S.Number,
-        }),
-      ).annotate({
-        identifier: "ImportJobRowsResponseDataAggregatesTeamMemberCounts",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          team_member_counts: S.optional(__S(342, __c42, 6)),
-        }),
-      ).annotate({
-        identifier: "ImportJobRowsResponseDataAggregates",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.Number,
-          valid: S.Number,
-        }),
-      ).annotate({
-        identifier: "ImportJobRowsResponseDataCountsByColumnValue",
-      });
-    case 1:
-      return S.Record(S.String, __S(344, __c43, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: S.Number,
-          error: S.Number,
-          imported: S.Number,
-          pending: S.Number,
-          retryable: S.Number,
-          skipped: S.Number,
-          successful: S.Number,
-          unprocessable: S.Number,
-        }),
-      ).annotate({
-        identifier: "ImportJobRowsResponseDataCountsByStatus",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          registered: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ImportJobRowMetadataLoginEmailSignalsPersonal",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          personal: S.optional(__S(349, __c43, 5)),
-          sso_enforced: S.optional(S.Boolean),
-          work: S.optional(__S(349, __c43, 5)),
-        }),
-      ).annotate({
-        identifier: "ImportJobRowMetadataLoginEmailSignals",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          login_email_signals: S.optional(__S(350, __c43, 6)),
-        }),
-      ).annotate({ identifier: "ImportJobRowMetadata" });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          slug: S.String,
-        }),
-      ).annotate({
-        identifier: "ImportJobRowRowErrorDetailsAmbiguousItemCreatedBy",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.NullOr(S.Number),
-          created_by: S.NullOr(__S(352, __c44, 0)),
-          effective_date: S.NullOr(S.String),
-          employee_identifier: S.NullOr(S.String),
-          end_date: S.NullOr(S.String),
-          inserted_at: S.NullOr(S.String),
-          occurrence: S.NullOr(S.String),
-          pay_item: S.NullOr(S.String),
-          slug: S.String,
-        }),
-      ).annotate({
-        identifier: "ImportJobRowRowErrorDetailsAmbiguousItem",
-      });
-    case 2:
-      return S.Array(__S(353, __c44, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ambiguous: S.optional(__S(354, __c44, 2)),
-        }),
-      ).annotate({
-        identifier: "ImportJobRowRowErrorDetails",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(S.NullOr(S.String)),
-          field_name: S.optional(S.NullOr(S.String)),
-          messages: __S(24, __c3, 0),
-        }),
-      ).annotate({ identifier: "ImportJobRowError" });
-    case 5:
-      return S.Array(__S(356, __c44, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(347, __c43, 3),
-          errors: __S(348, __c43, 4),
-          metadata: S.optional(__S(351, __c43, 7)),
-          row_error_details: S.optional(__S(355, __c44, 3)),
-          row_errors: S.optional(S.Unknown),
-          row_number: S.Number,
-          schema_variant_id: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-          submission_errors: S.optional(__S(357, __c44, 5)),
-        }),
-      ).annotate({ identifier: "ImportJobRow" });
-    case 7:
-      return S.Array(__S(358, __c44, 6));
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          failures: __S(359, __c44, 7),
-          imported: __S(359, __c44, 7),
-          pending: __S(359, __c44, 7),
-          retryable: __S(359, __c44, 7),
-          skipped: __S(359, __c44, 7),
-          successes: __S(359, __c44, 7),
-          unprocessable: __S(359, __c44, 7),
-        }),
-      ).annotate({
-        identifier: "ImportJobRowsResponseDataRows",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          aggregates: S.optional(__S(343, __c42, 7)),
-          counts_by_column: S.optional(__S(345, __c43, 1)),
-          counts_by_status: __S(346, __c43, 2),
-          current_page: S.Number,
-          ordered_rows: S.optional(__S(38, __c4, 6)),
-          rows: __S(360, __c45, 0),
-          total_count: S.Number,
-          total_pages: S.Number,
-        }),
-      ).annotate({
-        identifier: "ImportJobRowsResponseData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(361, __c45, 1),
-        }),
-      ).annotate({ identifier: "ImportJobRowsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/companies", code: 200 })),
-      ).annotate({ identifier: "GetCompaniesRequest" });
-    case 4:
-      return S.Array(__S(7, __c0, 7));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          companies: S.optional(__S(364, __c45, 4)),
-        }),
-      ).annotate({ identifier: "CompaniesResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          country_code: S.String.pipe(T.Query()),
-          form: S.String.pipe(T.Query()),
-          json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/companies/schema", code: 200 })),
-      ).annotate({
-        identifier: "GetCompaniesSchemaRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "CompanyFormResponse" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          company_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/companies/{company_id}", code: 200 })),
-      ).annotate({ identifier: "GetCompanyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          company_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/companies/{company_id}/actions", code: 200 })),
-      ).annotate({ identifier: "GetCompanyActionsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          legal_entity_id: S.optional(S.NullOr(S.String)),
-          required: S.Boolean,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "CompanyAction" });
-    case 3:
-      return S.Array(__S(370, __c46, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(__S(371, __c46, 3)),
-        }),
-      ).annotate({
-        identifier: "CompanyActionsResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(372, __c46, 4),
-        }),
-      ).annotate({ identifier: "CompanyActionsResponse" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -18747,34 +15859,34 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetCompanyComplianceProfileRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           credit_risk_status: S.String,
           kyb_status: S.String,
         }),
       ).annotate({ identifier: "CompanyComplianceProfile" });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          compliance_profile: __S(375, __c46, 7),
+          compliance_profile: __S(769, __c24, 1),
         }),
       ).annotate({
         identifier: "CompanyComplianceProfileResponseData",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(376, __c47, 0)),
+          data: S.optional(__S(770, __c24, 2)),
         }),
       ).annotate({
         identifier: "CompanyComplianceProfileResponse",
       });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -18791,7 +15903,43 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "GetCompanyCostCenterAllocationsRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bill_to_legal_entity_id: S.optional(S.NullOr(S.String)),
+          cost_center_allocations: __S(834, __c26, 2),
+          employment_id: S.String,
+          engaged_by_legal_entity_id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "EmploymentWithCostCenterAllocations",
+      });
+    case 2:
+      return S.Array(__S(801, __c25, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          current_page: S.optional(S.Number),
+          employments: S.optional(__S(802, __c25, 2)),
+          total_count: S.optional(S.Number),
+          total_pages: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListCompanyCostCenterAllocationsResponseData",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(803, __c25, 3)),
+        }),
+      ).annotate({
+        identifier: "ListCompanyCostCenterAllocationsResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.NullOr(S.String),
@@ -18799,10 +15947,10 @@ function __c47(j: number): any {
           slug: S.String,
         }),
       ).annotate({ identifier: "CostCenter" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          cost_center: __S(379, __c47, 3),
+          cost_center: __S(832, __c26, 0),
           effective_from: S.NullOr(S.String),
           effective_to: S.NullOr(S.String),
           id: S.String,
@@ -18810,76 +15958,48 @@ function __c47(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "CostCenterAllocation" });
-    case 5:
-      return S.Array(__S(380, __c47, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bill_to_legal_entity_id: S.optional(S.NullOr(S.String)),
-          cost_center_allocations: __S(381, __c47, 5),
-          employment_id: S.String,
-          engaged_by_legal_entity_id: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "EmploymentWithCostCenterAllocations",
-      });
-    case 7:
-      return S.Array(__S(382, __c47, 6));
+    case 2:
+      return S.Array(__S(833, __c26, 1));
   }
 }
-function __c48(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          current_page: S.optional(S.Number),
-          employments: S.optional(__S(383, __c47, 7)),
-          total_count: S.optional(S.Number),
-          total_pages: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListCompanyCostCenterAllocationsResponseData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(384, __c48, 0)),
-        }),
-      ).annotate({
-        identifier: "ListCompanyCostCenterAllocationsResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/company-currencies", code: 200 })),
       ).annotate({
         identifier: "GetCompanyCurrenciesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
           slug: S.String,
         }),
       ).annotate({ identifier: "CompanyCurrency" });
-    case 4:
-      return S.Array(__S(387, __c48, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(865, __c27, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          company_currencies: __S(388, __c48, 4),
+          company_currencies: __S(866, __c27, 2),
         }),
       ).annotate({
         identifier: "CompanyCurrenciesResponseData",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(389, __c48, 5)),
+          data: S.optional(__S(867, __c27, 3)),
         }),
       ).annotate({
         identifier: "CompanyCurrenciesResponse",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Query()),
@@ -18890,32 +16010,32 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetCompanyDepartmentsRequest",
       });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(14, __c1, 6));
     case 1:
+      return S.Array(__S(12096, __c378, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          company_departments: __S(392, __c49, 0),
+          company_departments: __S(897, __c28, 1),
         }),
       ).annotate({
         identifier: "ListCompanyDepartmentsPaginatedResponseData",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           current_page: S.Number,
-          data: __S(393, __c49, 1),
+          data: __S(898, __c28, 2),
           total_count: S.Number,
           total_pages: S.Number,
         }),
       ).annotate({
         identifier: "ListCompanyDepartmentsPaginatedResponse",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -18930,22 +16050,26 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetCompanyEmploymentOnboardingReservesStatusRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          policies: __S(24, __c3, 0),
+          policies: __S(704, __c22, 0),
           status: S.String,
         }),
       ).annotate({ identifier: "OnboardingReservesStatus" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(396, __c49, 4),
+          data: __S(929, __c29, 1),
         }),
       ).annotate({
         identifier: "OnboardingReservesStatusResponse",
       });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -18957,7 +16081,7 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetCompanyLegalEntitiesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           country_code: S.optional(S.NullOr(S.String)),
@@ -18967,32 +16091,32 @@ function __c49(j: number): any {
           name: S.String,
         }),
       ).annotate({ identifier: "CompanyLegalEntity" });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(399, __c49, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(961, __c30, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          legal_entities: S.optional(__S(400, __c50, 0)),
+          legal_entities: S.optional(__S(962, __c30, 2)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListCompanyLegalEntitiesResponseData",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(401, __c50, 1)),
+          data: S.optional(__S(963, __c30, 3)),
         }),
       ).annotate({
         identifier: "ListCompanyLegalEntitiesResponse",
       });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -19007,7 +16131,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetCompanyLegalEntityAdministrativeDetailsRequest",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           data: S.Unknown,
@@ -19015,7 +16143,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetCompanyLegalEntityAdministrativeDetailsResponse",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -19030,49 +16162,49 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetCompanyLegalEntityContractorEligibilityRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          cor: __S(44, __c5, 4),
-          plus: __S(44, __c5, 4),
-          standard: __S(44, __c5, 4),
+          cor: __S(2176, __c68, 0),
+          plus: __S(2176, __c68, 0),
+          standard: __S(2176, __c68, 0),
         }),
       ).annotate({
         identifier: "ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasons",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           cor: S.Boolean,
-          ineligibility_reasons: __S(406, __c50, 6),
+          ineligibility_reasons: __S(1057, __c33, 1),
           plus: S.Boolean,
           standard: S.Boolean,
         }),
       ).annotate({
         identifier: "ContractorEligibilityResponseDataContractorEligibility",
       });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          contractor_eligibility: __S(407, __c50, 7),
-          cor_supported_country_codes: __S(24, __c3, 0),
+          contractor_eligibility: __S(1058, __c33, 2),
+          cor_supported_country_codes: __S(704, __c22, 0),
         }),
       ).annotate({
         identifier: "ContractorEligibilityResponseData",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(408, __c51, 0),
+          data: __S(1059, __c33, 3),
         }),
       ).annotate({
         identifier: "ContractorEligibilityResponse",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -19089,7 +16221,7 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetCompanyLegalEntityPayCodesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           category: S.String,
@@ -19101,24 +16233,28 @@ function __c51(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "PayCode" });
-    case 4:
-      return S.Array(__S(411, __c51, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1089, __c34, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          pay_codes: S.optional(__S(412, __c51, 4)),
+          pay_codes: S.optional(__S(1090, __c34, 2)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListPayCodesResponseData" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(413, __c51, 5)),
+          data: S.optional(__S(1091, __c34, 3)),
         }),
       ).annotate({ identifier: "ListPayCodesResponse" });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
@@ -19126,15 +16262,86 @@ function __c51(j: number): any {
       ).annotate({ identifier: "GetCompanyManagerRequest" });
   }
 }
-function __c52(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(20, __c2, 4),
+          data: __S(64, __c2, 0),
         }),
       ).annotate({ identifier: "CompanyManagerResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
+          amendment_contract_id: S.String,
+          contract_amendment: S.Unknown,
+          employment_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/contract-amendments", code: 200 })),
+      ).annotate({
+        identifier: "CreateContractAmendmentRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          salary_decrease_reason: S.optional(S.String),
+          salary_decrease_reason_description: S.optional(S.NullOr(S.String)),
+          was_employee_informed: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SalaryDecreaseDetails" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          additional_comments: S.optional(S.NullOr(S.String)),
+          effective_date: S.optional(S.String),
+          reason_for_change: S.optional(S.NullOr(S.String)),
+          reason_for_change_description: S.optional(S.NullOr(S.String)),
+          salary_decrease_details: S.optional(S.NullOr(__S(1216, __c38, 0))),
+        }),
+      ).annotate({ identifier: "RequestDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          amendment_contract_id: S.NullOr(S.String),
+          changes: S.Unknown,
+          employment_id: S.String,
+          id: S.String,
+          request_details: __S(1217, __c38, 1),
+          requested_by: S.String,
+          status: S.String,
+          submitted_at: S.String,
+          zendesk_ticket_url: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ContractAmendment" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          contract_amendment: __S(1218, __c38, 2),
+        }),
+      ).annotate({
+        identifier: "ContractAmendmentResponseData",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(1219, __c38, 3)),
+        }),
+      ).annotate({
+        identifier: "ContractAmendmentResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.optional(S.String.pipe(T.Query())),
@@ -19144,12 +16351,12 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetCompanyManagersRequest",
       });
+    case 1:
+      return S.Array(__S(34, __c1, 2));
     case 2:
-      return S.Array(__S(19, __c2, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          company_managers: S.optional(__S(418, __c52, 2)),
+          company_managers: S.optional(__S(1249, __c39, 1)),
           current_page: S.optional(S.Number),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
@@ -19157,13 +16364,17 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "CompanyManagersResponseData",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(419, __c52, 3)),
+          data: S.optional(__S(1250, __c39, 2)),
         }),
       ).annotate({ identifier: "CompanyManagersResponse" });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -19173,29 +16384,29 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetCompanyPricingPlansRequest",
       });
-    case 6:
-      return S.Array(__S(26, __c3, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          pricing_plans: __S(422, __c52, 6),
+          pricing_plans: __S(1281, __c40, 1),
         }),
       ).annotate({
         identifier: "ListCompanyPricingPlansResponseData",
       });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(423, __c52, 7),
+          data: __S(1282, __c40, 2),
         }),
       ).annotate({
         identifier: "ListCompanyPricingPlansResponse",
       });
-    case 1:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -19205,33 +16416,37 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetCompanyProductPricesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          base_price: __S(23, __c2, 7),
+          base_price: __S(640, __c20, 0),
           id: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "ProductPrice" });
+    case 2:
+      return S.Array(__S(1313, __c41, 1));
     case 3:
-      return S.Array(__S(426, __c53, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          product_prices: __S(427, __c53, 3),
+          product_prices: __S(1314, __c41, 2),
         }),
       ).annotate({
         identifier: "ListProductPricesResponseData",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(428, __c53, 4),
+          data: __S(1315, __c41, 3),
         }),
       ).annotate({
         identifier: "ListProductPricesResponse",
       });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -19241,21 +16456,21 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetCompanyWebhookCallbacksRequest",
       });
-    case 7:
-      return S.Array(__S(258, __c32, 2));
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(11648, __c364, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(431, __c53, 7),
+          data: __S(1345, __c42, 1),
         }),
       ).annotate({
         identifier: "ListWebhookCallbacksResponse",
       });
-    case 1:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -19263,7 +16478,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetContractAmendmentRequest",
       });
-    case 2:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.optional(S.String.pipe(T.Query())),
@@ -19274,7 +16493,7 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetContractAmendmentsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String,
@@ -19287,12 +16506,12 @@ function __c54(j: number): any {
           submitted_at: S.String,
         }),
       ).annotate({ identifier: "MinimalContractAmendment" });
-    case 4:
-      return S.Array(__S(435, __c54, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1409, __c44, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          contract_amendments: S.optional(__S(436, __c54, 4)),
+          contract_amendments: S.optional(__S(1410, __c44, 2)),
           current_page: S.optional(S.Number),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
@@ -19300,15 +16519,19 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ListContractAmendmentResponseData",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(437, __c54, 5)),
+          data: S.optional(__S(1411, __c44, 3)),
         }),
       ).annotate({
         identifier: "ListContractAmendmentResponse",
       });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Query()),
@@ -19321,7 +16544,7 @@ function __c54(j: number): any {
       });
   }
 }
-function __c55(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19334,14 +16557,34 @@ function __c55(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          contractor_invoice: __S(1507, __c47, 3),
+        }),
+      ).annotate({
+        identifier: "ContractorInvoiceResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1473, __c46, 1),
+        }),
+      ).annotate({
+        identifier: "ContractorInvoiceResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           amount: S.Number,
           description: S.String,
           type: S.String,
         }),
       ).annotate({ identifier: "ContractorInvoiceItem" });
+    case 1:
+      return S.Array(__S(1504, __c47, 0));
     case 2:
-      return S.Array(__S(441, __c55, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           amount_due: S.Number,
@@ -19353,7 +16596,7 @@ function __c55(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "ContractorInvoicePayment" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
@@ -19366,11 +16609,11 @@ function __c55(j: number): any {
           employment_id: S.optional(S.String),
           fx_rate: S.optional(S.NullOr(S.Number)),
           id: S.String,
-          items: __S(442, __c55, 2),
+          items: __S(1505, __c47, 1),
           number: S.optional(S.NullOr(S.String)),
           paid_out_at: S.optional(S.NullOr(S.String)),
           pay_out_method: S.optional(S.NullOr(S.String)),
-          payment: S.optional(S.NullOr(__S(443, __c55, 3))),
+          payment: S.optional(S.NullOr(__S(1506, __c47, 2))),
           processing_fee: S.optional(S.NullOr(S.Number)),
           processing_fee_currency: S.optional(S.NullOr(S.String)),
           processing_fee_payer: S.optional(S.NullOr(S.String)),
@@ -19381,23 +16624,11 @@ function __c55(j: number): any {
           target_currency: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ContractorInvoice" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          contractor_invoice: __S(444, __c55, 4),
-        }),
-      ).annotate({
-        identifier: "ContractorInvoiceResponseData",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(445, __c55, 5),
-        }),
-      ).annotate({
-        identifier: "ContractorInvoiceResponse",
-      });
-    case 7:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
@@ -19418,16 +16649,12 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetContractorInvoicesRequest",
       });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(444, __c55, 4));
     case 1:
+      return S.Array(__S(1507, __c47, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          contractor_invoices: S.optional(__S(448, __c56, 0)),
+          contractor_invoices: S.optional(__S(1537, __c48, 1)),
           current_page: S.optional(S.Number),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
@@ -19435,15 +16662,19 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ListContractorInvoicesResponseData",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(449, __c56, 1)),
+          data: S.optional(__S(1538, __c48, 2)),
         }),
       ).annotate({
         identifier: "ListContractorInvoicesResponse",
       });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -19451,14 +16682,18 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetContractorInvoiceScheduleRequest",
       });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           currency: S.NullOr(S.String),
-          custom_days: S.optional(S.NullOr(__S(38, __c4, 6))),
+          custom_days: S.optional(S.NullOr(__S(2112, __c66, 0))),
           employment_id: S.String,
           id: S.String,
-          items: __S(40, __c5, 0),
+          items: __S(2145, __c67, 1),
           next_invoice_at: S.optional(S.NullOr(S.String)),
           note: S.optional(S.NullOr(S.String)),
           nr_occurrences: S.optional(S.NullOr(S.Number)),
@@ -19471,23 +16706,63 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ContractorInvoiceSchedule",
       });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          contractor_invoice_schedule: __S(452, __c56, 4),
+          contractor_invoice_schedule: __S(1600, __c50, 0),
         }),
       ).annotate({
         identifier: "ContractorInvoiceScheduleResponseData",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(453, __c56, 5),
+          data: __S(1632, __c51, 0),
         }),
       ).annotate({
         identifier: "ContractorInvoiceScheduleResponse",
       });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
+          amendment_contract_id: S.String,
+          contract_amendment: S.Unknown,
+          employment_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/contract-amendments/automatable", code: 200 })),
+      ).annotate({
+        identifier: "CreateContractAmendmentsAutomatableRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          automatable: S.optional(S.Boolean),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContractAmendmentAutomatableResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(1665, __c52, 1)),
+        }),
+      ).annotate({
+        identifier: "ContractAmendmentAutomatableResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           start_date_from: S.optional(S.String.pipe(T.Query())),
@@ -19506,16 +16781,12 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetContractorInvoiceSchedulesRequest",
       });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(452, __c56, 4));
     case 1:
+      return S.Array(__S(1600, __c50, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          contractor_invoice_schedules: S.optional(__S(456, __c57, 0)),
+          contractor_invoice_schedules: S.optional(__S(1697, __c53, 1)),
           current_page: S.optional(S.Number),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
@@ -19523,15 +16794,19 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ListContractorInvoiceSchedulesResponseData",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(457, __c57, 1)),
+          data: S.optional(__S(1698, __c53, 2)),
         }),
       ).annotate({
         identifier: "ListContractorInvoiceSchedulesResponse",
       });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.optional(S.String.pipe(T.Query())),
@@ -19544,7 +16819,32 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetContractorsCorTerminationRequestsRequest",
       });
-    case 4:
+    case 1:
+      return S.Array(__S(1760, __c55, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          current_page: S.optional(S.Number),
+          termination_requests: S.optional(__S(1729, __c54, 1)),
+          total_count: S.optional(S.Number),
+          total_pages: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IndexCorTerminationRequestsResponseData",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(1730, __c54, 2)),
+        }),
+      ).annotate({
+        identifier: "IndexCorTerminationRequestsResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cancelled_at: S.NullOr(S.String),
@@ -19557,30 +16857,9 @@ function __c57(j: number): any {
           termination_date: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CorTerminationRequest" });
-    case 5:
-      return S.Array(__S(460, __c57, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          current_page: S.optional(S.Number),
-          termination_requests: S.optional(__S(461, __c57, 5)),
-          total_count: S.optional(S.Number),
-          total_pages: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IndexCorTerminationRequestsResponseData",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(462, __c57, 6)),
-        }),
-      ).annotate({
-        identifier: "IndexCorTerminationRequestsResponse",
-      });
   }
 }
-function __c58(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19598,6 +16877,37 @@ function __c58(j: number): any {
         identifier: "GetContractorsEmploymentContractDocumentRequest",
       });
     case 1:
+      return S.Array(__S(1824, __c57, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.String,
+          name: S.String,
+          signatories: __S(1793, __c56, 1),
+          status: S.String,
+        }),
+      ).annotate({
+        identifier: "ContractDocumentResponseDataContractDocument",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          contract_document: __S(1794, __c56, 2),
+        }),
+      ).annotate({
+        identifier: "ContractDocumentResponseData",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1795, __c56, 3),
+        }),
+      ).annotate({ identifier: "ContractDocumentResponse" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.NullOr(S.String)),
@@ -19611,34 +16921,11 @@ function __c58(j: number): any {
           user_id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Signatory" });
-    case 2:
-      return S.Array(__S(465, __c58, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.String,
-          name: S.String,
-          signatories: __S(466, __c58, 2),
-          status: S.String,
-        }),
-      ).annotate({
-        identifier: "ContractDocumentResponseDataContractDocument",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          contract_document: __S(467, __c58, 3),
-        }),
-      ).annotate({
-        identifier: "ContractDocumentResponseData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(468, __c58, 4),
-        }),
-      ).annotate({ identifier: "ContractDocumentResponse" });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -19653,28 +16940,28 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetContractorsEmploymentContractorCurrenciesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
           source: S.String,
         }),
       ).annotate({ identifier: "ContractorCurrencyItem" });
+    case 2:
+      return S.Array(__S(1857, __c58, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1858, __c58, 2),
+        }),
+      ).annotate({
+        identifier: "ContractorCurrencyResponse",
+      });
   }
 }
 function __c59(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(471, __c58, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(472, __c59, 0),
-        }),
-      ).annotate({
-        identifier: "ContractorCurrencyResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -19688,7 +16975,7 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetContractorsEmploymentContractorSubscriptionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
@@ -19696,7 +16983,7 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ContractorSubscriptionsSummaryCompanyProduct",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           expiration_date: S.optional(S.String),
@@ -19705,7 +16992,7 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ContractorSubscriptionsSummaryCompanyProductDiscount",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           amount: S.optional(S.Number),
@@ -19714,16 +17001,16 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ContractorSubscriptionsSummaryPrice",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          company_product: __S(475, __c59, 3),
-          company_product_discount: __S(476, __c59, 4),
-          currency: __S(88, __c11, 0),
-          eligibility_questionnaire: S.optional(__S(56, __c7, 0)),
+          company_product: __S(1889, __c59, 1),
+          company_product_discount: __S(1890, __c59, 2),
+          currency: __S(5664, __c177, 0),
+          eligibility_questionnaire: S.optional(__S(2624, __c82, 0)),
           is_termination_fees_enabled: S.optional(S.Boolean),
-          price: __S(477, __c59, 5),
-          product: __S(25, __c3, 1),
+          price: __S(1891, __c59, 3),
+          product: __S(672, __c21, 0),
           total_amount: S.NullOr(S.Number),
           total_discount: S.optional(S.Number),
           total_in_advance: S.optional(S.Number),
@@ -19732,21 +17019,21 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ContractorSubscriptionsSummary",
       });
-    case 7:
-      return S.Array(__S(478, __c59, 6));
+    case 5:
+      return S.Array(__S(1892, __c59, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1893, __c59, 5),
+        }),
+      ).annotate({
+        identifier: "ContractorSubscriptionSummariesResponse",
+      });
   }
 }
 function __c60(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(479, __c59, 7),
-        }),
-      ).annotate({
-        identifier: "ContractorSubscriptionSummariesResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -19761,15 +17048,19 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetContractorsEmploymentCorTerminationRequestRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(460, __c57, 4),
+          data: __S(1760, __c55, 0),
         }),
       ).annotate({
         identifier: "CorTerminationRequestResponse",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -19783,25 +17074,29 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetContractorsEmploymentRatesRequest",
       });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(11041, __c345, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          rates: __S(484, __c60, 4),
+          rates: __S(1953, __c61, 1),
         }),
       ).annotate({
         identifier: "ListContractorRatesResponseData",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(485, __c60, 5),
+          data: __S(1954, __c61, 2),
         }),
       ).annotate({
         identifier: "ListContractorRatesResponse",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String.pipe(T.Query()),
@@ -19816,11 +17111,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetContractorsSchemasEligibilityQuestionnaireRequest",
       });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           permissions: S.optional(S.Unknown),
@@ -19830,15 +17121,19 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "EligibilityQuestionnaireJSONSchemaResponseData",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(488, __c61, 0)),
+          data: S.optional(__S(1985, __c62, 1)),
         }),
       ).annotate({
         identifier: "EligibilityQuestionnaireJSONSchemaResponse",
       });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           include_premium_benefits: S.optional(S.Boolean.pipe(T.Query())),
@@ -19846,15 +17141,15 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetCostCalculatorCountriesRequest",
       });
-    case 3:
-      return S.Array(__S(92, __c11, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(5601, __c175, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           availability: S.String,
-          child_regions: __S(491, __c61, 3),
+          child_regions: __S(2017, __c63, 1),
           code: S.String,
-          currency: __S(88, __c11, 0),
+          currency: __S(5664, __c177, 0),
           has_additional_fields: S.optional(S.Boolean),
           name: S.String,
           original_country_slug: S.String,
@@ -19863,17 +17158,21 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "CostCalculatorCountryLevelRegion",
       });
-    case 5:
-      return S.Array(__S(492, __c61, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(2018, __c63, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(493, __c61, 5),
+          data: __S(2019, __c63, 3),
         }),
       ).annotate({
         identifier: "CostCalculatorListCountryResponse",
       });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -19884,46 +17183,189 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetCostCalculatorRegionFieldsRequest",
       });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(347, __c43, 3),
-          required: S.optional(__S(24, __c3, 0)),
-          x_jsf_order: S.optional(__S(24, __c3, 0).pipe(T.Body("x-jsf-order"))),
+          properties: __S(320, __c10, 0),
+          required: S.optional(__S(704, __c22, 0)),
+          x_jsf_order: S.optional(__S(704, __c22, 0).pipe(T.Body("x-jsf-order"))),
         }),
       ).annotate({
         identifier: "JSONSchemaResponseDataSchema",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          schema: S.optional(__S(496, __c62, 0)),
-          version: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "JSONSchemaResponseData" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(497, __c62, 1)),
+          schema: S.optional(__S(2049, __c64, 1)),
+          version: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "JSONSchemaResponse" });
+      ).annotate({ identifier: "JSONSchemaResponseData" });
     case 3:
       return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/countries", code: 200 })),
-      ).annotate({ identifier: "GetCountriesRequest" });
+        S.Struct({
+          data: S.optional(__S(2050, __c64, 2)),
+        }),
+      ).annotate({ identifier: "JSONSchemaResponse" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currency: S.NullOr(S.String),
+          custom_days: S.optional(S.NullOr(__S(2112, __c66, 0))),
+          employment_id: S.String,
+          items: __S(2145, __c67, 1),
+          note: S.optional(S.String),
+          nr_occurrences: S.optional(S.Number),
+          number: S.optional(S.String),
+          periodicity: S.String,
+          start_date: S.String,
+        }),
+      ).annotate({
+        identifier: "ContractorInvoiceScheduleCreateParams",
+      });
+    case 1:
+      return S.Array(__S(2080, __c65, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          contractor_invoice_schedules: __S(2081, __c65, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/contractor-invoice-schedules", code: 200 })),
+      ).annotate({
+        identifier: "CreateContractorInvoiceScheduleRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(__S(2176, __c68, 0)),
+          description: S.optional(__S(2176, __c68, 0)),
+        }),
+      ).annotate({
+        identifier: "ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItem",
+      });
     case 4:
-      return S.Array(__S(292, __c36, 4));
+      return S.Array(__S(2083, __c65, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(500, __c62, 4)),
+          currency: S.optional(__S(2176, __c68, 0)),
+          custom_days: S.optional(__S(2176, __c68, 0)),
+          employment_id: S.optional(__S(2176, __c68, 0)),
+          items: S.optional(__S(2084, __c65, 4)),
+          note: S.optional(__S(704, __c22, 0)),
+          nr_occurrences: S.optional(__S(2176, __c68, 0)),
+          number: S.optional(__S(704, __c22, 0)),
+          periodicity: S.optional(__S(2176, __c68, 0)),
+          start_date: S.optional(__S(2176, __c68, 0)),
+        }),
+      ).annotate({
+        identifier: "ContractorInvoiceScheduleCreateResponseFailureErrors",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          currency: S.NullOr(S.String),
+          custom_days: S.optional(S.NullOr(__S(2112, __c66, 0))),
+          employment_id: S.String,
+          errors: __S(2085, __c65, 5),
+          items: __S(2145, __c67, 1),
+          note: S.optional(S.String),
+          nr_occurrences: S.optional(S.Number),
+          number: S.optional(S.String),
+          periodicity: S.String,
+          start_date: S.String,
+        }),
+      ).annotate({
+        identifier: "ContractorInvoiceScheduleCreateResponseFailure",
+      });
+    case 7:
+      return S.Array(__S(2086, __c65, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          currency: S.NullOr(S.String),
+          custom_days: S.optional(S.NullOr(__S(2112, __c66, 0))),
+          employment_id: S.String,
+          id: S.String,
+          items: __S(2145, __c67, 1),
+          note: S.optional(S.String),
+          nr_occurrences: S.optional(S.Number),
+          number: S.optional(S.String),
+          periodicity: S.String,
+          start_date: S.String,
+        }),
+      ).annotate({
+        identifier: "ContractorInvoiceScheduleCreateResponseSuccess",
+      });
+    case 9:
+      return S.Array(__S(2088, __c65, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          failures: __S(2087, __c65, 7),
+          successes: __S(2089, __c65, 9),
+        }),
+      ).annotate({
+        identifier: "CreateContractorInvoiceScheduleResponseData",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(2090, __c65, 10),
+        }),
+      ).annotate({
+        identifier: "CreateContractorInvoiceScheduleResponse",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          description: S.String,
+        }),
+      ).annotate({
+        identifier: "ContractorInvoiceScheduleItem",
+      });
+    case 1:
+      return S.Array(__S(2144, __c67, 0));
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/countries", code: 200 })),
+      ).annotate({ identifier: "GetCountriesRequest" });
+    case 1:
+      return S.Array(__S(12384, __c387, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(2209, __c69, 1)),
         }),
       ).annotate({ identifier: "CountriesResponse" });
-    case 6:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           country_code: S.String.pipe(T.Label()),
@@ -19935,7 +17377,11 @@ function __c62(j: number): any {
           json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/countries/{country_code}/{form}", code: 200 })),
       ).annotate({ identifier: "GetCountryRequest" });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           country_code: S.String.pipe(T.Label()),
@@ -19951,28 +17397,28 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "GetCountryContractorContractDetailsRequest",
       });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          schema: __S(347, __c43, 3),
+          schema: __S(320, __c10, 0),
           version: S.Number,
         }),
       ).annotate({
         identifier: "ContractorContractDetailsResponseData",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(504, __c63, 0)),
+          data: S.optional(__S(2273, __c71, 1)),
         }),
       ).annotate({
         identifier: "ContractorContractDetailsResponse",
       });
-    case 2:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           country_code: S.String.pipe(T.Label()),
@@ -19982,7 +17428,7 @@ function __c63(j: number): any {
           T.Http({ method: "GET", uri: "/v1/countries/{country_code}/holidays/{year}", code: 200 }),
         ),
       ).annotate({ identifier: "GetCountryHolidayRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           day: S.String,
@@ -19991,15 +17437,19 @@ function __c63(j: number): any {
           observed_day: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Holiday" });
-    case 4:
-      return S.Array(__S(507, __c63, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2305, __c72, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(508, __c63, 4)),
+          data: S.optional(__S(2306, __c72, 2)),
         }),
       ).annotate({ identifier: "HolidaysResponse" });
-    case 6:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           country_code: S.String.pipe(T.Label()),
@@ -20017,7 +17467,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GetCountryLegalEntityFormRequest",
       });
-    case 7:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.optional(S.String.pipe(T.Query())),
@@ -20025,32 +17479,32 @@ function __c63(j: number): any {
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/custom-fields", code: 200 })),
       ).annotate({ identifier: "GetCustomFieldsRequest" });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(107, __c13, 3));
     case 1:
+      return S.Array(__S(7904, __c247, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          custom_fields: S.optional(__S(512, __c64, 0)),
+          custom_fields: S.optional(__S(2369, __c74, 1)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListEmploymentCustomFieldsResponseData",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(513, __c64, 1)),
+          data: S.optional(__S(2370, __c74, 2)),
         }),
       ).annotate({
         identifier: "ListEmploymentCustomFieldsResponse",
       });
-    case 3:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           custom_field_id: S.String.pipe(T.Label()),
@@ -20065,7 +17519,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetCustomFieldValueRequest",
       });
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           custom_field_id: S.String,
@@ -20074,23 +17532,27 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "EmploymentCustomFieldValue",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          custom_field_value: __S(516, __c64, 4),
+          custom_field_value: __S(2432, __c76, 0),
         }),
       ).annotate({
         identifier: "EmploymentCustomFieldValueResponseData",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(517, __c64, 5),
+          data: __S(2433, __c76, 1),
         }),
       ).annotate({
         identifier: "EmploymentCustomFieldValueResponse",
       });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.optional(S.String.pipe(T.Query())),
@@ -20101,11 +17563,7 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetDirectOffboardingsRequest",
       });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String,
@@ -20117,28 +17575,32 @@ function __c65(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "DirectOffboarding" });
-    case 1:
-      return S.Array(__S(520, __c65, 0));
     case 2:
+      return S.Array(__S(2465, __c77, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          direct_offboardings: S.optional(__S(521, __c65, 1)),
+          direct_offboardings: S.optional(__S(2466, __c77, 2)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListDirectOffboardingResponseData",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(522, __c65, 2)),
+          data: S.optional(__S(2467, __c77, 3)),
         }),
       ).annotate({
         identifier: "ListDirectOffboardingResponse",
       });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           address_details_json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
@@ -20146,14 +17608,18 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetEmployeeAddressRequest",
       });
-    case 5:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           address_details: S.optional(S.NullOr(S.Unknown)),
           administrative_details: S.optional(S.Unknown),
-          bank_account_details: S.optional(__S(525, __c65, 5)),
+          bank_account_details: S.optional(__S(2528, __c79, 0)),
           basic_information: S.optional(S.Unknown),
           billing_address_details: S.optional(S.Unknown),
           contract_details: S.optional(S.Unknown),
@@ -20170,27 +17636,27 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "EmploymentDetailsOnlyResponseDataEmployment",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          employment: S.optional(__S(526, __c65, 6)),
+          employment: S.optional(__S(2529, __c79, 1)),
         }),
       ).annotate({
         identifier: "EmploymentDetailsOnlyResponseData",
       });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(527, __c65, 7),
+          data: __S(2530, __c79, 2),
         }),
       ).annotate({
         identifier: "EmploymentDetailsOnlyResponse",
       });
-    case 1:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bank_account_details_json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
@@ -20198,13 +17664,63 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetEmployeeBankAccountRequest",
       });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
+          employment_slug: S.String,
+          responses: __S(2592, __c81, 0),
+          type: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/contractors/eligibility-questionnaire", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateContractorsEligibilityQuestionnaireRequest",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(2624, __c82, 0),
+        }),
+      ).annotate({
+        identifier: "EligibilityQuestionnaireResponse",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          is_blocking: S.Boolean,
+          questions: S.Unknown,
+          responses: S.Unknown,
+          slug: S.String,
+          submitted_at: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "EligibilityQuestionnaire" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/employee/current", code: 200 })),
       ).annotate({
         identifier: "GetEmployeeCurrentRequest",
       });
-    case 3:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -20212,7 +17728,7 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetEmployeeDocumentRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
@@ -20225,21 +17741,25 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "DownloadDocumentResponseDataDocument",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          document: S.optional(__S(532, __c66, 4)),
+          document: S.optional(__S(2689, __c84, 1)),
         }),
       ).annotate({
         identifier: "DownloadDocumentResponseData",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(533, __c66, 5),
+          data: __S(2690, __c84, 2),
         }),
       ).annotate({ identifier: "DownloadDocumentResponse" });
-    case 7:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -20253,28 +17773,34 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetEmployeeDocumentsRequest",
       });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          documents: S.optional(__S(149, __c18, 5)),
+          documents: S.optional(__S(2752, __c86, 0)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListDocumentsResponseData",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(536, __c67, 0)),
+          data: S.optional(__S(2721, __c85, 1)),
         }),
       ).annotate({ identifier: "ListDocumentsResponse" });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8320, __c260, 0));
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           emergency_contact_details_json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
@@ -20282,7 +17808,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetEmployeeEmergencyContactRequest",
       });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           include_parents: S.optional(S.Boolean.pipe(T.Query())),
@@ -20291,7 +17821,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetEmployeeExpenseCategoriesRequest",
       });
-    case 4:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -20301,14 +17835,14 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "ExpenseCategoryNodeParent",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           instructions: S.optional(S.NullOr(S.String)),
           is_selectable: S.optional(S.Boolean),
-          parent: S.optional(S.NullOr(__S(540, __c67, 4))),
+          parent: S.optional(S.NullOr(__S(2848, __c89, 0))),
           prompt: S.optional(S.NullOr(S.String)),
           scope: S.optional(S.String),
           slug: S.optional(S.String),
@@ -20316,19 +17850,19 @@ function __c67(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExpenseCategoryNode" });
-    case 6:
-      return S.Array(__S(541, __c67, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2849, __c89, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(542, __c67, 6)),
+          data: S.optional(__S(2850, __c89, 2)),
         }),
       ).annotate({
         identifier: "ListExpenseCategoriesResponse",
       });
   }
 }
-function __c68(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20336,19 +17870,31 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetEmployeeExpensesRequest",
       });
-    case 1:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/employee/incentives", code: 200 })),
       ).annotate({
         identifier: "GetEmployeeIncentivesRequest",
       });
-    case 2:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/employee/leave-policies", code: 200 })),
       ).annotate({
         identifier: "GetEmployeeLeavePoliciesRequest",
       });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           custom: S.Boolean,
@@ -20357,17 +17903,21 @@ function __c68(j: number): any {
           uses_accrual_as_balance: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LeavePolicyDetails" });
-    case 4:
-      return S.Array(__S(547, __c68, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(2976, __c93, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(548, __c68, 4),
+          data: __S(2977, __c93, 1),
         }),
       ).annotate({
         identifier: "ListLeavePoliciesDetailsResponse",
       });
-    case 6:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/v1/employee/leave-policies/summary", code: 200 }),
@@ -20375,7 +17925,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetEmployeeLeavePoliciesSummaryRequest",
       });
-    case 7:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           days: S.Number,
@@ -20385,11 +17939,7 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "LimitedDaysandHoursResponse",
       });
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           days: S.Number,
@@ -20397,7 +17947,7 @@ function __c69(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "LeavePolicySummaryBooked" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.NullOr(S.String),
@@ -20407,34 +17957,38 @@ function __c69(j: number): any {
           unit: S.String,
         }),
       ).annotate({ identifier: "EmployeeLeavePolicy" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           annual_balance: S.Unknown,
           annual_entitlement: S.Unknown,
           balance: S.Unknown,
-          booked: __S(552, __c69, 0),
+          booked: __S(3041, __c95, 1),
           current_entitlement: S.Unknown,
-          leave_policy: __S(553, __c69, 1),
-          pending_approval: __S(551, __c68, 7),
-          taken: __S(552, __c69, 0),
-          upcoming_approved: __S(551, __c68, 7),
-          upcoming_requested: __S(551, __c68, 7),
-          used: __S(552, __c69, 0),
+          leave_policy: __S(3042, __c95, 2),
+          pending_approval: __S(3040, __c95, 0),
+          taken: __S(3041, __c95, 1),
+          upcoming_approved: __S(3040, __c95, 0),
+          upcoming_requested: __S(3040, __c95, 0),
+          used: __S(3041, __c95, 1),
           working_hours_per_day: S.Number,
         }),
       ).annotate({ identifier: "LeavePolicySummary" });
-    case 3:
-      return S.Array(__S(554, __c69, 2));
     case 4:
+      return S.Array(__S(3043, __c95, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(555, __c69, 3),
+          data: __S(3044, __c95, 4),
         }),
       ).annotate({
         identifier: "ListLeavePoliciesSummaryResponse",
       });
-    case 5:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -20443,14 +17997,14 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetEmployeePayslipFilesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.NullOr(S.String),
           symbol: S.String,
         }),
       ).annotate({ identifier: "PayslipFileCurrency" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           converted_amount: S.optional(S.NullOr(S.Number)),
@@ -20460,41 +18014,84 @@ function __c69(j: number): any {
           source_amount: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "PayslipFileNetSalary" });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          currency: S.optional(S.NullOr(__S(558, __c69, 6))),
+          currency: S.optional(S.NullOr(__S(3073, __c96, 1))),
           id: S.String,
           name: S.String,
-          net_salary: S.optional(S.NullOr(__S(559, __c69, 7))),
+          net_salary: S.optional(S.NullOr(__S(3074, __c96, 2))),
           period_end: S.optional(S.NullOr(S.String)),
           period_start: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "PayslipFile" });
-    case 1:
-      return S.Array(__S(560, __c70, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(3075, __c96, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          payslip_files: S.optional(__S(561, __c70, 1)),
+          payslip_files: S.optional(__S(3076, __c96, 4)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListPayslipFilesResponseData",
       });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(3077, __c96, 5)),
+        }),
+      ).annotate({ identifier: "ListPayslipFilesResponse" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          contract_document: S.Unknown,
+          skip_ai_checks: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/contractors/employments/{employment_id}/contract-documents",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateContractorsEmploymentContractDocumentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          status: S.String,
+        }),
+      ).annotate({ identifier: "ContractDocument" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          contract_document: __S(3105, __c97, 1),
+        }),
+      ).annotate({
+        identifier: "CreateContractDocumentResponseData",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(562, __c70, 2)),
+          data: __S(3106, __c97, 2),
         }),
-      ).annotate({ identifier: "ListPayslipFilesResponse" });
-    case 4:
+      ).annotate({
+        identifier: "CreateContractDocumentResponse",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -20503,7 +18100,7 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "GetEmployeePayslipsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           inserted_at: S.optional(S.String),
@@ -20511,7 +18108,7 @@ function __c70(j: number): any {
           slug: S.optional(S.String),
         }),
       ).annotate({ identifier: "PayslipItemFile" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           expected_payout_date: S.optional(S.NullOr(S.String)),
@@ -20520,7 +18117,7 @@ function __c70(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PayslipItemPayrollRun" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           active_compensation: S.optional(S.NullOr(S.Unknown)),
@@ -20529,42 +18126,42 @@ function __c70(j: number): any {
           slug: S.optional(S.String),
         }),
       ).annotate({ identifier: "PayslipItemPayslip" });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          file: __S(565, __c70, 5),
+          file: __S(3137, __c98, 1),
           has_employee_payroll_overviews: S.Boolean,
           payroll_output: S.optional(S.NullOr(S.Unknown)),
-          payroll_run: S.optional(S.NullOr(__S(566, __c70, 6))),
-          payslip: __S(567, __c70, 7),
+          payroll_run: S.optional(S.NullOr(__S(3138, __c98, 2))),
+          payslip: __S(3139, __c98, 3),
         }),
       ).annotate({ identifier: "PayslipItem" });
-    case 1:
-      return S.Array(__S(568, __c71, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(3140, __c98, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          payslips: S.optional(__S(569, __c71, 1)),
+          payslips: S.optional(__S(3141, __c98, 5)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListEmployeePayslipsResponseData",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(570, __c71, 2)),
+          data: S.optional(__S(3142, __c98, 6)),
         }),
       ).annotate({
         identifier: "ListEmployeePayslipsResponse",
       });
-    case 4:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           personal_details_json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
@@ -20572,7 +18169,11 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetEmployeePersonalDetailsRequest",
       });
-    case 5:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/v1/employee/personal-information", code: 200 }),
@@ -20580,7 +18181,11 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetEmployeePersonalInformationRequest",
       });
-    case 6:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -20589,28 +18194,32 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetEmployeeTimeoffRequest",
       });
-    case 7:
-      return S.Array(__S(124, __c15, 4));
   }
 }
-function __c72(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(9187, __c287, 3));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          timeoffs: S.optional(__S(575, __c71, 7)),
+          timeoffs: S.optional(__S(3264, __c102, 0)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListTimeoffResponseData" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(576, __c72, 0)),
+          data: S.optional(__S(3265, __c102, 1)),
         }),
       ).annotate({ identifier: "ListTimeoffResponse" });
-    case 2:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -20619,53 +18228,21 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "GetEmployeeTimesheetsRequest",
       });
-    case 3:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
           exclude_files: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/employments/{employment_id}", code: 200 })),
       ).annotate({ identifier: "GetEmploymentRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.String,
-        }),
-      ).annotate({ identifier: "PricingPlanDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          charges_vat: S.optional(S.Boolean),
-          requires_work_confirmation: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "EmploymentShowResponseDataEmploymentContractorSettings",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EmploymentShowResponseDataEmploymentContractorRateAmountCurrency",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(S.Number),
-          currency: S.optional(__S(582, __c72, 6)),
-        }),
-      ).annotate({
-        identifier: "EmploymentShowResponseDataEmploymentContractorRateAmount",
-      });
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(__S(583, __c72, 7)),
+          amount: S.optional(__S(3395, __c106, 3)),
           pay_frequency: S.optional(S.NullOr(S.String)),
           slug: S.optional(S.String),
           type: S.optional(S.String),
@@ -20673,46 +18250,7 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "EmploymentShowResponseDataEmploymentContractorRate",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          alpha_2_code: S.String,
-          code: S.String,
-          contractor_products_available: S.optional(__S(169, __c21, 1)),
-          country_subdivisions: S.optional(S.NullOr(__S(291, __c36, 3))),
-          employment_agreement_preview_available: S.optional(S.Boolean),
-          eor_onboarding: S.optional(S.Boolean),
-          locked_benefits: S.optional(S.String),
-          name: S.String,
-          region: S.optional(S.String),
-          subregion: S.optional(S.NullOr(S.String)),
-          supported_json_schemas: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "NullableCountry" });
     case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaskDescription" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          address_details: __S(587, __c73, 3),
-          administrative_details: __S(587, __c73, 3),
-          bank_account_details: __S(587, __c73, 3),
-          billing_address_details: __S(587, __c73, 3),
-          contract_details: __S(587, __c73, 3),
-          emergency_contact_details: __S(587, __c73, 3),
-          employment_document_details: __S(587, __c73, 3),
-          personal_details: __S(587, __c73, 3),
-          pricing_plan_details: __S(587, __c73, 3),
-        }),
-      ).annotate({ identifier: "OnboardingTasks" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           personal_details: S.Unknown,
@@ -20721,15 +18259,15 @@ function __c73(j: number): any {
           manager_email: S.NullOr(S.String),
           provisional_start_date: S.optional(S.String),
           address_details: S.Unknown,
-          pricing_plan_details: __S(580, __c72, 4),
+          pricing_plan_details: __S(3392, __c106, 0),
           full_name: S.String,
           partner_external_id: S.optional(S.NullOr(S.String)),
           type: S.String,
-          contractor_settings: S.optional(S.NullOr(__S(581, __c72, 5))),
+          contractor_settings: S.optional(S.NullOr(__S(3393, __c106, 1))),
           employment_lifecycle_stage: S.String,
           administrative_details: S.Unknown,
           contractor_type: S.optional(S.NullOr(S.String)),
-          contractor_rate: S.optional(S.NullOr(__S(584, __c73, 0))),
+          contractor_rate: S.optional(S.NullOr(__S(3329, __c104, 1))),
           company_id: S.String,
           expiration_date: S.optional(S.NullOr(S.String)),
           work_address_details: S.Unknown,
@@ -20747,15 +18285,15 @@ function __c73(j: number): any {
           external_id: S.optional(S.NullOr(S.String)),
           employment_model: S.NullOr(S.String),
           personal_email: S.String,
-          country: S.NullOr(__S(585, __c73, 1)),
+          country: S.NullOr(__S(3360, __c105, 0)),
           user_status: S.optional(S.String),
           seniority_date: S.optional(S.String),
-          bank_account_details: __S(586, __c73, 2),
-          files: __S(149, __c18, 5),
+          bank_account_details: __S(3396, __c106, 4),
+          files: __S(2752, __c86, 0),
           active_contract_id: S.optional(S.String),
           engaged_by_legal_entity_id: S.optional(S.NullOr(S.String)),
           billing_address_details: S.Unknown,
-          onboarding_tasks: __S(588, __c73, 4),
+          onboarding_tasks: __S(3398, __c106, 6),
           contract_details: S.Unknown,
           emergency_contact_details: S.Unknown,
           eligible_for_onboarding_cancellation: S.Boolean,
@@ -20766,23 +18304,102 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "EmploymentShowResponseDataEmployment",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          employment: S.optional(__S(589, __c73, 5)),
+          employment: S.optional(__S(3330, __c104, 2)),
         }),
       ).annotate({
         identifier: "EmploymentShowResponseData",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(590, __c73, 6),
+          data: __S(3331, __c104, 3),
         }),
       ).annotate({ identifier: "EmploymentShowResponse" });
   }
 }
-function __c74(j: number): any {
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alpha_2_code: S.String,
+          code: S.String,
+          contractor_products_available: S.optional(__S(10112, __c316, 0)),
+          country_subdivisions: S.optional(S.NullOr(__S(12353, __c386, 1))),
+          employment_agreement_preview_available: S.optional(S.Boolean),
+          eor_onboarding: S.optional(S.Boolean),
+          locked_benefits: S.optional(S.String),
+          name: S.String,
+          region: S.optional(S.String),
+          subregion: S.optional(S.NullOr(S.String)),
+          supported_json_schemas: S.optional(__S(704, __c22, 0)),
+        }),
+      ).annotate({ identifier: "NullableCountry" });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          frequency: S.String,
+        }),
+      ).annotate({ identifier: "PricingPlanDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          charges_vat: S.optional(S.Boolean),
+          requires_work_confirmation: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "EmploymentShowResponseDataEmploymentContractorSettings",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EmploymentShowResponseDataEmploymentContractorRateAmountCurrency",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(S.Number),
+          currency: S.optional(__S(3394, __c106, 2)),
+        }),
+      ).annotate({
+        identifier: "EmploymentShowResponseDataEmploymentContractorRateAmount",
+      });
+    case 4:
+      return S.Array(S.Unknown);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaskDescription" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          address_details: __S(3397, __c106, 5),
+          administrative_details: __S(3397, __c106, 5),
+          bank_account_details: __S(3397, __c106, 5),
+          billing_address_details: __S(3397, __c106, 5),
+          contract_details: __S(3397, __c106, 5),
+          emergency_contact_details: __S(3397, __c106, 5),
+          employment_document_details: __S(3397, __c106, 5),
+          personal_details: __S(3397, __c106, 5),
+          pricing_plan_details: __S(3397, __c106, 5),
+        }),
+      ).annotate({ identifier: "OnboardingTasks" });
+  }
+}
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20811,11 +18428,11 @@ function __c74(j: number): any {
         identifier: "BackgroundChecksBackgroundCheckRequestItem",
       });
     case 2:
-      return S.Array(__S(593, __c74, 1));
+      return S.Array(__S(3425, __c107, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          background_check_request_items: __S(594, __c74, 2),
+          background_check_request_items: __S(3426, __c107, 2),
           created_at: S.String,
           employment_id: S.String,
           id: S.String,
@@ -20827,7 +18444,7 @@ function __c74(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          background_check: __S(595, __c74, 3),
+          background_check: __S(3427, __c107, 3),
         }),
       ).annotate({
         identifier: "BackgroundChecksBackgroundCheckResponseData",
@@ -20835,12 +18452,16 @@ function __c74(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(596, __c74, 4),
+          data: __S(3428, __c107, 4),
         }),
       ).annotate({
         identifier: "BackgroundChecksBackgroundCheckResponse",
       });
-    case 6:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -20856,7 +18477,11 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "GetEmploymentBasicInformationRequest",
       });
-    case 7:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -20872,11 +18497,7 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "GetEmploymentBenefitOffersRequest",
       });
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.NullOr(S.String),
@@ -20885,17 +18506,17 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "UnifiedMinimalBenefitGroup",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          filter: S.NullOr(__S(600, __c75, 0)),
+          filter: S.NullOr(__S(3489, __c109, 1)),
           name: S.NullOr(S.String),
           slug: S.String,
         }),
       ).annotate({
         identifier: "UnifiedEmploymentBenefitGroup",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           display_cost: S.optional(S.NullOr(S.String)),
@@ -20905,26 +18526,30 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "UnifiedEmploymentBenefitTier",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          benefit_group: __S(601, __c75, 1),
-          benefit_tier: S.NullOr(__S(602, __c75, 2)),
+          benefit_group: __S(3490, __c109, 2),
+          benefit_tier: S.NullOr(__S(3491, __c109, 3)),
         }),
       ).annotate({
         identifier: "UnifiedEmploymentBenefitOffer",
       });
-    case 4:
-      return S.Array(__S(603, __c75, 3));
     case 5:
+      return S.Array(__S(3492, __c109, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(604, __c75, 4),
+          data: __S(3493, __c109, 5),
         }),
       ).annotate({
         identifier: "EmploymentsBenefitOffersListBenefitOffers",
       });
-    case 6:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -20939,40 +18564,76 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "GetEmploymentBenefitOffersSchemaRequest",
       });
-    case 7:
+    case 1:
       return S.Record(S.String, S.Unknown);
-  }
-}
-function __c76(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(607, __c75, 7),
-          required: S.optional(__S(44, __c5, 4)),
-          x_jsf_order: S.optional(__S(44, __c5, 4).pipe(T.Body("x-jsf-order"))),
+          properties: __S(3521, __c110, 1),
+          required: S.optional(__S(2176, __c68, 0)),
+          x_jsf_order: S.optional(__S(2176, __c68, 0).pipe(T.Body("x-jsf-order"))),
         }),
       ).annotate({
         identifier: "UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchema",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          schema: S.optional(__S(608, __c76, 0)),
+          schema: S.optional(__S(3522, __c110, 2)),
           version: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "UnifiedEmploymentsBenefitOffersJSONSchemaResponseData",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(609, __c76, 1)),
+          data: S.optional(__S(3523, __c110, 3)),
         }),
       ).annotate({
         identifier: "UnifiedEmploymentsBenefitOffersJSONSchemaResponse",
       });
-    case 3:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          contract_document_id: S.String.pipe(T.Label()),
+          signature: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/contractors/employments/{employment_id}/contract-documents/{contract_document_id}/sign",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateContractorsEmploymentContractDocumentSignRequest",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SuccessResponseData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(3584, __c112, 0),
+        }),
+      ).annotate({ identifier: "SuccessResponse" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -20986,7 +18647,7 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "GetEmploymentCompanyStructureNodesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -20995,53 +18656,53 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "CompanyStructureNodeCompanyStructure",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(347, __c43, 3)),
+          attributes: S.optional(__S(320, __c10, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CompanyStructureNodeParent",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(347, __c43, 3)),
-          company_structure: S.optional(__S(612, __c76, 4)),
+          attributes: S.optional(__S(320, __c10, 0)),
+          company_structure: S.optional(__S(3617, __c113, 1)),
           id: S.String,
-          parent: S.optional(S.NullOr(__S(613, __c76, 5))),
+          parent: S.optional(S.NullOr(__S(3618, __c113, 2))),
         }),
       ).annotate({ identifier: "CompanyStructureNode" });
-    case 7:
-      return S.Array(__S(614, __c76, 6));
-  }
-}
-function __c77(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(3619, __c113, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          company_structure_nodes: __S(615, __c76, 7),
+          company_structure_nodes: __S(3620, __c113, 4),
         }),
       ).annotate({
         identifier: "CompanyStructureNodesResponseData",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(616, __c77, 0),
+          data: __S(3621, __c113, 5),
         }),
       ).annotate({
         identifier: "CompanyStructureNodesResponse",
       });
-    case 2:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
-          statuses: S.optional(__S(169, __c21, 1).pipe(T.Query())),
-          except_statuses: S.optional(__S(169, __c21, 1).pipe(T.Query())),
+          statuses: S.optional(__S(10112, __c316, 0).pipe(T.Query())),
+          except_statuses: S.optional(__S(10112, __c316, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -21054,7 +18715,7 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "GetEmploymentContractDocumentsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.NullOr(S.String)),
@@ -21067,44 +18728,44 @@ function __c77(j: number): any {
           user_id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListSignatory" });
-    case 4:
-      return S.Array(__S(619, __c77, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3649, __c114, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           inserted_at: S.String,
           name: S.NullOr(S.String),
-          signatories: __S(620, __c77, 4),
+          signatories: __S(3650, __c114, 2),
           status: S.String,
           type: S.String,
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ContractDocumentItem" });
-    case 6:
-      return S.Array(__S(621, __c77, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(3651, __c114, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          contract_documents: __S(622, __c77, 6),
+          contract_documents: __S(3652, __c114, 4),
           current_page: S.Number,
           total_count: S.Number,
           total_pages: S.Number,
         }),
       ).annotate({ identifier: "IndexContractDocuments" });
-  }
-}
-function __c78(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(623, __c77, 7),
+          data: __S(3653, __c114, 5),
         }),
       ).annotate({
         identifier: "IndexContractDocumentsResponse",
       });
-    case 1:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Query()),
@@ -21113,7 +18774,7 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "GetEmploymentContractsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           amount: S.NullOr(S.Number),
@@ -21121,39 +18782,43 @@ function __c78(j: number): any {
           wage_type: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Compensation" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           activated_at: S.String,
           amendment_contract_id: S.NullOr(S.String),
-          compensation: __S(626, __c78, 2),
+          compensation: __S(3681, __c115, 1),
           contract_details: S.Unknown,
           contract_id: S.String,
-          country: __S(292, __c36, 4),
+          country: __S(12384, __c387, 0),
           effective_at: S.String,
           job_title: S.String,
           status: S.String,
         }),
       ).annotate({ identifier: "EmploymentContract" });
+    case 3:
+      return S.Array(__S(3682, __c115, 2));
     case 4:
-      return S.Array(__S(627, __c78, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          employment_contracts: __S(628, __c78, 4),
+          employment_contracts: __S(3683, __c115, 3),
         }),
       ).annotate({
         identifier: "ListEmploymentContractResponseData",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(629, __c78, 5),
+          data: __S(3684, __c115, 4),
         }),
       ).annotate({
         identifier: "ListEmploymentContractResponse",
       });
-    case 7:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -21167,11 +18832,7 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "GetEmploymentContractsEmploymentPendingChangesRequest",
       });
-  }
-}
-function __c79(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           changes: S.Unknown,
@@ -21180,25 +18841,29 @@ function __c79(j: number): any {
           pending_action_for_activation: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ContractPendingChanges" });
-    case 1:
-      return S.Array(__S(632, __c79, 0));
     case 2:
+      return S.Array(__S(3713, __c116, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pending_changes: __S(633, __c79, 1),
+          pending_changes: __S(3714, __c116, 2),
         }),
       ).annotate({
         identifier: "EmploymentContractPendingChangesResponseData",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(634, __c79, 2),
+          data: __S(3715, __c116, 3),
         }),
       ).annotate({
         identifier: "EmploymentContractPendingChangesResponse",
       });
-    case 4:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -21213,23 +18878,27 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "GetEmploymentCostCenterAllocationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          cost_center_allocations: __S(381, __c47, 5),
+          cost_center_allocations: __S(834, __c26, 2),
         }),
       ).annotate({
         identifier: "ListCostCenterAllocationsResponseData",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(637, __c79, 5),
+          data: __S(3745, __c117, 1),
         }),
       ).annotate({
         identifier: "ListCostCenterAllocationsResponse",
       });
-    case 7:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -21245,11 +18914,7 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "GetEmploymentCustomFieldsRequest",
       });
-  }
-}
-function __c80(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           custom_field_id: S.String,
@@ -21260,28 +18925,32 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListEmploymentCustomFieldValueResponse",
       });
-    case 1:
-      return S.Array(__S(640, __c80, 0));
     case 2:
+      return S.Array(__S(3777, __c118, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          custom_field_values: S.optional(__S(641, __c80, 1)),
+          custom_field_values: S.optional(__S(3778, __c118, 2)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListEmploymentCustomFieldValuePaginatedResponseData",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(642, __c80, 2)),
+          data: S.optional(__S(3779, __c118, 3)),
         }),
       ).annotate({
         identifier: "ListEmploymentCustomFieldValuePaginatedResponse",
       });
-    case 4:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -21295,7 +18964,11 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "GetEmploymentEmploymentAgreementDownloadRequest",
       });
-    case 5:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -21309,25 +18982,25 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "GetEmploymentEmploymentAgreementPreviewRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          employment_agreement: __S(135, __c16, 7),
+          employment_agreement: __S(9472, __c296, 0),
         }),
       ).annotate({
         identifier: "EmploymentAgreementPreviewResponseData",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(646, __c80, 6),
+          data: __S(3841, __c120, 1),
         }),
       ).annotate({
         identifier: "EmploymentAgreementPreviewResponse",
       });
   }
 }
-function __c81(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21343,7 +19016,11 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "GetEmploymentEngagementAgreementDetailsRequest",
       });
-    case 1:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -21352,18 +19029,18 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "EngagementAgreementDetailsFile",
       });
+    case 1:
+      return S.Array(__S(3904, __c122, 0));
     case 2:
-      return S.Array(__S(649, __c81, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          allowances_details: S.optional(S.NullOr(__S(44, __c5, 4))),
+          allowances_details: S.optional(S.NullOr(__S(2176, __c68, 0))),
           available_pto: S.optional(S.NullOr(S.Number)),
           break_time_per_day: S.optional(S.NullOr(S.Number)),
           business_expenses: S.optional(S.NullOr(S.String)),
           cba: S.optional(S.NullOr(S.String)),
-          cba_document: S.optional(S.NullOr(__S(650, __c81, 2))),
-          covenants: S.optional(S.NullOr(__S(44, __c5, 4))),
+          cba_document: S.optional(S.NullOr(__S(3905, __c122, 1))),
+          covenants: S.optional(S.NullOr(__S(2176, __c68, 0))),
           has_allowances: S.optional(S.NullOr(S.String)),
           has_bonus: S.optional(S.NullOr(S.String)),
           has_business_expenses: S.optional(S.NullOr(S.String)),
@@ -21387,29 +19064,33 @@ function __c81(j: number): any {
           similar_roles: S.optional(S.NullOr(S.String)),
           similar_work_conditions_details: S.optional(S.NullOr(S.String)),
           work_hours_per_week: S.optional(S.NullOr(S.Number)),
-          working_days: S.optional(S.NullOr(__S(44, __c5, 4))),
+          working_days: S.optional(S.NullOr(__S(2176, __c68, 0))),
         }),
       ).annotate({
         identifier: "EmploymentEngagementAgreementDetailsResponseDataDetails",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          details: __S(651, __c81, 3),
+          details: __S(3906, __c122, 2),
           slug: S.String,
         }),
       ).annotate({
         identifier: "EmploymentEngagementAgreementDetailsResponseData",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(652, __c81, 4),
+          data: __S(3907, __c122, 3),
         }),
       ).annotate({
         identifier: "EmploymentEngagementAgreementDetailsResponse",
       });
-    case 6:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -21423,7 +19104,29 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "GetEmploymentEngagementAgreementDetailsRequest2",
       });
-    case 7:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/contractors/employments/{employment_id}/contractor-cor-subscription",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateContractorsEmploymentContractorCorSubscriptionRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -21435,11 +19138,7 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "GetEmploymentFilesRequest",
       });
-  }
-}
-function __c82(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -21449,37 +19148,41 @@ function __c82(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "EmploymentFile" });
-    case 1:
-      return S.Array(__S(656, __c82, 0));
     case 2:
+      return S.Array(__S(4001, __c125, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          files: S.optional(__S(657, __c82, 1)),
+          files: S.optional(__S(4002, __c125, 2)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListFilesResponseData" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(658, __c82, 2)),
+          data: S.optional(__S(4003, __c125, 3)),
         }),
       ).annotate({ identifier: "ListFilesResponse" });
-    case 4:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/employments/{employment_id}/job", code: 200 })),
       ).annotate({ identifier: "GetEmploymentJobRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           label: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobAssociation" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -21489,41 +19192,41 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "JobCustomFieldValuesItemDefinition",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          definition: S.optional(__S(662, __c82, 6)),
+          definition: S.optional(__S(4034, __c126, 2)),
           value: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "JobCustomFieldValuesItem" });
-  }
-}
-function __c83(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(663, __c82, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(4035, __c126, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          career_track: S.optional(S.NullOr(__S(661, __c82, 5))),
+          career_track: S.optional(S.NullOr(__S(4033, __c126, 1))),
           code: S.optional(S.NullOr(S.String)),
-          custom_field_values: S.optional(__S(664, __c83, 0)),
+          custom_field_values: S.optional(__S(4036, __c126, 4)),
           description: S.optional(S.NullOr(S.String)),
           id: S.String,
           identifier: S.String,
-          job_family: S.optional(S.NullOr(__S(661, __c82, 5))),
-          job_level: S.optional(S.NullOr(__S(661, __c82, 5))),
-          job_sub_family: S.optional(S.NullOr(__S(661, __c82, 5))),
+          job_family: S.optional(S.NullOr(__S(4033, __c126, 1))),
+          job_level: S.optional(S.NullOr(__S(4033, __c126, 1))),
+          job_sub_family: S.optional(S.NullOr(__S(4033, __c126, 1))),
           label: S.String,
         }),
       ).annotate({ identifier: "Job" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(665, __c83, 1),
+          data: __S(4037, __c126, 5),
         }),
       ).annotate({ identifier: "EmploymentJobResponse" });
-    case 3:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -21537,7 +19240,7 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "GetEmploymentOnboardingStepsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           completed_at: S.optional(S.NullOr(S.String)),
@@ -21550,9 +19253,9 @@ function __c83(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "SubStep" });
-    case 5:
-      return S.Array(__S(668, __c83, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(4065, __c127, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           completed_at: S.optional(S.NullOr(S.String)),
@@ -21561,33 +19264,33 @@ function __c83(j: number): any {
           label: S.String,
           started_at: S.optional(S.NullOr(S.String)),
           status: S.String,
-          sub_steps: __S(669, __c83, 5),
+          sub_steps: __S(4066, __c127, 2),
           type: S.String,
         }),
       ).annotate({ identifier: "Step" });
-    case 7:
-      return S.Array(__S(670, __c83, 6));
-  }
-}
-function __c84(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(4067, __c127, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          steps: __S(671, __c83, 7),
+          steps: __S(4068, __c127, 4),
         }),
       ).annotate({
         identifier: "EmploymentOnboardingStepsResponseData",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(672, __c84, 0),
+          data: __S(4069, __c127, 5),
         }),
       ).annotate({
         identifier: "EmploymentOnboardingStepsResponse",
       });
-    case 2:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.optional(S.String.pipe(T.Query())),
@@ -21602,10 +19305,10 @@ function __c84(j: number): any {
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/employments", code: 200 })),
       ).annotate({ identifier: "GetEmploymentsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          country: S.NullOr(__S(585, __c73, 1)),
+          country: S.NullOr(__S(3360, __c105, 0)),
           department: S.optional(S.NullOr(S.String)),
           department_id: S.optional(S.NullOr(S.String)),
           employment_lifecycle_stage: S.String,
@@ -21624,26 +19327,30 @@ function __c84(j: number): any {
           work_email: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "MinimalEmployment" });
-    case 4:
-      return S.Array(__S(675, __c84, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(4097, __c128, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          employments: S.optional(__S(676, __c84, 4)),
+          employments: S.optional(__S(4098, __c128, 2)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListEmploymentsResponseData",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(677, __c84, 5)),
+          data: S.optional(__S(4099, __c128, 3)),
         }),
       ).annotate({ identifier: "ListEmploymentsResponse" });
-    case 7:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.optional(S.String.pipe(T.Query())),
@@ -21653,14 +19360,23 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "GetEmploymentsBulkRequest",
       });
+    case 1:
+      return S.Array(__S(4161, __c130, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(4129, __c129, 1),
+          next_cursor: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "EmploymentsBulkResponse" });
   }
 }
-function __c85(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(583, __c72, 7)),
+          amount: S.optional(__S(3395, __c106, 3)),
           pay_frequency: S.optional(S.NullOr(S.String)),
           slug: S.optional(S.String),
           type: S.optional(S.String),
@@ -21675,15 +19391,15 @@ function __c85(j: number): any {
           manager_email: S.NullOr(S.String),
           provisional_start_date: S.optional(S.String),
           address_details: S.Unknown,
-          pricing_plan_details: __S(580, __c72, 4),
+          pricing_plan_details: __S(3392, __c106, 0),
           full_name: S.String,
           partner_external_id: S.optional(S.NullOr(S.String)),
           type: S.String,
-          contractor_settings: S.optional(S.NullOr(__S(581, __c72, 5))),
+          contractor_settings: S.optional(S.NullOr(__S(3393, __c106, 1))),
           employment_lifecycle_stage: S.String,
           administrative_details: S.Unknown,
           contractor_type: S.optional(S.NullOr(S.String)),
-          contractor_rate: S.optional(S.NullOr(__S(680, __c85, 0))),
+          contractor_rate: S.optional(S.NullOr(__S(4160, __c130, 0))),
           company_id: S.String,
           expiration_date: S.optional(S.NullOr(S.String)),
           work_address_details: S.Unknown,
@@ -21701,15 +19417,15 @@ function __c85(j: number): any {
           external_id: S.optional(S.NullOr(S.String)),
           employment_model: S.NullOr(S.String),
           personal_email: S.String,
-          country: S.NullOr(__S(585, __c73, 1)),
+          country: S.NullOr(__S(3360, __c105, 0)),
           user_status: S.optional(S.String),
           seniority_date: S.optional(S.String),
-          bank_account_details: __S(586, __c73, 2),
-          files: __S(149, __c18, 5),
+          bank_account_details: __S(3396, __c106, 4),
+          files: __S(2752, __c86, 0),
           active_contract_id: S.optional(S.String),
           engaged_by_legal_entity_id: S.optional(S.NullOr(S.String)),
           billing_address_details: S.Unknown,
-          onboarding_tasks: __S(588, __c73, 4),
+          onboarding_tasks: __S(3398, __c106, 6),
           contract_details: S.Unknown,
           emergency_contact_details: S.Unknown,
           eligible_for_onboarding_cancellation: S.Boolean,
@@ -21717,50 +19433,49 @@ function __c85(j: number): any {
           created_at: S.String,
         }),
       ).annotate({ identifier: "Employment" });
-    case 2:
-      return S.Array(__S(681, __c85, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(682, __c85, 2),
-          next_cursor: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "EmploymentsBulkResponse" });
-    case 4:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/expenses/{id}", code: 200 })),
       ).annotate({ identifier: "GetExpensRequest" });
-    case 5:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/expenses", code: 200 })),
       ).annotate({ identifier: "GetExpensesRequest" });
-    case 6:
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          expenses: S.optional(__S(686, __c85, 6)),
+          expenses: S.optional(__S(4225, __c132, 1)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListExpenseResponseData" });
-  }
-}
-function __c86(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(687, __c85, 7)),
+          data: S.optional(__S(4226, __c132, 2)),
         }),
       ).annotate({ identifier: "ListExpenseResponse" });
-    case 1:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.optional(S.String.pipe(T.Query())),
@@ -21771,7 +19486,11 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "GetExpensesCategoriesRequest",
       });
-    case 2:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expense_id: S.String.pipe(T.Label()),
@@ -21784,17 +19503,21 @@ function __c86(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetExpensReceiptRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetExpensReceiptResponse",
       });
-    case 4:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/files/{id}", code: 200 })),
       ).annotate({ identifier: "GetFileRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
@@ -21807,21 +19530,40 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "DownloadFileResponseDataFile",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          file: __S(693, __c86, 5),
+          file: __S(4321, __c135, 1),
         }),
       ).annotate({ identifier: "DownloadFileResponseData" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(694, __c86, 6),
+          data: __S(4322, __c135, 2),
         }),
       ).annotate({ identifier: "DownloadFileResponse" });
   }
 }
-function __c87(j: number): any {
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          operation: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/contractors/employments/{employment_id}/contractor-plus-subscription",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateContractorsEmploymentContractorPlusSubscriptionRequest",
+      });
+  }
+}
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21843,7 +19585,7 @@ function __c87(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          help_center_article: __S(697, __c87, 1),
+          help_center_article: __S(4385, __c137, 1),
         }),
       ).annotate({
         identifier: "HelpCenterArticleResponseData",
@@ -21851,22 +19593,30 @@ function __c87(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(698, __c87, 2),
+          data: __S(4386, __c137, 2),
         }),
       ).annotate({
         identifier: "HelpCenterArticleResponse",
       });
-    case 4:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/identity/current", code: 200 })),
       ).annotate({
         identifier: "GetIdentityCurrentRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetIdentityCurrentResponse",
       });
-    case 6:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -21876,42 +19626,46 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "GetIdentityVerificationRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contract_id: S.String,
-          employment_document: S.NullOr(__S(111, __c13, 7)),
-          employment_image: S.NullOr(__S(111, __c13, 7)),
+          employment_document: S.NullOr(__S(8320, __c260, 0)),
+          employment_image: S.NullOr(__S(8320, __c260, 0)),
           status: S.String,
         }),
       ).annotate({ identifier: "IdentityVerification" });
-  }
-}
-function __c88(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          identity_verification_data: S.optional(__S(703, __c87, 7)),
+          identity_verification_data: S.optional(__S(4449, __c139, 1)),
         }),
       ).annotate({
         identifier: "IdentityVerificationResponseData",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(704, __c88, 0),
+          data: __S(4450, __c139, 2),
         }),
       ).annotate({
         identifier: "IdentityVerificationResponse",
       });
-    case 2:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/incentives/{id}", code: 200 })),
       ).annotate({ identifier: "GetIncentiveRequest" });
-    case 3:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.optional(S.String.pipe(T.Query())),
@@ -21922,26 +19676,30 @@ function __c88(j: number): any {
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/incentives", code: 200 })),
       ).annotate({ identifier: "GetIncentivesRequest" });
-    case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(9888, __c309, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          incentives: S.optional(__S(708, __c88, 4)),
+          incentives: S.optional(__S(4513, __c141, 1)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListIncentivesResponseData",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(709, __c88, 5)),
+          data: S.optional(__S(4514, __c141, 2)),
         }),
       ).annotate({ identifier: "ListIncentivesResponse" });
-    case 7:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
@@ -21953,32 +19711,32 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "GetIncentivesRecurringRequest",
       });
-  }
-}
-function __c89(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
     case 1:
+      return S.Array(__S(9952, __c311, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          recurring_incentives: S.optional(__S(712, __c89, 0)),
+          recurring_incentives: S.optional(__S(4545, __c142, 1)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListRecurringIncentivesResponseData",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(713, __c89, 1)),
+          data: S.optional(__S(4546, __c142, 2)),
         }),
       ).annotate({
         identifier: "ListRecurringIncentivesResponse",
       });
-    case 3:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -21986,7 +19744,7 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "GetJobTitleScreeningRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           job_title: S.String,
@@ -21996,39 +19754,39 @@ function __c89(j: number): any {
           verdict: S.String,
         }),
       ).annotate({ identifier: "JobTitleScreeningItem" });
-    case 5:
-      return S.Array(__S(716, __c89, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(4577, __c143, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
           id: S.String,
-          items: __S(717, __c89, 5),
+          items: __S(4578, __c143, 2),
           status: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "JobTitleScreening" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          job_title_screening: S.optional(__S(718, __c89, 6)),
+          job_title_screening: S.optional(__S(4579, __c143, 3)),
         }),
       ).annotate({
         identifier: "JobTitleScreeningResponseData",
       });
-  }
-}
-function __c90(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(719, __c89, 7)),
+          data: S.optional(__S(4580, __c143, 4)),
         }),
       ).annotate({
         identifier: "JobTitleScreeningResponse",
       });
-    case 1:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -22038,7 +19796,11 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "GetLeavePoliciesDetailRequest",
       });
-    case 2:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -22048,13 +19810,58 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "GetLeavePoliciesSummaryRequest",
       });
-    case 3:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/offboardings/{id}", code: 200 })),
       ).annotate({ identifier: "GetOffboardingRequest" });
-    case 4:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/contractors/employments/{employment_id}/cor-termination-requests",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateContractorsEmploymentCorTerminationRequestRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          employment_deactivation_date: S.NullOr(S.String),
+          id: S.String,
+          status: S.String,
+          termination_date: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CorTerminationRequestCreatedResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(4705, __c147, 1),
+        }),
+      ).annotate({
+        identifier: "CorTerminationRequestCreatedResponse",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -22062,7 +19869,25 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "GetOffboardingByIdRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          offboarding: S.optional(__S(4768, __c149, 0)),
+        }),
+      ).annotate({
+        identifier: "V2OffboardingResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(4737, __c148, 1)),
+        }),
+      ).annotate({ identifier: "V2OffboardingResponse" });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           confidential: S.optional(S.NullOr(S.Boolean)),
@@ -22076,23 +19901,9 @@ function __c90(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "V2Offboarding" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          offboarding: S.optional(__S(725, __c90, 5)),
-        }),
-      ).annotate({
-        identifier: "V2OffboardingResponseData",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(726, __c90, 6)),
-        }),
-      ).annotate({ identifier: "V2OffboardingResponse" });
   }
 }
-function __c91(j: number): any {
+function __c150(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22104,26 +19915,34 @@ function __c91(j: number): any {
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/offboardings", code: 200 })),
       ).annotate({ identifier: "GetOffboardingsRequest" });
-    case 1:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          offboardings: S.optional(__S(729, __c91, 1)),
+          offboardings: S.optional(__S(4832, __c151, 0)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListOffboardingResponseData",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(730, __c91, 2)),
+          data: S.optional(__S(4833, __c151, 1)),
         }),
       ).annotate({ identifier: "ListOffboardingResponse" });
-    case 4:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.optional(S.String.pipe(T.Query())),
@@ -22133,30 +19952,30 @@ function __c91(j: number): any {
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v2/offboardings", code: 200 })),
       ).annotate({ identifier: "GetOffboardingsRequest2" });
-    case 5:
-      return S.Array(__S(725, __c90, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(4768, __c149, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          offboardings: S.optional(__S(733, __c91, 5)),
+          offboardings: S.optional(__S(4865, __c152, 1)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "V2ListOffboardingResponseData",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(734, __c91, 6)),
+          data: S.optional(__S(4866, __c152, 2)),
         }),
       ).annotate({
         identifier: "V2ListOffboardingResponse",
       });
   }
 }
-function __c92(j: number): any {
+function __c153(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22170,7 +19989,11 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "GetOffboardingsEmploymentRequest",
       });
-    case 1:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -22185,36 +20008,40 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "GetOnboardingEmploymentPreOnboardingDocumentRequest",
       });
+    case 1:
+      return S.Array(__S(1824, __c57, 0));
     case 2:
-      return S.Array(__S(465, __c58, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
           name: S.String,
-          signatories: __S(738, __c92, 2),
+          signatories: __S(4929, __c154, 1),
           status: S.String,
         }),
       ).annotate({
         identifier: "ShowPreOnboardingDocumentResponseDataPreOnboardingDocument",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pre_onboarding_document: __S(739, __c92, 3),
+          pre_onboarding_document: __S(4930, __c154, 2),
         }),
       ).annotate({
         identifier: "ShowPreOnboardingDocumentResponseData",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(740, __c92, 4),
+          data: __S(4931, __c154, 3),
         }),
       ).annotate({
         identifier: "ShowPreOnboardingDocumentResponse",
       });
-    case 6:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -22228,10 +20055,10 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "GetOnboardingEmploymentPreOnboardingRequirementsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          depends_on_requirement: S.NullOr(__S(743, __c92, 7)),
+          depends_on_requirement: S.NullOr(__S(4961, __c155, 1)),
           description: S.String,
           freeze_employment_data: S.NullOr(S.Boolean),
           name: S.String,
@@ -22242,21 +20069,21 @@ function __c92(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "PreOnboardingRequirement" });
-  }
-}
-function __c93(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(743, __c92, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(4961, __c155, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(744, __c93, 0),
+          data: __S(4962, __c155, 2),
         }),
       ).annotate({
         identifier: "IndexPreOnboardingRequirementsResponse",
       });
-    case 2:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_slug: S.optional(S.String.pipe(T.Query())),
@@ -22267,24 +20094,28 @@ function __c93(j: number): any {
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/pay-items", code: 200 })),
       ).annotate({ identifier: "GetPayItemsRequest" });
-    case 3:
-      return S.Array(__S(189, __c23, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(10337, __c323, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           current_page: S.Number,
-          pay_items: __S(747, __c93, 3),
+          pay_items: __S(4993, __c156, 1),
           total_count: S.Number,
           total_pages: S.Number,
         }),
       ).annotate({ identifier: "ListPayItemsResponseData" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(748, __c93, 4),
+          data: __S(4994, __c156, 2),
         }),
       ).annotate({ identifier: "ListPayItemsResponse" });
-    case 6:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cycle: S.String.pipe(T.Label()),
@@ -22294,38 +20125,22 @@ function __c93(j: number): any {
       ).annotate({
         identifier: "GetPayrollCalendarRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          employee_inclusion_cutoff_date: S.optional(S.String),
-          end_date: S.optional(S.String),
-          input_cutoff_date: S.optional(S.String),
-          payment_date: S.optional(S.String),
-          start_date: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Cycle" });
-  }
-}
-function __c94(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(751, __c93, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          country: __S(292, __c36, 4),
+          country: __S(12384, __c387, 0),
           cycle_frequency: S.String,
-          cycles: __S(752, __c94, 0),
+          cycles: __S(5057, __c158, 1),
           owned_by_remote: S.Boolean,
         }),
       ).annotate({ identifier: "PayrollCalendar" });
     case 2:
-      return S.Array(__S(753, __c94, 1));
+      return S.Array(__S(5025, __c157, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          payroll_calendars: S.optional(__S(754, __c94, 2)),
+          payroll_calendars: S.optional(__S(5026, __c157, 2)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
@@ -22335,10 +20150,30 @@ function __c94(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(755, __c94, 3)),
+          data: S.optional(__S(5027, __c157, 3)),
         }),
       ).annotate({ identifier: "PayrollCalendarsResponse" });
-    case 5:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employee_inclusion_cutoff_date: S.optional(S.String),
+          end_date: S.optional(S.String),
+          input_cutoff_date: S.optional(S.String),
+          payment_date: S.optional(S.String),
+          start_date: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Cycle" });
+    case 1:
+      return S.Array(__S(5056, __c158, 0));
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           country_code: S.optional(S.String.pipe(T.Query())),
@@ -22349,84 +20184,55 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "GetPayrollCalendarsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          country: __S(292, __c36, 4),
+          country: __S(12384, __c387, 0),
           cycle_frequency: S.String,
-          cycles: __S(752, __c94, 0),
+          cycles: __S(5057, __c158, 1),
           id: S.String,
         }),
       ).annotate({ identifier: "PayrollCalendarEOR" });
-    case 7:
-      return S.Array(__S(758, __c94, 6));
-  }
-}
-function __c95(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(5089, __c159, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          payroll_calendars: S.optional(__S(759, __c94, 7)),
+          payroll_calendars: S.optional(__S(5090, __c159, 2)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PayrollCalendarsEORResponseData",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(760, __c95, 0)),
+          data: S.optional(__S(5091, __c159, 3)),
         }),
       ).annotate({
         identifier: "PayrollCalendarsEORResponse",
       });
-    case 2:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           payroll_run_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/payroll-runs/{payroll_run_id}", code: 200 })),
       ).annotate({ identifier: "GetPayrollRunRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(S.Number),
-          currency: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EmployeeDetailsBaseSalary",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          base_salary: __S(763, __c95, 3),
-          benefits: __S(763, __c95, 3),
-          deductions: __S(763, __c95, 3),
-          employer_costs: __S(763, __c95, 3),
-          employment_id: S.optional(S.String),
-          expenses: __S(763, __c95, 3),
-          full_name: S.NullOr(S.String),
-          gross_pay: __S(763, __c95, 3),
-          incentives: __S(763, __c95, 3),
-          net_pay: __S(763, __c95, 3),
-          other: __S(763, __c95, 3),
-          payslip_id: S.NullOr(S.String),
-          total_cost: __S(763, __c95, 3),
-        }),
-      ).annotate({ identifier: "EmployeeDetails" });
-    case 5:
-      return S.Array(__S(764, __c95, 4));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           approval_date: S.NullOr(S.String),
           benefits_total: S.Number,
-          country: __S(292, __c36, 4),
+          country: __S(12384, __c387, 0),
           currency_code: S.NullOr(S.String),
           cutoff_date: S.optional(S.NullOr(S.String)),
-          employee_details: __S(765, __c95, 5),
+          employee_details: __S(5154, __c161, 2),
           employer_contributions_total: S.Number,
           expected_payout_date: S.String,
           expenses_total: S.Number,
@@ -22441,15 +20247,140 @@ function __c95(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PayrollRun" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          payroll_run: S.optional(__S(766, __c95, 6)),
+          payroll_run: S.optional(__S(5121, __c160, 1)),
         }),
       ).annotate({ identifier: "PayrollRunResponse" });
   }
 }
-function __c96(j: number): any {
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(S.Number),
+          currency: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EmployeeDetailsBaseSalary",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          base_salary: __S(5152, __c161, 0),
+          benefits: __S(5152, __c161, 0),
+          deductions: __S(5152, __c161, 0),
+          employer_costs: __S(5152, __c161, 0),
+          employment_id: S.optional(S.String),
+          expenses: __S(5152, __c161, 0),
+          full_name: S.NullOr(S.String),
+          gross_pay: __S(5152, __c161, 0),
+          incentives: __S(5152, __c161, 0),
+          net_pay: __S(5152, __c161, 0),
+          other: __S(5152, __c161, 0),
+          payslip_id: S.NullOr(S.String),
+          total_cost: __S(5152, __c161, 0),
+        }),
+      ).annotate({ identifier: "EmployeeDetails" });
+    case 2:
+      return S.Array(__S(5153, __c161, 1));
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clock_in: S.String,
+          clock_out: S.String,
+          notes: S.optional(S.NullOr(S.String)),
+          timezone: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ContractorTimeTrackingParams",
+      });
+    case 1:
+      return S.Array(__S(5184, __c162, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          end_date: S.String,
+          start_date: S.String,
+          time_trackings: __S(5185, __c162, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/contractors/employments/{employment_id}/timesheets",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateContractorsEmploymentTimesheetRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          clock_in: S.String,
+          clock_out: S.String,
+          notes: S.NullOr(S.String),
+          timezone: S.String,
+          total_hours: __S(5216, __c163, 0),
+          type: S.String,
+        }),
+      ).annotate({ identifier: "ContractorTimeTracking" });
+    case 4:
+      return S.Array(__S(5187, __c162, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          break_hours: __S(5216, __c163, 0),
+          country_code: S.String,
+          employment_id: S.String,
+          end_date: S.String,
+          id: S.String,
+          notes: S.NullOr(S.String),
+          on_call_hours: __S(5216, __c163, 0),
+          regular_hours: __S(5216, __c163, 0),
+          start_date: S.String,
+          submitted_at: S.NullOr(S.String),
+          time_trackings: __S(5188, __c162, 4),
+          total_hours: __S(5216, __c163, 0),
+        }),
+      ).annotate({ identifier: "ContractorTimesheet" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          timesheet: __S(5189, __c162, 5),
+        }),
+      ).annotate({
+        identifier: "ContractorTimesheetResponseData",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(5190, __c162, 6)),
+        }),
+      ).annotate({
+        identifier: "ContractorTimesheetResponse",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hours: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HoursAndMinutes" });
+  }
+}
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22470,7 +20401,7 @@ function __c96(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          employee_details: __S(765, __c95, 5),
+          employee_details: __S(5154, __c161, 2),
         }),
       ).annotate({
         identifier: "EmployeeDetailsResponseData",
@@ -22478,10 +20409,14 @@ function __c96(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(769, __c96, 1),
+          data: __S(5249, __c164, 1),
         }),
       ).annotate({ identifier: "EmployeeDetailsResponse" });
-    case 3:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           payroll_run_id: S.String.pipe(T.Label()),
@@ -22496,7 +20431,11 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "GetPayrollRunGlReportRequest",
       });
-    case 4:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           payroll_run_id: S.String.pipe(T.Label()),
@@ -22511,7 +20450,11 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "GetPayrollRunGlReportDownloadRequest",
       });
-    case 5:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           payroll_period: S.optional(S.String.pipe(T.Query())),
@@ -22519,11 +20462,11 @@ function __c96(j: number): any {
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/payroll-runs", code: 200 })),
       ).annotate({ identifier: "GetPayrollRunsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           approval_date: S.NullOr(S.String),
-          country: __S(292, __c36, 4),
+          country: __S(12384, __c387, 0),
           currency_code: S.NullOr(S.String),
           cutoff_date: S.optional(S.NullOr(S.String)),
           expected_payout_date: S.String,
@@ -22535,29 +20478,33 @@ function __c96(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "MinimalPayrollRun" });
-    case 7:
-      return S.Array(__S(774, __c96, 6));
-  }
-}
-function __c97(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(5345, __c167, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          payroll_runs: S.optional(__S(775, __c96, 7)),
+          payroll_runs: S.optional(__S(5346, __c167, 2)),
         }),
       ).annotate({ identifier: "ListPayrollRunResponse" });
-    case 1:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           payslip_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/payslips/{payslip_id}/pdf", code: 200 })),
       ).annotate({ identifier: "GetPayslipPdfRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPayslipPdfResponse",
       });
-    case 3:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.optional(S.String.pipe(T.Query())),
@@ -22569,7 +20516,7 @@ function __c97(j: number): any {
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/payslips", code: 200 })),
       ).annotate({ identifier: "GetPayslipsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String,
@@ -22580,26 +20527,26 @@ function __c97(j: number): any {
           net_pay_source_amount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Payslip" });
-    case 5:
-      return S.Array(__S(780, __c97, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(5409, __c169, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          payslips: S.optional(__S(781, __c97, 5)),
+          payslips: S.optional(__S(5410, __c169, 2)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListPayslipsResponseData" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(782, __c97, 6)),
+          data: S.optional(__S(5411, __c169, 3)),
         }),
       ).annotate({ identifier: "ListPayslipsResponse" });
   }
 }
-function __c98(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22612,22 +20559,22 @@ function __c98(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          base_price: __S(23, __c2, 7),
+          base_price: __S(640, __c20, 0),
           id: S.String,
           period: S.optional(S.Number),
-          price: __S(23, __c2, 7),
-          product: __S(25, __c3, 1),
+          price: __S(640, __c20, 0),
+          product: __S(672, __c21, 0),
           unlimited: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "PricingPlanPartnerTemplate",
       });
     case 2:
-      return S.Array(__S(785, __c98, 1));
+      return S.Array(__S(5441, __c170, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pricing_plan_partner_templates: __S(786, __c98, 2),
+          pricing_plan_partner_templates: __S(5442, __c170, 2),
         }),
       ).annotate({
         identifier: "ListPricingPlanPartnerTemplatesResponseData",
@@ -22635,12 +20582,16 @@ function __c98(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(787, __c98, 3),
+          data: __S(5443, __c170, 3),
         }),
       ).annotate({
         identifier: "ListPricingPlanPartnerTemplatesResponse",
       });
-    case 5:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -22648,7 +20599,11 @@ function __c98(j: number): any {
       ).annotate({
         identifier: "GetProbationCompletionLetterRequest",
       });
-    case 6:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -22656,7 +20611,11 @@ function __c98(j: number): any {
       ).annotate({
         identifier: "GetProbationExtensionRequest",
       });
-    case 7:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -22664,7 +20623,195 @@ function __c98(j: number): any {
       ).annotate({ identifier: "GetProjectRequest" });
   }
 }
-function __c99(j: number): any {
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company_name: S.optional(S.String),
+          employer_currency_slug: S.String,
+          employments: __S(5636, __c176, 4),
+          global_discount: S.optional(__S(5634, __c176, 2)),
+          include_benefits: S.optional(S.Boolean),
+          include_cost_breakdowns: S.optional(S.Boolean),
+          include_management_fee: S.optional(S.Boolean),
+          include_premium_benefits: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/cost-calculator/estimation", code: 200 })),
+      ).annotate({
+        identifier: "CreateCostCalculatorEstimationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          alpha_2_code: S.String,
+          code: S.String,
+          features: S.optional(__S(704, __c22, 0)),
+          name: S.String,
+          slug: S.String,
+        }),
+      ).annotate({ identifier: "MinimalCountry" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          description: S.NullOr(S.String),
+          name: S.String,
+          zendesk_article_id: S.NullOr(S.String),
+          zendesk_article_url: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "CostCalculatorCost" });
+    case 3:
+      return S.Array(__S(5570, __c174, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          annual_amount: S.Number,
+          monthly_amount: S.Number,
+          months: S.Number,
+          text: S.String,
+        }),
+      ).annotate({
+        identifier: "CostCalculatorDiscountResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annual_benefits_breakdown: S.optional(__S(5571, __c174, 3)),
+          annual_benefits_total: S.optional(S.Number),
+          annual_contributions_breakdown: S.optional(__S(5571, __c174, 3)),
+          annual_contributions_total: S.Number,
+          annual_gross_salary: S.Number,
+          annual_indirect_tax: S.optional(S.Number),
+          annual_management_fee: S.optional(S.Number),
+          annual_total: S.Number,
+          currency: __S(5664, __c177, 0),
+          discount: S.optional(__S(5572, __c174, 4)),
+          extra_statutory_payments_breakdown: S.optional(__S(5571, __c174, 3)),
+          extra_statutory_payments_total: S.Number,
+          fringe_benefits_tax_breakdown: S.optional(__S(5571, __c174, 3)),
+          fringe_benefits_tax_total: S.optional(S.Number),
+          monthly_benefits_breakdown: S.optional(__S(5571, __c174, 3)),
+          monthly_benefits_total: S.optional(S.Number),
+          monthly_contributions_breakdown: S.optional(__S(5571, __c174, 3)),
+          monthly_contributions_total: S.Number,
+          monthly_fringe_benefits_tax_breakdown: S.optional(__S(5571, __c174, 3)),
+          monthly_fringe_benefits_tax_total: S.optional(S.Number),
+          monthly_gross_salary: S.Number,
+          monthly_indirect_tax: S.optional(S.Number),
+          monthly_management_fee: S.optional(S.Number),
+          monthly_tce: S.Number,
+          monthly_total: S.Number,
+        }),
+      ).annotate({ identifier: "CostCalculatorCosts" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          country: __S(5569, __c174, 1),
+          country_benefits_details_url: S.NullOr(S.String),
+          country_guide_url: S.NullOr(S.String),
+          employer_currency_costs: __S(5573, __c174, 5),
+          has_extra_statutory_payment: S.Boolean,
+          has_fringe_benefits_tax: S.optional(S.Boolean),
+          minimum_onboarding_time: S.NullOr(S.Number),
+          region: __S(5601, __c175, 1),
+          regional_currency_costs: __S(5573, __c174, 5),
+        }),
+      ).annotate({ identifier: "CostCalculatorEmployment" });
+    case 7:
+      return S.Array(__S(5574, __c174, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          employments: S.optional(__S(5575, __c174, 7)),
+        }),
+      ).annotate({
+        identifier: "CostCalculatorEstimateResponseData",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(5576, __c174, 8),
+        }),
+      ).annotate({
+        identifier: "CostCalculatorEstimateResponse",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(5601, __c175, 1)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          child_regions: S.optional(__S(5600, __c175, 0)),
+          code: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          slug: S.String,
+          status: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "MinimalRegion" });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_group_slug: S.String,
+          benefit_tier_slug: S.String,
+        }),
+      ).annotate({
+        identifier: "CostCalculatorBenefitParam",
+      });
+    case 1:
+      return S.Array(__S(5632, __c176, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(S.Number),
+          months: S.optional(S.Number),
+          percent: S.optional(S.Number),
+          quoted_amount: S.optional(S.Number),
+          text: S.String,
+        }),
+      ).annotate({ identifier: "CostCalculatorDiscount" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          age: S.optional(S.Number),
+          annual_gross_salary: S.optional(S.Number),
+          annual_gross_salary_in_employer_currency: S.optional(S.Number),
+          annual_total_cost: S.optional(S.Number),
+          annual_total_cost_in_employer_currency: S.optional(S.Number),
+          benefits: S.optional(__S(5633, __c176, 1)),
+          discount: S.optional(__S(5634, __c176, 2)),
+          employment_term: S.optional(S.String),
+          region_slug: S.String,
+          regional_to_employer_exchange_rate: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CostCalculatorEmploymentParam",
+      });
+    case 4:
+      return S.Array(__S(5635, __c176, 3));
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          name: S.optional(S.String),
+          slug: S.String,
+          symbol: S.String,
+        }),
+      ).annotate({ identifier: "Currency" });
+  }
+}
+function __c178(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22673,16 +20820,20 @@ function __c99(j: number): any {
         identifier: "GetProjectEligibleLeadsRequest",
       });
     case 1:
-      return S.Array(__S(282, __c35, 2));
+      return S.Array(__S(12416, __c388, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(793, __c99, 1),
+          data: __S(5697, __c178, 1),
         }),
       ).annotate({
         identifier: "ListEligibleLeadsResponse",
       });
-    case 3:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
@@ -22690,24 +20841,28 @@ function __c99(j: number): any {
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/projects", code: 200 })),
       ).annotate({ identifier: "GetProjectsRequest" });
-    case 4:
-      return S.Array(__S(208, __c26, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(10625, __c332, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          projects: S.optional(__S(796, __c99, 4)),
+          projects: S.optional(__S(5729, __c179, 1)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListProjectsResponseData" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(797, __c99, 5)),
+          data: S.optional(__S(5730, __c179, 2)),
         }),
       ).annotate({ identifier: "ListProjectsResponse" });
-    case 7:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           offboarding_request_id: S.String.pipe(T.Label()),
@@ -22715,23 +20870,23 @@ function __c99(j: number): any {
           T.Http({ method: "GET", uri: "/v1/resignations/{offboarding_request_id}", code: 200 }),
         ),
       ).annotate({ identifier: "GetResignationRequest" });
-  }
-}
-function __c100(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resignation: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Resignation" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(800, __c100, 0)),
+          data: S.optional(__S(5761, __c180, 1)),
         }),
       ).annotate({ identifier: "ResignationResponse" });
-    case 2:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           offboarding_request_id: S.String.pipe(T.Label()),
@@ -22745,17 +20900,25 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "GetResignationResignationLetterRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetResignationResignationLetterResponse",
       });
-    case 4:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/scim/v2/Groups/{id}", code: 200 })),
       ).annotate({ identifier: "GetScimGroupRequest" });
-    case 5:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _ref: S.optional(S.String.pipe(T.Body("$ref"))),
@@ -22765,9 +20928,23 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "IntegrationsScimGroupMembersItem",
       });
-    case 6:
-      return S.Array(__S(805, __c100, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(5856, __c183, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          id: S.String,
+          members: __S(5857, __c183, 1),
+          meta: S.optional(__S(5888, __c184, 0)),
+          schemas: __S(704, __c22, 0),
+        }),
+      ).annotate({ identifier: "IntegrationsScimGroup" });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.String),
@@ -22779,19 +20956,9 @@ function __c100(j: number): any {
       });
   }
 }
-function __c101(j: number): any {
+function __c185(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.String,
-          id: S.String,
-          members: __S(806, __c100, 6),
-          meta: S.optional(__S(807, __c100, 7)),
-          schemas: __S(24, __c3, 0),
-        }),
-      ).annotate({ identifier: "IntegrationsScimGroup" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           startIndex: S.optional(S.Number.pipe(T.Query())),
@@ -22799,27 +20966,35 @@ function __c101(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/scim/v2/Groups", code: 200 })),
       ).annotate({ identifier: "GetScimGroupsRequest" });
+    case 1:
+      return S.Array(__S(5858, __c183, 2));
     case 2:
-      return S.Array(__S(808, __c101, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          Resources: __S(810, __c101, 2),
+          Resources: __S(5921, __c185, 1),
           itemsPerPage: S.Number,
-          schemas: __S(24, __c3, 0),
+          schemas: __S(704, __c22, 0),
           startIndex: S.Number,
           totalResults: S.Number,
         }),
       ).annotate({
         identifier: "IntegrationsScimGroupListResponse",
       });
-    case 4:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/scim/v2/Users/{id}", code: 200 })),
       ).annotate({ identifier: "GetScimUserRequest" });
-    case 5:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           primary: S.optional(S.Boolean),
@@ -22829,9 +21004,9 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "IntegrationsScimUserEmailsItem",
       });
-    case 6:
-      return S.Array(__S(813, __c101, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(5984, __c187, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           familyName: S.String,
@@ -22840,11 +21015,7 @@ function __c101(j: number): any {
           honorificPrefix: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationsScimUserName" });
-  }
-}
-function __c102(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           _ref: S.optional(S.String.pipe(T.Body("$ref"))),
@@ -22854,36 +21025,40 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "IntegrationsScimUserUrnIetfParamsScimSchemasExtensionEnterprise20UserManager",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           department: S.optional(S.String),
           employeeNumber: S.optional(S.NullOr(S.String)),
-          manager: S.optional(__S(816, __c102, 0)),
+          manager: S.optional(__S(5987, __c187, 3)),
         }),
       ).annotate({
         identifier: "IntegrationsScimUserUrnIetfParamsScimSchemasExtensionEnterprise20User",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
           displayName: S.optional(S.String),
-          emails: __S(814, __c101, 6),
+          emails: __S(5985, __c187, 1),
           id: S.String,
-          meta: S.optional(__S(807, __c100, 7)),
-          name: __S(815, __c101, 7),
+          meta: S.optional(__S(5888, __c184, 0)),
+          name: __S(5986, __c187, 2),
           nickName: S.optional(S.String),
-          schemas: __S(24, __c3, 0),
+          schemas: __S(704, __c22, 0),
           urn_ietf_params_scim_schemas_extension_enterprise_2_0_User: S.optional(
-            __S(817, __c102, 1).pipe(
+            __S(5988, __c187, 4).pipe(
               T.Body("urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"),
             ),
           ),
           userName: S.String,
         }),
       ).annotate({ identifier: "IntegrationsScimUser" });
-    case 3:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startIndex: S.optional(S.Number.pipe(T.Query())),
@@ -22891,27 +21066,31 @@ function __c102(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/scim/v2/Users", code: 200 })),
       ).annotate({ identifier: "GetScimUsersRequest" });
-    case 4:
-      return S.Array(__S(818, __c102, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(5989, __c187, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Resources: __S(820, __c102, 4),
+          Resources: __S(6017, __c188, 1),
           itemsPerPage: S.Number,
-          schemas: __S(24, __c3, 0),
+          schemas: __S(704, __c22, 0),
           startIndex: S.Number,
           totalResults: S.Number,
         }),
       ).annotate({
         identifier: "IntegrationsScimUserListResponse",
       });
-    case 6:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/sso-configuration", code: 200 })),
       ).annotate({
         identifier: "GetSsoConfigurationRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           audience_uri: S.String,
@@ -22920,17 +21099,17 @@ function __c102(j: number): any {
           sso_url: S.String,
         }),
       ).annotate({ identifier: "SSOConfiguration" });
-  }
-}
-function __c103(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(823, __c102, 7)),
+          data: S.optional(__S(6049, __c189, 1)),
         }),
       ).annotate({ identifier: "SSOConfigurationResponse" });
-    case 1:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/v1/sso-configuration/details", code: 200 }),
@@ -22938,28 +21117,75 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "GetSsoConfigurationDetailsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           audience_uri: S.String,
           sso_url: S.String,
         }),
       ).annotate({ identifier: "SSOConfigurationDetails" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(826, __c103, 2)),
+          data: S.optional(__S(6081, __c190, 1)),
         }),
       ).annotate({
         identifier: "SSOConfigurationDetailsResponse",
       });
-    case 4:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company_name: S.optional(S.String),
+          employer_currency_slug: S.String,
+          employments: __S(5636, __c176, 4),
+          global_discount: S.optional(__S(5634, __c176, 2)),
+          include_benefits: S.optional(S.Boolean),
+          include_cost_breakdowns: S.optional(S.Boolean),
+          include_management_fee: S.optional(S.Boolean),
+          include_premium_benefits: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/cost-calculator/estimation-csv", code: 200 })),
+      ).annotate({
+        identifier: "CreateCostCalculatorEstimationCsvRequest",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.String,
+        }),
+      ).annotate({
+        identifier: "CostCalculatorEstimateCSVResponseData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(6144, __c192, 0),
+        }),
+      ).annotate({
+        identifier: "CostCalculatorEstimateCSVResponse",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/test-schema", code: 200 })),
       ).annotate({ identifier: "GetTestSchemaRequest" });
-    case 5:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.optional(S.String.pipe(T.Query())),
@@ -22973,67 +21199,91 @@ function __c103(j: number): any {
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/timeoff", code: 200 })),
       ).annotate({ identifier: "GetTimeoffRequest" });
-    case 6:
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/timeoff/{id}", code: 200 })),
       ).annotate({ identifier: "GetTimeoffByIdRequest" });
-    case 7:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/timeoff/types", code: 200 })),
       ).annotate({ identifier: "GetTimeoffTypesRequest" });
-  }
-}
-function __c104(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           name: S.String,
         }),
       ).annotate({ identifier: "TimeoffTypeResponse" });
-    case 1:
-      return S.Array(__S(832, __c104, 0));
     case 2:
+      return S.Array(__S(6273, __c196, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          timeoff_types: __S(833, __c104, 1),
+          timeoff_types: __S(6274, __c196, 2),
         }),
       ).annotate({
         identifier: "ListTimeoffTypesResponseData",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(834, __c104, 2)),
+          data: S.optional(__S(6275, __c196, 3)),
         }),
       ).annotate({ identifier: "ListTimeoffTypesResponse" });
-    case 4:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/timesheets/{id}", code: 200 })),
       ).annotate({ identifier: "GetTimesheetRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          holiday: __S(73, __c9, 1),
-          regular: __S(73, __c9, 1),
-          weekend: __S(73, __c9, 1),
+          timesheet: __S(6340, __c198, 4),
+        }),
+      ).annotate({ identifier: "TimesheetResponseData" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(6305, __c197, 1)),
+        }),
+      ).annotate({ identifier: "TimesheetResponse" });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          holiday: __S(5216, __c163, 0),
+          regular: __S(5216, __c163, 0),
+          weekend: __S(5216, __c163, 0),
         }),
       ).annotate({ identifier: "TypeOfDayBreakdown" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          day: __S(837, __c104, 5),
-          night: __S(837, __c104, 5),
+          day: __S(6336, __c198, 0),
+          night: __S(6336, __c198, 0),
         }),
       ).annotate({ identifier: "TimeBreakdown" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           clock_in: S.String,
@@ -23041,60 +21291,48 @@ function __c104(j: number): any {
           has_holiday_hours: S.Boolean,
           has_night_hours: S.Boolean,
           has_weekend_hours: S.Boolean,
-          holiday_hours: __S(73, __c9, 1),
-          night_hours: __S(73, __c9, 1),
+          holiday_hours: __S(5216, __c163, 0),
+          night_hours: __S(5216, __c163, 0),
           notes: S.NullOr(S.String),
-          time_breakdown: __S(838, __c104, 6),
+          time_breakdown: __S(6337, __c198, 1),
           timezone: S.String,
-          total_hours: __S(73, __c9, 1),
+          total_hours: __S(5216, __c163, 0),
           type: S.String,
-          weekend_hours: __S(73, __c9, 1),
+          weekend_hours: __S(5216, __c163, 0),
         }),
       ).annotate({ identifier: "TimeTracking" });
-  }
-}
-function __c105(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(839, __c104, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(6338, __c198, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           approval_required: S.Boolean,
-          break_hours: __S(73, __c9, 1),
+          break_hours: __S(5216, __c163, 0),
           country_code: S.String,
           employment_id: S.String,
           end_date: S.String,
-          holiday_hours: __S(73, __c9, 1),
+          holiday_hours: __S(5216, __c163, 0),
           id: S.String,
-          night_hours: __S(73, __c9, 1),
+          night_hours: __S(5216, __c163, 0),
           notes: S.NullOr(S.String),
-          on_call_hours: __S(73, __c9, 1),
-          overtime_hours: __S(73, __c9, 1),
-          regular_hours: __S(73, __c9, 1),
+          on_call_hours: __S(5216, __c163, 0),
+          overtime_hours: __S(5216, __c163, 0),
+          regular_hours: __S(5216, __c163, 0),
           start_date: S.String,
           status: S.String,
           submitted_at: S.NullOr(S.String),
-          time_trackings: __S(840, __c105, 0),
-          timeoff_hours: S.optional(__S(73, __c9, 1)),
-          total_hours: __S(73, __c9, 1),
-          unpaid_break_hours: __S(73, __c9, 1),
-          weekend_hours: __S(73, __c9, 1),
+          time_trackings: __S(6339, __c198, 3),
+          timeoff_hours: S.optional(__S(5216, __c163, 0)),
+          total_hours: __S(5216, __c163, 0),
+          unpaid_break_hours: __S(5216, __c163, 0),
+          weekend_hours: __S(5216, __c163, 0),
         }),
       ).annotate({ identifier: "Timesheet" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          timesheet: __S(841, __c105, 1),
-        }),
-      ).annotate({ identifier: "TimesheetResponseData" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(842, __c105, 2)),
-        }),
-      ).annotate({ identifier: "TimesheetResponse" });
-    case 4:
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
@@ -23104,28 +21342,28 @@ function __c105(j: number): any {
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/timesheets", code: 200 })),
       ).annotate({ identifier: "GetTimesheetsRequest" });
-    case 5:
-      return S.Array(__S(841, __c105, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(6340, __c198, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
-          timesheets: S.optional(__S(845, __c105, 5)),
+          timesheets: S.optional(__S(6369, __c199, 1)),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListTimesheetsResponseData",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(846, __c105, 6)),
+          data: S.optional(__S(6370, __c199, 2)),
         }),
       ).annotate({ identifier: "ListTimesheetsResponse" });
   }
 }
-function __c106(j: number): any {
+function __c200(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23135,7 +21373,11 @@ function __c106(j: number): any {
       ).annotate({
         identifier: "GetTravelLetterRequestRequest",
       });
-    case 1:
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String,
@@ -23143,13 +21385,17 @@ function __c106(j: number): any {
           name: S.String,
         }),
       ).annotate({ identifier: "TravelLetterUser" });
-    case 2:
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           additional_information: S.String,
-          destination_country: __S(292, __c36, 4),
+          destination_country: __S(12384, __c387, 0),
           embassy_address: S.String,
-          employer_approver: S.NullOr(__S(849, __c106, 1)),
+          employer_approver: S.NullOr(__S(6432, __c201, 0)),
           employer_special_instructions: S.NullOr(S.String),
           id: S.String,
           reason: S.String,
@@ -23165,22 +21411,30 @@ function __c106(j: number): any {
           travel_document_number: S.String,
           travel_reason: S.String,
           travel_reason_details: S.String,
-          user: S.NullOr(__S(849, __c106, 1)),
+          user: S.NullOr(__S(6432, __c201, 0)),
         }),
       ).annotate({ identifier: "TravelLetterRequest" });
-    case 3:
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          travel_letter_request: __S(850, __c106, 2),
+          travel_letter_request: __S(6464, __c202, 0),
         }),
       ).annotate({ identifier: "TravelLetterResponseData" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(851, __c106, 3),
+          data: __S(6496, __c203, 0),
         }),
       ).annotate({ identifier: "TravelLetterResponse" });
-    case 5:
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
@@ -23194,32 +21448,32 @@ function __c106(j: number): any {
       ).annotate({
         identifier: "GetTravelLetterRequestsRequest",
       });
-    case 6:
-      return S.Array(__S(850, __c106, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(6464, __c202, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
-          travel_letter_requests: S.optional(__S(854, __c106, 6)),
+          travel_letter_requests: S.optional(__S(6529, __c204, 1)),
         }),
       ).annotate({
         identifier: "ListTravelLettersResponseData",
       });
-  }
-}
-function __c107(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(855, __c106, 7)),
+          data: S.optional(__S(6530, __c204, 2)),
         }),
       ).annotate({
         identifier: "ListTravelLettersResponse",
       });
-    case 1:
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -23229,7 +21483,7 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "GetV1ContractorInvoicesIdPayInDetailsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           city: S.NullOr(S.String),
@@ -23240,13 +21494,13 @@ function __c107(j: number): any {
           street: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PayInBankAccountAddress" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           account_holder: S.NullOr(S.String),
           account_number: S.NullOr(S.String),
           ach_routing_number: S.NullOr(S.String),
-          address: S.NullOr(__S(858, __c107, 2)),
+          address: S.NullOr(__S(6561, __c205, 1)),
           bank_code: S.NullOr(S.String),
           bank_name: S.NullOr(S.String),
           branch_code: S.NullOr(S.String),
@@ -23265,13 +21519,13 @@ function __c107(j: number): any {
           wire_routing_number: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PayInBankAccount" });
+    case 3:
+      return S.Array(__S(6562, __c205, 2));
     case 4:
-      return S.Array(__S(859, __c107, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           amount_due: S.Number,
-          bank_accounts: S.NullOr(__S(860, __c107, 4)),
+          bank_accounts: S.NullOr(__S(6563, __c205, 3)),
           currency: S.NullOr(S.String),
           due_date: S.NullOr(S.String),
           pay_in_method: S.String,
@@ -23281,25 +21535,25 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "ContractorInvoicePayInDetails",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          pay_in_details: __S(861, __c107, 5),
+          pay_in_details: __S(6564, __c205, 4),
         }),
       ).annotate({
         identifier: "ContractorInvoicePayInDetailsResponseData",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(862, __c107, 6),
+          data: __S(6565, __c205, 5),
         }),
       ).annotate({
         identifier: "ContractorInvoicePayInDetailsResponse",
       });
   }
 }
-function __c108(j: number): any {
+function __c206(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23327,14 +21581,14 @@ function __c108(j: number): any {
         }),
       ).annotate({ identifier: "WebhookEvent" });
     case 2:
-      return S.Array(__S(865, __c108, 1));
+      return S.Array(__S(6593, __c206, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
-          webhook_events: S.optional(__S(866, __c108, 2)),
+          webhook_events: S.optional(__S(6594, __c206, 2)),
         }),
       ).annotate({
         identifier: "ListWebhookEventsResponseData",
@@ -23342,12 +21596,35 @@ function __c108(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(867, __c108, 3)),
+          data: S.optional(__S(6595, __c206, 3)),
         }),
       ).annotate({
         identifier: "ListWebhookEventsResponse",
       });
-    case 5:
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company_name: S.optional(S.String),
+          employer_currency_slug: S.String,
+          employments: __S(5636, __c176, 4),
+          global_discount: S.optional(__S(5634, __c176, 2)),
+          include_benefits: S.optional(S.Boolean),
+          include_cost_breakdowns: S.optional(S.Boolean),
+          include_management_fee: S.optional(S.Boolean),
+          include_premium_benefits: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/cost-calculator/estimation-pdf", code: 200 })),
+      ).annotate({
+        identifier: "CreateCostCalculatorEstimationPdfRequest",
+      });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -23355,12 +21632,16 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "GetWorkAuthorizationRequestRequest",
       });
-    case 6:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           additional_information: S.String,
-          destination_country: __S(292, __c36, 4),
-          employer_approver: S.NullOr(__S(849, __c106, 1)),
+          destination_country: __S(12384, __c387, 0),
+          employer_approver: S.NullOr(__S(6432, __c201, 0)),
           employer_special_instructions: S.NullOr(S.String),
           id: S.String,
           reason: S.String,
@@ -23369,32 +21650,36 @@ function __c108(j: number): any {
           travel_date_end: S.String,
           travel_date_start: S.String,
           travel_document_number: S.String,
-          user: S.NullOr(__S(849, __c106, 1)),
+          user: S.NullOr(__S(6432, __c201, 0)),
           will_negotiate_or_sign_contracts: S.NullOr(S.Boolean),
           work_location: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "WorkAuthorizationRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          work_authorization_request: __S(870, __c108, 6),
-        }),
-      ).annotate({
-        identifier: "WorkAuthorizationRequestResponseData",
-      });
   }
 }
-function __c109(j: number): any {
+function __c210(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(871, __c108, 7),
+          work_authorization_request: __S(6688, __c209, 0),
+        }),
+      ).annotate({
+        identifier: "WorkAuthorizationRequestResponseData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(6720, __c210, 0),
         }),
       ).annotate({
         identifier: "WorkAuthorizationRequestResponse",
       });
-    case 1:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
@@ -23408,28 +21693,32 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "GetWorkAuthorizationRequestsRequest",
       });
+    case 1:
+      return S.Array(__S(6688, __c209, 0));
     case 2:
-      return S.Array(__S(870, __c108, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           current_page: S.optional(S.Number),
           total_count: S.optional(S.Number),
           total_pages: S.optional(S.Number),
-          work_authorization_requests: S.optional(__S(874, __c109, 2)),
+          work_authorization_requests: S.optional(__S(6753, __c211, 1)),
         }),
       ).annotate({
         identifier: "ListWorkAuthorizationRequestsResponseData",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(875, __c109, 3)),
+          data: S.optional(__S(6754, __c211, 2)),
         }),
       ).annotate({
         identifier: "ListWorkAuthorizationRequestsResponse",
       });
-    case 5:
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -23447,7 +21736,11 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "PatchV1CompaniesCompanyIdRequest",
       });
-    case 6:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -23465,7 +21758,24 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "PatchV1CompaniesCompanyId2Request",
       });
-    case 7:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          billing_contact_for: __S(6881, __c215, 1),
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/company-managers/{user_id}", code: 200 })),
+      ).annotate({
+        identifier: "PatchV1CompanyManagersUserIdRequest",
+      });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           is_primary_billing_contact: S.Boolean,
@@ -23474,37 +21784,32 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "CompanyManagerBillingContact",
       });
+    case 1:
+      return S.Array(__S(6880, __c215, 0));
   }
 }
-function __c110(j: number): any {
+function __c216(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(879, __c109, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
-          billing_contact_for: __S(880, __c110, 0),
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/company-managers/{user_id}", code: 200 })),
-      ).annotate({
-        identifier: "PatchV1CompanyManagersUserIdRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          billing_contact_for: __S(880, __c110, 0),
+          billing_contact_for: __S(6881, __c215, 1),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/company-managers/{user_id}", code: 200 })),
       ).annotate({
         identifier: "PatchV1CompanyManagersUserId2Request",
       });
-    case 3:
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           currency: S.optional(S.NullOr(S.String)),
-          custom_days: S.optional(S.NullOr(__S(38, __c4, 6))),
-          items: S.optional(__S(40, __c5, 0)),
+          custom_days: S.optional(S.NullOr(__S(2112, __c66, 0))),
+          items: S.optional(__S(2145, __c67, 1)),
           note: S.optional(S.NullOr(S.String)),
           nr_occurrences: S.optional(S.NullOr(S.Number)),
           number: S.optional(S.NullOr(S.String)),
@@ -23515,13 +21820,17 @@ function __c110(j: number): any {
       ).annotate({
         identifier: "PatchV1ContractorInvoiceSchedulesIdRequest",
       });
-    case 4:
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           currency: S.optional(S.NullOr(S.String)),
-          custom_days: S.optional(S.NullOr(__S(38, __c4, 6))),
-          items: S.optional(__S(40, __c5, 0)),
+          custom_days: S.optional(S.NullOr(__S(2112, __c66, 0))),
+          items: S.optional(__S(2145, __c67, 1)),
           note: S.optional(S.NullOr(S.String)),
           nr_occurrences: S.optional(S.NullOr(S.Number)),
           number: S.optional(S.NullOr(S.String)),
@@ -23534,7 +21843,11 @@ function __c110(j: number): any {
       ).annotate({
         identifier: "PatchV1ContractorInvoiceSchedulesId2Request",
       });
-    case 5:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           custom_field_id: S.String.pipe(T.Label()),
@@ -23550,7 +21863,11 @@ function __c110(j: number): any {
       ).annotate({
         identifier: "PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequest",
       });
-    case 6:
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           custom_field_id: S.String.pipe(T.Label()),
@@ -23566,17 +21883,63 @@ function __c110(j: number): any {
       ).annotate({
         identifier: "PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2Request",
       });
-    case 7:
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          source_currency: S.String,
+          target_currency: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/currency-converter/effective", code: 200 })),
+      ).annotate({
+        identifier: "CreateCurrencyConverterEffectiveRequest",
+      });
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          exchange_rate: S.Number,
+          source_amount: S.Number,
+          source_currency: __S(736, __c23, 0),
+          target_amount: S.Number,
+          target_currency: __S(736, __c23, 0),
+        }),
+      ).annotate({ identifier: "ConvertCurrency" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conversion_data: __S(7104, __c222, 0),
+        }),
+      ).annotate({
+        identifier: "ConvertCurrencyResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(7105, __c222, 1),
+        }),
+      ).annotate({ identifier: "ConvertCurrencyResponse" });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          document: S.optional(__S(115, __c14, 3)),
+          document: S.optional(__S(9056, __c283, 0)),
           edit_reason: S.String,
           end_date: S.optional(S.String),
           leave_policy_variant_id: S.optional(S.String),
           notes: S.optional(S.String),
           start_date: S.optional(S.String),
-          timeoff_days: S.optional(__S(119, __c14, 7)),
+          timeoff_days: S.optional(__S(9249, __c289, 1)),
           timezone: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/employee/timeoff/{id}", code: 200 })),
       ).annotate({
@@ -23584,25 +21947,29 @@ function __c110(j: number): any {
       });
   }
 }
-function __c111(j: number): any {
+function __c224(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          document: S.optional(__S(115, __c14, 3)),
+          document: S.optional(__S(9056, __c283, 0)),
           edit_reason: S.String,
           end_date: S.optional(S.String),
           leave_policy_variant_id: S.optional(S.String),
           notes: S.optional(S.String),
           start_date: S.optional(S.String),
-          timeoff_days: S.optional(__S(119, __c14, 7)),
+          timeoff_days: S.optional(__S(9249, __c289, 1)),
           timezone: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/employee/timeoff/{id}", code: 200 })),
       ).annotate({
         identifier: "PatchV1EmployeeTimeoffId2Request",
       });
-    case 1:
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -23624,7 +21991,7 @@ function __c111(j: number): any {
           billing_address_details: S.optional(S.Unknown),
           company_id: S.optional(S.String),
           contract_details: S.optional(S.Unknown),
-          country: S.optional(__S(292, __c36, 4)),
+          country: S.optional(__S(12384, __c387, 0)),
           country_code: S.optional(S.String),
           department_id: S.optional(S.NullOr(S.String)),
           emergency_contact_details: S.optional(S.Unknown),
@@ -23639,19 +22006,27 @@ function __c111(j: number): any {
       ).annotate({
         identifier: "PatchV1EmploymentsEmploymentIdRequest",
       });
-    case 2:
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          employment: S.optional(__S(681, __c85, 1)),
+          employment: S.optional(__S(4161, __c130, 1)),
         }),
       ).annotate({ identifier: "EmploymentResponseData" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(890, __c111, 2),
+          data: __S(7232, __c226, 0),
         }),
       ).annotate({ identifier: "EmploymentResponse" });
-    case 4:
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -23673,7 +22048,7 @@ function __c111(j: number): any {
           billing_address_details: S.optional(S.Unknown),
           company_id: S.optional(S.String),
           contract_details: S.optional(S.Unknown),
-          country: S.optional(__S(292, __c36, 4)),
+          country: S.optional(__S(12384, __c387, 0)),
           country_code: S.optional(S.String),
           department_id: S.optional(S.NullOr(S.String)),
           emergency_contact_details: S.optional(S.Unknown),
@@ -23688,14 +22063,22 @@ function __c111(j: number): any {
       ).annotate({
         identifier: "PatchV1EmploymentsEmploymentId2Request",
       });
-    case 5:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/expenses/{id}", code: 200 })),
       ).annotate({ identifier: "PatchV1ExpensesIdRequest" });
-    case 6:
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -23704,7 +22087,11 @@ function __c111(j: number): any {
       ).annotate({
         identifier: "PatchV1ExpensesId2Request",
       });
-    case 7:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -23721,7 +22108,7 @@ function __c111(j: number): any {
       });
   }
 }
-function __c112(j: number): any {
+function __c231(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23738,7 +22125,11 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "PatchV1IncentivesId2Request",
       });
-    case 1:
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -23750,7 +22141,11 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "PatchV1SandboxEmploymentsEmploymentIdRequest",
       });
-    case 2:
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -23762,41 +22157,67 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "PatchV1SandboxEmploymentsEmploymentId2Request",
       });
-    case 3:
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          source_currency: S.String,
+          target_currency: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/currency-converter/raw", code: 200 })),
+      ).annotate({
+        identifier: "CreateCurrencyConverterRawRequest",
+      });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           approved_at: S.optional(S.String),
           approver_id: S.optional(S.NullOr(S.String)),
           cancel_reason: S.String,
-          document: S.optional(__S(115, __c14, 3)),
+          document: S.optional(__S(9056, __c283, 0)),
           edit_reason: S.String,
           end_date: S.optional(S.String),
           notes: S.optional(S.String),
           start_date: S.optional(S.String),
           status: S.optional(S.String),
-          timeoff_days: S.optional(__S(119, __c14, 7)),
+          timeoff_days: S.optional(__S(9249, __c289, 1)),
           timezone: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/timeoff/{id}", code: 200 })),
       ).annotate({ identifier: "PatchV1TimeoffIdRequest" });
-    case 4:
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           approved_at: S.optional(S.String),
           approver_id: S.optional(S.NullOr(S.String)),
           cancel_reason: S.String,
-          document: S.optional(__S(115, __c14, 3)),
+          document: S.optional(__S(9056, __c283, 0)),
           edit_reason: S.String,
           end_date: S.optional(S.String),
           notes: S.optional(S.String),
           start_date: S.optional(S.String),
           status: S.optional(S.String),
-          timeoff_days: S.optional(__S(119, __c14, 7)),
+          timeoff_days: S.optional(__S(9249, __c289, 1)),
           timezone: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/timeoff/{id}", code: 200 })),
       ).annotate({ identifier: "PatchV1TimeoffId2Request" });
-    case 5:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -23805,7 +22226,11 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "PatchV1TravelLetterRequestsIdRequest",
       });
-    case 6:
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -23814,7 +22239,11 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "PatchV1TravelLetterRequestsId2Request",
       });
-    case 7:
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -23825,7 +22254,7 @@ function __c112(j: number): any {
       });
   }
 }
-function __c113(j: number): any {
+function __c240(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23838,7 +22267,11 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "PatchV1WorkAuthorizationRequestsId2Request",
       });
-    case 1:
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -23851,7 +22284,11 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "PatchV2EmploymentsEmploymentIdRequest",
       });
-    case 2:
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -23864,7 +22301,11 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "PatchV2EmploymentsEmploymentId2Request",
       });
-    case 3:
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
@@ -23874,7 +22315,11 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "PostV1CurrencyConverterEffective2Request",
       });
-    case 4:
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -23890,7 +22335,11 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "PostV1EmploymentsEmploymentIdRiskReserveProofOfPaymentsRequest",
       });
-    case 5:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
@@ -23899,15 +22348,61 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "RiskReserveProofOfPaymentResponseData",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(909, __c113, 5)),
+          data: S.optional(__S(7840, __c245, 0)),
         }),
       ).annotate({
         identifier: "RiskReserveProofOfPaymentResponse",
       });
-    case 7:
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/custom-fields", code: 200 })),
+      ).annotate({ identifier: "CreateCustomFieldRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          custom_field: __S(7904, __c247, 0),
+        }),
+      ).annotate({
+        identifier: "CreateEmploymentCustomFieldResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(7873, __c246, 1),
+        }),
+      ).annotate({
+        identifier: "CreateEmploymentCustomFieldResponse",
+      });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data_entry_access: S.String,
+          id: S.String,
+          metadata: S.NullOr(S.Unknown),
+          name: S.String,
+          required: S.Boolean,
+          type: S.String,
+          visibility_scope: S.String,
+        }),
+      ).annotate({ identifier: "EmploymentCustomField" });
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -23923,7 +22418,7 @@ function __c113(j: number): any {
       });
   }
 }
-function __c114(j: number): any {
+function __c249(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23942,7 +22437,11 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "PutCompanyLegalEntityAdministrativeDetailsRequest",
       });
-    case 1:
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           address_details_json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
@@ -23951,7 +22450,11 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "PutEmployeeAddressRequest",
       });
-    case 2:
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bank_account_details_json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
@@ -23960,7 +22463,11 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "PutEmployeeBankAccountRequest",
       });
-    case 3:
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           emergency_contact_details_json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
@@ -23969,7 +22476,11 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "PutEmployeeEmergencyContactRequest",
       });
-    case 4:
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           federal_taxes: S.Unknown,
@@ -23977,7 +22488,11 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "PutEmployeeFederalTaxesRequest",
       });
-    case 5:
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           personal_details_json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
@@ -23986,7 +22501,11 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "PutEmployeePersonalDetailsRequest",
       });
-    case 6:
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           jurisdiction: S.String.pipe(T.Label()),
@@ -23997,7 +22516,11 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "PutEmployeeStateTaxRequest",
       });
-    case 7:
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24015,7 +22538,7 @@ function __c114(j: number): any {
       });
   }
 }
-function __c115(j: number): any {
+function __c257(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24032,7 +22555,56 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "PutEmploymentAdministrativeDetailsRequest",
       });
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String,
+          file: S.String,
+          sub_type: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/documents", code: 200, contentType: "multipart" }),
+        ),
+      ).annotate({ identifier: "CreateDocumentRequest" });
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          file: __S(8320, __c260, 0),
+        }),
+      ).annotate({ identifier: "UploadFileResponseData" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(8288, __c259, 0)),
+        }),
+      ).annotate({ identifier: "UploadFileResponse" });
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          inserted_at: S.String,
+          name: S.String,
+          sub_type: S.optional(S.NullOr(S.String)),
+          type: S.String,
+        }),
+      ).annotate({ identifier: "File" });
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24048,7 +22620,11 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "PutEmploymentBankAccountDetailsRequest",
       });
-    case 2:
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24064,7 +22640,11 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "PutEmploymentBasicInformationRequest",
       });
-    case 3:
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24081,7 +22661,11 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "PutEmploymentBasicInformationRequest2",
       });
-    case 4:
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24096,7 +22680,11 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "PutEmploymentBenefitOffersRequest",
       });
-    case 5:
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24112,7 +22700,11 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "PutEmploymentBillingAddressDetailsRequest",
       });
-    case 6:
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24129,7 +22721,11 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "PutEmploymentContractDetailsRequest",
       });
-    case 7:
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24147,7 +22743,7 @@ function __c115(j: number): any {
       });
   }
 }
-function __c116(j: number): any {
+function __c268(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24164,7 +22760,11 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "PutEmploymentFederalTaxesRequest",
       });
-    case 1:
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24179,7 +22779,11 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "PutEmploymentFederalTaxesRequest2",
       });
-    case 2:
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24194,7 +22798,32 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "PutEmploymentPersonalDetailsRequest",
       });
-    case 3:
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          file: S.String,
+          sub_type: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/employee/documents",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmployeeDocumentRequest",
+      });
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24210,7 +22839,11 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "PutEmploymentPersonalDetailsRequest2",
       });
-    case 4:
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24226,7 +22859,11 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "PutEmploymentPricingPlanDetailsRequest",
       });
-    case 5:
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           offboarding_request_id: S.String.pipe(T.Label()),
@@ -24241,7 +22878,11 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "PutResignationValidateRequest",
       });
-    case 6:
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           company_id: S.String.pipe(T.Label()),
@@ -24256,7 +22897,11 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "PutSandboxCompanyDefaultLegalEntityRequest",
       });
-    case 7:
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contract_amendment_request_id: S.String.pipe(T.Label()),
@@ -24272,7 +22917,7 @@ function __c116(j: number): any {
       });
   }
 }
-function __c117(j: number): any {
+function __c277(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24288,7 +22933,11 @@ function __c117(j: number): any {
       ).annotate({
         identifier: "PutSandboxContractAmendmentCancelRequest",
       });
-    case 1:
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           benefit_renewal_request_id: S.String.pipe(T.Label()),
@@ -24303,7 +22952,11 @@ function __c117(j: number): any {
       ).annotate({
         identifier: "UpdateBenefitRenewalRequestRequest",
       });
-    case 2:
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           employment_id: S.String.pipe(T.Label()),
@@ -24314,47 +22967,97 @@ function __c117(j: number): any {
       ).annotate({
         identifier: "UpdateCancelOnboardingRequest",
       });
-    case 3:
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           amount: S.optional(S.Number),
           effective_date: S.optional(S.String),
           end_date: S.optional(S.NullOr(S.String)),
-          provider_data: S.optional(__S(182, __c22, 6)),
+          provider_data: S.optional(__S(10368, __c324, 0)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/pay-items/{id}", code: 200 })),
       ).annotate({ identifier: "UpdatePayItemRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          pay_item: __S(189, __c23, 5),
+          pay_item: __S(10337, __c323, 1),
         }),
       ).annotate({ identifier: "PayItemResponseData" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(940, __c117, 4),
+          data: __S(8961, __c280, 1),
         }),
       ).annotate({ identifier: "PayItemResponse" });
-    case 6:
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
-          lead_ids: S.optional(__S(24, __c3, 0)),
+          lead_ids: S.optional(__S(704, __c22, 0)),
           name: S.optional(S.String),
           start_date: S.optional(S.NullOr(S.String)),
           status: S.optional(S.String),
-          team_member_ids: S.optional(__S(24, __c3, 0)),
+          team_member_ids: S.optional(__S(704, __c22, 0)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/projects/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateProjectRequest" });
-    case 7:
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          category: S.optional(S.NullOr(S.String)),
+          currency: S.String,
+          expense_category_slug: S.optional(S.NullOr(S.String)),
+          expense_date: S.String,
+          receipt: S.optional(__S(9056, __c283, 0)),
+          receipts: S.optional(__S(9088, __c284, 0)),
+          tax_amount: S.optional(S.Number),
+          timezone: S.optional(S.String),
+          title: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/employee/expenses", code: 200 })),
+      ).annotate({
+        identifier: "CreateEmployeeExpensRequest",
+      });
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "Base64File" });
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9056, __c283, 0));
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           subscribe_to_all_events: S.optional(S.Boolean),
-          subscribed_events: S.optional(__S(169, __c21, 1)),
+          subscribed_events: S.optional(__S(10112, __c316, 0)),
           url: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/webhook-callbacks/{id}", code: 200 })),
       ).annotate({
@@ -24362,7 +23065,2439 @@ function __c117(j: number): any {
       });
   }
 }
-
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          document: S.optional(__S(9056, __c283, 0)),
+          end_date: S.String,
+          leave_policy_variant_id: S.String,
+          notes: S.optional(S.String),
+          start_date: S.String,
+          timeoff_days: __S(9249, __c289, 1),
+          timezone: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/employee/timeoff", code: 200 })),
+      ).annotate({
+        identifier: "CreateEmployeeTimeoffRequest",
+      });
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          leave_policy_variant_slug: S.String,
+          leave_type: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "LeavePolicy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          day: S.String,
+          hours: S.Number,
+          minutes: S.Number,
+        }),
+      ).annotate({ identifier: "TimeoffDay" });
+    case 2:
+      return S.Array(__S(9185, __c287, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          approved_at: S.optional(S.NullOr(S.String)),
+          approver_id: S.optional(S.NullOr(S.String)),
+          automatic: S.optional(S.Boolean),
+          cancel_reason: S.optional(S.NullOr(S.String)),
+          cancelled_at: S.optional(S.NullOr(S.String)),
+          document: S.optional(__S(8320, __c260, 0)),
+          employment_id: S.String,
+          end_date: S.String,
+          id: S.String,
+          leave_policy: __S(9184, __c287, 0),
+          leave_policy_variant_id: S.optional(S.NullOr(S.String)),
+          notes: S.optional(S.NullOr(S.String)),
+          start_date: S.String,
+          status: S.String,
+          timeoff_days: __S(9186, __c287, 2),
+          timeoff_type: S.String,
+          timezone: S.String,
+          total_minutes: S.Number,
+        }),
+      ).annotate({ identifier: "Timeoff" });
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeoff: __S(9187, __c287, 3),
+        }),
+      ).annotate({ identifier: "TimeoffResponseData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(9216, __c288, 0),
+        }),
+      ).annotate({ identifier: "TimeoffResponse" });
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          day: S.optional(S.String),
+          hours: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TimeoffDaysParams" });
+    case 1:
+      return S.Array(__S(9248, __c289, 0));
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          cancel_reason: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/employee/timeoff/{id}/cancel", code: 200 })),
+      ).annotate({
+        identifier: "CreateEmployeeTimeoffCancelRequest",
+      });
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
+          basic_information: S.Unknown,
+          bill_to_legal_entity_id: S.optional(S.String),
+          company_id: S.optional(S.String),
+          country_code: S.String,
+          engaged_by_entity_slug: S.optional(S.String),
+          engaged_by_legal_entity_id: S.optional(S.String),
+          external_id: S.optional(S.String),
+          partner_external_id: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/employments", code: 200 })),
+      ).annotate({ identifier: "CreateEmploymentRequest" });
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          basic_information: S.optional(S.Unknown),
+          company_id: S.optional(S.String),
+          country_code: S.optional(S.String),
+          created_at: S.optional(S.String),
+          employment_lifecycle_stage: S.optional(S.String),
+          full_name: S.optional(S.String),
+          id: S.optional(S.String),
+          job_title: S.optional(S.NullOr(S.String)),
+          login_email: S.optional(S.String),
+          partner_external_id: S.optional(S.NullOr(S.String)),
+          personal_email: S.optional(S.String),
+          provisional_start_date: S.optional(S.String),
+          type: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmploymentBasicResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          employment: S.optional(__S(9344, __c292, 0)),
+        }),
+      ).annotate({
+        identifier: "EmploymentCreationResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(9345, __c292, 1)),
+        }),
+      ).annotate({
+        identifier: "EmploymentCreationResponse",
+      });
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          eligible_to_work_in_residing_country: S.String,
+          employer_or_work_restrictions: S.Boolean,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/employments/{employment_id}/contract-eligibility",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmploymentContractEligibilityRequest",
+      });
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          contract_origin: S.String,
+          template_type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/employments/{employment_id}/contract-origin",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmploymentContractOriginRequest",
+      });
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          currency: S.NullOr(S.String),
+          items: __S(2145, __c67, 1),
+          note: S.optional(S.NullOr(S.String)),
+          number: S.optional(S.NullOr(S.String)),
+          start_date: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/employments/{employment_id}/contractor-invoices/preview",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmploymentContractorInvoicesPreviewRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contractor_invoice_preview: __S(9472, __c296, 0),
+        }),
+      ).annotate({
+        identifier: "ContractorInvoicePreviewResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(9441, __c295, 1),
+        }),
+      ).annotate({
+        identifier: "ContractorInvoicePreviewResponse",
+      });
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "ContractorInvoicePreviewResponseDataContractorInvoicePreview",
+      });
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          engagement_agreement_details: __S(9538, __c298, 2),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/employments/{employment_id}/engagement-agreement-details",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmploymentEngagementAgreementDetailRequest",
+      });
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.String,
+          size: S.optional(S.Number),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EngagementAgreementDetailsFileParams",
+      });
+    case 1:
+      return S.Array(__S(9536, __c298, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allowances_details: S.optional(S.NullOr(__S(2176, __c68, 0))),
+          available_pto: S.optional(S.NullOr(S.Number)),
+          break_time_per_day: S.optional(S.NullOr(S.Number)),
+          business_expenses: S.optional(S.NullOr(S.String)),
+          cba: S.optional(S.NullOr(S.String)),
+          cba_document: S.optional(S.NullOr(__S(9537, __c298, 1))),
+          covenants: S.optional(S.NullOr(__S(2176, __c68, 0))),
+          has_allowances: S.optional(S.NullOr(S.String)),
+          has_bonus: S.optional(S.NullOr(S.String)),
+          has_business_expenses: S.optional(S.NullOr(S.String)),
+          has_business_presence: S.optional(S.String),
+          has_cba: S.optional(S.NullOr(S.String)),
+          has_commissions: S.optional(S.NullOr(S.String)),
+          has_covenants: S.optional(S.NullOr(S.String)),
+          has_illness_remuneration: S.optional(S.NullOr(S.String)),
+          has_overtime_compensation: S.optional(S.NullOr(S.String)),
+          has_pension_scheme: S.optional(S.NullOr(S.String)),
+          has_signing_bonus: S.optional(S.NullOr(S.String)),
+          has_similar_roles: S.optional(S.String),
+          has_similar_work_conditions: S.optional(S.NullOr(S.String)),
+          illness_remuneration_details: S.optional(S.NullOr(S.String)),
+          max_annual_gross_salary: S.optional(S.NullOr(S.Number)),
+          min_annual_gross_salary: S.optional(S.NullOr(S.Number)),
+          overtime_compensation_begins: S.optional(S.NullOr(S.Number)),
+          overtime_compensation_type: S.optional(S.NullOr(S.String)),
+          overtime_pay_percentage: S.optional(S.NullOr(S.Number)),
+          pension_scheme: S.optional(S.NullOr(S.String)),
+          similar_roles: S.optional(S.NullOr(S.String)),
+          similar_work_conditions_details: S.optional(S.NullOr(S.String)),
+          work_hours_per_week: S.optional(S.NullOr(S.Number)),
+          working_days: S.optional(S.NullOr(__S(2176, __c68, 0))),
+        }),
+      ).annotate({
+        identifier: "CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails",
+      });
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          engagement_agreement_details: __S(9538, __c298, 2),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/employments/{employment_id}/engagement-agreement-details",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmploymentEngagementAgreementDetailRequest2",
+      });
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/employments/{employment_id}/invite", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEmploymentInviteRequest",
+      });
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          job_title: S.optional(S.String),
+          role_description: S.optional(S.String),
+          role_is_onsite: S.optional(S.String),
+          role_requires_license: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/employments/{employment_id}/job-title-eligibility-check",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmploymentJobTitleEligibilityCheckRequest",
+      });
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          check_id: S.optional(S.NullOr(S.String)),
+          verdict: S.String,
+        }),
+      ).annotate({ identifier: "JobTitleEligibilityCheck" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          job_title_eligibility_check: __S(9664, __c302, 0),
+        }),
+      ).annotate({
+        identifier: "JobTitleEligibilityCheckResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(9665, __c302, 1),
+        }),
+      ).annotate({
+        identifier: "JobTitleEligibilityCheckResponse",
+      });
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          category: S.optional(S.NullOr(S.String)),
+          currency: S.String,
+          employment_id: S.String,
+          expense_category_slug: S.optional(S.NullOr(S.String)),
+          expense_date: S.String,
+          receipt: S.optional(__S(9056, __c283, 0)),
+          receipts: S.optional(__S(9088, __c284, 0)),
+          reviewed_at: S.optional(S.String),
+          reviewer_id: S.optional(S.String),
+          tax_amount: S.optional(S.Number),
+          timezone: S.optional(S.String),
+          title: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/expenses", code: 200 })),
+      ).annotate({ identifier: "CreateExpensRequest" });
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expense: S.Unknown,
+        }),
+      ).annotate({ identifier: "ExpenseResponseData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(9728, __c304, 0),
+        }),
+      ).annotate({ identifier: "ExpenseResponse" });
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/identity-verification/{employment_id}/decline",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIdentityVerificationDeclineRequest",
+      });
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/identity-verification/{employment_id}/verify",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIdentityVerificationVerifyRequest",
+      });
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          amount_tax_type: S.String,
+          effective_date: S.String,
+          note: S.optional(S.NullOr(S.String)),
+          employment_id: S.String,
+          period_end: S.optional(S.NullOr(S.String)),
+          period_start: S.optional(S.NullOr(S.String)),
+          type: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/incentives", code: 200 })),
+      ).annotate({ identifier: "CreateIncentiveRequest" });
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          incentive: __S(9888, __c309, 0),
+        }),
+      ).annotate({ identifier: "IncentiveResponseData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(9856, __c308, 0)),
+        }),
+      ).annotate({ identifier: "IncentiveResponse" });
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          amount_tax_type: S.String,
+          effective_date: S.NullOr(S.String),
+          employment_id: S.String,
+          expected_payout_date: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          note: S.optional(S.NullOr(S.String)),
+          payroll_output_category: S.optional(S.String),
+          period_end: S.optional(S.NullOr(S.String)),
+          period_start: S.optional(S.NullOr(S.String)),
+          recurring_incentive_id: S.optional(S.NullOr(S.String)),
+          status: S.String,
+          type: S.String,
+          type_label: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Incentive" });
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          amount_tax_type: S.String,
+          effective_date: S.String,
+          note: S.optional(S.NullOr(S.String)),
+          duration_in_months: S.optional(S.String),
+          employment_id: S.String,
+          type: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/incentives/recurring", code: 200 })),
+      ).annotate({
+        identifier: "CreateIncentivesRecurringRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          recurring_incentive: __S(9952, __c311, 0),
+        }),
+      ).annotate({
+        identifier: "RecurringIncentiveResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(9921, __c310, 1)),
+        }),
+      ).annotate({
+        identifier: "RecurringIncentiveResponse",
+      });
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          amount_tax_type: S.String,
+          employment_id: S.String,
+          end_date: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          note: S.optional(S.NullOr(S.String)),
+          start_date: S.String,
+          status: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "RecurringIncentive" });
+  }
+}
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          job_title: S.String,
+          role_description: S.optional(S.String),
+          role_is_onsite: S.optional(S.String),
+          role_requires_license: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateJobTitleScreeningRequestItemsItem",
+      });
+    case 1:
+      return S.Array(__S(9984, __c312, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(9985, __c312, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/job-title-screenings", code: 200 })),
+      ).annotate({
+        identifier: "CreateJobTitleScreeningRequest",
+      });
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/magic-link", code: 200 })),
+      ).annotate({ identifier: "CreateMagicLinkRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+        }),
+      ).annotate({ identifier: "MagicLinkResponseData" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(10017, __c313, 1),
+        }),
+      ).annotate({ identifier: "MagicLinkResponse" });
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.NullOr(S.String)),
+          note: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "TerminationDetailsParamsEmployeeAwareness",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          acknowledge_termination_procedure: S.optional(S.NullOr(S.Boolean)),
+          additional_comments: S.optional(S.NullOr(S.String)),
+          agrees_to_pto_amount: S.optional(S.NullOr(S.Boolean)),
+          agrees_to_pto_amount_notes: S.optional(S.NullOr(S.String)),
+          confidential: S.Boolean,
+          customer_informed_employee: S.optional(S.NullOr(S.Boolean)),
+          employee_awareness: S.optional(__S(10048, __c314, 0)),
+          personal_email: S.optional(S.String),
+          proposed_termination_date: S.String,
+          reason_description: S.String,
+          risk_assessment_reasons: __S(10112, __c316, 0),
+          termination_reason: S.String,
+          termination_reason_files: S.optional(__S(9088, __c284, 0)),
+          timesheet_file: S.optional(__S(9056, __c283, 0)),
+          will_challenge_termination: S.Boolean,
+          will_challenge_termination_description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TerminationDetailsParams" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String,
+          termination_details: __S(10049, __c314, 1),
+          type: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/offboardings", code: 200 })),
+      ).annotate({ identifier: "CreateOffboardingRequest" });
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          offboarding: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "Offboarding" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(10080, __c315, 0)),
+        }),
+      ).annotate({ identifier: "OffboardingResponse" });
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          signature: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/onboarding/employments/{employment_id}/pre-onboarding-documents/{id}/sign",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOnboardingEmploymentPreOnboardingDocumentSignRequest",
+      });
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/auth/oauth2/token", code: 200 })),
+      ).annotate({
+        identifier: "CreateAuthOauth2TokenRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateAuthOauth2TokenResponse",
+      });
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          requirement_slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/onboarding/employments/{employment_id}/pre-onboarding-requirements/{requirement_slug}/acknowledge",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOnboardingEmploymentPreOnboardingRequirementAcknowledgeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pre_onboarding_acknowledgement: __S(10240, __c320, 0),
+        }),
+      ).annotate({
+        identifier: "CreatePreOnboardingAcknowledgementResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(10209, __c319, 1),
+        }),
+      ).annotate({
+        identifier: "CreatePreOnboardingAcknowledgementResponse",
+      });
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "CreatePreOnboardingAcknowledgementResponseDataPreOnboardingAcknowledgement",
+      });
+  }
+}
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          requirement_slug: S.String.pipe(T.Label()),
+          skip_initial_signature_email: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/onboarding/employments/{employment_id}/pre-onboarding-requirements/{requirement_slug}/documents",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOnboardingEmploymentPreOnboardingRequirementDocumentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pre_onboarding_document: __S(10240, __c320, 0),
+        }),
+      ).annotate({
+        identifier: "CreatePreOnboardingDocumentResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(10273, __c321, 1),
+        }),
+      ).annotate({
+        identifier: "CreatePreOnboardingDocumentResponse",
+      });
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          code: S.optional(S.String),
+          currency: S.optional(S.NullOr(S.String)),
+          effective_date: S.String,
+          employment_id: S.String,
+          end_date: S.optional(S.NullOr(S.String)),
+          external_import_code: S.optional(S.String),
+          provider_data: S.optional(__S(10368, __c324, 0)),
+        }),
+      ).annotate({ identifier: "PayItemParams" });
+    case 1:
+      return S.Array(__S(10304, __c322, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pay_items: __S(10305, __c322, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/pay-items/bulk", code: 200 })),
+      ).annotate({
+        identifier: "CreatePayItemsBulkRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(S.Unknown),
+          row_number: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PayItemBulkCreateFailures",
+      });
+    case 4:
+      return S.Array(__S(10307, __c322, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          pay_item: __S(10337, __c323, 1),
+          row_number: S.Number,
+        }),
+      ).annotate({
+        identifier: "PayItemBulkCreateSuccesses",
+      });
+    case 6:
+      return S.Array(__S(10309, __c322, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          failures: __S(10308, __c322, 4),
+          successes: __S(10310, __c322, 6),
+        }),
+      ).annotate({
+        identifier: "BulkCreatePayItemsResponseData",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(10311, __c322, 7),
+        }),
+      ).annotate({
+        identifier: "BulkCreatePayItemsResponse",
+      });
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          correction_effective_date: S.optional(S.String),
+          hourly_rate: S.optional(S.Number),
+          hourly_rate_currency_code: S.optional(S.NullOr(S.String)),
+          pay_rate: S.optional(S.Number),
+          shift_code: S.optional(S.String),
+          work_day_duration: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PayItemProviderData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          code: S.String,
+          effective_date: S.String,
+          employment_id: S.String,
+          end_date: S.NullOr(S.String),
+          id: S.String,
+          provider_data: __S(10336, __c323, 0),
+          replaced_ids: __S(704, __c22, 0),
+        }),
+      ).annotate({ identifier: "PayItem" });
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adjustment_effective_date: S.optional(S.String),
+          correction_effective_date: S.optional(S.String),
+          hourly_rate: S.optional(S.Number),
+          hourly_rate_currency_code: S.optional(S.NullOr(S.String)),
+          is_deduction: S.optional(S.Boolean),
+          pay_rate: S.optional(S.Number),
+          payout_amount: S.optional(S.Number),
+          payout_currency_code: S.optional(S.String),
+          shift_code: S.optional(S.String),
+          work_day_duration: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PayItemProviderDataParams",
+      });
+  }
+}
+function __c325(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          payroll_run_id: S.String.pipe(T.Label()),
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/payroll-runs/{payroll_run_id}/gl-reports",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePayrollRunGlReportRequest",
+      });
+  }
+}
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          inserted_at: S.String,
+          status: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "GLReport" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          gl_report: S.optional(__S(10432, __c326, 0)),
+        }),
+      ).annotate({ identifier: "GLReportResponseData" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(10433, __c326, 1)),
+        }),
+      ).annotate({ identifier: "GLReportResponse" });
+  }
+}
+function __c327(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/probation-completion-letter", code: 200 })),
+      ).annotate({
+        identifier: "CreateProbationCompletionLetterRequest",
+      });
+  }
+}
+function __c328(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String,
+          id: S.String,
+          letter: S.NullOr(__S(8320, __c260, 0)),
+          status: S.String,
+          submitted_at: S.String,
+          zendesk_ticket_url: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "ProbationCompletionLetter",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          probation_completion_letter: __S(10496, __c328, 0),
+        }),
+      ).annotate({
+        identifier: "ProbationCompletionLetterResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(10497, __c328, 1),
+        }),
+      ).annotate({
+        identifier: "ProbationCompletionLetterResponse",
+      });
+  }
+}
+function __c329(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          additional_details: S.optional(S.String),
+          date_of_discussion_with_employee: S.optional(S.String),
+          duration_of_extension_in_days: S.Number,
+          employment_id: S.String,
+          reason_for_extension: S.String,
+          supporting_document: S.optional(__S(9056, __c283, 0)),
+          was_employee_informed: S.Boolean,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/probation-extensions", code: 200 })),
+      ).annotate({
+        identifier: "CreateProbationExtensionRequest",
+      });
+  }
+}
+function __c330(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String,
+          id: S.String,
+          requested_by: S.String,
+          status: S.String,
+          submitted_at: S.String,
+          zendesk_ticket_url: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ProbationExtension" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          probation_extension: __S(10560, __c330, 0),
+        }),
+      ).annotate({
+        identifier: "ProbationExtensionResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(10561, __c330, 1)),
+        }),
+      ).annotate({
+        identifier: "ProbationExtensionResponse",
+      });
+  }
+}
+function __c331(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          end_date: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          start_date: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/projects", code: 200 })),
+      ).annotate({ identifier: "CreateProjectRequest" });
+  }
+}
+function __c332(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          currency: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ProjectBudget" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          budget: S.NullOr(__S(10624, __c332, 0)),
+          code: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          end_date: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          lead_ids: __S(704, __c22, 0),
+          name: S.String,
+          start_date: S.optional(S.NullOr(S.String)),
+          status: S.String,
+          team_member_ids: __S(704, __c22, 0),
+        }),
+      ).annotate({ identifier: "Project" });
+  }
+}
+function __c333(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.optional(__S(10625, __c332, 1)),
+        }),
+      ).annotate({ identifier: "ProjectResponseData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(10656, __c333, 0),
+        }),
+      ).annotate({ identifier: "ProjectResponse" });
+  }
+}
+function __c334(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_slug: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/risk-reserve", code: 200 })),
+      ).annotate({ identifier: "CreateRiskReserveRequest" });
+  }
+}
+function __c335(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_group_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/sandbox/benefit-renewal-requests", code: 200 })),
+      ).annotate({
+        identifier: "CreateSandboxBenefitRenewalRequestRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(10752, __c336, 0),
+        }),
+      ).annotate({
+        identifier: "BenefitRenewalRequestsCreateBenefitRenewalRequestResponse",
+      });
+  }
+}
+function __c336(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_renewal_request: __S(10787, __c337, 3),
+        }),
+      ).annotate({
+        identifier: "BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData",
+      });
+  }
+}
+function __c337(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          country_code: S.String,
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "BenefitRenewalRequestsMinimalBenefitGroup",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+          display_cost: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "NullableMinimalBenefitTier",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_tier: S.NullOr(__S(10785, __c337, 1)),
+          updated_at: S.String,
+        }),
+      ).annotate({
+        identifier: "BenefitRenewalRequestsMinimalBenefitRenewalResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_group: __S(10784, __c337, 0),
+          benefit_renewal_response: S.NullOr(__S(10786, __c337, 2)),
+          coverage_end_date: S.String,
+          coverage_start_date: S.String,
+          current_benefit_tier: S.optional(S.NullOr(__S(10785, __c337, 1))),
+          id: S.String,
+          number_of_affected_employees: S.Number,
+          renewal_selection_end_date: S.String,
+          renewal_selection_instructions: S.String,
+          renewal_selection_start_date: S.String,
+        }),
+      ).annotate({
+        identifier: "BenefitRenewalRequestsBenefitRenewalRequest",
+      });
+  }
+}
+function __c338(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/sandbox/companies/{company_id}/bypass-eligibility-checks",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSandboxCompanyBypassEligibilityCheckRequest",
+      });
+  }
+}
+function __c339(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          activate_global_payroll: S.optional(S.Boolean),
+          send_invitation: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "BulkEmploymentEmployeePayload",
+      });
+    case 1:
+      return S.Array(__S(10848, __c339, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          country_code: S.String,
+          employees: __S(10849, __c339, 1),
+          send_invitation: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/bulk-employment-jobs", code: 200 })),
+      ).annotate({
+        identifier: "CreateBulkEmploymentJobRequest",
+      });
+  }
+}
+function __c340(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateBulkEmploymentJobResponse",
+      });
+  }
+}
+function __c341(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company_id: S.String.pipe(T.Label()),
+          country_code: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/sandbox/companies/{company_id}/legal-entities",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSandboxCompanyLegalEntityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          legal_entity_id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateSandboxCompanyLegalEntityResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(10913, __c341, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateSandboxCompanyLegalEntityResponse",
+      });
+  }
+}
+function __c342(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company_id: S.String.pipe(T.Label()),
+          legal_entity_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/sandbox/companies/{company_id}/legal-entities/{legal_entity_id}/activate-global-payroll",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSandboxCompanyLegalEntityActivateGlobalPayrollRequest",
+      });
+  }
+}
+function __c343(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company_id: S.String.pipe(T.Label()),
+          legal_entity_id: S.String.pipe(T.Label()),
+          credit_risk_status: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/sandbox/companies/{company_id}/legal-entities/{legal_entity_id}/set-credit-risk-status",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSandboxCompanyLegalEntitySetCreditRiskStatusRequest",
+      });
+  }
+}
+function __c344(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          amount: S.String,
+          pay_frequency: S.optional(S.NullOr(S.String)),
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/sandbox/contractors/employments/{employment_id}/rates",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSandboxContractorsEmploymentRateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(11041, __c345, 1),
+        }),
+      ).annotate({
+        identifier: "SandboxContractorRateResponse",
+      });
+  }
+}
+function __c345(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.String,
+          currency: __S(736, __c23, 0),
+        }),
+      ).annotate({ identifier: "MoneyResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          amount: __S(11040, __c345, 0),
+          contract_expiration_date: S.NullOr(S.String),
+          contract_start_date: S.NullOr(S.String),
+          id: S.String,
+          pay_frequency: S.NullOr(S.String),
+          service_end_date: S.NullOr(S.String),
+          service_start_date: S.NullOr(S.String),
+          type: S.String,
+        }),
+      ).annotate({ identifier: "ContractorRate" });
+  }
+}
+function __c346(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          basic_information: S.Unknown,
+          bill_to_legal_entity_id: S.optional(S.String),
+          company_id: S.optional(S.String),
+          country_code: S.String,
+          engaged_by_entity_slug: S.optional(S.String),
+          engaged_by_legal_entity_id: S.optional(S.String),
+          external_id: S.optional(S.String),
+          partner_external_id: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/sandbox/employments", code: 200 })),
+      ).annotate({
+        identifier: "CreateSandboxEmploymentRequest",
+      });
+  }
+}
+function __c347(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          job_title: S.optional(S.String),
+          role_description: S.String,
+          verdict: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/sandbox/employments/{employment_id}/job-title-eligibility-check",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSandboxEmploymentJobTitleEligibilityCheckRequest",
+      });
+  }
+}
+function __c348(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          notes: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/sandbox/employments/{employment_id}/job-title-review/approve",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSandboxEmploymentJobTitleReviewApproveRequest",
+      });
+  }
+}
+function __c349(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_status: S.String,
+        }),
+      ).annotate({
+        identifier: "JobTitleReviewDecisionResponseDataJobTitleReview",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          job_title_review: __S(11168, __c349, 0),
+        }),
+      ).annotate({
+        identifier: "JobTitleReviewDecisionResponseData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(11169, __c349, 1),
+        }),
+      ).annotate({
+        identifier: "JobTitleReviewDecisionResponse",
+      });
+  }
+}
+function __c350(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          notes: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/sandbox/employments/{employment_id}/job-title-review/reject",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSandboxEmploymentJobTitleReviewRejectRequest",
+      });
+  }
+}
+function __c351(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/sandbox/webhook-callbacks/trigger", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateSandboxWebhookCallbacksTriggerRequest",
+      });
+  }
+}
+function __c352(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.String,
+          component_stack: S.optional(S.NullOr(__S(704, __c22, 0))),
+          message: S.String,
+          name: S.String,
+          severity: S.String,
+          stack: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateSdkTelemetryErrorRequestError",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.String,
+          sdk_version: S.String,
+          timestamp: S.String,
+          url: S.String,
+          user_agent: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateSdkTelemetryErrorRequestMetadata",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          context: S.optional(S.NullOr(S.Unknown)),
+          error: __S(11264, __c352, 0),
+          metadata: __S(11265, __c352, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/sdk/telemetry-errors", code: 200 })),
+      ).annotate({
+        identifier: "CreateSdkTelemetryErrorRequest",
+      });
+  }
+}
+function __c353(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address_details_json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
+          bank_account_details_json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
+          action: S.optional(S.String.pipe(T.Query())),
+          async: S.optional(S.Boolean.pipe(T.Query())),
+          scope: S.optional(S.String.pipe(T.Query())),
+          address_details: S.optional(S.Unknown),
+          bank_account_details: S.optional(S.Unknown),
+          company_owner_email: S.String,
+          company_owner_name: S.String,
+          country_code: S.String,
+          desired_currency: S.String,
+          email_domain: S.optional(S.String),
+          external_id: S.optional(S.String),
+          name: S.String,
+          phone_number: S.optional(S.String),
+          terms_of_service_accepted_at: S.String,
+          tax_number: S.optional(S.String),
+          registration_number: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/companies", code: 200 })),
+      ).annotate({ identifier: "CreateCompanyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "CompanyCreationResponse" });
+  }
+}
+function __c354(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          certificate: S.String,
+          domain: S.String,
+          identity_provider_url: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/sso-configuration", code: 200 })),
+      ).annotate({
+        identifier: "CreateSsoConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          audience_uri: S.String,
+          certificate: S.String,
+          domain: S.String,
+          identity_provider_url: S.String,
+          sso_url: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateSSOConfigurationResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(11329, __c354, 1),
+        }),
+      ).annotate({
+        identifier: "CreateSSOConfigurationResponse",
+      });
+  }
+}
+function __c355(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          document: S.optional(__S(9056, __c283, 0)),
+          employment_id: S.String,
+          end_date: S.String,
+          leave_policy_variant_id: S.optional(S.String),
+          notes: S.optional(S.String),
+          start_date: S.String,
+          timeoff_days: __S(9249, __c289, 1),
+          timeoff_type: S.optional(S.String),
+          timezone: S.String,
+          approved_at: S.String,
+          approver_id: S.NullOr(S.String),
+          status: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/timeoff", code: 200 })),
+      ).annotate({ identifier: "CreateTimeoffRequest" });
+  }
+}
+function __c356(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeoff_id: S.String.pipe(T.Label()),
+          approver_id: S.NullOr(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/timeoff/{timeoff_id}/approve", code: 200 })),
+      ).annotate({
+        identifier: "CreateTimeoffApproveRequest",
+      });
+  }
+}
+function __c357(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeoff_id: S.String.pipe(T.Label()),
+          cancel_reason: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/timeoff/{timeoff_id}/cancel", code: 200 })),
+      ).annotate({
+        identifier: "CreateTimeoffCancelRequest",
+      });
+  }
+}
+function __c358(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeoff_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/timeoff/{timeoff_id}/cancel-request/approve",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTimeoffCancelRequestApproveRequest",
+      });
+  }
+}
+function __c359(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeoff_id: S.String.pipe(T.Label()),
+          decline_reason: S.NullOr(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/timeoff/{timeoff_id}/cancel-request/decline",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTimeoffCancelRequestDeclineRequest",
+      });
+  }
+}
+function __c360(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeoff_id: S.String.pipe(T.Label()),
+          decline_reason: S.NullOr(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/timeoff/{timeoff_id}/decline", code: 200 })),
+      ).annotate({
+        identifier: "CreateTimeoffDeclineRequest",
+      });
+  }
+}
+function __c361(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timesheet_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/timesheets/{timesheet_id}/approve", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateTimesheetApproveRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          approval_required: S.Boolean,
+          country_code: S.String,
+          employment_id: S.String,
+          end_date: S.String,
+          id: S.String,
+          notes: S.NullOr(S.String),
+          start_date: S.String,
+          status: S.String,
+          submitted_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "MinimalTimesheet" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          timesheet: __S(11553, __c361, 1),
+        }),
+      ).annotate({
+        identifier: "MinimalTimesheetResponseData",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(11554, __c361, 2)),
+        }),
+      ).annotate({ identifier: "MinimalTimesheetResponse" });
+  }
+}
+function __c362(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timesheet_id: S.String.pipe(T.Label()),
+          sent_back_reason: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/timesheets/{timesheet_id}/send-back", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateTimesheetSendBackRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          sent_back: S.Boolean,
+          sent_back_reason: S.String,
+          status: S.String,
+        }),
+      ).annotate({ identifier: "SentBackTimesheet" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          timesheet: __S(11585, __c362, 1),
+        }),
+      ).annotate({
+        identifier: "SentBackTimesheetResponseData",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(11586, __c362, 2)),
+        }),
+      ).annotate({
+        identifier: "SentBackTimesheetResponse",
+      });
+  }
+}
+function __c363(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscribe_to_all_events: S.optional(S.Boolean),
+          subscribed_events: S.optional(__S(10112, __c316, 0)),
+          url: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/webhook-callbacks", code: 200 })),
+      ).annotate({
+        identifier: "CreateWebhookCallbackRequest",
+      });
+  }
+}
+function __c364(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          signing_key: S.optional(S.String),
+          subscribe_to_all_events: S.optional(S.Boolean),
+          subscribed_events: S.optional(__S(10112, __c316, 0)),
+          url: S.String,
+        }),
+      ).annotate({ identifier: "WebhookCallback" });
+  }
+}
+function __c365(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_callback: __S(11648, __c364, 0),
+        }),
+      ).annotate({
+        identifier: "WebhookCallbackResponseData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(11680, __c365, 0),
+        }),
+      ).annotate({ identifier: "WebhookCallbackResponse" });
+  }
+}
+function __c366(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company_id: S.String.pipe(T.Label()),
+          scope: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/companies/{company_id}/create-token", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateCompanyCreateTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          access_token: S.String.pipe(T.SensitiveValue({})),
+          expires_in: S.Number,
+          refresh_token: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({ identifier: "CompanyTokenResponse" });
+  }
+}
+function __c367(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/webhook-events/replay", code: 200 })),
+      ).annotate({
+        identifier: "CreateWebhookEventsReplayRequest",
+      });
+  }
+}
+function __c368(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/company-managers/{user_id}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteCompanyManagerRequest",
+      });
+  }
+}
+function __c369(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/contractors/employments/{employment_id}/contractor-cor-subscription",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteContractorsEmploymentContractorCorSubscriptionRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteContractorsEmploymentContractorCorSubscriptionResponse",
+      });
+  }
+}
+function __c370(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/incentives/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteIncentiveRequest" });
+  }
+}
+function __c371(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/incentives/recurring/{id}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteIncentivesRecurringRequest",
+      });
+    case 1:
+      return S.Array(__S(9888, __c309, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          already_scheduled_incentives: __S(11873, __c371, 1),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeleteRecurringIncentiveResponseData",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(11874, __c371, 2),
+        }),
+      ).annotate({
+        identifier: "DeleteRecurringIncentiveResponse",
+      });
+  }
+}
+function __c372(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+          requirement_slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/onboarding/employments/{employment_id}/pre-onboarding-requirements/{requirement_slug}/acknowledge",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOnboardingEmploymentPreOnboardingRequirementAcknowledgeRequest",
+      });
+  }
+}
+function __c373(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/pay-items/{id}", code: 200 })),
+      ).annotate({ identifier: "DeletePayItemRequest" });
+  }
+}
+function __c374(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          employment_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v1/sandbox/employments/{employment_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteSandboxEmploymentRequest",
+      });
+  }
+}
+function __c375(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/webhook-callbacks/{id}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteWebhookCallbackRequest",
+      });
+  }
+}
+function __c376(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventUrl: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/adp/subscription-cancellations", code: 200 })),
+      ).annotate({
+        identifier: "GetAdpSubscriptionCancellationsRequest",
+      });
+  }
+}
+function __c377(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company_id: S.String,
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/company-departments", code: 200 })),
+      ).annotate({
+        identifier: "CreateCompanyDepartmentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          company_department: S.optional(__S(12096, __c378, 0)),
+        }),
+      ).annotate({
+        identifier: "CompanyDepartmentCreatedResponse",
+      });
+  }
+}
+function __c378(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company_id: S.String,
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "CompanyDepartment" });
+  }
+}
+function __c379(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventUrl: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/adp/subscription-changes", code: 200 })),
+      ).annotate({
+        identifier: "GetAdpSubscriptionChangesRequest",
+      });
+  }
+}
+function __c380(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventUrl: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/adp/subscription-orders", code: 200 })),
+      ).annotate({
+        identifier: "GetAdpSubscriptionOrdersRequest",
+      });
+  }
+}
+function __c381(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventUrl: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/adp/subscription-status", code: 200 })),
+      ).annotate({
+        identifier: "GetAdpSubscriptionStatusRequest",
+      });
+  }
+}
+function __c382(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventUrl: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/adp/user-assignments", code: 200 })),
+      ).annotate({
+        identifier: "GetAdpUserAssignmentsRequest",
+      });
+  }
+}
+function __c383(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventUrl: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/adp/user-unassignments", code: 200 })),
+      ).annotate({
+        identifier: "GetAdpUserUnassignmentsRequest",
+      });
+  }
+}
+function __c384(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/benefit-offers", code: 200 })),
+      ).annotate({ identifier: "GetBenefitOffersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          employee_cost: S.Number,
+          employer_cost: S.Number,
+        }),
+      ).annotate({ identifier: "Costs" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          costs: S.NullOr(__S(12289, __c384, 1)),
+          coverage_end_date: S.String,
+          coverage_start_date: S.String,
+          id: S.String,
+          name: S.String,
+          projected_costs: S.NullOr(__S(12289, __c384, 1)),
+          provider: S.NullOr(__S(12416, __c388, 0)),
+          status: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "Benefit" });
+    case 3:
+      return S.Array(__S(12290, __c384, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_group: __S(12320, __c385, 0),
+          benefit_tier: S.NullOr(__S(12322, __c385, 2)),
+          benefits: __S(12291, __c384, 3),
+          costs: S.NullOr(__S(12289, __c384, 1)),
+        }),
+      ).annotate({ identifier: "BenefitOffer" });
+    case 5:
+      return S.Array(__S(12292, __c384, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          country: __S(12384, __c387, 0),
+          given_name: S.NullOr(S.String),
+          id: S.String,
+          name: S.String,
+          surname: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "BenefitOffersEmployment" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_offers: __S(12293, __c384, 5),
+          costs: S.NullOr(__S(12289, __c384, 1)),
+          employment: __S(12294, __c384, 6),
+        }),
+      ).annotate({
+        identifier: "BenefitOffersByEmployment",
+      });
+    case 8:
+      return S.Array(__S(12295, __c384, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_offers_by_employment: __S(12296, __c384, 8),
+          company_id: S.String,
+          currency: __S(5664, __c177, 0),
+        }),
+      ).annotate({
+        identifier: "BenefitOfferByEmploymentResponseData",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(12297, __c384, 9),
+        }),
+      ).annotate({
+        identifier: "BenefitOfferByEmploymentResponse",
+      });
+  }
+}
+function __c385(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          policy_end_date: S.String,
+          policy_start_date: S.String,
+        }),
+      ).annotate({ identifier: "BenefitGroup" });
+    case 1:
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(12416, __c388, 0)));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+          id: S.String,
+          name: S.String,
+          providers: __S(12321, __c385, 1),
+        }),
+      ).annotate({ identifier: "BenefitTier" });
+  }
+}
+function __c386(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          name: S.String,
+          subdivision_type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CountrySubdivision" });
+    case 1:
+      return S.Array(__S(12352, __c386, 0));
+  }
+}
+function __c387(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alpha_2_code: S.String,
+          code: S.String,
+          contractor_products_available: S.optional(__S(10112, __c316, 0)),
+          country_subdivisions: S.optional(S.NullOr(__S(12353, __c386, 1))),
+          employment_agreement_preview_available: S.optional(S.Boolean),
+          eor_onboarding: S.optional(S.Boolean),
+          locked_benefits: S.optional(S.String),
+          name: S.String,
+          region: S.optional(S.String),
+          subregion: S.optional(S.NullOr(S.String)),
+          supported_json_schemas: S.optional(__S(704, __c22, 0)),
+        }),
+      ).annotate({ identifier: "Country" });
+  }
+}
+function __c388(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "BenefitProvider" });
+  }
+}
+function __c389(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/v1/benefit-offers/country-summaries", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetBenefitOffersCountrySummariesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          number_of_employees_enrolled: S.Number,
+          number_of_employees_offered: S.Number,
+        }),
+      ).annotate({ identifier: "EmployeeStats" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_tier: __S(12322, __c385, 2),
+          employee_stats: __S(12449, __c389, 1),
+        }),
+      ).annotate({ identifier: "OfferedBenefitTier" });
+    case 3:
+      return S.Array(__S(12450, __c389, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_group: __S(12320, __c385, 0),
+          employee_stats: __S(12449, __c389, 1),
+          offered_benefit_tiers: __S(12451, __c389, 3),
+        }),
+      ).annotate({ identifier: "OfferedBenefitGroup" });
+    case 5:
+      return S.Array(__S(12452, __c389, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          country: __S(12384, __c387, 0),
+          employee_stats: __S(12449, __c389, 1),
+          offered_benefit_groups: __S(12453, __c389, 5),
+        }),
+      ).annotate({ identifier: "CountrySummary" });
+    case 7:
+      return S.Array(__S(12454, __c389, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          company_id: S.String,
+          country_summaries: __S(12455, __c389, 7),
+        }),
+      ).annotate({
+        identifier: "CountrySummariesResponseData",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(12456, __c389, 8),
+        }),
+      ).annotate({ identifier: "CountrySummariesResponse" });
+  }
+}
+function __c390(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_renewal_request_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/benefit-renewal-requests/{benefit_renewal_request_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBenefitRenewalRequestRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(10752, __c336, 0),
+        }),
+      ).annotate({
+        identifier: "BenefitRenewalRequestsBenefitRenewalRequestResponse",
+      });
+  }
+}
+function __c391(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          page_size: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/benefit-renewal-requests", code: 200 })),
+      ).annotate({
+        identifier: "GetBenefitRenewalRequestsRequest",
+      });
+    case 1:
+      return S.Array(__S(10787, __c337, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_renewal_requests: S.optional(__S(12513, __c391, 1)),
+          current_page: S.optional(S.Number),
+          total_count: S.optional(S.Number),
+          total_pages: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "BenefitRenewalRequestsListBenefitRenewalRequestResponseData",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(12514, __c391, 2)),
+        }),
+      ).annotate({
+        identifier: "BenefitRenewalRequestsListBenefitRenewalRequestResponse",
+      });
+  }
+}
+function __c392(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_renewal_request_id: S.String.pipe(T.Label()),
+          json_schema_version: S.optional(S.Unknown.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/benefit-renewal-requests/{benefit_renewal_request_id}/schema",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBenefitRenewalRequestSchemaRequest",
+      });
+  }
+}
+function __c393(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "BenefitRenewalRequestsBenefitRenewalRequestFormResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -242,8 +242,8 @@ export const createItem: API.OperationMethod<
   CreateItemError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateItemRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateItemResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateItemRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateItemResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -257,8 +257,8 @@ export const createSlackList: API.OperationMethod<
   CreateSlackListError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateSlackListRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateSlackListResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateSlackListRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<CreateSlackListResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -272,8 +272,8 @@ export const deleteAccess: API.OperationMethod<
   DeleteAccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteAccessRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteAccessResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteAccessRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<DeleteAccessResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -287,8 +287,8 @@ export const deleteItem: API.OperationMethod<
   DeleteItemError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteItemRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteItemResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<DeleteItemRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<DeleteItemResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -302,8 +302,8 @@ export const deleteMultiple: API.OperationMethod<
   DeleteMultipleError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteMultipleRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteMultipleResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<DeleteMultipleRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<DeleteMultipleResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -317,8 +317,8 @@ export const downloadGet: API.OperationMethod<
   DownloadGetError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DownloadGetRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DownloadGetResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<DownloadGetRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<DownloadGetResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -332,8 +332,8 @@ export const downloadStart: API.OperationMethod<
   DownloadStartError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DownloadStartRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DownloadStartResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<DownloadStartRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<DownloadStartResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -347,8 +347,8 @@ export const itemsInfo: API.OperationMethod<
   ItemsInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ItemsInfoRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ItemsInfoResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<ItemsInfoRequest>,
+  output: __S(53, __c13, 1) as any as S.Schema<ItemsInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -364,8 +364,8 @@ export const listItems: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(17, __c2, 1) as any as S.Schema<ListItemsRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<ListItemsResponse>,
+    input: __S(56, __c14, 0) as any as S.Schema<ListItemsRequest>,
+    output: __S(58, __c14, 2) as any as S.Schema<ListItemsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -388,8 +388,8 @@ export const setAccess: API.OperationMethod<
   SetAccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<SetAccessRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SetAccessResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<SetAccessRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<SetAccessResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -403,8 +403,8 @@ export const updateItem: API.OperationMethod<
   UpdateItemError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<UpdateItemRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UpdateItemResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<UpdateItemRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<UpdateItemResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -418,8 +418,8 @@ export const updateSlackList: API.OperationMethod<
   UpdateSlackListError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<UpdateSlackListRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UpdateSlackListResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<UpdateSlackListRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<UpdateSlackListResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -429,35 +429,43 @@ export const updateSlackList: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           list_id: S.String,
           duplicated_item_id: S.optional(S.String),
           parent_item_id: S.optional(S.String),
-          initial_fields: S.optional(__S(0, __c0, 0)),
+          initial_fields: S.optional(__S(4, __c1, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.items.create", code: 200 })),
       ).annotate({ identifier: "CreateItemRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           item: S.Unknown,
         }),
       ).annotate({ identifier: "CreateItemResponse" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          description_blocks: S.optional(__S(0, __c0, 0)),
-          schema: S.optional(__S(0, __c0, 0)),
+          description_blocks: S.optional(__S(4, __c1, 0)),
+          schema: S.optional(__S(4, __c1, 0)),
           copy_from_list_id: S.optional(S.String),
           include_copied_list_records: S.optional(S.Boolean),
           todo_mode: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.create", code: 200 })),
       ).annotate({ identifier: "CreateSlackListRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -465,27 +473,63 @@ function __c0(j: number): any {
           list_metadata: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "CreateSlackListResponse" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           list_id: S.String,
-          channel_ids: S.optional(__S(5, __c0, 5)),
-          user_ids: S.optional(__S(5, __c0, 5)),
+          cells: __S(4, __c1, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/slackLists.items.update", code: 200 })),
+      ).annotate({ identifier: "UpdateItemRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.optional(S.String),
+          description_blocks: S.optional(__S(4, __c1, 0)),
+          todo_mode: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/slackLists.update", code: 200 })),
+      ).annotate({ identifier: "UpdateSlackListRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          list_id: S.String,
+          channel_ids: S.optional(__S(24, __c6, 0)),
+          user_ids: S.optional(__S(24, __c6, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.access.delete", code: 200 })),
       ).annotate({ identifier: "DeleteAccessRequest" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          failed_to_update_channel_ids: S.optional(__S(5, __c0, 5)),
-          failed_to_update_user_ids: S.optional(__S(5, __c0, 5)),
+          failed_to_update_channel_ids: S.optional(__S(24, __c6, 0)),
+          failed_to_update_user_ids: S.optional(__S(24, __c6, 0)),
         }),
       ).annotate({ identifier: "DeleteAccessResponse" });
   }
 }
-function __c1(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -494,20 +538,32 @@ function __c1(j: number): any {
           id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.items.delete", code: 200 })),
       ).annotate({ identifier: "DeleteItemRequest" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
         }),
       ).annotate({ identifier: "DeleteItemResponse" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           list_id: S.String,
-          ids: __S(5, __c0, 5),
+          ids: __S(24, __c6, 0),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.items.deleteMultiple", code: 200 })),
       ).annotate({ identifier: "DeleteMultipleRequest" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           list_id: S.String,
@@ -517,7 +573,7 @@ function __c1(j: number): any {
           include_attachments: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.download.get", code: 200 })),
       ).annotate({ identifier: "DownloadGetRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -525,7 +581,11 @@ function __c1(j: number): any {
           download_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "DownloadGetResponse" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           list_id: S.String,
@@ -535,14 +595,18 @@ function __c1(j: number): any {
           include_attachments: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.download.start", code: 200 })),
       ).annotate({ identifier: "DownloadStartRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           job_id: S.Number,
         }),
       ).annotate({ identifier: "DownloadStartResponse" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           list_id: S.String,
@@ -550,21 +614,21 @@ function __c1(j: number): any {
           include_is_subscribed: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.items.info", code: 200 })),
       ).annotate({ identifier: "ItemsInfoRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           list: S.Unknown,
           record: S.Unknown,
           parent_task: S.optional(S.Unknown),
-          subtasks: S.optional(__S(0, __c0, 0)),
+          subtasks: S.optional(__S(4, __c1, 0)),
         }),
       ).annotate({ identifier: "ItemsInfoResponse" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           list_id: S.String,
@@ -574,7 +638,7 @@ function __c2(j: number): any {
           include_list: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.items.list", code: 200 })),
       ).annotate({ identifier: "ListItemsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           next_cursor: S.optional(S.String),
@@ -582,43 +646,30 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListItemsResponseResponseMetadata",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          items: __S(0, __c0, 0),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          items: __S(4, __c1, 0),
+          response_metadata: S.optional(__S(57, __c14, 1)),
           list: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ListItemsResponse" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           list_id: S.String,
           access_level: S.String,
-          channel_ids: S.optional(__S(5, __c0, 5)),
-          user_ids: S.optional(__S(5, __c0, 5)),
+          channel_ids: S.optional(__S(24, __c6, 0)),
+          user_ids: S.optional(__S(24, __c6, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/slackLists.access.set", code: 200 })),
       ).annotate({ identifier: "SetAccessRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          list_id: S.String,
-          cells: __S(0, __c0, 0),
-        }).pipe(T.Http({ method: "POST", uri: "/slackLists.items.update", code: 200 })),
-      ).annotate({ identifier: "UpdateItemRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.String),
-          description_blocks: S.optional(__S(0, __c0, 0)),
-          todo_mode: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/slackLists.update", code: 200 })),
-      ).annotate({ identifier: "UpdateSlackListRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

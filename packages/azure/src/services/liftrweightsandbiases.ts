@@ -388,7 +388,7 @@ export const DeleteInstance: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteInstanceResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -402,8 +402,8 @@ export const GetInstance: API.OperationMethod<
   GetInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetInstanceRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetInstanceResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GetInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -417,8 +417,8 @@ export const InstancesCreateOrUpdate: API.OperationMethod<
   InstancesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<InstancesCreateOrUpdateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<InstancesCreateOrUpdateResponse>,
+  input: __S(83, __c5, 3) as any as S.Schema<InstancesCreateOrUpdateRequest>,
+  output: __S(84, __c5, 4) as any as S.Schema<InstancesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -432,8 +432,8 @@ export const ListInstanceByResourceGroup: API.OperationMethod<
   ListInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListInstanceByResourceGroupRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<InstanceResourceListResult>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListInstanceByResourceGroupRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<InstanceResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -447,8 +447,8 @@ export const ListInstanceBySubscription: API.OperationMethod<
   ListInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListInstanceBySubscriptionRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<InstanceResourceListResult>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListInstanceBySubscriptionRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<InstanceResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -462,8 +462,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ListOperationsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(148, __c9, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -477,8 +477,8 @@ export const UpdateInstance: API.OperationMethod<
   UpdateInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdateInstanceResponse>,
+  input: __S(162, __c10, 2) as any as S.Schema<UpdateInstanceRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<UpdateInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -502,11 +502,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteInstanceRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteInstanceResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -521,7 +529,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetInstanceRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -532,9 +544,9 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 4:
+    case 1:
       return S.Record(S.String, S.String);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           publisherId: S.String,
@@ -545,17 +557,17 @@ function __c0(j: number): any {
           termId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LiftrBaseOfferDetails" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.String),
           subscriptionStatus: S.optional(S.String),
-          offerDetails: __S(5, __c0, 5),
+          offerDetails: __S(50, __c3, 2),
         }),
       ).annotate({
         identifier: "LiftrBaseMarketplaceDetails",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           firstName: S.optional(S.String),
@@ -565,94 +577,94 @@ function __c0(j: number): any {
           phoneNumber: S.optional(S.String),
         }),
       ).annotate({ identifier: "LiftrBaseUserDetails" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           region: S.String,
           subdomain: S.String,
         }),
       ).annotate({ identifier: "PartnerProperties" });
-    case 1:
+    case 6:
       return S.Array(S.String);
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           state: S.optional(S.String),
           enterpriseAppId: S.optional(S.String),
           url: S.optional(S.String),
-          aadDomains: S.optional(__S(9, __c1, 1)),
+          aadDomains: S.optional(__S(54, __c3, 6)),
         }),
       ).annotate({
         identifier: "LiftrBaseSingleSignOnPropertiesV2",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          marketplace: __S(6, __c0, 6),
-          user: __S(7, __c0, 7),
+          marketplace: __S(51, __c3, 3),
+          user: __S(52, __c3, 4),
           provisioningState: S.optional(S.String),
-          partnerProperties: __S(8, __c1, 0),
-          singleSignOnProperties: S.optional(__S(10, __c1, 2)),
+          partnerProperties: __S(53, __c3, 5),
+          singleSignOnProperties: S.optional(__S(55, __c3, 7)),
         }),
       ).annotate({ identifier: "InstanceProperties" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(12, __c1, 4)));
-    case 6:
+    case 10:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(57, __c3, 9)));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(13, __c1, 5)),
+          userAssignedIdentities: S.optional(__S(58, __c3, 10)),
         }),
       ).annotate({
         identifier: "GetInstanceResponseIdentity",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(49, __c3, 1)),
           location: S.String,
-          properties: S.optional(__S(11, __c1, 3)),
-          identity: S.optional(__S(14, __c1, 6)),
+          properties: S.optional(__S(56, __c3, 8)),
+          identity: S.optional(__S(59, __c3, 11)),
         }),
       ).annotate({ identifier: "GetInstanceResponse" });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          marketplace: __S(6, __c0, 6),
-          user: __S(7, __c0, 7),
-          partnerProperties: __S(8, __c1, 0),
-          singleSignOnProperties: S.optional(__S(10, __c1, 2)),
+          marketplace: __S(51, __c3, 3),
+          user: __S(52, __c3, 4),
+          partnerProperties: __S(53, __c3, 5),
+          singleSignOnProperties: S.optional(__S(55, __c3, 7)),
         }),
       ).annotate({ identifier: "InstancePropertiesInput" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1, __c0, 1)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(16, __c1, 0)));
     case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(17, __c2, 1)),
+          userAssignedIdentities: S.optional(__S(81, __c5, 1)),
         }),
       ).annotate({
         identifier: "InstancesCreateOrUpdateRequestIdentity",
@@ -663,10 +675,10 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           instancename: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(49, __c3, 1)),
           location: S.String,
-          properties: S.optional(__S(16, __c2, 0)),
-          identity: S.optional(__S(18, __c2, 2)),
+          properties: S.optional(__S(80, __c5, 0)),
+          identity: S.optional(__S(82, __c5, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -684,16 +696,20 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(49, __c3, 1)),
           location: S.String,
-          properties: S.optional(__S(11, __c1, 3)),
-          identity: S.optional(__S(14, __c1, 6)),
+          properties: S.optional(__S(56, __c3, 8)),
+          identity: S.optional(__S(59, __c3, 11)),
         }),
       ).annotate({
         identifier: "InstancesCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -709,12 +725,16 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListInstanceByResourceGroupRequest",
       });
-    case 6:
-      return S.Array(__S(15, __c1, 7));
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(64, __c4, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(22, __c2, 6),
+          value: __S(112, __c7, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -722,7 +742,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -739,7 +759,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListInstanceBySubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -750,7 +774,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -759,48 +783,48 @@ function __c3(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(26, __c3, 2)),
+          display: S.optional(__S(145, __c9, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(146, __c9, 2));
     case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(28, __c3, 4)),
+          value: S.optional(__S(147, __c9, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 6:
-      return S.Record(S.String, __S(1, __c0, 1));
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(16, __c1, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(30, __c3, 6)),
+          userAssignedIdentities: S.optional(__S(160, __c10, 0)),
         }),
       ).annotate({
         identifier: "AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           instancename: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          identity: S.optional(__S(31, __c3, 7)),
+          tags: S.optional(__S(49, __c3, 1)),
+          identity: S.optional(__S(161, __c10, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -812,7 +836,6 @@ function __c4(j: number): any {
       ).annotate({ identifier: "UpdateInstanceRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

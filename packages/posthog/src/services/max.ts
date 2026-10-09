@@ -355,8 +355,8 @@ export const conversationsCancelPartialUpdate: API.OperationMethod<
   ConversationsCancelPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ConversationsCancelPartialUpdateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ConversationsCancelPartialUpdateResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<ConversationsCancelPartialUpdateRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<ConversationsCancelPartialUpdateResponse>,
   errors: [UnprocessableEntity],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -370,8 +370,8 @@ export const conversationsDestroy: API.OperationMethod<
   ConversationsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ConversationsDestroyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ConversationsDestroyResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<ConversationsDestroyRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<ConversationsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -384,8 +384,8 @@ export const conversationsQueueDestroy: API.OperationMethod<
   ConversationsQueueDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ConversationsQueueDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ConversationsQueueDestroyResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<ConversationsQueueDestroyRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<ConversationsQueueDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -399,8 +399,8 @@ export const createConversation: API.OperationMethod<
   CreateConversationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateConversationRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Message>,
+  input: __S(32, __c8, 0) as any as S.Schema<CreateConversationRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<Message>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -414,8 +414,8 @@ export const createConversationsAppendMessage: API.OperationMethod<
   CreateConversationsAppendMessageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateConversationsAppendMessageRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<MessageMinimal>,
+  input: __S(40, __c10, 0) as any as S.Schema<CreateConversationsAppendMessageRequest>,
+  output: __S(41, __c10, 1) as any as S.Schema<MessageMinimal>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -429,8 +429,8 @@ export const createConversationsOpen: API.OperationMethod<
   CreateConversationsOpenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateConversationsOpenRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<SandboxMessageResponse>,
+  input: __S(46, __c11, 2) as any as S.Schema<CreateConversationsOpenRequest>,
+  output: __S(47, __c11, 3) as any as S.Schema<SandboxMessageResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -443,8 +443,8 @@ export const createConversationsQueue: API.OperationMethod<
   CreateConversationsQueueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateConversationsQueueRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Conversation>,
+  input: __S(48, __c12, 0) as any as S.Schema<CreateConversationsQueueRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<Conversation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -457,8 +457,8 @@ export const createConversationsQueueClear: API.OperationMethod<
   CreateConversationsQueueClearError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateConversationsQueueClearRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Conversation>,
+  input: __S(60, __c15, 0) as any as S.Schema<CreateConversationsQueueClearRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<Conversation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -471,8 +471,8 @@ export const getConversation: API.OperationMethod<
   GetConversationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetConversationRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Conversation>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetConversationRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<Conversation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -485,8 +485,8 @@ export const getConversationsQueue: API.OperationMethod<
   GetConversationsQueueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetConversationsQueueRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Conversation>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetConversationsQueueRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<Conversation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -499,8 +499,8 @@ export const listConversations: API.OperationMethod<
   ListConversationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListConversationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<PaginatedConversationMinimalList>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListConversationsRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<PaginatedConversationMinimalList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -513,8 +513,8 @@ export const updateConversationsQueuePartial: API.OperationMethod<
   UpdateConversationsQueuePartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<UpdateConversationsQueuePartialRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Conversation>,
+  input: __S(12, __c3, 0) as any as S.Schema<UpdateConversationsQueuePartialRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<Conversation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -522,6 +522,106 @@ export const updateConversationsQueuePartial: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          conversation: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/conversations/{conversation}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetConversationRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          conversation: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/conversations/{conversation}/queue/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConversationsQueueRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/conversations/", code: 200 }),
+        ),
+      ).annotate({ identifier: "ListConversationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          status: S.optional(S.String),
+          title: S.optional(S.NullOr(S.String)),
+          topic: S.optional(S.NullOr(S.String)),
+          user: S.optional(S.NullOr(__S(52, __c13, 0))),
+          created_at: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+          is_internal: S.optional(S.NullOr(S.Boolean)),
+          slack_thread_key: S.optional(S.NullOr(S.String)),
+          slack_workspace_domain: S.optional(S.NullOr(S.String)),
+          task: S.optional(S.NullOr(__S(54, __c13, 2))),
+        }),
+      ).annotate({ identifier: "ConversationMinimal" });
+    case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: S.optional(__S(10, __c2, 2)),
+        }),
+      ).annotate({
+        identifier: "PaginatedConversationMinimalList",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          conversation: S.String.pipe(T.Label()),
+          queue_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/projects/{project_id}/conversations/{conversation}/queue/{queue_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateConversationsQueuePartialRequest",
+      });
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -538,11 +638,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConversationsCancelPartialUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ConversationsCancelPartialUpdateResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -557,11 +665,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConversationsDestroyRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ConversationsDestroyResponse",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -577,15 +689,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConversationsQueueDestroyRequest",
       });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           content: S.optional(S.NullOr(S.String)),
           conversation: S.optional(S.String),
-          contextual_tools: S.optional(__S(5, __c0, 5)),
+          contextual_tools: S.optional(__S(36, __c9, 0)),
           ui_context: S.optional(S.Unknown),
           billing_context: S.optional(S.Unknown),
           trace_id: S.optional(S.String),
@@ -599,12 +713,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateConversationRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.NullOr(S.String)),
           conversation: S.optional(S.String),
-          contextual_tools: S.optional(__S(5, __c0, 5)),
+          contextual_tools: S.optional(__S(36, __c9, 0)),
           ui_context: S.optional(S.Unknown),
           billing_context: S.optional(S.Unknown),
           trace_id: S.optional(S.String),
@@ -616,7 +730,13 @@ function __c0(j: number): any {
       ).annotate({ identifier: "Message" });
   }
 }
-function __c1(j: number): any {
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -640,7 +760,11 @@ function __c1(j: number): any {
           content: S.optional(S.String),
         }),
       ).annotate({ identifier: "MessageMinimal" });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -651,16 +775,16 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SandboxAttachedContextItem",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(44, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           conversation: S.String.pipe(T.Label()),
           content: S.optional(S.NullOr(S.String)),
           trace_id: S.optional(S.String),
-          attached_context: S.optional(__S(11, __c1, 3)),
+          attached_context: S.optional(__S(45, __c11, 1)),
           initial_permission_mode: S.optional(S.String),
           task_id: S.optional(S.String),
         }).pipe(
@@ -673,7 +797,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateConversationsOpenRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           task_id: S.String,
@@ -683,7 +807,11 @@ function __c1(j: number): any {
           just_created_run: S.Boolean,
         }),
       ).annotate({ identifier: "SandboxMessageResponse" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -698,7 +826,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateConversationsQueueRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -708,16 +840,10 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(5, __c0, 5))),
+          hedgehog_config: S.optional(S.NullOr(__S(36, __c9, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(5, __c0, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -728,7 +854,7 @@ function __c2(j: number): any {
           last_name: S.String,
           email: S.String,
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(5, __c0, 5))),
+          hedgehog_config: S.optional(S.NullOr(__S(36, __c9, 0))),
           role_at_organization: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskUserBasicInfo" });
@@ -747,41 +873,51 @@ function __c2(j: number): any {
           github_integration: S.NullOr(S.Number),
           github_user_integration: S.NullOr(S.String),
           signal_report: S.NullOr(S.String),
-          json_schema: S.NullOr(__S(5, __c0, 5)),
+          json_schema: S.NullOr(__S(36, __c9, 0)),
           internal: S.Boolean,
           archived: S.Boolean,
           archived_at: S.NullOr(S.String),
           latest_run: S.NullOr(S.String),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(17, __c2, 1))),
+          created_by: S.optional(S.NullOr(__S(53, __c13, 1))),
           ci_prompt: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ConversationTask" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(36, __c9, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           status: S.optional(S.String),
           title: S.optional(S.NullOr(S.String)),
           topic: S.optional(S.NullOr(S.String)),
-          user: S.optional(S.NullOr(__S(15, __c1, 7))),
+          user: S.optional(S.NullOr(__S(52, __c13, 0))),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
           type: S.optional(S.String),
           is_internal: S.optional(S.NullOr(S.Boolean)),
           slack_thread_key: S.optional(S.NullOr(S.String)),
           slack_workspace_domain: S.optional(S.NullOr(S.String)),
-          messages: S.optional(__S(16, __c2, 0)),
+          messages: S.optional(__S(56, __c14, 0)),
           has_unsupported_content: S.optional(S.Boolean),
           agent_mode: S.optional(S.NullOr(S.String)),
           agent_runtime: S.optional(S.String),
           is_sandbox: S.optional(S.Boolean),
-          pending_approvals: S.optional(__S(16, __c2, 0)),
-          task: S.optional(S.NullOr(__S(18, __c2, 2))),
+          pending_approvals: S.optional(__S(56, __c14, 0)),
+          task: S.optional(S.NullOr(__S(54, __c13, 2))),
         }),
       ).annotate({ identifier: "Conversation" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -796,97 +932,8 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateConversationsQueueClearRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          conversation: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/conversations/{conversation}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetConversationRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          conversation: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/conversations/{conversation}/queue/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConversationsQueueRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/conversations/", code: 200 }),
-        ),
-      ).annotate({ identifier: "ListConversationsRequest" });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          status: S.optional(S.String),
-          title: S.optional(S.NullOr(S.String)),
-          topic: S.optional(S.NullOr(S.String)),
-          user: S.optional(S.NullOr(__S(15, __c1, 7))),
-          created_at: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-          is_internal: S.optional(S.NullOr(S.Boolean)),
-          slack_thread_key: S.optional(S.NullOr(S.String)),
-          slack_workspace_domain: S.optional(S.NullOr(S.String)),
-          task: S.optional(S.NullOr(__S(18, __c2, 2))),
-        }),
-      ).annotate({ identifier: "ConversationMinimal" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "PaginatedConversationMinimalList",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          conversation: S.String.pipe(T.Label()),
-          queue_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/projects/{project_id}/conversations/{conversation}/queue/{queue_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateConversationsQueuePartialRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

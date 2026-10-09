@@ -427,8 +427,12 @@ export const validateAddressV1: API.OperationMethod<
   ValidateAddressV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ValidateAddressV1Request>,
-  output: __S(21, __c2, 5) as any as S.Schema<GoogleMapsAddressvalidationV1ValidateAddressResponse>,
+  input: __S(36, __c1, 4) as any as S.Schema<ValidateAddressV1Request>,
+  output: __S(
+    50,
+    __c1,
+    18,
+  ) as any as S.Schema<GoogleMapsAddressvalidationV1ValidateAddressResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -464,25 +468,29 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           revision: S.optional(S.Number),
           administrativeArea: S.optional(S.String),
           postalCode: S.optional(S.String),
-          recipients: S.optional(__S(3, __c0, 3)),
+          recipients: S.optional(__S(32, __c1, 0)),
           regionCode: S.optional(S.String),
           sublocality: S.optional(S.String),
           sortingCode: S.optional(S.String),
           languageCode: S.optional(S.String),
-          addressLines: S.optional(__S(3, __c0, 3)),
+          addressLines: S.optional(__S(32, __c1, 0)),
           locality: S.optional(S.String),
           organization: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypePostalAddress" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           returnEnglishLatinAddress: S.optional(S.Boolean),
@@ -490,22 +498,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1LanguageOptions",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(__S(4, __c0, 4)),
+          address: S.optional(__S(33, __c1, 1)),
           previousResponseId: S.optional(S.String),
           enableUspsCass: S.optional(S.Boolean),
           sessionToken: S.optional(S.String),
-          languageOptions: S.optional(__S(5, __c0, 5)),
+          languageOptions: S.optional(__S(34, __c1, 2)),
         }),
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1ValidateAddressRequest",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(35, __c1, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -514,11 +522,7 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ValidateAddressV1Request" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           residential: S.optional(S.Boolean),
@@ -528,7 +532,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1AddressMetadata",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
@@ -537,7 +541,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1ComponentName",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           inferred: S.optional(S.Boolean),
@@ -546,27 +550,27 @@ function __c1(j: number): any {
           unexpected: S.optional(S.Boolean),
           replaced: S.optional(S.Boolean),
           spellCorrected: S.optional(S.Boolean),
-          componentName: S.optional(__S(9, __c1, 1)),
+          componentName: S.optional(__S(38, __c1, 6)),
         }),
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1AddressComponent",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(39, __c1, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           formattedAddress: S.optional(S.String),
-          addressComponents: S.optional(__S(11, __c1, 3)),
-          unconfirmedComponentTypes: S.optional(__S(3, __c0, 3)),
-          missingComponentTypes: S.optional(__S(3, __c0, 3)),
-          postalAddress: S.optional(__S(4, __c0, 4)),
-          unresolvedTokens: S.optional(__S(3, __c0, 3)),
+          addressComponents: S.optional(__S(40, __c1, 8)),
+          unconfirmedComponentTypes: S.optional(__S(32, __c1, 0)),
+          missingComponentTypes: S.optional(__S(32, __c1, 0)),
+          postalAddress: S.optional(__S(33, __c1, 1)),
+          unresolvedTokens: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1Address",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           hasSpellCorrectedComponents: S.optional(S.Boolean),
@@ -582,7 +586,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1Verdict",
       });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.String),
@@ -598,7 +602,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1UspsAddress",
       });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           dpvNoStat: S.optional(S.String),
@@ -617,7 +621,7 @@ function __c1(j: number): any {
           dpvFootnote: S.optional(S.String),
           deliveryPointCheckDigit: S.optional(S.String),
           dpvVacant: S.optional(S.String),
-          standardizedAddress: S.optional(__S(14, __c1, 6)),
+          standardizedAddress: S.optional(__S(43, __c1, 11)),
           dpvEnhancedDeliveryCode: S.optional(S.String),
           abbreviatedCity: S.optional(S.String),
           pmbNumber: S.optional(S.String),
@@ -642,18 +646,14 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1UspsData",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           longitude: S.optional(S.Number),
           latitude: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleTypeLatLng" });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           globalCode: S.optional(S.String),
@@ -662,43 +662,43 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1PlusCode",
       });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          low: S.optional(__S(16, __c2, 0)),
-          high: S.optional(__S(16, __c2, 0)),
+          low: S.optional(__S(45, __c1, 13)),
+          high: S.optional(__S(45, __c1, 13)),
         }),
       ).annotate({ identifier: "GoogleGeoTypeViewport" });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           placeId: S.optional(S.String),
-          location: S.optional(__S(16, __c2, 0)),
-          plusCode: S.optional(__S(17, __c2, 1)),
-          bounds: S.optional(__S(18, __c2, 2)),
-          placeTypes: S.optional(__S(3, __c0, 3)),
+          location: S.optional(__S(45, __c1, 13)),
+          plusCode: S.optional(__S(46, __c1, 14)),
+          bounds: S.optional(__S(47, __c1, 15)),
+          placeTypes: S.optional(__S(32, __c1, 0)),
           featureSizeMeters: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1Geocode",
       });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(8, __c1, 0)),
-          address: S.optional(__S(12, __c1, 4)),
-          verdict: S.optional(__S(13, __c1, 5)),
-          uspsData: S.optional(__S(15, __c1, 7)),
-          englishLatinAddress: S.optional(__S(12, __c1, 4)),
-          geocode: S.optional(__S(19, __c2, 3)),
+          metadata: S.optional(__S(37, __c1, 5)),
+          address: S.optional(__S(41, __c1, 9)),
+          verdict: S.optional(__S(42, __c1, 10)),
+          uspsData: S.optional(__S(44, __c1, 12)),
+          englishLatinAddress: S.optional(__S(41, __c1, 9)),
+          geocode: S.optional(__S(48, __c1, 16)),
         }),
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1ValidationResult",
       });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(20, __c2, 4)),
+          result: S.optional(__S(49, __c1, 17)),
           responseId: S.optional(S.String),
         }),
       ).annotate({
@@ -706,7 +706,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

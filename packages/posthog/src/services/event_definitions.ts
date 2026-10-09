@@ -308,8 +308,8 @@ export const createEventDefinition: API.OperationMethod<
   CreateEventDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateEventDefinitionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<EnterpriseEventDefinition>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateEventDefinitionRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<EnterpriseEventDefinition>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -323,8 +323,8 @@ export const eventDefinitionsBulkUpdateVerifiedCreate: API.OperationMethod<
   EventDefinitionsBulkUpdateVerifiedCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<EventDefinitionsBulkUpdateVerifiedCreateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<EventDefinitionBulkUpdateVerifiedResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<EventDefinitionsBulkUpdateVerifiedCreateRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<EventDefinitionBulkUpdateVerifiedResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -337,8 +337,8 @@ export const eventDefinitionsDestroy: API.OperationMethod<
   EventDefinitionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<EventDefinitionsDestroyRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<EventDefinitionsDestroyResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<EventDefinitionsDestroyRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<EventDefinitionsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -351,8 +351,8 @@ export const getEventDefinition: API.OperationMethod<
   GetEventDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetEventDefinitionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<EnterpriseEventDefinition>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetEventDefinitionRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<EnterpriseEventDefinition>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -366,8 +366,8 @@ export const getEventDefinitionsByName: API.OperationMethod<
   GetEventDefinitionsByNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetEventDefinitionsByNameRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<EventDefinitionRecord>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetEventDefinitionsByNameRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<EventDefinitionRecord>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -380,8 +380,8 @@ export const getEventDefinitionsGolang: API.OperationMethod<
   GetEventDefinitionsGolangError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetEventDefinitionsGolangRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetEventDefinitionsGolangResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetEventDefinitionsGolangRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<GetEventDefinitionsGolangResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -395,8 +395,8 @@ export const getEventDefinitionsPrimaryProperty: API.OperationMethod<
   GetEventDefinitionsPrimaryPropertyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetEventDefinitionsPrimaryPropertyRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<PrimaryPropertiesResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetEventDefinitionsPrimaryPropertyRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<PrimaryPropertiesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -409,8 +409,8 @@ export const getEventDefinitionsPython: API.OperationMethod<
   GetEventDefinitionsPythonError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetEventDefinitionsPythonRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetEventDefinitionsPythonResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetEventDefinitionsPythonRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<GetEventDefinitionsPythonResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -423,8 +423,8 @@ export const getEventDefinitionsTypescript: API.OperationMethod<
   GetEventDefinitionsTypescriptError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetEventDefinitionsTypescriptRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetEventDefinitionsTypescriptResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetEventDefinitionsTypescriptRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<GetEventDefinitionsTypescriptResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -438,8 +438,8 @@ export const listEventDefinitions: API.OperationMethod<
   ListEventDefinitionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListEventDefinitionsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<PaginatedEnterpriseEventDefinitionList>,
+  input: __S(17, __c2, 1) as any as S.Schema<ListEventDefinitionsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<PaginatedEnterpriseEventDefinitionList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -452,8 +452,8 @@ export const updateEventDefinition: API.OperationMethod<
   UpdateEventDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<UpdateEventDefinitionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<EnterpriseEventDefinition>,
+  input: __S(24, __c3, 0) as any as S.Schema<UpdateEventDefinitionRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<EnterpriseEventDefinition>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -466,8 +466,8 @@ export const updateEventDefinitionsPartial: API.OperationMethod<
   UpdateEventDefinitionsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UpdateEventDefinitionsPartialRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<EnterpriseEventDefinition>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateEventDefinitionsPartialRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<EnterpriseEventDefinition>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -477,245 +477,6 @@ export const updateEventDefinitionsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          owner: S.optional(S.NullOr(S.Number)),
-          description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(0, __c0, 0)),
-          verified: S.optional(S.Boolean),
-          hidden: S.optional(S.NullOr(S.Boolean)),
-          enforcement_mode: S.optional(S.String),
-          primary_property: S.optional(S.NullOr(S.String)),
-          post_to_slack: S.optional(S.Boolean),
-          default_columns: S.optional(__S(1, __c0, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/event_definitions/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEventDefinitionRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(3, __c0, 3))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          owner: S.optional(S.NullOr(S.Number)),
-          description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(0, __c0, 0)),
-          created_at: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.String),
-          updated_by: S.optional(S.NullOr(__S(4, __c0, 4))),
-          last_seen_at: S.optional(S.NullOr(S.String)),
-          last_updated_at: S.optional(S.String),
-          verified: S.optional(S.Boolean),
-          verified_at: S.optional(S.NullOr(S.String)),
-          verified_by: S.optional(S.NullOr(__S(4, __c0, 4))),
-          hidden: S.optional(S.NullOr(S.Boolean)),
-          enforcement_mode: S.optional(S.String),
-          primary_property: S.optional(S.NullOr(S.String)),
-          is_action: S.optional(S.Boolean),
-          action_id: S.optional(S.Number),
-          is_calculating: S.optional(S.Boolean),
-          last_calculated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(4, __c0, 4))),
-          post_to_slack: S.optional(S.Boolean),
-          default_columns: S.optional(__S(1, __c0, 1)),
-          media_preview_urls: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseEventDefinition",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          ids: __S(1, __c0, 1),
-          verified: S.Boolean,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/event_definitions/bulk_update_verified/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "EventDefinitionsBulkUpdateVerifiedCreateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          verified: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "EventDefinitionBulkUpdateVerifiedItem",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          reason: S.String,
-        }),
-      ).annotate({ identifier: "BulkUpdateTagsUUIDError" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updated: __S(8, __c1, 0),
-          skipped: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "EventDefinitionBulkUpdateVerifiedResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/event_definitions/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "EventDefinitionsDestroyRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "EventDefinitionsDestroyResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/event_definitions/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEventDefinitionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/event_definitions/by_name/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEventDefinitionsByNameRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          created_at: S.optional(S.NullOr(S.String)),
-          last_seen_at: S.optional(S.NullOr(S.String)),
-          last_updated_at: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          enforcement_mode: S.optional(S.String),
-          primary_property: S.optional(S.NullOr(S.String)),
-          is_action: S.optional(S.Boolean),
-          action_id: S.optional(S.Number),
-          is_calculating: S.optional(S.Boolean),
-          last_calculated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(4, __c0, 4))),
-          post_to_slack: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "EventDefinitionRecord" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/event_definitions/golang/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEventDefinitionsGolangRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GetEventDefinitionsGolangResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          names: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/event_definitions/primary_properties/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEventDefinitionsPrimaryPropertyRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          primary_properties: __S(20, __c2, 4),
-        }),
-      ).annotate({
-        identifier: "PrimaryPropertiesResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -729,7 +490,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetEventDefinitionsPythonRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -745,7 +510,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -758,9 +523,9 @@ function __c3(j: number): any {
           exclude_stale: S.optional(S.Boolean.pipe(T.Query())),
           excluded_properties: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          names: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          names: S.optional(__S(48, __c6, 0).pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ordering: S.optional(__S(24, __c3, 0).pipe(T.Query())),
+          ordering: S.optional(__S(16, __c2, 0).pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           tags: S.optional(S.String.pipe(T.Query())),
           verified: S.optional(S.Boolean.pipe(T.Query())),
@@ -775,20 +540,24 @@ function __c3(j: number): any {
         identifier: "ListEventDefinitionsRequest",
       });
     case 2:
-      return S.Array(__S(5, __c0, 5));
+      return S.Array(__S(56, __c7, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(26, __c3, 2)),
+          results: S.optional(__S(18, __c2, 2)),
           count_is_capped: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "PaginatedEnterpriseEventDefinitionList",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -796,13 +565,13 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           owner: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
           verified: S.optional(S.Boolean),
           hidden: S.optional(S.NullOr(S.Boolean)),
           enforcement_mode: S.optional(S.String),
           primary_property: S.optional(S.NullOr(S.String)),
           post_to_slack: S.optional(S.Boolean),
-          default_columns: S.optional(__S(1, __c0, 1)),
+          default_columns: S.optional(__S(48, __c6, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -813,7 +582,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateEventDefinitionRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -821,13 +594,13 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           owner: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
           verified: S.optional(S.Boolean),
           hidden: S.optional(S.NullOr(S.Boolean)),
           enforcement_mode: S.optional(S.String),
           primary_property: S.optional(S.NullOr(S.String)),
           post_to_slack: S.optional(S.Boolean),
-          default_columns: S.optional(__S(1, __c0, 1)),
+          default_columns: S.optional(__S(48, __c6, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -840,7 +613,281 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          owner: S.optional(S.NullOr(S.Number)),
+          description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(64, __c8, 0)),
+          verified: S.optional(S.Boolean),
+          hidden: S.optional(S.NullOr(S.Boolean)),
+          enforcement_mode: S.optional(S.String),
+          primary_property: S.optional(S.NullOr(S.String)),
+          post_to_slack: S.optional(S.Boolean),
+          default_columns: S.optional(__S(48, __c6, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/event_definitions/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEventDefinitionRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          owner: S.optional(S.NullOr(S.Number)),
+          description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(64, __c8, 0)),
+          created_at: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.String),
+          updated_by: S.optional(S.NullOr(__S(66, __c8, 2))),
+          last_seen_at: S.optional(S.NullOr(S.String)),
+          last_updated_at: S.optional(S.String),
+          verified: S.optional(S.Boolean),
+          verified_at: S.optional(S.NullOr(S.String)),
+          verified_by: S.optional(S.NullOr(__S(66, __c8, 2))),
+          hidden: S.optional(S.NullOr(S.Boolean)),
+          enforcement_mode: S.optional(S.String),
+          primary_property: S.optional(S.NullOr(S.String)),
+          is_action: S.optional(S.Boolean),
+          action_id: S.optional(S.Number),
+          is_calculating: S.optional(S.Boolean),
+          last_calculated_at: S.optional(S.String),
+          created_by: S.optional(S.NullOr(__S(66, __c8, 2))),
+          post_to_slack: S.optional(S.Boolean),
+          default_columns: S.optional(__S(48, __c6, 0)),
+          media_preview_urls: S.optional(__S(48, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseEventDefinition",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(65, __c8, 1))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          ids: __S(48, __c6, 0),
+          verified: S.Boolean,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/event_definitions/bulk_update_verified/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "EventDefinitionsBulkUpdateVerifiedCreateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          verified: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "EventDefinitionBulkUpdateVerifiedItem",
+      });
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          reason: S.String,
+        }),
+      ).annotate({ identifier: "BulkUpdateTagsUUIDError" });
+    case 4:
+      return S.Array(__S(75, __c9, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          updated: __S(74, __c9, 2),
+          skipped: __S(76, __c9, 4),
+        }),
+      ).annotate({
+        identifier: "EventDefinitionBulkUpdateVerifiedResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/event_definitions/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "EventDefinitionsDestroyRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "EventDefinitionsDestroyResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/event_definitions/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEventDefinitionRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/event_definitions/by_name/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEventDefinitionsByNameRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          created_at: S.optional(S.NullOr(S.String)),
+          last_seen_at: S.optional(S.NullOr(S.String)),
+          last_updated_at: S.optional(S.String),
+          tags: S.optional(__S(64, __c8, 0)),
+          enforcement_mode: S.optional(S.String),
+          primary_property: S.optional(S.NullOr(S.String)),
+          is_action: S.optional(S.Boolean),
+          action_id: S.optional(S.Number),
+          is_calculating: S.optional(S.Boolean),
+          last_calculated_at: S.optional(S.String),
+          created_by: S.optional(S.NullOr(__S(66, __c8, 2))),
+          post_to_slack: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "EventDefinitionRecord" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/event_definitions/golang/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEventDefinitionsGolangRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GetEventDefinitionsGolangResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          names: S.optional(__S(48, __c6, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/event_definitions/primary_properties/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEventDefinitionsPrimaryPropertyRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          primary_properties: __S(121, __c15, 1),
+        }),
+      ).annotate({
+        identifier: "PrimaryPropertiesResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

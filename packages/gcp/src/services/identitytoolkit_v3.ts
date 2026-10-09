@@ -932,8 +932,8 @@ export const createAuthUriRelyingparty: API.OperationMethod<
   CreateAuthUriRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateAuthUriRelyingpartyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateAuthUriResponse>,
+  input: __S(122, __c15, 2) as any as S.Schema<CreateAuthUriRelyingpartyRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<CreateAuthUriResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -952,8 +952,8 @@ export const deleteAccountRelyingparty: API.OperationMethod<
   DeleteAccountRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteAccountRelyingpartyRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteAccountResponse>,
+  input: __S(137, __c17, 1) as any as S.Schema<DeleteAccountRelyingpartyRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<DeleteAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -972,8 +972,8 @@ export const downloadAccountRelyingparty: API.OperationMethod<
   DownloadAccountRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DownloadAccountRelyingpartyRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DownloadAccountResponse>,
+  input: __S(145, __c18, 1) as any as S.Schema<DownloadAccountRelyingpartyRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<DownloadAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -992,8 +992,8 @@ export const emailLinkSigninRelyingparty: API.OperationMethod<
   EmailLinkSigninRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<EmailLinkSigninRelyingpartyRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<EmailLinkSigninResponse>,
+  input: __S(161, __c20, 1) as any as S.Schema<EmailLinkSigninRelyingpartyRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<EmailLinkSigninResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1012,8 +1012,8 @@ export const getAccountInfoRelyingparty: API.OperationMethod<
   GetAccountInfoRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetAccountInfoRelyingpartyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetAccountInfoResponse>,
+  input: __S(169, __c21, 1) as any as S.Schema<GetAccountInfoRelyingpartyRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<GetAccountInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1032,8 +1032,8 @@ export const getOobConfirmationCodeRelyingparty: API.OperationMethod<
   GetOobConfirmationCodeRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetOobConfirmationCodeRelyingpartyRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetOobConfirmationCodeResponse>,
+  input: __S(177, __c22, 1) as any as S.Schema<GetOobConfirmationCodeRelyingpartyRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<GetOobConfirmationCodeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1047,8 +1047,8 @@ export const getProjectConfigRelyingparty: API.OperationMethod<
   GetProjectConfigRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetProjectConfigRelyingpartyRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<IdentitytoolkitRelyingpartyGetProjectConfigResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectConfigRelyingpartyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<IdentitytoolkitRelyingpartyGetProjectConfigResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1062,8 +1062,8 @@ export const getPublicKeysRelyingparty: API.OperationMethod<
   GetPublicKeysRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetPublicKeysRelyingpartyRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<IdentitytoolkitRelyingpartyGetPublicKeysResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetPublicKeysRelyingpartyRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<IdentitytoolkitRelyingpartyGetPublicKeysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1077,8 +1077,8 @@ export const getRecaptchaParamRelyingparty: API.OperationMethod<
   GetRecaptchaParamRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetRecaptchaParamRelyingpartyRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetRecaptchaParamResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetRecaptchaParamRelyingpartyRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetRecaptchaParamResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1097,8 +1097,8 @@ export const resetPasswordRelyingparty: API.OperationMethod<
   ResetPasswordRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ResetPasswordRelyingpartyRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ResetPasswordResponse>,
+  input: __S(33, __c4, 1) as any as S.Schema<ResetPasswordRelyingpartyRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ResetPasswordResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1117,11 +1117,11 @@ export const sendVerificationCodeRelyingparty: API.OperationMethod<
   SendVerificationCodeRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<SendVerificationCodeRelyingpartyRequest>,
+  input: __S(41, __c5, 1) as any as S.Schema<SendVerificationCodeRelyingpartyRequest>,
   output: __S(
-    38,
-    __c4,
-    6,
+    42,
+    __c5,
+    2,
   ) as any as S.Schema<IdentitytoolkitRelyingpartySendVerificationCodeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1141,8 +1141,8 @@ export const setAccountInfoRelyingparty: API.OperationMethod<
   SetAccountInfoRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<SetAccountInfoRelyingpartyRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<SetAccountInfoResponse>,
+  input: __S(49, __c6, 1) as any as S.Schema<SetAccountInfoRelyingpartyRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<SetAccountInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1161,8 +1161,8 @@ export const setProjectConfigRelyingparty: API.OperationMethod<
   SetProjectConfigRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<SetProjectConfigRelyingpartyRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<IdentitytoolkitRelyingpartySetProjectConfigResponse>,
+  input: __S(57, __c7, 1) as any as S.Schema<SetProjectConfigRelyingpartyRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<IdentitytoolkitRelyingpartySetProjectConfigResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1181,8 +1181,8 @@ export const signOutUserRelyingparty: API.OperationMethod<
   SignOutUserRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<SignOutUserRelyingpartyRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<IdentitytoolkitRelyingpartySignOutUserResponse>,
+  input: __S(65, __c8, 1) as any as S.Schema<SignOutUserRelyingpartyRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<IdentitytoolkitRelyingpartySignOutUserResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1201,8 +1201,8 @@ export const signupNewUserRelyingparty: API.OperationMethod<
   SignupNewUserRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<SignupNewUserRelyingpartyRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<SignupNewUserResponse>,
+  input: __S(73, __c9, 1) as any as S.Schema<SignupNewUserRelyingpartyRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<SignupNewUserResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1221,8 +1221,8 @@ export const uploadAccountRelyingparty: API.OperationMethod<
   UploadAccountRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<UploadAccountRelyingpartyRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<UploadAccountResponse>,
+  input: __S(81, __c10, 1) as any as S.Schema<UploadAccountRelyingpartyRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<UploadAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1241,8 +1241,8 @@ export const verifyAssertionRelyingparty: API.OperationMethod<
   VerifyAssertionRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<VerifyAssertionRelyingpartyRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<VerifyAssertionResponse>,
+  input: __S(89, __c11, 1) as any as S.Schema<VerifyAssertionRelyingpartyRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<VerifyAssertionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1261,8 +1261,8 @@ export const verifyCustomTokenRelyingparty: API.OperationMethod<
   VerifyCustomTokenRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<VerifyCustomTokenRelyingpartyRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<VerifyCustomTokenResponse>,
+  input: __S(97, __c12, 1) as any as S.Schema<VerifyCustomTokenRelyingpartyRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<VerifyCustomTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1281,8 +1281,8 @@ export const verifyPasswordRelyingparty: API.OperationMethod<
   VerifyPasswordRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<VerifyPasswordRelyingpartyRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<VerifyPasswordResponse>,
+  input: __S(105, __c13, 1) as any as S.Schema<VerifyPasswordRelyingpartyRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<VerifyPasswordResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1301,8 +1301,12 @@ export const verifyPhoneNumberRelyingparty: API.OperationMethod<
   VerifyPhoneNumberRelyingpartyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<VerifyPhoneNumberRelyingpartyRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse>,
+  input: __S(113, __c14, 1) as any as S.Schema<VerifyPhoneNumberRelyingpartyRequest>,
+  output: __S(
+    114,
+    __c14,
+    2,
+  ) as any as S.Schema<IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1310,292 +1314,6 @@ export const verifyPhoneNumberRelyingparty: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tenantId: S.optional(S.String),
-          sessionId: S.optional(S.String),
-          customParameter: S.optional(__S(0, __c0, 0)),
-          appId: S.optional(S.String),
-          context: S.optional(S.String),
-          providerId: S.optional(S.String),
-          openidRealm: S.optional(S.String),
-          authFlowType: S.optional(S.String),
-          oauthConsumerKey: S.optional(S.String),
-          identifier: S.optional(S.String),
-          otaApp: S.optional(S.String),
-          clientId: S.optional(S.String),
-          oauthScope: S.optional(S.String),
-          hostedDomain: S.optional(S.String),
-          tenantProjectNumber: S.optional(S.String),
-          continueUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IdentitytoolkitRelyingpartyCreateAuthUriRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "createAuthUri",
-            baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAuthUriRelyingpartyRequest",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          sessionId: S.optional(S.String),
-          forExistingProvider: S.optional(S.Boolean),
-          authUri: S.optional(S.String),
-          allProviders: S.optional(__S(3, __c0, 3)),
-          providerId: S.optional(S.String),
-          captchaRequired: S.optional(S.Boolean),
-          registered: S.optional(S.Boolean),
-          signinMethods: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "CreateAuthUriResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          idToken: S.optional(S.String),
-          delegatedProjectNumber: S.optional(S.String),
-          localId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IdentitytoolkitRelyingpartyDeleteAccountRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "deleteAccount",
-            baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccountRelyingpartyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeleteAccountResponse" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          targetProjectId: S.optional(S.String),
-          delegatedProjectNumber: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IdentitytoolkitRelyingpartyDownloadAccountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "downloadAccount",
-            baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DownloadAccountRelyingpartyRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          photoUrl: S.optional(S.String),
-          providerId: S.optional(S.String),
-          rawId: S.optional(S.String),
-          email: S.optional(S.String),
-          displayName: S.optional(S.String),
-          federatedId: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-          screenName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UserInfoProviderUserInfoItem",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.Number),
-          lastLoginAt: S.optional(S.String),
-          customAuth: S.optional(S.Boolean),
-          photoUrl: S.optional(S.String),
-          localId: S.optional(S.String),
-          validSince: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          customAttributes: S.optional(S.String),
-          providerUserInfo: S.optional(__S(11, __c1, 3)),
-          disabled: S.optional(S.Boolean),
-          passwordUpdatedAt: S.optional(S.Number),
-          phoneNumber: S.optional(S.String),
-          screenName: S.optional(S.String),
-          salt: S.optional(S.String),
-          displayName: S.optional(S.String),
-          rawPassword: S.optional(S.String),
-          email: S.optional(S.String),
-          emailVerified: S.optional(S.Boolean),
-          passwordHash: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserInfo" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          users: S.optional(__S(13, __c1, 5)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DownloadAccountResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          oobCode: S.optional(S.String),
-          email: S.optional(S.String),
-          idToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IdentitytoolkitRelyingpartyEmailLinkSigninRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "emailLinkSignin",
-            baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EmailLinkSigninRelyingpartyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          idToken: S.optional(S.String),
-          kind: S.optional(S.String),
-          isNewUser: S.optional(S.Boolean),
-          refreshToken: S.optional(S.String),
-          localId: S.optional(S.String),
-          expiresIn: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EmailLinkSigninResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(__S(3, __c0, 3)),
-          localId: S.optional(__S(3, __c0, 3)),
-          delegatedProjectNumber: S.optional(S.String),
-          idToken: S.optional(S.String),
-          phoneNumber: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "IdentitytoolkitRelyingpartyGetAccountInfoRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "getAccountInfo",
-            baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAccountInfoRelyingpartyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          users: S.optional(__S(13, __c1, 5)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetAccountInfoResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          challenge: S.optional(S.String),
-          idToken: S.optional(S.String),
-          kind: S.optional(S.String),
-          iOSAppStoreId: S.optional(S.String),
-          captchaResp: S.optional(S.String),
-          continueUrl: S.optional(S.String),
-          iOSBundleId: S.optional(S.String),
-          userIp: S.optional(S.String),
-          newEmail: S.optional(S.String),
-          requestType: S.optional(S.String),
-          email: S.optional(S.String),
-          androidMinimumVersion: S.optional(S.String),
-          canHandleCodeInApp: S.optional(S.Boolean),
-          androidPackageName: S.optional(S.String),
-          androidInstallApp: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Relyingparty" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "getOobConfirmationCode",
-            baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOobConfirmationCodeRelyingpartyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          oobCode: S.optional(S.String),
-          kind: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOobConfirmationCodeResponse",
-      });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1615,6 +1333,29 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          apiKey: S.optional(S.String),
+          authorizedDomains: S.optional(__S(128, __c16, 0)),
+          useEmailSending: S.optional(S.Boolean),
+          projectId: S.optional(S.String),
+          changeEmailTemplate: S.optional(__S(8, __c1, 0)),
+          resetPasswordTemplate: S.optional(__S(8, __c1, 0)),
+          idpConfig: S.optional(__S(10, __c1, 2)),
+          legacyResetPasswordTemplate: S.optional(__S(8, __c1, 0)),
+          enableAnonymousUser: S.optional(S.Boolean),
+          allowPasswordUser: S.optional(S.Boolean),
+          verifyEmailTemplate: S.optional(__S(8, __c1, 0)),
+          dynamicLinksDomain: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IdentitytoolkitRelyingpartyGetProjectConfigResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           fromDisplayName: S.optional(S.String),
           body: S.optional(S.String),
           replyTo: S.optional(S.String),
@@ -1623,39 +1364,24 @@ function __c3(j: number): any {
           from: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailTemplate" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
           clientId: S.optional(S.String),
-          whitelistedAudiences: S.optional(__S(3, __c0, 3)),
+          whitelistedAudiences: S.optional(__S(128, __c16, 0)),
           experimentPercent: S.optional(S.Number),
           enabled: S.optional(S.Boolean),
           secret: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdpConfig" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiKey: S.optional(S.String),
-          authorizedDomains: S.optional(__S(3, __c0, 3)),
-          useEmailSending: S.optional(S.Boolean),
-          projectId: S.optional(S.String),
-          changeEmailTemplate: S.optional(__S(25, __c3, 1)),
-          resetPasswordTemplate: S.optional(__S(25, __c3, 1)),
-          idpConfig: S.optional(__S(27, __c3, 3)),
-          legacyResetPasswordTemplate: S.optional(__S(25, __c3, 1)),
-          enableAnonymousUser: S.optional(S.Boolean),
-          allowPasswordUser: S.optional(S.Boolean),
-          verifyEmailTemplate: S.optional(__S(25, __c3, 1)),
-          dynamicLinksDomain: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IdentitytoolkitRelyingpartyGetProjectConfigResponse",
-      });
-    case 5:
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1667,9 +1393,13 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPublicKeysRelyingpartyRequest",
       });
-    case 6:
+    case 1:
       return S.Record(S.String, S.String);
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1681,11 +1411,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetRecaptchaParamRelyingpartyRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recaptchaSiteKey: S.optional(S.String),
@@ -1695,7 +1421,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetRecaptchaParamResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           oobCode: S.optional(S.String),
@@ -1706,10 +1436,10 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartyResetPasswordRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1720,7 +1450,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ResetPasswordRelyingpartyRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -1729,7 +1459,11 @@ function __c4(j: number): any {
           requestType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResetPasswordResponse" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           iosReceipt: S.optional(S.String),
@@ -1740,10 +1474,10 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartySendVerificationCodeRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1754,7 +1488,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "SendVerificationCodeRelyingpartyRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           sessionInfo: S.optional(S.String),
@@ -1762,15 +1496,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartySendVerificationCodeResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           captchaResponse: S.optional(S.String),
-          provider: S.optional(__S(3, __c0, 3)),
+          provider: S.optional(__S(128, __c16, 0)),
           createdAt: S.optional(S.String),
           delegatedProjectNumber: S.optional(S.String),
-          deleteProvider: S.optional(__S(3, __c0, 3)),
-          deleteAttribute: S.optional(__S(3, __c0, 3)),
+          deleteProvider: S.optional(__S(128, __c16, 0)),
+          deleteAttribute: S.optional(__S(128, __c16, 0)),
           lastLoginAt: S.optional(S.String),
           validSince: S.optional(S.String),
           upgradeToFederatedLogin: S.optional(S.Boolean),
@@ -1792,14 +1530,10 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartySetAccountInfoRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1810,7 +1544,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SetAccountInfoRelyingpartyRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -1821,16 +1555,16 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SetAccountInfoResponseProviderUserInfoItem",
       });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
     case 3:
+      return S.Array(__S(50, __c6, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           localId: S.optional(S.String),
           photoUrl: S.optional(S.String),
           refreshToken: S.optional(S.String),
           kind: S.optional(S.String),
-          providerUserInfo: S.optional(__S(42, __c5, 2)),
+          providerUserInfo: S.optional(__S(51, __c6, 3)),
           expiresIn: S.optional(S.String),
           newEmail: S.optional(S.String),
           passwordHash: S.optional(S.String),
@@ -1840,28 +1574,32 @@ function __c5(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetAccountInfoResponse" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           useEmailSending: S.optional(S.Boolean),
           enableAnonymousUser: S.optional(S.Boolean),
           allowPasswordUser: S.optional(S.Boolean),
-          verifyEmailTemplate: S.optional(__S(25, __c3, 1)),
-          legacyResetPasswordTemplate: S.optional(__S(25, __c3, 1)),
-          resetPasswordTemplate: S.optional(__S(25, __c3, 1)),
+          verifyEmailTemplate: S.optional(__S(8, __c1, 0)),
+          legacyResetPasswordTemplate: S.optional(__S(8, __c1, 0)),
+          resetPasswordTemplate: S.optional(__S(8, __c1, 0)),
           delegatedProjectNumber: S.optional(S.String),
           apiKey: S.optional(S.String),
-          authorizedDomains: S.optional(__S(3, __c0, 3)),
-          changeEmailTemplate: S.optional(__S(25, __c3, 1)),
-          idpConfig: S.optional(__S(27, __c3, 3)),
+          authorizedDomains: S.optional(__S(128, __c16, 0)),
+          changeEmailTemplate: S.optional(__S(8, __c1, 0)),
+          idpConfig: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartySetProjectConfigRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1872,7 +1610,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SetProjectConfigRelyingpartyRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String),
@@ -1880,7 +1618,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartySetProjectConfigResponse",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           localId: S.optional(S.String),
@@ -1889,14 +1631,10 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartySignOutUserRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1907,7 +1645,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "SignOutUserRelyingpartyRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           localId: S.optional(S.String),
@@ -1915,7 +1653,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartySignOutUserResponse",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           phoneNumber: S.optional(S.String),
@@ -1936,10 +1678,10 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartySignupNewUserRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1950,7 +1692,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "SignupNewUserRelyingpartyRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           refreshToken: S.optional(S.String),
@@ -1962,10 +1704,14 @@ function __c6(j: number): any {
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignupNewUserResponse" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(__S(13, __c1, 5)),
+          users: S.optional(__S(155, __c19, 3)),
           blockSize: S.optional(S.Number),
           parallelization: S.optional(S.Number),
           rounds: S.optional(S.Number),
@@ -1983,10 +1729,10 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartyUploadAccountRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(53, __c6, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1997,7 +1743,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UploadAccountRelyingpartyRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           index: S.optional(S.Number),
@@ -2006,20 +1752,20 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UploadAccountResponseErrorItem",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(82, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(56, __c7, 0)),
+          error: S.optional(__S(83, __c10, 3)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "UploadAccountResponse" });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           instanceId: S.optional(S.String),
@@ -2039,10 +1785,10 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartyVerifyAssertionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2053,7 +1799,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "VerifyAssertionRelyingpartyRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           dateOfBirth: S.optional(S.String),
@@ -2081,7 +1827,7 @@ function __c7(j: number): any {
           localId: S.optional(S.String),
           needEmail: S.optional(S.Boolean),
           appInstallationUrl: S.optional(S.String),
-          verifiedProvider: S.optional(__S(3, __c0, 3)),
+          verifiedProvider: S.optional(__S(128, __c16, 0)),
           errorMessage: S.optional(S.String),
           nickName: S.optional(S.String),
           oauthAuthorizationCode: S.optional(S.String),
@@ -2097,7 +1843,11 @@ function __c7(j: number): any {
           oauthExpireIn: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VerifyAssertionResponse" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           delegatedProjectNumber: S.optional(S.String),
@@ -2108,10 +1858,10 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartyVerifyCustomTokenRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2122,7 +1872,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "VerifyCustomTokenRelyingpartyRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -2136,7 +1886,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2159,7 +1909,7 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(104, __c13, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2187,7 +1937,11 @@ function __c8(j: number): any {
           oauthExpireIn: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VerifyPasswordResponse" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sessionInfo: S.optional(S.String),
@@ -2201,10 +1955,10 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2215,7 +1969,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "VerifyPhoneNumberRelyingpartyRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           expiresIn: S.optional(S.String),
@@ -2234,7 +1988,312 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tenantId: S.optional(S.String),
+          sessionId: S.optional(S.String),
+          customParameter: S.optional(__S(120, __c15, 0)),
+          appId: S.optional(S.String),
+          context: S.optional(S.String),
+          providerId: S.optional(S.String),
+          openidRealm: S.optional(S.String),
+          authFlowType: S.optional(S.String),
+          oauthConsumerKey: S.optional(S.String),
+          identifier: S.optional(S.String),
+          otaApp: S.optional(S.String),
+          clientId: S.optional(S.String),
+          oauthScope: S.optional(S.String),
+          hostedDomain: S.optional(S.String),
+          tenantProjectNumber: S.optional(S.String),
+          continueUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IdentitytoolkitRelyingpartyCreateAuthUriRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(121, __c15, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "createAuthUri",
+            baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAuthUriRelyingpartyRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          sessionId: S.optional(S.String),
+          forExistingProvider: S.optional(S.Boolean),
+          authUri: S.optional(S.String),
+          allProviders: S.optional(__S(128, __c16, 0)),
+          providerId: S.optional(S.String),
+          captchaRequired: S.optional(S.Boolean),
+          registered: S.optional(S.Boolean),
+          signinMethods: S.optional(__S(128, __c16, 0)),
+        }),
+      ).annotate({ identifier: "CreateAuthUriResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idToken: S.optional(S.String),
+          delegatedProjectNumber: S.optional(S.String),
+          localId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IdentitytoolkitRelyingpartyDeleteAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(136, __c17, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "deleteAccount",
+            baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccountRelyingpartyRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeleteAccountResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          targetProjectId: S.optional(S.String),
+          delegatedProjectNumber: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IdentitytoolkitRelyingpartyDownloadAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(144, __c18, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "downloadAccount",
+            baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DownloadAccountRelyingpartyRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          users: S.optional(__S(155, __c19, 3)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DownloadAccountResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          photoUrl: S.optional(S.String),
+          providerId: S.optional(S.String),
+          rawId: S.optional(S.String),
+          email: S.optional(S.String),
+          displayName: S.optional(S.String),
+          federatedId: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+          screenName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UserInfoProviderUserInfoItem",
+      });
+    case 1:
+      return S.Array(__S(152, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.Number),
+          lastLoginAt: S.optional(S.String),
+          customAuth: S.optional(S.Boolean),
+          photoUrl: S.optional(S.String),
+          localId: S.optional(S.String),
+          validSince: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          customAttributes: S.optional(S.String),
+          providerUserInfo: S.optional(__S(153, __c19, 1)),
+          disabled: S.optional(S.Boolean),
+          passwordUpdatedAt: S.optional(S.Number),
+          phoneNumber: S.optional(S.String),
+          screenName: S.optional(S.String),
+          salt: S.optional(S.String),
+          displayName: S.optional(S.String),
+          rawPassword: S.optional(S.String),
+          email: S.optional(S.String),
+          emailVerified: S.optional(S.Boolean),
+          passwordHash: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserInfo" });
+    case 3:
+      return S.Array(__S(154, __c19, 2));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          oobCode: S.optional(S.String),
+          email: S.optional(S.String),
+          idToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IdentitytoolkitRelyingpartyEmailLinkSigninRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(160, __c20, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "emailLinkSignin",
+            baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EmailLinkSigninRelyingpartyRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          idToken: S.optional(S.String),
+          kind: S.optional(S.String),
+          isNewUser: S.optional(S.Boolean),
+          refreshToken: S.optional(S.String),
+          localId: S.optional(S.String),
+          expiresIn: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailLinkSigninResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(__S(128, __c16, 0)),
+          localId: S.optional(__S(128, __c16, 0)),
+          delegatedProjectNumber: S.optional(S.String),
+          idToken: S.optional(S.String),
+          phoneNumber: S.optional(__S(128, __c16, 0)),
+        }),
+      ).annotate({
+        identifier: "IdentitytoolkitRelyingpartyGetAccountInfoRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "getAccountInfo",
+            baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAccountInfoRelyingpartyRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          users: S.optional(__S(155, __c19, 3)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetAccountInfoResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          challenge: S.optional(S.String),
+          idToken: S.optional(S.String),
+          kind: S.optional(S.String),
+          iOSAppStoreId: S.optional(S.String),
+          captchaResp: S.optional(S.String),
+          continueUrl: S.optional(S.String),
+          iOSBundleId: S.optional(S.String),
+          userIp: S.optional(S.String),
+          newEmail: S.optional(S.String),
+          requestType: S.optional(S.String),
+          email: S.optional(S.String),
+          androidMinimumVersion: S.optional(S.String),
+          canHandleCodeInApp: S.optional(S.Boolean),
+          androidPackageName: S.optional(S.String),
+          androidInstallApp: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Relyingparty" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "getOobConfirmationCode",
+            baseUrl: "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOobConfirmationCodeRelyingpartyRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          oobCode: S.optional(S.String),
+          kind: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOobConfirmationCodeResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

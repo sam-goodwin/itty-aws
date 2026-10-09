@@ -302,8 +302,8 @@ export const createNetworkConnector: API.OperationMethod<
   CreateNetworkConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateNetworkConnectorRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateNetworkConnectorResponse>,
+  input: __S(5, __c1, 1) as any as S.Schema<CreateNetworkConnectorRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<CreateNetworkConnectorResponse>,
   errors: [
     InvalidParameterValueException,
     NetworkConnectorLimitExceededException,
@@ -334,8 +334,8 @@ export const deleteNetworkConnector: API.OperationMethod<
   DeleteNetworkConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteNetworkConnectorRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteNetworkConnectorResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DeleteNetworkConnectorRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<DeleteNetworkConnectorResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -365,8 +365,8 @@ export const getNetworkConnector: API.OperationMethod<
   GetNetworkConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetNetworkConnectorRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetNetworkConnectorResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetNetworkConnectorRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<GetNetworkConnectorResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceNotFoundException,
@@ -395,8 +395,8 @@ export const listNetworkConnectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkConnectorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListNetworkConnectorsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListNetworkConnectorsResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListNetworkConnectorsRequest>,
+  output: __S(27, __c6, 3) as any as S.Schema<ListNetworkConnectorsResponse>,
   errors: [InvalidParameterValueException, ServiceException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -427,8 +427,8 @@ export const updateNetworkConnector: API.OperationMethod<
   UpdateNetworkConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<UpdateNetworkConnectorRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdateNetworkConnectorResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateNetworkConnectorRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<UpdateNetworkConnectorResponse>,
   errors: [
     InvalidParameterValueException,
     ResourceConflictException,
@@ -445,32 +445,55 @@ export const updateNetworkConnector: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: S.optional(__S(0, __c0, 0)),
-          SecurityGroupIds: S.optional(__S(0, __c0, 0)),
-          NetworkProtocol: S.optional(S.String),
-          AssociatedComputeResourceTypes: S.optional(__S(1, __c0, 1)),
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          Configuration: S.optional(__S(15, __c3, 3)),
+          OperatorRole: S.optional(S.String),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/2026-04-04/network-connectors/{Identifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkConnectorRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          Name: S.String,
+          Id: S.String,
+          OperatorRole: S.optional(S.String),
+          Configuration: S.optional(__S(15, __c3, 3)),
+          State: S.optional(S.String),
+          LastUpdateStatus: S.optional(S.String),
+          LastUpdateStatusReason: S.optional(S.String),
+          LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
-        identifier: "NetworkConnectorVpcEgressConfiguration",
+        identifier: "UpdateNetworkConnectorResponse",
       });
-    case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ VpcEgressConfiguration: __S(2, __c0, 2) })]);
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Configuration: __S(3, __c0, 3),
+          Configuration: __S(15, __c3, 3),
           OperatorRole: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(4, __c0, 4)),
+          Tags: S.optional(__S(4, __c1, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/2026-04-04/network-connectors" }),
@@ -484,20 +507,49 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateNetworkConnectorRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
           Name: S.String,
           Id: S.String,
-          Configuration: S.optional(__S(3, __c0, 3)),
+          Configuration: S.optional(__S(15, __c3, 3)),
           OperatorRole: S.optional(S.String),
           State: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateNetworkConnectorResponse",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          SubnetIds: S.optional(__S(12, __c3, 0)),
+          SecurityGroupIds: S.optional(__S(12, __c3, 0)),
+          NetworkProtocol: S.optional(S.String),
+          AssociatedComputeResourceTypes: S.optional(__S(13, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "NetworkConnectorVpcEgressConfiguration",
+      });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ VpcEgressConfiguration: __S(14, __c3, 2) })]);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
           T.all(
@@ -514,7 +566,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -538,7 +590,7 @@ function __c1(j: number): any {
           Name: S.String,
           Id: S.String,
           Version: S.optional(S.Number),
-          Configuration: S.optional(__S(3, __c0, 3)),
+          Configuration: S.optional(__S(15, __c3, 3)),
           OperatorRole: S.optional(S.String),
           State: S.optional(S.String),
           StateReason: S.optional(S.String),
@@ -551,7 +603,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetNetworkConnectorResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           State: S.optional(S.String).pipe(T.HttpQuery("State")),
@@ -570,7 +626,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListNetworkConnectorsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
@@ -581,53 +637,16 @@ function __c1(j: number): any {
           LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "NetworkConnectorSummary" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(25, __c6, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ NetworkConnectors: __S(12, __c1, 4), NextMarker: S.optional(S.String) }),
+        S.Struct({ NetworkConnectors: __S(26, __c6, 2), NextMarker: S.optional(S.String) }),
       ).annotate({
         identifier: "ListNetworkConnectorsResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          Configuration: S.optional(__S(3, __c0, 3)),
-          OperatorRole: S.optional(S.String),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/2026-04-04/network-connectors/{Identifier}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkConnectorRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.String,
-          Name: S.String,
-          Id: S.String,
-          OperatorRole: S.optional(S.String),
-          Configuration: S.optional(__S(3, __c0, 3)),
-          State: S.optional(S.String),
-          LastUpdateStatus: S.optional(S.String),
-          LastUpdateStatusReason: S.optional(S.String),
-          LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({
-        identifier: "UpdateNetworkConnectorResponse",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

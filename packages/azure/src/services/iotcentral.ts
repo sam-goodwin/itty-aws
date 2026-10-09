@@ -325,8 +325,8 @@ export const AppsCreateOrUpdate: API.OperationMethod<
   AppsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AppsCreateOrUpdateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<AppsCreateOrUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AppsCreateOrUpdateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AppsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -340,8 +340,8 @@ export const CheckAppNameAvailability: API.OperationMethod<
   CheckAppNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CheckAppNameAvailabilityRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AppAvailabilityInfo>,
+  input: __S(32, __c4, 0) as any as S.Schema<CheckAppNameAvailabilityRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<AppAvailabilityInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -355,8 +355,8 @@ export const CheckAppSubdomainAvailability: API.OperationMethod<
   CheckAppSubdomainAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CheckAppSubdomainAvailabilityRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AppAvailabilityInfo>,
+  input: __S(48, __c6, 0) as any as S.Schema<CheckAppSubdomainAvailabilityRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<AppAvailabilityInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -370,8 +370,8 @@ export const DeleteApp: API.OperationMethod<
   DeleteAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteAppRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteAppResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteAppRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<DeleteAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -385,8 +385,8 @@ export const GetApp: API.OperationMethod<
   GetAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetAppRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetAppResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetAppRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -400,8 +400,8 @@ export const ListAppByResourceGroup: API.OperationMethod<
   ListAppByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListAppByResourceGroupRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<AppListResult>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListAppByResourceGroupRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<AppListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -415,8 +415,8 @@ export const ListAppBySubscription: API.OperationMethod<
   ListAppBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListAppBySubscriptionRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<AppListResult>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListAppBySubscriptionRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<AppListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -430,8 +430,8 @@ export const ListAppTemplates: API.OperationMethod<
   ListAppTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListAppTemplatesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<AppTemplatesResult>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListAppTemplatesRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<AppTemplatesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -445,8 +445,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListOperationsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<OperationListResult>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -460,8 +460,8 @@ export const UpdateApp: API.OperationMethod<
   UpdateAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UpdateAppRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateAppResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<UpdateAppRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<UpdateAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -471,40 +471,16 @@ export const UpdateApp: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          subdomain: S.optional(S.String),
-          template: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppPropertiesInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({ identifier: "AppSkuInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "AppsCreateOrUpdateRequestIdentity",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(1, __c0, 1)),
-          sku: __S(2, __c0, 2),
-          identity: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(24, __c3, 0)),
+          sku: __S(8, __c1, 0),
+          identity: S.optional(__S(25, __c3, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -516,7 +492,32 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AppsCreateOrUpdateRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(9, __c1, 1)),
+          sku: __S(8, __c1, 0),
+          identity: S.optional(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "AppsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({ identifier: "AppSkuInfo" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.optional(S.String),
@@ -526,7 +527,7 @@ function __c0(j: number): any {
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppProperties" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -536,24 +537,35 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AppsCreateOrUpdateResponseIdentity",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(5, __c0, 5)),
-          sku: __S(2, __c0, 2),
-          identity: S.optional(__S(6, __c0, 6)),
+          displayName: S.optional(S.String),
+          subdomain: S.optional(S.String),
+          template: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
         }),
       ).annotate({
-        identifier: "AppsCreateOrUpdateResponse",
+        identifier: "AppsCreateOrUpdateRequestIdentity",
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -572,7 +584,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CheckAppNameAvailabilityRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
@@ -580,7 +596,11 @@ function __c1(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppAvailabilityInfo" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -597,7 +617,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CheckAppSubdomainAvailabilityRequest",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -612,11 +636,15 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAppRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAppResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -631,20 +659,28 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAppRequest" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(5, __c0, 5)),
-          sku: __S(2, __c0, 2),
-          identity: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(9, __c1, 1)),
+          sku: __S(8, __c1, 0),
+          identity: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "GetAppResponse" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -662,7 +698,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -673,22 +709,26 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(5, __c0, 5)),
-          sku: __S(2, __c0, 2),
-          identity: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(88, __c11, 0)),
+          properties: S.optional(__S(9, __c1, 1)),
+          sku: __S(8, __c1, 0),
+          identity: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "App" });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(89, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(18, __c2, 2)),
+          value: S.optional(__S(90, __c11, 2)),
         }),
       ).annotate({ identifier: "AppListResult" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -703,7 +743,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListAppBySubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -716,20 +760,16 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAppTemplatesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppTemplateLocations" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(105, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           manifestId: S.optional(S.String),
@@ -739,19 +779,23 @@ function __c3(j: number): any {
           order: S.optional(S.Number),
           description: S.optional(S.String),
           industry: S.optional(S.String),
-          locations: S.optional(__S(23, __c2, 7)),
+          locations: S.optional(__S(106, __c13, 2)),
         }),
       ).annotate({ identifier: "AppTemplate" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(107, __c13, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(25, __c3, 1)),
+          value: S.optional(__S(108, __c13, 4)),
         }),
       ).annotate({ identifier: "AppTemplatesResult" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -762,7 +806,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -771,27 +815,27 @@ function __c3(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(28, __c3, 4)),
+          display: S.optional(__S(113, __c14, 1)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(114, __c14, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(30, __c3, 6)),
+          value: S.optional(__S(115, __c14, 3)),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c4(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -799,10 +843,10 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(1, __c0, 1)),
-          identity: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
+          sku: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(24, __c3, 0)),
+          identity: S.optional(__S(25, __c3, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -814,7 +858,6 @@ function __c4(j: number): any {
       ).annotate({ identifier: "UpdateAppRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

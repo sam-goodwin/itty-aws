@@ -454,8 +454,8 @@ export const createAdCampaign: API.OperationMethod<
   CreateAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateAdCampaignRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AdCampaign>,
+  input: __S(4, __c1, 0) as any as S.Schema<CreateAdCampaignRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<AdCampaign>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -469,8 +469,8 @@ export const deleteAdCampaign: API.OperationMethod<
   DeleteAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteAdCampaignRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteAdCampaignResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteAdCampaignRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<DeleteAdCampaignResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -484,8 +484,8 @@ export const duplicateAdCampaign: API.OperationMethod<
   DuplicateAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DuplicateAdCampaignRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DuplicateAdCampaignResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DuplicateAdCampaignRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<DuplicateAdCampaignResponse>,
   errors: [BadRequest, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -499,8 +499,8 @@ export const getAdCampaign: API.OperationMethod<
   GetAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetAdCampaignRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AdCampaign>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetAdCampaignRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<AdCampaign>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -516,8 +516,8 @@ export const listAdCampaigns: API.PaginatedOperationMethod<
   AdCampaign
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(11, __c1, 3) as any as S.Schema<ListAdCampaignsRequest>,
-    output: __S(13, __c1, 5) as any as S.Schema<ListAdCampaignsResponse>,
+    input: __S(28, __c7, 0) as any as S.Schema<ListAdCampaignsRequest>,
+    output: __S(30, __c7, 2) as any as S.Schema<ListAdCampaignsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -541,8 +541,8 @@ export const pauseAdCampaign: API.OperationMethod<
   PauseAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<PauseAdCampaignRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AdCampaign>,
+  input: __S(32, __c8, 0) as any as S.Schema<PauseAdCampaignRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<AdCampaign>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -556,8 +556,8 @@ export const unpauseAdCampaign: API.OperationMethod<
   UnpauseAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<UnpauseAdCampaignRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AdCampaign>,
+  input: __S(36, __c9, 0) as any as S.Schema<UnpauseAdCampaignRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<AdCampaign>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -571,8 +571,8 @@ export const updateAdCampaign: API.OperationMethod<
   UpdateAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<UpdateAdCampaignRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AdCampaign>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateAdCampaignRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<AdCampaign>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -582,8 +582,26 @@ export const updateAdCampaign: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          bid_type: S.optional(S.String),
+          budget_amount: S.optional(S.Number),
+          budget_amount_local: S.optional(S.Number),
+          budget_optimization: S.optional(S.String),
+          budget_type: S.optional(S.String),
+          ends_at: S.optional(S.String),
+          special_ad_categories: S.optional(__S(8, __c2, 0)),
+          starts_at: S.optional(S.String),
+          status: S.optional(S.String),
+          title: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/ad_campaigns/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateAdCampaignRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
@@ -596,13 +614,19 @@ function __c0(j: number): any {
           ends_at: S.optional(S.String),
           objective: S.String,
           platform: S.String,
-          special_ad_categories: S.optional(__S(0, __c0, 0)),
+          special_ad_categories: S.optional(__S(8, __c2, 0)),
           starts_at: S.optional(S.String),
           title: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/ad_campaigns", code: 200 })),
       ).annotate({ identifier: "CreateAdCampaignRequest" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -611,9 +635,9 @@ function __c0(j: number): any {
           resource_type: S.String,
         }),
       ).annotate({ identifier: "AdPlatformIssue" });
+    case 2:
+      return S.Array(__S(9, __c2, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           added_to_cart_value: S.Number,
@@ -652,7 +676,7 @@ function __c0(j: number): any {
           frequency: S.NullOr(S.Number),
           id: S.String,
           impressions: S.Number,
-          issues: __S(3, __c0, 3),
+          issues: __S(10, __c2, 2),
           lead_value: S.Number,
           leads: S.Number,
           link_clicks: S.Number,
@@ -668,7 +692,7 @@ function __c0(j: number): any {
           return_on_ad_spend: S.Number,
           schedule_value: S.Number,
           schedules: S.Number,
-          special_ad_categories: __S(0, __c0, 0),
+          special_ad_categories: __S(8, __c2, 0),
           spend: S.Number,
           spend_currency: S.NullOr(S.String),
           starts_at: S.optional(S.NullOr(S.String)),
@@ -683,20 +707,28 @@ function __c0(j: number): any {
           viewed_contents: S.Number,
         }),
       ).annotate({ identifier: "AdCampaign" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/ad_campaigns/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteAdCampaignRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deleted: S.Boolean,
           id: S.String,
         }),
       ).annotate({ identifier: "DeleteAdCampaignResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -707,21 +739,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DuplicateAdCampaignRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(4, __c0, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(8, __c1, 0),
+          data: __S(20, __c5, 0),
         }),
       ).annotate({
         identifier: "DuplicateAdCampaignResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(11, __c2, 3));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -731,7 +767,11 @@ function __c1(j: number): any {
           attribution_model: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ad_campaigns/{id}", code: 200 })),
       ).annotate({ identifier: "GetAdCampaignRequest" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -751,7 +791,7 @@ function __c1(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ad_campaigns", code: 200 })),
       ).annotate({ identifier: "ListAdCampaignsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -762,21 +802,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListAdCampaignsResponsePageInfo",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(8, __c1, 0),
-          page_info: __S(12, __c1, 4),
+          data: __S(20, __c5, 0),
+          page_info: __S(29, __c7, 1),
         }),
       ).annotate({ identifier: "ListAdCampaignsResponse" });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/ad_campaigns/{id}/pause", code: 200 })),
       ).annotate({ identifier: "PauseAdCampaignRequest" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -785,27 +833,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UnpauseAdCampaignRequest" });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          bid_type: S.optional(S.String),
-          budget_amount: S.optional(S.Number),
-          budget_amount_local: S.optional(S.Number),
-          budget_optimization: S.optional(S.String),
-          budget_type: S.optional(S.String),
-          ends_at: S.optional(S.String),
-          special_ad_categories: S.optional(__S(0, __c0, 0)),
-          starts_at: S.optional(S.String),
-          status: S.optional(S.String),
-          title: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/ad_campaigns/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateAdCampaignRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

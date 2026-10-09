@@ -189,7 +189,7 @@ export const activateSnapshot: API.OperationMethod<
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ActivateSnapshotRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SnapshotDto>,
+  output: __S(6, __c1, 2) as any as S.Schema<SnapshotDto>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -203,8 +203,8 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateSnapshotRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SnapshotDto>,
+  input: __S(10, __c2, 2) as any as S.Schema<CreateSnapshotRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<SnapshotDto>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -218,8 +218,8 @@ export const deactivateSnapshot: API.OperationMethod<
   DeactivateSnapshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeactivateSnapshotRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeactivateSnapshotResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeactivateSnapshotRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<DeactivateSnapshotResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -233,8 +233,8 @@ export const getAllSnapshots: API.OperationMethod<
   GetAllSnapshotsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetAllSnapshotsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<PaginatedSnapshots>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetAllSnapshotsRequest>,
+  output: __S(22, __c5, 2) as any as S.Schema<PaginatedSnapshots>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -248,8 +248,8 @@ export const getSnapshot: API.OperationMethod<
   GetSnapshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetSnapshotRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SnapshotDto>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetSnapshotRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<SnapshotDto>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -263,8 +263,8 @@ export const getSnapshotBuildLogsUrl: API.OperationMethod<
   GetSnapshotBuildLogsUrlError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetSnapshotBuildLogsUrlRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Url>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetSnapshotBuildLogsUrlRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<Url>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -278,8 +278,8 @@ export const removeSnapshot: API.OperationMethod<
   RemoveSnapshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<RemoveSnapshotRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RemoveSnapshotResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<RemoveSnapshotRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<RemoveSnapshotResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -295,19 +295,23 @@ function __c0(j: number): any {
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "POST", uri: "/snapshots/{id}/activate", code: 200 })),
       ).annotate({ identifier: "ActivateSnapshotRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dockerfileContent: S.optional(S.String),
-          contextHashes: S.optional(__S(1, __c0, 1)),
+          contextHashes: S.optional(__S(4, __c1, 0)),
           createdAt: S.String,
           updatedAt: S.String,
           snapshotRef: S.String,
         }),
       ).annotate({ identifier: "BuildInfo" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -317,7 +321,7 @@ function __c0(j: number): any {
           imageName: S.optional(S.String),
           state: S.String,
           size: S.NullOr(S.Number),
-          entrypoint: S.NullOr(__S(1, __c0, 1)),
+          entrypoint: S.NullOr(__S(4, __c1, 0)),
           cpu: S.Number,
           gpu: S.Number,
           gpuType: S.optional(S.String),
@@ -327,41 +331,49 @@ function __c0(j: number): any {
           createdAt: S.String,
           updatedAt: S.String,
           lastUsedAt: S.NullOr(S.String),
-          buildInfo: S.optional(__S(2, __c0, 2)),
-          regionIds: S.optional(__S(1, __c0, 1)),
+          buildInfo: S.optional(__S(5, __c1, 1)),
+          regionIds: S.optional(__S(4, __c1, 0)),
           initialRunnerId: S.optional(S.String),
           ref: S.optional(S.String),
           sourceSandboxId: S.NullOr(S.String),
           sandboxClass: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotDto" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dockerfileContent: S.String,
-          contextHashes: S.optional(__S(1, __c0, 1)),
+          contextHashes: S.optional(__S(4, __c1, 0)),
         }),
       ).annotate({ identifier: "CreateBuildInfo" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
           name: S.String,
           imageName: S.optional(S.String),
-          entrypoint: S.optional(__S(1, __c0, 1)),
+          entrypoint: S.optional(__S(4, __c1, 0)),
           cpu: S.optional(S.Number),
           gpu: S.optional(S.Number),
-          gpuType: S.optional(__S(4, __c0, 4)),
+          gpuType: S.optional(__S(8, __c2, 0)),
           memory: S.optional(S.Number),
           disk: S.optional(S.Number),
-          buildInfo: S.optional(__S(5, __c0, 5)),
+          buildInfo: S.optional(__S(9, __c2, 1)),
           regionId: S.optional(S.String),
           sandboxClass: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/snapshots", code: 200 })),
       ).annotate({ identifier: "CreateSnapshotRequest" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -372,13 +384,17 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeactivateSnapshotResponse",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -390,25 +406,33 @@ function __c1(j: number): any {
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/snapshots", code: 200 })),
       ).annotate({ identifier: "GetAllSnapshotsRequest" });
+    case 1:
+      return S.Array(__S(6, __c1, 2));
     case 2:
-      return S.Array(__S(3, __c0, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(10, __c1, 2),
+          items: __S(21, __c5, 1),
           total: S.Number,
           page: S.Number,
           totalPages: S.Number,
         }),
       ).annotate({ identifier: "PaginatedSnapshots" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/snapshots/{id}", code: 200 })),
       ).annotate({ identifier: "GetSnapshotRequest" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -417,13 +441,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetSnapshotBuildLogsUrlRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
         }),
       ).annotate({ identifier: "Url" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -432,7 +460,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "RemoveSnapshotRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

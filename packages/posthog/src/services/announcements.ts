@@ -140,7 +140,7 @@ export const createAnnouncement: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<CreateAnnouncementRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AnnouncementOutput>,
+  output: __S(12, __c1, 4) as any as S.Schema<AnnouncementOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -153,8 +153,8 @@ export const getAnnouncement: API.OperationMethod<
   GetAnnouncementError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetAnnouncementRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AnnouncementOutput>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetAnnouncementRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<AnnouncementOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -167,8 +167,8 @@ export const listAnnouncements: API.OperationMethod<
   ListAnnouncementsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListAnnouncementsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<PaginatedAnnouncementListOutput>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListAnnouncementsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<PaginatedAnnouncementListOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -182,8 +182,8 @@ export const listAnnouncementsChannels: API.OperationMethod<
   ListAnnouncementsChannelsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListAnnouncementsChannelsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ListAnnouncementsChannelsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListAnnouncementsChannelsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListAnnouncementsChannelsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -207,9 +207,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateAnnouncementRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -219,11 +223,11 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2, __c0, 2))),
+          hedgehog_config: S.optional(S.NullOr(__S(8, __c1, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -235,9 +239,9 @@ function __c0(j: number): any {
           sent_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AnnouncementDelivery" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(10, __c1, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -251,11 +255,15 @@ function __c0(j: number): any {
           failed_count: S.Number,
           sent_at: S.NullOr(S.String),
           created_at: S.String,
-          created_by: __S(3, __c0, 3),
-          deliveries: __S(5, __c0, 5),
+          created_by: __S(9, __c1, 1),
+          deliveries: __S(11, __c1, 3),
         }),
       ).annotate({ identifier: "AnnouncementOutput" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -270,7 +278,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "GetAnnouncementRequest" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -283,19 +291,23 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListAnnouncementsRequest" });
     case 1:
-      return S.Array(__S(6, __c0, 6));
+      return S.Array(__S(12, __c1, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(9, __c1, 1),
+          results: __S(25, __c3, 1),
         }),
       ).annotate({
         identifier: "PaginatedAnnouncementListOutput",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -309,7 +321,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListAnnouncementsChannelsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -318,15 +330,14 @@ function __c1(j: number): any {
           customer_name: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AnnouncementChannel" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() => __S(13, __c1, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
+      return S.suspend(() => __S(34, __c4, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAnnouncementsChannelsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

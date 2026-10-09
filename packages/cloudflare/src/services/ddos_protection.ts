@@ -884,8 +884,8 @@ export const bulkCreateAdvancedTcpProtectionPrefixes: API.PaginatedOperationMeth
   AdvancedTcpProtectionPrefixesBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(2, __c0, 2) as any as S.Schema<BulkCreateAdvancedTcpProtectionPrefixesRequest>,
-    output: __S(5, __c0, 5) as any as S.Schema<BulkCreateAdvancedTcpProtectionPrefixesResponse>,
+    input: __S(186, __c46, 2) as any as S.Schema<BulkCreateAdvancedTcpProtectionPrefixesRequest>,
+    output: __S(190, __c47, 2) as any as S.Schema<BulkCreateAdvancedTcpProtectionPrefixesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -902,8 +902,8 @@ export const bulkDeleteAdvancedTcpProtectionAllowlists: API.OperationMethod<
   BulkDeleteAdvancedTcpProtectionAllowlistsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<BulkDeleteAdvancedTcpProtectionAllowlistsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<BulkDeleteAdvancedTcpProtectionAllowlistsResponse>,
+  input: __S(192, __c48, 0) as any as S.Schema<BulkDeleteAdvancedTcpProtectionAllowlistsRequest>,
+  output: __S(196, __c49, 0) as any as S.Schema<BulkDeleteAdvancedTcpProtectionAllowlistsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -917,8 +917,8 @@ export const bulkDeleteAdvancedTcpProtectionPrefixes: API.OperationMethod<
   BulkDeleteAdvancedTcpProtectionPrefixesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<BulkDeleteAdvancedTcpProtectionPrefixesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<BulkDeleteAdvancedTcpProtectionPrefixesResponse>,
+  input: __S(200, __c50, 0) as any as S.Schema<BulkDeleteAdvancedTcpProtectionPrefixesRequest>,
+  output: __S(196, __c49, 0) as any as S.Schema<BulkDeleteAdvancedTcpProtectionPrefixesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -933,14 +933,14 @@ export const bulkDeleteAdvancedTcpProtectionSynProtectionFilters: API.OperationM
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    9,
-    __c1,
-    1,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest>,
   output: __S(
-    10,
+    4,
     __c1,
-    2,
+    0,
   ) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -956,14 +956,14 @@ export const bulkDeleteAdvancedTcpProtectionSynProtectionRules: API.OperationMet
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    11,
-    __c1,
-    3,
+    8,
+    __c2,
+    0,
   ) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest>,
   output: __S(
-    10,
+    4,
     __c1,
-    2,
+    0,
   ) as any as S.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -980,13 +980,13 @@ export const bulkDeleteAdvancedTcpProtectionTcpFlowProtectionFilters: API.Operat
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
     12,
-    __c1,
-    4,
+    __c3,
+    0,
   ) as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    16,
+    __c4,
+    0,
   ) as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -1002,14 +1002,14 @@ export const bulkDeleteAdvancedTcpProtectionTcpFlowProtectionRules: API.Operatio
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    14,
-    __c1,
-    6,
+    20,
+    __c5,
+    0,
   ) as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    16,
+    __c4,
+    0,
   ) as any as S.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -1027,8 +1027,8 @@ export const createAdvancedTcpProtectionAllowlist: API.OperationMethod<
   CreateAdvancedTcpProtectionAllowlistError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateAdvancedTcpProtectionAllowlistRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateAdvancedTcpProtectionAllowlistResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<CreateAdvancedTcpProtectionAllowlistRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<CreateAdvancedTcpProtectionAllowlistResponse>,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1042,8 +1042,8 @@ export const createAdvancedTcpProtectionPrefix: API.OperationMethod<
   CreateAdvancedTcpProtectionPrefixError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateAdvancedTcpProtectionPrefixRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateAdvancedTcpProtectionPrefixResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<CreateAdvancedTcpProtectionPrefixRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<CreateAdvancedTcpProtectionPrefixResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1060,11 +1060,15 @@ export const createAdvancedTcpProtectionSynProtectionFilter: API.OperationMethod
   CreateAdvancedTcpProtectionSynProtectionFilterError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionFilterRequest>,
+  input: __S(
+    40,
+    __c10,
+    0,
+  ) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionFilterRequest>,
   output: __S(
-    20,
-    __c2,
-    4,
+    44,
+    __c11,
+    0,
   ) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionFilterResponse>,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -1082,8 +1086,12 @@ export const createAdvancedTcpProtectionSynProtectionRule: API.OperationMethod<
   CreateAdvancedTcpProtectionSynProtectionRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionRuleRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionRuleResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionRuleRequest>,
+  output: __S(
+    52,
+    __c13,
+    0,
+  ) as any as S.Schema<CreateAdvancedTcpProtectionSynProtectionRuleResponse>,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1101,13 +1109,13 @@ export const createAdvancedTcpProtectionTcpFlowProtectionFilter: API.OperationMe
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23,
-    __c2,
-    7,
+    56,
+    __c14,
+    0,
   ) as any as S.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest>,
   output: __S(
-    24,
-    __c3,
+    60,
+    __c15,
     0,
   ) as any as S.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse>,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
@@ -1127,14 +1135,14 @@ export const createAdvancedTcpProtectionTcpFlowProtectionRule: API.OperationMeth
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    25,
-    __c3,
-    1,
+    64,
+    __c16,
+    0,
   ) as any as S.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest>,
   output: __S(
-    26,
-    __c3,
-    2,
+    68,
+    __c17,
+    0,
   ) as any as S.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse>,
   errors: [AdvancedTcpProtectionNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -1153,8 +1161,8 @@ export const deleteAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionAllowlistItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteAdvancedTcpProtectionAllowlistItemRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteAdvancedTcpProtectionAllowlistItemResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<DeleteAdvancedTcpProtectionAllowlistItemRequest>,
+  output: __S(196, __c49, 0) as any as S.Schema<DeleteAdvancedTcpProtectionAllowlistItemResponse>,
   errors: [
     AllowlistEntryNotFound,
     AdvancedTcpProtectionNotEntitled,
@@ -1174,8 +1182,8 @@ export const deleteAdvancedTcpProtectionPrefixItem: API.OperationMethod<
   DeleteAdvancedTcpProtectionPrefixItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteAdvancedTcpProtectionPrefixItemRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteAdvancedTcpProtectionPrefixItemResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<DeleteAdvancedTcpProtectionPrefixItemRequest>,
+  output: __S(196, __c49, 0) as any as S.Schema<DeleteAdvancedTcpProtectionPrefixItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1194,14 +1202,14 @@ export const deleteAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMe
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    29,
-    __c3,
-    5,
+    80,
+    __c20,
+    0,
   ) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest>,
   output: __S(
-    10,
+    4,
     __c1,
-    2,
+    0,
   ) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse>,
   errors: [
     SynProtectionFilterNotFound,
@@ -1227,14 +1235,14 @@ export const deleteAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMeth
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    30,
-    __c3,
-    6,
+    84,
+    __c21,
+    0,
   ) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest>,
   output: __S(
-    10,
+    4,
     __c1,
-    2,
+    0,
   ) as any as S.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse>,
   errors: [
     SynProtectionRuleNotFound,
@@ -1260,14 +1268,14 @@ export const deleteAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.Operati
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    31,
-    __c3,
-    7,
+    88,
+    __c22,
+    0,
   ) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    16,
+    __c4,
+    0,
   ) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>,
   errors: [
     TcpFlowProtectionFilterNotFound,
@@ -1293,14 +1301,14 @@ export const deleteAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.Operation
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    32,
-    __c4,
+    92,
+    __c23,
     0,
   ) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest>,
   output: __S(
-    10,
+    4,
     __c1,
-    2,
+    0,
   ) as any as S.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>,
   errors: [
     TcpFlowProtectionRuleNotFound,
@@ -1325,8 +1333,8 @@ export const getAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
   GetAdvancedTcpProtectionAllowlistItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetAdvancedTcpProtectionAllowlistItemRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetAdvancedTcpProtectionAllowlistItemResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<GetAdvancedTcpProtectionAllowlistItemRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<GetAdvancedTcpProtectionAllowlistItemResponse>,
   errors: [
     AllowlistEntryNotFound,
     AdvancedTcpProtectionNotEntitled,
@@ -1346,8 +1354,8 @@ export const getAdvancedTcpProtectionPrefixItem: API.OperationMethod<
   GetAdvancedTcpProtectionPrefixItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetAdvancedTcpProtectionPrefixItemRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetAdvancedTcpProtectionPrefixItemResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<GetAdvancedTcpProtectionPrefixItemRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<GetAdvancedTcpProtectionPrefixItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1361,8 +1369,8 @@ export const getAdvancedTcpProtectionStatus: API.OperationMethod<
   GetAdvancedTcpProtectionStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetAdvancedTcpProtectionStatusRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetAdvancedTcpProtectionStatusResponse>,
+  input: __S(104, __c26, 0) as any as S.Schema<GetAdvancedTcpProtectionStatusRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<GetAdvancedTcpProtectionStatusResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1381,14 +1389,14 @@ export const getAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMetho
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    37,
-    __c4,
-    5,
+    112,
+    __c28,
+    0,
   ) as any as S.Schema<GetAdvancedTcpProtectionSynProtectionFilterItemRequest>,
   output: __S(
-    20,
-    __c2,
-    4,
+    44,
+    __c11,
+    0,
   ) as any as S.Schema<GetAdvancedTcpProtectionSynProtectionFilterItemResponse>,
   errors: [
     SynProtectionFilterNotFound,
@@ -1413,11 +1421,15 @@ export const getAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMethod<
   GetAdvancedTcpProtectionSynProtectionRuleItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetAdvancedTcpProtectionSynProtectionRuleItemRequest>,
+  input: __S(
+    116,
+    __c29,
+    0,
+  ) as any as S.Schema<GetAdvancedTcpProtectionSynProtectionRuleItemRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    52,
+    __c13,
+    0,
   ) as any as S.Schema<GetAdvancedTcpProtectionSynProtectionRuleItemResponse>,
   errors: [
     SynProtectionRuleNotFound,
@@ -1443,13 +1455,13 @@ export const getAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.OperationM
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    39,
-    __c4,
-    7,
+    120,
+    __c30,
+    0,
   ) as any as S.Schema<GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest>,
   output: __S(
-    24,
-    __c3,
+    60,
+    __c15,
     0,
   ) as any as S.Schema<GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>,
   errors: [
@@ -1476,14 +1488,14 @@ export const getAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.OperationMet
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    40,
-    __c5,
+    124,
+    __c31,
     0,
   ) as any as S.Schema<GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest>,
   output: __S(
-    26,
-    __c3,
-    2,
+    68,
+    __c17,
+    0,
   ) as any as S.Schema<GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>,
   errors: [
     TcpFlowProtectionRuleNotFound,
@@ -1509,8 +1521,8 @@ export const listAdvancedTcpProtectionAllowlists: API.PaginatedOperationMethod<
   AdvancedTcpProtectionAllowlistListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(41, __c5, 1) as any as S.Schema<ListAdvancedTcpProtectionAllowlistsRequest>,
-    output: __S(44, __c5, 4) as any as S.Schema<ListAdvancedTcpProtectionAllowlistsResponse>,
+    input: __S(128, __c32, 0) as any as S.Schema<ListAdvancedTcpProtectionAllowlistsRequest>,
+    output: __S(131, __c32, 3) as any as S.Schema<ListAdvancedTcpProtectionAllowlistsResponse>,
     errors: [AdvancedTcpProtectionNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1535,8 +1547,8 @@ export const listAdvancedTcpProtectionPrefixes: API.PaginatedOperationMethod<
   AdvancedTcpProtectionPrefixesBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(45, __c5, 5) as any as S.Schema<ListAdvancedTcpProtectionPrefixesRequest>,
-    output: __S(5, __c0, 5) as any as S.Schema<ListAdvancedTcpProtectionPrefixesResponse>,
+    input: __S(132, __c33, 0) as any as S.Schema<ListAdvancedTcpProtectionPrefixesRequest>,
+    output: __S(190, __c47, 2) as any as S.Schema<ListAdvancedTcpProtectionPrefixesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1565,13 +1577,13 @@ export const listAdvancedTcpProtectionSynProtectionFilters: API.PaginatedOperati
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: __S(
-      46,
-      __c5,
-      6,
+      136,
+      __c34,
+      0,
     ) as any as S.Schema<ListAdvancedTcpProtectionSynProtectionFiltersRequest>,
     output: __S(
-      49,
-      __c6,
+      137,
+      __c34,
       1,
     ) as any as S.Schema<ListAdvancedTcpProtectionSynProtectionFiltersResponse>,
     errors: [AdvancedTcpProtectionNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
@@ -1601,11 +1613,15 @@ export const listAdvancedTcpProtectionSynProtectionRules: API.PaginatedOperation
   AdvancedTcpProtectionSynProtectionRulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(50, __c6, 2) as any as S.Schema<ListAdvancedTcpProtectionSynProtectionRulesRequest>,
+    input: __S(
+      144,
+      __c36,
+      0,
+    ) as any as S.Schema<ListAdvancedTcpProtectionSynProtectionRulesRequest>,
     output: __S(
-      53,
-      __c6,
-      5,
+      147,
+      __c36,
+      3,
     ) as any as S.Schema<ListAdvancedTcpProtectionSynProtectionRulesResponse>,
     errors: [AdvancedTcpProtectionNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
@@ -1635,14 +1651,14 @@ export const listAdvancedTcpProtectionTcpFlowProtectionFilters: API.PaginatedOpe
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: __S(
-      54,
-      __c6,
-      6,
+      148,
+      __c37,
+      0,
     ) as any as S.Schema<ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest>,
     output: __S(
-      55,
-      __c6,
-      7,
+      149,
+      __c37,
+      1,
     ) as any as S.Schema<ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse>,
     errors: [AdvancedTcpProtectionNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
@@ -1672,13 +1688,13 @@ export const listAdvancedTcpProtectionTcpFlowProtectionRules: API.PaginatedOpera
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: __S(
-      56,
-      __c7,
+      152,
+      __c38,
       0,
     ) as any as S.Schema<ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest>,
     output: __S(
-      59,
-      __c7,
+      155,
+      __c38,
       3,
     ) as any as S.Schema<ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse>,
     errors: [AdvancedTcpProtectionNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
@@ -1707,8 +1723,8 @@ export const patchAdvancedTcpProtectionAllowlistItem: API.OperationMethod<
   PatchAdvancedTcpProtectionAllowlistItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<PatchAdvancedTcpProtectionAllowlistItemRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<PatchAdvancedTcpProtectionAllowlistItemResponse>,
+  input: __S(156, __c39, 0) as any as S.Schema<PatchAdvancedTcpProtectionAllowlistItemRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<PatchAdvancedTcpProtectionAllowlistItemResponse>,
   errors: [
     AllowlistEntryNotFound,
     AdvancedTcpProtectionNotEntitled,
@@ -1728,8 +1744,8 @@ export const patchAdvancedTcpProtectionPrefixItem: API.OperationMethod<
   PatchAdvancedTcpProtectionPrefixItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<PatchAdvancedTcpProtectionPrefixItemRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<PatchAdvancedTcpProtectionPrefixItemResponse>,
+  input: __S(160, __c40, 0) as any as S.Schema<PatchAdvancedTcpProtectionPrefixItemRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<PatchAdvancedTcpProtectionPrefixItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1743,8 +1759,8 @@ export const patchAdvancedTcpProtectionStatus: API.OperationMethod<
   PatchAdvancedTcpProtectionStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<PatchAdvancedTcpProtectionStatusRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<PatchAdvancedTcpProtectionStatusResponse>,
+  input: __S(164, __c41, 0) as any as S.Schema<PatchAdvancedTcpProtectionStatusRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<PatchAdvancedTcpProtectionStatusResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1763,13 +1779,13 @@ export const patchAdvancedTcpProtectionSynProtectionFilterItem: API.OperationMet
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    168,
+    __c42,
+    0,
   ) as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionFilterItemRequest>,
   output: __S(
-    24,
-    __c3,
+    60,
+    __c15,
     0,
   ) as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionFilterItemResponse>,
   errors: [
@@ -1796,14 +1812,14 @@ export const patchAdvancedTcpProtectionSynProtectionRuleItem: API.OperationMetho
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    64,
-    __c8,
+    172,
+    __c43,
     0,
   ) as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionRuleItemRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    52,
+    __c13,
+    0,
   ) as any as S.Schema<PatchAdvancedTcpProtectionSynProtectionRuleItemResponse>,
   errors: [
     SynProtectionRuleNotFound,
@@ -1829,14 +1845,14 @@ export const patchAdvancedTcpProtectionTcpFlowProtectionFilterItem: API.Operatio
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    65,
-    __c8,
-    1,
+    176,
+    __c44,
+    0,
   ) as any as S.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest>,
   output: __S(
-    66,
-    __c8,
-    2,
+    177,
+    __c44,
+    1,
   ) as any as S.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>,
   errors: [
     TcpFlowProtectionFilterNotFound,
@@ -1862,14 +1878,14 @@ export const patchAdvancedTcpProtectionTcpFlowProtectionRuleItem: API.OperationM
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
-    __c8,
-    3,
+    180,
+    __c45,
+    0,
   ) as any as S.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest>,
   output: __S(
-    26,
-    __c3,
-    2,
+    68,
+    __c17,
+    0,
   ) as any as S.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>,
   errors: [
     TcpFlowProtectionRuleNotFound,
@@ -1888,99 +1904,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          comment: S.String,
-          excluded: S.Boolean,
-          prefix: S.String,
-        }),
-      ).annotate({
-        identifier: "AdvancedTcpProtectionPrefixesBulkCreateRequestBodyItem",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          body: __S(1, __c0, 1).pipe(T.HttpBody()),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/bulk",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "BulkCreateAdvancedTcpProtectionPrefixesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          comment: S.String,
-          createdOn: S.String.pipe(T.Body("created_on")),
-          excluded: S.Boolean,
-          modifiedOn: S.String.pipe(T.Body("modified_on")),
-          prefix: S.String,
-        }),
-      ).annotate({
-        identifier: "AdvancedTcpProtectionPrefixesBulkCreateResultItem",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(4, __c0, 4).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "BulkCreateAdvancedTcpProtectionPrefixesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "BulkDeleteAdvancedTcpProtectionAllowlistsRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "BulkDeleteAdvancedTcpProtectionAllowlistsResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "BulkDeleteAdvancedTcpProtectionPrefixesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
         })
           .pipe(
@@ -1994,11 +1917,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2014,7 +1945,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2030,11 +1965,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2050,7 +1993,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2071,7 +2018,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2086,7 +2033,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAdvancedTcpProtectionAllowlistResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2105,7 +2056,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAdvancedTcpProtectionPrefixRequest",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2118,7 +2073,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAdvancedTcpProtectionPrefixResponse",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2136,7 +2095,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAdvancedTcpProtectionSynProtectionFilterRequest",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2148,7 +2111,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAdvancedTcpProtectionSynProtectionFilterResponse",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2170,7 +2137,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAdvancedTcpProtectionSynProtectionRuleRequest",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2186,7 +2157,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAdvancedTcpProtectionSynProtectionRuleResponse",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2206,7 +2181,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2220,7 +2195,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2241,7 +2220,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2256,7 +2239,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2273,7 +2260,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAdvancedTcpProtectionAllowlistItemRequest",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2290,7 +2281,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAdvancedTcpProtectionPrefixItemRequest",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2307,7 +2302,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest",
       });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2324,7 +2323,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest",
       });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2343,7 +2346,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2362,7 +2365,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest",
       });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2379,7 +2386,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAdvancedTcpProtectionAllowlistItemRequest",
       });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2396,7 +2407,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAdvancedTcpProtectionPrefixItemRequest",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2412,7 +2427,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAdvancedTcpProtectionStatusRequest",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -2420,7 +2439,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAdvancedTcpProtectionStatusResponse",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2437,7 +2460,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAdvancedTcpProtectionSynProtectionFilterItemRequest",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2454,7 +2481,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAdvancedTcpProtectionSynProtectionRuleItemRequest",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2473,7 +2504,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2492,7 +2523,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest",
       });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2512,7 +2547,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListAdvancedTcpProtectionAllowlistsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2525,18 +2560,22 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "AdvancedTcpProtectionAllowlistListResultItem",
       });
+    case 2:
+      return S.Array(__S(129, __c32, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(43, __c5, 3).pipe(T.EnvelopePayload()),
+          result: __S(130, __c32, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListAdvancedTcpProtectionAllowlistsResponse",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2556,7 +2595,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListAdvancedTcpProtectionPrefixesRequest",
       });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2577,7 +2620,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListAdvancedTcpProtectionSynProtectionFiltersRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(141, __c35, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListAdvancedTcpProtectionSynProtectionFiltersResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2589,22 +2645,13 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "AdvancedTcpProtectionSynProtectionFiltersListResultItem",
       });
+    case 1:
+      return S.Array(__S(140, __c35, 0));
   }
 }
-function __c6(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(48, __c6, 0).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListAdvancedTcpProtectionSynProtectionFiltersResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2624,7 +2671,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListAdvancedTcpProtectionSynProtectionRulesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2640,18 +2687,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "AdvancedTcpProtectionSynProtectionRulesListResultItem",
       });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(145, __c36, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(52, __c6, 4).pipe(T.EnvelopePayload()),
+          result: __S(146, __c36, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListAdvancedTcpProtectionSynProtectionRulesResponse",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2672,10 +2723,10 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(48, __c6, 0).pipe(T.EnvelopePayload()),
+          result: __S(141, __c35, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -2683,7 +2734,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2721,17 +2772,21 @@ function __c7(j: number): any {
         identifier: "AdvancedTcpProtectionTcpFlowProtectionRulesListResultItem",
       });
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(153, __c38, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(58, __c7, 2).pipe(T.EnvelopePayload()),
+          result: __S(154, __c38, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse",
       });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2750,7 +2805,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchAdvancedTcpProtectionAllowlistItemRequest",
       });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2769,7 +2828,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchAdvancedTcpProtectionPrefixItemRequest",
       });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2786,7 +2849,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchAdvancedTcpProtectionStatusRequest",
       });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2807,7 +2874,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2830,7 +2897,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PatchAdvancedTcpProtectionSynProtectionRuleItemRequest",
       });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2849,7 +2920,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2861,7 +2932,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse",
       });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2883,7 +2958,115 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          comment: S.String,
+          excluded: S.Boolean,
+          prefix: S.String,
+        }),
+      ).annotate({
+        identifier: "AdvancedTcpProtectionPrefixesBulkCreateRequestBodyItem",
+      });
+    case 1:
+      return S.Array(__S(184, __c46, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          body: __S(185, __c46, 1).pipe(T.HttpBody()),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/bulk",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "BulkCreateAdvancedTcpProtectionPrefixesRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          comment: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          excluded: S.Boolean,
+          modifiedOn: S.String.pipe(T.Body("modified_on")),
+          prefix: S.String,
+        }),
+      ).annotate({
+        identifier: "AdvancedTcpProtectionPrefixesBulkCreateResultItem",
+      });
+    case 1:
+      return S.Array(__S(188, __c47, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(189, __c47, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "BulkCreateAdvancedTcpProtectionPrefixesResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "BulkDeleteAdvancedTcpProtectionAllowlistsRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "BulkDeleteAdvancedTcpProtectionAllowlistsResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "BulkDeleteAdvancedTcpProtectionPrefixesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

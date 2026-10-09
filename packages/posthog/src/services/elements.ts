@@ -190,8 +190,8 @@ export const createElement: API.OperationMethod<
   CreateElementError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateElementRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Element>,
+  input: __S(4, __c1, 0) as any as S.Schema<CreateElementRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<Element>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -204,8 +204,8 @@ export const elementsDestroy: API.OperationMethod<
   ElementsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ElementsDestroyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ElementsDestroyResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ElementsDestroyRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<ElementsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -218,8 +218,8 @@ export const getElement: API.OperationMethod<
   GetElementError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetElementRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Element>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetElementRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<Element>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -233,8 +233,8 @@ export const getElementsStat: API.OperationMethod<
   GetElementsStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetElementsStatRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ElementStatsResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetElementsStatRequest>,
+  output: __S(23, __c5, 3) as any as S.Schema<ElementStatsResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -247,8 +247,8 @@ export const listElements: API.OperationMethod<
   ListElementsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListElementsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<PaginatedElementList>,
+  input: __S(28, __c7, 0) as any as S.Schema<ListElementsRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<PaginatedElementList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -261,8 +261,8 @@ export const listElementsValues: API.OperationMethod<
   ListElementsValuesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListElementsValuesRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListElementsValuesResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<ListElementsValuesRequest>,
+  output: __S(35, __c8, 3) as any as S.Schema<ListElementsValuesResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -275,8 +275,8 @@ export const updateElement: API.OperationMethod<
   UpdateElementError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<UpdateElementRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Element>,
+  input: __S(36, __c9, 0) as any as S.Schema<UpdateElementRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<Element>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -289,8 +289,8 @@ export const updateElementsPartial: API.OperationMethod<
   UpdateElementsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<UpdateElementsPartialRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Element>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateElementsPartialRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<Element>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -300,171 +300,13 @@ export const updateElementsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          text: S.optional(S.NullOr(S.String)),
-          tag_name: S.optional(S.NullOr(S.String)),
-          attr_class: S.optional(S.NullOr(__S(0, __c0, 0))),
-          href: S.optional(S.NullOr(S.String)),
-          attr_id: S.optional(S.NullOr(S.String)),
-          nth_child: S.optional(S.NullOr(S.Number)),
-          nth_of_type: S.optional(S.NullOr(S.Number)),
-          attributes: S.optional(S.Unknown),
-          order: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/elements/", code: 200 })),
-      ).annotate({ identifier: "CreateElementRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.NullOr(S.String)),
-          tag_name: S.optional(S.NullOr(S.String)),
-          attr_class: S.optional(S.NullOr(__S(0, __c0, 0))),
-          href: S.optional(S.NullOr(S.String)),
-          attr_id: S.optional(S.NullOr(S.String)),
-          nth_child: S.optional(S.NullOr(S.Number)),
-          nth_of_type: S.optional(S.NullOr(S.Number)),
-          attributes: S.optional(S.Unknown),
-          order: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "Element" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/elements/{id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "ElementsDestroyRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ElementsDestroyResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/elements/{id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetElementRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          data_attributes: S.optional(S.String.pipe(T.Query())),
-          date_from: S.optional(S.String.pipe(T.Query())),
-          date_to: S.optional(S.String.pipe(T.Query())),
-          filter_test_accounts: S.optional(S.Boolean.pipe(T.Query())),
-          include: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          properties: S.optional(S.String.pipe(T.Query())),
-          sampling_factor: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/elements/stats/", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetElementsStatRequest" });
-    case 7:
-      return S.Array(__S(2, __c0, 2));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          hash: S.NullOr(S.String),
-          type: S.String,
-          elements: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "ElementStats" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(9, __c1, 1),
-          next: S.NullOr(S.String),
-          previous: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ElementStatsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/elements/", code: 200 })),
-      ).annotate({ identifier: "ListElementsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "PaginatedElementList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          key: S.String.pipe(T.Query()),
-          value: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/elements/values/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListElementsValuesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({ identifier: "ElementValue" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(15, __c1, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListElementsValuesResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           text: S.optional(S.NullOr(S.String)),
           tag_name: S.optional(S.NullOr(S.String)),
-          attr_class: S.optional(S.NullOr(__S(0, __c0, 0))),
-          href: S.optional(S.NullOr(S.String)),
-          attr_id: S.optional(S.NullOr(S.String)),
-          nth_child: S.optional(S.NullOr(S.Number)),
-          nth_of_type: S.optional(S.NullOr(S.Number)),
-          attributes: S.optional(S.Unknown),
-          order: S.optional(S.NullOr(S.Number)),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/projects/{project_id}/elements/{id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "UpdateElementRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          text: S.optional(S.NullOr(S.String)),
-          tag_name: S.optional(S.NullOr(S.String)),
-          attr_class: S.optional(S.NullOr(__S(0, __c0, 0))),
+          attr_class: S.optional(S.NullOr(__S(8, __c2, 0))),
           href: S.optional(S.NullOr(S.String)),
           attr_id: S.optional(S.NullOr(S.String)),
           nth_child: S.optional(S.NullOr(S.Number)),
@@ -479,7 +321,192 @@ function __c2(j: number): any {
       });
   }
 }
-
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          text: S.optional(S.NullOr(S.String)),
+          tag_name: S.optional(S.NullOr(S.String)),
+          attr_class: S.optional(S.NullOr(__S(8, __c2, 0))),
+          href: S.optional(S.NullOr(S.String)),
+          attr_id: S.optional(S.NullOr(S.String)),
+          nth_child: S.optional(S.NullOr(S.Number)),
+          nth_of_type: S.optional(S.NullOr(S.Number)),
+          attributes: S.optional(S.Unknown),
+          order: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/elements/", code: 200 })),
+      ).annotate({ identifier: "CreateElementRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.NullOr(S.String)),
+          tag_name: S.optional(S.NullOr(S.String)),
+          attr_class: S.optional(S.NullOr(__S(8, __c2, 0))),
+          href: S.optional(S.NullOr(S.String)),
+          attr_id: S.optional(S.NullOr(S.String)),
+          nth_child: S.optional(S.NullOr(S.Number)),
+          nth_of_type: S.optional(S.NullOr(S.Number)),
+          attributes: S.optional(S.Unknown),
+          order: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "Element" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/elements/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "ElementsDestroyRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ElementsDestroyResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/elements/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetElementRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          data_attributes: S.optional(S.String.pipe(T.Query())),
+          date_from: S.optional(S.String.pipe(T.Query())),
+          date_to: S.optional(S.String.pipe(T.Query())),
+          filter_test_accounts: S.optional(S.Boolean.pipe(T.Query())),
+          include: S.optional(__S(8, __c2, 0).pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          properties: S.optional(S.String.pipe(T.Query())),
+          sampling_factor: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/elements/stats/", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetElementsStatRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          hash: S.NullOr(S.String),
+          type: S.String,
+          elements: __S(24, __c6, 0),
+        }),
+      ).annotate({ identifier: "ElementStats" });
+    case 2:
+      return S.Array(__S(21, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(22, __c5, 2),
+          next: S.NullOr(S.String),
+          previous: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ElementStatsResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9, __c2, 1));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/elements/", code: 200 })),
+      ).annotate({ identifier: "ListElementsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: S.optional(__S(24, __c6, 0)),
+        }),
+      ).annotate({ identifier: "PaginatedElementList" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          key: S.String.pipe(T.Query()),
+          value: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/elements/values/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListElementsValuesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({ identifier: "ElementValue" });
+    case 2:
+      return S.Array(__S(33, __c8, 1));
+    case 3:
+      return S.suspend(() => __S(34, __c8, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListElementsValuesResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          text: S.optional(S.NullOr(S.String)),
+          tag_name: S.optional(S.NullOr(S.String)),
+          attr_class: S.optional(S.NullOr(__S(8, __c2, 0))),
+          href: S.optional(S.NullOr(S.String)),
+          attr_id: S.optional(S.NullOr(S.String)),
+          nth_child: S.optional(S.NullOr(S.Number)),
+          nth_of_type: S.optional(S.NullOr(S.Number)),
+          attributes: S.optional(S.Unknown),
+          order: S.optional(S.NullOr(S.Number)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/projects/{project_id}/elements/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpdateElementRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

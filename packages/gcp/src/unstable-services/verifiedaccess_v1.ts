@@ -117,7 +117,7 @@ export const createChallenge: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<CreateChallengeRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Challenge>,
+  output: __S(2, __c0, 2) as any as S.Schema<Challenge>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -131,8 +131,8 @@ export const verifyChallenge: API.OperationMethod<
   VerifyChallengeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<VerifyChallengeRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<VerifyChallengeResponseResult>,
+  input: __S(9, __c2, 1) as any as S.Schema<VerifyChallengeRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<VerifyChallengeResponseResult>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -160,30 +160,38 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          alternativeChallenge: S.optional(__S(4, __c1, 0)),
+          challenge: S.optional(__S(4, __c1, 0)),
+        }),
+      ).annotate({ identifier: "Challenge" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           signature: S.optional(S.String),
           data: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignedData" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          alternativeChallenge: S.optional(__S(2, __c0, 2)),
-          challenge: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "Challenge" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          challengeResponse: S.optional(__S(2, __c0, 2)),
+          challengeResponse: S.optional(__S(4, __c1, 0)),
           expectedIdentity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VerifyChallengeResponseRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -192,7 +200,7 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VerifyChallengeRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           devicePermanentId: S.optional(S.String),
@@ -206,7 +214,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

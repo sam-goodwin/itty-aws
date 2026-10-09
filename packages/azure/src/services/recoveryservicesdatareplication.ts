@@ -1950,8 +1950,8 @@ export const CreateEmailConfiguration: API.OperationMethod<
   CreateEmailConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateEmailConfigurationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateEmailConfigurationResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateEmailConfigurationRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<CreateEmailConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1965,8 +1965,8 @@ export const CreateFabric: API.OperationMethod<
   CreateFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateFabricRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateFabricResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateFabricRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<CreateFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1980,8 +1980,8 @@ export const CreateFabricAgent: API.OperationMethod<
   CreateFabricAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateFabricAgentRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateFabricAgentResponse>,
+  input: __S(417, __c26, 1) as any as S.Schema<CreateFabricAgentRequest>,
+  output: __S(418, __c26, 2) as any as S.Schema<CreateFabricAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1995,8 +1995,8 @@ export const CreatePolicy: API.OperationMethod<
   CreatePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreatePolicyRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreatePolicyResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<CreatePolicyRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<CreatePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2010,8 +2010,8 @@ export const CreateProtectedItem: API.OperationMethod<
   CreateProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateProtectedItemRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateProtectedItemResponse>,
+  input: __S(881, __c55, 1) as any as S.Schema<CreateProtectedItemRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<CreateProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2025,8 +2025,8 @@ export const CreateReplicationExtension: API.OperationMethod<
   CreateReplicationExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateReplicationExtensionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CreateReplicationExtensionResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<CreateReplicationExtensionRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<CreateReplicationExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2040,8 +2040,8 @@ export const CreateVault: API.OperationMethod<
   CreateVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateVaultRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<CreateVaultResponse>,
+  input: __S(1138, __c71, 2) as any as S.Schema<CreateVaultRequest>,
+  output: __S(1202, __c75, 2) as any as S.Schema<CreateVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2055,8 +2055,8 @@ export const DeleteFabric: API.OperationMethod<
   DeleteFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteFabricRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteFabricResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<DeleteFabricRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<DeleteFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2070,8 +2070,8 @@ export const DeleteFabricAgent: API.OperationMethod<
   DeleteFabricAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteFabricAgentRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteFabricAgentResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<DeleteFabricAgentRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<DeleteFabricAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2085,8 +2085,8 @@ export const DeletePolicy: API.OperationMethod<
   DeletePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeletePolicyRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeletePolicyResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<DeletePolicyRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<DeletePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2100,8 +2100,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2115,8 +2115,8 @@ export const DeleteProtectedItem: API.OperationMethod<
   DeleteProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteProtectedItemRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteProtectedItemResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteProtectedItemRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<DeleteProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2130,8 +2130,8 @@ export const DeleteReplicationExtension: API.OperationMethod<
   DeleteReplicationExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteReplicationExtensionRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeleteReplicationExtensionResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteReplicationExtensionRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<DeleteReplicationExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2145,8 +2145,8 @@ export const DeleteVault: API.OperationMethod<
   DeleteVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteVaultRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteVaultResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteVaultRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<DeleteVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2160,8 +2160,8 @@ export const GetEmailConfiguration: API.OperationMethod<
   GetEmailConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetEmailConfigurationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetEmailConfigurationResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetEmailConfigurationRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<GetEmailConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2175,8 +2175,8 @@ export const GetEvent: API.OperationMethod<
   GetEventError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetEventRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetEventResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetEventRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetEventResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2190,8 +2190,8 @@ export const GetFabric: API.OperationMethod<
   GetFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetFabricRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetFabricResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetFabricRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<GetFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2205,8 +2205,8 @@ export const GetFabricAgent: API.OperationMethod<
   GetFabricAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetFabricAgentRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<GetFabricAgentResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetFabricAgentRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<GetFabricAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2220,8 +2220,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetJobRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GetJobResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2235,8 +2235,8 @@ export const GetLocationBasedOperationResult: API.OperationMethod<
   GetLocationBasedOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetLocationBasedOperationResultRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<OperationStatus>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetLocationBasedOperationResultRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2250,8 +2250,8 @@ export const GetOperationResult: API.OperationMethod<
   GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetOperationResultRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<OperationStatus>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetOperationResultRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2265,8 +2265,8 @@ export const GetPolicy: API.OperationMethod<
   GetPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetPolicyRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetPolicyResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetPolicyRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<GetPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2280,8 +2280,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(1155, __c72, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2295,8 +2295,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2310,8 +2310,8 @@ export const GetProtectedItem: API.OperationMethod<
   GetProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetProtectedItemRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetProtectedItemResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetProtectedItemRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<GetProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2325,8 +2325,8 @@ export const GetRecoveryPoint: API.OperationMethod<
   GetRecoveryPointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetRecoveryPointRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetRecoveryPointResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetRecoveryPointRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<GetRecoveryPointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2340,8 +2340,8 @@ export const GetReplicationExtension: API.OperationMethod<
   GetReplicationExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetReplicationExtensionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetReplicationExtensionResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetReplicationExtensionRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<GetReplicationExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2355,8 +2355,8 @@ export const GetVault: API.OperationMethod<
   GetVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetVaultRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<GetVaultResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetVaultRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<GetVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2370,8 +2370,8 @@ export const ListEmailConfiguration: API.OperationMethod<
   ListEmailConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListEmailConfigurationRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<EmailConfigurationModelListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListEmailConfigurationRequest>,
+  output: __S(643, __c40, 3) as any as S.Schema<EmailConfigurationModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2385,8 +2385,8 @@ export const ListEvent: API.OperationMethod<
   ListEventError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListEventRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<EventModelListResult>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListEventRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<EventModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2400,8 +2400,8 @@ export const ListFabric: API.OperationMethod<
   ListFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListFabricRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<FabricModelListResult>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListFabricRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<FabricModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2415,8 +2415,8 @@ export const ListFabricAgent: API.OperationMethod<
   ListFabricAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListFabricAgentRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<FabricAgentModelListResult>,
+  input: __S(736, __c46, 0) as any as S.Schema<ListFabricAgentRequest>,
+  output: __S(738, __c46, 2) as any as S.Schema<FabricAgentModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2430,8 +2430,8 @@ export const ListFabricBySubscription: API.OperationMethod<
   ListFabricBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListFabricBySubscriptionRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<FabricModelListResult>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListFabricBySubscriptionRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<FabricModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2445,8 +2445,8 @@ export const ListJob: API.OperationMethod<
   ListJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListJobRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<JobModelListResult>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListJobRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<JobModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2460,8 +2460,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(788, __c49, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2475,8 +2475,8 @@ export const ListPolicy: API.OperationMethod<
   ListPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListPolicyRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<PolicyModelListResult>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListPolicyRequest>,
+  output: __S(802, __c50, 2) as any as S.Schema<PolicyModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2490,8 +2490,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2505,8 +2505,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(835, __c52, 3) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2520,8 +2520,8 @@ export const ListProtectedItem: API.OperationMethod<
   ListProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListProtectedItemRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<ProtectedItemModelListResult>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListProtectedItemRequest>,
+  output: __S(850, __c53, 2) as any as S.Schema<ProtectedItemModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2535,8 +2535,8 @@ export const ListRecoveryPoint: API.OperationMethod<
   ListRecoveryPointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListRecoveryPointRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<RecoveryPointModelListResult>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListRecoveryPointRequest>,
+  output: __S(866, __c54, 2) as any as S.Schema<RecoveryPointModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2550,8 +2550,8 @@ export const ListReplicationExtension: API.OperationMethod<
   ListReplicationExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListReplicationExtensionRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<ReplicationExtensionModelListResult>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListReplicationExtensionRequest>,
+  output: __S(930, __c58, 2) as any as S.Schema<ReplicationExtensionModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2565,8 +2565,8 @@ export const ListVault: API.OperationMethod<
   ListVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListVaultRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<VaultModelListResult>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListVaultRequest>,
+  output: __S(961, __c60, 1) as any as S.Schema<VaultModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2580,8 +2580,8 @@ export const ListVaultBySubscription: API.OperationMethod<
   ListVaultBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListVaultBySubscriptionRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<VaultModelListResult>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListVaultBySubscriptionRequest>,
+  output: __S(961, __c60, 1) as any as S.Schema<VaultModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2595,8 +2595,8 @@ export const PostCheckNameAvailability: API.OperationMethod<
   PostCheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<PostCheckNameAvailabilityRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<CheckNameAvailabilityResponseModel>,
+  input: __S(992, __c62, 0) as any as S.Schema<PostCheckNameAvailabilityRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<CheckNameAvailabilityResponseModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2610,8 +2610,8 @@ export const PostDeploymentPreflight: API.OperationMethod<
   PostDeploymentPreflightError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<PostDeploymentPreflightRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<DeploymentPreflightModel>,
+  input: __S(1010, __c63, 2) as any as S.Schema<PostDeploymentPreflightRequest>,
+  output: __S(1011, __c63, 3) as any as S.Schema<DeploymentPreflightModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2625,8 +2625,8 @@ export const ProtectedItemPlannedFailover: API.OperationMethod<
   ProtectedItemPlannedFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ProtectedItemPlannedFailoverRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<PlannedFailoverModel>,
+  input: __S(1025, __c64, 1) as any as S.Schema<ProtectedItemPlannedFailoverRequest>,
+  output: __S(1026, __c64, 2) as any as S.Schema<PlannedFailoverModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2640,8 +2640,8 @@ export const UpdateFabric: API.OperationMethod<
   UpdateFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<UpdateFabricRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateFabricResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<UpdateFabricRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<UpdateFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2655,8 +2655,8 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
   UpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
+  input: __S(1057, __c66, 1) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
+  output: __S(1155, __c72, 3) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2670,8 +2670,8 @@ export const UpdateProtectedItem: API.OperationMethod<
   UpdateProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<UpdateProtectedItemRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateProtectedItemResponse>,
+  input: __S(1073, __c67, 1) as any as S.Schema<UpdateProtectedItemRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<UpdateProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2685,8 +2685,8 @@ export const UpdateVault: API.OperationMethod<
   UpdateVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<UpdateVaultRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<UpdateVaultResponse>,
+  input: __S(1089, __c68, 1) as any as S.Schema<UpdateVaultRequest>,
+  output: __S(1202, __c75, 2) as any as S.Schema<UpdateVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2696,25 +2696,23 @@ export const UpdateVault: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           sendToOwners: S.Boolean,
-          customEmailAddresses: S.optional(__S(0, __c0, 0)),
+          customEmailAddresses: S.optional(__S(32, __c2, 0)),
           locale: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EmailConfigurationModelPropertiesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           emailConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2726,7 +2724,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateEmailConfigurationRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2737,42 +2739,46 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateEmailConfigurationResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sendToOwners: S.Boolean,
-          customEmailAddresses: S.optional(__S(0, __c0, 0)),
+          customEmailAddresses: S.optional(__S(32, __c2, 0)),
           locale: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EmailConfigurationModelProperties",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "CreateEmailConfigurationResponse",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customProperties: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "FabricModelPropertiesInput",
-      });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2780,9 +2786,9 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(144, __c9, 0)),
           location: S.String,
-          properties: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(128, __c8, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2792,7 +2798,38 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateFabricRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          serviceEndpoint: S.optional(S.String),
+          serviceResourceId: S.optional(S.String),
+          health: S.optional(S.String),
+          healthErrors: S.optional(__S(115, __c7, 3)),
+          customProperties: S.Unknown,
+        }),
+      ).annotate({ identifier: "FabricModelProperties" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(144, __c9, 0)),
+          location: S.String,
+          properties: S.optional(__S(96, __c6, 0)),
+        }),
+      ).annotate({ identifier: "CreateFabricResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -2808,14 +2845,14 @@ function __c1(j: number): any {
           recommendation: S.optional(S.String),
         }),
       ).annotate({ identifier: "InnerHealthErrorModel" });
+    case 1:
+      return S.Array(__S(112, __c7, 0));
     case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           affectedResourceType: S.optional(S.String),
-          affectedResourceCorrelationIds: S.optional(__S(0, __c0, 0)),
-          childErrors: S.optional(__S(10, __c1, 2)),
+          affectedResourceCorrelationIds: S.optional(__S(32, __c2, 0)),
+          childErrors: S.optional(__S(113, __c7, 1)),
           code: S.optional(S.String),
           healthCategory: S.optional(S.String),
           category: S.optional(S.String),
@@ -2829,52 +2866,414 @@ function __c1(j: number): any {
           recommendation: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthErrorModel" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 3:
+      return S.Array(__S(114, __c7, 2));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          serviceEndpoint: S.optional(S.String),
-          serviceResourceId: S.optional(S.String),
-          health: S.optional(S.String),
-          healthErrors: S.optional(__S(12, __c1, 4)),
           customProperties: S.Unknown,
         }),
-      ).annotate({ identifier: "FabricModelProperties" });
-    case 6:
+      ).annotate({
+        identifier: "FabricModelPropertiesInput",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          forceDelete: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProtectedItemRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          replicationExtensionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationExtensions/{replicationExtensionName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteReplicationExtensionRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteVaultRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          emailConfigurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/alertSettings/{emailConfigurationName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEmailConfigurationRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          eventName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/events/{eventName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetEventRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instanceType: S.String,
+        }),
+      ).annotate({
+        identifier: "EventModelCustomProperties",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.optional(S.String),
+          resourceName: S.optional(S.String),
+          eventType: S.optional(S.String),
+          eventName: S.optional(S.String),
+          timeOfOccurrence: S.optional(S.String),
+          severity: S.optional(S.String),
+          description: S.optional(S.String),
+          correlationId: S.optional(S.String),
+          healthErrors: S.optional(__S(115, __c7, 3)),
+          customProperties: __S(272, __c17, 0),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventModelProperties" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(288, __c18, 0)),
         }),
-      ).annotate({ identifier: "CreateFabricResponse" });
+      ).annotate({ identifier: "GetEventResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetFabricRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          fabricAgentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}/fabricAgents/{fabricAgentName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetFabricAgentRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(433, __c27, 1)),
+        }),
+      ).annotate({ identifier: "GetFabricAgentResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/jobs/{jobName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(376, __c23, 8)),
+        }),
+      ).annotate({ identifier: "GetJobResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(S.suspend(() => __S(376, __c23, 8))),
+        }),
+      ).annotate({ identifier: "JobModel" });
+    case 1:
+      return S.Array(__S(368, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          taskName: S.optional(S.String),
+          state: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          customProperties: S.optional(__S(272, __c17, 0)),
+          childrenJobs: S.optional(__S(369, __c23, 1)),
+        }),
+      ).annotate({ identifier: "TaskModel" });
+    case 3:
+      return S.Array(__S(370, __c23, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          type: S.optional(S.String),
+          severity: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          message: S.optional(S.String),
+          causes: S.optional(S.String),
+          recommendation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ErrorModel" });
+    case 5:
+      return S.Array(__S(372, __c23, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AffectedObjectDetails" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tenantId: S.String,
-          applicationId: S.String,
-          objectId: S.String,
-          audience: S.String,
-          aadAuthority: S.String,
+          instanceType: S.String,
+          affectedObjectDetails: S.optional(__S(374, __c23, 6)),
         }),
-      ).annotate({ identifier: "IdentityModel" });
+      ).annotate({ identifier: "JobModelCustomProperties" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          state: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          objectId: S.optional(S.String),
+          objectName: S.optional(S.String),
+          objectInternalId: S.optional(S.String),
+          objectInternalName: S.optional(S.String),
+          objectType: S.optional(S.String),
+          replicationProviderId: S.optional(S.String),
+          sourceFabricProviderId: S.optional(S.String),
+          targetFabricProviderId: S.optional(S.String),
+          allowedActions: S.optional(__S(32, __c2, 0)),
+          activityId: S.optional(S.String),
+          tasks: S.optional(__S(371, __c23, 3)),
+          errors: S.optional(__S(373, __c23, 5)),
+          customProperties: __S(375, __c23, 7),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobModelProperties" });
   }
 }
-function __c2(j: number): any {
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/locations/{location}/operationResults/{operationId}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetLocationBasedOperationResultRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationStatus" });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           machineId: S.String,
           machineName: S.String,
-          authenticationIdentity: __S(15, __c1, 7),
-          resourceAccessIdentity: __S(15, __c1, 7),
+          authenticationIdentity: __S(432, __c27, 0),
+          resourceAccessIdentity: __S(432, __c27, 0),
           customProperties: S.Unknown,
         }),
       ).annotate({
@@ -2887,7 +3286,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
           fabricAgentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(416, __c26, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2900,41 +3299,391 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(433, __c27, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateFabricAgentResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenantId: S.String,
+          applicationId: S.String,
+          objectId: S.String,
+          audience: S.String,
+          aadAuthority: S.String,
+        }),
+      ).annotate({ identifier: "IdentityModel" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           correlationId: S.optional(S.String),
           machineId: S.String,
           machineName: S.String,
-          authenticationIdentity: __S(15, __c1, 7),
-          resourceAccessIdentity: __S(15, __c1, 7),
+          authenticationIdentity: __S(432, __c27, 0),
+          resourceAccessIdentity: __S(432, __c27, 0),
           isResponsive: S.optional(S.Boolean),
           lastHeartbeat: S.optional(S.String),
           versionNumber: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          healthErrors: S.optional(__S(12, __c1, 4)),
+          healthErrors: S.optional(__S(115, __c7, 3)),
           customProperties: S.Unknown,
         }),
       ).annotate({
         identifier: "FabricAgentModelProperties",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(18, __c2, 2)),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/operationResults/{operationId}/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/{operationId}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
       ).annotate({
-        identifier: "CreateFabricAgentResponse",
+        identifier: "GetOperationResultRequest",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           policyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7, __c0, 7)),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies/{policyName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetPolicyRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          privateLinkResourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateLinkResources/{privateLinkResourceName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateLinkResourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(512, __c32, 0)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkResourceResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(32, __c2, 0)),
+          requiredZoneNames: S.optional(__S(32, __c2, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetProtectedItemRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(897, __c56, 1)),
+        }),
+      ).annotate({ identifier: "GetProtectedItemResponse" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          recoveryPointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetRecoveryPointRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          recoveryPointTime: S.String,
+          recoveryPointType: S.String,
+          customProperties: __S(272, __c17, 0),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RecoveryPointModelProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(576, __c36, 0)),
+        }),
+      ).annotate({ identifier: "GetRecoveryPointResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          replicationExtensionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationExtensions/{replicationExtensionName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetReplicationExtensionRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetVaultRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(1186, __c74, 2)),
+        }),
+      ).annotate({ identifier: "GetVaultResponseIdentity" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(144, __c9, 0)),
+          location: S.String,
+          properties: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(624, __c39, 0)),
+        }),
+      ).annotate({ identifier: "GetVaultResponse" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/alertSettings",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEmailConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({ identifier: "EmailConfigurationModel" });
+    case 2:
+      return S.Array(__S(641, __c40, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(642, __c40, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EmailConfigurationModelListResult",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          odataOptions: S.optional(S.String.pipe(T.Query())),
+          continuationToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/events",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListEventRequest" });
+    case 1:
+      return S.Array(__S(289, __c18, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(657, __c41, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventModelListResult" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          policyName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(128, __c8, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2944,24 +3693,349 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreatePolicyRequest" });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           customProperties: S.Unknown,
         }),
       ).annotate({ identifier: "PolicyModelProperties" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(21, __c2, 5)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(688, __c43, 0)),
         }),
       ).annotate({ identifier: "CreatePolicyResponse" });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          continuationToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListFabricRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(97, __c6, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(720, __c45, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FabricModelListResult" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}/fabricAgents",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListFabricAgentRequest" });
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(737, __c46, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FabricAgentModelListResult",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataReplication/replicationFabrics",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListFabricBySubscriptionRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          odataOptions: S.optional(S.String.pipe(T.Query())),
+          continuationToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/jobs",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(369, __c23, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobModelListResult" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.DataReplication/operations",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(785, __c49, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(786, __c49, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(787, __c49, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListPolicyRequest" });
+    case 1:
+      return S.Array(__S(689, __c43, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(801, __c50, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PolicyModelListResult" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnections",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateEndpointConnectionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1168, __c73, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionListResult",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateLinkResources",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateLinkResourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(512, __c32, 0)),
+        }),
+      ).annotate({ identifier: "PrivateLinkResource" });
+    case 2:
+      return S.Array(__S(833, __c52, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(834, __c52, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceListResult",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          odataOptions: S.optional(S.String.pipe(T.Query())),
+          continuationToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListProtectedItemRequest" });
+    case 1:
+      return S.Array(__S(544, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(849, __c53, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProtectedItemModelListResult",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}/recoveryPoints",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListRecoveryPointRequest" });
+    case 1:
+      return S.Array(__S(577, __c36, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(865, __c54, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RecoveryPointModelListResult",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           policyName: S.String,
@@ -2971,18 +4045,14 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ProtectedItemModelPropertiesInput",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           protectedItemName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(23, __c2, 7)),
+          properties: S.optional(__S(880, __c55, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2994,7 +4064,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateProtectedItemRequest",
       });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scenarioName: S.optional(S.String),
@@ -3008,7 +4082,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ProtectedItemJobProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           policyName: S.String,
@@ -3032,1155 +4106,39 @@ function __c3(j: number): any {
           lastSuccessfulPlannedFailoverTime: S.optional(S.String),
           lastSuccessfulUnplannedFailoverTime: S.optional(S.String),
           lastSuccessfulTestFailoverTime: S.optional(S.String),
-          currentJob: S.optional(__S(25, __c3, 1)),
-          allowedJobs: S.optional(__S(0, __c0, 0)),
-          lastFailedEnableProtectionJob: S.optional(__S(25, __c3, 1)),
-          lastFailedPlannedFailoverJob: S.optional(__S(25, __c3, 1)),
-          lastTestFailoverJob: S.optional(__S(25, __c3, 1)),
+          currentJob: S.optional(__S(896, __c56, 0)),
+          allowedJobs: S.optional(__S(32, __c2, 0)),
+          lastFailedEnableProtectionJob: S.optional(__S(896, __c56, 0)),
+          lastFailedPlannedFailoverJob: S.optional(__S(896, __c56, 0)),
+          lastTestFailoverJob: S.optional(__S(896, __c56, 0)),
           replicationHealth: S.optional(S.String),
-          healthErrors: S.optional(__S(12, __c1, 4)),
+          healthErrors: S.optional(__S(115, __c7, 3)),
           customProperties: S.Unknown,
         }),
       ).annotate({
         identifier: "ProtectedItemModelProperties",
       });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(26, __c3, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(897, __c56, 1)),
         }),
       ).annotate({
         identifier: "CreateProtectedItemResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          replicationExtensionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7, __c0, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationExtensions/{replicationExtensionName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateReplicationExtensionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          customProperties: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "ReplicationExtensionModelProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateReplicationExtensionResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          vaultType: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VaultModelPropertiesInput",
-      });
   }
 }
-function __c4(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c4, 0)));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateVaultRequestIdentity",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(31, __c3, 7)),
-          identity: S.optional(__S(34, __c4, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateVaultRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpoint" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          privateEndpoint: S.optional(__S(36, __c4, 4)),
-          privateLinkServiceConnectionState: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionResponseProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnection",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          serviceResourceId: S.optional(S.String),
-          vaultType: S.optional(S.String),
-          privateEndpointState: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "VaultModelProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(42, __c5, 2)));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateVaultResponseIdentity",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(41, __c5, 1)),
-          identity: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "CreateVaultResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFabricRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          fabricAgentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}/fabricAgents/{fabricAgentName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFabricAgentRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          policyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies/{policyName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeletePolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePrivateEndpointConnectionResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          forceDelete: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProtectedItemRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          replicationExtensionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationExtensions/{replicationExtensionName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteReplicationExtensionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteVaultRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          emailConfigurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/alertSettings/{emailConfigurationName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEmailConfigurationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          eventName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/events/{eventName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetEventRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          instanceType: S.String,
-        }),
-      ).annotate({
-        identifier: "EventModelCustomProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceType: S.optional(S.String),
-          resourceName: S.optional(S.String),
-          eventType: S.optional(S.String),
-          eventName: S.optional(S.String),
-          timeOfOccurrence: S.optional(S.String),
-          severity: S.optional(S.String),
-          description: S.optional(S.String),
-          correlationId: S.optional(S.String),
-          healthErrors: S.optional(__S(12, __c1, 4)),
-          customProperties: __S(56, __c7, 0),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventModelProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "GetEventResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetFabricRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          fabricAgentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}/fabricAgents/{fabricAgentName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetFabricAgentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "GetFabricAgentResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/jobs/{jobName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetJobRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(S.suspend(() => __S(71, __c8, 7))),
-        }),
-      ).annotate({ identifier: "JobModel" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          taskName: S.optional(S.String),
-          state: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          customProperties: S.optional(__S(56, __c7, 0)),
-          childrenJobs: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({ identifier: "TaskModel" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          type: S.optional(S.String),
-          severity: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          message: S.optional(S.String),
-          causes: S.optional(S.String),
-          recommendation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ErrorModel" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AffectedObjectDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          instanceType: S.String,
-          affectedObjectDetails: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "JobModelCustomProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          state: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          objectId: S.optional(S.String),
-          objectName: S.optional(S.String),
-          objectInternalId: S.optional(S.String),
-          objectInternalName: S.optional(S.String),
-          objectType: S.optional(S.String),
-          replicationProviderId: S.optional(S.String),
-          sourceFabricProviderId: S.optional(S.String),
-          targetFabricProviderId: S.optional(S.String),
-          allowedActions: S.optional(__S(0, __c0, 0)),
-          activityId: S.optional(S.String),
-          tasks: S.optional(__S(66, __c8, 2)),
-          errors: S.optional(__S(68, __c8, 4)),
-          customProperties: __S(70, __c8, 6),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobModelProperties" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "GetJobResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/locations/{location}/operationResults/{operationId}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetLocationBasedOperationResultRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/operationResults/{operationId}/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/{operationId}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOperationResultRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          policyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies/{policyName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetPolicyRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          privateLinkResourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateLinkResources/{privateLinkResourceName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateLinkResourceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(0, __c0, 0)),
-          requiredZoneNames: S.optional(__S(0, __c0, 0)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkResourceResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetProtectedItemRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "GetProtectedItemResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          recoveryPointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetRecoveryPointRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          recoveryPointTime: S.String,
-          recoveryPointType: S.String,
-          customProperties: __S(56, __c7, 0),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RecoveryPointModelProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "GetRecoveryPointResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          replicationExtensionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationExtensions/{replicationExtensionName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetReplicationExtensionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetVaultRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "GetVaultResponseIdentity" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(41, __c5, 1)),
-          identity: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "GetVaultResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/alertSettings",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEmailConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "EmailConfigurationModel" });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(92, __c11, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EmailConfigurationModelListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          odataOptions: S.optional(S.String.pipe(T.Query())),
-          continuationToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/events",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListEventRequest" });
-    case 7:
-      return S.Array(__S(58, __c7, 2));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(95, __c11, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventModelListResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          continuationToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListFabricRequest" });
-    case 2:
-      return S.Array(__S(14, __c1, 6));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(98, __c12, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FabricModelListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}/fabricAgents",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListFabricAgentRequest" });
-    case 5:
-      return S.Array(__S(61, __c7, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(101, __c12, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FabricAgentModelListResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataReplication/replicationFabrics",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListFabricBySubscriptionRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          odataOptions: S.optional(S.String.pipe(T.Query())),
-          continuationToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/jobs",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListJobRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(64, __c8, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobModelListResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.DataReplication/operations",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(107, __c13, 3)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(109, __c13, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListPolicyRequest" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(22, __c2, 6));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(112, __c14, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PolicyModelListResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnections",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateEndpointConnectionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(40, __c5, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionListResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateLinkResources",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateLinkResourcesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "PrivateLinkResource" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(118, __c14, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceListResult",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          odataOptions: S.optional(S.String.pipe(T.Query())),
-          continuationToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListProtectedItemRequest" });
-    case 1:
-      return S.Array(__S(82, __c10, 2));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(121, __c15, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProtectedItemModelListResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}/recoveryPoints",
-            code: 200,
-            apiVersion: "2026-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListRecoveryPointRequest" });
-    case 4:
-      return S.Array(__S(85, __c10, 5));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(124, __c15, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RecoveryPointModelListResult",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4197,22 +4155,22 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListReplicationExtensionRequest",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1121, __c70, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(127, __c15, 7),
+          value: __S(929, __c58, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReplicationExtensionModelListResult",
       });
-    case 1:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4227,16 +4185,24 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListVaultRequest" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(625, __c39, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(130, __c16, 2),
+          value: __S(960, __c60, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultModelListResult" });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4251,7 +4217,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListVaultBySubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4269,7 +4239,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PostCheckNameAvailabilityRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
@@ -4279,7 +4249,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CheckNameAvailabilityResponseModel",
       });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4291,19 +4265,15 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeploymentPreflightResource",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
     case 1:
+      return S.Array(__S(1008, __c63, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deploymentId: S.String.pipe(T.Label()),
-          resources: S.optional(__S(136, __c17, 0)),
+          resources: S.optional(__S(1009, __c63, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4315,28 +4285,32 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PostDeploymentPreflightRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({ identifier: "DeploymentPreflightModel" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          customProperties: __S(56, __c7, 0),
+          resources: S.optional(__S(1009, __c63, 1)),
+        }),
+      ).annotate({ identifier: "DeploymentPreflightModel" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customProperties: __S(272, __c17, 0),
         }),
       ).annotate({
         identifier: "PlannedFailoverModelProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           protectedItemName: S.String.pipe(T.Label()),
-          properties: __S(139, __c17, 3),
+          properties: __S(1024, __c64, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4348,20 +4322,24 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ProtectedItemPlannedFailoverRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(139, __c17, 3),
+          properties: __S(1024, __c64, 0),
         }),
       ).annotate({ identifier: "PlannedFailoverModel" });
-    case 6:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(144, __c9, 0)),
+          properties: S.optional(__S(128, __c8, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4371,27 +4349,27 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFabricRequest" });
-    case 7:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(36, __c4, 4)),
-          privateLinkServiceConnectionState: S.optional(__S(37, __c4, 5)),
+          privateEndpoint: S.optional(__S(1152, __c72, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1153, __c72, 1)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionResponsePropertiesInput",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(143, __c17, 7)),
+          properties: S.optional(__S(1056, __c66, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4403,7 +4381,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateEndpointConnectionRequest",
       });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customProperties: S.optional(S.Unknown),
@@ -4411,14 +4393,14 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ProtectedItemModelPropertiesUpdate",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           protectedItemName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(145, __c18, 1)),
+          properties: S.optional(__S(1072, __c67, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4430,21 +4412,25 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "UpdateProtectedItemRequest",
       });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
         }),
       ).annotate({ identifier: "VaultIdentityModelInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(31, __c3, 7)),
-          identity: S.optional(__S(147, __c18, 3)),
+          tags: S.optional(__S(144, __c9, 0)),
+          properties: S.optional(__S(1200, __c75, 0)),
+          identity: S.optional(__S(1088, __c68, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4456,7 +4442,264 @@ function __c18(j: number): any {
       ).annotate({ identifier: "UpdateVaultRequest" });
   }
 }
-
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          replicationExtensionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(128, __c8, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationExtensions/{replicationExtensionName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateReplicationExtensionRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          customProperties: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "ReplicationExtensionModelProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1120, __c70, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateReplicationExtensionResponse",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1216, __c76, 0)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(1136, __c71, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateVaultRequestIdentity",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(144, __c9, 0)),
+          location: S.String,
+          properties: S.optional(__S(1200, __c75, 0)),
+          identity: S.optional(__S(1137, __c71, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateVaultRequest" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpoint" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(__S(1152, __c72, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1153, __c72, 1)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionResponseProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1154, __c72, 2)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnection",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1155, __c72, 3));
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          serviceResourceId: S.optional(S.String),
+          vaultType: S.optional(S.String),
+          privateEndpointState: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({ identifier: "VaultModelProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1185, __c74, 1)));
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vaultType: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VaultModelPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(1186, __c74, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateVaultResponseIdentity",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(144, __c9, 0)),
+          location: S.String,
+          properties: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(1201, __c75, 1)),
+        }),
+      ).annotate({ identifier: "CreateVaultResponse" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFabricRequest" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          fabricAgentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}/fabricAgents/{fabricAgentName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFabricAgentRequest" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          policyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies/{policyName}",
+            code: 200,
+            apiVersion: "2026-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeletePolicyRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

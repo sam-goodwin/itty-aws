@@ -2224,8 +2224,8 @@ export const adjustInventoryStockLevels: API.OperationMethod<
   AdjustInventoryStockLevelsError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AdjustInventoryStockLevelsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AdjustInventoryStockLevelsResponse>,
+  input: __S(1314, __c41, 2) as any as S.Schema<AdjustInventoryStockLevelsRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<AdjustInventoryStockLevelsResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2239,8 +2239,8 @@ export const associateProductVariantImage: API.OperationMethod<
   AssociateProductVariantImageError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AssociateProductVariantImageRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AssociateProductVariantImageResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<AssociateProductVariantImageRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<AssociateProductVariantImageResponse>,
   errors: [BadRequest, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2254,8 +2254,8 @@ export const createAddressBookEntry: API.OperationMethod<
   CreateAddressBookEntryError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateAddressBookEntryRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateAddressBookEntryResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<CreateAddressBookEntryRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<CreateAddressBookEntryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2269,8 +2269,8 @@ export const createContact: API.OperationMethod<
   CreateContactError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateContactRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateContactResponse>,
+  input: __S(2209, __c69, 1) as any as S.Schema<CreateContactRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<CreateContactResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2284,8 +2284,8 @@ export const createDiscount: API.OperationMethod<
   CreateDiscountError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateDiscountRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DiscountResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<CreateDiscountRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<DiscountResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2299,8 +2299,8 @@ export const createOrder: API.OperationMethod<
   CreateOrderError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateOrderRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<Order>,
+  input: __S(2406, __c75, 6) as any as S.Schema<CreateOrderRequest>,
+  output: __S(2510, __c78, 14) as any as S.Schema<Order>,
   errors: [BadRequest, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2314,8 +2314,8 @@ export const createProduct: API.OperationMethod<
   CreateProductError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateProductRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ProductV2>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProductRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<ProductV2>,
   errors: [BadRequest, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2329,7 +2329,7 @@ export const createProductVariant: API.OperationMethod<
   CreateProductVariantError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CreateProductVariantRequest>,
+  input: __S(99, __c3, 3) as any as S.Schema<CreateProductVariantRequest>,
   output: S.Unknown as any as S.Schema<ProductVariantV2>,
   errors: [BadRequest, NotFound, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
@@ -2344,8 +2344,8 @@ export const createWebhookSubscription: API.OperationMethod<
   CreateWebhookSubscriptionError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CreateWebhookSubscriptionRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ExternalCreateWebhookSubscriptionResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<CreateWebhookSubscriptionRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<ExternalCreateWebhookSubscriptionResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2359,8 +2359,8 @@ export const deleteAddressBookEntry: API.OperationMethod<
   DeleteAddressBookEntryError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteAddressBookEntryRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteAddressBookEntryResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteAddressBookEntryRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<DeleteAddressBookEntryResponse>,
   errors: [Forbidden, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2374,8 +2374,8 @@ export const deleteContact: API.OperationMethod<
   DeleteContactError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteContactRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteContactResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteContactRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<DeleteContactResponse>,
   errors: [Forbidden, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2389,8 +2389,8 @@ export const deleteDiscount: API.OperationMethod<
   DeleteDiscountError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteDiscountRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteDiscountResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteDiscountRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<DeleteDiscountResponse>,
   errors: [Forbidden, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2404,8 +2404,8 @@ export const deleteProduct: API.OperationMethod<
   DeleteProductError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteProductRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteProductResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteProductRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<DeleteProductResponse>,
   errors: [NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2419,8 +2419,8 @@ export const deleteProductImage: API.OperationMethod<
   DeleteProductImageError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteProductImageRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteProductImageResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteProductImageRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<DeleteProductImageResponse>,
   errors: [NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2434,8 +2434,8 @@ export const deleteProductVariant: API.OperationMethod<
   DeleteProductVariantError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteProductVariantRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteProductVariantResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteProductVariantRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<DeleteProductVariantResponse>,
   errors: [NotFound, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2449,8 +2449,8 @@ export const deleteWebhookSubscription: API.OperationMethod<
   DeleteWebhookSubscriptionError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteWebhookSubscriptionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteWebhookSubscriptionResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteWebhookSubscriptionRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<DeleteWebhookSubscriptionResponse>,
   errors: [NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2464,8 +2464,8 @@ export const fulfillOrder: API.OperationMethod<
   FulfillOrderError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<FulfillOrderRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<FulfillOrderResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<FulfillOrderRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<FulfillOrderResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2479,8 +2479,8 @@ export const getAddressBook: API.OperationMethod<
   GetAddressBookError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetAddressBookRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GetAddressBookResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetAddressBookRequest>,
+  output: __S(515, __c16, 3) as any as S.Schema<GetAddressBookResponse>,
   errors: [Forbidden, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2494,8 +2494,8 @@ export const getAddressBookEntry: API.OperationMethod<
   GetAddressBookEntryError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetAddressBookEntryRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetAddressBookEntryResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetAddressBookEntryRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<GetAddressBookEntryResponse>,
   errors: [Forbidden, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2509,8 +2509,8 @@ export const getContact: API.OperationMethod<
   GetContactError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetContactRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetContactResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetContactRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<GetContactResponse>,
   errors: [Forbidden, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2526,8 +2526,8 @@ export const getContacts: API.PaginatedOperationMethod<
   Contact
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(79, __c9, 7) as any as S.Schema<GetContactsRequest>,
-    output: __S(81, __c10, 1) as any as S.Schema<PaginatedGetContactsResponse>,
+    input: __S(640, __c20, 0) as any as S.Schema<GetContactsRequest>,
+    output: __S(673, __c21, 1) as any as S.Schema<PaginatedGetContactsResponse>,
     errors: [BadRequest, Forbidden, UnknownSquarespaceError],
     protocol: SquarespaceProtocol,
     retry: Retry.Retry,
@@ -2550,8 +2550,8 @@ export const getDiscount: API.OperationMethod<
   GetDiscountError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetDiscountRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DiscountResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetDiscountRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<DiscountResponse>,
   errors: [Forbidden, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2565,8 +2565,8 @@ export const getDocumentsById: API.OperationMethod<
   GetDocumentsByIdError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetDocumentsByIdRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<TransactionListResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetDocumentsByIdRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<TransactionListResponse>,
   errors: [BadRequest, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2582,8 +2582,8 @@ export const getDocumentsByUpdatedOn: API.PaginatedOperationMethod<
   TransactionDocument
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(105, __c13, 1) as any as S.Schema<GetDocumentsByUpdatedOnRequest>,
-    output: __S(106, __c13, 2) as any as S.Schema<PaginatedTransactionListResponse>,
+    input: __S(800, __c25, 0) as any as S.Schema<GetDocumentsByUpdatedOnRequest>,
+    output: __S(801, __c25, 1) as any as S.Schema<PaginatedTransactionListResponse>,
     errors: [BadRequest, UnknownSquarespaceError],
     protocol: SquarespaceProtocol,
     retry: Retry.Retry,
@@ -2605,8 +2605,8 @@ export const getFulfillmentOptions: API.OperationMethod<
   GetFulfillmentOptionsError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetFulfillmentOptionsRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<FulfillmentOptionsList>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetFulfillmentOptionsRequest>,
+  output: __S(837, __c26, 5) as any as S.Schema<FulfillmentOptionsList>,
   errors: [Forbidden, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2622,8 +2622,8 @@ export const getInventoryItems: API.PaginatedOperationMethod<
   InventoryItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(113, __c14, 1) as any as S.Schema<GetInventoryItemsRequest>,
-    output: __S(116, __c14, 4) as any as S.Schema<PaginatedInventoryItemListResponse>,
+    input: __S(864, __c27, 0) as any as S.Schema<GetInventoryItemsRequest>,
+    output: __S(865, __c27, 1) as any as S.Schema<PaginatedInventoryItemListResponse>,
     errors: [BadRequest, NotFound, UnknownSquarespaceError],
     protocol: SquarespaceProtocol,
     retry: Retry.Retry,
@@ -2645,8 +2645,8 @@ export const getMemberProfile: API.OperationMethod<
   GetMemberProfileError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetMemberProfileRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<MemberProfile>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetMemberProfileRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<MemberProfile>,
   errors: [NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2660,8 +2660,8 @@ export const getOrder: API.OperationMethod<
   GetOrderError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<GetOrderRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<Order>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetOrderRequest>,
+  output: __S(2510, __c78, 14) as any as S.Schema<Order>,
   errors: [BadRequest, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2677,8 +2677,8 @@ export const getOrders: API.PaginatedOperationMethod<
   Order
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(120, __c15, 0) as any as S.Schema<GetOrdersRequest>,
-    output: __S(122, __c15, 2) as any as S.Schema<OrderListResponse>,
+    input: __S(992, __c31, 0) as any as S.Schema<GetOrdersRequest>,
+    output: __S(994, __c31, 2) as any as S.Schema<OrderListResponse>,
     errors: [BadRequest, UnknownSquarespaceError],
     protocol: SquarespaceProtocol,
     retry: Retry.Retry,
@@ -2700,8 +2700,8 @@ export const getProductImageProcessingStatus: API.OperationMethod<
   GetProductImageProcessingStatusError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<GetProductImageProcessingStatusRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<ProductImageProcessingStatus>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetProductImageProcessingStatusRequest>,
+  output: __S(1025, __c32, 1) as any as S.Schema<ProductImageProcessingStatus>,
   errors: [NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2717,8 +2717,8 @@ export const getProducts: API.PaginatedOperationMethod<
   PaginatedProductListResponseV2ProductsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(125, __c15, 5) as any as S.Schema<GetProductsRequest>,
-    output: __S(127, __c15, 7) as any as S.Schema<PaginatedProductListResponseV2>,
+    input: __S(1056, __c33, 0) as any as S.Schema<GetProductsRequest>,
+    output: __S(1058, __c33, 2) as any as S.Schema<PaginatedProductListResponseV2>,
     errors: [BadRequest, UnknownSquarespaceError],
     protocol: SquarespaceProtocol,
     retry: Retry.Retry,
@@ -2742,8 +2742,8 @@ export const getProfiles: API.PaginatedOperationMethod<
   Profile
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(128, __c16, 0) as any as S.Schema<GetProfilesRequest>,
-    output: __S(132, __c16, 4) as any as S.Schema<PaginatedProfileListResponse>,
+    input: __S(1088, __c34, 0) as any as S.Schema<GetProfilesRequest>,
+    output: __S(1089, __c34, 1) as any as S.Schema<PaginatedProfileListResponse>,
     errors: [BadRequest, NotFound, UnknownSquarespaceError],
     protocol: SquarespaceProtocol,
     retry: Retry.Retry,
@@ -2765,8 +2765,8 @@ export const getSpecificInventoryItems: API.OperationMethod<
   GetSpecificInventoryItemsError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<GetSpecificInventoryItemsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<InventoryItemListResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetSpecificInventoryItemsRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<InventoryItemListResponse>,
   errors: [BadRequest, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2780,8 +2780,8 @@ export const getSpecificProducts: API.OperationMethod<
   GetSpecificProductsError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetSpecificProductsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<ProductListResponseV2>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetSpecificProductsRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<ProductListResponseV2>,
   errors: [BadRequest, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2795,8 +2795,8 @@ export const getSpecificProfiles: API.OperationMethod<
   GetSpecificProfilesError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetSpecificProfilesRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ProfileListResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetSpecificProfilesRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<ProfileListResponse>,
   errors: [BadRequest, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2812,8 +2812,8 @@ export const getStorePages: API.PaginatedOperationMethod<
   StorePage
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(140, __c17, 4) as any as S.Schema<GetStorePagesRequest>,
-    output: __S(143, __c17, 7) as any as S.Schema<PaginatedStorePagesResponse>,
+    input: __S(1280, __c40, 0) as any as S.Schema<GetStorePagesRequest>,
+    output: __S(1283, __c40, 3) as any as S.Schema<PaginatedStorePagesResponse>,
     errors: [NotFound, UnknownSquarespaceError],
     protocol: SquarespaceProtocol,
     retry: Retry.Retry,
@@ -2835,8 +2835,8 @@ export const getTransactionsSummaries: API.OperationMethod<
   GetTransactionsSummariesError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetTransactionsSummariesRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<RetrieveTransactionsSummariesResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetTransactionsSummariesRequest>,
+  output: __S(1411, __c44, 3) as any as S.Schema<RetrieveTransactionsSummariesResponse>,
   errors: [BadRequest, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2850,8 +2850,8 @@ export const getWebhookSubscription: API.OperationMethod<
   GetWebhookSubscriptionError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetWebhookSubscriptionRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ExternalWebhookSubscriptionResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetWebhookSubscriptionRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<ExternalWebhookSubscriptionResponse>,
   errors: [NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2865,8 +2865,8 @@ export const getWebhookSubscriptions: API.OperationMethod<
   GetWebhookSubscriptionsError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetWebhookSubscriptionsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<ExternalWebhookSubscriptionListResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetWebhookSubscriptionsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<ExternalWebhookSubscriptionListResponse>,
   errors: [NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2880,8 +2880,8 @@ export const getWebsiteProfile: API.OperationMethod<
   GetWebsiteProfileError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetWebsiteProfileRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<WebsiteProfile>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetWebsiteProfileRequest>,
+  output: __S(1538, __c48, 2) as any as S.Schema<WebsiteProfile>,
   errors: [NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2895,8 +2895,8 @@ export const listDiscounts: API.OperationMethod<
   ListDiscountsError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ListDiscountsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<PaginatedDiscountListResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListDiscountsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<PaginatedDiscountListResponse>,
   errors: [BadRequest, Forbidden, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2912,8 +2912,8 @@ export const queryContacts: API.PaginatedOperationMethod<
   Contact
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(162, __c20, 2) as any as S.Schema<QueryContactsRequest>,
-    output: __S(81, __c10, 1) as any as S.Schema<PaginatedQueryContactsResponse>,
+    input: __S(1603, __c50, 3) as any as S.Schema<QueryContactsRequest>,
+    output: __S(673, __c21, 1) as any as S.Schema<PaginatedQueryContactsResponse>,
     errors: [BadRequest, Forbidden, UnknownSquarespaceError],
     protocol: SquarespaceProtocol,
     retry: Retry.Retry,
@@ -2936,8 +2936,8 @@ export const rotateSubscriptionSecret: API.OperationMethod<
   RotateSubscriptionSecretError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<RotateSubscriptionSecretRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ExternalRotateSecretResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<RotateSubscriptionSecretRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<ExternalRotateSecretResponse>,
   errors: [NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2954,8 +2954,8 @@ export const sendTestNotificationForWebhookSubscription: API.OperationMethod<
   SendTestNotificationForWebhookSubscriptionError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<SendTestNotificationForWebhookSubscriptionRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<ExternalTestNotificationResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<SendTestNotificationForWebhookSubscriptionRequest>,
+  output: __S(1665, __c52, 1) as any as S.Schema<ExternalTestNotificationResponse>,
   errors: [BadRequest, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2969,8 +2969,8 @@ export const updateAddressBookEntry: API.OperationMethod<
   UpdateAddressBookEntryError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<UpdateAddressBookEntryRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<UpdateAddressBookEntryResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<UpdateAddressBookEntryRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<UpdateAddressBookEntryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2984,8 +2984,8 @@ export const updateContact: API.OperationMethod<
   UpdateContactError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<UpdateContactRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<PatchContactResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<UpdateContactRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<PatchContactResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -2999,8 +2999,8 @@ export const updateDiscount: API.OperationMethod<
   UpdateDiscountError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<UpdateDiscountRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DiscountResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<UpdateDiscountRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<DiscountResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -3014,8 +3014,8 @@ export const updateProduct: API.OperationMethod<
   UpdateProductError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<UpdateProductRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ProductV2>,
+  input: __S(1857, __c58, 1) as any as S.Schema<UpdateProductRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<ProductV2>,
   errors: [BadRequest, NotFound, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -3029,8 +3029,8 @@ export const updateProductImage: API.OperationMethod<
   UpdateProductImageError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<UpdateProductImageRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ProductImage>,
+  input: __S(1952, __c61, 0) as any as S.Schema<UpdateProductImageRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ProductImage>,
   errors: [BadRequest, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -3044,8 +3044,8 @@ export const updateProductImageOrder: API.OperationMethod<
   UpdateProductImageOrderError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<UpdateProductImageOrderRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<UpdateProductImageOrderResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<UpdateProductImageOrderRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<UpdateProductImageOrderResponse>,
   errors: [BadRequest, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -3059,7 +3059,7 @@ export const updateProductVariant: API.OperationMethod<
   UpdateProductVariantError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<UpdateProductVariantRequest>,
+  input: __S(2021, __c63, 5) as any as S.Schema<UpdateProductVariantRequest>,
   output: S.Unknown as any as S.Schema<ProductVariantV2>,
   errors: [BadRequest, NotFound, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
@@ -3074,8 +3074,8 @@ export const updateWebhookSubscription: API.OperationMethod<
   UpdateWebhookSubscriptionError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<UpdateWebhookSubscriptionRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ExternalWebhookSubscriptionResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<UpdateWebhookSubscriptionRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<ExternalWebhookSubscriptionResponse>,
   errors: [BadRequest, NotFound, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -3089,8 +3089,8 @@ export const uploadProductImage: API.OperationMethod<
   UploadProductImageError,
   SquarespaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<UploadProductImageRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<UploadProductImageResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<UploadProductImageRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<UploadProductImageResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownSquarespaceError],
   protocol: SquarespaceProtocol,
   retry: Retry.Retry,
@@ -3102,506 +3102,15 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          quantity: S.optional(S.Number),
-          variantId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InventoryQuantityExpression",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          idempotencyKey: S.String.pipe(T.Header("Idempotency-Key")),
-          decrementOperations: S.optional(__S(1, __c0, 1)),
-          incrementOperations: S.optional(__S(1, __c0, 1)),
-          setFiniteOperations: S.optional(__S(1, __c0, 1)),
-          setUnlimitedOperations: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/1.0/commerce/inventory/adjustments", code: 200 })),
-      ).annotate({
-        identifier: "AdjustInventoryStockLevelsRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AdjustInventoryStockLevelsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          present: S.optional(S.Boolean),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChangeString" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.String.pipe(T.Label()),
-          variantId: S.String.pipe(T.Label()),
-          imageId: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/commerce/products/{productId}/variants/{variantId}/image",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AssociateProductVariantImageRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.optional(S.String),
-          countryCode: S.String,
-          firstName: S.optional(S.String),
-          lastName: S.optional(S.String),
-          line1: S.optional(S.String),
-          line2: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          region: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContactAddress" });
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/v2/commerce/products", code: 200 })),
+      ).annotate({ identifier: "CreateProductRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contactId: S.String.pipe(T.Label()),
-          address: __S(7, __c0, 7),
-          defaultShipping: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/contacts/{contactId}/address-book", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateAddressBookEntryRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(__S(7, __c0, 7)),
-          defaultShipping: S.optional(S.Boolean),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddressBookEntry" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          addressBookEntry: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateAddressBookEntryResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          acceptsMarketing: S.optional(S.Boolean),
-          email: S.String,
-        }),
-      ).annotate({ identifier: "CreateEmail" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          firstName: S.String,
-          lastName: S.String,
-          locale: S.String,
-          primaryEmail: __S(11, __c1, 3),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/contacts", code: 200 })),
-      ).annotate({ identifier: "CreateContactRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          acceptsMarketing: S.optional(S.Boolean),
-          joinedOn: S.optional(S.String),
-          leftOn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AcceptsMarketing" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          acceptsMarketing: S.optional(__S(13, __c1, 5)),
-          createdOn: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Email" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createdOn: S.optional(S.String),
-          defaultShippingAddress: S.optional(__S(9, __c1, 1)),
-          firstName: S.optional(S.String),
-          id: S.optional(S.String),
-          lastName: S.optional(S.String),
-          locale: S.optional(S.String),
-          primaryEmail: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "Contact" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contact: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "CreateContactResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.String),
-          defaultFractionDigits: S.optional(S.Number),
-          displayName: S.optional(S.String),
-          numericCode: S.optional(S.Number),
-          numericCodeAsString: S.optional(S.String),
-          symbol: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MonetaryAmountCurrency" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.optional(__S(17, __c2, 1)),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MonetaryAmount" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-        }),
-      ).annotate({ identifier: "PaymentPlanOptions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          criteria: S.Unknown,
-          isLimitedUses: S.optional(S.Boolean),
-          isOncePerCustomer: S.optional(S.Boolean),
-          maxUsesAllowed: S.optional(S.Number),
-          name: S.String,
-          paymentPlanOptions: S.optional(__S(19, __c2, 3)),
-          subscriptionOptions: S.optional(__S(19, __c2, 3)),
-          template: S.Unknown,
-          trigger: S.Unknown,
-          validFrom: S.String,
-          validTo: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/commerce/discounts", code: 200 })),
-      ).annotate({ identifier: "CreateDiscountRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          criteria: S.Unknown,
-          id: S.optional(S.String),
-          isLimitedUses: S.optional(S.Boolean),
-          isOncePerCustomer: S.optional(S.Boolean),
-          lastRedeemedAt: S.optional(S.String),
-          maxUsesAllowed: S.optional(S.Number),
-          name: S.String,
-          numberOfUses: S.optional(S.Number),
-          paymentPlanOptions: S.optional(__S(19, __c2, 3)),
-          status: S.optional(S.String),
-          subscriptionOptions: S.optional(__S(19, __c2, 3)),
-          template: S.Unknown,
-          trigger: S.Unknown,
-          validFrom: S.String,
-          validTo: S.optional(S.String),
-          websiteId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Discount" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          discount: __S(21, __c2, 5),
-        }),
-      ).annotate({ identifier: "DiscountResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          address1: S.optional(S.String),
-          address2: S.optional(S.String),
-          city: S.optional(S.String),
-          countryCode: S.optional(S.String),
-          firstName: S.optional(S.String),
-          lastName: S.optional(S.String),
-          phone: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddressRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(__S(18, __c2, 2)),
-          name: S.optional(S.String),
-          promoCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateDiscountLineRequest",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          carrierName: S.String,
-          service: S.String,
-          shipDate: S.String,
-          trackingNumber: S.String,
-          trackingUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateOrderShipmentRequest",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          lineItemType: S.String,
-          nonSaleUnitPrice: S.optional(__S(18, __c2, 2)),
-          quantity: S.Number,
-          title: S.optional(S.String),
-          unitPricePaid: __S(18, __c2, 2),
-          variantId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateLineItemRequest" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          amount: __S(18, __c2, 2),
-          method: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateShippingLineRequest",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          idempotencyKey: S.String.pipe(T.Header("Idempotency-Key")),
-          billingAddress: S.optional(__S(23, __c2, 7)),
-          channelName: S.String,
-          createdOn: S.String,
-          customerEmail: S.optional(S.String),
-          discountLines: S.optional(__S(25, __c3, 1)),
-          discountTotal: S.optional(__S(18, __c2, 2)),
-          externalOrderReference: S.String,
-          fulfilledOn: S.optional(S.String),
-          fulfillmentStatus: S.optional(S.String),
-          fulfillments: __S(27, __c3, 3),
-          grandTotal: __S(18, __c2, 2),
-          inventoryBehavior: S.optional(S.String),
-          lineItems: __S(29, __c3, 5),
-          priceTaxInterpretation: S.String,
-          shippingAddress: S.optional(__S(23, __c2, 7)),
-          shippingLines: S.optional(__S(31, __c3, 7)),
-          shippingTotal: S.optional(__S(18, __c2, 2)),
-          shopperFulfillmentNotificationBehavior: S.optional(S.String),
-          subtotal: S.optional(__S(18, __c2, 2)),
-          taxTotal: S.optional(__S(18, __c2, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/1.0/commerce/orders", code: 200 })),
-      ).annotate({ identifier: "CreateOrderRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(__S(18, __c2, 2)),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          promoCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiscountLine" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FormItem" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          carrierName: S.optional(S.String),
-          service: S.optional(S.String),
-          shipDate: S.optional(S.String),
-          trackingNumber: S.optional(S.String),
-          trackingUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Fulfillment" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OrderNote" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          optionName: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VariantOption" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customizations: S.optional(__S(36, __c4, 4)),
-          height: S.optional(S.Number),
-          id: S.optional(S.String),
-          imageUrl: S.optional(S.String),
-          length: S.optional(S.Number),
-          lineItemType: S.optional(S.String),
-          productId: S.optional(S.String),
-          productName: S.optional(S.String),
-          quantity: S.optional(S.Number),
-          sku: S.optional(S.String),
-          unitPricePaid: S.optional(__S(18, __c2, 2)),
-          variantId: S.optional(S.String),
-          variantOptions: S.optional(__S(42, __c5, 2)),
-          weight: S.optional(S.Number),
-          width: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LineItem" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(__S(18, __c2, 2)),
-          method: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ShippingLine" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          billingAddress: S.optional(__S(23, __c2, 7)),
-          channel: S.optional(S.String),
-          channelName: S.optional(S.String),
-          createdOn: S.optional(S.String),
-          customerEmail: S.optional(S.String),
-          customerId: S.optional(S.String),
-          discountLines: S.optional(__S(34, __c4, 2)),
-          discountTotal: S.optional(__S(18, __c2, 2)),
-          externalOrderReference: S.optional(S.String),
-          formSubmission: S.optional(__S(36, __c4, 4)),
-          fulfilledOn: S.optional(S.String),
-          fulfillmentStatus: S.optional(S.String),
-          fulfillments: S.optional(__S(38, __c4, 6)),
-          grandTotal: S.optional(__S(18, __c2, 2)),
-          id: S.optional(S.String),
-          internalNotes: S.optional(__S(40, __c5, 0)),
-          lineItems: S.optional(__S(44, __c5, 4)),
-          modifiedOn: S.optional(S.String),
-          orderNumber: S.optional(S.String),
-          paymentState: S.optional(S.String),
-          priceTaxInterpretation: S.optional(S.String),
-          refundedTotal: S.optional(__S(18, __c2, 2)),
-          shippingAddress: S.optional(__S(23, __c2, 7)),
-          shippingLines: S.optional(__S(46, __c5, 6)),
-          shippingOptionName: S.optional(S.String),
-          shippingOptionServiceType: S.optional(S.String),
-          shippingTotal: S.optional(__S(18, __c2, 2)),
-          subtotal: S.optional(__S(18, __c2, 2)),
-          taxTotal: S.optional(__S(18, __c2, 2)),
-          testmode: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Order" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          basePrice: S.optional(__S(18, __c2, 2)),
-          onSale: S.optional(S.Boolean),
-          salePrice: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "FullProductPricing" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          height: S.optional(S.Number),
-          length: S.optional(S.Number),
-          unit: S.optional(S.String),
-          width: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ProductDimensions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ProductWeight" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(__S(50, __c6, 2)),
-          weight: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "ProductMeasurements" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          quantity: S.optional(S.Number),
-          unlimited: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ProductStock" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/v2/commerce/products", code: 200 })),
-      ).annotate({ identifier: "CreateProductRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          altText: S.optional(S.String),
-          availableFormats: S.optional(__S(2, __c0, 2)),
-          id: S.optional(S.String),
-          orderIndex: S.optional(S.Number),
-          originalSize: S.optional(S.Unknown),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductImage" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
+      return S.Array(__S(64, __c2, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3615,47 +3124,112 @@ function __c7(j: number): any {
           createdOn: S.String,
           description: S.optional(S.String),
           id: S.String,
-          images: S.optional(__S(56, __c7, 0)),
+          images: S.optional(__S(32, __c1, 0)),
           isVisible: S.optional(S.Boolean),
           modifiedOn: S.String,
           name: S.optional(S.String),
-          seoOptions: S.optional(__S(57, __c7, 1)),
+          seoOptions: S.optional(__S(33, __c1, 1)),
           storePageId: S.String,
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(1344, __c42, 0)),
           type: S.String,
           url: S.optional(S.String),
           urlSlug: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductV2" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          altText: S.optional(S.String),
+          availableFormats: S.optional(__S(1344, __c42, 0)),
+          id: S.optional(S.String),
+          orderIndex: S.optional(S.Number),
+          originalSize: S.optional(S.Unknown),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductImage" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          basePrice: S.optional(__S(2433, __c76, 1)),
+          onSale: S.optional(S.Boolean),
+          salePrice: S.optional(__S(2433, __c76, 1)),
+        }),
+      ).annotate({ identifier: "FullProductPricing" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(__S(129, __c4, 1)),
+          weight: S.optional(__S(130, __c4, 2)),
+        }),
+      ).annotate({ identifier: "ProductMeasurements" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          quantity: S.optional(S.Number),
+          unlimited: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ProductStock" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
-          attributes: S.optional(__S(48, __c6, 0)),
+          attributes: S.optional(__S(128, __c4, 0)),
           gtin: S.optional(S.String),
           mpn: S.optional(S.String),
-          pricing: __S(49, __c6, 1),
-          shippingMeasurements: S.optional(__S(52, __c6, 4)),
+          pricing: __S(96, __c3, 0),
+          shippingMeasurements: S.optional(__S(97, __c3, 1)),
           sku: S.String,
-          stock: S.optional(__S(53, __c6, 5)),
+          stock: S.optional(__S(98, __c3, 2)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/commerce/products/{productId}/variants", code: 200 }),
         ),
       ).annotate({
         identifier: "CreateProductVariantRequest",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          height: S.optional(S.Number),
+          length: S.optional(S.Number),
+          unit: S.optional(S.String),
+          width: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ProductDimensions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ProductWeight" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endpointUrl: S.String,
-          topics: S.optional(__S(60, __c7, 4)),
+          topics: S.optional(__S(192, __c6, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/1.0/webhook_subscriptions", code: 200 })),
       ).annotate({
         identifier: "CreateWebhookSubscriptionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String,
@@ -3663,14 +3237,24 @@ function __c7(j: number): any {
           endpointUrl: S.String,
           id: S.String,
           secret: S.String.pipe(T.SensitiveValue({})),
-          topics: S.optional(__S(60, __c7, 4)),
+          topics: S.optional(__S(192, __c6, 0)),
           updatedOn: S.String,
           websiteId: S.String,
         }),
       ).annotate({
         identifier: "ExternalCreateWebhookSubscriptionResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contactId: S.String.pipe(T.Label()),
@@ -3693,13 +3277,21 @@ function __c8(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAddressBookEntryResponse",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contactId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/contacts/{contactId}", code: 200 })),
       ).annotate({ identifier: "DeleteContactRequest" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           discountId: S.String.pipe(T.Label()),
@@ -3707,13 +3299,21 @@ function __c8(j: number): any {
           T.Http({ method: "DELETE", uri: "/v1/commerce/discounts/{discountId}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteDiscountRequest" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v2/commerce/products/{productId}", code: 200 })),
       ).annotate({ identifier: "DeleteProductRequest" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
@@ -3728,7 +3328,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProductImageRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
@@ -3743,7 +3347,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProductVariantRequest",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3757,11 +3365,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteWebhookSubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          shipments: S.optional(__S(27, __c3, 3)),
+          shipments: S.optional(__S(2465, __c77, 1)),
           shouldSendNotification: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/1.0/commerce/orders/{id}/fulfillments", code: 200 }),
@@ -3769,7 +3381,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "FulfillOrderRequest" });
   }
 }
-function __c9(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3780,15 +3392,26 @@ function __c9(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/contacts/{contactId}/address-book", code: 200 })),
       ).annotate({ identifier: "GetAddressBookRequest" });
     case 1:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(2177, __c68, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          addressBookEntries: S.optional(__S(73, __c9, 1)),
+          addressBookEntries: S.optional(__S(513, __c16, 1)),
           defaultShippingAddressId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddressBook" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          addressBook: S.optional(__S(514, __c16, 2)),
+          pagination: S.optional(__S(544, __c17, 0)),
+        }),
+      ).annotate({ identifier: "GetAddressBookResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           hasNextPage: S.optional(S.Boolean),
@@ -3796,14 +3419,11 @@ function __c9(j: number): any {
           nextPageUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "PaginationDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          addressBook: S.optional(__S(74, __c9, 2)),
-          pagination: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({ identifier: "GetAddressBookResponse" });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contactId: S.String.pipe(T.Label()),
@@ -3818,13 +3438,21 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetAddressBookEntryRequest",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contactId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/contacts/{contactId}", code: 200 })),
       ).annotate({ identifier: "GetContactRequest" });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3833,26 +3461,34 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetContactsRequest" });
   }
 }
-function __c10(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
+      return S.Array(__S(2242, __c70, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          contacts: __S(80, __c10, 0),
-          pagination: S.optional(__S(75, __c9, 3)),
+          contacts: __S(672, __c21, 0),
+          pagination: S.optional(__S(544, __c17, 0)),
         }),
       ).annotate({
         identifier: "PaginatedGetContactsResponse",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           discountId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/commerce/discounts/{discountId}", code: 200 })),
       ).annotate({ identifier: "GetDiscountRequest" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           documentIds: S.String.pipe(T.Label()),
@@ -3860,17 +3496,27 @@ function __c10(j: number): any {
           T.Http({ method: "GET", uri: "/1.0/commerce/transactions/{documentIds}", code: 200 }),
         ),
       ).annotate({ identifier: "GetDocumentsByIdRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(18, __c2, 2)),
+          documents: S.optional(__S(787, __c24, 19)),
+        }),
+      ).annotate({ identifier: "TransactionListResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(__S(2433, __c76, 1)),
           description: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransactionDiscount" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -3879,17 +3525,13 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ExternalTransactionProperty",
       });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(770, __c24, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(18, __c2, 2)),
-          amountGatewayCurrency: S.optional(__S(18, __c2, 2)),
+          amount: S.optional(__S(2433, __c76, 1)),
+          amountGatewayCurrency: S.optional(__S(2433, __c76, 1)),
           exchangeRate: S.optional(S.Number),
           externalTransactionId: S.optional(S.String),
           id: S.optional(S.String),
@@ -3898,133 +3540,123 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "TransactionProcessingFeeRefund",
       });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(772, __c24, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(18, __c2, 2)),
-          amountGatewayCurrency: S.optional(__S(18, __c2, 2)),
+          amount: S.optional(__S(2433, __c76, 1)),
+          amountGatewayCurrency: S.optional(__S(2433, __c76, 1)),
           exchangeRate: S.optional(S.Number),
-          feeRefunds: S.optional(__S(89, __c11, 1)),
+          feeRefunds: S.optional(__S(773, __c24, 5)),
           id: S.optional(S.String),
-          netAmount: S.optional(__S(18, __c2, 2)),
-          netAmountGatewayCurrency: S.optional(__S(18, __c2, 2)),
-          refundedAmount: S.optional(__S(18, __c2, 2)),
-          refundedAmountGatewayCurrency: S.optional(__S(18, __c2, 2)),
+          netAmount: S.optional(__S(2433, __c76, 1)),
+          netAmountGatewayCurrency: S.optional(__S(2433, __c76, 1)),
+          refundedAmount: S.optional(__S(2433, __c76, 1)),
+          refundedAmountGatewayCurrency: S.optional(__S(2433, __c76, 1)),
         }),
       ).annotate({ identifier: "TransactionProcessingFee" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(774, __c24, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(18, __c2, 2)),
+          amount: S.optional(__S(2433, __c76, 1)),
           externalTransactionId: S.optional(S.String),
           id: S.optional(S.String),
           refundedOn: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransactionRefund" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 9:
+      return S.Array(__S(776, __c24, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(18, __c2, 2)),
+          amount: S.optional(__S(2433, __c76, 1)),
           creditCardType: S.optional(S.String),
           externalCustomerId: S.optional(S.String),
           externalTransactionId: S.optional(S.String),
-          externalTransactionProperties: S.optional(__S(87, __c10, 7)),
+          externalTransactionProperties: S.optional(__S(771, __c24, 3)),
           giftCardId: S.optional(S.String),
           id: S.optional(S.String),
-          netAmount: S.optional(__S(18, __c2, 2)),
+          netAmount: S.optional(__S(2433, __c76, 1)),
           paidOn: S.optional(S.String),
-          processingFees: S.optional(__S(91, __c11, 3)),
+          processingFees: S.optional(__S(775, __c24, 7)),
           provider: S.optional(S.String),
-          refundedAmount: S.optional(__S(18, __c2, 2)),
-          refunds: S.optional(__S(93, __c11, 5)),
+          refundedAmount: S.optional(__S(2433, __c76, 1)),
+          refunds: S.optional(__S(777, __c24, 9)),
         }),
       ).annotate({ identifier: "TransactionPayment" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
+      return S.Array(__S(778, __c24, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(18, __c2, 2)),
+          amount: S.optional(__S(2433, __c76, 1)),
           jurisdiction: S.optional(S.String),
           name: S.optional(S.String),
           rate: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransactionTax" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
+    case 13:
+      return S.Array(__S(780, __c24, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          discountAmount: S.optional(__S(18, __c2, 2)),
+          discountAmount: S.optional(__S(2433, __c76, 1)),
           id: S.optional(S.String),
-          taxes: S.optional(__S(97, __c12, 1)),
-          total: S.optional(__S(18, __c2, 2)),
-          totalNetSales: S.optional(__S(18, __c2, 2)),
-          totalSales: S.optional(__S(18, __c2, 2)),
+          taxes: S.optional(__S(781, __c24, 13)),
+          total: S.optional(__S(2433, __c76, 1)),
+          totalNetSales: S.optional(__S(2433, __c76, 1)),
+          totalSales: S.optional(__S(2433, __c76, 1)),
         }),
       ).annotate({ identifier: "TransactionSalesLineItem" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
+    case 15:
+      return S.Array(__S(782, __c24, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(18, __c2, 2)),
+          amount: S.optional(__S(2433, __c76, 1)),
           description: S.optional(S.String),
-          discountAmount: S.optional(__S(18, __c2, 2)),
+          discountAmount: S.optional(__S(2433, __c76, 1)),
           id: S.optional(S.String),
-          netAmount: S.optional(__S(18, __c2, 2)),
-          taxes: S.optional(__S(97, __c12, 1)),
+          netAmount: S.optional(__S(2433, __c76, 1)),
+          taxes: S.optional(__S(781, __c24, 13)),
         }),
       ).annotate({
         identifier: "TransactionShippingLineItem",
       });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 17:
+      return S.Array(__S(784, __c24, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           createdOn: S.optional(S.String),
           customerEmail: S.optional(S.String),
-          discounts: S.optional(__S(85, __c10, 5)),
+          discounts: S.optional(__S(769, __c24, 1)),
           id: S.optional(S.String),
           modifiedOn: S.optional(S.String),
           paymentGatewayError: S.optional(S.String),
-          payments: S.optional(__S(95, __c11, 7)),
-          salesLineItems: S.optional(__S(99, __c12, 3)),
+          payments: S.optional(__S(779, __c24, 11)),
+          salesLineItems: S.optional(__S(783, __c24, 15)),
           salesOrderId: S.optional(S.String),
-          shippingLineItems: S.optional(__S(101, __c12, 5)),
-          total: S.optional(__S(18, __c2, 2)),
-          totalNetPayment: S.optional(__S(18, __c2, 2)),
-          totalNetSales: S.optional(__S(18, __c2, 2)),
-          totalNetShipping: S.optional(__S(18, __c2, 2)),
-          totalSales: S.optional(__S(18, __c2, 2)),
-          totalTaxes: S.optional(__S(18, __c2, 2)),
+          shippingLineItems: S.optional(__S(785, __c24, 17)),
+          total: S.optional(__S(2433, __c76, 1)),
+          totalNetPayment: S.optional(__S(2433, __c76, 1)),
+          totalNetSales: S.optional(__S(2433, __c76, 1)),
+          totalNetShipping: S.optional(__S(2433, __c76, 1)),
+          totalSales: S.optional(__S(2433, __c76, 1)),
+          totalTaxes: S.optional(__S(2433, __c76, 1)),
           voided: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TransactionDocument" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
+    case 19:
+      return S.Array(__S(786, __c24, 18));
   }
 }
-function __c13(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          documents: S.optional(__S(103, __c12, 7)),
-        }),
-      ).annotate({ identifier: "TransactionListResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           cursor: S.optional(S.String.pipe(T.Query())),
@@ -4035,16 +3667,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetDocumentsByUpdatedOnRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          documents: __S(103, __c12, 7),
-          pagination: S.optional(__S(75, __c9, 3)),
+          documents: __S(787, __c24, 19),
+          pagination: S.optional(__S(544, __c17, 0)),
         }),
       ).annotate({
         identifier: "PaginatedTransactionListResponse",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/v1/fulfillments/fulfillment-options", code: 200 }),
@@ -4052,43 +3688,56 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetFulfillmentOptionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "CarrierService" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(833, __c26, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          availableServices: __S(109, __c13, 5),
+          availableServices: __S(834, __c26, 2),
           id: S.String,
           name: S.String,
           type: S.String,
         }),
       ).annotate({ identifier: "FulfillmentOption" });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(835, __c26, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          fulfillmentOptions: __S(111, __c13, 7),
+          fulfillmentOptions: __S(836, __c26, 4),
         }),
       ).annotate({ identifier: "FulfillmentOptionsList" });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/1.0/commerce/inventory", code: 200 })),
       ).annotate({ identifier: "GetInventoryItemsRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inventory: __S(897, __c28, 1),
+          pagination: S.optional(__S(544, __c17, 0)),
+        }),
+      ).annotate({
+        identifier: "PaginatedInventoryItemListResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           descriptor: S.optional(S.String),
@@ -4098,22 +3747,17 @@ function __c14(j: number): any {
           variantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "InventoryItem" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          inventory: __S(115, __c14, 3),
-          pagination: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({
-        identifier: "PaginatedInventoryItemListResponse",
-      });
-    case 5:
+    case 1:
+      return S.Array(__S(896, __c28, 0));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/1.0/authorization/member", code: 200 })),
       ).annotate({ identifier: "GetMemberProfileRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -4122,7 +3766,11 @@ function __c14(j: number): any {
           lastName: S.optional(S.String),
         }),
       ).annotate({ identifier: "MemberProfile" });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -4130,7 +3778,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetOrderRequest" });
   }
 }
-function __c15(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4144,15 +3792,19 @@ function __c15(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/1.0/commerce/orders", code: 200 })),
       ).annotate({ identifier: "GetOrdersRequest" });
     case 1:
-      return S.Array(__S(47, __c5, 7));
+      return S.Array(__S(2510, __c78, 14));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(__S(75, __c9, 3)),
-          result: __S(121, __c15, 1),
+          pagination: S.optional(__S(544, __c17, 0)),
+          result: __S(993, __c31, 1),
         }),
       ).annotate({ identifier: "OrderListResponse" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
@@ -4167,7 +3819,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetProductImageProcessingStatusRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4176,30 +3828,34 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ProductImageProcessingStatus",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           modifiedAfter: S.optional(S.String.pipe(T.Query())),
           modifiedBefore: S.optional(S.String.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(__S(2, __c0, 2).pipe(T.Query())),
+          type: S.optional(__S(1344, __c42, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v2/commerce/products", code: 200 })),
       ).annotate({ identifier: "GetProductsRequest" });
-    case 6:
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(__S(75, __c9, 3)),
-          products: __S(126, __c15, 6),
+          pagination: S.optional(__S(544, __c17, 0)),
+          products: __S(1057, __c33, 1),
         }),
       ).annotate({
         identifier: "PaginatedProductListResponseV2",
       });
   }
 }
-function __c16(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4214,22 +3870,21 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          donationCount: S.optional(S.Number),
-          firstDonationSubmittedOn: S.optional(S.String),
-          firstOrderSubmittedOn: S.optional(S.String),
-          lastDonationSubmittedOn: S.optional(S.String),
-          lastOrderSubmittedOn: S.optional(S.String),
-          orderCount: S.optional(S.Number),
-          totalDonationAmount: S.optional(__S(18, __c2, 2)),
-          totalOrderAmount: S.optional(__S(18, __c2, 2)),
-          totalRefundAmount: S.optional(__S(18, __c2, 2)),
+          pagination: S.optional(__S(544, __c17, 0)),
+          profiles: __S(1121, __c35, 1),
         }),
-      ).annotate({ identifier: "TransactionsSummary" });
-    case 2:
+      ).annotate({
+        identifier: "PaginatedProfileListResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           acceptsMarketing: S.optional(S.Boolean),
-          address: S.optional(__S(23, __c2, 7)),
+          address: S.optional(__S(2528, __c79, 0)),
           createdOn: S.optional(S.String),
           email: S.optional(S.String),
           firstName: S.optional(S.String),
@@ -4237,21 +3892,34 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           isCustomer: S.optional(S.Boolean),
           lastName: S.optional(S.String),
-          transactionsSummary: S.optional(__S(129, __c16, 1)),
+          transactionsSummary: S.optional(__S(1152, __c36, 0)),
         }),
       ).annotate({ identifier: "Profile" });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1120, __c35, 0));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(__S(75, __c9, 3)),
-          profiles: __S(131, __c16, 3),
+          donationCount: S.optional(S.Number),
+          firstDonationSubmittedOn: S.optional(S.String),
+          firstOrderSubmittedOn: S.optional(S.String),
+          lastDonationSubmittedOn: S.optional(S.String),
+          lastOrderSubmittedOn: S.optional(S.String),
+          orderCount: S.optional(S.Number),
+          totalDonationAmount: S.optional(__S(2433, __c76, 1)),
+          totalOrderAmount: S.optional(__S(2433, __c76, 1)),
+          totalRefundAmount: S.optional(__S(2433, __c76, 1)),
         }),
-      ).annotate({
-        identifier: "PaginatedProfileListResponse",
-      });
-    case 5:
+      ).annotate({ identifier: "TransactionsSummary" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           variantIdCsvs: S.String.pipe(T.Label()),
@@ -4261,15 +3929,19 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetSpecificInventoryItemsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          inventory: S.optional(__S(115, __c14, 3)),
+          inventory: S.optional(__S(897, __c28, 1)),
         }),
       ).annotate({
         identifier: "InventoryItemListResponse",
       });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productIdCsvs: S.String.pipe(T.Label()),
@@ -4277,19 +3949,19 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetSpecificProductsRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
     case 1:
+      return S.Array(S.Unknown);
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(__S(136, __c17, 0)),
+          products: S.optional(__S(1217, __c38, 1)),
         }),
       ).annotate({ identifier: "ProductListResponseV2" });
-    case 2:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileIdCsvs: S.String.pipe(T.Label()),
@@ -4297,19 +3969,23 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetSpecificProfilesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          profiles: S.optional(__S(131, __c16, 3)),
+          profiles: S.optional(__S(1121, __c35, 1)),
         }),
       ).annotate({ identifier: "ProfileListResponse" });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/1.0/commerce/store_pages", code: 200 })),
       ).annotate({ identifier: "GetStorePagesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4318,25 +3994,66 @@ function __c17(j: number): any {
           urlSlug: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorePage" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1281, __c40, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(__S(75, __c9, 3)),
-          storePages: __S(142, __c17, 6),
+          pagination: S.optional(__S(544, __c17, 0)),
+          storePages: __S(1282, __c40, 2),
         }),
       ).annotate({
         identifier: "PaginatedStorePagesResponse",
       });
   }
 }
-function __c18(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          contactIds: __S(2, __c0, 2),
+          quantity: S.optional(S.Number),
+          variantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InventoryQuantityExpression",
+      });
+    case 1:
+      return S.Array(__S(1312, __c41, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          idempotencyKey: S.String.pipe(T.Header("Idempotency-Key")),
+          decrementOperations: S.optional(__S(1313, __c41, 1)),
+          incrementOperations: S.optional(__S(1313, __c41, 1)),
+          setFiniteOperations: S.optional(__S(1313, __c41, 1)),
+          setUnlimitedOperations: S.optional(__S(1344, __c42, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/1.0/commerce/inventory/adjustments", code: 200 })),
+      ).annotate({
+        identifier: "AdjustInventoryStockLevelsRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AdjustInventoryStockLevelsResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contactIds: __S(1344, __c42, 0),
           groupBy: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/v1/analytics/transaction-summaries", code: 200 })),
       ).annotate({
@@ -4346,22 +4063,26 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           contactId: S.optional(S.String),
-          transactionsSummary: S.optional(__S(129, __c16, 1)),
+          transactionsSummary: S.optional(__S(1152, __c36, 0)),
         }),
       ).annotate({
         identifier: "TransactionsSummaryWrapper",
       });
     case 2:
-      return S.Array(__S(145, __c18, 1));
+      return S.Array(__S(1409, __c44, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          transactionsSummaryWrappers: S.optional(__S(146, __c18, 2)),
+          transactionsSummaryWrappers: S.optional(__S(1410, __c44, 2)),
         }),
       ).annotate({
         identifier: "RetrieveTransactionsSummariesResponse",
       });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4371,58 +4092,66 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetWebhookSubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.String),
           createdOn: S.optional(S.String),
           endpointUrl: S.optional(S.String),
           id: S.optional(S.String),
-          topics: S.optional(__S(2, __c0, 2)),
+          topics: S.optional(__S(1344, __c42, 0)),
           updatedOn: S.optional(S.String),
           websiteId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ExternalWebhookSubscriptionResponse",
       });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/1.0/webhook_subscriptions", code: 200 })),
       ).annotate({
         identifier: "GetWebhookSubscriptionsRequest",
       });
-    case 7:
-      return S.Array(__S(149, __c18, 5));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1472, __c46, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          webhookSubscriptions: S.optional(__S(151, __c18, 7)),
+          webhookSubscriptions: S.optional(__S(1505, __c47, 1)),
         }),
       ).annotate({
         identifier: "ExternalWebhookSubscriptionListResponse",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/1.0/authorization/website", code: 200 })),
       ).annotate({ identifier: "GetWebsiteProfileRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
           region: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           currency: S.optional(S.String),
           id: S.optional(S.String),
           language: S.optional(S.String),
-          location: S.optional(__S(154, __c19, 2)),
+          location: S.optional(__S(1537, __c48, 1)),
           measurementStandard: S.optional(S.String),
           siteId: S.optional(S.String),
           timeZone: S.optional(S.String),
@@ -4430,78 +4159,86 @@ function __c19(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebsiteProfile" });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sortBy: S.optional(S.String.pipe(T.Query())),
           sortDirection: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           status: S.optional(S.String.pipe(T.Query())),
-          criteria: S.optional(__S(60, __c7, 4).pipe(T.Query())),
-          template: S.optional(__S(60, __c7, 4).pipe(T.Query())),
+          criteria: S.optional(__S(192, __c6, 0).pipe(T.Query())),
+          template: S.optional(__S(192, __c6, 0).pipe(T.Query())),
           trigger: S.optional(S.String.pipe(T.Query())),
           limitedUseOnly: S.optional(S.Boolean.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/commerce/discounts", code: 200 })),
       ).annotate({ identifier: "ListDiscountsRequest" });
-    case 5:
-      return S.Array(__S(21, __c2, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(2337, __c73, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          discounts: __S(157, __c19, 5),
+          discounts: __S(1569, __c49, 1),
           hasNextPage: S.optional(S.Boolean),
           hasPreviousPage: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "PaginatedDiscountListResponse",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String),
           before: S.optional(S.String),
         }),
       ).annotate({ identifier: "DateFilter" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           acceptsMarketing: S.optional(S.Boolean),
-          joinedOn: S.optional(__S(159, __c19, 7)),
+          joinedOn: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({ identifier: "AcceptsMarketingWithDate" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           max: S.optional(S.Number),
           min: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IntegerFilter" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          acceptsMarketingWithDate: S.optional(__S(160, __c20, 0)),
+          acceptsMarketingWithDate: S.optional(__S(1601, __c50, 1)),
           cursor: S.optional(S.String),
-          donationAmount: S.optional(__S(161, __c20, 1)),
-          donationCount: S.optional(__S(161, __c20, 1)),
-          firstDonationOn: S.optional(__S(159, __c19, 7)),
-          firstOrderOn: S.optional(__S(159, __c19, 7)),
-          lastDonationOn: S.optional(__S(159, __c19, 7)),
-          lastOrderOn: S.optional(__S(159, __c19, 7)),
-          orderAmount: S.optional(__S(161, __c20, 1)),
-          orderCount: S.optional(__S(161, __c20, 1)),
+          donationAmount: S.optional(__S(1602, __c50, 2)),
+          donationCount: S.optional(__S(1602, __c50, 2)),
+          firstDonationOn: S.optional(__S(1600, __c50, 0)),
+          firstOrderOn: S.optional(__S(1600, __c50, 0)),
+          lastDonationOn: S.optional(__S(1600, __c50, 0)),
+          lastOrderOn: S.optional(__S(1600, __c50, 0)),
+          orderAmount: S.optional(__S(1602, __c50, 2)),
+          orderCount: S.optional(__S(1602, __c50, 2)),
           pageSize: S.optional(S.Number),
           searchString: S.optional(S.String),
           sortDirection: S.optional(S.String),
           sortField: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/contacts/query", code: 200 })),
       ).annotate({ identifier: "QueryContactsRequest" });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4515,7 +4252,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "RotateSubscriptionSecretRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -4523,7 +4260,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ExternalRotateSecretResponse",
       });
-    case 5:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4538,7 +4279,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "SendTestNotificationForWebhookSubscriptionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.Number),
@@ -4546,12 +4287,16 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ExternalTestNotificationResponse",
       });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contactId: S.String.pipe(T.Label()),
           addressBookEntryId: S.String.pipe(T.Label()),
-          address: __S(7, __c0, 7),
+          address: __S(2176, __c68, 0),
           defaultShipping: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -4565,7 +4310,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4573,7 +4318,42 @@ function __c21(j: number): any {
           contactId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/contacts/{contactId}", code: 200 })),
       ).annotate({ identifier: "UpdateContactRequest" });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.String.pipe(T.Label()),
+          variantId: S.String.pipe(T.Label()),
+          imageId: __S(1792, __c56, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/commerce/products/{productId}/variants/{variantId}/image",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AssociateProductVariantImageRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          present: S.optional(S.Boolean),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChangeString" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           discountId: S.String.pipe(T.Label()),
@@ -4582,83 +4362,95 @@ function __c21(j: number): any {
           isOncePerCustomer: S.optional(S.Boolean),
           maxUsesAllowed: S.optional(S.Number),
           name: S.String,
-          paymentPlanOptions: S.optional(__S(19, __c2, 3)),
-          subscriptionOptions: S.optional(__S(19, __c2, 3)),
+          paymentPlanOptions: S.optional(__S(2336, __c73, 0)),
+          subscriptionOptions: S.optional(__S(2336, __c73, 0)),
           template: S.Unknown,
           trigger: S.Unknown,
           validFrom: S.String,
           validTo: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/commerce/discounts/{discountId}", code: 200 })),
       ).annotate({ identifier: "UpdateDiscountRequest" });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          present: S.optional(S.Boolean),
+          value: S.optional(__S(33, __c1, 1)),
+        }),
+      ).annotate({ identifier: "ChangeSeoOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.String.pipe(T.Label()),
+          description: S.optional(__S(1792, __c56, 0)),
+          isVisible: S.optional(__S(1888, __c59, 0)),
+          name: S.optional(__S(1792, __c56, 0)),
+          pricing: S.optional(__S(1891, __c59, 3)),
+          productAttributeNames: S.optional(__S(1920, __c60, 0)),
+          seoData: S.optional(__S(1856, __c58, 0)),
+          tags: S.optional(__S(1920, __c60, 0)),
+          urlSlug: S.optional(__S(1792, __c56, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/v2/commerce/products/{productId}", code: 200 })),
+      ).annotate({ identifier: "UpdateProductRequest" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           present: S.optional(S.Boolean),
           value: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ChangeBoolean" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          present: S.optional(S.Boolean),
+          value: S.optional(__S(2433, __c76, 1)),
+        }),
+      ).annotate({ identifier: "ChangeMonetaryAmount" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          basePrice: S.optional(__S(1889, __c59, 1)),
+          onSale: S.optional(__S(1888, __c59, 0)),
+          salePrice: S.optional(__S(1889, __c59, 1)),
+        }),
+      ).annotate({ identifier: "UpdateProductPricing" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           present: S.optional(S.Boolean),
-          value: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "ChangeMonetaryAmount" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          basePrice: S.optional(__S(171, __c21, 3)),
-          onSale: S.optional(__S(170, __c21, 2)),
-          salePrice: S.optional(__S(171, __c21, 3)),
-        }),
-      ).annotate({ identifier: "UpdateProductPricing" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          present: S.optional(S.Boolean),
-          value: S.optional(__S(172, __c21, 4)),
+          value: S.optional(__S(1890, __c59, 2)),
         }),
       ).annotate({
         identifier: "ChangeUpdateProductPricing",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          present: S.optional(S.Boolean),
-          value: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "ChangeListString" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          present: S.optional(S.Boolean),
-          value: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "ChangeSeoOptions" });
   }
 }
-function __c22(j: number): any {
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          present: S.optional(S.Boolean),
+          value: S.optional(__S(1344, __c42, 0)),
+        }),
+      ).annotate({ identifier: "ChangeListString" });
+  }
+}
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
-          description: S.optional(__S(5, __c0, 5)),
-          isVisible: S.optional(__S(170, __c21, 2)),
-          name: S.optional(__S(5, __c0, 5)),
-          pricing: S.optional(__S(173, __c21, 5)),
-          productAttributeNames: S.optional(__S(174, __c21, 6)),
-          seoData: S.optional(__S(175, __c21, 7)),
-          tags: S.optional(__S(174, __c21, 6)),
-          urlSlug: S.optional(__S(5, __c0, 5)),
-        }).pipe(T.Http({ method: "POST", uri: "/v2/commerce/products/{productId}", code: 200 })),
-      ).annotate({ identifier: "UpdateProductRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.String.pipe(T.Label()),
           imageId: S.String.pipe(T.Label()),
-          altText: S.optional(__S(5, __c0, 5)),
+          altText: S.optional(__S(1792, __c56, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4669,12 +4461,16 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateProductImageRequest",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
           imageId: S.String.pipe(T.Label()),
-          afterImageId: S.optional(__S(5, __c0, 5)),
+          afterImageId: S.optional(__S(1792, __c56, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4685,64 +4481,64 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateProductImageOrderRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdateProductImageOrderResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          present: S.optional(S.Boolean),
-          value: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "ChangeMapStringString" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          present: S.optional(S.Boolean),
-          value: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "ChangeProductDimensions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          present: S.optional(S.Boolean),
-          value: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "ChangeProductWeight" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(__S(181, __c22, 5)),
-          weight: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({
-        identifier: "UpdateProductMeasurements",
-      });
   }
 }
-function __c23(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           present: S.optional(S.Boolean),
-          value: S.optional(__S(183, __c22, 7)),
+          value: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "ChangeMapStringString" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          present: S.optional(S.Boolean),
+          value: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({ identifier: "ChangeProductDimensions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          present: S.optional(S.Boolean),
+          value: S.optional(__S(130, __c4, 2)),
+        }),
+      ).annotate({ identifier: "ChangeProductWeight" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(__S(2017, __c63, 1)),
+          weight: S.optional(__S(2018, __c63, 2)),
+        }),
+      ).annotate({
+        identifier: "UpdateProductMeasurements",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          present: S.optional(S.Boolean),
+          value: S.optional(__S(2019, __c63, 3)),
         }),
       ).annotate({
         identifier: "ChangeUpdateProductMeasurements",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
           variantId: S.String.pipe(T.Label()),
-          attributes: S.optional(__S(180, __c22, 4)),
-          gtin: S.optional(__S(5, __c0, 5)),
-          mpn: S.optional(__S(5, __c0, 5)),
-          pricing: S.optional(__S(173, __c21, 5)),
-          shippingMeasurements: S.optional(__S(184, __c23, 0)),
-          sku: S.optional(__S(5, __c0, 5)),
+          attributes: S.optional(__S(2016, __c63, 0)),
+          gtin: S.optional(__S(1792, __c56, 0)),
+          mpn: S.optional(__S(1792, __c56, 0)),
+          pricing: S.optional(__S(1891, __c59, 3)),
+          shippingMeasurements: S.optional(__S(2020, __c63, 4)),
+          sku: S.optional(__S(1792, __c56, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4753,19 +4549,27 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateProductVariantRequest",
       });
-    case 2:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          endpointUrl: S.optional(__S(5, __c0, 5)),
-          topics: S.optional(__S(174, __c21, 6)),
+          endpointUrl: S.optional(__S(1792, __c56, 0)),
+          topics: S.optional(__S(1920, __c60, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/1.0/webhook_subscriptions/{subscriptionId}", code: 200 }),
         ),
       ).annotate({
         identifier: "UpdateWebhookSubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
@@ -4782,7 +4586,426 @@ function __c23(j: number): any {
       });
   }
 }
-
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contactId: S.String.pipe(T.Label()),
+          address: __S(2176, __c68, 0),
+          defaultShipping: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/contacts/{contactId}/address-book", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateAddressBookEntryRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          addressBookEntry: S.optional(__S(2177, __c68, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateAddressBookEntryResponse",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          city: S.optional(S.String),
+          countryCode: S.String,
+          firstName: S.optional(S.String),
+          lastName: S.optional(S.String),
+          line1: S.optional(S.String),
+          line2: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          region: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContactAddress" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(__S(2176, __c68, 0)),
+          defaultShipping: S.optional(S.Boolean),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddressBookEntry" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          acceptsMarketing: S.optional(S.Boolean),
+          email: S.String,
+        }),
+      ).annotate({ identifier: "CreateEmail" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          firstName: S.String,
+          lastName: S.String,
+          locale: S.String,
+          primaryEmail: __S(2208, __c69, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/contacts", code: 200 })),
+      ).annotate({ identifier: "CreateContactRequest" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          acceptsMarketing: S.optional(S.Boolean),
+          joinedOn: S.optional(S.String),
+          leftOn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AcceptsMarketing" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          acceptsMarketing: S.optional(__S(2240, __c70, 0)),
+          createdOn: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Email" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createdOn: S.optional(S.String),
+          defaultShippingAddress: S.optional(__S(2177, __c68, 1)),
+          firstName: S.optional(S.String),
+          id: S.optional(S.String),
+          lastName: S.optional(S.String),
+          locale: S.optional(S.String),
+          primaryEmail: S.optional(__S(2241, __c70, 1)),
+        }),
+      ).annotate({ identifier: "Contact" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contact: S.optional(__S(2242, __c70, 2)),
+        }),
+      ).annotate({ identifier: "CreateContactResponse" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          criteria: S.Unknown,
+          isLimitedUses: S.optional(S.Boolean),
+          isOncePerCustomer: S.optional(S.Boolean),
+          maxUsesAllowed: S.optional(S.Number),
+          name: S.String,
+          paymentPlanOptions: S.optional(__S(2336, __c73, 0)),
+          subscriptionOptions: S.optional(__S(2336, __c73, 0)),
+          template: S.Unknown,
+          trigger: S.Unknown,
+          validFrom: S.String,
+          validTo: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/commerce/discounts", code: 200 })),
+      ).annotate({ identifier: "CreateDiscountRequest" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+        }),
+      ).annotate({ identifier: "PaymentPlanOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          criteria: S.Unknown,
+          id: S.optional(S.String),
+          isLimitedUses: S.optional(S.Boolean),
+          isOncePerCustomer: S.optional(S.Boolean),
+          lastRedeemedAt: S.optional(S.String),
+          maxUsesAllowed: S.optional(S.Number),
+          name: S.String,
+          numberOfUses: S.optional(S.Number),
+          paymentPlanOptions: S.optional(__S(2336, __c73, 0)),
+          status: S.optional(S.String),
+          subscriptionOptions: S.optional(__S(2336, __c73, 0)),
+          template: S.Unknown,
+          trigger: S.Unknown,
+          validFrom: S.String,
+          validTo: S.optional(S.String),
+          websiteId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Discount" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          discount: __S(2337, __c73, 1),
+        }),
+      ).annotate({ identifier: "DiscountResponse" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(__S(2433, __c76, 1)),
+          name: S.optional(S.String),
+          promoCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateDiscountLineRequest",
+      });
+    case 1:
+      return S.Array(__S(2400, __c75, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lineItemType: S.String,
+          nonSaleUnitPrice: S.optional(__S(2433, __c76, 1)),
+          quantity: S.Number,
+          title: S.optional(S.String),
+          unitPricePaid: __S(2433, __c76, 1),
+          variantId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateLineItemRequest" });
+    case 3:
+      return S.Array(__S(2402, __c75, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          amount: __S(2433, __c76, 1),
+          method: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateShippingLineRequest",
+      });
+    case 5:
+      return S.Array(__S(2404, __c75, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          idempotencyKey: S.String.pipe(T.Header("Idempotency-Key")),
+          billingAddress: S.optional(__S(2528, __c79, 0)),
+          channelName: S.String,
+          createdOn: S.String,
+          customerEmail: S.optional(S.String),
+          discountLines: S.optional(__S(2401, __c75, 1)),
+          discountTotal: S.optional(__S(2433, __c76, 1)),
+          externalOrderReference: S.String,
+          fulfilledOn: S.optional(S.String),
+          fulfillmentStatus: S.optional(S.String),
+          fulfillments: __S(2465, __c77, 1),
+          grandTotal: __S(2433, __c76, 1),
+          inventoryBehavior: S.optional(S.String),
+          lineItems: __S(2403, __c75, 3),
+          priceTaxInterpretation: S.String,
+          shippingAddress: S.optional(__S(2528, __c79, 0)),
+          shippingLines: S.optional(__S(2405, __c75, 5)),
+          shippingTotal: S.optional(__S(2433, __c76, 1)),
+          shopperFulfillmentNotificationBehavior: S.optional(S.String),
+          subtotal: S.optional(__S(2433, __c76, 1)),
+          taxTotal: S.optional(__S(2433, __c76, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/1.0/commerce/orders", code: 200 })),
+      ).annotate({ identifier: "CreateOrderRequest" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.String),
+          defaultFractionDigits: S.optional(S.Number),
+          displayName: S.optional(S.String),
+          numericCode: S.optional(S.Number),
+          numericCodeAsString: S.optional(S.String),
+          symbol: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MonetaryAmountCurrency" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          currency: S.optional(__S(2432, __c76, 0)),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MonetaryAmount" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          carrierName: S.String,
+          service: S.String,
+          shipDate: S.String,
+          trackingNumber: S.String,
+          trackingUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateOrderShipmentRequest",
+      });
+    case 1:
+      return S.Array(__S(2464, __c77, 0));
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(__S(2433, __c76, 1)),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          promoCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiscountLine" });
+    case 1:
+      return S.Array(__S(2496, __c78, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FormItem" });
+    case 3:
+      return S.Array(__S(2498, __c78, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          carrierName: S.optional(S.String),
+          service: S.optional(S.String),
+          shipDate: S.optional(S.String),
+          trackingNumber: S.optional(S.String),
+          trackingUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Fulfillment" });
+    case 5:
+      return S.Array(__S(2500, __c78, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OrderNote" });
+    case 7:
+      return S.Array(__S(2502, __c78, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          optionName: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VariantOption" });
+    case 9:
+      return S.Array(__S(2504, __c78, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          customizations: S.optional(__S(2499, __c78, 3)),
+          height: S.optional(S.Number),
+          id: S.optional(S.String),
+          imageUrl: S.optional(S.String),
+          length: S.optional(S.Number),
+          lineItemType: S.optional(S.String),
+          productId: S.optional(S.String),
+          productName: S.optional(S.String),
+          quantity: S.optional(S.Number),
+          sku: S.optional(S.String),
+          unitPricePaid: S.optional(__S(2433, __c76, 1)),
+          variantId: S.optional(S.String),
+          variantOptions: S.optional(__S(2505, __c78, 9)),
+          weight: S.optional(S.Number),
+          width: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LineItem" });
+    case 11:
+      return S.Array(__S(2506, __c78, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(__S(2433, __c76, 1)),
+          method: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ShippingLine" });
+    case 13:
+      return S.Array(__S(2508, __c78, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          billingAddress: S.optional(__S(2528, __c79, 0)),
+          channel: S.optional(S.String),
+          channelName: S.optional(S.String),
+          createdOn: S.optional(S.String),
+          customerEmail: S.optional(S.String),
+          customerId: S.optional(S.String),
+          discountLines: S.optional(__S(2497, __c78, 1)),
+          discountTotal: S.optional(__S(2433, __c76, 1)),
+          externalOrderReference: S.optional(S.String),
+          formSubmission: S.optional(__S(2499, __c78, 3)),
+          fulfilledOn: S.optional(S.String),
+          fulfillmentStatus: S.optional(S.String),
+          fulfillments: S.optional(__S(2501, __c78, 5)),
+          grandTotal: S.optional(__S(2433, __c76, 1)),
+          id: S.optional(S.String),
+          internalNotes: S.optional(__S(2503, __c78, 7)),
+          lineItems: S.optional(__S(2507, __c78, 11)),
+          modifiedOn: S.optional(S.String),
+          orderNumber: S.optional(S.String),
+          paymentState: S.optional(S.String),
+          priceTaxInterpretation: S.optional(S.String),
+          refundedTotal: S.optional(__S(2433, __c76, 1)),
+          shippingAddress: S.optional(__S(2528, __c79, 0)),
+          shippingLines: S.optional(__S(2509, __c78, 13)),
+          shippingOptionName: S.optional(S.String),
+          shippingOptionServiceType: S.optional(S.String),
+          shippingTotal: S.optional(__S(2433, __c76, 1)),
+          subtotal: S.optional(__S(2433, __c76, 1)),
+          taxTotal: S.optional(__S(2433, __c76, 1)),
+          testmode: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Order" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address1: S.optional(S.String),
+          address2: S.optional(S.String),
+          city: S.optional(S.String),
+          countryCode: S.optional(S.String),
+          firstName: S.optional(S.String),
+          lastName: S.optional(S.String),
+          phone: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddressRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

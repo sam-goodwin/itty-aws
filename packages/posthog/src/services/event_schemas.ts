@@ -150,7 +150,7 @@ export const createEventSchema: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateEventSchemaRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<EventSchemaOutput>,
+  output: __S(15, __c1, 7) as any as S.Schema<EventSchemaOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -163,8 +163,8 @@ export const eventSchemasDestroy: API.OperationMethod<
   EventSchemasDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<EventSchemasDestroyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<EventSchemasDestroyResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<EventSchemasDestroyRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<EventSchemasDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -177,8 +177,8 @@ export const listEventSchemas: API.OperationMethod<
   ListEventSchemasError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListEventSchemasRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<PaginatedEventSchemaListOutput>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListEventSchemasRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<PaginatedEventSchemaListOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -191,8 +191,8 @@ export const updateEventSchema: API.OperationMethod<
   UpdateEventSchemaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<UpdateEventSchemaRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<EventSchemaOutput>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateEventSchemaRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<EventSchemaOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -205,8 +205,8 @@ export const updateEventSchemasPartial: API.OperationMethod<
   UpdateEventSchemasPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<UpdateEventSchemasPartialRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<EventSchemaOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateEventSchemasPartialRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<EventSchemaOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -225,7 +225,11 @@ function __c0(j: number): any {
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/event_schemas/", code: 200 }),
         ),
       ).annotate({ identifier: "CreateEventSchemaRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -240,20 +244,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SchemaPropertyGroupProperty",
       });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventDefinitionBasic" });
+    case 3:
+      return S.Array(__S(10, __c1, 2));
     case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -263,38 +267,38 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(5, __c0, 5))),
+          hedgehog_config: S.optional(S.NullOr(__S(12, __c1, 4))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          properties: S.optional(__S(2, __c0, 2)),
-          events: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(9, __c1, 1)),
+          events: S.optional(__S(11, __c1, 3)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(6, __c0, 6))),
+          created_by: S.optional(S.NullOr(__S(13, __c1, 5))),
         }),
       ).annotate({ identifier: "SchemaPropertyGroup" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           event_definition: S.optional(S.String),
-          property_group: S.optional(__S(7, __c0, 7)),
+          property_group: S.optional(__S(14, __c1, 6)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventSchemaOutput" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -309,11 +313,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "EventSchemasDestroyRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "EventSchemasDestroyResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -323,20 +331,24 @@ function __c1(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/event_schemas/", code: 200 }),
         ),
       ).annotate({ identifier: "ListEventSchemasRequest" });
-    case 4:
-      return S.Array(__S(8, __c1, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(15, __c1, 7));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(12, __c1, 4)),
+          results: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "PaginatedEventSchemaListOutput",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -351,7 +363,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateEventSchemaRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -370,7 +386,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

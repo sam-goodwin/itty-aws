@@ -121,8 +121,8 @@ export const createWebProfile: API.OperationMethod<
   CreateWebProfileError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateWebProfileRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<WebProfile>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateWebProfileRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<WebProfile>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -136,8 +136,8 @@ export const deleteWebProfile: API.OperationMethod<
   DeleteWebProfileError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteWebProfileRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteWebProfileResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteWebProfileRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<DeleteWebProfileResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -151,8 +151,8 @@ export const getWebProfile: API.OperationMethod<
   GetWebProfileError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetWebProfileRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<WebProfile>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetWebProfileRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<WebProfile>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -166,8 +166,8 @@ export const updateWebProfile: API.OperationMethod<
   UpdateWebProfileError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<UpdateWebProfileRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateWebProfileResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<UpdateWebProfileRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<UpdateWebProfileResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -181,8 +181,8 @@ export const updateWebProfilePartial: API.OperationMethod<
   UpdateWebProfilePartialError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateWebProfilePartialRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UpdateWebProfilePartialResponse>,
+  input: __S(30, __c7, 2) as any as S.Schema<UpdateWebProfilePartialRequest>,
+  output: __S(31, __c7, 3) as any as S.Schema<UpdateWebProfilePartialResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -196,8 +196,8 @@ export const webProfileGetList: API.OperationMethod<
   WebProfileGetListError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<WebProfileGetListRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<WebProfileGetListResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<WebProfileGetListRequest>,
+  output: __S(34, __c8, 2) as any as S.Schema<WebProfileGetListResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -205,6 +205,21 @@ export const webProfileGetList: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          payPalRequestId: S.String.pipe(T.Header("PayPal-Request-Id")),
+          name: S.String,
+          temporary: S.optional(S.Boolean),
+          flow_config: S.optional(__S(4, __c1, 0)),
+          input_fields: S.optional(__S(5, __c1, 1)),
+          presentation: S.optional(__S(6, __c1, 2)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/payment-experience/web-profiles", code: 200 })),
+      ).annotate({ identifier: "CreateWebProfileRequest" });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -230,29 +245,26 @@ function __c0(j: number): any {
           locale_code: S.optional(S.String),
         }),
       ).annotate({ identifier: "Presentation" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          payPalRequestId: S.String.pipe(T.Header("PayPal-Request-Id")),
-          name: S.String,
-          temporary: S.optional(S.Boolean),
-          flow_config: S.optional(__S(0, __c0, 0)),
-          input_fields: S.optional(__S(1, __c0, 1)),
-          presentation: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/payment-experience/web-profiles", code: 200 })),
-      ).annotate({ identifier: "CreateWebProfileRequest" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.String,
           temporary: S.optional(S.Boolean),
-          flow_config: S.optional(__S(0, __c0, 0)),
-          input_fields: S.optional(__S(1, __c0, 1)),
-          presentation: S.optional(__S(2, __c0, 2)),
+          flow_config: S.optional(__S(4, __c1, 0)),
+          input_fields: S.optional(__S(5, __c1, 1)),
+          presentation: S.optional(__S(6, __c1, 2)),
         }),
       ).annotate({ identifier: "WebProfile" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -260,11 +272,19 @@ function __c0(j: number): any {
           T.Http({ method: "DELETE", uri: "/v1/payment-experience/web-profiles/{id}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteWebProfileRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteWebProfileResponse",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -274,7 +294,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "GetWebProfileRequest" });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -282,14 +302,18 @@ function __c1(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.String,
           temporary: S.optional(S.Boolean),
-          flow_config: S.optional(__S(0, __c0, 0)),
-          input_fields: S.optional(__S(1, __c0, 1)),
-          presentation: S.optional(__S(2, __c0, 2)),
+          flow_config: S.optional(__S(4, __c1, 0)),
+          input_fields: S.optional(__S(5, __c1, 1)),
+          presentation: S.optional(__S(6, __c1, 2)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/v1/payment-experience/web-profiles/{id}", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateWebProfileRequest" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           op: S.String,
@@ -298,38 +322,41 @@ function __c1(j: number): any {
           from: S.optional(S.String),
         }),
       ).annotate({ identifier: "Patch" });
+    case 1:
+      return S.Array(__S(28, __c7, 0));
     case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(29, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/payment-experience/web-profiles/{id}", code: 200 }),
         ),
       ).annotate({
         identifier: "UpdateWebProfilePartialRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdateWebProfilePartialResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/v1/payment-experience/web-profiles", code: 200 }),
         ),
       ).annotate({ identifier: "WebProfileGetListRequest" });
-    case 6:
-      return S.Array(__S(4, __c0, 4));
-    case 7:
-      return S.suspend(() => __S(14, __c1, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+    case 2:
+      return S.suspend(() => __S(33, __c8, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "WebProfileGetListResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

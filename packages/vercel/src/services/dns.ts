@@ -319,8 +319,8 @@ export const createRecord: API.OperationMethod<
   CreateRecordError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateRecordRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateRecordResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<CreateRecordRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<CreateRecordResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -333,8 +333,8 @@ export const getDomainsRecord: API.OperationMethod<
   GetDomainsRecordError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetDomainsRecordRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetDomainsRecordResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetDomainsRecordRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<GetDomainsRecordResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -348,8 +348,8 @@ export const getRecords: API.OperationMethod<
   GetRecordsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetRecordsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetRecordsResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetRecordsRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<GetRecordsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -363,8 +363,8 @@ export const removeRecord: API.OperationMethod<
   RemoveRecordError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<RemoveRecordRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<RemoveRecordResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<RemoveRecordRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<RemoveRecordResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -382,8 +382,8 @@ export const replaceDomainsByDomainRecords: API.OperationMethod<
   ReplaceDomainsByDomainRecordsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ReplaceDomainsByDomainRecordsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ReplaceDomainsByDomainRecordsResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<ReplaceDomainsByDomainRecordsRequest>,
+  output: __S(26, __c6, 2) as any as S.Schema<ReplaceDomainsByDomainRecordsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -403,8 +403,8 @@ export const updateRecord: API.OperationMethod<
   UpdateRecordError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<UpdateRecordRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateRecordResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<UpdateRecordRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<UpdateRecordResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -412,6 +412,43 @@ export const updateRecord: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          target: S.NullOr(S.String),
+          weight: S.NullOr(S.Number),
+          port: S.NullOr(S.Number),
+          priority: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "UpdateRecordRequestSrv" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          priority: S.NullOr(S.Number),
+          target: S.NullOr(S.String),
+          params: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "UpdateRecordRequestHttps" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          recordId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+          ttl: S.optional(S.NullOr(S.Number)),
+          mxPriority: S.optional(S.NullOr(S.Number)),
+          srv: S.optional(S.NullOr(__S(0, __c0, 0))),
+          https: S.optional(S.NullOr(__S(1, __c0, 1))),
+          comment: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/domains/records/{recordId}", code: 200 })),
+      ).annotate({ identifier: "UpdateRecordRequest" });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -426,13 +463,21 @@ function __c0(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateRecordResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           recordId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domains/records/{recordId}", code: 200 })),
       ).annotate({ identifier: "GetDomainsRecordRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
@@ -447,7 +492,11 @@ function __c0(j: number): any {
           value: S.String,
         }),
       ).annotate({ identifier: "GetDomainsRecordResponse" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -458,11 +507,15 @@ function __c0(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v5/domains/{domain}/records", code: 200 })),
       ).annotate({ identifier: "GetRecordsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRecordsResponse",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -473,13 +526,13 @@ function __c0(j: number): any {
           T.Http({ method: "DELETE", uri: "/v2/domains/{domain}/records/{recordId}", code: 200 }),
         ),
       ).annotate({ identifier: "RemoveRecordRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "RemoveRecordResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -494,47 +547,13 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          recordIds: __S(9, __c1, 1),
+          recordIds: __S(25, __c6, 1),
         }),
       ).annotate({
         identifier: "ReplaceDomainsByDomainRecordsResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          target: S.NullOr(S.String),
-          weight: S.NullOr(S.Number),
-          port: S.NullOr(S.Number),
-          priority: S.NullOr(S.Number),
-        }),
-      ).annotate({ identifier: "UpdateRecordRequestSrv" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          priority: S.NullOr(S.Number),
-          target: S.NullOr(S.String),
-          params: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "UpdateRecordRequestHttps" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          recordId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-          ttl: S.optional(S.NullOr(S.Number)),
-          mxPriority: S.optional(S.NullOr(S.Number)),
-          srv: S.optional(S.NullOr(__S(11, __c1, 3))),
-          https: S.optional(S.NullOr(__S(12, __c1, 4))),
-          comment: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/domains/records/{recordId}", code: 200 })),
-      ).annotate({ identifier: "UpdateRecordRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

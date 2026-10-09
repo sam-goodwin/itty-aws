@@ -241,7 +241,7 @@ export const acceptPartnerReferralRequest: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AcceptPartnerReferralRequestRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PartnerReferralRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<PartnerReferralRequest>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -255,8 +255,8 @@ export const cancelPartnerReferralRequest: API.OperationMethod<
   CancelPartnerReferralRequestError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CancelPartnerReferralRequestRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PartnerReferralRequest>,
+  input: __S(16, __c2, 0) as any as S.Schema<CancelPartnerReferralRequestRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<PartnerReferralRequest>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -275,8 +275,8 @@ export const createPartnerReferralRequest: API.OperationMethod<
   CreatePartnerReferralRequestError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreatePartnerReferralRequestRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PartnerReferralRequest>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreatePartnerReferralRequestRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<PartnerReferralRequest>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -290,8 +290,8 @@ export const declinePartnerReferralRequest: API.OperationMethod<
   DeclinePartnerReferralRequestError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeclinePartnerReferralRequestRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PartnerReferralRequest>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeclinePartnerReferralRequestRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<PartnerReferralRequest>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -305,8 +305,8 @@ export const getPartnerReferralRequest: API.OperationMethod<
   GetPartnerReferralRequestError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetPartnerReferralRequestRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PartnerReferralRequest>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetPartnerReferralRequestRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<PartnerReferralRequest>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -322,8 +322,8 @@ export const listPartnerReferralRequests: API.PaginatedOperationMethod<
   PartnerReferralRequest
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(12, __c1, 4) as any as S.Schema<ListPartnerReferralRequestsRequest>,
-    output: __S(15, __c1, 7) as any as S.Schema<ListPartnerReferralRequestsResponse>,
+    input: __S(48, __c6, 0) as any as S.Schema<ListPartnerReferralRequestsRequest>,
+    output: __S(51, __c6, 3) as any as S.Schema<ListPartnerReferralRequestsResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -353,29 +353,33 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AcceptPartnerReferralRequestRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
         }),
       ).annotate({ identifier: "AccountSummary" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
         }),
       ).annotate({ identifier: "UserProfilePicture" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: __S(2, __c0, 2),
+          profile_picture: __S(9, __c1, 1),
           username: S.String,
         }),
       ).annotate({ identifier: "UserSummary" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           amount: S.String,
@@ -384,38 +388,38 @@ function __c0(j: number): any {
           display_decimals: S.Number,
         }),
       ).annotate({ identifier: "Money" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           bot_qualification_type: S.NullOr(S.String),
           id: S.String,
-          qualification_amount: __S(4, __c0, 4),
+          qualification_amount: __S(11, __c1, 3),
           recipient: S.NullOr(S.String),
           recipient_id: S.NullOr(S.String),
-          reward_amount: __S(4, __c0, 4),
+          reward_amount: __S(11, __c1, 3),
         }),
       ).annotate({ identifier: "PartnerReferralReward" });
+    case 5:
+      return S.Array(__S(12, __c1, 4));
     case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(1, __c0, 1)),
+          account: S.NullOr(__S(8, __c1, 0)),
           code: S.NullOr(S.String),
           created_at: S.String,
           id: S.String,
           max_redemptions: S.NullOr(S.Number),
-          partner: __S(3, __c0, 3),
+          partner: __S(10, __c1, 2),
           request_type: S.String,
-          rewards: __S(6, __c0, 6),
+          rewards: __S(13, __c1, 5),
           status: S.NullOr(S.String),
           updated_at: S.String,
-          user: S.NullOr(__S(3, __c0, 3)),
+          user: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "PartnerReferralRequest" });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -428,7 +432,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CancelPartnerReferralRequestRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.Unknown.pipe(T.HttpBody()),
@@ -437,7 +445,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreatePartnerReferralRequestRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -448,7 +460,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeclinePartnerReferralRequestRequest",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -456,7 +472,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetPartnerReferralRequestRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -474,9 +494,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListPartnerReferralRequestsRequest",
       });
-    case 5:
-      return S.Array(__S(7, __c0, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(14, __c1, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -487,18 +507,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListPartnerReferralRequestsResponsePageInfo",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(13, __c1, 5),
-          page_info: __S(14, __c1, 6),
+          data: __S(49, __c6, 1),
+          page_info: __S(50, __c6, 2),
         }),
       ).annotate({
         identifier: "ListPartnerReferralRequestsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

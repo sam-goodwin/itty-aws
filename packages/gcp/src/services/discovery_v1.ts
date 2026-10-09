@@ -338,7 +338,7 @@ export const getRestApis: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetRestApisRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<RestDescription>,
+  output: __S(24, __c0, 24) as any as S.Schema<RestDescription>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -352,8 +352,8 @@ export const listApis: API.OperationMethod<
   ListApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListApisRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DirectoryList>,
+  input: __S(64, __c2, 0) as any as S.Schema<ListApisRequest>,
+  output: __S(67, __c2, 3) as any as S.Schema<DirectoryList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -376,32 +376,30 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "GetRestApisRequest" });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.Array(S.Boolean);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          required: S.optional(__S(1, __c0, 1)),
+          required: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "JsonSchemaAnnotations" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           $ref: S.optional(S.String),
           type_value: S.optional(S.String),
         }),
       ).annotate({ identifier: "JsonSchemaVariantMapItem" });
+    case 4:
+      return S.Array(__S(3, __c0, 3));
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           discriminant: S.optional(S.String),
-          map: S.optional(__S(5, __c0, 5)),
+          map: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "JsonSchemaVariant" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           readOnly: S.optional(S.Boolean),
@@ -409,32 +407,28 @@ function __c0(j: number): any {
           maximum: S.optional(S.String),
           pattern: S.optional(S.String),
           location: S.optional(S.String),
-          enumDescriptions: S.optional(__S(1, __c0, 1)),
+          enumDescriptions: S.optional(__S(32, __c1, 0)),
           required: S.optional(S.Boolean),
-          properties: S.optional(S.suspend(() => __S(8, __c1, 0))),
+          properties: S.optional(S.suspend(() => __S(7, __c0, 7))),
           repeated: S.optional(S.Boolean),
           $ref: S.optional(S.String),
           default: S.optional(S.String),
-          items: S.optional(__S(7, __c0, 7)),
-          enumDeprecated: S.optional(__S(2, __c0, 2)),
-          annotations: S.optional(__S(3, __c0, 3)),
+          items: S.optional(__S(6, __c0, 6)),
+          enumDeprecated: S.optional(__S(1, __c0, 1)),
+          annotations: S.optional(__S(2, __c0, 2)),
           deprecated: S.optional(S.Boolean),
           id: S.optional(S.String),
-          variant: S.optional(__S(6, __c0, 6)),
-          enum: S.optional(__S(1, __c0, 1)),
-          additionalProperties: S.optional(__S(7, __c0, 7)),
+          variant: S.optional(__S(5, __c0, 5)),
+          enum: S.optional(__S(32, __c1, 0)),
+          additionalProperties: S.optional(__S(6, __c0, 6)),
           description: S.optional(S.String),
           minimum: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "JsonSchema" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(7, __c0, 7));
-    case 1:
+    case 7:
+      return S.Record(S.String, __S(6, __c0, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -442,30 +436,30 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RestDescriptionAuthOauth2ScopesValue",
       });
-    case 2:
-      return S.Record(S.String, __S(9, __c1, 1));
-    case 3:
+    case 9:
+      return S.Record(S.String, __S(8, __c0, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(__S(10, __c1, 2)),
+          scopes: S.optional(__S(9, __c0, 9)),
         }),
       ).annotate({
         identifier: "RestDescriptionAuthOauth2",
       });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          oauth2: S.optional(__S(11, __c1, 3)),
+          oauth2: S.optional(__S(10, __c0, 10)),
         }),
       ).annotate({ identifier: "RestDescriptionAuth" });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           $ref: S.optional(S.String),
           parameterName: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestMethodRequest" });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           multipart: S.optional(S.Boolean),
@@ -474,7 +468,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RestMethodMediaUploadProtocolsResumable",
       });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -483,69 +477,65 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RestMethodMediaUploadProtocolsSimple",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          resumable: S.optional(__S(14, __c1, 6)),
-          simple: S.optional(__S(15, __c1, 7)),
+          resumable: S.optional(__S(13, __c0, 13)),
+          simple: S.optional(__S(14, __c0, 14)),
         }),
       ).annotate({
         identifier: "RestMethodMediaUploadProtocols",
       });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          accept: S.optional(__S(1, __c0, 1)),
-          protocols: S.optional(__S(16, __c2, 0)),
+          accept: S.optional(__S(32, __c1, 0)),
+          protocols: S.optional(__S(15, __c0, 15)),
           maxSize: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestMethodMediaUpload" });
-    case 2:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           $ref: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestMethodResponse" });
-    case 3:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           etagRequired: S.optional(S.Boolean),
-          parameterOrder: S.optional(__S(1, __c0, 1)),
+          parameterOrder: S.optional(__S(32, __c1, 0)),
           httpMethod: S.optional(S.String),
           description: S.optional(S.String),
-          request: S.optional(__S(13, __c1, 5)),
-          scopes: S.optional(__S(1, __c0, 1)),
+          request: S.optional(__S(12, __c0, 12)),
+          scopes: S.optional(__S(32, __c1, 0)),
           id: S.optional(S.String),
           supportsMediaUpload: S.optional(S.Boolean),
           useMediaDownloadService: S.optional(S.Boolean),
-          parameters: S.optional(__S(8, __c1, 0)),
+          parameters: S.optional(__S(7, __c0, 7)),
           supportsSubscription: S.optional(S.Boolean),
           deprecated: S.optional(S.Boolean),
-          mediaUpload: S.optional(__S(17, __c2, 1)),
+          mediaUpload: S.optional(__S(16, __c0, 16)),
           flatPath: S.optional(S.String),
-          response: S.optional(__S(18, __c2, 2)),
+          response: S.optional(__S(17, __c0, 17)),
           path: S.optional(S.String),
           apiVersion: S.optional(S.String),
           supportsMediaDownload: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RestMethod" });
-    case 4:
-      return S.Record(S.String, __S(19, __c2, 3));
-    case 5:
+    case 19:
+      return S.Record(S.String, __S(18, __c0, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          methods: S.optional(__S(20, __c2, 4)),
-          resources: S.optional(S.suspend(() => __S(22, __c2, 6))),
+          methods: S.optional(__S(19, __c0, 19)),
+          resources: S.optional(S.suspend(() => __S(21, __c0, 21))),
           deprecated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RestResource" });
-    case 6:
-      return S.Record(S.String, __S(21, __c2, 5));
-    case 7:
+    case 21:
+      return S.Record(S.String, __S(20, __c0, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
@@ -556,43 +546,32 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RestDescriptionEndpointsItem",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          x16: S.optional(S.String),
-          x32: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RestDescriptionIcons" });
-    case 2:
+    case 23:
+      return S.Array(__S(22, __c0, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           packagePath: S.optional(S.String),
-          schemas: S.optional(__S(8, __c1, 0)),
+          schemas: S.optional(__S(7, __c0, 7)),
           name: S.optional(S.String),
-          auth: S.optional(__S(12, __c1, 4)),
+          auth: S.optional(__S(11, __c0, 11)),
           canonicalName: S.optional(S.String),
           ownerDomain: S.optional(S.String),
           title: S.optional(S.String),
           exponentialBackoffDefault: S.optional(S.Boolean),
           revision: S.optional(S.String),
-          labels: S.optional(__S(1, __c0, 1)),
+          labels: S.optional(__S(32, __c1, 0)),
           id: S.optional(S.String),
-          resources: S.optional(__S(22, __c2, 6)),
+          resources: S.optional(__S(21, __c0, 21)),
           discoveryVersion: S.optional(S.String),
           etag: S.optional(S.String),
           servicePath: S.optional(S.String),
           version_module: S.optional(S.Boolean),
           baseUrl: S.optional(S.String),
-          methods: S.optional(__S(20, __c2, 4)),
+          methods: S.optional(__S(19, __c0, 19)),
           protocol: S.optional(S.String),
-          endpoints: S.optional(__S(24, __c3, 0)),
-          features: S.optional(__S(1, __c0, 1)),
+          endpoints: S.optional(__S(23, __c0, 23)),
+          features: S.optional(__S(32, __c1, 0)),
           batchPath: S.optional(S.String),
           kind: S.optional(S.String),
           ownerName: S.optional(S.String),
@@ -601,11 +580,28 @@ function __c3(j: number): any {
           version: S.optional(S.String),
           description: S.optional(S.String),
           rootUrl: S.optional(S.String),
-          parameters: S.optional(__S(8, __c1, 0)),
-          icons: S.optional(__S(25, __c3, 1)),
+          parameters: S.optional(__S(7, __c0, 7)),
+          icons: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({ identifier: "RestDescription" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          x16: S.optional(S.String),
+          x32: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RestDescriptionIcons" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           preferred: S.optional(S.Boolean.pipe(T.Query())),
@@ -618,13 +614,13 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListApisRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(1, __c0, 1)),
+          labels: S.optional(__S(32, __c1, 0)),
           description: S.optional(S.String),
           kind: S.optional(S.String),
-          icons: S.optional(__S(25, __c3, 1)),
+          icons: S.optional(__S(33, __c1, 1)),
           title: S.optional(S.String),
           discoveryRestUrl: S.optional(S.String),
           id: S.optional(S.String),
@@ -635,19 +631,18 @@ function __c3(j: number): any {
           discoveryLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DirectoryListItemsItem" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(65, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(29, __c3, 5)),
+          items: S.optional(__S(66, __c2, 2)),
           kind: S.optional(S.String),
           discoveryVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "DirectoryList" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

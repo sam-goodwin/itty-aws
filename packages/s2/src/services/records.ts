@@ -113,8 +113,8 @@ export type AppendError = S2OpError;
 /** Append records. */
 export const append: API.OperationMethod<AppendRequest, AppendAck, AppendError, S2OpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(4, __c0, 4) as any as S.Schema<AppendRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<AppendAck>,
+    input: __S(2, __c0, 2) as any as S.Schema<AppendRequest>,
+    output: __S(3, __c0, 3) as any as S.Schema<AppendAck>,
     errors: [UnknownS2Error],
     protocol: S2Protocol,
     retry: Retry.Retry,
@@ -128,8 +128,8 @@ export const checkTail: API.OperationMethod<
   CheckTailError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CheckTailRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<TailResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<CheckTailRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<TailResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -139,8 +139,8 @@ export type ReadError = S2OpError;
 /** Read records. */
 export const read: API.OperationMethod<ReadRequest, ReadBatch, ReadError, S2OpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(9, __c1, 1) as any as S.Schema<ReadRequest>,
-    output: __S(12, __c1, 4) as any as S.Schema<ReadBatch>,
+    input: __S(16, __c4, 0) as any as S.Schema<ReadRequest>,
+    output: __S(19, __c4, 3) as any as S.Schema<ReadBatch>,
     errors: [UnknownS2Error],
     protocol: S2Protocol,
     retry: Retry.Retry,
@@ -150,20 +150,16 @@ export const read: API.OperationMethod<ReadRequest, ReadBatch, ReadError, S2OpCo
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           body: S.optional(S.String),
-          headers: S.optional(__S(1, __c0, 1)),
+          headers: S.optional(__S(9, __c2, 1)),
           timestamp: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "AppendRecord" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           stream: S.String.pipe(T.Label()),
@@ -172,30 +168,17 @@ function __c0(j: number): any {
           s2StreamConfig: S.optional(S.String.pipe(T.Header("s2-stream-config"))),
           fencing_token: S.optional(S.NullOr(S.String)),
           match_seq_num: S.optional(S.NullOr(S.Number)),
-          records: __S(3, __c0, 3),
+          records: __S(1, __c0, 1),
         }).pipe(T.Http({ method: "POST", uri: "/streams/{stream}/records", code: 200 })),
       ).annotate({ identifier: "AppendRequest" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          seq_num: S.Number,
-          timestamp: S.Number,
-        }),
-      ).annotate({ identifier: "StreamPosition" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          end: __S(5, __c0, 5),
-          start: __S(5, __c0, 5),
-          tail: __S(5, __c0, 5),
+          end: __S(4, __c1, 0),
+          start: __S(4, __c1, 0),
+          tail: __S(4, __c1, 0),
         }),
       ).annotate({ identifier: "AppendAck" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          stream: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/streams/{stream}/records/tail", code: 200 })),
-      ).annotate({ identifier: "CheckTailRequest" });
   }
 }
 function __c1(j: number): any {
@@ -203,10 +186,39 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tail: __S(5, __c0, 5),
+          seq_num: S.Number,
+          timestamp: S.Number,
+        }),
+      ).annotate({ identifier: "StreamPosition" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stream: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/streams/{stream}/records/tail", code: 200 })),
+      ).annotate({ identifier: "CheckTailRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tail: __S(4, __c1, 0),
         }),
       ).annotate({ identifier: "TailResponse" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           stream: S.String.pipe(T.Label()),
@@ -223,27 +235,26 @@ function __c1(j: number): any {
           s2StreamConfig: S.optional(S.String.pipe(T.Header("s2-stream-config"))),
         }).pipe(T.Http({ method: "GET", uri: "/streams/{stream}/records", code: 200 })),
       ).annotate({ identifier: "ReadRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           body: S.optional(S.String),
-          headers: S.optional(__S(1, __c0, 1)),
+          headers: S.optional(__S(9, __c2, 1)),
           seq_num: S.Number,
           timestamp: S.Number,
         }),
       ).annotate({ identifier: "SequencedRecord" });
+    case 2:
+      return S.Array(__S(17, __c4, 1));
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          records: __S(11, __c1, 3),
-          tail: S.optional(S.NullOr(__S(5, __c0, 5))),
+          records: __S(18, __c4, 2),
+          tail: S.optional(S.NullOr(__S(4, __c1, 0))),
         }),
       ).annotate({ identifier: "ReadBatch" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

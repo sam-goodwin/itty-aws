@@ -117,7 +117,7 @@ export class DashboardInvalidInputError
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       dashboardValidationMessages: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(150, __c18, 6)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(1, __c0, 1)).annotate({
           identifier: "DashboardValidationMessages",
         }),
       ),
@@ -1557,8 +1557,8 @@ export const associateDatasetKmsKey: API.OperationMethod<
   AssociateDatasetKmsKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateDatasetKmsKeyInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateDatasetKmsKeyOutput>,
+  input: __S(8, __c1, 0) as any as S.Schema<AssociateDatasetKmsKeyInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<AssociateDatasetKmsKeyOutput>,
   errors: [
     ConflictException,
     KmsAccessDeniedException,
@@ -1600,8 +1600,8 @@ export const createResourceMetricsConfiguration: API.OperationMethod<
   CreateResourceMetricsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateResourceMetricsConfigurationInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateResourceMetricsConfigurationOutput>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateResourceMetricsConfigurationInput>,
+  output: __S(43, __c5, 3) as any as S.Schema<CreateResourceMetricsConfigurationOutput>,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1630,8 +1630,8 @@ export const deleteAlarmMuteRule: API.OperationMethod<
   DeleteAlarmMuteRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteAlarmMuteRuleInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAlarmMuteRuleResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteAlarmMuteRuleInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteAlarmMuteRuleResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1669,8 +1669,8 @@ export const deleteAlarms: API.OperationMethod<
   DeleteAlarmsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteAlarmsInput>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteAlarmsResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteAlarmsInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<DeleteAlarmsResponse>,
   errors: [ResourceConflict, ResourceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1695,8 +1695,8 @@ export const deleteAnomalyDetector: API.OperationMethod<
   DeleteAnomalyDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteAnomalyDetectorInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAnomalyDetectorOutput>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteAnomalyDetectorInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteAnomalyDetectorOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterCombinationException,
@@ -1725,8 +1725,8 @@ export const deleteDashboards: API.OperationMethod<
   DeleteDashboardsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteDashboardsInput>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteDashboardsOutput>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteDashboardsInput>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteDashboardsOutput>,
   errors: [ConflictException, InternalServiceFault, InvalidParameterValueException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1749,8 +1749,8 @@ export const deleteInsightRules: API.OperationMethod<
   DeleteInsightRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteInsightRulesInput>,
-  output: __S(25, __c3, 1) as any as S.Schema<DeleteInsightRulesOutput>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteInsightRulesInput>,
+  output: __S(144, __c18, 0) as any as S.Schema<DeleteInsightRulesOutput>,
   errors: [InvalidParameterValueException, MissingRequiredParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1771,8 +1771,8 @@ export const deleteMetricStream: API.OperationMethod<
   DeleteMetricStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteMetricStreamInput>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteMetricStreamOutput>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteMetricStreamInput>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteMetricStreamOutput>,
   errors: [InternalServiceFault, InvalidParameterValueException, MissingRequiredParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1801,8 +1801,8 @@ export const deleteResourceMetricsConfiguration: API.OperationMethod<
   DeleteResourceMetricsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteResourceMetricsConfigurationInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteResourceMetricsConfigurationOutput>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteResourceMetricsConfigurationInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteResourceMetricsConfigurationOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1825,8 +1825,8 @@ export const describeAlarmContributors: API.OperationMethod<
   DescribeAlarmContributorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DescribeAlarmContributorsInput>,
-  output: __S(33, __c4, 1) as any as S.Schema<DescribeAlarmContributorsOutput>,
+  input: __S(176, __c22, 0) as any as S.Schema<DescribeAlarmContributorsInput>,
+  output: __S(179, __c22, 3) as any as S.Schema<DescribeAlarmContributorsOutput>,
   errors: [InvalidNextToken, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1853,8 +1853,8 @@ export const describeAlarmHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AlarmHistoryItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DescribeAlarmHistoryInput>,
-  output: __S(38, __c4, 6) as any as S.Schema<DescribeAlarmHistoryOutput>,
+  input: __S(192, __c24, 0) as any as S.Schema<DescribeAlarmHistoryInput>,
+  output: __S(195, __c24, 3) as any as S.Schema<DescribeAlarmHistoryOutput>,
   errors: [InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1884,8 +1884,8 @@ export const describeAlarms: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DescribeAlarmsInput>,
-  output: __S(56, __c7, 0) as any as S.Schema<DescribeAlarmsOutput>,
+  input: __S(208, __c26, 0) as any as S.Schema<DescribeAlarmsInput>,
+  output: __S(213, __c26, 5) as any as S.Schema<DescribeAlarmsOutput>,
   errors: [InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1912,8 +1912,8 @@ export const describeAlarmsForMetric: API.OperationMethod<
   DescribeAlarmsForMetricError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DescribeAlarmsForMetricInput>,
-  output: __S(58, __c7, 2) as any as S.Schema<DescribeAlarmsForMetricOutput>,
+  input: __S(264, __c33, 0) as any as S.Schema<DescribeAlarmsForMetricInput>,
+  output: __S(265, __c33, 1) as any as S.Schema<DescribeAlarmsForMetricOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1941,8 +1941,8 @@ export const describeAnomalyDetectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AnomalyDetector
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DescribeAnomalyDetectorsInput>,
-  output: __S(66, __c8, 2) as any as S.Schema<DescribeAnomalyDetectorsOutput>,
+  input: __S(272, __c34, 0) as any as S.Schema<DescribeAnomalyDetectorsInput>,
+  output: __S(275, __c34, 3) as any as S.Schema<DescribeAnomalyDetectorsOutput>,
   errors: [
     InternalServiceFault,
     InvalidNextToken,
@@ -1974,8 +1974,8 @@ export const describeInsightRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DescribeInsightRulesInput>,
-  output: __S(70, __c8, 6) as any as S.Schema<DescribeInsightRulesOutput>,
+  input: __S(288, __c36, 0) as any as S.Schema<DescribeInsightRulesInput>,
+  output: __S(291, __c36, 3) as any as S.Schema<DescribeInsightRulesOutput>,
   errors: [InvalidNextToken, UnsupportedOperation],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1998,8 +1998,8 @@ export const disableAlarmActions: API.OperationMethod<
   DisableAlarmActionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DisableAlarmActionsInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisableAlarmActionsResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<DisableAlarmActionsInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<DisableAlarmActionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2020,8 +2020,8 @@ export const disableInsightRules: API.OperationMethod<
   DisableInsightRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DisableInsightRulesInput>,
-  output: __S(73, __c9, 1) as any as S.Schema<DisableInsightRulesOutput>,
+  input: __S(304, __c38, 0) as any as S.Schema<DisableInsightRulesInput>,
+  output: __S(312, __c39, 0) as any as S.Schema<DisableInsightRulesOutput>,
   errors: [InvalidParameterValueException, MissingRequiredParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2074,8 +2074,8 @@ export const disassociateDatasetKmsKey: API.OperationMethod<
   DisassociateDatasetKmsKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DisassociateDatasetKmsKeyInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateDatasetKmsKeyOutput>,
+  input: __S(320, __c40, 0) as any as S.Schema<DisassociateDatasetKmsKeyInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<DisassociateDatasetKmsKeyOutput>,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2092,8 +2092,8 @@ export const enableAlarmActions: API.OperationMethod<
   EnableAlarmActionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<EnableAlarmActionsInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<EnableAlarmActionsResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<EnableAlarmActionsInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<EnableAlarmActionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2115,8 +2115,8 @@ export const enableInsightRules: API.OperationMethod<
   EnableInsightRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<EnableInsightRulesInput>,
-  output: __S(25, __c3, 1) as any as S.Schema<EnableInsightRulesOutput>,
+  input: __S(336, __c42, 0) as any as S.Schema<EnableInsightRulesInput>,
+  output: __S(144, __c18, 0) as any as S.Schema<EnableInsightRulesOutput>,
   errors: [
     InvalidParameterValueException,
     LimitExceededException,
@@ -2157,8 +2157,8 @@ export const getAlarmMuteRule: API.OperationMethod<
   GetAlarmMuteRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetAlarmMuteRuleInput>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetAlarmMuteRuleOutput>,
+  input: __S(344, __c43, 0) as any as S.Schema<GetAlarmMuteRuleInput>,
+  output: __S(345, __c43, 1) as any as S.Schema<GetAlarmMuteRuleOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2191,8 +2191,8 @@ export const getDashboard: API.OperationMethod<
   GetDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetDashboardInput>,
-  output: __S(83, __c10, 3) as any as S.Schema<GetDashboardOutput>,
+  input: __S(360, __c45, 0) as any as S.Schema<GetDashboardInput>,
+  output: __S(361, __c45, 1) as any as S.Schema<GetDashboardOutput>,
   errors: [DashboardNotFoundError, InternalServiceFault, InvalidParameterValueException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2221,8 +2221,8 @@ export const getDataset: API.OperationMethod<
   GetDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetDatasetInput>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetDatasetOutput>,
+  input: __S(368, __c46, 0) as any as S.Schema<GetDatasetInput>,
+  output: __S(369, __c46, 1) as any as S.Schema<GetDatasetOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2274,8 +2274,8 @@ export const getInsightRuleReport: API.OperationMethod<
   GetInsightRuleReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetInsightRuleReportInput>,
-  output: __S(93, __c11, 5) as any as S.Schema<GetInsightRuleReportOutput>,
+  input: __S(376, __c47, 0) as any as S.Schema<GetInsightRuleReportInput>,
+  output: __S(383, __c47, 7) as any as S.Schema<GetInsightRuleReportOutput>,
   errors: [
     InvalidParameterValueException,
     MissingRequiredParameterException,
@@ -2362,8 +2362,8 @@ export const getMetricData: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetMetricDataInput>,
-  output: __S(101, __c12, 5) as any as S.Schema<GetMetricDataOutput>,
+  input: __S(384, __c48, 0) as any as S.Schema<GetMetricDataInput>,
+  output: __S(390, __c48, 6) as any as S.Schema<GetMetricDataOutput>,
   errors: [InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2444,8 +2444,8 @@ export const getMetricStatistics: API.OperationMethod<
   GetMetricStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetMetricStatisticsInput>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetMetricStatisticsOutput>,
+  input: __S(400, __c50, 0) as any as S.Schema<GetMetricStatisticsInput>,
+  output: __S(404, __c50, 4) as any as S.Schema<GetMetricStatisticsOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterCombinationException,
@@ -2473,8 +2473,8 @@ export const getMetricStream: API.OperationMethod<
   GetMetricStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetMetricStreamInput>,
-  output: __S(114, __c14, 2) as any as S.Schema<GetMetricStreamOutput>,
+  input: __S(408, __c51, 0) as any as S.Schema<GetMetricStreamInput>,
+  output: __S(409, __c51, 1) as any as S.Schema<GetMetricStreamOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterCombinationException,
@@ -2511,8 +2511,8 @@ export const getMetricWidgetImage: API.OperationMethod<
   GetMetricWidgetImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetMetricWidgetImageInput>,
-  output: __S(116, __c14, 4) as any as S.Schema<GetMetricWidgetImageOutput>,
+  input: __S(424, __c53, 0) as any as S.Schema<GetMetricWidgetImageInput>,
+  output: __S(425, __c53, 1) as any as S.Schema<GetMetricWidgetImageOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2531,8 +2531,8 @@ export const getOTelEnrichment: API.OperationMethod<
   GetOTelEnrichmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetOTelEnrichmentInput>,
-  output: __S(120, __c15, 0) as any as S.Schema<GetOTelEnrichmentOutput>,
+  input: __S(432, __c54, 0) as any as S.Schema<GetOTelEnrichmentInput>,
+  output: __S(433, __c54, 1) as any as S.Schema<GetOTelEnrichmentOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2559,8 +2559,8 @@ export const getResourceMetricsConfiguration: API.OperationMethod<
   GetResourceMetricsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetResourceMetricsConfigurationInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetResourceMetricsConfigurationOutput>,
+  input: __S(448, __c56, 0) as any as S.Schema<GetResourceMetricsConfigurationInput>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetResourceMetricsConfigurationOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2590,8 +2590,8 @@ export const listAlarmMuteRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AlarmMuteRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListAlarmMuteRulesInput>,
-  output: __S(125, __c15, 5) as any as S.Schema<ListAlarmMuteRulesOutput>,
+  input: __S(456, __c57, 0) as any as S.Schema<ListAlarmMuteRulesInput>,
+  output: __S(459, __c57, 3) as any as S.Schema<ListAlarmMuteRulesOutput>,
   errors: [InvalidNextToken, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2633,8 +2633,8 @@ export const listDashboards: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DashboardEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListDashboardsInput>,
-  output: __S(129, __c16, 1) as any as S.Schema<ListDashboardsOutput>,
+  input: __S(464, __c58, 0) as any as S.Schema<ListDashboardsInput>,
+  output: __S(467, __c58, 3) as any as S.Schema<ListDashboardsOutput>,
   errors: [InternalServiceFault, InvalidParameterValueException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2662,8 +2662,8 @@ export const listManagedInsightRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListManagedInsightRulesInput>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListManagedInsightRulesOutput>,
+  input: __S(472, __c59, 0) as any as S.Schema<ListManagedInsightRulesInput>,
+  output: __S(476, __c59, 4) as any as S.Schema<ListManagedInsightRulesOutput>,
   errors: [InvalidNextToken, InvalidParameterValueException, MissingRequiredParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2699,8 +2699,8 @@ export const listMetrics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListMetricsInput>,
-  output: __S(137, __c17, 1) as any as S.Schema<ListMetricsOutput>,
+  input: __S(480, __c60, 0) as any as S.Schema<ListMetricsInput>,
+  output: __S(482, __c60, 2) as any as S.Schema<ListMetricsOutput>,
   errors: [InternalServiceFault, InvalidParameterValueException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2724,8 +2724,8 @@ export const listMetricStreams: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListMetricStreamsInput>,
-  output: __S(141, __c17, 5) as any as S.Schema<ListMetricStreamsOutput>,
+  input: __S(488, __c61, 0) as any as S.Schema<ListMetricStreamsInput>,
+  output: __S(491, __c61, 3) as any as S.Schema<ListMetricStreamsOutput>,
   errors: [
     InternalServiceFault,
     InvalidNextToken,
@@ -2757,8 +2757,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(496, __c62, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(497, __c62, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [InternalServiceFault, InvalidParameterValueException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2807,8 +2807,8 @@ export const putAlarmMuteRule: API.OperationMethod<
   PutAlarmMuteRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<PutAlarmMuteRuleInput>,
-  output: __S(27, __c3, 3) as any as S.Schema<PutAlarmMuteRuleResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<PutAlarmMuteRuleInput>,
+  output: __S(160, __c20, 0) as any as S.Schema<PutAlarmMuteRuleResponse>,
   errors: [LimitExceededFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2839,8 +2839,8 @@ export const putAnomalyDetector: API.OperationMethod<
   PutAnomalyDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<PutAnomalyDetectorInput>,
-  output: __S(146, __c18, 2) as any as S.Schema<PutAnomalyDetectorOutput>,
+  input: __S(512, __c64, 0) as any as S.Schema<PutAnomalyDetectorInput>,
+  output: __S(513, __c64, 1) as any as S.Schema<PutAnomalyDetectorOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterCombinationException,
@@ -2918,8 +2918,8 @@ export const putCompositeAlarm: API.OperationMethod<
   PutCompositeAlarmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<PutCompositeAlarmInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutCompositeAlarmResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<PutCompositeAlarmInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<PutCompositeAlarmResponse>,
   errors: [LimitExceededFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2958,8 +2958,8 @@ export const putDashboard: API.OperationMethod<
   PutDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<PutDashboardInput>,
-  output: __S(151, __c18, 7) as any as S.Schema<PutDashboardOutput>,
+  input: __S(528, __c66, 0) as any as S.Schema<PutDashboardInput>,
+  output: __S(529, __c66, 1) as any as S.Schema<PutDashboardOutput>,
   errors: [ConflictException, DashboardInvalidInputError, InternalServiceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2986,8 +2986,8 @@ export const putInsightRule: API.OperationMethod<
   PutInsightRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<PutInsightRuleInput>,
-  output: __S(10, __c1, 2) as any as S.Schema<PutInsightRuleOutput>,
+  input: __S(536, __c67, 0) as any as S.Schema<PutInsightRuleInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<PutInsightRuleOutput>,
   errors: [
     InvalidParameterValueException,
     LimitExceededException,
@@ -3018,8 +3018,8 @@ export const putLogAlarm: API.OperationMethod<
   PutLogAlarmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<PutLogAlarmInput>,
-  output: __S(10, __c1, 2) as any as S.Schema<PutLogAlarmResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<PutLogAlarmInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<PutLogAlarmResponse>,
   errors: [LimitExceededFault, ResourceConflict],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3046,8 +3046,8 @@ export const putManagedInsightRules: API.OperationMethod<
   PutManagedInsightRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<PutManagedInsightRulesInput>,
-  output: __S(73, __c9, 1) as any as S.Schema<PutManagedInsightRulesOutput>,
+  input: __S(554, __c69, 2) as any as S.Schema<PutManagedInsightRulesInput>,
+  output: __S(312, __c39, 0) as any as S.Schema<PutManagedInsightRulesOutput>,
   errors: [InvalidParameterValueException, MissingRequiredParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3112,8 +3112,8 @@ export const putMetricAlarm: API.OperationMethod<
   PutMetricAlarmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<PutMetricAlarmInput>,
-  output: __S(21, __c2, 5) as any as S.Schema<PutMetricAlarmResponse>,
+  input: __S(560, __c70, 0) as any as S.Schema<PutMetricAlarmInput>,
+  output: __S(120, __c15, 0) as any as S.Schema<PutMetricAlarmResponse>,
   errors: [LimitExceededFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3187,8 +3187,8 @@ export const putMetricData: API.OperationMethod<
   PutMetricDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<PutMetricDataInput>,
-  output: __S(10, __c1, 2) as any as S.Schema<PutMetricDataResponse>,
+  input: __S(574, __c71, 6) as any as S.Schema<PutMetricDataInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<PutMetricDataResponse>,
   errors: [
     InternalServiceFault,
     InvalidParameterCombinationException,
@@ -3250,8 +3250,8 @@ export const putMetricStream: API.OperationMethod<
   PutMetricStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<PutMetricStreamInput>,
-  output: __S(166, __c20, 6) as any as S.Schema<PutMetricStreamOutput>,
+  input: __S(576, __c72, 0) as any as S.Schema<PutMetricStreamInput>,
+  output: __S(577, __c72, 1) as any as S.Schema<PutMetricStreamOutput>,
   errors: [
     ConcurrentModificationException,
     InternalServiceFault,
@@ -3292,8 +3292,8 @@ export const setAlarmState: API.OperationMethod<
   SetAlarmStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<SetAlarmStateInput>,
-  output: __S(10, __c1, 2) as any as S.Schema<SetAlarmStateResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<SetAlarmStateInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<SetAlarmStateResponse>,
   errors: [InvalidFormatFault, ResourceNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3314,8 +3314,8 @@ export const startMetricStreams: API.OperationMethod<
   StartMetricStreamsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<StartMetricStreamsInput>,
-  output: __S(27, __c3, 3) as any as S.Schema<StartMetricStreamsOutput>,
+  input: __S(592, __c74, 0) as any as S.Schema<StartMetricStreamsInput>,
+  output: __S(160, __c20, 0) as any as S.Schema<StartMetricStreamsOutput>,
   errors: [InternalServiceFault, InvalidParameterValueException, MissingRequiredParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3345,8 +3345,8 @@ export const startOTelEnrichment: API.OperationMethod<
   StartOTelEnrichmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<StartOTelEnrichmentInput>,
-  output: __S(170, __c21, 2) as any as S.Schema<StartOTelEnrichmentOutput>,
+  input: __S(600, __c75, 0) as any as S.Schema<StartOTelEnrichmentInput>,
+  output: __S(608, __c76, 0) as any as S.Schema<StartOTelEnrichmentOutput>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3367,8 +3367,8 @@ export const stopMetricStreams: API.OperationMethod<
   StopMetricStreamsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<StopMetricStreamsInput>,
-  output: __S(27, __c3, 3) as any as S.Schema<StopMetricStreamsOutput>,
+  input: __S(616, __c77, 0) as any as S.Schema<StopMetricStreamsInput>,
+  output: __S(160, __c20, 0) as any as S.Schema<StopMetricStreamsOutput>,
   errors: [InternalServiceFault, InvalidParameterValueException, MissingRequiredParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3387,8 +3387,8 @@ export const stopOTelEnrichment: API.OperationMethod<
   StopOTelEnrichmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<StopOTelEnrichmentInput>,
-  output: __S(27, __c3, 3) as any as S.Schema<StopOTelEnrichmentOutput>,
+  input: __S(624, __c78, 0) as any as S.Schema<StopOTelEnrichmentInput>,
+  output: __S(160, __c20, 0) as any as S.Schema<StopOTelEnrichmentOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3428,8 +3428,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<TagResourceInput>,
-  output: __S(10, __c1, 2) as any as S.Schema<TagResourceOutput>,
+  input: __S(632, __c79, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     ConcurrentModificationException,
     ConflictException,
@@ -3459,8 +3459,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<UntagResourceInput>,
-  output: __S(10, __c1, 2) as any as S.Schema<UntagResourceOutput>,
+  input: __S(640, __c80, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     ConcurrentModificationException,
     ConflictException,
@@ -3495,8 +3495,8 @@ export const updateOTelEnrichment: API.OperationMethod<
   UpdateOTelEnrichmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<UpdateOTelEnrichmentInput>,
-  output: __S(170, __c21, 2) as any as S.Schema<UpdateOTelEnrichmentOutput>,
+  input: __S(648, __c81, 0) as any as S.Schema<UpdateOTelEnrichmentInput>,
+  output: __S(608, __c76, 0) as any as S.Schema<UpdateOTelEnrichmentOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3528,8 +3528,8 @@ export const updateResourceMetricsConfiguration: API.OperationMethod<
   UpdateResourceMetricsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<UpdateResourceMetricsConfigurationInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateResourceMetricsConfigurationOutput>,
+  input: __S(656, __c82, 0) as any as S.Schema<UpdateResourceMetricsConfigurationInput>,
+  output: __S(43, __c5, 3) as any as S.Schema<UpdateResourceMetricsConfigurationOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3541,53 +3541,81 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ DataPath: S.optional(S.String), Message: S.optional(S.String) }),
+      ).annotate({
+        identifier: "DashboardValidationMessage",
+      });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ DatasetIdentifier: S.optional(S.String), KmsKeyArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "AssociateDatasetKmsKeyInput",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AssociateDatasetKmsKeyOutput",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() => S.Struct({ IncludeMetrics: S.optional(__S(2, __c0, 2)) })).annotate({
-        identifier: "ResourceMetricSelection",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
-          MetricSelections: S.optional(__S(4, __c0, 4)),
+          MetricSelections: S.optional(__S(41, __c5, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateResourceMetricsConfigurationInput",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ IncludeMetrics: S.optional(__S(32, __c4, 0)) })).annotate({
+        identifier: "ResourceMetricSelection",
+      });
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          MetricSelections: S.optional(__S(4, __c0, 4)),
+          MetricSelections: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({
         identifier: "ResourceMetricsConfiguration",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ ResourceMetricsConfiguration: S.optional(__S(6, __c0, 6)) }).pipe(ns),
+        S.Struct({ ResourceMetricsConfiguration: S.optional(__S(42, __c5, 2)) }).pipe(ns),
       ).annotate({
         identifier: "CreateResourceMetricsConfigurationOutput",
       });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3595,60 +3623,82 @@ function __c1(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteAlarmMuteRuleInput" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ AlarmNames: S.optional(__S(2, __c0, 2)) }).pipe(
+        S.Struct({ AlarmNames: S.optional(__S(32, __c4, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteAlarmsInput" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAlarmsResponse",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AnomalyDetectorId: S.optional(S.String),
+          Namespace: S.optional(S.String),
+          MetricName: S.optional(S.String),
+          Dimensions: S.optional(__S(81, __c10, 1)),
+          Stat: S.optional(S.String),
+          SingleMetricAnomalyDetector: S.optional(__S(104, __c13, 0)),
+          MetricMathAnomalyDetector: S.optional(__S(105, __c13, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeleteAnomalyDetectorInput",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Dimension" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.optional(S.String),
-          Namespace: S.optional(S.String),
-          MetricName: S.optional(S.String),
-          Dimensions: S.optional(__S(12, __c1, 4)),
-          Stat: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SingleMetricAnomalyDetector",
-      });
-    case 6:
+    case 1:
+      return S.Array(__S(80, __c10, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Namespace: S.optional(S.String),
           MetricName: S.optional(S.String),
-          Dimensions: S.optional(__S(12, __c1, 4)),
+          Dimensions: S.optional(__S(81, __c10, 1)),
         }),
       ).annotate({ identifier: "Metric" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Metric: S.optional(__S(14, __c1, 6)),
+          Metric: S.optional(__S(88, __c11, 0)),
           Period: S.optional(S.Number),
           Stat: S.optional(S.String),
           Unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricStat" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          MetricStat: S.optional(__S(15, __c1, 7)),
+          MetricStat: S.optional(__S(96, __c12, 0)),
           Expression: S.optional(S.String),
           Label: S.optional(S.String),
           ReturnData: S.optional(S.Boolean),
@@ -3656,45 +3706,63 @@ function __c2(j: number): any {
           AccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricDataQuery" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(97, __c12, 1));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ MetricDataQueries: S.optional(__S(17, __c2, 1)) }),
+        S.Struct({
+          AccountId: S.optional(S.String),
+          Namespace: S.optional(S.String),
+          MetricName: S.optional(S.String),
+          Dimensions: S.optional(__S(81, __c10, 1)),
+          Stat: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SingleMetricAnomalyDetector",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ MetricDataQueries: S.optional(__S(98, __c12, 2)) }),
       ).annotate({
         identifier: "MetricMathAnomalyDetector",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          AnomalyDetectorId: S.optional(S.String),
-          Namespace: S.optional(S.String),
-          MetricName: S.optional(S.String),
-          Dimensions: S.optional(__S(12, __c1, 4)),
-          Stat: S.optional(S.String),
-          SingleMetricAnomalyDetector: S.optional(__S(13, __c1, 5)),
-          MetricMathAnomalyDetector: S.optional(__S(18, __c2, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteAnomalyDetectorInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ DashboardNames: S.optional(__S(2, __c0, 2)) }).pipe(
+        S.Struct({ DashboardNames: S.optional(__S(32, __c4, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteDashboardsInput" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteDashboardsOutput",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ RuleNames: S.optional(__S(2, __c0, 2)) }).pipe(
+        S.Struct({ RuleNames: S.optional(__S(32, __c4, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteInsightRulesInput" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FailureResource: S.optional(S.String),
@@ -3703,29 +3771,39 @@ function __c2(j: number): any {
           FailureDescription: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartialFailure" });
+    case 1:
+      return S.Array(__S(136, __c17, 0));
   }
 }
-function __c3(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
       return S.suspend(() =>
-        S.Struct({ Failures: S.optional(__S(24, __c3, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteInsightRulesOutput",
-      });
-    case 2:
+        S.Struct({ Failures: S.optional(__S(137, __c17, 1)) }).pipe(ns),
+      ).annotate({ identifier: "DeleteInsightRulesOutput" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteMetricStreamInput" });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteMetricStreamOutput",
       });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -3733,7 +3811,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteResourceMetricsConfigurationInput",
       });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AlarmName: S.optional(S.String), NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -3741,40 +3823,42 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeAlarmContributorsInput",
       });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ContributorId: S.optional(S.String),
-          ContributorAttributes: S.optional(__S(30, __c3, 6)),
+          ContributorAttributes: S.optional(__S(184, __c23, 0)),
           StateReason: S.optional(S.String),
           StateTransitionedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AlarmContributor" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(177, __c22, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          AlarmContributors: S.optional(__S(32, __c4, 0)),
+          AlarmContributors: S.optional(__S(178, __c22, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeAlarmContributorsOutput",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AlarmName: S.optional(S.String),
           AlarmContributorId: S.optional(S.String),
-          AlarmTypes: S.optional(__S(34, __c4, 2)),
+          AlarmTypes: S.optional(__S(200, __c25, 0)),
           HistoryItemType: S.optional(S.String),
           StartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3785,7 +3869,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeAlarmHistoryInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AlarmName: S.optional(S.String),
@@ -3795,26 +3879,36 @@ function __c4(j: number): any {
           HistoryItemType: S.optional(S.String),
           HistorySummary: S.optional(S.String),
           HistoryData: S.optional(S.String),
-          AlarmContributorAttributes: S.optional(__S(30, __c3, 6)),
+          AlarmContributorAttributes: S.optional(__S(184, __c23, 0)),
         }),
       ).annotate({ identifier: "AlarmHistoryItem" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(193, __c24, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          AlarmHistoryItems: S.optional(__S(37, __c4, 5)),
+          AlarmHistoryItems: S.optional(__S(194, __c24, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeAlarmHistoryOutput",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          AlarmNames: S.optional(__S(2, __c0, 2)),
+          AlarmNames: S.optional(__S(32, __c4, 0)),
           AlarmNamePrefix: S.optional(S.String),
-          AlarmTypes: S.optional(__S(34, __c4, 2)),
+          AlarmTypes: S.optional(__S(200, __c25, 0)),
           ChildrenOfAlarmName: S.optional(S.String),
           ParentsOfAlarmName: S.optional(S.String),
           StateValue: S.optional(S.String),
@@ -3823,15 +3917,11 @@ function __c4(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeAlarmsInput" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ActionsEnabled: S.optional(S.Boolean),
-          AlarmActions: S.optional(__S(2, __c0, 2)),
+          AlarmActions: S.optional(__S(32, __c4, 0)),
           AlarmArn: S.optional(S.String),
           AlarmConfigurationUpdatedTimestamp: S.optional(
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3839,8 +3929,8 @@ function __c5(j: number): any {
           AlarmDescription: S.optional(S.String),
           AlarmName: S.optional(S.String),
           AlarmRule: S.optional(S.String),
-          InsufficientDataActions: S.optional(__S(2, __c0, 2)),
-          OKActions: S.optional(__S(2, __c0, 2)),
+          InsufficientDataActions: S.optional(__S(32, __c4, 0)),
+          OKActions: S.optional(__S(32, __c4, 0)),
           StateReason: S.optional(S.String),
           StateReasonData: S.optional(S.String),
           StateUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3853,43 +3943,9 @@ function __c5(j: number): any {
           ActionsSuppressorExtensionPeriod: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CompositeAlarm" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
     case 2:
-      return S.suspend(() => S.Struct({ Timezone: S.optional(S.String) })).annotate({
-        identifier: "WallClockWindow",
-      });
+      return S.Array(__S(209, __c26, 1));
     case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "SlidingWindow",
-      });
-    case 4:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ WallClockWindow: __S(42, __c5, 2) }),
-        /*@__PURE__*/ S.Struct({ SlidingWindow: __S(43, __c5, 3) }),
-      ]);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          WarmUpPeriodDurationInMinutes: S.optional(S.Number),
-          OnlyStartEvaluatingAfterWarmUpPeriodEnds: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "WarmUpConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Query: S.optional(S.String),
-          PendingPeriod: S.optional(S.Number),
-          RecoveryPeriod: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AlarmPromQLCriteria" });
-    case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ PromQLCriteria: __S(46, __c5, 6) })]);
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           AlarmName: S.optional(S.String),
@@ -3899,84 +3955,14 @@ function __c6(j: number): any {
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
           ActionsEnabled: S.optional(S.Boolean),
-          OKActions: S.optional(__S(2, __c0, 2)),
-          AlarmActions: S.optional(__S(2, __c0, 2)),
-          InsufficientDataActions: S.optional(__S(2, __c0, 2)),
+          OKActions: S.optional(__S(32, __c4, 0)),
+          AlarmActions: S.optional(__S(32, __c4, 0)),
+          InsufficientDataActions: S.optional(__S(32, __c4, 0)),
           StateValue: S.optional(S.String),
           StateReason: S.optional(S.String),
           StateReasonData: S.optional(S.String),
           StateUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          MetricName: S.optional(S.String),
-          Namespace: S.optional(S.String),
-          Statistic: S.optional(S.String),
-          ExtendedStatistic: S.optional(S.String),
-          Dimensions: S.optional(__S(12, __c1, 4)),
-          Period: S.optional(S.Number),
-          Unit: S.optional(S.String),
-          EvaluationPeriods: S.optional(S.Number),
-          DatapointsToAlarm: S.optional(S.Number),
-          Threshold: S.optional(S.Number),
-          ComparisonOperator: S.optional(S.String),
-          TreatMissingData: S.optional(S.String),
-          EvaluateLowSampleCountPercentile: S.optional(S.String),
-          Metrics: S.optional(__S(17, __c2, 1)),
-          ThresholdMetricId: S.optional(S.String),
-          EvaluationState: S.optional(S.String),
-          StateTransitionedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EvaluationWindow: S.optional(__S(44, __c5, 4)),
-          WarmUpConfiguration: S.optional(__S(45, __c5, 5)),
-          EvaluationCriteria: S.optional(__S(47, __c5, 7)),
-          EvaluationInterval: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MetricAlarm" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ScheduleExpression: S.optional(S.String),
-          StartTimeOffset: S.optional(S.Number),
-          EndTimeOffset: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ScheduleConfiguration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          QueryString: S.optional(S.String),
-          LogGroupIdentifiers: S.optional(__S(2, __c0, 2)),
-          QueryARN: S.optional(S.String),
-          ScheduledQueryRoleARN: S.optional(S.String),
-          ScheduleConfiguration: S.optional(__S(50, __c6, 2)),
-          AggregationExpression: S.optional(S.String),
-          Tags: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "ScheduledQueryConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AlarmName: S.optional(S.String),
-          AlarmArn: S.optional(S.String),
-          AlarmDescription: S.optional(S.String),
-          AlarmConfigurationUpdatedTimestamp: S.optional(
-            S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          ),
-          ActionsEnabled: S.optional(S.Boolean),
-          OKActions: S.optional(__S(2, __c0, 2)),
-          AlarmActions: S.optional(__S(2, __c0, 2)),
-          InsufficientDataActions: S.optional(__S(2, __c0, 2)),
-          StateValue: S.optional(S.String),
-          StateReason: S.optional(S.String),
-          StateReasonData: S.optional(S.String),
-          StateUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ScheduledQueryConfiguration: S.optional(__S(53, __c6, 5)),
+          ScheduledQueryConfiguration: S.optional(__S(257, __c32, 1)),
           QueryResultsToEvaluate: S.optional(S.Number),
           QueryResultsToAlarm: S.optional(S.Number),
           Threshold: S.optional(S.Number),
@@ -3986,111 +3972,243 @@ function __c6(j: number): any {
           EvaluationState: S.optional(S.String),
           ActionLogLineCount: S.optional(S.Number),
           ActionLogLineRoleArn: S.optional(S.String),
-          WarmUpConfiguration: S.optional(__S(45, __c5, 5)),
+          WarmUpConfiguration: S.optional(__S(232, __c29, 0)),
         }),
       ).annotate({ identifier: "LogAlarm" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
+    case 4:
+      return S.Array(__S(211, __c26, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CompositeAlarms: S.optional(__S(210, __c26, 2)),
+          MetricAlarms: S.optional(__S(217, __c27, 1)),
+          LogAlarms: S.optional(__S(212, __c26, 4)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "DescribeAlarmsOutput" });
   }
 }
-function __c7(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CompositeAlarms: S.optional(__S(41, __c5, 1)),
-          MetricAlarms: S.optional(__S(49, __c6, 1)),
-          LogAlarms: S.optional(__S(55, __c6, 7)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "DescribeAlarmsOutput" });
+          AlarmName: S.optional(S.String),
+          AlarmArn: S.optional(S.String),
+          AlarmDescription: S.optional(S.String),
+          AlarmConfigurationUpdatedTimestamp: S.optional(
+            S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ),
+          ActionsEnabled: S.optional(S.Boolean),
+          OKActions: S.optional(__S(32, __c4, 0)),
+          AlarmActions: S.optional(__S(32, __c4, 0)),
+          InsufficientDataActions: S.optional(__S(32, __c4, 0)),
+          StateValue: S.optional(S.String),
+          StateReason: S.optional(S.String),
+          StateReasonData: S.optional(S.String),
+          StateUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          MetricName: S.optional(S.String),
+          Namespace: S.optional(S.String),
+          Statistic: S.optional(S.String),
+          ExtendedStatistic: S.optional(S.String),
+          Dimensions: S.optional(__S(81, __c10, 1)),
+          Period: S.optional(S.Number),
+          Unit: S.optional(S.String),
+          EvaluationPeriods: S.optional(S.Number),
+          DatapointsToAlarm: S.optional(S.Number),
+          Threshold: S.optional(S.Number),
+          ComparisonOperator: S.optional(S.String),
+          TreatMissingData: S.optional(S.String),
+          EvaluateLowSampleCountPercentile: S.optional(S.String),
+          Metrics: S.optional(__S(98, __c12, 2)),
+          ThresholdMetricId: S.optional(S.String),
+          EvaluationState: S.optional(S.String),
+          StateTransitionedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EvaluationWindow: S.optional(__S(241, __c30, 1)),
+          WarmUpConfiguration: S.optional(__S(232, __c29, 0)),
+          EvaluationCriteria: S.optional(__S(243, __c30, 3)),
+          EvaluationInterval: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MetricAlarm" });
     case 1:
+      return S.Array(__S(216, __c27, 0));
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Timezone: S.optional(S.String) })).annotate({
+        identifier: "WallClockWindow",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          WarmUpPeriodDurationInMinutes: S.optional(S.Number),
+          OnlyStartEvaluatingAfterWarmUpPeriodEnds: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "WarmUpConfiguration" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "SlidingWindow",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ WallClockWindow: __S(224, __c28, 0) }),
+        /*@__PURE__*/ S.Struct({ SlidingWindow: __S(240, __c30, 0) }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Query: S.optional(S.String),
+          PendingPeriod: S.optional(S.Number),
+          RecoveryPeriod: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AlarmPromQLCriteria" });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ PromQLCriteria: __S(242, __c30, 2) })]);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(248, __c31, 0));
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ScheduleExpression: S.optional(S.String),
+          StartTimeOffset: S.optional(S.Number),
+          EndTimeOffset: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ScheduleConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          QueryString: S.optional(S.String),
+          LogGroupIdentifiers: S.optional(__S(32, __c4, 0)),
+          QueryARN: S.optional(S.String),
+          ScheduledQueryRoleARN: S.optional(S.String),
+          ScheduleConfiguration: S.optional(__S(256, __c32, 0)),
+          AggregationExpression: S.optional(S.String),
+          Tags: S.optional(__S(249, __c31, 1)),
+        }),
+      ).annotate({
+        identifier: "ScheduledQueryConfiguration",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MetricName: S.optional(S.String),
           Namespace: S.optional(S.String),
           Statistic: S.optional(S.String),
           ExtendedStatistic: S.optional(S.String),
-          Dimensions: S.optional(__S(12, __c1, 4)),
+          Dimensions: S.optional(__S(81, __c10, 1)),
           Period: S.optional(S.Number),
           Unit: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeAlarmsForMetricInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ MetricAlarms: S.optional(__S(49, __c6, 1)) }).pipe(ns),
+        S.Struct({ MetricAlarms: S.optional(__S(217, __c27, 1)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeAlarmsForMetricOutput",
       });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          AnomalyDetectorIds: S.optional(__S(2, __c0, 2)),
+          AnomalyDetectorIds: S.optional(__S(32, __c4, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           Namespace: S.optional(S.String),
           MetricName: S.optional(S.String),
-          Dimensions: S.optional(__S(12, __c1, 4)),
-          AnomalyDetectorTypes: S.optional(__S(34, __c4, 2)),
+          Dimensions: S.optional(__S(81, __c10, 1)),
+          AnomalyDetectorTypes: S.optional(__S(200, __c25, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeAnomalyDetectorsInput",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AnomalyDetectorId: S.optional(S.String),
+          Namespace: S.optional(S.String),
+          MetricName: S.optional(S.String),
+          Dimensions: S.optional(__S(81, __c10, 1)),
+          Stat: S.optional(S.String),
+          Configuration: S.optional(__S(282, __c35, 2)),
+          StateValue: S.optional(S.String),
+          MetricCharacteristics: S.optional(__S(283, __c35, 3)),
+          SingleMetricAnomalyDetector: S.optional(__S(104, __c13, 0)),
+          MetricMathAnomalyDetector: S.optional(__S(105, __c13, 1)),
+        }),
+      ).annotate({ identifier: "AnomalyDetector" });
+    case 2:
+      return S.Array(__S(273, __c34, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AnomalyDetectors: S.optional(__S(274, __c34, 2)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeAnomalyDetectorsOutput",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Range" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(280, __c35, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ExcludedTimeRanges: S.optional(__S(61, __c7, 5)),
+          ExcludedTimeRanges: S.optional(__S(281, __c35, 1)),
           MetricTimezone: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AnomalyDetectorConfiguration",
       });
-    case 7:
+    case 3:
       return S.suspend(() => S.Struct({ PeriodicSpikes: S.optional(S.Boolean) })).annotate({
         identifier: "MetricCharacteristics",
       });
   }
 }
-function __c8(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AnomalyDetectorId: S.optional(S.String),
-          Namespace: S.optional(S.String),
-          MetricName: S.optional(S.String),
-          Dimensions: S.optional(__S(12, __c1, 4)),
-          Stat: S.optional(S.String),
-          Configuration: S.optional(__S(62, __c7, 6)),
-          StateValue: S.optional(S.String),
-          MetricCharacteristics: S.optional(__S(63, __c7, 7)),
-          SingleMetricAnomalyDetector: S.optional(__S(13, __c1, 5)),
-          MetricMathAnomalyDetector: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "AnomalyDetector" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AnomalyDetectors: S.optional(__S(65, __c8, 1)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAnomalyDetectorsOutput",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4098,7 +4216,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DescribeInsightRulesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -4109,40 +4227,52 @@ function __c8(j: number): any {
           ApplyOnTransformedLogs: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "InsightRule" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(289, __c36, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          InsightRules: S.optional(__S(69, __c8, 5)),
+          InsightRules: S.optional(__S(290, __c36, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeInsightRulesOutput",
       });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ AlarmNames: S.optional(__S(2, __c0, 2)) }).pipe(
+        S.Struct({ AlarmNames: S.optional(__S(32, __c4, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DisableAlarmActionsInput" });
   }
 }
-function __c9(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ RuleNames: S.optional(__S(2, __c0, 2)) }).pipe(
+        S.Struct({ RuleNames: S.optional(__S(32, __c4, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DisableInsightRulesInput" });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Failures: S.optional(__S(24, __c3, 0)) }).pipe(ns),
+        S.Struct({ Failures: S.optional(__S(137, __c17, 1)) }).pipe(ns),
       ).annotate({
         identifier: "DisableInsightRulesOutput",
       });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DatasetIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4150,52 +4280,44 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DisassociateDatasetKmsKeyInput",
       });
-    case 3:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ AlarmNames: S.optional(__S(2, __c0, 2)) }).pipe(
+        S.Struct({ AlarmNames: S.optional(__S(32, __c4, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "EnableAlarmActionsInput" });
-    case 4:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ RuleNames: S.optional(__S(2, __c0, 2)) }).pipe(
+        S.Struct({ RuleNames: S.optional(__S(32, __c4, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "EnableInsightRulesInput" });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AlarmMuteRuleName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetAlarmMuteRuleInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Expression: S.optional(S.String),
-          Duration: S.optional(S.String),
-          Timezone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Schedule" });
-    case 7:
-      return S.suspend(() => S.Struct({ Schedule: S.optional(__S(78, __c9, 6)) })).annotate({
-        identifier: "Rule",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ AlarmNames: S.optional(__S(2, __c0, 2)) })).annotate({
-        identifier: "MuteTargets",
-      });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           AlarmMuteRuleArn: S.optional(S.String),
           Description: S.optional(S.String),
-          Rule: S.optional(__S(79, __c9, 7)),
-          MuteTargets: S.optional(__S(80, __c10, 0)),
+          Rule: S.optional(__S(353, __c44, 1)),
+          MuteTargets: S.optional(__S(354, __c44, 2)),
           StartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExpireDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Status: S.optional(S.String),
@@ -4203,13 +4325,37 @@ function __c10(j: number): any {
           MuteType: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetAlarmMuteRuleOutput" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Expression: S.optional(S.String),
+          Duration: S.optional(S.String),
+          Timezone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Schedule" });
+    case 1:
+      return S.suspend(() => S.Struct({ Schedule: S.optional(__S(352, __c44, 0)) })).annotate({
+        identifier: "Rule",
+      });
     case 2:
+      return S.suspend(() => S.Struct({ AlarmNames: S.optional(__S(32, __c4, 0)) })).annotate({
+        identifier: "MuteTargets",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DashboardName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDashboardInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DashboardArn: S.optional(S.String),
@@ -4217,13 +4363,17 @@ function __c10(j: number): any {
           DashboardName: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetDashboardOutput" });
-    case 4:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DatasetIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDatasetInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DatasetId: S.optional(S.String),
@@ -4231,7 +4381,11 @@ function __c10(j: number): any {
           KmsKeyArn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetDatasetOutput" });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RuleName: S.optional(S.String),
@@ -4239,13 +4393,13 @@ function __c10(j: number): any {
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Period: S.optional(S.Number),
           MaxContributorCount: S.optional(S.Number),
-          Metrics: S.optional(__S(2, __c0, 2)),
+          Metrics: S.optional(__S(32, __c4, 0)),
           OrderBy: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetInsightRuleReportInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4254,23 +4408,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "InsightRuleContributorDatapoint",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(377, __c47, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Keys: S.optional(__S(2, __c0, 2)),
+          Keys: S.optional(__S(32, __c4, 0)),
           ApproximateAggregateValue: S.optional(S.Number),
-          Datapoints: S.optional(__S(88, __c11, 0)),
+          Datapoints: S.optional(__S(378, __c47, 2)),
         }),
       ).annotate({ identifier: "InsightRuleContributor" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(379, __c47, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4285,89 +4435,93 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "InsightRuleMetricDatapoint",
       });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(381, __c47, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          KeyLabels: S.optional(__S(2, __c0, 2)),
+          KeyLabels: S.optional(__S(32, __c4, 0)),
           AggregationStatistic: S.optional(S.String),
           AggregateValue: S.optional(S.Number),
           ApproximateUniqueCount: S.optional(S.Number),
-          Contributors: S.optional(__S(90, __c11, 2)),
-          MetricDatapoints: S.optional(__S(92, __c11, 4)),
+          Contributors: S.optional(__S(380, __c47, 4)),
+          MetricDatapoints: S.optional(__S(382, __c47, 6)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetInsightRuleReportOutput",
       });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          MetricDataQueries: S.optional(__S(17, __c2, 1)),
+          MetricDataQueries: S.optional(__S(98, __c12, 2)),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           NextToken: S.optional(S.String),
           ScanBy: S.optional(S.String),
           MaxDatapoints: S.optional(S.Number),
-          LabelOptions: S.optional(__S(42, __c5, 2)),
+          LabelOptions: S.optional(__S(224, __c28, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetMetricDataInput" });
-    case 7:
-      return S.Array(/*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Number);
     case 1:
+      return S.Array(/*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")));
+    case 2:
       return S.suspend(() =>
         S.Struct({ Code: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "MessageData" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
     case 3:
+      return S.Array(__S(386, __c48, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           Label: S.optional(S.String),
-          Timestamps: S.optional(__S(95, __c11, 7)),
-          Values: S.optional(__S(96, __c12, 0)),
+          Timestamps: S.optional(__S(385, __c48, 1)),
+          Values: S.optional(__S(392, __c49, 0)),
           StatusCode: S.optional(S.String),
-          Messages: S.optional(__S(98, __c12, 2)),
+          Messages: S.optional(__S(387, __c48, 3)),
         }),
       ).annotate({ identifier: "MetricDataResult" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
     case 5:
+      return S.Array(__S(388, __c48, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          MetricDataResults: S.optional(__S(100, __c12, 4)),
+          MetricDataResults: S.optional(__S(389, __c48, 5)),
           NextToken: S.optional(S.String),
-          Messages: S.optional(__S(98, __c12, 2)),
+          Messages: S.optional(__S(387, __c48, 3)),
         }).pipe(ns),
       ).annotate({ identifier: "GetMetricDataOutput" });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Namespace: S.optional(S.String),
           MetricName: S.optional(S.String),
-          Dimensions: S.optional(__S(12, __c1, 4)),
+          Dimensions: S.optional(__S(81, __c10, 1)),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Period: S.optional(S.Number),
-          Statistics: S.optional(__S(34, __c4, 2)),
-          ExtendedStatistics: S.optional(__S(2, __c0, 2)),
+          Statistics: S.optional(__S(200, __c25, 0)),
+          ExtendedStatistics: S.optional(__S(32, __c4, 0)),
           Unit: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetMetricStatisticsInput" });
-    case 7:
+    case 1:
       return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4377,75 +4531,83 @@ function __c13(j: number): any {
           Minimum: S.optional(S.Number),
           Maximum: S.optional(S.Number),
           Unit: S.optional(S.String),
-          ExtendedStatistics: S.optional(__S(103, __c12, 7)),
+          ExtendedStatistics: S.optional(__S(401, __c50, 1)),
         }),
       ).annotate({ identifier: "Datapoint" });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(402, __c50, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ Label: S.optional(S.String), Datapoints: S.optional(__S(105, __c13, 1)) }).pipe(
+        S.Struct({ Label: S.optional(S.String), Datapoints: S.optional(__S(403, __c50, 3)) }).pipe(
           ns,
         ),
       ).annotate({
         identifier: "GetMetricStatisticsOutput",
       });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetMetricStreamInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Namespace: S.optional(S.String),
-          MetricNames: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "MetricStreamFilter" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Namespace: S.optional(S.String), MetricName: S.optional(S.String) }),
-      ).annotate({
-        identifier: "MetricStreamStatisticsMetric",
-      });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          IncludeMetrics: S.optional(__S(111, __c13, 7)),
-          AdditionalStatistics: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "MetricStreamStatisticsConfiguration",
-      });
     case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
-          IncludeFilters: S.optional(__S(109, __c13, 5)),
-          ExcludeFilters: S.optional(__S(109, __c13, 5)),
+          IncludeFilters: S.optional(__S(417, __c52, 1)),
+          ExcludeFilters: S.optional(__S(417, __c52, 1)),
           FirehoseArn: S.optional(S.String),
           RoleArn: S.optional(S.String),
           State: S.optional(S.String),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           OutputFormat: S.optional(S.String),
-          StatisticsConfigurations: S.optional(__S(113, __c14, 1)),
+          StatisticsConfigurations: S.optional(__S(421, __c52, 5)),
           IncludeLinkedAccountsMetrics: S.optional(S.Boolean),
         }).pipe(ns),
       ).annotate({ identifier: "GetMetricStreamOutput" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Namespace: S.optional(S.String),
+          MetricNames: S.optional(__S(32, __c4, 0)),
+        }),
+      ).annotate({ identifier: "MetricStreamFilter" });
+    case 1:
+      return S.Array(__S(416, __c52, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Namespace: S.optional(S.String), MetricName: S.optional(S.String) }),
+      ).annotate({
+        identifier: "MetricStreamStatisticsMetric",
+      });
     case 3:
+      return S.Array(__S(418, __c52, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          IncludeMetrics: S.optional(__S(419, __c52, 3)),
+          AdditionalStatistics: S.optional(__S(32, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "MetricStreamStatisticsConfiguration",
+      });
+    case 5:
+      return S.Array(__S(420, __c52, 4));
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MetricWidget: S.optional(S.String), OutputFormat: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4453,44 +4615,52 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetMetricWidgetImageInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ MetricWidgetImage: S.optional(T.Blob) }).pipe(ns)).annotate(
         {
           identifier: "GetMetricWidgetImageOutput",
         },
       );
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetOTelEnrichmentInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Namespace: S.optional(S.String),
-          MetricNames: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "OTelEnrichmentMetricSelector",
-      });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
-          IncludeFilters: S.optional(__S(119, __c14, 7)),
-          ExcludeFilters: S.optional(__S(119, __c14, 7)),
+          IncludeFilters: S.optional(__S(441, __c55, 1)),
+          ExcludeFilters: S.optional(__S(441, __c55, 1)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({ identifier: "GetOTelEnrichmentOutput" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Namespace: S.optional(S.String),
+          MetricNames: S.optional(__S(32, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "OTelEnrichmentMetricSelector",
+      });
     case 1:
+      return S.Array(__S(440, __c55, 0));
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4498,16 +4668,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetResourceMetricsConfigurationInput",
       });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AlarmName: S.optional(S.String),
-          Statuses: S.optional(__S(34, __c4, 2)),
+          Statuses: S.optional(__S(200, __c25, 0)),
           MaxRecords: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAlarmMuteRulesInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AlarmMuteRuleArn: S.optional(S.String),
@@ -4517,23 +4691,27 @@ function __c15(j: number): any {
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AlarmMuteRuleSummary" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(457, __c57, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          AlarmMuteRuleSummaries: S.optional(__S(124, __c15, 4)),
+          AlarmMuteRuleSummaries: S.optional(__S(458, __c57, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListAlarmMuteRulesOutput" });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DashboardNamePrefix: S.optional(S.String),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDashboardsInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DashboardName: S.optional(S.String),
@@ -4542,20 +4720,20 @@ function __c15(j: number): any {
           Size: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DashboardEntry" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(465, __c58, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          DashboardEntries: S.optional(__S(128, __c16, 0)),
+          DashboardEntries: S.optional(__S(466, __c58, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListDashboardsOutput" });
-    case 2:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceARN: S.optional(S.String),
@@ -4565,62 +4743,66 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListManagedInsightRulesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ RuleName: S.optional(S.String), State: S.optional(S.String) }),
       ).annotate({ identifier: "ManagedRuleState" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.optional(S.String),
           ResourceARN: S.optional(S.String),
-          RuleState: S.optional(__S(131, __c16, 3)),
+          RuleState: S.optional(__S(473, __c59, 1)),
         }),
       ).annotate({ identifier: "ManagedRuleDescription" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(474, __c59, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          ManagedRules: S.optional(__S(133, __c16, 5)),
+          ManagedRules: S.optional(__S(475, __c59, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListManagedInsightRulesOutput",
       });
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Namespace: S.optional(S.String),
           MetricName: S.optional(S.String),
-          Dimensions: S.optional(__S(12, __c1, 4)),
+          Dimensions: S.optional(__S(81, __c10, 1)),
           NextToken: S.optional(S.String),
           RecentlyActive: S.optional(S.String),
           IncludeLinkedAccounts: S.optional(S.Boolean),
           OwningAccount: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListMetricsInput" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(14, __c1, 6));
     case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Metrics: S.optional(__S(136, __c17, 0)),
+          Metrics: S.optional(__S(481, __c60, 1)),
           NextToken: S.optional(S.String),
-          OwningAccounts: S.optional(__S(2, __c0, 2)),
+          OwningAccounts: S.optional(__S(32, __c4, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "ListMetricsOutput" });
-    case 2:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListMetricStreamsInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -4632,97 +4814,104 @@ function __c17(j: number): any {
           OutputFormat: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricStreamEntry" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(489, __c61, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          Entries: S.optional(__S(140, __c17, 4)),
-        }).pipe(ns),
+        S.Struct({ NextToken: S.optional(S.String), Entries: S.optional(__S(490, __c61, 2)) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListMetricStreamsOutput" });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 7:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(52, __c6, 4)) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(249, __c31, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceOutput",
       });
   }
 }
-function __c18(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Rule: S.optional(__S(79, __c9, 7)),
-          MuteTargets: S.optional(__S(80, __c10, 0)),
-          Tags: S.optional(__S(52, __c6, 4)),
+          Rule: S.optional(__S(353, __c44, 1)),
+          MuteTargets: S.optional(__S(354, __c44, 2)),
+          Tags: S.optional(__S(249, __c31, 1)),
           StartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExpireDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutAlarmMuteRuleInput" });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Namespace: S.optional(S.String),
           MetricName: S.optional(S.String),
-          Dimensions: S.optional(__S(12, __c1, 4)),
+          Dimensions: S.optional(__S(81, __c10, 1)),
           Stat: S.optional(S.String),
-          Configuration: S.optional(__S(62, __c7, 6)),
-          MetricCharacteristics: S.optional(__S(63, __c7, 7)),
-          SingleMetricAnomalyDetector: S.optional(__S(13, __c1, 5)),
-          MetricMathAnomalyDetector: S.optional(__S(18, __c2, 2)),
+          Configuration: S.optional(__S(282, __c35, 2)),
+          MetricCharacteristics: S.optional(__S(283, __c35, 3)),
+          SingleMetricAnomalyDetector: S.optional(__S(104, __c13, 0)),
+          MetricMathAnomalyDetector: S.optional(__S(105, __c13, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutAnomalyDetectorInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ AnomalyDetectorId: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "PutAnomalyDetectorOutput" });
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ActionsEnabled: S.optional(S.Boolean),
-          AlarmActions: S.optional(__S(2, __c0, 2)),
+          AlarmActions: S.optional(__S(32, __c4, 0)),
           AlarmDescription: S.optional(S.String),
           AlarmName: S.optional(S.String),
           AlarmRule: S.optional(S.String),
-          InsufficientDataActions: S.optional(__S(2, __c0, 2)),
-          OKActions: S.optional(__S(2, __c0, 2)),
-          Tags: S.optional(__S(52, __c6, 4)),
+          InsufficientDataActions: S.optional(__S(32, __c4, 0)),
+          OKActions: S.optional(__S(32, __c4, 0)),
+          Tags: S.optional(__S(249, __c31, 1)),
           ActionsSuppressor: S.optional(S.String),
           ActionsSuppressorWaitPeriod: S.optional(S.Number),
           ActionsSuppressorExtensionPeriod: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutCompositeAlarmInput" });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DashboardName: S.optional(S.String),
           DashboardBody: S.optional(S.String),
-          Tags: S.optional(__S(52, __c6, 4)),
+          Tags: S.optional(__S(249, __c31, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutDashboardInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DataPath: S.optional(S.String), Message: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DashboardValidationMessage",
-      });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ DashboardValidationMessages: S.optional(__S(150, __c18, 6)) }).pipe(ns),
+        S.Struct({ DashboardValidationMessages: S.optional(__S(1, __c0, 1)) }).pipe(ns),
       ).annotate({ identifier: "PutDashboardOutput" });
   }
 }
-function __c19(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4730,63 +4919,75 @@ function __c19(j: number): any {
           RuleName: S.optional(S.String),
           RuleState: S.optional(S.String),
           RuleDefinition: S.optional(S.String),
-          Tags: S.optional(__S(52, __c6, 4)),
+          Tags: S.optional(__S(249, __c31, 1)),
           ApplyOnTransformedLogs: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutInsightRuleInput" });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AlarmName: S.optional(S.String),
           AlarmDescription: S.optional(S.String),
-          ScheduledQueryConfiguration: S.optional(__S(53, __c6, 5)),
+          ScheduledQueryConfiguration: S.optional(__S(257, __c32, 1)),
           ActionLogLineCount: S.optional(S.Number),
           ActionLogLineRoleArn: S.optional(S.String),
           ActionsEnabled: S.optional(S.Boolean),
-          OKActions: S.optional(__S(2, __c0, 2)),
-          AlarmActions: S.optional(__S(2, __c0, 2)),
-          InsufficientDataActions: S.optional(__S(2, __c0, 2)),
+          OKActions: S.optional(__S(32, __c4, 0)),
+          AlarmActions: S.optional(__S(32, __c4, 0)),
+          InsufficientDataActions: S.optional(__S(32, __c4, 0)),
           QueryResultsToEvaluate: S.optional(S.Number),
           QueryResultsToAlarm: S.optional(S.Number),
           Threshold: S.optional(S.Number),
           ComparisonOperator: S.optional(S.String),
           TreatMissingData: S.optional(S.String),
-          Tags: S.optional(__S(52, __c6, 4)),
-          WarmUpConfiguration: S.optional(__S(45, __c5, 5)),
+          Tags: S.optional(__S(249, __c31, 1)),
+          WarmUpConfiguration: S.optional(__S(232, __c29, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutLogAlarmInput" });
-    case 2:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.optional(S.String),
           ResourceARN: S.optional(S.String),
-          Tags: S.optional(__S(52, __c6, 4)),
+          Tags: S.optional(__S(249, __c31, 1)),
         }),
       ).annotate({ identifier: "ManagedRule" });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(552, __c69, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ ManagedRules: S.optional(__S(155, __c19, 3)) }).pipe(
+        S.Struct({ ManagedRules: S.optional(__S(553, __c69, 1)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "PutManagedInsightRulesInput",
       });
-    case 5:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AlarmName: S.optional(S.String),
           AlarmDescription: S.optional(S.String),
           ActionsEnabled: S.optional(S.Boolean),
-          OKActions: S.optional(__S(2, __c0, 2)),
-          AlarmActions: S.optional(__S(2, __c0, 2)),
-          InsufficientDataActions: S.optional(__S(2, __c0, 2)),
+          OKActions: S.optional(__S(32, __c4, 0)),
+          AlarmActions: S.optional(__S(32, __c4, 0)),
+          InsufficientDataActions: S.optional(__S(32, __c4, 0)),
           MetricName: S.optional(S.String),
           Namespace: S.optional(S.String),
           Statistic: S.optional(S.String),
           ExtendedStatistic: S.optional(S.String),
-          Dimensions: S.optional(__S(12, __c1, 4)),
+          Dimensions: S.optional(__S(81, __c10, 1)),
           Period: S.optional(S.Number),
           Unit: S.optional(S.String),
           EvaluationPeriods: S.optional(S.Number),
@@ -4795,16 +4996,20 @@ function __c19(j: number): any {
           ComparisonOperator: S.optional(S.String),
           TreatMissingData: S.optional(S.String),
           EvaluateLowSampleCountPercentile: S.optional(S.String),
-          Metrics: S.optional(__S(17, __c2, 1)),
-          Tags: S.optional(__S(52, __c6, 4)),
+          Metrics: S.optional(__S(98, __c12, 2)),
+          Tags: S.optional(__S(249, __c31, 1)),
           ThresholdMetricId: S.optional(S.String),
-          EvaluationWindow: S.optional(__S(44, __c5, 4)),
-          WarmUpConfiguration: S.optional(__S(45, __c5, 5)),
-          EvaluationCriteria: S.optional(__S(47, __c5, 7)),
+          EvaluationWindow: S.optional(__S(241, __c30, 1)),
+          WarmUpConfiguration: S.optional(__S(232, __c29, 0)),
+          EvaluationCriteria: S.optional(__S(243, __c30, 3)),
           EvaluationInterval: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutMetricAlarmInput" });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SampleCount: S.optional(S.Number),
@@ -4813,70 +5018,74 @@ function __c19(j: number): any {
           Maximum: S.optional(S.Number),
         }),
       ).annotate({ identifier: "StatisticSet" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           MetricName: S.optional(S.String),
-          Dimensions: S.optional(__S(12, __c1, 4)),
+          Dimensions: S.optional(__S(81, __c10, 1)),
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Value: S.optional(S.Number),
-          StatisticValues: S.optional(__S(158, __c19, 6)),
-          Values: S.optional(__S(96, __c12, 0)),
-          Counts: S.optional(__S(96, __c12, 0)),
+          StatisticValues: S.optional(__S(568, __c71, 0)),
+          Values: S.optional(__S(392, __c49, 0)),
+          Counts: S.optional(__S(392, __c49, 0)),
           Unit: S.optional(S.String),
           StorageResolution: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MetricDatum" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(569, __c71, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          KeyAttributes: S.optional(__S(30, __c3, 6)),
-          Attributes: S.optional(__S(30, __c3, 6)),
+          KeyAttributes: S.optional(__S(184, __c23, 0)),
+          Attributes: S.optional(__S(184, __c23, 0)),
         }),
       ).annotate({ identifier: "Entity" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Entity: S.optional(__S(161, __c20, 1)),
-          MetricData: S.optional(__S(160, __c20, 0)),
-        }),
-      ).annotate({ identifier: "EntityMetricData" });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
+          Entity: S.optional(__S(571, __c71, 3)),
+          MetricData: S.optional(__S(570, __c71, 2)),
+        }),
+      ).annotate({ identifier: "EntityMetricData" });
+    case 5:
+      return S.Array(__S(572, __c71, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
           Namespace: S.optional(S.String),
-          MetricData: S.optional(__S(160, __c20, 0)),
-          EntityMetricData: S.optional(__S(163, __c20, 3)),
+          MetricData: S.optional(__S(570, __c71, 2)),
+          EntityMetricData: S.optional(__S(573, __c71, 5)),
           StrictEntityValidation: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutMetricDataInput" });
-    case 5:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          IncludeFilters: S.optional(__S(109, __c13, 5)),
-          ExcludeFilters: S.optional(__S(109, __c13, 5)),
+          IncludeFilters: S.optional(__S(417, __c52, 1)),
+          ExcludeFilters: S.optional(__S(417, __c52, 1)),
           FirehoseArn: S.optional(S.String),
           RoleArn: S.optional(S.String),
           OutputFormat: S.optional(S.String),
-          Tags: S.optional(__S(52, __c6, 4)),
-          StatisticsConfigurations: S.optional(__S(113, __c14, 1)),
+          Tags: S.optional(__S(249, __c31, 1)),
+          StatisticsConfigurations: S.optional(__S(421, __c52, 5)),
           IncludeLinkedAccountsMetrics: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutMetricStreamInput" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ Arn: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "PutMetricStreamOutput",
       });
-    case 7:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AlarmName: S.optional(S.String),
@@ -4887,81 +5096,108 @@ function __c20(j: number): any {
       ).annotate({ identifier: "SetAlarmStateInput" });
   }
 }
-function __c21(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Names: S.optional(__S(2, __c0, 2)) }).pipe(
+        S.Struct({ Names: S.optional(__S(32, __c4, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartMetricStreamsInput" });
-    case 1:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          IncludeFilters: S.optional(__S(119, __c14, 7)),
-          ExcludeFilters: S.optional(__S(119, __c14, 7)),
+          IncludeFilters: S.optional(__S(441, __c55, 1)),
+          ExcludeFilters: S.optional(__S(441, __c55, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartOTelEnrichmentInput" });
-    case 2:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          IncludeFilters: S.optional(__S(119, __c14, 7)),
-          ExcludeFilters: S.optional(__S(119, __c14, 7)),
+          IncludeFilters: S.optional(__S(441, __c55, 1)),
+          ExcludeFilters: S.optional(__S(441, __c55, 1)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({
         identifier: "StartOTelEnrichmentOutput",
       });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Names: S.optional(__S(2, __c0, 2)) }).pipe(
+        S.Struct({ Names: S.optional(__S(32, __c4, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopMetricStreamsInput" });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopOTelEnrichmentInput" });
-    case 5:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.optional(S.String), Tags: S.optional(__S(52, __c6, 4)) }).pipe(
+        S.Struct({ ResourceARN: S.optional(S.String), Tags: S.optional(__S(249, __c31, 1)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 6:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.optional(S.String), TagKeys: S.optional(__S(2, __c0, 2)) }).pipe(
+        S.Struct({ ResourceARN: S.optional(S.String), TagKeys: S.optional(__S(32, __c4, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 7:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          IncludeFilters: S.optional(__S(119, __c14, 7)),
-          ExcludeFilters: S.optional(__S(119, __c14, 7)),
+          IncludeFilters: S.optional(__S(441, __c55, 1)),
+          ExcludeFilters: S.optional(__S(441, __c55, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateOTelEnrichmentInput",
       });
   }
 }
-function __c22(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
-          MetricSelections: S.optional(__S(4, __c0, 4)),
+          MetricSelections: S.optional(__S(41, __c5, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateResourceMetricsConfigurationInput",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -119,8 +119,8 @@ export const getAllCommonlyUsed: API.OperationMethod<
   GetAllCommonlyUsedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetAllCommonlyUsedRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetAllCommonlyUsedResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetAllCommonlyUsedRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<GetAllCommonlyUsedResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -134,8 +134,8 @@ export const getForRepo: API.OperationMethod<
   GetForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetForRepoRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<LicenseContent>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetForRepoRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<LicenseContent>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -170,7 +170,11 @@ function __c0(j: number): any {
           featured: S.Boolean,
         }),
       ).annotate({ identifier: "License" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           featured: S.optional(S.Boolean.pipe(T.Query())),
@@ -180,7 +184,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAllCommonlyUsedRequest",
       });
-    case 4:
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+    case 2:
+      return S.suspend(() => __S(5, __c1, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetAllCommonlyUsedResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -191,13 +205,11 @@ function __c0(j: number): any {
           html_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseSimple" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() => __S(5, __c0, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetAllCommonlyUsedResponse",
-      });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -205,11 +217,7 @@ function __c0(j: number): any {
           ref: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/license", code: 200 })),
       ).annotate({ identifier: "GetForRepoRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           git: S.NullOr(S.String),
@@ -217,7 +225,7 @@ function __c1(j: number): any {
           self: S.String,
         }),
       ).annotate({ identifier: "LicenseContentLinks" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -231,13 +239,12 @@ function __c1(j: number): any {
           type: S.String,
           content: S.String,
           encoding: S.String,
-          _links: __S(8, __c1, 0),
-          license: S.NullOr(__S(4, __c0, 4)),
+          _links: __S(13, __c3, 1),
+          license: S.NullOr(__S(8, __c2, 0)),
         }),
       ).annotate({ identifier: "LicenseContent" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -244,8 +244,8 @@ export const CreateSerialPort: API.OperationMethod<
   CreateSerialPortError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateSerialPortRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateSerialPortResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateSerialPortRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<CreateSerialPortResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -259,8 +259,8 @@ export const DeleteSerialPort: API.OperationMethod<
   DeleteSerialPortError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteSerialPortRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteSerialPortResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteSerialPortRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DeleteSerialPortResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -274,8 +274,8 @@ export const DisableConsole: API.OperationMethod<
   DisableConsoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DisableConsoleRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DisableSerialConsoleResult>,
+  input: __S(32, __c4, 0) as any as S.Schema<DisableConsoleRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DisableSerialConsoleResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -289,8 +289,8 @@ export const EnableConsole: API.OperationMethod<
   EnableConsoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<EnableConsoleRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<EnableSerialConsoleResult>,
+  input: __S(56, __c7, 0) as any as S.Schema<EnableConsoleRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<EnableSerialConsoleResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -304,8 +304,8 @@ export const GetConsoleStatus: API.OperationMethod<
   GetConsoleStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetConsoleStatusRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<SerialConsoleStatus>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetConsoleStatusRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<SerialConsoleStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -319,8 +319,8 @@ export const GetSerialPort: API.OperationMethod<
   GetSerialPortError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetSerialPortRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetSerialPortResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetSerialPortRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<GetSerialPortResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -334,8 +334,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<SerialConsoleOperations>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<SerialConsoleOperations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -349,8 +349,8 @@ export const ListSerialPortBySubscriptions: API.OperationMethod<
   ListSerialPortBySubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListSerialPortBySubscriptionsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<SerialPortListResult>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListSerialPortBySubscriptionsRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<SerialPortListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -364,8 +364,8 @@ export const ListSerialPorts: API.OperationMethod<
   ListSerialPortsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListSerialPortsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<SerialPortListResult>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListSerialPortsRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<SerialPortListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -398,14 +398,11 @@ function __c0(j: number): any {
           connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "SerialPortConnectResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          connectionState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SerialPortProperties" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -414,7 +411,7 @@ function __c0(j: number): any {
           parentResourceType: S.String.pipe(T.Label()),
           parentResource: S.String.pipe(T.Label()),
           serialPort: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -424,7 +421,18 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSerialPortRequest" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          connectionState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SerialPortProperties" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -435,17 +443,21 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "CreateSerialPortResponse" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -463,13 +475,13 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteSerialPortRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSerialPortResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -485,7 +497,23 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DisableConsoleRequest" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(48, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "DisableSerialConsoleResult",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           disabled: S.optional(S.Boolean),
@@ -493,15 +521,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DisableSerialConsoleResultProperties",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "DisableSerialConsoleResult",
-      });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -515,7 +539,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "EnableConsoleRequest" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -529,13 +557,17 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetConsoleStatusRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(9, __c1, 1)),
+          properties: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "SerialConsoleStatus" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -553,7 +585,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSerialPortRequest" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -564,11 +600,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -579,25 +611,29 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "SerialConsoleOperationsValueItemDisplay",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.String),
-          display: S.optional(__S(16, __c2, 0)),
+          display: S.optional(__S(81, __c10, 1)),
         }),
       ).annotate({
         identifier: "SerialConsoleOperationsValueItem",
       });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
     case 3:
+      return S.Array(__S(82, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(18, __c2, 2)),
+          value: S.optional(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "SerialConsoleOperations" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -612,15 +648,23 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListSerialPortBySubscriptionsRequest",
       });
-    case 5:
-      return S.Array(__S(5, __c0, 5));
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(18, __c2, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(21, __c2, 5)),
+          value: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "SerialPortListResult" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -639,7 +683,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ListSerialPortsRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

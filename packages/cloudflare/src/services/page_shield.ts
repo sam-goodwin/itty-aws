@@ -565,8 +565,8 @@ export const createPolicy: API.OperationMethod<
   CreatePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreatePolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreatePolicyResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<CreatePolicyRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<CreatePolicyResponse>,
   errors: [PolicyQuotaExceeded, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -580,8 +580,8 @@ export const deletePolicy: API.OperationMethod<
   DeletePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeletePolicyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeletePolicyResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<DeletePolicyRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<DeletePolicyResponse>,
   errors: [PolicyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -595,8 +595,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetConnectionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetConnectionResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetConnectionRequest>,
+  output: __S(41, __c10, 1) as any as S.Schema<GetConnectionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -610,8 +610,8 @@ export const getCooky: API.OperationMethod<
   GetCookyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetCookyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetCookyResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetCookyRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<GetCookyResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -625,8 +625,8 @@ export const getPageShield: API.OperationMethod<
   GetPageShieldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetPageShieldRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetPageShieldResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetPageShieldRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<GetPageShieldResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -640,8 +640,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetPolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetPolicyResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetPolicyRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<GetPolicyResponse>,
   errors: [PolicyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -655,8 +655,8 @@ export const getScript: API.OperationMethod<
   GetScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetScriptRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetScriptResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetScriptRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GetScriptResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -672,8 +672,8 @@ export const listConnections: API.PaginatedOperationMethod<
   ConnectionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16, __c2, 0) as any as S.Schema<ListConnectionsRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<ListConnectionsResponse>,
+    input: __S(4, __c1, 0) as any as S.Schema<ListConnectionsRequest>,
+    output: __S(7, __c1, 3) as any as S.Schema<ListConnectionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -692,8 +692,8 @@ export const listCookies: API.PaginatedOperationMethod<
   CookiesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(20, __c2, 4) as any as S.Schema<ListCookiesRequest>,
-    output: __S(23, __c2, 7) as any as S.Schema<ListCookiesResponse>,
+    input: __S(8, __c2, 0) as any as S.Schema<ListCookiesRequest>,
+    output: __S(11, __c2, 3) as any as S.Schema<ListCookiesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -712,8 +712,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   PoliciesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(24, __c3, 0) as any as S.Schema<ListPoliciesRequest>,
-    output: __S(27, __c3, 3) as any as S.Schema<ListPoliciesResponse>,
+    input: __S(12, __c3, 0) as any as S.Schema<ListPoliciesRequest>,
+    output: __S(15, __c3, 3) as any as S.Schema<ListPoliciesResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -732,8 +732,8 @@ export const listScripts: API.PaginatedOperationMethod<
   ScriptsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(28, __c3, 4) as any as S.Schema<ListScriptsRequest>,
-    output: __S(31, __c3, 7) as any as S.Schema<ListScriptsResponse>,
+    input: __S(16, __c4, 0) as any as S.Schema<ListScriptsRequest>,
+    output: __S(19, __c4, 3) as any as S.Schema<ListScriptsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -750,8 +750,8 @@ export const putPageShield: API.OperationMethod<
   PutPageShieldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<PutPageShieldRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<PutPageShieldResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<PutPageShieldRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<PutPageShieldResponse>,
   errors: [NotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -765,8 +765,8 @@ export const updatePolicy: API.OperationMethod<
   UpdatePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<UpdatePolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdatePolicyResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<UpdatePolicyRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<UpdatePolicyResponse>,
   errors: [PolicyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -776,164 +776,6 @@ export const updatePolicy: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          action: S.String,
-          description: S.String,
-          enabled: S.Boolean,
-          expression: S.String,
-          value: S.String,
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/page_shield/policies", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreatePolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          action: S.String,
-          description: S.String,
-          enabled: S.Boolean,
-          expression: S.String,
-          value: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreatePolicyResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          policyId: S.String.pipe(T.Label("policy_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeletePolicyRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "DeletePolicyResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          connectionId: S.String.pipe(T.Label("connection_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/page_shield/connections/{connection_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetConnectionRequest" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          addedAt: S.String.pipe(T.Body("added_at")),
-          firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
-          host: S.String,
-          lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
-          url: S.String,
-          urlContainsCdnCgiPath: S.Boolean.pipe(T.Body("url_contains_cdn_cgi_path")),
-          domainReportedMalicious: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("domain_reported_malicious")),
-          ),
-          firstPageUrl: S.optional(S.NullOr(S.String).pipe(T.Body("first_page_url"))),
-          maliciousDomainCategories: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_domain_categories")),
-          ),
-          maliciousUrlCategories: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_url_categories")),
-          ),
-          pageUrls: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("page_urls"))),
-          urlReportedMalicious: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetConnectionResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          cookieId: S.String.pipe(T.Label("cookie_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/page_shield/cookies/{cookie_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetCookyRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
-          host: S.String,
-          lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
-          name: S.String,
-          type: S.String,
-          domainAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("domain_attribute"))),
-          expiresAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("expires_attribute"))),
-          httpOnlyAttribute: S.optional(S.NullOr(S.Boolean).pipe(T.Body("http_only_attribute"))),
-          maxAgeAttribute: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age_attribute"))),
-          pageUrls: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("page_urls"))),
-          pathAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("path_attribute"))),
-          sameSiteAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("same_site_attribute"))),
-          secureAttribute: S.optional(S.NullOr(S.Boolean).pipe(T.Body("secure_attribute"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetCookyResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/page_shield", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetPageShieldRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          useCloudflareReportingEndpoint: S.Boolean.pipe(
-            T.Body("use_cloudflare_reporting_endpoint"),
-          ),
-          useConnectionUrlPath: S.Boolean.pipe(T.Body("use_connection_url_path")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetPageShieldResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          policyId: S.String.pipe(T.Label("policy_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetPolicyRequest" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -948,7 +790,7 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScriptRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cryptominingScore: S.optional(S.NullOr(S.Number).pipe(T.Body("cryptomining_score"))),
@@ -963,9 +805,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ScriptsGetResponseVersionsItem",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -986,23 +828,23 @@ function __c1(j: number): any {
           jsIntegrityScore: S.optional(S.NullOr(S.Number).pipe(T.Body("js_integrity_score"))),
           magecartScore: S.optional(S.NullOr(S.Number).pipe(T.Body("magecart_score"))),
           maliciousDomainCategories: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_domain_categories")),
+            S.NullOr(__S(44, __c11, 0)).pipe(T.Body("malicious_domain_categories")),
           ),
           maliciousUrlCategories: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_url_categories")),
+            S.NullOr(__S(44, __c11, 0)).pipe(T.Body("malicious_url_categories")),
           ),
           malwareScore: S.optional(S.NullOr(S.Number).pipe(T.Body("malware_score"))),
           obfuscationScore: S.optional(S.NullOr(S.Number).pipe(T.Body("obfuscation_score"))),
-          pageUrls: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("page_urls"))),
+          pageUrls: S.optional(S.NullOr(__S(44, __c11, 0)).pipe(T.Body("page_urls"))),
           urlReportedMalicious: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
           ),
-          versions: S.optional(S.NullOr(__S(14, __c1, 6))),
+          versions: S.optional(S.NullOr(__S(2, __c0, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScriptResponse" });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1041,12 +883,12 @@ function __c2(j: number): any {
           ),
           firstPageUrl: S.optional(S.NullOr(S.String).pipe(T.Body("first_page_url"))),
           maliciousDomainCategories: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_domain_categories")),
+            S.NullOr(__S(44, __c11, 0)).pipe(T.Body("malicious_domain_categories")),
           ),
           maliciousUrlCategories: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_url_categories")),
+            S.NullOr(__S(44, __c11, 0)).pipe(T.Body("malicious_url_categories")),
           ),
-          pageUrls: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("page_urls"))),
+          pageUrls: S.optional(S.NullOr(__S(44, __c11, 0)).pipe(T.Body("page_urls"))),
           urlReportedMalicious: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
           ),
@@ -1055,15 +897,19 @@ function __c2(j: number): any {
         identifier: "ConnectionsListResultItem",
       });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(5, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(18, __c2, 2).pipe(T.EnvelopePayload()),
+          result: __S(6, __c1, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListConnectionsResponse" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1085,7 +931,7 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/page_shield/cookies", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListCookiesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1098,18 +944,18 @@ function __c2(j: number): any {
           expiresAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("expires_attribute"))),
           httpOnlyAttribute: S.optional(S.NullOr(S.Boolean).pipe(T.Body("http_only_attribute"))),
           maxAgeAttribute: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age_attribute"))),
-          pageUrls: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("page_urls"))),
+          pageUrls: S.optional(S.NullOr(__S(44, __c11, 0)).pipe(T.Body("page_urls"))),
           pathAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("path_attribute"))),
           sameSiteAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("same_site_attribute"))),
           secureAttribute: S.optional(S.NullOr(S.Boolean).pipe(T.Body("secure_attribute"))),
         }),
       ).annotate({ identifier: "CookiesListResultItem" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(22, __c2, 6).pipe(T.EnvelopePayload()),
+          result: __S(10, __c2, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListCookiesResponse" });
@@ -1137,15 +983,19 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "PoliciesListResultItem" });
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(13, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(26, __c3, 2).pipe(T.EnvelopePayload()),
+          result: __S(14, __c3, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPoliciesResponse" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1166,7 +1016,7 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/page_shield/scripts", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListScriptsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1187,31 +1037,31 @@ function __c3(j: number): any {
           jsIntegrityScore: S.optional(S.NullOr(S.Number).pipe(T.Body("js_integrity_score"))),
           magecartScore: S.optional(S.NullOr(S.Number).pipe(T.Body("magecart_score"))),
           maliciousDomainCategories: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_domain_categories")),
+            S.NullOr(__S(44, __c11, 0)).pipe(T.Body("malicious_domain_categories")),
           ),
           maliciousUrlCategories: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("malicious_url_categories")),
+            S.NullOr(__S(44, __c11, 0)).pipe(T.Body("malicious_url_categories")),
           ),
           malwareScore: S.optional(S.NullOr(S.Number).pipe(T.Body("malware_score"))),
           obfuscationScore: S.optional(S.NullOr(S.Number).pipe(T.Body("obfuscation_score"))),
-          pageUrls: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("page_urls"))),
+          pageUrls: S.optional(S.NullOr(__S(44, __c11, 0)).pipe(T.Body("page_urls"))),
           urlReportedMalicious: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
           ),
         }),
       ).annotate({ identifier: "ScriptsListResultItem" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(17, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(30, __c3, 6).pipe(T.EnvelopePayload()),
+          result: __S(18, __c4, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListScriptsResponse" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1226,7 +1076,11 @@ function __c4(j: number): any {
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/page_shield", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutPageShieldRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1248,7 +1102,196 @@ function __c4(j: number): any {
       ).annotate({ identifier: "UpdatePolicyRequest" });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          action: S.String,
+          description: S.String,
+          enabled: S.Boolean,
+          expression: S.String,
+          value: S.String,
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/page_shield/policies", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePolicyRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          action: S.String,
+          description: S.String,
+          enabled: S.Boolean,
+          expression: S.String,
+          value: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePolicyResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          policyId: S.String.pipe(T.Label("policy_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeletePolicyRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "DeletePolicyResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          connectionId: S.String.pipe(T.Label("connection_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/page_shield/connections/{connection_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetConnectionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          addedAt: S.String.pipe(T.Body("added_at")),
+          firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
+          host: S.String,
+          lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
+          url: S.String,
+          urlContainsCdnCgiPath: S.Boolean.pipe(T.Body("url_contains_cdn_cgi_path")),
+          domainReportedMalicious: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("domain_reported_malicious")),
+          ),
+          firstPageUrl: S.optional(S.NullOr(S.String).pipe(T.Body("first_page_url"))),
+          maliciousDomainCategories: S.optional(
+            S.NullOr(__S(44, __c11, 0)).pipe(T.Body("malicious_domain_categories")),
+          ),
+          maliciousUrlCategories: S.optional(
+            S.NullOr(__S(44, __c11, 0)).pipe(T.Body("malicious_url_categories")),
+          ),
+          pageUrls: S.optional(S.NullOr(__S(44, __c11, 0)).pipe(T.Body("page_urls"))),
+          urlReportedMalicious: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("url_reported_malicious")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetConnectionResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          cookieId: S.String.pipe(T.Label("cookie_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/page_shield/cookies/{cookie_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetCookyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
+          host: S.String,
+          lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
+          name: S.String,
+          type: S.String,
+          domainAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("domain_attribute"))),
+          expiresAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("expires_attribute"))),
+          httpOnlyAttribute: S.optional(S.NullOr(S.Boolean).pipe(T.Body("http_only_attribute"))),
+          maxAgeAttribute: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age_attribute"))),
+          pageUrls: S.optional(S.NullOr(__S(44, __c11, 0)).pipe(T.Body("page_urls"))),
+          pathAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("path_attribute"))),
+          sameSiteAttribute: S.optional(S.NullOr(S.String).pipe(T.Body("same_site_attribute"))),
+          secureAttribute: S.optional(S.NullOr(S.Boolean).pipe(T.Body("secure_attribute"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetCookyResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/page_shield", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetPageShieldRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          useCloudflareReportingEndpoint: S.Boolean.pipe(
+            T.Body("use_cloudflare_reporting_endpoint"),
+          ),
+          useConnectionUrlPath: S.Boolean.pipe(T.Body("use_connection_url_path")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetPageShieldResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          policyId: S.String.pipe(T.Label("policy_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetPolicyRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

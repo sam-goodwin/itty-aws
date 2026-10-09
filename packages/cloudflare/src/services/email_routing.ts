@@ -1055,8 +1055,8 @@ export const accountRulesListForAccount: API.OperationMethod<
   AccountRulesListForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AccountRulesListForAccountRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AccountRulesListResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<AccountRulesListForAccountRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<AccountRulesListResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1070,8 +1070,8 @@ export const accountRulesListForZone: API.OperationMethod<
   AccountRulesListForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<AccountRulesListForZoneRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AccountRulesListResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<AccountRulesListForZoneRequest>,
+  output: __S(228, __c28, 4) as any as S.Schema<AccountRulesListResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1085,8 +1085,8 @@ export const createAddress: API.OperationMethod<
   CreateAddressError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateAddressRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateAddressResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<CreateAddressRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<CreateAddressResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1100,8 +1100,8 @@ export const createDns: API.OperationMethod<
   CreateDnsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateDnsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateDnsResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<CreateDnsRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<CreateDnsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1115,8 +1115,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateRuleRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreateRuleResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateRuleRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<CreateRuleResponse>,
   errors: [WorkerScriptNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1133,8 +1133,8 @@ export const deleteAddress: API.OperationMethod<
   DeleteAddressError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteAddressRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteAddressResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteAddressRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<DeleteAddressResponse>,
   errors: [
     EmailAddressNotFound,
     EmailAddressCreatedTooRecently,
@@ -1154,7 +1154,7 @@ export const deleteDns: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<DeleteDnsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DnsDeleteResponse>,
+  output: __S(288, __c36, 0) as any as S.Schema<DnsDeleteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1168,8 +1168,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteRuleResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<DeleteRuleResponse>,
   errors: [EmailRoutingRuleNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1183,8 +1183,8 @@ export const disableEmailRouting: API.OperationMethod<
   DisableEmailRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DisableEmailRoutingRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DisableEmailRoutingResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DisableEmailRoutingRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DisableEmailRoutingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1194,8 +1194,8 @@ export type EditError = CloudflareOpError;
 /** Update the settings for your Email Routing zone. */
 export const edit: API.OperationMethod<EditRequest, EditResponse, EditError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(31, __c3, 7) as any as S.Schema<EditRequest>,
-    output: __S(14, __c1, 6) as any as S.Schema<EditResponse>,
+    input: __S(56, __c7, 0) as any as S.Schema<EditRequest>,
+    output: __S(288, __c36, 0) as any as S.Schema<EditResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -1209,8 +1209,8 @@ export const editAddress: API.OperationMethod<
   EditAddressError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<EditAddressRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<EditAddressResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<EditAddressRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<EditAddressResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1224,8 +1224,8 @@ export const enableEmailRouting: API.OperationMethod<
   EnableEmailRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<EnableEmailRoutingRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<EnableEmailRoutingResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<EnableEmailRoutingRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<EnableEmailRoutingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1239,8 +1239,8 @@ export const getAddress: API.OperationMethod<
   GetAddressError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetAddressRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetAddressResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetAddressRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<GetAddressResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1254,8 +1254,8 @@ export const getDns: API.OperationMethod<
   GetDnsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetDnsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetDnsResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetDnsRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<GetDnsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1269,8 +1269,8 @@ export const getEmailRouting: API.OperationMethod<
   GetEmailRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetEmailRoutingRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetEmailRoutingResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetEmailRoutingRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<GetEmailRoutingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1284,8 +1284,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetRuleRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetRuleResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetRuleRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<GetRuleResponse>,
   errors: [Forbidden, EmailRoutingRuleNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1299,8 +1299,8 @@ export const getRuleCatchAll: API.OperationMethod<
   GetRuleCatchAllError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetRuleCatchAllRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetRuleCatchAllResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetRuleCatchAllRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<GetRuleCatchAllResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1316,8 +1316,8 @@ export const listAddresses: API.PaginatedOperationMethod<
   AddressesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(50, __c6, 2) as any as S.Schema<ListAddressesRequest>,
-    output: __S(53, __c6, 5) as any as S.Schema<ListAddressesResponse>,
+    input: __S(136, __c17, 0) as any as S.Schema<ListAddressesRequest>,
+    output: __S(139, __c17, 3) as any as S.Schema<ListAddressesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1342,8 +1342,8 @@ export const listRules: API.PaginatedOperationMethod<
   GetRuleResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(54, __c6, 6) as any as S.Schema<ListRulesRequest>,
-    output: __S(56, __c7, 0) as any as S.Schema<ListRulesResponse>,
+    input: __S(144, __c18, 0) as any as S.Schema<ListRulesRequest>,
+    output: __S(146, __c18, 2) as any as S.Schema<ListRulesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1366,8 +1366,8 @@ export const patchDns: API.OperationMethod<
   PatchDnsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<PatchDnsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<PatchDnsResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<PatchDnsRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<PatchDnsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1385,8 @@ export const putRuleCatchAll: API.OperationMethod<
   PutRuleCatchAllError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<PutRuleCatchAllRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PutRuleCatchAllResponse>,
+  input: __S(162, __c20, 2) as any as S.Schema<PutRuleCatchAllRequest>,
+  output: __S(165, __c20, 5) as any as S.Schema<PutRuleCatchAllResponse>,
   errors: [
     Forbidden,
     DestinationNotVerified,
@@ -1406,8 +1406,8 @@ export const rulesListForAccount: API.OperationMethod<
   RulesListForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<RulesListForAccountRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<RulesListResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<RulesListForAccountRequest>,
+  output: __S(180, __c22, 4) as any as S.Schema<RulesListResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1421,8 +1421,8 @@ export const rulesListForZone: API.OperationMethod<
   RulesListForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<RulesListForZoneRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<RulesListResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<RulesListForZoneRequest>,
+  output: __S(180, __c22, 4) as any as S.Schema<RulesListResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1436,8 +1436,8 @@ export const unlock: API.OperationMethod<
   UnlockError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<UnlockRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UnlockResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<UnlockRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<UnlockResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1451,8 +1451,8 @@ export const update: API.OperationMethod<
   UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<UpdateRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<UpdateRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<UpdateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1466,8 +1466,8 @@ export const updateRule: API.OperationMethod<
   UpdateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<UpdateRuleRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<UpdateRuleResponse>,
+  input: __S(210, __c26, 2) as any as S.Schema<UpdateRuleRequest>,
+  output: __S(213, __c26, 5) as any as S.Schema<UpdateRuleResponse>,
   errors: [WorkerScriptNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1479,173 +1479,20 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          enabled: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/accounts/{account_id}/email/routing/rules", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "AccountRulesListForAccountRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           type: S.String,
-          value: S.optional(S.NullOr(__S(1, __c0, 1))),
-        }),
-      ).annotate({
-        identifier: "AccountRulesListResultItemActionsItem",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          field: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "AccountRulesListResultItemMatchersItem",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          tag: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "AccountRulesListResultItemZone",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(__S(3, __c0, 3))),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(__S(5, __c0, 5))),
-          name: S.optional(S.NullOr(S.String)),
-          priority: S.optional(S.NullOr(S.Number)),
-          source: S.optional(S.NullOr(S.String)),
-          tag: S.optional(S.NullOr(S.String)),
-          zone: S.optional(S.NullOr(__S(6, __c0, 6))),
-        }),
-      ).annotate({
-        identifier: "AccountRulesListResultItem",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        __S(8, __c1, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "AccountRulesListResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          enabled: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/email/routing/rules", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "AccountRulesListForZoneRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          email: S.String,
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/email/routing/addresses",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateAddressRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          created: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          modified: S.optional(S.NullOr(S.String)),
-          tag: S.optional(S.NullOr(S.String)),
-          verified: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateAddressResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          name: S.optional(S.String),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/email/routing/dns", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateDnsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          enabled: S.Boolean,
-          name: S.String,
-          created: S.optional(S.NullOr(S.String)),
-          modified: S.optional(S.NullOr(S.String)),
-          skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
-          status: S.optional(S.NullOr(S.String)),
-          supportSubaddress: S.optional(S.NullOr(S.Boolean).pipe(T.Body("support_subaddress"))),
-          tag: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateDnsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          value: S.optional(__S(1, __c0, 1)),
+          value: S.optional(__S(232, __c29, 0)),
         }),
       ).annotate({
         identifier: "RulesCreateRequestActionsItem",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          field: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RulesCreateRequestMatchersItem",
-      });
+      return S.Array(__S(0, __c0, 0));
     case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          actions: __S(16, __c2, 0),
-          matchers: __S(18, __c2, 2),
+          actions: __S(1, __c0, 1),
+          matchers: __S(9, __c1, 1),
           enabled: S.optional(S.Boolean),
           name: S.optional(S.String),
           ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
@@ -1655,31 +1502,51 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/email/routing/rules", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateRuleRequest" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: S.optional(S.NullOr(__S(1, __c0, 1))),
+          value: S.optional(S.NullOr(__S(232, __c29, 0))),
         }),
       ).annotate({
         identifier: "RulesCreateResponseActionsItem",
       });
+    case 4:
+      return S.Array(__S(3, __c0, 3));
     case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(__S(21, __c2, 5))),
+          actions: S.optional(S.NullOr(__S(4, __c0, 4))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(__S(5, __c0, 5))),
+          matchers: S.optional(S.NullOr(__S(241, __c30, 1))),
           name: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
           source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateRuleResponse" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          field: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RulesCreateRequestMatchersItem",
+      });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1706,7 +1573,11 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}/email/routing/dns", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteDnsRequest" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1721,31 +1592,35 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRuleRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: S.optional(S.NullOr(__S(1, __c0, 1))),
+          value: S.optional(S.NullOr(__S(232, __c29, 0))),
         }),
       ).annotate({
         identifier: "RulesDeleteResponseActionsItem",
       });
+    case 2:
+      return S.Array(__S(33, __c4, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(__S(27, __c3, 3))),
+          actions: S.optional(S.NullOr(__S(34, __c4, 2))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(__S(5, __c0, 5))),
+          matchers: S.optional(S.NullOr(__S(241, __c30, 1))),
           name: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
           source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRuleResponse" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1757,7 +1632,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DisableEmailRoutingRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1773,7 +1652,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DisableEmailRoutingResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1786,7 +1669,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "EditRequest" });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1804,7 +1687,11 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "EditAddressRequest" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1814,7 +1701,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "EnableEmailRoutingRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1829,7 +1720,11 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAddressRequest" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1838,7 +1733,7 @@ function __c4(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/email/routing/dns", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDnsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.NullOr(S.String)),
@@ -1848,13 +1743,17 @@ function __c4(j: number): any {
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "DnsGetResultItem" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
       return S.suspend(() =>
-        __S(37, __c4, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(90, __c11, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDnsResponse" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1864,7 +1763,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "GetEmailRoutingRequest" });
   }
 }
-function __c5(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1881,31 +1780,39 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRuleRequest" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: S.optional(S.NullOr(__S(1, __c0, 1))),
+          value: S.optional(S.NullOr(__S(232, __c29, 0))),
         }),
       ).annotate({
         identifier: "RulesGetResponseActionsItem",
       });
+    case 1:
+      return S.Array(__S(112, __c14, 0));
     case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(__S(42, __c5, 2))),
+          actions: S.optional(S.NullOr(__S(113, __c14, 1))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(__S(5, __c0, 5))),
+          matchers: S.optional(S.NullOr(__S(241, __c30, 1))),
           name: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
           source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRuleResponse" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1919,18 +1826,34 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRuleCatchAllRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: S.optional(S.NullOr(__S(1, __c0, 1))),
+          value: S.optional(S.NullOr(__S(232, __c29, 0))),
         }),
       ).annotate({
         identifier: "RulesCatchAllsGetResponseActionsItem",
       });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(121, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          actions: S.optional(S.NullOr(__S(122, __c15, 2))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          matchers: S.optional(S.NullOr(__S(129, __c16, 1))),
+          name: S.optional(S.NullOr(S.String)),
+          source: S.optional(S.NullOr(S.String)),
+          tag: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetRuleCatchAllResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -1938,25 +1861,13 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RulesCatchAllsGetResponseMatchersItem",
       });
+    case 1:
+      return S.Array(__S(128, __c16, 0));
   }
 }
-function __c6(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(__S(46, __c5, 6))),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(__S(48, __c6, 0))),
-          name: S.optional(S.NullOr(S.String)),
-          source: S.optional(S.NullOr(S.String)),
-          tag: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetRuleCatchAllResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1974,7 +1885,7 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAddressesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -1985,16 +1896,20 @@ function __c6(j: number): any {
           verified: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "AddressesListResultItem" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(137, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(52, __c6, 4).pipe(T.EnvelopePayload()),
+          result: __S(138, __c17, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAddressesResponse" });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2005,20 +1920,20 @@ function __c6(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/email/routing/rules", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRulesRequest" });
-    case 7:
-      return S.Array(__S(43, __c5, 3));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(114, __c14, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(55, __c6, 7).pipe(T.EnvelopePayload()),
+          result: __S(145, __c18, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRulesResponse" });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2027,23 +1942,27 @@ function __c7(j: number): any {
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/email/routing/dns", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchDnsRequest" });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: S.optional(__S(1, __c0, 1)),
+          value: S.optional(__S(232, __c29, 0)),
         }),
       ).annotate({
         identifier: "RulesCatchAllsUpdateRequestActionsItem",
       });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(160, __c20, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          actions: __S(59, __c7, 3),
-          matchers: __S(48, __c6, 0),
+          actions: __S(161, __c20, 1),
+          matchers: __S(129, __c16, 1),
           enabled: S.optional(S.Boolean),
           name: S.optional(S.String),
           ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
@@ -2058,24 +1977,24 @@ function __c7(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutRuleCatchAllRequest" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: S.optional(S.NullOr(__S(1, __c0, 1))),
+          value: S.optional(S.NullOr(__S(232, __c29, 0))),
         }),
       ).annotate({
         identifier: "RulesCatchAllsUpdateResponseActionsItem",
       });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(163, __c20, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(__S(62, __c7, 6))),
+          actions: S.optional(S.NullOr(__S(164, __c20, 4))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(__S(48, __c6, 0))),
+          matchers: S.optional(S.NullOr(__S(129, __c16, 1))),
           name: S.optional(S.NullOr(S.String)),
           source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
@@ -2083,7 +2002,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "PutRuleCatchAllResponse" });
   }
 }
-function __c8(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2100,38 +2019,46 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "RulesListForAccountRequest",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: S.optional(S.NullOr(__S(1, __c0, 1))),
+          value: S.optional(S.NullOr(__S(232, __c29, 0))),
         }),
       ).annotate({
         identifier: "RulesListResultItemActionsItem",
       });
+    case 1:
+      return S.Array(__S(176, __c22, 0));
     case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(__S(66, __c8, 2))),
+          actions: S.optional(S.NullOr(__S(177, __c22, 1))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(__S(5, __c0, 5))),
+          matchers: S.optional(S.NullOr(__S(241, __c30, 1))),
           name: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
           source: S.optional(S.NullOr(S.String)),
           tag: S.optional(S.NullOr(S.String)),
-          zone: S.optional(S.NullOr(__S(6, __c0, 6))),
+          zone: S.optional(S.NullOr(__S(248, __c31, 0))),
         }),
       ).annotate({ identifier: "RulesListResultItem" });
+    case 3:
+      return S.Array(__S(178, __c22, 2));
     case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
       return S.suspend(() =>
-        __S(68, __c8, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(179, __c22, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RulesListResponse" });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2142,7 +2069,11 @@ function __c8(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/email/routing/rules", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RulesListForZoneRequest" });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2153,7 +2084,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "UnlockRequest" });
   }
 }
-function __c9(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2166,24 +2097,28 @@ function __c9(j: number): any {
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/email/routing", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateRequest" });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: S.optional(__S(1, __c0, 1)),
+          value: S.optional(__S(232, __c29, 0)),
         }),
       ).annotate({
         identifier: "RulesUpdateRequestActionsItem",
       });
+    case 1:
+      return S.Array(__S(208, __c26, 0));
     case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           ruleIdentifier: S.String.pipe(T.Label("rule_identifier")),
-          actions: __S(74, __c9, 2),
-          matchers: __S(18, __c2, 2),
+          actions: __S(209, __c26, 1),
+          matchers: __S(9, __c1, 1),
           enabled: S.optional(S.Boolean),
           name: S.optional(S.String),
           ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
@@ -2199,24 +2134,24 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateRuleRequest" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: S.optional(S.NullOr(__S(1, __c0, 1))),
+          value: S.optional(S.NullOr(__S(232, __c29, 0))),
         }),
       ).annotate({
         identifier: "RulesUpdateResponseActionsItem",
       });
+    case 4:
+      return S.Array(__S(211, __c26, 3));
     case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          actions: S.optional(S.NullOr(__S(77, __c9, 5))),
+          actions: S.optional(S.NullOr(__S(212, __c26, 4))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          matchers: S.optional(S.NullOr(__S(5, __c0, 5))),
+          matchers: S.optional(S.NullOr(__S(241, __c30, 1))),
           name: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
           source: S.optional(S.NullOr(S.String)),
@@ -2225,7 +2160,179 @@ function __c9(j: number): any {
       ).annotate({ identifier: "UpdateRuleResponse" });
   }
 }
-
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          enabled: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/accounts/{account_id}/email/routing/rules", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "AccountRulesListForAccountRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          value: S.optional(S.NullOr(__S(232, __c29, 0))),
+        }),
+      ).annotate({
+        identifier: "AccountRulesListResultItemActionsItem",
+      });
+    case 1:
+      return S.Array(__S(224, __c28, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          actions: S.optional(S.NullOr(__S(225, __c28, 1))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          matchers: S.optional(S.NullOr(__S(241, __c30, 1))),
+          name: S.optional(S.NullOr(S.String)),
+          priority: S.optional(S.NullOr(S.Number)),
+          source: S.optional(S.NullOr(S.String)),
+          tag: S.optional(S.NullOr(S.String)),
+          zone: S.optional(S.NullOr(__S(248, __c31, 0))),
+        }),
+      ).annotate({
+        identifier: "AccountRulesListResultItem",
+      });
+    case 3:
+      return S.Array(__S(226, __c28, 2));
+    case 4:
+      return S.suspend(() =>
+        __S(227, __c28, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "AccountRulesListResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          field: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "AccountRulesListResultItemMatchersItem",
+      });
+    case 1:
+      return S.Array(__S(240, __c30, 0));
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          tag: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "AccountRulesListResultItemZone",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          enabled: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/email/routing/rules", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "AccountRulesListForZoneRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          email: S.String,
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/email/routing/addresses",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAddressRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          created: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          modified: S.optional(S.NullOr(S.String)),
+          tag: S.optional(S.NullOr(S.String)),
+          verified: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAddressResponse" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          name: S.optional(S.String),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/email/routing/dns", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateDnsRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          enabled: S.Boolean,
+          name: S.String,
+          created: S.optional(S.NullOr(S.String)),
+          modified: S.optional(S.NullOr(S.String)),
+          skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
+          status: S.optional(S.NullOr(S.String)),
+          supportSubaddress: S.optional(S.NullOr(S.Boolean).pipe(T.Body("support_subaddress"))),
+          tag: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateDnsResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

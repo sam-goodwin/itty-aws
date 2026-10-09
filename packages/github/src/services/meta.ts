@@ -141,7 +141,7 @@ export type GetError = GithubOpError;
 export const get: API.OperationMethod<GetRequest, ApiOverview, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
     input: __S(0, __c0, 0) as any as S.Schema<GetRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<ApiOverview>,
+    output: __S(5, __c0, 5) as any as S.Schema<ApiOverview>,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -155,8 +155,8 @@ export const getAllVersions: API.OperationMethod<
   GetAllVersionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetAllVersionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetAllVersionsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetAllVersionsRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetAllVersionsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -170,8 +170,8 @@ export const getOctocat: API.OperationMethod<
   GetOctocatError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetOctocatRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetOctocatResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetOctocatRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetOctocatResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -185,8 +185,8 @@ export const getZen: API.OperationMethod<
   GetZenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetZenRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetZenResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetZenRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetZenResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -196,8 +196,8 @@ export type Root2Error = GithubOpError;
 /** GitHub API Root Get Hypermedia links to resources accessible in GitHub's REST API */
 export const root2: API.OperationMethod<Root2Request, Root, Root2Error, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(12, __c1, 4) as any as S.Schema<Root2Request>,
-    output: __S(13, __c1, 5) as any as S.Schema<Root>,
+    input: __S(48, __c6, 0) as any as S.Schema<Root2Request>,
+    output: __S(49, __c6, 1) as any as S.Schema<Root>,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -222,92 +222,112 @@ function __c0(j: number): any {
         identifier: "ApiOverviewSshKeyFingerprints",
       });
     case 2:
-      return S.Array(S.String);
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          full_domains: S.optional(__S(2, __c0, 2)),
-          wildcard_domains: S.optional(__S(2, __c0, 2)),
+          full_domains: S.optional(__S(8, __c1, 0)),
+          wildcard_domains: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "ApiOverviewDomainsActionsInbound",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           trust_domain: S.optional(S.String),
-          services: S.optional(__S(2, __c0, 2)),
+          services: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "ApiOverviewDomainsArtifactAttestations",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          website: S.optional(__S(2, __c0, 2)),
-          codespaces: S.optional(__S(2, __c0, 2)),
-          copilot: S.optional(__S(2, __c0, 2)),
-          packages: S.optional(__S(2, __c0, 2)),
-          storage: S.optional(__S(2, __c0, 2)),
-          actions: S.optional(__S(2, __c0, 2)),
-          actions_inbound: S.optional(__S(3, __c0, 3)),
-          artifact_attestations: S.optional(__S(4, __c0, 4)),
+          website: S.optional(__S(8, __c1, 0)),
+          codespaces: S.optional(__S(8, __c1, 0)),
+          copilot: S.optional(__S(8, __c1, 0)),
+          packages: S.optional(__S(8, __c1, 0)),
+          storage: S.optional(__S(8, __c1, 0)),
+          actions: S.optional(__S(8, __c1, 0)),
+          actions_inbound: S.optional(__S(2, __c0, 2)),
+          artifact_attestations: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "ApiOverviewDomains" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           verifiable_password_authentication: S.Boolean,
           ssh_key_fingerprints: S.optional(__S(1, __c0, 1)),
-          ssh_keys: S.optional(__S(2, __c0, 2)),
-          hooks: S.optional(__S(2, __c0, 2)),
-          github_enterprise_importer: S.optional(__S(2, __c0, 2)),
-          web: S.optional(__S(2, __c0, 2)),
-          api: S.optional(__S(2, __c0, 2)),
-          git: S.optional(__S(2, __c0, 2)),
-          packages: S.optional(__S(2, __c0, 2)),
-          pages: S.optional(__S(2, __c0, 2)),
-          importer: S.optional(__S(2, __c0, 2)),
-          actions: S.optional(__S(2, __c0, 2)),
-          actions_macos: S.optional(__S(2, __c0, 2)),
-          codespaces: S.optional(__S(2, __c0, 2)),
-          dependabot: S.optional(__S(2, __c0, 2)),
-          copilot: S.optional(__S(2, __c0, 2)),
-          commit_signing_keys: S.optional(__S(2, __c0, 2)),
-          domains: S.optional(__S(5, __c0, 5)),
+          ssh_keys: S.optional(__S(8, __c1, 0)),
+          hooks: S.optional(__S(8, __c1, 0)),
+          github_enterprise_importer: S.optional(__S(8, __c1, 0)),
+          web: S.optional(__S(8, __c1, 0)),
+          api: S.optional(__S(8, __c1, 0)),
+          git: S.optional(__S(8, __c1, 0)),
+          packages: S.optional(__S(8, __c1, 0)),
+          pages: S.optional(__S(8, __c1, 0)),
+          importer: S.optional(__S(8, __c1, 0)),
+          actions: S.optional(__S(8, __c1, 0)),
+          actions_macos: S.optional(__S(8, __c1, 0)),
+          codespaces: S.optional(__S(8, __c1, 0)),
+          dependabot: S.optional(__S(8, __c1, 0)),
+          copilot: S.optional(__S(8, __c1, 0)),
+          commit_signing_keys: S.optional(__S(8, __c1, 0)),
+          domains: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({ identifier: "ApiOverview" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/versions", code: 200 })),
-      ).annotate({ identifier: "GetAllVersionsRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(2, __c0, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/versions", code: 200 })),
+      ).annotate({ identifier: "GetAllVersionsRequest" });
+    case 1:
+      return S.suspend(() => __S(8, __c1, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAllVersionsResponse",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           s: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/octocat", code: 200 })),
       ).annotate({ identifier: "GetOctocatRequest" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetOctocatResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/zen", code: 200 })),
       ).annotate({ identifier: "GetZenRequest" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/", code: 200 })),
       ).annotate({ identifier: "Root2Request" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           current_user_url: S.String,
@@ -347,7 +367,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "Root" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

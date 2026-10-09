@@ -418,8 +418,8 @@ export const aggregatePageviews: API.OperationMethod<
   AggregatePageviewsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AggregatePageviewsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AggregatePageviewsResponse>,
+  input: __S(9, __c1, 1) as any as S.Schema<AggregatePageviewsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<AggregatePageviewsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -433,8 +433,8 @@ export const countEvents: API.OperationMethod<
   CountEventsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CountEventsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CountEventsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CountEventsRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CountEventsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -453,8 +453,8 @@ export const countPageviews: API.OperationMethod<
   CountPageviewsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CountPageviewsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CountPageviewsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CountPageviewsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<CountPageviewsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -472,8 +472,8 @@ export const createSpeedInsightsToggle: API.OperationMethod<
   CreateSpeedInsightsToggleError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateSpeedInsightsToggleRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateSpeedInsightsToggleResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateSpeedInsightsToggleRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<CreateSpeedInsightsToggleResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -486,8 +486,8 @@ export const createWebInsightsToggle: API.OperationMethod<
   CreateWebInsightsToggleError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateWebInsightsToggleRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateWebInsightsToggleResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateWebInsightsToggleRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<CreateWebInsightsToggleResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -535,13 +535,17 @@ function __c0(j: number): any {
           version: S.Number,
         }),
       ).annotate({ identifier: "AggregateEventsResponse" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
-          by: __S(5, __c0, 5).pipe(T.Query()),
+          by: __S(8, __c1, 0).pipe(T.Query()),
           since: S.Unknown.pipe(T.Query()),
           until: S.Unknown.pipe(T.Query()),
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -554,17 +558,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AggregatePageviewsRequest",
       });
-    case 7:
+    case 2:
       return S.Array(S.Unknown);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          groupBy: S.optional(__S(7, __c0, 7)),
+          groupBy: S.optional(__S(10, __c1, 2)),
           limit: S.Number,
           since: S.String,
           until: S.String,
@@ -572,17 +572,21 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AggregatePageviewsResponseQuery",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           data: S.Unknown,
-          query: __S(8, __c1, 0),
+          query: __S(11, __c1, 3),
           version: S.Number,
         }),
       ).annotate({
         identifier: "AggregatePageviewsResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
@@ -593,7 +597,19 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/query/web-analytics/events/count", code: 200 })),
       ).annotate({ identifier: "CountEventsRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.Unknown,
+          query: __S(24, __c3, 0),
+          version: S.Number,
+        }),
+      ).annotate({ identifier: "CountEventsResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
@@ -601,15 +617,11 @@ function __c1(j: number): any {
           until: S.String,
         }),
       ).annotate({ identifier: "CountEventsResponseQuery" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.Unknown,
-          query: __S(11, __c1, 3),
-          version: S.Number,
-        }),
-      ).annotate({ identifier: "CountEventsResponse" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
@@ -620,15 +632,19 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/query/web-analytics/visits/count", code: 200 })),
       ).annotate({ identifier: "CountPageviewsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           data: S.Unknown,
-          query: __S(11, __c1, 3),
+          query: __S(24, __c3, 0),
           version: S.Number,
         }),
       ).annotate({ identifier: "CountPageviewsResponse" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
@@ -639,7 +655,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -649,7 +665,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateSpeedInsightsToggleResponse",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
@@ -660,7 +680,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

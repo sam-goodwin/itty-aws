@@ -590,7 +590,7 @@ export const DeleteFluidRelayContainer: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteFluidRelayContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteFluidRelayContainerResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteFluidRelayContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -604,8 +604,8 @@ export const DeleteFluidRelayServer: API.OperationMethod<
   DeleteFluidRelayServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteFluidRelayServerRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteFluidRelayServerResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteFluidRelayServerRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<DeleteFluidRelayServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -619,8 +619,8 @@ export const FluidRelayServersCreateOrUpdate: API.OperationMethod<
   FluidRelayServersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<FluidRelayServersCreateOrUpdateRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<FluidRelayServersCreateOrUpdateResponse>,
+  input: __S(81, __c5, 1) as any as S.Schema<FluidRelayServersCreateOrUpdateRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<FluidRelayServersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -634,8 +634,8 @@ export const GetFluidRelayContainer: API.OperationMethod<
   GetFluidRelayContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetFluidRelayContainerRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetFluidRelayContainerResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetFluidRelayContainerRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<GetFluidRelayContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -649,8 +649,8 @@ export const GetFluidRelayServer: API.OperationMethod<
   GetFluidRelayServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetFluidRelayServerRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetFluidRelayServerResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetFluidRelayServerRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<GetFluidRelayServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -664,8 +664,8 @@ export const ListFluidRelayContainerByFluidRelayServers: API.OperationMethod<
   ListFluidRelayContainerByFluidRelayServersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListFluidRelayContainerByFluidRelayServersRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<FluidRelayContainerList>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListFluidRelayContainerByFluidRelayServersRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<FluidRelayContainerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -679,8 +679,8 @@ export const ListFluidRelayOperations: API.OperationMethod<
   ListFluidRelayOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListFluidRelayOperationsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<OperationListResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListFluidRelayOperationsRequest>,
+  output: __S(212, __c13, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -694,8 +694,8 @@ export const ListFluidRelayServerByResourceGroup: API.OperationMethod<
   ListFluidRelayServerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListFluidRelayServerByResourceGroupRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<FluidRelayServerList>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListFluidRelayServerByResourceGroupRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<FluidRelayServerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -709,8 +709,8 @@ export const ListFluidRelayServerBySubscription: API.OperationMethod<
   ListFluidRelayServerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListFluidRelayServerBySubscriptionRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<FluidRelayServerList>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListFluidRelayServerBySubscriptionRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<FluidRelayServerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -724,8 +724,8 @@ export const ListFluidRelayServerKeys: API.OperationMethod<
   ListFluidRelayServerKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListFluidRelayServerKeysRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<FluidRelayServerKeys>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListFluidRelayServerKeysRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<FluidRelayServerKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -739,8 +739,8 @@ export const RegenerateFluidRelayServerKey: API.OperationMethod<
   RegenerateFluidRelayServerKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<RegenerateFluidRelayServerKeyRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<FluidRelayServerKeys>,
+  input: __S(48, __c3, 0) as any as S.Schema<RegenerateFluidRelayServerKeyRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<FluidRelayServerKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -754,8 +754,8 @@ export const UpdateFluidRelayServer: API.OperationMethod<
   UpdateFluidRelayServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<UpdateFluidRelayServerRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<UpdateFluidRelayServerResponse>,
+  input: __S(65, __c4, 1) as any as S.Schema<UpdateFluidRelayServerRequest>,
+  output: __S(66, __c4, 2) as any as S.Schema<UpdateFluidRelayServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -782,11 +782,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteFluidRelayContainerRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteFluidRelayContainerResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -803,69 +811,104 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteFluidRelayServerRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteFluidRelayServerResponse",
       });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          identityType: S.optional(S.String),
-          userAssignedIdentityResourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          keyEncryptionKeyIdentity: S.optional(__S(5, __c0, 5)),
-          keyEncryptionKeyUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomerManagedKeyEncryptionProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customerManagedKeyEncryption: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "EncryptionProperties" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroup: S.String.pipe(T.Label()),
+          fluidRelayServerName: S.String.pipe(T.Label()),
+          keyName: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/regenerateKey",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RegenerateFluidRelayServerKeyRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          encryption: S.optional(__S(115, __c7, 3)),
+        }),
+      ).annotate({
+        identifier: "FluidRelayServerUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroup: S.String.pipe(T.Label()),
+          fluidRelayServerName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(64, __c4, 0)),
+          tags: S.optional(__S(112, __c7, 0)),
+          identity: S.optional(__S(97, __c6, 1)),
+          location: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}",
+            code: 200,
+            apiVersion: "2022-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateFluidRelayServerRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(112, __c7, 0)),
+          location: S.String,
+          properties: S.optional(__S(118, __c7, 6)),
+          systemData: S.optional(__S(144, __c9, 0)),
+          identity: S.optional(__S(121, __c7, 9)),
+        }),
+      ).annotate({
+        identifier: "UpdateFluidRelayServerResponse",
+      });
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          encryption: S.optional(__S(7, __c0, 7)),
+          encryption: S.optional(__S(115, __c7, 3)),
           storagesku: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FluidRelayServerPropertiesInput",
       });
     case 1:
-      return S.Record(S.String, __S(1, __c0, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "IdentityInput" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
           fluidRelayServerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(112, __c7, 0)),
           location: S.String,
-          properties: S.optional(__S(8, __c1, 0)),
-          identity: S.optional(__S(10, __c1, 2)),
+          properties: S.optional(__S(80, __c5, 0)),
+          identity: S.optional(__S(97, __c6, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -877,29 +920,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "FluidRelayServersCreateOrUpdateRequest",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ordererEndpoints: S.optional(__S(12, __c1, 4)),
-          storageEndpoints: S.optional(__S(12, __c1, 4)),
-          serviceEndpoints: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "FluidRelayEndpoints" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          frsTenantId: S.optional(S.String),
-          fluidRelayEndpoints: S.optional(__S(13, __c1, 5)),
-          provisioningState: S.optional(S.String),
-          encryption: S.optional(__S(7, __c0, 7)),
-          storagesku: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FluidRelayServerProperties",
-      });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -912,11 +933,87 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "FluidRelayServersCreateOrUpdateResponseSystemData",
       });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(112, __c7, 0)),
+          location: S.String,
+          properties: S.optional(__S(118, __c7, 6)),
+          systemData: S.optional(__S(82, __c5, 2)),
+          identity: S.optional(__S(121, __c7, 9)),
+        }),
+      ).annotate({
+        identifier: "FluidRelayServersCreateOrUpdateResponse",
+      });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, __S(16, __c1, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(96, __c6, 0)),
+        }),
+      ).annotate({ identifier: "IdentityInput" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          identityType: S.optional(S.String),
+          userAssignedIdentityResourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          keyEncryptionKeyIdentity: S.optional(__S(113, __c7, 1)),
+          keyEncryptionKeyUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomerManagedKeyEncryptionProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          customerManagedKeyEncryption: S.optional(__S(114, __c7, 2)),
+        }),
+      ).annotate({ identifier: "EncryptionProperties" });
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ordererEndpoints: S.optional(__S(116, __c7, 4)),
+          storageEndpoints: S.optional(__S(116, __c7, 4)),
+          serviceEndpoints: S.optional(__S(116, __c7, 4)),
+        }),
+      ).annotate({ identifier: "FluidRelayEndpoints" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          frsTenantId: S.optional(S.String),
+          fluidRelayEndpoints: S.optional(__S(117, __c7, 5)),
+          provisioningState: S.optional(S.String),
+          encryption: S.optional(__S(115, __c7, 3)),
+          storagesku: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FluidRelayServerProperties",
+      });
+    case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -925,33 +1022,22 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "IdentityUserAssignedIdentitiesValue",
       });
-    case 1:
-      return S.Record(S.String, __S(16, __c2, 0));
-    case 2:
+    case 8:
+      return S.Record(S.String, __S(119, __c7, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(17, __c2, 1)),
+          userAssignedIdentities: S.optional(__S(120, __c7, 8)),
         }),
       ).annotate({ identifier: "Identity" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(14, __c1, 6)),
-          systemData: S.optional(__S(15, __c1, 7)),
-          identity: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "FluidRelayServersCreateOrUpdateResponse",
-      });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -969,19 +1055,23 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetFluidRelayContainerRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          frsTenantId: S.optional(S.String),
-          frsContainerId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          lastAccessTime: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(160, __c10, 0)),
+          systemData: S.optional(__S(144, __c9, 0)),
         }),
       ).annotate({
-        identifier: "FluidRelayContainerProperties",
+        identifier: "GetFluidRelayContainerResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -994,21 +1084,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetFluidRelayContainerResponseSystemData",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(21, __c2, 5)),
-          systemData: S.optional(__S(22, __c2, 6)),
+          frsTenantId: S.optional(S.String),
+          frsContainerId: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          lastAccessTime: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GetFluidRelayContainerResponse",
+        identifier: "FluidRelayContainerProperties",
       });
   }
 }
-function __c3(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1033,16 +1127,20 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(112, __c7, 0)),
           location: S.String,
-          properties: S.optional(__S(14, __c1, 6)),
-          systemData: S.optional(__S(22, __c2, 6)),
-          identity: S.optional(__S(18, __c2, 2)),
+          properties: S.optional(__S(118, __c7, 6)),
+          systemData: S.optional(__S(144, __c9, 0)),
+          identity: S.optional(__S(121, __c7, 9)),
         }),
       ).annotate({
         identifier: "GetFluidRelayServerResponse",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1059,26 +1157,30 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListFluidRelayContainerByFluidRelayServersRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(21, __c2, 5)),
-          systemData: S.optional(__S(22, __c2, 6)),
+          properties: S.optional(__S(160, __c10, 0)),
+          systemData: S.optional(__S(144, __c9, 0)),
         }),
       ).annotate({ identifier: "FluidRelayContainer" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(28, __c3, 4)),
+          value: S.optional(__S(194, __c12, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FluidRelayContainerList" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1091,7 +1193,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListFluidRelayOperationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -1100,28 +1202,28 @@ function __c3(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(31, __c3, 7)),
-          isDataAction: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "OperationResult" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(33, __c4, 1)),
+          name: S.optional(S.String),
+          display: S.optional(__S(209, __c13, 1)),
+          isDataAction: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "OperationResult" });
+    case 3:
+      return S.Array(__S(210, __c13, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(211, __c13, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1137,29 +1239,37 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListFluidRelayServerByResourceGroupRequest",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(112, __c7, 0)),
           location: S.String,
-          properties: S.optional(__S(14, __c1, 6)),
-          systemData: S.optional(__S(22, __c2, 6)),
-          identity: S.optional(__S(18, __c2, 2)),
+          properties: S.optional(__S(118, __c7, 6)),
+          systemData: S.optional(__S(144, __c9, 0)),
+          identity: S.optional(__S(121, __c7, 9)),
         }),
       ).annotate({ identifier: "FluidRelayServer" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(240, __c15, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(37, __c4, 5),
+          value: __S(241, __c15, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FluidRelayServerList" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1176,7 +1286,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1195,78 +1305,19 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListFluidRelayServerKeysRequest",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key1: S.optional(S.String),
           key2: S.optional(S.String),
         }),
       ).annotate({ identifier: "FluidRelayServerKeys" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroup: S.String.pipe(T.Label()),
-          fluidRelayServerName: S.String.pipe(T.Label()),
-          keyName: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/regenerateKey",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RegenerateFluidRelayServerKeyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          encryption: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "FluidRelayServerUpdateProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroup: S.String.pipe(T.Label()),
-          fluidRelayServerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(43, __c5, 3)),
-          tags: S.optional(__S(4, __c0, 4)),
-          identity: S.optional(__S(10, __c1, 2)),
-          location: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}",
-            code: 200,
-            apiVersion: "2022-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateFluidRelayServerRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(14, __c1, 6)),
-          systemData: S.optional(__S(22, __c2, 6)),
-          identity: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "UpdateFluidRelayServerResponse",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

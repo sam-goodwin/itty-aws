@@ -364,8 +364,8 @@ export const createPrimaryIp: API.OperationMethod<
   CreatePrimaryIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreatePrimaryIpRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreatePrimaryIpResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreatePrimaryIpRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<CreatePrimaryIpResponse>,
   errors: [PrimaryIpLimitExceeded, UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -379,8 +379,8 @@ export const deletePrimaryIp: API.OperationMethod<
   DeletePrimaryIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeletePrimaryIpRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeletePrimaryIpResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeletePrimaryIpRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeletePrimaryIpResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -394,8 +394,8 @@ export const getPrimaryIp: API.OperationMethod<
   GetPrimaryIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetPrimaryIpRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetPrimaryIpResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetPrimaryIpRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<GetPrimaryIpResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -411,8 +411,8 @@ export const listPrimaryIps: API.PaginatedOperationMethod<
   ListPrimaryIpsResponsePrimaryIpsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18, __c2, 2) as any as S.Schema<ListPrimaryIpsRequest>,
-    output: __S(23, __c2, 7) as any as S.Schema<ListPrimaryIpsResponse>,
+    input: __S(33, __c4, 1) as any as S.Schema<ListPrimaryIpsRequest>,
+    output: __S(38, __c4, 6) as any as S.Schema<ListPrimaryIpsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -435,8 +435,8 @@ export const updatePrimaryIp: API.OperationMethod<
   UpdatePrimaryIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<UpdatePrimaryIpRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<UpdatePrimaryIpResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdatePrimaryIpRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<UpdatePrimaryIpResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -446,12 +446,10 @@ export const updatePrimaryIp: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(8, __c1, 0)),
           type: S.String,
           location: S.optional(S.Unknown),
           assignee_type: S.optional(S.String),
@@ -459,7 +457,75 @@ function __c0(j: number): any {
           auto_delete: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/primary_ips", code: 200 })),
       ).annotate({ identifier: "CreatePrimaryIpRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          labels: __S(8, __c1, 0),
+          created: S.String,
+          blocked: S.Boolean,
+          location: __S(9, __c1, 1),
+          ip: S.String,
+          dns_ptr: __S(11, __c1, 3),
+          protection: __S(12, __c1, 4),
+          type: S.String,
+          auto_delete: S.Boolean,
+          assignee_type: S.String,
+          assignee_id: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreatePrimaryIpResponsePrimaryIp",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreatePrimaryIpResponseActionResourcesItem",
+      });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "CreatePrimaryIpResponseActionError",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(3, __c0, 3),
+          error: S.NullOr(__S(4, __c0, 4)),
+        }),
+      ).annotate({
+        identifier: "CreatePrimaryIpResponseAction",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          primary_ip: __S(1, __c0, 1),
+          action: S.optional(S.NullOr(__S(5, __c0, 5))),
+        }),
+      ).annotate({ identifier: "CreatePrimaryIpResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -474,7 +540,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreatePrimaryIpResponsePrimaryIpLocation",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ip: S.String,
@@ -483,117 +549,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreatePrimaryIpResponsePrimaryIpDnsPtrItem",
       });
+    case 3:
+      return S.Array(__S(10, __c1, 2));
     case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           delete: S.Boolean,
         }),
       ).annotate({
         identifier: "CreatePrimaryIpResponsePrimaryIpProtection",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          labels: __S(0, __c0, 0),
-          created: S.String,
-          blocked: S.Boolean,
-          location: __S(2, __c0, 2),
-          ip: S.String,
-          dns_ptr: __S(4, __c0, 4),
-          protection: __S(5, __c0, 5),
-          type: S.String,
-          auto_delete: S.Boolean,
-          assignee_type: S.String,
-          assignee_id: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreatePrimaryIpResponsePrimaryIp",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreatePrimaryIpResponseActionResourcesItem",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "CreatePrimaryIpResponseActionError",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(8, __c1, 0),
-          error: S.NullOr(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "CreatePrimaryIpResponseAction",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          primary_ip: __S(6, __c0, 6),
-          action: S.optional(S.NullOr(__S(10, __c1, 2))),
-        }),
-      ).annotate({ identifier: "CreatePrimaryIpResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/primary_ips/{id}", code: 200 })),
-      ).annotate({ identifier: "DeletePrimaryIpRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePrimaryIpResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/primary_ips/{id}", code: 200 })),
-      ).annotate({ identifier: "GetPrimaryIpRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          labels: __S(0, __c0, 0),
-          created: S.String,
-          blocked: S.Boolean,
-          location: __S(2, __c0, 2),
-          ip: S.String,
-          dns_ptr: __S(4, __c0, 4),
-          protection: __S(5, __c0, 5),
-          type: S.String,
-          auto_delete: S.Boolean,
-          assignee_type: S.String,
-          assignee_id: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetPrimaryIpResponsePrimaryIp",
       });
   }
 }
@@ -602,12 +566,56 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          primary_ip: __S(15, __c1, 7),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/primary_ips/{id}", code: 200 })),
+      ).annotate({ identifier: "DeletePrimaryIpRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePrimaryIpResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/primary_ips/{id}", code: 200 })),
+      ).annotate({ identifier: "GetPrimaryIpRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          labels: __S(8, __c1, 0),
+          created: S.String,
+          blocked: S.Boolean,
+          location: __S(9, __c1, 1),
+          ip: S.String,
+          dns_ptr: __S(11, __c1, 3),
+          protection: __S(12, __c1, 4),
+          type: S.String,
+          auto_delete: S.Boolean,
+          assignee_type: S.String,
+          assignee_id: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetPrimaryIpResponsePrimaryIp",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          primary_ip: __S(25, __c3, 1),
         }),
       ).annotate({ identifier: "GetPrimaryIpResponse" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
@@ -615,21 +623,21 @@ function __c2(j: number): any {
           ip: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          sort: S.optional(__S(32, __c4, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/primary_ips", code: 200 })),
       ).annotate({ identifier: "ListPrimaryIpsRequest" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0, __c0, 0),
+          labels: __S(8, __c1, 0),
           created: S.String,
           blocked: S.Boolean,
-          location: __S(2, __c0, 2),
+          location: __S(9, __c1, 1),
           ip: S.String,
-          dns_ptr: __S(4, __c0, 4),
-          protection: __S(5, __c0, 5),
+          dns_ptr: __S(11, __c1, 3),
+          protection: __S(12, __c1, 4),
           type: S.String,
           auto_delete: S.Boolean,
           assignee_type: S.String,
@@ -638,9 +646,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListPrimaryIpsResponsePrimaryIpsItem",
       });
+    case 3:
+      return S.Array(__S(34, __c4, 2));
     case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -653,31 +661,31 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListPrimaryIpsResponseMetaPagination",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(21, __c2, 5),
+          pagination: __S(36, __c4, 4),
         }),
       ).annotate({
         identifier: "ListPrimaryIpsResponseMeta",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          primary_ips: __S(20, __c2, 4),
-          meta: __S(22, __c2, 6),
+          primary_ips: __S(35, __c4, 3),
+          meta: __S(37, __c4, 5),
         }),
       ).annotate({ identifier: "ListPrimaryIpsResponse" });
   }
 }
-function __c3(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(8, __c1, 0)),
           auto_delete: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/primary_ips/{id}", code: 200 })),
       ).annotate({ identifier: "UpdatePrimaryIpRequest" });
@@ -686,13 +694,13 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(0, __c0, 0),
+          labels: __S(8, __c1, 0),
           created: S.String,
           blocked: S.Boolean,
-          location: __S(2, __c0, 2),
+          location: __S(9, __c1, 1),
           ip: S.String,
-          dns_ptr: __S(4, __c0, 4),
-          protection: __S(5, __c0, 5),
+          dns_ptr: __S(11, __c1, 3),
+          protection: __S(12, __c1, 4),
           type: S.String,
           auto_delete: S.Boolean,
           assignee_type: S.String,
@@ -704,12 +712,11 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          primary_ip: __S(25, __c3, 1),
+          primary_ip: __S(41, __c5, 1),
         }),
       ).annotate({ identifier: "UpdatePrimaryIpResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

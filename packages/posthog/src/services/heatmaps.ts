@@ -170,8 +170,8 @@ export const listHeatmaps: API.OperationMethod<
   ListHeatmapsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListHeatmapsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ListHeatmapsResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListHeatmapsRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<ListHeatmapsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -225,7 +225,11 @@ function __c0(j: number): any {
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "HeatmapEventsResponse" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -245,7 +249,7 @@ function __c0(j: number): any {
           viewport_width_min: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/heatmaps/", code: 200 })),
       ).annotate({ identifier: "ListHeatmapsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
@@ -254,9 +258,9 @@ function __c0(j: number): any {
           pointer_target_fixed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "HeatmapResponseItem" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
@@ -265,27 +269,22 @@ function __c0(j: number): any {
           median_viewport_height: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "HeatmapFoldSummary" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(6, __c0, 6)),
-          fold: S.optional(S.NullOr(__S(7, __c0, 7))),
+          results: S.optional(__S(10, __c1, 2)),
+          fold: S.optional(S.NullOr(__S(11, __c1, 3))),
           has_more: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "HeatmapsResponse" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() => __S(9, __c1, 1).pipe(T.RawResponseRoot())).annotate({
+    case 5:
+      return S.Array(__S(12, __c1, 4));
+    case 6:
+      return S.suspend(() => __S(13, __c1, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHeatmapsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

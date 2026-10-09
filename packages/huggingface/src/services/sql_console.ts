@@ -100,8 +100,8 @@ export const createEmbed: API.OperationMethod<
   CreateEmbedError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateEmbedRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateEmbedResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateEmbedRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<CreateEmbedResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -115,8 +115,8 @@ export const deleteEmbed: API.OperationMethod<
   DeleteEmbedError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteEmbedRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteEmbedResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteEmbedRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<DeleteEmbedResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -130,8 +130,8 @@ export const hideEmbed: API.OperationMethod<
   HideEmbedError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<HideEmbedRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HideEmbedResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<HideEmbedRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<HideEmbedResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -145,8 +145,8 @@ export const updateEmbed: API.OperationMethod<
   UpdateEmbedError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<UpdateEmbedRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateEmbedResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateEmbedRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<UpdateEmbedResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -154,6 +154,28 @@ export const updateEmbed: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repoType: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          sql: S.String,
+          title: S.String,
+          private: S.optional(S.Boolean),
+          views: __S(5, __c1, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/{repoType}/{namespace}/{repo}/sql-console/embed",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateEmbedRequest" });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -166,31 +188,13 @@ function __c0(j: number): any {
         identifier: "CreateEmbedRequestViewsItem",
       });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(4, __c1, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          repoType: S.String.pipe(T.Label()),
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          sql: S.String,
-          title: S.String,
-          private: S.optional(S.Boolean),
-          views: __S(1, __c0, 1),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/{repoType}/{namespace}/{repo}/sql-console/embed",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateEmbedRequest" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
           repoId: S.String,
-          views: __S(1, __c0, 1),
+          views: __S(5, __c1, 1),
           sql: S.String,
           title: S.String,
           userId: S.String,
@@ -201,7 +205,11 @@ function __c0(j: number): any {
           justification: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateEmbedResponse" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repoType: S.String.pipe(T.Label()),
@@ -216,11 +224,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteEmbedRequest" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteEmbedResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repoType: S.String.pipe(T.Label()),
@@ -235,7 +251,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HideEmbedRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repoType: S.String.pipe(T.Label()),
@@ -255,7 +275,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "UpdateEmbedRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

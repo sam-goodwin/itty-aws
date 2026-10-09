@@ -2378,8 +2378,8 @@ export const disputesAcceptClaim: API.OperationMethod<
   DisputesAcceptClaimError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DisputesAcceptClaimRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SubsequentAction>,
+  input: __S(384, __c12, 0) as any as S.Schema<DisputesAcceptClaimRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<SubsequentAction>,
   errors: [BadRequest, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2393,8 +2393,8 @@ export const disputesAcceptOffer: API.OperationMethod<
   DisputesAcceptOfferError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DisputesAcceptOfferRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SubsequentAction>,
+  input: __S(480, __c15, 0) as any as S.Schema<DisputesAcceptOfferRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<SubsequentAction>,
   errors: [BadRequest, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2408,8 +2408,8 @@ export const disputesAcknowledgeReturnItem: API.OperationMethod<
   DisputesAcknowledgeReturnItemError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DisputesAcknowledgeReturnItemRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SubsequentAction>,
+  input: __S(512, __c16, 0) as any as S.Schema<DisputesAcknowledgeReturnItemRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<SubsequentAction>,
   errors: [BadRequest, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2423,8 +2423,8 @@ export const disputesAdjudicate: API.OperationMethod<
   DisputesAdjudicateError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DisputesAdjudicateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SubsequentAction>,
+  input: __S(544, __c17, 0) as any as S.Schema<DisputesAdjudicateRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<SubsequentAction>,
   errors: [BadRequest, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2438,8 +2438,8 @@ export const disputesAppeal: API.OperationMethod<
   DisputesAppealError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DisputesAppealRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SubsequentAction>,
+  input: __S(576, __c18, 0) as any as S.Schema<DisputesAppealRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<SubsequentAction>,
   errors: [BadRequest, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2453,8 +2453,8 @@ export const disputesDenyOffer: API.OperationMethod<
   DisputesDenyOfferError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DisputesDenyOfferRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SubsequentAction>,
+  input: __S(608, __c19, 0) as any as S.Schema<DisputesDenyOfferRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<SubsequentAction>,
   errors: [BadRequest, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2468,8 +2468,8 @@ export const disputesEscalate: API.OperationMethod<
   DisputesEscalateError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DisputesEscalateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EscalateResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<DisputesEscalateRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<EscalateResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2483,8 +2483,8 @@ export const disputesMakeOffer: API.OperationMethod<
   DisputesMakeOfferError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DisputesMakeOfferRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SubsequentAction>,
+  input: __S(0, __c0, 0) as any as S.Schema<DisputesMakeOfferRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<SubsequentAction>,
   errors: [BadRequest, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2498,8 +2498,8 @@ export const disputesProvideEvidence: API.OperationMethod<
   DisputesProvideEvidenceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DisputesProvideEvidenceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SubsequentAction>,
+  input: __S(96, __c3, 0) as any as S.Schema<DisputesProvideEvidenceRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<SubsequentAction>,
   errors: [BadRequest, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2517,8 +2517,8 @@ export const disputesProvideSupportingInfo: API.OperationMethod<
   DisputesProvideSupportingInfoError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DisputesProvideSupportingInfoRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SubsequentAction>,
+  input: __S(128, __c4, 0) as any as S.Schema<DisputesProvideSupportingInfoRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<SubsequentAction>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2532,8 +2532,8 @@ export const disputesRequireEvidence: API.OperationMethod<
   DisputesRequireEvidenceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DisputesRequireEvidenceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SubsequentAction>,
+  input: __S(160, __c5, 0) as any as S.Schema<DisputesRequireEvidenceRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<SubsequentAction>,
   errors: [BadRequest, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2547,8 +2547,8 @@ export const disputesSendMessage: API.OperationMethod<
   DisputesSendMessageError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DisputesSendMessageRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SubsequentAction>,
+  input: __S(192, __c6, 0) as any as S.Schema<DisputesSendMessageRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<SubsequentAction>,
   errors: [BadRequest, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2562,8 +2562,8 @@ export const getDispute: API.OperationMethod<
   GetDisputeError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetDisputeRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<Dispute>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetDisputeRequest>,
+  output: __S(276, __c8, 20) as any as S.Schema<Dispute>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2577,8 +2577,8 @@ export const listDisputes: API.OperationMethod<
   ListDisputesError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListDisputesRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DisputeSearch>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListDisputesRequest>,
+  output: __S(323, __c10, 3) as any as S.Schema<DisputeSearch>,
   errors: [BadRequest, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2592,8 +2592,8 @@ export const patchDispute: API.OperationMethod<
   PatchDisputeError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<PatchDisputeRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<PatchDisputeResponse>,
+  input: __S(354, __c11, 2) as any as S.Schema<PatchDisputeRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<PatchDisputeResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -2606,115 +2606,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          accept_claim_document: S.optional(S.String.pipe(T.Body("accept-claim-document"))),
+          note: S.String,
+          offer_amount: S.optional(__S(64, __c2, 0)),
+          return_shipping_address: S.optional(__S(33, __c1, 1)),
+          invoice_id: S.optional(S.String),
+          offer_type: S.String,
         }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/customer/disputes/{id}/accept-claim",
-            code: 200,
-            contentType: "multipart",
-          }),
+          T.Http({ method: "POST", uri: "/v1/customer/disputes/{id}/make-offer", code: 200 }),
         ),
-      ).annotate({
-        identifier: "DisputesAcceptClaimRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.String,
-          rel: S.String,
-          method: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkDescription" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "SubsequentAction" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          note: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/customer/disputes/{id}/accept-offer", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DisputesAcceptOfferRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          acknowledgement_document: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/customer/disputes/{id}/acknowledge-return-item",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisputesAcknowledgeReturnItemRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          adjudication_outcome: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/customer/disputes/{id}/adjudicate", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DisputesAdjudicateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          evidence_file: S.optional(S.String.pipe(T.Body("evidence-file"))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/customer/disputes/{id}/appeal",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({ identifier: "DisputesAppealRequest" });
+      ).annotate({ identifier: "DisputesMakeOfferRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          note: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/customer/disputes/{id}/deny-offer", code: 200 }),
-        ),
-      ).annotate({ identifier: "DisputesDenyOfferRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          note: S.optional(S.String),
-          buyer_escalation_reason: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/customer/disputes/{id}/escalate", code: 200 })),
-      ).annotate({ identifier: "DisputesEscalateRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          currency_code: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "Money" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           street_number: S.optional(S.String),
@@ -2725,7 +2630,7 @@ function __c1(j: number): any {
           sub_building: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddressDetails" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           address_line_1: S.optional(S.String),
@@ -2737,23 +2642,25 @@ function __c1(j: number): any {
           admin_area_1: S.optional(S.String),
           postal_code: S.optional(S.String),
           country_code: S.String,
-          address_details: S.optional(__S(11, __c1, 3)),
+          address_details: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "AddressPortable" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String.pipe(T.Label()),
-          note: S.String,
-          offer_amount: S.optional(__S(10, __c1, 2)),
-          return_shipping_address: S.optional(__S(12, __c1, 4)),
-          invoice_id: S.optional(S.String),
-          offer_type: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/customer/disputes/{id}/make-offer", code: 200 }),
-        ),
-      ).annotate({ identifier: "DisputesMakeOfferRequest" });
-    case 6:
+          currency_code: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "Money" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -2769,7 +2676,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DisputesProvideEvidenceRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -2787,7 +2698,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2800,7 +2711,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DisputesRequireEvidenceRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -2816,28 +2731,23 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DisputesSendMessageRequest",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customer/disputes/{id}", code: 200 })),
       ).annotate({ identifier: "GetDisputeRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          asset_symbol: S.String,
-          quantity: S.String,
-          quantity_in_subunits: S.optional(S.String),
-          decimals: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Cryptocurrency" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Buyer" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -2845,7 +2755,7 @@ function __c2(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Seller" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           item_id: S.optional(S.String),
@@ -2854,7 +2764,7 @@ function __c2(j: number): any {
           item_quantity: S.optional(S.String),
           partner_transaction_id: S.optional(S.String),
           reason: S.optional(S.String),
-          dispute_amount: S.optional(__S(10, __c1, 2)),
+          dispute_amount: S.optional(__S(64, __c2, 0)),
           notes: S.optional(S.String),
           item_type: S.optional(S.String),
           product_details: S.optional(S.Unknown),
@@ -2865,13 +2775,9 @@ function __c2(j: number): any {
           agreed_refund_details: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ItemInfo" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(227, __c7, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           buyer_transaction_id: S.optional(S.String),
@@ -2879,28 +2785,28 @@ function __c3(j: number): any {
           reference_id: S.optional(S.String),
           create_time: S.optional(S.String),
           transaction_status: S.optional(S.String),
-          gross_amount: S.optional(__S(10, __c1, 2)),
-          gross_asset: S.optional(__S(19, __c2, 3)),
+          gross_amount: S.optional(__S(64, __c2, 0)),
+          gross_asset: S.optional(__S(288, __c9, 0)),
           invoice_number: S.optional(S.String),
           custom: S.optional(S.String),
-          buyer: S.optional(__S(20, __c2, 4)),
-          seller: S.optional(__S(21, __c2, 5)),
-          items: S.optional(__S(23, __c2, 7)),
+          buyer: S.optional(__S(225, __c7, 1)),
+          seller: S.optional(__S(226, __c7, 2)),
+          items: S.optional(__S(228, __c7, 4)),
           payment_processor: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "TransactionInfo" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(229, __c7, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           outcome_code: S.optional(S.String),
           outcome_reason: S.optional(S.String),
-          amount_refunded: S.optional(__S(10, __c1, 2)),
-          asset_refunded: S.optional(__S(19, __c2, 3)),
+          amount_refunded: S.optional(__S(64, __c2, 0)),
+          asset_refunded: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "DisputeOutcome" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -2909,76 +2815,72 @@ function __c3(j: number): any {
           dispute_life_cycle_stage: S.optional(S.String),
         }),
       ).annotate({ identifier: "Adjudication" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 9:
+      return S.Array(__S(232, __c7, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           affected_party: S.optional(S.String),
-          amount: S.optional(__S(10, __c1, 2)),
-          asset: S.optional(__S(19, __c2, 3)),
+          amount: S.optional(__S(64, __c2, 0)),
+          asset: S.optional(__S(288, __c9, 0)),
           initiated_time: S.optional(S.String),
           type: S.optional(S.String),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "MoneyMovement" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 11:
+      return S.Array(__S(234, __c7, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           party: S.optional(S.String),
-          amount: S.optional(__S(10, __c1, 2)),
-          asset: S.optional(__S(19, __c2, 3)),
+          amount: S.optional(__S(64, __c2, 0)),
+          asset: S.optional(__S(288, __c9, 0)),
           initiated_time: S.optional(S.String),
           type: S.optional(S.String),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "FundMovement" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 13:
+      return S.Array(__S(236, __c7, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "Document" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
+    case 15:
+      return S.Array(__S(238, __c7, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           posted_by: S.optional(S.String),
           time_posted: S.optional(S.String),
           content: S.optional(S.String),
-          documents: S.optional(__S(34, __c4, 2)),
+          documents: S.optional(__S(239, __c7, 15)),
         }),
       ).annotate({ identifier: "Message" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 17:
+      return S.Array(__S(240, __c7, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           received_duplicate: S.optional(S.Boolean),
-          original_transaction: S.optional(__S(24, __c3, 0)),
+          original_transaction: S.optional(__S(229, __c7, 5)),
         }),
       ).annotate({ identifier: "DuplicateTransaction" });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          correct_transaction_amount: S.optional(__S(10, __c1, 2)),
-          correct_transaction_asset: S.optional(__S(19, __c2, 3)),
+          correct_transaction_amount: S.optional(__S(64, __c2, 0)),
+          correct_transaction_asset: S.optional(__S(288, __c9, 0)),
           correct_transaction_time: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IncorrectTransactionAmount",
       });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           charge_different_from_original: S.optional(S.Boolean),
@@ -2987,11 +2889,7 @@ function __c4(j: number): any {
           payment_instrument_suffix: S.optional(S.String),
         }),
       ).annotate({ identifier: "PaymentByOtherMeans" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           cancellation_date: S.optional(S.String),
@@ -3000,9 +2898,9 @@ function __c5(j: number): any {
           cancellation_mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "CancellationDetails" });
-    case 1:
+    case 22:
       return S.Array(S.String);
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           return_time: S.optional(S.String),
@@ -3012,84 +2910,84 @@ function __c5(j: number): any {
           returned: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ReturnDetails" });
-    case 3:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           product_received: S.optional(S.String),
           product_received_time: S.optional(S.String),
           expected_delivery_date: S.optional(S.String),
-          sub_reasons: S.optional(__S(41, __c5, 1)),
+          sub_reasons: S.optional(__S(246, __c7, 22)),
           purchase_url: S.optional(S.String),
-          return_details: S.optional(__S(42, __c5, 2)),
+          return_details: S.optional(__S(247, __c7, 23)),
         }),
       ).annotate({ identifier: "ProductDetails" });
-    case 4:
+    case 25:
       return S.Array(S.String);
-    case 5:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           service_started: S.optional(S.String),
           note: S.optional(S.String),
-          sub_reasons: S.optional(__S(44, __c5, 4)),
+          sub_reasons: S.optional(__S(249, __c7, 25)),
           purchase_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceDetails" });
-    case 6:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           merchant_agreed_refund: S.optional(S.Boolean),
           merchant_agreed_refund_time: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgreedRefundDetails" });
-    case 7:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           issue_type: S.optional(S.String),
-          expected_refund: S.optional(__S(10, __c1, 2)),
-          cancellation_details: S.optional(__S(40, __c5, 0)),
-          product_details: S.optional(__S(43, __c5, 3)),
-          service_details: S.optional(__S(45, __c5, 5)),
-          agreed_refund_details: S.optional(__S(46, __c5, 6)),
+          expected_refund: S.optional(__S(64, __c2, 0)),
+          cancellation_details: S.optional(__S(245, __c7, 21)),
+          product_details: S.optional(__S(248, __c7, 24)),
+          service_details: S.optional(__S(250, __c7, 26)),
+          agreed_refund_details: S.optional(__S(251, __c7, 27)),
         }),
       ).annotate({ identifier: "CreditNotProcessed" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          expected_refund: S.optional(__S(10, __c1, 2)),
-          cancellation_details: S.optional(__S(40, __c5, 0)),
+          expected_refund: S.optional(__S(64, __c2, 0)),
+          cancellation_details: S.optional(__S(245, __c7, 21)),
         }),
       ).annotate({ identifier: "CanceledRecurringBilling" });
-    case 1:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          duplicate_transaction: S.optional(__S(37, __c4, 5)),
-          incorrect_transaction_amount: S.optional(__S(38, __c4, 6)),
-          payment_by_other_means: S.optional(__S(39, __c4, 7)),
-          credit_not_processed: S.optional(__S(47, __c5, 7)),
-          canceled_recurring_billing: S.optional(__S(48, __c6, 0)),
+          duplicate_transaction: S.optional(__S(242, __c7, 18)),
+          incorrect_transaction_amount: S.optional(__S(243, __c7, 19)),
+          payment_by_other_means: S.optional(__S(244, __c7, 20)),
+          credit_not_processed: S.optional(__S(252, __c7, 28)),
+          canceled_recurring_billing: S.optional(__S(253, __c7, 29)),
         }),
       ).annotate({
         identifier: "BillingDisputesProperties",
       });
-    case 2:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           issue_type: S.optional(S.String),
-          product_details: S.optional(__S(43, __c5, 3)),
-          service_details: S.optional(__S(45, __c5, 5)),
-          cancellation_details: S.optional(__S(40, __c5, 0)),
-          return_shipping_address: S.optional(__S(12, __c1, 4)),
+          product_details: S.optional(__S(248, __c7, 24)),
+          service_details: S.optional(__S(250, __c7, 26)),
+          cancellation_details: S.optional(__S(245, __c7, 21)),
+          return_shipping_address: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({
         identifier: "MerchandizeDisputeProperties",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           merchant_contacted: S.optional(S.Boolean),
@@ -3098,12 +2996,12 @@ function __c6(j: number): any {
           merchant_contacted_mode: S.optional(S.String),
           buyer_contacted_time: S.optional(S.String),
           buyer_contacted_channel: S.optional(S.String),
-          billing_dispute_properties: S.optional(__S(49, __c6, 1)),
-          merchandize_dispute_properties: S.optional(__S(50, __c6, 2)),
+          billing_dispute_properties: S.optional(__S(254, __c7, 30)),
+          merchandize_dispute_properties: S.optional(__S(255, __c7, 31)),
           reported_source: S.optional(S.String),
         }),
       ).annotate({ identifier: "Extensions" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           carrier_name: S.String,
@@ -3112,24 +3010,20 @@ function __c6(j: number): any {
           tracking_number: S.String,
         }),
       ).annotate({ identifier: "TrackingInfo" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(257, __c8, 1));
+    case 3:
       return S.Array(S.String);
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          tracking_info: S.optional(__S(53, __c6, 5)),
-          refund_ids: S.optional(__S(54, __c6, 6)),
+          tracking_info: S.optional(__S(258, __c8, 2)),
+          refund_ids: S.optional(__S(259, __c8, 3)),
         }),
       ).annotate({ identifier: "EvidenceInfo" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(33, __c4, 1));
-    case 1:
+    case 5:
+      return S.Array(__S(238, __c7, 14));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -3137,57 +3031,53 @@ function __c7(j: number): any {
           mandatory: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ActionInfo" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           evidence_type: S.optional(S.String),
-          evidence_info: S.optional(__S(55, __c6, 7)),
-          documents: S.optional(__S(56, __c7, 0)),
+          evidence_info: S.optional(__S(260, __c8, 4)),
+          documents: S.optional(__S(261, __c8, 5)),
           notes: S.optional(S.String),
           source: S.optional(S.String),
           date: S.optional(S.String),
           item_id: S.optional(S.String),
           item_type: S.optional(S.String),
-          action_info: S.optional(__S(57, __c7, 1)),
+          action_info: S.optional(__S(262, __c8, 6)),
           dispute_life_cycle_stage: S.optional(S.String),
         }),
       ).annotate({ identifier: "Evidence" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(263, __c8, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           offer_time: S.optional(S.String),
           actor: S.optional(S.String),
           event_type: S.optional(S.String),
           offer_type: S.optional(S.String),
-          offer_amount: S.optional(__S(10, __c1, 2)),
+          offer_amount: S.optional(__S(64, __c2, 0)),
           notes: S.optional(S.String),
           dispute_life_cycle_stage: S.optional(S.String),
         }),
       ).annotate({ identifier: "OfferHistory" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(265, __c8, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          buyer_requested_amount: S.optional(__S(10, __c1, 2)),
-          seller_offered_amount: S.optional(__S(10, __c1, 2)),
+          buyer_requested_amount: S.optional(__S(64, __c2, 0)),
+          seller_offered_amount: S.optional(__S(64, __c2, 0)),
           offer_type: S.optional(S.String),
-          history: S.optional(__S(61, __c7, 5)),
+          history: S.optional(__S(266, __c8, 10)),
         }),
       ).annotate({ identifier: "Offer" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          allowed_refund_amount: S.optional(__S(10, __c1, 2)),
+          allowed_refund_amount: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "RefundDetails" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -3195,83 +3085,96 @@ function __c8(j: number): any {
           time_posted: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommunicationDetails" });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           notes: S.optional(S.String),
-          documents: S.optional(__S(56, __c7, 0)),
+          documents: S.optional(__S(261, __c8, 5)),
           source: S.optional(S.String),
           provided_time: S.optional(S.String),
           dispute_life_cycle_stage: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportingInfo" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+    case 15:
+      return S.Array(__S(270, __c8, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          acknowledgement_types: S.optional(__S(44, __c5, 4)),
+          acknowledgement_types: S.optional(__S(249, __c7, 25)),
         }),
       ).annotate({
         identifier: "AcknowledgeReturnItemResponseOptions",
       });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          accept_claim_types: S.optional(__S(44, __c5, 4)),
+          accept_claim_types: S.optional(__S(249, __c7, 25)),
         }),
       ).annotate({
         identifier: "AcceptClaimResponseOptions",
       });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          offer_types: S.optional(__S(41, __c5, 1)),
+          offer_types: S.optional(__S(246, __c7, 22)),
         }),
       ).annotate({ identifier: "MakeOfferResponseOptions" });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          acknowledge_return_item: S.optional(__S(67, __c8, 3)),
-          accept_claim: S.optional(__S(68, __c8, 4)),
-          make_offer: S.optional(__S(69, __c8, 5)),
+          acknowledge_return_item: S.optional(__S(272, __c8, 16)),
+          accept_claim: S.optional(__S(273, __c8, 17)),
+          make_offer: S.optional(__S(274, __c8, 18)),
         }),
       ).annotate({ identifier: "AllowedResponseOptions" });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           dispute_id: S.optional(S.String),
           create_time: S.optional(S.String),
           update_time: S.optional(S.String),
-          disputed_transactions: S.optional(__S(25, __c3, 1)),
+          disputed_transactions: S.optional(__S(230, __c7, 6)),
           reason: S.optional(S.String),
           status: S.optional(S.String),
-          dispute_amount: S.optional(__S(10, __c1, 2)),
-          dispute_asset: S.optional(__S(19, __c2, 3)),
+          dispute_amount: S.optional(__S(64, __c2, 0)),
+          dispute_asset: S.optional(__S(288, __c9, 0)),
           fee_policy: S.optional(S.Unknown),
           external_reason_code: S.optional(S.String),
-          dispute_outcome: S.optional(__S(26, __c3, 2)),
-          adjudications: S.optional(__S(28, __c3, 4)),
-          money_movements: S.optional(__S(30, __c3, 6)),
-          fund_movements: S.optional(__S(32, __c4, 0)),
+          dispute_outcome: S.optional(__S(231, __c7, 7)),
+          adjudications: S.optional(__S(233, __c7, 9)),
+          money_movements: S.optional(__S(235, __c7, 11)),
+          fund_movements: S.optional(__S(237, __c7, 13)),
           dispute_life_cycle_stage: S.optional(S.String),
           dispute_channel: S.optional(S.String),
-          messages: S.optional(__S(36, __c4, 4)),
-          extensions: S.optional(__S(51, __c6, 3)),
-          evidences: S.optional(__S(59, __c7, 3)),
+          messages: S.optional(__S(241, __c7, 17)),
+          extensions: S.optional(__S(256, __c8, 0)),
+          evidences: S.optional(__S(264, __c8, 8)),
           buyer_response_due_date: S.optional(S.String),
           seller_response_due_date: S.optional(S.String),
-          offer: S.optional(__S(62, __c7, 6)),
-          refund_details: S.optional(__S(63, __c7, 7)),
-          communication_details: S.optional(__S(64, __c8, 0)),
-          supporting_info: S.optional(__S(66, __c8, 2)),
-          allowed_response_options: S.optional(__S(70, __c8, 6)),
-          links: S.optional(__S(2, __c0, 2)),
+          offer: S.optional(__S(267, __c8, 11)),
+          refund_details: S.optional(__S(268, __c8, 12)),
+          communication_details: S.optional(__S(269, __c8, 13)),
+          supporting_info: S.optional(__S(271, __c8, 15)),
+          allowed_response_options: S.optional(__S(275, __c8, 19)),
+          links: S.optional(__S(449, __c14, 1)),
         }),
       ).annotate({ identifier: "Dispute" });
   }
 }
 function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          asset_symbol: S.String,
+          quantity: S.String,
+          quantity_in_subunits: S.optional(S.String),
+          decimals: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Cryptocurrency" });
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3294,25 +3197,29 @@ function __c9(j: number): any {
           reason: S.optional(S.String),
           status: S.optional(S.String),
           dispute_state: S.optional(S.String),
-          dispute_amount: S.optional(__S(10, __c1, 2)),
-          dispute_asset: S.optional(__S(19, __c2, 3)),
+          dispute_amount: S.optional(__S(64, __c2, 0)),
+          dispute_asset: S.optional(__S(288, __c9, 0)),
           dispute_life_cycle_stage: S.optional(S.String),
           dispute_channel: S.optional(S.String),
           buyer_response_due_date: S.optional(S.String),
           seller_response_due_date: S.optional(S.String),
-          links: S.optional(__S(2, __c0, 2)),
+          links: S.optional(__S(449, __c14, 1)),
         }),
       ).annotate({ identifier: "DisputeInfo" });
     case 2:
-      return S.Array(__S(73, __c9, 1));
+      return S.Array(__S(321, __c10, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(74, __c9, 2)),
-          links: S.optional(__S(2, __c0, 2)),
+          items: S.optional(__S(322, __c10, 2)),
+          links: S.optional(__S(449, __c14, 1)),
         }),
       ).annotate({ identifier: "DisputeSearch" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           op: S.String,
@@ -3321,22 +3228,158 @@ function __c9(j: number): any {
           from: S.optional(S.String),
         }),
       ).annotate({ identifier: "Patch" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(352, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: S.optional(__S(77, __c9, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(353, __c11, 1).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/customer/disputes/{id}", code: 200 })),
       ).annotate({ identifier: "PatchDisputeRequest" });
-    case 7:
+    case 3:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PatchDisputeResponse",
       });
   }
 }
-
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          accept_claim_document: S.optional(S.String.pipe(T.Body("accept-claim-document"))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/customer/disputes/{id}/accept-claim",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisputesAcceptClaimRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({ identifier: "SubsequentAction" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.String,
+          rel: S.String,
+          method: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkDescription" });
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          note: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/customer/disputes/{id}/accept-offer", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DisputesAcceptOfferRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          acknowledgement_document: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/customer/disputes/{id}/acknowledge-return-item",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisputesAcknowledgeReturnItemRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          adjudication_outcome: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/customer/disputes/{id}/adjudicate", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DisputesAdjudicateRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          evidence_file: S.optional(S.String.pipe(T.Body("evidence-file"))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/customer/disputes/{id}/appeal",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({ identifier: "DisputesAppealRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          note: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/customer/disputes/{id}/deny-offer", code: 200 }),
+        ),
+      ).annotate({ identifier: "DisputesDenyOfferRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          note: S.optional(S.String),
+          buyer_escalation_reason: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/customer/disputes/{id}/escalate", code: 200 })),
+      ).annotate({ identifier: "DisputesEscalateRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

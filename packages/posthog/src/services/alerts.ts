@@ -739,8 +739,8 @@ export const alertsDestinationsDeleteCreate: API.OperationMethod<
   AlertsDestinationsDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AlertsDestinationsDeleteCreateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AlertsDestinationsDeleteCreateResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<AlertsDestinationsDeleteCreateRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<AlertsDestinationsDeleteCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -753,8 +753,8 @@ export const alertsDestroy: API.OperationMethod<
   AlertsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AlertsDestroyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AlertsDestroyResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<AlertsDestroyRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<AlertsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -767,8 +767,8 @@ export const createAlert: API.OperationMethod<
   CreateAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateAlertRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Alert>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateAlertRequest>,
+  output: __S(173, __c10, 13) as any as S.Schema<Alert>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -782,8 +782,8 @@ export const createAlertsDestination: API.OperationMethod<
   CreateAlertsDestinationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateAlertsDestinationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<AlertDestinationResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateAlertsDestinationRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<AlertDestinationResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -797,8 +797,8 @@ export const createAlertsSimulate: API.OperationMethod<
   CreateAlertsSimulateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateAlertsSimulateRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<AlertSimulateResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateAlertsSimulateRequest>,
+  output: __S(197, __c12, 5) as any as S.Schema<AlertSimulateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -812,8 +812,8 @@ export const createAlertsTestDelivery: API.OperationMethod<
   CreateAlertsTestDeliveryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateAlertsTestDeliveryRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateAlertsTestDeliveryResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<CreateAlertsTestDeliveryRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<CreateAlertsTestDeliveryResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -826,8 +826,8 @@ export const getAlert: API.OperationMethod<
   GetAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetAlertRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Alert>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetAlertRequest>,
+  output: __S(173, __c10, 13) as any as S.Schema<Alert>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -840,8 +840,8 @@ export const listAlerts: API.OperationMethod<
   ListAlertsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListAlertsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<PaginatedAlertList>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListAlertsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<PaginatedAlertList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -854,8 +854,8 @@ export const updateAlert: API.OperationMethod<
   UpdateAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<UpdateAlertRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Alert>,
+  input: __S(16, __c1, 0) as any as S.Schema<UpdateAlertRequest>,
+  output: __S(173, __c10, 13) as any as S.Schema<Alert>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -868,8 +868,8 @@ export const updateAlertsPartial: API.OperationMethod<
   UpdateAlertsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<UpdateAlertsPartialRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Alert>,
+  input: __S(32, __c2, 0) as any as S.Schema<UpdateAlertsPartialRequest>,
+  output: __S(173, __c10, 13) as any as S.Schema<Alert>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -879,13 +879,101 @@ export const updateAlertsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          created_by: S.optional(S.String.pipe(T.Query())),
+          has_detector: S.optional(S.Boolean.pipe(T.Query())),
+          insight_id: S.optional(S.Number.pipe(T.Query())),
+          insight_tag: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/alerts/", code: 200 })),
+      ).annotate({ identifier: "ListAlertsRequest" });
     case 1:
+      return S.Array(__S(173, __c10, 13));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: S.optional(__S(1, __c0, 1)),
+        }),
+      ).annotate({ identifier: "PaginatedAlertList" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          hog_function_ids: __S(0, __c0, 0),
+          insight: S.optional(S.Number),
+          name: S.optional(S.String),
+          subscribed_users: S.optional(__S(144, __c9, 0)),
+          threshold: S.optional(__S(128, __c8, 0)),
+          condition: S.optional(S.NullOr(__S(162, __c10, 2))),
+          enabled: S.optional(S.Boolean),
+          schedule_start_time: S.optional(S.NullOr(S.String)),
+          config: S.optional(S.NullOr(S.Unknown)),
+          detector_config: S.optional(S.NullOr(S.Unknown)),
+          evaluation_delay_intervals: S.optional(S.Number),
+          calculation_interval: S.optional(S.String),
+          snoozed_until: S.optional(S.NullOr(S.String)),
+          skip_weekend: S.optional(S.NullOr(S.Boolean)),
+          schedule_restriction: S.optional(S.NullOr(__S(165, __c10, 5))),
+          investigation_agent_enabled: S.optional(S.Boolean),
+          investigation_gates_notifications: S.optional(S.Boolean),
+          investigation_inconclusive_action: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/projects/{project_id}/alerts/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpdateAlertRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          insight: S.optional(S.Number),
+          name: S.optional(S.String),
+          subscribed_users: S.optional(__S(144, __c9, 0)),
+          threshold: S.optional(__S(128, __c8, 0)),
+          condition: S.optional(S.NullOr(__S(162, __c10, 2))),
+          enabled: S.optional(S.Boolean),
+          schedule_start_time: S.optional(S.NullOr(S.String)),
+          config: S.optional(S.NullOr(S.Unknown)),
+          detector_config: S.optional(S.NullOr(S.Unknown)),
+          evaluation_delay_intervals: S.optional(S.Number),
+          calculation_interval: S.optional(S.String),
+          snoozed_until: S.optional(S.NullOr(S.String)),
+          skip_weekend: S.optional(S.NullOr(S.Boolean)),
+          schedule_restriction: S.optional(S.NullOr(__S(165, __c10, 5))),
+          investigation_agent_enabled: S.optional(S.Boolean),
+          investigation_gates_notifications: S.optional(S.Boolean),
+          investigation_inconclusive_action: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/alerts/{id}/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateAlertsPartialRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          hog_function_ids: __S(64, __c4, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -896,11 +984,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AlertsDestinationsDeleteCreateRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AlertsDestinationsDeleteCreateResponse",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -909,69 +1011,23 @@ function __c0(j: number): any {
           T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/alerts/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "AlertsDestroyRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AlertsDestroyResponse",
       });
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          lower: S.optional(S.NullOr(S.Number)),
-          upper: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "InsightsThresholdBounds" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bounds: S.optional(S.NullOr(__S(6, __c0, 6))),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InsightThreshold" });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          configuration: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "ThresholdInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AlertCondition" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AlertScheduleRestrictionWindow",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          blocked_windows: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "AlertScheduleRestriction" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           insight: S.optional(S.Number),
           name: S.optional(S.String),
-          subscribed_users: S.optional(__S(5, __c0, 5)),
-          threshold: S.optional(__S(8, __c1, 0)),
-          condition: S.optional(S.NullOr(__S(9, __c1, 1))),
+          subscribed_users: S.optional(__S(144, __c9, 0)),
+          threshold: S.optional(__S(128, __c8, 0)),
+          condition: S.optional(S.NullOr(__S(162, __c10, 2))),
           enabled: S.optional(S.Boolean),
           schedule_start_time: S.optional(S.NullOr(S.String)),
           config: S.optional(S.NullOr(S.Unknown)),
@@ -980,15 +1036,73 @@ function __c1(j: number): any {
           calculation_interval: S.optional(S.String),
           snoozed_until: S.optional(S.NullOr(S.String)),
           skip_weekend: S.optional(S.NullOr(S.Boolean)),
-          schedule_restriction: S.optional(S.NullOr(__S(12, __c1, 4))),
+          schedule_restriction: S.optional(S.NullOr(__S(165, __c10, 5))),
           investigation_agent_enabled: S.optional(S.Boolean),
           investigation_gates_notifications: S.optional(S.Boolean),
           investigation_inconclusive_action: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/alerts/", code: 200 })),
       ).annotate({ identifier: "CreateAlertRequest" });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          configuration: S.optional(__S(161, __c10, 1)),
+        }),
+      ).annotate({ identifier: "ThresholdInput" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lower: S.optional(S.NullOr(S.Number)),
+          upper: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "InsightsThresholdBounds" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bounds: S.optional(S.NullOr(__S(160, __c10, 0))),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InsightThreshold" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AlertCondition" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AlertScheduleRestrictionWindow",
+      });
+    case 4:
+      return S.Array(__S(163, __c10, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          blocked_windows: S.optional(__S(164, __c10, 4)),
+        }),
+      ).annotate({ identifier: "AlertScheduleRestriction" });
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -998,26 +1112,22 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(14, __c1, 6))),
+          hedgehog_config: S.optional(S.NullOr(__S(145, __c9, 1))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           name: S.optional(S.String),
-          configuration: S.optional(__S(7, __c0, 7)),
+          configuration: S.optional(__S(161, __c10, 1)),
         }),
       ).annotate({ identifier: "Threshold" });
-    case 1:
+    case 8:
       return S.Record(S.String, S.String);
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
@@ -1029,16 +1139,16 @@ function __c2(j: number): any {
           display_label: S.String,
         }),
       ).annotate({ identifier: "AlertDelivery" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(169, __c10, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           calculated_value: S.optional(S.NullOr(S.Number)),
           state: S.optional(S.String),
-          error: S.optional(S.NullOr(__S(17, __c2, 1))),
+          error: S.optional(S.NullOr(__S(168, __c10, 8))),
           targets_notified: S.optional(S.Boolean),
           anomaly_scores: S.optional(S.Unknown),
           triggered_points: S.optional(S.Unknown),
@@ -1051,32 +1161,32 @@ function __c2(j: number): any {
           investigation_notebook_short_id: S.optional(S.NullOr(S.String)),
           notification_sent_at: S.optional(S.NullOr(S.String)),
           notification_suppressed_by_agent: S.optional(S.Boolean),
-          deliveries: S.optional(S.NullOr(__S(19, __c2, 3))),
+          deliveries: S.optional(S.NullOr(__S(170, __c10, 10))),
         }),
       ).annotate({ identifier: "AlertCheck" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(171, __c10, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(15, __c1, 7))),
+          created_by: S.optional(S.NullOr(__S(166, __c10, 6))),
           created_at: S.optional(S.String),
           insight: S.optional(S.Number),
           insight_short_id: S.optional(S.String),
           insight_display_name: S.optional(S.String),
           llm_detector_available: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
-          subscribed_users: S.optional(__S(5, __c0, 5)),
-          threshold: S.optional(__S(16, __c2, 0)),
-          condition: S.optional(S.NullOr(__S(9, __c1, 1))),
+          subscribed_users: S.optional(__S(144, __c9, 0)),
+          threshold: S.optional(__S(167, __c10, 7)),
+          condition: S.optional(S.NullOr(__S(162, __c10, 2))),
           state: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           last_notified_at: S.optional(S.NullOr(S.String)),
           last_checked_at: S.optional(S.NullOr(S.String)),
           schedule_start_time: S.optional(S.NullOr(S.String)),
           next_check_at: S.optional(S.NullOr(S.String)),
-          checks: S.optional(__S(21, __c2, 5)),
+          checks: S.optional(__S(172, __c10, 12)),
           checks_total: S.optional(S.NullOr(S.Number)),
           config: S.optional(S.NullOr(S.Unknown)),
           detector_config: S.optional(S.NullOr(S.Unknown)),
@@ -1084,7 +1194,7 @@ function __c2(j: number): any {
           calculation_interval: S.optional(S.String),
           snoozed_until: S.optional(S.NullOr(S.String)),
           skip_weekend: S.optional(S.NullOr(S.Boolean)),
-          schedule_restriction: S.optional(S.NullOr(__S(12, __c1, 4))),
+          schedule_restriction: S.optional(S.NullOr(__S(165, __c10, 5))),
           last_value: S.optional(S.NullOr(S.Number)),
           investigation_agent_enabled: S.optional(S.Boolean),
           investigation_gates_notifications: S.optional(S.Boolean),
@@ -1092,7 +1202,11 @@ function __c2(j: number): any {
           search_match_type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Alert" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1111,17 +1225,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAlertsDestinationRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          hog_function_ids: __S(0, __c0, 0),
+          hog_function_ids: __S(64, __c4, 0),
         }),
       ).annotate({ identifier: "AlertDestinationResponse" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1137,48 +1251,52 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAlertsSimulateRequest",
       });
-    case 2:
+    case 1:
       return S.Array(/*@__PURE__*/ S.NullOr(S.Number));
+    case 2:
+      return S.Array(__S(145, __c9, 1));
     case 3:
-      return S.Array(__S(14, __c1, 6));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
-          data: S.optional(__S(5, __c0, 5)),
-          dates: S.optional(__S(0, __c0, 0)),
-          scores: S.optional(__S(26, __c3, 2)),
-          triggered_indices: S.optional(__S(5, __c0, 5)),
-          triggered_dates: S.optional(__S(0, __c0, 0)),
+          data: S.optional(__S(144, __c9, 0)),
+          dates: S.optional(__S(64, __c4, 0)),
+          scores: S.optional(__S(193, __c12, 1)),
+          triggered_indices: S.optional(__S(144, __c9, 0)),
+          triggered_dates: S.optional(__S(64, __c4, 0)),
           total_points: S.optional(S.Number),
           anomaly_count: S.optional(S.Number),
-          sub_detector_scores: S.optional(__S(27, __c3, 3)),
+          sub_detector_scores: S.optional(__S(194, __c12, 2)),
         }),
       ).annotate({
         identifier: "BreakdownSimulationResult",
       });
+    case 4:
+      return S.Array(__S(195, __c12, 3));
     case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           evaluation_delay_intervals: S.optional(S.Number),
           evaluated_interval_start: S.optional(S.String),
           evaluated_interval_end: S.optional(S.String),
           evaluated_interval_timezone: S.optional(S.String),
-          data: S.optional(__S(5, __c0, 5)),
-          dates: S.optional(__S(0, __c0, 0)),
-          scores: S.optional(__S(26, __c3, 2)),
-          triggered_indices: S.optional(__S(5, __c0, 5)),
-          triggered_dates: S.optional(__S(0, __c0, 0)),
+          data: S.optional(__S(144, __c9, 0)),
+          dates: S.optional(__S(64, __c4, 0)),
+          scores: S.optional(__S(193, __c12, 1)),
+          triggered_indices: S.optional(__S(144, __c9, 0)),
+          triggered_dates: S.optional(__S(64, __c4, 0)),
           interval: S.optional(S.NullOr(S.String)),
           total_points: S.optional(S.Number),
           anomaly_count: S.optional(S.Number),
-          sub_detector_scores: S.optional(__S(27, __c3, 3)),
-          breakdown_results: S.optional(__S(29, __c3, 5)),
+          sub_detector_scores: S.optional(__S(194, __c12, 2)),
+          breakdown_results: S.optional(__S(196, __c12, 4)),
         }),
       ).annotate({ identifier: "AlertSimulateResponse" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1195,7 +1313,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1210,87 +1328,8 @@ function __c4(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/alerts/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "GetAlertRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          created_by: S.optional(S.String.pipe(T.Query())),
-          has_detector: S.optional(S.Boolean.pipe(T.Query())),
-          insight_id: S.optional(S.Number.pipe(T.Query())),
-          insight_tag: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/alerts/", code: 200 })),
-      ).annotate({ identifier: "ListAlertsRequest" });
-    case 2:
-      return S.Array(__S(22, __c2, 6));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "PaginatedAlertList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          insight: S.optional(S.Number),
-          name: S.optional(S.String),
-          subscribed_users: S.optional(__S(5, __c0, 5)),
-          threshold: S.optional(__S(8, __c1, 0)),
-          condition: S.optional(S.NullOr(__S(9, __c1, 1))),
-          enabled: S.optional(S.Boolean),
-          schedule_start_time: S.optional(S.NullOr(S.String)),
-          config: S.optional(S.NullOr(S.Unknown)),
-          detector_config: S.optional(S.NullOr(S.Unknown)),
-          evaluation_delay_intervals: S.optional(S.Number),
-          calculation_interval: S.optional(S.String),
-          snoozed_until: S.optional(S.NullOr(S.String)),
-          skip_weekend: S.optional(S.NullOr(S.Boolean)),
-          schedule_restriction: S.optional(S.NullOr(__S(12, __c1, 4))),
-          investigation_agent_enabled: S.optional(S.Boolean),
-          investigation_gates_notifications: S.optional(S.Boolean),
-          investigation_inconclusive_action: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/projects/{project_id}/alerts/{id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "UpdateAlertRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          insight: S.optional(S.Number),
-          name: S.optional(S.String),
-          subscribed_users: S.optional(__S(5, __c0, 5)),
-          threshold: S.optional(__S(8, __c1, 0)),
-          condition: S.optional(S.NullOr(__S(9, __c1, 1))),
-          enabled: S.optional(S.Boolean),
-          schedule_start_time: S.optional(S.NullOr(S.String)),
-          config: S.optional(S.NullOr(S.Unknown)),
-          detector_config: S.optional(S.NullOr(S.Unknown)),
-          evaluation_delay_intervals: S.optional(S.Number),
-          calculation_interval: S.optional(S.String),
-          snoozed_until: S.optional(S.NullOr(S.String)),
-          skip_weekend: S.optional(S.NullOr(S.Boolean)),
-          schedule_restriction: S.optional(S.NullOr(__S(12, __c1, 4))),
-          investigation_agent_enabled: S.optional(S.Boolean),
-          investigation_gates_notifications: S.optional(S.Boolean),
-          investigation_inconclusive_action: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/alerts/{id}/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateAlertsPartialRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

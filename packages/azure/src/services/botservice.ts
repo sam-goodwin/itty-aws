@@ -1458,8 +1458,8 @@ export const CreateBot: API.OperationMethod<
   CreateBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateBotRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateBotResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateBotRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<CreateBotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1473,8 +1473,8 @@ export const CreateBotConnection: API.OperationMethod<
   CreateBotConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateBotConnectionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateBotConnectionResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateBotConnectionRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<CreateBotConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1488,8 +1488,8 @@ export const CreateChannel: API.OperationMethod<
   CreateChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateChannelRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreateChannelResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<CreateChannelRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<CreateChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1503,8 +1503,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: __S(625, __c39, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1518,8 +1518,8 @@ export const DeleteBot: API.OperationMethod<
   DeleteBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteBotRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteBotResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<DeleteBotRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<DeleteBotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1533,8 +1533,8 @@ export const DeleteBotConnection: API.OperationMethod<
   DeleteBotConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteBotConnectionRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteBotConnectionResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<DeleteBotConnectionRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<DeleteBotConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1548,8 +1548,8 @@ export const DeleteChannel: API.OperationMethod<
   DeleteChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteChannelRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteChannelResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<DeleteChannelRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<DeleteChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1563,8 +1563,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1578,8 +1578,8 @@ export const EmailCreateSignInUrl: API.OperationMethod<
   EmailCreateSignInUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<EmailCreateSignInUrlRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateEmailSignInUrlResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<EmailCreateSignInUrlRequest>,
+  output: __S(738, __c46, 2) as any as S.Schema<CreateEmailSignInUrlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1593,8 +1593,8 @@ export const GetBot: API.OperationMethod<
   GetBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetBotRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetBotResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetBotRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<GetBotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1608,8 +1608,8 @@ export const GetBotCheckNameAvailability: API.OperationMethod<
   GetBotCheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetBotCheckNameAvailabilityRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CheckNameAvailabilityResponseBody>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetBotCheckNameAvailabilityRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<CheckNameAvailabilityResponseBody>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1623,8 +1623,8 @@ export const GetBotConnection: API.OperationMethod<
   GetBotConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetBotConnectionRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetBotConnectionResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetBotConnectionRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<GetBotConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1638,8 +1638,8 @@ export const GetChannel: API.OperationMethod<
   GetChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetChannelRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetChannelResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetChannelRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<GetChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1653,8 +1653,8 @@ export const GetHostSettings: API.OperationMethod<
   GetHostSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetHostSettingsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<HostSettingsResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetHostSettingsRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<HostSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1668,8 +1668,8 @@ export const GetOperationResult: API.OperationMethod<
   GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetOperationResultRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<OperationResultsDescription>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetOperationResultRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<OperationResultsDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1683,8 +1683,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1698,8 +1698,8 @@ export const GetQnAMakerEndpointKey: API.OperationMethod<
   GetQnAMakerEndpointKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetQnAMakerEndpointKeyRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<QnAMakerEndpointKeysResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetQnAMakerEndpointKeyRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<QnAMakerEndpointKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1713,8 +1713,8 @@ export const ListBotByResourceGroup: API.OperationMethod<
   ListBotByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListBotByResourceGroupRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<BotResponseList>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListBotByResourceGroupRequest>,
+  output: __S(356, __c22, 4) as any as S.Schema<BotResponseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1728,8 +1728,8 @@ export const ListBotConnectionByBotService: API.OperationMethod<
   ListBotConnectionByBotServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListBotConnectionByBotServiceRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ConnectionSettingResponseList>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListBotConnectionByBotServiceRequest>,
+  output: __S(370, __c23, 2) as any as S.Schema<ConnectionSettingResponseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1743,8 +1743,8 @@ export const ListBotConnectionServiceProviders: API.OperationMethod<
   ListBotConnectionServiceProvidersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListBotConnectionServiceProvidersRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ServiceProviderResponseList>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListBotConnectionServiceProvidersRequest>,
+  output: __S(392, __c24, 8) as any as S.Schema<ServiceProviderResponseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1758,8 +1758,8 @@ export const ListBotConnectionWithSecrets: API.OperationMethod<
   ListBotConnectionWithSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListBotConnectionWithSecretsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListBotConnectionWithSecretsResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListBotConnectionWithSecretsRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<ListBotConnectionWithSecretsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1773,8 +1773,8 @@ export const ListBots: API.OperationMethod<
   ListBotsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListBotsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<BotResponseList>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListBotsRequest>,
+  output: __S(356, __c22, 4) as any as S.Schema<BotResponseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1788,8 +1788,8 @@ export const ListChannelByResourceGroup: API.OperationMethod<
   ListChannelByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListChannelByResourceGroupRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ChannelResponseList>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListChannelByResourceGroupRequest>,
+  output: __S(498, __c31, 2) as any as S.Schema<ChannelResponseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1803,8 +1803,8 @@ export const ListChannelWithKeys: API.OperationMethod<
   ListChannelWithKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListChannelWithKeysRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<ListChannelWithKeysResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListChannelWithKeysRequest>,
+  output: __S(516, __c32, 4) as any as S.Schema<ListChannelWithKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1818,8 +1818,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListOperationsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<OperationEntityListResult>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(532, __c33, 4) as any as S.Schema<OperationEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1833,8 +1833,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ListPrivateEndpointConnectionsResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<ListPrivateEndpointConnectionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1848,8 +1848,8 @@ export const ListPrivateLinkResourceByBotResource: API.OperationMethod<
   ListPrivateLinkResourceByBotResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListPrivateLinkResourceByBotResourceRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ListPrivateLinkResourceByBotResourceResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListPrivateLinkResourceByBotResourceRequest>,
+  output: __S(564, __c35, 4) as any as S.Schema<ListPrivateLinkResourceByBotResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1863,8 +1863,8 @@ export const RegenerateDirectLineKeys: API.OperationMethod<
   RegenerateDirectLineKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<RegenerateDirectLineKeysRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<RegenerateDirectLineKeysResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<RegenerateDirectLineKeysRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<RegenerateDirectLineKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1878,8 +1878,8 @@ export const UpdateBot: API.OperationMethod<
   UpdateBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<UpdateBotRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UpdateBotResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<UpdateBotRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<UpdateBotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1893,8 +1893,8 @@ export const UpdateBotConnection: API.OperationMethod<
   UpdateBotConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<UpdateBotConnectionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdateBotConnectionResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<UpdateBotConnectionRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<UpdateBotConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1908,8 +1908,8 @@ export const UpdateChannel: API.OperationMethod<
   UpdateChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<UpdateChannelRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<UpdateChannelResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<UpdateChannelRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<UpdateChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1919,24 +1919,68 @@ export const UpdateChannel: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(16, __c1, 0)),
+          kind: S.optional(S.NullOr(S.String)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(64, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
+            code: 200,
+            apiVersion: "2022-09-15",
+          }),
+        ),
+      ).annotate({ identifier: "CreateBotRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
         }),
       ).annotate({ identifier: "SkuInput" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Sku" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
           description: S.optional(S.String),
           iconUrl: S.optional(S.String),
           endpoint: S.NullOr(S.String),
-          allSettings: S.optional(__S(0, __c0, 0)),
-          parameters: S.optional(__S(0, __c0, 0)),
+          allSettings: S.optional(__S(48, __c3, 0)),
+          parameters: S.optional(__S(48, __c3, 0)),
           manifestUrl: S.optional(S.String),
           msaAppType: S.optional(S.String),
           msaAppId: S.String,
@@ -1945,7 +1989,7 @@ function __c0(j: number): any {
           developerAppInsightKey: S.optional(S.String),
           developerAppInsightsApiKey: S.optional(S.String),
           developerAppInsightsApplicationId: S.optional(S.String),
-          luisAppIds: S.optional(__S(2, __c0, 2)),
+          luisAppIds: S.optional(__S(32, __c2, 0)),
           luisKey: S.optional(S.String),
           isCmekEnabled: S.optional(S.Boolean),
           cmekKeyVaultUrl: S.optional(S.String),
@@ -1960,41 +2004,17 @@ function __c0(j: number): any {
           publishingCredentials: S.optional(S.String),
         }),
       ).annotate({ identifier: "BotPropertiesInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(1, __c0, 1)),
-          kind: S.optional(S.NullOr(S.String)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(3, __c0, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
-            code: 200,
-            apiVersion: "2022-09-15",
-          }),
-        ),
-      ).annotate({ identifier: "CreateBotRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpoint" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -2004,35 +2024,39 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServiceConnectionState",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(6, __c0, 6)),
-          privateLinkServiceConnectionState: __S(7, __c0, 7),
+          privateEndpoint: S.optional(__S(80, __c5, 0)),
+          privateLinkServiceConnectionState: __S(81, __c5, 1),
           provisioningState: S.optional(S.String),
-          groupIds: S.optional(__S(2, __c0, 2)),
+          groupIds: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(82, __c5, 2)),
         }),
       ).annotate({
         identifier: "BotPropertiesPrivateEndpointConnectionsItem",
       });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(83, __c5, 3));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
@@ -2040,19 +2064,19 @@ function __c1(j: number): any {
           iconUrl: S.optional(S.String),
           endpoint: S.NullOr(S.String),
           endpointVersion: S.optional(S.String),
-          allSettings: S.optional(__S(0, __c0, 0)),
-          parameters: S.optional(__S(0, __c0, 0)),
+          allSettings: S.optional(__S(48, __c3, 0)),
+          parameters: S.optional(__S(48, __c3, 0)),
           manifestUrl: S.optional(S.String),
           msaAppType: S.optional(S.String),
           msaAppId: S.String,
           msaAppTenantId: S.optional(S.String),
           msaAppMSIResourceId: S.optional(S.String),
-          configuredChannels: S.optional(__S(2, __c0, 2)),
-          enabledChannels: S.optional(__S(2, __c0, 2)),
+          configuredChannels: S.optional(__S(32, __c2, 0)),
+          enabledChannels: S.optional(__S(32, __c2, 0)),
           developerAppInsightKey: S.optional(S.String),
           developerAppInsightsApiKey: S.optional(S.String),
           developerAppInsightsApplicationId: S.optional(S.String),
-          luisAppIds: S.optional(__S(2, __c0, 2)),
+          luisAppIds: S.optional(__S(32, __c2, 0)),
           luisKey: S.optional(S.String),
           isCmekEnabled: S.optional(S.Boolean),
           cmekKeyVaultUrl: S.optional(S.String),
@@ -2065,58 +2089,35 @@ function __c1(j: number): any {
           disableLocalAuth: S.optional(S.Boolean),
           schemaTransformationVersion: S.optional(S.NullOr(S.String)),
           storageResourceId: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(10, __c1, 2)),
+          privateEndpointConnections: S.optional(__S(96, __c6, 0)),
           openWithHint: S.optional(S.String),
           appPasswordHint: S.optional(S.String.pipe(T.SensitiveValue({}))),
           provisioningState: S.optional(S.String),
           publishingCredentials: S.optional(S.String),
         }),
       ).annotate({ identifier: "BotProperties" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(49, __c3, 1)),
           kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(11, __c1, 3)),
+          zones: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "CreateBotResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ConnectionSettingParameter",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          clientId: S.optional(S.String),
-          clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          scopes: S.optional(S.String),
-          serviceProviderId: S.optional(S.String),
-          serviceProviderDisplayName: S.optional(S.String),
-          parameters: S.optional(__S(14, __c1, 6)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConnectionSettingPropertiesInput",
-      });
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2126,11 +2127,11 @@ function __c2(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(16, __c1, 0)),
           kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          properties: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(192, __c12, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2142,7 +2143,22 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateBotConnectionRequest",
       });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ConnectionSettingParameter",
+      });
     case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2153,248 +2169,58 @@ function __c2(j: number): any {
           scopes: S.optional(S.String),
           serviceProviderId: S.optional(S.String),
           serviceProviderDisplayName: S.optional(S.String),
-          parameters: S.optional(__S(14, __c1, 6)),
+          parameters: S.optional(__S(161, __c10, 1)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConnectionSettingProperties",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(49, __c3, 1)),
           kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(17, __c2, 1)),
+          zones: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(162, __c10, 2)),
         }),
       ).annotate({
         identifier: "CreateBotConnectionResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          channelName: S.String,
-          etag: S.optional(S.NullOr(S.String)),
-          location: S.optional(S.String),
-          properties: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "ChannelInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          channelName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(1, __c0, 1)),
-          kind: S.optional(S.NullOr(S.String)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(19, __c2, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}",
-            code: 200,
-            apiVersion: "2022-09-15",
-          }),
-        ),
-      ).annotate({ identifier: "CreateChannelRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          channelName: S.String,
-          etag: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(S.String),
-          location: S.optional(S.String),
-          properties: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "Channel" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          location: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(5, __c0, 5)),
-          kind: S.optional(S.NullOr(S.String)),
-          etag: S.optional(S.String),
-          zones: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(21, __c2, 5)),
+          clientId: S.optional(S.String),
+          clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          scopes: S.optional(S.String),
+          serviceProviderId: S.optional(S.String),
+          serviceProviderDisplayName: S.optional(S.String),
+          parameters: S.optional(__S(161, __c10, 1)),
+          provisioningState: S.optional(S.String),
         }),
-      ).annotate({ identifier: "CreateChannelResponse" });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PrivateEndpointInput",
+      ).annotate({
+        identifier: "ConnectionSettingPropertiesInput",
       });
   }
 }
-function __c3(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(23, __c2, 7)),
-          privateLinkServiceConnectionState: __S(7, __c0, 7),
-          groupIds: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2022-09-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePrivateEndpointConnectionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
-            code: 200,
-            apiVersion: "2022-09-15",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteBotRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
-            code: 200,
-            apiVersion: "2022-09-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBotConnectionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          channelName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}",
-            code: 200,
-            apiVersion: "2022-09-15",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteChannelRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2022-09-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePrivateEndpointConnectionResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/createEmailSignInUrl",
-            code: 200,
-            apiVersion: "2022-09-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "EmailCreateSignInUrlRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateEmailSignInUrlResponseProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          location: S.optional(S.String),
-          properties: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateEmailSignInUrlResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
-            code: 200,
-            apiVersion: "2022-09-15",
-          }),
-        ),
-      ).annotate({ identifier: "GetBotRequest" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2410,7 +2236,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetBotCheckNameAvailabilityRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           valid: S.optional(S.Boolean),
@@ -2420,7 +2246,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CheckNameAvailabilityResponseBody",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2436,22 +2266,30 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBotConnectionRequest" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(49, __c3, 1)),
           kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(17, __c2, 1)),
+          zones: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(162, __c10, 2)),
         }),
       ).annotate({ identifier: "GetBotConnectionResponse" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2469,7 +2307,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "GetChannelRequest" });
   }
 }
-function __c5(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2497,7 +2335,11 @@ function __c5(j: number): any {
           BotOpenIdMetadata: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostSettingsResponse" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2513,7 +2355,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetOperationResultRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2524,7 +2366,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "OperationResultsDescription",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2542,7 +2388,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionRequest",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2559,7 +2409,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetQnAMakerEndpointKeyRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           primaryEndpointKey: S.optional(S.String),
@@ -2570,7 +2420,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "QnAMakerEndpointKeysResponse",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2588,7 +2442,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -2601,24 +2455,28 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(48, __c6, 0)),
-          sku: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(352, __c22, 0)),
+          sku: S.optional(__S(49, __c3, 1)),
           kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(__S(49, __c6, 1)),
-          properties: S.optional(__S(11, __c1, 3)),
+          zones: S.optional(__S(353, __c22, 1)),
+          properties: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "Bot" });
     case 3:
-      return S.Array(__S(50, __c6, 2));
+      return S.Array(__S(354, __c22, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(51, __c6, 3)),
+          value: S.optional(__S(355, __c22, 3)),
         }),
       ).annotate({ identifier: "BotResponseList" });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2635,20 +2493,20 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListBotConnectionByBotServiceRequest",
       });
-    case 6:
-      return S.Array(__S(38, __c4, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(240, __c15, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(54, __c6, 6)),
+          value: S.optional(__S(369, __c23, 1)),
         }),
       ).annotate({
         identifier: "ConnectionSettingResponseList",
       });
   }
 }
-function __c7(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2676,7 +2534,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          constraints: S.optional(__S(57, __c7, 1)),
+          constraints: S.optional(__S(385, __c24, 1)),
         }),
       ).annotate({
         identifier: "ServiceProviderParameterMetadata",
@@ -2690,11 +2548,11 @@ function __c7(j: number): any {
           description: S.optional(S.String),
           helpUrl: S.optional(S.String),
           default: S.optional(S.String),
-          metadata: S.optional(__S(58, __c7, 2)),
+          metadata: S.optional(__S(386, __c24, 2)),
         }),
       ).annotate({ identifier: "ServiceProviderParameter" });
     case 4:
-      return S.Array(__S(59, __c7, 3));
+      return S.Array(__S(387, __c24, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2703,7 +2561,7 @@ function __c7(j: number): any {
           serviceProviderName: S.optional(S.String),
           devPortalUrl: S.optional(S.String),
           iconUrl: S.optional(S.String),
-          parameters: S.optional(__S(60, __c7, 4)),
+          parameters: S.optional(__S(388, __c24, 4)),
         }),
       ).annotate({
         identifier: "ServiceProviderProperties",
@@ -2711,25 +2569,97 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(61, __c7, 5)),
+          properties: S.optional(__S(389, __c24, 5)),
         }),
       ).annotate({ identifier: "ServiceProvider" });
     case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(390, __c24, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(63, __c7, 7)),
+          value: S.optional(__S(391, __c24, 7)),
         }),
       ).annotate({
         identifier: "ServiceProviderResponseList",
       });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          channelName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(16, __c1, 0)),
+          kind: S.optional(S.NullOr(S.String)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(448, __c28, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}",
+            code: 200,
+            apiVersion: "2022-09-15",
+          }),
+        ),
+      ).annotate({ identifier: "CreateChannelRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channelName: S.String,
+          etag: S.optional(S.NullOr(S.String)),
+          provisioningState: S.optional(S.String),
+          location: S.optional(S.String),
+          properties: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "Channel" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(49, __c3, 1)),
+          kind: S.optional(S.NullOr(S.String)),
+          etag: S.optional(S.String),
+          zones: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({ identifier: "CreateChannelResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channelName: S.String,
+          etag: S.optional(S.NullOr(S.String)),
+          location: S.optional(S.String),
+          properties: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "ChannelInput" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2747,7 +2677,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListBotConnectionWithSecretsRequest",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2760,7 +2694,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBotsRequest" });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2777,16 +2715,20 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListChannelByResourceGroupRequest",
       });
-    case 4:
-      return S.Array(__S(22, __c2, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(68, __c8, 4)),
+          value: S.optional(__S(497, __c31, 1)),
         }),
       ).annotate({ identifier: "ChannelResponseList" });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2804,7 +2746,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListChannelWithKeysRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
@@ -2823,23 +2765,19 @@ function __c8(j: number): any {
           isV1Enabled: S.optional(S.Boolean),
           isV3Enabled: S.optional(S.Boolean),
           isSecureSiteEnabled: S.optional(S.Boolean),
-          trustedOrigins: S.optional(__S(2, __c0, 2)),
+          trustedOrigins: S.optional(__S(32, __c2, 0)),
           isWebChatSpeechEnabled: S.optional(S.Boolean),
           isWebchatPreviewEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Site" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(513, __c32, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           extensionKey1: S.optional(S.String),
           extensionKey2: S.optional(S.String),
-          sites: S.optional(__S(72, __c9, 0)),
+          sites: S.optional(__S(514, __c32, 2)),
           channelId: S.optional(S.String),
           channelDisplayName: S.optional(S.String),
           botId: S.optional(S.String),
@@ -2849,21 +2787,21 @@ function __c9(j: number): any {
           requireTermsAgreement: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ChannelSettings" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(49, __c3, 1)),
           kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(21, __c2, 5)),
-          resource: S.optional(__S(21, __c2, 5)),
-          setting: S.optional(__S(73, __c9, 1)),
+          zones: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(416, __c26, 0)),
+          resource: S.optional(__S(416, __c26, 0)),
+          setting: S.optional(__S(515, __c32, 3)),
           provisioningState: S.optional(S.String),
           entityTag: S.optional(S.String),
           changedTime: S.optional(S.String),
@@ -2871,7 +2809,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListChannelWithKeysResponse",
       });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2882,7 +2824,7 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -2891,29 +2833,29 @@ function __c9(j: number): any {
           resource: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplayInfo" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(76, __c9, 4)),
+          display: S.optional(__S(529, __c33, 1)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationEntity" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(530, __c33, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(78, __c9, 6)),
+          value: S.optional(__S(531, __c33, 3)),
         }),
       ).annotate({
         identifier: "OperationEntityListResult",
       });
   }
 }
-function __c10(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2935,12 +2877,16 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(10, __c1, 2)),
+          value: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsResponse",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2957,36 +2903,40 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourceByBotResourceRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(2, __c0, 2)),
-          requiredZoneNames: S.optional(__S(2, __c0, 2)),
+          requiredMembers: S.optional(__S(32, __c2, 0)),
+          requiredZoneNames: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(83, __c10, 3)),
+          properties: S.optional(__S(561, __c35, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(562, __c35, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(85, __c10, 5)),
+          value: S.optional(__S(563, __c35, 3)),
         }),
       ).annotate({
         identifier: "ListPrivateLinkResourceByBotResourceResponse",
       });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3006,39 +2956,39 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "RegenerateDirectLineKeysRequest",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(49, __c3, 1)),
           kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(21, __c2, 5)),
+          zones: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(416, __c26, 0)),
         }),
       ).annotate({
         identifier: "RegenerateDirectLineKeysResponse",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(16, __c1, 0)),
           kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          properties: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3048,7 +2998,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateBotRequest" });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3056,11 +3010,11 @@ function __c11(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(16, __c1, 0)),
           kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          properties: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(192, __c12, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3072,7 +3026,52 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateBotConnectionRequest",
       });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(640, __c40, 0)),
+          privateLinkServiceConnectionState: __S(81, __c5, 1),
+          groupIds: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(624, __c39, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2022-09-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PrivateEndpointInput",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3080,11 +3079,11 @@ function __c11(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           channelName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          sku: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(48, __c3, 0)),
+          sku: S.optional(__S(16, __c1, 0)),
           kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          properties: S.optional(__S(19, __c2, 3)),
+          properties: S.optional(__S(448, __c28, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3096,7 +3095,151 @@ function __c11(j: number): any {
       ).annotate({ identifier: "UpdateChannelRequest" });
   }
 }
-
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
+            code: 200,
+            apiVersion: "2022-09-15",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteBotRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
+            code: 200,
+            apiVersion: "2022-09-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBotConnectionRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          channelName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}",
+            code: 200,
+            apiVersion: "2022-09-15",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteChannelRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2022-09-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/createEmailSignInUrl",
+            code: 200,
+            apiVersion: "2022-09-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "EmailCreateSignInUrlRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateEmailSignInUrlResponseProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          location: S.optional(S.String),
+          properties: S.optional(__S(737, __c46, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateEmailSignInUrlResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
+            code: 200,
+            apiVersion: "2022-09-15",
+          }),
+        ),
+      ).annotate({ identifier: "GetBotRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

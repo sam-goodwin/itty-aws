@@ -1567,7 +1567,7 @@ export const cancelPackXdslResiliation: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelPackXdslResiliationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelPackXdslResiliationResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<CancelPackXdslResiliationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1581,11 +1581,11 @@ export const createPackXdslAddressMoveOffer: API.OperationMethod<
   CreatePackXdslAddressMoveOfferError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreatePackXdslAddressMoveOfferRequest>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreatePackXdslAddressMoveOfferRequest>,
   output: __S(
-    20,
+    38,
     __c2,
-    4,
+    6,
   ) as any as S.Schema<PackXdslAsyncTaskPackXdslAddressMoveMoveOfferResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -1601,14 +1601,14 @@ export const createPackXdslAddressMoveServicesToDeleteUnpackTerm: API.OperationM
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23,
-    __c2,
-    7,
+    288,
+    __c18,
+    0,
   ) as any as S.Schema<CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    289,
+    __c18,
+    1,
   ) as any as S.Schema<CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -1623,8 +1623,8 @@ export const createPackXdslChangeContact: API.OperationMethod<
   CreatePackXdslChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreatePackXdslChangeContactRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CreatePackXdslChangeContactResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<CreatePackXdslChangeContactRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<CreatePackXdslChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1638,8 +1638,8 @@ export const createPackXdslDomainService: API.OperationMethod<
   CreatePackXdslDomainServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreatePackXdslDomainServiceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<PackXdslTask>,
+  input: __S(768, __c48, 0) as any as S.Schema<CreatePackXdslDomainServiceRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<PackXdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1653,8 +1653,8 @@ export const createPackXdslEmailProService: API.OperationMethod<
   CreatePackXdslEmailProServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreatePackXdslEmailProServiceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<PackXdslTask>,
+  input: __S(976, __c61, 0) as any as S.Schema<CreatePackXdslEmailProServiceRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<PackXdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1668,8 +1668,8 @@ export const createPackXdslHostedEmailService: API.OperationMethod<
   CreatePackXdslHostedEmailServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreatePackXdslHostedEmailServiceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<PackXdslTask>,
+  input: __S(1152, __c72, 0) as any as S.Schema<CreatePackXdslHostedEmailServiceRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<PackXdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1683,11 +1683,15 @@ export const createPackXdslHostedEmailServiceChangePassword: API.OperationMethod
   CreatePackXdslHostedEmailServiceChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreatePackXdslHostedEmailServiceChangePasswordRequest>,
+  input: __S(
+    1168,
+    __c73,
+    0,
+  ) as any as S.Schema<CreatePackXdslHostedEmailServiceChangePasswordRequest>,
   output: __S(
-    1,
-    __c0,
-    1,
+    16,
+    __c1,
+    0,
   ) as any as S.Schema<CreatePackXdslHostedEmailServiceChangePasswordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -1702,11 +1706,11 @@ export const createPackXdslMigrationOffer: API.OperationMethod<
   CreatePackXdslMigrationOfferError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreatePackXdslMigrationOfferRequest>,
+  input: __S(1184, __c74, 0) as any as S.Schema<CreatePackXdslMigrationOfferRequest>,
   output: __S(
-    45,
-    __c5,
-    5,
+    1192,
+    __c74,
+    8,
   ) as any as S.Schema<PackXdslAsyncTaskPackXdslMigrationMigrationOfferResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -1722,14 +1726,14 @@ export const createPackXdslMigrationServicesToDeleteUnpackTerm: API.OperationMet
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    46,
-    __c5,
-    6,
+    1200,
+    __c75,
+    0,
   ) as any as S.Schema<CreatePackXdslMigrationServicesToDeleteUnpackTermRequest>,
   output: __S(
-    47,
-    __c5,
-    7,
+    1201,
+    __c75,
+    1,
   ) as any as S.Schema<CreatePackXdslMigrationServicesToDeleteUnpackTermResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -1744,8 +1748,8 @@ export const createPackXdslResiliate: API.OperationMethod<
   CreatePackXdslResiliateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreatePackXdslResiliateRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<PackXdslResiliationFollowUpDetail>,
+  input: __S(97, __c6, 1) as any as S.Schema<CreatePackXdslResiliateRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<PackXdslResiliationFollowUpDetail>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1759,8 +1763,8 @@ export const createPackXdslVoipEcofaxService: API.OperationMethod<
   CreatePackXdslVoipEcofaxServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreatePackXdslVoipEcofaxServiceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<PackXdslTask>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreatePackXdslVoipEcofaxServiceRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<PackXdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1775,14 +1779,14 @@ export const createPackXdslVoipLineOptionCustomShippingAddress: API.OperationMet
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    52,
-    __c6,
-    4,
+    144,
+    __c9,
+    0,
   ) as any as S.Schema<CreatePackXdslVoipLineOptionCustomShippingAddressRequest>,
   output: __S(
-    53,
-    __c6,
-    5,
+    145,
+    __c9,
+    1,
   ) as any as S.Schema<CreatePackXdslVoipLineOptionCustomShippingAddressResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -1797,8 +1801,8 @@ export const createPackXdslVoipLineService: API.OperationMethod<
   CreatePackXdslVoipLineServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreatePackXdslVoipLineServiceRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<PackXdslVoIPLineOrder>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreatePackXdslVoipLineServiceRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<PackXdslVoIPLineOrder>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1812,8 +1816,8 @@ export const deletePackXdslHostedEmailService: API.OperationMethod<
   DeletePackXdslHostedEmailServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeletePackXdslHostedEmailServiceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePackXdslHostedEmailServiceResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeletePackXdslHostedEmailServiceRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeletePackXdslHostedEmailServiceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1827,8 +1831,8 @@ export const generatePackXdslPromotionCode: API.OperationMethod<
   GeneratePackXdslPromotionCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GeneratePackXdslPromotionCodeRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<PackXdslTask>,
+  input: __S(192, __c12, 0) as any as S.Schema<GeneratePackXdslPromotionCodeRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<PackXdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1842,8 +1846,8 @@ export const getPackXdsl: API.OperationMethod<
   GetPackXdslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetPackXdslRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<PackXdslPackAdslWithIAM>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetPackXdslRequest>,
+  output: __S(212, __c13, 4) as any as S.Schema<PackXdslPackAdslWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1857,8 +1861,8 @@ export const getPackXdslCanCancelResiliation: API.OperationMethod<
   GetPackXdslCanCancelResiliationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetPackXdslCanCancelResiliationRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetPackXdslCanCancelResiliationResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetPackXdslCanCancelResiliationRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<GetPackXdslCanCancelResiliationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1872,8 +1876,8 @@ export const getPackXdslContactOwner: API.OperationMethod<
   GetPackXdslContactOwnerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetPackXdslContactOwnerRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<PackXdslContactInfos>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetPackXdslContactOwnerRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<PackXdslContactInfos>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1887,8 +1891,8 @@ export const getPackXdslEmailProOptionIsEmailAvailable: API.OperationMethod<
   GetPackXdslEmailProOptionIsEmailAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetPackXdslEmailProOptionIsEmailAvailableRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetPackXdslEmailProOptionIsEmailAvailableResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetPackXdslEmailProOptionIsEmailAvailableRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<GetPackXdslEmailProOptionIsEmailAvailableResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1902,8 +1906,8 @@ export const getPackXdslExchangeAccountService: API.OperationMethod<
   GetPackXdslExchangeAccountServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetPackXdslExchangeAccountServiceRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<PackXdslExchangeAccountService>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetPackXdslExchangeAccountServiceRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<PackXdslExchangeAccountService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1918,14 +1922,14 @@ export const getPackXdslExchangeIndividualOptionIsEmailAvailable: API.OperationM
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    70,
-    __c8,
-    6,
+    352,
+    __c22,
+    0,
   ) as any as S.Schema<GetPackXdslExchangeIndividualOptionIsEmailAvailableRequest>,
   output: __S(
-    71,
-    __c8,
-    7,
+    353,
+    __c22,
+    1,
   ) as any as S.Schema<GetPackXdslExchangeIndividualOptionIsEmailAvailableResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -1940,8 +1944,8 @@ export const getPackXdslHostedEmailService: API.OperationMethod<
   GetPackXdslHostedEmailServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetPackXdslHostedEmailServiceRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<PackXdslHostedEmailService>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetPackXdslHostedEmailServiceRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<PackXdslHostedEmailService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1955,8 +1959,8 @@ export const getPackXdslHostedEmailServiceAccount: API.OperationMethod<
   GetPackXdslHostedEmailServiceAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetPackXdslHostedEmailServiceAccountRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<PackXdslHostedEmailAccount>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetPackXdslHostedEmailServiceAccountRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<PackXdslHostedEmailAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1970,8 +1974,8 @@ export const getPackXdslResiliationFollowUp: API.OperationMethod<
   GetPackXdslResiliationFollowUpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetPackXdslResiliationFollowUpRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<PackXdslResiliationFollowUpDetail>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetPackXdslResiliationFollowUpRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<PackXdslResiliationFollowUpDetail>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1985,8 +1989,8 @@ export const getPackXdslResiliationTerms: API.OperationMethod<
   GetPackXdslResiliationTermsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetPackXdslResiliationTermsRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<PackXdslResiliationTerms>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetPackXdslResiliationTermsRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<PackXdslResiliationTerms>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2000,8 +2004,8 @@ export const getPackXdslServiceInfos: API.OperationMethod<
   GetPackXdslServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetPackXdslServiceInfosRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ServicesService>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetPackXdslServiceInfosRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2015,8 +2019,8 @@ export const getPackXdslSubService: API.OperationMethod<
   GetPackXdslSubServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetPackXdslSubServiceRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<PackXdslService>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetPackXdslSubServiceRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<PackXdslService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2030,8 +2034,8 @@ export const getPackXdslSubServiceKeepServiceTerms: API.OperationMethod<
   GetPackXdslSubServiceKeepServiceTermsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetPackXdslSubServiceKeepServiceTermsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<PackXdslUnpackTerms>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetPackXdslSubServiceKeepServiceTermsRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<PackXdslUnpackTerms>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2045,8 +2049,8 @@ export const getPackXdslTask: API.OperationMethod<
   GetPackXdslTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetPackXdslTaskRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<PackXdslTask>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetPackXdslTaskRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<PackXdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2060,8 +2064,8 @@ export const getPackXdslVoipLineService: API.OperationMethod<
   GetPackXdslVoipLineServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetPackXdslVoipLineServiceRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<PackXdslVoipLineService>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetPackXdslVoipLineServiceRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<PackXdslVoipLineService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2075,8 +2079,8 @@ export const listPackXdsl: API.OperationMethod<
   ListPackXdslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListPackXdslRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ListPackXdslResponse>,
+  input: __S(594, __c37, 2) as any as S.Schema<ListPackXdslRequest>,
+  output: __S(595, __c37, 3) as any as S.Schema<ListPackXdslResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2090,8 +2094,8 @@ export const listPackXdslDomainOptionTlds: API.OperationMethod<
   ListPackXdslDomainOptionTldsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListPackXdslDomainOptionTldsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslDomainOptionTldsResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListPackXdslDomainOptionTldsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslDomainOptionTldsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2105,8 +2109,8 @@ export const listPackXdslDomainServices: API.OperationMethod<
   ListPackXdslDomainServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListPackXdslDomainServicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslDomainServicesResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListPackXdslDomainServicesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslDomainServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2120,8 +2124,8 @@ export const listPackXdslEmailProOptionDomains: API.OperationMethod<
   ListPackXdslEmailProOptionDomainsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListPackXdslEmailProOptionDomainsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslEmailProOptionDomainsResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListPackXdslEmailProOptionDomainsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslEmailProOptionDomainsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2135,8 +2139,8 @@ export const listPackXdslEmailProServices: API.OperationMethod<
   ListPackXdslEmailProServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListPackXdslEmailProServicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslEmailProServicesResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListPackXdslEmailProServicesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslEmailProServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2150,8 +2154,8 @@ export const listPackXdslExchangeAccountServices: API.OperationMethod<
   ListPackXdslExchangeAccountServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListPackXdslExchangeAccountServicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslExchangeAccountServicesResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListPackXdslExchangeAccountServicesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslExchangeAccountServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2165,8 +2169,12 @@ export const listPackXdslExchangeIndividualOptionDomains: API.OperationMethod<
   ListPackXdslExchangeIndividualOptionDomainsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListPackXdslExchangeIndividualOptionDomainsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslExchangeIndividualOptionDomainsResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListPackXdslExchangeIndividualOptionDomainsRequest>,
+  output: __S(
+    640,
+    __c40,
+    0,
+  ) as any as S.Schema<ListPackXdslExchangeIndividualOptionDomainsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2180,8 +2188,8 @@ export const listPackXdslExchangeOrganizationServices: API.OperationMethod<
   ListPackXdslExchangeOrganizationServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListPackXdslExchangeOrganizationServicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslExchangeOrganizationServicesResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<ListPackXdslExchangeOrganizationServicesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslExchangeOrganizationServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2195,8 +2203,8 @@ export const listPackXdslHostedEmailOptionDomains: API.OperationMethod<
   ListPackXdslHostedEmailOptionDomainsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListPackXdslHostedEmailOptionDomainsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslHostedEmailOptionDomainsResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListPackXdslHostedEmailOptionDomainsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslHostedEmailOptionDomainsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2210,8 +2218,8 @@ export const listPackXdslHostedEmailServiceConfiguration: API.OperationMethod<
   ListPackXdslHostedEmailServiceConfigurationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListPackXdslHostedEmailServiceConfigurationRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<PackXdslHostedEmailConfiguration>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListPackXdslHostedEmailServiceConfigurationRequest>,
+  output: __S(803, __c50, 3) as any as S.Schema<PackXdslHostedEmailConfiguration>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2225,8 +2233,8 @@ export const listPackXdslHostedEmailServices: API.OperationMethod<
   ListPackXdslHostedEmailServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListPackXdslHostedEmailServicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslHostedEmailServicesResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListPackXdslHostedEmailServicesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslHostedEmailServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2240,8 +2248,8 @@ export const listPackXdslOrderFollowUp: API.OperationMethod<
   ListPackXdslOrderFollowUpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListPackXdslOrderFollowUpRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListPackXdslOrderFollowUpResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListPackXdslOrderFollowUpRequest>,
+  output: __S(835, __c52, 3) as any as S.Schema<ListPackXdslOrderFollowUpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2255,8 +2263,8 @@ export const listPackXdslPromotionCodeCapabilities: API.OperationMethod<
   ListPackXdslPromotionCodeCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListPackXdslPromotionCodeCapabilitiesRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<PackXdslPromotionCodeCapabilities>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListPackXdslPromotionCodeCapabilitiesRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<PackXdslPromotionCodeCapabilities>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2270,8 +2278,8 @@ export const listPackXdslSearch: API.OperationMethod<
   ListPackXdslSearchError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListPackXdslSearchRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<ListPackXdslSearchResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListPackXdslSearchRequest>,
+  output: __S(867, __c54, 3) as any as S.Schema<ListPackXdslSearchResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2285,8 +2293,8 @@ export const listPackXdslServices: API.OperationMethod<
   ListPackXdslServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListPackXdslServicesRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<ListPackXdslServicesResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListPackXdslServicesRequest>,
+  output: __S(883, __c55, 3) as any as S.Schema<ListPackXdslServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2300,8 +2308,8 @@ export const listPackXdslShippingAddresses: API.OperationMethod<
   ListPackXdslShippingAddressesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ListPackXdslShippingAddressesRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListPackXdslShippingAddressesResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListPackXdslShippingAddressesRequest>,
+  output: __S(914, __c57, 2) as any as S.Schema<ListPackXdslShippingAddressesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2315,8 +2323,8 @@ export const listPackXdslSubServices: API.OperationMethod<
   ListPackXdslSubServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListPackXdslSubServicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslSubServicesResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListPackXdslSubServicesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslSubServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2330,8 +2338,8 @@ export const listPackXdslTasks: API.OperationMethod<
   ListPackXdslTasksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListPackXdslTasksRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListPackXdslTasksResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListPackXdslTasksRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<ListPackXdslTasksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2345,8 +2353,8 @@ export const listPackXdslVoipBillingAccountServices: API.OperationMethod<
   ListPackXdslVoipBillingAccountServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListPackXdslVoipBillingAccountServicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslVoipBillingAccountServicesResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListPackXdslVoipBillingAccountServicesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslVoipBillingAccountServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2360,8 +2368,8 @@ export const listPackXdslVoipEcofaxServices: API.OperationMethod<
   ListPackXdslVoipEcofaxServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListPackXdslVoipEcofaxServicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslVoipEcofaxServicesResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListPackXdslVoipEcofaxServicesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslVoipEcofaxServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2375,8 +2383,8 @@ export const listPackXdslVoipLineOptionHardwares: API.OperationMethod<
   ListPackXdslVoipLineOptionHardwaresError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListPackXdslVoipLineOptionHardwaresRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<ListPackXdslVoipLineOptionHardwaresResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListPackXdslVoipLineOptionHardwaresRequest>,
+  output: __S(1011, __c63, 3) as any as S.Schema<ListPackXdslVoipLineOptionHardwaresResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2390,11 +2398,11 @@ export const listPackXdslVoipLineOptionShippingAddresses: API.OperationMethod<
   ListPackXdslVoipLineOptionShippingAddressesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListPackXdslVoipLineOptionShippingAddressesRequest>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListPackXdslVoipLineOptionShippingAddressesRequest>,
   output: __S(
-    127,
-    __c15,
-    7,
+    914,
+    __c57,
+    2,
   ) as any as S.Schema<ListPackXdslVoipLineOptionShippingAddressesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -2409,8 +2417,8 @@ export const listPackXdslVoipLineServices: API.OperationMethod<
   ListPackXdslVoipLineServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListPackXdslVoipLineServicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslVoipLineServicesResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListPackXdslVoipLineServicesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslVoipLineServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2424,8 +2432,8 @@ export const listPackXdslXdslAccessServices: API.OperationMethod<
   ListPackXdslXdslAccessServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListPackXdslXdslAccessServicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListPackXdslXdslAccessServicesResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListPackXdslXdslAccessServicesRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ListPackXdslXdslAccessServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2439,8 +2447,8 @@ export const migratePackXdslMigration: API.OperationMethod<
   MigratePackXdslMigrationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<MigratePackXdslMigrationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<PackXdslTask>,
+  input: __S(1072, __c67, 0) as any as S.Schema<MigratePackXdslMigrationRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<PackXdslTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2454,8 +2462,8 @@ export const movePackXdslAddressMoveOffer: API.OperationMethod<
   MovePackXdslAddressMoveOfferError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<MovePackXdslAddressMoveOfferRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<PackXdslAsyncTaskLong>,
+  input: __S(1104, __c69, 0) as any as S.Schema<MovePackXdslAddressMoveOfferRequest>,
+  output: __S(1105, __c69, 1) as any as S.Schema<PackXdslAsyncTaskLong>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2469,8 +2477,8 @@ export const putPackXdsl: API.OperationMethod<
   PutPackXdslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<PutPackXdslRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<PutPackXdslResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<PutPackXdslRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<PutPackXdslResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2484,8 +2492,8 @@ export const putPackXdslServiceInfos: API.OperationMethod<
   PutPackXdslServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<PutPackXdslServiceInfosRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<PutPackXdslServiceInfosResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<PutPackXdslServiceInfosRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<PutPackXdslServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2504,11 +2512,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelPackXdslResiliationRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelPackXdslResiliationResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -2519,187 +2535,73 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreatePackXdslAddressMoveOfferRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          name: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OrderContract" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.String),
-          text: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "OrderPrice" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          price: S.optional(S.NullOr(__S(5, __c0, 5))),
-        }),
-      ).annotate({
-        identifier: "PackXdslMigrationOfferModemOption",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(S.Number),
-          included: S.optional(S.Number),
-          name: S.optional(S.String),
-          optional: S.optional(S.Number),
-          optionalPrice: S.optional(S.NullOr(__S(5, __c0, 5))),
-        }),
-      ).annotate({
-        identifier: "PackXdslMigrationOfferAvailableOption",
-      });
     case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          price: S.optional(S.NullOr(__S(5, __c0, 5))),
+          price: S.optional(S.NullOr(__S(48, __c3, 0))),
         }),
       ).annotate({ identifier: "PackXdslAddressMovePrice" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          discount: S.optional(__S(5, __c0, 5)),
-          duration: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PackXdslMigrationAndAddressMovePromotionDetails",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          endDate: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          installFee: S.optional(S.NullOr(__S(11, __c1, 3))),
-          startDate: S.optional(S.NullOr(S.String)),
-          subscription: S.optional(S.NullOr(__S(11, __c1, 3))),
-        }),
-      ).annotate({
-        identifier: "PackXdslMigrationAndAddressMovePromotion",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          creationLineFees: S.optional(__S(10, __c1, 2)),
-          currentOfferPrice: S.optional(__S(10, __c1, 2)),
-          due: S.optional(__S(10, __c1, 2)),
-          firstYearPromo: S.optional(__S(10, __c1, 2)),
-          gtrComfortFees: S.optional(S.NullOr(__S(10, __c1, 2))),
-          installFees: S.optional(__S(10, __c1, 2)),
-          modemRental: S.optional(__S(10, __c1, 2)),
-          price: S.optional(__S(10, __c1, 2)),
-          promotion: S.optional(S.NullOr(__S(12, __c1, 4))),
-          providerAI: S.optional(S.NullOr(__S(10, __c1, 2))),
-          providerOrange: S.optional(S.NullOr(__S(10, __c1, 2))),
+          creationLineFees: S.optional(__S(33, __c2, 1)),
+          currentOfferPrice: S.optional(__S(33, __c2, 1)),
+          due: S.optional(__S(33, __c2, 1)),
+          firstYearPromo: S.optional(__S(33, __c2, 1)),
+          gtrComfortFees: S.optional(S.NullOr(__S(33, __c2, 1))),
+          installFees: S.optional(__S(33, __c2, 1)),
+          modemRental: S.optional(__S(33, __c2, 1)),
+          price: S.optional(__S(33, __c2, 1)),
+          promotion: S.optional(S.NullOr(__S(71, __c4, 7))),
+          providerAI: S.optional(S.NullOr(__S(33, __c2, 1))),
+          providerOrange: S.optional(S.NullOr(__S(33, __c2, 1))),
         }),
       ).annotate({
         identifier: "PackXdslAddressMovePriceOffer",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          numberToDelete: S.optional(S.Number),
-          services: S.optional(__S(14, __c1, 6)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PackXdslMigrationSubServiceToDelete",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          contracts: S.optional(__S(4, __c0, 4)),
+          contracts: S.optional(__S(65, __c4, 1)),
           customOntAddress: S.optional(S.Boolean),
           description: S.optional(S.String),
           engageMonths: S.optional(S.NullOr(S.Number)),
           engaged: S.optional(S.Boolean),
-          modemOptions: S.optional(S.NullOr(__S(7, __c0, 7))),
+          modemOptions: S.optional(S.NullOr(__S(67, __c4, 3))),
           modemReferenceToReturn: S.optional(S.NullOr(S.String)),
           needModem: S.optional(S.Boolean),
           needNewModem: S.optional(S.Boolean),
           offerName: S.optional(S.String),
           operator: S.optional(S.NullOr(S.String)),
-          options: S.optional(__S(9, __c1, 1)),
-          prices: S.optional(__S(13, __c1, 5)),
-          productCodes: S.optional(__S(14, __c1, 6)),
-          subServicesToDelete: S.optional(__S(16, __c2, 0)),
+          options: S.optional(__S(69, __c4, 5)),
+          prices: S.optional(__S(34, __c2, 2)),
+          productCodes: S.optional(__S(80, __c5, 0)),
+          subServicesToDelete: S.optional(__S(73, __c4, 9)),
           url: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PackXdslAddressMoveMoveOffer",
       });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(35, __c2, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          offers: S.optional(__S(18, __c2, 2)),
+          offers: S.optional(__S(36, __c2, 4)),
         }),
       ).annotate({
         identifier: "PackXdslAddressMoveMoveOfferResponse",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.NullOr(S.String)),
-          result: S.optional(__S(19, __c2, 3)),
+          result: S.optional(__S(37, __c2, 5)),
           status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PackXdslAsyncTaskPackXdslAddressMoveMoveOfferResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          quantity: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PackXdslMigrationOfferOption",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          packName: S.String.pipe(T.Label()),
-          eligibilityReference: S.String,
-          offerName: S.String,
-          options: S.optional(__S(22, __c2, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/pack/xdsl/{packName}/addressMove/servicesToDeleteUnpackTerms",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequest",
       });
   }
 }
@@ -2708,50 +2610,11 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          isAllowed: S.optional(S.Boolean),
-          price: S.optional(__S(5, __c0, 5)),
-          renewPeriod: S.optional(S.Number),
-          renewPrice: S.optional(__S(5, __c0, 5)),
-          service: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          text: S.optional(S.String),
+          value: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "PackXdslMigrationSubServiceDetails",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          numberToDelete: S.optional(S.Number),
-          services: S.optional(__S(25, __c3, 1)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PackXdslMigrationSubServicesDetailsToDelete",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() => __S(27, __c3, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          packName: S.String.pipe(T.Label()),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/changeContact", code: 200 })),
-      ).annotate({
-        identifier: "CreatePackXdslChangeContactRequest",
-      });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.suspend(() => __S(30, __c3, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreatePackXdslChangeContactResponse",
-      });
+      ).annotate({ identifier: "OrderPrice" });
   }
 }
 function __c4(j: number): any {
@@ -2759,181 +2622,77 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          packName: S.String.pipe(T.Label()),
-          action: S.String,
-          authInfo: S.optional(S.String),
-          domain: S.String,
-          tld: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/domain/services", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreatePackXdslDomainServiceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          function: S.optional(S.String),
-          id: S.optional(S.Number),
-          status: S.optional(S.String),
-          updateDate: S.optional(S.String),
+          content: S.optional(S.String),
+          name: S.optional(S.String),
+          url: S.optional(S.String),
         }),
-      ).annotate({ identifier: "PackXdslTask" });
+      ).annotate({ identifier: "OrderContract" });
+    case 1:
+      return S.Array(__S(64, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          packName: S.String.pipe(T.Label()),
-          email: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/emailPro/services", code: 200 }),
-        ),
+          name: S.optional(S.String),
+          price: S.optional(S.NullOr(__S(48, __c3, 0))),
+        }),
       ).annotate({
-        identifier: "CreatePackXdslEmailProServiceRequest",
+        identifier: "PackXdslMigrationOfferModemOption",
       });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          packName: S.String.pipe(T.Label()),
-          email: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/hostedEmail/services", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreatePackXdslHostedEmailServiceRequest",
-      });
+      return S.Array(__S(66, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          packName: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/pack/xdsl/{packName}/hostedEmail/services/{domain}/changePassword",
-            code: 200,
-          }),
-        ),
+          duration: S.optional(S.Number),
+          included: S.optional(S.Number),
+          name: S.optional(S.String),
+          optional: S.optional(S.Number),
+          optionalPrice: S.optional(S.NullOr(__S(48, __c3, 0))),
+        }),
       ).annotate({
-        identifier: "CreatePackXdslHostedEmailServiceChangePasswordRequest",
+        identifier: "PackXdslMigrationOfferAvailableOption",
       });
     case 5:
-      return S.suspend(() =>
-        S.Struct({
-          packName: S.String.pipe(T.Label()),
-          buildingReference: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/migration/offers", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreatePackXdslMigrationOfferRequest",
-      });
+      return S.Array(__S(68, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          floors: S.optional(__S(14, __c1, 6)),
-          stair: S.optional(S.String),
+          discount: S.optional(__S(48, __c3, 0)),
+          duration: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
-        identifier: "ConnectivityEligibilityBuildingStair",
+        identifier: "PackXdslMigrationAndAddressMovePromotionDetails",
       });
     case 7:
-      return S.Array(__S(38, __c4, 6));
+      return S.suspend(() =>
+        S.Struct({
+          endDate: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          installFee: S.optional(S.NullOr(__S(70, __c4, 6))),
+          startDate: S.optional(S.NullOr(S.String)),
+          subscription: S.optional(S.NullOr(__S(70, __c4, 6))),
+        }),
+      ).annotate({
+        identifier: "PackXdslMigrationAndAddressMovePromotion",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          numberToDelete: S.optional(S.Number),
+          services: S.optional(__S(80, __c5, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PackXdslMigrationSubServiceToDelete",
+      });
+    case 9:
+      return S.Array(__S(72, __c4, 8));
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          nro: S.optional(S.NullOr(S.String)),
-          reference: S.optional(S.String),
-          stairs: S.optional(S.NullOr(__S(39, __c4, 7))),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ConnectivityEligibilityBuilding",
-      });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          contractList: S.optional(__S(14, __c1, 6)),
-          contracts: S.optional(__S(4, __c0, 4)),
-          currentOfferPrice: S.optional(__S(5, __c0, 5)),
-          customOntAddress: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          due: S.optional(S.NullOr(__S(5, __c0, 5))),
-          engageMonths: S.optional(S.NullOr(S.Number)),
-          engaged: S.optional(S.Boolean),
-          engagementMonths: S.optional(__S(30, __c3, 6)),
-          firstYearPromo: S.optional(S.NullOr(__S(5, __c0, 5))),
-          gtrComfortFees: S.optional(S.NullOr(__S(5, __c0, 5))),
-          installFees: S.optional(S.NullOr(__S(5, __c0, 5))),
-          modemMacToReturn: S.optional(S.NullOr(S.String)),
-          modemOptions: S.optional(S.NullOr(__S(7, __c0, 7))),
-          modemRental: S.optional(S.NullOr(__S(5, __c0, 5))),
-          multiOtp: S.optional(S.Boolean),
-          needModem: S.optional(S.Boolean),
-          needNewModem: S.optional(S.Boolean),
-          offerName: S.optional(S.String),
-          operator: S.optional(S.NullOr(S.String)),
-          options: S.optional(__S(9, __c1, 1)),
-          price: S.optional(__S(5, __c0, 5)),
-          promotion: S.optional(S.NullOr(__S(12, __c1, 4))),
-          providerAI: S.optional(S.NullOr(__S(5, __c0, 5))),
-          providerOrange: S.optional(S.NullOr(__S(5, __c0, 5))),
-          subServicesToDelete: S.optional(__S(16, __c2, 0)),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PackXdslMigrationMigrationOffer",
-      });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          buildings: S.optional(__S(41, __c5, 1)),
-          offers: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "PackXdslMigrationMigrationOfferResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(S.NullOr(S.String)),
-          result: S.optional(__S(44, __c5, 4)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PackXdslAsyncTaskPackXdslMigrationMigrationOfferResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          packName: S.String.pipe(T.Label()),
-          offerName: S.String,
-          options: S.optional(__S(22, __c2, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/pack/xdsl/{packName}/migration/servicesToDeleteUnpackTerms",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePackXdslMigrationServicesToDeleteUnpackTermRequest",
-      });
-    case 7:
-      return S.suspend(() => __S(27, __c3, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreatePackXdslMigrationServicesToDeleteUnpackTermResponse",
-      });
+      return S.Array(S.String);
   }
 }
 function __c6(j: number): any {
@@ -2953,13 +2712,17 @@ function __c6(j: number): any {
         S.Struct({
           packName: S.String.pipe(T.Label()),
           resiliationDate: S.optional(S.String),
-          resiliationSurvey: __S(48, __c6, 0),
-          servicesToKeep: S.optional(__S(30, __c3, 6)),
+          resiliationSurvey: __S(96, __c6, 0),
+          servicesToKeep: S.optional(__S(560, __c35, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/resiliate", code: 200 })),
       ).annotate({
         identifier: "CreatePackXdslResiliateRequest",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dateTodo: S.optional(S.String),
@@ -2970,7 +2733,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PackXdslResiliationFollowUpDetail",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -2980,7 +2747,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreatePackXdslVoipEcofaxServiceRequest",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -2999,15 +2770,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreatePackXdslVoipLineOptionCustomShippingAddressRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Number.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreatePackXdslVoipLineOptionCustomShippingAddressResponse",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
-          hardwareNames: __S(14, __c1, 6),
+          hardwareNames: __S(80, __c5, 0),
           mondialRelayId: S.optional(S.String),
           shippingId: S.optional(S.String),
         }).pipe(
@@ -3016,18 +2791,18 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreatePackXdslVoipLineServiceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           needPayment: S.optional(S.Boolean),
           orderId: S.optional(S.Number),
           orderUrl: S.optional(S.String),
-          taskIds: S.optional(__S(30, __c3, 6)),
+          taskIds: S.optional(__S(560, __c35, 0)),
         }),
       ).annotate({ identifier: "PackXdslVoIPLineOrder" });
   }
 }
-function __c7(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3044,7 +2819,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeletePackXdslHostedEmailServiceRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3058,13 +2837,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GeneratePackXdslPromotionCodeRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}", code: 200 })),
       ).annotate({ identifier: "GetPackXdslRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           canMoveAddress: S.optional(S.Boolean),
@@ -3072,29 +2855,33 @@ function __c7(j: number): any {
           isResellerOffer: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PackXdslPackCapabilities" });
-    case 4:
+    case 2:
       return S.Record(S.String, S.String);
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(60, __c7, 4))),
+          tags: S.optional(S.NullOr(__S(210, __c13, 2))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.optional(__S(59, __c7, 3)),
+          capabilities: S.optional(__S(209, __c13, 1)),
           description: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(__S(61, __c7, 5))),
+          iam: S.optional(S.NullOr(__S(211, __c13, 3))),
           offerDescription: S.optional(S.String),
-          offerPrice: S.optional(__S(5, __c0, 5)),
+          offerPrice: S.optional(__S(48, __c3, 0)),
           packName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackXdslPackAdslWithIAM" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3106,13 +2893,17 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPackXdslCanCancelResiliationResponse",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3120,7 +2911,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPackXdslContactOwnerRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.NullOr(S.String)),
@@ -3135,7 +2926,11 @@ function __c8(j: number): any {
           zip: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "PackXdslContactInfos" });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3150,7 +2945,81 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPackXdslEmailProOptionIsEmailAvailableRequest",
       });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packName: S.String.pipe(T.Label()),
+          eligibilityReference: S.String,
+          offerName: S.String,
+          options: S.optional(__S(304, __c19, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/pack/xdsl/{packName}/addressMove/servicesToDeleteUnpackTerms",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePackXdslAddressMoveServicesToDeleteUnpackTermRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(308, __c19, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreatePackXdslAddressMoveServicesToDeleteUnpackTermResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(320, __c20, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          isAllowed: S.optional(S.Boolean),
+          price: S.optional(__S(48, __c3, 0)),
+          renewPeriod: S.optional(S.Number),
+          renewPrice: S.optional(__S(48, __c3, 0)),
+          service: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PackXdslMigrationSubServiceDetails",
+      });
+    case 2:
+      return S.Array(__S(305, __c19, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          numberToDelete: S.optional(S.Number),
+          services: S.optional(__S(306, __c19, 2)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PackXdslMigrationSubServicesDetailsToDelete",
+      });
     case 4:
+      return S.Array(__S(307, __c19, 3));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          quantity: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PackXdslMigrationOfferOption",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3165,7 +3034,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPackXdslExchangeAccountServiceRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -3175,7 +3044,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PackXdslExchangeAccountService",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3190,13 +3063,13 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPackXdslExchangeIndividualOptionIsEmailAvailableRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPackXdslExchangeIndividualOptionIsEmailAvailableResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3221,7 +3094,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PackXdslHostedEmailService",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3236,7 +3113,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetPackXdslHostedEmailServiceAccountRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
@@ -3245,20 +3122,24 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ComplexTypeUnitAndValueLong",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           antispamEnabled: S.optional(S.Boolean),
           antivirusEnabled: S.optional(S.Boolean),
           offer: S.optional(S.String),
           primaryEmailAddress: S.optional(S.String),
-          quota: S.optional(__S(75, __c9, 3)),
-          size: S.optional(__S(75, __c9, 3)),
+          quota: S.optional(__S(385, __c24, 1)),
+          size: S.optional(__S(385, __c24, 1)),
         }),
       ).annotate({
         identifier: "PackXdslHostedEmailAccount",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3268,7 +3149,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetPackXdslResiliationFollowUpRequest",
       });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3279,23 +3164,27 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetPackXdslResiliationTermsRequest",
       });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          due: S.optional(__S(5, __c0, 5)),
+          due: S.optional(__S(48, __c3, 0)),
           engageDate: S.optional(S.NullOr(S.String)),
           minResiliationDate: S.optional(S.String),
           resiliationDate: S.optional(S.String),
-          resiliationReasons: S.optional(__S(79, __c9, 7)),
+          resiliationReasons: S.optional(__S(432, __c27, 0)),
         }),
       ).annotate({ identifier: "PackXdslResiliationTerms" });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3303,17 +3192,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetPackXdslServiceInfosRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          deleteAtExpiration: S.optional(S.Boolean),
-          forced: S.optional(S.Boolean),
-          manualPayment: S.optional(S.NullOr(S.Boolean)),
-          period: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ServiceRenewType" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           canDeleteAtExpiration: S.optional(S.Boolean),
@@ -3324,14 +3203,32 @@ function __c10(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(30, __c3, 6))),
-          renew: S.optional(S.NullOr(__S(82, __c10, 2))),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(560, __c35, 0))),
+          renew: S.optional(S.NullOr(__S(464, __c29, 0))),
           renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          deleteAtExpiration: S.optional(S.Boolean),
+          forced: S.optional(S.Boolean),
+          manualPayment: S.optional(S.NullOr(S.Boolean)),
+          period: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ServiceRenewType" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3342,7 +3239,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetPackXdslSubServiceRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -3350,7 +3247,11 @@ function __c10(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackXdslService" });
-    case 6:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3365,18 +3266,18 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetPackXdslSubServiceKeepServiceTermsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           isAllowed: S.optional(S.Boolean),
-          price: S.optional(__S(5, __c0, 5)),
+          price: S.optional(__S(48, __c3, 0)),
           renewPeriod: S.optional(S.Number),
-          renewPrice: S.optional(__S(5, __c0, 5)),
+          renewPrice: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "PackXdslUnpackTerms" });
   }
 }
-function __c11(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3385,7 +3286,40 @@ function __c11(j: number): any {
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/tasks/{id}", code: 200 })),
       ).annotate({ identifier: "GetPackXdslTaskRequest" });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packName: S.String.pipe(T.Label()),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/changeContact", code: 200 })),
+      ).annotate({
+        identifier: "CreatePackXdslChangeContactRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(560, __c35, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreatePackXdslChangeContactResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3400,34 +3334,42 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetPackXdslVoipLineServiceRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           billingAccount: S.optional(S.String),
           domain: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackXdslVoipLineService" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "IamResourceTagFilterInput",
-      });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.Record(S.String, __S(92, __c11, 4));
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(608, __c38, 0));
+    case 1:
+      return S.Record(S.String, __S(592, __c37, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(93, __c11, 5).pipe(T.Query())),
+          iamTags: S.optional(__S(593, __c37, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl", code: 200 })),
       ).annotate({ identifier: "ListPackXdslRequest" });
-    case 7:
-      return S.suspend(() => __S(14, __c1, 6).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.suspend(() => __S(80, __c5, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPackXdslResponse",
       });
   }
 }
-function __c12(j: number): any {
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "IamResourceTagFilterInput",
+      });
+  }
+}
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3439,11 +3381,19 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPackXdslDomainOptionTldsRequest",
       });
-    case 1:
-      return S.suspend(() => __S(14, __c1, 6).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(80, __c5, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPackXdslDomainOptionTldsResponse",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3451,7 +3401,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPackXdslDomainServicesRequest",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3465,7 +3419,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPackXdslEmailProOptionDomainsRequest",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3475,7 +3433,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPackXdslEmailProServicesRequest",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3489,7 +3451,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPackXdslExchangeAccountServicesRequest",
       });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3503,7 +3469,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPackXdslExchangeIndividualOptionDomainsRequest",
       });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3519,7 +3489,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3535,7 +3505,42 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListPackXdslHostedEmailOptionDomainsRequest",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packName: S.String.pipe(T.Label()),
+          action: S.String,
+          authInfo: S.optional(S.String),
+          domain: S.String,
+          tld: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/domain/services", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreatePackXdslDomainServiceRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          function: S.optional(S.String),
+          id: S.optional(S.Number),
+          status: S.optional(S.String),
+          updateDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PackXdslTask" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3550,7 +3555,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListPackXdslHostedEmailServiceConfigurationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           host: S.optional(S.String),
@@ -3563,19 +3568,23 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PackXdslHostedEmailConfigurationService",
       });
+    case 2:
+      return S.Array(__S(801, __c50, 1));
     case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(__S(107, __c13, 3)),
+          services: S.optional(__S(802, __c50, 2)),
           status: S.optional(S.String),
           webmailUrl: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PackXdslHostedEmailConfiguration",
       });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3585,7 +3594,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListPackXdslHostedEmailServicesRequest",
       });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3593,10 +3606,10 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListPackXdslOrderFollowUpRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          comments: S.optional(__S(14, __c1, 6)),
+          comments: S.optional(__S(80, __c5, 0)),
           doneDate: S.optional(S.NullOr(S.String)),
           durationUnit: S.optional(S.String),
           expectedDuration: S.optional(S.Number),
@@ -3606,17 +3619,17 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PackXdslOrderFollowUpStep",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() => __S(112, __c14, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(833, __c52, 1));
+    case 3:
+      return S.suspend(() => __S(834, __c52, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPackXdslOrderFollowUpResponse",
       });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3630,18 +3643,22 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListPackXdslPromotionCodeCapabilitiesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(__S(5, __c0, 5)),
+          amount: S.optional(__S(48, __c3, 0)),
           canGenerate: S.optional(S.Boolean),
           engagement: S.optional(S.Number),
-          reasonCodes: S.optional(__S(79, __c9, 7)),
+          reasonCodes: S.optional(__S(432, __c27, 0)),
         }),
       ).annotate({
         identifier: "PackXdslPromotionCodeCapabilities",
       });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pattern: S.String.pipe(T.Query()),
@@ -3649,7 +3666,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListPackXdslSearchRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accessname: S.optional(S.String),
@@ -3659,15 +3676,15 @@ function __c14(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackXdslPackDetail" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
-      return S.suspend(() => __S(118, __c14, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(865, __c54, 1));
+    case 3:
+      return S.suspend(() => __S(866, __c54, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPackXdslSearchResponse",
       });
   }
 }
-function __c15(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3689,12 +3706,16 @@ function __c15(j: number): any {
         identifier: "PackXdslServiceInformation",
       });
     case 2:
-      return S.Array(__S(121, __c15, 1));
+      return S.Array(__S(881, __c55, 1));
     case 3:
-      return S.suspend(() => __S(122, __c15, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(882, __c55, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPackXdslServicesResponse",
       });
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3705,7 +3726,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListPackXdslShippingAddressesRequest",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.String),
@@ -3717,15 +3742,15 @@ function __c15(j: number): any {
           zipCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackXdslShippingAddress" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.suspend(() => __S(126, __c15, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(912, __c57, 0));
+    case 2:
+      return S.suspend(() => __S(913, __c57, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPackXdslShippingAddressesResponse",
       });
   }
 }
-function __c16(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3735,7 +3760,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListPackXdslSubServicesRequest",
       });
-    case 1:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3743,7 +3772,11 @@ function __c16(j: number): any {
           status: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/pack/xdsl/{packName}/tasks", code: 200 })),
       ).annotate({ identifier: "ListPackXdslTasksRequest" });
-    case 2:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3757,7 +3790,27 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListPackXdslVoipBillingAccountServicesRequest",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packName: S.String.pipe(T.Label()),
+          email: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/emailPro/services", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreatePackXdslEmailProServiceRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3767,7 +3820,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListPackXdslVoipEcofaxServicesRequest",
       });
-    case 4:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3781,11 +3838,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListPackXdslVoipLineOptionHardwaresRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          deposit: S.optional(S.NullOr(__S(5, __c0, 5))),
-          fees: S.optional(S.NullOr(__S(5, __c0, 5))),
+          deposit: S.optional(S.NullOr(__S(48, __c3, 0))),
+          fees: S.optional(S.NullOr(__S(48, __c3, 0))),
           image: S.optional(S.NullOr(S.String)),
           label: S.optional(S.String),
           max: S.optional(S.NullOr(S.Number)),
@@ -3794,15 +3851,15 @@ function __c16(j: number): any {
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "PackXdslVoIPHardware" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.suspend(() => __S(134, __c16, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(1009, __c63, 1));
+    case 3:
+      return S.suspend(() => __S(1010, __c63, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPackXdslVoipLineOptionHardwaresResponse",
       });
   }
 }
-function __c17(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3818,7 +3875,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListPackXdslVoipLineOptionShippingAddressesRequest",
       });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3828,7 +3889,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListPackXdslVoipLineServicesRequest",
       });
-    case 2:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3838,43 +3903,9 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListPackXdslXdslAccessServicesRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endDate: S.optional(S.String),
-          slotId: S.optional(S.NullOr(S.String)),
-          startDate: S.optional(S.String),
-          uiCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "XdslEligibilityMeetingSlot",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fakeMeeting: S.optional(S.Boolean),
-          meetingSlot: S.optional(S.NullOr(__S(139, __c17, 3))),
-          name: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "XdslEligibilityBookMeetingSlot",
-      });
-    case 5:
-      return S.Array(__S(21, __c2, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PackXdslMigrationOfferServiceToDelete",
-      });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
   }
 }
-function __c18(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3886,26 +3917,68 @@ function __c18(j: number): any {
           engageMonths: S.optional(S.Number),
           floor: S.optional(S.String),
           installationType: S.optional(S.String),
-          meeting: S.optional(__S(140, __c17, 4)),
+          meeting: S.optional(__S(1089, __c68, 1)),
           modem: S.String,
           mondialRelayId: S.optional(S.Number),
           nicShipping: S.optional(S.String),
           offerName: S.String,
           ontShippingContact: S.optional(S.String),
-          options: S.optional(__S(141, __c17, 5)),
+          options: S.optional(__S(1090, __c68, 2)),
           otp: S.optional(S.Boolean),
           otpReference: S.optional(S.String),
           productCode: S.optional(S.String),
           stair: S.optional(S.String),
-          subServicesToDelete: S.optional(__S(143, __c17, 7)),
-          subServicesToKeep: S.optional(__S(143, __c17, 7)),
+          subServicesToDelete: S.optional(__S(1092, __c68, 4)),
+          subServicesToKeep: S.optional(__S(1092, __c68, 4)),
         }).pipe(
           T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/migration/migrate", code: 200 }),
         ),
       ).annotate({
         identifier: "MigratePackXdslMigrationRequest",
       });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endDate: S.optional(S.String),
+          slotId: S.optional(S.NullOr(S.String)),
+          startDate: S.optional(S.String),
+          uiCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "XdslEligibilityMeetingSlot",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fakeMeeting: S.optional(S.Boolean),
+          meetingSlot: S.optional(S.NullOr(__S(1088, __c68, 0))),
+          name: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "XdslEligibilityBookMeetingSlot",
+      });
+    case 2:
+      return S.Array(__S(320, __c20, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PackXdslMigrationOfferServiceToDelete",
+      });
+    case 4:
+      return S.Array(__S(1091, __c68, 3));
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
@@ -3919,28 +3992,28 @@ function __c18(j: number): any {
           floor: S.optional(S.String),
           installationType: S.optional(S.String),
           keepCurrentNumber: S.Boolean,
-          meeting: S.optional(__S(140, __c17, 4)),
+          meeting: S.optional(__S(1089, __c68, 1)),
           modem: S.String,
           mondialRelayId: S.optional(S.Number),
           moveOutDate: S.optional(S.String),
           nicShipping: S.optional(S.String),
           offerName: S.String,
           ontShippingContact: S.optional(S.String),
-          options: S.optional(__S(141, __c17, 5)),
+          options: S.optional(__S(1090, __c68, 2)),
           otp: S.Boolean,
           otpReference: S.optional(S.String),
           productCode: S.String,
           residence: S.optional(S.String),
           stair: S.optional(S.String),
-          subServicesToDelete: S.optional(__S(143, __c17, 7)),
-          subServicesToKeep: S.optional(__S(143, __c17, 7)),
+          subServicesToDelete: S.optional(__S(1092, __c68, 4)),
+          subServicesToKeep: S.optional(__S(1092, __c68, 4)),
         }).pipe(
           T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/addressMove/moveOffer", code: 200 }),
         ),
       ).annotate({
         identifier: "MovePackXdslAddressMoveOfferRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.NullOr(S.String)),
@@ -3948,29 +4021,191 @@ function __c18(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackXdslAsyncTaskLong" });
-    case 3:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/pack/xdsl/{packName}", code: 200 })),
       ).annotate({ identifier: "PutPackXdslRequest" });
-    case 4:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(82, __c10, 2))),
+          renew: S.optional(S.NullOr(__S(464, __c29, 0))),
         }).pipe(T.Http({ method: "PUT", uri: "/pack/xdsl/{packName}/serviceInfos", code: 200 })),
       ).annotate({
         identifier: "PutPackXdslServiceInfosRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PutPackXdslServiceInfosResponse",
       });
   }
 }
-
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packName: S.String.pipe(T.Label()),
+          email: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/hostedEmail/services", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreatePackXdslHostedEmailServiceRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packName: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/pack/xdsl/{packName}/hostedEmail/services/{domain}/changePassword",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePackXdslHostedEmailServiceChangePasswordRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packName: S.String.pipe(T.Label()),
+          buildingReference: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/pack/xdsl/{packName}/migration/offers", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreatePackXdslMigrationOfferRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          floors: S.optional(__S(80, __c5, 0)),
+          stair: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConnectivityEligibilityBuildingStair",
+      });
+    case 2:
+      return S.Array(__S(1185, __c74, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          nro: S.optional(S.NullOr(S.String)),
+          reference: S.optional(S.String),
+          stairs: S.optional(S.NullOr(__S(1186, __c74, 2))),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ConnectivityEligibilityBuilding",
+      });
+    case 4:
+      return S.Array(__S(1187, __c74, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          contractList: S.optional(__S(80, __c5, 0)),
+          contracts: S.optional(__S(65, __c4, 1)),
+          currentOfferPrice: S.optional(__S(48, __c3, 0)),
+          customOntAddress: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          due: S.optional(S.NullOr(__S(48, __c3, 0))),
+          engageMonths: S.optional(S.NullOr(S.Number)),
+          engaged: S.optional(S.Boolean),
+          engagementMonths: S.optional(__S(560, __c35, 0)),
+          firstYearPromo: S.optional(S.NullOr(__S(48, __c3, 0))),
+          gtrComfortFees: S.optional(S.NullOr(__S(48, __c3, 0))),
+          installFees: S.optional(S.NullOr(__S(48, __c3, 0))),
+          modemMacToReturn: S.optional(S.NullOr(S.String)),
+          modemOptions: S.optional(S.NullOr(__S(67, __c4, 3))),
+          modemRental: S.optional(S.NullOr(__S(48, __c3, 0))),
+          multiOtp: S.optional(S.Boolean),
+          needModem: S.optional(S.Boolean),
+          needNewModem: S.optional(S.Boolean),
+          offerName: S.optional(S.String),
+          operator: S.optional(S.NullOr(S.String)),
+          options: S.optional(__S(69, __c4, 5)),
+          price: S.optional(__S(48, __c3, 0)),
+          promotion: S.optional(S.NullOr(__S(71, __c4, 7))),
+          providerAI: S.optional(S.NullOr(__S(48, __c3, 0))),
+          providerOrange: S.optional(S.NullOr(__S(48, __c3, 0))),
+          subServicesToDelete: S.optional(__S(73, __c4, 9)),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PackXdslMigrationMigrationOffer",
+      });
+    case 6:
+      return S.Array(__S(1189, __c74, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          buildings: S.optional(__S(1188, __c74, 4)),
+          offers: S.optional(__S(1190, __c74, 6)),
+        }),
+      ).annotate({
+        identifier: "PackXdslMigrationMigrationOfferResponse",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(S.NullOr(S.String)),
+          result: S.optional(__S(1191, __c74, 7)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PackXdslAsyncTaskPackXdslMigrationMigrationOfferResponse",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packName: S.String.pipe(T.Label()),
+          offerName: S.String,
+          options: S.optional(__S(304, __c19, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/pack/xdsl/{packName}/migration/servicesToDeleteUnpackTerms",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePackXdslMigrationServicesToDeleteUnpackTermRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(308, __c19, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreatePackXdslMigrationServicesToDeleteUnpackTermResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

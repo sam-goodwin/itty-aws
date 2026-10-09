@@ -242,8 +242,8 @@ export const getTenant: API.OperationMethod<
   GetTenantError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetTenantRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetTenantResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetTenantRequest>,
+  output: __S(24, __c1, 8) as any as S.Schema<GetTenantResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -259,8 +259,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   AccountsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18, __c2, 2) as any as S.Schema<ListAccountsRequest>,
-    output: __S(23, __c2, 7) as any as S.Schema<ListAccountsResponse>,
+    input: __S(48, __c3, 0) as any as S.Schema<ListAccountsRequest>,
+    output: __S(53, __c3, 5) as any as S.Schema<ListAccountsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -279,8 +279,8 @@ export const listAccountTypes: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(24, __c3, 0) as any as S.Schema<ListAccountTypesRequest>,
-    output: __S(25, __c3, 1) as any as S.Schema<ListAccountTypesResponse>,
+    input: __S(64, __c4, 0) as any as S.Schema<ListAccountTypesRequest>,
+    output: __S(65, __c4, 1) as any as S.Schema<ListAccountTypesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -299,8 +299,8 @@ export const listMemberships: API.PaginatedOperationMethod<
   MembershipsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(26, __c3, 2) as any as S.Schema<ListMembershipsRequest>,
-    output: __S(29, __c3, 5) as any as S.Schema<ListMembershipsResponse>,
+    input: __S(80, __c5, 0) as any as S.Schema<ListMembershipsRequest>,
+    output: __S(83, __c5, 3) as any as S.Schema<ListMembershipsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -401,8 +401,6 @@ function __c1(j: number): any {
         identifier: "GetResponseTenantContacts",
       });
     case 2:
-      return S.Array(S.String);
-    case 3:
       return S.suspend(() =>
         S.Struct({
           primary: S.optional(S.NullOr(S.String)),
@@ -411,28 +409,28 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetResponseTenantMetadataDnsNsPool",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          nsPool: __S(11, __c1, 3).pipe(T.Body("ns_pool")),
+          nsPool: __S(18, __c1, 2).pipe(T.Body("ns_pool")),
         }),
       ).annotate({
         identifier: "GetResponseTenantMetadataDns",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          dns: S.optional(S.NullOr(__S(12, __c1, 4))),
+          dns: S.optional(S.NullOr(__S(19, __c1, 3))),
         }),
       ).annotate({
         identifier: "GetResponseTenantMetadata",
       });
-    case 6:
+    case 5:
       return S.Array(S.Unknown);
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          unitMemberships: __S(14, __c1, 6).pipe(T.Body("unit_memberships")),
+          unitMemberships: __S(21, __c1, 5).pipe(T.Body("unit_memberships")),
           unitMetadata: S.Unknown.pipe(T.Body("unit_metadata")),
           unitName: S.String.pipe(T.Body("unit_name")),
           unitStatus: S.String.pipe(T.Body("unit_status")),
@@ -441,30 +439,36 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetResponseTenantUnitsItem",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(22, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           cdate: S.String,
           edate: S.String,
-          tenantContacts: __S(9, __c1, 1).pipe(T.Body("tenant_contacts")),
-          tenantLabels: __S(10, __c1, 2).pipe(T.Body("tenant_labels")),
-          tenantMetadata: __S(13, __c1, 5).pipe(T.Body("tenant_metadata")),
+          tenantContacts: __S(17, __c1, 1).pipe(T.Body("tenant_contacts")),
+          tenantLabels: __S(32, __c2, 0).pipe(T.Body("tenant_labels")),
+          tenantMetadata: __S(20, __c1, 4).pipe(T.Body("tenant_metadata")),
           tenantName: S.String.pipe(T.Body("tenant_name")),
           tenantNetwork: S.Unknown.pipe(T.Body("tenant_network")),
           tenantStatus: S.String.pipe(T.Body("tenant_status")),
           tenantTag: S.String.pipe(T.Body("tenant_tag")),
           tenantType: S.String.pipe(T.Body("tenant_type")),
-          tenantUnits: __S(16, __c2, 0).pipe(T.Body("tenant_units")),
+          tenantUnits: __S(23, __c1, 7).pipe(T.Body("tenant_units")),
           customerId: S.optional(S.NullOr(S.String).pipe(T.Body("customer_id"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetTenantResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.String.pipe(T.Label("tenant_id")),
@@ -472,7 +476,7 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/tenants/{tenant_id}/accounts", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAccountsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           abuseContactEmail: S.String.pipe(T.Body("abuse_contact_email")),
@@ -485,31 +489,31 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AccountsListResultItemSettings",
       });
-    case 4:
+    case 2:
       return S.Record(S.String, S.String);
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdOn: S.String.pipe(T.Body("created_on")),
           name: S.String,
-          settings: __S(19, __c2, 3),
+          settings: __S(49, __c3, 1),
           type: S.String,
-          tags: S.optional(S.NullOr(__S(20, __c2, 4))),
+          tags: S.optional(S.NullOr(__S(50, __c3, 2))),
         }),
       ).annotate({ identifier: "AccountsListResultItem" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(51, __c3, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(22, __c2, 6).pipe(T.EnvelopePayload()),
+          result: __S(52, __c3, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAccountsResponse" });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -522,11 +526,15 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(10, __c1, 2).pipe(T.EnvelopePayload()),
+          result: __S(32, __c2, 0).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAccountTypesResponse" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.String.pipe(T.Label("tenant_id")),
@@ -534,7 +542,7 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/tenants/{tenant_id}/memberships", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMembershipsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userEmail: S.String.pipe(T.Body("user_email")),
@@ -544,18 +552,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "MembershipsListResultItem",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(28, __c3, 4).pipe(T.EnvelopePayload()),
+          result: __S(82, __c5, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMembershipsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

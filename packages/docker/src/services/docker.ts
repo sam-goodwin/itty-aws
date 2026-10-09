@@ -4493,8 +4493,8 @@ export const archiveContainer: API.OperationMethod<
   ArchiveContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ArchiveContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ArchiveContainerResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ArchiveContainerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<ArchiveContainerResponse>,
   errors: [BadRequest, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4508,8 +4508,8 @@ export const attachContainer: API.OperationMethod<
   AttachContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AttachContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AttachContainerResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<AttachContainerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<AttachContainerResponse>,
   errors: [BadRequest, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4523,8 +4523,8 @@ export const buildPrune: API.OperationMethod<
   BuildPruneError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BuildPruneRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BuildPruneResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<BuildPruneRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<BuildPruneResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4538,8 +4538,8 @@ export const commitImage: API.OperationMethod<
   CommitImageError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CommitImageRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<IDResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<CommitImageRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<IDResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4553,8 +4553,8 @@ export const configInspect: API.OperationMethod<
   ConfigInspectError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ConfigInspectRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Config>,
+  input: __S(3872, __c121, 0) as any as S.Schema<ConfigInspectRequest>,
+  output: __S(3969, __c124, 1) as any as S.Schema<Config>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4568,8 +4568,8 @@ export const connectNetwork: API.OperationMethod<
   ConnectNetworkError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ConnectNetworkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ConnectNetworkResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<ConnectNetworkRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<ConnectNetworkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4583,8 +4583,8 @@ export const containerAttachWebsocket: API.OperationMethod<
   ContainerAttachWebsocketError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ContainerAttachWebsocketRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ContainerAttachWebsocketResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ContainerAttachWebsocketRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ContainerAttachWebsocketResponse>,
   errors: [BadRequest, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4598,8 +4598,8 @@ export const containerChanges: API.OperationMethod<
   ContainerChangesError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ContainerChangesRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ContainerChangesResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ContainerChangesRequest>,
+  output: __S(387, __c12, 3) as any as S.Schema<ContainerChangesResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4613,8 +4613,8 @@ export const containerInspect: API.OperationMethod<
   ContainerInspectError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ContainerInspectRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ContainerInspectResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ContainerInspectRequest>,
+  output: __S(426, __c13, 10) as any as S.Schema<ContainerInspectResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4628,8 +4628,8 @@ export const containerLogs: API.OperationMethod<
   ContainerLogsError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ContainerLogsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ContainerLogsResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<ContainerLogsRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<ContainerLogsResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4643,8 +4643,8 @@ export const containerPrune: API.OperationMethod<
   ContainerPruneError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ContainerPruneRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ContainerPruneResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<ContainerPruneRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<ContainerPruneResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4658,8 +4658,8 @@ export const containerStats: API.OperationMethod<
   ContainerStatsError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ContainerStatsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ContainerStatsResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ContainerStatsRequest>,
+  output: __S(909, __c28, 13) as any as S.Schema<ContainerStatsResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4673,8 +4673,8 @@ export const containerTop: API.OperationMethod<
   ContainerTopError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ContainerTopRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ContainerTopResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ContainerTopRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<ContainerTopResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4688,8 +4688,8 @@ export const createConfig: API.OperationMethod<
   CreateConfigError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<CreateConfigRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<IDResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<CreateConfigRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<IDResponse>,
   errors: [Conflict, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4703,8 +4703,8 @@ export const createContainer: API.OperationMethod<
   CreateContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CreateContainerRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<ContainerCreateResponse>,
+  input: __S(993, __c31, 1) as any as S.Schema<CreateContainerRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<ContainerCreateResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4718,8 +4718,8 @@ export const createImage: API.OperationMethod<
   CreateImageError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<CreateImageRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateImageResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<CreateImageRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<CreateImageResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4733,8 +4733,8 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<CreateNetworkRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<NetworkCreateResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<CreateNetworkRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<NetworkCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4748,8 +4748,8 @@ export const createPlugin: API.OperationMethod<
   CreatePluginError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<CreatePluginRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreatePluginResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<CreatePluginRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<CreatePluginResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4763,8 +4763,8 @@ export const createSecret: API.OperationMethod<
   CreateSecretError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<CreateSecretRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<IDResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<CreateSecretRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<IDResponse>,
   errors: [Conflict, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4778,8 +4778,8 @@ export const createService: API.OperationMethod<
   CreateServiceError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<CreateServiceRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ServiceCreateResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<CreateServiceRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<ServiceCreateResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4793,8 +4793,8 @@ export const createVolume: API.OperationMethod<
   CreateVolumeError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<CreateVolumeRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<Volume>,
+  input: __S(1376, __c43, 0) as any as S.Schema<CreateVolumeRequest>,
+  output: __S(1446, __c45, 6) as any as S.Schema<Volume>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4808,8 +4808,8 @@ export const deleteConfig: API.OperationMethod<
   DeleteConfigError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<DeleteConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteConfigResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DeleteConfigRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteConfigResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4823,8 +4823,8 @@ export const deleteContainer: API.OperationMethod<
   DeleteContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DeleteContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteContainerResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<DeleteContainerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteContainerResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4838,8 +4838,8 @@ export const deleteImage: API.OperationMethod<
   DeleteImageError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<DeleteImageRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<DeleteImageResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<DeleteImageRequest>,
+  output: __S(1537, __c48, 1) as any as S.Schema<DeleteImageResponse>,
   errors: [NotFound, Conflict, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4853,8 +4853,8 @@ export const deleteNetwork: API.OperationMethod<
   DeleteNetworkError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<DeleteNetworkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteNetworkResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<DeleteNetworkRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkResponse>,
   errors: [Forbidden, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4868,8 +4868,8 @@ export const deleteNode: API.OperationMethod<
   DeleteNodeError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<DeleteNodeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteNodeResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DeleteNodeRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNodeResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4883,8 +4883,8 @@ export const deletePlugin: API.OperationMethod<
   DeletePluginError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<DeletePluginRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<Plugin>,
+  input: __S(1664, __c52, 0) as any as S.Schema<DeletePluginRequest>,
+  output: __S(1710, __c53, 14) as any as S.Schema<Plugin>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4898,8 +4898,8 @@ export const deleteSecret: API.OperationMethod<
   DeleteSecretError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<DeleteSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteSecretResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<DeleteSecretRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteSecretResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4913,8 +4913,8 @@ export const deleteService: API.OperationMethod<
   DeleteServiceError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4928,8 +4928,8 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<DeleteVolumeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteVolumeResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<DeleteVolumeRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteVolumeResponse>,
   errors: [NotFound, Conflict, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4943,8 +4943,8 @@ export const disablePlugin: API.OperationMethod<
   DisablePluginError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<DisablePluginRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisablePluginResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<DisablePluginRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DisablePluginResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4958,8 +4958,8 @@ export const disconnectNetwork: API.OperationMethod<
   DisconnectNetworkError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<DisconnectNetworkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisconnectNetworkResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<DisconnectNetworkRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DisconnectNetworkResponse>,
   errors: [Forbidden, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4973,8 +4973,8 @@ export const distributionInspect2: API.OperationMethod<
   DistributionInspect2Error,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<DistributionInspectRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<DistributionInspect>,
+  input: __S(1888, __c59, 0) as any as S.Schema<DistributionInspectRequest>,
+  output: __S(1890, __c59, 2) as any as S.Schema<DistributionInspect>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -4988,8 +4988,8 @@ export const enablePlugin: API.OperationMethod<
   EnablePluginError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<EnablePluginRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EnablePluginResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<EnablePluginRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<EnablePluginResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5003,8 +5003,8 @@ export const execContainer: API.OperationMethod<
   ExecContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ExecContainerRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<IDResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ExecContainerRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<IDResponse>,
   errors: [NotFound, Conflict, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5018,8 +5018,8 @@ export const execInspect: API.OperationMethod<
   ExecInspectError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ExecInspectRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<ExecInspectResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ExecInspectRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<ExecInspectResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5033,8 +5033,8 @@ export const execResize: API.OperationMethod<
   ExecResizeError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<ExecResizeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ExecResizeResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ExecResizeRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<ExecResizeResponse>,
   errors: [BadRequest, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5048,8 +5048,8 @@ export const execStart: API.OperationMethod<
   ExecStartError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<ExecStartRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ExecStartResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ExecStartRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<ExecStartResponse>,
   errors: [NotFound, Conflict, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5063,8 +5063,8 @@ export const exportContainer: API.OperationMethod<
   ExportContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<ExportContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ExportContainerResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ExportContainerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<ExportContainerResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5078,8 +5078,8 @@ export const getImage: API.OperationMethod<
   GetImageError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<GetImageRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetImageResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<GetImageRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<GetImageResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5093,8 +5093,8 @@ export const getPluginPrivileges: API.OperationMethod<
   GetPluginPrivilegesError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetPluginPrivilegesRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<GetPluginPrivilegesResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<GetPluginPrivilegesRequest>,
+  output: __S(2209, __c69, 1) as any as S.Schema<GetPluginPrivilegesResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5108,8 +5108,8 @@ export const imageAttestations: API.OperationMethod<
   ImageAttestationsError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<ImageAttestationsRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<ImageAttestationsResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ImageAttestationsRequest>,
+  output: __S(2243, __c70, 3) as any as S.Schema<ImageAttestationsResponse>,
   errors: [BadRequest, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5123,8 +5123,8 @@ export const imageBuild: API.OperationMethod<
   ImageBuildError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<ImageBuildRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ImageBuildResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ImageBuildRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<ImageBuildResponse>,
   errors: [BadRequest, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5138,8 +5138,8 @@ export const imageGetAll: API.OperationMethod<
   ImageGetAllError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<ImageGetAllRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ImageGetAllResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ImageGetAllRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<ImageGetAllResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5153,8 +5153,8 @@ export const imageHistory: API.OperationMethod<
   ImageHistoryError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ImageHistoryRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<ImageHistoryResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ImageHistoryRequest>,
+  output: __S(2339, __c73, 3) as any as S.Schema<ImageHistoryResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5168,8 +5168,8 @@ export const imageInspect2: API.OperationMethod<
   ImageInspect2Error,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<ImageInspectRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<ImageInspect>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ImageInspectRequest>,
+  output: __S(2372, __c74, 4) as any as S.Schema<ImageInspect>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5183,8 +5183,8 @@ export const imageLoad: API.OperationMethod<
   ImageLoadError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<ImageLoadRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ImageLoadResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ImageLoadRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<ImageLoadResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5198,8 +5198,8 @@ export const imagePrune: API.OperationMethod<
   ImagePruneError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<ImagePruneRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<ImagePruneResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ImagePruneRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<ImagePruneResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5213,8 +5213,8 @@ export const imagePush: API.OperationMethod<
   ImagePushError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<ImagePushRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ImagePushResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ImagePushRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<ImagePushResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5228,8 +5228,8 @@ export const imageTag: API.OperationMethod<
   ImageTagError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<ImageTagRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ImageTagResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ImageTagRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<ImageTagResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5243,8 +5243,8 @@ export const joinSwarm: API.OperationMethod<
   JoinSwarmError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<JoinSwarmRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<JoinSwarmResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<JoinSwarmRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<JoinSwarmResponse>,
   errors: [BadRequest, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5258,8 +5258,8 @@ export const killContainer: API.OperationMethod<
   KillContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<KillContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<KillContainerResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<KillContainerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<KillContainerResponse>,
   errors: [NotFound, Conflict, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5273,8 +5273,8 @@ export const leaveSwarm: API.OperationMethod<
   LeaveSwarmError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<LeaveSwarmRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<LeaveSwarmResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<LeaveSwarmRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<LeaveSwarmResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5288,8 +5288,8 @@ export const listConfig: API.OperationMethod<
   ListConfigError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<ListConfigRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<ListConfigResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ListConfigRequest>,
+  output: __S(2690, __c84, 2) as any as S.Schema<ListConfigResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5303,8 +5303,8 @@ export const listContainer: API.OperationMethod<
   ListContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListContainerRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<ListContainerResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListContainerRequest>,
+  output: __S(2728, __c85, 8) as any as S.Schema<ListContainerResponse>,
   errors: [BadRequest, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5318,8 +5318,8 @@ export const listImage: API.OperationMethod<
   ListImageError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<ListImageRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<ListImageResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<ListImageRequest>,
+  output: __S(2755, __c86, 3) as any as S.Schema<ListImageResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5333,8 +5333,8 @@ export const listNetwork: API.OperationMethod<
   ListNetworkError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<ListNetworkRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<ListNetworkResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<ListNetworkRequest>,
+  output: __S(2850, __c89, 2) as any as S.Schema<ListNetworkResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5348,8 +5348,8 @@ export const listNode: API.OperationMethod<
   ListNodeError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<ListNodeRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<ListNodeResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<ListNodeRequest>,
+  output: __S(2946, __c92, 2) as any as S.Schema<ListNodeResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5363,8 +5363,8 @@ export const listPlugin: API.OperationMethod<
   ListPluginError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<ListPluginRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<ListPluginResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<ListPluginRequest>,
+  output: __S(3042, __c95, 2) as any as S.Schema<ListPluginResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5378,8 +5378,8 @@ export const listSecret: API.OperationMethod<
   ListSecretError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<ListSecretRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<ListSecretResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ListSecretRequest>,
+  output: __S(3074, __c96, 2) as any as S.Schema<ListSecretResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5393,8 +5393,8 @@ export const listService: API.OperationMethod<
   ListServiceError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<ListServiceRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<ListServiceResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<ListServiceRequest>,
+  output: __S(3138, __c98, 2) as any as S.Schema<ListServiceResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5408,8 +5408,8 @@ export const listTask: API.OperationMethod<
   ListTaskError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<ListTaskRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<ListTaskResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<ListTaskRequest>,
+  output: __S(3202, __c100, 2) as any as S.Schema<ListTaskResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5423,8 +5423,8 @@ export const listVolume: API.OperationMethod<
   ListVolumeError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<ListVolumeRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<VolumeListResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<ListVolumeRequest>,
+  output: __S(3266, __c102, 2) as any as S.Schema<VolumeListResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5438,8 +5438,8 @@ export const networkInspect: API.OperationMethod<
   NetworkInspectError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<NetworkInspectRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<NetworkInspectResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<NetworkInspectRequest>,
+  output: __S(3303, __c103, 7) as any as S.Schema<NetworkInspectResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5453,8 +5453,8 @@ export const networkPrune: API.OperationMethod<
   NetworkPruneError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<NetworkPruneRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<NetworkPruneResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<NetworkPruneRequest>,
+  output: __S(3329, __c104, 1) as any as S.Schema<NetworkPruneResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5468,8 +5468,8 @@ export const nodeInspect: API.OperationMethod<
   NodeInspectError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<NodeInspectRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<Node>,
+  input: __S(3360, __c105, 0) as any as S.Schema<NodeInspectRequest>,
+  output: __S(2983, __c93, 7) as any as S.Schema<Node>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5483,8 +5483,8 @@ export const pauseContainer: API.OperationMethod<
   PauseContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<PauseContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PauseContainerResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<PauseContainerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<PauseContainerResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5498,8 +5498,8 @@ export const pingSystem: API.OperationMethod<
   PingSystemError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<PingSystemRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<PingSystemResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<PingSystemRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<PingSystemResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5513,8 +5513,8 @@ export const pluginInspect: API.OperationMethod<
   PluginInspectError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<PluginInspectRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<Plugin>,
+  input: __S(3616, __c113, 0) as any as S.Schema<PluginInspectRequest>,
+  output: __S(1710, __c53, 14) as any as S.Schema<Plugin>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5528,8 +5528,8 @@ export const pluginPull: API.OperationMethod<
   PluginPullError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<PluginPullRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PluginPullResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<PluginPullRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<PluginPullResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5543,8 +5543,8 @@ export const pluginPush: API.OperationMethod<
   PluginPushError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<PluginPushRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PluginPushResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<PluginPushRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<PluginPushResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5558,8 +5558,8 @@ export const pluginUpgrade: API.OperationMethod<
   PluginUpgradeError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<PluginUpgradeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PluginUpgradeResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<PluginUpgradeRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<PluginUpgradeResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5573,8 +5573,8 @@ export const putContainerArchive: API.OperationMethod<
   PutContainerArchiveError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<PutContainerArchiveRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutContainerArchiveResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<PutContainerArchiveRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<PutContainerArchiveResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5588,8 +5588,8 @@ export const renameContainer: API.OperationMethod<
   RenameContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<RenameContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RenameContainerResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<RenameContainerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<RenameContainerResponse>,
   errors: [NotFound, Conflict, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5603,8 +5603,8 @@ export const resizeContainer: API.OperationMethod<
   ResizeContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<ResizeContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ResizeContainerResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<ResizeContainerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<ResizeContainerResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5618,8 +5618,8 @@ export const restartContainer: API.OperationMethod<
   RestartContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<RestartContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RestartContainerResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<RestartContainerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<RestartContainerResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5633,8 +5633,8 @@ export const searchImage: API.OperationMethod<
   SearchImageError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<SearchImageRequest>,
-  output: __S(331, __c41, 3) as any as S.Schema<SearchImageResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<SearchImageRequest>,
+  output: __S(4003, __c125, 3) as any as S.Schema<SearchImageResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5648,8 +5648,8 @@ export const secretInspect: API.OperationMethod<
   SecretInspectError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<SecretInspectRequest>,
-  output: __S(280, __c35, 0) as any as S.Schema<Secret>,
+  input: __S(4032, __c126, 0) as any as S.Schema<SecretInspectRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<Secret>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5663,8 +5663,8 @@ export const serviceInspect: API.OperationMethod<
   ServiceInspectError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<ServiceInspectRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<Service>,
+  input: __S(4064, __c127, 0) as any as S.Schema<ServiceInspectRequest>,
+  output: __S(3176, __c99, 8) as any as S.Schema<Service>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5678,8 +5678,8 @@ export const serviceLogs: API.OperationMethod<
   ServiceLogsError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<ServiceLogsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ServiceLogsResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<ServiceLogsRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<ServiceLogsResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5693,8 +5693,8 @@ export const session: API.OperationMethod<
   SessionError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<SessionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SessionResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<SessionRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<SessionResponse>,
   errors: [BadRequest, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5708,8 +5708,8 @@ export const setPlugin: API.OperationMethod<
   SetPluginError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<SetPluginRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetPluginResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<SetPluginRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<SetPluginResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5723,8 +5723,8 @@ export const startContainer: API.OperationMethod<
   StartContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<StartContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StartContainerResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<StartContainerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<StartContainerResponse>,
   errors: [BadRequest, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5738,8 +5738,8 @@ export const stopContainer: API.OperationMethod<
   StopContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<StopContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StopContainerResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<StopContainerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<StopContainerResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5753,8 +5753,8 @@ export const swarmInit: API.OperationMethod<
   SwarmInitError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<SwarmInitRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<SwarmInitResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<SwarmInitRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<SwarmInitResponse>,
   errors: [BadRequest, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5768,8 +5768,8 @@ export const swarmInspect: API.OperationMethod<
   SwarmInspectError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<SwarmInspectRequest>,
-  output: __S(351, __c43, 7) as any as S.Schema<SwarmInspectResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<SwarmInspectRequest>,
+  output: __S(4354, __c136, 2) as any as S.Schema<SwarmInspectResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5783,8 +5783,8 @@ export const swarmUnlockkey: API.OperationMethod<
   SwarmUnlockkeyError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<SwarmUnlockkeyRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<SwarmUnlockkeyResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<SwarmUnlockkeyRequest>,
+  output: __S(4449, __c139, 1) as any as S.Schema<SwarmUnlockkeyResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5798,8 +5798,8 @@ export const systemAuth: API.OperationMethod<
   SystemAuthError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<SystemAuthRequest>,
-  output: __S(355, __c44, 3) as any as S.Schema<AuthResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<SystemAuthRequest>,
+  output: __S(4481, __c140, 1) as any as S.Schema<AuthResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5813,8 +5813,8 @@ export const systemDataUsage: API.OperationMethod<
   SystemDataUsageError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<SystemDataUsageRequest>,
-  output: __S(360, __c45, 0) as any as S.Schema<SystemDataUsageResponse>,
+  input: __S(4513, __c141, 1) as any as S.Schema<SystemDataUsageRequest>,
+  output: __S(4516, __c141, 4) as any as S.Schema<SystemDataUsageResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5828,8 +5828,8 @@ export const systemEvents: API.OperationMethod<
   SystemEventsError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<SystemEventsRequest>,
-  output: __S(363, __c45, 3) as any as S.Schema<EventMessage>,
+  input: __S(4544, __c142, 0) as any as S.Schema<SystemEventsRequest>,
+  output: __S(4546, __c142, 2) as any as S.Schema<EventMessage>,
   errors: [BadRequest, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5843,8 +5843,8 @@ export const systemInfo2: API.OperationMethod<
   SystemInfo2Error,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<SystemInfo2Request>,
-  output: __S(384, __c48, 0) as any as S.Schema<SystemInfo>,
+  input: __S(4576, __c143, 0) as any as S.Schema<SystemInfo2Request>,
+  output: __S(4596, __c143, 20) as any as S.Schema<SystemInfo>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5858,8 +5858,8 @@ export const systemVersion2: API.OperationMethod<
   SystemVersion2Error,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<SystemVersion2Request>,
-  output: __S(389, __c48, 5) as any as S.Schema<SystemVersion>,
+  input: __S(4608, __c144, 0) as any as S.Schema<SystemVersion2Request>,
+  output: __S(4612, __c144, 4) as any as S.Schema<SystemVersion>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5873,8 +5873,8 @@ export const taskInspect: API.OperationMethod<
   TaskInspectError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390, __c48, 6) as any as S.Schema<TaskInspectRequest>,
-  output: __S(301, __c37, 5) as any as S.Schema<Task>,
+  input: __S(4640, __c145, 0) as any as S.Schema<TaskInspectRequest>,
+  output: __S(3237, __c101, 5) as any as S.Schema<Task>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5888,8 +5888,8 @@ export const taskLogs: API.OperationMethod<
   TaskLogsError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<TaskLogsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<TaskLogsResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<TaskLogsRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<TaskLogsResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5903,8 +5903,8 @@ export const unlockSwarm: API.OperationMethod<
   UnlockSwarmError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<UnlockSwarmRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UnlockSwarmResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<UnlockSwarmRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<UnlockSwarmResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5918,8 +5918,8 @@ export const unpauseContainer: API.OperationMethod<
   UnpauseContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<UnpauseContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UnpauseContainerResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<UnpauseContainerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<UnpauseContainerResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5933,8 +5933,8 @@ export const updateConfig: API.OperationMethod<
   UpdateConfigError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<UpdateConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateConfigResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<UpdateConfigRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<UpdateConfigResponse>,
   errors: [BadRequest, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5948,8 +5948,8 @@ export const updateContainer: API.OperationMethod<
   UpdateContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<UpdateContainerRequest>,
-  output: __S(396, __c49, 4) as any as S.Schema<ContainerUpdateResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<UpdateContainerRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<ContainerUpdateResponse>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5963,8 +5963,8 @@ export const updateNode: API.OperationMethod<
   UpdateNodeError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<UpdateNodeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateNodeResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<UpdateNodeRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<UpdateNodeResponse>,
   errors: [BadRequest, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5978,8 +5978,8 @@ export const updateSecret: API.OperationMethod<
   UpdateSecretError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<UpdateSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateSecretResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<UpdateSecretRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<UpdateSecretResponse>,
   errors: [BadRequest, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -5993,8 +5993,8 @@ export const updateService: API.OperationMethod<
   UpdateServiceError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(396, __c49, 4) as any as S.Schema<ServiceUpdateResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<ServiceUpdateResponse>,
   errors: [BadRequest, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -6008,8 +6008,8 @@ export const updateSwarm: API.OperationMethod<
   UpdateSwarmError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<UpdateSwarmRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateSwarmResponse>,
+  input: __S(228, __c7, 4) as any as S.Schema<UpdateSwarmRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<UpdateSwarmResponse>,
   errors: [BadRequest, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -6023,8 +6023,8 @@ export const updateVolume: API.OperationMethod<
   UpdateVolumeError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<UpdateVolumeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateVolumeResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<UpdateVolumeRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<UpdateVolumeResponse>,
   errors: [BadRequest, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -6038,8 +6038,8 @@ export const volumeInspect: API.OperationMethod<
   VolumeInspectError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<VolumeInspectRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<Volume>,
+  input: __S(288, __c9, 0) as any as S.Schema<VolumeInspectRequest>,
+  output: __S(1446, __c45, 6) as any as S.Schema<Volume>,
   errors: [NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -6053,8 +6053,8 @@ export const volumePrune: API.OperationMethod<
   VolumePruneError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<VolumePruneRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<VolumePruneResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<VolumePruneRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<VolumePruneResponse>,
   errors: [UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -6068,8 +6068,8 @@ export const waitContainer: API.OperationMethod<
   WaitContainerError,
   DockerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<WaitContainerRequest>,
-  output: __S(411, __c51, 3) as any as S.Schema<ContainerWaitResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<WaitContainerRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<ContainerWaitResponse>,
   errors: [BadRequest, NotFound, UnknownDockerError],
   protocol: DockerProtocol,
   retry: Retry.Retry,
@@ -6079,187 +6079,6 @@ export const waitContainer: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          path: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/containers/{id}/archive", code: 200 })),
-      ).annotate({ identifier: "ArchiveContainerRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ArchiveContainerResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          detachKeys: S.optional(S.String.pipe(T.Query())),
-          logs: S.optional(S.Boolean.pipe(T.Query())),
-          stream: S.optional(S.Boolean.pipe(T.Query())),
-          stdin: S.optional(S.Boolean.pipe(T.Query())),
-          stdout: S.optional(S.Boolean.pipe(T.Query())),
-          stderr: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/attach", code: 200 })),
-      ).annotate({ identifier: "AttachContainerRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          reserved_space: S.optional(S.Number.pipe(T.Query("reserved-space"))),
-          max_used_space: S.optional(S.Number.pipe(T.Query("max-used-space"))),
-          min_free_space: S.optional(S.Number.pipe(T.Query("min-free-space"))),
-          all: S.optional(S.Boolean.pipe(T.Query())),
-          filters: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/build/prune", code: 200 })),
-      ).annotate({ identifier: "BuildPruneRequest" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          CachesDeleted: S.optional(__S(4, __c0, 4)),
-          SpaceReclaimed: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BuildPruneResponse" });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Test: S.optional(__S(4, __c0, 4)),
-          Interval: S.optional(S.Number),
-          Timeout: S.optional(S.Number),
-          Retries: S.optional(S.Number),
-          StartPeriod: S.optional(S.Number),
-          StartInterval: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HealthConfig" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          container: S.optional(S.String.pipe(T.Query())),
-          repo: S.optional(S.String.pipe(T.Query())),
-          tag: S.optional(S.String.pipe(T.Query())),
-          comment: S.optional(S.String.pipe(T.Query())),
-          author: S.optional(S.String.pipe(T.Query())),
-          pause: S.optional(S.Boolean.pipe(T.Query())),
-          changes: S.optional(S.String.pipe(T.Query())),
-          Hostname: S.optional(S.String),
-          Domainname: S.optional(S.String),
-          User: S.optional(S.String),
-          AttachStdin: S.optional(S.Boolean),
-          AttachStdout: S.optional(S.Boolean),
-          AttachStderr: S.optional(S.Boolean),
-          ExposedPorts: S.optional(S.NullOr(__S(6, __c0, 6))),
-          Tty: S.optional(S.Boolean),
-          OpenStdin: S.optional(S.Boolean),
-          StdinOnce: S.optional(S.Boolean),
-          Env: S.optional(__S(4, __c0, 4)),
-          Cmd: S.optional(__S(4, __c0, 4)),
-          Healthcheck: S.optional(__S(7, __c0, 7)),
-          ArgsEscaped: S.optional(S.NullOr(S.Boolean)),
-          Image: S.optional(S.String),
-          Volumes: S.optional(__S(6, __c0, 6)),
-          WorkingDir: S.optional(S.String),
-          Entrypoint: S.optional(__S(4, __c0, 4)),
-          NetworkDisabled: S.optional(S.NullOr(S.Boolean)),
-          OnBuild: S.optional(S.NullOr(__S(4, __c0, 4))),
-          Labels: S.optional(__S(8, __c1, 0)),
-          StopSignal: S.optional(S.NullOr(S.String)),
-          StopTimeout: S.optional(S.NullOr(S.Number)),
-          Shell: S.optional(S.NullOr(__S(4, __c0, 4))),
-        }).pipe(T.Http({ method: "POST", uri: "/commit", code: 200 })),
-      ).annotate({ identifier: "CommitImageRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.String,
-        }),
-      ).annotate({ identifier: "IDResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/configs/{id}", code: 200 })),
-      ).annotate({ identifier: "ConfigInspectRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Index: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ObjectVersion" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          Options: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Driver" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Data: S.optional(S.String),
-          Templating: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "ConfigSpec" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ID: S.optional(S.String),
-          Version: S.optional(__S(12, __c1, 4)),
-          CreatedAt: S.optional(S.String),
-          UpdatedAt: S.optional(S.String),
-          Spec: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "Config" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          IPv4Address: S.optional(S.String),
-          IPv6Address: S.optional(S.String),
-          LinkLocalIPs: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "EndpointIPAMConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          IPAMConfig: S.optional(S.NullOr(__S(16, __c2, 0))),
-          Links: S.optional(__S(4, __c0, 4)),
-          MacAddress: S.optional(S.String),
-          Aliases: S.optional(__S(4, __c0, 4)),
-          DriverOpts: S.optional(S.NullOr(__S(8, __c1, 0))),
-          GwPriority: S.optional(S.Number),
-          NetworkID: S.optional(S.String),
-          EndpointID: S.optional(S.String),
-          Gateway: S.optional(S.String),
-          IPAddress: S.optional(S.String),
-          IPPrefixLen: S.optional(S.Number),
-          IPv6Gateway: S.optional(S.String),
-          GlobalIPv6Address: S.optional(S.String),
-          GlobalIPv6PrefixLen: S.optional(S.Number),
-          DNSNames: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "EndpointSettings" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          Container: S.String,
-          EndpointConfig: S.optional(S.NullOr(__S(17, __c2, 1))),
-        }).pipe(T.Http({ method: "POST", uri: "/networks/{id}/connect", code: 200 })),
-      ).annotate({ identifier: "ConnectNetworkRequest" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -6273,41 +6092,281 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ContainerAttachWebsocketRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ContainerAttachWebsocketResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          version: S.Number.pipe(T.Query()),
+          Name: S.optional(S.String),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Data: S.optional(S.String),
+          Templating: S.optional(__S(3904, __c122, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/configs/{id}/update", code: 200 })),
+      ).annotate({ identifier: "UpdateConfigRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          CpuShares: S.optional(S.Number),
+          Memory: S.optional(S.Number),
+          CgroupParent: S.optional(S.String),
+          BlkioWeight: S.optional(S.Number),
+          BlkioWeightDevice: S.optional(__S(545, __c17, 1)),
+          BlkioDeviceReadBps: S.optional(__S(547, __c17, 3)),
+          BlkioDeviceWriteBps: S.optional(__S(547, __c17, 3)),
+          BlkioDeviceReadIOps: S.optional(__S(547, __c17, 3)),
+          BlkioDeviceWriteIOps: S.optional(__S(547, __c17, 3)),
+          CpuPeriod: S.optional(S.Number),
+          CpuQuota: S.optional(S.Number),
+          CpuRealtimePeriod: S.optional(S.Number),
+          CpuRealtimeRuntime: S.optional(S.Number),
+          CpusetCpus: S.optional(S.String),
+          CpusetMems: S.optional(S.String),
+          Devices: S.optional(__S(549, __c17, 5)),
+          DeviceCgroupRules: S.optional(__S(2816, __c88, 0)),
+          DeviceRequests: S.optional(__S(551, __c17, 7)),
+          MemoryReservation: S.optional(S.Number),
+          MemorySwap: S.optional(S.Number),
+          MemorySwappiness: S.optional(S.Number),
+          NanoCpus: S.optional(S.Number),
+          OomKillDisable: S.optional(S.Boolean),
+          Init: S.optional(S.NullOr(S.Boolean)),
+          PidsLimit: S.optional(S.NullOr(S.Number)),
+          Ulimits: S.optional(__S(609, __c19, 1)),
+          CpuCount: S.optional(S.Number),
+          CpuPercent: S.optional(S.Number),
+          IOMaximumIOps: S.optional(S.Number),
+          IOMaximumBandwidth: S.optional(S.Number),
+          RestartPolicy: S.optional(__S(552, __c17, 8)),
+        }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/update", code: 200 })),
+      ).annotate({ identifier: "UpdateContainerRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Warnings: S.optional(__S(2816, __c88, 0)),
+        }),
+      ).annotate({ identifier: "ContainerUpdateResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          version: S.Number.pipe(T.Query()),
+          Name: S.optional(S.String),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Role: S.optional(S.String),
+          Availability: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/nodes/{id}/update", code: 200 })),
+      ).annotate({ identifier: "UpdateNodeRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          version: S.Number.pipe(T.Query()),
+          Name: S.optional(S.String),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Data: S.optional(S.String),
+          Driver: S.optional(__S(3904, __c122, 0)),
+          Templating: S.optional(__S(3904, __c122, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/secrets/{id}/update", code: 200 })),
+      ).annotate({ identifier: "UpdateSecretRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          version: S.Number.pipe(T.Query()),
+          registryAuthFrom: S.optional(S.String.pipe(T.Query())),
+          rollback: S.optional(S.String.pipe(T.Query())),
+          xRegistryAuth: S.optional(S.String.pipe(T.Header("X-Registry-Auth"))),
+          Name: S.optional(S.String),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          TaskTemplate: S.optional(__S(1337, __c41, 25)),
+          Mode: S.optional(__S(1346, __c42, 2)),
+          UpdateConfig: S.optional(__S(1347, __c42, 3)),
+          RollbackConfig: S.optional(__S(1347, __c42, 3)),
+          Networks: S.optional(__S(1335, __c41, 23)),
+          EndpointSpec: S.optional(__S(1348, __c42, 4)),
+        }).pipe(T.Http({ method: "POST", uri: "/services/{id}/update", code: 200 })),
+      ).annotate({ identifier: "UpdateServiceRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Protocol: S.optional(S.String),
+          URL: S.optional(S.String),
+          Options: S.optional(__S(3520, __c110, 0)),
+          CACert: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateSwarmRequestCAConfigExternalCAsItem",
+      });
+    case 1:
+      return S.Array(__S(224, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          NodeCertExpiry: S.optional(S.Number),
+          ExternalCAs: S.optional(__S(225, __c7, 1)),
+          SigningCACert: S.optional(S.String),
+          SigningCAKey: S.optional(S.String),
+          ForceRotate: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "UpdateSwarmRequestCAConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          LogDriver: S.optional(__S(576, __c18, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateSwarmRequestTaskDefaults",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.Number.pipe(T.Query()),
+          rotateWorkerToken: S.optional(S.Boolean.pipe(T.Query())),
+          rotateManagerToken: S.optional(S.Boolean.pipe(T.Query())),
+          rotateManagerUnlockKey: S.optional(S.Boolean.pipe(T.Query())),
+          Name: S.optional(S.String),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Orchestration: S.optional(S.NullOr(__S(4320, __c135, 0))),
+          Raft: S.optional(__S(4321, __c135, 1)),
+          Dispatcher: S.optional(S.NullOr(__S(4322, __c135, 2))),
+          CAConfig: S.optional(S.NullOr(__S(226, __c7, 2))),
+          EncryptionConfig: S.optional(__S(4323, __c135, 3)),
+          TaskDefaults: S.optional(__S(227, __c7, 3)),
+        }).pipe(T.Http({ method: "POST", uri: "/swarm/update", code: 200 })),
+      ).annotate({ identifier: "UpdateSwarmRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          version: S.Number.pipe(T.Query()),
+          Spec: S.optional(__S(1415, __c44, 7)),
+        }).pipe(T.Http({ method: "PUT", uri: "/volumes/{name}", code: 200 })),
+      ).annotate({ identifier: "UpdateVolumeRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/volumes/{name}", code: 200 })),
+      ).annotate({ identifier: "VolumeInspectRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/volumes/prune", code: 200 })),
+      ).annotate({ identifier: "VolumePruneRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VolumesDeleted: S.optional(__S(2816, __c88, 0)),
+          SpaceReclaimed: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "VolumePruneResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          condition: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/wait", code: 200 })),
+      ).annotate({ identifier: "WaitContainerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContainerWaitExitError" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StatusCode: S.Number,
+          Error: S.optional(__S(353, __c11, 1)),
+        }),
+      ).annotate({ identifier: "ContainerWaitResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/containers/{id}/changes", code: 200 })),
       ).annotate({ identifier: "ContainerChangesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Path: S.String,
           Kind: S.Number,
         }),
       ).annotate({ identifier: "FilesystemChange" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(23, __c2, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(385, __c12, 1));
+    case 3:
+      return S.suspend(() => __S(386, __c12, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ContainerChangesResponse",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           size: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/containers/{id}/json", code: 200 })),
       ).annotate({ identifier: "ContainerInspectRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Start: S.optional(S.String),
@@ -6316,17 +6375,17 @@ function __c3(j: number): any {
           Output: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthcheckResult" });
+    case 2:
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(417, __c13, 1)));
     case 3:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(26, __c3, 2)));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
           FailingStreak: S.optional(S.Number),
-          Log: S.optional(__S(27, __c3, 3)),
+          Log: S.optional(__S(418, __c13, 2)),
         }),
       ).annotate({ identifier: "Health" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
@@ -6340,35 +6399,209 @@ function __c3(j: number): any {
           Error: S.optional(S.String),
           StartedAt: S.optional(S.String),
           FinishedAt: S.optional(S.String),
-          Health: S.optional(S.NullOr(__S(28, __c3, 4))),
+          Health: S.optional(S.NullOr(__S(419, __c13, 3))),
         }),
       ).annotate({ identifier: "ContainerState" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RootFSStorageSnapshot" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          architecture: S.optional(S.String),
-          os: S.optional(S.String),
-          os_version: S.optional(S.String.pipe(T.Body("os.version"))),
-          os_features: S.optional(__S(4, __c0, 4).pipe(T.Body("os.features"))),
-          variant: S.optional(S.String),
+          Snapshot: S.optional(S.NullOr(__S(421, __c13, 5))),
         }),
-      ).annotate({ identifier: "OCIPlatform" });
+      ).annotate({ identifier: "RootFSStorage" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mediaType: S.optional(S.String),
-          digest: S.optional(S.String),
-          size: S.optional(S.Number),
-          urls: S.optional(S.NullOr(__S(4, __c0, 4))),
-          annotations: S.optional(S.NullOr(__S(8, __c1, 0))),
-          data: S.optional(S.NullOr(S.String)),
-          platform: S.optional(S.NullOr(__S(30, __c3, 6))),
-          artifactType: S.optional(S.NullOr(S.String)),
+          RootFS: S.optional(S.NullOr(__S(422, __c13, 6))),
         }),
-      ).annotate({ identifier: "OCIDescriptor" });
+      ).annotate({ identifier: "Storage" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          Hostname: S.optional(S.String),
+          Domainname: S.optional(S.String),
+          User: S.optional(S.String),
+          AttachStdin: S.optional(S.Boolean),
+          AttachStdout: S.optional(S.Boolean),
+          AttachStderr: S.optional(S.Boolean),
+          ExposedPorts: S.optional(S.NullOr(__S(3456, __c108, 0))),
+          Tty: S.optional(S.Boolean),
+          OpenStdin: S.optional(S.Boolean),
+          StdinOnce: S.optional(S.Boolean),
+          Env: S.optional(__S(2816, __c88, 0)),
+          Cmd: S.optional(__S(2816, __c88, 0)),
+          Healthcheck: S.optional(__S(3424, __c107, 0)),
+          ArgsEscaped: S.optional(S.NullOr(S.Boolean)),
+          Image: S.optional(S.String),
+          Volumes: S.optional(__S(3456, __c108, 0)),
+          WorkingDir: S.optional(S.String),
+          Entrypoint: S.optional(__S(2816, __c88, 0)),
+          NetworkDisabled: S.optional(S.NullOr(S.Boolean)),
+          OnBuild: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          StopSignal: S.optional(S.NullOr(S.String)),
+          StopTimeout: S.optional(S.NullOr(S.Number)),
+          Shell: S.optional(S.NullOr(__S(2816, __c88, 0))),
+        }),
+      ).annotate({ identifier: "ContainerConfig" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          SandboxID: S.optional(S.String),
+          SandboxKey: S.optional(S.String),
+          Ports: S.optional(__S(515, __c16, 3)),
+          Networks: S.optional(__S(672, __c21, 0)),
+        }),
+      ).annotate({ identifier: "NetworkSettings" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Created: S.optional(S.NullOr(S.String)),
+          Path: S.optional(S.String),
+          Args: S.optional(__S(2816, __c88, 0)),
+          State: S.optional(S.NullOr(__S(420, __c13, 4))),
+          Image: S.optional(S.String),
+          ResolvConfPath: S.optional(S.String),
+          HostnamePath: S.optional(S.String),
+          HostsPath: S.optional(S.String),
+          LogPath: S.optional(S.NullOr(S.String)),
+          Name: S.optional(S.String),
+          RestartCount: S.optional(S.Number),
+          Driver: S.optional(S.String),
+          Platform: S.optional(S.String),
+          ImageManifestDescriptor: S.optional(__S(705, __c22, 1)),
+          MountLabel: S.optional(S.String),
+          ProcessLabel: S.optional(S.String),
+          AppArmorProfile: S.optional(S.String),
+          ExecIDs: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          HostConfig: S.optional(__S(516, __c16, 4)),
+          GraphDriver: S.optional(S.NullOr(__S(736, __c23, 0))),
+          Storage: S.optional(S.NullOr(__S(423, __c13, 7))),
+          SizeRw: S.optional(S.NullOr(S.Number)),
+          SizeRootFs: S.optional(S.NullOr(S.Number)),
+          Mounts: S.optional(__S(769, __c24, 1)),
+          Config: S.optional(__S(424, __c13, 8)),
+          NetworkSettings: S.optional(__S(425, __c13, 9)),
+        }),
+      ).annotate({ identifier: "ContainerInspectResponse" });
   }
 }
-function __c4(j: number): any {
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2816, __c88, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(S.String),
+          Config: S.optional(__S(3520, __c110, 0)),
+        }),
+      ).annotate({ identifier: "HostConfigLogConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          HostIp: S.optional(S.String),
+          HostPort: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PortBinding" });
+    case 2:
+      return S.Array(__S(513, __c16, 1));
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(514, __c16, 2)));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CpuShares: S.optional(S.Number),
+          Memory: S.optional(S.Number),
+          CgroupParent: S.optional(S.String),
+          BlkioWeight: S.optional(S.Number),
+          BlkioWeightDevice: S.optional(__S(545, __c17, 1)),
+          BlkioDeviceReadBps: S.optional(__S(547, __c17, 3)),
+          BlkioDeviceWriteBps: S.optional(__S(547, __c17, 3)),
+          BlkioDeviceReadIOps: S.optional(__S(547, __c17, 3)),
+          BlkioDeviceWriteIOps: S.optional(__S(547, __c17, 3)),
+          CpuPeriod: S.optional(S.Number),
+          CpuQuota: S.optional(S.Number),
+          CpuRealtimePeriod: S.optional(S.Number),
+          CpuRealtimeRuntime: S.optional(S.Number),
+          CpusetCpus: S.optional(S.String),
+          CpusetMems: S.optional(S.String),
+          Devices: S.optional(__S(549, __c17, 5)),
+          DeviceCgroupRules: S.optional(__S(2816, __c88, 0)),
+          DeviceRequests: S.optional(__S(551, __c17, 7)),
+          MemoryReservation: S.optional(S.Number),
+          MemorySwap: S.optional(S.Number),
+          MemorySwappiness: S.optional(S.Number),
+          NanoCpus: S.optional(S.Number),
+          OomKillDisable: S.optional(S.Boolean),
+          Init: S.optional(S.NullOr(S.Boolean)),
+          PidsLimit: S.optional(S.NullOr(S.Number)),
+          Ulimits: S.optional(__S(609, __c19, 1)),
+          CpuCount: S.optional(S.Number),
+          CpuPercent: S.optional(S.Number),
+          IOMaximumIOps: S.optional(S.Number),
+          IOMaximumBandwidth: S.optional(S.Number),
+          Binds: S.optional(__S(2816, __c88, 0)),
+          ContainerIDFile: S.optional(S.String),
+          LogConfig: S.optional(__S(512, __c16, 0)),
+          NetworkMode: S.optional(S.String),
+          PortBindings: S.optional(__S(515, __c16, 3)),
+          RestartPolicy: S.optional(__S(552, __c17, 8)),
+          AutoRemove: S.optional(S.Boolean),
+          VolumeDriver: S.optional(S.String),
+          VolumesFrom: S.optional(__S(2816, __c88, 0)),
+          Mounts: S.optional(__S(645, __c20, 5)),
+          ConsoleSize: S.optional(S.NullOr(__S(448, __c14, 0))),
+          Annotations: S.optional(__S(3520, __c110, 0)),
+          CapAdd: S.optional(__S(2816, __c88, 0)),
+          CapDrop: S.optional(__S(2816, __c88, 0)),
+          CgroupnsMode: S.optional(S.String),
+          Dns: S.optional(__S(2816, __c88, 0)),
+          DnsOptions: S.optional(__S(2816, __c88, 0)),
+          DnsSearch: S.optional(__S(2816, __c88, 0)),
+          ExtraHosts: S.optional(__S(2816, __c88, 0)),
+          GroupAdd: S.optional(__S(2816, __c88, 0)),
+          IpcMode: S.optional(S.String),
+          Cgroup: S.optional(S.String),
+          Links: S.optional(__S(2816, __c88, 0)),
+          OomScoreAdj: S.optional(S.Number),
+          PidMode: S.optional(S.String),
+          Privileged: S.optional(S.Boolean),
+          PublishAllPorts: S.optional(S.Boolean),
+          ReadonlyRootfs: S.optional(S.Boolean),
+          SecurityOpt: S.optional(__S(2816, __c88, 0)),
+          StorageOpt: S.optional(__S(3520, __c110, 0)),
+          Tmpfs: S.optional(__S(3520, __c110, 0)),
+          UTSMode: S.optional(S.String),
+          UsernsMode: S.optional(S.String),
+          ShmSize: S.optional(S.Number),
+          Sysctls: S.optional(S.NullOr(__S(3520, __c110, 0))),
+          Runtime: S.optional(S.NullOr(S.String)),
+          Umask: S.optional(S.NullOr(S.Number)),
+          Isolation: S.optional(S.String),
+          MaskedPaths: S.optional(__S(2816, __c88, 0)),
+          ReadonlyPaths: S.optional(__S(2816, __c88, 0)),
+        }),
+      ).annotate({ identifier: "HostConfig" });
+  }
+}
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6380,7 +6613,7 @@ function __c4(j: number): any {
         identifier: "HostConfigBlkioWeightDeviceItem",
       });
     case 1:
-      return S.Array(__S(32, __c4, 0));
+      return S.Array(__S(544, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6389,7 +6622,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ThrottleDevice" });
     case 3:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(546, __c17, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6399,54 +6632,20 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DeviceMapping" });
     case 5:
-      return S.Array(__S(36, __c4, 4));
+      return S.Array(__S(548, __c17, 4));
     case 6:
-      return S.Array(__S(4, __c0, 4));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           Driver: S.optional(S.String),
           Count: S.optional(S.Number),
-          DeviceIDs: S.optional(__S(4, __c0, 4)),
-          Capabilities: S.optional(__S(38, __c4, 6)),
-          Options: S.optional(__S(8, __c1, 0)),
+          DeviceIDs: S.optional(__S(2816, __c88, 0)),
+          Capabilities: S.optional(__S(480, __c15, 0)),
+          Options: S.optional(__S(3520, __c110, 0)),
         }),
       ).annotate({ identifier: "DeviceRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Soft: S.optional(S.Number),
-          Hard: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HostConfigUlimitsItem" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Type: S.optional(S.String),
-          Config: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "HostConfigLogConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          HostIp: S.optional(S.String),
-          HostPort: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PortBinding" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(45, __c5, 5)));
     case 7:
+      return S.Array(__S(550, __c17, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -6455,7 +6654,34 @@ function __c5(j: number): any {
       ).annotate({ identifier: "RestartPolicy" });
   }
 }
-function __c6(j: number): any {
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Options: S.optional(__S(3520, __c110, 0)),
+        }),
+      ).annotate({
+        identifier: "MountVolumeOptionsDriverConfig",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Soft: S.optional(S.Number),
+          Hard: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HostConfigUlimitsItem" });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+  }
+}
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6470,36 +6696,27 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Name: S.optional(S.String),
-          Options: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "MountVolumeOptionsDriverConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           NoCopy: S.optional(S.Boolean),
-          Labels: S.optional(__S(8, __c1, 0)),
-          DriverConfig: S.optional(__S(49, __c6, 1)),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          DriverConfig: S.optional(__S(576, __c18, 0)),
           Subpath: S.optional(S.String),
         }),
       ).annotate({ identifier: "MountVolumeOptions" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Subpath: S.optional(S.String),
         }),
       ).annotate({ identifier: "MountImageOptions" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           SizeBytes: S.optional(S.Number),
           Mode: S.optional(S.Number),
-          Options: S.optional(__S(38, __c4, 6)),
+          Options: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "MountTmpfsOptions" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Target: S.optional(S.String),
@@ -6507,121 +6724,63 @@ function __c6(j: number): any {
           Type: S.optional(S.String),
           ReadOnly: S.optional(S.Boolean),
           Consistency: S.optional(S.String),
-          BindOptions: S.optional(__S(48, __c6, 0)),
-          VolumeOptions: S.optional(__S(50, __c6, 2)),
-          ImageOptions: S.optional(__S(51, __c6, 3)),
-          TmpfsOptions: S.optional(__S(52, __c6, 4)),
+          BindOptions: S.optional(__S(640, __c20, 0)),
+          VolumeOptions: S.optional(__S(641, __c20, 1)),
+          ImageOptions: S.optional(__S(642, __c20, 2)),
+          TmpfsOptions: S.optional(__S(643, __c20, 3)),
         }),
       ).annotate({ identifier: "Mount" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.Array(S.Number);
+    case 5:
+      return S.Array(__S(644, __c20, 4));
   }
 }
-function __c7(j: number): any {
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(4417, __c138, 1));
+  }
+}
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CpuShares: S.optional(S.Number),
-          Memory: S.optional(S.Number),
-          CgroupParent: S.optional(S.String),
-          BlkioWeight: S.optional(S.Number),
-          BlkioWeightDevice: S.optional(__S(33, __c4, 1)),
-          BlkioDeviceReadBps: S.optional(__S(35, __c4, 3)),
-          BlkioDeviceWriteBps: S.optional(__S(35, __c4, 3)),
-          BlkioDeviceReadIOps: S.optional(__S(35, __c4, 3)),
-          BlkioDeviceWriteIOps: S.optional(__S(35, __c4, 3)),
-          CpuPeriod: S.optional(S.Number),
-          CpuQuota: S.optional(S.Number),
-          CpuRealtimePeriod: S.optional(S.Number),
-          CpuRealtimeRuntime: S.optional(S.Number),
-          CpusetCpus: S.optional(S.String),
-          CpusetMems: S.optional(S.String),
-          Devices: S.optional(__S(37, __c4, 5)),
-          DeviceCgroupRules: S.optional(__S(4, __c0, 4)),
-          DeviceRequests: S.optional(__S(40, __c5, 0)),
-          MemoryReservation: S.optional(S.Number),
-          MemorySwap: S.optional(S.Number),
-          MemorySwappiness: S.optional(S.Number),
-          NanoCpus: S.optional(S.Number),
-          OomKillDisable: S.optional(S.Boolean),
-          Init: S.optional(S.NullOr(S.Boolean)),
-          PidsLimit: S.optional(S.NullOr(S.Number)),
-          Ulimits: S.optional(__S(42, __c5, 2)),
-          CpuCount: S.optional(S.Number),
-          CpuPercent: S.optional(S.Number),
-          IOMaximumIOps: S.optional(S.Number),
-          IOMaximumBandwidth: S.optional(S.Number),
-          Binds: S.optional(__S(4, __c0, 4)),
-          ContainerIDFile: S.optional(S.String),
-          LogConfig: S.optional(__S(43, __c5, 3)),
-          NetworkMode: S.optional(S.String),
-          PortBindings: S.optional(__S(46, __c5, 6)),
-          RestartPolicy: S.optional(__S(47, __c5, 7)),
-          AutoRemove: S.optional(S.Boolean),
-          VolumeDriver: S.optional(S.String),
-          VolumesFrom: S.optional(__S(4, __c0, 4)),
-          Mounts: S.optional(__S(54, __c6, 6)),
-          ConsoleSize: S.optional(S.NullOr(__S(55, __c6, 7))),
-          Annotations: S.optional(__S(8, __c1, 0)),
-          CapAdd: S.optional(__S(4, __c0, 4)),
-          CapDrop: S.optional(__S(4, __c0, 4)),
-          CgroupnsMode: S.optional(S.String),
-          Dns: S.optional(__S(4, __c0, 4)),
-          DnsOptions: S.optional(__S(4, __c0, 4)),
-          DnsSearch: S.optional(__S(4, __c0, 4)),
-          ExtraHosts: S.optional(__S(4, __c0, 4)),
-          GroupAdd: S.optional(__S(4, __c0, 4)),
-          IpcMode: S.optional(S.String),
-          Cgroup: S.optional(S.String),
-          Links: S.optional(__S(4, __c0, 4)),
-          OomScoreAdj: S.optional(S.Number),
-          PidMode: S.optional(S.String),
-          Privileged: S.optional(S.Boolean),
-          PublishAllPorts: S.optional(S.Boolean),
-          ReadonlyRootfs: S.optional(S.Boolean),
-          SecurityOpt: S.optional(__S(4, __c0, 4)),
-          StorageOpt: S.optional(__S(8, __c1, 0)),
-          Tmpfs: S.optional(__S(8, __c1, 0)),
-          UTSMode: S.optional(S.String),
-          UsernsMode: S.optional(S.String),
-          ShmSize: S.optional(S.Number),
-          Sysctls: S.optional(S.NullOr(__S(8, __c1, 0))),
-          Runtime: S.optional(S.NullOr(S.String)),
-          Umask: S.optional(S.NullOr(S.Number)),
-          Isolation: S.optional(S.String),
-          MaskedPaths: S.optional(__S(4, __c0, 4)),
-          ReadonlyPaths: S.optional(__S(4, __c0, 4)),
+          architecture: S.optional(S.String),
+          os: S.optional(S.String),
+          os_version: S.optional(S.String.pipe(T.Body("os.version"))),
+          os_features: S.optional(__S(2816, __c88, 0).pipe(T.Body("os.features"))),
+          variant: S.optional(S.String),
         }),
-      ).annotate({ identifier: "HostConfig" });
+      ).annotate({ identifier: "OCIPlatform" });
     case 1:
       return S.suspend(() =>
         S.Struct({
+          mediaType: S.optional(S.String),
+          digest: S.optional(S.String),
+          size: S.optional(S.Number),
+          urls: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          annotations: S.optional(S.NullOr(__S(3520, __c110, 0))),
+          data: S.optional(S.NullOr(S.String)),
+          platform: S.optional(S.NullOr(__S(704, __c22, 0))),
+          artifactType: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "OCIDescriptor" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           Name: S.String,
-          Data: __S(8, __c1, 0),
+          Data: __S(3520, __c110, 0),
         }),
       ).annotate({ identifier: "DriverData" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RootFSStorageSnapshot" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Snapshot: S.optional(S.NullOr(__S(58, __c7, 2))),
-        }),
-      ).annotate({ identifier: "RootFSStorage" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          RootFS: S.optional(S.NullOr(__S(59, __c7, 3))),
-        }),
-      ).annotate({ identifier: "Storage" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
@@ -6634,85 +6793,13 @@ function __c7(j: number): any {
           Propagation: S.optional(S.String),
         }),
       ).annotate({ identifier: "MountPoint" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Hostname: S.optional(S.String),
-          Domainname: S.optional(S.String),
-          User: S.optional(S.String),
-          AttachStdin: S.optional(S.Boolean),
-          AttachStdout: S.optional(S.Boolean),
-          AttachStderr: S.optional(S.Boolean),
-          ExposedPorts: S.optional(S.NullOr(__S(6, __c0, 6))),
-          Tty: S.optional(S.Boolean),
-          OpenStdin: S.optional(S.Boolean),
-          StdinOnce: S.optional(S.Boolean),
-          Env: S.optional(__S(4, __c0, 4)),
-          Cmd: S.optional(__S(4, __c0, 4)),
-          Healthcheck: S.optional(__S(7, __c0, 7)),
-          ArgsEscaped: S.optional(S.NullOr(S.Boolean)),
-          Image: S.optional(S.String),
-          Volumes: S.optional(__S(6, __c0, 6)),
-          WorkingDir: S.optional(S.String),
-          Entrypoint: S.optional(__S(4, __c0, 4)),
-          NetworkDisabled: S.optional(S.NullOr(S.Boolean)),
-          OnBuild: S.optional(S.NullOr(__S(4, __c0, 4))),
-          Labels: S.optional(__S(8, __c1, 0)),
-          StopSignal: S.optional(S.NullOr(S.String)),
-          StopTimeout: S.optional(S.NullOr(S.Number)),
-          Shell: S.optional(S.NullOr(__S(4, __c0, 4))),
-        }),
-      ).annotate({ identifier: "ContainerConfig" });
+    case 1:
+      return S.Array(__S(768, __c24, 0));
   }
 }
-function __c8(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(17, __c2, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          SandboxID: S.optional(S.String),
-          SandboxKey: S.optional(S.String),
-          Ports: S.optional(__S(46, __c5, 6)),
-          Networks: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({ identifier: "NetworkSettings" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.optional(S.String),
-          Created: S.optional(S.NullOr(S.String)),
-          Path: S.optional(S.String),
-          Args: S.optional(__S(4, __c0, 4)),
-          State: S.optional(S.NullOr(__S(29, __c3, 5))),
-          Image: S.optional(S.String),
-          ResolvConfPath: S.optional(S.String),
-          HostnamePath: S.optional(S.String),
-          HostsPath: S.optional(S.String),
-          LogPath: S.optional(S.NullOr(S.String)),
-          Name: S.optional(S.String),
-          RestartCount: S.optional(S.Number),
-          Driver: S.optional(S.String),
-          Platform: S.optional(S.String),
-          ImageManifestDescriptor: S.optional(__S(31, __c3, 7)),
-          MountLabel: S.optional(S.String),
-          ProcessLabel: S.optional(S.String),
-          AppArmorProfile: S.optional(S.String),
-          ExecIDs: S.optional(S.NullOr(__S(4, __c0, 4))),
-          HostConfig: S.optional(__S(56, __c7, 0)),
-          GraphDriver: S.optional(S.NullOr(__S(57, __c7, 1))),
-          Storage: S.optional(S.NullOr(__S(60, __c7, 4))),
-          SizeRw: S.optional(S.NullOr(S.Number)),
-          SizeRootFs: S.optional(S.NullOr(S.Number)),
-          Mounts: S.optional(__S(62, __c7, 6)),
-          Config: S.optional(__S(63, __c7, 7)),
-          NetworkSettings: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({ identifier: "ContainerInspectResponse" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -6725,24 +6812,36 @@ function __c8(j: number): any {
           tail: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/containers/{id}/logs", code: 200 })),
       ).annotate({ identifier: "ContainerLogsRequest" });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "ContainerLogsResponse",
       });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/containers/prune", code: 200 })),
       ).annotate({ identifier: "ContainerPruneRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ContainersDeleted: S.optional(__S(4, __c0, 4)),
+          ContainersDeleted: S.optional(__S(2816, __c88, 0)),
           SpaceReclaimed: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContainerPruneResponse" });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -6750,20 +6849,16 @@ function __c8(j: number): any {
           one_shot: S.optional(S.Boolean.pipe(T.Query("one-shot"))),
         }).pipe(T.Http({ method: "GET", uri: "/containers/{id}/stats", code: 200 })),
       ).annotate({ identifier: "ContainerStatsRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           total_usage: S.optional(S.Number),
-          percpu_usage: S.optional(S.NullOr(__S(55, __c6, 7))),
+          percpu_usage: S.optional(S.NullOr(__S(448, __c14, 0))),
           usage_in_kernelmode: S.optional(S.Number),
           usage_in_usermode: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContainerCPUUsage" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           periods: S.optional(S.Number),
@@ -6771,23 +6866,23 @@ function __c9(j: number): any {
           throttled_time: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContainerThrottlingData" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          cpu_usage: S.optional(S.NullOr(__S(72, __c9, 0))),
+          cpu_usage: S.optional(S.NullOr(__S(897, __c28, 1))),
           system_cpu_usage: S.optional(S.NullOr(S.Number)),
           online_cpus: S.optional(S.NullOr(S.Number)),
-          throttling_data: S.optional(S.NullOr(__S(73, __c9, 1))),
+          throttling_data: S.optional(S.NullOr(__S(898, __c28, 2))),
         }),
       ).annotate({ identifier: "ContainerCPUStats" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Number));
     case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Number));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           usage: S.optional(S.NullOr(S.Number)),
           max_usage: S.optional(S.NullOr(S.Number)),
-          stats: S.optional(__S(75, __c9, 3)),
+          stats: S.optional(__S(900, __c28, 4)),
           failcnt: S.optional(S.NullOr(S.Number)),
           limit: S.optional(S.NullOr(S.Number)),
           commitbytes: S.optional(S.NullOr(S.Number)),
@@ -6795,7 +6890,7 @@ function __c9(j: number): any {
           privateworkingset: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "ContainerMemoryStats" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           rx_bytes: S.optional(S.Number),
@@ -6810,20 +6905,16 @@ function __c9(j: number): any {
           instance_id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ContainerNetworkStats" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(77, __c9, 5)));
     case 7:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(902, __c28, 6)));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           current: S.optional(S.NullOr(S.Number)),
           limit: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "ContainerPidsStats" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           major: S.optional(S.Number),
@@ -6832,22 +6923,22 @@ function __c10(j: number): any {
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContainerBlkioStatEntry" });
-    case 1:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(80, __c10, 0)));
-    case 2:
+    case 10:
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(905, __c28, 9)));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          io_service_bytes_recursive: S.optional(__S(81, __c10, 1)),
-          io_serviced_recursive: S.optional(S.NullOr(__S(81, __c10, 1))),
-          io_queue_recursive: S.optional(S.NullOr(__S(81, __c10, 1))),
-          io_service_time_recursive: S.optional(S.NullOr(__S(81, __c10, 1))),
-          io_wait_time_recursive: S.optional(S.NullOr(__S(81, __c10, 1))),
-          io_merged_recursive: S.optional(S.NullOr(__S(81, __c10, 1))),
-          io_time_recursive: S.optional(S.NullOr(__S(81, __c10, 1))),
-          sectors_recursive: S.optional(S.NullOr(__S(81, __c10, 1))),
+          io_service_bytes_recursive: S.optional(__S(906, __c28, 10)),
+          io_serviced_recursive: S.optional(S.NullOr(__S(906, __c28, 10))),
+          io_queue_recursive: S.optional(S.NullOr(__S(906, __c28, 10))),
+          io_service_time_recursive: S.optional(S.NullOr(__S(906, __c28, 10))),
+          io_wait_time_recursive: S.optional(S.NullOr(__S(906, __c28, 10))),
+          io_merged_recursive: S.optional(S.NullOr(__S(906, __c28, 10))),
+          io_time_recursive: S.optional(S.NullOr(__S(906, __c28, 10))),
+          sectors_recursive: S.optional(S.NullOr(__S(906, __c28, 10))),
         }),
       ).annotate({ identifier: "ContainerBlkioStats" });
-    case 3:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           read_count_normalized: S.optional(S.NullOr(S.Number)),
@@ -6856,55 +6947,63 @@ function __c10(j: number): any {
           write_size_bytes: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "ContainerStorageStats" });
-    case 4:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           os_type: S.optional(S.NullOr(S.String)),
           read: S.optional(S.String),
-          cpu_stats: S.optional(S.NullOr(__S(74, __c9, 2))),
-          memory_stats: S.optional(__S(76, __c9, 4)),
-          networks: S.optional(S.NullOr(__S(78, __c9, 6))),
-          pids_stats: S.optional(S.NullOr(__S(79, __c9, 7))),
-          blkio_stats: S.optional(S.NullOr(__S(82, __c10, 2))),
+          cpu_stats: S.optional(S.NullOr(__S(899, __c28, 3))),
+          memory_stats: S.optional(__S(901, __c28, 5)),
+          networks: S.optional(S.NullOr(__S(903, __c28, 7))),
+          pids_stats: S.optional(S.NullOr(__S(904, __c28, 8))),
+          blkio_stats: S.optional(S.NullOr(__S(907, __c28, 11))),
           num_procs: S.optional(S.Number),
-          storage_stats: S.optional(S.NullOr(__S(83, __c10, 3))),
+          storage_stats: S.optional(S.NullOr(__S(908, __c28, 12))),
           preread: S.optional(S.String),
-          precpu_stats: S.optional(S.NullOr(__S(74, __c9, 2))),
+          precpu_stats: S.optional(S.NullOr(__S(899, __c28, 3))),
         }),
       ).annotate({ identifier: "ContainerStatsResponse" });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           ps_args: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/containers/{id}/top", code: 200 })),
       ).annotate({ identifier: "ContainerTopRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Titles: S.optional(__S(4, __c0, 4)),
-          Processes: S.optional(__S(38, __c4, 6)),
+          Titles: S.optional(__S(2816, __c88, 0)),
+          Processes: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "ContainerTopResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Data: S.optional(S.String),
-          Templating: S.optional(__S(13, __c1, 5)),
-        }).pipe(T.Http({ method: "POST", uri: "/configs/create", code: 200 })),
-      ).annotate({ identifier: "CreateConfigRequest" });
   }
 }
-function __c11(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          EndpointsConfig: S.optional(__S(64, __c8, 0)),
+          Name: S.optional(S.String),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Data: S.optional(S.String),
+          Templating: S.optional(__S(3904, __c122, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/configs/create", code: 200 })),
+      ).annotate({ identifier: "CreateConfigRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EndpointsConfig: S.optional(__S(672, __c21, 0)),
         }),
       ).annotate({ identifier: "NetworkingConfig" });
     case 1:
@@ -6918,36 +7017,40 @@ function __c11(j: number): any {
           AttachStdin: S.optional(S.Boolean),
           AttachStdout: S.optional(S.Boolean),
           AttachStderr: S.optional(S.Boolean),
-          ExposedPorts: S.optional(S.NullOr(__S(6, __c0, 6))),
+          ExposedPorts: S.optional(S.NullOr(__S(3456, __c108, 0))),
           Tty: S.optional(S.Boolean),
           OpenStdin: S.optional(S.Boolean),
           StdinOnce: S.optional(S.Boolean),
-          Env: S.optional(__S(4, __c0, 4)),
-          Cmd: S.optional(__S(4, __c0, 4)),
-          Healthcheck: S.optional(__S(7, __c0, 7)),
+          Env: S.optional(__S(2816, __c88, 0)),
+          Cmd: S.optional(__S(2816, __c88, 0)),
+          Healthcheck: S.optional(__S(3424, __c107, 0)),
           ArgsEscaped: S.optional(S.NullOr(S.Boolean)),
           Image: S.optional(S.String),
-          Volumes: S.optional(__S(6, __c0, 6)),
+          Volumes: S.optional(__S(3456, __c108, 0)),
           WorkingDir: S.optional(S.String),
-          Entrypoint: S.optional(__S(4, __c0, 4)),
+          Entrypoint: S.optional(__S(2816, __c88, 0)),
           NetworkDisabled: S.optional(S.NullOr(S.Boolean)),
-          OnBuild: S.optional(S.NullOr(__S(4, __c0, 4))),
-          Labels: S.optional(__S(8, __c1, 0)),
+          OnBuild: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          Labels: S.optional(__S(3520, __c110, 0)),
           StopSignal: S.optional(S.NullOr(S.String)),
           StopTimeout: S.optional(S.NullOr(S.Number)),
-          Shell: S.optional(S.NullOr(__S(4, __c0, 4))),
-          HostConfig: S.optional(__S(56, __c7, 0)),
-          NetworkingConfig: S.optional(__S(88, __c11, 0)),
+          Shell: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          HostConfig: S.optional(__S(516, __c16, 4)),
+          NetworkingConfig: S.optional(__S(992, __c31, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/containers/create", code: 200 })),
       ).annotate({ identifier: "CreateContainerRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
-          Warnings: __S(4, __c0, 4),
+          Warnings: __S(2816, __c88, 0),
         }),
       ).annotate({ identifier: "ContainerCreateResponse" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fromImage: S.optional(S.String.pipe(T.Query())),
@@ -6955,40 +7058,15 @@ function __c11(j: number): any {
           repo: S.optional(S.String.pipe(T.Query())),
           tag: S.optional(S.String.pipe(T.Query())),
           message: S.optional(S.String.pipe(T.Query())),
-          changes: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          changes: S.optional(__S(2816, __c88, 0).pipe(T.Query())),
           platform: S.optional(S.String.pipe(T.Query())),
           xRegistryAuth: S.optional(S.String.pipe(T.Header("X-Registry-Auth"))),
           body: S.optional(S.String.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/images/create", code: 200 })),
       ).annotate({ identifier: "CreateImageRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Network: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigReference" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Subnet: S.optional(S.String),
-          IPRange: S.optional(S.String),
-          Gateway: S.optional(S.String),
-          AuxiliaryAddresses: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "IPAMConfig" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Driver: S.optional(S.String),
-          Config: S.optional(__S(94, __c11, 6)),
-          Options: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "IPAM" });
   }
 }
-function __c12(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7000,12 +7078,12 @@ function __c12(j: number): any {
           Attachable: S.optional(S.Boolean),
           Ingress: S.optional(S.Boolean),
           ConfigOnly: S.optional(S.Boolean),
-          ConfigFrom: S.optional(__S(92, __c11, 4)),
-          IPAM: S.optional(__S(95, __c11, 7)),
+          ConfigFrom: S.optional(__S(1088, __c34, 0)),
+          IPAM: S.optional(__S(1091, __c34, 3)),
           EnableIPv4: S.optional(S.Boolean),
           EnableIPv6: S.optional(S.Boolean),
-          Options: S.optional(__S(8, __c1, 0)),
-          Labels: S.optional(__S(8, __c1, 0)),
+          Options: S.optional(__S(3520, __c110, 0)),
+          Labels: S.optional(__S(3520, __c110, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/networks/create", code: 200 })),
       ).annotate({ identifier: "CreateNetworkRequest" });
     case 1:
@@ -7015,43 +7093,163 @@ function __c12(j: number): any {
           Warning: S.String,
         }),
       ).annotate({ identifier: "NetworkCreateResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Network: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigReference" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Subnet: S.optional(S.String),
+          IPRange: S.optional(S.String),
+          Gateway: S.optional(S.String),
+          AuxiliaryAddresses: S.optional(__S(3520, __c110, 0)),
+        }),
+      ).annotate({ identifier: "IPAMConfig" });
     case 2:
+      return S.Array(__S(1089, __c34, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Driver: S.optional(S.String),
+          Config: S.optional(__S(1090, __c34, 2)),
+          Options: S.optional(__S(3520, __c110, 0)),
+        }),
+      ).annotate({ identifier: "IPAM" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Query()),
           body: S.optional(S.String.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/plugins/create", code: 200 })),
       ).annotate({ identifier: "CreatePluginRequest" });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
+          Labels: S.optional(__S(3520, __c110, 0)),
           Data: S.optional(S.String),
-          Driver: S.optional(__S(13, __c1, 5)),
-          Templating: S.optional(__S(13, __c1, 5)),
+          Driver: S.optional(__S(3904, __c122, 0)),
+          Templating: S.optional(__S(3904, __c122, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/secrets/create", code: 200 })),
       ).annotate({ identifier: "CreateSecretRequest" });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          xRegistryAuth: S.optional(S.String.pipe(T.Header("X-Registry-Auth"))),
+          Name: S.optional(S.String),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          TaskTemplate: S.optional(__S(1337, __c41, 25)),
+          Mode: S.optional(__S(1346, __c42, 2)),
+          UpdateConfig: S.optional(__S(1347, __c42, 3)),
+          RollbackConfig: S.optional(__S(1347, __c42, 3)),
+          Networks: S.optional(__S(1335, __c41, 23)),
+          EndpointSpec: S.optional(__S(1348, __c42, 4)),
+        }).pipe(T.Http({ method: "POST", uri: "/services/create", code: 200 })),
+      ).annotate({ identifier: "CreateServiceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ID: S.optional(S.String),
+          Warnings: S.optional(S.NullOr(__S(2816, __c88, 0))),
+        }),
+      ).annotate({ identifier: "ServiceCreateResponse" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Value: S.optional(__S(4, __c0, 4)),
+          Value: S.optional(__S(2816, __c88, 0)),
         }),
       ).annotate({ identifier: "PluginPrivilege" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1216, __c38, 0));
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Kind: S.optional(S.String),
+          Value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GenericResourcesItemNamedResourceSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Kind: S.optional(S.String),
+          Value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GenericResourcesItemDiscreteResourceSpec",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          NamedResourceSpec: S.optional(__S(1248, __c39, 0)),
+          DiscreteResourceSpec: S.optional(__S(1249, __c39, 1)),
+        }),
+      ).annotate({ identifier: "GenericResourcesItem" });
+    case 3:
+      return S.Array(__S(1250, __c39, 2));
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NanoCPUs: S.optional(S.Number),
+          MemoryBytes: S.optional(S.Number),
+          GenericResources: S.optional(__S(1251, __c39, 3)),
+        }),
+      ).annotate({ identifier: "ResourceObject" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Architecture: S.optional(S.String),
+          OS: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Platform" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Remote: S.optional(S.String),
           Disabled: S.optional(S.Boolean),
-          PluginPrivilege: S.optional(__S(101, __c12, 5)),
+          PluginPrivilege: S.optional(__S(1217, __c38, 1)),
         }),
       ).annotate({ identifier: "TaskSpecPluginSpec" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Config: S.optional(S.String),
@@ -7061,11 +7259,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "TaskSpecContainerSpecPrivilegesCredentialSpec",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Disable: S.optional(S.Boolean),
@@ -7077,7 +7271,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "TaskSpecContainerSpecPrivilegesSELinuxContext",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Mode: S.optional(S.String),
@@ -7086,7 +7280,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "TaskSpecContainerSpecPrivilegesSeccomp",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Mode: S.optional(S.String),
@@ -7094,29 +7288,29 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "TaskSpecContainerSpecPrivilegesAppArmor",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          CredentialSpec: S.optional(__S(103, __c12, 7)),
-          SELinuxContext: S.optional(__S(104, __c13, 0)),
-          Seccomp: S.optional(__S(105, __c13, 1)),
-          AppArmor: S.optional(__S(106, __c13, 2)),
+          CredentialSpec: S.optional(__S(1313, __c41, 1)),
+          SELinuxContext: S.optional(__S(1314, __c41, 2)),
+          Seccomp: S.optional(__S(1315, __c41, 3)),
+          AppArmor: S.optional(__S(1316, __c41, 4)),
           NoNewPrivileges: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "TaskSpecContainerSpecPrivileges",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          Nameservers: S.optional(__S(4, __c0, 4)),
-          Search: S.optional(__S(4, __c0, 4)),
-          Options: S.optional(__S(4, __c0, 4)),
+          Nameservers: S.optional(__S(2816, __c88, 0)),
+          Search: S.optional(__S(2816, __c88, 0)),
+          Options: S.optional(__S(2816, __c88, 0)),
         }),
       ).annotate({
         identifier: "TaskSpecContainerSpecDNSConfig",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -7127,26 +7321,22 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "TaskSpecContainerSpecSecretsItemFile",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          File: S.optional(__S(109, __c13, 5)),
+          File: S.optional(__S(1319, __c41, 7)),
           SecretID: S.optional(S.String),
           SecretName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TaskSpecContainerSpecSecretsItem",
       });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(1320, __c41, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          File: S.optional(__S(109, __c13, 5)),
+          File: S.optional(__S(1319, __c41, 7)),
           Runtime: S.optional(S.Unknown),
           ConfigID: S.optional(S.String),
           ConfigName: S.optional(S.String),
@@ -7154,42 +7344,42 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "TaskSpecContainerSpecConfigsItem",
       });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
+    case 11:
+      return S.Array(__S(1322, __c41, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           Image: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Command: S.optional(__S(4, __c0, 4)),
-          Args: S.optional(__S(4, __c0, 4)),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Command: S.optional(__S(2816, __c88, 0)),
+          Args: S.optional(__S(2816, __c88, 0)),
           Hostname: S.optional(S.String),
-          Env: S.optional(__S(4, __c0, 4)),
+          Env: S.optional(__S(2816, __c88, 0)),
           Dir: S.optional(S.String),
           User: S.optional(S.String),
-          Groups: S.optional(__S(4, __c0, 4)),
-          Privileges: S.optional(__S(107, __c13, 3)),
+          Groups: S.optional(__S(2816, __c88, 0)),
+          Privileges: S.optional(__S(1317, __c41, 5)),
           TTY: S.optional(S.Boolean),
           OpenStdin: S.optional(S.Boolean),
           ReadOnly: S.optional(S.Boolean),
-          Mounts: S.optional(__S(54, __c6, 6)),
+          Mounts: S.optional(__S(645, __c20, 5)),
           StopSignal: S.optional(S.String),
           StopGracePeriod: S.optional(S.Number),
-          Healthcheck: S.optional(__S(7, __c0, 7)),
-          Hosts: S.optional(__S(4, __c0, 4)),
-          DNSConfig: S.optional(__S(108, __c13, 4)),
-          Secrets: S.optional(__S(111, __c13, 7)),
+          Healthcheck: S.optional(__S(3424, __c107, 0)),
+          Hosts: S.optional(__S(2816, __c88, 0)),
+          DNSConfig: S.optional(__S(1318, __c41, 6)),
+          Secrets: S.optional(__S(1321, __c41, 9)),
           OomScoreAdj: S.optional(S.Number),
-          Configs: S.optional(__S(113, __c14, 1)),
+          Configs: S.optional(__S(1323, __c41, 11)),
           Isolation: S.optional(S.String),
           Init: S.optional(S.NullOr(S.Boolean)),
-          Sysctls: S.optional(__S(8, __c1, 0)),
-          CapabilityAdd: S.optional(__S(4, __c0, 4)),
-          CapabilityDrop: S.optional(__S(4, __c0, 4)),
-          Ulimits: S.optional(__S(42, __c5, 2)),
+          Sysctls: S.optional(__S(3520, __c110, 0)),
+          CapabilityAdd: S.optional(__S(2816, __c88, 0)),
+          CapabilityDrop: S.optional(__S(2816, __c88, 0)),
+          Ulimits: S.optional(__S(609, __c19, 1)),
         }),
       ).annotate({ identifier: "TaskSpecContainerSpec" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           ContainerID: S.optional(S.String),
@@ -7197,7 +7387,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "TaskSpecNetworkAttachmentSpec",
       });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           NanoCPUs: S.optional(S.Number),
@@ -7205,55 +7395,16 @@ function __c14(j: number): any {
           Pids: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Limit" });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          Kind: S.optional(S.String),
-          Value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GenericResourcesItemNamedResourceSpec",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Kind: S.optional(S.String),
-          Value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GenericResourcesItemDiscreteResourceSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          NamedResourceSpec: S.optional(__S(117, __c14, 5)),
-          DiscreteResourceSpec: S.optional(__S(118, __c14, 6)),
-        }),
-      ).annotate({ identifier: "GenericResourcesItem" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          NanoCPUs: S.optional(S.Number),
-          MemoryBytes: S.optional(S.Number),
-          GenericResources: S.optional(__S(120, __c15, 0)),
-        }),
-      ).annotate({ identifier: "ResourceObject" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Limits: S.optional(__S(116, __c14, 4)),
-          Reservations: S.optional(__S(121, __c15, 1)),
+          Limits: S.optional(__S(1326, __c41, 14)),
+          Reservations: S.optional(__S(1280, __c40, 0)),
           SwapBytes: S.optional(S.NullOr(S.Number)),
           MemorySwappiness: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "TaskSpecResources" });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           Condition: S.optional(S.String),
@@ -7262,7 +7413,7 @@ function __c15(j: number): any {
           Window: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TaskSpecRestartPolicy" });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           SpreadDescriptor: S.optional(S.String),
@@ -7270,71 +7421,76 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "TaskSpecPlacementPreferencesItemSpread",
       });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          Spread: S.optional(__S(124, __c15, 4)),
+          Spread: S.optional(__S(1329, __c41, 17)),
         }),
       ).annotate({
         identifier: "TaskSpecPlacementPreferencesItem",
       });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 19:
+      return S.Array(__S(1330, __c41, 18));
+    case 20:
+      return S.Array(__S(1281, __c40, 1));
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          Architecture: S.optional(S.String),
-          OS: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Platform" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Constraints: S.optional(__S(4, __c0, 4)),
-          Preferences: S.optional(__S(126, __c15, 6)),
+          Constraints: S.optional(__S(2816, __c88, 0)),
+          Preferences: S.optional(__S(1331, __c41, 19)),
           MaxReplicas: S.optional(S.Number),
-          Platforms: S.optional(__S(128, __c16, 0)),
+          Platforms: S.optional(__S(1332, __c41, 20)),
         }),
       ).annotate({ identifier: "TaskSpecPlacement" });
-    case 2:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           Target: S.optional(S.String),
-          Aliases: S.optional(__S(4, __c0, 4)),
-          DriverOpts: S.optional(__S(8, __c1, 0)),
+          Aliases: S.optional(__S(2816, __c88, 0)),
+          DriverOpts: S.optional(__S(3520, __c110, 0)),
         }),
       ).annotate({ identifier: "NetworkAttachmentConfig" });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
+    case 23:
+      return S.Array(__S(1334, __c41, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Options: S.optional(__S(8, __c1, 0)),
+          Options: S.optional(__S(3520, __c110, 0)),
         }),
       ).annotate({ identifier: "TaskSpecLogDriver" });
-    case 5:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          PluginSpec: S.optional(__S(102, __c12, 6)),
-          ContainerSpec: S.optional(__S(114, __c14, 2)),
-          NetworkAttachmentSpec: S.optional(__S(115, __c14, 3)),
-          Resources: S.optional(__S(122, __c15, 2)),
-          RestartPolicy: S.optional(__S(123, __c15, 3)),
-          Placement: S.optional(__S(129, __c16, 1)),
+          PluginSpec: S.optional(__S(1312, __c41, 0)),
+          ContainerSpec: S.optional(__S(1324, __c41, 12)),
+          NetworkAttachmentSpec: S.optional(__S(1325, __c41, 13)),
+          Resources: S.optional(__S(1327, __c41, 15)),
+          RestartPolicy: S.optional(__S(1328, __c41, 16)),
+          Placement: S.optional(__S(1333, __c41, 21)),
           ForceUpdate: S.optional(S.Number),
           Runtime: S.optional(S.String),
-          Networks: S.optional(__S(131, __c16, 3)),
-          LogDriver: S.optional(__S(132, __c16, 4)),
+          Networks: S.optional(__S(1335, __c41, 23)),
+          LogDriver: S.optional(__S(1336, __c41, 24)),
         }),
       ).annotate({ identifier: "TaskSpec" });
-    case 6:
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Protocol: S.optional(S.String),
+          TargetPort: S.optional(S.Number),
+          PublishedPort: S.optional(S.Number),
+          PublishMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointPortConfig" });
+    case 27:
+      return S.Array(__S(1338, __c41, 26));
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Replicas: S.optional(S.Number),
@@ -7342,7 +7498,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateServiceRequestModeReplicated",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           MaxConcurrent: S.optional(S.Number),
@@ -7351,20 +7507,16 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateServiceRequestModeReplicatedJob",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Replicated: S.optional(__S(134, __c16, 6)),
+          Replicated: S.optional(__S(1344, __c42, 0)),
           Global: S.optional(S.Unknown),
-          ReplicatedJob: S.optional(__S(135, __c16, 7)),
+          ReplicatedJob: S.optional(__S(1345, __c42, 1)),
           GlobalJob: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "CreateServiceRequestMode" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Parallelism: S.optional(S.Number),
@@ -7377,47 +7529,32 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CreateServiceRequestUpdateConfig",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Protocol: S.optional(S.String),
-          TargetPort: S.optional(S.Number),
-          PublishedPort: S.optional(S.Number),
-          PublishMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EndpointPortConfig" });
-    case 3:
-      return S.Array(__S(138, __c17, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           Mode: S.optional(S.String),
-          Ports: S.optional(__S(139, __c17, 3)),
+          Ports: S.optional(__S(1339, __c41, 27)),
         }),
       ).annotate({ identifier: "EndpointSpec" });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          xRegistryAuth: S.optional(S.String.pipe(T.Header("X-Registry-Auth"))),
           Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          TaskTemplate: S.optional(__S(133, __c16, 5)),
-          Mode: S.optional(__S(136, __c17, 0)),
-          UpdateConfig: S.optional(__S(137, __c17, 1)),
-          RollbackConfig: S.optional(__S(137, __c17, 1)),
-          Networks: S.optional(__S(131, __c16, 3)),
-          EndpointSpec: S.optional(__S(140, __c17, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/services/create", code: 200 })),
-      ).annotate({ identifier: "CreateServiceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ID: S.optional(S.String),
-          Warnings: S.optional(S.NullOr(__S(4, __c0, 4))),
-        }),
-      ).annotate({ identifier: "ServiceCreateResponse" });
-    case 7:
+          Driver: S.optional(S.String),
+          DriverOpts: S.optional(__S(3520, __c110, 0)),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          ClusterVolumeSpec: S.optional(__S(1415, __c44, 7)),
+        }).pipe(T.Http({ method: "POST", uri: "/volumes/create", code: 200 })),
+      ).annotate({ identifier: "CreateVolumeRequest" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
@@ -7426,30 +7563,26 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ClusterVolumeSpecAccessModeSecretsItem",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
     case 1:
+      return S.Array(__S(1408, __c44, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Segments: S.optional(__S(8, __c1, 0)),
+          Segments: S.optional(__S(3520, __c110, 0)),
         }),
       ).annotate({ identifier: "Topology" });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
     case 3:
+      return S.Array(__S(1410, __c44, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          Requisite: S.optional(__S(146, __c18, 2)),
-          Preferred: S.optional(__S(146, __c18, 2)),
+          Requisite: S.optional(__S(1411, __c44, 3)),
+          Preferred: S.optional(__S(1411, __c44, 3)),
         }),
       ).annotate({
         identifier: "ClusterVolumeSpecAccessModeAccessibilityRequirements",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           RequiredBytes: S.optional(S.Number),
@@ -7458,50 +7591,40 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ClusterVolumeSpecAccessModeCapacityRange",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           Scope: S.optional(S.String),
           Sharing: S.optional(S.String),
           MountVolume: S.optional(S.Unknown),
-          Secrets: S.optional(__S(144, __c18, 0)),
-          AccessibilityRequirements: S.optional(__S(147, __c18, 3)),
-          CapacityRange: S.optional(__S(148, __c18, 4)),
+          Secrets: S.optional(__S(1409, __c44, 1)),
+          AccessibilityRequirements: S.optional(__S(1412, __c44, 4)),
+          CapacityRange: S.optional(__S(1413, __c44, 5)),
           Availability: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ClusterVolumeSpecAccessMode",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Group: S.optional(S.String),
-          AccessMode: S.optional(__S(149, __c18, 5)),
-        }),
-      ).annotate({ identifier: "ClusterVolumeSpec" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Name: S.optional(S.String),
-          Driver: S.optional(S.String),
-          DriverOpts: S.optional(__S(8, __c1, 0)),
-          Labels: S.optional(__S(8, __c1, 0)),
-          ClusterVolumeSpec: S.optional(__S(150, __c18, 6)),
-        }).pipe(T.Http({ method: "POST", uri: "/volumes/create", code: 200 })),
-      ).annotate({ identifier: "CreateVolumeRequest" });
+          Group: S.optional(S.String),
+          AccessMode: S.optional(__S(1414, __c44, 6)),
+        }),
+      ).annotate({ identifier: "ClusterVolumeSpec" });
   }
 }
-function __c19(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(145, __c18, 1));
+      return S.Array(__S(1410, __c44, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
           CapacityBytes: S.optional(S.Number),
-          VolumeContext: S.optional(__S(8, __c1, 0)),
+          VolumeContext: S.optional(__S(3520, __c110, 0)),
           VolumeID: S.optional(S.String),
-          AccessibleTopology: S.optional(__S(152, __c19, 0)),
+          AccessibleTopology: S.optional(__S(1440, __c45, 0)),
         }),
       ).annotate({ identifier: "ClusterVolumeInfo" });
     case 2:
@@ -7509,23 +7632,23 @@ function __c19(j: number): any {
         S.Struct({
           NodeID: S.optional(S.String),
           State: S.optional(S.String),
-          PublishContext: S.optional(__S(8, __c1, 0)),
+          PublishContext: S.optional(__S(3520, __c110, 0)),
         }),
       ).annotate({
         identifier: "ClusterVolumePublishStatusItem",
       });
     case 3:
-      return S.Array(__S(154, __c19, 2));
+      return S.Array(__S(1442, __c45, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           ID: S.optional(S.String),
-          Version: S.optional(__S(12, __c1, 4)),
+          Version: S.optional(__S(3936, __c123, 0)),
           CreatedAt: S.optional(S.String),
           UpdatedAt: S.optional(S.String),
-          Spec: S.optional(__S(150, __c18, 6)),
-          Info: S.optional(__S(153, __c19, 1)),
-          PublishStatus: S.optional(__S(155, __c19, 3)),
+          Spec: S.optional(__S(1415, __c44, 7)),
+          Info: S.optional(__S(1441, __c45, 1)),
+          PublishStatus: S.optional(__S(1443, __c45, 3)),
         }),
       ).annotate({ identifier: "ClusterVolume" });
     case 5:
@@ -7542,15 +7665,19 @@ function __c19(j: number): any {
           Driver: S.String,
           Mountpoint: S.String,
           CreatedAt: S.optional(S.String),
-          Status: S.optional(__S(6, __c0, 6)),
-          Labels: __S(8, __c1, 0),
+          Status: S.optional(__S(3456, __c108, 0)),
+          Labels: __S(3520, __c110, 0),
           Scope: S.String,
-          ClusterVolume: S.optional(__S(156, __c19, 4)),
-          Options: __S(8, __c1, 0),
-          UsageData: S.optional(S.NullOr(__S(157, __c19, 5))),
+          ClusterVolume: S.optional(__S(1444, __c45, 4)),
+          Options: __S(3520, __c110, 0),
+          UsageData: S.optional(S.NullOr(__S(1445, __c45, 5))),
         }),
       ).annotate({ identifier: "Volume" });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -7558,7 +7685,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "DeleteConfigRequest" });
   }
 }
-function __c20(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7569,42 +7696,62 @@ function __c20(j: number): any {
           link: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/containers/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteContainerRequest" });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
           noprune: S.optional(S.Boolean.pipe(T.Query())),
-          platforms: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          platforms: S.optional(__S(2816, __c88, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/images/{name}", code: 200 })),
       ).annotate({ identifier: "DeleteImageRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() => __S(1569, __c49, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteImageResponse",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Untagged: S.optional(S.String),
           Deleted: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageDeleteResponseItem" });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
-      return S.suspend(() => __S(163, __c20, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteImageResponse",
-      });
-    case 5:
+    case 1:
+      return S.Array(__S(1568, __c49, 0));
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/networks/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteNetworkRequest" });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/nodes/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteNodeRequest" });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7613,46 +7760,46 @@ function __c20(j: number): any {
       ).annotate({ identifier: "DeletePluginRequest" });
   }
 }
-function __c21(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.String,
-          Settable: __S(4, __c0, 4),
+          Settable: __S(2816, __c88, 0),
           Source: S.String,
           Destination: S.String,
           Type: S.String,
-          Options: __S(4, __c0, 4),
+          Options: __S(2816, __c88, 0),
         }),
       ).annotate({ identifier: "PluginMount" });
     case 1:
-      return S.Array(__S(168, __c21, 0));
+      return S.Array(__S(1696, __c53, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.String,
-          Settable: __S(4, __c0, 4),
+          Settable: __S(2816, __c88, 0),
           Path: S.String,
         }),
       ).annotate({ identifier: "PluginDevice" });
     case 3:
-      return S.Array(__S(170, __c21, 2));
+      return S.Array(__S(1698, __c53, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Mounts: __S(169, __c21, 1),
-          Env: __S(4, __c0, 4),
-          Args: __S(4, __c0, 4),
-          Devices: __S(171, __c21, 3),
+          Mounts: __S(1697, __c53, 1),
+          Env: __S(2816, __c88, 0),
+          Args: __S(2816, __c88, 0),
+          Devices: __S(1699, __c53, 3),
         }),
       ).annotate({ identifier: "PluginSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Types: __S(4, __c0, 4),
+          Types: __S(2816, __c88, 0),
           Socket: S.String,
           ProtocolScheme: S.optional(S.String),
         }),
@@ -7670,77 +7817,77 @@ function __c21(j: number): any {
           Type: S.String,
         }),
       ).annotate({ identifier: "PluginConfigNetwork" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          Capabilities: __S(4, __c0, 4),
+          Capabilities: __S(2816, __c88, 0),
           AllowAllDevices: S.Boolean,
-          Devices: __S(171, __c21, 3),
+          Devices: __S(1699, __c53, 3),
         }),
       ).annotate({ identifier: "PluginConfigLinux" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.String,
-          Settable: __S(4, __c0, 4),
+          Settable: __S(2816, __c88, 0),
           Value: S.String,
         }),
       ).annotate({ identifier: "PluginEnv" });
-    case 2:
-      return S.Array(__S(177, __c22, 1));
-    case 3:
+    case 10:
+      return S.Array(__S(1705, __c53, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.String,
-          Settable: __S(4, __c0, 4),
-          Value: __S(4, __c0, 4),
+          Settable: __S(2816, __c88, 0),
+          Value: __S(2816, __c88, 0),
         }),
       ).annotate({ identifier: "PluginConfigArgs" });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          diff_ids: S.optional(__S(4, __c0, 4)),
+          diff_ids: S.optional(__S(2816, __c88, 0)),
         }),
       ).annotate({ identifier: "PluginConfigRootfs" });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           Description: S.String,
           Documentation: S.String,
-          Interface: __S(173, __c21, 5),
-          Entrypoint: __S(4, __c0, 4),
+          Interface: __S(1701, __c53, 5),
+          Entrypoint: __S(2816, __c88, 0),
           WorkDir: S.String,
-          User: S.optional(__S(174, __c21, 6)),
-          Network: __S(175, __c21, 7),
-          Linux: __S(176, __c22, 0),
+          User: S.optional(__S(1702, __c53, 6)),
+          Network: __S(1703, __c53, 7),
+          Linux: __S(1704, __c53, 8),
           PropagatedMount: S.String,
           IpcHost: S.Boolean,
           PidHost: S.Boolean,
-          Mounts: __S(169, __c21, 1),
-          Env: __S(178, __c22, 2),
-          Args: __S(179, __c22, 3),
-          rootfs: S.optional(__S(180, __c22, 4)),
+          Mounts: __S(1697, __c53, 1),
+          Env: __S(1706, __c53, 10),
+          Args: __S(1707, __c53, 11),
+          rootfs: S.optional(__S(1708, __c53, 12)),
         }),
       ).annotate({ identifier: "PluginConfig" });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           Name: S.String,
           Enabled: S.Boolean,
-          Settings: __S(172, __c21, 4),
+          Settings: __S(1700, __c53, 4),
           PluginReference: S.optional(S.String),
-          Config: __S(181, __c22, 5),
+          Config: __S(1709, __c53, 13),
         }),
       ).annotate({ identifier: "Plugin" });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -7748,7 +7895,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "DeleteSecretRequest" });
   }
 }
-function __c23(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7756,21 +7903,33 @@ function __c23(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/services/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteServiceRequest" });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/volumes/{name}", code: 200 })),
       ).annotate({ identifier: "DeleteVolumeRequest" });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/plugins/{name}/disable", code: 200 })),
       ).annotate({ identifier: "DisablePluginRequest" });
-    case 3:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -7778,7 +7937,11 @@ function __c23(j: number): any {
           Force: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/networks/{id}/disconnect", code: 200 })),
       ).annotate({ identifier: "DisconnectNetworkRequest" });
-    case 4:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7786,16 +7949,20 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DistributionInspectRequest",
       });
-    case 5:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(30, __c3, 6)));
-    case 6:
+    case 1:
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(704, __c22, 0)));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Descriptor: __S(31, __c3, 7),
-          Platforms: __S(189, __c23, 5),
+          Descriptor: __S(705, __c22, 1),
+          Platforms: __S(1889, __c59, 1),
         }),
       ).annotate({ identifier: "DistributionInspect" });
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -7804,7 +7971,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "EnablePluginRequest" });
   }
 }
-function __c24(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7813,33 +7980,37 @@ function __c24(j: number): any {
           AttachStdin: S.optional(S.Boolean),
           AttachStdout: S.optional(S.Boolean),
           AttachStderr: S.optional(S.Boolean),
-          ConsoleSize: S.optional(S.NullOr(__S(55, __c6, 7))),
+          ConsoleSize: S.optional(S.NullOr(__S(448, __c14, 0))),
           DetachKeys: S.optional(S.String),
           Tty: S.optional(S.Boolean),
-          Env: S.optional(__S(4, __c0, 4)),
-          Cmd: S.optional(__S(4, __c0, 4)),
+          Env: S.optional(__S(2816, __c88, 0)),
+          Cmd: S.optional(__S(2816, __c88, 0)),
           Privileged: S.optional(S.Boolean),
           User: S.optional(S.String),
           WorkingDir: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/exec", code: 200 })),
       ).annotate({ identifier: "ExecContainerRequest" });
-    case 1:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/exec/{id}/json", code: 200 })),
       ).annotate({ identifier: "ExecInspectRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           privileged: S.optional(S.Boolean),
           user: S.optional(S.String),
           tty: S.optional(S.Boolean),
           entrypoint: S.optional(S.String),
-          arguments: S.optional(__S(4, __c0, 4)),
+          arguments: S.optional(__S(2816, __c88, 0)),
         }),
       ).annotate({ identifier: "ProcessConfig" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           CanRemove: S.optional(S.Boolean),
@@ -7847,7 +8018,7 @@ function __c24(j: number): any {
           ID: S.optional(S.String),
           Running: S.optional(S.Boolean),
           ExitCode: S.optional(S.Number),
-          ProcessConfig: S.optional(__S(194, __c24, 2)),
+          ProcessConfig: S.optional(__S(1985, __c62, 1)),
           OpenStdin: S.optional(S.Boolean),
           OpenStderr: S.optional(S.Boolean),
           OpenStdout: S.optional(S.Boolean),
@@ -7855,7 +8026,30 @@ function __c24(j: number): any {
           Pid: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ExecInspectResponse" });
-    case 4:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          path: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/containers/{id}/archive", code: 200 })),
+      ).annotate({ identifier: "ArchiveContainerRequest" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ArchiveContainerResponse",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -7863,31 +8057,43 @@ function __c24(j: number): any {
           w: S.Number.pipe(T.Query()),
         }).pipe(T.Http({ method: "POST", uri: "/exec/{id}/resize", code: 200 })),
       ).annotate({ identifier: "ExecResizeRequest" });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           Detach: S.optional(S.Boolean),
           Tty: S.optional(S.Boolean),
-          ConsoleSize: S.optional(S.NullOr(__S(55, __c6, 7))),
+          ConsoleSize: S.optional(S.NullOr(__S(448, __c14, 0))),
         }).pipe(T.Http({ method: "POST", uri: "/exec/{id}/start", code: 200 })),
       ).annotate({ identifier: "ExecStartRequest" });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/containers/{id}/export", code: 200 })),
       ).annotate({ identifier: "ExportContainerRequest" });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          platform: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          platform: S.optional(__S(2816, __c88, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/images/{name}/get", code: 200 })),
       ).annotate({ identifier: "GetImageRequest" });
   }
 }
-function __c25(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7898,33 +8104,41 @@ function __c25(j: number): any {
         identifier: "GetPluginPrivilegesRequest",
       });
     case 1:
-      return S.suspend(() => __S(101, __c12, 5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1217, __c38, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPluginPrivilegesResponse",
       });
-    case 2:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          platform: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          type: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          platform: S.optional(__S(2816, __c88, 0).pipe(T.Query())),
+          type: S.optional(__S(2816, __c88, 0).pipe(T.Query())),
           statement: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/images/{name}/attestations", code: 200 })),
       ).annotate({ identifier: "ImageAttestationsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Descriptor: __S(31, __c3, 7),
+          Descriptor: __S(705, __c22, 1),
           PredicateType: S.String,
           Statement: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "AttestationStatement" });
-    case 4:
-      return S.Array(__S(203, __c25, 3));
-    case 5:
-      return S.suspend(() => __S(204, __c25, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(2241, __c70, 1));
+    case 3:
+      return S.suspend(() => __S(2242, __c70, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ImageAttestationsResponse",
       });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dockerfile: S.optional(S.String.pipe(T.Query())),
@@ -7957,16 +8171,20 @@ function __c25(j: number): any {
           body: S.optional(S.String.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/build", code: 200 })),
       ).annotate({ identifier: "ImageBuildRequest" });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          platform: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          names: S.optional(__S(2816, __c88, 0).pipe(T.Query())),
+          platform: S.optional(__S(2816, __c88, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/images/get", code: 200 })),
       ).annotate({ identifier: "ImageGetAllRequest" });
   }
 }
-function __c26(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7981,18 +8199,22 @@ function __c26(j: number): any {
           Id: S.String,
           Created: S.Number,
           CreatedBy: S.String,
-          Tags: __S(4, __c0, 4),
+          Tags: __S(2816, __c88, 0),
           Size: S.Number,
           Comment: S.String,
         }),
       ).annotate({ identifier: "ImageHistoryResponseItem" });
     case 2:
-      return S.Array(__S(209, __c26, 1));
+      return S.Array(__S(2337, __c73, 1));
     case 3:
-      return S.suspend(() => __S(210, __c26, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2338, __c73, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ImageHistoryResponse",
       });
-    case 4:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8000,14 +8222,72 @@ function __c26(j: number): any {
           platform: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/images/{name}/json", code: 200 })),
       ).annotate({ identifier: "ImageInspectRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          User: S.optional(S.String),
+          ExposedPorts: S.optional(S.NullOr(__S(3456, __c108, 0))),
+          Env: S.optional(__S(2816, __c88, 0)),
+          Cmd: S.optional(__S(2816, __c88, 0)),
+          Healthcheck: S.optional(__S(3424, __c107, 0)),
+          ArgsEscaped: S.optional(S.NullOr(S.Boolean)),
+          Volumes: S.optional(__S(3456, __c108, 0)),
+          WorkingDir: S.optional(S.String),
+          Entrypoint: S.optional(__S(2816, __c88, 0)),
+          OnBuild: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          StopSignal: S.optional(S.NullOr(S.String)),
+          Shell: S.optional(S.NullOr(__S(2816, __c88, 0))),
+        }),
+      ).annotate({ identifier: "ImageConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.String,
+          Layers: S.optional(__S(2816, __c88, 0)),
+        }),
+      ).annotate({ identifier: "ImageInspectRootFS" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          LastTagTime: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ImageInspectMetadata" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Descriptor: S.optional(S.NullOr(__S(705, __c22, 1))),
+          Manifests: S.optional(S.NullOr(__S(2415, __c75, 15))),
+          Identity: S.optional(S.NullOr(__S(2410, __c75, 10))),
+          RepoTags: S.optional(__S(2816, __c88, 0)),
+          RepoDigests: S.optional(__S(2816, __c88, 0)),
+          Comment: S.optional(S.NullOr(S.String)),
+          Created: S.optional(S.NullOr(S.String)),
+          Author: S.optional(S.NullOr(S.String)),
+          Config: S.optional(__S(2369, __c74, 1)),
+          Architecture: S.optional(S.String),
+          Variant: S.optional(S.NullOr(S.String)),
+          Os: S.optional(S.String),
+          OsVersion: S.optional(S.NullOr(S.String)),
+          Size: S.optional(S.Number),
+          GraphDriver: S.optional(S.NullOr(__S(736, __c23, 0))),
+          RootFS: S.optional(__S(2370, __c74, 2)),
+          Metadata: S.optional(__S(2371, __c74, 3)),
+        }),
+      ).annotate({ identifier: "ImageInspect" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Total: S.Number,
           Content: S.Number,
         }),
       ).annotate({ identifier: "ImageManifestSummarySize" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
@@ -8015,13 +8295,9 @@ function __c26(j: number): any {
           Timestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignatureTimestamp" });
-    case 7:
-      return S.Array(__S(214, __c26, 6));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2401, __c75, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           CertificateIssuer: S.optional(S.String),
@@ -8043,51 +8319,47 @@ function __c27(j: number): any {
           SourceRepositoryVisibilityAtSigning: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignerIdentity" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Timestamps: S.optional(__S(215, __c26, 7)),
+          Timestamps: S.optional(__S(2402, __c75, 2)),
           KnownSigner: S.optional(S.String),
           DockerReference: S.optional(S.String),
-          Signer: S.optional(__S(216, __c27, 0)),
+          Signer: S.optional(__S(2403, __c75, 3)),
           SignatureType: S.optional(S.String),
           Error: S.optional(S.String),
-          Warnings: S.optional(__S(4, __c0, 4)),
+          Warnings: S.optional(__S(2816, __c88, 0)),
         }),
       ).annotate({ identifier: "SignatureIdentity" });
-    case 2:
-      return S.Array(__S(217, __c27, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(2404, __c75, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           Repository: S.optional(S.String),
         }),
       ).annotate({ identifier: "PullIdentity" });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(2406, __c75, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           Ref: S.optional(S.String),
           CreatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildIdentity" });
-    case 6:
-      return S.Array(__S(221, __c27, 5));
-    case 7:
+    case 9:
+      return S.Array(__S(2408, __c75, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          Signature: S.optional(__S(218, __c27, 2)),
-          Pull: S.optional(__S(220, __c27, 4)),
-          Build: S.optional(__S(222, __c27, 6)),
+          Signature: S.optional(__S(2405, __c75, 5)),
+          Pull: S.optional(__S(2407, __c75, 7)),
+          Build: S.optional(__S(2409, __c75, 9)),
         }),
       ).annotate({ identifier: "Identity" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           Unpacked: S.Number,
@@ -8095,18 +8367,18 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ImageManifestSummaryImageDataSize",
       });
-    case 1:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          Platform: S.NullOr(__S(30, __c3, 6)),
-          Identity: S.optional(S.NullOr(__S(223, __c27, 7))),
-          Containers: __S(4, __c0, 4),
-          Size: __S(224, __c28, 0),
+          Platform: S.NullOr(__S(704, __c22, 0)),
+          Identity: S.optional(S.NullOr(__S(2410, __c75, 10))),
+          Containers: __S(2816, __c88, 0),
+          Size: __S(2411, __c75, 11),
         }),
       ).annotate({
         identifier: "ImageManifestSummaryImageData",
       });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           For: S.String,
@@ -8114,100 +8386,70 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ImageManifestSummaryAttestationData",
       });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           ID: S.String,
-          Descriptor: __S(31, __c3, 7),
+          Descriptor: __S(705, __c22, 1),
           Available: S.Boolean,
-          Size: __S(213, __c26, 5),
+          Size: __S(2400, __c75, 0),
           Kind: S.String,
-          ImageData: S.optional(S.NullOr(__S(225, __c28, 1))),
-          AttestationData: S.optional(S.NullOr(__S(226, __c28, 2))),
+          ImageData: S.optional(S.NullOr(__S(2412, __c75, 12))),
+          AttestationData: S.optional(S.NullOr(__S(2413, __c75, 13))),
         }),
       ).annotate({ identifier: "ImageManifestSummary" });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          User: S.optional(S.String),
-          ExposedPorts: S.optional(S.NullOr(__S(6, __c0, 6))),
-          Env: S.optional(__S(4, __c0, 4)),
-          Cmd: S.optional(__S(4, __c0, 4)),
-          Healthcheck: S.optional(__S(7, __c0, 7)),
-          ArgsEscaped: S.optional(S.NullOr(S.Boolean)),
-          Volumes: S.optional(__S(6, __c0, 6)),
-          WorkingDir: S.optional(S.String),
-          Entrypoint: S.optional(__S(4, __c0, 4)),
-          OnBuild: S.optional(S.NullOr(__S(4, __c0, 4))),
-          Labels: S.optional(__S(8, __c1, 0)),
-          StopSignal: S.optional(S.NullOr(S.String)),
-          Shell: S.optional(S.NullOr(__S(4, __c0, 4))),
-        }),
-      ).annotate({ identifier: "ImageConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Type: S.String,
-          Layers: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ImageInspectRootFS" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          LastTagTime: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ImageInspectMetadata" });
+    case 15:
+      return S.Array(__S(2414, __c75, 14));
   }
 }
-function __c29(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Id: S.optional(S.String),
-          Descriptor: S.optional(S.NullOr(__S(31, __c3, 7))),
-          Manifests: S.optional(S.NullOr(__S(228, __c28, 4))),
-          Identity: S.optional(S.NullOr(__S(223, __c27, 7))),
-          RepoTags: S.optional(__S(4, __c0, 4)),
-          RepoDigests: S.optional(__S(4, __c0, 4)),
-          Comment: S.optional(S.NullOr(S.String)),
-          Created: S.optional(S.NullOr(S.String)),
-          Author: S.optional(S.NullOr(S.String)),
-          Config: S.optional(__S(229, __c28, 5)),
-          Architecture: S.optional(S.String),
-          Variant: S.optional(S.NullOr(S.String)),
-          Os: S.optional(S.String),
-          OsVersion: S.optional(S.NullOr(S.String)),
-          Size: S.optional(S.Number),
-          GraphDriver: S.optional(S.NullOr(__S(57, __c7, 1))),
-          RootFS: S.optional(__S(230, __c28, 6)),
-          Metadata: S.optional(__S(231, __c28, 7)),
-        }),
-      ).annotate({ identifier: "ImageInspect" });
-    case 1:
+          id: S.String.pipe(T.Label()),
+          detachKeys: S.optional(S.String.pipe(T.Query())),
+          logs: S.optional(S.Boolean.pipe(T.Query())),
+          stream: S.optional(S.Boolean.pipe(T.Query())),
+          stdin: S.optional(S.Boolean.pipe(T.Query())),
+          stdout: S.optional(S.Boolean.pipe(T.Query())),
+          stderr: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/attach", code: 200 })),
+      ).annotate({ identifier: "AttachContainerRequest" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           quiet: S.optional(S.Boolean.pipe(T.Query())),
-          platform: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          platform: S.optional(__S(2816, __c88, 0).pipe(T.Query())),
           body: S.optional(S.String.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/images/load", code: 200 })),
       ).annotate({ identifier: "ImageLoadRequest" });
-    case 2:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/images/prune", code: 200 })),
       ).annotate({ identifier: "ImagePruneRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ImagesDeleted: S.optional(__S(163, __c20, 3)),
+          ImagesDeleted: S.optional(__S(1569, __c49, 1)),
           SpaceReclaimed: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ImagePruneResponse" });
-    case 4:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8216,7 +8458,11 @@ function __c29(j: number): any {
           xRegistryAuth: S.String.pipe(T.Header("X-Registry-Auth")),
         }).pipe(T.Http({ method: "POST", uri: "/images/{name}/push", code: 200 })),
       ).annotate({ identifier: "ImagePushRequest" });
-    case 5:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -8224,17 +8470,25 @@ function __c29(j: number): any {
           tag: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/images/{name}/tag", code: 200 })),
       ).annotate({ identifier: "ImageTagRequest" });
-    case 6:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ListenAddr: S.String,
           AdvertiseAddr: S.optional(S.String),
           DataPathAddr: S.optional(S.String),
-          RemoteAddrs: __S(4, __c0, 4),
+          RemoteAddrs: __S(2816, __c88, 0),
           JoinToken: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/swarm/join", code: 200 })),
       ).annotate({ identifier: "JoinSwarmRequest" });
-    case 7:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -8243,7 +8497,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "KillContainerRequest" });
   }
 }
-function __c30(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8251,19 +8505,27 @@ function __c30(j: number): any {
           force: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/swarm/leave", code: 200 })),
       ).annotate({ identifier: "LeaveSwarmRequest" });
-    case 1:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/configs", code: 200 })),
       ).annotate({ identifier: "ListConfigRequest" });
+    case 1:
+      return S.Array(__S(3969, __c124, 1));
     case 2:
-      return S.Array(__S(15, __c1, 7));
-    case 3:
-      return S.suspend(() => __S(242, __c30, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2689, __c84, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListConfigResponse",
       });
-    case 4:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           all: S.optional(S.Boolean.pipe(T.Query())),
@@ -8272,7 +8534,7 @@ function __c30(j: number): any {
           filters: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/containers/json", code: 200 })),
       ).annotate({ identifier: "ListContainerRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           IP: S.optional(S.String),
@@ -8281,65 +8543,65 @@ function __c30(j: number): any {
           Type: S.String,
         }),
       ).annotate({ identifier: "PortSummary" });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2721, __c85, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NetworkMode: S.optional(S.String),
-          Annotations: S.optional(S.NullOr(__S(8, __c1, 0))),
+          Annotations: S.optional(S.NullOr(__S(3520, __c110, 0))),
         }),
       ).annotate({
         identifier: "ContainerSummaryHostConfig",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          Networks: S.optional(__S(64, __c8, 0)),
+          Networks: S.optional(__S(672, __c21, 0)),
         }),
       ).annotate({
         identifier: "ContainerSummaryNetworkSettings",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
           FailingStreak: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContainerSummaryHealth" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          Names: S.optional(__S(4, __c0, 4)),
+          Names: S.optional(__S(2816, __c88, 0)),
           Image: S.optional(S.String),
           ImageID: S.optional(S.String),
-          ImageManifestDescriptor: S.optional(S.NullOr(__S(31, __c3, 7))),
+          ImageManifestDescriptor: S.optional(S.NullOr(__S(705, __c22, 1))),
           Command: S.optional(S.String),
           Created: S.optional(S.Number),
-          Ports: S.optional(__S(246, __c30, 6)),
+          Ports: S.optional(__S(2722, __c85, 2)),
           SizeRw: S.optional(S.NullOr(S.Number)),
           SizeRootFs: S.optional(S.NullOr(S.Number)),
-          Labels: S.optional(__S(8, __c1, 0)),
+          Labels: S.optional(__S(3520, __c110, 0)),
           State: S.optional(S.String),
           Status: S.optional(S.String),
-          HostConfig: S.optional(__S(247, __c30, 7)),
-          NetworkSettings: S.optional(__S(248, __c31, 0)),
-          Mounts: S.optional(__S(62, __c7, 6)),
-          Health: S.optional(__S(249, __c31, 1)),
+          HostConfig: S.optional(__S(2723, __c85, 3)),
+          NetworkSettings: S.optional(__S(2724, __c85, 4)),
+          Mounts: S.optional(__S(769, __c24, 1)),
+          Health: S.optional(__S(2725, __c85, 5)),
         }),
       ).annotate({ identifier: "ContainerSummary" });
-    case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
-      return S.suspend(() => __S(251, __c31, 3).pipe(T.RawResponseRoot())).annotate({
+    case 7:
+      return S.Array(__S(2726, __c85, 6));
+    case 8:
+      return S.suspend(() => __S(2727, __c85, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListContainerResponse",
       });
-    case 5:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           all: S.optional(S.Boolean.pipe(T.Query())),
@@ -8350,48 +8612,89 @@ function __c31(j: number): any {
           identity: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/images/json", code: 200 })),
       ).annotate({ identifier: "ListImageRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
           ParentId: S.String,
-          RepoTags: __S(4, __c0, 4),
-          RepoDigests: __S(4, __c0, 4),
+          RepoTags: __S(2816, __c88, 0),
+          RepoDigests: __S(2816, __c88, 0),
           Created: S.Number,
           Size: S.Number,
           SharedSize: S.Number,
-          Labels: __S(8, __c1, 0),
+          Labels: __S(3520, __c110, 0),
           Containers: S.Number,
-          Manifests: S.optional(__S(228, __c28, 4)),
-          Descriptor: S.optional(S.NullOr(__S(31, __c3, 7))),
+          Manifests: S.optional(__S(2415, __c75, 15)),
+          Descriptor: S.optional(S.NullOr(__S(705, __c22, 1))),
         }),
       ).annotate({ identifier: "ImageSummary" });
-    case 7:
-      return S.Array(__S(254, __c31, 6));
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(255, __c31, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(2753, __c86, 1));
+    case 3:
+      return S.suspend(() => __S(2754, __c86, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListImageResponse",
       });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reserved_space: S.optional(S.Number.pipe(T.Query("reserved-space"))),
+          max_used_space: S.optional(S.Number.pipe(T.Query("max-used-space"))),
+          min_free_space: S.optional(S.Number.pipe(T.Query("min-free-space"))),
+          all: S.optional(S.Boolean.pipe(T.Query())),
+          filters: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/build/prune", code: 200 })),
+      ).annotate({ identifier: "BuildPruneRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CachesDeleted: S.optional(__S(2816, __c88, 0)),
+          SpaceReclaimed: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BuildPruneResponse" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/networks", code: 200 })),
       ).annotate({ identifier: "ListNetworkRequest" });
+    case 1:
+      return S.Array(__S(2912, __c91, 0));
     case 2:
+      return S.suspend(() => __S(2849, __c89, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListNetworkResponse",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           IP: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeerInfo" });
-    case 3:
-      return S.Array(__S(258, __c32, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(2880, __c90, 0));
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -8401,38 +8704,42 @@ function __c32(j: number): any {
           Driver: S.optional(S.String),
           EnableIPv4: S.optional(S.Boolean),
           EnableIPv6: S.optional(S.Boolean),
-          IPAM: S.optional(__S(95, __c11, 7)),
+          IPAM: S.optional(__S(1091, __c34, 3)),
           Internal: S.optional(S.Boolean),
           Attachable: S.optional(S.Boolean),
           Ingress: S.optional(S.Boolean),
-          ConfigFrom: S.optional(__S(92, __c11, 4)),
+          ConfigFrom: S.optional(__S(1088, __c34, 0)),
           ConfigOnly: S.optional(S.Boolean),
-          Options: S.optional(__S(8, __c1, 0)),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Peers: S.optional(__S(259, __c32, 3)),
+          Options: S.optional(__S(3520, __c110, 0)),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Peers: S.optional(__S(2881, __c90, 1)),
         }),
       ).annotate({ identifier: "Network" });
-    case 5:
-      return S.Array(__S(260, __c32, 4));
-    case 6:
-      return S.suspend(() => __S(261, __c32, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListNetworkResponse",
-      });
-    case 7:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/nodes", code: 200 })),
       ).annotate({ identifier: "ListNodeRequest" });
+    case 1:
+      return S.Array(__S(2983, __c93, 7));
+    case 2:
+      return S.suspend(() => __S(2945, __c92, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListNodeResponse",
+      });
   }
 }
-function __c33(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
+          Labels: S.optional(__S(3520, __c110, 0)),
           Role: S.optional(S.String),
           Availability: S.optional(S.String),
         }),
@@ -8447,34 +8754,26 @@ function __c33(j: number): any {
         identifier: "EngineDescriptionPluginsItem",
       });
     case 2:
-      return S.Array(__S(265, __c33, 1));
+      return S.Array(__S(2977, __c93, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           EngineVersion: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Plugins: S.optional(__S(266, __c33, 2)),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Plugins: S.optional(__S(2978, __c93, 2)),
         }),
       ).annotate({ identifier: "EngineDescription" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          TrustRoot: S.optional(S.String),
-          CertIssuerSubject: S.optional(S.String),
-          CertIssuerPublicKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TLSInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           Hostname: S.optional(S.String),
-          Platform: S.optional(__S(127, __c15, 7)),
-          Resources: S.optional(__S(121, __c15, 1)),
-          Engine: S.optional(__S(267, __c33, 3)),
-          TLSInfo: S.optional(__S(268, __c33, 4)),
+          Platform: S.optional(__S(1281, __c40, 1)),
+          Resources: S.optional(__S(1280, __c40, 0)),
+          Engine: S.optional(__S(2979, __c93, 3)),
+          TLSInfo: S.optional(__S(3008, __c94, 0)),
         }),
       ).annotate({ identifier: "NodeDescription" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           State: S.optional(S.String),
@@ -8482,7 +8781,7 @@ function __c33(j: number): any {
           Addr: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeStatus" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           Leader: S.optional(S.Boolean),
@@ -8490,85 +8789,109 @@ function __c33(j: number): any {
           Addr: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagerStatus" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ID: S.optional(S.String),
+          Version: S.optional(__S(3936, __c123, 0)),
+          CreatedAt: S.optional(S.String),
+          UpdatedAt: S.optional(S.String),
+          Spec: S.optional(__S(2976, __c93, 0)),
+          Description: S.optional(__S(2980, __c93, 4)),
+          Status: S.optional(__S(2981, __c93, 5)),
+          ManagerStatus: S.optional(S.NullOr(__S(2982, __c93, 6))),
+        }),
+      ).annotate({ identifier: "Node" });
   }
 }
-function __c34(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ID: S.optional(S.String),
-          Version: S.optional(__S(12, __c1, 4)),
-          CreatedAt: S.optional(S.String),
-          UpdatedAt: S.optional(S.String),
-          Spec: S.optional(__S(264, __c33, 0)),
-          Description: S.optional(__S(269, __c33, 5)),
-          Status: S.optional(__S(270, __c33, 6)),
-          ManagerStatus: S.optional(S.NullOr(__S(271, __c33, 7))),
+          TrustRoot: S.optional(S.String),
+          CertIssuerSubject: S.optional(S.String),
+          CertIssuerPublicKey: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Node" });
-    case 1:
-      return S.Array(__S(272, __c34, 0));
-    case 2:
-      return S.suspend(() => __S(273, __c34, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListNodeResponse",
-      });
-    case 3:
+      ).annotate({ identifier: "TLSInfo" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/plugins", code: 200 })),
       ).annotate({ identifier: "ListPluginRequest" });
-    case 4:
-      return S.Array(__S(182, __c22, 6));
-    case 5:
-      return S.suspend(() => __S(276, __c34, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(1710, __c53, 14));
+    case 2:
+      return S.suspend(() => __S(3041, __c95, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPluginResponse",
       });
-    case 6:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/secrets", code: 200 })),
       ).annotate({ identifier: "ListSecretRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Data: S.optional(S.String),
-          Driver: S.optional(__S(13, __c1, 5)),
-          Templating: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "SecretSpec" });
+    case 1:
+      return S.Array(__S(3105, __c97, 1));
+    case 2:
+      return S.suspend(() => __S(3073, __c96, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListSecretResponse",
+      });
   }
 }
-function __c35(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          Name: S.optional(S.String),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Data: S.optional(S.String),
+          Driver: S.optional(__S(3904, __c122, 0)),
+          Templating: S.optional(__S(3904, __c122, 0)),
+        }),
+      ).annotate({ identifier: "SecretSpec" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           ID: S.optional(S.String),
-          Version: S.optional(__S(12, __c1, 4)),
+          Version: S.optional(__S(3936, __c123, 0)),
           CreatedAt: S.optional(S.String),
           UpdatedAt: S.optional(S.String),
-          Spec: S.optional(__S(279, __c34, 7)),
+          Spec: S.optional(__S(3104, __c97, 0)),
         }),
       ).annotate({ identifier: "Secret" });
-    case 1:
-      return S.Array(__S(280, __c35, 0));
-    case 2:
-      return S.suspend(() => __S(281, __c35, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListSecretResponse",
-      });
-    case 3:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(S.String.pipe(T.Query())),
           status: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/services", code: 200 })),
       ).annotate({ identifier: "ListServiceRequest" });
-    case 4:
+    case 1:
+      return S.Array(__S(3176, __c99, 8));
+    case 2:
+      return S.suspend(() => __S(3137, __c98, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListServiceResponse",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Parallelism: S.optional(S.Number),
@@ -8579,20 +8902,20 @@ function __c35(j: number): any {
           Order: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceSpecUpdateConfig" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          TaskTemplate: S.optional(__S(133, __c16, 5)),
-          Mode: S.optional(__S(136, __c17, 0)),
-          UpdateConfig: S.optional(__S(284, __c35, 4)),
-          RollbackConfig: S.optional(__S(137, __c17, 1)),
-          Networks: S.optional(__S(131, __c16, 3)),
-          EndpointSpec: S.optional(__S(140, __c17, 4)),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          TaskTemplate: S.optional(__S(1337, __c41, 25)),
+          Mode: S.optional(__S(1346, __c42, 2)),
+          UpdateConfig: S.optional(__S(3168, __c99, 0)),
+          RollbackConfig: S.optional(__S(1347, __c42, 3)),
+          Networks: S.optional(__S(1335, __c41, 23)),
+          EndpointSpec: S.optional(__S(1348, __c42, 4)),
         }),
       ).annotate({ identifier: "ServiceSpec" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           NetworkID: S.optional(S.String),
@@ -8601,21 +8924,17 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ServiceEndpointVirtualIPsItem",
       });
-    case 7:
-      return S.Array(__S(286, __c35, 6));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(3170, __c99, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          Spec: S.optional(__S(140, __c17, 4)),
-          Ports: S.optional(__S(139, __c17, 3)),
-          VirtualIPs: S.optional(__S(287, __c35, 7)),
+          Spec: S.optional(__S(1348, __c42, 4)),
+          Ports: S.optional(__S(1339, __c41, 27)),
+          VirtualIPs: S.optional(__S(3171, __c99, 3)),
         }),
       ).annotate({ identifier: "ServiceEndpoint" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           State: S.optional(S.String),
@@ -8624,7 +8943,7 @@ function __c36(j: number): any {
           Message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceUpdateStatus" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           RunningTasks: S.optional(S.Number),
@@ -8632,42 +8951,46 @@ function __c36(j: number): any {
           CompletedTasks: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ServiceServiceStatus" });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          JobIteration: S.optional(__S(12, __c1, 4)),
+          JobIteration: S.optional(__S(3936, __c123, 0)),
           LastExecution: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceJobStatus" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           ID: S.optional(S.String),
-          Version: S.optional(__S(12, __c1, 4)),
+          Version: S.optional(__S(3936, __c123, 0)),
           CreatedAt: S.optional(S.String),
           UpdatedAt: S.optional(S.String),
-          Spec: S.optional(__S(285, __c35, 5)),
-          Endpoint: S.optional(__S(288, __c36, 0)),
-          UpdateStatus: S.optional(__S(289, __c36, 1)),
-          ServiceStatus: S.optional(__S(290, __c36, 2)),
-          JobStatus: S.optional(__S(291, __c36, 3)),
+          Spec: S.optional(__S(3169, __c99, 1)),
+          Endpoint: S.optional(__S(3172, __c99, 4)),
+          UpdateStatus: S.optional(__S(3173, __c99, 5)),
+          ServiceStatus: S.optional(__S(3174, __c99, 6)),
+          JobStatus: S.optional(__S(3175, __c99, 7)),
         }),
       ).annotate({ identifier: "Service" });
-    case 5:
-      return S.Array(__S(292, __c36, 4));
-    case 6:
-      return S.suspend(() => __S(293, __c36, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListServiceResponse",
-      });
-    case 7:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/tasks", code: 200 })),
       ).annotate({ identifier: "ListTaskRequest" });
+    case 1:
+      return S.Array(__S(3237, __c101, 5));
+    case 2:
+      return S.suspend(() => __S(3201, __c100, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListTaskResponse",
+      });
   }
 }
-function __c37(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8680,7 +9003,7 @@ function __c37(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Ports: S.optional(__S(139, __c17, 3)),
+          Ports: S.optional(__S(1339, __c41, 27)),
         }),
       ).annotate({ identifier: "PortStatus" });
     case 2:
@@ -8690,48 +9013,42 @@ function __c37(j: number): any {
           State: S.optional(S.String),
           Message: S.optional(S.String),
           Err: S.optional(S.String),
-          ContainerStatus: S.optional(__S(296, __c37, 0)),
-          PortStatus: S.optional(__S(297, __c37, 1)),
+          ContainerStatus: S.optional(__S(3232, __c101, 0)),
+          PortStatus: S.optional(__S(3233, __c101, 1)),
         }),
       ).annotate({ identifier: "TaskStatus" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Network: S.optional(__S(260, __c32, 4)),
-          Addresses: S.optional(__S(4, __c0, 4)),
+          Network: S.optional(__S(2912, __c91, 0)),
+          Addresses: S.optional(__S(2816, __c88, 0)),
         }),
       ).annotate({ identifier: "NetworkAttachment" });
     case 4:
-      return S.Array(__S(299, __c37, 3));
+      return S.Array(__S(3235, __c101, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           ID: S.optional(S.String),
-          Version: S.optional(__S(12, __c1, 4)),
+          Version: S.optional(__S(3936, __c123, 0)),
           CreatedAt: S.optional(S.String),
           UpdatedAt: S.optional(S.String),
           Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Spec: S.optional(__S(133, __c16, 5)),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Spec: S.optional(__S(1337, __c41, 25)),
           ServiceID: S.optional(S.String),
           Slot: S.optional(S.Number),
           NodeID: S.optional(S.String),
-          AssignedGenericResources: S.optional(__S(120, __c15, 0)),
-          Status: S.optional(__S(298, __c37, 2)),
+          AssignedGenericResources: S.optional(__S(1251, __c39, 3)),
+          Status: S.optional(__S(3234, __c101, 2)),
           DesiredState: S.optional(S.String),
-          JobIteration: S.optional(__S(12, __c1, 4)),
-          NetworksAttachments: S.optional(__S(300, __c37, 4)),
+          JobIteration: S.optional(__S(3936, __c123, 0)),
+          NetworksAttachments: S.optional(__S(3236, __c101, 4)),
         }),
       ).annotate({ identifier: "Task" });
-    case 6:
-      return S.Array(__S(301, __c37, 5));
-    case 7:
-      return S.suspend(() => __S(302, __c37, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListTaskResponse",
-      });
   }
 }
-function __c38(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8740,15 +9057,19 @@ function __c38(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/volumes", code: 200 })),
       ).annotate({ identifier: "ListVolumeRequest" });
     case 1:
-      return S.Array(__S(158, __c19, 6));
+      return S.Array(__S(1446, __c45, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Volumes: S.optional(__S(305, __c38, 1)),
-          Warnings: S.optional(__S(4, __c0, 4)),
+          Volumes: S.optional(__S(3265, __c102, 1)),
+          Warnings: S.optional(__S(2816, __c88, 0)),
         }),
       ).annotate({ identifier: "VolumeListResponse" });
-    case 3:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -8756,7 +9077,7 @@ function __c38(j: number): any {
           scope: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/networks/{id}", code: 200 })),
       ).annotate({ identifier: "NetworkInspectRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -8766,34 +9087,30 @@ function __c38(j: number): any {
           IPv6Address: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointResource" });
-    case 5:
-      return S.Record(S.String, __S(308, __c38, 4));
-    case 6:
+    case 2:
+      return S.Record(S.String, __S(3297, __c103, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           IPsInUse: S.optional(S.Number),
           DynamicIPsAvailable: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SubnetStatus" });
-    case 7:
-      return S.Record(S.String, __S(310, __c38, 6));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Record(S.String, __S(3299, __c103, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          Subnets: S.optional(__S(311, __c38, 7)),
+          Subnets: S.optional(__S(3300, __c103, 4)),
         }),
       ).annotate({ identifier: "IPAMStatus" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          IPAM: S.optional(__S(312, __c39, 0)),
+          IPAM: S.optional(__S(3301, __c103, 5)),
         }),
       ).annotate({ identifier: "NetworkStatus" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -8803,51 +9120,144 @@ function __c39(j: number): any {
           Driver: S.optional(S.String),
           EnableIPv4: S.optional(S.Boolean),
           EnableIPv6: S.optional(S.Boolean),
-          IPAM: S.optional(__S(95, __c11, 7)),
+          IPAM: S.optional(__S(1091, __c34, 3)),
           Internal: S.optional(S.Boolean),
           Attachable: S.optional(S.Boolean),
           Ingress: S.optional(S.Boolean),
-          ConfigFrom: S.optional(__S(92, __c11, 4)),
+          ConfigFrom: S.optional(__S(1088, __c34, 0)),
           ConfigOnly: S.optional(S.Boolean),
-          Options: S.optional(__S(8, __c1, 0)),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Peers: S.optional(__S(259, __c32, 3)),
-          Containers: S.optional(__S(309, __c38, 5)),
-          Services: S.optional(__S(6, __c0, 6)),
-          Status: S.optional(__S(313, __c39, 1)),
+          Options: S.optional(__S(3520, __c110, 0)),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Peers: S.optional(__S(2881, __c90, 1)),
+          Containers: S.optional(__S(3298, __c103, 2)),
+          Services: S.optional(__S(3456, __c108, 0)),
+          Status: S.optional(__S(3302, __c103, 6)),
         }),
       ).annotate({ identifier: "NetworkInspectResponse" });
-    case 3:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/networks/prune", code: 200 })),
       ).annotate({ identifier: "NetworkPruneRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          NetworksDeleted: S.optional(__S(4, __c0, 4)),
+          NetworksDeleted: S.optional(__S(2816, __c88, 0)),
         }),
       ).annotate({ identifier: "NetworkPruneResponse" });
-    case 5:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/nodes/{id}", code: 200 })),
       ).annotate({ identifier: "NodeInspectRequest" });
-    case 6:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          container: S.optional(S.String.pipe(T.Query())),
+          repo: S.optional(S.String.pipe(T.Query())),
+          tag: S.optional(S.String.pipe(T.Query())),
+          comment: S.optional(S.String.pipe(T.Query())),
+          author: S.optional(S.String.pipe(T.Query())),
+          pause: S.optional(S.Boolean.pipe(T.Query())),
+          changes: S.optional(S.String.pipe(T.Query())),
+          Hostname: S.optional(S.String),
+          Domainname: S.optional(S.String),
+          User: S.optional(S.String),
+          AttachStdin: S.optional(S.Boolean),
+          AttachStdout: S.optional(S.Boolean),
+          AttachStderr: S.optional(S.Boolean),
+          ExposedPorts: S.optional(S.NullOr(__S(3456, __c108, 0))),
+          Tty: S.optional(S.Boolean),
+          OpenStdin: S.optional(S.Boolean),
+          StdinOnce: S.optional(S.Boolean),
+          Env: S.optional(__S(2816, __c88, 0)),
+          Cmd: S.optional(__S(2816, __c88, 0)),
+          Healthcheck: S.optional(__S(3424, __c107, 0)),
+          ArgsEscaped: S.optional(S.NullOr(S.Boolean)),
+          Image: S.optional(S.String),
+          Volumes: S.optional(__S(3456, __c108, 0)),
+          WorkingDir: S.optional(S.String),
+          Entrypoint: S.optional(__S(2816, __c88, 0)),
+          NetworkDisabled: S.optional(S.NullOr(S.Boolean)),
+          OnBuild: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          StopSignal: S.optional(S.NullOr(S.String)),
+          StopTimeout: S.optional(S.NullOr(S.Number)),
+          Shell: S.optional(S.NullOr(__S(2816, __c88, 0))),
+        }).pipe(T.Http({ method: "POST", uri: "/commit", code: 200 })),
+      ).annotate({ identifier: "CommitImageRequest" });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Test: S.optional(__S(2816, __c88, 0)),
+          Interval: S.optional(S.Number),
+          Timeout: S.optional(S.Number),
+          Retries: S.optional(S.Number),
+          StartPeriod: S.optional(S.Number),
+          StartInterval: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HealthConfig" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+        }),
+      ).annotate({ identifier: "IDResponse" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/pause", code: 200 })),
       ).annotate({ identifier: "PauseContainerRequest" });
-    case 7:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/_ping", code: 200 })),
       ).annotate({ identifier: "PingSystemRequest" });
   }
 }
-function __c40(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8855,31 +9265,47 @@ function __c40(j: number): any {
           name: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/plugins/{name}/json", code: 200 })),
       ).annotate({ identifier: "PluginInspectRequest" });
-    case 1:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           remote: S.String.pipe(T.Query()),
           name: S.optional(S.String.pipe(T.Query())),
           xRegistryAuth: S.optional(S.String.pipe(T.Header("X-Registry-Auth"))),
-          body: S.optional(__S(101, __c12, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1217, __c38, 1).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/plugins/pull", code: 200 })),
       ).annotate({ identifier: "PluginPullRequest" });
-    case 2:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/plugins/{name}/push", code: 200 })),
       ).annotate({ identifier: "PluginPushRequest" });
-    case 3:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           remote: S.String.pipe(T.Query()),
           xRegistryAuth: S.optional(S.String.pipe(T.Header("X-Registry-Auth"))),
-          body: S.optional(__S(101, __c12, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1217, __c38, 1).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/plugins/{name}/upgrade", code: 200 })),
       ).annotate({ identifier: "PluginUpgradeRequest" });
-    case 4:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -8891,14 +9317,22 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "PutContainerArchiveRequest",
       });
-    case 5:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/rename", code: 200 })),
       ).annotate({ identifier: "RenameContainerRequest" });
-    case 6:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -8906,7 +9340,11 @@ function __c40(j: number): any {
           w: S.Number.pipe(T.Query()),
         }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/resize", code: 200 })),
       ).annotate({ identifier: "ResizeContainerRequest" });
-    case 7:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -8916,7 +9354,61 @@ function __c40(j: number): any {
       ).annotate({ identifier: "RestartContainerRequest" });
   }
 }
-function __c41(j: number): any {
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/configs/{id}", code: 200 })),
+      ).annotate({ identifier: "ConfigInspectRequest" });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Options: S.optional(__S(3520, __c110, 0)),
+        }),
+      ).annotate({ identifier: "Driver" });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Index: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ObjectVersion" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Data: S.optional(S.String),
+          Templating: S.optional(__S(3904, __c122, 0)),
+        }),
+      ).annotate({ identifier: "ConfigSpec" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ID: S.optional(S.String),
+          Version: S.optional(__S(3936, __c123, 0)),
+          CreatedAt: S.optional(S.String),
+          UpdatedAt: S.optional(S.String),
+          Spec: S.optional(__S(3968, __c124, 0)),
+        }),
+      ).annotate({ identifier: "Config" });
+  }
+}
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8939,25 +9431,37 @@ function __c41(j: number): any {
         identifier: "SearchImageResponseBodyItem",
       });
     case 2:
-      return S.Array(__S(329, __c41, 1));
+      return S.Array(__S(4001, __c125, 1));
     case 3:
-      return S.suspend(() => __S(330, __c41, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(4002, __c125, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "SearchImageResponse",
       });
-    case 4:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/secrets/{id}", code: 200 })),
       ).annotate({ identifier: "SecretInspectRequest" });
-    case 5:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           insertDefaults: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/services/{id}", code: 200 })),
       ).annotate({ identifier: "ServiceInspectRequest" });
-    case 6:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -8970,29 +9474,41 @@ function __c41(j: number): any {
           tail: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/services/{id}/logs", code: 200 })),
       ).annotate({ identifier: "ServiceLogsRequest" });
-    case 7:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/session", code: 200 })),
       ).annotate({ identifier: "SessionRequest" });
   }
 }
-function __c42(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2816, __c88, 0).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/plugins/{name}/set", code: 200 })),
       ).annotate({ identifier: "SetPluginRequest" });
-    case 1:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           detachKeys: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/start", code: 200 })),
       ).annotate({ identifier: "StartContainerRequest" });
-    case 2:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -9000,13 +9516,80 @@ function __c42(j: number): any {
           t: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/stop", code: 200 })),
       ).annotate({ identifier: "StopContainerRequest" });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ListenAddr: S.optional(S.String),
+          AdvertiseAddr: S.optional(S.String),
+          DataPathAddr: S.optional(S.String),
+          DataPathPort: S.optional(S.Number),
+          DefaultAddrPool: S.optional(__S(2816, __c88, 0)),
+          ForceNewCluster: S.optional(S.Boolean),
+          SubnetSize: S.optional(S.Number),
+          Spec: S.optional(__S(4292, __c134, 4)),
+        }).pipe(T.Http({ method: "POST", uri: "/swarm/init", code: 200 })),
+      ).annotate({ identifier: "SwarmInitRequest" });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Protocol: S.optional(S.String),
+          URL: S.optional(S.String),
+          Options: S.optional(__S(3520, __c110, 0)),
+          CACert: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SwarmSpecCAConfigExternalCAsItem",
+      });
+    case 1:
+      return S.Array(__S(4288, __c134, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          NodeCertExpiry: S.optional(S.Number),
+          ExternalCAs: S.optional(__S(4289, __c134, 1)),
+          SigningCACert: S.optional(S.String),
+          SigningCAKey: S.optional(S.String),
+          ForceRotate: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SwarmSpecCAConfig" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          LogDriver: S.optional(__S(576, __c18, 0)),
+        }),
+      ).annotate({ identifier: "SwarmSpecTaskDefaults" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Labels: S.optional(__S(3520, __c110, 0)),
+          Orchestration: S.optional(S.NullOr(__S(4320, __c135, 0))),
+          Raft: S.optional(__S(4321, __c135, 1)),
+          Dispatcher: S.optional(S.NullOr(__S(4322, __c135, 2))),
+          CAConfig: S.optional(S.NullOr(__S(4290, __c134, 2))),
+          EncryptionConfig: S.optional(__S(4323, __c135, 3)),
+          TaskDefaults: S.optional(__S(4291, __c134, 3)),
+        }),
+      ).annotate({ identifier: "SwarmSpec" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TaskHistoryRetentionLimit: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SwarmSpecOrchestration" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SnapshotInterval: S.optional(S.Number),
@@ -9016,40 +9599,13 @@ function __c42(j: number): any {
           HeartbeatTick: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SwarmSpecRaft" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           HeartbeatPeriod: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SwarmSpecDispatcher" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Protocol: S.optional(S.String),
-          URL: S.optional(S.String),
-          Options: S.optional(__S(8, __c1, 0)),
-          CACert: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SwarmSpecCAConfigExternalCAsItem",
-      });
-    case 7:
-      return S.Array(__S(342, __c42, 6));
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          NodeCertExpiry: S.optional(S.Number),
-          ExternalCAs: S.optional(__S(343, __c42, 7)),
-          SigningCACert: S.optional(S.String),
-          SigningCAKey: S.optional(S.String),
-          ForceRotate: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SwarmSpecCAConfig" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           AutoLockManagers: S.optional(S.Boolean),
@@ -9057,68 +9613,84 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "SwarmSpecEncryptionConfig",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          LogDriver: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "SwarmSpecTaskDefaults" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Orchestration: S.optional(S.NullOr(__S(339, __c42, 3))),
-          Raft: S.optional(__S(340, __c42, 4)),
-          Dispatcher: S.optional(S.NullOr(__S(341, __c42, 5))),
-          CAConfig: S.optional(S.NullOr(__S(344, __c43, 0))),
-          EncryptionConfig: S.optional(__S(345, __c43, 1)),
-          TaskDefaults: S.optional(__S(346, __c43, 2)),
-        }),
-      ).annotate({ identifier: "SwarmSpec" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ListenAddr: S.optional(S.String),
-          AdvertiseAddr: S.optional(S.String),
-          DataPathAddr: S.optional(S.String),
-          DataPathPort: S.optional(S.Number),
-          DefaultAddrPool: S.optional(__S(4, __c0, 4)),
-          ForceNewCluster: S.optional(S.Boolean),
-          SubnetSize: S.optional(S.Number),
-          Spec: S.optional(__S(347, __c43, 3)),
-        }).pipe(T.Http({ method: "POST", uri: "/swarm/init", code: 200 })),
-      ).annotate({ identifier: "SwarmInitRequest" });
-    case 5:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/swarm", code: 200 })),
       ).annotate({ identifier: "SwarmInspectRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Worker: S.optional(S.String),
           Manager: S.optional(S.String),
         }),
       ).annotate({ identifier: "JoinTokens" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ID: S.optional(S.String),
-          Version: S.optional(__S(12, __c1, 4)),
+          Version: S.optional(__S(3936, __c123, 0)),
           CreatedAt: S.optional(S.String),
           UpdatedAt: S.optional(S.String),
-          Spec: S.optional(__S(347, __c43, 3)),
-          TLSInfo: S.optional(__S(268, __c33, 4)),
+          Spec: S.optional(__S(4292, __c134, 4)),
+          TLSInfo: S.optional(__S(3008, __c94, 0)),
           RootRotationInProgress: S.optional(S.Boolean),
           DataPathPort: S.optional(S.Number),
-          DefaultAddrPool: S.optional(__S(4, __c0, 4)),
+          DefaultAddrPool: S.optional(__S(2816, __c88, 0)),
           SubnetSize: S.optional(S.Number),
-          JoinTokens: S.optional(__S(350, __c43, 6)),
+          JoinTokens: S.optional(__S(4353, __c136, 1)),
         }),
       ).annotate({ identifier: "SwarmInspectResponse" });
   }
 }
-function __c44(j: number): any {
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          Container: S.String,
+          EndpointConfig: S.optional(S.NullOr(__S(4417, __c138, 1))),
+        }).pipe(T.Http({ method: "POST", uri: "/networks/{id}/connect", code: 200 })),
+      ).annotate({ identifier: "ConnectNetworkRequest" });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          IPv4Address: S.optional(S.String),
+          IPv6Address: S.optional(S.String),
+          LinkLocalIPs: S.optional(__S(2816, __c88, 0)),
+        }),
+      ).annotate({ identifier: "EndpointIPAMConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          IPAMConfig: S.optional(S.NullOr(__S(4416, __c138, 0))),
+          Links: S.optional(__S(2816, __c88, 0)),
+          MacAddress: S.optional(S.String),
+          Aliases: S.optional(__S(2816, __c88, 0)),
+          DriverOpts: S.optional(S.NullOr(__S(3520, __c110, 0))),
+          GwPriority: S.optional(S.Number),
+          NetworkID: S.optional(S.String),
+          EndpointID: S.optional(S.String),
+          Gateway: S.optional(S.String),
+          IPAddress: S.optional(S.String),
+          IPPrefixLen: S.optional(S.Number),
+          IPv6Gateway: S.optional(S.String),
+          GlobalIPv6Address: S.optional(S.String),
+          GlobalIPv6PrefixLen: S.optional(S.Number),
+          DNSNames: S.optional(__S(2816, __c88, 0)),
+        }),
+      ).annotate({ identifier: "EndpointSettings" });
+  }
+}
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9130,7 +9702,11 @@ function __c44(j: number): any {
           UnlockKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "SwarmUnlockkeyResponse" });
-    case 2:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
@@ -9138,48 +9714,52 @@ function __c44(j: number): any {
           serveraddress: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/auth", code: 200 })),
       ).annotate({ identifier: "SystemAuthRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.String,
           IdentityToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthResponse" });
-    case 4:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(__S(356, __c44, 4).pipe(T.Query())),
+          type: S.optional(__S(4512, __c141, 0).pipe(T.Query())),
           verbose: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/system/df", code: 200 })),
       ).annotate({ identifier: "SystemDataUsageRequest" });
-    case 6:
+    case 2:
       return S.Array(S.Unknown);
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ActiveCount: S.optional(S.Number),
           TotalCount: S.optional(S.Number),
           Reclaimable: S.optional(S.Number),
           TotalSize: S.optional(S.Number),
-          Items: S.optional(__S(358, __c44, 6)),
+          Items: S.optional(__S(4514, __c141, 2)),
         }),
       ).annotate({ identifier: "ImagesDiskUsage" });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          ImageUsage: S.optional(__S(359, __c44, 7)),
-          ContainerUsage: S.optional(__S(359, __c44, 7)),
-          VolumeUsage: S.optional(__S(359, __c44, 7)),
-          BuildCacheUsage: S.optional(__S(359, __c44, 7)),
+          ImageUsage: S.optional(__S(4515, __c141, 3)),
+          ContainerUsage: S.optional(__S(4515, __c141, 3)),
+          VolumeUsage: S.optional(__S(4515, __c141, 3)),
+          BuildCacheUsage: S.optional(__S(4515, __c141, 3)),
         }),
       ).annotate({ identifier: "SystemDataUsageResponse" });
-    case 1:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           since: S.optional(S.String.pipe(T.Query())),
@@ -9187,95 +9767,95 @@ function __c45(j: number): any {
           filters: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/events", code: 200 })),
       ).annotate({ identifier: "SystemEventsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ID: S.optional(S.String),
-          Attributes: S.optional(__S(8, __c1, 0)),
+          Attributes: S.optional(__S(3520, __c110, 0)),
         }),
       ).annotate({ identifier: "EventActor" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
           Action: S.optional(S.String),
-          Actor: S.optional(__S(362, __c45, 2)),
+          Actor: S.optional(__S(4545, __c142, 1)),
           scope: S.optional(S.String),
           time: S.optional(S.Number),
           timeNano: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EventMessage" });
-    case 4:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/info", code: 200 })),
       ).annotate({ identifier: "SystemInfo2Request" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Volume: S.optional(__S(4, __c0, 4)),
-          Network: S.optional(__S(4, __c0, 4)),
-          Authorization: S.optional(__S(4, __c0, 4)),
-          Log: S.optional(__S(4, __c0, 4)),
+          Volume: S.optional(__S(2816, __c88, 0)),
+          Network: S.optional(__S(2816, __c88, 0)),
+          Authorization: S.optional(__S(2816, __c88, 0)),
+          Log: S.optional(__S(2816, __c88, 0)),
         }),
       ).annotate({ identifier: "PluginsInfo" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Mirrors: S.optional(__S(4, __c0, 4)),
+          Mirrors: S.optional(__S(2816, __c88, 0)),
           Secure: S.optional(S.Boolean),
           Official: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IndexInfo" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(366, __c45, 6)));
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(4578, __c143, 2)));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          InsecureRegistryCIDRs: S.optional(__S(4, __c0, 4)),
-          IndexConfigs: S.optional(__S(367, __c45, 7)),
-          Mirrors: S.optional(__S(4, __c0, 4)),
+          InsecureRegistryCIDRs: S.optional(__S(2816, __c88, 0)),
+          IndexConfigs: S.optional(__S(4579, __c143, 3)),
+          Mirrors: S.optional(__S(2816, __c88, 0)),
         }),
       ).annotate({ identifier: "RegistryServiceConfig" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          runtimeArgs: S.optional(S.NullOr(__S(4, __c0, 4))),
-          status: S.optional(S.NullOr(__S(8, __c1, 0))),
+          runtimeArgs: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          status: S.optional(S.NullOr(__S(3520, __c110, 0))),
         }),
       ).annotate({ identifier: "Runtime" });
-    case 2:
-      return S.Record(S.String, __S(369, __c46, 1));
-    case 3:
+    case 6:
+      return S.Record(S.String, __S(4581, __c143, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           NodeID: S.optional(S.String),
           Addr: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeerNode" });
-    case 4:
-      return S.Array(__S(371, __c46, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(4583, __c143, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           ID: S.optional(S.String),
-          Version: S.optional(__S(12, __c1, 4)),
+          Version: S.optional(__S(3936, __c123, 0)),
           CreatedAt: S.optional(S.String),
           UpdatedAt: S.optional(S.String),
-          Spec: S.optional(__S(347, __c43, 3)),
-          TLSInfo: S.optional(__S(268, __c33, 4)),
+          Spec: S.optional(__S(4292, __c134, 4)),
+          TLSInfo: S.optional(__S(3008, __c94, 0)),
           RootRotationInProgress: S.optional(S.Boolean),
           DataPathPort: S.optional(S.Number),
-          DefaultAddrPool: S.optional(__S(4, __c0, 4)),
+          DefaultAddrPool: S.optional(__S(2816, __c88, 0)),
           SubnetSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ClusterInfo" });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           NodeID: S.optional(S.String),
@@ -9283,23 +9863,19 @@ function __c46(j: number): any {
           LocalNodeState: S.optional(S.String),
           ControlAvailable: S.optional(S.Boolean),
           Error: S.optional(S.String),
-          RemoteManagers: S.optional(S.NullOr(__S(372, __c46, 4))),
+          RemoteManagers: S.optional(S.NullOr(__S(4584, __c143, 8))),
           Nodes: S.optional(S.NullOr(S.Number)),
           Managers: S.optional(S.NullOr(S.Number)),
-          Cluster: S.optional(S.NullOr(__S(373, __c46, 5))),
+          Cluster: S.optional(S.NullOr(__S(4585, __c143, 9))),
         }),
       ).annotate({ identifier: "SwarmInfo" });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           ID: S.optional(S.String),
         }),
       ).annotate({ identifier: "Commit" });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           Base: S.optional(S.String),
@@ -9308,49 +9884,45 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "SystemInfoDefaultAddressPoolsItem",
       });
-    case 1:
-      return S.Array(__S(376, __c47, 0));
-    case 2:
+    case 13:
+      return S.Array(__S(4588, __c143, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           Driver: S.optional(S.String),
-          Info: S.optional(__S(38, __c4, 6)),
+          Info: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "FirewallInfo" });
-    case 3:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           Source: S.optional(S.String),
           ID: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceInfo" });
-    case 4:
-      return S.Array(__S(379, __c47, 3));
-    case 5:
+    case 16:
+      return S.Array(__S(4591, __c143, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          Info: S.optional(__S(38, __c4, 6)),
+          Info: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "NRIInfo" });
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           Containers: S.optional(S.String),
           Plugins: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerdInfoNamespaces" });
-    case 7:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           Address: S.optional(S.String),
-          Namespaces: S.optional(__S(382, __c47, 6)),
+          Namespaces: S.optional(__S(4594, __c143, 18)),
         }),
       ).annotate({ identifier: "ContainerdInfo" });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           ID: S.optional(S.String),
@@ -9360,9 +9932,9 @@ function __c48(j: number): any {
           ContainersStopped: S.optional(S.Number),
           Images: S.optional(S.Number),
           Driver: S.optional(S.String),
-          DriverStatus: S.optional(__S(38, __c4, 6)),
+          DriverStatus: S.optional(__S(480, __c15, 0)),
           DockerRootDir: S.optional(S.String),
-          Plugins: S.optional(__S(365, __c45, 5)),
+          Plugins: S.optional(__S(4577, __c143, 1)),
           MemoryLimit: S.optional(S.Boolean),
           SwapLimit: S.optional(S.Boolean),
           CpuCfsPeriod: S.optional(S.Boolean),
@@ -9388,46 +9960,50 @@ function __c48(j: number): any {
           NCPU: S.optional(S.Number),
           MemTotal: S.optional(S.Number),
           IndexServerAddress: S.optional(S.String),
-          RegistryConfig: S.optional(S.NullOr(__S(368, __c46, 0))),
-          GenericResources: S.optional(__S(120, __c15, 0)),
+          RegistryConfig: S.optional(S.NullOr(__S(4580, __c143, 4))),
+          GenericResources: S.optional(__S(1251, __c39, 3)),
           HttpProxy: S.optional(S.String),
           HttpsProxy: S.optional(S.String),
           NoProxy: S.optional(S.String),
           Name: S.optional(S.String),
-          Labels: S.optional(__S(4, __c0, 4)),
+          Labels: S.optional(__S(2816, __c88, 0)),
           ExperimentalBuild: S.optional(S.Boolean),
           ServerVersion: S.optional(S.String),
-          Runtimes: S.optional(__S(370, __c46, 2)),
+          Runtimes: S.optional(__S(4582, __c143, 6)),
           DefaultRuntime: S.optional(S.String),
-          Swarm: S.optional(__S(374, __c46, 6)),
+          Swarm: S.optional(__S(4586, __c143, 10)),
           LiveRestoreEnabled: S.optional(S.Boolean),
           Isolation: S.optional(S.String),
           InitBinary: S.optional(S.String),
-          ContainerdCommit: S.optional(__S(375, __c46, 7)),
-          RuncCommit: S.optional(__S(375, __c46, 7)),
-          InitCommit: S.optional(__S(375, __c46, 7)),
-          SecurityOptions: S.optional(__S(4, __c0, 4)),
+          ContainerdCommit: S.optional(__S(4587, __c143, 11)),
+          RuncCommit: S.optional(__S(4587, __c143, 11)),
+          InitCommit: S.optional(__S(4587, __c143, 11)),
+          SecurityOptions: S.optional(__S(2816, __c88, 0)),
           ProductLicense: S.optional(S.String),
-          DefaultAddressPools: S.optional(__S(377, __c47, 1)),
-          FirewallBackend: S.optional(S.NullOr(__S(378, __c47, 2))),
-          DiscoveredDevices: S.optional(__S(380, __c47, 4)),
-          NRI: S.optional(S.NullOr(__S(381, __c47, 5))),
-          Warnings: S.optional(__S(4, __c0, 4)),
-          CDISpecDirs: S.optional(__S(4, __c0, 4)),
-          Containerd: S.optional(S.NullOr(__S(383, __c47, 7))),
+          DefaultAddressPools: S.optional(__S(4589, __c143, 13)),
+          FirewallBackend: S.optional(S.NullOr(__S(4590, __c143, 14))),
+          DiscoveredDevices: S.optional(__S(4592, __c143, 16)),
+          NRI: S.optional(S.NullOr(__S(4593, __c143, 17))),
+          Warnings: S.optional(__S(2816, __c88, 0)),
+          CDISpecDirs: S.optional(__S(2816, __c88, 0)),
+          Containerd: S.optional(S.NullOr(__S(4595, __c143, 19))),
         }),
       ).annotate({ identifier: "SystemInfo" });
-    case 1:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/version", code: 200 })),
       ).annotate({ identifier: "SystemVersion2Request" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
         }),
       ).annotate({ identifier: "SystemVersionPlatform" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -9437,13 +10013,13 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "SystemVersionComponentsItem",
       });
+    case 3:
+      return S.Array(__S(4610, __c144, 2));
     case 4:
-      return S.Array(__S(387, __c48, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          Platform: S.optional(__S(386, __c48, 2)),
-          Components: S.optional(__S(388, __c48, 4)),
+          Platform: S.optional(__S(4609, __c144, 1)),
+          Components: S.optional(__S(4611, __c144, 3)),
           Version: S.optional(S.String),
           ApiVersion: S.optional(S.String),
           MinAPIVersion: S.optional(S.String),
@@ -9456,13 +10032,21 @@ function __c48(j: number): any {
           BuildTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemVersion" });
-    case 6:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/tasks/{id}", code: 200 })),
       ).annotate({ identifier: "TaskInspectRequest" });
-    case 7:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -9477,7 +10061,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "TaskLogsRequest" });
   }
 }
-function __c49(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9485,215 +10069,18 @@ function __c49(j: number): any {
           UnlockKey: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/swarm/unlock", code: 200 })),
       ).annotate({ identifier: "UnlockSwarmRequest" });
-    case 1:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/unpause", code: 200 })),
       ).annotate({ identifier: "UnpauseContainerRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          version: S.Number.pipe(T.Query()),
-          Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Data: S.optional(S.String),
-          Templating: S.optional(__S(13, __c1, 5)),
-        }).pipe(T.Http({ method: "POST", uri: "/configs/{id}/update", code: 200 })),
-      ).annotate({ identifier: "UpdateConfigRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          CpuShares: S.optional(S.Number),
-          Memory: S.optional(S.Number),
-          CgroupParent: S.optional(S.String),
-          BlkioWeight: S.optional(S.Number),
-          BlkioWeightDevice: S.optional(__S(33, __c4, 1)),
-          BlkioDeviceReadBps: S.optional(__S(35, __c4, 3)),
-          BlkioDeviceWriteBps: S.optional(__S(35, __c4, 3)),
-          BlkioDeviceReadIOps: S.optional(__S(35, __c4, 3)),
-          BlkioDeviceWriteIOps: S.optional(__S(35, __c4, 3)),
-          CpuPeriod: S.optional(S.Number),
-          CpuQuota: S.optional(S.Number),
-          CpuRealtimePeriod: S.optional(S.Number),
-          CpuRealtimeRuntime: S.optional(S.Number),
-          CpusetCpus: S.optional(S.String),
-          CpusetMems: S.optional(S.String),
-          Devices: S.optional(__S(37, __c4, 5)),
-          DeviceCgroupRules: S.optional(__S(4, __c0, 4)),
-          DeviceRequests: S.optional(__S(40, __c5, 0)),
-          MemoryReservation: S.optional(S.Number),
-          MemorySwap: S.optional(S.Number),
-          MemorySwappiness: S.optional(S.Number),
-          NanoCpus: S.optional(S.Number),
-          OomKillDisable: S.optional(S.Boolean),
-          Init: S.optional(S.NullOr(S.Boolean)),
-          PidsLimit: S.optional(S.NullOr(S.Number)),
-          Ulimits: S.optional(__S(42, __c5, 2)),
-          CpuCount: S.optional(S.Number),
-          CpuPercent: S.optional(S.Number),
-          IOMaximumIOps: S.optional(S.Number),
-          IOMaximumBandwidth: S.optional(S.Number),
-          RestartPolicy: S.optional(__S(47, __c5, 7)),
-        }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/update", code: 200 })),
-      ).annotate({ identifier: "UpdateContainerRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Warnings: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ContainerUpdateResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          version: S.Number.pipe(T.Query()),
-          Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Role: S.optional(S.String),
-          Availability: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/nodes/{id}/update", code: 200 })),
-      ).annotate({ identifier: "UpdateNodeRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          version: S.Number.pipe(T.Query()),
-          Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Data: S.optional(S.String),
-          Driver: S.optional(__S(13, __c1, 5)),
-          Templating: S.optional(__S(13, __c1, 5)),
-        }).pipe(T.Http({ method: "POST", uri: "/secrets/{id}/update", code: 200 })),
-      ).annotate({ identifier: "UpdateSecretRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          version: S.Number.pipe(T.Query()),
-          registryAuthFrom: S.optional(S.String.pipe(T.Query())),
-          rollback: S.optional(S.String.pipe(T.Query())),
-          xRegistryAuth: S.optional(S.String.pipe(T.Header("X-Registry-Auth"))),
-          Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          TaskTemplate: S.optional(__S(133, __c16, 5)),
-          Mode: S.optional(__S(136, __c17, 0)),
-          UpdateConfig: S.optional(__S(137, __c17, 1)),
-          RollbackConfig: S.optional(__S(137, __c17, 1)),
-          Networks: S.optional(__S(131, __c16, 3)),
-          EndpointSpec: S.optional(__S(140, __c17, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/services/{id}/update", code: 200 })),
-      ).annotate({ identifier: "UpdateServiceRequest" });
   }
 }
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Protocol: S.optional(S.String),
-          URL: S.optional(S.String),
-          Options: S.optional(__S(8, __c1, 0)),
-          CACert: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateSwarmRequestCAConfigExternalCAsItem",
-      });
-    case 1:
-      return S.Array(__S(400, __c50, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          NodeCertExpiry: S.optional(S.Number),
-          ExternalCAs: S.optional(__S(401, __c50, 1)),
-          SigningCACert: S.optional(S.String),
-          SigningCAKey: S.optional(S.String),
-          ForceRotate: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "UpdateSwarmRequestCAConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          LogDriver: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "UpdateSwarmRequestTaskDefaults",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.Number.pipe(T.Query()),
-          rotateWorkerToken: S.optional(S.Boolean.pipe(T.Query())),
-          rotateManagerToken: S.optional(S.Boolean.pipe(T.Query())),
-          rotateManagerUnlockKey: S.optional(S.Boolean.pipe(T.Query())),
-          Name: S.optional(S.String),
-          Labels: S.optional(__S(8, __c1, 0)),
-          Orchestration: S.optional(S.NullOr(__S(339, __c42, 3))),
-          Raft: S.optional(__S(340, __c42, 4)),
-          Dispatcher: S.optional(S.NullOr(__S(341, __c42, 5))),
-          CAConfig: S.optional(S.NullOr(__S(402, __c50, 2))),
-          EncryptionConfig: S.optional(__S(345, __c43, 1)),
-          TaskDefaults: S.optional(__S(403, __c50, 3)),
-        }).pipe(T.Http({ method: "POST", uri: "/swarm/update", code: 200 })),
-      ).annotate({ identifier: "UpdateSwarmRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          version: S.Number.pipe(T.Query()),
-          Spec: S.optional(__S(150, __c18, 6)),
-        }).pipe(T.Http({ method: "PUT", uri: "/volumes/{name}", code: 200 })),
-      ).annotate({ identifier: "UpdateVolumeRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/volumes/{name}", code: 200 })),
-      ).annotate({ identifier: "VolumeInspectRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/volumes/prune", code: 200 })),
-      ).annotate({ identifier: "VolumePruneRequest" });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          VolumesDeleted: S.optional(__S(4, __c0, 4)),
-          SpaceReclaimed: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "VolumePruneResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          condition: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/containers/{id}/wait", code: 200 })),
-      ).annotate({ identifier: "WaitContainerRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContainerWaitExitError" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          StatusCode: S.Number,
-          Error: S.optional(__S(410, __c51, 2)),
-        }),
-      ).annotate({ identifier: "ContainerWaitResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

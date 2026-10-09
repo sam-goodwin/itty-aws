@@ -545,8 +545,8 @@ export const createProjectsLocationsCustomClasses: API.OperationMethod<
   CreateProjectsLocationsCustomClassesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateProjectsLocationsCustomClassesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CustomClass>,
+  input: __S(193, __c12, 1) as any as S.Schema<CreateProjectsLocationsCustomClassesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<CustomClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -565,8 +565,8 @@ export const createProjectsLocationsPhraseSets: API.OperationMethod<
   CreateProjectsLocationsPhraseSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateProjectsLocationsPhraseSetsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PhraseSet>,
+  input: __S(241, __c15, 1) as any as S.Schema<CreateProjectsLocationsPhraseSetsRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<PhraseSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -585,8 +585,8 @@ export const deleteProjectsLocationsCustomClasses: API.OperationMethod<
   DeleteProjectsLocationsCustomClassesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteProjectsLocationsCustomClassesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Empty>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteProjectsLocationsCustomClassesRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -605,8 +605,8 @@ export const deleteProjectsLocationsPhraseSets: API.OperationMethod<
   DeleteProjectsLocationsPhraseSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteProjectsLocationsPhraseSetsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Empty>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteProjectsLocationsPhraseSetsRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -620,8 +620,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetOperationsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Operation>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -635,8 +635,8 @@ export const getProjectsLocationsCustomClasses: API.OperationMethod<
   GetProjectsLocationsCustomClassesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetProjectsLocationsCustomClassesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CustomClass>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetProjectsLocationsCustomClassesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<CustomClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -650,8 +650,8 @@ export const getProjectsLocationsPhraseSets: API.OperationMethod<
   GetProjectsLocationsPhraseSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetProjectsLocationsPhraseSetsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PhraseSet>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsLocationsPhraseSetsRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<PhraseSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -666,8 +666,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListOperationsResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -683,8 +683,8 @@ export const listProjectsLocationsCustomClasses: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomClassesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListProjectsLocationsCustomClassesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListCustomClassesResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListProjectsLocationsCustomClassesRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<ListCustomClassesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -700,8 +700,8 @@ export const listProjectsLocationsPhraseSets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPhraseSetResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListProjectsLocationsPhraseSetsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListPhraseSetResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListProjectsLocationsPhraseSetsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<ListPhraseSetResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -721,8 +721,8 @@ export const longrunningrecognizeSpeech: API.OperationMethod<
   LongrunningrecognizeSpeechError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<LongrunningrecognizeSpeechRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Operation>,
+  input: __S(114, __c7, 2) as any as S.Schema<LongrunningrecognizeSpeechRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -741,8 +741,8 @@ export const patchProjectsLocationsCustomClasses: API.OperationMethod<
   PatchProjectsLocationsCustomClassesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<PatchProjectsLocationsCustomClassesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CustomClass>,
+  input: __S(144, __c9, 0) as any as S.Schema<PatchProjectsLocationsCustomClassesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<CustomClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -761,8 +761,8 @@ export const patchProjectsLocationsPhraseSets: API.OperationMethod<
   PatchProjectsLocationsPhraseSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<PatchProjectsLocationsPhraseSetsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PhraseSet>,
+  input: __S(160, __c10, 0) as any as S.Schema<PatchProjectsLocationsPhraseSetsRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<PhraseSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -776,8 +776,8 @@ export const recognizeSpeech: API.OperationMethod<
   RecognizeSpeechError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<RecognizeSpeechRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<RecognizeResponse>,
+  input: __S(177, __c11, 1) as any as S.Schema<RecognizeSpeechRequest>,
+  output: __S(185, __c11, 9) as any as S.Schema<RecognizeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -787,193 +787,6 @@ export const recognizeSpeech: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClassItem" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKeyName: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          kmsKeyVersionName: S.optional(S.String),
-          annotations: S.optional(__S(0, __c0, 0)),
-          uid: S.optional(S.String),
-          etag: S.optional(S.String),
-          customClassId: S.optional(S.String),
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          items: S.optional(__S(2, __c0, 2)),
-          reconciling: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CustomClass" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customClassId: S.optional(S.String),
-          customClass: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "CreateCustomClassRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1p1beta1/{+parent}/customClasses",
-            baseUrl: "https://speech.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCustomClassesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          boost: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Phrase" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          kmsKeyVersionName: S.optional(S.String),
-          name: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          reconciling: S.optional(S.Boolean),
-          uid: S.optional(S.String),
-          state: S.optional(S.String),
-          displayName: S.optional(S.String),
-          phrases: S.optional(__S(7, __c0, 7)),
-          kmsKeyName: S.optional(S.String),
-          boost: S.optional(S.Number),
-          annotations: S.optional(__S(0, __c0, 0)),
-          expireTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PhraseSet" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          phraseSet: S.optional(__S(8, __c1, 0)),
-          phraseSetId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreatePhraseSetRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1p1beta1/{+parent}/phraseSets",
-            baseUrl: "https://speech.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsPhraseSetsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1p1beta1/{+name}",
-            baseUrl: "https://speech.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCustomClassesRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1p1beta1/{+name}",
-            baseUrl: "https://speech.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsPhraseSetsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1p1beta1/operations/{+name}",
-            baseUrl: "https://speech.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetOperationsRequest" });
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(16, __c2, 0)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(15, __c1, 7)),
-          error: S.optional(__S(17, __c2, 1)),
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(15, __c1, 7)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1p1beta1/{+name}",
-            baseUrl: "https://speech.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsCustomClassesRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -987,7 +800,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsPhraseSetsRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1003,23 +820,27 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
+      return S.Array(__S(339, __c21, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(32, __c2, 0)),
+          nextPageToken: S.optional(S.String),
+          operations: S.optional(__S(17, __c1, 1)),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
-      return S.Array(__S(18, __c2, 2));
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unreachable: S.optional(__S(22, __c2, 6)),
-          nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1035,18 +856,26 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCustomClassesRequest",
       });
-    case 2:
-      return S.Array(__S(3, __c0, 3));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          customClasses: S.optional(__S(26, __c3, 2)),
+          customClasses: S.optional(__S(64, __c4, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCustomClassesResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(226, __c14, 2));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1062,24 +891,56 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsPhraseSetsRequest",
       });
-    case 5:
-      return S.Array(__S(8, __c1, 0));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          phraseSets: S.optional(__S(29, __c3, 5)),
+          phraseSets: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "ListPhraseSetResponse" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(258, __c16, 2));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           gcsUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "TranscriptOutputConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          outputConfig: S.optional(__S(112, __c7, 0)),
+          config: S.optional(__S(137, __c8, 9)),
+          audio: S.optional(__S(138, __c8, 10)),
+        }),
+      ).annotate({
+        identifier: "LongRunningRecognizeRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(113, __c7, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1p1beta1/speech:longrunningrecognize",
+            baseUrl: "https://speech.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "LongrunningrecognizeSpeechRequest",
+      });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1094,11 +955,11 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           boost: S.optional(S.Number),
-          phrases: S.optional(__S(22, __c2, 6)),
+          phrases: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "SpeechContext" });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(129, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1122,33 +983,29 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Entry" });
     case 5:
-      return S.Array(__S(36, __c4, 4));
+      return S.Array(__S(132, __c8, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(__S(37, __c4, 5)),
+          entries: S.optional(__S(133, __c8, 5)),
         }),
       ).annotate({ identifier: "TranscriptNormalization" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          abnfStrings: S.optional(__S(22, __c2, 6)),
+          abnfStrings: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "ABNFGrammar" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          customClasses: S.optional(__S(26, __c3, 2)),
-          phraseSetReferences: S.optional(__S(22, __c2, 6)),
-          abnfGrammar: S.optional(__S(39, __c4, 7)),
-          phraseSets: S.optional(__S(29, __c3, 5)),
+          customClasses: S.optional(__S(64, __c4, 0)),
+          phraseSetReferences: S.optional(__S(32, __c2, 0)),
+          abnfGrammar: S.optional(__S(135, __c8, 7)),
+          phraseSets: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "SpeechAdaptation" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           enableSpokenEmojis: S.optional(S.Boolean),
@@ -1157,16 +1014,16 @@ function __c5(j: number): any {
           enableSpeakerDiarization: S.optional(S.Boolean),
           audioChannelCount: S.optional(S.Number),
           profanityFilter: S.optional(S.Boolean),
-          alternativeLanguageCodes: S.optional(__S(22, __c2, 6)),
-          diarizationConfig: S.optional(__S(32, __c4, 0)),
-          speechContexts: S.optional(__S(34, __c4, 2)),
-          metadata: S.optional(__S(35, __c4, 3)),
-          transcriptNormalization: S.optional(__S(38, __c4, 6)),
+          alternativeLanguageCodes: S.optional(__S(32, __c2, 0)),
+          diarizationConfig: S.optional(__S(128, __c8, 0)),
+          speechContexts: S.optional(__S(130, __c8, 2)),
+          metadata: S.optional(__S(131, __c8, 3)),
+          transcriptNormalization: S.optional(__S(134, __c8, 6)),
           languageCode: S.optional(S.String),
           enableSpokenPunctuation: S.optional(S.Boolean),
           diarizationSpeakerCount: S.optional(S.Number),
           enableAutomaticPunctuation: S.optional(S.Boolean),
-          adaptation: S.optional(__S(40, __c5, 0)),
+          adaptation: S.optional(__S(136, __c8, 8)),
           maxAlternatives: S.optional(S.Number),
           enableSeparateRecognitionPerChannel: S.optional(S.Boolean),
           useEnhanced: S.optional(S.Boolean),
@@ -1175,43 +1032,23 @@ function __c5(j: number): any {
           sampleRateHertz: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RecognitionConfig" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecognitionAudio" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          outputConfig: S.optional(__S(31, __c3, 7)),
-          config: S.optional(__S(41, __c5, 1)),
-          audio: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "LongRunningRecognizeRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1p1beta1/speech:longrunningrecognize",
-            baseUrl: "https://speech.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "LongrunningrecognizeSpeechRequest",
-      });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(226, __c14, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1222,12 +1059,16 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCustomClassesRequest",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(258, __c16, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1238,21 +1079,21 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsPhraseSetsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(__S(41, __c5, 1)),
-          audio: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "RecognizeRequest" });
   }
 }
-function __c6(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
+          config: S.optional(__S(137, __c8, 9)),
+          audio: S.optional(__S(138, __c8, 10)),
+        }),
+      ).annotate({ identifier: "RecognizeRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(176, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1261,7 +1102,7 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RecognizeSpeechRequest" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           speakerLabel: S.optional(S.String),
@@ -1272,55 +1113,273 @@ function __c6(j: number): any {
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "WordInfo" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
     case 3:
+      return S.Array(__S(178, __c11, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           transcript: S.optional(S.String),
           confidence: S.optional(S.Number),
-          words: S.optional(__S(50, __c6, 2)),
+          words: S.optional(__S(179, __c11, 3)),
         }),
       ).annotate({
         identifier: "SpeechRecognitionAlternative",
       });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
     case 5:
+      return S.Array(__S(180, __c11, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          alternatives: S.optional(__S(52, __c6, 4)),
+          alternatives: S.optional(__S(181, __c11, 5)),
           channelTag: S.optional(S.Number),
           languageCode: S.optional(S.String),
           resultEndTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SpeechRecognitionResult" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
     case 7:
+      return S.Array(__S(182, __c11, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           adaptationTimeout: S.optional(S.Boolean),
           timeoutMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "SpeechAdaptationInfo" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           usingLegacyModels: S.optional(S.Boolean),
-          results: S.optional(__S(54, __c6, 6)),
-          speechAdaptationInfo: S.optional(__S(55, __c6, 7)),
+          results: S.optional(__S(183, __c11, 7)),
+          speechAdaptationInfo: S.optional(__S(184, __c11, 8)),
           totalBilledTime: S.optional(S.String),
           requestId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecognizeResponse" });
   }
 }
-
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customClassId: S.optional(S.String),
+          customClass: S.optional(__S(226, __c14, 2)),
+        }),
+      ).annotate({ identifier: "CreateCustomClassRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(192, __c12, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1p1beta1/{+parent}/customClasses",
+            baseUrl: "https://speech.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCustomClassesRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClassItem" });
+    case 1:
+      return S.Array(__S(224, __c14, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKeyName: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          kmsKeyVersionName: S.optional(S.String),
+          annotations: S.optional(__S(208, __c13, 0)),
+          uid: S.optional(S.String),
+          etag: S.optional(S.String),
+          customClassId: S.optional(S.String),
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          items: S.optional(__S(225, __c14, 1)),
+          reconciling: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CustomClass" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          phraseSet: S.optional(__S(258, __c16, 2)),
+          phraseSetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreatePhraseSetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(240, __c15, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1p1beta1/{+parent}/phraseSets",
+            baseUrl: "https://speech.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsPhraseSetsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          boost: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Phrase" });
+    case 1:
+      return S.Array(__S(256, __c16, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          kmsKeyVersionName: S.optional(S.String),
+          name: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          reconciling: S.optional(S.Boolean),
+          uid: S.optional(S.String),
+          state: S.optional(S.String),
+          displayName: S.optional(S.String),
+          phrases: S.optional(__S(257, __c16, 1)),
+          kmsKeyName: S.optional(S.String),
+          boost: S.optional(S.Number),
+          annotations: S.optional(__S(208, __c13, 0)),
+          expireTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PhraseSet" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1p1beta1/{+name}",
+            baseUrl: "https://speech.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCustomClassesRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1p1beta1/{+name}",
+            baseUrl: "https://speech.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsPhraseSetsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1p1beta1/operations/{+name}",
+            baseUrl: "https://speech.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetOperationsRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(337, __c21, 1)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(336, __c21, 0)),
+          error: S.optional(__S(338, __c21, 2)),
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(336, __c21, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1p1beta1/{+name}",
+            baseUrl: "https://speech.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsCustomClassesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

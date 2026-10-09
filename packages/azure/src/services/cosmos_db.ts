@@ -8846,8 +8846,8 @@ export const CassandraClustersCreateUpdate: API.OperationMethod<
   CassandraClustersCreateUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CassandraClustersCreateUpdateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CassandraClustersCreateUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CassandraClustersCreateUpdateRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<CassandraClustersCreateUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8861,8 +8861,8 @@ export const CassandraClustersDeallocate: API.OperationMethod<
   CassandraClustersDeallocateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CassandraClustersDeallocateRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CassandraClustersDeallocateResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<CassandraClustersDeallocateRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<CassandraClustersDeallocateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8876,8 +8876,8 @@ export const CassandraClustersStatus: API.OperationMethod<
   CassandraClustersStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CassandraClustersStatusRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CassandraClusterPublicStatus>,
+  input: __S(4864, __c152, 0) as any as S.Schema<CassandraClustersStatusRequest>,
+  output: __S(4873, __c152, 9) as any as S.Schema<CassandraClusterPublicStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8891,8 +8891,8 @@ export const CassandraDataCentersCreateUpdate: API.OperationMethod<
   CassandraDataCentersCreateUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CassandraDataCentersCreateUpdateRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CassandraDataCentersCreateUpdateResponse>,
+  input: __S(6528, __c204, 0) as any as S.Schema<CassandraDataCentersCreateUpdateRequest>,
+  output: __S(6624, __c207, 0) as any as S.Schema<CassandraDataCentersCreateUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8907,14 +8907,14 @@ export const CassandraResourcesCreateUpdateCassandraKeyspace: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    40,
-    __c5,
-    0,
+    6978,
+    __c218,
+    2,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraKeyspaceRequest>,
   output: __S(
-    47,
-    __c5,
-    7,
+    6979,
+    __c218,
+    3,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraKeyspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8930,14 +8930,14 @@ export const CassandraResourcesCreateUpdateCassandraRoleAssignment: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    7488,
+    __c234,
+    0,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraRoleAssignmentRequest>,
   output: __S(
-    51,
-    __c6,
-    3,
+    7489,
+    __c234,
+    1,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8953,14 +8953,14 @@ export const CassandraResourcesCreateUpdateCassandraRoleDefinition: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    8096,
+    __c253,
+    0,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest>,
   output: __S(
-    56,
-    __c7,
-    0,
+    8097,
+    __c253,
+    1,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8975,8 +8975,16 @@ export const CassandraResourcesCreateUpdateCassandraTable: API.OperationMethod<
   CassandraResourcesCreateUpdateCassandraTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<CassandraResourcesCreateUpdateCassandraTableRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<CassandraResourcesCreateUpdateCassandraTableResponse>,
+  input: __S(
+    8834,
+    __c276,
+    2,
+  ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraTableRequest>,
+  output: __S(
+    8896,
+    __c278,
+    0,
+  ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8990,8 +8998,8 @@ export const CreateFleet: API.OperationMethod<
   CreateFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateFleetRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<CreateFleetResponse>,
+  input: __S(9504, __c297, 0) as any as S.Schema<CreateFleetRequest>,
+  output: __S(9537, __c298, 1) as any as S.Schema<CreateFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9005,8 +9013,8 @@ export const CreateFleetspace: API.OperationMethod<
   CreateFleetspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateFleetspaceRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<CreateFleetspaceResponse>,
+  input: __S(10144, __c317, 0) as any as S.Schema<CreateFleetspaceRequest>,
+  output: __S(10178, __c318, 2) as any as S.Schema<CreateFleetspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9020,8 +9028,8 @@ export const CreateFleetspaceAccount: API.OperationMethod<
   CreateFleetspaceAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<CreateFleetspaceAccountRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<CreateFleetspaceAccountResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateFleetspaceAccountRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<CreateFleetspaceAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9035,8 +9043,8 @@ export const CreateService: API.OperationMethod<
   CreateServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<CreateServiceRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<CreateServiceResponse>,
+  input: __S(929, __c29, 1) as any as S.Schema<CreateServiceRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<CreateServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9050,8 +9058,8 @@ export const DatabaseAccountsCreateOrUpdate: API.OperationMethod<
   DatabaseAccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<DatabaseAccountsCreateOrUpdateRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DatabaseAccountsCreateOrUpdateResponse>,
+  input: __S(1538, __c48, 2) as any as S.Schema<DatabaseAccountsCreateOrUpdateRequest>,
+  output: __S(1539, __c48, 3) as any as S.Schema<DatabaseAccountsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9065,8 +9073,8 @@ export const DatabaseAccountsFailoverPriorityChange: API.OperationMethod<
   DatabaseAccountsFailoverPriorityChangeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<DatabaseAccountsFailoverPriorityChangeRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DatabaseAccountsFailoverPriorityChangeResponse>,
+  input: __S(2050, __c64, 2) as any as S.Schema<DatabaseAccountsFailoverPriorityChangeRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DatabaseAccountsFailoverPriorityChangeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9080,8 +9088,8 @@ export const DatabaseAccountsGetReadOnlyKeys: API.OperationMethod<
   DatabaseAccountsGetReadOnlyKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DatabaseAccountsGetReadOnlyKeysRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<DatabaseAccountListReadOnlyKeysResult>,
+  input: __S(2400, __c75, 0) as any as S.Schema<DatabaseAccountsGetReadOnlyKeysRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<DatabaseAccountListReadOnlyKeysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9095,8 +9103,8 @@ export const DatabaseAccountsListReadOnlyKeys: API.OperationMethod<
   DatabaseAccountsListReadOnlyKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<DatabaseAccountsListReadOnlyKeysRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<DatabaseAccountListReadOnlyKeysResult>,
+  input: __S(2816, __c88, 0) as any as S.Schema<DatabaseAccountsListReadOnlyKeysRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<DatabaseAccountListReadOnlyKeysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9110,8 +9118,8 @@ export const DatabaseAccountsOfflineRegion: API.OperationMethod<
   DatabaseAccountsOfflineRegionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<DatabaseAccountsOfflineRegionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DatabaseAccountsOfflineRegionResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<DatabaseAccountsOfflineRegionRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DatabaseAccountsOfflineRegionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9125,8 +9133,8 @@ export const DatabaseAccountsOnlineRegion: API.OperationMethod<
   DatabaseAccountsOnlineRegionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<DatabaseAccountsOnlineRegionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DatabaseAccountsOnlineRegionResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<DatabaseAccountsOnlineRegionRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DatabaseAccountsOnlineRegionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9140,8 +9148,8 @@ export const DeleteCassandraCluster: API.OperationMethod<
   DeleteCassandraClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<DeleteCassandraClusterRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<DeleteCassandraClusterResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<DeleteCassandraClusterRequest>,
+  output: __S(4128, __c129, 0) as any as S.Schema<DeleteCassandraClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9155,8 +9163,8 @@ export const DeleteCassandraDataCenter: API.OperationMethod<
   DeleteCassandraDataCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<DeleteCassandraDataCenterRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteCassandraDataCenterResponse>,
+  input: __S(4512, __c141, 0) as any as S.Schema<DeleteCassandraDataCenterRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteCassandraDataCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9170,8 +9178,8 @@ export const DeleteCassandraResourceCassandraKeyspace: API.OperationMethod<
   DeleteCassandraResourceCassandraKeyspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<DeleteCassandraResourceCassandraKeyspaceRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteCassandraResourceCassandraKeyspaceResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<DeleteCassandraResourceCassandraKeyspaceRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteCassandraResourceCassandraKeyspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9186,14 +9194,14 @@ export const DeleteCassandraResourceCassandraRoleAssignment: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    132,
-    __c16,
-    4,
+    5280,
+    __c165,
+    0,
   ) as any as S.Schema<DeleteCassandraResourceCassandraRoleAssignmentRequest>,
   output: __S(
-    17,
-    __c2,
-    1,
+    320,
+    __c10,
+    0,
   ) as any as S.Schema<DeleteCassandraResourceCassandraRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9209,14 +9217,14 @@ export const DeleteCassandraResourceCassandraRoleDefinition: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    133,
-    __c16,
-    5,
+    5696,
+    __c178,
+    0,
   ) as any as S.Schema<DeleteCassandraResourceCassandraRoleDefinitionRequest>,
   output: __S(
-    17,
-    __c2,
-    1,
+    320,
+    __c10,
+    0,
   ) as any as S.Schema<DeleteCassandraResourceCassandraRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9231,8 +9239,8 @@ export const DeleteCassandraResourceCassandraTable: API.OperationMethod<
   DeleteCassandraResourceCassandraTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<DeleteCassandraResourceCassandraTableRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteCassandraResourceCassandraTableResponse>,
+  input: __S(6080, __c190, 0) as any as S.Schema<DeleteCassandraResourceCassandraTableRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteCassandraResourceCassandraTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9246,8 +9254,8 @@ export const DeleteDatabaseAccount: API.OperationMethod<
   DeleteDatabaseAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<DeleteDatabaseAccountRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<DeleteDatabaseAccountResponse>,
+  input: __S(6304, __c197, 0) as any as S.Schema<DeleteDatabaseAccountRequest>,
+  output: __S(4128, __c129, 0) as any as S.Schema<DeleteDatabaseAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9261,8 +9269,8 @@ export const DeleteFleet: API.OperationMethod<
   DeleteFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<DeleteFleetRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<DeleteFleetResponse>,
+  input: __S(6336, __c198, 0) as any as S.Schema<DeleteFleetRequest>,
+  output: __S(4128, __c129, 0) as any as S.Schema<DeleteFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9276,8 +9284,8 @@ export const DeleteFleetspace: API.OperationMethod<
   DeleteFleetspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<DeleteFleetspaceRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<DeleteFleetspaceResponse>,
+  input: __S(6368, __c199, 0) as any as S.Schema<DeleteFleetspaceRequest>,
+  output: __S(4128, __c129, 0) as any as S.Schema<DeleteFleetspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9291,8 +9299,8 @@ export const DeleteFleetspaceAccount: API.OperationMethod<
   DeleteFleetspaceAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<DeleteFleetspaceAccountRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<DeleteFleetspaceAccountResponse>,
+  input: __S(6400, __c200, 0) as any as S.Schema<DeleteFleetspaceAccountRequest>,
+  output: __S(6432, __c201, 0) as any as S.Schema<DeleteFleetspaceAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9306,8 +9314,8 @@ export const DeleteGremlinResourceGremlinDatabase: API.OperationMethod<
   DeleteGremlinResourceGremlinDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<DeleteGremlinResourceGremlinDatabaseRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteGremlinResourceGremlinDatabaseResponse>,
+  input: __S(6464, __c202, 0) as any as S.Schema<DeleteGremlinResourceGremlinDatabaseRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteGremlinResourceGremlinDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9321,8 +9329,8 @@ export const DeleteGremlinResourceGremlinGraph: API.OperationMethod<
   DeleteGremlinResourceGremlinGraphError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<DeleteGremlinResourceGremlinGraphRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteGremlinResourceGremlinGraphResponse>,
+  input: __S(6496, __c203, 0) as any as S.Schema<DeleteGremlinResourceGremlinGraphRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteGremlinResourceGremlinGraphResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9336,8 +9344,8 @@ export const DeleteGremlinResourceGremlinRoleAssignment: API.OperationMethod<
   DeleteGremlinResourceGremlinRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<DeleteGremlinResourceGremlinRoleAssignmentRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteGremlinResourceGremlinRoleAssignmentResponse>,
+  input: __S(6656, __c208, 0) as any as S.Schema<DeleteGremlinResourceGremlinRoleAssignmentRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteGremlinResourceGremlinRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9351,8 +9359,8 @@ export const DeleteGremlinResourceGremlinRoleDefinition: API.OperationMethod<
   DeleteGremlinResourceGremlinRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<DeleteGremlinResourceGremlinRoleDefinitionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteGremlinResourceGremlinRoleDefinitionResponse>,
+  input: __S(6688, __c209, 0) as any as S.Schema<DeleteGremlinResourceGremlinRoleDefinitionRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteGremlinResourceGremlinRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9366,8 +9374,8 @@ export const DeleteMongoDBResourceMongoDBCollection: API.OperationMethod<
   DeleteMongoDBResourceMongoDBCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBCollectionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteMongoDBResourceMongoDBCollectionResponse>,
+  input: __S(6720, __c210, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBCollectionRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9381,8 +9389,8 @@ export const DeleteMongoDBResourceMongoDBDatabase: API.OperationMethod<
   DeleteMongoDBResourceMongoDBDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<DeleteMongoDBResourceMongoDBDatabaseRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteMongoDBResourceMongoDBDatabaseResponse>,
+  input: __S(6752, __c211, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBDatabaseRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteMongoDBResourceMongoDBDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9396,8 +9404,8 @@ export const DeleteMongoDBResourceMongoRoleDefinition: API.OperationMethod<
   DeleteMongoDBResourceMongoRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<DeleteMongoDBResourceMongoRoleDefinitionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteMongoDBResourceMongoRoleDefinitionResponse>,
+  input: __S(6784, __c212, 0) as any as S.Schema<DeleteMongoDBResourceMongoRoleDefinitionRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteMongoDBResourceMongoRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9411,8 +9419,8 @@ export const DeleteMongoDBResourceMongoUserDefinition: API.OperationMethod<
   DeleteMongoDBResourceMongoUserDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<DeleteMongoDBResourceMongoUserDefinitionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteMongoDBResourceMongoUserDefinitionResponse>,
+  input: __S(6816, __c213, 0) as any as S.Schema<DeleteMongoDBResourceMongoUserDefinitionRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteMongoDBResourceMongoUserDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9426,8 +9434,8 @@ export const DeleteMongoMIResourceMongoMIRoleAssignment: API.OperationMethod<
   DeleteMongoMIResourceMongoMIRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleAssignmentRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleAssignmentResponse>,
+  input: __S(6848, __c214, 0) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleAssignmentRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9441,8 +9449,8 @@ export const DeleteMongoMIResourceMongoMIRoleDefinition: API.OperationMethod<
   DeleteMongoMIResourceMongoMIRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleDefinitionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleDefinitionResponse>,
+  input: __S(6880, __c215, 0) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleDefinitionRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteMongoMIResourceMongoMIRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9456,8 +9464,8 @@ export const DeleteNotebookWorkspace: API.OperationMethod<
   DeleteNotebookWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<DeleteNotebookWorkspaceRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<DeleteNotebookWorkspaceResponse>,
+  input: __S(6912, __c216, 0) as any as S.Schema<DeleteNotebookWorkspaceRequest>,
+  output: __S(6432, __c201, 0) as any as S.Schema<DeleteNotebookWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9471,8 +9479,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(6944, __c217, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9486,8 +9494,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(7168, __c224, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(4128, __c129, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9501,8 +9509,8 @@ export const DeleteSqlResourceSqlContainer: API.OperationMethod<
   DeleteSqlResourceSqlContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<DeleteSqlResourceSqlContainerRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteSqlResourceSqlContainerResponse>,
+  input: __S(7200, __c225, 0) as any as S.Schema<DeleteSqlResourceSqlContainerRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteSqlResourceSqlContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9516,8 +9524,8 @@ export const DeleteSqlResourceSqlDatabase: API.OperationMethod<
   DeleteSqlResourceSqlDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<DeleteSqlResourceSqlDatabaseRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteSqlResourceSqlDatabaseResponse>,
+  input: __S(7232, __c226, 0) as any as S.Schema<DeleteSqlResourceSqlDatabaseRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteSqlResourceSqlDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9531,8 +9539,8 @@ export const DeleteSqlResourceSqlRoleAssignment: API.OperationMethod<
   DeleteSqlResourceSqlRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<DeleteSqlResourceSqlRoleAssignmentRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteSqlResourceSqlRoleAssignmentResponse>,
+  input: __S(7264, __c227, 0) as any as S.Schema<DeleteSqlResourceSqlRoleAssignmentRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteSqlResourceSqlRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9546,8 +9554,8 @@ export const DeleteSqlResourceSqlRoleDefinition: API.OperationMethod<
   DeleteSqlResourceSqlRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<DeleteSqlResourceSqlRoleDefinitionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteSqlResourceSqlRoleDefinitionResponse>,
+  input: __S(7296, __c228, 0) as any as S.Schema<DeleteSqlResourceSqlRoleDefinitionRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteSqlResourceSqlRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9561,8 +9569,8 @@ export const DeleteSqlResourceSqlStoredProcedure: API.OperationMethod<
   DeleteSqlResourceSqlStoredProcedureError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<DeleteSqlResourceSqlStoredProcedureRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteSqlResourceSqlStoredProcedureResponse>,
+  input: __S(7328, __c229, 0) as any as S.Schema<DeleteSqlResourceSqlStoredProcedureRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteSqlResourceSqlStoredProcedureResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9576,8 +9584,8 @@ export const DeleteSqlResourceSqlUserDefinedFunction: API.OperationMethod<
   DeleteSqlResourceSqlUserDefinedFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<DeleteSqlResourceSqlUserDefinedFunctionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteSqlResourceSqlUserDefinedFunctionResponse>,
+  input: __S(7360, __c230, 0) as any as S.Schema<DeleteSqlResourceSqlUserDefinedFunctionRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteSqlResourceSqlUserDefinedFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9591,8 +9599,8 @@ export const DeleteTableResourceTable: API.OperationMethod<
   DeleteTableResourceTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<DeleteTableResourceTableRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteTableResourceTableResponse>,
+  input: __S(7392, __c231, 0) as any as S.Schema<DeleteTableResourceTableRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteTableResourceTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9606,8 +9614,8 @@ export const DeleteTableResourceTableRoleAssignment: API.OperationMethod<
   DeleteTableResourceTableRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DeleteTableResourceTableRoleAssignmentRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteTableResourceTableRoleAssignmentResponse>,
+  input: __S(7424, __c232, 0) as any as S.Schema<DeleteTableResourceTableRoleAssignmentRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteTableResourceTableRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9621,8 +9629,8 @@ export const DeleteTableResourceTableRoleDefinition: API.OperationMethod<
   DeleteTableResourceTableRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<DeleteTableResourceTableRoleDefinitionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteTableResourceTableRoleDefinitionResponse>,
+  input: __S(7456, __c233, 0) as any as S.Schema<DeleteTableResourceTableRoleDefinitionRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeleteTableResourceTableRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9636,8 +9644,8 @@ export const GetCassandraCluster: API.OperationMethod<
   GetCassandraClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetCassandraClusterRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetCassandraClusterResponse>,
+  input: __S(7584, __c237, 0) as any as S.Schema<GetCassandraClusterRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<GetCassandraClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9651,8 +9659,8 @@ export const GetCassandraDataCenter: API.OperationMethod<
   GetCassandraDataCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetCassandraDataCenterRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetCassandraDataCenterResponse>,
+  input: __S(7616, __c238, 0) as any as S.Schema<GetCassandraDataCenterRequest>,
+  output: __S(6624, __c207, 0) as any as S.Schema<GetCassandraDataCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9666,8 +9674,8 @@ export const GetCassandraResourceCassandraKeyspace: API.OperationMethod<
   GetCassandraResourceCassandraKeyspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetCassandraResourceCassandraKeyspaceRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GetCassandraResourceCassandraKeyspaceResponse>,
+  input: __S(7648, __c239, 0) as any as S.Schema<GetCassandraResourceCassandraKeyspaceRequest>,
+  output: __S(7680, __c240, 0) as any as S.Schema<GetCassandraResourceCassandraKeyspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9682,14 +9690,14 @@ export const GetCassandraResourceCassandraKeyspaceThroughput: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    166,
-    __c20,
-    6,
+    7712,
+    __c241,
+    0,
   ) as any as S.Schema<GetCassandraResourceCassandraKeyspaceThroughputRequest>,
   output: __S(
-    172,
-    __c21,
-    4,
+    7744,
+    __c242,
+    0,
   ) as any as S.Schema<GetCassandraResourceCassandraKeyspaceThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9704,11 +9712,15 @@ export const GetCassandraResourceCassandraRoleAssignment: API.OperationMethod<
   GetCassandraResourceCassandraRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<GetCassandraResourceCassandraRoleAssignmentRequest>,
+  input: __S(
+    7808,
+    __c244,
+    0,
+  ) as any as S.Schema<GetCassandraResourceCassandraRoleAssignmentRequest>,
   output: __S(
-    174,
-    __c21,
-    6,
+    7840,
+    __c245,
+    0,
   ) as any as S.Schema<GetCassandraResourceCassandraRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9723,10 +9735,14 @@ export const GetCassandraResourceCassandraRoleDefinition: API.OperationMethod<
   GetCassandraResourceCassandraRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<GetCassandraResourceCassandraRoleDefinitionRequest>,
+  input: __S(
+    7872,
+    __c246,
+    0,
+  ) as any as S.Schema<GetCassandraResourceCassandraRoleDefinitionRequest>,
   output: __S(
-    176,
-    __c22,
+    7904,
+    __c247,
     0,
   ) as any as S.Schema<GetCassandraResourceCassandraRoleDefinitionResponse>,
   errors: [UnknownAzureError],
@@ -9742,8 +9758,8 @@ export const GetCassandraResourceCassandraTable: API.OperationMethod<
   GetCassandraResourceCassandraTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<GetCassandraResourceCassandraTableRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetCassandraResourceCassandraTableResponse>,
+  input: __S(7936, __c248, 0) as any as S.Schema<GetCassandraResourceCassandraTableRequest>,
+  output: __S(8896, __c278, 0) as any as S.Schema<GetCassandraResourceCassandraTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9757,11 +9773,15 @@ export const GetCassandraResourceCassandraTableThroughput: API.OperationMethod<
   GetCassandraResourceCassandraTableThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<GetCassandraResourceCassandraTableThroughputRequest>,
+  input: __S(
+    7968,
+    __c249,
+    0,
+  ) as any as S.Schema<GetCassandraResourceCassandraTableThroughputRequest>,
   output: __S(
-    179,
-    __c22,
-    3,
+    8000,
+    __c250,
+    0,
   ) as any as S.Schema<GetCassandraResourceCassandraTableThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9776,8 +9796,8 @@ export const GetDatabaseAccount: API.OperationMethod<
   GetDatabaseAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<GetDatabaseAccountRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<GetDatabaseAccountResponse>,
+  input: __S(8032, __c251, 0) as any as S.Schema<GetDatabaseAccountRequest>,
+  output: __S(8033, __c251, 1) as any as S.Schema<GetDatabaseAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9791,8 +9811,8 @@ export const GetFleet: API.OperationMethod<
   GetFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<GetFleetRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GetFleetResponse>,
+  input: __S(8064, __c252, 0) as any as S.Schema<GetFleetRequest>,
+  output: __S(9537, __c298, 1) as any as S.Schema<GetFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9806,8 +9826,8 @@ export const GetFleetspace: API.OperationMethod<
   GetFleetspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<GetFleetspaceRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GetFleetspaceResponse>,
+  input: __S(8192, __c256, 0) as any as S.Schema<GetFleetspaceRequest>,
+  output: __S(10178, __c318, 2) as any as S.Schema<GetFleetspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9821,8 +9841,8 @@ export const GetFleetspaceAccount: API.OperationMethod<
   GetFleetspaceAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<GetFleetspaceAccountRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<GetFleetspaceAccountResponse>,
+  input: __S(8224, __c257, 0) as any as S.Schema<GetFleetspaceAccountRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<GetFleetspaceAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9837,11 +9857,11 @@ export const GetGremlinResourceContinuousBackupInformation: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    185,
-    __c23,
-    1,
+    8256,
+    __c258,
+    0,
   ) as any as S.Schema<GetGremlinResourceContinuousBackupInformationRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<BackupInformation>,
+  output: __S(8289, __c259, 1) as any as S.Schema<BackupInformation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9855,8 +9875,8 @@ export const GetGremlinResourceGremlinDatabase: API.OperationMethod<
   GetGremlinResourceGremlinDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<GetGremlinResourceGremlinDatabaseRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<GetGremlinResourceGremlinDatabaseResponse>,
+  input: __S(8320, __c260, 0) as any as S.Schema<GetGremlinResourceGremlinDatabaseRequest>,
+  output: __S(8448, __c264, 0) as any as S.Schema<GetGremlinResourceGremlinDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9870,11 +9890,15 @@ export const GetGremlinResourceGremlinDatabaseThroughput: API.OperationMethod<
   GetGremlinResourceGremlinDatabaseThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<GetGremlinResourceGremlinDatabaseThroughputRequest>,
+  input: __S(
+    8480,
+    __c265,
+    0,
+  ) as any as S.Schema<GetGremlinResourceGremlinDatabaseThroughputRequest>,
   output: __S(
-    179,
-    __c22,
-    3,
+    8000,
+    __c250,
+    0,
   ) as any as S.Schema<GetGremlinResourceGremlinDatabaseThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -9889,8 +9913,8 @@ export const GetGremlinResourceGremlinGraph: API.OperationMethod<
   GetGremlinResourceGremlinGraphError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<GetGremlinResourceGremlinGraphRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<GetGremlinResourceGremlinGraphResponse>,
+  input: __S(8512, __c266, 0) as any as S.Schema<GetGremlinResourceGremlinGraphRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<GetGremlinResourceGremlinGraphResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9904,8 +9928,8 @@ export const GetGremlinResourceGremlinGraphThroughput: API.OperationMethod<
   GetGremlinResourceGremlinGraphThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetGremlinResourceGremlinGraphThroughputRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<GetGremlinResourceGremlinGraphThroughputResponse>,
+  input: __S(8672, __c271, 0) as any as S.Schema<GetGremlinResourceGremlinGraphThroughputRequest>,
+  output: __S(8000, __c250, 0) as any as S.Schema<GetGremlinResourceGremlinGraphThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9919,8 +9943,8 @@ export const GetGremlinResourceGremlinRoleAssignment: API.OperationMethod<
   GetGremlinResourceGremlinRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<GetGremlinResourceGremlinRoleAssignmentRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<GetGremlinResourceGremlinRoleAssignmentResponse>,
+  input: __S(8704, __c272, 0) as any as S.Schema<GetGremlinResourceGremlinRoleAssignmentRequest>,
+  output: __S(7840, __c245, 0) as any as S.Schema<GetGremlinResourceGremlinRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9934,8 +9958,8 @@ export const GetGremlinResourceGremlinRoleDefinition: API.OperationMethod<
   GetGremlinResourceGremlinRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<GetGremlinResourceGremlinRoleDefinitionRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<GetGremlinResourceGremlinRoleDefinitionResponse>,
+  input: __S(8736, __c273, 0) as any as S.Schema<GetGremlinResourceGremlinRoleDefinitionRequest>,
+  output: __S(7904, __c247, 0) as any as S.Schema<GetGremlinResourceGremlinRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9949,8 +9973,8 @@ export const GetLocation: API.OperationMethod<
   GetLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<GetLocationRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<GetLocationResponse>,
+  input: __S(8768, __c274, 0) as any as S.Schema<GetLocationRequest>,
+  output: __S(8801, __c275, 1) as any as S.Schema<GetLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9965,11 +9989,11 @@ export const GetMongoDBResourceContinuousBackupInformation: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    226,
-    __c28,
-    2,
+    8960,
+    __c280,
+    0,
   ) as any as S.Schema<GetMongoDBResourceContinuousBackupInformationRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<BackupInformation>,
+  output: __S(8289, __c259, 1) as any as S.Schema<BackupInformation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9983,8 +10007,8 @@ export const GetMongoDBResourceMongoDBCollection: API.OperationMethod<
   GetMongoDBResourceMongoDBCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<GetMongoDBResourceMongoDBCollectionRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<GetMongoDBResourceMongoDBCollectionResponse>,
+  input: __S(8992, __c281, 0) as any as S.Schema<GetMongoDBResourceMongoDBCollectionRequest>,
+  output: __S(9030, __c282, 6) as any as S.Schema<GetMongoDBResourceMongoDBCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9999,14 +10023,14 @@ export const GetMongoDBResourceMongoDBCollectionThroughput: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    235,
-    __c29,
-    3,
+    9056,
+    __c283,
+    0,
   ) as any as S.Schema<GetMongoDBResourceMongoDBCollectionThroughputRequest>,
   output: __S(
-    179,
-    __c22,
-    3,
+    8000,
+    __c250,
+    0,
   ) as any as S.Schema<GetMongoDBResourceMongoDBCollectionThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10021,8 +10045,8 @@ export const GetMongoDBResourceMongoDBDatabase: API.OperationMethod<
   GetMongoDBResourceMongoDBDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseResponse>,
+  input: __S(9088, __c284, 0) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseRequest>,
+  output: __S(9120, __c285, 0) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10036,11 +10060,15 @@ export const GetMongoDBResourceMongoDBDatabaseThroughput: API.OperationMethod<
   GetMongoDBResourceMongoDBDatabaseThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseThroughputRequest>,
+  input: __S(
+    9152,
+    __c286,
+    0,
+  ) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseThroughputRequest>,
   output: __S(
-    179,
-    __c22,
-    3,
+    8000,
+    __c250,
+    0,
   ) as any as S.Schema<GetMongoDBResourceMongoDBDatabaseThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10055,8 +10083,8 @@ export const GetMongoDBResourceMongoRoleDefinition: API.OperationMethod<
   GetMongoDBResourceMongoRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<GetMongoDBResourceMongoRoleDefinitionRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<GetMongoDBResourceMongoRoleDefinitionResponse>,
+  input: __S(9184, __c287, 0) as any as S.Schema<GetMongoDBResourceMongoRoleDefinitionRequest>,
+  output: __S(9220, __c288, 4) as any as S.Schema<GetMongoDBResourceMongoRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10070,8 +10098,8 @@ export const GetMongoDBResourceMongoUserDefinition: API.OperationMethod<
   GetMongoDBResourceMongoUserDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<GetMongoDBResourceMongoUserDefinitionRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<GetMongoDBResourceMongoUserDefinitionResponse>,
+  input: __S(9280, __c290, 0) as any as S.Schema<GetMongoDBResourceMongoUserDefinitionRequest>,
+  output: __S(9313, __c291, 1) as any as S.Schema<GetMongoDBResourceMongoUserDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10085,8 +10113,8 @@ export const GetMongoMIResourceMongoMIRoleAssignment: API.OperationMethod<
   GetMongoMIResourceMongoMIRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<GetMongoMIResourceMongoMIRoleAssignmentRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<GetMongoMIResourceMongoMIRoleAssignmentResponse>,
+  input: __S(9344, __c292, 0) as any as S.Schema<GetMongoMIResourceMongoMIRoleAssignmentRequest>,
+  output: __S(7840, __c245, 0) as any as S.Schema<GetMongoMIResourceMongoMIRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10100,8 +10128,8 @@ export const GetMongoMIResourceMongoMIRoleDefinition: API.OperationMethod<
   GetMongoMIResourceMongoMIRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<GetMongoMIResourceMongoMIRoleDefinitionRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<GetMongoMIResourceMongoMIRoleDefinitionResponse>,
+  input: __S(9376, __c293, 0) as any as S.Schema<GetMongoMIResourceMongoMIRoleDefinitionRequest>,
+  output: __S(7904, __c247, 0) as any as S.Schema<GetMongoMIResourceMongoMIRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10115,8 +10143,8 @@ export const GetNotebookWorkspace: API.OperationMethod<
   GetNotebookWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<GetNotebookWorkspaceRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<GetNotebookWorkspaceResponse>,
+  input: __S(9408, __c294, 0) as any as S.Schema<GetNotebookWorkspaceRequest>,
+  output: __S(9472, __c296, 0) as any as S.Schema<GetNotebookWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10130,8 +10158,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(9568, __c299, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(1667, __c52, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10145,8 +10173,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(9600, __c300, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(9601, __c300, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10160,8 +10188,8 @@ export const GetRestorableDatabaseAccountByLocation: API.OperationMethod<
   GetRestorableDatabaseAccountByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<GetRestorableDatabaseAccountByLocationRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<GetRestorableDatabaseAccountByLocationResponse>,
+  input: __S(9664, __c302, 0) as any as S.Schema<GetRestorableDatabaseAccountByLocationRequest>,
+  output: __S(9699, __c303, 3) as any as S.Schema<GetRestorableDatabaseAccountByLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10175,8 +10203,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<GetServiceRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GetServiceResponse>,
+  input: __S(9728, __c304, 0) as any as S.Schema<GetServiceRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10190,8 +10218,8 @@ export const GetSqlResourceClientEncryptionKey: API.OperationMethod<
   GetSqlResourceClientEncryptionKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<GetSqlResourceClientEncryptionKeyRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<GetSqlResourceClientEncryptionKeyResponse>,
+  input: __S(9760, __c305, 0) as any as S.Schema<GetSqlResourceClientEncryptionKeyRequest>,
+  output: __S(9795, __c306, 3) as any as S.Schema<GetSqlResourceClientEncryptionKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10205,8 +10233,8 @@ export const GetSqlResourceContinuousBackupInformation: API.OperationMethod<
   GetSqlResourceContinuousBackupInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<GetSqlResourceContinuousBackupInformationRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<BackupInformation>,
+  input: __S(9824, __c307, 0) as any as S.Schema<GetSqlResourceContinuousBackupInformationRequest>,
+  output: __S(8289, __c259, 1) as any as S.Schema<BackupInformation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10220,8 +10248,8 @@ export const GetSqlResourceSqlContainer: API.OperationMethod<
   GetSqlResourceSqlContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<GetSqlResourceSqlContainerRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<GetSqlResourceSqlContainerResponse>,
+  input: __S(9856, __c308, 0) as any as S.Schema<GetSqlResourceSqlContainerRequest>,
+  output: __S(9952, __c311, 0) as any as S.Schema<GetSqlResourceSqlContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10235,8 +10263,8 @@ export const GetSqlResourceSqlContainerThroughput: API.OperationMethod<
   GetSqlResourceSqlContainerThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<GetSqlResourceSqlContainerThroughputRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<GetSqlResourceSqlContainerThroughputResponse>,
+  input: __S(9984, __c312, 0) as any as S.Schema<GetSqlResourceSqlContainerThroughputRequest>,
+  output: __S(8000, __c250, 0) as any as S.Schema<GetSqlResourceSqlContainerThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10250,8 +10278,8 @@ export const GetSqlResourceSqlDatabase: API.OperationMethod<
   GetSqlResourceSqlDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<GetSqlResourceSqlDatabaseRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<GetSqlResourceSqlDatabaseResponse>,
+  input: __S(10016, __c313, 0) as any as S.Schema<GetSqlResourceSqlDatabaseRequest>,
+  output: __S(10080, __c315, 0) as any as S.Schema<GetSqlResourceSqlDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10265,8 +10293,8 @@ export const GetSqlResourceSqlDatabaseThroughput: API.OperationMethod<
   GetSqlResourceSqlDatabaseThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<GetSqlResourceSqlDatabaseThroughputRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<GetSqlResourceSqlDatabaseThroughputResponse>,
+  input: __S(10112, __c316, 0) as any as S.Schema<GetSqlResourceSqlDatabaseThroughputRequest>,
+  output: __S(8000, __c250, 0) as any as S.Schema<GetSqlResourceSqlDatabaseThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10280,8 +10308,8 @@ export const GetSqlResourceSqlRoleAssignment: API.OperationMethod<
   GetSqlResourceSqlRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<GetSqlResourceSqlRoleAssignmentRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<GetSqlResourceSqlRoleAssignmentResponse>,
+  input: __S(10208, __c319, 0) as any as S.Schema<GetSqlResourceSqlRoleAssignmentRequest>,
+  output: __S(10240, __c320, 0) as any as S.Schema<GetSqlResourceSqlRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10295,8 +10323,8 @@ export const GetSqlResourceSqlRoleDefinition: API.OperationMethod<
   GetSqlResourceSqlRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<GetSqlResourceSqlRoleDefinitionRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<GetSqlResourceSqlRoleDefinitionResponse>,
+  input: __S(10272, __c321, 0) as any as S.Schema<GetSqlResourceSqlRoleDefinitionRequest>,
+  output: __S(10305, __c322, 1) as any as S.Schema<GetSqlResourceSqlRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10310,8 +10338,8 @@ export const GetSqlResourceSqlStoredProcedure: API.OperationMethod<
   GetSqlResourceSqlStoredProcedureError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<GetSqlResourceSqlStoredProcedureRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<GetSqlResourceSqlStoredProcedureResponse>,
+  input: __S(10336, __c323, 0) as any as S.Schema<GetSqlResourceSqlStoredProcedureRequest>,
+  output: __S(10370, __c324, 2) as any as S.Schema<GetSqlResourceSqlStoredProcedureResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10325,8 +10353,8 @@ export const GetSqlResourceSqlUserDefinedFunction: API.OperationMethod<
   GetSqlResourceSqlUserDefinedFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<GetSqlResourceSqlUserDefinedFunctionRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<GetSqlResourceSqlUserDefinedFunctionResponse>,
+  input: __S(10400, __c325, 0) as any as S.Schema<GetSqlResourceSqlUserDefinedFunctionRequest>,
+  output: __S(10370, __c324, 2) as any as S.Schema<GetSqlResourceSqlUserDefinedFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10340,8 +10368,12 @@ export const GetTableResourceContinuousBackupInformation: API.OperationMethod<
   GetTableResourceContinuousBackupInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<GetTableResourceContinuousBackupInformationRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<BackupInformation>,
+  input: __S(
+    10432,
+    __c326,
+    0,
+  ) as any as S.Schema<GetTableResourceContinuousBackupInformationRequest>,
+  output: __S(8289, __c259, 1) as any as S.Schema<BackupInformation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10355,8 +10387,8 @@ export const GetTableResourceTable: API.OperationMethod<
   GetTableResourceTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<GetTableResourceTableRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GetTableResourceTableResponse>,
+  input: __S(10464, __c327, 0) as any as S.Schema<GetTableResourceTableRequest>,
+  output: __S(10528, __c329, 0) as any as S.Schema<GetTableResourceTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10370,8 +10402,8 @@ export const GetTableResourceTableRoleAssignment: API.OperationMethod<
   GetTableResourceTableRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<GetTableResourceTableRoleAssignmentRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<GetTableResourceTableRoleAssignmentResponse>,
+  input: __S(10560, __c330, 0) as any as S.Schema<GetTableResourceTableRoleAssignmentRequest>,
+  output: __S(7840, __c245, 0) as any as S.Schema<GetTableResourceTableRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10385,8 +10417,8 @@ export const GetTableResourceTableRoleDefinition: API.OperationMethod<
   GetTableResourceTableRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<GetTableResourceTableRoleDefinitionRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<GetTableResourceTableRoleDefinitionResponse>,
+  input: __S(10592, __c331, 0) as any as S.Schema<GetTableResourceTableRoleDefinitionRequest>,
+  output: __S(7904, __c247, 0) as any as S.Schema<GetTableResourceTableRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10400,8 +10432,8 @@ export const GetTableResourceTableThroughput: API.OperationMethod<
   GetTableResourceTableThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<GetTableResourceTableThroughputRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<GetTableResourceTableThroughputResponse>,
+  input: __S(10624, __c332, 0) as any as S.Schema<GetTableResourceTableThroughputRequest>,
+  output: __S(8000, __c250, 0) as any as S.Schema<GetTableResourceTableThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10415,10 +10447,14 @@ export const GremlinResourcesCreateUpdateGremlinDatabase: API.OperationMethod<
   GremlinResourcesCreateUpdateGremlinDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<GremlinResourcesCreateUpdateGremlinDatabaseRequest>,
+  input: __S(
+    10656,
+    __c333,
+    0,
+  ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinDatabaseRequest>,
   output: __S(
-    192,
-    __c24,
+    8448,
+    __c264,
     0,
   ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinDatabaseResponse>,
   errors: [UnknownAzureError],
@@ -10434,8 +10470,8 @@ export const GremlinResourcesCreateUpdateGremlinGraph: API.OperationMethod<
   GremlinResourcesCreateUpdateGremlinGraphError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<GremlinResourcesCreateUpdateGremlinGraphRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<GremlinResourcesCreateUpdateGremlinGraphResponse>,
+  input: __S(418, __c13, 2) as any as S.Schema<GremlinResourcesCreateUpdateGremlinGraphRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<GremlinResourcesCreateUpdateGremlinGraphResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10450,14 +10486,14 @@ export const GremlinResourcesCreateUpdateGremlinRoleAssignment: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    316,
-    __c39,
-    4,
+    480,
+    __c15,
+    0,
   ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinRoleAssignmentRequest>,
   output: __S(
-    317,
-    __c39,
-    5,
+    512,
+    __c16,
+    0,
   ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10473,14 +10509,14 @@ export const GremlinResourcesCreateUpdateGremlinRoleDefinition: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    318,
-    __c39,
-    6,
+    544,
+    __c17,
+    0,
   ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest>,
   output: __S(
-    319,
-    __c39,
-    7,
+    576,
+    __c18,
+    0,
   ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10495,8 +10531,8 @@ export const InvokeCassandraClusterCommand: API.OperationMethod<
   InvokeCassandraClusterCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<InvokeCassandraClusterCommandRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<InvokeCassandraClusterCommandResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<InvokeCassandraClusterCommandRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<InvokeCassandraClusterCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10510,8 +10546,8 @@ export const ListCassandraClusterByResourceGroup: API.OperationMethod<
   ListCassandraClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<ListCassandraClusterByResourceGroupRequest>,
-  output: __S(324, __c40, 4) as any as S.Schema<ListClusters>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListCassandraClusterByResourceGroupRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<ListClusters>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10525,8 +10561,8 @@ export const ListCassandraClusterBySubscription: API.OperationMethod<
   ListCassandraClusterBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<ListCassandraClusterBySubscriptionRequest>,
-  output: __S(324, __c40, 4) as any as S.Schema<ListClusters>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListCassandraClusterBySubscriptionRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<ListClusters>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10540,8 +10576,8 @@ export const ListCassandraDataCenters: API.OperationMethod<
   ListCassandraDataCentersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<ListCassandraDataCentersRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<ListDataCenters>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListCassandraDataCentersRequest>,
+  output: __S(739, __c23, 3) as any as S.Schema<ListDataCenters>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10555,8 +10591,8 @@ export const ListCassandraResourceCassandraKeyspaces: API.OperationMethod<
   ListCassandraResourceCassandraKeyspacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<ListCassandraResourceCassandraKeyspacesRequest>,
-  output: __S(332, __c41, 4) as any as S.Schema<CassandraKeyspaceListResult>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListCassandraResourceCassandraKeyspacesRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<CassandraKeyspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10571,11 +10607,11 @@ export const ListCassandraResourceCassandraRoleAssignments: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    333,
-    __c41,
-    5,
+    800,
+    __c25,
+    0,
   ) as any as S.Schema<ListCassandraResourceCassandraRoleAssignmentsRequest>,
-  output: __S(335, __c41, 7) as any as S.Schema<CassandraRoleAssignmentListResult>,
+  output: __S(833, __c26, 1) as any as S.Schema<CassandraRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10590,11 +10626,11 @@ export const ListCassandraResourceCassandraRoleDefinitions: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    336,
-    __c42,
+    864,
+    __c27,
     0,
   ) as any as S.Schema<ListCassandraResourceCassandraRoleDefinitionsRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<CassandraRoleDefinitionListResult>,
+  output: __S(897, __c28, 1) as any as S.Schema<CassandraRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10608,8 +10644,8 @@ export const ListCassandraResourceCassandraTables: API.OperationMethod<
   ListCassandraResourceCassandraTablesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<ListCassandraResourceCassandraTablesRequest>,
-  output: __S(342, __c42, 6) as any as S.Schema<CassandraTableListResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListCassandraResourceCassandraTablesRequest>,
+  output: __S(995, __c31, 3) as any as S.Schema<CassandraTableListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10623,8 +10659,8 @@ export const ListCollectionMetricDefinitions: API.OperationMethod<
   ListCollectionMetricDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<ListCollectionMetricDefinitionsRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<MetricDefinitionsListResult>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListCollectionMetricDefinitionsRequest>,
+  output: __S(1092, __c34, 4) as any as S.Schema<MetricDefinitionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10638,8 +10674,8 @@ export const ListCollectionMetrics: API.OperationMethod<
   ListCollectionMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<ListCollectionMetricsRequest>,
-  output: __S(355, __c44, 3) as any as S.Schema<MetricListResult>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListCollectionMetricsRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10653,8 +10689,8 @@ export const ListCollectionPartitionMetrics: API.OperationMethod<
   ListCollectionPartitionMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<ListCollectionPartitionMetricsRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<PartitionMetricListResult>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListCollectionPartitionMetricsRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<PartitionMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10668,8 +10704,8 @@ export const ListCollectionPartitionRegionMetrics: API.OperationMethod<
   ListCollectionPartitionRegionMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<ListCollectionPartitionRegionMetricsRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<PartitionMetricListResult>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListCollectionPartitionRegionMetricsRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<PartitionMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10683,8 +10719,8 @@ export const ListCollectionPartitionUsages: API.OperationMethod<
   ListCollectionPartitionUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<ListCollectionPartitionUsagesRequest>,
-  output: __S(364, __c45, 4) as any as S.Schema<PartitionUsagesResult>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListCollectionPartitionUsagesRequest>,
+  output: __S(1315, __c41, 3) as any as S.Schema<PartitionUsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10698,8 +10734,8 @@ export const ListCollectionRegionMetrics: API.OperationMethod<
   ListCollectionRegionMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365, __c45, 5) as any as S.Schema<ListCollectionRegionMetricsRequest>,
-  output: __S(355, __c44, 3) as any as S.Schema<MetricListResult>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListCollectionRegionMetricsRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10713,8 +10749,8 @@ export const ListCollectionUsages: API.OperationMethod<
   ListCollectionUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<ListCollectionUsagesRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<UsagesResult>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListCollectionUsagesRequest>,
+  output: __S(1410, __c44, 2) as any as S.Schema<UsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10728,8 +10764,8 @@ export const ListDatabaseAccountByResourceGroup: API.OperationMethod<
   ListDatabaseAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<ListDatabaseAccountByResourceGroupRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<DatabaseAccountsListResult>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ListDatabaseAccountByResourceGroupRequest>,
+  output: __S(1474, __c46, 2) as any as S.Schema<DatabaseAccountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10743,8 +10779,8 @@ export const ListDatabaseAccountConnectionStrings: API.OperationMethod<
   ListDatabaseAccountConnectionStringsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<ListDatabaseAccountConnectionStringsRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<DatabaseAccountListConnectionStringsResult>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListDatabaseAccountConnectionStringsRequest>,
+  output: __S(1507, __c47, 3) as any as S.Schema<DatabaseAccountListConnectionStringsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10758,8 +10794,8 @@ export const ListDatabaseAccountKeys: API.OperationMethod<
   ListDatabaseAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<ListDatabaseAccountKeysRequest>,
-  output: __S(379, __c47, 3) as any as S.Schema<ListDatabaseAccountKeysResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListDatabaseAccountKeysRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<ListDatabaseAccountKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10773,8 +10809,8 @@ export const ListDatabaseAccountMetricDefinitions: API.OperationMethod<
   ListDatabaseAccountMetricDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<ListDatabaseAccountMetricDefinitionsRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<MetricDefinitionsListResult>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListDatabaseAccountMetricDefinitionsRequest>,
+  output: __S(1092, __c34, 4) as any as S.Schema<MetricDefinitionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10788,8 +10824,8 @@ export const ListDatabaseAccountMetrics: API.OperationMethod<
   ListDatabaseAccountMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381, __c47, 5) as any as S.Schema<ListDatabaseAccountMetricsRequest>,
-  output: __S(355, __c44, 3) as any as S.Schema<MetricListResult>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListDatabaseAccountMetricsRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10803,8 +10839,8 @@ export const ListDatabaseAccountRegionMetrics: API.OperationMethod<
   ListDatabaseAccountRegionMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382, __c47, 6) as any as S.Schema<ListDatabaseAccountRegionMetricsRequest>,
-  output: __S(355, __c44, 3) as any as S.Schema<MetricListResult>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListDatabaseAccountRegionMetricsRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10818,8 +10854,8 @@ export const ListDatabaseAccounts: API.OperationMethod<
   ListDatabaseAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<ListDatabaseAccountsRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<DatabaseAccountsListResult>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListDatabaseAccountsRequest>,
+  output: __S(1474, __c46, 2) as any as S.Schema<DatabaseAccountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10833,8 +10869,8 @@ export const ListDatabaseAccountUsages: API.OperationMethod<
   ListDatabaseAccountUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<ListDatabaseAccountUsagesRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<UsagesResult>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListDatabaseAccountUsagesRequest>,
+  output: __S(1410, __c44, 2) as any as S.Schema<UsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10848,8 +10884,8 @@ export const ListDatabaseMetricDefinitions: API.OperationMethod<
   ListDatabaseMetricDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<ListDatabaseMetricDefinitionsRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<MetricDefinitionsListResult>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListDatabaseMetricDefinitionsRequest>,
+  output: __S(1092, __c34, 4) as any as S.Schema<MetricDefinitionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10863,8 +10899,8 @@ export const ListDatabaseMetrics: API.OperationMethod<
   ListDatabaseMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<ListDatabaseMetricsRequest>,
-  output: __S(355, __c44, 3) as any as S.Schema<MetricListResult>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListDatabaseMetricsRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10878,8 +10914,8 @@ export const ListDatabaseUsages: API.OperationMethod<
   ListDatabaseUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<ListDatabaseUsagesRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<UsagesResult>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListDatabaseUsagesRequest>,
+  output: __S(1410, __c44, 2) as any as S.Schema<UsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10893,8 +10929,8 @@ export const ListFleet: API.OperationMethod<
   ListFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<ListFleetRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<FleetListResult>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListFleetRequest>,
+  output: __S(2017, __c63, 1) as any as S.Schema<FleetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10908,8 +10944,8 @@ export const ListFleetByResourceGroup: API.OperationMethod<
   ListFleetByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<ListFleetByResourceGroupRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<FleetListResult>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListFleetByResourceGroupRequest>,
+  output: __S(2017, __c63, 1) as any as S.Schema<FleetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10923,8 +10959,8 @@ export const ListFleetspace: API.OperationMethod<
   ListFleetspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<ListFleetspaceRequest>,
-  output: __S(394, __c49, 2) as any as S.Schema<FleetspaceListResult>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListFleetspaceRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<FleetspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10938,8 +10974,8 @@ export const ListFleetspaceAccount: API.OperationMethod<
   ListFleetspaceAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<ListFleetspaceAccountRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<FleetspaceAccountListResult>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListFleetspaceAccountRequest>,
+  output: __S(2146, __c67, 2) as any as S.Schema<FleetspaceAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10953,8 +10989,8 @@ export const ListGremlinResourceGremlinDatabases: API.OperationMethod<
   ListGremlinResourceGremlinDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<ListGremlinResourceGremlinDatabasesRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<GremlinDatabaseListResult>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListGremlinResourceGremlinDatabasesRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<GremlinDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10968,8 +11004,8 @@ export const ListGremlinResourceGremlinGraphs: API.OperationMethod<
   ListGremlinResourceGremlinGraphsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<ListGremlinResourceGremlinGraphsRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<GremlinGraphListResult>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListGremlinResourceGremlinGraphsRequest>,
+  output: __S(2211, __c69, 3) as any as S.Schema<GremlinGraphListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10983,8 +11019,8 @@ export const ListGremlinResourceGremlinRoleAssignments: API.OperationMethod<
   ListGremlinResourceGremlinRoleAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<ListGremlinResourceGremlinRoleAssignmentsRequest>,
-  output: __S(335, __c41, 7) as any as S.Schema<GremlinRoleAssignmentListResult>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListGremlinResourceGremlinRoleAssignmentsRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<GremlinRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10998,8 +11034,8 @@ export const ListGremlinResourceGremlinRoleDefinitions: API.OperationMethod<
   ListGremlinResourceGremlinRoleDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<ListGremlinResourceGremlinRoleDefinitionsRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<GremlinRoleDefinitionListResult>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListGremlinResourceGremlinRoleDefinitionsRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<GremlinRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11013,8 +11049,8 @@ export const ListLocations: API.OperationMethod<
   ListLocationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<ListLocationsRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<LocationListResult>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListLocationsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<LocationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11028,8 +11064,8 @@ export const ListMongoDBResourceMongoDBCollections: API.OperationMethod<
   ListMongoDBResourceMongoDBCollectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<ListMongoDBResourceMongoDBCollectionsRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<MongoDBCollectionListResult>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListMongoDBResourceMongoDBCollectionsRequest>,
+  output: __S(2338, __c73, 2) as any as S.Schema<MongoDBCollectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11043,8 +11079,8 @@ export const ListMongoDBResourceMongoDBDatabases: API.OperationMethod<
   ListMongoDBResourceMongoDBDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<ListMongoDBResourceMongoDBDatabasesRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<MongoDBDatabaseListResult>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListMongoDBResourceMongoDBDatabasesRequest>,
+  output: __S(2370, __c74, 2) as any as S.Schema<MongoDBDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11058,8 +11094,8 @@ export const ListMongoDBResourceMongoRoleDefinitions: API.OperationMethod<
   ListMongoDBResourceMongoRoleDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<ListMongoDBResourceMongoRoleDefinitionsRequest>,
-  output: __S(418, __c52, 2) as any as S.Schema<MongoRoleDefinitionListResult>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListMongoDBResourceMongoRoleDefinitionsRequest>,
+  output: __S(2466, __c77, 2) as any as S.Schema<MongoRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11073,8 +11109,8 @@ export const ListMongoDBResourceMongoUserDefinitions: API.OperationMethod<
   ListMongoDBResourceMongoUserDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<ListMongoDBResourceMongoUserDefinitionsRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<MongoUserDefinitionListResult>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ListMongoDBResourceMongoUserDefinitionsRequest>,
+  output: __S(2498, __c78, 2) as any as S.Schema<MongoUserDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11088,8 +11124,8 @@ export const ListMongoMIResourceMongoMIRoleAssignments: API.OperationMethod<
   ListMongoMIResourceMongoMIRoleAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<ListMongoMIResourceMongoMIRoleAssignmentsRequest>,
-  output: __S(335, __c41, 7) as any as S.Schema<MongoMIRoleAssignmentListResult>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ListMongoMIResourceMongoMIRoleAssignmentsRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<MongoMIRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11103,8 +11139,8 @@ export const ListMongoMIResourceMongoMIRoleDefinitions: API.OperationMethod<
   ListMongoMIResourceMongoMIRoleDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<ListMongoMIResourceMongoMIRoleDefinitionsRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<MongoMIRoleDefinitionListResult>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListMongoMIResourceMongoMIRoleDefinitionsRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<MongoMIRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11118,8 +11154,8 @@ export const ListNotebookWorkspaceByDatabaseAccount: API.OperationMethod<
   ListNotebookWorkspaceByDatabaseAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<ListNotebookWorkspaceByDatabaseAccountRequest>,
-  output: __S(427, __c53, 3) as any as S.Schema<NotebookWorkspaceListResult>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ListNotebookWorkspaceByDatabaseAccountRequest>,
+  output: __S(2595, __c81, 3) as any as S.Schema<NotebookWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11133,8 +11169,8 @@ export const ListNotebookWorkspaceConnectionInfo: API.OperationMethod<
   ListNotebookWorkspaceConnectionInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<ListNotebookWorkspaceConnectionInfoRequest>,
-  output: __S(429, __c53, 5) as any as S.Schema<NotebookWorkspaceConnectionInfoResult>,
+  input: __S(2624, __c82, 0) as any as S.Schema<ListNotebookWorkspaceConnectionInfoRequest>,
+  output: __S(2625, __c82, 1) as any as S.Schema<NotebookWorkspaceConnectionInfoResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11148,8 +11184,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<OperationListResult>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2660, __c83, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11163,8 +11199,8 @@ export const ListPartitionKeyRangeIdMetrics: API.OperationMethod<
   ListPartitionKeyRangeIdMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<ListPartitionKeyRangeIdMetricsRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<PartitionMetricListResult>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ListPartitionKeyRangeIdMetricsRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<PartitionMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11178,8 +11214,8 @@ export const ListPartitionKeyRangeIdRegionMetrics: API.OperationMethod<
   ListPartitionKeyRangeIdRegionMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<ListPartitionKeyRangeIdRegionMetricsRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<PartitionMetricListResult>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListPartitionKeyRangeIdRegionMetricsRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<PartitionMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11193,8 +11229,8 @@ export const ListPercentileMetrics: API.OperationMethod<
   ListPercentileMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<ListPercentileMetricsRequest>,
-  output: __S(442, __c55, 2) as any as S.Schema<PercentileMetricListResult>,
+  input: __S(2752, __c86, 0) as any as S.Schema<ListPercentileMetricsRequest>,
+  output: __S(2788, __c87, 4) as any as S.Schema<PercentileMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11208,8 +11244,8 @@ export const ListPercentileSourceTargetMetrics: API.OperationMethod<
   ListPercentileSourceTargetMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<ListPercentileSourceTargetMetricsRequest>,
-  output: __S(442, __c55, 2) as any as S.Schema<PercentileMetricListResult>,
+  input: __S(2848, __c89, 0) as any as S.Schema<ListPercentileSourceTargetMetricsRequest>,
+  output: __S(2788, __c87, 4) as any as S.Schema<PercentileMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11223,8 +11259,8 @@ export const ListPercentileTargetMetrics: API.OperationMethod<
   ListPercentileTargetMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<ListPercentileTargetMetricsRequest>,
-  output: __S(442, __c55, 2) as any as S.Schema<PercentileMetricListResult>,
+  input: __S(2880, __c90, 0) as any as S.Schema<ListPercentileTargetMetricsRequest>,
+  output: __S(2788, __c87, 4) as any as S.Schema<PercentileMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11239,11 +11275,11 @@ export const ListPrivateEndpointConnectionByDatabaseAccount: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    445,
-    __c55,
-    5,
+    2912,
+    __c91,
+    0,
   ) as any as S.Schema<ListPrivateEndpointConnectionByDatabaseAccountRequest>,
-  output: __S(446, __c55, 6) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  output: __S(2913, __c91, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11257,8 +11293,8 @@ export const ListPrivateLinkResourceByDatabaseAccount: API.OperationMethod<
   ListPrivateLinkResourceByDatabaseAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<ListPrivateLinkResourceByDatabaseAccountRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(2944, __c92, 0) as any as S.Schema<ListPrivateLinkResourceByDatabaseAccountRequest>,
+  output: __S(2947, __c92, 3) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11272,8 +11308,8 @@ export const ListRestorableDatabaseAccountByLocation: API.OperationMethod<
   ListRestorableDatabaseAccountByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<ListRestorableDatabaseAccountByLocationRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<RestorableDatabaseAccountsListResult>,
+  input: __S(2976, __c93, 0) as any as S.Schema<ListRestorableDatabaseAccountByLocationRequest>,
+  output: __S(3009, __c94, 1) as any as S.Schema<RestorableDatabaseAccountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11287,8 +11323,8 @@ export const ListRestorableDatabaseAccounts: API.OperationMethod<
   ListRestorableDatabaseAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<ListRestorableDatabaseAccountsRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<RestorableDatabaseAccountsListResult>,
+  input: __S(3040, __c95, 0) as any as S.Schema<ListRestorableDatabaseAccountsRequest>,
+  output: __S(3009, __c94, 1) as any as S.Schema<RestorableDatabaseAccountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11302,8 +11338,8 @@ export const ListRestorableGremlinDatabases: API.OperationMethod<
   ListRestorableGremlinDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<ListRestorableGremlinDatabasesRequest>,
-  output: __S(460, __c57, 4) as any as S.Schema<RestorableGremlinDatabasesListResult>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ListRestorableGremlinDatabasesRequest>,
+  output: __S(3106, __c97, 2) as any as S.Schema<RestorableGremlinDatabasesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11317,8 +11353,8 @@ export const ListRestorableGremlinGraphs: API.OperationMethod<
   ListRestorableGremlinGraphsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<ListRestorableGremlinGraphsRequest>,
-  output: __S(460, __c57, 4) as any as S.Schema<RestorableGremlinGraphsListResult>,
+  input: __S(3168, __c99, 0) as any as S.Schema<ListRestorableGremlinGraphsRequest>,
+  output: __S(3106, __c97, 2) as any as S.Schema<RestorableGremlinGraphsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11332,8 +11368,8 @@ export const ListRestorableGremlinResources: API.OperationMethod<
   ListRestorableGremlinResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<ListRestorableGremlinResourcesRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<RestorableGremlinResourcesListResult>,
+  input: __S(3200, __c100, 0) as any as S.Schema<ListRestorableGremlinResourcesRequest>,
+  output: __S(3203, __c100, 3) as any as S.Schema<RestorableGremlinResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11347,8 +11383,8 @@ export const ListRestorableMongodbCollections: API.OperationMethod<
   ListRestorableMongodbCollectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<ListRestorableMongodbCollectionsRequest>,
-  output: __S(460, __c57, 4) as any as S.Schema<RestorableMongodbCollectionsListResult>,
+  input: __S(3232, __c101, 0) as any as S.Schema<ListRestorableMongodbCollectionsRequest>,
+  output: __S(3106, __c97, 2) as any as S.Schema<RestorableMongodbCollectionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11362,8 +11398,8 @@ export const ListRestorableMongodbDatabases: API.OperationMethod<
   ListRestorableMongodbDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<ListRestorableMongodbDatabasesRequest>,
-  output: __S(460, __c57, 4) as any as S.Schema<RestorableMongodbDatabasesListResult>,
+  input: __S(3296, __c103, 0) as any as S.Schema<ListRestorableMongodbDatabasesRequest>,
+  output: __S(3106, __c97, 2) as any as S.Schema<RestorableMongodbDatabasesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11377,8 +11413,8 @@ export const ListRestorableMongodbResources: API.OperationMethod<
   ListRestorableMongodbResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468, __c58, 4) as any as S.Schema<ListRestorableMongodbResourcesRequest>,
-  output: __S(471, __c58, 7) as any as S.Schema<RestorableMongodbResourcesListResult>,
+  input: __S(3328, __c104, 0) as any as S.Schema<ListRestorableMongodbResourcesRequest>,
+  output: __S(3362, __c105, 2) as any as S.Schema<RestorableMongodbResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11392,8 +11428,8 @@ export const ListRestorableSqlContainers: API.OperationMethod<
   ListRestorableSqlContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<ListRestorableSqlContainersRequest>,
-  output: __S(479, __c59, 7) as any as S.Schema<RestorableSqlContainersListResult>,
+  input: __S(3392, __c106, 0) as any as S.Schema<ListRestorableSqlContainersRequest>,
+  output: __S(3399, __c106, 7) as any as S.Schema<RestorableSqlContainersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11407,8 +11443,8 @@ export const ListRestorableSqlDatabases: API.OperationMethod<
   ListRestorableSqlDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<ListRestorableSqlDatabasesRequest>,
-  output: __S(486, __c60, 6) as any as S.Schema<RestorableSqlDatabasesListResult>,
+  input: __S(3424, __c107, 0) as any as S.Schema<ListRestorableSqlDatabasesRequest>,
+  output: __S(3430, __c107, 6) as any as S.Schema<RestorableSqlDatabasesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11422,8 +11458,8 @@ export const ListRestorableSqlResources: API.OperationMethod<
   ListRestorableSqlResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(487, __c60, 7) as any as S.Schema<ListRestorableSqlResourcesRequest>,
-  output: __S(471, __c58, 7) as any as S.Schema<RestorableSqlResourcesListResult>,
+  input: __S(3456, __c108, 0) as any as S.Schema<ListRestorableSqlResourcesRequest>,
+  output: __S(3362, __c105, 2) as any as S.Schema<RestorableSqlResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11437,8 +11473,8 @@ export const ListRestorableTableResources: API.OperationMethod<
   ListRestorableTableResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<ListRestorableTableResourcesRequest>,
-  output: __S(491, __c61, 3) as any as S.Schema<RestorableTableResourcesListResult>,
+  input: __S(3488, __c109, 0) as any as S.Schema<ListRestorableTableResourcesRequest>,
+  output: __S(3491, __c109, 3) as any as S.Schema<RestorableTableResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11452,8 +11488,8 @@ export const ListRestorableTables: API.OperationMethod<
   ListRestorableTablesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(492, __c61, 4) as any as S.Schema<ListRestorableTablesRequest>,
-  output: __S(495, __c61, 7) as any as S.Schema<RestorableTablesListResult>,
+  input: __S(3520, __c110, 0) as any as S.Schema<ListRestorableTablesRequest>,
+  output: __S(3523, __c110, 3) as any as S.Schema<RestorableTablesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11467,8 +11503,8 @@ export const ListService: API.OperationMethod<
   ListServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<ListServiceRequest>,
-  output: __S(498, __c62, 2) as any as S.Schema<ServiceResourceListResult>,
+  input: __S(3552, __c111, 0) as any as S.Schema<ListServiceRequest>,
+  output: __S(3554, __c111, 2) as any as S.Schema<ServiceResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11482,8 +11518,8 @@ export const ListSqlResourceClientEncryptionKeys: API.OperationMethod<
   ListSqlResourceClientEncryptionKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(499, __c62, 3) as any as S.Schema<ListSqlResourceClientEncryptionKeysRequest>,
-  output: __S(501, __c62, 5) as any as S.Schema<ClientEncryptionKeysListResult>,
+  input: __S(3584, __c112, 0) as any as S.Schema<ListSqlResourceClientEncryptionKeysRequest>,
+  output: __S(3586, __c112, 2) as any as S.Schema<ClientEncryptionKeysListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11497,8 +11533,8 @@ export const ListSqlResourceSqlContainers: API.OperationMethod<
   ListSqlResourceSqlContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(502, __c62, 6) as any as S.Schema<ListSqlResourceSqlContainersRequest>,
-  output: __S(505, __c63, 1) as any as S.Schema<SqlContainerListResult>,
+  input: __S(3616, __c113, 0) as any as S.Schema<ListSqlResourceSqlContainersRequest>,
+  output: __S(3619, __c113, 3) as any as S.Schema<SqlContainerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11512,8 +11548,8 @@ export const ListSqlResourceSqlDatabases: API.OperationMethod<
   ListSqlResourceSqlDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(506, __c63, 2) as any as S.Schema<ListSqlResourceSqlDatabasesRequest>,
-  output: __S(509, __c63, 5) as any as S.Schema<SqlDatabaseListResult>,
+  input: __S(3680, __c115, 0) as any as S.Schema<ListSqlResourceSqlDatabasesRequest>,
+  output: __S(3683, __c115, 3) as any as S.Schema<SqlDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11527,8 +11563,8 @@ export const ListSqlResourceSqlRoleAssignments: API.OperationMethod<
   ListSqlResourceSqlRoleAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(510, __c63, 6) as any as S.Schema<ListSqlResourceSqlRoleAssignmentsRequest>,
-  output: __S(512, __c64, 0) as any as S.Schema<SqlRoleAssignmentListResult>,
+  input: __S(3712, __c116, 0) as any as S.Schema<ListSqlResourceSqlRoleAssignmentsRequest>,
+  output: __S(3714, __c116, 2) as any as S.Schema<SqlRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11542,8 +11578,8 @@ export const ListSqlResourceSqlRoleDefinitions: API.OperationMethod<
   ListSqlResourceSqlRoleDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(513, __c64, 1) as any as S.Schema<ListSqlResourceSqlRoleDefinitionsRequest>,
-  output: __S(515, __c64, 3) as any as S.Schema<SqlRoleDefinitionListResult>,
+  input: __S(3744, __c117, 0) as any as S.Schema<ListSqlResourceSqlRoleDefinitionsRequest>,
+  output: __S(3746, __c117, 2) as any as S.Schema<SqlRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11557,8 +11593,8 @@ export const ListSqlResourceSqlStoredProcedures: API.OperationMethod<
   ListSqlResourceSqlStoredProceduresError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(516, __c64, 4) as any as S.Schema<ListSqlResourceSqlStoredProceduresRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<SqlStoredProcedureListResult>,
+  input: __S(3776, __c118, 0) as any as S.Schema<ListSqlResourceSqlStoredProceduresRequest>,
+  output: __S(3809, __c119, 1) as any as S.Schema<SqlStoredProcedureListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11572,8 +11608,8 @@ export const ListSqlResourceSqlTriggers: API.OperationMethod<
   ListSqlResourceSqlTriggersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<ListSqlResourceSqlTriggersRequest>,
-  output: __S(524, __c65, 4) as any as S.Schema<SqlTriggerListResult>,
+  input: __S(3840, __c120, 0) as any as S.Schema<ListSqlResourceSqlTriggersRequest>,
+  output: __S(3843, __c120, 3) as any as S.Schema<SqlTriggerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11587,8 +11623,8 @@ export const ListSqlResourceSqlUserDefinedFunctions: API.OperationMethod<
   ListSqlResourceSqlUserDefinedFunctionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(525, __c65, 5) as any as S.Schema<ListSqlResourceSqlUserDefinedFunctionsRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<SqlUserDefinedFunctionListResult>,
+  input: __S(3904, __c122, 0) as any as S.Schema<ListSqlResourceSqlUserDefinedFunctionsRequest>,
+  output: __S(3809, __c119, 1) as any as S.Schema<SqlUserDefinedFunctionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11602,8 +11638,8 @@ export const ListTableResourceTableRoleAssignments: API.OperationMethod<
   ListTableResourceTableRoleAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(526, __c65, 6) as any as S.Schema<ListTableResourceTableRoleAssignmentsRequest>,
-  output: __S(335, __c41, 7) as any as S.Schema<TableRoleAssignmentListResult>,
+  input: __S(3936, __c123, 0) as any as S.Schema<ListTableResourceTableRoleAssignmentsRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<TableRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11617,8 +11653,8 @@ export const ListTableResourceTableRoleDefinitions: API.OperationMethod<
   ListTableResourceTableRoleDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(527, __c65, 7) as any as S.Schema<ListTableResourceTableRoleDefinitionsRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<TableRoleDefinitionListResult>,
+  input: __S(3968, __c124, 0) as any as S.Schema<ListTableResourceTableRoleDefinitionsRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<TableRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11632,8 +11668,8 @@ export const ListTableResourceTables: API.OperationMethod<
   ListTableResourceTablesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<ListTableResourceTablesRequest>,
-  output: __S(531, __c66, 3) as any as S.Schema<TableListResult>,
+  input: __S(4000, __c125, 0) as any as S.Schema<ListTableResourceTablesRequest>,
+  output: __S(4003, __c125, 3) as any as S.Schema<TableListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11648,14 +11684,14 @@ export const MigrateCassandraResourceCassandraKeyspaceToAutoscale: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    532,
-    __c66,
-    4,
+    4032,
+    __c126,
+    0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraKeyspaceToAutoscaleRequest>,
   output: __S(
-    533,
-    __c66,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraKeyspaceToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11671,14 +11707,14 @@ export const MigrateCassandraResourceCassandraKeyspaceToManualThroughput: API.Op
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    534,
-    __c66,
-    6,
+    4160,
+    __c130,
+    0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraKeyspaceToManualThroughputRequest>,
   output: __S(
-    535,
-    __c66,
-    7,
+    4192,
+    __c131,
+    0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraKeyspaceToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11694,14 +11730,14 @@ export const MigrateCassandraResourceCassandraTableToAutoscale: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    536,
-    __c67,
+    4224,
+    __c132,
     0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraTableToAutoscaleRequest>,
   output: __S(
-    533,
-    __c66,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraTableToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11717,14 +11753,14 @@ export const MigrateCassandraResourceCassandraTableToManualThroughput: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    537,
-    __c67,
-    1,
+    4256,
+    __c133,
+    0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraTableToManualThroughputRequest>,
   output: __S(
-    535,
-    __c66,
-    7,
+    4192,
+    __c131,
+    0,
   ) as any as S.Schema<MigrateCassandraResourceCassandraTableToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11740,14 +11776,14 @@ export const MigrateGremlinResourceGremlinDatabaseToAutoscale: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    538,
-    __c67,
-    2,
+    4288,
+    __c134,
+    0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinDatabaseToAutoscaleRequest>,
   output: __S(
-    533,
-    __c66,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinDatabaseToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11763,14 +11799,14 @@ export const MigrateGremlinResourceGremlinDatabaseToManualThroughput: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    539,
-    __c67,
-    3,
+    4320,
+    __c135,
+    0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinDatabaseToManualThroughputRequest>,
   output: __S(
-    535,
-    __c66,
-    7,
+    4192,
+    __c131,
+    0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinDatabaseToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11786,14 +11822,14 @@ export const MigrateGremlinResourceGremlinGraphToAutoscale: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    540,
-    __c67,
-    4,
+    4352,
+    __c136,
+    0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinGraphToAutoscaleRequest>,
   output: __S(
-    179,
-    __c22,
-    3,
+    8000,
+    __c250,
+    0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinGraphToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11809,14 +11845,14 @@ export const MigrateGremlinResourceGremlinGraphToManualThroughput: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    541,
-    __c67,
-    5,
+    4384,
+    __c137,
+    0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinGraphToManualThroughputRequest>,
   output: __S(
-    533,
-    __c66,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateGremlinResourceGremlinGraphToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11832,14 +11868,14 @@ export const MigrateMongoDBResourceMongoDBCollectionToAutoscale: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    542,
-    __c67,
-    6,
+    4416,
+    __c138,
+    0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBCollectionToAutoscaleRequest>,
   output: __S(
-    533,
-    __c66,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBCollectionToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11855,14 +11891,14 @@ export const MigrateMongoDBResourceMongoDBCollectionToManualThroughput: API.Oper
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    543,
-    __c67,
-    7,
+    4448,
+    __c139,
+    0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBCollectionToManualThroughputRequest>,
   output: __S(
-    535,
-    __c66,
-    7,
+    4192,
+    __c131,
+    0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBCollectionToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11878,14 +11914,14 @@ export const MigrateMongoDBResourceMongoDBDatabaseToAutoscale: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    544,
-    __c68,
+    4480,
+    __c140,
     0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBDatabaseToAutoscaleRequest>,
   output: __S(
-    533,
-    __c66,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBDatabaseToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11901,14 +11937,14 @@ export const MigrateMongoDBResourceMongoDBDatabaseToManualThroughput: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    545,
-    __c68,
-    1,
+    4544,
+    __c142,
+    0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBDatabaseToManualThroughputRequest>,
   output: __S(
-    535,
-    __c66,
-    7,
+    4192,
+    __c131,
+    0,
   ) as any as S.Schema<MigrateMongoDBResourceMongoDBDatabaseToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11923,8 +11959,12 @@ export const MigrateSqlResourceSqlContainerToAutoscale: API.OperationMethod<
   MigrateSqlResourceSqlContainerToAutoscaleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546, __c68, 2) as any as S.Schema<MigrateSqlResourceSqlContainerToAutoscaleRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<MigrateSqlResourceSqlContainerToAutoscaleResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<MigrateSqlResourceSqlContainerToAutoscaleRequest>,
+  output: __S(
+    8000,
+    __c250,
+    0,
+  ) as any as S.Schema<MigrateSqlResourceSqlContainerToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11939,14 +11979,14 @@ export const MigrateSqlResourceSqlContainerToManualThroughput: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    547,
-    __c68,
-    3,
+    4608,
+    __c144,
+    0,
   ) as any as S.Schema<MigrateSqlResourceSqlContainerToManualThroughputRequest>,
   output: __S(
-    533,
-    __c66,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<MigrateSqlResourceSqlContainerToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11961,8 +12001,8 @@ export const MigrateSqlResourceSqlDatabaseToAutoscale: API.OperationMethod<
   MigrateSqlResourceSqlDatabaseToAutoscaleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<MigrateSqlResourceSqlDatabaseToAutoscaleRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<MigrateSqlResourceSqlDatabaseToAutoscaleResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<MigrateSqlResourceSqlDatabaseToAutoscaleRequest>,
+  output: __S(8000, __c250, 0) as any as S.Schema<MigrateSqlResourceSqlDatabaseToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11977,14 +12017,14 @@ export const MigrateSqlResourceSqlDatabaseToManualThroughput: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    549,
-    __c68,
-    5,
+    4672,
+    __c146,
+    0,
   ) as any as S.Schema<MigrateSqlResourceSqlDatabaseToManualThroughputRequest>,
   output: __S(
-    172,
-    __c21,
-    4,
+    7744,
+    __c242,
+    0,
   ) as any as S.Schema<MigrateSqlResourceSqlDatabaseToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11999,8 +12039,8 @@ export const MigrateTableResourceTableToAutoscale: API.OperationMethod<
   MigrateTableResourceTableToAutoscaleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(550, __c68, 6) as any as S.Schema<MigrateTableResourceTableToAutoscaleRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<MigrateTableResourceTableToAutoscaleResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<MigrateTableResourceTableToAutoscaleRequest>,
+  output: __S(8000, __c250, 0) as any as S.Schema<MigrateTableResourceTableToAutoscaleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12014,11 +12054,15 @@ export const MigrateTableResourceTableToManualThroughput: API.OperationMethod<
   MigrateTableResourceTableToManualThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(551, __c68, 7) as any as S.Schema<MigrateTableResourceTableToManualThroughputRequest>,
+  input: __S(
+    4736,
+    __c148,
+    0,
+  ) as any as S.Schema<MigrateTableResourceTableToManualThroughputRequest>,
   output: __S(
-    179,
-    __c22,
-    3,
+    8000,
+    __c250,
+    0,
   ) as any as S.Schema<MigrateTableResourceTableToManualThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12034,14 +12078,14 @@ export const MongoDBResourcesCreateUpdateMongoDBCollection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    554,
-    __c69,
+    4770,
+    __c149,
     2,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBCollectionRequest>,
   output: __S(
-    234,
-    __c29,
-    2,
+    9030,
+    __c282,
+    6,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12056,11 +12100,15 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabase: API.OperationMethod<
   MongoDBResourcesCreateUpdateMongoDBDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(555, __c69, 3) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBDatabaseRequest>,
+  input: __S(
+    4800,
+    __c150,
+    0,
+  ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBDatabaseRequest>,
   output: __S(
-    237,
-    __c29,
-    5,
+    9120,
+    __c285,
+    0,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12076,14 +12124,14 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinition: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    556,
-    __c69,
-    4,
+    4832,
+    __c151,
+    0,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest>,
   output: __S(
-    246,
-    __c30,
-    6,
+    9220,
+    __c288,
+    4,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12099,13 +12147,13 @@ export const MongoDBResourcesCreateUpdateMongoUserDefinition: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    557,
-    __c69,
-    5,
+    4960,
+    __c155,
+    0,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoUserDefinitionRequest>,
   output: __S(
-    249,
-    __c31,
+    9313,
+    __c291,
     1,
   ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoUserDefinitionResponse>,
   errors: [UnknownAzureError],
@@ -12122,14 +12170,14 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleAssignment: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    558,
-    __c69,
-    6,
+    4992,
+    __c156,
+    0,
   ) as any as S.Schema<MongoMIResourcesCreateUpdateMongoMIRoleAssignmentRequest>,
   output: __S(
-    317,
-    __c39,
-    5,
+    512,
+    __c16,
+    0,
   ) as any as S.Schema<MongoMIResourcesCreateUpdateMongoMIRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12145,14 +12193,14 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleDefinition: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    559,
-    __c69,
-    7,
+    5024,
+    __c157,
+    0,
   ) as any as S.Schema<MongoMIResourcesCreateUpdateMongoMIRoleDefinitionRequest>,
   output: __S(
-    319,
-    __c39,
-    7,
+    576,
+    __c18,
+    0,
   ) as any as S.Schema<MongoMIResourcesCreateUpdateMongoMIRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12167,8 +12215,8 @@ export const NotebookWorkspacesCreateOrUpdate: API.OperationMethod<
   NotebookWorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c70, 0) as any as S.Schema<NotebookWorkspacesCreateOrUpdateRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<NotebookWorkspacesCreateOrUpdateResponse>,
+  input: __S(5056, __c158, 0) as any as S.Schema<NotebookWorkspacesCreateOrUpdateRequest>,
+  output: __S(9472, __c296, 0) as any as S.Schema<NotebookWorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12182,8 +12230,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(563, __c70, 3) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: __S(5090, __c159, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(1667, __c52, 3) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12197,8 +12245,8 @@ export const RegenerateDatabaseAccountKey: API.OperationMethod<
   RegenerateDatabaseAccountKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(564, __c70, 4) as any as S.Schema<RegenerateDatabaseAccountKeyRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<RegenerateDatabaseAccountKeyResponse>,
+  input: __S(5120, __c160, 0) as any as S.Schema<RegenerateDatabaseAccountKeyRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<RegenerateDatabaseAccountKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12212,8 +12260,8 @@ export const RegenerateNotebookWorkspaceAuthToken: API.OperationMethod<
   RegenerateNotebookWorkspaceAuthTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(565, __c70, 5) as any as S.Schema<RegenerateNotebookWorkspaceAuthTokenRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<RegenerateNotebookWorkspaceAuthTokenResponse>,
+  input: __S(5152, __c161, 0) as any as S.Schema<RegenerateNotebookWorkspaceAuthTokenRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<RegenerateNotebookWorkspaceAuthTokenResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12227,11 +12275,15 @@ export const SqlResourcesCreateUpdateClientEncryptionKey: API.OperationMethod<
   SqlResourcesCreateUpdateClientEncryptionKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(568, __c71, 0) as any as S.Schema<SqlResourcesCreateUpdateClientEncryptionKeyRequest>,
+  input: __S(
+    5186,
+    __c162,
+    2,
+  ) as any as S.Schema<SqlResourcesCreateUpdateClientEncryptionKeyRequest>,
   output: __S(
-    269,
-    __c33,
-    5,
+    9795,
+    __c306,
+    3,
   ) as any as S.Schema<SqlResourcesCreateUpdateClientEncryptionKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12246,8 +12298,8 @@ export const SqlResourcesCreateUpdateSqlContainer: API.OperationMethod<
   SqlResourcesCreateUpdateSqlContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(571, __c71, 3) as any as S.Schema<SqlResourcesCreateUpdateSqlContainerRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<SqlResourcesCreateUpdateSqlContainerResponse>,
+  input: __S(5218, __c163, 2) as any as S.Schema<SqlResourcesCreateUpdateSqlContainerRequest>,
+  output: __S(9952, __c311, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12261,8 +12313,8 @@ export const SqlResourcesCreateUpdateSqlDatabase: API.OperationMethod<
   SqlResourcesCreateUpdateSqlDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(572, __c71, 4) as any as S.Schema<SqlResourcesCreateUpdateSqlDatabaseRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<SqlResourcesCreateUpdateSqlDatabaseResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlDatabaseRequest>,
+  output: __S(10080, __c315, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12276,8 +12328,12 @@ export const SqlResourcesCreateUpdateSqlRoleAssignment: API.OperationMethod<
   SqlResourcesCreateUpdateSqlRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(573, __c71, 5) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleAssignmentRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleAssignmentResponse>,
+  input: __S(5312, __c166, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleAssignmentRequest>,
+  output: __S(
+    10240,
+    __c320,
+    0,
+  ) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12291,8 +12347,12 @@ export const SqlResourcesCreateUpdateSqlRoleDefinition: API.OperationMethod<
   SqlResourcesCreateUpdateSqlRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574, __c71, 6) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleDefinitionRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleDefinitionResponse>,
+  input: __S(5344, __c167, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleDefinitionRequest>,
+  output: __S(
+    10305,
+    __c322,
+    1,
+  ) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12306,8 +12366,12 @@ export const SqlResourcesCreateUpdateSqlStoredProcedure: API.OperationMethod<
   SqlResourcesCreateUpdateSqlStoredProcedureError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(577, __c72, 1) as any as S.Schema<SqlResourcesCreateUpdateSqlStoredProcedureRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<SqlResourcesCreateUpdateSqlStoredProcedureResponse>,
+  input: __S(5376, __c168, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlStoredProcedureRequest>,
+  output: __S(
+    10370,
+    __c324,
+    2,
+  ) as any as S.Schema<SqlResourcesCreateUpdateSqlStoredProcedureResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12321,8 +12385,8 @@ export const SqlResourcesCreateUpdateSqlTrigger: API.OperationMethod<
   SqlResourcesCreateUpdateSqlTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(580, __c72, 4) as any as S.Schema<SqlResourcesCreateUpdateSqlTriggerRequest>,
-  output: __S(581, __c72, 5) as any as S.Schema<SqlResourcesCreateUpdateSqlTriggerResponse>,
+  input: __S(5442, __c170, 2) as any as S.Schema<SqlResourcesCreateUpdateSqlTriggerRequest>,
+  output: __S(5472, __c171, 0) as any as S.Schema<SqlResourcesCreateUpdateSqlTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12337,14 +12401,14 @@ export const SqlResourcesCreateUpdateSqlUserDefinedFunction: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    582,
-    __c72,
-    6,
+    5504,
+    __c172,
+    0,
   ) as any as S.Schema<SqlResourcesCreateUpdateSqlUserDefinedFunctionRequest>,
   output: __S(
-    300,
-    __c37,
-    4,
+    10370,
+    __c324,
+    2,
   ) as any as S.Schema<SqlResourcesCreateUpdateSqlUserDefinedFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12359,8 +12423,8 @@ export const SqlResourcesDeleteSqlTrigger: API.OperationMethod<
   SqlResourcesDeleteSqlTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(583, __c72, 7) as any as S.Schema<SqlResourcesDeleteSqlTriggerRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<SqlResourcesDeleteSqlTriggerResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<SqlResourcesDeleteSqlTriggerRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<SqlResourcesDeleteSqlTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12374,8 +12438,8 @@ export const SqlResourcesGetSqlTrigger: API.OperationMethod<
   SqlResourcesGetSqlTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<SqlResourcesGetSqlTriggerRequest>,
-  output: __S(581, __c72, 5) as any as S.Schema<SqlResourcesGetSqlTriggerResponse>,
+  input: __S(5568, __c174, 0) as any as S.Schema<SqlResourcesGetSqlTriggerRequest>,
+  output: __S(5472, __c171, 0) as any as S.Schema<SqlResourcesGetSqlTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12389,8 +12453,8 @@ export const StartCassandraCluster: API.OperationMethod<
   StartCassandraClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(585, __c73, 1) as any as S.Schema<StartCassandraClusterRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<StartCassandraClusterResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<StartCassandraClusterRequest>,
+  output: __S(4128, __c129, 0) as any as S.Schema<StartCassandraClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12404,8 +12468,8 @@ export const StartNotebookWorkspace: API.OperationMethod<
   StartNotebookWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(586, __c73, 2) as any as S.Schema<StartNotebookWorkspaceRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<StartNotebookWorkspaceResponse>,
+  input: __S(5632, __c176, 0) as any as S.Schema<StartNotebookWorkspaceRequest>,
+  output: __S(4128, __c129, 0) as any as S.Schema<StartNotebookWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12419,8 +12483,8 @@ export const TableResourcesCreateUpdateTable: API.OperationMethod<
   TableResourcesCreateUpdateTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(587, __c73, 3) as any as S.Schema<TableResourcesCreateUpdateTableRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<TableResourcesCreateUpdateTableResponse>,
+  input: __S(5664, __c177, 0) as any as S.Schema<TableResourcesCreateUpdateTableRequest>,
+  output: __S(10528, __c329, 0) as any as S.Schema<TableResourcesCreateUpdateTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12435,14 +12499,14 @@ export const TableResourcesCreateUpdateTableRoleAssignment: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    588,
-    __c73,
-    4,
+    5728,
+    __c179,
+    0,
   ) as any as S.Schema<TableResourcesCreateUpdateTableRoleAssignmentRequest>,
   output: __S(
-    174,
-    __c21,
-    6,
+    7840,
+    __c245,
+    0,
   ) as any as S.Schema<TableResourcesCreateUpdateTableRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12458,13 +12522,13 @@ export const TableResourcesCreateUpdateTableRoleDefinition: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    589,
-    __c73,
-    5,
+    5760,
+    __c180,
+    0,
   ) as any as S.Schema<TableResourcesCreateUpdateTableRoleDefinitionRequest>,
   output: __S(
-    176,
-    __c22,
+    7904,
+    __c247,
     0,
   ) as any as S.Schema<TableResourcesCreateUpdateTableRoleDefinitionResponse>,
   errors: [UnknownAzureError],
@@ -12480,8 +12544,8 @@ export const UpdateCassandraCluster: API.OperationMethod<
   UpdateCassandraClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(590, __c73, 6) as any as S.Schema<UpdateCassandraClusterRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdateCassandraClusterResponse>,
+  input: __S(5792, __c181, 0) as any as S.Schema<UpdateCassandraClusterRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<UpdateCassandraClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12495,8 +12559,8 @@ export const UpdateCassandraDataCenter: API.OperationMethod<
   UpdateCassandraDataCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(591, __c73, 7) as any as S.Schema<UpdateCassandraDataCenterRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpdateCassandraDataCenterResponse>,
+  input: __S(5824, __c182, 0) as any as S.Schema<UpdateCassandraDataCenterRequest>,
+  output: __S(6624, __c207, 0) as any as S.Schema<UpdateCassandraDataCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12511,14 +12575,14 @@ export const UpdateCassandraResourceCassandraKeyspaceThroughput: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    595,
-    __c74,
-    3,
+    5856,
+    __c183,
+    0,
   ) as any as S.Schema<UpdateCassandraResourceCassandraKeyspaceThroughputRequest>,
   output: __S(
-    533,
-    __c66,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<UpdateCassandraResourceCassandraKeyspaceThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12534,14 +12598,14 @@ export const UpdateCassandraResourceCassandraTableThroughput: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    596,
-    __c74,
-    4,
+    5920,
+    __c185,
+    0,
   ) as any as S.Schema<UpdateCassandraResourceCassandraTableThroughputRequest>,
   output: __S(
-    172,
-    __c21,
-    4,
+    7744,
+    __c242,
+    0,
   ) as any as S.Schema<UpdateCassandraResourceCassandraTableThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12556,8 +12620,8 @@ export const UpdateDatabaseAccount: API.OperationMethod<
   UpdateDatabaseAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(598, __c74, 6) as any as S.Schema<UpdateDatabaseAccountRequest>,
-  output: __S(599, __c74, 7) as any as S.Schema<UpdateDatabaseAccountResponse>,
+  input: __S(5953, __c186, 1) as any as S.Schema<UpdateDatabaseAccountRequest>,
+  output: __S(5954, __c186, 2) as any as S.Schema<UpdateDatabaseAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12571,8 +12635,8 @@ export const UpdateFleet: API.OperationMethod<
   UpdateFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(600, __c75, 0) as any as S.Schema<UpdateFleetRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<UpdateFleetResponse>,
+  input: __S(5984, __c187, 0) as any as S.Schema<UpdateFleetRequest>,
+  output: __S(9537, __c298, 1) as any as S.Schema<UpdateFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12586,8 +12650,8 @@ export const UpdateFleetspace: API.OperationMethod<
   UpdateFleetspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(601, __c75, 1) as any as S.Schema<UpdateFleetspaceRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<UpdateFleetspaceResponse>,
+  input: __S(6016, __c188, 0) as any as S.Schema<UpdateFleetspaceRequest>,
+  output: __S(10178, __c318, 2) as any as S.Schema<UpdateFleetspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12602,14 +12666,14 @@ export const UpdateGremlinResourceGremlinDatabaseThroughput: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    602,
-    __c75,
-    2,
+    6048,
+    __c189,
+    0,
   ) as any as S.Schema<UpdateGremlinResourceGremlinDatabaseThroughputRequest>,
   output: __S(
-    179,
-    __c22,
-    3,
+    8000,
+    __c250,
+    0,
   ) as any as S.Schema<UpdateGremlinResourceGremlinDatabaseThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12624,11 +12688,15 @@ export const UpdateGremlinResourceGremlinGraphThroughput: API.OperationMethod<
   UpdateGremlinResourceGremlinGraphThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(603, __c75, 3) as any as S.Schema<UpdateGremlinResourceGremlinGraphThroughputRequest>,
+  input: __S(
+    6112,
+    __c191,
+    0,
+  ) as any as S.Schema<UpdateGremlinResourceGremlinGraphThroughputRequest>,
   output: __S(
-    179,
-    __c22,
-    3,
+    8000,
+    __c250,
+    0,
   ) as any as S.Schema<UpdateGremlinResourceGremlinGraphThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12644,14 +12712,14 @@ export const UpdateMongoDBResourceMongoDBCollectionThroughput: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    604,
-    __c75,
-    4,
+    6144,
+    __c192,
+    0,
   ) as any as S.Schema<UpdateMongoDBResourceMongoDBCollectionThroughputRequest>,
   output: __S(
-    533,
-    __c66,
-    5,
+    4064,
+    __c127,
+    0,
   ) as any as S.Schema<UpdateMongoDBResourceMongoDBCollectionThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12667,14 +12735,14 @@ export const UpdateMongoDBResourceMongoDBDatabaseThroughput: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    605,
-    __c75,
-    5,
+    6176,
+    __c193,
+    0,
   ) as any as S.Schema<UpdateMongoDBResourceMongoDBDatabaseThroughputRequest>,
   output: __S(
-    179,
-    __c22,
-    3,
+    8000,
+    __c250,
+    0,
   ) as any as S.Schema<UpdateMongoDBResourceMongoDBDatabaseThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12689,8 +12757,8 @@ export const UpdateSqlResourceSqlContainerThroughput: API.OperationMethod<
   UpdateSqlResourceSqlContainerThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(606, __c75, 6) as any as S.Schema<UpdateSqlResourceSqlContainerThroughputRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<UpdateSqlResourceSqlContainerThroughputResponse>,
+  input: __S(6208, __c194, 0) as any as S.Schema<UpdateSqlResourceSqlContainerThroughputRequest>,
+  output: __S(8000, __c250, 0) as any as S.Schema<UpdateSqlResourceSqlContainerThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12704,8 +12772,8 @@ export const UpdateSqlResourceSqlDatabaseThroughput: API.OperationMethod<
   UpdateSqlResourceSqlDatabaseThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(607, __c75, 7) as any as S.Schema<UpdateSqlResourceSqlDatabaseThroughputRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<UpdateSqlResourceSqlDatabaseThroughputResponse>,
+  input: __S(6240, __c195, 0) as any as S.Schema<UpdateSqlResourceSqlDatabaseThroughputRequest>,
+  output: __S(8000, __c250, 0) as any as S.Schema<UpdateSqlResourceSqlDatabaseThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12719,8 +12787,8 @@ export const UpdateTableResourceTableThroughput: API.OperationMethod<
   UpdateTableResourceTableThroughputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c76, 0) as any as S.Schema<UpdateTableResourceTableThroughputRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<UpdateTableResourceTableThroughputResponse>,
+  input: __S(6272, __c196, 0) as any as S.Schema<UpdateTableResourceTableThroughputRequest>,
+  output: __S(8000, __c250, 0) as any as S.Schema<UpdateTableResourceTableThroughputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12728,6 +12796,112 @@ export const UpdateTableResourceTableThroughput: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(128, __c4, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(129, __c4, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CassandraClustersCreateUpdateRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          additionalErrorInfo: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CassandraError" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          restoreFromBackupId: S.optional(S.String),
+          delegatedManagementSubnetId: S.optional(S.String),
+          cassandraVersion: S.optional(S.String),
+          clusterNameOverride: S.optional(S.String),
+          authenticationMethod: S.optional(S.String),
+          initialCassandraAdminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          prometheusEndpoint: S.optional(__S(192, __c6, 0)),
+          repairEnabled: S.optional(S.Boolean),
+          autoReplicate: S.optional(S.String),
+          clientCertificates: S.optional(__S(194, __c6, 2)),
+          externalGossipCertificates: S.optional(__S(194, __c6, 2)),
+          externalSeedNodes: S.optional(__S(195, __c6, 3)),
+          externalDataCenters: S.optional(__S(96, __c3, 0)),
+          hoursBetweenBackups: S.optional(S.Number),
+          deallocated: S.optional(S.Boolean),
+          cassandraAuditLoggingEnabled: S.optional(S.Boolean),
+          provisionError: S.optional(__S(32, __c1, 0)),
+          extensions: S.optional(__S(96, __c3, 0)),
+          backupSchedules: S.optional(__S(225, __c7, 1)),
+          scheduledEventStrategy: S.optional(S.String),
+          azureConnectionMethod: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClusterResourcePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedCassandraManagedServiceIdentityInput",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12742,21 +12916,14 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Certificate" });
     case 2:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(193, __c6, 1));
     case 3:
-      return S.Array(__S(0, __c0, 0));
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          additionalErrorInfo: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CassandraError" });
-    case 6:
+      return S.Array(__S(192, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scheduleName: S.optional(S.String),
@@ -12764,86 +12931,11 @@ function __c0(j: number): any {
           retentionInHours: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BackupSchedule" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          restoreFromBackupId: S.optional(S.String),
-          delegatedManagementSubnetId: S.optional(S.String),
-          cassandraVersion: S.optional(S.String),
-          clusterNameOverride: S.optional(S.String),
-          authenticationMethod: S.optional(S.String),
-          initialCassandraAdminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          prometheusEndpoint: S.optional(__S(0, __c0, 0)),
-          repairEnabled: S.optional(S.Boolean),
-          autoReplicate: S.optional(S.String),
-          clientCertificates: S.optional(__S(2, __c0, 2)),
-          externalGossipCertificates: S.optional(__S(2, __c0, 2)),
-          externalSeedNodes: S.optional(__S(3, __c0, 3)),
-          externalDataCenters: S.optional(__S(4, __c0, 4)),
-          hoursBetweenBackups: S.optional(S.Number),
-          deallocated: S.optional(S.Boolean),
-          cassandraAuditLoggingEnabled: S.optional(S.Boolean),
-          provisionError: S.optional(__S(5, __c0, 5)),
-          extensions: S.optional(__S(4, __c0, 4)),
-          backupSchedules: S.optional(__S(7, __c0, 7)),
-          scheduledEventStrategy: S.optional(S.String),
-          azureConnectionMethod: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClusterResourcePropertiesInput",
-      });
     case 1:
-      return S.Record(S.String, S.String);
+      return S.Array(__S(224, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedCassandraManagedServiceIdentityInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(8, __c1, 0)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(10, __c1, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CassandraClustersCreateUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           provisioningState: S.optional(S.String),
           restoreFromBackupId: S.optional(S.String),
           delegatedManagementSubnetId: S.optional(S.String),
@@ -12851,21 +12943,21 @@ function __c1(j: number): any {
           clusterNameOverride: S.optional(S.String),
           authenticationMethod: S.optional(S.String),
           initialCassandraAdminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          prometheusEndpoint: S.optional(__S(0, __c0, 0)),
+          prometheusEndpoint: S.optional(__S(192, __c6, 0)),
           repairEnabled: S.optional(S.Boolean),
           autoReplicate: S.optional(S.String),
-          clientCertificates: S.optional(__S(2, __c0, 2)),
-          externalGossipCertificates: S.optional(__S(2, __c0, 2)),
-          gossipCertificates: S.optional(__S(2, __c0, 2)),
-          externalSeedNodes: S.optional(__S(3, __c0, 3)),
-          seedNodes: S.optional(__S(3, __c0, 3)),
-          externalDataCenters: S.optional(__S(4, __c0, 4)),
+          clientCertificates: S.optional(__S(194, __c6, 2)),
+          externalGossipCertificates: S.optional(__S(194, __c6, 2)),
+          gossipCertificates: S.optional(__S(194, __c6, 2)),
+          externalSeedNodes: S.optional(__S(195, __c6, 3)),
+          seedNodes: S.optional(__S(195, __c6, 3)),
+          externalDataCenters: S.optional(__S(96, __c3, 0)),
           hoursBetweenBackups: S.optional(S.Number),
           deallocated: S.optional(S.Boolean),
           cassandraAuditLoggingEnabled: S.optional(S.Boolean),
-          provisionError: S.optional(__S(5, __c0, 5)),
-          extensions: S.optional(__S(4, __c0, 4)),
-          backupSchedules: S.optional(__S(7, __c0, 7)),
+          provisionError: S.optional(__S(32, __c1, 0)),
+          extensions: S.optional(__S(96, __c3, 0)),
+          backupSchedules: S.optional(__S(225, __c7, 1)),
           scheduledEventStrategy: S.optional(S.String),
           azureConnectionMethod: S.optional(S.String),
           privateLinkResourceId: S.optional(S.String),
@@ -12873,7 +12965,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ClusterResourceProperties",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -12883,24 +12975,28 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ManagedCassandraManagedServiceIdentity",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(226, __c7, 2)),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(227, __c7, 3)),
         }),
       ).annotate({
         identifier: "CassandraClustersCreateUpdateResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12919,665 +13015,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CassandraClustersDeallocateRequest",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CassandraClustersDeallocateResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/status",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CassandraClustersStatusRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          healthy: S.optional(S.Boolean),
-          repairRunIds: S.optional(__S(9, __c1, 1)),
-          repairSchedules: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "ManagedCassandraReaperStatus",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          connectionState: S.optional(S.String),
-          iPFrom: S.optional(S.String),
-          iPTo: S.optional(S.String),
-          port: S.optional(S.Number),
-          exception: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectionError" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c3(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.String),
-          state: S.optional(S.String),
-          status: S.optional(S.String),
-          cassandraProcessStatus: S.optional(S.String),
-          load: S.optional(S.String),
-          tokens: S.optional(__S(23, __c2, 7)),
-          size: S.optional(S.Number),
-          hostID: S.optional(S.String),
-          rack: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          diskUsedKB: S.optional(S.Number),
-          diskFreeKB: S.optional(S.Number),
-          memoryUsedKB: S.optional(S.Number),
-          memoryBuffersAndCachedKB: S.optional(S.Number),
-          memoryFreeKB: S.optional(S.Number),
-          memoryTotalKB: S.optional(S.Number),
-          cpuUsage: S.optional(S.Number),
-          isLatestModel: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier:
-          "ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItems",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          seedNodes: S.optional(__S(4, __c0, 4)),
-          nodes: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "CassandraClusterPublicStatusDataCentersItem",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          eTag: S.optional(S.String),
-          reaperStatus: S.optional(__S(19, __c2, 3)),
-          connectionErrors: S.optional(__S(21, __c2, 5)),
-          errors: S.optional(__S(22, __c2, 6)),
-          dataCenters: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "CassandraClusterPublicStatus",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serverHostname: S.optional(S.String),
-          serverPort: S.optional(S.Number),
-          serviceUserDistinguishedName: S.optional(S.String),
-          serviceUserPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          searchBaseDistinguishedName: S.optional(S.String),
-          searchFilterTemplate: S.optional(S.String),
-          serverCertificates: S.optional(__S(2, __c0, 2)),
-          connectionTimeoutInMs: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AuthenticationMethodLdapProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          dataCenterLocation: S.optional(S.String),
-          delegatedSubnetId: S.optional(S.String),
-          nodeCount: S.optional(S.Number),
-          base64EncodedCassandraYamlFragment: S.optional(S.String),
-          managedDiskCustomerKeyUri: S.optional(S.String),
-          backupStorageCustomerKeyUri: S.optional(S.String),
-          sku: S.optional(S.String),
-          diskSku: S.optional(S.String),
-          diskCapacity: S.optional(S.Number),
-          availabilityZone: S.optional(S.Boolean),
-          authenticationMethodLdapProperties: S.optional(__S(29, __c3, 5)),
-          deallocated: S.optional(S.Boolean),
-          provisionError: S.optional(__S(5, __c0, 5)),
-          privateEndpointIpAddress: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataCenterResourcePropertiesInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          dataCenterName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(30, __c3, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CassandraDataCentersCreateUpdateRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          dataCenterLocation: S.optional(S.String),
-          delegatedSubnetId: S.optional(S.String),
-          nodeCount: S.optional(S.Number),
-          seedNodes: S.optional(__S(3, __c0, 3)),
-          base64EncodedCassandraYamlFragment: S.optional(S.String),
-          managedDiskCustomerKeyUri: S.optional(S.String),
-          backupStorageCustomerKeyUri: S.optional(S.String),
-          sku: S.optional(S.String),
-          diskSku: S.optional(S.String),
-          diskCapacity: S.optional(S.Number),
-          availabilityZone: S.optional(S.Boolean),
-          authenticationMethodLdapProperties: S.optional(__S(29, __c3, 5)),
-          deallocated: S.optional(S.Boolean),
-          provisionError: S.optional(__S(5, __c0, 5)),
-          privateEndpointIpAddress: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataCenterResourceProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "CassandraDataCentersCreateUpdateResponse",
-      });
-    case 2:
-      return S.Record(S.String, __S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "ManagedServiceIdentityInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "CassandraKeyspaceResource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          maxThroughput: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AutoscaleSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          throughput: S.optional(S.Number),
-          autoscaleSettings: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "CreateUpdateOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: __S(36, __c4, 4),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "CassandraKeyspaceCreateUpdateProperties",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          keyspaceName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(39, __c4, 7),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CassandraResourcesCreateUpdateCassandraKeyspaceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          _rid: S.optional(S.String),
-          _ts: S.optional(S.Number),
-          _etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CassandraKeyspaceGetPropertiesResource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(41, __c5, 1)),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "CassandraKeyspaceGetProperties",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedServiceIdentityUserAssignedIdentities",
-      });
-    case 5:
-      return S.Record(S.String, __S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "ManagedServiceIdentity" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(42, __c5, 2)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(43, __c5, 3)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "CassandraResourcesCreateUpdateCassandraKeyspaceResponse",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          roleDefinitionId: S.optional(S.String),
-          scope: S.optional(S.String),
-          principalId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CassandraRoleAssignmentResourcePropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleAssignmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(48, __c6, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments/{roleAssignmentId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CassandraResourcesCreateUpdateCassandraRoleAssignmentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          roleDefinitionId: S.optional(S.String),
-          scope: S.optional(S.String),
-          principalId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CassandraRoleAssignmentResourceProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "CassandraResourcesCreateUpdateCassandraRoleAssignmentResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          dataActions: S.optional(__S(4, __c0, 4)),
-          notDataActions: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Permission" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          roleName: S.optional(S.String),
-          type: S.optional(S.String),
-          assignableScopes: S.optional(__S(4, __c0, 4)),
-          permissions: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "CassandraRoleDefinitionResourceProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(54, __c6, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "CassandraResourcesCreateUpdateCassandraRoleDefinitionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Column" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CassandraPartitionKey" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          orderBy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterKey" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          columns: S.optional(__S(58, __c7, 2)),
-          partitionKeys: S.optional(__S(60, __c7, 4)),
-          clusterKeys: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({ identifier: "CassandraSchema" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          defaultTtl: S.optional(S.Number),
-          schema: S.optional(__S(63, __c7, 7)),
-          analyticalStorageTtl: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CassandraTableResource" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: __S(64, __c8, 0),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "CassandraTableCreateUpdateProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          keyspaceName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(65, __c8, 1),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CassandraResourcesCreateUpdateCassandraTableRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          defaultTtl: S.optional(S.Number),
-          schema: S.optional(__S(63, __c7, 7)),
-          analyticalStorageTtl: S.optional(S.Number),
-          _rid: S.optional(S.String),
-          _ts: S.optional(S.Number),
-          _etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CassandraTableGetPropertiesResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(67, __c8, 3)),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "CassandraTableGetProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(68, __c8, 4)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "CassandraResourcesCreateUpdateCassandraTableResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FleetResourceProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fleetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          location: S.String,
-          properties: S.optional(__S(70, __c8, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({ identifier: "CreateFleetRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
-          location: S.String,
-          properties: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({ identifier: "CreateFleetResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          minThroughput: S.optional(S.Number),
-          maxThroughput: S.optional(S.Number),
-          dedicatedRUs: S.optional(S.Number),
-          maxConsumableRUs: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "FleetspacePropertiesThroughputPoolConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          fleetspaceApiKind: S.optional(S.String),
-          serviceTier: S.optional(S.String),
-          dataRegions: S.optional(__S(4, __c0, 4)),
-          throughputPoolConfiguration: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({ identifier: "FleetspaceProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fleetName: S.String.pipe(T.Label()),
-          fleetspaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(74, __c9, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({ identifier: "CreateFleetspaceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({ identifier: "CreateFleetspaceResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(S.String),
-          armLocation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FleetspaceAccountPropertiesGlobalDatabaseAccountProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          globalDatabaseAccountProperties: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "FleetspaceAccountProperties",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13585,7 +13035,7 @@ function __c9(j: number): any {
           fleetName: S.String.pipe(T.Label()),
           fleetspaceName: S.String.pipe(T.Label()),
           fleetspaceAccountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(78, __c9, 6)),
+          properties: S.optional(__S(385, __c12, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13599,7 +13049,130 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.String),
+          armLocation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FleetspaceAccountPropertiesGlobalDatabaseAccountProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          globalDatabaseAccountProperties: S.optional(__S(384, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "FleetspaceAccountProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(385, __c12, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateFleetspaceAccountResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          indexingPolicy: S.optional(__S(8655, __c270, 15)),
+          partitionKey: S.optional(__S(448, __c14, 0)),
+          defaultTtl: S.optional(S.Number),
+          uniqueKeyPolicy: S.optional(__S(8659, __c270, 19)),
+          conflictResolutionPolicy: S.optional(__S(8660, __c270, 20)),
+          analyticalStorageTtl: S.optional(S.Number),
+          restoreParameters: S.optional(__S(8352, __c261, 0)),
+          createMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GremlinGraphResourceInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: __S(416, __c13, 0),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({
+        identifier: "GremlinGraphCreateUpdatePropertiesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          graphName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(417, __c13, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GremlinResourcesCreateUpdateGremlinGraphRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paths: S.optional(__S(96, __c3, 0)),
+          kind: S.optional(S.String),
+          version: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ContainerPartitionKeyInput",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleAssignmentId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(7552, __c236, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments/{roleAssignmentId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GremlinResourcesCreateUpdateGremlinRoleAssignmentRequest",
+      });
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13607,13 +13180,291 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(78, __c9, 6)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7520, __c235, 0)),
         }),
       ).annotate({
-        identifier: "CreateFleetspaceAccountResponse",
+        identifier: "GremlinResourcesCreateUpdateGremlinRoleAssignmentResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(8160, __c255, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8160, __c255, 0)),
+        }),
+      ).annotate({
+        identifier: "GremlinResourcesCreateUpdateGremlinRoleDefinitionResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          command: S.String,
+          arguments: S.optional(__S(64, __c2, 0)),
+          host: S.String,
+          cassandra_stop_start: S.optional(S.Boolean.pipe(T.Body("cassandra-stop-start"))),
+          readwrite: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/invokeCommand",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "InvokeCassandraClusterCommandRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCassandraClusterByResourceGroupRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(226, __c7, 2)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({ identifier: "ClusterResource" });
+    case 1:
+      return S.Array(__S(672, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(673, __c21, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListClusters" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/cassandraClusters",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCassandraClusterBySubscriptionRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCassandraDataCentersRequest",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(6593, __c206, 1)),
+        }),
+      ).annotate({ identifier: "DataCenterResource" });
+    case 2:
+      return S.Array(__S(737, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(738, __c23, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListDataCenters" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCassandraResourceCassandraKeyspacesRequest",
+      });
+    case 1:
+      return S.Array(__S(7680, __c240, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(769, __c24, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CassandraKeyspaceListResult",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCassandraResourceCassandraRoleAssignmentsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7840, __c245, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(832, __c26, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CassandraRoleAssignmentListResult",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCassandraResourceCassandraRoleDefinitionsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7904, __c247, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(896, __c28, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CassandraRoleDefinitionListResult",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           instanceSize: S.optional(S.String),
@@ -13623,14 +13474,14 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ServiceResourceCreateUpdateProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(81, __c10, 1)),
+          properties: S.optional(__S(928, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13640,7 +13491,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateServiceRequest" });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           creationTime: S.optional(S.String),
@@ -13652,25 +13507,571 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ServiceResourceProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(83, __c10, 3)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(960, __c30, 0)),
         }),
       ).annotate({ identifier: "CreateServiceResponse" });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          defaultConsistencyLevel: S.String,
-          maxStalenessPrefix: S.optional(S.Number),
-          maxIntervalInSeconds: S.optional(S.Number),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          keyspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCassandraResourceCassandraTablesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8934, __c279, 6)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
         }),
-      ).annotate({ identifier: "ConsistencyPolicy" });
-    case 6:
+      ).annotate({ identifier: "CassandraTableGetResults" });
+    case 2:
+      return S.Array(__S(993, __c31, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(994, __c31, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CassandraTableListResult" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseRid: S.String.pipe(T.Label()),
+          collectionRid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metricDefinitions",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCollectionMetricDefinitionsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          localizedValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricName" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeGrain: S.optional(S.String),
+          retention: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricAvailability" });
+    case 1:
+      return S.Array(__S(1088, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metricAvailabilities: S.optional(__S(1089, __c34, 1)),
+          primaryAggregationType: S.optional(S.String),
+          unit: S.optional(S.String),
+          resourceUri: S.optional(S.String),
+          name: S.optional(__S(1056, __c33, 0)),
+        }),
+      ).annotate({ identifier: "MetricDefinition" });
+    case 3:
+      return S.Array(__S(1090, __c34, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1091, __c34, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MetricDefinitionsListResult",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseRid: S.String.pipe(T.Label()),
+          collectionRid: S.String.pipe(T.Label()),
+          _filter: S.String.pipe(T.Query("$filter")),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metrics",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCollectionMetricsRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _count: S.optional(S.Number),
+          average: S.optional(S.Number),
+          maximum: S.optional(S.Number),
+          minimum: S.optional(S.Number),
+          timestamp: S.optional(S.String),
+          total: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MetricValue" });
+    case 1:
+      return S.Array(__S(1152, __c36, 0));
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          timeGrain: S.optional(S.String),
+          unit: S.optional(S.String),
+          name: S.optional(__S(1056, __c33, 0)),
+          metricValues: S.optional(__S(1153, __c36, 1)),
+        }),
+      ).annotate({ identifier: "Metric" });
+    case 1:
+      return S.Array(__S(1184, __c37, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1185, __c37, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricListResult" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseRid: S.String.pipe(T.Label()),
+          collectionRid: S.String.pipe(T.Label()),
+          _filter: S.String.pipe(T.Query("$filter")),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCollectionPartitionMetricsRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          timeGrain: S.optional(S.String),
+          unit: S.optional(S.String),
+          name: S.optional(__S(1056, __c33, 0)),
+          metricValues: S.optional(__S(1153, __c36, 1)),
+          partitionId: S.optional(S.String),
+          partitionKeyRangeId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartitionMetric" });
+    case 1:
+      return S.Array(__S(1248, __c39, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1249, __c39, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PartitionMetricListResult",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          databaseRid: S.String.pipe(T.Label()),
+          collectionRid: S.String.pipe(T.Label()),
+          _filter: S.String.pipe(T.Query("$filter")),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCollectionPartitionRegionMetricsRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseRid: S.String.pipe(T.Label()),
+          collectionRid: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/usages",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCollectionPartitionUsagesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          name: S.optional(__S(1056, __c33, 0)),
+          quotaPeriod: S.optional(S.String),
+          limit: S.optional(S.Number),
+          currentValue: S.optional(S.Number),
+          partitionId: S.optional(S.String),
+          partitionKeyRangeId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartitionUsage" });
+    case 2:
+      return S.Array(__S(1313, __c41, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1314, __c41, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartitionUsagesResult" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          databaseRid: S.String.pipe(T.Label()),
+          collectionRid: S.String.pipe(T.Label()),
+          _filter: S.String.pipe(T.Query("$filter")),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/metrics",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCollectionRegionMetricsRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseRid: S.String.pipe(T.Label()),
+          collectionRid: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/usages",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCollectionUsagesRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          name: S.optional(__S(1056, __c33, 0)),
+          quotaPeriod: S.optional(S.String),
+          limit: S.optional(S.Number),
+          currentValue: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Usage" });
+    case 1:
+      return S.Array(__S(1408, __c44, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1409, __c44, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UsagesResult" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDatabaseAccountByResourceGroupRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1655, __c51, 23)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseAccountGetResults",
+      });
+    case 1:
+      return S.Array(__S(1472, __c46, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1473, __c46, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseAccountsListResult",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listConnectionStrings",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDatabaseAccountConnectionStringsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          description: S.optional(S.String),
+          keyKind: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseAccountConnectionString",
+      });
+    case 2:
+      return S.Array(__S(1505, __c47, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          connectionStrings: S.optional(__S(1506, __c47, 2)),
+        }),
+      ).annotate({
+        identifier: "DatabaseAccountListConnectionStringsResult",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1635, __c51, 3));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          consistencyPolicy: S.optional(__S(1632, __c51, 0)),
+          locations: __S(1569, __c49, 1),
+          databaseAccountOfferType: S.String,
+          ipRules: S.optional(__S(1634, __c51, 2)),
+          isVirtualNetworkFilterEnabled: S.optional(S.Boolean),
+          enableAutomaticFailover: S.optional(S.Boolean),
+          capabilities: S.optional(__S(8865, __c277, 1)),
+          virtualNetworkRules: S.optional(__S(1536, __c48, 0)),
+          enableMultipleWriteLocations: S.optional(S.Boolean),
+          enableCassandraConnector: S.optional(S.Boolean),
+          connectorOffer: S.optional(S.String),
+          disableKeyBasedMetadataWriteAccess: S.optional(S.Boolean),
+          keyVaultKeyUri: S.optional(S.String),
+          defaultIdentity: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          enableFreeTier: S.optional(S.Boolean),
+          apiProperties: S.optional(__S(1636, __c51, 4)),
+          enableAnalyticalStorage: S.optional(S.Boolean),
+          analyticalStorageConfiguration: S.optional(__S(1637, __c51, 5)),
+          createMode: S.optional(S.String),
+          backupPolicy: S.optional(__S(1639, __c51, 7)),
+          cors: S.optional(__S(1641, __c51, 9)),
+          networkAclBypass: S.optional(S.String),
+          networkAclBypassResourceIds: S.optional(__S(4896, __c153, 0)),
+          disableLocalAuth: S.optional(S.Boolean),
+          restoreParameters: S.optional(__S(1646, __c51, 14)),
+          capacity: S.optional(__S(1647, __c51, 15)),
+          enablePartitionMerge: S.optional(S.Boolean),
+          enableBurstCapacity: S.optional(S.Boolean),
+          minimalTlsVersion: S.optional(S.String),
+          customerManagedKeyStatus: S.optional(S.String),
+          enablePriorityBasedExecution: S.optional(S.Boolean),
+          defaultPriorityLevel: S.optional(S.String),
+          enablePerRegionPerPartitionAutoscale: S.optional(S.Boolean),
+          enforceHierarchicalPartitionKeyIdLastLevel: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DatabaseAccountCreateUpdatePropertiesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          kind: S.optional(S.String),
+          properties: __S(1537, __c48, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DatabaseAccountsCreateOrUpdateRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1655, __c51, 23)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseAccountsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationName: S.optional(S.String),
@@ -13678,29 +14079,41 @@ function __c10(j: number): any {
           isZoneRedundant: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LocationInput" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
+    case 1:
+      return S.Array(__S(1568, __c49, 0));
   }
 }
-function __c11(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(1667, __c52, 3));
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          defaultConsistencyLevel: S.String,
+          maxStalenessPrefix: S.optional(S.Number),
+          maxIntervalInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ConsistencyPolicy" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ipAddressOrRange: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpAddressOrRange" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
     case 2:
+      return S.Array(__S(1633, __c51, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           ignoreMissingVNetServiceEndpoint: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "VirtualNetworkRule" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -13729,14 +14142,10 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          migrationState: S.optional(__S(94, __c11, 6)),
+          migrationState: S.optional(__S(1638, __c51, 6)),
         }),
       ).annotate({ identifier: "BackupPolicy" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           allowedOrigins: S.String,
@@ -13746,116 +14155,48 @@ function __c12(j: number): any {
           maxAgeInSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CorsPolicy" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(1640, __c51, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           databaseName: S.optional(S.String),
-          collectionNames: S.optional(__S(4, __c0, 4)),
+          collectionNames: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "DatabaseRestoreResource" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(1642, __c51, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           databaseName: S.optional(S.String),
-          graphNames: S.optional(__S(4, __c0, 4)),
+          graphNames: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "GremlinDatabaseRestoreResource",
       });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(1644, __c51, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           restoreSource: S.optional(S.String),
           restoreTimestampInUtc: S.optional(S.String),
           restoreWithTtlDisabled: S.optional(S.Boolean),
           restoreMode: S.optional(S.String),
-          databasesToRestore: S.optional(__S(99, __c12, 3)),
-          gremlinDatabasesToRestore: S.optional(__S(101, __c12, 5)),
-          tablesToRestore: S.optional(__S(4, __c0, 4)),
+          databasesToRestore: S.optional(__S(1643, __c51, 11)),
+          gremlinDatabasesToRestore: S.optional(__S(1645, __c51, 13)),
+          tablesToRestore: S.optional(__S(96, __c3, 0)),
           sourceBackupLocation: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestoreParameters" });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           totalThroughputLimit: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Capacity" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          consistencyPolicy: S.optional(__S(85, __c10, 5)),
-          locations: __S(87, __c10, 7),
-          databaseAccountOfferType: S.String,
-          ipRules: S.optional(__S(89, __c11, 1)),
-          isVirtualNetworkFilterEnabled: S.optional(S.Boolean),
-          enableAutomaticFailover: S.optional(S.Boolean),
-          capabilities: S.optional(__S(60, __c7, 4)),
-          virtualNetworkRules: S.optional(__S(91, __c11, 3)),
-          enableMultipleWriteLocations: S.optional(S.Boolean),
-          enableCassandraConnector: S.optional(S.Boolean),
-          connectorOffer: S.optional(S.String),
-          disableKeyBasedMetadataWriteAccess: S.optional(S.Boolean),
-          keyVaultKeyUri: S.optional(S.String),
-          defaultIdentity: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          enableFreeTier: S.optional(S.Boolean),
-          apiProperties: S.optional(__S(92, __c11, 4)),
-          enableAnalyticalStorage: S.optional(S.Boolean),
-          analyticalStorageConfiguration: S.optional(__S(93, __c11, 5)),
-          createMode: S.optional(S.String),
-          backupPolicy: S.optional(__S(95, __c11, 7)),
-          cors: S.optional(__S(97, __c12, 1)),
-          networkAclBypass: S.optional(S.String),
-          networkAclBypassResourceIds: S.optional(__S(23, __c2, 7)),
-          disableLocalAuth: S.optional(S.Boolean),
-          restoreParameters: S.optional(__S(102, __c12, 6)),
-          capacity: S.optional(__S(103, __c12, 7)),
-          enablePartitionMerge: S.optional(S.Boolean),
-          enableBurstCapacity: S.optional(S.Boolean),
-          minimalTlsVersion: S.optional(S.String),
-          customerManagedKeyStatus: S.optional(S.String),
-          enablePriorityBasedExecution: S.optional(S.Boolean),
-          defaultPriorityLevel: S.optional(S.String),
-          enablePerRegionPerPartitionAutoscale: S.optional(S.Boolean),
-          enforceHierarchicalPartitionKeyIdLastLevel: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DatabaseAccountCreateUpdatePropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          kind: S.optional(S.String),
-          properties: __S(104, __c13, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DatabaseAccountsCreateOrUpdateRequest",
-      });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -13866,9 +14207,9 @@ function __c13(j: number): any {
           isZoneRedundant: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Location" });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
+    case 17:
+      return S.Array(__S(1648, __c51, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -13876,89 +14217,44 @@ function __c13(j: number): any {
           failoverPriority: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FailoverPolicy" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
-      return S.Array(__S(90, __c11, 2));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpointProperty" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionStateProperty",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(111, __c13, 7)),
-          privateLinkServiceConnectionState: S.optional(__S(112, __c14, 0)),
-          groupId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnection",
-      });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
+    case 19:
+      return S.Array(__S(1650, __c51, 18));
+    case 20:
+      return S.Array(__S(1635, __c51, 3));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           generationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountKeyMetadata" });
-    case 5:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          primaryMasterKey: S.optional(__S(116, __c14, 4)),
-          secondaryMasterKey: S.optional(__S(116, __c14, 4)),
-          primaryReadonlyMasterKey: S.optional(__S(116, __c14, 4)),
-          secondaryReadonlyMasterKey: S.optional(__S(116, __c14, 4)),
+          primaryMasterKey: S.optional(__S(1653, __c51, 21)),
+          secondaryMasterKey: S.optional(__S(1653, __c51, 21)),
+          primaryReadonlyMasterKey: S.optional(__S(1653, __c51, 21)),
+          secondaryReadonlyMasterKey: S.optional(__S(1653, __c51, 21)),
         }),
       ).annotate({
         identifier: "DatabaseAccountKeysMetadata",
       });
-    case 6:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           documentEndpoint: S.optional(S.String),
           databaseAccountOfferType: S.optional(S.String),
-          ipRules: S.optional(__S(89, __c11, 1)),
+          ipRules: S.optional(__S(1634, __c51, 2)),
           isVirtualNetworkFilterEnabled: S.optional(S.Boolean),
           enableAutomaticFailover: S.optional(S.Boolean),
-          consistencyPolicy: S.optional(__S(85, __c10, 5)),
-          capabilities: S.optional(__S(60, __c7, 4)),
-          writeLocations: S.optional(__S(107, __c13, 3)),
-          readLocations: S.optional(__S(107, __c13, 3)),
-          locations: S.optional(__S(107, __c13, 3)),
-          failoverPolicies: S.optional(__S(109, __c13, 5)),
-          virtualNetworkRules: S.optional(__S(110, __c13, 6)),
-          privateEndpointConnections: S.optional(__S(115, __c14, 3)),
+          consistencyPolicy: S.optional(__S(1632, __c51, 0)),
+          capabilities: S.optional(__S(8865, __c277, 1)),
+          writeLocations: S.optional(__S(1649, __c51, 17)),
+          readLocations: S.optional(__S(1649, __c51, 17)),
+          locations: S.optional(__S(1649, __c51, 17)),
+          failoverPolicies: S.optional(__S(1651, __c51, 19)),
+          virtualNetworkRules: S.optional(__S(1652, __c51, 20)),
+          privateEndpointConnections: S.optional(__S(1600, __c50, 0)),
           enableMultipleWriteLocations: S.optional(S.Boolean),
           enableCassandraConnector: S.optional(S.Boolean),
           connectorOffer: S.optional(S.String),
@@ -13967,19 +14263,19 @@ function __c14(j: number): any {
           defaultIdentity: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
           enableFreeTier: S.optional(S.Boolean),
-          apiProperties: S.optional(__S(92, __c11, 4)),
+          apiProperties: S.optional(__S(1636, __c51, 4)),
           enableAnalyticalStorage: S.optional(S.Boolean),
-          analyticalStorageConfiguration: S.optional(__S(93, __c11, 5)),
+          analyticalStorageConfiguration: S.optional(__S(1637, __c51, 5)),
           instanceId: S.optional(S.String),
           createMode: S.optional(S.String),
-          restoreParameters: S.optional(__S(102, __c12, 6)),
-          backupPolicy: S.optional(__S(95, __c11, 7)),
-          cors: S.optional(__S(97, __c12, 1)),
+          restoreParameters: S.optional(__S(1646, __c51, 14)),
+          backupPolicy: S.optional(__S(1639, __c51, 7)),
+          cors: S.optional(__S(1641, __c51, 9)),
           networkAclBypass: S.optional(S.String),
-          networkAclBypassResourceIds: S.optional(__S(4, __c0, 4)),
+          networkAclBypassResourceIds: S.optional(__S(96, __c3, 0)),
           disableLocalAuth: S.optional(S.Boolean),
-          capacity: S.optional(__S(103, __c12, 7)),
-          keysMetadata: S.optional(__S(117, __c14, 5)),
+          capacity: S.optional(__S(1647, __c51, 15)),
+          keysMetadata: S.optional(__S(1654, __c51, 22)),
           enablePartitionMerge: S.optional(S.Boolean),
           enableBurstCapacity: S.optional(S.Boolean),
           minimalTlsVersion: S.optional(S.String),
@@ -13993,3368 +14289,54 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DatabaseAccountGetProperties",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(118, __c14, 6)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabaseAccountsCreateOrUpdateResponse",
-      });
   }
 }
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          locationName: S.optional(S.String),
-          failoverPriority: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "FailoverPolicyInput" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          failoverPolicies: __S(121, __c15, 1),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/failoverPriorityChange",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DatabaseAccountsFailoverPriorityChangeRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DatabaseAccountsGetReadOnlyKeysRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          primaryReadonlyMasterKey: S.optional(S.String),
-          secondaryReadonlyMasterKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabaseAccountListReadOnlyKeysResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DatabaseAccountsListReadOnlyKeysRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          region: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/offlineRegion",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DatabaseAccountsOfflineRegionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          region: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/onlineRegion",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DatabaseAccountsOnlineRegionRequest",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCassandraClusterRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCassandraClusterResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          dataCenterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCassandraDataCenterRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          keyspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCassandraResourceCassandraKeyspaceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleAssignmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments/{roleAssignmentId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCassandraResourceCassandraRoleAssignmentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCassandraResourceCassandraRoleDefinitionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          keyspaceName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCassandraResourceCassandraTableRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDatabaseAccountRequest",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fleetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFleetRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fleetName: S.String.pipe(T.Label()),
-          fleetspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFleetspaceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fleetName: S.String.pipe(T.Label()),
-          fleetspaceName: S.String.pipe(T.Label()),
-          fleetspaceAccountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFleetspaceAccountRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteFleetspaceAccountResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGremlinResourceGremlinDatabaseRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          graphName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGremlinResourceGremlinGraphRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleAssignmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments/{roleAssignmentId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGremlinResourceGremlinRoleAssignmentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGremlinResourceGremlinRoleDefinitionRequest",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          collectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMongoDBResourceMongoDBCollectionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMongoDBResourceMongoDBDatabaseRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          mongoRoleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMongoDBResourceMongoRoleDefinitionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          mongoUserDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMongoDBResourceMongoUserDefinitionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleAssignmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments/{roleAssignmentId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMongoMIResourceMongoMIRoleAssignmentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMongoMIResourceMongoMIRoleDefinitionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          notebookWorkspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteNotebookWorkspaceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionRequest",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteServiceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSqlResourceSqlContainerRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSqlResourceSqlDatabaseRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleAssignmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSqlResourceSqlRoleAssignmentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSqlResourceSqlRoleDefinitionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          storedProcedureName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSqlResourceSqlStoredProcedureRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          userDefinedFunctionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSqlResourceSqlUserDefinedFunctionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteTableResourceTableRequest",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleAssignmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments/{roleAssignmentId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteTableResourceTableRoleAssignmentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteTableResourceTableRoleDefinitionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCassandraClusterRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          dataCenterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCassandraDataCenterRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          keyspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCassandraResourceCassandraKeyspaceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(42, __c5, 2)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GetCassandraResourceCassandraKeyspaceResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          keyspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCassandraResourceCassandraKeyspaceThroughputRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          isEnabled: S.optional(S.Boolean),
-          incrementPercent: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ThroughputPolicyResource" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          throughputPolicy: S.optional(__S(167, __c20, 7)),
-        }),
-      ).annotate({
-        identifier: "AutoUpgradePolicyResource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maxThroughput: S.Number,
-          autoUpgradePolicy: S.optional(__S(168, __c21, 0)),
-          targetMaxThroughput: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AutoscaleSettingsResource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          throughput: S.optional(S.Number),
-          autoscaleSettings: S.optional(__S(169, __c21, 1)),
-          minimumThroughput: S.optional(S.String),
-          offerReplacePending: S.optional(S.String),
-          instantMaximumThroughput: S.optional(S.String),
-          softAllowedMaximumThroughput: S.optional(S.String),
-          _rid: S.optional(S.String),
-          _ts: S.optional(S.Number),
-          _etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ThroughputSettingsGetPropertiesResource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(170, __c21, 2)),
-        }),
-      ).annotate({
-        identifier: "ThroughputSettingsGetProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(171, __c21, 3)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(43, __c5, 3)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GetCassandraResourceCassandraKeyspaceThroughputResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleAssignmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments/{roleAssignmentId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCassandraResourceCassandraRoleAssignmentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "GetCassandraResourceCassandraRoleAssignmentResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCassandraResourceCassandraRoleDefinitionRequest",
-      });
-  }
-}
-function __c22(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(54, __c6, 6)),
         }),
-      ).annotate({
-        identifier: "GetCassandraResourceCassandraRoleDefinitionResponse",
-      });
+      ).annotate({ identifier: "PrivateEndpointProperty" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          keyspaceName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCassandraResourceCassandraTableRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          keyspaceName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCassandraResourceCassandraTableThroughputRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(171, __c21, 3)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GetCassandraResourceCassandraTableThroughputResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatabaseAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(118, __c14, 6)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetDatabaseAccountResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fleetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({ identifier: "GetFleetRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fleetName: S.String.pipe(T.Label()),
-          fleetspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({ identifier: "GetFleetspaceRequest" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          fleetName: S.String.pipe(T.Label()),
-          fleetspaceName: S.String.pipe(T.Label()),
-          fleetspaceAccountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFleetspaceAccountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          graphName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/retrieveContinuousBackupInformation",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGremlinResourceContinuousBackupInformationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          latestRestorableTimestamp: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContinuousBackupInformation",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          continuousBackupInformation: S.optional(__S(186, __c23, 2)),
-        }),
-      ).annotate({ identifier: "BackupInformation" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGremlinResourceGremlinDatabaseRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          restoreSource: S.optional(S.String),
-          restoreTimestampInUtc: S.optional(S.String),
-          restoreWithTtlDisabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RestoreParametersBase" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          restoreParameters: S.optional(__S(189, __c23, 5)),
-          createMode: S.optional(S.String),
-          _rid: S.optional(S.String),
-          _ts: S.optional(S.Number),
-          _etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GremlinDatabaseGetPropertiesResource",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(190, __c23, 6)),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "GremlinDatabaseGetProperties",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(191, __c23, 7)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GetGremlinResourceGremlinDatabaseResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGremlinResourceGremlinDatabaseThroughputRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          graphName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGremlinResourceGremlinGraphRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataType: S.optional(S.String),
-          precision: S.optional(S.Number),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Indexes" });
-    case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          indexes: S.optional(__S(196, __c24, 4)),
-        }),
-      ).annotate({ identifier: "IncludedPath" });
-    case 6:
-      return S.Array(__S(197, __c24, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExcludedPath" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(199, __c24, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          order: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CompositePath" });
-    case 2:
-      return S.Array(__S(201, __c25, 1));
-    case 3:
-      return S.Array(__S(202, __c25, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          types: S.optional(__S(204, __c25, 4)),
-        }),
-      ).annotate({ identifier: "SpatialSpec" });
-    case 6:
-      return S.Array(__S(205, __c25, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          type: S.String,
-          quantizationByteSize: S.optional(S.Number),
-          indexingSearchListSize: S.optional(S.Number),
-          vectorIndexShardKey: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "VectorIndex" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-        }),
-      ).annotate({ identifier: "FullTextIndexPath" });
-    case 2:
-      return S.Array(__S(209, __c26, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          indexingMode: S.optional(S.String),
-          includedPaths: S.optional(__S(198, __c24, 6)),
-          excludedPaths: S.optional(__S(200, __c25, 0)),
-          compositeIndexes: S.optional(__S(203, __c25, 3)),
-          spatialIndexes: S.optional(__S(206, __c25, 6)),
-          vectorIndexes: S.optional(__S(208, __c26, 0)),
-          fullTextIndexes: S.optional(__S(210, __c26, 2)),
-        }),
-      ).annotate({ identifier: "IndexingPolicy" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          paths: S.optional(__S(4, __c0, 4)),
-          kind: S.optional(S.String),
-          version: S.optional(S.Number),
-          systemKey: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ContainerPartitionKey" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          paths: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "UniqueKey" });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uniqueKeys: S.optional(__S(214, __c26, 6)),
-        }),
-      ).annotate({ identifier: "UniqueKeyPolicy" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          conflictResolutionPath: S.optional(S.String),
-          conflictResolutionProcedure: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConflictResolutionPolicy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          indexingPolicy: S.optional(__S(211, __c26, 3)),
-          partitionKey: S.optional(__S(212, __c26, 4)),
-          defaultTtl: S.optional(S.Number),
-          uniqueKeyPolicy: S.optional(__S(215, __c26, 7)),
-          conflictResolutionPolicy: S.optional(__S(216, __c27, 0)),
-          analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(189, __c23, 5)),
-          createMode: S.optional(S.String),
-          _rid: S.optional(S.String),
-          _ts: S.optional(S.Number),
-          _etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GremlinGraphGetPropertiesResource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(217, __c27, 1)),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "GremlinGraphGetProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(218, __c27, 2)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GetGremlinResourceGremlinGraphResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          graphName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGremlinResourceGremlinGraphThroughputRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleAssignmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments/{roleAssignmentId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGremlinResourceGremlinRoleAssignmentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGremlinResourceGremlinRoleDefinitionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({ identifier: "GetLocationRequest" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          supportsAvailabilityZone: S.optional(S.Boolean),
-          isResidencyRestricted: S.optional(S.Boolean),
-          backupStorageRedundancies: S.optional(__S(204, __c25, 4)),
-          isSubscriptionRegionAccessAllowedForRegular: S.optional(S.Boolean),
-          isSubscriptionRegionAccessAllowedForAz: S.optional(S.Boolean),
           status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocationProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(224, __c28, 0)),
-        }),
-      ).annotate({ identifier: "GetLocationResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          collectionName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/retrieveContinuousBackupInformation",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMongoDBResourceContinuousBackupInformationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          collectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMongoDBResourceMongoDBCollectionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keys: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "MongoIndexKeys" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expireAfterSeconds: S.optional(S.Number),
-          unique: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "MongoIndexOptions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(__S(228, __c28, 4)),
-          options: S.optional(__S(229, __c28, 5)),
-        }),
-      ).annotate({ identifier: "MongoIndex" });
-    case 7:
-      return S.Array(__S(230, __c28, 6));
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          shardKey: S.optional(__S(9, __c1, 1)),
-          indexes: S.optional(__S(231, __c28, 7)),
-          analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(189, __c23, 5)),
-          createMode: S.optional(S.String),
-          _rid: S.optional(S.String),
-          _ts: S.optional(S.Number),
-          _etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MongoDBCollectionGetPropertiesResource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(232, __c29, 0)),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "MongoDBCollectionGetProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(233, __c29, 1)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GetMongoDBResourceMongoDBCollectionResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          collectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMongoDBResourceMongoDBCollectionThroughputRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMongoDBResourceMongoDBDatabaseRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(191, __c23, 7)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GetMongoDBResourceMongoDBDatabaseResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMongoDBResourceMongoDBDatabaseThroughputRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          mongoRoleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMongoDBResourceMongoRoleDefinitionRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          db: S.optional(S.String),
-          collection: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivilegeResource" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(240, __c30, 0)),
-          actions: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Privilege" });
-    case 2:
-      return S.Array(__S(241, __c30, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          db: S.optional(S.String),
-          role: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Role" });
-    case 4:
-      return S.Array(__S(243, __c30, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          roleName: S.optional(S.String),
-          type: S.optional(S.String),
-          databaseName: S.optional(S.String),
-          privileges: S.optional(__S(242, __c30, 2)),
-          roles: S.optional(__S(244, __c30, 4)),
-        }),
-      ).annotate({
-        identifier: "MongoRoleDefinitionResource",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(245, __c30, 5)),
-        }),
-      ).annotate({
-        identifier: "GetMongoDBResourceMongoRoleDefinitionResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          mongoUserDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMongoDBResourceMongoUserDefinitionRequest",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          userName: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          databaseName: S.optional(S.String),
-          customData: S.optional(S.String),
-          roles: S.optional(__S(244, __c30, 4)),
-          mechanisms: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MongoUserDefinitionResource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(248, __c31, 0)),
-        }),
-      ).annotate({
-        identifier: "GetMongoDBResourceMongoUserDefinitionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleAssignmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments/{roleAssignmentId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMongoMIResourceMongoMIRoleAssignmentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMongoMIResourceMongoMIRoleDefinitionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          notebookWorkspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNotebookWorkspaceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          notebookServerEndpoint: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NotebookWorkspaceProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(253, __c31, 5)),
-        }),
-      ).annotate({
-        identifier: "GetNotebookWorkspaceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionRequest",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateLinkResources/{groupName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateLinkResourceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(4, __c0, 4)),
-          requiredZoneNames: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(257, __c32, 1)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkResourceResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRestorableDatabaseAccountByLocationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          locationName: S.optional(S.String),
-          regionalDatabaseAccountInstanceId: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          deletionTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RestorableLocationResource",
-      });
-    case 5:
-      return S.Array(__S(260, __c32, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountName: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          oldestRestorableTime: S.optional(S.String),
-          deletionTime: S.optional(S.String),
-          apiType: S.optional(S.String),
-          restorableLocations: S.optional(__S(261, __c32, 5)),
-        }),
-      ).annotate({
-        identifier: "RestorableDatabaseAccountProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(262, __c32, 6)),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetRestorableDatabaseAccountByLocationResponse",
-      });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({ identifier: "GetServiceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          clientEncryptionKeyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys/{clientEncryptionKeyName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlResourceClientEncryptionKeyRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-          algorithm: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyWrapMetadata" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          encryptionAlgorithm: S.optional(S.String),
-          wrappedDataEncryptionKey: S.optional(S.String),
-          keyWrapMetadata: S.optional(__S(266, __c33, 2)),
-          _rid: S.optional(S.String),
-          _ts: S.optional(S.Number),
-          _etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClientEncryptionKeyGetPropertiesResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(267, __c33, 3)),
-        }),
-      ).annotate({
-        identifier: "ClientEncryptionKeyGetProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(268, __c33, 4)),
-        }),
-      ).annotate({
-        identifier: "GetSqlResourceClientEncryptionKeyResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/retrieveContinuousBackupInformation",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlResourceContinuousBackupInformationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlResourceSqlContainerRequest",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          clientEncryptionKeyId: S.String,
-          encryptionType: S.String,
-          encryptionAlgorithm: S.String,
-        }),
-      ).annotate({
-        identifier: "ClientEncryptionIncludedPath",
-      });
-    case 1:
-      return S.Array(__S(272, __c34, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          includedPaths: __S(273, __c34, 1),
-          policyFormatVersion: S.Number,
-        }),
-      ).annotate({ identifier: "ClientEncryptionPolicy" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          query: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ComputedProperty" });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          dataType: S.String,
-          distanceFunction: S.String,
-          dimensions: S.Number,
-        }),
-      ).annotate({ identifier: "VectorEmbedding" });
-    case 6:
-      return S.Array(__S(277, __c34, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          vectorEmbeddings: S.optional(__S(278, __c34, 6)),
-        }),
-      ).annotate({ identifier: "VectorEmbeddingPolicy" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          language: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FullTextPath" });
-    case 1:
-      return S.Array(__S(280, __c35, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          defaultLanguage: S.optional(S.String),
-          fullTextPaths: S.optional(__S(281, __c35, 1)),
-        }),
-      ).annotate({ identifier: "FullTextPolicy" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          indexingPolicy: S.optional(__S(211, __c26, 3)),
-          partitionKey: S.optional(__S(212, __c26, 4)),
-          defaultTtl: S.optional(S.Number),
-          uniqueKeyPolicy: S.optional(__S(215, __c26, 7)),
-          conflictResolutionPolicy: S.optional(__S(216, __c27, 0)),
-          clientEncryptionPolicy: S.optional(__S(274, __c34, 2)),
-          analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(189, __c23, 5)),
-          createMode: S.optional(S.String),
-          computedProperties: S.optional(__S(276, __c34, 4)),
-          vectorEmbeddingPolicy: S.optional(__S(279, __c34, 7)),
-          fullTextPolicy: S.optional(__S(282, __c35, 2)),
-          _rid: S.optional(S.String),
-          _ts: S.optional(S.Number),
-          _etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SqlContainerGetPropertiesResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(283, __c35, 3)),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "SqlContainerGetProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(284, __c35, 4)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GetSqlResourceSqlContainerResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlResourceSqlContainerThroughputRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlResourceSqlDatabaseRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          restoreParameters: S.optional(__S(189, __c23, 5)),
-          createMode: S.optional(S.String),
-          _rid: S.optional(S.String),
-          _ts: S.optional(S.Number),
-          _etag: S.optional(S.String),
-          _colls: S.optional(S.String),
-          _users: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SqlDatabaseGetPropertiesResource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(288, __c36, 0)),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "SqlDatabaseGetProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(289, __c36, 1)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GetSqlResourceSqlDatabaseResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlResourceSqlDatabaseThroughputRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleAssignmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlResourceSqlRoleAssignmentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({
-        identifier: "GetSqlResourceSqlRoleAssignmentResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlResourceSqlRoleDefinitionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          roleName: S.optional(S.String),
-          type: S.optional(S.String),
-          assignableScopes: S.optional(__S(4, __c0, 4)),
-          permissions: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "SqlRoleDefinitionResource",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(295, __c36, 7)),
-        }),
-      ).annotate({
-        identifier: "GetSqlResourceSqlRoleDefinitionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          storedProcedureName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlResourceSqlStoredProcedureRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          body: S.optional(S.String),
-          _rid: S.optional(S.String),
-          _ts: S.optional(S.Number),
-          _etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SqlStoredProcedureGetPropertiesResource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(298, __c37, 2)),
-        }),
-      ).annotate({
-        identifier: "SqlStoredProcedureGetProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(299, __c37, 3)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GetSqlResourceSqlStoredProcedureResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          userDefinedFunctionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlResourceSqlUserDefinedFunctionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/retrieveContinuousBackupInformation",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTableResourceContinuousBackupInformationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTableResourceTableRequest",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(190, __c23, 6)),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "TableGetProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(304, __c38, 0)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GetTableResourceTableResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleAssignmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments/{roleAssignmentId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTableResourceTableRoleAssignmentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTableResourceTableRoleDefinitionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTableResourceTableThroughputRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          restoreParameters: S.optional(__S(189, __c23, 5)),
-          createMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GremlinDatabaseResource" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: __S(309, __c38, 5),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "GremlinDatabaseCreateUpdateProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(310, __c38, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GremlinResourcesCreateUpdateGremlinDatabaseRequest",
-      });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          paths: S.optional(__S(4, __c0, 4)),
-          kind: S.optional(S.String),
-          version: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ContainerPartitionKeyInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          indexingPolicy: S.optional(__S(211, __c26, 3)),
-          partitionKey: S.optional(__S(312, __c39, 0)),
-          defaultTtl: S.optional(S.Number),
-          uniqueKeyPolicy: S.optional(__S(215, __c26, 7)),
-          conflictResolutionPolicy: S.optional(__S(216, __c27, 0)),
-          analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(189, __c23, 5)),
-          createMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GremlinGraphResourceInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: __S(313, __c39, 1),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "GremlinGraphCreateUpdatePropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          graphName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(314, __c39, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GremlinResourcesCreateUpdateGremlinGraphRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleAssignmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(48, __c6, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments/{roleAssignmentId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GremlinResourcesCreateUpdateGremlinRoleAssignmentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "GremlinResourcesCreateUpdateGremlinRoleAssignmentResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(54, __c6, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "GremlinResourcesCreateUpdateGremlinRoleDefinitionResponse",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          command: S.String,
-          arguments: S.optional(__S(9, __c1, 1)),
-          host: S.String,
-          cassandra_stop_start: S.optional(S.Boolean.pipe(T.Body("cassandra-stop-start"))),
-          readwrite: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/invokeCommand",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "InvokeCassandraClusterCommandRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCassandraClusterByResourceGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(13, __c1, 5)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "ClusterResource" });
-    case 3:
-      return S.Array(__S(322, __c40, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(323, __c40, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListClusters" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/cassandraClusters",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCassandraClusterBySubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCassandraDataCentersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "DataCenterResource" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(327, __c40, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(328, __c41, 0)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListDataCenters" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCassandraResourceCassandraKeyspacesRequest",
-      });
-    case 3:
-      return S.Array(__S(165, __c20, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(331, __c41, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CassandraKeyspaceListResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCassandraResourceCassandraRoleAssignmentsRequest",
-      });
-    case 6:
-      return S.Array(__S(174, __c21, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(334, __c41, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CassandraRoleAssignmentListResult",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCassandraResourceCassandraRoleDefinitionsRequest",
-      });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(337, __c42, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CassandraRoleDefinitionListResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          keyspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCassandraResourceCassandraTablesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(68, __c8, 4)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "CassandraTableGetResults" });
-    case 5:
-      return S.Array(__S(340, __c42, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(341, __c42, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CassandraTableListResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseRid: S.String.pipe(T.Label()),
-          collectionRid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metricDefinitions",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCollectionMetricDefinitionsRequest",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          timeGrain: S.optional(S.String),
-          retention: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricAvailability" });
-    case 1:
-      return S.Array(__S(344, __c43, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          localizedValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricName" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metricAvailabilities: S.optional(__S(345, __c43, 1)),
-          primaryAggregationType: S.optional(S.String),
-          unit: S.optional(S.String),
-          resourceUri: S.optional(S.String),
-          name: S.optional(__S(346, __c43, 2)),
-        }),
-      ).annotate({ identifier: "MetricDefinition" });
-    case 4:
-      return S.Array(__S(347, __c43, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(348, __c43, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MetricDefinitionsListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseRid: S.String.pipe(T.Label()),
-          collectionRid: S.String.pipe(T.Label()),
-          _filter: S.String.pipe(T.Query("$filter")),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metrics",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCollectionMetricsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _count: S.optional(S.Number),
-          average: S.optional(S.Number),
-          maximum: S.optional(S.Number),
-          minimum: S.optional(S.Number),
-          timestamp: S.optional(S.String),
-          total: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MetricValue" });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(351, __c43, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          timeGrain: S.optional(S.String),
-          unit: S.optional(S.String),
-          name: S.optional(__S(346, __c43, 2)),
-          metricValues: S.optional(__S(352, __c44, 0)),
-        }),
-      ).annotate({ identifier: "Metric" });
-    case 2:
-      return S.Array(__S(353, __c44, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(354, __c44, 2)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseRid: S.String.pipe(T.Label()),
-          collectionRid: S.String.pipe(T.Label()),
-          _filter: S.String.pipe(T.Query("$filter")),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCollectionPartitionMetricsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          timeGrain: S.optional(S.String),
-          unit: S.optional(S.String),
-          name: S.optional(__S(346, __c43, 2)),
-          metricValues: S.optional(__S(352, __c44, 0)),
-          partitionId: S.optional(S.String),
-          partitionKeyRangeId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PartitionMetric" });
-    case 6:
-      return S.Array(__S(357, __c44, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(358, __c44, 6)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PartitionMetricListResult",
-      });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          databaseRid: S.String.pipe(T.Label()),
-          collectionRid: S.String.pipe(T.Label()),
-          _filter: S.String.pipe(T.Query("$filter")),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCollectionPartitionRegionMetricsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseRid: S.String.pipe(T.Label()),
-          collectionRid: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/usages",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCollectionPartitionUsagesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          name: S.optional(__S(346, __c43, 2)),
-          quotaPeriod: S.optional(S.String),
-          limit: S.optional(S.Number),
-          currentValue: S.optional(S.Number),
-          partitionId: S.optional(S.String),
-          partitionKeyRangeId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PartitionUsage" });
-    case 3:
-      return S.Array(__S(362, __c45, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(363, __c45, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PartitionUsagesResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          databaseRid: S.String.pipe(T.Label()),
-          collectionRid: S.String.pipe(T.Label()),
-          _filter: S.String.pipe(T.Query("$filter")),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/metrics",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCollectionRegionMetricsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          databaseRid: S.String.pipe(T.Label()),
-          collectionRid: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/usages",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCollectionUsagesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          name: S.optional(__S(346, __c43, 2)),
-          quotaPeriod: S.optional(S.String),
-          limit: S.optional(S.Number),
-          currentValue: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Usage" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(367, __c45, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(368, __c46, 0)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UsagesResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDatabaseAccountByResourceGroupRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(118, __c14, 6)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabaseAccountGetResults",
-      });
-    case 4:
-      return S.Array(__S(371, __c46, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(372, __c46, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabaseAccountsListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listConnectionStrings",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDatabaseAccountConnectionStringsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
           description: S.optional(S.String),
-          keyKind: S.optional(S.String),
-          type: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "DatabaseAccountConnectionString",
+        identifier: "PrivateLinkServiceConnectionStateProperty",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(1664, __c52, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1665, __c52, 1)),
+          groupId: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1666, __c52, 2)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnection",
       });
   }
 }
-function __c47(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(375, __c46, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          connectionStrings: S.optional(__S(376, __c47, 0)),
-        }),
-      ).annotate({
-        identifier: "DatabaseAccountListConnectionStringsResult",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17371,7 +14353,7 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListDatabaseAccountKeysRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           primaryReadonlyMasterKey: S.optional(S.String),
@@ -17382,7 +14364,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListDatabaseAccountKeysResponse",
       });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17399,7 +14385,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListDatabaseAccountMetricDefinitionsRequest",
       });
-    case 5:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17417,7 +14407,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListDatabaseAccountMetricsRequest",
       });
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17436,7 +14430,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListDatabaseAccountRegionMetricsRequest",
       });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17453,7 +14451,7 @@ function __c47(j: number): any {
       });
   }
 }
-function __c48(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17473,7 +14471,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListDatabaseAccountUsagesRequest",
       });
-    case 1:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17491,7 +14493,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListDatabaseMetricDefinitionsRequest",
       });
-    case 2:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17510,7 +14516,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListDatabaseMetricsRequest",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17529,7 +14539,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListDatabaseUsagesRequest",
       });
-    case 4:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17542,16 +14556,55 @@ function __c48(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFleetRequest" });
-    case 5:
-      return S.Array(__S(72, __c9, 0));
-    case 6:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9537, __c298, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(389, __c48, 5),
+          value: __S(2016, __c63, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetListResult" });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationName: S.optional(S.String),
+          failoverPriority: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FailoverPolicyInput" });
+    case 1:
+      return S.Array(__S(2048, __c64, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          failoverPolicies: __S(2049, __c64, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/failoverPriorityChange",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DatabaseAccountsFailoverPriorityChangeRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17569,7 +14622,7 @@ function __c48(j: number): any {
       });
   }
 }
-function __c49(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17587,15 +14640,19 @@ function __c49(j: number): any {
         ),
       ).annotate({ identifier: "ListFleetspaceRequest" });
     case 1:
-      return S.Array(__S(76, __c9, 4));
+      return S.Array(__S(10178, __c318, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(393, __c49, 1),
+          value: __S(2113, __c66, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetspaceListResult" });
-    case 3:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17613,18 +14670,22 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ListFleetspaceAccountRequest",
       });
-    case 4:
-      return S.Array(__S(80, __c10, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(386, __c12, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(396, __c49, 4),
+          value: __S(2145, __c67, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FleetspaceAccountListResult",
       });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17641,22 +14702,22 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ListGremlinResourceGremlinDatabasesRequest",
       });
-    case 7:
-      return S.Array(__S(192, __c24, 0));
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(8448, __c264, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(399, __c49, 7)),
+          value: S.optional(__S(2177, __c68, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GremlinDatabaseListResult",
       });
-    case 1:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17674,29 +14735,33 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ListGremlinResourceGremlinGraphsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(218, __c27, 2)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8577, __c268, 1)),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
         }),
       ).annotate({ identifier: "GremlinGraphGetResults" });
+    case 2:
+      return S.Array(__S(2209, __c69, 1));
     case 3:
-      return S.Array(__S(402, __c50, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(403, __c50, 3)),
+          value: S.optional(__S(2210, __c69, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GremlinGraphListResult" });
-    case 5:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17713,7 +14778,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ListGremlinResourceGremlinRoleAssignmentsRequest",
       });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17730,7 +14799,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ListGremlinResourceGremlinRoleDefinitionsRequest",
       });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17743,20 +14816,20 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListLocationsRequest" });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(225, __c28, 1));
     case 1:
+      return S.Array(__S(8801, __c275, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(408, __c51, 0)),
+          value: S.optional(__S(2305, __c72, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocationListResult" });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17774,18 +14847,22 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ListMongoDBResourceMongoDBCollectionsRequest",
       });
-    case 3:
-      return S.Array(__S(234, __c29, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(9030, __c282, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(411, __c51, 3)),
+          value: S.optional(__S(2337, __c73, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MongoDBCollectionListResult",
       });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17802,12 +14879,12 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ListMongoDBResourceMongoDBDatabasesRequest",
       });
-    case 6:
-      return S.Array(__S(237, __c29, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(9120, __c285, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(414, __c51, 6)),
+          value: S.optional(__S(2369, __c74, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -17815,7 +14892,41 @@ function __c51(j: number): any {
       });
   }
 }
-function __c52(j: number): any {
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DatabaseAccountsGetReadOnlyKeysRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          primaryReadonlyMasterKey: S.optional(S.String),
+          secondaryReadonlyMasterKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseAccountListReadOnlyKeysResult",
+      });
+  }
+}
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17835,17 +14946,21 @@ function __c52(j: number): any {
         identifier: "ListMongoDBResourceMongoRoleDefinitionsRequest",
       });
     case 1:
-      return S.Array(__S(246, __c30, 6));
+      return S.Array(__S(9220, __c288, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(417, __c52, 1)),
+          value: S.optional(__S(2465, __c77, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MongoRoleDefinitionListResult",
       });
-    case 3:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17862,18 +14977,22 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ListMongoDBResourceMongoUserDefinitionsRequest",
       });
-    case 4:
-      return S.Array(__S(249, __c31, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(9313, __c291, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(420, __c52, 4)),
+          value: S.optional(__S(2497, __c78, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MongoUserDefinitionListResult",
       });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17890,7 +15009,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ListMongoMIResourceMongoMIRoleAssignmentsRequest",
       });
-    case 7:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17909,7 +15032,7 @@ function __c52(j: number): any {
       });
   }
 }
-function __c53(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17934,22 +15057,26 @@ function __c53(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(253, __c31, 5)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9440, __c295, 0)),
         }),
       ).annotate({ identifier: "NotebookWorkspace" });
     case 2:
-      return S.Array(__S(425, __c53, 1));
+      return S.Array(__S(2593, __c81, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(426, __c53, 2)),
+          value: S.optional(__S(2594, __c81, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NotebookWorkspaceListResult",
       });
-    case 4:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17967,7 +15094,7 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "ListNotebookWorkspaceConnectionInfoRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           authToken: S.optional(S.String),
@@ -17976,7 +15103,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "NotebookWorkspaceConnectionInfoResult",
       });
-    case 6:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -17987,7 +15118,7 @@ function __c53(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Provider: S.optional(S.String),
@@ -17996,27 +15127,27 @@ function __c53(j: number): any {
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(431, __c53, 7)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.Array(__S(432, __c54, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(433, __c54, 1),
+          name: S.optional(S.String),
+          display: S.optional(__S(2657, __c83, 1)),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(2658, __c83, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(2659, __c83, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 3:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18037,7 +15168,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ListPartitionKeyRangeIdMetricsRequest",
       });
-    case 4:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18059,7 +15194,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ListPartitionKeyRangeIdRegionMetricsRequest",
       });
-    case 5:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18077,7 +15216,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ListPercentileMetricsRequest",
       });
-    case 6:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _count: S.optional(S.Number),
@@ -18095,35 +15238,56 @@ function __c54(j: number): any {
           P99: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PercentileMetricValue" });
-    case 7:
-      return S.Array(__S(438, __c54, 6));
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(2784, __c87, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           timeGrain: S.optional(S.String),
           unit: S.optional(S.String),
-          name: S.optional(__S(346, __c43, 2)),
-          metricValues: S.optional(__S(439, __c54, 7)),
+          name: S.optional(__S(1056, __c33, 0)),
+          metricValues: S.optional(__S(2785, __c87, 1)),
         }),
       ).annotate({ identifier: "PercentileMetric" });
-    case 1:
-      return S.Array(__S(440, __c55, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(2786, __c87, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(441, __c55, 1)),
+          value: S.optional(__S(2787, __c87, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PercentileMetricListResult",
       });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DatabaseAccountsListReadOnlyKeysRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18143,7 +15307,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "ListPercentileSourceTargetMetricsRequest",
       });
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18162,7 +15330,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "ListPercentileTargetMetricsRequest",
       });
-    case 5:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18179,16 +15351,20 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionByDatabaseAccountRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(115, __c14, 3)),
+          value: S.optional(__S(1600, __c50, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionListResult",
       });
-    case 7:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18205,32 +15381,32 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourceByDatabaseAccountRequest",
       });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(257, __c32, 1)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9632, __c301, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
-    case 1:
-      return S.Array(__S(448, __c56, 0));
     case 2:
+      return S.Array(__S(2945, __c92, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(449, __c56, 1)),
+          value: S.optional(__S(2946, __c92, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
       });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18246,18 +15422,26 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ListRestorableDatabaseAccountByLocationRequest",
       });
-    case 4:
-      return S.Array(__S(263, __c32, 7));
-    case 5:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9699, __c303, 3));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(452, __c56, 4)),
+          value: S.optional(__S(3008, __c94, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RestorableDatabaseAccountsListResult",
       });
-    case 6:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18272,7 +15456,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ListRestorableDatabaseAccountsRequest",
       });
-    case 7:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18291,7 +15479,33 @@ function __c56(j: number): any {
       });
   }
 }
-function __c57(j: number): any {
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(3137, __c98, 1)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RestorableGremlinDatabaseGetResult",
+      });
+    case 1:
+      return S.Array(__S(3104, __c97, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(3105, __c97, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RestorableGremlinDatabasesListResult",
+      });
+  }
+}
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18310,34 +15524,16 @@ function __c57(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(456, __c57, 0)),
+          resource: S.optional(__S(3136, __c98, 0)),
         }),
       ).annotate({
         identifier: "RestorableGremlinDatabaseProperties",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(457, __c57, 1)),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RestorableGremlinDatabaseGetResult",
-      });
-    case 3:
-      return S.Array(__S(458, __c57, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(459, __c57, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RestorableGremlinDatabasesListResult",
-      });
-    case 5:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18357,7 +15553,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ListRestorableGremlinGraphsRequest",
       });
-    case 6:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18376,34 +15576,34 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ListRestorableGremlinResourcesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           databaseName: S.optional(S.String),
-          graphNames: S.optional(__S(4, __c0, 4)),
+          graphNames: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "RestorableGremlinResourcesGetResult",
       });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(463, __c57, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(3201, __c100, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(464, __c58, 0)),
+          value: S.optional(__S(3202, __c100, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RestorableGremlinResourcesListResult",
       });
-    case 2:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18423,7 +15623,33 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "ListRestorableMongodbCollectionsRequest",
       });
-    case 3:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          region: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/offlineRegion",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DatabaseAccountsOfflineRegionRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18440,7 +15666,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "ListRestorableMongodbDatabasesRequest",
       });
-    case 4:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18459,24 +15689,28 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "ListRestorableMongodbResourcesRequest",
       });
-    case 5:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           databaseName: S.optional(S.String),
-          collectionNames: S.optional(__S(4, __c0, 4)),
+          collectionNames: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "RestorableMongodbResourcesGetResult",
       });
-    case 6:
-      return S.Array(__S(469, __c58, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(3360, __c105, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(470, __c58, 6)),
+          value: S.optional(__S(3361, __c105, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -18484,7 +15718,7 @@ function __c58(j: number): any {
       });
   }
 }
-function __c59(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18507,23 +15741,23 @@ function __c59(j: number): any {
         identifier: "ListRestorableSqlContainersRequest",
       });
     case 1:
-      return S.Array(__S(275, __c34, 3));
+      return S.Array(__S(9891, __c309, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          indexingPolicy: S.optional(__S(211, __c26, 3)),
-          partitionKey: S.optional(__S(212, __c26, 4)),
+          indexingPolicy: S.optional(__S(8655, __c270, 15)),
+          partitionKey: S.optional(__S(8656, __c270, 16)),
           defaultTtl: S.optional(S.Number),
-          uniqueKeyPolicy: S.optional(__S(215, __c26, 7)),
-          conflictResolutionPolicy: S.optional(__S(216, __c27, 0)),
-          clientEncryptionPolicy: S.optional(__S(274, __c34, 2)),
+          uniqueKeyPolicy: S.optional(__S(8659, __c270, 19)),
+          conflictResolutionPolicy: S.optional(__S(8660, __c270, 20)),
+          clientEncryptionPolicy: S.optional(__S(9890, __c309, 2)),
           analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(189, __c23, 5)),
+          restoreParameters: S.optional(__S(8352, __c261, 0)),
           createMode: S.optional(S.String),
-          computedProperties: S.optional(__S(473, __c59, 1)),
-          vectorEmbeddingPolicy: S.optional(__S(279, __c34, 7)),
-          fullTextPolicy: S.optional(__S(282, __c35, 2)),
+          computedProperties: S.optional(__S(3393, __c106, 1)),
+          vectorEmbeddingPolicy: S.optional(__S(9894, __c309, 6)),
+          fullTextPolicy: S.optional(__S(9897, __c309, 9)),
           _rid: S.optional(S.String),
           _ts: S.optional(S.Number),
           _etag: S.optional(S.String),
@@ -18542,7 +15776,7 @@ function __c59(j: number): any {
           eventTimestamp: S.optional(S.String),
           ownerId: S.optional(S.String),
           ownerResourceId: S.optional(S.String),
-          container: S.optional(__S(474, __c59, 2)),
+          container: S.optional(__S(3394, __c106, 2)),
         }),
       ).annotate({
         identifier: "RestorableSqlContainerPropertiesResource",
@@ -18550,7 +15784,7 @@ function __c59(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(475, __c59, 3)),
+          resource: S.optional(__S(3395, __c106, 3)),
         }),
       ).annotate({
         identifier: "RestorableSqlContainerProperties",
@@ -18558,7 +15792,7 @@ function __c59(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(476, __c59, 4)),
+          properties: S.optional(__S(3396, __c106, 4)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
@@ -18567,11 +15801,11 @@ function __c59(j: number): any {
         identifier: "RestorableSqlContainerGetResult",
       });
     case 6:
-      return S.Array(__S(477, __c59, 5));
+      return S.Array(__S(3397, __c106, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(478, __c59, 6)),
+          value: S.optional(__S(3398, __c106, 6)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -18579,7 +15813,7 @@ function __c59(j: number): any {
       });
   }
 }
-function __c60(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18602,7 +15836,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          restoreParameters: S.optional(__S(189, __c23, 5)),
+          restoreParameters: S.optional(__S(8352, __c261, 0)),
           createMode: S.optional(S.String),
           _rid: S.optional(S.String),
           _ts: S.optional(S.Number),
@@ -18624,7 +15858,7 @@ function __c60(j: number): any {
           eventTimestamp: S.optional(S.String),
           ownerId: S.optional(S.String),
           ownerResourceId: S.optional(S.String),
-          database: S.optional(__S(481, __c60, 1)),
+          database: S.optional(__S(3425, __c107, 1)),
         }),
       ).annotate({
         identifier: "RestorableSqlDatabasePropertiesResource",
@@ -18632,7 +15866,7 @@ function __c60(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(482, __c60, 2)),
+          resource: S.optional(__S(3426, __c107, 2)),
         }),
       ).annotate({
         identifier: "RestorableSqlDatabaseProperties",
@@ -18640,7 +15874,7 @@ function __c60(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(483, __c60, 3)),
+          properties: S.optional(__S(3427, __c107, 3)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
@@ -18649,17 +15883,21 @@ function __c60(j: number): any {
         identifier: "RestorableSqlDatabaseGetResult",
       });
     case 5:
-      return S.Array(__S(484, __c60, 4));
+      return S.Array(__S(3428, __c107, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(485, __c60, 5)),
+          value: S.optional(__S(3429, __c107, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RestorableSqlDatabasesListResult",
       });
-    case 7:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18680,7 +15918,7 @@ function __c60(j: number): any {
       });
   }
 }
-function __c61(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18712,17 +15950,21 @@ function __c61(j: number): any {
         identifier: "RestorableTableResourcesGetResult",
       });
     case 2:
-      return S.Array(__S(489, __c61, 1));
+      return S.Array(__S(3489, __c109, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(490, __c61, 2)),
+          value: S.optional(__S(3490, __c109, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RestorableTableResourcesListResult",
       });
-    case 4:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18741,21 +15983,21 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "ListRestorableTablesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(457, __c57, 1)),
+          properties: S.optional(__S(3137, __c98, 1)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableTableGetResult" });
-    case 6:
-      return S.Array(__S(493, __c61, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(3521, __c110, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(494, __c61, 6)),
+          value: S.optional(__S(3522, __c110, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -18763,7 +16005,7 @@ function __c61(j: number): any {
       });
   }
 }
-function __c62(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18781,17 +16023,21 @@ function __c62(j: number): any {
         ),
       ).annotate({ identifier: "ListServiceRequest" });
     case 1:
-      return S.Array(__S(84, __c10, 4));
+      return S.Array(__S(961, __c30, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(497, __c62, 1)),
+          value: S.optional(__S(3553, __c111, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServiceResourceListResult",
       });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18809,18 +16055,22 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ListSqlResourceClientEncryptionKeysRequest",
       });
-    case 4:
-      return S.Array(__S(269, __c33, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(9795, __c306, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(500, __c62, 4)),
+          value: S.optional(__S(3585, __c112, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ClientEncryptionKeysListResult",
       });
-    case 6:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18838,33 +16088,55 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ListSqlResourceSqlContainersRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(284, __c35, 4)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9922, __c310, 2)),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
         }),
       ).annotate({ identifier: "SqlContainerGetResults" });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(503, __c62, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(3617, __c113, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(504, __c63, 0)),
+          value: S.optional(__S(3618, __c113, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlContainerListResult" });
-    case 2:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          region: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/onlineRegion",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DatabaseAccountsOnlineRegionRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18881,29 +16153,33 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "ListSqlResourceSqlDatabasesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(289, __c36, 1)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10049, __c314, 1)),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
         }),
       ).annotate({ identifier: "SqlDatabaseGetResults" });
-    case 4:
-      return S.Array(__S(507, __c63, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3681, __c115, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(508, __c63, 4)),
+          value: S.optional(__S(3682, __c115, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlDatabaseListResult" });
-    case 6:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18920,22 +16196,22 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "ListSqlResourceSqlRoleAssignmentsRequest",
       });
-    case 7:
-      return S.Array(__S(293, __c36, 5));
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(10240, __c320, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(511, __c63, 7)),
+          value: S.optional(__S(3713, __c116, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SqlRoleAssignmentListResult",
       });
-    case 1:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18952,18 +16228,22 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "ListSqlResourceSqlRoleDefinitionsRequest",
       });
+    case 1:
+      return S.Array(__S(10305, __c322, 1));
     case 2:
-      return S.Array(__S(296, __c37, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(514, __c64, 2)),
+          value: S.optional(__S(3745, __c117, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SqlRoleDefinitionListResult",
       });
-    case 4:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18982,18 +16262,26 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "ListSqlResourceSqlStoredProceduresRequest",
       });
-    case 5:
-      return S.Array(__S(300, __c37, 4));
-    case 6:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(10370, __c324, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(517, __c64, 5)),
+          value: S.optional(__S(3808, __c119, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SqlStoredProcedureListResult",
       });
-    case 7:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19012,9 +16300,31 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "ListSqlResourceSqlTriggersRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(3873, __c121, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({ identifier: "SqlTriggerGetResults" });
+    case 2:
+      return S.Array(__S(3841, __c120, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(3842, __c120, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SqlTriggerListResult" });
   }
 }
-function __c65(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19033,32 +16343,14 @@ function __c65(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(520, __c65, 0)),
+          resource: S.optional(__S(3872, __c121, 0)),
         }),
       ).annotate({ identifier: "SqlTriggerGetProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(521, __c65, 1)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "SqlTriggerGetResults" });
-    case 3:
-      return S.Array(__S(522, __c65, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(523, __c65, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SqlTriggerListResult" });
-    case 5:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19077,7 +16369,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "ListSqlResourceSqlUserDefinedFunctionsRequest",
       });
-    case 6:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19094,7 +16390,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "ListTableResourceTableRoleAssignmentsRequest",
       });
-    case 7:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19113,7 +16413,7 @@ function __c65(j: number): any {
       });
   }
 }
-function __c66(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19138,23 +16438,27 @@ function __c66(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(304, __c38, 0)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10496, __c328, 0)),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
         }),
       ).annotate({ identifier: "TableGetResults" });
     case 2:
-      return S.Array(__S(529, __c66, 1));
+      return S.Array(__S(4001, __c125, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(530, __c66, 2)),
+          value: S.optional(__S(4002, __c125, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TableListResult" });
-    case 4:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19172,22 +16476,59 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "MigrateCassandraResourceCassandraKeyspaceToAutoscaleRequest",
       });
-    case 5:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(171, __c21, 3)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7780, __c243, 4)),
           location: S.optional(S.String),
-          tags: S.optional(__S(43, __c5, 3)),
-          identity: S.optional(__S(46, __c5, 6)),
+          tags: S.optional(__S(7040, __c220, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
         }),
       ).annotate({
         identifier: "MigrateCassandraResourceCassandraKeyspaceToAutoscaleResponse",
       });
-    case 6:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCassandraClusterRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCassandraClusterResponse",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19205,24 +16546,28 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "MigrateCassandraResourceCassandraKeyspaceToManualThroughputRequest",
       });
-    case 7:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(171, __c21, 3)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7780, __c243, 4)),
           location: S.optional(S.String),
-          tags: S.optional(__S(43, __c5, 3)),
-          identity: S.optional(__S(46, __c5, 6)),
+          tags: S.optional(__S(7040, __c220, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
         }),
       ).annotate({
         identifier: "MigrateCassandraResourceCassandraKeyspaceToManualThroughputResponse",
       });
   }
 }
-function __c67(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19243,7 +16588,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "MigrateCassandraResourceCassandraTableToAutoscaleRequest",
       });
-    case 1:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19262,7 +16611,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "MigrateCassandraResourceCassandraTableToManualThroughputRequest",
       });
-    case 2:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19280,7 +16633,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "MigrateGremlinResourceGremlinDatabaseToAutoscaleRequest",
       });
-    case 3:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19298,7 +16655,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "MigrateGremlinResourceGremlinDatabaseToManualThroughputRequest",
       });
-    case 4:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19317,7 +16678,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "MigrateGremlinResourceGremlinGraphToAutoscaleRequest",
       });
-    case 5:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19336,7 +16701,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "MigrateGremlinResourceGremlinGraphToManualThroughputRequest",
       });
-    case 6:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19355,7 +16724,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "MigrateMongoDBResourceMongoDBCollectionToAutoscaleRequest",
       });
-    case 7:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19376,7 +16749,7 @@ function __c67(j: number): any {
       });
   }
 }
-function __c68(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19396,7 +16769,33 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "MigrateMongoDBResourceMongoDBDatabaseToAutoscaleRequest",
       });
-    case 1:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          dataCenterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCassandraDataCenterRequest",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19414,7 +16813,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "MigrateMongoDBResourceMongoDBDatabaseToManualThroughputRequest",
       });
-    case 2:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19433,7 +16836,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "MigrateSqlResourceSqlContainerToAutoscaleRequest",
       });
-    case 3:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19452,7 +16859,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "MigrateSqlResourceSqlContainerToManualThroughputRequest",
       });
-    case 4:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19470,7 +16881,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "MigrateSqlResourceSqlDatabaseToAutoscaleRequest",
       });
-    case 5:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19488,7 +16903,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "MigrateSqlResourceSqlDatabaseToManualThroughputRequest",
       });
-    case 6:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19506,7 +16925,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "MigrateTableResourceTableToAutoscaleRequest",
       });
-    case 7:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19526,16 +16949,16 @@ function __c68(j: number): any {
       });
   }
 }
-function __c69(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          shardKey: S.optional(__S(9, __c1, 1)),
-          indexes: S.optional(__S(231, __c28, 7)),
+          shardKey: S.optional(__S(64, __c2, 0)),
+          indexes: S.optional(__S(9027, __c282, 3)),
           analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(189, __c23, 5)),
+          restoreParameters: S.optional(__S(8352, __c261, 0)),
           createMode: S.optional(S.String),
         }),
       ).annotate({
@@ -19544,8 +16967,8 @@ function __c69(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(552, __c69, 0),
-          options: S.optional(__S(38, __c4, 6)),
+          resource: __S(4768, __c149, 0),
+          options: S.optional(__S(7137, __c223, 1)),
         }),
       ).annotate({
         identifier: "MongoDBCollectionCreateUpdateProperties",
@@ -19559,9 +16982,9 @@ function __c69(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           collectionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(553, __c69, 1),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(4769, __c149, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19573,7 +16996,11 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "MongoDBResourcesCreateUpdateMongoDBCollectionRequest",
       });
-    case 3:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19581,9 +17008,9 @@ function __c69(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(310, __c38, 6),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(10689, __c334, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19595,14 +17022,18 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "MongoDBResourcesCreateUpdateMongoDBDatabaseRequest",
       });
-    case 4:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           mongoRoleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(245, __c30, 5)),
+          properties: S.optional(__S(9219, __c288, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19614,14 +17045,143 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest",
       });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/status",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CassandraClustersStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          healthy: S.optional(S.Boolean),
+          repairRunIds: S.optional(__S(64, __c2, 0)),
+          repairSchedules: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "ManagedCassandraReaperStatus",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          connectionState: S.optional(S.String),
+          iPFrom: S.optional(S.String),
+          iPTo: S.optional(S.String),
+          port: S.optional(S.Number),
+          exception: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectionError" });
+    case 3:
+      return S.Array(__S(4866, __c152, 2));
+    case 4:
+      return S.Array(__S(32, __c1, 0));
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.String),
+          state: S.optional(S.String),
+          status: S.optional(S.String),
+          cassandraProcessStatus: S.optional(S.String),
+          load: S.optional(S.String),
+          tokens: S.optional(__S(4896, __c153, 0)),
+          size: S.optional(S.Number),
+          hostID: S.optional(S.String),
+          rack: S.optional(S.String),
+          timestamp: S.optional(S.String),
+          diskUsedKB: S.optional(S.Number),
+          diskFreeKB: S.optional(S.Number),
+          memoryUsedKB: S.optional(S.Number),
+          memoryBuffersAndCachedKB: S.optional(S.Number),
+          memoryFreeKB: S.optional(S.Number),
+          memoryTotalKB: S.optional(S.Number),
+          cpuUsage: S.optional(S.Number),
+          isLatestModel: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier:
+          "ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItems",
+      });
+    case 6:
+      return S.Array(__S(4869, __c152, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          seedNodes: S.optional(__S(96, __c3, 0)),
+          nodes: S.optional(__S(4870, __c152, 6)),
+        }),
+      ).annotate({
+        identifier: "CassandraClusterPublicStatusDataCentersItem",
+      });
+    case 8:
+      return S.Array(__S(4871, __c152, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          eTag: S.optional(S.String),
+          reaperStatus: S.optional(__S(4865, __c152, 1)),
+          connectionErrors: S.optional(__S(4867, __c152, 3)),
+          errors: S.optional(__S(4868, __c152, 4)),
+          dataCenters: S.optional(__S(4872, __c152, 8)),
+        }),
+      ).annotate({
+        identifier: "CassandraClusterPublicStatus",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          keyspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCassandraResourceCassandraKeyspaceRequest",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           mongoUserDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(248, __c31, 0)),
+          properties: S.optional(__S(9312, __c291, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19633,14 +17193,18 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "MongoDBResourcesCreateUpdateMongoUserDefinitionRequest",
       });
-    case 6:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleAssignmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(48, __c6, 0)),
+          properties: S.optional(__S(7552, __c236, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19652,14 +17216,18 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "MongoMIResourcesCreateUpdateMongoMIRoleAssignmentRequest",
       });
-    case 7:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(54, __c6, 6)),
+          properties: S.optional(__S(8160, __c255, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19673,7 +17241,7 @@ function __c69(j: number): any {
       });
   }
 }
-function __c70(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19693,7 +17261,11 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "NotebookWorkspacesCreateOrUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -19702,25 +17274,25 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServiceConnectionStatePropertyInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(111, __c13, 7)),
-          privateLinkServiceConnectionState: S.optional(__S(561, __c70, 1)),
+          privateEndpoint: S.optional(__S(1664, __c52, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(5088, __c159, 0)),
           groupId: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(562, __c70, 2)),
+          properties: S.optional(__S(5089, __c159, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19732,7 +17304,11 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19750,7 +17326,11 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "RegenerateDatabaseAccountKeyRequest",
       });
-    case 5:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19768,30 +17348,30 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "RegenerateNotebookWorkspaceAuthTokenRequest",
       });
-    case 6:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           encryptionAlgorithm: S.optional(S.String),
           wrappedDataEncryptionKey: S.optional(S.String),
-          keyWrapMetadata: S.optional(__S(266, __c33, 2)),
+          keyWrapMetadata: S.optional(__S(9792, __c306, 0)),
         }),
       ).annotate({
         identifier: "ClientEncryptionKeyResource",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(566, __c70, 6),
+          resource: __S(5184, __c162, 0),
         }),
       ).annotate({
         identifier: "ClientEncryptionKeyCreateUpdateProperties",
       });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19799,7 +17379,7 @@ function __c71(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           clientEncryptionKeyName: S.String.pipe(T.Label()),
-          properties: __S(567, __c70, 7),
+          properties: __S(5185, __c162, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19811,36 +17391,40 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "SqlResourcesCreateUpdateClientEncryptionKeyRequest",
       });
-    case 1:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          indexingPolicy: S.optional(__S(211, __c26, 3)),
-          partitionKey: S.optional(__S(312, __c39, 0)),
+          indexingPolicy: S.optional(__S(8655, __c270, 15)),
+          partitionKey: S.optional(__S(448, __c14, 0)),
           defaultTtl: S.optional(S.Number),
-          uniqueKeyPolicy: S.optional(__S(215, __c26, 7)),
-          conflictResolutionPolicy: S.optional(__S(216, __c27, 0)),
-          clientEncryptionPolicy: S.optional(__S(274, __c34, 2)),
+          uniqueKeyPolicy: S.optional(__S(8659, __c270, 19)),
+          conflictResolutionPolicy: S.optional(__S(8660, __c270, 20)),
+          clientEncryptionPolicy: S.optional(__S(9890, __c309, 2)),
           analyticalStorageTtl: S.optional(S.Number),
-          restoreParameters: S.optional(__S(189, __c23, 5)),
+          restoreParameters: S.optional(__S(8352, __c261, 0)),
           createMode: S.optional(S.String),
-          computedProperties: S.optional(__S(276, __c34, 4)),
-          vectorEmbeddingPolicy: S.optional(__S(279, __c34, 7)),
-          fullTextPolicy: S.optional(__S(282, __c35, 2)),
+          computedProperties: S.optional(__S(9920, __c310, 0)),
+          vectorEmbeddingPolicy: S.optional(__S(9894, __c309, 6)),
+          fullTextPolicy: S.optional(__S(9897, __c309, 9)),
         }),
       ).annotate({
         identifier: "SqlContainerResourceInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(569, __c71, 1),
-          options: S.optional(__S(38, __c4, 6)),
+          resource: __S(5216, __c163, 0),
+          options: S.optional(__S(7137, __c223, 1)),
         }),
       ).annotate({
         identifier: "SqlContainerCreateUpdatePropertiesInput",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19849,9 +17433,9 @@ function __c71(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(570, __c71, 2),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5217, __c163, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19863,7 +17447,11 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "SqlResourcesCreateUpdateSqlContainerRequest",
       });
-    case 4:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19871,9 +17459,9 @@ function __c71(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(310, __c38, 6),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(10689, __c334, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19885,14 +17473,40 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "SqlResourcesCreateUpdateSqlDatabaseRequest",
       });
-    case 5:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleAssignmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(48, __c6, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments/{roleAssignmentId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCassandraResourceCassandraRoleAssignmentRequest",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleAssignmentId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(7552, __c236, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19904,14 +17518,18 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "SqlResourcesCreateUpdateSqlRoleAssignmentRequest",
       });
-    case 6:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(295, __c36, 7)),
+          properties: S.optional(__S(10304, __c322, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19923,29 +17541,11 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "SqlResourcesCreateUpdateSqlRoleDefinitionRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          body: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SqlStoredProcedureResource",
-      });
   }
 }
-function __c72(j: number): any {
+function __c168(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: __S(575, __c71, 7),
-          options: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "SqlStoredProcedureCreateUpdateProperties",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19955,9 +17555,9 @@ function __c72(j: number): any {
           containerName: S.String.pipe(T.Label()),
           storedProcedureName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(576, __c72, 0),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5409, __c169, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19969,7 +17569,33 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "SqlResourcesCreateUpdateSqlStoredProcedureRequest",
       });
-    case 2:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          body: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SqlStoredProcedureResource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: __S(5408, __c169, 0),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({
+        identifier: "SqlStoredProcedureCreateUpdateProperties",
+      });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -19978,16 +17604,16 @@ function __c72(j: number): any {
           triggerOperation: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlTriggerResource" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(578, __c72, 2),
-          options: S.optional(__S(38, __c4, 6)),
+          resource: __S(5440, __c170, 0),
+          options: S.optional(__S(7137, __c223, 1)),
         }),
       ).annotate({
         identifier: "SqlTriggerCreateUpdateProperties",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -19997,9 +17623,9 @@ function __c72(j: number): any {
           containerName: S.String.pipe(T.Label()),
           triggerName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(579, __c72, 3),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5441, __c170, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20011,22 +17637,30 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "SqlResourcesCreateUpdateSqlTriggerRequest",
       });
-    case 5:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(521, __c65, 1)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(3873, __c121, 1)),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
         }),
       ).annotate({
         identifier: "SqlResourcesCreateUpdateSqlTriggerResponse",
       });
-    case 6:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20036,9 +17670,9 @@ function __c72(j: number): any {
           containerName: S.String.pipe(T.Label()),
           userDefinedFunctionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(576, __c72, 0),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5409, __c169, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20050,7 +17684,11 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "SqlResourcesCreateUpdateSqlUserDefinedFunctionRequest",
       });
-    case 7:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20072,7 +17710,7 @@ function __c72(j: number): any {
       });
   }
 }
-function __c73(j: number): any {
+function __c174(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20094,7 +17732,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "SqlResourcesGetSqlTriggerRequest",
       });
-    case 1:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20111,7 +17753,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "StartCassandraClusterRequest",
       });
-    case 2:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20129,7 +17775,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "StartNotebookWorkspaceRequest",
       });
-    case 3:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20137,9 +17787,9 @@ function __c73(j: number): any {
           accountName: S.String.pipe(T.Label()),
           tableName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(310, __c38, 6),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(10689, __c334, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20151,14 +17801,40 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "TableResourcesCreateUpdateTableRequest",
       });
-    case 4:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCassandraResourceCassandraRoleDefinitionRequest",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleAssignmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(48, __c6, 0)),
+          properties: S.optional(__S(7552, __c236, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20170,14 +17846,18 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "TableResourcesCreateUpdateTableRoleAssignmentRequest",
       });
-    case 5:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           roleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(54, __c6, 6)),
+          properties: S.optional(__S(8160, __c255, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20189,16 +17869,20 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "TableResourcesCreateUpdateTableRoleDefinitionRequest",
       });
-    case 6:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(128, __c4, 0)),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(10, __c1, 2)),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(129, __c4, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20210,14 +17894,18 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "UpdateCassandraClusterRequest",
       });
-    case 7:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           dataCenterName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(30, __c3, 6)),
+          properties: S.optional(__S(6560, __c205, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20231,35 +17919,9 @@ function __c73(j: number): any {
       });
   }
 }
-function __c74(j: number): any {
+function __c183(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          maxThroughput: S.Number,
-          autoUpgradePolicy: S.optional(__S(168, __c21, 0)),
-        }),
-      ).annotate({
-        identifier: "AutoscaleSettingsResourceInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          throughput: S.optional(S.Number),
-          autoscaleSettings: S.optional(__S(592, __c74, 0)),
-        }),
-      ).annotate({
-        identifier: "ThroughputSettingsResourceInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: __S(593, __c74, 1),
-        }),
-      ).annotate({
-        identifier: "ThroughputSettingsUpdatePropertiesInput",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20267,9 +17929,9 @@ function __c74(j: number): any {
           accountName: S.String.pipe(T.Label()),
           keyspaceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(43, __c5, 3)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(594, __c74, 2),
+          tags: S.optional(__S(7040, __c220, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5890, __c184, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20281,7 +17943,41 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "UpdateCassandraResourceCassandraKeyspaceThroughputRequest",
       });
-    case 4:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxThroughput: S.Number,
+          autoUpgradePolicy: S.optional(__S(7777, __c243, 1)),
+        }),
+      ).annotate({
+        identifier: "AutoscaleSettingsResourceInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          throughput: S.optional(S.Number),
+          autoscaleSettings: S.optional(__S(5888, __c184, 0)),
+        }),
+      ).annotate({
+        identifier: "ThroughputSettingsResourceInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resource: __S(5889, __c184, 1),
+        }),
+      ).annotate({
+        identifier: "ThroughputSettingsUpdatePropertiesInput",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20290,9 +17986,9 @@ function __c74(j: number): any {
           keyspaceName: S.String.pipe(T.Label()),
           tableName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(594, __c74, 2),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5890, __c184, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20304,16 +18000,20 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "UpdateCassandraResourceCassandraTableThroughputRequest",
       });
-    case 5:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          consistencyPolicy: S.optional(__S(85, __c10, 5)),
-          locations: S.optional(__S(87, __c10, 7)),
-          ipRules: S.optional(__S(89, __c11, 1)),
+          consistencyPolicy: S.optional(__S(1632, __c51, 0)),
+          locations: S.optional(__S(1569, __c49, 1)),
+          ipRules: S.optional(__S(1634, __c51, 2)),
           isVirtualNetworkFilterEnabled: S.optional(S.Boolean),
           enableAutomaticFailover: S.optional(S.Boolean),
-          capabilities: S.optional(__S(60, __c7, 4)),
-          virtualNetworkRules: S.optional(__S(110, __c13, 6)),
+          capabilities: S.optional(__S(8865, __c277, 1)),
+          virtualNetworkRules: S.optional(__S(1652, __c51, 20)),
           enableMultipleWriteLocations: S.optional(S.Boolean),
           enableCassandraConnector: S.optional(S.Boolean),
           connectorOffer: S.optional(S.String),
@@ -20322,15 +18022,15 @@ function __c74(j: number): any {
           defaultIdentity: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
           enableFreeTier: S.optional(S.Boolean),
-          apiProperties: S.optional(__S(92, __c11, 4)),
+          apiProperties: S.optional(__S(1636, __c51, 4)),
           enableAnalyticalStorage: S.optional(S.Boolean),
-          analyticalStorageConfiguration: S.optional(__S(93, __c11, 5)),
-          backupPolicy: S.optional(__S(95, __c11, 7)),
-          cors: S.optional(__S(97, __c12, 1)),
+          analyticalStorageConfiguration: S.optional(__S(1637, __c51, 5)),
+          backupPolicy: S.optional(__S(1639, __c51, 7)),
+          cors: S.optional(__S(1641, __c51, 9)),
           networkAclBypass: S.optional(S.String),
-          networkAclBypassResourceIds: S.optional(__S(23, __c2, 7)),
+          networkAclBypassResourceIds: S.optional(__S(4896, __c153, 0)),
           disableLocalAuth: S.optional(S.Boolean),
-          capacity: S.optional(__S(103, __c12, 7)),
+          capacity: S.optional(__S(1647, __c51, 15)),
           enablePartitionMerge: S.optional(S.Boolean),
           enableBurstCapacity: S.optional(S.Boolean),
           minimalTlsVersion: S.optional(S.String),
@@ -20343,16 +18043,16 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "DatabaseAccountUpdatePropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(64, __c2, 0)),
           location: S.optional(S.String),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: S.optional(__S(597, __c74, 5)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: S.optional(__S(5952, __c186, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20364,17 +18064,17 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "UpdateDatabaseAccountRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(118, __c14, 6)),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1655, __c51, 23)),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(46, __c5, 6)),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -20382,7 +18082,7 @@ function __c74(j: number): any {
       });
   }
 }
-function __c75(j: number): any {
+function __c187(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20390,8 +18090,8 @@ function __c75(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(70, __c8, 6)),
+          tags: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(9536, __c298, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20401,14 +18101,18 @@ function __c75(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFleetRequest" });
-    case 1:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           fleetspaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(74, __c9, 2)),
+          properties: S.optional(__S(10177, __c318, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -20418,7 +18122,11 @@ function __c75(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFleetspaceRequest" });
-    case 2:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20426,9 +18134,9 @@ function __c75(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(594, __c74, 2),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5890, __c184, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20440,7 +18148,34 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "UpdateGremlinResourceGremlinDatabaseThroughputRequest",
       });
-    case 3:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          keyspaceName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCassandraResourceCassandraTableRequest",
+      });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20449,9 +18184,9 @@ function __c75(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           graphName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(594, __c74, 2),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5890, __c184, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20463,7 +18198,11 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "UpdateGremlinResourceGremlinGraphThroughputRequest",
       });
-    case 4:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20472,9 +18211,9 @@ function __c75(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           collectionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(43, __c5, 3)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(594, __c74, 2),
+          tags: S.optional(__S(7040, __c220, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5890, __c184, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20486,7 +18225,11 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "UpdateMongoDBResourceMongoDBCollectionThroughputRequest",
       });
-    case 5:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20494,9 +18237,9 @@ function __c75(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(594, __c74, 2),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5890, __c184, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20508,7 +18251,11 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "UpdateMongoDBResourceMongoDBDatabaseThroughputRequest",
       });
-    case 6:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20517,9 +18264,9 @@ function __c75(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(594, __c74, 2),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5890, __c184, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20531,7 +18278,11 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "UpdateSqlResourceSqlContainerThroughputRequest",
       });
-    case 7:
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -20539,9 +18290,9 @@ function __c75(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(594, __c74, 2),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5890, __c184, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20555,7 +18306,7 @@ function __c75(j: number): any {
       });
   }
 }
-function __c76(j: number): any {
+function __c196(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20565,9 +18316,9 @@ function __c76(j: number): any {
           accountName: S.String.pipe(T.Label()),
           tableName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
-          properties: __S(594, __c74, 2),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(5890, __c184, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20581,7 +18332,3355 @@ function __c76(j: number): any {
       });
   }
 }
-
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDatabaseAccountRequest",
+      });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fleetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFleetRequest" });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fleetName: S.String.pipe(T.Label()),
+          fleetspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFleetspaceRequest" });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fleetName: S.String.pipe(T.Label()),
+          fleetspaceName: S.String.pipe(T.Label()),
+          fleetspaceAccountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFleetspaceAccountRequest",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteFleetspaceAccountResponse",
+      });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGremlinResourceGremlinDatabaseRequest",
+      });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          graphName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGremlinResourceGremlinGraphRequest",
+      });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          dataCenterName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(6560, __c205, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CassandraDataCentersCreateUpdateRequest",
+      });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          dataCenterLocation: S.optional(S.String),
+          delegatedSubnetId: S.optional(S.String),
+          nodeCount: S.optional(S.Number),
+          base64EncodedCassandraYamlFragment: S.optional(S.String),
+          managedDiskCustomerKeyUri: S.optional(S.String),
+          backupStorageCustomerKeyUri: S.optional(S.String),
+          sku: S.optional(S.String),
+          diskSku: S.optional(S.String),
+          diskCapacity: S.optional(S.Number),
+          availabilityZone: S.optional(S.Boolean),
+          authenticationMethodLdapProperties: S.optional(__S(6592, __c206, 0)),
+          deallocated: S.optional(S.Boolean),
+          provisionError: S.optional(__S(32, __c1, 0)),
+          privateEndpointIpAddress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataCenterResourcePropertiesInput",
+      });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serverHostname: S.optional(S.String),
+          serverPort: S.optional(S.Number),
+          serviceUserDistinguishedName: S.optional(S.String),
+          serviceUserPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          searchBaseDistinguishedName: S.optional(S.String),
+          searchFilterTemplate: S.optional(S.String),
+          serverCertificates: S.optional(__S(194, __c6, 2)),
+          connectionTimeoutInMs: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AuthenticationMethodLdapProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          dataCenterLocation: S.optional(S.String),
+          delegatedSubnetId: S.optional(S.String),
+          nodeCount: S.optional(S.Number),
+          seedNodes: S.optional(__S(195, __c6, 3)),
+          base64EncodedCassandraYamlFragment: S.optional(S.String),
+          managedDiskCustomerKeyUri: S.optional(S.String),
+          backupStorageCustomerKeyUri: S.optional(S.String),
+          sku: S.optional(S.String),
+          diskSku: S.optional(S.String),
+          diskCapacity: S.optional(S.Number),
+          availabilityZone: S.optional(S.Boolean),
+          authenticationMethodLdapProperties: S.optional(__S(6592, __c206, 0)),
+          deallocated: S.optional(S.Boolean),
+          provisionError: S.optional(__S(32, __c1, 0)),
+          privateEndpointIpAddress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataCenterResourceProperties",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(6593, __c206, 1)),
+        }),
+      ).annotate({
+        identifier: "CassandraDataCentersCreateUpdateResponse",
+      });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleAssignmentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments/{roleAssignmentId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGremlinResourceGremlinRoleAssignmentRequest",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGremlinResourceGremlinRoleDefinitionRequest",
+      });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          collectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMongoDBResourceMongoDBCollectionRequest",
+      });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMongoDBResourceMongoDBDatabaseRequest",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          mongoRoleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMongoDBResourceMongoRoleDefinitionRequest",
+      });
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          mongoUserDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMongoDBResourceMongoUserDefinitionRequest",
+      });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleAssignmentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments/{roleAssignmentId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMongoMIResourceMongoMIRoleAssignmentRequest",
+      });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMongoMIResourceMongoMIRoleDefinitionRequest",
+      });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          notebookWorkspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteNotebookWorkspaceRequest",
+      });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "CassandraKeyspaceResource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: __S(6976, __c218, 0),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({
+        identifier: "CassandraKeyspaceCreateUpdateProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          keyspaceName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(6977, __c218, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CassandraResourcesCreateUpdateCassandraKeyspaceRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7009, __c219, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(7040, __c220, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "CassandraResourcesCreateUpdateCassandraKeyspaceResponse",
+      });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          _rid: S.optional(S.String),
+          _ts: S.optional(S.Number),
+          _etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CassandraKeyspaceGetPropertiesResource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(7008, __c219, 0)),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({
+        identifier: "CassandraKeyspaceGetProperties",
+      });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedServiceIdentityUserAssignedIdentities",
+      });
+    case 1:
+      return S.Record(S.String, __S(7072, __c221, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(7073, __c221, 1)),
+        }),
+      ).annotate({ identifier: "ManagedServiceIdentity" });
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(320, __c10, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(7104, __c222, 0)),
+        }),
+      ).annotate({
+        identifier: "ManagedServiceIdentityInput",
+      });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxThroughput: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AutoscaleSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          throughput: S.optional(S.Number),
+          autoscaleSettings: S.optional(__S(7136, __c223, 0)),
+        }),
+      ).annotate({ identifier: "CreateUpdateOptions" });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteServiceRequest" });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSqlResourceSqlContainerRequest",
+      });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSqlResourceSqlDatabaseRequest",
+      });
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleAssignmentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSqlResourceSqlRoleAssignmentRequest",
+      });
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSqlResourceSqlRoleDefinitionRequest",
+      });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          storedProcedureName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSqlResourceSqlStoredProcedureRequest",
+      });
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          userDefinedFunctionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSqlResourceSqlUserDefinedFunctionRequest",
+      });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteTableResourceTableRequest",
+      });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleAssignmentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments/{roleAssignmentId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteTableResourceTableRoleAssignmentRequest",
+      });
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteTableResourceTableRoleDefinitionRequest",
+      });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleAssignmentId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(7552, __c236, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments/{roleAssignmentId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CassandraResourcesCreateUpdateCassandraRoleAssignmentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7520, __c235, 0)),
+        }),
+      ).annotate({
+        identifier: "CassandraResourcesCreateUpdateCassandraRoleAssignmentResponse",
+      });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleDefinitionId: S.optional(S.String),
+          scope: S.optional(S.String),
+          principalId: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CassandraRoleAssignmentResourceProperties",
+      });
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleDefinitionId: S.optional(S.String),
+          scope: S.optional(S.String),
+          principalId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CassandraRoleAssignmentResourcePropertiesInput",
+      });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCassandraClusterRequest",
+      });
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          dataCenterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCassandraDataCenterRequest",
+      });
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          keyspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCassandraResourceCassandraKeyspaceRequest",
+      });
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7009, __c219, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "GetCassandraResourceCassandraKeyspaceResponse",
+      });
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          keyspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCassandraResourceCassandraKeyspaceThroughputRequest",
+      });
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7780, __c243, 4)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(7040, __c220, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "GetCassandraResourceCassandraKeyspaceThroughputResponse",
+      });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isEnabled: S.optional(S.Boolean),
+          incrementPercent: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ThroughputPolicyResource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          throughputPolicy: S.optional(__S(7776, __c243, 0)),
+        }),
+      ).annotate({
+        identifier: "AutoUpgradePolicyResource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          maxThroughput: S.Number,
+          autoUpgradePolicy: S.optional(__S(7777, __c243, 1)),
+          targetMaxThroughput: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AutoscaleSettingsResource",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          throughput: S.optional(S.Number),
+          autoscaleSettings: S.optional(__S(7778, __c243, 2)),
+          minimumThroughput: S.optional(S.String),
+          offerReplacePending: S.optional(S.String),
+          instantMaximumThroughput: S.optional(S.String),
+          softAllowedMaximumThroughput: S.optional(S.String),
+          _rid: S.optional(S.String),
+          _ts: S.optional(S.Number),
+          _etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ThroughputSettingsGetPropertiesResource",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(7779, __c243, 3)),
+        }),
+      ).annotate({
+        identifier: "ThroughputSettingsGetProperties",
+      });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleAssignmentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments/{roleAssignmentId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCassandraResourceCassandraRoleAssignmentRequest",
+      });
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7520, __c235, 0)),
+        }),
+      ).annotate({
+        identifier: "GetCassandraResourceCassandraRoleAssignmentResponse",
+      });
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCassandraResourceCassandraRoleDefinitionRequest",
+      });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8160, __c255, 0)),
+        }),
+      ).annotate({
+        identifier: "GetCassandraResourceCassandraRoleDefinitionResponse",
+      });
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          keyspaceName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCassandraResourceCassandraTableRequest",
+      });
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          keyspaceName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCassandraResourceCassandraTableThroughputRequest",
+      });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7780, __c243, 4)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "GetCassandraResourceCassandraTableThroughputResponse",
+      });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatabaseAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(1655, __c51, 23)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetDatabaseAccountResponse",
+      });
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fleetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({ identifier: "GetFleetRequest" });
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(8160, __c255, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8160, __c255, 0)),
+        }),
+      ).annotate({
+        identifier: "CassandraResourcesCreateUpdateCassandraRoleDefinitionResponse",
+      });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          dataActions: S.optional(__S(96, __c3, 0)),
+          notDataActions: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "Permission" });
+    case 1:
+      return S.Array(__S(8128, __c254, 0));
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          roleName: S.optional(S.String),
+          type: S.optional(S.String),
+          assignableScopes: S.optional(__S(96, __c3, 0)),
+          permissions: S.optional(__S(8129, __c254, 1)),
+        }),
+      ).annotate({
+        identifier: "CassandraRoleDefinitionResourceProperties",
+      });
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fleetName: S.String.pipe(T.Label()),
+          fleetspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({ identifier: "GetFleetspaceRequest" });
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fleetName: S.String.pipe(T.Label()),
+          fleetspaceName: S.String.pipe(T.Label()),
+          fleetspaceAccountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFleetspaceAccountRequest",
+      });
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          graphName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/retrieveContinuousBackupInformation",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGremlinResourceContinuousBackupInformationRequest",
+      });
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          latestRestorableTimestamp: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContinuousBackupInformation",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continuousBackupInformation: S.optional(__S(8288, __c259, 0)),
+        }),
+      ).annotate({ identifier: "BackupInformation" });
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGremlinResourceGremlinDatabaseRequest",
+      });
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restoreSource: S.optional(S.String),
+          restoreTimestampInUtc: S.optional(S.String),
+          restoreWithTtlDisabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RestoreParametersBase" });
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          restoreParameters: S.optional(__S(8352, __c261, 0)),
+          createMode: S.optional(S.String),
+          _rid: S.optional(S.String),
+          _ts: S.optional(S.Number),
+          _etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GremlinDatabaseGetPropertiesResource",
+      });
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(8384, __c262, 0)),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({
+        identifier: "GremlinDatabaseGetProperties",
+      });
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8416, __c263, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "GetGremlinResourceGremlinDatabaseResponse",
+      });
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGremlinResourceGremlinDatabaseThroughputRequest",
+      });
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          graphName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGremlinResourceGremlinGraphRequest",
+      });
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8577, __c268, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "GetGremlinResourceGremlinGraphResponse",
+      });
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          indexingPolicy: S.optional(__S(8655, __c270, 15)),
+          partitionKey: S.optional(__S(8656, __c270, 16)),
+          defaultTtl: S.optional(S.Number),
+          uniqueKeyPolicy: S.optional(__S(8659, __c270, 19)),
+          conflictResolutionPolicy: S.optional(__S(8660, __c270, 20)),
+          analyticalStorageTtl: S.optional(S.Number),
+          restoreParameters: S.optional(__S(8352, __c261, 0)),
+          createMode: S.optional(S.String),
+          _rid: S.optional(S.String),
+          _ts: S.optional(S.Number),
+          _etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GremlinGraphGetPropertiesResource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(8576, __c268, 0)),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({
+        identifier: "GremlinGraphGetProperties",
+      });
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataType: S.optional(S.String),
+          precision: S.optional(S.Number),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Indexes" });
+    case 1:
+      return S.Array(__S(8640, __c270, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          indexes: S.optional(__S(8641, __c270, 1)),
+        }),
+      ).annotate({ identifier: "IncludedPath" });
+    case 3:
+      return S.Array(__S(8642, __c270, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExcludedPath" });
+    case 5:
+      return S.Array(__S(8644, __c270, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          order: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CompositePath" });
+    case 7:
+      return S.Array(__S(8646, __c270, 6));
+    case 8:
+      return S.Array(__S(8647, __c270, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          types: S.optional(__S(8608, __c269, 0)),
+        }),
+      ).annotate({ identifier: "SpatialSpec" });
+    case 10:
+      return S.Array(__S(8649, __c270, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          type: S.String,
+          quantizationByteSize: S.optional(S.Number),
+          indexingSearchListSize: S.optional(S.Number),
+          vectorIndexShardKey: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "VectorIndex" });
+    case 12:
+      return S.Array(__S(8651, __c270, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+        }),
+      ).annotate({ identifier: "FullTextIndexPath" });
+    case 14:
+      return S.Array(__S(8653, __c270, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          indexingMode: S.optional(S.String),
+          includedPaths: S.optional(__S(8643, __c270, 3)),
+          excludedPaths: S.optional(__S(8645, __c270, 5)),
+          compositeIndexes: S.optional(__S(8648, __c270, 8)),
+          spatialIndexes: S.optional(__S(8650, __c270, 10)),
+          vectorIndexes: S.optional(__S(8652, __c270, 12)),
+          fullTextIndexes: S.optional(__S(8654, __c270, 14)),
+        }),
+      ).annotate({ identifier: "IndexingPolicy" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          paths: S.optional(__S(96, __c3, 0)),
+          kind: S.optional(S.String),
+          version: S.optional(S.Number),
+          systemKey: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ContainerPartitionKey" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          paths: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "UniqueKey" });
+    case 18:
+      return S.Array(__S(8657, __c270, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueKeys: S.optional(__S(8658, __c270, 18)),
+        }),
+      ).annotate({ identifier: "UniqueKeyPolicy" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          conflictResolutionPath: S.optional(S.String),
+          conflictResolutionProcedure: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConflictResolutionPolicy" });
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          graphName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGremlinResourceGremlinGraphThroughputRequest",
+      });
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleAssignmentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments/{roleAssignmentId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGremlinResourceGremlinRoleAssignmentRequest",
+      });
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGremlinResourceGremlinRoleDefinitionRequest",
+      });
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({ identifier: "GetLocationRequest" });
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          supportsAvailabilityZone: S.optional(S.Boolean),
+          isResidencyRestricted: S.optional(S.Boolean),
+          backupStorageRedundancies: S.optional(__S(8608, __c269, 0)),
+          isSubscriptionRegionAccessAllowedForRegular: S.optional(S.Boolean),
+          isSubscriptionRegionAccessAllowedForAz: S.optional(S.Boolean),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocationProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8800, __c275, 0)),
+        }),
+      ).annotate({ identifier: "GetLocationResponse" });
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          defaultTtl: S.optional(S.Number),
+          schema: S.optional(__S(8932, __c279, 4)),
+          analyticalStorageTtl: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CassandraTableResource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: __S(8832, __c276, 0),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({
+        identifier: "CassandraTableCreateUpdateProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          keyspaceName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(8833, __c276, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CassandraResourcesCreateUpdateCassandraTableRequest",
+      });
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CassandraPartitionKey" });
+    case 1:
+      return S.Array(__S(8864, __c277, 0));
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8934, __c279, 6)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "CassandraResourcesCreateUpdateCassandraTableResponse",
+      });
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Column" });
+    case 1:
+      return S.Array(__S(8928, __c279, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          orderBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterKey" });
+    case 3:
+      return S.Array(__S(8930, __c279, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          columns: S.optional(__S(8929, __c279, 1)),
+          partitionKeys: S.optional(__S(8865, __c277, 1)),
+          clusterKeys: S.optional(__S(8931, __c279, 3)),
+        }),
+      ).annotate({ identifier: "CassandraSchema" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          defaultTtl: S.optional(S.Number),
+          schema: S.optional(__S(8932, __c279, 4)),
+          analyticalStorageTtl: S.optional(S.Number),
+          _rid: S.optional(S.String),
+          _ts: S.optional(S.Number),
+          _etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CassandraTableGetPropertiesResource",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(8933, __c279, 5)),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({
+        identifier: "CassandraTableGetProperties",
+      });
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          collectionName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/retrieveContinuousBackupInformation",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMongoDBResourceContinuousBackupInformationRequest",
+      });
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          collectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMongoDBResourceMongoDBCollectionRequest",
+      });
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keys: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "MongoIndexKeys" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expireAfterSeconds: S.optional(S.Number),
+          unique: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MongoIndexOptions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(__S(9024, __c282, 0)),
+          options: S.optional(__S(9025, __c282, 1)),
+        }),
+      ).annotate({ identifier: "MongoIndex" });
+    case 3:
+      return S.Array(__S(9026, __c282, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          shardKey: S.optional(__S(64, __c2, 0)),
+          indexes: S.optional(__S(9027, __c282, 3)),
+          analyticalStorageTtl: S.optional(S.Number),
+          restoreParameters: S.optional(__S(8352, __c261, 0)),
+          createMode: S.optional(S.String),
+          _rid: S.optional(S.String),
+          _ts: S.optional(S.Number),
+          _etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MongoDBCollectionGetPropertiesResource",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(9028, __c282, 4)),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({
+        identifier: "MongoDBCollectionGetProperties",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9029, __c282, 5)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "GetMongoDBResourceMongoDBCollectionResponse",
+      });
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          collectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMongoDBResourceMongoDBCollectionThroughputRequest",
+      });
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMongoDBResourceMongoDBDatabaseRequest",
+      });
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(8416, __c263, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "GetMongoDBResourceMongoDBDatabaseResponse",
+      });
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMongoDBResourceMongoDBDatabaseThroughputRequest",
+      });
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          mongoRoleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMongoDBResourceMongoRoleDefinitionRequest",
+      });
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          db: S.optional(S.String),
+          collection: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivilegeResource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(9216, __c288, 0)),
+          actions: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "Privilege" });
+    case 2:
+      return S.Array(__S(9217, __c288, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          roleName: S.optional(S.String),
+          type: S.optional(S.String),
+          databaseName: S.optional(S.String),
+          privileges: S.optional(__S(9218, __c288, 2)),
+          roles: S.optional(__S(9249, __c289, 1)),
+        }),
+      ).annotate({
+        identifier: "MongoRoleDefinitionResource",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9219, __c288, 3)),
+        }),
+      ).annotate({
+        identifier: "GetMongoDBResourceMongoRoleDefinitionResponse",
+      });
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          db: S.optional(S.String),
+          role: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Role" });
+    case 1:
+      return S.Array(__S(9248, __c289, 0));
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          mongoUserDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMongoDBResourceMongoUserDefinitionRequest",
+      });
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userName: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          databaseName: S.optional(S.String),
+          customData: S.optional(S.String),
+          roles: S.optional(__S(9249, __c289, 1)),
+          mechanisms: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MongoUserDefinitionResource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9312, __c291, 0)),
+        }),
+      ).annotate({
+        identifier: "GetMongoDBResourceMongoUserDefinitionResponse",
+      });
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleAssignmentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments/{roleAssignmentId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMongoMIResourceMongoMIRoleAssignmentRequest",
+      });
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMongoMIResourceMongoMIRoleDefinitionRequest",
+      });
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          notebookWorkspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNotebookWorkspaceRequest",
+      });
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          notebookServerEndpoint: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NotebookWorkspaceProperties",
+      });
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9440, __c295, 0)),
+        }),
+      ).annotate({
+        identifier: "GetNotebookWorkspaceResponse",
+      });
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fleetName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(9536, __c298, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({ identifier: "CreateFleetRequest" });
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FleetResourceProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(9536, __c298, 0)),
+        }),
+      ).annotate({ identifier: "CreateFleetResponse" });
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateLinkResources/{groupName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateLinkResourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9632, __c301, 0)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkResourceResponse",
+      });
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(96, __c3, 0)),
+          requiredZoneNames: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRestorableDatabaseAccountByLocationRequest",
+      });
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationName: S.optional(S.String),
+          regionalDatabaseAccountInstanceId: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          deletionTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RestorableLocationResource",
+      });
+    case 1:
+      return S.Array(__S(9696, __c303, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountName: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          oldestRestorableTime: S.optional(S.String),
+          deletionTime: S.optional(S.String),
+          apiType: S.optional(S.String),
+          restorableLocations: S.optional(__S(9697, __c303, 1)),
+        }),
+      ).annotate({
+        identifier: "RestorableDatabaseAccountProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9698, __c303, 2)),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetRestorableDatabaseAccountByLocationResponse",
+      });
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({ identifier: "GetServiceRequest" });
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          clientEncryptionKeyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys/{clientEncryptionKeyName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlResourceClientEncryptionKeyRequest",
+      });
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+          algorithm: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyWrapMetadata" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          encryptionAlgorithm: S.optional(S.String),
+          wrappedDataEncryptionKey: S.optional(S.String),
+          keyWrapMetadata: S.optional(__S(9792, __c306, 0)),
+          _rid: S.optional(S.String),
+          _ts: S.optional(S.Number),
+          _etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClientEncryptionKeyGetPropertiesResource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(9793, __c306, 1)),
+        }),
+      ).annotate({
+        identifier: "ClientEncryptionKeyGetProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9794, __c306, 2)),
+        }),
+      ).annotate({
+        identifier: "GetSqlResourceClientEncryptionKeyResponse",
+      });
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/retrieveContinuousBackupInformation",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlResourceContinuousBackupInformationRequest",
+      });
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlResourceSqlContainerRequest",
+      });
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          clientEncryptionKeyId: S.String,
+          encryptionType: S.String,
+          encryptionAlgorithm: S.String,
+        }),
+      ).annotate({
+        identifier: "ClientEncryptionIncludedPath",
+      });
+    case 1:
+      return S.Array(__S(9888, __c309, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          includedPaths: __S(9889, __c309, 1),
+          policyFormatVersion: S.Number,
+        }),
+      ).annotate({ identifier: "ClientEncryptionPolicy" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          query: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComputedProperty" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          dataType: S.String,
+          distanceFunction: S.String,
+          dimensions: S.Number,
+        }),
+      ).annotate({ identifier: "VectorEmbedding" });
+    case 5:
+      return S.Array(__S(9892, __c309, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          vectorEmbeddings: S.optional(__S(9893, __c309, 5)),
+        }),
+      ).annotate({ identifier: "VectorEmbeddingPolicy" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          language: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FullTextPath" });
+    case 8:
+      return S.Array(__S(9895, __c309, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          defaultLanguage: S.optional(S.String),
+          fullTextPaths: S.optional(__S(9896, __c309, 8)),
+        }),
+      ).annotate({ identifier: "FullTextPolicy" });
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9891, __c309, 3));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          indexingPolicy: S.optional(__S(8655, __c270, 15)),
+          partitionKey: S.optional(__S(8656, __c270, 16)),
+          defaultTtl: S.optional(S.Number),
+          uniqueKeyPolicy: S.optional(__S(8659, __c270, 19)),
+          conflictResolutionPolicy: S.optional(__S(8660, __c270, 20)),
+          clientEncryptionPolicy: S.optional(__S(9890, __c309, 2)),
+          analyticalStorageTtl: S.optional(S.Number),
+          restoreParameters: S.optional(__S(8352, __c261, 0)),
+          createMode: S.optional(S.String),
+          computedProperties: S.optional(__S(9920, __c310, 0)),
+          vectorEmbeddingPolicy: S.optional(__S(9894, __c309, 6)),
+          fullTextPolicy: S.optional(__S(9897, __c309, 9)),
+          _rid: S.optional(S.String),
+          _ts: S.optional(S.Number),
+          _etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SqlContainerGetPropertiesResource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(9921, __c310, 1)),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({
+        identifier: "SqlContainerGetProperties",
+      });
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(9922, __c310, 2)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "GetSqlResourceSqlContainerResponse",
+      });
+  }
+}
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlResourceSqlContainerThroughputRequest",
+      });
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlResourceSqlDatabaseRequest",
+      });
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          restoreParameters: S.optional(__S(8352, __c261, 0)),
+          createMode: S.optional(S.String),
+          _rid: S.optional(S.String),
+          _ts: S.optional(S.Number),
+          _etag: S.optional(S.String),
+          _colls: S.optional(S.String),
+          _users: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SqlDatabaseGetPropertiesResource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(10048, __c314, 0)),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({ identifier: "SqlDatabaseGetProperties" });
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10049, __c314, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "GetSqlResourceSqlDatabaseResponse",
+      });
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlResourceSqlDatabaseThroughputRequest",
+      });
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          fleetName: S.String.pipe(T.Label()),
+          fleetspaceName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(10177, __c318, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({ identifier: "CreateFleetspaceRequest" });
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minThroughput: S.optional(S.Number),
+          maxThroughput: S.optional(S.Number),
+          dedicatedRUs: S.optional(S.Number),
+          maxConsumableRUs: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "FleetspacePropertiesThroughputPoolConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          fleetspaceApiKind: S.optional(S.String),
+          serviceTier: S.optional(S.String),
+          dataRegions: S.optional(__S(96, __c3, 0)),
+          throughputPoolConfiguration: S.optional(__S(10176, __c318, 0)),
+        }),
+      ).annotate({ identifier: "FleetspaceProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10177, __c318, 1)),
+        }),
+      ).annotate({ identifier: "CreateFleetspaceResponse" });
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleAssignmentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlResourceSqlRoleAssignmentRequest",
+      });
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(7552, __c236, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSqlResourceSqlRoleAssignmentResponse",
+      });
+  }
+}
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlResourceSqlRoleDefinitionRequest",
+      });
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleName: S.optional(S.String),
+          type: S.optional(S.String),
+          assignableScopes: S.optional(__S(96, __c3, 0)),
+          permissions: S.optional(__S(8129, __c254, 1)),
+        }),
+      ).annotate({
+        identifier: "SqlRoleDefinitionResource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10304, __c322, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSqlResourceSqlRoleDefinitionResponse",
+      });
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          storedProcedureName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlResourceSqlStoredProcedureRequest",
+      });
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          body: S.optional(S.String),
+          _rid: S.optional(S.String),
+          _ts: S.optional(S.Number),
+          _etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SqlStoredProcedureGetPropertiesResource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(10368, __c324, 0)),
+        }),
+      ).annotate({
+        identifier: "SqlStoredProcedureGetProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10369, __c324, 1)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "GetSqlResourceSqlStoredProcedureResponse",
+      });
+  }
+}
+function __c325(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          userDefinedFunctionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlResourceSqlUserDefinedFunctionRequest",
+      });
+  }
+}
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/retrieveContinuousBackupInformation",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTableResourceContinuousBackupInformationRequest",
+      });
+  }
+}
+function __c327(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTableResourceTableRequest",
+      });
+  }
+}
+function __c328(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(8384, __c262, 0)),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({ identifier: "TableGetProperties" });
+  }
+}
+function __c329(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: S.optional(__S(10496, __c328, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7074, __c221, 2)),
+        }),
+      ).annotate({
+        identifier: "GetTableResourceTableResponse",
+      });
+  }
+}
+function __c330(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleAssignmentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments/{roleAssignmentId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTableResourceTableRoleAssignmentRequest",
+      });
+  }
+}
+function __c331(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTableResourceTableRoleDefinitionRequest",
+      });
+  }
+}
+function __c332(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTableResourceTableThroughputRequest",
+      });
+  }
+}
+function __c333(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c2, 0)),
+          identity: S.optional(__S(7105, __c222, 1)),
+          properties: __S(10689, __c334, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GremlinResourcesCreateUpdateGremlinDatabaseRequest",
+      });
+  }
+}
+function __c334(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          restoreParameters: S.optional(__S(8352, __c261, 0)),
+          createMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GremlinDatabaseResource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: __S(10688, __c334, 0),
+          options: S.optional(__S(7137, __c223, 1)),
+        }),
+      ).annotate({
+        identifier: "GremlinDatabaseCreateUpdateProperties",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

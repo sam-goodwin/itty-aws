@@ -870,8 +870,8 @@ export const addLoadBalancerService: API.OperationMethod<
   AddLoadBalancerServiceError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AddLoadBalancerServiceRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<AddLoadBalancerServiceResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<AddLoadBalancerServiceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<AddLoadBalancerServiceResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -885,8 +885,8 @@ export const addLoadBalancerTarget: API.OperationMethod<
   AddLoadBalancerTargetError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<AddLoadBalancerTargetRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<AddLoadBalancerTargetResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<AddLoadBalancerTargetRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<AddLoadBalancerTargetResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -900,8 +900,8 @@ export const attachLoadBalancerToNetwork: API.OperationMethod<
   AttachLoadBalancerToNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<AttachLoadBalancerToNetworkRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<AttachLoadBalancerToNetworkResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<AttachLoadBalancerToNetworkRequest>,
+  output: __S(54, __c13, 2) as any as S.Schema<AttachLoadBalancerToNetworkResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -915,8 +915,8 @@ export const changeLoadBalancerAlgorithm: API.OperationMethod<
   ChangeLoadBalancerAlgorithmError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ChangeLoadBalancerAlgorithmRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ChangeLoadBalancerAlgorithmResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<ChangeLoadBalancerAlgorithmRequest>,
+  output: __S(58, __c14, 2) as any as S.Schema<ChangeLoadBalancerAlgorithmResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -930,8 +930,8 @@ export const changeLoadBalancerDnsPtr: API.OperationMethod<
   ChangeLoadBalancerDnsPtrError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ChangeLoadBalancerDnsPtrRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ChangeLoadBalancerDnsPtrResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<ChangeLoadBalancerDnsPtrRequest>,
+  output: __S(62, __c15, 2) as any as S.Schema<ChangeLoadBalancerDnsPtrResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -945,8 +945,8 @@ export const changeLoadBalancerProtection: API.OperationMethod<
   ChangeLoadBalancerProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ChangeLoadBalancerProtectionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ChangeLoadBalancerProtectionResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<ChangeLoadBalancerProtectionRequest>,
+  output: __S(66, __c16, 2) as any as S.Schema<ChangeLoadBalancerProtectionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -960,8 +960,8 @@ export const changeLoadBalancerType: API.OperationMethod<
   ChangeLoadBalancerTypeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ChangeLoadBalancerTypeRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ChangeLoadBalancerTypeResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<ChangeLoadBalancerTypeRequest>,
+  output: __S(70, __c17, 2) as any as S.Schema<ChangeLoadBalancerTypeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -975,8 +975,8 @@ export const deleteLoadBalancerService: API.OperationMethod<
   DeleteLoadBalancerServiceError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteLoadBalancerServiceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DeleteLoadBalancerServiceResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<DeleteLoadBalancerServiceRequest>,
+  output: __S(74, __c18, 2) as any as S.Schema<DeleteLoadBalancerServiceResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -990,8 +990,8 @@ export const detachLoadBalancerFromNetwork: API.OperationMethod<
   DetachLoadBalancerFromNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DetachLoadBalancerFromNetworkRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<DetachLoadBalancerFromNetworkResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<DetachLoadBalancerFromNetworkRequest>,
+  output: __S(78, __c19, 2) as any as S.Schema<DetachLoadBalancerFromNetworkResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1005,8 +1005,8 @@ export const disableLoadBalancerPublicInterface: API.OperationMethod<
   DisableLoadBalancerPublicInterfaceError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DisableLoadBalancerPublicInterfaceRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DisableLoadBalancerPublicInterfaceResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<DisableLoadBalancerPublicInterfaceRequest>,
+  output: __S(82, __c20, 2) as any as S.Schema<DisableLoadBalancerPublicInterfaceResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1020,8 +1020,8 @@ export const enableLoadBalancerPublicInterface: API.OperationMethod<
   EnableLoadBalancerPublicInterfaceError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<EnableLoadBalancerPublicInterfaceRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<EnableLoadBalancerPublicInterfaceResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<EnableLoadBalancerPublicInterfaceRequest>,
+  output: __S(26, __c6, 2) as any as S.Schema<EnableLoadBalancerPublicInterfaceResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1035,8 +1035,8 @@ export const getLoadBalancersAction: API.OperationMethod<
   GetLoadBalancersActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetLoadBalancersActionRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetLoadBalancersActionResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetLoadBalancersActionRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<GetLoadBalancersActionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1052,8 +1052,8 @@ export const listLoadBalancerActions: API.PaginatedOperationMethod<
   ListLoadBalancerActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(48, __c6, 0) as any as S.Schema<ListLoadBalancerActionsRequest>,
-    output: __S(53, __c6, 5) as any as S.Schema<ListLoadBalancerActionsResponse>,
+    input: __S(32, __c8, 0) as any as S.Schema<ListLoadBalancerActionsRequest>,
+    output: __S(35, __c8, 3) as any as S.Schema<ListLoadBalancerActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -1078,8 +1078,8 @@ export const listLoadBalancersActions: API.PaginatedOperationMethod<
   ListLoadBalancersActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(54, __c6, 6) as any as S.Schema<ListLoadBalancersActionsRequest>,
-    output: __S(57, __c7, 1) as any as S.Schema<ListLoadBalancersActionsResponse>,
+    input: __S(40, __c10, 0) as any as S.Schema<ListLoadBalancersActionsRequest>,
+    output: __S(43, __c10, 3) as any as S.Schema<ListLoadBalancersActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -1102,8 +1102,8 @@ export const removeLoadBalancerTarget: API.OperationMethod<
   RemoveLoadBalancerTargetError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<RemoveLoadBalancerTargetRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<RemoveLoadBalancerTargetResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<RemoveLoadBalancerTargetRequest>,
+  output: __S(46, __c11, 2) as any as S.Schema<RemoveLoadBalancerTargetResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1117,8 +1117,8 @@ export const updateLoadBalancerService: API.OperationMethod<
   UpdateLoadBalancerServiceError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<UpdateLoadBalancerServiceRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<UpdateLoadBalancerServiceResponse>,
+  input: __S(49, __c12, 1) as any as S.Schema<UpdateLoadBalancerServiceRequest>,
+  output: __S(51, __c12, 3) as any as S.Schema<UpdateLoadBalancerServiceResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1128,20 +1128,6 @@ export const updateLoadBalancerService: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.NullOr(S.String)),
-          path: S.optional(S.String),
-          response: S.optional(S.String),
-          status_codes: S.optional(__S(0, __c0, 0)),
-          tls: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AddLoadBalancerServiceRequestHealthCheckHttp",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           protocol: S.String,
@@ -1149,27 +1135,12 @@ function __c0(j: number): any {
           interval: S.Number,
           timeout: S.Number,
           retries: S.Number,
-          http: S.optional(__S(1, __c0, 1)),
+          http: S.optional(__S(13, __c3, 1)),
         }),
       ).annotate({
         identifier: "AddLoadBalancerServiceRequestHealthCheck",
       });
-    case 3:
-      return S.Array(S.Number);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cookie_name: S.optional(S.String),
-          cookie_lifetime: S.optional(S.Number),
-          timeout_idle: S.optional(S.Number),
-          certificates: S.optional(__S(3, __c0, 3)),
-          redirect_http: S.optional(S.Boolean),
-          sticky_sessions: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AddLoadBalancerServiceRequestHttp",
-      });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -1177,15 +1148,42 @@ function __c0(j: number): any {
           listen_port: S.Number,
           destination_port: S.Number,
           proxyprotocol: S.Boolean,
-          health_check: __S(2, __c0, 2),
-          http: S.optional(__S(4, __c0, 4)),
+          health_check: __S(0, __c0, 0),
+          http: S.optional(__S(14, __c3, 2)),
         }).pipe(
           T.Http({ method: "POST", uri: "/load_balancers/{id}/actions/add_service", code: 200 }),
         ),
       ).annotate({
         identifier: "AddLoadBalancerServiceRequest",
       });
-    case 6:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "AddLoadBalancerServiceResponseAction",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(2, __c0, 2),
+        }),
+      ).annotate({
+        identifier: "AddLoadBalancerServiceResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1194,13 +1192,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddLoadBalancerServiceResponseActionResourcesItem",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -1209,6 +1203,62 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AddLoadBalancerServiceResponseActionError",
       });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.NullOr(S.String)),
+          path: S.optional(S.String),
+          response: S.optional(S.String),
+          status_codes: S.optional(__S(12, __c3, 0)),
+          tls: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AddLoadBalancerServiceRequestHealthCheckHttp",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cookie_name: S.optional(S.String),
+          cookie_lifetime: S.optional(S.Number),
+          timeout_idle: S.optional(S.Number),
+          certificates: S.optional(__S(8, __c2, 0)),
+          redirect_http: S.optional(S.Boolean),
+          sticky_sessions: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AddLoadBalancerServiceRequestHttp",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          type: S.String,
+          server: S.optional(__S(20, __c5, 0)),
+          label_selector: S.optional(__S(21, __c5, 1)),
+          ip: S.optional(__S(22, __c5, 2)),
+          use_private_ip: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/load_balancers/{id}/actions/add_target", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "AddLoadBalancerTargetRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1218,21 +1268,25 @@ function __c1(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
         }),
       ).annotate({
-        identifier: "AddLoadBalancerServiceResponseAction",
+        identifier: "AddLoadBalancerTargetResponseAction",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(9, __c1, 1),
+          action: __S(17, __c4, 1),
         }),
       ).annotate({
-        identifier: "AddLoadBalancerServiceResponse",
+        identifier: "AddLoadBalancerTargetResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1241,7 +1295,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AddLoadBalancerTargetRequestServer",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           selector: S.String,
@@ -1249,7 +1303,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AddLoadBalancerTargetRequestLabelSelector",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ip: S.String,
@@ -1257,22 +1311,25 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AddLoadBalancerTargetRequestIp",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          type: S.String,
-          server: S.optional(__S(11, __c1, 3)),
-          label_selector: S.optional(__S(12, __c1, 4)),
-          ip: S.optional(__S(13, __c1, 5)),
-          use_private_ip: S.optional(S.Boolean),
         }).pipe(
-          T.Http({ method: "POST", uri: "/load_balancers/{id}/actions/add_target", code: 200 }),
+          T.Http({
+            method: "POST",
+            uri: "/load_balancers/{id}/actions/enable_public_interface",
+            code: 200,
+          }),
         ),
       ).annotate({
-        identifier: "AddLoadBalancerTargetRequest",
+        identifier: "EnableLoadBalancerPublicInterfaceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1281,25 +1338,268 @@ function __c1(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
         }),
       ).annotate({
-        identifier: "AddLoadBalancerTargetResponseAction",
+        identifier: "EnableLoadBalancerPublicInterfaceResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(25, __c6, 1),
+        }),
+      ).annotate({
+        identifier: "EnableLoadBalancerPublicInterfaceResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: __S(15, __c1, 7),
-        }),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/load_balancers/actions/{id}", code: 200 })),
       ).annotate({
-        identifier: "AddLoadBalancerTargetResponse",
+        identifier: "GetLoadBalancersActionRequest",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "GetLoadBalancersActionResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(29, __c7, 1),
+        }),
+      ).annotate({
+        identifier: "GetLoadBalancersActionResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          sort: S.optional(__S(36, __c9, 0).pipe(T.Query())),
+          status: S.optional(__S(36, __c9, 0).pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/load_balancers/{id}/actions", code: 200 })),
+      ).annotate({
+        identifier: "ListLoadBalancerActionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "ListLoadBalancerActionsResponseActionsItem",
+      });
+    case 2:
+      return S.Array(__S(33, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          actions: __S(34, __c8, 2),
+          meta: __S(38, __c9, 2),
+        }),
+      ).annotate({
+        identifier: "ListLoadBalancerActionsResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.Number,
+          per_page: S.Number,
+          previous_page: S.NullOr(S.Number),
+          next_page: S.NullOr(S.Number),
+          last_page: S.NullOr(S.Number),
+          total_entries: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListLoadBalancerActionsResponseMetaPagination",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pagination: __S(37, __c9, 1),
+        }),
+      ).annotate({
+        identifier: "ListLoadBalancerActionsResponseMeta",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(__S(8, __c2, 0).pipe(T.Query())),
+          sort: S.optional(__S(36, __c9, 0).pipe(T.Query())),
+          status: S.optional(__S(36, __c9, 0).pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/load_balancers/actions", code: 200 })),
+      ).annotate({
+        identifier: "ListLoadBalancersActionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "ListLoadBalancersActionsResponseActionsItem",
+      });
+    case 2:
+      return S.Array(__S(41, __c10, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          actions: __S(42, __c10, 2),
+          meta: __S(38, __c9, 2),
+        }),
+      ).annotate({
+        identifier: "ListLoadBalancersActionsResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          type: S.String,
+          server: S.optional(__S(20, __c5, 0)),
+          label_selector: S.optional(__S(21, __c5, 1)),
+          ip: S.optional(__S(22, __c5, 2)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/load_balancers/{id}/actions/remove_target", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RemoveLoadBalancerTargetRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "RemoveLoadBalancerTargetResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(45, __c11, 1),
+        }),
+      ).annotate({
+        identifier: "RemoveLoadBalancerTargetResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          protocol: S.String,
+          port: S.Number,
+          interval: S.Number,
+          timeout: S.Number,
+          retries: S.Number,
+          http: S.optional(__S(13, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "UpdateLoadBalancerServiceRequestHealthCheck",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          protocol: S.optional(S.String),
+          listen_port: S.Number,
+          destination_port: S.optional(S.Number),
+          proxyprotocol: S.optional(S.Boolean),
+          health_check: S.optional(__S(48, __c12, 0)),
+          http: S.optional(__S(14, __c3, 2)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/load_balancers/{id}/actions/update_service", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateLoadBalancerServiceRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "UpdateLoadBalancerServiceResponseAction",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(50, __c12, 2),
+        }),
+      ).annotate({
+        identifier: "UpdateLoadBalancerServiceResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -1316,7 +1616,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AttachLoadBalancerToNetworkRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1325,21 +1625,25 @@ function __c2(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
         }),
       ).annotate({
         identifier: "AttachLoadBalancerToNetworkResponseAction",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(18, __c2, 2),
+          action: __S(53, __c13, 1),
         }),
       ).annotate({
         identifier: "AttachLoadBalancerToNetworkResponse",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -1354,7 +1658,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ChangeLoadBalancerAlgorithmRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1363,21 +1667,25 @@ function __c2(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerAlgorithmResponseAction",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(21, __c2, 5),
+          action: __S(57, __c14, 1),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerAlgorithmResponse",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -1389,11 +1697,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ChangeLoadBalancerDnsPtrRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1402,21 +1706,25 @@ function __c3(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerDnsPtrResponseAction",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(24, __c3, 0),
+          action: __S(61, __c15, 1),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerDnsPtrResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -1431,7 +1739,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ChangeLoadBalancerProtectionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1440,21 +1748,25 @@ function __c3(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerProtectionResponseAction",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(27, __c3, 3),
+          action: __S(65, __c16, 1),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerProtectionResponse",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -1465,7 +1777,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ChangeLoadBalancerTypeRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1474,23 +1786,23 @@ function __c3(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerTypeResponseAction",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(30, __c3, 6),
+          action: __S(69, __c17, 1),
         }),
       ).annotate({
         identifier: "ChangeLoadBalancerTypeResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1512,8 +1824,8 @@ function __c4(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
         }),
       ).annotate({
         identifier: "DeleteLoadBalancerServiceResponseAction",
@@ -1521,12 +1833,16 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(33, __c4, 1),
+          action: __S(73, __c18, 1),
         }),
       ).annotate({
         identifier: "DeleteLoadBalancerServiceResponse",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -1541,7 +1857,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DetachLoadBalancerFromNetworkRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1550,21 +1866,25 @@ function __c4(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
         }),
       ).annotate({
         identifier: "DetachLoadBalancerFromNetworkResponseAction",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(36, __c4, 4),
+          action: __S(77, __c19, 1),
         }),
       ).annotate({
         identifier: "DetachLoadBalancerFromNetworkResponse",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -1578,7 +1898,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DisableLoadBalancerPublicInterfaceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1587,295 +1907,22 @@ function __c4(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
+          resources: __S(5, __c1, 1),
+          error: S.NullOr(__S(6, __c1, 2)),
         }),
       ).annotate({
         identifier: "DisableLoadBalancerPublicInterfaceResponseAction",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(39, __c4, 7),
+          action: __S(81, __c20, 1),
         }),
       ).annotate({
         identifier: "DisableLoadBalancerPublicInterfaceResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/load_balancers/{id}/actions/enable_public_interface",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableLoadBalancerPublicInterfaceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "EnableLoadBalancerPublicInterfaceResponseAction",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(42, __c5, 2),
-        }),
-      ).annotate({
-        identifier: "EnableLoadBalancerPublicInterfaceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/load_balancers/actions/{id}", code: 200 })),
-      ).annotate({
-        identifier: "GetLoadBalancersActionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "GetLoadBalancersActionResponseAction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(45, __c5, 5),
-        }),
-      ).annotate({
-        identifier: "GetLoadBalancersActionResponse",
-      });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          sort: S.optional(__S(47, __c5, 7).pipe(T.Query())),
-          status: S.optional(__S(47, __c5, 7).pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/load_balancers/{id}/actions", code: 200 })),
-      ).annotate({
-        identifier: "ListLoadBalancerActionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "ListLoadBalancerActionsResponseActionsItem",
-      });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.Number,
-          per_page: S.Number,
-          previous_page: S.NullOr(S.Number),
-          next_page: S.NullOr(S.Number),
-          last_page: S.NullOr(S.Number),
-          total_entries: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListLoadBalancerActionsResponseMetaPagination",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pagination: __S(51, __c6, 3),
-        }),
-      ).annotate({
-        identifier: "ListLoadBalancerActionsResponseMeta",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          actions: __S(50, __c6, 2),
-          meta: __S(52, __c6, 4),
-        }),
-      ).annotate({
-        identifier: "ListLoadBalancerActionsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          sort: S.optional(__S(47, __c5, 7).pipe(T.Query())),
-          status: S.optional(__S(47, __c5, 7).pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/load_balancers/actions", code: 200 })),
-      ).annotate({
-        identifier: "ListLoadBalancersActionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "ListLoadBalancersActionsResponseActionsItem",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          actions: __S(56, __c7, 0),
-          meta: __S(52, __c6, 4),
-        }),
-      ).annotate({
-        identifier: "ListLoadBalancersActionsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          type: S.String,
-          server: S.optional(__S(11, __c1, 3)),
-          label_selector: S.optional(__S(12, __c1, 4)),
-          ip: S.optional(__S(13, __c1, 5)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/load_balancers/{id}/actions/remove_target", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RemoveLoadBalancerTargetRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "RemoveLoadBalancerTargetResponseAction",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(59, __c7, 3),
-        }),
-      ).annotate({
-        identifier: "RemoveLoadBalancerTargetResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          protocol: S.String,
-          port: S.Number,
-          interval: S.Number,
-          timeout: S.Number,
-          retries: S.Number,
-          http: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "UpdateLoadBalancerServiceRequestHealthCheck",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          protocol: S.optional(S.String),
-          listen_port: S.Number,
-          destination_port: S.optional(S.Number),
-          proxyprotocol: S.optional(S.Boolean),
-          health_check: S.optional(__S(61, __c7, 5)),
-          http: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/load_balancers/{id}/actions/update_service", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateLoadBalancerServiceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(7, __c0, 7),
-          error: S.NullOr(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "UpdateLoadBalancerServiceResponseAction",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(63, __c7, 7),
-        }),
-      ).annotate({
-        identifier: "UpdateLoadBalancerServiceResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

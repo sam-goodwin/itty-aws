@@ -1764,8 +1764,8 @@ export const addRoute: API.OperationMethod<
   AddRouteError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<AddRouteRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<AddRouteResponse>,
+  input: __S(69, __c2, 5) as any as S.Schema<AddRouteRequest>,
+  output: __S(75, __c2, 11) as any as S.Schema<AddRouteResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1779,8 +1779,8 @@ export const deleteRoutes: API.OperationMethod<
   DeleteRoutesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteRoutesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteRoutesResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteRoutesRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<DeleteRoutesResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1794,8 +1794,8 @@ export const editRoute: API.OperationMethod<
   EditRouteError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<EditRouteRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<EditRouteResponse>,
+  input: __S(260, __c8, 4) as any as S.Schema<EditRouteRequest>,
+  output: __S(266, __c8, 10) as any as S.Schema<EditRouteResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1809,8 +1809,8 @@ export const generateRoute: API.OperationMethod<
   GenerateRouteError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GenerateRouteRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GenerateRouteResponse>,
+  input: __S(296, __c9, 8) as any as S.Schema<GenerateRouteRequest>,
+  output: __S(305, __c9, 17) as any as S.Schema<GenerateRouteResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1824,8 +1824,8 @@ export const getRoutes: API.OperationMethod<
   GetRoutesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetRoutesRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetRoutesResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetRoutesRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<GetRoutesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1839,8 +1839,8 @@ export const getRouteVersions: API.OperationMethod<
   GetRouteVersionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetRouteVersionsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetRouteVersionsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetRouteVersionsRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<GetRouteVersionsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1854,8 +1854,8 @@ export const stageRoutes: API.OperationMethod<
   StageRoutesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<StageRoutesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<StageRoutesResponse>,
+  input: __S(5, __c0, 5) as any as S.Schema<StageRoutesRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<StageRoutesResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1869,8 +1869,8 @@ export const updateRouteVersions: API.OperationMethod<
   UpdateRouteVersionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<UpdateRouteVersionsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<UpdateRouteVersionsResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<UpdateRouteVersionsRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<UpdateRouteVersionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1883,31 +1883,17 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          key: S.optional(S.String),
-          value: S.optional(S.String),
+          op: S.optional(S.String),
+          target: S.optional(S.Unknown),
+          args: S.optional(S.Unknown),
+          env: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
-        identifier: "AddRouteRequestRouteRouteHasItem",
+        identifier: "StageRoutesRequestRoutesItemRouteTransformsItem",
       });
     case 1:
       return S.Array(__S(0, __c0, 0));
     case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          op: S.optional(S.String),
-          target: S.optional(S.Unknown),
-          args: S.optional(S.Unknown),
-          env: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "AddRouteRequestRouteRouteTransformsItem",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           src: S.String,
@@ -1915,31 +1901,44 @@ function __c0(j: number): any {
           headers: S.optional(S.Unknown),
           caseSensitive: S.optional(S.Boolean),
           status: S.optional(S.Number),
-          has: S.optional(__S(1, __c0, 1)),
-          missing: S.optional(__S(1, __c0, 1)),
-          transforms: S.optional(__S(4, __c0, 4)),
+          has: S.optional(__S(193, __c6, 1)),
+          missing: S.optional(__S(193, __c6, 1)),
+          transforms: S.optional(__S(1, __c0, 1)),
           respectOriginCacheControl: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "AddRouteRequestRouteRoute",
+        identifier: "StageRoutesRequestRoutesItemRoute",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
+          id: S.String,
           name: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          srcSyntax: S.optional(S.String),
-          route: __S(5, __c0, 5),
+          route: __S(2, __c0, 2),
         }),
-      ).annotate({ identifier: "AddRouteRequestRoute" });
-    case 7:
+      ).annotate({
+        identifier: "StageRoutesRequestRoutesItem",
+      });
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          placement: S.optional(S.String),
-          referenceId: S.optional(S.String),
+          projectId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          overwrite: S.optional(S.Boolean),
+          routes: S.optional(__S(4, __c0, 4)),
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/projects/{projectId}/routes", code: 200 })),
+      ).annotate({ identifier: "StageRoutesRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          version: __S(128, __c4, 0),
         }),
-      ).annotate({ identifier: "AddRouteRequestPosition" });
+      ).annotate({ identifier: "StageRoutesResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1950,64 +1949,21 @@ function __c1(j: number): any {
           projectId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          route: __S(6, __c0, 6),
-          position: S.optional(__S(7, __c0, 7)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{projectId}/routes", code: 200 })),
-      ).annotate({ identifier: "AddRouteRequest" });
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cookie: S.optional(S.String),
-          redirect: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "AddRouteResponseRouteRouteLocale",
-      });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
+          id: S.String,
           action: S.String,
-        }),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/projects/{projectId}/routes/versions", code: 200 }),
+        ),
       ).annotate({
-        identifier: "AddRouteResponseRouteRouteMitigate",
+        identifier: "UpdateRouteVersionsRequest",
       });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          caseSensitive: S.optional(S.Boolean),
-          check: S.optional(S.Boolean),
-          continue: S.optional(S.Boolean),
-          dest: S.optional(S.String),
-          destination: S.optional(S.Unknown),
-          env: S.optional(__S(2, __c0, 2)),
-          has: S.optional(__S(9, __c1, 1)),
-          headers: S.optional(__S(10, __c1, 2)),
-          important: S.optional(S.Boolean),
-          locale: S.optional(__S(11, __c1, 3)),
-          methods: S.optional(__S(2, __c0, 2)),
-          middleware: S.optional(S.Number),
-          middlewarePath: S.optional(S.String),
-          middlewareRawSrc: S.optional(__S(2, __c0, 2)),
-          missing: S.optional(__S(12, __c1, 4)),
-          mitigate: S.optional(__S(13, __c1, 5)),
-          override: S.optional(S.Boolean),
-          respectOriginCacheControl: S.optional(S.Boolean),
-          source: S.optional(S.String),
-          src: S.String,
-          status: S.optional(S.Number),
-          statusCode: S.optional(S.Number),
-          transforms: S.optional(__S(14, __c1, 6)),
+          version: __S(128, __c4, 0),
         }),
       ).annotate({
-        identifier: "AddRouteResponseRouteRoute",
+        identifier: "UpdateRouteVersionsResponse",
       });
   }
 }
@@ -2016,19 +1972,129 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          type: S.optional(S.String),
+          op: S.optional(S.String),
+          target: S.optional(S.Unknown),
+          args: S.optional(S.Unknown),
+          env: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "AddRouteRequestRouteRouteTransformsItem",
+      });
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          src: S.String,
+          dest: S.optional(S.String),
+          headers: S.optional(S.Unknown),
+          caseSensitive: S.optional(S.Boolean),
+          status: S.optional(S.Number),
+          has: S.optional(__S(193, __c6, 1)),
+          missing: S.optional(__S(193, __c6, 1)),
+          transforms: S.optional(__S(65, __c2, 1)),
+          respectOriginCacheControl: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AddRouteRequestRouteRoute",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          srcSyntax: S.optional(S.String),
+          route: __S(66, __c2, 2),
+        }),
+      ).annotate({ identifier: "AddRouteRequestRoute" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          placement: S.optional(S.String),
+          referenceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddRouteRequestPosition" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          route: __S(67, __c2, 3),
+          position: S.optional(__S(68, __c2, 4)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{projectId}/routes", code: 200 })),
+      ).annotate({ identifier: "AddRouteRequest" });
+    case 6:
+      return S.Array(S.Unknown);
+    case 7:
+      return S.Array(S.Unknown);
+    case 8:
+      return S.Array(S.Unknown);
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          caseSensitive: S.optional(S.Boolean),
+          check: S.optional(S.Boolean),
+          continue: S.optional(S.Boolean),
+          dest: S.optional(S.String),
+          destination: S.optional(S.Unknown),
+          env: S.optional(__S(96, __c3, 0)),
+          has: S.optional(__S(70, __c2, 6)),
+          headers: S.optional(__S(160, __c5, 0)),
+          important: S.optional(S.Boolean),
+          locale: S.optional(__S(161, __c5, 1)),
+          methods: S.optional(__S(96, __c3, 0)),
+          middleware: S.optional(S.Number),
+          middlewarePath: S.optional(S.String),
+          middlewareRawSrc: S.optional(__S(96, __c3, 0)),
+          missing: S.optional(__S(71, __c2, 7)),
+          mitigate: S.optional(__S(162, __c5, 2)),
+          override: S.optional(S.Boolean),
+          respectOriginCacheControl: S.optional(S.Boolean),
+          source: S.optional(S.String),
+          src: S.String,
+          status: S.optional(S.Number),
+          statusCode: S.optional(S.Number),
+          transforms: S.optional(__S(72, __c2, 8)),
+        }),
+      ).annotate({
+        identifier: "AddRouteResponseRouteRoute",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           id: S.String,
           name: S.String,
           rawDest: S.optional(S.String),
           rawSrc: S.optional(S.String),
-          route: __S(15, __c1, 7),
+          route: __S(73, __c2, 9),
           routeType: S.optional(S.String),
           srcSyntax: S.optional(S.String),
           staged: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AddRouteResponseRoute" });
-    case 1:
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          route: __S(74, __c2, 10),
+          version: __S(128, __c4, 0),
+        }),
+      ).annotate({ identifier: "AddRouteResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alias: S.optional(S.String),
@@ -2041,44 +2107,84 @@ function __c2(j: number): any {
           s3Key: S.String,
         }),
       ).annotate({ identifier: "AddRouteResponseVersion" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cookie: S.optional(S.String),
+          redirect: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "AddRouteResponseRouteRouteLocale",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          route: __S(16, __c2, 0),
-          version: __S(17, __c2, 1),
+          action: S.String,
         }),
-      ).annotate({ identifier: "AddRouteResponse" });
-    case 3:
+      ).annotate({
+        identifier: "AddRouteResponseRouteRouteMitigate",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AddRouteRequestRouteRouteHasItem",
+      });
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          routeIds: __S(2, __c0, 2),
+          routeIds: __S(96, __c3, 0),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/projects/{projectId}/routes", code: 200 })),
       ).annotate({ identifier: "DeleteRoutesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deletedCount: S.Number,
-          version: __S(17, __c2, 1),
+          version: __S(128, __c4, 0),
         }),
       ).annotate({ identifier: "DeleteRoutesResponse" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           op: S.optional(S.String),
           target: S.optional(S.Unknown),
           args: S.optional(S.Unknown),
-          env: S.optional(__S(2, __c0, 2)),
+          env: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "EditRouteRequestRouteRouteTransformsItem",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           src: S.String,
@@ -2086,48 +2192,44 @@ function __c2(j: number): any {
           headers: S.optional(S.Unknown),
           caseSensitive: S.optional(S.Boolean),
           status: S.optional(S.Number),
-          has: S.optional(__S(1, __c0, 1)),
-          missing: S.optional(__S(1, __c0, 1)),
-          transforms: S.optional(__S(22, __c2, 6)),
+          has: S.optional(__S(193, __c6, 1)),
+          missing: S.optional(__S(193, __c6, 1)),
+          transforms: S.optional(__S(257, __c8, 1)),
           respectOriginCacheControl: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "EditRouteRequestRouteRoute",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           srcSyntax: S.optional(S.String),
-          route: __S(23, __c2, 7),
+          route: __S(258, __c8, 2),
         }),
       ).annotate({ identifier: "EditRouteRequestRoute" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           routeId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          route: S.optional(__S(24, __c3, 0)),
+          route: S.optional(__S(259, __c8, 3)),
           restore: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/projects/{projectId}/routes/{routeId}", code: 200 }),
         ),
       ).annotate({ identifier: "EditRouteRequest" });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.Array(S.Unknown);
     case 5:
+      return S.Array(S.Unknown);
+    case 6:
+      return S.Array(S.Unknown);
+    case 7:
+      return S.Array(S.Unknown);
+    case 8:
       return S.suspend(() =>
         S.Struct({
           caseSensitive: S.optional(S.Boolean),
@@ -2135,29 +2237,29 @@ function __c3(j: number): any {
           continue: S.optional(S.Boolean),
           dest: S.optional(S.String),
           destination: S.optional(S.Unknown),
-          env: S.optional(__S(2, __c0, 2)),
-          has: S.optional(__S(26, __c3, 2)),
-          headers: S.optional(__S(10, __c1, 2)),
+          env: S.optional(__S(96, __c3, 0)),
+          has: S.optional(__S(261, __c8, 5)),
+          headers: S.optional(__S(160, __c5, 0)),
           important: S.optional(S.Boolean),
-          locale: S.optional(__S(11, __c1, 3)),
-          methods: S.optional(__S(2, __c0, 2)),
+          locale: S.optional(__S(161, __c5, 1)),
+          methods: S.optional(__S(96, __c3, 0)),
           middleware: S.optional(S.Number),
           middlewarePath: S.optional(S.String),
-          middlewareRawSrc: S.optional(__S(2, __c0, 2)),
-          missing: S.optional(__S(27, __c3, 3)),
-          mitigate: S.optional(__S(13, __c1, 5)),
+          middlewareRawSrc: S.optional(__S(96, __c3, 0)),
+          missing: S.optional(__S(262, __c8, 6)),
+          mitigate: S.optional(__S(162, __c5, 2)),
           override: S.optional(S.Boolean),
           respectOriginCacheControl: S.optional(S.Boolean),
           source: S.optional(S.String),
           src: S.String,
           status: S.optional(S.Number),
           statusCode: S.optional(S.Number),
-          transforms: S.optional(__S(28, __c3, 4)),
+          transforms: S.optional(__S(263, __c8, 7)),
         }),
       ).annotate({
         identifier: "EditRouteResponseRouteRoute",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -2166,22 +2268,22 @@ function __c3(j: number): any {
           name: S.String,
           rawDest: S.optional(S.String),
           rawSrc: S.optional(S.String),
-          route: __S(29, __c3, 5),
+          route: __S(264, __c8, 8),
           routeType: S.optional(S.String),
           srcSyntax: S.optional(S.String),
           staged: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EditRouteResponseRoute" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          route: S.optional(__S(30, __c3, 6)),
-          version: __S(17, __c2, 1),
+          route: S.optional(__S(265, __c8, 9)),
+          version: __S(128, __c4, 0),
         }),
       ).annotate({ identifier: "EditRouteResponse" });
   }
 }
-function __c4(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2205,7 +2307,7 @@ function __c4(j: number): any {
         identifier: "GenerateRouteRequestCurrentRouteConditionsItem",
       });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(289, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2217,7 +2319,7 @@ function __c4(j: number): any {
         identifier: "GenerateRouteRequestCurrentRouteActionsItemHeadersItem",
       });
     case 4:
-      return S.Array(__S(35, __c4, 3));
+      return S.Array(__S(291, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2225,42 +2327,38 @@ function __c4(j: number): any {
           subType: S.optional(S.String),
           dest: S.optional(S.String),
           status: S.optional(S.Number),
-          headers: S.optional(__S(36, __c4, 4)),
+          headers: S.optional(__S(292, __c9, 4)),
         }),
       ).annotate({
         identifier: "GenerateRouteRequestCurrentRouteActionsItem",
       });
     case 6:
-      return S.Array(__S(37, __c4, 5));
+      return S.Array(__S(293, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          pathCondition: __S(32, __c4, 0),
-          conditions: S.optional(__S(34, __c4, 2)),
-          actions: __S(38, __c4, 6),
+          pathCondition: __S(288, __c9, 0),
+          conditions: S.optional(__S(290, __c9, 2)),
+          actions: __S(294, __c9, 6),
         }),
       ).annotate({
         identifier: "GenerateRouteRequestCurrentRoute",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           prompt: S.String,
-          currentRoute: S.optional(__S(39, __c4, 7)),
+          currentRoute: S.optional(__S(295, __c9, 7)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/projects/{projectId}/routes/generate", code: 200 }),
         ),
       ).annotate({ identifier: "GenerateRouteRequest" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -2270,13 +2368,13 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GenerateRouteResponseRouteActionsItemHeadersItem",
       });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 10:
+      return S.Array(__S(297, __c9, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           dest: S.optional(S.String),
-          headers: S.optional(__S(42, __c5, 2)),
+          headers: S.optional(__S(298, __c9, 10)),
           status: S.optional(S.Number),
           subType: S.optional(S.String),
           type: S.String,
@@ -2284,9 +2382,9 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GenerateRouteResponseRouteActionsItem",
       });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(299, __c9, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           field: S.String,
@@ -2298,9 +2396,9 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GenerateRouteResponseRouteConditionsItem",
       });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 14:
+      return S.Array(__S(301, __c9, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           syntax: S.String,
@@ -2309,30 +2407,30 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GenerateRouteResponseRoutePathCondition",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(44, __c5, 4),
-          conditions: S.optional(__S(46, __c5, 6)),
+          actions: __S(300, __c9, 12),
+          conditions: S.optional(__S(302, __c9, 14)),
           description: S.String,
           name: S.String,
-          pathCondition: __S(47, __c5, 7),
+          pathCondition: __S(303, __c9, 15),
         }),
       ).annotate({
         identifier: "GenerateRouteResponseRoute",
       });
-    case 1:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.String),
-          route: S.optional(__S(48, __c6, 0)),
+          route: S.optional(__S(304, __c9, 16)),
         }),
       ).annotate({ identifier: "GenerateRouteResponse" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -2344,11 +2442,15 @@ function __c6(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/projects/{projectId}/routes", code: 200 })),
       ).annotate({ identifier: "GetRoutesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRoutesResponse",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -2358,103 +2460,16 @@ function __c6(j: number): any {
           T.Http({ method: "GET", uri: "/v1/projects/{projectId}/routes/versions", code: 200 }),
         ),
       ).annotate({ identifier: "GetRouteVersionsRequest" });
-    case 5:
-      return S.Array(__S(17, __c2, 1));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          versions: __S(53, __c6, 5),
-        }),
-      ).annotate({ identifier: "GetRouteVersionsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          op: S.optional(S.String),
-          target: S.optional(S.Unknown),
-          args: S.optional(S.Unknown),
-          env: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "StageRoutesRequestRoutesItemRouteTransformsItem",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          src: S.String,
-          dest: S.optional(S.String),
-          headers: S.optional(S.Unknown),
-          caseSensitive: S.optional(S.Boolean),
-          status: S.optional(S.Number),
-          has: S.optional(__S(1, __c0, 1)),
-          missing: S.optional(__S(1, __c0, 1)),
-          transforms: S.optional(__S(56, __c7, 0)),
-          respectOriginCacheControl: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "StageRoutesRequestRoutesItemRoute",
-      });
+      return S.Array(__S(128, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          name: S.String,
-          description: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          route: __S(57, __c7, 1),
+          versions: __S(353, __c11, 1),
         }),
-      ).annotate({
-        identifier: "StageRoutesRequestRoutesItem",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          overwrite: S.optional(S.Boolean),
-          routes: S.optional(__S(59, __c7, 3)),
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/projects/{projectId}/routes", code: 200 })),
-      ).annotate({ identifier: "StageRoutesRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          version: __S(17, __c2, 1),
-        }),
-      ).annotate({ identifier: "StageRoutesResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          id: S.String,
-          action: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/projects/{projectId}/routes/versions", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateRouteVersionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          version: __S(17, __c2, 1),
-        }),
-      ).annotate({
-        identifier: "UpdateRouteVersionsResponse",
-      });
+      ).annotate({ identifier: "GetRouteVersionsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

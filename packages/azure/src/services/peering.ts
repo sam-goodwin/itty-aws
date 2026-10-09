@@ -1710,8 +1710,8 @@ export const ConnectionMonitorTestsCreateOrUpdate: API.OperationMethod<
   ConnectionMonitorTestsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ConnectionMonitorTestsCreateOrUpdateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ConnectionMonitorTestsCreateOrUpdateResponse>,
+  input: __S(17, __c1, 1) as any as S.Schema<ConnectionMonitorTestsCreateOrUpdateRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<ConnectionMonitorTestsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1725,8 +1725,8 @@ export const DeleteConnectionMonitorTest: API.OperationMethod<
   DeleteConnectionMonitorTestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteConnectionMonitorTestRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteConnectionMonitorTestResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteConnectionMonitorTestRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteConnectionMonitorTestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1740,8 +1740,8 @@ export const DeletePeerAsn: API.OperationMethod<
   DeletePeerAsnError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeletePeerAsnRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeletePeerAsnResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<DeletePeerAsnRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeletePeerAsnResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1755,8 +1755,8 @@ export const DeletePeering: API.OperationMethod<
   DeletePeeringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeletePeeringRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeletePeeringResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<DeletePeeringRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeletePeeringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1770,8 +1770,8 @@ export const DeletePeeringService: API.OperationMethod<
   DeletePeeringServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeletePeeringServiceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeletePeeringServiceResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<DeletePeeringServiceRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeletePeeringServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1785,8 +1785,8 @@ export const DeletePrefix: API.OperationMethod<
   DeletePrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeletePrefixRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeletePrefixResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<DeletePrefixRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeletePrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1800,8 +1800,8 @@ export const DeleteRegisteredAsn: API.OperationMethod<
   DeleteRegisteredAsnError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteRegisteredAsnRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteRegisteredAsnResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<DeleteRegisteredAsnRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteRegisteredAsnResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1815,8 +1815,8 @@ export const DeleteRegisteredPrefix: API.OperationMethod<
   DeleteRegisteredPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteRegisteredPrefixRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteRegisteredPrefixResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<DeleteRegisteredPrefixRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteRegisteredPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1830,8 +1830,8 @@ export const GetConnectionMonitorTest: API.OperationMethod<
   GetConnectionMonitorTestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetConnectionMonitorTestRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetConnectionMonitorTestResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<GetConnectionMonitorTestRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<GetConnectionMonitorTestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1845,8 +1845,8 @@ export const GetPeerAsn: API.OperationMethod<
   GetPeerAsnError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetPeerAsnRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetPeerAsnResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetPeerAsnRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<GetPeerAsnResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1860,8 +1860,8 @@ export const GetPeering: API.OperationMethod<
   GetPeeringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetPeeringRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetPeeringResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetPeeringRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<GetPeeringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1875,8 +1875,8 @@ export const GetPeeringService: API.OperationMethod<
   GetPeeringServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetPeeringServiceRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetPeeringServiceResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetPeeringServiceRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<GetPeeringServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1890,8 +1890,8 @@ export const GetPrefix: API.OperationMethod<
   GetPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetPrefixRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetPrefixResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetPrefixRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1905,8 +1905,8 @@ export const GetRegisteredAsn: API.OperationMethod<
   GetRegisteredAsnError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetRegisteredAsnRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetRegisteredAsnResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetRegisteredAsnRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<GetRegisteredAsnResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1920,8 +1920,8 @@ export const GetRegisteredPrefix: API.OperationMethod<
   GetRegisteredPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetRegisteredPrefixRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetRegisteredPrefixResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetRegisteredPrefixRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<GetRegisteredPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1935,8 +1935,8 @@ export const InvokeLookingGlass: API.OperationMethod<
   InvokeLookingGlassError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<InvokeLookingGlassRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<LookingGlassOutput>,
+  input: __S(400, __c25, 0) as any as S.Schema<InvokeLookingGlassRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<LookingGlassOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1950,8 +1950,8 @@ export const ListCdnPeeringPrefixes: API.OperationMethod<
   ListCdnPeeringPrefixesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListCdnPeeringPrefixesRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<CdnPeeringPrefixListResult>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListCdnPeeringPrefixesRequest>,
+  output: __S(420, __c26, 4) as any as S.Schema<CdnPeeringPrefixListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1965,8 +1965,8 @@ export const ListConnectionMonitorTestByPeeringService: API.OperationMethod<
   ListConnectionMonitorTestByPeeringServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListConnectionMonitorTestByPeeringServiceRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ConnectionMonitorTestListResult>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListConnectionMonitorTestByPeeringServiceRequest>,
+  output: __S(435, __c27, 3) as any as S.Schema<ConnectionMonitorTestListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1980,8 +1980,8 @@ export const ListLegacyPeerings: API.OperationMethod<
   ListLegacyPeeringsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListLegacyPeeringsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<PeeringListResult>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListLegacyPeeringsRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<PeeringListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1995,8 +1995,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListOperationsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<OperationListResult>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(522, __c32, 10) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2010,8 +2010,8 @@ export const ListPeerAsnBySubscription: API.OperationMethod<
   ListPeerAsnBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListPeerAsnBySubscriptionRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<PeerAsnListResult>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListPeerAsnBySubscriptionRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<PeerAsnListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2025,8 +2025,8 @@ export const ListPeeringByResourceGroup: API.OperationMethod<
   ListPeeringByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListPeeringByResourceGroupRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<PeeringListResult>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListPeeringByResourceGroupRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<PeeringListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2040,8 +2040,8 @@ export const ListPeeringBySubscription: API.OperationMethod<
   ListPeeringBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListPeeringBySubscriptionRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<PeeringListResult>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListPeeringBySubscriptionRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<PeeringListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2055,8 +2055,8 @@ export const ListPeeringLocations: API.OperationMethod<
   ListPeeringLocationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListPeeringLocationsRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<PeeringLocationListResult>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListPeeringLocationsRequest>,
+  output: __S(588, __c36, 12) as any as S.Schema<PeeringLocationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2070,8 +2070,8 @@ export const ListPeeringServiceByResourceGroup: API.OperationMethod<
   ListPeeringServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListPeeringServiceByResourceGroupRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<PeeringServiceListResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListPeeringServiceByResourceGroupRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<PeeringServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2085,8 +2085,8 @@ export const ListPeeringServiceBySubscription: API.OperationMethod<
   ListPeeringServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListPeeringServiceBySubscriptionRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<PeeringServiceListResult>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListPeeringServiceBySubscriptionRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<PeeringServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2100,8 +2100,8 @@ export const ListPeeringServiceCountries: API.OperationMethod<
   ListPeeringServiceCountriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListPeeringServiceCountriesRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<PeeringServiceCountryListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListPeeringServiceCountriesRequest>,
+  output: __S(643, __c40, 3) as any as S.Schema<PeeringServiceCountryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2115,8 +2115,8 @@ export const ListPeeringServiceLocations: API.OperationMethod<
   ListPeeringServiceLocationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListPeeringServiceLocationsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<PeeringServiceLocationListResult>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListPeeringServiceLocationsRequest>,
+  output: __S(660, __c41, 4) as any as S.Schema<PeeringServiceLocationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2130,8 +2130,8 @@ export const ListPeeringServiceProviders: API.OperationMethod<
   ListPeeringServiceProvidersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListPeeringServiceProvidersRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<PeeringServiceProviderListResult>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListPeeringServiceProvidersRequest>,
+  output: __S(676, __c42, 4) as any as S.Schema<PeeringServiceProviderListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2145,8 +2145,8 @@ export const ListPrefixByPeeringService: API.OperationMethod<
   ListPrefixByPeeringServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListPrefixByPeeringServiceRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<PeeringServicePrefixListResult>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListPrefixByPeeringServiceRequest>,
+  output: __S(722, __c45, 2) as any as S.Schema<PeeringServicePrefixListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2160,8 +2160,8 @@ export const ListReceivedRouteByPeering: API.OperationMethod<
   ListReceivedRouteByPeeringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ListReceivedRouteByPeeringRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<PeeringReceivedRouteListResult>,
+  input: __S(736, __c46, 0) as any as S.Schema<ListReceivedRouteByPeeringRequest>,
+  output: __S(739, __c46, 3) as any as S.Schema<PeeringReceivedRouteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2175,8 +2175,8 @@ export const ListRegisteredAsnByPeering: API.OperationMethod<
   ListRegisteredAsnByPeeringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListRegisteredAsnByPeeringRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PeeringRegisteredAsnListResult>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListRegisteredAsnByPeeringRequest>,
+  output: __S(754, __c47, 2) as any as S.Schema<PeeringRegisteredAsnListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2190,8 +2190,8 @@ export const ListRegisteredPrefixByPeering: API.OperationMethod<
   ListRegisteredPrefixByPeeringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListRegisteredPrefixByPeeringRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<PeeringRegisteredPrefixListResult>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListRegisteredPrefixByPeeringRequest>,
+  output: __S(771, __c48, 3) as any as S.Schema<PeeringRegisteredPrefixListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2205,8 +2205,8 @@ export const ListRpUnbilledPrefixes: API.OperationMethod<
   ListRpUnbilledPrefixesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListRpUnbilledPrefixesRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<RpUnbilledPrefixListResult>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListRpUnbilledPrefixesRequest>,
+  output: __S(787, __c49, 3) as any as S.Schema<RpUnbilledPrefixListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2220,8 +2220,8 @@ export const PeerAsnsCreateOrUpdate: API.OperationMethod<
   PeerAsnsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<PeerAsnsCreateOrUpdateRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<PeerAsnsCreateOrUpdateResponse>,
+  input: __S(801, __c50, 1) as any as S.Schema<PeerAsnsCreateOrUpdateRequest>,
+  output: __S(802, __c50, 2) as any as S.Schema<PeerAsnsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2235,8 +2235,8 @@ export const PeeringsCreateOrUpdate: API.OperationMethod<
   PeeringsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<PeeringsCreateOrUpdateRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<PeeringsCreateOrUpdateResponse>,
+  input: __S(825, __c51, 9) as any as S.Schema<PeeringsCreateOrUpdateRequest>,
+  output: __S(826, __c51, 10) as any as S.Schema<PeeringsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2250,8 +2250,8 @@ export const PeeringServicesCreateOrUpdate: API.OperationMethod<
   PeeringServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<PeeringServicesCreateOrUpdateRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<PeeringServicesCreateOrUpdateResponse>,
+  input: __S(833, __c52, 1) as any as S.Schema<PeeringServicesCreateOrUpdateRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<PeeringServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2265,8 +2265,8 @@ export const PeeringServicesInitializeConnectionMonitor: API.OperationMethod<
   PeeringServicesInitializeConnectionMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<PeeringServicesInitializeConnectionMonitorRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PeeringServicesInitializeConnectionMonitorResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<PeeringServicesInitializeConnectionMonitorRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PeeringServicesInitializeConnectionMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2280,8 +2280,8 @@ export const PrefixesCreateOrUpdate: API.OperationMethod<
   PrefixesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<PrefixesCreateOrUpdateRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<PrefixesCreateOrUpdateResponse>,
+  input: __S(865, __c54, 1) as any as S.Schema<PrefixesCreateOrUpdateRequest>,
+  output: __S(866, __c54, 2) as any as S.Schema<PrefixesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2295,8 +2295,8 @@ export const RegisteredAsnsCreateOrUpdate: API.OperationMethod<
   RegisteredAsnsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<RegisteredAsnsCreateOrUpdateRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<RegisteredAsnsCreateOrUpdateResponse>,
+  input: __S(897, __c56, 1) as any as S.Schema<RegisteredAsnsCreateOrUpdateRequest>,
+  output: __S(898, __c56, 2) as any as S.Schema<RegisteredAsnsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2310,8 +2310,8 @@ export const RegisteredPrefixesCreateOrUpdate: API.OperationMethod<
   RegisteredPrefixesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<RegisteredPrefixesCreateOrUpdateRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<RegisteredPrefixesCreateOrUpdateResponse>,
+  input: __S(913, __c57, 1) as any as S.Schema<RegisteredPrefixesCreateOrUpdateRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<RegisteredPrefixesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2325,8 +2325,8 @@ export const UpdatePeering: API.OperationMethod<
   UpdatePeeringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<UpdatePeeringRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<UpdatePeeringResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<UpdatePeeringRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdatePeeringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2340,8 +2340,8 @@ export const UpdatePeeringService: API.OperationMethod<
   UpdatePeeringServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<UpdatePeeringServiceRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<UpdatePeeringServiceResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<UpdatePeeringServiceRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<UpdatePeeringServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2355,8 +2355,8 @@ export const ValidateRegisteredPrefix: API.OperationMethod<
   ValidateRegisteredPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ValidateRegisteredPrefixRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ValidateRegisteredPrefixResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ValidateRegisteredPrefixRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<ValidateRegisteredPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2386,7 +2386,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "CheckServiceProviderAvailabilityResponse2",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceAgent: S.optional(S.String),
@@ -2397,14 +2401,14 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConnectionMonitorTestPropertiesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           peeringServiceName: S.String.pipe(T.Label()),
           connectionMonitorTestName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2416,7 +2420,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConnectionMonitorTestsCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(80, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "ConnectionMonitorTestsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2427,9 +2451,17 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceAgent: S.optional(S.String),
@@ -2437,175 +2469,17 @@ function __c0(j: number): any {
           destinationPort: S.optional(S.Number),
           testFrequencyInSec: S.optional(S.Number),
           isTestSuccessful: S.optional(S.Boolean),
-          path: S.optional(__S(5, __c0, 5)),
+          path: S.optional(__S(64, __c4, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConnectionMonitorTestProperties",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "ConnectionMonitorTestsCreateOrUpdateResponse",
-      });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          peeringServiceName: S.String.pipe(T.Label()),
-          connectionMonitorTestName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests/{connectionMonitorTestName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConnectionMonitorTestRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteConnectionMonitorTestResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          peerAsnName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns/{peerAsnName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeletePeerAsnRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePeerAsnResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          peeringName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeletePeeringRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          peeringServiceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePeeringServiceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          peeringServiceName: S.String.pipe(T.Label()),
-          prefixName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes/{prefixName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeletePrefixRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          peeringName: S.String.pipe(T.Label()),
-          registeredAsnName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredAsns/{registeredAsnName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRegisteredAsnRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          peeringName: S.String.pipe(T.Label()),
-          registeredPrefixName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes/{registeredPrefixName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRegisteredPrefixRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          peeringServiceName: S.String.pipe(T.Label()),
-          connectionMonitorTestName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests/{connectionMonitorTestName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConnectionMonitorTestRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2619,7 +2493,25 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPeerAsnRequest" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(130, __c8, 2)),
+        }),
+      ).annotate({ identifier: "GetPeerAsnResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
@@ -2627,29 +2519,23 @@ function __c2(j: number): any {
           phone: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContactDetail" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(128, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           peerAsn: S.optional(S.Number),
-          peerContactDetail: S.optional(__S(20, __c2, 4)),
+          peerContactDetail: S.optional(__S(129, __c8, 1)),
           peerName: S.optional(S.String),
           validationState: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeerAsnProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "GetPeerAsnResponse" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2666,11 +2552,15 @@ function __c2(j: number): any {
       ).annotate({ identifier: "GetPeeringRequest" });
   }
 }
-function __c3(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sessionPrefixV4: S.optional(S.String),
@@ -2686,7 +2576,7 @@ function __c3(j: number): any {
           md5AuthenticationKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "BgpSession" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bandwidthInMbps: S.optional(S.Number),
@@ -2696,75 +2586,71 @@ function __c3(j: number): any {
           microsoftTrackingId: S.optional(S.String),
           peeringDBFacilityId: S.optional(S.Number),
           connectionState: S.optional(S.String),
-          bgpSession: S.optional(__S(25, __c3, 1)),
+          bgpSession: S.optional(__S(176, __c11, 0)),
           connectionIdentifier: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "DirectConnection" });
+    case 2:
+      return S.Array(__S(177, __c11, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubResource" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(__S(27, __c3, 3)),
+          connections: S.optional(__S(178, __c11, 2)),
           useForPeeringService: S.optional(S.Boolean),
-          peerAsn: S.optional(__S(28, __c3, 4)),
+          peerAsn: S.optional(__S(179, __c11, 3)),
           directPeeringType: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeeringPropertiesDirect" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           peeringDBFacilityId: S.optional(S.Number),
           connectionState: S.optional(S.String),
-          bgpSession: S.optional(__S(25, __c3, 1)),
+          bgpSession: S.optional(__S(176, __c11, 0)),
           connectionIdentifier: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExchangeConnection" });
+    case 6:
+      return S.Array(__S(181, __c11, 5));
     case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(__S(31, __c3, 7)),
-          peerAsn: S.optional(__S(28, __c3, 4)),
+          connections: S.optional(__S(182, __c11, 6)),
+          peerAsn: S.optional(__S(179, __c11, 3)),
         }),
       ).annotate({
         identifier: "PeeringPropertiesExchange",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.optional(S.String),
           azureRegion: S.optional(S.String),
           protocol: S.optional(S.String),
-          prefixesToAccesslist: S.optional(__S(5, __c0, 5)),
+          prefixesToAccesslist: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "ConnectivityProbe" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(184, __c11, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          direct: S.optional(__S(29, __c3, 5)),
-          exchange: S.optional(__S(32, __c4, 0)),
-          connectivityProbes: S.optional(__S(34, __c4, 2)),
+          direct: S.optional(__S(180, __c11, 4)),
+          exchange: S.optional(__S(183, __c11, 7)),
+          connectivityProbes: S.optional(__S(185, __c11, 9)),
           peeringLocation: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeeringProperties" });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2773,21 +2659,29 @@ function __c4(j: number): any {
           size: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeeringSku" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(24, __c3, 0)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(160, __c10, 0)),
           location: S.String,
-          properties: S.optional(__S(35, __c4, 3)),
-          sku: __S(36, __c4, 4),
+          properties: S.optional(__S(186, __c11, 10)),
+          sku: __S(187, __c11, 11),
           kind: S.String,
         }),
       ).annotate({ identifier: "GetPeeringResponse" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2802,21 +2696,21 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPeeringServiceRequest" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceID: S.optional(S.String),
           key: S.optional(S.String),
-          connectedAgents: S.optional(__S(5, __c0, 5)),
+          connectedAgents: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({
         identifier: "LogAnalyticsWorkspaceProperties",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           peeringServiceLocation: S.optional(S.String),
@@ -2824,31 +2718,39 @@ function __c5(j: number): any {
           provisioningState: S.optional(S.String),
           providerPrimaryPeeringLocation: S.optional(S.String),
           providerBackupPeeringLocation: S.optional(S.String),
-          logAnalyticsWorkspaceProperties: S.optional(__S(39, __c4, 7)),
+          logAnalyticsWorkspaceProperties: S.optional(__S(224, __c14, 0)),
         }),
       ).annotate({ identifier: "PeeringServiceProperties" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeeringServiceSku" });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(24, __c3, 0)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(160, __c10, 0)),
           location: S.String,
-          properties: S.optional(__S(40, __c5, 0)),
-          sku: S.optional(__S(41, __c5, 1)),
+          properties: S.optional(__S(225, __c14, 1)),
+          sku: S.optional(__S(226, __c14, 2)),
         }),
       ).annotate({
         identifier: "GetPeeringServiceResponse",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2865,7 +2767,25 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPrefixRequest" });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(290, __c18, 2)),
+        }),
+      ).annotate({ identifier: "GetPrefixResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           eventTimestamp: S.optional(S.String),
@@ -2877,35 +2797,25 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PeeringServicePrefixEvent",
       });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(288, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
           prefixValidationState: S.optional(S.String),
           learnedType: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          events: S.optional(__S(45, __c5, 5)),
+          events: S.optional(__S(289, __c18, 1)),
           peeringServicePrefixKey: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PeeringServicePrefixProperties",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "GetPrefixResponse" });
   }
 }
-function __c6(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2923,7 +2833,25 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRegisteredAsnRequest" });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(336, __c21, 0)),
+        }),
+      ).annotate({ identifier: "GetRegisteredAsnResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           asn: S.optional(S.Number),
@@ -2933,17 +2861,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PeeringRegisteredAsnProperties",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "GetRegisteredAsnResponse" });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2961,7 +2883,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetRegisteredPrefixRequest",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
@@ -2973,19 +2899,27 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PeeringRegisteredPrefixProperties",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(52, __c6, 4)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(368, __c23, 0)),
         }),
       ).annotate({
         identifier: "GetRegisteredPrefixResponse",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3004,7 +2938,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "InvokeLookingGlassRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           command: S.optional(S.String),
@@ -3013,7 +2947,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "LookingGlassOutput" });
   }
 }
-function __c7(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3049,22 +2983,26 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(57, __c7, 1)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(417, __c26, 1)),
         }),
       ).annotate({ identifier: "CdnPeeringPrefix" });
     case 3:
-      return S.Array(__S(58, __c7, 2));
+      return S.Array(__S(418, __c26, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(59, __c7, 3),
+          value: __S(419, __c26, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CdnPeeringPrefixListResult",
       });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3081,32 +3019,32 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListConnectionMonitorTestByPeeringServiceRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(6, __c0, 6)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "ConnectionMonitorTest" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(433, __c27, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(63, __c7, 7),
+          value: __S(434, __c27, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConnectionMonitorTestListResult",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3125,16 +3063,54 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListLegacyPeeringsRequest",
       });
-    case 2:
-      return S.Array(__S(37, __c4, 5));
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(192, __c12, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(66, __c8, 2),
+          value: __S(464, __c29, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeeringListResult" });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          peeringServiceName: S.String.pipe(T.Label()),
+          connectionMonitorTestName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests/{connectionMonitorTestName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConnectionMonitorTestRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteConnectionMonitorTestResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -3145,7 +3121,7 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -3154,20 +3130,16 @@ function __c8(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplayInfo" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricDimension" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(514, __c32, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -3175,43 +3147,47 @@ function __c9(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          supportedTimeGrainTypes: S.optional(__S(5, __c0, 5)),
-          dimensions: S.optional(__S(71, __c8, 7)),
+          supportedTimeGrainTypes: S.optional(__S(64, __c4, 0)),
+          dimensions: S.optional(__S(515, __c32, 3)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          metricSpecifications: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({ identifier: "ServiceSpecification" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceSpecification: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({ identifier: "OperationProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(69, __c8, 5)),
-          isDataAction: S.optional(S.Boolean),
-          properties: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({ identifier: "Operation" });
     case 5:
-      return S.Array(__S(76, __c9, 4));
+      return S.Array(__S(516, __c32, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(77, __c9, 5)),
+          metricSpecifications: S.optional(__S(517, __c32, 5)),
+        }),
+      ).annotate({ identifier: "ServiceSpecification" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          serviceSpecification: S.optional(__S(518, __c32, 6)),
+        }),
+      ).annotate({ identifier: "OperationProperties" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(__S(513, __c32, 1)),
+          isDataAction: S.optional(S.Boolean),
+          properties: S.optional(__S(519, __c32, 7)),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 9:
+      return S.Array(__S(520, __c32, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(521, __c32, 9)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3226,20 +3202,20 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListPeerAsnBySubscriptionRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(22, __c2, 6));
     case 1:
+      return S.Array(__S(112, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(80, __c10, 0),
+          value: __S(529, __c33, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeerAsnListResult" });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3255,7 +3231,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPeeringByResourceGroupRequest",
       });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3270,7 +3250,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPeeringBySubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3287,7 +3271,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPeeringLocationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.String),
@@ -3296,31 +3280,27 @@ function __c10(j: number): any {
           peeringDBFacilityLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DirectPeeringFacility" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(577, __c36, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           offerName: S.optional(S.String),
           valueInMbps: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PeeringBandwidthOffer" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(579, __c36, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          peeringFacilities: S.optional(__S(86, __c10, 6)),
-          bandwidthOffers: S.optional(__S(88, __c11, 0)),
+          peeringFacilities: S.optional(__S(578, __c36, 2)),
+          bandwidthOffers: S.optional(__S(580, __c36, 4)),
         }),
       ).annotate({
         identifier: "PeeringLocationPropertiesDirect",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           exchangeName: S.optional(S.String),
@@ -3333,21 +3313,21 @@ function __c11(j: number): any {
           peeringDBFacilityLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExchangePeeringFacility" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(582, __c36, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          peeringFacilities: S.optional(__S(91, __c11, 3)),
+          peeringFacilities: S.optional(__S(583, __c36, 7)),
         }),
       ).annotate({
         identifier: "PeeringLocationPropertiesExchange",
       });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          direct: S.optional(__S(89, __c11, 1)),
-          exchange: S.optional(__S(92, __c11, 4)),
+          direct: S.optional(__S(581, __c36, 5)),
+          exchange: S.optional(__S(584, __c36, 8)),
           peeringLocation: S.optional(S.String),
           country: S.optional(S.String),
           azureRegion: S.optional(S.String),
@@ -3355,33 +3335,33 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PeeringLocationProperties",
       });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(48, __c3, 0)),
           kind: S.optional(S.String),
-          properties: S.optional(__S(93, __c11, 5)),
+          properties: S.optional(__S(585, __c36, 9)),
         }),
       ).annotate({ identifier: "PeeringLocation" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
+      return S.Array(__S(586, __c36, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          value: __S(95, __c11, 7),
+          value: __S(587, __c36, 11),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PeeringLocationListResult",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3397,29 +3377,37 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPeeringServiceByResourceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(24, __c3, 0)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(160, __c10, 0)),
           location: S.String,
-          properties: S.optional(__S(40, __c5, 0)),
-          sku: S.optional(__S(41, __c5, 1)),
+          properties: S.optional(__S(225, __c14, 1)),
+          sku: S.optional(__S(226, __c14, 2)),
         }),
       ).annotate({ identifier: "PeeringService" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(608, __c38, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(99, __c12, 3),
+          value: __S(609, __c38, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeeringServiceListResult" });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3434,7 +3422,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPeeringServiceBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3449,31 +3441,31 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPeeringServiceCountriesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "PeeringServiceCountry" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(641, __c40, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(104, __c13, 0),
+          value: __S(642, __c40, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PeeringServiceCountryListResult",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3489,7 +3481,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListPeeringServiceLocationsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
@@ -3499,28 +3491,32 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PeeringServiceLocationProperties",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(107, __c13, 3)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(657, __c41, 1)),
         }),
       ).annotate({ identifier: "PeeringServiceLocation" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(658, __c41, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(109, __c13, 5),
+          value: __S(659, __c41, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PeeringServiceLocationListResult",
       });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3535,41 +3531,67 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListPeeringServiceProvidersRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           serviceProviderName: S.optional(S.String),
-          peeringLocations: S.optional(__S(5, __c0, 5)),
+          peeringLocations: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({
         identifier: "PeeringServiceProviderProperties",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(112, __c14, 0)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(673, __c42, 1)),
         }),
       ).annotate({ identifier: "PeeringServiceProvider" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
     case 3:
+      return S.Array(__S(674, __c42, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(114, __c14, 2),
+          value: __S(675, __c42, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PeeringServiceProviderListResult",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          peerAsnName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns/{peerAsnName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeletePeerAsnRequest" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePeerAsnResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3587,18 +3609,22 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListPrefixByPeeringServiceRequest",
       });
-    case 5:
-      return S.Array(__S(47, __c5, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(117, __c14, 5),
+          value: __S(721, __c45, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PeeringServicePrefixListResult",
       });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3620,11 +3646,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListReceivedRouteByPeeringRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
@@ -3636,18 +3658,22 @@ function __c15(j: number): any {
           receivedTimestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeeringReceivedRoute" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
     case 2:
+      return S.Array(__S(737, __c46, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(121, __c15, 1),
+          value: __S(738, __c46, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PeeringReceivedRouteListResult",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3664,18 +3690,22 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListRegisteredAsnByPeeringRequest",
       });
-    case 4:
-      return S.Array(__S(50, __c6, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(320, __c20, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(124, __c15, 4),
+          value: __S(753, __c47, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PeeringRegisteredAsnListResult",
       });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3692,32 +3722,32 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListRegisteredPrefixByPeeringRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(52, __c6, 4)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(368, __c23, 0)),
         }),
       ).annotate({ identifier: "PeeringRegisteredPrefix" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(769, __c48, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(128, __c16, 0),
+          value: __S(770, __c48, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PeeringRegisteredPrefixListResult",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3735,7 +3765,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListRpUnbilledPrefixesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
@@ -3743,31 +3773,35 @@ function __c16(j: number): any {
           peerAsn: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RpUnbilledPrefix" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(785, __c49, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(132, __c16, 4),
+          value: __S(786, __c49, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RpUnbilledPrefixListResult",
       });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           peerAsn: S.optional(S.Number),
-          peerContactDetail: S.optional(__S(20, __c2, 4)),
+          peerContactDetail: S.optional(__S(129, __c8, 1)),
           peerName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeerAsnPropertiesInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           peerAsnName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(134, __c16, 6)),
+          properties: S.optional(__S(800, __c50, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3779,65 +3813,65 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PeerAsnsCreateOrUpdateRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(21, __c2, 5)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(130, __c8, 2)),
         }),
       ).annotate({
         identifier: "PeerAsnsCreateOrUpdateResponse",
       });
-    case 1:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bandwidthInMbps: S.optional(S.Number),
           sessionAddressProvider: S.optional(S.String),
           useForPeeringService: S.optional(S.Boolean),
           peeringDBFacilityId: S.optional(S.Number),
-          bgpSession: S.optional(__S(25, __c3, 1)),
+          bgpSession: S.optional(__S(176, __c11, 0)),
           connectionIdentifier: S.optional(S.String),
         }),
       ).annotate({ identifier: "DirectConnectionInput" });
+    case 1:
+      return S.Array(__S(816, __c51, 0));
     case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(__S(138, __c17, 2)),
-          peerAsn: S.optional(__S(28, __c3, 4)),
+          connections: S.optional(__S(817, __c51, 1)),
+          peerAsn: S.optional(__S(179, __c11, 3)),
           directPeeringType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PeeringPropertiesDirectInput",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           peeringDBFacilityId: S.optional(S.Number),
-          bgpSession: S.optional(__S(25, __c3, 1)),
+          bgpSession: S.optional(__S(176, __c11, 0)),
           connectionIdentifier: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExchangeConnectionInput" });
+    case 4:
+      return S.Array(__S(819, __c51, 3));
     case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(__S(141, __c17, 5)),
-          peerAsn: S.optional(__S(28, __c3, 4)),
+          connections: S.optional(__S(820, __c51, 4)),
+          peerAsn: S.optional(__S(179, __c11, 3)),
         }),
       ).annotate({
         identifier: "PeeringPropertiesExchangeInput",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.optional(S.String),
@@ -3845,31 +3879,27 @@ function __c17(j: number): any {
           protocol: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectivityProbeInput" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(822, __c51, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          direct: S.optional(__S(139, __c17, 3)),
-          exchange: S.optional(__S(142, __c17, 6)),
-          connectivityProbes: S.optional(__S(144, __c18, 0)),
+          direct: S.optional(__S(818, __c51, 2)),
+          exchange: S.optional(__S(821, __c51, 5)),
+          connectivityProbes: S.optional(__S(823, __c51, 7)),
           peeringLocation: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeeringPropertiesInput" });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           peeringName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(160, __c10, 0)),
           location: S.String,
-          properties: S.optional(__S(145, __c18, 1)),
-          sku: __S(36, __c4, 4),
+          properties: S.optional(__S(824, __c51, 8)),
+          sku: __S(187, __c11, 11),
           kind: S.String,
         }).pipe(
           T.Http({
@@ -3882,44 +3912,48 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PeeringsCreateOrUpdateRequest",
       });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(24, __c3, 0)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(160, __c10, 0)),
           location: S.String,
-          properties: S.optional(__S(35, __c4, 3)),
-          sku: __S(36, __c4, 4),
+          properties: S.optional(__S(186, __c11, 10)),
+          sku: __S(187, __c11, 11),
           kind: S.String,
         }),
       ).annotate({
         identifier: "PeeringsCreateOrUpdateResponse",
       });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           peeringServiceLocation: S.optional(S.String),
           peeringServiceProvider: S.optional(S.String),
           providerPrimaryPeeringLocation: S.optional(S.String),
           providerBackupPeeringLocation: S.optional(S.String),
-          logAnalyticsWorkspaceProperties: S.optional(__S(9, __c1, 1)),
+          logAnalyticsWorkspaceProperties: S.optional(__S(496, __c31, 0)),
         }),
       ).annotate({
         identifier: "PeeringServicePropertiesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           peeringServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(160, __c10, 0)),
           location: S.String,
-          properties: S.optional(__S(148, __c18, 4)),
-          sku: S.optional(__S(41, __c5, 1)),
+          properties: S.optional(__S(832, __c52, 0)),
+          sku: S.optional(__S(226, __c14, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3931,7 +3965,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PeeringServicesCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3946,7 +3984,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PeeringServicesInitializeConnectionMonitorRequest",
       });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
@@ -3955,18 +3997,14 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PeeringServicePrefixPropertiesInput",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           peeringServiceName: S.String.pipe(T.Label()),
           prefixName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(151, __c18, 7)),
+          properties: S.optional(__S(864, __c54, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3978,19 +4016,42 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PrefixesCreateOrUpdateRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(46, __c5, 6)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(290, __c18, 2)),
         }),
       ).annotate({
         identifier: "PrefixesCreateOrUpdateResponse",
       });
-    case 2:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          peeringName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeletePeeringRequest" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           asn: S.optional(S.Number),
@@ -3998,14 +4059,14 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PeeringRegisteredAsnPropertiesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           peeringName: S.String.pipe(T.Label()),
           registeredAsnName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(154, __c19, 2)),
+          properties: S.optional(__S(896, __c56, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4017,19 +4078,23 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "RegisteredAsnsCreateOrUpdateRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(49, __c6, 1)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(336, __c21, 0)),
         }),
       ).annotate({
         identifier: "RegisteredAsnsCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
@@ -4037,14 +4102,14 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PeeringRegisteredPrefixPropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           peeringName: S.String.pipe(T.Label()),
           registeredPrefixName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(157, __c19, 5)),
+          properties: S.optional(__S(912, __c57, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4056,13 +4121,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "RegisteredPrefixesCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           peeringName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4074,7 +4143,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "UpdatePeeringRequest" });
   }
 }
-function __c20(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4082,7 +4151,7 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           peeringServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4094,7 +4163,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "UpdatePeeringServiceRequest",
       });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4114,7 +4187,113 @@ function __c20(j: number): any {
       });
   }
 }
-
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          peeringServiceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePeeringServiceRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          peeringServiceName: S.String.pipe(T.Label()),
+          prefixName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes/{prefixName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeletePrefixRequest" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          peeringName: S.String.pipe(T.Label()),
+          registeredAsnName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredAsns/{registeredAsnName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRegisteredAsnRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          peeringName: S.String.pipe(T.Label()),
+          registeredPrefixName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes/{registeredPrefixName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRegisteredPrefixRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          peeringServiceName: S.String.pipe(T.Label()),
+          connectionMonitorTestName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests/{connectionMonitorTestName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConnectionMonitorTestRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1007,8 +1007,8 @@ export const createEvent: API.OperationMethod<
   CreateEventError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateEventRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateEventResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<CreateEventRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<CreateEventResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1027,14 +1027,14 @@ export const createInstallationsByIntegrationConfigurationIdResourcesByResourceI
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4,
-    __c0,
-    4,
+    450,
+    __c28,
+    2,
   ) as any as S.Schema<CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest>,
   output: __S(
-    5,
-    __c0,
-    5,
+    464,
+    __c29,
+    0,
   ) as any as S.Schema<CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
@@ -1053,8 +1053,16 @@ export const deleteInstallationResourceExperimentationItem: API.OperationMethod<
   DeleteInstallationResourceExperimentationItemError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteInstallationResourceExperimentationItemRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteInstallationResourceExperimentationItemResponse>,
+  input: __S(
+    480,
+    __c30,
+    0,
+  ) as any as S.Schema<DeleteInstallationResourceExperimentationItemRequest>,
+  output: __S(
+    496,
+    __c31,
+    0,
+  ) as any as S.Schema<DeleteInstallationResourceExperimentationItemResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1068,8 +1076,8 @@ export const deleteIntegrationResource: API.OperationMethod<
   DeleteIntegrationResourceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteIntegrationResourceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteIntegrationResourceResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<DeleteIntegrationResourceRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteIntegrationResourceResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1083,8 +1091,8 @@ export const finalizeInstallation: API.OperationMethod<
   FinalizeInstallationError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<FinalizeInstallationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FinalizeInstallationResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<FinalizeInstallationRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<FinalizeInstallationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1098,8 +1106,8 @@ export const getAccountInfo: API.OperationMethod<
   GetAccountInfoError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetAccountInfoRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetAccountInfoResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetAccountInfoRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetAccountInfoResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1118,14 +1126,14 @@ export const getInstallationResourceExperimentationGlobalConfig: API.OperationMe
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    13,
+    16,
     __c1,
-    5,
+    0,
   ) as any as S.Schema<GetInstallationResourceExperimentationGlobalConfigRequest>,
   output: __S(
-    15,
+    17,
     __c1,
-    7,
+    1,
   ) as any as S.Schema<GetInstallationResourceExperimentationGlobalConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
@@ -1140,8 +1148,8 @@ export const getIntegrationResource: API.OperationMethod<
   GetIntegrationResourceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetIntegrationResourceRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetIntegrationResourceResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetIntegrationResourceRequest>,
+  output: __S(61, __c3, 13) as any as S.Schema<GetIntegrationResourceResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1155,8 +1163,8 @@ export const getIntegrationResources: API.OperationMethod<
   GetIntegrationResourcesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetIntegrationResourcesRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetIntegrationResourcesResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetIntegrationResourcesRequest>,
+  output: __S(106, __c6, 10) as any as S.Schema<GetIntegrationResourcesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1170,8 +1178,8 @@ export const getInvoice: API.OperationMethod<
   GetInvoiceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetInvoiceRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetInvoiceResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetInvoiceRequest>,
+  output: __S(118, __c7, 6) as any as S.Schema<GetInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1185,8 +1193,8 @@ export const getMember: API.OperationMethod<
   GetMemberError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetMemberRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetMemberResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetMemberRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<GetMemberResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1205,14 +1213,14 @@ export const headInstallationResourceExperimentationGlobalConfig: API.OperationM
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    52,
-    __c6,
-    4,
+    144,
+    __c9,
+    0,
   ) as any as S.Schema<HeadInstallationResourceExperimentationGlobalConfigRequest>,
   output: __S(
-    53,
-    __c6,
-    5,
+    145,
+    __c9,
+    1,
   ) as any as S.Schema<HeadInstallationResourceExperimentationGlobalConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
@@ -1233,8 +1241,8 @@ export const importResource: API.OperationMethod<
   ImportResourceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ImportResourceRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ImportResourceResponse>,
+  input: __S(166, __c10, 6) as any as S.Schema<ImportResourceRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<ImportResourceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1254,14 +1262,14 @@ export const replaceInstallationsByIntegrationConfigurationIdResourcesByResource
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    70,
-    __c8,
-    6,
+    225,
+    __c14,
+    1,
   ) as any as S.Schema<ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest>,
   output: __S(
-    71,
-    __c8,
-    7,
+    226,
+    __c14,
+    2,
   ) as any as S.Schema<ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
@@ -1281,8 +1289,8 @@ export const revokeInstallationCredential: API.OperationMethod<
   RevokeInstallationCredentialError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<RevokeInstallationCredentialRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<RevokeInstallationCredentialResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<RevokeInstallationCredentialRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<RevokeInstallationCredentialResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1301,8 +1309,8 @@ export const rotateInstallationCredential: API.OperationMethod<
   RotateInstallationCredentialError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<RotateInstallationCredentialRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<RotateInstallationCredentialResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<RotateInstallationCredentialRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<RotateInstallationCredentialResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1316,8 +1324,8 @@ export const submitBillingData: API.OperationMethod<
   SubmitBillingDataError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<SubmitBillingDataRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SubmitBillingDataResponse>,
+  input: __S(274, __c17, 2) as any as S.Schema<SubmitBillingDataRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<SubmitBillingDataResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1331,8 +1339,8 @@ export const submitInvoice: API.OperationMethod<
   SubmitInvoiceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<SubmitInvoiceRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<SubmitInvoiceResponse>,
+  input: __S(309, __c19, 5) as any as S.Schema<SubmitInvoiceRequest>,
+  output: __S(310, __c19, 6) as any as S.Schema<SubmitInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1346,8 +1354,8 @@ export const submitPrepaymentBalances: API.OperationMethod<
   SubmitPrepaymentBalancesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<SubmitPrepaymentBalancesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SubmitPrepaymentBalancesResponse>,
+  input: __S(322, __c20, 2) as any as S.Schema<SubmitPrepaymentBalancesRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<SubmitPrepaymentBalancesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1361,8 +1369,8 @@ export const updateInstallation: API.OperationMethod<
   UpdateInstallationError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<UpdateInstallationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateInstallationResponse>,
+  input: __S(337, __c21, 1) as any as S.Schema<UpdateInstallationRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<UpdateInstallationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1381,14 +1389,14 @@ export const updateInstallationsByIntegrationConfigurationIdResourcesByResourceI
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    92,
-    __c11,
-    4,
+    352,
+    __c22,
+    0,
   ) as any as S.Schema<UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest>,
   output: __S(
-    5,
-    __c0,
-    5,
+    464,
+    __c29,
+    0,
   ) as any as S.Schema<UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
@@ -1403,8 +1411,8 @@ export const updateInvoice: API.OperationMethod<
   UpdateInvoiceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<UpdateInvoiceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateInvoiceResponse>,
+  input: __S(369, __c23, 1) as any as S.Schema<UpdateInvoiceRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<UpdateInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1424,8 +1432,8 @@ export const updateResource: API.OperationMethod<
   UpdateResourceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<UpdateResourceRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateResourceResponse>,
+  input: __S(389, __c24, 5) as any as S.Schema<UpdateResourceRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<UpdateResourceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1445,8 +1453,8 @@ export const updateResourceSecretsById: API.OperationMethod<
   UpdateResourceSecretsByIdError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<UpdateResourceSecretsByIdRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateResourceSecretsByIdResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<UpdateResourceSecretsByIdRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<UpdateResourceSecretsByIdResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1459,117 +1467,6 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
-          event: S.Unknown,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/installations/{integrationConfigurationId}/events",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateEventRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateEventResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          slug: S.String,
-          origin: S.String,
-          category: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          isArchived: S.optional(S.Boolean),
-          createdAt: S.optional(S.Number),
-          updatedAt: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          integrationConfigurationId: S.String.pipe(T.Label()),
-          resourceId: S.String.pipe(T.Label()),
-          items: __S(3, __c0, 3),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier:
-          "CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          integrationConfigurationId: S.String.pipe(T.Label()),
-          resourceId: S.String.pipe(T.Label()),
-          itemId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteInstallationResourceExperimentationItemRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteInstallationResourceExperimentationItemResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          integrationConfigurationId: S.String.pipe(T.Label()),
-          resourceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/installations/{integrationConfigurationId}/resources/{resourceId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIntegrationResourceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          integrationConfigurationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/installations/{integrationConfigurationId}/billing/finalize",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "FinalizeInstallationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          integrationConfigurationId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1578,7 +1475,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountInfoRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           email: S.String,
@@ -1587,15 +1484,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAccountInfoResponseContact",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          contact: S.NullOr(__S(11, __c1, 3)),
+          contact: S.NullOr(__S(1, __c0, 1)),
           name: S.optional(S.String),
           url: S.String,
         }),
       ).annotate({ identifier: "GetAccountInfoResponse" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
@@ -1610,13 +1511,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetInstallationResourceExperimentationGlobalConfigRequest",
       });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           digest: S.String,
-          items: __S(14, __c1, 6),
+          items: __S(32, __c2, 0),
           purpose: S.optional(S.String),
           updatedAt: S.Number,
         }),
@@ -1626,6 +1525,12 @@ function __c1(j: number): any {
   }
 }
 function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1645,46 +1550,38 @@ function __c2(j: number): any {
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 2:
-      return S.Array(S.String);
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(__S(18, __c2, 2)),
-          role: S.optional(__S(18, __c2, 2)),
+          environment: S.optional(__S(80, __c5, 0)),
+          role: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          claims: __S(17, __c2, 1),
-          when: S.optional(__S(19, __c2, 3)),
+          claims: __S(49, __c3, 1),
+          when: S.optional(__S(50, __c3, 2)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourceResponseCustomClaimsClaimRulesItem",
       });
+    case 4:
+      return S.Array(__S(51, __c3, 3));
     case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          claimRules: S.optional(__S(21, __c2, 5)),
+          claimRules: S.optional(__S(52, __c3, 4)),
           defaultRole: S.optional(S.String),
-          roles: S.optional(__S(22, __c2, 6)),
+          roles: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourceResponseCustomClaims",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.Record(S.String, S.Unknown);
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           href: S.optional(S.String),
@@ -1695,7 +1592,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetIntegrationResourceResponseNotification",
       });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           target: S.String,
@@ -1704,17 +1601,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItem",
       });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(56, __c3, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          appUrls: S.optional(__S(27, __c3, 3)),
+          appUrls: S.optional(__S(57, __c3, 9)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourceResponseProtocolSettingsAuthentication",
       });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.optional(S.String),
@@ -1723,27 +1620,27 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetIntegrationResourceResponseProtocolSettingsExperimentation",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          authentication: S.optional(__S(28, __c3, 4)),
-          experimentation: S.optional(__S(29, __c3, 5)),
+          authentication: S.optional(__S(58, __c3, 10)),
+          experimentation: S.optional(__S(59, __c3, 11)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourceResponseProtocolSettings",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           billingPlanId: S.optional(S.String),
-          customClaims: S.optional(__S(23, __c2, 7)),
+          customClaims: S.optional(__S(53, __c3, 5)),
           id: S.String,
           internalId: S.String,
-          metadata: S.optional(__S(24, __c3, 0)),
+          metadata: S.optional(__S(54, __c3, 6)),
           name: S.String,
-          notification: S.optional(__S(25, __c3, 1)),
+          notification: S.optional(__S(55, __c3, 7)),
           productId: S.String,
-          protocolSettings: S.optional(__S(30, __c3, 6)),
+          protocolSettings: S.optional(__S(60, __c3, 12)),
           status: S.optional(S.String),
         }),
       ).annotate({
@@ -1752,6 +1649,18 @@ function __c3(j: number): any {
   }
 }
 function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1791,11 +1700,11 @@ function __c4(j: number): any {
           "GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItem",
       });
     case 4:
-      return S.Array(__S(35, __c4, 3));
+      return S.Array(__S(99, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          appUrls: S.optional(__S(36, __c4, 4)),
+          appUrls: S.optional(__S(100, __c6, 4)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication",
@@ -1815,43 +1724,43 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          authentication: S.optional(__S(37, __c4, 5)),
-          experimentation: S.optional(__S(38, __c4, 6)),
+          authentication: S.optional(__S(101, __c6, 5)),
+          experimentation: S.optional(__S(102, __c6, 6)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourcesResponseResourcesItemProtocolSettings",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           billingPlanId: S.optional(S.String),
           internalId: S.String,
-          metadata: S.optional(__S(33, __c4, 1)),
+          metadata: S.optional(__S(97, __c6, 1)),
           name: S.String,
-          notification: S.optional(__S(34, __c4, 2)),
+          notification: S.optional(__S(98, __c6, 2)),
           partnerId: S.String,
           productId: S.String,
-          protocolSettings: S.optional(__S(39, __c4, 7)),
+          protocolSettings: S.optional(__S(103, __c6, 7)),
           status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetIntegrationResourcesResponseResourcesItem",
       });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(104, __c6, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          resources: __S(41, __c5, 1),
+          resources: __S(105, __c6, 9),
         }),
       ).annotate({
         identifier: "GetIntegrationResourcesResponse",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
@@ -1864,7 +1773,7 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetInvoiceRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           amount: S.String,
@@ -1878,9 +1787,9 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetInvoiceResponseDiscountsItem",
       });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           billingPlanId: S.String,
@@ -1897,32 +1806,28 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetInvoiceResponseItemsItem",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(115, __c7, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           end: S.String,
           start: S.String,
         }),
       ).annotate({ identifier: "GetInvoiceResponsePeriod" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           created: S.String,
-          discounts: S.optional(__S(45, __c5, 5)),
+          discounts: S.optional(__S(114, __c7, 2)),
           externalId: S.optional(S.String),
           invoiceDate: S.String,
           invoiceId: S.String,
           invoiceNumber: S.optional(S.String),
-          items: __S(47, __c5, 7),
+          items: __S(116, __c7, 4),
           memo: S.optional(S.String),
           paidAt: S.optional(S.String),
-          period: __S(48, __c6, 0),
+          period: __S(117, __c7, 5),
           refundedAt: S.optional(S.String),
           refundReason: S.optional(S.String),
           refundTotal: S.optional(S.String),
@@ -1932,7 +1837,11 @@ function __c6(j: number): any {
           updated: S.String,
         }),
       ).annotate({ identifier: "GetInvoiceResponse" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
@@ -1945,7 +1854,7 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMemberRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           globalUserId: S.optional(S.String),
@@ -1954,7 +1863,11 @@ function __c6(j: number): any {
           userEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetMemberResponse" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
@@ -1969,28 +1882,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "HeadInstallationResourceExperimentationGlobalConfigRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "HeadInstallationResourceExperimentationGlobalConfigResponse",
       });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.String,
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ImportResourceRequestBillingPlanDetailsItem",
-      });
   }
 }
-function __c7(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1999,14 +1899,14 @@ function __c7(j: number): any {
           description: S.optional(S.String),
           paymentMethodRequired: S.optional(S.Boolean),
           cost: S.optional(S.String),
-          details: S.optional(__S(56, __c7, 0)),
-          highlightedDetails: S.optional(__S(56, __c7, 0)),
+          details: S.optional(__S(177, __c11, 1)),
+          highlightedDetails: S.optional(__S(177, __c11, 1)),
           effectiveDate: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ImportResourceRequestBillingPlan",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           level: S.String,
@@ -2017,7 +1917,93 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ImportResourceRequestNotification",
       });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          when: S.optional(__S(193, __c12, 1)),
+          claims: __S(162, __c10, 2),
+        }),
+      ).annotate({
+        identifier: "ImportResourceRequestCustomClaimsClaimRulesItem",
+      });
+    case 4:
+      return S.Array(__S(163, __c10, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          roles: S.optional(__S(64, __c4, 0)),
+          defaultRole: S.optional(S.String),
+          claimRules: S.optional(__S(164, __c10, 4)),
+        }),
+      ).annotate({
+        identifier: "ImportResourceRequestCustomClaims",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          integrationConfigurationId: S.String.pipe(T.Label()),
+          resourceId: S.String.pipe(T.Label()),
+          ownership: S.optional(S.String),
+          productId: S.String,
+          name: S.String,
+          status: S.String,
+          metadata: S.optional(__S(192, __c12, 0)),
+          billingPlan: S.optional(__S(160, __c10, 0)),
+          notification: S.optional(__S(161, __c10, 1)),
+          extras: S.optional(__S(192, __c12, 0)),
+          secrets: S.optional(__S(210, __c13, 2)),
+          customClaims: S.optional(__S(165, __c10, 5)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/installations/{integrationConfigurationId}/resources/{resourceId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ImportResourceRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.String,
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ImportResourceRequestBillingPlanDetailsItem",
+      });
+    case 1:
+      return S.Array(__S(176, __c11, 0));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(__S(64, __c4, 0)),
+          environment: S.optional(__S(80, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "ImportResourceRequestCustomClaimsClaimRulesItemWhen",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({ identifier: "ImportResourceResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           development: S.optional(S.String),
@@ -2027,92 +2013,31 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ImportResourceRequestSecretsItemEnvironmentOverrides",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           value: S.String,
           prefix: S.optional(S.String),
-          environmentOverrides: S.optional(__S(59, __c7, 3)),
+          environmentOverrides: S.optional(__S(208, __c13, 0)),
         }),
       ).annotate({
         identifier: "ImportResourceRequestSecretsItem",
       });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(__S(22, __c2, 6)),
-          environment: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "ImportResourceRequestCustomClaimsClaimRulesItemWhen",
-      });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
+    case 2:
+      return S.Array(__S(209, __c13, 1));
   }
 }
-function __c8(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          when: S.optional(__S(62, __c7, 6)),
-          claims: __S(63, __c7, 7),
-        }),
-      ).annotate({
-        identifier: "ImportResourceRequestCustomClaimsClaimRulesItem",
-      });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          roles: S.optional(__S(22, __c2, 6)),
-          defaultRole: S.optional(S.String),
-          claimRules: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "ImportResourceRequestCustomClaims",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          integrationConfigurationId: S.String.pipe(T.Label()),
-          resourceId: S.String.pipe(T.Label()),
-          ownership: S.optional(S.String),
-          productId: S.String,
-          name: S.String,
-          status: S.String,
-          metadata: S.optional(__S(54, __c6, 6)),
-          billingPlan: S.optional(__S(57, __c7, 1)),
-          notification: S.optional(__S(58, __c7, 2)),
-          extras: S.optional(__S(54, __c6, 6)),
-          secrets: S.optional(__S(61, __c7, 5)),
-          customClaims: S.optional(__S(66, __c8, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/installations/{integrationConfigurationId}/resources/{resourceId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ImportResourceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({ identifier: "ImportResourceResponse" });
-    case 5:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           resourceId: S.String.pipe(T.Label()),
-          data: __S(69, __c8, 5),
+          data: __S(224, __c14, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2124,11 +2049,11 @@ function __c8(j: number): any {
         identifier:
           "ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           digest: S.String,
-          items: __S(14, __c1, 6),
+          items: __S(32, __c2, 0),
           purpose: S.optional(S.String),
           updatedAt: S.Number,
         }),
@@ -2138,7 +2063,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2166,7 +2091,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "RevokeInstallationCredentialResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
@@ -2182,7 +2111,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "RotateInstallationCredentialRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           access_token: S.String.pipe(T.SensitiveValue({})),
@@ -2193,16 +2122,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "RotateInstallationCredentialResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.String,
-          end: S.String,
-        }),
-      ).annotate({
-        identifier: "SubmitBillingDataRequestPeriod",
-      });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.optional(S.String),
@@ -2216,17 +2140,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SubmitBillingDataRequestUsageItem",
       });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           timestamp: S.String,
           eod: S.String,
-          period: __S(76, __c9, 4),
+          period: __S(288, __c18, 0),
           billing: S.Unknown,
-          usage: __S(78, __c9, 6),
+          usage: __S(273, __c17, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2237,7 +2161,20 @@ function __c9(j: number): any {
       ).annotate({ identifier: "SubmitBillingDataRequest" });
   }
 }
-function __c10(j: number): any {
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.String,
+          end: S.String,
+        }),
+      ).annotate({
+        identifier: "SubmitBillingDataRequestPeriod",
+      });
+  }
+}
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2257,7 +2194,7 @@ function __c10(j: number): any {
         identifier: "SubmitInvoiceRequestItemsItem",
       });
     case 1:
-      return S.Array(__S(80, __c10, 0));
+      return S.Array(__S(304, __c19, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2273,7 +2210,7 @@ function __c10(j: number): any {
         identifier: "SubmitInvoiceRequestDiscountsItem",
       });
     case 3:
-      return S.Array(__S(82, __c10, 2));
+      return S.Array(__S(306, __c19, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2288,11 +2225,11 @@ function __c10(j: number): any {
           externalId: S.optional(S.String),
           invoiceDate: S.String,
           memo: S.optional(S.String),
-          period: __S(76, __c9, 4),
-          items: __S(81, __c10, 1),
-          discounts: S.optional(__S(83, __c10, 3)),
+          period: __S(288, __c18, 0),
+          items: __S(305, __c19, 1),
+          discounts: S.optional(__S(307, __c19, 3)),
           final: S.optional(S.Boolean),
-          test: S.optional(__S(84, __c10, 4)),
+          test: S.optional(__S(308, __c19, 4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2306,10 +2243,14 @@ function __c10(j: number): any {
         S.Struct({
           invoiceId: S.optional(S.String),
           test: S.optional(S.Boolean),
-          validationErrors: S.optional(__S(22, __c2, 6)),
+          validationErrors: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "SubmitInvoiceResponse" });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.optional(S.String),
@@ -2320,18 +2261,14 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "SubmitPrepaymentBalancesRequestBalancesItem",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
     case 1:
+      return S.Array(__S(320, __c20, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           timestamp: S.String,
-          balances: __S(88, __c11, 0),
+          balances: __S(321, __c20, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2342,7 +2279,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SubmitPrepaymentBalancesRequest",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2351,20 +2292,20 @@ function __c11(j: number): any {
           description: S.optional(S.String),
           paymentMethodRequired: S.optional(S.Boolean),
           cost: S.optional(S.String),
-          details: S.optional(__S(56, __c7, 0)),
-          highlightedDetails: S.optional(__S(56, __c7, 0)),
+          details: S.optional(__S(177, __c11, 1)),
+          highlightedDetails: S.optional(__S(177, __c11, 1)),
           effectiveDate: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateInstallationRequestBillingPlan",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           status: S.optional(S.String),
           externalId: S.optional(S.String),
-          billingPlan: S.optional(__S(90, __c11, 2)),
+          billingPlan: S.optional(__S(336, __c21, 0)),
           notification: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -2376,7 +2317,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateInstallationRequest",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
@@ -2401,7 +2346,11 @@ function __c11(j: number): any {
         identifier:
           "UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -2409,12 +2358,12 @@ function __c11(j: number): any {
           total: S.String,
         }),
       ).annotate({ identifier: "UpdateInvoiceRequestBody" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           invoiceId: S.String.pipe(T.Label()),
-          body: __S(93, __c11, 5).pipe(T.HttpBody()),
+          body: __S(368, __c23, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2423,7 +2372,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateInvoiceRequest" });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2432,41 +2385,37 @@ function __c11(j: number): any {
           description: S.optional(S.String),
           paymentMethodRequired: S.optional(S.Boolean),
           cost: S.optional(S.String),
-          details: S.optional(__S(56, __c7, 0)),
-          highlightedDetails: S.optional(__S(56, __c7, 0)),
+          details: S.optional(__S(177, __c11, 1)),
+          highlightedDetails: S.optional(__S(177, __c11, 1)),
           effectiveDate: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateResourceRequestBillingPlan",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          when: S.optional(__S(62, __c7, 6)),
-          claims: __S(96, __c12, 0),
+          when: S.optional(__S(193, __c12, 1)),
+          claims: __S(385, __c24, 1),
         }),
       ).annotate({
         identifier: "UpdateResourceRequestCustomClaimsClaimRulesItem",
       });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
     case 3:
+      return S.Array(__S(386, __c24, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(__S(22, __c2, 6)),
+          roles: S.optional(__S(64, __c4, 0)),
           defaultRole: S.optional(S.String),
-          claimRules: S.optional(__S(98, __c12, 2)),
+          claimRules: S.optional(__S(387, __c24, 3)),
         }),
       ).annotate({
         identifier: "UpdateResourceRequestCustomClaims",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
@@ -2474,12 +2423,12 @@ function __c12(j: number): any {
           ownership: S.optional(S.String),
           name: S.optional(S.String),
           status: S.optional(S.String),
-          metadata: S.optional(__S(54, __c6, 6)),
-          billingPlan: S.optional(__S(95, __c11, 7)),
+          metadata: S.optional(__S(192, __c12, 0)),
+          billingPlan: S.optional(__S(384, __c24, 0)),
           notification: S.optional(S.Unknown),
-          extras: S.optional(__S(54, __c6, 6)),
+          extras: S.optional(__S(192, __c12, 0)),
           secrets: S.optional(S.Unknown),
-          customClaims: S.optional(__S(99, __c12, 3)),
+          customClaims: S.optional(__S(388, __c24, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2488,12 +2437,16 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateResourceRequest" });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           resourceId: S.String.pipe(T.Label()),
-          secrets: __S(61, __c7, 5),
+          secrets: __S(210, __c13, 2),
           partial: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -2507,7 +2460,145 @@ function __c12(j: number): any {
       });
   }
 }
-
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          integrationConfigurationId: S.String.pipe(T.Label()),
+          event: S.Unknown,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/installations/{integrationConfigurationId}/events",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateEventRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateEventResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          slug: S.String,
+          origin: S.String,
+          category: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          isArchived: S.optional(S.Boolean),
+          createdAt: S.optional(S.Number),
+          updatedAt: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem",
+      });
+    case 1:
+      return S.Array(__S(448, __c28, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          integrationConfigurationId: S.String.pipe(T.Label()),
+          resourceId: S.String.pipe(T.Label()),
+          items: __S(449, __c28, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier:
+          "CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          integrationConfigurationId: S.String.pipe(T.Label()),
+          resourceId: S.String.pipe(T.Label()),
+          itemId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteInstallationResourceExperimentationItemRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteInstallationResourceExperimentationItemResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          integrationConfigurationId: S.String.pipe(T.Label()),
+          resourceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/installations/{integrationConfigurationId}/resources/{resourceId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIntegrationResourceRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          integrationConfigurationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/installations/{integrationConfigurationId}/billing/finalize",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "FinalizeInstallationRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -288,8 +288,8 @@ export const contextLayerEnableCreate: API.OperationMethod<
   ContextLayerEnableCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ContextLayerEnableCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ContextLayerStatus>,
+  input: __S(56, __c7, 0) as any as S.Schema<ContextLayerEnableCreateRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ContextLayerStatus>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -303,8 +303,8 @@ export const contextLayerExportRetrieve: API.OperationMethod<
   ContextLayerExportRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ContextLayerExportRetrieveRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<WikiExport>,
+  input: __S(72, __c9, 0) as any as S.Schema<ContextLayerExportRetrieveRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<WikiExport>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -318,8 +318,8 @@ export const contextLayerProposalsApplyCreate: API.OperationMethod<
   ContextLayerProposalsApplyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ContextLayerProposalsApplyCreateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ContextLayerStatus>,
+  input: __S(80, __c10, 0) as any as S.Schema<ContextLayerProposalsApplyCreateRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ContextLayerStatus>,
   errors: [BadRequest, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -333,8 +333,8 @@ export const createContextLayerCommit: API.OperationMethod<
   CreateContextLayerCommitError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateContextLayerCommitRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ContextLayerStatus>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateContextLayerCommitRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ContextLayerStatus>,
   errors: [BadRequest, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -348,8 +348,8 @@ export const getContextLayerChannelPage: API.OperationMethod<
   GetContextLayerChannelPageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetContextLayerChannelPageRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ChannelWikiPage>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetContextLayerChannelPageRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<ChannelWikiPage>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -363,8 +363,8 @@ export const getContextLayerDream: API.OperationMethod<
   GetContextLayerDreamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetContextLayerDreamRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DreamRunDetail>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetContextLayerDreamRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<DreamRunDetail>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -378,8 +378,8 @@ export const getContextLayerPage: API.OperationMethod<
   GetContextLayerPageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetContextLayerPageRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WikiPage>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetContextLayerPageRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<WikiPage>,
   errors: [BadRequest, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -393,8 +393,8 @@ export const getContextLayerStatus: API.OperationMethod<
   GetContextLayerStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetContextLayerStatusRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ContextLayerStatus>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetContextLayerStatusRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ContextLayerStatus>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -423,8 +423,8 @@ export const getContextLayerWikiReport: API.OperationMethod<
   GetContextLayerWikiReportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetContextLayerWikiReportRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<WikiHealthReport>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetContextLayerWikiReportRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<WikiHealthReport>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -438,8 +438,8 @@ export const listContextLayerDreams: API.OperationMethod<
   ListContextLayerDreamsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListContextLayerDreamsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DreamRunList>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListContextLayerDreamsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<DreamRunList>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -453,8 +453,8 @@ export const listContextLayerProposals: API.OperationMethod<
   ListContextLayerProposalsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListContextLayerProposalsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<PaginatedWikiPageProposalList>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListContextLayerProposalsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<PaginatedWikiPageProposalList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -468,8 +468,8 @@ export const updateContextLayerPage: API.OperationMethod<
   UpdateContextLayerPageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UpdateContextLayerPageRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ContextLayerStatus>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateContextLayerPageRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ContextLayerStatus>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -479,151 +479,6 @@ export const updateContextLayerPage: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/context_layer/enable/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ContextLayerEnableCreateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          head_sha: S.String,
-        }),
-      ).annotate({ identifier: "ContextLayerStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/organizations/{organization_id}/context_layer/export/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ContextLayerExportRetrieveRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          head_sha: S.String,
-        }),
-      ).annotate({ identifier: "WikiExport" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          proposal_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/context_layer/proposals/{proposal_id}/apply/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ContextLayerProposalsApplyCreateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          bundle: S.String,
-          summary: S.optional(S.String),
-          branch: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/context_layer/commits/",
-            code: 200,
-            contentType: "form-urlencoded",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateContextLayerCommitRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          channel_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/organizations/{organization_id}/context_layer/channel-pages/{channel_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetContextLayerChannelPageRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          exists: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ChannelWikiPage" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          sha: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/organizations/{organization_id}/context_layer/dreams/{sha}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetContextLayerDreamRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sha: S.String,
-          date: S.String,
-          committed_at: S.String,
-          summary: S.String,
-          pages_added: S.Number,
-          pages_modified: S.Number,
-          pages_deleted: S.Number,
-        }),
-      ).annotate({ identifier: "DreamRun" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          status: S.String,
-          patch: S.String,
-          truncated: S.Boolean,
-        }),
-      ).annotate({ identifier: "DreamFileDiff" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          run: __S(9, __c1, 1),
-          files: __S(11, __c1, 3),
-        }),
-      ).annotate({ identifier: "DreamRunDetail" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -641,7 +496,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetContextLayerPageRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           path: S.String,
@@ -654,7 +509,11 @@ function __c1(j: number): any {
           complete: S.Boolean,
         }),
       ).annotate({ identifier: "WikiPage" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -695,7 +554,11 @@ function __c2(j: number): any {
           paths: __S(17, __c2, 1),
         }),
       ).annotate({ identifier: "WikiTree" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -709,7 +572,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetContextLayerWikiReportRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           category: S.String,
@@ -717,16 +580,20 @@ function __c2(j: number): any {
           message: S.String,
         }),
       ).annotate({ identifier: "WikiHealthFinding" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           head_sha: S.String,
-          findings: __S(21, __c2, 5),
+          findings: __S(26, __c3, 2),
         }),
       ).annotate({ identifier: "WikiHealthReport" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -740,18 +607,14 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListContextLayerDreamsRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           run_status: S.String,
           started_at: S.String,
         }),
       ).annotate({ identifier: "ActiveDreamRun" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           task_url: S.String,
@@ -759,18 +622,22 @@ function __c3(j: number): any {
           started_at: S.String,
         }),
       ).annotate({ identifier: "UnpublishedDreamRun" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
     case 3:
+      return S.Array(__S(112, __c14, 0));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           head_sha: S.String,
-          active_run: S.NullOr(__S(24, __c3, 0)),
-          unpublished_run: S.NullOr(__S(25, __c3, 1)),
-          dreams: __S(26, __c3, 2),
+          active_run: S.NullOr(__S(33, __c4, 1)),
+          unpublished_run: S.NullOr(__S(34, __c4, 2)),
+          dreams: __S(35, __c4, 3),
         }),
       ).annotate({ identifier: "DreamRunList" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -786,7 +653,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListContextLayerProposalsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -798,22 +665,22 @@ function __c3(j: number): any {
           created_at: S.String,
         }),
       ).annotate({ identifier: "WikiPageProposal" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(30, __c3, 6),
+          results: __S(42, __c5, 2),
         }),
       ).annotate({
         identifier: "PaginatedWikiPageProposalList",
       });
   }
 }
-function __c4(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -834,7 +701,179 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/context_layer/enable/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ContextLayerEnableCreateRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          head_sha: S.String,
+        }),
+      ).annotate({ identifier: "ContextLayerStatus" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/organizations/{organization_id}/context_layer/export/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ContextLayerExportRetrieveRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          head_sha: S.String,
+        }),
+      ).annotate({ identifier: "WikiExport" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          proposal_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/context_layer/proposals/{proposal_id}/apply/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ContextLayerProposalsApplyCreateRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          bundle: S.String,
+          summary: S.optional(S.String),
+          branch: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/context_layer/commits/",
+            code: 200,
+            contentType: "form-urlencoded",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateContextLayerCommitRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          channel_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/organizations/{organization_id}/context_layer/channel-pages/{channel_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetContextLayerChannelPageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          exists: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ChannelWikiPage" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          sha: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/organizations/{organization_id}/context_layer/dreams/{sha}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetContextLayerDreamRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          status: S.String,
+          patch: S.String,
+          truncated: S.Boolean,
+        }),
+      ).annotate({ identifier: "DreamFileDiff" });
+    case 2:
+      return S.Array(__S(105, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          run: __S(112, __c14, 0),
+          files: __S(106, __c13, 2),
+        }),
+      ).annotate({ identifier: "DreamRunDetail" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sha: S.String,
+          date: S.String,
+          committed_at: S.String,
+          summary: S.String,
+          pages_added: S.Number,
+          pages_modified: S.Number,
+          pages_deleted: S.Number,
+        }),
+      ).annotate({ identifier: "DreamRun" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -904,7 +904,7 @@ export const CreateOuContainer: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateOuContainerRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateOuContainerResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateOuContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -918,8 +918,8 @@ export const DeleteDomainService: API.OperationMethod<
   DeleteDomainServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteDomainServiceRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteDomainServiceResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteDomainServiceRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<DeleteDomainServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -933,8 +933,8 @@ export const DeleteOuContainer: API.OperationMethod<
   DeleteOuContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteOuContainerRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteOuContainerResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteOuContainerRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<DeleteOuContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -948,8 +948,8 @@ export const DomainServicesCreateOrUpdate: API.OperationMethod<
   DomainServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DomainServicesCreateOrUpdateRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<DomainServicesCreateOrUpdateResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DomainServicesCreateOrUpdateRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<DomainServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -963,8 +963,8 @@ export const GetDomainService: API.OperationMethod<
   GetDomainServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetDomainServiceRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetDomainServiceResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetDomainServiceRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<GetDomainServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -978,8 +978,8 @@ export const GetOuContainer: API.OperationMethod<
   GetOuContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetOuContainerRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetOuContainerResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetOuContainerRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<GetOuContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -993,8 +993,8 @@ export const ListDomainServiceByResourceGroup: API.OperationMethod<
   ListDomainServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListDomainServiceByResourceGroupRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<DomainServiceListResult>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListDomainServiceByResourceGroupRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<DomainServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1008,8 +1008,8 @@ export const ListDomainServiceOperations: API.OperationMethod<
   ListDomainServiceOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListDomainServiceOperationsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<OperationEntityListResult>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListDomainServiceOperationsRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<OperationEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1023,8 +1023,8 @@ export const ListDomainServices: API.OperationMethod<
   ListDomainServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListDomainServicesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<DomainServiceListResult>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListDomainServicesRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<DomainServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1038,8 +1038,8 @@ export const ListOuContainer: API.OperationMethod<
   ListOuContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListOuContainerRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<OuContainerListResult>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListOuContainerRequest>,
+  output: __S(675, __c21, 3) as any as S.Schema<OuContainerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1053,8 +1053,8 @@ export const ListOuContainerOperations: API.OperationMethod<
   ListOuContainerOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListOuContainerOperationsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<OperationEntityListResult>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListOuContainerOperationsRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<OperationEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1068,8 +1068,8 @@ export const UpdateDomainService: API.OperationMethod<
   UpdateDomainServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<UpdateDomainServiceRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<UpdateDomainServiceResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<UpdateDomainServiceRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<UpdateDomainServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1083,8 +1083,8 @@ export const UpdateOuContainer: API.OperationMethod<
   UpdateOuContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<UpdateOuContainerRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<UpdateOuContainerResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<UpdateOuContainerRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<UpdateOuContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1113,8 +1113,31 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "CreateOuContainerRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          etag: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(98, __c3, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateOuContainerResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1127,7 +1150,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOuContainerResponseSystemData",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountName: S.optional(S.String),
@@ -1135,37 +1162,26 @@ function __c0(j: number): any {
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "ContainerAccount" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
           domainName: S.optional(S.String),
           deploymentId: S.optional(S.String),
           containerId: S.optional(S.String),
-          accounts: S.optional(__S(4, __c0, 4)),
+          accounts: S.optional(__S(97, __c3, 1)),
           serviceStatus: S.optional(S.String),
           distinguishedName: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "OuContainerProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
-          etag: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateOuContainerResponse",
-      });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1184,13 +1200,112 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteDomainServiceResponse",
       });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Aad/operations",
+            code: 200,
+            apiVersion: "2022-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOuContainerOperationsRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          domainServiceName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(355, __c11, 3)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
+            code: 200,
+            apiVersion: "2022-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDomainServiceRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          etag: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(404, __c12, 20)),
+        }),
+      ).annotate({
+        identifier: "UpdateDomainServiceResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          domainServiceName: S.String.pipe(T.Label()),
+          ouContainerName: S.String.pipe(T.Label()),
+          accountName: S.optional(S.String),
+          spn: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
+            code: 200,
+            apiVersion: "2022-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateOuContainerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          etag: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(98, __c3, 2)),
+        }),
+      ).annotate({
+        identifier: "UpdateOuContainerResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1206,16 +1321,73 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteOuContainerRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          domainServiceName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(355, __c11, 3)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
+            code: 200,
+            apiVersion: "2022-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DomainServicesCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DomainServicesCreateOrUpdateResponseSystemData",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          etag: S.optional(S.String),
+          systemData: S.optional(__S(321, __c10, 1)),
+          properties: S.optional(__S(404, __c12, 20)),
+        }),
+      ).annotate({
+        identifier: "DomainServicesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
           subnetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaSetInput" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(352, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ldaps: S.optional(S.String),
@@ -1224,7 +1396,29 @@ function __c1(j: number): any {
           externalAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "LdapsSettingsInput" });
-    case 5:
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.optional(S.String),
+          replicaSets: S.optional(__S(353, __c11, 1)),
+          ldapsSettings: S.optional(__S(354, __c11, 2)),
+          resourceForestSettings: S.optional(__S(386, __c12, 2)),
+          domainSecuritySettings: S.optional(__S(387, __c12, 3)),
+          domainConfigurationType: S.optional(S.String),
+          sku: S.optional(S.String),
+          filteredSync: S.optional(S.String),
+          syncScope: S.optional(S.String),
+          notificationSettings: S.optional(__S(389, __c12, 5)),
+          configDiagnostics: S.optional(__S(394, __c12, 10)),
+        }),
+      ).annotate({
+        identifier: "DomainServicePropertiesInput",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           trustedDomainFqdn: S.optional(S.String),
@@ -1234,20 +1428,16 @@ function __c1(j: number): any {
           trustPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "ForestTrust" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(__S(14, __c1, 6)),
+          settings: S.optional(__S(385, __c12, 1)),
           resourceForest: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceForestSettings" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ntlmV1: S.optional(S.String),
@@ -1261,104 +1451,48 @@ function __c2(j: number): any {
           channelBinding: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainSecuritySettings" });
-    case 1:
+    case 4:
       return S.Array(S.String);
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           notifyGlobalAdmins: S.optional(S.String),
           notifyDcAdmins: S.optional(S.String),
-          additionalRecipients: S.optional(__S(17, __c2, 1)),
+          additionalRecipients: S.optional(__S(388, __c12, 4)),
         }),
       ).annotate({ identifier: "NotificationSettings" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          descriptionParams: S.optional(__S(17, __c2, 1)),
+          descriptionParams: S.optional(__S(388, __c12, 4)),
         }),
       ).annotate({
         identifier: "ConfigDiagnosticsValidatorResultIssue",
       });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(390, __c12, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           validatorId: S.optional(S.String),
           replicaSetSubnetDisplayName: S.optional(S.String),
           status: S.optional(S.String),
-          issues: S.optional(__S(20, __c2, 4)),
+          issues: S.optional(__S(391, __c12, 7)),
         }),
       ).annotate({
         identifier: "ConfigDiagnosticsValidatorResult",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 9:
+      return S.Array(__S(392, __c12, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           lastExecuted: S.optional(S.String),
-          validatorResults: S.optional(__S(22, __c2, 6)),
+          validatorResults: S.optional(__S(393, __c12, 9)),
         }),
       ).annotate({ identifier: "ConfigDiagnostics" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.optional(S.String),
-          replicaSets: S.optional(__S(11, __c1, 3)),
-          ldapsSettings: S.optional(__S(12, __c1, 4)),
-          resourceForestSettings: S.optional(__S(15, __c1, 7)),
-          domainSecuritySettings: S.optional(__S(16, __c2, 0)),
-          domainConfigurationType: S.optional(S.String),
-          sku: S.optional(S.String),
-          filteredSync: S.optional(S.String),
-          syncScope: S.optional(S.String),
-          notificationSettings: S.optional(__S(18, __c2, 2)),
-          configDiagnostics: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "DomainServicePropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          domainServiceName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
-            code: 200,
-            apiVersion: "2022-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DomainServicesCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DomainServicesCreateOrUpdateResponseSystemData",
-      });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1366,9 +1500,9 @@ function __c3(j: number): any {
           details: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthMonitor" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(395, __c12, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1380,30 +1514,26 @@ function __c3(j: number): any {
           resolutionUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthAlert" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 14:
+      return S.Array(__S(397, __c12, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           replicaSetId: S.optional(S.String),
           location: S.optional(S.String),
           vnetSiteId: S.optional(S.String),
           subnetId: S.optional(S.String),
-          domainControllerIpAddress: S.optional(__S(17, __c2, 1)),
+          domainControllerIpAddress: S.optional(__S(388, __c12, 4)),
           externalAccessIpAddress: S.optional(S.String),
           serviceStatus: S.optional(S.String),
           healthLastEvaluated: S.optional(S.String),
-          healthMonitors: S.optional(__S(28, __c3, 4)),
-          healthAlerts: S.optional(__S(30, __c3, 6)),
+          healthMonitors: S.optional(__S(396, __c12, 12)),
+          healthAlerts: S.optional(__S(398, __c12, 14)),
         }),
       ).annotate({ identifier: "ReplicaSet" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 16:
+      return S.Array(__S(399, __c12, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           ldaps: S.optional(S.String),
@@ -1415,22 +1545,22 @@ function __c4(j: number): any {
           externalAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "LdapsSettings" });
-    case 2:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           completionPercentage: S.optional(S.Number),
           progressMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "MigrationProgress" });
-    case 3:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           oldSubnetId: S.optional(S.String),
           oldVnetSiteId: S.optional(S.String),
-          migrationProgress: S.optional(__S(34, __c4, 2)),
+          migrationProgress: S.optional(__S(402, __c12, 18)),
         }),
       ).annotate({ identifier: "MigrationProperties" });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
@@ -1439,36 +1569,25 @@ function __c4(j: number): any {
           deploymentId: S.optional(S.String),
           syncOwner: S.optional(S.String),
           syncApplicationId: S.optional(S.String),
-          replicaSets: S.optional(__S(32, __c4, 0)),
-          ldapsSettings: S.optional(__S(33, __c4, 1)),
-          resourceForestSettings: S.optional(__S(15, __c1, 7)),
-          domainSecuritySettings: S.optional(__S(16, __c2, 0)),
+          replicaSets: S.optional(__S(400, __c12, 16)),
+          ldapsSettings: S.optional(__S(401, __c12, 17)),
+          resourceForestSettings: S.optional(__S(386, __c12, 2)),
+          domainSecuritySettings: S.optional(__S(387, __c12, 3)),
           domainConfigurationType: S.optional(S.String),
           sku: S.optional(S.String),
           filteredSync: S.optional(S.String),
           syncScope: S.optional(S.String),
-          notificationSettings: S.optional(__S(18, __c2, 2)),
-          migrationProperties: S.optional(__S(35, __c4, 3)),
+          notificationSettings: S.optional(__S(389, __c12, 5)),
+          migrationProperties: S.optional(__S(403, __c12, 19)),
           provisioningState: S.optional(S.String),
-          configDiagnostics: S.optional(__S(23, __c2, 7)),
+          configDiagnostics: S.optional(__S(394, __c12, 10)),
         }),
       ).annotate({ identifier: "DomainServiceProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
-          etag: S.optional(S.String),
-          systemData: S.optional(__S(26, __c3, 2)),
-          properties: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "DomainServicesCreateOrUpdateResponse",
-      });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1483,22 +1602,22 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDomainServiceRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(36, __c4, 4)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(404, __c12, 20)),
         }),
       ).annotate({ identifier: "GetDomainServiceResponse" });
   }
 }
-function __c5(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1523,13 +1642,17 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(5, __c0, 5)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(98, __c3, 2)),
         }),
       ).annotate({ identifier: "GetOuContainerResponse" });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1545,7 +1668,37 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListDomainServiceByResourceGroupRequest",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(32, __c1, 0)),
+          etag: S.optional(S.String),
+          systemData: S.optional(__S(544, __c17, 0)),
+          properties: S.optional(__S(404, __c12, 20)),
+        }),
+      ).annotate({ identifier: "DomainService" });
+    case 1:
+      return S.Array(__S(512, __c16, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(513, __c16, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainServiceListResult" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1556,29 +1709,11 @@ function __c5(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainServiceSystemData" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
-          etag: S.optional(S.String),
-          systemData: S.optional(__S(43, __c5, 3)),
-          properties: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "DomainService" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(45, __c5, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainServiceListResult" });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1593,7 +1728,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1608,22 +1743,26 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(48, __c6, 0)),
+          display: S.optional(__S(608, __c19, 0)),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationEntity" });
     case 2:
-      return S.Array(__S(49, __c6, 1));
+      return S.Array(__S(609, __c19, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(50, __c6, 2)),
+          value: S.optional(__S(610, __c19, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OperationEntityListResult",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1638,7 +1777,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListDomainServicesRequest",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1653,118 +1796,30 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOuContainerRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(32, __c1, 0)),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(43, __c5, 3)),
-          properties: S.optional(__S(5, __c0, 5)),
+          systemData: S.optional(__S(544, __c17, 0)),
+          properties: S.optional(__S(98, __c3, 2)),
         }),
       ).annotate({ identifier: "OuContainer" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(55, __c6, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OuContainerListResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Aad/operations",
-            code: 200,
-            apiVersion: "2022-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOuContainerOperationsRequest",
-      });
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          domainServiceName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}",
-            code: 200,
-            apiVersion: "2022-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDomainServiceRequest",
-      });
+      return S.Array(__S(673, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
-          etag: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(36, __c4, 4)),
+          value: S.optional(__S(674, __c21, 2)),
+          nextLink: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UpdateDomainServiceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          domainServiceName: S.String.pipe(T.Label()),
-          ouContainerName: S.String.pipe(T.Label()),
-          accountName: S.optional(S.String),
-          spn: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer/{ouContainerName}",
-            code: 200,
-            apiVersion: "2022-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateOuContainerRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
-          etag: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "UpdateOuContainerResponse",
-      });
+      ).annotate({ identifier: "OuContainerListResult" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

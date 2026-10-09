@@ -154,7 +154,7 @@ export const getCourseStudent: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetCourseStudentRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CourseStudent>,
+  output: __S(3, __c0, 3) as any as S.Schema<CourseStudent>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -175,8 +175,8 @@ export const listCourseStudent: API.PaginatedOperationMethod<
   CourseStudentListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(5, __c0, 5) as any as S.Schema<ListCourseStudentRequest>,
-    output: __S(9, __c1, 1) as any as S.Schema<ListCourseStudentResponse>,
+    input: __S(16, __c2, 0) as any as S.Schema<ListCourseStudentRequest>,
+    output: __S(20, __c2, 4) as any as S.Schema<ListCourseStudentResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -220,14 +220,6 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          name: S.NullOr(S.String),
-          username: S.String,
-        }),
-      ).annotate({ identifier: "CourseStudentUser" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           completed_lessons_count: S.Number,
           completion_rate: S.Number,
           course: __S(2, __c0, 2),
@@ -235,10 +227,26 @@ function __c0(j: number): any {
           id: S.String,
           last_interaction_at: S.String,
           total_lessons_count: S.Number,
-          user: __S(3, __c0, 3),
+          user: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "CourseStudent" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.NullOr(S.String),
+          username: S.String,
+        }),
+      ).annotate({ identifier: "CourseStudentUser" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -249,7 +257,7 @@ function __c0(j: number): any {
           keyword: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/course_students", code: 200 })),
       ).annotate({ identifier: "ListCourseStudentRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           completed_lessons_count: S.Number,
@@ -258,16 +266,12 @@ function __c0(j: number): any {
           id: S.String,
           last_interaction_at: S.String,
           total_lessons_count: S.Number,
-          user: __S(3, __c0, 3),
+          user: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "CourseStudentListItem" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -276,18 +280,17 @@ function __c1(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(7, __c0, 7),
-          page_info: __S(8, __c1, 0),
+          data: __S(18, __c2, 2),
+          page_info: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "ListCourseStudentResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

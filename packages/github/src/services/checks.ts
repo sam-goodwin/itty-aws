@@ -845,8 +845,8 @@ export type CreateError = GithubOpError;
 /** Create a check run Creates a new check run for a specific commit in a repository. To create a check run, you must use a GitHub App. OAuth apps and authenticated users are not able to create a check suite. In a check suite, GitHub limits the number of check runs with the same name to 1000. Once these check runs exceed 1000, GitHub will start to automatically delete older check runs. > [!NOTE] > The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array. */
 export const create: API.OperationMethod<CreateRequest, CheckRun, CreateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(7, __c0, 7) as any as S.Schema<CreateRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<CheckRun>,
+    input: __S(97, __c6, 1) as any as S.Schema<CreateRequest>,
+    output: __S(163, __c10, 3) as any as S.Schema<CheckRun>,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -860,8 +860,8 @@ export const createSuite: API.OperationMethod<
   CreateSuiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateSuiteRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CheckSuite>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateSuiteRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<CheckSuite>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -871,8 +871,8 @@ export type GetError = GithubOpError;
 /** Get a check run Gets a single check run using its `id`. > [!NOTE] > The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array. OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository. */
 export const get: API.OperationMethod<GetRequest, CheckRun, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(35, __c4, 3) as any as S.Schema<GetRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<CheckRun>,
+    input: __S(224, __c14, 0) as any as S.Schema<GetRequest>,
+    output: __S(163, __c10, 3) as any as S.Schema<CheckRun>,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -886,8 +886,8 @@ export const getSuite: API.OperationMethod<
   GetSuiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetSuiteRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CheckSuite>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetSuiteRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<CheckSuite>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -901,8 +901,8 @@ export const listAnnotations: API.OperationMethod<
   ListAnnotationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListAnnotationsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListAnnotationsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListAnnotationsRequest>,
+  output: __S(259, __c16, 3) as any as S.Schema<ListAnnotationsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -916,8 +916,8 @@ export const listForRef: API.OperationMethod<
   ListForRefError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListForRefRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListForRefResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListForRefRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<ListForRefResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -931,8 +931,8 @@ export const listForSuite: API.OperationMethod<
   ListForSuiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListForSuiteRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListForSuiteResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListForSuiteRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<ListForSuiteResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -946,8 +946,8 @@ export const listSuitesForRef: API.OperationMethod<
   ListSuitesForRefError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListSuitesForRefRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListSuitesForRefResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListSuitesForRefRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListSuitesForRefResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -961,8 +961,8 @@ export const rerequestSuite: API.OperationMethod<
   RerequestSuiteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<RerequestSuiteRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<RerequestSuiteResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<RerequestSuiteRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<RerequestSuiteResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -976,8 +976,8 @@ export const runRerequest: API.OperationMethod<
   RunRerequestError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<RunRerequestRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<RunRerequestResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<RunRerequestRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<RunRerequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -991,8 +991,8 @@ export const setSuitesPreferences: API.OperationMethod<
   SetSuitesPreferencesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<SetSuitesPreferencesRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CheckSuitePreference>,
+  input: __S(66, __c4, 2) as any as S.Schema<SetSuitesPreferencesRequest>,
+  output: __S(68, __c4, 4) as any as S.Schema<CheckSuitePreference>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1002,8 +1002,8 @@ export type UpdateError = GithubOpError;
 /** Update a check run Updates a check run for a specific commit in a repository. > [!NOTE] > The endpoints to manage checks only look for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array. OAuth apps and personal access tokens (classic) cannot use this endpoint. */
 export const update: API.OperationMethod<UpdateRequest, CheckRun, UpdateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(57, __c7, 1) as any as S.Schema<UpdateRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<CheckRun>,
+    input: __S(81, __c5, 1) as any as S.Schema<UpdateRequest>,
+    output: __S(163, __c10, 3) as any as S.Schema<CheckRun>,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1011,6 +1011,195 @@ export const update: API.OperationMethod<UpdateRequest, CheckRun, UpdateError, G
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          ref: S.String.pipe(T.Label()),
+          app_id: S.optional(S.Number.pipe(T.Query())),
+          check_name: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/commits/{ref}/check-suites",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListSuitesForRefRequest" });
+    case 1:
+      return S.Array(__S(194, __c12, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          total_count: S.Number,
+          check_suites: __S(1, __c0, 1),
+        }),
+      ).annotate({ identifier: "ListSuitesForRefResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          check_suite_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "RerequestSuiteRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "RerequestSuiteResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          check_run_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "RunRerequestRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          app_id: S.Number,
+          setting: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "SetSuitesPreferencesRequestAutoTriggerChecksItem",
+      });
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          auto_trigger_checks: S.optional(__S(65, __c4, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/repos/{owner}/{repo}/check-suites/preferences",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SetSuitesPreferencesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          auto_trigger_checks: S.optional(__S(65, __c4, 1)),
+        }),
+      ).annotate({
+        identifier: "CheckSuitePreferencePreferences",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          preferences: __S(67, __c4, 3),
+          repository: __S(219, __c13, 11),
+        }),
+      ).annotate({ identifier: "CheckSuitePreference" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          summary: S.String,
+          text: S.optional(S.String),
+          annotations: S.optional(__S(113, __c7, 1)),
+          images: S.optional(__S(115, __c7, 3)),
+        }),
+      ).annotate({ identifier: "UpdateRequestOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          check_run_id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          details_url: S.optional(S.String),
+          external_id: S.optional(S.String),
+          started_at: S.optional(S.String),
+          status: S.optional(S.String),
+          conclusion: S.optional(S.String),
+          completed_at: S.optional(S.String),
+          output: S.optional(__S(80, __c5, 0)),
+          actions: S.optional(__S(117, __c7, 5)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/repos/{owner}/{repo}/check-runs/{check_run_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "UpdateRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          summary: S.String,
+          text: S.optional(S.String),
+          annotations: S.optional(__S(113, __c7, 1)),
+          images: S.optional(__S(115, __c7, 3)),
+        }),
+      ).annotate({ identifier: "CreateRequestOutput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          name: S.String,
+          head_sha: S.String,
+          details_url: S.optional(S.String),
+          external_id: S.optional(S.String),
+          status: S.optional(S.String),
+          started_at: S.optional(S.String),
+          conclusion: S.optional(S.String),
+          completed_at: S.optional(S.String),
+          output: S.optional(__S(96, __c6, 0)),
+          actions: S.optional(__S(117, __c7, 5)),
+        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/check-runs", code: 200 })),
+      ).annotate({ identifier: "CreateRequest" });
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1029,7 +1218,7 @@ function __c0(j: number): any {
         identifier: "CreateRequestOutputAnnotationsItem",
       });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(112, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1041,18 +1230,8 @@ function __c0(j: number): any {
         identifier: "CreateRequestOutputImagesItem",
       });
     case 3:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(114, __c7, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.String,
-          summary: S.String,
-          text: S.optional(S.String),
-          annotations: S.optional(__S(1, __c0, 1)),
-          images: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "CreateRequestOutput" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           label: S.String,
@@ -1060,28 +1239,82 @@ function __c0(j: number): any {
           identifier: S.String,
         }),
       ).annotate({ identifier: "CreateRequestActionsItem" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          name: S.String,
-          head_sha: S.String,
-          details_url: S.optional(S.String),
-          external_id: S.optional(S.String),
-          status: S.optional(S.String),
-          started_at: S.optional(S.String),
-          conclusion: S.optional(S.String),
-          completed_at: S.optional(S.String),
-          output: S.optional(__S(4, __c0, 4)),
-          actions: S.optional(__S(6, __c0, 6)),
-        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/check-runs", code: 200 })),
-      ).annotate({ identifier: "CreateRequest" });
+    case 5:
+      return S.Array(__S(116, __c7, 4));
   }
 }
-function __c1(j: number): any {
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          issues: S.optional(S.String),
+          checks: S.optional(S.String),
+          metadata: S.optional(S.String),
+          contents: S.optional(S.String),
+          deployments: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NullableIntegrationPermissions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          slug: S.optional(S.String),
+          node_id: S.String,
+          client_id: S.optional(S.String),
+          owner: S.Unknown,
+          name: S.String,
+          description: S.NullOr(S.String),
+          external_url: S.String,
+          html_url: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          permissions: __S(144, __c9, 0),
+          events: __S(128, __c8, 0),
+          installations_count: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NullableIntegration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          url: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "PullRequestMinimalHeadRepo",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ref: S.String,
+          sha: S.String,
+          repo: __S(146, __c9, 2),
+        }),
+      ).annotate({ identifier: "PullRequestMinimalHead" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          number: S.Number,
+          url: S.String,
+          head: __S(147, __c9, 3),
+          base: __S(147, __c9, 3),
+        }),
+      ).annotate({ identifier: "PullRequestMinimal" });
+    case 5:
+      return S.Array(__S(148, __c9, 4));
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1100,6 +1333,109 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "CheckRunCheckSuite" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          id: S.Number,
+          node_id: S.String,
+          task: S.String,
+          original_environment: S.optional(S.String),
+          environment: S.String,
+          description: S.NullOr(S.String),
+          created_at: S.String,
+          updated_at: S.String,
+          statuses_url: S.String,
+          repository_url: S.String,
+          transient_environment: S.optional(S.Boolean),
+          production_environment: S.optional(S.Boolean),
+          performed_via_github_app: S.optional(S.NullOr(__S(145, __c9, 1))),
+        }),
+      ).annotate({ identifier: "DeploymentSimple" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          head_sha: S.String,
+          node_id: S.String,
+          external_id: S.NullOr(S.String),
+          url: S.String,
+          html_url: S.NullOr(S.String),
+          details_url: S.NullOr(S.String),
+          status: S.String,
+          conclusion: S.NullOr(S.String),
+          started_at: S.NullOr(S.String),
+          completed_at: S.NullOr(S.String),
+          output: __S(160, __c10, 0) as any as S.Schema<CheckRunOutput>,
+          name: S.String,
+          check_suite: S.NullOr(__S(161, __c10, 1)),
+          app: S.NullOr(__S(145, __c9, 1)),
+          pull_requests: __S(149, __c9, 5),
+          deployment: S.optional(__S(162, __c10, 2)),
+        }),
+      ).annotate({ identifier: "CheckRun" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          head_sha: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/check-suites", code: 200 })),
+      ).annotate({ identifier: "CreateSuiteRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          email: S.String,
+        }),
+      ).annotate({ identifier: "SimpleCommitAuthor" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          tree_id: S.String,
+          message: S.String,
+          timestamp: S.String,
+          author: S.NullOr(__S(192, __c12, 0)),
+          committer: S.NullOr(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "SimpleCommit" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          head_branch: S.NullOr(S.String),
+          head_sha: S.String,
+          status: S.NullOr(S.String),
+          conclusion: S.NullOr(S.String),
+          url: S.NullOr(S.String),
+          before: S.NullOr(S.String),
+          after: S.NullOr(S.String),
+          pull_requests: S.NullOr(__S(149, __c9, 5)),
+          app: S.NullOr(__S(145, __c9, 1)),
+          repository: __S(219, __c13, 11),
+          created_at: S.NullOr(S.String),
+          updated_at: S.NullOr(S.String),
+          head_commit: __S(193, __c12, 1),
+          latest_check_runs_count: S.Number,
+          check_runs_url: S.String,
+          rerequestable: S.optional(S.Boolean),
+          runs_rerequestable: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CheckSuite" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -1126,123 +1462,7 @@ function __c1(j: number): any {
           user_view_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SimpleUser" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          issues: S.optional(S.String),
-          checks: S.optional(S.String),
-          metadata: S.optional(S.String),
-          contents: S.optional(S.String),
-          deployments: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NullableIntegrationPermissions",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          slug: S.optional(S.String),
-          node_id: S.String,
-          client_id: S.optional(S.String),
-          owner: S.Unknown,
-          name: S.String,
-          description: S.NullOr(S.String),
-          external_url: S.String,
-          html_url: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          permissions: __S(11, __c1, 3),
-          events: __S(12, __c1, 4),
-          installations_count: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NullableIntegration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          url: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "PullRequestMinimalHeadRepo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ref: S.String,
-          sha: S.String,
-          repo: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "PullRequestMinimalHead" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          number: S.Number,
-          url: S.String,
-          head: __S(15, __c1, 7),
-          base: __S(15, __c1, 7),
-        }),
-      ).annotate({ identifier: "PullRequestMinimal" });
     case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          id: S.Number,
-          node_id: S.String,
-          task: S.String,
-          original_environment: S.optional(S.String),
-          environment: S.String,
-          description: S.NullOr(S.String),
-          created_at: S.String,
-          updated_at: S.String,
-          statuses_url: S.String,
-          repository_url: S.String,
-          transient_environment: S.optional(S.Boolean),
-          production_environment: S.optional(S.Boolean),
-          performed_via_github_app: S.optional(S.NullOr(__S(13, __c1, 5))),
-        }),
-      ).annotate({ identifier: "DeploymentSimple" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          head_sha: S.String,
-          node_id: S.String,
-          external_id: S.NullOr(S.String),
-          url: S.String,
-          html_url: S.NullOr(S.String),
-          details_url: S.NullOr(S.String),
-          status: S.String,
-          conclusion: S.NullOr(S.String),
-          started_at: S.NullOr(S.String),
-          completed_at: S.NullOr(S.String),
-          output: __S(8, __c1, 0) as any as S.Schema<CheckRunOutput>,
-          name: S.String,
-          check_suite: S.NullOr(__S(9, __c1, 1)),
-          app: S.NullOr(__S(13, __c1, 5)),
-          pull_requests: __S(17, __c2, 1),
-          deployment: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "CheckRun" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          head_sha: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/check-suites", code: 200 })),
-      ).annotate({ identifier: "CreateSuiteRequest" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           admin: S.optional(S.Boolean),
@@ -1254,7 +1474,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "MinimalRepositoryPermissions",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -1264,7 +1484,7 @@ function __c2(j: number): any {
           html_url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CodeOfConduct" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -1274,11 +1494,7 @@ function __c2(j: number): any {
           node_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "MinimalRepositoryLicense" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1286,7 +1502,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1294,7 +1510,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
@@ -1304,41 +1520,41 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(214, __c13, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(__S(27, __c3, 3)),
+          reviewers: S.optional(__S(215, __c13, 7)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
       });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(__S(24, __c3, 0)),
-          code_security: S.optional(__S(24, __c3, 0)),
-          dependabot_security_updates: S.optional(__S(24, __c3, 0)),
-          secret_scanning: S.optional(__S(24, __c3, 0)),
-          secret_scanning_push_protection: S.optional(__S(24, __c3, 0)),
-          secret_scanning_non_provider_patterns: S.optional(__S(24, __c3, 0)),
-          secret_scanning_ai_detection: S.optional(__S(24, __c3, 0)),
-          secret_scanning_delegated_alert_dismissal: S.optional(__S(25, __c3, 1)),
-          secret_scanning_delegated_bypass: S.optional(__S(24, __c3, 0)),
-          secret_scanning_delegated_bypass_options: S.optional(__S(28, __c3, 4)),
+          advanced_security: S.optional(__S(212, __c13, 4)),
+          code_security: S.optional(__S(212, __c13, 4)),
+          dependabot_security_updates: S.optional(__S(212, __c13, 4)),
+          secret_scanning: S.optional(__S(212, __c13, 4)),
+          secret_scanning_push_protection: S.optional(__S(212, __c13, 4)),
+          secret_scanning_non_provider_patterns: S.optional(__S(212, __c13, 4)),
+          secret_scanning_ai_detection: S.optional(__S(212, __c13, 4)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(213, __c13, 5)),
+          secret_scanning_delegated_bypass: S.optional(__S(212, __c13, 4)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(216, __c13, 8)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
-    case 6:
+    case 10:
       return S.Record(S.String, S.Unknown);
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(10, __c1, 2),
+          owner: __S(208, __c13, 0),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1394,7 +1610,7 @@ function __c3(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(12, __c1, 4)),
+          topics: S.optional(__S(128, __c8, 0)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -1409,70 +1625,28 @@ function __c3(j: number): any {
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(__S(21, __c2, 5)),
+          permissions: S.optional(__S(209, __c13, 1)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(__S(22, __c2, 6)),
-          license: S.optional(S.NullOr(__S(23, __c2, 7))),
+          code_of_conduct: S.optional(__S(210, __c13, 2)),
+          license: S.optional(S.NullOr(__S(211, __c13, 3))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(__S(29, __c3, 5))),
-          custom_properties: S.optional(__S(30, __c3, 6)),
+          security_and_analysis: S.optional(S.NullOr(__S(217, __c13, 9))),
+          custom_properties: S.optional(__S(218, __c13, 10)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
   }
 }
-function __c4(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          email: S.String,
-        }),
-      ).annotate({ identifier: "SimpleCommitAuthor" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          tree_id: S.String,
-          message: S.String,
-          timestamp: S.String,
-          author: S.NullOr(__S(32, __c4, 0)),
-          committer: S.NullOr(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "SimpleCommit" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          head_branch: S.NullOr(S.String),
-          head_sha: S.String,
-          status: S.NullOr(S.String),
-          conclusion: S.NullOr(S.String),
-          url: S.NullOr(S.String),
-          before: S.NullOr(S.String),
-          after: S.NullOr(S.String),
-          pull_requests: S.NullOr(__S(17, __c2, 1)),
-          app: S.NullOr(__S(13, __c1, 5)),
-          repository: __S(31, __c3, 7),
-          created_at: S.NullOr(S.String),
-          updated_at: S.NullOr(S.String),
-          head_commit: __S(33, __c4, 1),
-          latest_check_runs_count: S.Number,
-          check_runs_url: S.String,
-          rerequestable: S.optional(S.Boolean),
-          runs_rerequestable: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CheckSuite" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1486,7 +1660,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRequest" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1500,7 +1678,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSuiteRequest" });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1516,7 +1698,7 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAnnotationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           path: S.String,
@@ -1531,17 +1713,17 @@ function __c4(j: number): any {
           blob_href: S.String,
         }),
       ).annotate({ identifier: "CheckAnnotation" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(39, __c4, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(257, __c16, 1));
+    case 3:
+      return S.suspend(() => __S(258, __c16, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAnnotationsResponse",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1561,16 +1743,24 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListForRefRequest" });
-    case 2:
-      return S.Array(__S(19, __c2, 3));
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(163, __c10, 3));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          check_runs: __S(42, __c5, 2),
+          check_runs: __S(288, __c18, 0),
         }),
       ).annotate({ identifier: "ListForRefResponse" });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1589,151 +1779,8 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListForSuiteRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          ref: S.String.pipe(T.Label()),
-          app_id: S.optional(S.Number.pipe(T.Query())),
-          check_name: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/commits/{ref}/check-suites",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListSuitesForRefRequest" });
-    case 6:
-      return S.Array(__S(34, __c4, 2));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          total_count: S.Number,
-          check_suites: __S(46, __c5, 6),
-        }),
-      ).annotate({ identifier: "ListSuitesForRefResponse" });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          check_suite_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "RerequestSuiteRequest" });
-    case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "RerequestSuiteResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          check_run_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "RunRerequestRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          app_id: S.Number,
-          setting: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "SetSuitesPreferencesRequestAutoTriggerChecksItem",
-      });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          auto_trigger_checks: S.optional(__S(52, __c6, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/repos/{owner}/{repo}/check-suites/preferences",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SetSuitesPreferencesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          auto_trigger_checks: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "CheckSuitePreferencePreferences",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          preferences: __S(54, __c6, 6),
-          repository: __S(31, __c3, 7),
-        }),
-      ).annotate({ identifier: "CheckSuitePreference" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          summary: S.String,
-          text: S.optional(S.String),
-          annotations: S.optional(__S(1, __c0, 1)),
-          images: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "UpdateRequestOutput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          check_run_id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          details_url: S.optional(S.String),
-          external_id: S.optional(S.String),
-          started_at: S.optional(S.String),
-          status: S.optional(S.String),
-          conclusion: S.optional(S.String),
-          completed_at: S.optional(S.String),
-          output: S.optional(__S(56, __c7, 0)),
-          actions: S.optional(__S(6, __c0, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/repos/{owner}/{repo}/check-runs/{check_run_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "UpdateRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

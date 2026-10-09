@@ -6185,8 +6185,8 @@ export const BulkSolutionTemplateVersionReviewSolution: API.OperationMethod<
   BulkSolutionTemplateVersionReviewSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<BulkSolutionTemplateVersionReviewSolutionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<BulkSolutionTemplateVersionReviewSolutionResponse>,
+  input: __S(18, __c1, 2) as any as S.Schema<BulkSolutionTemplateVersionReviewSolutionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<BulkSolutionTemplateVersionReviewSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6200,8 +6200,8 @@ export const ConfigTemplateMetadatasCreateOrUpdate: API.OperationMethod<
   ConfigTemplateMetadatasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateResponse>,
+  input: __S(2064, __c129, 0) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateRequest>,
+  output: __S(2128, __c133, 0) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6215,8 +6215,8 @@ export const ConfigTemplatesCreateOrUpdate: API.OperationMethod<
   ConfigTemplatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ConfigTemplatesCreateOrUpdateRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ConfigTemplatesCreateOrUpdateResponse>,
+  input: __S(2321, __c145, 1) as any as S.Schema<ConfigTemplatesCreateOrUpdateRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<ConfigTemplatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6230,8 +6230,8 @@ export const ConfigTemplatesLinkToHierarchies: API.OperationMethod<
   ConfigTemplatesLinkToHierarchiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ConfigTemplatesLinkToHierarchiesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ConfigTemplatesLinkToHierarchiesResponse>,
+  input: __S(2544, __c159, 0) as any as S.Schema<ConfigTemplatesLinkToHierarchiesRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<ConfigTemplatesLinkToHierarchiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6245,8 +6245,8 @@ export const ConfigTemplatesUnLinkFromHierarchies: API.OperationMethod<
   ConfigTemplatesUnLinkFromHierarchiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesResponse>,
+  input: __S(2896, __c181, 0) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6260,8 +6260,8 @@ export const ConfigTemplateVersionsCreateOrUpdate: API.OperationMethod<
   ConfigTemplateVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ConfigTemplateVersionsCreateOrUpdateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ConfigTemplateVersionsCreateOrUpdateResponse>,
+  input: __S(3136, __c196, 0) as any as S.Schema<ConfigTemplateVersionsCreateOrUpdateRequest>,
+  output: __S(3168, __c198, 0) as any as S.Schema<ConfigTemplateVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6275,8 +6275,8 @@ export const ConfigurationReferencesCreateOrUpdate: API.OperationMethod<
   ConfigurationReferencesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ConfigurationReferencesCreateOrUpdateRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ConfigurationReferencesCreateOrUpdateResponse>,
+  input: __S(3568, __c223, 0) as any as S.Schema<ConfigurationReferencesCreateOrUpdateRequest>,
+  output: __S(3616, __c226, 0) as any as S.Schema<ConfigurationReferencesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6290,8 +6290,8 @@ export const ConfigurationsCreateOrUpdate: API.OperationMethod<
   ConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ConfigurationsCreateOrUpdateRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ConfigurationsCreateOrUpdateResponse>,
+  input: __S(4032, __c252, 0) as any as S.Schema<ConfigurationsCreateOrUpdateRequest>,
+  output: __S(4064, __c254, 0) as any as S.Schema<ConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6305,8 +6305,8 @@ export const ContextsCreateOrUpdate: API.OperationMethod<
   ContextsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ContextsCreateOrUpdateRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ContextsCreateOrUpdateResponse>,
+  input: __S(4449, __c278, 1) as any as S.Schema<ContextsCreateOrUpdateRequest>,
+  output: __S(4450, __c278, 2) as any as S.Schema<ContextsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6320,8 +6320,8 @@ export const CreateConfigTemplateVersion: API.OperationMethod<
   CreateConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateConfigTemplateVersionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateConfigTemplateVersionResponse>,
+  input: __S(81, __c5, 1) as any as S.Schema<CreateConfigTemplateVersionRequest>,
+  output: __S(3168, __c198, 0) as any as S.Schema<CreateConfigTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6335,8 +6335,8 @@ export const CreateSchemaVersion: API.OperationMethod<
   CreateSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateSchemaVersionRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<CreateSchemaVersionResponse>,
+  input: __S(305, __c19, 1) as any as S.Schema<CreateSchemaVersionRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<CreateSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6350,8 +6350,8 @@ export const CreateSolutionTemplateVersion: API.OperationMethod<
   CreateSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CreateSolutionTemplateVersionRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<CreateSolutionTemplateVersionResponse>,
+  input: __S(545, __c34, 1) as any as S.Schema<CreateSolutionTemplateVersionRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<CreateSolutionTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6365,8 +6365,8 @@ export const DeleteConfigTemplate: API.OperationMethod<
   DeleteConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteConfigTemplateRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteConfigTemplateResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<DeleteConfigTemplateRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteConfigTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6380,8 +6380,8 @@ export const DeleteConfigTemplateMetadatas: API.OperationMethod<
   DeleteConfigTemplateMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteConfigTemplateMetadatasRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteConfigTemplateMetadatasResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<DeleteConfigTemplateMetadatasRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteConfigTemplateMetadatasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6395,8 +6395,8 @@ export const DeleteConfigTemplateVersion: API.OperationMethod<
   DeleteConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteConfigTemplateVersionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteConfigTemplateVersionResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<DeleteConfigTemplateVersionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteConfigTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6410,8 +6410,8 @@ export const DeleteConfiguration: API.OperationMethod<
   DeleteConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteConfigurationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteConfigurationResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<DeleteConfigurationRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6425,8 +6425,8 @@ export const DeleteConfigurationReference: API.OperationMethod<
   DeleteConfigurationReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteConfigurationReferenceRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteConfigurationReferenceResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<DeleteConfigurationReferenceRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteConfigurationReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6440,8 +6440,8 @@ export const DeleteContext: API.OperationMethod<
   DeleteContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteContextRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteContextResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<DeleteContextRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteContextResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6455,8 +6455,8 @@ export const DeleteDiagnostic: API.OperationMethod<
   DeleteDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteDiagnosticRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteDiagnosticResponse>,
+  input: __S(1968, __c123, 0) as any as S.Schema<DeleteDiagnosticRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteDiagnosticResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6470,8 +6470,8 @@ export const DeleteDisconnectedOperation: API.OperationMethod<
   DeleteDisconnectedOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteDisconnectedOperationRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteDisconnectedOperationResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<DeleteDisconnectedOperationRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteDisconnectedOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6485,8 +6485,8 @@ export const DeleteDynamicConfiguration: API.OperationMethod<
   DeleteDynamicConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteDynamicConfigurationRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteDynamicConfigurationResponse>,
+  input: __S(2176, __c136, 0) as any as S.Schema<DeleteDynamicConfigurationRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteDynamicConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6500,8 +6500,8 @@ export const DeleteDynamicConfigurationVersion: API.OperationMethod<
   DeleteDynamicConfigurationVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteDynamicConfigurationVersionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteDynamicConfigurationVersionResponse>,
+  input: __S(2192, __c137, 0) as any as S.Schema<DeleteDynamicConfigurationVersionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteDynamicConfigurationVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6515,8 +6515,8 @@ export const DeleteDynamicSchema: API.OperationMethod<
   DeleteDynamicSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteDynamicSchemaRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteDynamicSchemaResponse>,
+  input: __S(2208, __c138, 0) as any as S.Schema<DeleteDynamicSchemaRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteDynamicSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6530,8 +6530,8 @@ export const DeleteDynamicSchemaVersion: API.OperationMethod<
   DeleteDynamicSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteDynamicSchemaVersionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteDynamicSchemaVersionResponse>,
+  input: __S(2224, __c139, 0) as any as S.Schema<DeleteDynamicSchemaVersionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteDynamicSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6545,8 +6545,8 @@ export const DeleteExecution: API.OperationMethod<
   DeleteExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteExecutionRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteExecutionResponse>,
+  input: __S(2240, __c140, 0) as any as S.Schema<DeleteExecutionRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6560,8 +6560,8 @@ export const DeleteHardwareSettings: API.OperationMethod<
   DeleteHardwareSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteHardwareSettingsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteHardwareSettingsResponse>,
+  input: __S(2256, __c141, 0) as any as S.Schema<DeleteHardwareSettingsRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteHardwareSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6575,8 +6575,8 @@ export const DeleteInstance: API.OperationMethod<
   DeleteInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteInstanceResponse>,
+  input: __S(2272, __c142, 0) as any as S.Schema<DeleteInstanceRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6590,8 +6590,8 @@ export const DeleteSchema: API.OperationMethod<
   DeleteSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteSchemaRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteSchemaResponse>,
+  input: __S(2288, __c143, 0) as any as S.Schema<DeleteSchemaRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6605,8 +6605,8 @@ export const DeleteSchemaReference: API.OperationMethod<
   DeleteSchemaReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteSchemaReferenceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteSchemaReferenceResponse>,
+  input: __S(2304, __c144, 0) as any as S.Schema<DeleteSchemaReferenceRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteSchemaReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6620,8 +6620,8 @@ export const DeleteSchemaVersion: API.OperationMethod<
   DeleteSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteSchemaVersionRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteSchemaVersionResponse>,
+  input: __S(2384, __c149, 0) as any as S.Schema<DeleteSchemaVersionRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6635,8 +6635,8 @@ export const DeleteSite: API.OperationMethod<
   DeleteSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteSiteRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteSiteResponse>,
+  input: __S(2400, __c150, 0) as any as S.Schema<DeleteSiteRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6650,8 +6650,8 @@ export const DeleteSiteReference: API.OperationMethod<
   DeleteSiteReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteSiteReferenceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteSiteReferenceResponse>,
+  input: __S(2416, __c151, 0) as any as S.Schema<DeleteSiteReferenceRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteSiteReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6665,8 +6665,8 @@ export const DeleteSitesByServiceGroup: API.OperationMethod<
   DeleteSitesByServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleteSitesByServiceGroupRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteSitesByServiceGroupResponse>,
+  input: __S(2432, __c152, 0) as any as S.Schema<DeleteSitesByServiceGroupRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteSitesByServiceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6680,8 +6680,8 @@ export const DeleteSitesBySubscription: API.OperationMethod<
   DeleteSitesBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteSitesBySubscriptionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteSitesBySubscriptionResponse>,
+  input: __S(2448, __c153, 0) as any as S.Schema<DeleteSitesBySubscriptionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteSitesBySubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6695,8 +6695,8 @@ export const DeleteSolution: API.OperationMethod<
   DeleteSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeleteSolutionRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteSolutionResponse>,
+  input: __S(2464, __c154, 0) as any as S.Schema<DeleteSolutionRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6710,8 +6710,8 @@ export const DeleteSolutionTemplate: API.OperationMethod<
   DeleteSolutionTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DeleteSolutionTemplateRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteSolutionTemplateResponse>,
+  input: __S(2480, __c155, 0) as any as S.Schema<DeleteSolutionTemplateRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteSolutionTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6725,8 +6725,8 @@ export const DeleteSolutionTemplateVersion: API.OperationMethod<
   DeleteSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DeleteSolutionTemplateVersionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteSolutionTemplateVersionResponse>,
+  input: __S(2496, __c156, 0) as any as S.Schema<DeleteSolutionTemplateVersionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteSolutionTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6740,8 +6740,8 @@ export const DeleteSolutionVersion: API.OperationMethod<
   DeleteSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeleteSolutionVersionRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteSolutionVersionResponse>,
+  input: __S(2512, __c157, 0) as any as S.Schema<DeleteSolutionVersionRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteSolutionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6755,8 +6755,8 @@ export const DeleteTarget: API.OperationMethod<
   DeleteTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteTargetRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteTargetResponse>,
+  input: __S(2528, __c158, 0) as any as S.Schema<DeleteTargetRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6770,8 +6770,8 @@ export const DeleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeleteWorkflowRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteWorkflowResponse>,
+  input: __S(2560, __c160, 0) as any as S.Schema<DeleteWorkflowRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6785,8 +6785,8 @@ export const DeleteWorkflowVersion: API.OperationMethod<
   DeleteWorkflowVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<DeleteWorkflowVersionRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteWorkflowVersionResponse>,
+  input: __S(2576, __c161, 0) as any as S.Schema<DeleteWorkflowVersionRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<DeleteWorkflowVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6800,8 +6800,8 @@ export const DiagnosticsCreateOrUpdate: API.OperationMethod<
   DiagnosticsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DiagnosticsCreateOrUpdateRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DiagnosticsCreateOrUpdateResponse>,
+  input: __S(2592, __c162, 0) as any as S.Schema<DiagnosticsCreateOrUpdateRequest>,
+  output: __S(2593, __c162, 1) as any as S.Schema<DiagnosticsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6815,8 +6815,8 @@ export const DisconnectedOperationsCreateOrUpdate: API.OperationMethod<
   DisconnectedOperationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<DisconnectedOperationsCreateOrUpdateRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<DisconnectedOperationsCreateOrUpdateResponse>,
+  input: __S(2627, __c164, 3) as any as S.Schema<DisconnectedOperationsCreateOrUpdateRequest>,
+  output: __S(2672, __c167, 0) as any as S.Schema<DisconnectedOperationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6830,8 +6830,8 @@ export const DynamicConfigurationsCreateOrUpdate: API.OperationMethod<
   DynamicConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<DynamicConfigurationsCreateOrUpdateRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<DynamicConfigurationsCreateOrUpdateResponse>,
+  input: __S(2689, __c168, 1) as any as S.Schema<DynamicConfigurationsCreateOrUpdateRequest>,
+  output: __S(2720, __c170, 0) as any as S.Schema<DynamicConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6845,8 +6845,12 @@ export const DynamicConfigurationVersionsCreateOrUpdate: API.OperationMethod<
   DynamicConfigurationVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DynamicConfigurationVersionsCreateOrUpdateRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<DynamicConfigurationVersionsCreateOrUpdateResponse>,
+  input: __S(2737, __c171, 1) as any as S.Schema<DynamicConfigurationVersionsCreateOrUpdateRequest>,
+  output: __S(
+    2753,
+    __c172,
+    1,
+  ) as any as S.Schema<DynamicConfigurationVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6860,8 +6864,8 @@ export const DynamicSchemasCreateOrUpdate: API.OperationMethod<
   DynamicSchemasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<DynamicSchemasCreateOrUpdateRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<DynamicSchemasCreateOrUpdateResponse>,
+  input: __S(2768, __c173, 0) as any as S.Schema<DynamicSchemasCreateOrUpdateRequest>,
+  output: __S(2784, __c174, 0) as any as S.Schema<DynamicSchemasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6875,8 +6879,8 @@ export const DynamicSchemaVersionsCreateOrUpdate: API.OperationMethod<
   DynamicSchemaVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateResponse>,
+  input: __S(2816, __c176, 0) as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6890,8 +6894,8 @@ export const ExecutionsCreateOrUpdate: API.OperationMethod<
   ExecutionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ExecutionsCreateOrUpdateRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<ExecutionsCreateOrUpdateResponse>,
+  input: __S(2833, __c177, 1) as any as S.Schema<ExecutionsCreateOrUpdateRequest>,
+  output: __S(2834, __c177, 2) as any as S.Schema<ExecutionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6905,8 +6909,8 @@ export const GetArtifact: API.OperationMethod<
   GetArtifactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetArtifactRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<GetArtifactResponse>,
+  input: __S(2864, __c179, 0) as any as S.Schema<GetArtifactRequest>,
+  output: __S(2881, __c180, 1) as any as S.Schema<GetArtifactResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6920,8 +6924,8 @@ export const GetConfigTemplate: API.OperationMethod<
   GetConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetConfigTemplateRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetConfigTemplateResponse>,
+  input: __S(2912, __c182, 0) as any as S.Schema<GetConfigTemplateRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<GetConfigTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6935,8 +6939,8 @@ export const GetConfigTemplateMetadatas: API.OperationMethod<
   GetConfigTemplateMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<GetConfigTemplateMetadatasRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetConfigTemplateMetadatasResponse>,
+  input: __S(2928, __c183, 0) as any as S.Schema<GetConfigTemplateMetadatasRequest>,
+  output: __S(2128, __c133, 0) as any as S.Schema<GetConfigTemplateMetadatasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6950,8 +6954,8 @@ export const GetConfigTemplateSchema: API.OperationMethod<
   GetConfigTemplateSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<GetConfigTemplateSchemaRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<GetConfigTemplateSchemaResponse>,
+  input: __S(2944, __c184, 0) as any as S.Schema<GetConfigTemplateSchemaRequest>,
+  output: __S(2945, __c184, 1) as any as S.Schema<GetConfigTemplateSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6965,8 +6969,8 @@ export const GetConfigTemplateVersion: API.OperationMethod<
   GetConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetConfigTemplateVersionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetConfigTemplateVersionResponse>,
+  input: __S(2976, __c186, 0) as any as S.Schema<GetConfigTemplateVersionRequest>,
+  output: __S(3168, __c198, 0) as any as S.Schema<GetConfigTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6980,8 +6984,8 @@ export const GetConfiguration: API.OperationMethod<
   GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<GetConfigurationResponse>,
+  input: __S(2992, __c187, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(3008, __c188, 0) as any as S.Schema<GetConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6995,8 +6999,8 @@ export const GetConfigurationReference: API.OperationMethod<
   GetConfigurationReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetConfigurationReferenceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetConfigurationReferenceResponse>,
+  input: __S(3024, __c189, 0) as any as S.Schema<GetConfigurationReferenceRequest>,
+  output: __S(3616, __c226, 0) as any as S.Schema<GetConfigurationReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7010,8 +7014,8 @@ export const GetContext: API.OperationMethod<
   GetContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetContextRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetContextResponse>,
+  input: __S(3040, __c190, 0) as any as S.Schema<GetContextRequest>,
+  output: __S(3056, __c191, 0) as any as S.Schema<GetContextResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7025,8 +7029,8 @@ export const GetDiagnostic: API.OperationMethod<
   GetDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetDiagnosticRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetDiagnosticResponse>,
+  input: __S(3072, __c192, 0) as any as S.Schema<GetDiagnosticRequest>,
+  output: __S(3088, __c193, 0) as any as S.Schema<GetDiagnosticResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7040,8 +7044,8 @@ export const GetDisconnectedOperation: API.OperationMethod<
   GetDisconnectedOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetDisconnectedOperationRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<GetDisconnectedOperationResponse>,
+  input: __S(3104, __c194, 0) as any as S.Schema<GetDisconnectedOperationRequest>,
+  output: __S(2672, __c167, 0) as any as S.Schema<GetDisconnectedOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7055,8 +7059,8 @@ export const GetDynamicConfiguration: API.OperationMethod<
   GetDynamicConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetDynamicConfigurationRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GetDynamicConfigurationResponse>,
+  input: __S(3120, __c195, 0) as any as S.Schema<GetDynamicConfigurationRequest>,
+  output: __S(2720, __c170, 0) as any as S.Schema<GetDynamicConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7070,8 +7074,8 @@ export const GetDynamicConfigurationVersion: API.OperationMethod<
   GetDynamicConfigurationVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetDynamicConfigurationVersionRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetDynamicConfigurationVersionResponse>,
+  input: __S(3200, __c200, 0) as any as S.Schema<GetDynamicConfigurationVersionRequest>,
+  output: __S(2753, __c172, 1) as any as S.Schema<GetDynamicConfigurationVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7085,8 +7089,8 @@ export const GetDynamicSchema: API.OperationMethod<
   GetDynamicSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<GetDynamicSchemaRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<GetDynamicSchemaResponse>,
+  input: __S(3216, __c201, 0) as any as S.Schema<GetDynamicSchemaRequest>,
+  output: __S(3232, __c202, 0) as any as S.Schema<GetDynamicSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7100,8 +7104,8 @@ export const GetDynamicSchemaVersion: API.OperationMethod<
   GetDynamicSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetDynamicSchemaVersionRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetDynamicSchemaVersionResponse>,
+  input: __S(3248, __c203, 0) as any as S.Schema<GetDynamicSchemaVersionRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<GetDynamicSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7115,8 +7119,8 @@ export const GetExecution: API.OperationMethod<
   GetExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetExecutionRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GetExecutionResponse>,
+  input: __S(3264, __c204, 0) as any as S.Schema<GetExecutionRequest>,
+  output: __S(3280, __c205, 0) as any as S.Schema<GetExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7130,8 +7134,8 @@ export const GetHardwareSettings: API.OperationMethod<
   GetHardwareSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetHardwareSettingsRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<GetHardwareSettingsResponse>,
+  input: __S(3296, __c206, 0) as any as S.Schema<GetHardwareSettingsRequest>,
+  output: __S(3312, __c207, 0) as any as S.Schema<GetHardwareSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7145,8 +7149,8 @@ export const GetHierarchyConfigurationMetadatas: API.OperationMethod<
   GetHierarchyConfigurationMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetHierarchyConfigurationMetadatasRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<GetHierarchyConfigurationMetadatasResponse>,
+  input: __S(3344, __c209, 0) as any as S.Schema<GetHierarchyConfigurationMetadatasRequest>,
+  output: __S(3361, __c210, 1) as any as S.Schema<GetHierarchyConfigurationMetadatasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7160,8 +7164,8 @@ export const GetHierarchyConfigurationMetadataVersion: API.OperationMethod<
   GetHierarchyConfigurationMetadataVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetHierarchyConfigurationMetadataVersionRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<GetHierarchyConfigurationMetadataVersionResponse>,
+  input: __S(3376, __c211, 0) as any as S.Schema<GetHierarchyConfigurationMetadataVersionRequest>,
+  output: __S(3393, __c212, 1) as any as S.Schema<GetHierarchyConfigurationMetadataVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7175,8 +7179,8 @@ export const GetImage: API.OperationMethod<
   GetImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetImageRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<GetImageResponse>,
+  input: __S(3408, __c213, 0) as any as S.Schema<GetImageRequest>,
+  output: __S(3425, __c214, 1) as any as S.Schema<GetImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7190,8 +7194,8 @@ export const GetInstance: API.OperationMethod<
   GetInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetInstanceRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<GetInstanceResponse>,
+  input: __S(3456, __c216, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(3472, __c217, 0) as any as S.Schema<GetInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7205,8 +7209,8 @@ export const GetInstanceHistory: API.OperationMethod<
   GetInstanceHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetInstanceHistoryRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<GetInstanceHistoryResponse>,
+  input: __S(3536, __c221, 0) as any as S.Schema<GetInstanceHistoryRequest>,
+  output: __S(3537, __c221, 1) as any as S.Schema<GetInstanceHistoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7220,8 +7224,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<GetJobRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<GetJobResponse>,
+  input: __S(3632, __c227, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(3656, __c228, 8) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7235,8 +7239,8 @@ export const GetSchema: API.OperationMethod<
   GetSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<GetSchemaRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<GetSchemaResponse>,
+  input: __S(3680, __c230, 0) as any as S.Schema<GetSchemaRequest>,
+  output: __S(3712, __c232, 0) as any as S.Schema<GetSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7250,8 +7254,8 @@ export const GetSchemaReference: API.OperationMethod<
   GetSchemaReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<GetSchemaReferenceRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<GetSchemaReferenceResponse>,
+  input: __S(3728, __c233, 0) as any as S.Schema<GetSchemaReferenceRequest>,
+  output: __S(3760, __c235, 0) as any as S.Schema<GetSchemaReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7265,8 +7269,8 @@ export const GetSchemaVersion: API.OperationMethod<
   GetSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<GetSchemaVersionRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<GetSchemaVersionResponse>,
+  input: __S(3776, __c236, 0) as any as S.Schema<GetSchemaVersionRequest>,
+  output: __S(3792, __c237, 0) as any as S.Schema<GetSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7280,8 +7284,8 @@ export const GetSite: API.OperationMethod<
   GetSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<GetSiteRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<GetSiteResponse>,
+  input: __S(3808, __c238, 0) as any as S.Schema<GetSiteRequest>,
+  output: __S(3824, __c239, 0) as any as S.Schema<GetSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7295,8 +7299,8 @@ export const GetSiteReference: API.OperationMethod<
   GetSiteReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<GetSiteReferenceRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<GetSiteReferenceResponse>,
+  input: __S(3856, __c241, 0) as any as S.Schema<GetSiteReferenceRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<GetSiteReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7310,8 +7314,8 @@ export const GetSitesByServiceGroup: API.OperationMethod<
   GetSitesByServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetSitesByServiceGroupRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<GetSitesByServiceGroupResponse>,
+  input: __S(3904, __c244, 0) as any as S.Schema<GetSitesByServiceGroupRequest>,
+  output: __S(3920, __c245, 0) as any as S.Schema<GetSitesByServiceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7325,8 +7329,8 @@ export const GetSitesBySubscription: API.OperationMethod<
   GetSitesBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<GetSitesBySubscriptionRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<GetSitesBySubscriptionResponse>,
+  input: __S(3936, __c246, 0) as any as S.Schema<GetSitesBySubscriptionRequest>,
+  output: __S(3920, __c245, 0) as any as S.Schema<GetSitesBySubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7340,8 +7344,8 @@ export const GetSolution: API.OperationMethod<
   GetSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<GetSolutionRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<GetSolutionResponse>,
+  input: __S(3952, __c247, 0) as any as S.Schema<GetSolutionRequest>,
+  output: __S(3984, __c249, 0) as any as S.Schema<GetSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7355,8 +7359,8 @@ export const GetSolutionMetadatas: API.OperationMethod<
   GetSolutionMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetSolutionMetadatasRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<GetSolutionMetadatasResponse>,
+  input: __S(4000, __c250, 0) as any as S.Schema<GetSolutionMetadatasRequest>,
+  output: __S(4001, __c250, 1) as any as S.Schema<GetSolutionMetadatasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7370,8 +7374,8 @@ export const GetSolutionMetadataVersion: API.OperationMethod<
   GetSolutionMetadataVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<GetSolutionMetadataVersionRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<GetSolutionMetadataVersionResponse>,
+  input: __S(4096, __c256, 0) as any as S.Schema<GetSolutionMetadataVersionRequest>,
+  output: __S(4097, __c256, 1) as any as S.Schema<GetSolutionMetadataVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7385,8 +7389,8 @@ export const GetSolutionSchema: API.OperationMethod<
   GetSolutionSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<GetSolutionSchemaRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GetSolutionSchemaResponse>,
+  input: __S(4128, __c258, 0) as any as S.Schema<GetSolutionSchemaRequest>,
+  output: __S(4129, __c258, 1) as any as S.Schema<GetSolutionSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7400,8 +7404,8 @@ export const GetSolutionTemplate: API.OperationMethod<
   GetSolutionTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GetSolutionTemplateRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<GetSolutionTemplateResponse>,
+  input: __S(4160, __c260, 0) as any as S.Schema<GetSolutionTemplateRequest>,
+  output: __S(4192, __c262, 0) as any as S.Schema<GetSolutionTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7415,8 +7419,8 @@ export const GetSolutionTemplateVersion: API.OperationMethod<
   GetSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetSolutionTemplateVersionRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetSolutionTemplateVersionResponse>,
+  input: __S(4208, __c263, 0) as any as S.Schema<GetSolutionTemplateVersionRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<GetSolutionTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7430,8 +7434,8 @@ export const GetSolutionVersion: API.OperationMethod<
   GetSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<GetSolutionVersionRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<GetSolutionVersionResponse>,
+  input: __S(4224, __c264, 0) as any as S.Schema<GetSolutionVersionRequest>,
+  output: __S(4256, __c266, 0) as any as S.Schema<GetSolutionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7445,8 +7449,8 @@ export const GetTarget: API.OperationMethod<
   GetTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<GetTargetRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<GetTargetResponse>,
+  input: __S(4272, __c267, 0) as any as S.Schema<GetTargetRequest>,
+  output: __S(4304, __c269, 0) as any as S.Schema<GetTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7460,8 +7464,8 @@ export const GetWorkflow: API.OperationMethod<
   GetWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<GetWorkflowResponse>,
+  input: __S(4320, __c270, 0) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(4336, __c271, 0) as any as S.Schema<GetWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7475,8 +7479,8 @@ export const GetWorkflowVersion: API.OperationMethod<
   GetWorkflowVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<GetWorkflowVersionRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<GetWorkflowVersionResponse>,
+  input: __S(4368, __c273, 0) as any as S.Schema<GetWorkflowVersionRequest>,
+  output: __S(4400, __c275, 0) as any as S.Schema<GetWorkflowVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7490,8 +7494,8 @@ export const HardwareSettingsCreateOrUpdate: API.OperationMethod<
   HardwareSettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<HardwareSettingsCreateOrUpdateRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<HardwareSettingsCreateOrUpdateResponse>,
+  input: __S(4417, __c276, 1) as any as S.Schema<HardwareSettingsCreateOrUpdateRequest>,
+  output: __S(3312, __c207, 0) as any as S.Schema<HardwareSettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7505,8 +7509,8 @@ export const ImagesListDownloadUri: API.OperationMethod<
   ImagesListDownloadUriError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<ImagesListDownloadUriRequest>,
-  output: __S(248, __c31, 0) as any as S.Schema<ImageDownloadResult>,
+  input: __S(4432, __c277, 0) as any as S.Schema<ImagesListDownloadUriRequest>,
+  output: __S(4433, __c277, 1) as any as S.Schema<ImageDownloadResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7520,8 +7524,8 @@ export const InstallTargetSolution: API.OperationMethod<
   InstallTargetSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<InstallTargetSolutionRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<InstallTargetSolutionResponse>,
+  input: __S(4480, __c280, 0) as any as S.Schema<InstallTargetSolutionRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<InstallTargetSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7535,8 +7539,8 @@ export const InstancesCreateOrUpdate: API.OperationMethod<
   InstancesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<InstancesCreateOrUpdateRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<InstancesCreateOrUpdateResponse>,
+  input: __S(4497, __c281, 1) as any as S.Schema<InstancesCreateOrUpdateRequest>,
+  output: __S(4498, __c281, 2) as any as S.Schema<InstancesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7550,8 +7554,8 @@ export const ListArtifactByParent: API.OperationMethod<
   ListArtifactByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<ListArtifactByParentRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<ArtifactListResult>,
+  input: __S(4512, __c282, 0) as any as S.Schema<ListArtifactByParentRequest>,
+  output: __S(4514, __c282, 2) as any as S.Schema<ArtifactListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7565,8 +7569,8 @@ export const ListConfigTemplateByResourceGroup: API.OperationMethod<
   ListConfigTemplateByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListConfigTemplateByResourceGroupRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<ConfigTemplateListResult>,
+  input: __S(4528, __c283, 0) as any as S.Schema<ListConfigTemplateByResourceGroupRequest>,
+  output: __S(4546, __c284, 2) as any as S.Schema<ConfigTemplateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7580,8 +7584,8 @@ export const ListConfigTemplateBySubscription: API.OperationMethod<
   ListConfigTemplateBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<ListConfigTemplateBySubscriptionRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<ConfigTemplateListResult>,
+  input: __S(4560, __c285, 0) as any as S.Schema<ListConfigTemplateBySubscriptionRequest>,
+  output: __S(4546, __c284, 2) as any as S.Schema<ConfigTemplateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7595,8 +7599,12 @@ export const ListConfigTemplateMetadatasByConfigTemplate: API.OperationMethod<
   ListConfigTemplateMetadatasByConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<ListConfigTemplateMetadatasByConfigTemplateRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<ConfigTemplateMetadataListResult>,
+  input: __S(
+    4576,
+    __c286,
+    0,
+  ) as any as S.Schema<ListConfigTemplateMetadatasByConfigTemplateRequest>,
+  output: __S(4579, __c286, 3) as any as S.Schema<ConfigTemplateMetadataListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7611,11 +7619,11 @@ export const ListConfigTemplateSchemaByConfigTemplateVersion: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    265,
-    __c33,
-    1,
+    4592,
+    __c287,
+    0,
   ) as any as S.Schema<ListConfigTemplateSchemaByConfigTemplateVersionRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<ConfigTemplateSchemaListResult>,
+  output: __S(4595, __c287, 3) as any as S.Schema<ConfigTemplateSchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7629,8 +7637,8 @@ export const ListConfigTemplateVersionByConfigTemplate: API.OperationMethod<
   ListConfigTemplateVersionByConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<ListConfigTemplateVersionByConfigTemplateRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<ConfigTemplateVersionListResult>,
+  input: __S(4608, __c288, 0) as any as S.Schema<ListConfigTemplateVersionByConfigTemplateRequest>,
+  output: __S(4611, __c288, 3) as any as S.Schema<ConfigTemplateVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7644,8 +7652,8 @@ export const ListConfigurationByResourceGroup: API.OperationMethod<
   ListConfigurationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<ListConfigurationByResourceGroupRequest>,
-  output: __S(275, __c34, 3) as any as S.Schema<ConfigurationListResult>,
+  input: __S(4624, __c289, 0) as any as S.Schema<ListConfigurationByResourceGroupRequest>,
+  output: __S(4641, __c290, 1) as any as S.Schema<ConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7659,8 +7667,8 @@ export const ListConfigurationBySubscription: API.OperationMethod<
   ListConfigurationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<ListConfigurationBySubscriptionRequest>,
-  output: __S(275, __c34, 3) as any as S.Schema<ConfigurationListResult>,
+  input: __S(4656, __c291, 0) as any as S.Schema<ListConfigurationBySubscriptionRequest>,
+  output: __S(4641, __c290, 1) as any as S.Schema<ConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7674,8 +7682,8 @@ export const ListConfigurationReferences: API.OperationMethod<
   ListConfigurationReferencesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<ListConfigurationReferencesRequest>,
-  output: __S(280, __c35, 0) as any as S.Schema<ConfigurationReferenceListResult>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListConfigurationReferencesRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<ConfigurationReferenceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7689,8 +7697,8 @@ export const ListContextByResourceGroup: API.OperationMethod<
   ListContextByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<ListContextByResourceGroupRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<ContextListResult>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListContextByResourceGroupRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<ContextListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7704,8 +7712,8 @@ export const ListContextBySubscription: API.OperationMethod<
   ListContextBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<ListContextBySubscriptionRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<ContextListResult>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListContextBySubscriptionRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<ContextListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7719,8 +7727,8 @@ export const ListDiagnosticByResourceGroup: API.OperationMethod<
   ListDiagnosticByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<ListDiagnosticByResourceGroupRequest>,
-  output: __S(287, __c35, 7) as any as S.Schema<DiagnosticListResult>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListDiagnosticByResourceGroupRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<DiagnosticListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7734,8 +7742,8 @@ export const ListDiagnosticBySubscription: API.OperationMethod<
   ListDiagnosticBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<ListDiagnosticBySubscriptionRequest>,
-  output: __S(287, __c35, 7) as any as S.Schema<DiagnosticListResult>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListDiagnosticBySubscriptionRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<DiagnosticListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7749,8 +7757,8 @@ export const ListDisconnectedOperationByResourceGroup: API.OperationMethod<
   ListDisconnectedOperationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<ListDisconnectedOperationByResourceGroupRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<DisconnectedOperationListResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListDisconnectedOperationByResourceGroupRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<DisconnectedOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7764,8 +7772,8 @@ export const ListDisconnectedOperationBySubscription: API.OperationMethod<
   ListDisconnectedOperationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<ListDisconnectedOperationBySubscriptionRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<DisconnectedOperationListResult>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListDisconnectedOperationBySubscriptionRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<DisconnectedOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7779,8 +7787,8 @@ export const ListDisconnectedOperationDeploymentManifest: API.OperationMethod<
   ListDisconnectedOperationDeploymentManifestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<ListDisconnectedOperationDeploymentManifestRequest>,
-  output: __S(295, __c36, 7) as any as S.Schema<DisconnectedOperationDeploymentManifest>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListDisconnectedOperationDeploymentManifestRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<DisconnectedOperationDeploymentManifest>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7794,8 +7802,8 @@ export const ListDynamicConfigurationByConfiguration: API.OperationMethod<
   ListDynamicConfigurationByConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<ListDynamicConfigurationByConfigurationRequest>,
-  output: __S(299, __c37, 3) as any as S.Schema<DynamicConfigurationListResult>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListDynamicConfigurationByConfigurationRequest>,
+  output: __S(275, __c17, 3) as any as S.Schema<DynamicConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7810,11 +7818,11 @@ export const ListDynamicConfigurationVersionByDynamicConfiguration: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    300,
-    __c37,
-    4,
+    288,
+    __c18,
+    0,
   ) as any as S.Schema<ListDynamicConfigurationVersionByDynamicConfigurationRequest>,
-  output: __S(302, __c37, 6) as any as S.Schema<DynamicConfigurationVersionListResult>,
+  output: __S(290, __c18, 2) as any as S.Schema<DynamicConfigurationVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7828,8 +7836,8 @@ export const ListDynamicSchemaBySchema: API.OperationMethod<
   ListDynamicSchemaBySchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<ListDynamicSchemaBySchemaRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<DynamicSchemaListResult>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListDynamicSchemaBySchemaRequest>,
+  output: __S(370, __c23, 2) as any as S.Schema<DynamicSchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7843,8 +7851,8 @@ export const ListDynamicSchemaVersionByDynamicSchema: API.OperationMethod<
   ListDynamicSchemaVersionByDynamicSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<ListDynamicSchemaVersionByDynamicSchemaRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<DynamicSchemaVersionListResult>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListDynamicSchemaVersionByDynamicSchemaRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<DynamicSchemaVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7858,8 +7866,8 @@ export const ListExecutionByWorkflowVersion: API.OperationMethod<
   ListExecutionByWorkflowVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<ListExecutionByWorkflowVersionRequest>,
-  output: __S(311, __c38, 7) as any as S.Schema<ExecutionListResult>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListExecutionByWorkflowVersionRequest>,
+  output: __S(418, __c26, 2) as any as S.Schema<ExecutionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7873,8 +7881,8 @@ export const ListHardwareSettingsByParent: API.OperationMethod<
   ListHardwareSettingsByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<ListHardwareSettingsByParentRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<HardwareSettingListResult>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListHardwareSettingsByParentRequest>,
+  output: __S(435, __c27, 3) as any as S.Schema<HardwareSettingListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7888,8 +7896,8 @@ export const ListHierarchyConfigurationMetadatasByParent: API.OperationMethod<
   ListHierarchyConfigurationMetadatasByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<ListHierarchyConfigurationMetadatasByParentRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<HierarchyConfigurationMetadataListResult>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListHierarchyConfigurationMetadatasByParentRequest>,
+  output: __S(450, __c28, 2) as any as S.Schema<HierarchyConfigurationMetadataListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7904,11 +7912,11 @@ export const ListHierarchyConfigurationMetadataVersionByParent: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    319,
-    __c39,
-    7,
+    464,
+    __c29,
+    0,
   ) as any as S.Schema<ListHierarchyConfigurationMetadataVersionByParentRequest>,
-  output: __S(321, __c40, 1) as any as S.Schema<HierarchyConfigurationMetadataVersionListResult>,
+  output: __S(466, __c29, 2) as any as S.Schema<HierarchyConfigurationMetadataVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7922,8 +7930,8 @@ export const ListImageByDisconnectedOperation: API.OperationMethod<
   ListImageByDisconnectedOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<ListImageByDisconnectedOperationRequest>,
-  output: __S(324, __c40, 4) as any as S.Schema<ImageListResult>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListImageByDisconnectedOperationRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<ImageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7937,8 +7945,8 @@ export const ListInstanceBySolution: API.OperationMethod<
   ListInstanceBySolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<ListInstanceBySolutionRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<InstanceListResult>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListInstanceBySolutionRequest>,
+  output: __S(498, __c31, 2) as any as S.Schema<InstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7952,8 +7960,8 @@ export const ListInstanceHistoryByInstance: API.OperationMethod<
   ListInstanceHistoryByInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<ListInstanceHistoryByInstanceRequest>,
-  output: __S(331, __c41, 3) as any as S.Schema<InstanceHistoryListResult>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListInstanceHistoryByInstanceRequest>,
+  output: __S(515, __c32, 3) as any as S.Schema<InstanceHistoryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7967,8 +7975,8 @@ export const ListJobByTarget: API.OperationMethod<
   ListJobByTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<ListJobByTargetRequest>,
-  output: __S(334, __c41, 6) as any as S.Schema<JobListResult>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListJobByTargetRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<JobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7982,8 +7990,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(339, __c42, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(628, __c39, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7997,8 +8005,8 @@ export const ListSchemaByResourceGroup: API.OperationMethod<
   ListSchemaByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340, __c42, 4) as any as S.Schema<ListSchemaByResourceGroupRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<SchemaListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListSchemaByResourceGroupRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<SchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8012,8 +8020,8 @@ export const ListSchemaBySubscription: API.OperationMethod<
   ListSchemaBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<ListSchemaBySubscriptionRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<SchemaListResult>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListSchemaBySubscriptionRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<SchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8027,8 +8035,8 @@ export const ListSchemaReferenceByResourceGroup: API.OperationMethod<
   ListSchemaReferenceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<ListSchemaReferenceByResourceGroupRequest>,
-  output: __S(348, __c43, 4) as any as S.Schema<SchemaReferenceListResult>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListSchemaReferenceByResourceGroupRequest>,
+  output: __S(691, __c43, 3) as any as S.Schema<SchemaReferenceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8042,8 +8050,8 @@ export const ListSchemaVersionBySchema: API.OperationMethod<
   ListSchemaVersionBySchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<ListSchemaVersionBySchemaRequest>,
-  output: __S(350, __c43, 6) as any as S.Schema<SchemaVersionListResult>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListSchemaVersionBySchemaRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<SchemaVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8057,8 +8065,8 @@ export const ListSiteByResourceGroup: API.OperationMethod<
   ListSiteByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<ListSiteByResourceGroupRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<SiteListResult>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListSiteByResourceGroupRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<SiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8072,8 +8080,8 @@ export const ListSiteReferenceByContext: API.OperationMethod<
   ListSiteReferenceByContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<ListSiteReferenceByContextRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<SiteReferenceListResult>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListSiteReferenceByContextRequest>,
+  output: __S(754, __c47, 2) as any as S.Schema<SiteReferenceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8087,8 +8095,8 @@ export const ListSitesByServiceGroupByServiceGroup: API.OperationMethod<
   ListSitesByServiceGroupByServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<ListSitesByServiceGroupByServiceGroupRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<SiteListResult>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListSitesByServiceGroupByServiceGroupRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<SiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8102,8 +8110,8 @@ export const ListSitesBySubscription: API.OperationMethod<
   ListSitesBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<ListSitesBySubscriptionRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<SiteListResult>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListSitesBySubscriptionRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<SiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8117,8 +8125,8 @@ export const ListSolutionByTarget: API.OperationMethod<
   ListSolutionByTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<ListSolutionByTargetRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<SolutionListResult>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListSolutionByTargetRequest>,
+  output: __S(802, __c50, 2) as any as S.Schema<SolutionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8132,8 +8140,8 @@ export const ListSolutionMetadatasByParent: API.OperationMethod<
   ListSolutionMetadatasByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<ListSolutionMetadatasByParentRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<SolutionMetadataListResult>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListSolutionMetadatasByParentRequest>,
+  output: __S(835, __c52, 3) as any as S.Schema<SolutionMetadataListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8147,8 +8155,8 @@ export const ListSolutionMetadataVersionByParent: API.OperationMethod<
   ListSolutionMetadataVersionByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<ListSolutionMetadataVersionByParentRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<SolutionMetadataVersionListResult>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListSolutionMetadataVersionByParentRequest>,
+  output: __S(851, __c53, 3) as any as S.Schema<SolutionMetadataVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8162,8 +8170,8 @@ export const ListSolutionSchemaBySolutionTemplateVersion: API.OperationMethod<
   ListSolutionSchemaBySolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<ListSolutionSchemaBySolutionTemplateVersionRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<SolutionSchemaListResult>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListSolutionSchemaBySolutionTemplateVersionRequest>,
+  output: __S(867, __c54, 3) as any as S.Schema<SolutionSchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8177,8 +8185,8 @@ export const ListSolutionTemplateByResourceGroup: API.OperationMethod<
   ListSolutionTemplateByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<ListSolutionTemplateByResourceGroupRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<SolutionTemplateListResult>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListSolutionTemplateByResourceGroupRequest>,
+  output: __S(898, __c56, 2) as any as S.Schema<SolutionTemplateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8192,8 +8200,8 @@ export const ListSolutionTemplateBySubscription: API.OperationMethod<
   ListSolutionTemplateBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<ListSolutionTemplateBySubscriptionRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<SolutionTemplateListResult>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListSolutionTemplateBySubscriptionRequest>,
+  output: __S(898, __c56, 2) as any as S.Schema<SolutionTemplateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8208,11 +8216,11 @@ export const ListSolutionTemplateVersionBySolutionTemplate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    379,
-    __c47,
-    3,
+    928,
+    __c58,
+    0,
   ) as any as S.Schema<ListSolutionTemplateVersionBySolutionTemplateRequest>,
-  output: __S(382, __c47, 6) as any as S.Schema<SolutionTemplateVersionListResult>,
+  output: __S(931, __c58, 3) as any as S.Schema<SolutionTemplateVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8226,8 +8234,8 @@ export const ListSolutionVersionBySolution: API.OperationMethod<
   ListSolutionVersionBySolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<ListSolutionVersionBySolutionRequest>,
-  output: __S(386, __c48, 2) as any as S.Schema<SolutionVersionListResult>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListSolutionVersionBySolutionRequest>,
+  output: __S(947, __c59, 3) as any as S.Schema<SolutionVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8241,8 +8249,8 @@ export const ListTargetByResourceGroup: API.OperationMethod<
   ListTargetByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<ListTargetByResourceGroupRequest>,
-  output: __S(389, __c48, 5) as any as S.Schema<TargetListResult>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListTargetByResourceGroupRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<TargetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8256,8 +8264,8 @@ export const ListTargetBySubscription: API.OperationMethod<
   ListTargetBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390, __c48, 6) as any as S.Schema<ListTargetBySubscriptionRequest>,
-  output: __S(389, __c48, 5) as any as S.Schema<TargetListResult>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListTargetBySubscriptionRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<TargetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8271,8 +8279,8 @@ export const ListWorkflowByContext: API.OperationMethod<
   ListWorkflowByContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<ListWorkflowByContextRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<WorkflowListResult>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListWorkflowByContextRequest>,
+  output: __S(1010, __c63, 2) as any as S.Schema<WorkflowListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8286,8 +8294,8 @@ export const ListWorkflowVersionByWorkflow: API.OperationMethod<
   ListWorkflowVersionByWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<ListWorkflowVersionByWorkflowRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<WorkflowVersionListResult>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListWorkflowVersionByWorkflowRequest>,
+  output: __S(1043, __c65, 3) as any as S.Schema<WorkflowVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8301,8 +8309,8 @@ export const PublishTargetSolutionVersion: API.OperationMethod<
   PublishTargetSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<PublishTargetSolutionVersionRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<PublishTargetSolutionVersionResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<PublishTargetSolutionVersionRequest>,
+  output: __S(4256, __c266, 0) as any as S.Schema<PublishTargetSolutionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8316,8 +8324,8 @@ export const RemoveConfigTemplateVersion: API.OperationMethod<
   RemoveConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<RemoveConfigTemplateVersionRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<RemoveVersionResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<RemoveConfigTemplateVersionRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<RemoveVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8331,8 +8339,8 @@ export const RemoveSchemaVersion: API.OperationMethod<
   RemoveSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<RemoveSchemaVersionRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<RemoveVersionResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<RemoveSchemaVersionRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<RemoveVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8346,8 +8354,8 @@ export const RemoveSolutionTemplateVersion: API.OperationMethod<
   RemoveSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<RemoveSolutionTemplateVersionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<RemoveSolutionTemplateVersionResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<RemoveSolutionTemplateVersionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<RemoveSolutionTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8361,8 +8369,8 @@ export const RemoveTargetRevision: API.OperationMethod<
   RemoveTargetRevisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<RemoveTargetRevisionRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<RemoveTargetRevisionResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<RemoveTargetRevisionRequest>,
+  output: __S(4048, __c253, 0) as any as S.Schema<RemoveTargetRevisionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8376,8 +8384,8 @@ export const ReviewTargetSolutionVersion: API.OperationMethod<
   ReviewTargetSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<ReviewTargetSolutionVersionRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<ReviewTargetSolutionVersionResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ReviewTargetSolutionVersionRequest>,
+  output: __S(4256, __c266, 0) as any as S.Schema<ReviewTargetSolutionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8391,8 +8399,8 @@ export const SchemaReferencesCreateOrUpdate: API.OperationMethod<
   SchemaReferencesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<SchemaReferencesCreateOrUpdateRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<SchemaReferencesCreateOrUpdateResponse>,
+  input: __S(1169, __c73, 1) as any as S.Schema<SchemaReferencesCreateOrUpdateRequest>,
+  output: __S(3760, __c235, 0) as any as S.Schema<SchemaReferencesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8406,8 +8414,8 @@ export const SchemasCreateOrUpdate: API.OperationMethod<
   SchemasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<SchemasCreateOrUpdateRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<SchemasCreateOrUpdateResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<SchemasCreateOrUpdateRequest>,
+  output: __S(1185, __c74, 1) as any as S.Schema<SchemasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8421,8 +8429,8 @@ export const SchemaVersionsCreateOrUpdate: API.OperationMethod<
   SchemaVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<SchemaVersionsCreateOrUpdateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<SchemaVersionsCreateOrUpdateResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<SchemaVersionsCreateOrUpdateRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<SchemaVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8436,8 +8444,8 @@ export const SiteReferencesCreateOrUpdate: API.OperationMethod<
   SiteReferencesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<SiteReferencesCreateOrUpdateRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<SiteReferencesCreateOrUpdateResponse>,
+  input: __S(1233, __c77, 1) as any as S.Schema<SiteReferencesCreateOrUpdateRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<SiteReferencesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8451,8 +8459,8 @@ export const SitesByServiceGroupCreateOrUpdate: API.OperationMethod<
   SitesByServiceGroupCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<SitesByServiceGroupCreateOrUpdateRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<SitesByServiceGroupCreateOrUpdateResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<SitesByServiceGroupCreateOrUpdateRequest>,
+  output: __S(3920, __c245, 0) as any as S.Schema<SitesByServiceGroupCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8466,8 +8474,8 @@ export const SitesBySubscriptionCreateOrUpdate: API.OperationMethod<
   SitesBySubscriptionCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<SitesBySubscriptionCreateOrUpdateRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<SitesBySubscriptionCreateOrUpdateResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<SitesBySubscriptionCreateOrUpdateRequest>,
+  output: __S(3920, __c245, 0) as any as S.Schema<SitesBySubscriptionCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8481,8 +8489,8 @@ export const SitesCreateOrUpdate: API.OperationMethod<
   SitesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<SitesCreateOrUpdateRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<SitesCreateOrUpdateResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<SitesCreateOrUpdateRequest>,
+  output: __S(3920, __c245, 0) as any as S.Schema<SitesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8496,8 +8504,8 @@ export const SolutionsCreateOrUpdate: API.OperationMethod<
   SolutionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<SolutionsCreateOrUpdateRequest>,
-  output: __S(418, __c52, 2) as any as S.Schema<SolutionsCreateOrUpdateResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<SolutionsCreateOrUpdateRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<SolutionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8511,8 +8519,8 @@ export const SolutionTemplatesCreateOrUpdate: API.OperationMethod<
   SolutionTemplatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<SolutionTemplatesCreateOrUpdateRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<SolutionTemplatesCreateOrUpdateResponse>,
+  input: __S(1345, __c84, 1) as any as S.Schema<SolutionTemplatesCreateOrUpdateRequest>,
+  output: __S(4192, __c262, 0) as any as S.Schema<SolutionTemplatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8526,8 +8534,8 @@ export const SolutionTemplateVersionsBulkDeploySolution: API.OperationMethod<
   SolutionTemplateVersionsBulkDeploySolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionResponse>,
+  input: __S(1362, __c85, 2) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8541,8 +8549,8 @@ export const SolutionTemplateVersionsBulkPublishSolution: API.OperationMethod<
   SolutionTemplateVersionsBulkPublishSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionResponse>,
+  input: __S(1378, __c86, 2) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8556,8 +8564,8 @@ export const SolutionTemplateVersionsCreateOrUpdate: API.OperationMethod<
   SolutionTemplateVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8571,8 +8579,8 @@ export const SolutionVersionsCreateOrUpdate: API.OperationMethod<
   SolutionVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<SolutionVersionsCreateOrUpdateRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<SolutionVersionsCreateOrUpdateResponse>,
+  input: __S(1409, __c88, 1) as any as S.Schema<SolutionVersionsCreateOrUpdateRequest>,
+  output: __S(4256, __c266, 0) as any as S.Schema<SolutionVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8586,8 +8594,8 @@ export const TargetsCreateOrUpdate: API.OperationMethod<
   TargetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<TargetsCreateOrUpdateRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<TargetsCreateOrUpdateResponse>,
+  input: __S(1441, __c90, 1) as any as S.Schema<TargetsCreateOrUpdateRequest>,
+  output: __S(1442, __c90, 2) as any as S.Schema<TargetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8601,8 +8609,8 @@ export const TargetsResolveConfiguration: API.OperationMethod<
   TargetsResolveConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<TargetsResolveConfigurationRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<ResolvedConfiguration>,
+  input: __S(1456, __c91, 0) as any as S.Schema<TargetsResolveConfigurationRequest>,
+  output: __S(1457, __c91, 1) as any as S.Schema<ResolvedConfiguration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8616,8 +8624,8 @@ export const TargetsUnstageSolutionVersion: API.OperationMethod<
   TargetsUnstageSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<TargetsUnstageSolutionVersionRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<TargetsUnstageSolutionVersionResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<TargetsUnstageSolutionVersionRequest>,
+  output: __S(4256, __c266, 0) as any as S.Schema<TargetsUnstageSolutionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8631,8 +8639,8 @@ export const UninstallTargetSolution: API.OperationMethod<
   UninstallTargetSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<UninstallTargetSolutionRequest>,
-  output: __S(437, __c54, 5) as any as S.Schema<UninstallTargetSolutionResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<UninstallTargetSolutionRequest>,
+  output: __S(1489, __c93, 1) as any as S.Schema<UninstallTargetSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8646,8 +8654,8 @@ export const UpdateConfigTemplate: API.OperationMethod<
   UpdateConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<UpdateConfigTemplateRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<UpdateConfigTemplateResponse>,
+  input: __S(1505, __c94, 1) as any as S.Schema<UpdateConfigTemplateRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<UpdateConfigTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8661,8 +8669,8 @@ export const UpdateConfigTemplateMetadatas: API.OperationMethod<
   UpdateConfigTemplateMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<UpdateConfigTemplateMetadatasRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<UpdateConfigTemplateMetadatasResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<UpdateConfigTemplateMetadatasRequest>,
+  output: __S(2128, __c133, 0) as any as S.Schema<UpdateConfigTemplateMetadatasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8676,8 +8684,8 @@ export const UpdateConfigTemplateVersion: API.OperationMethod<
   UpdateConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<UpdateConfigTemplateVersionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateConfigTemplateVersionResponse>,
+  input: __S(1537, __c96, 1) as any as S.Schema<UpdateConfigTemplateVersionRequest>,
+  output: __S(3168, __c198, 0) as any as S.Schema<UpdateConfigTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8691,8 +8699,8 @@ export const UpdateConfiguration: API.OperationMethod<
   UpdateConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<UpdateConfigurationRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdateConfigurationResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<UpdateConfigurationRequest>,
+  output: __S(4064, __c254, 0) as any as S.Schema<UpdateConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8706,8 +8714,8 @@ export const UpdateConfigurationReference: API.OperationMethod<
   UpdateConfigurationReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<UpdateConfigurationReferenceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<UpdateConfigurationReferenceResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<UpdateConfigurationReferenceRequest>,
+  output: __S(3616, __c226, 0) as any as S.Schema<UpdateConfigurationReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8721,8 +8729,8 @@ export const UpdateContext: API.OperationMethod<
   UpdateContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<UpdateContextRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<UpdateContextResponse>,
+  input: __S(1585, __c99, 1) as any as S.Schema<UpdateContextRequest>,
+  output: __S(3056, __c191, 0) as any as S.Schema<UpdateContextResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8736,8 +8744,8 @@ export const UpdateDiagnostic: API.OperationMethod<
   UpdateDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<UpdateDiagnosticRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<UpdateDiagnosticResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<UpdateDiagnosticRequest>,
+  output: __S(3088, __c193, 0) as any as S.Schema<UpdateDiagnosticResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8751,8 +8759,8 @@ export const UpdateDisconnectedOperation: API.OperationMethod<
   UpdateDisconnectedOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<UpdateDisconnectedOperationRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<UpdateDisconnectedOperationResponse>,
+  input: __S(1635, __c102, 3) as any as S.Schema<UpdateDisconnectedOperationRequest>,
+  output: __S(2672, __c167, 0) as any as S.Schema<UpdateDisconnectedOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8766,8 +8774,8 @@ export const UpdateDynamicConfiguration: API.OperationMethod<
   UpdateDynamicConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<UpdateDynamicConfigurationRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<UpdateDynamicConfigurationResponse>,
+  input: __S(1649, __c103, 1) as any as S.Schema<UpdateDynamicConfigurationRequest>,
+  output: __S(2720, __c170, 0) as any as S.Schema<UpdateDynamicConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8781,8 +8789,8 @@ export const UpdateDynamicConfigurationVersion: API.OperationMethod<
   UpdateDynamicConfigurationVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<UpdateDynamicConfigurationVersionRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<UpdateDynamicConfigurationVersionResponse>,
+  input: __S(1665, __c104, 1) as any as S.Schema<UpdateDynamicConfigurationVersionRequest>,
+  output: __S(2753, __c172, 1) as any as S.Schema<UpdateDynamicConfigurationVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8796,8 +8804,8 @@ export const UpdateDynamicSchema: API.OperationMethod<
   UpdateDynamicSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<UpdateDynamicSchemaRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<UpdateDynamicSchemaResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<UpdateDynamicSchemaRequest>,
+  output: __S(2784, __c174, 0) as any as S.Schema<UpdateDynamicSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8811,8 +8819,8 @@ export const UpdateDynamicSchemaVersion: API.OperationMethod<
   UpdateDynamicSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<UpdateDynamicSchemaVersionRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<UpdateDynamicSchemaVersionResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<UpdateDynamicSchemaVersionRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<UpdateDynamicSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8826,8 +8834,8 @@ export const UpdateExecution: API.OperationMethod<
   UpdateExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<UpdateExecutionRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<UpdateExecutionResponse>,
+  input: __S(1729, __c108, 1) as any as S.Schema<UpdateExecutionRequest>,
+  output: __S(3280, __c205, 0) as any as S.Schema<UpdateExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8841,8 +8849,8 @@ export const UpdateInstance: API.OperationMethod<
   UpdateInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<UpdateInstanceResponse>,
+  input: __S(1746, __c109, 2) as any as S.Schema<UpdateInstanceRequest>,
+  output: __S(3472, __c217, 0) as any as S.Schema<UpdateInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8856,8 +8864,8 @@ export const UpdateSchema: API.OperationMethod<
   UpdateSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<UpdateSchemaRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<UpdateSchemaResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<UpdateSchemaRequest>,
+  output: __S(3712, __c232, 0) as any as S.Schema<UpdateSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8871,8 +8879,8 @@ export const UpdateSchemaReference: API.OperationMethod<
   UpdateSchemaReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<UpdateSchemaReferenceRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<UpdateSchemaReferenceResponse>,
+  input: __S(1777, __c111, 1) as any as S.Schema<UpdateSchemaReferenceRequest>,
+  output: __S(3760, __c235, 0) as any as S.Schema<UpdateSchemaReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8886,8 +8894,8 @@ export const UpdateSchemaVersion: API.OperationMethod<
   UpdateSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<UpdateSchemaVersionRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<UpdateSchemaVersionResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<UpdateSchemaVersionRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<UpdateSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8901,8 +8909,8 @@ export const UpdateSite: API.OperationMethod<
   UpdateSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468, __c58, 4) as any as S.Schema<UpdateSiteRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<UpdateSiteResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<UpdateSiteRequest>,
+  output: __S(3824, __c239, 0) as any as S.Schema<UpdateSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8916,8 +8924,8 @@ export const UpdateSiteReference: API.OperationMethod<
   UpdateSiteReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<UpdateSiteReferenceRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<UpdateSiteReferenceResponse>,
+  input: __S(1841, __c115, 1) as any as S.Schema<UpdateSiteReferenceRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<UpdateSiteReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8931,8 +8939,8 @@ export const UpdateSitesByServiceGroup: API.OperationMethod<
   UpdateSitesByServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<UpdateSitesByServiceGroupRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<UpdateSitesByServiceGroupResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<UpdateSitesByServiceGroupRequest>,
+  output: __S(3920, __c245, 0) as any as S.Schema<UpdateSitesByServiceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8946,8 +8954,8 @@ export const UpdateSitesBySubscription: API.OperationMethod<
   UpdateSitesBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<UpdateSitesBySubscriptionRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<UpdateSitesBySubscriptionResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<UpdateSitesBySubscriptionRequest>,
+  output: __S(3920, __c245, 0) as any as S.Schema<UpdateSitesBySubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8961,8 +8969,8 @@ export const UpdateSolution: API.OperationMethod<
   UpdateSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<UpdateSolutionRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<UpdateSolutionResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<UpdateSolutionRequest>,
+  output: __S(3984, __c249, 0) as any as S.Schema<UpdateSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8976,8 +8984,8 @@ export const UpdateSolutionTemplate: API.OperationMethod<
   UpdateSolutionTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475, __c59, 3) as any as S.Schema<UpdateSolutionTemplateRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<UpdateSolutionTemplateResponse>,
+  input: __S(1905, __c119, 1) as any as S.Schema<UpdateSolutionTemplateRequest>,
+  output: __S(4192, __c262, 0) as any as S.Schema<UpdateSolutionTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8991,8 +8999,8 @@ export const UpdateSolutionTemplateVersion: API.OperationMethod<
   UpdateSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477, __c59, 5) as any as S.Schema<UpdateSolutionTemplateVersionRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<UpdateSolutionTemplateVersionResponse>,
+  input: __S(1921, __c120, 1) as any as S.Schema<UpdateSolutionTemplateVersionRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<UpdateSolutionTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9006,8 +9014,8 @@ export const UpdateSolutionVersion: API.OperationMethod<
   UpdateSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479, __c59, 7) as any as S.Schema<UpdateSolutionVersionRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<UpdateSolutionVersionResponse>,
+  input: __S(1937, __c121, 1) as any as S.Schema<UpdateSolutionVersionRequest>,
+  output: __S(4256, __c266, 0) as any as S.Schema<UpdateSolutionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9021,8 +9029,8 @@ export const UpdateTarget: API.OperationMethod<
   UpdateTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481, __c60, 1) as any as S.Schema<UpdateTargetRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<UpdateTargetResponse>,
+  input: __S(1953, __c122, 1) as any as S.Schema<UpdateTargetRequest>,
+  output: __S(4304, __c269, 0) as any as S.Schema<UpdateTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9036,8 +9044,8 @@ export const UpdateTargetExternalValidationStatus: API.OperationMethod<
   UpdateTargetExternalValidationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482, __c60, 2) as any as S.Schema<UpdateTargetExternalValidationStatusRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<UpdateTargetExternalValidationStatusResponse>,
+  input: __S(1984, __c124, 0) as any as S.Schema<UpdateTargetExternalValidationStatusRequest>,
+  output: __S(4256, __c266, 0) as any as S.Schema<UpdateTargetExternalValidationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9051,8 +9059,8 @@ export const UpdateWorkflow: API.OperationMethod<
   UpdateWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<UpdateWorkflowRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<UpdateWorkflowResponse>,
+  input: __S(2000, __c125, 0) as any as S.Schema<UpdateWorkflowRequest>,
+  output: __S(4336, __c271, 0) as any as S.Schema<UpdateWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9066,8 +9074,8 @@ export const UpdateWorkflowVersion: API.OperationMethod<
   UpdateWorkflowVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485, __c60, 5) as any as S.Schema<UpdateWorkflowVersionRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<UpdateWorkflowVersionResponse>,
+  input: __S(2017, __c126, 1) as any as S.Schema<UpdateWorkflowVersionRequest>,
+  output: __S(4400, __c275, 0) as any as S.Schema<UpdateWorkflowVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9081,8 +9089,8 @@ export const WorkflowsCreateOrUpdate: API.OperationMethod<
   WorkflowsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(486, __c60, 6) as any as S.Schema<WorkflowsCreateOrUpdateRequest>,
-  output: __S(487, __c60, 7) as any as S.Schema<WorkflowsCreateOrUpdateResponse>,
+  input: __S(2032, __c127, 0) as any as S.Schema<WorkflowsCreateOrUpdateRequest>,
+  output: __S(2033, __c127, 1) as any as S.Schema<WorkflowsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9096,8 +9104,8 @@ export const WorkflowVersionsCreateOrUpdate: API.OperationMethod<
   WorkflowVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<WorkflowVersionsCreateOrUpdateRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<WorkflowVersionsCreateOrUpdateResponse>,
+  input: __S(2049, __c128, 1) as any as S.Schema<WorkflowVersionsCreateOrUpdateRequest>,
+  output: __S(4400, __c275, 0) as any as S.Schema<WorkflowVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9137,36 +9145,6 @@ function __c0(j: number): any {
           linkExpiry: S.String,
         }),
       ).annotate({ identifier: "ArtifactDownloadResult" });
-    case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(3, __c0, 3)));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          solutionVersionId: S.optional(S.String),
-          solutionTemplateId: S.optional(S.String),
-          solutionTemplateVersion: S.optional(S.String),
-          solutionInstanceName: S.optional(S.String),
-          targetId: S.optional(S.String),
-          dependencies: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "SolutionDependencyParameter",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targetId: S.String,
-          solutionDependencies: S.optional(__S(4, __c0, 4)),
-          solutionInstanceName: S.optional(S.String),
-          solutionConfiguration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BulkReviewTargetDetails" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.Array(__S(3, __c0, 3));
   }
 }
 function __c1(j: number): any {
@@ -9174,13 +9152,24 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          targetId: S.String,
+          solutionDependencies: S.optional(__S(34, __c2, 2)),
+          solutionInstanceName: S.optional(S.String),
+          solutionConfiguration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BulkReviewTargetDetails" });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          targets: __S(6, __c0, 6),
+          targets: __S(17, __c1, 1),
           solutionInstanceName: S.optional(S.String),
-          solutionDependencies: S.optional(__S(7, __c0, 7)),
+          solutionDependencies: S.optional(__S(48, __c3, 0)),
           solutionConfiguration: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9193,413 +9182,54 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BulkSolutionTemplateVersionReviewSolutionRequest",
       });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BulkSolutionTemplateVersionReviewSolutionResponse",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hierarchyIds: S.optional(__S(10, __c1, 2)),
-          level: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HierarchyMetadata" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          contextId: S.optional(S.String),
-          linkedHierarchies: S.optional(__S(12, __c1, 4)),
-          unLinkedHierarchies: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "ConfigTemplateMetadataPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-          configTemplateMetadataName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(13, __c1, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigTemplateMetadatasCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contextId: S.optional(S.String),
-          linkedHierarchies: S.optional(__S(12, __c1, 4)),
-          unLinkedHierarchies: S.optional(__S(12, __c1, 4)),
-          templateUniqueIdentifier: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigTemplateMetadataProperties",
-      });
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(33, __c2, 1)));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(16, __c2, 0)),
-          eTag: S.optional(S.String),
+          solutionVersionId: S.optional(S.String),
+          solutionTemplateId: S.optional(S.String),
+          solutionTemplateVersion: S.optional(S.String),
+          solutionInstanceName: S.optional(S.String),
+          targetId: S.optional(S.String),
+          dependencies: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
-        identifier: "ConfigTemplateMetadatasCreateOrUpdateResponse",
+        identifier: "SolutionDependencyParameter",
       });
     case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-        }),
-      ).annotate({
-        identifier: "ConfigTemplatePropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(19, __c2, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigTemplatesCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uniqueIdentifier: S.optional(S.String),
-          description: S.String,
-          latestVersion: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigTemplateProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(21, __c2, 5)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigTemplatesCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-          contextId: S.String,
-          hierarchyIds: S.optional(__S(10, __c1, 2)),
-          level: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/linkToHierarchies",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigTemplatesLinkToHierarchiesRequest",
-      });
+      return S.Array(__S(33, __c2, 1));
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-          contextId: S.String,
-          hierarchyIds: S.optional(__S(10, __c1, 2)),
-          level: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/unLinkFromHierarchies",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigTemplatesUnLinkFromHierarchiesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          configurations: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "ConfigTemplateVersionPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-          configTemplateVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(25, __c3, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigTemplateVersionsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          configurations: S.Unknown,
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigTemplateVersionProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(27, __c3, 3)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigTemplateVersionsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          configurationResourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigurationReferencePropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          configurationReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(29, __c3, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/{resourceUri+}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigurationReferencesCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          configurationResourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigurationReferenceProperties",
-      });
+      return S.Array(__S(33, __c2, 1));
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "ConfigurationReferencesCreateOrUpdateResponse",
-      });
-    case 1:
       return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ConfigurationPropertiesInput",
+        identifier: "BulkSolutionTemplateVersionReviewSolutionResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(33, __c4, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigurationsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigurationProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "ConfigurationsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.String,
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Capability" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.String,
-        }),
-      ).annotate({ identifier: "Hierarchy" });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          capabilities: __S(38, __c4, 6),
-          hierarchies: __S(40, __c5, 0),
-        }),
-      ).annotate({ identifier: "ContextPropertiesInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(41, __c5, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ContextsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          uniqueIdentifier: S.optional(S.String),
-          capabilities: __S(38, __c4, 6),
-          hierarchies: __S(40, __c5, 0),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContextProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "ContextsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(25, __c3, 1)),
+          properties: S.optional(__S(3152, __c197, 0)),
         }),
       ).annotate({
         identifier: "ConfigTemplateVersionInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9607,7 +9237,7 @@ function __c5(j: number): any {
           configTemplateName: S.String.pipe(T.Label()),
           updateType: S.optional(S.String),
           version: S.optional(S.String),
-          configTemplateVersion: __S(45, __c5, 5),
+          configTemplateVersion: __S(80, __c5, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9619,3001 +9249,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateConfigTemplateVersionRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "SchemaVersionPropertiesInput",
-      });
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "SchemaVersionInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          updateType: S.optional(S.String),
-          version: S.optional(S.String),
-          schemaVersion: __S(48, __c6, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/createVersion",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSchemaVersionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.Unknown,
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchemaVersionProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(50, __c6, 2)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateSchemaVersionResponse",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          configurations: S.optional(S.Unknown),
-          specification: __S(52, __c6, 4),
-          orchestratorType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SolutionTemplateVersionPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "SolutionTemplateVersionInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          solutionTemplateName: S.String.pipe(T.Label()),
-          updateType: S.optional(S.String),
-          version: S.optional(S.String),
-          solutionTemplateVersion: __S(54, __c6, 6),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/createVersion",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSolutionTemplateVersionRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          configurations: S.optional(S.Unknown),
-          specification: __S(52, __c6, 4),
-          orchestratorType: S.optional(S.String),
-          internalState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SolutionTemplateVersionProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(56, __c7, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateSolutionTemplateVersionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConfigTemplateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-          configTemplateMetadataName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConfigTemplateMetadatasRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-          configTemplateVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConfigTemplateVersionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConfigurationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          configurationReferenceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{resourceUri+}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConfigurationReferenceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteContextRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          diagnosticName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDiagnosticRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDisconnectedOperationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-          dynamicConfigurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDynamicConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-          dynamicConfigurationName: S.String.pipe(T.Label()),
-          dynamicConfigurationVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDynamicConfigurationVersionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          dynamicSchemaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDynamicSchemaRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          dynamicSchemaName: S.String.pipe(T.Label()),
-          dynamicSchemaVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDynamicSchemaVersionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextName: S.String.pipe(T.Label()),
-          workflowName: S.String.pipe(T.Label()),
-          versionName: S.String.pipe(T.Label()),
-          executionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteExecutionRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          hardwareSettingName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHardwareSettingsRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-          solutionName: S.String.pipe(T.Label()),
-          instanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteInstanceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSchemaRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          schemaReferenceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{resourceUri+}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSchemaReferenceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          schemaVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSchemaVersionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          siteName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSiteRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextName: S.String.pipe(T.Label()),
-          siteReferenceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSiteReferenceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          servicegroupName: S.String.pipe(T.Label()),
-          siteName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSitesByServiceGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          siteName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSitesBySubscriptionRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-          solutionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSolutionRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          solutionTemplateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSolutionTemplateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          solutionTemplateName: S.String.pipe(T.Label()),
-          solutionTemplateVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSolutionTemplateVersionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-          solutionName: S.String.pipe(T.Label()),
-          solutionVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSolutionVersionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-          forceDelete: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTargetRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextName: S.String.pipe(T.Label()),
-          workflowName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteWorkflowRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextName: S.String.pipe(T.Label()),
-          workflowName: S.String.pipe(T.Label()),
-          versionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteWorkflowVersionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "AzureResourceManagerCommonTypesExtendedLocation",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          diagnosticName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(33, __c4, 1)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DiagnosticsCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(35, __c4, 3)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DiagnosticsCreateOrUpdateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cores: S.Number,
-          pricingModel: S.String,
-        }),
-      ).annotate({ identifier: "BillingPeriodInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          autoRenew: S.String,
-          current: __S(90, __c11, 2),
-          upcoming: S.optional(__S(90, __c11, 2)),
-        }),
-      ).annotate({
-        identifier: "BillingConfigurationInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          azureHybridWindowsServerBenefit: S.optional(S.String),
-          windowsServerVmCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BenefitPlans" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          connectionIntent: S.String,
-          registrationStatus: S.optional(S.String),
-          deviceVersion: S.optional(S.String),
-          billingConfiguration: S.optional(__S(91, __c11, 3)),
-          benefitPlans: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({
-        identifier: "DisconnectedOperationPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(93, __c11, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisconnectedOperationsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cores: S.Number,
-          pricingModel: S.String,
-          startDate: S.optional(S.String),
-          endDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BillingPeriod" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          autoRenew: S.String,
-          billingStatus: S.String,
-          current: __S(95, __c11, 7),
-          upcoming: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "BillingConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          stampId: S.String,
-          billingModel: S.String,
-          connectionIntent: S.String,
-          connectionStatus: S.optional(S.String),
-          registrationStatus: S.optional(S.String),
-          deviceVersion: S.optional(S.String),
-          billingConfiguration: S.optional(__S(96, __c12, 0)),
-          benefitPlans: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({
-        identifier: "DisconnectedOperationProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "DisconnectedOperationsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          currentVersion: S.String,
-        }),
-      ).annotate({
-        identifier: "DynamicConfigurationPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-          dynamicConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(99, __c12, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DynamicConfigurationsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          currentVersion: S.String,
-          displayName: S.optional(S.String),
-          dynamicConfigurationType: S.optional(S.String),
-          dynamicConfigurationModel: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DynamicConfigurationProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({
-        identifier: "DynamicConfigurationsCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "DynamicConfigurationVersionPropertiesInput",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-          dynamicConfigurationName: S.String.pipe(T.Label()),
-          dynamicConfigurationVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(103, __c12, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DynamicConfigurationVersionsCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.Unknown,
-          schemaId: S.optional(S.String),
-          dynamicSchemaVersionId: S.optional(S.String),
-          displayState: S.optional(S.String),
-          state: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DynamicConfigurationVersionProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(105, __c13, 1)),
-        }),
-      ).annotate({
-        identifier: "DynamicConfigurationVersionsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          dynamicSchemaName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33, __c4, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DynamicSchemasCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          configurationType: S.optional(S.String),
-          configurationModel: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DynamicSchemaProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(108, __c13, 4)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DynamicSchemasCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          dynamicSchemaName: S.String.pipe(T.Label()),
-          dynamicSchemaVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(47, __c5, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DynamicSchemaVersionsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          workflowVersionId: S.String,
-          specification: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "ExecutionPropertiesInput" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextName: S.String.pipe(T.Label()),
-          workflowName: S.String.pipe(T.Label()),
-          versionName: S.String.pipe(T.Label()),
-          executionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(111, __c13, 7)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExecutionsCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.Number),
-          statusMessage: S.optional(S.String),
-          stage: S.optional(S.String),
-          nextstage: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          isActive: S.optional(S.String),
-          inputs: S.optional(__S(52, __c6, 4)),
-          outputs: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "StageStatus" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          status: S.optional(S.Number),
-          statusMessage: S.optional(S.String),
-          stageHistory: S.optional(__S(114, __c14, 2)),
-        }),
-      ).annotate({ identifier: "ExecutionStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workflowVersionId: S.String,
-          specification: S.optional(__S(52, __c6, 4)),
-          status: S.optional(__S(115, __c14, 3)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExecutionProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(116, __c14, 4)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExecutionsCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          imageName: S.String.pipe(T.Label()),
-          artifactName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/artifacts/{artifactName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({ identifier: "GetArtifactRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          artifactOrder: S.Number,
-          title: S.String,
-          description: S.String,
-          size: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ArtifactProperties" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({ identifier: "GetArtifactResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetConfigTemplateRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-          configTemplateMetadataName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConfigTemplateMetadatasRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-          configTemplateVersionName: S.String.pipe(T.Label()),
-          configTemplateSchemaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}/configTemplateSchemas/{configTemplateSchemaName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConfigTemplateSchemaRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Unknown),
-          templateUniqueIdentifier: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigTemplateSchemaProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(124, __c15, 4)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetConfigTemplateSchemaResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-          configTemplateVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConfigTemplateVersionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetConfigurationRequest" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "GetConfigurationResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          configurationReferenceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConfigurationReferenceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetContextRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "GetContextResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          diagnosticName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetDiagnosticRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(35, __c4, 3)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetDiagnosticResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDisconnectedOperationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-          dynamicConfigurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDynamicConfigurationRequest",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-          dynamicConfigurationName: S.String.pipe(T.Label()),
-          dynamicConfigurationVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDynamicConfigurationVersionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          dynamicSchemaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetDynamicSchemaRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(108, __c13, 4)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetDynamicSchemaResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          dynamicSchemaName: S.String.pipe(T.Label()),
-          dynamicSchemaVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDynamicSchemaVersionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextName: S.String.pipe(T.Label()),
-          workflowName: S.String.pipe(T.Label()),
-          versionName: S.String.pipe(T.Label()),
-          executionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetExecutionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(116, __c14, 4)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetExecutionResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          hardwareSettingName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHardwareSettingsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          totalCores: S.Number,
-          diskSpaceInGb: S.Number,
-          memoryInGb: S.Number,
-          oem: S.String,
-          hardwareSku: S.String,
-          nodes: S.Number,
-          versionAtRegistration: S.String,
-          solutionBuilderExtension: S.String,
-          deviceId: S.String,
-        }),
-      ).annotate({
-        identifier: "HardwareSettingProperties",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(143, __c17, 7)),
-        }),
-      ).annotate({
-        identifier: "GetHardwareSettingsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          hierarchyConfigurationMetadataName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.Edge/hierarchyConfigurationMetadatas/{hierarchyConfigurationMetadataName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHierarchyConfigurationMetadatasRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          configTemplateId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HierarchyConfigurationMetadataProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(146, __c18, 2)),
-        }),
-      ).annotate({
-        identifier: "GetHierarchyConfigurationMetadatasResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          hierarchyConfigurationMetadataName: S.String.pipe(T.Label()),
-          hierarchyConfigurationMetadataVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.Edge/hierarchyConfigurationMetadatas/{hierarchyConfigurationMetadataName}/versions/{hierarchyConfigurationMetadataVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHierarchyConfigurationMetadataVersionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parentDisplayName: S.optional(S.String),
-          configTemplateVersionId: S.optional(S.String),
-          schemaId: S.optional(S.String),
-          dynamicConfigurationVersionId: S.optional(S.String),
-          configurationStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HierarchyConfigurationMetadataVersionProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(149, __c18, 5)),
-        }),
-      ).annotate({
-        identifier: "GetHierarchyConfigurationMetadataVersionResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          imageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({ identifier: "GetImageRequest" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          systemReboot: S.String,
-          securityUpdates: S.String,
-          osVersion: S.String,
-          agentVersion: S.String,
-          featureUpdates: S.String,
-        }),
-      ).annotate({ identifier: "ImageUpdateProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          releaseVersion: S.String,
-          releaseDisplayName: S.String,
-          releaseNotes: S.String,
-          releaseDate: S.String,
-          releaseType: S.String,
-          compatibleVersions: S.optional(__S(10, __c1, 2)),
-          updateProperties: S.optional(__S(152, __c19, 0)),
-        }),
-      ).annotate({ identifier: "ImageProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(153, __c19, 1)),
-        }),
-      ).annotate({ identifier: "GetImageResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-          solutionName: S.String.pipe(T.Label()),
-          instanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetInstanceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          interval: S.String,
-        }),
-      ).annotate({
-        identifier: "ReconciliationPolicyProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ComponentStatus" });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-          componentStatuses: S.optional(__S(158, __c19, 6)),
-        }),
-      ).annotate({ identifier: "TargetStatus" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lastModified: S.optional(S.String),
-          deployed: S.optional(S.Number),
-          expectedRunningJobId: S.optional(S.Number),
-          runningJobId: S.optional(S.Number),
-          status: S.optional(S.String),
-          statusDetails: S.optional(S.String),
-          generation: S.optional(S.Number),
-          targetStatuses: S.optional(__S(160, __c20, 0)),
-        }),
-      ).annotate({ identifier: "DeploymentStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          solutionVersionId: S.String,
-          targetId: S.String,
-          activeState: S.optional(S.String),
-          reconciliationPolicy: S.optional(__S(156, __c19, 4)),
-          solutionScope: S.optional(S.String),
-          status: S.optional(__S(161, __c20, 1)),
-          deploymentTimestampEpoch: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InstanceProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(162, __c20, 2)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetInstanceResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-          solutionName: S.String.pipe(T.Label()),
-          instanceName: S.String.pipe(T.Label()),
-          instanceHistoryName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}/histories/{instanceHistoryName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetInstanceHistoryRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          solutionVersionId: S.optional(S.String),
-          specification: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "SolutionVersionSnapshot" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          targetId: S.optional(S.String),
-          targetSpecification: S.optional(__S(52, __c6, 4)),
-          solutionScope: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TargetSnapshot" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          solutionVersion: __S(165, __c20, 5),
-          target: __S(166, __c20, 6),
-          solutionScope: S.optional(S.String),
-          activeState: S.optional(S.String),
-          reconciliationPolicy: S.optional(__S(156, __c19, 4)),
-          status: S.optional(__S(161, __c20, 1)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InstanceHistoryProperties",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(167, __c20, 7)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetInstanceHistoryResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.Edge/jobs/{jobName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetJobRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          jobType: S.String,
-        }),
-      ).annotate({ identifier: "JobParameterBase" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          statisticsType: S.String,
-        }),
-      ).annotate({ identifier: "JobStepStatisticsBase" });
-    case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(179, __c22, 3)));
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(176, __c22, 0)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          info: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "ErrorAdditionalInfo" });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(173, __c21, 5)),
-          additionalInfo: S.optional(__S(175, __c21, 7)),
-        }),
-      ).annotate({ identifier: "ErrorDetail" });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(177, __c22, 1)),
-          additionalInfo: S.optional(__S(175, __c21, 7)),
-        }),
-      ).annotate({ identifier: "JobStepErrorDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          status: S.String,
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          message: S.optional(S.String),
-          statistics: S.optional(__S(171, __c21, 3)),
-          steps: S.optional(__S(172, __c21, 4)),
-          errorDetails: S.optional(__S(178, __c22, 2)),
-        }),
-      ).annotate({ identifier: "JobStep" });
-    case 4:
-      return S.Array(__S(179, __c22, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(177, __c22, 1)),
-          additionalInfo: S.optional(__S(175, __c21, 7)),
-        }),
-      ).annotate({
-        identifier: "JobPropertiesErrorDetails",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          workflowId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdditionalData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          jobType: S.String,
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          status: S.String,
-          jobParameter: S.optional(__S(170, __c21, 2)),
-          correlationId: S.optional(S.String),
-          steps: S.optional(__S(180, __c22, 4)),
-          triggeredBy: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          errorDetails: S.optional(__S(181, __c22, 5)),
-          additionalData: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({ identifier: "JobProperties" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(183, __c22, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetJobResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSchemaRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          currentVersion: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchemaProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(186, __c23, 2)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetSchemaResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          schemaReferenceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
-            code: 200,
-            apiVersion: "2025-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSchemaReferenceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          schemaId: S.String,
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SchemaReferenceProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(189, __c23, 5)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSchemaReferenceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          schemaVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSchemaVersionRequest" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(50, __c6, 2)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetSchemaVersionResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          siteName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSiteRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          streetAddress1: S.optional(S.String),
-          streetAddress2: S.optional(S.String),
-          city: S.optional(S.String),
-          stateOrProvince: S.optional(S.String),
-          country: S.optional(S.String),
-          postalCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SiteAddressProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          siteAddress: S.optional(__S(194, __c24, 2)),
-          labels: S.optional(__S(18, __c2, 2)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SiteProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(195, __c24, 3)),
-        }),
-      ).annotate({ identifier: "GetSiteResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextName: S.String.pipe(T.Label()),
-          siteReferenceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSiteReferenceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          siteId: S.String,
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SiteReferenceProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(198, __c24, 6)),
-        }),
-      ).annotate({ identifier: "GetSiteReferenceResponse" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          servicegroupName: S.String.pipe(T.Label()),
-          siteName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSitesByServiceGroupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(195, __c24, 3)),
-        }),
-      ).annotate({
-        identifier: "GetSitesByServiceGroupResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          siteName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
-            code: 200,
-            apiVersion: "2025-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSitesBySubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-          solutionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSolutionRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          solutionTemplateVersion: S.String,
-          latestConfigRevision: S.String,
-          isConfigured: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "AvailableSolutionTemplateVersion",
-      });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          solutionTemplateId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          availableSolutionTemplateVersions: S.optional(__S(205, __c25, 5)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SolutionProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(206, __c25, 6)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetSolutionResponse" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          solutionMetadataName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.Edge/solutionMetadatas/{solutionMetadataName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSolutionMetadatasRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          solutionTemplateId: S.optional(S.String),
-          latestVersion: S.optional(S.String),
-          currentVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SolutionMetadataProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(209, __c26, 1)),
-        }),
-      ).annotate({
-        identifier: "GetSolutionMetadatasResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          solutionMetadataName: S.String.pipe(T.Label()),
-          solutionMetadataVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.Edge/solutionMetadatas/{solutionMetadataName}/versions/{solutionMetadataVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSolutionMetadataVersionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parentDisplayName: S.optional(S.String),
-          solutionTemplateVersionId: S.optional(S.String),
-          schemaId: S.optional(S.String),
-          dynamicConfigurationVersionId: S.optional(S.String),
-          configurationStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SolutionMetadataVersionProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(212, __c26, 4)),
-        }),
-      ).annotate({
-        identifier: "GetSolutionMetadataVersionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          solutionTemplateName: S.String.pipe(T.Label()),
-          solutionTemplateVersionName: S.String.pipe(T.Label()),
-          solutionSchemaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/solutionSchemas/{solutionSchemaName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSolutionSchemaRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Unknown),
-          level: S.optional(S.String),
-          templateUniqueIdentifier: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SolutionSchemaProperties" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(215, __c26, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSolutionSchemaResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          solutionTemplateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSolutionTemplateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          uniqueIdentifier: S.optional(S.String),
-          description: S.String,
-          capabilities: __S(10, __c1, 2),
-          latestVersion: S.optional(S.String),
-          state: S.optional(S.String),
-          enableExternalValidation: S.optional(S.Boolean),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SolutionTemplateProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(218, __c27, 2)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSolutionTemplateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          solutionTemplateName: S.String.pipe(T.Label()),
-          solutionTemplateVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSolutionTemplateVersionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-          solutionName: S.String.pipe(T.Label()),
-          solutionVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSolutionVersionRequest",
-      });
-    case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(223, __c27, 7)));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          displayState: S.String,
-          stage: S.String,
-          status: S.String,
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          childStages: S.optional(__S(222, __c27, 6)),
-        }),
-      ).annotate({ identifier: "StageMap" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(223, __c27, 7));
-    case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(226, __c28, 2)));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          solutionVersionId: S.String,
-          solutionInstanceName: S.optional(S.String),
-          solutionTemplateVersionId: S.String,
-          targetId: S.String,
-          dependencies: S.optional(__S(225, __c28, 1)),
-        }),
-      ).annotate({ identifier: "SolutionDependency" });
-    case 3:
-      return S.Array(__S(226, __c28, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          solutionTemplateVersionId: S.optional(S.String),
-          revision: S.optional(S.Number),
-          targetDisplayName: S.optional(S.String),
-          configuration: S.optional(S.Unknown),
-          targetLevelConfiguration: S.optional(S.Unknown),
-          specification: __S(52, __c6, 4),
-          reviewId: S.optional(S.String),
-          externalValidationId: S.optional(S.String),
-          state: S.optional(S.String),
-          currentStage: S.optional(__S(223, __c27, 7)),
-          stages: S.optional(__S(224, __c28, 0)),
-          solutionInstanceName: S.optional(S.String),
-          solutionDependencies: S.optional(__S(227, __c28, 3)),
-          errorDetails: S.optional(__S(181, __c22, 5)),
-          latestActionTrackingUri: S.optional(S.String),
-          latestActionTriggeredBy: S.optional(S.String),
-          actionType: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SolutionVersionProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(228, __c28, 4)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSolutionVersionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetTargetRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-          displayName: S.String,
-          contextId: S.String,
-          targetSpecification: S.optional(__S(52, __c6, 4)),
-          capabilities: __S(10, __c1, 2),
-          hierarchyLevel: S.String,
-          status: S.optional(__S(161, __c20, 1)),
-          solutionScope: S.optional(S.String),
-          state: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TargetProperties" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(231, __c28, 7)),
-          eTag: S.optional(S.String),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({ identifier: "GetTargetResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextName: S.String.pipe(T.Label()),
-          workflowName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetWorkflowRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          workflowTemplateId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkflowProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(234, __c29, 2)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetWorkflowResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextName: S.String.pipe(T.Label()),
-          workflowName: S.String.pipe(T.Label()),
-          versionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetWorkflowVersionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          targetId: S.optional(S.String),
-          specification: __S(52, __c6, 4),
-        }),
-      ).annotate({ identifier: "TaskSpec" });
-    case 6:
-      return S.Array(__S(237, __c29, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          maxToleratedFailures: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ErrorAction" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          concurrency: S.optional(S.Number),
-          errorAction: S.optional(__S(239, __c29, 7)),
-        }),
-      ).annotate({ identifier: "TaskOption" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          specification: S.optional(__S(52, __c6, 4)),
-          tasks: S.optional(__S(238, __c29, 6)),
-          taskOption: S.optional(__S(240, __c30, 0)),
-        }),
-      ).annotate({ identifier: "StageSpec" });
-    case 2:
-      return S.Array(__S(241, __c30, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          revision: S.optional(S.Number),
-          configuration: S.optional(S.String),
-          stageSpec: __S(242, __c30, 2),
-          reviewId: S.optional(S.String),
-          state: S.optional(S.String),
-          specification: S.optional(__S(52, __c6, 4)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WorkflowVersionProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(243, __c30, 3)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetWorkflowVersionResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          totalCores: S.Number,
-          diskSpaceInGb: S.Number,
-          memoryInGb: S.Number,
-          oem: S.String,
-          hardwareSku: S.String,
-          nodes: S.Number,
-          versionAtRegistration: S.String,
-          solutionBuilderExtension: S.String,
-          deviceId: S.String,
-        }),
-      ).annotate({
-        identifier: "HardwareSettingPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          hardwareSettingName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(245, __c30, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "HardwareSettingsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          imageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/listDownloadUri",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImagesListDownloadUriRequest",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          releaseVersion: S.String,
-          releaseDisplayName: S.String,
-          releaseNotes: S.String,
-          releaseDate: S.String,
-          releaseType: S.String,
-          compatibleVersions: S.optional(__S(10, __c1, 2)),
-          updateProperties: S.optional(__S(152, __c19, 0)),
-          transactionId: S.String,
-          downloadLink: S.String,
-          linkExpiry: S.String,
-        }),
-      ).annotate({ identifier: "ImageDownloadResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-          solutionVersionId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/installSolution",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "InstallTargetSolutionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          solutionVersionId: S.String,
-          targetId: S.String,
-          activeState: S.optional(S.String),
-          reconciliationPolicy: S.optional(__S(156, __c19, 4)),
-          solutionScope: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InstancePropertiesInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetName: S.String.pipe(T.Label()),
-          solutionName: S.String.pipe(T.Label()),
-          instanceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(250, __c31, 2)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "InstancesCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(162, __c20, 2)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          imageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/artifacts",
-            code: 200,
-            apiVersion: "2026-03-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListArtifactByParentRequest",
-      });
-    case 6:
-      return S.Array(__S(120, __c15, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(254, __c31, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ArtifactListResult" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConfigTemplateByResourceGroupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(21, __c2, 5)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigTemplate" });
-    case 2:
-      return S.Array(__S(257, __c32, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(258, __c32, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigTemplateListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/configTemplates",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConfigTemplateBySubscriptionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConfigTemplateMetadatasByConfigTemplateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(16, __c2, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigTemplateMetadata" });
-    case 7:
-      return S.Array(__S(262, __c32, 6));
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(263, __c32, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigTemplateMetadataListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-          configTemplateVersionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}/configTemplateSchemas",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConfigTemplateSchemaByConfigTemplateVersionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(124, __c15, 4)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigTemplateSchema" });
-    case 3:
-      return S.Array(__S(266, __c33, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(267, __c33, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigTemplateSchemaListResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          configTemplateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConfigTemplateVersionByConfigTemplateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(27, __c3, 3)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigTemplateVersion" });
-    case 7:
-      return S.Array(__S(270, __c33, 6));
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(271, __c33, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfigTemplateVersionListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConfigurationByResourceGroupRequest",
-      });
-    case 2:
-      return S.Array(__S(128, __c16, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(274, __c34, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigurationListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/configurations",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConfigurationBySubscriptionRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -12628,32 +9268,32 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListConfigurationReferencesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(31, __c3, 7)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3600, __c225, 0)),
         }),
       ).annotate({ identifier: "ConfigurationReference" });
-    case 7:
-      return S.Array(__S(278, __c34, 6));
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(97, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(279, __c34, 7),
+          value: __S(98, __c6, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConfigurationReferenceListResult",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12669,16 +9309,24 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListContextByResourceGroupRequest",
       });
-    case 2:
-      return S.Array(__S(131, __c16, 3));
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3056, __c191, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(282, __c35, 2),
+          value: __S(128, __c8, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContextListResult" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12693,7 +9341,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListContextBySubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12709,18 +9361,22 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListDiagnosticByResourceGroupRequest",
       });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3088, __c193, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(286, __c35, 6),
+          value: __S(176, __c11, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiagnosticListResult" });
   }
 }
-function __c36(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12737,7 +9393,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ListDiagnosticBySubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12753,30 +9413,38 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ListDisconnectedOperationByResourceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
           location: S.String,
-          properties: S.optional(__S(97, __c12, 1)),
+          properties: S.optional(__S(2656, __c166, 0)),
         }),
       ).annotate({ identifier: "DisconnectedOperation" });
-    case 3:
-      return S.Array(__S(290, __c36, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(224, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(291, __c36, 3),
+          value: __S(225, __c14, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DisconnectedOperationListResult",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12791,7 +9459,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ListDisconnectedOperationBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12808,7 +9480,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ListDisconnectedOperationDeploymentManifestRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
@@ -12818,15 +9490,15 @@ function __c36(j: number): any {
           billingModel: S.String,
           connectionIntent: S.String,
           cloud: S.optional(S.String),
-          billingConfiguration: S.optional(__S(96, __c12, 0)),
-          benefitPlans: S.optional(__S(92, __c11, 4)),
+          billingConfiguration: S.optional(__S(2642, __c165, 2)),
+          benefitPlans: S.optional(__S(2640, __c165, 0)),
         }),
       ).annotate({
         identifier: "DisconnectedOperationDeploymentManifest",
       });
   }
 }
-function __c37(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12851,22 +9523,26 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(101, __c12, 5)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2704, __c169, 0)),
         }),
       ).annotate({ identifier: "DynamicConfiguration" });
     case 2:
-      return S.Array(__S(297, __c37, 1));
+      return S.Array(__S(273, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(298, __c37, 2),
+          value: __S(274, __c17, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DynamicConfigurationListResult",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12884,18 +9560,92 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListDynamicConfigurationVersionByDynamicConfigurationRequest",
       });
-    case 5:
-      return S.Array(__S(106, __c13, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(2753, __c172, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(301, __c37, 5),
+          value: __S(289, __c18, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DynamicConfigurationVersionListResult",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(320, __c20, 0)),
+        }),
+      ).annotate({ identifier: "SchemaVersionInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          updateType: S.optional(S.String),
+          version: S.optional(S.String),
+          schemaVersion: __S(304, __c19, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/createVersion",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSchemaVersionRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "SchemaVersionPropertiesInput",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(352, __c22, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateSchemaVersionResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.Unknown,
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchemaVersionProperties" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12912,20 +9662,20 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListDynamicSchemaBySchemaRequest",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(138, __c17, 2));
     case 1:
+      return S.Array(__S(3232, __c202, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(304, __c38, 0),
+          value: __S(369, __c23, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicSchemaListResult" });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12943,18 +9693,26 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListDynamicSchemaVersionByDynamicSchemaRequest",
       });
-    case 3:
-      return S.Array(__S(192, __c24, 0));
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(307, __c38, 3),
+          value: __S(400, __c25, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DynamicSchemaVersionListResult",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3792, __c237, 0));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12973,18 +9731,18 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListExecutionByWorkflowVersionRequest",
       });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(3280, __c205, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(310, __c38, 6),
+          value: __S(417, __c26, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecutionListResult" });
   }
 }
-function __c39(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13009,22 +9767,26 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(143, __c17, 7)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3328, __c208, 0)),
         }),
       ).annotate({ identifier: "HardwareSetting" });
     case 2:
-      return S.Array(__S(313, __c39, 1));
+      return S.Array(__S(433, __c27, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(314, __c39, 2),
+          value: __S(434, __c27, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HardwareSettingListResult",
       });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -13039,18 +9801,22 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListHierarchyConfigurationMetadatasByParentRequest",
       });
-    case 5:
-      return S.Array(__S(147, __c18, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(3361, __c210, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(317, __c39, 5),
+          value: __S(449, __c28, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HierarchyConfigurationMetadataListResult",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -13066,22 +9832,22 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListHierarchyConfigurationMetadataVersionByParentRequest",
       });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(150, __c18, 6));
     case 1:
+      return S.Array(__S(3393, __c212, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(320, __c40, 0),
+          value: __S(465, __c29, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HierarchyConfigurationMetadataVersionListResult",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13101,16 +9867,20 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListImageByDisconnectedOperationRequest",
       });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(3425, __c214, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(323, __c40, 3),
+          value: __S(481, __c30, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageListResult" });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13128,18 +9898,18 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListInstanceBySolutionRequest",
       });
-    case 6:
-      return S.Array(__S(163, __c20, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(3472, __c217, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(326, __c40, 6),
+          value: __S(497, __c31, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceListResult" });
   }
 }
-function __c41(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13166,24 +9936,28 @@ function __c41(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(167, __c20, 7)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3554, __c222, 2)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceHistory" });
     case 2:
-      return S.Array(__S(329, __c41, 1));
+      return S.Array(__S(513, __c32, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(330, __c41, 2),
+          value: __S(514, __c32, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InstanceHistoryListResult",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -13196,16 +9970,105 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListJobByTargetRequest" });
-    case 5:
-      return S.Array(__S(184, __c23, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(3656, __c228, 8));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(333, __c41, 5),
+          value: __S(529, __c33, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobListResult" });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({
+        identifier: "SolutionTemplateVersionInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          solutionTemplateName: S.String.pipe(T.Label()),
+          updateType: S.optional(S.String),
+          version: S.optional(S.String),
+          solutionTemplateVersion: __S(544, __c34, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/createVersion",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSolutionTemplateVersionRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configurations: S.optional(S.Unknown),
+          specification: __S(576, __c36, 0),
+          orchestratorType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SolutionTemplateVersionPropertiesInput",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configurations: S.optional(S.Unknown),
+          specification: __S(576, __c36, 0),
+          orchestratorType: S.optional(S.String),
+          internalState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SolutionTemplateVersionProperties",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(592, __c37, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateSolutionTemplateVersionResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -13216,11 +10079,7 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -13229,26 +10088,30 @@ function __c42(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(336, __c42, 0)),
+          display: S.optional(__S(625, __c39, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(337, __c42, 1));
     case 3:
+      return S.Array(__S(626, __c39, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(338, __c42, 2)),
+          value: S.optional(__S(627, __c39, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13264,31 +10127,35 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListSchemaByResourceGroupRequest",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
           location: S.String,
-          properties: S.optional(__S(186, __c23, 2)),
+          properties: S.optional(__S(3696, __c231, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Schema" });
-    case 6:
-      return S.Array(__S(341, __c42, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(656, __c41, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(342, __c42, 6),
+          value: __S(657, __c41, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaListResult" });
   }
 }
-function __c43(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13305,7 +10172,11 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListSchemaBySubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -13320,29 +10191,33 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListSchemaReferenceByResourceGroupRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(189, __c23, 5)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3744, __c234, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaReference" });
+    case 2:
+      return S.Array(__S(689, __c43, 1));
     case 3:
-      return S.Array(__S(346, __c43, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(347, __c43, 3),
+          value: __S(690, __c43, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SchemaReferenceListResult",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13359,14 +10234,18 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListSchemaVersionBySchemaRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(307, __c38, 3),
+          value: __S(400, __c25, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaVersionListResult" });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13384,18 +10263,22 @@ function __c43(j: number): any {
       });
   }
 }
-function __c44(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(196, __c24, 4));
+      return S.Array(__S(3824, __c239, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(352, __c44, 0),
+          value: __S(736, __c46, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SiteListResult" });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13412,16 +10295,20 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListSiteReferenceByContextRequest",
       });
-    case 3:
-      return S.Array(__S(199, __c24, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(3872, __c242, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(355, __c44, 3),
+          value: __S(753, __c47, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SiteReferenceListResult" });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servicegroupName: S.String.pipe(T.Label()),
@@ -13436,7 +10323,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListSitesByServiceGroupByServiceGroupRequest",
       });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13451,7 +10342,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListSitesBySubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13468,20 +10363,41 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListSolutionByTargetRequest",
       });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
     case 1:
+      return S.Array(__S(3984, __c249, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(360, __c45, 0),
+          value: __S(801, __c50, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionListResult" });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigTemplateRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -13496,28 +10412,32 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ListSolutionMetadatasByParentRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(209, __c26, 1)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(4016, __c251, 0)),
         }),
       ).annotate({ identifier: "SolutionMetadata" });
-    case 4:
-      return S.Array(__S(363, __c45, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(833, __c52, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(364, __c45, 4),
+          value: __S(834, __c52, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SolutionMetadataListResult",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -13533,32 +10453,32 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ListSolutionMetadataVersionByParentRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(212, __c26, 4)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(4112, __c257, 0)),
         }),
       ).annotate({ identifier: "SolutionMetadataVersion" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(367, __c45, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(849, __c53, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(368, __c46, 0),
+          value: __S(850, __c53, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SolutionMetadataVersionListResult",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13576,27 +10496,31 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListSolutionSchemaBySolutionTemplateVersionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(215, __c26, 7)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(4144, __c259, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionSchema" });
-    case 4:
-      return S.Array(__S(371, __c46, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(865, __c54, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(372, __c46, 4),
+          value: __S(866, __c54, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionSchemaListResult" });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13612,35 +10536,39 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListSolutionTemplateByResourceGroupRequest",
       });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
           location: S.String,
-          properties: S.optional(__S(218, __c27, 2)),
+          properties: S.optional(__S(4176, __c261, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionTemplate" });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(375, __c46, 7));
     case 1:
+      return S.Array(__S(896, __c56, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(376, __c47, 0),
+          value: __S(897, __c56, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SolutionTemplateListResult",
       });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13655,7 +10583,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListSolutionTemplateBySubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13672,29 +10604,33 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListSolutionTemplateVersionBySolutionTemplateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(56, __c7, 0)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(592, __c37, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionTemplateVersion" });
-    case 5:
-      return S.Array(__S(380, __c47, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(929, __c58, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(381, __c47, 5),
+          value: __S(930, __c58, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SolutionTemplateVersionListResult",
       });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13712,34 +10648,34 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListSolutionVersionBySolutionRequest",
       });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(228, __c28, 4)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(4246, __c265, 6)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionVersion" });
-    case 1:
-      return S.Array(__S(384, __c48, 0));
     case 2:
+      return S.Array(__S(945, __c59, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(385, __c48, 1),
+          value: __S(946, __c59, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SolutionVersionListResult",
       });
-    case 3:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13755,16 +10691,24 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListTargetByResourceGroupRequest",
       });
-    case 4:
-      return S.Array(__S(232, __c29, 0));
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4304, __c269, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(388, __c48, 4),
+          value: __S(976, __c61, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetListResult" });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13779,7 +10723,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListTargetBySubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13796,20 +10744,42 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListWorkflowByContextRequest",
       });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(235, __c29, 3));
     case 1:
+      return S.Array(__S(4336, __c271, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(392, __c49, 0),
+          value: __S(1009, __c63, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowListResult" });
-    case 2:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+          configTemplateMetadataName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigTemplateMetadatasRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13827,30 +10797,34 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ListWorkflowVersionByWorkflowRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(243, __c30, 3)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(4390, __c274, 6)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowVersion" });
-    case 4:
-      return S.Array(__S(395, __c49, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1041, __c65, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(396, __c49, 4),
+          value: __S(1042, __c65, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkflowVersionListResult",
       });
-    case 6:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13868,7 +10842,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PublishTargetSolutionVersionRequest",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13888,7 +10866,7 @@ function __c49(j: number): any {
       });
   }
 }
-function __c50(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13896,7 +10874,11 @@ function __c50(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "RemoveVersionResponse" });
-    case 1:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13914,7 +10896,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "RemoveSchemaVersionRequest",
       });
-    case 2:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13932,7 +10918,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "RemoveSolutionTemplateVersionRequest",
       });
-    case 3:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13951,7 +10941,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "RemoveTargetRevisionRequest",
       });
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13959,7 +10953,7 @@ function __c50(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionTemplateVersionId: S.String,
           solutionInstanceName: S.optional(S.String),
-          solutionDependencies: S.optional(__S(4, __c0, 4)),
+          solutionDependencies: S.optional(__S(34, __c2, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13971,7 +10965,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ReviewTargetSolutionVersionRequest",
       });
-    case 5:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           schemaId: S.String,
@@ -13979,12 +10977,12 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "SchemaReferencePropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           schemaReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(405, __c50, 5)),
+          properties: S.optional(__S(1168, __c73, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13996,15 +10994,19 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "SchemaReferencesCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(2368, __c148, 0)),
           location: S.String,
-          properties: S.optional(__S(33, __c4, 1)),
+          properties: S.optional(__S(4048, __c253, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14016,33 +11018,33 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "SchemasCreateOrUpdateRequest",
       });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
           location: S.String,
-          properties: S.optional(__S(186, __c23, 2)),
+          properties: S.optional(__S(3696, __c231, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SchemasCreateOrUpdateResponse",
       });
-    case 1:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           schemaVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(47, __c5, 7)),
+          properties: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14054,7 +11056,33 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "SchemaVersionsCreateOrUpdateRequest",
       });
-    case 2:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+          configTemplateVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigTemplateVersionRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           siteId: S.String,
@@ -14062,14 +11090,14 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "SiteReferencePropertiesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
           siteReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(410, __c51, 2)),
+          properties: S.optional(__S(1232, __c77, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14081,33 +11109,32 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "SiteReferencesCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(198, __c24, 6)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3888, __c243, 0)),
         }),
       ).annotate({
         identifier: "SiteReferencesCreateOrUpdateResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          siteAddress: S.optional(__S(194, __c24, 2)),
-          labels: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "SitePropertiesInput" });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servicegroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(413, __c51, 5)),
+          properties: S.optional(__S(1280, __c80, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14119,12 +11146,29 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "SitesByServiceGroupCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          siteAddress: S.optional(__S(3840, __c240, 0)),
+          labels: S.optional(__S(2368, __c148, 0)),
+        }),
+      ).annotate({ identifier: "SitePropertiesInput" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(413, __c51, 5)),
+          properties: S.optional(__S(1280, __c80, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14138,7 +11182,7 @@ function __c51(j: number): any {
       });
   }
 }
-function __c52(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14146,7 +11190,7 @@ function __c52(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(413, __c51, 5)),
+          properties: S.optional(__S(1280, __c80, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14158,15 +11202,19 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "SitesCreateOrUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33, __c4, 1)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
+          properties: S.optional(__S(4048, __c253, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14178,40 +11226,44 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "SolutionsCreateOrUpdateRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(206, __c25, 6)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3970, __c248, 2)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SolutionsCreateOrUpdateResponse",
       });
-    case 3:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
-          capabilities: __S(10, __c1, 2),
+          capabilities: __S(2112, __c132, 0),
           state: S.optional(S.String),
           enableExternalValidation: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "SolutionTemplatePropertiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(2368, __c148, 0)),
           location: S.String,
-          properties: S.optional(__S(419, __c52, 3)),
+          properties: S.optional(__S(1344, __c84, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14223,22 +11275,26 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "SolutionTemplatesCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           solutionVersionId: S.String,
         }),
       ).annotate({ identifier: "BulkDeployTargetDetails" });
-    case 6:
-      return S.Array(__S(421, __c52, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(1360, __c85, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          targets: __S(422, __c52, 6),
+          targets: __S(1361, __c85, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14252,20 +11308,20 @@ function __c52(j: number): any {
       });
   }
 }
-function __c53(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           targetId: S.String,
-          solutionDependencies: S.optional(__S(4, __c0, 4)),
+          solutionDependencies: S.optional(__S(34, __c2, 2)),
           solutionInstanceName: S.optional(S.String),
           solutionVersionId: S.optional(S.String),
           solutionConfiguration: S.optional(S.String),
         }),
       ).annotate({ identifier: "BulkPublishTargetDetails" });
     case 1:
-      return S.Array(__S(424, __c53, 0));
+      return S.Array(__S(1376, __c86, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14273,9 +11329,9 @@ function __c53(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          targets: __S(425, __c53, 1),
+          targets: __S(1377, __c86, 1),
           solutionInstanceName: S.optional(S.String),
-          solutionDependencies: S.optional(__S(7, __c0, 7)),
+          solutionDependencies: S.optional(__S(48, __c3, 0)),
           solutionConfiguration: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -14288,14 +11344,18 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SolutionTemplateVersionsBulkPublishSolutionRequest",
       });
-    case 3:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(53, __c6, 5)),
+          properties: S.optional(__S(560, __c35, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14307,16 +11367,20 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SolutionTemplateVersionsCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          specification: __S(52, __c6, 4),
-          errorDetails: S.optional(__S(33, __c4, 1)),
+          specification: __S(576, __c36, 0),
+          errorDetails: S.optional(__S(4048, __c253, 0)),
         }),
       ).annotate({
         identifier: "SolutionVersionPropertiesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14324,8 +11388,8 @@ function __c53(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
           solutionVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(428, __c53, 4)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
+          properties: S.optional(__S(1408, __c88, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14337,29 +11401,54 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SolutionVersionsCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigurationRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
           displayName: S.String,
           contextId: S.String,
-          targetSpecification: S.optional(__S(52, __c6, 4)),
-          capabilities: __S(10, __c1, 2),
+          targetSpecification: S.optional(__S(576, __c36, 0)),
+          capabilities: __S(2112, __c132, 0),
           hierarchyLevel: S.String,
           solutionScope: S.optional(S.String),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetPropertiesInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(2368, __c148, 0)),
           location: S.String,
-          properties: S.optional(__S(430, __c53, 6)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
+          properties: S.optional(__S(1440, __c90, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14371,27 +11460,27 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "TargetsCreateOrUpdateRequest",
       });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
           location: S.String,
-          properties: S.optional(__S(231, __c28, 7)),
+          properties: S.optional(__S(4288, __c268, 0)),
           eTag: S.optional(S.String),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
         }),
       ).annotate({
         identifier: "TargetsCreateOrUpdateResponse",
       });
-    case 1:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14399,7 +11488,7 @@ function __c54(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionTemplateVersionId: S.String,
           solutionInstanceName: S.optional(S.String),
-          solutionDependencies: S.optional(__S(4, __c0, 4)),
+          solutionDependencies: S.optional(__S(34, __c2, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14411,13 +11500,17 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "TargetsResolveConfigurationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           configuration: S.String,
         }),
       ).annotate({ identifier: "ResolvedConfiguration" });
-    case 3:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14435,7 +11528,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "TargetsUnstageSolutionVersionRequest",
       });
-    case 4:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14454,11 +11551,15 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "UninstallTargetSolutionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UninstallTargetSolutionResponse",
       });
-    case 6:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -14466,14 +11567,14 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ConfigTemplateUpdateProperties",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          properties: S.optional(__S(438, __c54, 6)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          properties: S.optional(__S(1504, __c94, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14487,7 +11588,7 @@ function __c54(j: number): any {
       });
   }
 }
-function __c55(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14496,7 +11597,7 @@ function __c55(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           configTemplateMetadataName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(2080, __c130, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14508,7 +11609,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "UpdateConfigTemplateMetadatasRequest",
       });
-    case 1:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configurations: S.optional(S.Unknown),
@@ -14516,14 +11621,14 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "ConfigTemplateVersionPropertiesUpdate",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           configTemplateVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(441, __c55, 1)),
+          properties: S.optional(__S(1536, __c96, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14535,14 +11640,18 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "UpdateConfigTemplateVersionRequest",
       });
-    case 3:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          properties: S.optional(__S(33, __c4, 1)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          properties: S.optional(__S(4048, __c253, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14554,12 +11663,16 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "UpdateConfigurationRequest",
       });
-    case 4:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           configurationReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(29, __c3, 5)),
+          properties: S.optional(__S(3584, __c224, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14571,21 +11684,25 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "UpdateConfigurationReferenceRequest",
       });
-    case 5:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.optional(__S(38, __c4, 6)),
-          hierarchies: S.optional(__S(40, __c5, 0)),
+          capabilities: S.optional(__S(4465, __c279, 1)),
+          hierarchies: S.optional(__S(4467, __c279, 3)),
         }),
       ).annotate({ identifier: "ContextUpdateProperties" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          properties: S.optional(__S(445, __c55, 5)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          properties: S.optional(__S(1584, __c99, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14595,14 +11712,38 @@ function __c55(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateContextRequest" });
-    case 7:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          configurationReferenceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{resourceUri+}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConfigurationReferenceRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           diagnosticName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33, __c4, 1)),
-          tags: S.optional(__S(18, __c2, 2)),
+          properties: S.optional(__S(4048, __c253, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14614,7 +11755,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "UpdateDiagnosticRequest" });
   }
 }
-function __c56(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14627,8 +11768,8 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           autoRenew: S.optional(S.String),
-          current: S.optional(__S(448, __c56, 0)),
-          upcoming: S.optional(__S(448, __c56, 0)),
+          current: S.optional(__S(1632, __c102, 0)),
+          upcoming: S.optional(__S(1632, __c102, 0)),
         }),
       ).annotate({
         identifier: "BillingConfigurationUpdate",
@@ -14639,8 +11780,8 @@ function __c56(j: number): any {
           connectionIntent: S.optional(S.String),
           registrationStatus: S.optional(S.String),
           deviceVersion: S.optional(S.String),
-          billingConfiguration: S.optional(__S(449, __c56, 1)),
-          benefitPlans: S.optional(__S(92, __c11, 4)),
+          billingConfiguration: S.optional(__S(1633, __c102, 1)),
+          benefitPlans: S.optional(__S(2640, __c165, 0)),
         }),
       ).annotate({
         identifier: "DisconnectedOperationUpdateProperties",
@@ -14651,8 +11792,8 @@ function __c56(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          properties: S.optional(__S(450, __c56, 2)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          properties: S.optional(__S(1634, __c102, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14664,7 +11805,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "UpdateDisconnectedOperationRequest",
       });
-    case 4:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           currentVersion: S.optional(S.String),
@@ -14672,14 +11817,14 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "DynamicConfigurationPropertiesUpdate",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
           dynamicConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(452, __c56, 4)),
+          properties: S.optional(__S(1648, __c103, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14691,7 +11836,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "UpdateDynamicConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           values: S.optional(S.Unknown),
@@ -14699,7 +11848,7 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "DynamicConfigurationVersionPropertiesUpdate",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14707,7 +11856,7 @@ function __c56(j: number): any {
           configurationName: S.String.pipe(T.Label()),
           dynamicConfigurationName: S.String.pipe(T.Label()),
           dynamicConfigurationVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(454, __c56, 6)),
+          properties: S.optional(__S(1664, __c104, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14721,7 +11870,7 @@ function __c56(j: number): any {
       });
   }
 }
-function __c57(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14730,7 +11879,7 @@ function __c57(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           dynamicSchemaName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33, __c4, 1)),
+          properties: S.optional(__S(4048, __c253, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14742,15 +11891,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "UpdateDynamicSchemaRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "SchemaVersionPropertiesUpdate",
-      });
-    case 2:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14758,7 +11903,7 @@ function __c57(j: number): any {
           schemaName: S.String.pipe(T.Label()),
           dynamicSchemaName: S.String.pipe(T.Label()),
           dynamicSchemaVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(457, __c57, 1)),
+          properties: S.optional(__S(1712, __c107, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14770,16 +11915,32 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "UpdateDynamicSchemaVersionRequest",
       });
-    case 3:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "SchemaVersionPropertiesUpdate",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workflowVersionId: S.optional(S.String),
-          specification: S.optional(__S(52, __c6, 4)),
+          specification: S.optional(__S(576, __c36, 0)),
         }),
       ).annotate({
         identifier: "ExecutionPropertiesUpdate",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14788,7 +11949,7 @@ function __c57(j: number): any {
           workflowName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
           executionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(459, __c57, 3)),
+          properties: S.optional(__S(1728, __c108, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14798,7 +11959,11 @@ function __c57(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateExecutionRequest" });
-    case 5:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -14807,17 +11972,17 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ReconciliationPolicyPropertiesUpdate",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           solutionVersionId: S.optional(S.String),
           targetId: S.optional(S.String),
           activeState: S.optional(S.String),
-          reconciliationPolicy: S.optional(__S(461, __c57, 5)),
+          reconciliationPolicy: S.optional(__S(1744, __c109, 0)),
           solutionScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstancePropertiesUpdate" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14825,7 +11990,7 @@ function __c57(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(462, __c57, 6)),
+          properties: S.optional(__S(1745, __c109, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14837,7 +12002,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "UpdateInstanceRequest" });
   }
 }
-function __c58(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14845,8 +12010,8 @@ function __c58(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33, __c4, 1)),
-          tags: S.optional(__S(18, __c2, 2)),
+          properties: S.optional(__S(4048, __c253, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14856,7 +12021,11 @@ function __c58(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSchemaRequest" });
-    case 1:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           schemaId: S.optional(S.String),
@@ -14864,12 +12033,12 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "SchemaReferencePropertiesUpdate",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           schemaReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(465, __c58, 1)),
+          properties: S.optional(__S(1776, __c111, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14881,14 +12050,37 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "UpdateSchemaReferenceRequest",
       });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteContextRequest" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           schemaVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(457, __c57, 1)),
+          properties: S.optional(__S(1712, __c107, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14900,13 +12092,17 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "UpdateSchemaVersionRequest",
       });
-    case 4:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(413, __c51, 5)),
+          properties: S.optional(__S(1280, __c80, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14916,7 +12112,11 @@ function __c58(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSiteRequest" });
-    case 5:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           siteId: S.optional(S.String),
@@ -14924,14 +12124,14 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "SiteReferencePropertiesUpdate",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
           siteReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(469, __c58, 5)),
+          properties: S.optional(__S(1840, __c115, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14943,12 +12143,16 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "UpdateSiteReferenceRequest",
       });
-    case 7:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servicegroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(413, __c51, 5)),
+          properties: S.optional(__S(1280, __c80, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14962,14 +12166,14 @@ function __c58(j: number): any {
       });
   }
 }
-function __c59(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(413, __c51, 5)),
+          properties: S.optional(__S(1280, __c80, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14981,14 +12185,18 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "UpdateSitesBySubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33, __c4, 1)),
+          properties: S.optional(__S(4048, __c253, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14998,25 +12206,29 @@ function __c59(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSolutionRequest" });
-    case 2:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          capabilities: S.optional(__S(10, __c1, 2)),
+          capabilities: S.optional(__S(2112, __c132, 0)),
           state: S.optional(S.String),
           enableExternalValidation: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "SolutionTemplateUpdateProperties",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          properties: S.optional(__S(474, __c59, 2)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          properties: S.optional(__S(1904, __c119, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15028,24 +12240,28 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "UpdateSolutionTemplateRequest",
       });
-    case 4:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configurations: S.optional(S.Unknown),
-          specification: S.optional(__S(52, __c6, 4)),
+          specification: S.optional(__S(576, __c36, 0)),
           orchestratorType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SolutionTemplateVersionPropertiesUpdate",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(476, __c59, 4)),
+          properties: S.optional(__S(1920, __c120, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15057,15 +12273,19 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "UpdateSolutionTemplateVersionRequest",
       });
-    case 6:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          specification: S.optional(__S(52, __c6, 4)),
+          specification: S.optional(__S(576, __c36, 0)),
         }),
       ).annotate({
         identifier: "SolutionVersionPropertiesUpdate",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15073,7 +12293,7 @@ function __c59(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
           solutionVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(478, __c59, 6)),
+          properties: S.optional(__S(1936, __c121, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15087,7 +12307,7 @@ function __c59(j: number): any {
       });
   }
 }
-function __c60(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15095,8 +12315,8 @@ function __c60(j: number): any {
           description: S.optional(S.String),
           displayName: S.optional(S.String),
           contextId: S.optional(S.String),
-          targetSpecification: S.optional(__S(52, __c6, 4)),
-          capabilities: S.optional(__S(10, __c1, 2)),
+          targetSpecification: S.optional(__S(576, __c36, 0)),
+          capabilities: S.optional(__S(2112, __c132, 0)),
           hierarchyLevel: S.optional(S.String),
           solutionScope: S.optional(S.String),
           state: S.optional(S.String),
@@ -15108,8 +12328,8 @@ function __c60(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          properties: S.optional(__S(480, __c60, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          properties: S.optional(__S(1952, __c122, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15119,14 +12339,37 @@ function __c60(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTargetRequest" });
-    case 2:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          diagnosticName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDiagnosticRequest" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
           solutionVersionId: S.String,
-          errorDetails: S.optional(__S(33, __c4, 1)),
+          errorDetails: S.optional(__S(4048, __c253, 0)),
           externalValidationId: S.String,
           validationStatus: S.String,
         }).pipe(
@@ -15140,14 +12383,18 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "UpdateTargetExternalValidationStatusRequest",
       });
-    case 3:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33, __c4, 1)),
+          properties: S.optional(__S(4048, __c253, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15157,16 +12404,20 @@ function __c60(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkflowRequest" });
-    case 4:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          stageSpec: S.optional(__S(242, __c30, 2)),
-          specification: S.optional(__S(52, __c6, 4)),
+          stageSpec: S.optional(__S(4389, __c274, 5)),
+          specification: S.optional(__S(576, __c36, 0)),
         }),
       ).annotate({
         identifier: "WorkflowVersionPropertiesUpdate",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15174,7 +12425,7 @@ function __c60(j: number): any {
           contextName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(484, __c60, 4)),
+          properties: S.optional(__S(2016, __c126, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15186,15 +12437,19 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "UpdateWorkflowVersionRequest",
       });
-    case 6:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33, __c4, 1)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
+          properties: S.optional(__S(4048, __c253, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15206,15 +12461,15 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "WorkflowsCreateOrUpdateRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(234, __c29, 2)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(4352, __c272, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -15222,13 +12477,13 @@ function __c60(j: number): any {
       });
   }
 }
-function __c61(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          stageSpec: __S(242, __c30, 2),
-          specification: S.optional(__S(52, __c6, 4)),
+          stageSpec: __S(4389, __c274, 5),
+          specification: S.optional(__S(576, __c36, 0)),
         }),
       ).annotate({
         identifier: "WorkflowVersionPropertiesInput",
@@ -15241,8 +12496,8 @@ function __c61(j: number): any {
           contextName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(488, __c61, 0)),
-          extendedLocation: S.optional(__S(87, __c10, 7)),
+          properties: S.optional(__S(2048, __c128, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15256,7 +12511,3679 @@ function __c61(j: number): any {
       });
   }
 }
-
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+          configTemplateMetadataName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2080, __c130, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigTemplateMetadatasCreateOrUpdateRequest",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contextId: S.optional(S.String),
+          linkedHierarchies: S.optional(__S(2145, __c134, 1)),
+          unLinkedHierarchies: S.optional(__S(2145, __c134, 1)),
+        }),
+      ).annotate({
+        identifier: "ConfigTemplateMetadataPropertiesInput",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2146, __c134, 2)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigTemplateMetadatasCreateOrUpdateResponse",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hierarchyIds: S.optional(__S(2112, __c132, 0)),
+          level: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HierarchyMetadata" });
+    case 1:
+      return S.Array(__S(2144, __c134, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          contextId: S.optional(S.String),
+          linkedHierarchies: S.optional(__S(2145, __c134, 1)),
+          unLinkedHierarchies: S.optional(__S(2145, __c134, 1)),
+          templateUniqueIdentifier: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigTemplateMetadataProperties",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDisconnectedOperationRequest",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+          dynamicConfigurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDynamicConfigurationRequest",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+          dynamicConfigurationName: S.String.pipe(T.Label()),
+          dynamicConfigurationVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDynamicConfigurationVersionRequest",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          dynamicSchemaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDynamicSchemaRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          dynamicSchemaName: S.String.pipe(T.Label()),
+          dynamicSchemaVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDynamicSchemaVersionRequest",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextName: S.String.pipe(T.Label()),
+          workflowName: S.String.pipe(T.Label()),
+          versionName: S.String.pipe(T.Label()),
+          executionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteExecutionRequest" });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          hardwareSettingName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHardwareSettingsRequest",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+          solutionName: S.String.pipe(T.Label()),
+          instanceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteInstanceRequest" });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSchemaRequest" });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          schemaReferenceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{resourceUri+}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSchemaReferenceRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+        }),
+      ).annotate({
+        identifier: "ConfigTemplatePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(2320, __c145, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigTemplatesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(2352, __c147, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigTemplatesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueIdentifier: S.optional(S.String),
+          description: S.String,
+          latestVersion: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigTemplateProperties" });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          schemaVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSchemaVersionRequest",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          siteName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSiteRequest" });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextName: S.String.pipe(T.Label()),
+          siteReferenceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSiteReferenceRequest",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          servicegroupName: S.String.pipe(T.Label()),
+          siteName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSitesByServiceGroupRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          siteName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSitesBySubscriptionRequest",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+          solutionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSolutionRequest" });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          solutionTemplateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSolutionTemplateRequest",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          solutionTemplateName: S.String.pipe(T.Label()),
+          solutionTemplateVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSolutionTemplateVersionRequest",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+          solutionName: S.String.pipe(T.Label()),
+          solutionVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSolutionVersionRequest",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+          forceDelete: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTargetRequest" });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+          contextId: S.String,
+          hierarchyIds: S.optional(__S(2112, __c132, 0)),
+          level: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/linkToHierarchies",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigTemplatesLinkToHierarchiesRequest",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextName: S.String.pipe(T.Label()),
+          workflowName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteWorkflowRequest" });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextName: S.String.pipe(T.Label()),
+          workflowName: S.String.pipe(T.Label()),
+          versionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteWorkflowVersionRequest",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          diagnosticName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(4048, __c253, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DiagnosticsCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(4080, __c255, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DiagnosticsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "AzureResourceManagerCommonTypesExtendedLocation",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cores: S.Number,
+          pricingModel: S.String,
+        }),
+      ).annotate({ identifier: "BillingPeriodInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          autoRenew: S.String,
+          current: __S(2624, __c164, 0),
+          upcoming: S.optional(__S(2624, __c164, 0)),
+        }),
+      ).annotate({
+        identifier: "BillingConfigurationInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          connectionIntent: S.String,
+          registrationStatus: S.optional(S.String),
+          deviceVersion: S.optional(S.String),
+          billingConfiguration: S.optional(__S(2625, __c164, 1)),
+          benefitPlans: S.optional(__S(2640, __c165, 0)),
+        }),
+      ).annotate({
+        identifier: "DisconnectedOperationPropertiesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(2626, __c164, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisconnectedOperationsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureHybridWindowsServerBenefit: S.optional(S.String),
+          windowsServerVmCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BenefitPlans" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cores: S.Number,
+          pricingModel: S.String,
+          startDate: S.optional(S.String),
+          endDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BillingPeriod" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          autoRenew: S.String,
+          billingStatus: S.String,
+          current: __S(2641, __c165, 1),
+          upcoming: S.optional(__S(2641, __c165, 1)),
+        }),
+      ).annotate({ identifier: "BillingConfiguration" });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          stampId: S.String,
+          billingModel: S.String,
+          connectionIntent: S.String,
+          connectionStatus: S.optional(S.String),
+          registrationStatus: S.optional(S.String),
+          deviceVersion: S.optional(S.String),
+          billingConfiguration: S.optional(__S(2642, __c165, 2)),
+          benefitPlans: S.optional(__S(2640, __c165, 0)),
+        }),
+      ).annotate({
+        identifier: "DisconnectedOperationProperties",
+      });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(2656, __c166, 0)),
+        }),
+      ).annotate({
+        identifier: "DisconnectedOperationsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currentVersion: S.String,
+        }),
+      ).annotate({
+        identifier: "DynamicConfigurationPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+          dynamicConfigurationName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2688, __c168, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DynamicConfigurationsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currentVersion: S.String,
+          displayName: S.optional(S.String),
+          dynamicConfigurationType: S.optional(S.String),
+          dynamicConfigurationModel: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DynamicConfigurationProperties",
+      });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2704, __c169, 0)),
+        }),
+      ).annotate({
+        identifier: "DynamicConfigurationsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "DynamicConfigurationVersionPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+          dynamicConfigurationName: S.String.pipe(T.Label()),
+          dynamicConfigurationVersionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2736, __c171, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DynamicConfigurationVersionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.Unknown,
+          schemaId: S.optional(S.String),
+          dynamicSchemaVersionId: S.optional(S.String),
+          displayState: S.optional(S.String),
+          state: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DynamicConfigurationVersionProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2752, __c172, 0)),
+        }),
+      ).annotate({
+        identifier: "DynamicConfigurationVersionsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          dynamicSchemaName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(4048, __c253, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DynamicSchemasCreateOrUpdateRequest",
+      });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2800, __c175, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DynamicSchemasCreateOrUpdateResponse",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          configurationType: S.optional(S.String),
+          configurationModel: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DynamicSchemaProperties" });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          dynamicSchemaName: S.String.pipe(T.Label()),
+          dynamicSchemaVersionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(320, __c20, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DynamicSchemaVersionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflowVersionId: S.String,
+          specification: S.optional(__S(576, __c36, 0)),
+        }),
+      ).annotate({ identifier: "ExecutionPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextName: S.String.pipe(T.Label()),
+          workflowName: S.String.pipe(T.Label()),
+          versionName: S.String.pipe(T.Label()),
+          executionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2832, __c177, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExecutionsCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2851, __c178, 3)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExecutionsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.Number),
+          statusMessage: S.optional(S.String),
+          stage: S.optional(S.String),
+          nextstage: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          isActive: S.optional(S.String),
+          inputs: S.optional(__S(576, __c36, 0)),
+          outputs: S.optional(__S(576, __c36, 0)),
+        }),
+      ).annotate({ identifier: "StageStatus" });
+    case 1:
+      return S.Array(__S(2848, __c178, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          status: S.optional(S.Number),
+          statusMessage: S.optional(S.String),
+          stageHistory: S.optional(__S(2849, __c178, 1)),
+        }),
+      ).annotate({ identifier: "ExecutionStatus" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          workflowVersionId: S.String,
+          specification: S.optional(__S(576, __c36, 0)),
+          status: S.optional(__S(2850, __c178, 2)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExecutionProperties" });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          imageName: S.String.pipe(T.Label()),
+          artifactName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/artifacts/{artifactName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({ identifier: "GetArtifactRequest" });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          artifactOrder: S.Number,
+          title: S.String,
+          description: S.String,
+          size: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ArtifactProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2880, __c180, 0)),
+        }),
+      ).annotate({ identifier: "GetArtifactResponse" });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+          contextId: S.String,
+          hierarchyIds: S.optional(__S(2112, __c132, 0)),
+          level: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/unLinkFromHierarchies",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigTemplatesUnLinkFromHierarchiesRequest",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetConfigTemplateRequest" });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+          configTemplateMetadataName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConfigTemplateMetadatasRequest",
+      });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+          configTemplateVersionName: S.String.pipe(T.Label()),
+          configTemplateSchemaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}/configTemplateSchemas/{configTemplateSchemaName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConfigTemplateSchemaRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2960, __c185, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetConfigTemplateSchemaResponse",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Unknown),
+          templateUniqueIdentifier: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigTemplateSchemaProperties",
+      });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+          configTemplateVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConfigTemplateVersionRequest",
+      });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetConfigurationRequest" });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(4080, __c255, 0)),
+        }),
+      ).annotate({ identifier: "GetConfigurationResponse" });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          configurationReferenceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConfigurationReferenceRequest",
+      });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetContextRequest" });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(4468, __c279, 4)),
+        }),
+      ).annotate({ identifier: "GetContextResponse" });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          diagnosticName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetDiagnosticRequest" });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(4080, __c255, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetDiagnosticResponse" });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDisconnectedOperationRequest",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+          dynamicConfigurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDynamicConfigurationRequest",
+      });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+          configTemplateVersionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3152, __c197, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigTemplateVersionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configurations: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "ConfigTemplateVersionPropertiesInput",
+      });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3184, __c199, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigTemplateVersionsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configurations: S.Unknown,
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigTemplateVersionProperties",
+      });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+          dynamicConfigurationName: S.String.pipe(T.Label()),
+          dynamicConfigurationVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDynamicConfigurationVersionRequest",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          dynamicSchemaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetDynamicSchemaRequest" });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2800, __c175, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetDynamicSchemaResponse" });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          dynamicSchemaName: S.String.pipe(T.Label()),
+          dynamicSchemaVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDynamicSchemaVersionRequest",
+      });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextName: S.String.pipe(T.Label()),
+          workflowName: S.String.pipe(T.Label()),
+          versionName: S.String.pipe(T.Label()),
+          executionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetExecutionRequest" });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2851, __c178, 3)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetExecutionResponse" });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          hardwareSettingName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHardwareSettingsRequest",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3328, __c208, 0)),
+        }),
+      ).annotate({
+        identifier: "GetHardwareSettingsResponse",
+      });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          totalCores: S.Number,
+          diskSpaceInGb: S.Number,
+          memoryInGb: S.Number,
+          oem: S.String,
+          hardwareSku: S.String,
+          nodes: S.Number,
+          versionAtRegistration: S.String,
+          solutionBuilderExtension: S.String,
+          deviceId: S.String,
+        }),
+      ).annotate({
+        identifier: "HardwareSettingProperties",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          hierarchyConfigurationMetadataName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.Edge/hierarchyConfigurationMetadatas/{hierarchyConfigurationMetadataName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHierarchyConfigurationMetadatasRequest",
+      });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          configTemplateId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HierarchyConfigurationMetadataProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3360, __c210, 0)),
+        }),
+      ).annotate({
+        identifier: "GetHierarchyConfigurationMetadatasResponse",
+      });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          hierarchyConfigurationMetadataName: S.String.pipe(T.Label()),
+          hierarchyConfigurationMetadataVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.Edge/hierarchyConfigurationMetadatas/{hierarchyConfigurationMetadataName}/versions/{hierarchyConfigurationMetadataVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHierarchyConfigurationMetadataVersionRequest",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parentDisplayName: S.optional(S.String),
+          configTemplateVersionId: S.optional(S.String),
+          schemaId: S.optional(S.String),
+          dynamicConfigurationVersionId: S.optional(S.String),
+          configurationStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HierarchyConfigurationMetadataVersionProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3392, __c212, 0)),
+        }),
+      ).annotate({
+        identifier: "GetHierarchyConfigurationMetadataVersionResponse",
+      });
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          imageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({ identifier: "GetImageRequest" });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          releaseVersion: S.String,
+          releaseDisplayName: S.String,
+          releaseNotes: S.String,
+          releaseDate: S.String,
+          releaseType: S.String,
+          compatibleVersions: S.optional(__S(2112, __c132, 0)),
+          updateProperties: S.optional(__S(3440, __c215, 0)),
+        }),
+      ).annotate({ identifier: "ImageProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3424, __c214, 0)),
+        }),
+      ).annotate({ identifier: "GetImageResponse" });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          systemReboot: S.String,
+          securityUpdates: S.String,
+          osVersion: S.String,
+          agentVersion: S.String,
+          featureUpdates: S.String,
+        }),
+      ).annotate({ identifier: "ImageUpdateProperties" });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+          solutionName: S.String.pipe(T.Label()),
+          instanceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetInstanceRequest" });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3520, __c220, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetInstanceResponse" });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComponentStatus" });
+    case 1:
+      return S.Array(__S(3488, __c218, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          componentStatuses: S.optional(__S(3489, __c218, 1)),
+        }),
+      ).annotate({ identifier: "TargetStatus" });
+    case 3:
+      return S.Array(__S(3490, __c218, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          lastModified: S.optional(S.String),
+          deployed: S.optional(S.Number),
+          expectedRunningJobId: S.optional(S.Number),
+          runningJobId: S.optional(S.Number),
+          status: S.optional(S.String),
+          statusDetails: S.optional(S.String),
+          generation: S.optional(S.Number),
+          targetStatuses: S.optional(__S(3491, __c218, 3)),
+        }),
+      ).annotate({ identifier: "DeploymentStatus" });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          interval: S.String,
+        }),
+      ).annotate({
+        identifier: "ReconciliationPolicyProperties",
+      });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          solutionVersionId: S.String,
+          targetId: S.String,
+          activeState: S.optional(S.String),
+          reconciliationPolicy: S.optional(__S(3504, __c219, 0)),
+          solutionScope: S.optional(S.String),
+          status: S.optional(__S(3492, __c218, 4)),
+          deploymentTimestampEpoch: S.optional(S.Number),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InstanceProperties" });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+          solutionName: S.String.pipe(T.Label()),
+          instanceName: S.String.pipe(T.Label()),
+          instanceHistoryName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}/histories/{instanceHistoryName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetInstanceHistoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3554, __c222, 2)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetInstanceHistoryResponse",
+      });
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          solutionVersionId: S.optional(S.String),
+          specification: S.optional(__S(576, __c36, 0)),
+        }),
+      ).annotate({ identifier: "SolutionVersionSnapshot" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          targetId: S.optional(S.String),
+          targetSpecification: S.optional(__S(576, __c36, 0)),
+          solutionScope: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TargetSnapshot" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          solutionVersion: __S(3552, __c222, 0),
+          target: __S(3553, __c222, 1),
+          solutionScope: S.optional(S.String),
+          activeState: S.optional(S.String),
+          reconciliationPolicy: S.optional(__S(3504, __c219, 0)),
+          status: S.optional(__S(3492, __c218, 4)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InstanceHistoryProperties",
+      });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          configurationReferenceName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3584, __c224, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/{resourceUri+}/providers/Microsoft.Edge/configurationReferences/{configurationReferenceName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigurationReferencesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configurationResourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigurationReferencePropertiesInput",
+      });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          configurationResourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigurationReferenceProperties",
+      });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3600, __c225, 0)),
+        }),
+      ).annotate({
+        identifier: "ConfigurationReferencesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.Edge/jobs/{jobName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetJobRequest" });
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobType: S.String,
+        }),
+      ).annotate({ identifier: "JobParameterBase" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          statisticsType: S.String,
+        }),
+      ).annotate({ identifier: "JobStepStatisticsBase" });
+    case 2:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(3652, __c228, 4)));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(3668, __c229, 4)),
+          additionalInfo: S.optional(__S(3666, __c229, 2)),
+        }),
+      ).annotate({ identifier: "JobStepErrorDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          status: S.String,
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          message: S.optional(S.String),
+          statistics: S.optional(__S(3649, __c228, 1)),
+          steps: S.optional(__S(3650, __c228, 2)),
+          errorDetails: S.optional(__S(3651, __c228, 3)),
+        }),
+      ).annotate({ identifier: "JobStep" });
+    case 5:
+      return S.Array(__S(3652, __c228, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          workflowId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdditionalData" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          jobType: S.String,
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          status: S.String,
+          jobParameter: S.optional(__S(3648, __c228, 0)),
+          correlationId: S.optional(S.String),
+          steps: S.optional(__S(3653, __c228, 5)),
+          triggeredBy: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errorDetails: S.optional(__S(3669, __c229, 5)),
+          additionalData: S.optional(__S(3654, __c228, 6)),
+        }),
+      ).annotate({ identifier: "JobProperties" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3655, __c228, 7)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetJobResponse" });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(3667, __c229, 3)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          info: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "ErrorAdditionalInfo" });
+    case 2:
+      return S.Array(__S(3665, __c229, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(3664, __c229, 0)),
+          additionalInfo: S.optional(__S(3666, __c229, 2)),
+        }),
+      ).annotate({ identifier: "ErrorDetail" });
+    case 4:
+      return S.Array(__S(3667, __c229, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(3668, __c229, 4)),
+          additionalInfo: S.optional(__S(3666, __c229, 2)),
+        }),
+      ).annotate({
+        identifier: "JobPropertiesErrorDetails",
+      });
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSchemaRequest" });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currentVersion: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchemaProperties" });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(3696, __c231, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetSchemaResponse" });
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          schemaReferenceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
+            code: 200,
+            apiVersion: "2025-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSchemaReferenceRequest",
+      });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schemaId: S.String,
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SchemaReferenceProperties",
+      });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3744, __c234, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSchemaReferenceResponse",
+      });
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          schemaVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSchemaVersionRequest" });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(352, __c22, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetSchemaVersionResponse" });
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          siteName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSiteRequest" });
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3841, __c240, 1)),
+        }),
+      ).annotate({ identifier: "GetSiteResponse" });
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          streetAddress1: S.optional(S.String),
+          streetAddress2: S.optional(S.String),
+          city: S.optional(S.String),
+          stateOrProvince: S.optional(S.String),
+          country: S.optional(S.String),
+          postalCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SiteAddressProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          siteAddress: S.optional(__S(3840, __c240, 0)),
+          labels: S.optional(__S(2368, __c148, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SiteProperties" });
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextName: S.String.pipe(T.Label()),
+          siteReferenceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSiteReferenceRequest" });
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3888, __c243, 0)),
+        }),
+      ).annotate({ identifier: "GetSiteReferenceResponse" });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          siteId: S.String,
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SiteReferenceProperties" });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          servicegroupName: S.String.pipe(T.Label()),
+          siteName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSitesByServiceGroupRequest",
+      });
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3841, __c240, 1)),
+        }),
+      ).annotate({
+        identifier: "GetSitesByServiceGroupResponse",
+      });
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          siteName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
+            code: 200,
+            apiVersion: "2025-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSitesBySubscriptionRequest",
+      });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+          solutionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSolutionRequest" });
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          solutionTemplateVersion: S.String,
+          latestConfigRevision: S.String,
+          isConfigured: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "AvailableSolutionTemplateVersion",
+      });
+    case 1:
+      return S.Array(__S(3968, __c248, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          solutionTemplateId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          availableSolutionTemplateVersions: S.optional(__S(3969, __c248, 1)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SolutionProperties" });
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3970, __c248, 2)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetSolutionResponse" });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          solutionMetadataName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.Edge/solutionMetadatas/{solutionMetadataName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSolutionMetadatasRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(4016, __c251, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSolutionMetadatasResponse",
+      });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          solutionTemplateId: S.optional(S.String),
+          latestVersion: S.optional(S.String),
+          currentVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SolutionMetadataProperties",
+      });
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(4048, __c253, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigurationsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ConfigurationPropertiesInput",
+      });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(4080, __c255, 0)),
+        }),
+      ).annotate({
+        identifier: "ConfigurationsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigurationProperties" });
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          solutionMetadataName: S.String.pipe(T.Label()),
+          solutionMetadataVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.Edge/solutionMetadatas/{solutionMetadataName}/versions/{solutionMetadataVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSolutionMetadataVersionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(4112, __c257, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSolutionMetadataVersionResponse",
+      });
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parentDisplayName: S.optional(S.String),
+          solutionTemplateVersionId: S.optional(S.String),
+          schemaId: S.optional(S.String),
+          dynamicConfigurationVersionId: S.optional(S.String),
+          configurationStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SolutionMetadataVersionProperties",
+      });
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          solutionTemplateName: S.String.pipe(T.Label()),
+          solutionTemplateVersionName: S.String.pipe(T.Label()),
+          solutionSchemaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/solutionSchemas/{solutionSchemaName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSolutionSchemaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(4144, __c259, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSolutionSchemaResponse",
+      });
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Unknown),
+          level: S.optional(S.String),
+          templateUniqueIdentifier: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SolutionSchemaProperties" });
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          solutionTemplateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSolutionTemplateRequest",
+      });
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueIdentifier: S.optional(S.String),
+          description: S.String,
+          capabilities: __S(2112, __c132, 0),
+          latestVersion: S.optional(S.String),
+          state: S.optional(S.String),
+          enableExternalValidation: S.optional(S.Boolean),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SolutionTemplateProperties",
+      });
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(4176, __c261, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSolutionTemplateResponse",
+      });
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          solutionTemplateName: S.String.pipe(T.Label()),
+          solutionTemplateVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSolutionTemplateVersionRequest",
+      });
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+          solutionName: S.String.pipe(T.Label()),
+          solutionVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSolutionVersionRequest",
+      });
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(4241, __c265, 1)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayState: S.String,
+          stage: S.String,
+          status: S.String,
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          childStages: S.optional(__S(4240, __c265, 0)),
+        }),
+      ).annotate({ identifier: "StageMap" });
+    case 2:
+      return S.Array(__S(4241, __c265, 1));
+    case 3:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(4244, __c265, 4)));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          solutionVersionId: S.String,
+          solutionInstanceName: S.optional(S.String),
+          solutionTemplateVersionId: S.String,
+          targetId: S.String,
+          dependencies: S.optional(__S(4243, __c265, 3)),
+        }),
+      ).annotate({ identifier: "SolutionDependency" });
+    case 5:
+      return S.Array(__S(4244, __c265, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          solutionTemplateVersionId: S.optional(S.String),
+          revision: S.optional(S.Number),
+          targetDisplayName: S.optional(S.String),
+          configuration: S.optional(S.Unknown),
+          targetLevelConfiguration: S.optional(S.Unknown),
+          specification: __S(576, __c36, 0),
+          reviewId: S.optional(S.String),
+          externalValidationId: S.optional(S.String),
+          state: S.optional(S.String),
+          currentStage: S.optional(__S(4241, __c265, 1)),
+          stages: S.optional(__S(4242, __c265, 2)),
+          solutionInstanceName: S.optional(S.String),
+          solutionDependencies: S.optional(__S(4245, __c265, 5)),
+          errorDetails: S.optional(__S(3669, __c229, 5)),
+          latestActionTrackingUri: S.optional(S.String),
+          latestActionTriggeredBy: S.optional(S.String),
+          actionType: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SolutionVersionProperties",
+      });
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(4246, __c265, 6)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSolutionVersionResponse",
+      });
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetTargetRequest" });
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+          displayName: S.String,
+          contextId: S.String,
+          targetSpecification: S.optional(__S(576, __c36, 0)),
+          capabilities: __S(2112, __c132, 0),
+          hierarchyLevel: S.String,
+          status: S.optional(__S(3492, __c218, 4)),
+          solutionScope: S.optional(S.String),
+          state: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TargetProperties" });
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(4288, __c268, 0)),
+          eTag: S.optional(S.String),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+        }),
+      ).annotate({ identifier: "GetTargetResponse" });
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextName: S.String.pipe(T.Label()),
+          workflowName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetWorkflowRequest" });
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(4352, __c272, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetWorkflowResponse" });
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflowTemplateId: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkflowProperties" });
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextName: S.String.pipe(T.Label()),
+          workflowName: S.String.pipe(T.Label()),
+          versionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetWorkflowVersionRequest",
+      });
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          targetId: S.optional(S.String),
+          specification: __S(576, __c36, 0),
+        }),
+      ).annotate({ identifier: "TaskSpec" });
+    case 1:
+      return S.Array(__S(4384, __c274, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          maxToleratedFailures: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ErrorAction" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          concurrency: S.optional(S.Number),
+          errorAction: S.optional(__S(4386, __c274, 2)),
+        }),
+      ).annotate({ identifier: "TaskOption" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          specification: S.optional(__S(576, __c36, 0)),
+          tasks: S.optional(__S(4385, __c274, 1)),
+          taskOption: S.optional(__S(4387, __c274, 3)),
+        }),
+      ).annotate({ identifier: "StageSpec" });
+    case 5:
+      return S.Array(__S(4388, __c274, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          revision: S.optional(S.Number),
+          configuration: S.optional(S.String),
+          stageSpec: __S(4389, __c274, 5),
+          reviewId: S.optional(S.String),
+          state: S.optional(S.String),
+          specification: S.optional(__S(576, __c36, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WorkflowVersionProperties",
+      });
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(4390, __c274, 6)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetWorkflowVersionResponse",
+      });
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          totalCores: S.Number,
+          diskSpaceInGb: S.Number,
+          memoryInGb: S.Number,
+          oem: S.String,
+          hardwareSku: S.String,
+          nodes: S.Number,
+          versionAtRegistration: S.String,
+          solutionBuilderExtension: S.String,
+          deviceId: S.String,
+        }),
+      ).annotate({
+        identifier: "HardwareSettingPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          hardwareSettingName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(4416, __c276, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "HardwareSettingsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          imageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/listDownloadUri",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImagesListDownloadUriRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          releaseVersion: S.String,
+          releaseDisplayName: S.String,
+          releaseNotes: S.String,
+          releaseDate: S.String,
+          releaseType: S.String,
+          compatibleVersions: S.optional(__S(2112, __c132, 0)),
+          updateProperties: S.optional(__S(3440, __c215, 0)),
+          transactionId: S.String,
+          downloadLink: S.String,
+          linkExpiry: S.String,
+        }),
+      ).annotate({ identifier: "ImageDownloadResult" });
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          capabilities: __S(4465, __c279, 1),
+          hierarchies: __S(4467, __c279, 3),
+        }),
+      ).annotate({ identifier: "ContextPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(4448, __c278, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ContextsCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(4468, __c279, 4)),
+        }),
+      ).annotate({
+        identifier: "ContextsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.String,
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Capability" });
+    case 1:
+      return S.Array(__S(4464, __c279, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.String,
+        }),
+      ).annotate({ identifier: "Hierarchy" });
+    case 3:
+      return S.Array(__S(4466, __c279, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueIdentifier: S.optional(S.String),
+          capabilities: __S(4465, __c279, 1),
+          hierarchies: __S(4467, __c279, 3),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContextProperties" });
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+          solutionVersionId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/installSolution",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "InstallTargetSolutionRequest",
+      });
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          solutionVersionId: S.String,
+          targetId: S.String,
+          activeState: S.optional(S.String),
+          reconciliationPolicy: S.optional(__S(3504, __c219, 0)),
+          solutionScope: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InstancePropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetName: S.String.pipe(T.Label()),
+          solutionName: S.String.pipe(T.Label()),
+          instanceName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(4496, __c281, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "InstancesCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3520, __c220, 0)),
+          extendedLocation: S.optional(__S(2608, __c163, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          imageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/images/{imageName}/artifacts",
+            code: 200,
+            apiVersion: "2026-03-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListArtifactByParentRequest",
+      });
+    case 1:
+      return S.Array(__S(2881, __c180, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(4513, __c282, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ArtifactListResult" });
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConfigTemplateByResourceGroupRequest",
+      });
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          tags: S.optional(__S(2368, __c148, 0)),
+          location: S.String,
+          properties: S.optional(__S(2352, __c147, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigTemplate" });
+    case 1:
+      return S.Array(__S(4544, __c284, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(4545, __c284, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigTemplateListResult" });
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/configTemplates",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConfigTemplateBySubscriptionRequest",
+      });
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConfigTemplateMetadatasByConfigTemplateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2146, __c134, 2)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigTemplateMetadata" });
+    case 2:
+      return S.Array(__S(4577, __c286, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(4578, __c286, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigTemplateMetadataListResult",
+      });
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+          configTemplateVersionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions/{configTemplateVersionName}/configTemplateSchemas",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConfigTemplateSchemaByConfigTemplateVersionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(2960, __c185, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigTemplateSchema" });
+    case 2:
+      return S.Array(__S(4593, __c287, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(4594, __c287, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigTemplateSchemaListResult",
+      });
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          configTemplateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/versions",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConfigTemplateVersionByConfigTemplateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2096, __c131, 0)),
+          properties: S.optional(__S(3184, __c199, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigTemplateVersion" });
+    case 2:
+      return S.Array(__S(4609, __c288, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(4610, __c288, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfigTemplateVersionListResult",
+      });
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConfigurationByResourceGroupRequest",
+      });
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3008, __c188, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(4640, __c290, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigurationListResult" });
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/configurations",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConfigurationBySubscriptionRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -840,8 +840,8 @@ export const CheckQuotasAvailability: API.OperationMethod<
   CheckQuotasAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CheckQuotasAvailabilityRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CheckQuotaAvailabilityResponse>,
+  input: __S(10, __c1, 2) as any as S.Schema<CheckQuotasAvailabilityRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<CheckQuotaAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -855,8 +855,8 @@ export const DeleteLoadTest: API.OperationMethod<
   DeleteLoadTestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteLoadTestRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteLoadTestResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteLoadTestRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<DeleteLoadTestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -870,8 +870,8 @@ export const DeletePlaywrightWorkspace: API.OperationMethod<
   DeletePlaywrightWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeletePlaywrightWorkspaceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeletePlaywrightWorkspaceResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeletePlaywrightWorkspaceRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<DeletePlaywrightWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -885,8 +885,8 @@ export const GetLoadTest: API.OperationMethod<
   GetLoadTestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetLoadTestRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetLoadTestResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetLoadTestRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<GetLoadTestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -900,8 +900,8 @@ export const GetPlaywrightQuotas: API.OperationMethod<
   GetPlaywrightQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetPlaywrightQuotasRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetPlaywrightQuotasResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetPlaywrightQuotasRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<GetPlaywrightQuotasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -915,8 +915,8 @@ export const GetPlaywrightWorkspace: API.OperationMethod<
   GetPlaywrightWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetPlaywrightWorkspaceRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPlaywrightWorkspaceResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetPlaywrightWorkspaceRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetPlaywrightWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -930,8 +930,8 @@ export const GetPlaywrightWorkspaceQuotas: API.OperationMethod<
   GetPlaywrightWorkspaceQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetPlaywrightWorkspaceQuotasRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetPlaywrightWorkspaceQuotasResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetPlaywrightWorkspaceQuotasRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<GetPlaywrightWorkspaceQuotasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -945,8 +945,8 @@ export const GetQuotas: API.OperationMethod<
   GetQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetQuotasRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetQuotasResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetQuotasRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<GetQuotasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -960,8 +960,8 @@ export const ListLoadTestByResourceGroup: API.OperationMethod<
   ListLoadTestByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListLoadTestByResourceGroupRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<LoadTestResourceListResult>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListLoadTestByResourceGroupRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<LoadTestResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -975,8 +975,8 @@ export const ListLoadTestBySubscription: API.OperationMethod<
   ListLoadTestBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListLoadTestBySubscriptionRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<LoadTestResourceListResult>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListLoadTestBySubscriptionRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<LoadTestResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -991,11 +991,11 @@ export const ListLoadTestOutboundNetworkDependenciesEndpoints: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    40,
-    __c5,
+    24,
+    __c3,
     0,
   ) as any as S.Schema<ListLoadTestOutboundNetworkDependenciesEndpointsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<PagedOutboundEnvironmentEndpoint>,
+  output: __S(31, __c3, 7) as any as S.Schema<PagedOutboundEnvironmentEndpoint>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1009,8 +1009,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1024,8 +1024,8 @@ export const ListPlaywrightQuotasBySubscription: API.OperationMethod<
   ListPlaywrightQuotasBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListPlaywrightQuotasBySubscriptionRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<PlaywrightQuotaListResult>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListPlaywrightQuotasBySubscriptionRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<PlaywrightQuotaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1039,8 +1039,8 @@ export const ListPlaywrightWorkspaceByResourceGroup: API.OperationMethod<
   ListPlaywrightWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListPlaywrightWorkspaceByResourceGroupRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<PlaywrightWorkspaceListResult>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListPlaywrightWorkspaceByResourceGroupRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<PlaywrightWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1054,8 +1054,8 @@ export const ListPlaywrightWorkspaceBySubscription: API.OperationMethod<
   ListPlaywrightWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListPlaywrightWorkspaceBySubscriptionRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<PlaywrightWorkspaceListResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListPlaywrightWorkspaceBySubscriptionRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<PlaywrightWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1070,11 +1070,11 @@ export const ListPlaywrightWorkspaceQuotasByPlaywrightWorkspace: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    62,
-    __c7,
-    6,
+    72,
+    __c9,
+    0,
   ) as any as S.Schema<ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<PlaywrightWorkspaceQuotaListResult>,
+  output: __S(75, __c9, 3) as any as S.Schema<PlaywrightWorkspaceQuotaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1088,8 +1088,8 @@ export const ListQuotas: API.OperationMethod<
   ListQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListQuotasRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<QuotaResourceListResult>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListQuotasRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<QuotaResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1103,8 +1103,8 @@ export const LoadTestsCreateOrUpdate: API.OperationMethod<
   LoadTestsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<LoadTestsCreateOrUpdateRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<LoadTestsCreateOrUpdateResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<LoadTestsCreateOrUpdateRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<LoadTestsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1118,8 +1118,8 @@ export const PlaywrightWorkspacesCreateOrUpdate: API.OperationMethod<
   PlaywrightWorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1133,8 +1133,8 @@ export const UpdateLoadTest: API.OperationMethod<
   UpdateLoadTestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<UpdateLoadTestRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UpdateLoadTestResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<UpdateLoadTestRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<UpdateLoadTestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1148,8 +1148,8 @@ export const UpdatePlaywrightWorkspace: API.OperationMethod<
   UpdatePlaywrightWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<UpdatePlaywrightWorkspaceRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdatePlaywrightWorkspaceResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<UpdatePlaywrightWorkspaceRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<UpdatePlaywrightWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1185,7 +1185,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckPlaywrightWorkspaceNameAvailabilityResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.String),
@@ -1194,24 +1198,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "QuotaBucketRequestPropertiesDimensions",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           currentUsage: S.optional(S.Number),
           currentQuota: S.optional(S.Number),
           newQuota: S.optional(S.Number),
-          dimensions: S.optional(__S(2, __c0, 2)),
+          dimensions: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "QuotaBucketRequestProperties",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           quotaBucketName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(9, __c1, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1223,7 +1227,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckQuotasAvailabilityRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1236,7 +1240,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckQuotaAvailabilityResponseSystemData",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           isAvailable: S.optional(S.Boolean),
@@ -1245,360 +1249,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckQuotaAvailabilityResponseProperties",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           type: S.String,
-          systemData: S.optional(__S(5, __c0, 5)),
+          systemData: S.optional(__S(11, __c1, 3)),
           name: S.optional(S.String),
-          properties: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "CheckQuotaAvailabilityResponse",
       });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          loadTestName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
-            code: 200,
-            apiVersion: "2022-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteLoadTestRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteLoadTestResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          playwrightWorkspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePlaywrightWorkspaceRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePlaywrightWorkspaceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          loadTestName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
-            code: 200,
-            apiVersion: "2022-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetLoadTestRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          resourceId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "EncryptionPropertiesIdentity",
-      });
-  }
-}
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          identity: S.optional(__S(15, __c1, 7)),
-          keyUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          dataPlaneURI: S.optional(S.String),
-          encryption: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "LoadTestProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(18, __c2, 2)));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "GetLoadTestResponseIdentity",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          tags: S.optional(__S(14, __c1, 6)),
-          location: S.String,
-          properties: S.optional(__S(17, __c2, 1)),
-          identity: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "GetLoadTestResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          playwrightQuotaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/playwrightQuotas/{playwrightQuotaName}",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPlaywrightQuotasRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceId: S.String,
-          state: S.String,
-        }),
-      ).annotate({ identifier: "FreeTrialProperties" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          freeTrial: S.optional(__S(23, __c2, 7)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PlaywrightQuotaProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "GetPlaywrightQuotasResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          playwrightWorkspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPlaywrightWorkspaceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          dataplaneUri: S.optional(S.String),
-          regionalAffinity: S.optional(S.String),
-          localAuth: S.optional(S.String),
-          workspaceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PlaywrightWorkspaceProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          tags: S.optional(__S(14, __c1, 6)),
-          location: S.String,
-          properties: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "GetPlaywrightWorkspaceResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          playwrightWorkspaceName: S.String.pipe(T.Label()),
-          quotaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}/quotas/{quotaName}",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPlaywrightWorkspaceQuotasRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String,
-          expiryAt: S.String,
-          allocatedValue: S.Number,
-          usedValue: S.Number,
-          percentageUsed: S.Number,
-        }),
-      ).annotate({
-        identifier: "PlaywrightWorkspaceFreeTrialProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          freeTrial: S.optional(__S(30, __c3, 6)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PlaywrightWorkspaceQuotaProperties",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "GetPlaywrightWorkspaceQuotasResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          quotaBucketName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/quotas/{quotaBucketName}",
-            code: 200,
-            apiVersion: "2022-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetQuotasRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number),
-          usage: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QuotaResourceProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "GetQuotasResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests",
-            code: 200,
-            apiVersion: "2022-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListLoadTestByResourceGroupRequest",
-      });
-    case 5:
-      return S.Array(__S(21, __c2, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(37, __c4, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LoadTestResourceListResult",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1615,7 +1282,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1641,32 +1308,32 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "EndpointDetail" });
     case 2:
-      return S.Array(__S(41, __c5, 1));
+      return S.Array(__S(25, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String,
           description: S.optional(S.String),
-          endpointDetails: S.optional(__S(42, __c5, 2)),
+          endpointDetails: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "EndpointDependency" });
     case 4:
-      return S.Array(__S(43, __c5, 3));
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(__S(44, __c5, 4)),
+          endpoints: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({
         identifier: "OutboundEnvironmentEndpoint",
       });
     case 6:
-      return S.Array(__S(45, __c5, 5));
+      return S.Array(__S(29, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(46, __c5, 6),
+          value: __S(30, __c3, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1674,7 +1341,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1701,21 +1368,25 @@ function __c6(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(49, __c6, 1)),
+          display: S.optional(__S(33, __c4, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(50, __c6, 2));
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(51, __c6, 3)),
+          value: S.optional(__S(35, __c4, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1731,32 +1402,32 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListPlaywrightQuotasBySubscriptionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(24, __c3, 0)),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(209, __c26, 1)),
         }),
       ).annotate({ identifier: "PlaywrightQuota" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(55, __c6, 7),
+          value: __S(42, __c5, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PlaywrightQuotaListResult",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1772,30 +1443,38 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListPlaywrightWorkspaceByResourceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          tags: S.optional(__S(14, __c1, 6)),
+          systemData: S.optional(__S(168, __c21, 0)),
+          tags: S.optional(__S(176, __c22, 0)),
           location: S.String,
-          properties: S.optional(__S(27, __c3, 3)),
+          properties: S.optional(__S(224, __c28, 0)),
         }),
       ).annotate({ identifier: "PlaywrightWorkspace" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(59, __c7, 3),
+          value: __S(57, __c7, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PlaywrightWorkspaceListResult",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1810,7 +1489,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListPlaywrightWorkspaceBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1827,32 +1510,32 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(31, __c3, 7)),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(249, __c31, 1)),
         }),
       ).annotate({ identifier: "PlaywrightWorkspaceQuota" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(64, __c8, 0),
+          value: __S(74, __c9, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PlaywrightWorkspaceQuotaListResult",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1866,36 +1549,18 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListQuotasRequest" });
-    case 3:
-      return S.Array(__S(35, __c4, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(265, __c33, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(67, __c8, 3),
+          value: __S(81, __c10, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaResourceListResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          encryption: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "LoadTestPropertiesInput" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(9, __c1, 1)));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({
-        identifier: "LoadTestsCreateOrUpdateRequestIdentity",
-      });
   }
 }
-function __c9(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1903,10 +1568,10 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadTestName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(176, __c22, 0)),
           location: S.String,
-          properties: S.optional(__S(69, __c8, 5)),
-          identity: S.optional(__S(71, __c8, 7)),
+          properties: S.optional(__S(96, __c12, 0)),
+          identity: S.optional(__S(98, __c12, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1924,33 +1589,50 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          tags: S.optional(__S(14, __c1, 6)),
+          systemData: S.optional(__S(168, __c21, 0)),
+          tags: S.optional(__S(176, __c22, 0)),
           location: S.String,
-          properties: S.optional(__S(17, __c2, 1)),
-          identity: S.optional(__S(20, __c2, 4)),
+          properties: S.optional(__S(186, __c23, 2)),
+          identity: S.optional(__S(189, __c23, 5)),
         }),
       ).annotate({
         identifier: "LoadTestsCreateOrUpdateResponse",
       });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          encryption: S.optional(__S(185, __c23, 1)),
+        }),
+      ).annotate({ identifier: "LoadTestPropertiesInput" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(128, __c16, 0)));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          regionalAffinity: S.optional(S.String),
-          localAuth: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({
-        identifier: "PlaywrightWorkspacePropertiesInput",
+        identifier: "LoadTestsCreateOrUpdateRequestIdentity",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           playwrightWorkspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(176, __c22, 0)),
           location: S.String,
-          properties: S.optional(__S(74, __c9, 2)),
+          properties: S.optional(__S(112, __c14, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1962,15 +1644,59 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PlaywrightWorkspacesCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regionalAffinity: S.optional(S.String),
+          localAuth: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PlaywrightWorkspacePropertiesInput",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadTestName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(71, __c8, 7)),
-          tags: S.optional(__S(14, __c1, 6)),
-          properties: S.optional(__S(69, __c8, 5)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
+            code: 200,
+            apiVersion: "2022-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteLoadTestRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteLoadTestResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          loadTestName: S.String.pipe(T.Label()),
+          identity: S.optional(__S(98, __c12, 2)),
+          tags: S.optional(__S(176, __c22, 0)),
+          properties: S.optional(__S(96, __c12, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1980,14 +1706,18 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateLoadTestRequest" });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           playwrightWorkspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(14, __c1, 6)),
-          properties: S.optional(__S(74, __c9, 2)),
+          tags: S.optional(__S(176, __c22, 0)),
+          properties: S.optional(__S(112, __c14, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2001,7 +1731,380 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          playwrightWorkspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePlaywrightWorkspaceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePlaywrightWorkspaceResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          loadTestName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
+            code: 200,
+            apiVersion: "2022-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetLoadTestRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          resourceId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "EncryptionPropertiesIdentity",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          identity: S.optional(__S(184, __c23, 0)),
+          keyUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          dataPlaneURI: S.optional(S.String),
+          encryption: S.optional(__S(185, __c23, 1)),
+        }),
+      ).annotate({ identifier: "LoadTestProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(187, __c23, 3)));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(188, __c23, 4)),
+        }),
+      ).annotate({
+        identifier: "GetLoadTestResponseIdentity",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          tags: S.optional(__S(176, __c22, 0)),
+          location: S.String,
+          properties: S.optional(__S(186, __c23, 2)),
+          identity: S.optional(__S(189, __c23, 5)),
+        }),
+      ).annotate({ identifier: "GetLoadTestResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          playwrightQuotaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/playwrightQuotas/{playwrightQuotaName}",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPlaywrightQuotasRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(209, __c26, 1)),
+        }),
+      ).annotate({
+        identifier: "GetPlaywrightQuotasResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceId: S.String,
+          state: S.String,
+        }),
+      ).annotate({ identifier: "FreeTrialProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          freeTrial: S.optional(__S(208, __c26, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PlaywrightQuotaProperties",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          playwrightWorkspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPlaywrightWorkspaceRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          dataplaneUri: S.optional(S.String),
+          regionalAffinity: S.optional(S.String),
+          localAuth: S.optional(S.String),
+          workspaceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PlaywrightWorkspaceProperties",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          tags: S.optional(__S(176, __c22, 0)),
+          location: S.String,
+          properties: S.optional(__S(224, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "GetPlaywrightWorkspaceResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          playwrightWorkspaceName: S.String.pipe(T.Label()),
+          quotaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}/quotas/{quotaName}",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPlaywrightWorkspaceQuotasRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(249, __c31, 1)),
+        }),
+      ).annotate({
+        identifier: "GetPlaywrightWorkspaceQuotasResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String,
+          expiryAt: S.String,
+          allocatedValue: S.Number,
+          usedValue: S.Number,
+          percentageUsed: S.Number,
+        }),
+      ).annotate({
+        identifier: "PlaywrightWorkspaceFreeTrialProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          freeTrial: S.optional(__S(248, __c31, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PlaywrightWorkspaceQuotaProperties",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          quotaBucketName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/quotas/{quotaBucketName}",
+            code: 200,
+            apiVersion: "2022-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetQuotasRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number),
+          usage: S.optional(S.Number),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuotaResourceProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(168, __c21, 0)),
+          properties: S.optional(__S(264, __c33, 0)),
+        }),
+      ).annotate({ identifier: "GetQuotasResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests",
+            code: 200,
+            apiVersion: "2022-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListLoadTestByResourceGroupRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(192, __c24, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(280, __c35, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LoadTestResourceListResult",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

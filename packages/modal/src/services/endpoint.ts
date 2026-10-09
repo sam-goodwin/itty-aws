@@ -211,8 +211,8 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateEndpointRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateEndpointResponse>,
+  input: __S(8, __c0, 8) as any as S.Schema<CreateEndpointRequest>,
+  output: __S(9, __c0, 9) as any as S.Schema<CreateEndpointResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -225,8 +225,8 @@ export const endpointGetByName: API.OperationMethod<
   EndpointGetByNameError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<EndpointGetByNameRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<EndpointGetByNameResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<EndpointGetByNameRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<EndpointGetByNameResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -239,8 +239,8 @@ export const endpointGetInfo: API.OperationMethod<
   EndpointGetInfoError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<EndpointGetInfoRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<EndpointGetInfoResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<EndpointGetInfoRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<EndpointGetInfoResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -253,8 +253,8 @@ export const endpointGetLifecycle: API.OperationMethod<
   EndpointGetLifecycleError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<EndpointGetLifecycleRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<EndpointGetLifecycleResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<EndpointGetLifecycleRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<EndpointGetLifecycleResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -267,8 +267,8 @@ export const listEndpoint: API.OperationMethod<
   ListEndpointError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListEndpointRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListEndpointResponse>,
+  input: __S(97, __c6, 1) as any as S.Schema<ListEndpointRequest>,
+  output: __S(102, __c6, 6) as any as S.Schema<ListEndpointResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -281,8 +281,8 @@ export const stopEndpoint: API.OperationMethod<
   StopEndpointError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<StopEndpointRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StopEndpointResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<StopEndpointRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<StopEndpointResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -294,10 +294,6 @@ function __c0(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleProtobufEmpty",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           regions: S.optional(__S(0, __c0, 0)),
@@ -305,17 +301,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "EndpointComputeRegionSpecExplicitRegions",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          auto: S.optional(__S(1, __c0, 1)),
-          colocated: S.optional(__S(1, __c0, 1)),
-          explicit: S.optional(__S(2, __c0, 2)),
+          auto: S.optional(__S(16, __c1, 0)),
+          colocated: S.optional(__S(16, __c1, 0)),
+          explicit: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "EndpointComputeRegionSpec",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           repoId: S.optional(S.String),
@@ -325,7 +321,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "EndpointHuggingFaceModelSource",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
@@ -334,39 +330,35 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "EndpointModalVolumeModelSource",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           baseModelRepoId: S.optional(S.String),
-          huggingface: S.optional(__S(4, __c0, 4)),
-          modalVolume: S.optional(__S(5, __c0, 5)),
+          huggingface: S.optional(__S(3, __c0, 3)),
+          modalVolume: S.optional(__S(4, __c0, 4)),
         }),
       ).annotate({
         identifier: "EndpointCustomModelSource",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           baseModelRepoId: S.optional(S.String),
-          custom: S.optional(__S(6, __c0, 6)),
+          custom: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "EndpointModelSource" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.Array(S.String);
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
           proxyRegions: S.optional(__S(0, __c0, 0)),
-          computeRegion: S.optional(__S(3, __c0, 3)),
-          model: S.optional(__S(7, __c0, 7)),
-          apiSurfaces: S.optional(__S(8, __c1, 0)),
-          inputModalities: S.optional(__S(8, __c1, 0)),
+          computeRegion: S.optional(__S(2, __c0, 2)),
+          model: S.optional(__S(6, __c0, 6)),
+          apiSurfaces: S.optional(__S(7, __c0, 7)),
+          inputModalities: S.optional(__S(7, __c0, 7)),
           environmentName: S.optional(S.String),
           unauthenticated: S.optional(S.Boolean),
           servingMode: S.optional(S.String),
@@ -375,7 +367,7 @@ function __c1(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/EndpointCreate", code: 200 }),
         ),
       ).annotate({ identifier: "CreateEndpointRequest" });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           endpointId: S.optional(S.String),
@@ -383,7 +375,19 @@ function __c1(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateEndpointResponse" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleProtobufEmpty",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -392,7 +396,7 @@ function __c1(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/EndpointGetByName", code: 200 }),
         ),
       ).annotate({ identifier: "EndpointGetByNameRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           endpointId: S.optional(S.String),
@@ -401,7 +405,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "EndpointGetByNameResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endpointId: S.optional(S.String),
@@ -409,7 +417,45 @@ function __c1(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/EndpointGetInfo", code: 200 }),
         ),
       ).annotate({ identifier: "EndpointGetInfoRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          repoId: S.optional(S.String),
+          revision: S.optional(S.String),
+          serviceUrl: S.optional(S.String),
+          requiresProxyAuth: S.optional(S.Boolean),
+          servingMode: S.optional(S.String),
+          status: S.optional(S.String),
+          lifecycle: S.optional(__S(64, __c4, 0)),
+          volumeId: S.optional(S.String),
+          modelPath: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EndpointGetInfoResponseEndpointInfoSummary",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          serverId: S.optional(S.String),
+          environmentName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EndpointGetInfoResponseEndpointHandleMetadata",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          info: S.optional(__S(49, __c3, 1)),
+          metadata: S.optional(__S(50, __c3, 2)),
+        }),
+      ).annotate({ identifier: "EndpointGetInfoResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -420,45 +466,11 @@ function __c1(j: number): any {
           environmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointLifecycle" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          repoId: S.optional(S.String),
-          revision: S.optional(S.String),
-          serviceUrl: S.optional(S.String),
-          requiresProxyAuth: S.optional(S.Boolean),
-          servingMode: S.optional(S.String),
-          status: S.optional(S.String),
-          lifecycle: S.optional(__S(14, __c1, 6)),
-          volumeId: S.optional(S.String),
-          modelPath: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EndpointGetInfoResponseEndpointInfoSummary",
-      });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          serverId: S.optional(S.String),
-          environmentName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EndpointGetInfoResponseEndpointHandleMetadata",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          info: S.optional(__S(15, __c1, 7)),
-          metadata: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "EndpointGetInfoResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           endpointId: S.optional(S.String),
@@ -472,49 +484,49 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "EndpointGetLifecycleRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          lifecycle: S.optional(__S(14, __c1, 6)),
+          lifecycle: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({
         identifier: "EndpointGetLifecycleResponse",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxObjects: S.optional(S.Number),
           createdBefore: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListPagination" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           environmentName: S.optional(S.String),
-          pagination: S.optional(__S(20, __c2, 4)),
+          pagination: S.optional(__S(96, __c6, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/EndpointList", code: 200 }),
         ),
       ).annotate({ identifier: "ListEndpointRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.Number),
           createdBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreationInfo" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          creationInfo: S.optional(__S(22, __c2, 6)),
+          creationInfo: S.optional(__S(98, __c6, 2)),
         }),
       ).annotate({ identifier: "EndpointMetadata" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           endpointId: S.optional(S.String),
@@ -522,7 +534,7 @@ function __c3(j: number): any {
           description: S.optional(S.String),
           activeDeploymentId: S.optional(S.String),
           updatedAt: S.optional(S.Number),
-          metadata: S.optional(__S(23, __c2, 7)),
+          metadata: S.optional(__S(99, __c6, 3)),
           appState: S.optional(S.String),
           functionId: S.optional(S.String),
           createdByAvatarUrl: S.optional(S.String),
@@ -532,16 +544,20 @@ function __c3(j: number): any {
           unauthenticated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EndpointListItem" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(100, __c6, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(25, __c3, 1)),
+          items: S.optional(__S(101, __c6, 5)),
           environmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListEndpointResponse" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endpointId: S.optional(S.String),
@@ -552,7 +568,6 @@ function __c3(j: number): any {
       ).annotate({ identifier: "StopEndpointRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

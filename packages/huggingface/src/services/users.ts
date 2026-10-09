@@ -374,7 +374,7 @@ export const getAvatar: API.OperationMethod<
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetAvatarRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetAvatarResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetAvatarResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -388,8 +388,8 @@ export const getJobsUsage: API.OperationMethod<
   GetJobsUsageError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetJobsUsageRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetJobsUsageResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetJobsUsageRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<GetJobsUsageResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -403,8 +403,8 @@ export const getMcpTools: API.OperationMethod<
   GetMcpToolsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetMcpToolsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetMcpToolsResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetMcpToolsRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<GetMcpToolsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -418,8 +418,8 @@ export const getSessionInferenceUsage: API.OperationMethod<
   GetSessionInferenceUsageError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetSessionInferenceUsageRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetSessionInferenceUsageResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetSessionInferenceUsageRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<GetSessionInferenceUsageResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -433,8 +433,8 @@ export const getSocialHandles: API.OperationMethod<
   GetSocialHandlesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetSocialHandlesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetSocialHandlesResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetSocialHandlesRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<GetSocialHandlesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -448,8 +448,8 @@ export const getUserAvatar: API.OperationMethod<
   GetUserAvatarError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetUserAvatarRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetUserAvatarResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetUserAvatarRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<GetUserAvatarResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -463,8 +463,8 @@ export const getUserUsageV2: API.OperationMethod<
   GetUserUsageV2Error,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetUserUsageV2Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetUserUsageV2Response>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetUserUsageV2Request>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetUserUsageV2Response>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -478,8 +478,8 @@ export const listFollowedOrganizations: API.OperationMethod<
   ListFollowedOrganizationsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListFollowedOrganizationsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ListFollowedOrganizationsResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListFollowedOrganizationsRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<ListFollowedOrganizationsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -493,8 +493,8 @@ export const listFollowedUsers: API.OperationMethod<
   ListFollowedUsersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListFollowedUsersRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListFollowedUsersResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListFollowedUsersRequest>,
+  output: __S(123, __c15, 3) as any as S.Schema<ListFollowedUsersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -508,8 +508,8 @@ export const listUserFollowers: API.OperationMethod<
   ListUserFollowersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListUserFollowersRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListUserFollowersResponse>,
+  input: __S(137, __c17, 1) as any as S.Schema<ListUserFollowersRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListUserFollowersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -523,8 +523,8 @@ export const listUserLikes: API.OperationMethod<
   ListUserLikesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListUserLikesRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListUserLikesResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListUserLikesRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<ListUserLikesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -538,8 +538,8 @@ export const listUserRepositories: API.OperationMethod<
   ListUserRepositoriesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListUserRepositoriesRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListUserRepositoriesResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListUserRepositoriesRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListUserRepositoriesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -553,8 +553,8 @@ export const streamMetrics: API.OperationMethod<
   StreamMetricsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<StreamMetricsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StreamMetricsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<StreamMetricsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<StreamMetricsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -568,8 +568,8 @@ export const streamUserUsage: API.OperationMethod<
   StreamUserUsageError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<StreamUserUsageRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StreamUserUsageResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<StreamUserUsageRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<StreamUserUsageResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -583,8 +583,8 @@ export const streamUserUsageByUsername: API.OperationMethod<
   StreamUserUsageByUsernameError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<StreamUserUsageByUsernameRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<StreamUserUsageByUsernameResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<StreamUserUsageByUsernameRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<StreamUserUsageByUsernameResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -598,8 +598,8 @@ export const userOverview: API.OperationMethod<
   UserOverviewError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<UserOverviewRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<UserOverviewResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<UserOverviewRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<UserOverviewResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -614,17 +614,25 @@ function __c0(j: number): any {
           namespace: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/avatars/{namespace}", code: 200 })),
       ).annotate({ identifier: "GetAvatarRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetAvatarResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/settings/billing/usage/jobs", code: 200 }),
         ),
       ).annotate({ identifier: "GetJobsUsageRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           jobId: S.String,
@@ -637,38 +645,201 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetJobsUsageResponseUsageJobDetailsItem",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           usedMicroUsd: S.Number,
           totalMinutes: S.Number,
           periodStart: S.String,
           periodEnd: S.String,
-          jobDetails: __S(4, __c0, 4),
+          jobDetails: __S(18, __c2, 2),
         }),
       ).annotate({
         identifier: "GetJobsUsageResponseUsage",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          usage: __S(5, __c0, 5),
+          usage: __S(19, __c2, 3),
           hasAccess: S.Boolean,
         }),
       ).annotate({ identifier: "GetJobsUsageResponse" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/users/{username}/likes", code: 200 })),
+      ).annotate({ identifier: "ListUserLikesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ListUserLikesResponseBodyItemRepo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String,
+          repo: __S(25, __c3, 1),
+        }),
+      ).annotate({
+        identifier: "ListUserLikesResponseBodyItem",
+      });
+    case 3:
+      return S.Array(__S(26, __c3, 2));
+    case 4:
+      return S.suspend(() => __S(27, __c3, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListUserLikesResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          search: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/settings/repositories", code: 200 })),
+      ).annotate({
+        identifier: "ListUserRepositoriesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.String,
+          updatedAt: S.String,
+          visibility: S.String,
+          storage: S.Number,
+          storagePercent: S.Number,
+        }),
+      ).annotate({
+        identifier: "ListUserRepositoriesResponseBodyItem",
+      });
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
+      return S.suspend(() => __S(34, __c4, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListUserRepositoriesResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/settings/metrics/live", code: 200 })),
+      ).annotate({ identifier: "StreamMetricsRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/api/settings/billing/usage/live", code: 200 }),
+        ),
+      ).annotate({ identifier: "StreamUserUsageRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/users/{username}/billing/usage/live", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "StreamUserUsageByUsernameRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "StreamUserUsageByUsernameResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/users/{username}/overview", code: 200 })),
+      ).annotate({ identifier: "UserOverviewRequest" });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sku: __S(65, __c8, 1),
+          mem: S.Number,
+          num: S.Number,
+          isPrimary: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "UserOverviewResponseHardwareItemsItem",
+      });
+    case 3:
+      return S.Array(__S(66, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          orgs: S.optional(__S(129, __c16, 1)),
+          avatarUrl: S.String,
+          fullname: S.String,
+          isPro: S.Boolean,
+          user: S.String,
+          numModels: S.optional(S.Number),
+          numDatasets: S.optional(S.Number),
+          numSpaces: S.optional(S.Number),
+          numBuckets: S.optional(S.Number),
+          numKernels: S.optional(S.Number),
+          numDiscussions: S.optional(S.Number),
+          numPapers: S.optional(S.Number),
+          numUpvotes: S.optional(S.Number),
+          numLikes: S.optional(S.Number),
+          numFollowers: S.optional(S.Number),
+          numFollowing: S.optional(S.Number),
+          numFollowingOrgs: S.optional(S.Number),
+          details: S.optional(S.String),
+          isFollowing: S.optional(S.Boolean),
+          reasonToFollow: S.optional(S.String),
+          primaryOrgAvatarUrl: S.optional(S.String),
+          serviceAccount: S.optional(__S(130, __c16, 2)),
+          type: S.String,
+          createdAt: S.String,
+          hardwareItems: S.optional(__S(67, __c8, 3)),
+        }),
+      ).annotate({ identifier: "UserOverviewResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/settings/mcp", code: 200 })),
       ).annotate({ identifier: "GetMcpToolsRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
+      return S.Array(S.String);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -679,16 +850,20 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetMcpToolsResponseSpaceToolsItem",
       });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
     case 3:
+      return S.Array(__S(74, __c9, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          builtInTools: __S(8, __c1, 0),
-          spaceTools: __S(10, __c1, 2),
+          builtInTools: __S(73, __c9, 1),
+          spaceTools: __S(75, __c9, 3),
         }),
       ).annotate({ identifier: "GetMcpToolsResponse" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startDate: S.optional(S.String.pipe(T.Query())),
@@ -703,7 +878,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetSessionInferenceUsageRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -713,39 +888,39 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetSessionInferenceUsageResponsePeriodsItemSessionsItem",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(81, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           period: S.String,
-          sessions: __S(14, __c1, 6),
+          sessions: __S(82, __c10, 2),
         }),
       ).annotate({
         identifier: "GetSessionInferenceUsageResponsePeriodsItem",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(83, __c10, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           currency: S.String,
-          periods: __S(16, __c2, 0),
+          periods: __S(84, __c10, 4),
         }),
       ).annotate({
         identifier: "GetSessionInferenceUsageResponse",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/users/{username}/socials", code: 200 })),
       ).annotate({ identifier: "GetSocialHandlesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           twitter: S.optional(S.String),
@@ -756,28 +931,36 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetSocialHandlesResponseSocialHandles",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
           user: S.String,
-          socialHandles: __S(19, __c2, 3),
+          socialHandles: __S(89, __c11, 1),
         }),
       ).annotate({ identifier: "GetSocialHandlesResponse" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           redirect: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/users/{username}/avatar", code: 200 })),
       ).annotate({ identifier: "GetUserAvatarRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           avatarUrl: S.String,
         }),
       ).annotate({ identifier: "GetUserAvatarResponse" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startDate: S.Number.pipe(T.Query()),
@@ -786,7 +969,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "GetUserUsageV2Request" });
   }
 }
-function __c3(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -807,7 +990,7 @@ function __c3(j: number): any {
         identifier: "ListFollowedOrganizationsResponseBodyItemEmailDomainsItem",
       });
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(113, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -823,25 +1006,70 @@ function __c3(j: number): any {
           numModels: S.optional(S.Number),
           followerCount: S.optional(S.Number),
           reasonToFollow: S.optional(S.String),
-          emailDomains: S.optional(__S(26, __c3, 2)),
+          emailDomains: S.optional(__S(114, __c14, 2)),
         }),
       ).annotate({
         identifier: "ListFollowedOrganizationsResponseBodyItem",
       });
     case 4:
-      return S.Array(__S(27, __c3, 3));
+      return S.Array(__S(115, __c14, 3));
     case 5:
-      return S.suspend(() => __S(28, __c3, 4).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(116, __c14, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFollowedOrganizationsResponse",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/users/{username}/following", code: 200 })),
       ).annotate({ identifier: "ListFollowedUsersRequest" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          orgs: S.optional(__S(129, __c16, 1)),
+          avatarUrl: S.String,
+          fullname: S.String,
+          isPro: S.Boolean,
+          user: S.String,
+          numModels: S.optional(S.Number),
+          numDatasets: S.optional(S.Number),
+          numSpaces: S.optional(S.Number),
+          numBuckets: S.optional(S.Number),
+          numKernels: S.optional(S.Number),
+          numDiscussions: S.optional(S.Number),
+          numPapers: S.optional(S.Number),
+          numUpvotes: S.optional(S.Number),
+          numLikes: S.optional(S.Number),
+          numFollowers: S.optional(S.Number),
+          numFollowing: S.optional(S.Number),
+          numFollowingOrgs: S.optional(S.Number),
+          details: S.optional(S.String),
+          isFollowing: S.optional(S.Boolean),
+          reasonToFollow: S.optional(S.String),
+          primaryOrgAvatarUrl: S.optional(S.String),
+          serviceAccount: S.optional(__S(130, __c16, 2)),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ListFollowedUsersResponseBodyItem",
+      });
+    case 2:
+      return S.Array(__S(121, __c15, 1));
+    case 3:
+      return S.suspend(() => __S(122, __c15, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListFollowedUsersResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -852,13 +1080,9 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListFollowedUsersResponseBodyItemOrgsItem",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
     case 1:
+      return S.Array(__S(128, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -869,214 +1093,29 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListFollowedUsersResponseBodyItemServiceAccount",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          orgs: S.optional(__S(32, __c4, 0)),
-          avatarUrl: S.String,
-          fullname: S.String,
-          isPro: S.Boolean,
-          user: S.String,
-          numModels: S.optional(S.Number),
-          numDatasets: S.optional(S.Number),
-          numSpaces: S.optional(S.Number),
-          numBuckets: S.optional(S.Number),
-          numKernels: S.optional(S.Number),
-          numDiscussions: S.optional(S.Number),
-          numPapers: S.optional(S.Number),
-          numUpvotes: S.optional(S.Number),
-          numLikes: S.optional(S.Number),
-          numFollowers: S.optional(S.Number),
-          numFollowing: S.optional(S.Number),
-          numFollowingOrgs: S.optional(S.Number),
-          details: S.optional(S.String),
-          isFollowing: S.optional(S.Boolean),
-          reasonToFollow: S.optional(S.String),
-          primaryOrgAvatarUrl: S.optional(S.String),
-          serviceAccount: S.optional(__S(33, __c4, 1)),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ListFollowedUsersResponseBodyItem",
-      });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() => __S(35, __c4, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListFollowedUsersResponse",
-      });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          expand: S.optional(__S(37, __c4, 5).pipe(T.Query())),
+          expand: S.optional(__S(136, __c17, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/users/{username}/followers", code: 200 })),
       ).annotate({ identifier: "ListUserFollowersRequest" });
-    case 7:
+    case 2:
       return S.Array(S.Unknown);
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(39, __c4, 7).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.suspend(() => __S(138, __c17, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListUserFollowersResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/users/{username}/likes", code: 200 })),
-      ).annotate({ identifier: "ListUserLikesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ListUserLikesResponseBodyItemRepo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String,
-          repo: __S(42, __c5, 2),
-        }),
-      ).annotate({
-        identifier: "ListUserLikesResponseBodyItem",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() => __S(44, __c5, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListUserLikesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          search: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/settings/repositories", code: 200 })),
-      ).annotate({
-        identifier: "ListUserRepositoriesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.String,
-          updatedAt: S.String,
-          visibility: S.String,
-          storage: S.Number,
-          storagePercent: S.Number,
-        }),
-      ).annotate({
-        identifier: "ListUserRepositoriesResponseBodyItem",
-      });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() => __S(48, __c6, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListUserRepositoriesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/settings/metrics/live", code: 200 })),
-      ).annotate({ identifier: "StreamMetricsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/api/settings/billing/usage/live", code: 200 }),
-        ),
-      ).annotate({ identifier: "StreamUserUsageRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/users/{username}/billing/usage/live", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "StreamUserUsageByUsernameRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "StreamUserUsageByUsernameResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/users/{username}/overview", code: 200 })),
-      ).annotate({ identifier: "UserOverviewRequest" });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sku: __S(55, __c6, 7),
-          mem: S.Number,
-          num: S.Number,
-          isPrimary: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "UserOverviewResponseHardwareItemsItem",
-      });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          orgs: S.optional(__S(32, __c4, 0)),
-          avatarUrl: S.String,
-          fullname: S.String,
-          isPro: S.Boolean,
-          user: S.String,
-          numModels: S.optional(S.Number),
-          numDatasets: S.optional(S.Number),
-          numSpaces: S.optional(S.Number),
-          numBuckets: S.optional(S.Number),
-          numKernels: S.optional(S.Number),
-          numDiscussions: S.optional(S.Number),
-          numPapers: S.optional(S.Number),
-          numUpvotes: S.optional(S.Number),
-          numLikes: S.optional(S.Number),
-          numFollowers: S.optional(S.Number),
-          numFollowing: S.optional(S.Number),
-          numFollowingOrgs: S.optional(S.Number),
-          details: S.optional(S.String),
-          isFollowing: S.optional(S.Boolean),
-          reasonToFollow: S.optional(S.String),
-          primaryOrgAvatarUrl: S.optional(S.String),
-          serviceAccount: S.optional(__S(33, __c4, 1)),
-          type: S.String,
-          createdAt: S.String,
-          hardwareItems: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "UserOverviewResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

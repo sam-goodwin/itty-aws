@@ -2826,8 +2826,8 @@ export const createExperiment: API.OperationMethod<
   CreateExperimentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateExperimentRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(800, __c25, 0) as any as S.Schema<CreateExperimentRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2841,8 +2841,8 @@ export const createExperimentsCalculateRunningTime: API.OperationMethod<
   CreateExperimentsCalculateRunningTimeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateExperimentsCalculateRunningTimeRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<RunningTimeCalculationResult>,
+  input: __S(1441, __c45, 1) as any as S.Schema<CreateExperimentsCalculateRunningTimeRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<RunningTimeCalculationResult>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2856,8 +2856,8 @@ export const createExperimentsEnd: API.OperationMethod<
   CreateExperimentsEndError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateExperimentsEndRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(1600, __c50, 0) as any as S.Schema<CreateExperimentsEndRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2871,8 +2871,8 @@ export const createExperimentsFreezeExposure: API.OperationMethod<
   CreateExperimentsFreezeExposureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateExperimentsFreezeExposureRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(1632, __c51, 0) as any as S.Schema<CreateExperimentsFreezeExposureRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2886,8 +2886,8 @@ export const createExperimentsLaunch: API.OperationMethod<
   CreateExperimentsLaunchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateExperimentsLaunchRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(1664, __c52, 0) as any as S.Schema<CreateExperimentsLaunchRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2901,8 +2901,8 @@ export const createExperimentsMetricsRecalculation: API.OperationMethod<
   CreateExperimentsMetricsRecalculationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateExperimentsMetricsRecalculationRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ExperimentMetricsRecalculationJob>,
+  input: __S(1696, __c53, 0) as any as S.Schema<CreateExperimentsMetricsRecalculationRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<ExperimentMetricsRecalculationJob>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2916,8 +2916,8 @@ export const createExperimentsPause: API.OperationMethod<
   CreateExperimentsPauseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateExperimentsPauseRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(1728, __c54, 0) as any as S.Schema<CreateExperimentsPauseRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2935,8 +2935,8 @@ export const createExperimentsRecalculateTimeseries: API.OperationMethod<
   CreateExperimentsRecalculateTimeseriesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<CreateExperimentsRecalculateTimeseriesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<CreateExperimentsRecalculateTimeseriesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2950,8 +2950,8 @@ export const createExperimentsSessionBucket: API.OperationMethod<
   CreateExperimentsSessionBucketError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateExperimentsSessionBucketRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ExperimentSessionBucketResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<CreateExperimentsSessionBucketRequest>,
+  output: __S(133, __c4, 5) as any as S.Schema<ExperimentSessionBucketResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2965,8 +2965,8 @@ export const createExperimentsSessionContext: API.OperationMethod<
   CreateExperimentsSessionContextError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CreateExperimentsSessionContextRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ExperimentSessionContextsResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<CreateExperimentsSessionContextRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<ExperimentSessionContextsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2980,8 +2980,8 @@ export const createExperimentsSessionEventDeltas: API.OperationMethod<
   CreateExperimentsSessionEventDeltasError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<CreateExperimentsSessionEventDeltasRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ExperimentSessionEventDeltaResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<CreateExperimentsSessionEventDeltasRequest>,
+  output: __S(231, __c7, 7) as any as S.Schema<ExperimentSessionEventDeltaResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2995,8 +2995,8 @@ export const createExperimentsSetupContext: API.OperationMethod<
   CreateExperimentsSetupContextError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateExperimentsSetupContextRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ExperimentSetupContextResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<CreateExperimentsSetupContextRequest>,
+  output: __S(285, __c8, 29) as any as S.Schema<ExperimentSetupContextResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3010,8 +3010,8 @@ export const createExperimentsShipVariant: API.OperationMethod<
   CreateExperimentsShipVariantError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<CreateExperimentsShipVariantRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(288, __c9, 0) as any as S.Schema<CreateExperimentsShipVariantRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3025,8 +3025,8 @@ export const createExperimentsUnfreezeExposure: API.OperationMethod<
   CreateExperimentsUnfreezeExposureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<CreateExperimentsUnfreezeExposureRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(320, __c10, 0) as any as S.Schema<CreateExperimentsUnfreezeExposureRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3040,8 +3040,8 @@ export const experimentsArchiveCreate: API.OperationMethod<
   ExperimentsArchiveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ExperimentsArchiveCreateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(352, __c11, 0) as any as S.Schema<ExperimentsArchiveCreateRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3055,8 +3055,8 @@ export const experimentsBulkUpdateTagsCreate: API.OperationMethod<
   ExperimentsBulkUpdateTagsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<BulkUpdateTagsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequest>,
+  output: __S(389, __c12, 5) as any as S.Schema<BulkUpdateTagsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3074,8 +3074,8 @@ export const experimentsCopyToProjectCreate: API.OperationMethod<
   ExperimentsCopyToProjectCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<ExperimentsCopyToProjectCreateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(416, __c13, 0) as any as S.Schema<ExperimentsCopyToProjectCreateRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3094,14 +3094,14 @@ export const experimentsCreateExposureCohortForExperimentCreate: API.OperationMe
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    114,
+    448,
     __c14,
-    2,
+    0,
   ) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequest>,
   output: __S(
-    115,
+    449,
     __c14,
-    3,
+    1,
   ) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
@@ -3116,8 +3116,8 @@ export const experimentsCreateFromPromptCreate: API.OperationMethod<
   ExperimentsCreateFromPromptCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ExperimentsCreateFromPromptCreateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(481, __c15, 1) as any as S.Schema<ExperimentsCreateFromPromptCreateRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3131,8 +3131,8 @@ export const experimentsDestroy: API.OperationMethod<
   ExperimentsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ExperimentsDestroyRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<ExperimentsDestroyResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<ExperimentsDestroyRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<ExperimentsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3146,8 +3146,8 @@ export const experimentsDuplicateCreate: API.OperationMethod<
   ExperimentsDuplicateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ExperimentsDuplicateCreateRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ExperimentsDuplicateCreateResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ExperimentsDuplicateCreateRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<ExperimentsDuplicateCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3161,8 +3161,8 @@ export const experimentsMigrateCreate: API.OperationMethod<
   ExperimentsMigrateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ExperimentsMigrateCreateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(608, __c19, 0) as any as S.Schema<ExperimentsMigrateCreateRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3176,8 +3176,8 @@ export const experimentsResetCreate: API.OperationMethod<
   ExperimentsResetCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ExperimentsResetCreateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(640, __c20, 0) as any as S.Schema<ExperimentsResetCreateRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3191,8 +3191,8 @@ export const experimentsResumeCreate: API.OperationMethod<
   ExperimentsResumeCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ExperimentsResumeCreateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(672, __c21, 0) as any as S.Schema<ExperimentsResumeCreateRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3206,8 +3206,8 @@ export const experimentsUnarchiveCreate: API.OperationMethod<
   ExperimentsUnarchiveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ExperimentsUnarchiveCreateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(704, __c22, 0) as any as S.Schema<ExperimentsUnarchiveCreateRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3221,8 +3221,8 @@ export const getExperiment: API.OperationMethod<
   GetExperimentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetExperimentRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetExperimentRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3236,8 +3236,8 @@ export const getExperimentsActivity: API.OperationMethod<
   GetExperimentsActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetExperimentsActivityRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ActivityLogPaginatedResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetExperimentsActivityRequest>,
+  output: __S(776, __c24, 8) as any as S.Schema<ActivityLogPaginatedResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3251,8 +3251,8 @@ export const getExperimentsFlagCleanupTarget: API.OperationMethod<
   GetExperimentsFlagCleanupTargetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetExperimentsFlagCleanupTargetRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<ExperimentFlagCleanupTarget>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetExperimentsFlagCleanupTargetRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<ExperimentFlagCleanupTarget>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3266,8 +3266,8 @@ export const getExperimentsFlagCleanupTask: API.OperationMethod<
   GetExperimentsFlagCleanupTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<GetExperimentsFlagCleanupTaskRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<ExperimentFlagCleanupTask>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetExperimentsFlagCleanupTaskRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<ExperimentFlagCleanupTask>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3281,8 +3281,8 @@ export const getExperimentsInSessionExposure: API.OperationMethod<
   GetExperimentsInSessionExposureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetExperimentsInSessionExposureRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<ExperimentInSessionExposure>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetExperimentsInSessionExposureRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<ExperimentInSessionExposure>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3296,8 +3296,8 @@ export const getExperimentsMatchingIds: API.OperationMethod<
   GetExperimentsMatchingIdsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<GetExperimentsMatchingIdsRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ExperimentMatchingIdsResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetExperimentsMatchingIdsRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<ExperimentMatchingIdsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3311,8 +3311,8 @@ export const getExperimentsMetricsRecalculation: API.OperationMethod<
   GetExperimentsMetricsRecalculationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetExperimentsMetricsRecalculationRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<ExperimentMetricsRecalculationRun>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetExperimentsMetricsRecalculationRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<ExperimentMetricsRecalculationRun>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3326,8 +3326,8 @@ export const getExperimentsMetricsRecalculationLatest: API.OperationMethod<
   GetExperimentsMetricsRecalculationLatestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<GetExperimentsMetricsRecalculationLatestRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ExperimentMetricsRecalculationLatest>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetExperimentsMetricsRecalculationLatestRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<ExperimentMetricsRecalculationLatest>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3341,8 +3341,8 @@ export const getExperimentsPromptTemplate: API.OperationMethod<
   GetExperimentsPromptTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetExperimentsPromptTemplateRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<GetExperimentsPromptTemplateResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetExperimentsPromptTemplateRequest>,
+  output: __S(1315, __c41, 3) as any as S.Schema<GetExperimentsPromptTemplateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3356,8 +3356,8 @@ export const getExperimentsSessionContext: API.OperationMethod<
   GetExperimentsSessionContextError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetExperimentsSessionContextRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ExperimentSessionContextResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetExperimentsSessionContextRequest>,
+  output: __S(198, __c6, 6) as any as S.Schema<ExperimentSessionContextResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3371,8 +3371,8 @@ export const getExperimentsStat: API.OperationMethod<
   GetExperimentsStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetExperimentsStatRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<GetExperimentsStatResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetExperimentsStatRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<GetExperimentsStatResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3390,8 +3390,8 @@ export const getExperimentsTimeseriesResult: API.OperationMethod<
   GetExperimentsTimeseriesResultError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetExperimentsTimeseriesResultRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetExperimentsTimeseriesResultResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetExperimentsTimeseriesResultRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GetExperimentsTimeseriesResultResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3405,8 +3405,8 @@ export const listExperiments: API.OperationMethod<
   ListExperimentsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListExperimentsRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<PaginatedExperimentBasicList>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListExperimentsRequest>,
+  output: __S(1507, __c47, 3) as any as S.Schema<PaginatedExperimentBasicList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3420,8 +3420,8 @@ export const updateExperiment: API.OperationMethod<
   UpdateExperimentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<UpdateExperimentRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(1536, __c48, 0) as any as S.Schema<UpdateExperimentRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3435,8 +3435,8 @@ export const updateExperimentsPartial: API.OperationMethod<
   UpdateExperimentsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<UpdateExperimentsPartialRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ExperimentOutput>,
+  input: __S(1568, __c49, 0) as any as S.Schema<UpdateExperimentsPartialRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ExperimentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3446,536 +3446,6 @@ export const updateExperimentsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rollout_percentage: S.optional(S.NullOr(S.Number)),
-          properties: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "ExperimentFlagRolloutGroup",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.optional(S.String),
-          rollout_percentage: S.Number,
-        }),
-      ).annotate({ identifier: "ExperimentFlagVariant" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          variants: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "ExperimentFlagMultivariate",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groups: S.optional(__S(2, __c0, 2)),
-          multivariate: S.optional(S.NullOr(__S(5, __c0, 5))),
-          aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
-          payloads: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "ExperimentFeatureFlagFilters",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(__S(7, __c0, 7)),
-          ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "ExperimentFeatureFlagInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          minimum_detectable_effect: S.optional(S.NullOr(S.Number)),
-          variant_notes: S.optional(S.NullOr(__S(6, __c0, 6))),
-        }),
-      ).annotate({ identifier: "ExperimentParameters" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          conversionRateInputType: S.String,
-          manualBaselineValue: S.optional(S.NullOr(S.Number)),
-          manualExposureRate: S.optional(S.NullOr(S.Number)),
-          manualMetricType: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ExperimentExposureEstimateConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          exposure_estimate_config: S.optional(S.NullOr(__S(10, __c1, 2))),
-          minimum_detectable_effect: S.optional(S.NullOr(S.Number)),
-          recommended_running_time: S.optional(S.NullOr(S.Number)),
-          recommended_sample_size: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "ExperimentRunningTimeCalculation",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          label: S.optional(S.NullOr(S.String)),
-          operator: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-          value: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "EventPropertyFilter" });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          event: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(S.Number)),
-          kind: S.optional(S.NullOr(S.String)),
-          properties: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "ExperimentApiExposureConfig",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          activation_config: S.optional(S.NullOr(__S(15, __c1, 7))),
-          exposure_config: S.optional(S.NullOr(__S(15, __c1, 7))),
-          filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-          multiple_variant_handling: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ExperimentApiExposureCriteria",
-      });
-    case 1:
-      return S.Array(__S(13, __c1, 5));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          event: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(S.Number)),
-          kind: S.optional(S.String),
-          math: S.optional(S.NullOr(S.String)),
-          math_group_type_index: S.optional(S.NullOr(S.Number)),
-          math_hogql: S.optional(S.NullOr(S.String)),
-          math_property: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(17, __c2, 1))),
-        }),
-      ).annotate({ identifier: "ExperimentApiEventSource" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ignore_zeros: S.optional(S.NullOr(S.Boolean)),
-          lower_bound_percentile: S.optional(S.NullOr(S.Number)),
-          upper_bound_percentile: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "ExperimentMetricOutlierHandling",
-      });
-    case 4:
-      return S.Array(__S(18, __c2, 2));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          event: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(S.Number)),
-          kind: S.String,
-          math: S.optional(S.NullOr(S.String)),
-          math_group_type_index: S.optional(S.NullOr(S.Number)),
-          math_hogql: S.optional(S.NullOr(S.String)),
-          math_property: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(17, __c2, 1))),
-        }),
-      ).annotate({
-        identifier: "ExperimentApiRetentionStart",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          completion_event: S.optional(S.NullOr(__S(18, __c2, 2))),
-          conversion_window: S.optional(S.NullOr(S.Number)),
-          conversion_window_unit: S.optional(S.NullOr(S.String)),
-          denominator: S.optional(S.NullOr(__S(18, __c2, 2))),
-          denominator_outlier_handling: S.optional(S.NullOr(__S(19, __c2, 3))),
-          funnel_order_type: S.optional(S.NullOr(S.String)),
-          goal: S.optional(S.NullOr(S.String)),
-          ignore_zeros: S.optional(S.NullOr(S.Boolean)),
-          kind: S.optional(S.String),
-          lower_bound_percentile: S.optional(S.NullOr(S.Number)),
-          metric_type: S.optional(S.String),
-          name: S.optional(S.NullOr(S.String)),
-          numerator: S.optional(S.NullOr(__S(18, __c2, 2))),
-          numerator_outlier_handling: S.optional(S.NullOr(__S(19, __c2, 3))),
-          retention_window_end: S.optional(S.NullOr(S.Number)),
-          retention_window_start: S.optional(S.NullOr(S.Number)),
-          retention_window_unit: S.optional(S.NullOr(S.String)),
-          series: S.optional(S.NullOr(__S(20, __c2, 4))),
-          source: S.optional(S.NullOr(__S(18, __c2, 2))),
-          start_event: S.optional(S.NullOr(__S(21, __c2, 5))),
-          start_handling: S.optional(S.NullOr(S.String)),
-          threshold: S.optional(S.NullOr(S.Number)),
-          upper_bound_percentile: S.optional(S.NullOr(S.Number)),
-          uuid: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ExperimentApiMetric" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          start_date: S.optional(S.NullOr(S.String)),
-          end_date: S.optional(S.NullOr(S.String)),
-          feature_flag_key: S.String,
-          feature_flag: S.optional(__S(8, __c1, 0)),
-          holdout_id: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
-          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
-          excluded_variants: S.optional(S.NullOr(__S(12, __c1, 4))),
-          secondary_metrics: S.optional(S.Unknown),
-          saved_metrics_ids: S.optional(S.NullOr(__S(0, __c0, 0))),
-          filters: S.optional(S.Unknown),
-          archived: S.optional(S.Boolean),
-          deleted: S.optional(S.NullOr(S.Boolean)),
-          type: S.optional(S.NullOr(S.String)),
-          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
-          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
-          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
-          stats_config: S.optional(S.Unknown),
-          scheduling_config: S.optional(S.Unknown),
-          allow_unknown_events: S.optional(S.Boolean),
-          _create_in_folder: S.optional(S.String),
-          conclusion: S.optional(S.NullOr(S.String)),
-          conclusion_comment: S.optional(S.NullOr(S.String)),
-          repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
-          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
-          only_count_matured_users: S.optional(S.Boolean),
-          update_feature_flag_params: S.optional(S.Boolean),
-          version: S.optional(S.NullOr(S.Number)),
-          original_experiment: S.optional(S.NullOr(__S(24, __c3, 0))),
-          tags: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/experiments/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateExperimentRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          team_id: S.optional(S.Number),
-          name: S.optional(S.String),
-          key: S.optional(S.String),
-          filters: S.optional(__S(24, __c3, 0)),
-          deleted: S.optional(S.Boolean),
-          active: S.optional(S.Boolean),
-          ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
-          version: S.optional(S.NullOr(S.Number)),
-          evaluation_runtime: S.optional(S.NullOr(S.Unknown)),
-          bucketing_identifier: S.optional(S.NullOr(S.Unknown)),
-          evaluation_contexts: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "MinimalFeatureFlag" });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(27, __c3, 3)),
-          rollout_percentage: S.optional(S.Number),
-          variant: S.optional(S.NullOr(S.String)),
-          aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "FeatureFlagConditionGroupSchema",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(24, __c3, 0))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          description: S.optional(S.NullOr(S.String)),
-          filters: S.optional(__S(29, __c3, 5)),
-          created_by: S.optional(S.NullOr(__S(30, __c3, 6))),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          user_access_level: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ExperimentHoldout" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          experiment: S.optional(S.Number),
-          saved_metric: S.optional(S.Number),
-          metadata: S.optional(S.Unknown),
-          created_at: S.optional(S.String),
-          query: S.optional(S.Unknown),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExperimentToSavedMetric" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          description: S.optional(S.NullOr(S.String)),
-          start_date: S.optional(S.NullOr(S.String)),
-          end_date: S.optional(S.NullOr(S.String)),
-          feature_flag_key: S.optional(S.String),
-          feature_flag: S.optional(__S(26, __c3, 2)),
-          holdout: S.optional(__S(31, __c3, 7)),
-          holdout_id: S.optional(S.NullOr(S.Number)),
-          exposure_cohort: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
-          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
-          excluded_variants: S.optional(S.NullOr(__S(12, __c1, 4))),
-          secondary_metrics: S.optional(S.Unknown),
-          saved_metrics: S.optional(__S(33, __c4, 1)),
-          saved_metrics_ids: S.optional(S.NullOr(__S(0, __c0, 0))),
-          filters: S.optional(S.Unknown),
-          archived: S.optional(S.Boolean),
-          deleted: S.optional(S.NullOr(S.Boolean)),
-          created_by: S.optional(S.NullOr(__S(30, __c3, 6))),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          type: S.optional(S.NullOr(S.String)),
-          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
-          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
-          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
-          stats_config: S.optional(S.Unknown),
-          scheduling_config: S.optional(S.Unknown),
-          conclusion: S.optional(S.NullOr(S.String)),
-          conclusion_comment: S.optional(S.NullOr(S.String)),
-          flag_cleanup_task_id: S.optional(S.NullOr(S.String)),
-          repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
-          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
-          only_count_matured_users: S.optional(S.Boolean),
-          version: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.String),
-          is_legacy: S.optional(S.Boolean),
-          can_freeze_exposure: S.optional(S.Boolean),
-          resolved_exposure_event: S.optional(S.String),
-          user_access_level: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "ExperimentOutput" });
-    case 3:
-      return S.Array(S.Number);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          number_of_samples: S.Number,
-          sum: S.Number,
-          sum_squares: S.optional(S.Number),
-          denominator_sum: S.optional(S.NullOr(S.Number)),
-          denominator_sum_squares: S.optional(S.NullOr(S.Number)),
-          numerator_denominator_sum_product: S.optional(S.NullOr(S.Number)),
-          step_counts: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "RunningTimeBaselineStats" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          metric_type: S.String,
-          minimum_detectable_effect: S.Number,
-          number_of_variants: S.optional(S.Number),
-          exposure_rate_per_day: S.optional(S.NullOr(S.Number)),
-          baseline_value: S.optional(S.NullOr(S.Number)),
-          variance: S.optional(S.NullOr(S.Number)),
-          baseline_stats: S.optional(S.NullOr(__S(36, __c4, 4))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/experiments/calculate_running_time/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExperimentsCalculateRunningTimeRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          baseline_value: S.NullOr(S.Number),
-          variance: S.NullOr(S.Number),
-          recommended_sample_size: S.NullOr(S.Number),
-          recommended_running_time_days: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "RunningTimeCalculationResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          conclusion: S.optional(S.NullOr(S.String)),
-          conclusion_comment: S.optional(S.NullOr(S.String)),
-          open_cleanup_pr: S.optional(S.Boolean),
-          repository: S.optional(S.NullOr(S.String)),
-          set_repository_as_team_default: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/experiments/{id}/end/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExperimentsEndRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/experiments/{id}/freeze_exposure/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExperimentsFreezeExposureRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/experiments/{id}/launch/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExperimentsLaunchRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          trigger: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/experiments/{id}/metrics_recalculation/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExperimentsMetricsRecalculationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          experiment_id: S.Number,
-          status: S.String,
-          total_metrics: S.Number,
-          completed_metrics: S.Number,
-          failed_metrics: S.Number,
-          metric_errors: S.Unknown,
-          created_at: S.String,
-          started_at: S.NullOr(S.String),
-          completed_at: S.NullOr(S.String),
-          query_to: S.NullOr(S.String),
-          is_existing: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "ExperimentMetricsRecalculationJob",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/experiments/{id}/pause/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExperimentsPauseRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3986,18 +3456,18 @@ function __c6(j: number): any {
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.optional(S.String),
           holdout_id: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
-          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
-          excluded_variants: S.optional(S.NullOr(__S(45, __c5, 5))),
+          parameters: S.optional(S.NullOr(__S(897, __c28, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(899, __c28, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(64, __c2, 0))),
           secondary_metrics: S.optional(S.Unknown),
-          saved_metrics_ids: S.optional(S.NullOr(__S(46, __c5, 6))),
+          saved_metrics_ids: S.optional(S.NullOr(__S(32, __c1, 0))),
           filters: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
           type: S.optional(S.NullOr(S.String)),
-          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
-          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
-          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
+          exposure_criteria: S.optional(S.NullOr(__S(931, __c29, 3))),
+          metrics: S.optional(S.NullOr(__S(938, __c29, 10))),
+          metrics_secondary: S.optional(S.NullOr(__S(938, __c29, 10))),
           stats_config: S.optional(S.Unknown),
           scheduling_config: S.optional(S.Unknown),
           allow_unknown_events: S.optional(S.Boolean),
@@ -4005,13 +3475,13 @@ function __c6(j: number): any {
           conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
-          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(64, __c2, 0))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(64, __c2, 0))),
           only_count_matured_users: S.optional(S.Boolean),
           update_feature_flag_params: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.Number)),
-          original_experiment: S.optional(S.NullOr(__S(47, __c5, 7))),
-          tags: S.optional(__S(12, __c1, 4)),
+          original_experiment: S.optional(S.NullOr(__S(33, __c1, 1))),
+          tags: S.optional(__S(864, __c27, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4022,17 +3492,39 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateExperimentsRecalculateTimeseriesRequest",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
     case 1:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateExperimentsRecalculateTimeseriesResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           bucket: S.String,
-          metric_uuids: S.optional(__S(12, __c1, 4)),
+          metric_uuids: S.optional(__S(864, __c27, 0)),
           variant: S.optional(S.NullOr(S.String)),
           limit: S.optional(S.Number),
         }).pipe(
@@ -4045,7 +3537,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateExperimentsSessionBucketRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           metric_uuid: S.String,
@@ -4054,9 +3546,9 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ExperimentSessionBucketMetric",
       });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(129, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           metric_uuid: S.String,
@@ -4066,15 +3558,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ExperimentSessionBucketExcludedMetric",
       });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(131, __c4, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          session_ids: __S(12, __c1, 4),
+          session_ids: __S(864, __c27, 0),
           truncated: S.Boolean,
-          considered_metrics: __S(52, __c6, 4),
-          excluded_metrics: __S(54, __c6, 6),
+          considered_metrics: __S(130, __c4, 2),
+          excluded_metrics: __S(132, __c4, 4),
           date_from: S.String,
           date_to: S.String,
           filter_test_accounts: S.Boolean,
@@ -4085,13 +3577,13 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          session_ids: __S(12, __c1, 4),
+          session_ids: __S(864, __c27, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4103,6 +3595,20 @@ function __c7(j: number): any {
         identifier: "CreateExperimentsSessionContextRequest",
       });
     case 1:
+      return S.Array(__S(198, __c6, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(161, __c5, 1),
+        }),
+      ).annotate({
+        identifier: "ExperimentSessionContextsResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source_role: S.String,
@@ -4111,71 +3617,61 @@ function __c7(j: number): any {
           source_total: S.Number,
           event_count: S.Number,
           first_timestamp: S.String,
-          timestamps: __S(12, __c1, 4),
+          timestamps: __S(864, __c27, 0),
         }),
       ).annotate({
         identifier: "ExperimentSessionMetricSourceHit",
       });
+    case 1:
+      return S.Array(__S(192, __c6, 0));
     case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           metric_uuid: S.String,
           metric_name: S.String,
           event_count: S.Number,
           first_timestamp: S.String,
-          timestamps: __S(12, __c1, 4),
-          sources: __S(58, __c7, 2),
+          timestamps: __S(864, __c27, 0),
+          sources: __S(193, __c6, 1),
         }),
       ).annotate({
         identifier: "ExperimentSessionMetricHit",
       });
+    case 3:
+      return S.Array(__S(194, __c6, 2));
     case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           experiment_id: S.Number,
           experiment_name: S.String,
           flag_key: S.String,
           variant: S.String,
-          variants_seen: __S(12, __c1, 4),
+          variants_seen: __S(864, __c27, 0),
           multiple_variants: S.Boolean,
           first_exposure_timestamp: S.NullOr(S.String),
           experiment_start_date: S.NullOr(S.String),
           experiment_end_date: S.NullOr(S.String),
-          metrics_in_session: __S(60, __c7, 4),
+          metrics_in_session: __S(195, __c6, 3),
         }),
       ).annotate({
         identifier: "ExperimentSessionContextItem",
       });
+    case 5:
+      return S.Array(__S(196, __c6, 4));
     case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           session_id: S.String,
-          results: __S(62, __c7, 6),
+          results: __S(197, __c6, 5),
         }),
       ).annotate({
         identifier: "ExperimentSessionContextResponse",
       });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(64, __c8, 0),
-        }),
-      ).annotate({
-        identifier: "ExperimentSessionContextsResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4190,16 +3686,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateExperimentsSessionEventDeltasRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           session_id: S.String,
           reason: S.String,
         }),
       ).annotate({ identifier: "ExperimentWatchHighlight" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(225, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
@@ -4208,13 +3704,13 @@ function __c8(j: number): any {
           strength: S.NullOr(S.String),
           metric_name: S.NullOr(S.String),
           recording_count: S.Number,
-          session_ids: __S(12, __c1, 4),
-          highlights: __S(68, __c8, 4),
+          session_ids: __S(864, __c27, 0),
+          highlights: __S(226, __c7, 2),
         }),
       ).annotate({ identifier: "ExperimentWatchCard" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(227, __c7, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -4222,20 +3718,16 @@ function __c8(j: number): any {
           sessions: S.Number,
         }),
       ).annotate({ identifier: "ExperimentWatchVariant" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(229, __c7, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          cards: __S(70, __c8, 6),
-          variants: __S(72, __c9, 0),
+          cards: __S(228, __c7, 4),
+          variants: __S(230, __c7, 6),
           multiple_variant_persons: S.Number,
           multiple_variant_handling: S.String,
-          metric_events: __S(12, __c1, 4),
+          metric_events: __S(864, __c27, 0),
           date_from: S.String,
           date_to: S.String,
           filter_test_accounts: S.Boolean,
@@ -4251,17 +3743,21 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ExperimentSessionEventDeltaResponse",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           target_event: S.optional(S.NullOr(S.String)),
           target_url_contains: S.optional(S.NullOr(S.String)),
-          target_properties: S.optional(S.NullOr(__S(74, __c9, 2))),
+          target_properties: S.optional(S.NullOr(__S(256, __c8, 0))),
           metric_event: S.optional(S.NullOr(S.String)),
-          metric_properties: S.optional(S.NullOr(__S(74, __c9, 2))),
+          metric_properties: S.optional(S.NullOr(__S(256, __c8, 0))),
           previous_experiments_limit: S.optional(S.Number),
           shared_metrics_limit: S.optional(S.Number),
         }).pipe(
@@ -4274,7 +3770,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateExperimentsSetupContextRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           stats_method: S.NullOr(S.String),
@@ -4294,16 +3790,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ExperimentSetupTeamDefaults",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          data: S.NullOr(__S(76, __c9, 4)),
+          data: S.NullOr(__S(258, __c8, 2)),
         }),
       ).annotate({
         identifier: "ExperimentSetupTeamDefaultsSection",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           lib: S.NullOr(S.String),
@@ -4315,13 +3811,9 @@ function __c9(j: number): any {
           anonymous_share: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "ExperimentSetupSdkLib" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(260, __c8, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           lib: S.NullOr(S.String),
@@ -4332,35 +3824,35 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ExperimentSetupLibActivity",
       });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(262, __c8, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           window_days: S.Number,
           source_event: S.String,
           computed_at: S.String,
-          libs: __S(79, __c9, 7),
+          libs: __S(261, __c8, 5),
           libs_truncated: S.Boolean,
           flags_seen: S.Number,
           flags_evaluated_on_server_and_web: S.Number,
           evaluated_on_server_and_web: S.Boolean,
-          libs_on_any_event: S.NullOr(__S(81, __c10, 1)),
+          libs_on_any_event: S.NullOr(__S(263, __c8, 7)),
           libs_on_any_event_truncated: S.Boolean,
         }),
       ).annotate({
         identifier: "ExperimentSetupSdkProfile",
       });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          data: S.NullOr(__S(82, __c10, 2)),
+          data: S.NullOr(__S(264, __c8, 8)),
         }),
       ).annotate({
         identifier: "ExperimentSetupSdkProfileSection",
       });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           lib: S.NullOr(S.String),
@@ -4370,20 +3862,20 @@ function __c10(j: number): any {
           device_id_share: S.Number,
         }),
       ).annotate({ identifier: "ExperimentSetupLibReach" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
+    case 11:
+      return S.Array(__S(266, __c8, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           window_days: S.Number,
           source_event: S.String,
           target_url_contains: S.NullOr(S.String),
-          target_properties: __S(74, __c9, 2),
+          target_properties: __S(256, __c8, 0),
           computed_at: S.String,
           test_accounts_filtered: S.Boolean,
           unique_persons: S.Number,
           exposures_per_day_estimate: S.Number,
-          libs: __S(85, __c10, 5),
+          libs: __S(267, __c8, 11),
           libs_truncated: S.Boolean,
           anonymous_share: S.NullOr(S.Number),
           device_id_share: S.NullOr(S.Number),
@@ -4391,30 +3883,26 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ExperimentSetupTargetSurface",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          data: S.NullOr(__S(86, __c10, 6)),
+          data: S.NullOr(__S(268, __c8, 12)),
         }),
       ).annotate({
         identifier: "ExperimentSetupTargetSurfaceSection",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           number_of_samples: S.Number,
           sum: S.Number,
-          step_counts: __S(35, __c4, 3),
+          step_counts: __S(1472, __c46, 0),
         }),
       ).annotate({
         identifier: "ExperimentSetupFunnelBaseline",
       });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           number_of_samples: S.Number,
@@ -4424,20 +3912,20 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ExperimentSetupMeanCountBaseline",
       });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           window_days: S.Number,
           source_event: S.String,
-          metric_properties: __S(74, __c9, 2),
+          metric_properties: __S(256, __c8, 0),
           target_event: S.NullOr(S.String),
           computed_at: S.String,
           test_accounts_filtered: S.Boolean,
           persons_reached: S.NullOr(S.Number),
           persons_converted: S.NullOr(S.Number),
           conversion_rate: S.NullOr(S.Number),
-          funnel_baseline_stats: S.NullOr(__S(88, __c11, 0)),
-          mean_count_baseline_stats: S.NullOr(__S(89, __c11, 1)),
+          funnel_baseline_stats: S.NullOr(__S(270, __c8, 14)),
+          mean_count_baseline_stats: S.NullOr(__S(271, __c8, 15)),
           note: S.NullOr(S.String),
           event_volume: S.NullOr(S.Number),
           unique_persons: S.NullOr(S.Number),
@@ -4445,18 +3933,18 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ExperimentSetupCandidateMetric",
       });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          data: S.NullOr(__S(90, __c11, 2)),
+          data: S.NullOr(__S(272, __c8, 16)),
         }),
       ).annotate({
         identifier: "ExperimentSetupCandidateMetricSection",
       });
-    case 4:
+    case 18:
       return S.Array(S.Unknown);
-    case 5:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           metric_type: S.String,
@@ -4468,7 +3956,7 @@ function __c11(j: number): any {
           result_data_through: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ExperimentSetupOutcome" });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -4491,31 +3979,27 @@ function __c11(j: number): any {
           group_aggregation: S.Boolean,
           custom_exposure_event: S.NullOr(S.String),
           custom_exposure_action_id: S.NullOr(S.Number),
-          exposure_property_filters: __S(92, __c11, 4),
+          exposure_property_filters: __S(274, __c8, 18),
           activation_event: S.NullOr(S.String),
           activation_action_id: S.NullOr(S.Number),
           filter_test_accounts: S.Boolean,
           primary_metric_count: S.Number,
           secondary_metric_count: S.Number,
           shared_metric_count: S.Number,
-          primary_metric_types: __S(12, __c1, 4),
-          primary_metric_events: __S(12, __c1, 4),
-          primary_metric_action_ids: __S(35, __c4, 3),
+          primary_metric_types: __S(864, __c27, 0),
+          primary_metric_events: __S(864, __c27, 0),
+          primary_metric_action_ids: __S(1472, __c46, 0),
           minimum_detectable_effect: S.NullOr(S.Number),
           stats_method: S.String,
           has_holdout: S.Boolean,
-          outcome: S.NullOr(__S(93, __c11, 5)),
+          outcome: S.NullOr(__S(275, __c8, 19)),
         }),
       ).annotate({
         identifier: "ExperimentSetupPreviousExperiment",
       });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
+      return S.Array(__S(276, __c8, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           total: S.Number,
@@ -4535,78 +4019,78 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ExperimentSetupPreviousExperimentsSummary",
       });
-    case 1:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          experiments: __S(95, __c11, 7),
-          summary: __S(96, __c12, 0),
+          experiments: __S(277, __c8, 21),
+          summary: __S(278, __c8, 22),
         }),
       ).annotate({
         identifier: "ExperimentSetupPreviousExperiments",
       });
-    case 2:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          data: S.NullOr(__S(97, __c12, 1)),
+          data: S.NullOr(__S(279, __c8, 23)),
         }),
       ).annotate({
         identifier: "ExperimentSetupPreviousExperimentsSection",
       });
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
           metric_type: S.NullOr(S.String),
-          events: __S(12, __c1, 4),
-          action_ids: __S(35, __c4, 3),
+          events: __S(864, __c27, 0),
+          action_ids: __S(1472, __c46, 0),
           used_as_primary: S.Number,
           used_as_secondary: S.Number,
           last_used_at: S.NullOr(S.String),
           matches_metric_event: S.NullOr(S.Boolean),
-          metric_event_roles: S.NullOr(__S(12, __c1, 4)),
+          metric_event_roles: S.NullOr(__S(864, __c27, 0)),
         }),
       ).annotate({
         identifier: "ExperimentSetupSharedMetric",
       });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 26:
+      return S.Array(__S(281, __c8, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           metric_event: S.NullOr(S.String),
           metric_event_match_truncated: S.Boolean,
-          metrics: __S(100, __c12, 4),
+          metrics: __S(282, __c8, 26),
         }),
       ).annotate({
         identifier: "ExperimentSetupSharedMetrics",
       });
-    case 6:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          data: S.NullOr(__S(101, __c12, 5)),
+          data: S.NullOr(__S(283, __c8, 27)),
         }),
       ).annotate({
         identifier: "ExperimentSetupSharedMetricsSection",
       });
-    case 7:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          team_defaults: __S(77, __c9, 5),
-          sdk_profile: __S(83, __c10, 3),
-          target_surface: __S(87, __c10, 7),
-          candidate_metric: __S(91, __c11, 3),
-          previous_experiments: __S(98, __c12, 2),
-          shared_metrics: __S(102, __c12, 6),
+          team_defaults: __S(259, __c8, 3),
+          sdk_profile: __S(265, __c8, 9),
+          target_surface: __S(269, __c8, 13),
+          candidate_metric: __S(273, __c8, 17),
+          previous_experiments: __S(280, __c8, 24),
+          shared_metrics: __S(284, __c8, 28),
         }),
       ).annotate({
         identifier: "ExperimentSetupContextResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4630,7 +4114,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateExperimentsShipVariantRequest",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4645,7 +4133,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateExperimentsUnfreezeExposureRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4661,13 +4153,17 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ExperimentsArchiveCreateRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ids: S.optional(__S(35, __c4, 3)),
+          ids: S.optional(__S(1472, __c46, 0)),
           action: S.optional(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(864, __c27, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4678,36 +4174,36 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ExperimentsBulkUpdateTagsCreateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "BulkUpdateTagsItem" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(385, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "BulkUpdateTagsError" });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(387, __c12, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          updated: S.optional(__S(109, __c13, 5)),
-          skipped: S.optional(__S(111, __c13, 7)),
+          updated: S.optional(__S(386, __c12, 2)),
+          skipped: S.optional(__S(388, __c12, 4)),
         }),
       ).annotate({ identifier: "BulkUpdateTagsResponse" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4725,7 +4221,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ExperimentsCopyToProjectCreateRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4736,18 +4236,18 @@ function __c14(j: number): any {
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.optional(S.String),
           holdout_id: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
-          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
-          excluded_variants: S.optional(S.NullOr(__S(45, __c5, 5))),
+          parameters: S.optional(S.NullOr(__S(897, __c28, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(899, __c28, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(64, __c2, 0))),
           secondary_metrics: S.optional(S.Unknown),
-          saved_metrics_ids: S.optional(S.NullOr(__S(46, __c5, 6))),
+          saved_metrics_ids: S.optional(S.NullOr(__S(32, __c1, 0))),
           filters: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
           type: S.optional(S.NullOr(S.String)),
-          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
-          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
-          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
+          exposure_criteria: S.optional(S.NullOr(__S(931, __c29, 3))),
+          metrics: S.optional(S.NullOr(__S(938, __c29, 10))),
+          metrics_secondary: S.optional(S.NullOr(__S(938, __c29, 10))),
           stats_config: S.optional(S.Unknown),
           scheduling_config: S.optional(S.Unknown),
           allow_unknown_events: S.optional(S.Boolean),
@@ -4755,13 +4255,13 @@ function __c14(j: number): any {
           conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
-          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(64, __c2, 0))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(64, __c2, 0))),
           only_count_matured_users: S.optional(S.Boolean),
           update_feature_flag_params: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.Number)),
-          original_experiment: S.optional(S.NullOr(__S(47, __c5, 7))),
-          tags: S.optional(__S(45, __c5, 5)),
+          original_experiment: S.optional(S.NullOr(__S(33, __c1, 1))),
+          tags: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4772,19 +4272,23 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ExperimentsCreateExposureCohortForExperimentCreateRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ExperimentsCreateExposureCohortForExperimentCreateResponse",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           prompt_name: S.String,
-          versions: __S(35, __c4, 3),
-          templates: __S(116, __c14, 4),
+          versions: __S(1472, __c46, 0),
+          templates: __S(480, __c15, 0),
           name: S.optional(S.String),
           feature_flag_key: S.optional(S.String),
           description: S.optional(S.String),
@@ -4798,7 +4302,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ExperimentsCreateFromPromptCreateRequest",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4813,13 +4321,17 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ExperimentsDestroyRequest",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ExperimentsDestroyResponse",
       });
   }
 }
-function __c15(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4832,18 +4344,18 @@ function __c15(j: number): any {
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.optional(S.String),
           holdout_id: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
-          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
-          excluded_variants: S.optional(S.NullOr(__S(12, __c1, 4))),
+          parameters: S.optional(S.NullOr(__S(897, __c28, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(899, __c28, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(864, __c27, 0))),
           secondary_metrics: S.optional(S.Unknown),
-          saved_metrics_ids: S.optional(S.NullOr(__S(0, __c0, 0))),
+          saved_metrics_ids: S.optional(S.NullOr(__S(992, __c31, 0))),
           filters: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
           type: S.optional(S.NullOr(S.String)),
-          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
-          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
-          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
+          exposure_criteria: S.optional(S.NullOr(__S(931, __c29, 3))),
+          metrics: S.optional(S.NullOr(__S(938, __c29, 10))),
+          metrics_secondary: S.optional(S.NullOr(__S(938, __c29, 10))),
           stats_config: S.optional(S.Unknown),
           scheduling_config: S.optional(S.Unknown),
           allow_unknown_events: S.optional(S.Boolean),
@@ -4851,13 +4363,13 @@ function __c15(j: number): any {
           conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
-          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(64, __c2, 0))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(64, __c2, 0))),
           only_count_matured_users: S.optional(S.Boolean),
           update_feature_flag_params: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.Number)),
-          original_experiment: S.optional(S.NullOr(__S(24, __c3, 0))),
-          tags: S.optional(__S(12, __c1, 4)),
+          original_experiment: S.optional(S.NullOr(__S(960, __c30, 0))),
+          tags: S.optional(__S(864, __c27, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4868,7 +4380,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ExperimentsDuplicateCreateRequest",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4883,7 +4399,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ExperimentsMigrateCreateRequest",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4898,7 +4418,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ExperimentsResetCreateRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4913,7 +4437,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ExperimentsResumeCreateRequest",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4928,7 +4456,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ExperimentsUnarchiveCreateRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4937,7 +4469,11 @@ function __c15(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/experiments/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "GetExperimentRequest" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4954,7 +4490,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetExperimentsActivityRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -4964,13 +4500,9 @@ function __c15(j: number): any {
           after: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Change" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(769, __c24, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -4978,7 +4510,7 @@ function __c16(j: number): any {
           target: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Merge" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           job_type: S.optional(S.String),
@@ -4986,19 +4518,19 @@ function __c16(j: number): any {
           payload: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Trigger" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          changes: S.optional(__S(128, __c16, 0)),
-          merge: S.optional(__S(129, __c16, 1)),
-          trigger: S.optional(__S(130, __c16, 2)),
+          changes: S.optional(__S(770, __c24, 2)),
+          merge: S.optional(__S(771, __c24, 3)),
+          trigger: S.optional(__S(772, __c24, 4)),
           name: S.optional(S.String),
           short_id: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Detail" });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5006,19 +4538,19 @@ function __c16(j: number): any {
           activity: S.optional(S.String),
           scope: S.optional(S.String),
           item_id: S.optional(S.String),
-          detail: S.optional(__S(131, __c16, 3)),
+          detail: S.optional(__S(773, __c24, 5)),
           created_at: S.optional(S.String),
           is_system: S.optional(S.Boolean),
           was_impersonated: S.optional(S.Boolean),
           client: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ActivityLogEntry" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(774, __c24, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(133, __c16, 5)),
+          results: S.optional(__S(775, __c24, 7)),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
           total_count: S.optional(S.Number),
@@ -5026,7 +4558,401 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ActivityLogPaginatedResponse",
       });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          start_date: S.optional(S.NullOr(S.String)),
+          end_date: S.optional(S.NullOr(S.String)),
+          feature_flag_key: S.String,
+          feature_flag: S.optional(__S(838, __c26, 6)),
+          holdout_id: S.optional(S.NullOr(S.Number)),
+          parameters: S.optional(S.NullOr(__S(897, __c28, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(899, __c28, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(864, __c27, 0))),
+          secondary_metrics: S.optional(S.Unknown),
+          saved_metrics_ids: S.optional(S.NullOr(__S(992, __c31, 0))),
+          filters: S.optional(S.Unknown),
+          archived: S.optional(S.Boolean),
+          deleted: S.optional(S.NullOr(S.Boolean)),
+          type: S.optional(S.NullOr(S.String)),
+          exposure_criteria: S.optional(S.NullOr(__S(931, __c29, 3))),
+          metrics: S.optional(S.NullOr(__S(938, __c29, 10))),
+          metrics_secondary: S.optional(S.NullOr(__S(938, __c29, 10))),
+          stats_config: S.optional(S.Unknown),
+          scheduling_config: S.optional(S.Unknown),
+          allow_unknown_events: S.optional(S.Boolean),
+          _create_in_folder: S.optional(S.String),
+          conclusion: S.optional(S.NullOr(S.String)),
+          conclusion_comment: S.optional(S.NullOr(S.String)),
+          repository: S.optional(S.NullOr(S.String)),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(864, __c27, 0))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(864, __c27, 0))),
+          only_count_matured_users: S.optional(S.Boolean),
+          update_feature_flag_params: S.optional(S.Boolean),
+          version: S.optional(S.NullOr(S.Number)),
+          original_experiment: S.optional(S.NullOr(__S(960, __c30, 0))),
+          tags: S.optional(__S(864, __c27, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/experiments/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateExperimentRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rollout_percentage: S.optional(S.NullOr(S.Number)),
+          properties: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({
+        identifier: "ExperimentFlagRolloutGroup",
+      });
+    case 1:
+      return S.Array(__S(832, __c26, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.optional(S.String),
+          rollout_percentage: S.Number,
+        }),
+      ).annotate({ identifier: "ExperimentFlagVariant" });
+    case 3:
+      return S.Array(__S(834, __c26, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          variants: __S(835, __c26, 3),
+        }),
+      ).annotate({
+        identifier: "ExperimentFlagMultivariate",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          groups: S.optional(__S(833, __c26, 1)),
+          multivariate: S.optional(S.NullOr(__S(836, __c26, 4))),
+          aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
+          payloads: S.optional(__S(896, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "ExperimentFeatureFlagFilters",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(__S(837, __c26, 5)),
+          ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "ExperimentFeatureFlagInput",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          minimum_detectable_effect: S.optional(S.NullOr(S.Number)),
+          variant_notes: S.optional(S.NullOr(__S(896, __c28, 0))),
+        }),
+      ).annotate({ identifier: "ExperimentParameters" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          conversionRateInputType: S.String,
+          manualBaselineValue: S.optional(S.NullOr(S.Number)),
+          manualExposureRate: S.optional(S.NullOr(S.Number)),
+          manualMetricType: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ExperimentExposureEstimateConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          exposure_estimate_config: S.optional(S.NullOr(__S(898, __c28, 2))),
+          minimum_detectable_effect: S.optional(S.NullOr(S.Number)),
+          recommended_running_time: S.optional(S.NullOr(S.Number)),
+          recommended_sample_size: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "ExperimentRunningTimeCalculation",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          label: S.optional(S.NullOr(S.String)),
+          operator: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+          value: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "EventPropertyFilter" });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          event: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(S.Number)),
+          kind: S.optional(S.NullOr(S.String)),
+          properties: S.optional(__S(929, __c29, 1)),
+        }),
+      ).annotate({
+        identifier: "ExperimentApiExposureConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          activation_config: S.optional(S.NullOr(__S(930, __c29, 2))),
+          exposure_config: S.optional(S.NullOr(__S(930, __c29, 2))),
+          filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
+          multiple_variant_handling: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ExperimentApiExposureCriteria",
+      });
+    case 4:
+      return S.Array(__S(928, __c29, 0));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          event: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(S.Number)),
+          kind: S.optional(S.String),
+          math: S.optional(S.NullOr(S.String)),
+          math_group_type_index: S.optional(S.NullOr(S.Number)),
+          math_hogql: S.optional(S.NullOr(S.String)),
+          math_property: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(932, __c29, 4))),
+        }),
+      ).annotate({ identifier: "ExperimentApiEventSource" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ignore_zeros: S.optional(S.NullOr(S.Boolean)),
+          lower_bound_percentile: S.optional(S.NullOr(S.Number)),
+          upper_bound_percentile: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "ExperimentMetricOutlierHandling",
+      });
     case 7:
+      return S.Array(__S(933, __c29, 5));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          event: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(S.Number)),
+          kind: S.String,
+          math: S.optional(S.NullOr(S.String)),
+          math_group_type_index: S.optional(S.NullOr(S.Number)),
+          math_hogql: S.optional(S.NullOr(S.String)),
+          math_property: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(932, __c29, 4))),
+        }),
+      ).annotate({
+        identifier: "ExperimentApiRetentionStart",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          completion_event: S.optional(S.NullOr(__S(933, __c29, 5))),
+          conversion_window: S.optional(S.NullOr(S.Number)),
+          conversion_window_unit: S.optional(S.NullOr(S.String)),
+          denominator: S.optional(S.NullOr(__S(933, __c29, 5))),
+          denominator_outlier_handling: S.optional(S.NullOr(__S(934, __c29, 6))),
+          funnel_order_type: S.optional(S.NullOr(S.String)),
+          goal: S.optional(S.NullOr(S.String)),
+          ignore_zeros: S.optional(S.NullOr(S.Boolean)),
+          kind: S.optional(S.String),
+          lower_bound_percentile: S.optional(S.NullOr(S.Number)),
+          metric_type: S.optional(S.String),
+          name: S.optional(S.NullOr(S.String)),
+          numerator: S.optional(S.NullOr(__S(933, __c29, 5))),
+          numerator_outlier_handling: S.optional(S.NullOr(__S(934, __c29, 6))),
+          retention_window_end: S.optional(S.NullOr(S.Number)),
+          retention_window_start: S.optional(S.NullOr(S.Number)),
+          retention_window_unit: S.optional(S.NullOr(S.String)),
+          series: S.optional(S.NullOr(__S(935, __c29, 7))),
+          source: S.optional(S.NullOr(__S(933, __c29, 5))),
+          start_event: S.optional(S.NullOr(__S(936, __c29, 8))),
+          start_handling: S.optional(S.NullOr(S.String)),
+          threshold: S.optional(S.NullOr(S.Number)),
+          upper_bound_percentile: S.optional(S.NullOr(S.Number)),
+          uuid: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ExperimentApiMetric" });
+    case 10:
+      return S.Array(__S(937, __c29, 9));
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          team_id: S.optional(S.Number),
+          name: S.optional(S.String),
+          key: S.optional(S.String),
+          filters: S.optional(__S(960, __c30, 0)),
+          deleted: S.optional(S.Boolean),
+          active: S.optional(S.Boolean),
+          ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
+          version: S.optional(S.NullOr(S.Number)),
+          evaluation_runtime: S.optional(S.NullOr(S.Unknown)),
+          bucketing_identifier: S.optional(S.NullOr(S.Unknown)),
+          evaluation_contexts: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({ identifier: "MinimalFeatureFlag" });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(1025, __c32, 1)),
+          rollout_percentage: S.optional(S.Number),
+          variant: S.optional(S.NullOr(S.String)),
+          aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "FeatureFlagConditionGroupSchema",
+      });
+    case 3:
+      return S.Array(__S(1026, __c32, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(960, __c30, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          description: S.optional(S.NullOr(S.String)),
+          filters: S.optional(__S(1027, __c32, 3)),
+          created_by: S.optional(S.NullOr(__S(1028, __c32, 4))),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          user_access_level: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ExperimentHoldout" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          experiment: S.optional(S.Number),
+          saved_metric: S.optional(S.Number),
+          metadata: S.optional(S.Unknown),
+          created_at: S.optional(S.String),
+          query: S.optional(S.Unknown),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExperimentToSavedMetric" });
+    case 1:
+      return S.Array(__S(1056, __c33, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          description: S.optional(S.NullOr(S.String)),
+          start_date: S.optional(S.NullOr(S.String)),
+          end_date: S.optional(S.NullOr(S.String)),
+          feature_flag_key: S.optional(S.String),
+          feature_flag: S.optional(__S(1024, __c32, 0)),
+          holdout: S.optional(__S(1029, __c32, 5)),
+          holdout_id: S.optional(S.NullOr(S.Number)),
+          exposure_cohort: S.optional(S.NullOr(S.Number)),
+          parameters: S.optional(S.NullOr(__S(897, __c28, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(899, __c28, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(864, __c27, 0))),
+          secondary_metrics: S.optional(S.Unknown),
+          saved_metrics: S.optional(__S(1057, __c33, 1)),
+          saved_metrics_ids: S.optional(S.NullOr(__S(992, __c31, 0))),
+          filters: S.optional(S.Unknown),
+          archived: S.optional(S.Boolean),
+          deleted: S.optional(S.NullOr(S.Boolean)),
+          created_by: S.optional(S.NullOr(__S(1028, __c32, 4))),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          type: S.optional(S.NullOr(S.String)),
+          exposure_criteria: S.optional(S.NullOr(__S(931, __c29, 3))),
+          metrics: S.optional(S.NullOr(__S(938, __c29, 10))),
+          metrics_secondary: S.optional(S.NullOr(__S(938, __c29, 10))),
+          stats_config: S.optional(S.Unknown),
+          scheduling_config: S.optional(S.Unknown),
+          conclusion: S.optional(S.NullOr(S.String)),
+          conclusion_comment: S.optional(S.NullOr(S.String)),
+          flag_cleanup_task_id: S.optional(S.NullOr(S.String)),
+          repository: S.optional(S.NullOr(S.String)),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(864, __c27, 0))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(864, __c27, 0))),
+          only_count_matured_users: S.optional(S.Boolean),
+          version: S.optional(S.NullOr(S.Number)),
+          status: S.optional(S.String),
+          is_legacy: S.optional(S.Boolean),
+          can_freeze_exposure: S.optional(S.Boolean),
+          resolved_exposure_event: S.optional(S.String),
+          user_access_level: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({ identifier: "ExperimentOutput" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5041,21 +4967,21 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetExperimentsFlagCleanupTargetRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           repository: S.NullOr(S.String),
           source: S.String,
-          candidates: __S(12, __c1, 4),
+          candidates: __S(864, __c27, 0),
         }),
       ).annotate({
         identifier: "ExperimentFlagCleanupTarget",
       });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5070,7 +4996,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetExperimentsFlagCleanupTaskRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           task_id: S.String,
@@ -5082,7 +5008,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ExperimentFlagCleanupTask",
       });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5097,7 +5027,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetExperimentsInSessionExposureRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           available: S.Boolean,
@@ -5107,7 +5037,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ExperimentInSessionExposure",
       });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5131,16 +5065,20 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetExperimentsMatchingIdsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ids: __S(35, __c4, 3),
+          ids: __S(1472, __c46, 0),
           total: S.Number,
         }),
       ).annotate({
         identifier: "ExperimentMatchingIdsResponse",
       });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5156,24 +5094,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetExperimentsMetricsRecalculationRequest",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          metric_uuid: S.String,
-          status: S.String,
-          result: S.Unknown,
-          error_message: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "MetricRecalculationResult",
-      });
     case 1:
-      return S.Array(__S(144, __c18, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5188,14 +5109,35 @@ function __c18(j: number): any {
           completed_at: S.NullOr(S.String),
           query_to: S.NullOr(S.String),
           metric_retries: S.Unknown,
-          results: __S(145, __c18, 1),
+          results: __S(1249, __c39, 1),
           rows_read: S.optional(S.NullOr(S.Number)),
           estimated_rows_total: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "ExperimentMetricsRecalculationRun",
       });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metric_uuid: S.String,
+          status: S.String,
+          result: S.Unknown,
+          error_message: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "MetricRecalculationResult",
+      });
+    case 1:
+      return S.Array(__S(1248, __c39, 0));
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5210,14 +5152,14 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetExperimentsMetricsRecalculationLatestRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           status: S.String,
         }),
       ).annotate({ identifier: "ActiveRecalculationRun" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5232,16 +5174,20 @@ function __c18(j: number): any {
           completed_at: S.NullOr(S.String),
           query_to: S.NullOr(S.String),
           metric_retries: S.Unknown,
-          results: __S(145, __c18, 1),
+          results: __S(1249, __c39, 1),
           rows_read: S.optional(S.NullOr(S.Number)),
           estimated_rows_total: S.optional(S.NullOr(S.Number)),
-          active_run: S.NullOr(__S(148, __c18, 4)),
+          active_run: S.NullOr(__S(1281, __c40, 1)),
           result_source: S.String,
         }),
       ).annotate({
         identifier: "ExperimentMetricsRecalculationLatest",
       });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5255,7 +5201,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetExperimentsPromptTemplateRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -5265,17 +5211,17 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetExperimentsPromptTemplateResponseBodyItem",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
-      return S.suspend(() => __S(152, __c19, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(1313, __c41, 1));
+    case 3:
+      return S.suspend(() => __S(1314, __c41, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetExperimentsPromptTemplateResponse",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5290,7 +5236,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetExperimentsSessionContextRequest",
       });
-    case 3:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5304,7 +5254,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetExperimentsStatRequest",
       });
-    case 4:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5321,7 +5275,65 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetExperimentsTimeseriesResultRequest",
       });
-    case 5:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          number_of_samples: S.Number,
+          sum: S.Number,
+          sum_squares: S.optional(S.Number),
+          denominator_sum: S.optional(S.NullOr(S.Number)),
+          denominator_sum_squares: S.optional(S.NullOr(S.Number)),
+          numerator_denominator_sum_product: S.optional(S.NullOr(S.Number)),
+          step_counts: S.optional(__S(1472, __c46, 0)),
+        }),
+      ).annotate({ identifier: "RunningTimeBaselineStats" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          metric_type: S.String,
+          minimum_detectable_effect: S.Number,
+          number_of_variants: S.optional(S.Number),
+          exposure_rate_per_day: S.optional(S.NullOr(S.Number)),
+          baseline_value: S.optional(S.NullOr(S.Number)),
+          variance: S.optional(S.NullOr(S.Number)),
+          baseline_stats: S.optional(S.NullOr(__S(1440, __c45, 0))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/experiments/calculate_running_time/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExperimentsCalculateRunningTimeRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          baseline_value: S.NullOr(S.Number),
+          variance: S.NullOr(S.Number),
+          recommended_sample_size: S.NullOr(S.Number),
+          recommended_running_time_days: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "RunningTimeCalculationResult",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5341,7 +5353,7 @@ function __c19(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/experiments/", code: 200 }),
         ),
       ).annotate({ identifier: "ListExperimentsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -5350,15 +5362,15 @@ function __c19(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.String,
-          feature_flag: __S(26, __c3, 2),
-          holdout: __S(31, __c3, 7),
+          feature_flag: __S(1024, __c32, 0),
+          holdout: __S(1029, __c32, 5),
           exposure_cohort: S.NullOr(S.Number),
-          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
-          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
-          excluded_variants: S.optional(S.NullOr(__S(12, __c1, 4))),
+          parameters: S.optional(S.NullOr(__S(897, __c28, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(899, __c28, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(864, __c27, 0))),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          created_by: __S(30, __c3, 6),
+          created_by: __S(1028, __c32, 4),
           created_at: S.String,
           updated_at: S.String,
           type: S.optional(S.NullOr(S.String)),
@@ -5367,27 +5379,27 @@ function __c19(j: number): any {
           status: S.String,
           is_legacy: S.Boolean,
           user_access_level: S.NullOr(S.String),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "ExperimentBasic" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1505, __c47, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(159, __c19, 7),
+          results: __S(1506, __c47, 2),
         }),
       ).annotate({
         identifier: "PaginatedExperimentBasicList",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5397,20 +5409,20 @@ function __c20(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.String,
-          feature_flag: S.optional(__S(8, __c1, 0)),
+          feature_flag: S.optional(__S(838, __c26, 6)),
           holdout_id: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
-          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
-          excluded_variants: S.optional(S.NullOr(__S(12, __c1, 4))),
+          parameters: S.optional(S.NullOr(__S(897, __c28, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(899, __c28, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(864, __c27, 0))),
           secondary_metrics: S.optional(S.Unknown),
-          saved_metrics_ids: S.optional(S.NullOr(__S(0, __c0, 0))),
+          saved_metrics_ids: S.optional(S.NullOr(__S(992, __c31, 0))),
           filters: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
           type: S.optional(S.NullOr(S.String)),
-          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
-          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
-          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
+          exposure_criteria: S.optional(S.NullOr(__S(931, __c29, 3))),
+          metrics: S.optional(S.NullOr(__S(938, __c29, 10))),
+          metrics_secondary: S.optional(S.NullOr(__S(938, __c29, 10))),
           stats_config: S.optional(S.Unknown),
           scheduling_config: S.optional(S.Unknown),
           allow_unknown_events: S.optional(S.Boolean),
@@ -5418,18 +5430,22 @@ function __c20(j: number): any {
           conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
-          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(864, __c27, 0))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(864, __c27, 0))),
           only_count_matured_users: S.optional(S.Boolean),
           update_feature_flag_params: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.Number)),
-          original_experiment: S.optional(S.NullOr(__S(24, __c3, 0))),
-          tags: S.optional(__S(12, __c1, 4)),
+          original_experiment: S.optional(S.NullOr(__S(960, __c30, 0))),
+          tags: S.optional(__S(864, __c27, 0)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/experiments/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateExperimentRequest" });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5439,20 +5455,20 @@ function __c20(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           feature_flag_key: S.optional(S.String),
-          feature_flag: S.optional(__S(8, __c1, 0)),
+          feature_flag: S.optional(__S(838, __c26, 6)),
           holdout_id: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(__S(9, __c1, 1))),
-          running_time_calculation: S.optional(S.NullOr(__S(11, __c1, 3))),
-          excluded_variants: S.optional(S.NullOr(__S(12, __c1, 4))),
+          parameters: S.optional(S.NullOr(__S(897, __c28, 1))),
+          running_time_calculation: S.optional(S.NullOr(__S(899, __c28, 3))),
+          excluded_variants: S.optional(S.NullOr(__S(864, __c27, 0))),
           secondary_metrics: S.optional(S.Unknown),
-          saved_metrics_ids: S.optional(S.NullOr(__S(0, __c0, 0))),
+          saved_metrics_ids: S.optional(S.NullOr(__S(992, __c31, 0))),
           filters: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           deleted: S.optional(S.NullOr(S.Boolean)),
           type: S.optional(S.NullOr(S.String)),
-          exposure_criteria: S.optional(S.NullOr(__S(16, __c2, 0))),
-          metrics: S.optional(S.NullOr(__S(23, __c2, 7))),
-          metrics_secondary: S.optional(S.NullOr(__S(23, __c2, 7))),
+          exposure_criteria: S.optional(S.NullOr(__S(931, __c29, 3))),
+          metrics: S.optional(S.NullOr(__S(938, __c29, 10))),
+          metrics_secondary: S.optional(S.NullOr(__S(938, __c29, 10))),
           stats_config: S.optional(S.Unknown),
           scheduling_config: S.optional(S.Unknown),
           allow_unknown_events: S.optional(S.Boolean),
@@ -5460,13 +5476,13 @@ function __c20(j: number): any {
           conclusion: S.optional(S.NullOr(S.String)),
           conclusion_comment: S.optional(S.NullOr(S.String)),
           repository: S.optional(S.NullOr(S.String)),
-          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(12, __c1, 4))),
-          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(45, __c5, 5))),
+          primary_metrics_ordered_uuids: S.optional(S.NullOr(__S(864, __c27, 0))),
+          secondary_metrics_ordered_uuids: S.optional(S.NullOr(__S(64, __c2, 0))),
           only_count_matured_users: S.optional(S.Boolean),
           update_feature_flag_params: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.Number)),
-          original_experiment: S.optional(S.NullOr(__S(24, __c3, 0))),
-          tags: S.optional(__S(12, __c1, 4)),
+          original_experiment: S.optional(S.NullOr(__S(960, __c30, 0))),
+          tags: S.optional(__S(864, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5479,7 +5495,126 @@ function __c20(j: number): any {
       });
   }
 }
-
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          conclusion: S.optional(S.NullOr(S.String)),
+          conclusion_comment: S.optional(S.NullOr(S.String)),
+          open_cleanup_pr: S.optional(S.Boolean),
+          repository: S.optional(S.NullOr(S.String)),
+          set_repository_as_team_default: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/experiments/{id}/end/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExperimentsEndRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/experiments/{id}/freeze_exposure/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExperimentsFreezeExposureRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/experiments/{id}/launch/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExperimentsLaunchRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          trigger: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/experiments/{id}/metrics_recalculation/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExperimentsMetricsRecalculationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          experiment_id: S.Number,
+          status: S.String,
+          total_metrics: S.Number,
+          completed_metrics: S.Number,
+          failed_metrics: S.Number,
+          metric_errors: S.Unknown,
+          created_at: S.String,
+          started_at: S.NullOr(S.String),
+          completed_at: S.NullOr(S.String),
+          query_to: S.NullOr(S.String),
+          is_existing: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "ExperimentMetricsRecalculationJob",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/experiments/{id}/pause/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExperimentsPauseRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -803,8 +803,8 @@ export const associateCustomDomain: API.OperationMethod<
   AssociateCustomDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateCustomDomainRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AssociateCustomDomainResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<AssociateCustomDomainRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<AssociateCustomDomainResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, InvalidStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -836,8 +836,8 @@ export const createAutoScalingConfiguration: API.OperationMethod<
   CreateAutoScalingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateAutoScalingConfigurationRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateAutoScalingConfigurationResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<CreateAutoScalingConfigurationRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<CreateAutoScalingConfigurationResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -863,8 +863,8 @@ export const createConnection: API.OperationMethod<
   CreateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateConnectionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateConnectionResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<CreateConnectionRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<CreateConnectionResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -895,8 +895,8 @@ export const createObservabilityConfiguration: API.OperationMethod<
   CreateObservabilityConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateObservabilityConfigurationRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateObservabilityConfigurationResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<CreateObservabilityConfigurationRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<CreateObservabilityConfigurationResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -919,8 +919,8 @@ export const createService: API.OperationMethod<
   CreateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateServiceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateServiceResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<CreateServiceRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<CreateServiceResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -942,8 +942,8 @@ export const createVpcConnector: API.OperationMethod<
   CreateVpcConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateVpcConnectorRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<CreateVpcConnectorResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateVpcConnectorRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CreateVpcConnectorResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -965,8 +965,8 @@ export const createVpcIngressConnection: API.OperationMethod<
   CreateVpcIngressConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateVpcIngressConnectionRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<CreateVpcIngressConnectionResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<CreateVpcIngressConnectionRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<CreateVpcIngressConnectionResponse>,
   errors: [
     InternalServiceErrorException,
     InvalidRequestException,
@@ -994,8 +994,8 @@ export const deleteAutoScalingConfiguration: API.OperationMethod<
   DeleteAutoScalingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteAutoScalingConfigurationRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteAutoScalingConfigurationResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeleteAutoScalingConfigurationRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<DeleteAutoScalingConfigurationResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1017,8 +1017,8 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteConnectionRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DeleteConnectionResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteConnectionRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<DeleteConnectionResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1040,8 +1040,8 @@ export const deleteObservabilityConfiguration: API.OperationMethod<
   DeleteObservabilityConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteObservabilityConfigurationRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteObservabilityConfigurationResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteObservabilityConfigurationRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<DeleteObservabilityConfigurationResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1068,8 +1068,8 @@ export const deleteService: API.OperationMethod<
   DeleteServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [
     InternalServiceErrorException,
     InvalidRequestException,
@@ -1096,8 +1096,8 @@ export const deleteVpcConnector: API.OperationMethod<
   DeleteVpcConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteVpcConnectorRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteVpcConnectorResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteVpcConnectorRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteVpcConnectorResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1127,8 +1127,8 @@ export const deleteVpcIngressConnection: API.OperationMethod<
   DeleteVpcIngressConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteVpcIngressConnectionRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<DeleteVpcIngressConnectionResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteVpcIngressConnectionRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<DeleteVpcIngressConnectionResponse>,
   errors: [
     InternalServiceErrorException,
     InvalidRequestException,
@@ -1154,8 +1154,8 @@ export const describeAutoScalingConfiguration: API.OperationMethod<
   DescribeAutoScalingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DescribeAutoScalingConfigurationRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DescribeAutoScalingConfigurationResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DescribeAutoScalingConfigurationRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<DescribeAutoScalingConfigurationResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1177,8 +1177,8 @@ export const describeCustomDomains: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DescribeCustomDomainsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<DescribeCustomDomainsResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DescribeCustomDomainsRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<DescribeCustomDomainsResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1204,8 +1204,8 @@ export const describeObservabilityConfiguration: API.OperationMethod<
   DescribeObservabilityConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DescribeObservabilityConfigurationRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DescribeObservabilityConfigurationResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DescribeObservabilityConfigurationRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<DescribeObservabilityConfigurationResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1226,8 +1226,8 @@ export const describeService: API.OperationMethod<
   DescribeServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DescribeServiceRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<DescribeServiceResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DescribeServiceRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<DescribeServiceResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1248,8 +1248,8 @@ export const describeVpcConnector: API.OperationMethod<
   DescribeVpcConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DescribeVpcConnectorRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DescribeVpcConnectorResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<DescribeVpcConnectorRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DescribeVpcConnectorResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1270,8 +1270,8 @@ export const describeVpcIngressConnection: API.OperationMethod<
   DescribeVpcIngressConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DescribeVpcIngressConnectionRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<DescribeVpcIngressConnectionResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DescribeVpcIngressConnectionRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<DescribeVpcIngressConnectionResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1297,8 +1297,8 @@ export const disassociateCustomDomain: API.OperationMethod<
   DisassociateCustomDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DisassociateCustomDomainRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DisassociateCustomDomainResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<DisassociateCustomDomainRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<DisassociateCustomDomainResponse>,
   errors: [
     InternalServiceErrorException,
     InvalidRequestException,
@@ -1329,8 +1329,8 @@ export const listAutoScalingConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListAutoScalingConfigurationsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ListAutoScalingConfigurationsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListAutoScalingConfigurationsRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<ListAutoScalingConfigurationsResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1356,8 +1356,8 @@ export const listConnections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListConnectionsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListConnectionsResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListConnectionsRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<ListConnectionsResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1388,8 +1388,8 @@ export const listObservabilityConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListObservabilityConfigurationsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListObservabilityConfigurationsResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListObservabilityConfigurationsRequest>,
+  output: __S(675, __c21, 3) as any as S.Schema<ListObservabilityConfigurationsResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1419,8 +1419,8 @@ export const listOperations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListOperationsResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<ListOperationsResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1446,8 +1446,8 @@ export const listServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListServicesRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ListServicesResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(739, __c23, 3) as any as S.Schema<ListServicesResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1474,8 +1474,8 @@ export const listServicesForAutoScalingConfiguration: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListServicesForAutoScalingConfigurationRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ListServicesForAutoScalingConfigurationResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListServicesForAutoScalingConfigurationRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<ListServicesForAutoScalingConfigurationResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1502,8 +1502,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalServiceErrorException,
     InvalidRequestException,
@@ -1529,8 +1529,8 @@ export const listVpcConnectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListVpcConnectorsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ListVpcConnectorsResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListVpcConnectorsRequest>,
+  output: __S(834, __c26, 2) as any as S.Schema<ListVpcConnectorsResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1556,8 +1556,8 @@ export const listVpcIngressConnections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListVpcIngressConnectionsRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ListVpcIngressConnectionsResponse>,
+  input: __S(865, __c27, 1) as any as S.Schema<ListVpcIngressConnectionsRequest>,
+  output: __S(868, __c27, 4) as any as S.Schema<ListVpcIngressConnectionsResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1588,8 +1588,8 @@ export const pauseService: API.OperationMethod<
   PauseServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<PauseServiceRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<PauseServiceResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<PauseServiceRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<PauseServiceResponse>,
   errors: [
     InternalServiceErrorException,
     InvalidRequestException,
@@ -1619,8 +1619,8 @@ export const resumeService: API.OperationMethod<
   ResumeServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ResumeServiceRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ResumeServiceResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ResumeServiceRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<ResumeServiceResponse>,
   errors: [
     InternalServiceErrorException,
     InvalidRequestException,
@@ -1653,8 +1653,8 @@ export const startDeployment: API.OperationMethod<
   StartDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<StartDeploymentRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<StartDeploymentResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<StartDeploymentRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<StartDeploymentResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1676,8 +1676,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<TagResourceRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<TagResourceResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServiceErrorException,
     InvalidRequestException,
@@ -1704,8 +1704,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<UntagResourceRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServiceErrorException,
     InvalidRequestException,
@@ -1732,8 +1732,8 @@ export const updateDefaultAutoScalingConfiguration: API.OperationMethod<
   UpdateDefaultAutoScalingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<UpdateDefaultAutoScalingConfigurationRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateDefaultAutoScalingConfigurationResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<UpdateDefaultAutoScalingConfigurationRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<UpdateDefaultAutoScalingConfigurationResponse>,
   errors: [InternalServiceErrorException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1762,8 +1762,8 @@ export const updateService: API.OperationMethod<
   UpdateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<UpdateServiceResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<UpdateServiceResponse>,
   errors: [
     InternalServiceErrorException,
     InvalidRequestException,
@@ -1796,8 +1796,8 @@ export const updateVpcIngressConnection: API.OperationMethod<
   UpdateVpcIngressConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<UpdateVpcIngressConnectionRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<UpdateVpcIngressConnectionResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<UpdateVpcIngressConnectionRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<UpdateVpcIngressConnectionResponse>,
   errors: [
     InternalServiceErrorException,
     InvalidRequestException,
@@ -1815,6 +1815,623 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          VpcConnectorName: S.String,
+          Subnets: __S(64, __c2, 0),
+          SecurityGroups: S.optional(__S(64, __c2, 0)),
+          Tags: S.optional(__S(1377, __c43, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateVpcConnectorRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ VpcConnector: __S(96, __c3, 0) }).pipe(ns)).annotate({
+        identifier: "CreateVpcConnectorResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VpcConnectorName: S.optional(S.String),
+          VpcConnectorArn: S.optional(S.String),
+          VpcConnectorRevision: S.optional(S.Number),
+          Subnets: S.optional(__S(64, __c2, 0)),
+          SecurityGroups: S.optional(__S(64, __c2, 0)),
+          Status: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          DeletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "VpcConnector" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceArn: S.String,
+          VpcIngressConnectionName: S.String,
+          IngressVpcConfiguration: __S(160, __c5, 0),
+          Tags: S.optional(__S(1377, __c43, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateVpcIngressConnectionRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VpcId: S.optional(S.String), VpcEndpointId: S.optional(S.String) }),
+      ).annotate({ identifier: "IngressVpcConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VpcIngressConnectionArn: S.optional(S.String),
+          VpcIngressConnectionName: S.optional(S.String),
+          ServiceArn: S.optional(S.String),
+          Status: S.optional(S.String),
+          AccountId: S.optional(S.String),
+          DomainName: S.optional(S.String),
+          IngressVpcConfiguration: S.optional(__S(160, __c5, 0)),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          DeletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "VpcIngressConnection" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ VpcIngressConnection: __S(161, __c5, 1) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateVpcIngressConnectionResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AutoScalingConfigurationArn: S.String,
+          DeleteAllRevisions: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeleteAutoScalingConfigurationRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ConnectionArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteConnectionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Connection: S.optional(__S(1440, __c45, 0)) }).pipe(ns),
+      ).annotate({ identifier: "DeleteConnectionResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ObservabilityConfigurationArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteObservabilityConfigurationRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ServiceArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteServiceRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VpcConnectorArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteVpcConnectorRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VpcIngressConnectionArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DeleteVpcIngressConnectionRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AutoScalingConfigurationArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeAutoScalingConfigurationRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceArn: S.String,
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeCustomDomainsRequest",
+      });
+    case 1:
+      return S.Array(__S(1250, __c39, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DNSTarget: S.String,
+          ServiceArn: S.String,
+          CustomDomains: __S(417, __c13, 1),
+          VpcDNSTargets: __S(1252, __c39, 4),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeCustomDomainsResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ObservabilityConfigurationArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeObservabilityConfigurationRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ServiceArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeServiceRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Service: __S(1616, __c50, 16) }).pipe(ns)).annotate({
+        identifier: "DescribeServiceResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VpcConnectorArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeVpcConnectorRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VpcIngressConnectionArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeVpcIngressConnectionRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ServiceArn: S.String, DomainName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DisassociateCustomDomainRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AutoScalingConfigurationName: S.optional(S.String),
+          LatestOnly: S.optional(S.Boolean),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListAutoScalingConfigurationsRequest",
+      });
+    case 1:
+      return S.Array(__S(1568, __c49, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AutoScalingConfigurationSummaryList: __S(609, __c19, 1),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListAutoScalingConfigurationsResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectionName: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListConnectionsRequest" });
+    case 1:
+      return S.Array(__S(1440, __c45, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectionSummaryList: __S(641, __c20, 1),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListConnectionsResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ObservabilityConfigurationName: S.optional(S.String),
+          LatestOnly: S.optional(S.Boolean),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListObservabilityConfigurationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ObservabilityConfigurationArn: S.optional(S.String),
+          ObservabilityConfigurationName: S.optional(S.String),
+          ObservabilityConfigurationRevision: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ObservabilityConfigurationSummary",
+      });
+    case 2:
+      return S.Array(__S(673, __c21, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ObservabilityConfigurationSummaryList: __S(674, __c21, 2),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListObservabilityConfigurationsResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceArn: S.String,
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Type: S.optional(S.String),
+          Status: S.optional(S.String),
+          TargetArn: S.optional(S.String),
+          StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "OperationSummary" });
+    case 2:
+      return S.Array(__S(705, __c22, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          OperationSummaryList: S.optional(__S(706, __c22, 2)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListServicesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceName: S.optional(S.String),
+          ServiceId: S.optional(S.String),
+          ServiceArn: S.optional(S.String),
+          ServiceUrl: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceSummary" });
+    case 2:
+      return S.Array(__S(737, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ServiceSummaryList: __S(738, __c23, 2), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
+      ).annotate({ identifier: "ListServicesResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AutoScalingConfigurationArn: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListServicesForAutoScalingConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ServiceArnList: __S(64, __c2, 0), NextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "ListServicesForAutoScalingConfigurationResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1377, __c43, 1)) }).pipe(ns)).annotate(
+        {
+          identifier: "ListTagsForResourceResponse",
+        },
+      );
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListVpcConnectorsRequest" });
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ VpcConnectors: __S(833, __c26, 1), NextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "ListVpcConnectorsResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ServiceArn: S.optional(S.String), VpcEndpointId: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListVpcIngressConnectionsFilter",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Filter: S.optional(__S(864, __c27, 0)),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListVpcIngressConnectionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          VpcIngressConnectionArn: S.optional(S.String),
+          ServiceArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VpcIngressConnectionSummary",
+      });
+    case 3:
+      return S.Array(__S(866, __c27, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          VpcIngressConnectionSummaryList: __S(867, __c27, 3),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListVpcIngressConnectionsResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ServiceArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PauseServiceRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Service: __S(1616, __c50, 16), OperationId: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "PauseServiceResponse" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ServiceArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ResumeServiceRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ServiceArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartDeploymentRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ OperationId: S.String }).pipe(ns)).annotate({
+        identifier: "StartDeploymentResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, Tags: __S(1377, __c43, 1) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "TagResourceResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(64, __c2, 0) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AutoScalingConfigurationArn: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateDefaultAutoScalingConfigurationRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceArn: S.String,
+          SourceConfiguration: S.optional(__S(1608, __c50, 8)),
+          InstanceConfiguration: S.optional(__S(1609, __c50, 9)),
+          AutoScalingConfigurationArn: S.optional(S.String),
+          HealthCheckConfiguration: S.optional(__S(1611, __c50, 11)),
+          NetworkConfiguration: S.optional(__S(1614, __c50, 14)),
+          ObservabilityConfiguration: S.optional(__S(1615, __c50, 15)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateServiceRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VpcIngressConnectionArn: S.String,
+          IngressVpcConfiguration: __S(160, __c5, 0),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateVpcIngressConnectionRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           ServiceArn: S.String,
           DomainName: S.String,
           EnableWWWSubdomain: S.optional(S.Boolean),
@@ -1822,7 +2439,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateCustomDomainRequest",
       });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -1833,18 +2454,18 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CertificateValidationRecord",
       });
+    case 1:
+      return S.Array(__S(1248, __c39, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
           EnableWWWSubdomain: S.Boolean,
-          CertificateValidationRecords: S.optional(__S(2, __c0, 2)),
+          CertificateValidationRecords: S.optional(__S(1249, __c39, 1)),
           Status: S.String,
         }),
       ).annotate({ identifier: "CustomDomain" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           VpcIngressConnectionArn: S.optional(S.String),
@@ -1852,42 +2473,44 @@ function __c0(j: number): any {
           DomainName: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpcDNSTarget" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 4:
+      return S.Array(__S(1251, __c39, 3));
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DNSTarget: S.String,
           ServiceArn: S.String,
-          CustomDomain: __S(3, __c0, 3),
-          VpcDNSTargets: __S(5, __c0, 5),
+          CustomDomain: __S(1250, __c39, 2),
+          VpcDNSTargets: __S(1252, __c39, 4),
         }).pipe(ns),
       ).annotate({
         identifier: "AssociateCustomDomainResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
   }
 }
-function __c1(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           AutoScalingConfigurationName: S.String,
           MaxConcurrency: S.optional(S.Number),
           MinSize: S.optional(S.Number),
           MaxSize: S.optional(S.Number),
-          Tags: S.optional(__S(8, __c1, 0)),
+          Tags: S.optional(__S(1377, __c43, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateAutoScalingConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AutoScalingConfigurationArn: S.optional(S.String),
@@ -1904,21 +2527,43 @@ function __c1(j: number): any {
           IsDefault: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AutoScalingConfiguration" });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ AutoScalingConfiguration: __S(10, __c1, 2) }).pipe(ns),
+        S.Struct({ AutoScalingConfiguration: __S(1344, __c42, 0) }).pipe(ns),
       ).annotate({
         identifier: "CreateAutoScalingConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(1376, __c43, 0));
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectionName: S.String,
           ProviderType: S.String,
-          Tags: S.optional(__S(8, __c1, 0)),
+          Tags: S.optional(__S(1377, __c43, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateConnectionRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() => S.Struct({ Connection: __S(1440, __c45, 0) }).pipe(ns)).annotate({
+        identifier: "CreateConnectionResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectionName: S.optional(S.String),
@@ -1928,34 +2573,34 @@ function __c1(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Connection" });
-    case 6:
-      return S.suspend(() => S.Struct({ Connection: __S(13, __c1, 5) }).pipe(ns)).annotate({
-        identifier: "CreateConnectionResponse",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ Vendor: S.String })).annotate({
-        identifier: "TraceConfiguration",
-      });
   }
 }
-function __c2(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ObservabilityConfigurationName: S.String,
-          TraceConfiguration: S.optional(__S(15, __c1, 7)),
-          Tags: S.optional(__S(8, __c1, 0)),
+          TraceConfiguration: S.optional(__S(1504, __c47, 0)),
+          Tags: S.optional(__S(1377, __c43, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateObservabilityConfigurationRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Vendor: S.String })).annotate({
+        identifier: "TraceConfiguration",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ObservabilityConfigurationArn: S.optional(S.String),
           ObservabilityConfigurationName: S.optional(S.String),
-          TraceConfiguration: S.optional(__S(15, __c1, 7)),
+          TraceConfiguration: S.optional(__S(1504, __c47, 0)),
           ObservabilityConfigurationRevision: S.optional(S.Number),
           Latest: S.optional(S.Boolean),
           Status: S.optional(S.String),
@@ -1967,146 +2612,33 @@ function __c2(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ObservabilityConfiguration: __S(17, __c2, 1) }).pipe(ns),
+        S.Struct({ ObservabilityConfiguration: __S(1505, __c47, 1) }).pipe(ns),
       ).annotate({
         identifier: "CreateObservabilityConfigurationResponse",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ Type: S.String, Value: S.String })).annotate({
-        identifier: "SourceCodeVersion",
-      });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Runtime: S.String,
-          BuildCommand: S.optional(SensitiveString),
-          StartCommand: S.optional(SensitiveString),
-          Port: S.optional(S.String),
-          RuntimeEnvironmentVariables: S.optional(__S(20, __c2, 4)),
-          RuntimeEnvironmentSecrets: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "CodeConfigurationValues" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigurationSource: S.String,
-          CodeConfigurationValues: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "CodeConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          RepositoryUrl: S.String,
-          SourceCodeVersion: __S(19, __c2, 3),
-          CodeConfiguration: S.optional(__S(22, __c2, 6)),
-          SourceDirectory: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CodeRepository" });
   }
 }
-function __c3(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          RuntimeEnvironmentVariables: S.optional(__S(20, __c2, 4)),
-          StartCommand: S.optional(SensitiveString),
-          Port: S.optional(S.String),
-          RuntimeEnvironmentSecrets: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "ImageConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ImageIdentifier: S.String,
-          ImageConfiguration: S.optional(__S(24, __c3, 0)),
-          ImageRepositoryType: S.String,
-        }),
-      ).annotate({ identifier: "ImageRepository" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ConnectionArn: S.optional(S.String), AccessRoleArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AuthenticationConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          CodeRepository: S.optional(__S(23, __c2, 7)),
-          ImageRepository: S.optional(__S(25, __c3, 1)),
-          AutoDeploymentsEnabled: S.optional(S.Boolean),
-          AuthenticationConfiguration: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "SourceConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Cpu: S.optional(S.String),
-          Memory: S.optional(S.String),
-          InstanceRoleArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InstanceConfiguration" });
-    case 5:
-      return S.suspend(() => S.Struct({ KmsKey: S.String })).annotate({
-        identifier: "EncryptionConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Protocol: S.optional(S.String),
-          Path: S.optional(S.String),
-          Interval: S.optional(S.Number),
-          Timeout: S.optional(S.Number),
-          HealthyThreshold: S.optional(S.Number),
-          UnhealthyThreshold: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HealthCheckConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ EgressType: S.optional(S.String), VpcConnectorArn: S.optional(S.String) }),
-      ).annotate({ identifier: "EgressConfiguration" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ IsPubliclyAccessible: S.optional(S.Boolean) })).annotate({
-        identifier: "IngressConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          EgressConfiguration: S.optional(__S(31, __c3, 7)),
-          IngressConfiguration: S.optional(__S(32, __c4, 0)),
-          IpAddressType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ObservabilityEnabled: S.Boolean,
-          ObservabilityConfigurationArn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ServiceObservabilityConfiguration",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           ServiceName: S.String,
-          SourceConfiguration: __S(27, __c3, 3),
-          InstanceConfiguration: S.optional(__S(28, __c3, 4)),
-          Tags: S.optional(__S(8, __c1, 0)),
-          EncryptionConfiguration: S.optional(__S(29, __c3, 5)),
-          HealthCheckConfiguration: S.optional(__S(30, __c3, 6)),
+          SourceConfiguration: __S(1608, __c50, 8),
+          InstanceConfiguration: S.optional(__S(1609, __c50, 9)),
+          Tags: S.optional(__S(1377, __c43, 1)),
+          EncryptionConfiguration: S.optional(__S(1610, __c50, 10)),
+          HealthCheckConfiguration: S.optional(__S(1611, __c50, 11)),
           AutoScalingConfigurationArn: S.optional(S.String),
-          NetworkConfiguration: S.optional(__S(33, __c4, 1)),
-          ObservabilityConfiguration: S.optional(__S(34, __c4, 2)),
+          NetworkConfiguration: S.optional(__S(1614, __c50, 14)),
+          ObservabilityConfiguration: S.optional(__S(1615, __c50, 15)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateServiceRequest" });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AutoScalingConfigurationArn: S.optional(S.String),
@@ -2120,7 +2652,124 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AutoScalingConfigurationSummary",
       });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Type: S.String, Value: S.String })).annotate({
+        identifier: "SourceCodeVersion",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Runtime: S.String,
+          BuildCommand: S.optional(SensitiveString),
+          StartCommand: S.optional(SensitiveString),
+          Port: S.optional(S.String),
+          RuntimeEnvironmentVariables: S.optional(__S(1601, __c50, 1)),
+          RuntimeEnvironmentSecrets: S.optional(__S(1601, __c50, 1)),
+        }),
+      ).annotate({ identifier: "CodeConfigurationValues" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSource: S.String,
+          CodeConfigurationValues: S.optional(__S(1602, __c50, 2)),
+        }),
+      ).annotate({ identifier: "CodeConfiguration" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          RepositoryUrl: S.String,
+          SourceCodeVersion: __S(1600, __c50, 0),
+          CodeConfiguration: S.optional(__S(1603, __c50, 3)),
+          SourceDirectory: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CodeRepository" });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          RuntimeEnvironmentVariables: S.optional(__S(1601, __c50, 1)),
+          StartCommand: S.optional(SensitiveString),
+          Port: S.optional(S.String),
+          RuntimeEnvironmentSecrets: S.optional(__S(1601, __c50, 1)),
+        }),
+      ).annotate({ identifier: "ImageConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ImageIdentifier: S.String,
+          ImageConfiguration: S.optional(__S(1605, __c50, 5)),
+          ImageRepositoryType: S.String,
+        }),
+      ).annotate({ identifier: "ImageRepository" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ ConnectionArn: S.optional(S.String), AccessRoleArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "AuthenticationConfiguration",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          CodeRepository: S.optional(__S(1604, __c50, 4)),
+          ImageRepository: S.optional(__S(1606, __c50, 6)),
+          AutoDeploymentsEnabled: S.optional(S.Boolean),
+          AuthenticationConfiguration: S.optional(__S(1607, __c50, 7)),
+        }),
+      ).annotate({ identifier: "SourceConfiguration" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          Cpu: S.optional(S.String),
+          Memory: S.optional(S.String),
+          InstanceRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InstanceConfiguration" });
+    case 10:
+      return S.suspend(() => S.Struct({ KmsKey: S.String })).annotate({
+        identifier: "EncryptionConfiguration",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          Protocol: S.optional(S.String),
+          Path: S.optional(S.String),
+          Interval: S.optional(S.Number),
+          Timeout: S.optional(S.Number),
+          HealthyThreshold: S.optional(S.Number),
+          UnhealthyThreshold: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HealthCheckConfiguration" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({ EgressType: S.optional(S.String), VpcConnectorArn: S.optional(S.String) }),
+      ).annotate({ identifier: "EgressConfiguration" });
+    case 13:
+      return S.suspend(() => S.Struct({ IsPubliclyAccessible: S.optional(S.Boolean) })).annotate({
+        identifier: "IngressConfiguration",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          EgressConfiguration: S.optional(__S(1612, __c50, 12)),
+          IngressConfiguration: S.optional(__S(1613, __c50, 13)),
+          IpAddressType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkConfiguration" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          ObservabilityEnabled: S.Boolean,
+          ObservabilityConfigurationArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ServiceObservabilityConfiguration",
+      });
+    case 16:
       return S.suspend(() =>
         S.Struct({
           ServiceName: S.String,
@@ -2131,523 +2780,25 @@ function __c4(j: number): any {
           UpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           DeletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Status: S.String,
-          SourceConfiguration: __S(27, __c3, 3),
-          InstanceConfiguration: __S(28, __c3, 4),
-          EncryptionConfiguration: S.optional(__S(29, __c3, 5)),
-          HealthCheckConfiguration: S.optional(__S(30, __c3, 6)),
-          AutoScalingConfigurationSummary: __S(36, __c4, 4),
-          NetworkConfiguration: __S(33, __c4, 1),
-          ObservabilityConfiguration: S.optional(__S(34, __c4, 2)),
+          SourceConfiguration: __S(1608, __c50, 8),
+          InstanceConfiguration: __S(1609, __c50, 9),
+          EncryptionConfiguration: S.optional(__S(1610, __c50, 10)),
+          HealthCheckConfiguration: S.optional(__S(1611, __c50, 11)),
+          AutoScalingConfigurationSummary: __S(1568, __c49, 0),
+          NetworkConfiguration: __S(1614, __c50, 14),
+          ObservabilityConfiguration: S.optional(__S(1615, __c50, 15)),
         }),
       ).annotate({ identifier: "Service" });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Service: __S(37, __c4, 5), OperationId: S.String }).pipe(ns),
+        S.Struct({ Service: __S(1616, __c50, 16), OperationId: S.String }).pipe(ns),
       ).annotate({ identifier: "CreateServiceResponse" });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          VpcConnectorName: S.String,
-          Subnets: __S(39, __c4, 7),
-          SecurityGroups: S.optional(__S(39, __c4, 7)),
-          Tags: S.optional(__S(8, __c1, 0)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVpcConnectorRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          VpcConnectorName: S.optional(S.String),
-          VpcConnectorArn: S.optional(S.String),
-          VpcConnectorRevision: S.optional(S.Number),
-          Subnets: S.optional(__S(39, __c4, 7)),
-          SecurityGroups: S.optional(__S(39, __c4, 7)),
-          Status: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DeletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "VpcConnector" });
-    case 2:
-      return S.suspend(() => S.Struct({ VpcConnector: __S(41, __c5, 1) }).pipe(ns)).annotate({
-        identifier: "CreateVpcConnectorResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ VpcId: S.optional(S.String), VpcEndpointId: S.optional(S.String) }),
-      ).annotate({ identifier: "IngressVpcConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceArn: S.String,
-          VpcIngressConnectionName: S.String,
-          IngressVpcConfiguration: __S(43, __c5, 3),
-          Tags: S.optional(__S(8, __c1, 0)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateVpcIngressConnectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          VpcIngressConnectionArn: S.optional(S.String),
-          VpcIngressConnectionName: S.optional(S.String),
-          ServiceArn: S.optional(S.String),
-          Status: S.optional(S.String),
-          AccountId: S.optional(S.String),
-          DomainName: S.optional(S.String),
-          IngressVpcConfiguration: S.optional(__S(43, __c5, 3)),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DeletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "VpcIngressConnection" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ VpcIngressConnection: __S(45, __c5, 5) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateVpcIngressConnectionResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AutoScalingConfigurationArn: S.String,
-          DeleteAllRevisions: S.optional(S.Boolean),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteAutoScalingConfigurationRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ConnectionArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteConnectionRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Connection: S.optional(__S(13, __c1, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteConnectionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ObservabilityConfigurationArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteObservabilityConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ServiceArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteServiceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ VpcConnectorArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteVpcConnectorRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ VpcIngressConnectionArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DeleteVpcIngressConnectionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ AutoScalingConfigurationArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeAutoScalingConfigurationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceArn: S.String,
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeCustomDomainsRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(3, __c0, 3));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          DNSTarget: S.String,
-          ServiceArn: S.String,
-          CustomDomains: __S(56, __c7, 0),
-          VpcDNSTargets: __S(5, __c0, 5),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeCustomDomainsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ObservabilityConfigurationArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeObservabilityConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ServiceArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DescribeServiceRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ Service: __S(37, __c4, 5) }).pipe(ns)).annotate({
-        identifier: "DescribeServiceResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ VpcConnectorArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeVpcConnectorRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ VpcIngressConnectionArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeVpcIngressConnectionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ServiceArn: S.String, DomainName: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DisassociateCustomDomainRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AutoScalingConfigurationName: S.optional(S.String),
-          LatestOnly: S.optional(S.Boolean),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListAutoScalingConfigurationsRequest",
-      });
-    case 1:
-      return S.Array(__S(36, __c4, 4));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AutoScalingConfigurationSummaryList: __S(65, __c8, 1),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListAutoScalingConfigurationsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ConnectionName: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListConnectionsRequest" });
-    case 4:
-      return S.Array(__S(13, __c1, 5));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ConnectionSummaryList: __S(68, __c8, 4),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "ListConnectionsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ObservabilityConfigurationName: S.optional(S.String),
-          LatestOnly: S.optional(S.Boolean),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListObservabilityConfigurationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ObservabilityConfigurationArn: S.optional(S.String),
-          ObservabilityConfigurationName: S.optional(S.String),
-          ObservabilityConfigurationRevision: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ObservabilityConfigurationSummary",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ObservabilityConfigurationSummaryList: __S(72, __c9, 0),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListObservabilityConfigurationsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceArn: S.String,
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.optional(S.String),
-          Type: S.optional(S.String),
-          Status: S.optional(S.String),
-          TargetArn: S.optional(S.String),
-          StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EndedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "OperationSummary" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          OperationSummaryList: S.optional(__S(76, __c9, 4)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListServicesRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceName: S.optional(S.String),
-          ServiceId: S.optional(S.String),
-          ServiceArn: S.optional(S.String),
-          ServiceUrl: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceSummary" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ServiceSummaryList: __S(80, __c10, 0), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
-      ).annotate({ identifier: "ListServicesResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AutoScalingConfigurationArn: S.String,
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListServicesForAutoScalingConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ServiceArnList: __S(39, __c4, 7), NextToken: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "ListServicesForAutoScalingConfigurationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(8, __c1, 0)) }).pipe(ns)).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListVpcConnectorsRequest" });
-    case 7:
-      return S.Array(__S(41, __c5, 1));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ VpcConnectors: __S(87, __c10, 7), NextToken: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "ListVpcConnectorsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ServiceArn: S.optional(S.String), VpcEndpointId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListVpcIngressConnectionsFilter",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Filter: S.optional(__S(89, __c11, 1)),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListVpcIngressConnectionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          VpcIngressConnectionArn: S.optional(S.String),
-          ServiceArn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VpcIngressConnectionSummary",
-      });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          VpcIngressConnectionSummaryList: __S(92, __c11, 4),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListVpcIngressConnectionsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ServiceArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "PauseServiceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Service: __S(37, __c4, 5), OperationId: S.optional(S.String) }).pipe(ns),
-      ).annotate({ identifier: "PauseServiceResponse" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ServiceArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ResumeServiceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ServiceArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "StartDeploymentRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ OperationId: S.String }).pipe(ns)).annotate({
-        identifier: "StartDeploymentResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(8, __c1, 0) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(39, __c4, 7) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ AutoScalingConfigurationArn: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "UpdateDefaultAutoScalingConfigurationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceArn: S.String,
-          SourceConfiguration: S.optional(__S(27, __c3, 3)),
-          InstanceConfiguration: S.optional(__S(28, __c3, 4)),
-          AutoScalingConfigurationArn: S.optional(S.String),
-          HealthCheckConfiguration: S.optional(__S(30, __c3, 6)),
-          NetworkConfiguration: S.optional(__S(33, __c4, 1)),
-          ObservabilityConfiguration: S.optional(__S(34, __c4, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateServiceRequest" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          VpcIngressConnectionArn: S.String,
-          IngressVpcConfiguration: __S(43, __c5, 3),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateVpcIngressConnectionRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1090,8 +1090,8 @@ export const cancelAccountsAppsOperations: API.OperationMethod<
   CancelAccountsAppsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelAccountsAppsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(416, __c13, 0) as any as S.Schema<CancelAccountsAppsOperationsRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1110,8 +1110,8 @@ export const classifyContentAisafety: API.OperationMethod<
   ClassifyContentAisafetyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ClassifyContentAisafetyRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponse>,
+  input: __S(486, __c15, 6) as any as S.Schema<ClassifyContentAisafetyRequest>,
+  output: __S(489, __c15, 9) as any as S.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1130,8 +1130,8 @@ export const deleteAccountsAppsOperations: API.OperationMethod<
   DeleteAccountsAppsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteAccountsAppsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteAccountsAppsOperationsRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1150,8 +1150,8 @@ export const generateAccountsReposScans: API.OperationMethod<
   GenerateAccountsReposScansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GenerateAccountsReposScansRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Operation>,
+  input: __S(551, __c17, 7) as any as S.Schema<GenerateAccountsReposScansRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1165,8 +1165,8 @@ export const getAccountsApps: API.OperationMethod<
   GetAccountsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetAccountsAppsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GoogleChecksAccountV1alphaApp>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetAccountsAppsRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<GoogleChecksAccountV1alphaApp>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1180,8 +1180,8 @@ export const getAccountsAppsOperations: API.OperationMethod<
   GetAccountsAppsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetAccountsAppsOperationsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Operation>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetAccountsAppsOperationsRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1195,8 +1195,8 @@ export const getAccountsAppsReports: API.OperationMethod<
   GetAccountsAppsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetAccountsAppsReportsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<GoogleChecksReportV1alphaReport>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetAccountsAppsReportsRequest>,
+  output: __S(118, __c3, 22) as any as S.Schema<GoogleChecksReportV1alphaReport>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1210,8 +1210,8 @@ export const getAccountsReposOperations: API.OperationMethod<
   GetAccountsReposOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetAccountsReposOperationsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Operation>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetAccountsReposOperationsRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1225,8 +1225,8 @@ export const getAccountsReposScans: API.OperationMethod<
   GetAccountsReposScansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetAccountsReposScansRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GoogleChecksRepoScanV1alphaRepoScan>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetAccountsReposScansRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GoogleChecksRepoScanV1alphaRepoScan>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1241,8 +1241,8 @@ export const listAccountsApps: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChecksAccountV1alphaListAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListAccountsAppsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<GoogleChecksAccountV1alphaListAppsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListAccountsAppsRequest>,
+  output: __S(226, __c7, 2) as any as S.Schema<GoogleChecksAccountV1alphaListAppsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1258,8 +1258,8 @@ export const listAccountsAppsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListAccountsAppsOperationsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListOperationsResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListAccountsAppsOperationsRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1275,8 +1275,8 @@ export const listAccountsAppsReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChecksReportV1alphaListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListAccountsAppsReportsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<GoogleChecksReportV1alphaListReportsResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListAccountsAppsReportsRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<GoogleChecksReportV1alphaListReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1292,8 +1292,8 @@ export const listAccountsReposScans: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChecksRepoScanV1alphaListRepoScansResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListAccountsReposScansRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GoogleChecksRepoScanV1alphaListRepoScansResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListAccountsReposScansRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<GoogleChecksRepoScanV1alphaListRepoScansResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1308,8 +1308,8 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<UploadMediaRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Operation>,
+  input: __S(353, __c11, 1) as any as S.Schema<UploadMediaRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1328,8 +1328,8 @@ export const waitAccountsAppsOperations: API.OperationMethod<
   WaitAccountsAppsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<WaitAccountsAppsOperationsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Operation>,
+  input: __S(385, __c12, 1) as any as S.Schema<WaitAccountsAppsOperationsRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1339,268 +1339,10 @@ export const waitAccountsAppsOperations: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:cancel",
-            baseUrl: "https://checks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelAccountsAppsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksAisafetyV1alphaTextInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          textInput: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          prompt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestContext",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          policyType: S.optional(S.String),
-          threshold: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          input: S.optional(__S(3, __c0, 3)),
-          classifierVersion: S.optional(S.String),
-          context: S.optional(__S(4, __c0, 4)),
-          policies: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/aisafety:classifyContent",
-            baseUrl: "https://checks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClassifyContentAisafetyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          policyType: S.optional(S.String),
-          score: S.optional(S.Number),
-          violationResult: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          policyResults: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksAisafetyV1alphaClassifyContentResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://checks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccountsAppsOperationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          baseBranch: S.optional(S.String),
-          prNumber: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksRepoScanV1alphaPullRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          branch: S.optional(S.String),
-          pullRequest: S.optional(__S(13, __c1, 5)),
-          revisionId: S.optional(S.String),
-          remoteUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksRepoScanV1alphaScmMetadata",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          code: S.optional(S.String),
-          endLine: S.optional(S.Number),
-          startLine: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksRepoScanV1alphaSourceCode",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dataType: S.optional(S.String),
-          lineNumber: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sourceCode: S.optional(__S(15, __c1, 7)),
-          dataTypeClassifications: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksRepoScanV1alphaCodeScan",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          lineNumber: S.optional(S.Number),
-          startLineNumber: S.optional(S.Number),
-          codeExcerpt: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksRepoScanV1alphaCodeAttribution",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          falsePositive: S.optional(S.Boolean),
-          codeAttribution: S.optional(__S(20, __c2, 4)),
-          dataType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksRepoScanV1alphaSource",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          codeScans: S.optional(__S(19, __c2, 3)),
-          sources: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksRepoScanV1alphaCliAnalysis",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          localScanPath: S.optional(S.String),
-          scmMetadata: S.optional(__S(14, __c1, 6)),
-          cliVersion: S.optional(S.String),
-          cliAnalysis: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksRepoScanV1alphaGenerateScanRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/scans:generate",
-            baseUrl: "https://checks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateAccountsReposScansRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(27, __c3, 3)),
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(28, __c3, 4)),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(26, __c3, 2)),
-          response: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
+          checksFilter: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1608,15 +1350,369 @@ function __c3(j: number): any {
             baseUrl: "https://checks.googleapis.com/",
           }),
         ),
-      ).annotate({ identifier: "GetAccountsAppsRequest" });
+      ).annotate({
+        identifier: "GetAccountsAppsReportsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaSdk",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sdk: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckSdkEvidence",
+      });
+    case 2:
+      return S.Array(__S(65, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo",
+      });
+    case 4:
+      return S.Array(__S(67, __c2, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          dataInTransitInfo: S.optional(__S(68, __c2, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckDataSecurityEvidence",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaEndpoint",
+      });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          title: S.optional(S.String),
-          name: S.optional(S.String),
+          endpoint: S.optional(__S(70, __c2, 6)),
         }),
       ).annotate({
-        identifier: "GoogleChecksAccountV1alphaApp",
+        identifier: "GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails",
+      });
+    case 8:
+      return S.Array(__S(71, __c2, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          sdk: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk",
+      });
+    case 10:
+      return S.Array(__S(73, __c2, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          exfiltratedDataType: S.optional(S.String),
+          endpointDetails: S.optional(__S(72, __c2, 8)),
+          attributedSdks: S.optional(__S(74, __c2, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaDataTypeEndpointEvidence",
+      });
+    case 12:
+      return S.Array(__S(75, __c2, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          permission: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaDataTypePermissionEvidence",
+      });
+    case 14:
+      return S.Array(__S(77, __c2, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          htmlContent: S.optional(S.String),
+          sourceUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaPolicyFragment",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          policyFragment: S.optional(__S(79, __c2, 15)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence",
+      });
+    case 17:
+      return S.Array(__S(80, __c2, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          endpoints: S.optional(__S(76, __c2, 12)),
+          permissions: S.optional(__S(78, __c2, 14)),
+          privacyPolicyTexts: S.optional(__S(81, __c2, 17)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaDataTypeEvidence",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          dataTypeEvidence: S.optional(__S(82, __c2, 18)),
+          dataType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckDataTypeEvidence",
+      });
+    case 20:
+      return S.Array(__S(83, __c2, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          endpointDetails: S.optional(__S(72, __c2, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence",
+      });
+    case 22:
+      return S.Array(__S(85, __c2, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          permission: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails",
+      });
+    case 24:
+      return S.Array(__S(87, __c2, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          permissionDetails: S.optional(__S(88, __c2, 24)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence",
+      });
+    case 26:
+      return S.Array(__S(89, __c2, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.optional(__S(70, __c2, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckEndpointEvidence",
+      });
+    case 28:
+      return S.Array(__S(91, __c2, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          sdkVersion: S.optional(S.String),
+          sdk: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckSdkIssueEvidence",
+      });
+    case 30:
+      return S.Array(__S(93, __c2, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          sdkDetails: S.optional(__S(74, __c2, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(95, __c2, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          policyFragment: S.optional(__S(79, __c2, 15)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence",
+      });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          sdks: S.optional(__S(66, __c2, 2)),
+          dataSecurity: S.optional(__S(69, __c2, 5)),
+          dataTypes: S.optional(__S(84, __c2, 20)),
+          endpointRestrictionViolations: S.optional(__S(86, __c2, 22)),
+          permissionRestrictionViolations: S.optional(__S(90, __c2, 26)),
+          endpoints: S.optional(__S(92, __c2, 28)),
+          sdkIssues: S.optional(__S(94, __c2, 30)),
+          permissions: S.optional(__S(78, __c2, 14)),
+          sdkRestrictionViolations: S.optional(__S(96, __c3, 0)),
+          privacyPolicyTexts: S.optional(__S(98, __c3, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckEvidence",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckCitation",
+      });
+    case 5:
+      return S.Array(__S(100, __c3, 4));
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          lastFailingTime: S.optional(S.String),
+          firstFailingTime: S.optional(S.String),
+          badges: S.optional(__S(102, __c3, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheckStateMetadata",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          severity: S.optional(S.String),
+          evidence: S.optional(__S(99, __c3, 3)),
+          citations: S.optional(__S(101, __c3, 5)),
+          stateMetadata: S.optional(__S(103, __c3, 7)),
+          type: S.optional(S.String),
+          state: S.optional(S.String),
+          regionCodes: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaCheck",
+      });
+    case 9:
+      return S.Array(__S(104, __c3, 8));
+    case 10:
+      return S.Array(S.String);
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          lastDetectedAppVersion: S.optional(S.String),
+          firstDetectedTime: S.optional(S.String),
+          badges: S.optional(__S(106, __c3, 10)),
+          lastDetectedTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaDataMonitoringResultMetadata",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(107, __c3, 11)),
+          sdk: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaDataMonitoringSdkResult",
+      });
+    case 13:
+      return S.Array(__S(108, __c3, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(107, __c3, 11)),
+          permission: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaDataMonitoringPermissionResult",
+      });
+    case 15:
+      return S.Array(__S(110, __c3, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          dataType: S.optional(S.String),
+          dataTypeEvidence: S.optional(__S(82, __c2, 18)),
+          metadata: S.optional(__S(107, __c3, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaDataMonitoringDataTypeResult",
+      });
+    case 17:
+      return S.Array(__S(112, __c3, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.optional(__S(70, __c2, 6)),
+          hitCount: S.optional(S.Number),
+          metadata: S.optional(__S(107, __c3, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaDataMonitoringEndpointResult",
+      });
+    case 19:
+      return S.Array(__S(114, __c3, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          sdks: S.optional(__S(109, __c3, 13)),
+          permissions: S.optional(__S(111, __c3, 15)),
+          dataTypes: S.optional(__S(113, __c3, 17)),
+          endpoints: S.optional(__S(115, __c3, 19)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaDataMonitoring",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          versionId: S.optional(S.String),
+          codeReferenceId: S.optional(S.String),
+          version: S.optional(S.String),
+          releaseType: S.optional(S.String),
+          bundleId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaAppBundle",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          resultsUri: S.optional(S.String),
+          checks: S.optional(__S(105, __c3, 9)),
+          dataMonitoring: S.optional(__S(116, __c3, 20)),
+          name: S.optional(S.String),
+          appBundle: S.optional(__S(117, __c3, 21)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksReportV1alphaReport",
       });
   }
 }
@@ -1634,415 +1730,13 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "GetAccountsAppsOperationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          checksFilter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://checks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAccountsAppsReportsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaSdk",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sdk: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckSdkEvidence",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataInTransitInfo: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckDataSecurityEvidence",
+        identifier: "GetAccountsReposOperationsRequest",
       });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaEndpoint",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails",
-      });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sdk: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          exfiltratedDataType: S.optional(S.String),
-          endpointDetails: S.optional(__S(42, __c5, 2)),
-          attributedSdks: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaDataTypeEndpointEvidence",
-      });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          permission: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaDataTypePermissionEvidence",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          htmlContent: S.optional(S.String),
-          sourceUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaPolicyFragment",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          policyFragment: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence",
-      });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          endpoints: S.optional(__S(46, __c5, 6)),
-          permissions: S.optional(__S(48, __c6, 0)),
-          privacyPolicyTexts: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaDataTypeEvidence",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dataTypeEvidence: S.optional(__S(52, __c6, 4)),
-          dataType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckDataTypeEvidence",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endpointDetails: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          permission: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails",
-      });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          permissionDetails: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckEndpointEvidence",
-      });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sdkVersion: S.optional(S.String),
-          sdk: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckSdkIssueEvidence",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sdkDetails: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          policyFragment: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence",
-      });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sdks: S.optional(__S(36, __c4, 4)),
-          dataSecurity: S.optional(__S(39, __c4, 7)),
-          dataTypes: S.optional(__S(54, __c6, 6)),
-          endpointRestrictionViolations: S.optional(__S(56, __c7, 0)),
-          permissionRestrictionViolations: S.optional(__S(60, __c7, 4)),
-          endpoints: S.optional(__S(62, __c7, 6)),
-          sdkIssues: S.optional(__S(64, __c8, 0)),
-          permissions: S.optional(__S(48, __c6, 0)),
-          sdkRestrictionViolations: S.optional(__S(66, __c8, 2)),
-          privacyPolicyTexts: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckEvidence",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckCitation",
-      });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lastFailingTime: S.optional(S.String),
-          firstFailingTime: S.optional(S.String),
-          badges: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheckStateMetadata",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          severity: S.optional(S.String),
-          evidence: S.optional(__S(69, __c8, 5)),
-          citations: S.optional(__S(71, __c8, 7)),
-          stateMetadata: S.optional(__S(73, __c9, 1)),
-          type: S.optional(S.String),
-          state: S.optional(S.String),
-          regionCodes: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaCheck",
-      });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          lastDetectedAppVersion: S.optional(S.String),
-          firstDetectedTime: S.optional(S.String),
-          badges: S.optional(__S(77, __c9, 5)),
-          lastDetectedTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaDataMonitoringResultMetadata",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(78, __c9, 6)),
-          sdk: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaDataMonitoringSdkResult",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(78, __c9, 6)),
-          permission: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaDataMonitoringPermissionResult",
-      });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataType: S.optional(S.String),
-          dataTypeEvidence: S.optional(__S(52, __c6, 4)),
-          metadata: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaDataMonitoringDataTypeResult",
-      });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.optional(__S(40, __c5, 0)),
-          hitCount: S.optional(S.Number),
-          metadata: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaDataMonitoringEndpointResult",
-      });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sdks: S.optional(__S(80, __c10, 0)),
-          permissions: S.optional(__S(82, __c10, 2)),
-          dataTypes: S.optional(__S(84, __c10, 4)),
-          endpoints: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaDataMonitoring",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          versionId: S.optional(S.String),
-          codeReferenceId: S.optional(S.String),
-          version: S.optional(S.String),
-          releaseType: S.optional(S.String),
-          bundleId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaAppBundle",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resultsUri: S.optional(S.String),
-          checks: S.optional(__S(76, __c9, 4)),
-          dataMonitoring: S.optional(__S(87, __c10, 7)),
-          name: S.optional(S.String),
-          appBundle: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleChecksReportV1alphaReport",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://checks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAccountsReposOperationsRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2056,20 +1750,28 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetAccountsReposScansRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          sources: S.optional(__S(22, __c2, 6)),
+          sources: S.optional(__S(580, __c18, 4)),
           resultsUri: S.optional(S.String),
           name: S.optional(S.String),
           cliVersion: S.optional(S.String),
-          scmMetadata: S.optional(__S(14, __c1, 6)),
+          scmMetadata: S.optional(__S(577, __c18, 1)),
           localScanPath: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChecksRepoScanV1alphaRepoScan",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2083,20 +1785,20 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAccountsAppsRequest" });
-    case 6:
-      return S.Array(__S(31, __c3, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(672, __c21, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          apps: S.optional(__S(94, __c11, 6)),
+          apps: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({
         identifier: "GoogleChecksAccountV1alphaListAppsResponse",
       });
   }
 }
-function __c12(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2117,16 +1819,20 @@ function __c12(j: number): any {
         identifier: "ListAccountsAppsOperationsRequest",
       });
     case 1:
-      return S.Array(__S(29, __c3, 5));
+      return S.Array(__S(611, __c19, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(74, __c9, 2)),
-          operations: S.optional(__S(97, __c12, 1)),
+          unreachable: S.optional(__S(32, __c1, 0)),
+          operations: S.optional(__S(257, __c8, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2144,18 +1850,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAccountsAppsReportsRequest",
       });
-    case 4:
-      return S.Array(__S(89, __c11, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(118, __c3, 22));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          reports: S.optional(__S(100, __c12, 4)),
+          reports: S.optional(__S(289, __c9, 1)),
         }),
       ).annotate({
         identifier: "GoogleChecksReportV1alphaListReportsResponse",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2172,22 +1882,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAccountsReposScansRequest",
       });
-    case 7:
-      return S.Array(__S(92, __c11, 4));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          repoScans: S.optional(__S(103, __c12, 7)),
+          repoScans: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({
         identifier: "GoogleChecksRepoScanV1alphaListRepoScansResponse",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appBinaryFileType: S.optional(S.String),
@@ -2196,11 +1906,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleChecksReportV1alphaAnalyzeUploadRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(352, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2209,17 +1919,21 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UploadMediaRequest" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           timeout: S.optional(S.String),
         }),
       ).annotate({ identifier: "WaitOperationRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(107, __c13, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2232,7 +1946,328 @@ function __c13(j: number): any {
       });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:cancel",
+            baseUrl: "https://checks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelAccountsAppsOperationsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksAisafetyV1alphaTextInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          textInput: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          prompt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestContext",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          policyType: S.optional(S.String),
+          threshold: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig",
+      });
+    case 4:
+      return S.Array(__S(483, __c15, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          input: S.optional(__S(481, __c15, 1)),
+          classifierVersion: S.optional(S.String),
+          context: S.optional(__S(482, __c15, 2)),
+          policies: S.optional(__S(484, __c15, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(485, __c15, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/aisafety:classifyContent",
+            baseUrl: "https://checks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClassifyContentAisafetyRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          policyType: S.optional(S.String),
+          score: S.optional(S.Number),
+          violationResult: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult",
+      });
+    case 8:
+      return S.Array(__S(487, __c15, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          policyResults: S.optional(__S(488, __c15, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksAisafetyV1alphaClassifyContentResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://checks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccountsAppsOperationsRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          code: S.optional(S.String),
+          endLine: S.optional(S.Number),
+          startLine: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksRepoScanV1alphaSourceCode",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dataType: S.optional(S.String),
+          lineNumber: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification",
+      });
+    case 2:
+      return S.Array(__S(545, __c17, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          sourceCode: S.optional(__S(544, __c17, 0)),
+          dataTypeClassifications: S.optional(__S(546, __c17, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksRepoScanV1alphaCodeScan",
+      });
+    case 4:
+      return S.Array(__S(547, __c17, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          codeScans: S.optional(__S(548, __c17, 4)),
+          sources: S.optional(__S(580, __c18, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksRepoScanV1alphaCliAnalysis",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          localScanPath: S.optional(S.String),
+          scmMetadata: S.optional(__S(577, __c18, 1)),
+          cliVersion: S.optional(S.String),
+          cliAnalysis: S.optional(__S(549, __c17, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksRepoScanV1alphaGenerateScanRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(550, __c17, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/scans:generate",
+            baseUrl: "https://checks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateAccountsReposScansRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          baseBranch: S.optional(S.String),
+          prNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksRepoScanV1alphaPullRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          branch: S.optional(S.String),
+          pullRequest: S.optional(__S(576, __c18, 0)),
+          revisionId: S.optional(S.String),
+          remoteUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksRepoScanV1alphaScmMetadata",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lineNumber: S.optional(S.Number),
+          startLineNumber: S.optional(S.Number),
+          codeExcerpt: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksRepoScanV1alphaCodeAttribution",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          falsePositive: S.optional(S.Boolean),
+          codeAttribution: S.optional(__S(578, __c18, 2)),
+          dataType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksRepoScanV1alphaSource",
+      });
+    case 4:
+      return S.Array(__S(579, __c18, 3));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(609, __c19, 1)),
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(610, __c19, 2)),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(608, __c19, 0)),
+          response: S.optional(__S(608, __c19, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://checks.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetAccountsAppsRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChecksAccountV1alphaApp",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://checks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAccountsAppsOperationsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

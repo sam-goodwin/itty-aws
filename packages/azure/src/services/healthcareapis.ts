@@ -2516,8 +2516,8 @@ export const DeleteDicomService: API.OperationMethod<
   DeleteDicomServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteDicomServiceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDicomServiceResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteDicomServiceRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteDicomServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2531,8 +2531,8 @@ export const DeleteFhirService: API.OperationMethod<
   DeleteFhirServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteFhirServiceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteFhirServiceResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteFhirServiceRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteFhirServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2546,8 +2546,8 @@ export const DeleteIotConnector: API.OperationMethod<
   DeleteIotConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteIotConnectorRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteIotConnectorResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DeleteIotConnectorRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteIotConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2561,8 +2561,8 @@ export const DeleteIotConnectorFhirDestination: API.OperationMethod<
   DeleteIotConnectorFhirDestinationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteIotConnectorFhirDestinationRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteIotConnectorFhirDestinationResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<DeleteIotConnectorFhirDestinationRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<DeleteIotConnectorFhirDestinationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2576,8 +2576,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2591,8 +2591,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2606,8 +2606,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteWorkspaceResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<DeleteWorkspaceRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2621,8 +2621,8 @@ export const DeleteWorkspacePrivateEndpointConnection: API.OperationMethod<
   DeleteWorkspacePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2636,8 +2636,8 @@ export const DicomServicesCreateOrUpdate: API.OperationMethod<
   DicomServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DicomServicesCreateOrUpdateRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DicomServicesCreateOrUpdateResponse>,
+  input: __S(1041, __c65, 1) as any as S.Schema<DicomServicesCreateOrUpdateRequest>,
+  output: __S(1042, __c65, 2) as any as S.Schema<DicomServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2651,8 +2651,8 @@ export const FhirServicesCreateOrUpdate: API.OperationMethod<
   FhirServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<FhirServicesCreateOrUpdateRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<FhirServicesCreateOrUpdateResponse>,
+  input: __S(49, __c3, 1) as any as S.Schema<FhirServicesCreateOrUpdateRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<FhirServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2666,8 +2666,8 @@ export const GetDicomService: API.OperationMethod<
   GetDicomServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetDicomServiceRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetDicomServiceResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetDicomServiceRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<GetDicomServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2681,8 +2681,8 @@ export const GetFhirService: API.OperationMethod<
   GetFhirServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetFhirServiceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetFhirServiceResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetFhirServiceRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<GetFhirServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2696,8 +2696,8 @@ export const GetIotConnector: API.OperationMethod<
   GetIotConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetIotConnectorRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<GetIotConnectorResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetIotConnectorRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<GetIotConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2711,8 +2711,8 @@ export const GetIotConnectorFhirDestination: API.OperationMethod<
   GetIotConnectorFhirDestinationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetIotConnectorFhirDestinationRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetIotConnectorFhirDestinationResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetIotConnectorFhirDestinationRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<GetIotConnectorFhirDestinationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2726,8 +2726,8 @@ export const GetOperationResult: API.OperationMethod<
   GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetOperationResultRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<OperationResultsDescription>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetOperationResultRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<OperationResultsDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2741,8 +2741,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2756,8 +2756,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2771,8 +2771,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetServiceRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetServiceResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetServiceRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2786,8 +2786,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GetWorkspaceResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetWorkspaceRequest>,
+  output: __S(370, __c23, 2) as any as S.Schema<GetWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2801,8 +2801,8 @@ export const GetWorkspacePrivateEndpointConnection: API.OperationMethod<
   GetWorkspacePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetWorkspacePrivateEndpointConnectionRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetWorkspacePrivateEndpointConnectionResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetWorkspacePrivateEndpointConnectionRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetWorkspacePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2816,8 +2816,8 @@ export const GetWorkspacePrivateLinkResource: API.OperationMethod<
   GetWorkspacePrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetWorkspacePrivateLinkResourceRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GetWorkspacePrivateLinkResourceResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetWorkspacePrivateLinkResourceRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<GetWorkspacePrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2831,8 +2831,8 @@ export const IotConnectorFhirDestinationCreateOrUpdate: API.OperationMethod<
   IotConnectorFhirDestinationCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<IotConnectorFhirDestinationCreateOrUpdateRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<IotConnectorFhirDestinationCreateOrUpdateResponse>,
+  input: __S(433, __c27, 1) as any as S.Schema<IotConnectorFhirDestinationCreateOrUpdateRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<IotConnectorFhirDestinationCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2846,8 +2846,8 @@ export const IotConnectorsCreateOrUpdate: API.OperationMethod<
   IotConnectorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<IotConnectorsCreateOrUpdateRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<IotConnectorsCreateOrUpdateResponse>,
+  input: __S(449, __c28, 1) as any as S.Schema<IotConnectorsCreateOrUpdateRequest>,
+  output: __S(450, __c28, 2) as any as S.Schema<IotConnectorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2861,8 +2861,8 @@ export const ListDicomServiceByWorkspace: API.OperationMethod<
   ListDicomServiceByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListDicomServiceByWorkspaceRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DicomServiceCollection>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListDicomServiceByWorkspaceRequest>,
+  output: __S(467, __c29, 3) as any as S.Schema<DicomServiceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2876,8 +2876,8 @@ export const ListFhirDestinationByIotConnector: API.OperationMethod<
   ListFhirDestinationByIotConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListFhirDestinationByIotConnectorRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<IotFhirDestinationCollection>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListFhirDestinationByIotConnectorRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<IotFhirDestinationCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2891,8 +2891,8 @@ export const ListFhirServiceByWorkspace: API.OperationMethod<
   ListFhirServiceByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListFhirServiceByWorkspaceRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<FhirServiceCollection>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListFhirServiceByWorkspaceRequest>,
+  output: __S(515, __c32, 3) as any as S.Schema<FhirServiceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2906,8 +2906,8 @@ export const ListIotConnectorByWorkspace: API.OperationMethod<
   ListIotConnectorByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListIotConnectorByWorkspaceRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<IotConnectorCollection>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListIotConnectorByWorkspaceRequest>,
+  output: __S(531, __c33, 3) as any as S.Schema<IotConnectorCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2921,8 +2921,8 @@ export const ListOperations2: API.OperationMethod<
   ListOperations2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListOperations2Request>,
-  output: __S(122, __c15, 2) as any as S.Schema<ListOperations>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListOperations2Request>,
+  output: __S(556, __c34, 12) as any as S.Schema<ListOperations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2936,8 +2936,8 @@ export const ListPrivateEndpointConnectionByService: API.OperationMethod<
   ListPrivateEndpointConnectionByServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListPrivateEndpointConnectionByServiceRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PrivateEndpointConnectionListResultDescription>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListPrivateEndpointConnectionByServiceRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<PrivateEndpointConnectionListResultDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2951,8 +2951,8 @@ export const ListPrivateLinkResourceByService: API.OperationMethod<
   ListPrivateLinkResourceByServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListPrivateLinkResourceByServiceRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<PrivateLinkResourceListResultDescription>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListPrivateLinkResourceByServiceRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<PrivateLinkResourceListResultDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2966,8 +2966,8 @@ export const ListServiceByResourceGroup: API.OperationMethod<
   ListServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListServiceByResourceGroupRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<ServicesDescriptionListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListServiceByResourceGroupRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<ServicesDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2981,8 +2981,8 @@ export const ListServices: API.OperationMethod<
   ListServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<ListServicesRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<ServicesDescriptionListResult>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<ServicesDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2996,8 +2996,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<WorkspaceList>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
+  output: __S(707, __c44, 3) as any as S.Schema<WorkspaceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3011,8 +3011,8 @@ export const ListWorkspaceBySubscription: API.OperationMethod<
   ListWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<WorkspaceList>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
+  output: __S(707, __c44, 3) as any as S.Schema<WorkspaceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3027,11 +3027,11 @@ export const ListWorkspacePrivateEndpointConnectionByWorkspace: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    140,
-    __c17,
-    4,
+    736,
+    __c46,
+    0,
   ) as any as S.Schema<ListWorkspacePrivateEndpointConnectionByWorkspaceRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PrivateEndpointConnectionListResultDescription>,
+  output: __S(577, __c36, 1) as any as S.Schema<PrivateEndpointConnectionListResultDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3045,8 +3045,8 @@ export const ListWorkspacePrivateLinkResourceByWorkspace: API.OperationMethod<
   ListWorkspacePrivateLinkResourceByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListWorkspacePrivateLinkResourceByWorkspaceRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<PrivateLinkResourceListResultDescription>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListWorkspacePrivateLinkResourceByWorkspaceRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<PrivateLinkResourceListResultDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3060,8 +3060,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(770, __c48, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3075,8 +3075,8 @@ export const ServicesCreateOrUpdate: API.OperationMethod<
   ServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ServicesCreateOrUpdateRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<ServicesCreateOrUpdateResponse>,
+  input: __S(804, __c50, 4) as any as S.Schema<ServicesCreateOrUpdateRequest>,
+  output: __S(805, __c50, 5) as any as S.Schema<ServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3090,8 +3090,8 @@ export const UpdateDicomService: API.OperationMethod<
   UpdateDicomServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<UpdateDicomServiceRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<UpdateDicomServiceResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<UpdateDicomServiceRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<UpdateDicomServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3105,8 +3105,8 @@ export const UpdateFhirService: API.OperationMethod<
   UpdateFhirServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<UpdateFhirServiceRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<UpdateFhirServiceResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<UpdateFhirServiceRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<UpdateFhirServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3120,8 +3120,8 @@ export const UpdateIotConnector: API.OperationMethod<
   UpdateIotConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<UpdateIotConnectorRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<UpdateIotConnectorResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<UpdateIotConnectorRequest>,
+  output: __S(881, __c55, 1) as any as S.Schema<UpdateIotConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3135,8 +3135,8 @@ export const UpdateService: API.OperationMethod<
   UpdateServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<UpdateServiceResponse>,
+  input: __S(897, __c56, 1) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(898, __c56, 2) as any as S.Schema<UpdateServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3150,8 +3150,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(913, __c57, 1) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3166,14 +3166,14 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    165,
-    __c20,
-    5,
+    944,
+    __c59,
+    0,
   ) as any as S.Schema<WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest>,
   output: __S(
-    167,
-    __c20,
-    7,
+    946,
+    __c59,
+    2,
   ) as any as S.Schema<WorkspacePrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3188,8 +3188,8 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
   WorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
+  output: __S(961, __c60, 1) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3225,7 +3225,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ServicesNameAvailabilityInfo",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3243,231 +3247,14 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteDicomServiceRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDicomServiceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          fhirServiceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
-            code: 200,
-            apiVersion: "2024-03-31",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFhirServiceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          iotConnectorName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
-            code: 200,
-            apiVersion: "2024-03-31",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIotConnectorRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          iotConnectorName: S.String.pipe(T.Label()),
-          fhirDestinationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}",
-            code: 200,
-            apiVersion: "2024-03-31",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIotConnectorFhirDestinationRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteIotConnectorFhirDestinationResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2024-03-31",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
-            code: 200,
-            apiVersion: "2024-03-31",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteServiceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
-            code: 200,
-            apiVersion: "2024-03-31",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteWorkspaceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2024-03-31",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteWorkspacePrivateEndpointConnectionRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.Record(S.String, __S(3, __c0, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "DicomServicesCreateOrUpdateRequestIdentity",
-      });
-    case 7:
-      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          origins: S.optional(__S(15, __c1, 7)),
-          headers: S.optional(__S(15, __c1, 7)),
-          methods: S.optional(__S(15, __c1, 7)),
-          maxAge: S.optional(S.Number),
-          allowCredentials: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CorsConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          keyEncryptionKeyUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EncryptionCustomerManagedKeyEncryption",
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteDicomServiceResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customerManagedKeyEncryption: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "Encryption" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          storageResourceId: S.optional(S.String),
-          fileSystemName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          authenticationConfiguration: S.optional(__S(3, __c0, 3)),
-          corsConfiguration: S.optional(__S(16, __c2, 0)),
-          encryption: S.optional(__S(18, __c2, 2)),
-          storageConfiguration: S.optional(__S(19, __c2, 3)),
-          enableDataPartitions: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DicomServicePropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          dicomServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
-          etag: S.optional(S.String),
-          location: S.optional(S.String),
-          identity: S.optional(__S(14, __c1, 6)),
-          properties: S.optional(__S(20, __c2, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
-            code: 200,
-            apiVersion: "2024-03-31",
-          }),
-        ),
-      ).annotate({
-        identifier: "DicomServicesCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 7:
-      return S.Record(S.String, __S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
@@ -3475,77 +3262,59 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(23, __c2, 7)),
+          acrConfiguration: S.optional(__S(66, __c4, 2)),
+          authenticationConfiguration: S.optional(__S(85, __c5, 5)),
+          corsConfiguration: S.optional(__S(67, __c4, 3)),
+          exportConfiguration: S.optional(__S(68, __c4, 4)),
+          resourceVersionPolicyConfiguration: S.optional(__S(87, __c5, 7)),
+          importConfiguration: S.optional(__S(69, __c4, 5)),
+          implementationGuidesConfiguration: S.optional(__S(88, __c5, 8)),
+          encryption: S.optional(__S(1185, __c74, 1)),
         }),
       ).annotate({
-        identifier: "DicomServicesCreateOrUpdateResponseIdentity",
+        identifier: "FhirServicePropertiesInput",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          authority: S.optional(S.String),
-          audiences: S.optional(__S(15, __c1, 7)),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          fhirServiceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(1072, __c67, 0)),
+          etag: S.optional(S.String),
+          location: S.optional(S.String),
+          identity: S.optional(__S(1201, __c75, 1)),
+          kind: S.optional(S.String),
+          properties: S.optional(__S(48, __c3, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
+            code: 200,
+            apiVersion: "2024-03-31",
+          }),
+        ),
       ).annotate({
-        identifier: "DicomServiceAuthenticationConfiguration",
+        identifier: "FhirServicesCreateOrUpdateRequest",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpoint" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(26, __c3, 2)),
-          privateLinkServiceConnectionState: __S(27, __c3, 3),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(28, __c3, 4)),
+          etag: S.optional(S.String),
+          location: S.optional(S.String),
+          identity: S.optional(__S(1104, __c69, 0)),
+          kind: S.optional(S.String),
+          properties: S.optional(__S(89, __c5, 9)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({
-        identifier: "DicomServicePropertiesPrivateEndpointConnectionsItem",
+        identifier: "FhirServicesCreateOrUpdateResponse",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          authenticationConfiguration: S.optional(__S(25, __c3, 1)),
-          corsConfiguration: S.optional(__S(16, __c2, 0)),
-          serviceUrl: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(30, __c3, 6)),
-          publicNetworkAccess: S.optional(S.String),
-          eventState: S.optional(S.String),
-          encryption: S.optional(__S(18, __c2, 2)),
-          storageConfiguration: S.optional(__S(19, __c2, 3)),
-          enableDataPartitions: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DicomServiceProperties" });
   }
 }
 function __c4(j: number): any {
@@ -3553,95 +3322,28 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          etag: S.optional(S.String),
-          location: S.optional(S.String),
-          identity: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(31, __c3, 7)),
-          systemData: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "DicomServicesCreateOrUpdateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           loginServer: S.optional(S.String),
           imageName: S.optional(S.String),
           digest: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceOciArtifactEntry" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          loginServers: S.optional(__S(15, __c1, 7)),
-          ociArtifacts: S.optional(__S(35, __c4, 3)),
+          loginServers: S.optional(__S(1136, __c71, 0)),
+          ociArtifacts: S.optional(__S(65, __c4, 1)),
         }),
       ).annotate({
         identifier: "FhirServiceAcrConfiguration",
       });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-          audience: S.optional(S.String),
-          allowedDataActions: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "SmartIdentityProviderApplication",
-      });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authority: S.optional(S.String),
-          applications: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "SmartIdentityProviderConfiguration",
-      });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          authority: S.optional(S.String),
-          audience: S.optional(S.String),
-          smartProxyEnabled: S.optional(S.Boolean),
-          smartIdentityProviders: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "FhirServiceAuthenticationConfiguration",
-      });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          origins: S.optional(__S(15, __c1, 7)),
-          headers: S.optional(__S(15, __c1, 7)),
-          methods: S.optional(__S(15, __c1, 7)),
+          origins: S.optional(__S(1136, __c71, 0)),
+          headers: S.optional(__S(1136, __c71, 0)),
+          methods: S.optional(__S(1136, __c71, 0)),
           maxAge: S.optional(S.Number),
           allowCredentials: S.optional(S.Boolean),
         }),
@@ -3657,17 +3359,6 @@ function __c5(j: number): any {
         identifier: "FhirServiceExportConfiguration",
       });
     case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          default: S.optional(S.String),
-          resourceTypeOverrides: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({
-        identifier: "ResourceVersionPolicyConfiguration",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           integrationDataStore: S.optional(S.String),
@@ -3679,9 +3370,56 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+          audience: S.optional(S.String),
+          allowedDataActions: S.optional(__S(80, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "SmartIdentityProviderApplication",
+      });
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          authority: S.optional(S.String),
+          applications: S.optional(__S(82, __c5, 2)),
+        }),
+      ).annotate({
+        identifier: "SmartIdentityProviderConfiguration",
+      });
+    case 4:
+      return S.Array(__S(83, __c5, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          authority: S.optional(S.String),
+          audience: S.optional(S.String),
+          smartProxyEnabled: S.optional(S.Boolean),
+          smartIdentityProviders: S.optional(__S(84, __c5, 4)),
+        }),
+      ).annotate({
+        identifier: "FhirServiceAuthenticationConfiguration",
+      });
+    case 6:
+      return S.Record(S.String, S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          default: S.optional(S.String),
+          resourceTypeOverrides: S.optional(__S(86, __c5, 6)),
+        }),
+      ).annotate({
+        identifier: "ResourceVersionPolicyConfiguration",
+      });
+    case 8:
       return S.suspend(() =>
         S.Struct({
           usCoreMissingData: S.optional(S.Boolean),
@@ -3689,80 +3427,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ImplementationGuidesConfiguration",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          acrConfiguration: S.optional(__S(36, __c4, 4)),
-          authenticationConfiguration: S.optional(__S(42, __c5, 2)),
-          corsConfiguration: S.optional(__S(43, __c5, 3)),
-          exportConfiguration: S.optional(__S(44, __c5, 4)),
-          resourceVersionPolicyConfiguration: S.optional(__S(46, __c5, 6)),
-          importConfiguration: S.optional(__S(47, __c5, 7)),
-          implementationGuidesConfiguration: S.optional(__S(48, __c6, 0)),
-          encryption: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "FhirServicePropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          fhirServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
-          etag: S.optional(S.String),
-          location: S.optional(S.String),
-          identity: S.optional(__S(14, __c1, 6)),
-          kind: S.optional(S.String),
-          properties: S.optional(__S(49, __c6, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
-            code: 200,
-            apiVersion: "2024-03-31",
-          }),
-        ),
-      ).annotate({
-        identifier: "FhirServicesCreateOrUpdateRequest",
-      });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          acrConfiguration: S.optional(__S(36, __c4, 4)),
-          authenticationConfiguration: S.optional(__S(42, __c5, 2)),
-          corsConfiguration: S.optional(__S(43, __c5, 3)),
-          exportConfiguration: S.optional(__S(44, __c5, 4)),
-          privateEndpointConnections: S.optional(__S(30, __c3, 6)),
+          acrConfiguration: S.optional(__S(66, __c4, 2)),
+          authenticationConfiguration: S.optional(__S(85, __c5, 5)),
+          corsConfiguration: S.optional(__S(67, __c4, 3)),
+          exportConfiguration: S.optional(__S(68, __c4, 4)),
+          privateEndpointConnections: S.optional(__S(1152, __c72, 0)),
           publicNetworkAccess: S.optional(S.String),
           eventState: S.optional(S.String),
-          resourceVersionPolicyConfiguration: S.optional(__S(46, __c5, 6)),
-          importConfiguration: S.optional(__S(47, __c5, 7)),
-          implementationGuidesConfiguration: S.optional(__S(48, __c6, 0)),
-          encryption: S.optional(__S(18, __c2, 2)),
+          resourceVersionPolicyConfiguration: S.optional(__S(87, __c5, 7)),
+          importConfiguration: S.optional(__S(69, __c4, 5)),
+          implementationGuidesConfiguration: S.optional(__S(88, __c5, 8)),
+          encryption: S.optional(__S(1185, __c74, 1)),
         }),
       ).annotate({ identifier: "FhirServiceProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          etag: S.optional(S.String),
-          location: S.optional(S.String),
-          identity: S.optional(__S(24, __c3, 0)),
-          kind: S.optional(S.String),
-          properties: S.optional(__S(51, __c6, 3)),
-          systemData: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "FhirServicesCreateOrUpdateResponse",
-      });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3778,21 +3464,25 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDicomServiceRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          identity: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(31, __c3, 7)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          identity: S.optional(__S(1104, __c69, 0)),
+          properties: S.optional(__S(1219, __c76, 3)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "GetDicomServiceResponse" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3808,26 +3498,26 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFhirServiceRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          identity: S.optional(__S(24, __c3, 0)),
+          identity: S.optional(__S(1104, __c69, 0)),
           kind: S.optional(S.String),
-          properties: S.optional(__S(51, __c6, 3)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(89, __c5, 9)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "GetFhirServiceResponse" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3843,7 +3533,35 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetIotConnectorRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tags: S.optional(__S(1072, __c67, 0)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          etag: S.optional(S.String),
+          location: S.optional(S.String),
+          identity: S.optional(__S(1104, __c69, 0)),
+          properties: S.optional(__S(161, __c10, 1)),
+          systemData: S.optional(__S(1056, __c66, 0)),
+        }),
+      ).annotate({ identifier: "GetIotConnectorResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "IotMappingProperties" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           eventHubName: S.optional(S.String),
@@ -3853,35 +3571,19 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "IotEventHubIngestionEndpointConfiguration",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "IotMappingProperties" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          ingestionEndpointConfiguration: S.optional(__S(58, __c7, 2)),
-          deviceMapping: S.optional(__S(59, __c7, 3)),
+          ingestionEndpointConfiguration: S.optional(__S(160, __c10, 0)),
+          deviceMapping: S.optional(__S(144, __c9, 0)),
         }),
       ).annotate({ identifier: "IotConnectorProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          etag: S.optional(S.String),
-          location: S.optional(S.String),
-          identity: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(60, __c7, 4)),
-          systemData: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "GetIotConnectorResponse" });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3900,20 +3602,9 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetIotConnectorFhirDestinationRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          resourceIdentityResolutionType: S.String,
-          fhirServiceResourceId: S.String,
-          fhirMapping: __S(59, __c7, 3),
-        }),
-      ).annotate({
-        identifier: "IotFhirDestinationProperties",
-      });
   }
 }
-function __c8(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3923,13 +3614,32 @@ function __c8(j: number): any {
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          properties: __S(63, __c7, 7),
-          systemData: S.optional(__S(32, __c4, 0)),
+          properties: __S(208, __c13, 0),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({
         identifier: "GetIotConnectorFhirDestinationResponse",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          resourceIdentityResolutionType: S.String,
+          fhirServiceResourceId: S.String,
+          fhirMapping: __S(144, __c9, 0),
+        }),
+      ).annotate({
+        identifier: "IotFhirDestinationProperties",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3946,7 +3656,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetOperationResultRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3959,7 +3669,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "OperationResultsDescription",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3977,7 +3691,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -3990,19 +3708,27 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionResponseSystemData",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(28, __c3, 4)),
-          systemData: S.optional(__S(68, __c8, 4)),
+          properties: S.optional(__S(1122, __c70, 2)),
+          systemData: S.optional(__S(256, __c16, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionResponse",
       });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4020,19 +3746,23 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourceRequest",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(15, __c1, 7)),
-          requiredZoneNames: S.optional(__S(15, __c1, 7)),
+          requiredMembers: S.optional(__S(1136, __c71, 0)),
+          requiredZoneNames: S.optional(__S(1136, __c71, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
       });
   }
 }
-function __c9(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4053,13 +3783,17 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(71, __c8, 7)),
-          systemData: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(304, __c19, 0)),
+          systemData: S.optional(__S(320, __c20, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4074,7 +3808,26 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetServiceRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          kind: S.String,
+          location: S.String,
+          tags: S.optional(__S(1072, __c67, 0)),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(352, __c22, 0)),
+          properties: S.optional(__S(357, __c22, 5)),
+          systemData: S.optional(__S(1056, __c66, 0)),
+        }),
+      ).annotate({ identifier: "GetServiceResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -4084,15 +3837,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetServiceResponseIdentity",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           objectId: S.String,
         }),
       ).annotate({ identifier: "ServiceAccessPolicyEntry" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(353, __c22, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           offerThroughput: S.optional(S.Number),
@@ -4102,7 +3855,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ServiceCosmosDbConfigurationInfo",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           authority: S.optional(S.String),
@@ -4112,41 +3865,26 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ServiceAuthenticationConfigurationInfo",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          accessPolicies: S.optional(__S(77, __c9, 5)),
-          cosmosDbConfiguration: S.optional(__S(78, __c9, 6)),
-          authenticationConfiguration: S.optional(__S(79, __c9, 7)),
-          corsConfiguration: S.optional(__S(43, __c5, 3)),
-          exportConfiguration: S.optional(__S(44, __c5, 4)),
-          privateEndpointConnections: S.optional(__S(30, __c3, 6)),
+          accessPolicies: S.optional(__S(354, __c22, 2)),
+          cosmosDbConfiguration: S.optional(__S(355, __c22, 3)),
+          authenticationConfiguration: S.optional(__S(356, __c22, 4)),
+          corsConfiguration: S.optional(__S(67, __c4, 3)),
+          exportConfiguration: S.optional(__S(68, __c4, 4)),
+          privateEndpointConnections: S.optional(__S(1152, __c72, 0)),
           publicNetworkAccess: S.optional(S.String),
-          acrConfiguration: S.optional(__S(36, __c4, 4)),
-          importConfiguration: S.optional(__S(47, __c5, 7)),
+          acrConfiguration: S.optional(__S(66, __c4, 2)),
+          importConfiguration: S.optional(__S(69, __c4, 5)),
         }),
       ).annotate({ identifier: "ServicesProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          kind: S.String,
-          location: S.String,
-          tags: S.optional(__S(12, __c1, 4)),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(75, __c9, 3)),
-          properties: S.optional(__S(80, __c10, 0)),
-          systemData: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "GetServiceResponse" });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4161,30 +3899,54 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWorkspaceRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(30, __c3, 6)),
+          privateEndpointConnections: S.optional(__S(1152, __c72, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetWorkspaceResponseProperties",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(83, __c10, 3)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(369, __c23, 1)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "GetWorkspaceResponse" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          fhirServiceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
+            code: 200,
+            apiVersion: "2024-03-31",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFhirServiceRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4202,7 +3964,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetWorkspacePrivateEndpointConnectionRequest",
       });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4220,28 +3986,28 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetWorkspacePrivateLinkResourceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(71, __c8, 7)),
-          systemData: S.optional(__S(68, __c8, 4)),
+          properties: S.optional(__S(304, __c19, 0)),
+          systemData: S.optional(__S(256, __c16, 0)),
         }),
       ).annotate({
         identifier: "GetWorkspacePrivateLinkResourceResponse",
       });
   }
 }
-function __c11(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceIdentityResolutionType: S.String,
           fhirServiceResourceId: S.String,
-          fhirMapping: __S(59, __c7, 3),
+          fhirMapping: __S(144, __c9, 0),
         }),
       ).annotate({
         identifier: "IotFhirDestinationPropertiesInput",
@@ -4256,7 +4022,7 @@ function __c11(j: number): any {
           fhirDestinationName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          properties: __S(88, __c11, 0),
+          properties: __S(432, __c27, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4268,27 +4034,31 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "IotConnectorFhirDestinationCreateOrUpdateRequest",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ingestionEndpointConfiguration: S.optional(__S(58, __c7, 2)),
-          deviceMapping: S.optional(__S(59, __c7, 3)),
+          ingestionEndpointConfiguration: S.optional(__S(160, __c10, 0)),
+          deviceMapping: S.optional(__S(144, __c9, 0)),
         }),
       ).annotate({
         identifier: "IotConnectorPropertiesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           iotConnectorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          identity: S.optional(__S(14, __c1, 6)),
-          properties: S.optional(__S(90, __c11, 2)),
+          identity: S.optional(__S(1201, __c75, 1)),
+          properties: S.optional(__S(448, __c28, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4300,23 +4070,27 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "IotConnectorsCreateOrUpdateRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          identity: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(60, __c7, 4)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          identity: S.optional(__S(1104, __c69, 0)),
+          properties: S.optional(__S(161, __c10, 1)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({
         identifier: "IotConnectorsCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4333,43 +4107,47 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListDicomServiceByWorkspaceRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "DicomServiceIdentity" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          identity: S.optional(__S(94, __c11, 6)),
-          properties: S.optional(__S(31, __c3, 7)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          identity: S.optional(__S(480, __c30, 0)),
+          properties: S.optional(__S(1219, __c76, 3)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "DicomService" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(465, __c29, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(96, __c12, 0)),
+          value: S.optional(__S(466, __c29, 2)),
         }),
       ).annotate({ identifier: "DicomServiceCollection" });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(1089, __c68, 1)),
+        }),
+      ).annotate({ identifier: "DicomServiceIdentity" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4387,7 +4165,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListFhirDestinationByIotConnectorRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4395,22 +4173,26 @@ function __c12(j: number): any {
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          properties: __S(63, __c7, 7),
-          systemData: S.optional(__S(32, __c4, 0)),
+          properties: __S(208, __c13, 0),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "IotFhirDestination" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(497, __c31, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(100, __c12, 4)),
+          value: S.optional(__S(498, __c31, 2)),
         }),
       ).annotate({
         identifier: "IotFhirDestinationCollection",
       });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4427,35 +4209,35 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListFhirServiceByWorkspaceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          identity: S.optional(__S(94, __c11, 6)),
+          identity: S.optional(__S(480, __c30, 0)),
           kind: S.optional(S.String),
-          properties: S.optional(__S(51, __c6, 3)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(89, __c5, 9)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "FhirService" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(513, __c32, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(104, __c13, 0)),
+          value: S.optional(__S(514, __c32, 2)),
         }),
       ).annotate({ identifier: "FhirServiceCollection" });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4472,30 +4254,34 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListIotConnectorByWorkspaceRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          identity: S.optional(__S(94, __c11, 6)),
-          properties: S.optional(__S(60, __c7, 4)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          identity: S.optional(__S(480, __c30, 0)),
+          properties: S.optional(__S(161, __c10, 1)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "IotConnector" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(529, __c33, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(108, __c13, 4)),
+          value: S.optional(__S(530, __c33, 2)),
         }),
       ).annotate({ identifier: "IotConnectorCollection" });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -4506,7 +4292,7 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperations2Request" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -4515,11 +4301,7 @@ function __c13(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4527,9 +4309,9 @@ function __c14(j: number): any {
           blobDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogSpecification" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(546, __c34, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4537,9 +4319,9 @@ function __c14(j: number): any {
           toBeExportedForShoebox: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MetricDimension" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(548, __c34, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4548,11 +4330,11 @@ function __c14(j: number): any {
           unit: S.optional(S.String),
           category: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          supportedAggregationTypes: S.optional(__S(15, __c1, 7)),
-          supportedTimeGrainTypes: S.optional(__S(15, __c1, 7)),
+          supportedAggregationTypes: S.optional(__S(1136, __c71, 0)),
+          supportedTimeGrainTypes: S.optional(__S(1136, __c71, 0)),
           fillGapWithZero: S.optional(S.Boolean),
           metricFilterPattern: S.optional(S.String),
-          dimensions: S.optional(__S(115, __c14, 3)),
+          dimensions: S.optional(__S(549, __c34, 5)),
           isInternal: S.optional(S.Boolean),
           sourceMdmAccount: S.optional(S.String),
           sourceMdmNamespace: S.optional(S.String),
@@ -4560,46 +4342,46 @@ function __c14(j: number): any {
           resourceIdDimensionNameOverride: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricSpecification" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(550, __c34, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(__S(113, __c14, 1)),
-          metricSpecifications: S.optional(__S(117, __c14, 5)),
+          logSpecifications: S.optional(__S(547, __c34, 3)),
+          metricSpecifications: S.optional(__S(551, __c34, 7)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(118, __c14, 6)),
+          serviceSpecification: S.optional(__S(552, __c34, 8)),
         }),
       ).annotate({ identifier: "OperationProperties" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(111, __c13, 7)),
+          display: S.optional(__S(545, __c34, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
-          properties: S.optional(__S(119, __c14, 7)),
+          properties: S.optional(__S(553, __c34, 9)),
         }),
       ).annotate({ identifier: "OperationDetail" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
+    case 11:
+      return S.Array(__S(554, __c34, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(121, __c15, 1)),
+          value: S.optional(__S(555, __c34, 11)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperations" });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4616,17 +4398,47 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionByServiceRequest",
       });
-    case 4:
-      return S.Array(__S(69, __c8, 5));
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(272, __c17, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(124, __c15, 4)),
+          value: S.optional(__S(576, __c36, 0)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionListResultDescription",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          iotConnectorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
+            code: 200,
+            apiVersion: "2024-03-31",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIotConnectorRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4643,21 +4455,25 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourceByServiceRequest",
       });
-    case 7:
-      return S.Array(__S(73, __c9, 1));
   }
 }
-function __c16(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(321, __c20, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(127, __c15, 7)),
+          value: S.optional(__S(624, __c39, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResultDescription",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4673,7 +4489,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListServiceByResourceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4681,25 +4501,29 @@ function __c16(j: number): any {
           type: S.optional(S.String),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(75, __c9, 3)),
-          properties: S.optional(__S(80, __c10, 0)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          identity: S.optional(__S(352, __c22, 0)),
+          properties: S.optional(__S(357, __c22, 5)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "ServicesDescription" });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(656, __c41, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(131, __c16, 3)),
+          value: S.optional(__S(657, __c41, 1)),
         }),
       ).annotate({
         identifier: "ServicesDescriptionListResult",
       });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4712,7 +4536,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListServicesRequest" });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4728,41 +4556,45 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceByResourceGroupRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(30, __c3, 6)),
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkspaceProperties" });
   }
 }
-function __c17(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          provisioningState: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(1152, __c72, 0)),
+          publicNetworkAccess: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkspaceProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(135, __c16, 7)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(704, __c44, 0)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "Workspace" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
     case 2:
+      return S.Array(__S(705, __c44, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(137, __c17, 1)),
+          value: S.optional(__S(706, __c44, 2)),
         }),
       ).annotate({ identifier: "WorkspaceList" });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4777,7 +4609,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceBySubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4794,7 +4630,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListWorkspacePrivateEndpointConnectionByWorkspaceRequest",
       });
-    case 5:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4811,23 +4651,18 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListWorkspacePrivateLinkResourceByWorkspaceRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(3, __c0, 3)),
-          privateLinkServiceConnectionState: __S(27, __c3, 3),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionPropertiesInput",
-      });
-    case 7:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(142, __c17, 6)),
+          properties: S.optional(__S(784, __c49, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4839,11 +4674,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -4856,19 +4687,36 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionsCreateOrUpdateResponseSystemData",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(28, __c3, 4)),
-          systemData: S.optional(__S(144, __c18, 0)),
+          properties: S.optional(__S(1122, __c70, 2)),
+          systemData: S.optional(__S(769, __c48, 1)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(32, __c2, 0)),
+          privateLinkServiceConnectionState: __S(1121, __c70, 1),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionPropertiesInput",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -4876,31 +4724,31 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ServicesCreateOrUpdateRequestIdentity",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(142, __c17, 6)),
+          properties: S.optional(__S(784, __c49, 0)),
         }),
       ).annotate({
         identifier: "ServicesPropertiesInputPrivateEndpointConnectionsItem",
       });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(801, __c50, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          accessPolicies: S.optional(__S(77, __c9, 5)),
-          cosmosDbConfiguration: S.optional(__S(78, __c9, 6)),
-          authenticationConfiguration: S.optional(__S(79, __c9, 7)),
-          corsConfiguration: S.optional(__S(43, __c5, 3)),
-          exportConfiguration: S.optional(__S(44, __c5, 4)),
-          privateEndpointConnections: S.optional(__S(148, __c18, 4)),
+          accessPolicies: S.optional(__S(354, __c22, 2)),
+          cosmosDbConfiguration: S.optional(__S(355, __c22, 3)),
+          authenticationConfiguration: S.optional(__S(356, __c22, 4)),
+          corsConfiguration: S.optional(__S(67, __c4, 3)),
+          exportConfiguration: S.optional(__S(68, __c4, 4)),
+          privateEndpointConnections: S.optional(__S(802, __c50, 2)),
           publicNetworkAccess: S.optional(S.String),
-          acrConfiguration: S.optional(__S(36, __c4, 4)),
-          importConfiguration: S.optional(__S(47, __c5, 7)),
+          acrConfiguration: S.optional(__S(66, __c4, 2)),
+          importConfiguration: S.optional(__S(69, __c4, 5)),
         }),
       ).annotate({ identifier: "ServicesPropertiesInput" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4908,10 +4756,10 @@ function __c18(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(146, __c18, 2)),
-          properties: S.optional(__S(149, __c18, 5)),
+          identity: S.optional(__S(800, __c50, 0)),
+          properties: S.optional(__S(803, __c50, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4923,7 +4771,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ServicesCreateOrUpdateRequest",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4931,18 +4779,18 @@ function __c18(j: number): any {
           type: S.optional(S.String),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(75, __c9, 3)),
-          properties: S.optional(__S(80, __c10, 0)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          identity: S.optional(__S(352, __c22, 0)),
+          properties: S.optional(__S(357, __c22, 5)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({
         identifier: "ServicesCreateOrUpdateResponse",
       });
   }
 }
-function __c19(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4951,8 +4799,8 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           dicomServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
-          identity: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(1072, __c67, 0)),
+          identity: S.optional(__S(1201, __c75, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4967,28 +4815,63 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          identity: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(31, __c3, 7)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          identity: S.optional(__S(1104, __c69, 0)),
+          properties: S.optional(__S(1219, __c76, 3)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({
         identifier: "UpdateDicomServiceResponse",
       });
-    case 2:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          iotConnectorName: S.String.pipe(T.Label()),
+          fhirDestinationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}",
+            code: 200,
+            apiVersion: "2024-03-31",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIotConnectorFhirDestinationRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteIotConnectorFhirDestinationResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           fhirServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
-          identity: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(1072, __c67, 0)),
+          identity: S.optional(__S(1201, __c75, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4998,32 +4881,36 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFhirServiceRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          identity: S.optional(__S(24, __c3, 0)),
+          identity: S.optional(__S(1104, __c69, 0)),
           kind: S.optional(S.String),
-          properties: S.optional(__S(51, __c6, 3)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(89, __c5, 9)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({
         identifier: "UpdateFhirServiceResponse",
       });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           iotConnectorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
-          identity: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(1072, __c67, 0)),
+          identity: S.optional(__S(1201, __c75, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5035,23 +4922,27 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "UpdateIotConnectorRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          identity: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(60, __c7, 4)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          identity: S.optional(__S(1104, __c69, 0)),
+          properties: S.optional(__S(161, __c10, 1)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({
         identifier: "UpdateIotConnectorResponse",
       });
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           publicNetworkAccess: S.optional(S.String),
@@ -5059,14 +4950,14 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ServicesPropertiesUpdateParameters",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
-          properties: S.optional(__S(158, __c19, 6)),
+          tags: S.optional(__S(1072, __c67, 0)),
+          properties: S.optional(__S(896, __c56, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5076,11 +4967,7 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateServiceRequest" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5088,20 +4975,24 @@ function __c20(j: number): any {
           type: S.optional(S.String),
           kind: S.String,
           location: S.String,
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(75, __c9, 3)),
-          properties: S.optional(__S(80, __c10, 0)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          identity: S.optional(__S(352, __c22, 0)),
+          properties: S.optional(__S(357, __c22, 5)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "UpdateServiceResponse" });
-    case 1:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5111,39 +5002,47 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkspaceRequest" });
-    case 2:
-      return S.Array(__S(29, __c3, 5));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(162, __c20, 2)),
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateWorkspaceResponseProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(163, __c20, 3)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(929, __c58, 1)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "UpdateWorkspaceResponse" });
-    case 5:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1168, __c73, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(928, __c58, 0)),
+          publicNetworkAccess: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateWorkspaceResponseProperties",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(142, __c17, 6)),
+          properties: S.optional(__S(784, __c49, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5155,7 +5054,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -5168,21 +5067,21 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "WorkspacePrivateEndpointConnectionsCreateOrUpdateResponseSystemData",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(28, __c3, 4)),
-          systemData: S.optional(__S(166, __c20, 6)),
+          properties: S.optional(__S(1122, __c70, 2)),
+          systemData: S.optional(__S(945, __c59, 1)),
         }),
       ).annotate({
         identifier: "WorkspacePrivateEndpointConnectionsCreateOrUpdateResponse",
       });
   }
 }
-function __c21(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5190,10 +5089,10 @@ function __c21(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5208,21 +5107,341 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1072, __c67, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(163, __c20, 3)),
-          systemData: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(929, __c58, 1)),
+          systemData: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateResponse",
       });
   }
 }
-
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2024-03-31",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
+            code: 200,
+            apiVersion: "2024-03-31",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteServiceRequest" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
+            code: 200,
+            apiVersion: "2024-03-31",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteWorkspaceRequest" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2024-03-31",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteWorkspacePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authenticationConfiguration: S.optional(__S(32, __c2, 0)),
+          corsConfiguration: S.optional(__S(1216, __c76, 0)),
+          encryption: S.optional(__S(1185, __c74, 1)),
+          storageConfiguration: S.optional(__S(1217, __c76, 1)),
+          enableDataPartitions: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DicomServicePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          dicomServiceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(1072, __c67, 0)),
+          etag: S.optional(S.String),
+          location: S.optional(S.String),
+          identity: S.optional(__S(1201, __c75, 1)),
+          properties: S.optional(__S(1040, __c65, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
+            code: 200,
+            apiVersion: "2024-03-31",
+          }),
+        ),
+      ).annotate({
+        identifier: "DicomServicesCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tags: S.optional(__S(1072, __c67, 0)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          etag: S.optional(S.String),
+          location: S.optional(S.String),
+          identity: S.optional(__S(1104, __c69, 0)),
+          properties: S.optional(__S(1219, __c76, 3)),
+          systemData: S.optional(__S(1056, __c66, 0)),
+        }),
+      ).annotate({
+        identifier: "DicomServicesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 1:
+      return S.Record(S.String, __S(1088, __c68, 0));
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(1089, __c68, 1)),
+        }),
+      ).annotate({
+        identifier: "DicomServicesCreateOrUpdateResponseIdentity",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpoint" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(1120, __c70, 0)),
+          privateLinkServiceConnectionState: __S(1121, __c70, 1),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1168, __c73, 0));
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(1122, __c70, 2)),
+        }),
+      ).annotate({
+        identifier: "DicomServicePropertiesPrivateEndpointConnectionsItem",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyEncryptionKeyUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EncryptionCustomerManagedKeyEncryption",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customerManagedKeyEncryption: S.optional(__S(1184, __c74, 0)),
+        }),
+      ).annotate({ identifier: "Encryption" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(32, __c2, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(1200, __c75, 0)),
+        }),
+      ).annotate({
+        identifier: "DicomServicesCreateOrUpdateRequestIdentity",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          origins: S.optional(__S(1136, __c71, 0)),
+          headers: S.optional(__S(1136, __c71, 0)),
+          methods: S.optional(__S(1136, __c71, 0)),
+          maxAge: S.optional(S.Number),
+          allowCredentials: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CorsConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          storageResourceId: S.optional(S.String),
+          fileSystemName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          authority: S.optional(S.String),
+          audiences: S.optional(__S(1136, __c71, 0)),
+        }),
+      ).annotate({
+        identifier: "DicomServiceAuthenticationConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          authenticationConfiguration: S.optional(__S(1218, __c76, 2)),
+          corsConfiguration: S.optional(__S(1216, __c76, 0)),
+          serviceUrl: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(1152, __c72, 0)),
+          publicNetworkAccess: S.optional(S.String),
+          eventState: S.optional(S.String),
+          encryption: S.optional(__S(1185, __c74, 1)),
+          storageConfiguration: S.optional(__S(1217, __c76, 1)),
+          enableDataPartitions: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DicomServiceProperties" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

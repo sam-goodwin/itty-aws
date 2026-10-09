@@ -643,8 +643,8 @@ export const getPulse: API.PaginatedOperationMethod<
   GetPulseResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4, __c0, 4) as any as S.Schema<GetPulseRequest>,
-    output: __S(9, __c1, 1) as any as S.Schema<GetPulseResponse>,
+    input: __S(32, __c1, 0) as any as S.Schema<GetPulseRequest>,
+    output: __S(36, __c1, 4) as any as S.Schema<GetPulseResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -670,8 +670,8 @@ export const listEvents: API.PaginatedOperationMethod<
   ListEventsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(10, __c1, 2) as any as S.Schema<ListEventsRequest>,
-    output: __S(32, __c4, 0) as any as S.Schema<ListEventsResponse>,
+    input: __S(96, __c3, 0) as any as S.Schema<ListEventsRequest>,
+    output: __S(117, __c3, 21) as any as S.Schema<ListEventsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -695,8 +695,8 @@ export const validatePixel: API.OperationMethod<
   ValidatePixelError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ValidatePixelRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<PixelValidation>,
+  input: __S(160, __c5, 0) as any as S.Schema<ValidatePixelRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<PixelValidation>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -800,7 +800,11 @@ function __c0(j: number): any {
           id: S.String,
         }),
       ).annotate({ identifier: "CreateEventResponse" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           event: S.optional(S.String.pipe(T.Query())),
@@ -809,7 +813,7 @@ function __c0(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/events/pulse", code: 200 })),
       ).annotate({ identifier: "GetPulseRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.String),
@@ -818,21 +822,28 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPulseResponseDataItemUser",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           event_name: S.String,
           event_time: S.String,
           total_usd_amount: S.optional(S.NullOr(S.Number)),
           type: S.String,
-          user: S.optional(__S(5, __c0, 5)),
+          user: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({ identifier: "GetPulseResponseDataItem" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
+    case 3:
+      return S.Array(__S(34, __c1, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(35, __c1, 3),
+          page_info: __S(64, __c2, 0),
+        }),
+      ).annotate({ identifier: "GetPulseResponse" });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -843,14 +854,11 @@ function __c1(j: number): any {
           start_cursor: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GetPulseResponsePageInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(7, __c0, 7),
-          page_info: __S(8, __c1, 0),
-        }),
-      ).annotate({ identifier: "GetPulseResponse" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           identifier: S.optional(S.String.pipe(T.Query())),
@@ -874,7 +882,7 @@ function __c1(j: number): any {
           page: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/events", code: 200 })),
       ).annotate({ identifier: "ListEventsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ad_campaign_id: S.optional(S.NullOr(S.String)),
@@ -892,24 +900,22 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListEventsResponseDataItemContext",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           answer: S.optional(S.NullOr(S.String)),
           id: S.optional(S.NullOr(S.String)),
           key: S.optional(S.NullOr(S.String)),
-          options: S.optional(S.NullOr(__S(12, __c1, 4))),
+          options: S.optional(S.NullOr(__S(128, __c4, 0))),
           question: S.optional(S.NullOr(S.String)),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ListEventsResponseDataItemQuestionsItem",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(98, __c3, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -920,11 +926,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListEventsResponseDataItemRelatedAccount",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -934,7 +936,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListEventsResponseDataItemRelatedAd",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -944,7 +946,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListEventsResponseDataItemRelatedAdCampaign",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -953,7 +955,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListEventsResponseDataItemRelatedAdGroup",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           domain_id: S.optional(S.NullOr(S.String)),
@@ -964,7 +966,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListEventsResponseDataItemRelatedApp",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           audience_type: S.optional(S.NullOr(S.String)),
@@ -976,7 +978,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListEventsResponseDataItemRelatedAudience",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           amount: S.String,
@@ -985,7 +987,7 @@ function __c2(j: number): any {
           display_decimals: S.Number,
         }),
       ).annotate({ identifier: "Money" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.NullOr(S.String),
@@ -995,28 +997,24 @@ function __c2(j: number): any {
           product_id: S.NullOr(S.String),
           product_title: S.NullOr(S.String),
           quantity: S.Number,
-          subtotal: S.NullOr(__S(21, __c2, 5)),
+          subtotal: S.NullOr(__S(106, __c3, 10)),
         }),
       ).annotate({ identifier: "ReceiptLineItem" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
+      return S.Array(__S(107, __c3, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           card_brand: S.optional(S.NullOr(S.String)),
           card_last4: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          line_items: S.optional(__S(23, __c2, 7)),
+          line_items: S.optional(__S(108, __c3, 12)),
           provider: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ListEventsResponseDataItemRelatedPayment",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           billing_period: S.optional(S.NullOr(S.Number)),
@@ -1029,7 +1027,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListEventsResponseDataItemRelatedPlan",
       });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1039,7 +1037,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListEventsResponseDataItemRelatedProduct",
       });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           avatar_url: S.optional(S.NullOr(S.String)),
@@ -1050,24 +1048,24 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListEventsResponseDataItemRelatedUser",
       });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          account: S.optional(S.NullOr(__S(15, __c1, 7))),
-          ad: S.optional(S.NullOr(__S(16, __c2, 0))),
-          ad_campaign: S.optional(S.NullOr(__S(17, __c2, 1))),
-          ad_group: S.optional(S.NullOr(__S(18, __c2, 2))),
-          app: S.optional(S.NullOr(__S(19, __c2, 3))),
-          audience: S.optional(S.NullOr(__S(20, __c2, 4))),
-          payment: S.optional(S.NullOr(__S(24, __c3, 0))),
-          plan: S.optional(S.NullOr(__S(25, __c3, 1))),
-          product: S.optional(S.NullOr(__S(26, __c3, 2))),
-          user: S.optional(S.NullOr(__S(27, __c3, 3))),
+          account: S.optional(S.NullOr(__S(100, __c3, 4))),
+          ad: S.optional(S.NullOr(__S(101, __c3, 5))),
+          ad_campaign: S.optional(S.NullOr(__S(102, __c3, 6))),
+          ad_group: S.optional(S.NullOr(__S(103, __c3, 7))),
+          app: S.optional(S.NullOr(__S(104, __c3, 8))),
+          audience: S.optional(S.NullOr(__S(105, __c3, 9))),
+          payment: S.optional(S.NullOr(__S(109, __c3, 13))),
+          plan: S.optional(S.NullOr(__S(110, __c3, 14))),
+          product: S.optional(S.NullOr(__S(111, __c3, 15))),
+          user: S.optional(S.NullOr(__S(112, __c3, 16))),
         }),
       ).annotate({
         identifier: "ListEventsResponseDataItemRelated",
       });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.NullOr(S.String)),
@@ -1081,10 +1079,10 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListEventsResponseDataItemUser",
       });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          context: S.optional(S.NullOr(__S(11, __c1, 3))),
+          context: S.optional(S.NullOr(__S(97, __c3, 1))),
           currency: S.optional(S.NullOr(S.String)),
           custom_name: S.optional(S.NullOr(S.String)),
           event_id: S.String,
@@ -1093,31 +1091,37 @@ function __c3(j: number): any {
           id: S.String,
           path: S.optional(S.NullOr(S.String)),
           person_id: S.String,
-          questions: S.optional(S.NullOr(__S(14, __c1, 6))),
+          questions: S.optional(S.NullOr(__S(99, __c3, 3))),
           referrer_url: S.optional(S.NullOr(S.String)),
-          related: S.optional(S.NullOr(__S(28, __c3, 4))),
+          related: S.optional(S.NullOr(__S(113, __c3, 17))),
           total_usd_amount: S.optional(S.NullOr(S.Number)),
           url: S.optional(S.NullOr(S.String)),
-          user: S.optional(S.NullOr(__S(29, __c3, 5))),
+          user: S.optional(S.NullOr(__S(114, __c3, 18))),
           value: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "ListEventsResponseDataItem",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
+    case 20:
+      return S.Array(__S(115, __c3, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(116, __c3, 20),
+          page_info: __S(64, __c2, 0),
+        }),
+      ).annotate({ identifier: "ListEventsResponse" });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(31, __c3, 7),
-          page_info: __S(8, __c1, 0),
-        }),
-      ).annotate({ identifier: "ListEventsResponse" });
-    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
@@ -1125,23 +1129,22 @@ function __c4(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/events/validate_pixel", code: 200 })),
       ).annotate({ identifier: "ValidatePixelRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           firing_data_ok: S.Boolean,
-          host_events: __S(12, __c1, 4),
+          host_events: __S(128, __c4, 0),
           installed: S.Boolean,
           last_fired_days: S.Unknown,
           last_seen_days: S.NullOr(S.Number),
           native_tracking: S.Boolean,
-          page_events: __S(12, __c1, 4),
+          page_events: __S(128, __c4, 0),
           reachable: S.NullOr(S.Boolean),
           url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PixelValidation" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

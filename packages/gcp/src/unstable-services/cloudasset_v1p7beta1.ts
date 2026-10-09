@@ -164,7 +164,7 @@ export const exportAssetsV1p7beta1: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(6, __c0, 6) as any as S.Schema<ExportAssetsV1p7beta1Request>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -178,8 +178,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetOperationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -255,33 +255,37 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ExportAssetsV1p7beta1Request",
       });
-    case 7:
-      return S.Record(S.String, S.Unknown);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.Record(S.String, S.Unknown);
     case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(__S(8, __c1, 0)),
+          details: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "Status" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(7, __c0, 7)),
-          response: S.optional(__S(7, __c0, 7)),
-          error: S.optional(__S(9, __c1, 1)),
+          metadata: S.optional(__S(8, __c1, 0)),
+          response: S.optional(__S(8, __c1, 0)),
+          error: S.optional(__S(10, __c1, 2)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -295,7 +299,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "GetOperationsRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

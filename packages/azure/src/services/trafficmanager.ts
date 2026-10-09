@@ -646,7 +646,7 @@ export const CheckProfileTrafficManagerNameAvailabilityV2: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CheckProfileTrafficManagerNameAvailabilityV2Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<TrafficManagerNameAvailability>,
+  output: __S(16, __c1, 0) as any as S.Schema<TrafficManagerNameAvailability>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -661,11 +661,11 @@ export const CheckProfileTrafficManagerRelativeDnsNameAvailability: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2,
-    __c0,
-    2,
+    32,
+    __c2,
+    0,
   ) as any as S.Schema<CheckProfileTrafficManagerRelativeDnsNameAvailabilityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TrafficManagerNameAvailability>,
+  output: __S(16, __c1, 0) as any as S.Schema<TrafficManagerNameAvailability>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -679,8 +679,8 @@ export const DeleteEndpoint: API.OperationMethod<
   DeleteEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteEndpointRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteOperationResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteEndpointRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<DeleteOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -694,8 +694,8 @@ export const DeleteProfile: API.OperationMethod<
   DeleteProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteProfileRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteOperationResult>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteProfileRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<DeleteOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -709,8 +709,8 @@ export const DeleteTrafficManagerUserMetricsKey: API.OperationMethod<
   DeleteTrafficManagerUserMetricsKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteTrafficManagerUserMetricsKeyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteOperationResult>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeleteTrafficManagerUserMetricsKeyRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<DeleteOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -724,8 +724,8 @@ export const EndpointsCreateOrUpdate: API.OperationMethod<
   EndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<EndpointsCreateOrUpdateRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<EndpointsCreateOrUpdateResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<EndpointsCreateOrUpdateRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<EndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -739,8 +739,8 @@ export const GetEndpoint: API.OperationMethod<
   GetEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetEndpointRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetEndpointResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetEndpointRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<GetEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -754,8 +754,8 @@ export const GetGeographicHierarchyDefault: API.OperationMethod<
   GetGeographicHierarchyDefaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetGeographicHierarchyDefaultRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetGeographicHierarchyDefaultResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetGeographicHierarchyDefaultRequest>,
+  output: __S(340, __c21, 4) as any as S.Schema<GetGeographicHierarchyDefaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -769,8 +769,8 @@ export const GetHeatMap: API.OperationMethod<
   GetHeatMapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetHeatMapRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetHeatMapResponse>,
+  input: __S(353, __c22, 1) as any as S.Schema<GetHeatMapRequest>,
+  output: __S(361, __c22, 9) as any as S.Schema<GetHeatMapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -784,8 +784,8 @@ export const GetProfile: API.OperationMethod<
   GetProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetProfileRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetProfileResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetProfileRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<GetProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -799,8 +799,8 @@ export const GetTrafficManagerUserMetricsKey: API.OperationMethod<
   GetTrafficManagerUserMetricsKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetTrafficManagerUserMetricsKeyRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetTrafficManagerUserMetricsKeyResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetTrafficManagerUserMetricsKeyRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<GetTrafficManagerUserMetricsKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -814,8 +814,8 @@ export const ListProfileByResourceGroup: API.OperationMethod<
   ListProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListProfileByResourceGroupRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ProfileListResult>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListProfileByResourceGroupRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<ProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -829,8 +829,8 @@ export const ListProfileBySubscription: API.OperationMethod<
   ListProfileBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListProfileBySubscriptionRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ProfileListResult>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListProfileBySubscriptionRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<ProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -844,8 +844,8 @@ export const ProfilesCreateOrUpdate: API.OperationMethod<
   ProfilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ProfilesCreateOrUpdateRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ProfilesCreateOrUpdateResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ProfilesCreateOrUpdateRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<ProfilesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -859,8 +859,8 @@ export const TrafficManagerUserMetricsKeysCreateOrUpdate: API.OperationMethod<
   TrafficManagerUserMetricsKeysCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<TrafficManagerUserMetricsKeysCreateOrUpdateRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<TrafficManagerUserMetricsKeysCreateOrUpdateResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<TrafficManagerUserMetricsKeysCreateOrUpdateRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<TrafficManagerUserMetricsKeysCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -874,8 +874,8 @@ export const UpdateEndpoint: API.OperationMethod<
   UpdateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<UpdateEndpointRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<UpdateEndpointResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<UpdateEndpointRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<UpdateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -889,8 +889,8 @@ export const UpdateProfile: API.OperationMethod<
   UpdateProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<UpdateProfileRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<UpdateProfileResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<UpdateProfileRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<UpdateProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -916,7 +916,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckProfileTrafficManagerNameAvailabilityV2Request",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -928,7 +932,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "TrafficManagerNameAvailability",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -944,7 +952,237 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckProfileTrafficManagerRelativeDnsNameAvailabilityRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTrafficManagerUserMetricsKeyRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserMetricsProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "GetTrafficManagerUserMetricsKeyResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProfileByResourceGroupRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(400, __c25, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(96, __c6, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProfileListResult" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficmanagerprofiles",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProfileBySubscriptionRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          profileName: S.String.pipe(T.Label()),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(384, __c24, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(145, __c9, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProfilesCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(384, __c24, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(391, __c24, 7)),
+        }),
+      ).annotate({
+        identifier: "ProfilesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          relativeName: S.optional(S.String),
+          ttl: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DnsConfigInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          profileStatus: S.optional(S.String),
+          trafficRoutingMethod: S.optional(S.String),
+          dnsConfig: S.optional(__S(144, __c9, 0)),
+          monitorConfig: S.optional(__S(388, __c24, 4)),
+          endpoints: S.optional(__S(389, __c24, 5)),
+          trafficViewEnrollmentStatus: S.optional(S.String),
+          allowedEndpointRecordTypes: S.optional(__S(390, __c24, 6)),
+          maxReturn: S.optional(S.Number),
+          recordType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProfilePropertiesInput" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "TrafficManagerUserMetricsKeysCreateOrUpdateRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          profileName: S.String.pipe(T.Label()),
+          endpointType: S.String.pipe(T.Label()),
+          endpointName: S.String.pipe(T.Label()),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(293, __c18, 5)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateEndpointRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          profileName: S.String.pipe(T.Label()),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(384, __c24, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(145, __c9, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateProfileRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -961,13 +1199,21 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteEndpointRequest" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           boolean: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeleteOperationResult" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -982,7 +1228,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteProfileRequest" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -997,13 +1247,51 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteTrafficManagerUserMetricsKeyRequest",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c1(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          profileName: S.String.pipe(T.Label()),
+          endpointType: S.String.pipe(T.Label()),
+          endpointName: S.String.pipe(T.Label()),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(293, __c18, 5)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "EndpointsCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(293, __c18, 5)),
+        }),
+      ).annotate({
+        identifier: "EndpointsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           first: S.optional(S.String),
@@ -1013,9 +1301,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "EndpointPropertiesSubnetsItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
+      return S.Array(__S(289, __c18, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1024,9 +1312,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "EndpointPropertiesCustomHeadersItem",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
     case 4:
+      return S.Array(__S(291, __c18, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           targetResourceId: S.optional(S.String),
@@ -1039,47 +1327,17 @@ function __c1(j: number): any {
           minChildEndpoints: S.optional(S.Number),
           minChildEndpointsIPv4: S.optional(S.Number),
           minChildEndpointsIPv6: S.optional(S.Number),
-          geoMapping: S.optional(__S(7, __c0, 7)),
-          subnets: S.optional(__S(9, __c1, 1)),
-          customHeaders: S.optional(__S(11, __c1, 3)),
+          geoMapping: S.optional(__S(288, __c18, 0)),
+          subnets: S.optional(__S(290, __c18, 2)),
+          customHeaders: S.optional(__S(292, __c18, 4)),
           alwaysServe: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          profileName: S.String.pipe(T.Label()),
-          endpointType: S.String.pipe(T.Label()),
-          endpointName: S.String.pipe(T.Label()),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "EndpointsCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "EndpointsCreateOrUpdateResponse",
-      });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1098,7 +1356,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "GetEndpointRequest" });
   }
 }
-function __c2(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1106,10 +1364,14 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(12, __c1, 4)),
+          properties: S.optional(__S(293, __c18, 5)),
         }),
       ).annotate({ identifier: "GetEndpointResponse" });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1122,46 +1384,50 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetGeographicHierarchyDefaultRequest",
       });
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(338, __c21, 2)));
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(19, __c2, 3)));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           name: S.optional(S.String),
-          regions: S.optional(__S(18, __c2, 2)),
+          regions: S.optional(__S(337, __c21, 1)),
         }),
       ).annotate({ identifier: "Region" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          geographicHierarchy: S.optional(__S(19, __c2, 3)),
+          geographicHierarchy: S.optional(__S(338, __c21, 2)),
         }),
       ).annotate({
         identifier: "GeographicHierarchyProperties",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(20, __c2, 4)),
+          properties: S.optional(__S(339, __c21, 3)),
         }),
       ).annotate({
         identifier: "GetGeographicHierarchyDefaultResponse",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           heatMapType: S.String.pipe(T.Label()),
-          topLeft: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-          botRight: S.optional(__S(22, __c2, 6).pipe(T.Query())),
+          topLeft: S.optional(__S(352, __c22, 0).pipe(T.Query())),
+          botRight: S.optional(__S(352, __c22, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1171,20 +1437,16 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetHeatMapRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.optional(S.String),
           endpointId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "HeatMapEndpoint" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(354, __c22, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           endpointId: S.Number,
@@ -1192,40 +1454,40 @@ function __c3(j: number): any {
           latency: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryExperience" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(356, __c22, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           sourceIp: S.optional(S.String),
           latitude: S.optional(S.Number),
           longitude: S.optional(S.Number),
-          queryExperiences: S.optional(__S(27, __c3, 3)),
+          queryExperiences: S.optional(__S(357, __c22, 5)),
         }),
       ).annotate({ identifier: "TrafficFlow" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(358, __c22, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          endpoints: S.optional(__S(25, __c3, 1)),
-          trafficFlows: S.optional(__S(29, __c3, 5)),
+          endpoints: S.optional(__S(355, __c22, 3)),
+          trafficFlows: S.optional(__S(359, __c22, 7)),
         }),
       ).annotate({ identifier: "HeatMapProperties" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(30, __c3, 6)),
+          properties: S.optional(__S(360, __c22, 8)),
         }),
       ).annotate({ identifier: "GetHeatMapResponse" });
   }
 }
-function __c4(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1242,9 +1504,13 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProfileRequest" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           relativeName: S.optional(S.String),
@@ -1252,7 +1518,7 @@ function __c4(j: number): any {
           ttl: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DnsConfig" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           min: S.optional(S.Number),
@@ -1261,9 +1527,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "MonitorConfigExpectedStatusCodeRangesItem",
       });
+    case 3:
+      return S.Array(__S(386, __c24, 2));
     case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           profileMonitorStatus: S.optional(S.String),
@@ -1273,236 +1539,45 @@ function __c4(j: number): any {
           intervalInSeconds: S.optional(S.Number),
           timeoutInSeconds: S.optional(S.Number),
           toleratedNumberOfFailures: S.optional(S.Number),
-          customHeaders: S.optional(__S(11, __c1, 3)),
-          expectedStatusCodeRanges: S.optional(__S(36, __c4, 4)),
+          customHeaders: S.optional(__S(292, __c18, 4)),
+          expectedStatusCodeRanges: S.optional(__S(387, __c24, 3)),
         }),
       ).annotate({ identifier: "MonitorConfig" });
+    case 5:
+      return S.Array(__S(320, __c20, 0));
     case 6:
-      return S.Array(__S(16, __c2, 0));
-    case 7:
       return S.Array(S.String);
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           profileStatus: S.optional(S.String),
           trafficRoutingMethod: S.optional(S.String),
-          dnsConfig: S.optional(__S(34, __c4, 2)),
-          monitorConfig: S.optional(__S(37, __c4, 5)),
-          endpoints: S.optional(__S(38, __c4, 6)),
+          dnsConfig: S.optional(__S(385, __c24, 1)),
+          monitorConfig: S.optional(__S(388, __c24, 4)),
+          endpoints: S.optional(__S(389, __c24, 5)),
           trafficViewEnrollmentStatus: S.optional(S.String),
-          allowedEndpointRecordTypes: S.optional(__S(39, __c4, 7)),
+          allowedEndpointRecordTypes: S.optional(__S(390, __c24, 6)),
           maxReturn: S.optional(S.Number),
           recordType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(33, __c4, 1)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "GetProfileResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTrafficManagerUserMetricsKeyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserMetricsProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "GetTrafficManagerUserMetricsKeyResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProfileByResourceGroupRequest",
-      });
-    case 6:
-      return S.Array(__S(41, __c5, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(46, __c5, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProfileListResult" });
   }
 }
-function __c6(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficmanagerprofiles",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProfileBySubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          relativeName: S.optional(S.String),
-          ttl: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DnsConfigInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profileStatus: S.optional(S.String),
-          trafficRoutingMethod: S.optional(S.String),
-          dnsConfig: S.optional(__S(49, __c6, 1)),
-          monitorConfig: S.optional(__S(37, __c4, 5)),
-          endpoints: S.optional(__S(38, __c4, 6)),
-          trafficViewEnrollmentStatus: S.optional(S.String),
-          allowedEndpointRecordTypes: S.optional(__S(39, __c4, 7)),
-          maxReturn: S.optional(S.Number),
-          recordType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProfilePropertiesInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          profileName: S.String.pipe(T.Label()),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(33, __c4, 1)),
+          tags: S.optional(__S(384, __c24, 0)),
           location: S.optional(S.String),
-          properties: S.optional(__S(50, __c6, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProfilesCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(33, __c4, 1)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(391, __c24, 7)),
         }),
-      ).annotate({
-        identifier: "ProfilesCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficManagerUserMetricsKeys/default",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "TrafficManagerUserMetricsKeysCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          profileName: S.String.pipe(T.Label()),
-          endpointType: S.String.pipe(T.Label()),
-          endpointName: S.String.pipe(T.Label()),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateEndpointRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          profileName: S.String.pipe(T.Label()),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(33, __c4, 1)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(50, __c6, 2)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateProfileRequest" });
+      ).annotate({ identifier: "GetProfileResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

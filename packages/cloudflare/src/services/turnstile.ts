@@ -459,8 +459,8 @@ export const createWidget: API.OperationMethod<
   CreateWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateWidgetRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateWidgetResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateWidgetRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateWidgetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -474,8 +474,8 @@ export const deleteWidget: API.OperationMethod<
   DeleteWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteWidgetRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteWidgetResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteWidgetRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DeleteWidgetResponse>,
   errors: [WidgetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -489,8 +489,8 @@ export const getWidget: API.OperationMethod<
   GetWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetWidgetRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetWidgetResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetWidgetRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<GetWidgetResponse>,
   errors: [WidgetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -506,8 +506,8 @@ export const listWidgets: API.PaginatedOperationMethod<
   WidgetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(7, __c0, 7) as any as S.Schema<ListWidgetsRequest>,
-    output: __S(10, __c1, 2) as any as S.Schema<ListWidgetsResponse>,
+    input: __S(16, __c4, 0) as any as S.Schema<ListWidgetsRequest>,
+    output: __S(19, __c4, 3) as any as S.Schema<ListWidgetsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -530,8 +530,8 @@ export const rotateSecretWidget: API.OperationMethod<
   RotateSecretWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<RotateSecretWidgetRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RotateSecretWidgetResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<RotateSecretWidgetRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<RotateSecretWidgetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -545,8 +545,8 @@ export const updateWidget: API.OperationMethod<
   UpdateWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<UpdateWidgetRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateWidgetResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<UpdateWidgetRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<UpdateWidgetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -556,8 +556,6 @@ export const updateWidget: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -566,7 +564,7 @@ function __c0(j: number): any {
           order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          domains: __S(0, __c0, 0),
+          domains: __S(4, __c1, 0),
           mode: S.String,
           name: S.String,
           botFightMode: S.optional(S.Boolean.pipe(T.Body("bot_fight_mode"))),
@@ -580,13 +578,13 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateWidgetRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
           clearanceLevel: S.String.pipe(T.Body("clearance_level")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          domains: __S(0, __c0, 0),
+          domains: __S(4, __c1, 0),
           ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
           mode: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
@@ -599,7 +597,17 @@ function __c0(j: number): any {
           lastModifiedVia: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified_via"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateWidgetResponse" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -614,13 +622,13 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteWidgetRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
           clearanceLevel: S.String.pipe(T.Body("clearance_level")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          domains: __S(0, __c0, 0),
+          domains: __S(4, __c1, 0),
           ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
           mode: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
@@ -633,7 +641,11 @@ function __c0(j: number): any {
           lastModifiedVia: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified_via"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteWidgetResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -648,13 +660,13 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetWidgetRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
           clearanceLevel: S.String.pipe(T.Body("clearance_level")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          domains: __S(0, __c0, 0),
+          domains: __S(4, __c1, 0),
           ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
           mode: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
@@ -667,7 +679,11 @@ function __c0(j: number): any {
           lastModifiedVia: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified_via"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetWidgetResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -682,17 +698,13 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListWidgetsRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
           clearanceLevel: S.String.pipe(T.Body("clearance_level")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          domains: __S(0, __c0, 0),
+          domains: __S(4, __c1, 0),
           ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
           mode: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
@@ -704,16 +716,20 @@ function __c1(j: number): any {
           lastModifiedVia: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified_via"))),
         }),
       ).annotate({ identifier: "WidgetsListResultItem" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
+      return S.Array(__S(17, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(9, __c1, 1).pipe(T.EnvelopePayload()),
+          result: __S(18, __c4, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListWidgetsResponse" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -731,13 +747,13 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RotateSecretWidgetRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
           clearanceLevel: S.String.pipe(T.Body("clearance_level")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          domains: __S(0, __c0, 0),
+          domains: __S(4, __c1, 0),
           ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
           mode: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
@@ -752,12 +768,16 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RotateSecretWidgetResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           sitekey: S.String.pipe(T.Label()),
-          domains: __S(0, __c0, 0),
+          domains: __S(4, __c1, 0),
           mode: S.String,
           name: S.String,
           botFightMode: S.optional(S.Boolean.pipe(T.Body("bot_fight_mode"))),
@@ -775,13 +795,13 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateWidgetRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
           clearanceLevel: S.String.pipe(T.Body("clearance_level")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          domains: __S(0, __c0, 0),
+          domains: __S(4, __c1, 0),
           ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
           mode: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
@@ -796,7 +816,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UpdateWidgetResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

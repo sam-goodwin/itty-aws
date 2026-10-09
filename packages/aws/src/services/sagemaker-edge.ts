@@ -201,8 +201,8 @@ export const getDeviceRegistration: API.OperationMethod<
   GetDeviceRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetDeviceRegistrationRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetDeviceRegistrationResult>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetDeviceRegistrationRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<GetDeviceRegistrationResult>,
   errors: [InternalServiceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -219,8 +219,8 @@ export const sendHeartbeat: API.OperationMethod<
   SendHeartbeatError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<SendHeartbeatRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<SendHeartbeatResponse>,
+  input: __S(39, __c2, 7) as any as S.Schema<SendHeartbeatRequest>,
+  output: __S(40, __c2, 8) as any as S.Schema<SendHeartbeatResponse>,
   errors: [InternalServiceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -266,7 +266,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({ Deployments: S.optional(__S(5, __c0, 5)) })).annotate({
         identifier: "GetDeploymentsResult",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DeviceName: S.optional(S.String), DeviceFleetName: S.optional(S.String) }).pipe(
           T.all(
@@ -281,17 +285,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetDeviceRegistrationRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ DeviceRegistration: S.optional(S.String), CacheTTL: S.optional(S.String) }),
       ).annotate({
         identifier: "GetDeviceRegistrationResult",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Dimension: S.optional(S.String),
@@ -300,21 +304,21 @@ function __c1(j: number): any {
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "EdgeMetric" });
+    case 1:
+      return S.Array(__S(32, __c2, 0));
     case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           ModelName: S.optional(S.String),
           ModelVersion: S.optional(S.String),
           LatestSampleTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LatestInference: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ModelMetrics: S.optional(__S(10, __c1, 2)),
+          ModelMetrics: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "Model" });
+    case 3:
+      return S.Array(__S(34, __c2, 2));
     case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           ModelHandle: S.optional(S.String),
@@ -327,9 +331,9 @@ function __c1(j: number): any {
           RollbackFailureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentModel" });
+    case 5:
+      return S.Array(__S(36, __c2, 4));
     case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           DeploymentName: S.optional(S.String),
@@ -337,33 +341,28 @@ function __c1(j: number): any {
           DeploymentStatusMessage: S.optional(S.String),
           DeploymentStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DeploymentEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DeploymentModels: S.optional(__S(14, __c1, 6)),
+          DeploymentModels: S.optional(__S(37, __c2, 5)),
         }),
       ).annotate({ identifier: "DeploymentResult" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          AgentMetrics: S.optional(__S(10, __c1, 2)),
-          Models: S.optional(__S(12, __c1, 4)),
+          AgentMetrics: S.optional(__S(33, __c2, 1)),
+          Models: S.optional(__S(35, __c2, 3)),
           AgentVersion: S.optional(S.String),
           DeviceName: S.optional(S.String),
           DeviceFleetName: S.optional(S.String),
-          DeploymentResult: S.optional(__S(15, __c1, 7)),
+          DeploymentResult: S.optional(__S(38, __c2, 6)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/SendHeartbeat" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "SendHeartbeatRequest" });
-    case 1:
+    case 8:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SendHeartbeatResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

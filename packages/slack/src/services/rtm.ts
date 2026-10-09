@@ -69,7 +69,7 @@ export const connectRtm: API.OperationMethod<
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ConnectRtmRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ConnectRtmResponse>,
+  output: __S(6, __c1, 2) as any as S.Schema<ConnectRtmResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -83,8 +83,8 @@ export const startRtm: API.OperationMethod<
   StartRtmError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<StartRtmRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<StartRtmResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<StartRtmRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<StartRtmResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -100,14 +100,18 @@ function __c0(j: number): any {
           presence_sub: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/rtm.connect", code: 200 })),
       ).annotate({ identifier: "ConnectRtmRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "ConnectRtmResponseSelf" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
@@ -117,16 +121,20 @@ function __c0(j: number): any {
           enterprise_name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectRtmResponseTeam" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           url: S.String,
-          self: __S(1, __c0, 1),
-          team: __S(2, __c0, 2),
+          self: __S(4, __c1, 0),
+          team: __S(5, __c1, 1),
         }),
       ).annotate({ identifier: "ConnectRtmResponse" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           simple_latest: S.optional(S.Boolean.pipe(T.Query())),
@@ -140,7 +148,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "StartRtmRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

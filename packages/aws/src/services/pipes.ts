@@ -130,7 +130,7 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(104, __c13, 0)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(225, __c7, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -846,8 +846,8 @@ export const createPipe: API.OperationMethod<
   CreatePipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<CreatePipeRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<CreatePipeResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreatePipeRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<CreatePipeResponse>,
   errors: [
     ConflictException,
     InternalException,
@@ -877,8 +877,8 @@ export const deletePipe: API.OperationMethod<
   DeletePipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeletePipeRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DeletePipeResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeletePipeRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<DeletePipeResponse>,
   errors: [
     ConflictException,
     InternalException,
@@ -906,8 +906,8 @@ export const describePipe: API.OperationMethod<
   DescribePipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DescribePipeRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<DescribePipeResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DescribePipeRequest>,
+  output: __S(549, __c17, 5) as any as S.Schema<DescribePipeResponse>,
   errors: [InternalException, NotFoundException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -929,8 +929,8 @@ export const listPipes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Pipe
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListPipesRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<ListPipesResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListPipesRequest>,
+  output: __S(579, __c18, 3) as any as S.Schema<ListPipesResponse>,
   errors: [InternalException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -957,8 +957,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -981,8 +981,8 @@ export const startPipe: API.OperationMethod<
   StartPipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<StartPipeRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<StartPipeResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<StartPipeRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<StartPipeResponse>,
   errors: [
     ConflictException,
     InternalException,
@@ -1011,8 +1011,8 @@ export const stopPipe: API.OperationMethod<
   StopPipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<StopPipeRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<StopPipeResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<StopPipeRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<StopPipeResponse>,
   errors: [
     ConflictException,
     InternalException,
@@ -1052,8 +1052,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<TagResourceResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1074,8 +1074,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<UntagResourceResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalException, NotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1110,8 +1110,8 @@ export const updatePipe: API.OperationMethod<
   UpdatePipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<UpdatePipeRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<UpdatePipeResponse>,
+  input: __S(197, __c6, 5) as any as S.Schema<UpdatePipeRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<UpdatePipeResponse>,
   errors: [
     ConflictException,
     InternalException,
@@ -1128,196 +1128,61 @@ export const updatePipe: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Pattern: S.optional(SensitiveString) })).annotate({
-        identifier: "Filter",
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ Filters: S.optional(__S(1, __c0, 1)) })).annotate({
-        identifier: "FilterCriteria",
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(384, __c12, 0)) }).pipe(ns)).annotate({
+        identifier: "ListTagsForResourceResponse",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
-        identifier: "DeadLetterConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          BatchSize: S.optional(S.Number),
-          DeadLetterConfig: S.optional(__S(3, __c0, 3)),
-          OnPartialBatchItemFailure: S.optional(S.String),
-          MaximumBatchingWindowInSeconds: S.optional(S.Number),
-          MaximumRecordAgeInSeconds: S.optional(S.Number),
-          MaximumRetryAttempts: S.optional(S.Number),
-          ParallelizationFactor: S.optional(S.Number),
-          StartingPosition: S.String,
-          StartingPositionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "PipeSourceKinesisStreamParameters",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          BatchSize: S.optional(S.Number),
-          DeadLetterConfig: S.optional(__S(3, __c0, 3)),
-          OnPartialBatchItemFailure: S.optional(S.String),
-          MaximumBatchingWindowInSeconds: S.optional(S.Number),
-          MaximumRecordAgeInSeconds: S.optional(S.Number),
-          MaximumRetryAttempts: S.optional(S.Number),
-          ParallelizationFactor: S.optional(S.Number),
-          StartingPosition: S.String,
-        }),
-      ).annotate({
-        identifier: "PipeSourceDynamoDBStreamParameters",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          BatchSize: S.optional(S.Number),
-          MaximumBatchingWindowInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PipeSourceSqsQueueParameters",
-      });
-    case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ BasicAuth: S.String })]);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Credentials: __S(7, __c0, 7),
-          QueueName: SensitiveString,
-          BatchSize: S.optional(S.Number),
-          MaximumBatchingWindowInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PipeSourceActiveMQBrokerParameters",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Credentials: __S(7, __c0, 7),
-          QueueName: SensitiveString,
-          VirtualHost: S.optional(SensitiveString),
-          BatchSize: S.optional(S.Number),
-          MaximumBatchingWindowInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PipeSourceRabbitMQBrokerParameters",
-      });
-    case 2:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ SaslScram512Auth: S.String }),
-        /*@__PURE__*/ S.Struct({ ClientCertificateTlsAuth: S.String }),
-      ]);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          TopicName: SensitiveString,
-          StartingPosition: S.optional(S.String),
-          BatchSize: S.optional(S.Number),
-          MaximumBatchingWindowInSeconds: S.optional(S.Number),
-          ConsumerGroupID: S.optional(SensitiveString),
-          Credentials: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "PipeSourceManagedStreamingKafkaParameters",
-      });
-    case 4:
-      return S.Array(SensitiveString);
-    case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ BasicAuth: S.String }),
-        /*@__PURE__*/ S.Struct({ SaslScram512Auth: S.String }),
-        /*@__PURE__*/ S.Struct({ SaslScram256Auth: S.String }),
-        /*@__PURE__*/ S.Struct({ ClientCertificateTlsAuth: S.String }),
-      ]);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Subnets: S.optional(__S(12, __c1, 4)),
-          SecurityGroup: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "SelfManagedKafkaAccessConfigurationVpc",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          TopicName: SensitiveString,
-          StartingPosition: S.optional(S.String),
-          AdditionalBootstrapServers: S.optional(__S(12, __c1, 4)),
-          BatchSize: S.optional(S.Number),
-          MaximumBatchingWindowInSeconds: S.optional(S.Number),
-          ConsumerGroupID: S.optional(SensitiveString),
-          Credentials: S.optional(__S(13, __c1, 5)),
-          ServerRootCaCertificate: S.optional(S.String),
-          Vpc: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "PipeSourceSelfManagedKafkaParameters",
-      });
+        S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/v1/pipes/{Name}/start" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartPipeRequest" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          FilterCriteria: S.optional(__S(2, __c0, 2)),
-          KinesisStreamParameters: S.optional(__S(4, __c0, 4)),
-          DynamoDBStreamParameters: S.optional(__S(5, __c0, 5)),
-          SqsQueueParameters: S.optional(__S(6, __c0, 6)),
-          ActiveMQBrokerParameters: S.optional(__S(8, __c1, 0)),
-          RabbitMQBrokerParameters: S.optional(__S(9, __c1, 1)),
-          ManagedStreamingKafkaParameters: S.optional(__S(11, __c1, 3)),
-          SelfManagedKafkaParameters: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "PipeSourceParameters" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          PathParameterValues: S.optional(__S(12, __c1, 4)),
-          HeaderParameters: S.optional(__S(17, __c2, 1)),
-          QueryStringParameters: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "PipeEnrichmentHttpParameters",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          InputTemplate: S.optional(SensitiveString),
-          HttpParameters: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "PipeEnrichmentParameters" });
-    case 4:
-      return S.suspend(() => S.Struct({ InvocationType: S.optional(S.String) })).annotate({
-        identifier: "PipeTargetLambdaFunctionParameters",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ PartitionKey: SensitiveString })).annotate({
-        identifier: "PipeTargetKinesisStreamParameters",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Subnets: __S(12, __c1, 4),
-          SecurityGroups: S.optional(__S(12, __c1, 4)),
-          AssignPublicIp: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AwsVpcConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ awsvpcConfiguration: S.optional(__S(22, __c2, 6)) }),
-      ).annotate({ identifier: "NetworkConfiguration" });
+        S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/v1/pipes/{Name}/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopPipeRequest" });
   }
 }
 function __c3(j: number): any {
@@ -1325,72 +1190,28 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          capacityProvider: SensitiveString,
-          weight: S.optional(S.Number),
-          base: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CapacityProviderStrategyItem",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ type: S.optional(S.String), expression: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "PlacementConstraint" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ type: S.optional(S.String), field: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "PlacementStrategy" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
-      ).annotate({ identifier: "EcsEnvironmentVariable" });
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(384, __c12, 0),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ type: S.String, value: S.String })).annotate({
-        identifier: "EcsEnvironmentFile",
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "TagResourceResponse",
       });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Command: S.optional(__S(30, __c3, 6)),
-          Cpu: S.optional(S.Number),
-          Environment: S.optional(__S(32, __c4, 0)),
-          EnvironmentFiles: S.optional(__S(34, __c4, 2)),
-          Memory: S.optional(S.Number),
-          MemoryReservation: S.optional(S.Number),
-          Name: S.optional(S.String),
-          ResourceRequirements: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "EcsContainerOverride" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ sizeInGiB: S.Number })).annotate({
-        identifier: "EcsEphemeralStorage",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ deviceName: S.optional(S.String), deviceType: S.optional(S.String) }),
-      ).annotate({
-        identifier: "EcsInferenceAcceleratorOverride",
-      });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -1398,270 +1219,84 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ContainerOverrides: S.optional(__S(36, __c4, 4)),
-          Cpu: S.optional(S.String),
-          EphemeralStorage: S.optional(__S(37, __c4, 5)),
-          ExecutionRoleArn: S.optional(S.String),
-          InferenceAcceleratorOverrides: S.optional(__S(39, __c4, 7)),
-          Memory: S.optional(S.String),
-          TaskRoleArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EcsTaskOverride" });
-    case 1:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: SensitiveString })).annotate({
-        identifier: "Tag",
-      });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          TaskDefinitionArn: S.String,
-          TaskCount: S.optional(S.Number),
-          LaunchType: S.optional(S.String),
-          NetworkConfiguration: S.optional(__S(23, __c2, 7)),
-          PlatformVersion: S.optional(S.String),
-          Group: S.optional(S.String),
-          CapacityProviderStrategy: S.optional(__S(25, __c3, 1)),
-          EnableECSManagedTags: S.optional(S.Boolean),
-          EnableExecuteCommand: S.optional(S.Boolean),
-          PlacementConstraints: S.optional(__S(27, __c3, 3)),
-          PlacementStrategy: S.optional(__S(29, __c3, 5)),
-          PropagateTags: S.optional(S.String),
-          ReferenceId: S.optional(SensitiveString),
-          Overrides: S.optional(__S(40, __c5, 0)),
-          Tags: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "PipeTargetEcsTaskParameters",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ Size: S.optional(S.Number) })).annotate({
-        identifier: "BatchArrayProperties",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ Attempts: S.optional(S.Number) })).annotate({
-        identifier: "BatchRetryStrategy",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "BatchEnvironmentVariable" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: __S(416, __c13, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Type: S.String, Value: S.String })).annotate({
-        identifier: "BatchResourceRequirement",
-      });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          Command: S.optional(__S(30, __c3, 6)),
-          Environment: S.optional(__S(47, __c5, 7)),
-          InstanceType: S.optional(S.String),
-          ResourceRequirements: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "BatchContainerOverrides" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ JobId: S.optional(S.String), Type: S.optional(S.String) }),
-      ).annotate({ identifier: "BatchJobDependency" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          JobDefinition: S.String,
-          JobName: S.String,
-          ArrayProperties: S.optional(__S(44, __c5, 4)),
-          RetryStrategy: S.optional(__S(45, __c5, 5)),
-          ContainerOverrides: S.optional(__S(50, __c6, 2)),
-          DependsOn: S.optional(__S(52, __c6, 4)),
-          Parameters: S.optional(__S(53, __c6, 5)),
+          BatchSize: S.optional(S.Number),
+          DeadLetterConfig: S.optional(__S(451, __c14, 3)),
+          OnPartialBatchItemFailure: S.optional(S.String),
+          MaximumBatchingWindowInSeconds: S.optional(S.Number),
+          MaximumRecordAgeInSeconds: S.optional(S.Number),
+          MaximumRetryAttempts: S.optional(S.Number),
+          ParallelizationFactor: S.optional(S.Number),
         }),
       ).annotate({
-        identifier: "PipeTargetBatchJobParameters",
+        identifier: "UpdatePipeSourceKinesisStreamParameters",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          MessageGroupId: S.optional(SensitiveString),
-          MessageDeduplicationId: S.optional(SensitiveString),
-        }),
-      ).annotate({
-        identifier: "PipeTargetSqsQueueParameters",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          PathParameterValues: S.optional(__S(12, __c1, 4)),
-          HeaderParameters: S.optional(__S(17, __c2, 1)),
-          QueryStringParameters: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "PipeTargetHttpParameters" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          SecretManagerArn: S.optional(S.String),
-          Database: SensitiveString,
-          DbUser: S.optional(SensitiveString),
-          StatementName: S.optional(SensitiveString),
-          WithEvent: S.optional(S.Boolean),
-          Sqls: __S(12, __c1, 4),
+          Credentials: __S(453, __c14, 5),
+          BatchSize: S.optional(S.Number),
+          MaximumBatchingWindowInSeconds: S.optional(S.Number),
         }),
       ).annotate({
-        identifier: "PipeTargetRedshiftDataParameters",
+        identifier: "UpdatePipeSourceActiveMQBrokerParameters",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Name: SensitiveString, Value: SensitiveString })).annotate({
-        identifier: "SageMakerPipelineParameter",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ PipelineParameterList: S.optional(__S(59, __c7, 3)) }),
-      ).annotate({
-        identifier: "PipeTargetSageMakerPipelineParameters",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          EndpointId: S.optional(SensitiveString),
-          DetailType: S.optional(SensitiveString),
-          Source: S.optional(SensitiveString),
-          Resources: S.optional(__S(30, __c3, 6)),
-          Time: S.optional(S.String),
+          BatchSize: S.optional(S.Number),
+          Credentials: S.optional(__S(454, __c14, 6)),
+          MaximumBatchingWindowInSeconds: S.optional(S.Number),
         }),
       ).annotate({
-        identifier: "PipeTargetEventBridgeEventBusParameters",
+        identifier: "UpdatePipeSourceManagedStreamingKafkaParameters",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ LogStreamName: S.optional(S.String), Timestamp: S.optional(S.String) }),
-      ).annotate({
-        identifier: "PipeTargetCloudWatchLogsParameters",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DimensionValue: S.String,
-          DimensionValueType: S.String,
-          DimensionName: S.String,
-        }),
-      ).annotate({ identifier: "DimensionMapping" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ MeasureValue: S.String, MeasureValueType: S.String, MeasureName: S.String }),
-      ).annotate({ identifier: "SingleMeasureMapping" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          MeasureValue: S.String,
-          MeasureValueType: S.String,
-          MultiMeasureAttributeName: S.String,
+          BatchSize: S.optional(S.Number),
+          MaximumBatchingWindowInSeconds: S.optional(S.Number),
+          Credentials: S.optional(__S(456, __c14, 8)),
+          ServerRootCaCertificate: S.optional(S.String),
+          Vpc: S.optional(__S(457, __c14, 9)),
         }),
       ).annotate({
-        identifier: "MultiMeasureAttributeMapping",
-      });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          MultiMeasureName: S.String,
-          MultiMeasureAttributeMappings: __S(68, __c8, 4),
-        }),
-      ).annotate({ identifier: "MultiMeasureMapping" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          TimeValue: S.String,
-          EpochTimeUnit: S.optional(S.String),
-          TimeFieldType: S.optional(S.String),
-          TimestampFormat: S.optional(S.String),
-          VersionValue: S.String,
-          DimensionMappings: __S(64, __c8, 0),
-          SingleMeasureMappings: S.optional(__S(66, __c8, 2)),
-          MultiMeasureMappings: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({
-        identifier: "PipeTargetTimestreamParameters",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          InputTemplate: S.optional(SensitiveString),
-          LambdaFunctionParameters: S.optional(__S(20, __c2, 4)),
-          StepFunctionStateMachineParameters: S.optional(__S(20, __c2, 4)),
-          KinesisStreamParameters: S.optional(__S(21, __c2, 5)),
-          EcsTaskParameters: S.optional(__S(43, __c5, 3)),
-          BatchJobParameters: S.optional(__S(54, __c6, 6)),
-          SqsQueueParameters: S.optional(__S(55, __c6, 7)),
-          HttpParameters: S.optional(__S(56, __c7, 0)),
-          RedshiftDataParameters: S.optional(__S(57, __c7, 1)),
-          SageMakerPipelineParameters: S.optional(__S(60, __c7, 4)),
-          EventBridgeEventBusParameters: S.optional(__S(61, __c7, 5)),
-          CloudWatchLogsParameters: S.optional(__S(62, __c7, 6)),
-          TimestreamParameters: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "PipeTargetParameters" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          BucketName: S.String,
-          BucketOwner: S.String,
-          OutputFormat: S.optional(S.String),
-          Prefix: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "S3LogDestinationParameters",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ DeliveryStreamArn: S.String })).annotate({
-        identifier: "FirehoseLogDestinationParameters",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ LogGroupArn: S.String })).annotate({
-        identifier: "CloudwatchLogsLogDestinationParameters",
+        identifier: "UpdatePipeSourceSelfManagedKafkaParameters",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          S3LogDestination: S.optional(__S(73, __c9, 1)),
-          FirehoseLogDestination: S.optional(__S(74, __c9, 2)),
-          CloudwatchLogsLogDestination: S.optional(__S(75, __c9, 3)),
-          Level: S.String,
-          IncludeExecutionData: S.optional(__S(30, __c3, 6)),
+          FilterCriteria: S.optional(__S(450, __c14, 2)),
+          KinesisStreamParameters: S.optional(__S(192, __c6, 0)),
+          DynamoDBStreamParameters: S.optional(__S(192, __c6, 0)),
+          SqsQueueParameters: S.optional(__S(452, __c14, 4)),
+          ActiveMQBrokerParameters: S.optional(__S(193, __c6, 1)),
+          RabbitMQBrokerParameters: S.optional(__S(193, __c6, 1)),
+          ManagedStreamingKafkaParameters: S.optional(__S(194, __c6, 2)),
+          SelfManagedKafkaParameters: S.optional(__S(195, __c6, 3)),
         }),
       ).annotate({
-        identifier: "PipeLogConfigurationParameters",
+        identifier: "UpdatePipeSourceParameters",
       });
     case 5:
       return S.suspend(() =>
@@ -1669,15 +1304,55 @@ function __c9(j: number): any {
           Name: S.String.pipe(T.HttpLabel("Name")),
           Description: S.optional(SensitiveString),
           DesiredState: S.optional(S.String),
-          Source: S.String,
-          SourceParameters: S.optional(__S(16, __c2, 0)),
+          SourceParameters: S.optional(__S(196, __c6, 4)),
           Enrichment: S.optional(S.String),
-          EnrichmentParameters: S.optional(__S(19, __c2, 3)),
-          Target: S.String,
-          TargetParameters: S.optional(__S(72, __c9, 0)),
+          EnrichmentParameters: S.optional(__S(459, __c14, 11)),
+          Target: S.optional(S.String),
+          TargetParameters: S.optional(__S(511, __c15, 31)),
           RoleArn: S.String,
-          Tags: S.optional(__S(17, __c2, 1)),
-          LogConfiguration: S.optional(__S(76, __c9, 4)),
+          LogConfiguration: S.optional(__S(291, __c9, 3)),
+          KmsKeyIdentifier: S.optional(S.String),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/v1/pipes/{Name}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdatePipeRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(224, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String.pipe(T.HttpLabel("Name")),
+          Description: S.optional(SensitiveString),
+          DesiredState: S.optional(S.String),
+          Source: S.String,
+          SourceParameters: S.optional(__S(358, __c11, 6)),
+          Enrichment: S.optional(S.String),
+          EnrichmentParameters: S.optional(__S(459, __c14, 11)),
+          Target: S.String,
+          TargetParameters: S.optional(__S(511, __c15, 31)),
+          RoleArn: S.String,
+          Tags: S.optional(__S(384, __c12, 0)),
+          LogConfiguration: S.optional(__S(291, __c9, 3)),
           KmsKeyIdentifier: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1691,7 +1366,46 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreatePipeRequest" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BucketName: S.String,
+          BucketOwner: S.String,
+          OutputFormat: S.optional(S.String),
+          Prefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "S3LogDestinationParameters",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ DeliveryStreamArn: S.String })).annotate({
+        identifier: "FirehoseLogDestinationParameters",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ LogGroupArn: S.String })).annotate({
+        identifier: "CloudwatchLogsLogDestinationParameters",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          S3LogDestination: S.optional(__S(288, __c9, 0)),
+          FirehoseLogDestination: S.optional(__S(289, __c9, 1)),
+          CloudwatchLogsLogDestination: S.optional(__S(290, __c9, 2)),
+          Level: S.String,
+          IncludeExecutionData: S.optional(__S(416, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "PipeLogConfigurationParameters",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -1702,7 +1416,500 @@ function __c9(j: number): any {
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({ identifier: "CreatePipeResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BatchSize: S.optional(S.Number),
+          DeadLetterConfig: S.optional(__S(451, __c14, 3)),
+          OnPartialBatchItemFailure: S.optional(S.String),
+          MaximumBatchingWindowInSeconds: S.optional(S.Number),
+          MaximumRecordAgeInSeconds: S.optional(S.Number),
+          MaximumRetryAttempts: S.optional(S.Number),
+          ParallelizationFactor: S.optional(S.Number),
+          StartingPosition: S.String,
+          StartingPositionTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "PipeSourceKinesisStreamParameters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          BatchSize: S.optional(S.Number),
+          DeadLetterConfig: S.optional(__S(451, __c14, 3)),
+          OnPartialBatchItemFailure: S.optional(S.String),
+          MaximumBatchingWindowInSeconds: S.optional(S.Number),
+          MaximumRecordAgeInSeconds: S.optional(S.Number),
+          MaximumRetryAttempts: S.optional(S.Number),
+          ParallelizationFactor: S.optional(S.Number),
+          StartingPosition: S.String,
+        }),
+      ).annotate({
+        identifier: "PipeSourceDynamoDBStreamParameters",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Credentials: __S(453, __c14, 5),
+          QueueName: SensitiveString,
+          BatchSize: S.optional(S.Number),
+          MaximumBatchingWindowInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PipeSourceActiveMQBrokerParameters",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Credentials: __S(453, __c14, 5),
+          QueueName: SensitiveString,
+          VirtualHost: S.optional(SensitiveString),
+          BatchSize: S.optional(S.Number),
+          MaximumBatchingWindowInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PipeSourceRabbitMQBrokerParameters",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          TopicName: SensitiveString,
+          StartingPosition: S.optional(S.String),
+          BatchSize: S.optional(S.Number),
+          MaximumBatchingWindowInSeconds: S.optional(S.Number),
+          ConsumerGroupID: S.optional(SensitiveString),
+          Credentials: S.optional(__S(454, __c14, 6)),
+        }),
+      ).annotate({
+        identifier: "PipeSourceManagedStreamingKafkaParameters",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TopicName: SensitiveString,
+          StartingPosition: S.optional(S.String),
+          AdditionalBootstrapServers: S.optional(__S(455, __c14, 7)),
+          BatchSize: S.optional(S.Number),
+          MaximumBatchingWindowInSeconds: S.optional(S.Number),
+          ConsumerGroupID: S.optional(SensitiveString),
+          Credentials: S.optional(__S(456, __c14, 8)),
+          ServerRootCaCertificate: S.optional(S.String),
+          Vpc: S.optional(__S(457, __c14, 9)),
+        }),
+      ).annotate({
+        identifier: "PipeSourceSelfManagedKafkaParameters",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          FilterCriteria: S.optional(__S(450, __c14, 2)),
+          KinesisStreamParameters: S.optional(__S(352, __c11, 0)),
+          DynamoDBStreamParameters: S.optional(__S(353, __c11, 1)),
+          SqsQueueParameters: S.optional(__S(452, __c14, 4)),
+          ActiveMQBrokerParameters: S.optional(__S(354, __c11, 2)),
+          RabbitMQBrokerParameters: S.optional(__S(355, __c11, 3)),
+          ManagedStreamingKafkaParameters: S.optional(__S(356, __c11, 4)),
+          SelfManagedKafkaParameters: S.optional(__S(357, __c11, 5)),
+        }),
+      ).annotate({ identifier: "PipeSourceParameters" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Pattern: S.optional(SensitiveString) })).annotate({
+        identifier: "Filter",
+      });
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ Filters: S.optional(__S(449, __c14, 1)) })).annotate({
+        identifier: "FilterCriteria",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
+        identifier: "DeadLetterConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          BatchSize: S.optional(S.Number),
+          MaximumBatchingWindowInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PipeSourceSqsQueueParameters",
+      });
+    case 5:
+      return S.Union([/*@__PURE__*/ S.Struct({ BasicAuth: S.String })]);
+    case 6:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ SaslScram512Auth: S.String }),
+        /*@__PURE__*/ S.Struct({ ClientCertificateTlsAuth: S.String }),
+      ]);
     case 7:
+      return S.Array(SensitiveString);
+    case 8:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ BasicAuth: S.String }),
+        /*@__PURE__*/ S.Struct({ SaslScram512Auth: S.String }),
+        /*@__PURE__*/ S.Struct({ SaslScram256Auth: S.String }),
+        /*@__PURE__*/ S.Struct({ ClientCertificateTlsAuth: S.String }),
+      ]);
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          Subnets: S.optional(__S(455, __c14, 7)),
+          SecurityGroup: S.optional(__S(455, __c14, 7)),
+        }),
+      ).annotate({
+        identifier: "SelfManagedKafkaAccessConfigurationVpc",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          PathParameterValues: S.optional(__S(455, __c14, 7)),
+          HeaderParameters: S.optional(__S(384, __c12, 0)),
+          QueryStringParameters: S.optional(__S(384, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "PipeEnrichmentHttpParameters",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          InputTemplate: S.optional(SensitiveString),
+          HttpParameters: S.optional(__S(458, __c14, 10)),
+        }),
+      ).annotate({ identifier: "PipeEnrichmentParameters" });
+    case 12:
+      return S.suspend(() => S.Struct({ InvocationType: S.optional(S.String) })).annotate({
+        identifier: "PipeTargetLambdaFunctionParameters",
+      });
+    case 13:
+      return S.suspend(() => S.Struct({ PartitionKey: SensitiveString })).annotate({
+        identifier: "PipeTargetKinesisStreamParameters",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          Subnets: __S(455, __c14, 7),
+          SecurityGroups: S.optional(__S(455, __c14, 7)),
+          AssignPublicIp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AwsVpcConfiguration" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({ awsvpcConfiguration: S.optional(__S(462, __c14, 14)) }),
+      ).annotate({ identifier: "NetworkConfiguration" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          capacityProvider: SensitiveString,
+          weight: S.optional(S.Number),
+          base: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CapacityProviderStrategyItem",
+      });
+    case 17:
+      return S.Array(__S(464, __c14, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({ type: S.optional(S.String), expression: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "PlacementConstraint" });
+    case 19:
+      return S.Array(__S(466, __c14, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({ type: S.optional(S.String), field: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "PlacementStrategy" });
+    case 21:
+      return S.Array(__S(468, __c14, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "EcsEnvironmentVariable" });
+    case 23:
+      return S.Array(__S(470, __c14, 22));
+    case 24:
+      return S.suspend(() => S.Struct({ type: S.String, value: S.String })).annotate({
+        identifier: "EcsEnvironmentFile",
+      });
+    case 25:
+      return S.Array(__S(472, __c14, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          Command: S.optional(__S(416, __c13, 0)),
+          Cpu: S.optional(S.Number),
+          Environment: S.optional(__S(471, __c14, 23)),
+          EnvironmentFiles: S.optional(__S(473, __c14, 25)),
+          Memory: S.optional(S.Number),
+          MemoryReservation: S.optional(S.Number),
+          Name: S.optional(S.String),
+          ResourceRequirements: S.optional(__S(473, __c14, 25)),
+        }),
+      ).annotate({ identifier: "EcsContainerOverride" });
+    case 27:
+      return S.Array(__S(474, __c14, 26));
+    case 28:
+      return S.suspend(() => S.Struct({ sizeInGiB: S.Number })).annotate({
+        identifier: "EcsEphemeralStorage",
+      });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({ deviceName: S.optional(S.String), deviceType: S.optional(S.String) }),
+      ).annotate({
+        identifier: "EcsInferenceAcceleratorOverride",
+      });
+    case 30:
+      return S.Array(__S(477, __c14, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          ContainerOverrides: S.optional(__S(475, __c14, 27)),
+          Cpu: S.optional(S.String),
+          EphemeralStorage: S.optional(__S(476, __c14, 28)),
+          ExecutionRoleArn: S.optional(S.String),
+          InferenceAcceleratorOverrides: S.optional(__S(478, __c14, 30)),
+          Memory: S.optional(S.String),
+          TaskRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EcsTaskOverride" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: SensitiveString })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TaskDefinitionArn: S.String,
+          TaskCount: S.optional(S.Number),
+          LaunchType: S.optional(S.String),
+          NetworkConfiguration: S.optional(__S(463, __c14, 15)),
+          PlatformVersion: S.optional(S.String),
+          Group: S.optional(S.String),
+          CapacityProviderStrategy: S.optional(__S(465, __c14, 17)),
+          EnableECSManagedTags: S.optional(S.Boolean),
+          EnableExecuteCommand: S.optional(S.Boolean),
+          PlacementConstraints: S.optional(__S(467, __c14, 19)),
+          PlacementStrategy: S.optional(__S(469, __c14, 21)),
+          PropagateTags: S.optional(S.String),
+          ReferenceId: S.optional(SensitiveString),
+          Overrides: S.optional(__S(479, __c14, 31)),
+          Tags: S.optional(__S(481, __c15, 1)),
+        }),
+      ).annotate({
+        identifier: "PipeTargetEcsTaskParameters",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ Size: S.optional(S.Number) })).annotate({
+        identifier: "BatchArrayProperties",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ Attempts: S.optional(S.Number) })).annotate({
+        identifier: "BatchRetryStrategy",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "BatchEnvironmentVariable" });
+    case 6:
+      return S.Array(__S(485, __c15, 5));
+    case 7:
+      return S.suspend(() => S.Struct({ Type: S.String, Value: S.String })).annotate({
+        identifier: "BatchResourceRequirement",
+      });
+    case 8:
+      return S.Array(__S(487, __c15, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          Command: S.optional(__S(416, __c13, 0)),
+          Environment: S.optional(__S(486, __c15, 6)),
+          InstanceType: S.optional(S.String),
+          ResourceRequirements: S.optional(__S(488, __c15, 8)),
+        }),
+      ).annotate({ identifier: "BatchContainerOverrides" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({ JobId: S.optional(S.String), Type: S.optional(S.String) }),
+      ).annotate({ identifier: "BatchJobDependency" });
+    case 11:
+      return S.Array(__S(490, __c15, 10));
+    case 12:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          JobDefinition: S.String,
+          JobName: S.String,
+          ArrayProperties: S.optional(__S(483, __c15, 3)),
+          RetryStrategy: S.optional(__S(484, __c15, 4)),
+          ContainerOverrides: S.optional(__S(489, __c15, 9)),
+          DependsOn: S.optional(__S(491, __c15, 11)),
+          Parameters: S.optional(__S(492, __c15, 12)),
+        }),
+      ).annotate({
+        identifier: "PipeTargetBatchJobParameters",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          MessageGroupId: S.optional(SensitiveString),
+          MessageDeduplicationId: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "PipeTargetSqsQueueParameters",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          PathParameterValues: S.optional(__S(455, __c14, 7)),
+          HeaderParameters: S.optional(__S(384, __c12, 0)),
+          QueryStringParameters: S.optional(__S(384, __c12, 0)),
+        }),
+      ).annotate({ identifier: "PipeTargetHttpParameters" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          SecretManagerArn: S.optional(S.String),
+          Database: SensitiveString,
+          DbUser: S.optional(SensitiveString),
+          StatementName: S.optional(SensitiveString),
+          WithEvent: S.optional(S.Boolean),
+          Sqls: __S(455, __c14, 7),
+        }),
+      ).annotate({
+        identifier: "PipeTargetRedshiftDataParameters",
+      });
+    case 17:
+      return S.suspend(() => S.Struct({ Name: SensitiveString, Value: SensitiveString })).annotate({
+        identifier: "SageMakerPipelineParameter",
+      });
+    case 18:
+      return S.Array(__S(497, __c15, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({ PipelineParameterList: S.optional(__S(498, __c15, 18)) }),
+      ).annotate({
+        identifier: "PipeTargetSageMakerPipelineParameters",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          EndpointId: S.optional(SensitiveString),
+          DetailType: S.optional(SensitiveString),
+          Source: S.optional(SensitiveString),
+          Resources: S.optional(__S(416, __c13, 0)),
+          Time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PipeTargetEventBridgeEventBusParameters",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({ LogStreamName: S.optional(S.String), Timestamp: S.optional(S.String) }),
+      ).annotate({
+        identifier: "PipeTargetCloudWatchLogsParameters",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          DimensionValue: S.String,
+          DimensionValueType: S.String,
+          DimensionName: S.String,
+        }),
+      ).annotate({ identifier: "DimensionMapping" });
+    case 23:
+      return S.Array(__S(502, __c15, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({ MeasureValue: S.String, MeasureValueType: S.String, MeasureName: S.String }),
+      ).annotate({ identifier: "SingleMeasureMapping" });
+    case 25:
+      return S.Array(__S(504, __c15, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          MeasureValue: S.String,
+          MeasureValueType: S.String,
+          MultiMeasureAttributeName: S.String,
+        }),
+      ).annotate({
+        identifier: "MultiMeasureAttributeMapping",
+      });
+    case 27:
+      return S.Array(__S(506, __c15, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          MultiMeasureName: S.String,
+          MultiMeasureAttributeMappings: __S(507, __c15, 27),
+        }),
+      ).annotate({ identifier: "MultiMeasureMapping" });
+    case 29:
+      return S.Array(__S(508, __c15, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          TimeValue: S.String,
+          EpochTimeUnit: S.optional(S.String),
+          TimeFieldType: S.optional(S.String),
+          TimestampFormat: S.optional(S.String),
+          VersionValue: S.String,
+          DimensionMappings: __S(503, __c15, 23),
+          SingleMeasureMappings: S.optional(__S(505, __c15, 25)),
+          MultiMeasureMappings: S.optional(__S(509, __c15, 29)),
+        }),
+      ).annotate({
+        identifier: "PipeTargetTimestreamParameters",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          InputTemplate: S.optional(SensitiveString),
+          LambdaFunctionParameters: S.optional(__S(460, __c14, 12)),
+          StepFunctionStateMachineParameters: S.optional(__S(460, __c14, 12)),
+          KinesisStreamParameters: S.optional(__S(461, __c14, 13)),
+          EcsTaskParameters: S.optional(__S(482, __c15, 2)),
+          BatchJobParameters: S.optional(__S(493, __c15, 13)),
+          SqsQueueParameters: S.optional(__S(494, __c15, 14)),
+          HttpParameters: S.optional(__S(495, __c15, 15)),
+          RedshiftDataParameters: S.optional(__S(496, __c15, 16)),
+          SageMakerPipelineParameters: S.optional(__S(499, __c15, 19)),
+          EventBridgeEventBusParameters: S.optional(__S(500, __c15, 20)),
+          CloudWatchLogsParameters: S.optional(__S(501, __c15, 21)),
+          TimestreamParameters: S.optional(__S(510, __c15, 30)),
+        }),
+      ).annotate({ identifier: "PipeTargetParameters" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
           T.all(
@@ -1718,7 +1925,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "DeletePipeRequest" });
   }
 }
-function __c10(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1754,11 +1961,11 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          S3LogDestination: S.optional(__S(81, __c10, 1)),
-          FirehoseLogDestination: S.optional(__S(82, __c10, 2)),
-          CloudwatchLogsLogDestination: S.optional(__S(83, __c10, 3)),
+          S3LogDestination: S.optional(__S(545, __c17, 1)),
+          FirehoseLogDestination: S.optional(__S(546, __c17, 2)),
+          CloudwatchLogsLogDestination: S.optional(__S(547, __c17, 3)),
           Level: S.optional(S.String),
-          IncludeExecutionData: S.optional(__S(30, __c3, 6)),
+          IncludeExecutionData: S.optional(__S(416, __c13, 0)),
         }),
       ).annotate({ identifier: "PipeLogConfiguration" });
     case 5:
@@ -1771,20 +1978,24 @@ function __c10(j: number): any {
           CurrentState: S.optional(S.String),
           StateReason: S.optional(S.String),
           Source: S.optional(S.String),
-          SourceParameters: S.optional(__S(16, __c2, 0)),
+          SourceParameters: S.optional(__S(358, __c11, 6)),
           Enrichment: S.optional(S.String),
-          EnrichmentParameters: S.optional(__S(19, __c2, 3)),
+          EnrichmentParameters: S.optional(__S(459, __c14, 11)),
           Target: S.optional(S.String),
-          TargetParameters: S.optional(__S(72, __c9, 0)),
+          TargetParameters: S.optional(__S(511, __c15, 31)),
           RoleArn: S.optional(S.String),
-          Tags: S.optional(__S(17, __c2, 1)),
+          Tags: S.optional(__S(384, __c12, 0)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LogConfiguration: S.optional(__S(84, __c10, 4)),
+          LogConfiguration: S.optional(__S(548, __c17, 4)),
           KmsKeyIdentifier: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribePipeResponse" });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NamePrefix: S.optional(S.String).pipe(T.HttpQuery("NamePrefix")),
@@ -1798,7 +2009,7 @@ function __c10(j: number): any {
           T.all(ns, T.Http({ method: "GET", uri: "/v1/pipes" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListPipesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -1813,209 +2024,17 @@ function __c10(j: number): any {
           Enrichment: S.optional(S.String),
         }),
       ).annotate({ identifier: "Pipe" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(577, __c18, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Pipes: S.optional(__S(88, __c11, 0)),
+          Pipes: S.optional(__S(578, __c18, 2)),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "ListPipesResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(17, __c2, 1)) }).pipe(ns)).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/v1/pipes/{Name}/start" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StartPipeRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/v1/pipes/{Name}/stop" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StopPipeRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(17, __c2, 1),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
-      });
   }
 }
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(30, __c3, 6).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          BatchSize: S.optional(S.Number),
-          DeadLetterConfig: S.optional(__S(3, __c0, 3)),
-          OnPartialBatchItemFailure: S.optional(S.String),
-          MaximumBatchingWindowInSeconds: S.optional(S.Number),
-          MaximumRecordAgeInSeconds: S.optional(S.Number),
-          MaximumRetryAttempts: S.optional(S.Number),
-          ParallelizationFactor: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "UpdatePipeSourceKinesisStreamParameters",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Credentials: __S(7, __c0, 7),
-          BatchSize: S.optional(S.Number),
-          MaximumBatchingWindowInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "UpdatePipeSourceActiveMQBrokerParameters",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          BatchSize: S.optional(S.Number),
-          Credentials: S.optional(__S(10, __c1, 2)),
-          MaximumBatchingWindowInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "UpdatePipeSourceManagedStreamingKafkaParameters",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          BatchSize: S.optional(S.Number),
-          MaximumBatchingWindowInSeconds: S.optional(S.Number),
-          Credentials: S.optional(__S(13, __c1, 5)),
-          ServerRootCaCertificate: S.optional(S.String),
-          Vpc: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "UpdatePipeSourceSelfManagedKafkaParameters",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          FilterCriteria: S.optional(__S(2, __c0, 2)),
-          KinesisStreamParameters: S.optional(__S(97, __c12, 1)),
-          DynamoDBStreamParameters: S.optional(__S(97, __c12, 1)),
-          SqsQueueParameters: S.optional(__S(6, __c0, 6)),
-          ActiveMQBrokerParameters: S.optional(__S(98, __c12, 2)),
-          RabbitMQBrokerParameters: S.optional(__S(98, __c12, 2)),
-          ManagedStreamingKafkaParameters: S.optional(__S(99, __c12, 3)),
-          SelfManagedKafkaParameters: S.optional(__S(100, __c12, 4)),
-        }),
-      ).annotate({
-        identifier: "UpdatePipeSourceParameters",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String.pipe(T.HttpLabel("Name")),
-          Description: S.optional(SensitiveString),
-          DesiredState: S.optional(S.String),
-          SourceParameters: S.optional(__S(101, __c12, 5)),
-          Enrichment: S.optional(S.String),
-          EnrichmentParameters: S.optional(__S(19, __c2, 3)),
-          Target: S.optional(S.String),
-          TargetParameters: S.optional(__S(72, __c9, 0)),
-          RoleArn: S.String,
-          LogConfiguration: S.optional(__S(76, __c9, 4)),
-          KmsKeyIdentifier: S.optional(S.String),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/v1/pipes/{Name}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdatePipeRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

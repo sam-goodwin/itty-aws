@@ -149,7 +149,7 @@ export class ValidationException
 export type __stringMin1Max64PatternS = string;
 export type __stringMin0Max256PatternS = string;
 export type __mapOf__stringMin0Max256PatternS = { [key: string]: string | undefined };
-const __mapOf__stringMin0Max256PatternS = /*@__PURE__*/ __L.at(__c0, 0);
+const __mapOf__stringMin0Max256PatternS = /*@__PURE__*/ __L.at(__c29, 0);
 export type NetworkType = "IPV4" | "DUALSTACK" | (string & {});
 export interface CreateClusterRequest {
   ClientToken?: string;
@@ -165,7 +165,7 @@ export interface ClusterEndpoint {
   Region?: string;
 }
 export type __listOfClusterEndpoint = ClusterEndpoint[];
-const __listOfClusterEndpoint = /*@__PURE__*/ __L.at(__c0, 3);
+const __listOfClusterEndpoint = /*@__PURE__*/ __L.at(__c27, 1);
 export type Status = "PENDING" | "DEPLOYED" | "PENDING_DELETION" | (string & {});
 export type __stringMin12Max12PatternD12 = string;
 export interface Cluster {
@@ -214,7 +214,7 @@ export interface CreateRoutingControlResponse {
   RoutingControl?: RoutingControl;
 }
 export type __listOf__stringMin1Max256PatternAZaZ09 = string[];
-const __listOf__stringMin1Max256PatternAZaZ09 = /*@__PURE__*/ __L.at(__c1, 4);
+const __listOf__stringMin1Max256PatternAZaZ09 = /*@__PURE__*/ __L.at(__c1, 0);
 export type RuleType = "ATLEAST" | "AND" | "OR" | (string & {});
 export interface RuleConfig {
   Inverted?: boolean;
@@ -369,7 +369,7 @@ export interface ListClustersRequest {
   NextToken?: string;
 }
 export type __listOfCluster = Cluster[];
-const __listOfCluster = /*@__PURE__*/ __L.at(__c4, 3);
+const __listOfCluster = /*@__PURE__*/ __L.at(__c15, 1);
 export interface ListClustersResponse {
   Clusters?: Cluster[];
   NextToken?: string;
@@ -380,7 +380,7 @@ export interface ListControlPanelsRequest {
   NextToken?: string;
 }
 export type __listOfControlPanel = ControlPanel[];
-const __listOfControlPanel = /*@__PURE__*/ __L.at(__c4, 6);
+const __listOfControlPanel = /*@__PURE__*/ __L.at(__c16, 1);
 export interface ListControlPanelsResponse {
   ControlPanels?: ControlPanel[];
   NextToken?: string;
@@ -391,7 +391,7 @@ export interface ListRoutingControlsRequest {
   NextToken?: string;
 }
 export type __listOfRoutingControl = RoutingControl[];
-const __listOfRoutingControl = /*@__PURE__*/ __L.at(__c5, 1);
+const __listOfRoutingControl = /*@__PURE__*/ __L.at(__c17, 1);
 export interface ListRoutingControlsResponse {
   NextToken?: string;
   RoutingControls?: RoutingControl[];
@@ -406,7 +406,7 @@ export interface Rule {
   GATING?: GatingRule;
 }
 export type __listOfRule = Rule[];
-const __listOfRule = /*@__PURE__*/ __L.at(__c5, 5);
+const __listOfRule = /*@__PURE__*/ __L.at(__c18, 2);
 export interface ListSafetyRulesResponse {
   NextToken?: string;
   SafetyRules?: (Rule & {
@@ -524,8 +524,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateClusterRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateClusterResponse>,
+  input: __S(104, __c26, 0) as any as S.Schema<CreateClusterRequest>,
+  output: __S(112, __c28, 0) as any as S.Schema<CreateClusterResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -558,8 +558,8 @@ export const createControlPanel: API.OperationMethod<
   CreateControlPanelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateControlPanelRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateControlPanelResponse>,
+  input: __S(120, __c30, 0) as any as S.Schema<CreateControlPanelRequest>,
+  output: __S(128, __c32, 0) as any as S.Schema<CreateControlPanelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -596,8 +596,8 @@ export const createRoutingControl: API.OperationMethod<
   CreateRoutingControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateRoutingControlRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateRoutingControlResponse>,
+  input: __S(132, __c33, 0) as any as S.Schema<CreateRoutingControlRequest>,
+  output: __S(140, __c35, 0) as any as S.Schema<CreateRoutingControlResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -630,8 +630,8 @@ export const createSafetyRule: API.OperationMethod<
   CreateSafetyRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateSafetyRuleRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateSafetyRuleResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateSafetyRuleRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<CreateSafetyRuleResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -655,8 +655,8 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -687,8 +687,8 @@ export const deleteControlPanel: API.OperationMethod<
   DeleteControlPanelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteControlPanelRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteControlPanelResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<DeleteControlPanelRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<DeleteControlPanelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -719,8 +719,8 @@ export const deleteRoutingControl: API.OperationMethod<
   DeleteRoutingControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteRoutingControlRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteRoutingControlResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<DeleteRoutingControlRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<DeleteRoutingControlResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -749,8 +749,8 @@ export const deleteSafetyRule: API.OperationMethod<
   DeleteSafetyRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteSafetyRuleRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteSafetyRuleResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<DeleteSafetyRuleRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<DeleteSafetyRuleResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -774,8 +774,8 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DescribeClusterRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DescribeClusterResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<DescribeClusterRequest>,
+  output: __S(112, __c28, 0) as any as S.Schema<DescribeClusterResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -806,8 +806,8 @@ export const describeControlPanel: API.OperationMethod<
   DescribeControlPanelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DescribeControlPanelRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DescribeControlPanelResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<DescribeControlPanelRequest>,
+  output: __S(128, __c32, 0) as any as S.Schema<DescribeControlPanelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -840,8 +840,8 @@ export const describeRoutingControl: API.OperationMethod<
   DescribeRoutingControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DescribeRoutingControlRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DescribeRoutingControlResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<DescribeRoutingControlRequest>,
+  output: __S(140, __c35, 0) as any as S.Schema<DescribeRoutingControlResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -868,8 +868,8 @@ export const describeSafetyRule: API.OperationMethod<
   DescribeSafetyRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DescribeSafetyRuleRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DescribeSafetyRuleResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<DescribeSafetyRuleRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<DescribeSafetyRuleResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -889,8 +889,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetResourcePolicyResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetResourcePolicyRequest>,
+  output: __S(53, __c13, 1) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -912,8 +912,8 @@ export const listAssociatedRoute53HealthChecks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   __stringMax36PatternS
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListAssociatedRoute53HealthChecksRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListAssociatedRoute53HealthChecksResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<ListAssociatedRoute53HealthChecksRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<ListAssociatedRoute53HealthChecksResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -943,8 +943,8 @@ export const listClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Cluster
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListClustersRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListClustersResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<ListClustersRequest>,
+  output: __S(62, __c15, 2) as any as S.Schema<ListClustersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -980,8 +980,8 @@ export const listControlPanels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ControlPanel
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListControlPanelsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListControlPanelsResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<ListControlPanelsRequest>,
+  output: __S(66, __c16, 2) as any as S.Schema<ListControlPanelsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1017,8 +1017,8 @@ export const listRoutingControls: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RoutingControl
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListRoutingControlsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ListRoutingControlsResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<ListRoutingControlsRequest>,
+  output: __S(70, __c17, 2) as any as S.Schema<ListRoutingControlsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1054,8 +1054,8 @@ export const listSafetyRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Rule
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListSafetyRulesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListSafetyRulesResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<ListSafetyRulesRequest>,
+  output: __S(75, __c18, 3) as any as S.Schema<ListSafetyRulesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1088,8 +1088,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(77, __c19, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1110,8 +1110,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<TagResourceRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<TagResourceResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1132,8 +1132,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<UntagResourceRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UntagResourceResponse>,
+  input: __S(84, __c21, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1157,8 +1157,8 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateClusterResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<UpdateClusterRequest>,
+  output: __S(112, __c28, 0) as any as S.Schema<UpdateClusterResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1189,8 +1189,8 @@ export const updateControlPanel: API.OperationMethod<
   UpdateControlPanelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<UpdateControlPanelRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<UpdateControlPanelResponse>,
+  input: __S(92, __c23, 0) as any as S.Schema<UpdateControlPanelRequest>,
+  output: __S(128, __c32, 0) as any as S.Schema<UpdateControlPanelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1221,8 +1221,8 @@ export const updateRoutingControl: API.OperationMethod<
   UpdateRoutingControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<UpdateRoutingControlRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateRoutingControlResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<UpdateRoutingControlRequest>,
+  output: __S(140, __c35, 0) as any as S.Schema<UpdateRoutingControlResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1250,8 +1250,8 @@ export const updateSafetyRule: API.OperationMethod<
   UpdateSafetyRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<UpdateSafetyRuleRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<UpdateSafetyRuleResponse>,
+  input: __S(101, __c25, 1) as any as S.Schema<UpdateSafetyRuleRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<UpdateSafetyRuleResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1262,128 +1262,43 @@ export const updateSafetyRule: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          ClusterName: S.optional(S.String),
-          Tags: S.optional(__mapOf__stringMin0Max256PatternS),
-          NetworkType: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/cluster" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateClusterRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Endpoint: S.optional(S.String), Region: S.optional(S.String) }),
-      ).annotate({ identifier: "ClusterEndpoint" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ClusterArn: S.optional(S.String),
-          ClusterEndpoints: S.optional(__listOfClusterEndpoint),
-          Name: S.optional(S.String),
-          Status: S.optional(S.String),
-          Owner: S.optional(S.String),
-          NetworkType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Cluster" });
-    case 5:
-      return S.suspend(() => S.Struct({ Cluster: S.optional(__S(4, __c0, 4)) })).annotate({
-        identifier: "CreateClusterResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          ClusterArn: S.optional(S.String),
-          ControlPanelName: S.optional(S.String),
-          Tags: S.optional(__mapOf__stringMin0Max256PatternS),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/controlpanel" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateControlPanelRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ClusterArn: S.optional(S.String),
-          ControlPanelArn: S.optional(S.String),
-          DefaultControlPanel: S.optional(S.Boolean),
-          Name: S.optional(S.String),
-          RoutingControlCount: S.optional(S.Number),
-          Status: S.optional(S.String),
-          Owner: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ControlPanel" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ ControlPanel: S.optional(__S(7, __c0, 7)) })).annotate({
-        identifier: "CreateControlPanelResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          ClusterArn: S.optional(S.String),
-          ControlPanelArn: S.optional(S.String),
-          RoutingControlName: S.optional(S.String),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/routingcontrol" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateRoutingControlRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ControlPanelArn: S.optional(S.String),
-          Name: S.optional(S.String),
-          RoutingControlArn: S.optional(S.String),
-          Status: S.optional(S.String),
-          Owner: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RoutingControl" });
-    case 3:
-      return S.suspend(() => S.Struct({ RoutingControl: S.optional(__S(10, __c1, 2)) })).annotate({
-        identifier: "CreateRoutingControlResponse",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Inverted: S.optional(S.Boolean),
-          Threshold: S.optional(S.Number),
-          Type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RuleConfig" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           AssertedControls: S.optional(__listOf__stringMin1Max256PatternAZaZ09),
           ControlPanelArn: S.optional(S.String),
           Name: S.optional(S.String),
-          RuleConfig: S.optional(__S(13, __c1, 5)),
+          RuleConfig: S.optional(__S(8, __c2, 0)),
           WaitPeriodMs: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NewAssertionRule" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ControlPanelArn: S.optional(S.String),
           GatingControls: S.optional(__listOf__stringMin1Max256PatternAZaZ09),
           Name: S.optional(S.String),
-          RuleConfig: S.optional(__S(13, __c1, 5)),
+          RuleConfig: S.optional(__S(8, __c2, 0)),
           TargetControls: S.optional(__listOf__stringMin1Max256PatternAZaZ09),
           WaitPeriodMs: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NewGatingRule" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AssertionRule: S.optional(__S(0, __c0, 0)),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          GatingRule: S.optional(__S(1, __c0, 1)),
+          Tags: S.optional(__mapOf__stringMin0Max256PatternS),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/safetyrule" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateSafetyRuleRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
@@ -1391,21 +1306,18 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AssertionRule: S.optional(__S(14, __c1, 6)),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          GatingRule: S.optional(__S(15, __c1, 7)),
-          Tags: S.optional(__mapOf__stringMin0Max256PatternS),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/safetyrule" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateSafetyRuleRequest" });
+          Inverted: S.optional(S.Boolean),
+          Threshold: S.optional(S.Number),
+          Type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RuleConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           AssertedControls: S.optional(__listOf__stringMin1Max256PatternAZaZ09),
           ControlPanelArn: S.optional(S.String),
           Name: S.optional(S.String),
-          RuleConfig: S.optional(__S(13, __c1, 5)),
+          RuleConfig: S.optional(__S(8, __c2, 0)),
           SafetyRuleArn: S.optional(S.String),
           Status: S.optional(S.String),
           WaitPeriodMs: S.optional(S.Number),
@@ -1418,7 +1330,7 @@ function __c2(j: number): any {
           ControlPanelArn: S.optional(S.String),
           GatingControls: S.optional(__listOf__stringMin1Max256PatternAZaZ09),
           Name: S.optional(S.String),
-          RuleConfig: S.optional(__S(13, __c1, 5)),
+          RuleConfig: S.optional(__S(8, __c2, 0)),
           SafetyRuleArn: S.optional(S.String),
           Status: S.optional(S.String),
           TargetControls: S.optional(__listOf__stringMin1Max256PatternAZaZ09),
@@ -1426,14 +1338,22 @@ function __c2(j: number): any {
           Owner: S.optional(S.String),
         }),
       ).annotate({ identifier: "GatingRule" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          AssertionRule: S.optional(__S(17, __c2, 1)),
-          GatingRule: S.optional(__S(18, __c2, 2)),
+          AssertionRule: S.optional(__S(9, __c2, 1)),
+          GatingRule: S.optional(__S(10, __c2, 2)),
         }),
       ).annotate({ identifier: "CreateSafetyRuleResponse" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClusterArn: S.String.pipe(T.HttpLabel("ClusterArn")) }).pipe(
           T.all(
@@ -1446,11 +1366,19 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteClusterRequest" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteClusterResponse",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ControlPanelArn: S.String.pipe(T.HttpLabel("ControlPanelArn")) }).pipe(
           T.all(
@@ -1465,7 +1393,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteControlPanelRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RoutingControlArn: S.String.pipe(T.HttpLabel("RoutingControlArn")) }).pipe(
           T.all(
@@ -1482,7 +1414,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1497,7 +1429,11 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteSafetyRuleRequest" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClusterArn: S.String.pipe(T.HttpLabel("ClusterArn")) }).pipe(
           T.all(
@@ -1510,7 +1446,11 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeClusterRequest" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ControlPanelArn: S.String.pipe(T.HttpLabel("ControlPanelArn")) }).pipe(
           T.all(
@@ -1525,7 +1465,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeControlPanelRequest",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RoutingControlArn: S.String.pipe(T.HttpLabel("RoutingControlArn")) }).pipe(
           T.all(
@@ -1540,7 +1484,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeRoutingControlRequest",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SafetyRuleArn: S.String.pipe(T.HttpLabel("SafetyRuleArn")) }).pipe(
           T.all(
@@ -1555,16 +1503,20 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeSafetyRuleRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          AssertionRule: S.optional(__S(17, __c2, 1)),
-          GatingRule: S.optional(__S(18, __c2, 2)),
+          AssertionRule: S.optional(__S(9, __c2, 1)),
+          GatingRule: S.optional(__S(10, __c2, 2)),
         }),
       ).annotate({
         identifier: "DescribeSafetyRuleResponse",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
           T.all(
@@ -1577,13 +1529,13 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetResourcePolicyRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ Policy: S.optional(S.String) })).annotate({
         identifier: "GetResourcePolicyResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1616,20 +1568,28 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAssociatedRoute53HealthChecksResponse",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/cluster" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListClustersRequest" });
-    case 3:
-      return S.Array(__S(4, __c0, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(110, __c27, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({ Clusters: S.optional(__listOfCluster), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListClustersResponse" });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterArn: S.optional(S.String).pipe(T.HttpQuery("ClusterArn")),
@@ -1639,9 +1599,9 @@ function __c4(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/controlpanels" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListControlPanelsRequest" });
-    case 6:
-      return S.Array(__S(7, __c0, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(124, __c31, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ControlPanels: S.optional(__listOfControlPanel),
@@ -1652,7 +1612,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1674,7 +1634,7 @@ function __c5(j: number): any {
         identifier: "ListRoutingControlsRequest",
       });
     case 1:
-      return S.Array(__S(10, __c1, 2));
+      return S.Array(__S(136, __c34, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1684,7 +1644,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListRoutingControlsResponse",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ControlPanelArn: S.String.pipe(T.HttpLabel("ControlPanelArn")),
@@ -1701,17 +1665,21 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListSafetyRulesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ASSERTION: S.optional(__S(17, __c2, 1)), GATING: S.optional(__S(18, __c2, 2)) }),
+        S.Struct({ ASSERTION: S.optional(__S(9, __c2, 1)), GATING: S.optional(__S(10, __c2, 2)) }),
       ).annotate({ identifier: "Rule" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(73, __c18, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), SafetyRules: S.optional(__listOfRule) }),
       ).annotate({ identifier: "ListSafetyRulesResponse" });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
           T.all(
@@ -1726,17 +1694,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Tags: S.optional(__mapOf__stringMin0Max256PatternS) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
@@ -1752,7 +1720,11 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
@@ -1768,13 +1740,21 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClusterArn: S.optional(S.String), NetworkType: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/cluster" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateClusterRequest" });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ControlPanelArn: S.optional(S.String),
@@ -1785,7 +1765,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateControlPanelRequest",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RoutingControlArn: S.optional(S.String),
@@ -1796,7 +1780,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateRoutingControlRequest",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -1804,16 +1792,145 @@ function __c6(j: number): any {
           WaitPeriodMs: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AssertionRuleUpdate" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          AssertionRuleUpdate: S.optional(__S(54, __c6, 6)),
-          GatingRuleUpdate: S.optional(__S(54, __c6, 6)),
+          AssertionRuleUpdate: S.optional(__S(100, __c25, 0)),
+          GatingRuleUpdate: S.optional(__S(100, __c25, 0)),
         }).pipe(T.all(T.Http({ method: "PUT", uri: "/safetyrule" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateSafetyRuleRequest" });
   }
 }
-
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          ClusterName: S.optional(S.String),
+          Tags: S.optional(__mapOf__stringMin0Max256PatternS),
+          NetworkType: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/cluster" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateClusterRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Endpoint: S.optional(S.String), Region: S.optional(S.String) }),
+      ).annotate({ identifier: "ClusterEndpoint" });
+    case 1:
+      return S.Array(__S(108, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ClusterArn: S.optional(S.String),
+          ClusterEndpoints: S.optional(__listOfClusterEndpoint),
+          Name: S.optional(S.String),
+          Status: S.optional(S.String),
+          Owner: S.optional(S.String),
+          NetworkType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Cluster" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Cluster: S.optional(__S(110, __c27, 2)) })).annotate({
+        identifier: "CreateClusterResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          ClusterArn: S.optional(S.String),
+          ControlPanelName: S.optional(S.String),
+          Tags: S.optional(__mapOf__stringMin0Max256PatternS),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/controlpanel" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateControlPanelRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClusterArn: S.optional(S.String),
+          ControlPanelArn: S.optional(S.String),
+          DefaultControlPanel: S.optional(S.Boolean),
+          Name: S.optional(S.String),
+          RoutingControlCount: S.optional(S.Number),
+          Status: S.optional(S.String),
+          Owner: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ControlPanel" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ControlPanel: S.optional(__S(124, __c31, 0)) })).annotate({
+        identifier: "CreateControlPanelResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          ClusterArn: S.optional(S.String),
+          ControlPanelArn: S.optional(S.String),
+          RoutingControlName: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/routingcontrol" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateRoutingControlRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ControlPanelArn: S.optional(S.String),
+          Name: S.optional(S.String),
+          RoutingControlArn: S.optional(S.String),
+          Status: S.optional(S.String),
+          Owner: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RoutingControl" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RoutingControl: S.optional(__S(136, __c34, 0)) })).annotate(
+        {
+          identifier: "CreateRoutingControlResponse",
+        },
+      );
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

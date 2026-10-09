@@ -221,7 +221,7 @@ export const containerCheckpoint: API.OperationMethod<
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ContainerCheckpointRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ContainerCheckpointResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<ContainerCheckpointResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -234,8 +234,8 @@ export const containerExecPutInput: API.OperationMethod<
   ContainerExecPutInputError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ContainerExecPutInputRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ContainerExecPutInputResponse>,
+  input: __S(33, __c2, 1) as any as S.Schema<ContainerExecPutInputRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<ContainerExecPutInputResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -248,8 +248,8 @@ export const containerExecWait: API.OperationMethod<
   ContainerExecWaitError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ContainerExecWaitRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ContainerExecWaitResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ContainerExecWaitRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<ContainerExecWaitResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -262,8 +262,8 @@ export const containerHeartbeat: API.OperationMethod<
   ContainerHeartbeatError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ContainerHeartbeatRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ContainerHeartbeatResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ContainerHeartbeatRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<ContainerHeartbeatResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -276,8 +276,8 @@ export const containerHello: API.OperationMethod<
   ContainerHelloError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ContainerHelloRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ContainerHelloResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ContainerHelloRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<ContainerHelloResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -290,8 +290,8 @@ export const containerLog: API.OperationMethod<
   ContainerLogError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ContainerLogRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ContainerLogResponse>,
+  input: __S(131, __c8, 3) as any as S.Schema<ContainerLogRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<ContainerLogResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -304,8 +304,8 @@ export const containerReloadVolumes: API.OperationMethod<
   ContainerReloadVolumesError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ContainerReloadVolumesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ContainerReloadVolumesResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ContainerReloadVolumesRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<ContainerReloadVolumesResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -318,8 +318,8 @@ export const containerServerLifecycleReady: API.OperationMethod<
   ContainerServerLifecycleReadyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ContainerServerLifecycleReadyRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ContainerServerLifecycleReadyResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ContainerServerLifecycleReadyRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<ContainerServerLifecycleReadyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -332,8 +332,8 @@ export const execContainer: API.OperationMethod<
   ExecContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ExecContainerRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ExecContainerResponse>,
+  input: __S(177, __c11, 1) as any as S.Schema<ExecContainerRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<ExecContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -346,8 +346,8 @@ export const execContainerFilesystem: API.OperationMethod<
   ExecContainerFilesystemError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ExecContainerFilesystemRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ExecContainerFilesystemResponse>,
+  input: __S(203, __c12, 11) as any as S.Schema<ExecContainerFilesystemRequest>,
+  output: __S(204, __c12, 12) as any as S.Schema<ExecContainerFilesystemResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -360,8 +360,8 @@ export const stopContainer: API.OperationMethod<
   StopContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<StopContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StopContainerResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<StopContainerRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<StopContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -384,11 +384,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ContainerCheckpointRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ContainerCheckpointResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -396,11 +404,11 @@ function __c0(j: number): any {
           eof: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RuntimeInputMessage" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           execId: S.optional(S.String),
-          input: S.optional(__S(2, __c0, 2)),
+          input: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -411,7 +419,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ContainerExecPutInputRequest",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          graceful: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/ContainerStop", code: 200 }),
+        ),
+      ).annotate({ identifier: "StopContainerRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           execId: S.optional(S.String),
@@ -420,7 +445,7 @@ function __c0(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ContainerExecWait", code: 200 }),
         ),
       ).annotate({ identifier: "ContainerExecWaitRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           exitCode: S.optional(S.Number),
@@ -429,7 +454,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ContainerExecWaitResponse",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           canceledInputsReturnOutputs: S.optional(S.Boolean),
@@ -444,35 +473,43 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ContainerHeartbeatRequest",
       });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          inputIds: S.optional(__S(7, __c0, 7)),
+          inputIds: S.optional(__S(96, __c6, 0)),
           terminateContainers: S.optional(S.Boolean),
           cancellationReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "CancelInputEvent" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          cancelInputEvent: S.optional(__S(8, __c1, 0)),
+          cancelInputEvent: S.optional(__S(81, __c5, 1)),
         }),
       ).annotate({
         identifier: "ContainerHeartbeatResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ContainerHello", code: 200 }),
         ),
       ).annotate({ identifier: "ContainerHelloRequest" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           len: S.optional(S.String),
@@ -481,14 +518,14 @@ function __c1(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskProgress" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
           taskState: S.optional(S.String),
           timestamp: S.optional(S.Number),
           fileDescriptor: S.optional(S.String),
-          taskProgress: S.optional(__S(11, __c1, 3)),
+          taskProgress: S.optional(__S(128, __c8, 0)),
           functionCallId: S.optional(S.String),
           inputId: S.optional(S.String),
           timestampNs: S.optional(S.String),
@@ -496,17 +533,21 @@ function __c1(j: number): any {
           containerName: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskLogs" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          logs: S.optional(__S(13, __c1, 5)),
+          logs: S.optional(__S(130, __c8, 2)),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ContainerLog", code: 200 }),
         ),
       ).annotate({ identifier: "ContainerLogRequest" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
@@ -522,7 +563,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -540,7 +581,11 @@ function __c2(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ContainerServerLifecycleReadyResponse",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -553,30 +598,34 @@ function __c2(j: number): any {
           noTerminateOnIdleStdin: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PTYInfo" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
-          command: S.optional(__S(7, __c0, 7)),
-          ptyInfo: S.optional(__S(18, __c2, 2)),
+          command: S.optional(__S(96, __c6, 0)),
+          ptyInfo: S.optional(__S(176, __c11, 0)),
           terminateContainerOnExit: S.optional(S.Boolean),
           runtimeDebug: S.optional(S.Boolean),
           stdoutOutput: S.optional(S.String),
           stderrOutput: S.optional(S.String),
           timeoutSecs: S.optional(S.Number),
           workdir: S.optional(S.String),
-          secretIds: S.optional(__S(7, __c0, 7)),
+          secretIds: S.optional(__S(96, __c6, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ContainerExec", code: 200 }),
         ),
       ).annotate({ identifier: "ExecContainerRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           execId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecContainerResponse" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileDescriptor: S.optional(S.String),
@@ -584,7 +633,7 @@ function __c2(j: number): any {
           mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerFileOpenRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fileDescriptor: S.optional(S.String),
@@ -593,18 +642,14 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ContainerFileWriteRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           fileDescriptor: S.optional(S.String),
           n: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContainerFileReadRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           fileDescriptor: S.optional(S.String),
@@ -612,7 +657,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ContainerFileFlushRequest",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           fileDescriptor: S.optional(S.String),
@@ -620,7 +665,7 @@ function __c3(j: number): any {
           whence: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerFileSeekRequest" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           fileDescriptor: S.optional(S.String),
@@ -630,7 +675,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ContainerFileDeleteBytesRequest",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           fileDescriptor: S.optional(S.String),
@@ -641,13 +686,13 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ContainerFileWriteReplaceBytesRequest",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerFileLsRequest" });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -656,14 +701,14 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ContainerFileMkdirRequest",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
           recursive: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ContainerFileRmRequest" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -673,26 +718,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ContainerFileWatchRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          fileOpenRequest: S.optional(__S(21, __c2, 5)),
-          fileWriteRequest: S.optional(__S(22, __c2, 6)),
-          fileReadRequest: S.optional(__S(23, __c2, 7)),
-          fileFlushRequest: S.optional(__S(24, __c3, 0)),
-          fileReadLineRequest: S.optional(__S(24, __c3, 0)),
-          fileSeekRequest: S.optional(__S(25, __c3, 1)),
-          fileDeleteBytesRequest: S.optional(__S(26, __c3, 2)),
-          fileWriteReplaceBytesRequest: S.optional(__S(27, __c3, 3)),
-          fileCloseRequest: S.optional(__S(24, __c3, 0)),
-          fileLsRequest: S.optional(__S(28, __c3, 4)),
-          fileMkdirRequest: S.optional(__S(29, __c3, 5)),
-          fileRmRequest: S.optional(__S(30, __c3, 6)),
-          fileWatchRequest: S.optional(__S(31, __c3, 7)),
+          fileOpenRequest: S.optional(__S(192, __c12, 0)),
+          fileWriteRequest: S.optional(__S(193, __c12, 1)),
+          fileReadRequest: S.optional(__S(194, __c12, 2)),
+          fileFlushRequest: S.optional(__S(195, __c12, 3)),
+          fileReadLineRequest: S.optional(__S(195, __c12, 3)),
+          fileSeekRequest: S.optional(__S(196, __c12, 4)),
+          fileDeleteBytesRequest: S.optional(__S(197, __c12, 5)),
+          fileWriteReplaceBytesRequest: S.optional(__S(198, __c12, 6)),
+          fileCloseRequest: S.optional(__S(195, __c12, 3)),
+          fileLsRequest: S.optional(__S(199, __c12, 7)),
+          fileMkdirRequest: S.optional(__S(200, __c12, 8)),
+          fileRmRequest: S.optional(__S(201, __c12, 9)),
+          fileWatchRequest: S.optional(__S(202, __c12, 10)),
           taskId: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -704,7 +745,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ExecContainerFilesystemRequest",
       });
-    case 1:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           execId: S.optional(S.String),
@@ -713,18 +754,8 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ExecContainerFilesystemResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          graceful: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/ContainerStop", code: 200 }),
-        ),
-      ).annotate({ identifier: "StopContainerRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

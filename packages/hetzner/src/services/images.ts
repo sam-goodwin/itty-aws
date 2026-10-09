@@ -335,8 +335,8 @@ export const getImage: API.OperationMethod<
   GetImageError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetImageRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetImageResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetImageRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GetImageResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -352,8 +352,8 @@ export const listImages: API.PaginatedOperationMethod<
   ListImagesResponseImagesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(11, __c1, 3) as any as S.Schema<ListImagesRequest>,
-    output: __S(16, __c2, 0) as any as S.Schema<ListImagesResponse>,
+    input: __S(26, __c3, 2) as any as S.Schema<ListImagesRequest>,
+    output: __S(31, __c3, 7) as any as S.Schema<ListImagesResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -376,8 +376,8 @@ export const updateImage: API.OperationMethod<
   UpdateImageError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<UpdateImageRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<UpdateImageResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateImageRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<UpdateImageResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -396,13 +396,51 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteImageResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/images/{id}", code: 200 })),
       ).annotate({ identifier: "GetImageRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          type: S.String,
+          status: S.String,
+          name: S.NullOr(S.String),
+          description: S.String,
+          image_size: S.NullOr(S.Number),
+          disk_size: S.Number,
+          created: S.String,
+          created_from: S.NullOr(__S(16, __c2, 0)),
+          bound_to: S.NullOr(S.Number),
+          os_flavor: S.String,
+          os_version: S.NullOr(S.String),
+          rapid_deploy: S.optional(S.Boolean),
+          protection: __S(17, __c2, 1),
+          deprecated: S.NullOr(S.String),
+          deprecation: S.NullOr(__S(18, __c2, 2)),
+          deleted: S.NullOr(S.String),
+          labels: __S(19, __c2, 3),
+          architecture: S.String,
+        }),
+      ).annotate({ identifier: "GetImageResponseImage" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(__S(9, __c1, 1)),
+        }),
+      ).annotate({ identifier: "GetImageResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -411,7 +449,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetImageResponseImageCreatedFrom",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           delete: S.Boolean,
@@ -419,7 +457,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetImageResponseImageProtection",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           unavailable_after: S.String,
@@ -428,53 +466,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetImageResponseImageDeprecation",
       });
-    case 6:
+    case 3:
       return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          type: S.String,
-          status: S.String,
-          name: S.NullOr(S.String),
-          description: S.String,
-          image_size: S.NullOr(S.Number),
-          disk_size: S.Number,
-          created: S.String,
-          created_from: S.NullOr(__S(3, __c0, 3)),
-          bound_to: S.NullOr(S.Number),
-          os_flavor: S.String,
-          os_version: S.NullOr(S.String),
-          rapid_deploy: S.optional(S.Boolean),
-          protection: __S(4, __c0, 4),
-          deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(5, __c0, 5)),
-          deleted: S.NullOr(S.String),
-          labels: __S(6, __c0, 6),
-          architecture: S.String,
-        }),
-      ).annotate({ identifier: "GetImageResponseImage" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "GetImageResponse" });
+      return S.Array(S.String);
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.Array(S.String);
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          type: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          status: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          bound_to: S.optional(__S(10, __c1, 2).pipe(T.Query())),
+          sort: S.optional(__S(24, __c3, 0).pipe(T.Query())),
+          type: S.optional(__S(24, __c3, 0).pipe(T.Query())),
+          status: S.optional(__S(24, __c3, 0).pipe(T.Query())),
+          bound_to: S.optional(__S(25, __c3, 1).pipe(T.Query())),
           include_deprecated: S.optional(S.Boolean.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
@@ -483,7 +491,7 @@ function __c1(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/images", code: 200 })),
       ).annotate({ identifier: "ListImagesRequest" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -494,24 +502,24 @@ function __c1(j: number): any {
           image_size: S.NullOr(S.Number),
           disk_size: S.Number,
           created: S.String,
-          created_from: S.NullOr(__S(3, __c0, 3)),
+          created_from: S.NullOr(__S(16, __c2, 0)),
           bound_to: S.NullOr(S.Number),
           os_flavor: S.String,
           os_version: S.NullOr(S.String),
           rapid_deploy: S.optional(S.Boolean),
-          protection: __S(4, __c0, 4),
+          protection: __S(17, __c2, 1),
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(5, __c0, 5)),
+          deprecation: S.NullOr(__S(18, __c2, 2)),
           deleted: S.NullOr(S.String),
-          labels: __S(6, __c0, 6),
+          labels: __S(19, __c2, 3),
           architecture: S.String,
         }),
       ).annotate({
         identifier: "ListImagesResponseImagesItem",
       });
+    case 4:
+      return S.Array(__S(27, __c3, 3));
     case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -524,33 +532,33 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListImagesResponseMetaPagination",
       });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          pagination: __S(29, __c3, 5),
+        }),
+      ).annotate({ identifier: "ListImagesResponseMeta" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "ListImagesResponseMeta" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          images: __S(13, __c1, 5),
-          meta: __S(15, __c1, 7),
+          images: __S(28, __c3, 4),
+          meta: __S(30, __c3, 6),
         }),
       ).annotate({ identifier: "ListImagesResponse" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           description: S.optional(S.String),
           type: S.optional(S.String),
-          labels: S.optional(__S(6, __c0, 6)),
+          labels: S.optional(__S(19, __c2, 3)),
         }).pipe(T.Http({ method: "PUT", uri: "/images/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateImageRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -561,28 +569,27 @@ function __c2(j: number): any {
           image_size: S.NullOr(S.Number),
           disk_size: S.Number,
           created: S.String,
-          created_from: S.NullOr(__S(3, __c0, 3)),
+          created_from: S.NullOr(__S(16, __c2, 0)),
           bound_to: S.NullOr(S.Number),
           os_flavor: S.String,
           os_version: S.NullOr(S.String),
           rapid_deploy: S.optional(S.Boolean),
-          protection: __S(4, __c0, 4),
+          protection: __S(17, __c2, 1),
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(5, __c0, 5)),
+          deprecation: S.NullOr(__S(18, __c2, 2)),
           deleted: S.NullOr(S.String),
-          labels: __S(6, __c0, 6),
+          labels: __S(19, __c2, 3),
           architecture: S.String,
         }),
       ).annotate({ identifier: "UpdateImageResponseImage" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(__S(18, __c2, 2)),
+          image: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "UpdateImageResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

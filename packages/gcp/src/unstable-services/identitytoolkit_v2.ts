@@ -1420,11 +1420,11 @@ export const createProjectsDefaultSupportedIdpConfigs: API.OperationMethod<
   CreateProjectsDefaultSupportedIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateProjectsDefaultSupportedIdpConfigsRequest>,
+  input: __S(1216, __c38, 0) as any as S.Schema<CreateProjectsDefaultSupportedIdpConfigsRequest>,
   output: __S(
-    3,
-    __c0,
-    3,
+    1282,
+    __c40,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1444,8 +1444,12 @@ export const createProjectsInboundSamlConfigs: API.OperationMethod<
   CreateProjectsInboundSamlConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateProjectsInboundSamlConfigsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>,
+  input: __S(1664, __c52, 0) as any as S.Schema<CreateProjectsInboundSamlConfigsRequest>,
+  output: __S(
+    1702,
+    __c53,
+    6,
+  ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1464,8 +1468,8 @@ export const createProjectsOauthIdpConfigs: API.OperationMethod<
   CreateProjectsOauthIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateProjectsOauthIdpConfigsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>,
+  input: __S(1856, __c58, 0) as any as S.Schema<CreateProjectsOauthIdpConfigsRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1479,8 +1483,8 @@ export const createProjectsTenants: API.OperationMethod<
   CreateProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateProjectsTenantsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Tenant>,
+  input: __S(1920, __c60, 0) as any as S.Schema<CreateProjectsTenantsRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Tenant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1500,14 +1504,14 @@ export const createProjectsTenantsDefaultSupportedIdpConfigs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    46,
-    __c5,
-    6,
+    2016,
+    __c63,
+    0,
   ) as any as S.Schema<CreateProjectsTenantsDefaultSupportedIdpConfigsRequest>,
   output: __S(
-    3,
-    __c0,
-    3,
+    1282,
+    __c40,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1527,8 +1531,12 @@ export const createProjectsTenantsInboundSamlConfigs: API.OperationMethod<
   CreateProjectsTenantsInboundSamlConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateProjectsTenantsInboundSamlConfigsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>,
+  input: __S(2048, __c64, 0) as any as S.Schema<CreateProjectsTenantsInboundSamlConfigsRequest>,
+  output: __S(
+    1702,
+    __c53,
+    6,
+  ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1547,8 +1555,8 @@ export const createProjectsTenantsOauthIdpConfigs: API.OperationMethod<
   CreateProjectsTenantsOauthIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateProjectsTenantsOauthIdpConfigsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsTenantsOauthIdpConfigsRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1567,8 +1575,8 @@ export const deleteProjectsDefaultSupportedIdpConfigs: API.OperationMethod<
   DeleteProjectsDefaultSupportedIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteProjectsDefaultSupportedIdpConfigsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteProjectsDefaultSupportedIdpConfigsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1587,8 +1595,8 @@ export const deleteProjectsInboundSamlConfigs: API.OperationMethod<
   DeleteProjectsInboundSamlConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteProjectsInboundSamlConfigsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteProjectsInboundSamlConfigsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1607,8 +1615,8 @@ export const deleteProjectsOauthIdpConfigs: API.OperationMethod<
   DeleteProjectsOauthIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteProjectsOauthIdpConfigsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteProjectsOauthIdpConfigsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1622,8 +1630,8 @@ export const deleteProjectsTenants: API.OperationMethod<
   DeleteProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteProjectsTenantsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteProjectsTenantsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1643,11 +1651,11 @@ export const deleteProjectsTenantsDefaultSupportedIdpConfigs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    54,
+    192,
     __c6,
-    6,
+    0,
   ) as any as S.Schema<DeleteProjectsTenantsDefaultSupportedIdpConfigsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1666,8 +1674,8 @@ export const deleteProjectsTenantsInboundSamlConfigs: API.OperationMethod<
   DeleteProjectsTenantsInboundSamlConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteProjectsTenantsInboundSamlConfigsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteProjectsTenantsInboundSamlConfigsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1686,8 +1694,8 @@ export const deleteProjectsTenantsOauthIdpConfigs: API.OperationMethod<
   DeleteProjectsTenantsOauthIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteProjectsTenantsOauthIdpConfigsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteProjectsTenantsOauthIdpConfigsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1706,11 +1714,11 @@ export const finalizeAccountsMfaEnrollment: API.OperationMethod<
   FinalizeAccountsMfaEnrollmentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<FinalizeAccountsMfaEnrollmentRequest>,
+  input: __S(290, __c9, 2) as any as S.Schema<FinalizeAccountsMfaEnrollmentRequest>,
   output: __S(
-    63,
-    __c7,
-    7,
+    291,
+    __c9,
+    3,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1730,10 +1738,10 @@ export const finalizeAccountsMfaSignIn: API.OperationMethod<
   FinalizeAccountsMfaSignInError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<FinalizeAccountsMfaSignInRequest>,
+  input: __S(386, __c12, 2) as any as S.Schema<FinalizeAccountsMfaSignInRequest>,
   output: __S(
-    67,
-    __c8,
+    387,
+    __c12,
     3,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
@@ -1749,8 +1757,8 @@ export const getConfigProjects: API.OperationMethod<
   GetConfigProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetConfigProjectsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Config>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetConfigProjectsRequest>,
+  output: __S(466, __c14, 18) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Config>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1769,8 +1777,8 @@ export const getIamPolicyProjectsTenants: API.OperationMethod<
   GetIamPolicyProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetIamPolicyProjectsTenantsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(482, __c15, 2) as any as S.Schema<GetIamPolicyProjectsTenantsRequest>,
+  output: __S(519, __c16, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1784,8 +1792,8 @@ export const getPasswordPolicyV2: API.OperationMethod<
   GetPasswordPolicyV2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetPasswordPolicyV2Request>,
-  output: __S(101, __c12, 5) as any as S.Schema<GoogleCloudIdentitytoolkitV2PasswordPolicy>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetPasswordPolicyV2Request>,
+  output: __S(546, __c17, 2) as any as S.Schema<GoogleCloudIdentitytoolkitV2PasswordPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1799,11 +1807,11 @@ export const getProjectsDefaultSupportedIdpConfigs: API.OperationMethod<
   GetProjectsDefaultSupportedIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetProjectsDefaultSupportedIdpConfigsRequest>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetProjectsDefaultSupportedIdpConfigsRequest>,
   output: __S(
-    3,
-    __c0,
-    3,
+    1282,
+    __c40,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1818,8 +1826,12 @@ export const getProjectsInboundSamlConfigs: API.OperationMethod<
   GetProjectsInboundSamlConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetProjectsInboundSamlConfigsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetProjectsInboundSamlConfigsRequest>,
+  output: __S(
+    1702,
+    __c53,
+    6,
+  ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1833,8 +1845,8 @@ export const getProjectsOauthIdpConfigs: API.OperationMethod<
   GetProjectsOauthIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetProjectsOauthIdpConfigsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetProjectsOauthIdpConfigsRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1848,8 +1860,8 @@ export const getProjectsTenants: API.OperationMethod<
   GetProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetProjectsTenantsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Tenant>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetProjectsTenantsRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Tenant>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1863,11 +1875,11 @@ export const getProjectsTenantsDefaultSupportedIdpConfigs: API.OperationMethod<
   GetProjectsTenantsDefaultSupportedIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetProjectsTenantsDefaultSupportedIdpConfigsRequest>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetProjectsTenantsDefaultSupportedIdpConfigsRequest>,
   output: __S(
-    3,
-    __c0,
-    3,
+    1282,
+    __c40,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1882,8 +1894,12 @@ export const getProjectsTenantsInboundSamlConfigs: API.OperationMethod<
   GetProjectsTenantsInboundSamlConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetProjectsTenantsInboundSamlConfigsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetProjectsTenantsInboundSamlConfigsRequest>,
+  output: __S(
+    1702,
+    __c53,
+    6,
+  ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1897,8 +1913,8 @@ export const getProjectsTenantsOauthIdpConfigs: API.OperationMethod<
   GetProjectsTenantsOauthIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetProjectsTenantsOauthIdpConfigsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetProjectsTenantsOauthIdpConfigsRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1912,8 +1928,8 @@ export const getRecaptchaConfigV2: API.OperationMethod<
   GetRecaptchaConfigV2Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetRecaptchaConfigV2Request>,
-  output: __S(112, __c14, 0) as any as S.Schema<GoogleCloudIdentitytoolkitV2RecaptchaConfig>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetRecaptchaConfigV2Request>,
+  output: __S(803, __c25, 3) as any as S.Schema<GoogleCloudIdentitytoolkitV2RecaptchaConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1932,11 +1948,11 @@ export const initializeAuthProjectsIdentityPlatform: API.OperationMethod<
   InitializeAuthProjectsIdentityPlatformError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<InitializeAuthProjectsIdentityPlatformRequest>,
+  input: __S(832, __c26, 0) as any as S.Schema<InitializeAuthProjectsIdentityPlatformRequest>,
   output: __S(
-    62,
-    __c7,
-    6,
+    352,
+    __c11,
+    0,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1952,11 +1968,11 @@ export const listDefaultSupportedIdps: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListDefaultSupportedIdpsRequest>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListDefaultSupportedIdpsRequest>,
   output: __S(
-    117,
-    __c14,
-    5,
+    867,
+    __c27,
+    3,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1973,11 +1989,11 @@ export const listProjectsDefaultSupportedIdpConfigs: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListProjectsDefaultSupportedIdpConfigsRequest>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListProjectsDefaultSupportedIdpConfigsRequest>,
   output: __S(
-    120,
-    __c15,
-    0,
+    929,
+    __c29,
+    1,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1994,11 +2010,11 @@ export const listProjectsInboundSamlConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ListProjectsInboundSamlConfigsRequest>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListProjectsInboundSamlConfigsRequest>,
   output: __S(
-    123,
-    __c15,
-    3,
+    993,
+    __c31,
+    1,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2015,11 +2031,11 @@ export const listProjectsOauthIdpConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ListProjectsOauthIdpConfigsRequest>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListProjectsOauthIdpConfigsRequest>,
   output: __S(
-    126,
-    __c15,
-    6,
+    1057,
+    __c33,
+    1,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2036,11 +2052,11 @@ export const listProjectsTenants: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<ListProjectsTenantsRequest>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListProjectsTenantsRequest>,
   output: __S(
-    129,
-    __c16,
-    1,
+    1090,
+    __c34,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2058,14 +2074,14 @@ export const listProjectsTenantsDefaultSupportedIdpConfigs: API.PaginatedOperati
   GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    130,
-    __c16,
-    2,
+    1120,
+    __c35,
+    0,
   ) as any as S.Schema<ListProjectsTenantsDefaultSupportedIdpConfigsRequest>,
   output: __S(
-    120,
-    __c15,
-    0,
+    929,
+    __c29,
+    1,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2082,11 +2098,11 @@ export const listProjectsTenantsInboundSamlConfigs: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListProjectsTenantsInboundSamlConfigsRequest>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListProjectsTenantsInboundSamlConfigsRequest>,
   output: __S(
-    123,
-    __c15,
-    3,
+    993,
+    __c31,
+    1,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2103,11 +2119,11 @@ export const listProjectsTenantsOauthIdpConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListProjectsTenantsOauthIdpConfigsRequest>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListProjectsTenantsOauthIdpConfigsRequest>,
   output: __S(
-    126,
-    __c15,
-    6,
+    1057,
+    __c33,
+    1,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2128,11 +2144,11 @@ export const patchProjectsDefaultSupportedIdpConfigs: API.OperationMethod<
   PatchProjectsDefaultSupportedIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<PatchProjectsDefaultSupportedIdpConfigsRequest>,
+  input: __S(1312, __c41, 0) as any as S.Schema<PatchProjectsDefaultSupportedIdpConfigsRequest>,
   output: __S(
-    3,
-    __c0,
-    3,
+    1282,
+    __c40,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2152,8 +2168,12 @@ export const patchProjectsInboundSamlConfigs: API.OperationMethod<
   PatchProjectsInboundSamlConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<PatchProjectsInboundSamlConfigsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>,
+  input: __S(1344, __c42, 0) as any as S.Schema<PatchProjectsInboundSamlConfigsRequest>,
+  output: __S(
+    1702,
+    __c53,
+    6,
+  ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2172,8 +2192,8 @@ export const patchProjectsOauthIdpConfigs: API.OperationMethod<
   PatchProjectsOauthIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<PatchProjectsOauthIdpConfigsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>,
+  input: __S(1376, __c43, 0) as any as S.Schema<PatchProjectsOauthIdpConfigsRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2187,8 +2207,8 @@ export const patchProjectsTenants: API.OperationMethod<
   PatchProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<PatchProjectsTenantsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Tenant>,
+  input: __S(1408, __c44, 0) as any as S.Schema<PatchProjectsTenantsRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Tenant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2208,14 +2228,14 @@ export const patchProjectsTenantsDefaultSupportedIdpConfigs: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    137,
-    __c17,
-    1,
+    1440,
+    __c45,
+    0,
   ) as any as S.Schema<PatchProjectsTenantsDefaultSupportedIdpConfigsRequest>,
   output: __S(
-    3,
-    __c0,
-    3,
+    1282,
+    __c40,
+    2,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2235,8 +2255,12 @@ export const patchProjectsTenantsInboundSamlConfigs: API.OperationMethod<
   PatchProjectsTenantsInboundSamlConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<PatchProjectsTenantsInboundSamlConfigsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>,
+  input: __S(1472, __c46, 0) as any as S.Schema<PatchProjectsTenantsInboundSamlConfigsRequest>,
+  output: __S(
+    1702,
+    __c53,
+    6,
+  ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2255,8 +2279,8 @@ export const patchProjectsTenantsOauthIdpConfigs: API.OperationMethod<
   PatchProjectsTenantsOauthIdpConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<PatchProjectsTenantsOauthIdpConfigsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>,
+  input: __S(1504, __c47, 0) as any as S.Schema<PatchProjectsTenantsOauthIdpConfigsRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2270,8 +2294,8 @@ export const revokeTokenAccounts: API.OperationMethod<
   RevokeTokenAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<RevokeTokenAccountsRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<GoogleCloudIdentitytoolkitV2RevokeTokenResponse>,
+  input: __S(1537, __c48, 1) as any as S.Schema<RevokeTokenAccountsRequest>,
+  output: __S(1538, __c48, 2) as any as S.Schema<GoogleCloudIdentitytoolkitV2RevokeTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2290,8 +2314,8 @@ export const setIamPolicyProjectsTenants: API.OperationMethod<
   SetIamPolicyProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<SetIamPolicyProjectsTenantsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(1569, __c49, 1) as any as S.Schema<SetIamPolicyProjectsTenantsRequest>,
+  output: __S(519, __c16, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2310,11 +2334,11 @@ export const startAccountsMfaEnrollment: API.OperationMethod<
   StartAccountsMfaEnrollmentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<StartAccountsMfaEnrollmentRequest>,
+  input: __S(1601, __c50, 1) as any as S.Schema<StartAccountsMfaEnrollmentRequest>,
   output: __S(
-    151,
-    __c18,
-    7,
+    1603,
+    __c50,
+    3,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2329,8 +2353,12 @@ export const startAccountsMfaSignIn: API.OperationMethod<
   StartAccountsMfaSignInError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<StartAccountsMfaSignInRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<GoogleCloudIdentitytoolkitV2StartMfaSignInResponse>,
+  input: __S(1729, __c54, 1) as any as S.Schema<StartAccountsMfaSignInRequest>,
+  output: __S(
+    1730,
+    __c54,
+    2,
+  ) as any as S.Schema<GoogleCloudIdentitytoolkitV2StartMfaSignInResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2349,8 +2377,8 @@ export const testIamPermissionsProjectsTenants: API.OperationMethod<
   TestIamPermissionsProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<TestIamPermissionsProjectsTenantsRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  input: __S(1761, __c55, 1) as any as S.Schema<TestIamPermissionsProjectsTenantsRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2364,8 +2392,8 @@ export const updateConfigProjects: API.OperationMethod<
   UpdateConfigProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<UpdateConfigProjectsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Config>,
+  input: __S(1792, __c56, 0) as any as S.Schema<UpdateConfigProjectsRequest>,
+  output: __S(466, __c14, 18) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Config>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2384,8 +2412,8 @@ export const withdrawAccountsMfaEnrollment: API.OperationMethod<
   WithdrawAccountsMfaEnrollmentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<WithdrawAccountsMfaEnrollmentRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<GoogleCloudIdentitytoolkitV2WithdrawMfaResponse>,
+  input: __S(1825, __c57, 1) as any as S.Schema<WithdrawAccountsMfaEnrollmentRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<GoogleCloudIdentitytoolkitV2WithdrawMfaResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2397,474 +2425,9 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keyId: S.optional(S.String),
-          teamId: S.optional(S.String),
-          privateKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          codeFlowConfig: S.optional(__S(0, __c0, 0)),
-          bundleIds: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          clientSecret: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          clientId: S.optional(S.String),
-          appleSignInConfig: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          idpId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/defaultSupportedIdpConfigs",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsDefaultSupportedIdpConfigsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          x509Certificate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2IdpCertificate",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          idpEntityId: S.optional(S.String),
-          signRequest: S.optional(S.Boolean),
-          idpCertificates: S.optional(__S(6, __c0, 6)),
-          ssoUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2IdpConfig",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          x509Certificate: S.optional(S.String),
-          expiresAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2SpCertificate",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          callbackUri: S.optional(S.String),
-          spEntityId: S.optional(S.String),
-          spCertificates: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2SpConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          idpConfig: S.optional(__S(7, __c0, 7)),
-          name: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          spConfig: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          inboundSamlConfigId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/inboundSamlConfigs",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsInboundSamlConfigsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.Boolean),
-          code: S.optional(S.Boolean),
-          idToken: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2OAuthResponseType",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          issuer: S.optional(S.String),
-          clientId: S.optional(S.String),
-          clientSecret: S.optional(S.String),
-          responseType: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           oauthIdpConfigId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/oauthIdpConfigs",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsOauthIdpConfigsRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          endScore: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          startScore: S.optional(S.Number),
-          action: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2RecaptchaKey",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          managedRules: S.optional(__S(17, __c2, 1)),
-          useSmsTollFraudProtection: S.optional(S.Boolean),
-          useAccountDefender: S.optional(S.Boolean),
-          emailPasswordEnforcementState: S.optional(S.String),
-          tollFraudManagedRules: S.optional(__S(19, __c2, 3)),
-          useSmsBotScore: S.optional(S.Boolean),
-          phoneEnforcementState: S.optional(S.String),
-          recaptchaKeys: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          disabledUserDeletion: S.optional(S.Boolean),
-          disabledUserSignup: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2ClientPermissions",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          adjacentIntervals: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          totpProviderConfig: S.optional(__S(26, __c3, 2)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2ProviderConfig",
-      });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabledProviders: S.optional(__S(25, __c3, 1)),
-          state: S.optional(S.String),
-          providerConfigs: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allowedRegions: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2AllowlistOnly",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          disallowedRegions: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2AllowByDefault",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowlistOnly: S.optional(__S(30, __c3, 6)),
-          allowByDefault: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2RequestLogging",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          requestLogging: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2MonitoringConfig",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          containsNonAlphanumericCharacter: S.optional(S.Boolean),
-          minPasswordLength: S.optional(S.Number),
-          containsUppercaseCharacter: S.optional(S.Boolean),
-          containsLowercaseCharacter: S.optional(S.Boolean),
-          containsNumericCharacter: S.optional(S.Boolean),
-          maxPasswordLength: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customStrengthOptions: S.optional(__S(36, __c4, 4)),
-          schemaVersion: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          forceUpgradeOnSignin: S.optional(S.Boolean),
-          passwordPolicyEnforcementState: S.optional(S.String),
-          lastUpdateTime: S.optional(S.String),
-          passwordPolicyVersions: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          signerKey: S.optional(S.String),
-          algorithm: S.optional(S.String),
-          memoryCost: S.optional(S.Number),
-          rounds: S.optional(S.Number),
-          saltSeparator: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2HashConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          emailSendingConfig: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2Inheritance",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enableImprovedEmailPrivacy: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          recaptchaConfig: S.optional(__S(22, __c2, 6)),
-          client: S.optional(__S(24, __c3, 0)),
-          mfaConfig: S.optional(__S(29, __c3, 5)),
-          smsRegionConfig: S.optional(__S(32, __c4, 0)),
-          autodeleteAnonymousUsers: S.optional(S.Boolean),
-          monitoring: S.optional(__S(34, __c4, 2)),
-          enableAnonymousUser: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          testPhoneNumbers: S.optional(__S(35, __c4, 3)),
-          enableEmailLinkSignin: S.optional(S.Boolean),
-          passwordPolicyConfig: S.optional(__S(39, __c4, 7)),
-          allowPasswordSignup: S.optional(S.Boolean),
-          disableAuth: S.optional(S.Boolean),
-          mobileLinksConfig: S.optional(__S(40, __c5, 0)),
-          displayName: S.optional(S.String),
-          hashConfig: S.optional(__S(41, __c5, 1)),
-          inheritance: S.optional(__S(42, __c5, 2)),
-          emailPrivacyConfig: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2Tenant",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/tenants",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsTenantsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          idpId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/defaultSupportedIdpConfigs",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsTenantsDefaultSupportedIdpConfigsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          inboundSamlConfigId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/inboundSamlConfigs",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsTenantsInboundSamlConfigsRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          oauthIdpConfigId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1889, __c59, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2875,7 +2438,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateProjectsTenantsOauthIdpConfigsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2889,11 +2456,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsDefaultSupportedIdpConfigsRequest",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2907,7 +2482,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsInboundSamlConfigsRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2921,7 +2500,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsOauthIdpConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2935,7 +2518,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsTenantsRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2948,20 +2535,6 @@ function __c6(j: number): any {
         ),
       ).annotate({
         identifier: "DeleteProjectsTenantsDefaultSupportedIdpConfigsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v2/{+name}",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsTenantsInboundSamlConfigsRequest",
       });
   }
 }
@@ -2979,20 +2552,31 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "DeleteProjectsTenantsOauthIdpConfigsRequest",
+        identifier: "DeleteProjectsTenantsInboundSamlConfigsRequest",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.String),
-          androidVerificationProof: S.optional(S.String),
-          sessionInfo: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-        }),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v2/{+name}",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo",
+        identifier: "DeleteProjectsTenantsOauthIdpConfigsRequest",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sessionInfo: S.optional(S.String),
@@ -3001,22 +2585,22 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          phoneVerificationInfo: S.optional(__S(57, __c7, 1)),
-          totpVerificationInfo: S.optional(__S(58, __c7, 2)),
+          phoneVerificationInfo: S.optional(__S(320, __c10, 0)),
+          totpVerificationInfo: S.optional(__S(288, __c9, 0)),
           idToken: S.optional(S.String),
           tenantId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(289, __c9, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3027,7 +2611,33 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "FinalizeAccountsMfaEnrollmentRequest",
       });
-    case 5:
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          phoneAuthInfo: S.optional(__S(321, __c10, 1)),
+          refreshToken: S.optional(S.String),
+          idToken: S.optional(S.String),
+          totpAuthInfo: S.optional(__S(352, __c11, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          androidVerificationProof: S.optional(S.String),
+          sessionInfo: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           phoneNumber: S.optional(S.String),
@@ -3037,24 +2647,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          phoneAuthInfo: S.optional(__S(61, __c7, 5)),
-          refreshToken: S.optional(S.String),
-          idToken: S.optional(S.String),
-          totpAuthInfo: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse",
-      });
   }
 }
-function __c8(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3067,10 +2670,10 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          totpVerificationInfo: S.optional(__S(64, __c8, 0)),
+          totpVerificationInfo: S.optional(__S(384, __c12, 0)),
           mfaEnrollmentId: S.optional(S.String),
           mfaPendingCredential: S.optional(S.String),
-          phoneVerificationInfo: S.optional(__S(57, __c7, 1)),
+          phoneVerificationInfo: S.optional(__S(320, __c10, 0)),
           tenantId: S.optional(S.String),
         }),
       ).annotate({
@@ -3079,7 +2682,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(385, __c12, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3093,390 +2696,12 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          phoneAuthInfo: S.optional(__S(61, __c7, 5)),
+          phoneAuthInfo: S.optional(__S(321, __c10, 1)),
           idToken: S.optional(S.String),
           refreshToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+name}",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetConfigProjectsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          defaultTenantLocation: S.optional(S.String),
-          allowTenants: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2MultiTenantConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          senderLocalPart: S.optional(S.String),
-          replyTo: S.optional(S.String),
-          customized: S.optional(S.Boolean),
-          bodyFormat: S.optional(S.String),
-          subject: S.optional(S.String),
-          body: S.optional(S.String),
-          senderDisplayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2EmailTemplate",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          securityMode: S.optional(S.String),
-          username: S.optional(S.String),
-          password: S.optional(S.String),
-          port: S.optional(S.Number),
-          senderEmail: S.optional(S.String),
-          host: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2Smtp",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          useCustomDomain: S.optional(S.Boolean),
-          customDomainState: S.optional(S.String),
-          pendingCustomDomain: S.optional(S.String),
-          customDomain: S.optional(S.String),
-          domainVerificationRequestTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2DnsInfo",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          revertSecondFactorAdditionTemplate: S.optional(__S(70, __c8, 6)),
-          changeEmailTemplate: S.optional(__S(70, __c8, 6)),
-          verifyEmailTemplate: S.optional(__S(70, __c8, 6)),
-          smtp: S.optional(__S(71, __c8, 7)),
-          method: S.optional(S.String),
-          callbackUri: S.optional(S.String),
-          resetPasswordTemplate: S.optional(__S(70, __c8, 6)),
-          dnsInfo: S.optional(__S(72, __c9, 0)),
-          legacyResetPasswordTemplate: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2SendEmail",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2SmsTemplate",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          smsTemplate: S.optional(__S(74, __c9, 2)),
-          useDeviceLocale: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2SendSms",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          defaultLocale: S.optional(S.String),
-          sendEmail: S.optional(__S(73, __c9, 1)),
-          sendSms: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2NotificationConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          functionUri: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2Trigger",
-      });
-    case 6:
-      return S.Record(S.String, __S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          refreshToken: S.optional(S.Boolean),
-          accessToken: S.optional(S.Boolean),
-          idToken: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          triggers: S.optional(__S(78, __c9, 6)),
-          forwardInboundCredentials: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          passwordRequired: S.optional(S.Boolean),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2Email",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          testPhoneNumbers: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2PhoneNumber",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          allowDuplicateEmails: S.optional(S.Boolean),
-          hashConfig: S.optional(__S(41, __c5, 1)),
-          anonymous: S.optional(__S(33, __c4, 1)),
-          email: S.optional(__S(81, __c10, 1)),
-          phoneNumber: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2SignInConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          quota: S.optional(S.String),
-          startTime: S.optional(S.String),
-          quotaDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2TemporaryQuota",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          signUpQuotaConfig: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2QuotaConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          firebaseSubdomain: S.optional(S.String),
-          apiKey: S.optional(S.String),
-          permissions: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2ClientConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          mfa: S.optional(__S(29, __c3, 5)),
-          recaptchaConfig: S.optional(__S(22, __c2, 6)),
-          multiTenant: S.optional(__S(69, __c8, 5)),
-          notification: S.optional(__S(76, __c9, 4)),
-          blockingFunctions: S.optional(__S(80, __c10, 0)),
-          smsRegionConfig: S.optional(__S(32, __c4, 0)),
-          passwordPolicyConfig: S.optional(__S(39, __c4, 7)),
-          monitoring: S.optional(__S(34, __c4, 2)),
-          subtype: S.optional(S.String),
-          signIn: S.optional(__S(83, __c10, 3)),
-          name: S.optional(S.String),
-          quota: S.optional(__S(85, __c10, 5)),
-          defaultHostingSite: S.optional(S.String),
-          emailPrivacyConfig: S.optional(__S(43, __c5, 3)),
-          autodeleteAnonymousUsers: S.optional(S.Boolean),
-          mobileLinksConfig: S.optional(__S(40, __c5, 0)),
-          authorizedDomains: S.optional(__S(1, __c0, 1)),
-          client: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitAdminV2Config",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestedPolicyVersion: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1GetPolicyOptions",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1GetIamPolicyRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(89, __c11, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+resource}:getIamPolicy",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsTenantsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1AuditLogConfig",
-      });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "GoogleIamV1AuditConfig" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          expression: S.optional(S.String),
-          location: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleTypeExpr" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          members: S.optional(__S(1, __c0, 1)),
-          condition: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "GoogleIamV1Binding" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.Number),
-          etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(94, __c11, 6)),
-          bindings: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({ identifier: "GoogleIamV1Policy" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tenantId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/passwordPolicy",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPasswordPolicyV2Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          containsNonAlphanumericCharacter: S.optional(S.Boolean),
-          containsUppercaseCharacter: S.optional(S.Boolean),
-          containsNumericCharacter: S.optional(S.Boolean),
-          containsLowercaseCharacter: S.optional(S.Boolean),
-          minPasswordLength: S.optional(S.Number),
-          maxPasswordLength: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV2CustomStrengthOptions",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customStrengthOptions: S.optional(__S(100, __c12, 4)),
-          forceUpgradeOnSignin: S.optional(S.Boolean),
-          schemaVersion: S.optional(S.Number),
-          enforcementState: S.optional(S.String),
-          allowedNonAlphanumericCharacters: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV2PasswordPolicy",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+name}",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsDefaultSupportedIdpConfigsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+name}",
-            baseUrl: "https://identitytoolkit.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsInboundSamlConfigsRequest",
       });
   }
 }
@@ -3493,10 +2718,404 @@ function __c13(j: number): any {
             baseUrl: "https://identitytoolkit.googleapis.com/",
           }),
         ),
+      ).annotate({ identifier: "GetConfigProjectsRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          defaultTenantLocation: S.optional(S.String),
+          allowTenants: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2MultiTenantConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          senderLocalPart: S.optional(S.String),
+          replyTo: S.optional(S.String),
+          customized: S.optional(S.Boolean),
+          bodyFormat: S.optional(S.String),
+          subject: S.optional(S.String),
+          body: S.optional(S.String),
+          senderDisplayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2EmailTemplate",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          securityMode: S.optional(S.String),
+          username: S.optional(S.String),
+          password: S.optional(S.String),
+          port: S.optional(S.Number),
+          senderEmail: S.optional(S.String),
+          host: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2Smtp",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          useCustomDomain: S.optional(S.Boolean),
+          customDomainState: S.optional(S.String),
+          pendingCustomDomain: S.optional(S.String),
+          customDomain: S.optional(S.String),
+          domainVerificationRequestTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2DnsInfo",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          revertSecondFactorAdditionTemplate: S.optional(__S(449, __c14, 1)),
+          changeEmailTemplate: S.optional(__S(449, __c14, 1)),
+          verifyEmailTemplate: S.optional(__S(449, __c14, 1)),
+          smtp: S.optional(__S(450, __c14, 2)),
+          method: S.optional(S.String),
+          callbackUri: S.optional(S.String),
+          resetPasswordTemplate: S.optional(__S(449, __c14, 1)),
+          dnsInfo: S.optional(__S(451, __c14, 3)),
+          legacyResetPasswordTemplate: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2SendEmail",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2SmsTemplate",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          smsTemplate: S.optional(__S(453, __c14, 5)),
+          useDeviceLocale: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2SendSms",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          defaultLocale: S.optional(S.String),
+          sendEmail: S.optional(__S(452, __c14, 4)),
+          sendSms: S.optional(__S(454, __c14, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2NotificationConfig",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          functionUri: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2Trigger",
+      });
+    case 9:
+      return S.Record(S.String, __S(456, __c14, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          refreshToken: S.optional(S.Boolean),
+          accessToken: S.optional(S.Boolean),
+          idToken: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          triggers: S.optional(__S(457, __c14, 9)),
+          forwardInboundCredentials: S.optional(__S(458, __c14, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          passwordRequired: S.optional(S.Boolean),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2Email",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          testPhoneNumbers: S.optional(__S(1970, __c61, 18)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2PhoneNumber",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          allowDuplicateEmails: S.optional(S.Boolean),
+          hashConfig: S.optional(__S(1976, __c61, 24)),
+          anonymous: S.optional(__S(1968, __c61, 16)),
+          email: S.optional(__S(460, __c14, 12)),
+          phoneNumber: S.optional(__S(461, __c14, 13)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2SignInConfig",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          quota: S.optional(S.String),
+          startTime: S.optional(S.String),
+          quotaDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2TemporaryQuota",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          signUpQuotaConfig: S.optional(__S(463, __c14, 15)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2QuotaConfig",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          firebaseSubdomain: S.optional(S.String),
+          apiKey: S.optional(S.String),
+          permissions: S.optional(__S(1959, __c61, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2ClientConfig",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          mfa: S.optional(__S(1964, __c61, 12)),
+          recaptchaConfig: S.optional(__S(1958, __c61, 6)),
+          multiTenant: S.optional(__S(448, __c14, 0)),
+          notification: S.optional(__S(455, __c14, 7)),
+          blockingFunctions: S.optional(__S(459, __c14, 11)),
+          smsRegionConfig: S.optional(__S(1967, __c61, 15)),
+          passwordPolicyConfig: S.optional(__S(1974, __c61, 22)),
+          monitoring: S.optional(__S(1969, __c61, 17)),
+          subtype: S.optional(S.String),
+          signIn: S.optional(__S(462, __c14, 14)),
+          name: S.optional(S.String),
+          quota: S.optional(__S(464, __c14, 16)),
+          defaultHostingSite: S.optional(S.String),
+          emailPrivacyConfig: S.optional(__S(1977, __c61, 25)),
+          autodeleteAnonymousUsers: S.optional(S.Boolean),
+          mobileLinksConfig: S.optional(__S(1975, __c61, 23)),
+          authorizedDomains: S.optional(__S(1248, __c39, 0)),
+          client: S.optional(__S(465, __c14, 17)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2Config",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestedPolicyVersion: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1GetPolicyOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1GetIamPolicyRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(481, __c15, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+resource}:getIamPolicy",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsTenantsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1AuditLogConfig",
+      });
+    case 1:
+      return S.Array(__S(512, __c16, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          auditLogConfigs: S.optional(__S(513, __c16, 1)),
+        }),
+      ).annotate({ identifier: "GoogleIamV1AuditConfig" });
+    case 3:
+      return S.Array(__S(514, __c16, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          expression: S.optional(S.String),
+          location: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleTypeExpr" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          members: S.optional(__S(1248, __c39, 0)),
+          condition: S.optional(__S(516, __c16, 4)),
+        }),
+      ).annotate({ identifier: "GoogleIamV1Binding" });
+    case 6:
+      return S.Array(__S(517, __c16, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.Number),
+          etag: S.optional(S.String),
+          auditConfigs: S.optional(__S(515, __c16, 3)),
+          bindings: S.optional(__S(518, __c16, 6)),
+        }),
+      ).annotate({ identifier: "GoogleIamV1Policy" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenantId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/passwordPolicy",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPasswordPolicyV2Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          containsNonAlphanumericCharacter: S.optional(S.Boolean),
+          containsUppercaseCharacter: S.optional(S.Boolean),
+          containsNumericCharacter: S.optional(S.Boolean),
+          containsLowercaseCharacter: S.optional(S.Boolean),
+          minPasswordLength: S.optional(S.Number),
+          maxPasswordLength: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV2CustomStrengthOptions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customStrengthOptions: S.optional(__S(545, __c17, 1)),
+          forceUpgradeOnSignin: S.optional(S.Boolean),
+          schemaVersion: S.optional(S.Number),
+          enforcementState: S.optional(S.String),
+          allowedNonAlphanumericCharacters: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV2PasswordPolicy",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+name}",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsDefaultSupportedIdpConfigsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+name}",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsInboundSamlConfigsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+name}",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
       ).annotate({
         identifier: "GetProjectsOauthIdpConfigsRequest",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3510,7 +3129,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsTenantsRequest",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3524,7 +3147,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsTenantsDefaultSupportedIdpConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3538,7 +3165,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsTenantsInboundSamlConfigsRequest",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3552,7 +3183,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsTenantsOauthIdpConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String.pipe(T.Query())),
@@ -3568,7 +3203,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetRecaptchaConfigV2Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enforcementState: S.optional(S.String),
@@ -3577,28 +3212,28 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState",
       });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           recaptchaKey: S.optional(S.String),
           useSmsBotScore: S.optional(S.Boolean),
           useSmsTollFraudProtection: S.optional(S.Boolean),
-          recaptchaEnforcementState: S.optional(__S(111, __c13, 7)),
+          recaptchaEnforcementState: S.optional(__S(802, __c25, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2RecaptchaConfig",
       });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(352, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3609,7 +3244,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "InitializeAuthProjectsIdentityPlatformRequest",
       });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3624,7 +3263,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListDefaultSupportedIdpsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           idpId: S.optional(S.String),
@@ -3633,18 +3272,22 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp",
       });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(865, __c27, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          defaultSupportedIdps: S.optional(__S(116, __c14, 4)),
+          defaultSupportedIdps: S.optional(__S(866, __c27, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3660,22 +3303,26 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListProjectsDefaultSupportedIdpConfigsRequest",
       });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
   }
 }
-function __c15(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(1282, __c40, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          defaultSupportedIdpConfigs: S.optional(__S(119, __c14, 7)),
+          defaultSupportedIdpConfigs: S.optional(__S(928, __c29, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3691,18 +3338,26 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListProjectsInboundSamlConfigsRequest",
       });
-    case 2:
-      return S.Array(__S(11, __c1, 3));
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1702, __c53, 6));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          inboundSamlConfigs: S.optional(__S(122, __c15, 2)),
+          inboundSamlConfigs: S.optional(__S(992, __c31, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3718,18 +3373,26 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListProjectsOauthIdpConfigsRequest",
       });
-    case 5:
-      return S.Array(__S(14, __c1, 6));
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1889, __c59, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          oauthIdpConfigs: S.optional(__S(125, __c15, 5)),
+          oauthIdpConfigs: S.optional(__S(1056, __c33, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse",
       });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3745,22 +3408,22 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListProjectsTenantsRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(44, __c5, 4));
     case 1:
+      return S.Array(__S(1986, __c62, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          tenants: S.optional(__S(128, __c16, 0)),
+          tenants: S.optional(__S(1089, __c34, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3776,7 +3439,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsTenantsDefaultSupportedIdpConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3792,7 +3459,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsTenantsInboundSamlConfigsRequest",
       });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3808,12 +3479,77 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsTenantsOauthIdpConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          idpId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1282, __c40, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/defaultSupportedIdpConfigs",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsDefaultSupportedIdpConfigsRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyId: S.optional(S.String),
+          teamId: S.optional(S.String),
+          privateKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          codeFlowConfig: S.optional(__S(1280, __c40, 0)),
+          bundleIds: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientSecret: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          clientId: S.optional(S.String),
+          appleSignInConfig: S.optional(__S(1281, __c40, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1282, __c40, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3824,12 +3560,16 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PatchProjectsDefaultSupportedIdpConfigsRequest",
       });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1702, __c53, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3840,12 +3580,16 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PatchProjectsInboundSamlConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1889, __c59, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3858,14 +3602,14 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1986, __c62, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3876,12 +3620,16 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchProjectsTenantsRequest",
       });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1282, __c40, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3892,12 +3640,16 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchProjectsTenantsDefaultSupportedIdpConfigsRequest",
       });
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1702, __c53, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3908,12 +3660,16 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchProjectsTenantsInboundSamlConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1889, __c59, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3924,7 +3680,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PatchProjectsTenantsOauthIdpConfigsRequest",
       });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           providerId: S.optional(S.String),
@@ -3937,10 +3697,10 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2RevokeTokenRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(140, __c17, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1536, __c48, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3951,28 +3711,28 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "RevokeTokenAccountsRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2RevokeTokenResponse",
       });
-    case 7:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(98, __c12, 2)),
+          policy: S.optional(__S(519, __c16, 7)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleIamV1SetIamPolicyRequest",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(143, __c17, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3983,46 +3743,25 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsTenantsRequest",
       });
-    case 1:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          appSignatureHash: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV2AutoRetrievalInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          iosReceipt: S.optional(S.String),
-          playIntegrityToken: S.optional(S.String),
-          safetyNetToken: S.optional(S.String),
-          recaptchaVersion: S.optional(S.String),
-          captchaResponse: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-          recaptchaToken: S.optional(S.String),
-          iosSecret: S.optional(S.String),
-          autoRetrievalInfo: S.optional(__S(145, __c18, 1)),
-          clientType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          phoneEnrollmentInfo: S.optional(__S(146, __c18, 2)),
+          phoneEnrollmentInfo: S.optional(__S(1633, __c51, 1)),
           idToken: S.optional(S.String),
-          totpEnrollmentInfo: S.optional(__S(62, __c7, 6)),
+          totpEnrollmentInfo: S.optional(__S(352, __c11, 0)),
           tenantId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(147, __c18, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4033,15 +3772,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "StartAccountsMfaEnrollmentRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sessionInfo: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo",
-      });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           verificationCodeLength: S.optional(S.Number),
@@ -4054,23 +3785,138 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          phoneSessionInfo: S.optional(__S(149, __c18, 5)),
-          totpSessionInfo: S.optional(__S(150, __c18, 6)),
+          phoneSessionInfo: S.optional(__S(1634, __c51, 2)),
+          totpSessionInfo: S.optional(__S(1602, __c50, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse",
       });
   }
 }
-function __c19(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          phoneSignInInfo: S.optional(__S(146, __c18, 2)),
+          appSignatureHash: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV2AutoRetrievalInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          iosReceipt: S.optional(S.String),
+          playIntegrityToken: S.optional(S.String),
+          safetyNetToken: S.optional(S.String),
+          recaptchaVersion: S.optional(S.String),
+          captchaResponse: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+          recaptchaToken: S.optional(S.String),
+          iosSecret: S.optional(S.String),
+          autoRetrievalInfo: S.optional(__S(1632, __c51, 0)),
+          clientType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sessionInfo: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inboundSamlConfigId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1702, __c53, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/inboundSamlConfigs",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsInboundSamlConfigsRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          x509Certificate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2IdpCertificate",
+      });
+    case 1:
+      return S.Array(__S(1696, __c53, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          idpEntityId: S.optional(S.String),
+          signRequest: S.optional(S.Boolean),
+          idpCertificates: S.optional(__S(1697, __c53, 1)),
+          ssoUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2IdpConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          x509Certificate: S.optional(S.String),
+          expiresAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2SpCertificate",
+      });
+    case 4:
+      return S.Array(__S(1699, __c53, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          callbackUri: S.optional(S.String),
+          spEntityId: S.optional(S.String),
+          spCertificates: S.optional(__S(1700, __c53, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2SpConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          idpConfig: S.optional(__S(1698, __c53, 2)),
+          name: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          spConfig: S.optional(__S(1701, __c53, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          phoneSignInInfo: S.optional(__S(1633, __c51, 1)),
           mfaPendingCredential: S.optional(S.String),
           mfaEnrollmentId: S.optional(S.String),
           tenantId: S.optional(S.String),
@@ -4081,7 +3927,7 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1728, __c54, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4095,24 +3941,28 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          phoneResponseInfo: S.optional(__S(149, __c18, 5)),
+          phoneResponseInfo: S.optional(__S(1634, __c51, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2StartMfaSignInResponse",
       });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(1, __c0, 1)),
+          permissions: S.optional(__S(1248, __c39, 0)),
         }),
       ).annotate({
         identifier: "GoogleIamV1TestIamPermissionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(155, __c19, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4123,12 +3973,16 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsTenantsRequest",
       });
-    case 5:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(87, __c10, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(466, __c14, 18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4139,7 +3993,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "UpdateConfigProjectsRequest",
       });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idToken: S.optional(S.String),
@@ -4149,10 +4007,10 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIdentitytoolkitV2WithdrawMfaRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(158, __c19, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4163,11 +4021,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "WithdrawAccountsMfaEnrollmentRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           idToken: S.optional(S.String),
@@ -4178,7 +4032,356 @@ function __c20(j: number): any {
       });
   }
 }
-
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          oauthIdpConfigId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1889, __c59, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/oauthIdpConfigs",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsOauthIdpConfigsRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.Boolean),
+          code: S.optional(S.Boolean),
+          idToken: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2OAuthResponseType",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          issuer: S.optional(S.String),
+          clientId: S.optional(S.String),
+          clientSecret: S.optional(S.String),
+          responseType: S.optional(__S(1888, __c59, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1986, __c62, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/tenants",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsTenantsRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          endScore: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule",
+      });
+    case 1:
+      return S.Array(__S(1952, __c61, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          startScore: S.optional(S.Number),
+          action: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule",
+      });
+    case 3:
+      return S.Array(__S(1954, __c61, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2RecaptchaKey",
+      });
+    case 5:
+      return S.Array(__S(1956, __c61, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          managedRules: S.optional(__S(1953, __c61, 1)),
+          useSmsTollFraudProtection: S.optional(S.Boolean),
+          useAccountDefender: S.optional(S.Boolean),
+          emailPasswordEnforcementState: S.optional(S.String),
+          tollFraudManagedRules: S.optional(__S(1955, __c61, 3)),
+          useSmsBotScore: S.optional(S.Boolean),
+          phoneEnforcementState: S.optional(S.String),
+          recaptchaKeys: S.optional(__S(1957, __c61, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          disabledUserDeletion: S.optional(S.Boolean),
+          disabledUserSignup: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2ClientPermissions",
+      });
+    case 8:
+      return S.Array(S.String);
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          adjacentIntervals: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          totpProviderConfig: S.optional(__S(1961, __c61, 9)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2ProviderConfig",
+      });
+    case 11:
+      return S.Array(__S(1962, __c61, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          enabledProviders: S.optional(__S(1960, __c61, 8)),
+          state: S.optional(S.String),
+          providerConfigs: S.optional(__S(1963, __c61, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          allowedRegions: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2AllowlistOnly",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          disallowedRegions: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2AllowByDefault",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          allowlistOnly: S.optional(__S(1965, __c61, 13)),
+          allowByDefault: S.optional(__S(1966, __c61, 14)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2RequestLogging",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          requestLogging: S.optional(__S(1968, __c61, 16)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2MonitoringConfig",
+      });
+    case 18:
+      return S.Record(S.String, S.String);
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          containsNonAlphanumericCharacter: S.optional(S.Boolean),
+          minPasswordLength: S.optional(S.Number),
+          containsUppercaseCharacter: S.optional(S.Boolean),
+          containsLowercaseCharacter: S.optional(S.Boolean),
+          containsNumericCharacter: S.optional(S.Boolean),
+          maxPasswordLength: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          customStrengthOptions: S.optional(__S(1971, __c61, 19)),
+          schemaVersion: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion",
+      });
+    case 21:
+      return S.Array(__S(1972, __c61, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          forceUpgradeOnSignin: S.optional(S.Boolean),
+          passwordPolicyEnforcementState: S.optional(S.String),
+          lastUpdateTime: S.optional(S.String),
+          passwordPolicyVersions: S.optional(__S(1973, __c61, 21)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          signerKey: S.optional(S.String),
+          algorithm: S.optional(S.String),
+          memoryCost: S.optional(S.Number),
+          rounds: S.optional(S.Number),
+          saltSeparator: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2HashConfig",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          enableImprovedEmailPrivacy: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(1959, __c61, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          emailSendingConfig: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2Inheritance",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          recaptchaConfig: S.optional(__S(1958, __c61, 6)),
+          client: S.optional(__S(1984, __c62, 0)),
+          mfaConfig: S.optional(__S(1964, __c61, 12)),
+          smsRegionConfig: S.optional(__S(1967, __c61, 15)),
+          autodeleteAnonymousUsers: S.optional(S.Boolean),
+          monitoring: S.optional(__S(1969, __c61, 17)),
+          enableAnonymousUser: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          testPhoneNumbers: S.optional(__S(1970, __c61, 18)),
+          enableEmailLinkSignin: S.optional(S.Boolean),
+          passwordPolicyConfig: S.optional(__S(1974, __c61, 22)),
+          allowPasswordSignup: S.optional(S.Boolean),
+          disableAuth: S.optional(S.Boolean),
+          mobileLinksConfig: S.optional(__S(1975, __c61, 23)),
+          displayName: S.optional(S.String),
+          hashConfig: S.optional(__S(1976, __c61, 24)),
+          inheritance: S.optional(__S(1985, __c62, 1)),
+          emailPrivacyConfig: S.optional(__S(1977, __c61, 25)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIdentitytoolkitAdminV2Tenant",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          idpId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1282, __c40, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/defaultSupportedIdpConfigs",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsTenantsDefaultSupportedIdpConfigsRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          inboundSamlConfigId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1702, __c53, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/inboundSamlConfigs",
+            baseUrl: "https://identitytoolkit.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsTenantsInboundSamlConfigsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

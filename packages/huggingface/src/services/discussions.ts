@@ -4575,8 +4575,8 @@ export const changeTitle: API.OperationMethod<
   ChangeTitleError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ChangeTitleRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ChangeTitleResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ChangeTitleRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ChangeTitleResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4590,8 +4590,8 @@ export const createBlogComment: API.OperationMethod<
   CreateBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateBlogCommentRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateBlogCommentResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateBlogCommentRequest>,
+  output: __S(110, __c13, 6) as any as S.Schema<CreateBlogCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4605,8 +4605,8 @@ export const createCommunityBlogComment: API.OperationMethod<
   CreateCommunityBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateCommunityBlogCommentRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<CreateCommunityBlogCommentResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<CreateCommunityBlogCommentRequest>,
+  output: __S(206, __c25, 6) as any as S.Schema<CreateCommunityBlogCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4620,8 +4620,8 @@ export const createDiscussion: API.OperationMethod<
   CreateDiscussionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateDiscussionRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateDiscussionResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<CreateDiscussionRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<CreateDiscussionResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4635,8 +4635,8 @@ export const createDiscussionComment: API.OperationMethod<
   CreateDiscussionCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateDiscussionCommentRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreateDiscussionCommentResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<CreateDiscussionCommentRequest>,
+  output: __S(278, __c34, 6) as any as S.Schema<CreateDiscussionCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4650,8 +4650,8 @@ export const createPaperComment: API.OperationMethod<
   CreatePaperCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreatePaperCommentRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CreatePaperCommentResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<CreatePaperCommentRequest>,
+  output: __S(286, __c35, 6) as any as S.Schema<CreatePaperCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4665,8 +4665,8 @@ export const createPostComment: API.OperationMethod<
   CreatePostCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreatePostCommentRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<CreatePostCommentResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<CreatePostCommentRequest>,
+  output: __S(294, __c36, 6) as any as S.Schema<CreatePostCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4680,8 +4680,8 @@ export const deleteDiscussion: API.OperationMethod<
   DeleteDiscussionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteDiscussionRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeleteDiscussionResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<DeleteDiscussionRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<DeleteDiscussionResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4695,8 +4695,8 @@ export const deletePost: API.OperationMethod<
   DeletePostError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeletePostRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeletePostResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<DeletePostRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<DeletePostResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4710,8 +4710,8 @@ export const deletePrRef: API.OperationMethod<
   DeletePrRefError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeletePrRefRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeletePrRefResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeletePrRefRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<DeletePrRefResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4725,8 +4725,8 @@ export const getDiscussionDetails: API.OperationMethod<
   GetDiscussionDetailsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetDiscussionDetailsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetDiscussionDetailsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetDiscussionDetailsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetDiscussionDetailsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4740,8 +4740,8 @@ export const hideBlogComment: API.OperationMethod<
   HideBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<HideBlogCommentRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<HideBlogCommentResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<HideBlogCommentRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<HideBlogCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4755,8 +4755,8 @@ export const hideCommunityBlogComment: API.OperationMethod<
   HideCommunityBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<HideCommunityBlogCommentRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<HideCommunityBlogCommentResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<HideCommunityBlogCommentRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<HideCommunityBlogCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4770,8 +4770,8 @@ export const hideDiscussionComment: API.OperationMethod<
   HideDiscussionCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<HideDiscussionCommentRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<HideDiscussionCommentResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<HideDiscussionCommentRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<HideDiscussionCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4785,8 +4785,8 @@ export const hidePaperComment: API.OperationMethod<
   HidePaperCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<HidePaperCommentRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<HidePaperCommentResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<HidePaperCommentRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<HidePaperCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4800,8 +4800,8 @@ export const hidePostComment: API.OperationMethod<
   HidePostCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<HidePostCommentRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<HidePostCommentResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<HidePostCommentRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<HidePostCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4815,8 +4815,8 @@ export const listDiscussions: API.OperationMethod<
   ListDiscussionsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListDiscussionsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListDiscussionsResponse>,
+  input: __S(81, __c10, 1) as any as S.Schema<ListDiscussionsRequest>,
+  output: __S(87, __c10, 7) as any as S.Schema<ListDiscussionsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4830,8 +4830,8 @@ export const mergePullRequest: API.OperationMethod<
   MergePullRequestError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<MergePullRequestRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<MergePullRequestResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<MergePullRequestRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<MergePullRequestResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4845,8 +4845,8 @@ export const pinDiscussion: API.OperationMethod<
   PinDiscussionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<PinDiscussionRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<PinDiscussionResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<PinDiscussionRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<PinDiscussionResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4860,8 +4860,8 @@ export const prStorageEstimate: API.OperationMethod<
   PrStorageEstimateError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<PrStorageEstimateRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<PrStorageEstimateResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<PrStorageEstimateRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<PrStorageEstimateResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4875,8 +4875,8 @@ export const reactToBlogComment: API.OperationMethod<
   ReactToBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ReactToBlogCommentRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ReactToBlogCommentResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ReactToBlogCommentRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<ReactToBlogCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4890,8 +4890,8 @@ export const reactToCommunityBlogComment: API.OperationMethod<
   ReactToCommunityBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ReactToCommunityBlogCommentRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ReactToCommunityBlogCommentResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ReactToCommunityBlogCommentRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<ReactToCommunityBlogCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4905,8 +4905,8 @@ export const reactToDiscussionComment: API.OperationMethod<
   ReactToDiscussionCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ReactToDiscussionCommentRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ReactToDiscussionCommentResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<ReactToDiscussionCommentRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<ReactToDiscussionCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4920,8 +4920,8 @@ export const reactToPaperComment: API.OperationMethod<
   ReactToPaperCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ReactToPaperCommentRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ReactToPaperCommentResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<ReactToPaperCommentRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<ReactToPaperCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4935,8 +4935,8 @@ export const reactToPostComment: API.OperationMethod<
   ReactToPostCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ReactToPostCommentRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ReactToPostCommentResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<ReactToPostCommentRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<ReactToPostCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4950,8 +4950,8 @@ export const replyToBlogComment: API.OperationMethod<
   ReplyToBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ReplyToBlogCommentRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ReplyToBlogCommentResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ReplyToBlogCommentRequest>,
+  output: __S(174, __c21, 6) as any as S.Schema<ReplyToBlogCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4965,8 +4965,8 @@ export const replyToCommunityBlogComment: API.OperationMethod<
   ReplyToCommunityBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ReplyToCommunityBlogCommentRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ReplyToCommunityBlogCommentResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<ReplyToCommunityBlogCommentRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<ReplyToCommunityBlogCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4980,8 +4980,8 @@ export const replyToPaperComment: API.OperationMethod<
   ReplyToPaperCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ReplyToPaperCommentRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ReplyToPaperCommentResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ReplyToPaperCommentRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<ReplyToPaperCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4995,8 +4995,8 @@ export const replyToPostComment: API.OperationMethod<
   ReplyToPostCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ReplyToPostCommentRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<ReplyToPostCommentResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<ReplyToPostCommentRequest>,
+  output: __S(198, __c24, 6) as any as S.Schema<ReplyToPostCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5010,8 +5010,8 @@ export const toggleIgnoreDiscussion: API.OperationMethod<
   ToggleIgnoreDiscussionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ToggleIgnoreDiscussionRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ToggleIgnoreDiscussionResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ToggleIgnoreDiscussionRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<ToggleIgnoreDiscussionResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5025,8 +5025,8 @@ export const updateBlogComment: API.OperationMethod<
   UpdateBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<UpdateBlogCommentRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<UpdateBlogCommentResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<UpdateBlogCommentRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<UpdateBlogCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5040,8 +5040,8 @@ export const updateCommunityBlogComment: API.OperationMethod<
   UpdateCommunityBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<UpdateCommunityBlogCommentRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<UpdateCommunityBlogCommentResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<UpdateCommunityBlogCommentRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<UpdateCommunityBlogCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5055,8 +5055,8 @@ export const updateDiscussionComment: API.OperationMethod<
   UpdateDiscussionCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<UpdateDiscussionCommentRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<UpdateDiscussionCommentResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<UpdateDiscussionCommentRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<UpdateDiscussionCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5070,8 +5070,8 @@ export const updatePaperComment: API.OperationMethod<
   UpdatePaperCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<UpdatePaperCommentRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<UpdatePaperCommentResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<UpdatePaperCommentRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<UpdatePaperCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5085,8 +5085,8 @@ export const updatePostComment: API.OperationMethod<
   UpdatePostCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<UpdatePostCommentRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<UpdatePostCommentResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<UpdatePostCommentRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<UpdatePostCommentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5139,7 +5139,11 @@ function __c0(j: number): any {
           newStatus: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "ChangeStatusResponse" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repoType: S.String.pipe(T.Label()),
@@ -5155,7 +5159,7 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ChangeTitleRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           from: S.String,
@@ -5164,27 +5168,297 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ChangeTitleResponseNewTitleData",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String,
           author: S.optional(S.Unknown),
           type: S.String,
-          data: __S(5, __c0, 5),
+          data: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "ChangeTitleResponseNewTitle",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          newTitle: __S(6, __c0, 6),
+          newTitle: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "ChangeTitleResponse" });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repoType: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          num: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}/ref",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeletePrRefRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repoType: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          num: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDiscussionDetailsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetDiscussionDetailsResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          commentId: S.String.pipe(T.Label()),
+          reason: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/blog/{slug}/comment/{commentId}/hide", code: 200 }),
+        ),
+      ).annotate({ identifier: "HideBlogCommentRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          slug: S.String.pipe(T.Label()),
+          commentId: S.String.pipe(T.Label()),
+          reason: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/blog/{namespace}/{slug}/comment/{commentId}/hide",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "HideCommunityBlogCommentRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "HideCommunityBlogCommentResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repoType: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          num: S.String.pipe(T.Label()),
+          commentId: S.String.pipe(T.Label()),
+          reason: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}/comment/{commentId}/hide",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "HideDiscussionCommentRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paperId: S.String.pipe(T.Label()),
+          commentId: S.String.pipe(T.Label()),
+          reason: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/papers/{paperId}/comment/{commentId}/hide",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "HidePaperCommentRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          postSlug: S.String.pipe(T.Label()),
+          commentId: S.String.pipe(T.Label()),
+          reason: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/posts/{username}/{postSlug}/comment/{commentId}/hide",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "HidePostCommentRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "RepoId" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          repoType: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          p: S.optional(S.Number.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          author: S.optional(S.String.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/{repoType}/{namespace}/{repo}/discussions",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListDiscussionsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reaction: S.String,
+          count: S.Number,
+        }),
+      ).annotate({
+        identifier: "ListDiscussionsResponseDiscussionsItemTopReactionsItem",
+      });
+    case 3:
+      return S.Array(__S(82, __c10, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+          isParticipating: S.Boolean,
+          isDiscussionAuthor: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "ListDiscussionsResponseDiscussionsItemRepoOwner",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          num: S.Number,
+          author: S.optional(S.Unknown),
+          repo: __S(80, __c10, 0),
+          title: S.String,
+          createdAt: S.String,
+          topReactions: __S(83, __c10, 3),
+          status: S.String,
+          isPullRequest: S.Boolean,
+          numComments: S.Number,
+          numReactionUsers: S.Number,
+          pinned: S.Boolean,
+          repoOwner: S.optional(__S(84, __c10, 4)),
+        }),
+      ).annotate({
+        identifier: "ListDiscussionsResponseDiscussionsItem",
+      });
+    case 6:
+      return S.Array(__S(85, __c10, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          discussions: __S(86, __c10, 6),
+          count: S.Number,
+          start: S.Number,
+          numClosedDiscussions: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ListDiscussionsResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repoType: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          num: S.String.pipe(T.Label()),
+          comment: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}/merge",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "MergePullRequestRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repoType: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          num: S.String.pipe(T.Label()),
+          pinned: S.Boolean,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}/pin",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "PinDiscussionRequest" });
+  }
+}
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5205,20 +5479,64 @@ function __c1(j: number): any {
         identifier: "CreateBlogCommentResponseNewMessageDataLatest",
       });
     case 2:
-      return S.Array(S.String);
-    case 3:
       return S.suspend(() =>
         S.Struct({
           reaction: S.String,
-          users: __S(10, __c1, 2),
+          users: __S(112, __c14, 0),
           count: S.Number,
         }),
       ).annotate({
         identifier: "CreateBlogCommentResponseNewMessageDataReactionsItem",
       });
+    case 3:
+      return S.Array(__S(106, __c13, 2));
     case 4:
-      return S.Array(__S(11, __c1, 3));
+      return S.suspend(() =>
+        S.Struct({
+          edited: S.Boolean,
+          hidden: S.Boolean,
+          hiddenBy: S.optional(S.String),
+          hiddenReason: S.optional(S.String),
+          latest: __S(105, __c13, 1),
+          numEdits: S.Number,
+          editors: __S(112, __c14, 0),
+          editorAvatarUrls: __S(112, __c14, 0),
+          reactions: __S(107, __c13, 3),
+          identifiedLanguage: S.optional(__S(113, __c14, 1)),
+          relatedEventId: S.optional(S.String),
+          isReport: S.optional(S.Boolean),
+          parentCommentId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateBlogCommentResponseNewMessageData",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String,
+          author: S.optional(S.Unknown),
+          type: S.String,
+          data: __S(108, __c13, 4),
+        }),
+      ).annotate({
+        identifier: "CreateBlogCommentResponseNewMessage",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          newMessage: __S(109, __c13, 5),
+        }),
+      ).annotate({
+        identifier: "CreateBlogCommentResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           language: S.String,
@@ -5227,663 +5545,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateBlogCommentResponseNewMessageDataIdentifiedLanguage",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          edited: S.Boolean,
-          hidden: S.Boolean,
-          hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(9, __c1, 1),
-          numEdits: S.Number,
-          editors: __S(10, __c1, 2),
-          editorAvatarUrls: __S(10, __c1, 2),
-          reactions: __S(12, __c1, 4),
-          identifiedLanguage: S.optional(__S(13, __c1, 5)),
-          relatedEventId: S.optional(S.String),
-          isReport: S.optional(S.Boolean),
-          parentCommentId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateBlogCommentResponseNewMessageData",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String,
-          author: S.optional(S.Unknown),
-          type: S.String,
-          data: __S(14, __c1, 6),
-        }),
-      ).annotate({
-        identifier: "CreateBlogCommentResponseNewMessage",
-      });
   }
 }
-function __c2(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          newMessage: __S(15, __c1, 7),
-        }),
-      ).annotate({
-        identifier: "CreateBlogCommentResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          slug: S.String.pipe(T.Label()),
-          comment: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/blog/{namespace}/{slug}/comment", code: 200 })),
-      ).annotate({
-        identifier: "CreateCommunityBlogCommentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          raw: S.String,
-          html: S.String,
-          updatedAt: S.String,
-          author: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "CreateCommunityBlogCommentResponseNewMessageDataLatest",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reaction: S.String,
-          users: __S(19, __c2, 3),
-          count: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateCommunityBlogCommentResponseNewMessageDataReactionsItem",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          edited: S.Boolean,
-          hidden: S.Boolean,
-          hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(18, __c2, 2),
-          numEdits: S.Number,
-          editors: __S(10, __c1, 2),
-          editorAvatarUrls: __S(19, __c2, 3),
-          reactions: __S(21, __c2, 5),
-          identifiedLanguage: S.optional(__S(13, __c1, 5)),
-          relatedEventId: S.optional(S.String),
-          isReport: S.optional(S.Boolean),
-          parentCommentId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateCommunityBlogCommentResponseNewMessageData",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String,
-          author: S.optional(S.Unknown),
-          type: S.String,
-          data: __S(22, __c2, 6),
-        }),
-      ).annotate({
-        identifier: "CreateCommunityBlogCommentResponseNewMessage",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          newMessage: __S(23, __c2, 7),
-        }),
-      ).annotate({
-        identifier: "CreateCommunityBlogCommentResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          repoType: S.String.pipe(T.Label()),
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          title: S.String,
-          description: S.String,
-          pullRequest: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/{repoType}/{namespace}/{repo}/discussions",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateDiscussionRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          base: S.String,
-          mergeCommitId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateDiscussionResponseReferences",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          num: S.Number,
-          pullRequest: S.Boolean,
-          references: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "CreateDiscussionResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          repoType: S.String.pipe(T.Label()),
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          num: S.String.pipe(T.Label()),
-          comment: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}/comment",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDiscussionCommentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          raw: S.String,
-          html: S.String,
-          updatedAt: S.String,
-          author: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "CreateDiscussionCommentResponseNewMessageDataLatest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reaction: S.String,
-          users: __S(19, __c2, 3),
-          count: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateDiscussionCommentResponseNewMessageDataReactionsItem",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          edited: S.Boolean,
-          hidden: S.Boolean,
-          hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(29, __c3, 5),
-          numEdits: S.Number,
-          editors: __S(10, __c1, 2),
-          editorAvatarUrls: __S(19, __c2, 3),
-          reactions: __S(31, __c3, 7),
-          identifiedLanguage: S.optional(__S(13, __c1, 5)),
-          relatedEventId: S.optional(S.String),
-          isReport: S.optional(S.Boolean),
-          parentCommentId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateDiscussionCommentResponseNewMessageData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String,
-          author: S.optional(S.Unknown),
-          type: S.String,
-          data: __S(32, __c4, 0),
-        }),
-      ).annotate({
-        identifier: "CreateDiscussionCommentResponseNewMessage",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          newMessage: __S(33, __c4, 1),
-        }),
-      ).annotate({
-        identifier: "CreateDiscussionCommentResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          paperId: S.String.pipe(T.Label()),
-          comment: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/papers/{paperId}/comment", code: 200 })),
-      ).annotate({
-        identifier: "CreatePaperCommentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          raw: S.String,
-          html: S.String,
-          updatedAt: S.String,
-          author: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "CreatePaperCommentResponseNewMessageDataLatest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          reaction: S.String,
-          users: __S(10, __c1, 2),
-          count: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreatePaperCommentResponseNewMessageDataReactionsItem",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          edited: S.Boolean,
-          hidden: S.Boolean,
-          hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(36, __c4, 4),
-          numEdits: S.Number,
-          editors: __S(10, __c1, 2),
-          editorAvatarUrls: __S(10, __c1, 2),
-          reactions: __S(38, __c4, 6),
-          identifiedLanguage: S.optional(__S(13, __c1, 5)),
-          relatedEventId: S.optional(S.String),
-          isReport: S.optional(S.Boolean),
-          parentCommentId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreatePaperCommentResponseNewMessageData",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String,
-          author: S.optional(S.Unknown),
-          type: S.String,
-          data: __S(39, __c4, 7),
-        }),
-      ).annotate({
-        identifier: "CreatePaperCommentResponseNewMessage",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          newMessage: __S(40, __c5, 0),
-        }),
-      ).annotate({
-        identifier: "CreatePaperCommentResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          postSlug: S.String.pipe(T.Label()),
-          comment: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/posts/{username}/{postSlug}/comment", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreatePostCommentRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          raw: S.String,
-          html: S.String,
-          updatedAt: S.String,
-          author: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "CreatePostCommentResponseNewMessageDataLatest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reaction: S.String,
-          users: __S(10, __c1, 2),
-          count: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreatePostCommentResponseNewMessageDataReactionsItem",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          edited: S.Boolean,
-          hidden: S.Boolean,
-          hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(43, __c5, 3),
-          numEdits: S.Number,
-          editors: __S(10, __c1, 2),
-          editorAvatarUrls: __S(10, __c1, 2),
-          reactions: __S(45, __c5, 5),
-          identifiedLanguage: S.optional(__S(13, __c1, 5)),
-          relatedEventId: S.optional(S.String),
-          isReport: S.optional(S.Boolean),
-          parentCommentId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreatePostCommentResponseNewMessageData",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String,
-          author: S.optional(S.Unknown),
-          type: S.String,
-          data: __S(46, __c5, 6),
-        }),
-      ).annotate({
-        identifier: "CreatePostCommentResponseNewMessage",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          newMessage: __S(47, __c5, 7),
-        }),
-      ).annotate({
-        identifier: "CreatePostCommentResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          repoType: S.String.pipe(T.Label()),
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          num: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDiscussionRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDiscussionResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          postSlug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/posts/{username}/{postSlug}", code: 200 })),
-      ).annotate({ identifier: "DeletePostRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          repoType: S.String.pipe(T.Label()),
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          num: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}/ref",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeletePrRefRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          repoType: S.String.pipe(T.Label()),
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          num: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDiscussionDetailsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "RepoId" });
-    case 7:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetDiscussionDetailsResponse",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          commentId: S.String.pipe(T.Label()),
-          reason: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/blog/{slug}/comment/{commentId}/hide", code: 200 }),
-        ),
-      ).annotate({ identifier: "HideBlogCommentRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          slug: S.String.pipe(T.Label()),
-          commentId: S.String.pipe(T.Label()),
-          reason: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/blog/{namespace}/{slug}/comment/{commentId}/hide",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "HideCommunityBlogCommentRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "HideCommunityBlogCommentResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          repoType: S.String.pipe(T.Label()),
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          num: S.String.pipe(T.Label()),
-          commentId: S.String.pipe(T.Label()),
-          reason: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}/comment/{commentId}/hide",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "HideDiscussionCommentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          paperId: S.String.pipe(T.Label()),
-          commentId: S.String.pipe(T.Label()),
-          reason: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/papers/{paperId}/comment/{commentId}/hide",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "HidePaperCommentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          postSlug: S.String.pipe(T.Label()),
-          commentId: S.String.pipe(T.Label()),
-          reason: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/posts/{username}/{postSlug}/comment/{commentId}/hide",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "HidePostCommentRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          repoType: S.String.pipe(T.Label()),
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          p: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          author: S.optional(S.String.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/{repoType}/{namespace}/{repo}/discussions",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListDiscussionsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          reaction: S.String,
-          count: S.Number,
-        }),
-      ).annotate({
-        identifier: "ListDiscussionsResponseDiscussionsItemTopReactionsItem",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-          isParticipating: S.Boolean,
-          isDiscussionAuthor: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "ListDiscussionsResponseDiscussionsItemRepoOwner",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          num: S.Number,
-          author: S.optional(S.Unknown),
-          repo: __S(54, __c6, 6),
-          title: S.String,
-          createdAt: S.String,
-          topReactions: __S(64, __c8, 0),
-          status: S.String,
-          isPullRequest: S.Boolean,
-          numComments: S.Number,
-          numReactionUsers: S.Number,
-          pinned: S.Boolean,
-          repoOwner: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "ListDiscussionsResponseDiscussionsItem",
-      });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          discussions: __S(67, __c8, 3),
-          count: S.Number,
-          start: S.Number,
-          numClosedDiscussions: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ListDiscussionsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          repoType: S.String.pipe(T.Label()),
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          num: S.String.pipe(T.Label()),
-          comment: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}/merge",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "MergePullRequestRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          repoType: S.String.pipe(T.Label()),
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          num: S.String.pipe(T.Label()),
-          pinned: S.Boolean,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}/pin",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "PinDiscussionRequest" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           repoType: S.String.pipe(T.Label()),
@@ -5898,11 +5564,7 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PrStorageEstimateRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           estimatedStorage: S.Number,
@@ -5911,7 +5573,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PrStorageEstimateResponse",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -5928,7 +5594,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReactToBlogCommentRequest",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -5946,7 +5616,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReactToCommunityBlogCommentRequest",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repoType: S.String.pipe(T.Label()),
@@ -5966,7 +5640,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReactToDiscussionCommentRequest",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           paperId: S.String.pipe(T.Label()),
@@ -5983,7 +5661,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReactToPaperCommentRequest",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -6001,7 +5683,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReactToPostCommentRequest",
       });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -6013,7 +5699,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReplyToBlogCommentRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           raw: S.String,
@@ -6024,35 +5710,31 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReplyToBlogCommentResponseNewMessageDataLatest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           reaction: S.String,
-          users: __S(10, __c1, 2),
+          users: __S(112, __c14, 0),
           count: S.Number,
         }),
       ).annotate({
         identifier: "ReplyToBlogCommentResponseNewMessageDataReactionsItem",
       });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(170, __c21, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
           hiddenReason: S.optional(S.String),
-          latest: __S(79, __c9, 7),
+          latest: __S(169, __c21, 1),
           numEdits: S.Number,
-          editors: __S(10, __c1, 2),
-          editorAvatarUrls: __S(10, __c1, 2),
-          reactions: __S(81, __c10, 1),
-          identifiedLanguage: S.optional(__S(13, __c1, 5)),
+          editors: __S(112, __c14, 0),
+          editorAvatarUrls: __S(112, __c14, 0),
+          reactions: __S(171, __c21, 3),
+          identifiedLanguage: S.optional(__S(113, __c14, 1)),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -6060,27 +5742,31 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ReplyToBlogCommentResponseNewMessageData",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String,
           author: S.optional(S.Unknown),
           type: S.String,
-          data: __S(82, __c10, 2),
+          data: __S(172, __c21, 4),
         }),
       ).annotate({
         identifier: "ReplyToBlogCommentResponseNewMessage",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(83, __c10, 3),
+          newMessage: __S(173, __c21, 5),
         }),
       ).annotate({
         identifier: "ReplyToBlogCommentResponse",
       });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -6097,7 +5783,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ReplyToCommunityBlogCommentRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           raw: S.String,
@@ -6108,35 +5794,31 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ReplyToCommunityBlogCommentResponseNewMessageDataLatest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           reaction: S.String,
-          users: __S(19, __c2, 3),
+          users: __S(208, __c26, 0),
           count: S.Number,
         }),
       ).annotate({
         identifier: "ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(178, __c22, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
           hiddenReason: S.optional(S.String),
-          latest: __S(86, __c10, 6),
+          latest: __S(177, __c22, 1),
           numEdits: S.Number,
-          editors: __S(10, __c1, 2),
-          editorAvatarUrls: __S(19, __c2, 3),
-          reactions: __S(88, __c11, 0),
-          identifiedLanguage: S.optional(__S(13, __c1, 5)),
+          editors: __S(112, __c14, 0),
+          editorAvatarUrls: __S(208, __c26, 0),
+          reactions: __S(179, __c22, 3),
+          identifiedLanguage: S.optional(__S(113, __c14, 1)),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -6144,27 +5826,31 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ReplyToCommunityBlogCommentResponseNewMessageData",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String,
           author: S.optional(S.Unknown),
           type: S.String,
-          data: __S(89, __c11, 1),
+          data: __S(180, __c22, 4),
         }),
       ).annotate({
         identifier: "ReplyToCommunityBlogCommentResponseNewMessage",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(90, __c11, 2),
+          newMessage: __S(181, __c22, 5),
         }),
       ).annotate({
         identifier: "ReplyToCommunityBlogCommentResponse",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           paperId: S.String.pipe(T.Label()),
@@ -6180,7 +5866,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ReplyToPaperCommentRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           raw: S.String,
@@ -6191,35 +5877,31 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ReplyToPaperCommentResponseNewMessageDataLatest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           reaction: S.String,
-          users: __S(19, __c2, 3),
+          users: __S(208, __c26, 0),
           count: S.Number,
         }),
       ).annotate({
         identifier: "ReplyToPaperCommentResponseNewMessageDataReactionsItem",
       });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(186, __c23, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
           hiddenReason: S.optional(S.String),
-          latest: __S(93, __c11, 5),
+          latest: __S(185, __c23, 1),
           numEdits: S.Number,
-          editors: __S(10, __c1, 2),
-          editorAvatarUrls: __S(10, __c1, 2),
-          reactions: __S(95, __c11, 7),
-          identifiedLanguage: S.optional(__S(13, __c1, 5)),
+          editors: __S(112, __c14, 0),
+          editorAvatarUrls: __S(112, __c14, 0),
+          reactions: __S(187, __c23, 3),
+          identifiedLanguage: S.optional(__S(113, __c14, 1)),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -6227,27 +5909,31 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ReplyToPaperCommentResponseNewMessageData",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String,
           author: S.optional(S.Unknown),
           type: S.String,
-          data: __S(96, __c12, 0),
+          data: __S(188, __c23, 4),
         }),
       ).annotate({
         identifier: "ReplyToPaperCommentResponseNewMessage",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(97, __c12, 1),
+          newMessage: __S(189, __c23, 5),
         }),
       ).annotate({
         identifier: "ReplyToPaperCommentResponse",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -6264,7 +5950,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ReplyToPostCommentRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           raw: S.String,
@@ -6275,31 +5961,31 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ReplyToPostCommentResponseNewMessageDataLatest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           reaction: S.String,
-          users: __S(10, __c1, 2),
+          users: __S(112, __c14, 0),
           count: S.Number,
         }),
       ).annotate({
         identifier: "ReplyToPostCommentResponseNewMessageDataReactionsItem",
       });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(194, __c24, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
           hiddenReason: S.optional(S.String),
-          latest: __S(100, __c12, 4),
+          latest: __S(193, __c24, 1),
           numEdits: S.Number,
-          editors: __S(10, __c1, 2),
-          editorAvatarUrls: __S(10, __c1, 2),
-          reactions: __S(102, __c12, 6),
-          identifiedLanguage: S.optional(__S(13, __c1, 5)),
+          editors: __S(112, __c14, 0),
+          editorAvatarUrls: __S(112, __c14, 0),
+          reactions: __S(195, __c24, 3),
+          identifiedLanguage: S.optional(__S(113, __c14, 1)),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -6307,31 +5993,114 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ReplyToPostCommentResponseNewMessageData",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String,
           author: S.optional(S.Unknown),
           type: S.String,
-          data: __S(103, __c12, 7),
+          data: __S(196, __c24, 4),
         }),
       ).annotate({
         identifier: "ReplyToPostCommentResponseNewMessage",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(104, __c13, 0),
+          newMessage: __S(197, __c24, 5),
         }),
       ).annotate({
         identifier: "ReplyToPostCommentResponse",
       });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          slug: S.String.pipe(T.Label()),
+          comment: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/blog/{namespace}/{slug}/comment", code: 200 })),
+      ).annotate({
+        identifier: "CreateCommunityBlogCommentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          raw: S.String,
+          html: S.String,
+          updatedAt: S.String,
+          author: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "CreateCommunityBlogCommentResponseNewMessageDataLatest",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reaction: S.String,
+          users: __S(208, __c26, 0),
+          count: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateCommunityBlogCommentResponseNewMessageDataReactionsItem",
+      });
+    case 3:
+      return S.Array(__S(202, __c25, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          edited: S.Boolean,
+          hidden: S.Boolean,
+          hiddenBy: S.optional(S.String),
+          hiddenReason: S.optional(S.String),
+          latest: __S(201, __c25, 1),
+          numEdits: S.Number,
+          editors: __S(112, __c14, 0),
+          editorAvatarUrls: __S(208, __c26, 0),
+          reactions: __S(203, __c25, 3),
+          identifiedLanguage: S.optional(__S(113, __c14, 1)),
+          relatedEventId: S.optional(S.String),
+          isReport: S.optional(S.Boolean),
+          parentCommentId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateCommunityBlogCommentResponseNewMessageData",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String,
+          author: S.optional(S.Unknown),
+          type: S.String,
+          data: __S(204, __c25, 4),
+        }),
+      ).annotate({
+        identifier: "CreateCommunityBlogCommentResponseNewMessage",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          newMessage: __S(205, __c25, 5),
+        }),
+      ).annotate({
+        identifier: "CreateCommunityBlogCommentResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repoType: S.String.pipe(T.Label()),
@@ -6349,7 +6118,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ToggleIgnoreDiscussionRequest",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -6359,7 +6132,11 @@ function __c13(j: number): any {
           T.Http({ method: "POST", uri: "/api/blog/{slug}/comment/{commentId}/edit", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateBlogCommentRequest" });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -6376,7 +6153,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateCommunityBlogCommentRequest",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repoType: S.String.pipe(T.Label()),
@@ -6395,11 +6176,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateDiscussionCommentRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdateDiscussionCommentResponse",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           paperId: S.String.pipe(T.Label()),
@@ -6417,7 +6202,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6436,7 +6221,321 @@ function __c14(j: number): any {
       ).annotate({ identifier: "UpdatePostCommentRequest" });
   }
 }
-
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repoType: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          title: S.String,
+          description: S.String,
+          pullRequest: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/{repoType}/{namespace}/{repo}/discussions",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateDiscussionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          base: S.String,
+          mergeCommitId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateDiscussionResponseReferences",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          num: S.Number,
+          pullRequest: S.Boolean,
+          references: S.optional(__S(265, __c33, 1)),
+        }),
+      ).annotate({ identifier: "CreateDiscussionResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repoType: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          num: S.String.pipe(T.Label()),
+          comment: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}/comment",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDiscussionCommentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          raw: S.String,
+          html: S.String,
+          updatedAt: S.String,
+          author: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "CreateDiscussionCommentResponseNewMessageDataLatest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reaction: S.String,
+          users: __S(208, __c26, 0),
+          count: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateDiscussionCommentResponseNewMessageDataReactionsItem",
+      });
+    case 3:
+      return S.Array(__S(274, __c34, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          edited: S.Boolean,
+          hidden: S.Boolean,
+          hiddenBy: S.optional(S.String),
+          hiddenReason: S.optional(S.String),
+          latest: __S(273, __c34, 1),
+          numEdits: S.Number,
+          editors: __S(112, __c14, 0),
+          editorAvatarUrls: __S(208, __c26, 0),
+          reactions: __S(275, __c34, 3),
+          identifiedLanguage: S.optional(__S(113, __c14, 1)),
+          relatedEventId: S.optional(S.String),
+          isReport: S.optional(S.Boolean),
+          parentCommentId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateDiscussionCommentResponseNewMessageData",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String,
+          author: S.optional(S.Unknown),
+          type: S.String,
+          data: __S(276, __c34, 4),
+        }),
+      ).annotate({
+        identifier: "CreateDiscussionCommentResponseNewMessage",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          newMessage: __S(277, __c34, 5),
+        }),
+      ).annotate({
+        identifier: "CreateDiscussionCommentResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paperId: S.String.pipe(T.Label()),
+          comment: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/papers/{paperId}/comment", code: 200 })),
+      ).annotate({
+        identifier: "CreatePaperCommentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          raw: S.String,
+          html: S.String,
+          updatedAt: S.String,
+          author: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "CreatePaperCommentResponseNewMessageDataLatest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reaction: S.String,
+          users: __S(112, __c14, 0),
+          count: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreatePaperCommentResponseNewMessageDataReactionsItem",
+      });
+    case 3:
+      return S.Array(__S(282, __c35, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          edited: S.Boolean,
+          hidden: S.Boolean,
+          hiddenBy: S.optional(S.String),
+          hiddenReason: S.optional(S.String),
+          latest: __S(281, __c35, 1),
+          numEdits: S.Number,
+          editors: __S(112, __c14, 0),
+          editorAvatarUrls: __S(112, __c14, 0),
+          reactions: __S(283, __c35, 3),
+          identifiedLanguage: S.optional(__S(113, __c14, 1)),
+          relatedEventId: S.optional(S.String),
+          isReport: S.optional(S.Boolean),
+          parentCommentId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreatePaperCommentResponseNewMessageData",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String,
+          author: S.optional(S.Unknown),
+          type: S.String,
+          data: __S(284, __c35, 4),
+        }),
+      ).annotate({
+        identifier: "CreatePaperCommentResponseNewMessage",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          newMessage: __S(285, __c35, 5),
+        }),
+      ).annotate({
+        identifier: "CreatePaperCommentResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          postSlug: S.String.pipe(T.Label()),
+          comment: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/posts/{username}/{postSlug}/comment", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreatePostCommentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          raw: S.String,
+          html: S.String,
+          updatedAt: S.String,
+          author: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "CreatePostCommentResponseNewMessageDataLatest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reaction: S.String,
+          users: __S(112, __c14, 0),
+          count: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreatePostCommentResponseNewMessageDataReactionsItem",
+      });
+    case 3:
+      return S.Array(__S(290, __c36, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          edited: S.Boolean,
+          hidden: S.Boolean,
+          hiddenBy: S.optional(S.String),
+          hiddenReason: S.optional(S.String),
+          latest: __S(289, __c36, 1),
+          numEdits: S.Number,
+          editors: __S(112, __c14, 0),
+          editorAvatarUrls: __S(112, __c14, 0),
+          reactions: __S(291, __c36, 3),
+          identifiedLanguage: S.optional(__S(113, __c14, 1)),
+          relatedEventId: S.optional(S.String),
+          isReport: S.optional(S.Boolean),
+          parentCommentId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreatePostCommentResponseNewMessageData",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String,
+          author: S.optional(S.Unknown),
+          type: S.String,
+          data: __S(292, __c36, 4),
+        }),
+      ).annotate({
+        identifier: "CreatePostCommentResponseNewMessage",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          newMessage: __S(293, __c36, 5),
+        }),
+      ).annotate({
+        identifier: "CreatePostCommentResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repoType: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          num: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/{repoType}/{namespace}/{repo}/discussions/{num}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDiscussionRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteDiscussionResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          postSlug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/posts/{username}/{postSlug}", code: 200 })),
+      ).annotate({ identifier: "DeletePostRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

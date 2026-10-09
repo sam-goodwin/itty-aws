@@ -136,7 +136,7 @@ export const DataScannersCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<DataScannersCreateOrUpdateRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DataScannersCreateOrUpdateResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<DataScannersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -150,8 +150,8 @@ export const DeleteDataScanner: API.OperationMethod<
   DeleteDataScannerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteDataScannerRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteDataScannerResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteDataScannerRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DeleteDataScannerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -165,8 +165,8 @@ export const GetDataScanner: API.OperationMethod<
   GetDataScannerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetDataScannerRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetDataScannerResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetDataScannerRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<GetDataScannerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -180,8 +180,8 @@ export const ListDataScanners: API.OperationMethod<
   ListDataScannersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ListDataScannersRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DataScannerList>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListDataScannersRequest>,
+  output: __S(22, __c5, 2) as any as S.Schema<DataScannerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -219,6 +219,23 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(4, __c1, 0)),
+          properties: S.optional(S.Unknown),
+          identity: S.optional(__S(5, __c1, 1)),
+        }),
+      ).annotate({
+        identifier: "DataScannersCreateOrUpdateResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           createdBy: S.optional(S.String),
           createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
@@ -227,7 +244,7 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -237,20 +254,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DataScannersCreateOrUpdateResponseIdentity",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(S.Unknown),
-          identity: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "DataScannersCreateOrUpdateResponse",
-      });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scopeId: S.String.pipe(T.Label()),
@@ -264,11 +272,15 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteDataScannerRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteDataScannerResponse",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scopeId: S.String.pipe(T.Label()),
@@ -284,7 +296,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "GetDataScannerRequest" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -292,12 +304,16 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(4, __c1, 0)),
           properties: S.optional(S.Unknown),
-          identity: S.optional(__S(3, __c0, 3)),
+          identity: S.optional(__S(5, __c1, 1)),
         }),
       ).annotate({ identifier: "GetDataScannerResponse" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scopeId: S.String.pipe(T.Label()),
@@ -310,18 +326,17 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDataScannersRequest" });
+    case 1:
+      return S.Array(__S(16, __c4, 0));
     case 2:
-      return S.Array(__S(8, __c1, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(10, __c1, 2),
+          value: __S(21, __c5, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataScannerList" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

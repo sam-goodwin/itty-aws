@@ -1626,8 +1626,8 @@ export const AccessListRoleBindingNameList: API.OperationMethod<
   AccessListRoleBindingNameListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AccessListRoleBindingNameListRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AccessRoleBindingNameListSuccessResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AccessListRoleBindingNameListRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AccessRoleBindingNameListSuccessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1641,8 +1641,8 @@ export const ClusterCreateOrUpdate: API.OperationMethod<
   ClusterCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ClusterCreateOrUpdateRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ClusterCreateOrUpdateResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ClusterCreateOrUpdateRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<ClusterCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1656,8 +1656,8 @@ export const ConnectorCreateOrUpdate: API.OperationMethod<
   ConnectorCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ConnectorCreateOrUpdateRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ConnectorCreateOrUpdateResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ConnectorCreateOrUpdateRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<ConnectorCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1671,8 +1671,8 @@ export const CreateAccessRoleBinding: API.OperationMethod<
   CreateAccessRoleBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateAccessRoleBindingRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<RoleBindingRecord>,
+  input: __S(312, __c39, 0) as any as S.Schema<CreateAccessRoleBindingRequest>,
+  output: __S(328, __c41, 0) as any as S.Schema<RoleBindingRecord>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1686,8 +1686,8 @@ export const CreateMarketplaceAgreement: API.OperationMethod<
   CreateMarketplaceAgreementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateMarketplaceAgreementRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ConfluentAgreementResource>,
+  input: __S(424, __c53, 0) as any as S.Schema<CreateMarketplaceAgreementRequest>,
+  output: __S(434, __c54, 2) as any as S.Schema<ConfluentAgreementResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1701,8 +1701,8 @@ export const CreateOrganization: API.OperationMethod<
   CreateOrganizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateOrganizationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateOrganizationResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<CreateOrganizationRequest>,
+  output: __S(488, __c61, 0) as any as S.Schema<CreateOrganizationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1716,8 +1716,8 @@ export const CreateOrganizationAPIKey: API.OperationMethod<
   CreateOrganizationAPIKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateOrganizationAPIKeyRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<APIKeyRecord>,
+  input: __S(504, __c63, 0) as any as S.Schema<CreateOrganizationAPIKeyRequest>,
+  output: __S(516, __c64, 4) as any as S.Schema<APIKeyRecord>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1731,8 +1731,8 @@ export const CreateTopic: API.OperationMethod<
   CreateTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateTopicRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<CreateTopicResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<CreateTopicRequest>,
+  output: __S(533, __c66, 5) as any as S.Schema<CreateTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1746,8 +1746,8 @@ export const DeleteAccessRoleBinding: API.OperationMethod<
   DeleteAccessRoleBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteAccessRoleBindingRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteAccessRoleBindingResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<DeleteAccessRoleBindingRequest>,
+  output: __S(537, __c67, 1) as any as S.Schema<DeleteAccessRoleBindingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1761,8 +1761,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(552, __c69, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1776,8 +1776,8 @@ export const DeleteConnector: API.OperationMethod<
   DeleteConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteConnectorRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeleteConnectorResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteConnectorRequest>,
+  output: __S(552, __c69, 0) as any as S.Schema<DeleteConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1791,8 +1791,8 @@ export const DeleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(552, __c69, 0) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1806,8 +1806,8 @@ export const DeleteOrganization: API.OperationMethod<
   DeleteOrganizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteOrganizationRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeleteOrganizationResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteOrganizationRequest>,
+  output: __S(552, __c69, 0) as any as S.Schema<DeleteOrganizationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1821,8 +1821,8 @@ export const DeleteOrganizationClusterAPIKey: API.OperationMethod<
   DeleteOrganizationClusterAPIKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteOrganizationClusterAPIKeyRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DeleteOrganizationClusterAPIKeyResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteOrganizationClusterAPIKeyRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<DeleteOrganizationClusterAPIKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1836,8 +1836,8 @@ export const DeleteTopic: API.OperationMethod<
   DeleteTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteTopicRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeleteTopicResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteTopicRequest>,
+  output: __S(552, __c69, 0) as any as S.Schema<DeleteTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1851,8 +1851,8 @@ export const EnvironmentCreateOrUpdate: API.OperationMethod<
   EnvironmentCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<EnvironmentCreateOrUpdateRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<EnvironmentCreateOrUpdateResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<EnvironmentCreateOrUpdateRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<EnvironmentCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1866,8 +1866,8 @@ export const GetConnector: API.OperationMethod<
   GetConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetConnectorRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetConnectorResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetConnectorRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<GetConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1881,8 +1881,8 @@ export const GetOrganization: API.OperationMethod<
   GetOrganizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetOrganizationResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetOrganizationRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<GetOrganizationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1896,8 +1896,8 @@ export const GetOrganizationClusterAPIKey: API.OperationMethod<
   GetOrganizationClusterAPIKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetOrganizationClusterAPIKeyRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<APIKeyRecord>,
+  input: __S(184, __c23, 0) as any as S.Schema<GetOrganizationClusterAPIKeyRequest>,
+  output: __S(516, __c64, 4) as any as S.Schema<APIKeyRecord>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1911,8 +1911,8 @@ export const GetOrganizationClusterById: API.OperationMethod<
   GetOrganizationClusterByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetOrganizationClusterByIdRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetOrganizationClusterByIdResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetOrganizationClusterByIdRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetOrganizationClusterByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1926,8 +1926,8 @@ export const GetOrganizationEnvironmentById: API.OperationMethod<
   GetOrganizationEnvironmentByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetOrganizationEnvironmentByIdRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetOrganizationEnvironmentByIdResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetOrganizationEnvironmentByIdRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetOrganizationEnvironmentByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1941,8 +1941,8 @@ export const GetOrganizationSchemaRegistryClusterById: API.OperationMethod<
   GetOrganizationSchemaRegistryClusterByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetOrganizationSchemaRegistryClusterByIdRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<SchemaRegistryClusterRecord>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetOrganizationSchemaRegistryClusterByIdRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<SchemaRegistryClusterRecord>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1956,8 +1956,8 @@ export const GetTopic: API.OperationMethod<
   GetTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetTopicRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetTopicResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetTopicRequest>,
+  output: __S(533, __c66, 5) as any as S.Schema<GetTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1971,8 +1971,8 @@ export const InviteAccessUser: API.OperationMethod<
   InviteAccessUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<InviteAccessUserRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<InvitationRecord>,
+  input: __S(249, __c31, 1) as any as S.Schema<InviteAccessUserRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<InvitationRecord>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1986,8 +1986,8 @@ export const ListAccessClusters: API.OperationMethod<
   ListAccessClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListAccessClustersRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<AccessListClusterSuccessResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListAccessClustersRequest>,
+  output: __S(270, __c33, 6) as any as S.Schema<AccessListClusterSuccessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2001,8 +2001,8 @@ export const ListAccessEnvironments: API.OperationMethod<
   ListAccessEnvironmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListAccessEnvironmentsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<AccessListEnvironmentsSuccessResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListAccessEnvironmentsRequest>,
+  output: __S(275, __c34, 3) as any as S.Schema<AccessListEnvironmentsSuccessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2016,8 +2016,8 @@ export const ListAccessInvitations: API.OperationMethod<
   ListAccessInvitationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListAccessInvitationsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<AccessListInvitationsSuccessResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<ListAccessInvitationsRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<AccessListInvitationsSuccessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2031,8 +2031,8 @@ export const ListAccessRoleBindings: API.OperationMethod<
   ListAccessRoleBindingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ListAccessRoleBindingsRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<AccessListRoleBindingsSuccessResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListAccessRoleBindingsRequest>,
+  output: __S(290, __c36, 2) as any as S.Schema<AccessListRoleBindingsSuccessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2046,8 +2046,8 @@ export const ListAccessServiceAccounts: API.OperationMethod<
   ListAccessServiceAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListAccessServiceAccountsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<AccessListServiceAccountsSuccessResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<ListAccessServiceAccountsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<AccessListServiceAccountsSuccessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2061,8 +2061,8 @@ export const ListAccessUsers: API.OperationMethod<
   ListAccessUsersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListAccessUsersRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<AccessListUsersSuccessResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<ListAccessUsersRequest>,
+  output: __S(307, __c38, 3) as any as S.Schema<AccessListUsersSuccessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2076,8 +2076,8 @@ export const ListConnector: API.OperationMethod<
   ListConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListConnectorRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListConnectorsSuccessResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<ListConnectorRequest>,
+  output: __S(338, __c42, 2) as any as S.Schema<ListConnectorsSuccessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2091,8 +2091,8 @@ export const ListMarketplaceAgreements: API.OperationMethod<
   ListMarketplaceAgreementsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListMarketplaceAgreementsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ConfluentAgreementResourceListResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<ListMarketplaceAgreementsRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<ConfluentAgreementResourceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2106,8 +2106,8 @@ export const ListOrganizationByResourceGroup: API.OperationMethod<
   ListOrganizationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListOrganizationByResourceGroupRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<OrganizationResourceListResult>,
+  input: __S(352, __c44, 0) as any as S.Schema<ListOrganizationByResourceGroupRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<OrganizationResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2121,8 +2121,8 @@ export const ListOrganizationBySubscription: API.OperationMethod<
   ListOrganizationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListOrganizationBySubscriptionRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<OrganizationResourceListResult>,
+  input: __S(368, __c46, 0) as any as S.Schema<ListOrganizationBySubscriptionRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<OrganizationResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2136,8 +2136,8 @@ export const ListOrganizationClusters: API.OperationMethod<
   ListOrganizationClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListOrganizationClustersRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<ListClustersSuccessResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListOrganizationClustersRequest>,
+  output: __S(379, __c47, 3) as any as S.Schema<ListClustersSuccessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2151,8 +2151,8 @@ export const ListOrganizationEnvironments: API.OperationMethod<
   ListOrganizationEnvironmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListOrganizationEnvironmentsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<GetEnvironmentsResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<ListOrganizationEnvironmentsRequest>,
+  output: __S(387, __c48, 3) as any as S.Schema<GetEnvironmentsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2166,8 +2166,8 @@ export const ListOrganizationOperations: API.OperationMethod<
   ListOrganizationOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListOrganizationOperationsRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<OperationListResult>,
+  input: __S(392, __c49, 0) as any as S.Schema<ListOrganizationOperationsRequest>,
+  output: __S(396, __c49, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2181,8 +2181,8 @@ export const ListOrganizationRegions: API.OperationMethod<
   ListOrganizationRegionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListOrganizationRegionsRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<ListRegionsSuccessResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<ListOrganizationRegionsRequest>,
+  output: __S(405, __c50, 5) as any as S.Schema<ListRegionsSuccessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2196,8 +2196,8 @@ export const ListOrganizationSchemaRegistryClusters: API.OperationMethod<
   ListOrganizationSchemaRegistryClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListOrganizationSchemaRegistryClustersRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<ListSchemaRegistryClustersResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<ListOrganizationSchemaRegistryClustersRequest>,
+  output: __S(410, __c51, 2) as any as S.Schema<ListSchemaRegistryClustersResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2211,8 +2211,8 @@ export const ListTopics: API.OperationMethod<
   ListTopicsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListTopicsRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<ListTopicsSuccessResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<ListTopicsRequest>,
+  output: __S(418, __c52, 2) as any as S.Schema<ListTopicsSuccessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2226,8 +2226,8 @@ export const UpdateOrganization: API.OperationMethod<
   UpdateOrganizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<UpdateOrganizationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpdateOrganizationResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<UpdateOrganizationRequest>,
+  output: __S(488, __c61, 0) as any as S.Schema<UpdateOrganizationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2241,8 +2241,8 @@ export const ValidateValidationOrganization: API.OperationMethod<
   ValidateValidationOrganizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ValidateValidationOrganizationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ValidateValidationOrganizationResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<ValidateValidationOrganizationRequest>,
+  output: __S(488, __c61, 0) as any as S.Schema<ValidateValidationOrganizationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2256,8 +2256,8 @@ export const ValidateValidationOrganizationV2: API.OperationMethod<
   ValidateValidationOrganizationV2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ValidateValidationOrganizationV2Request>,
-  output: __S(140, __c17, 4) as any as S.Schema<ValidationResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<ValidateValidationOrganizationV2Request>,
+  output: __S(457, __c57, 1) as any as S.Schema<ValidationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2267,14 +2267,12 @@ export const ValidateValidationOrganizationV2: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0, __c0, 0)),
+          searchFilters: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2286,7 +2284,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccessListRoleBindingNameListRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(8, __c1, 0)),
+          data: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "AccessRoleBindingNameListSuccessResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           first: S.optional(S.String),
@@ -2296,35 +2308,94 @@ function __c0(j: number): any {
           total_size: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ConfluentListMetadata" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          organizationName: S.String.pipe(T.Label()),
+          environmentId: S.String.pipe(T.Label()),
+          clusterId: S.String.pipe(T.Label()),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2, __c0, 2)),
-          data: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(66, __c8, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
+            code: 200,
+            apiVersion: "2024-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClusterCreateOrUpdateRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(72, __c9, 0)),
+          kind: S.optional(S.String),
+          properties: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({
-        identifier: "AccessRoleBindingNameListSuccessResponse",
+        identifier: "ClusterCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          self: S.optional(S.String),
+          id: S.optional(S.String),
+          related: S.optional(S.String),
           resourceName: S.optional(S.String),
-          createdTimestamp: S.optional(S.String),
-          updatedTimestamp: S.optional(S.String),
-          deletedTimestamp: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SCMetadataEntity" });
-    case 6:
+      ).annotate({ identifier: "SCClusterByokEntity" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterConfigEntity" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          phase: S.optional(S.String),
+          cku: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ClusterStatusEntity" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2335,18 +2406,6 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SCClusterNetworkEnvironmentEntity",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          related: S.optional(S.String),
-          resourceName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SCClusterByokEntity" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2359,49 +2418,25 @@ function __c1(j: number): any {
           kafkaBootstrapEndpoint: S.optional(S.String),
           httpEndpoint: S.optional(S.String),
           apiEndpoint: S.optional(S.String),
-          config: S.optional(__S(6, __c0, 6)),
-          environment: S.optional(__S(7, __c0, 7)),
-          network: S.optional(__S(7, __c0, 7)),
-          byok: S.optional(__S(8, __c1, 0)),
+          config: S.optional(__S(56, __c7, 0)),
+          environment: S.optional(__S(64, __c8, 0)),
+          network: S.optional(__S(64, __c8, 0)),
+          byok: S.optional(__S(48, __c6, 0)),
         }),
       ).annotate({ identifier: "SCClusterSpecEntity" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          phase: S.optional(S.String),
-          cku: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ClusterStatusEntity" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(5, __c0, 5)),
-          spec: S.optional(__S(9, __c1, 1)),
-          status: S.optional(__S(10, __c1, 2)),
+          metadata: S.optional(__S(80, __c10, 0)),
+          spec: S.optional(__S(65, __c8, 1)),
+          status: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "ClusterProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          organizationName: S.String.pipe(T.Label()),
-          environmentId: S.String.pipe(T.Label()),
-          clusterId: S.String.pipe(T.Label()),
-          kind: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
-            code: 200,
-            apiVersion: "2024-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClusterCreateOrUpdateRequest",
-      });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2412,464 +2447,25 @@ function __c1(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          kind: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "ClusterCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          connectorType: S.optional(S.String),
-          connectorClass: S.optional(S.String),
-          connectorName: S.optional(S.String),
-          connectorId: S.optional(S.String),
-          connectorState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectorInfoBase" });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          connectorBasicInfo: S.optional(__S(15, __c1, 7)),
-          connectorServiceTypeInfo: S.optional(S.Unknown),
-          partnerConnectorInfo: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "ConnectorResourceProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          organizationName: S.String.pipe(T.Label()),
-          environmentId: S.String.pipe(T.Label()),
-          clusterId: S.String.pipe(T.Label()),
-          connectorName: S.String.pipe(T.Label()),
-          properties: __S(16, __c2, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
-            code: 200,
-            apiVersion: "2024-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConnectorCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          properties: __S(16, __c2, 0),
-        }),
-      ).annotate({
-        identifier: "ConnectorCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          organizationName: S.String.pipe(T.Label()),
-          principal: S.optional(S.String),
-          role_name: S.optional(S.String),
-          crn_pattern: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/createRoleBinding",
-            code: 200,
-            apiVersion: "2024-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccessRoleBindingRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          self: S.optional(S.String),
-          resource_name: S.optional(S.String),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          deleted_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetadataEntity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-          metadata: S.optional(__S(20, __c2, 4)),
-          principal: S.optional(S.String),
-          role_name: S.optional(S.String),
-          crn_pattern: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RoleBindingRecord" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          publisher: S.optional(S.String),
-          product: S.optional(S.String),
-          plan: S.optional(S.String),
-          licenseTextLink: S.optional(S.String),
-          privacyPolicyLink: S.optional(S.String),
-          retrieveDatetime: S.optional(S.String),
-          signature: S.optional(S.String),
-          accepted: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ConfluentAgreementProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22, __c2, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/agreements/default",
-            code: 200,
-            apiVersion: "2024-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateMarketplaceAgreementRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfluentAgreementResourceSystemData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "ConfluentAgreementResource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          publisherId: S.String,
-          id: S.String,
-          planId: S.String,
-          planName: S.String,
-          termUnit: S.String,
-          termId: S.optional(S.String),
-          privateOfferId: S.optional(S.String),
-          privateOfferIds: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "OfferDetailInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          firstName: S.optional(S.String),
-          lastName: S.optional(S.String),
-          emailAddress: S.String,
-          userPrincipalName: S.optional(S.String),
-          aadEmail: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserDetail" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.String,
-        }),
-      ).annotate({ identifier: "LinkOrganization" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          offerDetail: __S(26, __c3, 2),
-          userDetail: __S(27, __c3, 3),
-          linkOrganization: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "OrganizationResourcePropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          organizationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(29, __c3, 5),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
-            code: 200,
-            apiVersion: "2024-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          publisherId: S.String,
-          id: S.String,
-          planId: S.String,
-          planName: S.String,
-          termUnit: S.String,
-          termId: S.optional(S.String),
-          privateOfferId: S.optional(S.String),
-          privateOfferIds: S.optional(__S(3, __c0, 3)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OfferDetail" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createdTime: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          organizationId: S.optional(S.String),
-          ssoUrl: S.optional(S.String),
-          offerDetail: __S(31, __c3, 7),
-          userDetail: __S(27, __c3, 3),
-          linkOrganization: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "OrganizationResourceProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(32, __c4, 0),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          organizationName: S.String.pipe(T.Label()),
-          environmentId: S.String.pipe(T.Label()),
-          clusterId: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/createAPIKey",
-            code: 200,
-            apiVersion: "2024-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationAPIKeyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          environment: S.optional(S.String),
-          related: S.optional(S.String),
-          resourceName: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "APIKeyResourceEntity" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          related: S.optional(S.String),
-          resourceName: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "APIKeyOwnerEntity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          resource: S.optional(__S(35, __c4, 3)),
-          owner: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "APIKeySpecEntity" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(5, __c0, 5)),
-          spec: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "APIKeyProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-          properties: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "APIKeyRecord" });
-  }
-}
-function __c5(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           self: S.optional(S.String),
           resourceName: S.optional(S.String),
+          createdTimestamp: S.optional(S.String),
+          updatedTimestamp: S.optional(S.String),
+          deletedTimestamp: S.optional(S.String),
         }),
-      ).annotate({ identifier: "TopicMetadataEntity" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          related: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TopicsRelatedLink" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TopicsInputConfig" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          topicId: S.optional(S.String),
-          metadata: S.optional(__S(40, __c5, 0)),
-          partitions: S.optional(__S(41, __c5, 1)),
-          configs: S.optional(__S(41, __c5, 1)),
-          inputConfigs: S.optional(__S(43, __c5, 3)),
-          partitionsReassignments: S.optional(__S(41, __c5, 1)),
-          partitionsCount: S.optional(S.String),
-          replicationFactor: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TopicProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          organizationName: S.String.pipe(T.Label()),
-          environmentId: S.String.pipe(T.Label()),
-          clusterId: S.String.pipe(T.Label()),
-          topicName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(44, __c5, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics/{topicName}",
-            code: 200,
-            apiVersion: "2024-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateTopicRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "CreateTopicResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          organizationName: S.String.pipe(T.Label()),
-          roleBindingId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/deleteRoleBinding/{roleBindingId}",
-            code: 200,
-            apiVersion: "2024-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccessRoleBindingRequest",
-      });
+      ).annotate({ identifier: "SCMetadataEntity" });
   }
 }
-function __c6(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAccessRoleBindingResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          organizationName: S.String.pipe(T.Label()),
-          environmentId: S.String.pipe(T.Label()),
-          clusterId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
-            code: 200,
-            apiVersion: "2024-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteClusterRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteClusterResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2887,7 +2483,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteConnectorRequest" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2903,7 +2503,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteEnvironmentRequest" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2920,7 +2524,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationRequest",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2938,13 +2546,13 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationClusterAPIKeyRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteOrganizationClusterAPIKeyResponse",
       });
   }
 }
-function __c7(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2964,20 +2572,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteTopicRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          package: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StreamGovernanceConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          streamGovernanceConfig: S.optional(__S(57, __c7, 1)),
-          metadata: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "EnvironmentProperties" });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2985,7 +2584,7 @@ function __c7(j: number): any {
           organizationName: S.String.pipe(T.Label()),
           environmentId: S.String.pipe(T.Label()),
           kind: S.optional(S.String),
-          properties: S.optional(__S(58, __c7, 2)),
+          properties: S.optional(__S(145, __c18, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2997,20 +2596,45 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "EnvironmentCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(72, __c9, 0)),
           kind: S.optional(S.String),
-          properties: S.optional(__S(58, __c7, 2)),
+          properties: S.optional(__S(145, __c18, 1)),
         }),
       ).annotate({
         identifier: "EnvironmentCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          package: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StreamGovernanceConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          streamGovernanceConfig: S.optional(__S(144, __c18, 0)),
+          metadata: S.optional(__S(80, __c10, 0)),
+        }),
+      ).annotate({ identifier: "EnvironmentProperties" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3028,17 +2652,25 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetConnectorRequest" });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          properties: __S(16, __c2, 0),
+          systemData: S.optional(__S(72, __c9, 0)),
+          properties: __S(209, __c26, 1),
         }),
       ).annotate({ identifier: "GetConnectorResponse" });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3055,7 +2687,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "GetOrganizationRequest" });
   }
 }
-function __c8(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3063,13 +2695,17 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(72, __c9, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(32, __c4, 0),
+          properties: __S(473, __c59, 1),
         }),
       ).annotate({ identifier: "GetOrganizationResponse" });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3087,7 +2723,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetOrganizationClusterAPIKeyRequest",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3106,7 +2746,72 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetOrganizationClusterByIdRequest",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          organizationName: S.String.pipe(T.Label()),
+          environmentId: S.String.pipe(T.Label()),
+          clusterId: S.String.pipe(T.Label()),
+          connectorName: S.String.pipe(T.Label()),
+          properties: __S(209, __c26, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
+            code: 200,
+            apiVersion: "2024-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConnectorCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(72, __c9, 0)),
+          properties: __S(209, __c26, 1),
+        }),
+      ).annotate({
+        identifier: "ConnectorCreateOrUpdateResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connectorType: S.optional(S.String),
+          connectorClass: S.optional(S.String),
+          connectorName: S.optional(S.String),
+          connectorId: S.optional(S.String),
+          connectorState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectorInfoBase" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          connectorBasicInfo: S.optional(__S(208, __c26, 0)),
+          connectorServiceTypeInfo: S.optional(S.Unknown),
+          partnerConnectorInfo: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "ConnectorResourceProperties",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3124,7 +2829,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetOrganizationEnvironmentByIdRequest",
       });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3143,20 +2852,24 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetOrganizationSchemaRegistryClusterByIdRequest",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           httpEndpoint: S.optional(S.String),
           package: S.optional(S.String),
-          region: S.optional(__S(8, __c1, 0)),
-          environment: S.optional(__S(8, __c1, 0)),
+          region: S.optional(__S(48, __c6, 0)),
+          environment: S.optional(__S(48, __c6, 0)),
           cloud: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SchemaRegistryClusterSpecEntity",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           phase: S.optional(S.String),
@@ -3164,31 +2877,31 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "SchemaRegistryClusterStatusEntity",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(5, __c0, 5)),
-          spec: S.optional(__S(69, __c8, 5)),
-          status: S.optional(__S(70, __c8, 6)),
+          metadata: S.optional(__S(80, __c10, 0)),
+          spec: S.optional(__S(232, __c29, 0)),
+          status: S.optional(__S(233, __c29, 1)),
         }),
       ).annotate({
         identifier: "SchemaRegistryClusterProperties",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          properties: S.optional(__S(71, __c8, 7)),
+          properties: S.optional(__S(234, __c29, 2)),
         }),
       ).annotate({
         identifier: "SchemaRegistryClusterRecord",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3206,14 +2919,18 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTopicRequest" });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invitedEmail: S.optional(S.String),
           auth_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessInvitedUserDetails" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3222,7 +2939,7 @@ function __c9(j: number): any {
           organizationId: S.optional(S.String),
           email: S.optional(S.String),
           upn: S.optional(S.String),
-          invitedUserDetails: S.optional(__S(74, __c9, 2)),
+          invitedUserDetails: S.optional(__S(248, __c31, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3232,12 +2949,16 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InviteAccessUserRequest" });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          metadata: S.optional(__S(20, __c2, 4)),
+          metadata: S.optional(__S(320, __c40, 0)),
           email: S.optional(S.String),
           auth_type: S.optional(S.String),
           status: S.optional(S.String),
@@ -3245,13 +2966,17 @@ function __c9(j: number): any {
           expires_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "InvitationRecord" });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0, __c0, 0)),
+          searchFilters: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3263,7 +2988,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListAccessClustersRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3272,7 +2997,7 @@ function __c9(j: number): any {
           resource_name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterEnvironmentEntity" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3280,11 +3005,7 @@ function __c9(j: number): any {
           resource_name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterByokEntity" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           display_name: S.optional(S.String),
@@ -3295,42 +3016,46 @@ function __c10(j: number): any {
           kafka_bootstrap_endpoint: S.optional(S.String),
           http_endpoint: S.optional(S.String),
           api_endpoint: S.optional(S.String),
-          config: S.optional(__S(6, __c0, 6)),
-          environment: S.optional(__S(78, __c9, 6)),
-          network: S.optional(__S(78, __c9, 6)),
-          byok: S.optional(__S(79, __c9, 7)),
+          config: S.optional(__S(56, __c7, 0)),
+          environment: S.optional(__S(265, __c33, 1)),
+          network: S.optional(__S(265, __c33, 1)),
+          byok: S.optional(__S(266, __c33, 2)),
         }),
       ).annotate({ identifier: "ClusterSpecEntity" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          metadata: S.optional(__S(20, __c2, 4)),
+          metadata: S.optional(__S(320, __c40, 0)),
           display_name: S.optional(S.String),
-          spec: S.optional(__S(80, __c10, 0)),
-          status: S.optional(__S(10, __c1, 2)),
+          spec: S.optional(__S(267, __c33, 3)),
+          status: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "ClusterRecord" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(268, __c33, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2, __c0, 2)),
-          data: S.optional(__S(82, __c10, 2)),
+          metadata: S.optional(__S(8, __c1, 0)),
+          data: S.optional(__S(269, __c33, 5)),
         }),
       ).annotate({
         identifier: "AccessListClusterSuccessResponse",
       });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0, __c0, 0)),
+          searchFilters: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3342,30 +3067,30 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListAccessEnvironmentsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          metadata: S.optional(__S(20, __c2, 4)),
+          metadata: S.optional(__S(320, __c40, 0)),
           display_name: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnvironmentRecord" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(273, __c34, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2, __c0, 2)),
-          data: S.optional(__S(86, __c10, 6)),
+          metadata: S.optional(__S(8, __c1, 0)),
+          data: S.optional(__S(274, __c34, 2)),
         }),
       ).annotate({
         identifier: "AccessListEnvironmentsSuccessResponse",
       });
   }
 }
-function __c11(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3373,7 +3098,7 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0, __c0, 0)),
+          searchFilters: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3386,24 +3111,28 @@ function __c11(j: number): any {
         identifier: "ListAccessInvitationsRequest",
       });
     case 1:
-      return S.Array(__S(76, __c9, 4));
+      return S.Array(__S(256, __c32, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2, __c0, 2)),
-          data: S.optional(__S(89, __c11, 1)),
+          metadata: S.optional(__S(8, __c1, 0)),
+          data: S.optional(__S(281, __c35, 1)),
         }),
       ).annotate({
         identifier: "AccessListInvitationsSuccessResponse",
       });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0, __c0, 0)),
+          searchFilters: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3415,25 +3144,29 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListAccessRoleBindingsRequest",
       });
-    case 4:
-      return S.Array(__S(21, __c2, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(328, __c41, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2, __c0, 2)),
-          data: S.optional(__S(92, __c11, 4)),
+          metadata: S.optional(__S(8, __c1, 0)),
+          data: S.optional(__S(289, __c36, 1)),
         }),
       ).annotate({
         identifier: "AccessListRoleBindingsSuccessResponse",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0, __c0, 0)),
+          searchFilters: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3445,39 +3178,39 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListAccessServiceAccountsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-          metadata: S.optional(__S(20, __c2, 4)),
-          display_name: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceAccountRecord" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2, __c0, 2)),
-          data: S.optional(__S(96, __c12, 0)),
+          id: S.optional(S.String),
+          metadata: S.optional(__S(320, __c40, 0)),
+          display_name: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceAccountRecord" });
+    case 2:
+      return S.Array(__S(297, __c37, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(8, __c1, 0)),
+          data: S.optional(__S(298, __c37, 2)),
         }),
       ).annotate({
         identifier: "AccessListServiceAccountsSuccessResponse",
       });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0, __c0, 0)),
+          searchFilters: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3487,30 +3220,87 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAccessUsersRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          metadata: S.optional(__S(20, __c2, 4)),
+          metadata: S.optional(__S(320, __c40, 0)),
           email: S.optional(S.String),
           full_name: S.optional(S.String),
           auth_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserRecord" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(305, __c38, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2, __c0, 2)),
-          data: S.optional(__S(100, __c12, 4)),
+          metadata: S.optional(__S(8, __c1, 0)),
+          data: S.optional(__S(306, __c38, 2)),
         }),
       ).annotate({
         identifier: "AccessListUsersSuccessResponse",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          organizationName: S.String.pipe(T.Label()),
+          principal: S.optional(S.String),
+          role_name: S.optional(S.String),
+          crn_pattern: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/createRoleBinding",
+            code: 200,
+            apiVersion: "2024-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccessRoleBindingRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          self: S.optional(S.String),
+          resource_name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          deleted_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetadataEntity" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+          metadata: S.optional(__S(320, __c40, 0)),
+          principal: S.optional(S.String),
+          role_name: S.optional(S.String),
+          crn_pattern: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RoleBindingRecord" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3529,22 +3319,22 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListConnectorRequest" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(160, __c20, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(103, __c12, 7),
+          value: __S(337, __c42, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListConnectorsSuccessResponse",
       });
-    case 1:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3559,18 +3349,22 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListMarketplaceAgreementsRequest",
       });
+    case 1:
+      return S.Array(__S(434, __c54, 2));
     case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(106, __c13, 2),
+          value: __S(345, __c43, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConfluentAgreementResourceListResponse",
       });
-    case 4:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3586,18 +3380,26 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListOrganizationByResourceGroupRequest",
       });
-    case 5:
-      return S.Array(__S(64, __c8, 0));
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(176, __c22, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(109, __c13, 5),
+          value: __S(360, __c45, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OrganizationResourceListResult",
       });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3614,7 +3416,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3642,23 +3444,27 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(72, __c9, 0)),
           kind: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({ identifier: "SCClusterRecord" });
     case 2:
-      return S.Array(__S(113, __c14, 1));
+      return S.Array(__S(377, __c47, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(114, __c14, 2),
+          value: __S(378, __c47, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListClustersSuccessResponse",
       });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3677,29 +3483,29 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListOrganizationEnvironmentsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(72, __c9, 0)),
           kind: S.optional(S.String),
-          properties: S.optional(__S(58, __c7, 2)),
+          properties: S.optional(__S(145, __c18, 1)),
         }),
       ).annotate({ identifier: "SCEnvironmentRecord" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(385, __c48, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(118, __c14, 6),
+          value: __S(386, __c48, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetEnvironmentsResponse" });
   }
 }
-function __c15(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3727,26 +3533,30 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(121, __c15, 1)),
+          display: S.optional(__S(393, __c49, 1)),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OperationResult" });
     case 3:
-      return S.Array(__S(122, __c15, 2));
+      return S.Array(__S(394, __c49, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(123, __c15, 3),
+          value: __S(395, __c49, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0, __c0, 0)),
+          searchFilters: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3758,45 +3568,45 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListOrganizationRegionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           cloud: S.optional(S.String),
           regionName: S.optional(S.String),
-          packages: S.optional(__S(3, __c0, 3)),
+          packages: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "RegionSpecEntity" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(5, __c0, 5)),
-          spec: S.optional(__S(126, __c15, 6)),
+          metadata: S.optional(__S(80, __c10, 0)),
+          spec: S.optional(__S(401, __c50, 1)),
         }),
       ).annotate({ identifier: "RegionProperties" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          properties: S.optional(__S(127, __c15, 7)),
+          properties: S.optional(__S(402, __c50, 2)),
         }),
       ).annotate({ identifier: "RegionRecord" });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(403, __c50, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(129, __c16, 1)),
+          data: S.optional(__S(404, __c50, 4)),
         }),
       ).annotate({
         identifier: "ListRegionsSuccessResponse",
       });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3816,18 +3626,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListOrganizationSchemaRegistryClustersRequest",
       });
-    case 4:
-      return S.Array(__S(72, __c9, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(235, __c29, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(132, __c16, 4),
+          value: __S(409, __c51, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSchemaRegistryClustersResponse",
       });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3846,28 +3660,92 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTopicsRequest" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(533, __c66, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(135, __c16, 7),
+          value: __S(417, __c52, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListTopicsSuccessResponse",
       });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(432, __c54, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/agreements/default",
+            code: 200,
+            apiVersion: "2024-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateMarketplaceAgreementRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publisher: S.optional(S.String),
+          product: S.optional(S.String),
+          plan: S.optional(S.String),
+          licenseTextLink: S.optional(S.String),
+          privacyPolicyLink: S.optional(S.String),
+          retrieveDatetime: S.optional(S.String),
+          signature: S.optional(S.String),
+          accepted: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ConfluentAgreementProperties",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfluentAgreementResourceSystemData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(433, __c54, 1)),
+          properties: S.optional(__S(432, __c54, 0)),
+        }),
+      ).annotate({
+        identifier: "ConfluentAgreementResource",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3879,15 +3757,19 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationRequest",
       });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(29, __c3, 5),
+          properties: __S(497, __c62, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3899,15 +3781,19 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ValidateValidationOrganizationRequest",
       });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(29, __c3, 5),
+          properties: __S(497, __c62, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3919,15 +3805,336 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ValidateValidationOrganizationV2Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          info: S.optional(__S(0, __c0, 0)),
+          info: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "ValidationResponse" });
   }
 }
-
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          organizationName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(16, __c2, 0)),
+          location: S.String,
+          properties: __S(497, __c62, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
+            code: 200,
+            apiVersion: "2024-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publisherId: S.String,
+          id: S.String,
+          planId: S.String,
+          planName: S.String,
+          termUnit: S.String,
+          termId: S.optional(S.String),
+          privateOfferId: S.optional(S.String),
+          privateOfferIds: S.optional(__S(24, __c3, 0)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OfferDetail" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdTime: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          organizationId: S.optional(S.String),
+          ssoUrl: S.optional(S.String),
+          offerDetail: __S(472, __c59, 0),
+          userDetail: __S(480, __c60, 0),
+          linkOrganization: S.optional(__S(481, __c60, 1)),
+        }),
+      ).annotate({
+        identifier: "OrganizationResourceProperties",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          firstName: S.optional(S.String),
+          lastName: S.optional(S.String),
+          emailAddress: S.String,
+          userPrincipalName: S.optional(S.String),
+          aadEmail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserDetail" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.String,
+        }),
+      ).annotate({ identifier: "LinkOrganization" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(72, __c9, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
+          location: S.String,
+          properties: __S(473, __c59, 1),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationResponse",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publisherId: S.String,
+          id: S.String,
+          planId: S.String,
+          planName: S.String,
+          termUnit: S.String,
+          termId: S.optional(S.String),
+          privateOfferId: S.optional(S.String),
+          privateOfferIds: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({ identifier: "OfferDetailInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          offerDetail: __S(496, __c62, 0),
+          userDetail: __S(480, __c60, 0),
+          linkOrganization: S.optional(__S(481, __c60, 1)),
+        }),
+      ).annotate({
+        identifier: "OrganizationResourcePropertiesInput",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          organizationName: S.String.pipe(T.Label()),
+          environmentId: S.String.pipe(T.Label()),
+          clusterId: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/createAPIKey",
+            code: 200,
+            apiVersion: "2024-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationAPIKeyRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          environment: S.optional(S.String),
+          related: S.optional(S.String),
+          resourceName: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "APIKeyResourceEntity" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          related: S.optional(S.String),
+          resourceName: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "APIKeyOwnerEntity" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          resource: S.optional(__S(512, __c64, 0)),
+          owner: S.optional(__S(513, __c64, 1)),
+        }),
+      ).annotate({ identifier: "APIKeySpecEntity" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(80, __c10, 0)),
+          spec: S.optional(__S(514, __c64, 2)),
+        }),
+      ).annotate({ identifier: "APIKeyProperties" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+          properties: S.optional(__S(515, __c64, 3)),
+        }),
+      ).annotate({ identifier: "APIKeyRecord" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          organizationName: S.String.pipe(T.Label()),
+          environmentId: S.String.pipe(T.Label()),
+          clusterId: S.String.pipe(T.Label()),
+          topicName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(532, __c66, 4)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics/{topicName}",
+            code: 200,
+            apiVersion: "2024-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateTopicRequest" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          self: S.optional(S.String),
+          resourceName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TopicMetadataEntity" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          related: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TopicsRelatedLink" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TopicsInputConfig" });
+    case 3:
+      return S.Array(__S(530, __c66, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          topicId: S.optional(S.String),
+          metadata: S.optional(__S(528, __c66, 0)),
+          partitions: S.optional(__S(529, __c66, 1)),
+          configs: S.optional(__S(529, __c66, 1)),
+          inputConfigs: S.optional(__S(531, __c66, 3)),
+          partitionsReassignments: S.optional(__S(529, __c66, 1)),
+          partitionsCount: S.optional(S.String),
+          replicationFactor: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TopicProperties" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(532, __c66, 4)),
+        }),
+      ).annotate({ identifier: "CreateTopicResponse" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          organizationName: S.String.pipe(T.Label()),
+          roleBindingId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/deleteRoleBinding/{roleBindingId}",
+            code: 200,
+            apiVersion: "2024-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccessRoleBindingRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAccessRoleBindingResponse",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          organizationName: S.String.pipe(T.Label()),
+          environmentId: S.String.pipe(T.Label()),
+          clusterId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
+            code: 200,
+            apiVersion: "2024-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteClusterRequest" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteClusterResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

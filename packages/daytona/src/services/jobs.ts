@@ -104,7 +104,7 @@ export type GetJobError = DaytonaOpError;
 export const getJob: API.OperationMethod<GetJobRequest, Job, GetJobError, DaytonaOpContext> =
   /*@__PURE__*/ API.make(() => ({
     input: __S(0, __c0, 0) as any as S.Schema<GetJobRequest>,
-    output: __S(2, __c0, 2) as any as S.Schema<Job>,
+    output: __S(3, __c1, 1) as any as S.Schema<Job>,
     errors: [UnknownDaytonaError],
     protocol: DaytonaProtocol,
     retry: Retry.Retry,
@@ -118,8 +118,8 @@ export const listJobs: API.OperationMethod<
   ListJobsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PaginatedJobs>,
+  input: __S(4, __c2, 0) as any as S.Schema<ListJobsRequest>,
+  output: __S(5, __c2, 1) as any as S.Schema<PaginatedJobs>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -133,8 +133,8 @@ export const pollJobs: API.OperationMethod<
   PollJobsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<PollJobsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PollJobsResponse>,
+  input: __S(8, __c4, 0) as any as S.Schema<PollJobsRequest>,
+  output: __S(9, __c4, 1) as any as S.Schema<PollJobsResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -148,8 +148,8 @@ export const updateJobStatus: API.OperationMethod<
   UpdateJobStatusError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<UpdateJobStatusRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Job>,
+  input: __S(10, __c5, 0) as any as S.Schema<UpdateJobStatusRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<Job>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -164,9 +164,13 @@ function __c0(j: number): any {
           jobId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/jobs/{jobId}", code: 200 })),
       ).annotate({ identifier: "GetJobRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -175,13 +179,17 @@ function __c0(j: number): any {
           resourceType: S.String,
           resourceId: S.String,
           payload: S.optional(S.String),
-          traceContext: S.optional(__S(1, __c0, 1)),
+          traceContext: S.optional(__S(2, __c1, 0)),
           errorMessage: S.optional(S.String),
           createdAt: S.String,
           updatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "Job" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
@@ -190,33 +198,41 @@ function __c0(j: number): any {
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/jobs", code: 200 })),
       ).annotate({ identifier: "ListJobsRequest" });
-    case 4:
-      return S.Array(__S(2, __c0, 2));
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          items: __S(4, __c0, 4),
+          items: __S(6, __c3, 0),
           total: S.Number,
           page: S.Number,
           totalPages: S.Number,
         }),
       ).annotate({ identifier: "PaginatedJobs" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3, __c1, 1));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           timeout: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/jobs/poll", code: 200 })),
       ).annotate({ identifier: "PollJobsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          jobs: __S(4, __c0, 4),
+          jobs: __S(6, __c3, 0),
         }),
       ).annotate({ identifier: "PollJobsResponse" });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -229,7 +245,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UpdateJobStatusRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

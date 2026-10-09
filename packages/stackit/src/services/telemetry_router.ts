@@ -393,8 +393,8 @@ export const createAccessToken: API.OperationMethod<
   CreateAccessTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateAccessTokenRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateAccessTokenResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateAccessTokenRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<CreateAccessTokenResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -408,8 +408,8 @@ export const createDestination: API.OperationMethod<
   CreateDestinationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateDestinationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DestinationResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateDestinationRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<DestinationResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -423,8 +423,8 @@ export const createTelemetryRouter: API.OperationMethod<
   CreateTelemetryRouterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateTelemetryRouterRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<TelemetryRouterResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateTelemetryRouterRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<TelemetryRouterResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -438,8 +438,8 @@ export const deleteAccessToken: API.OperationMethod<
   DeleteAccessTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteAccessTokenRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteAccessTokenResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteAccessTokenRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteAccessTokenResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -453,8 +453,8 @@ export const deleteDestination: API.OperationMethod<
   DeleteDestinationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteDestinationRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteDestinationResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteDestinationRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteDestinationResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -468,8 +468,8 @@ export const deleteTelemetryRouter: API.OperationMethod<
   DeleteTelemetryRouterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteTelemetryRouterRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteTelemetryRouterResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteTelemetryRouterRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteTelemetryRouterResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -483,8 +483,8 @@ export const getAccessToken: API.OperationMethod<
   GetAccessTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetAccessTokenRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetAccessTokenResponse2>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetAccessTokenRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetAccessTokenResponse2>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -498,8 +498,8 @@ export const getDestination: API.OperationMethod<
   GetDestinationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetDestinationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DestinationResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetDestinationRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<DestinationResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -513,8 +513,8 @@ export const getTelemetryRouter: API.OperationMethod<
   GetTelemetryRouterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetTelemetryRouterRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<TelemetryRouterResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetTelemetryRouterRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<TelemetryRouterResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -528,8 +528,8 @@ export const listAccessTokens: API.OperationMethod<
   ListAccessTokensError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListAccessTokensRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ListAccessTokensResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListAccessTokensRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListAccessTokensResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -543,8 +543,8 @@ export const listDestinations: API.OperationMethod<
   ListDestinationsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListDestinationsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListDestinationsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListDestinationsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ListDestinationsResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -558,8 +558,8 @@ export const listTelemetryRouters: API.OperationMethod<
   ListTelemetryRoutersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListTelemetryRoutersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListTelemetryRoutersResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListTelemetryRoutersRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ListTelemetryRoutersResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -573,8 +573,8 @@ export const updateAccessToken: API.OperationMethod<
   UpdateAccessTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UpdateAccessTokenRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpdateAccessTokenResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateAccessTokenRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<UpdateAccessTokenResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -588,8 +588,8 @@ export const updateDestination: API.OperationMethod<
   UpdateDestinationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<UpdateDestinationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DestinationResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateDestinationRequest>,
+  output: __S(85, __c10, 5) as any as S.Schema<DestinationResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -603,8 +603,8 @@ export const updateTelemetryRouter: API.OperationMethod<
   UpdateTelemetryRouterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<UpdateTelemetryRouterRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<TelemetryRouterResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateTelemetryRouterRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<TelemetryRouterResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -612,6 +612,222 @@ export const updateTelemetryRouter: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          telemetryRouterId: S.String.pipe(T.Label()),
+          destinationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}/destinations/{destinationId}",
+            code: 200,
+            baseUrl: "https://telemetry-router.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetDestinationRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          telemetryRouterId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}",
+            code: 200,
+            baseUrl: "https://telemetry-router.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTelemetryRouterRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          telemetryRouterId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}/access-tokens",
+            code: 200,
+            baseUrl: "https://telemetry-router.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListAccessTokensRequest" });
+    case 1:
+      return S.Array(__S(152, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accessTokens: __S(17, __c2, 1),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListAccessTokensResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          telemetryRouterId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}/destinations",
+            code: 200,
+            baseUrl: "https://telemetry-router.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListDestinationsRequest" });
+    case 1:
+      return S.Array(__S(85, __c10, 5));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          destinations: __S(25, __c3, 1),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListDestinationsResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers",
+            code: 200,
+            baseUrl: "https://telemetry-router.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListTelemetryRoutersRequest",
+      });
+    case 1:
+      return S.Array(__S(104, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          telemetryRouters: __S(33, __c4, 1),
+        }),
+      ).annotate({
+        identifier: "ListTelemetryRoutersResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          telemetryRouterId: S.String.pipe(T.Label()),
+          accessTokenId: S.String.pipe(T.Label()),
+          description: S.optional(S.NullOr(S.String)),
+          displayName: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}/access-tokens/{accessTokenId}",
+            code: 200,
+            baseUrl: "https://telemetry-router.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateAccessTokenRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          creatorId: S.String,
+          description: S.optional(S.String),
+          displayName: S.String,
+          expirationTime: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          status: S.String,
+        }),
+      ).annotate({
+        identifier: "UpdateAccessTokenResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          telemetryRouterId: S.String.pipe(T.Label()),
+          destinationId: S.String.pipe(T.Label()),
+          config: S.optional(__S(84, __c10, 4)),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}/destinations/{destinationId}",
+            code: 200,
+            baseUrl: "https://telemetry-router.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateDestinationRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          telemetryRouterId: S.String.pipe(T.Label()),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          filter: S.optional(__S(91, __c11, 3)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}",
+            code: 200,
+            baseUrl: "https://telemetry-router.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateTelemetryRouterRequest",
+      });
+  }
+}
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -645,82 +861,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateAccessTokenResponse",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          level: S.String,
-          matcher: S.String,
-          values: __S(2, __c0, 2),
-        }),
-      ).annotate({ identifier: "ConfigFilterAttributes" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: __S(4, __c0, 4),
-          disabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ConfigFilter" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          password: S.String.pipe(T.SensitiveValue({})),
-          username: S.String,
-        }),
-      ).annotate({
-        identifier: "DestinationConfigOpenTelemetryBasicAuth",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          basicAuth: S.optional(__S(6, __c0, 6)),
-          bearerToken: S.optional(S.String),
-          uri: S.String,
-        }),
-      ).annotate({
-        identifier: "DestinationConfigOpenTelemetry",
-      });
   }
 }
-function __c1(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          secret: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({
-        identifier: "DestinationConfigS3AccessKey",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accessKey: S.optional(__S(8, __c1, 0)),
-          bucket: S.String,
-          endpoint: S.String,
-        }),
-      ).annotate({ identifier: "DestinationConfigS3" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          configType: S.String,
-          filter: S.optional(__S(5, __c0, 5)),
-          openTelemetry: S.optional(__S(7, __c0, 7)),
-          s3: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "DestinationConfig" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           telemetryRouterId: S.String.pipe(T.Label()),
-          config: __S(10, __c1, 2),
+          config: __S(84, __c10, 4),
           description: S.optional(S.String),
           displayName: S.String,
         }).pipe(
@@ -732,10 +883,59 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateDestinationRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          password: S.String.pipe(T.SensitiveValue({})),
+          username: S.String,
+        }),
+      ).annotate({
+        identifier: "DestinationConfigOpenTelemetryBasicAuth",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          basicAuth: S.optional(__S(80, __c10, 0)),
+          bearerToken: S.optional(S.String),
+          uri: S.String,
+        }),
+      ).annotate({
+        identifier: "DestinationConfigOpenTelemetry",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          secret: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({
+        identifier: "DestinationConfigS3AccessKey",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accessKey: S.optional(__S(82, __c10, 2)),
+          bucket: S.String,
+          endpoint: S.String,
+        }),
+      ).annotate({ identifier: "DestinationConfigS3" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          config: __S(10, __c1, 2),
+          configType: S.String,
+          filter: S.optional(__S(91, __c11, 3)),
+          openTelemetry: S.optional(__S(81, __c10, 1)),
+          s3: S.optional(__S(83, __c10, 3)),
+        }),
+      ).annotate({ identifier: "DestinationConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          config: __S(84, __c10, 4),
           creationTime: S.String,
           credentialType: S.String,
           description: S.optional(S.String),
@@ -744,14 +944,42 @@ function __c1(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "DestinationResponse" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          level: S.String,
+          matcher: S.String,
+          values: __S(88, __c11, 0),
+        }),
+      ).annotate({ identifier: "ConfigFilterAttributes" });
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: __S(90, __c11, 2),
+          disabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ConfigFilter" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.String,
-          filter: S.optional(__S(5, __c0, 5)),
+          filter: S.optional(__S(91, __c11, 3)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -763,19 +991,27 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateTelemetryRouterRequest",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           creationTime: S.String,
           description: S.optional(S.String),
           displayName: S.String,
-          filter: S.optional(__S(5, __c0, 5)),
+          filter: S.optional(__S(91, __c11, 3)),
           id: S.String,
           status: S.String,
           uri: S.String,
         }),
       ).annotate({ identifier: "TelemetryRouterResponse" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -793,13 +1029,17 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DeleteAccessTokenRequest" });
   }
 }
-function __c2(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAccessTokenResponse",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -815,7 +1055,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteDestinationRequest" });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -833,7 +1077,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteTelemetryRouterRequest",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -849,7 +1097,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccessTokenRequest" });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           creatorId: S.String,
@@ -860,201 +1112,8 @@ function __c2(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "GetAccessTokenResponse2" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          telemetryRouterId: S.String.pipe(T.Label()),
-          destinationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}/destinations/{destinationId}",
-            code: 200,
-            baseUrl: "https://telemetry-router.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetDestinationRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          telemetryRouterId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}",
-            code: 200,
-            baseUrl: "https://telemetry-router.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTelemetryRouterRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          telemetryRouterId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}/access-tokens",
-            code: 200,
-            baseUrl: "https://telemetry-router.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListAccessTokensRequest" });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(20, __c2, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accessTokens: __S(24, __c3, 0),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListAccessTokensResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          telemetryRouterId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}/destinations",
-            code: 200,
-            baseUrl: "https://telemetry-router.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListDestinationsRequest" });
-    case 3:
-      return S.Array(__S(12, __c1, 4));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          destinations: __S(27, __c3, 3),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListDestinationsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers",
-            code: 200,
-            baseUrl: "https://telemetry-router.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListTelemetryRoutersRequest",
-      });
-    case 6:
-      return S.Array(__S(14, __c1, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          telemetryRouters: __S(30, __c3, 6),
-        }),
-      ).annotate({
-        identifier: "ListTelemetryRoutersResponse",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          telemetryRouterId: S.String.pipe(T.Label()),
-          accessTokenId: S.String.pipe(T.Label()),
-          description: S.optional(S.NullOr(S.String)),
-          displayName: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}/access-tokens/{accessTokenId}",
-            code: 200,
-            baseUrl: "https://telemetry-router.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateAccessTokenRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          creatorId: S.String,
-          description: S.optional(S.String),
-          displayName: S.String,
-          expirationTime: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          status: S.String,
-        }),
-      ).annotate({
-        identifier: "UpdateAccessTokenResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          telemetryRouterId: S.String.pipe(T.Label()),
-          destinationId: S.String.pipe(T.Label()),
-          config: S.optional(__S(10, __c1, 2)),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}/destinations/{destinationId}",
-            code: 200,
-            baseUrl: "https://telemetry-router.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateDestinationRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          telemetryRouterId: S.String.pipe(T.Label()),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          filter: S.optional(__S(5, __c0, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/telemetry-routers/{telemetryRouterId}",
-            code: 200,
-            baseUrl: "https://telemetry-router.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateTelemetryRouterRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

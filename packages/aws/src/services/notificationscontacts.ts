@@ -129,7 +129,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(19, __c2, 3)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(29, __c7, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -236,8 +236,8 @@ export const activateEmailContact: API.OperationMethod<
   ActivateEmailContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ActivateEmailContactRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ActivateEmailContactResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<ActivateEmailContactRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<ActivateEmailContactResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -268,8 +268,8 @@ export const createEmailContact: API.OperationMethod<
   CreateEmailContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateEmailContactRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateEmailContactResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<CreateEmailContactRequest>,
+  output: __S(41, __c10, 1) as any as S.Schema<CreateEmailContactResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -302,8 +302,8 @@ export const deleteEmailContact: API.OperationMethod<
   DeleteEmailContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteEmailContactRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteEmailContactResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<DeleteEmailContactRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<DeleteEmailContactResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -333,8 +333,8 @@ export const getEmailContact: API.OperationMethod<
   GetEmailContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetEmailContactRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetEmailContactResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetEmailContactRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetEmailContactResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -363,8 +363,8 @@ export const listEmailContacts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EmailContact
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ListEmailContactsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ListEmailContactsResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListEmailContactsRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<ListEmailContactsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -398,8 +398,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -431,8 +431,8 @@ export const sendActivationCode: API.OperationMethod<
   SendActivationCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<SendActivationCodeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SendActivationCodeResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<SendActivationCodeRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<SendActivationCodeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -462,8 +462,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<TagResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TagResourceResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -492,8 +492,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UntagResourceResponse>,
+  input: __S(25, __c6, 1) as any as S.Schema<UntagResourceRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -508,6 +508,133 @@ export const untagResource: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/emailcontacts/{arn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetEmailContactRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ emailContact: __S(4, __c1, 0) })).annotate({
+        identifier: "GetEmailContactResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          name: SensitiveString,
+          address: SensitiveString,
+          status: S.String,
+          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "EmailContact" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/emailcontacts" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListEmailContactsRequest" });
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), emailContacts: __S(9, __c2, 1) }),
+      ).annotate({
+        identifier: "ListEmailContactsResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(44, __c11, 0)) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/2022-10-31/emailcontacts/{arn}/activate/send" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "SendActivationCodeRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")), tags: __S(44, __c11, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String.pipe(T.HttpLabel("arn")),
+          tagKeys: __S(24, __c6, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(T.Http({ method: "DELETE", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(28, __c7, 0));
+  }
+}
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -527,18 +654,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateEmailContactRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ActivateEmailContactResponse",
       });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: SensitiveString,
           emailAddress: S.String,
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(44, __c11, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/2022-09-19/emailcontacts" }),
@@ -552,11 +685,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateEmailContactRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ arn: S.String })).annotate({
         identifier: "CreateEmailContactResponse",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
           T.all(
@@ -571,112 +714,8 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteEmailContactRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/emailcontacts/{arn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetEmailContactRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          arn: S.String,
-          name: SensitiveString,
-          address: SensitiveString,
-          status: S.String,
-          creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-        }),
-      ).annotate({ identifier: "EmailContact" });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ emailContact: __S(7, __c0, 7) })).annotate({
-        identifier: "GetEmailContactResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/emailcontacts" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListEmailContactsRequest" });
-    case 2:
-      return S.Array(__S(7, __c0, 7));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), emailContacts: __S(10, __c1, 2) }),
-      ).annotate({
-        identifier: "ListEmailContactsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(2, __c0, 2)) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/2022-10-31/emailcontacts/{arn}/activate/send" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "SendActivationCodeRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")), tags: __S(2, __c0, 2) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          arn: S.String.pipe(T.HttpLabel("arn")),
-          tagKeys: __S(16, __c2, 0).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(T.Http({ method: "DELETE", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

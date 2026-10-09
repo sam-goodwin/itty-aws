@@ -333,8 +333,8 @@ export const createChallenge: API.OperationMethod<
   CreateChallengeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateChallengeRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateChallengeResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<CreateChallengeRequest>,
+  output: __S(54, __c13, 2) as any as S.Schema<CreateChallengeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -368,8 +368,8 @@ export const createConnector: API.OperationMethod<
   CreateConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateConnectorRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateConnectorResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<CreateConnectorRequest>,
+  output: __S(61, __c15, 1) as any as S.Schema<CreateConnectorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -401,8 +401,8 @@ export const deleteChallenge: API.OperationMethod<
   DeleteChallengeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteChallengeRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteChallengeResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteChallengeRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteChallengeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -433,8 +433,8 @@ export const deleteConnector: API.OperationMethod<
   DeleteConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteConnectorRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteConnectorResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteConnectorRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteConnectorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -464,8 +464,8 @@ export const getChallengeMetadata: API.OperationMethod<
   GetChallengeMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetChallengeMetadataRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetChallengeMetadataResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetChallengeMetadataRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<GetChallengeMetadataResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -494,8 +494,8 @@ export const getChallengePassword: API.OperationMethod<
   GetChallengePasswordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetChallengePasswordRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetChallengePasswordResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetChallengePasswordRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<GetChallengePasswordResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -524,8 +524,8 @@ export const getConnector: API.OperationMethod<
   GetConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetConnectorRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetConnectorResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetConnectorRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<GetConnectorResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -555,8 +555,8 @@ export const listChallengeMetadata: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChallengeMetadataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListChallengeMetadataRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ListChallengeMetadataResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<ListChallengeMetadataRequest>,
+  output: __S(34, __c8, 2) as any as S.Schema<ListChallengeMetadataResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -591,8 +591,8 @@ export const listConnectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConnectorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListConnectorsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ListConnectorsResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<ListConnectorsRequest>,
+  output: __S(38, __c9, 2) as any as S.Schema<ListConnectorsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -626,8 +626,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(41, __c10, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -656,8 +656,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<TagResourceRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<TagResourceResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -686,8 +686,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<UntagResourceRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UntagResourceResponse>,
+  input: __S(49, __c12, 1) as any as S.Schema<UntagResourceRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -704,58 +704,6 @@ export const untagResource: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ConnectorArn: S.String,
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/challenges" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateChallengeRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          ConnectorArn: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Password: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "Challenge" });
-    case 3:
-      return S.suspend(() => S.Struct({ Challenge: S.optional(__S(2, __c0, 2)) })).annotate({
-        identifier: "CreateChallengeResponse",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ AzureApplicationId: S.String, Domain: S.String })).annotate(
-        { identifier: "IntuneConfiguration" },
-      );
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ Intune: __S(4, __c0, 4) })]);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          CertificateAuthorityArn: S.String,
-          MobileDeviceManagement: S.optional(__S(5, __c0, 5)),
-          VpcEndpointId: S.optional(S.String),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/connectors" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateConnectorRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ ConnectorArn: S.optional(S.String) })).annotate({
-        identifier: "CreateConnectorResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({ ChallengeArn: S.String.pipe(T.HttpLabel("ChallengeArn")) }).pipe(
           T.all(
@@ -768,11 +716,19 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteChallengeRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteChallengeResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ConnectorArn: S.String.pipe(T.HttpLabel("ConnectorArn")) }).pipe(
           T.all(
@@ -785,7 +741,11 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteConnectorRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ChallengeArn: S.String.pipe(T.HttpLabel("ChallengeArn")) }).pipe(
           T.all(
@@ -800,7 +760,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetChallengeMetadataRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ChallengeMetadata: S.optional(__S(16, __c4, 0)) }),
+      ).annotate({
+        identifier: "GetChallengeMetadataResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -809,13 +779,11 @@ function __c1(j: number): any {
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ChallengeMetadata" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ChallengeMetadata: S.optional(__S(12, __c1, 4)) }),
-      ).annotate({
-        identifier: "GetChallengeMetadataResponse",
-      });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ChallengeArn: S.String.pipe(T.HttpLabel("ChallengeArn")) }).pipe(
           T.all(
@@ -830,13 +798,13 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetChallengePasswordRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ Password: S.optional(SensitiveString) })).annotate({
         identifier: "GetChallengePasswordResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -852,6 +820,14 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "GetConnectorRequest" });
     case 1:
+      return S.suspend(() => S.Struct({ Connector: S.optional(__S(29, __c7, 1)) })).annotate({
+        identifier: "GetConnectorResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Issuer: S.optional(S.String),
@@ -859,14 +835,14 @@ function __c2(j: number): any {
           Audience: S.optional(S.String),
         }),
       ).annotate({ identifier: "OpenIdConfiguration" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           CertificateAuthorityArn: S.optional(S.String),
           Type: S.optional(S.String),
-          MobileDeviceManagement: S.optional(__S(5, __c0, 5)),
-          OpenIdConfiguration: S.optional(__S(17, __c2, 1)),
+          MobileDeviceManagement: S.optional(__S(65, __c16, 1)),
+          OpenIdConfiguration: S.optional(__S(28, __c7, 0)),
           Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
           Endpoint: S.optional(S.String),
@@ -874,11 +850,11 @@ function __c2(j: number): any {
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Connector" });
-    case 3:
-      return S.suspend(() => S.Struct({ Connector: S.optional(__S(18, __c2, 2)) })).annotate({
-        identifier: "GetConnectorResponse",
-      });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -890,35 +866,36 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListChallengeMetadataRequest",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(16, __c4, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({
-          Challenges: S.optional(__S(21, __c2, 5)),
-          NextToken: S.optional(S.String),
-        }),
+        S.Struct({ Challenges: S.optional(__S(33, __c8, 1)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListChallengeMetadataResponse",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/connectors" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListConnectorsRequest" });
+    case 1:
+      return S.Array(__S(29, __c7, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Connectors: S.optional(__S(37, __c9, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListConnectorsResponse" });
   }
 }
-function __c3(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(18, __c2, 2));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Connectors: S.optional(__S(24, __c3, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListConnectorsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
           T.all(
@@ -933,15 +910,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(0, __c0, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(56, __c14, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(0, __c0, 0),
+          Tags: __S(56, __c14, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -953,13 +934,17 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(29, __c3, 5).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(48, __c12, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -973,7 +958,70 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectorArn: S.String,
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(__S(56, __c14, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/challenges" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateChallengeRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          ConnectorArn: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Password: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "Challenge" });
+    case 2:
+      return S.suspend(() => S.Struct({ Challenge: S.optional(__S(53, __c13, 1)) })).annotate({
+        identifier: "CreateChallengeResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateAuthorityArn: S.String,
+          MobileDeviceManagement: S.optional(__S(65, __c16, 1)),
+          VpcEndpointId: S.optional(S.String),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(__S(56, __c14, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/connectors" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateConnectorRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ ConnectorArn: S.optional(S.String) })).annotate({
+        identifier: "CreateConnectorResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ AzureApplicationId: S.String, Domain: S.String })).annotate(
+        { identifier: "IntuneConfiguration" },
+      );
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ Intune: __S(64, __c16, 0) })]);
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

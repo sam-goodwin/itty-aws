@@ -312,8 +312,8 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateNetworkRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Network>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateNetworkRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<Network>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -332,8 +332,8 @@ export const createPrivateLinkEndpoint: API.OperationMethod<
   CreatePrivateLinkEndpointError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreatePrivateLinkEndpointRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PrivateLinkEndpoint>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreatePrivateLinkEndpointRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<PrivateLinkEndpoint>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -353,8 +353,8 @@ export const deleteNetwork: API.OperationMethod<
   DeleteNetworkError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteNetworkRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteNetworkResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteNetworkRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<DeleteNetworkResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -373,8 +373,8 @@ export const deletePrivateLinkEndpoint: API.OperationMethod<
   DeletePrivateLinkEndpointError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeletePrivateLinkEndpointRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeletePrivateLinkEndpointResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeletePrivateLinkEndpointRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<DeletePrivateLinkEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -388,8 +388,8 @@ export const listNetworks: API.OperationMethod<
   ListNetworksError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListNetworksRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListNetworksResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListNetworksRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<ListNetworksResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -403,8 +403,8 @@ export const listPrivateLinkEndpoints: API.OperationMethod<
   ListPrivateLinkEndpointsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListPrivateLinkEndpointsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListPrivateLinkEndpointsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListPrivateLinkEndpointsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListPrivateLinkEndpointsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -418,8 +418,8 @@ export const readNetwork: API.OperationMethod<
   ReadNetworkError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ReadNetworkRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Network>,
+  input: __S(8, __c1, 0) as any as S.Schema<ReadNetworkRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<Network>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -433,8 +433,8 @@ export const readPrivateLinkEndpoint: API.OperationMethod<
   ReadPrivateLinkEndpointError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ReadPrivateLinkEndpointRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PrivateLinkEndpoint>,
+  input: __S(16, __c2, 0) as any as S.Schema<ReadPrivateLinkEndpointRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<PrivateLinkEndpoint>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -448,8 +448,8 @@ export const updateNetwork: API.OperationMethod<
   UpdateNetworkError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<UpdateNetworkRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Network>,
+  input: __S(24, __c3, 0) as any as S.Schema<UpdateNetworkRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<Network>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -468,8 +468,8 @@ export const updatePrivateLinkEndpoint: API.OperationMethod<
   UpdatePrivateLinkEndpointError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<UpdatePrivateLinkEndpointRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PrivateLinkEndpoint>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdatePrivateLinkEndpointRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<PrivateLinkEndpoint>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -489,8 +489,8 @@ export const updateStaticIps: API.OperationMethod<
   UpdateStaticIpsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<UpdateStaticIpsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<UpdateStaticIpsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateStaticIpsRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<UpdateStaticIpsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -500,138 +500,6 @@ export const updateStaticIps: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          awsAvailabilityZoneIds: S.optional(__S(0, __c0, 0)),
-          cidr: S.String,
-          name: S.String,
-          region: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/connect/networks", code: 200 })),
-      ).annotate({ identifier: "CreateNetworkRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-        }),
-      ).annotate({ identifier: "NetworkHostedZones" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          ids: __S(0, __c0, 0),
-        }),
-      ).annotate({ identifier: "NetworkProjects" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          awsAccountId: S.String,
-          awsAvailabilityZoneIds: S.optional(__S(0, __c0, 0)),
-          awsRegion: S.String,
-          cidr: S.String,
-          createdAt: S.Number,
-          egressIpAddresses: S.optional(__S(0, __c0, 0)),
-          hostedZones: S.optional(__S(2, __c0, 2)),
-          id: S.String,
-          name: S.String,
-          peeringConnections: S.optional(__S(2, __c0, 2)),
-          projects: S.optional(__S(3, __c0, 3)),
-          region: S.optional(S.String),
-          status: S.String,
-          teamId: S.String,
-          vpcId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Network" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          projectId: S.String,
-          name: S.String,
-          vercelRegion: S.String,
-          awsServiceName: S.String,
-          enablePrivateDns: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/networking/privatelink/endpoints", code: 200 })),
-      ).annotate({
-        identifier: "CreatePrivateLinkEndpointRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          awsDnsEntries: S.optional(__S(0, __c0, 0)),
-          awsServiceName: S.String,
-          createdAt: S.Number,
-          endpointId: S.String,
-          name: S.String,
-          privateDnsNames: S.optional(__S(0, __c0, 0)),
-          projectId: S.String,
-          status: S.String,
-          statusMessage: S.optional(S.String),
-          teamId: S.String,
-          updatedAt: S.Number,
-          vercelRegion: S.String,
-          vpcEndpointId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateLinkEndpoint" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          networkId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/connect/networks/{networkId}", code: 200 })),
-      ).annotate({ identifier: "DeleteNetworkRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteNetworkResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endpointId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Query()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/networking/privatelink/endpoints/{endpointId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateLinkEndpointRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeletePrivateLinkEndpointResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          includeHostedZones: S.optional(S.Boolean.pipe(T.Query())),
-          includePeeringConnections: S.optional(S.Boolean.pipe(T.Query())),
-          includeProjects: S.optional(S.Boolean.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/connect/networks", code: 200 })),
-      ).annotate({ identifier: "ListNetworksRequest" });
-    case 4:
-      return S.Array(__S(4, __c0, 4));
-    case 5:
-      return S.suspend(() => __S(12, __c1, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListNetworksResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
@@ -641,17 +509,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkEndpointsRequest",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(15, __c1, 7).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(80, __c10, 0));
+    case 2:
+      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPrivateLinkEndpointsResponse",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           networkId: S.String.pipe(T.Label()),
@@ -659,7 +527,11 @@ function __c2(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/connect/networks/{networkId}", code: 200 })),
       ).annotate({ identifier: "ReadNetworkRequest" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endpointId: S.String.pipe(T.Label()),
@@ -676,7 +548,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ReadPrivateLinkEndpointRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           networkId: S.String.pipe(T.Label()),
@@ -685,7 +561,11 @@ function __c2(j: number): any {
           name: S.String,
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/connect/networks/{networkId}", code: 200 })),
       ).annotate({ identifier: "UpdateNetworkRequest" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endpointId: S.String.pipe(T.Label()),
@@ -704,14 +584,18 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateLinkEndpointRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           builds: S.optional(S.Boolean),
-          regions: S.optional(__S(0, __c0, 0)),
+          regions: S.optional(__S(56, __c7, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -720,19 +604,19 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateStaticIpsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           securityGroupId: S.optional(S.String),
-          subnetIds: __S(0, __c0, 0),
+          subnetIds: __S(56, __c7, 0),
         }),
       ).annotate({
         identifier: "UpdateStaticIpsResponseBodyItemAws",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          aws: S.optional(__S(22, __c2, 6)),
+          aws: S.optional(__S(41, __c5, 1)),
           buildsEnabled: S.Boolean,
           connectConfigurationId: S.String,
           createdAt: S.Number,
@@ -744,19 +628,174 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateStaticIpsResponseBodyItem",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() => __S(24, __c3, 0).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(42, __c5, 2));
+    case 4:
+      return S.suspend(() => __S(43, __c5, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateStaticIpsResponse",
       });
   }
 }
-
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          awsAvailabilityZoneIds: S.optional(__S(56, __c7, 0)),
+          cidr: S.String,
+          name: S.String,
+          region: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/connect/networks", code: 200 })),
+      ).annotate({ identifier: "CreateNetworkRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+        }),
+      ).annotate({ identifier: "NetworkHostedZones" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          ids: __S(56, __c7, 0),
+        }),
+      ).annotate({ identifier: "NetworkProjects" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          awsAccountId: S.String,
+          awsAvailabilityZoneIds: S.optional(__S(56, __c7, 0)),
+          awsRegion: S.String,
+          cidr: S.String,
+          createdAt: S.Number,
+          egressIpAddresses: S.optional(__S(56, __c7, 0)),
+          hostedZones: S.optional(__S(64, __c8, 0)),
+          id: S.String,
+          name: S.String,
+          peeringConnections: S.optional(__S(64, __c8, 0)),
+          projects: S.optional(__S(65, __c8, 1)),
+          region: S.optional(S.String),
+          status: S.String,
+          teamId: S.String,
+          vpcId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Network" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          projectId: S.String,
+          name: S.String,
+          vercelRegion: S.String,
+          awsServiceName: S.String,
+          enablePrivateDns: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/networking/privatelink/endpoints", code: 200 })),
+      ).annotate({
+        identifier: "CreatePrivateLinkEndpointRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          awsDnsEntries: S.optional(__S(56, __c7, 0)),
+          awsServiceName: S.String,
+          createdAt: S.Number,
+          endpointId: S.String,
+          name: S.String,
+          privateDnsNames: S.optional(__S(56, __c7, 0)),
+          projectId: S.String,
+          status: S.String,
+          statusMessage: S.optional(S.String),
+          teamId: S.String,
+          updatedAt: S.Number,
+          vercelRegion: S.String,
+          vpcEndpointId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateLinkEndpoint" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          networkId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/connect/networks/{networkId}", code: 200 })),
+      ).annotate({ identifier: "DeleteNetworkRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteNetworkResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpointId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Query()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/networking/privatelink/endpoints/{endpointId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateLinkEndpointRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeletePrivateLinkEndpointResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          includeHostedZones: S.optional(S.Boolean.pipe(T.Query())),
+          includePeeringConnections: S.optional(S.Boolean.pipe(T.Query())),
+          includeProjects: S.optional(S.Boolean.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/connect/networks", code: 200 })),
+      ).annotate({ identifier: "ListNetworksRequest" });
+    case 1:
+      return S.Array(__S(66, __c8, 2));
+    case 2:
+      return S.suspend(() => __S(105, __c13, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListNetworksResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -332,8 +332,8 @@ export const createVolume: API.OperationMethod<
   CreateVolumeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateVolumeRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateVolumeResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateVolumeRequest>,
+  output: __S(8, __c0, 8) as any as S.Schema<CreateVolumeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -347,8 +347,8 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteVolumeRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteVolumeResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteVolumeRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<DeleteVolumeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -362,8 +362,8 @@ export const getVolume: API.OperationMethod<
   GetVolumeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetVolumeRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetVolumeResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetVolumeRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<GetVolumeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -379,8 +379,8 @@ export const listVolumes: API.PaginatedOperationMethod<
   ListVolumesResponseVolumesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18, __c2, 2) as any as S.Schema<ListVolumesRequest>,
-    output: __S(23, __c2, 7) as any as S.Schema<ListVolumesResponse>,
+    input: __S(65, __c4, 1) as any as S.Schema<ListVolumesRequest>,
+    output: __S(70, __c4, 6) as any as S.Schema<ListVolumesResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -403,8 +403,8 @@ export const updateVolume: API.OperationMethod<
   UpdateVolumeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<UpdateVolumeRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<UpdateVolumeResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<UpdateVolumeRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<UpdateVolumeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -414,20 +414,102 @@ export const updateVolume: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           size: S.Number,
           name: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(16, __c1, 0)),
           automount: S.optional(S.Boolean),
           format: S.optional(S.String),
           location: S.optional(S.String),
           server: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/volumes", code: 200 })),
       ).annotate({ identifier: "CreateVolumeRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          created: S.String,
+          name: S.String,
+          server: S.NullOr(S.Number),
+          location: __S(17, __c1, 1),
+          size: S.Number,
+          linux_device: S.String,
+          protection: __S(18, __c1, 2),
+          labels: __S(16, __c1, 0),
+          status: S.String,
+          format: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateVolumeResponseVolume",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateVolumeResponseActionResourcesItem",
+      });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateVolumeResponseActionError",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(3, __c0, 3),
+          error: S.NullOr(__S(4, __c0, 4)),
+        }),
+      ).annotate({
+        identifier: "CreateVolumeResponseAction",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(3, __c0, 3),
+          error: S.NullOr(__S(4, __c0, 4)),
+        }),
+      ).annotate({
+        identifier: "CreateVolumeResponseNextActionsItem",
+      });
+    case 7:
+      return S.Array(__S(6, __c0, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          volume: __S(1, __c0, 1),
+          action: __S(5, __c0, 5),
+          next_actions: __S(7, __c0, 7),
+        }),
+      ).annotate({ identifier: "CreateVolumeResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -442,7 +524,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateVolumeResponseVolumeLocation",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           delete: S.Boolean,
@@ -450,120 +532,6 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateVolumeResponseVolumeProtection",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          created: S.String,
-          name: S.String,
-          server: S.NullOr(S.Number),
-          location: __S(2, __c0, 2),
-          size: S.Number,
-          linux_device: S.String,
-          protection: __S(3, __c0, 3),
-          labels: __S(0, __c0, 0),
-          status: S.String,
-          format: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateVolumeResponseVolume",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateVolumeResponseActionResourcesItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateVolumeResponseActionError",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(6, __c0, 6),
-          error: S.NullOr(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "CreateVolumeResponseAction",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(6, __c0, 6),
-          error: S.NullOr(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "CreateVolumeResponseNextActionsItem",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          volume: __S(4, __c0, 4),
-          action: __S(8, __c1, 0),
-          next_actions: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "CreateVolumeResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/volumes/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteVolumeRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteVolumeResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/volumes/{id}", code: 200 })),
-      ).annotate({ identifier: "GetVolumeRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          created: S.String,
-          name: S.String,
-          server: S.NullOr(S.Number),
-          location: __S(2, __c0, 2),
-          size: S.Number,
-          linux_device: S.String,
-          protection: __S(3, __c0, 3),
-          labels: __S(0, __c0, 0),
-          status: S.String,
-          format: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "GetVolumeResponseVolume" });
   }
 }
 function __c2(j: number): any {
@@ -571,43 +539,83 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          volume: __S(15, __c1, 7),
-        }),
-      ).annotate({ identifier: "GetVolumeResponse" });
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/volumes/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteVolumeRequest" });
     case 1:
-      return S.Array(S.String);
-    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteVolumeResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          sort: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          label_selector: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/volumes", code: 200 })),
-      ).annotate({ identifier: "ListVolumesRequest" });
-    case 3:
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/volumes/{id}", code: 200 })),
+      ).annotate({ identifier: "GetVolumeRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           created: S.String,
           name: S.String,
           server: S.NullOr(S.Number),
-          location: __S(2, __c0, 2),
+          location: __S(17, __c1, 1),
           size: S.Number,
           linux_device: S.String,
-          protection: __S(3, __c0, 3),
-          labels: __S(0, __c0, 0),
+          protection: __S(18, __c1, 2),
+          labels: __S(16, __c1, 0),
+          status: S.String,
+          format: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "GetVolumeResponseVolume" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          volume: __S(49, __c3, 1),
+        }),
+      ).annotate({ identifier: "GetVolumeResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(__S(64, __c4, 0).pipe(T.Query())),
+          sort: S.optional(__S(64, __c4, 0).pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          label_selector: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/volumes", code: 200 })),
+      ).annotate({ identifier: "ListVolumesRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          created: S.String,
+          name: S.String,
+          server: S.NullOr(S.Number),
+          location: __S(17, __c1, 1),
+          size: S.Number,
+          linux_device: S.String,
+          protection: __S(18, __c1, 2),
+          labels: __S(16, __c1, 0),
           status: S.String,
           format: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "ListVolumesResponseVolumesItem",
       });
+    case 3:
+      return S.Array(__S(66, __c4, 2));
     case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -620,29 +628,29 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListVolumesResponseMetaPagination",
       });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          pagination: __S(68, __c4, 4),
+        }),
+      ).annotate({ identifier: "ListVolumesResponseMeta" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(21, __c2, 5),
-        }),
-      ).annotate({ identifier: "ListVolumesResponseMeta" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          volumes: __S(20, __c2, 4),
-          meta: __S(22, __c2, 6),
+          volumes: __S(67, __c4, 3),
+          meta: __S(69, __c4, 5),
         }),
       ).annotate({ identifier: "ListVolumesResponse" });
   }
 }
-function __c3(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(16, __c1, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/volumes/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateVolumeRequest" });
     case 1:
@@ -652,11 +660,11 @@ function __c3(j: number): any {
           created: S.String,
           name: S.String,
           server: S.NullOr(S.Number),
-          location: __S(2, __c0, 2),
+          location: __S(17, __c1, 1),
           size: S.Number,
           linux_device: S.String,
-          protection: __S(3, __c0, 3),
-          labels: __S(0, __c0, 0),
+          protection: __S(18, __c1, 2),
+          labels: __S(16, __c1, 0),
           status: S.String,
           format: S.NullOr(S.String),
         }),
@@ -666,12 +674,11 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          volume: __S(25, __c3, 1),
+          volume: __S(81, __c5, 1),
         }),
       ).annotate({ identifier: "UpdateVolumeResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

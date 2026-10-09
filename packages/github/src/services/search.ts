@@ -1149,7 +1149,7 @@ export type CodeError = Forbidden | UnprocessableEntity | GithubOpError;
 export const code: API.OperationMethod<CodeRequest, CodeResponse, CodeError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
     input: __S(0, __c0, 0) as any as S.Schema<CodeRequest>,
-    output: __S(21, __c2, 5) as any as S.Schema<CodeResponse>,
+    output: __S(3, __c0, 3) as any as S.Schema<CodeResponse>,
     errors: [Forbidden, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1163,8 +1163,8 @@ export const commits: API.OperationMethod<
   CommitsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CommitsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<CommitsResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<CommitsRequest>,
+  output: __S(170, __c5, 10) as any as S.Schema<CommitsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1178,8 +1178,8 @@ export const issuesAndPullRequests: API.OperationMethod<
   IssuesAndPullRequestsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<IssuesAndPullRequestsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<IssuesAndPullRequestsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<IssuesAndPullRequestsRequest>,
+  output: __S(217, __c6, 25) as any as S.Schema<IssuesAndPullRequestsResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1193,8 +1193,8 @@ export const labels: API.OperationMethod<
   LabelsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<LabelsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<LabelsResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<LabelsRequest>,
+  output: __S(259, __c8, 3) as any as S.Schema<LabelsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1204,8 +1204,8 @@ export type ReposError = UnprocessableEntity | GithubOpError;
 /** Search repositories Find repositories via various criteria. This method returns up to 100 results [per page](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api). When searching for repositories, you can get text match metadata for the **name** and **description** fields when you pass the `text-match` media type. For more details about how to receive highlighted search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata). For example, if you want to search for popular Tetris repositories written in assembly code, your query might look like this: `q=tetris+language:assembly&sort=stars&order=desc` This query searches for repositories with the word `tetris` in the name, the description, or the README. The results are limited to repositories where the primary language is assembly. The results are sorted by stars in descending order, so that the most popular repositories appear first in the search results. */
 export const repos: API.OperationMethod<ReposRequest, ReposResponse, ReposError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(64, __c8, 0) as any as S.Schema<ReposRequest>,
-    output: __S(68, __c8, 4) as any as S.Schema<ReposResponse>,
+    input: __S(288, __c9, 0) as any as S.Schema<ReposRequest>,
+    output: __S(292, __c9, 4) as any as S.Schema<ReposResponse>,
     errors: [UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1219,8 +1219,8 @@ export const topics: API.OperationMethod<
   TopicsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<TopicsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<TopicsResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<TopicsRequest>,
+  output: __S(326, __c10, 6) as any as S.Schema<TopicsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1230,8 +1230,8 @@ export type UsersError = UnprocessableEntity | GithubOpError;
 /** Search users Find users via various criteria. This method returns up to 100 results [per page](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api). When searching for users, you can get text match metadata for the issue **login**, public **email**, and **name** fields when you pass the `text-match` media type. For more details about highlighting search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata). For more details about how to receive highlighted search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata). For example, if you're looking for a list of popular users, you might try this query: `q=tom+repos:%3E42+followers:%3E1000` This query searches for users with the name `tom`. The results are restricted to users with more than 42 repositories and over 1,000 followers. This endpoint does not accept authentication and will only include publicly visible users. As an alternative, you can use the GraphQL API. The GraphQL API requires authentication and will return private users, including Enterprise Managed Users (EMUs), that you are authorized to view. For more information, see "[GraphQL Queries](https://docs.github.com/graphql/reference/queries#search)." */
 export const users: API.OperationMethod<UsersRequest, UsersResponse, UsersError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(76, __c9, 4) as any as S.Schema<UsersRequest>,
-    output: __S(79, __c9, 7) as any as S.Schema<UsersResponse>,
+    input: __S(352, __c11, 0) as any as S.Schema<UsersRequest>,
+    output: __S(355, __c11, 3) as any as S.Schema<UsersResponse>,
     errors: [UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1253,33 +1253,36 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          login: S.String,
-          id: S.Number,
-          node_id: S.String,
-          avatar_url: S.String,
-          gravatar_id: S.NullOr(S.String),
+          name: S.String,
+          path: S.String,
+          sha: S.String,
           url: S.String,
+          git_url: S.String,
           html_url: S.String,
-          followers_url: S.String,
-          following_url: S.String,
-          gists_url: S.String,
-          starred_url: S.String,
-          subscriptions_url: S.String,
-          organizations_url: S.String,
-          repos_url: S.String,
-          events_url: S.String,
-          received_events_url: S.String,
-          type: S.String,
-          site_admin: S.Boolean,
-          starred_at: S.optional(S.String),
-          user_view_type: S.optional(S.String),
+          repository: __S(42, __c1, 10),
+          score: S.Number,
+          file_size: S.optional(S.Number),
+          language: S.optional(S.NullOr(S.String)),
+          last_modified_at: S.optional(S.String),
+          line_numbers: S.optional(__S(128, __c4, 0)),
+          text_matches: S.optional(__S(100, __c3, 4)),
         }),
-      ).annotate({ identifier: "SimpleUser" });
+      ).annotate({ identifier: "CodeSearchResultItem" });
     case 2:
-      return S.Array(S.String);
+      return S.Array(__S(1, __c0, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          total_count: S.Number,
+          incomplete_results: S.Boolean,
+          items: __S(2, __c0, 2),
+        }),
+      ).annotate({ identifier: "CodeResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           admin: S.optional(S.Boolean),
@@ -1291,7 +1294,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "MinimalRepositoryPermissions",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -1301,7 +1304,7 @@ function __c0(j: number): any {
           html_url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CodeOfConduct" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -1311,7 +1314,7 @@ function __c0(j: number): any {
           node_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "MinimalRepositoryLicense" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1319,7 +1322,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1327,11 +1330,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
@@ -1341,41 +1340,41 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(37, __c1, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(__S(9, __c1, 1)),
+          reviewers: S.optional(__S(38, __c1, 6)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(__S(6, __c0, 6)),
-          code_security: S.optional(__S(6, __c0, 6)),
-          dependabot_security_updates: S.optional(__S(6, __c0, 6)),
-          secret_scanning: S.optional(__S(6, __c0, 6)),
-          secret_scanning_push_protection: S.optional(__S(6, __c0, 6)),
-          secret_scanning_non_provider_patterns: S.optional(__S(6, __c0, 6)),
-          secret_scanning_ai_detection: S.optional(__S(6, __c0, 6)),
-          secret_scanning_delegated_alert_dismissal: S.optional(__S(7, __c0, 7)),
-          secret_scanning_delegated_bypass: S.optional(__S(6, __c0, 6)),
-          secret_scanning_delegated_bypass_options: S.optional(__S(10, __c1, 2)),
+          advanced_security: S.optional(__S(35, __c1, 3)),
+          code_security: S.optional(__S(35, __c1, 3)),
+          dependabot_security_updates: S.optional(__S(35, __c1, 3)),
+          secret_scanning: S.optional(__S(35, __c1, 3)),
+          secret_scanning_push_protection: S.optional(__S(35, __c1, 3)),
+          secret_scanning_non_provider_patterns: S.optional(__S(35, __c1, 3)),
+          secret_scanning_ai_detection: S.optional(__S(35, __c1, 3)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(36, __c1, 4)),
+          secret_scanning_delegated_bypass: S.optional(__S(35, __c1, 3)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(39, __c1, 7)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
-    case 4:
+    case 9:
       return S.Record(S.String, S.Unknown);
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(1, __c0, 1),
+          owner: __S(64, __c2, 0),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1431,7 +1430,7 @@ function __c1(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(2, __c0, 2)),
+          topics: S.optional(__S(128, __c4, 0)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -1446,83 +1445,96 @@ function __c1(j: number): any {
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(__S(3, __c0, 3)),
+          permissions: S.optional(__S(32, __c1, 0)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(__S(4, __c0, 4)),
-          license: S.optional(S.NullOr(__S(5, __c0, 5))),
+          code_of_conduct: S.optional(__S(33, __c1, 1)),
+          license: S.optional(S.NullOr(__S(34, __c1, 2))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(__S(11, __c1, 3))),
-          custom_properties: S.optional(__S(12, __c1, 4)),
+          security_and_analysis: S.optional(S.NullOr(__S(40, __c1, 8))),
+          custom_properties: S.optional(__S(41, __c1, 9)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          indices: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "SearchResultTextMatchesItemMatchesItem",
-      });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          login: S.String,
+          id: S.Number,
+          node_id: S.String,
+          avatar_url: S.String,
+          gravatar_id: S.NullOr(S.String),
+          url: S.String,
+          html_url: S.String,
+          followers_url: S.String,
+          following_url: S.String,
+          gists_url: S.String,
+          starred_url: S.String,
+          subscriptions_url: S.String,
+          organizations_url: S.String,
+          repos_url: S.String,
+          events_url: S.String,
+          received_events_url: S.String,
+          type: S.String,
+          site_admin: S.Boolean,
+          starred_at: S.optional(S.String),
+          user_view_type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SimpleUser" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          indices: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "SearchResultTextMatchesItemMatchesItem",
+      });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           object_url: S.optional(S.String),
           object_type: S.optional(S.NullOr(S.String)),
           property: S.optional(S.String),
           fragment: S.optional(S.String),
-          matches: S.optional(__S(16, __c2, 0)),
+          matches: S.optional(__S(98, __c3, 2)),
         }),
       ).annotate({
         identifier: "SearchResultTextMatchesItem",
       });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          path: S.String,
-          sha: S.String,
-          url: S.String,
-          git_url: S.String,
-          html_url: S.String,
-          repository: __S(13, __c1, 5),
-          score: S.Number,
-          file_size: S.optional(S.Number),
-          language: S.optional(S.NullOr(S.String)),
-          last_modified_at: S.optional(S.String),
-          line_numbers: S.optional(__S(2, __c0, 2)),
-          text_matches: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "CodeSearchResultItem" });
     case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          total_count: S.Number,
-          incomplete_results: S.Boolean,
-          items: __S(20, __c2, 4),
-        }),
-      ).annotate({ identifier: "CodeResponse" });
-    case 6:
+      return S.Array(__S(99, __c3, 3));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           q: S.String.pipe(T.Query()),
@@ -1532,7 +1544,7 @@ function __c2(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search/commits", code: 200 })),
       ).annotate({ identifier: "CommitsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -1542,11 +1554,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CommitSearchResultItemCommitAuthor",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1554,7 +1562,7 @@ function __c3(j: number): any {
           date: S.optional(S.String),
         }),
       ).annotate({ identifier: "NullableGitUser" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           sha: S.String,
@@ -1563,7 +1571,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CommitSearchResultItemCommitTree",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           verified: S.Boolean,
@@ -1573,21 +1581,21 @@ function __c3(j: number): any {
           verified_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Verification" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          author: __S(23, __c2, 7),
-          committer: S.NullOr(__S(24, __c3, 0)),
+          author: __S(161, __c5, 1),
+          committer: S.NullOr(__S(162, __c5, 2)),
           comment_count: S.Number,
           message: S.String,
-          tree: __S(25, __c3, 1),
+          tree: __S(163, __c5, 3),
           url: S.String,
-          verification: S.optional(__S(26, __c3, 2)),
+          verification: S.optional(__S(164, __c5, 4)),
         }),
       ).annotate({
         identifier: "CommitSearchResultItemCommit",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -1597,40 +1605,40 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CommitSearchResultItemParentsItem",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(166, __c5, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
           sha: S.String,
           html_url: S.String,
           comments_url: S.String,
-          commit: __S(27, __c3, 3),
-          author: S.NullOr(__S(1, __c0, 1)),
-          committer: S.NullOr(__S(24, __c3, 0)),
-          parents: __S(29, __c3, 5),
-          repository: __S(13, __c1, 5),
+          commit: __S(165, __c5, 5),
+          author: S.NullOr(__S(64, __c2, 0)),
+          committer: S.NullOr(__S(162, __c5, 2)),
+          parents: __S(167, __c5, 7),
+          repository: __S(42, __c1, 10),
           score: S.Number,
           node_id: S.String,
-          text_matches: S.optional(__S(18, __c2, 2)),
+          text_matches: S.optional(__S(100, __c3, 4)),
         }),
       ).annotate({ identifier: "CommitSearchResultItem" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(168, __c5, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: __S(31, __c3, 7),
+          items: __S(169, __c5, 9),
         }),
       ).annotate({ identifier: "CommitsResponse" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           q: S.String.pipe(T.Query()),
@@ -1644,9 +1652,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "IssuesAndPullRequestsRequest",
       });
+    case 1:
+      return S.Array(__S(64, __c2, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -1657,14 +1665,14 @@ function __c4(j: number): any {
           default: S.optional(S.Boolean),
           description: S.optional(S.NullOr(S.String)),
           archived_at: S.optional(S.NullOr(S.String)),
-          archived_by: S.optional(S.NullOr(__S(1, __c0, 1))),
+          archived_by: S.optional(S.NullOr(__S(64, __c2, 0))),
         }),
       ).annotate({
         identifier: "IssueSearchResultItemLabelsItem",
       });
+    case 3:
+      return S.Array(__S(194, __c6, 2));
     case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           total: S.Number,
@@ -1672,7 +1680,7 @@ function __c4(j: number): any {
           percent_completed: S.Number,
         }),
       ).annotate({ identifier: "SubIssuesSummary" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           blocked_by: S.Number,
@@ -1681,7 +1689,7 @@ function __c4(j: number): any {
           total_blocking: S.Number,
         }),
       ).annotate({ identifier: "IssueDependenciesSummary" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1691,13 +1699,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "IssueFieldValueSingleSelectOption",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(198, __c6, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           issue_field_id: S.Number,
@@ -1705,13 +1709,13 @@ function __c5(j: number): any {
           node_id: S.String,
           data_type: S.String,
           value: S.NullOr(S.Unknown),
-          single_select_option: S.optional(S.NullOr(__S(39, __c4, 7))),
-          multi_select_options: S.optional(S.NullOr(__S(40, __c5, 0))),
+          single_select_option: S.optional(S.NullOr(__S(198, __c6, 6))),
+          multi_select_options: S.optional(S.NullOr(__S(199, __c6, 7))),
         }),
       ).annotate({ identifier: "IssueFieldValue" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(200, __c6, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -1723,7 +1727,7 @@ function __c5(j: number): any {
           state: S.String,
           title: S.String,
           description: S.NullOr(S.String),
-          creator: S.NullOr(__S(1, __c0, 1)),
+          creator: S.NullOr(__S(64, __c2, 0)),
           open_issues: S.Number,
           closed_issues: S.Number,
           created_at: S.String,
@@ -1732,7 +1736,7 @@ function __c5(j: number): any {
           due_on: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "NullableMilestone" });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           merged_at: S.optional(S.NullOr(S.String)),
@@ -1744,18 +1748,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "IssueSearchResultItemPullRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          url: S.NullOr(S.String),
-          spdx_id: S.NullOr(S.String),
-          node_id: S.String,
-          html_url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NullableLicenseSimple" });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           admin: S.Boolean,
@@ -1765,7 +1758,7 @@ function __c5(j: number): any {
           maintain: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RepositoryPermissions" });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           lexical_search_ok: S.optional(S.Boolean),
@@ -1774,21 +1767,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RepositoryCodeSearchIndexStatus",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(__S(45, __c5, 5)),
+          license: S.NullOr(__S(224, __c7, 0)),
           forks: S.Number,
-          permissions: S.optional(__S(46, __c5, 6)),
-          owner: __S(1, __c0, 1),
+          permissions: S.optional(__S(204, __c6, 12)),
+          owner: __S(64, __c2, 0),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1844,7 +1833,7 @@ function __c6(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(2, __c0, 2)),
+          topics: S.optional(__S(128, __c4, 0)),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -1878,10 +1867,10 @@ function __c6(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(47, __c5, 7)),
+          code_search_index_status: S.optional(__S(205, __c6, 13)),
         }),
       ).annotate({ identifier: "Repository" });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1894,7 +1883,7 @@ function __c6(j: number): any {
           is_enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IssueType" });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           issues: S.optional(S.String),
@@ -1906,7 +1895,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "NullableIntegrationPermissions",
       });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1920,12 +1909,12 @@ function __c6(j: number): any {
           html_url: S.String,
           created_at: S.String,
           updated_at: S.String,
-          permissions: __S(50, __c6, 2),
-          events: __S(2, __c0, 2),
+          permissions: __S(208, __c6, 16),
+          events: __S(128, __c4, 0),
           installations_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NullableIntegration" });
-    case 4:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -1940,16 +1929,16 @@ function __c6(j: number): any {
           rocket: S.Number,
         }),
       ).annotate({ identifier: "ReactionRollup" });
-    case 5:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           pinned_at: S.String,
-          pinned_by: S.NullOr(__S(1, __c0, 1)),
+          pinned_by: S.NullOr(__S(64, __c2, 0)),
         }),
       ).annotate({
         identifier: "NullablePinnedIssueComment",
       });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           reason: S.NullOr(S.String),
@@ -1957,7 +1946,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "NullableIssueCommentMinimized",
       });
-    case 7:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1967,22 +1956,18 @@ function __c6(j: number): any {
           body_text: S.optional(S.String),
           body_html: S.optional(S.String),
           html_url: S.String,
-          user: S.NullOr(__S(1, __c0, 1)),
+          user: S.NullOr(__S(64, __c2, 0)),
           created_at: S.String,
           updated_at: S.String,
           issue_url: S.String,
           author_association: S.optional(S.String),
-          performed_via_github_app: S.optional(S.NullOr(__S(51, __c6, 3))),
-          reactions: S.optional(__S(52, __c6, 4)),
-          pin: S.optional(S.NullOr(__S(53, __c6, 5))),
-          minimized: S.optional(S.NullOr(__S(54, __c6, 6))),
+          performed_via_github_app: S.optional(S.NullOr(__S(209, __c6, 17))),
+          reactions: S.optional(__S(210, __c6, 18)),
+          pin: S.optional(S.NullOr(__S(211, __c6, 19))),
+          minimized: S.optional(S.NullOr(__S(212, __c6, 20))),
         }),
       ).annotate({ identifier: "NullableIssueComment" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -1997,53 +1982,72 @@ function __c7(j: number): any {
           title: S.String,
           locked: S.Boolean,
           active_lock_reason: S.optional(S.NullOr(S.String)),
-          assignees: S.optional(S.NullOr(__S(34, __c4, 2))),
-          user: S.NullOr(__S(1, __c0, 1)),
-          labels: __S(36, __c4, 4),
-          sub_issues_summary: S.optional(__S(37, __c4, 5)),
-          issue_dependencies_summary: S.optional(__S(38, __c4, 6)),
-          issue_field_values: S.optional(__S(42, __c5, 2)),
+          assignees: S.optional(S.NullOr(__S(193, __c6, 1))),
+          user: S.NullOr(__S(64, __c2, 0)),
+          labels: __S(195, __c6, 3),
+          sub_issues_summary: S.optional(__S(196, __c6, 4)),
+          issue_dependencies_summary: S.optional(__S(197, __c6, 5)),
+          issue_field_values: S.optional(__S(201, __c6, 9)),
           state: S.String,
           state_reason: S.optional(S.NullOr(S.String)),
-          assignee: S.NullOr(__S(1, __c0, 1)),
-          milestone: S.NullOr(__S(43, __c5, 3)),
+          assignee: S.NullOr(__S(64, __c2, 0)),
+          milestone: S.NullOr(__S(202, __c6, 10)),
           comments: S.Number,
           created_at: S.String,
           updated_at: S.String,
           closed_at: S.NullOr(S.String),
-          text_matches: S.optional(__S(18, __c2, 2)),
-          pull_request: S.optional(__S(44, __c5, 4)),
+          text_matches: S.optional(__S(100, __c3, 4)),
+          pull_request: S.optional(__S(203, __c6, 11)),
           body: S.optional(S.String),
           score: S.Number,
           author_association: S.String,
           draft: S.optional(S.Boolean),
-          repository: S.optional(__S(48, __c6, 0)),
+          repository: S.optional(__S(206, __c6, 14)),
           body_html: S.optional(S.String),
           body_text: S.optional(S.String),
           timeline_url: S.optional(S.String),
-          type: S.optional(S.NullOr(__S(49, __c6, 1))),
-          performed_via_github_app: S.optional(S.NullOr(__S(51, __c6, 3))),
-          pinned_comment: S.optional(S.NullOr(__S(55, __c6, 7))),
-          reactions: S.optional(__S(52, __c6, 4)),
+          type: S.optional(S.NullOr(__S(207, __c6, 15))),
+          performed_via_github_app: S.optional(S.NullOr(__S(209, __c6, 17))),
+          pinned_comment: S.optional(S.NullOr(__S(213, __c6, 21))),
+          reactions: S.optional(__S(210, __c6, 18)),
         }),
       ).annotate({ identifier: "IssueSearchResultItem" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
+    case 23:
+      return S.Array(__S(214, __c6, 22));
+    case 24:
       return S.Array(S.String);
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: __S(57, __c7, 1),
+          items: __S(215, __c6, 23),
           search_type: S.String,
-          lexical_fallback_reason: S.optional(__S(58, __c7, 2)),
+          lexical_fallback_reason: S.optional(__S(216, __c6, 24)),
         }),
       ).annotate({
         identifier: "IssuesAndPullRequestsResponse",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          url: S.NullOr(S.String),
+          spdx_id: S.NullOr(S.String),
+          node_id: S.String,
+          html_url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NullableLicenseSimple" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repository_id: S.Number.pipe(T.Query()),
@@ -2054,7 +2058,7 @@ function __c7(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search/labels", code: 200 })),
       ).annotate({ identifier: "LabelsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -2065,24 +2069,24 @@ function __c7(j: number): any {
           default: S.Boolean,
           description: S.NullOr(S.String),
           archived_at: S.NullOr(S.String),
-          archived_by: S.NullOr(__S(1, __c0, 1)),
+          archived_by: S.NullOr(__S(64, __c2, 0)),
           score: S.Number,
-          text_matches: S.optional(__S(18, __c2, 2)),
+          text_matches: S.optional(__S(100, __c3, 4)),
         }),
       ).annotate({ identifier: "LabelSearchResultItem" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(257, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: __S(62, __c7, 6),
+          items: __S(258, __c8, 2),
         }),
       ).annotate({ identifier: "LabelsResponse" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2113,7 +2117,7 @@ function __c8(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: S.NullOr(__S(1, __c0, 1)),
+          owner: S.NullOr(__S(64, __c2, 0)),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2175,7 +2179,7 @@ function __c8(j: number): any {
           forks: S.Number,
           open_issues: S.Number,
           watchers: S.Number,
-          topics: S.optional(__S(2, __c0, 2)),
+          topics: S.optional(__S(128, __c4, 0)),
           mirror_url: S.NullOr(S.String),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
@@ -2188,9 +2192,9 @@ function __c8(j: number): any {
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
-          license: S.NullOr(__S(45, __c5, 5)),
-          permissions: S.optional(__S(65, __c8, 1)),
-          text_matches: S.optional(__S(18, __c2, 2)),
+          license: S.NullOr(__S(224, __c7, 0)),
+          permissions: S.optional(__S(289, __c9, 1)),
+          text_matches: S.optional(__S(100, __c3, 4)),
           temp_clone_token: S.optional(S.String),
           allow_merge_commit: S.optional(S.Boolean),
           allow_squash_merge: S.optional(S.Boolean),
@@ -2203,16 +2207,20 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "RepoSearchResultItem" });
     case 3:
-      return S.Array(__S(66, __c8, 2));
+      return S.Array(__S(290, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: __S(67, __c8, 3),
+          items: __S(291, __c9, 3),
         }),
       ).annotate({ identifier: "ReposResponse" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           q: S.String.pipe(T.Query()),
@@ -2220,7 +2228,7 @@ function __c8(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search/topics", code: 200 })),
       ).annotate({ identifier: "TopicsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -2231,21 +2239,17 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "TopicSearchResultItemRelatedItemTopicRelation",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          topic_relation: S.optional(__S(70, __c8, 6)),
+          topic_relation: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({
         identifier: "TopicSearchResultItemRelatedItem",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(322, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -2261,22 +2265,26 @@ function __c9(j: number): any {
           score: S.Number,
           repository_count: S.optional(S.NullOr(S.Number)),
           logo_url: S.optional(S.NullOr(S.String)),
-          text_matches: S.optional(__S(18, __c2, 2)),
-          related: S.optional(S.NullOr(__S(72, __c9, 0))),
-          aliases: S.optional(S.NullOr(__S(72, __c9, 0))),
+          text_matches: S.optional(__S(100, __c3, 4)),
+          related: S.optional(S.NullOr(__S(323, __c10, 3))),
+          aliases: S.optional(S.NullOr(__S(323, __c10, 3))),
         }),
       ).annotate({ identifier: "TopicSearchResultItem" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(324, __c10, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: __S(74, __c9, 2),
+          items: __S(325, __c10, 5),
         }),
       ).annotate({ identifier: "TopicsResponse" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           q: S.String.pipe(T.Query()),
@@ -2286,7 +2294,7 @@ function __c9(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search/users", code: 200 })),
       ).annotate({ identifier: "UsersRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           login: S.String,
@@ -2319,26 +2327,25 @@ function __c9(j: number): any {
           location: S.optional(S.NullOr(S.String)),
           site_admin: S.Boolean,
           hireable: S.optional(S.NullOr(S.Boolean)),
-          text_matches: S.optional(__S(18, __c2, 2)),
+          text_matches: S.optional(__S(100, __c3, 4)),
           blog: S.optional(S.NullOr(S.String)),
           company: S.optional(S.NullOr(S.String)),
           suspended_at: S.optional(S.NullOr(S.String)),
           user_view_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserSearchResultItem" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(353, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: __S(78, __c9, 6),
+          items: __S(354, __c11, 2),
         }),
       ).annotate({ identifier: "UsersResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

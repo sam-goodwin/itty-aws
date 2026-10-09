@@ -1537,8 +1537,8 @@ export const bulkCreateScans: API.OperationMethod<
   BulkCreateScansError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<BulkCreateScansRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BulkCreateScansResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<BulkCreateScansRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<BulkCreateScansResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1552,8 +1552,8 @@ export const createScan: API.OperationMethod<
   CreateScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateScanRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateScanResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<CreateScanRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<CreateScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1567,8 +1567,8 @@ export const domScan: API.OperationMethod<
   DomScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DomScanRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DomScanResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<DomScanRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DomScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1582,8 +1582,8 @@ export const getRespons: API.OperationMethod<
   GetResponsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetResponsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetResponsResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetResponsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<GetResponsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1597,8 +1597,8 @@ export const getScan: API.OperationMethod<
   GetScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetScanRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<GetScanResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetScanRequest>,
+  output: __S(307, __c9, 19) as any as S.Schema<GetScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1612,8 +1612,8 @@ export const harScan: API.OperationMethod<
   HarScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<HarScanRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<HarScanResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<HarScanRequest>,
+  output: __S(364, __c11, 12) as any as S.Schema<HarScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1627,8 +1627,8 @@ export const listScans: API.OperationMethod<
   ListScansError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListScansRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<ListScansResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListScansRequest>,
+  output: __S(391, __c12, 7) as any as S.Schema<ListScansResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1642,8 +1642,8 @@ export const screenshotScan: API.OperationMethod<
   ScreenshotScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ScreenshotScanRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ScreenshotScanResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ScreenshotScanRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<ScreenshotScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1653,41 +1653,49 @@ export const screenshotScan: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
           agentReadiness: S.optional(S.Boolean),
           customagent: S.optional(S.String),
-          customHeaders: S.optional(__S(0, __c0, 0)),
+          customHeaders: S.optional(__S(32, __c1, 0)),
           referer: S.optional(S.String),
-          screenshotsResolutions: S.optional(__S(1, __c0, 1)),
+          screenshotsResolutions: S.optional(__S(33, __c1, 1)),
           visibility: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ScansBulkCreateRequestBodyItem",
       });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/accounts/{account_id}/urlscanner/v2/bulk", code: 200 }),
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "BulkCreateScansRequest" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
       return S.suspend(() =>
         S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "BulkCreateScansResponse" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1695,9 +1703,9 @@ function __c0(j: number): any {
           agentReadiness: S.optional(S.Boolean),
           country: S.optional(S.String),
           customagent: S.optional(S.String),
-          customHeaders: S.optional(__S(0, __c0, 0)),
+          customHeaders: S.optional(__S(32, __c1, 0)),
           referer: S.optional(S.String),
-          screenshotsResolutions: S.optional(__S(1, __c0, 1)),
+          screenshotsResolutions: S.optional(__S(33, __c1, 1)),
           visibility: S.optional(S.String),
         })
           .pipe(
@@ -1705,7 +1713,11 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateScanRequest" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1722,13 +1734,17 @@ function __c0(j: number): any {
       ).annotate({ identifier: "DomScanRequest" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DomScanResponse",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1743,7 +1759,11 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetResponsRequest" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1758,7 +1778,7 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScanRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           level: S.String,
@@ -1769,17 +1789,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataConsoleItemMessage",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          message: __S(11, __c1, 3),
+          message: __S(193, __c6, 1),
         }),
       ).annotate({
         identifier: "ScansGetResponseDataConsoleItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(194, __c6, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
@@ -1799,13 +1819,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataCookiesItem",
       });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(196, __c6, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           prop: S.String,
@@ -1814,9 +1830,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataGlobalsItem",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(198, __c6, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
@@ -1825,9 +1841,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataLinksItem",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(200, __c6, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           duration: S.Number,
@@ -1838,9 +1854,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataPerformanceItem",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 11:
+      return S.Array(__S(202, __c6, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           host: S.String,
@@ -1850,7 +1866,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemRequestInitiator",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           initialPriority: S.String,
@@ -1864,22 +1880,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemRequestRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 14:
+      return S.Array(__S(320, __c10, 0));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           charset: S.String,
@@ -1887,7 +1890,7 @@ function __c3(j: number): any {
           protocol: S.String,
           remoteIPAddress: S.String,
           remotePort: S.Number,
-          securityHeaders: __S(25, __c3, 1),
+          securityHeaders: __S(206, __c6, 14),
           securityState: S.String,
           status: S.Number,
           statusText: S.String,
@@ -1897,26 +1900,26 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemRequestRedirectResponse",
       });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           documentURL: S.String,
           hasUserGesture: S.Boolean,
-          initiator: __S(22, __c2, 6),
+          initiator: __S(204, __c6, 12),
           redirectHasExtraInfo: S.Boolean,
-          request: __S(23, __c2, 7),
+          request: __S(205, __c6, 13),
           requestId: S.String,
           type: S.String,
           wallTime: S.Number,
           frameId: S.optional(S.NullOr(S.String)),
           loaderId: S.optional(S.NullOr(S.String)),
           primaryRequest: S.optional(S.NullOr(S.Boolean)),
-          redirectResponse: S.optional(S.NullOr(__S(26, __c3, 2))),
+          redirectResponse: S.optional(S.NullOr(__S(207, __c6, 15))),
         }),
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemRequest",
       });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           asn: S.String,
@@ -1929,28 +1932,24 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemResponseAsn",
       });
-    case 5:
+    case 18:
       return S.Array(S.Number);
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           city: S.String,
           country: S.String,
           countryName: S.String.pipe(T.Body("country_name")),
           geonameId: S.String,
-          ll: __S(29, __c3, 5),
+          ll: __S(210, __c6, 18),
           region: S.String,
         }),
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemResponseGeoip",
       });
-    case 7:
+    case 20:
       return S.Array(S.String);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           certificateId: S.Number,
@@ -1961,7 +1960,7 @@ function __c4(j: number): any {
           keyExchange: S.String,
           keyExchangeGroup: S.String,
           protocol: S.String,
-          sanList: __S(31, __c3, 7),
+          sanList: __S(212, __c6, 20),
           serverSignatureAlgorithm: S.Number,
           subjectName: S.String,
           validFrom: S.Number,
@@ -1970,7 +1969,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemResponseResponseSecurityDetails",
       });
-    case 1:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           charset: S.String,
@@ -1978,8 +1977,8 @@ function __c4(j: number): any {
           protocol: S.String,
           remoteIPAddress: S.String,
           remotePort: S.Number,
-          securityDetails: __S(32, __c4, 0),
-          securityHeaders: __S(25, __c3, 1),
+          securityDetails: __S(213, __c6, 21),
+          securityHeaders: __S(206, __c6, 14),
           securityState: S.String,
           status: S.Number,
           statusText: S.String,
@@ -1989,16 +1988,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemResponseResponse",
       });
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          asn: __S(28, __c3, 4),
+          asn: __S(209, __c6, 17),
           dataLength: S.Number,
           encodedDataLength: S.Number,
-          geoip: __S(30, __c3, 6),
+          geoip: __S(211, __c6, 19),
           hasExtraInfo: S.Boolean,
           requestId: S.String,
-          response: __S(33, __c4, 1),
+          response: __S(214, __c6, 22),
           size: S.Number,
           type: S.String,
           contentAvailable: S.optional(S.NullOr(S.Boolean)),
@@ -2007,7 +2006,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemResponse",
       });
-    case 3:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -2015,7 +2014,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemRequestsItemInitiator",
       });
-    case 4:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -2023,10 +2022,10 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemRequestsItemRequestHeaders",
       });
-    case 5:
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          headers: __S(36, __c4, 4),
+          headers: __S(217, __c6, 25),
           initialPriority: S.String,
           isSameSite: S.Boolean,
           method: S.String,
@@ -2037,16 +2036,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemRequestsItemRequest",
       });
-    case 6:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           documentURL: S.String,
           frameId: S.String,
           hasUserGesture: S.Boolean,
-          initiator: __S(35, __c4, 3),
+          initiator: __S(216, __c6, 24),
           loaderId: S.String,
           redirectHasExtraInfo: S.Boolean,
-          request: __S(37, __c4, 5),
+          request: __S(218, __c6, 26),
           requestId: S.String,
           type: S.String,
           wallTime: S.Number,
@@ -2054,38 +2053,38 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemRequestsItem",
       });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 28:
+      return S.Array(__S(219, __c6, 27));
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          request: __S(27, __c3, 3),
-          response: __S(34, __c4, 2),
-          requests: S.optional(S.NullOr(__S(39, __c4, 7))),
+          request: __S(208, __c6, 16),
+          response: __S(215, __c6, 23),
+          requests: S.optional(S.NullOr(__S(220, __c6, 28))),
         }),
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItem",
       });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 30:
+      return S.Array(__S(221, __c6, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
-          console: __S(13, __c1, 5),
-          cookies: __S(15, __c1, 7),
-          globals: __S(17, __c2, 1),
-          links: __S(19, __c2, 3),
-          performance: __S(21, __c2, 5),
-          requests: __S(41, __c5, 1),
+          console: __S(195, __c6, 3),
+          cookies: __S(197, __c6, 5),
+          globals: __S(199, __c6, 7),
+          links: __S(201, __c6, 9),
+          performance: __S(203, __c6, 11),
+          requests: __S(222, __c6, 30),
         }),
       ).annotate({ identifier: "ScansGetResponseData" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           issuer: S.String,
@@ -2096,24 +2095,24 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseListsCertificatesItem",
       });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(225, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          asns: __S(43, __c5, 3),
-          certificates: __S(45, __c5, 5),
-          continents: __S(43, __c5, 3),
-          countries: __S(43, __c5, 3),
-          domains: __S(43, __c5, 3),
-          hashes: __S(43, __c5, 3),
-          ips: __S(43, __c5, 3),
-          linkDomains: __S(43, __c5, 3),
-          servers: __S(43, __c5, 3),
-          urls: __S(43, __c5, 3),
+          asns: __S(224, __c7, 0),
+          certificates: __S(226, __c7, 2),
+          continents: __S(224, __c7, 0),
+          countries: __S(224, __c7, 0),
+          domains: __S(224, __c7, 0),
+          hashes: __S(224, __c7, 0),
+          ips: __S(224, __c7, 0),
+          linkDomains: __S(224, __c7, 0),
+          servers: __S(224, __c7, 0),
+          urls: __S(224, __c7, 0),
         }),
       ).annotate({ identifier: "ScansGetResponseLists" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           asn: S.String,
@@ -2125,21 +2124,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAsnDataItem",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(228, __c7, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(48, __c6, 0),
+          data: __S(229, __c7, 5),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAsn",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           address: S.String,
@@ -2150,17 +2145,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsDnsDataItem",
       });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(231, __c7, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          data: __S(51, __c6, 3),
+          data: __S(232, __c7, 8),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsDns",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           inherited: S.Unknown,
@@ -2170,60 +2165,56 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsDomainCategoriesDataItem",
       });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 11:
+      return S.Array(__S(234, __c7, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          data: __S(54, __c6, 6),
+          data: __S(235, __c7, 11),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsDomainCategories",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           city: S.String,
           country: S.String,
           countryName: S.String.pipe(T.Body("country_name")),
-          ll: __S(29, __c3, 5),
+          ll: __S(210, __c6, 18),
           region: S.String,
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsGeoipDataItemGeoip",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          geoip: __S(56, __c7, 0),
+          geoip: __S(237, __c7, 13),
           ip: S.String,
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsGeoipDataItem",
       });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
+    case 15:
+      return S.Array(__S(238, __c7, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          data: __S(58, __c7, 2),
+          data: __S(239, __c7, 15),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsGeoip",
       });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          data: __S(43, __c5, 3),
+          data: __S(224, __c7, 0),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsPhishing",
       });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String,
@@ -2233,21 +2224,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsRadarRankDataItem",
       });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 19:
+      return S.Array(__S(242, __c7, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          data: __S(62, __c7, 6),
+          data: __S(243, __c7, 19),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsRadarRank",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -2256,9 +2243,9 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem",
       });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
+    case 22:
+      return S.Array(__S(245, __c7, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
           confidence: S.Number,
@@ -2269,14 +2256,14 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem",
       });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
+    case 24:
+      return S.Array(__S(247, __c7, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           app: S.String,
-          categories: __S(65, __c8, 1),
-          confidence: __S(67, __c8, 3),
+          categories: __S(246, __c7, 22),
+          confidence: __S(248, __c7, 24),
           confidenceTotal: S.Number,
           icon: S.String,
           website: S.String,
@@ -2284,17 +2271,17 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsWappaDataItem",
       });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 26:
+      return S.Array(__S(249, __c7, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          data: __S(69, __c8, 5),
+          data: __S(250, __c7, 26),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsWappa",
       });
-    case 7:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           outcome: S.String,
@@ -2304,11 +2291,7 @@ function __c8(j: number): any {
         identifier:
           "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           method: S.String,
@@ -2319,7 +2302,7 @@ function __c9(j: number): any {
         identifier:
           "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest",
       });
-    case 1:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           status: S.Number,
@@ -2333,22 +2316,26 @@ function __c9(j: number): any {
         identifier:
           "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse",
       });
-    case 2:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
           label: S.String,
-          finding: S.optional(S.NullOr(__S(71, __c8, 7))),
-          request: S.optional(S.NullOr(__S(72, __c9, 0))),
-          response: S.optional(S.NullOr(__S(73, __c9, 1))),
+          finding: S.optional(S.NullOr(__S(252, __c7, 28))),
+          request: S.optional(S.NullOr(__S(253, __c7, 29))),
+          response: S.optional(S.NullOr(__S(254, __c7, 30))),
         }),
       ).annotate({
         identifier:
           "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem",
       });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(255, __c7, 31));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -2358,162 +2345,154 @@ function __c9(j: number): any {
         identifier:
           "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           details: S.optional(S.NullOr(S.Unknown)),
           durationMs: S.optional(S.NullOr(S.Number)),
-          evidence: S.optional(S.NullOr(__S(75, __c9, 3))),
+          evidence: S.optional(S.NullOr(__S(256, __c8, 0))),
           message: S.optional(S.NullOr(S.String)),
-          messageRef: S.optional(S.NullOr(__S(76, __c9, 4))),
+          messageRef: S.optional(S.NullOr(__S(257, __c8, 1))),
         }),
       ).annotate({
         identifier:
           "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           details: S.optional(S.NullOr(S.Unknown)),
           durationMs: S.optional(S.NullOr(S.Number)),
-          evidence: S.optional(S.NullOr(__S(75, __c9, 3))),
+          evidence: S.optional(S.NullOr(__S(256, __c8, 0))),
           message: S.optional(S.NullOr(S.String)),
-          messageRef: S.optional(S.NullOr(__S(76, __c9, 4))),
+          messageRef: S.optional(S.NullOr(__S(257, __c8, 1))),
         }),
       ).annotate({
         identifier:
           "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          contentSignals: __S(77, __c9, 5),
-          robotsTxtAiRules: __S(78, __c9, 6),
-          webBotAuth: __S(77, __c9, 5),
+          contentSignals: __S(258, __c8, 2),
+          robotsTxtAiRules: __S(259, __c8, 3),
+          webBotAuth: __S(258, __c8, 2),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           details: S.optional(S.NullOr(S.Unknown)),
           durationMs: S.optional(S.NullOr(S.Number)),
-          evidence: S.optional(S.NullOr(__S(75, __c9, 3))),
+          evidence: S.optional(S.NullOr(__S(256, __c8, 0))),
           message: S.optional(S.NullOr(S.String)),
-          messageRef: S.optional(S.NullOr(__S(76, __c9, 4))),
+          messageRef: S.optional(S.NullOr(__S(257, __c8, 1))),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          acp: __S(80, __c10, 0),
-          ap2: __S(80, __c10, 0),
-          mpp: __S(80, __c10, 0),
-          ucp: __S(80, __c10, 0),
-          x402: __S(80, __c10, 0),
+          acp: __S(261, __c8, 5),
+          ap2: __S(261, __c8, 5),
+          mpp: __S(261, __c8, 5),
+          ucp: __S(261, __c8, 5),
+          x402: __S(261, __c8, 5),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          markdownNegotiation: __S(78, __c9, 6),
+          markdownNegotiation: __S(259, __c8, 3),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          dnsAid: __S(77, __c9, 5),
-          linkHeaders: __S(77, __c9, 5),
-          robotsTxt: __S(77, __c9, 5),
-          sitemap: __S(77, __c9, 5),
+          dnsAid: __S(258, __c8, 2),
+          linkHeaders: __S(258, __c8, 2),
+          robotsTxt: __S(258, __c8, 2),
+          sitemap: __S(258, __c8, 2),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          a2aAgentCard: __S(77, __c9, 5),
-          agentSkills: __S(77, __c9, 5),
-          apiCatalog: __S(80, __c10, 0),
-          ard: __S(80, __c10, 0),
-          authMd: __S(80, __c10, 0),
-          mcpServerCard: __S(77, __c9, 5),
-          oauthDiscovery: __S(77, __c9, 5),
-          oauthProtectedResource: __S(77, __c9, 5),
-          webMcp: __S(80, __c10, 0),
+          a2aAgentCard: __S(258, __c8, 2),
+          agentSkills: __S(258, __c8, 2),
+          apiCatalog: __S(261, __c8, 5),
+          ard: __S(261, __c8, 5),
+          authMd: __S(261, __c8, 5),
+          mcpServerCard: __S(258, __c8, 2),
+          oauthDiscovery: __S(258, __c8, 2),
+          oauthProtectedResource: __S(258, __c8, 2),
+          webMcp: __S(261, __c8, 5),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          botAccessControl: __S(79, __c9, 7),
-          commerce: __S(81, __c10, 1),
-          contentAccessibility: __S(82, __c10, 2),
-          discoverability: __S(83, __c10, 3),
-          discovery: __S(84, __c10, 4),
+          botAccessControl: __S(260, __c8, 4),
+          commerce: __S(262, __c8, 6),
+          contentAccessibility: __S(263, __c8, 7),
+          discoverability: __S(264, __c8, 8),
+          discovery: __S(265, __c8, 9),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecks",
       });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           check: S.String,
           description: S.String,
           prompt: S.String,
           skillUrl: S.String,
-          specUrls: __S(31, __c3, 7),
+          specUrls: __S(212, __c6, 20),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem",
       });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
+      return S.Array(__S(267, __c8, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          requirements: __S(87, __c10, 7),
+          requirements: __S(268, __c8, 12),
           target: S.Number,
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessNextLevel",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          checks: __S(85, __c10, 5),
+          checks: __S(266, __c8, 10),
           level: S.Number,
           levelName: S.String,
-          commerceSignals: S.optional(S.NullOr(__S(31, __c3, 7))),
+          commerceSignals: S.optional(S.NullOr(__S(212, __c6, 20))),
           isCommerce: S.optional(S.NullOr(S.Boolean)),
-          nextLevel: S.optional(S.NullOr(__S(88, __c11, 0))),
+          nextLevel: S.optional(S.NullOr(__S(269, __c8, 13))),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadiness",
       });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           aiInput: S.optional(S.NullOr(S.String).pipe(T.Body("ai-input"))),
@@ -2523,44 +2502,40 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueContentSignal",
       });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          allow: __S(31, __c3, 7),
-          disallow: __S(31, __c3, 7),
-          contentSignal: S.optional(S.NullOr(__S(90, __c11, 2))),
+          allow: __S(212, __c6, 20),
+          disallow: __S(212, __c6, 20),
+          contentSignal: S.optional(S.NullOr(__S(271, __c8, 15))),
           crawlDelay: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue",
       });
-    case 4:
-      return S.Record(S.String, __S(91, __c11, 3));
-    case 5:
+    case 17:
+      return S.Record(S.String, __S(272, __c8, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          rules: __S(92, __c11, 4),
-          sitemaps: __S(43, __c5, 3),
+          rules: __S(273, __c8, 17),
+          sitemaps: __S(224, __c7, 0),
           hash: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsRobotsTxtDataItem",
       });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+    case 19:
+      return S.Array(__S(274, __c8, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          data: __S(94, __c11, 6),
+          data: __S(275, __c8, 19),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsRobotsTxt",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -2570,70 +2545,66 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem",
       });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.Array(__S(96, __c12, 0));
-    case 3:
+    case 22:
+      return S.Array(__S(277, __c8, 21));
+    case 23:
+      return S.Array(__S(277, __c8, 21));
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          content: __S(98, __c12, 2),
+          content: __S(279, __c8, 23),
           from: S.String,
-          risks: __S(98, __c12, 2),
+          risks: __S(279, __c8, 23),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited",
       });
-    case 4:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          content: __S(97, __c12, 1),
-          inherited: __S(99, __c12, 3),
+          content: __S(278, __c8, 22),
+          inherited: __S(280, __c8, 24),
           name: S.String,
-          risks: __S(97, __c12, 1),
+          risks: __S(278, __c8, 22),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsUrlCategoriesDataItem",
       });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 26:
+      return S.Array(__S(281, __c8, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          data: __S(101, __c12, 5),
+          data: __S(282, __c8, 26),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsUrlCategories",
       });
-    case 7:
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          asn: __S(49, __c6, 1),
-          dns: __S(52, __c6, 4),
-          domainCategories: __S(55, __c6, 7),
-          geoip: __S(59, __c7, 3),
-          phishing: __S(60, __c7, 4),
-          radarRank: __S(63, __c7, 7),
-          wappa: __S(70, __c8, 6),
-          agentReadiness: S.optional(S.NullOr(__S(89, __c11, 1))),
-          phishingV2: S.optional(S.NullOr(__S(60, __c7, 4)).pipe(T.Body("phishing_v2"))),
-          robotsTxt: S.optional(S.NullOr(__S(95, __c11, 7))),
-          urlCategories: S.optional(S.NullOr(__S(102, __c12, 6))),
+          asn: __S(230, __c7, 6),
+          dns: __S(233, __c7, 9),
+          domainCategories: __S(236, __c7, 12),
+          geoip: __S(240, __c7, 16),
+          phishing: __S(241, __c7, 17),
+          radarRank: __S(244, __c7, 20),
+          wappa: __S(251, __c7, 27),
+          agentReadiness: S.optional(S.NullOr(__S(270, __c8, 14))),
+          phishingV2: S.optional(S.NullOr(__S(241, __c7, 17)).pipe(T.Body("phishing_v2"))),
+          robotsTxt: S.optional(S.NullOr(__S(276, __c8, 20))),
+          urlCategories: S.optional(S.NullOr(__S(283, __c8, 27))),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessors",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          processors: __S(103, __c12, 7),
+          processors: __S(284, __c8, 28),
         }),
       ).annotate({ identifier: "ScansGetResponseMeta" });
-    case 1:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           dhash: S.String,
@@ -2644,7 +2615,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ScansGetResponsePageScreenshot",
       });
-    case 2:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           apexDomain: S.String,
@@ -2663,42 +2634,46 @@ function __c13(j: number): any {
           tlsValidDays: S.Number,
           tlsValidFrom: S.String,
           url: S.String,
-          screenshot: S.optional(S.NullOr(__S(105, __c13, 1))),
+          screenshot: S.optional(S.NullOr(__S(286, __c8, 30))),
         }),
       ).annotate({ identifier: "ScansGetResponsePage" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           colo: S.String,
           country: S.String,
         }),
       ).annotate({ identifier: "ScansGetResponseScanner" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          countries: __S(43, __c5, 3),
+          countries: __S(224, __c7, 0),
           domain: S.String,
           encodedSize: S.Number,
           index: S.Number,
-          initiators: __S(43, __c5, 3),
-          ips: __S(43, __c5, 3),
+          initiators: __S(224, __c7, 0),
+          ips: __S(224, __c7, 0),
           redirects: S.Number,
           size: S.Number,
         }),
       ).annotate({
         identifier: "ScansGetResponseStatsDomainStatsItem",
       });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(289, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          asn: __S(28, __c3, 4),
-          countries: __S(43, __c5, 3),
-          domains: __S(43, __c5, 3),
+          asn: __S(209, __c6, 17),
+          countries: __S(224, __c7, 0),
+          domains: __S(224, __c7, 0),
           encodedSize: S.Number,
-          geoip: __S(56, __c7, 0),
+          geoip: __S(237, __c7, 13),
           index: S.Number,
           ip: S.String,
           ipv6: S.Boolean,
@@ -2710,35 +2685,31 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseStatsIpStatsItem",
       });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(291, __c9, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          countries: __S(43, __c5, 3),
+          countries: __S(224, __c7, 0),
           encodedSize: S.Number,
-          ips: __S(43, __c5, 3),
+          ips: __S(224, __c7, 0),
           protocol: S.String,
           size: S.Number,
         }),
       ).annotate({
         identifier: "ScansGetResponseStatsProtocolStatsItem",
       });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(293, __c9, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           compression: S.Number,
           count: S.Number,
-          countries: __S(43, __c5, 3),
+          countries: __S(224, __c7, 0),
           encodedSize: S.Number,
-          ips: __S(43, __c5, 3),
+          ips: __S(224, __c7, 0),
           percentage: S.Number,
           size: S.Number,
           type: S.String,
@@ -2746,24 +2717,24 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseStatsResourceStatsItem",
       });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(295, __c9, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          countries: __S(43, __c5, 3),
+          countries: __S(224, __c7, 0),
           encodedSize: S.Number,
-          ips: __S(43, __c5, 3),
+          ips: __S(224, __c7, 0),
           server: S.String,
           size: S.Number,
         }),
       ).annotate({
         identifier: "ScansGetResponseStatsServerStatsItem",
       });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(297, __c9, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           TLS_1_3___AES_128_GCM: S.Number.pipe(T.Body("TLS 1.3 / AES_128_GCM")),
@@ -2771,61 +2742,57 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ScansGetResponseStatsTlsStatsItemProtocols",
       });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          countries: __S(43, __c5, 3),
+          countries: __S(224, __c7, 0),
           encodedSize: S.Number,
-          ips: __S(43, __c5, 3),
-          protocols: __S(118, __c14, 6),
+          ips: __S(224, __c7, 0),
+          protocols: __S(299, __c9, 11),
           securityState: S.String,
           size: S.Number,
         }),
       ).annotate({
         identifier: "ScansGetResponseStatsTlsStatsItem",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
+    case 13:
+      return S.Array(__S(300, __c9, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          domainStats: __S(109, __c13, 5),
-          ipStats: __S(111, __c13, 7),
+          domainStats: __S(290, __c9, 2),
+          ipStats: __S(292, __c9, 4),
           iPv6Percentage: S.Number.pipe(T.Body("IPv6Percentage")),
           malicious: S.Number,
-          protocolStats: __S(113, __c14, 1),
-          resourceStats: __S(115, __c14, 3),
+          protocolStats: __S(294, __c9, 6),
+          resourceStats: __S(296, __c9, 8),
           securePercentage: S.Number,
           secureRequests: S.Number,
-          serverStats: __S(117, __c14, 5),
-          tlsStats: __S(120, __c15, 0),
+          serverStats: __S(298, __c9, 10),
+          tlsStats: __S(301, __c9, 13),
           totalLinks: S.Number,
           uniqASNs: S.Number,
           uniqCountries: S.Number,
         }),
       ).annotate({ identifier: "ScansGetResponseStats" });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           customHeaders: S.optional(S.NullOr(S.Unknown)),
-          screenshotsResolutions: S.optional(S.NullOr(__S(43, __c5, 3))),
+          screenshotsResolutions: S.optional(S.NullOr(__S(224, __c7, 0))),
         }),
       ).annotate({
         identifier: "ScansGetResponseTaskOptions",
       });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           apexDomain: S.String,
           domain: S.String,
           domURL: S.String,
           method: S.String,
-          options: __S(122, __c15, 2),
+          options: __S(303, __c9, 15),
           reportURL: S.String,
           screenshotURL: S.String,
           source: S.String,
@@ -2836,37 +2803,54 @@ function __c15(j: number): any {
           visibility: S.String,
         }),
       ).annotate({ identifier: "ScansGetResponseTask" });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          categories: __S(43, __c5, 3),
+          categories: __S(224, __c7, 0),
           hasVerdicts: S.Boolean,
           malicious: S.Boolean,
-          tags: __S(43, __c5, 3),
+          tags: __S(224, __c7, 0),
         }),
       ).annotate({
         identifier: "ScansGetResponseVerdictsOverall",
       });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          overall: __S(124, __c15, 4),
+          overall: __S(305, __c9, 17),
         }),
       ).annotate({ identifier: "ScansGetResponseVerdicts" });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          data: __S(42, __c5, 2),
-          lists: __S(46, __c5, 6),
-          meta: __S(104, __c13, 0),
-          page: __S(106, __c13, 2),
-          scanner: __S(107, __c13, 3),
-          stats: __S(121, __c15, 1),
-          task: __S(123, __c15, 3),
-          verdicts: __S(125, __c15, 5),
+          data: __S(223, __c6, 31),
+          lists: __S(227, __c7, 3),
+          meta: __S(285, __c8, 29),
+          page: __S(287, __c8, 31),
+          scanner: __S(288, __c9, 0),
+          stats: __S(302, __c9, 14),
+          task: __S(304, __c9, 16),
+          verdicts: __S(306, __c9, 18),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScanResponse" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2881,11 +2865,7 @@ function __c15(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "HarScanRequest" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           comment: S.String,
@@ -2895,13 +2875,13 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ScansHarResponseLogCreator",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
     case 2:
+      return S.Array(__S(320, __c10, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           bodySize: S.Number,
-          headers: __S(129, __c16, 1),
+          headers: __S(354, __c11, 2),
           headersSize: S.Number,
           httpVersion: S.String,
           method: S.String,
@@ -2910,7 +2890,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ScansHarResponseLogEntriesItemRequest",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           mimeType: S.String,
@@ -2920,13 +2900,13 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ScansHarResponseLogEntriesItemResponseContent",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           transferSize: S.Number.pipe(T.Body("_transferSize")),
           bodySize: S.Number,
-          content: __S(131, __c16, 3),
-          headers: __S(129, __c16, 1),
+          content: __S(356, __c11, 4),
+          headers: __S(354, __c11, 2),
           headersSize: S.Number,
           httpVersion: S.String,
           redirectURL: S.String,
@@ -2936,7 +2916,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ScansHarResponseLogEntriesItemResponse",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           initialPriority: S.String.pipe(T.Body("_initialPriority")),
@@ -2948,8 +2928,8 @@ function __c16(j: number): any {
           cache: S.Unknown,
           connection: S.String,
           pageref: S.String,
-          request: __S(130, __c16, 2),
-          response: __S(132, __c16, 4),
+          request: __S(355, __c11, 3),
+          response: __S(357, __c11, 5),
           serverIPAddress: S.String,
           startedDateTime: S.String,
           time: S.Number,
@@ -2957,9 +2937,9 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ScansHarResponseLogEntriesItem",
       });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
     case 7:
+      return S.Array(__S(358, __c11, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           onContentLoad: S.Number,
@@ -2968,39 +2948,39 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ScansHarResponseLogPagesItemPageTimings",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          pageTimings: __S(135, __c16, 7),
+          pageTimings: __S(360, __c11, 8),
           startedDateTime: S.String,
           title: S.String,
         }),
       ).annotate({
         identifier: "ScansHarResponseLogPagesItem",
       });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
+    case 10:
+      return S.Array(__S(361, __c11, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          creator: __S(128, __c16, 0),
-          entries: __S(134, __c16, 6),
-          pages: __S(137, __c17, 1),
+          creator: __S(353, __c11, 1),
+          entries: __S(359, __c11, 7),
+          pages: __S(362, __c11, 10),
           version: S.String,
         }),
       ).annotate({ identifier: "ScansHarResponseLog" });
-    case 3:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          log: __S(138, __c17, 2),
+          log: __S(363, __c11, 11),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "HarScanResponse" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3016,7 +2996,7 @@ function __c17(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListScansRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           asn: S.String,
@@ -3027,7 +3007,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ScansListResponseResultsItemPage",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           dataLength: S.Number,
@@ -3038,7 +3018,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ScansListResponseResultsItemStats",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           time: S.String,
@@ -3049,11 +3029,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ScansListResponseResultsItemTask",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           malicious: S.Boolean,
@@ -3061,28 +3037,32 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ScansListResponseResultsItemVerdicts",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Body("_id")),
-          page: __S(141, __c17, 5),
+          page: __S(385, __c12, 1),
           result: S.String,
-          stats: __S(142, __c17, 6),
-          task: __S(143, __c17, 7),
-          verdicts: __S(144, __c18, 0),
+          stats: __S(386, __c12, 2),
+          task: __S(387, __c12, 3),
+          verdicts: __S(388, __c12, 4),
         }),
       ).annotate({
         identifier: "ScansListResponseResultsItem",
       });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(389, __c12, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          results: __S(146, __c18, 2),
+          results: __S(390, __c12, 6),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListScansResponse" });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3100,7 +3080,6 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ScreenshotScanRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

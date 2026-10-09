@@ -721,8 +721,8 @@ export const addEmailForAuthenticatedUser: API.OperationMethod<
   AddEmailForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddEmailForAuthenticatedUserRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AddEmailForAuthenticatedUserResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<AddEmailForAuthenticatedUserRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<AddEmailForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -740,8 +740,8 @@ export const addSocialAccountForAuthenticatedUser: API.OperationMethod<
   AddSocialAccountForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AddSocialAccountForAuthenticatedUserRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AddSocialAccountForAuthenticatedUserResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<AddSocialAccountForAuthenticatedUserRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<AddSocialAccountForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -751,8 +751,8 @@ export type BlockError = Forbidden | NotFound | UnprocessableEntity | GithubOpEr
 /** Block a user Blocks the given user and returns a 204. If the authenticated user cannot block the given user a 422 is returned. */
 export const block: API.OperationMethod<BlockRequest, BlockResponse, BlockError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(9, __c1, 1) as any as S.Schema<BlockRequest>,
-    output: __S(10, __c1, 2) as any as S.Schema<BlockResponse>,
+    input: __S(416, __c52, 0) as any as S.Schema<BlockRequest>,
+    output: __S(424, __c53, 0) as any as S.Schema<BlockResponse>,
     errors: [Forbidden, NotFound, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -766,8 +766,8 @@ export const checkBlocked: API.OperationMethod<
   CheckBlockedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CheckBlockedRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CheckBlockedResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<CheckBlockedRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<CheckBlockedResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -781,8 +781,8 @@ export const checkFollowingForUser: API.OperationMethod<
   CheckFollowingForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CheckFollowingForUserRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CheckFollowingForUserResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<CheckFollowingForUserRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<CheckFollowingForUserResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -796,8 +796,8 @@ export const checkPersonIsFollowedByAuthenticated: API.OperationMethod<
   CheckPersonIsFollowedByAuthenticatedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CheckPersonIsFollowedByAuthenticatedRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CheckPersonIsFollowedByAuthenticatedResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<CheckPersonIsFollowedByAuthenticatedRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<CheckPersonIsFollowedByAuthenticatedResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -815,8 +815,8 @@ export const createGpgKeyForAuthenticatedUser: API.OperationMethod<
   CreateGpgKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateGpgKeyForAuthenticatedUserRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GpgKey>,
+  input: __S(464, __c58, 0) as any as S.Schema<CreateGpgKeyForAuthenticatedUserRequest>,
+  output: __S(477, __c59, 5) as any as S.Schema<GpgKey>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -834,8 +834,8 @@ export const createPublicSshKeyForAuthenticatedUser: API.OperationMethod<
   CreatePublicSshKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreatePublicSshKeyForAuthenticatedUserRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Key>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreatePublicSshKeyForAuthenticatedUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Key>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -853,8 +853,8 @@ export const createSshSigningKeyForAuthenticatedUser: API.OperationMethod<
   CreateSshSigningKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateSshSigningKeyForAuthenticatedUserRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<SshSigningKey>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateSshSigningKeyForAuthenticatedUserRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<SshSigningKey>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -868,8 +868,8 @@ export const deleteAttestationsBulk: API.OperationMethod<
   DeleteAttestationsBulkError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteAttestationsBulkRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteAttestationsBulkResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteAttestationsBulkRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<DeleteAttestationsBulkResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -883,8 +883,8 @@ export const deleteAttestationsById: API.OperationMethod<
   DeleteAttestationsByIdError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteAttestationsByIdRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteAttestationsByIdResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteAttestationsByIdRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<DeleteAttestationsByIdResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -898,8 +898,8 @@ export const deleteAttestationsBySubjectDigest: API.OperationMethod<
   DeleteAttestationsBySubjectDigestError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteAttestationsBySubjectDigestRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteAttestationsBySubjectDigestResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteAttestationsBySubjectDigestRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<DeleteAttestationsBySubjectDigestResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -917,8 +917,8 @@ export const deleteEmailForAuthenticatedUser: API.OperationMethod<
   DeleteEmailForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteEmailForAuthenticatedUserRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteEmailForAuthenticatedUserResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteEmailForAuthenticatedUserRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<DeleteEmailForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -936,8 +936,8 @@ export const deleteGpgKeyForAuthenticatedUser: API.OperationMethod<
   DeleteGpgKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteGpgKeyForAuthenticatedUserRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteGpgKeyForAuthenticatedUserResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteGpgKeyForAuthenticatedUserRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<DeleteGpgKeyForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -951,8 +951,8 @@ export const deletePublicSshKeyForAuthenticatedUser: API.OperationMethod<
   DeletePublicSshKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeletePublicSshKeyForAuthenticatedUserRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeletePublicSshKeyForAuthenticatedUserResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeletePublicSshKeyForAuthenticatedUserRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<DeletePublicSshKeyForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -970,8 +970,8 @@ export const deleteSocialAccountForAuthenticatedUser: API.OperationMethod<
   DeleteSocialAccountForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteSocialAccountForAuthenticatedUserRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteSocialAccountForAuthenticatedUserResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteSocialAccountForAuthenticatedUserRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<DeleteSocialAccountForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -985,8 +985,8 @@ export const deleteSshSigningKeyForAuthenticatedUser: API.OperationMethod<
   DeleteSshSigningKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteSshSigningKeyForAuthenticatedUserRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteSshSigningKeyForAuthenticatedUserResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteSshSigningKeyForAuthenticatedUserRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<DeleteSshSigningKeyForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1000,8 +1000,8 @@ export const follow: API.OperationMethod<
   FollowError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<FollowRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<FollowResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<FollowRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<FollowResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1015,8 +1015,8 @@ export const getAuthenticated: API.OperationMethod<
   GetAuthenticatedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetAuthenticatedRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetAuthenticatedResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetAuthenticatedRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<GetAuthenticatedResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1030,8 +1030,8 @@ export const getById: API.OperationMethod<
   GetByIdError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetByIdRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetByIdResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetByIdRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetByIdResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1045,8 +1045,8 @@ export const getByUsername: API.OperationMethod<
   GetByUsernameError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetByUsernameRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetByUsernameResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetByUsernameRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<GetByUsernameResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1060,8 +1060,8 @@ export const getContextForUser: API.OperationMethod<
   GetContextForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetContextForUserRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Hovercard>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetContextForUserRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<Hovercard>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1075,8 +1075,8 @@ export const getGpgKeyForAuthenticatedUser: API.OperationMethod<
   GetGpgKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetGpgKeyForAuthenticatedUserRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GpgKey>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetGpgKeyForAuthenticatedUserRequest>,
+  output: __S(477, __c59, 5) as any as S.Schema<GpgKey>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1090,8 +1090,8 @@ export const getPublicSshKeyForAuthenticatedUser: API.OperationMethod<
   GetPublicSshKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetPublicSshKeyForAuthenticatedUserRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Key>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetPublicSshKeyForAuthenticatedUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<Key>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1105,8 +1105,8 @@ export const getSshSigningKeyForAuthenticatedUser: API.OperationMethod<
   GetSshSigningKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetSshSigningKeyForAuthenticatedUserRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<SshSigningKey>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetSshSigningKeyForAuthenticatedUserRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<SshSigningKey>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1116,8 +1116,8 @@ export type ListError = GithubOpError;
 /** List users Lists all users, in the order that they signed up on GitHub. This list includes personal user accounts and organization accounts. Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of users. */
 export const list: API.OperationMethod<ListRequest, ListResponse, ListError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(50, __c6, 2) as any as S.Schema<ListRequest>,
-    output: __S(53, __c6, 5) as any as S.Schema<ListResponse>,
+    input: __S(160, __c20, 0) as any as S.Schema<ListRequest>,
+    output: __S(161, __c20, 1) as any as S.Schema<ListResponse>,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1131,8 +1131,8 @@ export const listAttestations: API.OperationMethod<
   ListAttestationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListAttestationsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListAttestationsResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListAttestationsRequest>,
+  output: __S(181, __c22, 5) as any as S.Schema<ListAttestationsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1146,8 +1146,8 @@ export const listAttestationsBulk: API.OperationMethod<
   ListAttestationsBulkError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListAttestationsBulkRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListAttestationsBulkResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListAttestationsBulkRequest>,
+  output: __S(214, __c26, 6) as any as S.Schema<ListAttestationsBulkResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1161,8 +1161,8 @@ export const listBlockedByAuthenticatedUser: API.OperationMethod<
   ListBlockedByAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListBlockedByAuthenticatedUserRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListBlockedByAuthenticatedUserResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListBlockedByAuthenticatedUserRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<ListBlockedByAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1176,8 +1176,8 @@ export const listEmailsForAuthenticatedUser: API.OperationMethod<
   ListEmailsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListEmailsForAuthenticatedUserRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListEmailsForAuthenticatedUserResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListEmailsForAuthenticatedUserRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<ListEmailsForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1191,8 +1191,8 @@ export const listFollowedByAuthenticatedUser: API.OperationMethod<
   ListFollowedByAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListFollowedByAuthenticatedUserRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListFollowedByAuthenticatedUserResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<ListFollowedByAuthenticatedUserRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<ListFollowedByAuthenticatedUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1206,8 +1206,8 @@ export const listFollowersForAuthenticatedUser: API.OperationMethod<
   ListFollowersForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListFollowersForAuthenticatedUserRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListFollowersForAuthenticatedUserResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<ListFollowersForAuthenticatedUserRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<ListFollowersForAuthenticatedUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1221,8 +1221,8 @@ export const listFollowersForUser: API.OperationMethod<
   ListFollowersForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListFollowersForUserRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListFollowersForUserResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<ListFollowersForUserRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<ListFollowersForUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1236,8 +1236,8 @@ export const listFollowingForUser: API.OperationMethod<
   ListFollowingForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListFollowingForUserRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListFollowingForUserResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListFollowingForUserRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<ListFollowingForUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1251,8 +1251,8 @@ export const listGpgKeysForAuthenticatedUser: API.OperationMethod<
   ListGpgKeysForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListGpgKeysForAuthenticatedUserRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListGpgKeysForAuthenticatedUserResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListGpgKeysForAuthenticatedUserRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<ListGpgKeysForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1266,8 +1266,8 @@ export const listGpgKeysForUser: API.OperationMethod<
   ListGpgKeysForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListGpgKeysForUserRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListGpgKeysForUserResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListGpgKeysForUserRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<ListGpgKeysForUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1281,8 +1281,8 @@ export const listPublicEmailsForAuthenticatedUser: API.OperationMethod<
   ListPublicEmailsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListPublicEmailsForAuthenticatedUserRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListPublicEmailsForAuthenticatedUserResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<ListPublicEmailsForAuthenticatedUserRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<ListPublicEmailsForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1296,8 +1296,8 @@ export const listPublicKeysForUser: API.OperationMethod<
   ListPublicKeysForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListPublicKeysForUserRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ListPublicKeysForUserResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<ListPublicKeysForUserRequest>,
+  output: __S(331, __c41, 3) as any as S.Schema<ListPublicKeysForUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1311,8 +1311,8 @@ export const listPublicSshKeysForAuthenticatedUser: API.OperationMethod<
   ListPublicSshKeysForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListPublicSshKeysForAuthenticatedUserRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ListPublicSshKeysForAuthenticatedUserResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<ListPublicSshKeysForAuthenticatedUserRequest>,
+  output: __S(338, __c42, 2) as any as S.Schema<ListPublicSshKeysForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1326,8 +1326,8 @@ export const listSocialAccountsForAuthenticatedUser: API.OperationMethod<
   ListSocialAccountsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListSocialAccountsForAuthenticatedUserRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ListSocialAccountsForAuthenticatedUserResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<ListSocialAccountsForAuthenticatedUserRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<ListSocialAccountsForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1341,8 +1341,8 @@ export const listSocialAccountsForUser: API.OperationMethod<
   ListSocialAccountsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListSocialAccountsForUserRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ListSocialAccountsForUserResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<ListSocialAccountsForUserRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<ListSocialAccountsForUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1356,8 +1356,8 @@ export const listSshSigningKeysForAuthenticatedUser: API.OperationMethod<
   ListSshSigningKeysForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListSshSigningKeysForAuthenticatedUserRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ListSshSigningKeysForAuthenticatedUserResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListSshSigningKeysForAuthenticatedUserRequest>,
+  output: __S(369, __c46, 1) as any as S.Schema<ListSshSigningKeysForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1371,8 +1371,8 @@ export const listSshSigningKeysForUser: API.OperationMethod<
   ListSshSigningKeysForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ListSshSigningKeysForUserRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ListSshSigningKeysForUserResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListSshSigningKeysForUserRequest>,
+  output: __S(369, __c46, 1) as any as S.Schema<ListSshSigningKeysForUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1390,8 +1390,16 @@ export const setPrimaryEmailVisibilityForAuthenticatedUser: API.OperationMethod<
   SetPrimaryEmailVisibilityForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<SetPrimaryEmailVisibilityForAuthenticatedUserRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SetPrimaryEmailVisibilityForAuthenticatedUserResponse>,
+  input: __S(
+    384,
+    __c48,
+    0,
+  ) as any as S.Schema<SetPrimaryEmailVisibilityForAuthenticatedUserRequest>,
+  output: __S(
+    202,
+    __c25,
+    2,
+  ) as any as S.Schema<SetPrimaryEmailVisibilityForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1413,8 @@ export const unblock: API.OperationMethod<
   UnblockError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<UnblockRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<UnblockResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<UnblockRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<UnblockResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1420,8 +1428,8 @@ export const unfollow: API.OperationMethod<
   UnfollowError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<UnfollowRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<UnfollowResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<UnfollowRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<UnfollowResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1435,8 +1443,8 @@ export const updateAuthenticated: API.OperationMethod<
   UpdateAuthenticatedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<UpdateAuthenticatedRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<PrivateUser>,
+  input: __S(410, __c51, 2) as any as S.Schema<UpdateAuthenticatedRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<PrivateUser>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1446,160 +1454,6 @@ export const updateAuthenticated: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/user/emails", code: 200 })),
-      ).annotate({
-        identifier: "AddEmailForAuthenticatedUserRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          primary: S.Boolean,
-          verified: S.Boolean,
-          visibility: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "Email" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() => __S(3, __c0, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "AddEmailForAuthenticatedUserResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          account_urls: __S(0, __c0, 0),
-        }).pipe(T.Http({ method: "POST", uri: "/user/social_accounts", code: 200 })),
-      ).annotate({
-        identifier: "AddSocialAccountForAuthenticatedUserRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.String,
-          url: S.String,
-        }),
-      ).annotate({ identifier: "SocialAccount" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(7, __c0, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "AddSocialAccountForAuthenticatedUserResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "PUT", uri: "/user/blocks/{username}", code: 200 })),
-      ).annotate({ identifier: "BlockRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BlockResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/blocks/{username}", code: 200 })),
-      ).annotate({ identifier: "CheckBlockedRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          target_user: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/users/{username}/following/{target_user}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CheckFollowingForUserRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/following/{username}", code: 200 })),
-      ).annotate({
-        identifier: "CheckPersonIsFollowedByAuthenticatedRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CheckPersonIsFollowedByAuthenticatedResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          armored_public_key: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/user/gpg_keys", code: 200 })),
-      ).annotate({
-        identifier: "CreateGpgKeyForAuthenticatedUserRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          verified: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GpgKeyEmailsItem" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          primary_key_id: S.optional(S.Number),
-          key_id: S.optional(S.String),
-          public_key: S.optional(S.String),
-          emails: S.optional(__S(17, __c2, 1)),
-          subkeys: S.optional(__S(18, __c2, 2)),
-          can_sign: S.optional(S.Boolean),
-          can_encrypt_comms: S.optional(S.Boolean),
-          can_encrypt_storage: S.optional(S.Boolean),
-          can_certify: S.optional(S.Boolean),
-          created_at: S.optional(S.String),
-          expires_at: S.optional(S.NullOr(S.String)),
-          raw_key: S.optional(S.NullOr(S.String)),
-          revoked: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GpgKeySubkeysItem" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.optional(S.NullOr(S.String)),
-          primary_key_id: S.NullOr(S.Number),
-          key_id: S.String,
-          public_key: S.String,
-          emails: __S(17, __c2, 1),
-          subkeys: __S(20, __c2, 4),
-          can_sign: S.Boolean,
-          can_encrypt_comms: S.Boolean,
-          can_encrypt_storage: S.Boolean,
-          can_certify: S.Boolean,
-          created_at: S.String,
-          expires_at: S.NullOr(S.String),
-          revoked: S.Boolean,
-          raw_key: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "GpgKey" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -1608,7 +1462,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreatePublicSshKeyForAuthenticatedUserRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -1623,7 +1481,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "Key" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1634,7 +1492,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSshSigningKeyForAuthenticatedUserRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -1643,7 +1505,11 @@ function __c3(j: number): any {
           created_at: S.String,
         }),
       ).annotate({ identifier: "SshSigningKey" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -1658,7 +1524,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAttestationsBulkRequest",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -1673,7 +1543,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAttestationsByIdRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -1688,7 +1562,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAttestationsBySubjectDigestRequest",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.optional(S.Unknown.pipe(T.HttpBody())),
@@ -1696,7 +1574,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteEmailForAuthenticatedUserRequest",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           gpg_key_id: S.Number.pipe(T.Label()),
@@ -1704,7 +1586,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteGpgKeyForAuthenticatedUserRequest",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key_id: S.Number.pipe(T.Label()),
@@ -1714,17 +1600,21 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          account_urls: __S(0, __c0, 0),
+          account_urls: __S(312, __c39, 0),
         }).pipe(T.Http({ method: "DELETE", uri: "/user/social_accounts", code: 200 })),
       ).annotate({
         identifier: "DeleteSocialAccountForAuthenticatedUserRequest",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ssh_signing_key_id: S.Number.pipe(T.Label()),
@@ -1738,17 +1628,643 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteSshSigningKeyForAuthenticatedUserRequest",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "PUT", uri: "/user/following/{username}", code: 200 })),
       ).annotate({ identifier: "FollowRequest" });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
       ).annotate({ identifier: "GetAuthenticatedRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetAuthenticatedResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/{account_id}", code: 200 })),
+      ).annotate({ identifier: "GetByIdRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetByIdResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}", code: 200 })),
+      ).annotate({ identifier: "GetByUsernameRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetByUsernameResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          subject_type: S.optional(S.String.pipe(T.Query())),
+          subject_id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/hovercard", code: 200 })),
+      ).annotate({ identifier: "GetContextForUserRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.String,
+          octicon: S.String,
+        }),
+      ).annotate({ identifier: "HovercardContextsItem" });
+    case 2:
+      return S.Array(__S(129, __c16, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          contexts: __S(130, __c16, 2),
+        }),
+      ).annotate({ identifier: "Hovercard" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gpg_key_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/gpg_keys/{gpg_key_id}", code: 200 })),
+      ).annotate({
+        identifier: "GetGpgKeyForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/keys/{key_id}", code: 200 })),
+      ).annotate({
+        identifier: "GetPublicSshKeyForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ssh_signing_key_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/user/ssh_signing_keys/{ssh_signing_key_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetSshSigningKeyForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          since: S.optional(S.Number.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
+      ).annotate({ identifier: "ListRequest" });
+    case 1:
+      return S.suspend(() => __S(169, __c21, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          login: S.String,
+          id: S.Number,
+          node_id: S.String,
+          avatar_url: S.String,
+          gravatar_id: S.NullOr(S.String),
+          url: S.String,
+          html_url: S.String,
+          followers_url: S.String,
+          following_url: S.String,
+          gists_url: S.String,
+          starred_url: S.String,
+          subscriptions_url: S.String,
+          organizations_url: S.String,
+          repos_url: S.String,
+          events_url: S.String,
+          received_events_url: S.String,
+          type: S.String,
+          site_admin: S.Boolean,
+          starred_at: S.optional(S.String),
+          user_view_type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SimpleUser" });
+    case 1:
+      return S.Array(__S(168, __c21, 0));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          subject_digest: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          predicate_type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/attestations/{subject_digest}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListAttestationsRequest" });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          mediaType: S.optional(S.String),
+          verificationMaterial: S.optional(__S(184, __c23, 0)),
+          dsseEnvelope: S.optional(__S(177, __c22, 1)),
+        }),
+      ).annotate({
+        identifier: "ListAttestationsResponseAttestationsItemBundle",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          bundle: S.optional(__S(178, __c22, 2)),
+          repository_id: S.optional(S.Number),
+          bundle_url: S.optional(S.String),
+          initiator: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAttestationsResponseAttestationsItem",
+      });
     case 4:
+      return S.Array(__S(179, __c22, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          attestations: S.optional(__S(180, __c22, 4)),
+        }),
+      ).annotate({ identifier: "ListAttestationsResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/user/emails", code: 200 })),
+      ).annotate({
+        identifier: "AddEmailForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          primary: S.Boolean,
+          verified: S.Boolean,
+          visibility: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "Email" });
+    case 1:
+      return S.Array(__S(200, __c25, 0));
+    case 2:
+      return S.suspend(() => __S(201, __c25, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "AddEmailForAuthenticatedUserResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          subject_digests: __S(312, __c39, 0),
+          predicate_type: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/users/{username}/attestations/bulk-list", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListAttestationsBulkRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          mediaType: S.optional(S.String),
+          verificationMaterial: S.optional(__S(184, __c23, 0)),
+          dsseEnvelope: S.optional(__S(184, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bundle: S.optional(__S(209, __c26, 1)),
+          repository_id: S.optional(S.Number),
+          bundle_url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem",
+      });
+    case 3:
+      return S.Array(__S(210, __c26, 2));
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(211, __c26, 3)));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          has_next: S.optional(S.Boolean),
+          has_previous: S.optional(S.Boolean),
+          next: S.optional(S.String),
+          previous: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAttestationsBulkResponsePageInfo",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          attestations_subject_digests: S.optional(__S(212, __c26, 4)),
+          page_info: S.optional(__S(213, __c26, 5)),
+        }),
+      ).annotate({
+        identifier: "ListAttestationsBulkResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/blocks", code: 200 })),
+      ).annotate({
+        identifier: "ListBlockedByAuthenticatedUserRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(169, __c21, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListBlockedByAuthenticatedUserResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/emails", code: 200 })),
+      ).annotate({
+        identifier: "ListEmailsForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/following", code: 200 })),
+      ).annotate({
+        identifier: "ListFollowedByAuthenticatedUserRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/followers", code: 200 })),
+      ).annotate({
+        identifier: "ListFollowersForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/followers", code: 200 })),
+      ).annotate({
+        identifier: "ListFollowersForUserRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/following", code: 200 })),
+      ).annotate({
+        identifier: "ListFollowingForUserRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/gpg_keys", code: 200 })),
+      ).annotate({
+        identifier: "ListGpgKeysForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(477, __c59, 5));
+    case 1:
+      return S.suspend(() => __S(280, __c35, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListGpgKeysForAuthenticatedUserResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/gpg_keys", code: 200 })),
+      ).annotate({
+        identifier: "ListGpgKeysForUserRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/public_emails", code: 200 })),
+      ).annotate({
+        identifier: "ListPublicEmailsForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_urls: __S(312, __c39, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/user/social_accounts", code: 200 })),
+      ).annotate({
+        identifier: "AddSocialAccountForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "SocialAccount" });
+    case 1:
+      return S.Array(__S(320, __c40, 0));
+    case 2:
+      return S.suspend(() => __S(321, __c40, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "AddSocialAccountForAuthenticatedUserResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/keys", code: 200 })),
+      ).annotate({
+        identifier: "ListPublicKeysForUserRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          key: S.String,
+          created_at: S.optional(S.String),
+          last_used: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "KeySimple" });
+    case 2:
+      return S.Array(__S(329, __c41, 1));
+    case 3:
+      return S.suspend(() => __S(330, __c41, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicKeysForUserResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/keys", code: 200 })),
+      ).annotate({
+        identifier: "ListPublicSshKeysForAuthenticatedUserRequest",
+      });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.suspend(() => __S(337, __c42, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicSshKeysForAuthenticatedUserResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/social_accounts", code: 200 })),
+      ).annotate({
+        identifier: "ListSocialAccountsForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/social_accounts", code: 200 })),
+      ).annotate({
+        identifier: "ListSocialAccountsForUserRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/ssh_signing_keys", code: 200 })),
+      ).annotate({
+        identifier: "ListSshSigningKeysForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(24, __c3, 0));
+    case 1:
+      return S.suspend(() => __S(368, __c46, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListSshSigningKeysForAuthenticatedUserResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/ssh_signing_keys", code: 200 })),
+      ).annotate({
+        identifier: "ListSshSigningKeysForUserRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          visibility: S.String,
+        }).pipe(T.Http({ method: "PATCH", uri: "/user/email/visibility", code: 200 })),
+      ).annotate({
+        identifier: "SetPrimaryEmailVisibilityForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/user/blocks/{username}", code: 200 })),
+      ).annotate({ identifier: "UnblockRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/user/following/{username}", code: 200 })),
+      ).annotate({ identifier: "UnfollowRequest" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collaborators: S.Number,
@@ -1757,7 +2273,7 @@ function __c4(j: number): any {
           private_repos: S.Number,
         }),
       ).annotate({ identifier: "PrivateUserPlan" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           login: S.String,
@@ -1800,464 +2316,12 @@ function __c4(j: number): any {
           disk_usage: S.Number,
           collaborators: S.Number,
           two_factor_authentication: S.Boolean,
-          plan: S.optional(__S(36, __c4, 4)),
+          plan: S.optional(__S(408, __c51, 0)),
           business_plus: S.optional(S.Boolean),
           ldap_dn: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateUser" });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetAuthenticatedResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/{account_id}", code: 200 })),
-      ).annotate({ identifier: "GetByIdRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetByIdResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}", code: 200 })),
-      ).annotate({ identifier: "GetByUsernameRequest" });
     case 2:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetByUsernameResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          subject_type: S.optional(S.String.pipe(T.Query())),
-          subject_id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/hovercard", code: 200 })),
-      ).annotate({ identifier: "GetContextForUserRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.String,
-          octicon: S.String,
-        }),
-      ).annotate({ identifier: "HovercardContextsItem" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contexts: __S(45, __c5, 5),
-        }),
-      ).annotate({ identifier: "Hovercard" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          gpg_key_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/gpg_keys/{gpg_key_id}", code: 200 })),
-      ).annotate({
-        identifier: "GetGpgKeyForAuthenticatedUserRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/keys/{key_id}", code: 200 })),
-      ).annotate({
-        identifier: "GetPublicSshKeyForAuthenticatedUserRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ssh_signing_key_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/user/ssh_signing_keys/{ssh_signing_key_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetSshSigningKeyForAuthenticatedUserRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          since: S.optional(S.Number.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
-      ).annotate({ identifier: "ListRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          login: S.String,
-          id: S.Number,
-          node_id: S.String,
-          avatar_url: S.String,
-          gravatar_id: S.NullOr(S.String),
-          url: S.String,
-          html_url: S.String,
-          followers_url: S.String,
-          following_url: S.String,
-          gists_url: S.String,
-          starred_url: S.String,
-          subscriptions_url: S.String,
-          organizations_url: S.String,
-          repos_url: S.String,
-          events_url: S.String,
-          received_events_url: S.String,
-          type: S.String,
-          site_admin: S.Boolean,
-          starred_at: S.optional(S.String),
-          user_view_type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SimpleUser" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() => __S(52, __c6, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          subject_digest: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          predicate_type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/attestations/{subject_digest}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListAttestationsRequest" });
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mediaType: S.optional(S.String),
-          verificationMaterial: S.optional(__S(55, __c6, 7)),
-          dsseEnvelope: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "ListAttestationsResponseAttestationsItemBundle",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          bundle: S.optional(__S(57, __c7, 1)),
-          repository_id: S.optional(S.Number),
-          bundle_url: S.optional(S.String),
-          initiator: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListAttestationsResponseAttestationsItem",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          attestations: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "ListAttestationsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          subject_digests: __S(0, __c0, 0),
-          predicate_type: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/users/{username}/attestations/bulk-list", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListAttestationsBulkRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mediaType: S.optional(S.String),
-          verificationMaterial: S.optional(__S(55, __c6, 7)),
-          dsseEnvelope: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({
-        identifier: "ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bundle: S.optional(__S(62, __c7, 6)),
-          repository_id: S.optional(S.Number),
-          bundle_url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(64, __c8, 0)));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          has_next: S.optional(S.Boolean),
-          has_previous: S.optional(S.Boolean),
-          next: S.optional(S.String),
-          previous: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListAttestationsBulkResponsePageInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          attestations_subject_digests: S.optional(__S(65, __c8, 1)),
-          page_info: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({
-        identifier: "ListAttestationsBulkResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/blocks", code: 200 })),
-      ).annotate({
-        identifier: "ListBlockedByAuthenticatedUserRequest",
-      });
-    case 5:
-      return S.suspend(() => __S(52, __c6, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListBlockedByAuthenticatedUserResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/emails", code: 200 })),
-      ).annotate({
-        identifier: "ListEmailsForAuthenticatedUserRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/following", code: 200 })),
-      ).annotate({
-        identifier: "ListFollowedByAuthenticatedUserRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/followers", code: 200 })),
-      ).annotate({
-        identifier: "ListFollowersForAuthenticatedUserRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/followers", code: 200 })),
-      ).annotate({
-        identifier: "ListFollowersForUserRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/following", code: 200 })),
-      ).annotate({
-        identifier: "ListFollowingForUserRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/gpg_keys", code: 200 })),
-      ).annotate({
-        identifier: "ListGpgKeysForAuthenticatedUserRequest",
-      });
-    case 4:
-      return S.Array(__S(21, __c2, 5));
-    case 5:
-      return S.suspend(() => __S(76, __c9, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListGpgKeysForAuthenticatedUserResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/gpg_keys", code: 200 })),
-      ).annotate({
-        identifier: "ListGpgKeysForUserRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/public_emails", code: 200 })),
-      ).annotate({
-        identifier: "ListPublicEmailsForAuthenticatedUserRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/keys", code: 200 })),
-      ).annotate({
-        identifier: "ListPublicKeysForUserRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          key: S.String,
-          created_at: S.optional(S.String),
-          last_used: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "KeySimple" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() => __S(82, __c10, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicKeysForUserResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/keys", code: 200 })),
-      ).annotate({
-        identifier: "ListPublicSshKeysForAuthenticatedUserRequest",
-      });
-    case 5:
-      return S.Array(__S(23, __c2, 7));
-    case 6:
-      return S.suspend(() => __S(85, __c10, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicSshKeysForAuthenticatedUserResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/social_accounts", code: 200 })),
-      ).annotate({
-        identifier: "ListSocialAccountsForAuthenticatedUserRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/social_accounts", code: 200 })),
-      ).annotate({
-        identifier: "ListSocialAccountsForUserRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/ssh_signing_keys", code: 200 })),
-      ).annotate({
-        identifier: "ListSshSigningKeysForAuthenticatedUserRequest",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() => __S(90, __c11, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListSshSigningKeysForAuthenticatedUserResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/ssh_signing_keys", code: 200 })),
-      ).annotate({
-        identifier: "ListSshSigningKeysForUserRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          visibility: S.String,
-        }).pipe(T.Http({ method: "PATCH", uri: "/user/email/visibility", code: 200 })),
-      ).annotate({
-        identifier: "SetPrimaryEmailVisibilityForAuthenticatedUserRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/user/blocks/{username}", code: 200 })),
-      ).annotate({ identifier: "UnblockRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/user/following/{username}", code: 200 })),
-      ).annotate({ identifier: "UnfollowRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2274,7 +2338,138 @@ function __c12(j: number): any {
       });
   }
 }
-
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PUT", uri: "/user/blocks/{username}", code: 200 })),
+      ).annotate({ identifier: "BlockRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BlockResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/blocks/{username}", code: 200 })),
+      ).annotate({ identifier: "CheckBlockedRequest" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          target_user: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/users/{username}/following/{target_user}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CheckFollowingForUserRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/following/{username}", code: 200 })),
+      ).annotate({
+        identifier: "CheckPersonIsFollowedByAuthenticatedRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CheckPersonIsFollowedByAuthenticatedResponse",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          armored_public_key: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/user/gpg_keys", code: 200 })),
+      ).annotate({
+        identifier: "CreateGpgKeyForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          verified: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GpgKeyEmailsItem" });
+    case 1:
+      return S.Array(__S(472, __c59, 0));
+    case 2:
+      return S.Array(S.Unknown);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          primary_key_id: S.optional(S.Number),
+          key_id: S.optional(S.String),
+          public_key: S.optional(S.String),
+          emails: S.optional(__S(473, __c59, 1)),
+          subkeys: S.optional(__S(474, __c59, 2)),
+          can_sign: S.optional(S.Boolean),
+          can_encrypt_comms: S.optional(S.Boolean),
+          can_encrypt_storage: S.optional(S.Boolean),
+          can_certify: S.optional(S.Boolean),
+          created_at: S.optional(S.String),
+          expires_at: S.optional(S.NullOr(S.String)),
+          raw_key: S.optional(S.NullOr(S.String)),
+          revoked: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GpgKeySubkeysItem" });
+    case 4:
+      return S.Array(__S(475, __c59, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.optional(S.NullOr(S.String)),
+          primary_key_id: S.NullOr(S.Number),
+          key_id: S.String,
+          public_key: S.String,
+          emails: __S(473, __c59, 1),
+          subkeys: __S(476, __c59, 4),
+          can_sign: S.Boolean,
+          can_encrypt_comms: S.Boolean,
+          can_encrypt_storage: S.Boolean,
+          can_certify: S.Boolean,
+          created_at: S.String,
+          expires_at: S.NullOr(S.String),
+          revoked: S.Boolean,
+          raw_key: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "GpgKey" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1664,7 +1664,7 @@ export const createView: API.OperationMethod<
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(5, __c0, 5) as any as S.Schema<CreateViewRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateViewResponse>,
+  output: __S(6, __c0, 6) as any as S.Schema<CreateViewResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1678,8 +1678,8 @@ export const createViewQuery: API.OperationMethod<
   CreateViewQueryError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateViewQueryRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ViewQueryResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateViewQueryRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ViewQueryResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1693,8 +1693,8 @@ export const deleteView: API.OperationMethod<
   DeleteViewError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteViewRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PartialDataSourceViewObjectResponse>,
+  input: __S(26, __c3, 2) as any as S.Schema<DeleteViewRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<PartialDataSourceViewObjectResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1708,8 +1708,8 @@ export const deleteViewQuery: API.OperationMethod<
   DeleteViewQueryError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteViewQueryRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeletedViewQueryResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteViewQueryRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<DeletedViewQueryResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1723,8 +1723,8 @@ export const getView: API.OperationMethod<
   GetViewError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetViewRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetViewResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetViewRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetViewResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1740,8 +1740,8 @@ export const getViewQueryResults: API.PaginatedOperationMethod<
   PartialPageObjectResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(20, __c2, 4) as any as S.Schema<GetViewQueryResultsRequest>,
-    output: __S(23, __c2, 7) as any as S.Schema<GetViewQueryResultsResponse>,
+    input: __S(48, __c6, 0) as any as S.Schema<GetViewQueryResultsRequest>,
+    output: __S(49, __c6, 1) as any as S.Schema<GetViewQueryResultsResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -1765,8 +1765,8 @@ export const listViews: API.PaginatedOperationMethod<
   DataSourceViewReferenceResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(24, __c3, 0) as any as S.Schema<ListViewsRequest>,
-    output: __S(25, __c3, 1) as any as S.Schema<ListViewsResponse>,
+    input: __S(64, __c8, 0) as any as S.Schema<ListViewsRequest>,
+    output: __S(65, __c8, 1) as any as S.Schema<ListViewsResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -1788,8 +1788,8 @@ export const updateView: API.OperationMethod<
   UpdateViewError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<UpdateViewRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<UpdateViewResponse>,
+  input: __S(75, __c9, 3) as any as S.Schema<UpdateViewRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<UpdateViewResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1847,22 +1847,8 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/v1/views", code: 200 })),
       ).annotate({ identifier: "CreateViewRequest" });
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          database_id: S.String,
-        }),
-      ).annotate({ identifier: "DatabaseParentResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          parent: __S(6, __c0, 6),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "PartialDataSourceViewObjectResponse",
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateViewResponse",
       });
   }
 }
@@ -1871,38 +1857,20 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          property: S.String,
-          direction: S.String,
-        }),
-      ).annotate({ identifier: "PropertySortResponse" });
-    case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateViewResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           view_id: S.String.pipe(T.Label()),
           page_size: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/v1/views/{view_id}/queries", code: 200 })),
       ).annotate({ identifier: "CreateViewQueryRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           id: S.String,
         }),
       ).annotate({ identifier: "PageReferenceResponse" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          incomplete_reason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RequestStatusResponse" });
-    case 6:
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -1910,13 +1878,46 @@ function __c1(j: number): any {
           view_id: S.String,
           expires_at: S.String,
           total_count: S.Number,
-          results: __S(12, __c1, 4),
+          results: __S(10, __c1, 2),
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          request_status: S.optional(__S(13, __c1, 5)),
+          request_status: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "ViewQueryResponse" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          incomplete_reason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RequestStatusResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          database_id: S.String,
+        }),
+      ).annotate({ identifier: "DatabaseParentResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          parent: __S(24, __c3, 0),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "PartialDataSourceViewObjectResponse",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           view_id: S.String.pipe(T.Label()),
@@ -1924,7 +1925,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DeleteViewRequest" });
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1943,17 +1944,25 @@ function __c2(j: number): any {
           deleted: S.Boolean,
         }),
       ).annotate({ identifier: "DeletedViewQueryResponse" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/views/{view_id}", code: 200 })),
       ).annotate({ identifier: "GetViewRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetViewResponse",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view_id: S.String.pipe(T.Label()),
@@ -1966,7 +1975,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetViewQueryResultsRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          next_cursor: S.NullOr(S.String),
+          has_more: S.Boolean,
+          results: __S(57, __c7, 1),
+          type: S.String,
+          page: S.Unknown,
+          request_status: S.optional(__S(16, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GetViewQueryResultsResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -1975,25 +2002,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PartialPageObjectResponse",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          next_cursor: S.NullOr(S.String),
-          has_more: S.Boolean,
-          results: __S(22, __c2, 6),
-          type: S.String,
-          page: S.Unknown,
-          request_status: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "GetViewQueryResultsResponse",
-      });
+    case 1:
+      return S.Array(__S(56, __c7, 0));
   }
 }
-function __c3(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2010,34 +2023,44 @@ function __c3(j: number): any {
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: __S(22, __c2, 6),
+          results: __S(57, __c7, 1),
           type: S.String,
           view: S.Unknown,
-          request_status: S.optional(__S(13, __c1, 5)),
+          request_status: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "ListViewsResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          property: S.String,
+          direction: S.String,
+        }),
+      ).annotate({ identifier: "PropertySortResponse" });
+    case 1:
+      return S.Array(__S(72, __c9, 0));
     case 2:
-      return S.Array(__S(8, __c1, 0));
-    case 3:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           view_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           filter: S.optional(S.NullOr(S.Unknown)),
-          sorts: S.optional(S.NullOr(__S(26, __c3, 2))),
-          quick_filters: S.optional(S.NullOr(__S(27, __c3, 3))),
+          sorts: S.optional(S.NullOr(__S(73, __c9, 1))),
+          quick_filters: S.optional(S.NullOr(__S(74, __c9, 2))),
           configuration: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/views/{view_id}", code: 200 })),
       ).annotate({ identifier: "UpdateViewRequest" });
-    case 5:
+    case 4:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateViewResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

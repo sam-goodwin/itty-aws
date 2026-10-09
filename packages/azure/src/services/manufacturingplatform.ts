@@ -678,8 +678,8 @@ export const GetManufacturingDataService: API.OperationMethod<
   GetManufacturingDataServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetManufacturingDataServiceRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetManufacturingDataServiceResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetManufacturingDataServiceRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<GetManufacturingDataServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -693,8 +693,8 @@ export const ListManufacturingDataServiceAvailableVersions: API.OperationMethod<
   ListManufacturingDataServiceAvailableVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListManufacturingDataServiceAvailableVersionsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<AvailableVersionListResult>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListManufacturingDataServiceAvailableVersionsRequest>,
+  output: __S(131, __c4, 3) as any as S.Schema<AvailableVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -708,8 +708,8 @@ export const ListManufacturingDataServiceByResourceGroup: API.OperationMethod<
   ListManufacturingDataServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListManufacturingDataServiceByResourceGroupRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<MdsResourceListResult>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListManufacturingDataServiceByResourceGroupRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<MdsResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -723,8 +723,8 @@ export const ListManufacturingDataServiceBySubscription: API.OperationMethod<
   ListManufacturingDataServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListManufacturingDataServiceBySubscriptionRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<MdsResourceListResult>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListManufacturingDataServiceBySubscriptionRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<MdsResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -738,8 +738,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(260, __c8, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -753,8 +753,8 @@ export const ManufacturingDataServicesCreateOrUpdate: API.OperationMethod<
   ManufacturingDataServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ManufacturingDataServicesCreateOrUpdateRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ManufacturingDataServicesCreateOrUpdateResponse>,
+  input: __S(292, __c9, 4) as any as S.Schema<ManufacturingDataServicesCreateOrUpdateRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<ManufacturingDataServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -768,8 +768,8 @@ export const UpdateManufacturingDataService: API.OperationMethod<
   UpdateManufacturingDataServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<UpdateManufacturingDataServiceRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UpdateManufacturingDataServiceResponse>,
+  input: __S(358, __c11, 6) as any as S.Schema<UpdateManufacturingDataServiceRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<UpdateManufacturingDataServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -799,7 +799,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteManufacturingDataServiceResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -816,7 +820,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetManufacturingDataServiceRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -827,21 +835,21 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 4:
+    case 1:
       return S.Record(S.String, S.String);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "AksProfile" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           cosmosId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseProfile" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -849,18 +857,14 @@ function __c0(j: number): any {
           dataIngestionUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdxProfile" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           adxInstanceId: S.optional(S.String),
           hostName: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventHubProfile" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -874,7 +878,7 @@ function __c1(j: number): any {
           embeddingModelCapacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OpenAIProfile" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -883,29 +887,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ManagedResourceGroupConfiguration",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
         }),
       ).annotate({ identifier: "MoboBrokerResource" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 9:
+      return S.Array(__S(72, __c2, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          moboBrokerResources: __S(12, __c1, 4),
+          moboBrokerResources: __S(73, __c2, 9),
         }),
       ).annotate({
         identifier: "ManagedOnBehalfOfConfiguration",
       });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           keyUri: S.String,
         }),
       ).annotate({ identifier: "CmkProfile" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           keyUri: S.String,
@@ -913,11 +917,7 @@ function __c1(j: number): any {
           oneLakePath: S.String,
         }),
       ).annotate({ identifier: "FabricProfile" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -926,16 +926,16 @@ function __c2(j: number): any {
           embeddingModelType: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserManagedOpenAIProfile" });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           type: S.String,
         }),
       ).annotate({ identifier: "DenyAssignmentExclusion" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 15:
+      return S.Array(__S(78, __c2, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -945,46 +945,46 @@ function __c2(j: number): any {
           aadApplicationId: S.String,
           aksAdminGroupId: S.optional(S.String),
           serviceUrl: S.optional(S.String),
-          aksProfile: S.optional(__S(5, __c0, 5)),
-          storageProfile: S.optional(__S(5, __c0, 5)),
-          databaseProfile: S.optional(__S(6, __c0, 6)),
-          adxProfile: S.optional(__S(7, __c0, 7)),
-          redisProfile: S.optional(__S(5, __c0, 5)),
-          monitoringProfile: S.optional(__S(5, __c0, 5)),
-          eventHubProfile: S.optional(__S(8, __c1, 0)),
-          functionAppProfile: S.optional(__S(5, __c0, 5)),
-          openAIProfile: S.optional(__S(9, __c1, 1)),
-          managedResourceGroupConfiguration: S.optional(__S(10, __c1, 2)),
-          managedOnBehalfOfConfiguration: S.optional(__S(13, __c1, 5)),
-          cmkProfile: S.optional(__S(14, __c1, 6)),
-          fabricProfile: S.optional(__S(15, __c1, 7)),
-          userManagedOpenAIProfile: S.optional(__S(16, __c2, 0)),
-          denyAssignmentExclusions: S.optional(__S(18, __c2, 2)),
+          aksProfile: S.optional(__S(66, __c2, 2)),
+          storageProfile: S.optional(__S(66, __c2, 2)),
+          databaseProfile: S.optional(__S(67, __c2, 3)),
+          adxProfile: S.optional(__S(68, __c2, 4)),
+          redisProfile: S.optional(__S(66, __c2, 2)),
+          monitoringProfile: S.optional(__S(66, __c2, 2)),
+          eventHubProfile: S.optional(__S(69, __c2, 5)),
+          functionAppProfile: S.optional(__S(66, __c2, 2)),
+          openAIProfile: S.optional(__S(70, __c2, 6)),
+          managedResourceGroupConfiguration: S.optional(__S(71, __c2, 7)),
+          managedOnBehalfOfConfiguration: S.optional(__S(74, __c2, 10)),
+          cmkProfile: S.optional(__S(75, __c2, 11)),
+          fabricProfile: S.optional(__S(76, __c2, 12)),
+          userManagedOpenAIProfile: S.optional(__S(77, __c2, 13)),
+          denyAssignmentExclusions: S.optional(__S(79, __c2, 15)),
           resourceState: S.optional(S.String),
           redundancyState: S.optional(S.String),
         }),
       ).annotate({ identifier: "MdsResourceProperties" });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(20, __c2, 4)));
-    case 6:
+    case 18:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(81, __c2, 17)));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(21, __c2, 5)),
+          userAssignedIdentities: S.optional(__S(82, __c2, 18)),
         }),
       ).annotate({
         identifier: "GetManufacturingDataServiceResponseIdentity",
       });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -1006,17 +1006,21 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(65, __c2, 1)),
           location: S.String,
-          properties: S.optional(__S(19, __c2, 3)),
-          identity: S.optional(__S(22, __c2, 6)),
-          sku: S.optional(__S(23, __c2, 7)),
+          properties: S.optional(__S(80, __c2, 16)),
+          identity: S.optional(__S(83, __c2, 19)),
+          sku: S.optional(__S(84, __c2, 20)),
         }),
       ).annotate({
         identifier: "GetManufacturingDataServiceResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1033,7 +1037,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListManufacturingDataServiceAvailableVersionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.String,
@@ -1042,17 +1046,21 @@ function __c3(j: number): any {
           isDeprecated: S.Boolean,
         }),
       ).annotate({ identifier: "ApplicationVersion" });
+    case 2:
+      return S.Array(__S(129, __c4, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          versions: __S(27, __c3, 3),
+          versions: __S(130, __c4, 2),
         }),
       ).annotate({
         identifier: "AvailableVersionListResult",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1068,34 +1076,38 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListManufacturingDataServiceByResourceGroupRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(65, __c2, 1)),
           location: S.String,
-          properties: S.optional(__S(19, __c2, 3)),
-          identity: S.optional(__S(22, __c2, 6)),
-          sku: S.optional(__S(23, __c2, 7)),
+          properties: S.optional(__S(80, __c2, 16)),
+          identity: S.optional(__S(83, __c2, 19)),
+          sku: S.optional(__S(84, __c2, 20)),
         }),
       ).annotate({ identifier: "MdsResource" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(31, __c3, 7),
+          value: __S(193, __c6, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MdsResourceListResult" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1110,7 +1122,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListManufacturingDataServiceBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1121,7 +1137,7 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -1130,41 +1146,28 @@ function __c4(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(35, __c4, 3)),
+          display: S.optional(__S(257, __c8, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(37, __c4, 5)),
+          value: S.optional(__S(259, __c8, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          gptModelName: S.optional(S.String),
-          gptModelVersion: S.optional(S.String),
-          gptModelCapacity: S.optional(S.Number),
-          gptModelSkuName: S.optional(S.String),
-          embeddingModelName: S.optional(S.String),
-          embeddingModelVersion: S.optional(S.String),
-          embeddingModelSkuName: S.optional(S.String),
-          embeddingModelCapacity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "OpenAIProfileInput" });
   }
 }
-function __c5(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1184,11 +1187,11 @@ function __c5(j: number): any {
           enableDiagnosticSettings: S.optional(S.Boolean),
           aadApplicationId: S.String,
           aksAdminGroupId: S.optional(S.String),
-          openAIProfile: S.optional(__S(39, __c4, 7)),
-          cmkProfile: S.optional(__S(14, __c1, 6)),
-          fabricProfile: S.optional(__S(15, __c1, 7)),
-          userManagedOpenAIProfile: S.optional(__S(40, __c5, 0)),
-          denyAssignmentExclusions: S.optional(__S(18, __c2, 2)),
+          openAIProfile: S.optional(__S(320, __c10, 0)),
+          cmkProfile: S.optional(__S(75, __c2, 11)),
+          fabricProfile: S.optional(__S(76, __c2, 12)),
+          userManagedOpenAIProfile: S.optional(__S(288, __c9, 0)),
+          denyAssignmentExclusions: S.optional(__S(79, __c2, 15)),
           resourceState: S.optional(S.String),
           redundancyState: S.optional(S.String),
         }),
@@ -1196,31 +1199,27 @@ function __c5(j: number): any {
         identifier: "MdsResourcePropertiesInput",
       });
     case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(321, __c10, 1)));
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(42, __c5, 2)));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(43, __c5, 3)),
+          userAssignedIdentities: S.optional(__S(290, __c9, 2)),
         }),
       ).annotate({
         identifier: "ManufacturingDataServicesCreateOrUpdateRequestIdentity",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           mdsResourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(65, __c2, 1)),
           location: S.String,
-          properties: S.optional(__S(41, __c5, 1)),
-          identity: S.optional(__S(44, __c5, 4)),
-          sku: S.optional(__S(23, __c2, 7)),
+          properties: S.optional(__S(289, __c9, 1)),
+          identity: S.optional(__S(291, __c9, 3)),
+          sku: S.optional(__S(84, __c2, 20)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1232,22 +1231,43 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ManufacturingDataServicesCreateOrUpdateRequest",
       });
-    case 6:
-      return S.Record(S.String, __S(42, __c5, 2));
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gptModelName: S.optional(S.String),
+          gptModelVersion: S.optional(S.String),
+          gptModelCapacity: S.optional(S.Number),
+          gptModelSkuName: S.optional(S.String),
+          embeddingModelName: S.optional(S.String),
+          embeddingModelVersion: S.optional(S.String),
+          embeddingModelSkuName: S.optional(S.String),
+          embeddingModelCapacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "OpenAIProfileInput" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(321, __c10, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(46, __c5, 6)),
+          userAssignedIdentities: S.optional(__S(352, __c11, 0)),
         }),
       ).annotate({
         identifier: "AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1259,7 +1279,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "AzureResourceManagerCommonTypesSkuUpdate",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           keyUri: S.optional(S.String),
@@ -1267,7 +1287,7 @@ function __c6(j: number): any {
           oneLakePath: S.optional(S.String),
         }),
       ).annotate({ identifier: "FabricProfileUpdate" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1277,31 +1297,31 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UserManagedOpenAIProfileUpdate",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
           enableCopilot: S.optional(S.Boolean),
           enableDiagnosticSettings: S.optional(S.Boolean),
-          openAIProfile: S.optional(__S(39, __c4, 7)),
-          fabricProfile: S.optional(__S(49, __c6, 1)),
-          userManagedOpenAIProfile: S.optional(__S(50, __c6, 2)),
-          denyAssignmentExclusions: S.optional(__S(18, __c2, 2)),
+          openAIProfile: S.optional(__S(320, __c10, 0)),
+          fabricProfile: S.optional(__S(355, __c11, 3)),
+          userManagedOpenAIProfile: S.optional(__S(356, __c11, 4)),
+          denyAssignmentExclusions: S.optional(__S(79, __c2, 15)),
           resourceState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MdsResourceUpdatePropertiesInput",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           mdsResourceName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(47, __c5, 7)),
-          sku: S.optional(__S(48, __c6, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(51, __c6, 3)),
+          identity: S.optional(__S(353, __c11, 1)),
+          sku: S.optional(__S(354, __c11, 2)),
+          tags: S.optional(__S(65, __c2, 1)),
+          properties: S.optional(__S(357, __c11, 5)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1315,7 +1335,6 @@ function __c6(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

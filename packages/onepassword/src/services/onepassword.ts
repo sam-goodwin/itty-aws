@@ -633,8 +633,8 @@ export const createVaultItem: API.OperationMethod<
   CreateVaultItemError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateVaultItemRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateVaultItemResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateVaultItemRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<CreateVaultItemResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -648,8 +648,8 @@ export const deleteVaultItem: API.OperationMethod<
   DeleteVaultItemError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteVaultItemRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteVaultItemResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteVaultItemRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteVaultItemResponse>,
   errors: [Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -663,8 +663,8 @@ export const downloadFileByID: API.OperationMethod<
   DownloadFileByIDError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DownloadFileByIDRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DownloadFileByIDResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DownloadFileByIDRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DownloadFileByIDResponse>,
   errors: [NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -678,8 +678,8 @@ export const getApiActivity: API.OperationMethod<
   GetApiActivityError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetApiActivityRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetApiActivityResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetApiActivityRequest>,
+  output: __S(157, __c19, 5) as any as S.Schema<GetApiActivityResponse>,
   errors: [UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -693,8 +693,8 @@ export const getDetailsOfFileById: API.OperationMethod<
   GetDetailsOfFileByIdError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetDetailsOfFileByIdRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<File>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetDetailsOfFileByIdRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<File>,
   errors: [Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -708,8 +708,8 @@ export const getHeartbeat: API.OperationMethod<
   GetHeartbeatError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetHeartbeatRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetHeartbeatResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetHeartbeatRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetHeartbeatResponse>,
   errors: [UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -723,8 +723,8 @@ export const getItemFiles: API.OperationMethod<
   GetItemFilesError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetItemFilesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetItemFilesResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetItemFilesRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<GetItemFilesResponse>,
   errors: [NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -738,8 +738,8 @@ export const getPrometheusMetrics: API.OperationMethod<
   GetPrometheusMetricsError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetPrometheusMetricsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetPrometheusMetricsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetPrometheusMetricsRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetPrometheusMetricsResponse>,
   errors: [UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -753,8 +753,8 @@ export const getServerHealth: API.OperationMethod<
   GetServerHealthError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetServerHealthRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetServerHealthResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetServerHealthRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GetServerHealthResponse>,
   errors: [UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -768,8 +768,8 @@ export const getVaultById: API.OperationMethod<
   GetVaultByIdError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetVaultByIdRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<Vault>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetVaultByIdRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<Vault>,
   errors: [Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -783,8 +783,8 @@ export const getVaultItemById: API.OperationMethod<
   GetVaultItemByIdError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetVaultItemByIdRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetVaultItemByIdResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetVaultItemByIdRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<GetVaultItemByIdResponse>,
   errors: [Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -798,8 +798,8 @@ export const getVaultItems: API.OperationMethod<
   GetVaultItemsError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetVaultItemsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetVaultItemsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetVaultItemsRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<GetVaultItemsResponse>,
   errors: [NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -813,8 +813,8 @@ export const getVaults: API.OperationMethod<
   GetVaultsError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetVaultsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetVaultsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetVaultsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<GetVaultsResponse>,
   errors: [UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -828,8 +828,8 @@ export const updateVaultItem: API.OperationMethod<
   UpdateVaultItemError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<UpdateVaultItemRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<UpdateVaultItemResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateVaultItemRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<UpdateVaultItemResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -843,8 +843,8 @@ export const updateVaultItemByItemUuid: API.OperationMethod<
   UpdateVaultItemByItemUuidError,
   OnepasswordOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<UpdateVaultItemByItemUuidRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateVaultItemByItemUuidResponse>,
+  input: __S(66, __c8, 2) as any as S.Schema<UpdateVaultItemByItemUuidRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<UpdateVaultItemByItemUuidResponse>,
   errors: [Forbidden, NotFound, UnknownOnepasswordError],
   protocol: OnepasswordProtocol,
   retry: Retry.Retry,
@@ -852,6 +852,284 @@ export const updateVaultItemByItemUuid: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/metrics", code: 200 })),
+      ).annotate({
+        identifier: "GetPrometheusMetricsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
+      ).annotate({ identifier: "GetServerHealthRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          status: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceDependency" });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          version: S.String,
+          dependencies: S.optional(__S(10, __c1, 2)),
+        }),
+      ).annotate({ identifier: "GetServerHealthResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vaultUuid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/vaults/{vaultUuid}", code: 200 })),
+      ).annotate({ identifier: "GetVaultByIdRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          attributeVersion: S.optional(S.Number),
+          contentVersion: S.optional(S.Number),
+          items: S.optional(S.Number),
+          type: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Vault" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vaultUuid: S.String.pipe(T.Label()),
+          itemUuid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/vaults/{vaultUuid}/items/{itemUuid}", code: 200 })),
+      ).annotate({ identifier: "GetVaultItemByIdRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          title: S.optional(S.String),
+          vault: __S(80, __c10, 0),
+          category: S.String,
+          urls: S.optional(__S(82, __c10, 2)),
+          favorite: S.optional(S.Boolean),
+          tags: S.optional(__S(88, __c11, 0)),
+          version: S.optional(S.Number),
+          state: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+          lastEditedBy: S.optional(S.String),
+          sections: S.optional(__S(90, __c11, 2)),
+          fields: S.optional(__S(94, __c11, 6)),
+          files: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({ identifier: "GetVaultItemByIdResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vaultUuid: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/vaults/{vaultUuid}/items", code: 200 })),
+      ).annotate({ identifier: "GetVaultItemsRequest" });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          title: S.optional(S.String),
+          vault: __S(80, __c10, 0),
+          category: S.String,
+          urls: S.optional(__S(82, __c10, 2)),
+          favorite: S.optional(S.Boolean),
+          tags: S.optional(__S(41, __c5, 1)),
+          version: S.optional(S.Number),
+          state: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+          lastEditedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Item" });
+    case 3:
+      return S.Array(__S(42, __c5, 2));
+    case 4:
+      return S.suspend(() => __S(43, __c5, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetVaultItemsResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/vaults", code: 200 })),
+      ).annotate({ identifier: "GetVaultsRequest" });
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+    case 2:
+      return S.suspend(() => __S(49, __c6, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetVaultsResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vaultUuid: S.String.pipe(T.Label()),
+          itemUuid: S.String.pipe(T.Label()),
+          id: S.optional(S.String),
+          title: S.optional(S.String),
+          vault: __S(80, __c10, 0),
+          category: S.String,
+          urls: S.optional(__S(82, __c10, 2)),
+          favorite: S.optional(S.Boolean),
+          tags: S.optional(__S(88, __c11, 0)),
+          version: S.optional(S.Number),
+          sections: S.optional(__S(90, __c11, 2)),
+          fields: S.optional(__S(97, __c12, 1)),
+          files: S.optional(__S(99, __c12, 3)),
+        }).pipe(T.Http({ method: "PUT", uri: "/vaults/{vaultUuid}/items/{itemUuid}", code: 200 })),
+      ).annotate({ identifier: "UpdateVaultItemRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          title: S.optional(S.String),
+          vault: __S(80, __c10, 0),
+          category: S.String,
+          urls: S.optional(__S(82, __c10, 2)),
+          favorite: S.optional(S.Boolean),
+          tags: S.optional(__S(88, __c11, 0)),
+          version: S.optional(S.Number),
+          state: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+          lastEditedBy: S.optional(S.String),
+          sections: S.optional(__S(90, __c11, 2)),
+          fields: S.optional(__S(94, __c11, 6)),
+          files: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({ identifier: "UpdateVaultItemResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          op: S.String,
+          path: S.String,
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "PatchItem" });
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          vaultUuid: S.String.pipe(T.Label()),
+          itemUuid: S.String.pipe(T.Label()),
+          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/vaults/{vaultUuid}/items/{itemUuid}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateVaultItemByItemUuidRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          title: S.optional(S.String),
+          vault: __S(80, __c10, 0),
+          category: S.String,
+          urls: S.optional(__S(82, __c10, 2)),
+          favorite: S.optional(S.Boolean),
+          tags: S.optional(__S(88, __c11, 0)),
+          version: S.optional(S.Number),
+          state: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+          lastEditedBy: S.optional(S.String),
+          sections: S.optional(__S(90, __c11, 2)),
+          fields: S.optional(__S(94, __c11, 6)),
+          files: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateVaultItemByItemUuidResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vaultUuid: S.String.pipe(T.Label()),
+          id: S.optional(S.String),
+          title: S.optional(S.String),
+          vault: __S(80, __c10, 0),
+          category: S.String,
+          urls: S.optional(__S(82, __c10, 2)),
+          favorite: S.optional(S.Boolean),
+          tags: S.optional(__S(88, __c11, 0)),
+          version: S.optional(S.Number),
+          sections: S.optional(__S(90, __c11, 2)),
+          fields: S.optional(__S(97, __c12, 1)),
+          files: S.optional(__S(99, __c12, 3)),
+        }).pipe(T.Http({ method: "POST", uri: "/vaults/{vaultUuid}/items", code: 200 })),
+      ).annotate({ identifier: "CreateVaultItemRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          title: S.optional(S.String),
+          vault: __S(80, __c10, 0),
+          category: S.String,
+          urls: S.optional(__S(82, __c10, 2)),
+          favorite: S.optional(S.Boolean),
+          tags: S.optional(__S(88, __c11, 0)),
+          version: S.optional(S.Number),
+          state: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+          lastEditedBy: S.optional(S.String),
+          sections: S.optional(__S(90, __c11, 2)),
+          fields: S.optional(__S(94, __c11, 6)),
+          files: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({ identifier: "CreateVaultItemResponse" });
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -872,10 +1150,14 @@ function __c0(j: number): any {
         identifier: "CreateVaultItemRequestUrlsItem",
       });
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
+      return S.Array(__S(81, __c10, 1));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -884,91 +1166,78 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateVaultItemRequestSectionsItem",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FieldInputSection" });
-    case 7:
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
       return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           length: S.optional(S.Number),
-          characterSets: S.optional(__S(7, __c0, 7)),
+          characterSets: S.optional(__S(91, __c11, 3)),
           excludeCharacters: S.optional(S.String),
         }),
       ).annotate({ identifier: "GeneratorRecipe" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          section: S.optional(__S(6, __c0, 6)),
+          section: S.optional(__S(104, __c13, 0)),
           type: S.String,
           purpose: S.optional(S.String),
           label: S.optional(S.String),
           value: S.optional(S.String),
           generate: S.optional(S.Boolean),
-          recipe: S.optional(__S(8, __c1, 0)),
+          recipe: S.optional(__S(92, __c11, 4)),
+          entropy: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Field" });
+    case 6:
+      return S.Array(__S(93, __c11, 5));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          section: S.optional(__S(104, __c13, 0)),
+          type: S.String,
+          purpose: S.optional(S.String),
+          label: S.optional(S.String),
+          value: S.optional(S.String),
+          generate: S.optional(S.Boolean),
+          recipe: S.optional(__S(92, __c11, 4)),
         }),
       ).annotate({ identifier: "FieldInput" });
+    case 1:
+      return S.Array(__S(96, __c12, 0));
     case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           size: S.optional(S.Number),
-          section: S.optional(__S(6, __c0, 6)),
+          section: S.optional(__S(104, __c13, 0)),
           content: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileInput" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          vaultUuid: S.String.pipe(T.Label()),
-          id: S.optional(S.String),
-          title: S.optional(S.String),
-          vault: __S(0, __c0, 0),
-          category: S.String,
-          urls: S.optional(__S(2, __c0, 2)),
-          favorite: S.optional(S.Boolean),
-          tags: S.optional(__S(3, __c0, 3)),
-          version: S.optional(S.Number),
-          sections: S.optional(__S(5, __c0, 5)),
-          fields: S.optional(__S(10, __c1, 2)),
-          files: S.optional(__S(12, __c1, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/vaults/{vaultUuid}/items", code: 200 })),
-      ).annotate({ identifier: "CreateVaultItemRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          section: S.optional(__S(6, __c0, 6)),
-          type: S.String,
-          purpose: S.optional(S.String),
-          label: S.optional(S.String),
-          value: S.optional(S.String),
-          generate: S.optional(S.Boolean),
-          recipe: S.optional(__S(8, __c1, 0)),
-          entropy: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Field" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
+    case 3:
+      return S.Array(__S(98, __c12, 2));
   }
 }
-function __c2(j: number): any {
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FieldInputSection" });
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -977,33 +1246,21 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           size: S.optional(S.Number),
           content_path: S.optional(S.String),
-          section: S.optional(__S(6, __c0, 6)),
+          section: S.optional(__S(104, __c13, 0)),
           content: S.optional(S.String),
         }),
       ).annotate({ identifier: "File" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          title: S.optional(S.String),
-          vault: __S(0, __c0, 0),
-          category: S.String,
-          urls: S.optional(__S(2, __c0, 2)),
-          favorite: S.optional(S.Boolean),
-          tags: S.optional(__S(3, __c0, 3)),
-          version: S.optional(S.Number),
-          state: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-          lastEditedBy: S.optional(S.String),
-          sections: S.optional(__S(5, __c0, 5)),
-          fields: S.optional(__S(15, __c1, 7)),
-          files: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "CreateVaultItemResponse" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(112, __c14, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vaultUuid: S.String.pipe(T.Label()),
@@ -1012,11 +1269,19 @@ function __c2(j: number): any {
           T.Http({ method: "DELETE", uri: "/vaults/{vaultUuid}/items/{itemUuid}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteVaultItemRequest" });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteVaultItemResponse",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vaultUuid: S.String.pipe(T.Label()),
@@ -1030,14 +1295,18 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DownloadFileByIDRequest" });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/activity", code: 200 })),
       ).annotate({ identifier: "GetApiActivityRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1047,37 +1316,37 @@ function __c2(j: number): any {
           requestIp: S.optional(S.String),
         }),
       ).annotate({ identifier: "APIRequestActor" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          vault: S.optional(__S(6, __c0, 6)),
-          item: S.optional(__S(6, __c0, 6)),
+          vault: S.optional(__S(104, __c13, 0)),
+          item: S.optional(__S(104, __c13, 0)),
           itemVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "APIRequestResource" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           timestamp: S.optional(S.String),
           action: S.optional(S.String),
           result: S.optional(S.String),
-          actor: S.optional(__S(23, __c2, 7)),
-          resource: S.optional(__S(24, __c3, 0)),
+          actor: S.optional(__S(153, __c19, 1)),
+          resource: S.optional(__S(154, __c19, 2)),
         }),
       ).annotate({ identifier: "APIRequest" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() => __S(26, __c3, 2).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(155, __c19, 3));
+    case 5:
+      return S.suspend(() => __S(156, __c19, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetApiActivityResponse",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vaultUuid: S.String.pipe(T.Label()),
@@ -1094,11 +1363,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetDetailsOfFileByIdRequest",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/heartbeat", code: 200 })),
       ).annotate({ identifier: "GetHeartbeatRequest" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vaultUuid: S.String.pipe(T.Label()),
@@ -1108,226 +1385,12 @@ function __c3(j: number): any {
           T.Http({ method: "GET", uri: "/vaults/{vaultUuid}/items/{itemUuid}/files", code: 200 }),
         ),
       ).annotate({ identifier: "GetItemFilesRequest" });
-    case 7:
-      return S.suspend(() => __S(17, __c2, 1).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(120, __c15, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetItemFilesResponse",
       });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/metrics", code: 200 })),
-      ).annotate({
-        identifier: "GetPrometheusMetricsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
-      ).annotate({ identifier: "GetServerHealthRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          status: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceDependency" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          version: S.String,
-          dependencies: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "GetServerHealthResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          vaultUuid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/vaults/{vaultUuid}", code: 200 })),
-      ).annotate({ identifier: "GetVaultByIdRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          attributeVersion: S.optional(S.Number),
-          contentVersion: S.optional(S.Number),
-          items: S.optional(S.Number),
-          type: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Vault" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          vaultUuid: S.String.pipe(T.Label()),
-          itemUuid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/vaults/{vaultUuid}/items/{itemUuid}", code: 200 })),
-      ).annotate({ identifier: "GetVaultItemByIdRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          title: S.optional(S.String),
-          vault: __S(0, __c0, 0),
-          category: S.String,
-          urls: S.optional(__S(2, __c0, 2)),
-          favorite: S.optional(S.Boolean),
-          tags: S.optional(__S(3, __c0, 3)),
-          version: S.optional(S.Number),
-          state: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-          lastEditedBy: S.optional(S.String),
-          sections: S.optional(__S(5, __c0, 5)),
-          fields: S.optional(__S(15, __c1, 7)),
-          files: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "GetVaultItemByIdResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          vaultUuid: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/vaults/{vaultUuid}/items", code: 200 })),
-      ).annotate({ identifier: "GetVaultItemsRequest" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          title: S.optional(S.String),
-          vault: __S(0, __c0, 0),
-          category: S.String,
-          urls: S.optional(__S(2, __c0, 2)),
-          favorite: S.optional(S.Boolean),
-          tags: S.optional(__S(42, __c5, 2)),
-          version: S.optional(S.Number),
-          state: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-          lastEditedBy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Item" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() => __S(44, __c5, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetVaultItemsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/vaults", code: 200 })),
-      ).annotate({ identifier: "GetVaultsRequest" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(47, __c5, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetVaultsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          vaultUuid: S.String.pipe(T.Label()),
-          itemUuid: S.String.pipe(T.Label()),
-          id: S.optional(S.String),
-          title: S.optional(S.String),
-          vault: __S(0, __c0, 0),
-          category: S.String,
-          urls: S.optional(__S(2, __c0, 2)),
-          favorite: S.optional(S.Boolean),
-          tags: S.optional(__S(3, __c0, 3)),
-          version: S.optional(S.Number),
-          sections: S.optional(__S(5, __c0, 5)),
-          fields: S.optional(__S(10, __c1, 2)),
-          files: S.optional(__S(12, __c1, 4)),
-        }).pipe(T.Http({ method: "PUT", uri: "/vaults/{vaultUuid}/items/{itemUuid}", code: 200 })),
-      ).annotate({ identifier: "UpdateVaultItemRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          title: S.optional(S.String),
-          vault: __S(0, __c0, 0),
-          category: S.String,
-          urls: S.optional(__S(2, __c0, 2)),
-          favorite: S.optional(S.Boolean),
-          tags: S.optional(__S(3, __c0, 3)),
-          version: S.optional(S.Number),
-          state: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-          lastEditedBy: S.optional(S.String),
-          sections: S.optional(__S(5, __c0, 5)),
-          fields: S.optional(__S(15, __c1, 7)),
-          files: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "UpdateVaultItemResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          op: S.String,
-          path: S.String,
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "PatchItem" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          vaultUuid: S.String.pipe(T.Label()),
-          itemUuid: S.String.pipe(T.Label()),
-          body: S.optional(__S(52, __c6, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/vaults/{vaultUuid}/items/{itemUuid}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateVaultItemByItemUuidRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          title: S.optional(S.String),
-          vault: __S(0, __c0, 0),
-          category: S.String,
-          urls: S.optional(__S(2, __c0, 2)),
-          favorite: S.optional(S.Boolean),
-          tags: S.optional(__S(3, __c0, 3)),
-          version: S.optional(S.Number),
-          state: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-          lastEditedBy: S.optional(S.String),
-          sections: S.optional(__S(5, __c0, 5)),
-          fields: S.optional(__S(15, __c1, 7)),
-          files: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "UpdateVaultItemByItemUuidResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

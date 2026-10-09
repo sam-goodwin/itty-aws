@@ -211,8 +211,8 @@ export const deleteReportDefinition: API.OperationMethod<
   DeleteReportDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteReportDefinitionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteReportDefinitionResult>,
+  input: __S(4, __c1, 0) as any as S.Schema<DeleteReportDefinitionRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<DeleteReportDefinitionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -239,8 +239,8 @@ export const getReportDefinition: API.OperationMethod<
   GetReportDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetReportDefinitionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetReportDefinitionResult>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetReportDefinitionRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<GetReportDefinitionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -271,8 +271,8 @@ export const importApplicationUsage: API.OperationMethod<
   ImportApplicationUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ImportApplicationUsageRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ImportApplicationUsageResult>,
+  input: __S(21, __c5, 1) as any as S.Schema<ImportApplicationUsageRequest>,
+  output: __S(22, __c5, 2) as any as S.Schema<ImportApplicationUsageResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -302,8 +302,8 @@ export const listReportDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReportDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListReportDefinitionsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ListReportDefinitionsResult>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListReportDefinitionsRequest>,
+  output: __S(27, __c6, 3) as any as S.Schema<ListReportDefinitionsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -337,8 +337,8 @@ export const putReportDefinition: API.OperationMethod<
   PutReportDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<PutReportDefinitionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutReportDefinitionResult>,
+  input: __S(28, __c7, 0) as any as S.Schema<PutReportDefinitionRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<PutReportDefinitionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -366,8 +366,8 @@ export const updateReportDefinition: API.OperationMethod<
   UpdateReportDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<UpdateReportDefinitionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateReportDefinitionResult>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateReportDefinitionRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<UpdateReportDefinitionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -384,6 +384,31 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({
+          reportId: S.String.pipe(T.HttpLabel("reportId")),
+          reportDescription: S.String,
+          reportFrequency: S.String,
+          format: S.String,
+          destinationS3Location: __S(16, __c4, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/reportDefinition/{reportId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateReportDefinitionRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ reportId: S.String.pipe(T.HttpLabel("reportId")) }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/reportDefinition/{reportId}" }),
@@ -397,11 +422,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteReportDefinitionRequest",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ reportId: S.optional(S.String) })).annotate({
         identifier: "DeleteReportDefinitionResult",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ reportId: S.String.pipe(T.HttpLabel("reportId")) }).pipe(
           T.all(
@@ -416,31 +449,39 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetReportDefinitionRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ bucket: S.String, prefix: S.String })).annotate({
-        identifier: "S3Location",
-      });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           reportId: S.String,
           reportDescription: S.String,
           reportFrequency: S.String,
           format: S.String,
-          destinationS3Location: __S(3, __c0, 3),
+          destinationS3Location: __S(16, __c4, 0),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastUpdated: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({
         identifier: "GetReportDefinitionResult",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ bucket: S.String, prefix: S.String })).annotate({
+        identifier: "S3Location",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ bucket: S.String, key: S.String, region: S.optional(S.String) }),
       ).annotate({ identifier: "SourceS3Location" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ sourceS3Location: __S(5, __c0, 5) }).pipe(
+        S.Struct({ sourceS3Location: __S(20, __c5, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/importApplicationUsage" }),
             svc,
@@ -453,13 +494,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ImportApplicationUsageRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() => S.Struct({ importId: S.String })).annotate({
         identifier: "ImportApplicationUsageResult",
       });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -479,60 +520,42 @@ function __c1(j: number): any {
           reportDescription: S.optional(S.String),
           reportFrequency: S.optional(S.String),
           format: S.optional(S.String),
-          destinationS3Location: S.optional(__S(3, __c0, 3)),
+          destinationS3Location: S.optional(__S(16, __c4, 0)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ReportDefinition" });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(25, __c6, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reportDefinitions: S.optional(__S(10, __c1, 2)),
+          reportDefinitions: S.optional(__S(26, __c6, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListReportDefinitionsResult",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportId: S.String,
           reportDescription: S.String,
           reportFrequency: S.String,
           format: S.String,
-          destinationS3Location: __S(3, __c0, 3),
+          destinationS3Location: __S(16, __c4, 0),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/reportDefinition" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "PutReportDefinitionRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          reportId: S.String.pipe(T.HttpLabel("reportId")),
-          reportDescription: S.String,
-          reportFrequency: S.String,
-          format: S.String,
-          destinationS3Location: __S(3, __c0, 3),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/reportDefinition/{reportId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateReportDefinitionRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

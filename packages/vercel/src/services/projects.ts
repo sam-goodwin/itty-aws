@@ -25936,8 +25936,8 @@ export const acceptProjectTransferRequest: API.OperationMethod<
   AcceptProjectTransferRequestError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AcceptProjectTransferRequestRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AcceptProjectTransferRequestResponse>,
+  input: __S(1123, __c35, 3) as any as S.Schema<AcceptProjectTransferRequestRequest>,
+  output: __S(1124, __c35, 4) as any as S.Schema<AcceptProjectTransferRequestResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -25957,8 +25957,8 @@ export const addProjectDomain: API.OperationMethod<
   AddProjectDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AddProjectDomainRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AddProjectDomainResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<AddProjectDomainRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<AddProjectDomainResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -25977,8 +25977,8 @@ export const batchRemoveProjectEnv: API.OperationMethod<
   BatchRemoveProjectEnvError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<BatchRemoveProjectEnvRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<BatchRemoveProjectEnvResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<BatchRemoveProjectEnvRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<BatchRemoveProjectEnvResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -25998,8 +25998,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateProjectRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<CreateProjectResponse>,
+  input: __S(1316, __c41, 4) as any as S.Schema<CreateProjectRequest>,
+  output: __S(1363, __c42, 19) as any as S.Schema<CreateProjectResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26019,8 +26019,8 @@ export const createProjectEnv: API.OperationMethod<
   CreateProjectEnvError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<CreateProjectEnvRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<CreateProjectEnvResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectEnvRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateProjectEnvResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26039,8 +26039,8 @@ export const createProjectTransferRequest: API.OperationMethod<
   CreateProjectTransferRequestError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<CreateProjectTransferRequestRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<CreateProjectTransferRequestResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<CreateProjectTransferRequestRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<CreateProjectTransferRequestResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26059,8 +26059,8 @@ export const createTraceSession: API.OperationMethod<
   CreateTraceSessionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<CreateTraceSessionRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<CreateTraceSessionResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<CreateTraceSessionRequest>,
+  output: __S(65, __c2, 1) as any as S.Schema<CreateTraceSessionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26074,8 +26074,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<DeleteProjectResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26089,8 +26089,8 @@ export const editProjectEnv: API.OperationMethod<
   EditProjectEnvError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<EditProjectEnvRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<EditProjectEnvResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<EditProjectEnvRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<EditProjectEnvResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26104,8 +26104,8 @@ export const filterProjectEnvs: API.OperationMethod<
   FilterProjectEnvsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<FilterProjectEnvsRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<FilterProjectEnvsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<FilterProjectEnvsRequest>,
+  output: __S(193, __c6, 1) as any as S.Schema<FilterProjectEnvsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26119,8 +26119,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetProjectRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<GetProjectResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(279, __c8, 23) as any as S.Schema<GetProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26134,8 +26134,8 @@ export const getProjectDomain: API.OperationMethod<
   GetProjectDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<GetProjectDomainRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<GetProjectDomainResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetProjectDomainRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<GetProjectDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26149,8 +26149,8 @@ export const getProjectDomains: API.OperationMethod<
   GetProjectDomainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<GetProjectDomainsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<GetProjectDomainsResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetProjectDomainsRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<GetProjectDomainsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26164,8 +26164,8 @@ export const getProjectEnv: API.OperationMethod<
   GetProjectEnvError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<GetProjectEnvRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<GetProjectEnvResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetProjectEnvRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<GetProjectEnvResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26179,8 +26179,8 @@ export const getProjects: API.OperationMethod<
   GetProjectsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<GetProjectsRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<GetProjectsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetProjectsRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<GetProjectsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26194,8 +26194,8 @@ export const getProjectToken: API.OperationMethod<
   GetProjectTokenError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<GetProjectTokenRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GetProjectTokenResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetProjectTokenRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<GetProjectTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26209,8 +26209,8 @@ export const getProjectTrace: API.OperationMethod<
   GetProjectTraceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GetProjectTraceRequest>,
-  output: __S(230, __c28, 6) as any as S.Schema<GetProjectTraceResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetProjectTraceRequest>,
+  output: __S(461, __c14, 13) as any as S.Schema<GetProjectTraceResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26224,8 +26224,8 @@ export const listPromoteAliases: API.OperationMethod<
   ListPromoteAliasesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<ListPromoteAliasesRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<ListPromoteAliasesResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListPromoteAliasesRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<ListPromoteAliasesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26239,8 +26239,8 @@ export const moveProjectDomain: API.OperationMethod<
   MoveProjectDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<MoveProjectDomainRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<MoveProjectDomainResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<MoveProjectDomainRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<MoveProjectDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26254,8 +26254,8 @@ export const pauseProject: API.OperationMethod<
   PauseProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<PauseProjectRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<PauseProjectResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<PauseProjectRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<PauseProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26269,8 +26269,8 @@ export const removeProjectDomain: API.OperationMethod<
   RemoveProjectDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<RemoveProjectDomainRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<RemoveProjectDomainResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<RemoveProjectDomainRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<RemoveProjectDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26284,8 +26284,8 @@ export const removeProjectEnv: API.OperationMethod<
   RemoveProjectEnvError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<RemoveProjectEnvRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<RemoveProjectEnvResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<RemoveProjectEnvRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<RemoveProjectEnvResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26305,8 +26305,8 @@ export const requestPromote: API.OperationMethod<
   RequestPromoteError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<RequestPromoteRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<RequestPromoteResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<RequestPromoteRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<RequestPromoteResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26327,8 +26327,8 @@ export const requestRollback: API.OperationMethod<
   RequestRollbackError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<RequestRollbackRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<RequestRollbackResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<RequestRollbackRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<RequestRollbackResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26342,8 +26342,8 @@ export const unpauseProject: API.OperationMethod<
   UnpauseProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<UnpauseProjectRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<UnpauseProjectResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<UnpauseProjectRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<UnpauseProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26362,8 +26362,8 @@ export const updateMicrofrontends: API.OperationMethod<
   UpdateMicrofrontendsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<UpdateMicrofrontendsRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<UpdateMicrofrontendsResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<UpdateMicrofrontendsRequest>,
+  output: __S(786, __c24, 18) as any as S.Schema<UpdateMicrofrontendsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26383,8 +26383,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<UpdateProjectResponse>,
+  input: __S(853, __c26, 21) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(900, __c28, 4) as any as S.Schema<UpdateProjectResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26398,8 +26398,8 @@ export const updateProjectDomain: API.OperationMethod<
   UpdateProjectDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<UpdateProjectDomainRequest>,
-  output: __S(364, __c45, 4) as any as S.Schema<UpdateProjectDomainResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<UpdateProjectDomainRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<UpdateProjectDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26418,8 +26418,8 @@ export const updateProjectProtectionBypass: API.OperationMethod<
   UpdateProjectProtectionBypassError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<UpdateProjectProtectionBypassRequest>,
-  output: __S(370, __c46, 2) as any as S.Schema<UpdateProjectProtectionBypassResponse>,
+  input: __S(963, __c30, 3) as any as S.Schema<UpdateProjectProtectionBypassRequest>,
+  output: __S(965, __c30, 5) as any as S.Schema<UpdateProjectProtectionBypassResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26440,14 +26440,14 @@ export const updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescription: A
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    371,
-    __c46,
-    3,
+    992,
+    __c31,
+    0,
   ) as any as S.Schema<UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest>,
   output: __S(
-    372,
-    __c46,
-    4,
+    993,
+    __c31,
+    1,
   ) as any as S.Schema<UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
@@ -26462,8 +26462,8 @@ export const uploadProjectAvatar: API.OperationMethod<
   UploadProjectAvatarError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(373, __c46, 5) as any as S.Schema<UploadProjectAvatarRequest>,
-  output: __S(423, __c52, 7) as any as S.Schema<UploadProjectAvatarResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<UploadProjectAvatarRequest>,
+  output: __S(1074, __c33, 18) as any as S.Schema<UploadProjectAvatarResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26477,8 +26477,8 @@ export const verifyProjectDomain: API.OperationMethod<
   VerifyProjectDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<VerifyProjectDomainRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<VerifyProjectDomainResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<VerifyProjectDomainRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<VerifyProjectDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -26486,1665 +26486,6 @@ export const verifyProjectDomain: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          concurrentBuilds: S.optional(S.NullOr(S.Number)),
-          passwordProtection: S.optional(S.NullOr(S.Boolean)),
-          previewDeploymentSuffix: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "AcceptProjectTransferRequestRequestPaidFeatures",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          eula: S.String,
-          privacy: S.String,
-        }),
-      ).annotate({
-        identifier: "AcceptProjectTransferRequestRequestAcceptedPoliciesValue",
-      });
-    case 2:
-      return S.Record(S.String, __S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          newProjectName: S.optional(S.String),
-          paidFeatures: S.optional(__S(0, __c0, 0)),
-          acceptedPolicies: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.Http({ method: "PUT", uri: "/projects/transfer-request/{code}", code: 200 })),
-      ).annotate({
-        identifier: "AcceptProjectTransferRequestRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "AcceptProjectTransferRequestResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          idOrName: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          name: S.String,
-          gitBranch: S.optional(S.NullOr(S.String)),
-          customEnvironmentId: S.optional(S.String),
-          redirect: S.optional(S.NullOr(S.String)),
-          redirectStatusCode: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "POST", uri: "/v10/projects/{idOrName}/domains", code: 200 })),
-      ).annotate({ identifier: "AddProjectDomainRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String,
-          reason: S.String,
-          type: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "AddProjectDomainResponseVerificationItem",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apexName: S.String,
-          createdAt: S.optional(S.Number),
-          customEnvironmentId: S.optional(S.NullOr(S.String)),
-          gitBranch: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          projectId: S.String,
-          redirect: S.optional(S.NullOr(S.String)),
-          redirectStatusCode: S.optional(S.NullOr(S.Number)),
-          updatedAt: S.optional(S.Number),
-          verification: S.optional(__S(8, __c1, 0)),
-          verified: S.Boolean,
-        }),
-      ).annotate({ identifier: "AddProjectDomainResponse" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          idOrName: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          ids: __S(10, __c1, 2),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/projects/{idOrName}/env", code: 200 })),
-      ).annotate({
-        identifier: "BatchRemoveProjectEnvRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: S.Number,
-          ids: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "BatchRemoveProjectEnvResponse",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          target: S.Unknown,
-          gitBranch: S.optional(S.String),
-          type: S.optional(S.String),
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectRequestEnvironmentVariablesItem",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          repo: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectRequestGitRepository",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentType: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectRequestSsoProtection",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.optional(S.String),
-          failoverRegions: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateProjectRequestSandbox",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          issuerMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateProjectRequestOidcTokenConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          at: S.Number,
-          direction: S.String,
-          algorithmVersion: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectRequestResourceConfigBuildMachineElasticTransition",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          configuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateProjectRequestResourceConfigBuildQueue",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          buildMachineType: S.optional(S.String),
-          fluid: S.optional(S.Boolean),
-          functionDefaultRegions: S.optional(__S(10, __c1, 2)),
-          functionDefaultTimeout: S.optional(S.Number),
-          functionDefaultMemoryType: S.optional(S.String),
-          functionZeroConfigFailover: S.optional(S.Boolean),
-          elasticConcurrencyEnabled: S.optional(S.Boolean),
-          buildMachineSelection: S.optional(S.String),
-          buildMachineElasticLastUpdated: S.optional(S.Number),
-          buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(20, __c2, 4)),
-          isNSNBDisabled: S.optional(S.Boolean),
-          buildQueue: S.optional(__S(21, __c2, 5)),
-          enableFunctionsBeta: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateProjectRequestResourceConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          enablePreviewFeedback: S.optional(S.NullOr(S.Boolean)),
-          enableProductionFeedback: S.optional(S.NullOr(S.Boolean)),
-          previewDeploymentsDisabled: S.optional(S.NullOr(S.Boolean)),
-          previewDeploymentSuffix: S.optional(S.NullOr(S.String)),
-          buildCommand: S.optional(S.NullOr(S.String)),
-          commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
-          devCommand: S.optional(S.NullOr(S.String)),
-          environmentVariables: S.optional(__S(15, __c1, 7)),
-          framework: S.optional(S.String),
-          gitRepository: S.optional(__S(16, __c2, 0)),
-          installCommand: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          skipGitConnectDuringLink: S.optional(S.Boolean),
-          ssoProtection: S.optional(S.NullOr(__S(17, __c2, 1))),
-          sandbox: S.optional(__S(18, __c2, 2)),
-          outputDirectory: S.optional(S.NullOr(S.String)),
-          publicSource: S.optional(S.NullOr(S.Boolean)),
-          rootDirectory: S.optional(S.NullOr(S.String)),
-          serverlessFunctionRegion: S.optional(S.NullOr(S.String)),
-          serverlessFunctionZeroConfigFailover: S.optional(S.Boolean),
-          oidcTokenConfig: S.optional(__S(19, __c2, 3)),
-          enableAffectedProjectsDeployments: S.optional(S.Boolean),
-          resourceConfig: S.optional(__S(22, __c2, 6)),
-        }).pipe(T.Http({ method: "POST", uri: "/v11/projects", code: 200 })),
-      ).annotate({ identifier: "CreateProjectRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseAliasItemDeploymentAliasError",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pattern: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseAliasItemDeploymentBranchMatcher",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dest: S.optional(S.String),
-          src: S.optional(S.String),
-          use: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseAliasItemDeploymentBuildsItem",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          githubLogin: S.optional(S.String),
-          gitlabLogin: S.optional(S.String),
-          uid: S.String,
-          username: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseAliasItemDeploymentCreator",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          aud: S.String,
-          custom_environment_id: S.optional(S.String),
-          deployment_id: S.optional(S.String),
-          environment: S.String,
-          iss: S.String,
-          mfe_group_ids: S.optional(__S(4, __c0, 4)),
-          owner: S.String,
-          owner_id: S.String,
-          plan: S.optional(S.String),
-          project: S.String,
-          project_id: S.String,
-          scope: S.String,
-          sub: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseAliasItemDeploymentOidcTokenClaims",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
-          aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
-          aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(10, __c1, 2)),
-          branchMatcher: S.optional(__S(25, __c3, 1)),
-          buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
-          checksConclusion: S.optional(S.String),
-          checksState: S.optional(S.String),
-          connectBuildsEnabled: S.optional(S.Boolean),
-          connectConfigurationId: S.optional(S.String),
-          createdAt: S.Number,
-          createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
-          deletedAt: S.optional(S.Number),
-          deploymentHostname: S.String,
-          forced: S.optional(S.Boolean),
-          id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
-          monorepoManager: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          oidcTokenClaims: S.optional(__S(30, __c3, 6)),
-          plan: S.String,
-          previewCommentsEnabled: S.optional(S.Boolean),
-          private: S.Boolean,
-          readyAt: S.optional(S.Number),
-          readyState: S.String,
-          readySubstate: S.optional(S.String),
-          requestedAt: S.optional(S.Number),
-          target: S.optional(S.NullOr(S.String)),
-          teamId: S.optional(S.NullOr(S.String)),
-          type: S.String,
-          url: S.String,
-          userId: S.optional(S.String),
-          withCache: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseAliasItemDeployment",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          configuredBy: S.optional(S.NullOr(S.String)),
-          configuredChangedAt: S.optional(S.NullOr(S.Number)),
-          createdAt: S.optional(S.NullOr(S.Number)),
-          deployment: S.NullOr(__S(31, __c3, 7)),
-          domain: S.String,
-          environment: S.String,
-          gitBranch: S.optional(S.NullOr(S.String)),
-          redirect: S.optional(S.NullOr(S.String)),
-          redirectStatusCode: S.optional(S.NullOr(S.Number)),
-          target: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseAliasItem",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          canceledAt: S.optional(S.NullOr(S.Number)),
-          disabledAt: S.Number,
-          enabledAt: S.Number,
-          id: S.String,
-          paidAt: S.optional(S.Number),
-          sampleRatePercent: S.optional(S.NullOr(S.Number)),
-          spendLimitInDollars: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseAnalytics",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          isDefaultApp: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseBlobs",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          securityGroupId: S.optional(S.String),
-          subnetIds: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseConnectConfigurationsItemAws",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          aws: S.optional(__S(36, __c4, 4)),
-          buildsEnabled: S.Boolean,
-          connectConfigurationId: S.String,
-          createdAt: S.Number,
-          dc: S.optional(S.String),
-          envId: S.Unknown,
-          passive: S.Boolean,
-          updatedAt: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseConnectConfigurationsItem",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          host: S.String,
-          hostInferred: S.optional(S.Boolean),
-          path: S.String,
-          schedule: S.String,
-          source: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseCronsDefinitionsItem",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          definitions: __S(40, __c5, 0),
-          deploymentId: S.NullOr(S.String),
-          disabledAt: S.NullOr(S.Number),
-          enabledAt: S.Number,
-          updatedAt: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseCrons",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pattern: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseCustomEnvironmentsItemBranchMatcher",
-      });
-    case 3:
-      return S.Array(__S(7, __c0, 7));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apexName: S.String,
-          createdAt: S.optional(S.Number),
-          customEnvironmentId: S.optional(S.NullOr(S.String)),
-          gitBranch: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          projectId: S.String,
-          redirect: S.optional(S.NullOr(S.String)),
-          redirectStatusCode: S.optional(S.NullOr(S.Number)),
-          updatedAt: S.optional(S.Number),
-          verification: S.optional(__S(43, __c5, 3)),
-          verified: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseCustomEnvironmentsItemDomainsItem",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          branchMatcher: S.optional(__S(42, __c5, 2)),
-          createdAt: S.Number,
-          currentDeploymentAliases: S.optional(__S(4, __c0, 4)),
-          description: S.optional(S.String),
-          domains: S.optional(__S(45, __c5, 5)),
-          id: S.String,
-          slug: S.String,
-          type: S.String,
-          updatedAt: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseCustomEnvironmentsItem",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          storageSizeBytes: S.optional(S.NullOr(S.Number)),
-          unlimited: S.optional(S.Boolean),
-          userDisabled: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseDataCache",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          algorithmVersion: S.String,
-          at: S.Number,
-          direction: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseDefaultResourceConfigBuildMachineElasticTransition",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          buildMachineElasticLastUpdated: S.optional(S.Number),
-          buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(49, __c6, 1)),
-          buildMachineSelection: S.optional(S.String),
-          buildMachineType: S.optional(S.String),
-          buildQueue: S.optional(__S(21, __c2, 5)),
-          elasticConcurrencyEnabled: S.optional(S.Boolean),
-          enableFunctionsBeta: S.optional(S.Boolean),
-          fluid: S.optional(S.Boolean),
-          functionDefaultMemoryType: S.optional(S.String),
-          functionDefaultRegions: __S(4, __c0, 4),
-          functionDefaultTimeout: S.optional(S.Number),
-          functionZeroConfigFailover: S.optional(S.Boolean),
-          isNSNBDisabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseDefaultResourceConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentsToKeep: S.optional(S.Number),
-          expirationDays: S.optional(S.Number),
-          expirationDaysCanceled: S.optional(S.Number),
-          expirationDaysErrored: S.optional(S.Number),
-          expirationDaysProduction: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseDeploymentExpiration",
-      });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          environments: __S(52, __c6, 4),
-          sources: __S(53, __c6, 5),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseDeploymentPolicyDeploymentSourcesItem",
-      });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          environments: __S(56, __c7, 0),
-          sources: __S(57, __c7, 1),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseDeploymentPolicyGitSourcesItem",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentSources: S.optional(S.NullOr(__S(55, __c6, 7))),
-          gitSources: S.optional(S.NullOr(__S(59, __c7, 3))),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseDeploymentPolicy",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          dismissedAt: S.Number,
-          key: S.String,
-          value: S.NullOr(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseDismissedToastsItem",
-      });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          encryptedValue: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseEnvItemInternalContentHint",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          comment: S.optional(S.String),
-          configurationId: S.optional(S.NullOr(S.String)),
-          contentHint: S.optional(S.NullOr(S.Unknown)),
-          createdAt: S.optional(S.Number),
-          createdBy: S.optional(S.NullOr(S.String)),
-          customEnvironmentIds: S.optional(__S(10, __c1, 2)),
-          decrypted: S.optional(S.Boolean),
-          edgeConfigId: S.optional(S.NullOr(S.String)),
-          edgeConfigTokenId: S.optional(S.NullOr(S.String)),
-          gitBranch: S.optional(S.String),
-          id: S.optional(S.String),
-          internalContentHint: S.optional(S.NullOr(__S(63, __c7, 7))),
-          key: S.String,
-          legacyValue: S.optional(S.String),
-          sunsetSecretId: S.optional(S.String),
-          target: S.optional(S.Unknown),
-          type: S.String,
-          updatedAt: S.optional(S.Number),
-          updatedBy: S.optional(S.NullOr(S.String)),
-          value: S.String,
-          visibility: S.optional(S.String),
-          vsmValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseEnvItem",
-      });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          webAnalytics: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseFeatures",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          onCommit: S.Boolean,
-          onPullRequest: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseGitComments",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          propagateFailures: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseGitProviderOptionsConsolidatedGitCommitStatus",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          consolidatedGitCommitStatus: S.optional(__S(68, __c8, 4)),
-          createDeployments: S.String,
-          disableRepositoryDispatchEvents: S.optional(S.Boolean),
-          gitCommitStatus: S.optional(S.Boolean),
-          requireVerifiedCommits: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseGitProviderOptions",
-      });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.String,
-          default: S.optional(S.Boolean),
-          supportUntil: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseIpBucketsItem",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          targets: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseJobsFlagDefinitionsPresent",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          flag_definitions_present: S.optional(
-            __S(73, __c9, 1).pipe(T.Body("flag-definitions-present")),
-          ),
-          lint: S.optional(__S(73, __c9, 1)),
-          mfe_config_present: S.optional(__S(73, __c9, 1).pipe(T.Body("mfe-config-present"))),
-          typecheck: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseJobs",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fromDeploymentId: S.NullOr(S.String),
-          fromRollingReleaseId: S.optional(S.String),
-          jobStatus: S.String,
-          requestedAt: S.Number,
-          toDeploymentId: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseLastAliasRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          aud: S.String,
-          custom_environment_id: S.optional(S.String),
-          deployment_id: S.optional(S.String),
-          environment: S.String,
-          iss: S.String,
-          mfe_group_ids: S.optional(__S(4, __c0, 4)),
-          owner: S.String,
-          owner_id: S.String,
-          plan: S.optional(S.String),
-          project: S.String,
-          project_id: S.String,
-          scope: S.String,
-          sub: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseLatestDeploymentsItemOidcTokenClaims",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
-          aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
-          aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(10, __c1, 2)),
-          branchMatcher: S.optional(__S(25, __c3, 1)),
-          buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
-          checksConclusion: S.optional(S.String),
-          checksState: S.optional(S.String),
-          connectBuildsEnabled: S.optional(S.Boolean),
-          connectConfigurationId: S.optional(S.String),
-          createdAt: S.Number,
-          createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
-          deletedAt: S.optional(S.Number),
-          deploymentHostname: S.String,
-          forced: S.optional(S.Boolean),
-          id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
-          monorepoManager: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          oidcTokenClaims: S.optional(__S(76, __c9, 4)),
-          plan: S.String,
-          previewCommentsEnabled: S.optional(S.Boolean),
-          private: S.Boolean,
-          readyAt: S.optional(S.Number),
-          readyState: S.String,
-          readySubstate: S.optional(S.String),
-          requestedAt: S.optional(S.Number),
-          target: S.optional(S.NullOr(S.String)),
-          teamId: S.optional(S.NullOr(S.String)),
-          type: S.String,
-          url: S.String,
-          userId: S.optional(S.String),
-          withCache: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseLatestDeploymentsItem",
-      });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseOptionsAllowlistPathsItem",
-      });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          paths: __S(81, __c10, 1),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseOptionsAllowlist",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          connectorId: S.String,
-          deploymentType: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponsePassport",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accessGroup: S.optional(__S(13, __c1, 5)),
-          agent: S.optional(__S(13, __c1, 5)),
-          aiGatewayApiKey: S.optional(__S(13, __c1, 5)),
-          aiGatewayApiKeyBypassAll: S.optional(__S(13, __c1, 5)),
-          aiGatewayApiKeyOwnedBySelf: S.optional(__S(13, __c1, 5)),
-          aiGatewayApiKeySpendAttribution: S.optional(__S(53, __c6, 5)),
-          aiGatewayApiKeyZdrExemption: S.optional(__S(53, __c6, 5)),
-          aiGatewayBudget: S.optional(__S(13, __c1, 5)),
-          aiGatewayCredits: S.optional(__S(13, __c1, 5)),
-          aiGatewayGuardrails: S.optional(__S(13, __c1, 5)),
-          aiGatewayPrivateModels: S.optional(__S(13, __c1, 5)),
-          aiGatewayRules: S.optional(__S(13, __c1, 5)),
-          aiGatewaySettings: S.optional(__S(13, __c1, 5)),
-          aiGatewayTranscripts: S.optional(__S(13, __c1, 5)),
-          aiGatewayTranscriptsSettings: S.optional(__S(53, __c6, 5)),
-          aiGatewayUsage: S.optional(__S(13, __c1, 5)),
-          aiGatewayVirtualModelConfigs: S.optional(__S(53, __c6, 5)),
-          alertRules: S.optional(__S(13, __c1, 5)),
-          alerts: S.optional(__S(13, __c1, 5)),
-          aliasGlobal: S.optional(__S(13, __c1, 5)),
-          aliasProject: S.optional(__S(13, __c1, 5)),
-          aliasProtectionBypass: S.optional(__S(13, __c1, 5)),
-          analytics: S.optional(__S(13, __c1, 5)),
-          analyticsSampling: S.optional(__S(13, __c1, 5)),
-          analyticsUsage: S.optional(__S(13, __c1, 5)),
-          apiKey: S.optional(__S(13, __c1, 5)),
-          apiKeyAiGateway: S.optional(__S(13, __c1, 5)),
-          apiKeyOwnedBySelf: S.optional(__S(13, __c1, 5)),
-          auditLog: S.optional(__S(13, __c1, 5)),
-          automation: S.optional(__S(13, __c1, 5)),
-          billingAddress: S.optional(__S(13, __c1, 5)),
-          billingInformation: S.optional(__S(13, __c1, 5)),
-          billingInvoice: S.optional(__S(13, __c1, 5)),
-          billingInvoiceEmailRecipient: S.optional(__S(53, __c6, 5)),
-          billingInvoiceLanguage: S.optional(__S(13, __c1, 5)),
-          billingPlan: S.optional(__S(13, __c1, 5)),
-          billingPurchaseOrder: S.optional(__S(13, __c1, 5)),
-          billingRefund: S.optional(__S(13, __c1, 5)),
-          billingTaxId: S.optional(__S(13, __c1, 5)),
-          blob: S.optional(__S(13, __c1, 5)),
-          blobStoreTokenSet: S.optional(__S(13, __c1, 5)),
-          budget: S.optional(__S(13, __c1, 5)),
-          buildMachine: S.optional(__S(13, __c1, 5)),
-          buildMachineDefault: S.optional(__S(13, __c1, 5)),
-          bulkRedirects: S.optional(__S(13, __c1, 5)),
-          cacheArtifact: S.optional(__S(13, __c1, 5)),
-          cacheArtifactUsageEvent: S.optional(__S(13, __c1, 5)),
-          ciInvocations: S.optional(__S(13, __c1, 5)),
-          ciLogs: S.optional(__S(13, __c1, 5)),
-          codeChecks: S.optional(__S(13, __c1, 5)),
-          codeOwners: S.optional(__S(13, __c1, 5)),
-          concurrentBuilds: S.optional(__S(13, __c1, 5)),
-          connect: S.optional(__S(13, __c1, 5)),
-          connectConfiguration: S.optional(__S(13, __c1, 5)),
-          connectConfigurationLink: S.optional(__S(13, __c1, 5)),
-          connectLogs: S.optional(__S(13, __c1, 5)),
-          connexClient: S.optional(__S(13, __c1, 5)),
-          connexClientProject: S.optional(__S(13, __c1, 5)),
-          connexContact: S.optional(__S(13, __c1, 5)),
-          connexInstallation: S.optional(__S(13, __c1, 5)),
-          connexToken: S.optional(__S(13, __c1, 5)),
-          cursorOriginInstallation: S.optional(__S(13, __c1, 5)),
-          dataCacheBillingSettings: S.optional(__S(13, __c1, 5)),
-          dataCacheNamespace: S.optional(__S(13, __c1, 5)),
-          defaultDeploymentProtection: S.optional(__S(53, __c6, 5)),
-          deployment: S.optional(__S(13, __c1, 5)),
-          deploymentBuildLogs: S.optional(__S(13, __c1, 5)),
-          deploymentCheck: S.optional(__S(13, __c1, 5)),
-          deploymentCheckPreview: S.optional(__S(13, __c1, 5)),
-          deploymentCheckReRunFromProductionBranch: S.optional(__S(53, __c6, 5)),
-          deploymentPolicy: S.optional(__S(13, __c1, 5)),
-          deploymentPreview: S.optional(__S(13, __c1, 5)),
-          deploymentPrivate: S.optional(__S(13, __c1, 5)),
-          deploymentProductionGit: S.optional(__S(13, __c1, 5)),
-          deploymentPromote: S.optional(__S(13, __c1, 5)),
-          deploymentProtectionException: S.optional(__S(53, __c6, 5)),
-          deploymentRollback: S.optional(__S(13, __c1, 5)),
-          deploymentV0: S.optional(__S(13, __c1, 5)),
-          domain: S.optional(__S(13, __c1, 5)),
-          domainAcceptDelegation: S.optional(__S(13, __c1, 5)),
-          domainAuthCodes: S.optional(__S(13, __c1, 5)),
-          domainCertificate: S.optional(__S(13, __c1, 5)),
-          domainCheckConfig: S.optional(__S(13, __c1, 5)),
-          domainMove: S.optional(__S(13, __c1, 5)),
-          domainPurchase: S.optional(__S(13, __c1, 5)),
-          domainRecord: S.optional(__S(13, __c1, 5)),
-          domainTransferIn: S.optional(__S(13, __c1, 5)),
-          drain: S.optional(__S(13, __c1, 5)),
-          edgeCacheNamespace: S.optional(__S(13, __c1, 5)),
-          edgeConfig: S.optional(__S(13, __c1, 5)),
-          edgeConfigItem: S.optional(__S(13, __c1, 5)),
-          edgeConfigSchema: S.optional(__S(13, __c1, 5)),
-          edgeConfigToken: S.optional(__S(13, __c1, 5)),
-          endpointVerification: S.optional(__S(13, __c1, 5)),
-          environments: S.optional(__S(13, __c1, 5)),
-          event: S.optional(__S(13, __c1, 5)),
-          fileUpload: S.optional(__S(13, __c1, 5)),
-          flagsExplorerSubscription: S.optional(__S(13, __c1, 5)),
-          gitCredentialGrant: S.optional(__S(13, __c1, 5)),
-          gitRepository: S.optional(__S(13, __c1, 5)),
-          imageOptimizationNewPrice: S.optional(__S(13, __c1, 5)),
-          integration: S.optional(__S(13, __c1, 5)),
-          integrationAccount: S.optional(__S(13, __c1, 5)),
-          integrationConfiguration: S.optional(__S(13, __c1, 5)),
-          integrationConfigurationProjects: S.optional(__S(53, __c6, 5)),
-          integrationConfigurationRole: S.optional(__S(53, __c6, 5)),
-          integrationConfigurationTransfer: S.optional(__S(53, __c6, 5)),
-          integrationDeploymentAction: S.optional(__S(53, __c6, 5)),
-          integrationEvent: S.optional(__S(13, __c1, 5)),
-          integrationLog: S.optional(__S(13, __c1, 5)),
-          integrationPullRequest: S.optional(__S(13, __c1, 5)),
-          integrationResource: S.optional(__S(13, __c1, 5)),
-          integrationResourceData: S.optional(__S(13, __c1, 5)),
-          integrationResourceReplCommand: S.optional(__S(53, __c6, 5)),
-          integrationResourceSecrets: S.optional(__S(13, __c1, 5)),
-          integrationSSOSession: S.optional(__S(13, __c1, 5)),
-          integrationStoreTokenSet: S.optional(__S(13, __c1, 5)),
-          integrationStrict: S.optional(__S(13, __c1, 5)),
-          integrationVercelConfigurationOverride: S.optional(__S(53, __c6, 5)),
-          ipBlocking: S.optional(__S(13, __c1, 5)),
-          job: S.optional(__S(13, __c1, 5)),
-          jobGlobal: S.optional(__S(13, __c1, 5)),
-          kmsIssuer: S.optional(__S(13, __c1, 5)),
-          kmsProjectGrant: S.optional(__S(13, __c1, 5)),
-          logDrain: S.optional(__S(13, __c1, 5)),
-          logs: S.optional(__S(13, __c1, 5)),
-          logsPreset: S.optional(__S(13, __c1, 5)),
-          marketplaceBillingData: S.optional(__S(13, __c1, 5)),
-          marketplaceExperimentationEdgeConfigData: S.optional(__S(53, __c6, 5)),
-          marketplaceExperimentationItem: S.optional(__S(53, __c6, 5)),
-          marketplaceFlexCommit: S.optional(__S(13, __c1, 5)),
-          marketplaceInstallationMember: S.optional(__S(53, __c6, 5)),
-          marketplaceInvoice: S.optional(__S(13, __c1, 5)),
-          marketplaceSettings: S.optional(__S(13, __c1, 5)),
-          messageboard: S.optional(__S(13, __c1, 5)),
-          messageboardSpace: S.optional(__S(13, __c1, 5)),
-          messageboardTask: S.optional(__S(13, __c1, 5)),
-          Monitoring: S.optional(__S(13, __c1, 5)),
-          monitoringAlert: S.optional(__S(13, __c1, 5)),
-          monitoringChart: S.optional(__S(13, __c1, 5)),
-          monitoringQuery: S.optional(__S(13, __c1, 5)),
-          monitoringSettings: S.optional(__S(13, __c1, 5)),
-          notificationCustomerBudget: S.optional(__S(13, __c1, 5)),
-          notificationDeploymentFailed: S.optional(__S(53, __c6, 5)),
-          notificationDomainConfiguration: S.optional(__S(53, __c6, 5)),
-          notificationDomainExpire: S.optional(__S(13, __c1, 5)),
-          notificationDomainMoved: S.optional(__S(13, __c1, 5)),
-          notificationDomainPurchase: S.optional(__S(13, __c1, 5)),
-          notificationDomainRenewal: S.optional(__S(13, __c1, 5)),
-          notificationDomainTransfer: S.optional(__S(13, __c1, 5)),
-          notificationDomainUnverified: S.optional(__S(53, __c6, 5)),
-          NotificationMonitoringAlert: S.optional(__S(53, __c6, 5)),
-          notificationPaymentFailed: S.optional(__S(13, __c1, 5)),
-          notificationPreferences: S.optional(__S(13, __c1, 5)),
-          notificationStatementOfReasons: S.optional(__S(53, __c6, 5)),
-          notificationUsageAlert: S.optional(__S(13, __c1, 5)),
-          oauth2Application: S.optional(__S(13, __c1, 5)),
-          oauth2Connection: S.optional(__S(13, __c1, 5)),
-          observabilityConfiguration: S.optional(__S(13, __c1, 5)),
-          observabilityData: S.optional(__S(13, __c1, 5)),
-          observabilityFunnel: S.optional(__S(13, __c1, 5)),
-          observabilityNotebook: S.optional(__S(13, __c1, 5)),
-          oidcFederationPolicy: S.optional(__S(13, __c1, 5)),
-          onDemandBuild: S.optional(__S(13, __c1, 5)),
-          onDemandConcurrency: S.optional(__S(13, __c1, 5)),
-          openTelemetryEndpoint: S.optional(__S(13, __c1, 5)),
-          optionsAllowlist: S.optional(__S(13, __c1, 5)),
-          organization: S.optional(__S(13, __c1, 5)),
-          organizationDomain: S.optional(__S(13, __c1, 5)),
-          organizationTeam: S.optional(__S(13, __c1, 5)),
-          ownEvent: S.optional(__S(13, __c1, 5)),
-          pageIntegrity: S.optional(__S(13, __c1, 5)),
-          passwordProtection: S.optional(__S(13, __c1, 5)),
-          passwordProtectionInvoiceItem: S.optional(__S(53, __c6, 5)),
-          paymentMethod: S.optional(__S(13, __c1, 5)),
-          permissions: S.optional(__S(13, __c1, 5)),
-          postgres: S.optional(__S(13, __c1, 5)),
-          postgresStoreTokenSet: S.optional(__S(13, __c1, 5)),
-          previewDeploymentSuffix: S.optional(__S(13, __c1, 5)),
-          privateCloudAccount: S.optional(__S(13, __c1, 5)),
-          privateLinkEndpoint: S.optional(__S(13, __c1, 5)),
-          productionAliasProtectionBypass: S.optional(__S(53, __c6, 5)),
-          productionShareableLink: S.optional(__S(13, __c1, 5)),
-          project: S.optional(__S(13, __c1, 5)),
-          projectAccessGroup: S.optional(__S(13, __c1, 5)),
-          projectAnalyticsSampling: S.optional(__S(13, __c1, 5)),
-          projectAnalyticsUsage: S.optional(__S(13, __c1, 5)),
-          projectCheck: S.optional(__S(13, __c1, 5)),
-          projectCheckRun: S.optional(__S(13, __c1, 5)),
-          projectDeploymentExpiration: S.optional(__S(53, __c6, 5)),
-          projectDeploymentHook: S.optional(__S(13, __c1, 5)),
-          projectDeploymentProtectionStrict: S.optional(__S(53, __c6, 5)),
-          projectDomain: S.optional(__S(13, __c1, 5)),
-          projectDomainCheckConfig: S.optional(__S(13, __c1, 5)),
-          projectDomainMove: S.optional(__S(13, __c1, 5)),
-          projectDomainVerify: S.optional(__S(13, __c1, 5)),
-          projectEnvVars: S.optional(__S(13, __c1, 5)),
-          projectEnvVarsProduction: S.optional(__S(13, __c1, 5)),
-          projectEnvVarsUnownedByIntegration: S.optional(__S(53, __c6, 5)),
-          projectEvent: S.optional(__S(13, __c1, 5)),
-          projectFlags: S.optional(__S(13, __c1, 5)),
-          projectFlagsProduction: S.optional(__S(13, __c1, 5)),
-          projectFlagsSdkKey: S.optional(__S(13, __c1, 5)),
-          projectFromV0: S.optional(__S(13, __c1, 5)),
-          projectId: S.optional(__S(13, __c1, 5)),
-          projectIntegrationConfiguration: S.optional(__S(53, __c6, 5)),
-          projectLink: S.optional(__S(13, __c1, 5)),
-          projectMember: S.optional(__S(13, __c1, 5)),
-          projectMonitoring: S.optional(__S(13, __c1, 5)),
-          projectOIDCToken: S.optional(__S(13, __c1, 5)),
-          projectPermissions: S.optional(__S(13, __c1, 5)),
-          projectProductionBranch: S.optional(__S(13, __c1, 5)),
-          projectProtectionBypass: S.optional(__S(13, __c1, 5)),
-          projectRollingRelease: S.optional(__S(13, __c1, 5)),
-          projectRoutes: S.optional(__S(13, __c1, 5)),
-          projectSetting: S.optional(__S(13, __c1, 5)),
-          projectSupportCase: S.optional(__S(13, __c1, 5)),
-          projectSupportCaseComment: S.optional(__S(13, __c1, 5)),
-          projectTier: S.optional(__S(13, __c1, 5)),
-          projectTransfer: S.optional(__S(13, __c1, 5)),
-          projectTransferIn: S.optional(__S(13, __c1, 5)),
-          projectTransferOut: S.optional(__S(13, __c1, 5)),
-          projectTransferRequest: S.optional(__S(13, __c1, 5)),
-          projectUsage: S.optional(__S(13, __c1, 5)),
-          proTrialOnboarding: S.optional(__S(13, __c1, 5)),
-          rateLimit: S.optional(__S(13, __c1, 5)),
-          redis: S.optional(__S(13, __c1, 5)),
-          redisStoreTokenSet: S.optional(__S(13, __c1, 5)),
-          remoteCaching: S.optional(__S(13, __c1, 5)),
-          repository: S.optional(__S(13, __c1, 5)),
-          samlConfig: S.optional(__S(13, __c1, 5)),
-          schedule: S.optional(__S(13, __c1, 5)),
-          seawallConfig: S.optional(__S(13, __c1, 5)),
-          secret: S.optional(__S(13, __c1, 5)),
-          securityConfig: S.optional(__S(13, __c1, 5)),
-          securityPlusConfiguration: S.optional(__S(13, __c1, 5)),
-          sensitiveEnvironmentVariablePolicy: S.optional(__S(53, __c6, 5)),
-          setting: S.optional(__S(13, __c1, 5)),
-          shareableLink: S.optional(__S(13, __c1, 5)),
-          shareableLinkStrict: S.optional(__S(13, __c1, 5)),
-          sharedEnvVarConnection: S.optional(__S(13, __c1, 5)),
-          sharedEnvVars: S.optional(__S(13, __c1, 5)),
-          sharedEnvVarsProduction: S.optional(__S(13, __c1, 5)),
-          skewProtection: S.optional(__S(13, __c1, 5)),
-          space: S.optional(__S(13, __c1, 5)),
-          spaceRun: S.optional(__S(13, __c1, 5)),
-          storeIsLocked: S.optional(__S(13, __c1, 5)),
-          storeTokenSetSensitive: S.optional(__S(13, __c1, 5)),
-          storeTransfer: S.optional(__S(13, __c1, 5)),
-          supportCase: S.optional(__S(13, __c1, 5)),
-          supportCaseComment: S.optional(__S(13, __c1, 5)),
-          team: S.optional(__S(13, __c1, 5)),
-          teamAccessRequest: S.optional(__S(13, __c1, 5)),
-          teamFellowMembership: S.optional(__S(13, __c1, 5)),
-          teamGitExclusivity: S.optional(__S(13, __c1, 5)),
-          teamInvite: S.optional(__S(13, __c1, 5)),
-          teamInviteCode: S.optional(__S(13, __c1, 5)),
-          teamInviteLink: S.optional(__S(13, __c1, 5)),
-          teamJoin: S.optional(__S(13, __c1, 5)),
-          teamMemberMfaStatus: S.optional(__S(13, __c1, 5)),
-          teamMicrofrontends: S.optional(__S(13, __c1, 5)),
-          teamOwnMembership: S.optional(__S(13, __c1, 5)),
-          teamOwnMembershipDisconnectSAML: S.optional(__S(53, __c6, 5)),
-          teamSudo: S.optional(__S(13, __c1, 5)),
-          teamTokenInvalidation: S.optional(__S(13, __c1, 5)),
-          token: S.optional(__S(13, __c1, 5)),
-          toolbarComment: S.optional(__S(13, __c1, 5)),
-          trustedIps: S.optional(__S(13, __c1, 5)),
-          trustedSources: S.optional(__S(13, __c1, 5)),
-          usage: S.optional(__S(13, __c1, 5)),
-          usageCycle: S.optional(__S(13, __c1, 5)),
-          user: S.optional(__S(13, __c1, 5)),
-          userConnection: S.optional(__S(13, __c1, 5)),
-          userMfaConfiguration: S.optional(__S(13, __c1, 5)),
-          userPreference: S.optional(__S(13, __c1, 5)),
-          userSudo: S.optional(__S(13, __c1, 5)),
-          v0Chat: S.optional(__S(13, __c1, 5)),
-          vcrRepository: S.optional(__S(13, __c1, 5)),
-          vercelAppInstallation: S.optional(__S(13, __c1, 5)),
-          vercelAppInstallationRequest: S.optional(__S(53, __c6, 5)),
-          vercelAuth: S.optional(__S(13, __c1, 5)),
-          vercelRun: S.optional(__S(13, __c1, 5)),
-          vpcPeeringConnection: S.optional(__S(13, __c1, 5)),
-          webAnalytics: S.optional(__S(13, __c1, 5)),
-          webAnalyticsPlan: S.optional(__S(13, __c1, 5)),
-          webAuthn: S.optional(__S(13, __c1, 5)),
-          webhook: S.optional(__S(13, __c1, 5)),
-          webhook_event: S.optional(__S(13, __c1, 5).pipe(T.Body("webhook-event"))),
-          workflowRunData: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponsePermissions",
-      });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          inheritDeploymentProtection: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseProtectionConfigSandboxUrls",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sandboxUrls: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseProtectionConfig",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          buildMachineElasticLastUpdated: S.optional(S.Number),
-          buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(49, __c6, 1)),
-          buildMachineSelection: S.optional(S.String),
-          buildMachineType: S.optional(S.String),
-          buildQueue: S.optional(__S(21, __c2, 5)),
-          elasticConcurrencyEnabled: S.optional(S.Boolean),
-          enableFunctionsBeta: S.optional(S.Boolean),
-          fluid: S.optional(S.Boolean),
-          functionDefaultMemoryType: S.optional(S.String),
-          functionDefaultRegions: __S(10, __c1, 2),
-          functionDefaultTimeout: S.optional(S.Number),
-          functionZeroConfigFailover: S.optional(S.Boolean),
-          isNSNBDisabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseResourceConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.Number,
-          description: S.String,
-          userId: S.String,
-          username: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseRollbackDescription",
-      });
-    case 2:
-      return S.Array(S.Number);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          excludePaths: S.optional(__S(4, __c0, 4)),
-          excludeStatusCodes: S.optional(__S(90, __c11, 2)),
-          ingestWatermarkSeconds: S.optional(S.Number),
-          minSampleSize: S.optional(S.Number),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseRollingReleaseGateChecksItem",
-      });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          checks: __S(92, __c11, 4),
-          dryRun: S.Boolean,
-          enabled: S.Boolean,
-          failureThreshold: S.optional(S.Number),
-          windowSize: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseRollingReleaseGate",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(S.Number),
-          linearShift: S.optional(S.Boolean),
-          requireApproval: S.optional(S.Boolean),
-          targetPercentage: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseRollingReleaseStagesItem",
-      });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          canaryResponseHeader: S.optional(S.Boolean),
-          gate: S.optional(__S(93, __c11, 5)),
-          stages: S.optional(S.NullOr(__S(95, __c11, 7))),
-          target: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseRollingRelease",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          failoverRegions: S.optional(__S(13, __c1, 5)),
-          region: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseSandbox",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          active: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseSecurityManagedRulesAiBots",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ai_bots: __S(98, __c12, 2),
-          bot_filter: __S(98, __c12, 2),
-          owasp: __S(98, __c12, 2),
-          traffic_sources: __S(98, __c12, 2),
-          vercel_ruleset: __S(98, __c12, 2),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseSecurityManagedRules",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          algo: S.String,
-          keys: __S(10, __c1, 2),
-          limit: S.Number,
-          window: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseSecurityRulesetsValueRateLimit",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.String,
-          permanent: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseSecurityRulesetsValueRedirect",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          actionDuration: S.optional(S.NullOr(S.String)),
-          bypassSystem: S.optional(S.NullOr(S.Boolean)),
-          logHeaders: S.optional(S.Unknown),
-          rateLimit: S.optional(S.NullOr(__S(100, __c12, 4))),
-          redirect: S.optional(S.NullOr(__S(101, __c12, 5))),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseSecurityRulesetsValue",
-      });
-    case 7:
-      return S.Record(S.String, __S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          attackModeActiveUntil: S.optional(S.NullOr(S.Number)),
-          attackModeEnabled: S.optional(S.Boolean),
-          attackModeUpdatedAt: S.optional(S.Number),
-          botIdEnabled: S.optional(S.Boolean),
-          firewallBypassIps: S.optional(__S(10, __c1, 2)),
-          firewallConfigVersion: S.optional(S.Number),
-          firewallEnabled: S.optional(S.Boolean),
-          firewallSeawallEnabled: S.optional(S.Boolean),
-          firewallUpdatedAt: S.optional(S.Number),
-          ja3Enabled: S.optional(S.Boolean),
-          ja4Enabled: S.optional(S.Boolean),
-          log_headers: S.optional(S.Unknown),
-          managedRules: S.optional(S.NullOr(__S(99, __c12, 3))),
-          pageIntegrityEnabled: S.optional(S.Boolean),
-          rulesets: S.optional(__S(103, __c12, 7)),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseSecurity",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          framework: S.optional(S.String),
-          runtime: S.optional(S.String),
-          serviceName: S.String,
-          serviceType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseServicesItem",
-      });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          canceledAt: S.optional(S.Number),
-          dataReceivedAt: S.optional(S.Number),
-          disabledAt: S.optional(S.Number),
-          enabledAt: S.optional(S.Number),
-          hasData: S.optional(S.Boolean),
-          id: S.String,
-          paidAt: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseSpeedInsights",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          april2026SecurityIncidentMigrationAppliedFrom: S.optional(S.NullOr(S.String)),
-          cve55182MigrationAppliedFrom: S.optional(S.NullOr(S.String)),
-          deploymentType: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseSsoProtection",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          builds: S.Boolean,
-          enabled: S.Boolean,
-          regions: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseStaticIps",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          aud: S.String,
-          custom_environment_id: S.optional(S.String),
-          deployment_id: S.optional(S.String),
-          environment: S.String,
-          iss: S.String,
-          mfe_group_ids: S.optional(__S(4, __c0, 4)),
-          owner: S.String,
-          owner_id: S.String,
-          plan: S.optional(S.String),
-          project: S.String,
-          project_id: S.String,
-          scope: S.String,
-          sub: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseTargetsValueOidcTokenClaims",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
-          aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
-          aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(10, __c1, 2)),
-          branchMatcher: S.optional(__S(25, __c3, 1)),
-          buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
-          checksConclusion: S.optional(S.String),
-          checksState: S.optional(S.String),
-          connectBuildsEnabled: S.optional(S.Boolean),
-          connectConfigurationId: S.optional(S.String),
-          createdAt: S.Number,
-          createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
-          deletedAt: S.optional(S.Number),
-          deploymentHostname: S.String,
-          forced: S.optional(S.Boolean),
-          id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
-          monorepoManager: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          oidcTokenClaims: S.optional(__S(110, __c13, 6)),
-          plan: S.String,
-          previewCommentsEnabled: S.optional(S.Boolean),
-          private: S.Boolean,
-          readyAt: S.optional(S.Number),
-          readyState: S.String,
-          readySubstate: S.optional(S.String),
-          requestedAt: S.optional(S.Number),
-          target: S.optional(S.NullOr(S.String)),
-          teamId: S.optional(S.NullOr(S.String)),
-          type: S.String,
-          url: S.String,
-          userId: S.optional(S.String),
-          withCache: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseTargetsValue",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(111, __c13, 7)));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          destination: S.optional(S.String),
-          env: S.optional(S.String),
-          rate: S.Number,
-          requestPath: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseTracingSamplingRulesItem",
-      });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domains: S.optional(S.String),
-          ignorePaths: S.optional(__S(10, __c1, 2)),
-          samplingRules: S.optional(__S(114, __c14, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseTracing",
-      });
-    case 4:
-      return S.Record(S.String, __S(4, __c0, 4));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          to: S.Unknown,
-          claims: __S(116, __c14, 4),
-          label: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseTrustedSourcesOidcProvidersValueItem",
-      });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
-      return S.Record(S.String, __S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          from: S.Unknown,
-          to: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItem",
-      });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customAllow: S.optional(__S(121, __c15, 1)),
-          label: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseTrustedSourcesProjectsValue",
-      });
-    case 3:
-      return S.Record(S.String, __S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enableVercelCiSameRepository: S.optional(S.Boolean),
-          oidcProviders: S.optional(__S(119, __c14, 7)),
-          projects: S.optional(__S(123, __c15, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseTrustedSources",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bypassThrottleUntil: S.optional(S.Number),
-          exceededAllowanceUntil: S.optional(S.Number),
-          kind: S.String,
-          teamThrottled: S.optional(S.Boolean),
-          throttled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseUsageStatus",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          canceledAt: S.optional(S.Number),
-          disabledAt: S.optional(S.Number),
-          enabledAt: S.optional(S.Number),
-          hasData: S.optional(S.Boolean),
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectResponseWebAnalytics",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String,
-          alias: __S(33, __c4, 1),
-          analytics: S.optional(__S(34, __c4, 2)),
-          appliedCve55182Migration: S.optional(S.Boolean),
-          autoAssignCustomDomains: S.optional(S.Boolean),
-          autoAssignCustomDomainsUpdatedBy: S.optional(S.String),
-          autoExposeSystemEnvs: S.optional(S.Boolean),
-          avatar: S.optional(S.NullOr(S.String)),
-          blobs: S.optional(__S(35, __c4, 3)),
-          buildCommand: S.optional(S.NullOr(S.String)),
-          commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
-          concurrencyBucketName: S.optional(S.String),
-          connectBuildsEnabled: S.optional(S.Boolean),
-          connectConfigurationId: S.optional(S.NullOr(S.String)),
-          connectConfigurations: S.optional(S.NullOr(__S(38, __c4, 6))),
-          createdAt: S.optional(S.Number),
-          creator: S.optional(S.Unknown),
-          crons: S.optional(__S(41, __c5, 1)),
-          customEnvironments: S.optional(__S(47, __c5, 7)),
-          customerSupportCodeVisibility: S.optional(S.Boolean),
-          dataCache: S.optional(__S(48, __c6, 0)),
-          defaultResourceConfig: __S(50, __c6, 2),
-          deploymentExpiration: __S(51, __c6, 3),
-          deploymentPolicy: S.optional(S.NullOr(__S(60, __c7, 4))),
-          devCommand: S.optional(S.NullOr(S.String)),
-          directoryListing: S.Boolean,
-          dismissedToasts: S.optional(__S(62, __c7, 6)),
-          enableAffectedProjectsDeployments: S.optional(S.Boolean),
-          enableExternalRewriteCaching: S.optional(S.Boolean),
-          enablePreviewFeedback: S.optional(S.NullOr(S.Boolean)),
-          enableProductionFeedback: S.optional(S.NullOr(S.Boolean)),
-          env: S.optional(__S(65, __c8, 1)),
-          expiration: S.optional(S.Unknown),
-          features: S.optional(__S(66, __c8, 2)),
-          framework: S.optional(S.NullOr(S.String)),
-          gitComments: S.optional(__S(67, __c8, 3)),
-          gitForkProtection: S.optional(S.Boolean),
-          gitLFS: S.optional(S.Boolean),
-          gitProviderOptions: S.optional(__S(69, __c8, 5)),
-          hasActiveBranches: S.optional(S.Boolean),
-          hasDeployments: S.optional(S.Boolean),
-          id: S.String,
-          installCommand: S.optional(S.NullOr(S.String)),
-          internalRoutes: S.optional(__S(70, __c8, 6)),
-          ipBuckets: S.optional(__S(72, __c9, 0)),
-          jobs: S.optional(__S(74, __c9, 2)),
-          lastAliasRequest: S.optional(S.NullOr(__S(75, __c9, 3))),
-          lastRollbackTarget: S.optional(S.NullOr(S.Unknown)),
-          latestDeployments: S.optional(__S(78, __c9, 6)),
-          link: S.optional(S.Unknown),
-          live: S.optional(S.Boolean),
-          microfrontends: S.optional(S.Unknown),
-          name: S.String,
-          nodeVersion: S.String,
-          oidcTokenConfig: S.optional(__S(19, __c2, 3)),
-          optionsAllowlist: S.optional(S.NullOr(__S(82, __c10, 2))),
-          outputDirectory: S.optional(S.NullOr(S.String)),
-          passiveConnectConfigurationId: S.optional(S.NullOr(S.String)),
-          passport: S.optional(S.NullOr(__S(83, __c10, 3))),
-          passwordProtection: S.optional(S.NullOr(S.Unknown)),
-          paused: S.optional(S.Boolean),
-          permissions: S.optional(__S(84, __c10, 4)),
-          productionDeploymentsFastLane: S.optional(S.Boolean),
-          protectedSourcemaps: S.optional(S.Boolean),
-          protectionBypass: S.optional(__S(85, __c10, 5)),
-          protectionConfig: S.optional(__S(87, __c10, 7)),
-          resourceConfig: __S(88, __c11, 0),
-          rollbackDescription: S.optional(__S(89, __c11, 1)),
-          rollingRelease: S.optional(S.NullOr(__S(96, __c12, 0))),
-          rootDirectory: S.optional(S.NullOr(S.String)),
-          sandbox: S.optional(__S(97, __c12, 1)),
-          security: S.optional(__S(104, __c13, 0)),
-          serverlessFunctionZeroConfigFailover: S.optional(S.Boolean),
-          services: S.optional(__S(106, __c13, 2)),
-          skewProtectionAllowedDomains: S.optional(__S(10, __c1, 2)),
-          skewProtectionBoundaryAt: S.optional(S.Number),
-          skewProtectionMaxAge: S.optional(S.Number),
-          skipGitConnectDuringLink: S.optional(S.Boolean),
-          sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
-          speedInsights: S.optional(__S(107, __c13, 3)),
-          ssoProtection: S.optional(S.NullOr(__S(108, __c13, 4))),
-          staticIps: S.optional(__S(109, __c13, 5)),
-          targets: S.optional(__S(112, __c14, 0)),
-          tier: S.optional(S.String),
-          tracing: S.optional(__S(115, __c14, 3)),
-          transferCompletedAt: S.optional(S.Number),
-          transferredFromAccountId: S.optional(S.String),
-          transferStartedAt: S.optional(S.Number),
-          transferToAccountId: S.optional(S.String),
-          trustedIps: S.optional(S.NullOr(S.Unknown)),
-          trustedSources: S.optional(S.NullOr(__S(124, __c15, 4))),
-          updatedAt: S.optional(S.Number),
-          usageStatus: S.optional(__S(125, __c15, 5)),
-          v0: S.optional(S.Boolean),
-          v0Created: S.optional(S.Boolean),
-          webAnalytics: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({ identifier: "CreateProjectResponse" });
-  }
-}
-function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28177,21 +26518,25 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          error: __S(129, __c16, 1),
+          error: __S(1, __c0, 1),
         }),
       ).annotate({
         identifier: "CreateProjectEnvResponseFailedItem",
       });
     case 3:
-      return S.Array(__S(130, __c16, 2));
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.Unknown),
-          failed: __S(131, __c16, 3),
+          failed: __S(3, __c0, 3),
         }),
       ).annotate({ identifier: "CreateProjectEnvResponse" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -28205,7 +26550,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateProjectTransferRequestRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -28213,7 +26558,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateProjectTransferRequestResponse",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -28224,11 +26573,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateTraceSessionRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
@@ -28236,7 +26581,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CreateTraceSessionResponse",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -28244,11 +26593,19 @@ function __c17(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/v9/projects/{idOrName}", code: 200 })),
       ).annotate({ identifier: "DeleteProjectRequest" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteProjectResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -28256,15 +26613,15 @@ function __c17(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           key: S.optional(S.String),
-          target: S.optional(__S(13, __c1, 5)),
+          target: S.optional(__S(1376, __c43, 0)),
           gitBranch: S.optional(S.NullOr(S.String)),
           type: S.optional(S.String),
           value: S.optional(S.String),
-          customEnvironmentIds: S.optional(__S(10, __c1, 2)),
+          customEnvironmentIds: S.optional(__S(1280, __c40, 0)),
           comment: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/v9/projects/{idOrName}/env/{id}", code: 200 })),
       ).annotate({ identifier: "EditProjectEnvRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
@@ -28272,13 +26629,13 @@ function __c17(j: number): any {
           contentHint: S.optional(S.NullOr(S.Unknown)),
           createdAt: S.optional(S.Number),
           createdBy: S.optional(S.NullOr(S.String)),
-          customEnvironmentIds: S.optional(__S(10, __c1, 2)),
+          customEnvironmentIds: S.optional(__S(1280, __c40, 0)),
           decrypted: S.optional(S.Boolean),
           edgeConfigId: S.optional(S.NullOr(S.String)),
           edgeConfigTokenId: S.optional(S.NullOr(S.String)),
           gitBranch: S.optional(S.String),
           id: S.optional(S.String),
-          internalContentHint: S.optional(S.NullOr(__S(63, __c7, 7))),
+          internalContentHint: S.optional(S.NullOr(__S(1377, __c43, 1))),
           key: S.String,
           legacyValue: S.optional(S.String),
           sunsetSecretId: S.optional(S.String),
@@ -28290,7 +26647,11 @@ function __c17(j: number): any {
           visibility: S.optional(S.String),
         }),
       ).annotate({ identifier: "EditProjectEnvResponse" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -28303,11 +26664,15 @@ function __c17(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v10/projects/{idOrName}/env", code: 200 })),
       ).annotate({ identifier: "FilterProjectEnvsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "FilterProjectEnvsResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -28315,36 +26680,32 @@ function __c17(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v9/projects/{idOrName}", code: 200 })),
       ).annotate({ identifier: "GetProjectRequest" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
+          alias: S.optional(__S(1280, __c40, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(10, __c1, 2)),
-          branchMatcher: S.optional(__S(25, __c3, 1)),
+          automaticAliases: S.optional(__S(1280, __c40, 0)),
+          branchMatcher: S.optional(__S(1444, __c45, 4)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
+          builds: S.optional(__S(1446, __c45, 6)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
+          creator: S.NullOr(__S(1447, __c45, 7)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
+          meta: S.optional(__S(1408, __c44, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(110, __c13, 6)),
+          oidcTokenClaims: S.optional(__S(1507, __c47, 3)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -28362,13 +26723,13 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseAliasItemDeployment",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           configuredBy: S.optional(S.NullOr(S.String)),
           configuredChangedAt: S.optional(S.NullOr(S.Number)),
           createdAt: S.optional(S.NullOr(S.Number)),
-          deployment: S.NullOr(__S(144, __c18, 0)),
+          deployment: S.NullOr(__S(225, __c7, 1)),
           domain: S.String,
           environment: S.String,
           gitBranch: S.optional(S.NullOr(S.String)),
@@ -28379,12 +26740,12 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseAliasItem",
       });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
     case 3:
+      return S.Array(__S(226, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          aws: S.optional(__S(36, __c4, 4)),
+          aws: S.optional(__S(1504, __c47, 0)),
           buildsEnabled: S.Boolean,
           connectConfigurationId: S.String,
           createdAt: S.Number,
@@ -28396,19 +26757,19 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseConnectConfigurationsItem",
       });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
     case 5:
+      return S.Array(__S(228, __c7, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          definitions: __S(40, __c5, 0),
+          definitions: __S(1452, __c45, 12),
           deploymentId: S.NullOr(S.String),
           disabledAt: S.NullOr(S.Number),
           enabledAt: S.Number,
           updatedAt: S.Number,
         }),
       ).annotate({ identifier: "GetProjectResponseCrons" });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           apexName: S.String,
@@ -28420,26 +26781,22 @@ function __c18(j: number): any {
           redirect: S.optional(S.NullOr(S.String)),
           redirectStatusCode: S.optional(S.NullOr(S.Number)),
           updatedAt: S.optional(S.Number),
-          verification: S.optional(__S(43, __c5, 3)),
+          verification: S.optional(__S(1453, __c45, 13)),
           verified: S.Boolean,
         }),
       ).annotate({
         identifier: "GetProjectResponseCustomEnvironmentsItemDomainsItem",
       });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(231, __c7, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          branchMatcher: S.optional(__S(25, __c3, 1)),
+          branchMatcher: S.optional(__S(1444, __c45, 4)),
           createdAt: S.Number,
-          currentDeploymentAliases: S.optional(__S(4, __c0, 4)),
+          currentDeploymentAliases: S.optional(__S(1440, __c45, 0)),
           description: S.optional(S.String),
-          domains: S.optional(__S(151, __c18, 7)),
+          domains: S.optional(__S(232, __c7, 8)),
           id: S.String,
           slug: S.String,
           type: S.String,
@@ -28448,22 +26805,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseCustomEnvironmentsItem",
       });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
+    case 10:
+      return S.Array(__S(233, __c7, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           buildMachineElasticLastUpdated: S.optional(S.Number),
           buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(49, __c6, 1)),
+          buildMachineElasticTransition: S.optional(__S(1455, __c45, 15)),
           buildMachineSelection: S.optional(S.String),
           buildMachineType: S.optional(S.String),
-          buildQueue: S.optional(__S(21, __c2, 5)),
+          buildQueue: S.optional(__S(1442, __c45, 2)),
           elasticConcurrencyEnabled: S.optional(S.Boolean),
           enableFunctionsBeta: S.optional(S.Boolean),
           fluid: S.optional(S.Boolean),
           functionDefaultMemoryType: S.optional(S.String),
-          functionDefaultRegions: __S(4, __c0, 4),
+          functionDefaultRegions: __S(1440, __c45, 0),
           functionDefaultTimeout: S.optional(S.Number),
           functionZeroConfigFailover: S.optional(S.Boolean),
           isNSNBDisabled: S.optional(S.Boolean),
@@ -28471,50 +26828,46 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseDefaultResourceConfig",
       });
-    case 3:
+    case 12:
       return S.Array(S.Unknown);
-    case 4:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          environments: __S(155, __c19, 3),
-          sources: __S(53, __c6, 5),
+          environments: __S(236, __c7, 12),
+          sources: __S(1457, __c45, 17),
         }),
       ).annotate({
         identifier: "GetProjectResponseDeploymentPolicyDeploymentSourcesItem",
       });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
+    case 14:
+      return S.Array(__S(237, __c7, 13));
+    case 15:
       return S.Array(S.Unknown);
-    case 7:
+    case 16:
       return S.Array(S.Unknown);
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          environments: __S(158, __c19, 6),
-          sources: __S(159, __c19, 7),
+          environments: __S(239, __c7, 15),
+          sources: __S(240, __c7, 16),
         }),
       ).annotate({
         identifier: "GetProjectResponseDeploymentPolicyGitSourcesItem",
       });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
+    case 18:
+      return S.Array(__S(241, __c7, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          deploymentSources: S.optional(S.NullOr(__S(157, __c19, 5))),
-          gitSources: S.optional(S.NullOr(__S(161, __c20, 1))),
+          deploymentSources: S.optional(S.NullOr(__S(238, __c7, 14))),
+          gitSources: S.optional(S.NullOr(__S(242, __c7, 18))),
         }),
       ).annotate({
         identifier: "GetProjectResponseDeploymentPolicy",
       });
-    case 3:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -28525,9 +26878,9 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseDismissedToastsItem",
       });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
+    case 21:
+      return S.Array(__S(244, __c7, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
@@ -28535,13 +26888,13 @@ function __c20(j: number): any {
           contentHint: S.optional(S.NullOr(S.Unknown)),
           createdAt: S.optional(S.Number),
           createdBy: S.optional(S.NullOr(S.String)),
-          customEnvironmentIds: S.optional(__S(10, __c1, 2)),
+          customEnvironmentIds: S.optional(__S(1280, __c40, 0)),
           decrypted: S.optional(S.Boolean),
           edgeConfigId: S.optional(S.NullOr(S.String)),
           edgeConfigTokenId: S.optional(S.NullOr(S.String)),
           gitBranch: S.optional(S.String),
           id: S.optional(S.String),
-          internalContentHint: S.optional(S.NullOr(__S(63, __c7, 7))),
+          internalContentHint: S.optional(S.NullOr(__S(1377, __c43, 1))),
           key: S.String,
           legacyValue: S.optional(S.String),
           sunsetSecretId: S.optional(S.String),
@@ -28556,9 +26909,9 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseEnvItem",
       });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+    case 23:
+      return S.Array(__S(246, __c7, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           externalResourceId: S.String,
@@ -28566,62 +26919,58 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseIntegrationsItemResourcesItem",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
+    case 25:
+      return S.Array(__S(248, __c7, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({
           installationId: S.String,
-          resources: S.optional(__S(168, __c21, 0)),
+          resources: S.optional(__S(249, __c7, 25)),
         }),
       ).annotate({
         identifier: "GetProjectResponseIntegrationsItem",
       });
-    case 2:
-      return S.Array(__S(169, __c21, 1));
-    case 3:
+    case 27:
+      return S.Array(__S(250, __c7, 26));
+    case 28:
       return S.Array(S.Unknown);
-    case 4:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           flag_definitions_present: S.optional(
-            __S(73, __c9, 1).pipe(T.Body("flag-definitions-present")),
+            __S(1464, __c45, 24).pipe(T.Body("flag-definitions-present")),
           ),
-          lint: S.optional(__S(73, __c9, 1)),
-          mfe_config_present: S.optional(__S(73, __c9, 1).pipe(T.Body("mfe-config-present"))),
-          typecheck: S.optional(__S(73, __c9, 1)),
+          lint: S.optional(__S(1464, __c45, 24)),
+          mfe_config_present: S.optional(__S(1464, __c45, 24).pipe(T.Body("mfe-config-present"))),
+          typecheck: S.optional(__S(1464, __c45, 24)),
         }),
       ).annotate({ identifier: "GetProjectResponseJobs" });
-    case 5:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
+          alias: S.optional(__S(1280, __c40, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(10, __c1, 2)),
-          branchMatcher: S.optional(__S(25, __c3, 1)),
+          automaticAliases: S.optional(__S(1280, __c40, 0)),
+          branchMatcher: S.optional(__S(1444, __c45, 4)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
+          builds: S.optional(__S(1446, __c45, 6)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
+          creator: S.NullOr(__S(1447, __c45, 7)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
+          meta: S.optional(__S(1408, __c44, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(30, __c3, 6)),
+          oidcTokenClaims: S.optional(__S(1448, __c45, 8)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -28639,324 +26988,324 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseLatestDeploymentsItem",
       });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
+    case 31:
+      return S.Array(__S(254, __c7, 30));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accessGroup: S.optional(__S(13, __c1, 5)),
-          agent: S.optional(__S(13, __c1, 5)),
-          aiGatewayApiKey: S.optional(__S(13, __c1, 5)),
-          aiGatewayApiKeyBypassAll: S.optional(__S(13, __c1, 5)),
-          aiGatewayApiKeyOwnedBySelf: S.optional(__S(13, __c1, 5)),
-          aiGatewayApiKeySpendAttribution: S.optional(__S(53, __c6, 5)),
-          aiGatewayApiKeyZdrExemption: S.optional(__S(13, __c1, 5)),
-          aiGatewayBudget: S.optional(__S(13, __c1, 5)),
-          aiGatewayCredits: S.optional(__S(13, __c1, 5)),
-          aiGatewayGuardrails: S.optional(__S(13, __c1, 5)),
-          aiGatewayPrivateModels: S.optional(__S(13, __c1, 5)),
-          aiGatewayRules: S.optional(__S(13, __c1, 5)),
-          aiGatewaySettings: S.optional(__S(13, __c1, 5)),
-          aiGatewayTranscripts: S.optional(__S(13, __c1, 5)),
-          aiGatewayTranscriptsSettings: S.optional(__S(13, __c1, 5)),
-          aiGatewayUsage: S.optional(__S(13, __c1, 5)),
-          aiGatewayVirtualModelConfigs: S.optional(__S(13, __c1, 5)),
-          alertRules: S.optional(__S(13, __c1, 5)),
-          alerts: S.optional(__S(13, __c1, 5)),
-          aliasGlobal: S.optional(__S(13, __c1, 5)),
-          aliasProject: S.optional(__S(13, __c1, 5)),
-          aliasProtectionBypass: S.optional(__S(13, __c1, 5)),
-          analytics: S.optional(__S(13, __c1, 5)),
-          analyticsSampling: S.optional(__S(13, __c1, 5)),
-          analyticsUsage: S.optional(__S(13, __c1, 5)),
-          apiKey: S.optional(__S(13, __c1, 5)),
-          apiKeyAiGateway: S.optional(__S(13, __c1, 5)),
-          apiKeyOwnedBySelf: S.optional(__S(13, __c1, 5)),
-          auditLog: S.optional(__S(13, __c1, 5)),
-          automation: S.optional(__S(13, __c1, 5)),
-          billingAddress: S.optional(__S(13, __c1, 5)),
-          billingInformation: S.optional(__S(13, __c1, 5)),
-          billingInvoice: S.optional(__S(13, __c1, 5)),
-          billingInvoiceEmailRecipient: S.optional(__S(13, __c1, 5)),
-          billingInvoiceLanguage: S.optional(__S(13, __c1, 5)),
-          billingPlan: S.optional(__S(13, __c1, 5)),
-          billingPurchaseOrder: S.optional(__S(13, __c1, 5)),
-          billingRefund: S.optional(__S(13, __c1, 5)),
-          billingTaxId: S.optional(__S(13, __c1, 5)),
-          blob: S.optional(__S(13, __c1, 5)),
-          blobStoreTokenSet: S.optional(__S(13, __c1, 5)),
-          budget: S.optional(__S(13, __c1, 5)),
-          buildMachine: S.optional(__S(13, __c1, 5)),
-          buildMachineDefault: S.optional(__S(13, __c1, 5)),
-          bulkRedirects: S.optional(__S(13, __c1, 5)),
-          cacheArtifact: S.optional(__S(13, __c1, 5)),
-          cacheArtifactUsageEvent: S.optional(__S(13, __c1, 5)),
-          ciInvocations: S.optional(__S(13, __c1, 5)),
-          ciLogs: S.optional(__S(13, __c1, 5)),
-          codeChecks: S.optional(__S(13, __c1, 5)),
-          codeOwners: S.optional(__S(13, __c1, 5)),
-          concurrentBuilds: S.optional(__S(13, __c1, 5)),
-          connect: S.optional(__S(13, __c1, 5)),
-          connectConfiguration: S.optional(__S(13, __c1, 5)),
-          connectConfigurationLink: S.optional(__S(13, __c1, 5)),
-          connectLogs: S.optional(__S(13, __c1, 5)),
-          connexClient: S.optional(__S(13, __c1, 5)),
-          connexClientProject: S.optional(__S(13, __c1, 5)),
-          connexContact: S.optional(__S(13, __c1, 5)),
-          connexInstallation: S.optional(__S(13, __c1, 5)),
-          connexToken: S.optional(__S(13, __c1, 5)),
-          cursorOriginInstallation: S.optional(__S(13, __c1, 5)),
-          dataCacheBillingSettings: S.optional(__S(13, __c1, 5)),
-          dataCacheNamespace: S.optional(__S(13, __c1, 5)),
-          defaultDeploymentProtection: S.optional(__S(13, __c1, 5)),
-          deployment: S.optional(__S(13, __c1, 5)),
-          deploymentBuildLogs: S.optional(__S(13, __c1, 5)),
-          deploymentCheck: S.optional(__S(13, __c1, 5)),
-          deploymentCheckPreview: S.optional(__S(13, __c1, 5)),
-          deploymentCheckReRunFromProductionBranch: S.optional(__S(53, __c6, 5)),
-          deploymentPolicy: S.optional(__S(13, __c1, 5)),
-          deploymentPreview: S.optional(__S(13, __c1, 5)),
-          deploymentPrivate: S.optional(__S(13, __c1, 5)),
-          deploymentProductionGit: S.optional(__S(13, __c1, 5)),
-          deploymentPromote: S.optional(__S(13, __c1, 5)),
-          deploymentProtectionException: S.optional(__S(13, __c1, 5)),
-          deploymentRollback: S.optional(__S(13, __c1, 5)),
-          deploymentV0: S.optional(__S(13, __c1, 5)),
-          domain: S.optional(__S(13, __c1, 5)),
-          domainAcceptDelegation: S.optional(__S(13, __c1, 5)),
-          domainAuthCodes: S.optional(__S(13, __c1, 5)),
-          domainCertificate: S.optional(__S(13, __c1, 5)),
-          domainCheckConfig: S.optional(__S(13, __c1, 5)),
-          domainMove: S.optional(__S(13, __c1, 5)),
-          domainPurchase: S.optional(__S(13, __c1, 5)),
-          domainRecord: S.optional(__S(13, __c1, 5)),
-          domainTransferIn: S.optional(__S(13, __c1, 5)),
-          drain: S.optional(__S(13, __c1, 5)),
-          edgeCacheNamespace: S.optional(__S(13, __c1, 5)),
-          edgeConfig: S.optional(__S(13, __c1, 5)),
-          edgeConfigItem: S.optional(__S(13, __c1, 5)),
-          edgeConfigSchema: S.optional(__S(13, __c1, 5)),
-          edgeConfigToken: S.optional(__S(13, __c1, 5)),
-          endpointVerification: S.optional(__S(13, __c1, 5)),
-          environments: S.optional(__S(13, __c1, 5)),
-          event: S.optional(__S(13, __c1, 5)),
-          fileUpload: S.optional(__S(13, __c1, 5)),
-          flagsExplorerSubscription: S.optional(__S(13, __c1, 5)),
-          gitCredentialGrant: S.optional(__S(13, __c1, 5)),
-          gitRepository: S.optional(__S(13, __c1, 5)),
-          imageOptimizationNewPrice: S.optional(__S(13, __c1, 5)),
-          integration: S.optional(__S(13, __c1, 5)),
-          integrationAccount: S.optional(__S(13, __c1, 5)),
-          integrationConfiguration: S.optional(__S(13, __c1, 5)),
-          integrationConfigurationProjects: S.optional(__S(53, __c6, 5)),
-          integrationConfigurationRole: S.optional(__S(13, __c1, 5)),
-          integrationConfigurationTransfer: S.optional(__S(53, __c6, 5)),
-          integrationDeploymentAction: S.optional(__S(13, __c1, 5)),
-          integrationEvent: S.optional(__S(13, __c1, 5)),
-          integrationLog: S.optional(__S(13, __c1, 5)),
-          integrationPullRequest: S.optional(__S(13, __c1, 5)),
-          integrationResource: S.optional(__S(13, __c1, 5)),
-          integrationResourceData: S.optional(__S(13, __c1, 5)),
-          integrationResourceReplCommand: S.optional(__S(53, __c6, 5)),
-          integrationResourceSecrets: S.optional(__S(13, __c1, 5)),
-          integrationSSOSession: S.optional(__S(13, __c1, 5)),
-          integrationStoreTokenSet: S.optional(__S(13, __c1, 5)),
-          integrationStrict: S.optional(__S(13, __c1, 5)),
-          integrationVercelConfigurationOverride: S.optional(__S(53, __c6, 5)),
-          ipBlocking: S.optional(__S(13, __c1, 5)),
-          job: S.optional(__S(13, __c1, 5)),
-          jobGlobal: S.optional(__S(13, __c1, 5)),
-          kmsIssuer: S.optional(__S(13, __c1, 5)),
-          kmsProjectGrant: S.optional(__S(13, __c1, 5)),
-          logDrain: S.optional(__S(13, __c1, 5)),
-          logs: S.optional(__S(13, __c1, 5)),
-          logsPreset: S.optional(__S(13, __c1, 5)),
-          marketplaceBillingData: S.optional(__S(13, __c1, 5)),
-          marketplaceExperimentationEdgeConfigData: S.optional(__S(53, __c6, 5)),
-          marketplaceExperimentationItem: S.optional(__S(53, __c6, 5)),
-          marketplaceFlexCommit: S.optional(__S(13, __c1, 5)),
-          marketplaceInstallationMember: S.optional(__S(13, __c1, 5)),
-          marketplaceInvoice: S.optional(__S(13, __c1, 5)),
-          marketplaceSettings: S.optional(__S(13, __c1, 5)),
-          messageboard: S.optional(__S(13, __c1, 5)),
-          messageboardSpace: S.optional(__S(13, __c1, 5)),
-          messageboardTask: S.optional(__S(13, __c1, 5)),
-          Monitoring: S.optional(__S(13, __c1, 5)),
-          monitoringAlert: S.optional(__S(13, __c1, 5)),
-          monitoringChart: S.optional(__S(13, __c1, 5)),
-          monitoringQuery: S.optional(__S(13, __c1, 5)),
-          monitoringSettings: S.optional(__S(13, __c1, 5)),
-          notificationCustomerBudget: S.optional(__S(13, __c1, 5)),
-          notificationDeploymentFailed: S.optional(__S(13, __c1, 5)),
-          notificationDomainConfiguration: S.optional(__S(53, __c6, 5)),
-          notificationDomainExpire: S.optional(__S(13, __c1, 5)),
-          notificationDomainMoved: S.optional(__S(13, __c1, 5)),
-          notificationDomainPurchase: S.optional(__S(13, __c1, 5)),
-          notificationDomainRenewal: S.optional(__S(13, __c1, 5)),
-          notificationDomainTransfer: S.optional(__S(13, __c1, 5)),
-          notificationDomainUnverified: S.optional(__S(13, __c1, 5)),
-          NotificationMonitoringAlert: S.optional(__S(13, __c1, 5)),
-          notificationPaymentFailed: S.optional(__S(13, __c1, 5)),
-          notificationPreferences: S.optional(__S(13, __c1, 5)),
-          notificationStatementOfReasons: S.optional(__S(53, __c6, 5)),
-          notificationUsageAlert: S.optional(__S(13, __c1, 5)),
-          oauth2Application: S.optional(__S(13, __c1, 5)),
-          oauth2Connection: S.optional(__S(13, __c1, 5)),
-          observabilityConfiguration: S.optional(__S(13, __c1, 5)),
-          observabilityData: S.optional(__S(13, __c1, 5)),
-          observabilityFunnel: S.optional(__S(13, __c1, 5)),
-          observabilityNotebook: S.optional(__S(13, __c1, 5)),
-          oidcFederationPolicy: S.optional(__S(13, __c1, 5)),
-          onDemandBuild: S.optional(__S(13, __c1, 5)),
-          onDemandConcurrency: S.optional(__S(13, __c1, 5)),
-          openTelemetryEndpoint: S.optional(__S(13, __c1, 5)),
-          optionsAllowlist: S.optional(__S(13, __c1, 5)),
-          organization: S.optional(__S(13, __c1, 5)),
-          organizationDomain: S.optional(__S(13, __c1, 5)),
-          organizationTeam: S.optional(__S(13, __c1, 5)),
-          ownEvent: S.optional(__S(13, __c1, 5)),
-          pageIntegrity: S.optional(__S(13, __c1, 5)),
-          passwordProtection: S.optional(__S(13, __c1, 5)),
-          passwordProtectionInvoiceItem: S.optional(__S(13, __c1, 5)),
-          paymentMethod: S.optional(__S(13, __c1, 5)),
-          permissions: S.optional(__S(13, __c1, 5)),
-          postgres: S.optional(__S(13, __c1, 5)),
-          postgresStoreTokenSet: S.optional(__S(13, __c1, 5)),
-          previewDeploymentSuffix: S.optional(__S(13, __c1, 5)),
-          privateCloudAccount: S.optional(__S(13, __c1, 5)),
-          privateLinkEndpoint: S.optional(__S(13, __c1, 5)),
-          productionAliasProtectionBypass: S.optional(__S(53, __c6, 5)),
-          productionShareableLink: S.optional(__S(13, __c1, 5)),
-          project: S.optional(__S(13, __c1, 5)),
-          projectAccessGroup: S.optional(__S(13, __c1, 5)),
-          projectAnalyticsSampling: S.optional(__S(13, __c1, 5)),
-          projectAnalyticsUsage: S.optional(__S(13, __c1, 5)),
-          projectCheck: S.optional(__S(13, __c1, 5)),
-          projectCheckRun: S.optional(__S(13, __c1, 5)),
-          projectDeploymentExpiration: S.optional(__S(13, __c1, 5)),
-          projectDeploymentHook: S.optional(__S(13, __c1, 5)),
-          projectDeploymentProtectionStrict: S.optional(__S(53, __c6, 5)),
-          projectDomain: S.optional(__S(13, __c1, 5)),
-          projectDomainCheckConfig: S.optional(__S(13, __c1, 5)),
-          projectDomainMove: S.optional(__S(13, __c1, 5)),
-          projectDomainVerify: S.optional(__S(13, __c1, 5)),
-          projectEnvVars: S.optional(__S(13, __c1, 5)),
-          projectEnvVarsProduction: S.optional(__S(13, __c1, 5)),
-          projectEnvVarsUnownedByIntegration: S.optional(__S(53, __c6, 5)),
-          projectEvent: S.optional(__S(13, __c1, 5)),
-          projectFlags: S.optional(__S(13, __c1, 5)),
-          projectFlagsProduction: S.optional(__S(13, __c1, 5)),
-          projectFlagsSdkKey: S.optional(__S(13, __c1, 5)),
-          projectFromV0: S.optional(__S(13, __c1, 5)),
-          projectId: S.optional(__S(13, __c1, 5)),
-          projectIntegrationConfiguration: S.optional(__S(53, __c6, 5)),
-          projectLink: S.optional(__S(13, __c1, 5)),
-          projectMember: S.optional(__S(13, __c1, 5)),
-          projectMonitoring: S.optional(__S(13, __c1, 5)),
-          projectOIDCToken: S.optional(__S(13, __c1, 5)),
-          projectPermissions: S.optional(__S(13, __c1, 5)),
-          projectProductionBranch: S.optional(__S(13, __c1, 5)),
-          projectProtectionBypass: S.optional(__S(13, __c1, 5)),
-          projectRollingRelease: S.optional(__S(13, __c1, 5)),
-          projectRoutes: S.optional(__S(13, __c1, 5)),
-          projectSetting: S.optional(__S(13, __c1, 5)),
-          projectSupportCase: S.optional(__S(13, __c1, 5)),
-          projectSupportCaseComment: S.optional(__S(13, __c1, 5)),
-          projectTier: S.optional(__S(13, __c1, 5)),
-          projectTransfer: S.optional(__S(13, __c1, 5)),
-          projectTransferIn: S.optional(__S(13, __c1, 5)),
-          projectTransferOut: S.optional(__S(13, __c1, 5)),
-          projectTransferRequest: S.optional(__S(13, __c1, 5)),
-          projectUsage: S.optional(__S(13, __c1, 5)),
-          proTrialOnboarding: S.optional(__S(13, __c1, 5)),
-          rateLimit: S.optional(__S(13, __c1, 5)),
-          redis: S.optional(__S(13, __c1, 5)),
-          redisStoreTokenSet: S.optional(__S(13, __c1, 5)),
-          remoteCaching: S.optional(__S(13, __c1, 5)),
-          repository: S.optional(__S(13, __c1, 5)),
-          samlConfig: S.optional(__S(13, __c1, 5)),
-          schedule: S.optional(__S(13, __c1, 5)),
-          seawallConfig: S.optional(__S(13, __c1, 5)),
-          secret: S.optional(__S(13, __c1, 5)),
-          securityConfig: S.optional(__S(13, __c1, 5)),
-          securityPlusConfiguration: S.optional(__S(13, __c1, 5)),
-          sensitiveEnvironmentVariablePolicy: S.optional(__S(53, __c6, 5)),
-          setting: S.optional(__S(13, __c1, 5)),
-          shareableLink: S.optional(__S(13, __c1, 5)),
-          shareableLinkStrict: S.optional(__S(13, __c1, 5)),
-          sharedEnvVarConnection: S.optional(__S(13, __c1, 5)),
-          sharedEnvVars: S.optional(__S(13, __c1, 5)),
-          sharedEnvVarsProduction: S.optional(__S(13, __c1, 5)),
-          skewProtection: S.optional(__S(13, __c1, 5)),
-          space: S.optional(__S(13, __c1, 5)),
-          spaceRun: S.optional(__S(13, __c1, 5)),
-          storeIsLocked: S.optional(__S(13, __c1, 5)),
-          storeTokenSetSensitive: S.optional(__S(13, __c1, 5)),
-          storeTransfer: S.optional(__S(13, __c1, 5)),
-          supportCase: S.optional(__S(13, __c1, 5)),
-          supportCaseComment: S.optional(__S(13, __c1, 5)),
-          team: S.optional(__S(13, __c1, 5)),
-          teamAccessRequest: S.optional(__S(13, __c1, 5)),
-          teamFellowMembership: S.optional(__S(13, __c1, 5)),
-          teamGitExclusivity: S.optional(__S(13, __c1, 5)),
-          teamInvite: S.optional(__S(13, __c1, 5)),
-          teamInviteCode: S.optional(__S(13, __c1, 5)),
-          teamInviteLink: S.optional(__S(13, __c1, 5)),
-          teamJoin: S.optional(__S(13, __c1, 5)),
-          teamMemberMfaStatus: S.optional(__S(13, __c1, 5)),
-          teamMicrofrontends: S.optional(__S(13, __c1, 5)),
-          teamOwnMembership: S.optional(__S(13, __c1, 5)),
-          teamOwnMembershipDisconnectSAML: S.optional(__S(53, __c6, 5)),
-          teamSudo: S.optional(__S(13, __c1, 5)),
-          teamTokenInvalidation: S.optional(__S(13, __c1, 5)),
-          token: S.optional(__S(13, __c1, 5)),
-          toolbarComment: S.optional(__S(13, __c1, 5)),
-          trustedIps: S.optional(__S(13, __c1, 5)),
-          trustedSources: S.optional(__S(13, __c1, 5)),
-          usage: S.optional(__S(13, __c1, 5)),
-          usageCycle: S.optional(__S(13, __c1, 5)),
-          user: S.optional(__S(13, __c1, 5)),
-          userConnection: S.optional(__S(13, __c1, 5)),
-          userMfaConfiguration: S.optional(__S(13, __c1, 5)),
-          userPreference: S.optional(__S(13, __c1, 5)),
-          userSudo: S.optional(__S(13, __c1, 5)),
-          v0Chat: S.optional(__S(13, __c1, 5)),
-          vcrRepository: S.optional(__S(13, __c1, 5)),
-          vercelAppInstallation: S.optional(__S(13, __c1, 5)),
-          vercelAppInstallationRequest: S.optional(__S(13, __c1, 5)),
-          vercelAuth: S.optional(__S(13, __c1, 5)),
-          vercelRun: S.optional(__S(13, __c1, 5)),
-          vpcPeeringConnection: S.optional(__S(13, __c1, 5)),
-          webAnalytics: S.optional(__S(13, __c1, 5)),
-          webAnalyticsPlan: S.optional(__S(13, __c1, 5)),
-          webAuthn: S.optional(__S(13, __c1, 5)),
-          webhook: S.optional(__S(13, __c1, 5)),
-          webhook_event: S.optional(__S(13, __c1, 5).pipe(T.Body("webhook-event"))),
-          workflowRunData: S.optional(__S(13, __c1, 5)),
+          accessGroup: S.optional(__S(1376, __c43, 0)),
+          agent: S.optional(__S(1376, __c43, 0)),
+          aiGatewayApiKey: S.optional(__S(1376, __c43, 0)),
+          aiGatewayApiKeyBypassAll: S.optional(__S(1376, __c43, 0)),
+          aiGatewayApiKeyOwnedBySelf: S.optional(__S(1376, __c43, 0)),
+          aiGatewayApiKeySpendAttribution: S.optional(__S(1457, __c45, 17)),
+          aiGatewayApiKeyZdrExemption: S.optional(__S(1376, __c43, 0)),
+          aiGatewayBudget: S.optional(__S(1376, __c43, 0)),
+          aiGatewayCredits: S.optional(__S(1376, __c43, 0)),
+          aiGatewayGuardrails: S.optional(__S(1376, __c43, 0)),
+          aiGatewayPrivateModels: S.optional(__S(1376, __c43, 0)),
+          aiGatewayRules: S.optional(__S(1376, __c43, 0)),
+          aiGatewaySettings: S.optional(__S(1376, __c43, 0)),
+          aiGatewayTranscripts: S.optional(__S(1376, __c43, 0)),
+          aiGatewayTranscriptsSettings: S.optional(__S(1376, __c43, 0)),
+          aiGatewayUsage: S.optional(__S(1376, __c43, 0)),
+          aiGatewayVirtualModelConfigs: S.optional(__S(1376, __c43, 0)),
+          alertRules: S.optional(__S(1376, __c43, 0)),
+          alerts: S.optional(__S(1376, __c43, 0)),
+          aliasGlobal: S.optional(__S(1376, __c43, 0)),
+          aliasProject: S.optional(__S(1376, __c43, 0)),
+          aliasProtectionBypass: S.optional(__S(1376, __c43, 0)),
+          analytics: S.optional(__S(1376, __c43, 0)),
+          analyticsSampling: S.optional(__S(1376, __c43, 0)),
+          analyticsUsage: S.optional(__S(1376, __c43, 0)),
+          apiKey: S.optional(__S(1376, __c43, 0)),
+          apiKeyAiGateway: S.optional(__S(1376, __c43, 0)),
+          apiKeyOwnedBySelf: S.optional(__S(1376, __c43, 0)),
+          auditLog: S.optional(__S(1376, __c43, 0)),
+          automation: S.optional(__S(1376, __c43, 0)),
+          billingAddress: S.optional(__S(1376, __c43, 0)),
+          billingInformation: S.optional(__S(1376, __c43, 0)),
+          billingInvoice: S.optional(__S(1376, __c43, 0)),
+          billingInvoiceEmailRecipient: S.optional(__S(1376, __c43, 0)),
+          billingInvoiceLanguage: S.optional(__S(1376, __c43, 0)),
+          billingPlan: S.optional(__S(1376, __c43, 0)),
+          billingPurchaseOrder: S.optional(__S(1376, __c43, 0)),
+          billingRefund: S.optional(__S(1376, __c43, 0)),
+          billingTaxId: S.optional(__S(1376, __c43, 0)),
+          blob: S.optional(__S(1376, __c43, 0)),
+          blobStoreTokenSet: S.optional(__S(1376, __c43, 0)),
+          budget: S.optional(__S(1376, __c43, 0)),
+          buildMachine: S.optional(__S(1376, __c43, 0)),
+          buildMachineDefault: S.optional(__S(1376, __c43, 0)),
+          bulkRedirects: S.optional(__S(1376, __c43, 0)),
+          cacheArtifact: S.optional(__S(1376, __c43, 0)),
+          cacheArtifactUsageEvent: S.optional(__S(1376, __c43, 0)),
+          ciInvocations: S.optional(__S(1376, __c43, 0)),
+          ciLogs: S.optional(__S(1376, __c43, 0)),
+          codeChecks: S.optional(__S(1376, __c43, 0)),
+          codeOwners: S.optional(__S(1376, __c43, 0)),
+          concurrentBuilds: S.optional(__S(1376, __c43, 0)),
+          connect: S.optional(__S(1376, __c43, 0)),
+          connectConfiguration: S.optional(__S(1376, __c43, 0)),
+          connectConfigurationLink: S.optional(__S(1376, __c43, 0)),
+          connectLogs: S.optional(__S(1376, __c43, 0)),
+          connexClient: S.optional(__S(1376, __c43, 0)),
+          connexClientProject: S.optional(__S(1376, __c43, 0)),
+          connexContact: S.optional(__S(1376, __c43, 0)),
+          connexInstallation: S.optional(__S(1376, __c43, 0)),
+          connexToken: S.optional(__S(1376, __c43, 0)),
+          cursorOriginInstallation: S.optional(__S(1376, __c43, 0)),
+          dataCacheBillingSettings: S.optional(__S(1376, __c43, 0)),
+          dataCacheNamespace: S.optional(__S(1376, __c43, 0)),
+          defaultDeploymentProtection: S.optional(__S(1376, __c43, 0)),
+          deployment: S.optional(__S(1376, __c43, 0)),
+          deploymentBuildLogs: S.optional(__S(1376, __c43, 0)),
+          deploymentCheck: S.optional(__S(1376, __c43, 0)),
+          deploymentCheckPreview: S.optional(__S(1376, __c43, 0)),
+          deploymentCheckReRunFromProductionBranch: S.optional(__S(1457, __c45, 17)),
+          deploymentPolicy: S.optional(__S(1376, __c43, 0)),
+          deploymentPreview: S.optional(__S(1376, __c43, 0)),
+          deploymentPrivate: S.optional(__S(1376, __c43, 0)),
+          deploymentProductionGit: S.optional(__S(1376, __c43, 0)),
+          deploymentPromote: S.optional(__S(1376, __c43, 0)),
+          deploymentProtectionException: S.optional(__S(1376, __c43, 0)),
+          deploymentRollback: S.optional(__S(1376, __c43, 0)),
+          deploymentV0: S.optional(__S(1376, __c43, 0)),
+          domain: S.optional(__S(1376, __c43, 0)),
+          domainAcceptDelegation: S.optional(__S(1376, __c43, 0)),
+          domainAuthCodes: S.optional(__S(1376, __c43, 0)),
+          domainCertificate: S.optional(__S(1376, __c43, 0)),
+          domainCheckConfig: S.optional(__S(1376, __c43, 0)),
+          domainMove: S.optional(__S(1376, __c43, 0)),
+          domainPurchase: S.optional(__S(1376, __c43, 0)),
+          domainRecord: S.optional(__S(1376, __c43, 0)),
+          domainTransferIn: S.optional(__S(1376, __c43, 0)),
+          drain: S.optional(__S(1376, __c43, 0)),
+          edgeCacheNamespace: S.optional(__S(1376, __c43, 0)),
+          edgeConfig: S.optional(__S(1376, __c43, 0)),
+          edgeConfigItem: S.optional(__S(1376, __c43, 0)),
+          edgeConfigSchema: S.optional(__S(1376, __c43, 0)),
+          edgeConfigToken: S.optional(__S(1376, __c43, 0)),
+          endpointVerification: S.optional(__S(1376, __c43, 0)),
+          environments: S.optional(__S(1376, __c43, 0)),
+          event: S.optional(__S(1376, __c43, 0)),
+          fileUpload: S.optional(__S(1376, __c43, 0)),
+          flagsExplorerSubscription: S.optional(__S(1376, __c43, 0)),
+          gitCredentialGrant: S.optional(__S(1376, __c43, 0)),
+          gitRepository: S.optional(__S(1376, __c43, 0)),
+          imageOptimizationNewPrice: S.optional(__S(1376, __c43, 0)),
+          integration: S.optional(__S(1376, __c43, 0)),
+          integrationAccount: S.optional(__S(1376, __c43, 0)),
+          integrationConfiguration: S.optional(__S(1376, __c43, 0)),
+          integrationConfigurationProjects: S.optional(__S(1457, __c45, 17)),
+          integrationConfigurationRole: S.optional(__S(1376, __c43, 0)),
+          integrationConfigurationTransfer: S.optional(__S(1457, __c45, 17)),
+          integrationDeploymentAction: S.optional(__S(1376, __c43, 0)),
+          integrationEvent: S.optional(__S(1376, __c43, 0)),
+          integrationLog: S.optional(__S(1376, __c43, 0)),
+          integrationPullRequest: S.optional(__S(1376, __c43, 0)),
+          integrationResource: S.optional(__S(1376, __c43, 0)),
+          integrationResourceData: S.optional(__S(1376, __c43, 0)),
+          integrationResourceReplCommand: S.optional(__S(1457, __c45, 17)),
+          integrationResourceSecrets: S.optional(__S(1376, __c43, 0)),
+          integrationSSOSession: S.optional(__S(1376, __c43, 0)),
+          integrationStoreTokenSet: S.optional(__S(1376, __c43, 0)),
+          integrationStrict: S.optional(__S(1376, __c43, 0)),
+          integrationVercelConfigurationOverride: S.optional(__S(1457, __c45, 17)),
+          ipBlocking: S.optional(__S(1376, __c43, 0)),
+          job: S.optional(__S(1376, __c43, 0)),
+          jobGlobal: S.optional(__S(1376, __c43, 0)),
+          kmsIssuer: S.optional(__S(1376, __c43, 0)),
+          kmsProjectGrant: S.optional(__S(1376, __c43, 0)),
+          logDrain: S.optional(__S(1376, __c43, 0)),
+          logs: S.optional(__S(1376, __c43, 0)),
+          logsPreset: S.optional(__S(1376, __c43, 0)),
+          marketplaceBillingData: S.optional(__S(1376, __c43, 0)),
+          marketplaceExperimentationEdgeConfigData: S.optional(__S(1457, __c45, 17)),
+          marketplaceExperimentationItem: S.optional(__S(1457, __c45, 17)),
+          marketplaceFlexCommit: S.optional(__S(1376, __c43, 0)),
+          marketplaceInstallationMember: S.optional(__S(1376, __c43, 0)),
+          marketplaceInvoice: S.optional(__S(1376, __c43, 0)),
+          marketplaceSettings: S.optional(__S(1376, __c43, 0)),
+          messageboard: S.optional(__S(1376, __c43, 0)),
+          messageboardSpace: S.optional(__S(1376, __c43, 0)),
+          messageboardTask: S.optional(__S(1376, __c43, 0)),
+          Monitoring: S.optional(__S(1376, __c43, 0)),
+          monitoringAlert: S.optional(__S(1376, __c43, 0)),
+          monitoringChart: S.optional(__S(1376, __c43, 0)),
+          monitoringQuery: S.optional(__S(1376, __c43, 0)),
+          monitoringSettings: S.optional(__S(1376, __c43, 0)),
+          notificationCustomerBudget: S.optional(__S(1376, __c43, 0)),
+          notificationDeploymentFailed: S.optional(__S(1376, __c43, 0)),
+          notificationDomainConfiguration: S.optional(__S(1457, __c45, 17)),
+          notificationDomainExpire: S.optional(__S(1376, __c43, 0)),
+          notificationDomainMoved: S.optional(__S(1376, __c43, 0)),
+          notificationDomainPurchase: S.optional(__S(1376, __c43, 0)),
+          notificationDomainRenewal: S.optional(__S(1376, __c43, 0)),
+          notificationDomainTransfer: S.optional(__S(1376, __c43, 0)),
+          notificationDomainUnverified: S.optional(__S(1376, __c43, 0)),
+          NotificationMonitoringAlert: S.optional(__S(1376, __c43, 0)),
+          notificationPaymentFailed: S.optional(__S(1376, __c43, 0)),
+          notificationPreferences: S.optional(__S(1376, __c43, 0)),
+          notificationStatementOfReasons: S.optional(__S(1457, __c45, 17)),
+          notificationUsageAlert: S.optional(__S(1376, __c43, 0)),
+          oauth2Application: S.optional(__S(1376, __c43, 0)),
+          oauth2Connection: S.optional(__S(1376, __c43, 0)),
+          observabilityConfiguration: S.optional(__S(1376, __c43, 0)),
+          observabilityData: S.optional(__S(1376, __c43, 0)),
+          observabilityFunnel: S.optional(__S(1376, __c43, 0)),
+          observabilityNotebook: S.optional(__S(1376, __c43, 0)),
+          oidcFederationPolicy: S.optional(__S(1376, __c43, 0)),
+          onDemandBuild: S.optional(__S(1376, __c43, 0)),
+          onDemandConcurrency: S.optional(__S(1376, __c43, 0)),
+          openTelemetryEndpoint: S.optional(__S(1376, __c43, 0)),
+          optionsAllowlist: S.optional(__S(1376, __c43, 0)),
+          organization: S.optional(__S(1376, __c43, 0)),
+          organizationDomain: S.optional(__S(1376, __c43, 0)),
+          organizationTeam: S.optional(__S(1376, __c43, 0)),
+          ownEvent: S.optional(__S(1376, __c43, 0)),
+          pageIntegrity: S.optional(__S(1376, __c43, 0)),
+          passwordProtection: S.optional(__S(1376, __c43, 0)),
+          passwordProtectionInvoiceItem: S.optional(__S(1376, __c43, 0)),
+          paymentMethod: S.optional(__S(1376, __c43, 0)),
+          permissions: S.optional(__S(1376, __c43, 0)),
+          postgres: S.optional(__S(1376, __c43, 0)),
+          postgresStoreTokenSet: S.optional(__S(1376, __c43, 0)),
+          previewDeploymentSuffix: S.optional(__S(1376, __c43, 0)),
+          privateCloudAccount: S.optional(__S(1376, __c43, 0)),
+          privateLinkEndpoint: S.optional(__S(1376, __c43, 0)),
+          productionAliasProtectionBypass: S.optional(__S(1457, __c45, 17)),
+          productionShareableLink: S.optional(__S(1376, __c43, 0)),
+          project: S.optional(__S(1376, __c43, 0)),
+          projectAccessGroup: S.optional(__S(1376, __c43, 0)),
+          projectAnalyticsSampling: S.optional(__S(1376, __c43, 0)),
+          projectAnalyticsUsage: S.optional(__S(1376, __c43, 0)),
+          projectCheck: S.optional(__S(1376, __c43, 0)),
+          projectCheckRun: S.optional(__S(1376, __c43, 0)),
+          projectDeploymentExpiration: S.optional(__S(1376, __c43, 0)),
+          projectDeploymentHook: S.optional(__S(1376, __c43, 0)),
+          projectDeploymentProtectionStrict: S.optional(__S(1457, __c45, 17)),
+          projectDomain: S.optional(__S(1376, __c43, 0)),
+          projectDomainCheckConfig: S.optional(__S(1376, __c43, 0)),
+          projectDomainMove: S.optional(__S(1376, __c43, 0)),
+          projectDomainVerify: S.optional(__S(1376, __c43, 0)),
+          projectEnvVars: S.optional(__S(1376, __c43, 0)),
+          projectEnvVarsProduction: S.optional(__S(1376, __c43, 0)),
+          projectEnvVarsUnownedByIntegration: S.optional(__S(1457, __c45, 17)),
+          projectEvent: S.optional(__S(1376, __c43, 0)),
+          projectFlags: S.optional(__S(1376, __c43, 0)),
+          projectFlagsProduction: S.optional(__S(1376, __c43, 0)),
+          projectFlagsSdkKey: S.optional(__S(1376, __c43, 0)),
+          projectFromV0: S.optional(__S(1376, __c43, 0)),
+          projectId: S.optional(__S(1376, __c43, 0)),
+          projectIntegrationConfiguration: S.optional(__S(1457, __c45, 17)),
+          projectLink: S.optional(__S(1376, __c43, 0)),
+          projectMember: S.optional(__S(1376, __c43, 0)),
+          projectMonitoring: S.optional(__S(1376, __c43, 0)),
+          projectOIDCToken: S.optional(__S(1376, __c43, 0)),
+          projectPermissions: S.optional(__S(1376, __c43, 0)),
+          projectProductionBranch: S.optional(__S(1376, __c43, 0)),
+          projectProtectionBypass: S.optional(__S(1376, __c43, 0)),
+          projectRollingRelease: S.optional(__S(1376, __c43, 0)),
+          projectRoutes: S.optional(__S(1376, __c43, 0)),
+          projectSetting: S.optional(__S(1376, __c43, 0)),
+          projectSupportCase: S.optional(__S(1376, __c43, 0)),
+          projectSupportCaseComment: S.optional(__S(1376, __c43, 0)),
+          projectTier: S.optional(__S(1376, __c43, 0)),
+          projectTransfer: S.optional(__S(1376, __c43, 0)),
+          projectTransferIn: S.optional(__S(1376, __c43, 0)),
+          projectTransferOut: S.optional(__S(1376, __c43, 0)),
+          projectTransferRequest: S.optional(__S(1376, __c43, 0)),
+          projectUsage: S.optional(__S(1376, __c43, 0)),
+          proTrialOnboarding: S.optional(__S(1376, __c43, 0)),
+          rateLimit: S.optional(__S(1376, __c43, 0)),
+          redis: S.optional(__S(1376, __c43, 0)),
+          redisStoreTokenSet: S.optional(__S(1376, __c43, 0)),
+          remoteCaching: S.optional(__S(1376, __c43, 0)),
+          repository: S.optional(__S(1376, __c43, 0)),
+          samlConfig: S.optional(__S(1376, __c43, 0)),
+          schedule: S.optional(__S(1376, __c43, 0)),
+          seawallConfig: S.optional(__S(1376, __c43, 0)),
+          secret: S.optional(__S(1376, __c43, 0)),
+          securityConfig: S.optional(__S(1376, __c43, 0)),
+          securityPlusConfiguration: S.optional(__S(1376, __c43, 0)),
+          sensitiveEnvironmentVariablePolicy: S.optional(__S(1457, __c45, 17)),
+          setting: S.optional(__S(1376, __c43, 0)),
+          shareableLink: S.optional(__S(1376, __c43, 0)),
+          shareableLinkStrict: S.optional(__S(1376, __c43, 0)),
+          sharedEnvVarConnection: S.optional(__S(1376, __c43, 0)),
+          sharedEnvVars: S.optional(__S(1376, __c43, 0)),
+          sharedEnvVarsProduction: S.optional(__S(1376, __c43, 0)),
+          skewProtection: S.optional(__S(1376, __c43, 0)),
+          space: S.optional(__S(1376, __c43, 0)),
+          spaceRun: S.optional(__S(1376, __c43, 0)),
+          storeIsLocked: S.optional(__S(1376, __c43, 0)),
+          storeTokenSetSensitive: S.optional(__S(1376, __c43, 0)),
+          storeTransfer: S.optional(__S(1376, __c43, 0)),
+          supportCase: S.optional(__S(1376, __c43, 0)),
+          supportCaseComment: S.optional(__S(1376, __c43, 0)),
+          team: S.optional(__S(1376, __c43, 0)),
+          teamAccessRequest: S.optional(__S(1376, __c43, 0)),
+          teamFellowMembership: S.optional(__S(1376, __c43, 0)),
+          teamGitExclusivity: S.optional(__S(1376, __c43, 0)),
+          teamInvite: S.optional(__S(1376, __c43, 0)),
+          teamInviteCode: S.optional(__S(1376, __c43, 0)),
+          teamInviteLink: S.optional(__S(1376, __c43, 0)),
+          teamJoin: S.optional(__S(1376, __c43, 0)),
+          teamMemberMfaStatus: S.optional(__S(1376, __c43, 0)),
+          teamMicrofrontends: S.optional(__S(1376, __c43, 0)),
+          teamOwnMembership: S.optional(__S(1376, __c43, 0)),
+          teamOwnMembershipDisconnectSAML: S.optional(__S(1457, __c45, 17)),
+          teamSudo: S.optional(__S(1376, __c43, 0)),
+          teamTokenInvalidation: S.optional(__S(1376, __c43, 0)),
+          token: S.optional(__S(1376, __c43, 0)),
+          toolbarComment: S.optional(__S(1376, __c43, 0)),
+          trustedIps: S.optional(__S(1376, __c43, 0)),
+          trustedSources: S.optional(__S(1376, __c43, 0)),
+          usage: S.optional(__S(1376, __c43, 0)),
+          usageCycle: S.optional(__S(1376, __c43, 0)),
+          user: S.optional(__S(1376, __c43, 0)),
+          userConnection: S.optional(__S(1376, __c43, 0)),
+          userMfaConfiguration: S.optional(__S(1376, __c43, 0)),
+          userPreference: S.optional(__S(1376, __c43, 0)),
+          userSudo: S.optional(__S(1376, __c43, 0)),
+          v0Chat: S.optional(__S(1376, __c43, 0)),
+          vcrRepository: S.optional(__S(1376, __c43, 0)),
+          vercelAppInstallation: S.optional(__S(1376, __c43, 0)),
+          vercelAppInstallationRequest: S.optional(__S(1376, __c43, 0)),
+          vercelAuth: S.optional(__S(1376, __c43, 0)),
+          vercelRun: S.optional(__S(1376, __c43, 0)),
+          vpcPeeringConnection: S.optional(__S(1376, __c43, 0)),
+          webAnalytics: S.optional(__S(1376, __c43, 0)),
+          webAnalyticsPlan: S.optional(__S(1376, __c43, 0)),
+          webAuthn: S.optional(__S(1376, __c43, 0)),
+          webhook: S.optional(__S(1376, __c43, 0)),
+          webhook_event: S.optional(__S(1376, __c43, 0).pipe(T.Body("webhook-event"))),
+          workflowRunData: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({
         identifier: "GetProjectResponsePermissions",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
     case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           buildMachineElasticLastUpdated: S.optional(S.Number),
           buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(49, __c6, 1)),
+          buildMachineElasticTransition: S.optional(__S(1455, __c45, 15)),
           buildMachineSelection: S.optional(S.String),
           buildMachineType: S.optional(S.String),
-          buildQueue: S.optional(__S(21, __c2, 5)),
+          buildQueue: S.optional(__S(1442, __c45, 2)),
           elasticConcurrencyEnabled: S.optional(S.Boolean),
           enableFunctionsBeta: S.optional(S.Boolean),
           fluid: S.optional(S.Boolean),
           functionDefaultMemoryType: S.optional(S.String),
-          functionDefaultRegions: __S(10, __c1, 2),
+          functionDefaultRegions: __S(1280, __c40, 0),
           functionDefaultTimeout: S.optional(S.Number),
           functionZeroConfigFailover: S.optional(S.Boolean),
           isNSNBDisabled: S.optional(S.Boolean),
@@ -28964,11 +27313,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseResourceConfig",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          excludePaths: S.optional(__S(10, __c1, 2)),
-          excludeStatusCodes: S.optional(__S(90, __c11, 2)),
+          excludePaths: S.optional(__S(1280, __c40, 0)),
+          excludeStatusCodes: S.optional(__S(1473, __c46, 1)),
           ingestWatermarkSeconds: S.optional(S.Number),
           minSampleSize: S.optional(S.Number),
           type: S.String,
@@ -28976,13 +27325,13 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseRollingReleaseGateChecksItem",
       });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
     case 4:
+      return S.Array(__S(259, __c8, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          checks: __S(179, __c22, 3),
+          checks: __S(260, __c8, 4),
           dryRun: S.Boolean,
           enabled: S.Boolean,
           failureThreshold: S.optional(S.Number),
@@ -28991,55 +27340,51 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseRollingReleaseGate",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           canaryResponseHeader: S.optional(S.Boolean),
-          gate: S.optional(__S(180, __c22, 4)),
-          stages: S.optional(S.NullOr(__S(95, __c11, 7))),
+          gate: S.optional(__S(261, __c8, 5)),
+          stages: S.optional(S.NullOr(__S(1475, __c46, 3))),
           target: S.String,
         }),
       ).annotate({
         identifier: "GetProjectResponseRollingRelease",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           algo: S.String,
-          keys: __S(10, __c1, 2),
+          keys: __S(1280, __c40, 0),
           limit: S.Number,
           window: S.Number,
         }),
       ).annotate({
         identifier: "GetProjectResponseSecurityRulesetsValueRateLimit",
       });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
           actionDuration: S.optional(S.NullOr(S.String)),
           bypassSystem: S.optional(S.NullOr(S.Boolean)),
           logHeaders: S.optional(S.Unknown),
-          rateLimit: S.optional(S.NullOr(__S(182, __c22, 6))),
-          redirect: S.optional(S.NullOr(__S(101, __c12, 5))),
+          rateLimit: S.optional(S.NullOr(__S(263, __c8, 7))),
+          redirect: S.optional(S.NullOr(__S(1478, __c46, 6))),
         }),
       ).annotate({
         identifier: "GetProjectResponseSecurityRulesetsValue",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(183, __c22, 7));
-    case 1:
+    case 9:
+      return S.Record(S.String, __S(264, __c8, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           attackModeActiveUntil: S.optional(S.NullOr(S.Number)),
           attackModeEnabled: S.optional(S.Boolean),
           attackModeUpdatedAt: S.optional(S.Number),
           botIdEnabled: S.optional(S.Boolean),
-          firewallBypassIps: S.optional(__S(10, __c1, 2)),
+          firewallBypassIps: S.optional(__S(1280, __c40, 0)),
           firewallConfigVersion: S.optional(S.Number),
           firewallEnabled: S.optional(S.Boolean),
           firewallSeawallEnabled: S.optional(S.Boolean),
@@ -29047,14 +27392,14 @@ function __c23(j: number): any {
           ja3Enabled: S.optional(S.Boolean),
           ja4Enabled: S.optional(S.Boolean),
           log_headers: S.optional(S.Unknown),
-          managedRules: S.optional(S.NullOr(__S(99, __c12, 3))),
+          managedRules: S.optional(S.NullOr(__S(1505, __c47, 1))),
           pageIntegrityEnabled: S.optional(S.Boolean),
-          rulesets: S.optional(__S(184, __c23, 0)),
+          rulesets: S.optional(__S(265, __c8, 9)),
         }),
       ).annotate({
         identifier: "GetProjectResponseSecurity",
       });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           aud: S.String,
@@ -29062,7 +27407,7 @@ function __c23(j: number): any {
           deployment_id: S.optional(S.String),
           environment: S.String,
           iss: S.String,
-          mfe_group_ids: S.optional(__S(10, __c1, 2)),
+          mfe_group_ids: S.optional(__S(1280, __c40, 0)),
           owner: S.String,
           owner_id: S.String,
           plan: S.optional(S.String),
@@ -29074,32 +27419,32 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseTargetsValueOidcTokenClaims",
       });
-    case 3:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
+          alias: S.optional(__S(1280, __c40, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(10, __c1, 2)),
-          branchMatcher: S.optional(__S(25, __c3, 1)),
+          automaticAliases: S.optional(__S(1280, __c40, 0)),
+          branchMatcher: S.optional(__S(1444, __c45, 4)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
+          builds: S.optional(__S(1446, __c45, 6)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
+          creator: S.NullOr(__S(1447, __c45, 7)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
+          meta: S.optional(__S(1408, __c44, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(186, __c23, 2)),
+          oidcTokenClaims: S.optional(__S(267, __c8, 11)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -29117,37 +27462,33 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseTargetsValue",
       });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(187, __c23, 3)));
-    case 5:
+    case 13:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(268, __c8, 12)));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           domains: S.optional(S.String),
-          ignorePaths: S.optional(__S(10, __c1, 2)),
-          samplingRules: S.optional(__S(114, __c14, 2)),
+          ignorePaths: S.optional(__S(1280, __c40, 0)),
+          samplingRules: S.optional(__S(1484, __c46, 12)),
         }),
       ).annotate({
         identifier: "GetProjectResponseTracing",
       });
-    case 6:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           to: S.Unknown,
-          claims: __S(116, __c14, 4),
+          claims: __S(1485, __c46, 13),
           label: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetProjectResponseTrustedSourcesOidcProvidersValueItem",
       });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(191, __c23, 7));
-    case 1:
+    case 16:
+      return S.Array(__S(271, __c8, 15));
+    case 17:
+      return S.Record(S.String, __S(272, __c8, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           from: S.Unknown,
@@ -29156,132 +27497,136 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetProjectResponseTrustedSourcesProjectsValueCustomAllowItem",
       });
-    case 2:
-      return S.Array(__S(193, __c24, 1));
-    case 3:
+    case 19:
+      return S.Array(__S(274, __c8, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          customAllow: S.optional(__S(194, __c24, 2)),
+          customAllow: S.optional(__S(275, __c8, 19)),
           label: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetProjectResponseTrustedSourcesProjectsValue",
       });
-    case 4:
-      return S.Record(S.String, __S(195, __c24, 3));
-    case 5:
+    case 21:
+      return S.Record(S.String, __S(276, __c8, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           enableVercelCiSameRepository: S.optional(S.Boolean),
-          oidcProviders: S.optional(__S(192, __c24, 0)),
-          projects: S.optional(__S(196, __c24, 4)),
+          oidcProviders: S.optional(__S(273, __c8, 17)),
+          projects: S.optional(__S(277, __c8, 21)),
         }),
       ).annotate({
         identifier: "GetProjectResponseTrustedSources",
       });
-    case 6:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
-          alias: __S(146, __c18, 2),
-          analytics: S.optional(__S(34, __c4, 2)),
+          alias: __S(227, __c7, 3),
+          analytics: S.optional(__S(1449, __c45, 9)),
           appliedCve55182Migration: S.optional(S.Boolean),
           autoAssignCustomDomains: S.optional(S.Boolean),
           autoAssignCustomDomainsUpdatedBy: S.optional(S.String),
           autoExposeSystemEnvs: S.optional(S.Boolean),
           avatar: S.optional(S.NullOr(S.String)),
-          blobs: S.optional(__S(35, __c4, 3)),
+          blobs: S.optional(__S(1450, __c45, 10)),
           buildCommand: S.optional(S.NullOr(S.String)),
           commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
           concurrencyBucketName: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.NullOr(S.String)),
-          connectConfigurations: S.optional(S.NullOr(__S(148, __c18, 4))),
+          connectConfigurations: S.optional(S.NullOr(__S(229, __c7, 5))),
           createdAt: S.optional(S.Number),
           creator: S.optional(S.Unknown),
-          crons: S.optional(__S(149, __c18, 5)),
-          customEnvironments: S.optional(__S(153, __c19, 1)),
+          crons: S.optional(__S(230, __c7, 6)),
+          customEnvironments: S.optional(__S(234, __c7, 10)),
           customerSupportCodeVisibility: S.optional(S.Boolean),
-          dataCache: S.optional(__S(48, __c6, 0)),
-          defaultResourceConfig: __S(154, __c19, 2),
-          deploymentExpiration: __S(51, __c6, 3),
-          deploymentPolicy: S.optional(S.NullOr(__S(162, __c20, 2))),
+          dataCache: S.optional(__S(1454, __c45, 14)),
+          defaultResourceConfig: __S(235, __c7, 11),
+          deploymentExpiration: __S(1456, __c45, 16),
+          deploymentPolicy: S.optional(S.NullOr(__S(243, __c7, 19))),
           devCommand: S.optional(S.NullOr(S.String)),
           directoryListing: S.Boolean,
-          dismissedToasts: S.optional(__S(164, __c20, 4)),
+          dismissedToasts: S.optional(__S(245, __c7, 21)),
           enableAffectedProjectsDeployments: S.optional(S.Boolean),
           enableExternalRewriteCaching: S.optional(S.Boolean),
           enablePreviewFeedback: S.optional(S.NullOr(S.Boolean)),
           enableProductionFeedback: S.optional(S.NullOr(S.Boolean)),
-          env: S.optional(__S(166, __c20, 6)),
+          env: S.optional(__S(247, __c7, 23)),
           expiration: S.optional(S.Unknown),
-          features: S.optional(__S(66, __c8, 2)),
+          features: S.optional(__S(1458, __c45, 18)),
           framework: S.optional(S.NullOr(S.String)),
-          gitComments: S.optional(__S(67, __c8, 3)),
+          gitComments: S.optional(__S(1459, __c45, 19)),
           gitForkProtection: S.optional(S.Boolean),
           gitLFS: S.optional(S.Boolean),
-          gitProviderOptions: S.optional(__S(69, __c8, 5)),
+          gitProviderOptions: S.optional(__S(1461, __c45, 21)),
           hasActiveBranches: S.optional(S.Boolean),
           hasDeployments: S.optional(S.Boolean),
           id: S.String,
           installCommand: S.optional(S.NullOr(S.String)),
-          integrations: S.optional(__S(170, __c21, 2)),
-          internalRoutes: S.optional(__S(171, __c21, 3)),
-          ipBuckets: S.optional(__S(72, __c9, 0)),
-          jobs: S.optional(__S(172, __c21, 4)),
-          lastAliasRequest: S.optional(S.NullOr(__S(75, __c9, 3))),
+          integrations: S.optional(__S(251, __c7, 27)),
+          internalRoutes: S.optional(__S(252, __c7, 28)),
+          ipBuckets: S.optional(__S(1463, __c45, 23)),
+          jobs: S.optional(__S(253, __c7, 29)),
+          lastAliasRequest: S.optional(S.NullOr(__S(1465, __c45, 25))),
           lastRollbackTarget: S.optional(S.NullOr(S.Unknown)),
-          latestDeployments: S.optional(__S(174, __c21, 6)),
+          latestDeployments: S.optional(__S(255, __c7, 31)),
           link: S.optional(S.Unknown),
           live: S.optional(S.Boolean),
           microfrontends: S.optional(S.Unknown),
           name: S.String,
           nodeVersion: S.String,
-          oidcTokenConfig: S.optional(__S(19, __c2, 3)),
-          optionsAllowlist: S.optional(S.NullOr(__S(82, __c10, 2))),
+          oidcTokenConfig: S.optional(__S(1441, __c45, 1)),
+          optionsAllowlist: S.optional(S.NullOr(__S(1468, __c45, 28))),
           outputDirectory: S.optional(S.NullOr(S.String)),
           passiveConnectConfigurationId: S.optional(S.NullOr(S.String)),
-          passport: S.optional(S.NullOr(__S(83, __c10, 3))),
+          passport: S.optional(S.NullOr(__S(1469, __c45, 29))),
           passwordProtection: S.optional(S.NullOr(S.Unknown)),
           paused: S.optional(S.Boolean),
-          permissions: S.optional(__S(175, __c21, 7)),
+          permissions: S.optional(__S(256, __c8, 0)),
           productionDeploymentsFastLane: S.optional(S.Boolean),
           protectedSourcemaps: S.optional(S.Boolean),
-          protectionBypass: S.optional(__S(176, __c22, 0)),
-          protectionConfig: S.optional(__S(87, __c10, 7)),
-          resourceConfig: __S(177, __c22, 1),
-          rollbackDescription: S.optional(__S(89, __c11, 1)),
-          rollingRelease: S.optional(S.NullOr(__S(181, __c22, 5))),
+          protectionBypass: S.optional(__S(257, __c8, 1)),
+          protectionConfig: S.optional(__S(1471, __c45, 31)),
+          resourceConfig: __S(258, __c8, 2),
+          rollbackDescription: S.optional(__S(1472, __c46, 0)),
+          rollingRelease: S.optional(S.NullOr(__S(262, __c8, 6))),
           rootDirectory: S.optional(S.NullOr(S.String)),
-          sandbox: S.optional(__S(97, __c12, 1)),
-          security: S.optional(__S(185, __c23, 1)),
+          sandbox: S.optional(__S(1476, __c46, 4)),
+          security: S.optional(__S(266, __c8, 10)),
           serverlessFunctionZeroConfigFailover: S.optional(S.Boolean),
-          services: S.optional(__S(106, __c13, 2)),
-          skewProtectionAllowedDomains: S.optional(__S(10, __c1, 2)),
+          services: S.optional(__S(1480, __c46, 8)),
+          skewProtectionAllowedDomains: S.optional(__S(1280, __c40, 0)),
           skewProtectionBoundaryAt: S.optional(S.Number),
           skewProtectionMaxAge: S.optional(S.Number),
           skipGitConnectDuringLink: S.optional(S.Boolean),
           sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
-          speedInsights: S.optional(__S(107, __c13, 3)),
-          ssoProtection: S.optional(S.NullOr(__S(108, __c13, 4))),
-          staticIps: S.optional(__S(109, __c13, 5)),
-          targets: S.optional(__S(188, __c23, 4)),
+          speedInsights: S.optional(__S(1481, __c46, 9)),
+          ssoProtection: S.optional(S.NullOr(__S(1506, __c47, 2))),
+          staticIps: S.optional(__S(1482, __c46, 10)),
+          targets: S.optional(__S(269, __c8, 13)),
           tier: S.optional(S.String),
-          tracing: S.optional(__S(189, __c23, 5)),
+          tracing: S.optional(__S(270, __c8, 14)),
           transferCompletedAt: S.optional(S.Number),
           transferredFromAccountId: S.optional(S.String),
           transferStartedAt: S.optional(S.Number),
           transferToAccountId: S.optional(S.String),
           trustedIps: S.optional(S.NullOr(S.Unknown)),
-          trustedSources: S.optional(S.NullOr(__S(197, __c24, 5))),
+          trustedSources: S.optional(S.NullOr(__S(278, __c8, 22))),
           updatedAt: S.optional(S.Number),
-          usageStatus: S.optional(__S(125, __c15, 5)),
+          usageStatus: S.optional(__S(1486, __c46, 14)),
           v0: S.optional(S.Boolean),
           v0Created: S.optional(S.Boolean),
-          webAnalytics: S.optional(__S(126, __c15, 6)),
+          webAnalytics: S.optional(__S(1487, __c46, 15)),
         }),
       ).annotate({ identifier: "GetProjectResponse" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -29292,11 +27637,7 @@ function __c24(j: number): any {
           T.Http({ method: "GET", uri: "/v9/projects/{idOrName}/domains/{domain}", code: 200 }),
         ),
       ).annotate({ identifier: "GetProjectDomainRequest" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apexName: S.String,
@@ -29308,11 +27649,15 @@ function __c25(j: number): any {
           redirect: S.optional(S.NullOr(S.String)),
           redirectStatusCode: S.optional(S.NullOr(S.Number)),
           updatedAt: S.optional(S.Number),
-          verification: S.optional(__S(8, __c1, 0)),
+          verification: S.optional(__S(1184, __c37, 0)),
           verified: S.Boolean,
         }),
       ).annotate({ identifier: "GetProjectDomainResponse" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -29331,11 +27676,15 @@ function __c25(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v9/projects/{idOrName}/domains", code: 200 })),
       ).annotate({ identifier: "GetProjectDomainsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetProjectDomainsResponse",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -29344,11 +27693,15 @@ function __c25(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/projects/{idOrName}/env/{id}", code: 200 })),
       ).annotate({ identifier: "GetProjectEnvRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetProjectEnvResponse",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -29370,98 +27723,15 @@ function __c25(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v10/projects", code: 200 })),
       ).annotate({ identifier: "GetProjectsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pattern: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          aud: S.String,
-          custom_environment_id: S.optional(S.String),
-          deployment_id: S.optional(S.String),
-          environment: S.String,
-          iss: S.String,
-          mfe_group_ids: S.optional(__S(4, __c0, 4)),
-          owner: S.String,
-          owner_id: S.String,
-          plan: S.optional(S.String),
-          project: S.String,
-          project_id: S.String,
-          scope: S.String,
-          sub: S.String,
-        }),
-      ).annotate({
-        identifier: "GetProjectsResponseBodyCase0ItemAliasItemDeploymentOidcTokenClaims",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          algorithmVersion: S.String,
-          at: S.Number,
-          direction: S.String,
-        }),
-      ).annotate({
-        identifier: "GetProjectsResponseBodyCase0ItemResourceConfigBuildMachineElasticTransition",
-      });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          configuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetProjectsResponseBodyCase0ItemResourceConfigBuildQueue",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          active: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GetProjectsResponseBodyCase0ItemSecurityManagedRulesAiBots",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          active: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GetProjectsResponseBodyCase0ItemSecurityManagedRulesBotFilter",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          april2026SecurityIncidentMigrationAppliedFrom: S.optional(S.NullOr(S.String)),
-          cve55182MigrationAppliedFrom: S.optional(S.NullOr(S.String)),
-          deploymentType: S.String,
-        }),
-      ).annotate({
-        identifier: "GetProjectsResponseBodyCase0ItemSsoProtection",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targets: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "GetProjectsResponseBodyCase2ProjectsItemJobsTypecheck",
-      });
-    case 6:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetProjectsResponse",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -29470,17 +27740,17 @@ function __c26(j: number): any {
           source: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{idOrName}/token", code: 200 })),
       ).annotate({ identifier: "GetProjectTokenRequest" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
         }),
       ).annotate({ identifier: "GetProjectTokenResponse" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
@@ -29489,38 +27759,34 @@ function __c27(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/projects/traces", code: 200 })),
       ).annotate({ identifier: "GetProjectTraceRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          attributes: __S(29, __c3, 5),
+          attributes: __S(1408, __c44, 0),
           name: S.String,
         }),
       ).annotate({
         identifier: "GetProjectTraceResponseTraceResourcesItem",
       });
+    case 2:
+      return S.Array(__S(449, __c14, 1));
     case 3:
-      return S.Array(__S(218, __c27, 2));
-    case 4:
       return S.Record(S.String, S.Unknown);
-    case 5:
+    case 4:
       return S.Array(S.Number);
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          attributes: __S(220, __c27, 4),
+          attributes: __S(451, __c14, 3),
           name: S.String,
-          timestamp: __S(221, __c27, 5),
+          timestamp: __S(452, __c14, 4),
         }),
       ).annotate({
         identifier: "GetProjectTraceResponseTraceSpansItemEventsItem",
       });
+    case 6:
+      return S.Array(__S(453, __c14, 5));
     case 7:
-      return S.Array(__S(222, __c27, 6));
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -29529,9 +27795,9 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProjectTraceResponseTraceSpansItemLibrary",
       });
-    case 1:
-      return S.Array(__S(220, __c27, 4));
-    case 2:
+    case 8:
+      return S.Array(__S(451, __c14, 3));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           code: S.Number,
@@ -29540,48 +27806,52 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProjectTraceResponseTraceSpansItemStatus",
       });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          attributes: __S(220, __c27, 4),
-          duration: __S(221, __c27, 5),
-          endTime: __S(221, __c27, 5),
-          events: __S(223, __c27, 7),
+          attributes: __S(451, __c14, 3),
+          duration: __S(452, __c14, 4),
+          endTime: __S(452, __c14, 4),
+          events: __S(454, __c14, 6),
           kind: S.Number,
-          library: __S(224, __c28, 0),
-          links: __S(225, __c28, 1),
+          library: __S(455, __c14, 7),
+          links: __S(456, __c14, 8),
           name: S.String,
           parentSpanId: S.optional(S.String),
           resource: S.String,
           spanId: S.String,
-          startTime: __S(221, __c27, 5),
-          status: __S(226, __c28, 2),
+          startTime: __S(452, __c14, 4),
+          status: __S(457, __c14, 9),
           traceFlags: S.Number,
           traceState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetProjectTraceResponseTraceSpansItem",
       });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(458, __c14, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(219, __c27, 3)),
+          resources: S.optional(__S(450, __c14, 2)),
           rootSpanId: S.optional(S.String),
-          spans: __S(228, __c28, 4),
+          spans: __S(459, __c14, 11),
           traceId: S.String,
         }),
       ).annotate({
         identifier: "GetProjectTraceResponseTrace",
       });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          trace: __S(229, __c28, 5),
+          trace: __S(460, __c14, 12),
         }),
       ).annotate({ identifier: "GetProjectTraceResponse" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -29597,15 +27867,15 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListPromoteAliasesRequest",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPromoteAliasesResponse",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -29624,7 +27894,7 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MoveProjectDomainRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apexName: S.String,
@@ -29636,13 +27906,17 @@ function __c29(j: number): any {
           redirect: S.optional(S.NullOr(S.String)),
           redirectStatusCode: S.optional(S.NullOr(S.Number)),
           updatedAt: S.optional(S.Number),
-          verification: S.optional(__S(8, __c1, 0)),
+          verification: S.optional(__S(1184, __c37, 0)),
           verified: S.Boolean,
         }),
       ).annotate({
         identifier: "MoveProjectDomainResponse",
       });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -29650,7 +27924,11 @@ function __c29(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{projectId}/pause", code: 200 })),
       ).annotate({ identifier: "PauseProjectRequest" });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -29664,11 +27942,15 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "RemoveProjectDomainRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "RemoveProjectDomainResponse",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -29678,13 +27960,13 @@ function __c29(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/v9/projects/{idOrName}/env/{id}", code: 200 })),
       ).annotate({ identifier: "RemoveProjectEnvRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "RemoveProjectEnvResponse",
       });
   }
 }
-function __c30(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -29701,7 +27983,11 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RequestPromoteRequest" });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -29717,7 +28003,11 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RequestRollbackRequest" });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -29725,7 +28015,11 @@ function __c30(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{projectId}/unpause", code: 200 })),
       ).annotate({ identifier: "UnpauseProjectRequest" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -29743,32 +28037,32 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
+          alias: S.optional(__S(1280, __c40, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(4, __c0, 4)),
-          branchMatcher: S.optional(__S(42, __c5, 2)),
+          automaticAliases: S.optional(__S(1440, __c45, 0)),
+          branchMatcher: S.optional(__S(1537, __c48, 1)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
+          builds: S.optional(__S(1446, __c45, 6)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
+          creator: S.NullOr(__S(1447, __c45, 7)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
+          meta: S.optional(__S(1408, __c44, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(207, __c25, 7)),
+          oidcTokenClaims: S.optional(__S(801, __c25, 1)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -29786,13 +28080,13 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseAliasItemDeployment",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           configuredBy: S.optional(S.NullOr(S.String)),
           configuredChangedAt: S.optional(S.NullOr(S.Number)),
           createdAt: S.optional(S.NullOr(S.Number)),
-          deployment: S.NullOr(__S(244, __c30, 4)),
+          deployment: S.NullOr(__S(737, __c23, 1)),
           domain: S.String,
           environment: S.String,
           gitBranch: S.optional(S.NullOr(S.String)),
@@ -29803,25 +28097,21 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseAliasItem",
       });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(738, __c23, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           securityGroupId: S.optional(S.String),
-          subnetIds: __S(4, __c0, 4),
+          subnetIds: __S(1440, __c45, 0),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseConnectConfigurationsItemAws",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          aws: S.optional(__S(247, __c30, 7)),
+          aws: S.optional(__S(740, __c23, 4)),
           buildsEnabled: S.Boolean,
           connectConfigurationId: S.String,
           createdAt: S.Number,
@@ -29833,9 +28123,9 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseConnectConfigurationsItem",
       });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(741, __c23, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           apexName: S.String,
@@ -29847,22 +28137,22 @@ function __c31(j: number): any {
           redirect: S.optional(S.NullOr(S.String)),
           redirectStatusCode: S.optional(S.NullOr(S.Number)),
           updatedAt: S.optional(S.Number),
-          verification: S.optional(__S(43, __c5, 3)),
+          verification: S.optional(__S(1453, __c45, 13)),
           verified: S.Boolean,
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseCustomEnvironmentsItemDomainsItem",
       });
-    case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(743, __c23, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          branchMatcher: S.optional(__S(206, __c25, 6)),
+          branchMatcher: S.optional(__S(800, __c25, 0)),
           createdAt: S.Number,
-          currentDeploymentAliases: S.optional(__S(4, __c0, 4)),
+          currentDeploymentAliases: S.optional(__S(1440, __c45, 0)),
           description: S.optional(S.String),
-          domains: S.optional(__S(251, __c31, 3)),
+          domains: S.optional(__S(744, __c23, 8)),
           id: S.String,
           slug: S.String,
           type: S.String,
@@ -29871,22 +28161,22 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseCustomEnvironmentsItem",
       });
-    case 5:
-      return S.Array(__S(252, __c31, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(745, __c23, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           buildMachineElasticLastUpdated: S.optional(S.Number),
           buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(208, __c26, 0)),
+          buildMachineElasticTransition: S.optional(__S(802, __c25, 2)),
           buildMachineSelection: S.optional(S.String),
           buildMachineType: S.optional(S.String),
-          buildQueue: S.optional(__S(209, __c26, 1)),
+          buildQueue: S.optional(__S(803, __c25, 3)),
           elasticConcurrencyEnabled: S.optional(S.Boolean),
           enableFunctionsBeta: S.optional(S.Boolean),
           fluid: S.optional(S.Boolean),
           functionDefaultMemoryType: S.optional(S.String),
-          functionDefaultRegions: __S(4, __c0, 4),
+          functionDefaultRegions: __S(1440, __c45, 0),
           functionDefaultTimeout: S.optional(S.Number),
           functionZeroConfigFailover: S.optional(S.Boolean),
           isNSNBDisabled: S.optional(S.Boolean),
@@ -29894,50 +28184,46 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseDefaultResourceConfig",
       });
-    case 7:
+    case 12:
       return S.Array(S.Unknown);
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          environments: __S(255, __c31, 7),
-          sources: __S(53, __c6, 5),
+          environments: __S(748, __c23, 12),
+          sources: __S(1457, __c45, 17),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseDeploymentPolicyDeploymentSourcesItem",
       });
-    case 1:
-      return S.Array(__S(256, __c32, 0));
-    case 2:
+    case 14:
+      return S.Array(__S(749, __c23, 13));
+    case 15:
       return S.Array(S.Unknown);
-    case 3:
+    case 16:
       return S.Array(S.Unknown);
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          environments: __S(258, __c32, 2),
-          sources: __S(259, __c32, 3),
+          environments: __S(751, __c23, 15),
+          sources: __S(752, __c23, 16),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseDeploymentPolicyGitSourcesItem",
       });
-    case 5:
-      return S.Array(__S(260, __c32, 4));
-    case 6:
+    case 18:
+      return S.Array(__S(753, __c23, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          deploymentSources: S.optional(S.NullOr(__S(257, __c32, 1))),
-          gitSources: S.optional(S.NullOr(__S(261, __c32, 5))),
+          deploymentSources: S.optional(S.NullOr(__S(750, __c23, 14))),
+          gitSources: S.optional(S.NullOr(__S(754, __c23, 18))),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseDeploymentPolicy",
       });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -29948,13 +28234,9 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseDismissedToastsItem",
       });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(263, __c32, 7));
-    case 1:
+    case 21:
+      return S.Array(__S(756, __c23, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
@@ -29962,13 +28244,13 @@ function __c33(j: number): any {
           contentHint: S.optional(S.NullOr(S.Unknown)),
           createdAt: S.optional(S.Number),
           createdBy: S.optional(S.NullOr(S.String)),
-          customEnvironmentIds: S.optional(__S(10, __c1, 2)),
+          customEnvironmentIds: S.optional(__S(1280, __c40, 0)),
           decrypted: S.optional(S.Boolean),
           edgeConfigId: S.optional(S.NullOr(S.String)),
           edgeConfigTokenId: S.optional(S.NullOr(S.String)),
           gitBranch: S.optional(S.String),
           id: S.optional(S.String),
-          internalContentHint: S.optional(S.NullOr(__S(63, __c7, 7))),
+          internalContentHint: S.optional(S.NullOr(__S(1377, __c43, 1))),
           key: S.String,
           legacyValue: S.optional(S.String),
           sunsetSecretId: S.optional(S.String),
@@ -29983,49 +28265,36 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseEnvItem",
       });
-    case 2:
-      return S.Array(__S(265, __c33, 1));
-    case 3:
+    case 23:
+      return S.Array(__S(758, __c23, 22));
+    case 24:
       return S.Array(S.Unknown);
-    case 4:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          flag_definitions_present: S.optional(
-            __S(213, __c26, 5).pipe(T.Body("flag-definitions-present")),
-          ),
-          lint: S.optional(__S(73, __c9, 1)),
-          mfe_config_present: S.optional(__S(73, __c9, 1).pipe(T.Body("mfe-config-present"))),
-          typecheck: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({
-        identifier: "UpdateMicrofrontendsResponseJobs",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
+          alias: S.optional(__S(1280, __c40, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(4, __c0, 4)),
-          branchMatcher: S.optional(__S(206, __c25, 6)),
+          automaticAliases: S.optional(__S(1440, __c45, 0)),
+          branchMatcher: S.optional(__S(800, __c25, 0)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
+          builds: S.optional(__S(1446, __c45, 6)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
+          creator: S.NullOr(__S(1447, __c45, 7)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
+          meta: S.optional(__S(1408, __c44, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(207, __c25, 7)),
+          oidcTokenClaims: S.optional(__S(801, __c25, 1)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -30043,324 +28312,320 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseLatestDeploymentsItem",
       });
-    case 6:
-      return S.Array(__S(269, __c33, 5));
-    case 7:
+    case 26:
+      return S.Array(__S(761, __c23, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          accessGroup: S.optional(__S(13, __c1, 5)),
-          agent: S.optional(__S(13, __c1, 5)),
-          aiGatewayApiKey: S.optional(__S(13, __c1, 5)),
-          aiGatewayApiKeyBypassAll: S.optional(__S(53, __c6, 5)),
-          aiGatewayApiKeyOwnedBySelf: S.optional(__S(53, __c6, 5)),
-          aiGatewayApiKeySpendAttribution: S.optional(__S(53, __c6, 5)),
-          aiGatewayApiKeyZdrExemption: S.optional(__S(53, __c6, 5)),
-          aiGatewayBudget: S.optional(__S(13, __c1, 5)),
-          aiGatewayCredits: S.optional(__S(13, __c1, 5)),
-          aiGatewayGuardrails: S.optional(__S(13, __c1, 5)),
-          aiGatewayPrivateModels: S.optional(__S(53, __c6, 5)),
-          aiGatewayRules: S.optional(__S(13, __c1, 5)),
-          aiGatewaySettings: S.optional(__S(13, __c1, 5)),
-          aiGatewayTranscripts: S.optional(__S(53, __c6, 5)),
-          aiGatewayTranscriptsSettings: S.optional(__S(53, __c6, 5)),
-          aiGatewayUsage: S.optional(__S(13, __c1, 5)),
-          aiGatewayVirtualModelConfigs: S.optional(__S(53, __c6, 5)),
-          alertRules: S.optional(__S(13, __c1, 5)),
-          alerts: S.optional(__S(13, __c1, 5)),
-          aliasGlobal: S.optional(__S(13, __c1, 5)),
-          aliasProject: S.optional(__S(13, __c1, 5)),
-          aliasProtectionBypass: S.optional(__S(53, __c6, 5)),
-          analytics: S.optional(__S(13, __c1, 5)),
-          analyticsSampling: S.optional(__S(13, __c1, 5)),
-          analyticsUsage: S.optional(__S(13, __c1, 5)),
-          apiKey: S.optional(__S(13, __c1, 5)),
-          apiKeyAiGateway: S.optional(__S(13, __c1, 5)),
-          apiKeyOwnedBySelf: S.optional(__S(13, __c1, 5)),
-          auditLog: S.optional(__S(13, __c1, 5)),
-          automation: S.optional(__S(13, __c1, 5)),
-          billingAddress: S.optional(__S(13, __c1, 5)),
-          billingInformation: S.optional(__S(13, __c1, 5)),
-          billingInvoice: S.optional(__S(13, __c1, 5)),
-          billingInvoiceEmailRecipient: S.optional(__S(53, __c6, 5)),
-          billingInvoiceLanguage: S.optional(__S(53, __c6, 5)),
-          billingPlan: S.optional(__S(13, __c1, 5)),
-          billingPurchaseOrder: S.optional(__S(53, __c6, 5)),
-          billingRefund: S.optional(__S(13, __c1, 5)),
-          billingTaxId: S.optional(__S(13, __c1, 5)),
-          blob: S.optional(__S(13, __c1, 5)),
-          blobStoreTokenSet: S.optional(__S(13, __c1, 5)),
-          budget: S.optional(__S(13, __c1, 5)),
-          buildMachine: S.optional(__S(13, __c1, 5)),
-          buildMachineDefault: S.optional(__S(13, __c1, 5)),
-          bulkRedirects: S.optional(__S(13, __c1, 5)),
-          cacheArtifact: S.optional(__S(13, __c1, 5)),
-          cacheArtifactUsageEvent: S.optional(__S(53, __c6, 5)),
-          ciInvocations: S.optional(__S(13, __c1, 5)),
-          ciLogs: S.optional(__S(13, __c1, 5)),
-          codeChecks: S.optional(__S(13, __c1, 5)),
-          codeOwners: S.optional(__S(13, __c1, 5)),
-          concurrentBuilds: S.optional(__S(13, __c1, 5)),
-          connect: S.optional(__S(13, __c1, 5)),
-          connectConfiguration: S.optional(__S(53, __c6, 5)),
-          connectConfigurationLink: S.optional(__S(53, __c6, 5)),
-          connectLogs: S.optional(__S(13, __c1, 5)),
-          connexClient: S.optional(__S(13, __c1, 5)),
-          connexClientProject: S.optional(__S(13, __c1, 5)),
-          connexContact: S.optional(__S(13, __c1, 5)),
-          connexInstallation: S.optional(__S(13, __c1, 5)),
-          connexToken: S.optional(__S(13, __c1, 5)),
-          cursorOriginInstallation: S.optional(__S(53, __c6, 5)),
-          dataCacheBillingSettings: S.optional(__S(53, __c6, 5)),
-          dataCacheNamespace: S.optional(__S(13, __c1, 5)),
-          defaultDeploymentProtection: S.optional(__S(53, __c6, 5)),
-          deployment: S.optional(__S(13, __c1, 5)),
-          deploymentBuildLogs: S.optional(__S(13, __c1, 5)),
-          deploymentCheck: S.optional(__S(13, __c1, 5)),
-          deploymentCheckPreview: S.optional(__S(53, __c6, 5)),
-          deploymentCheckReRunFromProductionBranch: S.optional(__S(53, __c6, 5)),
-          deploymentPolicy: S.optional(__S(13, __c1, 5)),
-          deploymentPreview: S.optional(__S(13, __c1, 5)),
-          deploymentPrivate: S.optional(__S(13, __c1, 5)),
-          deploymentProductionGit: S.optional(__S(53, __c6, 5)),
-          deploymentPromote: S.optional(__S(13, __c1, 5)),
-          deploymentProtectionException: S.optional(__S(53, __c6, 5)),
-          deploymentRollback: S.optional(__S(13, __c1, 5)),
-          deploymentV0: S.optional(__S(13, __c1, 5)),
-          domain: S.optional(__S(13, __c1, 5)),
-          domainAcceptDelegation: S.optional(__S(53, __c6, 5)),
-          domainAuthCodes: S.optional(__S(13, __c1, 5)),
-          domainCertificate: S.optional(__S(13, __c1, 5)),
-          domainCheckConfig: S.optional(__S(13, __c1, 5)),
-          domainMove: S.optional(__S(13, __c1, 5)),
-          domainPurchase: S.optional(__S(13, __c1, 5)),
-          domainRecord: S.optional(__S(13, __c1, 5)),
-          domainTransferIn: S.optional(__S(13, __c1, 5)),
-          drain: S.optional(__S(13, __c1, 5)),
-          edgeCacheNamespace: S.optional(__S(13, __c1, 5)),
-          edgeConfig: S.optional(__S(13, __c1, 5)),
-          edgeConfigItem: S.optional(__S(13, __c1, 5)),
-          edgeConfigSchema: S.optional(__S(13, __c1, 5)),
-          edgeConfigToken: S.optional(__S(13, __c1, 5)),
-          endpointVerification: S.optional(__S(53, __c6, 5)),
-          environments: S.optional(__S(13, __c1, 5)),
-          event: S.optional(__S(13, __c1, 5)),
-          fileUpload: S.optional(__S(13, __c1, 5)),
-          flagsExplorerSubscription: S.optional(__S(53, __c6, 5)),
-          gitCredentialGrant: S.optional(__S(13, __c1, 5)),
-          gitRepository: S.optional(__S(13, __c1, 5)),
-          imageOptimizationNewPrice: S.optional(__S(53, __c6, 5)),
-          integration: S.optional(__S(13, __c1, 5)),
-          integrationAccount: S.optional(__S(13, __c1, 5)),
-          integrationConfiguration: S.optional(__S(53, __c6, 5)),
-          integrationConfigurationProjects: S.optional(__S(53, __c6, 5)),
-          integrationConfigurationRole: S.optional(__S(53, __c6, 5)),
-          integrationConfigurationTransfer: S.optional(__S(53, __c6, 5)),
-          integrationDeploymentAction: S.optional(__S(53, __c6, 5)),
-          integrationEvent: S.optional(__S(13, __c1, 5)),
-          integrationLog: S.optional(__S(13, __c1, 5)),
-          integrationPullRequest: S.optional(__S(53, __c6, 5)),
-          integrationResource: S.optional(__S(13, __c1, 5)),
-          integrationResourceData: S.optional(__S(53, __c6, 5)),
-          integrationResourceReplCommand: S.optional(__S(53, __c6, 5)),
-          integrationResourceSecrets: S.optional(__S(53, __c6, 5)),
-          integrationSSOSession: S.optional(__S(53, __c6, 5)),
-          integrationStoreTokenSet: S.optional(__S(53, __c6, 5)),
-          integrationStrict: S.optional(__S(13, __c1, 5)),
-          integrationVercelConfigurationOverride: S.optional(__S(53, __c6, 5)),
-          ipBlocking: S.optional(__S(13, __c1, 5)),
-          job: S.optional(__S(13, __c1, 5)),
-          jobGlobal: S.optional(__S(13, __c1, 5)),
-          kmsIssuer: S.optional(__S(13, __c1, 5)),
-          kmsProjectGrant: S.optional(__S(13, __c1, 5)),
-          logDrain: S.optional(__S(13, __c1, 5)),
-          logs: S.optional(__S(13, __c1, 5)),
-          logsPreset: S.optional(__S(13, __c1, 5)),
-          marketplaceBillingData: S.optional(__S(53, __c6, 5)),
-          marketplaceExperimentationEdgeConfigData: S.optional(__S(53, __c6, 5)),
-          marketplaceExperimentationItem: S.optional(__S(53, __c6, 5)),
-          marketplaceFlexCommit: S.optional(__S(53, __c6, 5)),
-          marketplaceInstallationMember: S.optional(__S(53, __c6, 5)),
-          marketplaceInvoice: S.optional(__S(13, __c1, 5)),
-          marketplaceSettings: S.optional(__S(13, __c1, 5)),
-          messageboard: S.optional(__S(13, __c1, 5)),
-          messageboardSpace: S.optional(__S(13, __c1, 5)),
-          messageboardTask: S.optional(__S(13, __c1, 5)),
-          Monitoring: S.optional(__S(13, __c1, 5)),
-          monitoringAlert: S.optional(__S(13, __c1, 5)),
-          monitoringChart: S.optional(__S(13, __c1, 5)),
-          monitoringQuery: S.optional(__S(13, __c1, 5)),
-          monitoringSettings: S.optional(__S(13, __c1, 5)),
-          notificationCustomerBudget: S.optional(__S(53, __c6, 5)),
-          notificationDeploymentFailed: S.optional(__S(53, __c6, 5)),
-          notificationDomainConfiguration: S.optional(__S(53, __c6, 5)),
-          notificationDomainExpire: S.optional(__S(53, __c6, 5)),
-          notificationDomainMoved: S.optional(__S(53, __c6, 5)),
-          notificationDomainPurchase: S.optional(__S(53, __c6, 5)),
-          notificationDomainRenewal: S.optional(__S(53, __c6, 5)),
-          notificationDomainTransfer: S.optional(__S(53, __c6, 5)),
-          notificationDomainUnverified: S.optional(__S(53, __c6, 5)),
-          NotificationMonitoringAlert: S.optional(__S(53, __c6, 5)),
-          notificationPaymentFailed: S.optional(__S(53, __c6, 5)),
-          notificationPreferences: S.optional(__S(53, __c6, 5)),
-          notificationStatementOfReasons: S.optional(__S(53, __c6, 5)),
-          notificationUsageAlert: S.optional(__S(53, __c6, 5)),
-          oauth2Application: S.optional(__S(13, __c1, 5)),
-          oauth2Connection: S.optional(__S(13, __c1, 5)),
-          observabilityConfiguration: S.optional(__S(53, __c6, 5)),
-          observabilityData: S.optional(__S(13, __c1, 5)),
-          observabilityFunnel: S.optional(__S(13, __c1, 5)),
-          observabilityNotebook: S.optional(__S(53, __c6, 5)),
-          oidcFederationPolicy: S.optional(__S(53, __c6, 5)),
-          onDemandBuild: S.optional(__S(13, __c1, 5)),
-          onDemandConcurrency: S.optional(__S(13, __c1, 5)),
-          openTelemetryEndpoint: S.optional(__S(53, __c6, 5)),
-          optionsAllowlist: S.optional(__S(13, __c1, 5)),
-          organization: S.optional(__S(13, __c1, 5)),
-          organizationDomain: S.optional(__S(13, __c1, 5)),
-          organizationTeam: S.optional(__S(13, __c1, 5)),
-          ownEvent: S.optional(__S(13, __c1, 5)),
-          pageIntegrity: S.optional(__S(13, __c1, 5)),
-          passwordProtection: S.optional(__S(13, __c1, 5)),
-          passwordProtectionInvoiceItem: S.optional(__S(53, __c6, 5)),
-          paymentMethod: S.optional(__S(13, __c1, 5)),
-          permissions: S.optional(__S(13, __c1, 5)),
-          postgres: S.optional(__S(13, __c1, 5)),
-          postgresStoreTokenSet: S.optional(__S(53, __c6, 5)),
-          previewDeploymentSuffix: S.optional(__S(53, __c6, 5)),
-          privateCloudAccount: S.optional(__S(13, __c1, 5)),
-          privateLinkEndpoint: S.optional(__S(13, __c1, 5)),
-          productionAliasProtectionBypass: S.optional(__S(53, __c6, 5)),
-          productionShareableLink: S.optional(__S(53, __c6, 5)),
-          project: S.optional(__S(13, __c1, 5)),
-          projectAccessGroup: S.optional(__S(13, __c1, 5)),
-          projectAnalyticsSampling: S.optional(__S(53, __c6, 5)),
-          projectAnalyticsUsage: S.optional(__S(53, __c6, 5)),
-          projectCheck: S.optional(__S(13, __c1, 5)),
-          projectCheckRun: S.optional(__S(13, __c1, 5)),
-          projectDeploymentExpiration: S.optional(__S(53, __c6, 5)),
-          projectDeploymentHook: S.optional(__S(53, __c6, 5)),
-          projectDeploymentProtectionStrict: S.optional(__S(53, __c6, 5)),
-          projectDomain: S.optional(__S(13, __c1, 5)),
-          projectDomainCheckConfig: S.optional(__S(53, __c6, 5)),
-          projectDomainMove: S.optional(__S(13, __c1, 5)),
-          projectDomainVerify: S.optional(__S(13, __c1, 5)),
-          projectEnvVars: S.optional(__S(13, __c1, 5)),
-          projectEnvVarsProduction: S.optional(__S(53, __c6, 5)),
-          projectEnvVarsUnownedByIntegration: S.optional(__S(53, __c6, 5)),
-          projectEvent: S.optional(__S(13, __c1, 5)),
-          projectFlags: S.optional(__S(13, __c1, 5)),
-          projectFlagsProduction: S.optional(__S(53, __c6, 5)),
-          projectFlagsSdkKey: S.optional(__S(13, __c1, 5)),
-          projectFromV0: S.optional(__S(13, __c1, 5)),
-          projectId: S.optional(__S(13, __c1, 5)),
-          projectIntegrationConfiguration: S.optional(__S(53, __c6, 5)),
-          projectLink: S.optional(__S(13, __c1, 5)),
-          projectMember: S.optional(__S(13, __c1, 5)),
-          projectMonitoring: S.optional(__S(13, __c1, 5)),
-          projectOIDCToken: S.optional(__S(13, __c1, 5)),
-          projectPermissions: S.optional(__S(13, __c1, 5)),
-          projectProductionBranch: S.optional(__S(53, __c6, 5)),
-          projectProtectionBypass: S.optional(__S(53, __c6, 5)),
-          projectRollingRelease: S.optional(__S(53, __c6, 5)),
-          projectRoutes: S.optional(__S(13, __c1, 5)),
-          projectSetting: S.optional(__S(13, __c1, 5)),
-          projectSupportCase: S.optional(__S(13, __c1, 5)),
-          projectSupportCaseComment: S.optional(__S(53, __c6, 5)),
-          projectTier: S.optional(__S(13, __c1, 5)),
-          projectTransfer: S.optional(__S(13, __c1, 5)),
-          projectTransferIn: S.optional(__S(13, __c1, 5)),
-          projectTransferOut: S.optional(__S(13, __c1, 5)),
-          projectTransferRequest: S.optional(__S(53, __c6, 5)),
-          projectUsage: S.optional(__S(13, __c1, 5)),
-          proTrialOnboarding: S.optional(__S(13, __c1, 5)),
-          rateLimit: S.optional(__S(13, __c1, 5)),
-          redis: S.optional(__S(13, __c1, 5)),
-          redisStoreTokenSet: S.optional(__S(13, __c1, 5)),
-          remoteCaching: S.optional(__S(13, __c1, 5)),
-          repository: S.optional(__S(13, __c1, 5)),
-          samlConfig: S.optional(__S(13, __c1, 5)),
-          schedule: S.optional(__S(13, __c1, 5)),
-          seawallConfig: S.optional(__S(13, __c1, 5)),
-          secret: S.optional(__S(13, __c1, 5)),
-          securityConfig: S.optional(__S(13, __c1, 5)),
-          securityPlusConfiguration: S.optional(__S(53, __c6, 5)),
-          sensitiveEnvironmentVariablePolicy: S.optional(__S(53, __c6, 5)),
-          setting: S.optional(__S(13, __c1, 5)),
-          shareableLink: S.optional(__S(13, __c1, 5)),
-          shareableLinkStrict: S.optional(__S(13, __c1, 5)),
-          sharedEnvVarConnection: S.optional(__S(53, __c6, 5)),
-          sharedEnvVars: S.optional(__S(13, __c1, 5)),
-          sharedEnvVarsProduction: S.optional(__S(53, __c6, 5)),
-          skewProtection: S.optional(__S(13, __c1, 5)),
-          space: S.optional(__S(13, __c1, 5)),
-          spaceRun: S.optional(__S(13, __c1, 5)),
-          storeIsLocked: S.optional(__S(13, __c1, 5)),
-          storeTokenSetSensitive: S.optional(__S(53, __c6, 5)),
-          storeTransfer: S.optional(__S(13, __c1, 5)),
-          supportCase: S.optional(__S(13, __c1, 5)),
-          supportCaseComment: S.optional(__S(13, __c1, 5)),
-          team: S.optional(__S(13, __c1, 5)),
-          teamAccessRequest: S.optional(__S(13, __c1, 5)),
-          teamFellowMembership: S.optional(__S(53, __c6, 5)),
-          teamGitExclusivity: S.optional(__S(13, __c1, 5)),
-          teamInvite: S.optional(__S(13, __c1, 5)),
-          teamInviteCode: S.optional(__S(13, __c1, 5)),
-          teamInviteLink: S.optional(__S(13, __c1, 5)),
-          teamJoin: S.optional(__S(13, __c1, 5)),
-          teamMemberMfaStatus: S.optional(__S(13, __c1, 5)),
-          teamMicrofrontends: S.optional(__S(13, __c1, 5)),
-          teamOwnMembership: S.optional(__S(13, __c1, 5)),
-          teamOwnMembershipDisconnectSAML: S.optional(__S(53, __c6, 5)),
-          teamSudo: S.optional(__S(13, __c1, 5)),
-          teamTokenInvalidation: S.optional(__S(53, __c6, 5)),
-          token: S.optional(__S(13, __c1, 5)),
-          toolbarComment: S.optional(__S(13, __c1, 5)),
-          trustedIps: S.optional(__S(13, __c1, 5)),
-          trustedSources: S.optional(__S(13, __c1, 5)),
-          usage: S.optional(__S(13, __c1, 5)),
-          usageCycle: S.optional(__S(13, __c1, 5)),
-          user: S.optional(__S(13, __c1, 5)),
-          userConnection: S.optional(__S(13, __c1, 5)),
-          userMfaConfiguration: S.optional(__S(53, __c6, 5)),
-          userPreference: S.optional(__S(13, __c1, 5)),
-          userSudo: S.optional(__S(13, __c1, 5)),
-          v0Chat: S.optional(__S(13, __c1, 5)),
-          vcrRepository: S.optional(__S(13, __c1, 5)),
-          vercelAppInstallation: S.optional(__S(53, __c6, 5)),
-          vercelAppInstallationRequest: S.optional(__S(53, __c6, 5)),
-          vercelAuth: S.optional(__S(13, __c1, 5)),
-          vercelRun: S.optional(__S(13, __c1, 5)),
-          vpcPeeringConnection: S.optional(__S(53, __c6, 5)),
-          webAnalytics: S.optional(__S(13, __c1, 5)),
-          webAnalyticsPlan: S.optional(__S(13, __c1, 5)),
-          webAuthn: S.optional(__S(13, __c1, 5)),
-          webhook: S.optional(__S(13, __c1, 5)),
-          webhook_event: S.optional(__S(13, __c1, 5).pipe(T.Body("webhook-event"))),
-          workflowRunData: S.optional(__S(13, __c1, 5)),
+          accessGroup: S.optional(__S(1376, __c43, 0)),
+          agent: S.optional(__S(1376, __c43, 0)),
+          aiGatewayApiKey: S.optional(__S(1376, __c43, 0)),
+          aiGatewayApiKeyBypassAll: S.optional(__S(1457, __c45, 17)),
+          aiGatewayApiKeyOwnedBySelf: S.optional(__S(1457, __c45, 17)),
+          aiGatewayApiKeySpendAttribution: S.optional(__S(1457, __c45, 17)),
+          aiGatewayApiKeyZdrExemption: S.optional(__S(1457, __c45, 17)),
+          aiGatewayBudget: S.optional(__S(1376, __c43, 0)),
+          aiGatewayCredits: S.optional(__S(1376, __c43, 0)),
+          aiGatewayGuardrails: S.optional(__S(1376, __c43, 0)),
+          aiGatewayPrivateModels: S.optional(__S(1457, __c45, 17)),
+          aiGatewayRules: S.optional(__S(1376, __c43, 0)),
+          aiGatewaySettings: S.optional(__S(1376, __c43, 0)),
+          aiGatewayTranscripts: S.optional(__S(1457, __c45, 17)),
+          aiGatewayTranscriptsSettings: S.optional(__S(1457, __c45, 17)),
+          aiGatewayUsage: S.optional(__S(1376, __c43, 0)),
+          aiGatewayVirtualModelConfigs: S.optional(__S(1457, __c45, 17)),
+          alertRules: S.optional(__S(1376, __c43, 0)),
+          alerts: S.optional(__S(1376, __c43, 0)),
+          aliasGlobal: S.optional(__S(1376, __c43, 0)),
+          aliasProject: S.optional(__S(1376, __c43, 0)),
+          aliasProtectionBypass: S.optional(__S(1457, __c45, 17)),
+          analytics: S.optional(__S(1376, __c43, 0)),
+          analyticsSampling: S.optional(__S(1376, __c43, 0)),
+          analyticsUsage: S.optional(__S(1376, __c43, 0)),
+          apiKey: S.optional(__S(1376, __c43, 0)),
+          apiKeyAiGateway: S.optional(__S(1376, __c43, 0)),
+          apiKeyOwnedBySelf: S.optional(__S(1376, __c43, 0)),
+          auditLog: S.optional(__S(1376, __c43, 0)),
+          automation: S.optional(__S(1376, __c43, 0)),
+          billingAddress: S.optional(__S(1376, __c43, 0)),
+          billingInformation: S.optional(__S(1376, __c43, 0)),
+          billingInvoice: S.optional(__S(1376, __c43, 0)),
+          billingInvoiceEmailRecipient: S.optional(__S(1457, __c45, 17)),
+          billingInvoiceLanguage: S.optional(__S(1457, __c45, 17)),
+          billingPlan: S.optional(__S(1376, __c43, 0)),
+          billingPurchaseOrder: S.optional(__S(1457, __c45, 17)),
+          billingRefund: S.optional(__S(1376, __c43, 0)),
+          billingTaxId: S.optional(__S(1376, __c43, 0)),
+          blob: S.optional(__S(1376, __c43, 0)),
+          blobStoreTokenSet: S.optional(__S(1376, __c43, 0)),
+          budget: S.optional(__S(1376, __c43, 0)),
+          buildMachine: S.optional(__S(1376, __c43, 0)),
+          buildMachineDefault: S.optional(__S(1376, __c43, 0)),
+          bulkRedirects: S.optional(__S(1376, __c43, 0)),
+          cacheArtifact: S.optional(__S(1376, __c43, 0)),
+          cacheArtifactUsageEvent: S.optional(__S(1457, __c45, 17)),
+          ciInvocations: S.optional(__S(1376, __c43, 0)),
+          ciLogs: S.optional(__S(1376, __c43, 0)),
+          codeChecks: S.optional(__S(1376, __c43, 0)),
+          codeOwners: S.optional(__S(1376, __c43, 0)),
+          concurrentBuilds: S.optional(__S(1376, __c43, 0)),
+          connect: S.optional(__S(1376, __c43, 0)),
+          connectConfiguration: S.optional(__S(1457, __c45, 17)),
+          connectConfigurationLink: S.optional(__S(1457, __c45, 17)),
+          connectLogs: S.optional(__S(1376, __c43, 0)),
+          connexClient: S.optional(__S(1376, __c43, 0)),
+          connexClientProject: S.optional(__S(1376, __c43, 0)),
+          connexContact: S.optional(__S(1376, __c43, 0)),
+          connexInstallation: S.optional(__S(1376, __c43, 0)),
+          connexToken: S.optional(__S(1376, __c43, 0)),
+          cursorOriginInstallation: S.optional(__S(1457, __c45, 17)),
+          dataCacheBillingSettings: S.optional(__S(1457, __c45, 17)),
+          dataCacheNamespace: S.optional(__S(1376, __c43, 0)),
+          defaultDeploymentProtection: S.optional(__S(1457, __c45, 17)),
+          deployment: S.optional(__S(1376, __c43, 0)),
+          deploymentBuildLogs: S.optional(__S(1376, __c43, 0)),
+          deploymentCheck: S.optional(__S(1376, __c43, 0)),
+          deploymentCheckPreview: S.optional(__S(1457, __c45, 17)),
+          deploymentCheckReRunFromProductionBranch: S.optional(__S(1457, __c45, 17)),
+          deploymentPolicy: S.optional(__S(1376, __c43, 0)),
+          deploymentPreview: S.optional(__S(1376, __c43, 0)),
+          deploymentPrivate: S.optional(__S(1376, __c43, 0)),
+          deploymentProductionGit: S.optional(__S(1457, __c45, 17)),
+          deploymentPromote: S.optional(__S(1376, __c43, 0)),
+          deploymentProtectionException: S.optional(__S(1457, __c45, 17)),
+          deploymentRollback: S.optional(__S(1376, __c43, 0)),
+          deploymentV0: S.optional(__S(1376, __c43, 0)),
+          domain: S.optional(__S(1376, __c43, 0)),
+          domainAcceptDelegation: S.optional(__S(1457, __c45, 17)),
+          domainAuthCodes: S.optional(__S(1376, __c43, 0)),
+          domainCertificate: S.optional(__S(1376, __c43, 0)),
+          domainCheckConfig: S.optional(__S(1376, __c43, 0)),
+          domainMove: S.optional(__S(1376, __c43, 0)),
+          domainPurchase: S.optional(__S(1376, __c43, 0)),
+          domainRecord: S.optional(__S(1376, __c43, 0)),
+          domainTransferIn: S.optional(__S(1376, __c43, 0)),
+          drain: S.optional(__S(1376, __c43, 0)),
+          edgeCacheNamespace: S.optional(__S(1376, __c43, 0)),
+          edgeConfig: S.optional(__S(1376, __c43, 0)),
+          edgeConfigItem: S.optional(__S(1376, __c43, 0)),
+          edgeConfigSchema: S.optional(__S(1376, __c43, 0)),
+          edgeConfigToken: S.optional(__S(1376, __c43, 0)),
+          endpointVerification: S.optional(__S(1457, __c45, 17)),
+          environments: S.optional(__S(1376, __c43, 0)),
+          event: S.optional(__S(1376, __c43, 0)),
+          fileUpload: S.optional(__S(1376, __c43, 0)),
+          flagsExplorerSubscription: S.optional(__S(1457, __c45, 17)),
+          gitCredentialGrant: S.optional(__S(1376, __c43, 0)),
+          gitRepository: S.optional(__S(1376, __c43, 0)),
+          imageOptimizationNewPrice: S.optional(__S(1457, __c45, 17)),
+          integration: S.optional(__S(1376, __c43, 0)),
+          integrationAccount: S.optional(__S(1376, __c43, 0)),
+          integrationConfiguration: S.optional(__S(1457, __c45, 17)),
+          integrationConfigurationProjects: S.optional(__S(1457, __c45, 17)),
+          integrationConfigurationRole: S.optional(__S(1457, __c45, 17)),
+          integrationConfigurationTransfer: S.optional(__S(1457, __c45, 17)),
+          integrationDeploymentAction: S.optional(__S(1457, __c45, 17)),
+          integrationEvent: S.optional(__S(1376, __c43, 0)),
+          integrationLog: S.optional(__S(1376, __c43, 0)),
+          integrationPullRequest: S.optional(__S(1457, __c45, 17)),
+          integrationResource: S.optional(__S(1376, __c43, 0)),
+          integrationResourceData: S.optional(__S(1457, __c45, 17)),
+          integrationResourceReplCommand: S.optional(__S(1457, __c45, 17)),
+          integrationResourceSecrets: S.optional(__S(1457, __c45, 17)),
+          integrationSSOSession: S.optional(__S(1457, __c45, 17)),
+          integrationStoreTokenSet: S.optional(__S(1457, __c45, 17)),
+          integrationStrict: S.optional(__S(1376, __c43, 0)),
+          integrationVercelConfigurationOverride: S.optional(__S(1457, __c45, 17)),
+          ipBlocking: S.optional(__S(1376, __c43, 0)),
+          job: S.optional(__S(1376, __c43, 0)),
+          jobGlobal: S.optional(__S(1376, __c43, 0)),
+          kmsIssuer: S.optional(__S(1376, __c43, 0)),
+          kmsProjectGrant: S.optional(__S(1376, __c43, 0)),
+          logDrain: S.optional(__S(1376, __c43, 0)),
+          logs: S.optional(__S(1376, __c43, 0)),
+          logsPreset: S.optional(__S(1376, __c43, 0)),
+          marketplaceBillingData: S.optional(__S(1457, __c45, 17)),
+          marketplaceExperimentationEdgeConfigData: S.optional(__S(1457, __c45, 17)),
+          marketplaceExperimentationItem: S.optional(__S(1457, __c45, 17)),
+          marketplaceFlexCommit: S.optional(__S(1457, __c45, 17)),
+          marketplaceInstallationMember: S.optional(__S(1457, __c45, 17)),
+          marketplaceInvoice: S.optional(__S(1376, __c43, 0)),
+          marketplaceSettings: S.optional(__S(1376, __c43, 0)),
+          messageboard: S.optional(__S(1376, __c43, 0)),
+          messageboardSpace: S.optional(__S(1376, __c43, 0)),
+          messageboardTask: S.optional(__S(1376, __c43, 0)),
+          Monitoring: S.optional(__S(1376, __c43, 0)),
+          monitoringAlert: S.optional(__S(1376, __c43, 0)),
+          monitoringChart: S.optional(__S(1376, __c43, 0)),
+          monitoringQuery: S.optional(__S(1376, __c43, 0)),
+          monitoringSettings: S.optional(__S(1376, __c43, 0)),
+          notificationCustomerBudget: S.optional(__S(1457, __c45, 17)),
+          notificationDeploymentFailed: S.optional(__S(1457, __c45, 17)),
+          notificationDomainConfiguration: S.optional(__S(1457, __c45, 17)),
+          notificationDomainExpire: S.optional(__S(1457, __c45, 17)),
+          notificationDomainMoved: S.optional(__S(1457, __c45, 17)),
+          notificationDomainPurchase: S.optional(__S(1457, __c45, 17)),
+          notificationDomainRenewal: S.optional(__S(1457, __c45, 17)),
+          notificationDomainTransfer: S.optional(__S(1457, __c45, 17)),
+          notificationDomainUnverified: S.optional(__S(1457, __c45, 17)),
+          NotificationMonitoringAlert: S.optional(__S(1457, __c45, 17)),
+          notificationPaymentFailed: S.optional(__S(1457, __c45, 17)),
+          notificationPreferences: S.optional(__S(1457, __c45, 17)),
+          notificationStatementOfReasons: S.optional(__S(1457, __c45, 17)),
+          notificationUsageAlert: S.optional(__S(1457, __c45, 17)),
+          oauth2Application: S.optional(__S(1376, __c43, 0)),
+          oauth2Connection: S.optional(__S(1376, __c43, 0)),
+          observabilityConfiguration: S.optional(__S(1457, __c45, 17)),
+          observabilityData: S.optional(__S(1376, __c43, 0)),
+          observabilityFunnel: S.optional(__S(1376, __c43, 0)),
+          observabilityNotebook: S.optional(__S(1457, __c45, 17)),
+          oidcFederationPolicy: S.optional(__S(1457, __c45, 17)),
+          onDemandBuild: S.optional(__S(1376, __c43, 0)),
+          onDemandConcurrency: S.optional(__S(1376, __c43, 0)),
+          openTelemetryEndpoint: S.optional(__S(1457, __c45, 17)),
+          optionsAllowlist: S.optional(__S(1376, __c43, 0)),
+          organization: S.optional(__S(1376, __c43, 0)),
+          organizationDomain: S.optional(__S(1376, __c43, 0)),
+          organizationTeam: S.optional(__S(1376, __c43, 0)),
+          ownEvent: S.optional(__S(1376, __c43, 0)),
+          pageIntegrity: S.optional(__S(1376, __c43, 0)),
+          passwordProtection: S.optional(__S(1376, __c43, 0)),
+          passwordProtectionInvoiceItem: S.optional(__S(1457, __c45, 17)),
+          paymentMethod: S.optional(__S(1376, __c43, 0)),
+          permissions: S.optional(__S(1376, __c43, 0)),
+          postgres: S.optional(__S(1376, __c43, 0)),
+          postgresStoreTokenSet: S.optional(__S(1457, __c45, 17)),
+          previewDeploymentSuffix: S.optional(__S(1457, __c45, 17)),
+          privateCloudAccount: S.optional(__S(1376, __c43, 0)),
+          privateLinkEndpoint: S.optional(__S(1376, __c43, 0)),
+          productionAliasProtectionBypass: S.optional(__S(1457, __c45, 17)),
+          productionShareableLink: S.optional(__S(1457, __c45, 17)),
+          project: S.optional(__S(1376, __c43, 0)),
+          projectAccessGroup: S.optional(__S(1376, __c43, 0)),
+          projectAnalyticsSampling: S.optional(__S(1457, __c45, 17)),
+          projectAnalyticsUsage: S.optional(__S(1457, __c45, 17)),
+          projectCheck: S.optional(__S(1376, __c43, 0)),
+          projectCheckRun: S.optional(__S(1376, __c43, 0)),
+          projectDeploymentExpiration: S.optional(__S(1457, __c45, 17)),
+          projectDeploymentHook: S.optional(__S(1457, __c45, 17)),
+          projectDeploymentProtectionStrict: S.optional(__S(1457, __c45, 17)),
+          projectDomain: S.optional(__S(1376, __c43, 0)),
+          projectDomainCheckConfig: S.optional(__S(1457, __c45, 17)),
+          projectDomainMove: S.optional(__S(1376, __c43, 0)),
+          projectDomainVerify: S.optional(__S(1376, __c43, 0)),
+          projectEnvVars: S.optional(__S(1376, __c43, 0)),
+          projectEnvVarsProduction: S.optional(__S(1457, __c45, 17)),
+          projectEnvVarsUnownedByIntegration: S.optional(__S(1457, __c45, 17)),
+          projectEvent: S.optional(__S(1376, __c43, 0)),
+          projectFlags: S.optional(__S(1376, __c43, 0)),
+          projectFlagsProduction: S.optional(__S(1457, __c45, 17)),
+          projectFlagsSdkKey: S.optional(__S(1376, __c43, 0)),
+          projectFromV0: S.optional(__S(1376, __c43, 0)),
+          projectId: S.optional(__S(1376, __c43, 0)),
+          projectIntegrationConfiguration: S.optional(__S(1457, __c45, 17)),
+          projectLink: S.optional(__S(1376, __c43, 0)),
+          projectMember: S.optional(__S(1376, __c43, 0)),
+          projectMonitoring: S.optional(__S(1376, __c43, 0)),
+          projectOIDCToken: S.optional(__S(1376, __c43, 0)),
+          projectPermissions: S.optional(__S(1376, __c43, 0)),
+          projectProductionBranch: S.optional(__S(1457, __c45, 17)),
+          projectProtectionBypass: S.optional(__S(1457, __c45, 17)),
+          projectRollingRelease: S.optional(__S(1457, __c45, 17)),
+          projectRoutes: S.optional(__S(1376, __c43, 0)),
+          projectSetting: S.optional(__S(1376, __c43, 0)),
+          projectSupportCase: S.optional(__S(1376, __c43, 0)),
+          projectSupportCaseComment: S.optional(__S(1457, __c45, 17)),
+          projectTier: S.optional(__S(1376, __c43, 0)),
+          projectTransfer: S.optional(__S(1376, __c43, 0)),
+          projectTransferIn: S.optional(__S(1376, __c43, 0)),
+          projectTransferOut: S.optional(__S(1376, __c43, 0)),
+          projectTransferRequest: S.optional(__S(1457, __c45, 17)),
+          projectUsage: S.optional(__S(1376, __c43, 0)),
+          proTrialOnboarding: S.optional(__S(1376, __c43, 0)),
+          rateLimit: S.optional(__S(1376, __c43, 0)),
+          redis: S.optional(__S(1376, __c43, 0)),
+          redisStoreTokenSet: S.optional(__S(1376, __c43, 0)),
+          remoteCaching: S.optional(__S(1376, __c43, 0)),
+          repository: S.optional(__S(1376, __c43, 0)),
+          samlConfig: S.optional(__S(1376, __c43, 0)),
+          schedule: S.optional(__S(1376, __c43, 0)),
+          seawallConfig: S.optional(__S(1376, __c43, 0)),
+          secret: S.optional(__S(1376, __c43, 0)),
+          securityConfig: S.optional(__S(1376, __c43, 0)),
+          securityPlusConfiguration: S.optional(__S(1457, __c45, 17)),
+          sensitiveEnvironmentVariablePolicy: S.optional(__S(1457, __c45, 17)),
+          setting: S.optional(__S(1376, __c43, 0)),
+          shareableLink: S.optional(__S(1376, __c43, 0)),
+          shareableLinkStrict: S.optional(__S(1376, __c43, 0)),
+          sharedEnvVarConnection: S.optional(__S(1457, __c45, 17)),
+          sharedEnvVars: S.optional(__S(1376, __c43, 0)),
+          sharedEnvVarsProduction: S.optional(__S(1457, __c45, 17)),
+          skewProtection: S.optional(__S(1376, __c43, 0)),
+          space: S.optional(__S(1376, __c43, 0)),
+          spaceRun: S.optional(__S(1376, __c43, 0)),
+          storeIsLocked: S.optional(__S(1376, __c43, 0)),
+          storeTokenSetSensitive: S.optional(__S(1457, __c45, 17)),
+          storeTransfer: S.optional(__S(1376, __c43, 0)),
+          supportCase: S.optional(__S(1376, __c43, 0)),
+          supportCaseComment: S.optional(__S(1376, __c43, 0)),
+          team: S.optional(__S(1376, __c43, 0)),
+          teamAccessRequest: S.optional(__S(1376, __c43, 0)),
+          teamFellowMembership: S.optional(__S(1457, __c45, 17)),
+          teamGitExclusivity: S.optional(__S(1376, __c43, 0)),
+          teamInvite: S.optional(__S(1376, __c43, 0)),
+          teamInviteCode: S.optional(__S(1376, __c43, 0)),
+          teamInviteLink: S.optional(__S(1376, __c43, 0)),
+          teamJoin: S.optional(__S(1376, __c43, 0)),
+          teamMemberMfaStatus: S.optional(__S(1376, __c43, 0)),
+          teamMicrofrontends: S.optional(__S(1376, __c43, 0)),
+          teamOwnMembership: S.optional(__S(1376, __c43, 0)),
+          teamOwnMembershipDisconnectSAML: S.optional(__S(1457, __c45, 17)),
+          teamSudo: S.optional(__S(1376, __c43, 0)),
+          teamTokenInvalidation: S.optional(__S(1457, __c45, 17)),
+          token: S.optional(__S(1376, __c43, 0)),
+          toolbarComment: S.optional(__S(1376, __c43, 0)),
+          trustedIps: S.optional(__S(1376, __c43, 0)),
+          trustedSources: S.optional(__S(1376, __c43, 0)),
+          usage: S.optional(__S(1376, __c43, 0)),
+          usageCycle: S.optional(__S(1376, __c43, 0)),
+          user: S.optional(__S(1376, __c43, 0)),
+          userConnection: S.optional(__S(1376, __c43, 0)),
+          userMfaConfiguration: S.optional(__S(1457, __c45, 17)),
+          userPreference: S.optional(__S(1376, __c43, 0)),
+          userSudo: S.optional(__S(1376, __c43, 0)),
+          v0Chat: S.optional(__S(1376, __c43, 0)),
+          vcrRepository: S.optional(__S(1376, __c43, 0)),
+          vercelAppInstallation: S.optional(__S(1457, __c45, 17)),
+          vercelAppInstallationRequest: S.optional(__S(1457, __c45, 17)),
+          vercelAuth: S.optional(__S(1376, __c43, 0)),
+          vercelRun: S.optional(__S(1376, __c43, 0)),
+          vpcPeeringConnection: S.optional(__S(1457, __c45, 17)),
+          webAnalytics: S.optional(__S(1376, __c43, 0)),
+          webAnalyticsPlan: S.optional(__S(1376, __c43, 0)),
+          webAuthn: S.optional(__S(1376, __c43, 0)),
+          webhook: S.optional(__S(1376, __c43, 0)),
+          webhook_event: S.optional(__S(1376, __c43, 0).pipe(T.Body("webhook-event"))),
+          workflowRunData: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponsePermissions",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 28:
       return S.Record(S.String, S.Unknown);
-    case 1:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           buildMachineElasticLastUpdated: S.optional(S.Number),
           buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(49, __c6, 1)),
+          buildMachineElasticTransition: S.optional(__S(1455, __c45, 15)),
           buildMachineSelection: S.optional(S.String),
           buildMachineType: S.optional(S.String),
-          buildQueue: S.optional(__S(21, __c2, 5)),
+          buildQueue: S.optional(__S(1442, __c45, 2)),
           elasticConcurrencyEnabled: S.optional(S.Boolean),
           enableFunctionsBeta: S.optional(S.Boolean),
           fluid: S.optional(S.Boolean),
           functionDefaultMemoryType: S.optional(S.String),
-          functionDefaultRegions: __S(4, __c0, 4),
+          functionDefaultRegions: __S(1440, __c45, 0),
           functionDefaultTimeout: S.optional(S.Number),
           functionZeroConfigFailover: S.optional(S.Boolean),
           isNSNBDisabled: S.optional(S.Boolean),
@@ -30368,11 +28633,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseResourceConfig",
       });
-    case 2:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          excludePaths: S.optional(__S(4, __c0, 4)),
-          excludeStatusCodes: S.optional(__S(90, __c11, 2)),
+          excludePaths: S.optional(__S(1440, __c45, 0)),
+          excludeStatusCodes: S.optional(__S(1473, __c46, 1)),
           ingestWatermarkSeconds: S.optional(S.Number),
           minSampleSize: S.optional(S.Number),
           type: S.String,
@@ -30380,13 +28645,17 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseRollingReleaseGateChecksItem",
       });
-    case 3:
-      return S.Array(__S(274, __c34, 2));
-    case 4:
+    case 31:
+      return S.Array(__S(766, __c23, 30));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          checks: __S(275, __c34, 3),
+          checks: __S(767, __c23, 31),
           dryRun: S.Boolean,
           enabled: S.Boolean,
           failureThreshold: S.optional(S.Number),
@@ -30395,67 +28664,63 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseRollingReleaseGate",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           canaryResponseHeader: S.optional(S.Boolean),
-          gate: S.optional(__S(276, __c34, 4)),
-          stages: S.optional(S.NullOr(__S(95, __c11, 7))),
+          gate: S.optional(__S(768, __c24, 0)),
+          stages: S.optional(S.NullOr(__S(1475, __c46, 3))),
           target: S.String,
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseRollingRelease",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ai_bots: __S(98, __c12, 2),
-          bot_filter: __S(210, __c26, 2),
-          owasp: __S(98, __c12, 2),
-          traffic_sources: __S(211, __c26, 3),
-          vercel_ruleset: __S(211, __c26, 3),
+          ai_bots: __S(1477, __c46, 5),
+          bot_filter: __S(804, __c25, 4),
+          owasp: __S(1477, __c46, 5),
+          traffic_sources: __S(805, __c25, 5),
+          vercel_ruleset: __S(805, __c25, 5),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseSecurityManagedRules",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           algo: S.String,
-          keys: __S(4, __c0, 4),
+          keys: __S(1440, __c45, 0),
           limit: S.Number,
           window: S.Number,
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseSecurityRulesetsValueRateLimit",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
           actionDuration: S.optional(S.NullOr(S.String)),
           bypassSystem: S.optional(S.NullOr(S.Boolean)),
           logHeaders: S.optional(S.Unknown),
-          rateLimit: S.optional(S.NullOr(__S(279, __c34, 7))),
-          redirect: S.optional(S.NullOr(__S(101, __c12, 5))),
+          rateLimit: S.optional(S.NullOr(__S(771, __c24, 3))),
+          redirect: S.optional(S.NullOr(__S(1478, __c46, 6))),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseSecurityRulesetsValue",
       });
-    case 1:
-      return S.Record(S.String, __S(280, __c35, 0));
-    case 2:
+    case 5:
+      return S.Record(S.String, __S(772, __c24, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           attackModeActiveUntil: S.optional(S.NullOr(S.Number)),
           attackModeEnabled: S.optional(S.Boolean),
           attackModeUpdatedAt: S.optional(S.Number),
           botIdEnabled: S.optional(S.Boolean),
-          firewallBypassIps: S.optional(__S(10, __c1, 2)),
+          firewallBypassIps: S.optional(__S(1280, __c40, 0)),
           firewallConfigVersion: S.optional(S.Number),
           firewallEnabled: S.optional(S.Boolean),
           firewallSeawallEnabled: S.optional(S.Boolean),
@@ -30463,39 +28728,39 @@ function __c35(j: number): any {
           ja3Enabled: S.optional(S.Boolean),
           ja4Enabled: S.optional(S.Boolean),
           log_headers: S.optional(S.Unknown),
-          managedRules: S.optional(S.NullOr(__S(278, __c34, 6))),
+          managedRules: S.optional(S.NullOr(__S(770, __c24, 2))),
           pageIntegrityEnabled: S.optional(S.Boolean),
-          rulesets: S.optional(__S(281, __c35, 1)),
+          rulesets: S.optional(__S(773, __c24, 5)),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseSecurity",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
+          alias: S.optional(__S(1280, __c40, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(10, __c1, 2)),
-          branchMatcher: S.optional(__S(25, __c3, 1)),
+          automaticAliases: S.optional(__S(1280, __c40, 0)),
+          branchMatcher: S.optional(__S(1444, __c45, 4)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
+          builds: S.optional(__S(1446, __c45, 6)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
+          creator: S.NullOr(__S(1447, __c45, 7)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
+          meta: S.optional(__S(1408, __c44, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(30, __c3, 6)),
+          oidcTokenClaims: S.optional(__S(1448, __c45, 8)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -30513,37 +28778,33 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseTargetsValue",
       });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(283, __c35, 3)));
-    case 5:
+    case 8:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(775, __c24, 7)));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           domains: S.optional(S.String),
-          ignorePaths: S.optional(__S(10, __c1, 2)),
-          samplingRules: S.optional(__S(114, __c14, 2)),
+          ignorePaths: S.optional(__S(1280, __c40, 0)),
+          samplingRules: S.optional(__S(1484, __c46, 12)),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseTracing",
       });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           to: S.Unknown,
-          claims: __S(116, __c14, 4),
+          claims: __S(1485, __c46, 13),
           label: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseTrustedSourcesOidcProvidersValueItem",
       });
-    case 7:
-      return S.Array(__S(286, __c35, 6));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(287, __c35, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(778, __c24, 10));
+    case 12:
+      return S.Record(S.String, __S(779, __c24, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           from: S.Unknown,
@@ -30552,158 +28813,260 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseTrustedSourcesProjectsValueCustomAllowItem",
       });
-    case 2:
-      return S.Array(__S(289, __c36, 1));
-    case 3:
+    case 14:
+      return S.Array(__S(781, __c24, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          customAllow: S.optional(__S(290, __c36, 2)),
+          customAllow: S.optional(__S(782, __c24, 14)),
           label: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseTrustedSourcesProjectsValue",
       });
-    case 4:
-      return S.Record(S.String, __S(291, __c36, 3));
-    case 5:
+    case 16:
+      return S.Record(S.String, __S(783, __c24, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           enableVercelCiSameRepository: S.optional(S.Boolean),
-          oidcProviders: S.optional(__S(288, __c36, 0)),
-          projects: S.optional(__S(292, __c36, 4)),
+          oidcProviders: S.optional(__S(780, __c24, 12)),
+          projects: S.optional(__S(784, __c24, 16)),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponseTrustedSources",
       });
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
-          alias: __S(246, __c30, 6),
-          analytics: S.optional(__S(34, __c4, 2)),
+          alias: __S(739, __c23, 3),
+          analytics: S.optional(__S(1449, __c45, 9)),
           appliedCve55182Migration: S.optional(S.Boolean),
           autoAssignCustomDomains: S.optional(S.Boolean),
           autoAssignCustomDomainsUpdatedBy: S.optional(S.String),
           autoExposeSystemEnvs: S.optional(S.Boolean),
           avatar: S.optional(S.NullOr(S.String)),
-          blobs: S.optional(__S(35, __c4, 3)),
+          blobs: S.optional(__S(1450, __c45, 10)),
           buildCommand: S.optional(S.NullOr(S.String)),
           commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
           concurrencyBucketName: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.NullOr(S.String)),
-          connectConfigurations: S.optional(S.NullOr(__S(249, __c31, 1))),
+          connectConfigurations: S.optional(S.NullOr(__S(742, __c23, 6))),
           createdAt: S.optional(S.Number),
           creator: S.optional(S.Unknown),
-          crons: S.optional(__S(41, __c5, 1)),
-          customEnvironments: S.optional(__S(253, __c31, 5)),
+          crons: S.optional(__S(1536, __c48, 0)),
+          customEnvironments: S.optional(__S(746, __c23, 10)),
           customerSupportCodeVisibility: S.optional(S.Boolean),
-          dataCache: S.optional(__S(48, __c6, 0)),
-          defaultResourceConfig: __S(254, __c31, 6),
-          deploymentExpiration: __S(51, __c6, 3),
-          deploymentPolicy: S.optional(S.NullOr(__S(262, __c32, 6))),
+          dataCache: S.optional(__S(1454, __c45, 14)),
+          defaultResourceConfig: __S(747, __c23, 11),
+          deploymentExpiration: __S(1456, __c45, 16),
+          deploymentPolicy: S.optional(S.NullOr(__S(755, __c23, 19))),
           devCommand: S.optional(S.NullOr(S.String)),
           directoryListing: S.Boolean,
-          dismissedToasts: S.optional(__S(264, __c33, 0)),
+          dismissedToasts: S.optional(__S(757, __c23, 21)),
           enableAffectedProjectsDeployments: S.optional(S.Boolean),
           enableExternalRewriteCaching: S.optional(S.Boolean),
           enablePreviewFeedback: S.optional(S.NullOr(S.Boolean)),
           enableProductionFeedback: S.optional(S.NullOr(S.Boolean)),
-          env: S.optional(__S(266, __c33, 2)),
+          env: S.optional(__S(759, __c23, 23)),
           expiration: S.optional(S.Unknown),
-          features: S.optional(__S(66, __c8, 2)),
+          features: S.optional(__S(1458, __c45, 18)),
           framework: S.optional(S.NullOr(S.String)),
-          gitComments: S.optional(__S(67, __c8, 3)),
+          gitComments: S.optional(__S(1459, __c45, 19)),
           gitForkProtection: S.optional(S.Boolean),
           gitLFS: S.optional(S.Boolean),
-          gitProviderOptions: S.optional(__S(69, __c8, 5)),
+          gitProviderOptions: S.optional(__S(1461, __c45, 21)),
           hasActiveBranches: S.optional(S.Boolean),
           hasDeployments: S.optional(S.Boolean),
           id: S.String,
           installCommand: S.optional(S.NullOr(S.String)),
-          internalRoutes: S.optional(__S(267, __c33, 3)),
-          ipBuckets: S.optional(__S(72, __c9, 0)),
-          jobs: S.optional(__S(268, __c33, 4)),
-          lastAliasRequest: S.optional(S.NullOr(__S(75, __c9, 3))),
+          internalRoutes: S.optional(__S(760, __c23, 24)),
+          ipBuckets: S.optional(__S(1463, __c45, 23)),
+          jobs: S.optional(__S(808, __c25, 8)),
+          lastAliasRequest: S.optional(S.NullOr(__S(1465, __c45, 25))),
           lastRollbackTarget: S.optional(S.NullOr(S.Unknown)),
-          latestDeployments: S.optional(__S(270, __c33, 6)),
+          latestDeployments: S.optional(__S(762, __c23, 26)),
           link: S.optional(S.Unknown),
           live: S.optional(S.Boolean),
           microfrontends: S.optional(S.Unknown),
           name: S.String,
           nodeVersion: S.String,
-          oidcTokenConfig: S.optional(__S(19, __c2, 3)),
-          optionsAllowlist: S.optional(S.NullOr(__S(82, __c10, 2))),
+          oidcTokenConfig: S.optional(__S(1441, __c45, 1)),
+          optionsAllowlist: S.optional(S.NullOr(__S(1468, __c45, 28))),
           outputDirectory: S.optional(S.NullOr(S.String)),
           passiveConnectConfigurationId: S.optional(S.NullOr(S.String)),
-          passport: S.optional(S.NullOr(__S(83, __c10, 3))),
+          passport: S.optional(S.NullOr(__S(1469, __c45, 29))),
           passwordProtection: S.optional(S.NullOr(S.Unknown)),
           paused: S.optional(S.Boolean),
-          permissions: S.optional(__S(271, __c33, 7)),
+          permissions: S.optional(__S(763, __c23, 27)),
           productionDeploymentsFastLane: S.optional(S.Boolean),
           protectedSourcemaps: S.optional(S.Boolean),
-          protectionBypass: S.optional(__S(272, __c34, 0)),
-          protectionConfig: S.optional(__S(87, __c10, 7)),
-          resourceConfig: __S(273, __c34, 1),
-          rollbackDescription: S.optional(__S(89, __c11, 1)),
-          rollingRelease: S.optional(S.NullOr(__S(277, __c34, 5))),
+          protectionBypass: S.optional(__S(764, __c23, 28)),
+          protectionConfig: S.optional(__S(1471, __c45, 31)),
+          resourceConfig: __S(765, __c23, 29),
+          rollbackDescription: S.optional(__S(1472, __c46, 0)),
+          rollingRelease: S.optional(S.NullOr(__S(769, __c24, 1))),
           rootDirectory: S.optional(S.NullOr(S.String)),
-          sandbox: S.optional(__S(97, __c12, 1)),
-          security: S.optional(__S(282, __c35, 2)),
+          sandbox: S.optional(__S(1476, __c46, 4)),
+          security: S.optional(__S(774, __c24, 6)),
           serverlessFunctionZeroConfigFailover: S.optional(S.Boolean),
-          services: S.optional(__S(106, __c13, 2)),
-          skewProtectionAllowedDomains: S.optional(__S(10, __c1, 2)),
+          services: S.optional(__S(1480, __c46, 8)),
+          skewProtectionAllowedDomains: S.optional(__S(1280, __c40, 0)),
           skewProtectionBoundaryAt: S.optional(S.Number),
           skewProtectionMaxAge: S.optional(S.Number),
           skipGitConnectDuringLink: S.optional(S.Boolean),
           sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
-          speedInsights: S.optional(__S(107, __c13, 3)),
-          ssoProtection: S.optional(S.NullOr(__S(212, __c26, 4))),
-          staticIps: S.optional(__S(109, __c13, 5)),
-          targets: S.optional(__S(284, __c35, 4)),
+          speedInsights: S.optional(__S(1481, __c46, 9)),
+          ssoProtection: S.optional(S.NullOr(__S(806, __c25, 6))),
+          staticIps: S.optional(__S(1482, __c46, 10)),
+          targets: S.optional(__S(776, __c24, 8)),
           tier: S.optional(S.String),
-          tracing: S.optional(__S(285, __c35, 5)),
+          tracing: S.optional(__S(777, __c24, 9)),
           transferCompletedAt: S.optional(S.Number),
           transferredFromAccountId: S.optional(S.String),
           transferStartedAt: S.optional(S.Number),
           transferToAccountId: S.optional(S.String),
           trustedIps: S.optional(S.NullOr(S.Unknown)),
-          trustedSources: S.optional(S.NullOr(__S(293, __c36, 5))),
+          trustedSources: S.optional(S.NullOr(__S(785, __c24, 17))),
           updatedAt: S.optional(S.Number),
-          usageStatus: S.optional(__S(125, __c15, 5)),
+          usageStatus: S.optional(__S(1486, __c46, 14)),
           v0: S.optional(S.Boolean),
           v0Created: S.optional(S.Boolean),
-          webAnalytics: S.optional(__S(126, __c15, 6)),
+          webAnalytics: S.optional(__S(1487, __c46, 15)),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsResponse",
       });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pattern: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "GetProjectsResponseBodyCase0ItemAliasItemDeploymentBranchMatcher",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          aud: S.String,
+          custom_environment_id: S.optional(S.String),
+          deployment_id: S.optional(S.String),
+          environment: S.String,
+          iss: S.String,
+          mfe_group_ids: S.optional(__S(1440, __c45, 0)),
+          owner: S.String,
+          owner_id: S.String,
+          plan: S.optional(S.String),
+          project: S.String,
+          project_id: S.String,
+          scope: S.String,
+          sub: S.String,
+        }),
+      ).annotate({
+        identifier: "GetProjectsResponseBodyCase0ItemAliasItemDeploymentOidcTokenClaims",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          algorithmVersion: S.String,
+          at: S.Number,
+          direction: S.String,
+        }),
+      ).annotate({
+        identifier: "GetProjectsResponseBodyCase0ItemResourceConfigBuildMachineElasticTransition",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          configuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetProjectsResponseBodyCase0ItemResourceConfigBuildQueue",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          active: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GetProjectsResponseBodyCase0ItemSecurityManagedRulesAiBots",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          active: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GetProjectsResponseBodyCase0ItemSecurityManagedRulesBotFilter",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          april2026SecurityIncidentMigrationAppliedFrom: S.optional(S.NullOr(S.String)),
+          cve55182MigrationAppliedFrom: S.optional(S.NullOr(S.String)),
+          deploymentType: S.String,
+        }),
+      ).annotate({
+        identifier: "GetProjectsResponseBodyCase0ItemSsoProtection",
+      });
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          targets: __S(1440, __c45, 0),
+        }),
+      ).annotate({
+        identifier: "GetProjectsResponseBodyCase2ProjectsItemJobsTypecheck",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          flag_definitions_present: S.optional(
+            __S(807, __c25, 7).pipe(T.Body("flag-definitions-present")),
+          ),
+          lint: S.optional(__S(1464, __c45, 24)),
+          mfe_config_present: S.optional(__S(1464, __c45, 24).pipe(T.Body("mfe-config-present"))),
+          typecheck: S.optional(__S(1464, __c45, 24)),
+        }),
+      ).annotate({
+        identifier: "UpdateMicrofrontendsResponseJobs",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           buildMachineType: S.optional(S.String),
           buildMachineSelection: S.optional(S.String),
-          buildQueue: S.optional(__S(21, __c2, 5)),
+          buildQueue: S.optional(__S(1442, __c45, 2)),
           fluid: S.optional(S.Boolean),
-          functionDefaultRegions: S.optional(__S(10, __c1, 2)),
+          functionDefaultRegions: S.optional(__S(1280, __c40, 0)),
           functionDefaultTimeout: S.optional(S.Number),
           functionDefaultMemoryType: S.optional(S.String),
           functionZeroConfigFailover: S.optional(S.Boolean),
           elasticConcurrencyEnabled: S.optional(S.Boolean),
           buildMachineElasticLastUpdated: S.optional(S.Number),
           buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(20, __c2, 4)),
+          buildMachineElasticTransition: S.optional(__S(1570, __c49, 2)),
           isNSNBDisabled: S.optional(S.Boolean),
           enableFunctionsBeta: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "UpdateProjectRequestResourceConfig",
       });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -30711,7 +29074,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "UpdateProjectRequestStaticIps",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           rate: S.Number,
@@ -30722,19 +29085,19 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "UpdateProjectRequestTracingSamplingRulesItem",
       });
-    case 2:
-      return S.Array(__S(297, __c37, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(835, __c26, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           domains: S.optional(S.String),
-          ignorePaths: S.optional(__S(10, __c1, 2)),
-          samplingRules: S.optional(__S(298, __c37, 2)),
+          ignorePaths: S.optional(__S(1280, __c40, 0)),
+          samplingRules: S.optional(__S(836, __c26, 4)),
         }),
       ).annotate({
         identifier: "UpdateProjectRequestTracing",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           deploymentType: S.String,
@@ -30743,7 +29106,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "UpdateProjectRequestPasswordProtection",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           connectorId: S.String,
@@ -30752,7 +29115,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "UpdateProjectRequestPassport",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           value: S.String,
@@ -30761,23 +29124,19 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "UpdateProjectRequestTrustedIpsAddressesItem",
       });
-    case 7:
-      return S.Array(__S(302, __c37, 6));
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(840, __c26, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           deploymentType: S.String,
-          addresses: __S(303, __c37, 7),
+          addresses: __S(841, __c26, 9),
           protectionMode: S.String,
         }),
       ).annotate({
         identifier: "UpdateProjectRequestTrustedIps",
       });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           to: S.Unknown,
@@ -30786,48 +29145,44 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "UpdateProjectRequestTrustedSourcesProjectsValueCustomAllowItem",
       });
-    case 2:
-      return S.Array(__S(305, __c38, 1));
-    case 3:
+    case 12:
+      return S.Array(__S(843, __c26, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
-          customAllow: S.optional(__S(306, __c38, 2)),
+          customAllow: S.optional(__S(844, __c26, 12)),
         }),
       ).annotate({
         identifier: "UpdateProjectRequestTrustedSourcesProjectsValue",
       });
-    case 4:
-      return S.Record(S.String, __S(307, __c38, 3));
-    case 5:
+    case 14:
+      return S.Record(S.String, __S(845, __c26, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
           to: S.Unknown,
-          claims: __S(116, __c14, 4),
+          claims: __S(1485, __c46, 13),
         }),
       ).annotate({
         identifier: "UpdateProjectRequestTrustedSourcesOidcProvidersValueItem",
       });
-    case 6:
-      return S.Array(__S(309, __c38, 5));
-    case 7:
-      return S.Record(S.String, __S(310, __c38, 6));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
+      return S.Array(__S(847, __c26, 15));
+    case 17:
+      return S.Record(S.String, __S(848, __c26, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           enableVercelCiSameRepository: S.optional(S.Boolean),
-          projects: S.optional(__S(308, __c38, 4)),
-          oidcProviders: S.optional(__S(311, __c38, 7)),
+          projects: S.optional(__S(846, __c26, 14)),
+          oidcProviders: S.optional(__S(849, __c26, 17)),
         }),
       ).annotate({
         identifier: "UpdateProjectRequestTrustedSources",
       });
-    case 1:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -30838,9 +29193,9 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "UpdateProjectRequestDismissedToastsItem",
       });
-    case 2:
-      return S.Array(__S(313, __c39, 1));
-    case 3:
+    case 20:
+      return S.Array(__S(851, __c26, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -30864,61 +29219,61 @@ function __c39(j: number): any {
           outputDirectory: S.optional(S.NullOr(S.String)),
           previewDeploymentsDisabled: S.optional(S.NullOr(S.Boolean)),
           previewDeploymentSuffix: S.optional(S.NullOr(S.String)),
-          resourceConfig: S.optional(__S(295, __c36, 7)),
+          resourceConfig: S.optional(__S(833, __c26, 1)),
           publicSource: S.optional(S.NullOr(S.Boolean)),
           rootDirectory: S.optional(S.NullOr(S.String)),
           serverlessFunctionRegion: S.optional(S.NullOr(S.String)),
           serverlessFunctionZeroConfigFailover: S.optional(S.Boolean),
           skewProtectionBoundaryAt: S.optional(S.Number),
           skewProtectionMaxAge: S.optional(S.Number),
-          skewProtectionAllowedDomains: S.optional(__S(10, __c1, 2)),
+          skewProtectionAllowedDomains: S.optional(__S(1280, __c40, 0)),
           skipGitConnectDuringLink: S.optional(S.Boolean),
           sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
           enablePreviewFeedback: S.optional(S.NullOr(S.Boolean)),
           enableProductionFeedback: S.optional(S.NullOr(S.Boolean)),
           enableAffectedProjectsDeployments: S.optional(S.Boolean),
           enableExternalRewriteCaching: S.optional(S.Boolean),
-          staticIps: S.optional(__S(296, __c37, 0)),
-          tracing: S.optional(S.NullOr(__S(299, __c37, 3))),
-          oidcTokenConfig: S.optional(__S(19, __c2, 3)),
-          passwordProtection: S.optional(S.NullOr(__S(300, __c37, 4))),
-          passport: S.optional(S.NullOr(__S(301, __c37, 5))),
-          sandbox: S.optional(__S(18, __c2, 2)),
-          ssoProtection: S.optional(S.NullOr(__S(17, __c2, 1))),
-          trustedIps: S.optional(S.NullOr(__S(304, __c38, 0))),
-          trustedSources: S.optional(S.NullOr(__S(312, __c39, 0))),
+          staticIps: S.optional(__S(834, __c26, 2)),
+          tracing: S.optional(S.NullOr(__S(837, __c26, 5))),
+          oidcTokenConfig: S.optional(__S(1441, __c45, 1)),
+          passwordProtection: S.optional(S.NullOr(__S(838, __c26, 6))),
+          passport: S.optional(S.NullOr(__S(839, __c26, 7))),
+          sandbox: S.optional(__S(1569, __c49, 1)),
+          ssoProtection: S.optional(S.NullOr(__S(1568, __c49, 0))),
+          trustedIps: S.optional(S.NullOr(__S(842, __c26, 10))),
+          trustedSources: S.optional(S.NullOr(__S(850, __c26, 18))),
           deploymentPolicy: S.optional(S.Unknown),
-          optionsAllowlist: S.optional(S.NullOr(__S(82, __c10, 2))),
-          connectConfigurations: S.optional(S.NullOr(__S(79, __c9, 7))),
-          dismissedToasts: S.optional(__S(314, __c39, 2)),
+          optionsAllowlist: S.optional(S.NullOr(__S(1468, __c45, 28))),
+          connectConfigurations: S.optional(S.NullOr(__S(832, __c26, 0))),
+          dismissedToasts: S.optional(__S(852, __c26, 20)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v9/projects/{idOrName}", code: 200 })),
       ).annotate({ identifier: "UpdateProjectRequest" });
-    case 4:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
+          alias: S.optional(__S(1280, __c40, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(10, __c1, 2)),
-          branchMatcher: S.optional(__S(25, __c3, 1)),
+          automaticAliases: S.optional(__S(1280, __c40, 0)),
+          branchMatcher: S.optional(__S(1444, __c45, 4)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
+          builds: S.optional(__S(1446, __c45, 6)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
+          creator: S.NullOr(__S(1447, __c45, 7)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
+          meta: S.optional(__S(1408, __c44, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(30, __c3, 6)),
+          oidcTokenClaims: S.optional(__S(1448, __c45, 8)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -30936,13 +29291,13 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseAliasItemDeployment",
       });
-    case 5:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           configuredBy: S.optional(S.NullOr(S.String)),
           configuredChangedAt: S.optional(S.NullOr(S.Number)),
           createdAt: S.optional(S.NullOr(S.Number)),
-          deployment: S.NullOr(__S(316, __c39, 4)),
+          deployment: S.NullOr(__S(854, __c26, 22)),
           domain: S.String,
           environment: S.String,
           gitBranch: S.optional(S.NullOr(S.String)),
@@ -30953,12 +29308,12 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseAliasItem",
       });
-    case 6:
-      return S.Array(__S(317, __c39, 5));
-    case 7:
+    case 24:
+      return S.Array(__S(855, __c26, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          aws: S.optional(__S(36, __c4, 4)),
+          aws: S.optional(__S(1504, __c47, 0)),
           buildsEnabled: S.Boolean,
           connectConfigurationId: S.String,
           createdAt: S.Number,
@@ -30970,13 +29325,9 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseConnectConfigurationsItem",
       });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(319, __c39, 7));
-    case 1:
+    case 26:
+      return S.Array(__S(857, __c26, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           apexName: S.String,
@@ -30988,22 +29339,22 @@ function __c40(j: number): any {
           redirect: S.optional(S.NullOr(S.String)),
           redirectStatusCode: S.optional(S.NullOr(S.Number)),
           updatedAt: S.optional(S.Number),
-          verification: S.optional(__S(43, __c5, 3)),
+          verification: S.optional(__S(1453, __c45, 13)),
           verified: S.Boolean,
         }),
       ).annotate({
         identifier: "UpdateProjectResponseCustomEnvironmentsItemDomainsItem",
       });
-    case 2:
-      return S.Array(__S(321, __c40, 1));
-    case 3:
+    case 28:
+      return S.Array(__S(859, __c26, 27));
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          branchMatcher: S.optional(__S(42, __c5, 2)),
+          branchMatcher: S.optional(__S(1537, __c48, 1)),
           createdAt: S.Number,
-          currentDeploymentAliases: S.optional(__S(4, __c0, 4)),
+          currentDeploymentAliases: S.optional(__S(1440, __c45, 0)),
           description: S.optional(S.String),
-          domains: S.optional(__S(322, __c40, 2)),
+          domains: S.optional(__S(860, __c26, 28)),
           id: S.String,
           slug: S.String,
           type: S.String,
@@ -31012,22 +29363,22 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseCustomEnvironmentsItem",
       });
-    case 4:
-      return S.Array(__S(323, __c40, 3));
-    case 5:
+    case 30:
+      return S.Array(__S(861, __c26, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
           buildMachineElasticLastUpdated: S.optional(S.Number),
           buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(49, __c6, 1)),
+          buildMachineElasticTransition: S.optional(__S(1455, __c45, 15)),
           buildMachineSelection: S.optional(S.String),
           buildMachineType: S.optional(S.String),
-          buildQueue: S.optional(__S(21, __c2, 5)),
+          buildQueue: S.optional(__S(1442, __c45, 2)),
           elasticConcurrencyEnabled: S.optional(S.Boolean),
           enableFunctionsBeta: S.optional(S.Boolean),
           fluid: S.optional(S.Boolean),
           functionDefaultMemoryType: S.optional(S.String),
-          functionDefaultRegions: __S(4, __c0, 4),
+          functionDefaultRegions: __S(1440, __c45, 0),
           functionDefaultTimeout: S.optional(S.Number),
           functionZeroConfigFailover: S.optional(S.Boolean),
           isNSNBDisabled: S.optional(S.Boolean),
@@ -31035,50 +29386,50 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseDefaultResourceConfig",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          environments: __S(326, __c40, 6),
-          sources: __S(53, __c6, 5),
+          environments: __S(864, __c27, 0),
+          sources: __S(1457, __c45, 17),
         }),
       ).annotate({
         identifier: "UpdateProjectResponseDeploymentPolicyDeploymentSourcesItem",
       });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(327, __c40, 7));
-    case 1:
-      return S.Array(S.Unknown);
     case 2:
-      return S.Array(S.Unknown);
+      return S.Array(__S(865, __c27, 1));
     case 3:
+      return S.Array(S.Unknown);
+    case 4:
+      return S.Array(S.Unknown);
+    case 5:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          environments: __S(329, __c41, 1),
-          sources: __S(330, __c41, 2),
+          environments: __S(867, __c27, 3),
+          sources: __S(868, __c27, 4),
         }),
       ).annotate({
         identifier: "UpdateProjectResponseDeploymentPolicyGitSourcesItem",
       });
-    case 4:
-      return S.Array(__S(331, __c41, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(869, __c27, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          deploymentSources: S.optional(S.NullOr(__S(328, __c41, 0))),
-          gitSources: S.optional(S.NullOr(__S(332, __c41, 4))),
+          deploymentSources: S.optional(S.NullOr(__S(866, __c27, 2))),
+          gitSources: S.optional(S.NullOr(__S(870, __c27, 6))),
         }),
       ).annotate({
         identifier: "UpdateProjectResponseDeploymentPolicy",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -31089,13 +29440,9 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseDismissedToastsItem",
       });
-    case 7:
-      return S.Array(__S(334, __c41, 6));
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(872, __c27, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
@@ -31103,13 +29450,13 @@ function __c42(j: number): any {
           contentHint: S.optional(S.NullOr(S.Unknown)),
           createdAt: S.optional(S.Number),
           createdBy: S.optional(S.NullOr(S.String)),
-          customEnvironmentIds: S.optional(__S(10, __c1, 2)),
+          customEnvironmentIds: S.optional(__S(1280, __c40, 0)),
           decrypted: S.optional(S.Boolean),
           edgeConfigId: S.optional(S.NullOr(S.String)),
           edgeConfigTokenId: S.optional(S.NullOr(S.String)),
           gitBranch: S.optional(S.String),
           id: S.optional(S.String),
-          internalContentHint: S.optional(S.NullOr(__S(63, __c7, 7))),
+          internalContentHint: S.optional(S.NullOr(__S(1377, __c43, 1))),
           key: S.String,
           legacyValue: S.optional(S.String),
           sunsetSecretId: S.optional(S.String),
@@ -31124,36 +29471,36 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseEnvItem",
       });
-    case 1:
-      return S.Array(__S(336, __c42, 0));
-    case 2:
+    case 11:
+      return S.Array(__S(874, __c27, 10));
+    case 12:
       return S.Array(S.Unknown);
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
+          alias: S.optional(__S(1280, __c40, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(10, __c1, 2)),
-          branchMatcher: S.optional(__S(25, __c3, 1)),
+          automaticAliases: S.optional(__S(1280, __c40, 0)),
+          branchMatcher: S.optional(__S(1444, __c45, 4)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
+          builds: S.optional(__S(1446, __c45, 6)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
+          creator: S.NullOr(__S(1447, __c45, 7)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
+          meta: S.optional(__S(1408, __c44, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(76, __c9, 4)),
+          oidcTokenClaims: S.optional(__S(1572, __c49, 4)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -31171,24 +29518,24 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseLatestDeploymentsItem",
       });
-    case 4:
-      return S.Array(__S(339, __c42, 3));
-    case 5:
+    case 14:
+      return S.Array(__S(877, __c27, 13));
+    case 15:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           buildMachineElasticLastUpdated: S.optional(S.Number),
           buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(49, __c6, 1)),
+          buildMachineElasticTransition: S.optional(__S(1455, __c45, 15)),
           buildMachineSelection: S.optional(S.String),
           buildMachineType: S.optional(S.String),
-          buildQueue: S.optional(__S(21, __c2, 5)),
+          buildQueue: S.optional(__S(1442, __c45, 2)),
           elasticConcurrencyEnabled: S.optional(S.Boolean),
           enableFunctionsBeta: S.optional(S.Boolean),
           fluid: S.optional(S.Boolean),
           functionDefaultMemoryType: S.optional(S.String),
-          functionDefaultRegions: __S(10, __c1, 2),
+          functionDefaultRegions: __S(1280, __c40, 0),
           functionDefaultTimeout: S.optional(S.Number),
           functionZeroConfigFailover: S.optional(S.Boolean),
           isNSNBDisabled: S.optional(S.Boolean),
@@ -31196,11 +29543,11 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseResourceConfig",
       });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          excludePaths: S.optional(__S(4, __c0, 4)),
-          excludeStatusCodes: S.optional(__S(90, __c11, 2)),
+          excludePaths: S.optional(__S(1440, __c45, 0)),
+          excludeStatusCodes: S.optional(__S(1473, __c46, 1)),
           ingestWatermarkSeconds: S.optional(S.Number),
           minSampleSize: S.optional(S.Number),
           type: S.String,
@@ -31208,17 +29555,13 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseRollingReleaseGateChecksItem",
       });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(343, __c42, 7));
-    case 1:
+    case 18:
+      return S.Array(__S(881, __c27, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          checks: __S(344, __c43, 0),
+          checks: __S(882, __c27, 18),
           dryRun: S.Boolean,
           enabled: S.Boolean,
           failureThreshold: S.optional(S.Number),
@@ -31227,51 +29570,51 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseRollingReleaseGate",
       });
-    case 2:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           canaryResponseHeader: S.optional(S.Boolean),
-          gate: S.optional(__S(345, __c43, 1)),
-          stages: S.optional(S.NullOr(__S(95, __c11, 7))),
+          gate: S.optional(__S(883, __c27, 19)),
+          stages: S.optional(S.NullOr(__S(1475, __c46, 3))),
           target: S.String,
         }),
       ).annotate({
         identifier: "UpdateProjectResponseRollingRelease",
       });
-    case 3:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           algo: S.String,
-          keys: __S(10, __c1, 2),
+          keys: __S(1280, __c40, 0),
           limit: S.Number,
           window: S.Number,
         }),
       ).annotate({
         identifier: "UpdateProjectResponseSecurityRulesetsValueRateLimit",
       });
-    case 4:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
           actionDuration: S.optional(S.NullOr(S.String)),
           bypassSystem: S.optional(S.NullOr(S.Boolean)),
           logHeaders: S.optional(S.Unknown),
-          rateLimit: S.optional(S.NullOr(__S(347, __c43, 3))),
-          redirect: S.optional(S.NullOr(__S(101, __c12, 5))),
+          rateLimit: S.optional(S.NullOr(__S(885, __c27, 21))),
+          redirect: S.optional(S.NullOr(__S(1478, __c46, 6))),
         }),
       ).annotate({
         identifier: "UpdateProjectResponseSecurityRulesetsValue",
       });
-    case 5:
-      return S.Record(S.String, __S(348, __c43, 4));
-    case 6:
+    case 23:
+      return S.Record(S.String, __S(886, __c27, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           attackModeActiveUntil: S.optional(S.NullOr(S.Number)),
           attackModeEnabled: S.optional(S.Boolean),
           attackModeUpdatedAt: S.optional(S.Number),
           botIdEnabled: S.optional(S.Boolean),
-          firewallBypassIps: S.optional(__S(10, __c1, 2)),
+          firewallBypassIps: S.optional(__S(1280, __c40, 0)),
           firewallConfigVersion: S.optional(S.Number),
           firewallEnabled: S.optional(S.Boolean),
           firewallSeawallEnabled: S.optional(S.Boolean),
@@ -31279,39 +29622,39 @@ function __c43(j: number): any {
           ja3Enabled: S.optional(S.Boolean),
           ja4Enabled: S.optional(S.Boolean),
           log_headers: S.optional(S.Unknown),
-          managedRules: S.optional(S.NullOr(__S(99, __c12, 3))),
+          managedRules: S.optional(S.NullOr(__S(1505, __c47, 1))),
           pageIntegrityEnabled: S.optional(S.Boolean),
-          rulesets: S.optional(__S(349, __c43, 5)),
+          rulesets: S.optional(__S(887, __c27, 23)),
         }),
       ).annotate({
         identifier: "UpdateProjectResponseSecurity",
       });
-    case 7:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
+          alias: S.optional(__S(1280, __c40, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(10, __c1, 2)),
-          branchMatcher: S.optional(__S(25, __c3, 1)),
+          automaticAliases: S.optional(__S(1280, __c40, 0)),
+          branchMatcher: S.optional(__S(1444, __c45, 4)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
+          builds: S.optional(__S(1446, __c45, 6)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
+          creator: S.NullOr(__S(1447, __c45, 7)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
+          meta: S.optional(__S(1408, __c44, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(110, __c13, 6)),
+          oidcTokenClaims: S.optional(__S(1507, __c47, 3)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -31329,37 +29672,33 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseTargetsValue",
       });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(351, __c43, 7)));
-    case 1:
+    case 26:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(889, __c27, 25)));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           domains: S.optional(S.String),
-          ignorePaths: S.optional(__S(10, __c1, 2)),
-          samplingRules: S.optional(__S(114, __c14, 2)),
+          ignorePaths: S.optional(__S(1280, __c40, 0)),
+          samplingRules: S.optional(__S(1484, __c46, 12)),
         }),
       ).annotate({
         identifier: "UpdateProjectResponseTracing",
       });
-    case 2:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           to: S.Unknown,
-          claims: __S(116, __c14, 4),
+          claims: __S(1485, __c46, 13),
           label: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateProjectResponseTrustedSourcesOidcProvidersValueItem",
       });
-    case 3:
-      return S.Array(__S(354, __c44, 2));
-    case 4:
-      return S.Record(S.String, __S(355, __c44, 3));
-    case 5:
+    case 29:
+      return S.Array(__S(892, __c27, 28));
+    case 30:
+      return S.Record(S.String, __S(893, __c27, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
           from: S.Unknown,
@@ -31368,135 +29707,139 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "UpdateProjectResponseTrustedSourcesProjectsValueCustomAllowItem",
       });
-    case 6:
-      return S.Array(__S(357, __c44, 5));
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(895, __c27, 31));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          customAllow: S.optional(__S(358, __c44, 6)),
+          customAllow: S.optional(__S(896, __c28, 0)),
           label: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateProjectResponseTrustedSourcesProjectsValue",
       });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(359, __c44, 7));
-    case 1:
+    case 2:
+      return S.Record(S.String, __S(897, __c28, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           enableVercelCiSameRepository: S.optional(S.Boolean),
-          oidcProviders: S.optional(__S(356, __c44, 4)),
-          projects: S.optional(__S(360, __c45, 0)),
+          oidcProviders: S.optional(__S(894, __c27, 30)),
+          projects: S.optional(__S(898, __c28, 2)),
         }),
       ).annotate({
         identifier: "UpdateProjectResponseTrustedSources",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
-          alias: __S(318, __c39, 6),
-          analytics: S.optional(__S(34, __c4, 2)),
+          alias: __S(856, __c26, 24),
+          analytics: S.optional(__S(1449, __c45, 9)),
           appliedCve55182Migration: S.optional(S.Boolean),
           autoAssignCustomDomains: S.optional(S.Boolean),
           autoAssignCustomDomainsUpdatedBy: S.optional(S.String),
           autoExposeSystemEnvs: S.optional(S.Boolean),
           avatar: S.optional(S.NullOr(S.String)),
-          blobs: S.optional(__S(35, __c4, 3)),
+          blobs: S.optional(__S(1450, __c45, 10)),
           buildCommand: S.optional(S.NullOr(S.String)),
           commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
           concurrencyBucketName: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.NullOr(S.String)),
-          connectConfigurations: S.optional(S.NullOr(__S(320, __c40, 0))),
+          connectConfigurations: S.optional(S.NullOr(__S(858, __c26, 26))),
           createdAt: S.optional(S.Number),
           creator: S.optional(S.Unknown),
-          crons: S.optional(__S(41, __c5, 1)),
-          customEnvironments: S.optional(__S(324, __c40, 4)),
+          crons: S.optional(__S(1536, __c48, 0)),
+          customEnvironments: S.optional(__S(862, __c26, 30)),
           customerSupportCodeVisibility: S.optional(S.Boolean),
-          dataCache: S.optional(__S(48, __c6, 0)),
-          defaultResourceConfig: __S(325, __c40, 5),
-          deploymentExpiration: __S(51, __c6, 3),
-          deploymentPolicy: S.optional(S.NullOr(__S(333, __c41, 5))),
+          dataCache: S.optional(__S(1454, __c45, 14)),
+          defaultResourceConfig: __S(863, __c26, 31),
+          deploymentExpiration: __S(1456, __c45, 16),
+          deploymentPolicy: S.optional(S.NullOr(__S(871, __c27, 7))),
           devCommand: S.optional(S.NullOr(S.String)),
           directoryListing: S.Boolean,
-          dismissedToasts: S.optional(__S(335, __c41, 7)),
+          dismissedToasts: S.optional(__S(873, __c27, 9)),
           enableAffectedProjectsDeployments: S.optional(S.Boolean),
           enableExternalRewriteCaching: S.optional(S.Boolean),
           enablePreviewFeedback: S.optional(S.NullOr(S.Boolean)),
           enableProductionFeedback: S.optional(S.NullOr(S.Boolean)),
-          env: S.optional(__S(337, __c42, 1)),
+          env: S.optional(__S(875, __c27, 11)),
           expiration: S.optional(S.Unknown),
-          features: S.optional(__S(66, __c8, 2)),
+          features: S.optional(__S(1458, __c45, 18)),
           framework: S.optional(S.NullOr(S.String)),
-          gitComments: S.optional(__S(67, __c8, 3)),
+          gitComments: S.optional(__S(1459, __c45, 19)),
           gitForkProtection: S.optional(S.Boolean),
           gitLFS: S.optional(S.Boolean),
-          gitProviderOptions: S.optional(__S(69, __c8, 5)),
+          gitProviderOptions: S.optional(__S(1461, __c45, 21)),
           hasActiveBranches: S.optional(S.Boolean),
           hasDeployments: S.optional(S.Boolean),
           id: S.String,
           installCommand: S.optional(S.NullOr(S.String)),
-          internalRoutes: S.optional(__S(338, __c42, 2)),
-          ipBuckets: S.optional(__S(72, __c9, 0)),
-          jobs: S.optional(__S(74, __c9, 2)),
-          lastAliasRequest: S.optional(S.NullOr(__S(75, __c9, 3))),
+          internalRoutes: S.optional(__S(876, __c27, 12)),
+          ipBuckets: S.optional(__S(1463, __c45, 23)),
+          jobs: S.optional(__S(1571, __c49, 3)),
+          lastAliasRequest: S.optional(S.NullOr(__S(1465, __c45, 25))),
           lastRollbackTarget: S.optional(S.NullOr(S.Unknown)),
-          latestDeployments: S.optional(__S(340, __c42, 4)),
+          latestDeployments: S.optional(__S(878, __c27, 14)),
           link: S.optional(S.Unknown),
           live: S.optional(S.Boolean),
           microfrontends: S.optional(S.Unknown),
           name: S.String,
           nodeVersion: S.String,
-          oidcTokenConfig: S.optional(__S(19, __c2, 3)),
-          optionsAllowlist: S.optional(S.NullOr(__S(82, __c10, 2))),
+          oidcTokenConfig: S.optional(__S(1441, __c45, 1)),
+          optionsAllowlist: S.optional(S.NullOr(__S(1468, __c45, 28))),
           outputDirectory: S.optional(S.NullOr(S.String)),
           passiveConnectConfigurationId: S.optional(S.NullOr(S.String)),
-          passport: S.optional(S.NullOr(__S(83, __c10, 3))),
+          passport: S.optional(S.NullOr(__S(1469, __c45, 29))),
           passwordProtection: S.optional(S.NullOr(S.Unknown)),
           paused: S.optional(S.Boolean),
-          permissions: S.optional(__S(84, __c10, 4)),
+          permissions: S.optional(__S(1573, __c49, 5)),
           productionDeploymentsFastLane: S.optional(S.Boolean),
           protectedSourcemaps: S.optional(S.Boolean),
-          protectionBypass: S.optional(__S(341, __c42, 5)),
-          protectionConfig: S.optional(__S(87, __c10, 7)),
-          resourceConfig: __S(342, __c42, 6),
-          rollbackDescription: S.optional(__S(89, __c11, 1)),
-          rollingRelease: S.optional(S.NullOr(__S(346, __c43, 2))),
+          protectionBypass: S.optional(__S(879, __c27, 15)),
+          protectionConfig: S.optional(__S(1471, __c45, 31)),
+          resourceConfig: __S(880, __c27, 16),
+          rollbackDescription: S.optional(__S(1472, __c46, 0)),
+          rollingRelease: S.optional(S.NullOr(__S(884, __c27, 20))),
           rootDirectory: S.optional(S.NullOr(S.String)),
-          sandbox: S.optional(__S(97, __c12, 1)),
-          security: S.optional(__S(350, __c43, 6)),
+          sandbox: S.optional(__S(1476, __c46, 4)),
+          security: S.optional(__S(888, __c27, 24)),
           serverlessFunctionZeroConfigFailover: S.optional(S.Boolean),
-          services: S.optional(__S(106, __c13, 2)),
-          skewProtectionAllowedDomains: S.optional(__S(10, __c1, 2)),
+          services: S.optional(__S(1480, __c46, 8)),
+          skewProtectionAllowedDomains: S.optional(__S(1280, __c40, 0)),
           skewProtectionBoundaryAt: S.optional(S.Number),
           skewProtectionMaxAge: S.optional(S.Number),
           skipGitConnectDuringLink: S.optional(S.Boolean),
           sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
-          speedInsights: S.optional(__S(107, __c13, 3)),
-          ssoProtection: S.optional(S.NullOr(__S(108, __c13, 4))),
-          staticIps: S.optional(__S(109, __c13, 5)),
-          targets: S.optional(__S(352, __c44, 0)),
+          speedInsights: S.optional(__S(1481, __c46, 9)),
+          ssoProtection: S.optional(S.NullOr(__S(1506, __c47, 2))),
+          staticIps: S.optional(__S(1482, __c46, 10)),
+          targets: S.optional(__S(890, __c27, 26)),
           tier: S.optional(S.String),
-          tracing: S.optional(__S(353, __c44, 1)),
+          tracing: S.optional(__S(891, __c27, 27)),
           transferCompletedAt: S.optional(S.Number),
           transferredFromAccountId: S.optional(S.String),
           transferStartedAt: S.optional(S.Number),
           transferToAccountId: S.optional(S.String),
           trustedIps: S.optional(S.NullOr(S.Unknown)),
-          trustedSources: S.optional(S.NullOr(__S(361, __c45, 1))),
+          trustedSources: S.optional(S.NullOr(__S(899, __c28, 3))),
           updatedAt: S.optional(S.Number),
-          usageStatus: S.optional(__S(125, __c15, 5)),
+          usageStatus: S.optional(__S(1486, __c46, 14)),
           v0: S.optional(S.Boolean),
           v0Created: S.optional(S.Boolean),
-          webAnalytics: S.optional(__S(126, __c15, 6)),
+          webAnalytics: S.optional(__S(1487, __c46, 15)),
         }),
       ).annotate({ identifier: "UpdateProjectResponse" });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -31512,7 +29855,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "UpdateProjectDomainRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apexName: S.String,
@@ -31524,13 +29867,17 @@ function __c45(j: number): any {
           redirect: S.optional(S.NullOr(S.String)),
           redirectStatusCode: S.optional(S.NullOr(S.Number)),
           updatedAt: S.optional(S.Number),
-          verification: S.optional(__S(8, __c1, 0)),
+          verification: S.optional(__S(1184, __c37, 0)),
           verified: S.Boolean,
         }),
       ).annotate({
         identifier: "UpdateProjectDomainResponse",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           secret: S.String.pipe(T.SensitiveValue({})),
@@ -31539,7 +29886,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "UpdateProjectProtectionBypassRequestRevoke",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -31548,7 +29895,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "UpdateProjectProtectionBypassRequestGenerate",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           secret: S.String.pipe(T.SensitiveValue({})),
@@ -31558,36 +29905,36 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "UpdateProjectProtectionBypassRequestUpdate",
       });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          revoke: S.optional(__S(365, __c45, 5)),
-          generate: S.optional(__S(366, __c45, 6)),
-          update: S.optional(__S(367, __c45, 7)),
+          revoke: S.optional(__S(960, __c30, 0)),
+          generate: S.optional(__S(961, __c30, 1)),
+          update: S.optional(__S(962, __c30, 2)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/projects/{idOrName}/protection-bypass", code: 200 }),
         ),
       ).annotate({
         identifier: "UpdateProjectProtectionBypassRequest",
       });
-    case 1:
+    case 4:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          protectionBypass: S.optional(__S(369, __c46, 1)),
+          protectionBypass: S.optional(__S(964, __c30, 4)),
         }),
       ).annotate({
         identifier: "UpdateProjectProtectionBypassResponse",
       });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -31603,11 +29950,15 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionResponse",
       });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -31617,32 +29968,32 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
+          alias: S.optional(__S(1280, __c40, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(4, __c0, 4)),
-          branchMatcher: S.optional(__S(42, __c5, 2)),
+          automaticAliases: S.optional(__S(1440, __c45, 0)),
+          branchMatcher: S.optional(__S(1537, __c48, 1)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
+          builds: S.optional(__S(1446, __c45, 6)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
+          creator: S.NullOr(__S(1447, __c45, 7)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
+          meta: S.optional(__S(1408, __c44, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(207, __c25, 7)),
+          oidcTokenClaims: S.optional(__S(801, __c25, 1)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -31660,13 +30011,13 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseAliasItemDeployment",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           configuredBy: S.optional(S.NullOr(S.String)),
           configuredChangedAt: S.optional(S.NullOr(S.Number)),
           createdAt: S.optional(S.NullOr(S.Number)),
-          deployment: S.NullOr(__S(374, __c46, 6)),
+          deployment: S.NullOr(__S(1025, __c32, 1)),
           domain: S.String,
           environment: S.String,
           gitBranch: S.optional(S.NullOr(S.String)),
@@ -31677,25 +30028,21 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseAliasItem",
       });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(375, __c46, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(1026, __c32, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           securityGroupId: S.optional(S.String),
-          subnetIds: __S(4, __c0, 4),
+          subnetIds: __S(1440, __c45, 0),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseConnectConfigurationsItemAws",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          aws: S.optional(__S(377, __c47, 1)),
+          aws: S.optional(__S(1028, __c32, 4)),
           buildsEnabled: S.Boolean,
           connectConfigurationId: S.String,
           createdAt: S.Number,
@@ -31707,9 +30054,9 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseConnectConfigurationsItem",
       });
-    case 3:
-      return S.Array(__S(378, __c47, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(1029, __c32, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           apexName: S.String,
@@ -31721,22 +30068,22 @@ function __c47(j: number): any {
           redirect: S.optional(S.NullOr(S.String)),
           redirectStatusCode: S.optional(S.NullOr(S.Number)),
           updatedAt: S.optional(S.Number),
-          verification: S.optional(__S(43, __c5, 3)),
+          verification: S.optional(__S(1453, __c45, 13)),
           verified: S.Boolean,
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseCustomEnvironmentsItemDomainsItem",
       });
-    case 5:
-      return S.Array(__S(380, __c47, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(1031, __c32, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          branchMatcher: S.optional(__S(206, __c25, 6)),
+          branchMatcher: S.optional(__S(800, __c25, 0)),
           createdAt: S.Number,
-          currentDeploymentAliases: S.optional(__S(4, __c0, 4)),
+          currentDeploymentAliases: S.optional(__S(1440, __c45, 0)),
           description: S.optional(S.String),
-          domains: S.optional(__S(381, __c47, 5)),
+          domains: S.optional(__S(1032, __c32, 8)),
           id: S.String,
           slug: S.String,
           type: S.String,
@@ -31745,26 +30092,22 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseCustomEnvironmentsItem",
       });
-    case 7:
-      return S.Array(__S(382, __c47, 6));
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
+      return S.Array(__S(1033, __c32, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           buildMachineElasticLastUpdated: S.optional(S.Number),
           buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(208, __c26, 0)),
+          buildMachineElasticTransition: S.optional(__S(802, __c25, 2)),
           buildMachineSelection: S.optional(S.String),
           buildMachineType: S.optional(S.String),
-          buildQueue: S.optional(__S(209, __c26, 1)),
+          buildQueue: S.optional(__S(803, __c25, 3)),
           elasticConcurrencyEnabled: S.optional(S.Boolean),
           enableFunctionsBeta: S.optional(S.Boolean),
           fluid: S.optional(S.Boolean),
           functionDefaultMemoryType: S.optional(S.String),
-          functionDefaultRegions: __S(4, __c0, 4),
+          functionDefaultRegions: __S(1440, __c45, 0),
           functionDefaultTimeout: S.optional(S.Number),
           functionZeroConfigFailover: S.optional(S.Boolean),
           isNSNBDisabled: S.optional(S.Boolean),
@@ -31772,50 +30115,46 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseDefaultResourceConfig",
       });
-    case 1:
+    case 12:
       return S.Array(S.Unknown);
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          environments: __S(385, __c48, 1),
-          sources: __S(53, __c6, 5),
+          environments: __S(1036, __c32, 12),
+          sources: __S(1457, __c45, 17),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseDeploymentPolicyDeploymentSourcesItem",
       });
-    case 3:
-      return S.Array(__S(386, __c48, 2));
-    case 4:
+    case 14:
+      return S.Array(__S(1037, __c32, 13));
+    case 15:
       return S.Array(S.Unknown);
-    case 5:
+    case 16:
       return S.Array(S.Unknown);
-    case 6:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          environments: __S(388, __c48, 4),
-          sources: __S(389, __c48, 5),
+          environments: __S(1039, __c32, 15),
+          sources: __S(1040, __c32, 16),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseDeploymentPolicyGitSourcesItem",
       });
-    case 7:
-      return S.Array(__S(390, __c48, 6));
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
+    case 18:
+      return S.Array(__S(1041, __c32, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          deploymentSources: S.optional(S.NullOr(__S(387, __c48, 3))),
-          gitSources: S.optional(S.NullOr(__S(391, __c48, 7))),
+          deploymentSources: S.optional(S.NullOr(__S(1038, __c32, 14))),
+          gitSources: S.optional(S.NullOr(__S(1042, __c32, 18))),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseDeploymentPolicy",
       });
-    case 1:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -31826,9 +30165,9 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseDismissedToastsItem",
       });
-    case 2:
-      return S.Array(__S(393, __c49, 1));
-    case 3:
+    case 21:
+      return S.Array(__S(1044, __c32, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
@@ -31836,13 +30175,13 @@ function __c49(j: number): any {
           contentHint: S.optional(S.NullOr(S.Unknown)),
           createdAt: S.optional(S.Number),
           createdBy: S.optional(S.NullOr(S.String)),
-          customEnvironmentIds: S.optional(__S(10, __c1, 2)),
+          customEnvironmentIds: S.optional(__S(1280, __c40, 0)),
           decrypted: S.optional(S.Boolean),
           edgeConfigId: S.optional(S.NullOr(S.String)),
           edgeConfigTokenId: S.optional(S.NullOr(S.String)),
           gitBranch: S.optional(S.String),
           id: S.optional(S.String),
-          internalContentHint: S.optional(S.NullOr(__S(63, __c7, 7))),
+          internalContentHint: S.optional(S.NullOr(__S(1377, __c43, 1))),
           key: S.String,
           legacyValue: S.optional(S.String),
           sunsetSecretId: S.optional(S.String),
@@ -31857,36 +30196,36 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseEnvItem",
       });
-    case 4:
-      return S.Array(__S(395, __c49, 3));
-    case 5:
+    case 23:
+      return S.Array(__S(1046, __c32, 22));
+    case 24:
       return S.Array(S.Unknown);
-    case 6:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
+          alias: S.optional(__S(1280, __c40, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(4, __c0, 4)),
-          branchMatcher: S.optional(__S(206, __c25, 6)),
+          automaticAliases: S.optional(__S(1440, __c45, 0)),
+          branchMatcher: S.optional(__S(800, __c25, 0)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
+          builds: S.optional(__S(1446, __c45, 6)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
+          creator: S.NullOr(__S(1447, __c45, 7)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
+          meta: S.optional(__S(1408, __c44, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(207, __c25, 7)),
+          oidcTokenClaims: S.optional(__S(801, __c25, 1)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -31904,324 +30243,320 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseLatestDeploymentsItem",
       });
-    case 7:
-      return S.Array(__S(398, __c49, 6));
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
+    case 26:
+      return S.Array(__S(1049, __c32, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          accessGroup: S.optional(__S(13, __c1, 5)),
-          agent: S.optional(__S(13, __c1, 5)),
-          aiGatewayApiKey: S.optional(__S(13, __c1, 5)),
-          aiGatewayApiKeyBypassAll: S.optional(__S(53, __c6, 5)),
-          aiGatewayApiKeyOwnedBySelf: S.optional(__S(53, __c6, 5)),
-          aiGatewayApiKeySpendAttribution: S.optional(__S(53, __c6, 5)),
-          aiGatewayApiKeyZdrExemption: S.optional(__S(53, __c6, 5)),
-          aiGatewayBudget: S.optional(__S(13, __c1, 5)),
-          aiGatewayCredits: S.optional(__S(13, __c1, 5)),
-          aiGatewayGuardrails: S.optional(__S(13, __c1, 5)),
-          aiGatewayPrivateModels: S.optional(__S(53, __c6, 5)),
-          aiGatewayRules: S.optional(__S(13, __c1, 5)),
-          aiGatewaySettings: S.optional(__S(13, __c1, 5)),
-          aiGatewayTranscripts: S.optional(__S(13, __c1, 5)),
-          aiGatewayTranscriptsSettings: S.optional(__S(53, __c6, 5)),
-          aiGatewayUsage: S.optional(__S(13, __c1, 5)),
-          aiGatewayVirtualModelConfigs: S.optional(__S(53, __c6, 5)),
-          alertRules: S.optional(__S(13, __c1, 5)),
-          alerts: S.optional(__S(13, __c1, 5)),
-          aliasGlobal: S.optional(__S(13, __c1, 5)),
-          aliasProject: S.optional(__S(13, __c1, 5)),
-          aliasProtectionBypass: S.optional(__S(53, __c6, 5)),
-          analytics: S.optional(__S(13, __c1, 5)),
-          analyticsSampling: S.optional(__S(13, __c1, 5)),
-          analyticsUsage: S.optional(__S(13, __c1, 5)),
-          apiKey: S.optional(__S(13, __c1, 5)),
-          apiKeyAiGateway: S.optional(__S(13, __c1, 5)),
-          apiKeyOwnedBySelf: S.optional(__S(13, __c1, 5)),
-          auditLog: S.optional(__S(13, __c1, 5)),
-          automation: S.optional(__S(13, __c1, 5)),
-          billingAddress: S.optional(__S(13, __c1, 5)),
-          billingInformation: S.optional(__S(13, __c1, 5)),
-          billingInvoice: S.optional(__S(13, __c1, 5)),
-          billingInvoiceEmailRecipient: S.optional(__S(53, __c6, 5)),
-          billingInvoiceLanguage: S.optional(__S(53, __c6, 5)),
-          billingPlan: S.optional(__S(13, __c1, 5)),
-          billingPurchaseOrder: S.optional(__S(13, __c1, 5)),
-          billingRefund: S.optional(__S(13, __c1, 5)),
-          billingTaxId: S.optional(__S(13, __c1, 5)),
-          blob: S.optional(__S(13, __c1, 5)),
-          blobStoreTokenSet: S.optional(__S(13, __c1, 5)),
-          budget: S.optional(__S(13, __c1, 5)),
-          buildMachine: S.optional(__S(13, __c1, 5)),
-          buildMachineDefault: S.optional(__S(13, __c1, 5)),
-          bulkRedirects: S.optional(__S(13, __c1, 5)),
-          cacheArtifact: S.optional(__S(13, __c1, 5)),
-          cacheArtifactUsageEvent: S.optional(__S(53, __c6, 5)),
-          ciInvocations: S.optional(__S(13, __c1, 5)),
-          ciLogs: S.optional(__S(13, __c1, 5)),
-          codeChecks: S.optional(__S(13, __c1, 5)),
-          codeOwners: S.optional(__S(13, __c1, 5)),
-          concurrentBuilds: S.optional(__S(13, __c1, 5)),
-          connect: S.optional(__S(13, __c1, 5)),
-          connectConfiguration: S.optional(__S(13, __c1, 5)),
-          connectConfigurationLink: S.optional(__S(53, __c6, 5)),
-          connectLogs: S.optional(__S(13, __c1, 5)),
-          connexClient: S.optional(__S(13, __c1, 5)),
-          connexClientProject: S.optional(__S(13, __c1, 5)),
-          connexContact: S.optional(__S(13, __c1, 5)),
-          connexInstallation: S.optional(__S(13, __c1, 5)),
-          connexToken: S.optional(__S(13, __c1, 5)),
-          cursorOriginInstallation: S.optional(__S(53, __c6, 5)),
-          dataCacheBillingSettings: S.optional(__S(53, __c6, 5)),
-          dataCacheNamespace: S.optional(__S(13, __c1, 5)),
-          defaultDeploymentProtection: S.optional(__S(53, __c6, 5)),
-          deployment: S.optional(__S(13, __c1, 5)),
-          deploymentBuildLogs: S.optional(__S(13, __c1, 5)),
-          deploymentCheck: S.optional(__S(13, __c1, 5)),
-          deploymentCheckPreview: S.optional(__S(53, __c6, 5)),
-          deploymentCheckReRunFromProductionBranch: S.optional(__S(53, __c6, 5)),
-          deploymentPolicy: S.optional(__S(13, __c1, 5)),
-          deploymentPreview: S.optional(__S(13, __c1, 5)),
-          deploymentPrivate: S.optional(__S(13, __c1, 5)),
-          deploymentProductionGit: S.optional(__S(53, __c6, 5)),
-          deploymentPromote: S.optional(__S(13, __c1, 5)),
-          deploymentProtectionException: S.optional(__S(53, __c6, 5)),
-          deploymentRollback: S.optional(__S(13, __c1, 5)),
-          deploymentV0: S.optional(__S(13, __c1, 5)),
-          domain: S.optional(__S(13, __c1, 5)),
-          domainAcceptDelegation: S.optional(__S(53, __c6, 5)),
-          domainAuthCodes: S.optional(__S(13, __c1, 5)),
-          domainCertificate: S.optional(__S(13, __c1, 5)),
-          domainCheckConfig: S.optional(__S(13, __c1, 5)),
-          domainMove: S.optional(__S(13, __c1, 5)),
-          domainPurchase: S.optional(__S(13, __c1, 5)),
-          domainRecord: S.optional(__S(13, __c1, 5)),
-          domainTransferIn: S.optional(__S(13, __c1, 5)),
-          drain: S.optional(__S(13, __c1, 5)),
-          edgeCacheNamespace: S.optional(__S(13, __c1, 5)),
-          edgeConfig: S.optional(__S(13, __c1, 5)),
-          edgeConfigItem: S.optional(__S(13, __c1, 5)),
-          edgeConfigSchema: S.optional(__S(13, __c1, 5)),
-          edgeConfigToken: S.optional(__S(13, __c1, 5)),
-          endpointVerification: S.optional(__S(13, __c1, 5)),
-          environments: S.optional(__S(13, __c1, 5)),
-          event: S.optional(__S(13, __c1, 5)),
-          fileUpload: S.optional(__S(13, __c1, 5)),
-          flagsExplorerSubscription: S.optional(__S(53, __c6, 5)),
-          gitCredentialGrant: S.optional(__S(13, __c1, 5)),
-          gitRepository: S.optional(__S(13, __c1, 5)),
-          imageOptimizationNewPrice: S.optional(__S(53, __c6, 5)),
-          integration: S.optional(__S(13, __c1, 5)),
-          integrationAccount: S.optional(__S(13, __c1, 5)),
-          integrationConfiguration: S.optional(__S(53, __c6, 5)),
-          integrationConfigurationProjects: S.optional(__S(53, __c6, 5)),
-          integrationConfigurationRole: S.optional(__S(53, __c6, 5)),
-          integrationConfigurationTransfer: S.optional(__S(53, __c6, 5)),
-          integrationDeploymentAction: S.optional(__S(53, __c6, 5)),
-          integrationEvent: S.optional(__S(13, __c1, 5)),
-          integrationLog: S.optional(__S(13, __c1, 5)),
-          integrationPullRequest: S.optional(__S(53, __c6, 5)),
-          integrationResource: S.optional(__S(13, __c1, 5)),
-          integrationResourceData: S.optional(__S(53, __c6, 5)),
-          integrationResourceReplCommand: S.optional(__S(53, __c6, 5)),
-          integrationResourceSecrets: S.optional(__S(53, __c6, 5)),
-          integrationSSOSession: S.optional(__S(53, __c6, 5)),
-          integrationStoreTokenSet: S.optional(__S(53, __c6, 5)),
-          integrationStrict: S.optional(__S(13, __c1, 5)),
-          integrationVercelConfigurationOverride: S.optional(__S(53, __c6, 5)),
-          ipBlocking: S.optional(__S(13, __c1, 5)),
-          job: S.optional(__S(13, __c1, 5)),
-          jobGlobal: S.optional(__S(13, __c1, 5)),
-          kmsIssuer: S.optional(__S(13, __c1, 5)),
-          kmsProjectGrant: S.optional(__S(13, __c1, 5)),
-          logDrain: S.optional(__S(13, __c1, 5)),
-          logs: S.optional(__S(13, __c1, 5)),
-          logsPreset: S.optional(__S(13, __c1, 5)),
-          marketplaceBillingData: S.optional(__S(53, __c6, 5)),
-          marketplaceExperimentationEdgeConfigData: S.optional(__S(53, __c6, 5)),
-          marketplaceExperimentationItem: S.optional(__S(53, __c6, 5)),
-          marketplaceFlexCommit: S.optional(__S(53, __c6, 5)),
-          marketplaceInstallationMember: S.optional(__S(53, __c6, 5)),
-          marketplaceInvoice: S.optional(__S(13, __c1, 5)),
-          marketplaceSettings: S.optional(__S(13, __c1, 5)),
-          messageboard: S.optional(__S(13, __c1, 5)),
-          messageboardSpace: S.optional(__S(13, __c1, 5)),
-          messageboardTask: S.optional(__S(13, __c1, 5)),
-          Monitoring: S.optional(__S(13, __c1, 5)),
-          monitoringAlert: S.optional(__S(13, __c1, 5)),
-          monitoringChart: S.optional(__S(13, __c1, 5)),
-          monitoringQuery: S.optional(__S(13, __c1, 5)),
-          monitoringSettings: S.optional(__S(13, __c1, 5)),
-          notificationCustomerBudget: S.optional(__S(53, __c6, 5)),
-          notificationDeploymentFailed: S.optional(__S(53, __c6, 5)),
-          notificationDomainConfiguration: S.optional(__S(53, __c6, 5)),
-          notificationDomainExpire: S.optional(__S(53, __c6, 5)),
-          notificationDomainMoved: S.optional(__S(53, __c6, 5)),
-          notificationDomainPurchase: S.optional(__S(53, __c6, 5)),
-          notificationDomainRenewal: S.optional(__S(53, __c6, 5)),
-          notificationDomainTransfer: S.optional(__S(53, __c6, 5)),
-          notificationDomainUnverified: S.optional(__S(53, __c6, 5)),
-          NotificationMonitoringAlert: S.optional(__S(53, __c6, 5)),
-          notificationPaymentFailed: S.optional(__S(53, __c6, 5)),
-          notificationPreferences: S.optional(__S(53, __c6, 5)),
-          notificationStatementOfReasons: S.optional(__S(53, __c6, 5)),
-          notificationUsageAlert: S.optional(__S(53, __c6, 5)),
-          oauth2Application: S.optional(__S(13, __c1, 5)),
-          oauth2Connection: S.optional(__S(13, __c1, 5)),
-          observabilityConfiguration: S.optional(__S(53, __c6, 5)),
-          observabilityData: S.optional(__S(13, __c1, 5)),
-          observabilityFunnel: S.optional(__S(13, __c1, 5)),
-          observabilityNotebook: S.optional(__S(53, __c6, 5)),
-          oidcFederationPolicy: S.optional(__S(13, __c1, 5)),
-          onDemandBuild: S.optional(__S(13, __c1, 5)),
-          onDemandConcurrency: S.optional(__S(13, __c1, 5)),
-          openTelemetryEndpoint: S.optional(__S(53, __c6, 5)),
-          optionsAllowlist: S.optional(__S(13, __c1, 5)),
-          organization: S.optional(__S(13, __c1, 5)),
-          organizationDomain: S.optional(__S(13, __c1, 5)),
-          organizationTeam: S.optional(__S(13, __c1, 5)),
-          ownEvent: S.optional(__S(13, __c1, 5)),
-          pageIntegrity: S.optional(__S(13, __c1, 5)),
-          passwordProtection: S.optional(__S(13, __c1, 5)),
-          passwordProtectionInvoiceItem: S.optional(__S(53, __c6, 5)),
-          paymentMethod: S.optional(__S(13, __c1, 5)),
-          permissions: S.optional(__S(13, __c1, 5)),
-          postgres: S.optional(__S(13, __c1, 5)),
-          postgresStoreTokenSet: S.optional(__S(53, __c6, 5)),
-          previewDeploymentSuffix: S.optional(__S(53, __c6, 5)),
-          privateCloudAccount: S.optional(__S(13, __c1, 5)),
-          privateLinkEndpoint: S.optional(__S(13, __c1, 5)),
-          productionAliasProtectionBypass: S.optional(__S(53, __c6, 5)),
-          productionShareableLink: S.optional(__S(53, __c6, 5)),
-          project: S.optional(__S(13, __c1, 5)),
-          projectAccessGroup: S.optional(__S(13, __c1, 5)),
-          projectAnalyticsSampling: S.optional(__S(53, __c6, 5)),
-          projectAnalyticsUsage: S.optional(__S(53, __c6, 5)),
-          projectCheck: S.optional(__S(13, __c1, 5)),
-          projectCheckRun: S.optional(__S(13, __c1, 5)),
-          projectDeploymentExpiration: S.optional(__S(53, __c6, 5)),
-          projectDeploymentHook: S.optional(__S(53, __c6, 5)),
-          projectDeploymentProtectionStrict: S.optional(__S(53, __c6, 5)),
-          projectDomain: S.optional(__S(13, __c1, 5)),
-          projectDomainCheckConfig: S.optional(__S(53, __c6, 5)),
-          projectDomainMove: S.optional(__S(13, __c1, 5)),
-          projectDomainVerify: S.optional(__S(13, __c1, 5)),
-          projectEnvVars: S.optional(__S(13, __c1, 5)),
-          projectEnvVarsProduction: S.optional(__S(53, __c6, 5)),
-          projectEnvVarsUnownedByIntegration: S.optional(__S(53, __c6, 5)),
-          projectEvent: S.optional(__S(13, __c1, 5)),
-          projectFlags: S.optional(__S(13, __c1, 5)),
-          projectFlagsProduction: S.optional(__S(53, __c6, 5)),
-          projectFlagsSdkKey: S.optional(__S(13, __c1, 5)),
-          projectFromV0: S.optional(__S(13, __c1, 5)),
-          projectId: S.optional(__S(13, __c1, 5)),
-          projectIntegrationConfiguration: S.optional(__S(53, __c6, 5)),
-          projectLink: S.optional(__S(13, __c1, 5)),
-          projectMember: S.optional(__S(13, __c1, 5)),
-          projectMonitoring: S.optional(__S(13, __c1, 5)),
-          projectOIDCToken: S.optional(__S(13, __c1, 5)),
-          projectPermissions: S.optional(__S(13, __c1, 5)),
-          projectProductionBranch: S.optional(__S(53, __c6, 5)),
-          projectProtectionBypass: S.optional(__S(53, __c6, 5)),
-          projectRollingRelease: S.optional(__S(53, __c6, 5)),
-          projectRoutes: S.optional(__S(13, __c1, 5)),
-          projectSetting: S.optional(__S(13, __c1, 5)),
-          projectSupportCase: S.optional(__S(13, __c1, 5)),
-          projectSupportCaseComment: S.optional(__S(53, __c6, 5)),
-          projectTier: S.optional(__S(13, __c1, 5)),
-          projectTransfer: S.optional(__S(13, __c1, 5)),
-          projectTransferIn: S.optional(__S(13, __c1, 5)),
-          projectTransferOut: S.optional(__S(13, __c1, 5)),
-          projectTransferRequest: S.optional(__S(53, __c6, 5)),
-          projectUsage: S.optional(__S(13, __c1, 5)),
-          proTrialOnboarding: S.optional(__S(13, __c1, 5)),
-          rateLimit: S.optional(__S(13, __c1, 5)),
-          redis: S.optional(__S(13, __c1, 5)),
-          redisStoreTokenSet: S.optional(__S(13, __c1, 5)),
-          remoteCaching: S.optional(__S(13, __c1, 5)),
-          repository: S.optional(__S(13, __c1, 5)),
-          samlConfig: S.optional(__S(13, __c1, 5)),
-          schedule: S.optional(__S(13, __c1, 5)),
-          seawallConfig: S.optional(__S(13, __c1, 5)),
-          secret: S.optional(__S(13, __c1, 5)),
-          securityConfig: S.optional(__S(13, __c1, 5)),
-          securityPlusConfiguration: S.optional(__S(53, __c6, 5)),
-          sensitiveEnvironmentVariablePolicy: S.optional(__S(53, __c6, 5)),
-          setting: S.optional(__S(13, __c1, 5)),
-          shareableLink: S.optional(__S(13, __c1, 5)),
-          shareableLinkStrict: S.optional(__S(13, __c1, 5)),
-          sharedEnvVarConnection: S.optional(__S(53, __c6, 5)),
-          sharedEnvVars: S.optional(__S(13, __c1, 5)),
-          sharedEnvVarsProduction: S.optional(__S(53, __c6, 5)),
-          skewProtection: S.optional(__S(13, __c1, 5)),
-          space: S.optional(__S(13, __c1, 5)),
-          spaceRun: S.optional(__S(13, __c1, 5)),
-          storeIsLocked: S.optional(__S(13, __c1, 5)),
-          storeTokenSetSensitive: S.optional(__S(53, __c6, 5)),
-          storeTransfer: S.optional(__S(13, __c1, 5)),
-          supportCase: S.optional(__S(13, __c1, 5)),
-          supportCaseComment: S.optional(__S(13, __c1, 5)),
-          team: S.optional(__S(13, __c1, 5)),
-          teamAccessRequest: S.optional(__S(13, __c1, 5)),
-          teamFellowMembership: S.optional(__S(13, __c1, 5)),
-          teamGitExclusivity: S.optional(__S(13, __c1, 5)),
-          teamInvite: S.optional(__S(13, __c1, 5)),
-          teamInviteCode: S.optional(__S(13, __c1, 5)),
-          teamInviteLink: S.optional(__S(13, __c1, 5)),
-          teamJoin: S.optional(__S(13, __c1, 5)),
-          teamMemberMfaStatus: S.optional(__S(13, __c1, 5)),
-          teamMicrofrontends: S.optional(__S(13, __c1, 5)),
-          teamOwnMembership: S.optional(__S(13, __c1, 5)),
-          teamOwnMembershipDisconnectSAML: S.optional(__S(53, __c6, 5)),
-          teamSudo: S.optional(__S(13, __c1, 5)),
-          teamTokenInvalidation: S.optional(__S(53, __c6, 5)),
-          token: S.optional(__S(13, __c1, 5)),
-          toolbarComment: S.optional(__S(13, __c1, 5)),
-          trustedIps: S.optional(__S(13, __c1, 5)),
-          trustedSources: S.optional(__S(13, __c1, 5)),
-          usage: S.optional(__S(13, __c1, 5)),
-          usageCycle: S.optional(__S(13, __c1, 5)),
-          user: S.optional(__S(13, __c1, 5)),
-          userConnection: S.optional(__S(13, __c1, 5)),
-          userMfaConfiguration: S.optional(__S(13, __c1, 5)),
-          userPreference: S.optional(__S(13, __c1, 5)),
-          userSudo: S.optional(__S(13, __c1, 5)),
-          v0Chat: S.optional(__S(13, __c1, 5)),
-          vcrRepository: S.optional(__S(13, __c1, 5)),
-          vercelAppInstallation: S.optional(__S(53, __c6, 5)),
-          vercelAppInstallationRequest: S.optional(__S(53, __c6, 5)),
-          vercelAuth: S.optional(__S(13, __c1, 5)),
-          vercelRun: S.optional(__S(13, __c1, 5)),
-          vpcPeeringConnection: S.optional(__S(13, __c1, 5)),
-          webAnalytics: S.optional(__S(13, __c1, 5)),
-          webAnalyticsPlan: S.optional(__S(13, __c1, 5)),
-          webAuthn: S.optional(__S(13, __c1, 5)),
-          webhook: S.optional(__S(13, __c1, 5)),
-          webhook_event: S.optional(__S(13, __c1, 5).pipe(T.Body("webhook-event"))),
-          workflowRunData: S.optional(__S(13, __c1, 5)),
+          accessGroup: S.optional(__S(1376, __c43, 0)),
+          agent: S.optional(__S(1376, __c43, 0)),
+          aiGatewayApiKey: S.optional(__S(1376, __c43, 0)),
+          aiGatewayApiKeyBypassAll: S.optional(__S(1457, __c45, 17)),
+          aiGatewayApiKeyOwnedBySelf: S.optional(__S(1457, __c45, 17)),
+          aiGatewayApiKeySpendAttribution: S.optional(__S(1457, __c45, 17)),
+          aiGatewayApiKeyZdrExemption: S.optional(__S(1457, __c45, 17)),
+          aiGatewayBudget: S.optional(__S(1376, __c43, 0)),
+          aiGatewayCredits: S.optional(__S(1376, __c43, 0)),
+          aiGatewayGuardrails: S.optional(__S(1376, __c43, 0)),
+          aiGatewayPrivateModels: S.optional(__S(1457, __c45, 17)),
+          aiGatewayRules: S.optional(__S(1376, __c43, 0)),
+          aiGatewaySettings: S.optional(__S(1376, __c43, 0)),
+          aiGatewayTranscripts: S.optional(__S(1376, __c43, 0)),
+          aiGatewayTranscriptsSettings: S.optional(__S(1457, __c45, 17)),
+          aiGatewayUsage: S.optional(__S(1376, __c43, 0)),
+          aiGatewayVirtualModelConfigs: S.optional(__S(1457, __c45, 17)),
+          alertRules: S.optional(__S(1376, __c43, 0)),
+          alerts: S.optional(__S(1376, __c43, 0)),
+          aliasGlobal: S.optional(__S(1376, __c43, 0)),
+          aliasProject: S.optional(__S(1376, __c43, 0)),
+          aliasProtectionBypass: S.optional(__S(1457, __c45, 17)),
+          analytics: S.optional(__S(1376, __c43, 0)),
+          analyticsSampling: S.optional(__S(1376, __c43, 0)),
+          analyticsUsage: S.optional(__S(1376, __c43, 0)),
+          apiKey: S.optional(__S(1376, __c43, 0)),
+          apiKeyAiGateway: S.optional(__S(1376, __c43, 0)),
+          apiKeyOwnedBySelf: S.optional(__S(1376, __c43, 0)),
+          auditLog: S.optional(__S(1376, __c43, 0)),
+          automation: S.optional(__S(1376, __c43, 0)),
+          billingAddress: S.optional(__S(1376, __c43, 0)),
+          billingInformation: S.optional(__S(1376, __c43, 0)),
+          billingInvoice: S.optional(__S(1376, __c43, 0)),
+          billingInvoiceEmailRecipient: S.optional(__S(1457, __c45, 17)),
+          billingInvoiceLanguage: S.optional(__S(1457, __c45, 17)),
+          billingPlan: S.optional(__S(1376, __c43, 0)),
+          billingPurchaseOrder: S.optional(__S(1376, __c43, 0)),
+          billingRefund: S.optional(__S(1376, __c43, 0)),
+          billingTaxId: S.optional(__S(1376, __c43, 0)),
+          blob: S.optional(__S(1376, __c43, 0)),
+          blobStoreTokenSet: S.optional(__S(1376, __c43, 0)),
+          budget: S.optional(__S(1376, __c43, 0)),
+          buildMachine: S.optional(__S(1376, __c43, 0)),
+          buildMachineDefault: S.optional(__S(1376, __c43, 0)),
+          bulkRedirects: S.optional(__S(1376, __c43, 0)),
+          cacheArtifact: S.optional(__S(1376, __c43, 0)),
+          cacheArtifactUsageEvent: S.optional(__S(1457, __c45, 17)),
+          ciInvocations: S.optional(__S(1376, __c43, 0)),
+          ciLogs: S.optional(__S(1376, __c43, 0)),
+          codeChecks: S.optional(__S(1376, __c43, 0)),
+          codeOwners: S.optional(__S(1376, __c43, 0)),
+          concurrentBuilds: S.optional(__S(1376, __c43, 0)),
+          connect: S.optional(__S(1376, __c43, 0)),
+          connectConfiguration: S.optional(__S(1376, __c43, 0)),
+          connectConfigurationLink: S.optional(__S(1457, __c45, 17)),
+          connectLogs: S.optional(__S(1376, __c43, 0)),
+          connexClient: S.optional(__S(1376, __c43, 0)),
+          connexClientProject: S.optional(__S(1376, __c43, 0)),
+          connexContact: S.optional(__S(1376, __c43, 0)),
+          connexInstallation: S.optional(__S(1376, __c43, 0)),
+          connexToken: S.optional(__S(1376, __c43, 0)),
+          cursorOriginInstallation: S.optional(__S(1457, __c45, 17)),
+          dataCacheBillingSettings: S.optional(__S(1457, __c45, 17)),
+          dataCacheNamespace: S.optional(__S(1376, __c43, 0)),
+          defaultDeploymentProtection: S.optional(__S(1457, __c45, 17)),
+          deployment: S.optional(__S(1376, __c43, 0)),
+          deploymentBuildLogs: S.optional(__S(1376, __c43, 0)),
+          deploymentCheck: S.optional(__S(1376, __c43, 0)),
+          deploymentCheckPreview: S.optional(__S(1457, __c45, 17)),
+          deploymentCheckReRunFromProductionBranch: S.optional(__S(1457, __c45, 17)),
+          deploymentPolicy: S.optional(__S(1376, __c43, 0)),
+          deploymentPreview: S.optional(__S(1376, __c43, 0)),
+          deploymentPrivate: S.optional(__S(1376, __c43, 0)),
+          deploymentProductionGit: S.optional(__S(1457, __c45, 17)),
+          deploymentPromote: S.optional(__S(1376, __c43, 0)),
+          deploymentProtectionException: S.optional(__S(1457, __c45, 17)),
+          deploymentRollback: S.optional(__S(1376, __c43, 0)),
+          deploymentV0: S.optional(__S(1376, __c43, 0)),
+          domain: S.optional(__S(1376, __c43, 0)),
+          domainAcceptDelegation: S.optional(__S(1457, __c45, 17)),
+          domainAuthCodes: S.optional(__S(1376, __c43, 0)),
+          domainCertificate: S.optional(__S(1376, __c43, 0)),
+          domainCheckConfig: S.optional(__S(1376, __c43, 0)),
+          domainMove: S.optional(__S(1376, __c43, 0)),
+          domainPurchase: S.optional(__S(1376, __c43, 0)),
+          domainRecord: S.optional(__S(1376, __c43, 0)),
+          domainTransferIn: S.optional(__S(1376, __c43, 0)),
+          drain: S.optional(__S(1376, __c43, 0)),
+          edgeCacheNamespace: S.optional(__S(1376, __c43, 0)),
+          edgeConfig: S.optional(__S(1376, __c43, 0)),
+          edgeConfigItem: S.optional(__S(1376, __c43, 0)),
+          edgeConfigSchema: S.optional(__S(1376, __c43, 0)),
+          edgeConfigToken: S.optional(__S(1376, __c43, 0)),
+          endpointVerification: S.optional(__S(1376, __c43, 0)),
+          environments: S.optional(__S(1376, __c43, 0)),
+          event: S.optional(__S(1376, __c43, 0)),
+          fileUpload: S.optional(__S(1376, __c43, 0)),
+          flagsExplorerSubscription: S.optional(__S(1457, __c45, 17)),
+          gitCredentialGrant: S.optional(__S(1376, __c43, 0)),
+          gitRepository: S.optional(__S(1376, __c43, 0)),
+          imageOptimizationNewPrice: S.optional(__S(1457, __c45, 17)),
+          integration: S.optional(__S(1376, __c43, 0)),
+          integrationAccount: S.optional(__S(1376, __c43, 0)),
+          integrationConfiguration: S.optional(__S(1457, __c45, 17)),
+          integrationConfigurationProjects: S.optional(__S(1457, __c45, 17)),
+          integrationConfigurationRole: S.optional(__S(1457, __c45, 17)),
+          integrationConfigurationTransfer: S.optional(__S(1457, __c45, 17)),
+          integrationDeploymentAction: S.optional(__S(1457, __c45, 17)),
+          integrationEvent: S.optional(__S(1376, __c43, 0)),
+          integrationLog: S.optional(__S(1376, __c43, 0)),
+          integrationPullRequest: S.optional(__S(1457, __c45, 17)),
+          integrationResource: S.optional(__S(1376, __c43, 0)),
+          integrationResourceData: S.optional(__S(1457, __c45, 17)),
+          integrationResourceReplCommand: S.optional(__S(1457, __c45, 17)),
+          integrationResourceSecrets: S.optional(__S(1457, __c45, 17)),
+          integrationSSOSession: S.optional(__S(1457, __c45, 17)),
+          integrationStoreTokenSet: S.optional(__S(1457, __c45, 17)),
+          integrationStrict: S.optional(__S(1376, __c43, 0)),
+          integrationVercelConfigurationOverride: S.optional(__S(1457, __c45, 17)),
+          ipBlocking: S.optional(__S(1376, __c43, 0)),
+          job: S.optional(__S(1376, __c43, 0)),
+          jobGlobal: S.optional(__S(1376, __c43, 0)),
+          kmsIssuer: S.optional(__S(1376, __c43, 0)),
+          kmsProjectGrant: S.optional(__S(1376, __c43, 0)),
+          logDrain: S.optional(__S(1376, __c43, 0)),
+          logs: S.optional(__S(1376, __c43, 0)),
+          logsPreset: S.optional(__S(1376, __c43, 0)),
+          marketplaceBillingData: S.optional(__S(1457, __c45, 17)),
+          marketplaceExperimentationEdgeConfigData: S.optional(__S(1457, __c45, 17)),
+          marketplaceExperimentationItem: S.optional(__S(1457, __c45, 17)),
+          marketplaceFlexCommit: S.optional(__S(1457, __c45, 17)),
+          marketplaceInstallationMember: S.optional(__S(1457, __c45, 17)),
+          marketplaceInvoice: S.optional(__S(1376, __c43, 0)),
+          marketplaceSettings: S.optional(__S(1376, __c43, 0)),
+          messageboard: S.optional(__S(1376, __c43, 0)),
+          messageboardSpace: S.optional(__S(1376, __c43, 0)),
+          messageboardTask: S.optional(__S(1376, __c43, 0)),
+          Monitoring: S.optional(__S(1376, __c43, 0)),
+          monitoringAlert: S.optional(__S(1376, __c43, 0)),
+          monitoringChart: S.optional(__S(1376, __c43, 0)),
+          monitoringQuery: S.optional(__S(1376, __c43, 0)),
+          monitoringSettings: S.optional(__S(1376, __c43, 0)),
+          notificationCustomerBudget: S.optional(__S(1457, __c45, 17)),
+          notificationDeploymentFailed: S.optional(__S(1457, __c45, 17)),
+          notificationDomainConfiguration: S.optional(__S(1457, __c45, 17)),
+          notificationDomainExpire: S.optional(__S(1457, __c45, 17)),
+          notificationDomainMoved: S.optional(__S(1457, __c45, 17)),
+          notificationDomainPurchase: S.optional(__S(1457, __c45, 17)),
+          notificationDomainRenewal: S.optional(__S(1457, __c45, 17)),
+          notificationDomainTransfer: S.optional(__S(1457, __c45, 17)),
+          notificationDomainUnverified: S.optional(__S(1457, __c45, 17)),
+          NotificationMonitoringAlert: S.optional(__S(1457, __c45, 17)),
+          notificationPaymentFailed: S.optional(__S(1457, __c45, 17)),
+          notificationPreferences: S.optional(__S(1457, __c45, 17)),
+          notificationStatementOfReasons: S.optional(__S(1457, __c45, 17)),
+          notificationUsageAlert: S.optional(__S(1457, __c45, 17)),
+          oauth2Application: S.optional(__S(1376, __c43, 0)),
+          oauth2Connection: S.optional(__S(1376, __c43, 0)),
+          observabilityConfiguration: S.optional(__S(1457, __c45, 17)),
+          observabilityData: S.optional(__S(1376, __c43, 0)),
+          observabilityFunnel: S.optional(__S(1376, __c43, 0)),
+          observabilityNotebook: S.optional(__S(1457, __c45, 17)),
+          oidcFederationPolicy: S.optional(__S(1376, __c43, 0)),
+          onDemandBuild: S.optional(__S(1376, __c43, 0)),
+          onDemandConcurrency: S.optional(__S(1376, __c43, 0)),
+          openTelemetryEndpoint: S.optional(__S(1457, __c45, 17)),
+          optionsAllowlist: S.optional(__S(1376, __c43, 0)),
+          organization: S.optional(__S(1376, __c43, 0)),
+          organizationDomain: S.optional(__S(1376, __c43, 0)),
+          organizationTeam: S.optional(__S(1376, __c43, 0)),
+          ownEvent: S.optional(__S(1376, __c43, 0)),
+          pageIntegrity: S.optional(__S(1376, __c43, 0)),
+          passwordProtection: S.optional(__S(1376, __c43, 0)),
+          passwordProtectionInvoiceItem: S.optional(__S(1457, __c45, 17)),
+          paymentMethod: S.optional(__S(1376, __c43, 0)),
+          permissions: S.optional(__S(1376, __c43, 0)),
+          postgres: S.optional(__S(1376, __c43, 0)),
+          postgresStoreTokenSet: S.optional(__S(1457, __c45, 17)),
+          previewDeploymentSuffix: S.optional(__S(1457, __c45, 17)),
+          privateCloudAccount: S.optional(__S(1376, __c43, 0)),
+          privateLinkEndpoint: S.optional(__S(1376, __c43, 0)),
+          productionAliasProtectionBypass: S.optional(__S(1457, __c45, 17)),
+          productionShareableLink: S.optional(__S(1457, __c45, 17)),
+          project: S.optional(__S(1376, __c43, 0)),
+          projectAccessGroup: S.optional(__S(1376, __c43, 0)),
+          projectAnalyticsSampling: S.optional(__S(1457, __c45, 17)),
+          projectAnalyticsUsage: S.optional(__S(1457, __c45, 17)),
+          projectCheck: S.optional(__S(1376, __c43, 0)),
+          projectCheckRun: S.optional(__S(1376, __c43, 0)),
+          projectDeploymentExpiration: S.optional(__S(1457, __c45, 17)),
+          projectDeploymentHook: S.optional(__S(1457, __c45, 17)),
+          projectDeploymentProtectionStrict: S.optional(__S(1457, __c45, 17)),
+          projectDomain: S.optional(__S(1376, __c43, 0)),
+          projectDomainCheckConfig: S.optional(__S(1457, __c45, 17)),
+          projectDomainMove: S.optional(__S(1376, __c43, 0)),
+          projectDomainVerify: S.optional(__S(1376, __c43, 0)),
+          projectEnvVars: S.optional(__S(1376, __c43, 0)),
+          projectEnvVarsProduction: S.optional(__S(1457, __c45, 17)),
+          projectEnvVarsUnownedByIntegration: S.optional(__S(1457, __c45, 17)),
+          projectEvent: S.optional(__S(1376, __c43, 0)),
+          projectFlags: S.optional(__S(1376, __c43, 0)),
+          projectFlagsProduction: S.optional(__S(1457, __c45, 17)),
+          projectFlagsSdkKey: S.optional(__S(1376, __c43, 0)),
+          projectFromV0: S.optional(__S(1376, __c43, 0)),
+          projectId: S.optional(__S(1376, __c43, 0)),
+          projectIntegrationConfiguration: S.optional(__S(1457, __c45, 17)),
+          projectLink: S.optional(__S(1376, __c43, 0)),
+          projectMember: S.optional(__S(1376, __c43, 0)),
+          projectMonitoring: S.optional(__S(1376, __c43, 0)),
+          projectOIDCToken: S.optional(__S(1376, __c43, 0)),
+          projectPermissions: S.optional(__S(1376, __c43, 0)),
+          projectProductionBranch: S.optional(__S(1457, __c45, 17)),
+          projectProtectionBypass: S.optional(__S(1457, __c45, 17)),
+          projectRollingRelease: S.optional(__S(1457, __c45, 17)),
+          projectRoutes: S.optional(__S(1376, __c43, 0)),
+          projectSetting: S.optional(__S(1376, __c43, 0)),
+          projectSupportCase: S.optional(__S(1376, __c43, 0)),
+          projectSupportCaseComment: S.optional(__S(1457, __c45, 17)),
+          projectTier: S.optional(__S(1376, __c43, 0)),
+          projectTransfer: S.optional(__S(1376, __c43, 0)),
+          projectTransferIn: S.optional(__S(1376, __c43, 0)),
+          projectTransferOut: S.optional(__S(1376, __c43, 0)),
+          projectTransferRequest: S.optional(__S(1457, __c45, 17)),
+          projectUsage: S.optional(__S(1376, __c43, 0)),
+          proTrialOnboarding: S.optional(__S(1376, __c43, 0)),
+          rateLimit: S.optional(__S(1376, __c43, 0)),
+          redis: S.optional(__S(1376, __c43, 0)),
+          redisStoreTokenSet: S.optional(__S(1376, __c43, 0)),
+          remoteCaching: S.optional(__S(1376, __c43, 0)),
+          repository: S.optional(__S(1376, __c43, 0)),
+          samlConfig: S.optional(__S(1376, __c43, 0)),
+          schedule: S.optional(__S(1376, __c43, 0)),
+          seawallConfig: S.optional(__S(1376, __c43, 0)),
+          secret: S.optional(__S(1376, __c43, 0)),
+          securityConfig: S.optional(__S(1376, __c43, 0)),
+          securityPlusConfiguration: S.optional(__S(1457, __c45, 17)),
+          sensitiveEnvironmentVariablePolicy: S.optional(__S(1457, __c45, 17)),
+          setting: S.optional(__S(1376, __c43, 0)),
+          shareableLink: S.optional(__S(1376, __c43, 0)),
+          shareableLinkStrict: S.optional(__S(1376, __c43, 0)),
+          sharedEnvVarConnection: S.optional(__S(1457, __c45, 17)),
+          sharedEnvVars: S.optional(__S(1376, __c43, 0)),
+          sharedEnvVarsProduction: S.optional(__S(1457, __c45, 17)),
+          skewProtection: S.optional(__S(1376, __c43, 0)),
+          space: S.optional(__S(1376, __c43, 0)),
+          spaceRun: S.optional(__S(1376, __c43, 0)),
+          storeIsLocked: S.optional(__S(1376, __c43, 0)),
+          storeTokenSetSensitive: S.optional(__S(1457, __c45, 17)),
+          storeTransfer: S.optional(__S(1376, __c43, 0)),
+          supportCase: S.optional(__S(1376, __c43, 0)),
+          supportCaseComment: S.optional(__S(1376, __c43, 0)),
+          team: S.optional(__S(1376, __c43, 0)),
+          teamAccessRequest: S.optional(__S(1376, __c43, 0)),
+          teamFellowMembership: S.optional(__S(1376, __c43, 0)),
+          teamGitExclusivity: S.optional(__S(1376, __c43, 0)),
+          teamInvite: S.optional(__S(1376, __c43, 0)),
+          teamInviteCode: S.optional(__S(1376, __c43, 0)),
+          teamInviteLink: S.optional(__S(1376, __c43, 0)),
+          teamJoin: S.optional(__S(1376, __c43, 0)),
+          teamMemberMfaStatus: S.optional(__S(1376, __c43, 0)),
+          teamMicrofrontends: S.optional(__S(1376, __c43, 0)),
+          teamOwnMembership: S.optional(__S(1376, __c43, 0)),
+          teamOwnMembershipDisconnectSAML: S.optional(__S(1457, __c45, 17)),
+          teamSudo: S.optional(__S(1376, __c43, 0)),
+          teamTokenInvalidation: S.optional(__S(1457, __c45, 17)),
+          token: S.optional(__S(1376, __c43, 0)),
+          toolbarComment: S.optional(__S(1376, __c43, 0)),
+          trustedIps: S.optional(__S(1376, __c43, 0)),
+          trustedSources: S.optional(__S(1376, __c43, 0)),
+          usage: S.optional(__S(1376, __c43, 0)),
+          usageCycle: S.optional(__S(1376, __c43, 0)),
+          user: S.optional(__S(1376, __c43, 0)),
+          userConnection: S.optional(__S(1376, __c43, 0)),
+          userMfaConfiguration: S.optional(__S(1376, __c43, 0)),
+          userPreference: S.optional(__S(1376, __c43, 0)),
+          userSudo: S.optional(__S(1376, __c43, 0)),
+          v0Chat: S.optional(__S(1376, __c43, 0)),
+          vcrRepository: S.optional(__S(1376, __c43, 0)),
+          vercelAppInstallation: S.optional(__S(1457, __c45, 17)),
+          vercelAppInstallationRequest: S.optional(__S(1457, __c45, 17)),
+          vercelAuth: S.optional(__S(1376, __c43, 0)),
+          vercelRun: S.optional(__S(1376, __c43, 0)),
+          vpcPeeringConnection: S.optional(__S(1376, __c43, 0)),
+          webAnalytics: S.optional(__S(1376, __c43, 0)),
+          webAnalyticsPlan: S.optional(__S(1376, __c43, 0)),
+          webAuthn: S.optional(__S(1376, __c43, 0)),
+          webhook: S.optional(__S(1376, __c43, 0)),
+          webhook_event: S.optional(__S(1376, __c43, 0).pipe(T.Body("webhook-event"))),
+          workflowRunData: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponsePermissions",
       });
-    case 1:
+    case 28:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           buildMachineElasticLastUpdated: S.optional(S.Number),
           buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(49, __c6, 1)),
+          buildMachineElasticTransition: S.optional(__S(1455, __c45, 15)),
           buildMachineSelection: S.optional(S.String),
           buildMachineType: S.optional(S.String),
-          buildQueue: S.optional(__S(21, __c2, 5)),
+          buildQueue: S.optional(__S(1442, __c45, 2)),
           elasticConcurrencyEnabled: S.optional(S.Boolean),
           enableFunctionsBeta: S.optional(S.Boolean),
           fluid: S.optional(S.Boolean),
           functionDefaultMemoryType: S.optional(S.String),
-          functionDefaultRegions: __S(4, __c0, 4),
+          functionDefaultRegions: __S(1440, __c45, 0),
           functionDefaultTimeout: S.optional(S.Number),
           functionZeroConfigFailover: S.optional(S.Boolean),
           isNSNBDisabled: S.optional(S.Boolean),
@@ -32229,11 +30564,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseResourceConfig",
       });
-    case 3:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          excludePaths: S.optional(__S(4, __c0, 4)),
-          excludeStatusCodes: S.optional(__S(90, __c11, 2)),
+          excludePaths: S.optional(__S(1440, __c45, 0)),
+          excludeStatusCodes: S.optional(__S(1473, __c46, 1)),
           ingestWatermarkSeconds: S.optional(S.Number),
           minSampleSize: S.optional(S.Number),
           type: S.String,
@@ -32241,13 +30576,17 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseRollingReleaseGateChecksItem",
       });
-    case 4:
-      return S.Array(__S(403, __c50, 3));
-    case 5:
+    case 31:
+      return S.Array(__S(1054, __c32, 30));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          checks: __S(404, __c50, 4),
+          checks: __S(1055, __c32, 31),
           dryRun: S.Boolean,
           enabled: S.Boolean,
           failureThreshold: S.optional(S.Number),
@@ -32256,67 +30595,63 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseRollingReleaseGate",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           canaryResponseHeader: S.optional(S.Boolean),
-          gate: S.optional(__S(405, __c50, 5)),
-          stages: S.optional(S.NullOr(__S(95, __c11, 7))),
+          gate: S.optional(__S(1056, __c33, 0)),
+          stages: S.optional(S.NullOr(__S(1475, __c46, 3))),
           target: S.String,
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseRollingRelease",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ai_bots: __S(98, __c12, 2),
-          bot_filter: __S(210, __c26, 2),
-          owasp: __S(98, __c12, 2),
-          traffic_sources: __S(211, __c26, 3),
-          vercel_ruleset: __S(210, __c26, 2),
+          ai_bots: __S(1477, __c46, 5),
+          bot_filter: __S(804, __c25, 4),
+          owasp: __S(1477, __c46, 5),
+          traffic_sources: __S(805, __c25, 5),
+          vercel_ruleset: __S(804, __c25, 4),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseSecurityManagedRules",
       });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           algo: S.String,
-          keys: __S(4, __c0, 4),
+          keys: __S(1440, __c45, 0),
           limit: S.Number,
           window: S.Number,
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseSecurityRulesetsValueRateLimit",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
           actionDuration: S.optional(S.NullOr(S.String)),
           bypassSystem: S.optional(S.NullOr(S.Boolean)),
           logHeaders: S.optional(S.Unknown),
-          rateLimit: S.optional(S.NullOr(__S(408, __c51, 0))),
-          redirect: S.optional(S.NullOr(__S(101, __c12, 5))),
+          rateLimit: S.optional(S.NullOr(__S(1059, __c33, 3))),
+          redirect: S.optional(S.NullOr(__S(1478, __c46, 6))),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseSecurityRulesetsValue",
       });
-    case 2:
-      return S.Record(S.String, __S(409, __c51, 1));
-    case 3:
+    case 5:
+      return S.Record(S.String, __S(1060, __c33, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           attackModeActiveUntil: S.optional(S.NullOr(S.Number)),
           attackModeEnabled: S.optional(S.Boolean),
           attackModeUpdatedAt: S.optional(S.Number),
           botIdEnabled: S.optional(S.Boolean),
-          firewallBypassIps: S.optional(__S(10, __c1, 2)),
+          firewallBypassIps: S.optional(__S(1280, __c40, 0)),
           firewallConfigVersion: S.optional(S.Number),
           firewallEnabled: S.optional(S.Boolean),
           firewallSeawallEnabled: S.optional(S.Boolean),
@@ -32324,39 +30659,39 @@ function __c51(j: number): any {
           ja3Enabled: S.optional(S.Boolean),
           ja4Enabled: S.optional(S.Boolean),
           log_headers: S.optional(S.Unknown),
-          managedRules: S.optional(S.NullOr(__S(407, __c50, 7))),
+          managedRules: S.optional(S.NullOr(__S(1058, __c33, 2))),
           pageIntegrityEnabled: S.optional(S.Boolean),
-          rulesets: S.optional(__S(410, __c51, 2)),
+          rulesets: S.optional(__S(1061, __c33, 5)),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseSecurity",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(10, __c1, 2)),
+          alias: S.optional(__S(1280, __c40, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(24, __c3, 0))),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(10, __c1, 2)),
-          branchMatcher: S.optional(__S(25, __c3, 1)),
+          automaticAliases: S.optional(__S(1280, __c40, 0)),
+          branchMatcher: S.optional(__S(1444, __c45, 4)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(27, __c3, 3)),
+          builds: S.optional(__S(1446, __c45, 6)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(28, __c3, 4)),
+          creator: S.NullOr(__S(1447, __c45, 7)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(29, __c3, 5)),
+          meta: S.optional(__S(1408, __c44, 0)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(30, __c3, 6)),
+          oidcTokenClaims: S.optional(__S(1448, __c45, 8)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -32374,37 +30709,33 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseTargetsValue",
       });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(412, __c51, 4)));
-    case 6:
+    case 8:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1063, __c33, 7)));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           domains: S.optional(S.String),
-          ignorePaths: S.optional(__S(10, __c1, 2)),
-          samplingRules: S.optional(__S(114, __c14, 2)),
+          ignorePaths: S.optional(__S(1280, __c40, 0)),
+          samplingRules: S.optional(__S(1484, __c46, 12)),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseTracing",
       });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           to: S.Unknown,
-          claims: __S(116, __c14, 4),
+          claims: __S(1485, __c46, 13),
           label: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseTrustedSourcesOidcProvidersValueItem",
       });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(415, __c51, 7));
-    case 1:
-      return S.Record(S.String, __S(416, __c52, 0));
-    case 2:
+    case 11:
+      return S.Array(__S(1066, __c33, 10));
+    case 12:
+      return S.Record(S.String, __S(1067, __c33, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           from: S.Unknown,
@@ -32413,135 +30744,135 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "UploadProjectAvatarResponseTrustedSourcesProjectsValueCustomAllowItem",
       });
-    case 3:
-      return S.Array(__S(418, __c52, 2));
-    case 4:
+    case 14:
+      return S.Array(__S(1069, __c33, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          customAllow: S.optional(__S(419, __c52, 3)),
+          customAllow: S.optional(__S(1070, __c33, 14)),
           label: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseTrustedSourcesProjectsValue",
       });
-    case 5:
-      return S.Record(S.String, __S(420, __c52, 4));
-    case 6:
+    case 16:
+      return S.Record(S.String, __S(1071, __c33, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           enableVercelCiSameRepository: S.optional(S.Boolean),
-          oidcProviders: S.optional(__S(417, __c52, 1)),
-          projects: S.optional(__S(421, __c52, 5)),
+          oidcProviders: S.optional(__S(1068, __c33, 12)),
+          projects: S.optional(__S(1072, __c33, 16)),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponseTrustedSources",
       });
-    case 7:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
-          alias: __S(376, __c47, 0),
-          analytics: S.optional(__S(34, __c4, 2)),
+          alias: __S(1027, __c32, 3),
+          analytics: S.optional(__S(1449, __c45, 9)),
           appliedCve55182Migration: S.optional(S.Boolean),
           autoAssignCustomDomains: S.optional(S.Boolean),
           autoAssignCustomDomainsUpdatedBy: S.optional(S.String),
           autoExposeSystemEnvs: S.optional(S.Boolean),
           avatar: S.optional(S.NullOr(S.String)),
-          blobs: S.optional(__S(35, __c4, 3)),
+          blobs: S.optional(__S(1450, __c45, 10)),
           buildCommand: S.optional(S.NullOr(S.String)),
           commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
           concurrencyBucketName: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.NullOr(S.String)),
-          connectConfigurations: S.optional(S.NullOr(__S(379, __c47, 3))),
+          connectConfigurations: S.optional(S.NullOr(__S(1030, __c32, 6))),
           createdAt: S.optional(S.Number),
           creator: S.optional(S.Unknown),
-          crons: S.optional(__S(41, __c5, 1)),
-          customEnvironments: S.optional(__S(383, __c47, 7)),
+          crons: S.optional(__S(1536, __c48, 0)),
+          customEnvironments: S.optional(__S(1034, __c32, 10)),
           customerSupportCodeVisibility: S.optional(S.Boolean),
-          dataCache: S.optional(__S(48, __c6, 0)),
-          defaultResourceConfig: __S(384, __c48, 0),
-          deploymentExpiration: __S(51, __c6, 3),
-          deploymentPolicy: S.optional(S.NullOr(__S(392, __c49, 0))),
+          dataCache: S.optional(__S(1454, __c45, 14)),
+          defaultResourceConfig: __S(1035, __c32, 11),
+          deploymentExpiration: __S(1456, __c45, 16),
+          deploymentPolicy: S.optional(S.NullOr(__S(1043, __c32, 19))),
           devCommand: S.optional(S.NullOr(S.String)),
           directoryListing: S.Boolean,
-          dismissedToasts: S.optional(__S(394, __c49, 2)),
+          dismissedToasts: S.optional(__S(1045, __c32, 21)),
           enableAffectedProjectsDeployments: S.optional(S.Boolean),
           enableExternalRewriteCaching: S.optional(S.Boolean),
           enablePreviewFeedback: S.optional(S.NullOr(S.Boolean)),
           enableProductionFeedback: S.optional(S.NullOr(S.Boolean)),
-          env: S.optional(__S(396, __c49, 4)),
+          env: S.optional(__S(1047, __c32, 23)),
           expiration: S.optional(S.Unknown),
-          features: S.optional(__S(66, __c8, 2)),
+          features: S.optional(__S(1458, __c45, 18)),
           framework: S.optional(S.NullOr(S.String)),
-          gitComments: S.optional(__S(67, __c8, 3)),
+          gitComments: S.optional(__S(1459, __c45, 19)),
           gitForkProtection: S.optional(S.Boolean),
           gitLFS: S.optional(S.Boolean),
-          gitProviderOptions: S.optional(__S(69, __c8, 5)),
+          gitProviderOptions: S.optional(__S(1461, __c45, 21)),
           hasActiveBranches: S.optional(S.Boolean),
           hasDeployments: S.optional(S.Boolean),
           id: S.String,
           installCommand: S.optional(S.NullOr(S.String)),
-          internalRoutes: S.optional(__S(397, __c49, 5)),
-          ipBuckets: S.optional(__S(72, __c9, 0)),
-          jobs: S.optional(__S(268, __c33, 4)),
-          lastAliasRequest: S.optional(S.NullOr(__S(75, __c9, 3))),
+          internalRoutes: S.optional(__S(1048, __c32, 24)),
+          ipBuckets: S.optional(__S(1463, __c45, 23)),
+          jobs: S.optional(__S(808, __c25, 8)),
+          lastAliasRequest: S.optional(S.NullOr(__S(1465, __c45, 25))),
           lastRollbackTarget: S.optional(S.NullOr(S.Unknown)),
-          latestDeployments: S.optional(__S(399, __c49, 7)),
+          latestDeployments: S.optional(__S(1050, __c32, 26)),
           link: S.optional(S.Unknown),
           live: S.optional(S.Boolean),
           microfrontends: S.optional(S.Unknown),
           name: S.String,
           nodeVersion: S.String,
-          oidcTokenConfig: S.optional(__S(19, __c2, 3)),
-          optionsAllowlist: S.optional(S.NullOr(__S(82, __c10, 2))),
+          oidcTokenConfig: S.optional(__S(1441, __c45, 1)),
+          optionsAllowlist: S.optional(S.NullOr(__S(1468, __c45, 28))),
           outputDirectory: S.optional(S.NullOr(S.String)),
           passiveConnectConfigurationId: S.optional(S.NullOr(S.String)),
-          passport: S.optional(S.NullOr(__S(83, __c10, 3))),
+          passport: S.optional(S.NullOr(__S(1469, __c45, 29))),
           passwordProtection: S.optional(S.NullOr(S.Unknown)),
           paused: S.optional(S.Boolean),
-          permissions: S.optional(__S(400, __c50, 0)),
+          permissions: S.optional(__S(1051, __c32, 27)),
           productionDeploymentsFastLane: S.optional(S.Boolean),
           protectedSourcemaps: S.optional(S.Boolean),
-          protectionBypass: S.optional(__S(401, __c50, 1)),
-          protectionConfig: S.optional(__S(87, __c10, 7)),
-          resourceConfig: __S(402, __c50, 2),
-          rollbackDescription: S.optional(__S(89, __c11, 1)),
-          rollingRelease: S.optional(S.NullOr(__S(406, __c50, 6))),
+          protectionBypass: S.optional(__S(1052, __c32, 28)),
+          protectionConfig: S.optional(__S(1471, __c45, 31)),
+          resourceConfig: __S(1053, __c32, 29),
+          rollbackDescription: S.optional(__S(1472, __c46, 0)),
+          rollingRelease: S.optional(S.NullOr(__S(1057, __c33, 1))),
           rootDirectory: S.optional(S.NullOr(S.String)),
-          sandbox: S.optional(__S(97, __c12, 1)),
-          security: S.optional(__S(411, __c51, 3)),
+          sandbox: S.optional(__S(1476, __c46, 4)),
+          security: S.optional(__S(1062, __c33, 6)),
           serverlessFunctionZeroConfigFailover: S.optional(S.Boolean),
-          services: S.optional(__S(106, __c13, 2)),
-          skewProtectionAllowedDomains: S.optional(__S(10, __c1, 2)),
+          services: S.optional(__S(1480, __c46, 8)),
+          skewProtectionAllowedDomains: S.optional(__S(1280, __c40, 0)),
           skewProtectionBoundaryAt: S.optional(S.Number),
           skewProtectionMaxAge: S.optional(S.Number),
           skipGitConnectDuringLink: S.optional(S.Boolean),
           sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
-          speedInsights: S.optional(__S(107, __c13, 3)),
-          ssoProtection: S.optional(S.NullOr(__S(212, __c26, 4))),
-          staticIps: S.optional(__S(109, __c13, 5)),
-          targets: S.optional(__S(413, __c51, 5)),
+          speedInsights: S.optional(__S(1481, __c46, 9)),
+          ssoProtection: S.optional(S.NullOr(__S(806, __c25, 6))),
+          staticIps: S.optional(__S(1482, __c46, 10)),
+          targets: S.optional(__S(1064, __c33, 8)),
           tier: S.optional(S.String),
-          tracing: S.optional(__S(414, __c51, 6)),
+          tracing: S.optional(__S(1065, __c33, 9)),
           transferCompletedAt: S.optional(S.Number),
           transferredFromAccountId: S.optional(S.String),
           transferStartedAt: S.optional(S.Number),
           transferToAccountId: S.optional(S.String),
           trustedIps: S.optional(S.NullOr(S.Unknown)),
-          trustedSources: S.optional(S.NullOr(__S(422, __c52, 6))),
+          trustedSources: S.optional(S.NullOr(__S(1073, __c33, 17))),
           updatedAt: S.optional(S.Number),
-          usageStatus: S.optional(__S(125, __c15, 5)),
+          usageStatus: S.optional(__S(1486, __c46, 14)),
           v0: S.optional(S.Boolean),
           v0Created: S.optional(S.Boolean),
-          webAnalytics: S.optional(__S(126, __c15, 6)),
+          webAnalytics: S.optional(__S(1487, __c46, 15)),
         }),
       ).annotate({
         identifier: "UploadProjectAvatarResponse",
       });
   }
 }
-function __c53(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -32579,7 +30910,1659 @@ function __c53(j: number): any {
       });
   }
 }
-
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          concurrentBuilds: S.optional(S.NullOr(S.Number)),
+          passwordProtection: S.optional(S.NullOr(S.Boolean)),
+          previewDeploymentSuffix: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "AcceptProjectTransferRequestRequestPaidFeatures",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          eula: S.String,
+          privacy: S.String,
+        }),
+      ).annotate({
+        identifier: "AcceptProjectTransferRequestRequestAcceptedPoliciesValue",
+      });
+    case 2:
+      return S.Record(S.String, __S(1121, __c35, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          newProjectName: S.optional(S.String),
+          paidFeatures: S.optional(__S(1120, __c35, 0)),
+          acceptedPolicies: S.optional(__S(1122, __c35, 2)),
+        }).pipe(T.Http({ method: "PUT", uri: "/projects/transfer-request/{code}", code: 200 })),
+      ).annotate({
+        identifier: "AcceptProjectTransferRequestRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "AcceptProjectTransferRequestResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrName: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          name: S.String,
+          gitBranch: S.optional(S.NullOr(S.String)),
+          customEnvironmentId: S.optional(S.String),
+          redirect: S.optional(S.NullOr(S.String)),
+          redirectStatusCode: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "POST", uri: "/v10/projects/{idOrName}/domains", code: 200 })),
+      ).annotate({ identifier: "AddProjectDomainRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apexName: S.String,
+          createdAt: S.optional(S.Number),
+          customEnvironmentId: S.optional(S.NullOr(S.String)),
+          gitBranch: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          projectId: S.String,
+          redirect: S.optional(S.NullOr(S.String)),
+          redirectStatusCode: S.optional(S.NullOr(S.Number)),
+          updatedAt: S.optional(S.Number),
+          verification: S.optional(__S(1184, __c37, 0)),
+          verified: S.Boolean,
+        }),
+      ).annotate({ identifier: "AddProjectDomainResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1216, __c38, 0));
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String,
+          reason: S.String,
+          type: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "AddProjectDomainResponseVerificationItem",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrName: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          ids: __S(1280, __c40, 0),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/projects/{idOrName}/env", code: 200 })),
+      ).annotate({
+        identifier: "BatchRemoveProjectEnvRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deleted: S.Number,
+          ids: __S(1280, __c40, 0),
+        }),
+      ).annotate({
+        identifier: "BatchRemoveProjectEnvResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          target: S.Unknown,
+          gitBranch: S.optional(S.String),
+          type: S.optional(S.String),
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectRequestEnvironmentVariablesItem",
+      });
+    case 1:
+      return S.Array(__S(1312, __c41, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          repo: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectRequestGitRepository",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          buildMachineType: S.optional(S.String),
+          fluid: S.optional(S.Boolean),
+          functionDefaultRegions: S.optional(__S(1280, __c40, 0)),
+          functionDefaultTimeout: S.optional(S.Number),
+          functionDefaultMemoryType: S.optional(S.String),
+          functionZeroConfigFailover: S.optional(S.Boolean),
+          elasticConcurrencyEnabled: S.optional(S.Boolean),
+          buildMachineSelection: S.optional(S.String),
+          buildMachineElasticLastUpdated: S.optional(S.Number),
+          buildMachineElasticReason: S.optional(S.String),
+          buildMachineElasticTransition: S.optional(__S(1570, __c49, 2)),
+          isNSNBDisabled: S.optional(S.Boolean),
+          buildQueue: S.optional(__S(1442, __c45, 2)),
+          enableFunctionsBeta: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateProjectRequestResourceConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          enablePreviewFeedback: S.optional(S.NullOr(S.Boolean)),
+          enableProductionFeedback: S.optional(S.NullOr(S.Boolean)),
+          previewDeploymentsDisabled: S.optional(S.NullOr(S.Boolean)),
+          previewDeploymentSuffix: S.optional(S.NullOr(S.String)),
+          buildCommand: S.optional(S.NullOr(S.String)),
+          commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
+          devCommand: S.optional(S.NullOr(S.String)),
+          environmentVariables: S.optional(__S(1313, __c41, 1)),
+          framework: S.optional(S.String),
+          gitRepository: S.optional(__S(1314, __c41, 2)),
+          installCommand: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          skipGitConnectDuringLink: S.optional(S.Boolean),
+          ssoProtection: S.optional(S.NullOr(__S(1568, __c49, 0))),
+          sandbox: S.optional(__S(1569, __c49, 1)),
+          outputDirectory: S.optional(S.NullOr(S.String)),
+          publicSource: S.optional(S.NullOr(S.Boolean)),
+          rootDirectory: S.optional(S.NullOr(S.String)),
+          serverlessFunctionRegion: S.optional(S.NullOr(S.String)),
+          serverlessFunctionZeroConfigFailover: S.optional(S.Boolean),
+          oidcTokenConfig: S.optional(__S(1441, __c45, 1)),
+          enableAffectedProjectsDeployments: S.optional(S.Boolean),
+          resourceConfig: S.optional(__S(1315, __c41, 3)),
+        }).pipe(T.Http({ method: "POST", uri: "/v11/projects", code: 200 })),
+      ).annotate({ identifier: "CreateProjectRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.optional(__S(1280, __c40, 0)),
+          aliasAssigned: S.optional(S.NullOr(S.Unknown)),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
+          aliasFinal: S.optional(S.NullOr(S.String)),
+          automaticAliases: S.optional(__S(1280, __c40, 0)),
+          branchMatcher: S.optional(__S(1444, __c45, 4)),
+          buildingAt: S.optional(S.Number),
+          builds: S.optional(__S(1446, __c45, 6)),
+          checksConclusion: S.optional(S.String),
+          checksState: S.optional(S.String),
+          connectBuildsEnabled: S.optional(S.Boolean),
+          connectConfigurationId: S.optional(S.String),
+          createdAt: S.Number,
+          createdIn: S.String,
+          creator: S.NullOr(__S(1447, __c45, 7)),
+          deletedAt: S.optional(S.Number),
+          deploymentHostname: S.String,
+          forced: S.optional(S.Boolean),
+          id: S.String,
+          meta: S.optional(__S(1408, __c44, 0)),
+          monorepoManager: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          oidcTokenClaims: S.optional(__S(1448, __c45, 8)),
+          plan: S.String,
+          previewCommentsEnabled: S.optional(S.Boolean),
+          private: S.Boolean,
+          readyAt: S.optional(S.Number),
+          readyState: S.String,
+          readySubstate: S.optional(S.String),
+          requestedAt: S.optional(S.Number),
+          target: S.optional(S.NullOr(S.String)),
+          teamId: S.optional(S.NullOr(S.String)),
+          type: S.String,
+          url: S.String,
+          userId: S.optional(S.String),
+          withCache: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseAliasItemDeployment",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          configuredBy: S.optional(S.NullOr(S.String)),
+          configuredChangedAt: S.optional(S.NullOr(S.Number)),
+          createdAt: S.optional(S.NullOr(S.Number)),
+          deployment: S.NullOr(__S(1317, __c41, 5)),
+          domain: S.String,
+          environment: S.String,
+          gitBranch: S.optional(S.NullOr(S.String)),
+          redirect: S.optional(S.NullOr(S.String)),
+          redirectStatusCode: S.optional(S.NullOr(S.Number)),
+          target: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseAliasItem",
+      });
+    case 7:
+      return S.Array(__S(1318, __c41, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          aws: S.optional(__S(1504, __c47, 0)),
+          buildsEnabled: S.Boolean,
+          connectConfigurationId: S.String,
+          createdAt: S.Number,
+          dc: S.optional(S.String),
+          envId: S.Unknown,
+          passive: S.Boolean,
+          updatedAt: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseConnectConfigurationsItem",
+      });
+    case 9:
+      return S.Array(__S(1320, __c41, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          apexName: S.String,
+          createdAt: S.optional(S.Number),
+          customEnvironmentId: S.optional(S.NullOr(S.String)),
+          gitBranch: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          projectId: S.String,
+          redirect: S.optional(S.NullOr(S.String)),
+          redirectStatusCode: S.optional(S.NullOr(S.Number)),
+          updatedAt: S.optional(S.Number),
+          verification: S.optional(__S(1453, __c45, 13)),
+          verified: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseCustomEnvironmentsItemDomainsItem",
+      });
+    case 11:
+      return S.Array(__S(1322, __c41, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          branchMatcher: S.optional(__S(1537, __c48, 1)),
+          createdAt: S.Number,
+          currentDeploymentAliases: S.optional(__S(1440, __c45, 0)),
+          description: S.optional(S.String),
+          domains: S.optional(__S(1323, __c41, 11)),
+          id: S.String,
+          slug: S.String,
+          type: S.String,
+          updatedAt: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseCustomEnvironmentsItem",
+      });
+    case 13:
+      return S.Array(__S(1324, __c41, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          buildMachineElasticLastUpdated: S.optional(S.Number),
+          buildMachineElasticReason: S.optional(S.String),
+          buildMachineElasticTransition: S.optional(__S(1455, __c45, 15)),
+          buildMachineSelection: S.optional(S.String),
+          buildMachineType: S.optional(S.String),
+          buildQueue: S.optional(__S(1442, __c45, 2)),
+          elasticConcurrencyEnabled: S.optional(S.Boolean),
+          enableFunctionsBeta: S.optional(S.Boolean),
+          fluid: S.optional(S.Boolean),
+          functionDefaultMemoryType: S.optional(S.String),
+          functionDefaultRegions: __S(1440, __c45, 0),
+          functionDefaultTimeout: S.optional(S.Number),
+          functionZeroConfigFailover: S.optional(S.Boolean),
+          isNSNBDisabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseDefaultResourceConfig",
+      });
+    case 15:
+      return S.Array(S.Unknown);
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          environments: __S(1327, __c41, 15),
+          sources: __S(1457, __c45, 17),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseDeploymentPolicyDeploymentSourcesItem",
+      });
+    case 17:
+      return S.Array(__S(1328, __c41, 16));
+    case 18:
+      return S.Array(S.Unknown);
+    case 19:
+      return S.Array(S.Unknown);
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          environments: __S(1330, __c41, 18),
+          sources: __S(1331, __c41, 19),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseDeploymentPolicyGitSourcesItem",
+      });
+    case 21:
+      return S.Array(__S(1332, __c41, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentSources: S.optional(S.NullOr(__S(1329, __c41, 17))),
+          gitSources: S.optional(S.NullOr(__S(1333, __c41, 21))),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseDeploymentPolicy",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          dismissedAt: S.Number,
+          key: S.String,
+          value: S.NullOr(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseDismissedToastsItem",
+      });
+    case 24:
+      return S.Array(__S(1335, __c41, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          comment: S.optional(S.String),
+          configurationId: S.optional(S.NullOr(S.String)),
+          contentHint: S.optional(S.NullOr(S.Unknown)),
+          createdAt: S.optional(S.Number),
+          createdBy: S.optional(S.NullOr(S.String)),
+          customEnvironmentIds: S.optional(__S(1280, __c40, 0)),
+          decrypted: S.optional(S.Boolean),
+          edgeConfigId: S.optional(S.NullOr(S.String)),
+          edgeConfigTokenId: S.optional(S.NullOr(S.String)),
+          gitBranch: S.optional(S.String),
+          id: S.optional(S.String),
+          internalContentHint: S.optional(S.NullOr(__S(1377, __c43, 1))),
+          key: S.String,
+          legacyValue: S.optional(S.String),
+          sunsetSecretId: S.optional(S.String),
+          target: S.optional(S.Unknown),
+          type: S.String,
+          updatedAt: S.optional(S.Number),
+          updatedBy: S.optional(S.NullOr(S.String)),
+          value: S.String,
+          visibility: S.optional(S.String),
+          vsmValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseEnvItem",
+      });
+    case 26:
+      return S.Array(__S(1337, __c41, 25));
+    case 27:
+      return S.Array(S.Unknown);
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.optional(__S(1280, __c40, 0)),
+          aliasAssigned: S.optional(S.NullOr(S.Unknown)),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
+          aliasFinal: S.optional(S.NullOr(S.String)),
+          automaticAliases: S.optional(__S(1280, __c40, 0)),
+          branchMatcher: S.optional(__S(1444, __c45, 4)),
+          buildingAt: S.optional(S.Number),
+          builds: S.optional(__S(1446, __c45, 6)),
+          checksConclusion: S.optional(S.String),
+          checksState: S.optional(S.String),
+          connectBuildsEnabled: S.optional(S.Boolean),
+          connectConfigurationId: S.optional(S.String),
+          createdAt: S.Number,
+          createdIn: S.String,
+          creator: S.NullOr(__S(1447, __c45, 7)),
+          deletedAt: S.optional(S.Number),
+          deploymentHostname: S.String,
+          forced: S.optional(S.Boolean),
+          id: S.String,
+          meta: S.optional(__S(1408, __c44, 0)),
+          monorepoManager: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          oidcTokenClaims: S.optional(__S(1572, __c49, 4)),
+          plan: S.String,
+          previewCommentsEnabled: S.optional(S.Boolean),
+          private: S.Boolean,
+          readyAt: S.optional(S.Number),
+          readyState: S.String,
+          readySubstate: S.optional(S.String),
+          requestedAt: S.optional(S.Number),
+          target: S.optional(S.NullOr(S.String)),
+          teamId: S.optional(S.NullOr(S.String)),
+          type: S.String,
+          url: S.String,
+          userId: S.optional(S.String),
+          withCache: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseLatestDeploymentsItem",
+      });
+    case 29:
+      return S.Array(__S(1340, __c41, 28));
+    case 30:
+      return S.Record(S.String, S.Unknown);
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          buildMachineElasticLastUpdated: S.optional(S.Number),
+          buildMachineElasticReason: S.optional(S.String),
+          buildMachineElasticTransition: S.optional(__S(1455, __c45, 15)),
+          buildMachineSelection: S.optional(S.String),
+          buildMachineType: S.optional(S.String),
+          buildQueue: S.optional(__S(1442, __c45, 2)),
+          elasticConcurrencyEnabled: S.optional(S.Boolean),
+          enableFunctionsBeta: S.optional(S.Boolean),
+          fluid: S.optional(S.Boolean),
+          functionDefaultMemoryType: S.optional(S.String),
+          functionDefaultRegions: __S(1280, __c40, 0),
+          functionDefaultTimeout: S.optional(S.Number),
+          functionZeroConfigFailover: S.optional(S.Boolean),
+          isNSNBDisabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseResourceConfig",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          excludePaths: S.optional(__S(1440, __c45, 0)),
+          excludeStatusCodes: S.optional(__S(1473, __c46, 1)),
+          ingestWatermarkSeconds: S.optional(S.Number),
+          minSampleSize: S.optional(S.Number),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseRollingReleaseGateChecksItem",
+      });
+    case 1:
+      return S.Array(__S(1344, __c42, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          checks: __S(1345, __c42, 1),
+          dryRun: S.Boolean,
+          enabled: S.Boolean,
+          failureThreshold: S.optional(S.Number),
+          windowSize: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseRollingReleaseGate",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          canaryResponseHeader: S.optional(S.Boolean),
+          gate: S.optional(__S(1346, __c42, 2)),
+          stages: S.optional(S.NullOr(__S(1475, __c46, 3))),
+          target: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseRollingRelease",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          algo: S.String,
+          keys: __S(1280, __c40, 0),
+          limit: S.Number,
+          window: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseSecurityRulesetsValueRateLimit",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          actionDuration: S.optional(S.NullOr(S.String)),
+          bypassSystem: S.optional(S.NullOr(S.Boolean)),
+          logHeaders: S.optional(S.Unknown),
+          rateLimit: S.optional(S.NullOr(__S(1348, __c42, 4))),
+          redirect: S.optional(S.NullOr(__S(1478, __c46, 6))),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseSecurityRulesetsValue",
+      });
+    case 6:
+      return S.Record(S.String, __S(1349, __c42, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          attackModeActiveUntil: S.optional(S.NullOr(S.Number)),
+          attackModeEnabled: S.optional(S.Boolean),
+          attackModeUpdatedAt: S.optional(S.Number),
+          botIdEnabled: S.optional(S.Boolean),
+          firewallBypassIps: S.optional(__S(1280, __c40, 0)),
+          firewallConfigVersion: S.optional(S.Number),
+          firewallEnabled: S.optional(S.Boolean),
+          firewallSeawallEnabled: S.optional(S.Boolean),
+          firewallUpdatedAt: S.optional(S.Number),
+          ja3Enabled: S.optional(S.Boolean),
+          ja4Enabled: S.optional(S.Boolean),
+          log_headers: S.optional(S.Unknown),
+          managedRules: S.optional(S.NullOr(__S(1505, __c47, 1))),
+          pageIntegrityEnabled: S.optional(S.Boolean),
+          rulesets: S.optional(__S(1350, __c42, 6)),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseSecurity",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.optional(__S(1280, __c40, 0)),
+          aliasAssigned: S.optional(S.NullOr(S.Unknown)),
+          aliasError: S.optional(S.NullOr(__S(1443, __c45, 3))),
+          aliasFinal: S.optional(S.NullOr(S.String)),
+          automaticAliases: S.optional(__S(1280, __c40, 0)),
+          branchMatcher: S.optional(__S(1444, __c45, 4)),
+          buildingAt: S.optional(S.Number),
+          builds: S.optional(__S(1446, __c45, 6)),
+          checksConclusion: S.optional(S.String),
+          checksState: S.optional(S.String),
+          connectBuildsEnabled: S.optional(S.Boolean),
+          connectConfigurationId: S.optional(S.String),
+          createdAt: S.Number,
+          createdIn: S.String,
+          creator: S.NullOr(__S(1447, __c45, 7)),
+          deletedAt: S.optional(S.Number),
+          deploymentHostname: S.String,
+          forced: S.optional(S.Boolean),
+          id: S.String,
+          meta: S.optional(__S(1408, __c44, 0)),
+          monorepoManager: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          oidcTokenClaims: S.optional(__S(1507, __c47, 3)),
+          plan: S.String,
+          previewCommentsEnabled: S.optional(S.Boolean),
+          private: S.Boolean,
+          readyAt: S.optional(S.Number),
+          readyState: S.String,
+          readySubstate: S.optional(S.String),
+          requestedAt: S.optional(S.Number),
+          target: S.optional(S.NullOr(S.String)),
+          teamId: S.optional(S.NullOr(S.String)),
+          type: S.String,
+          url: S.String,
+          userId: S.optional(S.String),
+          withCache: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseTargetsValue",
+      });
+    case 9:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1352, __c42, 8)));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          domains: S.optional(S.String),
+          ignorePaths: S.optional(__S(1280, __c40, 0)),
+          samplingRules: S.optional(__S(1484, __c46, 12)),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseTracing",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          to: S.Unknown,
+          claims: __S(1485, __c46, 13),
+          label: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseTrustedSourcesOidcProvidersValueItem",
+      });
+    case 12:
+      return S.Array(__S(1355, __c42, 11));
+    case 13:
+      return S.Record(S.String, __S(1356, __c42, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.Unknown,
+          to: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseTrustedSourcesProjectsValueCustomAllowItem",
+      });
+    case 15:
+      return S.Array(__S(1358, __c42, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          customAllow: S.optional(__S(1359, __c42, 15)),
+          label: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseTrustedSourcesProjectsValue",
+      });
+    case 17:
+      return S.Record(S.String, __S(1360, __c42, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          enableVercelCiSameRepository: S.optional(S.Boolean),
+          oidcProviders: S.optional(__S(1357, __c42, 13)),
+          projects: S.optional(__S(1361, __c42, 17)),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseTrustedSources",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String,
+          alias: __S(1319, __c41, 7),
+          analytics: S.optional(__S(1449, __c45, 9)),
+          appliedCve55182Migration: S.optional(S.Boolean),
+          autoAssignCustomDomains: S.optional(S.Boolean),
+          autoAssignCustomDomainsUpdatedBy: S.optional(S.String),
+          autoExposeSystemEnvs: S.optional(S.Boolean),
+          avatar: S.optional(S.NullOr(S.String)),
+          blobs: S.optional(__S(1450, __c45, 10)),
+          buildCommand: S.optional(S.NullOr(S.String)),
+          commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
+          concurrencyBucketName: S.optional(S.String),
+          connectBuildsEnabled: S.optional(S.Boolean),
+          connectConfigurationId: S.optional(S.NullOr(S.String)),
+          connectConfigurations: S.optional(S.NullOr(__S(1321, __c41, 9))),
+          createdAt: S.optional(S.Number),
+          creator: S.optional(S.Unknown),
+          crons: S.optional(__S(1536, __c48, 0)),
+          customEnvironments: S.optional(__S(1325, __c41, 13)),
+          customerSupportCodeVisibility: S.optional(S.Boolean),
+          dataCache: S.optional(__S(1454, __c45, 14)),
+          defaultResourceConfig: __S(1326, __c41, 14),
+          deploymentExpiration: __S(1456, __c45, 16),
+          deploymentPolicy: S.optional(S.NullOr(__S(1334, __c41, 22))),
+          devCommand: S.optional(S.NullOr(S.String)),
+          directoryListing: S.Boolean,
+          dismissedToasts: S.optional(__S(1336, __c41, 24)),
+          enableAffectedProjectsDeployments: S.optional(S.Boolean),
+          enableExternalRewriteCaching: S.optional(S.Boolean),
+          enablePreviewFeedback: S.optional(S.NullOr(S.Boolean)),
+          enableProductionFeedback: S.optional(S.NullOr(S.Boolean)),
+          env: S.optional(__S(1338, __c41, 26)),
+          expiration: S.optional(S.Unknown),
+          features: S.optional(__S(1458, __c45, 18)),
+          framework: S.optional(S.NullOr(S.String)),
+          gitComments: S.optional(__S(1459, __c45, 19)),
+          gitForkProtection: S.optional(S.Boolean),
+          gitLFS: S.optional(S.Boolean),
+          gitProviderOptions: S.optional(__S(1461, __c45, 21)),
+          hasActiveBranches: S.optional(S.Boolean),
+          hasDeployments: S.optional(S.Boolean),
+          id: S.String,
+          installCommand: S.optional(S.NullOr(S.String)),
+          internalRoutes: S.optional(__S(1339, __c41, 27)),
+          ipBuckets: S.optional(__S(1463, __c45, 23)),
+          jobs: S.optional(__S(1571, __c49, 3)),
+          lastAliasRequest: S.optional(S.NullOr(__S(1465, __c45, 25))),
+          lastRollbackTarget: S.optional(S.NullOr(S.Unknown)),
+          latestDeployments: S.optional(__S(1341, __c41, 29)),
+          link: S.optional(S.Unknown),
+          live: S.optional(S.Boolean),
+          microfrontends: S.optional(S.Unknown),
+          name: S.String,
+          nodeVersion: S.String,
+          oidcTokenConfig: S.optional(__S(1441, __c45, 1)),
+          optionsAllowlist: S.optional(S.NullOr(__S(1468, __c45, 28))),
+          outputDirectory: S.optional(S.NullOr(S.String)),
+          passiveConnectConfigurationId: S.optional(S.NullOr(S.String)),
+          passport: S.optional(S.NullOr(__S(1469, __c45, 29))),
+          passwordProtection: S.optional(S.NullOr(S.Unknown)),
+          paused: S.optional(S.Boolean),
+          permissions: S.optional(__S(1573, __c49, 5)),
+          productionDeploymentsFastLane: S.optional(S.Boolean),
+          protectedSourcemaps: S.optional(S.Boolean),
+          protectionBypass: S.optional(__S(1342, __c41, 30)),
+          protectionConfig: S.optional(__S(1471, __c45, 31)),
+          resourceConfig: __S(1343, __c41, 31),
+          rollbackDescription: S.optional(__S(1472, __c46, 0)),
+          rollingRelease: S.optional(S.NullOr(__S(1347, __c42, 3))),
+          rootDirectory: S.optional(S.NullOr(S.String)),
+          sandbox: S.optional(__S(1476, __c46, 4)),
+          security: S.optional(__S(1351, __c42, 7)),
+          serverlessFunctionZeroConfigFailover: S.optional(S.Boolean),
+          services: S.optional(__S(1480, __c46, 8)),
+          skewProtectionAllowedDomains: S.optional(__S(1280, __c40, 0)),
+          skewProtectionBoundaryAt: S.optional(S.Number),
+          skewProtectionMaxAge: S.optional(S.Number),
+          skipGitConnectDuringLink: S.optional(S.Boolean),
+          sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
+          speedInsights: S.optional(__S(1481, __c46, 9)),
+          ssoProtection: S.optional(S.NullOr(__S(1506, __c47, 2))),
+          staticIps: S.optional(__S(1482, __c46, 10)),
+          targets: S.optional(__S(1353, __c42, 9)),
+          tier: S.optional(S.String),
+          tracing: S.optional(__S(1354, __c42, 10)),
+          transferCompletedAt: S.optional(S.Number),
+          transferredFromAccountId: S.optional(S.String),
+          transferStartedAt: S.optional(S.Number),
+          transferToAccountId: S.optional(S.String),
+          trustedIps: S.optional(S.NullOr(S.Unknown)),
+          trustedSources: S.optional(S.NullOr(__S(1362, __c42, 18))),
+          updatedAt: S.optional(S.Number),
+          usageStatus: S.optional(__S(1486, __c46, 14)),
+          v0: S.optional(S.Boolean),
+          v0Created: S.optional(S.Boolean),
+          webAnalytics: S.optional(__S(1487, __c46, 15)),
+        }),
+      ).annotate({ identifier: "CreateProjectResponse" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          encryptedValue: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseEnvItemInternalContentHint",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          issuerMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProjectRequestOidcTokenConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          configuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProjectRequestResourceConfigBuildQueue",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseAliasItemDeploymentAliasError",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          pattern: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseAliasItemDeploymentBranchMatcher",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          dest: S.optional(S.String),
+          src: S.optional(S.String),
+          use: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseAliasItemDeploymentBuildsItem",
+      });
+    case 6:
+      return S.Array(__S(1445, __c45, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          githubLogin: S.optional(S.String),
+          gitlabLogin: S.optional(S.String),
+          uid: S.String,
+          username: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseAliasItemDeploymentCreator",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          aud: S.String,
+          custom_environment_id: S.optional(S.String),
+          deployment_id: S.optional(S.String),
+          environment: S.String,
+          iss: S.String,
+          mfe_group_ids: S.optional(__S(1440, __c45, 0)),
+          owner: S.String,
+          owner_id: S.String,
+          plan: S.optional(S.String),
+          project: S.String,
+          project_id: S.String,
+          scope: S.String,
+          sub: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseAliasItemDeploymentOidcTokenClaims",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          canceledAt: S.optional(S.NullOr(S.Number)),
+          disabledAt: S.Number,
+          enabledAt: S.Number,
+          id: S.String,
+          paidAt: S.optional(S.Number),
+          sampleRatePercent: S.optional(S.NullOr(S.Number)),
+          spendLimitInDollars: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseAnalytics",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          isDefaultApp: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseBlobs",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          host: S.String,
+          hostInferred: S.optional(S.Boolean),
+          path: S.String,
+          schedule: S.String,
+          source: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseCronsDefinitionsItem",
+      });
+    case 12:
+      return S.Array(__S(1451, __c45, 11));
+    case 13:
+      return S.Array(__S(1216, __c38, 0));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          storageSizeBytes: S.optional(S.NullOr(S.Number)),
+          unlimited: S.optional(S.Boolean),
+          userDisabled: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseDataCache",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          algorithmVersion: S.String,
+          at: S.Number,
+          direction: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseDefaultResourceConfigBuildMachineElasticTransition",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentsToKeep: S.optional(S.Number),
+          expirationDays: S.optional(S.Number),
+          expirationDaysCanceled: S.optional(S.Number),
+          expirationDaysErrored: S.optional(S.Number),
+          expirationDaysProduction: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseDeploymentExpiration",
+      });
+    case 17:
+      return S.Array(S.String);
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          webAnalytics: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseFeatures",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          onCommit: S.Boolean,
+          onPullRequest: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseGitComments",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          propagateFailures: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseGitProviderOptionsConsolidatedGitCommitStatus",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          consolidatedGitCommitStatus: S.optional(__S(1460, __c45, 20)),
+          createDeployments: S.String,
+          disableRepositoryDispatchEvents: S.optional(S.Boolean),
+          gitCommitStatus: S.optional(S.Boolean),
+          requireVerifiedCommits: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseGitProviderOptions",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.String,
+          default: S.optional(S.Boolean),
+          supportUntil: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseIpBucketsItem",
+      });
+    case 23:
+      return S.Array(__S(1462, __c45, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          targets: __S(1280, __c40, 0),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseJobsFlagDefinitionsPresent",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          fromDeploymentId: S.NullOr(S.String),
+          fromRollingReleaseId: S.optional(S.String),
+          jobStatus: S.String,
+          requestedAt: S.Number,
+          toDeploymentId: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseLastAliasRequest",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseOptionsAllowlistPathsItem",
+      });
+    case 27:
+      return S.Array(__S(1466, __c45, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          paths: __S(1467, __c45, 27),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseOptionsAllowlist",
+      });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          connectorId: S.String,
+          deploymentType: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponsePassport",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          inheritDeploymentProtection: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseProtectionConfigSandboxUrls",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxUrls: S.optional(__S(1470, __c45, 30)),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseProtectionConfig",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.Number,
+          description: S.String,
+          userId: S.String,
+          username: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseRollbackDescription",
+      });
+    case 1:
+      return S.Array(S.Number);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.optional(S.Number),
+          linearShift: S.optional(S.Boolean),
+          requireApproval: S.optional(S.Boolean),
+          targetPercentage: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseRollingReleaseStagesItem",
+      });
+    case 3:
+      return S.Array(__S(1474, __c46, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          failoverRegions: S.optional(__S(1376, __c43, 0)),
+          region: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseSandbox",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          active: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseSecurityManagedRulesAiBots",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.String,
+          permanent: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseSecurityRulesetsValueRedirect",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          framework: S.optional(S.String),
+          runtime: S.optional(S.String),
+          serviceName: S.String,
+          serviceType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseServicesItem",
+      });
+    case 8:
+      return S.Array(__S(1479, __c46, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          canceledAt: S.optional(S.Number),
+          dataReceivedAt: S.optional(S.Number),
+          disabledAt: S.optional(S.Number),
+          enabledAt: S.optional(S.Number),
+          hasData: S.optional(S.Boolean),
+          id: S.String,
+          paidAt: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseSpeedInsights",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          builds: S.Boolean,
+          enabled: S.Boolean,
+          regions: __S(1280, __c40, 0),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseStaticIps",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          destination: S.optional(S.String),
+          env: S.optional(S.String),
+          rate: S.Number,
+          requestPath: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseTracingSamplingRulesItem",
+      });
+    case 12:
+      return S.Array(__S(1483, __c46, 11));
+    case 13:
+      return S.Record(S.String, __S(1440, __c45, 0));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          bypassThrottleUntil: S.optional(S.Number),
+          exceededAllowanceUntil: S.optional(S.Number),
+          kind: S.String,
+          teamThrottled: S.optional(S.Boolean),
+          throttled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseUsageStatus",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          canceledAt: S.optional(S.Number),
+          disabledAt: S.optional(S.Number),
+          enabledAt: S.optional(S.Number),
+          hasData: S.optional(S.Boolean),
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseWebAnalytics",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          securityGroupId: S.optional(S.String),
+          subnetIds: __S(1280, __c40, 0),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseConnectConfigurationsItemAws",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ai_bots: __S(1477, __c46, 5),
+          bot_filter: __S(1477, __c46, 5),
+          owasp: __S(1477, __c46, 5),
+          traffic_sources: __S(1477, __c46, 5),
+          vercel_ruleset: __S(1477, __c46, 5),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseSecurityManagedRules",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          april2026SecurityIncidentMigrationAppliedFrom: S.optional(S.NullOr(S.String)),
+          cve55182MigrationAppliedFrom: S.optional(S.NullOr(S.String)),
+          deploymentType: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseSsoProtection",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          aud: S.String,
+          custom_environment_id: S.optional(S.String),
+          deployment_id: S.optional(S.String),
+          environment: S.String,
+          iss: S.String,
+          mfe_group_ids: S.optional(__S(1440, __c45, 0)),
+          owner: S.String,
+          owner_id: S.String,
+          plan: S.optional(S.String),
+          project: S.String,
+          project_id: S.String,
+          scope: S.String,
+          sub: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseTargetsValueOidcTokenClaims",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          definitions: __S(1452, __c45, 12),
+          deploymentId: S.NullOr(S.String),
+          disabledAt: S.NullOr(S.Number),
+          enabledAt: S.Number,
+          updatedAt: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseCrons",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pattern: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseCustomEnvironmentsItemBranchMatcher",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentType: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectRequestSsoProtection",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(S.String),
+          failoverRegions: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateProjectRequestSandbox",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          at: S.Number,
+          direction: S.String,
+          algorithmVersion: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectRequestResourceConfigBuildMachineElasticTransition",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          flag_definitions_present: S.optional(
+            __S(1464, __c45, 24).pipe(T.Body("flag-definitions-present")),
+          ),
+          lint: S.optional(__S(1464, __c45, 24)),
+          mfe_config_present: S.optional(__S(1464, __c45, 24).pipe(T.Body("mfe-config-present"))),
+          typecheck: S.optional(__S(1464, __c45, 24)),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseJobs",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          aud: S.String,
+          custom_environment_id: S.optional(S.String),
+          deployment_id: S.optional(S.String),
+          environment: S.String,
+          iss: S.String,
+          mfe_group_ids: S.optional(__S(1440, __c45, 0)),
+          owner: S.String,
+          owner_id: S.String,
+          plan: S.optional(S.String),
+          project: S.String,
+          project_id: S.String,
+          scope: S.String,
+          sub: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponseLatestDeploymentsItemOidcTokenClaims",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          accessGroup: S.optional(__S(1376, __c43, 0)),
+          agent: S.optional(__S(1376, __c43, 0)),
+          aiGatewayApiKey: S.optional(__S(1376, __c43, 0)),
+          aiGatewayApiKeyBypassAll: S.optional(__S(1376, __c43, 0)),
+          aiGatewayApiKeyOwnedBySelf: S.optional(__S(1376, __c43, 0)),
+          aiGatewayApiKeySpendAttribution: S.optional(__S(1457, __c45, 17)),
+          aiGatewayApiKeyZdrExemption: S.optional(__S(1457, __c45, 17)),
+          aiGatewayBudget: S.optional(__S(1376, __c43, 0)),
+          aiGatewayCredits: S.optional(__S(1376, __c43, 0)),
+          aiGatewayGuardrails: S.optional(__S(1376, __c43, 0)),
+          aiGatewayPrivateModels: S.optional(__S(1376, __c43, 0)),
+          aiGatewayRules: S.optional(__S(1376, __c43, 0)),
+          aiGatewaySettings: S.optional(__S(1376, __c43, 0)),
+          aiGatewayTranscripts: S.optional(__S(1376, __c43, 0)),
+          aiGatewayTranscriptsSettings: S.optional(__S(1457, __c45, 17)),
+          aiGatewayUsage: S.optional(__S(1376, __c43, 0)),
+          aiGatewayVirtualModelConfigs: S.optional(__S(1457, __c45, 17)),
+          alertRules: S.optional(__S(1376, __c43, 0)),
+          alerts: S.optional(__S(1376, __c43, 0)),
+          aliasGlobal: S.optional(__S(1376, __c43, 0)),
+          aliasProject: S.optional(__S(1376, __c43, 0)),
+          aliasProtectionBypass: S.optional(__S(1376, __c43, 0)),
+          analytics: S.optional(__S(1376, __c43, 0)),
+          analyticsSampling: S.optional(__S(1376, __c43, 0)),
+          analyticsUsage: S.optional(__S(1376, __c43, 0)),
+          apiKey: S.optional(__S(1376, __c43, 0)),
+          apiKeyAiGateway: S.optional(__S(1376, __c43, 0)),
+          apiKeyOwnedBySelf: S.optional(__S(1376, __c43, 0)),
+          auditLog: S.optional(__S(1376, __c43, 0)),
+          automation: S.optional(__S(1376, __c43, 0)),
+          billingAddress: S.optional(__S(1376, __c43, 0)),
+          billingInformation: S.optional(__S(1376, __c43, 0)),
+          billingInvoice: S.optional(__S(1376, __c43, 0)),
+          billingInvoiceEmailRecipient: S.optional(__S(1457, __c45, 17)),
+          billingInvoiceLanguage: S.optional(__S(1376, __c43, 0)),
+          billingPlan: S.optional(__S(1376, __c43, 0)),
+          billingPurchaseOrder: S.optional(__S(1376, __c43, 0)),
+          billingRefund: S.optional(__S(1376, __c43, 0)),
+          billingTaxId: S.optional(__S(1376, __c43, 0)),
+          blob: S.optional(__S(1376, __c43, 0)),
+          blobStoreTokenSet: S.optional(__S(1376, __c43, 0)),
+          budget: S.optional(__S(1376, __c43, 0)),
+          buildMachine: S.optional(__S(1376, __c43, 0)),
+          buildMachineDefault: S.optional(__S(1376, __c43, 0)),
+          bulkRedirects: S.optional(__S(1376, __c43, 0)),
+          cacheArtifact: S.optional(__S(1376, __c43, 0)),
+          cacheArtifactUsageEvent: S.optional(__S(1376, __c43, 0)),
+          ciInvocations: S.optional(__S(1376, __c43, 0)),
+          ciLogs: S.optional(__S(1376, __c43, 0)),
+          codeChecks: S.optional(__S(1376, __c43, 0)),
+          codeOwners: S.optional(__S(1376, __c43, 0)),
+          concurrentBuilds: S.optional(__S(1376, __c43, 0)),
+          connect: S.optional(__S(1376, __c43, 0)),
+          connectConfiguration: S.optional(__S(1376, __c43, 0)),
+          connectConfigurationLink: S.optional(__S(1376, __c43, 0)),
+          connectLogs: S.optional(__S(1376, __c43, 0)),
+          connexClient: S.optional(__S(1376, __c43, 0)),
+          connexClientProject: S.optional(__S(1376, __c43, 0)),
+          connexContact: S.optional(__S(1376, __c43, 0)),
+          connexInstallation: S.optional(__S(1376, __c43, 0)),
+          connexToken: S.optional(__S(1376, __c43, 0)),
+          cursorOriginInstallation: S.optional(__S(1376, __c43, 0)),
+          dataCacheBillingSettings: S.optional(__S(1376, __c43, 0)),
+          dataCacheNamespace: S.optional(__S(1376, __c43, 0)),
+          defaultDeploymentProtection: S.optional(__S(1457, __c45, 17)),
+          deployment: S.optional(__S(1376, __c43, 0)),
+          deploymentBuildLogs: S.optional(__S(1376, __c43, 0)),
+          deploymentCheck: S.optional(__S(1376, __c43, 0)),
+          deploymentCheckPreview: S.optional(__S(1376, __c43, 0)),
+          deploymentCheckReRunFromProductionBranch: S.optional(__S(1457, __c45, 17)),
+          deploymentPolicy: S.optional(__S(1376, __c43, 0)),
+          deploymentPreview: S.optional(__S(1376, __c43, 0)),
+          deploymentPrivate: S.optional(__S(1376, __c43, 0)),
+          deploymentProductionGit: S.optional(__S(1376, __c43, 0)),
+          deploymentPromote: S.optional(__S(1376, __c43, 0)),
+          deploymentProtectionException: S.optional(__S(1457, __c45, 17)),
+          deploymentRollback: S.optional(__S(1376, __c43, 0)),
+          deploymentV0: S.optional(__S(1376, __c43, 0)),
+          domain: S.optional(__S(1376, __c43, 0)),
+          domainAcceptDelegation: S.optional(__S(1376, __c43, 0)),
+          domainAuthCodes: S.optional(__S(1376, __c43, 0)),
+          domainCertificate: S.optional(__S(1376, __c43, 0)),
+          domainCheckConfig: S.optional(__S(1376, __c43, 0)),
+          domainMove: S.optional(__S(1376, __c43, 0)),
+          domainPurchase: S.optional(__S(1376, __c43, 0)),
+          domainRecord: S.optional(__S(1376, __c43, 0)),
+          domainTransferIn: S.optional(__S(1376, __c43, 0)),
+          drain: S.optional(__S(1376, __c43, 0)),
+          edgeCacheNamespace: S.optional(__S(1376, __c43, 0)),
+          edgeConfig: S.optional(__S(1376, __c43, 0)),
+          edgeConfigItem: S.optional(__S(1376, __c43, 0)),
+          edgeConfigSchema: S.optional(__S(1376, __c43, 0)),
+          edgeConfigToken: S.optional(__S(1376, __c43, 0)),
+          endpointVerification: S.optional(__S(1376, __c43, 0)),
+          environments: S.optional(__S(1376, __c43, 0)),
+          event: S.optional(__S(1376, __c43, 0)),
+          fileUpload: S.optional(__S(1376, __c43, 0)),
+          flagsExplorerSubscription: S.optional(__S(1376, __c43, 0)),
+          gitCredentialGrant: S.optional(__S(1376, __c43, 0)),
+          gitRepository: S.optional(__S(1376, __c43, 0)),
+          imageOptimizationNewPrice: S.optional(__S(1376, __c43, 0)),
+          integration: S.optional(__S(1376, __c43, 0)),
+          integrationAccount: S.optional(__S(1376, __c43, 0)),
+          integrationConfiguration: S.optional(__S(1376, __c43, 0)),
+          integrationConfigurationProjects: S.optional(__S(1457, __c45, 17)),
+          integrationConfigurationRole: S.optional(__S(1457, __c45, 17)),
+          integrationConfigurationTransfer: S.optional(__S(1457, __c45, 17)),
+          integrationDeploymentAction: S.optional(__S(1457, __c45, 17)),
+          integrationEvent: S.optional(__S(1376, __c43, 0)),
+          integrationLog: S.optional(__S(1376, __c43, 0)),
+          integrationPullRequest: S.optional(__S(1376, __c43, 0)),
+          integrationResource: S.optional(__S(1376, __c43, 0)),
+          integrationResourceData: S.optional(__S(1376, __c43, 0)),
+          integrationResourceReplCommand: S.optional(__S(1457, __c45, 17)),
+          integrationResourceSecrets: S.optional(__S(1376, __c43, 0)),
+          integrationSSOSession: S.optional(__S(1376, __c43, 0)),
+          integrationStoreTokenSet: S.optional(__S(1376, __c43, 0)),
+          integrationStrict: S.optional(__S(1376, __c43, 0)),
+          integrationVercelConfigurationOverride: S.optional(__S(1457, __c45, 17)),
+          ipBlocking: S.optional(__S(1376, __c43, 0)),
+          job: S.optional(__S(1376, __c43, 0)),
+          jobGlobal: S.optional(__S(1376, __c43, 0)),
+          kmsIssuer: S.optional(__S(1376, __c43, 0)),
+          kmsProjectGrant: S.optional(__S(1376, __c43, 0)),
+          logDrain: S.optional(__S(1376, __c43, 0)),
+          logs: S.optional(__S(1376, __c43, 0)),
+          logsPreset: S.optional(__S(1376, __c43, 0)),
+          marketplaceBillingData: S.optional(__S(1376, __c43, 0)),
+          marketplaceExperimentationEdgeConfigData: S.optional(__S(1457, __c45, 17)),
+          marketplaceExperimentationItem: S.optional(__S(1457, __c45, 17)),
+          marketplaceFlexCommit: S.optional(__S(1376, __c43, 0)),
+          marketplaceInstallationMember: S.optional(__S(1457, __c45, 17)),
+          marketplaceInvoice: S.optional(__S(1376, __c43, 0)),
+          marketplaceSettings: S.optional(__S(1376, __c43, 0)),
+          messageboard: S.optional(__S(1376, __c43, 0)),
+          messageboardSpace: S.optional(__S(1376, __c43, 0)),
+          messageboardTask: S.optional(__S(1376, __c43, 0)),
+          Monitoring: S.optional(__S(1376, __c43, 0)),
+          monitoringAlert: S.optional(__S(1376, __c43, 0)),
+          monitoringChart: S.optional(__S(1376, __c43, 0)),
+          monitoringQuery: S.optional(__S(1376, __c43, 0)),
+          monitoringSettings: S.optional(__S(1376, __c43, 0)),
+          notificationCustomerBudget: S.optional(__S(1376, __c43, 0)),
+          notificationDeploymentFailed: S.optional(__S(1457, __c45, 17)),
+          notificationDomainConfiguration: S.optional(__S(1457, __c45, 17)),
+          notificationDomainExpire: S.optional(__S(1376, __c43, 0)),
+          notificationDomainMoved: S.optional(__S(1376, __c43, 0)),
+          notificationDomainPurchase: S.optional(__S(1376, __c43, 0)),
+          notificationDomainRenewal: S.optional(__S(1376, __c43, 0)),
+          notificationDomainTransfer: S.optional(__S(1376, __c43, 0)),
+          notificationDomainUnverified: S.optional(__S(1457, __c45, 17)),
+          NotificationMonitoringAlert: S.optional(__S(1457, __c45, 17)),
+          notificationPaymentFailed: S.optional(__S(1376, __c43, 0)),
+          notificationPreferences: S.optional(__S(1376, __c43, 0)),
+          notificationStatementOfReasons: S.optional(__S(1457, __c45, 17)),
+          notificationUsageAlert: S.optional(__S(1376, __c43, 0)),
+          oauth2Application: S.optional(__S(1376, __c43, 0)),
+          oauth2Connection: S.optional(__S(1376, __c43, 0)),
+          observabilityConfiguration: S.optional(__S(1376, __c43, 0)),
+          observabilityData: S.optional(__S(1376, __c43, 0)),
+          observabilityFunnel: S.optional(__S(1376, __c43, 0)),
+          observabilityNotebook: S.optional(__S(1376, __c43, 0)),
+          oidcFederationPolicy: S.optional(__S(1376, __c43, 0)),
+          onDemandBuild: S.optional(__S(1376, __c43, 0)),
+          onDemandConcurrency: S.optional(__S(1376, __c43, 0)),
+          openTelemetryEndpoint: S.optional(__S(1376, __c43, 0)),
+          optionsAllowlist: S.optional(__S(1376, __c43, 0)),
+          organization: S.optional(__S(1376, __c43, 0)),
+          organizationDomain: S.optional(__S(1376, __c43, 0)),
+          organizationTeam: S.optional(__S(1376, __c43, 0)),
+          ownEvent: S.optional(__S(1376, __c43, 0)),
+          pageIntegrity: S.optional(__S(1376, __c43, 0)),
+          passwordProtection: S.optional(__S(1376, __c43, 0)),
+          passwordProtectionInvoiceItem: S.optional(__S(1457, __c45, 17)),
+          paymentMethod: S.optional(__S(1376, __c43, 0)),
+          permissions: S.optional(__S(1376, __c43, 0)),
+          postgres: S.optional(__S(1376, __c43, 0)),
+          postgresStoreTokenSet: S.optional(__S(1376, __c43, 0)),
+          previewDeploymentSuffix: S.optional(__S(1376, __c43, 0)),
+          privateCloudAccount: S.optional(__S(1376, __c43, 0)),
+          privateLinkEndpoint: S.optional(__S(1376, __c43, 0)),
+          productionAliasProtectionBypass: S.optional(__S(1457, __c45, 17)),
+          productionShareableLink: S.optional(__S(1376, __c43, 0)),
+          project: S.optional(__S(1376, __c43, 0)),
+          projectAccessGroup: S.optional(__S(1376, __c43, 0)),
+          projectAnalyticsSampling: S.optional(__S(1376, __c43, 0)),
+          projectAnalyticsUsage: S.optional(__S(1376, __c43, 0)),
+          projectCheck: S.optional(__S(1376, __c43, 0)),
+          projectCheckRun: S.optional(__S(1376, __c43, 0)),
+          projectDeploymentExpiration: S.optional(__S(1457, __c45, 17)),
+          projectDeploymentHook: S.optional(__S(1376, __c43, 0)),
+          projectDeploymentProtectionStrict: S.optional(__S(1457, __c45, 17)),
+          projectDomain: S.optional(__S(1376, __c43, 0)),
+          projectDomainCheckConfig: S.optional(__S(1376, __c43, 0)),
+          projectDomainMove: S.optional(__S(1376, __c43, 0)),
+          projectDomainVerify: S.optional(__S(1376, __c43, 0)),
+          projectEnvVars: S.optional(__S(1376, __c43, 0)),
+          projectEnvVarsProduction: S.optional(__S(1376, __c43, 0)),
+          projectEnvVarsUnownedByIntegration: S.optional(__S(1457, __c45, 17)),
+          projectEvent: S.optional(__S(1376, __c43, 0)),
+          projectFlags: S.optional(__S(1376, __c43, 0)),
+          projectFlagsProduction: S.optional(__S(1376, __c43, 0)),
+          projectFlagsSdkKey: S.optional(__S(1376, __c43, 0)),
+          projectFromV0: S.optional(__S(1376, __c43, 0)),
+          projectId: S.optional(__S(1376, __c43, 0)),
+          projectIntegrationConfiguration: S.optional(__S(1457, __c45, 17)),
+          projectLink: S.optional(__S(1376, __c43, 0)),
+          projectMember: S.optional(__S(1376, __c43, 0)),
+          projectMonitoring: S.optional(__S(1376, __c43, 0)),
+          projectOIDCToken: S.optional(__S(1376, __c43, 0)),
+          projectPermissions: S.optional(__S(1376, __c43, 0)),
+          projectProductionBranch: S.optional(__S(1376, __c43, 0)),
+          projectProtectionBypass: S.optional(__S(1376, __c43, 0)),
+          projectRollingRelease: S.optional(__S(1376, __c43, 0)),
+          projectRoutes: S.optional(__S(1376, __c43, 0)),
+          projectSetting: S.optional(__S(1376, __c43, 0)),
+          projectSupportCase: S.optional(__S(1376, __c43, 0)),
+          projectSupportCaseComment: S.optional(__S(1376, __c43, 0)),
+          projectTier: S.optional(__S(1376, __c43, 0)),
+          projectTransfer: S.optional(__S(1376, __c43, 0)),
+          projectTransferIn: S.optional(__S(1376, __c43, 0)),
+          projectTransferOut: S.optional(__S(1376, __c43, 0)),
+          projectTransferRequest: S.optional(__S(1376, __c43, 0)),
+          projectUsage: S.optional(__S(1376, __c43, 0)),
+          proTrialOnboarding: S.optional(__S(1376, __c43, 0)),
+          rateLimit: S.optional(__S(1376, __c43, 0)),
+          redis: S.optional(__S(1376, __c43, 0)),
+          redisStoreTokenSet: S.optional(__S(1376, __c43, 0)),
+          remoteCaching: S.optional(__S(1376, __c43, 0)),
+          repository: S.optional(__S(1376, __c43, 0)),
+          samlConfig: S.optional(__S(1376, __c43, 0)),
+          schedule: S.optional(__S(1376, __c43, 0)),
+          seawallConfig: S.optional(__S(1376, __c43, 0)),
+          secret: S.optional(__S(1376, __c43, 0)),
+          securityConfig: S.optional(__S(1376, __c43, 0)),
+          securityPlusConfiguration: S.optional(__S(1376, __c43, 0)),
+          sensitiveEnvironmentVariablePolicy: S.optional(__S(1457, __c45, 17)),
+          setting: S.optional(__S(1376, __c43, 0)),
+          shareableLink: S.optional(__S(1376, __c43, 0)),
+          shareableLinkStrict: S.optional(__S(1376, __c43, 0)),
+          sharedEnvVarConnection: S.optional(__S(1376, __c43, 0)),
+          sharedEnvVars: S.optional(__S(1376, __c43, 0)),
+          sharedEnvVarsProduction: S.optional(__S(1376, __c43, 0)),
+          skewProtection: S.optional(__S(1376, __c43, 0)),
+          space: S.optional(__S(1376, __c43, 0)),
+          spaceRun: S.optional(__S(1376, __c43, 0)),
+          storeIsLocked: S.optional(__S(1376, __c43, 0)),
+          storeTokenSetSensitive: S.optional(__S(1376, __c43, 0)),
+          storeTransfer: S.optional(__S(1376, __c43, 0)),
+          supportCase: S.optional(__S(1376, __c43, 0)),
+          supportCaseComment: S.optional(__S(1376, __c43, 0)),
+          team: S.optional(__S(1376, __c43, 0)),
+          teamAccessRequest: S.optional(__S(1376, __c43, 0)),
+          teamFellowMembership: S.optional(__S(1376, __c43, 0)),
+          teamGitExclusivity: S.optional(__S(1376, __c43, 0)),
+          teamInvite: S.optional(__S(1376, __c43, 0)),
+          teamInviteCode: S.optional(__S(1376, __c43, 0)),
+          teamInviteLink: S.optional(__S(1376, __c43, 0)),
+          teamJoin: S.optional(__S(1376, __c43, 0)),
+          teamMemberMfaStatus: S.optional(__S(1376, __c43, 0)),
+          teamMicrofrontends: S.optional(__S(1376, __c43, 0)),
+          teamOwnMembership: S.optional(__S(1376, __c43, 0)),
+          teamOwnMembershipDisconnectSAML: S.optional(__S(1457, __c45, 17)),
+          teamSudo: S.optional(__S(1376, __c43, 0)),
+          teamTokenInvalidation: S.optional(__S(1376, __c43, 0)),
+          token: S.optional(__S(1376, __c43, 0)),
+          toolbarComment: S.optional(__S(1376, __c43, 0)),
+          trustedIps: S.optional(__S(1376, __c43, 0)),
+          trustedSources: S.optional(__S(1376, __c43, 0)),
+          usage: S.optional(__S(1376, __c43, 0)),
+          usageCycle: S.optional(__S(1376, __c43, 0)),
+          user: S.optional(__S(1376, __c43, 0)),
+          userConnection: S.optional(__S(1376, __c43, 0)),
+          userMfaConfiguration: S.optional(__S(1376, __c43, 0)),
+          userPreference: S.optional(__S(1376, __c43, 0)),
+          userSudo: S.optional(__S(1376, __c43, 0)),
+          v0Chat: S.optional(__S(1376, __c43, 0)),
+          vcrRepository: S.optional(__S(1376, __c43, 0)),
+          vercelAppInstallation: S.optional(__S(1376, __c43, 0)),
+          vercelAppInstallationRequest: S.optional(__S(1457, __c45, 17)),
+          vercelAuth: S.optional(__S(1376, __c43, 0)),
+          vercelRun: S.optional(__S(1376, __c43, 0)),
+          vpcPeeringConnection: S.optional(__S(1376, __c43, 0)),
+          webAnalytics: S.optional(__S(1376, __c43, 0)),
+          webAnalyticsPlan: S.optional(__S(1376, __c43, 0)),
+          webAuthn: S.optional(__S(1376, __c43, 0)),
+          webhook: S.optional(__S(1376, __c43, 0)),
+          webhook_event: S.optional(__S(1376, __c43, 0).pipe(T.Body("webhook-event"))),
+          workflowRunData: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateProjectResponsePermissions",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

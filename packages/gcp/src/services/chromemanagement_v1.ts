@@ -3314,8 +3314,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(1888, __c59, 0) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3334,14 +3334,14 @@ export const checkEnablementStatusCustomersEnterpriseSecurityInsights: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3,
-    __c0,
-    3,
+    2336,
+    __c73,
+    0,
   ) as any as S.Schema<CheckEnablementStatusCustomersEnterpriseSecurityInsightsRequest>,
   output: __S(
-    4,
-    __c0,
-    4,
+    2337,
+    __c73,
+    1,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1CheckEnablementStatusResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3362,11 +3362,15 @@ export const claimCustomersCertificateProvisioningProcesses: API.OperationMethod
   ClaimCustomersCertificateProvisioningProcessesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ClaimCustomersCertificateProvisioningProcessesRequest>,
+  input: __S(
+    2593,
+    __c81,
+    1,
+  ) as any as S.Schema<ClaimCustomersCertificateProvisioningProcessesRequest>,
   output: __S(
-    7,
-    __c0,
-    7,
+    2594,
+    __c81,
+    2,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3385,8 +3389,12 @@ export const countActiveDevicesCustomersReports: API.OperationMethod<
   CountActiveDevicesCustomersReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CountActiveDevicesCustomersReportsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleChromeManagementV1CountActiveDevicesResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<CountActiveDevicesCustomersReportsRequest>,
+  output: __S(
+    2625,
+    __c82,
+    1,
+  ) as any as S.Schema<GoogleChromeManagementV1CountActiveDevicesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3405,11 +3413,11 @@ export const countChromeAppRequestsCustomersApps: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1CountChromeAppRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CountChromeAppRequestsCustomersAppsRequest>,
+  input: __S(2656, __c83, 0) as any as S.Schema<CountChromeAppRequestsCustomersAppsRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    2659,
+    __c83,
+    3,
   ) as any as S.Schema<GoogleChromeManagementV1CountChromeAppRequestsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3430,14 +3438,14 @@ export const countChromeBrowsersNeedingAttentionCustomersReports: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    14,
-    __c1,
-    6,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<CountChromeBrowsersNeedingAttentionCustomersReportsRequest>,
   output: __S(
-    15,
-    __c1,
-    7,
+    1,
+    __c0,
+    1,
   ) as any as S.Schema<GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3456,11 +3464,11 @@ export const countChromeCrashEventsCustomersReports: API.OperationMethod<
   CountChromeCrashEventsCustomersReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CountChromeCrashEventsCustomersReportsRequest>,
+  input: __S(32, __c1, 0) as any as S.Schema<CountChromeCrashEventsCustomersReportsRequest>,
   output: __S(
-    20,
-    __c2,
-    4,
+    35,
+    __c1,
+    3,
   ) as any as S.Schema<GoogleChromeManagementV1CountChromeCrashEventsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3480,14 +3488,14 @@ export const countChromeDevicesReachingAutoExpirationDateCustomersReports: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21,
-    __c2,
-    5,
-  ) as any as S.Schema<CountChromeDevicesReachingAutoExpirationDateCustomersReportsRequest>,
-  output: __S(
-    24,
+    96,
     __c3,
     0,
+  ) as any as S.Schema<CountChromeDevicesReachingAutoExpirationDateCustomersReportsRequest>,
+  output: __S(
+    99,
+    __c3,
+    3,
   ) as any as S.Schema<GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3507,14 +3515,14 @@ export const countChromeDevicesThatNeedAttentionCustomersReports: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    25,
-    __c3,
-    1,
+    128,
+    __c4,
+    0,
   ) as any as S.Schema<CountChromeDevicesThatNeedAttentionCustomersReportsRequest>,
   output: __S(
-    26,
-    __c3,
-    2,
+    129,
+    __c4,
+    1,
   ) as any as S.Schema<GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3534,14 +3542,14 @@ export const countChromeHardwareFleetDevicesCustomersReports: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    27,
-    __c3,
-    3,
+    160,
+    __c5,
+    0,
   ) as any as S.Schema<CountChromeHardwareFleetDevicesCustomersReportsRequest>,
   output: __S(
-    30,
-    __c3,
-    6,
+    163,
+    __c5,
+    3,
   ) as any as S.Schema<GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3561,11 +3569,11 @@ export const countChromeProfileVersionsCustomersReports: API.PaginatedOperationM
   GcpOpContext,
   GoogleChromeManagementV1CountChromeProfileVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CountChromeProfileVersionsCustomersReportsRequest>,
+  input: __S(192, __c6, 0) as any as S.Schema<CountChromeProfileVersionsCustomersReportsRequest>,
   output: __S(
-    34,
-    __c4,
-    2,
+    193,
+    __c6,
+    1,
   ) as any as S.Schema<GoogleChromeManagementV1CountChromeProfileVersionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3586,8 +3594,8 @@ export const countChromeVersionsCustomersReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1CountChromeVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CountChromeVersionsCustomersReportsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GoogleChromeManagementV1CountChromeVersionsResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<CountChromeVersionsCustomersReportsRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<GoogleChromeManagementV1CountChromeVersionsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3606,11 +3614,11 @@ export const countDevicesPerBootTypeCustomersReports: API.OperationMethod<
   CountDevicesPerBootTypeCustomersReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CountDevicesPerBootTypeCustomersReportsRequest>,
+  input: __S(288, __c9, 0) as any as S.Schema<CountDevicesPerBootTypeCustomersReportsRequest>,
   output: __S(
-    38,
-    __c4,
-    6,
+    289,
+    __c9,
+    1,
   ) as any as S.Schema<GoogleChromeManagementV1CountDevicesPerBootTypeResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3629,11 +3637,15 @@ export const countDevicesPerReleaseChannelCustomersReports: API.OperationMethod<
   CountDevicesPerReleaseChannelCustomersReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CountDevicesPerReleaseChannelCustomersReportsRequest>,
-  output: __S(
-    40,
-    __c5,
+  input: __S(
+    320,
+    __c10,
     0,
+  ) as any as S.Schema<CountDevicesPerReleaseChannelCustomersReportsRequest>,
+  output: __S(
+    321,
+    __c10,
+    1,
   ) as any as S.Schema<GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3653,8 +3665,8 @@ export const countInstalledAppsCustomersReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1CountInstalledAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CountInstalledAppsCustomersReportsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GoogleChromeManagementV1CountInstalledAppsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<CountInstalledAppsCustomersReportsRequest>,
+  output: __S(359, __c11, 7) as any as S.Schema<GoogleChromeManagementV1CountInstalledAppsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3674,11 +3686,11 @@ export const countPrintJobsByPrinterCustomersReports: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleChromeManagementV1CountPrintJobsByPrinterResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CountPrintJobsByPrinterCustomersReportsRequest>,
+  input: __S(416, __c13, 0) as any as S.Schema<CountPrintJobsByPrinterCustomersReportsRequest>,
   output: __S(
-    53,
-    __c6,
-    5,
+    419,
+    __c13,
+    3,
   ) as any as S.Schema<GoogleChromeManagementV1CountPrintJobsByPrinterResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3699,8 +3711,12 @@ export const countPrintJobsByUserCustomersReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1CountPrintJobsByUserResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CountPrintJobsByUserCustomersReportsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GoogleChromeManagementV1CountPrintJobsByUserResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<CountPrintJobsByUserCustomersReportsRequest>,
+  output: __S(
+    451,
+    __c14,
+    3,
+  ) as any as S.Schema<GoogleChromeManagementV1CountPrintJobsByUserResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3721,8 +3737,8 @@ export const createCustomersConnectorConfigs: API.OperationMethod<
   CreateCustomersConnectorConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateCustomersConnectorConfigsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfig>,
+  input: __S(480, __c15, 0) as any as S.Schema<CreateCustomersConnectorConfigsRequest>,
+  output: __S(559, __c17, 15) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3742,11 +3758,11 @@ export const createCustomersProfilesCommands: API.OperationMethod<
   CreateCustomersProfilesCommandsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<CreateCustomersProfilesCommandsRequest>,
+  input: __S(576, __c18, 0) as any as S.Schema<CreateCustomersProfilesCommandsRequest>,
   output: __S(
-    78,
-    __c9,
-    6,
+    641,
+    __c20,
+    1,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3767,8 +3783,12 @@ export const createCustomersTelemetryNotificationConfigs: API.OperationMethod<
   CreateCustomersTelemetryNotificationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<CreateCustomersTelemetryNotificationConfigsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GoogleChromeManagementV1TelemetryNotificationConfig>,
+  input: __S(672, __c21, 0) as any as S.Schema<CreateCustomersTelemetryNotificationConfigsRequest>,
+  output: __S(
+    706,
+    __c22,
+    2,
+  ) as any as S.Schema<GoogleChromeManagementV1TelemetryNotificationConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3788,8 +3808,8 @@ export const deleteCustomersConnectorConfigs: API.OperationMethod<
   DeleteCustomersConnectorConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteCustomersConnectorConfigsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteCustomersConnectorConfigsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3809,8 +3829,8 @@ export const deleteCustomersProfiles: API.OperationMethod<
   DeleteCustomersProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeleteCustomersProfilesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteCustomersProfilesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3830,8 +3850,8 @@ export const deleteCustomersTelemetryNotificationConfigs: API.OperationMethod<
   DeleteCustomersTelemetryNotificationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<DeleteCustomersTelemetryNotificationConfigsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeleteCustomersTelemetryNotificationConfigsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3851,8 +3871,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<DeleteOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteOperationsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3872,11 +3892,11 @@ export const disableCustomersEnterpriseSecurityInsights: API.OperationMethod<
   DisableCustomersEnterpriseSecurityInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DisableCustomersEnterpriseSecurityInsightsRequest>,
+  input: __S(864, __c27, 0) as any as S.Schema<DisableCustomersEnterpriseSecurityInsightsRequest>,
   output: __S(
-    89,
-    __c11,
-    1,
+    896,
+    __c28,
+    0,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1DisableInsightsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3897,11 +3917,11 @@ export const enableCustomersEnterpriseSecurityInsights: API.OperationMethod<
   EnableCustomersEnterpriseSecurityInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<EnableCustomersEnterpriseSecurityInsightsRequest>,
+  input: __S(929, __c29, 1) as any as S.Schema<EnableCustomersEnterpriseSecurityInsightsRequest>,
   output: __S(
-    89,
-    __c11,
-    1,
+    896,
+    __c28,
+    0,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1EnableInsightsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3921,8 +3941,8 @@ export const enumeratePrintJobsCustomersReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1EnumeratePrintJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<EnumeratePrintJobsCustomersReportsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<GoogleChromeManagementV1EnumeratePrintJobsResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<EnumeratePrintJobsCustomersReportsRequest>,
+  output: __S(963, __c30, 3) as any as S.Schema<GoogleChromeManagementV1EnumeratePrintJobsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3942,10 +3962,10 @@ export const fetchDevicesRequestingExtensionCustomersApps: API.PaginatedOperatio
   GcpOpContext,
   GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<FetchDevicesRequestingExtensionCustomersAppsRequest>,
+  input: __S(992, __c31, 0) as any as S.Schema<FetchDevicesRequestingExtensionCustomersAppsRequest>,
   output: __S(
-    99,
-    __c12,
+    995,
+    __c31,
     3,
   ) as any as S.Schema<GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
@@ -3967,11 +3987,11 @@ export const fetchUsersRequestingExtensionCustomersApps: API.PaginatedOperationM
   GcpOpContext,
   GoogleChromeManagementV1FetchUsersRequestingExtensionResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<FetchUsersRequestingExtensionCustomersAppsRequest>,
+  input: __S(1024, __c32, 0) as any as S.Schema<FetchUsersRequestingExtensionCustomersAppsRequest>,
   output: __S(
-    103,
-    __c12,
-    7,
+    1027,
+    __c32,
+    3,
   ) as any as S.Schema<GoogleChromeManagementV1FetchUsersRequestingExtensionResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3992,10 +4012,10 @@ export const findInstalledAppDevicesCustomersReports: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleChromeManagementV1FindInstalledAppDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<FindInstalledAppDevicesCustomersReportsRequest>,
+  input: __S(1056, __c33, 0) as any as S.Schema<FindInstalledAppDevicesCustomersReportsRequest>,
   output: __S(
-    107,
-    __c13,
+    1059,
+    __c33,
     3,
   ) as any as S.Schema<GoogleChromeManagementV1FindInstalledAppDevicesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
@@ -4017,11 +4037,11 @@ export const findInstalledAppProfilesCustomersReports: API.PaginatedOperationMet
   GcpOpContext,
   GoogleChromeManagementV1FindInstalledAppProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<FindInstalledAppProfilesCustomersReportsRequest>,
+  input: __S(1088, __c34, 0) as any as S.Schema<FindInstalledAppProfilesCustomersReportsRequest>,
   output: __S(
-    111,
-    __c13,
-    7,
+    1091,
+    __c34,
+    3,
   ) as any as S.Schema<GoogleChromeManagementV1FindInstalledAppProfilesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4038,10 +4058,10 @@ export const findSaasUsageBrowsersCustomersReports: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleChromeManagementV1FindSaasUsageBrowsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<FindSaasUsageBrowsersCustomersReportsRequest>,
+  input: __S(1120, __c35, 0) as any as S.Schema<FindSaasUsageBrowsersCustomersReportsRequest>,
   output: __S(
-    115,
-    __c14,
+    1123,
+    __c35,
     3,
   ) as any as S.Schema<GoogleChromeManagementV1FindSaasUsageBrowsersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -4059,11 +4079,11 @@ export const findSaasUsageCustomersReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1FindSaasUsageReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<FindSaasUsageCustomersReportsRequest>,
+  input: __S(1152, __c36, 0) as any as S.Schema<FindSaasUsageCustomersReportsRequest>,
   output: __S(
-    120,
-    __c15,
-    0,
+    1156,
+    __c36,
+    4,
   ) as any as S.Schema<GoogleChromeManagementV1FindSaasUsageReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4080,11 +4100,11 @@ export const findSaasUsageProfilesCustomersReports: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleChromeManagementV1FindSaasUsageProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<FindSaasUsageProfilesCustomersReportsRequest>,
+  input: __S(1184, __c37, 0) as any as S.Schema<FindSaasUsageProfilesCustomersReportsRequest>,
   output: __S(
-    124,
-    __c15,
-    4,
+    1187,
+    __c37,
+    3,
   ) as any as S.Schema<GoogleChromeManagementV1FindSaasUsageProfilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4100,8 +4120,8 @@ export const getCustomersAppsAndroid: API.OperationMethod<
   GetCustomersAppsAndroidError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetCustomersAppsAndroidRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GoogleChromeManagementV1AppDetails>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetCustomersAppsAndroidRequest>,
+  output: __S(1256, __c39, 8) as any as S.Schema<GoogleChromeManagementV1AppDetails>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4115,8 +4135,8 @@ export const getCustomersAppsChrome: API.OperationMethod<
   GetCustomersAppsChromeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<GetCustomersAppsChromeRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GoogleChromeManagementV1AppDetails>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetCustomersAppsChromeRequest>,
+  output: __S(1256, __c39, 8) as any as S.Schema<GoogleChromeManagementV1AppDetails>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4130,8 +4150,8 @@ export const getCustomersAppsWeb: API.OperationMethod<
   GetCustomersAppsWebError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetCustomersAppsWebRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GoogleChromeManagementV1AppDetails>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetCustomersAppsWebRequest>,
+  output: __S(1256, __c39, 8) as any as S.Schema<GoogleChromeManagementV1AppDetails>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4149,11 +4169,15 @@ export const getCustomersCertificateProvisioningProcesses: API.OperationMethod<
   GetCustomersCertificateProvisioningProcessesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetCustomersCertificateProvisioningProcessesRequest>,
+  input: __S(
+    1376,
+    __c43,
+    0,
+  ) as any as S.Schema<GetCustomersCertificateProvisioningProcessesRequest>,
   output: __S(
-    147,
-    __c18,
-    3,
+    1384,
+    __c43,
+    8,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1CertificateProvisioningProcess>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4173,11 +4197,11 @@ export const getCustomersCertificateProvisioningProcessesOperations: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    148,
-    __c18,
-    4,
+    1408,
+    __c44,
+    0,
   ) as any as S.Schema<GetCustomersCertificateProvisioningProcessesOperationsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1440, __c45, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4195,8 +4219,8 @@ export const getCustomersConnectorConfigs: API.OperationMethod<
   GetCustomersConnectorConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetCustomersConnectorConfigsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfig>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetCustomersConnectorConfigsRequest>,
+  output: __S(559, __c17, 15) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfig>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4210,11 +4234,11 @@ export const getCustomersProfiles: API.OperationMethod<
   GetCustomersProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetCustomersProfilesRequest>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetCustomersProfilesRequest>,
   output: __S(
-    163,
-    __c20,
-    3,
+    1547,
+    __c48,
+    11,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfile>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4233,11 +4257,11 @@ export const getCustomersProfilesCommands: API.OperationMethod<
   GetCustomersProfilesCommandsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetCustomersProfilesCommandsRequest>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetCustomersProfilesCommandsRequest>,
   output: __S(
-    78,
-    __c9,
-    6,
+    641,
+    __c20,
+    1,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4256,8 +4280,8 @@ export const getCustomersTelemetryDevices: API.OperationMethod<
   GetCustomersTelemetryDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<GetCustomersTelemetryDevicesRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<GoogleChromeManagementV1TelemetryDevice>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetCustomersTelemetryDevicesRequest>,
+  output: __S(1749, __c54, 21) as any as S.Schema<GoogleChromeManagementV1TelemetryDevice>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4275,8 +4299,8 @@ export const getCustomersTelemetryUsers: API.OperationMethod<
   GetCustomersTelemetryUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<GetCustomersTelemetryUsersRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<GoogleChromeManagementV1TelemetryUser>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetCustomersTelemetryUsersRequest>,
+  output: __S(1828, __c57, 4) as any as S.Schema<GoogleChromeManagementV1TelemetryUser>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4295,11 +4319,11 @@ export const listCustomersConnectorConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementVersionsV1ListConnectorConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<ListCustomersConnectorConfigsRequest>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListCustomersConnectorConfigsRequest>,
   output: __S(
-    241,
-    __c30,
-    1,
+    1858,
+    __c58,
+    2,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1ListConnectorConfigsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4316,11 +4340,11 @@ export const listCustomersProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<ListCustomersProfilesRequest>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListCustomersProfilesRequest>,
   output: __S(
-    244,
-    __c30,
-    4,
+    1986,
+    __c62,
+    2,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4341,11 +4365,11 @@ export const listCustomersProfilesCommands: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<ListCustomersProfilesCommandsRequest>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListCustomersProfilesCommandsRequest>,
   output: __S(
-    247,
-    __c30,
-    7,
+    2018,
+    __c63,
+    2,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4366,10 +4390,10 @@ export const listCustomersTelemetryDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1ListTelemetryDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<ListCustomersTelemetryDevicesRequest>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListCustomersTelemetryDevicesRequest>,
   output: __S(
-    250,
-    __c31,
+    2050,
+    __c64,
     2,
   ) as any as S.Schema<GoogleChromeManagementV1ListTelemetryDevicesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
@@ -4391,11 +4415,11 @@ export const listCustomersTelemetryEvents: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1ListTelemetryEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<ListCustomersTelemetryEventsRequest>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListCustomersTelemetryEventsRequest>,
   output: __S(
-    267,
-    __c33,
-    3,
+    2096,
+    __c65,
+    16,
   ) as any as S.Schema<GoogleChromeManagementV1ListTelemetryEventsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4416,11 +4440,11 @@ export const listCustomersTelemetryNotificationConfigs: API.PaginatedOperationMe
   GcpOpContext,
   GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<ListCustomersTelemetryNotificationConfigsRequest>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListCustomersTelemetryNotificationConfigsRequest>,
   output: __S(
-    270,
-    __c33,
-    6,
+    2114,
+    __c66,
+    2,
   ) as any as S.Schema<GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4441,8 +4465,12 @@ export const listCustomersTelemetryUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleChromeManagementV1ListTelemetryUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<ListCustomersTelemetryUsersRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<GoogleChromeManagementV1ListTelemetryUsersResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListCustomersTelemetryUsersRequest>,
+  output: __S(
+    2146,
+    __c67,
+    2,
+  ) as any as S.Schema<GoogleChromeManagementV1ListTelemetryUsersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4458,8 +4486,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4480,11 +4508,11 @@ export const moveCustomersThirdPartyProfileUsers: API.OperationMethod<
   MoveCustomersThirdPartyProfileUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<MoveCustomersThirdPartyProfileUsersRequest>,
+  input: __S(2209, __c69, 1) as any as S.Schema<MoveCustomersThirdPartyProfileUsersRequest>,
   output: __S(
-    280,
-    __c35,
-    0,
+    2211,
+    __c69,
+    3,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4505,8 +4533,8 @@ export const patchCustomersConnectorConfigs: API.OperationMethod<
   PatchCustomersConnectorConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<PatchCustomersConnectorConfigsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfig>,
+  input: __S(2240, __c70, 0) as any as S.Schema<PatchCustomersConnectorConfigsRequest>,
+  output: __S(559, __c17, 15) as any as S.Schema<GoogleChromeManagementVersionsV1ConnectorConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4526,14 +4554,14 @@ export const queryContentTransfersBreakdownsCustomersEnterpriseSecurityInsights:
   GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    282,
-    __c35,
-    2,
+    2272,
+    __c71,
+    0,
   ) as any as S.Schema<QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsRequest>,
   output: __S(
-    286,
-    __c35,
-    6,
+    2275,
+    __c71,
+    3,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4554,13 +4582,13 @@ export const queryContentTransfersCustomersEnterpriseSecurityInsights: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    287,
-    __c35,
-    7,
+    2368,
+    __c74,
+    0,
   ) as any as S.Schema<QueryContentTransfersCustomersEnterpriseSecurityInsightsRequest>,
   output: __S(
-    289,
-    __c36,
+    2369,
+    __c74,
     1,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1QueryContentTransfersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
@@ -4582,14 +4610,14 @@ export const queryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsights: API.Pa
   GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    290,
-    __c36,
-    2,
+    2432,
+    __c76,
+    0,
   ) as any as S.Schema<QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsRequest>,
   output: __S(
-    293,
-    __c36,
-    5,
+    2435,
+    __c76,
+    3,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4610,14 +4638,14 @@ export const queryUrlVisitsCustomersEnterpriseSecurityInsights: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    294,
-    __c36,
-    6,
+    2464,
+    __c77,
+    0,
   ) as any as S.Schema<QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest>,
   output: __S(
-    295,
-    __c36,
-    7,
+    2465,
+    __c77,
+    1,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1QueryUrlVisitsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4639,11 +4667,15 @@ export const setFailureCustomersCertificateProvisioningProcesses: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    297,
-    __c37,
+    2497,
+    __c78,
     1,
   ) as any as S.Schema<SetFailureCustomersCertificateProvisioningProcessesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<GoogleChromeManagementVersionsV1SetFailureResponse>,
+  output: __S(
+    1952,
+    __c61,
+    0,
+  ) as any as S.Schema<GoogleChromeManagementVersionsV1SetFailureResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4664,11 +4696,11 @@ export const signDataCustomersCertificateProvisioningProcesses: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    299,
-    __c37,
-    3,
+    2529,
+    __c79,
+    1,
   ) as any as S.Schema<SignDataCustomersCertificateProvisioningProcessesRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(1440, __c45, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4689,14 +4721,14 @@ export const uploadCertificateCustomersCertificateProvisioningProcesses: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    301,
-    __c37,
-    5,
+    2561,
+    __c80,
+    1,
   ) as any as S.Schema<UploadCertificateCustomersCertificateProvisioningProcessesRequest>,
   output: __S(
-    302,
-    __c37,
-    6,
+    2562,
+    __c80,
+    2,
   ) as any as S.Schema<GoogleChromeManagementVersionsV1UploadCertificateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
@@ -4707,150 +4739,6 @@ export const uploadCertificateCustomersCertificateProvisioningProcesses: API.Ope
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleLongrunningCancelOperationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://chromemanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CancelOperationsRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleProtobufEmpty",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customer: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+customer}/enterprise/securityInsights:checkEnablementStatus",
-            baseUrl: "https://chromemanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckEnablementStatusCustomersEnterpriseSecurityInsightsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          insightsState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1CheckEnablementStatusResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          callerInstanceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:claim",
-            baseUrl: "https://chromemanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClaimCustomersCertificateProvisioningProcessesRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          "date.month": S.optional(S.Number.pipe(T.Query())),
-          "date.day": S.optional(S.Number.pipe(T.Query())),
-          customer: S.String.pipe(T.Label()),
-          "date.year": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+customer}/reports:countActiveDevices",
-            baseUrl: "https://chromemanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CountActiveDevicesCustomersReportsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          thirtyDaysCount: S.optional(S.String),
-          sevenDaysCount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementV1CountActiveDevicesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          customer: S.String.pipe(T.Label()),
-          orgUnitId: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+customer}/apps:countChromeAppRequests",
-            baseUrl: "https://chromemanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CountChromeAppRequestsCustomersAppsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          appDetails: S.optional(S.String),
-          iconUri: S.optional(S.String),
-          appId: S.optional(S.String),
-          detailUri: S.optional(S.String),
-          requestCount: S.optional(S.String),
-          latestRequestTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementV1ChromeAppRequest",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          requestedApps: S.optional(__S(12, __c1, 4)),
-          nextPageToken: S.optional(S.String),
-          totalSize: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementV1CountChromeAppRequestsResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -4865,7 +4753,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CountChromeBrowsersNeedingAttentionCustomersReportsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recentlyEnrolledCount: S.optional(S.String),
@@ -4877,7 +4765,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4899,32 +4787,40 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          year: S.optional(S.Number),
-          month: S.optional(S.Number),
-          day: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeDate" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           browserVersion: S.optional(S.String),
-          date: S.optional(__S(17, __c2, 1)),
+          date: S.optional(__S(64, __c2, 0)),
           count: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount",
       });
+    case 2:
+      return S.Array(__S(33, __c1, 1));
     case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          crashEventCounts: S.optional(__S(19, __c2, 3)),
+          crashEventCounts: S.optional(__S(34, __c1, 2)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountChromeCrashEventsResponse",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          year: S.optional(S.Number),
+          month: S.optional(S.Number),
+          day: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleTypeDate" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgUnitId: S.optional(S.String.pipe(T.Query())),
@@ -4941,7 +4837,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CountChromeDevicesReachingAutoExpirationDateCustomersReportsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expired: S.optional(S.Boolean),
@@ -4953,21 +4849,21 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1DeviceAueCountReport",
       });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          deviceAueCountReports: S.optional(__S(23, __c2, 7)),
+          deviceAueCountReports: S.optional(__S(98, __c3, 2)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgUnitId: S.optional(S.String.pipe(T.Query())),
@@ -4983,7 +4879,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CountChromeDevicesThatNeedAttentionCustomersReportsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           noRecentUserActivityCount: S.optional(S.String),
@@ -4995,7 +4891,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -5011,7 +4911,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CountChromeHardwareFleetDevicesCustomersReportsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
@@ -5020,20 +4920,24 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1DeviceHardwareCountReport",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          memoryReports: S.optional(__S(29, __c3, 5)),
-          modelReports: S.optional(__S(29, __c3, 5)),
-          storageReports: S.optional(__S(29, __c3, 5)),
-          cpuReports: S.optional(__S(29, __c3, 5)),
+          memoryReports: S.optional(__S(162, __c5, 2)),
+          modelReports: S.optional(__S(162, __c5, 2)),
+          storageReports: S.optional(__S(162, __c5, 2)),
+          cpuReports: S.optional(__S(162, __c5, 2)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -5051,9 +4955,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CountChromeProfileVersionsCustomersReportsRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          totalSize: S.optional(S.Number),
+          profileBrowserVersions: S.optional(__S(225, __c7, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementV1CountChromeProfileVersionsResponse",
+      });
   }
 }
-function __c4(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5068,18 +4982,12 @@ function __c4(j: number): any {
         identifier: "GoogleChromeManagementV1BrowserVersion",
       });
     case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          totalSize: S.optional(S.Number),
-          profileBrowserVersions: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementV1CountChromeProfileVersionsResponse",
-      });
-    case 3:
+      return S.Array(__S(224, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -5097,17 +5005,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CountChromeVersionsCustomersReportsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          browserVersions: S.optional(__S(33, __c4, 1)),
+          browserVersions: S.optional(__S(225, __c7, 1)),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountChromeVersionsResponse",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "date.month": S.optional(S.Number.pipe(T.Query())),
@@ -5124,7 +5036,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CountDevicesPerBootTypeCustomersReportsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           devBootTypeCount: S.optional(S.String),
@@ -5134,7 +5046,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1CountDevicesPerBootTypeResponse",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -5151,11 +5067,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CountDevicesPerReleaseChannelCustomersReportsRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           canaryChannelCount: S.optional(S.String),
@@ -5170,7 +5082,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -5189,7 +5105,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CountInstalledAppsCustomersReportsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           detailsUrl: S.optional(S.String),
@@ -5199,42 +5115,40 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1RiskAssessment",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          riskAssessment: S.optional(__S(42, __c5, 2)),
+          riskAssessment: S.optional(__S(353, __c11, 1)),
           riskLevel: S.optional(S.String),
           provider: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1RiskAssessmentEntry",
       });
+    case 3:
+      return S.Array(__S(354, __c11, 2));
     case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(__S(44, __c5, 4)),
+          entries: S.optional(__S(355, __c11, 3)),
           overallRiskLevel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1RiskAssessmentData",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           browserDeviceCount: S.optional(S.String),
           appId: S.optional(S.String),
           osUserCount: S.optional(S.String),
-          riskAssessment: S.optional(__S(45, __c5, 5)),
+          riskAssessment: S.optional(__S(356, __c11, 4)),
           displayName: S.optional(S.String),
           homepageUri: S.optional(S.String),
           description: S.optional(S.String),
           appSource: S.optional(S.String),
           appType: S.optional(S.String),
-          permissions: S.optional(__S(46, __c5, 6)),
+          permissions: S.optional(__S(384, __c12, 0)),
           disabled: S.optional(S.Boolean),
           profileCount: S.optional(S.String),
           appInstallType: S.optional(S.String),
@@ -5242,23 +5156,29 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1InstalledApp",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(357, __c11, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          installedApps: S.optional(__S(48, __c6, 0)),
+          installedApps: S.optional(__S(358, __c11, 6)),
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountInstalledAppsResponse",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5277,7 +5197,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CountPrintJobsByPrinterCustomersReportsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           printerModel: S.optional(S.String),
@@ -5290,19 +5210,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1PrinterReport",
       });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(417, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.String),
-          printerReports: S.optional(__S(52, __c6, 4)),
+          printerReports: S.optional(__S(418, __c13, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountPrintJobsByPrinterResponse",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5321,7 +5245,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CountPrintJobsByUserCustomersReportsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           printerCount: S.optional(S.String),
@@ -5333,206 +5257,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1UserPrintReport",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(449, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.String),
-          userPrintReports: S.optional(__S(56, __c7, 0)),
+          userPrintReports: S.optional(__S(450, __c14, 2)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CountPrintJobsByUserResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          failureStartTime: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1ConnectorConfigStatus",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabledOptInEvents: S.optional(__S(59, __c7, 3)),
-          enabledDefaultEvents: S.optional(__S(59, __c7, 3)),
-          enabledDeviceEvents: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1ReportingSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiKey: S.optional(S.String),
-          host: S.optional(S.String),
-          reportingSettings: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1CrowdStrikeConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          apiKey: S.optional(S.String),
-          reportingSettings: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1GoogleSecOpsConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enableAllXdrEvents: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1XdrSettings",
-      });
   }
 }
-function __c8(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          xdrSettings: S.optional(__S(63, __c7, 7)),
-          host: S.optional(S.String),
-          apiKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          microsoftTenantId: S.optional(S.String),
-          domains: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1MipLabelConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reportingSettings: S.optional(__S(60, __c7, 4)),
-          topicFullPath: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1PubSubConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          reportingSettings: S.optional(__S(60, __c7, 4)),
-          apiKey: S.optional(S.String),
-          host: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          portNumber: S.optional(S.Number),
-          source: S.optional(S.String),
-          hecToken: S.optional(S.String),
-          reportingSettings: S.optional(__S(60, __c7, 4)),
-          unsecureScheme: S.optional(S.Boolean),
-          host: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1SplunkConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          reportingSettings: S.optional(__S(60, __c7, 4)),
-          apiKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1PaloAltoNetworksConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          topicFullPath: S.optional(S.String),
-          xdrSettings: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1PubSubXdrConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.optional(S.String),
-          serviceAccounts: S.optional(__S(46, __c5, 6)),
-          urlMatchers: S.optional(__S(46, __c5, 6)),
-          serviceProvider: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1DeviceTrustConfig",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enabledPlatforms: S.optional(__S(59, __c7, 3)),
-          resourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1SecureGatewayConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          crowdStrikeConfig: S.optional(__S(61, __c7, 5)),
-          googleSecOpsConfig: S.optional(__S(62, __c7, 6)),
-          crowdStrikeXdrConfig: S.optional(__S(64, __c8, 0)),
-          mipLabelConfig: S.optional(__S(65, __c8, 1)),
-          pubSubConfig: S.optional(__S(66, __c8, 2)),
-          crowdStrikeFalconNextGenConfig: S.optional(__S(67, __c8, 3)),
-          splunkConfig: S.optional(__S(68, __c8, 4)),
-          paloAltoNetworksConfig: S.optional(__S(69, __c8, 5)),
-          pubSubXdrConfig: S.optional(__S(70, __c8, 6)),
-          deviceTrustConfig: S.optional(__S(71, __c8, 7)),
-          secureGatewayConfig: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1ConnectorConfigDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          type: S.optional(S.String),
-          status: S.optional(__S(58, __c7, 2)),
-          name: S.optional(S.String),
-          details: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1ConnectorConfig",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           connectorConfigId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(559, __c17, 15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5543,37 +5289,193 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateCustomersConnectorConfigsRequest",
       });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          failureStartTime: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1ConnectorConfigStatus",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabledOptInEvents: S.optional(__S(512, __c16, 0)),
+          enabledDefaultEvents: S.optional(__S(512, __c16, 0)),
+          enabledDeviceEvents: S.optional(__S(512, __c16, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1ReportingSettings",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiKey: S.optional(S.String),
+          host: S.optional(S.String),
+          reportingSettings: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1CrowdStrikeConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          apiKey: S.optional(S.String),
+          reportingSettings: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1GoogleSecOpsConfig",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resultCode: S.optional(S.String),
-          clientExecutionTime: S.optional(S.String),
-          resultType: S.optional(S.String),
+          enableAllXdrEvents: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult",
+        identifier: "GoogleChromeManagementVersionsV1XdrSettings",
       });
     case 5:
-      return S.Record(S.String, S.Unknown);
+      return S.suspend(() =>
+        S.Struct({
+          xdrSettings: S.optional(__S(548, __c17, 4)),
+          host: S.optional(S.String),
+          apiKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          commandResult: S.optional(__S(76, __c9, 4)),
-          validDuration: S.optional(S.String),
-          commandType: S.optional(S.String),
-          commandState: S.optional(S.String),
-          name: S.optional(S.String),
-          payload: S.optional(__S(77, __c9, 5)),
-          issueTime: S.optional(S.String),
+          microsoftTenantId: S.optional(S.String),
+          domains: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand",
+        identifier: "GoogleChromeManagementVersionsV1MipLabelConfig",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
+          reportingSettings: S.optional(__S(545, __c17, 1)),
+          topicFullPath: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1PubSubConfig",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          reportingSettings: S.optional(__S(545, __c17, 1)),
+          apiKey: S.optional(S.String),
+          host: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          portNumber: S.optional(S.Number),
+          source: S.optional(S.String),
+          hecToken: S.optional(S.String),
+          reportingSettings: S.optional(__S(545, __c17, 1)),
+          unsecureScheme: S.optional(S.Boolean),
+          host: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1SplunkConfig",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          reportingSettings: S.optional(__S(545, __c17, 1)),
+          apiKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1PaloAltoNetworksConfig",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          topicFullPath: S.optional(S.String),
+          xdrSettings: S.optional(__S(548, __c17, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1PubSubXdrConfig",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.optional(S.String),
+          serviceAccounts: S.optional(__S(384, __c12, 0)),
+          urlMatchers: S.optional(__S(384, __c12, 0)),
+          serviceProvider: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1DeviceTrustConfig",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          enabledPlatforms: S.optional(__S(512, __c16, 0)),
+          resourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1SecureGatewayConfig",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          crowdStrikeConfig: S.optional(__S(546, __c17, 2)),
+          googleSecOpsConfig: S.optional(__S(547, __c17, 3)),
+          crowdStrikeXdrConfig: S.optional(__S(549, __c17, 5)),
+          mipLabelConfig: S.optional(__S(550, __c17, 6)),
+          pubSubConfig: S.optional(__S(551, __c17, 7)),
+          crowdStrikeFalconNextGenConfig: S.optional(__S(552, __c17, 8)),
+          splunkConfig: S.optional(__S(553, __c17, 9)),
+          paloAltoNetworksConfig: S.optional(__S(554, __c17, 10)),
+          pubSubXdrConfig: S.optional(__S(555, __c17, 11)),
+          deviceTrustConfig: S.optional(__S(556, __c17, 12)),
+          secureGatewayConfig: S.optional(__S(557, __c17, 13)),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1ConnectorConfigDetails",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          type: S.optional(S.String),
+          status: S.optional(__S(544, __c17, 0)),
+          name: S.optional(S.String),
+          details: S.optional(__S(558, __c17, 14)),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1ConnectorConfig",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(641, __c20, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5586,12 +5488,65 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          eventTypes: S.optional(__S(59, __c7, 3)),
+          resultCode: S.optional(S.String),
+          clientExecutionTime: S.optional(S.String),
+          resultType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          commandResult: S.optional(__S(640, __c20, 0)),
+          validDuration: S.optional(S.String),
+          commandType: S.optional(S.String),
+          commandState: S.optional(S.String),
+          name: S.optional(S.String),
+          payload: S.optional(__S(608, __c19, 0)),
+          issueTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(706, __c22, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/telemetry/notificationConfigs",
+            baseUrl: "https://chromemanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCustomersTelemetryNotificationConfigsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventTypes: S.optional(__S(512, __c16, 0)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryEventNotificationFilter",
@@ -5599,7 +5554,7 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          telemetryEventNotificationFilter: S.optional(__S(80, __c10, 0)),
+          telemetryEventNotificationFilter: S.optional(__S(704, __c22, 0)),
           deviceOrgUnitId: S.optional(S.String),
           deviceId: S.optional(S.String),
           userOrgUnitId: S.optional(S.String),
@@ -5612,29 +5567,18 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.optional(S.String),
-          filter: S.optional(__S(81, __c10, 1)),
+          filter: S.optional(__S(705, __c22, 1)),
           googleCloudPubsubTopic: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryNotificationConfig",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(82, __c10, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/telemetry/notificationConfigs",
-            baseUrl: "https://chromemanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCustomersTelemetryNotificationConfigsRequest",
-      });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5648,7 +5592,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteCustomersConnectorConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5662,7 +5610,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteCustomersProfilesRequest",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5676,7 +5628,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteCustomersTelemetryNotificationConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5690,13 +5646,13 @@ function __c10(j: number): any {
       ).annotate({ identifier: "DeleteOperationsRequest" });
   }
 }
-function __c11(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1952, __c61, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5707,7 +5663,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DisableCustomersEnterpriseSecurityInsightsRequest",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           insightsState: S.optional(S.String),
@@ -5715,19 +5675,23 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1DisableInsightsResponse",
       });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          targetOus: S.optional(__S(46, __c5, 6)),
+          targetOus: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1EnableInsightsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(928, __c29, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5738,7 +5702,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "EnableCustomersEnterpriseSecurityInsightsRequest",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -5757,7 +5725,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "EnumeratePrintJobsCustomersReportsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userEmail: S.optional(S.String),
@@ -5777,12 +5745,12 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1PrintJob",
       });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(961, __c30, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          printJobs: S.optional(__S(94, __c11, 6)),
+          printJobs: S.optional(__S(962, __c30, 2)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.String),
         }),
@@ -5791,7 +5759,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5821,18 +5789,22 @@ function __c12(j: number): any {
         identifier: "GoogleChromeManagementV1DeviceRequestingExtensionDetails",
       });
     case 2:
-      return S.Array(__S(97, __c12, 1));
+      return S.Array(__S(993, __c31, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
-          deviceDetails: S.optional(__S(98, __c12, 2)),
+          deviceDetails: S.optional(__S(994, __c31, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5850,7 +5822,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "FetchUsersRequestingExtensionCustomersAppsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           justification: S.optional(S.String),
@@ -5859,21 +5831,21 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1UserRequestingExtensionDetails",
       });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1025, __c32, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
-          userDetails: S.optional(__S(102, __c12, 6)),
+          userDetails: S.optional(__S(1026, __c32, 2)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1FetchUsersRequestingExtensionResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5906,18 +5878,22 @@ function __c13(j: number): any {
         identifier: "GoogleChromeManagementV1Device",
       });
     case 2:
-      return S.Array(__S(105, __c13, 1));
+      return S.Array(__S(1057, __c33, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
-          devices: S.optional(__S(106, __c13, 2)),
+          devices: S.optional(__S(1058, __c33, 2)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1FindInstalledAppDevicesResponse",
       });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5938,7 +5914,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "FindInstalledAppProfilesCustomersReportsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           profileId: S.optional(S.String),
@@ -5949,13 +5925,13 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1ProfileAppInstallInstance",
       });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1089, __c34, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          profiles: S.optional(__S(110, __c13, 6)),
+          profiles: S.optional(__S(1090, __c34, 2)),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({
@@ -5963,7 +5939,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5999,18 +5975,22 @@ function __c14(j: number): any {
         identifier: "GoogleChromeManagementV1SaasUsageBrowser",
       });
     case 2:
-      return S.Array(__S(113, __c14, 1));
+      return S.Array(__S(1121, __c35, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          saasUsageBrowsers: S.optional(__S(114, __c14, 2)),
+          saasUsageBrowsers: S.optional(__S(1122, __c35, 2)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1FindSaasUsageBrowsersResponse",
       });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6028,7 +6008,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "FindSaasUsageCustomersReportsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contentTransferCount: S.optional(S.String),
@@ -6036,45 +6016,45 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1SaasUsageReportContentTransferDetails",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           headquarters: S.optional(S.String),
           category: S.optional(S.String),
           primaryDomain: S.optional(S.String),
           distinctBrowsersCount: S.optional(S.String),
-          contentTransferDetails: S.optional(__S(117, __c14, 5)),
+          contentTransferDetails: S.optional(__S(1153, __c36, 1)),
           orgUnitId: S.optional(S.String),
-          encryptionProtocols: S.optional(__S(46, __c5, 6)),
+          encryptionProtocols: S.optional(__S(384, __c12, 0)),
           firstNavigationTime: S.optional(S.String),
           app: S.optional(S.String),
           organization: S.optional(S.String),
           foundedYear: S.optional(S.Number),
           lastNavigationTime: S.optional(S.String),
           distinctUsersCount: S.optional(S.String),
-          domains: S.optional(__S(46, __c5, 6)),
+          domains: S.optional(__S(384, __c12, 0)),
           visitsCount: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1SaasUsageReport",
       });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(1154, __c36, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          saasReports: S.optional(__S(119, __c14, 7)),
+          saasReports: S.optional(__S(1155, __c36, 3)),
           totalSize: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1FindSaasUsageReportsResponse",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6093,7 +6073,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "FindSaasUsageProfilesCustomersReportsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           orgUnitId: S.optional(S.String),
@@ -6107,19 +6087,23 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1SaasUsageProfileReport",
       });
+    case 2:
+      return S.Array(__S(1185, __c37, 1));
     case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          profileReports: S.optional(__S(123, __c15, 3)),
+          profileReports: S.optional(__S(1186, __c37, 2)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1FindSaasUsageProfilesResponse",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6133,7 +6117,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetCustomersAppsAndroidRequest",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           hostMatch: S.optional(S.String),
@@ -6141,13 +6129,9 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1ChromeAppSiteAccess",
       });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1248, __c39, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -6157,9 +6141,9 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1ChromeAppPermission",
       });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(1250, __c39, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           manifestVersion: S.optional(S.String),
@@ -6169,8 +6153,8 @@ function __c16(j: number): any {
           kioskEnabled: S.optional(S.Boolean),
           supportEnabled: S.optional(S.Boolean),
           isTheme: S.optional(S.Boolean),
-          siteAccess: S.optional(__S(127, __c15, 7)),
-          permissions: S.optional(__S(129, __c16, 1)),
+          siteAccess: S.optional(__S(1249, __c39, 1)),
+          permissions: S.optional(__S(1251, __c39, 3)),
           isCwsHosted: S.optional(S.Boolean),
           isExtensionPolicySupported: S.optional(S.Boolean),
           type: S.optional(S.String),
@@ -6178,16 +6162,6 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1ChromeAppInfo",
       });
-    case 3:
-      return S.Array(__S(77, __c9, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(131, __c16, 3)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleRpcStatus" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6197,35 +6171,31 @@ function __c16(j: number): any {
         identifier: "GoogleChromeManagementV1AndroidAppPermission",
       });
     case 6:
-      return S.Array(__S(133, __c16, 5));
+      return S.Array(__S(1253, __c39, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(134, __c16, 6)),
+          permissions: S.optional(__S(1254, __c39, 6)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1AndroidAppInfo",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           publisher: S.optional(S.String),
-          chromeAppInfo: S.optional(__S(130, __c16, 2)),
+          chromeAppInfo: S.optional(__S(1252, __c39, 4)),
           displayName: S.optional(S.String),
           isPaidApp: S.optional(S.Boolean),
           reviewNumber: S.optional(S.String),
-          serviceError: S.optional(__S(132, __c16, 4)),
+          serviceError: S.optional(__S(1281, __c40, 1)),
           reviewRating: S.optional(S.Number),
           detailUri: S.optional(S.String),
           privacyPolicyUri: S.optional(S.String),
           latestPublishTime: S.optional(S.String),
           appId: S.optional(S.String),
-          categoryIds: S.optional(__S(46, __c5, 6)),
-          androidAppInfo: S.optional(__S(135, __c16, 7)),
+          categoryIds: S.optional(__S(384, __c12, 0)),
+          androidAppInfo: S.optional(__S(1255, __c39, 7)),
           iconUri: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
@@ -6237,7 +6207,25 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1AppDetails",
       });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(608, __c19, 0));
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(1280, __c40, 0)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleRpcStatus" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6251,7 +6239,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetCustomersAppsChromeRequest",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6265,7 +6257,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetCustomersAppsWebRequest",
       });
-    case 3:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6279,7 +6275,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetCustomersCertificateProvisioningProcessesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           caConnectionAdapterConfigReference: S.optional(S.String),
@@ -6287,7 +6283,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1GenericCaConnection",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -6296,29 +6292,25 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1SubjectAltName",
       });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(1378, __c43, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           locality: S.optional(S.String),
           state: S.optional(S.String),
           organization: S.optional(S.String),
           country: S.optional(S.String),
-          organizationalUnits: S.optional(__S(46, __c5, 6)),
-          keyUsages: S.optional(__S(59, __c7, 3)),
+          organizationalUnits: S.optional(__S(384, __c12, 0)),
+          keyUsages: S.optional(__S(512, __c16, 0)),
           subjectCommonName: S.optional(S.String),
-          subjectAltNames: S.optional(__S(142, __c17, 6)),
+          subjectAltNames: S.optional(__S(1379, __c43, 3)),
           certificateTemplateName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ScepProfile",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           deviceDirectoryApiId: S.optional(S.String),
@@ -6327,17 +6319,17 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ChromeOsDevice",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           userDirectoryApiId: S.optional(S.String),
-          chromeOsDevice: S.optional(__S(144, __c18, 0)),
+          chromeOsDevice: S.optional(__S(1381, __c43, 5)),
           userPrimaryEmail: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ChromeOsUserSession",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           profileAdapterConfigReference: S.optional(S.String),
@@ -6345,29 +6337,33 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1GenericProfile",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           signData: S.optional(S.String),
           signature: S.optional(S.String),
           signatureAlgorithm: S.optional(S.String),
           startTime: S.optional(S.String),
-          genericCaConnection: S.optional(__S(140, __c17, 4)),
-          scepProfile: S.optional(__S(143, __c17, 7)),
-          chromeOsUserSession: S.optional(__S(145, __c18, 1)),
+          genericCaConnection: S.optional(__S(1377, __c43, 1)),
+          scepProfile: S.optional(__S(1380, __c43, 4)),
+          chromeOsUserSession: S.optional(__S(1382, __c43, 6)),
           issuedCertificate: S.optional(S.String),
-          scepCaConnection: S.optional(__S(140, __c17, 4)),
+          scepCaConnection: S.optional(__S(1377, __c43, 1)),
           provisioningProfileId: S.optional(S.String),
           name: S.optional(S.String),
-          chromeOsDevice: S.optional(__S(144, __c18, 0)),
+          chromeOsDevice: S.optional(__S(1381, __c43, 5)),
           failureMessage: S.optional(S.String),
-          genericProfile: S.optional(__S(146, __c18, 2)),
+          genericProfile: S.optional(__S(1383, __c43, 7)),
           subjectPublicKeyInfo: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1CertificateProvisioningProcess",
       });
-    case 4:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6381,19 +6377,27 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetCustomersCertificateProvisioningProcessesOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(77, __c9, 5)),
+          metadata: S.optional(__S(608, __c19, 0)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          response: S.optional(__S(77, __c9, 5)),
-          error: S.optional(__S(132, __c16, 4)),
+          response: S.optional(__S(608, __c19, 0)),
+          error: S.optional(__S(1281, __c40, 1)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
       });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6407,7 +6411,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetCustomersConnectorConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6423,7 +6431,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6445,7 +6453,7 @@ function __c19(j: number): any {
         identifier: "GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData",
       });
     case 2:
-      return S.Array(__S(153, __c19, 1));
+      return S.Array(__S(1537, __c48, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6453,31 +6461,31 @@ function __c19(j: number): any {
           name: S.optional(S.String),
           source: S.optional(S.String),
           value: S.optional(S.String),
-          conflicts: S.optional(__S(154, __c19, 2)),
+          conflicts: S.optional(__S(1538, __c48, 2)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ReportingDataPolicyData",
       });
     case 4:
-      return S.Array(__S(155, __c19, 3));
+      return S.Array(__S(1539, __c48, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           extensionName: S.optional(S.String),
           extensionId: S.optional(S.String),
-          policyData: S.optional(__S(156, __c19, 4)),
+          policyData: S.optional(__S(1540, __c48, 4)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData",
       });
     case 6:
-      return S.Array(__S(157, __c19, 5));
+      return S.Array(__S(1541, __c48, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
           isDisabled: S.optional(S.Boolean),
-          permissions: S.optional(__S(46, __c5, 6)),
+          permissions: S.optional(__S(384, __c12, 0)),
           installationType: S.optional(S.String),
           extensionId: S.optional(S.String),
           manifestVersion: S.optional(S.Number),
@@ -6490,26 +6498,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ReportingDataExtensionData",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(1543, __c48, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          policyData: S.optional(__S(156, __c19, 4)),
+          policyData: S.optional(__S(1540, __c48, 4)),
           profilePath: S.optional(S.String),
           installedBrowserVersion: S.optional(S.String),
-          extensionPolicyData: S.optional(__S(158, __c19, 6)),
-          extensionData: S.optional(__S(160, __c20, 0)),
+          extensionPolicyData: S.optional(__S(1542, __c48, 6)),
+          extensionData: S.optional(__S(1544, __c48, 8)),
           browserExecutablePath: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ReportingData",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           keyTrustLevel: S.optional(S.String),
@@ -6520,10 +6524,10 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1AttestationCredential",
       });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          deviceInfo: S.optional(__S(152, __c19, 0)),
+          deviceInfo: S.optional(__S(1536, __c48, 0)),
           etag: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
@@ -6534,7 +6538,7 @@ function __c20(j: number): any {
           extensionCount: S.optional(S.String),
           profilePermanentId: S.optional(S.String),
           userEmail: S.optional(S.String),
-          reportingData: S.optional(__S(161, __c20, 1)),
+          reportingData: S.optional(__S(1545, __c48, 9)),
           policyCount: S.optional(S.String),
           osPlatformType: S.optional(S.String),
           osVersion: S.optional(S.String),
@@ -6545,7 +6549,7 @@ function __c20(j: number): any {
           lastPolicySyncTime: S.optional(S.String),
           annotatedUser: S.optional(S.String),
           identityProvider: S.optional(S.String),
-          attestationCredential: S.optional(__S(162, __c20, 2)),
+          attestationCredential: S.optional(__S(1546, __c48, 10)),
           annotatedLocation: S.optional(S.String),
           browserVersion: S.optional(S.String),
           osPlatformVersion: S.optional(S.String),
@@ -6554,7 +6558,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ChromeBrowserProfile",
       });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6568,7 +6576,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetCustomersProfilesCommandsRequest",
       });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6583,7 +6595,98 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetCustomersTelemetryDevicesRequest",
       });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vid: S.optional(S.Number),
+          vendor: S.optional(S.String),
+          categories: S.optional(__S(384, __c12, 0)),
+          firmwareVersion: S.optional(S.String),
+          pid: S.optional(S.Number),
+          subclassId: S.optional(S.Number),
+          name: S.optional(S.String),
+          classId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementV1UsbPeripheralReport",
+      });
+    case 1:
+      return S.Array(__S(1632, __c51, 0));
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportTime: S.optional(S.String),
+          usbPeripheralReport: S.optional(__S(1633, __c51, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementV1PeripheralsReport",
+      });
+    case 1:
+      return S.Array(__S(1664, __c52, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          appInstanceId: S.optional(S.String),
+          runningDuration: S.optional(S.String),
+          appId: S.optional(S.String),
+          appType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementV1AppUsageData",
+      });
+    case 3:
+      return S.Array(__S(1666, __c52, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          usageData: S.optional(__S(1667, __c52, 3)),
+          reportTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementV1AppReport",
+      });
+    case 5:
+      return S.Array(__S(1668, __c52, 4));
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          reportTime: S.optional(S.String),
+          downloadSpeedKbps: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementV1NetworkBandwidthReport",
+      });
+    case 7:
+      return S.Array(__S(1670, __c52, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          inputMute: S.optional(S.Boolean),
+          outputMute: S.optional(S.Boolean),
+          outputDevice: S.optional(S.String),
+          reportTime: S.optional(S.String),
+          inputGain: S.optional(S.Number),
+          outputVolume: S.optional(S.Number),
+          inputDevice: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementV1AudioStatusReport",
+      });
+    case 9:
+      return S.Array(__S(1672, __c52, 8));
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           temperatureCelsius: S.optional(S.Number),
@@ -6592,26 +6695,22 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1CpuTemperatureInfo",
       });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1696, __c53, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           sampleFrequency: S.optional(S.String),
-          cpuTemperatureInfo: S.optional(__S(167, __c20, 7)),
+          cpuTemperatureInfo: S.optional(__S(1697, __c53, 1)),
           reportTime: S.optional(S.String),
           cpuUtilizationPct: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1CpuStatusReport",
       });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(1698, __c53, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           bootUpTime: S.optional(S.String),
@@ -6624,9 +6723,9 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1BootPerformanceReport",
       });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(1700, __c53, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           systemRamFreeBytes: S.optional(S.String),
@@ -6637,9 +6736,9 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1MemoryStatusReport",
       });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(1702, __c53, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           voltage: S.optional(S.String),
@@ -6654,13 +6753,9 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1BatterySampleReport",
       });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(1704, __c53, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           cycleCount: S.optional(S.Number),
@@ -6668,42 +6763,14 @@ function __c22(j: number): any {
           batteryHealth: S.optional(S.String),
           serialNumber: S.optional(S.String),
           reportTime: S.optional(S.String),
-          sample: S.optional(__S(175, __c21, 7)),
+          sample: S.optional(__S(1705, __c53, 9)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1BatteryStatusReport",
       });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          vid: S.optional(S.Number),
-          vendor: S.optional(S.String),
-          categories: S.optional(__S(46, __c5, 6)),
-          firmwareVersion: S.optional(S.String),
-          pid: S.optional(S.Number),
-          subclassId: S.optional(S.Number),
-          name: S.optional(S.String),
-          classId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementV1UsbPeripheralReport",
-      });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reportTime: S.optional(S.String),
-          usbPeripheralReport: S.optional(__S(179, __c22, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementV1PeripheralsReport",
-      });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
+    case 11:
+      return S.Array(__S(1706, __c53, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           securityLevel: S.optional(S.String),
@@ -6711,13 +6778,9 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1ThunderboltInfo",
       });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
+      return S.Array(__S(1708, __c53, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           enterPoweroffCount: S.optional(S.String),
@@ -6729,33 +6792,9 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1RuntimeCountersReport",
       });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          appInstanceId: S.optional(S.String),
-          runningDuration: S.optional(S.String),
-          appId: S.optional(S.String),
-          appType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementV1AppUsageData",
-      });
-    case 3:
-      return S.Array(__S(186, __c23, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          usageData: S.optional(__S(187, __c23, 3)),
-          reportTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementV1AppReport",
-      });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
+    case 15:
+      return S.Array(__S(1710, __c53, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           encryptionAlgorithm: S.optional(S.String),
@@ -6766,32 +6805,17 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1TotalMemoryEncryptionInfo",
       });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           availableRamBytes: S.optional(S.String),
           totalRamBytes: S.optional(S.String),
-          totalMemoryEncryption: S.optional(__S(190, __c23, 6)),
+          totalMemoryEncryption: S.optional(__S(1712, __c53, 16)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1MemoryInfo",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          reportTime: S.optional(S.String),
-          downloadSpeedKbps: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementV1NetworkBandwidthReport",
-      });
-    case 1:
-      return S.Array(__S(192, __c24, 0));
-    case 2:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           reportTime: S.optional(S.String),
@@ -6800,9 +6824,9 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1HeartbeatStatusReport",
       });
-    case 3:
-      return S.Array(__S(194, __c24, 2));
-    case 4:
+    case 19:
+      return S.Array(__S(1714, __c53, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
@@ -6812,29 +6836,9 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1KioskAppStatusReport",
       });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          inputMute: S.optional(S.Boolean),
-          outputMute: S.optional(S.Boolean),
-          outputDevice: S.optional(S.String),
-          reportTime: S.optional(S.String),
-          inputGain: S.optional(S.Number),
-          outputVolume: S.optional(S.Number),
-          inputDevice: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementV1AudioStatusReport",
-      });
-    case 7:
-      return S.Array(__S(198, __c24, 6));
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
+      return S.Array(__S(1716, __c53, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           model: S.optional(S.String),
@@ -6846,9 +6850,9 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1CpuInfo",
       });
-    case 1:
-      return S.Array(__S(200, __c25, 0));
-    case 2:
+    case 23:
+      return S.Array(__S(1718, __c53, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           serialNumber: S.optional(S.Number),
@@ -6863,39 +6867,35 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1DisplayInfo",
       });
-    case 3:
-      return S.Array(__S(202, __c25, 2));
-    case 4:
+    case 25:
+      return S.Array(__S(1720, __c53, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          displays: S.optional(__S(203, __c25, 3)),
+          displays: S.optional(__S(1721, __c53, 25)),
           reportTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1GraphicsStatusReport",
       });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
+    case 27:
+      return S.Array(__S(1722, __c53, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           manufacturer: S.optional(S.String),
           designMinVoltage: S.optional(S.Number),
           technology: S.optional(S.String),
-          manufactureDate: S.optional(__S(17, __c2, 1)),
+          manufactureDate: S.optional(__S(64, __c2, 0)),
           serialNumber: S.optional(S.String),
           designCapacity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1BatteryInfo",
       });
-    case 7:
-      return S.Array(__S(206, __c25, 6));
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 29:
+      return S.Array(__S(1724, __c53, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
@@ -6905,24 +6905,28 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1StorageInfoDiskVolume",
       });
-    case 1:
-      return S.Array(__S(208, __c26, 0));
-    case 2:
+    case 31:
+      return S.Array(__S(1726, __c53, 30));
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           totalDiskBytes: S.optional(S.String),
           availableDiskBytes: S.optional(S.String),
-          volume: S.optional(__S(209, __c26, 1)),
+          volume: S.optional(__S(1727, __c53, 31)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1StorageInfo",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           wifiPowerManagementEnabled: S.optional(S.Boolean),
           gatewayIpAddress: S.optional(S.String),
-          ipv6Address: S.optional(__S(46, __c5, 6)),
+          ipv6Address: S.optional(__S(384, __c12, 0)),
           signalStrengthDbm: S.optional(S.Number),
           linkDownSpeedKbps: S.optional(S.String),
           transmissionBitRateMbps: S.optional(S.String),
@@ -6942,9 +6946,9 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1NetworkStatusReport",
       });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1729, __c54, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           lastUpdateTime: S.optional(S.String),
@@ -6957,9 +6961,9 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1OsUpdateStatus",
       });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(1731, __c54, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           serialNumber: S.optional(S.Number),
@@ -6975,13 +6979,9 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1DisplayDevice",
       });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(215, __c26, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(1733, __c54, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           stylusCapable: S.optional(S.Boolean),
@@ -6991,18 +6991,18 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1TouchScreenDevice",
       });
-    case 2:
-      return S.Array(__S(217, __c27, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(1735, __c54, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          devices: S.optional(__S(218, __c27, 2)),
+          devices: S.optional(__S(1736, __c54, 8)),
           touchpadLibrary: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TouchScreenInfo",
       });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.optional(S.String),
@@ -7012,18 +7012,18 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1GraphicsAdapterInfo",
       });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          displayDevices: S.optional(__S(216, __c27, 0)),
+          displayDevices: S.optional(__S(1734, __c54, 6)),
           eprivacySupported: S.optional(S.Boolean),
-          touchScreenInfo: S.optional(__S(219, __c27, 3)),
-          adapterInfo: S.optional(__S(220, __c27, 4)),
+          touchScreenInfo: S.optional(__S(1737, __c54, 9)),
+          adapterInfo: S.optional(__S(1738, __c54, 10)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1GraphicsInfo",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           macAddress: S.optional(S.String),
@@ -7036,28 +7036,24 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1NetworkDevice",
       });
-    case 7:
-      return S.Array(__S(222, __c27, 6));
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
+      return S.Array(__S(1740, __c54, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          networkDevices: S.optional(__S(223, __c27, 7)),
+          networkDevices: S.optional(__S(1741, __c54, 13)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1NetworkInfo",
       });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           writeTimeThisSession: S.optional(S.String),
           discardTimeThisSession: S.optional(S.String),
           health: S.optional(S.String),
           model: S.optional(S.String),
-          volumeIds: S.optional(__S(46, __c5, 6)),
+          volumeIds: S.optional(__S(384, __c12, 0)),
           readTimeThisSession: S.optional(S.String),
           bytesWrittenThisSession: S.optional(S.String),
           serialNumber: S.optional(S.String),
@@ -7070,20 +7066,70 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1DiskInfo",
       });
-    case 2:
-      return S.Array(__S(225, __c28, 1));
-    case 3:
+    case 16:
+      return S.Array(__S(1743, __c54, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          disk: S.optional(__S(226, __c28, 2)),
+          disk: S.optional(__S(1744, __c54, 16)),
           reportTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1StorageStatusReport",
       });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
+    case 18:
+      return S.Array(__S(1745, __c54, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          httpsLatencyData: S.optional(__S(1760, __c55, 0)),
+          reportTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementV1NetworkDiagnosticsReport",
+      });
+    case 20:
+      return S.Array(__S(1747, __c54, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          cpuStatusReport: S.optional(__S(1699, __c53, 3)),
+          deviceId: S.optional(S.String),
+          bootPerformanceReport: S.optional(__S(1701, __c53, 5)),
+          memoryStatusReport: S.optional(__S(1703, __c53, 7)),
+          batteryStatusReport: S.optional(__S(1707, __c53, 11)),
+          customer: S.optional(S.String),
+          peripheralsReport: S.optional(__S(1665, __c52, 1)),
+          thunderboltInfo: S.optional(__S(1709, __c53, 13)),
+          runtimeCountersReport: S.optional(__S(1711, __c53, 15)),
+          appReport: S.optional(__S(1669, __c52, 5)),
+          memoryInfo: S.optional(__S(1713, __c53, 17)),
+          networkBandwidthReport: S.optional(__S(1671, __c52, 7)),
+          heartbeatStatusReport: S.optional(__S(1715, __c53, 19)),
+          kioskAppStatusReport: S.optional(__S(1717, __c53, 21)),
+          audioStatusReport: S.optional(__S(1673, __c52, 9)),
+          cpuInfo: S.optional(__S(1719, __c53, 23)),
+          serialNumber: S.optional(S.String),
+          graphicsStatusReport: S.optional(__S(1723, __c53, 27)),
+          batteryInfo: S.optional(__S(1725, __c53, 29)),
+          storageInfo: S.optional(__S(1728, __c54, 0)),
+          name: S.optional(S.String),
+          networkStatusReport: S.optional(__S(1730, __c54, 2)),
+          osUpdateStatus: S.optional(__S(1732, __c54, 4)),
+          graphicsInfo: S.optional(__S(1739, __c54, 11)),
+          orgUnitId: S.optional(S.String),
+          networkInfo: S.optional(__S(1742, __c54, 14)),
+          storageStatusReport: S.optional(__S(1746, __c54, 18)),
+          networkDiagnosticsReport: S.optional(__S(1748, __c54, 20)),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementV1TelemetryDevice",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           latency: S.optional(S.String),
@@ -7092,57 +7138,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1HttpsLatencyRoutineData",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          httpsLatencyData: S.optional(__S(229, __c28, 5)),
-          reportTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementV1NetworkDiagnosticsReport",
-      });
-    case 7:
-      return S.Array(__S(230, __c28, 6));
   }
 }
-function __c29(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cpuStatusReport: S.optional(__S(169, __c21, 1)),
-          deviceId: S.optional(S.String),
-          bootPerformanceReport: S.optional(__S(171, __c21, 3)),
-          memoryStatusReport: S.optional(__S(173, __c21, 5)),
-          batteryStatusReport: S.optional(__S(177, __c22, 1)),
-          customer: S.optional(S.String),
-          peripheralsReport: S.optional(__S(181, __c22, 5)),
-          thunderboltInfo: S.optional(__S(183, __c22, 7)),
-          runtimeCountersReport: S.optional(__S(185, __c23, 1)),
-          appReport: S.optional(__S(189, __c23, 5)),
-          memoryInfo: S.optional(__S(191, __c23, 7)),
-          networkBandwidthReport: S.optional(__S(193, __c24, 1)),
-          heartbeatStatusReport: S.optional(__S(195, __c24, 3)),
-          kioskAppStatusReport: S.optional(__S(197, __c24, 5)),
-          audioStatusReport: S.optional(__S(199, __c24, 7)),
-          cpuInfo: S.optional(__S(201, __c25, 1)),
-          serialNumber: S.optional(S.String),
-          graphicsStatusReport: S.optional(__S(205, __c25, 5)),
-          batteryInfo: S.optional(__S(207, __c25, 7)),
-          storageInfo: S.optional(__S(210, __c26, 2)),
-          name: S.optional(S.String),
-          networkStatusReport: S.optional(__S(212, __c26, 4)),
-          osUpdateStatus: S.optional(__S(214, __c26, 6)),
-          graphicsInfo: S.optional(__S(221, __c27, 5)),
-          orgUnitId: S.optional(S.String),
-          networkInfo: S.optional(__S(224, __c28, 0)),
-          storageStatusReport: S.optional(__S(228, __c28, 4)),
-          networkDiagnosticsReport: S.optional(__S(231, __c28, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleChromeManagementV1TelemetryDevice",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           readMask: S.optional(S.String.pipe(T.Query())),
@@ -7157,7 +7157,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetCustomersTelemetryUsersRequest",
       });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportTime: S.optional(S.String),
@@ -7166,37 +7170,41 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1DeviceActivityReport",
       });
-    case 3:
-      return S.Array(__S(234, __c29, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1824, __c57, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          audioStatusReport: S.optional(__S(199, __c24, 7)),
+          audioStatusReport: S.optional(__S(1673, __c52, 9)),
           deviceId: S.optional(S.String),
-          deviceActivityReport: S.optional(__S(235, __c29, 3)),
-          peripheralsReport: S.optional(__S(181, __c22, 5)),
-          appReport: S.optional(__S(189, __c23, 5)),
-          networkBandwidthReport: S.optional(__S(193, __c24, 1)),
+          deviceActivityReport: S.optional(__S(1825, __c57, 1)),
+          peripheralsReport: S.optional(__S(1665, __c52, 1)),
+          appReport: S.optional(__S(1669, __c52, 5)),
+          networkBandwidthReport: S.optional(__S(1671, __c52, 7)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryUserDevice",
       });
-    case 5:
-      return S.Array(__S(236, __c29, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(1826, __c57, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           userEmail: S.optional(S.String),
           orgUnitId: S.optional(S.String),
           customer: S.optional(S.String),
-          userDevice: S.optional(__S(237, __c29, 5)),
+          userDevice: S.optional(__S(1827, __c57, 3)),
           userId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryUser",
       });
-    case 7:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7212,22 +7220,55 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListCustomersConnectorConfigsRequest",
       });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(74, __c9, 2));
     case 1:
+      return S.Array(__S(559, __c17, 15));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          connectorConfigs: S.optional(__S(240, __c30, 0)),
+          connectorConfigs: S.optional(__S(1857, __c58, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ListConnectorConfigsResponse",
       });
-    case 2:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1952, __c61, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://chromemanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CancelOperationsRequest" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleProtobufEmpty",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleLongrunningCancelOperationRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -7245,19 +7286,23 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListCustomersProfilesRequest",
       });
-    case 3:
-      return S.Array(__S(163, __c20, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(1547, __c48, 11));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.String),
-          chromeBrowserProfiles: S.optional(__S(243, __c30, 3)),
+          chromeBrowserProfiles: S.optional(__S(1985, __c62, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse",
       });
-    case 5:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -7273,12 +7318,12 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListCustomersProfilesCommandsRequest",
       });
-    case 6:
-      return S.Array(__S(78, __c9, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(641, __c20, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          chromeBrowserProfileCommands: S.optional(__S(246, __c30, 6)),
+          chromeBrowserProfileCommands: S.optional(__S(2017, __c63, 1)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.String),
         }),
@@ -7287,7 +7332,7 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7308,17 +7353,21 @@ function __c31(j: number): any {
         identifier: "ListCustomersTelemetryDevicesRequest",
       });
     case 1:
-      return S.Array(__S(232, __c29, 0));
+      return S.Array(__S(1749, __c54, 21));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          devices: S.optional(__S(249, __c31, 1)),
+          devices: S.optional(__S(2049, __c64, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1ListTelemetryDevicesResponse",
       });
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -7336,7 +7385,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListCustomersTelemetryEventsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appInstallSource: S.optional(S.String),
@@ -7348,7 +7397,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryAppInstallEvent",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -7361,30 +7410,26 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryExternalDisplayData",
       });
-    case 6:
-      return S.Array(__S(253, __c31, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(2082, __c65, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          externalDisplayData: S.optional(__S(254, __c31, 6)),
+          externalDisplayData: S.optional(__S(2083, __c65, 3)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryExternalDisplayEvent",
       });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           httpsLatencyState: S.optional(S.String),
-          httpsLatencyRoutineData: S.optional(__S(229, __c28, 5)),
+          httpsLatencyRoutineData: S.optional(__S(1760, __c55, 0)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           guid: S.optional(S.String),
@@ -7393,15 +7438,15 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          usbPeripheralReport: S.optional(__S(179, __c22, 3)),
+          usbPeripheralReport: S.optional(__S(1633, __c51, 1)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryUsbPeripheralsEvent",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
@@ -7411,7 +7456,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryAppUninstallEvent",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           appLaunchSource: S.optional(S.String),
@@ -7421,7 +7466,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryAppLaunchEvent",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           guid: S.optional(S.String),
@@ -7430,7 +7475,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent",
       });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           crashId: S.optional(S.String),
@@ -7440,7 +7485,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryOsCrashEvent",
       });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           orgUnitId: S.optional(S.String),
@@ -7449,11 +7494,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryDeviceInfo",
       });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -7462,41 +7503,45 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryUserInfo",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          appInstallEvent: S.optional(__S(252, __c31, 4)),
+          appInstallEvent: S.optional(__S(2081, __c65, 1)),
           name: S.optional(S.String),
           eventType: S.optional(S.String),
-          externalDisplaysEvent: S.optional(__S(255, __c31, 7)),
-          httpsLatencyChangeEvent: S.optional(__S(256, __c32, 0)),
-          networkStateChangeEvent: S.optional(__S(257, __c32, 1)),
-          vpnConnectionStateChangeEvent: S.optional(__S(257, __c32, 1)),
-          usbPeripheralsEvent: S.optional(__S(258, __c32, 2)),
-          appUninstallEvent: S.optional(__S(259, __c32, 3)),
-          appLaunchEvent: S.optional(__S(260, __c32, 4)),
-          wifiSignalStrengthEvent: S.optional(__S(261, __c32, 5)),
-          osCrashEvent: S.optional(__S(262, __c32, 6)),
+          externalDisplaysEvent: S.optional(__S(2084, __c65, 4)),
+          httpsLatencyChangeEvent: S.optional(__S(2085, __c65, 5)),
+          networkStateChangeEvent: S.optional(__S(2086, __c65, 6)),
+          vpnConnectionStateChangeEvent: S.optional(__S(2086, __c65, 6)),
+          usbPeripheralsEvent: S.optional(__S(2087, __c65, 7)),
+          appUninstallEvent: S.optional(__S(2088, __c65, 8)),
+          appLaunchEvent: S.optional(__S(2089, __c65, 9)),
+          wifiSignalStrengthEvent: S.optional(__S(2090, __c65, 10)),
+          osCrashEvent: S.optional(__S(2091, __c65, 11)),
           reportTime: S.optional(S.String),
-          device: S.optional(__S(263, __c32, 7)),
-          audioSevereUnderrunEvent: S.optional(__S(0, __c0, 0)),
-          user: S.optional(__S(264, __c33, 0)),
+          device: S.optional(__S(2092, __c65, 12)),
+          audioSevereUnderrunEvent: S.optional(__S(1952, __c61, 0)),
+          user: S.optional(__S(2093, __c65, 13)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1TelemetryEvent",
       });
-    case 2:
-      return S.Array(__S(265, __c33, 1));
-    case 3:
+    case 15:
+      return S.Array(__S(2094, __c65, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          telemetryEvents: S.optional(__S(266, __c33, 2)),
+          telemetryEvents: S.optional(__S(2095, __c65, 15)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1ListTelemetryEventsResponse",
       });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -7512,18 +7557,22 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListCustomersTelemetryNotificationConfigsRequest",
       });
-    case 5:
-      return S.Array(__S(82, __c10, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(706, __c22, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          telemetryNotificationConfigs: S.optional(__S(269, __c33, 5)),
+          telemetryNotificationConfigs: S.optional(__S(2113, __c66, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           readMask: S.optional(S.String.pipe(T.Query())),
@@ -7541,22 +7590,22 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListCustomersTelemetryUsersRequest",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(238, __c29, 6));
     case 1:
+      return S.Array(__S(1828, __c57, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          telemetryUsers: S.optional(__S(272, __c34, 0)),
+          telemetryUsers: S.optional(__S(2145, __c67, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementV1ListTelemetryUsersResponse",
       });
-    case 2:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -7572,19 +7621,23 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
-      return S.Array(__S(149, __c18, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(1440, __c45, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(275, __c34, 3)),
-          unreachable: S.optional(__S(46, __c5, 6)),
+          operations: S.optional(__S(2177, __c68, 1)),
+          unreachable: S.optional(__S(384, __c12, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           destinationOrgUnit: S.optional(S.String),
@@ -7592,11 +7645,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(277, __c34, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2208, __c69, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7607,7 +7660,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "MoveCustomersThirdPartyProfileUsersRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           orgUnitId: S.optional(S.String),
@@ -7616,24 +7669,24 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ThirdPartyProfileUser",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          thirdPartyProfileUser: S.optional(__S(279, __c34, 7)),
+          thirdPartyProfileUser: S.optional(__S(2210, __c69, 2)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse",
       });
-    case 1:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(559, __c17, 15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7644,7 +7697,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PatchCustomersConnectorConfigsRequest",
       });
-    case 2:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -7664,7 +7721,33 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          summary: S.optional(__S(2304, __c72, 0)),
+          contentCategory: S.optional(S.String),
+          eventDomain: S.optional(S.String),
+          user: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1ContentTransfersBreakdown",
+      });
+    case 2:
+      return S.Array(__S(2273, __c71, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          contentTransfersBreakdowns: S.optional(__S(2274, __c71, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
@@ -7673,29 +7756,37 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1ContentTransfersSummary",
       });
-    case 4:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          summary: S.optional(__S(283, __c35, 3)),
-          contentCategory: S.optional(S.String),
-          eventDomain: S.optional(S.String),
-          user: S.optional(S.String),
-        }),
+          customer: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+customer}/enterprise/securityInsights:checkEnablementStatus",
+            baseUrl: "https://chromemanagement.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1ContentTransfersBreakdown",
+        identifier: "CheckEnablementStatusCustomersEnterpriseSecurityInsightsRequest",
       });
-    case 5:
-      return S.Array(__S(284, __c35, 4));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          nextPageToken: S.optional(S.String),
-          contentTransfersBreakdowns: S.optional(__S(285, __c35, 5)),
+          insightsState: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse",
+        identifier: "GoogleChromeManagementVersionsV1CheckEnablementStatusResponse",
       });
-    case 7:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -7710,21 +7801,25 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "QueryContentTransfersCustomersEnterpriseSecurityInsightsRequest",
       });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(283, __c35, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          summaries: S.optional(__S(288, __c36, 0)),
+          summaries: S.optional(__S(2400, __c75, 0)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1QueryContentTransfersResponse",
       });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2304, __c72, 0));
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7744,28 +7839,32 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          summary: S.optional(__S(283, __c35, 3)),
+          summary: S.optional(__S(2304, __c72, 0)),
           user: S.optional(S.String),
           eventDomain: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1UrlVisitsBreakdown",
       });
-    case 4:
-      return S.Array(__S(291, __c36, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2433, __c76, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          urlVisitsBreakdowns: S.optional(__S(292, __c36, 4)),
+          urlVisitsBreakdowns: S.optional(__S(2434, __c76, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse",
       });
-    case 6:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -7780,17 +7879,17 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          summaries: S.optional(__S(288, __c36, 0)),
+          summaries: S.optional(__S(2400, __c75, 0)),
         }),
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1QueryUrlVisitsResponse",
       });
   }
 }
-function __c37(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7804,7 +7903,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(296, __c37, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2496, __c78, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7815,7 +7914,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "SetFailureCustomersCertificateProvisioningProcessesRequest",
       });
-    case 2:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           signatureAlgorithm: S.optional(S.String),
@@ -7824,11 +7927,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1SignDataRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(298, __c37, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7839,7 +7942,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "SignDataCustomersCertificateProvisioningProcessesRequest",
       });
-    case 4:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           certificatePem: S.optional(S.String),
@@ -7847,11 +7954,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GoogleChromeManagementVersionsV1UploadCertificateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(300, __c37, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2560, __c80, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7862,13 +7969,121 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "UploadCertificateCustomersCertificateProvisioningProcessesRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleChromeManagementVersionsV1UploadCertificateResponse",
       });
   }
 }
-
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          callerInstanceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2592, __c81, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:claim",
+            baseUrl: "https://chromemanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClaimCustomersCertificateProvisioningProcessesRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "date.month": S.optional(S.Number.pipe(T.Query())),
+          "date.day": S.optional(S.Number.pipe(T.Query())),
+          customer: S.String.pipe(T.Label()),
+          "date.year": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+customer}/reports:countActiveDevices",
+            baseUrl: "https://chromemanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CountActiveDevicesCustomersReportsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          thirtyDaysCount: S.optional(S.String),
+          sevenDaysCount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementV1CountActiveDevicesResponse",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          customer: S.String.pipe(T.Label()),
+          orgUnitId: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+customer}/apps:countChromeAppRequests",
+            baseUrl: "https://chromemanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CountChromeAppRequestsCustomersAppsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appDetails: S.optional(S.String),
+          iconUri: S.optional(S.String),
+          appId: S.optional(S.String),
+          detailUri: S.optional(S.String),
+          requestCount: S.optional(S.String),
+          latestRequestTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementV1ChromeAppRequest",
+      });
+    case 2:
+      return S.Array(__S(2657, __c83, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          requestedApps: S.optional(__S(2658, __c83, 2)),
+          nextPageToken: S.optional(S.String),
+          totalSize: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleChromeManagementV1CountChromeAppRequestsResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

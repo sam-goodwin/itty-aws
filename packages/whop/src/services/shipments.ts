@@ -182,7 +182,7 @@ export const createShipment: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateShipmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Shipment>,
+  output: __S(10, __c1, 2) as any as S.Schema<Shipment>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -196,8 +196,8 @@ export const getShipment: API.OperationMethod<
   GetShipmentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetShipmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Shipment>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetShipmentRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Shipment>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -213,8 +213,8 @@ export const listShipments: API.PaginatedOperationMethod<
   Shipment
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(6, __c0, 6) as any as S.Schema<ListShipmentsRequest>,
-    output: __S(9, __c1, 1) as any as S.Schema<ListShipmentsResponse>,
+    input: __S(25, __c3, 1) as any as S.Schema<ListShipmentsRequest>,
+    output: __S(28, __c3, 4) as any as S.Schema<ListShipmentsResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -238,8 +238,8 @@ export const updateShipment: API.OperationMethod<
   UpdateShipmentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<UpdateShipmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Shipment>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateShipmentRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Shipment>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -257,7 +257,11 @@ function __c0(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/shipments", code: 200 })),
       ).annotate({ identifier: "CreateShipmentRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.NullOr(S.String),
@@ -266,14 +270,14 @@ function __c0(j: number): any {
           timestamp: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ShipmentCheckpoint" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           carrier: S.NullOr(S.String),
-          checkpoints: __S(2, __c0, 2),
+          checkpoints: __S(9, __c1, 1),
           created_at: S.String,
           id: S.String,
           payment_id: S.String,
@@ -283,20 +287,28 @@ function __c0(j: number): any {
           updated_at: S.String,
         }),
       ).annotate({ identifier: "Shipment" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/shipments/{id}", code: 200 })),
       ).annotate({ identifier: "GetShipmentRequest" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           status: S.optional(S.String.pipe(T.Query())),
-          payment_id: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          payment_id: S.optional(__S(24, __c3, 0).pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
@@ -307,13 +319,9 @@ function __c0(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/shipments", code: 200 })),
       ).annotate({ identifier: "ListShipmentsRequest" });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(10, __c1, 2));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -324,14 +332,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListShipmentsResponsePageInfo",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(7, __c0, 7),
-          page_info: __S(8, __c1, 0),
+          data: __S(26, __c3, 2),
+          page_info: __S(27, __c3, 3),
         }),
       ).annotate({ identifier: "ListShipmentsResponse" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -340,7 +352,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UpdateShipmentRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

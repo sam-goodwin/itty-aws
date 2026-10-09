@@ -189,8 +189,8 @@ export const addMembers: API.OperationMethod<
   AddMembersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddMembersRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<MembersResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<AddMembersRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<MembersResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -204,8 +204,8 @@ export const addRole: API.OperationMethod<
   AddRoleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AddRoleRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<AddCustomRoleResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<AddRoleRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<AddCustomRoleResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -219,8 +219,8 @@ export const deleteRole: API.OperationMethod<
   DeleteRoleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteRoleRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteRoleResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteRoleRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<DeleteRoleResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -234,8 +234,8 @@ export const getRole: API.OperationMethod<
   GetRoleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetRoleRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetRoleResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetRoleRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetRoleResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -249,8 +249,8 @@ export const listMembers: API.OperationMethod<
   ListMembersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListMembersRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListMembersResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListMembersRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<ListMembersResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -264,8 +264,8 @@ export const listPermissions: API.OperationMethod<
   ListPermissionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListPermissionsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListPermissionsResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListPermissionsRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<ListPermissionsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -279,8 +279,8 @@ export const listRoles: API.OperationMethod<
   ListRolesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListRolesRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<RolesResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListRolesRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<RolesResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -294,8 +294,8 @@ export const listUserMemberships: API.OperationMethod<
   ListUserMembershipsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListUserMembershipsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ListUserMembershipsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListUserMembershipsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListUserMembershipsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -309,8 +309,8 @@ export const listUserPermissions: API.OperationMethod<
   ListUserPermissionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListUserPermissionsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListUserPermissionsResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<ListUserPermissionsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListUserPermissionsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -324,8 +324,8 @@ export const removeMembers: API.OperationMethod<
   RemoveMembersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<RemoveMembersRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<MembersResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<RemoveMembersRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<MembersResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -339,8 +339,8 @@ export const updateRole: API.OperationMethod<
   UpdateRoleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UpdateRoleRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateRoleResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<UpdateRoleRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<UpdateRoleResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -350,19 +350,95 @@ export const updateRole: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          role: S.String,
-          subject: S.String,
-        }),
-      ).annotate({ identifier: "Member" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
+          email: S.String.pipe(T.Label()),
+          resource: S.optional(S.String.pipe(T.Query())),
+          resourceType: S.optional(S.String.pipe(T.Query())),
+          permissions: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/users/{email}/permissions",
+            code: 200,
+            baseUrl: "https://authorization.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListUserPermissionsRequest",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
+          permissions: __S(81, __c10, 1),
+          resourceId: S.String,
+          resourceType: S.String,
+        }),
+      ).annotate({ identifier: "UserPermission" });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(3, __c0, 3),
+        }),
+      ).annotate({
+        identifier: "ListUserPermissionsResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          members: __S(1, __c0, 1),
+          forceRemove: S.optional(S.Boolean),
+          members: __S(49, __c6, 1),
+          resourceType: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/{resourceId}/members/remove",
+            code: 200,
+            baseUrl: "https://authorization.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "RemoveMembersRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.String.pipe(T.Label()),
+          resourceId: S.String.pipe(T.Label()),
+          roleId: S.String.pipe(T.Label()),
+          description: S.String,
+          etag: S.optional(S.String),
+          name: S.String,
+          permissions: __S(65, __c8, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v2/{resourceType}/{resourceId}/roles/{roleId}",
+            code: 200,
+            baseUrl: "https://authorization.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateRoleRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String.pipe(T.Label()),
+          members: __S(49, __c6, 1),
           resourceType: S.String,
         }).pipe(
           T.Http({
@@ -373,37 +449,54 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddMembersRequest" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          members: __S(49, __c6, 1),
+          resourceId: S.String,
+          resourceType: S.String,
+          writtenAt: S.optional(__S(40, __c5, 0)),
+        }),
+      ).annotate({ identifier: "MembersResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zookie: S.optional(S.String),
         }),
       ).annotate({ identifier: "Zookie" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          members: __S(1, __c0, 1),
-          resourceId: S.String,
-          resourceType: S.String,
-          writtenAt: S.optional(__S(3, __c0, 3)),
+          role: S.String,
+          subject: S.String,
         }),
-      ).annotate({ identifier: "MembersResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({ identifier: "PermissionRequest" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+      ).annotate({ identifier: "Member" });
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String.pipe(T.Label()),
           resourceId: S.String.pipe(T.Label()),
           description: S.String,
           name: S.String,
-          permissions: __S(6, __c0, 6),
+          permissions: __S(65, __c8, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -415,7 +508,31 @@ function __c0(j: number): any {
       ).annotate({ identifier: "AddRoleRequest" });
   }
 }
-function __c1(j: number): any {
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({ identifier: "PermissionRequest" });
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String,
+          resourceType: S.String,
+          role: __S(88, __c11, 0),
+        }),
+      ).annotate({ identifier: "AddCustomRoleResponse" });
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -425,26 +542,26 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Permission" });
     case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+      return S.Array(__S(80, __c10, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
           etag: S.optional(S.String),
           id: S.optional(S.String),
           name: S.String,
-          permissions: __S(9, __c1, 1),
+          permissions: __S(81, __c10, 1),
         }),
       ).annotate({ identifier: "Role" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String,
-          resourceType: S.String,
-          role: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "AddCustomRoleResponse" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String.pipe(T.Label()),
@@ -460,13 +577,17 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteRoleRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          writtenAt: __S(3, __c0, 3),
+          writtenAt: __S(40, __c5, 0),
         }),
       ).annotate({ identifier: "DeleteRoleResponse" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String.pipe(T.Label()),
@@ -481,7 +602,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRoleRequest" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String.pipe(T.Label()),
@@ -496,19 +621,19 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListMembersRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          members: __S(1, __c0, 1),
+          members: __S(49, __c6, 1),
           resourceId: S.String,
           resourceType: S.String,
         }),
       ).annotate({ identifier: "ListMembersResponse" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String.pipe(T.Query())),
@@ -521,13 +646,17 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPermissionsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          permissions: __S(9, __c1, 1),
+          permissions: __S(81, __c10, 1),
         }),
       ).annotate({ identifier: "ListPermissionsResponse" });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String.pipe(T.Label()),
@@ -541,17 +670,21 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRolesRequest" });
-    case 4:
-      return S.Array(__S(10, __c1, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
           resourceType: S.String,
-          roles: __S(20, __c2, 4),
+          roles: __S(129, __c16, 1),
         }),
       ).annotate({ identifier: "RolesResponse" });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -569,7 +702,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListUserMembershipsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
@@ -578,100 +711,18 @@ function __c2(j: number): any {
           subject: S.String,
         }),
       ).annotate({ identifier: "UserMembership" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(137, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(24, __c3, 0),
+          items: __S(138, __c17, 2),
         }),
       ).annotate({
         identifier: "ListUserMembershipsResponse",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String.pipe(T.Label()),
-          resource: S.optional(S.String.pipe(T.Query())),
-          resourceType: S.optional(S.String.pipe(T.Query())),
-          permissions: S.optional(__S(26, __c3, 2).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/users/{email}/permissions",
-            code: 200,
-            baseUrl: "https://authorization.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListUserPermissionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: __S(9, __c1, 1),
-          resourceId: S.String,
-          resourceType: S.String,
-        }),
-      ).annotate({ identifier: "UserPermission" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(29, __c3, 5),
-        }),
-      ).annotate({
-        identifier: "ListUserPermissionsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String.pipe(T.Label()),
-          forceRemove: S.optional(S.Boolean),
-          members: __S(1, __c0, 1),
-          resourceType: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/{resourceId}/members/remove",
-            code: 200,
-            baseUrl: "https://authorization.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "RemoveMembersRequest" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceType: S.String.pipe(T.Label()),
-          resourceId: S.String.pipe(T.Label()),
-          roleId: S.String.pipe(T.Label()),
-          description: S.String,
-          etag: S.optional(S.String),
-          name: S.String,
-          permissions: __S(6, __c0, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v2/{resourceType}/{resourceId}/roles/{roleId}",
-            code: 200,
-            baseUrl: "https://authorization.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateRoleRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

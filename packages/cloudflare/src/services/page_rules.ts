@@ -3290,8 +3290,8 @@ export const createPageRule: API.OperationMethod<
   CreatePageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreatePageRuleRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreatePageRuleResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<CreatePageRuleRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<CreatePageRuleResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3305,8 +3305,8 @@ export const deletePageRule: API.OperationMethod<
   DeletePageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeletePageRuleRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeletePageRuleResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeletePageRuleRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<DeletePageRuleResponse>,
   errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3320,8 +3320,8 @@ export const getPageRule: API.OperationMethod<
   GetPageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetPageRuleRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetPageRuleResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetPageRuleRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetPageRuleResponse>,
   errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3335,8 +3335,8 @@ export const listPageRules: API.OperationMethod<
   ListPageRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListPageRulesRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListPageRulesResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListPageRulesRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<ListPageRulesResponse>,
   errors: [Forbidden, InvalidZoneIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3350,8 +3350,8 @@ export const patchPageRule: API.OperationMethod<
   PatchPageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<PatchPageRuleRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<PatchPageRuleResponse>,
+  input: __S(66, __c8, 2) as any as S.Schema<PatchPageRuleRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<PatchPageRuleResponse>,
   errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3365,8 +3365,8 @@ export const updatePageRule: API.OperationMethod<
   UpdatePageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<UpdatePageRuleRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdatePageRuleResponse>,
+  input: __S(74, __c9, 2) as any as S.Schema<UpdatePageRuleRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<UpdatePageRuleResponse>,
   errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3460,34 +3460,16 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          operator: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateRequestTargetsItemConstraint",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          constraint: S.optional(__S(2, __c0, 2)),
-          target: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateRequestTargetsItem" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           actions: __S(1, __c0, 1),
-          targets: __S(4, __c0, 4),
+          targets: __S(25, __c3, 1),
           priority: S.optional(S.Number),
           status: S.optional(S.String),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/pagerules", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreatePageRuleRequest" });
-    case 6:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3567,8 +3549,20 @@ function __c0(j: number): any {
           },
         ),
       );
-    case 7:
-      return S.Array(__S(6, __c0, 6));
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          actions: __S(4, __c0, 4),
+          createdOn: S.String.pipe(T.Body("created_on")),
+          modifiedOn: S.String.pipe(T.Body("modified_on")),
+          priority: S.Number,
+          status: S.String,
+          targets: __S(17, __c2, 1),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePageRuleResponse" });
   }
 }
 function __c1(j: number): any {
@@ -3576,27 +3570,45 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          constraint: S.optional(S.NullOr(__S(2, __c0, 2))),
+          operator: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateRequestTargetsItemConstraint",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          constraint: S.optional(S.NullOr(__S(8, __c1, 0))),
           target: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "CreateResponseTargetsItem",
       });
     case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+      return S.Array(__S(16, __c2, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          actions: __S(7, __c0, 7),
-          createdOn: S.String.pipe(T.Body("created_on")),
-          modifiedOn: S.String.pipe(T.Body("modified_on")),
-          priority: S.Number,
-          status: S.String,
-          targets: __S(9, __c1, 1),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreatePageRuleResponse" });
-    case 3:
+          constraint: S.optional(__S(8, __c1, 0)),
+          target: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateRequestTargetsItem" });
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -3611,13 +3623,17 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeletePageRuleRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeletePageRuleResponse" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -3628,7 +3644,7 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPageRuleRequest" });
-    case 6:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3708,34 +3724,38 @@ function __c1(j: number): any {
           },
         ),
       );
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          constraint: S.optional(S.NullOr(__S(2, __c0, 2))),
-          target: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "GetResponseTargetsItem" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          actions: __S(15, __c1, 7),
+          actions: __S(42, __c5, 2),
           createdOn: S.String.pipe(T.Body("created_on")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           priority: S.Number,
           status: S.String,
-          targets: __S(17, __c2, 1),
+          targets: __S(49, __c6, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPageRuleResponse" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          constraint: S.optional(S.NullOr(__S(8, __c1, 0))),
+          target: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "GetResponseTargetsItem" });
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -3747,110 +3767,6 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/pagerules", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPageRulesRequest" });
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases(
-          [
-            ["id"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id"],
-            ["id"],
-            ["id"],
-            ["id"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-            ["id", "value"],
-          ],
-          {
-            key: "id",
-            values: [
-              "always_use_https",
-              "automatic_https_rewrites",
-              "browser_cache_ttl",
-              "browser_check",
-              "bypass_cache_on_cookie",
-              "cache_by_device_type",
-              "cache_deception_armor",
-              "cache_key_fields",
-              "cache_level",
-              "cache_on_cookie",
-              "cache_ttl_by_status",
-              "disable_apps",
-              "disable_performance",
-              "disable_security",
-              "disable_zaraz",
-              "edge_cache_ttl",
-              "email_obfuscation",
-              "explicit_cache_control",
-              "forwarding_url",
-              "host_header_override",
-              "ip_geolocation",
-              "mirage",
-              "opportunistic_encryption",
-              "origin_error_page_pass_thru",
-              "polish",
-              "resolve_override",
-              "respect_strong_etag",
-              "response_buffering",
-              "rocket_loader",
-              "security_level",
-              "sort_query_string_for_cache",
-              "ssl",
-              "true_client_ip_header",
-              "waf",
-            ],
-          },
-        ),
-      );
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          actions: __S(21, __c2, 5),
-          createdOn: S.String.pipe(T.Body("created_on")),
-          modifiedOn: S.String.pipe(T.Body("modified_on")),
-          priority: S.Number,
-          status: S.String,
-          targets: __S(9, __c1, 1),
-        }),
-      ).annotate({ identifier: "ListResultItem" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        __S(23, __c2, 7).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListPageRulesResponse" });
     case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -3932,23 +3848,127 @@ function __c3(j: number): any {
         ),
       );
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(57, __c7, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          actions: __S(58, __c7, 2),
+          createdOn: S.String.pipe(T.Body("created_on")),
+          modifiedOn: S.String.pipe(T.Body("modified_on")),
+          priority: S.Number,
+          status: S.String,
+          targets: __S(17, __c2, 1),
+        }),
+      ).annotate({ identifier: "ListResultItem" });
+    case 4:
+      return S.Array(__S(59, __c7, 3));
+    case 5:
+      return S.suspend(() =>
+        __S(60, __c7, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListPageRulesResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["id"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id"],
+            ["id"],
+            ["id"],
+            ["id"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+            ["id", "value"],
+          ],
+          {
+            key: "id",
+            values: [
+              "always_use_https",
+              "automatic_https_rewrites",
+              "browser_cache_ttl",
+              "browser_check",
+              "bypass_cache_on_cookie",
+              "cache_by_device_type",
+              "cache_deception_armor",
+              "cache_key_fields",
+              "cache_level",
+              "cache_on_cookie",
+              "cache_ttl_by_status",
+              "disable_apps",
+              "disable_performance",
+              "disable_security",
+              "disable_zaraz",
+              "edge_cache_ttl",
+              "email_obfuscation",
+              "explicit_cache_control",
+              "forwarding_url",
+              "host_header_override",
+              "ip_geolocation",
+              "mirage",
+              "opportunistic_encryption",
+              "origin_error_page_pass_thru",
+              "polish",
+              "resolve_override",
+              "respect_strong_etag",
+              "response_buffering",
+              "rocket_loader",
+              "security_level",
+              "sort_query_string_for_cache",
+              "ssl",
+              "true_client_ip_header",
+              "waf",
+            ],
+          },
+        ),
+      );
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           pageruleId: S.String.pipe(T.Label("pagerule_id")),
-          actions: S.optional(__S(26, __c3, 2)),
+          actions: S.optional(__S(65, __c8, 1)),
           priority: S.optional(S.Number),
           status: S.optional(S.String),
-          targets: S.optional(__S(4, __c0, 4)),
+          targets: S.optional(__S(25, __c3, 1)),
         })
           .pipe(
             T.Http({ method: "PATCH", uri: "/zones/{zone_id}/pagerules/{pagerule_id}", code: 200 }),
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchPageRuleRequest" });
-    case 4:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -4028,21 +4048,25 @@ function __c3(j: number): any {
           },
         ),
       );
+    case 4:
+      return S.Array(__S(67, __c8, 3));
     case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          actions: __S(29, __c3, 5),
+          actions: __S(68, __c8, 4),
           createdOn: S.String.pipe(T.Body("created_on")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           priority: S.Number,
           status: S.String,
-          targets: __S(17, __c2, 1),
+          targets: __S(49, __c6, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchPageRuleResponse" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -4122,19 +4146,15 @@ function __c3(j: number): any {
           },
         ),
       );
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
     case 1:
+      return S.Array(__S(72, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           pageruleId: S.String.pipe(T.Label("pagerule_id")),
-          actions: __S(32, __c4, 0),
-          targets: __S(4, __c0, 4),
+          actions: __S(73, __c9, 1),
+          targets: __S(25, __c3, 1),
           priority: S.optional(S.Number),
           status: S.optional(S.String),
         })
@@ -4143,7 +4163,7 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdatePageRuleRequest" });
-    case 2:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -4223,23 +4243,22 @@ function __c4(j: number): any {
           },
         ),
       );
-    case 3:
-      return S.Array(__S(34, __c4, 2));
     case 4:
+      return S.Array(__S(75, __c9, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          actions: __S(35, __c4, 3),
+          actions: __S(76, __c9, 4),
           createdOn: S.String.pipe(T.Body("created_on")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           priority: S.Number,
           status: S.String,
-          targets: __S(9, __c1, 1),
+          targets: __S(17, __c2, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdatePageRuleResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

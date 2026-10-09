@@ -1200,8 +1200,8 @@ export const CreateVaultCertificate: API.OperationMethod<
   CreateVaultCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateVaultCertificateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VaultCertificateResponse>,
+  input: __S(33, __c1, 1) as any as S.Schema<CreateVaultCertificateRequest>,
+  output: __S(35, __c1, 3) as any as S.Schema<VaultCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1215,8 +1215,8 @@ export const DeleteRegisteredIdentity: API.OperationMethod<
   DeleteRegisteredIdentityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteRegisteredIdentityRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteRegisteredIdentityResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteRegisteredIdentityRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<DeleteRegisteredIdentityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1230,8 +1230,8 @@ export const DeleteVault: API.OperationMethod<
   DeleteVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteVaultRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteVaultResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteVaultRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<DeleteVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1245,8 +1245,8 @@ export const GetDeletedVault: API.OperationMethod<
   GetDeletedVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetDeletedVaultRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetDeletedVaultResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetDeletedVaultRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<GetDeletedVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1260,8 +1260,8 @@ export const GetDeletedVaultOperationStatus: API.OperationMethod<
   GetDeletedVaultOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetDeletedVaultOperationStatusRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<OperationResource>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetDeletedVaultOperationStatusRequest>,
+  output: __S(868, __c27, 4) as any as S.Schema<OperationResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1275,8 +1275,8 @@ export const GetOperationResult: API.OperationMethod<
   GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetOperationResultRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetOperationResultResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetOperationResultRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<GetOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1290,8 +1290,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetOperationStatusRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<OperationResource>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(868, __c27, 4) as any as S.Schema<OperationResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1305,8 +1305,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1320,8 +1320,8 @@ export const GetVault: API.OperationMethod<
   GetVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetVaultRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetVaultResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetVaultRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<GetVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1335,8 +1335,8 @@ export const GetVaultExtendedInfo: API.OperationMethod<
   GetVaultExtendedInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetVaultExtendedInfoRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetVaultExtendedInfoResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetVaultExtendedInfoRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<GetVaultExtendedInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1350,8 +1350,8 @@ export const ListDeletedVaultBySubscriptionId: API.OperationMethod<
   ListDeletedVaultBySubscriptionIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListDeletedVaultBySubscriptionIdRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeletedVaultList>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListDeletedVaultBySubscriptionIdRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<DeletedVaultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1365,8 +1365,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<ClientDiscoveryResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(168, __c5, 8) as any as S.Schema<ClientDiscoveryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1380,8 +1380,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PrivateLinkResources>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<PrivateLinkResources>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1395,8 +1395,8 @@ export const ListReplicationUsages: API.OperationMethod<
   ListReplicationUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListReplicationUsagesRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ReplicationUsageList>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListReplicationUsagesRequest>,
+  output: __S(229, __c7, 5) as any as S.Schema<ReplicationUsageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1410,8 +1410,8 @@ export const ListUsageByVaults: API.OperationMethod<
   ListUsageByVaultsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListUsageByVaultsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<VaultUsageList>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListUsageByVaultsRequest>,
+  output: __S(260, __c8, 4) as any as S.Schema<VaultUsageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1425,8 +1425,8 @@ export const ListVaultByResourceGroup: API.OperationMethod<
   ListVaultByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListVaultByResourceGroupRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<VaultList>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListVaultByResourceGroupRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<VaultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1440,8 +1440,8 @@ export const ListVaultBySubscriptionId: API.OperationMethod<
   ListVaultBySubscriptionIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListVaultBySubscriptionIdRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<VaultList>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListVaultBySubscriptionIdRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<VaultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1455,8 +1455,8 @@ export const RecoveryServicesCapabilities: API.OperationMethod<
   RecoveryServicesCapabilitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<RecoveryServicesCapabilitiesRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<RecoveryServicesCapabilitiesResponse>,
+  input: __S(387, __c12, 3) as any as S.Schema<RecoveryServicesCapabilitiesRequest>,
+  output: __S(391, __c12, 7) as any as S.Schema<RecoveryServicesCapabilitiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1470,8 +1470,8 @@ export const UndeleteDeletedVault: API.OperationMethod<
   UndeleteDeletedVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<UndeleteDeletedVaultRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<UndeleteDeletedVaultResponse>,
+  input: __S(417, __c13, 1) as any as S.Schema<UndeleteDeletedVaultRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<UndeleteDeletedVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1485,8 +1485,8 @@ export const UpdateVault: API.OperationMethod<
   UpdateVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<UpdateVaultRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<UpdateVaultResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<UpdateVaultRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<UpdateVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1500,8 +1500,8 @@ export const UpdateVaultExtendedInfo: API.OperationMethod<
   UpdateVaultExtendedInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<UpdateVaultExtendedInfoRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<UpdateVaultExtendedInfoResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<UpdateVaultExtendedInfoRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<UpdateVaultExtendedInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1515,8 +1515,8 @@ export const VaultExtendedInfoCreateOrUpdate: API.OperationMethod<
   VaultExtendedInfoCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<VaultExtendedInfoCreateOrUpdateRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<VaultExtendedInfoCreateOrUpdateResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<VaultExtendedInfoCreateOrUpdateRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<VaultExtendedInfoCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1530,8 +1530,8 @@ export const VaultsCreateOrUpdate: API.OperationMethod<
   VaultsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<VaultsCreateOrUpdateRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<VaultsCreateOrUpdateResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<VaultsCreateOrUpdateRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<VaultsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1569,21 +1569,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckNameAvailabilityResult",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           authType: S.optional(S.String),
           certificate: S.optional(S.String),
         }),
       ).annotate({ identifier: "RawCertificateData" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           certificateName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1595,7 +1599,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateVaultCertificateRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           authType: S.String,
@@ -1611,16 +1615,470 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ResourceCertificateDetails",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           type: S.optional(S.String),
           id: S.optional(S.String),
-          properties: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(34, __c1, 2)),
         }),
       ).annotate({ identifier: "VaultCertificateResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetVaultExtendedInfoRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          integrityKey: S.optional(S.String),
+          encryptionKey: S.optional(S.String),
+          encryptionKeyThumbprint: S.optional(S.String),
+          algorithm: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VaultExtendedInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(800, __c25, 0)),
+          properties: S.optional(__S(96, __c3, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetVaultExtendedInfoResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDeletedVaultBySubscriptionIdRequest",
+      });
+    case 1:
+      return S.Array(__S(736, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(129, __c4, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeletedVaultList" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.RecoveryServices/operations",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientDiscoveryDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          blobDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClientDiscoveryForLogSpecification",
+      });
+    case 3:
+      return S.Array(__S(162, __c5, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          logSpecifications: S.optional(__S(163, __c5, 3)),
+        }),
+      ).annotate({
+        identifier: "ClientDiscoveryForServiceSpecification",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          serviceSpecification: S.optional(__S(164, __c5, 4)),
+        }),
+      ).annotate({
+        identifier: "ClientDiscoveryForProperties",
+      });
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(__S(161, __c5, 1)),
+          origin: S.optional(S.String),
+          properties: S.optional(__S(165, __c5, 5)),
+        }),
+      ).annotate({
+        identifier: "ClientDiscoveryValueForSingleApi",
+      });
+    case 7:
+      return S.Array(__S(166, __c5, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(167, __c5, 7),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientDiscoveryResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateLinkResources",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateLinkResourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(800, __c25, 0)),
+          properties: S.optional(__S(1088, __c34, 0)),
+        }),
+      ).annotate({ identifier: "PrivateLinkResource" });
+    case 2:
+      return S.Array(__S(193, __c6, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(194, __c6, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateLinkResources" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/replicationUsages",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListReplicationUsagesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          unHealthyVmCount: S.optional(S.Number),
+          unHealthyProviderCount: S.optional(S.Number),
+          eventsCount: S.optional(S.Number),
+          deprecatedProviderCount: S.optional(S.Number),
+          supportedProviderCount: S.optional(S.Number),
+          unsupportedProviderCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MonitoringSummary" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          failedJobs: S.optional(S.Number),
+          suspendedJobs: S.optional(S.Number),
+          inProgressJobs: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "JobsSummary" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          monitoringSummary: S.optional(__S(225, __c7, 1)),
+          jobsSummary: S.optional(__S(226, __c7, 2)),
+          protectedItemCount: S.optional(S.Number),
+          recoveryPlanCount: S.optional(S.Number),
+          registeredServersCount: S.optional(S.Number),
+          recoveryServicesProviderAuthType: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ReplicationUsage" });
+    case 4:
+      return S.Array(__S(227, __c7, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(228, __c7, 4)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReplicationUsageList" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListUsageByVaultsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          localizedValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NameInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          quotaPeriod: S.optional(S.String),
+          nextResetTime: S.optional(S.String),
+          currentValue: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          name: S.optional(__S(257, __c8, 1)),
+        }),
+      ).annotate({ identifier: "VaultUsage" });
+    case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(259, __c8, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VaultUsageList" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVaultByResourceGroupRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1152, __c36, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(320, __c10, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VaultList" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/vaults",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVaultBySubscriptionIdRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subResource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DNSZone" });
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dnsZones: S.optional(__S(385, __c12, 1)),
+        }),
+      ).annotate({ identifier: "CapabilitiesProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          type: S.String,
+          properties: S.optional(__S(386, __c12, 2)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/capabilities",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RecoveryServicesCapabilitiesRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          subResource: S.optional(S.String),
+          requiredZoneNames: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({ identifier: "DNSZoneResponse" });
+    case 5:
+      return S.Array(__S(388, __c12, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dnsZones: S.optional(__S(389, __c12, 5)),
+        }),
+      ).annotate({
+        identifier: "CapabilitiesResponseProperties",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          properties: S.optional(__S(390, __c12, 6)),
+        }),
+      ).annotate({
+        identifier: "RecoveryServicesCapabilitiesResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          recoveryResourceGroupId: S.String,
+        }),
+      ).annotate({
+        identifier: "DeletedVaultUndeleteInputProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          deletedVaultName: S.String.pipe(T.Label()),
+          properties: __S(416, __c13, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{deletedVaultName}/undelete",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteDeletedVaultRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(800, __c25, 0)),
+          properties: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "UndeleteDeletedVaultResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1638,13 +2096,140 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteRegisteredIdentityRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteRegisteredIdentityResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(992, __c31, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(512, __c16, 0)),
+          sku: S.optional(__S(1022, __c31, 30)),
+          identity: S.optional(__S(514, __c16, 2)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateVaultRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          upgradeDetails: S.optional(__S(672, __c21, 0)),
+          encryption: S.optional(__S(1002, __c31, 10)),
+          moveDetails: S.optional(__S(672, __c21, 0)),
+          publicNetworkAccess: S.optional(S.String),
+          monitoringSettings: S.optional(__S(1006, __c31, 14)),
+          costManagementSettings: S.optional(__S(1007, __c31, 15)),
+          restoreSettings: S.optional(__S(1009, __c31, 17)),
+          redundancySettings: S.optional(__S(1010, __c31, 18)),
+          securitySettings: S.optional(__S(1016, __c31, 24)),
+          resourceGuardOperationRequests: S.optional(__S(960, __c30, 0)),
+          regionOfChoiceSettings: S.optional(__S(1017, __c31, 25)),
+        }),
+      ).annotate({ identifier: "VaultPropertiesInput" });
+    case 1:
+      return S.Record(S.String, __S(672, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(513, __c16, 1)),
+        }),
+      ).annotate({ identifier: "IdentityDataInput" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(96, __c3, 0)),
+          etag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVaultExtendedInfoRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(96, __c3, 0)),
+          etag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VaultExtendedInfoCreateOrUpdateRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(992, __c31, 0)),
+          location: S.String,
+          properties: S.optional(__S(512, __c16, 0)),
+          identity: S.optional(__S(514, __c16, 2)),
+          sku: S.optional(__S(1022, __c31, 30)),
+          etag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VaultsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1661,11 +2246,19 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteVaultRequest" });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteVaultResponse",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1680,7 +2273,37 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDeletedVaultRequest" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(800, __c25, 0)),
+          properties: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({ identifier: "GetDeletedVaultResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vaultId: S.optional(S.String),
+          vaultDeletionTime: S.optional(S.String),
+          purgeAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeletedVaultProperties" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1691,25 +2314,11 @@ function __c1(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          vaultId: S.optional(S.String),
-          vaultDeletionTime: S.optional(S.String),
-          purgeAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeletedVaultProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "GetDeletedVaultResponse" });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1727,43 +2336,47 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetDeletedVaultOperationStatusRequest",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           info: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ErrorAdditionalInfoItem" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(18, __c2, 2)));
+      return S.Array(__S(864, __c27, 0));
     case 2:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(867, __c27, 3)));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          additionalInfo: S.optional(__S(16, __c2, 0)),
+          additionalInfo: S.optional(__S(865, __c27, 1)),
           code: S.optional(S.String),
-          details: S.optional(__S(17, __c2, 1)),
+          details: S.optional(__S(866, __c27, 2)),
           message: S.optional(S.String),
           target: S.optional(S.String),
         }),
       ).annotate({ identifier: "Error" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          error: S.optional(__S(18, __c2, 2)),
+          error: S.optional(__S(867, __c27, 3)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           status: S.optional(S.String),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationResource" });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1781,9 +2394,40 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetOperationResultRequest",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(800, __c25, 0)),
+          tags: S.optional(__S(992, __c31, 0)),
+          location: S.String,
+          properties: S.optional(__S(1018, __c31, 26)),
+          identity: S.optional(__S(1021, __c31, 29)),
+          sku: S.optional(__S(1022, __c31, 30)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOperationResultResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           operationId: S.optional(S.String),
@@ -1797,17 +2441,13 @@ function __c2(j: number): any {
           previousResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpgradeDetails" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpoint" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1817,24 +2457,24 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServiceConnectionState",
       });
-    case 1:
+    case 4:
       return S.Array(S.String);
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          privateEndpoint: S.optional(__S(23, __c2, 7)),
-          privateLinkServiceConnectionState: S.optional(__S(24, __c3, 0)),
-          groupIds: S.optional(__S(25, __c3, 1)),
+          privateEndpoint: S.optional(__S(994, __c31, 2)),
+          privateLinkServiceConnectionState: S.optional(__S(995, __c31, 3)),
+          groupIds: S.optional(__S(996, __c31, 4)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(26, __c3, 2)),
+          properties: S.optional(__S(997, __c31, 5)),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
@@ -1842,36 +2482,32 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionVaultProperties",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(998, __c31, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           keyUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "CmkKeyVaultProperties" });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           useSystemAssignedIdentity: S.optional(S.Boolean),
           userAssignedIdentity: S.optional(S.String),
         }),
       ).annotate({ identifier: "CmkKekIdentity" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(__S(29, __c3, 5)),
-          kekIdentity: S.optional(__S(30, __c3, 6)),
+          keyVaultProperties: S.optional(__S(1000, __c31, 8)),
+          kekIdentity: S.optional(__S(1001, __c31, 9)),
           infrastructureEncryption: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VaultPropertiesEncryption",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           operationId: S.optional(S.String),
@@ -1883,7 +2519,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "VaultPropertiesMoveDetails",
       });
-    case 1:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           alertsForAllJobFailures: S.optional(S.String),
@@ -1893,27 +2529,27 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AzureMonitorAlertSettings",
       });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           alertsForCriticalOperations: S.optional(S.String),
           emailNotificationsForSiteRecovery: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClassicAlertSettings" });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          azureMonitorAlertSettings: S.optional(__S(33, __c4, 1)),
-          classicAlertSettings: S.optional(__S(34, __c4, 2)),
+          azureMonitorAlertSettings: S.optional(__S(1004, __c31, 12)),
+          classicAlertSettings: S.optional(__S(1005, __c31, 13)),
         }),
       ).annotate({ identifier: "MonitoringSettings" });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           granularityLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "CostManagementSettings" });
-    case 5:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           crossSubscriptionRestoreState: S.optional(S.String),
@@ -1921,13 +2557,13 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CrossSubscriptionRestoreSettings",
       });
-    case 6:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          crossSubscriptionRestoreSettings: S.optional(__S(37, __c4, 5)),
+          crossSubscriptionRestoreSettings: S.optional(__S(1008, __c31, 16)),
         }),
       ).annotate({ identifier: "RestoreSettings" });
-    case 7:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           standardTierStorageRedundancy: S.optional(S.String),
@@ -1936,11 +2572,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "VaultPropertiesRedundancySettings",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -1949,14 +2581,14 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ImmutabilityConfiguration",
       });
-    case 1:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          configuration: S.optional(__S(40, __c5, 0)),
+          configuration: S.optional(__S(1011, __c31, 19)),
         }),
       ).annotate({ identifier: "ImmutabilitySettings" });
-    case 2:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           softDeleteState: S.optional(S.String),
@@ -1964,84 +2596,78 @@ function __c5(j: number): any {
           enhancedSecurityState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SoftDeleteSettings" });
-    case 3:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           operationIdentityType: S.optional(S.String),
           userAssignedIdentity: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociatedIdentity" });
-    case 4:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          sourceScanIdentity: S.optional(__S(43, __c5, 3)),
+          sourceScanIdentity: S.optional(__S(1014, __c31, 22)),
         }),
       ).annotate({ identifier: "SourceScanConfiguration" });
-    case 5:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          immutabilitySettings: S.optional(__S(41, __c5, 1)),
-          softDeleteSettings: S.optional(__S(42, __c5, 2)),
+          immutabilitySettings: S.optional(__S(1012, __c31, 20)),
+          softDeleteSettings: S.optional(__S(1013, __c31, 21)),
           multiUserAuthorization: S.optional(S.String),
-          sourceScanConfiguration: S.optional(__S(44, __c5, 4)),
+          sourceScanConfiguration: S.optional(__S(1015, __c31, 23)),
         }),
       ).annotate({ identifier: "SecuritySettings" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegionOfChoiceSettings" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          upgradeDetails: S.optional(__S(22, __c2, 6)),
-          privateEndpointConnections: S.optional(__S(28, __c3, 4)),
+          upgradeDetails: S.optional(__S(993, __c31, 1)),
+          privateEndpointConnections: S.optional(__S(999, __c31, 7)),
           privateEndpointStateForBackup: S.optional(S.String),
           privateEndpointStateForSiteRecovery: S.optional(S.String),
-          encryption: S.optional(__S(31, __c3, 7)),
-          moveDetails: S.optional(__S(32, __c4, 0)),
+          encryption: S.optional(__S(1002, __c31, 10)),
+          moveDetails: S.optional(__S(1003, __c31, 11)),
           moveState: S.optional(S.String),
           backupStorageVersion: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          monitoringSettings: S.optional(__S(35, __c4, 3)),
-          costManagementSettings: S.optional(__S(36, __c4, 4)),
-          restoreSettings: S.optional(__S(38, __c4, 6)),
-          redundancySettings: S.optional(__S(39, __c4, 7)),
-          securitySettings: S.optional(__S(45, __c5, 5)),
+          monitoringSettings: S.optional(__S(1006, __c31, 14)),
+          costManagementSettings: S.optional(__S(1007, __c31, 15)),
+          restoreSettings: S.optional(__S(1009, __c31, 17)),
+          redundancySettings: S.optional(__S(1010, __c31, 18)),
+          securitySettings: S.optional(__S(1016, __c31, 24)),
           secureScore: S.optional(S.String),
           bcdrSecurityLevel: S.optional(S.String),
-          resourceGuardOperationRequests: S.optional(__S(46, __c5, 6)),
-          regionOfChoiceSettings: S.optional(__S(47, __c5, 7)),
+          resourceGuardOperationRequests: S.optional(__S(960, __c30, 0)),
+          regionOfChoiceSettings: S.optional(__S(1017, __c31, 25)),
         }),
       ).annotate({ identifier: "VaultProperties" });
-    case 1:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserIdentity" });
-    case 2:
-      return S.Record(S.String, __S(49, __c6, 1));
-    case 3:
+    case 28:
+      return S.Record(S.String, __S(1019, __c31, 27));
+    case 29:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(50, __c6, 2)),
+          userAssignedIdentities: S.optional(__S(1020, __c31, 28)),
         }),
       ).annotate({ identifier: "IdentityData" });
-    case 4:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -2051,24 +2677,11 @@ function __c6(j: number): any {
           capacity: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(21, __c2, 5)),
-          location: S.String,
-          properties: S.optional(__S(48, __c6, 0)),
-          identity: S.optional(__S(51, __c6, 3)),
-          sku: S.optional(__S(52, __c6, 4)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOperationResultResponse",
-      });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2086,7 +2699,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetOperationStatusRequest",
       });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2104,33 +2721,37 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourceRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(46, __c5, 6)),
-          requiredZoneNames: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(56, __c7, 0)),
+          systemData: S.optional(__S(800, __c25, 0)),
+          properties: S.optional(__S(1088, __c34, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(960, __c30, 0)),
+          requiredZoneNames: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2145,557 +2766,27 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVaultRequest" });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(21, __c2, 5)),
+          systemData: S.optional(__S(800, __c25, 0)),
+          tags: S.optional(__S(992, __c31, 0)),
           location: S.String,
-          properties: S.optional(__S(48, __c6, 0)),
-          identity: S.optional(__S(51, __c6, 3)),
-          sku: S.optional(__S(52, __c6, 4)),
+          properties: S.optional(__S(1018, __c31, 26)),
+          identity: S.optional(__S(1021, __c31, 29)),
+          sku: S.optional(__S(1022, __c31, 30)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetVaultResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetVaultExtendedInfoRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          integrityKey: S.optional(S.String),
-          encryptionKey: S.optional(S.String),
-          encryptionKeyThumbprint: S.optional(S.String),
-          algorithm: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VaultExtendedInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(61, __c7, 5)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetVaultExtendedInfoResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDeletedVaultBySubscriptionIdRequest",
-      });
   }
 }
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(13, __c1, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(64, __c8, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeletedVaultList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.RecoveryServices/operations",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientDiscoveryDisplay" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          blobDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClientDiscoveryForLogSpecification",
-      });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          logSpecifications: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({
-        identifier: "ClientDiscoveryForServiceSpecification",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceSpecification: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({
-        identifier: "ClientDiscoveryForProperties",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(67, __c8, 3)),
-          origin: S.optional(S.String),
-          properties: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({
-        identifier: "ClientDiscoveryValueForSingleApi",
-      });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(73, __c9, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientDiscoveryResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateLinkResources",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateLinkResourcesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "PrivateLinkResource" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(77, __c9, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateLinkResources" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/replicationUsages",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListReplicationUsagesRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unHealthyVmCount: S.optional(S.Number),
-          unHealthyProviderCount: S.optional(S.Number),
-          eventsCount: S.optional(S.Number),
-          deprecatedProviderCount: S.optional(S.Number),
-          supportedProviderCount: S.optional(S.Number),
-          unsupportedProviderCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MonitoringSummary" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          failedJobs: S.optional(S.Number),
-          suspendedJobs: S.optional(S.Number),
-          inProgressJobs: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "JobsSummary" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          monitoringSummary: S.optional(__S(80, __c10, 0)),
-          jobsSummary: S.optional(__S(81, __c10, 1)),
-          protectedItemCount: S.optional(S.Number),
-          recoveryPlanCount: S.optional(S.Number),
-          registeredServersCount: S.optional(S.Number),
-          recoveryServicesProviderAuthType: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ReplicationUsage" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(83, __c10, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReplicationUsageList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListUsageByVaultsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          localizedValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NameInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          quotaPeriod: S.optional(S.String),
-          nextResetTime: S.optional(S.String),
-          currentValue: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          name: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "VaultUsage" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(88, __c11, 0)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VaultUsageList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVaultByResourceGroupRequest",
-      });
-    case 3:
-      return S.Array(__S(59, __c7, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(91, __c11, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VaultList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/vaults",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVaultBySubscriptionIdRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subResource: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DNSZone" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dnsZones: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "CapabilitiesProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          type: S.String,
-          properties: S.optional(__S(96, __c12, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/capabilities",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RecoveryServicesCapabilitiesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subResource: S.optional(S.String),
-          requiredZoneNames: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "DNSZoneResponse" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dnsZones: S.optional(__S(99, __c12, 3)),
-        }),
-      ).annotate({
-        identifier: "CapabilitiesResponseProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          properties: S.optional(__S(100, __c12, 4)),
-        }),
-      ).annotate({
-        identifier: "RecoveryServicesCapabilitiesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          recoveryResourceGroupId: S.String,
-        }),
-      ).annotate({
-        identifier: "DeletedVaultUndeleteInputProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          deletedVaultName: S.String.pipe(T.Label()),
-          properties: __S(102, __c12, 6),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{location}/deletedVaults/{deletedVaultName}/undelete",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteDeletedVaultRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "UndeleteDeletedVaultResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          upgradeDetails: S.optional(__S(9, __c1, 1)),
-          encryption: S.optional(__S(31, __c3, 7)),
-          moveDetails: S.optional(__S(9, __c1, 1)),
-          publicNetworkAccess: S.optional(S.String),
-          monitoringSettings: S.optional(__S(35, __c4, 3)),
-          costManagementSettings: S.optional(__S(36, __c4, 4)),
-          restoreSettings: S.optional(__S(38, __c4, 6)),
-          redundancySettings: S.optional(__S(39, __c4, 7)),
-          securitySettings: S.optional(__S(45, __c5, 5)),
-          resourceGuardOperationRequests: S.optional(__S(46, __c5, 6)),
-          regionOfChoiceSettings: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "VaultPropertiesInput" });
-    case 2:
-      return S.Record(S.String, __S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(106, __c13, 2)),
-        }),
-      ).annotate({ identifier: "IdentityDataInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(21, __c2, 5)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(105, __c13, 1)),
-          sku: S.optional(__S(52, __c6, 4)),
-          identity: S.optional(__S(107, __c13, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateVaultRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(61, __c7, 5)),
-          etag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVaultExtendedInfoRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(61, __c7, 5)),
-          etag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VaultExtendedInfoCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(21, __c2, 5)),
-          location: S.String,
-          properties: S.optional(__S(105, __c13, 1)),
-          identity: S.optional(__S(107, __c13, 3)),
-          sku: S.optional(__S(52, __c6, 4)),
-          etag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VaultsCreateOrUpdateRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

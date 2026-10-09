@@ -382,8 +382,8 @@ export const activateSubscriptions: API.OperationMethod<
   ActivateSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ActivateSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(112, __c14, 0) as any as S.Schema<ActivateSubscriptionsRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -403,8 +403,8 @@ export const changePlanSubscriptions: API.OperationMethod<
   ChangePlanSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ChangePlanSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(137, __c17, 1) as any as S.Schema<ChangePlanSubscriptionsRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -424,8 +424,8 @@ export const changeRenewalSettingsSubscriptions: API.OperationMethod<
   ChangeRenewalSettingsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ChangeRenewalSettingsSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(144, __c18, 0) as any as S.Schema<ChangeRenewalSettingsSubscriptionsRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -445,8 +445,8 @@ export const changeSeatsSubscriptions: API.OperationMethod<
   ChangeSeatsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ChangeSeatsSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(152, __c19, 0) as any as S.Schema<ChangeSeatsSubscriptionsRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -466,8 +466,8 @@ export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteSubscriptionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteSubscriptionsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteSubscriptionsRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<DeleteSubscriptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -481,8 +481,8 @@ export const getCustomers: API.OperationMethod<
   GetCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetCustomersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Customer>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetCustomersRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -496,8 +496,8 @@ export const getSubscriptions: API.OperationMethod<
   GetSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetSubscriptionsRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -515,8 +515,8 @@ export const getwatchdetailsResellernotify: API.OperationMethod<
   GetwatchdetailsResellernotifyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetwatchdetailsResellernotifyRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ResellernotifyGetwatchdetailsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetwatchdetailsResellernotifyRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<ResellernotifyGetwatchdetailsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -536,8 +536,8 @@ export const insertCustomers: API.OperationMethod<
   InsertCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<InsertCustomersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Customer>,
+  input: __S(32, __c4, 0) as any as S.Schema<InsertCustomersRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -557,8 +557,8 @@ export const insertSubscriptions: API.OperationMethod<
   InsertSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<InsertSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(40, __c5, 0) as any as S.Schema<InsertSubscriptionsRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -573,8 +573,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   GcpOpContext,
   Subscriptions
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListSubscriptionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Subscriptions>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListSubscriptionsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<Subscriptions>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -595,8 +595,8 @@ export const patchCustomers: API.OperationMethod<
   PatchCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<PatchCustomersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Customer>,
+  input: __S(56, __c7, 0) as any as S.Schema<PatchCustomersRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -616,8 +616,8 @@ export const registerResellernotify: API.OperationMethod<
   RegisterResellernotifyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<RegisterResellernotifyRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ResellernotifyResource>,
+  input: __S(64, __c8, 0) as any as S.Schema<RegisterResellernotifyRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ResellernotifyResource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -637,8 +637,8 @@ export const startPaidServiceSubscriptions: API.OperationMethod<
   StartPaidServiceSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<StartPaidServiceSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(80, __c10, 0) as any as S.Schema<StartPaidServiceSubscriptionsRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -658,8 +658,8 @@ export const suspendSubscriptions: API.OperationMethod<
   SuspendSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<SuspendSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(88, __c11, 0) as any as S.Schema<SuspendSubscriptionsRequest>,
+  output: __S(134, __c16, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -679,8 +679,8 @@ export const unregisterResellernotify: API.OperationMethod<
   UnregisterResellernotifyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UnregisterResellernotifyRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ResellernotifyResource>,
+  input: __S(96, __c12, 0) as any as S.Schema<UnregisterResellernotifyRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<ResellernotifyResource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -700,8 +700,8 @@ export const updateCustomers: API.OperationMethod<
   UpdateCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<UpdateCustomersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Customer>,
+  input: __S(104, __c13, 0) as any as S.Schema<UpdateCustomersRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -711,178 +711,6 @@ export const updateCustomers: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateSubscriptionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          renewalType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RenewalSettings" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SubscriptionPlanCommitmentInterval",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          planName: S.optional(S.String),
-          isCommitmentPlan: S.optional(S.Boolean),
-          commitmentInterval: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "SubscriptionPlan" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          licensedNumberOfSeats: S.optional(S.Number),
-          numberOfSeats: S.optional(S.Number),
-          maximumNumberOfSeats: S.optional(S.Number),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Seats" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          minimumTransferableSeats: S.optional(S.Number),
-          transferabilityExpirationTime: S.optional(S.String),
-          currentLegacySkuId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SubscriptionTransferInfo" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          isInTrial: S.optional(S.Boolean),
-          trialEndTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SubscriptionTrialSettings",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          renewalSettings: S.optional(__S(1, __c0, 1)),
-          dealCode: S.optional(S.String),
-          plan: S.optional(__S(3, __c0, 3)),
-          kind: S.optional(S.String),
-          seats: S.optional(__S(4, __c0, 4)),
-          customerDomain: S.optional(S.String),
-          purchaseOrderId: S.optional(S.String),
-          billingMethod: S.optional(S.String),
-          status: S.optional(S.String),
-          skuName: S.optional(S.String),
-          skuId: S.optional(S.String),
-          transferInfo: S.optional(__S(5, __c0, 5)),
-          resourceUiUrl: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          customerId: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          suspensionReasons: S.optional(__S(6, __c0, 6)),
-          trialSettings: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "Subscription" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          purchaseOrderId: S.optional(S.String),
-          seats: S.optional(__S(4, __c0, 4)),
-          planName: S.optional(S.String),
-          dealCode: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChangePlanRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          subscriptionId: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changePlan",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ChangePlanSubscriptionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          subscriptionId: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ChangeRenewalSettingsSubscriptionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeSeats",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ChangeSeatsSubscriptionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          deletionType: S.String.pipe(T.Query()),
-          subscriptionId: S.String.pipe(T.Label()),
-          customerId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSubscriptionsRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteSubscriptionsResponse",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
@@ -896,7 +724,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "GetCustomersRequest" });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -924,8 +752,8 @@ function __c2(j: number): any {
         S.Struct({
           phoneNumber: S.optional(S.String),
           customerDomain: S.optional(S.String),
-          postalAddress: S.optional(__S(16, __c2, 0)),
-          primaryAdmin: S.optional(__S(17, __c2, 1)),
+          postalAddress: S.optional(__S(8, __c1, 0)),
+          primaryAdmin: S.optional(__S(9, __c1, 1)),
           kind: S.optional(S.String),
           alternateEmail: S.optional(S.String),
           customerDomainVerified: S.optional(S.Boolean),
@@ -934,7 +762,11 @@ function __c2(j: number): any {
           customerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Customer" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
@@ -947,7 +779,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSubscriptionsRequest" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -959,20 +795,24 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetwatchdetailsResellernotifyRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           topicName: S.optional(S.String),
-          serviceAccountEmailAddresses: S.optional(__S(6, __c0, 6)),
+          serviceAccountEmailAddresses: S.optional(__S(120, __c15, 0)),
         }),
       ).annotate({
         identifier: "ResellernotifyGetwatchdetailsResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerAuthToken: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -981,14 +821,18 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertCustomersRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String.pipe(T.Query())),
           sourceSkuId: S.optional(S.String.pipe(T.Query())),
           customerAuthToken: S.optional(S.String.pipe(T.Query())),
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(134, __c16, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1001,7 +845,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1020,20 +864,24 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListSubscriptionsRequest" });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(134, __c16, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          subscriptions: S.optional(__S(25, __c3, 1)),
+          subscriptions: S.optional(__S(49, __c6, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subscriptions" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1042,7 +890,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchCustomersRequest" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceAccountEmailAddress: S.optional(S.String.pipe(T.Query())),
@@ -1056,13 +908,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "RegisterResellernotifyRequest",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           topicName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResellernotifyResource" });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1077,7 +937,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "StartPaidServiceSubscriptionsRequest",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
@@ -1094,7 +958,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1110,11 +974,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UnregisterResellernotifyRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1125,7 +993,202 @@ function __c4(j: number): any {
       ).annotate({ identifier: "UpdateCustomersRequest" });
   }
 }
-
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateSubscriptionsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          renewalType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RenewalSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SubscriptionPlanCommitmentInterval",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          planName: S.optional(S.String),
+          isCommitmentPlan: S.optional(S.Boolean),
+          commitmentInterval: S.optional(__S(129, __c16, 1)),
+        }),
+      ).annotate({ identifier: "SubscriptionPlan" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          licensedNumberOfSeats: S.optional(S.Number),
+          numberOfSeats: S.optional(S.Number),
+          maximumNumberOfSeats: S.optional(S.Number),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Seats" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          minimumTransferableSeats: S.optional(S.Number),
+          transferabilityExpirationTime: S.optional(S.String),
+          currentLegacySkuId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubscriptionTransferInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          isInTrial: S.optional(S.Boolean),
+          trialEndTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SubscriptionTrialSettings",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          renewalSettings: S.optional(__S(128, __c16, 0)),
+          dealCode: S.optional(S.String),
+          plan: S.optional(__S(130, __c16, 2)),
+          kind: S.optional(S.String),
+          seats: S.optional(__S(131, __c16, 3)),
+          customerDomain: S.optional(S.String),
+          purchaseOrderId: S.optional(S.String),
+          billingMethod: S.optional(S.String),
+          status: S.optional(S.String),
+          skuName: S.optional(S.String),
+          skuId: S.optional(S.String),
+          transferInfo: S.optional(__S(132, __c16, 4)),
+          resourceUiUrl: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+          customerId: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          suspensionReasons: S.optional(__S(120, __c15, 0)),
+          trialSettings: S.optional(__S(133, __c16, 5)),
+        }),
+      ).annotate({ identifier: "Subscription" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          purchaseOrderId: S.optional(S.String),
+          seats: S.optional(__S(131, __c16, 3)),
+          planName: S.optional(S.String),
+          dealCode: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChangePlanRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          subscriptionId: S.String.pipe(T.Label()),
+          body: S.optional(__S(136, __c17, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changePlan",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ChangePlanSubscriptionsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          subscriptionId: S.String.pipe(T.Label()),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ChangeRenewalSettingsSubscriptionsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          customerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(131, __c16, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeSeats",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ChangeSeatsSubscriptionsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deletionType: S.String.pipe(T.Query()),
+          subscriptionId: S.String.pipe(T.Label()),
+          customerId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSubscriptionsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteSubscriptionsResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

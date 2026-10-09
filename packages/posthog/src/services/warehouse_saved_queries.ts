@@ -593,8 +593,8 @@ export const createWarehouseSavedQueriesAncestor: API.OperationMethod<
   CreateWarehouseSavedQueriesAncestorError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateWarehouseSavedQueriesAncestorRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<SavedQueryAncestors>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateWarehouseSavedQueriesAncestorRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<SavedQueryAncestors>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -608,8 +608,8 @@ export const createWarehouseSavedQueriesCheckIncremental: API.OperationMethod<
   CreateWarehouseSavedQueriesCheckIncrementalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateWarehouseSavedQueriesCheckIncrementalRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<IncrementalEligibility>,
+  input: __S(209, __c13, 1) as any as S.Schema<CreateWarehouseSavedQueriesCheckIncrementalRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<IncrementalEligibility>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -627,8 +627,8 @@ export const createWarehouseSavedQueriesDescendant: API.OperationMethod<
   CreateWarehouseSavedQueriesDescendantError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateWarehouseSavedQueriesDescendantRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<SavedQueryDescendants>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreateWarehouseSavedQueriesDescendantRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<SavedQueryDescendants>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -646,8 +646,8 @@ export const createWarehouseSavedQueriesMaterialize: API.OperationMethod<
   CreateWarehouseSavedQueriesMaterializeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateWarehouseSavedQueriesMaterializeRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateWarehouseSavedQueriesMaterializeResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateWarehouseSavedQueriesMaterializeRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<CreateWarehouseSavedQueriesMaterializeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -666,11 +666,11 @@ export const createWarehouseSavedQueriesRevertMaterialization: API.OperationMeth
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    13,
-    __c1,
-    5,
+    273,
+    __c17,
+    1,
   ) as any as S.Schema<CreateWarehouseSavedQueriesRevertMaterializationRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
+  output: __S(315, __c19, 11) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -688,8 +688,8 @@ export const createWarehouseSavedQueriesRun: API.OperationMethod<
   CreateWarehouseSavedQueriesRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateWarehouseSavedQueriesRunRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateWarehouseSavedQueriesRunResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<CreateWarehouseSavedQueriesRunRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<CreateWarehouseSavedQueriesRunResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -703,8 +703,8 @@ export const createWarehouseSavedQuery: API.OperationMethod<
   CreateWarehouseSavedQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateWarehouseSavedQueryRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<CreateWarehouseSavedQueryRequest>,
+  output: __S(315, __c19, 11) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -718,8 +718,8 @@ export const getWarehouseSavedQueriesActivity: API.OperationMethod<
   GetWarehouseSavedQueriesActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetWarehouseSavedQueriesActivityRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetWarehouseSavedQueriesActivityRequest>,
+  output: __S(315, __c19, 11) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -733,8 +733,8 @@ export const getWarehouseSavedQueriesDependency: API.OperationMethod<
   GetWarehouseSavedQueriesDependencyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetWarehouseSavedQueriesDependencyRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<SavedQueryDependencies>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetWarehouseSavedQueriesDependencyRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<SavedQueryDependencies>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -748,8 +748,8 @@ export const getWarehouseSavedQueriesRunHistory: API.OperationMethod<
   GetWarehouseSavedQueriesRunHistoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetWarehouseSavedQueriesRunHistoryRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetWarehouseSavedQueriesRunHistoryRequest>,
+  output: __S(315, __c19, 11) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -763,8 +763,8 @@ export const getWarehouseSavedQuery: API.OperationMethod<
   GetWarehouseSavedQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetWarehouseSavedQueryRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetWarehouseSavedQueryRequest>,
+  output: __S(315, __c19, 11) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -778,8 +778,8 @@ export const listWarehouseSavedQueries: API.OperationMethod<
   ListWarehouseSavedQueriesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListWarehouseSavedQueriesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<PaginatedDataWarehouseSavedQueryMinimalList>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListWarehouseSavedQueriesRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<PaginatedDataWarehouseSavedQueryMinimalList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -797,8 +797,8 @@ export const updateWarehouseSavedQueriesPartial: API.OperationMethod<
   UpdateWarehouseSavedQueriesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<UpdateWarehouseSavedQueriesPartialRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<UpdateWarehouseSavedQueriesPartialRequest>,
+  output: __S(315, __c19, 11) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -812,8 +812,8 @@ export const updateWarehouseSavedQuery: API.OperationMethod<
   UpdateWarehouseSavedQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<UpdateWarehouseSavedQueryRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
+  input: __S(96, __c6, 0) as any as S.Schema<UpdateWarehouseSavedQueryRequest>,
+  output: __S(315, __c19, 11) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -831,8 +831,8 @@ export const warehouseSavedQueriesCancelCreate: API.OperationMethod<
   WarehouseSavedQueriesCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<WarehouseSavedQueriesCancelCreateRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DataWarehouseSavedQueryOutput>,
+  input: __S(112, __c7, 0) as any as S.Schema<WarehouseSavedQueriesCancelCreateRequest>,
+  output: __S(315, __c19, 11) as any as S.Schema<DataWarehouseSavedQueryOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -846,8 +846,8 @@ export const warehouseSavedQueriesDestroy: API.OperationMethod<
   WarehouseSavedQueriesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<WarehouseSavedQueriesDestroyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<WarehouseSavedQueriesDestroyResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<WarehouseSavedQueriesDestroyRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<WarehouseSavedQueriesDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -861,8 +861,8 @@ export const warehouseSavedQueriesResumeCreate: API.OperationMethod<
   WarehouseSavedQueriesResumeCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<WarehouseSavedQueriesResumeCreateRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<SavedQueryResume>,
+  input: __S(144, __c9, 0) as any as S.Schema<WarehouseSavedQueriesResumeCreateRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<SavedQueryResume>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -880,8 +880,8 @@ export const warehouseSavedQueriesResumeSchedulesCreate: API.OperationMethod<
   WarehouseSavedQueriesResumeSchedulesCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -891,318 +891,6 @@ export const warehouseSavedQueriesResumeSchedulesCreate: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          level: S.optional(S.NullOr(S.Number)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/warehouse_saved_queries/{id}/ancestors/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateWarehouseSavedQueriesAncestorRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ancestors: __S(1, __c0, 1),
-        }),
-      ).annotate({ identifier: "SavedQueryAncestors" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          query: S.String,
-          incremental_key: S.optional(S.NullOr(S.String)),
-          unique_key: S.optional(S.NullOr(__S(3, __c0, 3))),
-          lookback_seconds: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/warehouse_saved_queries/check_incremental/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateWarehouseSavedQueriesCheckIncrementalRequest",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          eligible: S.Boolean,
-          key_candidates: __S(1, __c0, 1),
-          unique_key_candidates: __S(1, __c0, 1),
-          key_candidate_types: __S(5, __c0, 5),
-          blockers: __S(1, __c0, 1),
-          warnings: __S(1, __c0, 1),
-        }),
-      ).annotate({ identifier: "IncrementalEligibility" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          level: S.optional(S.NullOr(S.Number)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/warehouse_saved_queries/{id}/descendants/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateWarehouseSavedQueriesDescendantRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          descendants: __S(1, __c0, 1),
-        }),
-      ).annotate({ identifier: "SavedQueryDescendants" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          sync_frequency: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/warehouse_saved_queries/{id}/materialize/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateWarehouseSavedQueriesMaterializeRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateWarehouseSavedQueriesMaterializeResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          query: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateWarehouseSavedQueriesRevertMaterializationRequestQuery",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          incremental_key: S.String,
-          unique_key: __S(1, __c0, 1),
-          lookback_seconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "IncrementalConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          query: S.optional(__S(11, __c1, 3)),
-          incremental: S.optional(S.NullOr(__S(12, __c1, 4))),
-          description: S.optional(S.NullOr(S.String)),
-          sync_frequency: S.optional(S.NullOr(S.String)),
-          folder_id: S.optional(S.NullOr(S.String)),
-          edited_history_id: S.optional(S.NullOr(S.String)),
-          soft_update: S.optional(S.NullOr(S.Boolean)),
-          dag_id: S.optional(S.NullOr(S.String)),
-          is_test: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/warehouse_saved_queries/{id}/revert_materialization/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateWarehouseSavedQueriesRevertMaterializationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          query: S.String,
-        }),
-      ).annotate({
-        identifier: "DataWarehouseSavedQueryOutputQuery",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          watermark: S.optional(S.NullOr(S.String)),
-          definition_fingerprint: S.optional(S.NullOr(S.String)),
-          last_full_refresh_at: S.optional(S.NullOr(S.String)),
-          last_run_mode: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "IncrementalState" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(16, __c2, 0))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "SyncFrequencyBlocker" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cadence: S.String,
-          allowed: S.Boolean,
-          blocked_by: S.NullOr(S.String),
-          blocker: S.NullOr(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "SyncFrequencyOption" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.String,
-          blocker: S.NullOr(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "SyncFrequencyBound" });
-    case 6:
-      return S.Array(__S(18, __c2, 2));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          frequency_mode: S.String,
-          options: __S(20, __c2, 4),
-          floor: S.NullOr(__S(21, __c2, 5)),
-          ceiling: S.NullOr(__S(21, __c2, 5)),
-          best_effort_sources: __S(22, __c2, 6),
-          best_effort_sources_withheld: S.Boolean,
-        }),
-      ).annotate({ identifier: "SyncFrequencyBounds" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(16, __c2, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          at: S.String,
-          reason: S.String,
-          job_id: S.String,
-        }),
-      ).annotate({ identifier: "SavedQuerySuspension" });
-    case 2:
-      return S.Record(S.String, __S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          deleted: S.optional(S.NullOr(S.Boolean)),
-          name: S.optional(S.String),
-          query: S.optional(__S(14, __c1, 6)),
-          incremental: S.optional(S.NullOr(__S(12, __c1, 4))),
-          incremental_state: S.optional(S.NullOr(__S(15, __c1, 7))),
-          has_incremental_history: S.optional(S.Boolean),
-          created_by: S.optional(S.NullOr(__S(17, __c2, 1))),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          sync_frequency: S.optional(S.NullOr(S.String)),
-          sync_frequency_bounds: S.optional(__S(23, __c2, 7)),
-          columns: S.optional(__S(24, __c3, 0)),
-          status: S.optional(S.NullOr(S.String)),
-          last_run_at: S.optional(S.NullOr(S.String)),
-          managed_viewset_kind: S.optional(S.NullOr(S.String)),
-          folder_id: S.optional(S.NullOr(S.String)),
-          folder_name: S.optional(S.NullOr(S.String)),
-          latest_error: S.optional(S.NullOr(S.String)),
-          latest_history_id: S.optional(S.NullOr(S.String)),
-          is_materialized: S.optional(S.NullOr(S.Boolean)),
-          origin: S.optional(S.NullOr(S.String)),
-          is_test: S.optional(S.Boolean),
-          expires_at: S.optional(S.NullOr(S.String)),
-          user_access_level: S.optional(S.NullOr(S.String)),
-          suspended: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "DataWarehouseSavedQueryOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          full_refresh: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/warehouse_saved_queries/{id}/run/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateWarehouseSavedQueriesRunRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          query: S.optional(__S(14, __c1, 6)),
-          incremental: S.optional(S.NullOr(__S(12, __c1, 4))),
-          description: S.optional(S.NullOr(S.String)),
-          sync_frequency: S.optional(S.NullOr(S.String)),
-          folder_id: S.optional(S.NullOr(S.String)),
-          edited_history_id: S.optional(S.NullOr(S.String)),
-          soft_update: S.optional(S.NullOr(S.Boolean)),
-          dag_id: S.optional(S.NullOr(S.String)),
-          is_test: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/warehouse_saved_queries/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateWarehouseSavedQueryRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1217,7 +905,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetWarehouseSavedQueriesActivityRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1232,18 +924,18 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetWarehouseSavedQueriesDependencyRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           upstream_count: S.Number,
           downstream_count: S.Number,
         }),
       ).annotate({ identifier: "SavedQueryDependencies" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1258,7 +950,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetWarehouseSavedQueriesRunHistoryRequest",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1273,7 +969,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetWarehouseSavedQueryRequest",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1290,17 +990,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListWarehouseSavedQueriesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           deleted: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(17, __c2, 1))),
+          created_by: S.optional(S.NullOr(__S(289, __c18, 1))),
           created_at: S.optional(S.String),
           description: S.optional(S.String),
           sync_frequency: S.optional(S.NullOr(S.String)),
-          columns: S.optional(__S(24, __c3, 0)),
+          columns: S.optional(__S(290, __c18, 2)),
           status: S.optional(S.NullOr(S.String)),
           last_run_at: S.optional(S.NullOr(S.String)),
           managed_viewset_kind: S.optional(S.NullOr(S.String)),
@@ -1317,27 +1017,31 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DataWarehouseSavedQueryMinimal",
       });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(37, __c4, 5)),
+          results: S.optional(__S(66, __c4, 2)),
         }),
       ).annotate({
         identifier: "PaginatedDataWarehouseSavedQueryMinimalList",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          query: S.optional(__S(14, __c1, 6)),
-          incremental: S.optional(S.NullOr(__S(12, __c1, 4))),
+          query: S.optional(__S(305, __c19, 1)),
+          incremental: S.optional(S.NullOr(__S(304, __c19, 0))),
           description: S.optional(S.NullOr(S.String)),
           sync_frequency: S.optional(S.NullOr(S.String)),
           folder_id: S.optional(S.NullOr(S.String)),
@@ -1357,7 +1061,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1365,8 +1069,8 @@ function __c5(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          query: S.optional(__S(14, __c1, 6)),
-          incremental: S.optional(S.NullOr(__S(12, __c1, 4))),
+          query: S.optional(__S(305, __c19, 1)),
+          incremental: S.optional(S.NullOr(__S(304, __c19, 0))),
           description: S.optional(S.NullOr(S.String)),
           sync_frequency: S.optional(S.NullOr(S.String)),
           folder_id: S.optional(S.NullOr(S.String)),
@@ -1384,14 +1088,18 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateWarehouseSavedQueryRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          query: S.optional(__S(14, __c1, 6)),
-          incremental: S.optional(S.NullOr(__S(12, __c1, 4))),
+          query: S.optional(__S(305, __c19, 1)),
+          incremental: S.optional(S.NullOr(__S(304, __c19, 0))),
           description: S.optional(S.NullOr(S.String)),
           sync_frequency: S.optional(S.NullOr(S.String)),
           folder_id: S.optional(S.NullOr(S.String)),
@@ -1409,7 +1117,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "WarehouseSavedQueriesCancelCreateRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1424,7 +1136,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "WarehouseSavedQueriesDestroyRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1439,17 +1155,21 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "WarehouseSavedQueriesResumeCreateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resumed: S.Boolean,
         }),
       ).annotate({ identifier: "SavedQueryResume" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          view_ids: __S(1, __c0, 1),
+          view_ids: __S(192, __c12, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1462,7 +1182,350 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          level: S.optional(S.NullOr(S.Number)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/warehouse_saved_queries/{id}/ancestors/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateWarehouseSavedQueriesAncestorRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ancestors: __S(192, __c12, 0),
+        }),
+      ).annotate({ identifier: "SavedQueryAncestors" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          query: S.String,
+          incremental_key: S.optional(S.NullOr(S.String)),
+          unique_key: S.optional(S.NullOr(__S(208, __c13, 0))),
+          lookback_seconds: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/warehouse_saved_queries/check_incremental/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateWarehouseSavedQueriesCheckIncrementalRequest",
+      });
+    case 2:
+      return S.Record(S.String, S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          eligible: S.Boolean,
+          key_candidates: __S(192, __c12, 0),
+          unique_key_candidates: __S(192, __c12, 0),
+          key_candidate_types: __S(210, __c13, 2),
+          blockers: __S(192, __c12, 0),
+          warnings: __S(192, __c12, 0),
+        }),
+      ).annotate({ identifier: "IncrementalEligibility" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          level: S.optional(S.NullOr(S.Number)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/warehouse_saved_queries/{id}/descendants/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateWarehouseSavedQueriesDescendantRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          descendants: __S(192, __c12, 0),
+        }),
+      ).annotate({ identifier: "SavedQueryDescendants" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          sync_frequency: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/warehouse_saved_queries/{id}/materialize/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateWarehouseSavedQueriesMaterializeRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateWarehouseSavedQueriesMaterializeResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          query: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateWarehouseSavedQueriesRevertMaterializationRequestQuery",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          query: S.optional(__S(272, __c17, 0)),
+          incremental: S.optional(S.NullOr(__S(304, __c19, 0))),
+          description: S.optional(S.NullOr(S.String)),
+          sync_frequency: S.optional(S.NullOr(S.String)),
+          folder_id: S.optional(S.NullOr(S.String)),
+          edited_history_id: S.optional(S.NullOr(S.String)),
+          soft_update: S.optional(S.NullOr(S.Boolean)),
+          dag_id: S.optional(S.NullOr(S.String)),
+          is_test: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/warehouse_saved_queries/{id}/revert_materialization/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateWarehouseSavedQueriesRevertMaterializationRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(288, __c18, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+    case 2:
+      return S.Array(__S(288, __c18, 0));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          incremental_key: S.String,
+          unique_key: __S(192, __c12, 0),
+          lookback_seconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "IncrementalConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          query: S.String,
+        }),
+      ).annotate({
+        identifier: "DataWarehouseSavedQueryOutputQuery",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          watermark: S.optional(S.NullOr(S.String)),
+          definition_fingerprint: S.optional(S.NullOr(S.String)),
+          last_full_refresh_at: S.optional(S.NullOr(S.String)),
+          last_run_mode: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "IncrementalState" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "SyncFrequencyBlocker" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          cadence: S.String,
+          allowed: S.Boolean,
+          blocked_by: S.NullOr(S.String),
+          blocker: S.NullOr(__S(307, __c19, 3)),
+        }),
+      ).annotate({ identifier: "SyncFrequencyOption" });
+    case 5:
+      return S.Array(__S(308, __c19, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.String,
+          blocker: S.NullOr(__S(307, __c19, 3)),
+        }),
+      ).annotate({ identifier: "SyncFrequencyBound" });
+    case 7:
+      return S.Array(__S(307, __c19, 3));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          frequency_mode: S.String,
+          options: __S(309, __c19, 5),
+          floor: S.NullOr(__S(310, __c19, 6)),
+          ceiling: S.NullOr(__S(310, __c19, 6)),
+          best_effort_sources: __S(311, __c19, 7),
+          best_effort_sources_withheld: S.Boolean,
+        }),
+      ).annotate({ identifier: "SyncFrequencyBounds" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          at: S.String,
+          reason: S.String,
+          job_id: S.String,
+        }),
+      ).annotate({ identifier: "SavedQuerySuspension" });
+    case 10:
+      return S.Record(S.String, __S(313, __c19, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          deleted: S.optional(S.NullOr(S.Boolean)),
+          name: S.optional(S.String),
+          query: S.optional(__S(305, __c19, 1)),
+          incremental: S.optional(S.NullOr(__S(304, __c19, 0))),
+          incremental_state: S.optional(S.NullOr(__S(306, __c19, 2))),
+          has_incremental_history: S.optional(S.Boolean),
+          created_by: S.optional(S.NullOr(__S(289, __c18, 1))),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          sync_frequency: S.optional(S.NullOr(S.String)),
+          sync_frequency_bounds: S.optional(__S(312, __c19, 8)),
+          columns: S.optional(__S(290, __c18, 2)),
+          status: S.optional(S.NullOr(S.String)),
+          last_run_at: S.optional(S.NullOr(S.String)),
+          managed_viewset_kind: S.optional(S.NullOr(S.String)),
+          folder_id: S.optional(S.NullOr(S.String)),
+          folder_name: S.optional(S.NullOr(S.String)),
+          latest_error: S.optional(S.NullOr(S.String)),
+          latest_history_id: S.optional(S.NullOr(S.String)),
+          is_materialized: S.optional(S.NullOr(S.Boolean)),
+          origin: S.optional(S.NullOr(S.String)),
+          is_test: S.optional(S.Boolean),
+          expires_at: S.optional(S.NullOr(S.String)),
+          user_access_level: S.optional(S.NullOr(S.String)),
+          suspended: S.optional(__S(314, __c19, 10)),
+        }),
+      ).annotate({
+        identifier: "DataWarehouseSavedQueryOutput",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          full_refresh: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/warehouse_saved_queries/{id}/run/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateWarehouseSavedQueriesRunRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          query: S.optional(__S(305, __c19, 1)),
+          incremental: S.optional(S.NullOr(__S(304, __c19, 0))),
+          description: S.optional(S.NullOr(S.String)),
+          sync_frequency: S.optional(S.NullOr(S.String)),
+          folder_id: S.optional(S.NullOr(S.String)),
+          edited_history_id: S.optional(S.NullOr(S.String)),
+          soft_update: S.optional(S.NullOr(S.Boolean)),
+          dag_id: S.optional(S.NullOr(S.String)),
+          is_test: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/warehouse_saved_queries/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateWarehouseSavedQueryRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

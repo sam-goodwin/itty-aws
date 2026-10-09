@@ -644,7 +644,7 @@ export const confirmDedicatedNashaTermination: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ConfirmDedicatedNashaTerminationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ConfirmDedicatedNashaTerminationResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<ConfirmDedicatedNashaTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -658,8 +658,8 @@ export const createDedicatedNashaChangeContact: API.OperationMethod<
   CreateDedicatedNashaChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateDedicatedNashaChangeContactRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateDedicatedNashaChangeContactResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateDedicatedNashaChangeContactRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<CreateDedicatedNashaChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -673,8 +673,8 @@ export const createDedicatedNashaPartition: API.OperationMethod<
   CreateDedicatedNashaPartitionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateDedicatedNashaPartitionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
+  input: __S(60, __c15, 0) as any as S.Schema<CreateDedicatedNashaPartitionRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -688,8 +688,8 @@ export const createDedicatedNashaPartitionAccess: API.OperationMethod<
   CreateDedicatedNashaPartitionAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateDedicatedNashaPartitionAccessRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
+  input: __S(124, __c31, 0) as any as S.Schema<CreateDedicatedNashaPartitionAccessRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -703,8 +703,8 @@ export const createDedicatedNashaPartitionCustomSnapshot: API.OperationMethod<
   CreateDedicatedNashaPartitionCustomSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateDedicatedNashaPartitionCustomSnapshotRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
+  input: __S(168, __c42, 0) as any as S.Schema<CreateDedicatedNashaPartitionCustomSnapshotRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -718,8 +718,8 @@ export const createDedicatedNashaPartitionOption: API.OperationMethod<
   CreateDedicatedNashaPartitionOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateDedicatedNashaPartitionOptionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
+  input: __S(172, __c43, 0) as any as S.Schema<CreateDedicatedNashaPartitionOptionRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -733,8 +733,8 @@ export const createDedicatedNashaPartitionQuota: API.OperationMethod<
   CreateDedicatedNashaPartitionQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateDedicatedNashaPartitionQuotaRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
+  input: __S(176, __c44, 0) as any as S.Schema<CreateDedicatedNashaPartitionQuotaRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -748,8 +748,8 @@ export const createDedicatedNashaPartitionSnapshot: API.OperationMethod<
   CreateDedicatedNashaPartitionSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateDedicatedNashaPartitionSnapshotRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
+  input: __S(180, __c45, 0) as any as S.Schema<CreateDedicatedNashaPartitionSnapshotRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -763,8 +763,8 @@ export const deleteDedicatedNashaPartition: API.OperationMethod<
   DeleteDedicatedNashaPartitionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteDedicatedNashaPartitionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
+  input: __S(184, __c46, 0) as any as S.Schema<DeleteDedicatedNashaPartitionRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -778,8 +778,8 @@ export const deleteDedicatedNashaPartitionAccess: API.OperationMethod<
   DeleteDedicatedNashaPartitionAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteDedicatedNashaPartitionAccessRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
+  input: __S(188, __c47, 0) as any as S.Schema<DeleteDedicatedNashaPartitionAccessRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -793,8 +793,8 @@ export const deleteDedicatedNashaPartitionCustomSnapshot: API.OperationMethod<
   DeleteDedicatedNashaPartitionCustomSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteDedicatedNashaPartitionCustomSnapshotRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteDedicatedNashaPartitionCustomSnapshotRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -808,8 +808,8 @@ export const deleteDedicatedNashaPartitionQuota: API.OperationMethod<
   DeleteDedicatedNashaPartitionQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteDedicatedNashaPartitionQuotaRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
+  input: __S(24, __c6, 0) as any as S.Schema<DeleteDedicatedNashaPartitionQuotaRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -823,8 +823,8 @@ export const deleteDedicatedNashaPartitionSnapshot: API.OperationMethod<
   DeleteDedicatedNashaPartitionSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteDedicatedNashaPartitionSnapshotRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
+  input: __S(28, __c7, 0) as any as S.Schema<DeleteDedicatedNashaPartitionSnapshotRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -838,8 +838,8 @@ export const getDedicatedNasha: API.OperationMethod<
   GetDedicatedNashaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetDedicatedNashaRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DedicatedNashaStorageWithIAM>,
+  input: __S(32, __c8, 0) as any as S.Schema<GetDedicatedNashaRequest>,
+  output: __S(35, __c8, 3) as any as S.Schema<DedicatedNashaStorageWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -853,8 +853,8 @@ export const getDedicatedNashaMetricsToken: API.OperationMethod<
   GetDedicatedNashaMetricsTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetDedicatedNashaMetricsTokenRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DedicatedStorageMetricsTokenResult>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetDedicatedNashaMetricsTokenRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<DedicatedStorageMetricsTokenResult>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -868,8 +868,8 @@ export const getDedicatedNashaPartition: API.OperationMethod<
   GetDedicatedNashaPartitionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetDedicatedNashaPartitionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DedicatedNashaPartition>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetDedicatedNashaPartitionRequest>,
+  output: __S(41, __c10, 1) as any as S.Schema<DedicatedNashaPartition>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -883,8 +883,8 @@ export const getDedicatedNashaPartitionAccess: API.OperationMethod<
   GetDedicatedNashaPartitionAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetDedicatedNashaPartitionAccessRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DedicatedNashaAccess>,
+  input: __S(44, __c11, 0) as any as S.Schema<GetDedicatedNashaPartitionAccessRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<DedicatedNashaAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -898,8 +898,8 @@ export const getDedicatedNashaPartitionCustomSnapshot: API.OperationMethod<
   GetDedicatedNashaPartitionCustomSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetDedicatedNashaPartitionCustomSnapshotRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DedicatedNashaCustomSnap>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetDedicatedNashaPartitionCustomSnapshotRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<DedicatedNashaCustomSnap>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -913,8 +913,8 @@ export const getDedicatedNashaPartitionOptions: API.OperationMethod<
   GetDedicatedNashaPartitionOptionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetDedicatedNashaPartitionOptionsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DedicatedNashaOptions>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetDedicatedNashaPartitionOptionsRequest>,
+  output: __S(53, __c13, 1) as any as S.Schema<DedicatedNashaOptions>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -928,8 +928,8 @@ export const getDedicatedNashaPartitionQuota: API.OperationMethod<
   GetDedicatedNashaPartitionQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetDedicatedNashaPartitionQuotaRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DedicatedNashaQuota>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetDedicatedNashaPartitionQuotaRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<DedicatedNashaQuota>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -943,8 +943,8 @@ export const getDedicatedNashaPartitionSnapshot: API.OperationMethod<
   GetDedicatedNashaPartitionSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetDedicatedNashaPartitionSnapshotRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DedicatedNashaSnapshot>,
+  input: __S(68, __c17, 0) as any as S.Schema<GetDedicatedNashaPartitionSnapshotRequest>,
+  output: __S(69, __c17, 1) as any as S.Schema<DedicatedNashaSnapshot>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -958,8 +958,8 @@ export const getDedicatedNashaPartitionUse: API.OperationMethod<
   GetDedicatedNashaPartitionUseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetDedicatedNashaPartitionUseRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ComplexTypeUnitAndValueDouble>,
+  input: __S(72, __c18, 0) as any as S.Schema<GetDedicatedNashaPartitionUseRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<ComplexTypeUnitAndValueDouble>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -973,8 +973,8 @@ export const getDedicatedNashaServiceInfos: API.OperationMethod<
   GetDedicatedNashaServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetDedicatedNashaServiceInfosRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ServicesService>,
+  input: __S(80, __c20, 0) as any as S.Schema<GetDedicatedNashaServiceInfosRequest>,
+  output: __S(81, __c20, 1) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -988,8 +988,8 @@ export const getDedicatedNashaTask: API.OperationMethod<
   GetDedicatedNashaTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetDedicatedNashaTaskRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DedicatedNasTaskTask>,
+  input: __S(88, __c22, 0) as any as S.Schema<GetDedicatedNashaTaskRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<DedicatedNasTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1003,8 +1003,8 @@ export const getDedicatedNashaUse: API.OperationMethod<
   GetDedicatedNashaUseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetDedicatedNashaUseRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ComplexTypeUnitAndValueDouble>,
+  input: __S(92, __c23, 0) as any as S.Schema<GetDedicatedNashaUseRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<ComplexTypeUnitAndValueDouble>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1018,8 +1018,8 @@ export const listDedicatedNasha: API.OperationMethod<
   ListDedicatedNashaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListDedicatedNashaRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListDedicatedNashaResponse>,
+  input: __S(98, __c24, 2) as any as S.Schema<ListDedicatedNashaRequest>,
+  output: __S(101, __c25, 1) as any as S.Schema<ListDedicatedNashaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1033,8 +1033,8 @@ export const listDedicatedNashaPartition: API.OperationMethod<
   ListDedicatedNashaPartitionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListDedicatedNashaPartitionRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListDedicatedNashaPartitionResponse>,
+  input: __S(108, __c27, 0) as any as S.Schema<ListDedicatedNashaPartitionRequest>,
+  output: __S(101, __c25, 1) as any as S.Schema<ListDedicatedNashaPartitionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1048,8 +1048,8 @@ export const listDedicatedNashaPartitionAccess: API.OperationMethod<
   ListDedicatedNashaPartitionAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListDedicatedNashaPartitionAccessRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListDedicatedNashaPartitionAccessResponse>,
+  input: __S(112, __c28, 0) as any as S.Schema<ListDedicatedNashaPartitionAccessRequest>,
+  output: __S(101, __c25, 1) as any as S.Schema<ListDedicatedNashaPartitionAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1063,11 +1063,15 @@ export const listDedicatedNashaPartitionAuthorizableBlocks: API.OperationMethod<
   ListDedicatedNashaPartitionAuthorizableBlocksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksRequest>,
+  input: __S(
+    116,
+    __c29,
+    0,
+  ) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksRequest>,
   output: __S(
-    47,
-    __c5,
-    7,
+    101,
+    __c25,
+    1,
   ) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -1082,8 +1086,8 @@ export const listDedicatedNashaPartitionAuthorizableIps: API.OperationMethod<
   ListDedicatedNashaPartitionAuthorizableIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsResponse>,
+  input: __S(120, __c30, 0) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsRequest>,
+  output: __S(101, __c25, 1) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1097,8 +1101,8 @@ export const listDedicatedNashaPartitionCustomSnapshot: API.OperationMethod<
   ListDedicatedNashaPartitionCustomSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotResponse>,
+  input: __S(128, __c32, 0) as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotRequest>,
+  output: __S(101, __c25, 1) as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1112,8 +1116,8 @@ export const listDedicatedNashaPartitionQuota: API.OperationMethod<
   ListDedicatedNashaPartitionQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListDedicatedNashaPartitionQuotaRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListDedicatedNashaPartitionQuotaResponse>,
+  input: __S(132, __c33, 0) as any as S.Schema<ListDedicatedNashaPartitionQuotaRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<ListDedicatedNashaPartitionQuotaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1127,8 +1131,8 @@ export const listDedicatedNashaPartitionSnapshot: API.OperationMethod<
   ListDedicatedNashaPartitionSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListDedicatedNashaPartitionSnapshotRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListDedicatedNashaPartitionSnapshotResponse>,
+  input: __S(136, __c34, 0) as any as S.Schema<ListDedicatedNashaPartitionSnapshotRequest>,
+  output: __S(138, __c34, 2) as any as S.Schema<ListDedicatedNashaPartitionSnapshotResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1142,8 +1146,8 @@ export const listDedicatedNashaPartitionTemplateUsage: API.OperationMethod<
   ListDedicatedNashaPartitionTemplateUsageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListDedicatedNashaPartitionTemplateUsageRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListDedicatedNashaPartitionTemplateUsageResponse>,
+  input: __S(140, __c35, 0) as any as S.Schema<ListDedicatedNashaPartitionTemplateUsageRequest>,
+  output: __S(143, __c35, 3) as any as S.Schema<ListDedicatedNashaPartitionTemplateUsageResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1157,8 +1161,8 @@ export const listDedicatedNashaTask: API.OperationMethod<
   ListDedicatedNashaTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListDedicatedNashaTaskRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListDedicatedNashaTaskResponse>,
+  input: __S(144, __c36, 0) as any as S.Schema<ListDedicatedNashaTaskRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<ListDedicatedNashaTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1172,8 +1176,8 @@ export const putDedicatedNasha: API.OperationMethod<
   PutDedicatedNashaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<PutDedicatedNashaRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<PutDedicatedNashaResponse>,
+  input: __S(148, __c37, 0) as any as S.Schema<PutDedicatedNashaRequest>,
+  output: __S(104, __c26, 0) as any as S.Schema<PutDedicatedNashaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1187,8 +1191,8 @@ export const putDedicatedNashaPartition: API.OperationMethod<
   PutDedicatedNashaPartitionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<PutDedicatedNashaPartitionRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<PutDedicatedNashaPartitionResponse>,
+  input: __S(152, __c38, 0) as any as S.Schema<PutDedicatedNashaPartitionRequest>,
+  output: __S(156, __c39, 0) as any as S.Schema<PutDedicatedNashaPartitionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1202,8 +1206,8 @@ export const putDedicatedNashaServiceInfos: API.OperationMethod<
   PutDedicatedNashaServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<PutDedicatedNashaServiceInfosRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<PutDedicatedNashaServiceInfosResponse>,
+  input: __S(160, __c40, 0) as any as S.Schema<PutDedicatedNashaServiceInfosRequest>,
+  output: __S(156, __c39, 0) as any as S.Schema<PutDedicatedNashaServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1217,8 +1221,8 @@ export const terminateDedicatedNasha: API.OperationMethod<
   TerminateDedicatedNashaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<TerminateDedicatedNashaRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TerminateDedicatedNashaResponse>,
+  input: __S(164, __c41, 0) as any as S.Schema<TerminateDedicatedNashaRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<TerminateDedicatedNashaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1245,11 +1249,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfirmDedicatedNashaTerminationRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "ConfirmDedicatedNashaTerminationResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1266,13 +1278,288 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedNashaChangeContactRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 4:
-      return S.suspend(() => __S(3, __c0, 3).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(12, __c3, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateDedicatedNashaChangeContactResponse",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDedicatedNashaPartitionCustomSnapshotRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          uid: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/quota/{uid}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDedicatedNashaPartitionQuotaRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          snapshotType: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDedicatedNashaPartitionSnapshotRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}", code: 200 })),
+      ).annotate({ identifier: "GetDedicatedNashaRequest" });
+    case 1:
+      return S.Record(S.String, S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(33, __c8, 1))),
+          urn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IamResourceMetadata" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          canCreatePartition: S.optional(S.Boolean),
+          customName: S.optional(S.NullOr(S.String)),
+          datacenter: S.optional(S.NullOr(S.String)),
+          diskType: S.optional(S.String),
+          iam: S.optional(S.NullOr(__S(34, __c8, 2))),
+          ip: S.optional(S.NullOr(S.String)),
+          monitored: S.optional(S.Boolean),
+          serviceName: S.optional(S.String),
+          zpoolCapacity: S.optional(S.Number),
+          zpoolSize: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DedicatedNashaStorageWithIAM",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/metricsToken", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetDedicatedNashaMetricsTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.optional(S.String),
+          token: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedStorageMetricsTokenResult",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDedicatedNashaPartitionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          partitionCapacity: S.optional(S.NullOr(S.Number)),
+          partitionDescription: S.optional(S.NullOr(S.String)),
+          partitionName: S.optional(S.String),
+          protocol: S.optional(S.String),
+          size: S.optional(S.Number),
+          usedBySnapshots: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "DedicatedNashaPartition" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          ip: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDedicatedNashaPartitionAccessRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accessId: S.optional(S.Number),
+          aclDescription: S.optional(S.NullOr(S.String)),
+          ip: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DedicatedNashaAccess" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDedicatedNashaPartitionCustomSnapshotRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expiration: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DedicatedNashaCustomSnap" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/options",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDedicatedNashaPartitionOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          atime: S.optional(S.String),
+          id: S.optional(S.Number),
+          recordsize: S.optional(S.String),
+          sync: S.optional(S.String),
+          templateName: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "DedicatedNashaOptions" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          uid: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/quota/{uid}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDedicatedNashaPartitionQuotaRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          size: S.optional(S.Number),
+          uid: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DedicatedNashaQuota" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1286,7 +1573,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedNashaPartitionRequest",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           details: S.optional(S.NullOr(S.String)),
@@ -1300,7 +1591,249 @@ function __c0(j: number): any {
           todoDate: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "DedicatedNasTaskTask" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          snapshotType: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDedicatedNashaPartitionSnapshotRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          snapshotType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DedicatedNashaSnapshot" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          type: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/use",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDedicatedNashaPartitionUseRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ComplexTypeUnitAndValueDouble",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/serviceInfos", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetDedicatedNashaServiceInfosRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          canDeleteAtExpiration: S.optional(S.Boolean),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+          creation: S.optional(S.String),
+          domain: S.optional(S.String),
+          engagedUpTo: S.optional(S.NullOr(S.String)),
+          expiration: S.optional(S.String),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(12, __c3, 0))),
+          renew: S.optional(S.NullOr(__S(84, __c21, 0))),
+          renewalType: S.optional(S.String),
+          serviceId: S.optional(S.Number),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServicesService" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          deleteAtExpiration: S.optional(S.Boolean),
+          forced: S.optional(S.Boolean),
+          manualPayment: S.optional(S.NullOr(S.Boolean)),
+          period: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ServiceRenewType" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          taskId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/task/{taskId}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetDedicatedNashaTaskRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          type: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/use", code: 200 })),
+      ).annotate({
+        identifier: "GetDedicatedNashaUseRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(104, __c26, 0));
+    case 1:
+      return S.Record(S.String, __S(96, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          iamTags: S.optional(__S(97, __c24, 1).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha", code: 200 })),
+      ).annotate({
+        identifier: "ListDedicatedNashaRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() => __S(100, __c25, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDedicatedNashaResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "IamResourceTagFilterInput",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/partition", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedNashaPartitionRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/access",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedNashaPartitionAccessRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/authorizableBlocks",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedNashaPartitionAuthorizableBlocksRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/authorizableIps",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedNashaPartitionAuthorizableIpsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1320,534 +1853,9 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          expiration: S.optional(S.String),
-          name: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDedicatedNashaPartitionCustomSnapshotRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          atime: S.optional(S.String),
-          recordsize: S.optional(S.String),
-          sync: S.optional(S.String),
-          templateName: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/options",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDedicatedNashaPartitionOptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          size: S.Number,
-          uid: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/quota",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDedicatedNashaPartitionQuotaRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          snapshotType: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDedicatedNashaPartitionSnapshotRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDedicatedNashaPartitionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          ip: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDedicatedNashaPartitionAccessRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDedicatedNashaPartitionCustomSnapshotRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          uid: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/quota/{uid}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDedicatedNashaPartitionQuotaRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          snapshotType: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDedicatedNashaPartitionSnapshotRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}", code: 200 })),
-      ).annotate({ identifier: "GetDedicatedNashaRequest" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(18, __c2, 2))),
-          urn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IamResourceMetadata" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          canCreatePartition: S.optional(S.Boolean),
-          customName: S.optional(S.NullOr(S.String)),
-          datacenter: S.optional(S.NullOr(S.String)),
-          diskType: S.optional(S.String),
-          iam: S.optional(S.NullOr(__S(19, __c2, 3))),
-          ip: S.optional(S.NullOr(S.String)),
-          monitored: S.optional(S.Boolean),
-          serviceName: S.optional(S.String),
-          zpoolCapacity: S.optional(S.Number),
-          zpoolSize: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DedicatedNashaStorageWithIAM",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/metricsToken", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetDedicatedNashaMetricsTokenRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.optional(S.String),
-          token: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedStorageMetricsTokenResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDedicatedNashaPartitionRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          partitionCapacity: S.optional(S.NullOr(S.Number)),
-          partitionDescription: S.optional(S.NullOr(S.String)),
-          partitionName: S.optional(S.String),
-          protocol: S.optional(S.String),
-          size: S.optional(S.Number),
-          usedBySnapshots: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "DedicatedNashaPartition" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          ip: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDedicatedNashaPartitionAccessRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accessId: S.optional(S.Number),
-          aclDescription: S.optional(S.NullOr(S.String)),
-          ip: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DedicatedNashaAccess" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDedicatedNashaPartitionCustomSnapshotRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          expiration: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DedicatedNashaCustomSnap" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/options",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDedicatedNashaPartitionOptionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          atime: S.optional(S.String),
-          id: S.optional(S.Number),
-          recordsize: S.optional(S.String),
-          sync: S.optional(S.String),
-          templateName: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "DedicatedNashaOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          uid: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/quota/{uid}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDedicatedNashaPartitionQuotaRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          size: S.optional(S.Number),
-          uid: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DedicatedNashaQuota" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          snapshotType: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot/{snapshotType}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDedicatedNashaPartitionSnapshotRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          snapshotType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DedicatedNashaSnapshot" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-          type: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/use",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDedicatedNashaPartitionUseRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ComplexTypeUnitAndValueDouble",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/serviceInfos", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetDedicatedNashaServiceInfosRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          deleteAtExpiration: S.optional(S.Boolean),
-          forced: S.optional(S.Boolean),
-          manualPayment: S.optional(S.NullOr(S.Boolean)),
-          period: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ServiceRenewType" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          canDeleteAtExpiration: S.optional(S.Boolean),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-          creation: S.optional(S.String),
-          domain: S.optional(S.String),
-          engagedUpTo: S.optional(S.NullOr(S.String)),
-          expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(3, __c0, 3))),
-          renew: S.optional(S.NullOr(__S(38, __c4, 6))),
-          renewalType: S.optional(S.String),
-          serviceId: S.optional(S.Number),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServicesService" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          taskId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/task/{taskId}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetDedicatedNashaTaskRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          type: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/use", code: 200 })),
-      ).annotate({
-        identifier: "GetDedicatedNashaUseRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "IamResourceTagFilterInput",
-      });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.Record(S.String, __S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          iamTags: S.optional(__S(44, __c5, 4).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha", code: 200 })),
-      ).annotate({
-        identifier: "ListDedicatedNashaRequest",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() => __S(46, __c5, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDedicatedNashaResponse",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/partition", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedNashaPartitionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/access",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedNashaPartitionAccessRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/authorizableBlocks",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedNashaPartitionAuthorizableBlocksRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          partitionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/authorizableIps",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedNashaPartitionAuthorizableIpsRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1862,7 +1870,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListDedicatedNashaPartitionCustomSnapshotRequest",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1877,7 +1889,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListDedicatedNashaPartitionQuotaRequest",
       });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1892,17 +1908,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListDedicatedNashaPartitionSnapshotRequest",
       });
-    case 7:
+    case 1:
       return S.Array(S.String);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(55, __c6, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(137, __c34, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedNashaPartitionSnapshotResponse",
       });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1917,7 +1933,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListDedicatedNashaPartitionTemplateUsageRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -1926,13 +1942,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DedicatedStorageTemplateUsageOptionsDetails",
       });
+    case 2:
+      return S.Array(__S(141, __c35, 1));
     case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() => __S(59, __c7, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(142, __c35, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedNashaPartitionTemplateUsageResponse",
       });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1942,7 +1962,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListDedicatedNashaTaskRequest",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1950,7 +1974,11 @@ function __c7(j: number): any {
           monitored: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/dedicated/nasha/{serviceName}", code: 200 })),
       ).annotate({ identifier: "PutDedicatedNashaRequest" });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1969,24 +1997,32 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PutDedicatedNashaPartitionResponse",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(38, __c4, 6))),
+          renew: S.optional(S.NullOr(__S(84, __c21, 0))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/dedicated/nasha/{serviceName}/serviceInfos", code: 200 }),
         ),
       ).annotate({
         identifier: "PutDedicatedNashaServiceInfosRequest",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1998,7 +2034,130 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          expiration: S.optional(S.String),
+          name: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/customSnapshot",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDedicatedNashaPartitionCustomSnapshotRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          atime: S.optional(S.String),
+          recordsize: S.optional(S.String),
+          sync: S.optional(S.String),
+          templateName: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/options",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDedicatedNashaPartitionOptionRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          size: S.Number,
+          uid: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/quota",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDedicatedNashaPartitionQuotaRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          snapshotType: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/snapshot",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDedicatedNashaPartitionSnapshotRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDedicatedNashaPartitionRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          partitionName: S.String.pipe(T.Label()),
+          ip: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/dedicated/nasha/{serviceName}/partition/{partitionName}/access/{ip}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDedicatedNashaPartitionAccessRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

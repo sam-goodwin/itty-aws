@@ -165,8 +165,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateDomainRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Domain>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDomainRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Domain>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -180,8 +180,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Domain>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Domain>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -195,8 +195,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetDomainRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Domain>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Domain>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -212,8 +212,8 @@ export const listDomains: API.PaginatedOperationMethod<
   Domain
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(9, __c1, 1) as any as S.Schema<ListDomainsRequest>,
-    output: __S(12, __c1, 4) as any as S.Schema<ListDomainsResponse>,
+    input: __S(32, __c4, 0) as any as S.Schema<ListDomainsRequest>,
+    output: __S(35, __c4, 3) as any as S.Schema<ListDomainsResponse>,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -237,8 +237,8 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Domain>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<Domain>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -248,19 +248,23 @@ export const updateDomain: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
           app_id: S.String,
           domain: S.String,
-          metadata: S.optional(__S(0, __c0, 0)),
+          metadata: S.optional(__S(8, __c1, 0)),
           replace_existing: S.optional(S.Boolean),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/domains", code: 200 })),
       ).annotate({ identifier: "CreateDomainRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -268,39 +272,43 @@ function __c0(j: number): any {
           value: S.String,
         }),
       ).annotate({ identifier: "DomainDnsRecord" });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
           message: S.String,
         }),
       ).annotate({ identifier: "DomainIssue" });
+    case 4:
+      return S.Array(__S(11, __c1, 3));
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           app_id: S.String,
           certificate_status: S.NullOr(S.String),
           created_at: S.String,
-          dns_records: __S(3, __c0, 3),
+          dns_records: __S(10, __c1, 2),
           dns_status: S.String,
           domain: S.String,
           hostname_status: S.NullOr(S.String),
           id: S.String,
-          issues: __S(5, __c0, 5),
+          issues: __S(12, __c1, 4),
           last_checked_at: S.NullOr(S.String),
-          metadata: __S(0, __c0, 0),
+          metadata: __S(8, __c1, 0),
           status: S.String,
           updated_at: S.String,
           verification_expires_at: S.NullOr(S.String),
           verified_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Domain" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -308,7 +316,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "DeleteDomainRequest" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -316,7 +324,11 @@ function __c1(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domains/{id}", code: 200 })),
       ).annotate({ identifier: "GetDomainRequest" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -330,9 +342,9 @@ function __c1(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/domains", code: 200 })),
       ).annotate({ identifier: "ListDomainsRequest" });
+    case 1:
+      return S.Array(__S(13, __c1, 5));
     case 2:
-      return S.Array(__S(6, __c0, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -343,24 +355,27 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListDomainsResponsePageInfo",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(10, __c1, 2),
-          page_info: __S(11, __c1, 3),
+          data: __S(33, __c4, 1),
+          page_info: __S(34, __c4, 2),
         }),
       ).annotate({ identifier: "ListDomainsResponse" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           app_id: S.optional(S.String),
-          metadata: S.optional(__S(0, __c0, 0)),
+          metadata: S.optional(__S(8, __c1, 0)),
         }).pipe(T.Http({ method: "PATCH", uri: "/domains/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateDomainRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

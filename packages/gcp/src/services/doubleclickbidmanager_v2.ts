@@ -317,8 +317,8 @@ export const createQueries: API.OperationMethod<
   CreateQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateQueriesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Query>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateQueriesRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Query>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -338,8 +338,8 @@ export const deleteQueries: API.OperationMethod<
   DeleteQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteQueriesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteQueriesResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteQueriesRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<DeleteQueriesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -353,8 +353,8 @@ export const getQueries: API.OperationMethod<
   GetQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetQueriesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Query>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetQueriesRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Query>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -368,8 +368,8 @@ export const getQueriesReports: API.OperationMethod<
   GetQueriesReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetQueriesReportsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Report>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetQueriesReportsRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -384,8 +384,8 @@ export const listQueries: API.PaginatedOperationMethod<
   GcpOpContext,
   ListQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListQueriesRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ListQueriesResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListQueriesRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<ListQueriesResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -401,8 +401,8 @@ export const listQueriesReports: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListQueriesReportsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListReportsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListQueriesReportsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListReportsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -423,8 +423,8 @@ export const runQueries: API.OperationMethod<
   RunQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<RunQueriesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Report>,
+  input: __S(9, __c1, 1) as any as S.Schema<RunQueriesRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -434,195 +434,6 @@ export const runQueries: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          month: S.optional(S.Number),
-          day: S.optional(S.Number),
-          year: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "Doubleclickbidmanager_Date",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          customStartDate: S.optional(__S(0, __c0, 0)),
-          customEndDate: S.optional(__S(0, __c0, 0)),
-          range: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataRange" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataRange: S.optional(__S(1, __c0, 1)),
-          title: S.optional(S.String),
-          shareEmailAddress: S.optional(__S(2, __c0, 2)),
-          sendNotification: S.optional(S.Boolean),
-          format: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QueryMetadata" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          startDate: S.optional(__S(0, __c0, 0)),
-          frequency: S.optional(S.String),
-          endDate: S.optional(__S(0, __c0, 0)),
-          nextRunTimezoneCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QuerySchedule" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          includeOnlyTargetedUserLists: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Options" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FilterPair" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupBys: S.optional(__S(2, __c0, 2)),
-          type: S.optional(S.String),
-          options: S.optional(__S(5, __c0, 5)),
-          filters: S.optional(__S(7, __c0, 7)),
-          metrics: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "Parameters" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          queryId: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          schedule: S.optional(__S(4, __c0, 4)),
-          params: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Query" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "queries",
-            baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateQueriesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          queryId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "queries/{queryId}",
-            baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteQueriesRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteQueriesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          queryId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "queries/{queryId}",
-            baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetQueriesRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reportId: S.String.pipe(T.Label()),
-          queryId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "queries/{queryId}/reports/{reportId}",
-            baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "GetQueriesReportsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          finishTime: S.optional(S.String),
-          format: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReportStatus" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          reportDataEndDate: S.optional(__S(0, __c0, 0)),
-          googleCloudStoragePath: S.optional(S.String),
-          status: S.optional(__S(15, __c1, 7)),
-          reportDataStartDate: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ReportMetadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          reportId: S.optional(S.String),
-          queryId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReportKey" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(16, __c2, 0)),
-          params: S.optional(__S(8, __c1, 0)),
-          key: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "Report" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "queries",
-            baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "ListQueriesRequest" });
-    case 4:
-      return S.Array(__S(9, __c1, 1));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          queries: S.optional(__S(20, __c2, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListQueriesResponse" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -639,31 +450,31 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListQueriesReportsRequest",
       });
-    case 7:
-      return S.Array(__S(18, __c2, 2));
+    case 1:
+      return S.Array(__S(75, __c9, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reports: S.optional(__S(1, __c0, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListReportsResponse" });
   }
 }
-function __c3(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          reports: S.optional(__S(23, __c2, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListReportsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dataRange: S.optional(__S(1, __c0, 1)),
+          dataRange: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "RunQueryRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           queryId: S.String.pipe(T.Label()),
           synchronous: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -674,7 +485,223 @@ function __c3(j: number): any {
       ).annotate({ identifier: "RunQueriesRequest" });
   }
 }
-
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "queries",
+            baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateQueriesRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          month: S.optional(S.Number),
+          day: S.optional(S.Number),
+          year: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "Doubleclickbidmanager_Date",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          includeOnlyTargetedUserLists: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Options" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FilterPair" });
+    case 4:
+      return S.Array(__S(27, __c3, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          groupBys: S.optional(__S(25, __c3, 1)),
+          type: S.optional(S.String),
+          options: S.optional(__S(26, __c3, 2)),
+          filters: S.optional(__S(28, __c3, 4)),
+          metrics: S.optional(__S(25, __c3, 1)),
+        }),
+      ).annotate({ identifier: "Parameters" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataRange: S.optional(__S(40, __c5, 0)),
+          title: S.optional(S.String),
+          shareEmailAddress: S.optional(__S(25, __c3, 1)),
+          sendNotification: S.optional(S.Boolean),
+          format: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QueryMetadata" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startDate: S.optional(__S(24, __c3, 0)),
+          frequency: S.optional(S.String),
+          endDate: S.optional(__S(24, __c3, 0)),
+          nextRunTimezoneCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuerySchedule" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          queryId: S.optional(S.String),
+          metadata: S.optional(__S(32, __c4, 0)),
+          schedule: S.optional(__S(33, __c4, 1)),
+          params: S.optional(__S(29, __c3, 5)),
+        }),
+      ).annotate({ identifier: "Query" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customStartDate: S.optional(__S(24, __c3, 0)),
+          customEndDate: S.optional(__S(24, __c3, 0)),
+          range: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataRange" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          queryId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "queries/{queryId}",
+            baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteQueriesRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteQueriesResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          queryId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "queries/{queryId}",
+            baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetQueriesRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportId: S.String.pipe(T.Label()),
+          queryId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "queries/{queryId}/reports/{reportId}",
+            baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "GetQueriesReportsRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          finishTime: S.optional(S.String),
+          format: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReportStatus" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          reportDataEndDate: S.optional(__S(24, __c3, 0)),
+          googleCloudStoragePath: S.optional(S.String),
+          status: S.optional(__S(72, __c9, 0)),
+          reportDataStartDate: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({ identifier: "ReportMetadata" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reportId: S.optional(S.String),
+          queryId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReportKey" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(73, __c9, 1)),
+          params: S.optional(__S(29, __c3, 5)),
+          key: S.optional(__S(74, __c9, 2)),
+        }),
+      ).annotate({ identifier: "Report" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "queries",
+            baseUrl: "https://doubleclickbidmanager.googleapis.com/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "ListQueriesRequest" });
+    case 1:
+      return S.Array(__S(34, __c4, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          queries: S.optional(__S(81, __c10, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListQueriesResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

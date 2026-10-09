@@ -199,8 +199,8 @@ export const createAccountsOrderTrackingSignals: API.OperationMethod<
   CreateAccountsOrderTrackingSignalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateAccountsOrderTrackingSignalsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<OrderTrackingSignal>,
+  input: __S(11, __c0, 11) as any as S.Schema<CreateAccountsOrderTrackingSignalsRequest>,
+  output: __S(10, __c0, 10) as any as S.Schema<OrderTrackingSignal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -272,40 +272,36 @@ function __c0(j: number): any {
           lineItemId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShipmentLineItemMapping" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           amountMicros: S.optional(S.String),
           currencyCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Price" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           deliveryRegionCode: S.optional(S.String),
           shippingInfo: S.optional(__S(3, __c0, 3)),
           orderTrackingSignalId: S.optional(S.String),
           lineItems: S.optional(__S(6, __c0, 6)),
-          shipmentLineItemMapping: S.optional(__S(8, __c1, 0)),
-          customerShippingFee: S.optional(__S(9, __c1, 1)),
+          shipmentLineItemMapping: S.optional(__S(8, __c0, 8)),
+          customerShippingFee: S.optional(__S(9, __c0, 9)),
           orderCreatedTime: S.optional(__S(1, __c0, 1)),
           deliveryPostalCode: S.optional(S.String),
           merchantId: S.optional(S.String),
           orderId: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderTrackingSignal" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           orderTrackingSignalId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(10, __c0, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -318,7 +314,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

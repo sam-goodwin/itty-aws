@@ -310,8 +310,8 @@ export const cancelProjectsOperations: API.OperationMethod<
   CancelProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(49, __c3, 1) as any as S.Schema<CancelProjectsOperationsRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -325,8 +325,8 @@ export const computeDiffThreatLists: API.OperationMethod<
   ComputeDiffThreatListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ComputeDiffThreatListsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudWebriskV1ComputeThreatListDiffResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ComputeDiffThreatListsRequest>,
+  output: __S(89, __c5, 9) as any as S.Schema<GoogleCloudWebriskV1ComputeThreatListDiffResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -345,8 +345,8 @@ export const createProjectsSubmissions: API.OperationMethod<
   CreateProjectsSubmissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateProjectsSubmissionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudWebriskV1Submission>,
+  input: __S(113, __c7, 1) as any as S.Schema<CreateProjectsSubmissionsRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<GoogleCloudWebriskV1Submission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -365,8 +365,8 @@ export const deleteProjectsOperations: API.OperationMethod<
   DeleteProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteProjectsOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteProjectsOperationsRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -380,8 +380,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetProjectsOperationsRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -396,8 +396,8 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListProjectsOperationsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListProjectsOperationsRequest>,
+  output: __S(179, __c11, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -412,8 +412,8 @@ export const searchHashes: API.OperationMethod<
   SearchHashesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<SearchHashesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<SearchHashesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -427,8 +427,8 @@ export const searchUris: API.OperationMethod<
   SearchUrisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<SearchUrisRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GoogleCloudWebriskV1SearchUrisResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<SearchUrisRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleCloudWebriskV1SearchUrisResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -438,6 +438,84 @@ export const searchUris: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hashPrefix: S.optional(S.String.pipe(T.Query())),
+          threatTypes: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/hashes:search",
+            baseUrl: "https://webrisk.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "SearchHashesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          threatTypes: S.optional(__S(96, __c6, 0)),
+          hash: S.optional(S.String),
+          expireTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudWebriskV1SearchHashesResponseThreatHash",
+      });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          threats: S.optional(__S(2, __c0, 2)),
+          negativeExpireTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudWebriskV1SearchHashesResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          threatTypes: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          uri: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/uris:search",
+            baseUrl: "https://webrisk.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "SearchUrisRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expireTime: S.optional(S.String),
+          threatTypes: S.optional(__S(96, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudWebriskV1SearchUrisResponseThreatUri",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          threat: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudWebriskV1SearchUrisResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleLongrunningCancelOperationRequest",
       });
@@ -445,7 +523,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(48, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -456,16 +534,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelProjectsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          "constraints.supportedCompressions": S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          "constraints.supportedCompressions": S.optional(__S(96, __c6, 0).pipe(T.Query())),
           versionToken: S.optional(S.String.pipe(T.Query())),
           "constraints.maxDiffEntries": S.optional(S.Number.pipe(T.Query())),
           "constraints.maxDatabaseEntries": S.optional(S.Number.pipe(T.Query())),
@@ -480,7 +564,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ComputeDiffThreatListsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           prefixSize: S.optional(S.Number),
@@ -489,9 +573,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleCloudWebriskV1RawHashes",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           entryCount: S.optional(S.Number),
@@ -502,39 +586,35 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleCloudWebriskV1RiceDeltaEncoding",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          rawHashes: S.optional(__S(6, __c0, 6)),
-          riceHashes: S.optional(__S(7, __c0, 7)),
+          rawHashes: S.optional(__S(82, __c5, 2)),
+          riceHashes: S.optional(__S(83, __c5, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudWebriskV1ThreatEntryAdditions",
       });
-    case 1:
+    case 5:
       return S.Array(S.Number);
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          indices: S.optional(__S(9, __c1, 1)),
+          indices: S.optional(__S(85, __c5, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudWebriskV1RawIndices",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          riceIndices: S.optional(__S(7, __c0, 7)),
-          rawIndices: S.optional(__S(10, __c1, 2)),
+          riceIndices: S.optional(__S(83, __c5, 3)),
+          rawIndices: S.optional(__S(86, __c5, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudWebriskV1ThreatEntryRemovals",
       });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           sha256: S.optional(S.String),
@@ -542,20 +622,30 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum",
       });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          additions: S.optional(__S(8, __c1, 0)),
+          additions: S.optional(__S(84, __c5, 4)),
           newVersionToken: S.optional(S.String),
           recommendedNextDiff: S.optional(S.String),
           responseType: S.optional(S.String),
-          removals: S.optional(__S(11, __c1, 3)),
-          checksum: S.optional(__S(12, __c1, 4)),
+          removals: S.optional(__S(87, __c5, 7)),
+          checksum: S.optional(__S(88, __c5, 8)),
         }),
       ).annotate({
         identifier: "GoogleCloudWebriskV1ComputeThreatListDiffResponse",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
@@ -563,11 +653,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudWebriskV1Submission",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(112, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -580,7 +670,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -596,7 +686,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -606,31 +700,39 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetProjectsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(__S(19, __c2, 3)),
+          details: S.optional(__S(161, __c10, 1)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          error: S.optional(__S(20, __c2, 4)),
+          error: S.optional(__S(162, __c10, 2)),
           name: S.optional(S.String),
-          metadata: S.optional(__S(18, __c2, 2)),
-          response: S.optional(__S(18, __c2, 2)),
+          metadata: S.optional(__S(160, __c10, 0)),
+          response: S.optional(__S(160, __c10, 0)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -648,97 +750,22 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListProjectsOperationsRequest",
       });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(21, __c2, 5));
     case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.Array(__S(163, __c10, 3));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(23, __c2, 7)),
+          unreachable: S.optional(__S(177, __c11, 1)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(24, __c3, 0)),
+          operations: S.optional(__S(178, __c11, 2)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hashPrefix: S.optional(S.String.pipe(T.Query())),
-          threatTypes: S.optional(__S(26, __c3, 2).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/hashes:search",
-            baseUrl: "https://webrisk.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "SearchHashesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          threatTypes: S.optional(__S(3, __c0, 3)),
-          hash: S.optional(S.String),
-          expireTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudWebriskV1SearchHashesResponseThreatHash",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          threats: S.optional(__S(29, __c3, 5)),
-          negativeExpireTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudWebriskV1SearchHashesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          threatTypes: S.optional(__S(26, __c3, 2).pipe(T.Query())),
-          uri: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/uris:search",
-            baseUrl: "https://webrisk.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "SearchUrisRequest" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          expireTime: S.optional(S.String),
-          threatTypes: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudWebriskV1SearchUrisResponseThreatUri",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          threat: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudWebriskV1SearchUrisResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

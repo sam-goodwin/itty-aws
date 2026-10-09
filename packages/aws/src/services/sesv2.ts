@@ -2123,8 +2123,8 @@ export const associateEmailIdentityCertificate: API.OperationMethod<
   AssociateEmailIdentityCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateEmailIdentityCertificateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateEmailIdentityCertificateResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<AssociateEmailIdentityCertificateRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<AssociateEmailIdentityCertificateResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2154,8 +2154,8 @@ export const batchGetMetricData: API.OperationMethod<
   BatchGetMetricDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<BatchGetMetricDataRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<BatchGetMetricDataResponse>,
+  input: __S(514, __c32, 2) as any as S.Schema<BatchGetMetricDataRequest>,
+  output: __S(521, __c32, 9) as any as S.Schema<BatchGetMetricDataResponse>,
   errors: [
     BadRequestException,
     InternalServiceErrorException,
@@ -2181,8 +2181,8 @@ export const cancelExportJob: API.OperationMethod<
   CancelExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CancelExportJobRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CancelExportJobResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<CancelExportJobRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<CancelExportJobResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2210,8 +2210,8 @@ export const createConfigurationSet: API.OperationMethod<
   CreateConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateConfigurationSetRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateConfigurationSetResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<CreateConfigurationSetRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<CreateConfigurationSetResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2247,8 +2247,8 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
   CreateConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateConfigurationSetEventDestinationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<CreateConfigurationSetEventDestinationRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2277,8 +2277,8 @@ export const createContact: API.OperationMethod<
   CreateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateContactRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateContactResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<CreateContactRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<CreateContactResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2305,8 +2305,8 @@ export const createContactList: API.OperationMethod<
   CreateContactListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateContactListRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateContactListResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<CreateContactListRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<CreateContactListResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2340,8 +2340,8 @@ export const createCustomVerificationEmailTemplate: API.OperationMethod<
   CreateCustomVerificationEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateCustomVerificationEmailTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateCustomVerificationEmailTemplateResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<CreateCustomVerificationEmailTemplateRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<CreateCustomVerificationEmailTemplateResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2373,8 +2373,8 @@ export const createDedicatedIpPool: API.OperationMethod<
   CreateDedicatedIpPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateDedicatedIpPoolRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateDedicatedIpPoolResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<CreateDedicatedIpPoolRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<CreateDedicatedIpPoolResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2413,8 +2413,8 @@ export const createDeliverabilityTestReport: API.OperationMethod<
   CreateDeliverabilityTestReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreateDeliverabilityTestReportRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<CreateDeliverabilityTestReportResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<CreateDeliverabilityTestReportRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<CreateDeliverabilityTestReportResponse>,
   errors: [
     AccountSuspendedException,
     BadRequestException,
@@ -2476,8 +2476,8 @@ export const createEmailIdentity: API.OperationMethod<
   CreateEmailIdentityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateEmailIdentityRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<CreateEmailIdentityResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<CreateEmailIdentityRequest>,
+  output: __S(929, __c58, 1) as any as S.Schema<CreateEmailIdentityResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2518,8 +2518,8 @@ export const createEmailIdentityPolicy: API.OperationMethod<
   CreateEmailIdentityPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreateEmailIdentityPolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateEmailIdentityPolicyResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<CreateEmailIdentityPolicyRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<CreateEmailIdentityPolicyResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2551,8 +2551,8 @@ export const createEmailTemplate: API.OperationMethod<
   CreateEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<CreateEmailTemplateRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateEmailTemplateResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<CreateEmailTemplateRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<CreateEmailTemplateResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2581,8 +2581,8 @@ export const createExportJob: API.OperationMethod<
   CreateExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<CreateExportJobRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<CreateExportJobResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<CreateExportJobRequest>,
+  output: __S(1040, __c65, 0) as any as S.Schema<CreateExportJobResponse>,
   errors: [
     BadRequestException,
     LimitExceededException,
@@ -2608,8 +2608,8 @@ export const createImportJob: API.OperationMethod<
   CreateImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<CreateImportJobRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<CreateImportJobResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<CreateImportJobRequest>,
+  output: __S(1040, __c65, 0) as any as S.Schema<CreateImportJobResponse>,
   errors: [BadRequestException, LimitExceededException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2637,8 +2637,8 @@ export const createMultiRegionEndpoint: API.OperationMethod<
   CreateMultiRegionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<CreateMultiRegionEndpointRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<CreateMultiRegionEndpointResponse>,
+  input: __S(1137, __c71, 1) as any as S.Schema<CreateMultiRegionEndpointRequest>,
+  output: __S(1138, __c71, 2) as any as S.Schema<CreateMultiRegionEndpointResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2674,8 +2674,8 @@ export const createTenant: API.OperationMethod<
   CreateTenantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<CreateTenantRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<CreateTenantResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<CreateTenantRequest>,
+  output: __S(1185, __c74, 1) as any as S.Schema<CreateTenantResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2709,8 +2709,8 @@ export const createTenantResourceAssociation: API.OperationMethod<
   CreateTenantResourceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<CreateTenantResourceAssociationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateTenantResourceAssociationResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<CreateTenantResourceAssociationRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<CreateTenantResourceAssociationResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -2742,8 +2742,8 @@ export const deleteConfigurationSet: API.OperationMethod<
   DeleteConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DeleteConfigurationSetRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteConfigurationSetResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<DeleteConfigurationSetRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DeleteConfigurationSetResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2774,8 +2774,8 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
   DeleteConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2796,8 +2796,8 @@ export const deleteContact: API.OperationMethod<
   DeleteContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<DeleteContactRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteContactResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<DeleteContactRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DeleteContactResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2819,8 +2819,8 @@ export const deleteContactList: API.OperationMethod<
   DeleteContactListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<DeleteContactListRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteContactListResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<DeleteContactListRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DeleteContactListResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2852,8 +2852,8 @@ export const deleteCustomVerificationEmailTemplate: API.OperationMethod<
   DeleteCustomVerificationEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<DeleteCustomVerificationEmailTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteCustomVerificationEmailTemplateResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<DeleteCustomVerificationEmailTemplateRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteCustomVerificationEmailTemplateResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2875,8 +2875,8 @@ export const deleteDedicatedIpPool: API.OperationMethod<
   DeleteDedicatedIpPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<DeleteDedicatedIpPoolRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteDedicatedIpPoolResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<DeleteDedicatedIpPoolRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DeleteDedicatedIpPoolResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2904,8 +2904,8 @@ export const deleteEmailIdentity: API.OperationMethod<
   DeleteEmailIdentityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<DeleteEmailIdentityRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteEmailIdentityResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<DeleteEmailIdentityRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DeleteEmailIdentityResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -2943,8 +2943,8 @@ export const deleteEmailIdentityPolicy: API.OperationMethod<
   DeleteEmailIdentityPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<DeleteEmailIdentityPolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteEmailIdentityPolicyResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<DeleteEmailIdentityPolicyRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteEmailIdentityPolicyResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2967,8 +2967,8 @@ export const deleteEmailTemplate: API.OperationMethod<
   DeleteEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DeleteEmailTemplateRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteEmailTemplateResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<DeleteEmailTemplateRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DeleteEmailTemplateResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2993,8 +2993,8 @@ export const deleteMultiRegionEndpoint: API.OperationMethod<
   DeleteMultiRegionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<DeleteMultiRegionEndpointRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<DeleteMultiRegionEndpointResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<DeleteMultiRegionEndpointRequest>,
+  output: __S(1361, __c85, 1) as any as S.Schema<DeleteMultiRegionEndpointResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -3023,8 +3023,8 @@ export const deleteSuppressedDestination: API.OperationMethod<
   DeleteSuppressedDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<DeleteSuppressedDestinationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteSuppressedDestinationResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<DeleteSuppressedDestinationRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteSuppressedDestinationResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3048,8 +3048,8 @@ export const deleteTenant: API.OperationMethod<
   DeleteTenantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<DeleteTenantRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteTenantResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<DeleteTenantRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DeleteTenantResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3074,8 +3074,8 @@ export const deleteTenantResourceAssociation: API.OperationMethod<
   DeleteTenantResourceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<DeleteTenantResourceAssociationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteTenantResourceAssociationResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<DeleteTenantResourceAssociationRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteTenantResourceAssociationResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3106,8 +3106,8 @@ export const disassociateEmailIdentityCertificate: API.OperationMethod<
   DisassociateEmailIdentityCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<DisassociateEmailIdentityCertificateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateEmailIdentityCertificateResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<DisassociateEmailIdentityCertificateRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DisassociateEmailIdentityCertificateResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3125,8 +3125,8 @@ export const getAccount: API.OperationMethod<
   GetAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetAccountRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<GetAccountResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<GetAccountRequest>,
+  output: __S(1446, __c90, 6) as any as S.Schema<GetAccountResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3147,8 +3147,8 @@ export const getBlacklistReports: API.OperationMethod<
   GetBlacklistReportsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<GetBlacklistReportsRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<GetBlacklistReportsResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<GetBlacklistReportsRequest>,
+  output: __S(1476, __c92, 4) as any as S.Schema<GetBlacklistReportsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3176,8 +3176,8 @@ export const getConfigurationSet: API.OperationMethod<
   GetConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetConfigurationSetRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<GetConfigurationSetResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<GetConfigurationSetRequest>,
+  output: __S(1489, __c93, 1) as any as S.Schema<GetConfigurationSetResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3204,8 +3204,8 @@ export const getConfigurationSetEventDestinations: API.OperationMethod<
   GetConfigurationSetEventDestinationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetConfigurationSetEventDestinationsRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetConfigurationSetEventDestinationsResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<GetConfigurationSetEventDestinationsRequest>,
+  output: __S(1507, __c94, 3) as any as S.Schema<GetConfigurationSetEventDestinationsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3226,8 +3226,8 @@ export const getContact: API.OperationMethod<
   GetContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetContactRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetContactResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<GetContactRequest>,
+  output: __S(1521, __c95, 1) as any as S.Schema<GetContactResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3249,8 +3249,8 @@ export const getContactList: API.OperationMethod<
   GetContactListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetContactListRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetContactListResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<GetContactListRequest>,
+  output: __S(1537, __c96, 1) as any as S.Schema<GetContactListResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3278,8 +3278,8 @@ export const getCustomVerificationEmailTemplate: API.OperationMethod<
   GetCustomVerificationEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetCustomVerificationEmailTemplateRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GetCustomVerificationEmailTemplateResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<GetCustomVerificationEmailTemplateRequest>,
+  output: __S(1553, __c97, 1) as any as S.Schema<GetCustomVerificationEmailTemplateResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3302,8 +3302,8 @@ export const getDedicatedIp: API.OperationMethod<
   GetDedicatedIpError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetDedicatedIpRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<GetDedicatedIpResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<GetDedicatedIpRequest>,
+  output: __S(1569, __c98, 1) as any as S.Schema<GetDedicatedIpResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3324,8 +3324,8 @@ export const getDedicatedIpPool: API.OperationMethod<
   GetDedicatedIpPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetDedicatedIpPoolRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GetDedicatedIpPoolResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<GetDedicatedIpPoolRequest>,
+  output: __S(1602, __c100, 2) as any as S.Schema<GetDedicatedIpPoolResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3348,8 +3348,8 @@ export const getDedicatedIps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetDedicatedIpsRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<GetDedicatedIpsResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<GetDedicatedIpsRequest>,
+  output: __S(1618, __c101, 2) as any as S.Schema<GetDedicatedIpsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3378,8 +3378,8 @@ export const getDeliverabilityDashboardOptions: API.OperationMethod<
   GetDeliverabilityDashboardOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetDeliverabilityDashboardOptionsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<GetDeliverabilityDashboardOptionsResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<GetDeliverabilityDashboardOptionsRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<GetDeliverabilityDashboardOptionsResponse>,
   errors: [BadRequestException, LimitExceededException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3400,8 +3400,8 @@ export const getDeliverabilityTestReport: API.OperationMethod<
   GetDeliverabilityTestReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetDeliverabilityTestReportRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<GetDeliverabilityTestReportResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<GetDeliverabilityTestReportRequest>,
+  output: __S(1668, __c104, 4) as any as S.Schema<GetDeliverabilityTestReportResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3424,8 +3424,8 @@ export const getDomainDeliverabilityCampaign: API.OperationMethod<
   GetDomainDeliverabilityCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetDomainDeliverabilityCampaignRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<GetDomainDeliverabilityCampaignResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<GetDomainDeliverabilityCampaignRequest>,
+  output: __S(1697, __c106, 1) as any as S.Schema<GetDomainDeliverabilityCampaignResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3447,8 +3447,8 @@ export const getDomainStatisticsReport: API.OperationMethod<
   GetDomainStatisticsReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetDomainStatisticsReportRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<GetDomainStatisticsReportResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<GetDomainStatisticsReportRequest>,
+  output: __S(1735, __c108, 7) as any as S.Schema<GetDomainStatisticsReportResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3468,8 +3468,8 @@ export const getEmailAddressInsights: API.OperationMethod<
   GetEmailAddressInsightsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<GetEmailAddressInsightsRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<GetEmailAddressInsightsResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<GetEmailAddressInsightsRequest>,
+  output: __S(1748, __c109, 4) as any as S.Schema<GetEmailAddressInsightsResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3492,8 +3492,8 @@ export const getEmailIdentity: API.OperationMethod<
   GetEmailIdentityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<GetEmailIdentityRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<GetEmailIdentityResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<GetEmailIdentityRequest>,
+  output: __S(1764, __c110, 4) as any as S.Schema<GetEmailIdentityResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3526,8 +3526,8 @@ export const getEmailIdentityPolicies: API.OperationMethod<
   GetEmailIdentityPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<GetEmailIdentityPoliciesRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<GetEmailIdentityPoliciesResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<GetEmailIdentityPoliciesRequest>,
+  output: __S(1793, __c112, 1) as any as S.Schema<GetEmailIdentityPoliciesResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3551,8 +3551,8 @@ export const getEmailTemplate: API.OperationMethod<
   GetEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<GetEmailTemplateRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<GetEmailTemplateResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<GetEmailTemplateRequest>,
+  output: __S(1809, __c113, 1) as any as S.Schema<GetEmailTemplateResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3573,8 +3573,8 @@ export const getExportJob: API.OperationMethod<
   GetExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<GetExportJobRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<GetExportJobResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<GetExportJobRequest>,
+  output: __S(1826, __c114, 2) as any as S.Schema<GetExportJobResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3595,8 +3595,8 @@ export const getImportJob: API.OperationMethod<
   GetImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<GetImportJobRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<GetImportJobResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<GetImportJobRequest>,
+  output: __S(1857, __c116, 1) as any as S.Schema<GetImportJobResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3620,8 +3620,8 @@ export const getMessageInsights: API.OperationMethod<
   GetMessageInsightsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<GetMessageInsightsRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<GetMessageInsightsResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<GetMessageInsightsRequest>,
+  output: __S(1880, __c117, 8) as any as S.Schema<GetMessageInsightsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3645,8 +3645,8 @@ export const getMultiRegionEndpoint: API.OperationMethod<
   GetMultiRegionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<GetMultiRegionEndpointRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<GetMultiRegionEndpointResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<GetMultiRegionEndpointRequest>,
+  output: __S(1889, __c118, 1) as any as S.Schema<GetMultiRegionEndpointResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3674,8 +3674,8 @@ export const getReputationEntity: API.OperationMethod<
   GetReputationEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<GetReputationEntityRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<GetReputationEntityResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<GetReputationEntityRequest>,
+  output: __S(1905, __c119, 1) as any as S.Schema<GetReputationEntityResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3699,8 +3699,8 @@ export const getSuppressedDestination: API.OperationMethod<
   GetSuppressedDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<GetSuppressedDestinationRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<GetSuppressedDestinationResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<GetSuppressedDestinationRequest>,
+  output: __S(1939, __c121, 3) as any as S.Schema<GetSuppressedDestinationResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3722,8 +3722,8 @@ export const getTenant: API.OperationMethod<
   GetTenantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<GetTenantRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<GetTenantResponse>,
+  input: __S(1952, __c122, 0) as any as S.Schema<GetTenantRequest>,
+  output: __S(1953, __c122, 1) as any as S.Schema<GetTenantResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3750,8 +3750,8 @@ export const listConfigurationSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<ListConfigurationSetsRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<ListConfigurationSetsResponse>,
+  input: __S(1968, __c123, 0) as any as S.Schema<ListConfigurationSetsRequest>,
+  output: __S(1969, __c123, 1) as any as S.Schema<ListConfigurationSetsResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3773,8 +3773,8 @@ export const listContactLists: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<ListContactListsRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<ListContactListsResponse>,
+  input: __S(1984, __c124, 0) as any as S.Schema<ListContactListsRequest>,
+  output: __S(1987, __c124, 3) as any as S.Schema<ListContactListsResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3797,8 +3797,8 @@ export const listContacts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<ListContactsRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<ListContactsResponse>,
+  input: __S(2002, __c125, 2) as any as S.Schema<ListContactsRequest>,
+  output: __S(2005, __c125, 5) as any as S.Schema<ListContactsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3827,8 +3827,8 @@ export const listCustomVerificationEmailTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<ListCustomVerificationEmailTemplatesRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<ListCustomVerificationEmailTemplatesResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<ListCustomVerificationEmailTemplatesRequest>,
+  output: __S(2019, __c126, 3) as any as S.Schema<ListCustomVerificationEmailTemplatesResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3851,8 +3851,8 @@ export const listDedicatedIpPools: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<ListDedicatedIpPoolsRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<ListDedicatedIpPoolsResponse>,
+  input: __S(2032, __c127, 0) as any as S.Schema<ListDedicatedIpPoolsRequest>,
+  output: __S(2033, __c127, 1) as any as S.Schema<ListDedicatedIpPoolsResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3877,8 +3877,8 @@ export const listDeliverabilityTestReports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<ListDeliverabilityTestReportsRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<ListDeliverabilityTestReportsResponse>,
+  input: __S(2048, __c128, 0) as any as S.Schema<ListDeliverabilityTestReportsRequest>,
+  output: __S(2050, __c128, 2) as any as S.Schema<ListDeliverabilityTestReportsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3903,8 +3903,8 @@ export const listDomainDeliverabilityCampaigns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<ListDomainDeliverabilityCampaignsRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<ListDomainDeliverabilityCampaignsResponse>,
+  input: __S(2064, __c129, 0) as any as S.Schema<ListDomainDeliverabilityCampaignsRequest>,
+  output: __S(2066, __c129, 2) as any as S.Schema<ListDomainDeliverabilityCampaignsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3929,8 +3929,8 @@ export const listEmailIdentities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<ListEmailIdentitiesRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<ListEmailIdentitiesResponse>,
+  input: __S(2080, __c130, 0) as any as S.Schema<ListEmailIdentitiesRequest>,
+  output: __S(2083, __c130, 3) as any as S.Schema<ListEmailIdentitiesResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3964,8 +3964,8 @@ export const listEmailIdentityCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IdentityCertificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<ListEmailIdentityCertificatesRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<ListEmailIdentityCertificatesResponse>,
+  input: __S(2096, __c131, 0) as any as S.Schema<ListEmailIdentityCertificatesRequest>,
+  output: __S(2099, __c131, 3) as any as S.Schema<ListEmailIdentityCertificatesResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3992,8 +3992,8 @@ export const listEmailTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<ListEmailTemplatesRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<ListEmailTemplatesResponse>,
+  input: __S(2112, __c132, 0) as any as S.Schema<ListEmailTemplatesRequest>,
+  output: __S(2115, __c132, 3) as any as S.Schema<ListEmailTemplatesResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4012,8 +4012,8 @@ export const listExportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<ListExportJobsRequest>,
-  output: __S(248, __c31, 0) as any as S.Schema<ListExportJobsResponse>,
+  input: __S(2128, __c133, 0) as any as S.Schema<ListExportJobsRequest>,
+  output: __S(2131, __c133, 3) as any as S.Schema<ListExportJobsResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4032,8 +4032,8 @@ export const listImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<ListImportJobsRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<ListImportJobsResponse>,
+  input: __S(2144, __c134, 0) as any as S.Schema<ListImportJobsRequest>,
+  output: __S(2147, __c134, 3) as any as S.Schema<ListImportJobsResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4058,8 +4058,8 @@ export const listMultiRegionEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MultiRegionEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<ListMultiRegionEndpointsRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<ListMultiRegionEndpointsResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<ListMultiRegionEndpointsRequest>,
+  output: __S(2163, __c135, 3) as any as S.Schema<ListMultiRegionEndpointsResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4089,8 +4089,8 @@ export const listRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<ListRecommendationsRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<ListRecommendationsResponse>,
+  input: __S(2176, __c136, 0) as any as S.Schema<ListRecommendationsRequest>,
+  output: __S(2179, __c136, 3) as any as S.Schema<ListRecommendationsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4118,8 +4118,8 @@ export const listReputationEntities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReputationEntity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<ListReputationEntitiesRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<ListReputationEntitiesResponse>,
+  input: __S(2192, __c137, 0) as any as S.Schema<ListReputationEntitiesRequest>,
+  output: __S(2194, __c137, 2) as any as S.Schema<ListReputationEntitiesResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4151,8 +4151,8 @@ export const listResourceTenants: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceTenantMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<ListResourceTenantsRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<ListResourceTenantsResponse>,
+  input: __S(2208, __c138, 0) as any as S.Schema<ListResourceTenantsRequest>,
+  output: __S(2211, __c138, 3) as any as S.Schema<ListResourceTenantsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4184,8 +4184,8 @@ export const listSuppressedDestinations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<ListSuppressedDestinationsRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<ListSuppressedDestinationsResponse>,
+  input: __S(2224, __c139, 0) as any as S.Schema<ListSuppressedDestinationsRequest>,
+  output: __S(2227, __c139, 3) as any as S.Schema<ListSuppressedDestinationsResponse>,
   errors: [
     BadRequestException,
     InvalidNextTokenException,
@@ -4217,8 +4217,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(2240, __c140, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(2241, __c140, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4244,8 +4244,8 @@ export const listTenantResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TenantResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ListTenantResourcesRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<ListTenantResourcesResponse>,
+  input: __S(2256, __c141, 0) as any as S.Schema<ListTenantResourcesRequest>,
+  output: __S(2259, __c141, 3) as any as S.Schema<ListTenantResourcesResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4272,8 +4272,8 @@ export const listTenants: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TenantInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<ListTenantsRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<ListTenantsResponse>,
+  input: __S(2272, __c142, 0) as any as S.Schema<ListTenantsRequest>,
+  output: __S(2275, __c142, 3) as any as S.Schema<ListTenantsResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4299,8 +4299,8 @@ export const putAccountDedicatedIpWarmupAttributes: API.OperationMethod<
   PutAccountDedicatedIpWarmupAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<PutAccountDedicatedIpWarmupAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutAccountDedicatedIpWarmupAttributesResponse>,
+  input: __S(2288, __c143, 0) as any as S.Schema<PutAccountDedicatedIpWarmupAttributesRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutAccountDedicatedIpWarmupAttributesResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4321,8 +4321,8 @@ export const putAccountDetails: API.OperationMethod<
   PutAccountDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<PutAccountDetailsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<PutAccountDetailsResponse>,
+  input: __S(2304, __c144, 0) as any as S.Schema<PutAccountDetailsRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<PutAccountDetailsResponse>,
   errors: [BadRequestException, ConflictException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4343,8 +4343,8 @@ export const putAccountPricingAttributes: API.OperationMethod<
   PutAccountPricingAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<PutAccountPricingAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutAccountPricingAttributesResponse>,
+  input: __S(2320, __c145, 0) as any as S.Schema<PutAccountPricingAttributesRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutAccountPricingAttributesResponse>,
   errors: [BadRequestException, ConflictException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4364,8 +4364,8 @@ export const putAccountSendingAttributes: API.OperationMethod<
   PutAccountSendingAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<PutAccountSendingAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutAccountSendingAttributesResponse>,
+  input: __S(2336, __c146, 0) as any as S.Schema<PutAccountSendingAttributesRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutAccountSendingAttributesResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4385,8 +4385,8 @@ export const putAccountSuppressionAttributes: API.OperationMethod<
   PutAccountSuppressionAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<PutAccountSuppressionAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutAccountSuppressionAttributesResponse>,
+  input: __S(2352, __c147, 0) as any as S.Schema<PutAccountSuppressionAttributesRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutAccountSuppressionAttributesResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4408,8 +4408,8 @@ export const putAccountVdmAttributes: API.OperationMethod<
   PutAccountVdmAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<PutAccountVdmAttributesRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<PutAccountVdmAttributesResponse>,
+  input: __S(2368, __c148, 0) as any as S.Schema<PutAccountVdmAttributesRequest>,
+  output: __S(2369, __c148, 1) as any as S.Schema<PutAccountVdmAttributesResponse>,
   errors: [BadRequestException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4432,8 +4432,8 @@ export const putConfigurationSetArchivingOptions: API.OperationMethod<
   PutConfigurationSetArchivingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<PutConfigurationSetArchivingOptionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutConfigurationSetArchivingOptionsResponse>,
+  input: __S(2384, __c149, 0) as any as S.Schema<PutConfigurationSetArchivingOptionsRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutConfigurationSetArchivingOptionsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4455,8 +4455,8 @@ export const putConfigurationSetDeliveryOptions: API.OperationMethod<
   PutConfigurationSetDeliveryOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<PutConfigurationSetDeliveryOptionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutConfigurationSetDeliveryOptionsResponse>,
+  input: __S(2400, __c150, 0) as any as S.Schema<PutConfigurationSetDeliveryOptionsRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutConfigurationSetDeliveryOptionsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4478,8 +4478,8 @@ export const putConfigurationSetReputationOptions: API.OperationMethod<
   PutConfigurationSetReputationOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<PutConfigurationSetReputationOptionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutConfigurationSetReputationOptionsResponse>,
+  input: __S(2416, __c151, 0) as any as S.Schema<PutConfigurationSetReputationOptionsRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutConfigurationSetReputationOptionsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4501,8 +4501,8 @@ export const putConfigurationSetSendingOptions: API.OperationMethod<
   PutConfigurationSetSendingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<PutConfigurationSetSendingOptionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutConfigurationSetSendingOptionsResponse>,
+  input: __S(2432, __c152, 0) as any as S.Schema<PutConfigurationSetSendingOptionsRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutConfigurationSetSendingOptionsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4526,8 +4526,8 @@ export const putConfigurationSetSuppressionOptions: API.OperationMethod<
   PutConfigurationSetSuppressionOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<PutConfigurationSetSuppressionOptionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutConfigurationSetSuppressionOptionsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<PutConfigurationSetSuppressionOptionsRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutConfigurationSetSuppressionOptionsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4549,8 +4549,8 @@ export const putConfigurationSetTrackingOptions: API.OperationMethod<
   PutConfigurationSetTrackingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<PutConfigurationSetTrackingOptionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutConfigurationSetTrackingOptionsResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<PutConfigurationSetTrackingOptionsRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutConfigurationSetTrackingOptionsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4573,8 +4573,8 @@ export const putConfigurationSetVdmOptions: API.OperationMethod<
   PutConfigurationSetVdmOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<PutConfigurationSetVdmOptionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutConfigurationSetVdmOptionsResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<PutConfigurationSetVdmOptionsRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutConfigurationSetVdmOptionsResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4601,8 +4601,8 @@ export const putDedicatedIpInPool: API.OperationMethod<
   PutDedicatedIpInPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<PutDedicatedIpInPoolRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<PutDedicatedIpInPoolResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<PutDedicatedIpInPoolRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<PutDedicatedIpInPoolResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4626,8 +4626,8 @@ export const putDedicatedIpPoolScalingAttributes: API.OperationMethod<
   PutDedicatedIpPoolScalingAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<PutDedicatedIpPoolScalingAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutDedicatedIpPoolScalingAttributesResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<PutDedicatedIpPoolScalingAttributesRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutDedicatedIpPoolScalingAttributesResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -4653,8 +4653,8 @@ export const putDedicatedIpWarmupAttributes: API.OperationMethod<
   PutDedicatedIpWarmupAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<PutDedicatedIpWarmupAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutDedicatedIpWarmupAttributesResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<PutDedicatedIpWarmupAttributesRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutDedicatedIpWarmupAttributesResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4683,8 +4683,8 @@ export const putDeliverabilityDashboardOption: API.OperationMethod<
   PutDeliverabilityDashboardOptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<PutDeliverabilityDashboardOptionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutDeliverabilityDashboardOptionResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<PutDeliverabilityDashboardOptionRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutDeliverabilityDashboardOptionResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -4711,8 +4711,8 @@ export const putEmailIdentityConfigurationSetAttributes: API.OperationMethod<
   PutEmailIdentityConfigurationSetAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<PutEmailIdentityConfigurationSetAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutEmailIdentityConfigurationSetAttributesResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<PutEmailIdentityConfigurationSetAttributesRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutEmailIdentityConfigurationSetAttributesResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4733,8 +4733,8 @@ export const putEmailIdentityDkimAttributes: API.OperationMethod<
   PutEmailIdentityDkimAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<PutEmailIdentityDkimAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutEmailIdentityDkimAttributesResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<PutEmailIdentityDkimAttributesRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutEmailIdentityDkimAttributesResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4769,8 +4769,8 @@ export const putEmailIdentityDkimSigningAttributes: API.OperationMethod<
   PutEmailIdentityDkimSigningAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<PutEmailIdentityDkimSigningAttributesRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<PutEmailIdentityDkimSigningAttributesResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<PutEmailIdentityDkimSigningAttributesRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<PutEmailIdentityDkimSigningAttributesResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4802,8 +4802,8 @@ export const putEmailIdentityFeedbackAttributes: API.OperationMethod<
   PutEmailIdentityFeedbackAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<PutEmailIdentityFeedbackAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutEmailIdentityFeedbackAttributesResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<PutEmailIdentityFeedbackAttributesRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutEmailIdentityFeedbackAttributesResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4825,8 +4825,8 @@ export const putEmailIdentityMailFromAttributes: API.OperationMethod<
   PutEmailIdentityMailFromAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<PutEmailIdentityMailFromAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutEmailIdentityMailFromAttributesResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<PutEmailIdentityMailFromAttributesRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutEmailIdentityMailFromAttributesResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4850,8 +4850,8 @@ export const putSuppressedDestination: API.OperationMethod<
   PutSuppressedDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<PutSuppressedDestinationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutSuppressedDestinationResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<PutSuppressedDestinationRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutSuppressedDestinationResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4877,8 +4877,8 @@ export const putTenantSuppressionAttributes: API.OperationMethod<
   PutTenantSuppressionAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<PutTenantSuppressionAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutTenantSuppressionAttributesResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<PutTenantSuppressionAttributesRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<PutTenantSuppressionAttributesResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4904,8 +4904,8 @@ export const sendBulkEmail: API.OperationMethod<
   SendBulkEmailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<SendBulkEmailRequest>,
-  output: __S(319, __c39, 7) as any as S.Schema<SendBulkEmailResponse>,
+  input: __S(229, __c14, 5) as any as S.Schema<SendBulkEmailRequest>,
+  output: __S(232, __c14, 8) as any as S.Schema<SendBulkEmailResponse>,
   errors: [
     AccountSuspendedException,
     BadRequestException,
@@ -4949,8 +4949,8 @@ export const sendCustomVerificationEmail: API.OperationMethod<
   SendCustomVerificationEmailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<SendCustomVerificationEmailRequest>,
-  output: __S(321, __c40, 1) as any as S.Schema<SendCustomVerificationEmailResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<SendCustomVerificationEmailRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<SendCustomVerificationEmailResponse>,
   errors: [
     BadRequestException,
     LimitExceededException,
@@ -4999,8 +4999,8 @@ export const sendEmail: API.OperationMethod<
   SendEmailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<SendEmailRequest>,
-  output: __S(324, __c40, 4) as any as S.Schema<SendEmailResponse>,
+  input: __S(273, __c17, 1) as any as S.Schema<SendEmailRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<SendEmailResponse>,
   errors: [
     AccountSuspendedException,
     BadRequestException,
@@ -5040,8 +5040,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<TagResourceRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<TagResourceResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -5070,8 +5070,8 @@ export const testRenderEmailTemplate: API.OperationMethod<
   TestRenderEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<TestRenderEmailTemplateRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<TestRenderEmailTemplateResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<TestRenderEmailTemplateRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<TestRenderEmailTemplateResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5093,8 +5093,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UntagResourceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -5123,8 +5123,8 @@ export const updateConfigurationSet: API.OperationMethod<
   UpdateConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<UpdateConfigurationSetRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateConfigurationSetResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<UpdateConfigurationSetRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<UpdateConfigurationSetResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5150,8 +5150,8 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
   UpdateConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5177,8 +5177,8 @@ export const updateContact: API.OperationMethod<
   UpdateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<UpdateContactRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateContactResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<UpdateContactRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<UpdateContactResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -5205,8 +5205,8 @@ export const updateContactList: API.OperationMethod<
   UpdateContactListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<UpdateContactListRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateContactListResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<UpdateContactListRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<UpdateContactListResponse>,
   errors: [
     BadRequestException,
     ConcurrentModificationException,
@@ -5238,8 +5238,8 @@ export const updateCustomVerificationEmailTemplate: API.OperationMethod<
   UpdateCustomVerificationEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<UpdateCustomVerificationEmailTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateCustomVerificationEmailTemplateResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<UpdateCustomVerificationEmailTemplateRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<UpdateCustomVerificationEmailTemplateResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5272,8 +5272,8 @@ export const updateEmailIdentityPolicy: API.OperationMethod<
   UpdateEmailIdentityPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<UpdateEmailIdentityPolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateEmailIdentityPolicyResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<UpdateEmailIdentityPolicyRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<UpdateEmailIdentityPolicyResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5298,8 +5298,8 @@ export const updateEmailTemplate: API.OperationMethod<
   UpdateEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<UpdateEmailTemplateRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateEmailTemplateResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<UpdateEmailTemplateRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<UpdateEmailTemplateResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5329,8 +5329,12 @@ export const updateReputationEntityCustomerManagedStatus: API.OperationMethod<
   UpdateReputationEntityCustomerManagedStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<UpdateReputationEntityCustomerManagedStatusRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateReputationEntityCustomerManagedStatusResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<UpdateReputationEntityCustomerManagedStatusRequest>,
+  output: __S(
+    496,
+    __c31,
+    0,
+  ) as any as S.Schema<UpdateReputationEntityCustomerManagedStatusResponse>,
   errors: [BadRequestException, ConflictException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5356,8 +5360,8 @@ export const updateReputationEntityPolicy: API.OperationMethod<
   UpdateReputationEntityPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<UpdateReputationEntityPolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateReputationEntityPolicyResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<UpdateReputationEntityPolicyRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<UpdateReputationEntityPolicyResponse>,
   errors: [BadRequestException, ConflictException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5366,6 +5370,765 @@ export const updateReputationEntityPolicy: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
+          SuppressionScope: S.optional(S.String),
+          SuppressedReasons: S.optional(__S(592, __c37, 0)),
+          ValidationOptions: S.optional(__S(626, __c39, 2)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/email/configuration-sets/{ConfigurationSetName}/suppression-options",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutConfigurationSetSuppressionOptionsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
+          CustomRedirectDomain: S.optional(S.String),
+          HttpsPolicy: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/email/configuration-sets/{ConfigurationSetName}/tracking-options",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutConfigurationSetTrackingOptionsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
+          VdmOptions: S.optional(__S(672, __c42, 0)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/email/configuration-sets/{ConfigurationSetName}/vdm-options",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutConfigurationSetVdmOptionsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Ip: S.String.pipe(T.HttpLabel("Ip")), DestinationPoolName: S.String }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v2/email/dedicated-ips/{Ip}/pool" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutDedicatedIpInPoolRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PoolName: S.String.pipe(T.HttpLabel("PoolName")), ScalingMode: S.String }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v2/email/dedicated-ip-pools/{PoolName}/scaling" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutDedicatedIpPoolScalingAttributesRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Ip: S.String.pipe(T.HttpLabel("Ip")), WarmupPercentage: S.Number }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v2/email/dedicated-ips/{Ip}/warmup" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutDedicatedIpWarmupAttributesRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DashboardEnabled: S.Boolean,
+          SubscribedDomains: S.optional(__S(1650, __c103, 2)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v2/email/deliverability-dashboard" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutDeliverabilityDashboardOptionRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
+          ConfigurationSetName: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/email/identities/{EmailIdentity}/configuration-set",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutEmailIdentityConfigurationSetAttributesRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
+          SigningEnabled: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v2/email/identities/{EmailIdentity}/dkim" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutEmailIdentityDkimAttributesRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
+          SigningAttributesOrigin: S.String,
+          SigningAttributes: S.optional(__S(944, __c59, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v2/email/identities/{EmailIdentity}/dkim/signing" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutEmailIdentityDkimSigningAttributesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DkimStatus: S.optional(S.String),
+          DkimTokens: S.optional(__S(960, __c60, 0)),
+          SigningHostedZone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PutEmailIdentityDkimSigningAttributesResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
+          EmailForwardingEnabled: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v2/email/identities/{EmailIdentity}/feedback" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutEmailIdentityFeedbackAttributesRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
+          MailFromDomain: S.optional(S.String),
+          BehaviorOnMxFailure: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v2/email/identities/{EmailIdentity}/mail-from" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutEmailIdentityMailFromAttributesRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EmailAddress: S.String,
+          Reason: S.String,
+          TenantName: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v2/email/suppression/addresses" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutSuppressedDestinationRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TenantName: S.String,
+          SuppressedReasons: S.optional(__S(592, __c37, 0)),
+          SuppressionScope: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/email/tenant/suppression" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutTenantSuppressionAttributesRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Template: S.optional(__S(866, __c54, 2)) })).annotate({
+        identifier: "BulkEmailContent",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ ReplacementTemplateData: S.optional(S.String) })).annotate({
+        identifier: "ReplacementTemplate",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ReplacementTemplate: S.optional(__S(225, __c14, 1)) }),
+      ).annotate({ identifier: "ReplacementEmailContent" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Destination: __S(240, __c15, 0),
+          ReplacementTags: S.optional(__S(913, __c57, 1)),
+          ReplacementEmailContent: S.optional(__S(226, __c14, 2)),
+          ReplacementHeaders: S.optional(__S(913, __c57, 1)),
+        }),
+      ).annotate({ identifier: "BulkEmailEntry" });
+    case 4:
+      return S.Array(__S(227, __c14, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          FromEmailAddress: S.optional(S.String),
+          FromEmailAddressIdentityArn: S.optional(S.String),
+          ReplyToAddresses: S.optional(__S(960, __c60, 0)),
+          FeedbackForwardingEmailAddress: S.optional(S.String),
+          FeedbackForwardingEmailAddressIdentityArn: S.optional(S.String),
+          DefaultEmailTags: S.optional(__S(913, __c57, 1)),
+          DefaultContent: __S(224, __c14, 0),
+          BulkEmailEntries: __S(228, __c14, 4),
+          ConfigurationSetName: S.optional(S.String),
+          EndpointId: S.optional(S.String).pipe(T.ContextParam("EndpointId")),
+          TenantName: S.optional(S.String),
+          ConfigurationOverrides: S.optional(__S(242, __c15, 2)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/email/outbound-bulk-emails" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SendBulkEmailRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          Error: S.optional(S.String),
+          MessageId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BulkEmailEntryResult" });
+    case 7:
+      return S.Array(__S(230, __c14, 6));
+    case 8:
+      return S.suspend(() => S.Struct({ BulkEmailEntryResults: __S(231, __c14, 7) })).annotate({
+        identifier: "SendBulkEmailResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ToAddresses: S.optional(__S(960, __c60, 0)),
+          CcAddresses: S.optional(__S(960, __c60, 0)),
+          BccAddresses: S.optional(__S(960, __c60, 0)),
+        }),
+      ).annotate({ identifier: "Destination" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          OpenTrackingEnabled: S.optional(S.String),
+          ClickTrackingEnabled: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TrackingConfigurationOverrides",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Tracking: S.optional(__S(241, __c15, 1)) })).annotate({
+        identifier: "ConfigurationOverrides",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EmailAddress: S.String,
+          TemplateName: S.String,
+          ConfigurationSetName: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/email/outbound-custom-verification-emails" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "SendCustomVerificationEmailRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ MessageId: S.optional(S.String) })).annotate({
+        identifier: "SendCustomVerificationEmailResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ContactListName: S.String, TopicName: S.optional(S.String) }),
+      ).annotate({ identifier: "ListManagementOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          FromEmailAddress: S.optional(S.String),
+          FromEmailAddressIdentityArn: S.optional(S.String),
+          Destination: S.optional(__S(240, __c15, 0)),
+          ReplyToAddresses: S.optional(__S(960, __c60, 0)),
+          FeedbackForwardingEmailAddress: S.optional(S.String),
+          FeedbackForwardingEmailAddressIdentityArn: S.optional(S.String),
+          Content: __S(884, __c55, 4),
+          EmailTags: S.optional(__S(913, __c57, 1)),
+          ConfigurationSetName: S.optional(S.String),
+          EndpointId: S.optional(S.String).pipe(T.ContextParam("EndpointId")),
+          TenantName: S.optional(S.String),
+          ListManagementOptions: S.optional(__S(272, __c17, 0)),
+          ConfigurationOverrides: S.optional(__S(242, __c15, 2)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/email/outbound-emails" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SendEmailRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ MessageId: S.optional(S.String) })).annotate({
+        identifier: "SendEmailResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, Tags: __S(609, __c38, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v2/email/tags" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          TemplateData: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/email/templates/{TemplateName}/render" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "TestRenderEmailTemplateRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ RenderedTemplate: S.String })).annotate({
+        identifier: "TestRenderEmailTemplateResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpQuery("ResourceArn")),
+          TagKeys: __S(960, __c60, 0).pipe(T.HttpQuery("TagKeys")),
+        }).pipe(
+          T.all(T.Http({ method: "DELETE", uri: "/v2/email/tags" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSetName: S.String,
+          MessageSecurityOptions: S.optional(__S(690, __c43, 2)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v2/email/update-configuration-sets" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateConfigurationSetRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
+          EventDestinationName: S.String.pipe(T.HttpLabel("EventDestinationName")),
+          EventDestination: __S(720, __c45, 0),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/email/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateConfigurationSetEventDestinationRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ContactListName: S.String.pipe(T.HttpLabel("ContactListName")),
+          EmailAddress: S.String.pipe(T.HttpLabel("EmailAddress")),
+          TopicPreferences: S.optional(__S(769, __c48, 1)),
+          UnsubscribeAll: S.optional(S.Boolean),
+          AttributesData: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/email/contact-lists/{ContactListName}/contacts/{EmailAddress}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateContactRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ContactListName: S.String.pipe(T.HttpLabel("ContactListName")),
+          Topics: S.optional(__S(801, __c50, 1)),
+          Description: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v2/email/contact-lists/{ContactListName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateContactListRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          FromEmailAddress: S.String,
+          TemplateSubject: S.String,
+          TemplateContent: S.String,
+          SuccessRedirectionURL: S.String,
+          FailureRedirectionURL: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/email/custom-verification-email-templates/{TemplateName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateCustomVerificationEmailTemplateRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
+          PolicyName: S.String.pipe(T.HttpLabel("PolicyName")),
+          Policy: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/email/identities/{EmailIdentity}/policies/{PolicyName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateEmailIdentityPolicyRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          TemplateContent: __S(896, __c56, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v2/email/templates/{TemplateName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateEmailTemplateRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ReputationEntityType: S.String.pipe(T.HttpLabel("ReputationEntityType")),
+          ReputationEntityReference: S.String.pipe(T.HttpLabel("ReputationEntityReference")),
+          SendingStatus: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/email/reputation/entities/{ReputationEntityType}/{ReputationEntityReference}/customer-managed-status",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateReputationEntityCustomerManagedStatusRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ReputationEntityType: S.String.pipe(T.HttpLabel("ReputationEntityType")),
+          ReputationEntityReference: S.String.pipe(T.HttpLabel("ReputationEntityReference")),
+          ReputationEntityPolicy: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v2/email/reputation/entities/{ReputationEntityType}/{ReputationEntityReference}/policy",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateReputationEntityPolicyRequest",
+      });
+  }
+}
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5386,28 +6149,34 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateEmailIdentityCertificateRequest",
       });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AssociateEmailIdentityCertificateResponse",
       });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
           Namespace: S.String,
           Metric: S.String,
-          Dimensions: S.optional(__S(2, __c0, 2)),
+          Dimensions: S.optional(__S(528, __c33, 0)),
           StartDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "BatchGetMetricDataQuery" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(512, __c32, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Queries: __S(4, __c0, 4) }).pipe(
+        S.Struct({ Queries: __S(513, __c32, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/email/metrics/batch" }),
             svc,
@@ -5420,25 +6189,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchGetMetricDataRequest",
       });
-    case 6:
+    case 3:
       return S.Array(/*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")));
-    case 7:
+    case 4:
       return S.Array(S.Number);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          Timestamps: S.optional(__S(6, __c0, 6)),
-          Values: S.optional(__S(7, __c0, 7)),
+          Timestamps: S.optional(__S(515, __c32, 3)),
+          Values: S.optional(__S(516, __c32, 4)),
         }),
       ).annotate({ identifier: "MetricDataResult" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(517, __c32, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -5446,18 +6211,28 @@ function __c1(j: number): any {
           Message: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricDataError" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(519, __c32, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          Results: S.optional(__S(9, __c1, 1)),
-          Errors: S.optional(__S(11, __c1, 3)),
+          Results: S.optional(__S(518, __c32, 6)),
+          Errors: S.optional(__S(520, __c32, 8)),
         }),
       ).annotate({
         identifier: "BatchGetMetricDataResponse",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String.pipe(T.HttpLabel("JobId")) }).pipe(
           T.all(
@@ -5470,123 +6245,31 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CancelExportJobRequest" });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelExportJobResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ CustomRedirectDomain: S.String, HttpsPolicy: S.optional(S.String) }),
-      ).annotate({ identifier: "TrackingOptions" });
   }
 }
-function __c2(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          TlsPolicy: S.optional(S.String),
-          SendingPoolName: S.optional(S.String),
-          MaxDeliverySeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DeliveryOptions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ReputationMetricsEnabled: S.optional(S.Boolean),
-          LastFreshStart: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "ReputationOptions" });
-    case 2:
-      return S.suspend(() => S.Struct({ SendingEnabled: S.optional(S.Boolean) })).annotate({
-        identifier: "SendingOptions",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() => S.Struct({ ConfidenceVerdictThreshold: S.String })).annotate({
-        identifier: "SuppressionConfidenceThreshold",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ConditionThresholdEnabled: S.String,
-          OverallConfidenceThreshold: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "SuppressionConditionThreshold",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ ConditionThreshold: __S(23, __c2, 7) })).annotate({
-        identifier: "SuppressionValidationOptions",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          SuppressedReasons: S.optional(__S(21, __c2, 5)),
-          SuppressionScope: S.optional(S.String),
-          ValidationOptions: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "SuppressionOptions" });
-    case 2:
-      return S.suspend(() => S.Struct({ EngagementMetrics: S.optional(S.String) })).annotate({
-        identifier: "DashboardOptions",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ OptimizedSharedDelivery: S.optional(S.String) })).annotate({
-        identifier: "GuardianOptions",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DashboardOptions: S.optional(__S(26, __c3, 2)),
-          GuardianOptions: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "VdmOptions" });
-    case 5:
-      return S.suspend(() => S.Struct({ ArchiveArn: S.optional(S.String) })).annotate({
-        identifier: "ArchivingOptions",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ SignatureFormat: S.optional(S.String) })).annotate({
-        identifier: "SmimeSigningScheme",
-      });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ DefaultScheme: __S(14, __c1, 6) }),
-        /*@__PURE__*/ S.Struct({ SmimeScheme: __S(30, __c3, 6) }),
-      ]);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ SigningScheme: S.optional(__S(31, __c3, 7)) })).annotate({
-        identifier: "MessageSecurityOptions",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String,
-          TrackingOptions: S.optional(__S(15, __c1, 7)),
-          DeliveryOptions: S.optional(__S(16, __c2, 0)),
-          ReputationOptions: S.optional(__S(17, __c2, 1)),
-          SendingOptions: S.optional(__S(18, __c2, 2)),
-          Tags: S.optional(__S(20, __c2, 4)),
-          SuppressionOptions: S.optional(__S(25, __c3, 1)),
-          VdmOptions: S.optional(__S(28, __c3, 4)),
-          ArchivingOptions: S.optional(__S(29, __c3, 5)),
-          MessageSecurityOptions: S.optional(__S(32, __c4, 0)),
+          TrackingOptions: S.optional(__S(656, __c41, 0)),
+          DeliveryOptions: S.optional(__S(657, __c41, 1)),
+          ReputationOptions: S.optional(__S(658, __c41, 2)),
+          SendingOptions: S.optional(__S(659, __c41, 3)),
+          Tags: S.optional(__S(609, __c38, 1)),
+          SuppressionOptions: S.optional(__S(660, __c41, 4)),
+          VdmOptions: S.optional(__S(672, __c42, 0)),
+          ArchivingOptions: S.optional(__S(661, __c41, 5)),
+          MessageSecurityOptions: S.optional(__S(690, __c43, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/email/configuration-sets" }),
@@ -5600,64 +6283,132 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateConfigurationSetRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ IamRoleArn: S.String, DeliveryStreamArn: S.String }),
-      ).annotate({
-        identifier: "KinesisFirehoseDestination",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DimensionName: S.String,
-          DimensionValueSource: S.String,
-          DefaultDimensionValue: S.String,
-        }),
-      ).annotate({
-        identifier: "CloudWatchDimensionConfiguration",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ DimensionConfigurations: __S(36, __c4, 4) })).annotate({
-        identifier: "CloudWatchDestination",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ TopicArn: S.String })).annotate({
-        identifier: "SnsDestination",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ EventBusArn: S.String })).annotate({
-        identifier: "EventBridgeDestination",
-      });
   }
 }
-function __c5(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ApplicationArn: S.optional(S.String) })).annotate({
-        identifier: "PinpointDestination",
+      return S.Array(S.String);
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(608, __c38, 0));
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ConfidenceVerdictThreshold: S.String })).annotate({
+        identifier: "SuppressionConfidenceThreshold",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Enabled: S.optional(S.Boolean),
-          MatchingEventTypes: S.optional(__S(21, __c2, 5)),
-          KinesisFirehoseDestination: S.optional(__S(34, __c4, 2)),
-          CloudWatchDestination: S.optional(__S(37, __c4, 5)),
-          SnsDestination: S.optional(__S(38, __c4, 6)),
-          EventBridgeDestination: S.optional(__S(39, __c4, 7)),
-          PinpointDestination: S.optional(__S(40, __c5, 0)),
+          ConditionThresholdEnabled: S.String,
+          OverallConfidenceThreshold: S.optional(__S(624, __c39, 0)),
         }),
       ).annotate({
-        identifier: "EventDestinationDefinition",
+        identifier: "SuppressionConditionThreshold",
       });
     case 2:
+      return S.suspend(() => S.Struct({ ConditionThreshold: __S(625, __c39, 1) })).annotate({
+        identifier: "SuppressionValidationOptions",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ EngagementMetrics: S.optional(S.String) })).annotate({
+        identifier: "DashboardOptions",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ OptimizedSharedDelivery: S.optional(S.String) })).annotate({
+        identifier: "GuardianOptions",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ CustomRedirectDomain: S.String, HttpsPolicy: S.optional(S.String) }),
+      ).annotate({ identifier: "TrackingOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TlsPolicy: S.optional(S.String),
+          SendingPoolName: S.optional(S.String),
+          MaxDeliverySeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DeliveryOptions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ReputationMetricsEnabled: S.optional(S.Boolean),
+          LastFreshStart: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ReputationOptions" });
+    case 3:
+      return S.suspend(() => S.Struct({ SendingEnabled: S.optional(S.Boolean) })).annotate({
+        identifier: "SendingOptions",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SuppressedReasons: S.optional(__S(592, __c37, 0)),
+          SuppressionScope: S.optional(S.String),
+          ValidationOptions: S.optional(__S(626, __c39, 2)),
+        }),
+      ).annotate({ identifier: "SuppressionOptions" });
+    case 5:
+      return S.suspend(() => S.Struct({ ArchiveArn: S.optional(S.String) })).annotate({
+        identifier: "ArchivingOptions",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DashboardOptions: S.optional(__S(640, __c40, 0)),
+          GuardianOptions: S.optional(__S(641, __c40, 1)),
+        }),
+      ).annotate({ identifier: "VdmOptions" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ SignatureFormat: S.optional(S.String) })).annotate({
+        identifier: "SmimeSigningScheme",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ DefaultScheme: __S(560, __c35, 0) }),
+        /*@__PURE__*/ S.Struct({ SmimeScheme: __S(688, __c43, 0) }),
+      ]);
+    case 2:
+      return S.suspend(() => S.Struct({ SigningScheme: S.optional(__S(689, __c43, 1)) })).annotate({
+        identifier: "MessageSecurityOptions",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
           EventDestinationName: S.String,
-          EventDestination: __S(41, __c5, 1),
+          EventDestination: __S(720, __c45, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -5674,18 +6425,72 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateConfigurationSetEventDestinationRequest",
       });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ TopicName: S.String, SubscriptionStatus: S.String }),
-      ).annotate({ identifier: "TopicPreference" });
+        S.Struct({
+          Enabled: S.optional(S.Boolean),
+          MatchingEventTypes: S.optional(__S(592, __c37, 0)),
+          KinesisFirehoseDestination: S.optional(__S(736, __c46, 0)),
+          CloudWatchDestination: S.optional(__S(739, __c46, 3)),
+          SnsDestination: S.optional(__S(740, __c46, 4)),
+          EventBridgeDestination: S.optional(__S(741, __c46, 5)),
+          PinpointDestination: S.optional(__S(742, __c46, 6)),
+        }),
+      ).annotate({
+        identifier: "EventDestinationDefinition",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ IamRoleArn: S.String, DeliveryStreamArn: S.String }),
+      ).annotate({
+        identifier: "KinesisFirehoseDestination",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DimensionName: S.String,
+          DimensionValueSource: S.String,
+          DefaultDimensionValue: S.String,
+        }),
+      ).annotate({
+        identifier: "CloudWatchDimensionConfiguration",
+      });
+    case 2:
+      return S.Array(__S(737, __c46, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ DimensionConfigurations: __S(738, __c46, 2) })).annotate({
+        identifier: "CloudWatchDestination",
+      });
     case 4:
-      return S.Array(__S(43, __c5, 3));
+      return S.suspend(() => S.Struct({ TopicArn: S.String })).annotate({
+        identifier: "SnsDestination",
+      });
     case 5:
+      return S.suspend(() => S.Struct({ EventBusArn: S.String })).annotate({
+        identifier: "EventBridgeDestination",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ ApplicationArn: S.optional(S.String) })).annotate({
+        identifier: "PinpointDestination",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContactListName: S.String.pipe(T.HttpLabel("ContactListName")),
           EmailAddress: S.String,
-          TopicPreferences: S.optional(__S(44, __c5, 4)),
+          TopicPreferences: S.optional(__S(769, __c48, 1)),
           UnsubscribeAll: S.optional(S.Boolean),
           AttributesData: S.optional(S.String),
         }).pipe(
@@ -5699,28 +6504,27 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateContactRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          TopicName: S.String,
-          DisplayName: S.String,
-          Description: S.optional(S.String),
-          DefaultSubscriptionStatus: S.String,
-        }),
-      ).annotate({ identifier: "Topic" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
   }
 }
-function __c6(j: number): any {
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ TopicName: S.String, SubscriptionStatus: S.String }),
+      ).annotate({ identifier: "TopicPreference" });
+    case 1:
+      return S.Array(__S(768, __c48, 0));
+  }
+}
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ContactListName: S.String,
-          Topics: S.optional(__S(47, __c5, 7)),
+          Topics: S.optional(__S(801, __c50, 1)),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(20, __c2, 4)),
+          Tags: S.optional(__S(609, __c38, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/email/contact-lists" }),
@@ -5732,14 +6536,33 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateContactListRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TopicName: S.String,
+          DisplayName: S.String,
+          Description: S.optional(S.String),
+          DefaultSubscriptionStatus: S.String,
+        }),
+      ).annotate({ identifier: "Topic" });
     case 1:
+      return S.Array(__S(800, __c50, 0));
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String,
           FromEmailAddress: S.String,
           TemplateSubject: S.String,
           TemplateContent: S.String,
-          Tags: S.optional(__S(20, __c2, 4)),
+          Tags: S.optional(__S(609, __c38, 1)),
           SuccessRedirectionURL: S.String,
           FailureRedirectionURL: S.String,
         }).pipe(
@@ -5755,11 +6578,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateCustomVerificationEmailTemplateRequest",
       });
-    case 2:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PoolName: S.String,
-          Tags: S.optional(__S(20, __c2, 4)),
+          Tags: S.optional(__S(609, __c38, 1)),
           ScalingMode: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5774,85 +6601,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateDedicatedIpPoolRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ Data: S.String, Charset: S.optional(S.String) })).annotate({
-        identifier: "Content",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Text: S.optional(__S(51, __c6, 3)), Html: S.optional(__S(51, __c6, 3)) }),
-      ).annotate({ identifier: "Body" });
-    case 5:
-      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
-        identifier: "MessageHeader",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          RawContent: T.Blob,
-          ContentDisposition: S.optional(S.String),
-          FileName: S.String,
-          ContentDescription: S.optional(S.String),
-          ContentId: S.optional(S.String),
-          ContentTransferEncoding: S.optional(S.String),
-          ContentType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Attachment" });
   }
 }
-function __c7(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Subject: __S(51, __c6, 3),
-          Body: __S(52, __c6, 4),
-          Headers: S.optional(__S(54, __c6, 6)),
-          Attachments: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "Message" });
-    case 2:
-      return S.suspend(() => S.Struct({ Data: T.Blob })).annotate({
-        identifier: "RawMessage",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Subject: S.optional(S.String),
-          Text: S.optional(S.String),
-          Html: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EmailTemplateContent" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          TemplateName: S.optional(S.String),
-          TemplateArn: S.optional(S.String),
-          TemplateContent: S.optional(__S(59, __c7, 3)),
-          TemplateData: S.optional(S.String),
-          Headers: S.optional(__S(54, __c6, 6)),
-          Attachments: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "Template" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Simple: S.optional(__S(57, __c7, 1)),
-          Raw: S.optional(__S(58, __c7, 2)),
-          Template: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "EmailContent" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           ReportName: S.optional(S.String),
           FromEmailAddress: S.String,
-          Content: __S(61, __c7, 5),
-          Tags: S.optional(__S(20, __c2, 4)),
+          Content: __S(884, __c55, 4),
+          Tags: S.optional(__S(609, __c38, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/email/deliverability-dashboard/test" }),
@@ -5866,7 +6625,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateDeliverabilityTestReportRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ReportId: S.String, DeliverabilityTestStatus: S.String }),
       ).annotate({
@@ -5874,23 +6633,98 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DomainSigningSelector: S.optional(S.String),
-          DomainSigningPrivateKey: S.optional(SensitiveString),
-          NextSigningKeyLength: S.optional(S.String),
-          DomainSigningAttributesOrigin: S.optional(S.String),
+          RawContent: T.Blob,
+          ContentDisposition: S.optional(S.String),
+          FileName: S.String,
+          ContentDescription: S.optional(S.String),
+          ContentId: S.optional(S.String),
+          ContentTransferEncoding: S.optional(S.String),
+          ContentType: S.optional(S.String),
         }),
-      ).annotate({ identifier: "DkimSigningAttributes" });
+      ).annotate({ identifier: "Attachment" });
     case 1:
+      return S.Array(__S(864, __c54, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateName: S.optional(S.String),
+          TemplateArn: S.optional(S.String),
+          TemplateContent: S.optional(__S(896, __c56, 0)),
+          TemplateData: S.optional(S.String),
+          Headers: S.optional(__S(913, __c57, 1)),
+          Attachments: S.optional(__S(865, __c54, 1)),
+        }),
+      ).annotate({ identifier: "Template" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Data: S.String, Charset: S.optional(S.String) })).annotate({
+        identifier: "Content",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Text: S.optional(__S(880, __c55, 0)), Html: S.optional(__S(880, __c55, 0)) }),
+      ).annotate({ identifier: "Body" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Subject: __S(880, __c55, 0),
+          Body: __S(881, __c55, 1),
+          Headers: S.optional(__S(913, __c57, 1)),
+          Attachments: S.optional(__S(865, __c54, 1)),
+        }),
+      ).annotate({ identifier: "Message" });
+    case 3:
+      return S.suspend(() => S.Struct({ Data: T.Blob })).annotate({
+        identifier: "RawMessage",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Simple: S.optional(__S(882, __c55, 2)),
+          Raw: S.optional(__S(883, __c55, 3)),
+          Template: S.optional(__S(866, __c54, 2)),
+        }),
+      ).annotate({ identifier: "EmailContent" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Subject: S.optional(S.String),
+          Text: S.optional(S.String),
+          Html: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailTemplateContent" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
+        identifier: "MessageHeader",
+      });
+    case 1:
+      return S.Array(__S(912, __c57, 0));
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EmailIdentity: S.String,
-          Tags: S.optional(__S(20, __c2, 4)),
-          DkimSigningAttributes: S.optional(__S(64, __c8, 0)),
+          Tags: S.optional(__S(609, __c38, 1)),
+          DkimSigningAttributes: S.optional(__S(944, __c59, 0)),
           ConfigurationSetName: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5905,14 +6739,45 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateEmailIdentityRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          IdentityType: S.optional(S.String),
+          VerifiedForSendingStatus: S.optional(S.Boolean),
+          DkimAttributes: S.optional(__S(976, __c61, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateEmailIdentityResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DomainSigningSelector: S.optional(S.String),
+          DomainSigningPrivateKey: S.optional(SensitiveString),
+          NextSigningKeyLength: S.optional(S.String),
+          DomainSigningAttributesOrigin: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DkimSigningAttributes" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SigningEnabled: S.optional(S.Boolean),
           Status: S.optional(S.String),
-          Tokens: S.optional(__S(66, __c8, 2)),
+          Tokens: S.optional(__S(960, __c60, 0)),
           SigningHostedZone: S.optional(S.String),
           SigningAttributesOrigin: S.optional(S.String),
           NextSigningKeyLength: S.optional(S.String),
@@ -5920,17 +6785,11 @@ function __c8(j: number): any {
           LastKeyGenerationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DkimAttributes" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          IdentityType: S.optional(S.String),
-          VerifiedForSendingStatus: S.optional(S.Boolean),
-          DkimAttributes: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateEmailIdentityResponse",
-      });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
@@ -5952,12 +6811,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateEmailIdentityPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String,
-          TemplateContent: __S(59, __c7, 3),
-          Tags: S.optional(__S(20, __c2, 4)),
+          TemplateContent: __S(896, __c56, 0),
+          Tags: S.optional(__S(609, __c38, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/email/templates" }),
@@ -5971,72 +6834,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateEmailTemplateRequest",
       });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(66, __c8, 2).pipe(S.optional));
   }
 }
-function __c9(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Aggregation: S.optional(S.String) }),
-      ).annotate({ identifier: "ExportMetric" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
         S.Struct({
-          Dimensions: __S(71, __c8, 7),
-          Namespace: S.String,
-          Metrics: __S(73, __c9, 1),
-          StartDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          EndDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "MetricsDataSource" });
-    case 3:
-      return S.Array(SensitiveString);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          FromEmailAddress: S.optional(__S(75, __c9, 3)),
-          Destination: S.optional(__S(75, __c9, 3)),
-          Subject: S.optional(__S(75, __c9, 3)),
-          Isp: S.optional(__S(66, __c8, 2)),
-          TenantName: S.optional(__S(66, __c8, 2)),
-          LastDeliveryEvent: S.optional(__S(21, __c2, 5)),
-          LastEngagementEvent: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "MessageInsightsFilters" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          StartDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          EndDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Include: S.optional(__S(76, __c9, 4)),
-          Exclude: S.optional(__S(76, __c9, 4)),
-          MaxResults: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MessageInsightsDataSource",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          MetricsDataSource: S.optional(__S(74, __c9, 2)),
-          MessageInsightsDataSource: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({ identifier: "ExportDataSource" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ DataFormat: S.String, S3Url: S.optional(S.String) }),
-      ).annotate({ identifier: "ExportDestination" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ExportDataSource: __S(78, __c9, 6), ExportDestination: __S(79, __c9, 7) }).pipe(
+          ExportDataSource: __S(1078, __c67, 6),
+          ExportDestination: __S(1079, __c67, 7),
+        }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/email/export-jobs" }),
             svc,
@@ -6047,34 +6854,86 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateExportJobRequest" });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ JobId: S.optional(S.String) })).annotate({
         identifier: "CreateExportJobResponse",
       });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SensitiveString);
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(960, __c60, 0).pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Aggregation: S.optional(S.String) }),
+      ).annotate({ identifier: "ExportMetric" });
     case 2:
-      return S.suspend(() => S.Struct({ SuppressionListImportAction: S.String })).annotate({
-        identifier: "SuppressionListDestination",
-      });
+      return S.Array(__S(1073, __c67, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ ContactListName: S.String, ContactListImportAction: S.String }),
-      ).annotate({ identifier: "ContactListDestination" });
+        S.Struct({
+          Dimensions: __S(1072, __c67, 0),
+          Namespace: S.String,
+          Metrics: __S(1074, __c67, 2),
+          StartDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "MetricsDataSource" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          SuppressionListDestination: S.optional(__S(82, __c10, 2)),
-          ContactListDestination: S.optional(__S(83, __c10, 3)),
+          FromEmailAddress: S.optional(__S(1056, __c66, 0)),
+          Destination: S.optional(__S(1056, __c66, 0)),
+          Subject: S.optional(__S(1056, __c66, 0)),
+          Isp: S.optional(__S(960, __c60, 0)),
+          TenantName: S.optional(__S(960, __c60, 0)),
+          LastDeliveryEvent: S.optional(__S(592, __c37, 0)),
+          LastEngagementEvent: S.optional(__S(592, __c37, 0)),
         }),
-      ).annotate({ identifier: "ImportDestination" });
+      ).annotate({ identifier: "MessageInsightsFilters" });
     case 5:
-      return S.suspend(() => S.Struct({ S3Url: S.String, DataFormat: S.String })).annotate({
-        identifier: "ImportDataSource",
+      return S.suspend(() =>
+        S.Struct({
+          StartDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          Include: S.optional(__S(1076, __c67, 4)),
+          Exclude: S.optional(__S(1076, __c67, 4)),
+          MaxResults: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MessageInsightsDataSource",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ImportDestination: __S(84, __c10, 4),
-          ImportDataSource: __S(85, __c10, 5),
+          MetricsDataSource: S.optional(__S(1075, __c67, 3)),
+          MessageInsightsDataSource: S.optional(__S(1077, __c67, 5)),
+        }),
+      ).annotate({ identifier: "ExportDataSource" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ DataFormat: S.String, S3Url: S.optional(S.String) }),
+      ).annotate({ identifier: "ExportDestination" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ImportDestination: __S(1122, __c70, 2),
+          ImportDataSource: __S(1104, __c69, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/email/import-jobs" }),
@@ -6086,26 +6945,47 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateImportJobRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ Region: S.String })).annotate({
-        identifier: "RouteDetails",
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ S3Url: S.String, DataFormat: S.String })).annotate({
+        identifier: "ImportDataSource",
       });
   }
 }
-function __c11(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ RoutesDetails: __S(88, __c11, 0) })).annotate({
-        identifier: "Details",
+      return S.suspend(() => S.Struct({ SuppressionListImportAction: S.String })).annotate({
+        identifier: "SuppressionListDestination",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ContactListName: S.String, ContactListImportAction: S.String }),
+      ).annotate({ identifier: "ContactListDestination" });
     case 2:
       return S.suspend(() =>
         S.Struct({
+          SuppressionListDestination: S.optional(__S(1120, __c70, 0)),
+          ContactListDestination: S.optional(__S(1121, __c70, 1)),
+        }),
+      ).annotate({ identifier: "ImportDestination" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RoutesDetails: __S(1153, __c72, 1) })).annotate({
+        identifier: "Details",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           EndpointName: S.String,
-          Details: __S(89, __c11, 1),
-          Tags: S.optional(__S(20, __c2, 4)),
+          Details: __S(1136, __c71, 0),
+          Tags: S.optional(__S(609, __c38, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/email/multi-region-endpoints" }),
@@ -6119,44 +6999,66 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateMultiRegionEndpointRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({ Status: S.optional(S.String), EndpointId: S.optional(S.String) }),
       ).annotate({
         identifier: "CreateMultiRegionEndpointResponse",
       });
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Region: S.String })).annotate({
+        identifier: "RouteDetails",
+      });
+    case 1:
+      return S.Array(__S(1152, __c72, 0));
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          SuppressedReasons: S.optional(__S(21, __c2, 5)),
+          TenantName: S.String,
+          Tags: S.optional(__S(609, __c38, 1)),
+          SuppressionAttributes: S.optional(__S(1184, __c74, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v2/email/tenants" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateTenantRequest" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SuppressedReasons: S.optional(__S(592, __c37, 0)),
           SuppressionScope: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TenantSuppressionAttributes",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          TenantName: S.String,
-          Tags: S.optional(__S(20, __c2, 4)),
-          SuppressionAttributes: S.optional(__S(92, __c11, 4)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/v2/email/tenants" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateTenantRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TenantName: S.optional(S.String),
           TenantId: S.optional(S.String),
           TenantArn: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(20, __c2, 4)),
+          Tags: S.optional(__S(609, __c38, 1)),
           SendingStatus: S.optional(S.String),
-          SuppressionAttributes: S.optional(__S(92, __c11, 4)),
+          SuppressionAttributes: S.optional(__S(1184, __c74, 0)),
         }),
       ).annotate({ identifier: "CreateTenantResponse" });
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TenantName: S.String, ResourceArn: S.String }).pipe(
           T.all(
@@ -6173,7 +7075,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6193,7 +7095,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteConfigurationSetRequest",
       });
-    case 1:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
@@ -6214,7 +7120,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteConfigurationSetEventDestinationRequest",
       });
-    case 2:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContactListName: S.String.pipe(T.HttpLabel("ContactListName")),
@@ -6233,7 +7143,11 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteContactRequest" });
-    case 3:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ContactListName: S.String.pipe(T.HttpLabel("ContactListName")) }).pipe(
           T.all(
@@ -6246,7 +7160,11 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteContactListRequest" });
-    case 4:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TemplateName: S.String.pipe(T.HttpLabel("TemplateName")) }).pipe(
           T.all(
@@ -6264,7 +7182,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteCustomVerificationEmailTemplateRequest",
       });
-    case 5:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PoolName: S.String.pipe(T.HttpLabel("PoolName")) }).pipe(
           T.all(
@@ -6279,7 +7201,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteDedicatedIpPoolRequest",
       });
-    case 6:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")) }).pipe(
           T.all(
@@ -6294,7 +7220,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteEmailIdentityRequest",
       });
-    case 7:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
@@ -6317,7 +7247,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6334,7 +7264,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteEmailTemplateRequest",
       });
-    case 1:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EndpointName: S.String.pipe(T.HttpLabel("EndpointName")) }).pipe(
           T.all(
@@ -6349,11 +7283,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteMultiRegionEndpointRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
         identifier: "DeleteMultiRegionEndpointResponse",
       });
-    case 3:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EmailAddress: S.String.pipe(T.HttpLabel("EmailAddress")),
@@ -6371,7 +7309,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteSuppressedDestinationRequest",
       });
-    case 4:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TenantName: S.String }).pipe(
           T.all(
@@ -6384,7 +7326,11 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteTenantRequest" });
-    case 5:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TenantName: S.String, ResourceArn: S.String }).pipe(
           T.all(
@@ -6399,7 +7345,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteTenantResourceAssociationRequest",
       });
-    case 6:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EmailIdentity: S.String, FromAddress: S.optional(S.String) }).pipe(
           T.all(
@@ -6414,17 +7364,17 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DisassociateEmailIdentityCertificateRequest",
       });
-    case 7:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/v2/email/account" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetAccountRequest" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Max24HourSend: S.optional(S.Number),
@@ -6432,36 +7382,28 @@ function __c14(j: number): any {
           SentLast24Hours: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SendQuota" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          SuppressedReasons: S.optional(__S(21, __c2, 5)),
-          ValidationAttributes: S.optional(__S(24, __c3, 0)),
+          SuppressedReasons: S.optional(__S(592, __c37, 0)),
+          ValidationAttributes: S.optional(__S(626, __c39, 2)),
         }),
       ).annotate({ identifier: "SuppressionAttributes" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({ Status: S.optional(S.String), CaseId: S.optional(S.String) }),
       ).annotate({ identifier: "ReviewDetails" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           MailType: S.optional(S.String),
           WebsiteURL: S.optional(SensitiveString),
           ContactLanguage: S.optional(S.String),
           UseCaseDescription: S.optional(SensitiveString),
-          AdditionalContactEmailAddresses: S.optional(__S(75, __c9, 3)),
-          ReviewDetails: S.optional(__S(114, __c14, 2)),
+          AdditionalContactEmailAddresses: S.optional(__S(1056, __c66, 0)),
+          ReviewDetails: S.optional(__S(1443, __c90, 3)),
         }),
       ).annotate({ identifier: "AccountDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          VdmEnabled: S.String,
-          DashboardAttributes: S.optional(__S(26, __c3, 2)),
-          GuardianAttributes: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "VdmAttributes" });
     case 5:
       return S.suspend(() =>
         S.Struct({ CurrentPlan: S.optional(S.String), NextPlan: S.optional(S.String) }),
@@ -6472,18 +7414,34 @@ function __c14(j: number): any {
           DedicatedIpAutoWarmupEnabled: S.optional(S.Boolean),
           EnforcementStatus: S.optional(S.String),
           ProductionAccessEnabled: S.optional(S.Boolean),
-          SendQuota: S.optional(__S(112, __c14, 0)),
+          SendQuota: S.optional(__S(1441, __c90, 1)),
           SendingEnabled: S.optional(S.Boolean),
-          SuppressionAttributes: S.optional(__S(113, __c14, 1)),
-          Details: S.optional(__S(115, __c14, 3)),
-          VdmAttributes: S.optional(__S(116, __c14, 4)),
-          PricingAttributes: S.optional(__S(117, __c14, 5)),
+          SuppressionAttributes: S.optional(__S(1442, __c90, 2)),
+          Details: S.optional(__S(1444, __c90, 4)),
+          VdmAttributes: S.optional(__S(1456, __c91, 0)),
+          PricingAttributes: S.optional(__S(1445, __c90, 5)),
         }),
       ).annotate({ identifier: "GetAccountResponse" });
-    case 7:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          BlacklistItemNames: __S(66, __c8, 2).pipe(T.HttpQuery("BlacklistItemNames")),
+          VdmEnabled: S.String,
+          DashboardAttributes: S.optional(__S(640, __c40, 0)),
+          GuardianAttributes: S.optional(__S(641, __c40, 1)),
+        }),
+      ).annotate({ identifier: "VdmAttributes" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BlacklistItemNames: __S(960, __c60, 0).pipe(T.HttpQuery("BlacklistItemNames")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/v2/email/deliverability-dashboard/blacklist-report" }),
@@ -6497,11 +7455,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetBlacklistReportsRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           RblName: S.optional(S.String),
@@ -6509,15 +7463,19 @@ function __c15(j: number): any {
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlacklistEntry" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(121, __c15, 1).pipe(S.optional));
+      return S.Array(__S(1473, __c92, 1));
     case 3:
-      return S.suspend(() => S.Struct({ BlacklistReport: __S(122, __c15, 2) })).annotate({
+      return S.Record(S.String, /*@__PURE__*/ __S(1474, __c92, 2).pipe(S.optional));
+    case 4:
+      return S.suspend(() => S.Struct({ BlacklistReport: __S(1475, __c92, 3) })).annotate({
         identifier: "GetBlacklistReportsResponse",
       });
-    case 4:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")) }).pipe(
           T.all(
@@ -6532,24 +7490,28 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetConfigurationSetRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.optional(S.String),
-          TrackingOptions: S.optional(__S(15, __c1, 7)),
-          DeliveryOptions: S.optional(__S(16, __c2, 0)),
-          ReputationOptions: S.optional(__S(17, __c2, 1)),
-          SendingOptions: S.optional(__S(18, __c2, 2)),
-          Tags: S.optional(__S(20, __c2, 4)),
-          SuppressionOptions: S.optional(__S(25, __c3, 1)),
-          VdmOptions: S.optional(__S(28, __c3, 4)),
-          ArchivingOptions: S.optional(__S(29, __c3, 5)),
-          MessageSecurityOptions: S.optional(__S(32, __c4, 0)),
+          TrackingOptions: S.optional(__S(656, __c41, 0)),
+          DeliveryOptions: S.optional(__S(657, __c41, 1)),
+          ReputationOptions: S.optional(__S(658, __c41, 2)),
+          SendingOptions: S.optional(__S(659, __c41, 3)),
+          Tags: S.optional(__S(609, __c38, 1)),
+          SuppressionOptions: S.optional(__S(660, __c41, 4)),
+          VdmOptions: S.optional(__S(672, __c42, 0)),
+          ArchivingOptions: S.optional(__S(661, __c41, 5)),
+          MessageSecurityOptions: S.optional(__S(690, __c43, 2)),
         }),
       ).annotate({
         identifier: "GetConfigurationSetResponse",
       });
-    case 6:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")) }).pipe(
           T.all(
@@ -6567,32 +7529,32 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetConfigurationSetEventDestinationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Enabled: S.optional(S.Boolean),
-          MatchingEventTypes: __S(21, __c2, 5),
-          KinesisFirehoseDestination: S.optional(__S(34, __c4, 2)),
-          CloudWatchDestination: S.optional(__S(37, __c4, 5)),
-          SnsDestination: S.optional(__S(38, __c4, 6)),
-          EventBridgeDestination: S.optional(__S(39, __c4, 7)),
-          PinpointDestination: S.optional(__S(40, __c5, 0)),
+          MatchingEventTypes: __S(592, __c37, 0),
+          KinesisFirehoseDestination: S.optional(__S(736, __c46, 0)),
+          CloudWatchDestination: S.optional(__S(739, __c46, 3)),
+          SnsDestination: S.optional(__S(740, __c46, 4)),
+          EventBridgeDestination: S.optional(__S(741, __c46, 5)),
+          PinpointDestination: S.optional(__S(742, __c46, 6)),
         }),
       ).annotate({ identifier: "EventDestination" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1505, __c94, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ EventDestinations: S.optional(__S(128, __c16, 0)) }),
+        S.Struct({ EventDestinations: S.optional(__S(1506, __c94, 2)) }),
       ).annotate({
         identifier: "GetConfigurationSetEventDestinationsResponse",
       });
-    case 2:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContactListName: S.String.pipe(T.HttpLabel("ContactListName")),
@@ -6611,20 +7573,24 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetContactRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ContactListName: S.optional(S.String),
           EmailAddress: S.optional(S.String),
-          TopicPreferences: S.optional(__S(44, __c5, 4)),
-          TopicDefaultPreferences: S.optional(__S(44, __c5, 4)),
+          TopicPreferences: S.optional(__S(769, __c48, 1)),
+          TopicDefaultPreferences: S.optional(__S(769, __c48, 1)),
           UnsubscribeAll: S.optional(S.Boolean),
           AttributesData: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GetContactResponse" });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ContactListName: S.String.pipe(T.HttpLabel("ContactListName")) }).pipe(
           T.all(
@@ -6637,18 +7603,22 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetContactListRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ContactListName: S.optional(S.String),
-          Topics: S.optional(__S(47, __c5, 7)),
+          Topics: S.optional(__S(801, __c50, 1)),
           Description: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(20, __c2, 4)),
+          Tags: S.optional(__S(609, __c38, 1)),
         }),
       ).annotate({ identifier: "GetContactListResponse" });
-    case 6:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TemplateName: S.String.pipe(T.HttpLabel("TemplateName")) }).pipe(
           T.all(
@@ -6666,14 +7636,14 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetCustomVerificationEmailTemplateRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.optional(S.String),
           FromEmailAddress: S.optional(S.String),
           TemplateSubject: S.optional(S.String),
           TemplateContent: S.optional(S.String),
-          Tags: S.optional(__S(20, __c2, 4)),
+          Tags: S.optional(__S(609, __c38, 1)),
           SuccessRedirectionURL: S.optional(S.String),
           FailureRedirectionURL: S.optional(S.String),
         }),
@@ -6682,7 +7652,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6698,6 +7668,14 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "GetDedicatedIpRequest" });
     case 1:
+      return S.suspend(() => S.Struct({ DedicatedIp: S.optional(__S(1584, __c99, 0)) })).annotate({
+        identifier: "GetDedicatedIpResponse",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Ip: S.String,
@@ -6706,11 +7684,11 @@ function __c17(j: number): any {
           PoolName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedIp" });
-    case 2:
-      return S.suspend(() => S.Struct({ DedicatedIp: S.optional(__S(137, __c17, 1)) })).annotate({
-        identifier: "GetDedicatedIpResponse",
-      });
-    case 3:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PoolName: S.String.pipe(T.HttpLabel("PoolName")) }).pipe(
           T.all(
@@ -6725,17 +7703,21 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetDedicatedIpPoolRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ PoolName: S.String, ScalingMode: S.String })).annotate({
         identifier: "DedicatedIpPool",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ DedicatedIpPool: S.optional(__S(140, __c17, 4)) }),
+        S.Struct({ DedicatedIpPool: S.optional(__S(1601, __c100, 1)) }),
       ).annotate({
         identifier: "GetDedicatedIpPoolResponse",
       });
-    case 6:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PoolName: S.optional(S.String).pipe(T.HttpQuery("PoolName")),
@@ -6752,17 +7734,20 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDedicatedIpsRequest" });
-    case 7:
-      return S.Array(__S(137, __c17, 1));
+    case 1:
+      return S.Array(__S(1584, __c99, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DedicatedIps: S.optional(__S(1617, __c101, 1)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetDedicatedIpsResponse" });
   }
 }
-function __c18(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ DedicatedIps: S.optional(__S(143, __c17, 7)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "GetDedicatedIpsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -6777,37 +7762,45 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetDeliverabilityDashboardOptionsRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Global: S.optional(S.Boolean), TrackedIsps: S.optional(__S(66, __c8, 2)) }),
-      ).annotate({
-        identifier: "InboxPlacementTrackingOption",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Domain: S.optional(S.String),
-          SubscriptionStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InboxPlacementTrackingOption: S.optional(__S(146, __c18, 2)),
-        }),
-      ).annotate({
-        identifier: "DomainDeliverabilityTrackingOption",
-      });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DashboardEnabled: S.Boolean,
           SubscriptionExpiryDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AccountStatus: S.optional(S.String),
-          ActiveSubscribedDomains: S.optional(__S(148, __c18, 4)),
-          PendingExpirationSubscribedDomains: S.optional(__S(148, __c18, 4)),
+          ActiveSubscribedDomains: S.optional(__S(1650, __c103, 2)),
+          PendingExpirationSubscribedDomains: S.optional(__S(1650, __c103, 2)),
         }),
       ).annotate({
         identifier: "GetDeliverabilityDashboardOptionsResponse",
       });
-    case 6:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Global: S.optional(S.Boolean), TrackedIsps: S.optional(__S(960, __c60, 0)) }),
+      ).annotate({
+        identifier: "InboxPlacementTrackingOption",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Domain: S.optional(S.String),
+          SubscriptionStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          InboxPlacementTrackingOption: S.optional(__S(1648, __c103, 0)),
+        }),
+      ).annotate({
+        identifier: "DomainDeliverabilityTrackingOption",
+      });
+    case 2:
+      return S.Array(__S(1649, __c103, 1));
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ReportId: S.String.pipe(T.HttpLabel("ReportId")) }).pipe(
           T.all(
@@ -6825,7 +7818,42 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetDeliverabilityTestReportRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          InboxPercentage: S.optional(S.Number),
+          SpamPercentage: S.optional(S.Number),
+          MissingPercentage: S.optional(S.Number),
+          SpfPercentage: S.optional(S.Number),
+          DkimPercentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PlacementStatistics" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          IspName: S.optional(S.String),
+          PlacementStatistics: S.optional(__S(1665, __c104, 1)),
+        }),
+      ).annotate({ identifier: "IspPlacement" });
+    case 3:
+      return S.Array(__S(1666, __c104, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          DeliverabilityTestReport: __S(1680, __c105, 0),
+          OverallPlacement: __S(1665, __c104, 1),
+          IspPlacements: __S(1667, __c104, 3),
+          Message: S.optional(S.String),
+          Tags: S.optional(__S(609, __c38, 1)),
+        }),
+      ).annotate({
+        identifier: "GetDeliverabilityTestReportResponse",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReportId: S.optional(S.String),
@@ -6838,40 +7866,9 @@ function __c18(j: number): any {
       ).annotate({ identifier: "DeliverabilityTestReport" });
   }
 }
-function __c19(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          InboxPercentage: S.optional(S.Number),
-          SpamPercentage: S.optional(S.Number),
-          MissingPercentage: S.optional(S.Number),
-          SpfPercentage: S.optional(S.Number),
-          DkimPercentage: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PlacementStatistics" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          IspName: S.optional(S.String),
-          PlacementStatistics: S.optional(__S(152, __c19, 0)),
-        }),
-      ).annotate({ identifier: "IspPlacement" });
-    case 2:
-      return S.Array(__S(153, __c19, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DeliverabilityTestReport: __S(151, __c18, 7),
-          OverallPlacement: __S(152, __c19, 0),
-          IspPlacements: __S(154, __c19, 2),
-          Message: S.optional(S.String),
-          Tags: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "GetDeliverabilityTestReportResponse",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({ CampaignId: S.String.pipe(T.HttpLabel("CampaignId")) }).pipe(
           T.all(
@@ -6889,14 +7886,24 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetDomainDeliverabilityCampaignRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DomainDeliverabilityCampaign: __S(1712, __c107, 0) }),
+      ).annotate({
+        identifier: "GetDomainDeliverabilityCampaignResponse",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CampaignId: S.optional(S.String),
           ImageUrl: S.optional(S.String),
           Subject: S.optional(S.String),
           FromAddress: S.optional(S.String),
-          SendingIps: S.optional(__S(66, __c8, 2)),
+          SendingIps: S.optional(__S(960, __c60, 0)),
           FirstSeenDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastSeenDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           InboxCount: S.optional(S.Number),
@@ -6905,18 +7912,16 @@ function __c19(j: number): any {
           DeleteRate: S.optional(S.Number),
           ReadDeleteRate: S.optional(S.Number),
           ProjectedVolume: S.optional(S.Number),
-          Esps: S.optional(__S(66, __c8, 2)),
+          Esps: S.optional(__S(960, __c60, 0)),
         }),
       ).annotate({
         identifier: "DomainDeliverabilityCampaign",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ DomainDeliverabilityCampaign: __S(157, __c19, 5) }),
-      ).annotate({
-        identifier: "GetDomainDeliverabilityCampaignResponse",
-      });
-    case 7:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Domain: S.String.pipe(T.HttpLabel("Domain")),
@@ -6938,11 +7943,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetDomainStatisticsReportRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           InboxRawCount: S.optional(S.Number),
@@ -6951,7 +7952,7 @@ function __c20(j: number): any {
           ProjectedSpam: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VolumeStatistics" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           IspName: S.optional(S.String),
@@ -6961,33 +7962,37 @@ function __c20(j: number): any {
           SpamPercentage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DomainIspPlacement" });
-    case 2:
-      return S.Array(__S(161, __c20, 1));
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          VolumeStatistics: S.optional(__S(160, __c20, 0)),
-          ReadRatePercent: S.optional(S.Number),
-          DomainIspPlacements: S.optional(__S(162, __c20, 2)),
-        }),
-      ).annotate({ identifier: "OverallVolume" });
+      return S.Array(__S(1730, __c108, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
+          VolumeStatistics: S.optional(__S(1729, __c108, 1)),
+          ReadRatePercent: S.optional(S.Number),
+          DomainIspPlacements: S.optional(__S(1731, __c108, 3)),
+        }),
+      ).annotate({ identifier: "OverallVolume" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
           StartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          VolumeStatistics: S.optional(__S(160, __c20, 0)),
-          DomainIspPlacements: S.optional(__S(162, __c20, 2)),
+          VolumeStatistics: S.optional(__S(1729, __c108, 1)),
+          DomainIspPlacements: S.optional(__S(1731, __c108, 3)),
         }),
       ).annotate({ identifier: "DailyVolume" });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
     case 6:
+      return S.Array(__S(1733, __c108, 5));
+    case 7:
       return S.suspend(() =>
-        S.Struct({ OverallVolume: __S(163, __c20, 3), DailyVolumes: __S(165, __c20, 5) }),
+        S.Struct({ OverallVolume: __S(1732, __c108, 4), DailyVolumes: __S(1734, __c108, 6) }),
       ).annotate({
         identifier: "GetDomainStatisticsReportResponse",
       });
-    case 7:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EmailAddress: S.String }).pipe(
           T.all(
@@ -7002,41 +8007,41 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetEmailAddressInsightsRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({ ConfidenceVerdict: S.optional(S.String) })).annotate({
         identifier: "EmailAddressInsightsVerdict",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          HasValidSyntax: S.optional(__S(168, __c21, 0)),
-          HasValidDnsRecords: S.optional(__S(168, __c21, 0)),
-          MailboxExists: S.optional(__S(168, __c21, 0)),
-          IsRoleAddress: S.optional(__S(168, __c21, 0)),
-          IsDisposable: S.optional(__S(168, __c21, 0)),
-          IsRandomInput: S.optional(__S(168, __c21, 0)),
-        }),
-      ).annotate({
-        identifier: "EmailAddressInsightsMailboxEvaluations",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          IsValid: S.optional(__S(168, __c21, 0)),
-          Evaluations: S.optional(__S(169, __c21, 1)),
+          HasValidSyntax: S.optional(__S(1745, __c109, 1)),
+          HasValidDnsRecords: S.optional(__S(1745, __c109, 1)),
+          MailboxExists: S.optional(__S(1745, __c109, 1)),
+          IsRoleAddress: S.optional(__S(1745, __c109, 1)),
+          IsDisposable: S.optional(__S(1745, __c109, 1)),
+          IsRandomInput: S.optional(__S(1745, __c109, 1)),
         }),
-      ).annotate({ identifier: "MailboxValidation" });
+      ).annotate({
+        identifier: "EmailAddressInsightsMailboxEvaluations",
+      });
     case 3:
       return S.suspend(() =>
-        S.Struct({ MailboxValidation: S.optional(__S(170, __c21, 2)) }),
+        S.Struct({
+          IsValid: S.optional(__S(1745, __c109, 1)),
+          Evaluations: S.optional(__S(1746, __c109, 2)),
+        }),
+      ).annotate({ identifier: "MailboxValidation" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ MailboxValidation: S.optional(__S(1747, __c109, 3)) }),
       ).annotate({
         identifier: "GetEmailAddressInsightsResponse",
       });
-    case 4:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")) }).pipe(
           T.all(
@@ -7049,7 +8054,7 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEmailIdentityRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           MailFromDomain: S.optional(S.String),
@@ -7057,9 +8062,7 @@ function __c21(j: number): any {
           BehaviorOnMxFailure: S.optional(S.String),
         }),
       ).annotate({ identifier: "MailFromAttributes" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           PrimaryNameServer: S.optional(S.String),
@@ -7067,35 +8070,41 @@ function __c21(j: number): any {
           SerialNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SOARecord" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           LastCheckedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastSuccessTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ErrorType: S.optional(S.String),
-          SOARecord: S.optional(__S(175, __c21, 7)),
+          SOARecord: S.optional(__S(1762, __c110, 2)),
         }),
       ).annotate({ identifier: "VerificationInfo" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           IdentityType: S.optional(S.String),
           FeedbackForwardingStatus: S.optional(S.Boolean),
           VerifiedForSendingStatus: S.optional(S.Boolean),
-          DkimAttributes: S.optional(__S(67, __c8, 3)),
-          MailFromAttributes: S.optional(__S(173, __c21, 5)),
-          Policies: S.optional(__S(174, __c21, 6)),
-          Tags: S.optional(__S(20, __c2, 4)),
+          DkimAttributes: S.optional(__S(976, __c61, 0)),
+          MailFromAttributes: S.optional(__S(1761, __c110, 1)),
+          Policies: S.optional(__S(1776, __c111, 0)),
+          Tags: S.optional(__S(609, __c38, 1)),
           ConfigurationSetName: S.optional(S.String),
           VerificationStatus: S.optional(S.String),
-          VerificationInfo: S.optional(__S(176, __c22, 0)),
+          VerificationInfo: S.optional(__S(1763, __c110, 3)),
         }),
       ).annotate({ identifier: "GetEmailIdentityResponse" });
-    case 2:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")) }).pipe(
           T.all(
@@ -7110,11 +8119,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetEmailIdentityPoliciesRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ Policies: S.optional(__S(174, __c21, 6)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Policies: S.optional(__S(1776, __c111, 0)) })).annotate({
         identifier: "GetEmailIdentityPoliciesResponse",
       });
-    case 4:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TemplateName: S.String.pipe(T.HttpLabel("TemplateName")) }).pipe(
           T.all(
@@ -7127,15 +8140,19 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEmailTemplateRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String,
-          TemplateContent: __S(59, __c7, 3),
-          Tags: S.optional(__S(20, __c2, 4)),
+          TemplateContent: __S(896, __c56, 0),
+          Tags: S.optional(__S(609, __c38, 1)),
         }),
       ).annotate({ identifier: "GetEmailTemplateResponse" });
-    case 6:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String.pipe(T.HttpLabel("JobId")) }).pipe(
           T.all(
@@ -7148,36 +8165,40 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetExportJobRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ FailedRecordsS3Url: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
-      ).annotate({ identifier: "FailureInfo" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ProcessedRecordsCount: S.optional(S.Number),
           ExportedRecordsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ExportStatistics" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
           ExportSourceType: S.optional(S.String),
           JobStatus: S.optional(S.String),
-          ExportDestination: S.optional(__S(79, __c9, 7)),
-          ExportDataSource: S.optional(__S(78, __c9, 6)),
+          ExportDestination: S.optional(__S(1079, __c67, 7)),
+          ExportDataSource: S.optional(__S(1078, __c67, 6)),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FailureInfo: S.optional(__S(183, __c22, 7)),
-          Statistics: S.optional(__S(184, __c23, 0)),
+          FailureInfo: S.optional(__S(1840, __c115, 0)),
+          Statistics: S.optional(__S(1825, __c114, 1)),
         }),
       ).annotate({ identifier: "GetExportJobResponse" });
-    case 2:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ FailedRecordsS3Url: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
+      ).annotate({ identifier: "FailureInfo" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String.pipe(T.HttpLabel("JobId")) }).pipe(
           T.all(
@@ -7190,13 +8211,13 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetImportJobRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
-          ImportDestination: S.optional(__S(84, __c10, 4)),
-          ImportDataSource: S.optional(__S(85, __c10, 5)),
-          FailureInfo: S.optional(__S(183, __c22, 7)),
+          ImportDestination: S.optional(__S(1122, __c70, 2)),
+          ImportDataSource: S.optional(__S(1104, __c69, 0)),
+          FailureInfo: S.optional(__S(1840, __c115, 0)),
           JobStatus: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -7204,7 +8225,11 @@ function __c23(j: number): any {
           FailedRecordsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetImportJobResponse" });
-    case 4:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MessageId: S.String.pipe(T.HttpLabel("MessageId")) }).pipe(
           T.all(
@@ -7219,7 +8244,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetMessageInsightsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BounceType: S.optional(S.String),
@@ -7227,57 +8252,57 @@ function __c23(j: number): any {
           DiagnosticCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Bounce" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ComplaintSubType: S.optional(S.String),
           ComplaintFeedbackType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Complaint" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Bounce: S.optional(__S(189, __c23, 5)),
-          Complaint: S.optional(__S(190, __c23, 6)),
+          Bounce: S.optional(__S(1873, __c117, 1)),
+          Complaint: S.optional(__S(1874, __c117, 2)),
         }),
       ).annotate({ identifier: "EventDetails" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Type: S.optional(S.String),
-          Details: S.optional(__S(191, __c23, 7)),
+          Details: S.optional(__S(1875, __c117, 3)),
         }),
       ).annotate({ identifier: "InsightsEvent" });
-    case 1:
-      return S.Array(__S(192, __c24, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(1876, __c117, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           Destination: S.optional(SensitiveString),
           Isp: S.optional(S.String),
-          Events: S.optional(__S(193, __c24, 1)),
+          Events: S.optional(__S(1877, __c117, 5)),
         }),
       ).annotate({ identifier: "EmailInsights" });
-    case 3:
-      return S.Array(__S(194, __c24, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(1878, __c117, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           MessageId: S.optional(S.String),
           FromEmailAddress: S.optional(SensitiveString),
           Subject: S.optional(SensitiveString),
-          EmailTags: S.optional(__S(54, __c6, 6)),
-          Insights: S.optional(__S(195, __c24, 3)),
+          EmailTags: S.optional(__S(913, __c57, 1)),
+          Insights: S.optional(__S(1879, __c117, 7)),
         }),
       ).annotate({
         identifier: "GetMessageInsightsResponse",
       });
-    case 5:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EndpointName: S.String.pipe(T.HttpLabel("EndpointName")) }).pipe(
           T.all(
@@ -7292,12 +8317,12 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetMultiRegionEndpointRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EndpointName: S.optional(S.String),
           EndpointId: S.optional(S.String),
-          Routes: S.optional(__S(88, __c11, 0)),
+          Routes: S.optional(__S(1153, __c72, 1)),
           Status: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -7305,7 +8330,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetMultiRegionEndpointResponse",
       });
-    case 7:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReputationEntityReference: S.String.pipe(T.HttpLabel("ReputationEntityReference")),
@@ -7326,9 +8355,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetReputationEntityRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ReputationEntity: S.optional(__S(1921, __c120, 1)) }),
+      ).annotate({
+        identifier: "GetReputationEntityResponse",
+      });
   }
 }
-function __c25(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7344,19 +8379,17 @@ function __c25(j: number): any {
           ReputationEntityReference: S.optional(S.String),
           ReputationEntityType: S.optional(S.String),
           ReputationManagementPolicy: S.optional(S.String),
-          CustomerManagedStatus: S.optional(__S(200, __c25, 0)),
-          AwsSesManagedStatus: S.optional(__S(200, __c25, 0)),
+          CustomerManagedStatus: S.optional(__S(1920, __c120, 0)),
+          AwsSesManagedStatus: S.optional(__S(1920, __c120, 0)),
           SendingStatusAggregate: S.optional(S.String),
           ReputationImpact: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReputationEntity" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ReputationEntity: S.optional(__S(201, __c25, 1)) }),
-      ).annotate({
-        identifier: "GetReputationEntityResponse",
-      });
-    case 3:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EmailAddress: S.String.pipe(T.HttpLabel("EmailAddress")),
@@ -7374,27 +8407,31 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetSuppressedDestinationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ MessageId: S.optional(S.String), FeedbackId: S.optional(S.String) }),
       ).annotate({
         identifier: "SuppressedDestinationAttributes",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           EmailAddress: S.String,
           Reason: S.String,
           LastUpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Attributes: S.optional(__S(204, __c25, 4)),
+          Attributes: S.optional(__S(1937, __c121, 1)),
           TenantName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SuppressedDestination" });
-    case 6:
-      return S.suspend(() => S.Struct({ SuppressedDestination: __S(205, __c25, 5) })).annotate({
+    case 3:
+      return S.suspend(() => S.Struct({ SuppressedDestination: __S(1938, __c121, 2) })).annotate({
         identifier: "GetSuppressedDestinationResponse",
       });
-    case 7:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TenantName: S.String }).pipe(
           T.all(
@@ -7407,18 +8444,18 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetTenantRequest" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Tenant: S.optional(__S(94, __c11, 6)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tenant: S.optional(__S(1185, __c74, 1)) })).annotate({
         identifier: "GetTenantResponse",
       });
-    case 1:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(2, __c0, 2)),
+          Filter: S.optional(__S(528, __c33, 0)),
           NextToken: S.optional(S.String),
           PageSize: S.optional(S.Number),
         }).pipe(
@@ -7434,16 +8471,20 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListConfigurationSetsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationSets: S.optional(__S(66, __c8, 2)),
+          ConfigurationSets: S.optional(__S(960, __c60, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListConfigurationSetsResponse",
       });
-    case 3:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PageSize: S.optional(S.Number).pipe(T.HttpQuery("PageSize")),
@@ -7459,42 +8500,45 @@ function __c26(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListContactListsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ContactListName: S.optional(S.String),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ContactList" });
-    case 5:
-      return S.Array(__S(212, __c26, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1985, __c124, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ ContactLists: S.optional(__S(213, __c26, 5)), NextToken: S.optional(S.String) }),
+        S.Struct({
+          ContactLists: S.optional(__S(1986, __c124, 2)),
+          NextToken: S.optional(S.String),
+        }),
       ).annotate({ identifier: "ListContactListsResponse" });
-    case 7:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TopicName: S.optional(S.String),
           UseDefaultIfPreferenceUnavailable: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TopicFilter" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          FilteredStatus: S.optional(S.String),
-          TopicFilter: S.optional(__S(215, __c26, 7)),
-        }),
-      ).annotate({ identifier: "ListContactsFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
+          FilteredStatus: S.optional(S.String),
+          TopicFilter: S.optional(__S(2000, __c125, 0)),
+        }),
+      ).annotate({ identifier: "ListContactsFilter" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           ContactListName: S.String.pipe(T.HttpLabel("ContactListName")),
-          Filter: S.optional(__S(216, __c27, 0)),
+          Filter: S.optional(__S(2001, __c125, 1)),
           PageSize: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -7511,23 +8555,27 @@ function __c27(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListContactsRequest" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           EmailAddress: S.optional(S.String),
-          TopicPreferences: S.optional(__S(44, __c5, 4)),
-          TopicDefaultPreferences: S.optional(__S(44, __c5, 4)),
+          TopicPreferences: S.optional(__S(769, __c48, 1)),
+          TopicDefaultPreferences: S.optional(__S(769, __c48, 1)),
           UnsubscribeAll: S.optional(S.Boolean),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Contact" });
-    case 3:
-      return S.Array(__S(218, __c27, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Contacts: S.optional(__S(219, __c27, 3)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListContactsResponse" });
+      return S.Array(__S(2003, __c125, 3));
     case 5:
+      return S.suspend(() =>
+        S.Struct({ Contacts: S.optional(__S(2004, __c125, 4)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListContactsResponse" });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
@@ -7545,7 +8593,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListCustomVerificationEmailTemplatesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.optional(S.String),
@@ -7557,22 +8605,22 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "CustomVerificationEmailTemplateMetadata",
       });
-    case 7:
-      return S.Array(__S(222, __c27, 6));
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2017, __c126, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          CustomVerificationEmailTemplates: S.optional(__S(223, __c27, 7)),
+          CustomVerificationEmailTemplates: S.optional(__S(2018, __c126, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCustomVerificationEmailTemplatesResponse",
       });
-    case 1:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
@@ -7590,16 +8638,20 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListDedicatedIpPoolsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          DedicatedIpPools: S.optional(__S(66, __c8, 2)),
+          DedicatedIpPools: S.optional(__S(960, __c60, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDedicatedIpPoolsResponse",
       });
-    case 3:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
@@ -7617,18 +8669,22 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListDeliverabilityTestReportsRequest",
       });
-    case 4:
-      return S.Array(__S(151, __c18, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(1680, __c105, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          DeliverabilityTestReports: __S(228, __c28, 4),
+          DeliverabilityTestReports: __S(2049, __c128, 1),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDeliverabilityTestReportsResponse",
       });
-    case 6:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           StartDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("StartDate")),
@@ -7652,25 +8708,25 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListDomainDeliverabilityCampaignsRequest",
       });
-    case 7:
-      return S.Array(__S(157, __c19, 5));
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1712, __c107, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          DomainDeliverabilityCampaigns: __S(231, __c28, 7),
+          DomainDeliverabilityCampaigns: __S(2065, __c129, 1),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDomainDeliverabilityCampaignsResponse",
       });
-    case 1:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(2, __c0, 2)),
+          Filter: S.optional(__S(528, __c33, 0)),
           NextToken: S.optional(S.String),
           PageSize: S.optional(S.Number),
         }).pipe(
@@ -7686,7 +8742,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListEmailIdentitiesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           IdentityType: S.optional(S.String),
@@ -7695,18 +8751,22 @@ function __c29(j: number): any {
           VerificationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityInfo" });
+    case 2:
+      return S.Array(__S(2081, __c130, 1));
     case 3:
-      return S.Array(__S(234, __c29, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          EmailIdentities: S.optional(__S(235, __c29, 3)),
+          EmailIdentities: S.optional(__S(2082, __c130, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListEmailIdentitiesResponse",
       });
-    case 5:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EmailIdentity: S.String,
@@ -7725,7 +8785,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListEmailIdentityCertificatesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           FromAddress: S.optional(S.String),
@@ -7734,22 +8794,22 @@ function __c29(j: number): any {
           CertificateExpiryTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "IdentityCertificate" });
-    case 7:
-      return S.Array(__S(238, __c29, 6));
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2097, __c131, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Certificates: S.optional(__S(239, __c29, 7)),
+          Certificates: S.optional(__S(2098, __c131, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListEmailIdentityCertificatesResponse",
       });
-    case 1:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
@@ -7767,25 +8827,29 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListEmailTemplatesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "EmailTemplateMetadata" });
+    case 2:
+      return S.Array(__S(2113, __c132, 1));
     case 3:
-      return S.Array(__S(242, __c30, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          TemplatesMetadata: S.optional(__S(243, __c30, 3)),
+          TemplatesMetadata: S.optional(__S(2114, __c132, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListEmailTemplatesResponse",
       });
-    case 5:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
@@ -7803,7 +8867,7 @@ function __c30(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListExportJobsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
@@ -7813,17 +8877,17 @@ function __c30(j: number): any {
           CompletedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ExportJobSummary" });
-    case 7:
-      return S.Array(__S(246, __c30, 6));
+    case 2:
+      return S.Array(__S(2129, __c133, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ExportJobs: S.optional(__S(2130, __c133, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListExportJobsResponse" });
   }
 }
-function __c31(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ ExportJobs: S.optional(__S(247, __c30, 7)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListExportJobsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           ImportDestinationType: S.optional(S.String),
@@ -7840,24 +8904,28 @@ function __c31(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListImportJobsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
-          ImportDestination: S.optional(__S(84, __c10, 4)),
+          ImportDestination: S.optional(__S(1122, __c70, 2)),
           JobStatus: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ProcessedRecordsCount: S.optional(S.Number),
           FailedRecordsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ImportJobSummary" });
+    case 2:
+      return S.Array(__S(2145, __c134, 1));
     case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ ImportJobs: S.optional(__S(251, __c31, 3)), NextToken: S.optional(S.String) }),
+        S.Struct({ ImportJobs: S.optional(__S(2146, __c134, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListImportJobsResponse" });
-    case 5:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
@@ -7875,36 +8943,36 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListMultiRegionEndpointsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EndpointName: S.optional(S.String),
           Status: S.optional(S.String),
           EndpointId: S.optional(S.String),
-          Regions: S.optional(__S(66, __c8, 2)),
+          Regions: S.optional(__S(960, __c60, 0)),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "MultiRegionEndpoint" });
-    case 7:
-      return S.Array(__S(254, __c31, 6));
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2161, __c135, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          MultiRegionEndpoints: S.optional(__S(255, __c31, 7)),
+          MultiRegionEndpoints: S.optional(__S(2162, __c135, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListMultiRegionEndpointsResponse",
       });
-    case 1:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(2, __c0, 2)),
+          Filter: S.optional(__S(528, __c33, 0)),
           NextToken: S.optional(S.String),
           PageSize: S.optional(S.Number),
         }).pipe(
@@ -7920,7 +8988,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListRecommendationsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
@@ -7932,21 +9000,25 @@ function __c32(j: number): any {
           Impact: S.optional(S.String),
         }),
       ).annotate({ identifier: "Recommendation" });
+    case 2:
+      return S.Array(__S(2177, __c136, 1));
     case 3:
-      return S.Array(__S(258, __c32, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          Recommendations: S.optional(__S(259, __c32, 3)),
+          Recommendations: S.optional(__S(2178, __c136, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListRecommendationsResponse",
       });
-    case 5:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(2, __c0, 2)),
+          Filter: S.optional(__S(528, __c33, 0)),
           NextToken: S.optional(S.String),
           PageSize: S.optional(S.Number),
         }).pipe(
@@ -7962,12 +9034,12 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListReputationEntitiesRequest",
       });
-    case 6:
-      return S.Array(__S(201, __c25, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(1921, __c120, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ReputationEntities: S.optional(__S(262, __c32, 6)),
+          ReputationEntities: S.optional(__S(2193, __c137, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7975,7 +9047,7 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8006,21 +9078,25 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "ResourceTenantMetadata" });
     case 2:
-      return S.Array(__S(265, __c33, 1));
+      return S.Array(__S(2209, __c138, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ResourceTenants: S.optional(__S(266, __c33, 2)),
+          ResourceTenants: S.optional(__S(2210, __c138, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListResourceTenantsResponse",
       });
-    case 4:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TenantName: S.optional(S.String).pipe(T.HttpQuery("TenantName")),
-          Reasons: S.optional(__S(21, __c2, 5)).pipe(T.HttpQuery("Reason")),
+          Reasons: S.optional(__S(592, __c37, 0)).pipe(T.HttpQuery("Reason")),
           StartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
             T.HttpQuery("StartDate"),
           ),
@@ -8042,7 +9118,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListSuppressedDestinationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EmailAddress: S.String,
@@ -8052,12 +9128,12 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "SuppressedDestinationSummary",
       });
-    case 6:
-      return S.Array(__S(269, __c33, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2225, __c139, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          SuppressedDestinationSummaries: S.optional(__S(270, __c33, 6)),
+          SuppressedDestinationSummaries: S.optional(__S(2226, __c139, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8065,7 +9141,7 @@ function __c33(j: number): any {
       });
   }
 }
-function __c34(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8076,14 +9152,18 @@ function __c34(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: __S(20, __c2, 4) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: __S(609, __c38, 1) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 2:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TenantName: S.String,
-          Filter: S.optional(__S(2, __c0, 2)),
+          Filter: S.optional(__S(528, __c33, 0)),
           PageSize: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -8099,25 +9179,29 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListTenantResourcesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ResourceType: S.optional(S.String), ResourceArn: S.optional(S.String) }),
       ).annotate({ identifier: "TenantResource" });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2257, __c141, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          TenantResources: S.optional(__S(276, __c34, 4)),
+          TenantResources: S.optional(__S(2258, __c141, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListTenantResourcesResponse",
       });
-    case 6:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(2, __c0, 2)),
+          Filter: S.optional(__S(528, __c33, 0)),
           NextToken: S.optional(S.String),
           PageSize: S.optional(S.Number),
         }).pipe(
@@ -8131,7 +9215,7 @@ function __c34(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTenantsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TenantName: S.optional(S.String),
@@ -8141,17 +9225,17 @@ function __c34(j: number): any {
           SendingStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "TenantInfo" });
+    case 2:
+      return S.Array(__S(2273, __c142, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Tenants: S.optional(__S(2274, __c142, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTenantsResponse" });
   }
 }
-function __c35(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(279, __c34, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Tenants: S.optional(__S(280, __c35, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListTenantsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({ AutoWarmupEnabled: S.optional(S.Boolean) }).pipe(
           T.all(
@@ -8166,14 +9250,18 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PutAccountDedicatedIpWarmupAttributesRequest",
       });
-    case 3:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MailType: S.String,
           WebsiteURL: SensitiveString,
           ContactLanguage: S.optional(S.String),
           UseCaseDescription: S.optional(SensitiveString),
-          AdditionalContactEmailAddresses: S.optional(__S(75, __c9, 3)),
+          AdditionalContactEmailAddresses: S.optional(__S(1056, __c66, 0)),
           ProductionAccessEnabled: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -8186,7 +9274,11 @@ function __c35(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutAccountDetailsRequest" });
-    case 4:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Plan: S.String }).pipe(
           T.all(
@@ -8201,7 +9293,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PutAccountPricingAttributesRequest",
       });
-    case 5:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SendingEnabled: S.optional(S.Boolean) }).pipe(
           T.all(
@@ -8216,11 +9312,15 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PutAccountSendingAttributesRequest",
       });
-    case 6:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          SuppressedReasons: S.optional(__S(21, __c2, 5)),
-          ValidationAttributes: S.optional(__S(24, __c3, 0)),
+          SuppressedReasons: S.optional(__S(592, __c37, 0)),
+          ValidationAttributes: S.optional(__S(626, __c39, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/v2/email/account/suppression" }),
@@ -8234,9 +9334,13 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PutAccountSuppressionAttributesRequest",
       });
-    case 7:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ VdmAttributes: __S(116, __c14, 4) }).pipe(
+        S.Struct({ VdmAttributes: __S(1456, __c91, 0) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/v2/email/account/vdm" }),
             svc,
@@ -8249,15 +9353,15 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PutAccountVdmAttributesRequest",
       });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PutAccountVdmAttributesResponse",
       });
-    case 1:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
@@ -8278,7 +9382,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PutConfigurationSetArchivingOptionsRequest",
       });
-    case 2:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
@@ -8301,7 +9409,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PutConfigurationSetDeliveryOptionsRequest",
       });
-    case 3:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
@@ -8322,7 +9434,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PutConfigurationSetReputationOptionsRequest",
       });
-    case 4:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
@@ -8343,675 +9459,8 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PutConfigurationSetSendingOptionsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
-          SuppressionScope: S.optional(S.String),
-          SuppressedReasons: S.optional(__S(21, __c2, 5)),
-          ValidationOptions: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/v2/email/configuration-sets/{ConfigurationSetName}/suppression-options",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutConfigurationSetSuppressionOptionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
-          CustomRedirectDomain: S.optional(S.String),
-          HttpsPolicy: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/v2/email/configuration-sets/{ConfigurationSetName}/tracking-options",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutConfigurationSetTrackingOptionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
-          VdmOptions: S.optional(__S(28, __c3, 4)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/v2/email/configuration-sets/{ConfigurationSetName}/vdm-options",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutConfigurationSetVdmOptionsRequest",
-      });
   }
 }
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Ip: S.String.pipe(T.HttpLabel("Ip")), DestinationPoolName: S.String }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v2/email/dedicated-ips/{Ip}/pool" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutDedicatedIpInPoolRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          PoolName: S.String.pipe(T.HttpLabel("PoolName")),
-          ScalingMode: S.String,
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v2/email/dedicated-ip-pools/{PoolName}/scaling" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutDedicatedIpPoolScalingAttributesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Ip: S.String.pipe(T.HttpLabel("Ip")), WarmupPercentage: S.Number }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v2/email/dedicated-ips/{Ip}/warmup" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutDedicatedIpWarmupAttributesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DashboardEnabled: S.Boolean,
-          SubscribedDomains: S.optional(__S(148, __c18, 4)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v2/email/deliverability-dashboard" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutDeliverabilityDashboardOptionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
-          ConfigurationSetName: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/v2/email/identities/{EmailIdentity}/configuration-set",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutEmailIdentityConfigurationSetAttributesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
-          SigningEnabled: S.optional(S.Boolean),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v2/email/identities/{EmailIdentity}/dkim" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutEmailIdentityDkimAttributesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
-          SigningAttributesOrigin: S.String,
-          SigningAttributes: S.optional(__S(64, __c8, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v2/email/identities/{EmailIdentity}/dkim/signing" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutEmailIdentityDkimSigningAttributesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DkimStatus: S.optional(S.String),
-          DkimTokens: S.optional(__S(66, __c8, 2)),
-          SigningHostedZone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PutEmailIdentityDkimSigningAttributesResponse",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
-          EmailForwardingEnabled: S.optional(S.Boolean),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v2/email/identities/{EmailIdentity}/feedback" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutEmailIdentityFeedbackAttributesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
-          MailFromDomain: S.optional(S.String),
-          BehaviorOnMxFailure: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v2/email/identities/{EmailIdentity}/mail-from" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutEmailIdentityMailFromAttributesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          EmailAddress: S.String,
-          Reason: S.String,
-          TenantName: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v2/email/suppression/addresses" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutSuppressedDestinationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          TenantName: S.String,
-          SuppressedReasons: S.optional(__S(21, __c2, 5)),
-          SuppressionScope: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v2/email/tenant/suppression" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutTenantSuppressionAttributesRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ Template: S.optional(__S(60, __c7, 4)) })).annotate({
-        identifier: "BulkEmailContent",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ToAddresses: S.optional(__S(66, __c8, 2)),
-          CcAddresses: S.optional(__S(66, __c8, 2)),
-          BccAddresses: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({ identifier: "Destination" });
-    case 6:
-      return S.suspend(() => S.Struct({ ReplacementTemplateData: S.optional(S.String) })).annotate({
-        identifier: "ReplacementTemplate",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ReplacementTemplate: S.optional(__S(310, __c38, 6)) }),
-      ).annotate({ identifier: "ReplacementEmailContent" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Destination: __S(309, __c38, 5),
-          ReplacementTags: S.optional(__S(54, __c6, 6)),
-          ReplacementEmailContent: S.optional(__S(311, __c38, 7)),
-          ReplacementHeaders: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "BulkEmailEntry" });
-    case 1:
-      return S.Array(__S(312, __c39, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          OpenTrackingEnabled: S.optional(S.String),
-          ClickTrackingEnabled: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TrackingConfigurationOverrides",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Tracking: S.optional(__S(314, __c39, 2)) })).annotate({
-        identifier: "ConfigurationOverrides",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          FromEmailAddress: S.optional(S.String),
-          FromEmailAddressIdentityArn: S.optional(S.String),
-          ReplyToAddresses: S.optional(__S(66, __c8, 2)),
-          FeedbackForwardingEmailAddress: S.optional(S.String),
-          FeedbackForwardingEmailAddressIdentityArn: S.optional(S.String),
-          DefaultEmailTags: S.optional(__S(54, __c6, 6)),
-          DefaultContent: __S(308, __c38, 4),
-          BulkEmailEntries: __S(313, __c39, 1),
-          ConfigurationSetName: S.optional(S.String),
-          EndpointId: S.optional(S.String).pipe(T.ContextParam("EndpointId")),
-          TenantName: S.optional(S.String),
-          ConfigurationOverrides: S.optional(__S(315, __c39, 3)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v2/email/outbound-bulk-emails" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "SendBulkEmailRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          Error: S.optional(S.String),
-          MessageId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BulkEmailEntryResult" });
-    case 6:
-      return S.Array(__S(317, __c39, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ BulkEmailEntryResults: __S(318, __c39, 6) })).annotate({
-        identifier: "SendBulkEmailResponse",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          EmailAddress: S.String,
-          TemplateName: S.String,
-          ConfigurationSetName: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v2/email/outbound-custom-verification-emails" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "SendCustomVerificationEmailRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ MessageId: S.optional(S.String) })).annotate({
-        identifier: "SendCustomVerificationEmailResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ContactListName: S.String, TopicName: S.optional(S.String) }),
-      ).annotate({ identifier: "ListManagementOptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          FromEmailAddress: S.optional(S.String),
-          FromEmailAddressIdentityArn: S.optional(S.String),
-          Destination: S.optional(__S(309, __c38, 5)),
-          ReplyToAddresses: S.optional(__S(66, __c8, 2)),
-          FeedbackForwardingEmailAddress: S.optional(S.String),
-          FeedbackForwardingEmailAddressIdentityArn: S.optional(S.String),
-          Content: __S(61, __c7, 5),
-          EmailTags: S.optional(__S(54, __c6, 6)),
-          ConfigurationSetName: S.optional(S.String),
-          EndpointId: S.optional(S.String).pipe(T.ContextParam("EndpointId")),
-          TenantName: S.optional(S.String),
-          ListManagementOptions: S.optional(__S(322, __c40, 2)),
-          ConfigurationOverrides: S.optional(__S(315, __c39, 3)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v2/email/outbound-emails" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "SendEmailRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ MessageId: S.optional(S.String) })).annotate({
-        identifier: "SendEmailResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(20, __c2, 4) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/v2/email/tags" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-          TemplateData: S.String,
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v2/email/templates/{TemplateName}/render" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "TestRenderEmailTemplateRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ RenderedTemplate: S.String })).annotate({
-        identifier: "TestRenderEmailTemplateResponse",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpQuery("ResourceArn")),
-          TagKeys: __S(66, __c8, 2).pipe(T.HttpQuery("TagKeys")),
-        }).pipe(
-          T.all(T.Http({ method: "DELETE", uri: "/v2/email/tags" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigurationSetName: S.String,
-          MessageSecurityOptions: S.optional(__S(32, __c4, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v2/email/update-configuration-sets" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateConfigurationSetRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
-          EventDestinationName: S.String.pipe(T.HttpLabel("EventDestinationName")),
-          EventDestination: __S(41, __c5, 1),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/v2/email/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateConfigurationSetEventDestinationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ContactListName: S.String.pipe(T.HttpLabel("ContactListName")),
-          EmailAddress: S.String.pipe(T.HttpLabel("EmailAddress")),
-          TopicPreferences: S.optional(__S(44, __c5, 4)),
-          UnsubscribeAll: S.optional(S.Boolean),
-          AttributesData: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/v2/email/contact-lists/{ContactListName}/contacts/{EmailAddress}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateContactRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ContactListName: S.String.pipe(T.HttpLabel("ContactListName")),
-          Topics: S.optional(__S(47, __c5, 7)),
-          Description: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v2/email/contact-lists/{ContactListName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateContactListRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-          FromEmailAddress: S.String,
-          TemplateSubject: S.String,
-          TemplateContent: S.String,
-          SuccessRedirectionURL: S.String,
-          FailureRedirectionURL: S.String,
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/v2/email/custom-verification-email-templates/{TemplateName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateCustomVerificationEmailTemplateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          EmailIdentity: S.String.pipe(T.HttpLabel("EmailIdentity")),
-          PolicyName: S.String.pipe(T.HttpLabel("PolicyName")),
-          Policy: S.String,
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/v2/email/identities/{EmailIdentity}/policies/{PolicyName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateEmailIdentityPolicyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-          TemplateContent: __S(59, __c7, 3),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v2/email/templates/{TemplateName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateEmailTemplateRequest",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ReputationEntityType: S.String.pipe(T.HttpLabel("ReputationEntityType")),
-          ReputationEntityReference: S.String.pipe(T.HttpLabel("ReputationEntityReference")),
-          SendingStatus: S.String,
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/v2/email/reputation/entities/{ReputationEntityType}/{ReputationEntityReference}/customer-managed-status",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateReputationEntityCustomerManagedStatusRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ReputationEntityType: S.String.pipe(T.HttpLabel("ReputationEntityType")),
-          ReputationEntityReference: S.String.pipe(T.HttpLabel("ReputationEntityReference")),
-          ReputationEntityPolicy: S.String,
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/v2/email/reputation/entities/{ReputationEntityType}/{ReputationEntityReference}/policy",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateReputationEntityPolicyRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

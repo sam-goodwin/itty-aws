@@ -305,8 +305,8 @@ export const batchDeleteAttributes: API.OperationMethod<
   BatchDeleteAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<BatchDeleteAttributesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BatchDeleteAttributesResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<BatchDeleteAttributesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<BatchDeleteAttributesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -333,8 +333,8 @@ export const batchPutAttributes: API.OperationMethod<
   BatchPutAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<BatchPutAttributesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<BatchPutAttributesResponse>,
+  input: __S(10, __c2, 2) as any as S.Schema<BatchPutAttributesRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<BatchPutAttributesResponse>,
   errors: [
     DuplicateItemName,
     InvalidParameterValue,
@@ -365,8 +365,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateDomainRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateDomainResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<CreateDomainRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<CreateDomainResponse>,
   errors: [InvalidParameterValue, MissingParameter, NumberDomainsExceeded],
   protocol: AwsProtocol,
   retry: Retry,
@@ -388,8 +388,8 @@ export const deleteAttributes: API.OperationMethod<
   DeleteAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteAttributesRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteAttributesResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteAttributesRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<DeleteAttributesResponse>,
   errors: [AttributeDoesNotExist, InvalidParameterValue, MissingParameter, NoSuchDomain],
   protocol: AwsProtocol,
   retry: Retry,
@@ -406,8 +406,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteDomainResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<DeleteDomainResponse>,
   errors: [MissingParameter],
   protocol: AwsProtocol,
   retry: Retry,
@@ -424,8 +424,8 @@ export const domainMetadata: API.OperationMethod<
   DomainMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DomainMetadataRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DomainMetadataResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<DomainMetadataRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<DomainMetadataResponse>,
   errors: [MissingParameter, NoSuchDomain],
   protocol: AwsProtocol,
   retry: Retry,
@@ -446,8 +446,8 @@ export const getAttributes: API.OperationMethod<
   GetAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetAttributesRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetAttributesResponse>,
+  input: __S(37, __c9, 1) as any as S.Schema<GetAttributesRequest>,
+  output: __S(38, __c9, 2) as any as S.Schema<GetAttributesResponse>,
   errors: [InvalidParameterValue, MissingParameter, NoSuchDomain],
   protocol: AwsProtocol,
   retry: Retry,
@@ -465,8 +465,8 @@ export const listDomains: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListDomainsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListDomainsResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<ListDomainsRequest>,
+  output: __S(46, __c11, 2) as any as S.Schema<ListDomainsResponse>,
   errors: [InvalidNextToken, InvalidParameterValue],
   protocol: AwsProtocol,
   retry: Retry,
@@ -497,8 +497,8 @@ export const putAttributes: API.OperationMethod<
   PutAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<PutAttributesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<PutAttributesResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<PutAttributesRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<PutAttributesResponse>,
   errors: [
     AttributeDoesNotExist,
     InvalidParameterValue,
@@ -534,8 +534,8 @@ export const select: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Item
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<SelectRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<SelectResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<SelectRequest>,
+  output: __S(55, __c13, 3) as any as S.Schema<SelectResponse>,
   errors: [
     InvalidNextToken,
     InvalidNumberPredicates,
@@ -557,57 +557,55 @@ export const select: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Name: S.String, Value: S.optional(S.String) })).annotate({
-        identifier: "DeletableAttribute",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          ItemName: S.String,
+          Attributes: S.optional(__S(5, __c1, 1)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
+        }),
+      ).annotate({ identifier: "DeletableItem" });
     case 1:
       return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ItemName: S.String,
-          Attributes: S.optional(__S(1, __c0, 1)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
-        }),
-      ).annotate({ identifier: "DeletableItem" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           DomainName: S.String,
-          Items: __S(3, __c0, 3).pipe(T.XmlName("Item"), T.XmlFlattened()),
+          Items: __S(1, __c0, 1).pipe(T.XmlName("Item"), T.XmlFlattened()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "BatchDeleteAttributesRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "BatchDeleteAttributesResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String, Value: S.String, Replace: S.optional(S.Boolean) }),
-      ).annotate({ identifier: "ReplaceableAttribute" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ Name: S.String, Value: S.optional(S.String) })).annotate({
+        identifier: "DeletableAttribute",
+      });
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ItemName: S.String,
-          Attributes: __S(7, __c0, 7).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
+          Attributes: __S(13, __c3, 1).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
         }),
       ).annotate({ identifier: "ReplaceableItem" });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(8, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
-          Items: __S(9, __c1, 1).pipe(T.XmlName("Item"), T.XmlFlattened()),
+          Items: __S(9, __c2, 1).pipe(T.XmlName("Item"), T.XmlFlattened()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "BatchPutAttributesRequest",
@@ -616,17 +614,52 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "BatchPutAttributesResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Value: S.String, Replace: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "ReplaceableAttribute" });
+    case 1:
+      return S.Array(__S(12, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateDomainRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateDomainResponse",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DomainName: S.String,
+          ItemName: S.String,
+          Attributes: S.optional(__S(5, __c1, 1)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
+          Expected: S.optional(__S(24, __c6, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "DeleteAttributesRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "DeleteAttributesResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -634,40 +667,31 @@ function __c1(j: number): any {
           Exists: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UpdateCondition" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DomainName: S.String,
-          ItemName: S.String,
-          Attributes: S.optional(__S(1, __c0, 1)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
-          Expected: S.optional(__S(14, __c1, 6)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "DeleteAttributesRequest" });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeleteAttributesResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteDomainRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteDomainResponse",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DomainMetadataRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ItemCount: S.optional(S.Number),
@@ -679,21 +703,35 @@ function __c2(j: number): any {
           Timestamp: S.optional(S.Number),
         }).pipe(ns),
       ).annotate({ identifier: "DomainMetadataResponse" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
           ItemName: S.String,
-          AttributeNames: S.optional(__S(21, __c2, 5)).pipe(
+          AttributeNames: S.optional(__S(36, __c9, 0)).pipe(
             T.XmlName("AttributeName"),
             T.XmlFlattened(),
           ),
           ConsistentRead: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetAttributesRequest" });
-    case 7:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Attributes: S.optional(__S(41, __c10, 1)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetAttributesResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -702,48 +740,53 @@ function __c2(j: number): any {
           AlternateValueEncoding: S.optional(S.String),
         }),
       ).annotate({ identifier: "Attribute" });
+    case 1:
+      return S.Array(__S(40, __c10, 0));
   }
 }
-function __c3(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Attributes: S.optional(__S(24, __c3, 0)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
-        }).pipe(ns),
-      ).annotate({ identifier: "GetAttributesResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           MaxNumberOfDomains: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDomainsRequest" });
-    case 3:
+    case 1:
       return S.Array(S.String);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          DomainNames: S.optional(__S(27, __c3, 3)).pipe(T.XmlName("DomainName"), T.XmlFlattened()),
+          DomainNames: S.optional(__S(45, __c11, 1)).pipe(
+            T.XmlName("DomainName"),
+            T.XmlFlattened(),
+          ),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListDomainsResponse" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
           ItemName: S.String,
-          Attributes: __S(7, __c0, 7).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
-          Expected: S.optional(__S(14, __c1, 6)),
+          Attributes: __S(13, __c3, 1).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
+          Expected: S.optional(__S(24, __c6, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutAttributesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "PutAttributesResponse",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SelectExpression: S.String,
@@ -751,30 +794,25 @@ function __c3(j: number): any {
           ConsistentRead: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SelectRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           AlternateNameEncoding: S.optional(S.String),
-          Attributes: S.optional(__S(24, __c3, 0)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
+          Attributes: S.optional(__S(41, __c10, 1)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
         }),
       ).annotate({ identifier: "Item" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
+      return S.Array(__S(53, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Items: S.optional(__S(33, __c4, 1)).pipe(T.XmlName("Item"), T.XmlFlattened()),
+          Items: S.optional(__S(54, __c13, 2)).pipe(T.XmlName("Item"), T.XmlFlattened()),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "SelectResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

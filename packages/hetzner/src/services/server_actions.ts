@@ -1155,7 +1155,7 @@ export const addServerToPlacementGroup: API.OperationMethod<
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AddServerToPlacementGroupRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AddServerToPlacementGroupResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<AddServerToPlacementGroupResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1169,8 +1169,8 @@ export const attachServerIso: API.OperationMethod<
   AttachServerIsoError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AttachServerIsoRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AttachServerIsoResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<AttachServerIsoRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<AttachServerIsoResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1184,8 +1184,8 @@ export const attachServerToNetwork: API.OperationMethod<
   AttachServerToNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<AttachServerToNetworkRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<AttachServerToNetworkResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<AttachServerToNetworkRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<AttachServerToNetworkResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1199,8 +1199,8 @@ export const changeServerAliasIps: API.OperationMethod<
   ChangeServerAliasIpsError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ChangeServerAliasIpsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ChangeServerAliasIpsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ChangeServerAliasIpsRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<ChangeServerAliasIpsResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1214,8 +1214,8 @@ export const changeServerDnsPtr: API.OperationMethod<
   ChangeServerDnsPtrError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ChangeServerDnsPtrRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ChangeServerDnsPtrResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<ChangeServerDnsPtrRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<ChangeServerDnsPtrResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1229,8 +1229,8 @@ export const changeServerProtection: API.OperationMethod<
   ChangeServerProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ChangeServerProtectionRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ChangeServerProtectionResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ChangeServerProtectionRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<ChangeServerProtectionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1244,8 +1244,8 @@ export const changeServerType: API.OperationMethod<
   ChangeServerTypeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ChangeServerTypeRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ChangeServerTypeResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ChangeServerTypeRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<ChangeServerTypeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1259,8 +1259,8 @@ export const createServerImage: API.OperationMethod<
   CreateServerImageError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateServerImageRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<CreateServerImageResponse>,
+  input: __S(217, __c27, 1) as any as S.Schema<CreateServerImageRequest>,
+  output: __S(223, __c27, 7) as any as S.Schema<CreateServerImageResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1274,8 +1274,8 @@ export const detachServerFromNetwork: API.OperationMethod<
   DetachServerFromNetworkError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DetachServerFromNetworkRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<DetachServerFromNetworkResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<DetachServerFromNetworkRequest>,
+  output: __S(226, __c28, 2) as any as S.Schema<DetachServerFromNetworkResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1289,8 +1289,8 @@ export const detachServerIso: API.OperationMethod<
   DetachServerIsoError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DetachServerIsoRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DetachServerIsoResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<DetachServerIsoRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<DetachServerIsoResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1304,8 +1304,8 @@ export const disableServerBackup: API.OperationMethod<
   DisableServerBackupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DisableServerBackupRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DisableServerBackupResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DisableServerBackupRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<DisableServerBackupResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1319,8 +1319,8 @@ export const disableServerRescue: API.OperationMethod<
   DisableServerRescueError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DisableServerRescueRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DisableServerRescueResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DisableServerRescueRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<DisableServerRescueResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1334,8 +1334,8 @@ export const enableServerBackup: API.OperationMethod<
   EnableServerBackupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<EnableServerBackupRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<EnableServerBackupResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<EnableServerBackupRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<EnableServerBackupResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1349,8 +1349,8 @@ export const enableServerRescue: API.OperationMethod<
   EnableServerRescueError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<EnableServerRescueRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<EnableServerRescueResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<EnableServerRescueRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<EnableServerRescueResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1364,8 +1364,8 @@ export const getServersAction: API.OperationMethod<
   GetServersActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetServersActionRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetServersActionResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetServersActionRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<GetServersActionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1381,8 +1381,8 @@ export const listServerActions: API.PaginatedOperationMethod<
   ListServerActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(56, __c7, 0) as any as S.Schema<ListServerActionsRequest>,
-    output: __S(61, __c7, 5) as any as S.Schema<ListServerActionsResponse>,
+    input: __S(72, __c9, 0) as any as S.Schema<ListServerActionsRequest>,
+    output: __S(75, __c9, 3) as any as S.Schema<ListServerActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -1407,8 +1407,8 @@ export const listServersActions: API.PaginatedOperationMethod<
   ListServersActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(62, __c7, 6) as any as S.Schema<ListServersActionsRequest>,
-    output: __S(65, __c8, 1) as any as S.Schema<ListServersActionsResponse>,
+    input: __S(88, __c11, 0) as any as S.Schema<ListServersActionsRequest>,
+    output: __S(91, __c11, 3) as any as S.Schema<ListServersActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -1431,8 +1431,8 @@ export const poweroffServer: API.OperationMethod<
   PoweroffServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<PoweroffServerRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<PoweroffServerResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<PoweroffServerRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<PoweroffServerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1446,8 +1446,8 @@ export const poweronServer: API.OperationMethod<
   PoweronServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<PoweronServerRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<PoweronServerResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<PoweronServerRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<PoweronServerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1461,8 +1461,8 @@ export const rebootServer: API.OperationMethod<
   RebootServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<RebootServerRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<RebootServerResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<RebootServerRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<RebootServerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1476,8 +1476,8 @@ export const rebuildServer: API.OperationMethod<
   RebuildServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<RebuildServerRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<RebuildServerResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<RebuildServerRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<RebuildServerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1491,8 +1491,8 @@ export const removeServerFromPlacementGroup: API.OperationMethod<
   RemoveServerFromPlacementGroupError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<RemoveServerFromPlacementGroupRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<RemoveServerFromPlacementGroupResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<RemoveServerFromPlacementGroupRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<RemoveServerFromPlacementGroupResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1506,8 +1506,8 @@ export const requestServerConsole: API.OperationMethod<
   RequestServerConsoleError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<RequestServerConsoleRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<RequestServerConsoleResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<RequestServerConsoleRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<RequestServerConsoleResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1521,8 +1521,8 @@ export const resetServer: API.OperationMethod<
   ResetServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ResetServerRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ResetServerResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<ResetServerRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<ResetServerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1536,8 +1536,8 @@ export const resetServerPassword: API.OperationMethod<
   ResetServerPasswordError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ResetServerPasswordRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<ResetServerPasswordResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ResetServerPasswordRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<ResetServerPasswordResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1551,8 +1551,8 @@ export const shutdownServer: API.OperationMethod<
   ShutdownServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ShutdownServerRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ShutdownServerResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<ShutdownServerRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<ShutdownServerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1580,66 +1580,24 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "AddServerToPlacementGroupResponseActionResourcesItem",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "AddServerToPlacementGroupResponseActionError",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
           command: S.String,
           status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "AddServerToPlacementGroupResponseAction",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(4, __c0, 4),
+          action: __S(1, __c0, 1),
         }),
       ).annotate({
         identifier: "AddServerToPlacementGroupResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          iso: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/attach_iso", code: 200 })),
-      ).annotate({ identifier: "AttachServerIsoRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "AttachServerIsoResponseAction",
       });
   }
 }
@@ -1648,18 +1606,448 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: __S(7, __c0, 7),
+          id: S.Number,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "AddServerToPlacementGroupResponseActionResourcesItem",
+      });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "AddServerToPlacementGroupResponseActionError",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          iso: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/attach_iso", code: 200 })),
+      ).annotate({ identifier: "AttachServerIsoRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "AttachServerIsoResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(17, __c2, 1),
         }),
       ).annotate({ identifier: "AttachServerIsoResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/disable_backup", code: 200 })),
+      ).annotate({
+        identifier: "DisableServerBackupRequest",
+      });
     case 1:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "DisableServerBackupResponseAction",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(25, __c3, 1),
+        }),
+      ).annotate({
+        identifier: "DisableServerBackupResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/disable_rescue", code: 200 })),
+      ).annotate({
+        identifier: "DisableServerRescueRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "DisableServerRescueResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(33, __c4, 1),
+        }),
+      ).annotate({
+        identifier: "DisableServerRescueResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/enable_backup", code: 200 })),
+      ).annotate({
+        identifier: "EnableServerBackupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "EnableServerBackupResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(41, __c5, 1),
+        }),
+      ).annotate({
+        identifier: "EnableServerBackupResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          type: S.optional(S.String),
+          ssh_keys: S.optional(__S(56, __c7, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/enable_rescue", code: 200 })),
+      ).annotate({
+        identifier: "EnableServerRescueRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "EnableServerRescueResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          root_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          action: S.optional(__S(49, __c6, 1)),
+        }),
+      ).annotate({
+        identifier: "EnableServerRescueResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/servers/actions/{id}", code: 200 })),
+      ).annotate({ identifier: "GetServersActionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "GetServersActionResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(65, __c8, 1),
+        }),
+      ).annotate({ identifier: "GetServersActionResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          sort: S.optional(__S(80, __c10, 0).pipe(T.Query())),
+          status: S.optional(__S(80, __c10, 0).pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/servers/{id}/actions", code: 200 })),
+      ).annotate({ identifier: "ListServerActionsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "ListServerActionsResponseActionsItem",
+      });
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          actions: __S(74, __c9, 2),
+          meta: __S(82, __c10, 2),
+        }),
+      ).annotate({
+        identifier: "ListServerActionsResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.Number,
+          per_page: S.Number,
+          previous_page: S.NullOr(S.Number),
+          next_page: S.NullOr(S.Number),
+          last_page: S.NullOr(S.Number),
+          total_entries: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListServerActionsResponseMetaPagination",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pagination: __S(81, __c10, 1),
+        }),
+      ).annotate({
+        identifier: "ListServerActionsResponseMeta",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(__S(56, __c7, 0).pipe(T.Query())),
+          sort: S.optional(__S(80, __c10, 0).pipe(T.Query())),
+          status: S.optional(__S(80, __c10, 0).pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/servers/actions", code: 200 })),
+      ).annotate({
+        identifier: "ListServersActionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "ListServersActionsResponseActionsItem",
+      });
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          actions: __S(90, __c11, 2),
+          meta: __S(82, __c10, 2),
+        }),
+      ).annotate({
+        identifier: "ListServersActionsResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/poweroff", code: 200 })),
+      ).annotate({ identifier: "PoweroffServerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "PoweroffServerResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(97, __c12, 1),
+        }),
+      ).annotate({ identifier: "PoweroffServerResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/poweron", code: 200 })),
+      ).annotate({ identifier: "PoweronServerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "PoweronServerResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(105, __c13, 1),
+        }),
+      ).annotate({ identifier: "PoweronServerResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/reboot", code: 200 })),
+      ).annotate({ identifier: "RebootServerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "RebootServerResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(113, __c14, 1),
+        }),
+      ).annotate({ identifier: "RebootServerResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           network: S.Number,
           ip: S.optional(S.String),
-          alias_ips: S.optional(__S(9, __c1, 1)),
+          alias_ips: S.optional(__S(128, __c16, 0)),
           ip_range: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/servers/{id}/actions/attach_to_network", code: 200 }),
@@ -1667,7 +2055,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AttachServerToNetworkRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1676,33 +2064,255 @@ function __c1(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "AttachServerToNetworkResponseAction",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(11, __c1, 3),
+          action: __S(121, __c15, 1),
         }),
       ).annotate({
         identifier: "AttachServerToNetworkResponse",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          image: S.String,
+          user_data: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/rebuild", code: 200 })),
+      ).annotate({ identifier: "RebuildServerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "RebuildServerResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          root_password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          action: S.optional(__S(137, __c17, 1)),
+        }),
+      ).annotate({ identifier: "RebuildServerResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/servers/{id}/actions/remove_from_placement_group",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RemoveServerFromPlacementGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "RemoveServerFromPlacementGroupResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(145, __c18, 1),
+        }),
+      ).annotate({
+        identifier: "RemoveServerFromPlacementGroupResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/servers/{id}/actions/request_console", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RequestServerConsoleRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "RequestServerConsoleResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          wss_url: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+          action: __S(153, __c19, 1),
+        }),
+      ).annotate({
+        identifier: "RequestServerConsoleResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/reset", code: 200 })),
+      ).annotate({ identifier: "ResetServerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "ResetServerResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(161, __c20, 1),
+        }),
+      ).annotate({ identifier: "ResetServerResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/reset_password", code: 200 })),
+      ).annotate({
+        identifier: "ResetServerPasswordRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "ResetServerPasswordResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          root_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          action: S.optional(__S(169, __c21, 1)),
+        }),
+      ).annotate({
+        identifier: "ResetServerPasswordResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/shutdown", code: 200 })),
+      ).annotate({ identifier: "ShutdownServerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "ShutdownServerResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(177, __c22, 1),
+        }),
+      ).annotate({ identifier: "ShutdownServerResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           network: S.Number,
-          alias_ips: __S(9, __c1, 1),
+          alias_ips: __S(128, __c16, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/servers/{id}/actions/change_alias_ips", code: 200 }),
         ),
       ).annotate({
         identifier: "ChangeServerAliasIpsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1711,23 +2321,23 @@ function __c1(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeServerAliasIpsResponseAction",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(14, __c1, 6),
+          action: __S(185, __c23, 1),
         }),
       ).annotate({
         identifier: "ChangeServerAliasIpsResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1748,8 +2358,8 @@ function __c2(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeServerDnsPtrResponseAction",
@@ -1757,12 +2367,16 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(17, __c2, 1),
+          action: __S(193, __c24, 1),
         }),
       ).annotate({
         identifier: "ChangeServerDnsPtrResponse",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -1774,7 +2388,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ChangeServerProtectionRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1783,21 +2397,25 @@ function __c2(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeServerProtectionResponseAction",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(20, __c2, 4),
+          action: __S(201, __c25, 1),
         }),
       ).annotate({
         identifier: "ChangeServerProtectionResponse",
       });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -1805,7 +2423,7 @@ function __c2(j: number): any {
           server_type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/change_type", code: 200 })),
       ).annotate({ identifier: "ChangeServerTypeRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1814,34 +2432,34 @@ function __c2(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeServerTypeResponseAction",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(23, __c2, 7),
+          action: __S(209, __c26, 1),
         }),
       ).annotate({ identifier: "ChangeServerTypeResponse" });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           description: S.optional(S.String),
           type: S.optional(S.String),
-          labels: S.optional(__S(25, __c3, 1)),
+          labels: S.optional(__S(216, __c27, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/create_image", code: 200 })),
       ).annotate({ identifier: "CreateServerImageRequest" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1850,7 +2468,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateServerImageResponseImageCreatedFrom",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           delete: S.Boolean,
@@ -1858,7 +2476,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateServerImageResponseImageProtection",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           unavailable_after: S.String,
@@ -1867,7 +2485,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateServerImageResponseImageDeprecation",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1878,22 +2496,22 @@ function __c3(j: number): any {
           image_size: S.NullOr(S.Number),
           disk_size: S.Number,
           created: S.String,
-          created_from: S.NullOr(__S(27, __c3, 3)),
+          created_from: S.NullOr(__S(218, __c27, 2)),
           bound_to: S.NullOr(S.Number),
           os_flavor: S.String,
           os_version: S.NullOr(S.String),
           rapid_deploy: S.optional(S.Boolean),
-          protection: __S(28, __c3, 4),
+          protection: __S(219, __c27, 3),
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(29, __c3, 5)),
+          deprecation: S.NullOr(__S(220, __c27, 4)),
           deleted: S.NullOr(S.String),
-          labels: __S(25, __c3, 1),
+          labels: __S(216, __c27, 0),
           architecture: S.String,
         }),
       ).annotate({
         identifier: "CreateServerImageResponseImage",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1902,26 +2520,26 @@ function __c3(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "CreateServerImageResponseAction",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(__S(30, __c3, 6)),
-          action: S.optional(__S(31, __c3, 7)),
+          image: S.optional(__S(221, __c27, 5)),
+          action: S.optional(__S(222, __c27, 6)),
         }),
       ).annotate({
         identifier: "CreateServerImageResponse",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -1932,7 +2550,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DetachServerFromNetworkRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1941,27 +2559,31 @@ function __c4(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "DetachServerFromNetworkResponseAction",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(34, __c4, 2),
+          action: __S(225, __c28, 1),
         }),
       ).annotate({
         identifier: "DetachServerFromNetworkResponse",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/detach_iso", code: 200 })),
       ).annotate({ identifier: "DetachServerIsoRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1970,571 +2592,20 @@ function __c4(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "DetachServerIsoResponseAction",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(37, __c4, 5),
+          action: __S(233, __c29, 1),
         }),
       ).annotate({ identifier: "DetachServerIsoResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/disable_backup", code: 200 })),
-      ).annotate({
-        identifier: "DisableServerBackupRequest",
-      });
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "DisableServerBackupResponseAction",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(40, __c5, 0),
-        }),
-      ).annotate({
-        identifier: "DisableServerBackupResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/disable_rescue", code: 200 })),
-      ).annotate({
-        identifier: "DisableServerRescueRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "DisableServerRescueResponseAction",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(43, __c5, 3),
-        }),
-      ).annotate({
-        identifier: "DisableServerRescueResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/enable_backup", code: 200 })),
-      ).annotate({
-        identifier: "EnableServerBackupRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "EnableServerBackupResponseAction",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(46, __c5, 6),
-        }),
-      ).annotate({
-        identifier: "EnableServerBackupResponse",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Number);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          type: S.optional(S.String),
-          ssh_keys: S.optional(__S(48, __c6, 0)),
-        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/enable_rescue", code: 200 })),
-      ).annotate({
-        identifier: "EnableServerRescueRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "EnableServerRescueResponseAction",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          root_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          action: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "EnableServerRescueResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/servers/actions/{id}", code: 200 })),
-      ).annotate({ identifier: "GetServersActionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GetServersActionResponseAction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(53, __c6, 5),
-        }),
-      ).annotate({ identifier: "GetServersActionResponse" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          sort: S.optional(__S(55, __c6, 7).pipe(T.Query())),
-          status: S.optional(__S(55, __c6, 7).pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/servers/{id}/actions", code: 200 })),
-      ).annotate({ identifier: "ListServerActionsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ListServerActionsResponseActionsItem",
-      });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.Number,
-          per_page: S.Number,
-          previous_page: S.NullOr(S.Number),
-          next_page: S.NullOr(S.Number),
-          last_page: S.NullOr(S.Number),
-          total_entries: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListServerActionsResponseMetaPagination",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pagination: __S(59, __c7, 3),
-        }),
-      ).annotate({
-        identifier: "ListServerActionsResponseMeta",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          actions: __S(58, __c7, 2),
-          meta: __S(60, __c7, 4),
-        }),
-      ).annotate({
-        identifier: "ListServerActionsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(__S(48, __c6, 0).pipe(T.Query())),
-          sort: S.optional(__S(55, __c6, 7).pipe(T.Query())),
-          status: S.optional(__S(55, __c6, 7).pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/servers/actions", code: 200 })),
-      ).annotate({
-        identifier: "ListServersActionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ListServersActionsResponseActionsItem",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          actions: __S(64, __c8, 0),
-          meta: __S(60, __c7, 4),
-        }),
-      ).annotate({
-        identifier: "ListServersActionsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/poweroff", code: 200 })),
-      ).annotate({ identifier: "PoweroffServerRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "PoweroffServerResponseAction",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(67, __c8, 3),
-        }),
-      ).annotate({ identifier: "PoweroffServerResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/poweron", code: 200 })),
-      ).annotate({ identifier: "PoweronServerRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "PoweronServerResponseAction",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(70, __c8, 6),
-        }),
-      ).annotate({ identifier: "PoweronServerResponse" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/reboot", code: 200 })),
-      ).annotate({ identifier: "RebootServerRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "RebootServerResponseAction",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(73, __c9, 1),
-        }),
-      ).annotate({ identifier: "RebootServerResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          image: S.String,
-          user_data: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/rebuild", code: 200 })),
-      ).annotate({ identifier: "RebuildServerRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "RebuildServerResponseAction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          root_password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          action: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "RebuildServerResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/servers/{id}/actions/remove_from_placement_group",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RemoveServerFromPlacementGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "RemoveServerFromPlacementGroupResponseAction",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(79, __c9, 7),
-        }),
-      ).annotate({
-        identifier: "RemoveServerFromPlacementGroupResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/servers/{id}/actions/request_console", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RequestServerConsoleRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "RequestServerConsoleResponseAction",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          wss_url: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-          action: __S(82, __c10, 2),
-        }),
-      ).annotate({
-        identifier: "RequestServerConsoleResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/reset", code: 200 })),
-      ).annotate({ identifier: "ResetServerRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ResetServerResponseAction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(85, __c10, 5),
-        }),
-      ).annotate({ identifier: "ResetServerResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/reset_password", code: 200 })),
-      ).annotate({
-        identifier: "ResetServerPasswordRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ResetServerPasswordResponseAction",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          root_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          action: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "ResetServerPasswordResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/shutdown", code: 200 })),
-      ).annotate({ identifier: "ShutdownServerRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ShutdownServerResponseAction",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(91, __c11, 3),
-        }),
-      ).annotate({ identifier: "ShutdownServerResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

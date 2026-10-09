@@ -2497,8 +2497,8 @@ export const deleteBlock: API.OperationMethod<
   DeleteBlockError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteBlockRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteBlockResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<DeleteBlockRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<DeleteBlockResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2512,8 +2512,8 @@ export const getBlock: API.OperationMethod<
   GetBlockError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetBlockRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetBlockResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetBlockRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<GetBlockResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2529,8 +2529,8 @@ export const listBlockChildren: API.PaginatedOperationMethod<
   ListBlockChildrenResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(8, __c1, 0) as any as S.Schema<ListBlockChildrenRequest>,
-    output: __S(10, __c1, 2) as any as S.Schema<ListBlockChildrenResponse>,
+    input: __S(12, __c3, 0) as any as S.Schema<ListBlockChildrenRequest>,
+    output: __S(14, __c3, 2) as any as S.Schema<ListBlockChildrenResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -2552,8 +2552,8 @@ export const updateBlock: API.OperationMethod<
   UpdateBlockError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateBlockRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UpdateBlockResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<UpdateBlockRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<UpdateBlockResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2589,29 +2589,37 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AppendBlockChildrenResponse",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           block_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/blocks/{block_id}", code: 200 })),
       ).annotate({ identifier: "DeleteBlockRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteBlockResponse",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           block_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/blocks/{block_id}", code: 200 })),
       ).annotate({ identifier: "GetBlockRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetBlockResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2631,25 +2639,28 @@ function __c1(j: number): any {
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: __S(9, __c1, 1),
+          results: __S(13, __c3, 1),
         }),
       ).annotate({
         identifier: "ListBlockChildrenResponse",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           block_id: S.String.pipe(T.Label()),
           body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/blocks/{block_id}", code: 200 })),
       ).annotate({ identifier: "UpdateBlockRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateBlockResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

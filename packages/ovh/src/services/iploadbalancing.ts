@@ -2391,7 +2391,7 @@ export const cancelIpLoadbalancingZoneTermination: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelIpLoadbalancingZoneTerminationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelIpLoadbalancingZoneTerminationResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<CancelIpLoadbalancingZoneTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2405,8 +2405,8 @@ export const confirmIpLoadbalancingTermination: API.OperationMethod<
   ConfirmIpLoadbalancingTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ConfirmIpLoadbalancingTerminationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ConfirmIpLoadbalancingTerminationResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ConfirmIpLoadbalancingTerminationRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<ConfirmIpLoadbalancingTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2420,8 +2420,8 @@ export const createIpLoadbalancingChangeContact: API.OperationMethod<
   CreateIpLoadbalancingChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateIpLoadbalancingChangeContactRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateIpLoadbalancingChangeContactResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<CreateIpLoadbalancingChangeContactRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<CreateIpLoadbalancingChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2435,8 +2435,8 @@ export const createIpLoadbalancingFreeCertificate: API.OperationMethod<
   CreateIpLoadbalancingFreeCertificateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateIpLoadbalancingFreeCertificateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<IpLoadbalancingTaskTask>,
+  input: __S(552, __c69, 0) as any as S.Schema<CreateIpLoadbalancingFreeCertificateRequest>,
+  output: __S(560, __c70, 0) as any as S.Schema<IpLoadbalancingTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2450,8 +2450,8 @@ export const createIpLoadbalancingHttpFarm: API.OperationMethod<
   CreateIpLoadbalancingHttpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateIpLoadbalancingHttpFarmRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<IpLoadbalancingBackendHttpBackendHttp>,
+  input: __S(656, __c82, 0) as any as S.Schema<CreateIpLoadbalancingHttpFarmRequest>,
+  output: __S(664, __c83, 0) as any as S.Schema<IpLoadbalancingBackendHttpBackendHttp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2465,10 +2465,10 @@ export const createIpLoadbalancingHttpFarmServer: API.OperationMethod<
   CreateIpLoadbalancingHttpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateIpLoadbalancingHttpFarmServerRequest>,
+  input: __S(760, __c95, 0) as any as S.Schema<CreateIpLoadbalancingHttpFarmServerRequest>,
   output: __S(
-    16,
-    __c2,
+    776,
+    __c97,
     0,
   ) as any as S.Schema<IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer>,
   errors: [UnknownOvhError],
@@ -2484,8 +2484,16 @@ export const createIpLoadbalancingHttpFarmServerTransparent: API.OperationMethod
   CreateIpLoadbalancingHttpFarmServerTransparentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateIpLoadbalancingHttpFarmServerTransparentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IpLoadbalancingVrackTransparentIpVrackTransparentIp>,
+  input: __S(
+    872,
+    __c109,
+    0,
+  ) as any as S.Schema<CreateIpLoadbalancingHttpFarmServerTransparentRequest>,
+  output: __S(
+    880,
+    __c110,
+    0,
+  ) as any as S.Schema<IpLoadbalancingVrackTransparentIpVrackTransparentIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2499,8 +2507,8 @@ export const createIpLoadbalancingHttpFrontend: API.OperationMethod<
   CreateIpLoadbalancingHttpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttp>,
+  input: __S(968, __c121, 0) as any as S.Schema<CreateIpLoadbalancingHttpFrontendRequest>,
+  output: __S(976, __c122, 0) as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2514,8 +2522,8 @@ export const createIpLoadbalancingHttpFrontendPrivate: API.OperationMethod<
   CreateIpLoadbalancingHttpFrontendPrivateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateIpLoadbalancingHttpFrontendPrivateRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<IpLoadbalancingFrontendFrontend>,
+  input: __S(1088, __c136, 0) as any as S.Schema<CreateIpLoadbalancingHttpFrontendPrivateRequest>,
+  output: __S(1097, __c137, 1) as any as S.Schema<IpLoadbalancingFrontendFrontend>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2529,8 +2537,8 @@ export const createIpLoadbalancingHttpRoute: API.OperationMethod<
   CreateIpLoadbalancingHttpRouteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateIpLoadbalancingHttpRouteRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<IpLoadbalancingRouteHttpRouteHttp>,
+  input: __S(1184, __c148, 0) as any as S.Schema<CreateIpLoadbalancingHttpRouteRequest>,
+  output: __S(1200, __c150, 0) as any as S.Schema<IpLoadbalancingRouteHttpRouteHttp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2544,8 +2552,8 @@ export const createIpLoadbalancingHttpRouteRule: API.OperationMethod<
   CreateIpLoadbalancingHttpRouteRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateIpLoadbalancingHttpRouteRuleRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<IpLoadbalancingRouteRuleRouteRule>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateIpLoadbalancingHttpRouteRuleRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<IpLoadbalancingRouteRuleRouteRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2559,8 +2567,8 @@ export const createIpLoadbalancingLogSubscription: API.OperationMethod<
   CreateIpLoadbalancingLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateIpLoadbalancingLogSubscriptionRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<IpLoadbalancingLogSubscriptionResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<CreateIpLoadbalancingLogSubscriptionRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<IpLoadbalancingLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2574,8 +2582,8 @@ export const createIpLoadbalancingLogUrl: API.OperationMethod<
   CreateIpLoadbalancingLogUrlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateIpLoadbalancingLogUrlRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IpLoadbalancingLogUrl>,
+  input: __S(224, __c28, 0) as any as S.Schema<CreateIpLoadbalancingLogUrlRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<IpLoadbalancingLogUrl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2589,8 +2597,8 @@ export const createIpLoadbalancingSsl: API.OperationMethod<
   CreateIpLoadbalancingSslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateIpLoadbalancingSslRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<IpLoadbalancingSslSsl>,
+  input: __S(312, __c39, 0) as any as S.Schema<CreateIpLoadbalancingSslRequest>,
+  output: __S(320, __c40, 0) as any as S.Schema<IpLoadbalancingSslSsl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2604,8 +2612,8 @@ export const createIpLoadbalancingTcpFarm: API.OperationMethod<
   CreateIpLoadbalancingTcpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateIpLoadbalancingTcpFarmRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<IpLoadbalancingBackendTcpBackendTcp>,
+  input: __S(328, __c41, 0) as any as S.Schema<CreateIpLoadbalancingTcpFarmRequest>,
+  output: __S(664, __c83, 0) as any as S.Schema<IpLoadbalancingBackendTcpBackendTcp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2619,11 +2627,11 @@ export const createIpLoadbalancingTcpFarmServer: API.OperationMethod<
   CreateIpLoadbalancingTcpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateIpLoadbalancingTcpFarmServerRequest>,
+  input: __S(336, __c42, 0) as any as S.Schema<CreateIpLoadbalancingTcpFarmServerRequest>,
   output: __S(
-    39,
-    __c4,
-    7,
+    344,
+    __c43,
+    0,
   ) as any as S.Schema<IpLoadbalancingBackendTcpCustomerServerBackendTCPServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -2638,8 +2646,16 @@ export const createIpLoadbalancingTcpFarmServerTransparent: API.OperationMethod<
   CreateIpLoadbalancingTcpFarmServerTransparentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateIpLoadbalancingTcpFarmServerTransparentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IpLoadbalancingVrackTransparentIpVrackTransparentIp>,
+  input: __S(
+    352,
+    __c44,
+    0,
+  ) as any as S.Schema<CreateIpLoadbalancingTcpFarmServerTransparentRequest>,
+  output: __S(
+    880,
+    __c110,
+    0,
+  ) as any as S.Schema<IpLoadbalancingVrackTransparentIpVrackTransparentIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2653,8 +2669,8 @@ export const createIpLoadbalancingTcpFrontend: API.OperationMethod<
   CreateIpLoadbalancingTcpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateIpLoadbalancingTcpFrontendRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcp>,
+  input: __S(360, __c45, 0) as any as S.Schema<CreateIpLoadbalancingTcpFrontendRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2668,8 +2684,8 @@ export const createIpLoadbalancingTcpFrontendPrivate: API.OperationMethod<
   CreateIpLoadbalancingTcpFrontendPrivateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CreateIpLoadbalancingTcpFrontendPrivateRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<IpLoadbalancingFrontendFrontend>,
+  input: __S(376, __c47, 0) as any as S.Schema<CreateIpLoadbalancingTcpFrontendPrivateRequest>,
+  output: __S(1097, __c137, 1) as any as S.Schema<IpLoadbalancingFrontendFrontend>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2683,8 +2699,8 @@ export const createIpLoadbalancingTcpRoute: API.OperationMethod<
   CreateIpLoadbalancingTcpRouteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateIpLoadbalancingTcpRouteRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<IpLoadbalancingRouteTcpRouteTcp>,
+  input: __S(384, __c48, 0) as any as S.Schema<CreateIpLoadbalancingTcpRouteRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<IpLoadbalancingRouteTcpRouteTcp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2698,8 +2714,8 @@ export const createIpLoadbalancingTcpRouteRule: API.OperationMethod<
   CreateIpLoadbalancingTcpRouteRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateIpLoadbalancingTcpRouteRuleRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<IpLoadbalancingRouteRuleRouteRule>,
+  input: __S(432, __c54, 0) as any as S.Schema<CreateIpLoadbalancingTcpRouteRuleRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<IpLoadbalancingRouteRuleRouteRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2713,8 +2729,8 @@ export const createIpLoadbalancingUdpFarm: API.OperationMethod<
   CreateIpLoadbalancingUdpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateIpLoadbalancingUdpFarmRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<IpLoadbalancingBackendUdpBackendUdp>,
+  input: __S(440, __c55, 0) as any as S.Schema<CreateIpLoadbalancingUdpFarmRequest>,
+  output: __S(448, __c56, 0) as any as S.Schema<IpLoadbalancingBackendUdpBackendUdp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2728,11 +2744,11 @@ export const createIpLoadbalancingUdpFarmServer: API.OperationMethod<
   CreateIpLoadbalancingUdpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateIpLoadbalancingUdpFarmServerRequest>,
+  input: __S(456, __c57, 0) as any as S.Schema<CreateIpLoadbalancingUdpFarmServerRequest>,
   output: __S(
-    51,
-    __c6,
-    3,
+    464,
+    __c58,
+    0,
   ) as any as S.Schema<IpLoadbalancingBackendUdpCustomerServerBackendUDPServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -2747,8 +2763,8 @@ export const createIpLoadbalancingUdpFrontend: API.OperationMethod<
   CreateIpLoadbalancingUdpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateIpLoadbalancingUdpFrontendRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<IpLoadbalancingFrontendUdpFrontendUdp>,
+  input: __S(472, __c59, 0) as any as S.Schema<CreateIpLoadbalancingUdpFrontendRequest>,
+  output: __S(480, __c60, 0) as any as S.Schema<IpLoadbalancingFrontendUdpFrontendUdp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2762,8 +2778,8 @@ export const createIpLoadbalancingVrackNetwork: API.OperationMethod<
   CreateIpLoadbalancingVrackNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateIpLoadbalancingVrackNetworkRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<IpLoadbalancingVrackNetworkVrackNetwork>,
+  input: __S(488, __c61, 0) as any as S.Schema<CreateIpLoadbalancingVrackNetworkRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<IpLoadbalancingVrackNetworkVrackNetwork>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2777,8 +2793,8 @@ export const deleteIpLoadbalancingHttpFarm: API.OperationMethod<
   DeleteIpLoadbalancingHttpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteIpLoadbalancingHttpFarmRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingHttpFarmResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<DeleteIpLoadbalancingHttpFarmRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingHttpFarmResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2792,8 +2808,8 @@ export const deleteIpLoadbalancingHttpFarmServer: API.OperationMethod<
   DeleteIpLoadbalancingHttpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2807,11 +2823,15 @@ export const deleteIpLoadbalancingHttpFarmServerTransparent: API.OperationMethod
   DeleteIpLoadbalancingHttpFarmServerTransparentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerTransparentRequest>,
+  input: __S(
+    528,
+    __c66,
+    0,
+  ) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerTransparentRequest>,
   output: __S(
-    1,
-    __c0,
-    1,
+    8,
+    __c1,
+    0,
   ) as any as S.Schema<DeleteIpLoadbalancingHttpFarmServerTransparentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -2826,8 +2846,8 @@ export const deleteIpLoadbalancingHttpFrontend: API.OperationMethod<
   DeleteIpLoadbalancingHttpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteIpLoadbalancingHttpFrontendRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingHttpFrontendResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<DeleteIpLoadbalancingHttpFrontendRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingHttpFrontendResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2841,8 +2861,8 @@ export const deleteIpLoadbalancingHttpRoute: API.OperationMethod<
   DeleteIpLoadbalancingHttpRouteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteIpLoadbalancingHttpRouteRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingHttpRouteResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<DeleteIpLoadbalancingHttpRouteRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingHttpRouteResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2856,8 +2876,8 @@ export const deleteIpLoadbalancingHttpRouteRule: API.OperationMethod<
   DeleteIpLoadbalancingHttpRouteRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteIpLoadbalancingHttpRouteRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingHttpRouteRuleResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<DeleteIpLoadbalancingHttpRouteRuleRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingHttpRouteRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2871,8 +2891,8 @@ export const deleteIpLoadbalancingLogSubscription: API.OperationMethod<
   DeleteIpLoadbalancingLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteIpLoadbalancingLogSubscriptionRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<IpLoadbalancingLogSubscriptionResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<DeleteIpLoadbalancingLogSubscriptionRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<IpLoadbalancingLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2886,8 +2906,8 @@ export const deleteIpLoadbalancingSsl: API.OperationMethod<
   DeleteIpLoadbalancingSslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteIpLoadbalancingSslRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingSslResponse>,
+  input: __S(592, __c74, 0) as any as S.Schema<DeleteIpLoadbalancingSslRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingSslResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2901,8 +2921,8 @@ export const deleteIpLoadbalancingTcpFarm: API.OperationMethod<
   DeleteIpLoadbalancingTcpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteIpLoadbalancingTcpFarmRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingTcpFarmResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<DeleteIpLoadbalancingTcpFarmRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingTcpFarmResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2916,8 +2936,8 @@ export const deleteIpLoadbalancingTcpFarmServer: API.OperationMethod<
   DeleteIpLoadbalancingTcpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2931,8 +2951,12 @@ export const deleteIpLoadbalancingTcpFarmServerTransparent: API.OperationMethod<
   DeleteIpLoadbalancingTcpFarmServerTransparentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerTransparentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerTransparentResponse>,
+  input: __S(
+    616,
+    __c77,
+    0,
+  ) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerTransparentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingTcpFarmServerTransparentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2946,8 +2970,8 @@ export const deleteIpLoadbalancingTcpFrontend: API.OperationMethod<
   DeleteIpLoadbalancingTcpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteIpLoadbalancingTcpFrontendRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingTcpFrontendResponse>,
+  input: __S(624, __c78, 0) as any as S.Schema<DeleteIpLoadbalancingTcpFrontendRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingTcpFrontendResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2961,8 +2985,8 @@ export const deleteIpLoadbalancingTcpRoute: API.OperationMethod<
   DeleteIpLoadbalancingTcpRouteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteIpLoadbalancingTcpRouteRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingTcpRouteResponse>,
+  input: __S(632, __c79, 0) as any as S.Schema<DeleteIpLoadbalancingTcpRouteRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingTcpRouteResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2976,8 +3000,8 @@ export const deleteIpLoadbalancingTcpRouteRule: API.OperationMethod<
   DeleteIpLoadbalancingTcpRouteRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteIpLoadbalancingTcpRouteRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingTcpRouteRuleResponse>,
+  input: __S(640, __c80, 0) as any as S.Schema<DeleteIpLoadbalancingTcpRouteRuleRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingTcpRouteRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2991,8 +3015,8 @@ export const deleteIpLoadbalancingUdpFarm: API.OperationMethod<
   DeleteIpLoadbalancingUdpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteIpLoadbalancingUdpFarmRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingUdpFarmResponse>,
+  input: __S(648, __c81, 0) as any as S.Schema<DeleteIpLoadbalancingUdpFarmRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingUdpFarmResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3006,8 +3030,8 @@ export const deleteIpLoadbalancingUdpFarmServer: API.OperationMethod<
   DeleteIpLoadbalancingUdpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteIpLoadbalancingUdpFarmServerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingUdpFarmServerResponse>,
+  input: __S(680, __c85, 0) as any as S.Schema<DeleteIpLoadbalancingUdpFarmServerRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingUdpFarmServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3021,8 +3045,8 @@ export const deleteIpLoadbalancingUdpFrontend: API.OperationMethod<
   DeleteIpLoadbalancingUdpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteIpLoadbalancingUdpFrontendRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingUdpFrontendResponse>,
+  input: __S(688, __c86, 0) as any as S.Schema<DeleteIpLoadbalancingUdpFrontendRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingUdpFrontendResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3036,8 +3060,8 @@ export const deleteIpLoadbalancingVrackNetwork: API.OperationMethod<
   DeleteIpLoadbalancingVrackNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteIpLoadbalancingVrackNetworkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIpLoadbalancingVrackNetworkResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<DeleteIpLoadbalancingVrackNetworkRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteIpLoadbalancingVrackNetworkResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3051,8 +3075,8 @@ export const getIpLoadbalancing: API.OperationMethod<
   GetIpLoadbalancingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetIpLoadbalancingRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<IpLoadbalancingIpWithIAM>,
+  input: __S(704, __c88, 0) as any as S.Schema<GetIpLoadbalancingRequest>,
+  output: __S(709, __c88, 5) as any as S.Schema<IpLoadbalancingIpWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3066,8 +3090,8 @@ export const getIpLoadbalancingHttpFarm: API.OperationMethod<
   GetIpLoadbalancingHttpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetIpLoadbalancingHttpFarmRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<IpLoadbalancingBackendHttpBackendHttp>,
+  input: __S(712, __c89, 0) as any as S.Schema<GetIpLoadbalancingHttpFarmRequest>,
+  output: __S(664, __c83, 0) as any as S.Schema<IpLoadbalancingBackendHttpBackendHttp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3081,10 +3105,10 @@ export const getIpLoadbalancingHttpFarmServer: API.OperationMethod<
   GetIpLoadbalancingHttpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetIpLoadbalancingHttpFarmServerRequest>,
+  input: __S(720, __c90, 0) as any as S.Schema<GetIpLoadbalancingHttpFarmServerRequest>,
   output: __S(
-    16,
-    __c2,
+    776,
+    __c97,
     0,
   ) as any as S.Schema<IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer>,
   errors: [UnknownOvhError],
@@ -3100,8 +3124,12 @@ export const getIpLoadbalancingHttpFarmServerTransparent: API.OperationMethod<
   GetIpLoadbalancingHttpFarmServerTransparentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetIpLoadbalancingHttpFarmServerTransparentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IpLoadbalancingVrackTransparentIpVrackTransparentIp>,
+  input: __S(728, __c91, 0) as any as S.Schema<GetIpLoadbalancingHttpFarmServerTransparentRequest>,
+  output: __S(
+    880,
+    __c110,
+    0,
+  ) as any as S.Schema<IpLoadbalancingVrackTransparentIpVrackTransparentIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3115,8 +3143,8 @@ export const getIpLoadbalancingHttpFrontend: API.OperationMethod<
   GetIpLoadbalancingHttpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetIpLoadbalancingHttpFrontendRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttp>,
+  input: __S(736, __c92, 0) as any as S.Schema<GetIpLoadbalancingHttpFrontendRequest>,
+  output: __S(976, __c122, 0) as any as S.Schema<IpLoadbalancingFrontendHttpFrontendHttp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3130,8 +3158,8 @@ export const getIpLoadbalancingHttpRoute: API.OperationMethod<
   GetIpLoadbalancingHttpRouteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetIpLoadbalancingHttpRouteRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<IpLoadbalancingRouteHttpRouteHttp>,
+  input: __S(744, __c93, 0) as any as S.Schema<GetIpLoadbalancingHttpRouteRequest>,
+  output: __S(1200, __c150, 0) as any as S.Schema<IpLoadbalancingRouteHttpRouteHttp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3145,8 +3173,8 @@ export const getIpLoadbalancingHttpRouteRule: API.OperationMethod<
   GetIpLoadbalancingHttpRouteRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetIpLoadbalancingHttpRouteRuleRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<IpLoadbalancingRouteRuleRouteRule>,
+  input: __S(752, __c94, 0) as any as S.Schema<GetIpLoadbalancingHttpRouteRuleRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<IpLoadbalancingRouteRuleRouteRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3160,8 +3188,8 @@ export const getIpLoadbalancingLogKind: API.OperationMethod<
   GetIpLoadbalancingLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetIpLoadbalancingLogKindRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<IpLoadbalancingLdpKindLdpKind>,
+  input: __S(784, __c98, 0) as any as S.Schema<GetIpLoadbalancingLogKindRequest>,
+  output: __S(785, __c98, 1) as any as S.Schema<IpLoadbalancingLdpKindLdpKind>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3175,8 +3203,8 @@ export const getIpLoadbalancingLogSubscription: API.OperationMethod<
   GetIpLoadbalancingLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetIpLoadbalancingLogSubscriptionRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<IpLoadbalancingLdpSubscriptionLdpSubscription>,
+  input: __S(792, __c99, 0) as any as S.Schema<GetIpLoadbalancingLogSubscriptionRequest>,
+  output: __S(794, __c99, 2) as any as S.Schema<IpLoadbalancingLdpSubscriptionLdpSubscription>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3190,8 +3218,8 @@ export const getIpLoadbalancingMetricsToken: API.OperationMethod<
   GetIpLoadbalancingMetricsTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetIpLoadbalancingMetricsTokenRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<IpLoadbalancingMetricsToken>,
+  input: __S(800, __c100, 0) as any as S.Schema<GetIpLoadbalancingMetricsTokenRequest>,
+  output: __S(801, __c100, 1) as any as S.Schema<IpLoadbalancingMetricsToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3205,8 +3233,8 @@ export const getIpLoadbalancingQuota: API.OperationMethod<
   GetIpLoadbalancingQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetIpLoadbalancingQuotaRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<IpLoadbalancingQuotaQuota>,
+  input: __S(808, __c101, 0) as any as S.Schema<GetIpLoadbalancingQuotaRequest>,
+  output: __S(809, __c101, 1) as any as S.Schema<IpLoadbalancingQuotaQuota>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3220,8 +3248,8 @@ export const getIpLoadbalancingQuotaHistory: API.OperationMethod<
   GetIpLoadbalancingQuotaHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetIpLoadbalancingQuotaHistoryRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<IpLoadbalancingQuotaHistoryQuotaHistory>,
+  input: __S(816, __c102, 0) as any as S.Schema<GetIpLoadbalancingQuotaHistoryRequest>,
+  output: __S(817, __c102, 1) as any as S.Schema<IpLoadbalancingQuotaHistoryQuotaHistory>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3235,8 +3263,8 @@ export const getIpLoadbalancingServiceInfos: API.OperationMethod<
   GetIpLoadbalancingServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetIpLoadbalancingServiceInfosRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ServicesService>,
+  input: __S(824, __c103, 0) as any as S.Schema<GetIpLoadbalancingServiceInfosRequest>,
+  output: __S(825, __c103, 1) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3250,8 +3278,8 @@ export const getIpLoadbalancingSsl: API.OperationMethod<
   GetIpLoadbalancingSslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetIpLoadbalancingSslRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<IpLoadbalancingSslSsl>,
+  input: __S(840, __c105, 0) as any as S.Schema<GetIpLoadbalancingSslRequest>,
+  output: __S(320, __c40, 0) as any as S.Schema<IpLoadbalancingSslSsl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3265,8 +3293,8 @@ export const getIpLoadbalancingStatus: API.OperationMethod<
   GetIpLoadbalancingStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetIpLoadbalancingStatusRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<IpLoadbalancingStatus>,
+  input: __S(848, __c106, 0) as any as S.Schema<GetIpLoadbalancingStatusRequest>,
+  output: __S(852, __c106, 4) as any as S.Schema<IpLoadbalancingStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3280,8 +3308,8 @@ export const getIpLoadbalancingTask: API.OperationMethod<
   GetIpLoadbalancingTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetIpLoadbalancingTaskRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<IpLoadbalancingTaskTask>,
+  input: __S(856, __c107, 0) as any as S.Schema<GetIpLoadbalancingTaskRequest>,
+  output: __S(560, __c70, 0) as any as S.Schema<IpLoadbalancingTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3295,8 +3323,8 @@ export const getIpLoadbalancingTcpFarm: API.OperationMethod<
   GetIpLoadbalancingTcpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetIpLoadbalancingTcpFarmRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<IpLoadbalancingBackendTcpBackendTcp>,
+  input: __S(864, __c108, 0) as any as S.Schema<GetIpLoadbalancingTcpFarmRequest>,
+  output: __S(664, __c83, 0) as any as S.Schema<IpLoadbalancingBackendTcpBackendTcp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3310,11 +3338,11 @@ export const getIpLoadbalancingTcpFarmServer: API.OperationMethod<
   GetIpLoadbalancingTcpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<GetIpLoadbalancingTcpFarmServerRequest>,
+  input: __S(888, __c111, 0) as any as S.Schema<GetIpLoadbalancingTcpFarmServerRequest>,
   output: __S(
-    39,
-    __c4,
-    7,
+    344,
+    __c43,
+    0,
   ) as any as S.Schema<IpLoadbalancingBackendTcpCustomerServerBackendTCPServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -3329,8 +3357,12 @@ export const getIpLoadbalancingTcpFarmServerTransparent: API.OperationMethod<
   GetIpLoadbalancingTcpFarmServerTransparentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetIpLoadbalancingTcpFarmServerTransparentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<IpLoadbalancingVrackTransparentIpVrackTransparentIp>,
+  input: __S(896, __c112, 0) as any as S.Schema<GetIpLoadbalancingTcpFarmServerTransparentRequest>,
+  output: __S(
+    880,
+    __c110,
+    0,
+  ) as any as S.Schema<IpLoadbalancingVrackTransparentIpVrackTransparentIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3344,8 +3376,8 @@ export const getIpLoadbalancingTcpFrontend: API.OperationMethod<
   GetIpLoadbalancingTcpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetIpLoadbalancingTcpFrontendRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcp>,
+  input: __S(904, __c113, 0) as any as S.Schema<GetIpLoadbalancingTcpFrontendRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<IpLoadbalancingFrontendTcpFrontendTcp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3359,8 +3391,8 @@ export const getIpLoadbalancingTcpRoute: API.OperationMethod<
   GetIpLoadbalancingTcpRouteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetIpLoadbalancingTcpRouteRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<IpLoadbalancingRouteTcpRouteTcp>,
+  input: __S(912, __c114, 0) as any as S.Schema<GetIpLoadbalancingTcpRouteRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<IpLoadbalancingRouteTcpRouteTcp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3374,8 +3406,8 @@ export const getIpLoadbalancingTcpRouteRule: API.OperationMethod<
   GetIpLoadbalancingTcpRouteRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetIpLoadbalancingTcpRouteRuleRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<IpLoadbalancingRouteRuleRouteRule>,
+  input: __S(920, __c115, 0) as any as S.Schema<GetIpLoadbalancingTcpRouteRuleRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<IpLoadbalancingRouteRuleRouteRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3389,8 +3421,8 @@ export const getIpLoadbalancingUdpFarm: API.OperationMethod<
   GetIpLoadbalancingUdpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetIpLoadbalancingUdpFarmRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<IpLoadbalancingBackendUdpBackendUdp>,
+  input: __S(928, __c116, 0) as any as S.Schema<GetIpLoadbalancingUdpFarmRequest>,
+  output: __S(448, __c56, 0) as any as S.Schema<IpLoadbalancingBackendUdpBackendUdp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3404,11 +3436,11 @@ export const getIpLoadbalancingUdpFarmServer: API.OperationMethod<
   GetIpLoadbalancingUdpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetIpLoadbalancingUdpFarmServerRequest>,
+  input: __S(936, __c117, 0) as any as S.Schema<GetIpLoadbalancingUdpFarmServerRequest>,
   output: __S(
-    51,
-    __c6,
-    3,
+    464,
+    __c58,
+    0,
   ) as any as S.Schema<IpLoadbalancingBackendUdpCustomerServerBackendUDPServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -3423,8 +3455,8 @@ export const getIpLoadbalancingUdpFrontend: API.OperationMethod<
   GetIpLoadbalancingUdpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetIpLoadbalancingUdpFrontendRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<IpLoadbalancingFrontendUdpFrontendUdp>,
+  input: __S(944, __c118, 0) as any as S.Schema<GetIpLoadbalancingUdpFrontendRequest>,
+  output: __S(480, __c60, 0) as any as S.Schema<IpLoadbalancingFrontendUdpFrontendUdp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3438,8 +3470,8 @@ export const getIpLoadbalancingVrackNetwork: API.OperationMethod<
   GetIpLoadbalancingVrackNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetIpLoadbalancingVrackNetworkRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<IpLoadbalancingVrackNetworkVrackNetwork>,
+  input: __S(952, __c119, 0) as any as S.Schema<GetIpLoadbalancingVrackNetworkRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<IpLoadbalancingVrackNetworkVrackNetwork>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3453,8 +3485,8 @@ export const getIpLoadbalancingVrackNetworkCreationRules: API.OperationMethod<
   GetIpLoadbalancingVrackNetworkCreationRulesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<GetIpLoadbalancingVrackNetworkCreationRulesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<IpLoadbalancingVrackNetworkCreationRules>,
+  input: __S(960, __c120, 0) as any as S.Schema<GetIpLoadbalancingVrackNetworkCreationRulesRequest>,
+  output: __S(961, __c120, 1) as any as S.Schema<IpLoadbalancingVrackNetworkCreationRules>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3468,8 +3500,8 @@ export const getIpLoadbalancingZone: API.OperationMethod<
   GetIpLoadbalancingZoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetIpLoadbalancingZoneRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<IpLoadbalancingZoneZone>,
+  input: __S(984, __c123, 0) as any as S.Schema<GetIpLoadbalancingZoneRequest>,
+  output: __S(985, __c123, 1) as any as S.Schema<IpLoadbalancingZoneZone>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3483,8 +3515,8 @@ export const listIpLoadbalancing: API.OperationMethod<
   ListIpLoadbalancingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListIpLoadbalancingRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListIpLoadbalancingResponse>,
+  input: __S(994, __c124, 2) as any as S.Schema<ListIpLoadbalancingRequest>,
+  output: __S(1008, __c126, 0) as any as S.Schema<ListIpLoadbalancingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3498,8 +3530,8 @@ export const listIpLoadbalancingAvailableFarmProbes: API.OperationMethod<
   ListIpLoadbalancingAvailableFarmProbesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListIpLoadbalancingAvailableFarmProbesRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<ListIpLoadbalancingAvailableFarmProbesResponse>,
+  input: __S(1016, __c127, 0) as any as S.Schema<ListIpLoadbalancingAvailableFarmProbesRequest>,
+  output: __S(1019, __c127, 3) as any as S.Schema<ListIpLoadbalancingAvailableFarmProbesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3513,8 +3545,8 @@ export const listIpLoadbalancingAvailableFarmType: API.OperationMethod<
   ListIpLoadbalancingAvailableFarmTypeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListIpLoadbalancingAvailableFarmTypeRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListIpLoadbalancingAvailableFarmTypeResponse>,
+  input: __S(1024, __c128, 0) as any as S.Schema<ListIpLoadbalancingAvailableFarmTypeRequest>,
+  output: __S(1008, __c126, 0) as any as S.Schema<ListIpLoadbalancingAvailableFarmTypeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3528,8 +3560,8 @@ export const listIpLoadbalancingAvailableFrontendType: API.OperationMethod<
   ListIpLoadbalancingAvailableFrontendTypeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<ListIpLoadbalancingAvailableFrontendTypeRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListIpLoadbalancingAvailableFrontendTypeResponse>,
+  input: __S(1032, __c129, 0) as any as S.Schema<ListIpLoadbalancingAvailableFrontendTypeRequest>,
+  output: __S(1008, __c126, 0) as any as S.Schema<ListIpLoadbalancingAvailableFrontendTypeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3543,8 +3575,8 @@ export const listIpLoadbalancingAvailableRouteActions: API.OperationMethod<
   ListIpLoadbalancingAvailableRouteActionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListIpLoadbalancingAvailableRouteActionsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<ListIpLoadbalancingAvailableRouteActionsResponse>,
+  input: __S(1040, __c130, 0) as any as S.Schema<ListIpLoadbalancingAvailableRouteActionsRequest>,
+  output: __S(1043, __c130, 3) as any as S.Schema<ListIpLoadbalancingAvailableRouteActionsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3558,8 +3590,8 @@ export const listIpLoadbalancingAvailableRouteRules: API.OperationMethod<
   ListIpLoadbalancingAvailableRouteRulesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListIpLoadbalancingAvailableRouteRulesRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ListIpLoadbalancingAvailableRouteRulesResponse>,
+  input: __S(1048, __c131, 0) as any as S.Schema<ListIpLoadbalancingAvailableRouteRulesRequest>,
+  output: __S(1051, __c131, 3) as any as S.Schema<ListIpLoadbalancingAvailableRouteRulesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3573,8 +3605,8 @@ export const listIpLoadbalancingDefinedFarms: API.OperationMethod<
   ListIpLoadbalancingDefinedFarmsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListIpLoadbalancingDefinedFarmsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListIpLoadbalancingDefinedFarmsResponse>,
+  input: __S(1056, __c132, 0) as any as S.Schema<ListIpLoadbalancingDefinedFarmsRequest>,
+  output: __S(1064, __c133, 0) as any as S.Schema<ListIpLoadbalancingDefinedFarmsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3588,8 +3620,8 @@ export const listIpLoadbalancingDefinedFrontends: API.OperationMethod<
   ListIpLoadbalancingDefinedFrontendsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListIpLoadbalancingDefinedFrontendsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListIpLoadbalancingDefinedFrontendsResponse>,
+  input: __S(1072, __c134, 0) as any as S.Schema<ListIpLoadbalancingDefinedFrontendsRequest>,
+  output: __S(1064, __c133, 0) as any as S.Schema<ListIpLoadbalancingDefinedFrontendsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3603,8 +3635,8 @@ export const listIpLoadbalancingDefinedRoutes: API.OperationMethod<
   ListIpLoadbalancingDefinedRoutesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListIpLoadbalancingDefinedRoutesRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<ListIpLoadbalancingDefinedRoutesResponse>,
+  input: __S(1080, __c135, 0) as any as S.Schema<ListIpLoadbalancingDefinedRoutesRequest>,
+  output: __S(1083, __c135, 3) as any as S.Schema<ListIpLoadbalancingDefinedRoutesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3618,8 +3650,8 @@ export const listIpLoadbalancingFailover: API.OperationMethod<
   ListIpLoadbalancingFailoverError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListIpLoadbalancingFailoverRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListIpLoadbalancingFailoverResponse>,
+  input: __S(1104, __c138, 0) as any as S.Schema<ListIpLoadbalancingFailoverRequest>,
+  output: __S(1008, __c126, 0) as any as S.Schema<ListIpLoadbalancingFailoverResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3633,8 +3665,8 @@ export const listIpLoadbalancingHttpFarm: API.OperationMethod<
   ListIpLoadbalancingHttpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ListIpLoadbalancingHttpFarmRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingHttpFarmResponse>,
+  input: __S(1112, __c139, 0) as any as S.Schema<ListIpLoadbalancingHttpFarmRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingHttpFarmResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3648,8 +3680,8 @@ export const listIpLoadbalancingHttpFarmServer: API.OperationMethod<
   ListIpLoadbalancingHttpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<ListIpLoadbalancingHttpFarmServerRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingHttpFarmServerResponse>,
+  input: __S(1120, __c140, 0) as any as S.Schema<ListIpLoadbalancingHttpFarmServerRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingHttpFarmServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3663,8 +3695,16 @@ export const listIpLoadbalancingHttpFarmServerTransparent: API.OperationMethod<
   ListIpLoadbalancingHttpFarmServerTransparentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListIpLoadbalancingHttpFarmServerTransparentRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingHttpFarmServerTransparentResponse>,
+  input: __S(
+    1128,
+    __c141,
+    0,
+  ) as any as S.Schema<ListIpLoadbalancingHttpFarmServerTransparentRequest>,
+  output: __S(
+    424,
+    __c53,
+    0,
+  ) as any as S.Schema<ListIpLoadbalancingHttpFarmServerTransparentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3678,8 +3718,8 @@ export const listIpLoadbalancingHttpFrontend: API.OperationMethod<
   ListIpLoadbalancingHttpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListIpLoadbalancingHttpFrontendRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingHttpFrontendResponse>,
+  input: __S(1136, __c142, 0) as any as S.Schema<ListIpLoadbalancingHttpFrontendRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingHttpFrontendResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3693,8 +3733,8 @@ export const listIpLoadbalancingHttpRoute: API.OperationMethod<
   ListIpLoadbalancingHttpRouteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListIpLoadbalancingHttpRouteRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingHttpRouteResponse>,
+  input: __S(1144, __c143, 0) as any as S.Schema<ListIpLoadbalancingHttpRouteRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingHttpRouteResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3708,8 +3748,8 @@ export const listIpLoadbalancingHttpRouteRule: API.OperationMethod<
   ListIpLoadbalancingHttpRouteRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<ListIpLoadbalancingHttpRouteRuleRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingHttpRouteRuleResponse>,
+  input: __S(1152, __c144, 0) as any as S.Schema<ListIpLoadbalancingHttpRouteRuleRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingHttpRouteRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3723,8 +3763,8 @@ export const listIpLoadbalancingLogKind: API.OperationMethod<
   ListIpLoadbalancingLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ListIpLoadbalancingLogKindRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListIpLoadbalancingLogKindResponse>,
+  input: __S(1160, __c145, 0) as any as S.Schema<ListIpLoadbalancingLogKindRequest>,
+  output: __S(1008, __c126, 0) as any as S.Schema<ListIpLoadbalancingLogKindResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3738,8 +3778,8 @@ export const listIpLoadbalancingLogSubscription: API.OperationMethod<
   ListIpLoadbalancingLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListIpLoadbalancingLogSubscriptionRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListIpLoadbalancingLogSubscriptionResponse>,
+  input: __S(1168, __c146, 0) as any as S.Schema<ListIpLoadbalancingLogSubscriptionRequest>,
+  output: __S(1008, __c126, 0) as any as S.Schema<ListIpLoadbalancingLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3753,8 +3793,8 @@ export const listIpLoadbalancingNatIp: API.OperationMethod<
   ListIpLoadbalancingNatIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<ListIpLoadbalancingNatIpRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<ListIpLoadbalancingNatIpResponse>,
+  input: __S(1176, __c147, 0) as any as S.Schema<ListIpLoadbalancingNatIpRequest>,
+  output: __S(1179, __c147, 3) as any as S.Schema<ListIpLoadbalancingNatIpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3768,8 +3808,8 @@ export const listIpLoadbalancingPendingChanges: API.OperationMethod<
   ListIpLoadbalancingPendingChangesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListIpLoadbalancingPendingChangesRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<ListIpLoadbalancingPendingChangesResponse>,
+  input: __S(1216, __c152, 0) as any as S.Schema<ListIpLoadbalancingPendingChangesRequest>,
+  output: __S(1219, __c152, 3) as any as S.Schema<ListIpLoadbalancingPendingChangesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3783,8 +3823,8 @@ export const listIpLoadbalancingQuota: API.OperationMethod<
   ListIpLoadbalancingQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<ListIpLoadbalancingQuotaRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListIpLoadbalancingQuotaResponse>,
+  input: __S(1224, __c153, 0) as any as S.Schema<ListIpLoadbalancingQuotaRequest>,
+  output: __S(1008, __c126, 0) as any as S.Schema<ListIpLoadbalancingQuotaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3798,8 +3838,8 @@ export const listIpLoadbalancingQuotaHistory: API.OperationMethod<
   ListIpLoadbalancingQuotaHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<ListIpLoadbalancingQuotaHistoryRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingQuotaHistoryResponse>,
+  input: __S(1232, __c154, 0) as any as S.Schema<ListIpLoadbalancingQuotaHistoryRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingQuotaHistoryResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3813,8 +3853,8 @@ export const listIpLoadbalancingSsl: API.OperationMethod<
   ListIpLoadbalancingSslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListIpLoadbalancingSslRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingSslResponse>,
+  input: __S(1240, __c155, 0) as any as S.Schema<ListIpLoadbalancingSslRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingSslResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3828,8 +3868,8 @@ export const listIpLoadbalancingTask: API.OperationMethod<
   ListIpLoadbalancingTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListIpLoadbalancingTaskRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingTaskResponse>,
+  input: __S(1248, __c156, 0) as any as S.Schema<ListIpLoadbalancingTaskRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3843,8 +3883,8 @@ export const listIpLoadbalancingTcpFarm: API.OperationMethod<
   ListIpLoadbalancingTcpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<ListIpLoadbalancingTcpFarmRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingTcpFarmResponse>,
+  input: __S(1256, __c157, 0) as any as S.Schema<ListIpLoadbalancingTcpFarmRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingTcpFarmResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3858,8 +3898,8 @@ export const listIpLoadbalancingTcpFarmServer: API.OperationMethod<
   ListIpLoadbalancingTcpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListIpLoadbalancingTcpFarmServerRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingTcpFarmServerResponse>,
+  input: __S(1264, __c158, 0) as any as S.Schema<ListIpLoadbalancingTcpFarmServerRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingTcpFarmServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3873,8 +3913,16 @@ export const listIpLoadbalancingTcpFarmServerTransparent: API.OperationMethod<
   ListIpLoadbalancingTcpFarmServerTransparentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<ListIpLoadbalancingTcpFarmServerTransparentRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingTcpFarmServerTransparentResponse>,
+  input: __S(
+    1272,
+    __c159,
+    0,
+  ) as any as S.Schema<ListIpLoadbalancingTcpFarmServerTransparentRequest>,
+  output: __S(
+    424,
+    __c53,
+    0,
+  ) as any as S.Schema<ListIpLoadbalancingTcpFarmServerTransparentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3888,8 +3936,8 @@ export const listIpLoadbalancingTcpFrontend: API.OperationMethod<
   ListIpLoadbalancingTcpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ListIpLoadbalancingTcpFrontendRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingTcpFrontendResponse>,
+  input: __S(1280, __c160, 0) as any as S.Schema<ListIpLoadbalancingTcpFrontendRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingTcpFrontendResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3903,8 +3951,8 @@ export const listIpLoadbalancingTcpRoute: API.OperationMethod<
   ListIpLoadbalancingTcpRouteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<ListIpLoadbalancingTcpRouteRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingTcpRouteResponse>,
+  input: __S(1288, __c161, 0) as any as S.Schema<ListIpLoadbalancingTcpRouteRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingTcpRouteResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3918,8 +3966,8 @@ export const listIpLoadbalancingTcpRouteRule: API.OperationMethod<
   ListIpLoadbalancingTcpRouteRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListIpLoadbalancingTcpRouteRuleRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingTcpRouteRuleResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListIpLoadbalancingTcpRouteRuleRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingTcpRouteRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3933,8 +3981,8 @@ export const listIpLoadbalancingUdpFarm: API.OperationMethod<
   ListIpLoadbalancingUdpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListIpLoadbalancingUdpFarmRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingUdpFarmResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListIpLoadbalancingUdpFarmRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingUdpFarmResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3948,8 +3996,8 @@ export const listIpLoadbalancingUdpFarmServer: API.OperationMethod<
   ListIpLoadbalancingUdpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListIpLoadbalancingUdpFarmServerRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingUdpFarmServerResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListIpLoadbalancingUdpFarmServerRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingUdpFarmServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3963,8 +4011,8 @@ export const listIpLoadbalancingUdpFrontend: API.OperationMethod<
   ListIpLoadbalancingUdpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<ListIpLoadbalancingUdpFrontendRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingUdpFrontendResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListIpLoadbalancingUdpFrontendRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingUdpFrontendResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3978,8 +4026,8 @@ export const listIpLoadbalancingVrackNetwork: API.OperationMethod<
   ListIpLoadbalancingVrackNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<ListIpLoadbalancingVrackNetworkRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListIpLoadbalancingVrackNetworkResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListIpLoadbalancingVrackNetworkRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<ListIpLoadbalancingVrackNetworkResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3993,8 +4041,8 @@ export const listIpLoadbalancingVrackStatus: API.OperationMethod<
   ListIpLoadbalancingVrackStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<ListIpLoadbalancingVrackStatusRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<IpLoadbalancingVrackInformation>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListIpLoadbalancingVrackStatusRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<IpLoadbalancingVrackInformation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4008,12 +4056,8 @@ export const listIpLoadbalancingVrackTransparentGateways: API.OperationMethod<
   ListIpLoadbalancingVrackTransparentGatewaysError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<ListIpLoadbalancingVrackTransparentGatewaysRequest>,
-  output: __S(
-    185,
-    __c23,
-    1,
-  ) as any as S.Schema<ListIpLoadbalancingVrackTransparentGatewaysResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListIpLoadbalancingVrackTransparentGatewaysRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<ListIpLoadbalancingVrackTransparentGatewaysResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4027,8 +4071,8 @@ export const listIpLoadbalancingZone: API.OperationMethod<
   ListIpLoadbalancingZoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<ListIpLoadbalancingZoneRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListIpLoadbalancingZoneResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListIpLoadbalancingZoneRequest>,
+  output: __S(1008, __c126, 0) as any as S.Schema<ListIpLoadbalancingZoneResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4042,8 +4086,8 @@ export const putIpLoadbalancing: API.OperationMethod<
   PutIpLoadbalancingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<PutIpLoadbalancingRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<PutIpLoadbalancingResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<PutIpLoadbalancingRequest>,
+  output: __S(1000, __c125, 0) as any as S.Schema<PutIpLoadbalancingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4057,8 +4101,8 @@ export const putIpLoadbalancingHttpFarm: API.OperationMethod<
   PutIpLoadbalancingHttpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<PutIpLoadbalancingHttpFarmRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingHttpFarmResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<PutIpLoadbalancingHttpFarmRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingHttpFarmResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4072,8 +4116,8 @@ export const putIpLoadbalancingHttpFarmServer: API.OperationMethod<
   PutIpLoadbalancingHttpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<PutIpLoadbalancingHttpFarmServerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingHttpFarmServerResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<PutIpLoadbalancingHttpFarmServerRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingHttpFarmServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4087,8 +4131,8 @@ export const putIpLoadbalancingHttpFrontend: API.OperationMethod<
   PutIpLoadbalancingHttpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<PutIpLoadbalancingHttpFrontendRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingHttpFrontendResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<PutIpLoadbalancingHttpFrontendRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingHttpFrontendResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4102,8 +4146,8 @@ export const putIpLoadbalancingHttpRoute: API.OperationMethod<
   PutIpLoadbalancingHttpRouteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<PutIpLoadbalancingHttpRouteRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingHttpRouteResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<PutIpLoadbalancingHttpRouteRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingHttpRouteResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4117,8 +4161,8 @@ export const putIpLoadbalancingHttpRouteRule: API.OperationMethod<
   PutIpLoadbalancingHttpRouteRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<PutIpLoadbalancingHttpRouteRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingHttpRouteRuleResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<PutIpLoadbalancingHttpRouteRuleRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingHttpRouteRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4132,8 +4176,8 @@ export const putIpLoadbalancingQuota: API.OperationMethod<
   PutIpLoadbalancingQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<PutIpLoadbalancingQuotaRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<PutIpLoadbalancingQuotaResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<PutIpLoadbalancingQuotaRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<PutIpLoadbalancingQuotaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4147,8 +4191,8 @@ export const putIpLoadbalancingServiceInfos: API.OperationMethod<
   PutIpLoadbalancingServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<PutIpLoadbalancingServiceInfosRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingServiceInfosResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<PutIpLoadbalancingServiceInfosRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4162,8 +4206,8 @@ export const putIpLoadbalancingSsl: API.OperationMethod<
   PutIpLoadbalancingSslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<PutIpLoadbalancingSslRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<PutIpLoadbalancingSslResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<PutIpLoadbalancingSslRequest>,
+  output: __S(1000, __c125, 0) as any as S.Schema<PutIpLoadbalancingSslResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4177,8 +4221,8 @@ export const putIpLoadbalancingTcpFarm: API.OperationMethod<
   PutIpLoadbalancingTcpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<PutIpLoadbalancingTcpFarmRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingTcpFarmResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<PutIpLoadbalancingTcpFarmRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingTcpFarmResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4192,8 +4236,8 @@ export const putIpLoadbalancingTcpFarmServer: API.OperationMethod<
   PutIpLoadbalancingTcpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<PutIpLoadbalancingTcpFarmServerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingTcpFarmServerResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<PutIpLoadbalancingTcpFarmServerRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingTcpFarmServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4207,8 +4251,8 @@ export const putIpLoadbalancingTcpFrontend: API.OperationMethod<
   PutIpLoadbalancingTcpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<PutIpLoadbalancingTcpFrontendRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingTcpFrontendResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<PutIpLoadbalancingTcpFrontendRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingTcpFrontendResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4222,8 +4266,8 @@ export const putIpLoadbalancingTcpRoute: API.OperationMethod<
   PutIpLoadbalancingTcpRouteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<PutIpLoadbalancingTcpRouteRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingTcpRouteResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<PutIpLoadbalancingTcpRouteRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingTcpRouteResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4237,8 +4281,8 @@ export const putIpLoadbalancingTcpRouteRule: API.OperationMethod<
   PutIpLoadbalancingTcpRouteRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<PutIpLoadbalancingTcpRouteRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingTcpRouteRuleResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<PutIpLoadbalancingTcpRouteRuleRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingTcpRouteRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4252,8 +4296,8 @@ export const putIpLoadbalancingUdpFarm: API.OperationMethod<
   PutIpLoadbalancingUdpFarmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<PutIpLoadbalancingUdpFarmRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingUdpFarmResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<PutIpLoadbalancingUdpFarmRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingUdpFarmResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4267,8 +4311,8 @@ export const putIpLoadbalancingUdpFarmServer: API.OperationMethod<
   PutIpLoadbalancingUdpFarmServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<PutIpLoadbalancingUdpFarmServerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingUdpFarmServerResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<PutIpLoadbalancingUdpFarmServerRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingUdpFarmServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4282,8 +4326,8 @@ export const putIpLoadbalancingUdpFrontend: API.OperationMethod<
   PutIpLoadbalancingUdpFrontendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<PutIpLoadbalancingUdpFrontendRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingUdpFrontendResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<PutIpLoadbalancingUdpFrontendRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingUdpFrontendResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4297,8 +4341,8 @@ export const putIpLoadbalancingVrackNetwork: API.OperationMethod<
   PutIpLoadbalancingVrackNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<PutIpLoadbalancingVrackNetworkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIpLoadbalancingVrackNetworkResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<PutIpLoadbalancingVrackNetworkRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutIpLoadbalancingVrackNetworkResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4312,8 +4356,8 @@ export const refreshIpLoadbalancing: API.OperationMethod<
   RefreshIpLoadbalancingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<RefreshIpLoadbalancingRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<IpLoadbalancingTaskTask>,
+  input: __S(280, __c35, 0) as any as S.Schema<RefreshIpLoadbalancingRequest>,
+  output: __S(560, __c70, 0) as any as S.Schema<IpLoadbalancingTaskTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4327,8 +4371,8 @@ export const terminateIpLoadbalancing: API.OperationMethod<
   TerminateIpLoadbalancingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<TerminateIpLoadbalancingRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<TerminateIpLoadbalancingResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<TerminateIpLoadbalancingRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<TerminateIpLoadbalancingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4342,8 +4386,8 @@ export const terminateIpLoadbalancingZone: API.OperationMethod<
   TerminateIpLoadbalancingZoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<TerminateIpLoadbalancingZoneRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TerminateIpLoadbalancingZoneResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<TerminateIpLoadbalancingZoneRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<TerminateIpLoadbalancingZoneResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4357,8 +4401,8 @@ export const updateIpLoadbalancingVrackNetworkFarmId: API.OperationMethod<
   UpdateIpLoadbalancingVrackNetworkFarmIdError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<UpdateIpLoadbalancingVrackNetworkFarmIdRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<IpLoadbalancingVrackNetworkVrackNetwork>,
+  input: __S(304, __c38, 0) as any as S.Schema<UpdateIpLoadbalancingVrackNetworkFarmIdRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<IpLoadbalancingVrackNetworkVrackNetwork>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4382,11 +4426,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelIpLoadbalancingZoneTerminationRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelIpLoadbalancingZoneTerminationResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4404,359 +4456,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfirmIpLoadbalancingTerminationRequest",
       });
-    case 3:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "ConfirmIpLoadbalancingTerminationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ipLoadbalancing/{serviceName}/changeContact",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingChangeContactRequest",
-      });
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.suspend(() => __S(5, __c0, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateIpLoadbalancingChangeContactResponse",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          fqdn: __S(7, __c0, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ipLoadbalancing/{serviceName}/freeCertificate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingFreeCertificateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          creationDate: S.optional(S.String),
-          doneDate: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.Number),
-          progress: S.optional(S.Number),
-          status: S.optional(S.String),
-          zones: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "IpLoadbalancingTaskTask" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          forceSsl: S.optional(S.NullOr(S.Boolean)),
-          interval: S.optional(S.NullOr(S.Number)),
-          match: S.optional(S.NullOr(S.String)),
-          method: S.optional(S.NullOr(S.String)),
-          negate: S.optional(S.NullOr(S.Boolean)),
-          pattern: S.optional(S.NullOr(S.String)),
-          port: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingBackendProbe",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          balance: S.optional(S.String),
-          displayName: S.optional(S.String),
-          port: S.optional(S.Number),
-          probe: S.optional(__S(10, __c1, 2)),
-          stickiness: S.optional(S.String),
-          vrackNetworkId: S.optional(S.Number),
-          zone: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/http/farm", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingHttpFarmRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          balance: S.optional(S.NullOr(S.String)),
-          displayName: S.optional(S.NullOr(S.String)),
-          farmId: S.optional(S.Number),
-          port: S.optional(S.NullOr(S.Number)),
-          probe: S.optional(S.NullOr(__S(10, __c1, 2))),
-          stickiness: S.optional(S.NullOr(S.String)),
-          vrackNetworkId: S.optional(S.NullOr(S.Number)),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingBackendHttpBackendHttp",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          address: S.String,
-          backup: S.optional(S.Boolean),
-          chain: S.optional(S.String),
-          cookie: S.optional(S.String),
-          displayName: S.optional(S.String),
-          onMarkedDown: S.optional(S.String),
-          port: S.optional(S.Number),
-          probe: S.optional(S.Boolean),
-          proxyProtocolVersion: S.optional(S.String),
-          ssl: S.optional(S.Boolean),
-          status: S.String,
-          weight: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingHttpFarmServerRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          checkCode: S.optional(S.NullOr(S.String)),
-          checkStatus: S.optional(S.NullOr(S.String)),
-          checkTime: S.optional(S.NullOr(S.String)),
-          instanceId: S.optional(S.Number),
-          lastCheckContent: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingServerState",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.String),
-          backendId: S.optional(S.Number),
-          backup: S.optional(S.Boolean),
-          chain: S.optional(S.NullOr(S.String)),
-          cookie: S.optional(S.NullOr(S.String)),
-          displayName: S.optional(S.NullOr(S.String)),
-          onMarkedDown: S.optional(S.NullOr(S.String)),
-          port: S.optional(S.NullOr(S.Number)),
-          probe: S.optional(S.Boolean),
-          proxyProtocolVersion: S.optional(S.NullOr(S.String)),
-          serverId: S.optional(S.Number),
-          serverState: S.optional(__S(15, __c1, 7)),
-          ssl: S.optional(S.Boolean),
-          status: S.optional(S.String),
-          weight: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-          address: S.String,
-          slotId: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}/transparent",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingHttpFarmServerTransparentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.String),
-          farmId: S.optional(S.Number),
-          id: S.optional(S.Number),
-          serverId: S.optional(S.Number),
-          slotId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingVrackTransparentIpVrackTransparentIp",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          allowedSource: S.optional(__S(7, __c0, 7)),
-          dedicatedIpfo: S.optional(__S(7, __c0, 7)),
-          defaultFarmId: S.optional(S.Number),
-          defaultSslId: S.optional(S.Number),
-          deniedSource: S.optional(__S(7, __c0, 7)),
-          disabled: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          hsts: S.optional(S.Boolean),
-          httpHeader: S.optional(__S(7, __c0, 7)),
-          port: S.String,
-          redirectLocation: S.optional(S.String),
-          ssl: S.optional(S.Boolean),
-          zone: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ipLoadbalancing/{serviceName}/http/frontend",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingHttpFrontendRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowedSource: S.optional(S.NullOr(__S(7, __c0, 7))),
-          dedicatedIpfo: S.optional(S.NullOr(__S(7, __c0, 7))),
-          defaultFarmId: S.optional(S.NullOr(S.Number)),
-          defaultSslId: S.optional(S.NullOr(S.Number)),
-          deniedSource: S.optional(S.NullOr(__S(7, __c0, 7))),
-          disabled: S.optional(S.Boolean),
-          displayName: S.optional(S.NullOr(S.String)),
-          frontendId: S.optional(S.Number),
-          hsts: S.optional(S.Boolean),
-          httpHeader: S.optional(S.NullOr(__S(7, __c0, 7))),
-          port: S.optional(S.String),
-          redirectLocation: S.optional(S.NullOr(S.String)),
-          ssl: S.optional(S.Boolean),
-          vrackNetworkId: S.optional(S.NullOr(S.Number)),
-          vrackVrouterId: S.optional(S.NullOr(S.Number)),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingFrontendHttpFrontendHttp",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          frontendId: S.Number.pipe(T.Label()),
-          dedicatedIpfo: S.optional(__S(21, __c2, 5)),
-          vrackNetworkId: S.optional(S.Number),
-          vrackVrouterId: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}/private",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingHttpFrontendPrivateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allowedSource: S.optional(S.NullOr(__S(7, __c0, 7))),
-          dedicatedIpfo: S.optional(S.NullOr(__S(7, __c0, 7))),
-          defaultBackendId: S.optional(S.NullOr(S.Number)),
-          defaultSslId: S.optional(S.NullOr(S.Number)),
-          deniedSource: S.optional(S.NullOr(__S(7, __c0, 7))),
-          disabled: S.optional(S.Boolean),
-          hsts: S.optional(S.Boolean),
-          httpHeader: S.optional(S.NullOr(__S(7, __c0, 7))),
-          id: S.optional(S.Number),
-          port: S.optional(S.String),
-          redirectLocation: S.optional(S.NullOr(S.String)),
-          ssl: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingFrontendFrontend",
-      });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.NullOr(S.Number)),
-          target: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingRouteHttpAction",
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "ConfirmIpLoadbalancingTerminationResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          action: __S(24, __c3, 0),
-          displayName: S.optional(S.String),
-          frontendId: S.optional(S.Number),
-          weight: S.optional(S.Number),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/http/route", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingHttpRouteRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          match: S.optional(S.String),
-          negate: S.optional(S.Boolean),
-          pattern: S.optional(S.NullOr(S.String)),
-          ruleId: S.optional(S.Number),
-          subField: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "IpLoadbalancingRouteRule" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(__S(24, __c3, 0)),
-          displayName: S.optional(S.NullOr(S.String)),
-          frontendId: S.optional(S.NullOr(S.Number)),
-          routeId: S.optional(S.Number),
-          rules: S.optional(__S(27, __c3, 3)),
-          status: S.optional(S.String),
-          weight: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingRouteHttpRouteHttp",
-      });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4777,7 +4489,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateIpLoadbalancingHttpRouteRuleRequest",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
@@ -4791,7 +4507,209 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "IpLoadbalancingRouteRuleRouteRule",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          routeId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingTcpRouteRuleRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          vrackNetworkId: S.optional(S.Number.pipe(T.Query())),
+          zone: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/udp/farm", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingUdpFarmRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          address: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingUdpFarmServerRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          defaultFarmId: S.optional(S.Number.pipe(T.Query())),
+          port: S.optional(S.String.pipe(T.Query())),
+          zone: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/udp/frontend", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingUdpFrontendRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          subnet: S.optional(S.String.pipe(T.Query())),
+          vlan: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/vrack/network", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingVrackNetworkRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/vrack/status", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingVrackStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          task: S.optional(__S(416, __c52, 0)),
+          vrackName: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingVrackInformation",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/vrack/transparent/gateways",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingVrackTransparentGatewaysRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.String),
+          gateway: S.optional(S.String),
+          vlan: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingVrackTransparentGateways",
+      });
+    case 2:
+      return S.Array(__S(97, __c12, 1));
+    case 3:
+      return S.suspend(() => __S(98, __c12, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIpLoadbalancingVrackTransparentGatewaysResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/zone", code: 200 })),
+      ).annotate({
+        identifier: "ListIpLoadbalancingZoneRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          displayName: S.optional(S.NullOr(S.String)),
+          sslConfiguration: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PUT", uri: "/ipLoadbalancing/{serviceName}", code: 200 })),
+      ).annotate({
+        identifier: "PutIpLoadbalancingRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          balance: S.optional(S.NullOr(S.String)),
+          displayName: S.optional(S.NullOr(S.String)),
+          port: S.optional(S.NullOr(S.Number)),
+          probe: S.optional(S.NullOr(__S(672, __c84, 0))),
+          stickiness: S.optional(S.NullOr(S.String)),
+          vrackNetworkId: S.optional(S.NullOr(S.Number)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutIpLoadbalancingHttpFarmRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4809,7 +4727,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4820,1960 +4738,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "IpLoadbalancingLogSubscriptionResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          kind: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/log/url", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingLogUrlRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          expirationDate: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IpLoadbalancingLogUrl" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          certificate: S.String,
-          chain: S.optional(S.String),
-          displayName: S.optional(S.String),
-          key: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/ssl", code: 200 })),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingSslRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.NullOr(S.String)),
-          expireDate: S.optional(S.String),
-          fingerprint: S.optional(S.String),
-          id: S.optional(S.Number),
-          san: S.optional(__S(7, __c0, 7)),
-          serial: S.optional(S.String),
-          subject: S.optional(S.String),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "IpLoadbalancingSslSsl" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          balance: S.optional(S.String),
-          displayName: S.optional(S.String),
-          port: S.optional(S.Number),
-          probe: S.optional(__S(10, __c1, 2)),
-          stickiness: S.optional(S.String),
-          vrackNetworkId: S.optional(S.Number),
-          zone: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/tcp/farm", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingTcpFarmRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          address: S.String,
-          backup: S.optional(S.Boolean),
-          chain: S.optional(S.String),
-          displayName: S.optional(S.String),
-          onMarkedDown: S.optional(S.String),
-          port: S.optional(S.Number),
-          probe: S.optional(S.Boolean),
-          proxyProtocolVersion: S.optional(S.String),
-          ssl: S.optional(S.Boolean),
-          status: S.String,
-          weight: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingTcpFarmServerRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.String),
-          backendId: S.optional(S.Number),
-          backup: S.optional(S.Boolean),
-          chain: S.optional(S.NullOr(S.String)),
-          displayName: S.optional(S.NullOr(S.String)),
-          onMarkedDown: S.optional(S.NullOr(S.String)),
-          port: S.optional(S.NullOr(S.Number)),
-          probe: S.optional(S.Boolean),
-          proxyProtocolVersion: S.optional(S.NullOr(S.String)),
-          serverId: S.optional(S.Number),
-          serverState: S.optional(__S(15, __c1, 7)),
-          ssl: S.optional(S.Boolean),
-          status: S.optional(S.String),
-          weight: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingBackendTcpCustomerServerBackendTCPServer",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-          address: S.String,
-          slotId: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}/transparent",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingTcpFarmServerTransparentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          allowedSource: S.optional(__S(7, __c0, 7)),
-          dedicatedIpfo: S.optional(__S(7, __c0, 7)),
-          defaultFarmId: S.optional(S.Number),
-          defaultSslId: S.optional(S.Number),
-          deniedSource: S.optional(__S(7, __c0, 7)),
-          disabled: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          port: S.String,
-          ssl: S.optional(S.Boolean),
-          zone: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/tcp/frontend", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingTcpFrontendRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowedSource: S.optional(S.NullOr(__S(7, __c0, 7))),
-          dedicatedIpfo: S.optional(S.NullOr(__S(7, __c0, 7))),
-          defaultFarmId: S.optional(S.NullOr(S.Number)),
-          defaultSslId: S.optional(S.NullOr(S.Number)),
-          deniedSource: S.optional(S.NullOr(__S(7, __c0, 7))),
-          disabled: S.optional(S.Boolean),
-          displayName: S.optional(S.NullOr(S.String)),
-          frontendId: S.optional(S.Number),
-          port: S.optional(S.String),
-          ssl: S.optional(S.Boolean),
-          vrackNetworkId: S.optional(S.NullOr(S.Number)),
-          vrackVrouterId: S.optional(S.NullOr(S.Number)),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingFrontendTcpFrontendTcp",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          frontendId: S.Number.pipe(T.Label()),
-          dedicatedIpfo: S.optional(__S(21, __c2, 5)),
-          vrackNetworkId: S.optional(S.Number),
-          vrackVrouterId: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}/private",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingTcpFrontendPrivateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          target: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingRouteTcpAction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          action: __S(44, __c5, 4),
-          displayName: S.optional(S.String),
-          frontendId: S.optional(S.Number),
-          weight: S.optional(S.Number),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/tcp/route", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingTcpRouteRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(__S(44, __c5, 4)),
-          displayName: S.optional(S.NullOr(S.String)),
-          frontendId: S.optional(S.NullOr(S.Number)),
-          routeId: S.optional(S.Number),
-          rules: S.optional(__S(27, __c3, 3)),
-          status: S.optional(S.String),
-          weight: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingRouteTcpRouteTcp",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          routeId: S.Number.pipe(T.Label()),
-          displayName: S.optional(S.String),
-          field: S.String,
-          match: S.String,
-          negate: S.optional(S.Boolean),
-          pattern: S.optional(S.String),
-          subField: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingTcpRouteRuleRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          displayName: S.optional(S.String),
-          port: S.Number,
-          vrackNetworkId: S.optional(S.Number),
-          zone: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/udp/farm", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingUdpFarmRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.NullOr(S.String)),
-          farmId: S.optional(S.Number),
-          port: S.optional(S.Number),
-          vrackNetworkId: S.optional(S.NullOr(S.Number)),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingBackendUdpBackendUdp",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          address: S.String,
-          displayName: S.optional(S.String),
-          port: S.optional(S.Number),
-          status: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingUdpFarmServerRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.String),
-          backendId: S.optional(S.Number),
-          displayName: S.optional(S.NullOr(S.String)),
-          port: S.optional(S.NullOr(S.Number)),
-          serverId: S.optional(S.Number),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingBackendUdpCustomerServerBackendUDPServer",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          dedicatedIpfo: S.optional(__S(7, __c0, 7)),
-          defaultFarmId: S.optional(S.Number),
-          disabled: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          port: S.String,
-          zone: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/udp/frontend", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingUdpFrontendRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dedicatedIpfo: S.optional(S.NullOr(__S(7, __c0, 7))),
-          defaultFarmId: S.optional(S.NullOr(S.Number)),
-          disabled: S.optional(S.Boolean),
-          displayName: S.optional(S.NullOr(S.String)),
-          frontendId: S.optional(S.Number),
-          port: S.optional(S.String),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingFrontendUdpFrontendUdp",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          displayName: S.optional(S.String),
-          farmId: S.optional(__S(5, __c0, 5)),
-          natIp: S.String,
-          subnet: S.String,
-          vlan: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ipLoadbalancing/{serviceName}/vrack/network",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIpLoadbalancingVrackNetworkRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingDefinedFarm",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.NullOr(S.String)),
-          farmId: S.optional(__S(56, __c7, 0)),
-          natIp: S.optional(S.String),
-          subnet: S.optional(S.String),
-          vlan: S.optional(S.Number),
-          vrackNetworkId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingVrackNetworkVrackNetwork",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingHttpFarmRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingHttpFarmServerRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-          transparentId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}/transparent/{transparentId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingHttpFarmServerTransparentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          frontendId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingHttpFrontendRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          routeId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/http/route/{routeId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingHttpRouteRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          routeId: S.Number.pipe(T.Label()),
-          ruleId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingHttpRouteRuleRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/log/subscription/{subscriptionId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingLogSubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/ipLoadbalancing/{serviceName}/ssl/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingSslRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingTcpFarmRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingTcpFarmServerRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-          transparentId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}/transparent/{transparentId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingTcpFarmServerTransparentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          frontendId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingTcpFrontendRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          routeId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingTcpRouteRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          routeId: S.Number.pipe(T.Label()),
-          ruleId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingTcpRouteRuleRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingUdpFarmRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingUdpFarmServerRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          frontendId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingUdpFrontendRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          vrackNetworkId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpLoadbalancingVrackNetworkRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}", code: 200 })),
-      ).annotate({
-        identifier: "GetIpLoadbalancingRequest",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(77, __c9, 5))),
-          urn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IamResourceMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          planCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingOrderableZone",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(__S(78, __c9, 6))),
-          ipLoadbalancing: S.optional(S.String),
-          ipv4: S.optional(S.NullOr(S.String)),
-          ipv6: S.optional(S.NullOr(S.String)),
-          metricsToken: S.optional(S.NullOr(S.String)),
-          offer: S.optional(S.String),
-          orderableZone: S.optional(__S(80, __c10, 0)),
-          serviceName: S.optional(S.String),
-          sslConfiguration: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.String),
-          vrackEligibility: S.optional(S.Boolean),
-          vrackName: S.optional(S.NullOr(S.String)),
-          zone: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "IpLoadbalancingIpWithIAM" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingHttpFarmRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingHttpFarmServerRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-          transparentId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}/transparent/{transparentId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingHttpFarmServerTransparentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          frontendId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingHttpFrontendRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          routeId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/http/route/{routeId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingHttpRouteRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          routeId: S.Number.pipe(T.Label()),
-          ruleId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingHttpRouteRuleRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/log/kind/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingLogKindRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          additionalReturnedFields: S.optional(__S(7, __c0, 7)),
-          createdAt: S.optional(S.String),
-          displayName: S.optional(S.String),
-          kindId: S.optional(S.String),
-          name: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingLdpKindLdpKind",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/log/subscription/{subscriptionId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingLogSubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingLogSubscriptionResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.String),
-          kind: S.optional(S.String),
-          resource: S.optional(__S(91, __c11, 3)),
-          serviceName: S.optional(S.String),
-          streamId: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingLdpSubscriptionLdpSubscription",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/metricsToken", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingMetricsTokenRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.optional(S.String),
-          token: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingMetricsToken",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          zone: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/quota/{zone}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingQuotaRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          alert: S.optional(S.NullOr(S.Number)),
-          included: S.optional(S.NullOr(S.Number)),
-          lastUpdateDate: S.optional(S.NullOr(S.String)),
-          resetDate: S.optional(S.NullOr(S.String)),
-          total: S.optional(S.NullOr(S.Number)),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingQuotaQuota",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/quotaHistory/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingQuotaHistoryRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          historizedDate: S.optional(S.String),
-          id: S.optional(S.Number),
-          lastUpdateDate: S.optional(S.String),
-          resetDate: S.optional(S.String),
-          total: S.optional(S.Number),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingQuotaHistoryQuotaHistory",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/serviceInfos", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingServiceInfosRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          deleteAtExpiration: S.optional(S.Boolean),
-          forced: S.optional(S.Boolean),
-          manualPayment: S.optional(S.NullOr(S.Boolean)),
-          period: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ServiceRenewType" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          canDeleteAtExpiration: S.optional(S.Boolean),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-          creation: S.optional(S.String),
-          domain: S.optional(S.String),
-          engagedUpTo: S.optional(S.NullOr(S.String)),
-          expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(5, __c0, 5))),
-          renew: S.optional(S.NullOr(__S(100, __c12, 4))),
-          renewalType: S.optional(S.String),
-          serviceId: S.optional(S.Number),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServicesService" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/ssl/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingSslRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/status", code: 200 })),
-      ).annotate({
-        identifier: "GetIpLoadbalancingStatusRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(S.Number),
-          ok: S.optional(S.Number),
-          unknown: S.optional(S.Number),
-          warn: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingStatusComponentStatus",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(__S(104, __c13, 0)),
-          total: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingStatusComponent",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingStatusService",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          farms: S.optional(__S(105, __c13, 1)),
-          frontends: S.optional(__S(105, __c13, 1)),
-          servers: S.optional(__S(105, __c13, 1)),
-          service: S.optional(__S(106, __c13, 2)),
-        }),
-      ).annotate({ identifier: "IpLoadbalancingStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/task/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingTaskRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingTcpFarmRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingTcpFarmServerRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-          transparentId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}/transparent/{transparentId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingTcpFarmServerTransparentRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          frontendId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingTcpFrontendRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          routeId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingTcpRouteRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          routeId: S.Number.pipe(T.Label()),
-          ruleId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingTcpRouteRuleRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingUdpFarmRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingUdpFarmServerRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          frontendId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingUdpFrontendRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          vrackNetworkId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingVrackNetworkRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/vrack/networkCreationRules",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingVrackNetworkCreationRulesRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          minNatIps: S.optional(S.Number),
-          remainingNetworks: S.optional(S.Number),
-          vrackName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingVrackNetworkCreationRules",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/zone/{name}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetIpLoadbalancingZoneRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IpLoadbalancingZoneZone" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "IamResourceTagFilterInput",
-      });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
-      return S.Record(S.String, __S(124, __c15, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          iamTags: S.optional(__S(125, __c15, 5).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing", code: 200 })),
-      ).annotate({
-        identifier: "ListIpLoadbalancingRequest",
-      });
-    case 7:
-      return S.suspend(() => __S(7, __c0, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIpLoadbalancingResponse",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/availableFarmProbes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingAvailableFarmProbesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          matches: S.optional(__S(7, __c0, 7)),
-          method: S.optional(S.NullOr(__S(7, __c0, 7))),
-          negatableMatches: S.optional(__S(7, __c0, 7)),
-          port: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          url: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingFarmAvailableProbe",
-      });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
-      return S.suspend(() => __S(130, __c16, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIpLoadbalancingAvailableFarmProbesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/availableFarmType",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingAvailableFarmTypeRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/availableFrontendType",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingAvailableFrontendTypeRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/availableRouteActions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingAvailableRouteActionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          destination: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.String),
-          status: S.optional(S.NullOr(__S(5, __c0, 5))),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingRouteAvailableAction",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() => __S(136, __c17, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIpLoadbalancingAvailableRouteActionsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/availableRouteRules",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingAvailableRouteRulesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enum: S.optional(S.NullOr(__S(7, __c0, 7))),
-          hasSubField: S.optional(S.Boolean),
-          matches: S.optional(__S(7, __c0, 7)),
-          name: S.optional(S.String),
-          pattern: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingRouteAvailableRule",
-      });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() => __S(140, __c17, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIpLoadbalancingAvailableRouteRulesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          vrackNetworkId: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/definedFarms", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingDefinedFarmsRequest",
-      });
-    case 7:
-      return S.suspend(() => __S(56, __c7, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIpLoadbalancingDefinedFarmsResponse",
-      });
   }
 }
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/definedFrontends",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingDefinedFrontendsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/definedRoutes", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingDefinedRoutesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.NullOr(S.String)),
-          routeId: S.optional(S.Number),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingDefinedRoute",
-      });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() => __S(147, __c18, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIpLoadbalancingDefinedRoutesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/failover", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingFailoverRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          vrackNetworkId: S.optional(S.Number.pipe(T.Query())),
-          zone: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/http/farm", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingHttpFarmRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          address: S.optional(S.String.pipe(T.Query())),
-          cookie: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingHttpFarmServerRequest",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-          slotId: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}/transparent",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingHttpFarmServerTransparentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          defaultFarmId: S.optional(S.Number.pipe(T.Query())),
-          defaultSslId: S.optional(S.Number.pipe(T.Query())),
-          port: S.optional(S.String.pipe(T.Query())),
-          zone: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/http/frontend", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingHttpFrontendRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          frontendId: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/http/route", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingHttpRouteRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          routeId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingHttpRouteRuleRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/log/kind", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingLogKindRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          kind: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/log/subscription",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingLogSubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/natIp", code: 200 })),
-      ).annotate({
-        identifier: "ListIpLoadbalancingNatIpRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ip: S.optional(__S(7, __c0, 7)),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IpLoadbalancingNatIps" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
-      return S.suspend(() => __S(160, __c20, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIpLoadbalancingNatIpResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/pendingChanges",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingPendingChangesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          number: S.optional(S.Number),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingPendingChanges",
-      });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
-      return S.suspend(() => __S(164, __c20, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIpLoadbalancingPendingChangesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/quota", code: 200 })),
-      ).annotate({
-        identifier: "ListIpLoadbalancingQuotaRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          historizedDate_from: S.optional(S.String.pipe(T.Query("historizedDate.from"))),
-          historizedDate_to: S.optional(S.String.pipe(T.Query("historizedDate.to"))),
-          zone: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/quotaHistory", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingQuotaHistoryRequest",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          expireDate: S.optional(S.String.pipe(T.Query())),
-          fingerprint: S.optional(S.String.pipe(T.Query())),
-          serial: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/ssl", code: 200 })),
-      ).annotate({
-        identifier: "ListIpLoadbalancingSslRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          action: S.optional(S.String.pipe(T.Query())),
-          creationDate_from: S.optional(S.String.pipe(T.Query("creationDate.from"))),
-          creationDate_to: S.optional(S.String.pipe(T.Query("creationDate.to"))),
-          doneDate_from: S.optional(S.String.pipe(T.Query("doneDate.from"))),
-          doneDate_to: S.optional(S.String.pipe(T.Query("doneDate.to"))),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/task", code: 200 })),
-      ).annotate({
-        identifier: "ListIpLoadbalancingTaskRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          vrackNetworkId: S.optional(S.Number.pipe(T.Query())),
-          zone: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/tcp/farm", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingTcpFarmRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          address: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingTcpFarmServerRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          serverId: S.Number.pipe(T.Label()),
-          slotId: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}/transparent",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingTcpFarmServerTransparentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          defaultFarmId: S.optional(S.Number.pipe(T.Query())),
-          defaultSslId: S.optional(S.Number.pipe(T.Query())),
-          port: S.optional(S.String.pipe(T.Query())),
-          zone: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/tcp/frontend", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingTcpFrontendRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          frontendId: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/tcp/route", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingTcpRouteRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          routeId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingTcpRouteRuleRequest",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          vrackNetworkId: S.optional(S.Number.pipe(T.Query())),
-          zone: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/udp/farm", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingUdpFarmRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          address: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingUdpFarmServerRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          defaultFarmId: S.optional(S.Number.pipe(T.Query())),
-          port: S.optional(S.String.pipe(T.Query())),
-          zone: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/udp/frontend", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingUdpFrontendRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          subnet: S.optional(S.String.pipe(T.Query())),
-          vlan: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/vrack/network", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingVrackNetworkRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/vrack/status", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingVrackStatusRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          task: S.optional(__S(5, __c0, 5)),
-          vrackName: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingVrackInformation",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/ipLoadbalancing/{serviceName}/vrack/transparent/gateways",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpLoadbalancingVrackTransparentGatewaysRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.String),
-          gateway: S.optional(S.String),
-          vlan: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IpLoadbalancingVrackTransparentGateways",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(183, __c22, 7));
-    case 1:
-      return S.suspend(() => __S(184, __c23, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListIpLoadbalancingVrackTransparentGatewaysResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/zone", code: 200 })),
-      ).annotate({
-        identifier: "ListIpLoadbalancingZoneRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          displayName: S.optional(S.NullOr(S.String)),
-          sslConfiguration: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PUT", uri: "/ipLoadbalancing/{serviceName}", code: 200 })),
-      ).annotate({
-        identifier: "PutIpLoadbalancingRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          farmId: S.Number.pipe(T.Label()),
-          balance: S.optional(S.NullOr(S.String)),
-          displayName: S.optional(S.NullOr(S.String)),
-          port: S.optional(S.NullOr(S.Number)),
-          probe: S.optional(S.NullOr(__S(10, __c1, 2))),
-          stickiness: S.optional(S.NullOr(S.String)),
-          vrackNetworkId: S.optional(S.NullOr(S.Number)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutIpLoadbalancingHttpFarmRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6800,20 +4769,24 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingHttpFarmServerRequest",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           frontendId: S.Number.pipe(T.Label()),
-          allowedSource: S.optional(S.NullOr(__S(7, __c0, 7))),
-          dedicatedIpfo: S.optional(S.NullOr(__S(7, __c0, 7))),
+          allowedSource: S.optional(S.NullOr(__S(568, __c71, 0))),
+          dedicatedIpfo: S.optional(S.NullOr(__S(568, __c71, 0))),
           defaultFarmId: S.optional(S.NullOr(S.Number)),
           defaultSslId: S.optional(S.NullOr(S.Number)),
-          deniedSource: S.optional(S.NullOr(__S(7, __c0, 7))),
+          deniedSource: S.optional(S.NullOr(__S(568, __c71, 0))),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.NullOr(S.String)),
           hsts: S.optional(S.Boolean),
-          httpHeader: S.optional(S.NullOr(__S(7, __c0, 7))),
+          httpHeader: S.optional(S.NullOr(__S(568, __c71, 0))),
           port: S.optional(S.String),
           redirectLocation: S.optional(S.NullOr(S.String)),
           ssl: S.optional(S.Boolean),
@@ -6828,12 +4801,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingHttpFrontendRequest",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           routeId: S.Number.pipe(T.Label()),
-          action: S.optional(__S(24, __c3, 0)),
+          action: S.optional(__S(1208, __c151, 0)),
           displayName: S.optional(S.NullOr(S.String)),
           frontendId: S.optional(S.NullOr(S.Number)),
           weight: S.optional(S.Number),
@@ -6849,7 +4826,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6873,7 +4850,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingHttpRouteRuleRequest",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6885,22 +4866,30 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingQuotaRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PutIpLoadbalancingQuotaResponse",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(100, __c12, 4))),
+          renew: S.optional(S.NullOr(__S(832, __c104, 0))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/ipLoadbalancing/{serviceName}/serviceInfos", code: 200 }),
         ),
       ).annotate({
         identifier: "PutIpLoadbalancingServiceInfosRequest",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6912,7 +4901,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingSslRequest",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6920,7 +4913,7 @@ function __c24(j: number): any {
           balance: S.optional(S.NullOr(S.String)),
           displayName: S.optional(S.NullOr(S.String)),
           port: S.optional(S.NullOr(S.Number)),
-          probe: S.optional(S.NullOr(__S(10, __c1, 2))),
+          probe: S.optional(S.NullOr(__S(672, __c84, 0))),
           stickiness: S.optional(S.NullOr(S.String)),
           vrackNetworkId: S.optional(S.NullOr(S.Number)),
         }).pipe(
@@ -6933,7 +4926,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingTcpFarmRequest",
       });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6959,16 +4956,20 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingTcpFarmServerRequest",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           frontendId: S.Number.pipe(T.Label()),
-          allowedSource: S.optional(S.NullOr(__S(7, __c0, 7))),
-          dedicatedIpfo: S.optional(S.NullOr(__S(7, __c0, 7))),
+          allowedSource: S.optional(S.NullOr(__S(568, __c71, 0))),
+          dedicatedIpfo: S.optional(S.NullOr(__S(568, __c71, 0))),
           defaultFarmId: S.optional(S.NullOr(S.Number)),
           defaultSslId: S.optional(S.NullOr(S.Number)),
-          deniedSource: S.optional(S.NullOr(__S(7, __c0, 7))),
+          deniedSource: S.optional(S.NullOr(__S(568, __c71, 0))),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.NullOr(S.String)),
           port: S.optional(S.String),
@@ -6986,14 +4987,36 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          kind: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/log/url", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingLogUrlRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expirationDate: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IpLoadbalancingLogUrl" });
+  }
+}
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           routeId: S.Number.pipe(T.Label()),
-          action: S.optional(__S(44, __c5, 4)),
+          action: S.optional(__S(400, __c50, 0)),
           displayName: S.optional(S.NullOr(S.String)),
           frontendId: S.optional(S.NullOr(S.Number)),
           weight: S.optional(S.Number),
@@ -7007,7 +5030,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingTcpRouteRequest",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7029,7 +5056,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingTcpRouteRuleRequest",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7047,7 +5078,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingUdpFarmRequest",
       });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7066,12 +5101,16 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingUdpFarmServerRequest",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           frontendId: S.Number.pipe(T.Label()),
-          dedicatedIpfo: S.optional(S.NullOr(__S(7, __c0, 7))),
+          dedicatedIpfo: S.optional(S.NullOr(__S(568, __c71, 0))),
           defaultFarmId: S.optional(S.NullOr(S.Number)),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.NullOr(S.String)),
@@ -7087,7 +5126,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingUdpFrontendRequest",
       });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7105,7 +5148,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PutIpLoadbalancingVrackNetworkRequest",
       });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7116,7 +5163,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "RefreshIpLoadbalancingRequest",
       });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -7128,7 +5179,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7145,12 +5196,16 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "TerminateIpLoadbalancingZoneRequest",
       });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           vrackNetworkId: S.Number.pipe(T.Label()),
-          farmId: __S(5, __c0, 5),
+          farmId: __S(416, __c52, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7163,7 +5218,2535 @@ function __c26(j: number): any {
       });
   }
 }
-
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          certificate: S.String,
+          chain: S.optional(S.String),
+          displayName: S.optional(S.String),
+          key: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/ssl", code: 200 })),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingSslRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.NullOr(S.String)),
+          expireDate: S.optional(S.String),
+          fingerprint: S.optional(S.String),
+          id: S.optional(S.Number),
+          san: S.optional(__S(568, __c71, 0)),
+          serial: S.optional(S.String),
+          subject: S.optional(S.String),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "IpLoadbalancingSslSsl" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          balance: S.optional(S.String),
+          displayName: S.optional(S.String),
+          port: S.optional(S.Number),
+          probe: S.optional(__S(672, __c84, 0)),
+          stickiness: S.optional(S.String),
+          vrackNetworkId: S.optional(S.Number),
+          zone: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/tcp/farm", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingTcpFarmRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          address: S.String,
+          backup: S.optional(S.Boolean),
+          chain: S.optional(S.String),
+          displayName: S.optional(S.String),
+          onMarkedDown: S.optional(S.String),
+          port: S.optional(S.Number),
+          probe: S.optional(S.Boolean),
+          proxyProtocolVersion: S.optional(S.String),
+          ssl: S.optional(S.Boolean),
+          status: S.String,
+          weight: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingTcpFarmServerRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.String),
+          backendId: S.optional(S.Number),
+          backup: S.optional(S.Boolean),
+          chain: S.optional(S.NullOr(S.String)),
+          displayName: S.optional(S.NullOr(S.String)),
+          onMarkedDown: S.optional(S.NullOr(S.String)),
+          port: S.optional(S.NullOr(S.Number)),
+          probe: S.optional(S.Boolean),
+          proxyProtocolVersion: S.optional(S.NullOr(S.String)),
+          serverId: S.optional(S.Number),
+          serverState: S.optional(__S(769, __c96, 1)),
+          ssl: S.optional(S.Boolean),
+          status: S.optional(S.String),
+          weight: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingBackendTcpCustomerServerBackendTCPServer",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+          address: S.String,
+          slotId: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}/transparent",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingTcpFarmServerTransparentRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          allowedSource: S.optional(__S(568, __c71, 0)),
+          dedicatedIpfo: S.optional(__S(568, __c71, 0)),
+          defaultFarmId: S.optional(S.Number),
+          defaultSslId: S.optional(S.Number),
+          deniedSource: S.optional(__S(568, __c71, 0)),
+          disabled: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          port: S.String,
+          ssl: S.optional(S.Boolean),
+          zone: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/tcp/frontend", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingTcpFrontendRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowedSource: S.optional(S.NullOr(__S(568, __c71, 0))),
+          dedicatedIpfo: S.optional(S.NullOr(__S(568, __c71, 0))),
+          defaultFarmId: S.optional(S.NullOr(S.Number)),
+          defaultSslId: S.optional(S.NullOr(S.Number)),
+          deniedSource: S.optional(S.NullOr(__S(568, __c71, 0))),
+          disabled: S.optional(S.Boolean),
+          displayName: S.optional(S.NullOr(S.String)),
+          frontendId: S.optional(S.Number),
+          port: S.optional(S.String),
+          ssl: S.optional(S.Boolean),
+          vrackNetworkId: S.optional(S.NullOr(S.Number)),
+          vrackVrouterId: S.optional(S.NullOr(S.Number)),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingFrontendTcpFrontendTcp",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          frontendId: S.Number.pipe(T.Label()),
+          dedicatedIpfo: S.optional(__S(1096, __c137, 0)),
+          vrackNetworkId: S.optional(S.Number),
+          vrackVrouterId: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}/private",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingTcpFrontendPrivateRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          action: __S(400, __c50, 0),
+          displayName: S.optional(S.String),
+          frontendId: S.optional(S.Number),
+          weight: S.optional(S.Number),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/tcp/route", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingTcpRouteRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(__S(400, __c50, 0)),
+          displayName: S.optional(S.NullOr(S.String)),
+          frontendId: S.optional(S.NullOr(S.Number)),
+          routeId: S.optional(S.Number),
+          rules: S.optional(__S(1193, __c149, 1)),
+          status: S.optional(S.String),
+          weight: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingRouteTcpRouteTcp",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          target: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingRouteTcpAction",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ipLoadbalancing/{serviceName}/changeContact",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingChangeContactRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(416, __c52, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateIpLoadbalancingChangeContactResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          routeId: S.Number.pipe(T.Label()),
+          displayName: S.optional(S.String),
+          field: S.String,
+          match: S.String,
+          negate: S.optional(S.Boolean),
+          pattern: S.optional(S.String),
+          subField: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingTcpRouteRuleRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          displayName: S.optional(S.String),
+          port: S.Number,
+          vrackNetworkId: S.optional(S.Number),
+          zone: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/udp/farm", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingUdpFarmRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.NullOr(S.String)),
+          farmId: S.optional(S.Number),
+          port: S.optional(S.Number),
+          vrackNetworkId: S.optional(S.NullOr(S.Number)),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingBackendUdpBackendUdp",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          address: S.String,
+          displayName: S.optional(S.String),
+          port: S.optional(S.Number),
+          status: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingUdpFarmServerRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.String),
+          backendId: S.optional(S.Number),
+          displayName: S.optional(S.NullOr(S.String)),
+          port: S.optional(S.NullOr(S.Number)),
+          serverId: S.optional(S.Number),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingBackendUdpCustomerServerBackendUDPServer",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          dedicatedIpfo: S.optional(__S(568, __c71, 0)),
+          defaultFarmId: S.optional(S.Number),
+          disabled: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          port: S.String,
+          zone: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/udp/frontend", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingUdpFrontendRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dedicatedIpfo: S.optional(S.NullOr(__S(568, __c71, 0))),
+          defaultFarmId: S.optional(S.NullOr(S.Number)),
+          disabled: S.optional(S.Boolean),
+          displayName: S.optional(S.NullOr(S.String)),
+          frontendId: S.optional(S.Number),
+          port: S.optional(S.String),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingFrontendUdpFrontendUdp",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          displayName: S.optional(S.String),
+          farmId: S.optional(__S(416, __c52, 0)),
+          natIp: S.String,
+          subnet: S.String,
+          vlan: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ipLoadbalancing/{serviceName}/vrack/network",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingVrackNetworkRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.NullOr(S.String)),
+          farmId: S.optional(__S(505, __c63, 1)),
+          natIp: S.optional(S.String),
+          subnet: S.optional(S.String),
+          vlan: S.optional(S.Number),
+          vrackNetworkId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingVrackNetworkVrackNetwork",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingDefinedFarm",
+      });
+    case 1:
+      return S.Array(__S(504, __c63, 0));
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingHttpFarmRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingHttpFarmServerRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+          transparentId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}/transparent/{transparentId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingHttpFarmServerTransparentRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          frontendId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingHttpFrontendRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          routeId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/http/route/{routeId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingHttpRouteRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          fqdn: __S(568, __c71, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ipLoadbalancing/{serviceName}/freeCertificate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingFreeCertificateRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          creationDate: S.optional(S.String),
+          doneDate: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.Number),
+          progress: S.optional(S.Number),
+          status: S.optional(S.String),
+          zones: S.optional(__S(568, __c71, 0)),
+        }),
+      ).annotate({ identifier: "IpLoadbalancingTaskTask" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          routeId: S.Number.pipe(T.Label()),
+          ruleId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingHttpRouteRuleRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/log/subscription/{subscriptionId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingLogSubscriptionRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/ipLoadbalancing/{serviceName}/ssl/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingSslRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingTcpFarmRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingTcpFarmServerRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+          transparentId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}/transparent/{transparentId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingTcpFarmServerTransparentRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          frontendId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingTcpFrontendRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          routeId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingTcpRouteRequest",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          routeId: S.Number.pipe(T.Label()),
+          ruleId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingTcpRouteRuleRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingUdpFarmRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          balance: S.optional(S.String),
+          displayName: S.optional(S.String),
+          port: S.optional(S.Number),
+          probe: S.optional(__S(672, __c84, 0)),
+          stickiness: S.optional(S.String),
+          vrackNetworkId: S.optional(S.Number),
+          zone: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/http/farm", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingHttpFarmRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          balance: S.optional(S.NullOr(S.String)),
+          displayName: S.optional(S.NullOr(S.String)),
+          farmId: S.optional(S.Number),
+          port: S.optional(S.NullOr(S.Number)),
+          probe: S.optional(S.NullOr(__S(672, __c84, 0))),
+          stickiness: S.optional(S.NullOr(S.String)),
+          vrackNetworkId: S.optional(S.NullOr(S.Number)),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingBackendHttpBackendHttp",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          forceSsl: S.optional(S.NullOr(S.Boolean)),
+          interval: S.optional(S.NullOr(S.Number)),
+          match: S.optional(S.NullOr(S.String)),
+          method: S.optional(S.NullOr(S.String)),
+          negate: S.optional(S.NullOr(S.Boolean)),
+          pattern: S.optional(S.NullOr(S.String)),
+          port: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingBackendProbe",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingUdpFarmServerRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          frontendId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingUdpFrontendRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          vrackNetworkId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpLoadbalancingVrackNetworkRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}", code: 200 })),
+      ).annotate({
+        identifier: "GetIpLoadbalancingRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(705, __c88, 1))),
+          urn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IamResourceMetadata" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          planCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingOrderableZone",
+      });
+    case 4:
+      return S.Array(__S(707, __c88, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.NullOr(S.String)),
+          iam: S.optional(S.NullOr(__S(706, __c88, 2))),
+          ipLoadbalancing: S.optional(S.String),
+          ipv4: S.optional(S.NullOr(S.String)),
+          ipv6: S.optional(S.NullOr(S.String)),
+          metricsToken: S.optional(S.NullOr(S.String)),
+          offer: S.optional(S.String),
+          orderableZone: S.optional(__S(708, __c88, 4)),
+          serviceName: S.optional(S.String),
+          sslConfiguration: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.String),
+          vrackEligibility: S.optional(S.Boolean),
+          vrackName: S.optional(S.NullOr(S.String)),
+          zone: S.optional(__S(568, __c71, 0)),
+        }),
+      ).annotate({ identifier: "IpLoadbalancingIpWithIAM" });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingHttpFarmRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingHttpFarmServerRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+          transparentId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}/transparent/{transparentId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingHttpFarmServerTransparentRequest",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          frontendId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingHttpFrontendRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          routeId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/http/route/{routeId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingHttpRouteRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          routeId: S.Number.pipe(T.Label()),
+          ruleId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule/{ruleId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingHttpRouteRuleRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          address: S.String,
+          backup: S.optional(S.Boolean),
+          chain: S.optional(S.String),
+          cookie: S.optional(S.String),
+          displayName: S.optional(S.String),
+          onMarkedDown: S.optional(S.String),
+          port: S.optional(S.Number),
+          probe: S.optional(S.Boolean),
+          proxyProtocolVersion: S.optional(S.String),
+          ssl: S.optional(S.Boolean),
+          status: S.String,
+          weight: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingHttpFarmServerRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          checkCode: S.optional(S.NullOr(S.String)),
+          checkStatus: S.optional(S.NullOr(S.String)),
+          checkTime: S.optional(S.NullOr(S.String)),
+          instanceId: S.optional(S.Number),
+          lastCheckContent: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingServerState",
+      });
+    case 1:
+      return S.Array(__S(768, __c96, 0));
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.String),
+          backendId: S.optional(S.Number),
+          backup: S.optional(S.Boolean),
+          chain: S.optional(S.NullOr(S.String)),
+          cookie: S.optional(S.NullOr(S.String)),
+          displayName: S.optional(S.NullOr(S.String)),
+          onMarkedDown: S.optional(S.NullOr(S.String)),
+          port: S.optional(S.NullOr(S.Number)),
+          probe: S.optional(S.Boolean),
+          proxyProtocolVersion: S.optional(S.NullOr(S.String)),
+          serverId: S.optional(S.Number),
+          serverState: S.optional(__S(769, __c96, 1)),
+          ssl: S.optional(S.Boolean),
+          status: S.optional(S.String),
+          weight: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingBackendHttpCustomerServerBackendHTTPServer",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/log/kind/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingLogKindRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          additionalReturnedFields: S.optional(__S(568, __c71, 0)),
+          createdAt: S.optional(S.String),
+          displayName: S.optional(S.String),
+          kindId: S.optional(S.String),
+          name: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingLdpKindLdpKind",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/log/subscription/{subscriptionId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingLogSubscriptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingLogSubscriptionResource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.String),
+          kind: S.optional(S.String),
+          resource: S.optional(__S(793, __c99, 1)),
+          serviceName: S.optional(S.String),
+          streamId: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingLdpSubscriptionLdpSubscription",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/metricsToken", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingMetricsTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.optional(S.String),
+          token: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingMetricsToken",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          zone: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/quota/{zone}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingQuotaRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          alert: S.optional(S.NullOr(S.Number)),
+          included: S.optional(S.NullOr(S.Number)),
+          lastUpdateDate: S.optional(S.NullOr(S.String)),
+          resetDate: S.optional(S.NullOr(S.String)),
+          total: S.optional(S.NullOr(S.Number)),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingQuotaQuota",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/quotaHistory/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingQuotaHistoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          historizedDate: S.optional(S.String),
+          id: S.optional(S.Number),
+          lastUpdateDate: S.optional(S.String),
+          resetDate: S.optional(S.String),
+          total: S.optional(S.Number),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingQuotaHistoryQuotaHistory",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/serviceInfos", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingServiceInfosRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          canDeleteAtExpiration: S.optional(S.Boolean),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+          creation: S.optional(S.String),
+          domain: S.optional(S.String),
+          engagedUpTo: S.optional(S.NullOr(S.String)),
+          expiration: S.optional(S.String),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(416, __c52, 0))),
+          renew: S.optional(S.NullOr(__S(832, __c104, 0))),
+          renewalType: S.optional(S.String),
+          serviceId: S.optional(S.Number),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServicesService" });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          deleteAtExpiration: S.optional(S.Boolean),
+          forced: S.optional(S.Boolean),
+          manualPayment: S.optional(S.NullOr(S.Boolean)),
+          period: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ServiceRenewType" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/ssl/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingSslRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/status", code: 200 })),
+      ).annotate({
+        identifier: "GetIpLoadbalancingStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(S.Number),
+          ok: S.optional(S.Number),
+          unknown: S.optional(S.Number),
+          warn: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingStatusComponentStatus",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(__S(849, __c106, 1)),
+          total: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingStatusComponent",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingStatusService",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          farms: S.optional(__S(850, __c106, 2)),
+          frontends: S.optional(__S(850, __c106, 2)),
+          servers: S.optional(__S(850, __c106, 2)),
+          service: S.optional(__S(851, __c106, 3)),
+        }),
+      ).annotate({ identifier: "IpLoadbalancingStatus" });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/task/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingTaskRequest",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingTcpFarmRequest",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+          address: S.String,
+          slotId: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}/transparent",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingHttpFarmServerTransparentRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.String),
+          farmId: S.optional(S.Number),
+          id: S.optional(S.Number),
+          serverId: S.optional(S.Number),
+          slotId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingVrackTransparentIpVrackTransparentIp",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingTcpFarmServerRequest",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+          transparentId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}/transparent/{transparentId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingTcpFarmServerTransparentRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          frontendId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/frontend/{frontendId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingTcpFrontendRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          routeId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingTcpRouteRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          routeId: S.Number.pipe(T.Label()),
+          ruleId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/route/{routeId}/rule/{ruleId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingTcpRouteRuleRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingUdpFarmRequest",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/udp/farm/{farmId}/server/{serverId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingUdpFarmServerRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          frontendId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/udp/frontend/{frontendId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingUdpFrontendRequest",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          vrackNetworkId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/vrack/network/{vrackNetworkId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingVrackNetworkRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/vrack/networkCreationRules",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingVrackNetworkCreationRulesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          minNatIps: S.optional(S.Number),
+          remainingNetworks: S.optional(S.Number),
+          vrackName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingVrackNetworkCreationRules",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          allowedSource: S.optional(__S(568, __c71, 0)),
+          dedicatedIpfo: S.optional(__S(568, __c71, 0)),
+          defaultFarmId: S.optional(S.Number),
+          defaultSslId: S.optional(S.Number),
+          deniedSource: S.optional(__S(568, __c71, 0)),
+          disabled: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          hsts: S.optional(S.Boolean),
+          httpHeader: S.optional(__S(568, __c71, 0)),
+          port: S.String,
+          redirectLocation: S.optional(S.String),
+          ssl: S.optional(S.Boolean),
+          zone: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ipLoadbalancing/{serviceName}/http/frontend",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingHttpFrontendRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowedSource: S.optional(S.NullOr(__S(568, __c71, 0))),
+          dedicatedIpfo: S.optional(S.NullOr(__S(568, __c71, 0))),
+          defaultFarmId: S.optional(S.NullOr(S.Number)),
+          defaultSslId: S.optional(S.NullOr(S.Number)),
+          deniedSource: S.optional(S.NullOr(__S(568, __c71, 0))),
+          disabled: S.optional(S.Boolean),
+          displayName: S.optional(S.NullOr(S.String)),
+          frontendId: S.optional(S.Number),
+          hsts: S.optional(S.Boolean),
+          httpHeader: S.optional(S.NullOr(__S(568, __c71, 0))),
+          port: S.optional(S.String),
+          redirectLocation: S.optional(S.NullOr(S.String)),
+          ssl: S.optional(S.Boolean),
+          vrackNetworkId: S.optional(S.NullOr(S.Number)),
+          vrackVrouterId: S.optional(S.NullOr(S.Number)),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingFrontendHttpFrontendHttp",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/zone/{name}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetIpLoadbalancingZoneRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IpLoadbalancingZoneZone" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1000, __c125, 0));
+    case 1:
+      return S.Record(S.String, __S(992, __c124, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          iamTags: S.optional(__S(993, __c124, 1).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing", code: 200 })),
+      ).annotate({
+        identifier: "ListIpLoadbalancingRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "IamResourceTagFilterInput",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(568, __c71, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIpLoadbalancingResponse",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/availableFarmProbes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingAvailableFarmProbesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          matches: S.optional(__S(568, __c71, 0)),
+          method: S.optional(S.NullOr(__S(568, __c71, 0))),
+          negatableMatches: S.optional(__S(568, __c71, 0)),
+          port: S.optional(S.Boolean),
+          type: S.optional(S.String),
+          url: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingFarmAvailableProbe",
+      });
+    case 2:
+      return S.Array(__S(1017, __c127, 1));
+    case 3:
+      return S.suspend(() => __S(1018, __c127, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIpLoadbalancingAvailableFarmProbesResponse",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/availableFarmType",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingAvailableFarmTypeRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/availableFrontendType",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingAvailableFrontendTypeRequest",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/availableRouteActions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingAvailableRouteActionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          destination: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.String),
+          status: S.optional(S.NullOr(__S(416, __c52, 0))),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingRouteAvailableAction",
+      });
+    case 2:
+      return S.Array(__S(1041, __c130, 1));
+    case 3:
+      return S.suspend(() => __S(1042, __c130, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIpLoadbalancingAvailableRouteActionsResponse",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/availableRouteRules",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingAvailableRouteRulesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enum: S.optional(S.NullOr(__S(568, __c71, 0))),
+          hasSubField: S.optional(S.Boolean),
+          matches: S.optional(__S(568, __c71, 0)),
+          name: S.optional(S.String),
+          pattern: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingRouteAvailableRule",
+      });
+    case 2:
+      return S.Array(__S(1049, __c131, 1));
+    case 3:
+      return S.suspend(() => __S(1050, __c131, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIpLoadbalancingAvailableRouteRulesResponse",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          vrackNetworkId: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/definedFarms", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingDefinedFarmsRequest",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(505, __c63, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIpLoadbalancingDefinedFarmsResponse",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/definedFrontends",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingDefinedFrontendsRequest",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/definedRoutes", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingDefinedRoutesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.NullOr(S.String)),
+          routeId: S.optional(S.Number),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingDefinedRoute",
+      });
+    case 2:
+      return S.Array(__S(1081, __c135, 1));
+    case 3:
+      return S.suspend(() => __S(1082, __c135, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIpLoadbalancingDefinedRoutesResponse",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          frontendId: S.Number.pipe(T.Label()),
+          dedicatedIpfo: S.optional(__S(1096, __c137, 0)),
+          vrackNetworkId: S.optional(S.Number),
+          vrackVrouterId: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ipLoadbalancing/{serviceName}/http/frontend/{frontendId}/private",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingHttpFrontendPrivateRequest",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          allowedSource: S.optional(S.NullOr(__S(568, __c71, 0))),
+          dedicatedIpfo: S.optional(S.NullOr(__S(568, __c71, 0))),
+          defaultBackendId: S.optional(S.NullOr(S.Number)),
+          defaultSslId: S.optional(S.NullOr(S.Number)),
+          deniedSource: S.optional(S.NullOr(__S(568, __c71, 0))),
+          disabled: S.optional(S.Boolean),
+          hsts: S.optional(S.Boolean),
+          httpHeader: S.optional(S.NullOr(__S(568, __c71, 0))),
+          id: S.optional(S.Number),
+          port: S.optional(S.String),
+          redirectLocation: S.optional(S.NullOr(S.String)),
+          ssl: S.optional(S.Boolean),
+          type: S.optional(S.String),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingFrontendFrontend",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/failover", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingFailoverRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          vrackNetworkId: S.optional(S.Number.pipe(T.Query())),
+          zone: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/http/farm", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingHttpFarmRequest",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          address: S.optional(S.String.pipe(T.Query())),
+          cookie: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingHttpFarmServerRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+          slotId: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/http/farm/{farmId}/server/{serverId}/transparent",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingHttpFarmServerTransparentRequest",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          defaultFarmId: S.optional(S.Number.pipe(T.Query())),
+          defaultSslId: S.optional(S.Number.pipe(T.Query())),
+          port: S.optional(S.String.pipe(T.Query())),
+          zone: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/http/frontend", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingHttpFrontendRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          frontendId: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/http/route", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingHttpRouteRequest",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          routeId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/http/route/{routeId}/rule",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingHttpRouteRuleRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/log/kind", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingLogKindRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          kind: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/log/subscription",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingLogSubscriptionRequest",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/natIp", code: 200 })),
+      ).annotate({
+        identifier: "ListIpLoadbalancingNatIpRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ip: S.optional(__S(568, __c71, 0)),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IpLoadbalancingNatIps" });
+    case 2:
+      return S.Array(__S(1177, __c147, 1));
+    case 3:
+      return S.suspend(() => __S(1178, __c147, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIpLoadbalancingNatIpResponse",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          action: __S(1208, __c151, 0),
+          displayName: S.optional(S.String),
+          frontendId: S.optional(S.Number),
+          weight: S.optional(S.Number),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/ipLoadbalancing/{serviceName}/http/route", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateIpLoadbalancingHttpRouteRequest",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          match: S.optional(S.String),
+          negate: S.optional(S.Boolean),
+          pattern: S.optional(S.NullOr(S.String)),
+          ruleId: S.optional(S.Number),
+          subField: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "IpLoadbalancingRouteRule" });
+    case 1:
+      return S.Array(__S(1192, __c149, 0));
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(__S(1208, __c151, 0)),
+          displayName: S.optional(S.NullOr(S.String)),
+          frontendId: S.optional(S.NullOr(S.Number)),
+          routeId: S.optional(S.Number),
+          rules: S.optional(__S(1193, __c149, 1)),
+          status: S.optional(S.String),
+          weight: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingRouteHttpRouteHttp",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.NullOr(S.Number)),
+          target: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingRouteHttpAction",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/pendingChanges",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingPendingChangesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          number: S.optional(S.Number),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpLoadbalancingPendingChanges",
+      });
+    case 2:
+      return S.Array(__S(1217, __c152, 1));
+    case 3:
+      return S.suspend(() => __S(1218, __c152, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListIpLoadbalancingPendingChangesResponse",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/quota", code: 200 })),
+      ).annotate({
+        identifier: "ListIpLoadbalancingQuotaRequest",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          historizedDate_from: S.optional(S.String.pipe(T.Query("historizedDate.from"))),
+          historizedDate_to: S.optional(S.String.pipe(T.Query("historizedDate.to"))),
+          zone: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/quotaHistory", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingQuotaHistoryRequest",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          expireDate: S.optional(S.String.pipe(T.Query())),
+          fingerprint: S.optional(S.String.pipe(T.Query())),
+          serial: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/ssl", code: 200 })),
+      ).annotate({
+        identifier: "ListIpLoadbalancingSslRequest",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          action: S.optional(S.String.pipe(T.Query())),
+          creationDate_from: S.optional(S.String.pipe(T.Query("creationDate.from"))),
+          creationDate_to: S.optional(S.String.pipe(T.Query("creationDate.to"))),
+          doneDate_from: S.optional(S.String.pipe(T.Query("doneDate.from"))),
+          doneDate_to: S.optional(S.String.pipe(T.Query("doneDate.to"))),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/task", code: 200 })),
+      ).annotate({
+        identifier: "ListIpLoadbalancingTaskRequest",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          vrackNetworkId: S.optional(S.Number.pipe(T.Query())),
+          zone: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/tcp/farm", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingTcpFarmRequest",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          address: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingTcpFarmServerRequest",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          farmId: S.Number.pipe(T.Label()),
+          serverId: S.Number.pipe(T.Label()),
+          slotId: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/ipLoadbalancing/{serviceName}/tcp/farm/{farmId}/server/{serverId}/transparent",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingTcpFarmServerTransparentRequest",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          defaultFarmId: S.optional(S.Number.pipe(T.Query())),
+          defaultSslId: S.optional(S.Number.pipe(T.Query())),
+          port: S.optional(S.String.pipe(T.Query())),
+          zone: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/tcp/frontend", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingTcpFrontendRequest",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          frontendId: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/ipLoadbalancing/{serviceName}/tcp/route", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListIpLoadbalancingTcpRouteRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

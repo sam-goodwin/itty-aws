@@ -171,8 +171,8 @@ export const getProjectMembers: API.OperationMethod<
   GetProjectMembersError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetProjectMembersRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetProjectMembersResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<GetProjectMembersRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<GetProjectMembersResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -186,8 +186,8 @@ export const removeProjectMember: API.OperationMethod<
   RemoveProjectMemberError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<RemoveProjectMemberRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<RemoveProjectMemberResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<RemoveProjectMemberRequest>,
+  output: __S(5, __c2, 1) as any as S.Schema<RemoveProjectMemberResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -214,7 +214,11 @@ function __c0(j: number): any {
           id: S.String,
         }),
       ).annotate({ identifier: "AddProjectMemberResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -226,11 +230,15 @@ function __c0(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/projects/{idOrName}/members", code: 200 })),
       ).annotate({ identifier: "GetProjectMembersRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetProjectMembersResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -243,7 +251,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "RemoveProjectMemberRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -253,7 +261,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

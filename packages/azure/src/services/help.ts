@@ -276,8 +276,8 @@ export const CreateDiagnostic: API.OperationMethod<
   CreateDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateDiagnosticRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateDiagnosticResponse>,
+  input: __S(17, __c1, 1) as any as S.Schema<CreateDiagnosticRequest>,
+  output: __S(42, __c2, 10) as any as S.Schema<CreateDiagnosticResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -291,8 +291,8 @@ export const GetDiagnostic: API.OperationMethod<
   GetDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetDiagnosticRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetDiagnosticResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetDiagnosticRequest>,
+  output: __S(42, __c2, 10) as any as S.Schema<GetDiagnosticResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -306,8 +306,8 @@ export const ListDiscoverySolution: API.OperationMethod<
   ListDiscoverySolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListDiscoverySolutionRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DiscoveryResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListDiscoverySolutionRequest>,
+  output: __S(86, __c5, 6) as any as S.Schema<DiscoveryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -321,8 +321,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(100, __c6, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -358,32 +358,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckNameAvailabilityResponse",
       });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          solutionId: S.optional(S.String),
-          additionalParameters: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "DiagnosticInvocation" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          globalParameters: S.optional(__S(2, __c0, 2)),
-          insights: S.optional(__S(4, __c0, 4)),
+          globalParameters: S.optional(__S(32, __c2, 0)),
+          insights: S.optional(__S(34, __c2, 2)),
         }),
       ).annotate({
         identifier: "DiagnosticResourcePropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
           diagnosticsResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -393,7 +386,81 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateDiagnosticRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          solutionId: S.optional(S.String),
+          additionalParameters: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "DiagnosticInvocation" });
+    case 2:
+      return S.Array(__S(33, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          title: S.optional(S.String),
+          results: S.optional(S.String),
+          importanceLevel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Insight" });
+    case 4:
+      return S.Array(__S(35, __c2, 3));
+    case 5:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(38, __c2, 6)));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          type: S.optional(S.String),
+          message: S.optional(S.String),
+          details: S.optional(__S(37, __c2, 5)),
+        }),
+      ).annotate({ identifier: "Error" });
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          solutionId: S.optional(S.String),
+          status: S.optional(S.String),
+          insights: S.optional(__S(36, __c2, 4)),
+          error: S.optional(__S(38, __c2, 6)),
+        }),
+      ).annotate({ identifier: "Diagnostic" });
+    case 8:
+      return S.Array(__S(39, __c2, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          globalParameters: S.optional(__S(32, __c2, 0)),
+          insights: S.optional(__S(34, __c2, 2)),
+          acceptedAt: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          diagnostics: S.optional(__S(40, __c2, 8)),
+        }),
+      ).annotate({
+        identifier: "DiagnosticResourceProperties",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(41, __c2, 9)),
+        }),
+      ).annotate({ identifier: "CreateDiagnosticResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -406,66 +473,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          title: S.optional(S.String),
-          results: S.optional(S.String),
-          importanceLevel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Insight" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(11, __c1, 3)));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          type: S.optional(S.String),
-          message: S.optional(S.String),
-          details: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "Error" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          solutionId: S.optional(S.String),
-          status: S.optional(S.String),
-          insights: S.optional(__S(9, __c1, 1)),
-          error: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "Diagnostic" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          globalParameters: S.optional(__S(2, __c0, 2)),
-          insights: S.optional(__S(4, __c0, 4)),
-          acceptedAt: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          diagnostics: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "DiagnosticResourceProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "CreateDiagnosticResponse" });
-  }
-}
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -481,7 +489,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDiagnosticRequest" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -498,43 +510,43 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListDiscoverySolutionRequest",
       });
-    case 2:
+    case 1:
       return S.Array(S.String);
+    case 2:
+      return S.Array(__S(81, __c5, 1));
     case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           solutionId: S.optional(S.String),
           solutionType: S.optional(S.String),
           description: S.optional(S.String),
-          requiredParameterSets: S.optional(__S(19, __c2, 3)),
+          requiredParameterSets: S.optional(__S(82, __c5, 2)),
         }),
       ).annotate({
         identifier: "SolutionMetadataProperties",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(20, __c2, 4)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(83, __c5, 3)),
         }),
       ).annotate({ identifier: "SolutionMetadataResource" });
+    case 5:
+      return S.Array(__S(84, __c5, 4));
     case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(22, __c2, 6)),
+          value: S.optional(__S(85, __c5, 5)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveryResponse" });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -561,23 +573,22 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(25, __c3, 1)),
+          display: S.optional(__S(97, __c6, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(26, __c3, 2));
+      return S.Array(__S(98, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(27, __c3, 3)),
+          value: S.optional(__S(99, __c6, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

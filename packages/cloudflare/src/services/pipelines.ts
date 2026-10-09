@@ -2511,8 +2511,8 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreatePipelineRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreatePipelineResponse>,
+  input: __S(3, __c0, 3) as any as S.Schema<CreatePipelineRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<CreatePipelineResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2530,8 +2530,8 @@ export const createSink: API.OperationMethod<
   CreateSinkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateSinkRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<CreateSinkResponse>,
+  input: __S(69, __c4, 5) as any as S.Schema<CreateSinkRequest>,
+  output: __S(75, __c4, 11) as any as S.Schema<CreateSinkResponse>,
   errors: [
     SinkAuthFailed,
     InvalidSinkConfig,
@@ -2551,8 +2551,8 @@ export const createStream: API.OperationMethod<
   CreateStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateStreamRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<CreateStreamResponse>,
+  input: __S(84, __c5, 4) as any as S.Schema<CreateStreamRequest>,
+  output: __S(89, __c5, 9) as any as S.Schema<CreateStreamResponse>,
   errors: [InvalidStreamName, StreamAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2570,8 +2570,8 @@ export const createV1Pipeline: API.OperationMethod<
   CreateV1PipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CreateV1PipelineRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<CreateV1PipelineResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateV1PipelineRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<CreateV1PipelineResponse>,
   errors: [
     TableNotFound,
     InvalidSql,
@@ -2591,8 +2591,8 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeletePipelineRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<DeletePipelineResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeletePipelineRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<DeletePipelineResponse>,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2606,8 +2606,8 @@ export const deleteSink: API.OperationMethod<
   DeleteSinkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteSinkRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteSinkResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteSinkRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeleteSinkResponse>,
   errors: [SinkNotFound, InvalidSinkId, SinkInUse, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2626,8 +2626,8 @@ export const deleteStream: API.OperationMethod<
   DeleteStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteStreamRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteStreamResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteStreamRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeleteStreamResponse>,
   errors: [
     PipelineNotExists,
     StreamNotFound,
@@ -2648,8 +2648,8 @@ export const deleteV1Pipeline: API.OperationMethod<
   DeleteV1PipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteV1PipelineRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteV1PipelineResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteV1PipelineRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeleteV1PipelineResponse>,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2663,8 +2663,8 @@ export const getPipeline: API.OperationMethod<
   GetPipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetPipelineRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetPipelineResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetPipelineRequest>,
+  output: __S(244, __c15, 4) as any as S.Schema<GetPipelineResponse>,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2678,8 +2678,8 @@ export const getSink: API.OperationMethod<
   GetSinkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetSinkRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetSinkResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetSinkRequest>,
+  output: __S(262, __c16, 6) as any as S.Schema<GetSinkResponse>,
   errors: [SinkNotFound, InvalidSinkId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2693,8 +2693,8 @@ export const getStream: API.OperationMethod<
   GetStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetStreamRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetStreamResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetStreamRequest>,
+  output: __S(278, __c17, 6) as any as S.Schema<GetStreamResponse>,
   errors: [StreamNotFound, InvalidStreamId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2708,8 +2708,8 @@ export const getV1Pipeline: API.OperationMethod<
   GetV1PipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetV1PipelineRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetV1PipelineResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetV1PipelineRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<GetV1PipelineResponse>,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2725,8 +2725,8 @@ export const listPipelines: API.PaginatedOperationMethod<
   ListResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(74, __c9, 2) as any as S.Schema<ListPipelinesRequest>,
-    output: __S(79, __c9, 7) as any as S.Schema<ListPipelinesResponse>,
+    input: __S(304, __c19, 0) as any as S.Schema<ListPipelinesRequest>,
+    output: __S(309, __c19, 5) as any as S.Schema<ListPipelinesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2745,8 +2745,8 @@ export const listSinks: API.PaginatedOperationMethod<
   SinksListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(80, __c10, 0) as any as S.Schema<ListSinksRequest>,
-    output: __S(88, __c11, 0) as any as S.Schema<ListSinksResponse>,
+    input: __S(320, __c20, 0) as any as S.Schema<ListSinksRequest>,
+    output: __S(328, __c20, 8) as any as S.Schema<ListSinksResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2771,8 +2771,8 @@ export const listStreams: API.PaginatedOperationMethod<
   StreamsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(89, __c11, 1) as any as S.Schema<ListStreamsRequest>,
-    output: __S(96, __c12, 0) as any as S.Schema<ListStreamsResponse>,
+    input: __S(336, __c21, 0) as any as S.Schema<ListStreamsRequest>,
+    output: __S(343, __c21, 7) as any as S.Schema<ListStreamsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2797,8 +2797,8 @@ export const listV1Pipeline: API.PaginatedOperationMethod<
   ListV1ResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(97, __c12, 1) as any as S.Schema<ListV1PipelineRequest>,
-    output: __S(100, __c12, 4) as any as S.Schema<ListV1PipelineResponse>,
+    input: __S(352, __c22, 0) as any as S.Schema<ListV1PipelineRequest>,
+    output: __S(355, __c22, 3) as any as S.Schema<ListV1PipelineResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2821,8 +2821,8 @@ export const patchStream: API.OperationMethod<
   PatchStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<PatchStreamRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<PatchStreamResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<PatchStreamRequest>,
+  output: __S(373, __c23, 5) as any as S.Schema<PatchStreamResponse>,
   errors: [StreamNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2836,8 +2836,8 @@ export const sendStreamRecords: API.OperationMethod<
   SendStreamRecordsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<SendStreamRecordsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<SendStreamRecordsResponse>,
+  input: __S(385, __c24, 1) as any as S.Schema<SendStreamRecordsRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<SendStreamRecordsResponse>,
   errors: [IngestStreamNotFound, InvalidIngestData, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2851,8 +2851,8 @@ export const updatePipeline: API.OperationMethod<
   UpdatePipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<UpdatePipelineRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<UpdatePipelineResponse>,
+  input: __S(403, __c25, 3) as any as S.Schema<UpdatePipelineRequest>,
+  output: __S(406, __c25, 6) as any as S.Schema<UpdatePipelineResponse>,
   errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2866,8 +2866,8 @@ export const validateSqlPipeline: API.OperationMethod<
   ValidateSqlPipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ValidateSqlPipelineRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<ValidateSqlPipelineResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<ValidateSqlPipelineRequest>,
+  output: __S(424, __c26, 8) as any as S.Schema<ValidateSqlPipelineResponse>,
   errors: [TableNotFound, InvalidSql, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2875,6 +2875,110 @@ export const validateSqlPipeline: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          batch: __S(48, __c3, 0),
+          compression: __S(49, __c3, 1),
+          credentials: __S(50, __c3, 2),
+          format: S.String,
+          path: __S(51, __c3, 3),
+          type: S.String,
+        }),
+      ).annotate({ identifier: "CreateRequestDestination" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["format", "type", "authentication", "cors"],
+          ["format", "type"],
+        ]),
+      );
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          destination: __S(0, __c0, 0),
+          name: S.String,
+          source: __S(2, __c0, 2),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/pipelines", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePipelineRequest" });
+    case 4:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["format", "type", "authentication", "cors"],
+          ["format", "type"],
+        ]),
+      );
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          destination: __S(32, __c2, 0),
+          endpoint: S.String,
+          name: S.String,
+          source: __S(5, __c0, 5),
+          version: S.Number,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePipelineResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxBytes: S.Number.pipe(T.Body("max_bytes")),
+          maxDurationS: S.Number.pipe(T.Body("max_duration_s")),
+          maxRows: S.Number.pipe(T.Body("max_rows")),
+        }),
+      ).annotate({
+        identifier: "CreateResponseDestinationBatch",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateResponseDestinationCompression",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.String,
+          filename: S.optional(S.NullOr(S.String)),
+          filepath: S.optional(S.NullOr(S.String)),
+          prefix: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateResponseDestinationPath",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          batch: __S(16, __c1, 0),
+          compression: __S(17, __c1, 1),
+          format: S.String,
+          path: __S(18, __c1, 2),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateResponseDestination",
+      });
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2915,103 +3019,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateRequestDestinationPath",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          batch: __S(0, __c0, 0),
-          compression: __S(1, __c0, 1),
-          credentials: __S(2, __c0, 2),
-          format: S.String,
-          path: __S(3, __c0, 3),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "CreateRequestDestination" });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["format", "type", "authentication", "cors"],
-          ["format", "type"],
-        ]),
-      );
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          destination: __S(4, __c0, 4),
-          name: S.String,
-          source: __S(6, __c0, 6),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/pipelines", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreatePipelineRequest" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          maxBytes: S.Number.pipe(T.Body("max_bytes")),
-          maxDurationS: S.Number.pipe(T.Body("max_duration_s")),
-          maxRows: S.Number.pipe(T.Body("max_rows")),
-        }),
-      ).annotate({
-        identifier: "CreateResponseDestinationBatch",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateResponseDestinationCompression",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.String,
-          filename: S.optional(S.NullOr(S.String)),
-          filepath: S.optional(S.NullOr(S.String)),
-          prefix: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateResponseDestinationPath",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          batch: __S(8, __c1, 0),
-          compression: __S(9, __c1, 1),
-          format: S.String,
-          path: __S(10, __c1, 2),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateResponseDestination",
-      });
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["format", "type", "authentication", "cors"],
-          ["format", "type"],
-        ]),
-      );
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          destination: __S(11, __c1, 3),
-          endpoint: S.String,
-          name: S.String,
-          source: __S(13, __c1, 5),
-          version: S.Number,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreatePipelineResponse" });
-    case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -3027,11 +3039,7 @@ function __c1(j: number): any {
           ["token", "accountId", "bucket", "tableName", "namespace", "rollingPolicy"],
         ]),
       );
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3041,7 +3049,7 @@ function __c2(j: number): any {
           { key: "type", values: ["json", "parquet"] },
         ),
       );
-    case 1:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3075,31 +3083,31 @@ function __c2(j: number): any {
           },
         ),
       );
-    case 2:
-      return S.Array(__S(17, __c2, 1));
     case 3:
+      return S.Array(__S(66, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(__S(18, __c2, 2)),
+          fields: S.optional(__S(67, __c4, 3)),
           inferred: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SinksCreateRequestSchema" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
           type: S.String,
-          config: S.optional(__S(15, __c1, 7)),
-          format: S.optional(__S(16, __c2, 0)),
-          schema: S.optional(__S(19, __c2, 3)),
+          config: S.optional(__S(64, __c4, 0)),
+          format: S.optional(__S(65, __c4, 1)),
+          schema: S.optional(__S(68, __c4, 4)),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/accounts/{account_id}/pipelines/v1/sinks", code: 200 }),
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateSinkRequest" });
-    case 5:
+    case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -3115,7 +3123,7 @@ function __c2(j: number): any {
           ["token", "accountId", "bucket", "tableName", "namespace", "rollingPolicy"],
         ]),
       );
-    case 6:
+    case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3125,7 +3133,7 @@ function __c2(j: number): any {
           { key: "type", values: ["json", "parquet"] },
         ),
       );
-    case 7:
+    case 8:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3159,22 +3167,18 @@ function __c2(j: number): any {
           },
         ),
       );
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 9:
+      return S.Array(__S(72, __c4, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(__S(24, __c3, 0))),
+          fields: S.optional(S.NullOr(__S(73, __c4, 9))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
         identifier: "SinksCreateResponseSchema",
       });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -3182,12 +3186,16 @@ function __c3(j: number): any {
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           type: S.String,
-          config: S.optional(S.NullOr(__S(21, __c2, 5))),
-          format: S.optional(S.NullOr(__S(22, __c2, 6))),
-          schema: S.optional(S.NullOr(__S(25, __c3, 1))),
+          config: S.optional(S.NullOr(__S(70, __c4, 6))),
+          format: S.optional(S.NullOr(__S(71, __c4, 7))),
+          schema: S.optional(S.NullOr(__S(74, __c4, 10))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateSinkResponse" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3197,25 +3205,7 @@ function __c3(j: number): any {
           { key: "type", values: ["json", "parquet"] },
         ),
       );
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          origins: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "StreamsCreateRequestHttpCors",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          authentication: S.Boolean,
-          enabled: S.Boolean,
-          cors: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "StreamsCreateRequestHttp" });
-    case 7:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3249,38 +3239,26 @@ function __c3(j: number): any {
           },
         ),
       );
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(__S(32, __c4, 0)),
+          fields: S.optional(__S(82, __c5, 2)),
           inferred: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "StreamsCreateRequestSchema",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "StreamsCreateRequestWorkerBinding",
-      });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
-          format: S.optional(__S(27, __c3, 3)),
-          http: S.optional(__S(30, __c3, 6)),
-          schema: S.optional(__S(33, __c4, 1)),
-          workerBinding: S.optional(__S(34, __c4, 2).pipe(T.Body("worker_binding"))),
+          format: S.optional(__S(80, __c5, 0)),
+          http: S.optional(__S(129, __c8, 1)),
+          schema: S.optional(__S(83, __c5, 3)),
+          workerBinding: S.optional(__S(97, __c6, 1).pipe(T.Body("worker_binding"))),
         })
           .pipe(
             T.Http({
@@ -3291,25 +3269,7 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateStreamRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          origins: S.optional(S.NullOr(__S(28, __c3, 4))),
-        }),
-      ).annotate({
-        identifier: "StreamsCreateResponseHttpCors",
-      });
     case 5:
-      return S.suspend(() =>
-        S.Struct({
-          authentication: S.Boolean,
-          enabled: S.Boolean,
-          cors: S.optional(S.NullOr(__S(36, __c4, 4))),
-        }),
-      ).annotate({
-        identifier: "StreamsCreateResponseHttp",
-      });
-    case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3319,7 +3279,7 @@ function __c4(j: number): any {
           { key: "type", values: ["json", "parquet"] },
         ),
       );
-    case 7:
+    case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3353,37 +3313,93 @@ function __c4(j: number): any {
           },
         ),
       );
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(86, __c5, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(__S(40, __c5, 0))),
+          fields: S.optional(S.NullOr(__S(87, __c5, 7))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
         identifier: "StreamsCreateResponseSchema",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          http: __S(37, __c4, 5),
+          http: __S(112, __c7, 0),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           version: S.Number,
-          workerBinding: __S(34, __c4, 2).pipe(T.Body("worker_binding")),
+          workerBinding: __S(97, __c6, 1).pipe(T.Body("worker_binding")),
           endpoint: S.optional(S.NullOr(S.String)),
-          format: S.optional(S.NullOr(__S(38, __c4, 6))),
-          schema: S.optional(S.NullOr(__S(41, __c5, 1))),
+          format: S.optional(S.NullOr(__S(85, __c5, 5))),
+          schema: S.optional(S.NullOr(__S(88, __c5, 8))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateStreamResponse" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "StreamsCreateRequestWorkerBinding",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          origins: S.optional(S.NullOr(__S(96, __c6, 0))),
+        }),
+      ).annotate({
+        identifier: "StreamsCreateResponseHttpCors",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authentication: S.Boolean,
+          enabled: S.Boolean,
+          cors: S.optional(S.NullOr(__S(98, __c6, 2))),
+        }),
+      ).annotate({
+        identifier: "StreamsCreateResponseHttp",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          origins: S.optional(__S(96, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "StreamsCreateRequestHttpCors",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          authentication: S.Boolean,
+          enabled: S.Boolean,
+          cors: S.optional(__S(128, __c8, 0)),
+        }),
+      ).annotate({ identifier: "StreamsCreateRequestHttp" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3399,7 +3415,7 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateV1PipelineRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -3410,7 +3426,11 @@ function __c5(j: number): any {
           status: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateV1PipelineResponse" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3425,11 +3445,15 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeletePipelineRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeletePipelineResponse",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3446,13 +3470,17 @@ function __c5(j: number): any {
       ).annotate({ identifier: "DeleteSinkRequest" });
   }
 }
-function __c6(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteSinkResponse" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3467,7 +3495,11 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteStreamRequest" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3482,7 +3514,11 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteV1PipelineRequest" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3497,39 +3533,39 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPipelineRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          batch: __S(8, __c1, 0),
-          compression: __S(9, __c1, 1),
+          batch: __S(16, __c1, 0),
+          compression: __S(17, __c1, 1),
           format: S.String,
-          path: __S(10, __c1, 2),
+          path: __S(18, __c1, 2),
           type: S.String,
         }),
       ).annotate({ identifier: "GetResponseDestination" });
-    case 5:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["format", "type", "authentication", "cors"],
           ["format", "type"],
         ]),
       );
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(242, __c15, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          destination: __S(52, __c6, 4),
+          destination: __S(241, __c15, 1),
           endpoint: S.String,
           name: S.String,
-          source: __S(54, __c6, 6),
+          source: __S(243, __c15, 3),
           version: S.Number,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPipelineResponse" });
   }
 }
-function __c7(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3606,11 +3642,11 @@ function __c7(j: number): any {
         ),
       );
     case 4:
-      return S.Array(__S(59, __c7, 3));
+      return S.Array(__S(259, __c16, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(__S(60, __c7, 4))),
+          fields: S.optional(S.NullOr(__S(260, __c16, 4))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "SinksGetResponseSchema" });
@@ -3622,12 +3658,16 @@ function __c7(j: number): any {
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           type: S.String,
-          config: S.optional(S.NullOr(__S(57, __c7, 1))),
-          format: S.optional(S.NullOr(__S(58, __c7, 2))),
-          schema: S.optional(S.NullOr(__S(61, __c7, 5))),
+          config: S.optional(S.NullOr(__S(257, __c16, 1))),
+          format: S.optional(S.NullOr(__S(258, __c16, 2))),
+          schema: S.optional(S.NullOr(__S(261, __c16, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSinkResponse" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3642,19 +3682,15 @@ function __c7(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetStreamRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           authentication: S.Boolean,
           enabled: S.Boolean,
-          cors: S.optional(S.NullOr(__S(36, __c4, 4))),
+          cors: S.optional(S.NullOr(__S(98, __c6, 2))),
         }),
       ).annotate({ identifier: "StreamsGetResponseHttp" });
-    case 1:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3664,7 +3700,7 @@ function __c8(j: number): any {
           { key: "type", values: ["json", "parquet"] },
         ),
       );
-    case 2:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3698,31 +3734,35 @@ function __c8(j: number): any {
           },
         ),
       );
-    case 3:
-      return S.Array(__S(66, __c8, 2));
     case 4:
+      return S.Array(__S(275, __c17, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(__S(67, __c8, 3))),
+          fields: S.optional(S.NullOr(__S(276, __c17, 4))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "StreamsGetResponseSchema" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          http: __S(64, __c8, 0),
+          http: __S(273, __c17, 1),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           version: S.Number,
-          workerBinding: __S(34, __c4, 2).pipe(T.Body("worker_binding")),
+          workerBinding: __S(97, __c6, 1).pipe(T.Body("worker_binding")),
           endpoint: S.optional(S.NullOr(S.String)),
-          format: S.optional(S.NullOr(__S(65, __c8, 1))),
-          schema: S.optional(S.NullOr(__S(68, __c8, 4))),
+          format: S.optional(S.NullOr(__S(274, __c17, 2))),
+          schema: S.optional(S.NullOr(__S(277, __c17, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetStreamResponse" });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3737,7 +3777,7 @@ function __c8(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetV1PipelineRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -3747,13 +3787,9 @@ function __c8(j: number): any {
           version: S.Number,
         }),
       ).annotate({ identifier: "GetV1ResponseTablesItem" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(289, __c18, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -3762,11 +3798,15 @@ function __c9(j: number): any {
           name: S.String,
           sql: S.String,
           status: S.String,
-          tables: __S(72, __c9, 0),
+          tables: __S(290, __c18, 2),
           failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetV1PipelineResponse" });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3777,38 +3817,38 @@ function __c9(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/pipelines", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPipelinesRequest" });
-    case 3:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["format", "type", "authentication", "cors"],
           ["format", "type"],
         ]),
       );
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(305, __c19, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          destination: __S(11, __c1, 3),
+          destination: __S(32, __c2, 0),
           endpoint: S.String,
           name: S.String,
-          source: __S(76, __c9, 4),
+          source: __S(306, __c19, 2),
           version: S.Number,
         }),
       ).annotate({ identifier: "ListResponseResultsItem" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(307, __c19, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          results: __S(78, __c9, 6),
+          results: __S(308, __c19, 4),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPipelinesResponse" });
   }
 }
-function __c10(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3884,11 +3924,11 @@ function __c10(j: number): any {
         ),
       );
     case 4:
-      return S.Array(__S(83, __c10, 3));
+      return S.Array(__S(323, __c20, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(__S(84, __c10, 4))),
+          fields: S.optional(S.NullOr(__S(324, __c20, 4))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -3902,25 +3942,25 @@ function __c10(j: number): any {
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           type: S.String,
-          config: S.optional(S.NullOr(__S(81, __c10, 1))),
-          format: S.optional(S.NullOr(__S(82, __c10, 2))),
-          schema: S.optional(S.NullOr(__S(85, __c10, 5))),
+          config: S.optional(S.NullOr(__S(321, __c20, 1))),
+          format: S.optional(S.NullOr(__S(322, __c20, 2))),
+          schema: S.optional(S.NullOr(__S(325, __c20, 5))),
         }),
       ).annotate({ identifier: "SinksListResultItem" });
     case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(326, __c20, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          result: __S(87, __c10, 7).pipe(T.EnvelopePayload()),
+          result: __S(327, __c20, 7).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSinksResponse" });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3938,7 +3978,7 @@ function __c11(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListStreamsRequest" });
-    case 2:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3948,7 +3988,7 @@ function __c11(j: number): any {
           { key: "type", values: ["json", "parquet"] },
         ),
       );
-    case 3:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3982,46 +4022,46 @@ function __c11(j: number): any {
           },
         ),
       );
+    case 3:
+      return S.Array(__S(338, __c21, 2));
     case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(__S(92, __c11, 4))),
+          fields: S.optional(S.NullOr(__S(339, __c21, 3))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
         identifier: "StreamsListResultItemSchema",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          http: __S(37, __c4, 5),
+          http: __S(112, __c7, 0),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           version: S.Number,
-          workerBinding: __S(34, __c4, 2).pipe(T.Body("worker_binding")),
+          workerBinding: __S(97, __c6, 1).pipe(T.Body("worker_binding")),
           endpoint: S.optional(S.NullOr(S.String)),
-          format: S.optional(S.NullOr(__S(90, __c11, 2))),
-          schema: S.optional(S.NullOr(__S(93, __c11, 5))),
+          format: S.optional(S.NullOr(__S(337, __c21, 1))),
+          schema: S.optional(S.NullOr(__S(340, __c21, 4))),
         }),
       ).annotate({ identifier: "StreamsListResultItem" });
+    case 6:
+      return S.Array(__S(341, __c21, 5));
     case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          result: __S(95, __c11, 7).pipe(T.EnvelopePayload()),
+          result: __S(342, __c21, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListStreamsResponse" });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -4038,7 +4078,7 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListV1PipelineRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4049,22 +4089,26 @@ function __c12(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "ListV1ResultItem" });
+    case 2:
+      return S.Array(__S(353, __c22, 1));
     case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(99, __c12, 3).pipe(T.EnvelopePayload()),
+          result: __S(354, __c22, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListV1PipelineResponse" });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           streamId: S.String.pipe(T.Label("stream_id")),
-          http: S.optional(__S(30, __c3, 6)),
-          workerBinding: S.optional(__S(34, __c4, 2).pipe(T.Body("worker_binding"))),
+          http: S.optional(__S(129, __c8, 1)),
+          workerBinding: S.optional(__S(97, __c6, 1).pipe(T.Body("worker_binding"))),
         })
           .pipe(
             T.Http({
@@ -4075,7 +4119,7 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchStreamRequest" });
-    case 6:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -4085,7 +4129,7 @@ function __c12(j: number): any {
           { key: "type", values: ["json", "parquet"] },
         ),
       );
-    case 7:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -4119,48 +4163,48 @@ function __c12(j: number): any {
           },
         ),
       );
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(370, __c23, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.NullOr(__S(104, __c13, 0))),
+          fields: S.optional(S.NullOr(__S(371, __c23, 3))),
           inferred: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
         identifier: "StreamsUpdateResponseSchema",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          http: __S(37, __c4, 5),
+          http: __S(112, __c7, 0),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           version: S.Number,
-          workerBinding: __S(34, __c4, 2).pipe(T.Body("worker_binding")),
+          workerBinding: __S(97, __c6, 1).pipe(T.Body("worker_binding")),
           endpoint: S.optional(S.NullOr(S.String)),
-          format: S.optional(S.NullOr(__S(102, __c12, 6))),
-          schema: S.optional(S.NullOr(__S(105, __c13, 1))),
+          format: S.optional(S.NullOr(__S(369, __c23, 1))),
+          schema: S.optional(S.NullOr(__S(372, __c23, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchStreamResponse" });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           streamId: S.String.pipe(T.Label("stream_id")),
-          records: __S(107, __c13, 3).pipe(T.HttpBody()),
+          records: __S(384, __c24, 0).pipe(T.HttpBody()),
         })
           .pipe(T.Http({ method: "POST", uri: "/", code: 200 }))
           .pipe(T.Host("https://{stream_id}.ingest.cloudflare.com")),
       ).annotate({ identifier: "SendStreamRecordsRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           committed: S.optional(S.NullOr(S.Number)),
@@ -4168,38 +4212,38 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "SendStreamRecordsResponse",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          batch: __S(0, __c0, 0),
-          compression: __S(1, __c0, 1),
+          batch: __S(48, __c3, 0),
+          compression: __S(49, __c3, 1),
           format: S.String,
-          path: __S(3, __c0, 3),
+          path: __S(51, __c3, 3),
           type: S.String,
-          credentials: S.optional(__S(2, __c0, 2)),
+          credentials: S.optional(__S(50, __c3, 2)),
         }),
       ).annotate({ identifier: "UpdateRequestDestination" });
-    case 7:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["format", "type", "authentication", "cors"],
           ["format", "type"],
         ]),
       );
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(401, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           pipelineName: S.String.pipe(T.Label("pipeline_name")),
-          destination: __S(110, __c13, 6),
+          destination: __S(400, __c25, 0),
           name: S.String,
-          source: __S(112, __c14, 0),
+          source: __S(402, __c25, 2),
         })
           .pipe(
             T.Http({
@@ -4210,27 +4254,31 @@ function __c14(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdatePipelineRequest" });
-    case 2:
+    case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["format", "type", "authentication", "cors"],
           ["format", "type"],
         ]),
       );
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(404, __c25, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          destination: __S(11, __c1, 3),
+          destination: __S(32, __c2, 0),
           endpoint: S.String,
           name: S.String,
-          source: __S(115, __c14, 3),
+          source: __S(405, __c25, 5),
           version: S.Number,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdatePipelineResponse" });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -4247,7 +4295,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ValidateSqlPipelineRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4258,13 +4306,9 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ValidateSqlResponseTablesValue",
       });
-    case 7:
-      return S.Record(S.String, __S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Record(S.String, __S(417, __c26, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           destId: S.Number.pipe(T.Body("dest_id")),
@@ -4276,9 +4320,9 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ValidateSqlResponseGraphEdgesItem",
       });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(419, __c26, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
@@ -4289,27 +4333,26 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ValidateSqlResponseGraphNodesItem",
       });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(421, __c26, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          edges: __S(121, __c15, 1),
-          nodes: __S(123, __c15, 3),
+          edges: __S(420, __c26, 4),
+          nodes: __S(422, __c26, 6),
         }),
       ).annotate({ identifier: "ValidateSqlResponseGraph" });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          tables: __S(119, __c14, 7),
-          graph: S.optional(S.NullOr(__S(124, __c15, 4))),
+          tables: __S(418, __c26, 2),
+          graph: S.optional(S.NullOr(__S(423, __c26, 7))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ValidateSqlPipelineResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -211,7 +211,7 @@ export const getPropertyDefinition: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetPropertyDefinitionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<EnterprisePropertyDefinition>,
+  output: __S(11, __c1, 3) as any as S.Schema<EnterprisePropertyDefinition>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -225,8 +225,8 @@ export const getPropertyDefinitionsSeenTogether: API.OperationMethod<
   GetPropertyDefinitionsSeenTogetherError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetPropertyDefinitionsSeenTogetherRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetPropertyDefinitionsSeenTogetherResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetPropertyDefinitionsSeenTogetherRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<GetPropertyDefinitionsSeenTogetherResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -239,8 +239,8 @@ export const listPropertyDefinitions: API.OperationMethod<
   ListPropertyDefinitionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListPropertyDefinitionsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PaginatedEnterprisePropertyDefinitionList>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListPropertyDefinitionsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<PaginatedEnterprisePropertyDefinitionList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -258,8 +258,8 @@ export const propertyDefinitionsBulkUpdateTagsCreate: API.OperationMethod<
   PropertyDefinitionsBulkUpdateTagsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<BulkUpdateTagsResponse>,
+  input: __S(42, __c5, 2) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequest>,
+  output: __S(47, __c5, 7) as any as S.Schema<BulkUpdateTagsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -272,8 +272,8 @@ export const propertyDefinitionsDestroy: API.OperationMethod<
   PropertyDefinitionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<PropertyDefinitionsDestroyRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PropertyDefinitionsDestroyResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<PropertyDefinitionsDestroyRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<PropertyDefinitionsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -286,8 +286,8 @@ export const updatePropertyDefinition: API.OperationMethod<
   UpdatePropertyDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<UpdatePropertyDefinitionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<EnterprisePropertyDefinition>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdatePropertyDefinitionRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<EnterprisePropertyDefinition>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -304,8 +304,8 @@ export const updatePropertyDefinitionsPartial: API.OperationMethod<
   UpdatePropertyDefinitionsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<UpdatePropertyDefinitionsPartialRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<EnterprisePropertyDefinition>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdatePropertyDefinitionsPartialRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<EnterprisePropertyDefinition>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -329,11 +329,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPropertyDefinitionRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 2:
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -343,32 +347,36 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2, __c0, 2))),
+          hedgehog_config: S.optional(S.NullOr(__S(9, __c1, 1))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(8, __c1, 0)),
           is_numerical: S.optional(S.Boolean),
           updated_at: S.optional(S.String),
-          updated_by: S.optional(S.NullOr(__S(3, __c0, 3))),
+          updated_by: S.optional(S.NullOr(__S(10, __c1, 2))),
           is_seen_on_filtered_events: S.optional(S.NullOr(S.Boolean)),
           property_type: S.optional(S.NullOr(S.Unknown)),
           verified: S.optional(S.Boolean),
           verified_at: S.optional(S.NullOr(S.String)),
-          verified_by: S.optional(S.NullOr(__S(3, __c0, 3))),
+          verified_by: S.optional(S.NullOr(__S(10, __c1, 2))),
           hidden: S.optional(S.NullOr(S.Boolean)),
           warehouse_origin: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "EnterprisePropertyDefinition",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -382,11 +390,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPropertyDefinitionsSeenTogetherRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetPropertyDefinitionsSeenTogetherResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -415,34 +431,34 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListPropertyDefinitionsRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(4, __c0, 4));
     case 1:
+      return S.Array(__S(11, __c1, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(8, __c1, 0)),
+          results: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "PaginatedEnterprisePropertyDefinitionList",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 3:
+    case 1:
       return S.Array(S.String);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ids: S.optional(__S(10, __c1, 2)),
+          ids: S.optional(__S(40, __c5, 0)),
           action: S.optional(S.String),
-          tags: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(41, __c5, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -453,36 +469,36 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PropertyDefinitionsBulkUpdateTagsCreateRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          tags: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "BulkUpdateTagsItem" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(43, __c5, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "BulkUpdateTagsError" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(45, __c5, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          updated: S.optional(__S(14, __c1, 6)),
-          skipped: S.optional(__S(16, __c2, 0)),
+          updated: S.optional(__S(44, __c5, 4)),
+          skipped: S.optional(__S(46, __c5, 6)),
         }),
       ).annotate({ identifier: "BulkUpdateTagsResponse" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -497,13 +513,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PropertyDefinitionsDestroyRequest",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(8, __c1, 0)),
           property_type: S.optional(S.NullOr(S.Unknown)),
           verified: S.optional(S.Boolean),
           hidden: S.optional(S.NullOr(S.Boolean)),
@@ -517,13 +537,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdatePropertyDefinitionRequest",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(8, __c1, 0)),
           property_type: S.optional(S.NullOr(S.Unknown)),
           verified: S.optional(S.Boolean),
           hidden: S.optional(S.NullOr(S.Boolean)),
@@ -539,7 +563,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

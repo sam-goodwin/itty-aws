@@ -494,8 +494,8 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreatePipelineRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreatePipelineResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<CreatePipelineRequest>,
+  output: __S(475, __c29, 11) as any as S.Schema<CreatePipelineResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -528,8 +528,8 @@ export const createPipelineEndpoint: API.OperationMethod<
   CreatePipelineEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreatePipelineEndpointRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreatePipelineEndpointResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreatePipelineEndpointRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreatePipelineEndpointResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -561,8 +561,8 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeletePipelineRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeletePipelineResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeletePipelineRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<DeletePipelineResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -591,8 +591,8 @@ export const deletePipelineEndpoint: API.OperationMethod<
   DeletePipelineEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeletePipelineEndpointRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DeletePipelineEndpointResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeletePipelineEndpointRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeletePipelineEndpointResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -621,8 +621,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -652,8 +652,8 @@ export const getPipeline: API.OperationMethod<
   GetPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetPipelineRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetPipelineResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetPipelineRequest>,
+  output: __S(475, __c29, 11) as any as S.Schema<GetPipelineResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -685,8 +685,8 @@ export const getPipelineBlueprint: API.OperationMethod<
   GetPipelineBlueprintError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetPipelineBlueprintRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetPipelineBlueprintResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetPipelineBlueprintRequest>,
+  output: __S(114, __c7, 2) as any as S.Schema<GetPipelineBlueprintResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -719,8 +719,8 @@ export const getPipelineChangeProgress: API.OperationMethod<
   GetPipelineChangeProgressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetPipelineChangeProgressRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetPipelineChangeProgressResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetPipelineChangeProgressRequest>,
+  output: __S(133, __c8, 5) as any as S.Schema<GetPipelineChangeProgressResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -750,8 +750,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetResourcePolicyResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetResourcePolicyRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -783,8 +783,8 @@ export const listPipelineBlueprints: API.OperationMethod<
   ListPipelineBlueprintsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListPipelineBlueprintsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ListPipelineBlueprintsResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListPipelineBlueprintsRequest>,
+  output: __S(179, __c11, 3) as any as S.Schema<ListPipelineBlueprintsResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -814,8 +814,8 @@ export const listPipelineEndpointConnections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PipelineEndpointConnection
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListPipelineEndpointConnectionsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListPipelineEndpointConnectionsResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListPipelineEndpointConnectionsRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<ListPipelineEndpointConnectionsResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -851,8 +851,8 @@ export const listPipelineEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PipelineEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListPipelineEndpointsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListPipelineEndpointsResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListPipelineEndpointsRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<ListPipelineEndpointsResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -890,8 +890,8 @@ export const listPipelines: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListPipelinesRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ListPipelinesResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListPipelinesRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<ListPipelinesResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -926,8 +926,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -958,8 +958,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<PutResourcePolicyResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<PutResourcePolicyRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -989,8 +989,8 @@ export const revokePipelineEndpointConnections: API.OperationMethod<
   RevokePipelineEndpointConnectionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<RevokePipelineEndpointConnectionsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<RevokePipelineEndpointConnectionsResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<RevokePipelineEndpointConnectionsRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<RevokePipelineEndpointConnectionsResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -1020,8 +1020,8 @@ export const startPipeline: API.OperationMethod<
   StartPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<StartPipelineRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<StartPipelineResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<StartPipelineRequest>,
+  output: __S(475, __c29, 11) as any as S.Schema<StartPipelineResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1053,8 +1053,8 @@ export const stopPipeline: API.OperationMethod<
   StopPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<StopPipelineRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<StopPipelineResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<StopPipelineRequest>,
+  output: __S(475, __c29, 11) as any as S.Schema<StopPipelineResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1086,8 +1086,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<TagResourceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -1118,8 +1118,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<UntagResourceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -1150,8 +1150,8 @@ export const updatePipeline: API.OperationMethod<
   UpdatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<UpdatePipelineRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdatePipelineResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<UpdatePipelineRequest>,
+  output: __S(475, __c29, 11) as any as S.Schema<UpdatePipelineResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1182,8 +1182,8 @@ export const validatePipeline: API.OperationMethod<
   ValidatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ValidatePipelineRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ValidatePipelineResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ValidatePipelineRequest>,
+  output: __S(387, __c24, 3) as any as S.Schema<ValidatePipelineResponse>,
   errors: [
     AccessDeniedException,
     DisabledOperationException,
@@ -1199,149 +1199,8 @@ export const validatePipeline: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ LogGroup: S.String })).annotate({
-        identifier: "CloudWatchLogDestination",
-      });
-    case 1:
       return S.suspend(() =>
-        S.Struct({
-          IsLoggingEnabled: S.optional(S.Boolean),
-          CloudWatchLogDestination: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "LogPublishingOptions" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ AttachToVpc: S.Boolean, CidrBlock: S.optional(S.String) }),
-      ).annotate({ identifier: "VpcAttachmentOptions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          SubnetIds: __S(2, __c0, 2),
-          SecurityGroupIds: S.optional(__S(2, __c0, 2)),
-          VpcAttachmentOptions: S.optional(__S(3, __c0, 3)),
-          VpcEndpointManagement: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VpcOptions" });
-    case 5:
-      return S.suspend(() => S.Struct({ PersistentBufferEnabled: S.Boolean })).annotate({
-        identifier: "BufferOptions",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ KmsKeyArn: S.String })).annotate({
-        identifier: "EncryptionAtRestOptions",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          PipelineName: S.String,
-          MinUnits: S.Number,
-          MaxUnits: S.Number,
-          PipelineConfigurationBody: S.String,
-          LogPublishingOptions: S.optional(__S(1, __c0, 1)),
-          VpcOptions: S.optional(__S(4, __c0, 4)),
-          BufferOptions: S.optional(__S(5, __c0, 5)),
-          EncryptionAtRestOptions: S.optional(__S(6, __c0, 6)),
-          Tags: S.optional(__S(8, __c1, 0)),
-          PipelineRoleArn: S.optional(S.String),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/2022-01-01/osis/createPipeline" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreatePipelineRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ Description: S.optional(S.String) })).annotate({
-        identifier: "PipelineStatusReason",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          VpcEndpointId: S.optional(S.String),
-          VpcId: S.optional(S.String),
-          VpcOptions: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "VpcEndpoint" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceName: S.optional(S.String),
-          VpcEndpointId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceVpcEndpoint" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ServiceName: S.optional(S.String), Endpoint: S.optional(S.String) }),
-      ).annotate({ identifier: "PipelineDestination" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          PipelineName: S.optional(S.String),
-          PipelineArn: S.optional(S.String),
-          MinUnits: S.optional(S.Number),
-          MaxUnits: S.optional(S.Number),
-          Status: S.optional(S.String),
-          StatusReason: S.optional(__S(10, __c1, 2)),
-          PipelineConfigurationBody: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          IngestEndpointUrls: S.optional(__S(2, __c0, 2)),
-          LogPublishingOptions: S.optional(__S(1, __c0, 1)),
-          VpcEndpoints: S.optional(__S(12, __c1, 4)),
-          BufferOptions: S.optional(__S(5, __c0, 5)),
-          EncryptionAtRestOptions: S.optional(__S(6, __c0, 6)),
-          VpcEndpointService: S.optional(S.String),
-          ServiceVpcEndpoints: S.optional(__S(14, __c1, 6)),
-          Destinations: S.optional(__S(16, __c2, 0)),
-          Tags: S.optional(__S(8, __c1, 0)),
-          PipelineRoleArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Pipeline" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Pipeline: S.optional(__S(17, __c2, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreatePipelineResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          SubnetIds: S.optional(__S(2, __c0, 2)),
-          SecurityGroupIds: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "PipelineEndpointVpcOptions",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ PipelineArn: S.String, VpcOptions: __S(19, __c2, 3) }).pipe(
+        S.Struct({ PipelineArn: S.String, VpcOptions: __S(16, __c1, 0) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2022-01-01/osis/createPipelineEndpoint" }),
@@ -1355,7 +1214,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreatePipelineEndpointRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PipelineArn: S.optional(S.String),
@@ -1366,7 +1225,24 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreatePipelineEndpointResponse",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SubnetIds: S.optional(__S(416, __c26, 0)),
+          SecurityGroupIds: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({
+        identifier: "PipelineEndpointVpcOptions",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
           T.all(
@@ -1380,7 +1256,7 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeletePipelineRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeletePipelineResponse",
       });
@@ -1407,11 +1283,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeletePipelineEndpointRequest",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeletePipelineEndpointResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
           T.all(
@@ -1427,7 +1311,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteResourcePolicyRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
           T.all(
@@ -1441,7 +1329,11 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetPipelineRequest" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BlueprintName: S.String.pipe(T.HttpLabel("BlueprintName")),
@@ -1460,7 +1352,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPipelineBlueprintRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BlueprintName: S.optional(S.String),
@@ -1471,15 +1363,19 @@ function __c3(j: number): any {
           UseCase: S.optional(S.String),
         }),
       ).annotate({ identifier: "PipelineBlueprint" });
-    case 6:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Blueprint: S.optional(__S(29, __c3, 5)), Format: S.optional(S.String) }).pipe(
+        S.Struct({ Blueprint: S.optional(__S(113, __c7, 1)), Format: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({
         identifier: "GetPipelineBlueprintResponse",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
           T.all(
@@ -1498,11 +1394,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPipelineChangeProgressRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -1511,26 +1403,30 @@ function __c4(j: number): any {
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ChangeProgressStage" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Status: S.optional(S.String),
           TotalNumberOfStages: S.optional(S.Number),
-          ChangeProgressStages: S.optional(__S(33, __c4, 1)),
+          ChangeProgressStages: S.optional(__S(130, __c8, 2)),
         }),
       ).annotate({ identifier: "ChangeProgressStatus" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
     case 4:
+      return S.Array(__S(131, __c8, 3));
+    case 5:
       return S.suspend(() =>
-        S.Struct({ ChangeProgressStatuses: S.optional(__S(35, __c4, 3)) }).pipe(ns),
+        S.Struct({ ChangeProgressStatuses: S.optional(__S(132, __c8, 4)) }).pipe(ns),
       ).annotate({
         identifier: "GetPipelineChangeProgressResponse",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
           T.all(
@@ -1544,13 +1440,21 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetResourcePolicyRequest" });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "GetResourcePolicyResponse",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -1566,11 +1470,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListPipelineBlueprintsRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BlueprintName: S.optional(S.String),
@@ -1580,15 +1480,19 @@ function __c5(j: number): any {
           UseCase: S.optional(S.String),
         }),
       ).annotate({ identifier: "PipelineBlueprintSummary" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
     case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Blueprints: S.optional(__S(41, __c5, 1)) }).pipe(ns),
+        S.Struct({ Blueprints: S.optional(__S(178, __c11, 2)) }).pipe(ns),
       ).annotate({
         identifier: "ListPipelineBlueprintsResponse",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1607,7 +1511,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListPipelineEndpointConnectionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PipelineArn: S.optional(S.String),
@@ -1618,18 +1522,22 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PipelineEndpointConnection",
       });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          PipelineEndpointConnections: S.optional(__S(45, __c5, 5)),
+          PipelineEndpointConnections: S.optional(__S(194, __c12, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListPipelineEndpointConnectionsResponse",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1648,33 +1556,33 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListPipelineEndpointsRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PipelineArn: S.optional(S.String),
           EndpointId: S.optional(S.String),
           Status: S.optional(S.String),
           VpcId: S.optional(S.String),
-          VpcOptions: S.optional(__S(19, __c2, 3)),
+          VpcOptions: S.optional(__S(16, __c1, 0)),
           IngestEndpointUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "PipelineEndpoint" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
     case 2:
+      return S.Array(__S(209, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          PipelineEndpoints: S.optional(__S(49, __c6, 1)),
+          PipelineEndpoints: S.optional(__S(210, __c13, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListPipelineEndpointsResponse",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1691,31 +1599,35 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListPipelinesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
-          StatusReason: S.optional(__S(10, __c1, 2)),
+          StatusReason: S.optional(__S(448, __c28, 0)),
           PipelineName: S.optional(S.String),
           PipelineArn: S.optional(S.String),
           MinUnits: S.optional(S.Number),
           MaxUnits: S.optional(S.Number),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Destinations: S.optional(__S(16, __c2, 0)),
-          Tags: S.optional(__S(8, __c1, 0)),
+          Destinations: S.optional(__S(450, __c28, 2)),
+          Tags: S.optional(__S(433, __c27, 1)),
         }),
       ).annotate({ identifier: "PipelineSummary" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Pipelines: S.optional(__S(53, __c6, 5)),
+          Pipelines: S.optional(__S(226, __c14, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "ListPipelinesResponse" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")) }).pipe(
           T.all(
@@ -1731,15 +1643,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(8, __c1, 0)) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(433, __c27, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Policy: S.String }).pipe(
           T.all(
@@ -1753,9 +1665,13 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutResourcePolicyRequest" });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ PipelineArn: S.String, EndpointIds: __S(2, __c0, 2) }).pipe(
+        S.Struct({ PipelineArn: S.String, EndpointIds: __S(416, __c26, 0) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2022-01-01/osis/revokePipelineEndpointConnections" }),
@@ -1769,11 +1685,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "RevokePipelineEndpointConnectionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ PipelineArn: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "RevokePipelineEndpointConnectionsResponse",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
           T.all(
@@ -1787,7 +1707,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartPipelineRequest" });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PipelineName: S.String.pipe(T.HttpLabel("PipelineName")) }).pipe(
           T.all(
@@ -1801,9 +1725,13 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StopPipelineRequest" });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")), Tags: __S(8, __c1, 0) }).pipe(
+        S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")), Tags: __S(433, __c27, 1) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2022-01-01/osis/tagResource" }),
@@ -1815,17 +1743,21 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "TagResourceResponse",
       });
   }
 }
-function __c8(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")), TagKeys: __S(2, __c0, 2) }).pipe(
+        S.Struct({ Arn: S.String.pipe(T.HttpQuery("arn")), TagKeys: __S(416, __c26, 0) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2022-01-01/osis/untagResource" }),
@@ -1837,16 +1769,20 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PipelineName: S.String.pipe(T.HttpLabel("PipelineName")),
           MinUnits: S.optional(S.Number),
           MaxUnits: S.optional(S.Number),
           PipelineConfigurationBody: S.optional(S.String),
-          LogPublishingOptions: S.optional(__S(1, __c0, 1)),
-          BufferOptions: S.optional(__S(5, __c0, 5)),
-          EncryptionAtRestOptions: S.optional(__S(6, __c0, 6)),
+          LogPublishingOptions: S.optional(__S(465, __c29, 1)),
+          BufferOptions: S.optional(__S(468, __c29, 4)),
+          EncryptionAtRestOptions: S.optional(__S(469, __c29, 5)),
           PipelineRoleArn: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1860,7 +1796,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdatePipelineRequest" });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PipelineConfigurationBody: S.String }).pipe(
           T.all(
@@ -1874,22 +1814,162 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ValidatePipelineRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ Message: S.optional(S.String) })).annotate({
         identifier: "ValidationMessage",
       });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(385, __c24, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          isValid: S.optional(S.Boolean),
-          Errors: S.optional(__S(68, __c8, 4)),
-        }).pipe(ns),
+        S.Struct({ isValid: S.optional(S.Boolean), Errors: S.optional(__S(386, __c24, 2)) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ValidatePipelineResponse" });
   }
 }
-
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PipelineName: S.String,
+          MinUnits: S.Number,
+          MaxUnits: S.Number,
+          PipelineConfigurationBody: S.String,
+          LogPublishingOptions: S.optional(__S(465, __c29, 1)),
+          VpcOptions: S.optional(__S(467, __c29, 3)),
+          BufferOptions: S.optional(__S(468, __c29, 4)),
+          EncryptionAtRestOptions: S.optional(__S(469, __c29, 5)),
+          Tags: S.optional(__S(433, __c27, 1)),
+          PipelineRoleArn: S.optional(S.String),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2022-01-01/osis/createPipeline" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreatePipelineRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Description: S.optional(S.String) })).annotate({
+        identifier: "PipelineStatusReason",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ServiceName: S.optional(S.String), Endpoint: S.optional(S.String) }),
+      ).annotate({ identifier: "PipelineDestination" });
+    case 2:
+      return S.Array(__S(449, __c28, 1));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ LogGroup: S.String })).annotate({
+        identifier: "CloudWatchLogDestination",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          IsLoggingEnabled: S.optional(S.Boolean),
+          CloudWatchLogDestination: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({ identifier: "LogPublishingOptions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AttachToVpc: S.Boolean, CidrBlock: S.optional(S.String) }),
+      ).annotate({ identifier: "VpcAttachmentOptions" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          SubnetIds: __S(416, __c26, 0),
+          SecurityGroupIds: S.optional(__S(416, __c26, 0)),
+          VpcAttachmentOptions: S.optional(__S(466, __c29, 2)),
+          VpcEndpointManagement: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VpcOptions" });
+    case 4:
+      return S.suspend(() => S.Struct({ PersistentBufferEnabled: S.Boolean })).annotate({
+        identifier: "BufferOptions",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ KmsKeyArn: S.String })).annotate({
+        identifier: "EncryptionAtRestOptions",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          VpcEndpointId: S.optional(S.String),
+          VpcId: S.optional(S.String),
+          VpcOptions: S.optional(__S(467, __c29, 3)),
+        }),
+      ).annotate({ identifier: "VpcEndpoint" });
+    case 7:
+      return S.Array(__S(470, __c29, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceName: S.optional(S.String),
+          VpcEndpointId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceVpcEndpoint" });
+    case 9:
+      return S.Array(__S(472, __c29, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          PipelineName: S.optional(S.String),
+          PipelineArn: S.optional(S.String),
+          MinUnits: S.optional(S.Number),
+          MaxUnits: S.optional(S.Number),
+          Status: S.optional(S.String),
+          StatusReason: S.optional(__S(448, __c28, 0)),
+          PipelineConfigurationBody: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          IngestEndpointUrls: S.optional(__S(416, __c26, 0)),
+          LogPublishingOptions: S.optional(__S(465, __c29, 1)),
+          VpcEndpoints: S.optional(__S(471, __c29, 7)),
+          BufferOptions: S.optional(__S(468, __c29, 4)),
+          EncryptionAtRestOptions: S.optional(__S(469, __c29, 5)),
+          VpcEndpointService: S.optional(S.String),
+          ServiceVpcEndpoints: S.optional(__S(473, __c29, 9)),
+          Destinations: S.optional(__S(450, __c28, 2)),
+          Tags: S.optional(__S(433, __c27, 1)),
+          PipelineRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Pipeline" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({ Pipeline: S.optional(__S(474, __c29, 10)) }).pipe(ns),
+      ).annotate({ identifier: "CreatePipelineResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

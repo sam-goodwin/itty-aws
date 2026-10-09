@@ -71,7 +71,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
     message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     fieldList: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => __S(7, __c0, 7)).annotate({
+      /*@__PURE__*/ S.suspend(() => __S(1, __c0, 1)).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
@@ -140,8 +140,8 @@ export const getAccountCustomizations: API.OperationMethod<
   GetAccountCustomizationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<GetAccountCustomizationsInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetAccountCustomizationsOutput>,
+  input: __S(2, __c1, 0) as any as S.Schema<GetAccountCustomizationsInput>,
+  output: __S(6, __c3, 0) as any as S.Schema<GetAccountCustomizationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -171,8 +171,8 @@ export const listServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Service
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListServicesInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListServicesOutput>,
+  input: __S(8, __c4, 0) as any as S.Schema<ListServicesInput>,
+  output: __S(9, __c4, 1) as any as S.Schema<ListServicesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -202,8 +202,8 @@ export const updateAccountCustomizations: API.OperationMethod<
   UpdateAccountCustomizationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<UpdateAccountCustomizationsInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<UpdateAccountCustomizationsOutput>,
+  input: __S(10, __c5, 0) as any as S.Schema<UpdateAccountCustomizationsInput>,
+  output: __S(6, __c3, 0) as any as S.Schema<UpdateAccountCustomizationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -217,6 +217,16 @@ export const updateAccountCustomizations: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ path: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -233,19 +243,31 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAccountCustomizationsInput",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountColor: S.optional(S.String),
-          visibleServices: S.optional(__S(1, __c0, 1)),
-          visibleRegions: S.optional(__S(1, __c0, 1)),
+          visibleServices: S.optional(__S(4, __c2, 0)),
+          visibleRegions: S.optional(__S(4, __c2, 0)),
         }),
       ).annotate({
         identifier: "GetAccountCustomizationsOutput",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -254,16 +276,20 @@ function __c0(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/v1/services" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListServicesInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), services: S.optional(__S(1, __c0, 1)) }),
+        S.Struct({ nextToken: S.optional(S.String), services: S.optional(__S(4, __c2, 0)) }),
       ).annotate({ identifier: "ListServicesOutput" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountColor: S.optional(S.String),
-          visibleServices: S.optional(__S(1, __c0, 1)),
-          visibleRegions: S.optional(__S(1, __c0, 1)),
+          visibleServices: S.optional(__S(4, __c2, 0)),
+          visibleRegions: S.optional(__S(4, __c2, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/v1/account-customizations" }),
@@ -277,15 +303,8 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "UpdateAccountCustomizationsInput",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ path: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

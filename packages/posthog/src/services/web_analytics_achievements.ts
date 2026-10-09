@@ -149,8 +149,8 @@ export const updateWebAnalyticsAchievementPreferences: API.OperationMethod<
   UpdateWebAnalyticsAchievementPreferencesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<UpdateWebAnalyticsAchievementPreferencesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<WebAnalyticsUserPreferences>,
+  input: __S(16, __c1, 0) as any as S.Schema<UpdateWebAnalyticsAchievementPreferencesRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<WebAnalyticsUserPreferences>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -164,8 +164,8 @@ export const webAnalyticsAchievementsOverview: API.OperationMethod<
   WebAnalyticsAchievementsOverviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<WebAnalyticsAchievementsOverviewRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<AchievementsListResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<WebAnalyticsAchievementsOverviewRequest>,
+  output: __S(58, __c3, 10) as any as S.Schema<AchievementsListResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -179,8 +179,8 @@ export const webAnalyticsAchievementsPreferences: API.OperationMethod<
   WebAnalyticsAchievementsPreferencesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<WebAnalyticsAchievementsPreferencesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<WebAnalyticsUserPreferences>,
+  input: __S(64, __c4, 0) as any as S.Schema<WebAnalyticsAchievementsPreferencesRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<WebAnalyticsUserPreferences>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -194,8 +194,8 @@ export const webAnalyticsAchievementsRecordInteraction: API.OperationMethod<
   WebAnalyticsAchievementsRecordInteractionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<WebAnalyticsAchievementsRecordInteractionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<RecordInteractionResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<WebAnalyticsAchievementsRecordInteractionRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<RecordInteractionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -209,8 +209,8 @@ export const webAnalyticsAchievementsRecordVisit: API.OperationMethod<
   WebAnalyticsAchievementsRecordVisitError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<WebAnalyticsAchievementsRecordVisitRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<RecordVisitResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<WebAnalyticsAchievementsRecordVisitRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<RecordVisitResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -243,7 +243,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AcknowledgeCelebrationResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -258,7 +262,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "UpdateWebAnalyticsAchievementPreferencesRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           achievements_opt_out: S.Boolean,
@@ -266,7 +274,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "WebAnalyticsUserPreferences",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -280,7 +292,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "WebAnalyticsAchievementsOverviewRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stage: S.Number,
@@ -288,9 +300,9 @@ function __c0(j: number): any {
           threshold: S.Number,
         }),
       ).annotate({ identifier: "AchievementStage" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -298,30 +310,26 @@ function __c0(j: number): any {
           description: S.String,
           scope: S.String,
           is_experiment_track: S.Boolean,
-          stages: __S(6, __c0, 6),
+          stages: __S(50, __c3, 2),
         }),
       ).annotate({ identifier: "AchievementDefinition" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(51, __c3, 3));
+    case 5:
       return S.Record(S.String, S.String);
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           track_key: S.String,
           current_stage: S.Number,
           progress_value: S.Number,
           last_computed_at: S.NullOr(S.String),
-          unlocked_at: __S(9, __c1, 1),
+          unlocked_at: __S(53, __c3, 5),
         }),
       ).annotate({ identifier: "AchievementProgress" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(54, __c3, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           track_key: S.String,
@@ -329,18 +337,22 @@ function __c1(j: number): any {
           stage_name: S.String,
         }),
       ).annotate({ identifier: "PendingCelebration" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 9:
+      return S.Array(__S(56, __c3, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          definitions: __S(8, __c1, 0),
-          user_progress: __S(11, __c1, 3),
-          team_progress: __S(11, __c1, 3),
-          pending_celebrations: __S(13, __c1, 5),
+          definitions: __S(52, __c3, 4),
+          user_progress: __S(55, __c3, 7),
+          team_progress: __S(55, __c3, 7),
+          pending_celebrations: __S(57, __c3, 9),
         }),
       ).annotate({ identifier: "AchievementsListResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -356,7 +368,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -381,7 +393,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RecordInteractionResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -395,7 +411,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "WebAnalyticsAchievementsRecordVisitRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recorded: S.Boolean,
@@ -403,7 +419,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "RecordVisitResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

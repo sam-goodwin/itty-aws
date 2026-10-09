@@ -251,8 +251,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateInstanceResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<CreateInstanceRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<CreateInstanceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -266,8 +266,8 @@ export const createInstanceToken: API.OperationMethod<
   CreateInstanceTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateInstanceTokenRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateInstanceTokenResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<CreateInstanceTokenRequest>,
+  output: __S(38, __c9, 2) as any as S.Schema<CreateInstanceTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -281,8 +281,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteInstanceResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<DeleteInstanceRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<DeleteInstanceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -301,8 +301,8 @@ export const deleteInstanceToken: API.OperationMethod<
   DeleteInstanceTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteInstanceTokenRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteInstanceTokenResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<DeleteInstanceTokenRequest>,
+  output: __S(48, __c12, 0) as any as S.Schema<DeleteInstanceTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -316,8 +316,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetInstanceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetInstanceResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<GetInstanceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -331,8 +331,8 @@ export const getInstanceToken: API.OperationMethod<
   GetInstanceTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetInstanceTokenRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetInstanceTokenResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetInstanceTokenRequest>,
+  output: __S(61, __c15, 1) as any as S.Schema<GetInstanceTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -346,8 +346,8 @@ export const listInstances: API.OperationMethod<
   ListInstancesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListInstancesRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListInstancesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListInstancesRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListInstancesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -361,8 +361,8 @@ export const listInstanceTokens: API.OperationMethod<
   ListInstanceTokensError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListInstanceTokensRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListInstanceTokensResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListInstanceTokensRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<ListInstanceTokensResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -381,8 +381,8 @@ export const partialUpdateInstance: API.OperationMethod<
   PartialUpdateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<PartialUpdateInstanceRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<PartialUpdateInstanceResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<PartialUpdateInstanceRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<PartialUpdateInstanceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -401,8 +401,8 @@ export const partialUpdateInstanceToken: API.OperationMethod<
   PartialUpdateInstanceTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<PartialUpdateInstanceTokenRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<PartialUpdateInstanceTokenResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<PartialUpdateInstanceTokenRequest>,
+  output: __S(48, __c12, 0) as any as S.Schema<PartialUpdateInstanceTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -412,15 +412,137 @@ export const partialUpdateInstanceToken: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances",
+            code: 200,
+            baseUrl: "https://model-experiments.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListInstancesRequest" });
     case 1:
+      return S.Array(__S(32, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          instances: __S(1, __c0, 1),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListInstancesResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/tokens",
+            code: 200,
+            baseUrl: "https://model-experiments.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListInstanceTokensRequest",
+      });
+    case 1:
+      return S.Array(__S(52, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          tokens: __S(5, __c1, 1),
+        }),
+      ).annotate({
+        identifier: "ListInstanceTokensResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          deletedExperimentRetention: S.optional(S.String),
+          description: S.optional(S.String),
+          labels: S.optional(__S(12, __c3, 0)),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
+            code: 200,
+            baseUrl: "https://model-experiments.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "PartialUpdateInstanceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instance: __S(32, __c8, 0),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PartialUpdateInstanceResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          tokenId: S.String.pipe(T.Label()),
+          description: S.optional(S.String),
+          labels: S.optional(__S(12, __c3, 0)),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/tokens/{tokenId}",
+            code: 200,
+            baseUrl: "https://model-experiments.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "PartialUpdateInstanceTokenRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           deletedExperimentRetention: S.optional(S.String),
           description: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(24, __c6, 0)),
           name: S.String,
         }).pipe(
           T.Http({
@@ -431,7 +553,28 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateInstanceRequest" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instance: __S(32, __c8, 0),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateInstanceResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucketName: S.optional(S.String),
@@ -439,28 +582,25 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           errorMessage: S.optional(S.String),
           id: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(24, __c6, 0)),
           name: S.String,
           region: S.optional(S.String),
           state: S.String,
           url: S.String,
         }),
       ).annotate({ identifier: "Instance" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          instance: __S(2, __c0, 2),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateInstanceResponse" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(24, __c6, 0)),
           name: S.String,
           ttlDuration: S.optional(S.String),
         }).pipe(
@@ -474,29 +614,33 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateInstanceTokenRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
           description: S.optional(S.String),
           id: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(24, __c6, 0)),
           name: S.String,
           region: S.String,
           state: S.String,
           validUntil: S.String,
         }),
       ).annotate({ identifier: "Token" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          token: __S(5, __c0, 5),
+          token: __S(37, __c9, 1),
         }),
       ).annotate({
         identifier: "CreateInstanceTokenResponse",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -513,7 +657,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "DeleteInstanceRequest" });
   }
 }
-function __c1(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -533,28 +677,40 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteInstanceTokenRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          token: __S(52, __c13, 0),
+        }),
+      ).annotate({
+        identifier: "DeleteInstanceTokenResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           id: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(24, __c6, 0)),
           name: S.String,
           region: S.String,
           state: S.String,
           validUntil: S.String,
         }),
       ).annotate({ identifier: "TokenMetadata" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          token: __S(9, __c1, 1),
-        }),
-      ).annotate({
-        identifier: "DeleteInstanceTokenResponse",
-      });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -569,7 +725,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetInstanceRequest" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -585,124 +745,15 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetInstanceTokenRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          token: __S(9, __c1, 1),
-        }),
-      ).annotate({ identifier: "GetInstanceTokenResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances",
-            code: 200,
-            baseUrl: "https://model-experiments.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListInstancesRequest" });
-    case 7:
-      return S.Array(__S(2, __c0, 2));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          instances: __S(15, __c1, 7),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListInstancesResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/tokens",
-            code: 200,
-            baseUrl: "https://model-experiments.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListInstanceTokensRequest",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           message: S.optional(S.String),
-          tokens: __S(18, __c2, 2),
+          token: __S(52, __c13, 0),
         }),
-      ).annotate({
-        identifier: "ListInstanceTokensResponse",
-      });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          deletedExperimentRetention: S.optional(S.String),
-          description: S.optional(S.String),
-          labels: S.optional(__S(20, __c2, 4)),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
-            code: 200,
-            baseUrl: "https://model-experiments.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "PartialUpdateInstanceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          instance: __S(2, __c0, 2),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PartialUpdateInstanceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          tokenId: S.String.pipe(T.Label()),
-          description: S.optional(S.String),
-          labels: S.optional(__S(20, __c2, 4)),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/tokens/{tokenId}",
-            code: 200,
-            baseUrl: "https://model-experiments.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "PartialUpdateInstanceTokenRequest",
-      });
+      ).annotate({ identifier: "GetInstanceTokenResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -750,7 +750,7 @@ export const DeleteRetentionPolicy: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteRetentionPolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteRetentionPolicyResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteRetentionPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -764,8 +764,8 @@ export const DeleteScheduler: API.OperationMethod<
   DeleteSchedulerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteSchedulerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteSchedulerResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteSchedulerRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteSchedulerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -779,8 +779,8 @@ export const DeleteSchedulerPrivateEndpointConnection: API.OperationMethod<
   DeleteSchedulerPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteSchedulerPrivateEndpointConnectionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteSchedulerPrivateEndpointConnectionResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteSchedulerPrivateEndpointConnectionRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<DeleteSchedulerPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -794,8 +794,8 @@ export const DeleteTaskHub: API.OperationMethod<
   DeleteTaskHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteTaskHubRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteTaskHubResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteTaskHubRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteTaskHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -809,8 +809,8 @@ export const GetRetentionPolicy: API.OperationMethod<
   GetRetentionPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetRetentionPolicyRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetRetentionPolicyResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetRetentionPolicyRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<GetRetentionPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -824,8 +824,8 @@ export const GetScheduler: API.OperationMethod<
   GetSchedulerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetSchedulerRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetSchedulerResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetSchedulerRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<GetSchedulerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -839,8 +839,8 @@ export const GetSchedulerPrivateEndpointConnection: API.OperationMethod<
   GetSchedulerPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetSchedulerPrivateEndpointConnectionRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetSchedulerPrivateEndpointConnectionResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetSchedulerPrivateEndpointConnectionRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetSchedulerPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -854,8 +854,8 @@ export const GetSchedulerPrivateLink: API.OperationMethod<
   GetSchedulerPrivateLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetSchedulerPrivateLinkRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetSchedulerPrivateLinkResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetSchedulerPrivateLinkRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<GetSchedulerPrivateLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -869,8 +869,8 @@ export const GetTaskHub: API.OperationMethod<
   GetTaskHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetTaskHubRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetTaskHubResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetTaskHubRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<GetTaskHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -884,8 +884,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListOperationsResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(300, __c37, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -899,8 +899,8 @@ export const ListRetentionPolicyByScheduler: API.OperationMethod<
   ListRetentionPolicyBySchedulerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListRetentionPolicyBySchedulerRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<RetentionPolicyListResult>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListRetentionPolicyBySchedulerRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<RetentionPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -914,7 +914,7 @@ export const ListSchedulerByResourceGroup: API.OperationMethod<
   ListSchedulerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListSchedulerByResourceGroupRequest>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListSchedulerByResourceGroupRequest>,
   output: __S(41, __c5, 1) as any as S.Schema<SchedulerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -929,7 +929,7 @@ export const ListSchedulerBySubscription: API.OperationMethod<
   ListSchedulerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListSchedulerBySubscriptionRequest>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListSchedulerBySubscriptionRequest>,
   output: __S(41, __c5, 1) as any as S.Schema<SchedulerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -944,8 +944,8 @@ export const ListSchedulerPrivateEndpointConnections: API.OperationMethod<
   ListSchedulerPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListSchedulerPrivateEndpointConnectionsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListSchedulerPrivateEndpointConnectionsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -959,8 +959,8 @@ export const ListSchedulerPrivateLinks: API.OperationMethod<
   ListSchedulerPrivateLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListSchedulerPrivateLinksRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<SchedulerPrivateLinkResourceListResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListSchedulerPrivateLinksRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<SchedulerPrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -974,8 +974,8 @@ export const ListTaskHubByScheduler: API.OperationMethod<
   ListTaskHubBySchedulerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListTaskHubBySchedulerRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<TaskHubListResult>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListTaskHubBySchedulerRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<TaskHubListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -989,8 +989,8 @@ export const RetentionPoliciesCreateOrReplace: API.OperationMethod<
   RetentionPoliciesCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<RetentionPoliciesCreateOrReplaceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<RetentionPoliciesCreateOrReplaceResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<RetentionPoliciesCreateOrReplaceRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<RetentionPoliciesCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1004,8 +1004,8 @@ export const SchedulersCreateOrUpdate: API.OperationMethod<
   SchedulersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<SchedulersCreateOrUpdateRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<SchedulersCreateOrUpdateResponse>,
+  input: __S(97, __c12, 1) as any as S.Schema<SchedulersCreateOrUpdateRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<SchedulersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1020,13 +1020,13 @@ export const SchedulersCreateOrUpdatePrivateEndpointConnection: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    57,
-    __c7,
+    105,
+    __c13,
     1,
   ) as any as S.Schema<SchedulersCreateOrUpdatePrivateEndpointConnectionRequest>,
   output: __S(
-    58,
-    __c7,
+    106,
+    __c13,
     2,
   ) as any as S.Schema<SchedulersCreateOrUpdatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
@@ -1042,8 +1042,8 @@ export const TaskHubsCreateOrUpdate: API.OperationMethod<
   TaskHubsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<TaskHubsCreateOrUpdateRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<TaskHubsCreateOrUpdateResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<TaskHubsCreateOrUpdateRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<TaskHubsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1057,8 +1057,8 @@ export const UpdateRetentionPolicy: API.OperationMethod<
   UpdateRetentionPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<UpdateRetentionPolicyRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateRetentionPolicyResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<UpdateRetentionPolicyRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<UpdateRetentionPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1072,8 +1072,8 @@ export const UpdateScheduler: API.OperationMethod<
   UpdateSchedulerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<UpdateSchedulerRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<UpdateSchedulerResponse>,
+  input: __S(138, __c17, 2) as any as S.Schema<UpdateSchedulerRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<UpdateSchedulerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1087,8 +1087,8 @@ export const UpdateSchedulerPrivateEndpointConnection: API.OperationMethod<
   UpdateSchedulerPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionResponse>,
+  input: __S(145, __c18, 1) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1114,11 +1114,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteRetentionPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteRetentionPolicyResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1133,340 +1141,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteSchedulerRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schedulerName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSchedulerPrivateEndpointConnectionRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteSchedulerPrivateEndpointConnectionResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schedulerName: S.String.pipe(T.Label()),
-          taskHubName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
-            code: 200,
-            apiVersion: "2026-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTaskHubRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schedulerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
-            code: 200,
-            apiVersion: "2026-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRetentionPolicyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          retentionPeriodInDays: S.Number,
-          orchestrationState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RetentionPolicyDetails" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          retentionPolicies: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "RetentionPolicyProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GetRetentionPolicyResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schedulerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
-            code: 200,
-            apiVersion: "2026-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSchedulerRequest" });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          capacity: S.optional(S.Number),
-          redundancyState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchedulerSku" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpoint" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupIds: S.optional(__S(14, __c1, 6)),
-          privateEndpoint: S.optional(__S(16, __c2, 0)),
-          privateLinkServiceConnectionState: __S(17, __c2, 1),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "SchedulerPropertiesPrivateEndpointConnectionsItem",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          endpoint: S.optional(S.String),
-          ipAllowlist: __S(14, __c1, 6),
-          sku: __S(15, __c1, 7),
-          publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "SchedulerProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(13, __c1, 5)),
-          location: S.String,
-          properties: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "GetSchedulerResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schedulerName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSchedulerPrivateEndpointConnectionRequest",
-      });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schedulerName: S.String.pipe(T.Label()),
-          privateLinkResourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateLinkResources/{privateLinkResourceName}",
-            code: 200,
-            apiVersion: "2026-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSchedulerPrivateLinkRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(14, __c1, 6)),
-          requiredZoneNames: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "GetSchedulerPrivateLinkResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          schedulerName: S.String.pipe(T.Label()),
-          taskHubName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
-            code: 200,
-            apiVersion: "2026-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetTaskHubRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          dashboardUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaskHubProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "GetTaskHubResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.DurableTask/operations",
-            code: 200,
-            apiVersion: "2026-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(31, __c3, 7)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(33, __c4, 1)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1483,28 +1162,32 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListRetentionPolicyBySchedulerRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(10, __c1, 2)),
+          systemData: S.optional(__S(184, __c23, 0)),
+          properties: S.optional(__S(170, __c21, 2)),
         }),
       ).annotate({ identifier: "RetentionPolicy" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(37, __c4, 5),
+          value: __S(26, __c3, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RetentionPolicyListResult",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1525,7 +1208,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(22, __c2, 6));
+      return S.Array(__S(216, __c27, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1533,7 +1216,11 @@ function __c5(j: number): any {
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchedulerListResult" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1548,7 +1235,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListSchedulerBySubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1565,16 +1256,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListSchedulerPrivateEndpointConnectionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(20, __c2, 4),
+          value: __S(200, __c25, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionListResult",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1591,12 +1286,12 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListSchedulerPrivateLinksRequest",
       });
-    case 6:
-      return S.Array(__S(26, __c3, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(265, __c33, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(46, __c5, 6),
+          value: __S(65, __c8, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1604,7 +1299,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1624,29 +1319,25 @@ function __c6(j: number): any {
         identifier: "ListTaskHubBySchedulerRequest",
       });
     case 1:
-      return S.Array(__S(29, __c3, 5));
+      return S.Array(__S(280, __c35, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(49, __c6, 1),
+          value: __S(73, __c9, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskHubListResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          retentionPolicies: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "RetentionPolicyPropertiesInput",
-      });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(51, __c6, 3)),
+          properties: S.optional(__S(88, __c11, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1658,23 +1349,39 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "RetentionPoliciesCreateOrReplaceRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ipAllowlist: __S(14, __c1, 6),
-          sku: __S(15, __c1, 7),
+          retentionPolicies: S.optional(__S(169, __c21, 1)),
+        }),
+      ).annotate({
+        identifier: "RetentionPolicyPropertiesInput",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipAllowlist: __S(240, __c30, 0),
+          sku: __S(209, __c26, 1),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchedulerPropertiesInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(208, __c26, 0)),
           location: S.String,
-          properties: S.optional(__S(53, __c6, 5)),
+          properties: S.optional(__S(96, __c12, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1686,29 +1393,29 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "SchedulersCreateOrUpdateRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(184, __c23, 0)),
+          tags: S.optional(__S(208, __c26, 0)),
           location: S.String,
-          properties: S.optional(__S(21, __c2, 5)),
+          properties: S.optional(__S(210, __c26, 2)),
         }),
       ).annotate({
         identifier: "SchedulersCreateOrUpdateResponse",
       });
   }
 }
-function __c7(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(1, __c0, 1)),
-          privateLinkServiceConnectionState: __S(17, __c2, 1),
+          privateEndpoint: S.optional(__S(8, __c1, 0)),
+          privateLinkServiceConnectionState: __S(225, __c28, 1),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -1720,7 +1427,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(104, __c13, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1738,20 +1445,24 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(184, __c23, 0)),
+          properties: S.optional(__S(226, __c28, 2)),
         }),
       ).annotate({
         identifier: "SchedulersCreateOrUpdatePrivateEndpointConnectionResponse",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
           taskHubName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1763,25 +1474,55 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "TaskHubsCreateOrUpdateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(28, __c3, 4)),
+          systemData: S.optional(__S(184, __c23, 0)),
+          properties: S.optional(__S(288, __c36, 0)),
         }),
       ).annotate({
         identifier: "TaskHubsCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(51, __c6, 3)),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSchedulerPrivateEndpointConnectionRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteSchedulerPrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schedulerName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(88, __c11, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1793,35 +1534,35 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateRetentionPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           capacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SchedulerSkuUpdate" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ipAllowlist: S.optional(__S(14, __c1, 6)),
-          sku: S.optional(__S(62, __c7, 6)),
+          ipAllowlist: S.optional(__S(240, __c30, 0)),
+          sku: S.optional(__S(136, __c17, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SchedulerPropertiesUpdateInput",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(63, __c7, 7)),
-          tags: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(137, __c17, 1)),
+          tags: S.optional(__S(208, __c26, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1831,23 +1572,27 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSchedulerRequest" });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(1, __c0, 1)),
-          privateLinkServiceConnectionState: S.optional(__S(17, __c2, 1)),
+          privateEndpoint: S.optional(__S(8, __c1, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(225, __c28, 1)),
         }),
       ).annotate({
         identifier: "UpdateSchedulerPrivateEndpointConnectionRequestProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(65, __c8, 1)),
+          properties: S.optional(__S(144, __c18, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1861,7 +1606,377 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schedulerName: S.String.pipe(T.Label()),
+          taskHubName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
+            code: 200,
+            apiVersion: "2026-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTaskHubRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schedulerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default",
+            code: 200,
+            apiVersion: "2026-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRetentionPolicyRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          retentionPeriodInDays: S.Number,
+          orchestrationState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RetentionPolicyDetails" });
+    case 1:
+      return S.Array(__S(168, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          retentionPolicies: S.optional(__S(169, __c21, 1)),
+        }),
+      ).annotate({
+        identifier: "RetentionPolicyProperties",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(184, __c23, 0)),
+          properties: S.optional(__S(170, __c21, 2)),
+        }),
+      ).annotate({
+        identifier: "GetRetentionPolicyResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schedulerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}",
+            code: 200,
+            apiVersion: "2026-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSchedulerRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(232, __c29, 0));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          capacity: S.optional(S.Number),
+          redundancyState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchedulerSku" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          endpoint: S.optional(S.String),
+          ipAllowlist: __S(240, __c30, 0),
+          sku: __S(209, __c26, 1),
+          publicNetworkAccess: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(200, __c25, 0)),
+        }),
+      ).annotate({ identifier: "SchedulerProperties" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(184, __c23, 0)),
+          tags: S.optional(__S(208, __c26, 0)),
+          location: S.String,
+          properties: S.optional(__S(210, __c26, 2)),
+        }),
+      ).annotate({ identifier: "GetSchedulerResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpoint" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          groupIds: S.optional(__S(240, __c30, 0)),
+          privateEndpoint: S.optional(__S(224, __c28, 0)),
+          privateLinkServiceConnectionState: __S(225, __c28, 1),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(184, __c23, 0)),
+          properties: S.optional(__S(226, __c28, 2)),
+        }),
+      ).annotate({
+        identifier: "SchedulerPropertiesPrivateEndpointConnectionsItem",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schedulerName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSchedulerPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schedulerName: S.String.pipe(T.Label()),
+          privateLinkResourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateLinkResources/{privateLinkResourceName}",
+            code: 200,
+            apiVersion: "2026-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSchedulerPrivateLinkRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(240, __c30, 0)),
+          requiredZoneNames: S.optional(__S(240, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(184, __c23, 0)),
+          properties: S.optional(__S(264, __c33, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSchedulerPrivateLinkResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          schedulerName: S.String.pipe(T.Label()),
+          taskHubName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName}",
+            code: 200,
+            apiVersion: "2026-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetTaskHubRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(184, __c23, 0)),
+          properties: S.optional(__S(288, __c36, 0)),
+        }),
+      ).annotate({ identifier: "GetTaskHubResponse" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          dashboardUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaskHubProperties" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.DurableTask/operations",
+            code: 200,
+            apiVersion: "2026-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(297, __c37, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(298, __c37, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(299, __c37, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

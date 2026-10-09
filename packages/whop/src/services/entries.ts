@@ -209,8 +209,8 @@ export const denyEntry: API.OperationMethod<
   DenyEntryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DenyEntryRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Entry>,
+  input: __S(8, __c1, 0) as any as S.Schema<DenyEntryRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<Entry>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -220,8 +220,8 @@ export type GetEntryError = BadRequest | Forbidden | NotFound | UnprocessableEnt
 /** Retrieve entry [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing waitlist entry. Required permissions: - `plan:waitlist:read` - `member:email:read` */
 export const getEntry: API.OperationMethod<GetEntryRequest, Entry, GetEntryError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(9, __c1, 1) as any as S.Schema<GetEntryRequest>,
-    output: __S(8, __c1, 0) as any as S.Schema<Entry>,
+    input: __S(32, __c4, 0) as any as S.Schema<GetEntryRequest>,
+    output: __S(18, __c2, 2) as any as S.Schema<Entry>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -237,8 +237,8 @@ export const listEntry: API.PaginatedOperationMethod<
   EntryListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(12, __c1, 4) as any as S.Schema<ListEntryRequest>,
-    output: __S(16, __c2, 0) as any as S.Schema<ListEntryResponse>,
+    input: __S(42, __c5, 2) as any as S.Schema<ListEntryRequest>,
+    output: __S(46, __c5, 6) as any as S.Schema<ListEntryResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -269,13 +269,21 @@ function __c0(j: number): any {
           job_id: S.String,
         }),
       ).annotate({ identifier: "ApproveEntryResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/entries/{id}/deny", code: 200 })),
       ).annotate({ identifier: "DenyEntryRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           answer: S.String,
@@ -285,22 +293,38 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "EntryCustomFieldResponsesItem",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.NullOr(S.String),
+          custom_field_responses: S.NullOr(__S(17, __c2, 1)),
+          id: S.String,
+          plan: S.NullOr(__S(24, __c3, 0)),
+          product: S.NullOr(__S(25, __c3, 1)),
+          status: S.String,
+          user: __S(26, __c3, 2),
+        }),
+      ).annotate({ identifier: "Entry" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
         }),
       ).annotate({ identifier: "EntryPlan" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
         }),
       ).annotate({ identifier: "EntryProduct" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           email: S.NullOr(S.String),
@@ -311,31 +335,23 @@ function __c0(j: number): any {
       ).annotate({ identifier: "EntryUser" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.NullOr(S.String),
-          custom_field_responses: S.NullOr(__S(4, __c0, 4)),
-          id: S.String,
-          plan: S.NullOr(__S(5, __c0, 5)),
-          product: S.NullOr(__S(6, __c0, 6)),
-          status: S.String,
-          user: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "Entry" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/entries/{id}", code: 200 })),
       ).annotate({ identifier: "GetEntryRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.String);
     case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.Array(S.String);
-    case 4:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -345,27 +361,27 @@ function __c1(j: number): any {
           company_id: S.String.pipe(T.Query()),
           direction: S.optional(S.String.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
-          product_ids: S.optional(__S(10, __c1, 2).pipe(T.Query())),
-          plan_ids: S.optional(__S(10, __c1, 2).pipe(T.Query())),
-          statuses: S.optional(__S(11, __c1, 3).pipe(T.Query())),
+          product_ids: S.optional(__S(40, __c5, 0).pipe(T.Query())),
+          plan_ids: S.optional(__S(40, __c5, 0).pipe(T.Query())),
+          statuses: S.optional(__S(41, __c5, 1).pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/entries", code: 200 })),
       ).annotate({ identifier: "ListEntryRequest" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           created_at: S.NullOr(S.String),
           id: S.String,
-          plan: S.NullOr(__S(5, __c0, 5)),
-          product: S.NullOr(__S(6, __c0, 6)),
+          plan: S.NullOr(__S(24, __c3, 0)),
+          product: S.NullOr(__S(25, __c3, 1)),
           status: S.String,
-          user: __S(7, __c0, 7),
+          user: __S(26, __c3, 2),
         }),
       ).annotate({ identifier: "EntryListItem" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(43, __c5, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -374,20 +390,15 @@ function __c1(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(14, __c1, 6),
-          page_info: __S(15, __c1, 7),
+          data: __S(44, __c5, 4),
+          page_info: __S(45, __c5, 5),
         }),
       ).annotate({ identifier: "ListEntryResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

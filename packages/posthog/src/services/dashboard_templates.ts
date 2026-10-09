@@ -218,8 +218,8 @@ export const createDashboardTemplate: API.OperationMethod<
   CreateDashboardTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateDashboardTemplateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DashboardTemplate>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDashboardTemplateRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DashboardTemplate>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -237,8 +237,8 @@ export const dashboardTemplatesCopyBetweenProjectsCreate: API.OperationMethod<
   DashboardTemplatesCopyBetweenProjectsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DashboardTemplatesCopyBetweenProjectsCreateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DashboardTemplate>,
+  input: __S(16, __c2, 0) as any as S.Schema<DashboardTemplatesCopyBetweenProjectsCreateRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DashboardTemplate>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -252,8 +252,8 @@ export const dashboardTemplatesDestroy: API.OperationMethod<
   DashboardTemplatesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DashboardTemplatesDestroyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DashboardTemplatesDestroyResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DashboardTemplatesDestroyRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DashboardTemplatesDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -266,8 +266,8 @@ export const getDashboardTemplate: API.OperationMethod<
   GetDashboardTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetDashboardTemplateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DashboardTemplate>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetDashboardTemplateRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DashboardTemplate>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -280,8 +280,8 @@ export const listDashboardTemplates: API.OperationMethod<
   ListDashboardTemplatesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListDashboardTemplatesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<PaginatedDashboardTemplateList>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListDashboardTemplatesRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<PaginatedDashboardTemplateList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -294,8 +294,8 @@ export const updateDashboardTemplate: API.OperationMethod<
   UpdateDashboardTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<UpdateDashboardTemplateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DashboardTemplate>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateDashboardTemplateRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DashboardTemplate>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -312,8 +312,8 @@ export const updateDashboardTemplatesPartial: API.OperationMethod<
   UpdateDashboardTemplatesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<UpdateDashboardTemplatesPartialRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DashboardTemplate>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateDashboardTemplatesPartialRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<DashboardTemplate>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -323,21 +323,19 @@ export const updateDashboardTemplatesPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           template_name: S.optional(S.NullOr(S.String)),
           dashboard_description: S.optional(S.NullOr(S.String)),
           dashboard_filters: S.optional(S.Unknown),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
+          tags: S.optional(S.NullOr(__S(8, __c1, 0))),
           tiles: S.optional(S.Unknown),
           variables: S.optional(S.Unknown),
           deleted: S.optional(S.NullOr(S.Boolean)),
           image_url: S.optional(S.NullOr(S.String)),
           scope: S.optional(S.NullOr(S.Unknown)),
-          availability_contexts: S.optional(S.NullOr(__S(0, __c0, 0))),
+          availability_contexts: S.optional(S.NullOr(__S(8, __c1, 0))),
           is_featured: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -349,9 +347,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDashboardTemplateRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -361,40 +365,44 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2, __c0, 2))),
+          hedgehog_config: S.optional(S.NullOr(__S(9, __c1, 1))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           actions: S.Number,
           cohorts: S.Number,
-          warehouse_tables: __S(0, __c0, 0),
+          warehouse_tables: __S(8, __c1, 0),
         }),
       ).annotate({ identifier: "NonPortableReferences" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           template_name: S.optional(S.NullOr(S.String)),
           dashboard_description: S.optional(S.NullOr(S.String)),
           dashboard_filters: S.optional(S.Unknown),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
+          tags: S.optional(S.NullOr(__S(8, __c1, 0))),
           tiles: S.optional(S.Unknown),
           variables: S.optional(S.Unknown),
           deleted: S.optional(S.NullOr(S.Boolean)),
           created_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(3, __c0, 3))),
+          created_by: S.optional(S.NullOr(__S(10, __c1, 2))),
           image_url: S.optional(S.NullOr(S.String)),
           team_id: S.optional(S.NullOr(S.Number)),
           scope: S.optional(S.NullOr(S.Unknown)),
-          availability_contexts: S.optional(S.NullOr(__S(0, __c0, 0))),
+          availability_contexts: S.optional(S.NullOr(__S(8, __c1, 0))),
           is_featured: S.optional(S.Boolean),
-          non_portable_references: S.optional(__S(4, __c0, 4)),
+          non_portable_references: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "DashboardTemplate" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -409,7 +417,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DashboardTemplatesCopyBetweenProjectsCreateRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -424,15 +436,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DashboardTemplatesDestroyRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DashboardTemplatesDestroyResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -447,7 +459,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetDashboardTemplateRequest",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -467,20 +483,24 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListDashboardTemplatesRequest",
       });
-    case 3:
-      return S.Array(__S(5, __c0, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(12, __c1, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(11, __c1, 3)),
+          results: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({
         identifier: "PaginatedDashboardTemplateList",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -488,13 +508,13 @@ function __c1(j: number): any {
           template_name: S.optional(S.NullOr(S.String)),
           dashboard_description: S.optional(S.NullOr(S.String)),
           dashboard_filters: S.optional(S.Unknown),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
+          tags: S.optional(S.NullOr(__S(8, __c1, 0))),
           tiles: S.optional(S.Unknown),
           variables: S.optional(S.Unknown),
           deleted: S.optional(S.NullOr(S.Boolean)),
           image_url: S.optional(S.NullOr(S.String)),
           scope: S.optional(S.NullOr(S.Unknown)),
-          availability_contexts: S.optional(S.NullOr(__S(0, __c0, 0))),
+          availability_contexts: S.optional(S.NullOr(__S(8, __c1, 0))),
           is_featured: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -506,7 +526,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateDashboardTemplateRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -514,13 +538,13 @@ function __c1(j: number): any {
           template_name: S.optional(S.NullOr(S.String)),
           dashboard_description: S.optional(S.NullOr(S.String)),
           dashboard_filters: S.optional(S.Unknown),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
+          tags: S.optional(S.NullOr(__S(8, __c1, 0))),
           tiles: S.optional(S.Unknown),
           variables: S.optional(S.Unknown),
           deleted: S.optional(S.NullOr(S.Boolean)),
           image_url: S.optional(S.NullOr(S.String)),
           scope: S.optional(S.NullOr(S.Unknown)),
-          availability_contexts: S.optional(S.NullOr(__S(0, __c0, 0))),
+          availability_contexts: S.optional(S.NullOr(__S(8, __c1, 0))),
           is_featured: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -534,7 +558,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

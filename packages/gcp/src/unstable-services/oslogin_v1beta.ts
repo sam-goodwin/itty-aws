@@ -275,8 +275,8 @@ export const createUsersSshPublicKeys: API.OperationMethod<
   CreateUsersSshPublicKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateUsersSshPublicKeysRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<SshPublicKey>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateUsersSshPublicKeysRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<SshPublicKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -290,8 +290,8 @@ export const deleteUsersProjects: API.OperationMethod<
   DeleteUsersProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteUsersProjectsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteUsersProjectsRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -310,8 +310,8 @@ export const deleteUsersSshPublicKeys: API.OperationMethod<
   DeleteUsersSshPublicKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteUsersSshPublicKeysRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteUsersSshPublicKeysRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -325,8 +325,8 @@ export const getLoginProfileUsers: API.OperationMethod<
   GetLoginProfileUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetLoginProfileUsersRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<LoginProfile>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetLoginProfileUsersRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<LoginProfile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -340,8 +340,8 @@ export const getUsersSshPublicKeys: API.OperationMethod<
   GetUsersSshPublicKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetUsersSshPublicKeysRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<SshPublicKey>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetUsersSshPublicKeysRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<SshPublicKey>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -360,8 +360,8 @@ export const importSshPublicKeyUsers: API.OperationMethod<
   ImportSshPublicKeyUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ImportSshPublicKeyUsersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ImportSshPublicKeyResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ImportSshPublicKeyUsersRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<ImportSshPublicKeyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -380,8 +380,8 @@ export const patchUsersSshPublicKeys: API.OperationMethod<
   PatchUsersSshPublicKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<PatchUsersSshPublicKeysRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<SshPublicKey>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchUsersSshPublicKeysRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<SshPublicKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -400,8 +400,8 @@ export const provisionPosixAccountUsersProjects: API.OperationMethod<
   ProvisionPosixAccountUsersProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ProvisionPosixAccountUsersProjectsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PosixAccount>,
+  input: __S(9, __c1, 1) as any as S.Schema<ProvisionPosixAccountUsersProjectsRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<PosixAccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -420,11 +420,11 @@ export const signSshPublicKeyProjectsLocations: API.OperationMethod<
   SignSshPublicKeyProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<SignSshPublicKeyProjectsLocationsRequest>,
+  input: __S(17, __c2, 1) as any as S.Schema<SignSshPublicKeyProjectsLocationsRequest>,
   output: __S(
-    23,
+    18,
     __c2,
-    7,
+    2,
   ) as any as S.Schema<GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -444,8 +444,8 @@ export const signSshPublicKeyUsersProjectsLocations: API.OperationMethod<
   SignSshPublicKeyUsersProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<SignSshPublicKeyUsersProjectsLocationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<SignSshPublicKeyResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<SignSshPublicKeyUsersProjectsLocationsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<SignSshPublicKeyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -464,8 +464,8 @@ export const signSshPublicKeyUsersProjectsZones: API.OperationMethod<
   SignSshPublicKeyUsersProjectsZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<SignSshPublicKeyUsersProjectsZonesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<SignSshPublicKeyResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<SignSshPublicKeyUsersProjectsZonesRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<SignSshPublicKeyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -477,17 +477,148 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          key: S.optional(S.String),
-          expirationTimeUsec: S.optional(S.String),
-          fingerprint: S.optional(S.String),
-          name: S.optional(S.String),
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://oslogin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchUsersSshPublicKeysRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regions: S.optional(__S(128, __c16, 0)),
         }),
-      ).annotate({ identifier: "SshPublicKey" });
+      ).annotate({
+        identifier: "ProvisionPosixAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://oslogin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProvisionPosixAccountUsersProjectsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          computeInstance: S.optional(S.String),
+          cloudRunResource: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+          sshPublicKey: S.optional(S.String),
+          appEngineInstance: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}:signSshPublicKey",
+            baseUrl: "https://oslogin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SignSshPublicKeyProjectsLocationsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          signedSshPublicKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}:signSshPublicKey",
+            baseUrl: "https://oslogin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SignSshPublicKeyUsersProjectsLocationsRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sshPublicKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignSshPublicKeyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          signedSshPublicKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignSshPublicKeyResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}:signSshPublicKey",
+            baseUrl: "https://oslogin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SignSshPublicKeyUsersProjectsZonesRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -498,7 +629,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateUsersSshPublicKeysRequest",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          expirationTimeUsec: S.optional(S.String),
+          fingerprint: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SshPublicKey" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -512,11 +660,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteUsersProjectsRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -530,7 +686,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteUsersSshPublicKeysRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -547,7 +707,52 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetLoginProfileUsersRequest",
       });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(104, __c13, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UniversalTwoFactor" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          rpId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebAuthn" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          publicKey: S.optional(S.String),
+          universalTwoFactor: S.optional(__S(97, __c12, 1)),
+          privateKey: S.optional(S.String),
+          deviceNickname: S.optional(S.String),
+          webAuthn: S.optional(__S(98, __c12, 2)),
+        }),
+      ).annotate({ identifier: "SecurityKey" });
+    case 4:
+      return S.Array(__S(99, __c12, 3));
+    case 5:
+      return S.Record(S.String, __S(56, __c7, 0));
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          posixAccounts: S.optional(__S(96, __c12, 0)),
+          name: S.optional(S.String),
+          securityKeys: S.optional(__S(100, __c12, 4)),
+          sshPublicKeys: S.optional(__S(101, __c12, 5)),
+        }),
+      ).annotate({ identifier: "LoginProfile" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uid: S.optional(S.String),
@@ -563,48 +768,11 @@ function __c0(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "PosixAccount" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
-function __c1(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UniversalTwoFactor" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rpId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebAuthn" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          publicKey: S.optional(S.String),
-          universalTwoFactor: S.optional(__S(8, __c1, 0)),
-          privateKey: S.optional(S.String),
-          deviceNickname: S.optional(S.String),
-          webAuthn: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "SecurityKey" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.Record(S.String, __S(0, __c0, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          posixAccounts: S.optional(__S(7, __c0, 7)),
-          name: S.optional(S.String),
-          securityKeys: S.optional(__S(11, __c1, 3)),
-          sshPublicKeys: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "LoginProfile" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -618,11 +786,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetUsersSshPublicKeysRequest",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c2(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -630,8 +796,8 @@ function __c2(j: number): any {
           view: S.optional(S.String.pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          regions: S.optional(__S(15, __c1, 7).pipe(T.Query())),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          regions: S.optional(__S(128, __c16, 0).pipe(T.Query())),
+          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -645,135 +811,20 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          loginProfile: S.optional(__S(13, __c1, 5)),
+          loginProfile: S.optional(__S(102, __c12, 6)),
           details: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ImportSshPublicKeyResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://oslogin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchUsersSshPublicKeysRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          regions: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "ProvisionPosixAccountRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://oslogin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProvisionPosixAccountUsersProjectsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          computeInstance: S.optional(S.String),
-          cloudRunResource: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-          sshPublicKey: S.optional(S.String),
-          appEngineInstance: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}:signSshPublicKey",
-            baseUrl: "https://oslogin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SignSshPublicKeyProjectsLocationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          signedSshPublicKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOsloginControlplaneRegionalV1betaSignSshPublicKeyResponse",
-      });
   }
 }
-function __c3(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sshPublicKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignSshPublicKeyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}:signSshPublicKey",
-            baseUrl: "https://oslogin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SignSshPublicKeyUsersProjectsLocationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          signedSshPublicKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignSshPublicKeyResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}:signSshPublicKey",
-            baseUrl: "https://oslogin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SignSshPublicKeyUsersProjectsZonesRequest",
-      });
+      return S.Array(S.String);
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

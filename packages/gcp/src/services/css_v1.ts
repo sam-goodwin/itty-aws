@@ -541,8 +541,8 @@ export const createAccountsLabels: API.OperationMethod<
   CreateAccountsLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateAccountsLabelsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<AccountLabel>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateAccountsLabelsRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<AccountLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -561,8 +561,8 @@ export const deleteAccountsCssProductInputs: API.OperationMethod<
   DeleteAccountsCssProductInputsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteAccountsCssProductInputsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteAccountsCssProductInputsRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -576,8 +576,8 @@ export const deleteAccountsLabels: API.OperationMethod<
   DeleteAccountsLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteAccountsLabelsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteAccountsLabelsRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -591,8 +591,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetAccountsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Account>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetAccountsRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -606,8 +606,8 @@ export const getAccountsCssProducts: API.OperationMethod<
   GetAccountsCssProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetAccountsCssProductsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<CssProduct>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetAccountsCssProductsRequest>,
+  output: __S(261, __c16, 5) as any as S.Schema<CssProduct>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -626,8 +626,8 @@ export const insertAccountsCssProductInputs: API.OperationMethod<
   InsertAccountsCssProductInputsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<InsertAccountsCssProductInputsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CssProductInput>,
+  input: __S(288, __c18, 0) as any as S.Schema<InsertAccountsCssProductInputsRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<CssProductInput>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -642,8 +642,8 @@ export const listAccountsCssProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCssProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListAccountsCssProductsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListCssProductsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListAccountsCssProductsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListCssProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -659,8 +659,8 @@ export const listAccountsLabels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountLabelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListAccountsLabelsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListAccountLabelsResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<ListAccountsLabelsRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<ListAccountLabelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -676,8 +676,8 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
   GcpOpContext,
   ListQuotaGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListAccountsQuotasRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListQuotaGroupsResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListAccountsQuotasRequest>,
+  output: __S(37, __c2, 5) as any as S.Schema<ListQuotaGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -693,8 +693,8 @@ export const listChildAccountsAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChildAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListChildAccountsAccountsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListChildAccountsResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListChildAccountsAccountsRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<ListChildAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -714,8 +714,8 @@ export const patchAccountsCssProductInputs: API.OperationMethod<
   PatchAccountsCssProductInputsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<PatchAccountsCssProductInputsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CssProductInput>,
+  input: __S(64, __c4, 0) as any as S.Schema<PatchAccountsCssProductInputsRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<CssProductInput>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -729,8 +729,8 @@ export const patchAccountsLabels: API.OperationMethod<
   PatchAccountsLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<PatchAccountsLabelsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<AccountLabel>,
+  input: __S(80, __c5, 0) as any as S.Schema<PatchAccountsLabelsRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<AccountLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -744,8 +744,8 @@ export const updateLabelsAccounts: API.OperationMethod<
   UpdateLabelsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<UpdateLabelsAccountsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Account>,
+  input: __S(97, __c6, 1) as any as S.Schema<UpdateLabelsAccountsRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -755,309 +755,6 @@ export const updateLabelsAccounts: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-          labelId: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          labelType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccountLabel" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/labels",
-            baseUrl: "https://css.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsLabelsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          supplementalFeedId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://css.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccountsCssProductInputsRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://css.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccountsLabelsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          parent: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://css.googleapis.com/" }),
-        ),
-      ).annotate({ identifier: "GetAccountsRequest" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          automaticLabelIds: S.optional(__S(6, __c0, 6)),
-          displayName: S.optional(S.String),
-          parent: S.optional(S.String),
-          labelIds: S.optional(__S(6, __c0, 6)),
-          name: S.optional(S.String),
-          fullName: S.optional(S.String),
-          accountType: S.optional(S.String),
-          homepageUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Account" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://css.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetAccountsCssProductsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          name: S.optional(S.String),
-          groupValues: S.optional(S.suspend(() => __S(10, __c1, 2))),
-        }),
-      ).annotate({ identifier: "CustomAttribute" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          code: S.optional(S.String),
-          authority: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Certification" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.String),
-          amountMicros: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Price" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          downpayment: S.optional(__S(13, __c1, 5)),
-          amount: S.optional(__S(13, __c1, 5)),
-          months: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HeadlineOfferInstallment" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Number),
-          unit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductDimension" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(__S(13, __c1, 5)),
-          periodLength: S.optional(S.String),
-          period: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HeadlineOfferSubscriptionCost",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          attributeValue: S.optional(S.String),
-          sectionName: S.optional(S.String),
-          attributeName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductDetail" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ProductWeight" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          adult: S.optional(S.Boolean),
-          certifications: S.optional(__S(12, __c1, 4)),
-          headlineOfferCondition: S.optional(S.String),
-          color: S.optional(S.String),
-          pattern: S.optional(S.String),
-          imageLink: S.optional(S.String),
-          sizeSystem: S.optional(S.String),
-          headlineOfferInstallment: S.optional(__S(14, __c1, 6)),
-          productLength: S.optional(__S(15, __c1, 7)),
-          headlineOfferShippingPrice: S.optional(__S(13, __c1, 5)),
-          customLabel4: S.optional(S.String),
-          brand: S.optional(S.String),
-          maxRating: S.optional(S.String),
-          customLabel3: S.optional(S.String),
-          productHighlights: S.optional(__S(6, __c0, 6)),
-          material: S.optional(S.String),
-          itemGroupId: S.optional(S.String),
-          minRating: S.optional(S.String),
-          productWidth: S.optional(__S(15, __c1, 7)),
-          headlineOfferSubscriptionCost: S.optional(__S(16, __c2, 0)),
-          productDetails: S.optional(__S(18, __c2, 2)),
-          customLabel1: S.optional(S.String),
-          description: S.optional(S.String),
-          productHeight: S.optional(__S(15, __c1, 7)),
-          headlineOfferLink: S.optional(S.String),
-          excludedDestinations: S.optional(__S(6, __c0, 6)),
-          ageGroup: S.optional(S.String),
-          size: S.optional(S.String),
-          reviewCount: S.optional(S.String),
-          pause: S.optional(S.String),
-          productWeight: S.optional(__S(19, __c2, 3)),
-          includedDestinations: S.optional(__S(6, __c0, 6)),
-          mpn: S.optional(S.String),
-          numberOfOffers: S.optional(S.String),
-          gender: S.optional(S.String),
-          customLabel0: S.optional(S.String),
-          headlineOfferMobileLink: S.optional(S.String),
-          cppAdsRedirect: S.optional(S.String),
-          googleProductCategory: S.optional(S.String),
-          productTypes: S.optional(__S(6, __c0, 6)),
-          gtin: S.optional(S.String),
-          headlineOfferPrice: S.optional(__S(13, __c1, 5)),
-          sizeTypes: S.optional(__S(6, __c0, 6)),
-          highPrice: S.optional(__S(13, __c1, 5)),
-          isBundle: S.optional(S.Boolean),
-          expirationDate: S.optional(S.String),
-          rating: S.optional(S.Number),
-          customLabel2: S.optional(S.String),
-          additionalImageLinks: S.optional(__S(6, __c0, 6)),
-          multipack: S.optional(S.String),
-          cppLink: S.optional(S.String),
-          title: S.optional(S.String),
-          cppMobileLink: S.optional(S.String),
-          lowPrice: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "Attributes" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          approvedCountries: S.optional(__S(6, __c0, 6)),
-          destination: S.optional(S.String),
-          pendingCountries: S.optional(__S(6, __c0, 6)),
-          disapprovedCountries: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "DestinationStatus" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          documentation: S.optional(S.String),
-          attribute: S.optional(S.String),
-          detail: S.optional(S.String),
-          applicableCountries: S.optional(__S(6, __c0, 6)),
-          description: S.optional(S.String),
-          destination: S.optional(S.String),
-          code: S.optional(S.String),
-          servability: S.optional(S.String),
-          resolution: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ItemLevelIssue" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          destinationStatuses: S.optional(__S(22, __c2, 6)),
-          googleExpirationDate: S.optional(S.String),
-          creationDate: S.optional(S.String),
-          lastUpdateDate: S.optional(S.String),
-          itemLevelIssues: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "CssProductStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customAttributes: S.optional(__S(10, __c1, 2)),
-          contentLanguage: S.optional(S.String),
-          name: S.optional(S.String),
-          rawProvidedId: S.optional(S.String),
-          attributes: S.optional(__S(20, __c2, 4)),
-          cssProductStatus: S.optional(__S(25, __c3, 1)),
-          feedLabel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CssProduct" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          finalName: S.optional(S.String),
-          customAttributes: S.optional(__S(10, __c1, 2)),
-          rawProvidedId: S.optional(S.String),
-          attributes: S.optional(__S(20, __c2, 4)),
-          contentLanguage: S.optional(S.String),
-          name: S.optional(S.String),
-          freshnessTime: S.optional(S.String),
-          feedLabel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CssProductInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          feedId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/cssProductInputs:insert",
-            baseUrl: "https://css.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertAccountsCssProductInputsRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1073,18 +770,18 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListAccountsCssProductsRequest",
       });
-    case 6:
-      return S.Array(__S(26, __c3, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(261, __c16, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          cssProducts: S.optional(__S(30, __c3, 6)),
+          cssProducts: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "ListCssProductsResponse" });
   }
 }
-function __c4(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1103,17 +800,21 @@ function __c4(j: number): any {
         identifier: "ListAccountsLabelsRequest",
       });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(128, __c8, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          accountLabels: S.optional(__S(33, __c4, 1)),
+          accountLabels: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({
         identifier: "ListAccountLabelsResponse",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1129,7 +830,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAccountsQuotasRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
@@ -1138,32 +839,32 @@ function __c4(j: number): any {
           subapi: S.optional(S.String),
         }),
       ).annotate({ identifier: "MethodDetails" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(33, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           quotaLimit: S.optional(S.String),
-          methodDetails: S.optional(__S(37, __c4, 5)),
+          methodDetails: S.optional(__S(34, __c2, 2)),
           quotaMinuteLimit: S.optional(S.String),
           quotaUsage: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaGroup" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(35, __c2, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          quotaGroups: S.optional(__S(39, __c4, 7)),
+          quotaGroups: S.optional(__S(36, __c2, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListQuotaGroupsResponse" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1181,54 +882,66 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListChildAccountsAccountsRequest",
       });
+    case 1:
+      return S.Array(__S(208, __c13, 0));
     case 2:
-      return S.Array(__S(7, __c0, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(__S(42, __c5, 2)),
+          accounts: S.optional(__S(49, __c3, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListChildAccountsResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(304, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://css.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchAccountsCssProductInputsRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://css.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchAccountsLabelsRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          labelIds: S.optional(__S(6, __c0, 6)),
+          labelIds: S.optional(__S(224, __c14, 0)),
           parent: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateAccountLabelsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1241,7 +954,349 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(128, __c8, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/labels",
+            baseUrl: "https://css.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsLabelsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          labelId: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          labelType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountLabel" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          supplementalFeedId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://css.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccountsCssProductInputsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://css.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccountsLabelsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          parent: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://css.googleapis.com/" }),
+        ),
+      ).annotate({ identifier: "GetAccountsRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automaticLabelIds: S.optional(__S(224, __c14, 0)),
+          displayName: S.optional(S.String),
+          parent: S.optional(S.String),
+          labelIds: S.optional(__S(224, __c14, 0)),
+          name: S.optional(S.String),
+          fullName: S.optional(S.String),
+          accountType: S.optional(S.String),
+          homepageUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Account" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://css.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetAccountsCssProductsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          approvedCountries: S.optional(__S(224, __c14, 0)),
+          destination: S.optional(S.String),
+          pendingCountries: S.optional(__S(224, __c14, 0)),
+          disapprovedCountries: S.optional(__S(224, __c14, 0)),
+        }),
+      ).annotate({ identifier: "DestinationStatus" });
+    case 1:
+      return S.Array(__S(256, __c16, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          documentation: S.optional(S.String),
+          attribute: S.optional(S.String),
+          detail: S.optional(S.String),
+          applicableCountries: S.optional(__S(224, __c14, 0)),
+          description: S.optional(S.String),
+          destination: S.optional(S.String),
+          code: S.optional(S.String),
+          servability: S.optional(S.String),
+          resolution: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ItemLevelIssue" });
+    case 3:
+      return S.Array(__S(258, __c16, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          destinationStatuses: S.optional(__S(257, __c16, 1)),
+          googleExpirationDate: S.optional(S.String),
+          creationDate: S.optional(S.String),
+          lastUpdateDate: S.optional(S.String),
+          itemLevelIssues: S.optional(__S(259, __c16, 3)),
+        }),
+      ).annotate({ identifier: "CssProductStatus" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          customAttributes: S.optional(__S(273, __c17, 1)),
+          contentLanguage: S.optional(S.String),
+          name: S.optional(S.String),
+          rawProvidedId: S.optional(S.String),
+          attributes: S.optional(__S(283, __c17, 11)),
+          cssProductStatus: S.optional(__S(260, __c16, 4)),
+          feedLabel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CssProduct" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          name: S.optional(S.String),
+          groupValues: S.optional(S.suspend(() => __S(273, __c17, 1))),
+        }),
+      ).annotate({ identifier: "CustomAttribute" });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          code: S.optional(S.String),
+          authority: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Certification" });
+    case 3:
+      return S.Array(__S(274, __c17, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.String),
+          amountMicros: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Price" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          downpayment: S.optional(__S(276, __c17, 4)),
+          amount: S.optional(__S(276, __c17, 4)),
+          months: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HeadlineOfferInstallment" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Number),
+          unit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductDimension" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(__S(276, __c17, 4)),
+          periodLength: S.optional(S.String),
+          period: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HeadlineOfferSubscriptionCost",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          attributeValue: S.optional(S.String),
+          sectionName: S.optional(S.String),
+          attributeName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductDetail" });
+    case 9:
+      return S.Array(__S(280, __c17, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ProductWeight" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          adult: S.optional(S.Boolean),
+          certifications: S.optional(__S(275, __c17, 3)),
+          headlineOfferCondition: S.optional(S.String),
+          color: S.optional(S.String),
+          pattern: S.optional(S.String),
+          imageLink: S.optional(S.String),
+          sizeSystem: S.optional(S.String),
+          headlineOfferInstallment: S.optional(__S(277, __c17, 5)),
+          productLength: S.optional(__S(278, __c17, 6)),
+          headlineOfferShippingPrice: S.optional(__S(276, __c17, 4)),
+          customLabel4: S.optional(S.String),
+          brand: S.optional(S.String),
+          maxRating: S.optional(S.String),
+          customLabel3: S.optional(S.String),
+          productHighlights: S.optional(__S(224, __c14, 0)),
+          material: S.optional(S.String),
+          itemGroupId: S.optional(S.String),
+          minRating: S.optional(S.String),
+          productWidth: S.optional(__S(278, __c17, 6)),
+          headlineOfferSubscriptionCost: S.optional(__S(279, __c17, 7)),
+          productDetails: S.optional(__S(281, __c17, 9)),
+          customLabel1: S.optional(S.String),
+          description: S.optional(S.String),
+          productHeight: S.optional(__S(278, __c17, 6)),
+          headlineOfferLink: S.optional(S.String),
+          excludedDestinations: S.optional(__S(224, __c14, 0)),
+          ageGroup: S.optional(S.String),
+          size: S.optional(S.String),
+          reviewCount: S.optional(S.String),
+          pause: S.optional(S.String),
+          productWeight: S.optional(__S(282, __c17, 10)),
+          includedDestinations: S.optional(__S(224, __c14, 0)),
+          mpn: S.optional(S.String),
+          numberOfOffers: S.optional(S.String),
+          gender: S.optional(S.String),
+          customLabel0: S.optional(S.String),
+          headlineOfferMobileLink: S.optional(S.String),
+          cppAdsRedirect: S.optional(S.String),
+          googleProductCategory: S.optional(S.String),
+          productTypes: S.optional(__S(224, __c14, 0)),
+          gtin: S.optional(S.String),
+          headlineOfferPrice: S.optional(__S(276, __c17, 4)),
+          sizeTypes: S.optional(__S(224, __c14, 0)),
+          highPrice: S.optional(__S(276, __c17, 4)),
+          isBundle: S.optional(S.Boolean),
+          expirationDate: S.optional(S.String),
+          rating: S.optional(S.Number),
+          customLabel2: S.optional(S.String),
+          additionalImageLinks: S.optional(__S(224, __c14, 0)),
+          multipack: S.optional(S.String),
+          cppLink: S.optional(S.String),
+          title: S.optional(S.String),
+          cppMobileLink: S.optional(S.String),
+          lowPrice: S.optional(__S(276, __c17, 4)),
+        }),
+      ).annotate({ identifier: "Attributes" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          feedId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(304, __c19, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/cssProductInputs:insert",
+            baseUrl: "https://css.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertAccountsCssProductInputsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          finalName: S.optional(S.String),
+          customAttributes: S.optional(__S(273, __c17, 1)),
+          rawProvidedId: S.optional(S.String),
+          attributes: S.optional(__S(283, __c17, 11)),
+          contentLanguage: S.optional(S.String),
+          name: S.optional(S.String),
+          freshnessTime: S.optional(S.String),
+          feedLabel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CssProductInput" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

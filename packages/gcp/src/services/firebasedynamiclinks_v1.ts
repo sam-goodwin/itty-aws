@@ -467,8 +467,8 @@ export const createManagedShortLinks: API.OperationMethod<
   CreateManagedShortLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateManagedShortLinksRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateManagedShortLinkResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateManagedShortLinksRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateManagedShortLinkResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -482,8 +482,8 @@ export const createShortLinks: API.OperationMethod<
   CreateShortLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateShortLinksRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateShortDynamicLinkResponse>,
+  input: __S(49, __c3, 1) as any as S.Schema<CreateShortLinksRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<CreateShortDynamicLinkResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -497,8 +497,8 @@ export const getLinkStatsV1: API.OperationMethod<
   GetLinkStatsV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetLinkStatsV1Request>,
-  output: __S(23, __c2, 7) as any as S.Schema<DynamicLinkStats>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetLinkStatsV1Request>,
+  output: __S(67, __c4, 3) as any as S.Schema<DynamicLinkStats>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -512,8 +512,8 @@ export const installAttributionV1: API.OperationMethod<
   InstallAttributionV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<InstallAttributionV1Request>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetIosPostInstallAttributionResponse>,
+  input: __S(82, __c5, 2) as any as S.Schema<InstallAttributionV1Request>,
+  output: __S(83, __c5, 3) as any as S.Schema<GetIosPostInstallAttributionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -527,8 +527,8 @@ export const reopenAttributionV1: API.OperationMethod<
   ReopenAttributionV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ReopenAttributionV1Request>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetIosReopenAttributionResponse>,
+  input: __S(97, __c6, 1) as any as S.Schema<ReopenAttributionV1Request>,
+  output: __S(98, __c6, 2) as any as S.Schema<GetIosReopenAttributionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -536,6 +536,59 @@ export const reopenAttributionV1: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dynamicLinkInfo: S.optional(__S(24, __c1, 8)),
+          sdkVersion: S.optional(S.String),
+          name: S.optional(S.String),
+          longDynamicLink: S.optional(S.String),
+          suffix: S.optional(__S(25, __c1, 9)),
+        }),
+      ).annotate({
+        identifier: "CreateManagedShortLinkRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/managedShortLinks:create",
+            baseUrl: "https://firebasedynamiclinks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateManagedShortLinksRequest",
+      });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          creationTime: S.optional(S.String),
+          flaggedAttribute: S.optional(__S(2, __c0, 2)),
+          visibility: S.optional(S.String),
+          linkName: S.optional(S.String),
+          info: S.optional(__S(24, __c1, 8)),
+          link: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedShortLink" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          warning: S.optional(__S(33, __c2, 1)),
+          previewLink: S.optional(S.String),
+          managedShortLink: S.optional(__S(3, __c0, 3)),
+        }),
+      ).annotate({
+        identifier: "CreateManagedShortLinkResponse",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -560,8 +613,8 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          itunesConnectAnalytics: S.optional(__S(0, __c0, 0)),
-          googlePlayAnalytics: S.optional(__S(1, __c0, 1)),
+          itunesConnectAnalytics: S.optional(__S(16, __c1, 0)),
+          googlePlayAnalytics: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({ identifier: "AnalyticsInfo" });
     case 3:
@@ -605,80 +658,27 @@ function __c0(j: number): any {
           iosIpadFallbackLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IosInfo" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          analyticsInfo: S.optional(__S(2, __c0, 2)),
-          navigationInfo: S.optional(__S(3, __c0, 3)),
+          analyticsInfo: S.optional(__S(18, __c1, 2)),
+          navigationInfo: S.optional(__S(19, __c1, 3)),
           dynamicLinkDomain: S.optional(S.String),
-          desktopInfo: S.optional(__S(4, __c0, 4)),
+          desktopInfo: S.optional(__S(20, __c1, 4)),
           link: S.optional(S.String),
-          socialMetaTagInfo: S.optional(__S(5, __c0, 5)),
+          socialMetaTagInfo: S.optional(__S(21, __c1, 5)),
           domainUriPrefix: S.optional(S.String),
-          androidInfo: S.optional(__S(6, __c0, 6)),
-          iosInfo: S.optional(__S(7, __c0, 7)),
+          androidInfo: S.optional(__S(22, __c1, 6)),
+          iosInfo: S.optional(__S(23, __c1, 7)),
         }),
       ).annotate({ identifier: "DynamicLinkInfo" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           customSuffix: S.optional(S.String),
           option: S.optional(S.String),
         }),
       ).annotate({ identifier: "Suffix" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dynamicLinkInfo: S.optional(__S(8, __c1, 0)),
-          sdkVersion: S.optional(S.String),
-          name: S.optional(S.String),
-          longDynamicLink: S.optional(S.String),
-          suffix: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateManagedShortLinkRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/managedShortLinks:create",
-            baseUrl: "https://firebasedynamiclinks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateManagedShortLinksRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          warningMessage: S.optional(S.String),
-          warningCode: S.optional(S.String),
-          warningDocumentLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DynamicLinkWarning" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          creationTime: S.optional(S.String),
-          flaggedAttribute: S.optional(__S(14, __c1, 6)),
-          visibility: S.optional(S.String),
-          linkName: S.optional(S.String),
-          info: S.optional(__S(8, __c1, 0)),
-          link: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedShortLink" });
   }
 }
 function __c2(j: number): any {
@@ -686,28 +686,32 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          warning: S.optional(__S(13, __c1, 5)),
-          previewLink: S.optional(S.String),
-          managedShortLink: S.optional(__S(15, __c1, 7)),
+          warningMessage: S.optional(S.String),
+          warningCode: S.optional(S.String),
+          warningDocumentLink: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CreateManagedShortLinkResponse",
-      });
+      ).annotate({ identifier: "DynamicLinkWarning" });
     case 1:
+      return S.Array(__S(32, __c2, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          dynamicLinkInfo: S.optional(__S(8, __c1, 0)),
+          dynamicLinkInfo: S.optional(__S(24, __c1, 8)),
           sdkVersion: S.optional(S.String),
-          suffix: S.optional(__S(9, __c1, 1)),
+          suffix: S.optional(__S(25, __c1, 9)),
           longDynamicLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateShortDynamicLinkRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(48, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -716,17 +720,21 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateShortLinksRequest" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           shortLink: S.optional(S.String),
           previewLink: S.optional(S.String),
-          warning: S.optional(__S(13, __c1, 5)),
+          warning: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({
         identifier: "CreateShortDynamicLinkResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dynamicLink: S.String.pipe(T.Label()),
@@ -740,7 +748,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLinkStatsV1Request" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           platform: S.optional(S.String),
@@ -748,18 +756,18 @@ function __c2(j: number): any {
           event: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicLinkEventStat" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          warnings: S.optional(__S(13, __c1, 5)),
-          linkEventStats: S.optional(__S(22, __c2, 6)),
+          warnings: S.optional(__S(33, __c2, 1)),
+          linkEventStats: S.optional(__S(66, __c4, 2)),
         }),
       ).annotate({ identifier: "DynamicLinkStats" });
   }
 }
-function __c3(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -782,7 +790,7 @@ function __c3(j: number): any {
           appInstallationTime: S.optional(S.String),
           uniqueMatchLinkToCheck: S.optional(S.String),
           bundleId: S.optional(S.String),
-          device: S.optional(__S(24, __c3, 0)),
+          device: S.optional(__S(80, __c5, 0)),
           retrievalMethod: S.optional(S.String),
         }),
       ).annotate({
@@ -791,7 +799,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(81, __c5, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -825,7 +833,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetIosPostInstallAttributionResponse",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bundleId: S.optional(S.String),
@@ -835,10 +847,10 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetIosReopenAttributionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -849,7 +861,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ReopenAttributionV1Request",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           utmCampaign: S.optional(S.String),
@@ -861,14 +873,13 @@ function __c3(j: number): any {
           invitationId: S.optional(S.String),
           resolvedLink: S.optional(S.String),
           utmMedium: S.optional(S.String),
-          warning: S.optional(__S(13, __c1, 5)),
+          warning: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({
         identifier: "GetIosReopenAttributionResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

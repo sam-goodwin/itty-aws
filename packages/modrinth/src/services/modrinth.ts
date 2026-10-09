@@ -1988,8 +1988,8 @@ export const addFilesToVersion: API.OperationMethod<
   AddFilesToVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddFilesToVersionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddFilesToVersionResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<AddFilesToVersionRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<AddFilesToVersionResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2003,8 +2003,8 @@ export const addGalleryImage: API.OperationMethod<
   AddGalleryImageError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddGalleryImageRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddGalleryImageResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<AddGalleryImageRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<AddGalleryImageResponse>,
   errors: [BadRequest, NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2018,8 +2018,8 @@ export const addTeamMember: API.OperationMethod<
   AddTeamMemberError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AddTeamMemberRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddTeamMemberResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<AddTeamMemberRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<AddTeamMemberResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2033,8 +2033,8 @@ export const changeProjectIcon: API.OperationMethod<
   ChangeProjectIconError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ChangeProjectIconRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ChangeProjectIconResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<ChangeProjectIconRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ChangeProjectIconResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2048,8 +2048,8 @@ export const changeUserIcon: API.OperationMethod<
   ChangeUserIconError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ChangeUserIconRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ChangeUserIconResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<ChangeUserIconRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ChangeUserIconResponse>,
   errors: [BadRequest, NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2063,8 +2063,8 @@ export const checkProjectValidity: API.OperationMethod<
   CheckProjectValidityError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CheckProjectValidityRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ProjectIdentifier>,
+  input: __S(640, __c80, 0) as any as S.Schema<CheckProjectValidityRequest>,
+  output: __S(641, __c80, 1) as any as S.Schema<ProjectIdentifier>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2078,8 +2078,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateProjectRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Project>,
+  input: __S(717, __c89, 5) as any as S.Schema<CreateProjectRequest>,
+  output: __S(740, __c92, 4) as any as S.Schema<Project>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2093,8 +2093,8 @@ export const createVersion: API.OperationMethod<
   CreateVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateVersionRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateVersionResponse>,
+  input: __S(770, __c96, 2) as any as S.Schema<CreateVersionRequest>,
+  output: __S(771, __c96, 3) as any as S.Schema<CreateVersionResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2108,8 +2108,8 @@ export const deleteFileFromHash: API.OperationMethod<
   DeleteFileFromHashError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteFileFromHashRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteFileFromHashResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteFileFromHashRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteFileFromHashResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2123,8 +2123,8 @@ export const deleteGalleryImage: API.OperationMethod<
   DeleteGalleryImageError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteGalleryImageRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGalleryImageResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteGalleryImageRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteGalleryImageResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2138,8 +2138,8 @@ export const deleteNotification: API.OperationMethod<
   DeleteNotificationError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteNotificationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteNotificationResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteNotificationRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteNotificationResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2153,8 +2153,8 @@ export const deleteNotifications: API.OperationMethod<
   DeleteNotificationsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteNotificationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteNotificationsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteNotificationsRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteNotificationsResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2168,8 +2168,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteProjectResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteProjectResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2183,8 +2183,8 @@ export const deleteProjectIcon: API.OperationMethod<
   DeleteProjectIconError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteProjectIconRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteProjectIconResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteProjectIconRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteProjectIconResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2198,8 +2198,8 @@ export const deleteTeamMember: API.OperationMethod<
   DeleteTeamMemberError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteTeamMemberRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteTeamMemberResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteTeamMemberRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteTeamMemberResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2213,8 +2213,8 @@ export const deleteThreadMessage: API.OperationMethod<
   DeleteThreadMessageError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteThreadMessageRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteThreadMessageResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteThreadMessageRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteThreadMessageResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2228,8 +2228,8 @@ export const deleteUserIcon: API.OperationMethod<
   DeleteUserIconError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteUserIconRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteUserIconResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteUserIconRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteUserIconResponse>,
   errors: [BadRequest, NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2243,8 +2243,8 @@ export const deleteVersion: API.OperationMethod<
   DeleteVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteVersionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteVersionResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteVersionRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteVersionResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2258,8 +2258,8 @@ export const followProject: API.OperationMethod<
   FollowProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<FollowProjectRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FollowProjectResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<FollowProjectRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<FollowProjectResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2273,8 +2273,8 @@ export const forgeUpdates2: API.OperationMethod<
   ForgeUpdates2Error,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ForgeUpdatesRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ForgeUpdates>,
+  input: __S(104, __c13, 0) as any as S.Schema<ForgeUpdatesRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<ForgeUpdates>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2288,8 +2288,8 @@ export const getDependencies: API.OperationMethod<
   GetDependenciesError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetDependenciesRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ProjectDependencyList>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetDependenciesRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<ProjectDependencyList>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2303,8 +2303,8 @@ export const getFollowedProjects: API.OperationMethod<
   GetFollowedProjectsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetFollowedProjectsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetFollowedProjectsResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetFollowedProjectsRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<GetFollowedProjectsResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2318,8 +2318,8 @@ export const getLatestVersionFromHash: API.OperationMethod<
   GetLatestVersionFromHashError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetLatestVersionFromHashRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetLatestVersionFromHashResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetLatestVersionFromHashRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetLatestVersionFromHashResponse>,
   errors: [BadRequest, NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2333,8 +2333,8 @@ export const getLatestVersionsFromHashes: API.OperationMethod<
   GetLatestVersionsFromHashesError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetLatestVersionsFromHashesRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetLatestVersionsFromHashesResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetLatestVersionsFromHashesRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<GetLatestVersionsFromHashesResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2348,8 +2348,8 @@ export const getNotification: API.OperationMethod<
   GetNotificationError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetNotificationRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<Notification>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetNotificationRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<Notification>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2363,8 +2363,8 @@ export const getNotifications: API.OperationMethod<
   GetNotificationsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetNotificationsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<GetNotificationsResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetNotificationsRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<GetNotificationsResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2378,8 +2378,8 @@ export const getOpenReports: API.OperationMethod<
   GetOpenReportsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetOpenReportsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<GetOpenReportsResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetOpenReportsRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<GetOpenReportsResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2393,8 +2393,8 @@ export const getPayoutHistory: API.OperationMethod<
   GetPayoutHistoryError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetPayoutHistoryRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<UserPayoutHistory>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetPayoutHistoryRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<UserPayoutHistory>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2408,8 +2408,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetProjectRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Project>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(740, __c92, 4) as any as S.Schema<Project>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2423,8 +2423,8 @@ export const getProjects: API.OperationMethod<
   GetProjectsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetProjectsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<GetProjectsResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetProjectsRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<GetProjectsResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2438,8 +2438,8 @@ export const getProjectTeamMembers: API.OperationMethod<
   GetProjectTeamMembersError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetProjectTeamMembersRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<GetProjectTeamMembersResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetProjectTeamMembersRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<GetProjectTeamMembersResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2453,8 +2453,8 @@ export const getProjectVersions: API.OperationMethod<
   GetProjectVersionsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetProjectVersionsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetProjectVersionsResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<GetProjectVersionsRequest>,
+  output: __S(305, __c38, 1) as any as S.Schema<GetProjectVersionsResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2468,8 +2468,8 @@ export const getReport: API.OperationMethod<
   GetReportError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetReportRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetReportResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<GetReportRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<GetReportResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2483,8 +2483,8 @@ export const getReports: API.OperationMethod<
   GetReportsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetReportsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<GetReportsResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<GetReportsRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<GetReportsResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2498,8 +2498,8 @@ export const getTeamMembers: API.OperationMethod<
   GetTeamMembersError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetTeamMembersRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<GetTeamMembersResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<GetTeamMembersRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<GetTeamMembersResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2513,8 +2513,8 @@ export const getTeams: API.OperationMethod<
   GetTeamsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetTeamsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetTeamsResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<GetTeamsRequest>,
+  output: __S(338, __c42, 2) as any as S.Schema<GetTeamsResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2528,8 +2528,8 @@ export const getThread: API.OperationMethod<
   GetThreadError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetThreadRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<Thread>,
+  input: __S(344, __c43, 0) as any as S.Schema<GetThreadRequest>,
+  output: __S(356, __c44, 4) as any as S.Schema<Thread>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2543,8 +2543,8 @@ export const getThreads: API.OperationMethod<
   GetThreadsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetThreadsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<GetThreadsResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<GetThreadsRequest>,
+  output: __S(362, __c45, 2) as any as S.Schema<GetThreadsResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2558,8 +2558,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetUserRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<GetUserResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(377, __c47, 1) as any as S.Schema<GetUserResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2573,8 +2573,8 @@ export const getUserFromAuth: API.OperationMethod<
   GetUserFromAuthError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetUserFromAuthRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GetUserFromAuthResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<GetUserFromAuthRequest>,
+  output: __S(385, __c48, 1) as any as S.Schema<GetUserFromAuthResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2588,8 +2588,8 @@ export const getUserNotifications: API.OperationMethod<
   GetUserNotificationsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetUserNotificationsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GetUserNotificationsResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<GetUserNotificationsRequest>,
+  output: __S(393, __c49, 1) as any as S.Schema<GetUserNotificationsResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2603,8 +2603,8 @@ export const getUserProjects: API.OperationMethod<
   GetUserProjectsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetUserProjectsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<GetUserProjectsResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<GetUserProjectsRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<GetUserProjectsResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2618,8 +2618,8 @@ export const getUsers: API.OperationMethod<
   GetUsersError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetUsersRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetUsersResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<GetUsersRequest>,
+  output: __S(410, __c51, 2) as any as S.Schema<GetUsersResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2633,8 +2633,8 @@ export const getVersion: API.OperationMethod<
   GetVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetVersionRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<GetVersionResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<GetVersionRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<GetVersionResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2648,8 +2648,8 @@ export const getVersionFromIdOrNumber: API.OperationMethod<
   GetVersionFromIdOrNumberError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetVersionFromIdOrNumberRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GetVersionFromIdOrNumberResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<GetVersionFromIdOrNumberRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<GetVersionFromIdOrNumberResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2663,8 +2663,8 @@ export const getVersions: API.OperationMethod<
   GetVersionsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetVersionsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GetVersionsResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<GetVersionsRequest>,
+  output: __S(433, __c54, 1) as any as S.Schema<GetVersionsResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2678,8 +2678,8 @@ export const joinTeam: API.OperationMethod<
   JoinTeamError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<JoinTeamRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<JoinTeamResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<JoinTeamRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<JoinTeamResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2693,8 +2693,8 @@ export const licenseText: API.OperationMethod<
   LicenseTextError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<LicenseTextRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<License>,
+  input: __S(448, __c56, 0) as any as S.Schema<LicenseTextRequest>,
+  output: __S(449, __c56, 1) as any as S.Schema<License>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2708,8 +2708,8 @@ export const listCategory: API.OperationMethod<
   ListCategoryError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ListCategoryRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<ListCategoryResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<ListCategoryRequest>,
+  output: __S(467, __c58, 3) as any as S.Schema<ListCategoryResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2723,8 +2723,8 @@ export const listDonationPlatform: API.OperationMethod<
   ListDonationPlatformError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListDonationPlatformRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<ListDonationPlatformResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<ListDonationPlatformRequest>,
+  output: __S(475, __c59, 3) as any as S.Schema<ListDonationPlatformResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2738,8 +2738,8 @@ export const listLoader: API.OperationMethod<
   ListLoaderError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListLoaderRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<ListLoaderResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<ListLoaderRequest>,
+  output: __S(483, __c60, 3) as any as S.Schema<ListLoaderResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2753,8 +2753,8 @@ export const listProjectType: API.OperationMethod<
   ListProjectTypeError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<ListProjectTypeRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListProjectTypeResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<ListProjectTypeRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<ListProjectTypeResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2768,8 +2768,8 @@ export const listReportType: API.OperationMethod<
   ListReportTypeError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListReportTypeRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListReportTypeResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<ListReportTypeRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<ListReportTypeResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2783,8 +2783,8 @@ export const listSideType: API.OperationMethod<
   ListSideTypeError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListSideTypeRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListSideTypeResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<ListSideTypeRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<ListSideTypeResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2798,8 +2798,8 @@ export const listVersion: API.OperationMethod<
   ListVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListVersionRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<ListVersionResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<ListVersionRequest>,
+  output: __S(523, __c65, 3) as any as S.Schema<ListVersionResponse>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2813,8 +2813,8 @@ export const modifyGalleryImage: API.OperationMethod<
   ModifyGalleryImageError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ModifyGalleryImageRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ModifyGalleryImageResponse>,
+  input: __S(528, __c66, 0) as any as S.Schema<ModifyGalleryImageRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ModifyGalleryImageResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2828,8 +2828,8 @@ export const modifyProject: API.OperationMethod<
   ModifyProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ModifyProjectRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ModifyProjectResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<ModifyProjectRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ModifyProjectResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2843,8 +2843,8 @@ export const modifyReport: API.OperationMethod<
   ModifyReportError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ModifyReportRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ModifyReportResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<ModifyReportRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ModifyReportResponse>,
   errors: [BadRequest, NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2858,8 +2858,8 @@ export const modifyTeamMember: API.OperationMethod<
   ModifyTeamMemberError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ModifyTeamMemberRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ModifyTeamMemberResponse>,
+  input: __S(560, __c70, 0) as any as S.Schema<ModifyTeamMemberRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ModifyTeamMemberResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2873,8 +2873,8 @@ export const modifyUser: API.OperationMethod<
   ModifyUserError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ModifyUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ModifyUserResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<ModifyUserRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ModifyUserResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2888,8 +2888,8 @@ export const modifyVersion: API.OperationMethod<
   ModifyVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<ModifyVersionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ModifyVersionResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<ModifyVersionRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ModifyVersionResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2903,8 +2903,8 @@ export const randomProjects: API.OperationMethod<
   RandomProjectsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<RandomProjectsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<RandomProjectsResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<RandomProjectsRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<RandomProjectsResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2918,8 +2918,8 @@ export const readNotification: API.OperationMethod<
   ReadNotificationError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ReadNotificationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ReadNotificationResponse>,
+  input: __S(592, __c74, 0) as any as S.Schema<ReadNotificationRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ReadNotificationResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2933,8 +2933,8 @@ export const readNotifications: API.OperationMethod<
   ReadNotificationsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ReadNotificationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ReadNotificationsResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<ReadNotificationsRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ReadNotificationsResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2948,8 +2948,8 @@ export const scheduleProject: API.OperationMethod<
   ScheduleProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ScheduleProjectRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ScheduleProjectResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<ScheduleProjectRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ScheduleProjectResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2963,8 +2963,8 @@ export const scheduleVersion: API.OperationMethod<
   ScheduleVersionError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<ScheduleVersionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ScheduleVersionResponse>,
+  input: __S(616, __c77, 0) as any as S.Schema<ScheduleVersionRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<ScheduleVersionResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2978,8 +2978,8 @@ export const searchProjects: API.OperationMethod<
   SearchProjectsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<SearchProjectsRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<SearchResults>,
+  input: __S(624, __c78, 0) as any as S.Schema<SearchProjectsRequest>,
+  output: __S(627, __c78, 3) as any as S.Schema<SearchResults>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -2993,8 +2993,8 @@ export const sendThreadMessage: API.OperationMethod<
   SendThreadMessageError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<SendThreadMessageRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<Thread>,
+  input: __S(632, __c79, 0) as any as S.Schema<SendThreadMessageRequest>,
+  output: __S(356, __c44, 4) as any as S.Schema<Thread>,
   errors: [BadRequest, NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3008,8 +3008,8 @@ export const statistics2: API.OperationMethod<
   Statistics2Error,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<Statistics2Request>,
-  output: __S(158, __c19, 6) as any as S.Schema<Statistics>,
+  input: __S(648, __c81, 0) as any as S.Schema<Statistics2Request>,
+  output: __S(649, __c81, 1) as any as S.Schema<Statistics>,
   errors: [UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3023,8 +3023,8 @@ export const submitReport: API.OperationMethod<
   SubmitReportError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<SubmitReportRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<SubmitReportResponse>,
+  input: __S(656, __c82, 0) as any as S.Schema<SubmitReportRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<SubmitReportResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3038,8 +3038,8 @@ export const transferTeamOwnership: API.OperationMethod<
   TransferTeamOwnershipError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<TransferTeamOwnershipRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TransferTeamOwnershipResponse>,
+  input: __S(664, __c83, 0) as any as S.Schema<TransferTeamOwnershipRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<TransferTeamOwnershipResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3053,8 +3053,8 @@ export const unfollowProject: API.OperationMethod<
   UnfollowProjectError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<UnfollowProjectRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UnfollowProjectResponse>,
+  input: __S(672, __c84, 0) as any as S.Schema<UnfollowProjectRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UnfollowProjectResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3068,8 +3068,8 @@ export const updateProjects: API.OperationMethod<
   UpdateProjectsError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<UpdateProjectsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateProjectsResponse>,
+  input: __S(680, __c85, 0) as any as S.Schema<UpdateProjectsRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateProjectsResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3083,8 +3083,8 @@ export const versionFromHash: API.OperationMethod<
   VersionFromHashError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<VersionFromHashRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<VersionFromHashResponse>,
+  input: __S(688, __c86, 0) as any as S.Schema<VersionFromHashRequest>,
+  output: __S(689, __c86, 1) as any as S.Schema<VersionFromHashResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3098,8 +3098,8 @@ export const versionsFromHashes: API.OperationMethod<
   VersionsFromHashesError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<VersionsFromHashesRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<VersionsFromHashesResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<VersionsFromHashesRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<VersionsFromHashesResponse>,
   errors: [BadRequest, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3113,8 +3113,8 @@ export const withdrawPayout: API.OperationMethod<
   WithdrawPayoutError,
   ModrinthOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<WithdrawPayoutRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<WithdrawPayoutResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<WithdrawPayoutRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<WithdrawPayoutResponse>,
   errors: [NotFound, UnknownModrinthError],
   protocol: ModrinthProtocol,
   retry: Retry.Retry,
@@ -3122,6 +3122,120 @@ export const withdrawPayout: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hash: S.String.pipe(T.Label()),
+          algorithm: S.String.pipe(T.Query()),
+          version_id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/version_file/{hash}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteFileFromHashRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_slug: S.String.pipe(T.Label()),
+          url: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/project/{id_slug}/gallery", code: 200 })),
+      ).annotate({
+        identifier: "DeleteGalleryImageRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/notification/{id}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteNotificationRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ids: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/notifications", code: 200 })),
+      ).annotate({
+        identifier: "DeleteNotificationsRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/project/{id_slug}", code: 200 })),
+      ).annotate({ identifier: "DeleteProjectRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/project/{id_slug}/icon", code: 200 })),
+      ).annotate({ identifier: "DeleteProjectIconRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          id_username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/team/{id}/members/{id_username}", code: 200 })),
+      ).annotate({ identifier: "DeleteTeamMemberRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/message/{id}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteThreadMessageRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/user/{id_username}/icon", code: 200 })),
+      ).annotate({ identifier: "DeleteUserIconRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/version/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteVersionRequest" });
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3137,422 +3251,52 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddFilesToVersionRequest" });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AddFilesToVersionResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id_slug: S.String.pipe(T.Label()),
-          ext: S.String.pipe(T.Query()),
-          featured: S.Boolean.pipe(T.Query()),
-          title: S.optional(S.String.pipe(T.Query())),
-          description: S.optional(S.String.pipe(T.Query())),
-          ordering: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/project/{id_slug}/gallery", code: 200 })),
-      ).annotate({ identifier: "AddGalleryImageRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          user_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/team/{id}/members", code: 200 })),
-      ).annotate({ identifier: "AddTeamMemberRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id_slug: S.String.pipe(T.Label()),
-          ext: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "PATCH", uri: "/project/{id_slug}/icon", code: 200 })),
-      ).annotate({ identifier: "ChangeProjectIconRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id_username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "PATCH", uri: "/user/{id_username}/icon", code: 200 })),
-      ).annotate({ identifier: "ChangeUserIconRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id_slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/project/{id_slug}/check", code: 200 })),
-      ).annotate({
-        identifier: "CheckProjectValidityRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProjectIdentifier" });
   }
 }
-function __c1(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          platform: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProjectDonationURL" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          version_id: S.optional(S.NullOr(S.String)),
-          project_id: S.optional(S.NullOr(S.String)),
-          file_name: S.optional(S.NullOr(S.String)),
-          dependency_type: S.String,
-        }),
-      ).annotate({ identifier: "VersionDependency" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          algorithm: S.String,
-          hash: S.String,
-          file_type: S.Unknown,
-        }),
-      ).annotate({ identifier: "EditableFileType" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          version_number: S.optional(S.String),
-          changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12, __c1, 4)),
-          game_versions: S.optional(__S(8, __c1, 0)),
-          version_type: S.optional(S.String),
-          loaders: S.optional(__S(8, __c1, 0)),
-          featured: S.optional(S.Boolean),
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
-          primary_file: S.optional(__S(8, __c1, 0)),
-          file_types: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "EditableVersion" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          item: S.optional(S.String),
-          featured: S.optional(S.Boolean),
-          title: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          ordering: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreatableProjectGalleryItem",
-      });
-    case 2:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(17, __c2, 1)));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String,
-          title: S.String,
-          description: S.String,
-          body: S.String,
-          categories: __S(8, __c1, 0),
-          additional_categories: S.optional(__S(8, __c1, 0)),
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
-          issues_url: S.optional(S.NullOr(S.String)),
-          source_url: S.optional(S.NullOr(S.String)),
-          wiki_url: S.optional(S.NullOr(S.String)),
-          discord_url: S.optional(S.NullOr(S.String)),
-          donation_urls: S.optional(__S(10, __c1, 2)),
-          client_side: S.String,
-          server_side: S.String,
-          license_id: S.String,
-          license_url: S.optional(S.NullOr(S.String)),
-          project_type: S.String,
-          initial_versions: S.optional(__S(16, __c2, 0)),
-          is_draft: S.optional(S.Boolean),
-          gallery_items: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "CreatableProject" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(19, __c2, 3),
-          icon: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/project", code: 200, contentType: "multipart" })),
-      ).annotate({ identifier: "CreateProjectRequest" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ProjectLicense" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          featured: S.Boolean,
-          title: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          created: S.String,
-          ordering: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GalleryImage" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(/*@__PURE__*/ S.NullOr(__S(23, __c2, 7)));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          body: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ModeratorMessage" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          team: S.String,
-          title: S.String,
-          description: S.String,
-          body: S.String,
-          status: S.String,
-          project_type: S.String,
-          categories: __S(8, __c1, 0),
-          additional_categories: __S(8, __c1, 0),
-          environment: __S(21, __c2, 5),
-          game_versions: __S(8, __c1, 0),
-          loaders: __S(8, __c1, 0),
-          versions: __S(8, __c1, 0),
-          license: __S(22, __c2, 6),
-          published: S.String,
-          updated: S.String,
-          downloads: S.Number,
-          followers: S.Number,
-          gallery: __S(24, __c3, 0),
-          thread_id: S.String,
-          monetization_status: S.String,
-          slug: S.optional(S.NullOr(S.String)),
-          organization: S.optional(S.NullOr(S.String)),
-          requested_status: S.optional(S.NullOr(S.String)),
-          approved: S.optional(S.NullOr(S.String)),
-          queued: S.optional(S.NullOr(S.String)),
-          icon_url: S.optional(S.NullOr(S.String)),
-          raw_icon_url: S.optional(S.NullOr(S.String)),
-          color: S.optional(S.NullOr(S.Number)),
-          issues_url: S.optional(S.NullOr(S.String)),
-          source_url: S.optional(S.NullOr(S.String)),
-          wiki_url: S.optional(S.NullOr(S.String)),
-          discord_url: S.optional(S.NullOr(S.String)),
-          donation_urls: S.optional(S.NullOr(__S(10, __c1, 2))),
-          client_side: S.String,
-          server_side: S.String,
-          body_url: S.optional(S.NullOr(S.String)),
-          moderator_message: S.optional(S.NullOr(__S(25, __c3, 1))),
-        }),
-      ).annotate({ identifier: "Project" });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          version_number: S.String,
-          changelog: S.optional(S.NullOr(S.String)),
-          dependencies: __S(12, __c1, 4),
-          game_versions: __S(8, __c1, 0),
-          version_type: S.String,
-          loaders: __S(8, __c1, 0),
-          featured: S.Boolean,
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
-          project_id: S.String,
-          file_parts: __S(8, __c1, 0),
-          primary_file: S.optional(S.String),
-          environment: S.optional(S.String),
-          file_types: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "CreatableVersion" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(28, __c3, 4),
-        }).pipe(T.Http({ method: "POST", uri: "/version", code: 200, contentType: "multipart" })),
-      ).annotate({ identifier: "CreateVersionRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sha512: S.optional(S.String),
-          sha1: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VersionFileHashes" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          hashes: __S(30, __c3, 6),
-          url: S.String,
-          filename: S.String,
-          primary: S.Boolean,
-          size: S.Number,
-          file_type: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "VersionFile" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          version_number: S.String,
-          changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12, __c1, 4)),
-          game_versions: __S(8, __c1, 0),
-          version_type: S.String,
-          loaders: __S(8, __c1, 0),
-          featured: S.Boolean,
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          project_id: S.String,
-          author_id: S.String,
-          date_published: S.String,
-          downloads: S.Number,
-          changelog_url: S.optional(S.NullOr(S.String)),
-          environment: S.String,
-          files: __S(32, __c4, 0),
-        }),
-      ).annotate({ identifier: "CreateVersionResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hash: S.String.pipe(T.Label()),
-          algorithm: S.String.pipe(T.Query()),
-          version_id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/version_file/{hash}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteFileFromHashRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id_slug: S.String.pipe(T.Label()),
-          url: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/project/{id_slug}/gallery", code: 200 })),
-      ).annotate({
-        identifier: "DeleteGalleryImageRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/notification/{id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteNotificationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ids: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/notifications", code: 200 })),
-      ).annotate({
-        identifier: "DeleteNotificationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id_slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/project/{id_slug}", code: 200 })),
-      ).annotate({ identifier: "DeleteProjectRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id_slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/project/{id_slug}/icon", code: 200 })),
-      ).annotate({ identifier: "DeleteProjectIconRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          id_username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/team/{id}/members/{id_username}", code: 200 })),
-      ).annotate({ identifier: "DeleteTeamMemberRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/message/{id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteThreadMessageRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id_username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/user/{id_username}/icon", code: 200 })),
-      ).annotate({ identifier: "DeleteUserIconRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/version/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteVersionRequest" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/project/{id_slug}/follow", code: 200 })),
       ).annotate({ identifier: "FollowProjectRequest" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
           neoforge: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/updates/{id_slug}/forge_updates.json", code: 200 })),
       ).annotate({ identifier: "ForgeUpdatesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _version__recommended: S.optional(S.String.pipe(T.Body("{version}-recommended"))),
           _version__latest: S.optional(S.String.pipe(T.Body("{version}-latest"))),
         }),
       ).annotate({ identifier: "ForgeUpdateCheckerPromos" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           homepage: S.optional(S.String),
-          promos: S.optional(__S(46, __c5, 6)),
+          promos: S.optional(__S(105, __c13, 1)),
         }),
       ).annotate({ identifier: "ForgeUpdates" });
   }
 }
-function __c6(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3561,66 +3305,21 @@ function __c6(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/project/{id_slug}/dependencies", code: 200 })),
       ).annotate({ identifier: "GetDependenciesRequest" });
     case 1:
-      return S.Array(__S(26, __c3, 2));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          version_number: S.String,
-          changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12, __c1, 4)),
-          game_versions: __S(8, __c1, 0),
-          version_type: S.String,
-          loaders: __S(8, __c1, 0),
-          featured: S.Boolean,
-          status: S.optional(S.String),
-          requested_status: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          project_id: S.String,
-          author_id: S.String,
-          date_published: S.String,
-          downloads: S.Number,
-          changelog_url: S.optional(S.NullOr(S.String)),
-          environment: S.String,
-          files: __S(32, __c4, 0),
-        }),
-      ).annotate({ identifier: "Version" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projects: S.optional(__S(49, __c6, 1)),
-          versions: S.optional(__S(51, __c6, 3)),
+          projects: S.optional(__S(120, __c15, 0)),
+          versions: S.optional(__S(136, __c17, 0)),
         }),
       ).annotate({ identifier: "ProjectDependencyList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id_username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/{id_username}/follows", code: 200 })),
-      ).annotate({
-        identifier: "GetFollowedProjectsRequest",
-      });
-    case 6:
-      return S.suspend(() => __S(49, __c6, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetFollowedProjectsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          hash: S.String.pipe(T.Label()),
-          algorithm: S.String.pipe(T.Query()),
-          loaders: __S(8, __c1, 0),
-          game_versions: __S(8, __c1, 0),
-          version_types: S.optional(__S(21, __c2, 5)),
-        }).pipe(T.Http({ method: "POST", uri: "/version_file/{hash}/update", code: 200 })),
-      ).annotate({
-        identifier: "GetLatestVersionFromHashRequest",
-      });
   }
 }
-function __c7(j: number): any {
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(740, __c92, 4));
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3628,10 +3327,10 @@ function __c7(j: number): any {
           name: S.String,
           version_number: S.String,
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12, __c1, 4)),
-          game_versions: __S(8, __c1, 0),
+          dependencies: S.optional(__S(761, __c95, 1)),
+          game_versions: __S(752, __c94, 0),
           version_type: S.String,
-          loaders: __S(8, __c1, 0),
+          loaders: __S(752, __c94, 0),
           featured: S.Boolean,
           status: S.optional(S.String),
           requested_status: S.optional(S.NullOr(S.String)),
@@ -3642,45 +3341,122 @@ function __c7(j: number): any {
           downloads: S.Number,
           changelog_url: S.optional(S.NullOr(S.String)),
           environment: S.String,
-          files: __S(32, __c4, 0),
+          files: __S(778, __c97, 2),
         }),
+      ).annotate({ identifier: "Version" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(128, __c16, 0));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/{id_username}/follows", code: 200 })),
       ).annotate({
-        identifier: "GetLatestVersionFromHashResponse",
+        identifier: "GetFollowedProjectsRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(120, __c15, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetFollowedProjectsResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hash: S.String.pipe(T.Label()),
+          algorithm: S.String.pipe(T.Query()),
+          loaders: __S(752, __c94, 0),
+          game_versions: __S(752, __c94, 0),
+          version_types: S.optional(__S(720, __c90, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/version_file/{hash}/update", code: 200 })),
+      ).annotate({
+        identifier: "GetLatestVersionFromHashRequest",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          hashes: __S(8, __c1, 0),
+          name: S.String,
+          version_number: S.String,
+          changelog: S.optional(S.NullOr(S.String)),
+          dependencies: S.optional(__S(761, __c95, 1)),
+          game_versions: __S(752, __c94, 0),
+          version_type: S.String,
+          loaders: __S(752, __c94, 0),
+          featured: S.Boolean,
+          status: S.optional(S.String),
+          requested_status: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          project_id: S.String,
+          author_id: S.String,
+          date_published: S.String,
+          downloads: S.Number,
+          changelog_url: S.optional(S.NullOr(S.String)),
+          environment: S.String,
+          files: __S(778, __c97, 2),
+        }),
+      ).annotate({
+        identifier: "GetLatestVersionFromHashResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hashes: __S(752, __c94, 0),
           algorithm: S.String,
-          loaders: __S(8, __c1, 0),
-          game_versions: __S(8, __c1, 0),
-          version_types: S.optional(__S(21, __c2, 5)),
+          loaders: __S(752, __c94, 0),
+          game_versions: __S(752, __c94, 0),
+          version_types: S.optional(__S(720, __c90, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/version_files/update", code: 200 })),
       ).annotate({
         identifier: "GetLatestVersionsFromHashesRequest",
       });
-    case 2:
-      return S.Record(S.String, __S(50, __c6, 2));
-    case 3:
-      return S.suspend(() => __S(58, __c7, 2).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(128, __c16, 0));
+    case 1:
+      return S.suspend(() => __S(168, __c21, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetLatestVersionsFromHashesResponse",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/notification/{id}", code: 200 })),
       ).annotate({ identifier: "GetNotificationRequest" });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
-          action_route: S.optional(__S(8, __c1, 0)),
+          action_route: S.optional(__S(752, __c94, 0)),
         }),
       ).annotate({ identifier: "NotificationAction" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(184, __c23, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -3691,12 +3467,12 @@ function __c7(j: number): any {
           link: S.String,
           read: S.Boolean,
           created: S.String,
-          actions: __S(62, __c7, 6),
+          actions: __S(185, __c23, 1),
         }),
       ).annotate({ identifier: "Notification" });
   }
 }
-function __c8(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3705,18 +3481,30 @@ function __c8(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/notifications", code: 200 })),
       ).annotate({ identifier: "GetNotificationsRequest" });
     case 1:
-      return S.Array(__S(63, __c7, 7));
-    case 2:
-      return S.suspend(() => __S(65, __c8, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(200, __c25, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetNotificationsResponse",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(186, __c23, 2));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/report", code: 200 })),
       ).annotate({ identifier: "GetOpenReportsRequest" });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           report_type: S.String,
@@ -3730,23 +3518,27 @@ function __c8(j: number): any {
           thread_id: S.String,
         }),
       ).annotate({ identifier: "Report" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() => __S(69, __c8, 5).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(216, __c27, 0));
+    case 1:
+      return S.suspend(() => __S(224, __c28, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOpenReportsResponse",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_username: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/user/{id_username}/payouts", code: 200 })),
       ).annotate({ identifier: "GetPayoutHistoryRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.String),
@@ -3754,33 +3546,64 @@ function __c9(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserPayoutHistoryEntry" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
     case 2:
+      return S.Array(__S(233, __c29, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           all_time: S.optional(S.String),
           last_month: S.optional(S.String),
-          payouts: S.optional(__S(73, __c9, 1)),
+          payouts: S.optional(__S(234, __c29, 2)),
         }),
       ).annotate({ identifier: "UserPayoutHistory" });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_slug: S.String.pipe(T.Label()),
+          ext: S.String.pipe(T.Query()),
+          featured: S.Boolean.pipe(T.Query()),
+          title: S.optional(S.String.pipe(T.Query())),
+          description: S.optional(S.String.pipe(T.Query())),
+          ordering: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/project/{id_slug}/gallery", code: 200 })),
+      ).annotate({ identifier: "AddGalleryImageRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/project/{id_slug}", code: 200 })),
       ).annotate({ identifier: "GetProjectRequest" });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ids: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/projects", code: 200 })),
       ).annotate({ identifier: "GetProjectsRequest" });
-    case 5:
-      return S.suspend(() => __S(49, __c6, 1).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(120, __c15, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetProjectsResponse",
       });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
@@ -3788,7 +3611,33 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetProjectTeamMembersRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() => __S(281, __c35, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetProjectTeamMembersResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String,
+          user: __S(296, __c37, 0),
+          role: S.String,
+          permissions: S.optional(S.Number),
+          accepted: S.Boolean,
+          payouts_split: S.optional(S.Number),
+          ordering: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TeamMember" });
+    case 1:
+      return S.Array(__S(280, __c35, 0));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           balance: S.optional(S.Number),
@@ -3799,7 +3648,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "UserPayoutData" });
   }
 }
-function __c10(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3808,38 +3657,24 @@ function __c10(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           bio: S.optional(S.String),
-          payout_data: S.optional(S.NullOr(__S(79, __c9, 7))),
+          payout_data: S.optional(S.NullOr(__S(288, __c36, 0))),
           id: S.String,
           avatar_url: S.String,
           created: S.String,
           role: S.String,
           badges: S.optional(S.Number),
-          auth_providers: S.optional(S.NullOr(__S(8, __c1, 0))),
+          auth_providers: S.optional(S.NullOr(__S(752, __c94, 0))),
           email_verified: S.optional(S.NullOr(S.Boolean)),
           has_password: S.optional(S.NullOr(S.Boolean)),
           has_totp: S.optional(S.NullOr(S.Boolean)),
           github_id: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "User" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String,
-          user: __S(80, __c10, 0),
-          role: S.String,
-          permissions: S.optional(S.Number),
-          accepted: S.Boolean,
-          payouts_split: S.optional(S.Number),
-          ordering: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TeamMember" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() => __S(82, __c10, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetProjectTeamMembersResponse",
-      });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
@@ -3851,17 +3686,25 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetProjectVersionsRequest",
       });
-    case 5:
-      return S.suspend(() => __S(51, __c6, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(136, __c17, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetProjectVersionsResponse",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/report/{id}", code: 200 })),
       ).annotate({ identifier: "GetReportRequest" });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ids: S.String.pipe(T.Query()),
@@ -3869,7 +3712,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetReportsRequest" });
   }
 }
-function __c11(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3878,28 +3721,40 @@ function __c11(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/team/{id}/members", code: 200 })),
       ).annotate({ identifier: "GetTeamMembersRequest" });
     case 1:
-      return S.suspend(() => __S(82, __c10, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(281, __c35, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetTeamMembersResponse",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ids: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/teams", code: 200 })),
       ).annotate({ identifier: "GetTeamsRequest" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() => __S(91, __c11, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(281, __c35, 1));
+    case 2:
+      return S.suspend(() => __S(337, __c42, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetTeamsResponse",
       });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/thread/{id}", code: 200 })),
       ).annotate({ identifier: "GetThreadRequest" });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -3910,66 +3765,81 @@ function __c11(j: number): any {
           new_status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ThreadMessageBody" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           author_id: S.optional(S.NullOr(S.String)),
-          body: __S(94, __c11, 6),
+          body: __S(352, __c44, 0),
           created: S.String,
         }),
       ).annotate({ identifier: "ThreadMessage" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
-      return S.Array(__S(80, __c10, 0));
     case 2:
+      return S.Array(__S(353, __c44, 1));
+    case 3:
+      return S.Array(__S(296, __c37, 0));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           type: S.String,
           project_id: S.optional(S.NullOr(S.String)),
           report_id: S.optional(S.NullOr(S.String)),
-          messages: __S(96, __c12, 0),
-          members: __S(97, __c12, 1),
+          messages: __S(354, __c44, 2),
+          members: __S(355, __c44, 3),
         }),
       ).annotate({ identifier: "Thread" });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ids: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/threads", code: 200 })),
       ).annotate({ identifier: "GetThreadsRequest" });
-    case 4:
-      return S.Array(__S(98, __c12, 2));
-    case 5:
-      return S.suspend(() => __S(100, __c12, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(356, __c44, 4));
+    case 2:
+      return S.suspend(() => __S(361, __c45, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetThreadsResponse",
       });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          user_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/team/{id}/members", code: 200 })),
+      ).annotate({ identifier: "AddTeamMemberRequest" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_username: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/user/{id_username}", code: 200 })),
       ).annotate({ identifier: "GetUserRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           username: S.String,
           name: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           bio: S.optional(S.String),
-          payout_data: S.optional(S.NullOr(__S(79, __c9, 7))),
+          payout_data: S.optional(S.NullOr(__S(288, __c36, 0))),
           id: S.String,
           avatar_url: S.String,
           created: S.String,
           role: S.String,
           badges: S.optional(S.Number),
-          auth_providers: S.optional(S.NullOr(__S(8, __c1, 0))),
+          auth_providers: S.optional(S.NullOr(__S(752, __c94, 0))),
           email_verified: S.optional(S.NullOr(S.Boolean)),
           has_password: S.optional(S.NullOr(S.Boolean)),
           has_totp: S.optional(S.NullOr(S.Boolean)),
@@ -3978,7 +3848,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetUserResponse" });
   }
 }
-function __c13(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3991,20 +3861,24 @@ function __c13(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           bio: S.optional(S.String),
-          payout_data: S.optional(S.NullOr(__S(79, __c9, 7))),
+          payout_data: S.optional(S.NullOr(__S(288, __c36, 0))),
           id: S.String,
           avatar_url: S.String,
           created: S.String,
           role: S.String,
           badges: S.optional(S.Number),
-          auth_providers: S.optional(S.NullOr(__S(8, __c1, 0))),
+          auth_providers: S.optional(S.NullOr(__S(752, __c94, 0))),
           email_verified: S.optional(S.NullOr(S.Boolean)),
           has_password: S.optional(S.NullOr(S.Boolean)),
           has_totp: S.optional(S.NullOr(S.Boolean)),
           github_id: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "GetUserFromAuthResponse" });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_username: S.String.pipe(T.Label()),
@@ -4012,31 +3886,39 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetUserNotificationsRequest",
       });
-    case 3:
-      return S.suspend(() => __S(65, __c8, 1).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(200, __c25, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetUserNotificationsResponse",
       });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_username: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/user/{id_username}/projects", code: 200 })),
       ).annotate({ identifier: "GetUserProjectsRequest" });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ids: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
       ).annotate({ identifier: "GetUsersRequest" });
-    case 6:
-      return S.Array(__S(80, __c10, 0));
-    case 7:
-      return S.suspend(() => __S(110, __c13, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(296, __c37, 0));
+    case 2:
+      return S.suspend(() => __S(409, __c51, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetUsersResponse",
       });
   }
 }
-function __c14(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4050,10 +3932,10 @@ function __c14(j: number): any {
           name: S.String,
           version_number: S.String,
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12, __c1, 4)),
-          game_versions: __S(8, __c1, 0),
+          dependencies: S.optional(__S(761, __c95, 1)),
+          game_versions: __S(752, __c94, 0),
           version_type: S.String,
-          loaders: __S(8, __c1, 0),
+          loaders: __S(752, __c94, 0),
           featured: S.Boolean,
           status: S.optional(S.String),
           requested_status: S.optional(S.NullOr(S.String)),
@@ -4064,10 +3946,14 @@ function __c14(j: number): any {
           downloads: S.Number,
           changelog_url: S.optional(S.NullOr(S.String)),
           environment: S.String,
-          files: __S(32, __c4, 0),
+          files: __S(778, __c97, 2),
         }),
       ).annotate({ identifier: "GetVersionResponse" });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
@@ -4078,16 +3964,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetVersionFromIdOrNumberRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           version_number: S.String,
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12, __c1, 4)),
-          game_versions: __S(8, __c1, 0),
+          dependencies: S.optional(__S(761, __c95, 1)),
+          game_versions: __S(752, __c94, 0),
           version_type: S.String,
-          loaders: __S(8, __c1, 0),
+          loaders: __S(752, __c94, 0),
           featured: S.Boolean,
           status: S.optional(S.String),
           requested_status: S.optional(S.NullOr(S.String)),
@@ -4098,49 +3984,72 @@ function __c14(j: number): any {
           downloads: S.Number,
           changelog_url: S.optional(S.NullOr(S.String)),
           environment: S.String,
-          files: __S(32, __c4, 0),
+          files: __S(778, __c97, 2),
         }),
       ).annotate({
         identifier: "GetVersionFromIdOrNumberResponse",
       });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ids: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/versions", code: 200 })),
       ).annotate({ identifier: "GetVersionsRequest" });
-    case 5:
-      return S.suspend(() => __S(51, __c6, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(136, __c17, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetVersionsResponse",
       });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/team/{id}/join", code: 200 })),
       ).annotate({ identifier: "JoinTeamRequest" });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/tag/license/{id}", code: 200 })),
       ).annotate({ identifier: "LicenseTextRequest" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
           body: S.optional(S.String),
         }),
       ).annotate({ identifier: "License" });
-    case 1:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_slug: S.String.pipe(T.Label()),
+          ext: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "PATCH", uri: "/project/{id_slug}/icon", code: 200 })),
+      ).annotate({ identifier: "ChangeProjectIconRequest" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/category", code: 200 })),
       ).annotate({ identifier: "ListCategoryRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           icon: S.String,
@@ -4149,78 +4058,98 @@ function __c15(j: number): any {
           header: S.String,
         }),
       ).annotate({ identifier: "CategoryTag" });
+    case 2:
+      return S.Array(__S(465, __c58, 1));
     case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() => __S(123, __c15, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(466, __c58, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCategoryResponse",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/donation_platform", code: 200 })),
       ).annotate({
         identifier: "ListDonationPlatformRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           short: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "DonationPlatformTag" });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(127, __c15, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(473, __c59, 1));
+    case 3:
+      return S.suspend(() => __S(474, __c59, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDonationPlatformResponse",
       });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/loader", code: 200 })),
       ).annotate({ identifier: "ListLoaderRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           icon: S.String,
           name: S.String,
-          supported_project_types: __S(8, __c1, 0),
+          supported_project_types: __S(752, __c94, 0),
         }),
       ).annotate({ identifier: "LoaderTag" });
+    case 2:
+      return S.Array(__S(481, __c60, 1));
     case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
-      return S.suspend(() => __S(131, __c16, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(482, __c60, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListLoaderResponse",
       });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/project_type", code: 200 })),
       ).annotate({ identifier: "ListProjectTypeRequest" });
-    case 6:
-      return S.suspend(() => __S(8, __c1, 0).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(752, __c94, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectTypeResponse",
       });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/report_type", code: 200 })),
       ).annotate({ identifier: "ListReportTypeRequest" });
   }
 }
-function __c17(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/side_type", code: 200 })),
       ).annotate({ identifier: "ListSideTypeRequest" });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/game_version", code: 200 })),
       ).annotate({ identifier: "ListVersionRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.String,
@@ -4229,13 +4158,17 @@ function __c17(j: number): any {
           major: S.Boolean,
         }),
       ).annotate({ identifier: "GameVersionTag" });
+    case 2:
+      return S.Array(__S(521, __c65, 1));
     case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
-      return S.suspend(() => __S(139, __c17, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(522, __c65, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVersionResponse",
       });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
@@ -4248,7 +4181,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ModifyGalleryImageRequest",
       });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
@@ -4256,15 +4193,15 @@ function __c17(j: number): any {
           title: S.optional(S.String),
           description: S.optional(S.String),
           body: S.optional(S.String),
-          categories: S.optional(__S(8, __c1, 0)),
-          additional_categories: S.optional(__S(8, __c1, 0)),
+          categories: S.optional(__S(752, __c94, 0)),
+          additional_categories: S.optional(__S(752, __c94, 0)),
           status: S.optional(S.String),
           requested_status: S.optional(S.NullOr(S.String)),
           issues_url: S.optional(S.NullOr(S.String)),
           source_url: S.optional(S.NullOr(S.String)),
           wiki_url: S.optional(S.NullOr(S.String)),
           discord_url: S.optional(S.NullOr(S.String)),
-          donation_urls: S.optional(__S(10, __c1, 2)),
+          donation_urls: S.optional(__S(729, __c91, 1)),
           client_side: S.optional(S.String),
           server_side: S.optional(S.String),
           license_id: S.optional(S.String),
@@ -4273,7 +4210,11 @@ function __c17(j: number): any {
           moderation_message_body: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/project/{id_slug}", code: 200 })),
       ).annotate({ identifier: "ModifyProjectRequest" });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -4283,7 +4224,17 @@ function __c17(j: number): any {
       ).annotate({ identifier: "ModifyReportRequest" });
   }
 }
-function __c18(j: number): any {
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PATCH", uri: "/user/{id_username}/icon", code: 200 })),
+      ).annotate({ identifier: "ChangeUserIconRequest" });
+  }
+}
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4296,7 +4247,11 @@ function __c18(j: number): any {
           ordering: S.optional(S.Number),
         }).pipe(T.Http({ method: "PATCH", uri: "/team/{id}/members/{id_username}", code: 200 })),
       ).annotate({ identifier: "ModifyTeamMemberRequest" });
-    case 1:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_username: S.String.pipe(T.Label()),
@@ -4304,46 +4259,66 @@ function __c18(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           bio: S.optional(S.String),
-          payout_data: S.optional(S.NullOr(__S(79, __c9, 7))),
+          payout_data: S.optional(S.NullOr(__S(288, __c36, 0))),
         }).pipe(T.Http({ method: "PATCH", uri: "/user/{id_username}", code: 200 })),
       ).annotate({ identifier: "ModifyUserRequest" });
-    case 2:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           version_number: S.optional(S.String),
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12, __c1, 4)),
-          game_versions: S.optional(__S(8, __c1, 0)),
+          dependencies: S.optional(__S(761, __c95, 1)),
+          game_versions: S.optional(__S(752, __c94, 0)),
           version_type: S.optional(S.String),
-          loaders: S.optional(__S(8, __c1, 0)),
+          loaders: S.optional(__S(752, __c94, 0)),
           featured: S.optional(S.Boolean),
           status: S.optional(S.String),
           requested_status: S.optional(S.NullOr(S.String)),
-          primary_file: S.optional(__S(8, __c1, 0)),
-          file_types: S.optional(__S(14, __c1, 6)),
+          primary_file: S.optional(__S(752, __c94, 0)),
+          file_types: S.optional(__S(745, __c93, 1)),
         }).pipe(T.Http({ method: "PATCH", uri: "/version/{id}", code: 200 })),
       ).annotate({ identifier: "ModifyVersionRequest" });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           count: S.Number.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/projects_random", code: 200 })),
       ).annotate({ identifier: "RandomProjectsRequest" });
-    case 4:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "PATCH", uri: "/notification/{id}", code: 200 })),
       ).annotate({ identifier: "ReadNotificationRequest" });
-    case 5:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ids: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "PATCH", uri: "/notifications", code: 200 })),
       ).annotate({ identifier: "ReadNotificationsRequest" });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
@@ -4351,7 +4326,11 @@ function __c18(j: number): any {
           requested_status: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/project/{id_slug}/schedule", code: 200 })),
       ).annotate({ identifier: "ScheduleProjectRequest" });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -4361,7 +4340,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ScheduleVersionRequest" });
   }
 }
-function __c19(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4378,13 +4357,13 @@ function __c19(j: number): any {
         S.Struct({
           project_id: S.String,
           project_type: S.String,
-          all_project_types: __S(21, __c2, 5),
+          all_project_types: __S(720, __c90, 0),
           title: S.String,
           description: S.String,
           author: S.String,
-          categories: __S(8, __c1, 0),
-          display_categories: __S(8, __c1, 0),
-          versions: __S(8, __c1, 0),
+          categories: __S(752, __c94, 0),
+          display_categories: __S(752, __c94, 0),
+          versions: __S(752, __c94, 0),
           downloads: S.Number,
           follows: S.Number,
           icon_url: S.String,
@@ -4392,9 +4371,9 @@ function __c19(j: number): any {
           date_modified: S.String,
           latest_version: S.String,
           license: S.String,
-          environment: __S(21, __c2, 5),
-          disclosure_types: __S(21, __c2, 5),
-          gallery: __S(8, __c1, 0),
+          environment: __S(720, __c90, 0),
+          disclosure_types: __S(720, __c90, 0),
+          gallery: __S(752, __c94, 0),
           slug: S.optional(S.NullOr(S.String)),
           author_id: S.optional(S.NullOr(S.String)),
           organization: S.optional(S.NullOr(S.String)),
@@ -4406,17 +4385,21 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "ProjectResult" });
     case 2:
-      return S.Array(__S(153, __c19, 1));
+      return S.Array(__S(625, __c78, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          hits: __S(154, __c19, 2),
+          hits: __S(626, __c78, 2),
           offset: S.Number,
           limit: S.Number,
           total_hits: S.Number,
         }),
       ).annotate({ identifier: "SearchResults" });
-    case 4:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -4428,11 +4411,33 @@ function __c19(j: number): any {
           new_status: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/thread/{id}", code: 200 })),
       ).annotate({ identifier: "SendThreadMessageRequest" });
-    case 5:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id_slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/project/{id_slug}/check", code: 200 })),
+      ).annotate({
+        identifier: "CheckProjectValidityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectIdentifier" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/statistics", code: 200 })),
       ).annotate({ identifier: "Statistics2Request" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projects: S.optional(S.Number),
@@ -4441,7 +4446,11 @@ function __c19(j: number): any {
           authors: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Statistics" });
-    case 7:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           report_type: S.String,
@@ -4452,7 +4461,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "SubmitReportRequest" });
   }
 }
-function __c20(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4463,32 +4472,44 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "TransferTeamOwnershipRequest",
       });
-    case 1:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/project/{id_slug}/follow", code: 200 })),
       ).annotate({ identifier: "UnfollowProjectRequest" });
-    case 2:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ids: S.String.pipe(T.Query()),
-          categories: S.optional(__S(8, __c1, 0)),
-          add_categories: S.optional(__S(8, __c1, 0)),
-          remove_categories: S.optional(__S(8, __c1, 0)),
-          additional_categories: S.optional(__S(8, __c1, 0)),
-          add_additional_categories: S.optional(__S(8, __c1, 0)),
-          remove_additional_categories: S.optional(__S(8, __c1, 0)),
-          donation_urls: S.optional(__S(10, __c1, 2)),
-          add_donation_urls: S.optional(__S(10, __c1, 2)),
-          remove_donation_urls: S.optional(__S(10, __c1, 2)),
+          categories: S.optional(__S(752, __c94, 0)),
+          add_categories: S.optional(__S(752, __c94, 0)),
+          remove_categories: S.optional(__S(752, __c94, 0)),
+          additional_categories: S.optional(__S(752, __c94, 0)),
+          add_additional_categories: S.optional(__S(752, __c94, 0)),
+          remove_additional_categories: S.optional(__S(752, __c94, 0)),
+          donation_urls: S.optional(__S(729, __c91, 1)),
+          add_donation_urls: S.optional(__S(729, __c91, 1)),
+          remove_donation_urls: S.optional(__S(729, __c91, 1)),
           issues_url: S.optional(S.NullOr(S.String)),
           source_url: S.optional(S.NullOr(S.String)),
           wiki_url: S.optional(S.NullOr(S.String)),
           discord_url: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/projects", code: 200 })),
       ).annotate({ identifier: "UpdateProjectsRequest" });
-    case 3:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           hash: S.String.pipe(T.Label()),
@@ -4496,16 +4517,16 @@ function __c20(j: number): any {
           multiple: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/version_file/{hash}", code: 200 })),
       ).annotate({ identifier: "VersionFromHashRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           version_number: S.String,
           changelog: S.optional(S.NullOr(S.String)),
-          dependencies: S.optional(__S(12, __c1, 4)),
-          game_versions: __S(8, __c1, 0),
+          dependencies: S.optional(__S(761, __c95, 1)),
+          game_versions: __S(752, __c94, 0),
           version_type: S.String,
-          loaders: __S(8, __c1, 0),
+          loaders: __S(752, __c94, 0),
           featured: S.Boolean,
           status: S.optional(S.String),
           requested_status: S.optional(S.NullOr(S.String)),
@@ -4516,19 +4537,27 @@ function __c20(j: number): any {
           downloads: S.Number,
           changelog_url: S.optional(S.NullOr(S.String)),
           environment: S.String,
-          files: __S(32, __c4, 0),
+          files: __S(778, __c97, 2),
         }),
       ).annotate({ identifier: "VersionFromHashResponse" });
-    case 5:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          hashes: __S(8, __c1, 0),
+          hashes: __S(752, __c94, 0),
           algorithm: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/version_files", code: 200 })),
       ).annotate({
         identifier: "VersionsFromHashesRequest",
       });
-    case 6:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_username: S.String.pipe(T.Label()),
@@ -4537,7 +4566,285 @@ function __c20(j: number): any {
       ).annotate({ identifier: "WithdrawPayoutRequest" });
   }
 }
-
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          version_number: S.optional(S.String),
+          changelog: S.optional(S.NullOr(S.String)),
+          dependencies: S.optional(__S(761, __c95, 1)),
+          game_versions: S.optional(__S(752, __c94, 0)),
+          version_type: S.optional(S.String),
+          loaders: S.optional(__S(752, __c94, 0)),
+          featured: S.optional(S.Boolean),
+          status: S.optional(S.String),
+          requested_status: S.optional(S.NullOr(S.String)),
+          primary_file: S.optional(__S(752, __c94, 0)),
+          file_types: S.optional(__S(745, __c93, 1)),
+        }),
+      ).annotate({ identifier: "EditableVersion" });
+    case 1:
+      return S.Array(__S(712, __c89, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          item: S.optional(S.String),
+          featured: S.optional(S.Boolean),
+          title: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          ordering: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreatableProjectGalleryItem",
+      });
+    case 3:
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(714, __c89, 2)));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String,
+          title: S.String,
+          description: S.String,
+          body: S.String,
+          categories: __S(752, __c94, 0),
+          additional_categories: S.optional(__S(752, __c94, 0)),
+          status: S.optional(S.String),
+          requested_status: S.optional(S.NullOr(S.String)),
+          issues_url: S.optional(S.NullOr(S.String)),
+          source_url: S.optional(S.NullOr(S.String)),
+          wiki_url: S.optional(S.NullOr(S.String)),
+          discord_url: S.optional(S.NullOr(S.String)),
+          donation_urls: S.optional(__S(729, __c91, 1)),
+          client_side: S.String,
+          server_side: S.String,
+          license_id: S.String,
+          license_url: S.optional(S.NullOr(S.String)),
+          project_type: S.String,
+          initial_versions: S.optional(__S(713, __c89, 1)),
+          is_draft: S.optional(S.Boolean),
+          gallery_items: S.optional(__S(715, __c89, 3)),
+        }),
+      ).annotate({ identifier: "CreatableProject" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(716, __c89, 4),
+          icon: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/project", code: 200, contentType: "multipart" })),
+      ).annotate({ identifier: "CreateProjectRequest" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          platform: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectDonationURL" });
+    case 1:
+      return S.Array(__S(728, __c91, 0));
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ProjectLicense" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          featured: S.Boolean,
+          title: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          created: S.String,
+          ordering: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GalleryImage" });
+    case 2:
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(737, __c92, 1)));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          body: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ModeratorMessage" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          team: S.String,
+          title: S.String,
+          description: S.String,
+          body: S.String,
+          status: S.String,
+          project_type: S.String,
+          categories: __S(752, __c94, 0),
+          additional_categories: __S(752, __c94, 0),
+          environment: __S(720, __c90, 0),
+          game_versions: __S(752, __c94, 0),
+          loaders: __S(752, __c94, 0),
+          versions: __S(752, __c94, 0),
+          license: __S(736, __c92, 0),
+          published: S.String,
+          updated: S.String,
+          downloads: S.Number,
+          followers: S.Number,
+          gallery: __S(738, __c92, 2),
+          thread_id: S.String,
+          monetization_status: S.String,
+          slug: S.optional(S.NullOr(S.String)),
+          organization: S.optional(S.NullOr(S.String)),
+          requested_status: S.optional(S.NullOr(S.String)),
+          approved: S.optional(S.NullOr(S.String)),
+          queued: S.optional(S.NullOr(S.String)),
+          icon_url: S.optional(S.NullOr(S.String)),
+          raw_icon_url: S.optional(S.NullOr(S.String)),
+          color: S.optional(S.NullOr(S.Number)),
+          issues_url: S.optional(S.NullOr(S.String)),
+          source_url: S.optional(S.NullOr(S.String)),
+          wiki_url: S.optional(S.NullOr(S.String)),
+          discord_url: S.optional(S.NullOr(S.String)),
+          donation_urls: S.optional(S.NullOr(__S(729, __c91, 1))),
+          client_side: S.String,
+          server_side: S.String,
+          body_url: S.optional(S.NullOr(S.String)),
+          moderator_message: S.optional(S.NullOr(__S(739, __c92, 3))),
+        }),
+      ).annotate({ identifier: "Project" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          algorithm: S.String,
+          hash: S.String,
+          file_type: S.Unknown,
+        }),
+      ).annotate({ identifier: "EditableFileType" });
+    case 1:
+      return S.Array(__S(744, __c93, 0));
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version_id: S.optional(S.NullOr(S.String)),
+          project_id: S.optional(S.NullOr(S.String)),
+          file_name: S.optional(S.NullOr(S.String)),
+          dependency_type: S.String,
+        }),
+      ).annotate({ identifier: "VersionDependency" });
+    case 1:
+      return S.Array(__S(760, __c95, 0));
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          version_number: S.String,
+          changelog: S.optional(S.NullOr(S.String)),
+          dependencies: __S(761, __c95, 1),
+          game_versions: __S(752, __c94, 0),
+          version_type: S.String,
+          loaders: __S(752, __c94, 0),
+          featured: S.Boolean,
+          status: S.optional(S.String),
+          requested_status: S.optional(S.NullOr(S.String)),
+          project_id: S.String,
+          file_parts: __S(752, __c94, 0),
+          primary_file: S.optional(S.String),
+          environment: S.optional(S.String),
+          file_types: S.optional(__S(768, __c96, 0)),
+        }),
+      ).annotate({ identifier: "CreatableVersion" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(769, __c96, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/version", code: 200, contentType: "multipart" })),
+      ).annotate({ identifier: "CreateVersionRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          version_number: S.String,
+          changelog: S.optional(S.NullOr(S.String)),
+          dependencies: S.optional(__S(761, __c95, 1)),
+          game_versions: __S(752, __c94, 0),
+          version_type: S.String,
+          loaders: __S(752, __c94, 0),
+          featured: S.Boolean,
+          status: S.optional(S.String),
+          requested_status: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          project_id: S.String,
+          author_id: S.String,
+          date_published: S.String,
+          downloads: S.Number,
+          changelog_url: S.optional(S.NullOr(S.String)),
+          environment: S.String,
+          files: __S(778, __c97, 2),
+        }),
+      ).annotate({ identifier: "CreateVersionResponse" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sha512: S.optional(S.String),
+          sha1: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VersionFileHashes" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hashes: __S(776, __c97, 0),
+          url: S.String,
+          filename: S.String,
+          primary: S.Boolean,
+          size: S.Number,
+          file_type: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "VersionFile" });
+    case 2:
+      return S.Array(__S(777, __c97, 1));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

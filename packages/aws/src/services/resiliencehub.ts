@@ -1446,8 +1446,8 @@ export const acceptResourceGroupingRecommendations: API.OperationMethod<
   AcceptResourceGroupingRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AcceptResourceGroupingRecommendationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AcceptResourceGroupingRecommendationsResponse>,
+  input: __S(1362, __c85, 2) as any as S.Schema<AcceptResourceGroupingRecommendationsRequest>,
+  output: __S(1378, __c86, 2) as any as S.Schema<AcceptResourceGroupingRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1483,8 +1483,8 @@ export const addDraftAppVersionResourceMappings: API.OperationMethod<
   AddDraftAppVersionResourceMappingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AddDraftAppVersionResourceMappingsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<AddDraftAppVersionResourceMappingsResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<AddDraftAppVersionResourceMappingsRequest>,
+  output: __S(1393, __c87, 1) as any as S.Schema<AddDraftAppVersionResourceMappingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1515,8 +1515,8 @@ export const batchUpdateRecommendationStatus: API.OperationMethod<
   BatchUpdateRecommendationStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<BatchUpdateRecommendationStatusRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<BatchUpdateRecommendationStatusResponse>,
+  input: __S(1443, __c90, 3) as any as S.Schema<BatchUpdateRecommendationStatusRequest>,
+  output: __S(1446, __c90, 6) as any as S.Schema<BatchUpdateRecommendationStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1558,8 +1558,8 @@ export const createApp: API.OperationMethod<
   CreateAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateAppRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateAppResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateAppRequest>,
+  output: __S(52, __c3, 4) as any as S.Schema<CreateAppResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1596,8 +1596,8 @@ export const createAppVersionAppComponent: API.OperationMethod<
   CreateAppVersionAppComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateAppVersionAppComponentRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CreateAppVersionAppComponentResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreateAppVersionAppComponentRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<CreateAppVersionAppComponentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1641,8 +1641,8 @@ export const createAppVersionResource: API.OperationMethod<
   CreateAppVersionResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateAppVersionResourceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreateAppVersionResourceResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreateAppVersionResourceRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<CreateAppVersionResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1675,8 +1675,8 @@ export const createRecommendationTemplate: API.OperationMethod<
   CreateRecommendationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateRecommendationTemplateRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<CreateRecommendationTemplateResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<CreateRecommendationTemplateRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<CreateRecommendationTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1716,8 +1716,8 @@ export const createResiliencyPolicy: API.OperationMethod<
   CreateResiliencyPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateResiliencyPolicyRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<CreateResiliencyPolicyResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<CreateResiliencyPolicyRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<CreateResiliencyPolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1748,8 +1748,8 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteAppRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<DeleteAppResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteAppRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<DeleteAppResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1780,8 +1780,8 @@ export const deleteAppAssessment: API.OperationMethod<
   DeleteAppAssessmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteAppAssessmentRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteAppAssessmentResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteAppAssessmentRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<DeleteAppAssessmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1813,8 +1813,8 @@ export const deleteAppInputSource: API.OperationMethod<
   DeleteAppInputSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteAppInputSourceRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<DeleteAppInputSourceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteAppInputSourceRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<DeleteAppInputSourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1852,8 +1852,8 @@ export const deleteAppVersionAppComponent: API.OperationMethod<
   DeleteAppVersionAppComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteAppVersionAppComponentRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DeleteAppVersionAppComponentResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteAppVersionAppComponentRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteAppVersionAppComponentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1893,8 +1893,8 @@ export const deleteAppVersionResource: API.OperationMethod<
   DeleteAppVersionResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteAppVersionResourceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DeleteAppVersionResourceResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeleteAppVersionResourceRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeleteAppVersionResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1925,8 +1925,8 @@ export const deleteRecommendationTemplate: API.OperationMethod<
   DeleteRecommendationTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteRecommendationTemplateRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<DeleteRecommendationTemplateResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteRecommendationTemplateRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<DeleteRecommendationTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1956,8 +1956,8 @@ export const deleteResiliencyPolicy: API.OperationMethod<
   DeleteResiliencyPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteResiliencyPolicyRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<DeleteResiliencyPolicyResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteResiliencyPolicyRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<DeleteResiliencyPolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1987,8 +1987,8 @@ export const describeApp: API.OperationMethod<
   DescribeAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DescribeAppRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DescribeAppResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<DescribeAppRequest>,
+  output: __S(52, __c3, 4) as any as S.Schema<DescribeAppResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2017,8 +2017,8 @@ export const describeAppAssessment: API.OperationMethod<
   DescribeAppAssessmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DescribeAppAssessmentRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<DescribeAppAssessmentResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<DescribeAppAssessmentRequest>,
+  output: __S(551, __c34, 7) as any as S.Schema<DescribeAppAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2047,8 +2047,8 @@ export const describeAppVersion: API.OperationMethod<
   DescribeAppVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DescribeAppVersionRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DescribeAppVersionResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<DescribeAppVersionRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<DescribeAppVersionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2078,8 +2078,8 @@ export const describeAppVersionAppComponent: API.OperationMethod<
   DescribeAppVersionAppComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DescribeAppVersionAppComponentRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DescribeAppVersionAppComponentResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<DescribeAppVersionAppComponentRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DescribeAppVersionAppComponentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2119,8 +2119,8 @@ export const describeAppVersionResource: API.OperationMethod<
   DescribeAppVersionResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DescribeAppVersionResourceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DescribeAppVersionResourceResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DescribeAppVersionResourceRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<DescribeAppVersionResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2152,8 +2152,12 @@ export const describeAppVersionResourcesResolutionStatus: API.OperationMethod<
   DescribeAppVersionResourcesResolutionStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DescribeAppVersionResourcesResolutionStatusRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DescribeAppVersionResourcesResolutionStatusResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<DescribeAppVersionResourcesResolutionStatusRequest>,
+  output: __S(
+    609,
+    __c38,
+    1,
+  ) as any as S.Schema<DescribeAppVersionResourcesResolutionStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2182,8 +2186,8 @@ export const describeAppVersionTemplate: API.OperationMethod<
   DescribeAppVersionTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DescribeAppVersionTemplateRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<DescribeAppVersionTemplateResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<DescribeAppVersionTemplateRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<DescribeAppVersionTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2218,11 +2222,11 @@ export const describeDraftAppVersionResourcesImportStatus: API.OperationMethod<
   DescribeDraftAppVersionResourcesImportStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DescribeDraftAppVersionResourcesImportStatusRequest>,
+  input: __S(640, __c40, 0) as any as S.Schema<DescribeDraftAppVersionResourcesImportStatusRequest>,
   output: __S(
-    88,
-    __c11,
-    0,
+    643,
+    __c40,
+    3,
   ) as any as S.Schema<DescribeDraftAppVersionResourcesImportStatusResponse>,
   errors: [
     AccessDeniedException,
@@ -2252,8 +2256,8 @@ export const describeMetricsExport: API.OperationMethod<
   DescribeMetricsExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<DescribeMetricsExportRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<DescribeMetricsExportResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<DescribeMetricsExportRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<DescribeMetricsExportResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2284,8 +2288,8 @@ export const describeResiliencyPolicy: API.OperationMethod<
   DescribeResiliencyPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<DescribeResiliencyPolicyRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DescribeResiliencyPolicyResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<DescribeResiliencyPolicyRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<DescribeResiliencyPolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2314,8 +2318,8 @@ export const describeResourceGroupingRecommendationTask: API.OperationMethod<
   DescribeResourceGroupingRecommendationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<DescribeResourceGroupingRecommendationTaskRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DescribeResourceGroupingRecommendationTaskResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<DescribeResourceGroupingRecommendationTaskRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<DescribeResourceGroupingRecommendationTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2348,8 +2352,8 @@ export const importResourcesToDraftAppVersion: API.OperationMethod<
   ImportResourcesToDraftAppVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ImportResourcesToDraftAppVersionRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ImportResourcesToDraftAppVersionResponse>,
+  input: __S(707, __c44, 3) as any as S.Schema<ImportResourcesToDraftAppVersionRequest>,
+  output: __S(708, __c44, 4) as any as S.Schema<ImportResourcesToDraftAppVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2381,8 +2385,8 @@ export const listAlarmRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListAlarmRecommendationsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ListAlarmRecommendationsResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListAlarmRecommendationsRequest>,
+  output: __S(723, __c45, 3) as any as S.Schema<ListAlarmRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2417,8 +2421,8 @@ export const listAppAssessmentComplianceDrifts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListAppAssessmentComplianceDriftsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ListAppAssessmentComplianceDriftsResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListAppAssessmentComplianceDriftsRequest>,
+  output: __S(755, __c47, 3) as any as S.Schema<ListAppAssessmentComplianceDriftsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2452,8 +2456,8 @@ export const listAppAssessmentResourceDrifts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceDrift
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListAppAssessmentResourceDriftsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<ListAppAssessmentResourceDriftsResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListAppAssessmentResourceDriftsRequest>,
+  output: __S(772, __c48, 4) as any as S.Schema<ListAppAssessmentResourceDriftsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2489,8 +2493,8 @@ export const listAppAssessments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListAppAssessmentsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<ListAppAssessmentsResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListAppAssessmentsRequest>,
+  output: __S(787, __c49, 3) as any as S.Schema<ListAppAssessmentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2525,8 +2529,8 @@ export const listAppComponentCompliances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListAppComponentCompliancesRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<ListAppComponentCompliancesResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListAppComponentCompliancesRequest>,
+  output: __S(803, __c50, 3) as any as S.Schema<ListAppComponentCompliancesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2561,8 +2565,8 @@ export const listAppComponentRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ListAppComponentRecommendationsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<ListAppComponentRecommendationsResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListAppComponentRecommendationsRequest>,
+  output: __S(823, __c51, 7) as any as S.Schema<ListAppComponentRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2599,8 +2603,8 @@ export const listAppInputSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListAppInputSourcesRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListAppInputSourcesResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListAppInputSourcesRequest>,
+  output: __S(834, __c52, 2) as any as S.Schema<ListAppInputSourcesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2641,8 +2645,8 @@ export const listApps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListAppsRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<ListAppsResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListAppsRequest>,
+  output: __S(851, __c53, 3) as any as S.Schema<ListAppsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2677,8 +2681,8 @@ export const listAppVersionAppComponents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ListAppVersionAppComponentsRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<ListAppVersionAppComponentsResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListAppVersionAppComponentsRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<ListAppVersionAppComponentsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2716,8 +2720,8 @@ export const listAppVersionResourceMappings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListAppVersionResourceMappingsRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ListAppVersionResourceMappingsResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListAppVersionResourceMappingsRequest>,
+  output: __S(881, __c55, 1) as any as S.Schema<ListAppVersionResourceMappingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2753,8 +2757,8 @@ export const listAppVersionResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ListAppVersionResourcesRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<ListAppVersionResourcesResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListAppVersionResourcesRequest>,
+  output: __S(898, __c56, 2) as any as S.Schema<ListAppVersionResourcesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2789,8 +2793,8 @@ export const listAppVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<ListAppVersionsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ListAppVersionsResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListAppVersionsRequest>,
+  output: __S(915, __c57, 3) as any as S.Schema<ListAppVersionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2823,8 +2827,8 @@ export const listMetrics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   String255[]
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ListMetricsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<ListMetricsResponse>,
+  input: __S(934, __c58, 6) as any as S.Schema<ListMetricsRequest>,
+  output: __S(936, __c58, 8) as any as S.Schema<ListMetricsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2858,8 +2862,8 @@ export const listRecommendationTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ListRecommendationTemplatesRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<ListRecommendationTemplatesResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListRecommendationTemplatesRequest>,
+  output: __S(946, __c59, 2) as any as S.Schema<ListRecommendationTemplatesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2893,8 +2897,8 @@ export const listResiliencyPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListResiliencyPoliciesRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListResiliencyPoliciesResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListResiliencyPoliciesRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<ListResiliencyPoliciesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2929,8 +2933,8 @@ export const listResourceGroupingRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupingRecommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListResourceGroupingRecommendationsRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<ListResourceGroupingRecommendationsResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListResourceGroupingRecommendationsRequest>,
+  output: __S(998, __c62, 6) as any as S.Schema<ListResourceGroupingRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2967,8 +2971,8 @@ export const listSopRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<ListSopRecommendationsRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<ListSopRecommendationsResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListSopRecommendationsRequest>,
+  output: __S(1011, __c63, 3) as any as S.Schema<ListSopRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3005,8 +3009,8 @@ export const listSuggestedResiliencyPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListSuggestedResiliencyPoliciesRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListSuggestedResiliencyPoliciesResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListSuggestedResiliencyPoliciesRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<ListSuggestedResiliencyPoliciesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3040,8 +3044,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3072,8 +3076,8 @@ export const listTestRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<ListTestRecommendationsRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<ListTestRecommendationsResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListTestRecommendationsRequest>,
+  output: __S(1059, __c66, 3) as any as S.Schema<ListTestRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3112,8 +3116,8 @@ export const listUnsupportedAppVersionResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<ListUnsupportedAppVersionResourcesRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListUnsupportedAppVersionResourcesResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListUnsupportedAppVersionResourcesRequest>,
+  output: __S(1075, __c67, 3) as any as S.Schema<ListUnsupportedAppVersionResourcesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3149,8 +3153,8 @@ export const publishAppVersion: API.OperationMethod<
   PublishAppVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<PublishAppVersionRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<PublishAppVersionResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<PublishAppVersionRequest>,
+  output: __S(1089, __c68, 1) as any as S.Schema<PublishAppVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3182,8 +3186,8 @@ export const putDraftAppVersionTemplate: API.OperationMethod<
   PutDraftAppVersionTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<PutDraftAppVersionTemplateRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<PutDraftAppVersionTemplateResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<PutDraftAppVersionTemplateRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<PutDraftAppVersionTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3213,8 +3217,8 @@ export const rejectResourceGroupingRecommendations: API.OperationMethod<
   RejectResourceGroupingRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<RejectResourceGroupingRecommendationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<RejectResourceGroupingRecommendationsResponse>,
+  input: __S(1138, __c71, 2) as any as S.Schema<RejectResourceGroupingRecommendationsRequest>,
+  output: __S(1378, __c86, 2) as any as S.Schema<RejectResourceGroupingRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3244,8 +3248,8 @@ export const removeDraftAppVersionResourceMappings: API.OperationMethod<
   RemoveDraftAppVersionResourceMappingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<RemoveDraftAppVersionResourceMappingsRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<RemoveDraftAppVersionResourceMappingsResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<RemoveDraftAppVersionResourceMappingsRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<RemoveDraftAppVersionResourceMappingsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3276,8 +3280,8 @@ export const resolveAppVersionResources: API.OperationMethod<
   ResolveAppVersionResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ResolveAppVersionResourcesRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<ResolveAppVersionResourcesResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ResolveAppVersionResourcesRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<ResolveAppVersionResourcesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3309,8 +3313,8 @@ export const startAppAssessment: API.OperationMethod<
   StartAppAssessmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<StartAppAssessmentRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<StartAppAssessmentResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<StartAppAssessmentRequest>,
+  output: __S(551, __c34, 7) as any as S.Schema<StartAppAssessmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3342,8 +3346,8 @@ export const startMetricsExport: API.OperationMethod<
   StartMetricsExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<StartMetricsExportRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<StartMetricsExportResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<StartMetricsExportRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<StartMetricsExportResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3374,8 +3378,8 @@ export const startResourceGroupingRecommendationTask: API.OperationMethod<
   StartResourceGroupingRecommendationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<StartResourceGroupingRecommendationTaskRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<StartResourceGroupingRecommendationTaskResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<StartResourceGroupingRecommendationTaskRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<StartResourceGroupingRecommendationTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3405,8 +3409,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3435,8 +3439,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3466,8 +3470,8 @@ export const updateApp: API.OperationMethod<
   UpdateAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<UpdateAppRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<UpdateAppResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<UpdateAppRequest>,
+  output: __S(52, __c3, 4) as any as S.Schema<UpdateAppResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3502,8 +3506,8 @@ export const updateAppVersion: API.OperationMethod<
   UpdateAppVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<UpdateAppVersionRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<UpdateAppVersionResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<UpdateAppVersionRequest>,
+  output: __S(1297, __c81, 1) as any as S.Schema<UpdateAppVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3538,8 +3542,8 @@ export const updateAppVersionAppComponent: API.OperationMethod<
   UpdateAppVersionAppComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<UpdateAppVersionAppComponentRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<UpdateAppVersionAppComponentResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<UpdateAppVersionAppComponentRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<UpdateAppVersionAppComponentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3580,8 +3584,8 @@ export const updateAppVersionResource: API.OperationMethod<
   UpdateAppVersionResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<UpdateAppVersionResourceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UpdateAppVersionResourceResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<UpdateAppVersionResourceRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdateAppVersionResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3621,8 +3625,8 @@ export const updateResiliencyPolicy: API.OperationMethod<
   UpdateResiliencyPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<UpdateResiliencyPolicyRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<UpdateResiliencyPolicyResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<UpdateResiliencyPolicyRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<UpdateResiliencyPolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3640,181 +3644,16 @@ export const updateResiliencyPolicy: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ groupingRecommendationId: S.String })).annotate({
-        identifier: "AcceptGroupingRecommendationEntry",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ appArn: S.String, entries: __S(1, __c0, 1) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/accept-resource-grouping-recommendations" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "AcceptResourceGroupingRecommendationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ groupingRecommendationId: S.String, errorMessage: S.String }),
-      ).annotate({
-        identifier: "FailedGroupingRecommendationEntry",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ appArn: S.String, failedEntries: __S(4, __c0, 4) }),
-      ).annotate({
-        identifier: "AcceptResourceGroupingRecommendationsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          identifier: S.String,
-          type: S.String,
-          awsRegion: S.optional(S.String),
-          awsAccountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PhysicalResourceId" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceName: S.optional(S.String),
-          logicalStackName: S.optional(S.String),
-          appRegistryAppName: S.optional(S.String),
-          resourceGroupName: S.optional(S.String),
-          mappingType: S.String,
-          physicalResourceId: __S(6, __c0, 6),
-          terraformSourceName: S.optional(S.String),
-          eksSourceName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceMapping" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ appArn: S.String, resourceMappings: __S(8, __c1, 0) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/add-draft-app-version-resource-mappings" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "AddDraftAppVersionResourceMappingsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ appArn: S.String, appVersion: S.String, resourceMappings: __S(8, __c1, 0) }),
-      ).annotate({
-        identifier: "AddDraftAppVersionResourceMappingsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(S.String),
-          targetAccountId: S.optional(S.String),
-          targetRegion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateRecommendationStatusItem",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          entryId: S.String,
-          referenceId: S.String,
-          item: S.optional(__S(11, __c1, 3)),
-          excluded: S.Boolean,
-          appComponentId: S.optional(S.String),
-          excludeReason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateRecommendationStatusRequestEntry",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          appArn: S.String,
-          requestEntries: __S(13, __c1, 5),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/batch-update-recommendation-status" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateRecommendationStatusRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ entryId: S.String, errorMessage: S.String })).annotate({
-        identifier: "BatchUpdateRecommendationStatusFailedEntry",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          appArn: S.String,
-          successfulEntries: __S(13, __c1, 5),
-          failedEntries: __S(16, __c2, 0),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateRecommendationStatusResponse",
-      });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          invokerRoleName: S.optional(S.String),
-          crossAccountRoleArns: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "PermissionModel" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ name: S.String, eventType: S.String, snsTopicArn: S.optional(S.String) }),
-      ).annotate({ identifier: "EventSubscription" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
           policyArn: S.optional(S.String),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(32, __c2, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           assessmentSchedule: S.optional(S.String),
-          permissionModel: S.optional(__S(20, __c2, 4)),
-          eventSubscriptions: S.optional(__S(22, __c2, 6)),
+          permissionModel: S.optional(__S(48, __c3, 0)),
+          eventSubscriptions: S.optional(__S(50, __c3, 2)),
           awsApplicationArn: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/create-app" }), svc, auth, proto, ver, rules),
@@ -3822,9 +3661,35 @@ function __c2(j: number): any {
       ).annotate({ identifier: "CreateAppRequest" });
   }
 }
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
 function __c3(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          invokerRoleName: S.optional(S.String),
+          crossAccountRoleArns: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "PermissionModel" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, eventType: S.String, snsTopicArn: S.optional(S.String) }),
+      ).annotate({ identifier: "EventSubscription" });
+    case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -3841,10 +3706,10 @@ function __c3(j: number): any {
           lastResiliencyScoreEvaluationTime: S.optional(
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(32, __c2, 0)),
           assessmentSchedule: S.optional(S.String),
-          permissionModel: S.optional(__S(20, __c2, 4)),
-          eventSubscriptions: S.optional(__S(22, __c2, 6)),
+          permissionModel: S.optional(__S(48, __c3, 0)),
+          eventSubscriptions: S.optional(__S(50, __c3, 2)),
           driftStatus: S.optional(S.String),
           lastDriftEvaluationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           rtoInSecs: S.optional(S.Number),
@@ -3852,20 +3717,22 @@ function __c3(j: number): any {
           awsApplicationArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "App" });
-    case 1:
-      return S.suspend(() => S.Struct({ app: __S(24, __c3, 0) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ app: __S(51, __c3, 3) })).annotate({
         identifier: "CreateAppResponse",
       });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(19, __c2, 3).pipe(S.optional));
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
           id: S.optional(S.String),
           name: S.String,
           type: S.String,
-          additionalInfo: S.optional(__S(26, __c3, 2)),
+          additionalInfo: S.optional(__S(80, __c5, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -3880,47 +3747,55 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAppVersionAppComponentRequest",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(16, __c1, 0).pipe(S.optional));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           type: S.String,
           id: S.optional(S.String),
-          additionalInfo: S.optional(__S(26, __c3, 2)),
+          additionalInfo: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "AppComponent" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
           appVersion: S.String,
-          appComponent: S.optional(__S(28, __c3, 4)),
+          appComponent: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({
         identifier: "CreateAppVersionAppComponentResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          identifier: S.String,
-          logicalStackName: S.optional(S.String),
-          resourceGroupName: S.optional(S.String),
-          terraformSourceName: S.optional(S.String),
-          eksSourceName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LogicalResourceId" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
           resourceName: S.optional(S.String),
-          logicalResourceId: __S(30, __c3, 6),
+          logicalResourceId: __S(144, __c9, 0),
           physicalResourceId: S.String,
           awsRegion: S.optional(S.String),
           awsAccountId: S.optional(S.String),
           resourceType: S.String,
-          appComponents: __S(19, __c2, 3),
-          additionalInfo: S.optional(__S(26, __c3, 2)),
+          appComponents: __S(16, __c1, 0),
+          additionalInfo: S.optional(__S(80, __c5, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -3937,46 +3812,70 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(28, __c3, 4));
-    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String,
+          logicalStackName: S.optional(S.String),
+          resourceGroupName: S.optional(S.String),
+          terraformSourceName: S.optional(S.String),
+          eksSourceName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LogicalResourceId" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(96, __c6, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.optional(S.String),
-          logicalResourceId: __S(30, __c3, 6),
-          physicalResourceId: __S(6, __c0, 6),
+          logicalResourceId: __S(144, __c9, 0),
+          physicalResourceId: __S(1408, __c88, 0),
           resourceType: S.String,
-          appComponents: S.optional(__S(32, __c4, 0)),
-          additionalInfo: S.optional(__S(26, __c3, 2)),
+          appComponents: S.optional(__S(160, __c10, 0)),
+          additionalInfo: S.optional(__S(80, __c5, 0)),
           excluded: S.optional(S.Boolean),
           sourceType: S.optional(S.String),
           parentResourceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PhysicalResource" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
           appVersion: S.String,
-          physicalResource: S.optional(__S(33, __c4, 1)),
+          physicalResource: S.optional(__S(176, __c11, 0)),
         }),
       ).annotate({
         identifier: "CreateAppVersionResourceResponse",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          recommendationIds: S.optional(__S(19, __c2, 3)),
+          recommendationIds: S.optional(__S(16, __c1, 0)),
           format: S.optional(S.String),
-          recommendationTypes: S.optional(__S(35, __c4, 3)),
+          recommendationTypes: S.optional(__S(240, __c15, 0)),
           assessmentArn: S.String,
           name: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(32, __c2, 0)),
           bucketName: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3991,18 +3890,38 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateRecommendationTemplateRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ recommendationTemplate: S.optional(__S(256, __c16, 0)) }),
+      ).annotate({
+        identifier: "CreateRecommendationTemplateResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ bucket: S.optional(S.String), prefix: S.optional(S.String) }),
       ).annotate({ identifier: "S3Location" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          templatesLocation: S.optional(__S(37, __c4, 5)),
+          templatesLocation: S.optional(__S(224, __c14, 0)),
           assessmentArn: S.String,
           appArn: S.optional(S.String),
-          recommendationIds: S.optional(__S(19, __c2, 3)),
-          recommendationTypes: __S(35, __c4, 3),
+          recommendationIds: S.optional(__S(16, __c1, 0)),
+          recommendationTypes: __S(240, __c15, 0),
           format: S.String,
           recommendationTemplateArn: S.String,
           message: S.optional(S.String),
@@ -4010,36 +3929,24 @@ function __c4(j: number): any {
           name: S.String,
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(32, __c2, 0)),
           needsReplacements: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RecommendationTemplate" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ recommendationTemplate: S.optional(__S(38, __c4, 6)) }),
-      ).annotate({
-        identifier: "CreateRecommendationTemplateResponse",
-      });
   }
 }
-function __c5(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ rtoInSecs: S.Number, rpoInSecs: S.Number })).annotate({
-        identifier: "FailurePolicy",
-      });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(40, __c5, 0).pipe(S.optional));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           policyName: S.String,
           policyDescription: S.optional(S.String),
           dataLocationConstraint: S.optional(S.String),
           tier: S.String,
-          policy: __S(41, __c5, 1),
+          policy: __S(289, __c18, 1),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/create-resiliency-policy" }),
@@ -4053,7 +3960,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateResiliencyPolicyRequest",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ rtoInSecs: S.Number, rpoInSecs: S.Number })).annotate({
+        identifier: "FailurePolicy",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(288, __c18, 0).pipe(S.optional));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           policyArn: S.optional(S.String),
@@ -4062,16 +3979,24 @@ function __c5(j: number): any {
           dataLocationConstraint: S.optional(S.String),
           tier: S.optional(S.String),
           estimatedCostTier: S.optional(S.String),
-          policy: S.optional(__S(41, __c5, 1)),
+          policy: S.optional(__S(289, __c18, 1)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "ResiliencyPolicy" });
-    case 4:
-      return S.suspend(() => S.Struct({ policy: __S(43, __c5, 3) })).annotate({
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ policy: __S(290, __c18, 2) })).annotate({
         identifier: "CreateResiliencyPolicyResponse",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -4081,11 +4006,15 @@ function __c5(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/delete-app" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteAppRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ appArn: S.String })).annotate({
         identifier: "DeleteAppResponse",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentArn: S.String,
@@ -4103,32 +4032,24 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteAppAssessmentRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ assessmentArn: S.String, assessmentStatus: S.String }),
       ).annotate({
         identifier: "DeleteAppAssessmentResponse",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ s3StateFileUrl: S.String })).annotate({
-        identifier: "TerraformSource",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ eksClusterArn: S.String, namespace: S.String })).annotate({
-        identifier: "EksSourceClusterNamespace",
-      });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
           sourceArn: S.optional(S.String),
-          terraformSource: S.optional(__S(49, __c6, 1)),
+          terraformSource: S.optional(__S(368, __c23, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          eksSourceClusterNamespace: S.optional(__S(50, __c6, 2)),
+          eksSourceClusterNamespace: S.optional(__S(384, __c24, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/delete-app-input-source" }),
@@ -4142,24 +4063,44 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteAppInputSourceRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ appArn: S.optional(S.String), appInputSource: S.optional(__S(385, __c24, 1)) }),
+      ).annotate({
+        identifier: "DeleteAppInputSourceResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ s3StateFileUrl: S.String })).annotate({
+        identifier: "TerraformSource",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ eksClusterArn: S.String, namespace: S.String })).annotate({
+        identifier: "EksSourceClusterNamespace",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sourceName: S.optional(S.String),
           importType: S.String,
           sourceArn: S.optional(S.String),
-          terraformSource: S.optional(__S(49, __c6, 1)),
+          terraformSource: S.optional(__S(368, __c23, 0)),
           resourceCount: S.optional(S.Number),
-          eksSourceClusterNamespace: S.optional(__S(50, __c6, 2)),
+          eksSourceClusterNamespace: S.optional(__S(384, __c24, 0)),
         }),
       ).annotate({ identifier: "AppInputSource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ appArn: S.optional(S.String), appInputSource: S.optional(__S(52, __c6, 4)) }),
-      ).annotate({
-        identifier: "DeleteAppInputSourceResponse",
-      });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -4178,12 +4119,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteAppVersionAppComponentRequest",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
           resourceName: S.optional(S.String),
-          logicalResourceId: S.optional(__S(30, __c3, 6)),
+          logicalResourceId: S.optional(__S(144, __c9, 0)),
           physicalResourceId: S.optional(S.String),
           awsRegion: S.optional(S.String),
           awsAccountId: S.optional(S.String),
@@ -4203,7 +4148,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4229,7 +4174,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteRecommendationTemplateResponse",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           policyArn: S.String,
@@ -4247,17 +4196,25 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteResiliencyPolicyRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ policyArn: S.String })).annotate({
         identifier: "DeleteResiliencyPolicyResponse",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ appArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/describe-app" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeAppRequest" });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ assessmentArn: S.String }).pipe(
           T.all(
@@ -4272,38 +4229,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DescribeAppAssessmentRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ amount: S.Number, currency: S.String, frequency: S.String }),
-      ).annotate({ identifier: "Cost" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
   }
 }
-function __c8(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          score: S.optional(S.Number),
-          possibleScore: S.optional(S.Number),
-          outstandingCount: S.optional(S.Number),
-          excludedCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ScoringComponentResiliencyScore",
-      });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(64, __c8, 0).pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          score: S.Number,
-          disruptionScore: __S(63, __c7, 7),
-          componentScore: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({ identifier: "ResiliencyScore" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           achievableRtoInSecs: S.optional(S.Number),
@@ -4318,9 +4248,48 @@ function __c8(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "DisruptionCompliance" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(67, __c8, 3).pipe(S.optional));
-    case 5:
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(496, __c31, 0).pipe(S.optional));
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ amount: S.Number, currency: S.String, frequency: S.String }),
+      ).annotate({ identifier: "Cost" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          score: S.optional(S.Number),
+          possibleScore: S.optional(S.Number),
+          outstandingCount: S.optional(S.Number),
+          excludedCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ScoringComponentResiliencyScore",
+      });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(529, __c33, 1).pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          score: S.Number,
+          disruptionScore: __S(528, __c33, 0),
+          componentScore: S.optional(__S(530, __c33, 2)),
+        }),
+      ).annotate({ identifier: "ResiliencyScore" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           logicalResourceId: S.optional(S.String),
@@ -4328,47 +4297,43 @@ function __c8(j: number): any {
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceError" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(544, __c34, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          resourceErrors: S.optional(__S(70, __c8, 6)),
+          resourceErrors: S.optional(__S(545, __c34, 1)),
           hasMoreErrors: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ResourceErrorsDetails" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           risk: S.optional(S.String),
           recommendation: S.optional(S.String),
-          appComponents: S.optional(__S(19, __c2, 3)),
+          appComponents: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({
         identifier: "AssessmentRiskRecommendation",
       });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(547, __c34, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           summary: S.optional(S.String),
-          riskRecommendations: S.optional(__S(73, __c9, 1)),
+          riskRecommendations: S.optional(__S(548, __c34, 4)),
         }),
       ).annotate({ identifier: "AssessmentSummary" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           appArn: S.optional(S.String),
           appVersion: S.optional(S.String),
           invoker: S.String,
-          cost: S.optional(__S(62, __c7, 6)),
-          resiliencyScore: S.optional(__S(66, __c8, 2)),
-          compliance: S.optional(__S(68, __c8, 4)),
+          cost: S.optional(__S(512, __c32, 0)),
+          resiliencyScore: S.optional(__S(531, __c33, 3)),
+          compliance: S.optional(__S(497, __c31, 1)),
           complianceStatus: S.optional(S.String),
           assessmentStatus: S.String,
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4376,19 +4341,23 @@ function __c9(j: number): any {
           message: S.optional(S.String),
           assessmentName: S.optional(S.String),
           assessmentArn: S.String,
-          policy: S.optional(__S(43, __c5, 3)),
-          tags: S.optional(__S(18, __c2, 2)),
-          resourceErrorsDetails: S.optional(__S(71, __c8, 7)),
+          policy: S.optional(__S(290, __c18, 2)),
+          tags: S.optional(__S(32, __c2, 0)),
+          resourceErrorsDetails: S.optional(__S(546, __c34, 2)),
           versionName: S.optional(S.String),
           driftStatus: S.optional(S.String),
-          summary: S.optional(__S(74, __c9, 2)),
+          summary: S.optional(__S(549, __c34, 5)),
         }),
       ).annotate({ identifier: "AppAssessment" });
-    case 4:
-      return S.suspend(() => S.Struct({ assessment: __S(75, __c9, 3) })).annotate({
+    case 7:
+      return S.suspend(() => S.Struct({ assessment: __S(550, __c34, 6) })).annotate({
         identifier: "DescribeAppAssessmentResponse",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ appArn: S.String, appVersion: S.String }).pipe(
           T.all(
@@ -4403,17 +4372,21 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DescribeAppVersionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
           appVersion: S.String,
-          additionalInfo: S.optional(__S(26, __c3, 2)),
+          additionalInfo: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({
         identifier: "DescribeAppVersionResponse",
       });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ appArn: S.String, appVersion: S.String, id: S.String }).pipe(
           T.all(
@@ -4430,7 +4403,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4438,7 +4411,7 @@ function __c10(j: number): any {
           appArn: S.String,
           appVersion: S.String,
           resourceName: S.optional(S.String),
-          logicalResourceId: S.optional(__S(30, __c3, 6)),
+          logicalResourceId: S.optional(__S(144, __c9, 0)),
           physicalResourceId: S.optional(S.String),
           awsRegion: S.optional(S.String),
           awsAccountId: S.optional(S.String),
@@ -4455,7 +4428,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DescribeAppVersionResourceRequest",
       });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -4474,7 +4451,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DescribeAppVersionResourcesResolutionStatusRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -4486,7 +4463,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DescribeAppVersionResourcesResolutionStatusResponse",
       });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ appArn: S.String, appVersion: S.String }).pipe(
           T.all(
@@ -4501,13 +4482,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DescribeAppVersionTemplateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ appArn: S.String, appVersion: S.String, appTemplateBody: S.String }),
       ).annotate({
         identifier: "DescribeAppVersionTemplateResponse",
       });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ appArn: S.String }).pipe(
           T.all(
@@ -4522,17 +4507,13 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DescribeDraftAppVersionResourcesImportStatusRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ errorMessage: S.optional(S.String) })).annotate({
         identifier: "ErrorDetail",
       });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(641, __c40, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -4540,12 +4521,16 @@ function __c11(j: number): any {
           status: S.String,
           statusChangeTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           errorMessage: S.optional(S.String),
-          errorDetails: S.optional(__S(87, __c10, 7)),
+          errorDetails: S.optional(__S(642, __c40, 2)),
         }),
       ).annotate({
         identifier: "DescribeDraftAppVersionResourcesImportStatusResponse",
       });
-    case 1:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ metricsExportId: S.String }).pipe(
           T.all(
@@ -4560,18 +4545,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DescribeMetricsExportRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           metricsExportId: S.String,
           status: S.String,
-          exportLocation: S.optional(__S(37, __c4, 5)),
+          exportLocation: S.optional(__S(224, __c14, 0)),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeMetricsExportResponse",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ policyArn: S.String }).pipe(
           T.all(
@@ -4586,7 +4575,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DescribeResiliencyPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ appArn: S.String, groupingId: S.optional(S.String) }).pipe(
           T.all(
@@ -4601,7 +4594,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DescribeResourceGroupingRecommendationTaskRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupingId: S.String,
@@ -4611,26 +4604,26 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DescribeResourceGroupingRecommendationTaskResponse",
       });
-    case 6:
-      return S.Array(__S(49, __c6, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ eksClusterArn: S.String, namespaces: __S(19, __c2, 3) }),
-      ).annotate({ identifier: "EksSource" });
   }
 }
-function __c12(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95, __c11, 7));
+      return S.Array(__S(368, __c23, 0));
     case 1:
+      return S.suspend(() =>
+        S.Struct({ eksClusterArn: S.String, namespaces: __S(16, __c1, 0) }),
+      ).annotate({ identifier: "EksSource" });
+    case 2:
+      return S.Array(__S(705, __c44, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
-          sourceArns: S.optional(__S(19, __c2, 3)),
-          terraformSources: S.optional(__S(94, __c11, 6)),
+          sourceArns: S.optional(__S(16, __c1, 0)),
+          terraformSources: S.optional(__S(704, __c44, 0)),
           importStrategy: S.optional(S.String),
-          eksSources: S.optional(__S(96, __c12, 0)),
+          eksSources: S.optional(__S(706, __c44, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/import-resources-to-draft-app-version" }),
@@ -4644,20 +4637,24 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ImportResourcesToDraftAppVersionRequest",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
           appVersion: S.String,
-          sourceArns: S.optional(__S(19, __c2, 3)),
+          sourceArns: S.optional(__S(16, __c1, 0)),
           status: S.String,
-          terraformSources: S.optional(__S(94, __c11, 6)),
-          eksSources: S.optional(__S(96, __c12, 0)),
+          terraformSources: S.optional(__S(704, __c44, 0)),
+          eksSources: S.optional(__S(706, __c44, 2)),
         }),
       ).annotate({
         identifier: "ImportResourcesToDraftAppVersionResponse",
       });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentArn: S.String,
@@ -4676,37 +4673,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAlarmRecommendationsRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          experimentArn: S.optional(S.String),
-          experimentTemplateId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Experiment" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ alarmArn: S.optional(S.String), source: S.optional(S.String) }),
-      ).annotate({ identifier: "Alarm" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(S.String),
-          targetAccountId: S.optional(S.String),
-          targetRegion: S.optional(S.String),
-          alreadyImplemented: S.optional(S.Boolean),
-          excluded: S.optional(S.Boolean),
-          excludeReason: S.optional(S.String),
-          latestDiscoveredExperiment: S.optional(__S(100, __c12, 4)),
-          discoveredAlarm: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({ identifier: "RecommendationItem" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recommendationId: S.String,
@@ -4715,24 +4682,55 @@ function __c13(j: number): any {
           description: S.optional(S.String),
           type: S.String,
           appComponentName: S.optional(S.String),
-          items: S.optional(__S(103, __c12, 7)),
+          items: S.optional(__S(739, __c46, 3)),
           prerequisite: S.optional(S.String),
-          appComponentNames: S.optional(__S(19, __c2, 3)),
+          appComponentNames: S.optional(__S(16, __c1, 0)),
           recommendationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlarmRecommendation" });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
     case 2:
+      return S.Array(__S(721, __c45, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          alarmRecommendations: __S(105, __c13, 1),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ alarmRecommendations: __S(722, __c45, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAlarmRecommendationsResponse",
       });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          experimentArn: S.optional(S.String),
+          experimentTemplateId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Experiment" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ alarmArn: S.optional(S.String), source: S.optional(S.String) }),
+      ).annotate({ identifier: "Alarm" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.String),
+          targetAccountId: S.optional(S.String),
+          targetRegion: S.optional(S.String),
+          alreadyImplemented: S.optional(S.Boolean),
+          excluded: S.optional(S.Boolean),
+          excludeReason: S.optional(S.String),
+          latestDiscoveredExperiment: S.optional(__S(736, __c46, 0)),
+          discoveredAlarm: S.optional(__S(737, __c46, 1)),
+        }),
+      ).annotate({ identifier: "RecommendationItem" });
     case 3:
+      return S.Array(__S(738, __c46, 2));
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentArn: S.String,
@@ -4751,7 +4749,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAppAssessmentComplianceDriftsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           entityId: S.optional(S.String),
@@ -4760,21 +4758,25 @@ function __c13(j: number): any {
           appId: S.optional(S.String),
           appVersion: S.optional(S.String),
           expectedReferenceId: S.optional(S.String),
-          expectedValue: S.optional(__S(68, __c8, 4)),
+          expectedValue: S.optional(__S(497, __c31, 1)),
           actualReferenceId: S.optional(S.String),
-          actualValue: S.optional(__S(68, __c8, 4)),
+          actualValue: S.optional(__S(497, __c31, 1)),
           diffType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComplianceDrift" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(753, __c47, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ complianceDrifts: __S(109, __c13, 5), nextToken: S.optional(S.String) }),
+        S.Struct({ complianceDrifts: __S(754, __c47, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAppAssessmentComplianceDriftsResponse",
       });
-    case 7:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentArn: S.String,
@@ -4793,41 +4795,41 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAppAssessmentResourceDriftsRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          logicalResourceId: S.optional(__S(30, __c3, 6)),
+          logicalResourceId: S.optional(__S(144, __c9, 0)),
           resourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceIdentifier" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           appArn: S.optional(S.String),
           appVersion: S.optional(S.String),
           referenceId: S.optional(S.String),
-          resourceIdentifier: S.optional(__S(112, __c14, 0)),
+          resourceIdentifier: S.optional(__S(769, __c48, 1)),
           diffType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceDrift" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
     case 3:
+      return S.Array(__S(770, __c48, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ resourceDrifts: __S(114, __c14, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ resourceDrifts: __S(771, __c48, 3), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAppAssessmentResourceDriftsResponse",
       });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.optional(S.String).pipe(T.HttpQuery("appArn")),
           assessmentName: S.optional(S.String).pipe(T.HttpQuery("assessmentName")),
-          assessmentStatus: S.optional(__S(35, __c4, 3)).pipe(T.HttpQuery("assessmentStatus")),
+          assessmentStatus: S.optional(__S(240, __c15, 0)).pipe(T.HttpQuery("assessmentStatus")),
           complianceStatus: S.optional(S.String).pipe(T.HttpQuery("complianceStatus")),
           invoker: S.optional(S.String).pipe(T.HttpQuery("invoker")),
           reverseOrder: S.optional(S.Boolean).pipe(T.HttpQuery("reverseOrder")),
@@ -4846,7 +4848,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListAppAssessmentsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appArn: S.optional(S.String),
@@ -4859,26 +4861,23 @@ function __c14(j: number): any {
           assessmentName: S.optional(S.String),
           assessmentArn: S.String,
           complianceStatus: S.optional(S.String),
-          cost: S.optional(__S(62, __c7, 6)),
+          cost: S.optional(__S(512, __c32, 0)),
           resiliencyScore: S.optional(S.Number),
           versionName: S.optional(S.String),
           driftStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppAssessmentSummary" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(785, __c49, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          assessmentSummaries: __S(118, __c14, 6),
-        }),
+        S.Struct({ nextToken: S.optional(S.String), assessmentSummaries: __S(786, __c49, 2) }),
       ).annotate({
         identifier: "ListAppAssessmentsResponse",
       });
   }
 }
-function __c15(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4902,26 +4901,27 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cost: S.optional(__S(62, __c7, 6)),
+          cost: S.optional(__S(512, __c32, 0)),
           appComponentName: S.optional(S.String),
-          compliance: S.optional(__S(68, __c8, 4)),
+          compliance: S.optional(__S(497, __c31, 1)),
           message: S.optional(S.String),
           status: S.optional(S.String),
-          resiliencyScore: S.optional(__S(66, __c8, 2)),
+          resiliencyScore: S.optional(__S(531, __c33, 3)),
         }),
       ).annotate({ identifier: "AppComponentCompliance" });
     case 2:
-      return S.Array(__S(121, __c15, 1));
+      return S.Array(__S(801, __c50, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          componentCompliances: __S(122, __c15, 2),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ componentCompliances: __S(802, __c50, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAppComponentCompliancesResponse",
       });
-    case 4:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentArn: S.String,
@@ -4940,7 +4940,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListAppComponentRecommendationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expectedComplianceStatus: S.String,
@@ -4952,49 +4952,49 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "RecommendationDisruptionCompliance",
       });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(125, __c15, 5).pipe(S.optional));
-    case 7:
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(817, __c51, 1).pipe(S.optional));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          cost: S.optional(__S(62, __c7, 6)),
+          cost: S.optional(__S(512, __c32, 0)),
           appComponentName: S.optional(S.String),
-          compliance: S.optional(__S(68, __c8, 4)),
-          recommendationCompliance: S.optional(__S(126, __c15, 6)),
+          compliance: S.optional(__S(497, __c31, 1)),
+          recommendationCompliance: S.optional(__S(818, __c51, 2)),
           optimizationType: S.String,
           name: S.String,
           description: S.optional(S.String),
-          suggestedChanges: S.optional(__S(19, __c2, 3)),
+          suggestedChanges: S.optional(__S(16, __c1, 0)),
           haArchitecture: S.optional(S.String),
           referenceId: S.String,
         }),
       ).annotate({ identifier: "ConfigRecommendation" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(819, __c51, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           appComponentName: S.String,
           recommendationStatus: S.String,
-          configRecommendations: __S(128, __c16, 0),
+          configRecommendations: __S(820, __c51, 4),
         }),
       ).annotate({ identifier: "ComponentRecommendation" });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(821, __c51, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          componentRecommendations: __S(130, __c16, 2),
+          componentRecommendations: __S(822, __c51, 6),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAppComponentRecommendationsResponse",
       });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -5014,15 +5014,19 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAppInputSourcesRequest",
       });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(385, __c24, 1));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ appInputSources: __S(133, __c16, 5), nextToken: S.optional(S.String) }),
+        S.Struct({ appInputSources: __S(833, __c52, 1), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAppInputSourcesResponse",
       });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5039,11 +5043,7 @@ function __c16(j: number): any {
           awsApplicationArn: S.optional(S.String).pipe(T.HttpQuery("awsApplicationArn")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/list-apps" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAppsRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -5063,13 +5063,17 @@ function __c17(j: number): any {
           awsApplicationArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppSummary" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ appSummaries: __S(137, __c17, 1), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListAppsResponse" });
+      return S.Array(__S(849, __c53, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ appSummaries: __S(850, __c53, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAppsResponse" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -5089,18 +5093,22 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListAppVersionAppComponentsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
           appVersion: S.String,
-          appComponents: S.optional(__S(32, __c4, 0)),
+          appComponents: S.optional(__S(160, __c10, 0)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAppVersionAppComponentsResponse",
       });
-    case 5:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -5120,13 +5128,17 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListAppVersionResourceMappingsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ resourceMappings: __S(8, __c1, 0), nextToken: S.optional(S.String) }),
+        S.Struct({ resourceMappings: __S(1425, __c89, 1), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAppVersionResourceMappingsResponse",
       });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -5147,23 +5159,23 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListAppVersionResourcesRequest",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(33, __c4, 1));
     case 1:
+      return S.Array(__S(176, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          physicalResources: __S(144, __c18, 0),
+          physicalResources: __S(897, __c56, 1),
           resolutionId: S.String,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAppVersionResourcesResponse",
       });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -5182,7 +5194,7 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListAppVersionsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appVersion: S.String,
@@ -5191,59 +5203,63 @@ function __c18(j: number): any {
           versionName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppVersionSummary" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(913, __c57, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ appVersions: __S(148, __c18, 4), nextToken: S.optional(S.String) }),
+        S.Struct({ appVersions: __S(914, __c57, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAppVersionsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ name: S.String, aggregation: S.optional(S.String) }),
-      ).annotate({ identifier: "Field" });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
   }
 }
-function __c19(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ name: S.String, aggregation: S.optional(S.String) }),
+      ).annotate({ identifier: "Field" });
+    case 1:
+      return S.Array(__S(928, __c58, 0));
+    case 2:
+      return S.suspend(() =>
         S.Struct({ field: S.String, operator: S.String, value: S.optional(S.String) }),
       ).annotate({ identifier: "Condition" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(930, __c58, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({ field: S.String, ascending: S.optional(S.Boolean) }),
       ).annotate({ identifier: "Sort" });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(932, __c58, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          fields: S.optional(__S(151, __c18, 7)),
+          fields: S.optional(__S(929, __c58, 1)),
           dataSource: S.optional(S.String),
-          conditions: S.optional(__S(153, __c19, 1)),
-          sorts: S.optional(__S(155, __c19, 3)),
+          conditions: S.optional(__S(931, __c58, 3)),
+          sorts: S.optional(__S(933, __c58, 5)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/list-metrics" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListMetricsRequest" });
-    case 5:
-      return S.Array(__S(19, __c2, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ rows: __S(157, __c19, 5), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListMetricsResponse" });
     case 7:
+      return S.Array(__S(16, __c1, 0));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({ rows: __S(935, __c58, 7), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListMetricsResponse" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentArn: S.optional(S.String).pipe(T.HttpQuery("assessmentArn")),
           reverseOrder: S.optional(S.Boolean).pipe(T.HttpQuery("reverseOrder")),
-          status: S.optional(__S(35, __c4, 3)).pipe(T.HttpQuery("status")),
+          status: S.optional(__S(240, __c15, 0)).pipe(T.HttpQuery("status")),
           recommendationTemplateArn: S.optional(S.String).pipe(
             T.HttpQuery("recommendationTemplateArn"),
           ),
@@ -5263,22 +5279,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListRecommendationTemplatesRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(38, __c4, 6));
     case 1:
+      return S.Array(__S(256, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          recommendationTemplates: S.optional(__S(160, __c20, 0)),
+          recommendationTemplates: S.optional(__S(945, __c59, 1)),
         }),
       ).annotate({
         identifier: "ListRecommendationTemplatesResponse",
       });
-    case 2:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           policyName: S.optional(S.String).pipe(T.HttpQuery("policyName")),
@@ -5297,15 +5313,23 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListResiliencyPoliciesRequest",
       });
-    case 3:
-      return S.Array(__S(43, __c5, 3));
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(290, __c18, 2));
+    case 1:
       return S.suspend(() =>
-        S.Struct({ resiliencyPolicies: __S(163, __c20, 3), nextToken: S.optional(S.String) }),
+        S.Struct({ resiliencyPolicies: __S(976, __c61, 0), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListResiliencyPoliciesResponse",
       });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.optional(S.String).pipe(T.HttpQuery("appArn")),
@@ -5324,7 +5348,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListResourceGroupingRecommendationsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appComponentId: S.String,
@@ -5332,48 +5356,48 @@ function __c20(j: number): any {
           appComponentName: S.String,
         }),
       ).annotate({ identifier: "GroupingAppComponent" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.String,
           resourceType: S.String,
-          physicalResourceId: __S(6, __c0, 6),
-          logicalResourceId: __S(30, __c3, 6),
-          sourceAppComponentIds: __S(19, __c2, 3),
+          physicalResourceId: __S(1408, __c88, 0),
+          logicalResourceId: __S(144, __c9, 0),
+          sourceAppComponentIds: __S(16, __c1, 0),
         }),
       ).annotate({ identifier: "GroupingResource" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(994, __c62, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           groupingRecommendationId: S.String,
-          groupingAppComponent: __S(166, __c20, 6),
-          resources: __S(168, __c21, 0),
+          groupingAppComponent: __S(993, __c62, 1),
+          resources: __S(995, __c62, 3),
           score: S.Number,
-          recommendationReasons: __S(19, __c2, 3),
+          recommendationReasons: __S(16, __c1, 0),
           status: S.String,
           confidenceLevel: S.String,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           rejectionReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupingRecommendation" });
-    case 2:
-      return S.Array(__S(169, __c21, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(996, __c62, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          groupingRecommendations: __S(170, __c21, 2),
+          groupingRecommendations: __S(997, __c62, 5),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListResourceGroupingRecommendationsResponse",
       });
-    case 4:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
@@ -5392,7 +5416,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSopRecommendationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           serviceType: S.String,
@@ -5400,23 +5424,23 @@ function __c21(j: number): any {
           description: S.optional(S.String),
           recommendationId: S.String,
           name: S.optional(S.String),
-          items: S.optional(__S(103, __c12, 7)),
+          items: S.optional(__S(739, __c46, 3)),
           referenceId: S.String,
           prerequisite: S.optional(S.String),
           recommendationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "SopRecommendation" });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1009, __c63, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), sopRecommendations: __S(174, __c21, 6) }),
+        S.Struct({ nextToken: S.optional(S.String), sopRecommendations: __S(1010, __c63, 2) }),
       ).annotate({
         identifier: "ListSopRecommendationsResponse",
       });
   }
 }
-function __c22(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5436,7 +5460,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListSuggestedResiliencyPoliciesRequest",
       });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -5451,11 +5479,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(18, __c2, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(32, __c2, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
@@ -5474,7 +5506,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListTestRecommendationsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recommendationId: S.optional(S.String),
@@ -5486,21 +5518,25 @@ function __c22(j: number): any {
           risk: S.optional(S.String),
           type: S.optional(S.String),
           description: S.optional(S.String),
-          items: S.optional(__S(103, __c12, 7)),
+          items: S.optional(__S(739, __c46, 3)),
           prerequisite: S.optional(S.String),
-          dependsOnAlarms: S.optional(__S(19, __c2, 3)),
+          dependsOnAlarms: S.optional(__S(16, __c1, 0)),
           recommendationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "TestRecommendation" });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1057, __c66, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), testRecommendations: __S(181, __c22, 5) }),
+        S.Struct({ nextToken: S.optional(S.String), testRecommendations: __S(1058, __c66, 2) }),
       ).annotate({
         identifier: "ListTestRecommendationsResponse",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -5521,32 +5557,32 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListUnsupportedAppVersionResourcesRequest",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          logicalResourceId: __S(30, __c3, 6),
-          physicalResourceId: __S(6, __c0, 6),
+          logicalResourceId: __S(144, __c9, 0),
+          physicalResourceId: __S(1408, __c88, 0),
           resourceType: S.String,
           unsupportedResourceStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "UnsupportedResource" });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
     case 2:
+      return S.Array(__S(1073, __c67, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          unsupportedResources: __S(185, __c23, 1),
+          unsupportedResources: __S(1074, __c67, 2),
           resolutionId: S.String,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListUnsupportedAppVersionResourcesResponse",
       });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ appArn: S.String, versionName: S.optional(S.String) }).pipe(
           T.all(
@@ -5559,7 +5595,7 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PublishAppVersionRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -5570,7 +5606,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PublishAppVersionResponse",
       });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ appArn: S.String, appTemplateBody: S.String }).pipe(
           T.all(
@@ -5585,13 +5625,21 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PutDraftAppVersionTemplateRequest",
       });
-    case 6:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ appArn: S.optional(S.String), appVersion: S.optional(S.String) }),
       ).annotate({
         identifier: "PutDraftAppVersionTemplateResponse",
       });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupingRecommendationId: S.String,
@@ -5600,15 +5648,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "RejectGroupingRecommendationEntry",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(191, __c23, 7));
     case 1:
+      return S.Array(__S(1136, __c71, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ appArn: S.String, entries: __S(192, __c24, 0) }).pipe(
+        S.Struct({ appArn: S.String, entries: __S(1137, __c71, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/reject-resource-grouping-recommendations" }),
             svc,
@@ -5621,16 +5665,20 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "RejectResourceGroupingRecommendationsRequest",
       });
-    case 2:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
-          resourceNames: S.optional(__S(19, __c2, 3)),
-          logicalStackNames: S.optional(__S(19, __c2, 3)),
-          appRegistryAppNames: S.optional(__S(19, __c2, 3)),
-          resourceGroupNames: S.optional(__S(19, __c2, 3)),
-          terraformSourceNames: S.optional(__S(19, __c2, 3)),
-          eksSourceNames: S.optional(__S(19, __c2, 3)),
+          resourceNames: S.optional(__S(16, __c1, 0)),
+          logicalStackNames: S.optional(__S(16, __c1, 0)),
+          appRegistryAppNames: S.optional(__S(16, __c1, 0)),
+          resourceGroupNames: S.optional(__S(16, __c1, 0)),
+          terraformSourceNames: S.optional(__S(16, __c1, 0)),
+          eksSourceNames: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/remove-draft-app-version-resource-mappings" }),
@@ -5644,7 +5692,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "RemoveDraftAppVersionResourceMappingsRequest",
       });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ appArn: S.String, appVersion: S.String }).pipe(
           T.all(
@@ -5659,7 +5711,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ResolveAppVersionResourcesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -5670,14 +5722,18 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ResolveAppVersionResourcesResponse",
       });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
           appVersion: S.String,
           assessmentName: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/start-app-assessment" }),
@@ -5691,7 +5747,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "StartAppAssessmentRequest",
       });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucketName: S.optional(S.String),
@@ -5709,13 +5769,13 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "StartMetricsExportRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ metricsExportId: S.String, status: S.String })).annotate({
         identifier: "StartMetricsExportResponse",
       });
   }
 }
-function __c25(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5743,11 +5803,15 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "StartResourceGroupingRecommendationTaskResponse",
       });
-    case 2:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(18, __c2, 2),
+          tags: __S(32, __c2, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -5759,15 +5823,23 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceResponse",
       });
-    case 4:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(19, __c2, 3).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(16, __c1, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -5779,7 +5851,11 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
@@ -5787,15 +5863,19 @@ function __c25(j: number): any {
           policyArn: S.optional(S.String),
           clearResiliencyPolicyArn: S.optional(S.Boolean),
           assessmentSchedule: S.optional(S.String),
-          permissionModel: S.optional(__S(20, __c2, 4)),
-          eventSubscriptions: S.optional(__S(22, __c2, 6)),
+          permissionModel: S.optional(__S(48, __c3, 0)),
+          eventSubscriptions: S.optional(__S(50, __c3, 2)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/update-app" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateAppRequest" });
-    case 6:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ appArn: S.String, additionalInfo: S.optional(__S(26, __c3, 2)) }).pipe(
+        S.Struct({ appArn: S.String, additionalInfo: S.optional(__S(80, __c5, 0)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/update-app-version" }),
             svc,
@@ -5806,17 +5886,17 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateAppVersionRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
           appVersion: S.String,
-          additionalInfo: S.optional(__S(26, __c3, 2)),
+          additionalInfo: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "UpdateAppVersionResponse" });
   }
 }
-function __c26(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5825,7 +5905,7 @@ function __c26(j: number): any {
           id: S.String,
           name: S.optional(S.String),
           type: S.optional(S.String),
-          additionalInfo: S.optional(__S(26, __c3, 2)),
+          additionalInfo: S.optional(__S(80, __c5, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/update-app-version-app-component" }),
@@ -5839,18 +5919,22 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateAppVersionAppComponentRequest",
       });
-    case 1:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appArn: S.String,
           resourceName: S.optional(S.String),
-          logicalResourceId: S.optional(__S(30, __c3, 6)),
+          logicalResourceId: S.optional(__S(144, __c9, 0)),
           physicalResourceId: S.optional(S.String),
           awsRegion: S.optional(S.String),
           awsAccountId: S.optional(S.String),
           resourceType: S.optional(S.String),
-          appComponents: S.optional(__S(19, __c2, 3)),
-          additionalInfo: S.optional(__S(26, __c3, 2)),
+          appComponents: S.optional(__S(16, __c1, 0)),
+          additionalInfo: S.optional(__S(80, __c5, 0)),
           excluded: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -5865,7 +5949,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateAppVersionResourceRequest",
       });
-    case 2:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           policyArn: S.String,
@@ -5873,7 +5961,7 @@ function __c26(j: number): any {
           policyDescription: S.optional(S.String),
           dataLocationConstraint: S.optional(S.String),
           tier: S.optional(S.String),
-          policy: S.optional(__S(41, __c5, 1)),
+          policy: S.optional(__S(289, __c18, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/update-resiliency-policy" }),
@@ -5889,7 +5977,166 @@ function __c26(j: number): any {
       });
   }
 }
-
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ groupingRecommendationId: S.String })).annotate({
+        identifier: "AcceptGroupingRecommendationEntry",
+      });
+    case 1:
+      return S.Array(__S(1360, __c85, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ appArn: S.String, entries: __S(1361, __c85, 1) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/accept-resource-grouping-recommendations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AcceptResourceGroupingRecommendationsRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ groupingRecommendationId: S.String, errorMessage: S.String }),
+      ).annotate({
+        identifier: "FailedGroupingRecommendationEntry",
+      });
+    case 1:
+      return S.Array(__S(1376, __c86, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ appArn: S.String, failedEntries: __S(1377, __c86, 1) }),
+      ).annotate({
+        identifier: "AcceptResourceGroupingRecommendationsResponse",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ appArn: S.String, resourceMappings: __S(1425, __c89, 1) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/add-draft-app-version-resource-mappings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AddDraftAppVersionResourceMappingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ appArn: S.String, appVersion: S.String, resourceMappings: __S(1425, __c89, 1) }),
+      ).annotate({
+        identifier: "AddDraftAppVersionResourceMappingsResponse",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String,
+          type: S.String,
+          awsRegion: S.optional(S.String),
+          awsAccountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PhysicalResourceId" });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceName: S.optional(S.String),
+          logicalStackName: S.optional(S.String),
+          appRegistryAppName: S.optional(S.String),
+          resourceGroupName: S.optional(S.String),
+          mappingType: S.String,
+          physicalResourceId: __S(1408, __c88, 0),
+          terraformSourceName: S.optional(S.String),
+          eksSourceName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceMapping" });
+    case 1:
+      return S.Array(__S(1424, __c89, 0));
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.String),
+          targetAccountId: S.optional(S.String),
+          targetRegion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateRecommendationStatusItem",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          entryId: S.String,
+          referenceId: S.String,
+          item: S.optional(__S(1440, __c90, 0)),
+          excluded: S.Boolean,
+          appComponentId: S.optional(S.String),
+          excludeReason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateRecommendationStatusRequestEntry",
+      });
+    case 2:
+      return S.Array(__S(1441, __c90, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ appArn: S.String, requestEntries: __S(1442, __c90, 2) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/batch-update-recommendation-status" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateRecommendationStatusRequest",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ entryId: S.String, errorMessage: S.String })).annotate({
+        identifier: "BatchUpdateRecommendationStatusFailedEntry",
+      });
+    case 5:
+      return S.Array(__S(1444, __c90, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          appArn: S.String,
+          successfulEntries: __S(1442, __c90, 2),
+          failedEntries: __S(1445, __c90, 5),
+        }),
+      ).annotate({
+        identifier: "BatchUpdateRecommendationStatusResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

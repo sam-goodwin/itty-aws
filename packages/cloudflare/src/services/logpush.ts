@@ -1368,8 +1368,8 @@ export const createEdge: API.OperationMethod<
   CreateEdgeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateEdgeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateEdgeResponse>,
+  input: __S(108, __c27, 0) as any as S.Schema<CreateEdgeRequest>,
+  output: __S(109, __c27, 1) as any as S.Schema<CreateEdgeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1383,8 +1383,8 @@ export const createJobForAccount: API.OperationMethod<
   CreateJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateJobForAccountRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateJobResponse>,
+  input: __S(148, __c37, 0) as any as S.Schema<CreateJobForAccountRequest>,
+  output: __S(154, __c38, 2) as any as S.Schema<CreateJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1398,8 +1398,8 @@ export const createJobForZone: API.OperationMethod<
   CreateJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateJobForZoneRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateJobResponse>,
+  input: __S(160, __c40, 0) as any as S.Schema<CreateJobForZoneRequest>,
+  output: __S(154, __c38, 2) as any as S.Schema<CreateJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1413,8 +1413,8 @@ export const createOwnershipForAccount: API.OperationMethod<
   CreateOwnershipForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateOwnershipForAccountRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateOwnershipResponse>,
+  input: __S(164, __c41, 0) as any as S.Schema<CreateOwnershipForAccountRequest>,
+  output: __S(168, __c42, 0) as any as S.Schema<CreateOwnershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1428,8 +1428,8 @@ export const createOwnershipForZone: API.OperationMethod<
   CreateOwnershipForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateOwnershipForZoneRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateOwnershipResponse>,
+  input: __S(172, __c43, 0) as any as S.Schema<CreateOwnershipForZoneRequest>,
+  output: __S(168, __c42, 0) as any as S.Schema<CreateOwnershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1443,8 +1443,8 @@ export const createTransformer: API.OperationMethod<
   CreateTransformerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateTransformerRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateTransformerResponse>,
+  input: __S(176, __c44, 0) as any as S.Schema<CreateTransformerRequest>,
+  output: __S(184, __c46, 0) as any as S.Schema<CreateTransformerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1458,8 +1458,8 @@ export const deleteJobForAccount: API.OperationMethod<
   DeleteJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteJobForAccountRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteJobResponse>,
+  input: __S(188, __c47, 0) as any as S.Schema<DeleteJobForAccountRequest>,
+  output: __S(192, __c48, 0) as any as S.Schema<DeleteJobResponse>,
   errors: [JobNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1473,8 +1473,8 @@ export const deleteJobForZone: API.OperationMethod<
   DeleteJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteJobForZoneRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteJobResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteJobForZoneRequest>,
+  output: __S(192, __c48, 0) as any as S.Schema<DeleteJobResponse>,
   errors: [JobNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1488,8 +1488,8 @@ export const deleteTransformer: API.OperationMethod<
   DeleteTransformerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteTransformerRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteTransformerResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<DeleteTransformerRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<DeleteTransformerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1503,8 +1503,8 @@ export const destinationExistsValidateForAccount: API.OperationMethod<
   DestinationExistsValidateForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DestinationExistsValidateForAccountRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DestinationExistsValidateResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DestinationExistsValidateForAccountRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<DestinationExistsValidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1518,8 +1518,8 @@ export const destinationExistsValidateForZone: API.OperationMethod<
   DestinationExistsValidateForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DestinationExistsValidateForZoneRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DestinationExistsValidateResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DestinationExistsValidateForZoneRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<DestinationExistsValidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1533,8 +1533,8 @@ export const destinationValidateForAccount: API.OperationMethod<
   DestinationValidateForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DestinationValidateForAccountRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DestinationValidateResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<DestinationValidateForAccountRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<DestinationValidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1548,8 +1548,8 @@ export const destinationValidateForZone: API.OperationMethod<
   DestinationValidateForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DestinationValidateForZoneRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DestinationValidateResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<DestinationValidateForZoneRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<DestinationValidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1563,8 +1563,8 @@ export const getDatasetFieldForAccount: API.OperationMethod<
   GetDatasetFieldForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetDatasetFieldForAccountRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDatasetFieldResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<GetDatasetFieldForAccountRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<GetDatasetFieldResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1578,8 +1578,8 @@ export const getDatasetFieldForZone: API.OperationMethod<
   GetDatasetFieldForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetDatasetFieldForZoneRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDatasetFieldResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetDatasetFieldForZoneRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<GetDatasetFieldResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1595,8 +1595,8 @@ export const getDatasetJobForAccount: API.PaginatedOperationMethod<
   DatasetsJobsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(30, __c3, 6) as any as S.Schema<GetDatasetJobForAccountRequest>,
-    output: __S(34, __c4, 2) as any as S.Schema<GetDatasetJobResponse>,
+    input: __S(44, __c11, 0) as any as S.Schema<GetDatasetJobForAccountRequest>,
+    output: __S(51, __c12, 3) as any as S.Schema<GetDatasetJobResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1615,8 +1615,8 @@ export const getDatasetJobForZone: API.PaginatedOperationMethod<
   DatasetsJobsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(35, __c4, 3) as any as S.Schema<GetDatasetJobForZoneRequest>,
-    output: __S(34, __c4, 2) as any as S.Schema<GetDatasetJobResponse>,
+    input: __S(52, __c13, 0) as any as S.Schema<GetDatasetJobForZoneRequest>,
+    output: __S(51, __c12, 3) as any as S.Schema<GetDatasetJobResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1635,8 +1635,8 @@ export const getEdge: API.PaginatedOperationMethod<
   EdgeGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(36, __c4, 4) as any as S.Schema<GetEdgeRequest>,
-    output: __S(39, __c4, 7) as any as S.Schema<GetEdgeResponse>,
+    input: __S(56, __c14, 0) as any as S.Schema<GetEdgeRequest>,
+    output: __S(59, __c14, 3) as any as S.Schema<GetEdgeResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1653,8 +1653,8 @@ export const getJobForAccount: API.OperationMethod<
   GetJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetJobForAccountRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetJobResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetJobForAccountRequest>,
+  output: __S(65, __c16, 1) as any as S.Schema<GetJobResponse>,
   errors: [JobNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1668,8 +1668,8 @@ export const getJobForZone: API.OperationMethod<
   GetJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetJobForZoneRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetJobResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<GetJobForZoneRequest>,
+  output: __S(65, __c16, 1) as any as S.Schema<GetJobResponse>,
   errors: [JobNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1683,8 +1683,8 @@ export const getTransformer: API.OperationMethod<
   GetTransformerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetTransformerRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetTransformerResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<GetTransformerRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<GetTransformerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1698,8 +1698,8 @@ export const getTransformersContent: API.OperationMethod<
   GetTransformersContentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetTransformersContentRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetTransformersContentResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<GetTransformersContentRequest>,
+  output: __S(77, __c19, 1) as any as S.Schema<GetTransformersContentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1715,8 +1715,8 @@ export const listJobsForAccount: API.PaginatedOperationMethod<
   JobsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(48, __c6, 0) as any as S.Schema<ListJobsForAccountRequest>,
-    output: __S(52, __c6, 4) as any as S.Schema<ListJobsResponse>,
+    input: __S(80, __c20, 0) as any as S.Schema<ListJobsForAccountRequest>,
+    output: __S(87, __c21, 3) as any as S.Schema<ListJobsResponse>,
     errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1735,8 +1735,8 @@ export const listJobsForZone: API.PaginatedOperationMethod<
   JobsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(53, __c6, 5) as any as S.Schema<ListJobsForZoneRequest>,
-    output: __S(52, __c6, 4) as any as S.Schema<ListJobsResponse>,
+    input: __S(88, __c22, 0) as any as S.Schema<ListJobsForZoneRequest>,
+    output: __S(87, __c21, 3) as any as S.Schema<ListJobsResponse>,
     errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1753,8 +1753,8 @@ export const listTransformers: API.OperationMethod<
   ListTransformersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListTransformersRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ListTransformersResponse>,
+  input: __S(92, __c23, 0) as any as S.Schema<ListTransformersRequest>,
+  output: __S(95, __c23, 3) as any as S.Schema<ListTransformersResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1768,8 +1768,8 @@ export const listTransformersVersions: API.OperationMethod<
   ListTransformersVersionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListTransformersVersionsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListTransformersVersionsResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<ListTransformersVersionsRequest>,
+  output: __S(99, __c24, 3) as any as S.Schema<ListTransformersVersionsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1783,8 +1783,8 @@ export const originValidateForAccount: API.OperationMethod<
   OriginValidateForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<OriginValidateForAccountRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<OriginValidateResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<OriginValidateForAccountRequest>,
+  output: __S(104, __c26, 0) as any as S.Schema<OriginValidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1798,8 @@ export const originValidateForZone: API.OperationMethod<
   OriginValidateForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<OriginValidateForZoneRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<OriginValidateResponse>,
+  input: __S(112, __c28, 0) as any as S.Schema<OriginValidateForZoneRequest>,
+  output: __S(104, __c26, 0) as any as S.Schema<OriginValidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1813,8 +1813,8 @@ export const previewTransformer: API.OperationMethod<
   PreviewTransformerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<PreviewTransformerRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<PreviewTransformerResponse>,
+  input: __S(117, __c29, 1) as any as S.Schema<PreviewTransformerRequest>,
+  output: __S(119, __c29, 3) as any as S.Schema<PreviewTransformerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1828,8 +1828,8 @@ export const updateJobForAccount: API.OperationMethod<
   UpdateJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<UpdateJobForAccountRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<UpdateJobResponse>,
+  input: __S(120, __c30, 0) as any as S.Schema<UpdateJobForAccountRequest>,
+  output: __S(126, __c31, 2) as any as S.Schema<UpdateJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1843,8 +1843,8 @@ export const updateJobForZone: API.OperationMethod<
   UpdateJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<UpdateJobForZoneRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<UpdateJobResponse>,
+  input: __S(128, __c32, 0) as any as S.Schema<UpdateJobForZoneRequest>,
+  output: __S(126, __c31, 2) as any as S.Schema<UpdateJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1858,8 +1858,8 @@ export const updateTransformer: API.OperationMethod<
   UpdateTransformerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<UpdateTransformerRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateTransformerResponse>,
+  input: __S(132, __c33, 0) as any as S.Schema<UpdateTransformerRequest>,
+  output: __S(184, __c46, 0) as any as S.Schema<UpdateTransformerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1873,8 +1873,8 @@ export const validateOwnershipForAccount: API.OperationMethod<
   ValidateOwnershipForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ValidateOwnershipForAccountRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<ValidateOwnershipResponse>,
+  input: __S(136, __c34, 0) as any as S.Schema<ValidateOwnershipForAccountRequest>,
+  output: __S(140, __c35, 0) as any as S.Schema<ValidateOwnershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1888,8 +1888,8 @@ export const validateOwnershipForZone: API.OperationMethod<
   ValidateOwnershipForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ValidateOwnershipForZoneRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<ValidateOwnershipResponse>,
+  input: __S(144, __c36, 0) as any as S.Schema<ValidateOwnershipForZoneRequest>,
+  output: __S(140, __c35, 0) as any as S.Schema<ValidateOwnershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1897,6 +1897,678 @@ export const validateOwnershipForZone: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          jobId: S.Number.pipe(T.Label("job_id")),
+        })
+          .pipe(
+            T.Http({ method: "DELETE", uri: "/zones/{zone_id}/logpush/jobs/{job_id}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteJobForZoneRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          transformerId: S.Number.pipe(T.Label("transformer_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/logpush/transformers/{transformer_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteTransformerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteTransformerResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          destinationConf: S.String.pipe(T.Body("destination_conf")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/logpush/validate/destination/exists",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DestinationExistsValidateForAccountRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          exists: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DestinationExistsValidateResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          destinationConf: S.String.pipe(T.Body("destination_conf")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/zones/{zone_id}/logpush/validate/destination/exists",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DestinationExistsValidateForZoneRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          destinationConf: S.String.pipe(T.Body("destination_conf")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/logpush/validate/destination",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DestinationValidateForAccountRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.NullOr(S.String)),
+          valid: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DestinationValidateResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          destinationConf: S.String.pipe(T.Body("destination_conf")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/zones/{zone_id}/logpush/validate/destination",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DestinationValidateForZoneRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/logpush/datasets/{dataset_id}/fields",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetDatasetFieldForAccountRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        __S(36, __c9, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetDatasetFieldResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/logpush/datasets/{dataset_id}/fields",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetDatasetFieldForZoneRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/logpush/datasets/{dataset_id}/jobs",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetDatasetJobForAccountRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
+          batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
+          fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
+          fieldNames: S.optional(S.NullOr(__S(156, __c39, 0)).pipe(T.Body("field_names"))),
+          mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
+          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
+          recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
+          recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
+          recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
+          recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
+          sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
+          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
+          "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
+        }),
+      ).annotate({
+        identifier: "DatasetsJobsGetResultItemOutputOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+          dataset: S.optional(S.NullOr(S.String)),
+          destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
+          filterAttackTraffic: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
+          ),
+          frequency: S.optional(S.NullOr(S.String)),
+          kind: S.optional(S.NullOr(S.String)),
+          lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
+          lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
+          logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
+          maxUploadBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_bytes"))),
+          maxUploadIntervalSeconds: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("max_upload_interval_seconds")),
+          ),
+          maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
+          name: S.optional(S.NullOr(S.String)),
+          outputOptions: S.optional(S.NullOr(__S(48, __c12, 0)).pipe(T.Body("output_options"))),
+        }),
+      ).annotate({
+        identifier: "DatasetsJobsGetResultItem",
+      });
+    case 2:
+      return S.Array(__S(49, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(50, __c12, 2).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetDatasetJobResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/logpush/datasets/{dataset_id}/jobs",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetDatasetJobForZoneRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logpush/edge/jobs", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetEdgeRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
+          fields: S.optional(S.NullOr(S.String)),
+          filter: S.optional(S.NullOr(S.String)),
+          sample: S.optional(S.NullOr(S.Number)),
+          sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
+        }),
+      ).annotate({ identifier: "EdgeGetResultItem" });
+    case 2:
+      return S.Array(__S(57, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(58, __c14, 2).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetEdgeResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          jobId: S.Number.pipe(T.Label("job_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/logpush/jobs/{job_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetJobForAccountRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
+          batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
+          fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
+          fieldNames: S.optional(S.NullOr(__S(156, __c39, 0)).pipe(T.Body("field_names"))),
+          mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
+          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
+          recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
+          recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
+          recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
+          recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
+          sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
+          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
+          "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
+        }),
+      ).annotate({
+        identifier: "JobsGetResponseOutputOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+          dataset: S.optional(S.NullOr(S.String)),
+          destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
+          filterAttackTraffic: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
+          ),
+          frequency: S.optional(S.NullOr(S.String)),
+          kind: S.optional(S.NullOr(S.String)),
+          lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
+          lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
+          logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
+          maxUploadBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_bytes"))),
+          maxUploadIntervalSeconds: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("max_upload_interval_seconds")),
+          ),
+          maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
+          name: S.optional(S.NullOr(S.String)),
+          outputOptions: S.optional(S.NullOr(__S(64, __c16, 0)).pipe(T.Body("output_options"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetJobResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          jobId: S.Number.pipe(T.Label("job_id")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logpush/jobs/{job_id}", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetJobForZoneRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          transformerId: S.Number.pipe(T.Label("transformer_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/logpush/transformers/{transformer_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetTransformerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+          associatedJobs: S.optional(S.NullOr(__S(181, __c45, 1)).pipe(T.Body("associated_jobs"))),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          dataset: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetTransformerResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          transformerId: S.Number.pipe(T.Label("transformer_id")),
+          versionId: S.optional(S.Number.pipe(T.Query("version_id"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/logpush/transformers/{transformer_id}/content",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetTransformersContentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetTransformersContentResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/logpush/jobs", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListJobsForAccountRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
+          batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
+          fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
+          fieldNames: S.optional(S.NullOr(__S(156, __c39, 0)).pipe(T.Body("field_names"))),
+          mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
+          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
+          recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
+          recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
+          recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
+          recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
+          sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
+          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
+          "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
+        }),
+      ).annotate({
+        identifier: "JobsListResultItemOutputOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+          dataset: S.optional(S.NullOr(S.String)),
+          destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
+          filterAttackTraffic: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
+          ),
+          frequency: S.optional(S.NullOr(S.String)),
+          kind: S.optional(S.NullOr(S.String)),
+          lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
+          lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
+          logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
+          maxUploadBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_bytes"))),
+          maxUploadIntervalSeconds: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("max_upload_interval_seconds")),
+          ),
+          maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
+          name: S.optional(S.NullOr(S.String)),
+          outputOptions: S.optional(S.NullOr(__S(84, __c21, 0)).pipe(T.Body("output_options"))),
+        }),
+      ).annotate({ identifier: "JobsListResultItem" });
+    case 2:
+      return S.Array(__S(85, __c21, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(86, __c21, 2).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListJobsResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logpush/jobs", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListJobsForZoneRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/logpush/transformers",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListTransformersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+          associatedJobs: S.optional(S.NullOr(__S(181, __c45, 1)).pipe(T.Body("associated_jobs"))),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          dataset: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+        }),
+      ).annotate({
+        identifier: "ListTransformersResultItem",
+      });
+    case 2:
+      return S.Array(__S(93, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        __S(94, __c23, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListTransformersResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          transformerId: S.Number.pipe(T.Label("transformer_id")),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/logpush/transformers/{transformer_id}/versions",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListTransformersVersionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          version: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "ListTransformersVersionsResultItem",
+      });
+    case 2:
+      return S.Array(__S(97, __c24, 1));
+    case 3:
+      return S.suspend(() =>
+        __S(98, __c24, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListTransformersVersionsResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          logpullOptions: S.String.pipe(T.Body("logpull_options")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/logpush/validate/origin",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "OriginValidateForAccountRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.NullOr(S.String)),
+          valid: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "OriginValidateResponse" });
+  }
+}
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1919,817 +2591,9 @@ function __c0(j: number): any {
           sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateEdgeResponse" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-          batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-          fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(__S(2, __c0, 2).pipe(T.Body("field_names"))),
-          mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(S.String.pipe(T.Body("output_type"))),
-          recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-          recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-          recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-          recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-          sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(S.String.pipe(T.Body("timestamp_format"))),
-          "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-        }),
-      ).annotate({
-        identifier: "JobsCreateRequestOutputOptions",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          destinationConf: S.String.pipe(T.Body("destination_conf")),
-          dataset: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          filter: S.optional(S.String),
-          filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
-          frequency: S.optional(S.String),
-          kind: S.optional(S.String),
-          logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-          maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
-          maxUploadIntervalSeconds: S.optional(
-            S.Number.pipe(T.Body("max_upload_interval_seconds")),
-          ),
-          maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
-          name: S.optional(S.String),
-          outputOptions: S.optional(__S(3, __c0, 3).pipe(T.Body("output_options"))),
-          ownershipChallenge: S.optional(S.String.pipe(T.Body("ownership_challenge"))),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/logpush/jobs", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateJobForAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
-          batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
-          fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("field_names"))),
-          mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
-          recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
-          recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
-          recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
-          recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
-          sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
-          "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
-        }),
-      ).annotate({
-        identifier: "JobsCreateResponseOutputOptions",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-          dataset: S.optional(S.NullOr(S.String)),
-          destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
-          filterAttackTraffic: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
-          ),
-          frequency: S.optional(S.NullOr(S.String)),
-          kind: S.optional(S.NullOr(S.String)),
-          lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
-          lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
-          logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
-          maxUploadBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_bytes"))),
-          maxUploadIntervalSeconds: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("max_upload_interval_seconds")),
-          ),
-          maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
-          name: S.optional(S.NullOr(S.String)),
-          outputOptions: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("output_options"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateJobResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          destinationConf: S.String.pipe(T.Body("destination_conf")),
-          dataset: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          filter: S.optional(S.String),
-          filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
-          frequency: S.optional(S.String),
-          kind: S.optional(S.String),
-          logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
-          maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
-          maxUploadIntervalSeconds: S.optional(
-            S.Number.pipe(T.Body("max_upload_interval_seconds")),
-          ),
-          maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
-          name: S.optional(S.String),
-          outputOptions: S.optional(__S(3, __c0, 3).pipe(T.Body("output_options"))),
-          ownershipChallenge: S.optional(S.String.pipe(T.Body("ownership_challenge"))),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/logpush/jobs", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateJobForZoneRequest" });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          destinationConf: S.String.pipe(T.Body("destination_conf")),
-        })
-          .pipe(
-            T.Http({ method: "POST", uri: "/accounts/{account_id}/logpush/ownership", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateOwnershipForAccountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          filename: S.optional(S.NullOr(S.String)),
-          message: S.optional(S.NullOr(S.String)),
-          valid: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateOwnershipResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          destinationConf: S.String.pipe(T.Body("destination_conf")),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/logpush/ownership", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateOwnershipForZoneRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          code: S.String,
-          name: S.String,
-          description: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/logpush/transformers",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateTransformerRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-          name: S.optional(S.NullOr(S.String)),
-          objectTag: S.optional(S.NullOr(S.String).pipe(T.Body("object_tag"))),
-          objectType: S.optional(S.NullOr(S.String).pipe(T.Body("object_type"))),
-        }),
-      ).annotate({
-        identifier: "CreateTransformerResponseAssociatedJobsItem",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-          associatedJobs: S.optional(S.NullOr(__S(13, __c1, 5)).pipe(T.Body("associated_jobs"))),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          dataset: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateTransformerResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          jobId: S.Number.pipe(T.Label("job_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/logpush/jobs/{job_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteJobForAccountRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteJobResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          jobId: S.Number.pipe(T.Label("job_id")),
-        })
-          .pipe(
-            T.Http({ method: "DELETE", uri: "/zones/{zone_id}/logpush/jobs/{job_id}", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteJobForZoneRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          transformerId: S.Number.pipe(T.Label("transformer_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/logpush/transformers/{transformer_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteTransformerRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteTransformerResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          destinationConf: S.String.pipe(T.Body("destination_conf")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/logpush/validate/destination/exists",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DestinationExistsValidateForAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          exists: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DestinationExistsValidateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          destinationConf: S.String.pipe(T.Body("destination_conf")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/zones/{zone_id}/logpush/validate/destination/exists",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DestinationExistsValidateForZoneRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          destinationConf: S.String.pipe(T.Body("destination_conf")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/logpush/validate/destination",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DestinationValidateForAccountRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.NullOr(S.String)),
-          valid: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DestinationValidateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          destinationConf: S.String.pipe(T.Body("destination_conf")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/zones/{zone_id}/logpush/validate/destination",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DestinationValidateForZoneRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          datasetId: S.String.pipe(T.Label("dataset_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/logpush/datasets/{dataset_id}/fields",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetDatasetFieldForAccountRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        __S(27, __c3, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetDatasetFieldResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          datasetId: S.String.pipe(T.Label("dataset_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/logpush/datasets/{dataset_id}/fields",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetDatasetFieldForZoneRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          datasetId: S.String.pipe(T.Label("dataset_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/logpush/datasets/{dataset_id}/jobs",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetDatasetJobForAccountRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
-          batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
-          fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("field_names"))),
-          mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
-          recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
-          recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
-          recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
-          recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
-          sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
-          "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
-        }),
-      ).annotate({
-        identifier: "DatasetsJobsGetResultItemOutputOptions",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-          dataset: S.optional(S.NullOr(S.String)),
-          destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
-          filterAttackTraffic: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
-          ),
-          frequency: S.optional(S.NullOr(S.String)),
-          kind: S.optional(S.NullOr(S.String)),
-          lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
-          lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
-          logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
-          maxUploadBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_bytes"))),
-          maxUploadIntervalSeconds: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("max_upload_interval_seconds")),
-          ),
-          maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
-          name: S.optional(S.NullOr(S.String)),
-          outputOptions: S.optional(S.NullOr(__S(31, __c3, 7)).pipe(T.Body("output_options"))),
-        }),
-      ).annotate({
-        identifier: "DatasetsJobsGetResultItem",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(33, __c4, 1).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetDatasetJobResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          datasetId: S.String.pipe(T.Label("dataset_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/logpush/datasets/{dataset_id}/jobs",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetDatasetJobForZoneRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logpush/edge/jobs", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetEdgeRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
-          fields: S.optional(S.NullOr(S.String)),
-          filter: S.optional(S.NullOr(S.String)),
-          sample: S.optional(S.NullOr(S.Number)),
-          sessionId: S.optional(S.NullOr(S.String).pipe(T.Body("session_id"))),
-        }),
-      ).annotate({ identifier: "EdgeGetResultItem" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(38, __c4, 6).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetEdgeResponse" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          jobId: S.Number.pipe(T.Label("job_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/logpush/jobs/{job_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetJobForAccountRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
-          batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
-          fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("field_names"))),
-          mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
-          recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
-          recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
-          recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
-          recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
-          sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
-          "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
-        }),
-      ).annotate({
-        identifier: "JobsGetResponseOutputOptions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-          dataset: S.optional(S.NullOr(S.String)),
-          destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
-          filterAttackTraffic: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
-          ),
-          frequency: S.optional(S.NullOr(S.String)),
-          kind: S.optional(S.NullOr(S.String)),
-          lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
-          lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
-          logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
-          maxUploadBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_bytes"))),
-          maxUploadIntervalSeconds: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("max_upload_interval_seconds")),
-          ),
-          maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
-          name: S.optional(S.NullOr(S.String)),
-          outputOptions: S.optional(S.NullOr(__S(41, __c5, 1)).pipe(T.Body("output_options"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetJobResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          jobId: S.Number.pipe(T.Label("job_id")),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logpush/jobs/{job_id}", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetJobForZoneRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          transformerId: S.Number.pipe(T.Label("transformer_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/logpush/transformers/{transformer_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetTransformerRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-          associatedJobs: S.optional(S.NullOr(__S(13, __c1, 5)).pipe(T.Body("associated_jobs"))),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          dataset: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetTransformerResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          transformerId: S.Number.pipe(T.Label("transformer_id")),
-          versionId: S.optional(S.Number.pipe(T.Query("version_id"))),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/logpush/transformers/{transformer_id}/content",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetTransformersContentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetTransformersContentResponse",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/logpush/jobs", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListJobsForAccountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
-          batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
-          fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("field_names"))),
-          mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
-          recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
-          recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
-          recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
-          recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
-          sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
-          "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
-        }),
-      ).annotate({
-        identifier: "JobsListResultItemOutputOptions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-          dataset: S.optional(S.NullOr(S.String)),
-          destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
-          filterAttackTraffic: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
-          ),
-          frequency: S.optional(S.NullOr(S.String)),
-          kind: S.optional(S.NullOr(S.String)),
-          lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
-          lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
-          logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
-          maxUploadBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_bytes"))),
-          maxUploadIntervalSeconds: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("max_upload_interval_seconds")),
-          ),
-          maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
-          name: S.optional(S.NullOr(S.String)),
-          outputOptions: S.optional(S.NullOr(__S(49, __c6, 1)).pipe(T.Body("output_options"))),
-        }),
-      ).annotate({ identifier: "JobsListResultItem" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(51, __c6, 3).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListJobsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/logpush/jobs", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListJobsForZoneRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/logpush/transformers",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListTransformersRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-          associatedJobs: S.optional(S.NullOr(__S(13, __c1, 5)).pipe(T.Body("associated_jobs"))),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          dataset: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-        }),
-      ).annotate({
-        identifier: "ListTransformersResultItem",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        __S(56, __c7, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListTransformersResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          transformerId: S.Number.pipe(T.Label("transformer_id")),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/logpush/transformers/{transformer_id}/versions",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListTransformersVersionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          version: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "ListTransformersVersionsResultItem",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        __S(60, __c7, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListTransformersVersionsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          logpullOptions: S.String.pipe(T.Body("logpull_options")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/logpush/validate/origin",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "OriginValidateForAccountRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.NullOr(S.String)),
-          valid: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "OriginValidateResponse" });
-  }
-}
-function __c8(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2744,13 +2608,17 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "OriginValidateForZoneRequest",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          input: __S(65, __c8, 1) as any as S.Schema<PreviewTransformerRequestInputMap>,
+          input: __S(116, __c29, 0) as any as S.Schema<PreviewTransformerRequestInputMap>,
           sql: S.String,
         })
           .pipe(
@@ -2764,35 +2632,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PreviewTransformerRequest",
       });
+    case 2:
+      return S.Array(__S(116, __c29, 0));
     case 3:
-      return S.Array(__S(65, __c8, 1));
-    case 4:
       return S.suspend(() =>
-        __S(67, __c8, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(118, __c29, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PreviewTransformerResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
-          batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
-          fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(__S(2, __c0, 2).pipe(T.Body("field_names"))),
-          mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(S.String.pipe(T.Body("output_type"))),
-          recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
-          recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
-          recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
-          recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
-          sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(S.String.pipe(T.Body("timestamp_format"))),
-          "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
-        }),
-      ).annotate({
-        identifier: "JobsUpdateRequestOutputOptions",
-      });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2810,7 +2662,7 @@ function __c8(j: number): any {
           ),
           maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
           name: S.optional(S.String),
-          outputOptions: S.optional(__S(69, __c8, 5).pipe(T.Body("output_options"))),
+          outputOptions: S.optional(__S(124, __c31, 0).pipe(T.Body("output_options"))),
           ownershipChallenge: S.optional(S.String.pipe(T.Body("ownership_challenge"))),
         })
           .pipe(
@@ -2824,13 +2676,37 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateJobForAccountRequest",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
+          batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
+          fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
+          fieldNames: S.optional(__S(156, __c39, 0).pipe(T.Body("field_names"))),
+          mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
+          outputType: S.optional(S.String.pipe(T.Body("output_type"))),
+          recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
+          recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
+          recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
+          recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
+          sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
+          timestampFormat: S.optional(S.String.pipe(T.Body("timestamp_format"))),
+          "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
+        }),
+      ).annotate({
+        identifier: "JobsUpdateRequestOutputOptions",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
           batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
           fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("field_names"))),
+          fieldNames: S.optional(S.NullOr(__S(156, __c39, 0)).pipe(T.Body("field_names"))),
           mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
           outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
           recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
@@ -2844,11 +2720,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "JobsUpdateResponseOutputOptions",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.Number)),
@@ -2870,10 +2742,14 @@ function __c9(j: number): any {
           ),
           maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
           name: S.optional(S.NullOr(S.String)),
-          outputOptions: S.optional(S.NullOr(__S(71, __c8, 7)).pipe(T.Body("output_options"))),
+          outputOptions: S.optional(S.NullOr(__S(125, __c31, 1)).pipe(T.Body("output_options"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateJobResponse" });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2891,13 +2767,17 @@ function __c9(j: number): any {
           ),
           maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
           name: S.optional(S.String),
-          outputOptions: S.optional(__S(69, __c8, 5).pipe(T.Body("output_options"))),
+          outputOptions: S.optional(__S(124, __c31, 0).pipe(T.Body("output_options"))),
           ownershipChallenge: S.optional(S.String.pipe(T.Body("ownership_challenge"))),
         })
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/logpush/jobs/{job_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateJobForZoneRequest" });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2915,7 +2795,11 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateTransformerRequest" });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2933,7 +2817,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ValidateOwnershipForAccountRequest",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           valid: S.optional(S.NullOr(S.Boolean)),
@@ -2941,7 +2829,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ValidateOwnershipResponse",
       });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2961,7 +2853,270 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          destinationConf: S.String.pipe(T.Body("destination_conf")),
+          dataset: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          filter: S.optional(S.String),
+          filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
+          frequency: S.optional(S.String),
+          kind: S.optional(S.String),
+          logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
+          maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
+          maxUploadIntervalSeconds: S.optional(
+            S.Number.pipe(T.Body("max_upload_interval_seconds")),
+          ),
+          maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
+          name: S.optional(S.String),
+          outputOptions: S.optional(__S(152, __c38, 0).pipe(T.Body("output_options"))),
+          ownershipChallenge: S.optional(S.String.pipe(T.Body("ownership_challenge"))),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/logpush/jobs", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateJobForAccountRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
+          batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
+          fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
+          fieldNames: S.optional(__S(156, __c39, 0).pipe(T.Body("field_names"))),
+          mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
+          outputType: S.optional(S.String.pipe(T.Body("output_type"))),
+          recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
+          recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
+          recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
+          recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
+          sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
+          timestampFormat: S.optional(S.String.pipe(T.Body("timestamp_format"))),
+          "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
+        }),
+      ).annotate({
+        identifier: "JobsCreateRequestOutputOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
+          batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
+          fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
+          fieldNames: S.optional(S.NullOr(__S(156, __c39, 0)).pipe(T.Body("field_names"))),
+          mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
+          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
+          recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
+          recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
+          recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
+          recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
+          sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
+          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
+          "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
+        }),
+      ).annotate({
+        identifier: "JobsCreateResponseOutputOptions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+          dataset: S.optional(S.NullOr(S.String)),
+          destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
+          filterAttackTraffic: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
+          ),
+          frequency: S.optional(S.NullOr(S.String)),
+          kind: S.optional(S.NullOr(S.String)),
+          lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
+          lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
+          logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
+          maxUploadBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_bytes"))),
+          maxUploadIntervalSeconds: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("max_upload_interval_seconds")),
+          ),
+          maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
+          name: S.optional(S.NullOr(S.String)),
+          outputOptions: S.optional(S.NullOr(__S(153, __c38, 1)).pipe(T.Body("output_options"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateJobResponse" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          destinationConf: S.String.pipe(T.Body("destination_conf")),
+          dataset: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          filter: S.optional(S.String),
+          filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
+          frequency: S.optional(S.String),
+          kind: S.optional(S.String),
+          logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
+          maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
+          maxUploadIntervalSeconds: S.optional(
+            S.Number.pipe(T.Body("max_upload_interval_seconds")),
+          ),
+          maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
+          name: S.optional(S.String),
+          outputOptions: S.optional(__S(152, __c38, 0).pipe(T.Body("output_options"))),
+          ownershipChallenge: S.optional(S.String.pipe(T.Body("ownership_challenge"))),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/logpush/jobs", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateJobForZoneRequest" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          destinationConf: S.String.pipe(T.Body("destination_conf")),
+        })
+          .pipe(
+            T.Http({ method: "POST", uri: "/accounts/{account_id}/logpush/ownership", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateOwnershipForAccountRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filename: S.optional(S.NullOr(S.String)),
+          message: S.optional(S.NullOr(S.String)),
+          valid: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateOwnershipResponse" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          destinationConf: S.String.pipe(T.Body("destination_conf")),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/logpush/ownership", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateOwnershipForZoneRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          code: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/logpush/transformers",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateTransformerRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+          name: S.optional(S.NullOr(S.String)),
+          objectTag: S.optional(S.NullOr(S.String).pipe(T.Body("object_tag"))),
+          objectType: S.optional(S.NullOr(S.String).pipe(T.Body("object_type"))),
+        }),
+      ).annotate({
+        identifier: "CreateTransformerResponseAssociatedJobsItem",
+      });
+    case 1:
+      return S.Array(__S(180, __c45, 0));
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+          associatedJobs: S.optional(S.NullOr(__S(181, __c45, 1)).pipe(T.Body("associated_jobs"))),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          dataset: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateTransformerResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          jobId: S.Number.pipe(T.Label("job_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/logpush/jobs/{job_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteJobForAccountRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteJobResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

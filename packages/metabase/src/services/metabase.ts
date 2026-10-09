@@ -7190,8 +7190,8 @@ export const createAction: API.OperationMethod<
   CreateActionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateActionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateActionResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateActionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateActionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7205,8 +7205,8 @@ export const createActionExecute: API.OperationMethod<
   CreateActionExecuteError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateActionExecuteRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateActionExecuteResponse>,
+  input: __S(17, __c2, 1) as any as S.Schema<CreateActionExecuteRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateActionExecuteResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7220,8 +7220,8 @@ export const createActionExecute2: API.OperationMethod<
   CreateActionExecute2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateActionExecuteRequest2>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateActionExecute2Response>,
+  input: __S(968, __c121, 0) as any as S.Schema<CreateActionExecuteRequest2>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateActionExecute2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7235,8 +7235,8 @@ export const createActionPublicLink: API.OperationMethod<
   CreateActionPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateActionPublicLinkRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateActionPublicLinkResponse>,
+  input: __S(1928, __c241, 0) as any as S.Schema<CreateActionPublicLinkRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateActionPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7250,8 +7250,8 @@ export const createActivityRecent: API.OperationMethod<
   CreateActivityRecentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateActivityRecentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateActivityRecentResponse>,
+  input: __S(2832, __c354, 0) as any as S.Schema<CreateActivityRecentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateActivityRecentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7265,8 +7265,8 @@ export const createAgentCollection: API.OperationMethod<
   CreateAgentCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateAgentCollectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateAgentCollectionResponse>,
+  input: __S(3736, __c467, 0) as any as S.Schema<CreateAgentCollectionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateAgentCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7280,8 +7280,8 @@ export const createAgentConstructNativeQuery: API.OperationMethod<
   CreateAgentConstructNativeQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateAgentConstructNativeQueryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateAgentConstructNativeQueryResponse>,
+  input: __S(4640, __c580, 0) as any as S.Schema<CreateAgentConstructNativeQueryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateAgentConstructNativeQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7295,8 +7295,8 @@ export const createAgentConstructQuery: API.OperationMethod<
   CreateAgentConstructQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateAgentConstructQueryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateAgentConstructQueryResponse>,
+  input: __S(5176, __c647, 0) as any as S.Schema<CreateAgentConstructQueryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateAgentConstructQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7310,8 +7310,8 @@ export const createAgentDashboard: API.OperationMethod<
   CreateAgentDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateAgentDashboardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateAgentDashboardResponse>,
+  input: __S(5272, __c659, 0) as any as S.Schema<CreateAgentDashboardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateAgentDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7325,8 +7325,8 @@ export const createAgentExecute: API.OperationMethod<
   CreateAgentExecuteError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateAgentExecuteRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateAgentExecuteResponse>,
+  input: __S(5368, __c671, 0) as any as S.Schema<CreateAgentExecuteRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateAgentExecuteResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7341,7 +7341,7 @@ export const createAgentExecuteSql: API.OperationMethod<
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<CreateAgentExecuteSqlRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateAgentExecuteSqlResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateAgentExecuteSqlResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7355,8 +7355,8 @@ export const createAgentMetric: API.OperationMethod<
   CreateAgentMetricError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateAgentMetricRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateAgentMetricResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateAgentMetricRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateAgentMetricResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7370,8 +7370,8 @@ export const createAgentQuery: API.OperationMethod<
   CreateAgentQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateAgentQueryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateAgentQueryResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<CreateAgentQueryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateAgentQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7385,8 +7385,8 @@ export const createAgentQuestion: API.OperationMethod<
   CreateAgentQuestionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateAgentQuestionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateAgentQuestionResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<CreateAgentQuestionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateAgentQuestionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7400,8 +7400,8 @@ export const createAgentQuestionQuery: API.OperationMethod<
   CreateAgentQuestionQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateAgentQuestionQueryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateAgentQuestionQueryResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<CreateAgentQuestionQueryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateAgentQuestionQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7415,8 +7415,8 @@ export const createAgentReadResource: API.OperationMethod<
   CreateAgentReadResourceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateAgentReadResourceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateAgentReadResourceResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<CreateAgentReadResourceRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<CreateAgentReadResourceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7430,8 +7430,8 @@ export const createAgentSearch: API.OperationMethod<
   CreateAgentSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateAgentSearchRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateAgentSearchResponse>,
+  input: __S(592, __c74, 0) as any as S.Schema<CreateAgentSearchRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateAgentSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7445,8 +7445,8 @@ export const createAiEntityAnalysisAnalyzeChart: API.OperationMethod<
   CreateAiEntityAnalysisAnalyzeChartError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartResponse>,
+  input: __S(682, __c85, 2) as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7460,8 +7460,8 @@ export const createAnalyticsInternal: API.OperationMethod<
   CreateAnalyticsInternalError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateAnalyticsInternalRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateAnalyticsInternalResponse>,
+  input: __S(770, __c96, 2) as any as S.Schema<CreateAnalyticsInternalRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<CreateAnalyticsInternalResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7475,8 +7475,8 @@ export const createAnalyticsProxy: API.OperationMethod<
   CreateAnalyticsProxyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateAnalyticsProxyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateAnalyticsProxyResponse>,
+  input: __S(873, __c109, 1) as any as S.Schema<CreateAnalyticsProxyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateAnalyticsProxyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7490,8 +7490,8 @@ export const createCacheInvalidate: API.OperationMethod<
   CreateCacheInvalidateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateCacheInvalidateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCacheInvalidateResponse>,
+  input: __S(976, __c122, 0) as any as S.Schema<CreateCacheInvalidateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCacheInvalidateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7505,8 +7505,8 @@ export const createCard: API.OperationMethod<
   CreateCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreateCardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCardResponse>,
+  input: __S(1065, __c133, 1) as any as S.Schema<CreateCardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7520,8 +7520,8 @@ export const createCardCollection: API.OperationMethod<
   CreateCardCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateCardCollectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCardCollectionResponse>,
+  input: __S(1216, __c152, 0) as any as S.Schema<CreateCardCollectionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCardCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7535,8 +7535,8 @@ export const createCardCopy: API.OperationMethod<
   CreateCardCopyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateCardCopyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCardCopyResponse>,
+  input: __S(1304, __c163, 0) as any as S.Schema<CreateCardCopyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCardCopyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7550,8 +7550,8 @@ export const createCardPivotCardQuery: API.OperationMethod<
   CreateCardPivotCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CreateCardPivotCardQueryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateCardPivotCardQueryResponse>,
+  input: __S(1392, __c174, 0) as any as S.Schema<CreateCardPivotCardQueryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateCardPivotCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7565,8 +7565,8 @@ export const createCardPublicLink: API.OperationMethod<
   CreateCardPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateCardPublicLinkRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCardPublicLinkResponse>,
+  input: __S(1488, __c186, 0) as any as S.Schema<CreateCardPublicLinkRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCardPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7580,8 +7580,8 @@ export const createCardQuery: API.OperationMethod<
   CreateCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateCardQueryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCardQueryResponse>,
+  input: __S(1576, __c197, 0) as any as S.Schema<CreateCardQueryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7595,8 +7595,8 @@ export const createCardsDashboard: API.OperationMethod<
   CreateCardsDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CreateCardsDashboardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCardsDashboardResponse>,
+  input: __S(1664, __c208, 0) as any as S.Schema<CreateCardsDashboardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCardsDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7610,8 +7610,8 @@ export const createCardsMove: API.OperationMethod<
   CreateCardsMoveError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateCardsMoveRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCardsMoveResponse>,
+  input: __S(1752, __c219, 0) as any as S.Schema<CreateCardsMoveRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCardsMoveResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7625,8 +7625,8 @@ export const createChannel: API.OperationMethod<
   CreateChannelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CreateChannelRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateChannelResponse>,
+  input: __S(1840, __c230, 0) as any as S.Schema<CreateChannelRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateChannelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7640,8 +7640,8 @@ export const createChannelTest: API.OperationMethod<
   CreateChannelTestError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreateChannelTestRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateChannelTestResponse>,
+  input: __S(1936, __c242, 0) as any as S.Schema<CreateChannelTestRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateChannelTestResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7655,8 +7655,8 @@ export const createCloudMigration: API.OperationMethod<
   CreateCloudMigrationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreateCloudMigrationRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCloudMigrationResponse>,
+  input: __S(2024, __c253, 0) as any as S.Schema<CreateCloudMigrationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCloudMigrationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7670,8 +7670,8 @@ export const createCollection: API.OperationMethod<
   CreateCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<CreateCollectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCollectionResponse>,
+  input: __S(2112, __c264, 0) as any as S.Schema<CreateCollectionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7685,11 +7685,15 @@ export const createCollectionMoveDashboardQuestionCandidate: API.OperationMethod
   CreateCollectionMoveDashboardQuestionCandidateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateCollectionMoveDashboardQuestionCandidateRequest>,
+  input: __S(
+    2201,
+    __c275,
+    1,
+  ) as any as S.Schema<CreateCollectionMoveDashboardQuestionCandidateRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    4648,
+    __c581,
+    0,
   ) as any as S.Schema<CreateCollectionMoveDashboardQuestionCandidateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
@@ -7705,14 +7709,14 @@ export const createCollectionRootMoveDashboardQuestionCandidate: API.OperationMe
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    69,
-    __c8,
-    5,
+    2297,
+    __c287,
+    1,
   ) as any as S.Schema<CreateCollectionRootMoveDashboardQuestionCandidateRequest>,
   output: __S(
-    70,
-    __c8,
-    6,
+    2304,
+    __c288,
+    0,
   ) as any as S.Schema<CreateCollectionRootMoveDashboardQuestionCandidateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
@@ -7727,8 +7731,8 @@ export const createComment: API.OperationMethod<
   CreateCommentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateCommentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCommentResponse>,
+  input: __S(2392, __c299, 0) as any as S.Schema<CreateCommentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCommentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7742,8 +7746,8 @@ export const createCommentReaction: API.OperationMethod<
   CreateCommentReactionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<CreateCommentReactionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCommentReactionResponse>,
+  input: __S(2480, __c310, 0) as any as S.Schema<CreateCommentReactionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateCommentReactionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7757,8 +7761,8 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<CreateDashboardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateDashboardResponse>,
+  input: __S(2568, __c321, 0) as any as S.Schema<CreateDashboardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7772,8 +7776,8 @@ export const createDashboardCopy: API.OperationMethod<
   CreateDashboardCopyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<CreateDashboardCopyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateDashboardCopyResponse>,
+  input: __S(2656, __c332, 0) as any as S.Schema<CreateDashboardCopyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateDashboardCopyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7787,8 +7791,8 @@ export const createDashboardDashcardCardQuery: API.OperationMethod<
   CreateDashboardDashcardCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateDashboardDashcardCardQueryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDashboardDashcardCardQueryResponse>,
+  input: __S(2744, __c343, 0) as any as S.Schema<CreateDashboardDashcardCardQueryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDashboardDashcardCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7802,8 +7806,8 @@ export const createDashboardDashcardExecute: API.OperationMethod<
   CreateDashboardDashcardExecuteError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<CreateDashboardDashcardExecuteRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDashboardDashcardExecuteResponse>,
+  input: __S(2840, __c355, 0) as any as S.Schema<CreateDashboardDashcardExecuteRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDashboardDashcardExecuteResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7817,8 +7821,8 @@ export const createDashboardDashcardExecute2: API.OperationMethod<
   CreateDashboardDashcardExecute2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<CreateDashboardDashcardExecuteRequest2>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDashboardDashcardExecute2Response>,
+  input: __S(2928, __c366, 0) as any as S.Schema<CreateDashboardDashcardExecuteRequest2>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDashboardDashcardExecute2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7832,8 +7836,8 @@ export const createDashboardPdf: API.OperationMethod<
   CreateDashboardPdfError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<CreateDashboardPdfRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateDashboardPdfResponse>,
+  input: __S(3016, __c377, 0) as any as S.Schema<CreateDashboardPdfRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateDashboardPdfResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7847,11 +7851,15 @@ export const createDashboardPivotDashboardDashcardCardQuery: API.OperationMethod
   CreateDashboardPivotDashboardDashcardCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<CreateDashboardPivotDashboardDashcardCardQueryRequest>,
+  input: __S(
+    3104,
+    __c388,
+    0,
+  ) as any as S.Schema<CreateDashboardPivotDashboardDashcardCardQueryRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    4648,
+    __c581,
+    0,
   ) as any as S.Schema<CreateDashboardPivotDashboardDashcardCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
@@ -7866,8 +7874,8 @@ export const createDashboardPublicLink: API.OperationMethod<
   CreateDashboardPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<CreateDashboardPublicLinkRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDashboardPublicLinkResponse>,
+  input: __S(3192, __c399, 0) as any as S.Schema<CreateDashboardPublicLinkRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDashboardPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7881,8 +7889,8 @@ export const createDashboardSave: API.OperationMethod<
   CreateDashboardSaveError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<CreateDashboardSaveRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateDashboardSaveResponse>,
+  input: __S(3285, __c410, 5) as any as S.Schema<CreateDashboardSaveRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateDashboardSaveResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7896,8 +7904,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<CreateDatabaseRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateDatabaseResponse>,
+  input: __S(3376, __c422, 0) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7911,8 +7919,8 @@ export const createDatabaseDiscardValue: API.OperationMethod<
   CreateDatabaseDiscardValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<CreateDatabaseDiscardValueRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDatabaseDiscardValueResponse>,
+  input: __S(3472, __c434, 0) as any as S.Schema<CreateDatabaseDiscardValueRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDatabaseDiscardValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7926,8 +7934,8 @@ export const createDatabaseDismissSpinner: API.OperationMethod<
   CreateDatabaseDismissSpinnerError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<CreateDatabaseDismissSpinnerRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDatabaseDismissSpinnerResponse>,
+  input: __S(3560, __c445, 0) as any as S.Schema<CreateDatabaseDismissSpinnerRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDatabaseDismissSpinnerResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7941,8 +7949,8 @@ export const createDatabaseRescanValue: API.OperationMethod<
   CreateDatabaseRescanValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<CreateDatabaseRescanValueRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDatabaseRescanValueResponse>,
+  input: __S(3648, __c456, 0) as any as S.Schema<CreateDatabaseRescanValueRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDatabaseRescanValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7956,8 +7964,8 @@ export const createDatabaseSampleDatabase: API.OperationMethod<
   CreateDatabaseSampleDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<CreateDatabaseSampleDatabaseRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDatabaseSampleDatabaseResponse>,
+  input: __S(3744, __c468, 0) as any as S.Schema<CreateDatabaseSampleDatabaseRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDatabaseSampleDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7971,8 +7979,8 @@ export const createDatabaseSyncSchema: API.OperationMethod<
   CreateDatabaseSyncSchemaError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<CreateDatabaseSyncSchemaRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDatabaseSyncSchemaResponse>,
+  input: __S(3832, __c479, 0) as any as S.Schema<CreateDatabaseSyncSchemaRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDatabaseSyncSchemaResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -7986,8 +7994,8 @@ export const createDatabaseValidate: API.OperationMethod<
   CreateDatabaseValidateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<CreateDatabaseValidateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateDatabaseValidateResponse>,
+  input: __S(3921, __c490, 1) as any as S.Schema<CreateDatabaseValidateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateDatabaseValidateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8001,8 +8009,8 @@ export const createDataset: API.OperationMethod<
   CreateDatasetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<CreateDatasetRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateDatasetResponse>,
+  input: __S(4008, __c501, 0) as any as S.Schema<CreateDatasetRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateDatasetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8016,8 +8024,8 @@ export const createDatasetNative: API.OperationMethod<
   CreateDatasetNativeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<CreateDatasetNativeRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateDatasetNativeResponse>,
+  input: __S(4096, __c512, 0) as any as S.Schema<CreateDatasetNativeRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateDatasetNativeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8031,8 +8039,8 @@ export const createDatasetParameterRemapping: API.OperationMethod<
   CreateDatasetParameterRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<CreateDatasetParameterRemappingRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDatasetParameterRemappingResponse>,
+  input: __S(4184, __c523, 0) as any as S.Schema<CreateDatasetParameterRemappingRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDatasetParameterRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8046,8 +8054,8 @@ export const createDatasetParameterValue: API.OperationMethod<
   CreateDatasetParameterValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<CreateDatasetParameterValueRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDatasetParameterValueResponse>,
+  input: __S(4272, __c534, 0) as any as S.Schema<CreateDatasetParameterValueRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDatasetParameterValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8061,8 +8069,8 @@ export const createDatasetPivot: API.OperationMethod<
   CreateDatasetPivotError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<CreateDatasetPivotRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateDatasetPivotResponse>,
+  input: __S(4360, __c545, 0) as any as S.Schema<CreateDatasetPivotRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateDatasetPivotResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8076,8 +8084,8 @@ export const createDatasetQueryMetadata: API.OperationMethod<
   CreateDatasetQueryMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<CreateDatasetQueryMetadataRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDatasetQueryMetadataResponse>,
+  input: __S(4464, __c558, 0) as any as S.Schema<CreateDatasetQueryMetadataRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDatasetQueryMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8091,8 +8099,8 @@ export const createDataStudioTableDiscardValue: API.OperationMethod<
   CreateDataStudioTableDiscardValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<CreateDataStudioTableDiscardValueRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDataStudioTableDiscardValueResponse>,
+  input: __S(4552, __c569, 0) as any as S.Schema<CreateDataStudioTableDiscardValueRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDataStudioTableDiscardValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8106,8 +8114,8 @@ export const createDataStudioTableEdit: API.OperationMethod<
   CreateDataStudioTableEditError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<CreateDataStudioTableEditRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDataStudioTableEditResponse>,
+  input: __S(4656, __c582, 0) as any as S.Schema<CreateDataStudioTableEditRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDataStudioTableEditResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8121,8 +8129,8 @@ export const createDataStudioTableRescanValue: API.OperationMethod<
   CreateDataStudioTableRescanValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<CreateDataStudioTableRescanValueRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDataStudioTableRescanValueResponse>,
+  input: __S(4744, __c593, 0) as any as S.Schema<CreateDataStudioTableRescanValueRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDataStudioTableRescanValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8136,8 +8144,8 @@ export const createDataStudioTableSelection: API.OperationMethod<
   CreateDataStudioTableSelectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<CreateDataStudioTableSelectionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDataStudioTableSelectionResponse>,
+  input: __S(4832, __c604, 0) as any as S.Schema<CreateDataStudioTableSelectionRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDataStudioTableSelectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8151,8 +8159,8 @@ export const createDataStudioTableSyncSchema: API.OperationMethod<
   CreateDataStudioTableSyncSchemaError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<CreateDataStudioTableSyncSchemaRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDataStudioTableSyncSchemaResponse>,
+  input: __S(4920, __c615, 0) as any as S.Schema<CreateDataStudioTableSyncSchemaRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDataStudioTableSyncSchemaResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8166,8 +8174,8 @@ export const createDocument: API.OperationMethod<
   CreateDocumentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<CreateDocumentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateDocumentResponse>,
+  input: __S(5008, __c626, 0) as any as S.Schema<CreateDocumentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateDocumentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8181,8 +8189,8 @@ export const createDocumentCopy: API.OperationMethod<
   CreateDocumentCopyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<CreateDocumentCopyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateDocumentCopyResponse>,
+  input: __S(5112, __c639, 0) as any as S.Schema<CreateDocumentCopyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateDocumentCopyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8196,8 +8204,8 @@ export const createDocumentPublicLink: API.OperationMethod<
   CreateDocumentPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<CreateDocumentPublicLinkRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateDocumentPublicLinkResponse>,
+  input: __S(5144, __c643, 0) as any as S.Schema<CreateDocumentPublicLinkRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateDocumentPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8211,8 +8219,8 @@ export const createEeActionV2Execute: API.OperationMethod<
   CreateEeActionV2ExecuteError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<CreateEeActionV2ExecuteRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateEeActionV2ExecuteResponse>,
+  input: __S(5152, __c644, 0) as any as S.Schema<CreateEeActionV2ExecuteRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<CreateEeActionV2ExecuteResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8226,8 +8234,8 @@ export const createEeActionV2ExecuteBulk: API.OperationMethod<
   CreateEeActionV2ExecuteBulkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<CreateEeActionV2ExecuteBulkRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeActionV2ExecuteBulkResponse>,
+  input: __S(5161, __c645, 1) as any as S.Schema<CreateEeActionV2ExecuteBulkRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeActionV2ExecuteBulkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8241,8 +8249,8 @@ export const createEeActionV2ExecuteForm: API.OperationMethod<
   CreateEeActionV2ExecuteFormError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<CreateEeActionV2ExecuteFormRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeActionV2ExecuteFormResponse>,
+  input: __S(5168, __c646, 0) as any as S.Schema<CreateEeActionV2ExecuteFormRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeActionV2ExecuteFormResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8256,8 +8264,8 @@ export const createEeAiControlsPermissionsAdvanced: API.OperationMethod<
   CreateEeAiControlsPermissionsAdvancedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<CreateEeAiControlsPermissionsAdvancedRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeAiControlsPermissionsAdvancedResponse>,
+  input: __S(5184, __c648, 0) as any as S.Schema<CreateEeAiControlsPermissionsAdvancedRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeAiControlsPermissionsAdvancedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8271,8 +8279,8 @@ export const createEeAuditAppAnalyticsDevExport: API.OperationMethod<
   CreateEeAuditAppAnalyticsDevExportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<CreateEeAuditAppAnalyticsDevExportRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeAuditAppAnalyticsDevExportResponse>,
+  input: __S(5192, __c649, 0) as any as S.Schema<CreateEeAuditAppAnalyticsDevExportRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeAuditAppAnalyticsDevExportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8286,8 +8294,12 @@ export const createEeContentTranslationUploadDictionary: API.OperationMethod<
   CreateEeContentTranslationUploadDictionaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<CreateEeContentTranslationUploadDictionaryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeContentTranslationUploadDictionaryResponse>,
+  input: __S(5200, __c650, 0) as any as S.Schema<CreateEeContentTranslationUploadDictionaryRequest>,
+  output: __S(
+    4648,
+    __c581,
+    0,
+  ) as any as S.Schema<CreateEeContentTranslationUploadDictionaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8301,8 +8313,8 @@ export const createEeCustomVizPlugin: API.OperationMethod<
   CreateEeCustomVizPluginError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<CreateEeCustomVizPluginRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateEeCustomVizPluginResponse>,
+  input: __S(5216, __c652, 0) as any as S.Schema<CreateEeCustomVizPluginRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<CreateEeCustomVizPluginResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8316,8 +8328,8 @@ export const createEeCustomVizPluginDev: API.OperationMethod<
   CreateEeCustomVizPluginDevError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<CreateEeCustomVizPluginDevRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeCustomVizPluginDevResponse>,
+  input: __S(5224, __c653, 0) as any as S.Schema<CreateEeCustomVizPluginDevRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeCustomVizPluginDevResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8331,8 +8343,8 @@ export const createEeCustomVizPluginRefresh: API.OperationMethod<
   CreateEeCustomVizPluginRefreshError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<CreateEeCustomVizPluginRefreshRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeCustomVizPluginRefreshResponse>,
+  input: __S(5232, __c654, 0) as any as S.Schema<CreateEeCustomVizPluginRefreshRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeCustomVizPluginRefreshResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8347,14 +8359,14 @@ export const createEeDatabaseReplicationConnectionDatabasePreview: API.Operation
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    128,
-    __c16,
-    0,
+    5241,
+    __c655,
+    1,
   ) as any as S.Schema<CreateEeDatabaseReplicationConnectionDatabasePreviewRequest>,
   output: __S(
-    70,
-    __c8,
-    6,
+    2304,
+    __c288,
+    0,
   ) as any as S.Schema<CreateEeDatabaseReplicationConnectionDatabasePreviewResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
@@ -8369,8 +8381,12 @@ export const createEeDatabaseRoutingDestinationDatabase: API.OperationMethod<
   CreateEeDatabaseRoutingDestinationDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseResponse>,
+  input: __S(5250, __c656, 2) as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseRequest>,
+  output: __S(
+    4648,
+    __c581,
+    0,
+  ) as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8384,8 +8400,8 @@ export const createEeDataStudioTablePublishTable: API.OperationMethod<
   CreateEeDataStudioTablePublishTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<CreateEeDataStudioTablePublishTableRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeDataStudioTablePublishTableResponse>,
+  input: __S(5256, __c657, 0) as any as S.Schema<CreateEeDataStudioTablePublishTableRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeDataStudioTablePublishTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8399,8 +8415,8 @@ export const createEeDataStudioTableUnpublishTable: API.OperationMethod<
   CreateEeDataStudioTableUnpublishTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeDataStudioTableUnpublishTableResponse>,
+  input: __S(5264, __c658, 0) as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeDataStudioTableUnpublishTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8414,8 +8430,8 @@ export const createEeGsheetsConnection: API.OperationMethod<
   CreateEeGsheetsConnectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<CreateEeGsheetsConnectionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeGsheetsConnectionResponse>,
+  input: __S(5288, __c661, 0) as any as S.Schema<CreateEeGsheetsConnectionRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeGsheetsConnectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8429,8 +8445,8 @@ export const createEeGsheetsConnectionSync: API.OperationMethod<
   CreateEeGsheetsConnectionSyncError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<CreateEeGsheetsConnectionSyncRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeGsheetsConnectionSyncResponse>,
+  input: __S(5296, __c662, 0) as any as S.Schema<CreateEeGsheetsConnectionSyncRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeGsheetsConnectionSyncResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8444,8 +8460,8 @@ export const createEeLibrary: API.OperationMethod<
   CreateEeLibraryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<CreateEeLibraryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEeLibraryResponse>,
+  input: __S(5304, __c663, 0) as any as S.Schema<CreateEeLibraryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEeLibraryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8459,8 +8475,8 @@ export const createEeMfaAdminRemove: API.OperationMethod<
   CreateEeMfaAdminRemoveError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<CreateEeMfaAdminRemoveRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEeMfaAdminRemoveResponse>,
+  input: __S(5312, __c664, 0) as any as S.Schema<CreateEeMfaAdminRemoveRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEeMfaAdminRemoveResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8474,8 +8490,8 @@ export const createEeMfaDisable: API.OperationMethod<
   CreateEeMfaDisableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<CreateEeMfaDisableRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEeMfaDisableResponse>,
+  input: __S(5320, __c665, 0) as any as S.Schema<CreateEeMfaDisableRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEeMfaDisableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8489,8 +8505,8 @@ export const createEeMfaEnroll: API.OperationMethod<
   CreateEeMfaEnrollError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<CreateEeMfaEnrollRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEeMfaEnrollResponse>,
+  input: __S(5328, __c666, 0) as any as S.Schema<CreateEeMfaEnrollRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEeMfaEnrollResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8504,8 +8520,8 @@ export const createEeMfaEnrollConfirm: API.OperationMethod<
   CreateEeMfaEnrollConfirmError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<CreateEeMfaEnrollConfirmRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeMfaEnrollConfirmResponse>,
+  input: __S(5336, __c667, 0) as any as S.Schema<CreateEeMfaEnrollConfirmRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeMfaEnrollConfirmResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8519,8 +8535,8 @@ export const createEeMfaRecoveryCode: API.OperationMethod<
   CreateEeMfaRecoveryCodeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<CreateEeMfaRecoveryCodeRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateEeMfaRecoveryCodeResponse>,
+  input: __S(5344, __c668, 0) as any as S.Schema<CreateEeMfaRecoveryCodeRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<CreateEeMfaRecoveryCodeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8534,8 +8550,8 @@ export const createEeRemoteSyncCreateBranch: API.OperationMethod<
   CreateEeRemoteSyncCreateBranchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<CreateEeRemoteSyncCreateBranchRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeRemoteSyncCreateBranchResponse>,
+  input: __S(5352, __c669, 0) as any as S.Schema<CreateEeRemoteSyncCreateBranchRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeRemoteSyncCreateBranchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8549,8 +8565,8 @@ export const createEeRemoteSyncCurrentTaskCancel: API.OperationMethod<
   CreateEeRemoteSyncCurrentTaskCancelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<CreateEeRemoteSyncCurrentTaskCancelRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeRemoteSyncCurrentTaskCancelResponse>,
+  input: __S(5360, __c670, 0) as any as S.Schema<CreateEeRemoteSyncCurrentTaskCancelRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeRemoteSyncCurrentTaskCancelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8564,8 +8580,8 @@ export const createEeRemoteSyncExport: API.OperationMethod<
   CreateEeRemoteSyncExportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<CreateEeRemoteSyncExportRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeRemoteSyncExportResponse>,
+  input: __S(5376, __c672, 0) as any as S.Schema<CreateEeRemoteSyncExportRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeRemoteSyncExportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8579,8 +8595,8 @@ export const createEeRemoteSyncImport: API.OperationMethod<
   CreateEeRemoteSyncImportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<CreateEeRemoteSyncImportRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeRemoteSyncImportResponse>,
+  input: __S(5384, __c673, 0) as any as S.Schema<CreateEeRemoteSyncImportRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeRemoteSyncImportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8594,8 +8610,8 @@ export const createEeRemoteSyncStash: API.OperationMethod<
   CreateEeRemoteSyncStashError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<CreateEeRemoteSyncStashRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateEeRemoteSyncStashResponse>,
+  input: __S(5392, __c674, 0) as any as S.Schema<CreateEeRemoteSyncStashRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<CreateEeRemoteSyncStashResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8609,8 +8625,8 @@ export const createEeRemoteSyncTestConnection: API.OperationMethod<
   CreateEeRemoteSyncTestConnectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<CreateEeRemoteSyncTestConnectionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeRemoteSyncTestConnectionResponse>,
+  input: __S(5400, __c675, 0) as any as S.Schema<CreateEeRemoteSyncTestConnectionRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeRemoteSyncTestConnectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8624,8 +8640,8 @@ export const createEeReplacementCheckReplaceSource: API.OperationMethod<
   CreateEeReplacementCheckReplaceSourceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<CreateEeReplacementCheckReplaceSourceRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeReplacementCheckReplaceSourceResponse>,
+  input: __S(5408, __c676, 0) as any as S.Schema<CreateEeReplacementCheckReplaceSourceRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeReplacementCheckReplaceSourceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8639,8 +8655,8 @@ export const createEeReplacementReplaceSource: API.OperationMethod<
   CreateEeReplacementReplaceSourceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<CreateEeReplacementReplaceSourceRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeReplacementReplaceSourceResponse>,
+  input: __S(5416, __c677, 0) as any as S.Schema<CreateEeReplacementReplaceSourceRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeReplacementReplaceSourceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8654,8 +8670,8 @@ export const createEeReplacementRunCancel: API.OperationMethod<
   CreateEeReplacementRunCancelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<CreateEeReplacementRunCancelRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeReplacementRunCancelResponse>,
+  input: __S(5424, __c678, 0) as any as S.Schema<CreateEeReplacementRunCancelRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeReplacementRunCancelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8669,8 +8685,8 @@ export const createEeScimGroup: API.OperationMethod<
   CreateEeScimGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<CreateEeScimGroupRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEeScimGroupResponse>,
+  input: __S(5432, __c679, 0) as any as S.Schema<CreateEeScimGroupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEeScimGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8684,8 +8700,8 @@ export const createEeScimKey: API.OperationMethod<
   CreateEeScimKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<CreateEeScimKeyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEeScimKeyResponse>,
+  input: __S(5448, __c681, 0) as any as S.Schema<CreateEeScimKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEeScimKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8699,8 +8715,8 @@ export const createEeScimUser: API.OperationMethod<
   CreateEeScimUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<CreateEeScimUserRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEeScimUserResponse>,
+  input: __S(5456, __c682, 0) as any as S.Schema<CreateEeScimUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEeScimUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8714,8 +8730,8 @@ export const createEeSecurityCenterAcknowledge: API.OperationMethod<
   CreateEeSecurityCenterAcknowledgeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeSecurityCenterAcknowledgeResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeSecurityCenterAcknowledgeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8729,8 +8745,8 @@ export const createEeSecurityCenterAcknowledge2: API.OperationMethod<
   CreateEeSecurityCenterAcknowledge2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequest2>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeSecurityCenterAcknowledge2Response>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequest2>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeSecurityCenterAcknowledge2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8744,8 +8760,8 @@ export const createEeSecurityCenterSync: API.OperationMethod<
   CreateEeSecurityCenterSyncError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<CreateEeSecurityCenterSyncRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeSecurityCenterSyncResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateEeSecurityCenterSyncRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeSecurityCenterSyncResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8759,8 +8775,8 @@ export const createEeSecurityCenterTestNotification: API.OperationMethod<
   CreateEeSecurityCenterTestNotificationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<CreateEeSecurityCenterTestNotificationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeSecurityCenterTestNotificationResponse>,
+  input: __S(65, __c8, 1) as any as S.Schema<CreateEeSecurityCenterTestNotificationRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeSecurityCenterTestNotificationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8774,8 +8790,8 @@ export const createEeSerializationExport: API.OperationMethod<
   CreateEeSerializationExportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<CreateEeSerializationExportRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeSerializationExportResponse>,
+  input: __S(73, __c9, 1) as any as S.Schema<CreateEeSerializationExportRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeSerializationExportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8789,8 +8805,8 @@ export const createEeSerializationImport: API.OperationMethod<
   CreateEeSerializationImportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<CreateEeSerializationImportRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeSerializationImportResponse>,
+  input: __S(81, __c10, 1) as any as S.Schema<CreateEeSerializationImportRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeSerializationImportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8804,8 +8820,8 @@ export const createEeSerializationMetadataExport: API.OperationMethod<
   CreateEeSerializationMetadataExportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<CreateEeSerializationMetadataExportRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeSerializationMetadataExportResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateEeSerializationMetadataExportRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeSerializationMetadataExportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8819,8 +8835,8 @@ export const createEeSerializationMetadataImport: API.OperationMethod<
   CreateEeSerializationMetadataImportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<CreateEeSerializationMetadataImportRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeSerializationMetadataImportResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateEeSerializationMetadataImportRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeSerializationMetadataImportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8834,8 +8850,8 @@ export const createEeSupportAccessGrant: API.OperationMethod<
   CreateEeSupportAccessGrantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<CreateEeSupportAccessGrantRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeSupportAccessGrantResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateEeSupportAccessGrantRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeSupportAccessGrantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8849,8 +8865,8 @@ export const createEeTenant: API.OperationMethod<
   CreateEeTenantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<CreateEeTenantRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEeTenantResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateEeTenantRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEeTenantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8864,8 +8880,8 @@ export const createEeTransformInspectQuery: API.OperationMethod<
   CreateEeTransformInspectQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<CreateEeTransformInspectQueryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeTransformInspectQueryResponse>,
+  input: __S(129, __c16, 1) as any as S.Schema<CreateEeTransformInspectQueryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeTransformInspectQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8879,8 +8895,8 @@ export const createEeTransformsPythonTestRun: API.OperationMethod<
   CreateEeTransformsPythonTestRunError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<CreateEeTransformsPythonTestRunRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEeTransformsPythonTestRunResponse>,
+  input: __S(138, __c17, 2) as any as S.Schema<CreateEeTransformsPythonTestRunRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEeTransformsPythonTestRunResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8894,8 +8910,8 @@ export const createEidTranslationTranslate: API.OperationMethod<
   CreateEidTranslationTranslateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<CreateEidTranslationTranslateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEidTranslationTranslateResponse>,
+  input: __S(145, __c18, 1) as any as S.Schema<CreateEidTranslationTranslateRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEidTranslationTranslateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8909,8 +8925,8 @@ export const createEmailTest: API.OperationMethod<
   CreateEmailTestError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<CreateEmailTestRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEmailTestResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<CreateEmailTestRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEmailTestResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8924,8 +8940,8 @@ export const createEmbedMcpDrill: API.OperationMethod<
   CreateEmbedMcpDrillError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<CreateEmbedMcpDrillRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEmbedMcpDrillResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<CreateEmbedMcpDrillRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEmbedMcpDrillResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8939,8 +8955,8 @@ export const createEmbedMcpFeedback: API.OperationMethod<
   CreateEmbedMcpFeedbackError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<CreateEmbedMcpFeedbackRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEmbedMcpFeedbackResponse>,
+  input: __S(170, __c21, 2) as any as S.Schema<CreateEmbedMcpFeedbackRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEmbedMcpFeedbackResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8954,8 +8970,8 @@ export const createEmbedTheme: API.OperationMethod<
   CreateEmbedThemeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<CreateEmbedThemeRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEmbedThemeResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<CreateEmbedThemeRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEmbedThemeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8969,8 +8985,8 @@ export const createEmbedThemeCopy: API.OperationMethod<
   CreateEmbedThemeCopyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<CreateEmbedThemeCopyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateEmbedThemeCopyResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<CreateEmbedThemeCopyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateEmbedThemeCopyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8984,8 +9000,8 @@ export const createEmbedThemeSeedDefault: API.OperationMethod<
   CreateEmbedThemeSeedDefaultError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<CreateEmbedThemeSeedDefaultRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateEmbedThemeSeedDefaultResponse>,
+  input: __S(194, __c24, 2) as any as S.Schema<CreateEmbedThemeSeedDefaultRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateEmbedThemeSeedDefaultResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -8999,8 +9015,8 @@ export const createFieldDimension: API.OperationMethod<
   CreateFieldDimensionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<CreateFieldDimensionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateFieldDimensionResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<CreateFieldDimensionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateFieldDimensionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9014,8 +9030,8 @@ export const createFieldDiscardValue: API.OperationMethod<
   CreateFieldDiscardValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<CreateFieldDiscardValueRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateFieldDiscardValueResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<CreateFieldDiscardValueRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<CreateFieldDiscardValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9029,8 +9045,8 @@ export const createFieldRescanValue: API.OperationMethod<
   CreateFieldRescanValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<CreateFieldRescanValueRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateFieldRescanValueResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<CreateFieldRescanValueRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateFieldRescanValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9044,8 +9060,8 @@ export const createFieldTableIds: API.OperationMethod<
   CreateFieldTableIdsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<CreateFieldTableIdsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateFieldTableIdsResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<CreateFieldTableIdsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateFieldTableIdsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9059,8 +9075,8 @@ export const createFieldValue: API.OperationMethod<
   CreateFieldValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<CreateFieldValueRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateFieldValueResponse>,
+  input: __S(241, __c30, 1) as any as S.Schema<CreateFieldValueRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateFieldValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9074,8 +9090,8 @@ export const createFrontendError: API.OperationMethod<
   CreateFrontendErrorError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<CreateFrontendErrorRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateFrontendErrorResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<CreateFrontendErrorRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateFrontendErrorResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9089,8 +9105,8 @@ export const createGlossary: API.OperationMethod<
   CreateGlossaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<CreateGlossaryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateGlossaryResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<CreateGlossaryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateGlossaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9104,8 +9120,8 @@ export const createKey: API.OperationMethod<
   CreateKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<CreateKeyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateKeyResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<CreateKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9119,8 +9135,8 @@ export const createLlmExtractSource: API.OperationMethod<
   CreateLlmExtractSourceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<CreateLlmExtractSourceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateLlmExtractSourceResponse>,
+  input: __S(274, __c34, 2) as any as S.Schema<CreateLlmExtractSourceRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateLlmExtractSourceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9134,8 +9150,8 @@ export const createLlmGenerateSql: API.OperationMethod<
   CreateLlmGenerateSqlError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<CreateLlmGenerateSqlRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateLlmGenerateSqlResponse>,
+  input: __S(282, __c35, 2) as any as S.Schema<CreateLlmGenerateSqlRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateLlmGenerateSqlResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9149,8 +9165,8 @@ export const createLoggerAdjustment: API.OperationMethod<
   CreateLoggerAdjustmentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<CreateLoggerAdjustmentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateLoggerAdjustmentResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<CreateLoggerAdjustmentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateLoggerAdjustmentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9164,8 +9180,8 @@ export const createMeasure: API.OperationMethod<
   CreateMeasureError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<CreateMeasureRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateMeasureResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<CreateMeasureRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateMeasureResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9179,8 +9195,8 @@ export const createMetabotAgentStreaming: API.OperationMethod<
   CreateMetabotAgentStreamingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<CreateMetabotAgentStreamingRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateMetabotAgentStreamingResponse>,
+  input: __S(319, __c39, 7) as any as S.Schema<CreateMetabotAgentStreamingRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateMetabotAgentStreamingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9194,8 +9210,8 @@ export const createMetabotDocumentGenerateContent: API.OperationMethod<
   CreateMetabotDocumentGenerateContentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<CreateMetabotDocumentGenerateContentRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateMetabotDocumentGenerateContentResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<CreateMetabotDocumentGenerateContentRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateMetabotDocumentGenerateContentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9209,8 +9225,8 @@ export const createMetabotFeedback: API.OperationMethod<
   CreateMetabotFeedbackError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<CreateMetabotFeedbackRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateMetabotFeedbackResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<CreateMetabotFeedbackRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateMetabotFeedbackResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9225,14 +9241,14 @@ export const createMetabotMetabotPromptSuggestionsRegenerate: API.OperationMetho
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    218,
-    __c27,
-    2,
+    336,
+    __c42,
+    0,
   ) as any as S.Schema<CreateMetabotMetabotPromptSuggestionsRegenerateRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    4648,
+    __c581,
+    0,
   ) as any as S.Schema<CreateMetabotMetabotPromptSuggestionsRegenerateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
@@ -9247,8 +9263,8 @@ export const createMetabotSlackEvent: API.OperationMethod<
   CreateMetabotSlackEventError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<CreateMetabotSlackEventRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateMetabotSlackEventResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<CreateMetabotSlackEventRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<CreateMetabotSlackEventResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9262,8 +9278,8 @@ export const createMetabotSlackInteractive: API.OperationMethod<
   CreateMetabotSlackInteractiveError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<CreateMetabotSlackInteractiveRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateMetabotSlackInteractiveResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<CreateMetabotSlackInteractiveRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateMetabotSlackInteractiveResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9277,8 +9293,8 @@ export const createMetabotSourceFeedback: API.OperationMethod<
   CreateMetabotSourceFeedbackError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<CreateMetabotSourceFeedbackRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateMetabotSourceFeedbackResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<CreateMetabotSourceFeedbackRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateMetabotSourceFeedbackResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9292,8 +9308,8 @@ export const createMetricBreakoutValue: API.OperationMethod<
   CreateMetricBreakoutValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<CreateMetricBreakoutValueRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateMetricBreakoutValueResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<CreateMetricBreakoutValueRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateMetricBreakoutValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9307,8 +9323,8 @@ export const createMetricDataset: API.OperationMethod<
   CreateMetricDatasetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<CreateMetricDatasetRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateMetricDatasetResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<CreateMetricDatasetRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateMetricDatasetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9322,8 +9338,8 @@ export const createModelIndex: API.OperationMethod<
   CreateModelIndexError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<CreateModelIndexRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateModelIndexResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<CreateModelIndexRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateModelIndexResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9337,8 +9353,8 @@ export const createModerationReview: API.OperationMethod<
   CreateModerationReviewError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<CreateModerationReviewRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateModerationReviewResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<CreateModerationReviewRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateModerationReviewResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9352,8 +9368,8 @@ export const createMtGtap: API.OperationMethod<
   CreateMtGtapError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<CreateMtGtapRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateMtGtapResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<CreateMtGtapRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateMtGtapResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9367,8 +9383,8 @@ export const createMtGtapValidate: API.OperationMethod<
   CreateMtGtapValidateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<CreateMtGtapValidateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateMtGtapValidateResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<CreateMtGtapValidateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateMtGtapValidateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9382,8 +9398,8 @@ export const createNativeQuerySnippet: API.OperationMethod<
   CreateNativeQuerySnippetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<CreateNativeQuerySnippetRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateNativeQuerySnippetResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<CreateNativeQuerySnippetRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateNativeQuerySnippetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9397,8 +9413,8 @@ export const createNotification: API.OperationMethod<
   CreateNotificationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<CreateNotificationRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateNotificationResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<CreateNotificationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateNotificationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9412,8 +9428,8 @@ export const createNotificationAdminBulk: API.OperationMethod<
   CreateNotificationAdminBulkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<CreateNotificationAdminBulkRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateNotificationAdminBulkResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<CreateNotificationAdminBulkRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateNotificationAdminBulkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9427,8 +9443,8 @@ export const createNotificationSend: API.OperationMethod<
   CreateNotificationSendError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<CreateNotificationSendRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateNotificationSendResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<CreateNotificationSendRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateNotificationSendResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9442,8 +9458,8 @@ export const createNotificationSend2: API.OperationMethod<
   CreateNotificationSend2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<CreateNotificationSendRequest2>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateNotificationSend2Response>,
+  input: __S(472, __c59, 0) as any as S.Schema<CreateNotificationSendRequest2>,
+  output: __S(496, __c62, 0) as any as S.Schema<CreateNotificationSend2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9457,8 +9473,8 @@ export const createNotificationUnsubscribe: API.OperationMethod<
   CreateNotificationUnsubscribeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<CreateNotificationUnsubscribeRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateNotificationUnsubscribeResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<CreateNotificationUnsubscribeRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateNotificationUnsubscribeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9472,8 +9488,8 @@ export const createNotificationUnsubscribe2: API.OperationMethod<
   CreateNotificationUnsubscribe2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<CreateNotificationUnsubscribeRequest2>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateNotificationUnsubscribe2Response>,
+  input: __S(512, __c64, 0) as any as S.Schema<CreateNotificationUnsubscribeRequest2>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateNotificationUnsubscribe2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9487,8 +9503,8 @@ export const createNotificationUnsubscribeUndo: API.OperationMethod<
   CreateNotificationUnsubscribeUndoError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<CreateNotificationUnsubscribeUndoRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateNotificationUnsubscribeUndoResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<CreateNotificationUnsubscribeUndoRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateNotificationUnsubscribeUndoResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9502,8 +9518,8 @@ export const createNotifyDbAttachedDatawarehouse: API.OperationMethod<
   CreateNotifyDbAttachedDatawarehouseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<CreateNotifyDbAttachedDatawarehouseRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateNotifyDbAttachedDatawarehouseResponse>,
+  input: __S(528, __c66, 0) as any as S.Schema<CreateNotifyDbAttachedDatawarehouseRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateNotifyDbAttachedDatawarehouseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9517,8 +9533,8 @@ export const createNotifyDbNewTable: API.OperationMethod<
   CreateNotifyDbNewTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<CreateNotifyDbNewTableRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateNotifyDbNewTableResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<CreateNotifyDbNewTableRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateNotifyDbNewTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9532,8 +9548,8 @@ export const createOsiAiContextReconcile: API.OperationMethod<
   CreateOsiAiContextReconcileError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<CreateOsiAiContextReconcileRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateOsiAiContextReconcileResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<CreateOsiAiContextReconcileRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateOsiAiContextReconcileResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9547,8 +9563,8 @@ export const createPermissionsGroup: API.OperationMethod<
   CreatePermissionsGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<CreatePermissionsGroupRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreatePermissionsGroupResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<CreatePermissionsGroupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreatePermissionsGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9562,8 +9578,8 @@ export const createPermissionsMembership: API.OperationMethod<
   CreatePermissionsMembershipError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<CreatePermissionsMembershipRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreatePermissionsMembershipResponse>,
+  input: __S(560, __c70, 0) as any as S.Schema<CreatePermissionsMembershipRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreatePermissionsMembershipResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9577,8 +9593,8 @@ export const createPersistCardPersist: API.OperationMethod<
   CreatePersistCardPersistError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<CreatePersistCardPersistRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreatePersistCardPersistResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<CreatePersistCardPersistRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreatePersistCardPersistResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9592,8 +9608,8 @@ export const createPersistCardRefresh: API.OperationMethod<
   CreatePersistCardRefreshError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<CreatePersistCardRefreshRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreatePersistCardRefreshResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<CreatePersistCardRefreshRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreatePersistCardRefreshResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9607,8 +9623,8 @@ export const createPersistCardUnpersist: API.OperationMethod<
   CreatePersistCardUnpersistError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<CreatePersistCardUnpersistRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreatePersistCardUnpersistResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<CreatePersistCardUnpersistRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreatePersistCardUnpersistResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9622,8 +9638,8 @@ export const createPersistDatabasePersist: API.OperationMethod<
   CreatePersistDatabasePersistError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<CreatePersistDatabasePersistRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreatePersistDatabasePersistResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<CreatePersistDatabasePersistRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreatePersistDatabasePersistResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9637,8 +9653,8 @@ export const createPersistDatabaseUnpersist: API.OperationMethod<
   CreatePersistDatabaseUnpersistError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<CreatePersistDatabaseUnpersistRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreatePersistDatabaseUnpersistResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<CreatePersistDatabaseUnpersistRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreatePersistDatabaseUnpersistResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9652,8 +9668,8 @@ export const createPersistDisable: API.OperationMethod<
   CreatePersistDisableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<CreatePersistDisableRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreatePersistDisableResponse>,
+  input: __S(616, __c77, 0) as any as S.Schema<CreatePersistDisableRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreatePersistDisableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9667,8 +9683,8 @@ export const createPersistEnable: API.OperationMethod<
   CreatePersistEnableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<CreatePersistEnableRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreatePersistEnableResponse>,
+  input: __S(624, __c78, 0) as any as S.Schema<CreatePersistEnableRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreatePersistEnableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9682,8 +9698,8 @@ export const createPersistSetRefreshSchedule: API.OperationMethod<
   CreatePersistSetRefreshScheduleError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<CreatePersistSetRefreshScheduleRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreatePersistSetRefreshScheduleResponse>,
+  input: __S(632, __c79, 0) as any as S.Schema<CreatePersistSetRefreshScheduleRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreatePersistSetRefreshScheduleResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9697,8 +9713,8 @@ export const createPremiumFeaturesTokenRefresh: API.OperationMethod<
   CreatePremiumFeaturesTokenRefreshError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<CreatePremiumFeaturesTokenRefreshRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreatePremiumFeaturesTokenRefreshResponse>,
+  input: __S(640, __c80, 0) as any as S.Schema<CreatePremiumFeaturesTokenRefreshRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreatePremiumFeaturesTokenRefreshResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9712,8 +9728,8 @@ export const createProductFeedback: API.OperationMethod<
   CreateProductFeedbackError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<CreateProductFeedbackRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateProductFeedbackResponse>,
+  input: __S(648, __c81, 0) as any as S.Schema<CreateProductFeedbackRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateProductFeedbackResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9727,8 +9743,8 @@ export const createPulse: API.OperationMethod<
   CreatePulseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<CreatePulseRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreatePulseResponse>,
+  input: __S(656, __c82, 0) as any as S.Schema<CreatePulseRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreatePulseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9742,8 +9758,8 @@ export const createPulseTest: API.OperationMethod<
   CreatePulseTestError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<CreatePulseTestRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreatePulseTestResponse>,
+  input: __S(664, __c83, 0) as any as S.Schema<CreatePulseTestRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreatePulseTestResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9757,8 +9773,8 @@ export const createPulseUnsubscribe: API.OperationMethod<
   CreatePulseUnsubscribeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<CreatePulseUnsubscribeRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreatePulseUnsubscribeResponse>,
+  input: __S(672, __c84, 0) as any as S.Schema<CreatePulseUnsubscribeRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreatePulseUnsubscribeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9772,8 +9788,8 @@ export const createPulseUnsubscribeUndo: API.OperationMethod<
   CreatePulseUnsubscribeUndoError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<CreatePulseUnsubscribeUndoRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreatePulseUnsubscribeUndoResponse>,
+  input: __S(688, __c86, 0) as any as S.Schema<CreatePulseUnsubscribeUndoRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreatePulseUnsubscribeUndoResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9787,8 +9803,8 @@ export const createRevisionRevert: API.OperationMethod<
   CreateRevisionRevertError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<CreateRevisionRevertRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateRevisionRevertResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<CreateRevisionRevertRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateRevisionRevertResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9802,8 +9818,8 @@ export const createSearchForceReindex: API.OperationMethod<
   CreateSearchForceReindexError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<CreateSearchForceReindexRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateSearchForceReindexResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<CreateSearchForceReindexRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateSearchForceReindexResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9817,8 +9833,8 @@ export const createSearchReInit: API.OperationMethod<
   CreateSearchReInitError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<CreateSearchReInitRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateSearchReInitResponse>,
+  input: __S(712, __c89, 0) as any as S.Schema<CreateSearchReInitRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateSearchReInitResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9832,8 +9848,8 @@ export const createSegment: API.OperationMethod<
   CreateSegmentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<CreateSegmentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateSegmentResponse>,
+  input: __S(720, __c90, 0) as any as S.Schema<CreateSegmentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateSegmentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9847,8 +9863,8 @@ export const createSession: API.OperationMethod<
   CreateSessionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<CreateSessionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateSessionResponse>,
+  input: __S(728, __c91, 0) as any as S.Schema<CreateSessionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateSessionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9862,8 +9878,8 @@ export const createSessionForgotPassword: API.OperationMethod<
   CreateSessionForgotPasswordError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<CreateSessionForgotPasswordRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateSessionForgotPasswordResponse>,
+  input: __S(736, __c92, 0) as any as S.Schema<CreateSessionForgotPasswordRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateSessionForgotPasswordResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9877,8 +9893,8 @@ export const createSessionGoogleAuth: API.OperationMethod<
   CreateSessionGoogleAuthError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<CreateSessionGoogleAuthRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateSessionGoogleAuthResponse>,
+  input: __S(744, __c93, 0) as any as S.Schema<CreateSessionGoogleAuthRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<CreateSessionGoogleAuthResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9892,8 +9908,8 @@ export const createSessionMfaSendEmailOtp: API.OperationMethod<
   CreateSessionMfaSendEmailOtpError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<CreateSessionMfaSendEmailOtpRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateSessionMfaSendEmailOtpResponse>,
+  input: __S(752, __c94, 0) as any as S.Schema<CreateSessionMfaSendEmailOtpRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateSessionMfaSendEmailOtpResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9907,8 +9923,8 @@ export const createSessionMfaVerify: API.OperationMethod<
   CreateSessionMfaVerifyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<CreateSessionMfaVerifyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateSessionMfaVerifyResponse>,
+  input: __S(760, __c95, 0) as any as S.Schema<CreateSessionMfaVerifyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateSessionMfaVerifyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9922,8 +9938,8 @@ export const createSessionPasswordCheck: API.OperationMethod<
   CreateSessionPasswordCheckError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<CreateSessionPasswordCheckRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateSessionPasswordCheckResponse>,
+  input: __S(784, __c98, 0) as any as S.Schema<CreateSessionPasswordCheckRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateSessionPasswordCheckResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9937,8 +9953,8 @@ export const createSessionResetPassword: API.OperationMethod<
   CreateSessionResetPasswordError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<CreateSessionResetPasswordRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateSessionResetPasswordResponse>,
+  input: __S(792, __c99, 0) as any as S.Schema<CreateSessionResetPasswordRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateSessionResetPasswordResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9952,8 +9968,8 @@ export const createSetup: API.OperationMethod<
   CreateSetupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<CreateSetupRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateSetupResponse>,
+  input: __S(802, __c100, 2) as any as S.Schema<CreateSetupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateSetupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9967,8 +9983,8 @@ export const createSlackBugReport: API.OperationMethod<
   CreateSlackBugReportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<CreateSlackBugReportRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateSlackBugReportResponse>,
+  input: __S(809, __c101, 1) as any as S.Schema<CreateSlackBugReportRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateSlackBugReportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9982,8 +9998,8 @@ export const createTableAppendCsv: API.OperationMethod<
   CreateTableAppendCsvError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<CreateTableAppendCsvRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateTableAppendCsvResponse>,
+  input: __S(816, __c102, 0) as any as S.Schema<CreateTableAppendCsvRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateTableAppendCsvResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -9997,8 +10013,8 @@ export const createTableDiscardValue: API.OperationMethod<
   CreateTableDiscardValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<CreateTableDiscardValueRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateTableDiscardValueResponse>,
+  input: __S(832, __c104, 0) as any as S.Schema<CreateTableDiscardValueRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<CreateTableDiscardValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10012,8 +10028,8 @@ export const createTableReplaceCsv: API.OperationMethod<
   CreateTableReplaceCsvError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<CreateTableReplaceCsvRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateTableReplaceCsvResponse>,
+  input: __S(840, __c105, 0) as any as S.Schema<CreateTableReplaceCsvRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateTableReplaceCsvResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10027,8 +10043,8 @@ export const createTableRescanValue: API.OperationMethod<
   CreateTableRescanValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<CreateTableRescanValueRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateTableRescanValueResponse>,
+  input: __S(848, __c106, 0) as any as S.Schema<CreateTableRescanValueRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateTableRescanValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10042,8 +10058,8 @@ export const createTableSyncSchema: API.OperationMethod<
   CreateTableSyncSchemaError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<CreateTableSyncSchemaRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateTableSyncSchemaResponse>,
+  input: __S(856, __c107, 0) as any as S.Schema<CreateTableSyncSchemaRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateTableSyncSchemaResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10057,8 +10073,8 @@ export const createTimeline: API.OperationMethod<
   CreateTimelineError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<CreateTimelineRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateTimelineResponse>,
+  input: __S(864, __c108, 0) as any as S.Schema<CreateTimelineRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateTimelineResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10072,8 +10088,8 @@ export const createTimelineEvent: API.OperationMethod<
   CreateTimelineEventError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<CreateTimelineEventRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateTimelineEventResponse>,
+  input: __S(880, __c110, 0) as any as S.Schema<CreateTimelineEventRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateTimelineEventResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10087,8 +10103,8 @@ export const createTransform: API.OperationMethod<
   CreateTransformError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<CreateTransformRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateTransformResponse>,
+  input: __S(888, __c111, 0) as any as S.Schema<CreateTransformRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateTransformResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10102,8 +10118,8 @@ export const createTransformCancel: API.OperationMethod<
   CreateTransformCancelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<CreateTransformCancelRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateTransformCancelResponse>,
+  input: __S(896, __c112, 0) as any as S.Schema<CreateTransformCancelRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateTransformCancelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10117,8 +10133,8 @@ export const createTransformJob: API.OperationMethod<
   CreateTransformJobError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<CreateTransformJobRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateTransformJobResponse>,
+  input: __S(904, __c113, 0) as any as S.Schema<CreateTransformJobRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateTransformJobResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10132,8 +10148,8 @@ export const createTransformJobRun: API.OperationMethod<
   CreateTransformJobRunError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<CreateTransformJobRunRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateTransformJobRunResponse>,
+  input: __S(912, __c114, 0) as any as S.Schema<CreateTransformJobRunRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateTransformJobRunResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10147,8 +10163,8 @@ export const createTransformResetCheckpoint: API.OperationMethod<
   CreateTransformResetCheckpointError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<CreateTransformResetCheckpointRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateTransformResetCheckpointResponse>,
+  input: __S(920, __c115, 0) as any as S.Schema<CreateTransformResetCheckpointRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateTransformResetCheckpointResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10162,8 +10178,8 @@ export const createTransformRun: API.OperationMethod<
   CreateTransformRunError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<CreateTransformRunRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateTransformRunResponse>,
+  input: __S(928, __c116, 0) as any as S.Schema<CreateTransformRunRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateTransformRunResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10177,8 +10193,8 @@ export const createTransformTag: API.OperationMethod<
   CreateTransformTagError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<CreateTransformTagRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateTransformTagResponse>,
+  input: __S(936, __c117, 0) as any as S.Schema<CreateTransformTagRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateTransformTagResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10192,8 +10208,8 @@ export const createUploadCsv: API.OperationMethod<
   CreateUploadCsvError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<CreateUploadCsvRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateUploadCsvResponse>,
+  input: __S(944, __c118, 0) as any as S.Schema<CreateUploadCsvRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateUploadCsvResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10207,8 +10223,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<CreateUserRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateUserResponse>,
+  input: __S(953, __c119, 1) as any as S.Schema<CreateUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10222,8 +10238,8 @@ export const createUserPasswordResetUrl: API.OperationMethod<
   CreateUserPasswordResetUrlError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<CreateUserPasswordResetUrlRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateUserPasswordResetUrlResponse>,
+  input: __S(984, __c123, 0) as any as S.Schema<CreateUserPasswordResetUrlRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<CreateUserPasswordResetUrlResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10237,8 +10253,8 @@ export const deleteAction: API.OperationMethod<
   DeleteActionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<DeleteActionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteActionResponse>,
+  input: __S(992, __c124, 0) as any as S.Schema<DeleteActionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteActionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10252,8 +10268,8 @@ export const deleteActionPublicLink: API.OperationMethod<
   DeleteActionPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<DeleteActionPublicLinkRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteActionPublicLinkResponse>,
+  input: __S(1000, __c125, 0) as any as S.Schema<DeleteActionPublicLinkRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteActionPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10267,8 +10283,8 @@ export const deleteAlertSubscription: API.OperationMethod<
   DeleteAlertSubscriptionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<DeleteAlertSubscriptionRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeleteAlertSubscriptionResponse>,
+  input: __S(1008, __c126, 0) as any as S.Schema<DeleteAlertSubscriptionRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<DeleteAlertSubscriptionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10282,8 +10298,8 @@ export const deleteBookmark: API.OperationMethod<
   DeleteBookmarkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<DeleteBookmarkRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteBookmarkResponse>,
+  input: __S(1016, __c127, 0) as any as S.Schema<DeleteBookmarkRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteBookmarkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10297,8 +10313,8 @@ export const deleteCache: API.OperationMethod<
   DeleteCacheError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<DeleteCacheRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteCacheResponse>,
+  input: __S(1024, __c128, 0) as any as S.Schema<DeleteCacheRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteCacheResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10312,8 +10328,8 @@ export const deleteCard: API.OperationMethod<
   DeleteCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<DeleteCardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteCardResponse>,
+  input: __S(1032, __c129, 0) as any as S.Schema<DeleteCardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10327,8 +10343,8 @@ export const deleteCardPublicLink: API.OperationMethod<
   DeleteCardPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<DeleteCardPublicLinkRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteCardPublicLinkResponse>,
+  input: __S(1040, __c130, 0) as any as S.Schema<DeleteCardPublicLinkRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteCardPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10342,8 +10358,8 @@ export const deleteCollection: API.OperationMethod<
   DeleteCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<DeleteCollectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteCollectionResponse>,
+  input: __S(1048, __c131, 0) as any as S.Schema<DeleteCollectionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10357,8 +10373,8 @@ export const deleteComment: API.OperationMethod<
   DeleteCommentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<DeleteCommentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteCommentResponse>,
+  input: __S(1056, __c132, 0) as any as S.Schema<DeleteCommentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteCommentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10372,8 +10388,8 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<DeleteDashboardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteDashboardResponse>,
+  input: __S(1136, __c142, 0) as any as S.Schema<DeleteDashboardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10387,8 +10403,8 @@ export const deleteDashboardPublicLink: API.OperationMethod<
   DeleteDashboardPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<DeleteDashboardPublicLinkRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteDashboardPublicLinkResponse>,
+  input: __S(1144, __c143, 0) as any as S.Schema<DeleteDashboardPublicLinkRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<DeleteDashboardPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10402,8 +10418,8 @@ export const deleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<DeleteDatabaseRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteDatabaseResponse>,
+  input: __S(1152, __c144, 0) as any as S.Schema<DeleteDatabaseRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10417,8 +10433,8 @@ export const deleteDocument: API.OperationMethod<
   DeleteDocumentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<DeleteDocumentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteDocumentResponse>,
+  input: __S(1160, __c145, 0) as any as S.Schema<DeleteDocumentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteDocumentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10432,8 +10448,8 @@ export const deleteDocumentPublicLink: API.OperationMethod<
   DeleteDocumentPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<DeleteDocumentPublicLinkRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteDocumentPublicLinkResponse>,
+  input: __S(1168, __c146, 0) as any as S.Schema<DeleteDocumentPublicLinkRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<DeleteDocumentPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10447,8 +10463,8 @@ export const deleteEeAdvancedPermissionsImpersonation: API.OperationMethod<
   DeleteEeAdvancedPermissionsImpersonationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<DeleteEeAdvancedPermissionsImpersonationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteEeAdvancedPermissionsImpersonationResponse>,
+  input: __S(1176, __c147, 0) as any as S.Schema<DeleteEeAdvancedPermissionsImpersonationRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<DeleteEeAdvancedPermissionsImpersonationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10462,8 +10478,8 @@ export const deleteEeAiControlsPermissionsAdvanced: API.OperationMethod<
   DeleteEeAiControlsPermissionsAdvancedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<DeleteEeAiControlsPermissionsAdvancedRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteEeAiControlsPermissionsAdvancedResponse>,
+  input: __S(1184, __c148, 0) as any as S.Schema<DeleteEeAiControlsPermissionsAdvancedRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<DeleteEeAiControlsPermissionsAdvancedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10477,8 +10493,8 @@ export const deleteEeAuditAppUserSubscriptions: API.OperationMethod<
   DeleteEeAuditAppUserSubscriptionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<DeleteEeAuditAppUserSubscriptionsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteEeAuditAppUserSubscriptionsResponse>,
+  input: __S(1192, __c149, 0) as any as S.Schema<DeleteEeAuditAppUserSubscriptionsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<DeleteEeAuditAppUserSubscriptionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10492,8 +10508,8 @@ export const deleteEeCloudAddOns: API.OperationMethod<
   DeleteEeCloudAddOnsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<DeleteEeCloudAddOnsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteEeCloudAddOnsResponse>,
+  input: __S(1200, __c150, 0) as any as S.Schema<DeleteEeCloudAddOnsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteEeCloudAddOnsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10507,8 +10523,8 @@ export const deleteEeCustomVizPlugin: API.OperationMethod<
   DeleteEeCustomVizPluginError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<DeleteEeCustomVizPluginRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeleteEeCustomVizPluginResponse>,
+  input: __S(1208, __c151, 0) as any as S.Schema<DeleteEeCustomVizPluginRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<DeleteEeCustomVizPluginResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10523,14 +10539,14 @@ export const deleteEeDatabaseReplicationConnectionDatabase: API.OperationMethod<
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    318,
-    __c39,
-    6,
+    1224,
+    __c153,
+    0,
   ) as any as S.Schema<DeleteEeDatabaseReplicationConnectionDatabaseRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    4648,
+    __c581,
+    0,
   ) as any as S.Schema<DeleteEeDatabaseReplicationConnectionDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
@@ -10545,8 +10561,8 @@ export const deleteEeEmailOverride: API.OperationMethod<
   DeleteEeEmailOverrideError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<DeleteEeEmailOverrideRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteEeEmailOverrideResponse>,
+  input: __S(1232, __c154, 0) as any as S.Schema<DeleteEeEmailOverrideRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteEeEmailOverrideResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10560,8 +10576,8 @@ export const deleteEeGsheetsConnection: API.OperationMethod<
   DeleteEeGsheetsConnectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<DeleteEeGsheetsConnectionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteEeGsheetsConnectionResponse>,
+  input: __S(1240, __c155, 0) as any as S.Schema<DeleteEeGsheetsConnectionRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<DeleteEeGsheetsConnectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10575,8 +10591,8 @@ export const deleteEeScimGroup: API.OperationMethod<
   DeleteEeScimGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<DeleteEeScimGroupRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteEeScimGroupResponse>,
+  input: __S(1248, __c156, 0) as any as S.Schema<DeleteEeScimGroupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteEeScimGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10590,8 +10606,8 @@ export const deleteEeUploadManagementTable: API.OperationMethod<
   DeleteEeUploadManagementTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<DeleteEeUploadManagementTableRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteEeUploadManagementTableResponse>,
+  input: __S(1256, __c157, 0) as any as S.Schema<DeleteEeUploadManagementTableRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<DeleteEeUploadManagementTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10605,8 +10621,8 @@ export const deleteEmail: API.OperationMethod<
   DeleteEmailError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<DeleteEmailRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteEmailResponse>,
+  input: __S(1264, __c158, 0) as any as S.Schema<DeleteEmailRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteEmailResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10620,8 +10636,8 @@ export const deleteEmbedTheme: API.OperationMethod<
   DeleteEmbedThemeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<DeleteEmbedThemeRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteEmbedThemeResponse>,
+  input: __S(1272, __c159, 0) as any as S.Schema<DeleteEmbedThemeRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteEmbedThemeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10635,8 +10651,8 @@ export const deleteFieldDimension: API.OperationMethod<
   DeleteFieldDimensionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<DeleteFieldDimensionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteFieldDimensionResponse>,
+  input: __S(1280, __c160, 0) as any as S.Schema<DeleteFieldDimensionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteFieldDimensionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10650,8 +10666,8 @@ export const deleteGlossary: API.OperationMethod<
   DeleteGlossaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<DeleteGlossaryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteGlossaryResponse>,
+  input: __S(1288, __c161, 0) as any as S.Schema<DeleteGlossaryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteGlossaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10665,8 +10681,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<DeleteKeyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteKeyResponse>,
+  input: __S(1296, __c162, 0) as any as S.Schema<DeleteKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10680,8 +10696,8 @@ export const deleteLoggerAdjustment: API.OperationMethod<
   DeleteLoggerAdjustmentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<DeleteLoggerAdjustmentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteLoggerAdjustmentResponse>,
+  input: __S(1312, __c164, 0) as any as S.Schema<DeleteLoggerAdjustmentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteLoggerAdjustmentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10695,8 +10711,8 @@ export const deleteMetabotMetabotPromptSuggestions: API.OperationMethod<
   DeleteMetabotMetabotPromptSuggestionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsResponse>,
+  input: __S(1320, __c165, 0) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10710,8 +10726,16 @@ export const deleteMetabotMetabotPromptSuggestionsPrompt: API.OperationMethod<
   DeleteMetabotMetabotPromptSuggestionsPromptError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsPromptRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsPromptResponse>,
+  input: __S(
+    1328,
+    __c166,
+    0,
+  ) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsPromptRequest>,
+  output: __S(
+    4648,
+    __c581,
+    0,
+  ) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsPromptResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10725,8 +10749,8 @@ export const deleteModelIndex: API.OperationMethod<
   DeleteModelIndexError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<DeleteModelIndexRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteModelIndexResponse>,
+  input: __S(1336, __c167, 0) as any as S.Schema<DeleteModelIndexRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteModelIndexResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10740,8 +10764,8 @@ export const deleteMtGtap: API.OperationMethod<
   DeleteMtGtapError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<DeleteMtGtapRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteMtGtapResponse>,
+  input: __S(1344, __c168, 0) as any as S.Schema<DeleteMtGtapRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteMtGtapResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10755,8 +10779,8 @@ export const deleteOsiAiContext: API.OperationMethod<
   DeleteOsiAiContextError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<DeleteOsiAiContextRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteOsiAiContextResponse>,
+  input: __S(1352, __c169, 0) as any as S.Schema<DeleteOsiAiContextRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteOsiAiContextResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10770,8 +10794,8 @@ export const deletePermissionsGroup: API.OperationMethod<
   DeletePermissionsGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<DeletePermissionsGroupRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeletePermissionsGroupResponse>,
+  input: __S(1360, __c170, 0) as any as S.Schema<DeletePermissionsGroupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeletePermissionsGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10785,8 +10809,8 @@ export const deletePermissionsMembership: API.OperationMethod<
   DeletePermissionsMembershipError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<DeletePermissionsMembershipRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeletePermissionsMembershipResponse>,
+  input: __S(1368, __c171, 0) as any as S.Schema<DeletePermissionsMembershipRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<DeletePermissionsMembershipResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10800,8 +10824,8 @@ export const deletePulseSubscription: API.OperationMethod<
   DeletePulseSubscriptionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<DeletePulseSubscriptionRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeletePulseSubscriptionResponse>,
+  input: __S(1376, __c172, 0) as any as S.Schema<DeletePulseSubscriptionRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<DeletePulseSubscriptionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10815,8 +10839,8 @@ export const deleteSegment: API.OperationMethod<
   DeleteSegmentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<DeleteSegmentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteSegmentResponse>,
+  input: __S(1384, __c173, 0) as any as S.Schema<DeleteSegmentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteSegmentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10830,8 +10854,8 @@ export const deleteSession: API.OperationMethod<
   DeleteSessionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<DeleteSessionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteSessionResponse>,
+  input: __S(1408, __c176, 0) as any as S.Schema<DeleteSessionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteSessionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10845,8 +10869,8 @@ export const deleteTimeline: API.OperationMethod<
   DeleteTimelineError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<DeleteTimelineRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteTimelineResponse>,
+  input: __S(1416, __c177, 0) as any as S.Schema<DeleteTimelineRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteTimelineResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10860,8 +10884,8 @@ export const deleteTimelineEvent: API.OperationMethod<
   DeleteTimelineEventError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340, __c42, 4) as any as S.Schema<DeleteTimelineEventRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteTimelineEventResponse>,
+  input: __S(1424, __c178, 0) as any as S.Schema<DeleteTimelineEventRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteTimelineEventResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10875,8 +10899,8 @@ export const deleteTransform: API.OperationMethod<
   DeleteTransformError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<DeleteTransformRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteTransformResponse>,
+  input: __S(1432, __c179, 0) as any as S.Schema<DeleteTransformRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteTransformResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10890,8 +10914,8 @@ export const deleteTransformJob: API.OperationMethod<
   DeleteTransformJobError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<DeleteTransformJobRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteTransformJobResponse>,
+  input: __S(1440, __c180, 0) as any as S.Schema<DeleteTransformJobRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteTransformJobResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10905,8 +10929,8 @@ export const deleteTransformTable: API.OperationMethod<
   DeleteTransformTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<DeleteTransformTableRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteTransformTableResponse>,
+  input: __S(1448, __c181, 0) as any as S.Schema<DeleteTransformTableRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteTransformTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10920,8 +10944,8 @@ export const deleteTransformTag: API.OperationMethod<
   DeleteTransformTagError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<DeleteTransformTagRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteTransformTagResponse>,
+  input: __S(1456, __c182, 0) as any as S.Schema<DeleteTransformTagRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteTransformTagResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10935,8 +10959,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<DeleteUserRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteUserResponse>,
+  input: __S(1464, __c183, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10950,8 +10974,8 @@ export const deleteUserKeyValueNamespaceKey: API.OperationMethod<
   DeleteUserKeyValueNamespaceKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<DeleteUserKeyValueNamespaceKeyRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteUserKeyValueNamespaceKeyResponse>,
+  input: __S(1472, __c184, 0) as any as S.Schema<DeleteUserKeyValueNamespaceKeyRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<DeleteUserKeyValueNamespaceKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10965,8 +10989,8 @@ export const getAction: API.OperationMethod<
   GetActionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<GetActionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetActionResponse>,
+  input: __S(1480, __c185, 0) as any as S.Schema<GetActionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetActionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10980,8 +11004,8 @@ export const getAction2: API.OperationMethod<
   GetAction2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<GetAction2Request>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetAction2Response>,
+  input: __S(1496, __c187, 0) as any as S.Schema<GetAction2Request>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetAction2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -10995,8 +11019,8 @@ export const getActionByActionId: API.OperationMethod<
   GetActionByActionIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<GetActionByActionIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetActionByActionIdResponse>,
+  input: __S(1504, __c188, 0) as any as S.Schema<GetActionByActionIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetActionByActionIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11010,8 +11034,8 @@ export const getActionByUuid: API.OperationMethod<
   GetActionByUuidError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<GetActionByUuidRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetActionByUuidResponse>,
+  input: __S(1512, __c189, 0) as any as S.Schema<GetActionByUuidRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetActionByUuidResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11025,8 +11049,8 @@ export const getActionExecute: API.OperationMethod<
   GetActionExecuteError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<GetActionExecuteRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetActionExecuteResponse>,
+  input: __S(1520, __c190, 0) as any as S.Schema<GetActionExecuteRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetActionExecuteResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11040,8 +11064,8 @@ export const getActivityMostRecentlyViewedDashboard: API.OperationMethod<
   GetActivityMostRecentlyViewedDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<GetActivityMostRecentlyViewedDashboardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetActivityMostRecentlyViewedDashboardResponse>,
+  input: __S(1528, __c191, 0) as any as S.Schema<GetActivityMostRecentlyViewedDashboardRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetActivityMostRecentlyViewedDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11055,8 +11079,8 @@ export const getActivityPopularItems: API.OperationMethod<
   GetActivityPopularItemsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<GetActivityPopularItemsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetActivityPopularItemsResponse>,
+  input: __S(1536, __c192, 0) as any as S.Schema<GetActivityPopularItemsRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<GetActivityPopularItemsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11070,8 +11094,8 @@ export const getActivityRecents: API.OperationMethod<
   GetActivityRecentsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<GetActivityRecentsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetActivityRecentsResponse>,
+  input: __S(1544, __c193, 0) as any as S.Schema<GetActivityRecentsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetActivityRecentsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11085,8 +11109,8 @@ export const getAgentPing: API.OperationMethod<
   GetAgentPingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<GetAgentPingRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetAgentPingResponse>,
+  input: __S(1552, __c194, 0) as any as S.Schema<GetAgentPingRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetAgentPingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11100,8 +11124,8 @@ export const getAlert: API.OperationMethod<
   GetAlertError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<GetAlertRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetAlertResponse>,
+  input: __S(1560, __c195, 0) as any as S.Schema<GetAlertRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetAlertResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11115,8 +11139,8 @@ export const getAlertById: API.OperationMethod<
   GetAlertByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<GetAlertByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetAlertByIdResponse>,
+  input: __S(1568, __c196, 0) as any as S.Schema<GetAlertByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetAlertByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11130,8 +11154,8 @@ export const getAnalyticsAnonymousStats: API.OperationMethod<
   GetAnalyticsAnonymousStatsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<GetAnalyticsAnonymousStatsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetAnalyticsAnonymousStatsResponse>,
+  input: __S(1584, __c198, 0) as any as S.Schema<GetAnalyticsAnonymousStatsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetAnalyticsAnonymousStatsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11145,8 +11169,8 @@ export const getAutomagicDashboard: API.OperationMethod<
   GetAutomagicDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<GetAutomagicDashboardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetAutomagicDashboardResponse>,
+  input: __S(1592, __c199, 0) as any as S.Schema<GetAutomagicDashboardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetAutomagicDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11160,8 +11184,8 @@ export const getAutomagicDashboardCell: API.OperationMethod<
   GetAutomagicDashboardCellError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<GetAutomagicDashboardCellRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetAutomagicDashboardCellResponse>,
+  input: __S(1600, __c200, 0) as any as S.Schema<GetAutomagicDashboardCellRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetAutomagicDashboardCellResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11175,8 +11199,8 @@ export const getAutomagicDashboardCellCompare: API.OperationMethod<
   GetAutomagicDashboardCellCompareError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<GetAutomagicDashboardCellCompareRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetAutomagicDashboardCellCompareResponse>,
+  input: __S(1608, __c201, 0) as any as S.Schema<GetAutomagicDashboardCellCompareRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetAutomagicDashboardCellCompareResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11191,14 +11215,14 @@ export const getAutomagicDashboardCellRuleDashboardTemplate: API.OperationMethod
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    362,
-    __c45,
-    2,
+    1616,
+    __c202,
+    0,
   ) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    4648,
+    __c581,
+    0,
   ) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
@@ -11214,14 +11238,14 @@ export const getAutomagicDashboardCellRuleDashboardTemplateCompare: API.Operatio
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    363,
-    __c45,
-    3,
+    1624,
+    __c203,
+    0,
   ) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateCompareRequest>,
   output: __S(
-    364,
-    __c45,
-    4,
+    1625,
+    __c203,
+    1,
   ) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateCompareResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
@@ -11236,8 +11260,8 @@ export const getAutomagicDashboardCompare: API.OperationMethod<
   GetAutomagicDashboardCompareError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365, __c45, 5) as any as S.Schema<GetAutomagicDashboardCompareRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetAutomagicDashboardCompareResponse>,
+  input: __S(1632, __c204, 0) as any as S.Schema<GetAutomagicDashboardCompareRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetAutomagicDashboardCompareResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11252,14 +11276,14 @@ export const getAutomagicDashboardEntityOrQueryQueryMetadata: API.OperationMetho
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    366,
-    __c45,
-    6,
+    1640,
+    __c205,
+    0,
   ) as any as S.Schema<GetAutomagicDashboardEntityOrQueryQueryMetadataRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    4648,
+    __c581,
+    0,
   ) as any as S.Schema<GetAutomagicDashboardEntityOrQueryQueryMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
@@ -11274,8 +11298,12 @@ export const getAutomagicDashboardRuleDashboardTemplate: API.OperationMethod<
   GetAutomagicDashboardRuleDashboardTemplateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateResponse>,
+  input: __S(1648, __c206, 0) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateRequest>,
+  output: __S(
+    4648,
+    __c581,
+    0,
+  ) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11290,14 +11318,14 @@ export const getAutomagicDashboardRuleDashboardTemplateCompare: API.OperationMet
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    368,
-    __c46,
+    1656,
+    __c207,
     0,
   ) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateCompareRequest>,
   output: __S(
-    70,
-    __c8,
-    6,
+    2304,
+    __c288,
+    0,
   ) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateCompareResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
@@ -11312,8 +11340,8 @@ export const getAutomagicDashboardsDatabaseCandidates: API.OperationMethod<
   GetAutomagicDashboardsDatabaseCandidatesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<GetAutomagicDashboardsDatabaseCandidatesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetAutomagicDashboardsDatabaseCandidatesResponse>,
+  input: __S(1672, __c209, 0) as any as S.Schema<GetAutomagicDashboardsDatabaseCandidatesRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetAutomagicDashboardsDatabaseCandidatesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11327,8 +11355,12 @@ export const getAutomagicDashboardsModelIndexPrimaryKey: API.OperationMethod<
   GetAutomagicDashboardsModelIndexPrimaryKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<GetAutomagicDashboardsModelIndexPrimaryKeyRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetAutomagicDashboardsModelIndexPrimaryKeyResponse>,
+  input: __S(1680, __c210, 0) as any as S.Schema<GetAutomagicDashboardsModelIndexPrimaryKeyRequest>,
+  output: __S(
+    4648,
+    __c581,
+    0,
+  ) as any as S.Schema<GetAutomagicDashboardsModelIndexPrimaryKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11342,8 +11374,8 @@ export const getBookmark: API.OperationMethod<
   GetBookmarkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371, __c46, 3) as any as S.Schema<GetBookmarkRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetBookmarkResponse>,
+  input: __S(1688, __c211, 0) as any as S.Schema<GetBookmarkRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetBookmarkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11357,8 +11389,8 @@ export const getBugReportingConnectionPoolDetails: API.OperationMethod<
   GetBugReportingConnectionPoolDetailsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<GetBugReportingConnectionPoolDetailsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetBugReportingConnectionPoolDetailsResponse>,
+  input: __S(1696, __c212, 0) as any as S.Schema<GetBugReportingConnectionPoolDetailsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetBugReportingConnectionPoolDetailsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11372,8 +11404,8 @@ export const getBugReportingDetails: API.OperationMethod<
   GetBugReportingDetailsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(373, __c46, 5) as any as S.Schema<GetBugReportingDetailsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetBugReportingDetailsResponse>,
+  input: __S(1704, __c213, 0) as any as S.Schema<GetBugReportingDetailsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetBugReportingDetailsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11387,8 +11419,8 @@ export const getCache: API.OperationMethod<
   GetCacheError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<GetCacheRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCacheResponse>,
+  input: __S(1712, __c214, 0) as any as S.Schema<GetCacheRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCacheResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11402,8 +11434,8 @@ export const getCard: API.OperationMethod<
   GetCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<GetCardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardResponse>,
+  input: __S(1720, __c215, 0) as any as S.Schema<GetCardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11417,8 +11449,8 @@ export const getCard2: API.OperationMethod<
   GetCard2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<GetCard2Request>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCard2Response>,
+  input: __S(1728, __c216, 0) as any as S.Schema<GetCard2Request>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCard2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11432,8 +11464,8 @@ export const getCardById: API.OperationMethod<
   GetCardByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377, __c47, 1) as any as S.Schema<GetCardByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardByIdResponse>,
+  input: __S(1736, __c217, 0) as any as S.Schema<GetCardByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11447,8 +11479,8 @@ export const getCardByUuid: API.OperationMethod<
   GetCardByUuidError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<GetCardByUuidRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardByUuidResponse>,
+  input: __S(1744, __c218, 0) as any as S.Schema<GetCardByUuidRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardByUuidResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11462,8 +11494,8 @@ export const getCardDashboards: API.OperationMethod<
   GetCardDashboardsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379, __c47, 3) as any as S.Schema<GetCardDashboardsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardDashboardsResponse>,
+  input: __S(1760, __c220, 0) as any as S.Schema<GetCardDashboardsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardDashboardsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11477,8 +11509,8 @@ export const getCardEmbeddable: API.OperationMethod<
   GetCardEmbeddableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<GetCardEmbeddableRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardEmbeddableResponse>,
+  input: __S(1768, __c221, 0) as any as S.Schema<GetCardEmbeddableRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardEmbeddableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11492,8 +11524,8 @@ export const getCardParamRemapping: API.OperationMethod<
   GetCardParamRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381, __c47, 5) as any as S.Schema<GetCardParamRemappingRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardParamRemappingResponse>,
+  input: __S(1776, __c222, 0) as any as S.Schema<GetCardParamRemappingRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardParamRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11507,8 +11539,8 @@ export const getCardParamRemapping2: API.OperationMethod<
   GetCardParamRemapping2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382, __c47, 6) as any as S.Schema<GetCardParamRemappingRequest2>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardParamRemapping2Response>,
+  input: __S(1784, __c223, 0) as any as S.Schema<GetCardParamRemappingRequest2>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardParamRemapping2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11522,8 +11554,8 @@ export const getCardParamSearch: API.OperationMethod<
   GetCardParamSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<GetCardParamSearchRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardParamSearchResponse>,
+  input: __S(1792, __c224, 0) as any as S.Schema<GetCardParamSearchRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardParamSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11537,8 +11569,8 @@ export const getCardParamSearchByQuery: API.OperationMethod<
   GetCardParamSearchByQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<GetCardParamSearchByQueryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetCardParamSearchByQueryResponse>,
+  input: __S(1800, __c225, 0) as any as S.Schema<GetCardParamSearchByQueryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetCardParamSearchByQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11552,8 +11584,8 @@ export const getCardParamValues: API.OperationMethod<
   GetCardParamValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<GetCardParamValuesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardParamValuesResponse>,
+  input: __S(1808, __c226, 0) as any as S.Schema<GetCardParamValuesRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardParamValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11567,8 +11599,8 @@ export const getCardParamValues2: API.OperationMethod<
   GetCardParamValues2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<GetCardParamValuesRequest2>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardParamValues2Response>,
+  input: __S(1816, __c227, 0) as any as S.Schema<GetCardParamValuesRequest2>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardParamValues2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11582,8 +11614,8 @@ export const getCardQuery: API.OperationMethod<
   GetCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<GetCardQueryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardQueryResponse>,
+  input: __S(1824, __c228, 0) as any as S.Schema<GetCardQueryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11597,8 +11629,8 @@ export const getCardQueryByExportFormat: API.OperationMethod<
   GetCardQueryByExportFormatError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<GetCardQueryByExportFormatRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetCardQueryByExportFormatResponse>,
+  input: __S(1832, __c229, 0) as any as S.Schema<GetCardQueryByExportFormatRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetCardQueryByExportFormatResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11612,8 +11644,8 @@ export const getCardQueryMetadata: API.OperationMethod<
   GetCardQueryMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(389, __c48, 5) as any as S.Schema<GetCardQueryMetadataRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardQueryMetadataResponse>,
+  input: __S(1848, __c231, 0) as any as S.Schema<GetCardQueryMetadataRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardQueryMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11627,8 +11659,8 @@ export const getCardSeries: API.OperationMethod<
   GetCardSeriesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390, __c48, 6) as any as S.Schema<GetCardSeriesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCardSeriesResponse>,
+  input: __S(1856, __c232, 0) as any as S.Schema<GetCardSeriesRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCardSeriesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11642,8 +11674,8 @@ export const getChannel: API.OperationMethod<
   GetChannelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<GetChannelRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetChannelResponse>,
+  input: __S(1864, __c233, 0) as any as S.Schema<GetChannelRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetChannelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11657,8 +11689,8 @@ export const getChannelById: API.OperationMethod<
   GetChannelByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<GetChannelByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetChannelByIdResponse>,
+  input: __S(1872, __c234, 0) as any as S.Schema<GetChannelByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetChannelByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11672,8 +11704,8 @@ export const getCloudMigration: API.OperationMethod<
   GetCloudMigrationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<GetCloudMigrationRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCloudMigrationResponse>,
+  input: __S(1880, __c235, 0) as any as S.Schema<GetCloudMigrationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCloudMigrationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11687,8 +11719,8 @@ export const getCollection: API.OperationMethod<
   GetCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<GetCollectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCollectionResponse>,
+  input: __S(1888, __c236, 0) as any as S.Schema<GetCollectionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11702,8 +11734,8 @@ export const getCollectionById: API.OperationMethod<
   GetCollectionByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<GetCollectionByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCollectionByIdResponse>,
+  input: __S(1896, __c237, 0) as any as S.Schema<GetCollectionByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCollectionByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11717,8 +11749,8 @@ export const getCollectionDashboardQuestionCandidates: API.OperationMethod<
   GetCollectionDashboardQuestionCandidatesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396, __c49, 4) as any as S.Schema<GetCollectionDashboardQuestionCandidatesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetCollectionDashboardQuestionCandidatesResponse>,
+  input: __S(1904, __c238, 0) as any as S.Schema<GetCollectionDashboardQuestionCandidatesRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetCollectionDashboardQuestionCandidatesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11732,8 +11764,8 @@ export const getCollectionGraph: API.OperationMethod<
   GetCollectionGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<GetCollectionGraphRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCollectionGraphResponse>,
+  input: __S(1912, __c239, 0) as any as S.Schema<GetCollectionGraphRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCollectionGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11747,8 +11779,8 @@ export const getCollectionItems: API.OperationMethod<
   GetCollectionItemsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<GetCollectionItemsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCollectionItemsResponse>,
+  input: __S(1920, __c240, 0) as any as S.Schema<GetCollectionItemsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCollectionItemsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11762,8 +11794,8 @@ export const getCollectionRoot: API.OperationMethod<
   GetCollectionRootError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<GetCollectionRootRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCollectionRootResponse>,
+  input: __S(1944, __c243, 0) as any as S.Schema<GetCollectionRootRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCollectionRootResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11777,8 +11809,16 @@ export const getCollectionRootDashboardQuestionCandidates: API.OperationMethod<
   GetCollectionRootDashboardQuestionCandidatesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<GetCollectionRootDashboardQuestionCandidatesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetCollectionRootDashboardQuestionCandidatesResponse>,
+  input: __S(
+    1952,
+    __c244,
+    0,
+  ) as any as S.Schema<GetCollectionRootDashboardQuestionCandidatesRequest>,
+  output: __S(
+    4648,
+    __c581,
+    0,
+  ) as any as S.Schema<GetCollectionRootDashboardQuestionCandidatesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11792,8 +11832,8 @@ export const getCollectionRootItems: API.OperationMethod<
   GetCollectionRootItemsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<GetCollectionRootItemsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCollectionRootItemsResponse>,
+  input: __S(1960, __c245, 0) as any as S.Schema<GetCollectionRootItemsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCollectionRootItemsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11807,8 +11847,8 @@ export const getCollectionTrash: API.OperationMethod<
   GetCollectionTrashError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<GetCollectionTrashRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCollectionTrashResponse>,
+  input: __S(1968, __c246, 0) as any as S.Schema<GetCollectionTrashRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCollectionTrashResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11822,8 +11862,8 @@ export const getCollectionTree: API.OperationMethod<
   GetCollectionTreeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<GetCollectionTreeRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCollectionTreeResponse>,
+  input: __S(1976, __c247, 0) as any as S.Schema<GetCollectionTreeRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCollectionTreeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11837,8 +11877,8 @@ export const getComment: API.OperationMethod<
   GetCommentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<GetCommentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCommentResponse>,
+  input: __S(1984, __c248, 0) as any as S.Schema<GetCommentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCommentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11852,8 +11892,8 @@ export const getCommentMentions: API.OperationMethod<
   GetCommentMentionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<GetCommentMentionsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetCommentMentionsResponse>,
+  input: __S(1992, __c249, 0) as any as S.Schema<GetCommentMentionsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetCommentMentionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11867,8 +11907,8 @@ export const getDashboard: API.OperationMethod<
   GetDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<GetDashboardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDashboardResponse>,
+  input: __S(2000, __c250, 0) as any as S.Schema<GetDashboardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11882,8 +11922,8 @@ export const getDashboardById: API.OperationMethod<
   GetDashboardByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<GetDashboardByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDashboardByIdResponse>,
+  input: __S(2008, __c251, 0) as any as S.Schema<GetDashboardByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDashboardByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11897,8 +11937,8 @@ export const getDashboardByUuid: API.OperationMethod<
   GetDashboardByUuidError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<GetDashboardByUuidRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDashboardByUuidResponse>,
+  input: __S(2016, __c252, 0) as any as S.Schema<GetDashboardByUuidRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDashboardByUuidResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11912,8 +11952,8 @@ export const getDashboardDashcardCard: API.OperationMethod<
   GetDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<GetDashboardDashcardCardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDashboardDashcardCardResponse>,
+  input: __S(2032, __c254, 0) as any as S.Schema<GetDashboardDashcardCardRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11927,8 +11967,8 @@ export const getDashboardDashcardExecute: API.OperationMethod<
   GetDashboardDashcardExecuteError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<GetDashboardDashcardExecuteRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDashboardDashcardExecuteResponse>,
+  input: __S(2040, __c255, 0) as any as S.Schema<GetDashboardDashcardExecuteRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDashboardDashcardExecuteResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11942,8 +11982,8 @@ export const getDashboardDashcardExecute2: API.OperationMethod<
   GetDashboardDashcardExecute2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<GetDashboardDashcardExecuteRequest2>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDashboardDashcardExecute2Response>,
+  input: __S(2048, __c256, 0) as any as S.Schema<GetDashboardDashcardExecuteRequest2>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDashboardDashcardExecute2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11957,8 +11997,8 @@ export const getDashboardEmbeddable: API.OperationMethod<
   GetDashboardEmbeddableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<GetDashboardEmbeddableRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDashboardEmbeddableResponse>,
+  input: __S(2056, __c257, 0) as any as S.Schema<GetDashboardEmbeddableRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDashboardEmbeddableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11972,8 +12012,8 @@ export const getDashboardItems: API.OperationMethod<
   GetDashboardItemsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<GetDashboardItemsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDashboardItemsResponse>,
+  input: __S(2064, __c258, 0) as any as S.Schema<GetDashboardItemsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDashboardItemsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -11987,8 +12027,8 @@ export const getDashboardParamRemapping: API.OperationMethod<
   GetDashboardParamRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<GetDashboardParamRemappingRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDashboardParamRemappingResponse>,
+  input: __S(2072, __c259, 0) as any as S.Schema<GetDashboardParamRemappingRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDashboardParamRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12002,8 +12042,8 @@ export const getDashboardParamRemapping2: API.OperationMethod<
   GetDashboardParamRemapping2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<GetDashboardParamRemappingRequest2>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDashboardParamRemapping2Response>,
+  input: __S(2080, __c260, 0) as any as S.Schema<GetDashboardParamRemappingRequest2>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDashboardParamRemapping2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12017,8 +12057,8 @@ export const getDashboardParamSearch: API.OperationMethod<
   GetDashboardParamSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<GetDashboardParamSearchRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetDashboardParamSearchResponse>,
+  input: __S(2088, __c261, 0) as any as S.Schema<GetDashboardParamSearchRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<GetDashboardParamSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12032,8 +12072,8 @@ export const getDashboardParamSearchByQuery: API.OperationMethod<
   GetDashboardParamSearchByQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<GetDashboardParamSearchByQueryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDashboardParamSearchByQueryResponse>,
+  input: __S(2096, __c262, 0) as any as S.Schema<GetDashboardParamSearchByQueryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDashboardParamSearchByQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12047,8 +12087,8 @@ export const getDashboardParamsValidFilterFields: API.OperationMethod<
   GetDashboardParamsValidFilterFieldsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<GetDashboardParamsValidFilterFieldsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDashboardParamsValidFilterFieldsResponse>,
+  input: __S(2104, __c263, 0) as any as S.Schema<GetDashboardParamsValidFilterFieldsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDashboardParamsValidFilterFieldsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12062,8 +12102,8 @@ export const getDashboardParamValues: API.OperationMethod<
   GetDashboardParamValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<GetDashboardParamValuesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetDashboardParamValuesResponse>,
+  input: __S(2120, __c265, 0) as any as S.Schema<GetDashboardParamValuesRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<GetDashboardParamValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12077,8 +12117,8 @@ export const getDashboardParamValues2: API.OperationMethod<
   GetDashboardParamValues2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<GetDashboardParamValuesRequest2>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDashboardParamValues2Response>,
+  input: __S(2128, __c266, 0) as any as S.Schema<GetDashboardParamValuesRequest2>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDashboardParamValues2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12092,8 +12132,8 @@ export const getDashboardQueryMetadata: API.OperationMethod<
   GetDashboardQueryMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<GetDashboardQueryMetadataRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDashboardQueryMetadataResponse>,
+  input: __S(2136, __c267, 0) as any as S.Schema<GetDashboardQueryMetadataRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDashboardQueryMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12107,8 +12147,8 @@ export const getDashboardRelated: API.OperationMethod<
   GetDashboardRelatedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<GetDashboardRelatedRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDashboardRelatedResponse>,
+  input: __S(2144, __c268, 0) as any as S.Schema<GetDashboardRelatedRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDashboardRelatedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12122,8 +12162,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<GetDatabaseRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseResponse>,
+  input: __S(2152, __c269, 0) as any as S.Schema<GetDatabaseRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12137,8 +12177,8 @@ export const getDatabaseAutocompleteSuggestions: API.OperationMethod<
   GetDatabaseAutocompleteSuggestionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<GetDatabaseAutocompleteSuggestionsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDatabaseAutocompleteSuggestionsResponse>,
+  input: __S(2160, __c270, 0) as any as S.Schema<GetDatabaseAutocompleteSuggestionsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDatabaseAutocompleteSuggestionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12152,8 +12192,8 @@ export const getDatabaseById: API.OperationMethod<
   GetDatabaseByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<GetDatabaseByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseByIdResponse>,
+  input: __S(2168, __c271, 0) as any as S.Schema<GetDatabaseByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12167,8 +12207,8 @@ export const getDatabaseCardAutocompleteSuggestions: API.OperationMethod<
   GetDatabaseCardAutocompleteSuggestionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<GetDatabaseCardAutocompleteSuggestionsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDatabaseCardAutocompleteSuggestionsResponse>,
+  input: __S(2176, __c272, 0) as any as S.Schema<GetDatabaseCardAutocompleteSuggestionsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDatabaseCardAutocompleteSuggestionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12182,8 +12222,8 @@ export const getDatabaseDataset: API.OperationMethod<
   GetDatabaseDatasetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<GetDatabaseDatasetRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseDatasetResponse>,
+  input: __S(2184, __c273, 0) as any as S.Schema<GetDatabaseDatasetRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseDatasetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12197,8 +12237,8 @@ export const getDatabaseDatasets: API.OperationMethod<
   GetDatabaseDatasetsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<GetDatabaseDatasetsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseDatasetsResponse>,
+  input: __S(2192, __c274, 0) as any as S.Schema<GetDatabaseDatasetsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseDatasetsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12212,8 +12252,8 @@ export const getDatabaseFields: API.OperationMethod<
   GetDatabaseFieldsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<GetDatabaseFieldsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseFieldsResponse>,
+  input: __S(2216, __c277, 0) as any as S.Schema<GetDatabaseFieldsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseFieldsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12227,8 +12267,8 @@ export const getDatabaseHealthcheck: API.OperationMethod<
   GetDatabaseHealthcheckError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<GetDatabaseHealthcheckRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseHealthcheckResponse>,
+  input: __S(2224, __c278, 0) as any as S.Schema<GetDatabaseHealthcheckRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseHealthcheckResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12242,8 +12282,8 @@ export const getDatabaseIdfields: API.OperationMethod<
   GetDatabaseIdfieldsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<GetDatabaseIdfieldsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseIdfieldsResponse>,
+  input: __S(2232, __c279, 0) as any as S.Schema<GetDatabaseIdfieldsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseIdfieldsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12257,8 +12297,8 @@ export const getDatabaseMetadata: API.OperationMethod<
   GetDatabaseMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<GetDatabaseMetadataRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseMetadataResponse>,
+  input: __S(2240, __c280, 0) as any as S.Schema<GetDatabaseMetadataRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12272,8 +12312,8 @@ export const getDatabaseMetadata2: API.OperationMethod<
   GetDatabaseMetadata2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<GetDatabaseMetadataRequest2>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseMetadata2Response>,
+  input: __S(2248, __c281, 0) as any as S.Schema<GetDatabaseMetadataRequest2>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseMetadata2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12287,8 +12327,8 @@ export const getDatabaseSchema: API.OperationMethod<
   GetDatabaseSchemaError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<GetDatabaseSchemaRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseSchemaResponse>,
+  input: __S(2256, __c282, 0) as any as S.Schema<GetDatabaseSchemaRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseSchemaResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12302,8 +12342,8 @@ export const getDatabaseSchemaBySchema: API.OperationMethod<
   GetDatabaseSchemaBySchemaError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<GetDatabaseSchemaBySchemaRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDatabaseSchemaBySchemaResponse>,
+  input: __S(2264, __c283, 0) as any as S.Schema<GetDatabaseSchemaBySchemaRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDatabaseSchemaBySchemaResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12317,8 +12357,8 @@ export const getDatabaseSchemaBySchema2: API.OperationMethod<
   GetDatabaseSchemaBySchema2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<GetDatabaseSchemaBySchemaRequest2>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDatabaseSchemaBySchema2Response>,
+  input: __S(2272, __c284, 0) as any as S.Schema<GetDatabaseSchemaBySchemaRequest2>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDatabaseSchemaBySchema2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12332,8 +12372,8 @@ export const getDatabaseSchemas: API.OperationMethod<
   GetDatabaseSchemasError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<GetDatabaseSchemasRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseSchemasResponse>,
+  input: __S(2280, __c285, 0) as any as S.Schema<GetDatabaseSchemasRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseSchemasResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12347,8 +12387,8 @@ export const getDatabaseSchemas2: API.OperationMethod<
   GetDatabaseSchemas2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<GetDatabaseSchemasRequest2>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseSchemas2Response>,
+  input: __S(2288, __c286, 0) as any as S.Schema<GetDatabaseSchemasRequest2>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseSchemas2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12362,8 +12402,8 @@ export const getDatabaseSettingsAvailable: API.OperationMethod<
   GetDatabaseSettingsAvailableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<GetDatabaseSettingsAvailableRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDatabaseSettingsAvailableResponse>,
+  input: __S(2312, __c289, 0) as any as S.Schema<GetDatabaseSettingsAvailableRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDatabaseSettingsAvailableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12377,8 +12417,8 @@ export const getDatabaseSyncableSchemas: API.OperationMethod<
   GetDatabaseSyncableSchemasError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<GetDatabaseSyncableSchemasRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDatabaseSyncableSchemasResponse>,
+  input: __S(2320, __c290, 0) as any as S.Schema<GetDatabaseSyncableSchemasRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetDatabaseSyncableSchemasResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12392,8 +12432,8 @@ export const getDatabaseUsageInfo: API.OperationMethod<
   GetDatabaseUsageInfoError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<GetDatabaseUsageInfoRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDatabaseUsageInfoResponse>,
+  input: __S(2328, __c291, 0) as any as S.Schema<GetDatabaseUsageInfoRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDatabaseUsageInfoResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12407,8 +12447,8 @@ export const getDocument: API.OperationMethod<
   GetDocumentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<GetDocumentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDocumentResponse>,
+  input: __S(2336, __c292, 0) as any as S.Schema<GetDocumentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDocumentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12422,8 +12462,8 @@ export const getDocument2: API.OperationMethod<
   GetDocument2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<GetDocument2Request>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDocument2Response>,
+  input: __S(2344, __c293, 0) as any as S.Schema<GetDocument2Request>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDocument2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12437,8 +12477,8 @@ export const getDocumentByDocumentId: API.OperationMethod<
   GetDocumentByDocumentIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<GetDocumentByDocumentIdRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetDocumentByDocumentIdResponse>,
+  input: __S(2352, __c294, 0) as any as S.Schema<GetDocumentByDocumentIdRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<GetDocumentByDocumentIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12452,8 +12492,8 @@ export const getDocumentByUuid: API.OperationMethod<
   GetDocumentByUuidError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<GetDocumentByUuidRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDocumentByUuidResponse>,
+  input: __S(2360, __c295, 0) as any as S.Schema<GetDocumentByUuidRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDocumentByUuidResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12467,8 +12507,8 @@ export const getDocumentCard: API.OperationMethod<
   GetDocumentCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<GetDocumentCardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDocumentCardResponse>,
+  input: __S(2368, __c296, 0) as any as S.Schema<GetDocumentCardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetDocumentCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12482,8 +12522,8 @@ export const getEeAdvancedPermissionsApplicationGraph: API.OperationMethod<
   GetEeAdvancedPermissionsApplicationGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<GetEeAdvancedPermissionsApplicationGraphRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeAdvancedPermissionsApplicationGraphResponse>,
+  input: __S(2376, __c297, 0) as any as S.Schema<GetEeAdvancedPermissionsApplicationGraphRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeAdvancedPermissionsApplicationGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12497,8 +12537,8 @@ export const getEeAdvancedPermissionsImpersonation: API.OperationMethod<
   GetEeAdvancedPermissionsImpersonationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<GetEeAdvancedPermissionsImpersonationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeAdvancedPermissionsImpersonationResponse>,
+  input: __S(2384, __c298, 0) as any as S.Schema<GetEeAdvancedPermissionsImpersonationRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeAdvancedPermissionsImpersonationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12512,8 +12552,8 @@ export const getEeAiControlsPermissions: API.OperationMethod<
   GetEeAiControlsPermissionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<GetEeAiControlsPermissionsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeAiControlsPermissionsResponse>,
+  input: __S(2400, __c300, 0) as any as S.Schema<GetEeAiControlsPermissionsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeAiControlsPermissionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12527,8 +12567,8 @@ export const getEeAiControlsUsageGroup: API.OperationMethod<
   GetEeAiControlsUsageGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<GetEeAiControlsUsageGroupRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeAiControlsUsageGroupResponse>,
+  input: __S(2408, __c301, 0) as any as S.Schema<GetEeAiControlsUsageGroupRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeAiControlsUsageGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12542,8 +12582,8 @@ export const getEeAiControlsUsageGroupByGroupId: API.OperationMethod<
   GetEeAiControlsUsageGroupByGroupIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<GetEeAiControlsUsageGroupByGroupIdRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeAiControlsUsageGroupByGroupIdResponse>,
+  input: __S(2416, __c302, 0) as any as S.Schema<GetEeAiControlsUsageGroupByGroupIdRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeAiControlsUsageGroupByGroupIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12557,8 +12597,8 @@ export const getEeAiControlsUsageInstance: API.OperationMethod<
   GetEeAiControlsUsageInstanceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<GetEeAiControlsUsageInstanceRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeAiControlsUsageInstanceResponse>,
+  input: __S(2424, __c303, 0) as any as S.Schema<GetEeAiControlsUsageInstanceRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeAiControlsUsageInstanceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12572,8 +12612,8 @@ export const getEeAiControlsUsageTenant: API.OperationMethod<
   GetEeAiControlsUsageTenantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<GetEeAiControlsUsageTenantRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeAiControlsUsageTenantResponse>,
+  input: __S(2432, __c304, 0) as any as S.Schema<GetEeAiControlsUsageTenantRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeAiControlsUsageTenantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12587,8 +12627,8 @@ export const getEeAiControlsUsageTenantByTenantId: API.OperationMethod<
   GetEeAiControlsUsageTenantByTenantIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<GetEeAiControlsUsageTenantByTenantIdRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeAiControlsUsageTenantByTenantIdResponse>,
+  input: __S(2440, __c305, 0) as any as S.Schema<GetEeAiControlsUsageTenantByTenantIdRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeAiControlsUsageTenantByTenantIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12602,8 +12642,8 @@ export const getEeAuditAppUserAuditInfo: API.OperationMethod<
   GetEeAuditAppUserAuditInfoError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<GetEeAuditAppUserAuditInfoRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeAuditAppUserAuditInfoResponse>,
+  input: __S(2448, __c306, 0) as any as S.Schema<GetEeAuditAppUserAuditInfoRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeAuditAppUserAuditInfoResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12617,8 +12657,8 @@ export const getEeBilling: API.OperationMethod<
   GetEeBillingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<GetEeBillingRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeBillingResponse>,
+  input: __S(2456, __c307, 0) as any as S.Schema<GetEeBillingRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeBillingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12632,8 +12672,8 @@ export const getEeCloudAddOnsAddons: API.OperationMethod<
   GetEeCloudAddOnsAddonsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457, __c57, 1) as any as S.Schema<GetEeCloudAddOnsAddonsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeCloudAddOnsAddonsResponse>,
+  input: __S(2464, __c308, 0) as any as S.Schema<GetEeCloudAddOnsAddonsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeCloudAddOnsAddonsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12647,8 +12687,8 @@ export const getEeCloudAddOnsPlans: API.OperationMethod<
   GetEeCloudAddOnsPlansError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<GetEeCloudAddOnsPlansRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeCloudAddOnsPlansResponse>,
+  input: __S(2472, __c309, 0) as any as S.Schema<GetEeCloudAddOnsPlansRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeCloudAddOnsPlansResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12662,8 +12702,8 @@ export const getEeContentTranslationCsv: API.OperationMethod<
   GetEeContentTranslationCsvError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<GetEeContentTranslationCsvRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeContentTranslationCsvResponse>,
+  input: __S(2488, __c311, 0) as any as S.Schema<GetEeContentTranslationCsvRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeContentTranslationCsvResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12677,8 +12717,8 @@ export const getEeContentTranslationDictionary: API.OperationMethod<
   GetEeContentTranslationDictionaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<GetEeContentTranslationDictionaryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeContentTranslationDictionaryResponse>,
+  input: __S(2496, __c312, 0) as any as S.Schema<GetEeContentTranslationDictionaryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeContentTranslationDictionaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12692,8 +12732,8 @@ export const getEeContentTranslationDictionaryByToken: API.OperationMethod<
   GetEeContentTranslationDictionaryByTokenError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<GetEeContentTranslationDictionaryByTokenRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeContentTranslationDictionaryByTokenResponse>,
+  input: __S(2504, __c313, 0) as any as S.Schema<GetEeContentTranslationDictionaryByTokenRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeContentTranslationDictionaryByTokenResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12707,8 +12747,8 @@ export const getEeCustomVizPlugin: API.OperationMethod<
   GetEeCustomVizPluginError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<GetEeCustomVizPluginRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeCustomVizPluginResponse>,
+  input: __S(2512, __c314, 0) as any as S.Schema<GetEeCustomVizPluginRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeCustomVizPluginResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12722,8 +12762,8 @@ export const getEeCustomVizPluginAsset: API.OperationMethod<
   GetEeCustomVizPluginAssetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<GetEeCustomVizPluginAssetRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeCustomVizPluginAssetResponse>,
+  input: __S(2520, __c315, 0) as any as S.Schema<GetEeCustomVizPluginAssetRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeCustomVizPluginAssetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12737,8 +12777,8 @@ export const getEeCustomVizPluginBundle: API.OperationMethod<
   GetEeCustomVizPluginBundleError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<GetEeCustomVizPluginBundleRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeCustomVizPluginBundleResponse>,
+  input: __S(2528, __c316, 0) as any as S.Schema<GetEeCustomVizPluginBundleRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeCustomVizPluginBundleResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12752,8 +12792,8 @@ export const getEeCustomVizPluginDevSse: API.OperationMethod<
   GetEeCustomVizPluginDevSseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465, __c58, 1) as any as S.Schema<GetEeCustomVizPluginDevSseRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeCustomVizPluginDevSseResponse>,
+  input: __S(2536, __c317, 0) as any as S.Schema<GetEeCustomVizPluginDevSseRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeCustomVizPluginDevSseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12767,8 +12807,8 @@ export const getEeCustomVizPluginList: API.OperationMethod<
   GetEeCustomVizPluginListError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<GetEeCustomVizPluginListRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeCustomVizPluginListResponse>,
+  input: __S(2544, __c318, 0) as any as S.Schema<GetEeCustomVizPluginListRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeCustomVizPluginListResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12782,8 +12822,8 @@ export const getEeCustomVizPluginSandboxHost: API.OperationMethod<
   GetEeCustomVizPluginSandboxHostError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<GetEeCustomVizPluginSandboxHostRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeCustomVizPluginSandboxHostResponse>,
+  input: __S(2552, __c319, 0) as any as S.Schema<GetEeCustomVizPluginSandboxHostRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeCustomVizPluginSandboxHostResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12797,8 +12837,8 @@ export const getEeDataComplexityScoreComplexity: API.OperationMethod<
   GetEeDataComplexityScoreComplexityError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468, __c58, 4) as any as S.Schema<GetEeDataComplexityScoreComplexityRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeDataComplexityScoreComplexityResponse>,
+  input: __S(2560, __c320, 0) as any as S.Schema<GetEeDataComplexityScoreComplexityRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeDataComplexityScoreComplexityResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12812,8 +12852,8 @@ export const getEeDependenciesBackfillStatus: API.OperationMethod<
   GetEeDependenciesBackfillStatusError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<GetEeDependenciesBackfillStatusRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeDependenciesBackfillStatusResponse>,
+  input: __S(2576, __c322, 0) as any as S.Schema<GetEeDependenciesBackfillStatusRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeDependenciesBackfillStatusResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12827,8 +12867,8 @@ export const getEeDependenciesGraph: API.OperationMethod<
   GetEeDependenciesGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<GetEeDependenciesGraphRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeDependenciesGraphResponse>,
+  input: __S(2584, __c323, 0) as any as S.Schema<GetEeDependenciesGraphRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeDependenciesGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12842,8 +12882,8 @@ export const getEeDependenciesGraphBreaking: API.OperationMethod<
   GetEeDependenciesGraphBreakingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<GetEeDependenciesGraphBreakingRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeDependenciesGraphBreakingResponse>,
+  input: __S(2592, __c324, 0) as any as S.Schema<GetEeDependenciesGraphBreakingRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeDependenciesGraphBreakingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12857,8 +12897,8 @@ export const getEeDependenciesGraphBroken: API.OperationMethod<
   GetEeDependenciesGraphBrokenError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<GetEeDependenciesGraphBrokenRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeDependenciesGraphBrokenResponse>,
+  input: __S(2600, __c325, 0) as any as S.Schema<GetEeDependenciesGraphBrokenRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeDependenciesGraphBrokenResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12872,8 +12912,8 @@ export const getEeDependenciesGraphDependents: API.OperationMethod<
   GetEeDependenciesGraphDependentsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<GetEeDependenciesGraphDependentsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeDependenciesGraphDependentsResponse>,
+  input: __S(2608, __c326, 0) as any as S.Schema<GetEeDependenciesGraphDependentsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeDependenciesGraphDependentsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12887,8 +12927,8 @@ export const getEeDependenciesGraphUnreferenced: API.OperationMethod<
   GetEeDependenciesGraphUnreferencedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<GetEeDependenciesGraphUnreferencedRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeDependenciesGraphUnreferencedResponse>,
+  input: __S(2616, __c327, 0) as any as S.Schema<GetEeDependenciesGraphUnreferencedRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeDependenciesGraphUnreferencedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12902,8 +12942,8 @@ export const getEeEmbeddingHubChecklist: API.OperationMethod<
   GetEeEmbeddingHubChecklistError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475, __c59, 3) as any as S.Schema<GetEeEmbeddingHubChecklistRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeEmbeddingHubChecklistResponse>,
+  input: __S(2624, __c328, 0) as any as S.Schema<GetEeEmbeddingHubChecklistRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeEmbeddingHubChecklistResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12917,8 +12957,8 @@ export const getEeErd: API.OperationMethod<
   GetEeErdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(476, __c59, 4) as any as S.Schema<GetEeErdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeErdResponse>,
+  input: __S(2632, __c329, 0) as any as S.Schema<GetEeErdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeErdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12932,8 +12972,8 @@ export const getEeGsheetsConnection: API.OperationMethod<
   GetEeGsheetsConnectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477, __c59, 5) as any as S.Schema<GetEeGsheetsConnectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeGsheetsConnectionResponse>,
+  input: __S(2640, __c330, 0) as any as S.Schema<GetEeGsheetsConnectionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeGsheetsConnectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12947,8 +12987,8 @@ export const getEeGsheetsServiceAccount: API.OperationMethod<
   GetEeGsheetsServiceAccountError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478, __c59, 6) as any as S.Schema<GetEeGsheetsServiceAccountRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeGsheetsServiceAccountResponse>,
+  input: __S(2648, __c331, 0) as any as S.Schema<GetEeGsheetsServiceAccountRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeGsheetsServiceAccountResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12962,8 +13002,8 @@ export const getEeLibrary: API.OperationMethod<
   GetEeLibraryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479, __c59, 7) as any as S.Schema<GetEeLibraryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeLibraryResponse>,
+  input: __S(2664, __c333, 0) as any as S.Schema<GetEeLibraryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeLibraryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12977,8 +13017,8 @@ export const getEeLibraryTree: API.OperationMethod<
   GetEeLibraryTreeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<GetEeLibraryTreeRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeLibraryTreeResponse>,
+  input: __S(2672, __c334, 0) as any as S.Schema<GetEeLibraryTreeRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeLibraryTreeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -12992,8 +13032,8 @@ export const getEeLogsQueryExecution: API.OperationMethod<
   GetEeLogsQueryExecutionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481, __c60, 1) as any as S.Schema<GetEeLogsQueryExecutionRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetEeLogsQueryExecutionResponse>,
+  input: __S(2680, __c335, 0) as any as S.Schema<GetEeLogsQueryExecutionRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<GetEeLogsQueryExecutionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13007,8 +13047,8 @@ export const getEeMetabotAnalyticsConversation: API.OperationMethod<
   GetEeMetabotAnalyticsConversationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482, __c60, 2) as any as S.Schema<GetEeMetabotAnalyticsConversationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeMetabotAnalyticsConversationResponse>,
+  input: __S(2688, __c336, 0) as any as S.Schema<GetEeMetabotAnalyticsConversationRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeMetabotAnalyticsConversationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13022,8 +13062,8 @@ export const getEeMetabotAnalyticsConversations: API.OperationMethod<
   GetEeMetabotAnalyticsConversationsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<GetEeMetabotAnalyticsConversationsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeMetabotAnalyticsConversationsResponse>,
+  input: __S(2696, __c337, 0) as any as S.Schema<GetEeMetabotAnalyticsConversationsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeMetabotAnalyticsConversationsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13037,8 +13077,8 @@ export const getEeMetabotUsage: API.OperationMethod<
   GetEeMetabotUsageError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<GetEeMetabotUsageRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeMetabotUsageResponse>,
+  input: __S(2704, __c338, 0) as any as S.Schema<GetEeMetabotUsageRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeMetabotUsageResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13052,8 +13092,8 @@ export const getEeMfaAdminOverview: API.OperationMethod<
   GetEeMfaAdminOverviewError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485, __c60, 5) as any as S.Schema<GetEeMfaAdminOverviewRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeMfaAdminOverviewResponse>,
+  input: __S(2712, __c339, 0) as any as S.Schema<GetEeMfaAdminOverviewRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeMfaAdminOverviewResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13067,8 +13107,8 @@ export const getEeMfaStatus: API.OperationMethod<
   GetEeMfaStatusError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(486, __c60, 6) as any as S.Schema<GetEeMfaStatusRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeMfaStatusResponse>,
+  input: __S(2720, __c340, 0) as any as S.Schema<GetEeMfaStatusRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeMfaStatusResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13082,8 +13122,8 @@ export const getEePermissionDebug: API.OperationMethod<
   GetEePermissionDebugError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(487, __c60, 7) as any as S.Schema<GetEePermissionDebugRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEePermissionDebugResponse>,
+  input: __S(2728, __c341, 0) as any as S.Schema<GetEePermissionDebugRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEePermissionDebugResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13097,8 +13137,8 @@ export const getEeRemoteSyncBranches: API.OperationMethod<
   GetEeRemoteSyncBranchesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<GetEeRemoteSyncBranchesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetEeRemoteSyncBranchesResponse>,
+  input: __S(2736, __c342, 0) as any as S.Schema<GetEeRemoteSyncBranchesRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<GetEeRemoteSyncBranchesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13112,8 +13152,8 @@ export const getEeRemoteSyncCurrentTask: API.OperationMethod<
   GetEeRemoteSyncCurrentTaskError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<GetEeRemoteSyncCurrentTaskRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeRemoteSyncCurrentTaskResponse>,
+  input: __S(2752, __c344, 0) as any as S.Schema<GetEeRemoteSyncCurrentTaskRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeRemoteSyncCurrentTaskResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13127,8 +13167,8 @@ export const getEeRemoteSyncDirty: API.OperationMethod<
   GetEeRemoteSyncDirtyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(490, __c61, 2) as any as S.Schema<GetEeRemoteSyncDirtyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeRemoteSyncDirtyResponse>,
+  input: __S(2760, __c345, 0) as any as S.Schema<GetEeRemoteSyncDirtyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeRemoteSyncDirtyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13142,8 +13182,8 @@ export const getEeRemoteSyncExportPreflight: API.OperationMethod<
   GetEeRemoteSyncExportPreflightError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(491, __c61, 3) as any as S.Schema<GetEeRemoteSyncExportPreflightRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeRemoteSyncExportPreflightResponse>,
+  input: __S(2768, __c346, 0) as any as S.Schema<GetEeRemoteSyncExportPreflightRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeRemoteSyncExportPreflightResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13157,8 +13197,8 @@ export const getEeRemoteSyncHasRemoteChanges: API.OperationMethod<
   GetEeRemoteSyncHasRemoteChangesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(492, __c61, 4) as any as S.Schema<GetEeRemoteSyncHasRemoteChangesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeRemoteSyncHasRemoteChangesResponse>,
+  input: __S(2776, __c347, 0) as any as S.Schema<GetEeRemoteSyncHasRemoteChangesRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeRemoteSyncHasRemoteChangesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13172,8 +13212,8 @@ export const getEeRemoteSyncIsDirty: API.OperationMethod<
   GetEeRemoteSyncIsDirtyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(493, __c61, 5) as any as S.Schema<GetEeRemoteSyncIsDirtyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeRemoteSyncIsDirtyResponse>,
+  input: __S(2784, __c348, 0) as any as S.Schema<GetEeRemoteSyncIsDirtyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeRemoteSyncIsDirtyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13187,8 +13227,8 @@ export const getEeReplacementRun: API.OperationMethod<
   GetEeReplacementRunError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(494, __c61, 6) as any as S.Schema<GetEeReplacementRunRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeReplacementRunResponse>,
+  input: __S(2792, __c349, 0) as any as S.Schema<GetEeReplacementRunRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeReplacementRunResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13202,8 +13242,8 @@ export const getEeReplacementRuns: API.OperationMethod<
   GetEeReplacementRunsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(495, __c61, 7) as any as S.Schema<GetEeReplacementRunsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeReplacementRunsResponse>,
+  input: __S(2800, __c350, 0) as any as S.Schema<GetEeReplacementRunsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeReplacementRunsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13217,8 +13257,8 @@ export const getEeScimGroup: API.OperationMethod<
   GetEeScimGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<GetEeScimGroupRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeScimGroupResponse>,
+  input: __S(2808, __c351, 0) as any as S.Schema<GetEeScimGroupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeScimGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13232,8 +13272,8 @@ export const getEeScimGroups: API.OperationMethod<
   GetEeScimGroupsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c62, 1) as any as S.Schema<GetEeScimGroupsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeScimGroupsResponse>,
+  input: __S(2816, __c352, 0) as any as S.Schema<GetEeScimGroupsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeScimGroupsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13247,8 +13287,8 @@ export const getEeScimKey: API.OperationMethod<
   GetEeScimKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(498, __c62, 2) as any as S.Schema<GetEeScimKeyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeScimKeyResponse>,
+  input: __S(2824, __c353, 0) as any as S.Schema<GetEeScimKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeScimKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13262,8 +13302,8 @@ export const getEeScimUser: API.OperationMethod<
   GetEeScimUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(499, __c62, 3) as any as S.Schema<GetEeScimUserRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeScimUserResponse>,
+  input: __S(2848, __c356, 0) as any as S.Schema<GetEeScimUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeScimUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13277,8 +13317,8 @@ export const getEeScimUsers: API.OperationMethod<
   GetEeScimUsersError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(500, __c62, 4) as any as S.Schema<GetEeScimUsersRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeScimUsersResponse>,
+  input: __S(2856, __c357, 0) as any as S.Schema<GetEeScimUsersRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeScimUsersResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13292,8 +13332,8 @@ export const getEeSecurityCenter: API.OperationMethod<
   GetEeSecurityCenterError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(501, __c62, 5) as any as S.Schema<GetEeSecurityCenterRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeSecurityCenterResponse>,
+  input: __S(2864, __c358, 0) as any as S.Schema<GetEeSecurityCenterRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeSecurityCenterResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13307,8 +13347,8 @@ export const getEeSemanticSearchStatus: API.OperationMethod<
   GetEeSemanticSearchStatusError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(502, __c62, 6) as any as S.Schema<GetEeSemanticSearchStatusRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeSemanticSearchStatusResponse>,
+  input: __S(2872, __c359, 0) as any as S.Schema<GetEeSemanticSearchStatusRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeSemanticSearchStatusResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13322,8 +13362,8 @@ export const getEeSerializationMetadataImport: API.OperationMethod<
   GetEeSerializationMetadataImportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(503, __c62, 7) as any as S.Schema<GetEeSerializationMetadataImportRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeSerializationMetadataImportResponse>,
+  input: __S(2880, __c360, 0) as any as S.Schema<GetEeSerializationMetadataImportRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeSerializationMetadataImportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13337,8 +13377,8 @@ export const getEeStale: API.OperationMethod<
   GetEeStaleError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(504, __c63, 0) as any as S.Schema<GetEeStaleRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeStaleResponse>,
+  input: __S(2888, __c361, 0) as any as S.Schema<GetEeStaleRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeStaleResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13352,8 +13392,8 @@ export const getEeSupportAccessGrant: API.OperationMethod<
   GetEeSupportAccessGrantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<GetEeSupportAccessGrantRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetEeSupportAccessGrantResponse>,
+  input: __S(2896, __c362, 0) as any as S.Schema<GetEeSupportAccessGrantRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<GetEeSupportAccessGrantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13367,8 +13407,8 @@ export const getEeSupportAccessGrantCurrent: API.OperationMethod<
   GetEeSupportAccessGrantCurrentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(506, __c63, 2) as any as S.Schema<GetEeSupportAccessGrantCurrentRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeSupportAccessGrantCurrentResponse>,
+  input: __S(2904, __c363, 0) as any as S.Schema<GetEeSupportAccessGrantCurrentRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeSupportAccessGrantCurrentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13382,8 +13422,8 @@ export const getEeTenant: API.OperationMethod<
   GetEeTenantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(507, __c63, 3) as any as S.Schema<GetEeTenantRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeTenantResponse>,
+  input: __S(2912, __c364, 0) as any as S.Schema<GetEeTenantRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeTenantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13397,8 +13437,8 @@ export const getEeTenantById: API.OperationMethod<
   GetEeTenantByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(508, __c63, 4) as any as S.Schema<GetEeTenantByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeTenantByIdResponse>,
+  input: __S(2920, __c365, 0) as any as S.Schema<GetEeTenantByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeTenantByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13412,8 +13452,8 @@ export const getEeTransformInspect: API.OperationMethod<
   GetEeTransformInspectError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(509, __c63, 5) as any as S.Schema<GetEeTransformInspectRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEeTransformInspectResponse>,
+  input: __S(2936, __c367, 0) as any as S.Schema<GetEeTransformInspectRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEeTransformInspectResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13427,8 +13467,8 @@ export const getEeTransformInspectByLensId: API.OperationMethod<
   GetEeTransformInspectByLensIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(510, __c63, 6) as any as S.Schema<GetEeTransformInspectByLensIdRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeTransformInspectByLensIdResponse>,
+  input: __S(2944, __c368, 0) as any as S.Schema<GetEeTransformInspectByLensIdRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeTransformInspectByLensIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13442,8 +13482,8 @@ export const getEeTransformsPythonLibrary: API.OperationMethod<
   GetEeTransformsPythonLibraryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(511, __c63, 7) as any as S.Schema<GetEeTransformsPythonLibraryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeTransformsPythonLibraryResponse>,
+  input: __S(2952, __c369, 0) as any as S.Schema<GetEeTransformsPythonLibraryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeTransformsPythonLibraryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13457,8 +13497,8 @@ export const getEeUploadManagementTables: API.OperationMethod<
   GetEeUploadManagementTablesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<GetEeUploadManagementTablesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEeUploadManagementTablesResponse>,
+  input: __S(2960, __c370, 0) as any as S.Schema<GetEeUploadManagementTablesRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEeUploadManagementTablesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13472,8 +13512,8 @@ export const getEmbedCard: API.OperationMethod<
   GetEmbedCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(513, __c64, 1) as any as S.Schema<GetEmbedCardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEmbedCardResponse>,
+  input: __S(2968, __c371, 0) as any as S.Schema<GetEmbedCardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEmbedCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13487,8 +13527,8 @@ export const getEmbedCardParamRemapping: API.OperationMethod<
   GetEmbedCardParamRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(514, __c64, 2) as any as S.Schema<GetEmbedCardParamRemappingRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEmbedCardParamRemappingResponse>,
+  input: __S(2976, __c372, 0) as any as S.Schema<GetEmbedCardParamRemappingRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEmbedCardParamRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13502,8 +13542,8 @@ export const getEmbedCardParamSearch: API.OperationMethod<
   GetEmbedCardParamSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(515, __c64, 3) as any as S.Schema<GetEmbedCardParamSearchRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetEmbedCardParamSearchResponse>,
+  input: __S(2984, __c373, 0) as any as S.Schema<GetEmbedCardParamSearchRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<GetEmbedCardParamSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13517,8 +13557,8 @@ export const getEmbedCardParamValues: API.OperationMethod<
   GetEmbedCardParamValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(516, __c64, 4) as any as S.Schema<GetEmbedCardParamValuesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetEmbedCardParamValuesResponse>,
+  input: __S(2992, __c374, 0) as any as S.Schema<GetEmbedCardParamValuesRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<GetEmbedCardParamValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13532,8 +13572,8 @@ export const getEmbedCardQuery: API.OperationMethod<
   GetEmbedCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(517, __c64, 5) as any as S.Schema<GetEmbedCardQueryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEmbedCardQueryResponse>,
+  input: __S(3000, __c375, 0) as any as S.Schema<GetEmbedCardQueryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEmbedCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13547,8 +13587,8 @@ export const getEmbedCardQueryByExportFormat: API.OperationMethod<
   GetEmbedCardQueryByExportFormatError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(518, __c64, 6) as any as S.Schema<GetEmbedCardQueryByExportFormatRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEmbedCardQueryByExportFormatResponse>,
+  input: __S(3008, __c376, 0) as any as S.Schema<GetEmbedCardQueryByExportFormatRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEmbedCardQueryByExportFormatResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13562,8 +13602,8 @@ export const getEmbedDashboard: API.OperationMethod<
   GetEmbedDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<GetEmbedDashboardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEmbedDashboardResponse>,
+  input: __S(3024, __c378, 0) as any as S.Schema<GetEmbedDashboardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEmbedDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13577,8 +13617,8 @@ export const getEmbedDashboardDashcardCard: API.OperationMethod<
   GetEmbedDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(520, __c65, 0) as any as S.Schema<GetEmbedDashboardDashcardCardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEmbedDashboardDashcardCardResponse>,
+  input: __S(3032, __c379, 0) as any as S.Schema<GetEmbedDashboardDashcardCardRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEmbedDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13592,8 +13632,16 @@ export const getEmbedDashboardDashcardCardByExportFormat: API.OperationMethod<
   GetEmbedDashboardDashcardCardByExportFormatError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(521, __c65, 1) as any as S.Schema<GetEmbedDashboardDashcardCardByExportFormatRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEmbedDashboardDashcardCardByExportFormatResponse>,
+  input: __S(
+    3040,
+    __c380,
+    0,
+  ) as any as S.Schema<GetEmbedDashboardDashcardCardByExportFormatRequest>,
+  output: __S(
+    4648,
+    __c581,
+    0,
+  ) as any as S.Schema<GetEmbedDashboardDashcardCardByExportFormatResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13607,8 +13655,8 @@ export const getEmbedDashboardParamRemapping: API.OperationMethod<
   GetEmbedDashboardParamRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(522, __c65, 2) as any as S.Schema<GetEmbedDashboardParamRemappingRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEmbedDashboardParamRemappingResponse>,
+  input: __S(3048, __c381, 0) as any as S.Schema<GetEmbedDashboardParamRemappingRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEmbedDashboardParamRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13622,8 +13670,8 @@ export const getEmbedDashboardParamSearch: API.OperationMethod<
   GetEmbedDashboardParamSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(523, __c65, 3) as any as S.Schema<GetEmbedDashboardParamSearchRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEmbedDashboardParamSearchResponse>,
+  input: __S(3056, __c382, 0) as any as S.Schema<GetEmbedDashboardParamSearchRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEmbedDashboardParamSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13637,8 +13685,8 @@ export const getEmbedDashboardParamValues: API.OperationMethod<
   GetEmbedDashboardParamValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<GetEmbedDashboardParamValuesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEmbedDashboardParamValuesResponse>,
+  input: __S(3064, __c383, 0) as any as S.Schema<GetEmbedDashboardParamValuesRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEmbedDashboardParamValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13652,8 +13700,8 @@ export const getEmbedPivotCardQuery: API.OperationMethod<
   GetEmbedPivotCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(525, __c65, 5) as any as S.Schema<GetEmbedPivotCardQueryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEmbedPivotCardQueryResponse>,
+  input: __S(3072, __c384, 0) as any as S.Schema<GetEmbedPivotCardQueryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEmbedPivotCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13667,8 +13715,8 @@ export const getEmbedPivotDashboardDashcardCard: API.OperationMethod<
   GetEmbedPivotDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(526, __c65, 6) as any as S.Schema<GetEmbedPivotDashboardDashcardCardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEmbedPivotDashboardDashcardCardResponse>,
+  input: __S(3080, __c385, 0) as any as S.Schema<GetEmbedPivotDashboardDashcardCardRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEmbedPivotDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13682,8 +13730,8 @@ export const getEmbedTheme: API.OperationMethod<
   GetEmbedThemeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(527, __c65, 7) as any as S.Schema<GetEmbedThemeRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEmbedThemeResponse>,
+  input: __S(3088, __c386, 0) as any as S.Schema<GetEmbedThemeRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEmbedThemeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13697,8 +13745,8 @@ export const getEmbedThemeById: API.OperationMethod<
   GetEmbedThemeByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<GetEmbedThemeByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEmbedThemeByIdResponse>,
+  input: __S(3096, __c387, 0) as any as S.Schema<GetEmbedThemeByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEmbedThemeByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13712,8 +13760,8 @@ export const getEmbedTilesCard: API.OperationMethod<
   GetEmbedTilesCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(529, __c66, 1) as any as S.Schema<GetEmbedTilesCardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEmbedTilesCardResponse>,
+  input: __S(3112, __c389, 0) as any as S.Schema<GetEmbedTilesCardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetEmbedTilesCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13727,8 +13775,8 @@ export const getEmbedTilesDashboardDashcardCard: API.OperationMethod<
   GetEmbedTilesDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<GetEmbedTilesDashboardDashcardCardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetEmbedTilesDashboardDashcardCardResponse>,
+  input: __S(3120, __c390, 0) as any as S.Schema<GetEmbedTilesDashboardDashcardCardRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetEmbedTilesDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13742,8 +13790,8 @@ export const getField: API.OperationMethod<
   GetFieldError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<GetFieldRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetFieldResponse>,
+  input: __S(3128, __c391, 0) as any as S.Schema<GetFieldRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetFieldResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13757,8 +13805,8 @@ export const getFieldRelated: API.OperationMethod<
   GetFieldRelatedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(532, __c66, 4) as any as S.Schema<GetFieldRelatedRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetFieldRelatedResponse>,
+  input: __S(3136, __c392, 0) as any as S.Schema<GetFieldRelatedRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetFieldRelatedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13772,8 +13820,8 @@ export const getFieldRemapping: API.OperationMethod<
   GetFieldRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(533, __c66, 5) as any as S.Schema<GetFieldRemappingRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetFieldRemappingResponse>,
+  input: __S(3144, __c393, 0) as any as S.Schema<GetFieldRemappingRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetFieldRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13787,8 +13835,8 @@ export const getFieldSearch: API.OperationMethod<
   GetFieldSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(534, __c66, 6) as any as S.Schema<GetFieldSearchRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetFieldSearchResponse>,
+  input: __S(3152, __c394, 0) as any as S.Schema<GetFieldSearchRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetFieldSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13802,8 +13850,8 @@ export const getFieldSummary: API.OperationMethod<
   GetFieldSummaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(535, __c66, 7) as any as S.Schema<GetFieldSummaryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetFieldSummaryResponse>,
+  input: __S(3160, __c395, 0) as any as S.Schema<GetFieldSummaryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetFieldSummaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13817,8 +13865,8 @@ export const getFieldValues: API.OperationMethod<
   GetFieldValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<GetFieldValuesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetFieldValuesResponse>,
+  input: __S(3168, __c396, 0) as any as S.Schema<GetFieldValuesRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetFieldValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13832,8 +13880,8 @@ export const getGeojson: API.OperationMethod<
   GetGeojsonError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<GetGeojsonRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetGeojsonResponse>,
+  input: __S(3176, __c397, 0) as any as S.Schema<GetGeojsonRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetGeojsonResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13847,8 +13895,8 @@ export const getGeojsonByKey: API.OperationMethod<
   GetGeojsonByKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(538, __c67, 2) as any as S.Schema<GetGeojsonByKeyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetGeojsonByKeyResponse>,
+  input: __S(3184, __c398, 0) as any as S.Schema<GetGeojsonByKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetGeojsonByKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13862,8 +13910,8 @@ export const getGlossary: API.OperationMethod<
   GetGlossaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<GetGlossaryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetGlossaryResponse>,
+  input: __S(3200, __c400, 0) as any as S.Schema<GetGlossaryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetGlossaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13877,8 +13925,8 @@ export const getHealthInspector: API.OperationMethod<
   GetHealthInspectorError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540, __c67, 4) as any as S.Schema<GetHealthInspectorRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetHealthInspectorResponse>,
+  input: __S(3208, __c401, 0) as any as S.Schema<GetHealthInspectorRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetHealthInspectorResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13892,8 +13940,8 @@ export const getKey: API.OperationMethod<
   GetKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<GetKeyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetKeyResponse>,
+  input: __S(3216, __c402, 0) as any as S.Schema<GetKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13907,8 +13955,8 @@ export const getKeyCount: API.OperationMethod<
   GetKeyCountError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(542, __c67, 6) as any as S.Schema<GetKeyCountRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetKeyCountResponse>,
+  input: __S(3224, __c403, 0) as any as S.Schema<GetKeyCountRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetKeyCountResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13922,8 +13970,8 @@ export const getLlmListModels: API.OperationMethod<
   GetLlmListModelsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(543, __c67, 7) as any as S.Schema<GetLlmListModelsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetLlmListModelsResponse>,
+  input: __S(3232, __c404, 0) as any as S.Schema<GetLlmListModelsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetLlmListModelsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13937,8 +13985,8 @@ export const getLoggerLogs: API.OperationMethod<
   GetLoggerLogsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<GetLoggerLogsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetLoggerLogsResponse>,
+  input: __S(3240, __c405, 0) as any as S.Schema<GetLoggerLogsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetLoggerLogsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13952,8 +14000,8 @@ export const getLoggerPresets: API.OperationMethod<
   GetLoggerPresetsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c68, 1) as any as S.Schema<GetLoggerPresetsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetLoggerPresetsResponse>,
+  input: __S(3248, __c406, 0) as any as S.Schema<GetLoggerPresetsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetLoggerPresetsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13967,8 +14015,8 @@ export const getLoginHistoryCurrent: API.OperationMethod<
   GetLoginHistoryCurrentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546, __c68, 2) as any as S.Schema<GetLoginHistoryCurrentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetLoginHistoryCurrentResponse>,
+  input: __S(3256, __c407, 0) as any as S.Schema<GetLoginHistoryCurrentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetLoginHistoryCurrentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13982,8 +14030,8 @@ export const getMeasure: API.OperationMethod<
   GetMeasureError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547, __c68, 3) as any as S.Schema<GetMeasureRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetMeasureResponse>,
+  input: __S(3264, __c408, 0) as any as S.Schema<GetMeasureRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetMeasureResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13997,8 +14045,8 @@ export const getMeasureById: API.OperationMethod<
   GetMeasureByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<GetMeasureByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetMeasureByIdResponse>,
+  input: __S(3272, __c409, 0) as any as S.Schema<GetMeasureByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetMeasureByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14012,8 +14060,8 @@ export const getMeasureDimensionRemapping: API.OperationMethod<
   GetMeasureDimensionRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(549, __c68, 5) as any as S.Schema<GetMeasureDimensionRemappingRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetMeasureDimensionRemappingResponse>,
+  input: __S(3296, __c412, 0) as any as S.Schema<GetMeasureDimensionRemappingRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetMeasureDimensionRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14027,8 +14075,8 @@ export const getMeasureDimensionSearch: API.OperationMethod<
   GetMeasureDimensionSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(550, __c68, 6) as any as S.Schema<GetMeasureDimensionSearchRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetMeasureDimensionSearchResponse>,
+  input: __S(3304, __c413, 0) as any as S.Schema<GetMeasureDimensionSearchRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetMeasureDimensionSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14042,8 +14090,8 @@ export const getMeasureDimensionValues: API.OperationMethod<
   GetMeasureDimensionValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(551, __c68, 7) as any as S.Schema<GetMeasureDimensionValuesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetMeasureDimensionValuesResponse>,
+  input: __S(3312, __c414, 0) as any as S.Schema<GetMeasureDimensionValuesRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetMeasureDimensionValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14057,8 +14105,8 @@ export const getMetabotConversation: API.OperationMethod<
   GetMetabotConversationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(552, __c69, 0) as any as S.Schema<GetMetabotConversationRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetMetabotConversationResponse>,
+  input: __S(3320, __c415, 0) as any as S.Schema<GetMetabotConversationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetMetabotConversationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14072,8 +14120,8 @@ export const getMetabotConversations: API.OperationMethod<
   GetMetabotConversationsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(553, __c69, 1) as any as S.Schema<GetMetabotConversationsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetMetabotConversationsResponse>,
+  input: __S(3328, __c416, 0) as any as S.Schema<GetMetabotConversationsRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<GetMetabotConversationsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14087,8 +14135,8 @@ export const getMetabotMetabot: API.OperationMethod<
   GetMetabotMetabotError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(554, __c69, 2) as any as S.Schema<GetMetabotMetabotRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetMetabotMetabotResponse>,
+  input: __S(3336, __c417, 0) as any as S.Schema<GetMetabotMetabotRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetMetabotMetabotResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14102,8 +14150,8 @@ export const getMetabotMetabotById: API.OperationMethod<
   GetMetabotMetabotByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(555, __c69, 3) as any as S.Schema<GetMetabotMetabotByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetMetabotMetabotByIdResponse>,
+  input: __S(3344, __c418, 0) as any as S.Schema<GetMetabotMetabotByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetMetabotMetabotByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14117,8 +14165,8 @@ export const getMetabotMetabotPromptSuggestions: API.OperationMethod<
   GetMetabotMetabotPromptSuggestionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(556, __c69, 4) as any as S.Schema<GetMetabotMetabotPromptSuggestionsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetMetabotMetabotPromptSuggestionsResponse>,
+  input: __S(3352, __c419, 0) as any as S.Schema<GetMetabotMetabotPromptSuggestionsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetMetabotMetabotPromptSuggestionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14132,8 +14180,8 @@ export const getMetabotPermissionsUserPermissions: API.OperationMethod<
   GetMetabotPermissionsUserPermissionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(557, __c69, 5) as any as S.Schema<GetMetabotPermissionsUserPermissionsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetMetabotPermissionsUserPermissionsResponse>,
+  input: __S(3360, __c420, 0) as any as S.Schema<GetMetabotPermissionsUserPermissionsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetMetabotPermissionsUserPermissionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14147,8 +14195,8 @@ export const getMetabotSettings: API.OperationMethod<
   GetMetabotSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(558, __c69, 6) as any as S.Schema<GetMetabotSettingsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetMetabotSettingsResponse>,
+  input: __S(3368, __c421, 0) as any as S.Schema<GetMetabotSettingsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetMetabotSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14162,8 +14210,8 @@ export const getMetric: API.OperationMethod<
   GetMetricError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(559, __c69, 7) as any as S.Schema<GetMetricRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetMetricResponse>,
+  input: __S(3392, __c424, 0) as any as S.Schema<GetMetricRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetMetricResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14177,8 +14225,8 @@ export const getMetricById: API.OperationMethod<
   GetMetricByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c70, 0) as any as S.Schema<GetMetricByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetMetricByIdResponse>,
+  input: __S(3400, __c425, 0) as any as S.Schema<GetMetricByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetMetricByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14192,8 +14240,8 @@ export const getMetricDimensionRemapping: API.OperationMethod<
   GetMetricDimensionRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(561, __c70, 1) as any as S.Schema<GetMetricDimensionRemappingRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetMetricDimensionRemappingResponse>,
+  input: __S(3408, __c426, 0) as any as S.Schema<GetMetricDimensionRemappingRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetMetricDimensionRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14207,8 +14255,8 @@ export const getMetricDimensionSearch: API.OperationMethod<
   GetMetricDimensionSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(562, __c70, 2) as any as S.Schema<GetMetricDimensionSearchRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetMetricDimensionSearchResponse>,
+  input: __S(3416, __c427, 0) as any as S.Schema<GetMetricDimensionSearchRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetMetricDimensionSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14222,8 +14270,8 @@ export const getMetricDimensionValues: API.OperationMethod<
   GetMetricDimensionValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(563, __c70, 3) as any as S.Schema<GetMetricDimensionValuesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetMetricDimensionValuesResponse>,
+  input: __S(3424, __c428, 0) as any as S.Schema<GetMetricDimensionValuesRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetMetricDimensionValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14237,8 +14285,8 @@ export const getModelIndex: API.OperationMethod<
   GetModelIndexError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(564, __c70, 4) as any as S.Schema<GetModelIndexRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetModelIndexResponse>,
+  input: __S(3432, __c429, 0) as any as S.Schema<GetModelIndexRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetModelIndexResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14252,8 +14300,8 @@ export const getModelIndexById: API.OperationMethod<
   GetModelIndexByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(565, __c70, 5) as any as S.Schema<GetModelIndexByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetModelIndexByIdResponse>,
+  input: __S(3440, __c430, 0) as any as S.Schema<GetModelIndexByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetModelIndexByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14267,8 +14315,8 @@ export const getMtGtap: API.OperationMethod<
   GetMtGtapError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(566, __c70, 6) as any as S.Schema<GetMtGtapRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetMtGtapResponse>,
+  input: __S(3448, __c431, 0) as any as S.Schema<GetMtGtapRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetMtGtapResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14282,8 +14330,8 @@ export const getMtGtapById: API.OperationMethod<
   GetMtGtapByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(567, __c70, 7) as any as S.Schema<GetMtGtapByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetMtGtapByIdResponse>,
+  input: __S(3456, __c432, 0) as any as S.Schema<GetMtGtapByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetMtGtapByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14297,8 +14345,8 @@ export const getMtUserAttributes: API.OperationMethod<
   GetMtUserAttributesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(568, __c71, 0) as any as S.Schema<GetMtUserAttributesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetMtUserAttributesResponse>,
+  input: __S(3464, __c433, 0) as any as S.Schema<GetMtUserAttributesRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetMtUserAttributesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14312,8 +14360,8 @@ export const getNativeQuerySnippet: API.OperationMethod<
   GetNativeQuerySnippetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(569, __c71, 1) as any as S.Schema<GetNativeQuerySnippetRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetNativeQuerySnippetResponse>,
+  input: __S(3480, __c435, 0) as any as S.Schema<GetNativeQuerySnippetRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetNativeQuerySnippetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14327,8 +14375,8 @@ export const getNativeQuerySnippetById: API.OperationMethod<
   GetNativeQuerySnippetByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(570, __c71, 2) as any as S.Schema<GetNativeQuerySnippetByIdRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetNativeQuerySnippetByIdResponse>,
+  input: __S(3488, __c436, 0) as any as S.Schema<GetNativeQuerySnippetByIdRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetNativeQuerySnippetByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14342,8 +14390,8 @@ export const getNotification: API.OperationMethod<
   GetNotificationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(571, __c71, 3) as any as S.Schema<GetNotificationRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetNotificationResponse>,
+  input: __S(3496, __c437, 0) as any as S.Schema<GetNotificationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetNotificationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14357,8 +14405,8 @@ export const getNotificationAdmin: API.OperationMethod<
   GetNotificationAdminError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(572, __c71, 4) as any as S.Schema<GetNotificationAdminRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetNotificationAdminResponse>,
+  input: __S(3504, __c438, 0) as any as S.Schema<GetNotificationAdminRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetNotificationAdminResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14372,8 +14420,8 @@ export const getNotificationAdminById: API.OperationMethod<
   GetNotificationAdminByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(573, __c71, 5) as any as S.Schema<GetNotificationAdminByIdRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetNotificationAdminByIdResponse>,
+  input: __S(3512, __c439, 0) as any as S.Schema<GetNotificationAdminByIdRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetNotificationAdminByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14387,8 +14435,8 @@ export const getNotificationById: API.OperationMethod<
   GetNotificationByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574, __c71, 6) as any as S.Schema<GetNotificationByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetNotificationByIdResponse>,
+  input: __S(3520, __c440, 0) as any as S.Schema<GetNotificationByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetNotificationByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14402,8 +14450,8 @@ export const getOauthAuthorizations: API.OperationMethod<
   GetOauthAuthorizationsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(575, __c71, 7) as any as S.Schema<GetOauthAuthorizationsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetOauthAuthorizationsResponse>,
+  input: __S(3528, __c441, 0) as any as S.Schema<GetOauthAuthorizationsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetOauthAuthorizationsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14417,8 +14465,8 @@ export const getOembed: API.OperationMethod<
   GetOembedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c72, 0) as any as S.Schema<GetOembedRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetOembedResponse>,
+  input: __S(3536, __c442, 0) as any as S.Schema<GetOembedRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetOembedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14432,8 +14480,8 @@ export const getOsiAiContext: API.OperationMethod<
   GetOsiAiContextError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(577, __c72, 1) as any as S.Schema<GetOsiAiContextRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetOsiAiContextResponse>,
+  input: __S(3544, __c443, 0) as any as S.Schema<GetOsiAiContextRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetOsiAiContextResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14447,8 +14495,8 @@ export const getOsiAiContextByEntityLocalId: API.OperationMethod<
   GetOsiAiContextByEntityLocalIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(578, __c72, 2) as any as S.Schema<GetOsiAiContextByEntityLocalIdRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetOsiAiContextByEntityLocalIdResponse>,
+  input: __S(3552, __c444, 0) as any as S.Schema<GetOsiAiContextByEntityLocalIdRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetOsiAiContextByEntityLocalIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14462,8 +14510,8 @@ export const getPermissionsGraph: API.OperationMethod<
   GetPermissionsGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(579, __c72, 3) as any as S.Schema<GetPermissionsGraphRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetPermissionsGraphResponse>,
+  input: __S(3568, __c446, 0) as any as S.Schema<GetPermissionsGraphRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetPermissionsGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14477,8 +14525,8 @@ export const getPermissionsGraphDb: API.OperationMethod<
   GetPermissionsGraphDbError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(580, __c72, 4) as any as S.Schema<GetPermissionsGraphDbRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetPermissionsGraphDbResponse>,
+  input: __S(3576, __c447, 0) as any as S.Schema<GetPermissionsGraphDbRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetPermissionsGraphDbResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14492,8 +14540,8 @@ export const getPermissionsGraphGroup: API.OperationMethod<
   GetPermissionsGraphGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(581, __c72, 5) as any as S.Schema<GetPermissionsGraphGroupRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPermissionsGraphGroupResponse>,
+  input: __S(3584, __c448, 0) as any as S.Schema<GetPermissionsGraphGroupRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPermissionsGraphGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14507,8 +14555,8 @@ export const getPermissionsGroup: API.OperationMethod<
   GetPermissionsGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(582, __c72, 6) as any as S.Schema<GetPermissionsGroupRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetPermissionsGroupResponse>,
+  input: __S(3592, __c449, 0) as any as S.Schema<GetPermissionsGroupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetPermissionsGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14522,8 +14570,8 @@ export const getPermissionsGroupById: API.OperationMethod<
   GetPermissionsGroupByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(583, __c72, 7) as any as S.Schema<GetPermissionsGroupByIdRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetPermissionsGroupByIdResponse>,
+  input: __S(3600, __c450, 0) as any as S.Schema<GetPermissionsGroupByIdRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<GetPermissionsGroupByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14537,8 +14585,8 @@ export const getPermissionsMembership: API.OperationMethod<
   GetPermissionsMembershipError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<GetPermissionsMembershipRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPermissionsMembershipResponse>,
+  input: __S(3608, __c451, 0) as any as S.Schema<GetPermissionsMembershipRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPermissionsMembershipResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14552,8 +14600,8 @@ export const getPersist: API.OperationMethod<
   GetPersistError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(585, __c73, 1) as any as S.Schema<GetPersistRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetPersistResponse>,
+  input: __S(3616, __c452, 0) as any as S.Schema<GetPersistRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetPersistResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14567,8 +14615,8 @@ export const getPersistByPersistedInfoId: API.OperationMethod<
   GetPersistByPersistedInfoIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(586, __c73, 2) as any as S.Schema<GetPersistByPersistedInfoIdRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPersistByPersistedInfoIdResponse>,
+  input: __S(3624, __c453, 0) as any as S.Schema<GetPersistByPersistedInfoIdRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPersistByPersistedInfoIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14582,8 +14630,8 @@ export const getPersistCard: API.OperationMethod<
   GetPersistCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(587, __c73, 3) as any as S.Schema<GetPersistCardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetPersistCardResponse>,
+  input: __S(3632, __c454, 0) as any as S.Schema<GetPersistCardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetPersistCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14597,8 +14645,8 @@ export const getPivotCardQuery: API.OperationMethod<
   GetPivotCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(588, __c73, 4) as any as S.Schema<GetPivotCardQueryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetPivotCardQueryResponse>,
+  input: __S(3640, __c455, 0) as any as S.Schema<GetPivotCardQueryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetPivotCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14612,8 +14660,8 @@ export const getPivotDashboardDashcardCard: API.OperationMethod<
   GetPivotDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(589, __c73, 5) as any as S.Schema<GetPivotDashboardDashcardCardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPivotDashboardDashcardCardResponse>,
+  input: __S(3656, __c457, 0) as any as S.Schema<GetPivotDashboardDashcardCardRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPivotDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14627,8 +14675,8 @@ export const getPremiumFeaturesTokenStatus: API.OperationMethod<
   GetPremiumFeaturesTokenStatusError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(590, __c73, 6) as any as S.Schema<GetPremiumFeaturesTokenStatusRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPremiumFeaturesTokenStatusResponse>,
+  input: __S(3664, __c458, 0) as any as S.Schema<GetPremiumFeaturesTokenStatusRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPremiumFeaturesTokenStatusResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14642,8 +14690,8 @@ export const getPreviewEmbedCard: API.OperationMethod<
   GetPreviewEmbedCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(591, __c73, 7) as any as S.Schema<GetPreviewEmbedCardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetPreviewEmbedCardResponse>,
+  input: __S(3672, __c459, 0) as any as S.Schema<GetPreviewEmbedCardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetPreviewEmbedCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14657,8 +14705,8 @@ export const getPreviewEmbedCardParamRemapping: API.OperationMethod<
   GetPreviewEmbedCardParamRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c74, 0) as any as S.Schema<GetPreviewEmbedCardParamRemappingRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPreviewEmbedCardParamRemappingResponse>,
+  input: __S(3680, __c460, 0) as any as S.Schema<GetPreviewEmbedCardParamRemappingRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPreviewEmbedCardParamRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14672,8 +14720,8 @@ export const getPreviewEmbedCardParamValues: API.OperationMethod<
   GetPreviewEmbedCardParamValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(593, __c74, 1) as any as S.Schema<GetPreviewEmbedCardParamValuesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPreviewEmbedCardParamValuesResponse>,
+  input: __S(3688, __c461, 0) as any as S.Schema<GetPreviewEmbedCardParamValuesRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPreviewEmbedCardParamValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14687,8 +14735,8 @@ export const getPreviewEmbedCardQuery: API.OperationMethod<
   GetPreviewEmbedCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(594, __c74, 2) as any as S.Schema<GetPreviewEmbedCardQueryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPreviewEmbedCardQueryResponse>,
+  input: __S(3696, __c462, 0) as any as S.Schema<GetPreviewEmbedCardQueryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPreviewEmbedCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14702,8 +14750,8 @@ export const getPreviewEmbedDashboard: API.OperationMethod<
   GetPreviewEmbedDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(595, __c74, 3) as any as S.Schema<GetPreviewEmbedDashboardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPreviewEmbedDashboardResponse>,
+  input: __S(3704, __c463, 0) as any as S.Schema<GetPreviewEmbedDashboardRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPreviewEmbedDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14717,8 +14765,8 @@ export const getPreviewEmbedDashboardDashcardCard: API.OperationMethod<
   GetPreviewEmbedDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(596, __c74, 4) as any as S.Schema<GetPreviewEmbedDashboardDashcardCardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPreviewEmbedDashboardDashcardCardResponse>,
+  input: __S(3712, __c464, 0) as any as S.Schema<GetPreviewEmbedDashboardDashcardCardRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPreviewEmbedDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14732,8 +14780,8 @@ export const getPreviewEmbedDashboardParamRemapping: API.OperationMethod<
   GetPreviewEmbedDashboardParamRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(597, __c74, 5) as any as S.Schema<GetPreviewEmbedDashboardParamRemappingRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPreviewEmbedDashboardParamRemappingResponse>,
+  input: __S(3720, __c465, 0) as any as S.Schema<GetPreviewEmbedDashboardParamRemappingRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPreviewEmbedDashboardParamRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14747,8 +14795,8 @@ export const getPreviewEmbedDashboardParamSearch: API.OperationMethod<
   GetPreviewEmbedDashboardParamSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(598, __c74, 6) as any as S.Schema<GetPreviewEmbedDashboardParamSearchRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPreviewEmbedDashboardParamSearchResponse>,
+  input: __S(3728, __c466, 0) as any as S.Schema<GetPreviewEmbedDashboardParamSearchRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPreviewEmbedDashboardParamSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14762,8 +14810,8 @@ export const getPreviewEmbedDashboardParamValues: API.OperationMethod<
   GetPreviewEmbedDashboardParamValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(599, __c74, 7) as any as S.Schema<GetPreviewEmbedDashboardParamValuesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPreviewEmbedDashboardParamValuesResponse>,
+  input: __S(3752, __c469, 0) as any as S.Schema<GetPreviewEmbedDashboardParamValuesRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPreviewEmbedDashboardParamValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14777,8 +14825,8 @@ export const getPreviewEmbedPivotCardQuery: API.OperationMethod<
   GetPreviewEmbedPivotCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(600, __c75, 0) as any as S.Schema<GetPreviewEmbedPivotCardQueryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPreviewEmbedPivotCardQueryResponse>,
+  input: __S(3760, __c470, 0) as any as S.Schema<GetPreviewEmbedPivotCardQueryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPreviewEmbedPivotCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14792,8 +14840,12 @@ export const getPreviewEmbedPivotDashboardDashcardCard: API.OperationMethod<
   GetPreviewEmbedPivotDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(601, __c75, 1) as any as S.Schema<GetPreviewEmbedPivotDashboardDashcardCardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPreviewEmbedPivotDashboardDashcardCardResponse>,
+  input: __S(3768, __c471, 0) as any as S.Schema<GetPreviewEmbedPivotDashboardDashcardCardRequest>,
+  output: __S(
+    4648,
+    __c581,
+    0,
+  ) as any as S.Schema<GetPreviewEmbedPivotDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14807,8 +14859,8 @@ export const getPreviewEmbedTilesCard: API.OperationMethod<
   GetPreviewEmbedTilesCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(602, __c75, 2) as any as S.Schema<GetPreviewEmbedTilesCardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPreviewEmbedTilesCardResponse>,
+  input: __S(3776, __c472, 0) as any as S.Schema<GetPreviewEmbedTilesCardRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetPreviewEmbedTilesCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14822,8 +14874,12 @@ export const getPreviewEmbedTilesDashboardDashcardCard: API.OperationMethod<
   GetPreviewEmbedTilesDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(603, __c75, 3) as any as S.Schema<GetPreviewEmbedTilesDashboardDashcardCardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetPreviewEmbedTilesDashboardDashcardCardResponse>,
+  input: __S(3784, __c473, 0) as any as S.Schema<GetPreviewEmbedTilesDashboardDashcardCardRequest>,
+  output: __S(
+    4648,
+    __c581,
+    0,
+  ) as any as S.Schema<GetPreviewEmbedTilesDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14837,8 +14893,8 @@ export const getPulse: API.OperationMethod<
   GetPulseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(604, __c75, 4) as any as S.Schema<GetPulseRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetPulseResponse>,
+  input: __S(3792, __c474, 0) as any as S.Schema<GetPulseRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetPulseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14852,8 +14908,8 @@ export const getPulseById: API.OperationMethod<
   GetPulseByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(605, __c75, 5) as any as S.Schema<GetPulseByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetPulseByIdResponse>,
+  input: __S(3800, __c475, 0) as any as S.Schema<GetPulseByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetPulseByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14867,8 +14923,8 @@ export const getPulseFormInput: API.OperationMethod<
   GetPulseFormInputError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(606, __c75, 6) as any as S.Schema<GetPulseFormInputRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetPulseFormInputResponse>,
+  input: __S(3808, __c476, 0) as any as S.Schema<GetPulseFormInputRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetPulseFormInputResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14882,8 +14938,8 @@ export const getRevision: API.OperationMethod<
   GetRevisionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(607, __c75, 7) as any as S.Schema<GetRevisionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetRevisionResponse>,
+  input: __S(3816, __c477, 0) as any as S.Schema<GetRevisionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetRevisionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14897,8 +14953,8 @@ export const getRevisionById: API.OperationMethod<
   GetRevisionByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c76, 0) as any as S.Schema<GetRevisionByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetRevisionByIdResponse>,
+  input: __S(3824, __c478, 0) as any as S.Schema<GetRevisionByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetRevisionByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14912,8 +14968,8 @@ export const getSearch: API.OperationMethod<
   GetSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(609, __c76, 1) as any as S.Schema<GetSearchRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetSearchResponse>,
+  input: __S(3840, __c480, 0) as any as S.Schema<GetSearchRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14927,8 +14983,8 @@ export const getSearchDebug: API.OperationMethod<
   GetSearchDebugError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(610, __c76, 2) as any as S.Schema<GetSearchDebugRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetSearchDebugResponse>,
+  input: __S(3848, __c481, 0) as any as S.Schema<GetSearchDebugRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSearchDebugResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14942,8 +14998,8 @@ export const getSearchWeights: API.OperationMethod<
   GetSearchWeightsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(611, __c76, 3) as any as S.Schema<GetSearchWeightsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetSearchWeightsResponse>,
+  input: __S(3856, __c482, 0) as any as S.Schema<GetSearchWeightsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSearchWeightsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14957,8 +15013,8 @@ export const getSegment: API.OperationMethod<
   GetSegmentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(612, __c76, 4) as any as S.Schema<GetSegmentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetSegmentResponse>,
+  input: __S(3864, __c483, 0) as any as S.Schema<GetSegmentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSegmentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14972,8 +15028,8 @@ export const getSegmentById: API.OperationMethod<
   GetSegmentByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(613, __c76, 5) as any as S.Schema<GetSegmentByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetSegmentByIdResponse>,
+  input: __S(3872, __c484, 0) as any as S.Schema<GetSegmentByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSegmentByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14987,8 +15043,8 @@ export const getSegmentRelated: API.OperationMethod<
   GetSegmentRelatedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(614, __c76, 6) as any as S.Schema<GetSegmentRelatedRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetSegmentRelatedResponse>,
+  input: __S(3880, __c485, 0) as any as S.Schema<GetSegmentRelatedRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSegmentRelatedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15002,8 +15058,8 @@ export const getSessionPasswordResetTokenValid: API.OperationMethod<
   GetSessionPasswordResetTokenValidError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(615, __c76, 7) as any as S.Schema<GetSessionPasswordResetTokenValidRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetSessionPasswordResetTokenValidResponse>,
+  input: __S(3888, __c486, 0) as any as S.Schema<GetSessionPasswordResetTokenValidRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetSessionPasswordResetTokenValidResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15017,8 +15073,8 @@ export const getSessionProperties: API.OperationMethod<
   GetSessionPropertiesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(616, __c77, 0) as any as S.Schema<GetSessionPropertiesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetSessionPropertiesResponse>,
+  input: __S(3896, __c487, 0) as any as S.Schema<GetSessionPropertiesRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSessionPropertiesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15032,8 +15088,8 @@ export const getSetting: API.OperationMethod<
   GetSettingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(617, __c77, 1) as any as S.Schema<GetSettingRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetSettingResponse>,
+  input: __S(3904, __c488, 0) as any as S.Schema<GetSettingRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSettingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15047,8 +15103,8 @@ export const getSettingByKey: API.OperationMethod<
   GetSettingByKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(618, __c77, 2) as any as S.Schema<GetSettingByKeyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetSettingByKeyResponse>,
+  input: __S(3912, __c489, 0) as any as S.Schema<GetSettingByKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSettingByKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15062,8 +15118,8 @@ export const getSlackAppInfo: API.OperationMethod<
   GetSlackAppInfoError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(619, __c77, 3) as any as S.Schema<GetSlackAppInfoRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetSlackAppInfoResponse>,
+  input: __S(3928, __c491, 0) as any as S.Schema<GetSlackAppInfoRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSlackAppInfoResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15077,8 +15133,8 @@ export const getSlackManifest: API.OperationMethod<
   GetSlackManifestError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(620, __c77, 4) as any as S.Schema<GetSlackManifestRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetSlackManifestResponse>,
+  input: __S(3936, __c492, 0) as any as S.Schema<GetSlackManifestRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetSlackManifestResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15092,8 +15148,8 @@ export const getTable: API.OperationMethod<
   GetTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(621, __c77, 5) as any as S.Schema<GetTableRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTableResponse>,
+  input: __S(3944, __c493, 0) as any as S.Schema<GetTableRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15107,8 +15163,8 @@ export const getTableById: API.OperationMethod<
   GetTableByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(622, __c77, 6) as any as S.Schema<GetTableByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTableByIdResponse>,
+  input: __S(3952, __c494, 0) as any as S.Schema<GetTableByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTableByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15122,8 +15178,8 @@ export const getTableCardIdFks: API.OperationMethod<
   GetTableCardIdFksError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(623, __c77, 7) as any as S.Schema<GetTableCardIdFksRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTableCardIdFksResponse>,
+  input: __S(3960, __c495, 0) as any as S.Schema<GetTableCardIdFksRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTableCardIdFksResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15137,8 +15193,8 @@ export const getTableCardIdQueryMetadata: API.OperationMethod<
   GetTableCardIdQueryMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c78, 0) as any as S.Schema<GetTableCardIdQueryMetadataRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetTableCardIdQueryMetadataResponse>,
+  input: __S(3968, __c496, 0) as any as S.Schema<GetTableCardIdQueryMetadataRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetTableCardIdQueryMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15152,8 +15208,8 @@ export const getTableData: API.OperationMethod<
   GetTableDataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(625, __c78, 1) as any as S.Schema<GetTableDataRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTableDataResponse>,
+  input: __S(3976, __c497, 0) as any as S.Schema<GetTableDataRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTableDataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15167,8 +15223,8 @@ export const getTableFks: API.OperationMethod<
   GetTableFksError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(626, __c78, 2) as any as S.Schema<GetTableFksRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTableFksResponse>,
+  input: __S(3984, __c498, 0) as any as S.Schema<GetTableFksRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTableFksResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15182,8 +15238,8 @@ export const getTableQueryMetadata: API.OperationMethod<
   GetTableQueryMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(627, __c78, 3) as any as S.Schema<GetTableQueryMetadataRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTableQueryMetadataResponse>,
+  input: __S(3992, __c499, 0) as any as S.Schema<GetTableQueryMetadataRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTableQueryMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15197,8 +15253,8 @@ export const getTableRelated: API.OperationMethod<
   GetTableRelatedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(628, __c78, 4) as any as S.Schema<GetTableRelatedRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTableRelatedResponse>,
+  input: __S(4000, __c500, 0) as any as S.Schema<GetTableRelatedRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTableRelatedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15212,8 +15268,8 @@ export const getTask: API.OperationMethod<
   GetTaskError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(629, __c78, 5) as any as S.Schema<GetTaskRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTaskResponse>,
+  input: __S(4016, __c502, 0) as any as S.Schema<GetTaskRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTaskResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15227,8 +15283,8 @@ export const getTaskById: API.OperationMethod<
   GetTaskByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(630, __c78, 6) as any as S.Schema<GetTaskByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTaskByIdResponse>,
+  input: __S(4024, __c503, 0) as any as S.Schema<GetTaskByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTaskByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15242,8 +15298,8 @@ export const getTaskInfo: API.OperationMethod<
   GetTaskInfoError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(631, __c78, 7) as any as S.Schema<GetTaskInfoRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTaskInfoResponse>,
+  input: __S(4032, __c504, 0) as any as S.Schema<GetTaskInfoRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTaskInfoResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15257,8 +15313,8 @@ export const getTaskRun: API.OperationMethod<
   GetTaskRunError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(632, __c79, 0) as any as S.Schema<GetTaskRunRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTaskRunResponse>,
+  input: __S(4040, __c505, 0) as any as S.Schema<GetTaskRunRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTaskRunResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15272,8 +15328,8 @@ export const getTaskRuns: API.OperationMethod<
   GetTaskRunsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(633, __c79, 1) as any as S.Schema<GetTaskRunsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTaskRunsResponse>,
+  input: __S(4048, __c506, 0) as any as S.Schema<GetTaskRunsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTaskRunsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15287,8 +15343,8 @@ export const getTaskRunsEntities: API.OperationMethod<
   GetTaskRunsEntitiesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(634, __c79, 2) as any as S.Schema<GetTaskRunsEntitiesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTaskRunsEntitiesResponse>,
+  input: __S(4056, __c507, 0) as any as S.Schema<GetTaskRunsEntitiesRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTaskRunsEntitiesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15302,8 +15358,8 @@ export const getTaskUniqueTasks: API.OperationMethod<
   GetTaskUniqueTasksError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(635, __c79, 3) as any as S.Schema<GetTaskUniqueTasksRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTaskUniqueTasksResponse>,
+  input: __S(4064, __c508, 0) as any as S.Schema<GetTaskUniqueTasksRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTaskUniqueTasksResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15317,8 +15373,8 @@ export const getTile: API.OperationMethod<
   GetTileError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(636, __c79, 4) as any as S.Schema<GetTileRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTileResponse>,
+  input: __S(4072, __c509, 0) as any as S.Schema<GetTileRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTileResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15332,8 +15388,8 @@ export const getTileByY: API.OperationMethod<
   GetTileByYError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(637, __c79, 5) as any as S.Schema<GetTileByYRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTileByYResponse>,
+  input: __S(4080, __c510, 0) as any as S.Schema<GetTileByYRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTileByYResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15347,8 +15403,8 @@ export const getTileDashcardCard: API.OperationMethod<
   GetTileDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(638, __c79, 6) as any as S.Schema<GetTileDashcardCardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTileDashcardCardResponse>,
+  input: __S(4088, __c511, 0) as any as S.Schema<GetTileDashcardCardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTileDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15362,8 +15418,8 @@ export const getTilesCard: API.OperationMethod<
   GetTilesCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(639, __c79, 7) as any as S.Schema<GetTilesCardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTilesCardResponse>,
+  input: __S(4104, __c513, 0) as any as S.Schema<GetTilesCardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTilesCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15377,8 +15433,8 @@ export const getTilesDashboardDashcardCard: API.OperationMethod<
   GetTilesDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c80, 0) as any as S.Schema<GetTilesDashboardDashcardCardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetTilesDashboardDashcardCardResponse>,
+  input: __S(4112, __c514, 0) as any as S.Schema<GetTilesDashboardDashcardCardRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetTilesDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15392,8 +15448,8 @@ export const getTimeline: API.OperationMethod<
   GetTimelineError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(641, __c80, 1) as any as S.Schema<GetTimelineRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTimelineResponse>,
+  input: __S(4120, __c515, 0) as any as S.Schema<GetTimelineRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTimelineResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15407,8 +15463,8 @@ export const getTimelineById: API.OperationMethod<
   GetTimelineByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(642, __c80, 2) as any as S.Schema<GetTimelineByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTimelineByIdResponse>,
+  input: __S(4128, __c516, 0) as any as S.Schema<GetTimelineByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTimelineByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15422,8 +15478,8 @@ export const getTimelineCollection: API.OperationMethod<
   GetTimelineCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(643, __c80, 3) as any as S.Schema<GetTimelineCollectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTimelineCollectionResponse>,
+  input: __S(4136, __c517, 0) as any as S.Schema<GetTimelineCollectionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTimelineCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15437,8 +15493,8 @@ export const getTimelineCollectionRoot: API.OperationMethod<
   GetTimelineCollectionRootError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(644, __c80, 4) as any as S.Schema<GetTimelineCollectionRootRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetTimelineCollectionRootResponse>,
+  input: __S(4144, __c518, 0) as any as S.Schema<GetTimelineCollectionRootRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetTimelineCollectionRootResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15452,8 +15508,8 @@ export const getTimelineEvent: API.OperationMethod<
   GetTimelineEventError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(645, __c80, 5) as any as S.Schema<GetTimelineEventRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTimelineEventResponse>,
+  input: __S(4152, __c519, 0) as any as S.Schema<GetTimelineEventRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTimelineEventResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15467,8 +15523,8 @@ export const getTransform: API.OperationMethod<
   GetTransformError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(646, __c80, 6) as any as S.Schema<GetTransformRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTransformResponse>,
+  input: __S(4160, __c520, 0) as any as S.Schema<GetTransformRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTransformResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15482,8 +15538,8 @@ export const getTransformById: API.OperationMethod<
   GetTransformByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(647, __c80, 7) as any as S.Schema<GetTransformByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTransformByIdResponse>,
+  input: __S(4168, __c521, 0) as any as S.Schema<GetTransformByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTransformByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15497,8 +15553,8 @@ export const getTransformDependencies: API.OperationMethod<
   GetTransformDependenciesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(648, __c81, 0) as any as S.Schema<GetTransformDependenciesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetTransformDependenciesResponse>,
+  input: __S(4176, __c522, 0) as any as S.Schema<GetTransformDependenciesRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetTransformDependenciesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15512,8 +15568,8 @@ export const getTransformJob: API.OperationMethod<
   GetTransformJobError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(649, __c81, 1) as any as S.Schema<GetTransformJobRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTransformJobResponse>,
+  input: __S(4192, __c524, 0) as any as S.Schema<GetTransformJobRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTransformJobResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15527,8 +15583,8 @@ export const getTransformJobByJobId: API.OperationMethod<
   GetTransformJobByJobIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(650, __c81, 2) as any as S.Schema<GetTransformJobByJobIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTransformJobByJobIdResponse>,
+  input: __S(4200, __c525, 0) as any as S.Schema<GetTransformJobByJobIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTransformJobByJobIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15542,8 +15598,8 @@ export const getTransformJobRuns: API.OperationMethod<
   GetTransformJobRunsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(651, __c81, 3) as any as S.Schema<GetTransformJobRunsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTransformJobRunsResponse>,
+  input: __S(4208, __c526, 0) as any as S.Schema<GetTransformJobRunsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTransformJobRunsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15557,8 +15613,8 @@ export const getTransformJobRunTransformRuns: API.OperationMethod<
   GetTransformJobRunTransformRunsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(652, __c81, 4) as any as S.Schema<GetTransformJobRunTransformRunsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetTransformJobRunTransformRunsResponse>,
+  input: __S(4216, __c527, 0) as any as S.Schema<GetTransformJobRunTransformRunsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetTransformJobRunTransformRunsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15572,8 +15628,8 @@ export const getTransformJobTransforms: API.OperationMethod<
   GetTransformJobTransformsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(653, __c81, 5) as any as S.Schema<GetTransformJobTransformsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetTransformJobTransformsResponse>,
+  input: __S(4224, __c528, 0) as any as S.Schema<GetTransformJobTransformsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetTransformJobTransformsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15587,8 +15643,8 @@ export const getTransformRun: API.OperationMethod<
   GetTransformRunError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(654, __c81, 6) as any as S.Schema<GetTransformRunRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTransformRunResponse>,
+  input: __S(4232, __c529, 0) as any as S.Schema<GetTransformRunRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTransformRunResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15602,8 +15658,8 @@ export const getTransformRunByRunId: API.OperationMethod<
   GetTransformRunByRunIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(655, __c81, 7) as any as S.Schema<GetTransformRunByRunIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTransformRunByRunIdResponse>,
+  input: __S(4240, __c530, 0) as any as S.Schema<GetTransformRunByRunIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTransformRunByRunIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15617,8 +15673,8 @@ export const getTransformTag: API.OperationMethod<
   GetTransformTagError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c82, 0) as any as S.Schema<GetTransformTagRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetTransformTagResponse>,
+  input: __S(4248, __c531, 0) as any as S.Schema<GetTransformTagRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetTransformTagResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15632,8 +15688,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(657, __c82, 1) as any as S.Schema<GetUserRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetUserResponse>,
+  input: __S(4256, __c532, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15647,8 +15703,8 @@ export const getUserById: API.OperationMethod<
   GetUserByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(658, __c82, 2) as any as S.Schema<GetUserByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetUserByIdResponse>,
+  input: __S(4264, __c533, 0) as any as S.Schema<GetUserByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetUserByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15662,8 +15718,8 @@ export const getUserCurrent: API.OperationMethod<
   GetUserCurrentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(659, __c82, 3) as any as S.Schema<GetUserCurrentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetUserCurrentResponse>,
+  input: __S(4280, __c535, 0) as any as S.Schema<GetUserCurrentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetUserCurrentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15677,8 +15733,8 @@ export const getUserKeyValueNamespace: API.OperationMethod<
   GetUserKeyValueNamespaceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(660, __c82, 4) as any as S.Schema<GetUserKeyValueNamespaceRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetUserKeyValueNamespaceResponse>,
+  input: __S(4288, __c536, 0) as any as S.Schema<GetUserKeyValueNamespaceRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetUserKeyValueNamespaceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15692,8 +15748,8 @@ export const getUserKeyValueNamespaceKey: API.OperationMethod<
   GetUserKeyValueNamespaceKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(661, __c82, 5) as any as S.Schema<GetUserKeyValueNamespaceKeyRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetUserKeyValueNamespaceKeyResponse>,
+  input: __S(4296, __c537, 0) as any as S.Schema<GetUserKeyValueNamespaceKeyRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<GetUserKeyValueNamespaceKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15707,8 +15763,8 @@ export const getUserRecipients: API.OperationMethod<
   GetUserRecipientsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(662, __c82, 6) as any as S.Schema<GetUserRecipientsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetUserRecipientsResponse>,
+  input: __S(4304, __c538, 0) as any as S.Schema<GetUserRecipientsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetUserRecipientsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15722,8 +15778,8 @@ export const getUtilRandomToken: API.OperationMethod<
   GetUtilRandomTokenError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(663, __c82, 7) as any as S.Schema<GetUtilRandomTokenRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetUtilRandomTokenResponse>,
+  input: __S(4312, __c539, 0) as any as S.Schema<GetUtilRandomTokenRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetUtilRandomTokenResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15738,14 +15794,14 @@ export const postApiEeReplacementReplaceModelWithTransform: API.OperationMethod<
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    664,
-    __c83,
+    4320,
+    __c540,
     0,
   ) as any as S.Schema<PostApiEeReplacementReplaceModelWithTransformRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    4648,
+    __c581,
+    0,
   ) as any as S.Schema<PostApiEeReplacementReplaceModelWithTransformResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
@@ -15760,8 +15816,8 @@ export const putAction: API.OperationMethod<
   PutActionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(665, __c83, 1) as any as S.Schema<PutActionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutActionResponse>,
+  input: __S(4328, __c541, 0) as any as S.Schema<PutActionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutActionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15775,8 +15831,8 @@ export const putAgentDashboard: API.OperationMethod<
   PutAgentDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(667, __c83, 3) as any as S.Schema<PutAgentDashboardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutAgentDashboardResponse>,
+  input: __S(4337, __c542, 1) as any as S.Schema<PutAgentDashboardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutAgentDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15790,8 +15846,8 @@ export const putAgentMetric: API.OperationMethod<
   PutAgentMetricError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(668, __c83, 4) as any as S.Schema<PutAgentMetricRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutAgentMetricResponse>,
+  input: __S(4344, __c543, 0) as any as S.Schema<PutAgentMetricRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutAgentMetricResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15805,8 +15861,8 @@ export const putAgentQuestion: API.OperationMethod<
   PutAgentQuestionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(669, __c83, 5) as any as S.Schema<PutAgentQuestionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutAgentQuestionResponse>,
+  input: __S(4352, __c544, 0) as any as S.Schema<PutAgentQuestionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutAgentQuestionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15820,8 +15876,8 @@ export const putBookmarkOrdering: API.OperationMethod<
   PutBookmarkOrderingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c84, 0) as any as S.Schema<PutBookmarkOrderingRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutBookmarkOrderingResponse>,
+  input: __S(4370, __c546, 2) as any as S.Schema<PutBookmarkOrderingRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutBookmarkOrderingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15835,8 +15891,8 @@ export const putCache: API.OperationMethod<
   PutCacheError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(673, __c84, 1) as any as S.Schema<PutCacheRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutCacheResponse>,
+  input: __S(4376, __c547, 0) as any as S.Schema<PutCacheRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutCacheResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15850,8 +15906,8 @@ export const putCard: API.OperationMethod<
   PutCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(675, __c84, 3) as any as S.Schema<PutCardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutCardResponse>,
+  input: __S(4384, __c548, 0) as any as S.Schema<PutCardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15865,8 +15921,8 @@ export const putChannel: API.OperationMethod<
   PutChannelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(676, __c84, 4) as any as S.Schema<PutChannelRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutChannelResponse>,
+  input: __S(4400, __c550, 0) as any as S.Schema<PutChannelRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutChannelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15880,8 +15936,8 @@ export const putCloudMigrationCancel: API.OperationMethod<
   PutCloudMigrationCancelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(677, __c84, 5) as any as S.Schema<PutCloudMigrationCancelRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<PutCloudMigrationCancelResponse>,
+  input: __S(4408, __c551, 0) as any as S.Schema<PutCloudMigrationCancelRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<PutCloudMigrationCancelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15895,8 +15951,8 @@ export const putCollection: API.OperationMethod<
   PutCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(678, __c84, 6) as any as S.Schema<PutCollectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutCollectionResponse>,
+  input: __S(4416, __c552, 0) as any as S.Schema<PutCollectionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15910,8 +15966,8 @@ export const putCollectionGraph: API.OperationMethod<
   PutCollectionGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(679, __c84, 7) as any as S.Schema<PutCollectionGraphRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutCollectionGraphResponse>,
+  input: __S(4424, __c553, 0) as any as S.Schema<PutCollectionGraphRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutCollectionGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15925,8 +15981,8 @@ export const putComment: API.OperationMethod<
   PutCommentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(680, __c85, 0) as any as S.Schema<PutCommentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutCommentResponse>,
+  input: __S(4432, __c554, 0) as any as S.Schema<PutCommentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutCommentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15940,8 +15996,8 @@ export const putDashboard: API.OperationMethod<
   PutDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(685, __c85, 5) as any as S.Schema<PutDashboardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutDashboardResponse>,
+  input: __S(4440, __c555, 0) as any as S.Schema<PutDashboardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15955,8 +16011,8 @@ export const putDashboardCards: API.OperationMethod<
   PutDashboardCardsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(686, __c85, 6) as any as S.Schema<PutDashboardCardsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutDashboardCardsResponse>,
+  input: __S(4456, __c557, 0) as any as S.Schema<PutDashboardCardsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutDashboardCardsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15970,8 +16026,8 @@ export const putDatabase: API.OperationMethod<
   PutDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(687, __c85, 7) as any as S.Schema<PutDatabaseRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutDatabaseResponse>,
+  input: __S(4472, __c559, 0) as any as S.Schema<PutDatabaseRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15985,8 +16041,8 @@ export const putDocument: API.OperationMethod<
   PutDocumentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c86, 0) as any as S.Schema<PutDocumentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutDocumentResponse>,
+  input: __S(4480, __c560, 0) as any as S.Schema<PutDocumentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutDocumentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16000,8 +16056,8 @@ export const putEeAdvancedPermissionsApplicationGraph: API.OperationMethod<
   PutEeAdvancedPermissionsApplicationGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(690, __c86, 2) as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphResponse>,
+  input: __S(4489, __c561, 1) as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16015,8 +16071,8 @@ export const putEeAiControlsPermissions: API.OperationMethod<
   PutEeAiControlsPermissionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(693, __c86, 5) as any as S.Schema<PutEeAiControlsPermissionsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutEeAiControlsPermissionsResponse>,
+  input: __S(4498, __c562, 2) as any as S.Schema<PutEeAiControlsPermissionsRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutEeAiControlsPermissionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16030,8 +16086,8 @@ export const putEeAiControlsUsageGroup: API.OperationMethod<
   PutEeAiControlsUsageGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(694, __c86, 6) as any as S.Schema<PutEeAiControlsUsageGroupRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutEeAiControlsUsageGroupResponse>,
+  input: __S(4504, __c563, 0) as any as S.Schema<PutEeAiControlsUsageGroupRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutEeAiControlsUsageGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16045,8 +16101,8 @@ export const putEeAiControlsUsageInstance: API.OperationMethod<
   PutEeAiControlsUsageInstanceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(695, __c86, 7) as any as S.Schema<PutEeAiControlsUsageInstanceRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutEeAiControlsUsageInstanceResponse>,
+  input: __S(4512, __c564, 0) as any as S.Schema<PutEeAiControlsUsageInstanceRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutEeAiControlsUsageInstanceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16060,8 +16116,8 @@ export const putEeAiControlsUsageTenant: API.OperationMethod<
   PutEeAiControlsUsageTenantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696, __c87, 0) as any as S.Schema<PutEeAiControlsUsageTenantRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutEeAiControlsUsageTenantResponse>,
+  input: __S(4520, __c565, 0) as any as S.Schema<PutEeAiControlsUsageTenantRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutEeAiControlsUsageTenantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16075,8 +16131,8 @@ export const putEeCustomVizPlugin: API.OperationMethod<
   PutEeCustomVizPluginError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(697, __c87, 1) as any as S.Schema<PutEeCustomVizPluginRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutEeCustomVizPluginResponse>,
+  input: __S(4528, __c566, 0) as any as S.Schema<PutEeCustomVizPluginRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutEeCustomVizPluginResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16090,8 +16146,8 @@ export const putEeCustomVizPluginBundle: API.OperationMethod<
   PutEeCustomVizPluginBundleError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(698, __c87, 2) as any as S.Schema<PutEeCustomVizPluginBundleRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutEeCustomVizPluginBundleResponse>,
+  input: __S(4536, __c567, 0) as any as S.Schema<PutEeCustomVizPluginBundleRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutEeCustomVizPluginBundleResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16105,8 +16161,8 @@ export const putEeCustomVizPluginDevUrl: API.OperationMethod<
   PutEeCustomVizPluginDevUrlError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(699, __c87, 3) as any as S.Schema<PutEeCustomVizPluginDevUrlRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutEeCustomVizPluginDevUrlResponse>,
+  input: __S(4544, __c568, 0) as any as S.Schema<PutEeCustomVizPluginDevUrlRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutEeCustomVizPluginDevUrlResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16120,8 +16176,8 @@ export const putEeDatabaseRoutingRouterDatabase: API.OperationMethod<
   PutEeDatabaseRoutingRouterDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(700, __c87, 4) as any as S.Schema<PutEeDatabaseRoutingRouterDatabaseRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutEeDatabaseRoutingRouterDatabaseResponse>,
+  input: __S(4560, __c570, 0) as any as S.Schema<PutEeDatabaseRoutingRouterDatabaseRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutEeDatabaseRoutingRouterDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16135,8 +16191,8 @@ export const putEeEmailOverride: API.OperationMethod<
   PutEeEmailOverrideError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(701, __c87, 5) as any as S.Schema<PutEeEmailOverrideRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutEeEmailOverrideResponse>,
+  input: __S(4568, __c571, 0) as any as S.Schema<PutEeEmailOverrideRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutEeEmailOverrideResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16150,8 +16206,8 @@ export const putEeRemoteSyncSettings: API.OperationMethod<
   PutEeRemoteSyncSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(703, __c87, 7) as any as S.Schema<PutEeRemoteSyncSettingsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<PutEeRemoteSyncSettingsResponse>,
+  input: __S(4577, __c572, 1) as any as S.Schema<PutEeRemoteSyncSettingsRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<PutEeRemoteSyncSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16165,8 +16221,8 @@ export const putEeScimGroup: API.OperationMethod<
   PutEeScimGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c88, 0) as any as S.Schema<PutEeScimGroupRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutEeScimGroupResponse>,
+  input: __S(4584, __c573, 0) as any as S.Schema<PutEeScimGroupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutEeScimGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16180,8 +16236,8 @@ export const putEeScimUser: API.OperationMethod<
   PutEeScimUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(705, __c88, 1) as any as S.Schema<PutEeScimUserRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutEeScimUserResponse>,
+  input: __S(4592, __c574, 0) as any as S.Schema<PutEeScimUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutEeScimUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16195,8 +16251,8 @@ export const putEeSupportAccessGrantRevoke: API.OperationMethod<
   PutEeSupportAccessGrantRevokeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(706, __c88, 2) as any as S.Schema<PutEeSupportAccessGrantRevokeRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutEeSupportAccessGrantRevokeResponse>,
+  input: __S(4600, __c575, 0) as any as S.Schema<PutEeSupportAccessGrantRevokeRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutEeSupportAccessGrantRevokeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16210,8 +16266,8 @@ export const putEeTenant: API.OperationMethod<
   PutEeTenantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(707, __c88, 3) as any as S.Schema<PutEeTenantRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutEeTenantResponse>,
+  input: __S(4608, __c576, 0) as any as S.Schema<PutEeTenantRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutEeTenantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16225,8 +16281,8 @@ export const putEeTransformsPythonLibrary: API.OperationMethod<
   PutEeTransformsPythonLibraryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(708, __c88, 4) as any as S.Schema<PutEeTransformsPythonLibraryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutEeTransformsPythonLibraryResponse>,
+  input: __S(4616, __c577, 0) as any as S.Schema<PutEeTransformsPythonLibraryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutEeTransformsPythonLibraryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16240,8 +16296,8 @@ export const putEmail: API.OperationMethod<
   PutEmailError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(709, __c88, 5) as any as S.Schema<PutEmailRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutEmailResponse>,
+  input: __S(4624, __c578, 0) as any as S.Schema<PutEmailRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutEmailResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16255,8 +16311,8 @@ export const putEmbedTheme: API.OperationMethod<
   PutEmbedThemeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(710, __c88, 6) as any as S.Schema<PutEmbedThemeRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutEmbedThemeResponse>,
+  input: __S(4632, __c579, 0) as any as S.Schema<PutEmbedThemeRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutEmbedThemeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16270,8 +16326,8 @@ export const putField: API.OperationMethod<
   PutFieldError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(711, __c88, 7) as any as S.Schema<PutFieldRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutFieldResponse>,
+  input: __S(4664, __c583, 0) as any as S.Schema<PutFieldRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutFieldResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16285,8 +16341,8 @@ export const putGlossary: API.OperationMethod<
   PutGlossaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(712, __c89, 0) as any as S.Schema<PutGlossaryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutGlossaryResponse>,
+  input: __S(4672, __c584, 0) as any as S.Schema<PutGlossaryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutGlossaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16300,8 +16356,8 @@ export const putGoogleSettings: API.OperationMethod<
   PutGoogleSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(713, __c89, 1) as any as S.Schema<PutGoogleSettingsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutGoogleSettingsResponse>,
+  input: __S(4680, __c585, 0) as any as S.Schema<PutGoogleSettingsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutGoogleSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16315,8 +16371,8 @@ export const putKey: API.OperationMethod<
   PutKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(714, __c89, 2) as any as S.Schema<PutKeyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutKeyResponse>,
+  input: __S(4688, __c586, 0) as any as S.Schema<PutKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16330,8 +16386,8 @@ export const putKeyRegenerate: API.OperationMethod<
   PutKeyRegenerateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(715, __c89, 3) as any as S.Schema<PutKeyRegenerateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutKeyRegenerateResponse>,
+  input: __S(4696, __c587, 0) as any as S.Schema<PutKeyRegenerateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutKeyRegenerateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16345,8 +16401,8 @@ export const putLdapSettings: API.OperationMethod<
   PutLdapSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(717, __c89, 5) as any as S.Schema<PutLdapSettingsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutLdapSettingsResponse>,
+  input: __S(4705, __c588, 1) as any as S.Schema<PutLdapSettingsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutLdapSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16360,8 +16416,8 @@ export const putMeasure: API.OperationMethod<
   PutMeasureError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(718, __c89, 6) as any as S.Schema<PutMeasureRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutMeasureResponse>,
+  input: __S(4712, __c589, 0) as any as S.Schema<PutMeasureRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutMeasureResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16375,8 +16431,8 @@ export const putMetabotMetabot: API.OperationMethod<
   PutMetabotMetabotError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(719, __c89, 7) as any as S.Schema<PutMetabotMetabotRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutMetabotMetabotResponse>,
+  input: __S(4720, __c590, 0) as any as S.Schema<PutMetabotMetabotRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutMetabotMetabotResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16390,8 +16446,8 @@ export const putMetabotSettings: API.OperationMethod<
   PutMetabotSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(721, __c90, 1) as any as S.Schema<PutMetabotSettingsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutMetabotSettingsResponse>,
+  input: __S(4729, __c591, 1) as any as S.Schema<PutMetabotSettingsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutMetabotSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16405,8 +16461,8 @@ export const putMetabotSlackSettings: API.OperationMethod<
   PutMetabotSlackSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(722, __c90, 2) as any as S.Schema<PutMetabotSlackSettingsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<PutMetabotSlackSettingsResponse>,
+  input: __S(4736, __c592, 0) as any as S.Schema<PutMetabotSlackSettingsRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<PutMetabotSlackSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16420,8 +16476,8 @@ export const putMtGtap: API.OperationMethod<
   PutMtGtapError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(723, __c90, 3) as any as S.Schema<PutMtGtapRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutMtGtapResponse>,
+  input: __S(4752, __c594, 0) as any as S.Schema<PutMtGtapRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutMtGtapResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16435,8 +16491,8 @@ export const putMtUserAttributes: API.OperationMethod<
   PutMtUserAttributesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(724, __c90, 4) as any as S.Schema<PutMtUserAttributesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutMtUserAttributesResponse>,
+  input: __S(4760, __c595, 0) as any as S.Schema<PutMtUserAttributesRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutMtUserAttributesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16450,8 +16506,8 @@ export const putNativeQuerySnippet: API.OperationMethod<
   PutNativeQuerySnippetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(725, __c90, 5) as any as S.Schema<PutNativeQuerySnippetRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutNativeQuerySnippetResponse>,
+  input: __S(4768, __c596, 0) as any as S.Schema<PutNativeQuerySnippetRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutNativeQuerySnippetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16465,8 +16521,8 @@ export const putNotification: API.OperationMethod<
   PutNotificationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(726, __c90, 6) as any as S.Schema<PutNotificationRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutNotificationResponse>,
+  input: __S(4776, __c597, 0) as any as S.Schema<PutNotificationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutNotificationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16480,8 +16536,8 @@ export const putOsiAiContext: API.OperationMethod<
   PutOsiAiContextError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(728, __c91, 0) as any as S.Schema<PutOsiAiContextRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutOsiAiContextResponse>,
+  input: __S(4785, __c598, 1) as any as S.Schema<PutOsiAiContextRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutOsiAiContextResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16495,8 +16551,8 @@ export const putPermissionsGraph: API.OperationMethod<
   PutPermissionsGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(734, __c91, 6) as any as S.Schema<PutPermissionsGraphRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutPermissionsGraphResponse>,
+  input: __S(4797, __c599, 5) as any as S.Schema<PutPermissionsGraphRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutPermissionsGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16510,8 +16566,8 @@ export const putPermissionsGroup: API.OperationMethod<
   PutPermissionsGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(735, __c91, 7) as any as S.Schema<PutPermissionsGroupRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutPermissionsGroupResponse>,
+  input: __S(4800, __c600, 0) as any as S.Schema<PutPermissionsGroupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutPermissionsGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16525,8 +16581,8 @@ export const putPermissionsMembership: API.OperationMethod<
   PutPermissionsMembershipError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c92, 0) as any as S.Schema<PutPermissionsMembershipRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutPermissionsMembershipResponse>,
+  input: __S(4808, __c601, 0) as any as S.Schema<PutPermissionsMembershipRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutPermissionsMembershipResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16540,8 +16596,8 @@ export const putPermissionsMembershipClear: API.OperationMethod<
   PutPermissionsMembershipClearError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(737, __c92, 1) as any as S.Schema<PutPermissionsMembershipClearRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutPermissionsMembershipClearResponse>,
+  input: __S(4816, __c602, 0) as any as S.Schema<PutPermissionsMembershipClearRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutPermissionsMembershipClearResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16555,8 +16611,8 @@ export const putPulse: API.OperationMethod<
   PutPulseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(738, __c92, 2) as any as S.Schema<PutPulseRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutPulseResponse>,
+  input: __S(4824, __c603, 0) as any as S.Schema<PutPulseRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutPulseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16570,8 +16626,8 @@ export const putSearchWeights: API.OperationMethod<
   PutSearchWeightsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(739, __c92, 3) as any as S.Schema<PutSearchWeightsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutSearchWeightsResponse>,
+  input: __S(4840, __c605, 0) as any as S.Schema<PutSearchWeightsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutSearchWeightsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16585,8 +16641,8 @@ export const putSegment: API.OperationMethod<
   PutSegmentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(740, __c92, 4) as any as S.Schema<PutSegmentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutSegmentResponse>,
+  input: __S(4848, __c606, 0) as any as S.Schema<PutSegmentRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutSegmentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16600,8 +16656,8 @@ export const putSetting: API.OperationMethod<
   PutSettingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(741, __c92, 5) as any as S.Schema<PutSettingRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutSettingResponse>,
+  input: __S(4856, __c607, 0) as any as S.Schema<PutSettingRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutSettingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16615,8 +16671,8 @@ export const putSettingByKey: API.OperationMethod<
   PutSettingByKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(742, __c92, 6) as any as S.Schema<PutSettingByKeyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutSettingByKeyResponse>,
+  input: __S(4864, __c608, 0) as any as S.Schema<PutSettingByKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutSettingByKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16630,8 +16686,8 @@ export const putSlackSettings: API.OperationMethod<
   PutSlackSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(743, __c92, 7) as any as S.Schema<PutSlackSettingsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutSlackSettingsResponse>,
+  input: __S(4872, __c609, 0) as any as S.Schema<PutSlackSettingsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutSlackSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16645,8 +16701,8 @@ export const putTable: API.OperationMethod<
   PutTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(744, __c93, 0) as any as S.Schema<PutTableRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutTableResponse>,
+  input: __S(4880, __c610, 0) as any as S.Schema<PutTableRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16660,8 +16716,8 @@ export const putTableById: API.OperationMethod<
   PutTableByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(745, __c93, 1) as any as S.Schema<PutTableByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutTableByIdResponse>,
+  input: __S(4888, __c611, 0) as any as S.Schema<PutTableByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutTableByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16675,8 +16731,8 @@ export const putTableFieldsOrder: API.OperationMethod<
   PutTableFieldsOrderError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(746, __c93, 2) as any as S.Schema<PutTableFieldsOrderRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutTableFieldsOrderResponse>,
+  input: __S(4896, __c612, 0) as any as S.Schema<PutTableFieldsOrderRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutTableFieldsOrderResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16690,8 +16746,8 @@ export const putTimeline: API.OperationMethod<
   PutTimelineError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(747, __c93, 3) as any as S.Schema<PutTimelineRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutTimelineResponse>,
+  input: __S(4904, __c613, 0) as any as S.Schema<PutTimelineRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutTimelineResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16705,8 +16761,8 @@ export const putTimelineEvent: API.OperationMethod<
   PutTimelineEventError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(748, __c93, 4) as any as S.Schema<PutTimelineEventRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutTimelineEventResponse>,
+  input: __S(4912, __c614, 0) as any as S.Schema<PutTimelineEventRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutTimelineEventResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16720,8 +16776,8 @@ export const putTransform: API.OperationMethod<
   PutTransformError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(749, __c93, 5) as any as S.Schema<PutTransformRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutTransformResponse>,
+  input: __S(4928, __c616, 0) as any as S.Schema<PutTransformRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutTransformResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16735,8 +16791,8 @@ export const putTransformJob: API.OperationMethod<
   PutTransformJobError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(750, __c93, 6) as any as S.Schema<PutTransformJobRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutTransformJobResponse>,
+  input: __S(4936, __c617, 0) as any as S.Schema<PutTransformJobRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutTransformJobResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16750,8 +16806,8 @@ export const putTransformJobActive: API.OperationMethod<
   PutTransformJobActiveError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(751, __c93, 7) as any as S.Schema<PutTransformJobActiveRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutTransformJobActiveResponse>,
+  input: __S(4944, __c618, 0) as any as S.Schema<PutTransformJobActiveRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutTransformJobActiveResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16765,8 +16821,8 @@ export const putTransformTag: API.OperationMethod<
   PutTransformTagError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c94, 0) as any as S.Schema<PutTransformTagRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutTransformTagResponse>,
+  input: __S(4952, __c619, 0) as any as S.Schema<PutTransformTagRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutTransformTagResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16780,8 +16836,8 @@ export const putUser: API.OperationMethod<
   PutUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(753, __c94, 1) as any as S.Schema<PutUserRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutUserResponse>,
+  input: __S(4960, __c620, 0) as any as S.Schema<PutUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16795,8 +16851,8 @@ export const putUserKeyValueNamespaceKey: API.OperationMethod<
   PutUserKeyValueNamespaceKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(754, __c94, 2) as any as S.Schema<PutUserKeyValueNamespaceKeyRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PutUserKeyValueNamespaceKeyResponse>,
+  input: __S(4968, __c621, 0) as any as S.Schema<PutUserKeyValueNamespaceKeyRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<PutUserKeyValueNamespaceKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16810,8 +16866,8 @@ export const putUserModal: API.OperationMethod<
   PutUserModalError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(755, __c94, 3) as any as S.Schema<PutUserModalRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutUserModalResponse>,
+  input: __S(4976, __c622, 0) as any as S.Schema<PutUserModalRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutUserModalResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16825,8 +16881,8 @@ export const putUserPassword: API.OperationMethod<
   PutUserPasswordError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(756, __c94, 4) as any as S.Schema<PutUserPasswordRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutUserPasswordResponse>,
+  input: __S(4984, __c623, 0) as any as S.Schema<PutUserPasswordRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutUserPasswordResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16840,8 +16896,8 @@ export const putUserReactivate: API.OperationMethod<
   PutUserReactivateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(757, __c94, 5) as any as S.Schema<PutUserReactivateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutUserReactivateResponse>,
+  input: __S(4992, __c624, 0) as any as S.Schema<PutUserReactivateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutUserReactivateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16855,8 +16911,8 @@ export const updateBookmark: API.OperationMethod<
   UpdateBookmarkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(758, __c94, 6) as any as S.Schema<UpdateBookmarkRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateBookmarkResponse>,
+  input: __S(5000, __c625, 0) as any as S.Schema<UpdateBookmarkRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateBookmarkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16870,8 +16926,8 @@ export const updateCardQuery: API.OperationMethod<
   UpdateCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(759, __c94, 7) as any as S.Schema<UpdateCardQueryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateCardQueryResponse>,
+  input: __S(5032, __c629, 0) as any as S.Schema<UpdateCardQueryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16885,8 +16941,8 @@ export const updateDashboardDashcardCard: API.OperationMethod<
   UpdateDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(760, __c95, 0) as any as S.Schema<UpdateDashboardDashcardCardRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateDashboardDashcardCardResponse>,
+  input: __S(5040, __c630, 0) as any as S.Schema<UpdateDashboardDashcardCardRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<UpdateDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16900,8 +16956,8 @@ export const updateDashboardDashcardCardQuery: API.OperationMethod<
   UpdateDashboardDashcardCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(761, __c95, 1) as any as S.Schema<UpdateDashboardDashcardCardQueryRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateDashboardDashcardCardQueryResponse>,
+  input: __S(5048, __c631, 0) as any as S.Schema<UpdateDashboardDashcardCardQueryRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<UpdateDashboardDashcardCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16915,8 +16971,8 @@ export const updateDashboardSaveCollection: API.OperationMethod<
   UpdateDashboardSaveCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(767, __c95, 7) as any as S.Schema<UpdateDashboardSaveCollectionRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateDashboardSaveCollectionResponse>,
+  input: __S(5061, __c632, 5) as any as S.Schema<UpdateDashboardSaveCollectionRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<UpdateDashboardSaveCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16930,8 +16986,8 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c96, 0) as any as S.Schema<UpdateDatasetRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateDatasetResponse>,
+  input: __S(5064, __c633, 0) as any as S.Schema<UpdateDatasetRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateDatasetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16945,8 +17001,8 @@ export const updateDatasetParameterSearch: API.OperationMethod<
   UpdateDatasetParameterSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(769, __c96, 1) as any as S.Schema<UpdateDatasetParameterSearchRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateDatasetParameterSearchResponse>,
+  input: __S(5072, __c634, 0) as any as S.Schema<UpdateDatasetParameterSearchRequest>,
+  output: __S(4648, __c581, 0) as any as S.Schema<UpdateDatasetParameterSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16960,8 +17016,8 @@ export const updateDocumentCard: API.OperationMethod<
   UpdateDocumentCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(770, __c96, 2) as any as S.Schema<UpdateDocumentCardRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateDocumentCardResponse>,
+  input: __S(5080, __c635, 0) as any as S.Schema<UpdateDocumentCardRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateDocumentCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16975,8 +17031,8 @@ export const updateDocumentCardQuery: API.OperationMethod<
   UpdateDocumentCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(771, __c96, 3) as any as S.Schema<UpdateDocumentCardQueryRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<UpdateDocumentCardQueryResponse>,
+  input: __S(5088, __c636, 0) as any as S.Schema<UpdateDocumentCardQueryRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<UpdateDocumentCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16990,8 +17046,8 @@ export const updateEeCloudAddOns: API.OperationMethod<
   UpdateEeCloudAddOnsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(772, __c96, 4) as any as S.Schema<UpdateEeCloudAddOnsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateEeCloudAddOnsResponse>,
+  input: __S(5096, __c637, 0) as any as S.Schema<UpdateEeCloudAddOnsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateEeCloudAddOnsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17005,8 +17061,8 @@ export const updateEeCloudProxy: API.OperationMethod<
   UpdateEeCloudProxyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(774, __c96, 6) as any as S.Schema<UpdateEeCloudProxyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateEeCloudProxyResponse>,
+  input: __S(5105, __c638, 1) as any as S.Schema<UpdateEeCloudProxyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateEeCloudProxyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17021,14 +17077,14 @@ export const updateEeDatabaseReplicationConnectionDatabase: API.OperationMethod<
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    776,
-    __c97,
-    0,
+    5121,
+    __c640,
+    1,
   ) as any as S.Schema<UpdateEeDatabaseReplicationConnectionDatabaseRequest>,
   output: __S(
-    28,
-    __c3,
-    4,
+    4648,
+    __c581,
+    0,
   ) as any as S.Schema<UpdateEeDatabaseReplicationConnectionDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
@@ -17043,8 +17099,8 @@ export const updateEeScimUser: API.OperationMethod<
   UpdateEeScimUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(779, __c97, 3) as any as S.Schema<UpdateEeScimUserRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateEeScimUserResponse>,
+  input: __S(5130, __c641, 2) as any as S.Schema<UpdateEeScimUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateEeScimUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17058,8 +17114,8 @@ export const updateNotifyDb: API.OperationMethod<
   UpdateNotifyDbError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(780, __c97, 4) as any as S.Schema<UpdateNotifyDbRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateNotifyDbResponse>,
+  input: __S(5136, __c642, 0) as any as S.Schema<UpdateNotifyDbRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateNotifyDbResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17069,23 +17125,2040 @@ export const updateNotifyDb: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/api/action", code: 200 })),
+      ).annotate({ identifier: "CreateActionRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateActionResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parameters: S.optional(S.NullOr(__S(24, __c3, 0))),
+        }),
+      ).annotate({
+        identifier: "CreateActionExecuteRequestBody",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          body: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/api/action/{id}/execute", code: 200 })),
+      ).annotate({
+        identifier: "CreateActionExecuteRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          database_id: S.Number,
+          sql: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/execute-sql", code: 200 })),
+      ).annotate({
+        identifier: "CreateAgentExecuteSqlRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advisory_ids: __S(504, __c63, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/security-center/acknowledge", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeSecurityCenterAcknowledgeRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advisory_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ee/security-center/{advisory_id}/acknowledge",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEeSecurityCenterAcknowledgeRequest2",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "POST", uri: "/api/ee/security-center/sync", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEeSecurityCenterSyncRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          card_id: S.optional(S.NullOr(S.Number)),
-          dashcard: S.optional(S.Unknown),
-          parameter_id: S.String,
-          target: S.Unknown,
+          email_recipients: S.optional(S.NullOr(__S(64, __c8, 0))),
+          slack_channel: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/ee/security-center/test-notification", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEeSecurityCenterTestNotificationRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dirname: S.optional(S.String.pipe(T.Query())),
+          collection: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          all_collections: S.optional(S.Boolean.pipe(T.Query())),
+          settings: S.optional(S.Boolean.pipe(T.Query())),
+          data_model: S.optional(S.Boolean.pipe(T.Query())),
+          field_values: S.optional(S.Boolean.pipe(T.Query())),
+          continue_on_error: S.optional(S.Boolean.pipe(T.Query())),
+          full_stacktrace: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/serialization/export", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeSerializationExportRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content_type: S.String.pipe(T.Body("content-type")),
+          filename: S.String,
+          size: S.Number,
+          tempfile: S.Unknown,
         }),
       ).annotate({
-        identifier: "MetabaseParametersSchemaParameterMapping",
+        identifier: "CreateEeSerializationImportRequestFile",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue_on_error: S.optional(S.Boolean.pipe(T.Query())),
+          full_stacktrace: S.optional(S.Boolean.pipe(T.Query())),
+          reindex: S.optional(S.Boolean.pipe(T.Query())),
+          file: __S(80, __c10, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ee/serialization/import",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEeSerializationImportRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          with_databases: S.optional(S.Boolean.pipe(T.Query("with-databases"))),
+          with_tables: S.optional(S.Boolean.pipe(T.Query("with-tables"))),
+          with_fields: S.optional(S.Boolean.pipe(T.Query("with-fields"))),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/ee/serialization/metadata/export", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEeSerializationMetadataExportRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "POST", uri: "/api/ee/serialization/metadata/import", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEeSerializationMetadataImportRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          grant_duration_minutes: S.Number,
+          notes: S.optional(S.NullOr(S.String)),
+          ticket_number: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/support-access-grant", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeSupportAccessGrantRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(S.NullOr(__S(24, __c3, 0))),
+          name: S.String,
+          slug: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/tenant", code: 200 })),
+      ).annotate({ identifier: "CreateEeTenantRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection_id: S.optional(S.NullOr(S.Number)),
+          description: S.optional(S.NullOr(S.String)),
+          display: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          query: S.String,
+          visualization_settings: S.optional(S.NullOr(S.Unknown)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/metric", code: 200 })),
+      ).annotate({ identifier: "CreateAgentMetricRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          lens_id: S.String.pipe(T.Label()),
+          lens_params: S.optional(S.NullOr(__S(128, __c16, 0))),
+          query: __S(1128, __c141, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ee/transforms/{id}/inspect/{lens_id}/query",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEeTransformInspectQueryRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.String,
+          database_id: S.Number,
+          schema: S.NullOr(S.String),
+          table: S.optional(S.String),
+          table_id: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "MetabaseTransformsBaseUtilSourceTableEntry",
+      });
+    case 1:
+      return S.Array(__S(136, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          output_row_limit: S.optional(S.Unknown),
+          per_input_row_limit: S.optional(S.Unknown),
+          source_tables: __S(137, __c17, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/transforms-python/test-run", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeTransformsPythonTestRunRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(504, __c63, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          entity_ids: __S(144, __c18, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/api/eid-translation/translate", code: 200 })),
+      ).annotate({
+        identifier: "CreateEidTranslationTranslateRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/email/test", code: 200 })),
+      ).annotate({ identifier: "CreateEmailTestRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          encodedQuery: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/embed-mcp/drills", code: 200 })),
+      ).annotate({
+        identifier: "CreateEmbedMcpDrillRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          prompt: S.optional(S.NullOr(S.String)),
+          query: S.optional(S.NullOr(S.String)),
+          source: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateEmbedMcpFeedbackRequestConversationData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          freeform_feedback: S.optional(S.NullOr(S.String)),
+          issue_type: S.optional(S.NullOr(S.String)),
+          message_id: S.String,
+          positive: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateEmbedMcpFeedbackRequestFeedback",
       });
     case 2:
-      return S.Array(__S(1, __c0, 1));
+      return S.suspend(() =>
+        S.Struct({
+          conversation_data: __S(168, __c21, 0),
+          feedback: __S(169, __c21, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/api/embed-mcp/feedback", code: 200 })),
+      ).annotate({
+        identifier: "CreateEmbedMcpFeedbackRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          settings: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/api/embed-theme", code: 200 })),
+      ).annotate({ identifier: "CreateEmbedThemeRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/embed-theme/{id}/copy", code: 200 })),
+      ).annotate({
+        identifier: "CreateEmbedThemeCopyRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          settings: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateEmbedThemeSeedDefaultRequestThemesItem",
+      });
+    case 1:
+      return S.Array(__S(192, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          themes: __S(193, __c24, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/api/embed-theme/seed-defaults", code: 200 })),
+      ).annotate({
+        identifier: "CreateEmbedThemeSeedDefaultRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          human_readable_field_id: S.optional(S.NullOr(S.Number)),
+          name: S.String,
+          type: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/field/{id}/dimension", code: 200 })),
+      ).annotate({
+        identifier: "CreateFieldDimensionRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v2/query", code: 200 })),
+      ).annotate({ identifier: "CreateAgentQueryRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/field/{id}/discard_values", code: 200 })),
+      ).annotate({
+        identifier: "CreateFieldDiscardValueRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/field/{id}/rescan_values", code: 200 })),
+      ).annotate({
+        identifier: "CreateFieldRescanValueRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field_ids: __S(5280, __c660, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/api/field/table-ids", code: 200 })),
+      ).annotate({
+        identifier: "CreateFieldTableIdsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          values: __S(240, __c30, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/api/field/{id}/values", code: 200 })),
+      ).annotate({ identifier: "CreateFieldValueRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/frontend-errors", code: 200 })),
+      ).annotate({
+        identifier: "CreateFrontendErrorRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          definition: S.String,
+          term: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/glossary", code: 200 })),
+      ).annotate({ identifier: "CreateGlossaryRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          group_id: S.Number,
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/api-key", code: 200 })),
+      ).annotate({ identifier: "CreateKeyRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_id: S.optional(S.Number.pipe(T.Body("card-id"))),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateLlmExtractSourceRequestTemplateTagsValue",
+      });
+    case 1:
+      return S.Record(S.String, __S(272, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          database_id: S.Number,
+          sql: S.String,
+          template_tags: S.optional(__S(273, __c34, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/llm/extract-sources", code: 200 })),
+      ).annotate({
+        identifier: "CreateLlmExtractSourceRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          model: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateLlmGenerateSqlRequestReferencedEntitiesItem",
+      });
+    case 1:
+      return S.Array(__S(280, __c35, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          database_id: S.Number,
+          prompt: S.String,
+          referenced_entities: S.optional(__S(281, __c35, 1)),
+          source_sql: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/llm/generate-sql", code: 200 })),
+      ).annotate({
+        identifier: "CreateLlmGenerateSqlRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.Number,
+          duration_unit: S.String,
+          log_levels: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/api/logger/adjustment", code: 200 })),
+      ).annotate({
+        identifier: "CreateLoggerAdjustmentRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection_id: S.optional(S.NullOr(S.Number)),
+          description: S.optional(S.NullOr(S.String)),
+          display: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          query: S.String,
+          visualization_settings: S.optional(S.NullOr(S.Unknown)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/question", code: 200 })),
+      ).annotate({
+        identifier: "CreateAgentQuestionRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          definition: __S(1128, __c141, 0),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          table_id: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/api/measure", code: 200 })),
+      ).annotate({ identifier: "CreateMeasureRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          user_is_viewing: S.optional(__S(312, __c39, 0)),
+        }),
+      ).annotate({
+        identifier: "MetabaseMetabotContextContext",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          arguments: S.String,
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "MetabaseMetabotSchemaMessageToolCallsItem",
+      });
     case 3:
-      return S.Array(S.String);
+      return S.Array(__S(314, __c39, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.NullOr(S.String)),
+          role: S.String,
+          tool_call_id: S.optional(S.NullOr(S.String)),
+          tool_calls: S.optional(S.NullOr(__S(315, __c39, 3))),
+        }),
+      ).annotate({
+        identifier: "MetabaseMetabotSchemaMessage",
+      });
+    case 5:
+      return S.Array(__S(316, __c39, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          chart_configs: S.optional(__S(24, __c3, 0).pipe(T.Body("chart-configs"))),
+          charts: S.optional(__S(24, __c3, 0)),
+          link_registry: S.optional(__S(776, __c97, 0).pipe(T.Body("link-registry"))),
+          queries: S.optional(__S(24, __c3, 0)),
+          todos: S.optional(__S(5016, __c627, 0)),
+          transforms: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "MetabaseMetabotAgentCoreState",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          context: __S(313, __c39, 1),
+          conversation_id: S.String,
+          debug: S.optional(S.NullOr(S.Boolean)),
+          history: S.NullOr(__S(317, __c39, 5)),
+          message: S.String,
+          metabot_id: S.optional(S.String),
+          profile_id: S.optional(S.String),
+          state: __S(318, __c39, 6),
+        }).pipe(T.Http({ method: "POST", uri: "/api/metabot/agent-streaming", code: 200 })),
+      ).annotate({
+        identifier: "CreateMetabotAgentStreamingRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instructions: S.String,
+          references: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/metabot/document/generate-content", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateMetabotDocumentGenerateContentRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          freeform_feedback: S.optional(S.NullOr(S.String)),
+          issue_type: S.optional(S.NullOr(S.String)),
+          message_id: S.String,
+          metabot_id: S.Number,
+          positive: S.Boolean,
+        }).pipe(T.Http({ method: "POST", uri: "/api/metabot/feedback", code: 200 })),
+      ).annotate({
+        identifier: "CreateMetabotFeedbackRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/metabot/metabot/{id}/prompt-suggestions/regenerate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateMetabotMetabotPromptSuggestionsRegenerateRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/api/metabot/slack/events", code: 200 })),
+      ).annotate({
+        identifier: "CreateMetabotSlackEventRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          payload: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/metabot/slack/interactive", code: 200 })),
+      ).annotate({
+        identifier: "CreateMetabotSlackInteractiveRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message_id: S.String,
+          metabot_id: S.Number,
+          positive: S.Boolean,
+          source_id: S.Number,
+          source_type: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/metabot/source-feedback", code: 200 })),
+      ).annotate({
+        identifier: "CreateMetabotSourceFeedbackRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          definition: __S(381, __c47, 5),
+        }).pipe(T.Http({ method: "POST", uri: "/api/metric/breakout-values", code: 200 })),
+      ).annotate({
+        identifier: "CreateMetricBreakoutValueRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.Unknown,
+          lib_uuid: S.String.pipe(T.Body("lib/uuid")),
+        }),
+      ).annotate({
+        identifier: "MetabaseLibMetricSchemaInstanceFilter",
+      });
+    case 1:
+      return S.Array(__S(376, __c47, 0));
+    case 2:
+      return S.Array(__S(5016, __c627, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          lib_uuid: S.String.pipe(T.Body("lib/uuid")),
+          projection: __S(378, __c47, 2),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "MetabaseLibMetricSchemaTypedProjection",
+      });
+    case 4:
+      return S.Array(__S(379, __c47, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.Unknown,
+          filters: S.optional(S.NullOr(__S(377, __c47, 1))),
+          projections: S.optional(S.NullOr(__S(380, __c47, 4))),
+        }),
+      ).annotate({
+        identifier: "MetabaseMetricsApiDefinition",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          definition: __S(381, __c47, 5),
+        }).pipe(T.Http({ method: "POST", uri: "/api/metric/dataset", code: 200 })),
+      ).annotate({
+        identifier: "CreateMetricDatasetRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/question/{id}/query", code: 200 })),
+      ).annotate({
+        identifier: "CreateAgentQuestionQueryRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          model_id: S.Number,
+          pk_ref: S.Unknown,
+          value_ref: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/api/model-index", code: 200 })),
+      ).annotate({ identifier: "CreateModelIndexRequest" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          moderated_item_id: S.Number,
+          moderated_item_type: S.String,
+          status: S.optional(S.NullOr(S.String)),
+          text: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/moderation-review", code: 200 })),
+      ).annotate({
+        identifier: "CreateModerationReviewRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attribute_remappings: S.optional(S.NullOr(__S(424, __c53, 0))),
+          card_id: S.optional(S.NullOr(S.Number)),
+          group_id: S.Number,
+          table_id: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/api/mt/gtap", code: 200 })),
+      ).annotate({ identifier: "CreateMtGtapRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_id: S.optional(S.NullOr(S.Number)),
+          table_id: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/api/mt/gtap/validate", code: 200 })),
+      ).annotate({
+        identifier: "CreateMtGtapValidateRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection_id: S.optional(S.NullOr(S.Number)),
+          content: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          name: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/api/native-query-snippet", code: 200 })),
+      ).annotate({
+        identifier: "CreateNativeQuerySnippetRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/api/notification", code: 200 })),
+      ).annotate({
+        identifier: "CreateNotificationRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          creator_id: S.optional(S.Number),
+          notification_ids: __S(5280, __c660, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/api/notification/admin/bulk", code: 200 })),
+      ).annotate({
+        identifier: "CreateNotificationAdminBulkRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/api/notification/send", code: 200 })),
+      ).annotate({
+        identifier: "CreateNotificationSendRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          handler_ids: S.optional(__S(5280, __c660, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/notification/{id}/send", code: 200 })),
+      ).annotate({
+        identifier: "CreateNotificationSendRequest2",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          hash: S.String,
+          notification_handler_id: S.Number.pipe(T.Body("notification-handler-id")),
+        }).pipe(T.Http({ method: "POST", uri: "/api/notification/unsubscribe", code: 200 })),
+      ).annotate({
+        identifier: "CreateNotificationUnsubscribeRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uris: __S(504, __c63, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/read-resource", code: 200 })),
+      ).annotate({
+        identifier: "CreateAgentReadResourceRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateAgentReadResourceResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/notification/{id}/unsubscribe", code: 200 })),
+      ).annotate({
+        identifier: "CreateNotificationUnsubscribeRequest2",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          hash: S.String,
+          notification_handler_id: S.Number.pipe(T.Body("notification-handler-id")),
+        }).pipe(T.Http({ method: "POST", uri: "/api/notification/unsubscribe/undo", code: 200 })),
+      ).annotate({
+        identifier: "CreateNotificationUnsubscribeUndoRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schema_name: S.optional(S.NullOr(S.String)),
+          synchronous_: S.optional(S.NullOr(S.Boolean).pipe(T.Body("synchronous?"))),
+          table_name: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/notify/db/attached_datawarehouse", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateNotifyDbAttachedDatawarehouseRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          schema_name: S.String,
+          table_name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/notify/db/{id}/new-table", code: 200 })),
+      ).annotate({
+        identifier: "CreateNotifyDbNewTableRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "POST", uri: "/api/osi/ai-context/reconcile", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateOsiAiContextReconcileRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          is_tenant_group: S.optional(S.NullOr(S.Boolean)),
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/permissions/group", code: 200 })),
+      ).annotate({
+        identifier: "CreatePermissionsGroupRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          group_id: S.Number,
+          is_group_manager: S.optional(S.NullOr(S.Boolean)),
+          user_id: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/api/permissions/membership", code: 200 })),
+      ).annotate({
+        identifier: "CreatePermissionsMembershipRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/persist/card/{card_id}/persist", code: 200 })),
+      ).annotate({
+        identifier: "CreatePersistCardPersistRequest",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/persist/card/{card_id}/refresh", code: 200 })),
+      ).annotate({
+        identifier: "CreatePersistCardRefreshRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/persist/card/{card_id}/unpersist", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreatePersistCardUnpersistRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          semantic_queries: S.optional(S.NullOr(S.Unknown)),
+          term_queries: S.optional(S.NullOr(S.Unknown)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/search", code: 200 })),
+      ).annotate({ identifier: "CreateAgentSearchRequest" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/persist/database/{id}/persist", code: 200 })),
+      ).annotate({
+        identifier: "CreatePersistDatabasePersistRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/persist/database/{id}/unpersist", code: 200 })),
+      ).annotate({
+        identifier: "CreatePersistDatabaseUnpersistRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/persist/disable", code: 200 })),
+      ).annotate({
+        identifier: "CreatePersistDisableRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/persist/enable", code: 200 })),
+      ).annotate({
+        identifier: "CreatePersistEnableRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cron: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/persist/set-refresh-schedule", code: 200 })),
+      ).annotate({
+        identifier: "CreatePersistSetRefreshScheduleRequest",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "POST", uri: "/api/premium-features/token/refresh", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreatePremiumFeaturesTokenRefreshRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          comments: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          source: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/product-feedback", code: 200 })),
+      ).annotate({
+        identifier: "CreateProductFeedbackRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cards: S.Unknown,
+          channels: S.Unknown,
+          collection_id: S.optional(S.NullOr(S.Number)),
+          collection_position: S.optional(S.NullOr(S.Number)),
+          dashboard_id: S.optional(S.NullOr(S.Number)),
+          name: S.String,
+          parameters: S.optional(S.NullOr(__S(1096, __c137, 0))),
+          skip_if_empty: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/pulse", code: 200 })),
+      ).annotate({ identifier: "CreatePulseRequest" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+          name: S.String,
+          collection_position: S.optional(S.NullOr(S.Number)),
+          skip_if_empty: S.optional(S.NullOr(S.Boolean)),
+          alert_above_goal: S.optional(S.NullOr(S.Boolean)),
+          alert_condition: S.optional(S.NullOr(S.String)),
+          collection_id: S.optional(S.NullOr(S.Number)),
+          alert_first_only: S.optional(S.NullOr(S.Boolean)),
+          disable_links: S.optional(S.NullOr(S.Boolean)),
+          parameters: S.optional(S.NullOr(__S(1401, __c175, 1))),
+          cards: S.Unknown,
+          dashboard_id: S.optional(S.NullOr(S.Number)),
+          channels: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/api/pulse/test", code: 200 })),
+      ).annotate({ identifier: "CreatePulseTestRequest" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          hash: S.String,
+          pulse_id: S.Number.pipe(T.Body("pulse-id")),
+        }).pipe(T.Http({ method: "POST", uri: "/api/pulse/unsubscribe", code: 200 })),
+      ).annotate({
+        identifier: "CreatePulseUnsubscribeRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          timestamp: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsItem",
+      });
+    case 1:
+      return S.Array(__S(680, __c85, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          image_base64: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          timeline_events: S.optional(S.NullOr(__S(681, __c85, 1))),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/ai-entity-analysis/analyze-chart", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateAiEntityAnalysisAnalyzeChartRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          hash: S.String,
+          pulse_id: S.Number.pipe(T.Body("pulse-id")),
+        }).pipe(T.Http({ method: "POST", uri: "/api/pulse/unsubscribe/undo", code: 200 })),
+      ).annotate({
+        identifier: "CreatePulseUnsubscribeUndoRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entity: S.String,
+          id: S.Number,
+          revision_id: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/api/revision/revert", code: 200 })),
+      ).annotate({
+        identifier: "CreateRevisionRevertRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/search/force-reindex", code: 200 })),
+      ).annotate({
+        identifier: "CreateSearchForceReindexRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/search/re-init", code: 200 })),
+      ).annotate({
+        identifier: "CreateSearchReInitRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          definition: __S(1128, __c141, 0),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          table_id: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/api/segment", code: 200 })),
+      ).annotate({ identifier: "CreateSegmentRequest" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          password: S.String.pipe(T.SensitiveValue({})),
+          username: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/session", code: 200 })),
+      ).annotate({ identifier: "CreateSessionRequest" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/session/forgot_password", code: 200 })),
+      ).annotate({
+        identifier: "CreateSessionForgotPasswordRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/session/google_auth", code: 200 })),
+      ).annotate({
+        identifier: "CreateSessionGoogleAuthRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          challenge_token: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/session/mfa/send-email-otp", code: 200 })),
+      ).annotate({
+        identifier: "CreateSessionMfaSendEmailOtpRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          challenge_token: S.String,
+          code: S.String,
+          remember: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/session/mfa/verify", code: 200 })),
+      ).annotate({
+        identifier: "CreateSessionMfaVerifyRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(S.NullOr(S.Number)),
+          labels: S.optional(S.NullOr(__S(776, __c97, 0))),
+          metric: S.String,
+          op: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateAnalyticsInternalRequestEventsItem",
+      });
+    case 1:
+      return S.Array(__S(768, __c96, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          events: __S(769, __c96, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/api/analytics/internal", code: 200 })),
+      ).annotate({
+        identifier: "CreateAnalyticsInternalRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(T.Http({ method: "POST", uri: "/api/session/password-check", code: 200 })),
+      ).annotate({
+        identifier: "CreateSessionPasswordCheckRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          password: S.String.pipe(T.SensitiveValue({})),
+          token: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/session/reset_password", code: 200 })),
+      ).annotate({
+        identifier: "CreateSessionResetPasswordRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          site_locale: S.optional(S.NullOr(S.String)),
+          site_name: S.String,
+        }),
+      ).annotate({ identifier: "CreateSetupRequestPrefs" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          first_name: S.optional(S.NullOr(S.String)),
+          last_name: S.optional(S.NullOr(S.String)),
+          password: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({ identifier: "CreateSetupRequestUser" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          prefs: __S(800, __c100, 0),
+          token: S.String,
+          user: __S(801, __c100, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/api/setup", code: 200 })),
+      ).annotate({ identifier: "CreateSetupRequest" });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entityName: S.optional(S.NullOr(S.String)),
+          frontendErrors: S.optional(S.NullOr(__S(504, __c63, 0))),
+          entityInfo: S.optional(S.NullOr(S.Unknown)),
+          reporter: S.optional(S.NullOr(S.Unknown)),
+          url: S.optional(S.NullOr(S.String)),
+          backendErrors: S.optional(S.NullOr(__S(5016, __c627, 0))),
+          bugReportDetails: S.optional(S.NullOr(S.Unknown)),
+          userLogs: S.optional(S.NullOr(__S(5016, __c627, 0))),
+          localizedEntityName: S.optional(S.NullOr(S.String)),
+          logs: S.optional(S.NullOr(__S(5016, __c627, 0))),
+          queryResults: S.optional(S.NullOr(S.Unknown)),
+          browserInfo: S.optional(S.NullOr(S.Unknown)),
+          description: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateSlackBugReportRequestDiagnosticInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          diagnosticInfo: __S(808, __c101, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/api/slack/bug-report", code: 200 })),
+      ).annotate({
+        identifier: "CreateSlackBugReportRequest",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          collection_id: S.optional(S.String),
+          file: __S(824, __c103, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/table/{id}/append-csv",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTableAppendCsvRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filename: S.String,
+          tempfile: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateTableAppendCsvRequestFile",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/table/{id}/discard_values", code: 200 })),
+      ).annotate({
+        identifier: "CreateTableDiscardValueRequest",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          collection_id: S.optional(S.String),
+          file: __S(824, __c103, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/table/{id}/replace-csv",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTableReplaceCsvRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/table/{id}/rescan_values", code: 200 })),
+      ).annotate({
+        identifier: "CreateTableRescanValueRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/table/{id}/sync_schema", code: 200 })),
+      ).annotate({
+        identifier: "CreateTableSyncSchemaRequest",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          archived: S.optional(S.NullOr(S.Boolean)),
+          collection_id: S.optional(S.NullOr(S.Number)),
+          default: S.optional(S.NullOr(S.Boolean)),
+          description: S.optional(S.NullOr(S.String)),
+          icon: S.optional(S.NullOr(S.String)),
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/timeline", code: 200 })),
+      ).annotate({ identifier: "CreateTimelineRequest" });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(776, __c97, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(872, __c109, 0),
+          schema: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/analytics-proxy", code: 200 })),
+      ).annotate({
+        identifier: "CreateAnalyticsProxyRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          question_id: S.optional(S.NullOr(S.Number)),
+          timezone: S.String,
+          timestamp: S.String,
+          name: S.String,
+          archived: S.optional(S.NullOr(S.Boolean)),
+          timeline_id: S.Number,
+          source: S.optional(S.NullOr(S.String)),
+          time_matters: S.optional(S.NullOr(S.Boolean)),
+          description: S.optional(S.NullOr(S.String)),
+          icon: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/timeline-event", code: 200 })),
+      ).annotate({
+        identifier: "CreateTimelineEventRequest",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner_email: S.optional(S.NullOr(S.String)),
+          owner_user_id: S.optional(S.NullOr(S.Number)),
+          name: S.String,
+          tag_ids: S.optional(__S(5280, __c660, 0)),
+          collection_id: S.optional(S.NullOr(S.Number)),
+          source: S.Unknown,
+          target: S.Unknown,
+          run_trigger: S.optional(S.String),
+          description: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/transform", code: 200 })),
+      ).annotate({ identifier: "CreateTransformRequest" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/transform/{id}/cancel", code: 200 })),
+      ).annotate({
+        identifier: "CreateTransformCancelRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          schedule: S.String,
+          tag_ids: S.optional(__S(5280, __c660, 0)),
+          ui_display_type: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/transform-job", code: 200 })),
+      ).annotate({
+        identifier: "CreateTransformJobRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          job_id: S.Number.pipe(T.Label()),
+          run_all: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/transform-job/{job_id}/run", code: 200 })),
+      ).annotate({
+        identifier: "CreateTransformJobRunRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/transform/{id}/reset-checkpoint", code: 200 })),
+      ).annotate({
+        identifier: "CreateTransformResetCheckpointRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/transform/{id}/run", code: 200 })),
+      ).annotate({
+        identifier: "CreateTransformRunRequest",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/transform-tag", code: 200 })),
+      ).annotate({
+        identifier: "CreateTransformTagRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection_id: S.NullOr(S.Number),
+          file: __S(824, __c103, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/upload/csv", code: 200, contentType: "multipart" }),
+        ),
+      ).annotate({ identifier: "CreateUploadCsvRequest" });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateUserRequestInviteTarget",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          login_attributes: S.optional(S.NullOr(__S(24, __c3, 0))),
+          user_group_memberships: S.optional(S.NullOr(__S(961, __c120, 1))),
+          email: S.String,
+          tenant_id: S.optional(S.NullOr(S.Number)),
+          last_name: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.NullOr(S.String)),
+          source: S.optional(S.NullOr(S.String)),
+          password: S.optional(S.NullOr(S.String)),
+          invite_target: S.optional(S.NullOr(__S(952, __c119, 0))),
+        }).pipe(T.Http({ method: "POST", uri: "/api/user", code: 200 })),
+      ).annotate({ identifier: "CreateUserRequest" });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          is_group_manager: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "MetabaseUsersSchemaUserGroupMembership",
+      });
+    case 1:
+      return S.Array(__S(960, __c120, 0));
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+          parameters: S.optional(S.NullOr(__S(24, __c3, 0))),
+        }).pipe(T.Http({ method: "POST", uri: "/api/public/action/{uuid}/execute", code: 200 })),
+      ).annotate({
+        identifier: "CreateActionExecuteRequest2",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          include: S.optional(S.Unknown.pipe(T.Query())),
+          database: S.optional(__S(5280, __c660, 0).pipe(T.Query())),
+          dashboard: S.optional(__S(5280, __c660, 0).pipe(T.Query())),
+          question: S.optional(__S(5280, __c660, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/api/cache/invalidate", code: 200 })),
+      ).annotate({
+        identifier: "CreateCacheInvalidateRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/user/{id}/password-reset-url", code: 200 })),
+      ).annotate({
+        identifier: "CreateUserPasswordResetUrlRequest",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/action/{action_id}", code: 200 })),
+      ).annotate({ identifier: "DeleteActionRequest" });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/action/{id}/public_link", code: 200 })),
+      ).annotate({
+        identifier: "DeleteActionPublicLinkRequest",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/alert/{id}/subscription", code: 200 })),
+      ).annotate({
+        identifier: "DeleteAlertSubscriptionRequest",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          model: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/bookmark/{model}/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteBookmarkRequest" });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          model: S.String,
+          model_id: __S(5280, __c660, 0),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/cache", code: 200 })),
+      ).annotate({ identifier: "DeleteCacheRequest" });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/card/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteCardRequest" });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/card/{card_id}/public_link", code: 200 })),
+      ).annotate({
+        identifier: "DeleteCardPublicLinkRequest",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/collection/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteCollectionRequest" });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          comment_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/comment/{comment_id}", code: 200 })),
+      ).annotate({ identifier: "DeleteCommentRequest" });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          size_x: S.Number,
+          size_y: S.Number,
+        }),
+      ).annotate({ identifier: "CreateCardRequestSize" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          visualization_settings: S.Unknown,
+          dashboard_tab_id: S.optional(S.NullOr(S.Number)),
+          entity_id: S.optional(S.NullOr(S.String)),
+          dataset_query: __S(1128, __c141, 0),
+          parameter_mappings: S.optional(S.NullOr(__S(1105, __c138, 1))),
+          name: S.String,
+          collection_position: S.optional(S.NullOr(S.Number)),
+          result_metadata: S.optional(S.NullOr(__S(1122, __c140, 2))),
+          collection_id: S.optional(S.NullOr(S.Unknown)),
+          cache_ttl: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.String)),
+          display: S.String,
+          size: S.optional(S.NullOr(__S(1064, __c133, 0))),
+          parameters: S.optional(S.NullOr(__S(1096, __c137, 0))),
+          description: S.optional(S.NullOr(S.String)),
+          dashboard_id: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/card", code: 200 })),
+      ).annotate({ identifier: "CreateCardRequest" });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          case_sensitive: S.optional(S.Boolean.pipe(T.Body("case-sensitive"))),
+          include_current: S.optional(S.Boolean.pipe(T.Body("include-current"))),
+        }),
+      ).annotate({
+        identifier: "MetabaseLibSchemaParameterParameterOptions",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           card_id: S.optional(S.Number),
@@ -17096,24 +19169,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "MetabaseParametersSchemaValuesSourceConfig",
       });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          case_sensitive: S.optional(S.Boolean.pipe(T.Body("case-sensitive"))),
-          include_current: S.optional(S.Boolean.pipe(T.Body("include-current"))),
-        }),
-      ).annotate({
-        identifier: "MetabaseLibSchemaParameterParameterOptions",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          filteringParameters: S.optional(S.NullOr(__S(3, __c0, 3))),
+          filteringParameters: S.optional(S.NullOr(__S(504, __c63, 0))),
           mappings: S.optional(S.NullOr(S.Unknown)),
           sectionId: S.optional(S.String),
-          values_source_config: S.optional(S.NullOr(__S(4, __c0, 4))),
+          values_source_config: S.optional(S.NullOr(__S(1088, __c136, 0))),
           display_name: S.optional(S.NullOr(S.String).pipe(T.Body("display-name"))),
           id: S.String,
           name: S.optional(S.String),
@@ -17122,10 +19184,10 @@ function __c0(j: number): any {
           required: S.optional(S.NullOr(S.Boolean)),
           values_query_type: S.optional(S.NullOr(S.String)),
           type: S.String,
-          temporal_units: S.optional(S.NullOr(__S(5, __c0, 5))),
+          temporal_units: S.optional(S.NullOr(__S(1080, __c135, 0))),
           target: S.optional(S.Unknown),
           values_source_type: S.optional(S.NullOr(S.String)),
-          options: S.optional(S.NullOr(__S(6, __c0, 6))),
+          options: S.optional(S.NullOr(__S(1072, __c134, 0))),
           default: S.optional(S.Unknown),
           isMultiSelect: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -17134,15 +19196,54 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(__S(1089, __c136, 1));
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_id: S.optional(S.NullOr(S.Number)),
+          dashcard: S.optional(S.Unknown),
+          parameter_id: S.String,
+          target: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "MetabaseParametersSchemaParameterMapping",
+      });
     case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
+      return S.Array(__S(1104, __c138, 0));
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          value: S.optional(S.Unknown),
+          required: S.optional(S.NullOr(S.Boolean)),
+          type: S.String,
+          target: S.optional(S.Unknown),
+          options: S.optional(S.NullOr(__S(1072, __c134, 0))),
+          default: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "MetabaseLibSchemaParameterParameter",
+      });
+    case 1:
+      return S.Array(__S(1112, __c139, 0));
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           include_sensitive_fields: S.optional(S.Boolean.pipe(T.Body("include-sensitive-fields"))),
@@ -17151,7 +19252,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "MetabaseLibSchemaSettingsSettings",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           max_results: S.optional(S.Number.pipe(T.Body("max-results"))),
@@ -17160,16 +19261,16 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "MetabaseLibSchemaConstraintsConstraints",
       });
-    case 5:
+    case 2:
       return S.Array(S.Unknown);
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           query_hash: S.optional(S.NullOr(S.String).pipe(T.Body("query-hash"))),
           action_id: S.optional(S.NullOr(S.Number).pipe(T.Body("action-id"))),
           lens_id: S.optional(S.NullOr(S.String).pipe(T.Body("lens-id"))),
           pivot_original_query: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("pivot/original-query")),
+            S.NullOr(__S(24, __c3, 0)).pipe(T.Body("pivot/original-query")),
           ),
           executed_by: S.optional(S.NullOr(S.Number).pipe(T.Body("executed-by"))),
           card_id: S.optional(S.NullOr(S.Number).pipe(T.Body("card-id"))),
@@ -17179,9 +19280,9 @@ function __c1(j: number): any {
           transform_id: S.optional(S.NullOr(S.Number).pipe(T.Body("transform-id"))),
           context: S.optional(S.NullOr(S.String)),
           dashboard_id: S.optional(S.NullOr(S.Number).pipe(T.Body("dashboard-id"))),
-          lens_params: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("lens-params"))),
+          lens_params: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("lens-params"))),
           metadata_model_metadata: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("metadata/model-metadata")),
+            S.NullOr(__S(1122, __c140, 2)).pipe(T.Body("metadata/model-metadata")),
           ),
           pulse_id: S.optional(S.NullOr(S.Number).pipe(T.Body("pulse-id"))),
           card_name: S.optional(S.NullOr(S.String).pipe(T.Body("card-name"))),
@@ -17189,7 +19290,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "MetabaseLibSchemaInfoInfo",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           process_viz_settings_: S.optional(
@@ -17213,2800 +19314,45 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          value: S.optional(S.Unknown),
-          required: S.optional(S.NullOr(S.Boolean)),
-          type: S.String,
-          target: S.optional(S.Unknown),
-          options: S.optional(S.NullOr(__S(6, __c0, 6))),
-          default: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "MetabaseLibSchemaParameterParameter",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           lib_metadata: S.optional(S.Unknown.pipe(T.Body("lib/metadata"))),
           show_column_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-column-totals"))),
-          pivot_rows: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("pivot-rows"))),
-          update_row: S.optional(__S(10, __c1, 2).pipe(T.Body("update-row"))),
+          pivot_rows: S.optional(S.NullOr(__S(5280, __c660, 0)).pipe(T.Body("pivot-rows"))),
+          update_row: S.optional(__S(24, __c3, 0).pipe(T.Body("update-row"))),
           lib_type: S.optional(S.Unknown.pipe(T.Body("lib/type"))),
-          settings: S.optional(__S(11, __c1, 3)),
-          constraints: S.optional(__S(12, __c1, 4)),
-          info: S.optional(__S(14, __c1, 6)),
+          settings: S.optional(__S(1120, __c140, 0)),
+          constraints: S.optional(__S(1121, __c140, 1)),
+          info: S.optional(__S(1123, __c140, 3)),
           show_row_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-row-totals"))),
-          middleware: S.optional(__S(15, __c1, 7)),
+          middleware: S.optional(__S(1124, __c140, 4)),
           database: S.optional(S.Unknown),
-          pivot_measures: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("pivot-measures"))),
+          pivot_measures: S.optional(S.NullOr(__S(5280, __c660, 0)).pipe(T.Body("pivot-measures"))),
           stages: S.Unknown,
-          pivot_cols: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("pivot-cols"))),
-          parameters: S.optional(__S(17, __c2, 1)),
-          create_row: S.optional(__S(10, __c1, 2).pipe(T.Body("create-row"))),
+          pivot_cols: S.optional(S.NullOr(__S(5280, __c660, 0)).pipe(T.Body("pivot-cols"))),
+          parameters: S.optional(__S(1113, __c139, 1)),
+          create_row: S.optional(__S(24, __c3, 0).pipe(T.Body("create-row"))),
           was_pivot: S.optional(S.NullOr(S.Boolean).pipe(T.Body("was-pivot"))),
         }),
       ).annotate({ identifier: "MetabaseLibSchemaQuery" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/api/action", code: 200 })),
-      ).annotate({ identifier: "CreateActionRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateActionResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parameters: S.optional(S.NullOr(__S(10, __c1, 2))),
-        }),
-      ).annotate({
-        identifier: "CreateActionExecuteRequestBody",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          body: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/api/action/{id}/execute", code: 200 })),
-      ).annotate({
-        identifier: "CreateActionExecuteRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-          parameters: S.optional(S.NullOr(__S(10, __c1, 2))),
-        }).pipe(T.Http({ method: "POST", uri: "/api/public/action/{uuid}/execute", code: 200 })),
-      ).annotate({
-        identifier: "CreateActionExecuteRequest2",
-      });
   }
 }
-function __c3(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/action/{id}/public_link", code: 200 })),
-      ).annotate({
-        identifier: "CreateActionPublicLinkRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          context: S.String,
-          model: S.String,
-          model_id: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/api/activity/recents", code: 200 })),
-      ).annotate({
-        identifier: "CreateActivityRecentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          parent_collection_id: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/collection", code: 200 })),
-      ).annotate({
-        identifier: "CreateAgentCollectionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          database_id: S.Number,
-          sql: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/construct-native-query", code: 200 })),
-      ).annotate({
-        identifier: "CreateAgentConstructNativeQueryRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateAgentConstructNativeQueryResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          prompt: S.optional(S.NullOr(S.String)),
-          query: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v2/construct-query", code: 200 })),
-      ).annotate({
-        identifier: "CreateAgentConstructQueryRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          collection_id: S.optional(S.NullOr(S.Number)),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          question_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
-        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/dashboard", code: 200 })),
-      ).annotate({
-        identifier: "CreateAgentDashboardRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/execute", code: 200 })),
-      ).annotate({
-        identifier: "CreateAgentExecuteRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          database_id: S.Number,
-          sql: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/execute-sql", code: 200 })),
-      ).annotate({
-        identifier: "CreateAgentExecuteSqlRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          collection_id: S.optional(S.NullOr(S.Number)),
-          description: S.optional(S.NullOr(S.String)),
-          display: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          query: S.String,
-          visualization_settings: S.optional(S.NullOr(S.Unknown)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/metric", code: 200 })),
-      ).annotate({ identifier: "CreateAgentMetricRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v2/query", code: 200 })),
-      ).annotate({ identifier: "CreateAgentQueryRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          collection_id: S.optional(S.NullOr(S.Number)),
-          description: S.optional(S.NullOr(S.String)),
-          display: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          query: S.String,
-          visualization_settings: S.optional(S.NullOr(S.Unknown)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/question", code: 200 })),
-      ).annotate({
-        identifier: "CreateAgentQuestionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/question/{id}/query", code: 200 })),
-      ).annotate({
-        identifier: "CreateAgentQuestionQueryRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uris: __S(3, __c0, 3),
-        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/read-resource", code: 200 })),
-      ).annotate({
-        identifier: "CreateAgentReadResourceRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateAgentReadResourceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          semantic_queries: S.optional(S.NullOr(S.Unknown)),
-          term_queries: S.optional(S.NullOr(S.Unknown)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/search", code: 200 })),
-      ).annotate({ identifier: "CreateAgentSearchRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          timestamp: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsItem",
-      });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          image_base64: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          timeline_events: S.optional(S.NullOr(__S(41, __c5, 1))),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/ai-entity-analysis/analyze-chart", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateAiEntityAnalysisAnalyzeChartRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(S.NullOr(S.Number)),
-          labels: S.optional(S.NullOr(__S(43, __c5, 3))),
-          metric: S.String,
-          op: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateAnalyticsInternalRequestEventsItem",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          events: __S(45, __c5, 5),
-        }).pipe(T.Http({ method: "POST", uri: "/api/analytics/internal", code: 200 })),
-      ).annotate({
-        identifier: "CreateAnalyticsInternalRequest",
-      });
-    case 7:
-      return S.Array(__S(43, __c5, 3));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(47, __c5, 7),
-          schema: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/analytics-proxy", code: 200 })),
-      ).annotate({
-        identifier: "CreateAnalyticsProxyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          include: S.optional(S.Unknown.pipe(T.Query())),
-          database: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          dashboard: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          question: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/api/cache/invalidate", code: 200 })),
-      ).annotate({
-        identifier: "CreateCacheInvalidateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          size_x: S.Number,
-          size_y: S.Number,
-        }),
-      ).annotate({ identifier: "CreateCardRequestSize" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          visualization_settings: S.Unknown,
-          dashboard_tab_id: S.optional(S.NullOr(S.Number)),
-          entity_id: S.optional(S.NullOr(S.String)),
-          dataset_query: __S(18, __c2, 2),
-          parameter_mappings: S.optional(S.NullOr(__S(2, __c0, 2))),
-          name: S.String,
-          collection_position: S.optional(S.NullOr(S.Number)),
-          result_metadata: S.optional(S.NullOr(__S(13, __c1, 5))),
-          collection_id: S.optional(S.NullOr(S.Unknown)),
-          cache_ttl: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.String)),
-          display: S.String,
-          size: S.optional(S.NullOr(__S(50, __c6, 2))),
-          parameters: S.optional(S.NullOr(__S(8, __c1, 0))),
-          description: S.optional(S.NullOr(S.String)),
-          dashboard_id: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/card", code: 200 })),
-      ).annotate({ identifier: "CreateCardRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          card_ids: __S(9, __c1, 1),
-          collection_id: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/card/collections", code: 200 })),
-      ).annotate({
-        identifier: "CreateCardCollectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/card/{id}/copy", code: 200 })),
-      ).annotate({ identifier: "CreateCardCopyRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          default: S.optional(S.Unknown),
-          id: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          options: S.optional(S.NullOr(__S(6, __c0, 6))),
-          slug: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.NullOr(S.Unknown)),
-          type: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "MetabaseParametersSchemaParameterWithValue",
-      });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          card_id: S.Number.pipe(T.Label()),
-          ignore_cache: S.optional(S.NullOr(S.Boolean)),
-          parameters: S.optional(S.NullOr(__S(55, __c6, 7))),
-        }).pipe(T.Http({ method: "POST", uri: "/api/card/pivot/{card_id}/query", code: 200 })),
-      ).annotate({
-        identifier: "CreateCardPivotCardQueryRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          card_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/card/{card_id}/public_link", code: 200 })),
-      ).annotate({
-        identifier: "CreateCardPublicLinkRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          card_id: S.String.pipe(T.Label()),
-          collection_preview: S.optional(S.NullOr(S.Boolean)),
-          dashboard_id: S.optional(S.NullOr(S.Number)),
-          ignore_cache: S.optional(S.Boolean),
-          parameters: S.optional(S.NullOr(__S(55, __c6, 7))),
-        }).pipe(T.Http({ method: "POST", uri: "/api/card/{card_id}/query", code: 200 })),
-      ).annotate({ identifier: "CreateCardQueryRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          card_ids: __S(9, __c1, 1),
-        }).pipe(T.Http({ method: "POST", uri: "/api/cards/dashboards", code: 200 })),
-      ).annotate({
-        identifier: "CreateCardsDashboardRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          card_ids: __S(9, __c1, 1),
-          collection_id: S.optional(S.NullOr(S.Number)),
-          dashboard_id: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/cards/move", code: 200 })),
-      ).annotate({ identifier: "CreateCardsMoveRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/api/channel", code: 200 })),
-      ).annotate({ identifier: "CreateChannelRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/api/channel/test", code: 200 })),
-      ).annotate({ identifier: "CreateChannelTestRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/cloud-migration", code: 200 })),
-      ).annotate({
-        identifier: "CreateCloudMigrationRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authority_level: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          namespace: S.optional(S.NullOr(S.String)),
-          parent_id: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/collection", code: 200 })),
-      ).annotate({ identifier: "CreateCollectionRequest" });
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          card_ids: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateCollectionMoveDashboardQuestionCandidateRequestBody",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          body: S.optional(S.NullOr(__S(66, __c8, 2)).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/collection/{id}/move-dashboard-question-candidates",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCollectionMoveDashboardQuestionCandidateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          card_ids: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateCollectionRootMoveDashboardQuestionCandidateRequestBody",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.NullOr(__S(68, __c8, 4)).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/collection/root/move-dashboard-question-candidates",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCollectionRootMoveDashboardQuestionCandidateRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateCollectionRootMoveDashboardQuestionCandidateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          child_target_id: S.optional(S.NullOr(S.String)),
-          content: S.Unknown,
-          parent_comment_id: S.optional(S.NullOr(S.Number)),
-          target_id: S.Number,
-          target_type: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/comment", code: 200 })),
-      ).annotate({ identifier: "CreateCommentRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          comment_id: S.Number.pipe(T.Label()),
-          emoji: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/comment/{comment_id}/reaction", code: 200 })),
-      ).annotate({
-        identifier: "CreateCommentReactionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cache_ttl: S.optional(S.NullOr(S.Number)),
-          collection_id: S.optional(S.NullOr(S.Number)),
-          collection_position: S.optional(S.NullOr(S.Number)),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          parameters: S.optional(S.NullOr(__S(8, __c1, 0))),
-        }).pipe(T.Http({ method: "POST", uri: "/api/dashboard", code: 200 })),
-      ).annotate({ identifier: "CreateDashboardRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          from_dashboard_id: S.Number.pipe(T.Label()),
-          collection_id: S.optional(S.NullOr(S.Number)),
-          collection_position: S.optional(S.NullOr(S.Number)),
-          description: S.optional(S.NullOr(S.String)),
-          is_deep_copy: S.optional(S.NullOr(S.Boolean)),
-          name: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/dashboard/{from_dashboard_id}/copy", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDashboardCopyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dashboard_id: S.Number.pipe(T.Label()),
-          dashcard_id: S.Number.pipe(T.Label()),
-          card_id: S.Number.pipe(T.Label()),
-          dashboard_load_id: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(__S(55, __c6, 7))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/dashboard/{dashboard_id}/dashcard/{dashcard_id}/card/{card_id}/query",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDashboardDashcardCardQueryRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dashboard_id: S.Number.pipe(T.Label()),
-          dashcard_id: S.Number.pipe(T.Label()),
-          parameters: S.optional(S.NullOr(__S(10, __c1, 2))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/dashboard/{dashboard_id}/dashcard/{dashcard_id}/execute",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDashboardDashcardExecuteRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-          dashcard_id: S.Number.pipe(T.Label()),
-          modelId: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(__S(10, __c1, 2))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/public/dashboard/{uuid}/dashcard/{dashcard_id}/execute",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDashboardDashcardExecuteRequest2",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          paper_size: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(__S(55, __c6, 7))),
-        }).pipe(T.Http({ method: "POST", uri: "/api/dashboard/{id}/pdf", code: 200 })),
-      ).annotate({
-        identifier: "CreateDashboardPdfRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dashboard_id: S.Number.pipe(T.Label()),
-          dashcard_id: S.Number.pipe(T.Label()),
-          card_id: S.Number.pipe(T.Label()),
-          parameters: S.optional(S.NullOr(__S(55, __c6, 7))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/dashboard/pivot/{dashboard_id}/dashcard/{dashcard_id}/card/{card_id}/query",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDashboardPivotDashboardDashcardCardQueryRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dashboard_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/dashboard/{dashboard_id}/public_link", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDashboardPublicLinkRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dataset_query: S.optional(S.NullOr(S.Unknown)),
-          description: S.optional(S.NullOr(S.String)),
-          display: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(S.Unknown)),
-          name: S.optional(S.NullOr(S.String)),
-          visualization_settings: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({
-        identifier: "CreateDashboardSaveRequestDashcardsItemSeriesItem",
-      });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataset_query: S.optional(S.NullOr(S.Unknown)),
-          description: S.optional(S.NullOr(S.String)),
-          display: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(S.Unknown)),
-          name: S.optional(S.NullOr(S.String)),
-          visualization_settings: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({
-        identifier: "CreateDashboardSaveRequestDashcardsItemCard",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          visualization_settings: S.optional(S.NullOr(S.Unknown)),
-          dashboard_tab_id: S.optional(S.NullOr(S.Number)),
-          parameter_mappings: S.optional(S.NullOr(__S(2, __c0, 2))),
-          size_x: S.optional(S.NullOr(S.Number)),
-          size_y: S.optional(S.NullOr(S.Number)),
-          col: S.optional(S.NullOr(S.Number)),
-          row: S.optional(S.NullOr(S.Number)),
-          series: S.optional(S.NullOr(__S(82, __c10, 2))),
-          card: S.optional(S.NullOr(__S(83, __c10, 3))),
-        }),
-      ).annotate({
-        identifier: "CreateDashboardSaveRequestDashcardsItem",
-      });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          position: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateDashboardSaveRequestTabsItem",
-      });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          auto_apply_filters: S.optional(S.NullOr(S.Boolean)),
-          dashcards: S.optional(S.NullOr(__S(85, __c10, 5))),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(__S(8, __c1, 0))),
-          tabs: S.optional(S.NullOr(__S(87, __c10, 7))),
-          width: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/dashboard/save", code: 200 })),
-      ).annotate({
-        identifier: "CreateDashboardSaveRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          schedule_day: S.optional(S.NullOr(S.String)),
-          schedule_frame: S.optional(S.NullOr(S.String)),
-          schedule_hour: S.optional(S.NullOr(S.Number)),
-          schedule_minute: S.optional(S.NullOr(S.Number)),
-          schedule_type: S.String,
-        }),
-      ).annotate({
-        identifier: "MetabaseUtilCronScheduleMap",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cache_field_values: S.optional(S.NullOr(__S(89, __c11, 1))),
-          metadata_sync: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({
-        identifier: "MetabaseSyncSchedulesExpandedSchedulesMap",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provider_name: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          is_on_demand: S.optional(S.NullOr(S.Boolean)),
-          cache_ttl: S.optional(S.NullOr(S.Number)),
-          engine: S.String,
-          details: S.Unknown,
-          is_full_sync: S.optional(S.NullOr(S.Boolean)),
-          connection_source: S.optional(S.NullOr(S.String)),
-          auto_run_queries: S.optional(S.NullOr(S.Boolean)),
-          is_stub: S.optional(S.NullOr(S.Boolean)),
-          schedules: S.optional(S.NullOr(__S(90, __c11, 2))),
-        }).pipe(T.Http({ method: "POST", uri: "/api/database", code: 200 })),
-      ).annotate({ identifier: "CreateDatabaseRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/database/{id}/discard_values", code: 200 })),
-      ).annotate({
-        identifier: "CreateDatabaseDiscardValueRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/database/{id}/dismiss_spinner", code: 200 })),
-      ).annotate({
-        identifier: "CreateDatabaseDismissSpinnerRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/database/{id}/rescan_values", code: 200 })),
-      ).annotate({
-        identifier: "CreateDatabaseRescanValueRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "POST", uri: "/api/database/sample_database", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDatabaseSampleDatabaseRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/database/{id}/sync_schema", code: 200 })),
-      ).annotate({
-        identifier: "CreateDatabaseSyncSchemaRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.Unknown,
-          engine: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateDatabaseValidateRequestDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          details: __S(97, __c12, 1),
-        }).pipe(T.Http({ method: "POST", uri: "/api/database/validate", code: 200 })),
-      ).annotate({
-        identifier: "CreateDatabaseValidateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/api/dataset", code: 200 })),
-      ).annotate({ identifier: "CreateDatasetRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          database: S.Number,
-          parameters: S.optional(S.NullOr(__S(17, __c2, 1))),
-          pretty: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/dataset/native", code: 200 })),
-      ).annotate({
-        identifier: "CreateDatasetNativeRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          field_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
-          parameter: __S(7, __c0, 7),
-          value: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/api/dataset/parameter/remapping", code: 200 })),
-      ).annotate({
-        identifier: "CreateDatasetParameterRemappingRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          field_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
-          parameter: __S(7, __c0, 7),
-        }).pipe(T.Http({ method: "POST", uri: "/api/dataset/parameter/values", code: 200 })),
-      ).annotate({
-        identifier: "CreateDatasetParameterValueRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          lib_metadata: S.optional(S.Unknown.pipe(T.Body("lib/metadata"))),
-          show_column_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-column-totals"))),
-          pivot_rows: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("pivot-rows"))),
-          update_row: S.optional(__S(10, __c1, 2).pipe(T.Body("update-row"))),
-          lib_type: S.optional(S.Unknown.pipe(T.Body("lib/type"))),
-          settings: S.optional(__S(11, __c1, 3)),
-          constraints: S.optional(__S(12, __c1, 4)),
-          info: S.optional(__S(14, __c1, 6)),
-          show_row_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-row-totals"))),
-          middleware: S.optional(__S(15, __c1, 7)),
-          database: S.optional(S.Unknown),
-          pivot_measures: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("pivot-measures"))),
-          stages: S.Unknown,
-          pivot_cols: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("pivot-cols"))),
-          parameters: S.optional(__S(17, __c2, 1)),
-          create_row: S.optional(__S(10, __c1, 2).pipe(T.Body("create-row"))),
-          was_pivot: S.optional(S.NullOr(S.Boolean).pipe(T.Body("was-pivot"))),
-        }).pipe(T.Http({ method: "POST", uri: "/api/dataset/pivot", code: 200 })),
-      ).annotate({
-        identifier: "CreateDatasetPivotRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          lib_metadata: S.optional(S.Unknown.pipe(T.Body("lib/metadata"))),
-          show_column_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-column-totals"))),
-          pivot_rows: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("pivot-rows"))),
-          update_row: S.optional(__S(10, __c1, 2).pipe(T.Body("update-row"))),
-          lib_type: S.optional(S.Unknown.pipe(T.Body("lib/type"))),
-          settings: S.optional(__S(11, __c1, 3)),
-          constraints: S.optional(__S(12, __c1, 4)),
-          info: S.optional(__S(14, __c1, 6)),
-          show_row_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-row-totals"))),
-          middleware: S.optional(__S(15, __c1, 7)),
-          database: S.optional(S.Unknown),
-          pivot_measures: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("pivot-measures"))),
-          stages: S.Unknown,
-          pivot_cols: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("pivot-cols"))),
-          parameters: S.optional(__S(17, __c2, 1)),
-          create_row: S.optional(__S(10, __c1, 2).pipe(T.Body("create-row"))),
-          was_pivot: S.optional(S.NullOr(S.Boolean).pipe(T.Body("was-pivot"))),
-        }).pipe(T.Http({ method: "POST", uri: "/api/dataset/query_metadata", code: 200 })),
-      ).annotate({
-        identifier: "CreateDatasetQueryMetadataRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          database_ids: S.optional(__S(9, __c1, 1)),
-          schema_ids: S.optional(__S(3, __c0, 3)),
-          table_ids: S.optional(__S(9, __c1, 1)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/data-studio/table/discard-values", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDataStudioTableDiscardValueRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data_authority: S.optional(S.NullOr(S.String)),
-          data_layer: S.optional(S.NullOr(S.String)),
-          table_ids: S.optional(__S(9, __c1, 1)),
-          owner_email: S.optional(S.NullOr(S.String)),
-          owner_user_id: S.optional(S.NullOr(S.Number)),
-          data_source: S.optional(S.NullOr(S.String)),
-          schema_ids: S.optional(__S(3, __c0, 3)),
-          entity_type: S.optional(S.NullOr(S.String)),
-          database_ids: S.optional(__S(9, __c1, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/data-studio/table/edit", code: 200 })),
-      ).annotate({
-        identifier: "CreateDataStudioTableEditRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          database_ids: S.optional(__S(9, __c1, 1)),
-          schema_ids: S.optional(__S(3, __c0, 3)),
-          table_ids: S.optional(__S(9, __c1, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/data-studio/table/rescan-values", code: 200 })),
-      ).annotate({
-        identifier: "CreateDataStudioTableRescanValueRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          database_ids: S.optional(__S(9, __c1, 1)),
-          schema_ids: S.optional(__S(3, __c0, 3)),
-          table_ids: S.optional(__S(9, __c1, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/data-studio/table/selection", code: 200 })),
-      ).annotate({
-        identifier: "CreateDataStudioTableSelectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          database_ids: S.optional(__S(9, __c1, 1)),
-          schema_ids: S.optional(__S(3, __c0, 3)),
-          table_ids: S.optional(__S(9, __c1, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/data-studio/table/sync-schema", code: 200 })),
-      ).annotate({
-        identifier: "CreateDataStudioTableSyncSchemaRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          visualization_settings: S.Unknown,
-          entity_id: S.optional(S.NullOr(S.String)),
-          dataset_query: __S(18, __c2, 2),
-          parameter_mappings: S.optional(S.NullOr(__S(0, __c0, 0))),
-          name: S.String,
-          result_metadata: S.optional(S.NullOr(__S(0, __c0, 0))),
-          cache_ttl: S.optional(S.NullOr(S.Number)),
-          display: S.String,
-          parameters: S.optional(S.NullOr(__S(8, __c1, 0))),
-          description: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateDocumentRequestCardsValue",
-      });
-    case 7:
-      return S.Record(S.String, __S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "MetabaseDocumentsProseMirrorAst",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cards: S.optional(S.NullOr(__S(111, __c13, 7))),
-          collection_id: S.optional(S.NullOr(S.Number)),
-          collection_position: S.optional(S.NullOr(S.Number)),
-          document: __S(112, __c14, 0),
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/document", code: 200 })),
-      ).annotate({ identifier: "CreateDocumentRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          from_document_id: S.Number.pipe(T.Label()),
-          collection_id: S.optional(S.NullOr(S.Number)),
-          collection_position: S.optional(S.NullOr(S.Number)),
-          name: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/document/{from_document_id}/copy", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDocumentCopyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          document_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/document/{document_id}/public-link", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDocumentPublicLinkRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.Unknown,
-          input: S.optional(__S(10, __c1, 2)),
-          params: S.optional(__S(10, __c1, 2)),
-          scope: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/action-v2/execute", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeActionV2ExecuteRequest",
-      });
-    case 5:
-      return S.Array(__S(10, __c1, 2));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.Unknown,
-          inputs: __S(117, __c14, 5),
-          params: S.optional(__S(10, __c1, 2)),
-          scope: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/action-v2/execute-bulk", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeActionV2ExecuteBulkRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.Unknown,
-          input: S.optional(__S(10, __c1, 2)),
-          scope: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/action-v2/execute-form", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeActionV2ExecuteFormRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "POST", uri: "/api/ee/ai-controls/permissions/advanced", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEeAiControlsPermissionsAdvancedRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "POST", uri: "/api/ee/audit-app/analytics-dev/export", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEeAuditAppAnalyticsDevExportRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          filename: S.String,
-          size: S.Number,
-          tempfile: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateEeContentTranslationUploadDictionaryRequestFile",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          file: __S(122, __c15, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ee/content-translation/upload-dictionary",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEeContentTranslationUploadDictionaryRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          file: __S(122, __c15, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ee/custom-viz-plugin",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEeCustomVizPluginRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dev_bundle_url: S.String,
-          identifier: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/custom-viz-plugin/dev", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeCustomVizPluginDevRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/ee/custom-viz-plugin/{id}/refresh", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEeCustomVizPluginRefreshRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          schema_filters_patterns: S.String.pipe(T.Body("schema-filters-patterns")),
-          schema_filters_type: S.String.pipe(T.Body("schema-filters-type")),
-        }),
-      ).annotate({
-        identifier:
-          "CreateEeDatabaseReplicationConnectionDatabasePreviewRequestReplicationSchemaFilters",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          database_id: S.Number.pipe(T.Label()),
-          replicationSchemaFilters: S.optional(__S(127, __c15, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ee/database-replication/connection/{database_id}/preview",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEeDatabaseReplicationConnectionDatabasePreviewRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.Unknown,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsItem",
-      });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          check_connection_details: S.optional(S.Boolean.pipe(T.Query())),
-          destinations: __S(130, __c16, 2),
-          router_database_id: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ee/database-routing/destination-database",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEeDatabaseRoutingDestinationDatabaseRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          collection_id: S.Number,
-          database_ids: S.optional(__S(9, __c1, 1)),
-          schema_ids: S.optional(__S(3, __c0, 3)),
-          table_ids: S.optional(__S(9, __c1, 1)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/ee/data-studio/table/publish-tables", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEeDataStudioTablePublishTableRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          database_ids: S.optional(__S(9, __c1, 1)),
-          schema_ids: S.optional(__S(3, __c0, 3)),
-          table_ids: S.optional(__S(9, __c1, 1)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/ee/data-studio/table/unpublish-tables", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEeDataStudioTableUnpublishTableRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/gsheets/connection", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeGsheetsConnectionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "POST", uri: "/api/ee/gsheets/connection/sync", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEeGsheetsConnectionSyncRequest",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/ee/library", code: 200 })),
-      ).annotate({ identifier: "CreateEeLibraryRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/mfa/admin/remove", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeMfaAdminRemoveRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/mfa/disable", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeMfaDisableRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/mfa/enroll", code: 200 })),
-      ).annotate({ identifier: "CreateEeMfaEnrollRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/mfa/enroll/confirm", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeMfaEnrollConfirmRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/mfa/recovery-codes", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeMfaRecoveryCodeRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/remote-sync/create-branch", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeRemoteSyncCreateBranchRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "POST", uri: "/api/ee/remote-sync/current-task/cancel", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEeRemoteSyncCurrentTaskCancelRequest",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          branch: S.String,
-          force: S.optional(S.Boolean),
-          merge: S.optional(S.Boolean),
-          message: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/remote-sync/export", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeRemoteSyncExportRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          branch: S.optional(S.String),
-          expected_branch: S.String,
-          force: S.optional(S.Boolean),
-          merge: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/remote-sync/import", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeRemoteSyncImportRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.String,
-          new_branch: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/remote-sync/stash", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeRemoteSyncStashRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          remote_sync_token: S.optional(S.NullOr(S.String).pipe(T.Body("remote-sync-token"))),
-          remote_sync_url: S.optional(S.NullOr(S.String).pipe(T.Body("remote-sync-url"))),
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/remote-sync/test-connection", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeRemoteSyncTestConnectionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          source_entity_id: S.Number,
-          source_entity_type: S.String,
-          target_entity_id: S.Number,
-          target_entity_type: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/ee/replacement/check-replace-source", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEeReplacementCheckReplaceSourceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          source_entity_id: S.Number,
-          source_entity_type: S.String,
-          target_entity_id: S.Number,
-          target_entity_type: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/replacement/replace-source", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeReplacementReplaceSourceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/replacement/runs/{id}/cancel", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeReplacementRunCancelRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _ref: S.optional(S.String.pipe(T.Body("$ref"))),
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateEeScimGroupRequestMembersItem",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.String,
-          id: S.optional(S.String),
-          members: S.optional(__S(152, __c19, 0)),
-          schemas: __S(3, __c0, 3),
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/scim/v2/Groups", code: 200 })),
-      ).annotate({ identifier: "CreateEeScimGroupRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/ee/scim/api_key", code: 200 })),
-      ).annotate({ identifier: "CreateEeScimKeyRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          primary: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateEeScimUserRequestEmailsItem",
-      });
-    case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _ref: S.optional(S.String.pipe(T.Body("$ref"))),
-          display: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateEeScimUserRequestGroupsItem",
-      });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          familyName: S.String,
-          givenName: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateEeScimUserRequestName",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.optional(S.Boolean),
-          emails: __S(156, __c19, 4),
-          groups: S.optional(__S(158, __c19, 6)),
-          id: S.optional(S.String),
-          locale: S.optional(S.NullOr(S.String)),
-          name: __S(159, __c19, 7),
-          schemas: __S(3, __c0, 3),
-          userName: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/scim/v2/Users", code: 200 })),
-      ).annotate({ identifier: "CreateEeScimUserRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          advisory_ids: __S(3, __c0, 3),
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/security-center/acknowledge", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeSecurityCenterAcknowledgeRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          advisory_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ee/security-center/{advisory_id}/acknowledge",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEeSecurityCenterAcknowledgeRequest2",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "POST", uri: "/api/ee/security-center/sync", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEeSecurityCenterSyncRequest",
-      });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          email_recipients: S.optional(S.NullOr(__S(164, __c20, 4))),
-          slack_channel: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/ee/security-center/test-notification", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEeSecurityCenterTestNotificationRequest",
-      });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dirname: S.optional(S.String.pipe(T.Query())),
-          collection: S.optional(__S(166, __c20, 6).pipe(T.Query())),
-          all_collections: S.optional(S.Boolean.pipe(T.Query())),
-          settings: S.optional(S.Boolean.pipe(T.Query())),
-          data_model: S.optional(S.Boolean.pipe(T.Query())),
-          field_values: S.optional(S.Boolean.pipe(T.Query())),
-          continue_on_error: S.optional(S.Boolean.pipe(T.Query())),
-          full_stacktrace: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/serialization/export", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeSerializationExportRequest",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          content_type: S.String.pipe(T.Body("content-type")),
-          filename: S.String,
-          size: S.Number,
-          tempfile: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateEeSerializationImportRequestFile",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          continue_on_error: S.optional(S.Boolean.pipe(T.Query())),
-          full_stacktrace: S.optional(S.Boolean.pipe(T.Query())),
-          reindex: S.optional(S.Boolean.pipe(T.Query())),
-          file: __S(168, __c21, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ee/serialization/import",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEeSerializationImportRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          with_databases: S.optional(S.Boolean.pipe(T.Query("with-databases"))),
-          with_tables: S.optional(S.Boolean.pipe(T.Query("with-tables"))),
-          with_fields: S.optional(S.Boolean.pipe(T.Query("with-fields"))),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/ee/serialization/metadata/export", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEeSerializationMetadataExportRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "POST", uri: "/api/ee/serialization/metadata/import", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEeSerializationMetadataImportRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          grant_duration_minutes: S.Number,
-          notes: S.optional(S.NullOr(S.String)),
-          ticket_number: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/support-access-grant", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeSupportAccessGrantRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(S.NullOr(__S(10, __c1, 2))),
-          name: S.String,
-          slug: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/tenant", code: 200 })),
-      ).annotate({ identifier: "CreateEeTenantRequest" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          lens_id: S.String.pipe(T.Label()),
-          lens_params: S.optional(S.NullOr(__S(174, __c21, 6))),
-          query: __S(18, __c2, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/ee/transforms/{id}/inspect/{lens_id}/query",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEeTransformInspectQueryRequest",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.String,
-          database_id: S.Number,
-          schema: S.NullOr(S.String),
-          table: S.optional(S.String),
-          table_id: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "MetabaseTransformsBaseUtilSourceTableEntry",
-      });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          output_row_limit: S.optional(S.Unknown),
-          per_input_row_limit: S.optional(S.Unknown),
-          source_tables: __S(177, __c22, 1),
-        }).pipe(T.Http({ method: "POST", uri: "/api/ee/transforms-python/test-run", code: 200 })),
-      ).annotate({
-        identifier: "CreateEeTransformsPythonTestRunRequest",
-      });
-    case 3:
-      return S.Record(S.String, __S(3, __c0, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          entity_ids: __S(179, __c22, 3),
-        }).pipe(T.Http({ method: "POST", uri: "/api/eid-translation/translate", code: 200 })),
-      ).annotate({
-        identifier: "CreateEidTranslationTranslateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/email/test", code: 200 })),
-      ).annotate({ identifier: "CreateEmailTestRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          encodedQuery: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/embed-mcp/drills", code: 200 })),
-      ).annotate({
-        identifier: "CreateEmbedMcpDrillRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          prompt: S.optional(S.NullOr(S.String)),
-          query: S.optional(S.NullOr(S.String)),
-          source: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateEmbedMcpFeedbackRequestConversationData",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          freeform_feedback: S.optional(S.NullOr(S.String)),
-          issue_type: S.optional(S.NullOr(S.String)),
-          message_id: S.String,
-          positive: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateEmbedMcpFeedbackRequestFeedback",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          conversation_data: __S(183, __c22, 7),
-          feedback: __S(184, __c23, 0),
-        }).pipe(T.Http({ method: "POST", uri: "/api/embed-mcp/feedback", code: 200 })),
-      ).annotate({
-        identifier: "CreateEmbedMcpFeedbackRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          settings: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/api/embed-theme", code: 200 })),
-      ).annotate({ identifier: "CreateEmbedThemeRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/embed-theme/{id}/copy", code: 200 })),
-      ).annotate({
-        identifier: "CreateEmbedThemeCopyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          settings: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateEmbedThemeSeedDefaultRequestThemesItem",
-      });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          themes: __S(189, __c23, 5),
-        }).pipe(T.Http({ method: "POST", uri: "/api/embed-theme/seed-defaults", code: 200 })),
-      ).annotate({
-        identifier: "CreateEmbedThemeSeedDefaultRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          human_readable_field_id: S.optional(S.NullOr(S.Number)),
-          name: S.String,
-          type: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/field/{id}/dimension", code: 200 })),
-      ).annotate({
-        identifier: "CreateFieldDimensionRequest",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/field/{id}/discard_values", code: 200 })),
-      ).annotate({
-        identifier: "CreateFieldDiscardValueRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/field/{id}/rescan_values", code: 200 })),
-      ).annotate({
-        identifier: "CreateFieldRescanValueRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          field_ids: __S(9, __c1, 1),
-        }).pipe(T.Http({ method: "POST", uri: "/api/field/table-ids", code: 200 })),
-      ).annotate({
-        identifier: "CreateFieldTableIdsRequest",
-      });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          values: __S(195, __c24, 3),
-        }).pipe(T.Http({ method: "POST", uri: "/api/field/{id}/values", code: 200 })),
-      ).annotate({ identifier: "CreateFieldValueRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/frontend-errors", code: 200 })),
-      ).annotate({
-        identifier: "CreateFrontendErrorRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          definition: S.String,
-          term: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/glossary", code: 200 })),
-      ).annotate({ identifier: "CreateGlossaryRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          group_id: S.Number,
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/api-key", code: 200 })),
-      ).annotate({ identifier: "CreateKeyRequest" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          card_id: S.optional(S.Number.pipe(T.Body("card-id"))),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateLlmExtractSourceRequestTemplateTagsValue",
-      });
-    case 1:
-      return S.Record(S.String, __S(200, __c25, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          database_id: S.Number,
-          sql: S.String,
-          template_tags: S.optional(__S(201, __c25, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/llm/extract-sources", code: 200 })),
-      ).annotate({
-        identifier: "CreateLlmExtractSourceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          model: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateLlmGenerateSqlRequestReferencedEntitiesItem",
-      });
-    case 4:
-      return S.Array(__S(203, __c25, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          database_id: S.Number,
-          prompt: S.String,
-          referenced_entities: S.optional(__S(204, __c25, 4)),
-          source_sql: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/llm/generate-sql", code: 200 })),
-      ).annotate({
-        identifier: "CreateLlmGenerateSqlRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.Number,
-          duration_unit: S.String,
-          log_levels: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/api/logger/adjustment", code: 200 })),
-      ).annotate({
-        identifier: "CreateLoggerAdjustmentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          definition: __S(18, __c2, 2),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          table_id: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/api/measure", code: 200 })),
-      ).annotate({ identifier: "CreateMeasureRequest" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          user_is_viewing: S.optional(__S(208, __c26, 0)),
-        }),
-      ).annotate({
-        identifier: "MetabaseMetabotContextContext",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          arguments: S.String,
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "MetabaseMetabotSchemaMessageToolCallsItem",
-      });
-    case 3:
-      return S.Array(__S(210, __c26, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.NullOr(S.String)),
-          role: S.String,
-          tool_call_id: S.optional(S.NullOr(S.String)),
-          tool_calls: S.optional(S.NullOr(__S(211, __c26, 3))),
-        }),
-      ).annotate({
-        identifier: "MetabaseMetabotSchemaMessage",
-      });
-    case 5:
-      return S.Array(__S(212, __c26, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          chart_configs: S.optional(__S(10, __c1, 2).pipe(T.Body("chart-configs"))),
-          charts: S.optional(__S(10, __c1, 2)),
-          link_registry: S.optional(__S(43, __c5, 3).pipe(T.Body("link-registry"))),
-          queries: S.optional(__S(10, __c1, 2)),
-          todos: S.optional(__S(0, __c0, 0)),
-          transforms: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "MetabaseMetabotAgentCoreState",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          context: __S(209, __c26, 1),
-          conversation_id: S.String,
-          debug: S.optional(S.NullOr(S.Boolean)),
-          history: S.NullOr(__S(213, __c26, 5)),
-          message: S.String,
-          metabot_id: S.optional(S.String),
-          profile_id: S.optional(S.String),
-          state: __S(214, __c26, 6),
-        }).pipe(T.Http({ method: "POST", uri: "/api/metabot/agent-streaming", code: 200 })),
-      ).annotate({
-        identifier: "CreateMetabotAgentStreamingRequest",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          instructions: S.String,
-          references: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/metabot/document/generate-content", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateMetabotDocumentGenerateContentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          freeform_feedback: S.optional(S.NullOr(S.String)),
-          issue_type: S.optional(S.NullOr(S.String)),
-          message_id: S.String,
-          metabot_id: S.Number,
-          positive: S.Boolean,
-        }).pipe(T.Http({ method: "POST", uri: "/api/metabot/feedback", code: 200 })),
-      ).annotate({
-        identifier: "CreateMetabotFeedbackRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/metabot/metabot/{id}/prompt-suggestions/regenerate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateMetabotMetabotPromptSuggestionsRegenerateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/api/metabot/slack/events", code: 200 })),
-      ).annotate({
-        identifier: "CreateMetabotSlackEventRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          payload: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/metabot/slack/interactive", code: 200 })),
-      ).annotate({
-        identifier: "CreateMetabotSlackInteractiveRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          message_id: S.String,
-          metabot_id: S.Number,
-          positive: S.Boolean,
-          source_id: S.Number,
-          source_type: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/metabot/source-feedback", code: 200 })),
-      ).annotate({
-        identifier: "CreateMetabotSourceFeedbackRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.Unknown,
-          lib_uuid: S.String.pipe(T.Body("lib/uuid")),
-        }),
-      ).annotate({
-        identifier: "MetabaseLibMetricSchemaInstanceFilter",
-      });
-    case 7:
-      return S.Array(__S(222, __c27, 6));
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(0, __c0, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          lib_uuid: S.String.pipe(T.Body("lib/uuid")),
-          projection: __S(224, __c28, 0),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "MetabaseLibMetricSchemaTypedProjection",
-      });
-    case 2:
-      return S.Array(__S(225, __c28, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.Unknown,
-          filters: S.optional(S.NullOr(__S(223, __c27, 7))),
-          projections: S.optional(S.NullOr(__S(226, __c28, 2))),
-        }),
-      ).annotate({
-        identifier: "MetabaseMetricsApiDefinition",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          definition: __S(227, __c28, 3),
-        }).pipe(T.Http({ method: "POST", uri: "/api/metric/breakout-values", code: 200 })),
-      ).annotate({
-        identifier: "CreateMetricBreakoutValueRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          definition: __S(227, __c28, 3),
-        }).pipe(T.Http({ method: "POST", uri: "/api/metric/dataset", code: 200 })),
-      ).annotate({
-        identifier: "CreateMetricDatasetRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          model_id: S.Number,
-          pk_ref: S.Unknown,
-          value_ref: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/api/model-index", code: 200 })),
-      ).annotate({ identifier: "CreateModelIndexRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          moderated_item_id: S.Number,
-          moderated_item_type: S.String,
-          status: S.optional(S.NullOr(S.String)),
-          text: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/moderation-review", code: 200 })),
-      ).annotate({
-        identifier: "CreateModerationReviewRequest",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          attribute_remappings: S.optional(S.NullOr(__S(232, __c29, 0))),
-          card_id: S.optional(S.NullOr(S.Number)),
-          group_id: S.Number,
-          table_id: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/api/mt/gtap", code: 200 })),
-      ).annotate({ identifier: "CreateMtGtapRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          card_id: S.optional(S.NullOr(S.Number)),
-          table_id: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/api/mt/gtap/validate", code: 200 })),
-      ).annotate({
-        identifier: "CreateMtGtapValidateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          collection_id: S.optional(S.NullOr(S.Number)),
-          content: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          name: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/api/native-query-snippet", code: 200 })),
-      ).annotate({
-        identifier: "CreateNativeQuerySnippetRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/api/notification", code: 200 })),
-      ).annotate({
-        identifier: "CreateNotificationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          creator_id: S.optional(S.Number),
-          notification_ids: __S(9, __c1, 1),
-        }).pipe(T.Http({ method: "POST", uri: "/api/notification/admin/bulk", code: 200 })),
-      ).annotate({
-        identifier: "CreateNotificationAdminBulkRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/api/notification/send", code: 200 })),
-      ).annotate({
-        identifier: "CreateNotificationSendRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          handler_ids: S.optional(__S(9, __c1, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/notification/{id}/send", code: 200 })),
-      ).annotate({
-        identifier: "CreateNotificationSendRequest2",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          hash: S.String,
-          notification_handler_id: S.Number.pipe(T.Body("notification-handler-id")),
-        }).pipe(T.Http({ method: "POST", uri: "/api/notification/unsubscribe", code: 200 })),
-      ).annotate({
-        identifier: "CreateNotificationUnsubscribeRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/notification/{id}/unsubscribe", code: 200 })),
-      ).annotate({
-        identifier: "CreateNotificationUnsubscribeRequest2",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          hash: S.String,
-          notification_handler_id: S.Number.pipe(T.Body("notification-handler-id")),
-        }).pipe(T.Http({ method: "POST", uri: "/api/notification/unsubscribe/undo", code: 200 })),
-      ).annotate({
-        identifier: "CreateNotificationUnsubscribeUndoRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          schema_name: S.optional(S.NullOr(S.String)),
-          synchronous_: S.optional(S.NullOr(S.Boolean).pipe(T.Body("synchronous?"))),
-          table_name: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/notify/db/attached_datawarehouse", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateNotifyDbAttachedDatawarehouseRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          schema_name: S.String,
-          table_name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/notify/db/{id}/new-table", code: 200 })),
-      ).annotate({
-        identifier: "CreateNotifyDbNewTableRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "POST", uri: "/api/osi/ai-context/reconcile", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateOsiAiContextReconcileRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          is_tenant_group: S.optional(S.NullOr(S.Boolean)),
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/permissions/group", code: 200 })),
-      ).annotate({
-        identifier: "CreatePermissionsGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          group_id: S.Number,
-          is_group_manager: S.optional(S.NullOr(S.Boolean)),
-          user_id: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/api/permissions/membership", code: 200 })),
-      ).annotate({
-        identifier: "CreatePermissionsMembershipRequest",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          card_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/persist/card/{card_id}/persist", code: 200 })),
-      ).annotate({
-        identifier: "CreatePersistCardPersistRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          card_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/persist/card/{card_id}/refresh", code: 200 })),
-      ).annotate({
-        identifier: "CreatePersistCardRefreshRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          card_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/persist/card/{card_id}/unpersist", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreatePersistCardUnpersistRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/persist/database/{id}/persist", code: 200 })),
-      ).annotate({
-        identifier: "CreatePersistDatabasePersistRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/persist/database/{id}/unpersist", code: 200 })),
-      ).annotate({
-        identifier: "CreatePersistDatabaseUnpersistRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/persist/disable", code: 200 })),
-      ).annotate({
-        identifier: "CreatePersistDisableRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/persist/enable", code: 200 })),
-      ).annotate({
-        identifier: "CreatePersistEnableRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cron: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/persist/set-refresh-schedule", code: 200 })),
-      ).annotate({
-        identifier: "CreatePersistSetRefreshScheduleRequest",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "POST", uri: "/api/premium-features/token/refresh", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreatePremiumFeaturesTokenRefreshRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          comments: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          source: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/product-feedback", code: 200 })),
-      ).annotate({
-        identifier: "CreateProductFeedbackRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cards: S.Unknown,
-          channels: S.Unknown,
-          collection_id: S.optional(S.NullOr(S.Number)),
-          collection_position: S.optional(S.NullOr(S.Number)),
-          dashboard_id: S.optional(S.NullOr(S.Number)),
-          name: S.String,
-          parameters: S.optional(S.NullOr(__S(8, __c1, 0))),
-          skip_if_empty: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/pulse", code: 200 })),
-      ).annotate({ identifier: "CreatePulseRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-          name: S.String,
-          collection_position: S.optional(S.NullOr(S.Number)),
-          skip_if_empty: S.optional(S.NullOr(S.Boolean)),
-          alert_above_goal: S.optional(S.NullOr(S.Boolean)),
-          alert_condition: S.optional(S.NullOr(S.String)),
-          collection_id: S.optional(S.NullOr(S.Number)),
-          alert_first_only: S.optional(S.NullOr(S.Boolean)),
-          disable_links: S.optional(S.NullOr(S.Boolean)),
-          parameters: S.optional(S.NullOr(__S(55, __c6, 7))),
-          cards: S.Unknown,
-          dashboard_id: S.optional(S.NullOr(S.Number)),
-          channels: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/api/pulse/test", code: 200 })),
-      ).annotate({ identifier: "CreatePulseTestRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          hash: S.String,
-          pulse_id: S.Number.pipe(T.Body("pulse-id")),
-        }).pipe(T.Http({ method: "POST", uri: "/api/pulse/unsubscribe", code: 200 })),
-      ).annotate({
-        identifier: "CreatePulseUnsubscribeRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          hash: S.String,
-          pulse_id: S.Number.pipe(T.Body("pulse-id")),
-        }).pipe(T.Http({ method: "POST", uri: "/api/pulse/unsubscribe/undo", code: 200 })),
-      ).annotate({
-        identifier: "CreatePulseUnsubscribeUndoRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          entity: S.String,
-          id: S.Number,
-          revision_id: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/api/revision/revert", code: 200 })),
-      ).annotate({
-        identifier: "CreateRevisionRevertRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/search/force-reindex", code: 200 })),
-      ).annotate({
-        identifier: "CreateSearchForceReindexRequest",
-      });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/search/re-init", code: 200 })),
-      ).annotate({
-        identifier: "CreateSearchReInitRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          definition: __S(18, __c2, 2),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          table_id: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/api/segment", code: 200 })),
-      ).annotate({ identifier: "CreateSegmentRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          password: S.String.pipe(T.SensitiveValue({})),
-          username: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/session", code: 200 })),
-      ).annotate({ identifier: "CreateSessionRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/session/forgot_password", code: 200 })),
-      ).annotate({
-        identifier: "CreateSessionForgotPasswordRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/session/google_auth", code: 200 })),
-      ).annotate({
-        identifier: "CreateSessionGoogleAuthRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          challenge_token: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/session/mfa/send-email-otp", code: 200 })),
-      ).annotate({
-        identifier: "CreateSessionMfaSendEmailOtpRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          challenge_token: S.String,
-          code: S.String,
-          remember: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/session/mfa/verify", code: 200 })),
-      ).annotate({
-        identifier: "CreateSessionMfaVerifyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(T.Http({ method: "POST", uri: "/api/session/password-check", code: 200 })),
-      ).annotate({
-        identifier: "CreateSessionPasswordCheckRequest",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          password: S.String.pipe(T.SensitiveValue({})),
-          token: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/session/reset_password", code: 200 })),
-      ).annotate({
-        identifier: "CreateSessionResetPasswordRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          site_locale: S.optional(S.NullOr(S.String)),
-          site_name: S.String,
-        }),
-      ).annotate({ identifier: "CreateSetupRequestPrefs" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          first_name: S.optional(S.NullOr(S.String)),
-          last_name: S.optional(S.NullOr(S.String)),
-          password: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({ identifier: "CreateSetupRequestUser" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          prefs: __S(273, __c34, 1),
-          token: S.String,
-          user: __S(274, __c34, 2),
-        }).pipe(T.Http({ method: "POST", uri: "/api/setup", code: 200 })),
-      ).annotate({ identifier: "CreateSetupRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          entityName: S.optional(S.NullOr(S.String)),
-          frontendErrors: S.optional(S.NullOr(__S(3, __c0, 3))),
-          entityInfo: S.optional(S.NullOr(S.Unknown)),
-          reporter: S.optional(S.NullOr(S.Unknown)),
-          url: S.optional(S.NullOr(S.String)),
-          backendErrors: S.optional(S.NullOr(__S(0, __c0, 0))),
-          bugReportDetails: S.optional(S.NullOr(S.Unknown)),
-          userLogs: S.optional(S.NullOr(__S(0, __c0, 0))),
-          localizedEntityName: S.optional(S.NullOr(S.String)),
-          logs: S.optional(S.NullOr(__S(0, __c0, 0))),
-          queryResults: S.optional(S.NullOr(S.Unknown)),
-          browserInfo: S.optional(S.NullOr(S.Unknown)),
-          description: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateSlackBugReportRequestDiagnosticInfo",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          diagnosticInfo: __S(276, __c34, 4),
-        }).pipe(T.Http({ method: "POST", uri: "/api/slack/bug-report", code: 200 })),
-      ).annotate({
-        identifier: "CreateSlackBugReportRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          filename: S.String,
-          tempfile: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateTableAppendCsvRequestFile",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          collection_id: S.optional(S.String),
-          file: __S(278, __c34, 6),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/table/{id}/append-csv",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTableAppendCsvRequest",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/table/{id}/discard_values", code: 200 })),
-      ).annotate({
-        identifier: "CreateTableDiscardValueRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          collection_id: S.optional(S.String),
-          file: __S(278, __c34, 6),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/table/{id}/replace-csv",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTableReplaceCsvRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/table/{id}/rescan_values", code: 200 })),
-      ).annotate({
-        identifier: "CreateTableRescanValueRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/table/{id}/sync_schema", code: 200 })),
-      ).annotate({
-        identifier: "CreateTableSyncSchemaRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          archived: S.optional(S.NullOr(S.Boolean)),
-          collection_id: S.optional(S.NullOr(S.Number)),
-          default: S.optional(S.NullOr(S.Boolean)),
-          description: S.optional(S.NullOr(S.String)),
-          icon: S.optional(S.NullOr(S.String)),
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/timeline", code: 200 })),
-      ).annotate({ identifier: "CreateTimelineRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          question_id: S.optional(S.NullOr(S.Number)),
-          timezone: S.String,
-          timestamp: S.String,
-          name: S.String,
-          archived: S.optional(S.NullOr(S.Boolean)),
-          timeline_id: S.Number,
-          source: S.optional(S.NullOr(S.String)),
-          time_matters: S.optional(S.NullOr(S.Boolean)),
-          description: S.optional(S.NullOr(S.String)),
-          icon: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/timeline-event", code: 200 })),
-      ).annotate({
-        identifier: "CreateTimelineEventRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner_email: S.optional(S.NullOr(S.String)),
-          owner_user_id: S.optional(S.NullOr(S.Number)),
-          name: S.String,
-          tag_ids: S.optional(__S(9, __c1, 1)),
-          collection_id: S.optional(S.NullOr(S.Number)),
-          source: S.Unknown,
-          target: S.Unknown,
-          run_trigger: S.optional(S.String),
-          description: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/transform", code: 200 })),
-      ).annotate({ identifier: "CreateTransformRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/transform/{id}/cancel", code: 200 })),
-      ).annotate({
-        identifier: "CreateTransformCancelRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          schedule: S.String,
-          tag_ids: S.optional(__S(9, __c1, 1)),
-          ui_display_type: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/api/transform-job", code: 200 })),
-      ).annotate({
-        identifier: "CreateTransformJobRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          job_id: S.Number.pipe(T.Label()),
-          run_all: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/transform-job/{job_id}/run", code: 200 })),
-      ).annotate({
-        identifier: "CreateTransformJobRunRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/transform/{id}/reset-checkpoint", code: 200 })),
-      ).annotate({
-        identifier: "CreateTransformResetCheckpointRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/transform/{id}/run", code: 200 })),
-      ).annotate({
-        identifier: "CreateTransformRunRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/api/transform-tag", code: 200 })),
-      ).annotate({
-        identifier: "CreateTransformTagRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          collection_id: S.NullOr(S.Number),
-          file: __S(278, __c34, 6),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/upload/csv", code: 200, contentType: "multipart" }),
-        ),
-      ).annotate({ identifier: "CreateUploadCsvRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          is_group_manager: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "MetabaseUsersSchemaUserGroupMembership",
-      });
-    case 7:
-      return S.Array(__S(294, __c36, 6));
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateUserRequestInviteTarget",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          login_attributes: S.optional(S.NullOr(__S(10, __c1, 2))),
-          user_group_memberships: S.optional(S.NullOr(__S(295, __c36, 7))),
-          email: S.String,
-          tenant_id: S.optional(S.NullOr(S.Number)),
-          last_name: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.NullOr(S.String)),
-          source: S.optional(S.NullOr(S.String)),
-          password: S.optional(S.NullOr(S.String)),
-          invite_target: S.optional(S.NullOr(__S(296, __c37, 0))),
-        }).pipe(T.Http({ method: "POST", uri: "/api/user", code: 200 })),
-      ).annotate({ identifier: "CreateUserRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/api/user/{id}/password-reset-url", code: 200 })),
-      ).annotate({
-        identifier: "CreateUserPasswordResetUrlRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/action/{action_id}", code: 200 })),
-      ).annotate({ identifier: "DeleteActionRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/action/{id}/public_link", code: 200 })),
-      ).annotate({
-        identifier: "DeleteActionPublicLinkRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/alert/{id}/subscription", code: 200 })),
-      ).annotate({
-        identifier: "DeleteAlertSubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          model: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/bookmark/{model}/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteBookmarkRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          model: S.String,
-          model_id: __S(9, __c1, 1),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/cache", code: 200 })),
-      ).annotate({ identifier: "DeleteCacheRequest" });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/card/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteCardRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          card_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/card/{card_id}/public_link", code: 200 })),
-      ).annotate({
-        identifier: "DeleteCardPublicLinkRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/collection/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteCollectionRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          comment_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/comment/{comment_id}", code: 200 })),
-      ).annotate({ identifier: "DeleteCommentRequest" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/dashboard/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteDashboardRequest" });
-    case 5:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dashboard_id: S.Number.pipe(T.Label()),
@@ -20016,13 +19362,21 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "DeleteDashboardPublicLinkRequest",
       });
-    case 6:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/database/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteDatabaseRequest" });
-    case 7:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           document_id: S.Number.pipe(T.Label()),
@@ -20030,7 +19384,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "DeleteDocumentRequest" });
   }
 }
-function __c39(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20042,7 +19396,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "DeleteDocumentPublicLinkRequest",
       });
-    case 1:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20056,7 +19414,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "DeleteEeAdvancedPermissionsImpersonationRequest",
       });
-    case 2:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "DELETE", uri: "/api/ee/ai-controls/permissions/advanced", code: 200 }),
@@ -20064,7 +19426,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "DeleteEeAiControlsPermissionsAdvancedRequest",
       });
-    case 3:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20074,7 +19440,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "DeleteEeAuditAppUserSubscriptionsRequest",
       });
-    case 4:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           product_type: S.String.pipe(T.Label()),
@@ -20084,7 +19454,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "DeleteEeCloudAddOnsRequest",
       });
-    case 5:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20092,7 +19466,24 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "DeleteEeCustomVizPluginRequest",
       });
-    case 6:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_ids: __S(5280, __c660, 0),
+          collection_id: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/card/collections", code: 200 })),
+      ).annotate({
+        identifier: "CreateCardCollectionRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           database_id: S.Number.pipe(T.Label()),
@@ -20106,7 +19497,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "DeleteEeDatabaseReplicationConnectionDatabaseRequest",
       });
-    case 7:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/api/ee/email/override", code: 200 })),
       ).annotate({
@@ -20114,7 +19509,7 @@ function __c39(j: number): any {
       });
   }
 }
-function __c40(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20124,13 +19519,21 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "DeleteEeGsheetsConnectionRequest",
       });
-    case 1:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/ee/scim/v2/Groups/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteEeScimGroupRequest" });
-    case 2:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20141,17 +19544,29 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "DeleteEeUploadManagementTableRequest",
       });
-    case 3:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/api/email", code: 200 })),
       ).annotate({ identifier: "DeleteEmailRequest" });
-    case 4:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/embed-theme/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteEmbedThemeRequest" });
-    case 5:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20159,13 +19574,21 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "DeleteFieldDimensionRequest",
       });
-    case 6:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/glossary/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteGlossaryRequest" });
-    case 7:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20173,7 +19596,17 @@ function __c40(j: number): any {
       ).annotate({ identifier: "DeleteKeyRequest" });
   }
 }
-function __c41(j: number): any {
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/card/{id}/copy", code: 200 })),
+      ).annotate({ identifier: "CreateCardCopyRequest" });
+  }
+}
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20181,7 +19614,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "DeleteLoggerAdjustmentRequest",
       });
-    case 1:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20195,7 +19632,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "DeleteMetabotMetabotPromptSuggestionsRequest",
       });
-    case 2:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20210,19 +19651,31 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "DeleteMetabotMetabotPromptSuggestionsPromptRequest",
       });
-    case 3:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/model-index/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteModelIndexRequest" });
-    case 4:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/mt/gtap/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteMtGtapRequest" });
-    case 5:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entity_type: S.String.pipe(T.Label()),
@@ -20237,7 +19690,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "DeleteOsiAiContextRequest",
       });
-    case 6:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           group_id: S.Number.pipe(T.Label()),
@@ -20245,7 +19702,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "DeletePermissionsGroupRequest",
       });
-    case 7:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20255,7 +19716,7 @@ function __c41(j: number): any {
       });
   }
 }
-function __c42(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20265,24 +19726,75 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "DeletePulseSubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           revision_message: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/segment/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteSegmentRequest" });
-    case 2:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_id: S.Number.pipe(T.Label()),
+          ignore_cache: S.optional(S.NullOr(S.Boolean)),
+          parameters: S.optional(S.NullOr(__S(1401, __c175, 1))),
+        }).pipe(T.Http({ method: "POST", uri: "/api/card/pivot/{card_id}/query", code: 200 })),
+      ).annotate({
+        identifier: "CreateCardPivotCardQueryRequest",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          default: S.optional(S.Unknown),
+          id: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          options: S.optional(S.NullOr(__S(1072, __c134, 0))),
+          slug: S.optional(S.NullOr(S.String)),
+          target: S.optional(S.NullOr(S.Unknown)),
+          type: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "MetabaseParametersSchemaParameterWithValue",
+      });
+    case 1:
+      return S.Array(__S(1400, __c175, 0));
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/api/session", code: 200 })),
       ).annotate({ identifier: "DeleteSessionRequest" });
-    case 3:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/timeline/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteTimelineRequest" });
-    case 4:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20290,13 +19802,21 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "DeleteTimelineEventRequest",
       });
-    case 5:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/transform/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteTransformRequest" });
-    case 6:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           job_id: S.Number.pipe(T.Label()),
@@ -20304,7 +19824,11 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "DeleteTransformJobRequest",
       });
-    case 7:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20314,7 +19838,7 @@ function __c42(j: number): any {
       });
   }
 }
-function __c43(j: number): any {
+function __c182(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20324,13 +19848,21 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "DeleteTransformTagRequest",
       });
-    case 1:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/user/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteUserRequest" });
-    case 2:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -20345,17 +19877,41 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "DeleteUserKeyValueNamespaceKeyRequest",
       });
-    case 3:
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           model_id: S.optional(S.Number.pipe(T.Query("model-id"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/action", code: 200 })),
       ).annotate({ identifier: "GetActionRequest" });
-    case 4:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/card/{card_id}/public_link", code: 200 })),
+      ).annotate({
+        identifier: "CreateCardPublicLinkRequest",
+      });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/action/public", code: 200 })),
       ).annotate({ identifier: "GetAction2Request" });
-    case 5:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action_id: S.Number.pipe(T.Label()),
@@ -20363,22 +19919,30 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "GetActionByActionIdRequest",
       });
-    case 6:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/public/action/{uuid}", code: 200 })),
       ).annotate({ identifier: "GetActionByUuidRequest" });
-    case 7:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action_id: S.Number.pipe(T.Label()),
-          parameters: __S(10, __c1, 2).pipe(T.Query()),
+          parameters: __S(24, __c3, 0).pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/action/{action_id}/execute", code: 200 })),
       ).annotate({ identifier: "GetActionExecuteRequest" });
   }
 }
-function __c44(j: number): any {
+function __c191(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20388,39 +19952,77 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "GetActivityMostRecentlyViewedDashboardRequest",
       });
-    case 1:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/activity/popular_items", code: 200 })),
       ).annotate({
         identifier: "GetActivityPopularItemsRequest",
       });
-    case 2:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          context: __S(5, __c0, 5).pipe(T.Query()),
+          context: __S(1080, __c135, 0).pipe(T.Query()),
           include_metadata: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/activity/recents", code: 200 })),
       ).annotate({
         identifier: "GetActivityRecentsRequest",
       });
-    case 3:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/agent/v1/ping", code: 200 })),
       ).annotate({ identifier: "GetAgentPingRequest" });
-    case 4:
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           archived: S.optional(S.Boolean.pipe(T.Query())),
           user_id: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/alert", code: 200 })),
       ).annotate({ identifier: "GetAlertRequest" });
-    case 5:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/alert/{id}", code: 200 })),
       ).annotate({ identifier: "GetAlertByIdRequest" });
-    case 6:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_id: S.String.pipe(T.Label()),
+          collection_preview: S.optional(S.NullOr(S.Boolean)),
+          dashboard_id: S.optional(S.NullOr(S.Number)),
+          ignore_cache: S.optional(S.Boolean),
+          parameters: S.optional(S.NullOr(__S(1401, __c175, 1))),
+        }).pipe(T.Http({ method: "POST", uri: "/api/card/{card_id}/query", code: 200 })),
+      ).annotate({ identifier: "CreateCardQueryRequest" });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/analytics/anonymous-stats", code: 200 }),
@@ -20428,7 +20030,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "GetAnalyticsAnonymousStatsRequest",
       });
-    case 7:
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entity: S.String.pipe(T.Label()),
@@ -20446,7 +20052,7 @@ function __c44(j: number): any {
       });
   }
 }
-function __c45(j: number): any {
+function __c200(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20465,7 +20071,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetAutomagicDashboardCellRequest",
       });
-    case 1:
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entity: S.String.pipe(T.Label()),
@@ -20484,7 +20094,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetAutomagicDashboardCellCompareRequest",
       });
-    case 2:
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entity: S.String.pipe(T.Label()),
@@ -20503,7 +20117,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetAutomagicDashboardCellRuleDashboardTemplateRequest",
       });
-    case 3:
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entity: S.String.pipe(T.Label()),
@@ -20524,11 +20142,15 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetAutomagicDashboardCellRuleDashboardTemplateCompareRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetAutomagicDashboardCellRuleDashboardTemplateCompareResponse",
       });
-    case 5:
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entity: S.String.pipe(T.Label()),
@@ -20546,7 +20168,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetAutomagicDashboardCompareRequest",
       });
-    case 6:
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entity: S.String.pipe(T.Label()),
@@ -20561,7 +20187,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GetAutomagicDashboardEntityOrQueryQueryMetadataRequest",
       });
-    case 7:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entity: S.String.pipe(T.Label()),
@@ -20581,7 +20211,7 @@ function __c45(j: number): any {
       });
   }
 }
-function __c46(j: number): any {
+function __c207(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20603,7 +20233,23 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetAutomagicDashboardRuleDashboardTemplateCompareRequest",
       });
-    case 1:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_ids: __S(5280, __c660, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/api/cards/dashboards", code: 200 })),
+      ).annotate({
+        identifier: "CreateCardsDashboardRequest",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20617,7 +20263,11 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetAutomagicDashboardsDatabaseCandidatesRequest",
       });
-    case 2:
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           model_index_id: S.Number.pipe(T.Label()),
@@ -20632,11 +20282,19 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetAutomagicDashboardsModelIndexPrimaryKeyRequest",
       });
-    case 3:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/bookmark", code: 200 })),
       ).annotate({ identifier: "GetBookmarkRequest" });
-    case 4:
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/bug-reporting/connection-pool-details", code: 200 }),
@@ -20644,23 +20302,35 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "GetBugReportingConnectionPoolDetailsRequest",
       });
-    case 5:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/bug-reporting/details", code: 200 })),
       ).annotate({
         identifier: "GetBugReportingDetailsRequest",
       });
-    case 6:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          model: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          model: S.optional(__S(1080, __c135, 0).pipe(T.Query())),
           collection: S.optional(S.Number.pipe(T.Query())),
           id: S.optional(S.Number.pipe(T.Query())),
           sort_column: S.optional(S.String.pipe(T.Query())),
           sort_direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/cache", code: 200 })),
       ).annotate({ identifier: "GetCacheRequest" });
-    case 7:
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           f: S.optional(S.String.pipe(T.Query())),
@@ -20669,36 +20339,68 @@ function __c46(j: number): any {
       ).annotate({ identifier: "GetCardRequest" });
   }
 }
-function __c47(j: number): any {
+function __c216(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/card/public", code: 200 })),
       ).annotate({ identifier: "GetCard2Request" });
-    case 1:
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           legacy_mbql: S.optional(S.Boolean.pipe(T.Query("legacy-mbql"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/card/{id}", code: 200 })),
       ).annotate({ identifier: "GetCardByIdRequest" });
-    case 2:
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/public/card/{uuid}", code: 200 })),
       ).annotate({ identifier: "GetCardByUuidRequest" });
-    case 3:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_ids: __S(5280, __c660, 0),
+          collection_id: S.optional(S.NullOr(S.Number)),
+          dashboard_id: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/cards/move", code: 200 })),
+      ).annotate({ identifier: "CreateCardsMoveRequest" });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/card/{id}/dashboards", code: 200 })),
       ).annotate({ identifier: "GetCardDashboardsRequest" });
-    case 4:
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/card/embeddable", code: 200 })),
       ).annotate({ identifier: "GetCardEmbeddableRequest" });
-    case 5:
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20710,7 +20412,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "GetCardParamRemappingRequest",
       });
-    case 6:
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -20726,7 +20432,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "GetCardParamRemappingRequest2",
       });
-    case 7:
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           card_id: S.Number.pipe(T.Label()),
@@ -20744,7 +20454,7 @@ function __c47(j: number): any {
       });
   }
 }
-function __c48(j: number): any {
+function __c225(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20762,7 +20472,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetCardParamSearchByQueryRequest",
       });
-    case 1:
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           card_id: S.Number.pipe(T.Label()),
@@ -20777,7 +20491,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetCardParamValuesRequest",
       });
-    case 2:
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -20792,22 +20510,30 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetCardParamValuesRequest2",
       });
-    case 3:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           ignore_cache: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/public/card/{uuid}/query", code: 200 })),
       ).annotate({ identifier: "GetCardQueryRequest" });
-    case 4:
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           export_format: S.String.pipe(T.Label()),
           format_rows: S.optional(S.Boolean.pipe(T.Query())),
           pivot_results: S.optional(S.Boolean.pipe(T.Query())),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           csv_include_bom: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -20819,7 +20545,21 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetCardQueryByExportFormatRequest",
       });
-    case 5:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/api/channel", code: 200 })),
+      ).annotate({ identifier: "CreateChannelRequest" });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -20827,7 +20567,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetCardQueryMetadataRequest",
       });
-    case 6:
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20836,7 +20580,11 @@ function __c48(j: number): any {
           exclude_ids: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/card/{id}/series", code: 200 })),
       ).annotate({ identifier: "GetCardSeriesRequest" });
-    case 7:
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           include_inactive: S.optional(S.NullOr(S.Boolean)),
@@ -20844,7 +20592,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "GetChannelRequest" });
   }
 }
-function __c49(j: number): any {
+function __c234(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20852,11 +20600,19 @@ function __c49(j: number): any {
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/channel/{id}", code: 200 })),
       ).annotate({ identifier: "GetChannelByIdRequest" });
-    case 1:
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/cloud-migration", code: 200 })),
       ).annotate({ identifier: "GetCloudMigrationRequest" });
-    case 2:
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           archived: S.optional(S.Boolean.pipe(T.Query())),
@@ -20867,13 +20623,21 @@ function __c49(j: number): any {
           personal_only: S.optional(S.Boolean.pipe(T.Query("personal-only"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/collection", code: 200 })),
       ).annotate({ identifier: "GetCollectionRequest" });
-    case 3:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/collection/{id}", code: 200 })),
       ).annotate({ identifier: "GetCollectionByIdRequest" });
-    case 4:
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -20887,7 +20651,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetCollectionDashboardQuestionCandidatesRequest",
       });
-    case 5:
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String.pipe(T.Query())),
@@ -20895,11 +20663,15 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetCollectionGraphRequest",
       });
-    case 6:
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          models: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          models: S.optional(__S(1080, __c135, 0).pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
           pinned_state: S.optional(S.String.pipe(T.Query())),
           sort_column: S.optional(S.String.pipe(T.Query())),
@@ -20910,7 +20682,33 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetCollectionItemsRequest",
       });
-    case 7:
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/action/{id}/public_link", code: 200 })),
+      ).annotate({
+        identifier: "CreateActionPublicLinkRequest",
+      });
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/api/channel/test", code: 200 })),
+      ).annotate({ identifier: "CreateChannelTestRequest" });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String.pipe(T.Query())),
@@ -20918,7 +20716,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "GetCollectionRootRequest" });
   }
 }
-function __c50(j: number): any {
+function __c244(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20932,10 +20730,14 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetCollectionRootDashboardQuestionCandidatesRequest",
       });
-    case 1:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          models: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          models: S.optional(__S(1080, __c135, 0).pipe(T.Query())),
           collection_type: S.optional(S.String.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
           namespace: S.optional(S.String.pipe(T.Query())),
@@ -20949,13 +20751,21 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetCollectionRootItemsRequest",
       });
-    case 2:
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/collection/trash", code: 200 })),
       ).annotate({
         identifier: "GetCollectionTrashRequest",
       });
-    case 3:
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           exclude_archived: S.optional(S.Boolean.pipe(T.Query("exclude-archived"))),
@@ -20964,29 +20774,45 @@ function __c50(j: number): any {
           ),
           include_library: S.optional(S.Boolean.pipe(T.Query("include-library"))),
           namespace: S.optional(S.String.pipe(T.Query())),
-          namespaces: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          namespaces: S.optional(__S(504, __c63, 0).pipe(T.Query())),
           shallow: S.optional(S.Boolean.pipe(T.Query())),
           collection_id: S.optional(S.Number.pipe(T.Query("collection-id"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/collection/tree", code: 200 })),
       ).annotate({ identifier: "GetCollectionTreeRequest" });
-    case 4:
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           target_type: S.String.pipe(T.Query()),
           target_id: S.Number.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/comment", code: 200 })),
       ).annotate({ identifier: "GetCommentRequest" });
-    case 5:
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/comment/mentions", code: 200 })),
       ).annotate({
         identifier: "GetCommentMentionsRequest",
       });
-    case 6:
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/dashboard/public", code: 200 })),
       ).annotate({ identifier: "GetDashboardRequest" });
-    case 7:
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -20995,7 +20821,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "GetDashboardByIdRequest" });
   }
 }
-function __c51(j: number): any {
+function __c252(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21006,13 +20832,27 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetDashboardByUuidRequest",
       });
-    case 1:
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/cloud-migration", code: 200 })),
+      ).annotate({
+        identifier: "CreateCloudMigrationRequest",
+      });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           ignore_cache: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -21024,12 +20864,16 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetDashboardDashcardCardRequest",
       });
-    case 2:
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dashboard_id: S.Number.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
-          parameters: S.optional(__S(10, __c1, 2).pipe(T.Query())),
+          parameters: S.optional(__S(24, __c3, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -21040,12 +20884,16 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetDashboardDashcardExecuteRequest",
       });
-    case 3:
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
-          parameters: __S(10, __c1, 2).pipe(T.Query()),
+          parameters: __S(24, __c3, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -21056,19 +20904,31 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetDashboardDashcardExecuteRequest2",
       });
-    case 4:
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/dashboard/embeddable", code: 200 })),
       ).annotate({
         identifier: "GetDashboardEmbeddableRequest",
       });
-    case 5:
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/dashboard/{id}/items", code: 200 })),
       ).annotate({ identifier: "GetDashboardItemsRequest" });
-    case 6:
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21084,7 +20944,11 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetDashboardParamRemappingRequest",
       });
-    case 7:
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -21102,7 +20966,7 @@ function __c51(j: number): any {
       });
   }
 }
-function __c52(j: number): any {
+function __c261(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21120,7 +20984,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetDashboardParamSearchRequest",
       });
-    case 1:
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -21136,18 +21004,40 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetDashboardParamSearchByQueryRequest",
       });
-    case 2:
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          filtered: __S(9, __c1, 1).pipe(T.Query()),
-          filtering: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          filtered: __S(5280, __c660, 0).pipe(T.Query()),
+          filtering: S.optional(__S(5280, __c660, 0).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/dashboard/params/valid-filter-fields", code: 200 }),
         ),
       ).annotate({
         identifier: "GetDashboardParamsValidFilterFieldsRequest",
       });
-    case 3:
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authority_level: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          namespace: S.optional(S.NullOr(S.String)),
+          parent_id: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/collection", code: 200 })),
+      ).annotate({ identifier: "CreateCollectionRequest" });
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21162,7 +21052,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetDashboardParamValuesRequest",
       });
-    case 4:
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -21177,7 +21071,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetDashboardParamValuesRequest2",
       });
-    case 5:
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -21186,7 +21084,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetDashboardQueryMetadataRequest",
       });
-    case 6:
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21194,7 +21096,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetDashboardRelatedRequest",
       });
-    case 7:
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           include: S.optional(S.String.pipe(T.Query())),
@@ -21210,7 +21116,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "GetDatabaseRequest" });
   }
 }
-function __c53(j: number): any {
+function __c270(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21224,7 +21130,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetDatabaseAutocompleteSuggestionsRequest",
       });
-    case 1:
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21233,7 +21143,11 @@ function __c53(j: number): any {
           exclude_uneditable_details: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/database/{id}", code: 200 })),
       ).annotate({ identifier: "GetDatabaseByIdRequest" });
-    case 2:
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21249,7 +21163,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetDatabaseCardAutocompleteSuggestionsRequest",
       });
-    case 3:
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtual_db: S.String.pipe(T.Label()),
@@ -21260,7 +21178,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetDatabaseDatasetRequest",
       });
-    case 4:
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtual_db: S.String.pipe(T.Label()),
@@ -21268,13 +21190,54 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetDatabaseDatasetsRequest",
       });
-    case 5:
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_ids: S.optional(__S(2208, __c276, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateCollectionMoveDashboardQuestionCandidateRequestBody",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          body: S.optional(S.NullOr(__S(2200, __c275, 0)).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/collection/{id}/move-dashboard-question-candidates",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCollectionMoveDashboardQuestionCandidateRequest",
+      });
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/database/{id}/fields", code: 200 })),
       ).annotate({ identifier: "GetDatabaseFieldsRequest" });
-    case 6:
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21283,7 +21246,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetDatabaseHealthcheckRequest",
       });
-    case 7:
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21294,7 +21261,7 @@ function __c53(j: number): any {
       });
   }
 }
-function __c54(j: number): any {
+function __c280(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21308,7 +21275,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetDatabaseMetadataRequest",
       });
-    case 1:
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtual_db: S.String.pipe(T.Label()),
@@ -21316,7 +21287,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetDatabaseMetadataRequest2",
       });
-    case 2:
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21328,7 +21303,11 @@ function __c54(j: number): any {
           include_measures: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/database/{id}/schema", code: 200 })),
       ).annotate({ identifier: "GetDatabaseSchemaRequest" });
-    case 3:
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21342,7 +21321,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetDatabaseSchemaBySchemaRequest",
       });
-    case 4:
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtual_db: S.String.pipe(T.Label()),
@@ -21353,7 +21336,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetDatabaseSchemaBySchemaRequest2",
       });
-    case 5:
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21365,7 +21352,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetDatabaseSchemasRequest",
       });
-    case 6:
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           virtual_db: S.String.pipe(T.Label()),
@@ -21373,7 +21364,45 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetDatabaseSchemasRequest2",
       });
-    case 7:
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          card_ids: S.optional(__S(2208, __c276, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateCollectionRootMoveDashboardQuestionCandidateRequestBody",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.NullOr(__S(2296, __c287, 0)).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/collection/root/move-dashboard-question-candidates",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCollectionRootMoveDashboardQuestionCandidateRequest",
+      });
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateCollectionRootMoveDashboardQuestionCandidateResponse",
+      });
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21383,7 +21412,7 @@ function __c54(j: number): any {
       });
   }
 }
-function __c55(j: number): any {
+function __c290(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21393,7 +21422,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetDatabaseSyncableSchemasRequest",
       });
-    case 1:
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21401,15 +21434,27 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetDatabaseUsageInfoRequest",
       });
-    case 2:
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/document", code: 200 })),
       ).annotate({ identifier: "GetDocumentRequest" });
-    case 3:
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/document/public", code: 200 })),
       ).annotate({ identifier: "GetDocument2Request" });
-    case 4:
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           document_id: S.Number.pipe(T.Label()),
@@ -21417,23 +21462,35 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetDocumentByDocumentIdRequest",
       });
-    case 5:
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/public/document/{uuid}", code: 200 })),
       ).annotate({ identifier: "GetDocumentByUuidRequest" });
-    case 6:
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/public/document/{uuid}/card/{card_id}", code: 200 }),
         ),
       ).annotate({ identifier: "GetDocumentCardRequest" });
-    case 7:
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -21447,7 +21504,7 @@ function __c55(j: number): any {
       });
   }
 }
-function __c56(j: number): any {
+function __c298(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21460,7 +21517,25 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetEeAdvancedPermissionsImpersonationRequest",
       });
-    case 1:
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          child_target_id: S.optional(S.NullOr(S.String)),
+          content: S.Unknown,
+          parent_comment_id: S.optional(S.NullOr(S.Number)),
+          target_id: S.Number,
+          target_type: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/comment", code: 200 })),
+      ).annotate({ identifier: "CreateCommentRequest" });
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/ai-controls/permissions", code: 200 }),
@@ -21468,7 +21543,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetEeAiControlsPermissionsRequest",
       });
-    case 2:
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/ai-controls/usage/group", code: 200 }),
@@ -21476,7 +21555,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetEeAiControlsUsageGroupRequest",
       });
-    case 3:
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           group_id: S.Number.pipe(T.Label()),
@@ -21486,7 +21569,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetEeAiControlsUsageGroupByGroupIdRequest",
       });
-    case 4:
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/ai-controls/usage/instance", code: 200 }),
@@ -21494,7 +21581,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetEeAiControlsUsageInstanceRequest",
       });
-    case 5:
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/ai-controls/usage/tenant", code: 200 }),
@@ -21502,7 +21593,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetEeAiControlsUsageTenantRequest",
       });
-    case 6:
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenant_id: S.Number.pipe(T.Label()),
@@ -21512,7 +21607,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetEeAiControlsUsageTenantByTenantIdRequest",
       });
-    case 7:
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/audit-app/user/audit-info", code: 200 }),
@@ -21522,13 +21621,17 @@ function __c56(j: number): any {
       });
   }
 }
-function __c57(j: number): any {
+function __c307(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/billing", code: 200 })),
       ).annotate({ identifier: "GetEeBillingRequest" });
-    case 1:
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/cloud-add-ons/addons", code: 200 }),
@@ -21536,13 +21639,34 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetEeCloudAddOnsAddonsRequest",
       });
-    case 2:
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/cloud-add-ons/plans", code: 200 })),
       ).annotate({
         identifier: "GetEeCloudAddOnsPlansRequest",
       });
-    case 3:
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          comment_id: S.Number.pipe(T.Label()),
+          emoji: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/comment/{comment_id}/reaction", code: 200 })),
+      ).annotate({
+        identifier: "CreateCommentReactionRequest",
+      });
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/content-translation/csv", code: 200 }),
@@ -21550,7 +21674,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetEeContentTranslationCsvRequest",
       });
-    case 4:
+  }
+}
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locale: S.String.pipe(T.Query()),
@@ -21560,7 +21688,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetEeContentTranslationDictionaryRequest",
       });
-    case 5:
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -21575,13 +21707,21 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetEeContentTranslationDictionaryByTokenRequest",
       });
-    case 6:
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/custom-viz-plugin", code: 200 })),
       ).annotate({
         identifier: "GetEeCustomVizPluginRequest",
       });
-    case 7:
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21592,7 +21732,7 @@ function __c57(j: number): any {
       });
   }
 }
-function __c58(j: number): any {
+function __c316(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21602,7 +21742,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetEeCustomVizPluginBundleRequest",
       });
-    case 1:
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21612,7 +21756,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetEeCustomVizPluginDevSseRequest",
       });
-    case 2:
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/custom-viz-plugin/list", code: 200 }),
@@ -21620,7 +21768,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetEeCustomVizPluginListRequest",
       });
-    case 3:
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/custom-viz-plugin/sandbox-host", code: 200 }),
@@ -21628,7 +21780,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetEeCustomVizPluginSandboxHostRequest",
       });
-    case 4:
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force_recalculation: S.optional(S.Boolean.pipe(T.Query("force-recalculation"))),
@@ -21638,7 +21794,26 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetEeDataComplexityScoreComplexityRequest",
       });
-    case 5:
+  }
+}
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cache_ttl: S.optional(S.NullOr(S.Number)),
+          collection_id: S.optional(S.NullOr(S.Number)),
+          collection_position: S.optional(S.NullOr(S.Number)),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          parameters: S.optional(S.NullOr(__S(1096, __c137, 0))),
+        }).pipe(T.Http({ method: "POST", uri: "/api/dashboard", code: 200 })),
+      ).annotate({ identifier: "CreateDashboardRequest" });
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/dependencies/backfill-status", code: 200 }),
@@ -21646,7 +21821,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetEeDependenciesBackfillStatusRequest",
       });
-    case 6:
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number.pipe(T.Query())),
@@ -21655,7 +21834,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetEeDependenciesGraphRequest",
       });
-    case 7:
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           types: S.optional(S.Unknown.pipe(T.Query())),
@@ -21672,7 +21855,7 @@ function __c58(j: number): any {
       });
   }
 }
-function __c59(j: number): any {
+function __c325(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21690,7 +21873,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetEeDependenciesGraphBrokenRequest",
       });
-    case 1:
+  }
+}
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Query()),
@@ -21708,7 +21895,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetEeDependenciesGraphDependentsRequest",
       });
-    case 2:
+  }
+}
+function __c327(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           types: S.optional(S.Unknown.pipe(T.Query())),
@@ -21725,7 +21916,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetEeDependenciesGraphUnreferencedRequest",
       });
-    case 3:
+  }
+}
+function __c328(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/embedding-hub/checklist", code: 200 }),
@@ -21733,17 +21928,29 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetEeEmbeddingHubChecklistRequest",
       });
-    case 4:
+  }
+}
+function __c329(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/erd", code: 200 })),
       ).annotate({ identifier: "GetEeErdRequest" });
-    case 5:
+  }
+}
+function __c330(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/gsheets/connection", code: 200 })),
       ).annotate({
         identifier: "GetEeGsheetsConnectionRequest",
       });
-    case 6:
+  }
+}
+function __c331(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/gsheets/service-account", code: 200 }),
@@ -21751,19 +21958,46 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetEeGsheetsServiceAccountRequest",
       });
-    case 7:
+  }
+}
+function __c332(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          from_dashboard_id: S.Number.pipe(T.Label()),
+          collection_id: S.optional(S.NullOr(S.Number)),
+          collection_position: S.optional(S.NullOr(S.Number)),
+          description: S.optional(S.NullOr(S.String)),
+          is_deep_copy: S.optional(S.NullOr(S.Boolean)),
+          name: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/dashboard/{from_dashboard_id}/copy", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDashboardCopyRequest",
+      });
+  }
+}
+function __c333(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/library", code: 200 })),
       ).annotate({ identifier: "GetEeLibraryRequest" });
   }
 }
-function __c60(j: number): any {
+function __c334(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/library/tree", code: 200 })),
       ).annotate({ identifier: "GetEeLibraryTreeRequest" });
-    case 1:
+  }
+}
+function __c335(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           yyyy_mm: S.String.pipe(T.Label()),
@@ -21773,7 +22007,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetEeLogsQueryExecutionRequest",
       });
-    case 2:
+  }
+}
+function __c336(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -21783,7 +22021,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetEeMetabotAnalyticsConversationRequest",
       });
-    case 3:
+  }
+}
+function __c337(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sort_by: S.optional(S.String.pipe(T.Query())),
@@ -21798,21 +22040,37 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetEeMetabotAnalyticsConversationsRequest",
       });
-    case 4:
+  }
+}
+function __c338(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/metabot/usage", code: 200 })),
       ).annotate({ identifier: "GetEeMetabotUsageRequest" });
-    case 5:
+  }
+}
+function __c339(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/mfa/admin/overview", code: 200 })),
       ).annotate({
         identifier: "GetEeMfaAdminOverviewRequest",
       });
-    case 6:
+  }
+}
+function __c340(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/mfa/status", code: 200 })),
       ).annotate({ identifier: "GetEeMfaStatusRequest" });
-    case 7:
+  }
+}
+function __c341(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.Number.pipe(T.Query()),
@@ -21824,7 +22082,7 @@ function __c60(j: number): any {
       });
   }
 }
-function __c61(j: number): any {
+function __c342(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21834,7 +22092,33 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetEeRemoteSyncBranchesRequest",
       });
-    case 1:
+  }
+}
+function __c343(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboard_id: S.Number.pipe(T.Label()),
+          dashcard_id: S.Number.pipe(T.Label()),
+          card_id: S.Number.pipe(T.Label()),
+          dashboard_load_id: S.optional(S.NullOr(S.String)),
+          parameters: S.optional(S.NullOr(__S(1401, __c175, 1))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/dashboard/{dashboard_id}/dashcard/{dashcard_id}/card/{card_id}/query",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDashboardDashcardCardQueryRequest",
+      });
+  }
+}
+function __c344(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/remote-sync/current-task", code: 200 }),
@@ -21842,13 +22126,21 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetEeRemoteSyncCurrentTaskRequest",
       });
-    case 2:
+  }
+}
+function __c345(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/remote-sync/dirty", code: 200 })),
       ).annotate({
         identifier: "GetEeRemoteSyncDirtyRequest",
       });
-    case 3:
+  }
+}
+function __c346(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           branch: S.String.pipe(T.Query()),
@@ -21856,7 +22148,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetEeRemoteSyncExportPreflightRequest",
       });
-    case 4:
+  }
+}
+function __c347(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force_refresh: S.optional(S.Boolean.pipe(T.Query("force-refresh"))),
@@ -21866,7 +22162,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetEeRemoteSyncHasRemoteChangesRequest",
       });
-    case 5:
+  }
+}
+function __c348(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/remote-sync/is-dirty", code: 200 }),
@@ -21874,7 +22174,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetEeRemoteSyncIsDirtyRequest",
       });
-    case 6:
+  }
+}
+function __c349(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -21882,7 +22186,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetEeReplacementRunRequest",
       });
-    case 7:
+  }
+}
+function __c350(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           is_active: S.optional(S.Boolean.pipe(T.Query("is-active"))),
@@ -21892,7 +22200,7 @@ function __c61(j: number): any {
       });
   }
 }
-function __c62(j: number): any {
+function __c351(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21900,7 +22208,11 @@ function __c62(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/scim/v2/Groups/{id}", code: 200 })),
       ).annotate({ identifier: "GetEeScimGroupRequest" });
-    case 1:
+  }
+}
+function __c352(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startIndex: S.optional(S.Number.pipe(T.Query())),
@@ -21908,17 +22220,63 @@ function __c62(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/scim/v2/Groups", code: 200 })),
       ).annotate({ identifier: "GetEeScimGroupsRequest" });
-    case 2:
+  }
+}
+function __c353(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/scim/api_key", code: 200 })),
       ).annotate({ identifier: "GetEeScimKeyRequest" });
-    case 3:
+  }
+}
+function __c354(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          context: S.String,
+          model: S.String,
+          model_id: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/api/activity/recents", code: 200 })),
+      ).annotate({
+        identifier: "CreateActivityRecentRequest",
+      });
+  }
+}
+function __c355(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboard_id: S.Number.pipe(T.Label()),
+          dashcard_id: S.Number.pipe(T.Label()),
+          parameters: S.optional(S.NullOr(__S(24, __c3, 0))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/dashboard/{dashboard_id}/dashcard/{dashcard_id}/execute",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDashboardDashcardExecuteRequest",
+      });
+  }
+}
+function __c356(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/scim/v2/Users/{id}", code: 200 })),
       ).annotate({ identifier: "GetEeScimUserRequest" });
-    case 4:
+  }
+}
+function __c357(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startIndex: S.optional(S.Number.pipe(T.Query())),
@@ -21926,13 +22284,21 @@ function __c62(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/scim/v2/Users", code: 200 })),
       ).annotate({ identifier: "GetEeScimUsersRequest" });
-    case 5:
+  }
+}
+function __c358(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/ee/security-center", code: 200 })),
       ).annotate({
         identifier: "GetEeSecurityCenterRequest",
       });
-    case 6:
+  }
+}
+function __c359(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/semantic-search/status", code: 200 }),
@@ -21940,7 +22306,11 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "GetEeSemanticSearchStatusRequest",
       });
-    case 7:
+  }
+}
+function __c360(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -21952,7 +22322,7 @@ function __c62(j: number): any {
       });
   }
 }
-function __c63(j: number): any {
+function __c361(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21964,7 +22334,11 @@ function __c63(j: number): any {
           sort_direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/stale/{id}", code: 200 })),
       ).annotate({ identifier: "GetEeStaleRequest" });
-    case 1:
+  }
+}
+function __c362(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ticket_number: S.optional(S.String.pipe(T.Query("ticket-number"))),
@@ -21974,7 +22348,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GetEeSupportAccessGrantRequest",
       });
-    case 2:
+  }
+}
+function __c363(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/ee/support-access-grant/current", code: 200 }),
@@ -21982,19 +22360,52 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GetEeSupportAccessGrantCurrentRequest",
       });
-    case 3:
+  }
+}
+function __c364(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/tenant", code: 200 })),
       ).annotate({ identifier: "GetEeTenantRequest" });
-    case 4:
+  }
+}
+function __c365(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/tenant/{id}", code: 200 })),
       ).annotate({ identifier: "GetEeTenantByIdRequest" });
-    case 5:
+  }
+}
+function __c366(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+          dashcard_id: S.Number.pipe(T.Label()),
+          modelId: S.optional(S.NullOr(S.Number)),
+          parameters: S.optional(S.NullOr(__S(24, __c3, 0))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/public/dashboard/{uuid}/dashcard/{dashcard_id}/execute",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDashboardDashcardExecuteRequest2",
+      });
+  }
+}
+function __c367(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22002,7 +22413,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GetEeTransformInspectRequest",
       });
-    case 6:
+  }
+}
+function __c368(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22013,7 +22428,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GetEeTransformInspectByLensIdRequest",
       });
-    case 7:
+  }
+}
+function __c369(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Label()),
@@ -22025,7 +22444,7 @@ function __c63(j: number): any {
       });
   }
 }
-function __c64(j: number): any {
+function __c370(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22035,13 +22454,21 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetEeUploadManagementTablesRequest",
       });
-    case 1:
+  }
+}
+function __c371(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/embed/card/{token}", code: 200 })),
       ).annotate({ identifier: "GetEmbedCardRequest" });
-    case 2:
+  }
+}
+function __c372(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22057,7 +22484,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetEmbedCardParamRemappingRequest",
       });
-    case 3:
+  }
+}
+function __c373(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22073,7 +22504,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetEmbedCardParamSearchRequest",
       });
-    case 4:
+  }
+}
+function __c374(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22088,13 +22523,21 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetEmbedCardParamValuesRequest",
       });
-    case 5:
+  }
+}
+function __c375(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/embed/card/{token}/query", code: 200 })),
       ).annotate({ identifier: "GetEmbedCardQueryRequest" });
-    case 6:
+  }
+}
+function __c376(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22111,7 +22554,25 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetEmbedCardQueryByExportFormatRequest",
       });
-    case 7:
+  }
+}
+function __c377(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          paper_size: S.optional(S.NullOr(S.String)),
+          parameters: S.optional(S.NullOr(__S(1401, __c175, 1))),
+        }).pipe(T.Http({ method: "POST", uri: "/api/dashboard/{id}/pdf", code: 200 })),
+      ).annotate({
+        identifier: "CreateDashboardPdfRequest",
+      });
+  }
+}
+function __c378(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22119,7 +22580,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "GetEmbedDashboardRequest" });
   }
 }
-function __c65(j: number): any {
+function __c379(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22137,7 +22598,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetEmbedDashboardDashcardCardRequest",
       });
-    case 1:
+  }
+}
+function __c380(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22156,7 +22621,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetEmbedDashboardDashcardCardByExportFormatRequest",
       });
-    case 2:
+  }
+}
+function __c381(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22172,7 +22641,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetEmbedDashboardParamRemappingRequest",
       });
-    case 3:
+  }
+}
+function __c382(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22188,7 +22661,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetEmbedDashboardParamSearchRequest",
       });
-    case 4:
+  }
+}
+function __c383(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22203,7 +22680,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetEmbedDashboardParamValuesRequest",
       });
-    case 5:
+  }
+}
+function __c384(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22211,7 +22692,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetEmbedPivotCardQueryRequest",
       });
-    case 6:
+  }
+}
+function __c385(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22227,13 +22712,17 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetEmbedPivotDashboardDashcardCardRequest",
       });
-    case 7:
+  }
+}
+function __c386(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/embed-theme", code: 200 })),
       ).annotate({ identifier: "GetEmbedThemeRequest" });
   }
 }
-function __c66(j: number): any {
+function __c387(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22241,21 +22730,50 @@ function __c66(j: number): any {
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/embed-theme/{id}", code: 200 })),
       ).annotate({ identifier: "GetEmbedThemeByIdRequest" });
-    case 1:
+  }
+}
+function __c388(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboard_id: S.Number.pipe(T.Label()),
+          dashcard_id: S.Number.pipe(T.Label()),
+          card_id: S.Number.pipe(T.Label()),
+          parameters: S.optional(S.NullOr(__S(1401, __c175, 1))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/dashboard/pivot/{dashboard_id}/dashcard/{dashcard_id}/card/{card_id}/query",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDashboardPivotDashboardDashcardCardQueryRequest",
+      });
+  }
+}
+function __c389(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/embed/tiles/card/{token}/{zoom}/{x}/{y}", code: 200 }),
         ),
       ).annotate({ identifier: "GetEmbedTilesCardRequest" });
-    case 2:
+  }
+}
+function __c390(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22264,7 +22782,7 @@ function __c66(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -22277,20 +22795,32 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetEmbedTilesDashboardDashcardCardRequest",
       });
-    case 3:
+  }
+}
+function __c391(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           include_editable_data_model: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/field/{id}", code: 200 })),
       ).annotate({ identifier: "GetFieldRequest" });
-    case 4:
+  }
+}
+function __c392(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/field/{id}/related", code: 200 })),
       ).annotate({ identifier: "GetFieldRelatedRequest" });
-    case 5:
+  }
+}
+function __c393(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22300,7 +22830,11 @@ function __c66(j: number): any {
           T.Http({ method: "GET", uri: "/api/field/{id}/remapping/{remapped_id}", code: 200 }),
         ),
       ).annotate({ identifier: "GetFieldRemappingRequest" });
-    case 6:
+  }
+}
+function __c394(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22308,7 +22842,11 @@ function __c66(j: number): any {
           value: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/field/{id}/search/{search_id}", code: 200 })),
       ).annotate({ identifier: "GetFieldSearchRequest" });
-    case 7:
+  }
+}
+function __c395(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22316,7 +22854,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "GetFieldSummaryRequest" });
   }
 }
-function __c67(j: number): any {
+function __c396(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22324,23 +22862,53 @@ function __c67(j: number): any {
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/field/{id}/values", code: 200 })),
       ).annotate({ identifier: "GetFieldValuesRequest" });
-    case 1:
+  }
+}
+function __c397(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           url: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/geojson", code: 200 })),
       ).annotate({ identifier: "GetGeojsonRequest" });
-    case 2:
+  }
+}
+function __c398(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/geojson/{key}", code: 200 })),
       ).annotate({ identifier: "GetGeojsonByKeyRequest" });
-    case 3:
+  }
+}
+function __c399(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboard_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/dashboard/{dashboard_id}/public_link", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDashboardPublicLinkRequest",
+      });
+  }
+}
+function __c400(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/glossary", code: 200 })),
       ).annotate({ identifier: "GetGlossaryRequest" });
-    case 4:
+  }
+}
+function __c401(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -22348,47 +22916,159 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetHealthInspectorRequest",
       });
-    case 5:
+  }
+}
+function __c402(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/api-key", code: 200 })),
       ).annotate({ identifier: "GetKeyRequest" });
-    case 6:
+  }
+}
+function __c403(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/api-key/count", code: 200 })),
       ).annotate({ identifier: "GetKeyCountRequest" });
-    case 7:
+  }
+}
+function __c404(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/llm/list-models", code: 200 })),
       ).annotate({ identifier: "GetLlmListModelsRequest" });
   }
 }
-function __c68(j: number): any {
+function __c405(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/logger/logs", code: 200 })),
       ).annotate({ identifier: "GetLoggerLogsRequest" });
-    case 1:
+  }
+}
+function __c406(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/logger/presets", code: 200 })),
       ).annotate({ identifier: "GetLoggerPresetsRequest" });
-    case 2:
+  }
+}
+function __c407(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/login-history/current", code: 200 })),
       ).annotate({
         identifier: "GetLoginHistoryCurrentRequest",
       });
-    case 3:
+  }
+}
+function __c408(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/measure", code: 200 })),
       ).annotate({ identifier: "GetMeasureRequest" });
-    case 4:
+  }
+}
+function __c409(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/measure/{id}", code: 200 })),
       ).annotate({ identifier: "GetMeasureByIdRequest" });
+  }
+}
+function __c410(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataset_query: S.optional(S.NullOr(S.Unknown)),
+          description: S.optional(S.NullOr(S.String)),
+          display: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(S.Unknown)),
+          name: S.optional(S.NullOr(S.String)),
+          visualization_settings: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({
+        identifier: "CreateDashboardSaveRequestDashcardsItemSeriesItem",
+      });
+    case 1:
+      return S.Array(__S(3280, __c410, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataset_query: S.optional(S.NullOr(S.Unknown)),
+          description: S.optional(S.NullOr(S.String)),
+          display: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(S.Unknown)),
+          name: S.optional(S.NullOr(S.String)),
+          visualization_settings: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({
+        identifier: "CreateDashboardSaveRequestDashcardsItemCard",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          visualization_settings: S.optional(S.NullOr(S.Unknown)),
+          dashboard_tab_id: S.optional(S.NullOr(S.Number)),
+          parameter_mappings: S.optional(S.NullOr(__S(1105, __c138, 1))),
+          size_x: S.optional(S.NullOr(S.Number)),
+          size_y: S.optional(S.NullOr(S.Number)),
+          col: S.optional(S.NullOr(S.Number)),
+          row: S.optional(S.NullOr(S.Number)),
+          series: S.optional(S.NullOr(__S(3281, __c410, 1))),
+          card: S.optional(S.NullOr(__S(3282, __c410, 2))),
+        }),
+      ).annotate({
+        identifier: "CreateDashboardSaveRequestDashcardsItem",
+      });
+    case 4:
+      return S.Array(__S(3283, __c410, 3));
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          auto_apply_filters: S.optional(S.NullOr(S.Boolean)),
+          dashcards: S.optional(S.NullOr(__S(3284, __c410, 4))),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          parameters: S.optional(S.NullOr(__S(1096, __c137, 0))),
+          tabs: S.optional(S.NullOr(__S(3289, __c411, 1))),
+          width: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/dashboard/save", code: 200 })),
+      ).annotate({
+        identifier: "CreateDashboardSaveRequest",
+      });
+  }
+}
+function __c411(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          position: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateDashboardSaveRequestTabsItem",
+      });
+    case 1:
+      return S.Array(__S(3288, __c411, 0));
+  }
+}
+function __c412(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22404,7 +23084,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetMeasureDimensionRemappingRequest",
       });
-    case 6:
+  }
+}
+function __c413(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22420,7 +23104,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetMeasureDimensionSearchRequest",
       });
-    case 7:
+  }
+}
+function __c414(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22437,7 +23125,7 @@ function __c68(j: number): any {
       });
   }
 }
-function __c69(j: number): any {
+function __c415(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22447,17 +23135,29 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetMetabotConversationRequest",
       });
-    case 1:
+  }
+}
+function __c416(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/metabot/conversations", code: 200 })),
       ).annotate({
         identifier: "GetMetabotConversationsRequest",
       });
-    case 2:
+  }
+}
+function __c417(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/metabot/metabot", code: 200 })),
       ).annotate({ identifier: "GetMetabotMetabotRequest" });
-    case 3:
+  }
+}
+function __c418(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22465,7 +23165,11 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetMetabotMetabotByIdRequest",
       });
-    case 4:
+  }
+}
+function __c419(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22478,7 +23182,11 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetMetabotMetabotPromptSuggestionsRequest",
       });
-    case 5:
+  }
+}
+function __c420(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/metabot/permissions/user-permissions", code: 200 }),
@@ -22486,7 +23194,11 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetMetabotPermissionsUserPermissionsRequest",
       });
-    case 6:
+  }
+}
+function __c421(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String.pipe(T.Query())),
@@ -22494,13 +23206,62 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetMetabotSettingsRequest",
       });
-    case 7:
+  }
+}
+function __c422(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provider_name: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          is_on_demand: S.optional(S.NullOr(S.Boolean)),
+          cache_ttl: S.optional(S.NullOr(S.Number)),
+          engine: S.String,
+          details: S.Unknown,
+          is_full_sync: S.optional(S.NullOr(S.Boolean)),
+          connection_source: S.optional(S.NullOr(S.String)),
+          auto_run_queries: S.optional(S.NullOr(S.Boolean)),
+          is_stub: S.optional(S.NullOr(S.Boolean)),
+          schedules: S.optional(S.NullOr(__S(3385, __c423, 1))),
+        }).pipe(T.Http({ method: "POST", uri: "/api/database", code: 200 })),
+      ).annotate({ identifier: "CreateDatabaseRequest" });
+  }
+}
+function __c423(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schedule_day: S.optional(S.NullOr(S.String)),
+          schedule_frame: S.optional(S.NullOr(S.String)),
+          schedule_hour: S.optional(S.NullOr(S.Number)),
+          schedule_minute: S.optional(S.NullOr(S.Number)),
+          schedule_type: S.String,
+        }),
+      ).annotate({
+        identifier: "MetabaseUtilCronScheduleMap",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cache_field_values: S.optional(S.NullOr(__S(3384, __c423, 0))),
+          metadata_sync: S.optional(__S(3384, __c423, 0)),
+        }),
+      ).annotate({
+        identifier: "MetabaseSyncSchedulesExpandedSchedulesMap",
+      });
+  }
+}
+function __c424(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/metric", code: 200 })),
       ).annotate({ identifier: "GetMetricRequest" });
   }
 }
-function __c70(j: number): any {
+function __c425(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22508,7 +23269,11 @@ function __c70(j: number): any {
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/metric/{id}", code: 200 })),
       ).annotate({ identifier: "GetMetricByIdRequest" });
-    case 1:
+  }
+}
+function __c426(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22524,7 +23289,11 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "GetMetricDimensionRemappingRequest",
       });
-    case 2:
+  }
+}
+function __c427(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22540,7 +23309,11 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "GetMetricDimensionSearchRequest",
       });
-    case 3:
+  }
+}
+function __c428(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22555,26 +23328,42 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "GetMetricDimensionValuesRequest",
       });
-    case 4:
+  }
+}
+function __c429(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           model_id: S.Number.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/model-index", code: 200 })),
       ).annotate({ identifier: "GetModelIndexRequest" });
-    case 5:
+  }
+}
+function __c430(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/model-index/{id}", code: 200 })),
       ).annotate({ identifier: "GetModelIndexByIdRequest" });
-    case 6:
+  }
+}
+function __c431(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           group_id: S.optional(S.Number.pipe(T.Query())),
           table_id: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/mt/gtap", code: 200 })),
       ).annotate({ identifier: "GetMtGtapRequest" });
-    case 7:
+  }
+}
+function __c432(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22582,7 +23371,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "GetMtGtapByIdRequest" });
   }
 }
-function __c71(j: number): any {
+function __c433(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22590,7 +23379,23 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetMtUserAttributesRequest",
       });
-    case 1:
+  }
+}
+function __c434(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/database/{id}/discard_values", code: 200 })),
+      ).annotate({
+        identifier: "CreateDatabaseDiscardValueRequest",
+      });
+  }
+}
+function __c435(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           archived: S.optional(S.Boolean.pipe(T.Query())),
@@ -22598,7 +23403,11 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetNativeQuerySnippetRequest",
       });
-    case 2:
+  }
+}
+function __c436(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22606,7 +23415,11 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetNativeQuerySnippetByIdRequest",
       });
-    case 3:
+  }
+}
+function __c437(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           creator_id: S.optional(S.Number.pipe(T.Query())),
@@ -22617,7 +23430,11 @@ function __c71(j: number): any {
           payload_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/notification", code: 200 })),
       ).annotate({ identifier: "GetNotificationRequest" });
-    case 4:
+  }
+}
+function __c438(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean.pipe(T.Query())),
@@ -22636,7 +23453,11 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetNotificationAdminRequest",
       });
-    case 5:
+  }
+}
+function __c439(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22644,7 +23465,11 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetNotificationAdminByIdRequest",
       });
-    case 6:
+  }
+}
+function __c440(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22652,7 +23477,11 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetNotificationByIdRequest",
       });
-    case 7:
+  }
+}
+function __c441(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.optional(S.String.pipe(T.Query("client-id"))),
@@ -22663,7 +23492,7 @@ function __c71(j: number): any {
       });
   }
 }
-function __c72(j: number): any {
+function __c442(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22674,11 +23503,19 @@ function __c72(j: number): any {
           maxwidth: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/public/oembed", code: 200 })),
       ).annotate({ identifier: "GetOembedRequest" });
-    case 1:
+  }
+}
+function __c443(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/osi/ai-context", code: 200 })),
       ).annotate({ identifier: "GetOsiAiContextRequest" });
-    case 2:
+  }
+}
+function __c444(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entity_type: S.String.pipe(T.Label()),
@@ -22693,13 +23530,33 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "GetOsiAiContextByEntityLocalIdRequest",
       });
-    case 3:
+  }
+}
+function __c445(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/database/{id}/dismiss_spinner", code: 200 })),
+      ).annotate({
+        identifier: "CreateDatabaseDismissSpinnerRequest",
+      });
+  }
+}
+function __c446(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/permissions/graph", code: 200 })),
       ).annotate({
         identifier: "GetPermissionsGraphRequest",
       });
-    case 4:
+  }
+}
+function __c447(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           db_id: S.Number.pipe(T.Label()),
@@ -22707,7 +23564,11 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "GetPermissionsGraphDbRequest",
       });
-    case 5:
+  }
+}
+function __c448(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           group_id: S.Number.pipe(T.Label()),
@@ -22717,7 +23578,11 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "GetPermissionsGraphGroupRequest",
       });
-    case 6:
+  }
+}
+function __c449(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenancy: S.optional(S.String.pipe(T.Query())),
@@ -22725,7 +23590,11 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "GetPermissionsGroupRequest",
       });
-    case 7:
+  }
+}
+function __c450(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -22735,7 +23604,7 @@ function __c72(j: number): any {
       });
   }
 }
-function __c73(j: number): any {
+function __c451(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22743,11 +23612,19 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GetPermissionsMembershipRequest",
       });
-    case 1:
+  }
+}
+function __c452(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/persist", code: 200 })),
       ).annotate({ identifier: "GetPersistRequest" });
-    case 2:
+  }
+}
+function __c453(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           persisted_info_id: S.Number.pipe(T.Label()),
@@ -22755,27 +23632,51 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GetPersistByPersistedInfoIdRequest",
       });
-    case 3:
+  }
+}
+function __c454(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           card_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/persist/card/{card_id}", code: 200 })),
       ).annotate({ identifier: "GetPersistCardRequest" });
-    case 4:
+  }
+}
+function __c455(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           ignore_cache: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/public/pivot/card/{uuid}/query", code: 200 })),
       ).annotate({ identifier: "GetPivotCardQueryRequest" });
-    case 5:
+  }
+}
+function __c456(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/database/{id}/rescan_values", code: 200 })),
+      ).annotate({
+        identifier: "CreateDatabaseRescanValueRequest",
+      });
+  }
+}
+function __c457(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           ignore_cache: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -22787,7 +23688,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GetPivotDashboardDashcardCardRequest",
       });
-    case 6:
+  }
+}
+function __c458(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/api/premium-features/token/status", code: 200 }),
@@ -22795,7 +23700,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GetPremiumFeaturesTokenStatusRequest",
       });
-    case 7:
+  }
+}
+function __c459(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22805,7 +23714,7 @@ function __c73(j: number): any {
       });
   }
 }
-function __c74(j: number): any {
+function __c460(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22823,7 +23732,11 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "GetPreviewEmbedCardParamRemappingRequest",
       });
-    case 1:
+  }
+}
+function __c461(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22838,7 +23751,11 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "GetPreviewEmbedCardParamValuesRequest",
       });
-    case 2:
+  }
+}
+function __c462(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22846,7 +23763,11 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "GetPreviewEmbedCardQueryRequest",
       });
-    case 3:
+  }
+}
+function __c463(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22854,7 +23775,11 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "GetPreviewEmbedDashboardRequest",
       });
-    case 4:
+  }
+}
+function __c464(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22870,7 +23795,11 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "GetPreviewEmbedDashboardDashcardCardRequest",
       });
-    case 5:
+  }
+}
+function __c465(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22886,7 +23815,11 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "GetPreviewEmbedDashboardParamRemappingRequest",
       });
-    case 6:
+  }
+}
+function __c466(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22902,7 +23835,37 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "GetPreviewEmbedDashboardParamSearchRequest",
       });
-    case 7:
+  }
+}
+function __c467(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          parent_collection_id: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/collection", code: 200 })),
+      ).annotate({
+        identifier: "CreateAgentCollectionRequest",
+      });
+  }
+}
+function __c468(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "POST", uri: "/api/database/sample_database", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDatabaseSampleDatabaseRequest",
+      });
+  }
+}
+function __c469(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22919,7 +23882,7 @@ function __c74(j: number): any {
       });
   }
 }
-function __c75(j: number): any {
+function __c470(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22931,7 +23894,11 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "GetPreviewEmbedPivotCardQueryRequest",
       });
-    case 1:
+  }
+}
+function __c471(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22947,14 +23914,18 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "GetPreviewEmbedPivotDashboardDashcardCardRequest",
       });
-    case 2:
+  }
+}
+function __c472(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -22967,7 +23938,11 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "GetPreviewEmbedTilesCardRequest",
       });
-    case 3:
+  }
+}
+function __c473(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
@@ -22976,7 +23951,7 @@ function __c75(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -22989,7 +23964,11 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "GetPreviewEmbedTilesDashboardDashcardCardRequest",
       });
-    case 4:
+  }
+}
+function __c474(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           archived: S.optional(S.Boolean.pipe(T.Query())),
@@ -22997,17 +23976,29 @@ function __c75(j: number): any {
           creator_or_recipient: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/pulse", code: 200 })),
       ).annotate({ identifier: "GetPulseRequest" });
-    case 5:
+  }
+}
+function __c475(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/pulse/{id}", code: 200 })),
       ).annotate({ identifier: "GetPulseByIdRequest" });
-    case 6:
+  }
+}
+function __c476(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/pulse/form_input", code: 200 })),
       ).annotate({ identifier: "GetPulseFormInputRequest" });
-    case 7:
+  }
+}
+function __c477(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Query()),
@@ -23016,7 +24007,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "GetRevisionRequest" });
   }
 }
-function __c76(j: number): any {
+function __c478(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23025,7 +24016,23 @@ function __c76(j: number): any {
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/revision/{entity}/{id}", code: 200 })),
       ).annotate({ identifier: "GetRevisionByIdRequest" });
-    case 1:
+  }
+}
+function __c479(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/database/{id}/sync_schema", code: 200 })),
+      ).annotate({
+        identifier: "CreateDatabaseSyncSchemaRequest",
+      });
+  }
+}
+function __c480(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           q: S.optional(S.String.pipe(T.Query())),
@@ -23033,13 +24040,13 @@ function __c76(j: number): any {
           archived: S.optional(S.Boolean.pipe(T.Query())),
           collection: S.optional(S.Number.pipe(T.Query())),
           table_db_id: S.optional(S.Number.pipe(T.Query())),
-          models: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          models: S.optional(__S(1080, __c135, 0).pipe(T.Query())),
           filter_items_in_personal_collection: S.optional(S.String.pipe(T.Query())),
           created_at: S.optional(S.String.pipe(T.Query())),
-          created_by: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          display_type: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          created_by: S.optional(__S(5280, __c660, 0).pipe(T.Query())),
+          display_type: S.optional(__S(504, __c63, 0).pipe(T.Query())),
           last_edited_at: S.optional(S.String.pipe(T.Query())),
-          last_edited_by: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          last_edited_by: S.optional(__S(5280, __c660, 0).pipe(T.Query())),
           model_ancestors: S.optional(S.Boolean.pipe(T.Query())),
           search_engine: S.optional(S.String.pipe(T.Query())),
           vector_search_strategy: S.optional(S.String.pipe(T.Query())),
@@ -23048,13 +24055,17 @@ function __c76(j: number): any {
           vector_search_explain: S.optional(S.Boolean.pipe(T.Query())),
           search_native_query: S.optional(S.Boolean.pipe(T.Query())),
           verified: S.optional(S.Boolean.pipe(T.Query())),
-          ids: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          ids: S.optional(__S(5280, __c660, 0).pipe(T.Query())),
           calculate_available_models: S.optional(S.Boolean.pipe(T.Query())),
           include_dashboard_questions: S.optional(S.Boolean.pipe(T.Query())),
           include_metadata: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/search", code: 200 })),
       ).annotate({ identifier: "GetSearchRequest" });
-    case 2:
+  }
+}
+function __c481(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           q: S.optional(S.String.pipe(T.Query())),
@@ -23062,13 +24073,13 @@ function __c76(j: number): any {
           archived: S.optional(S.Boolean.pipe(T.Query())),
           collection: S.optional(S.Number.pipe(T.Query())),
           table_db_id: S.optional(S.Number.pipe(T.Query())),
-          models: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          models: S.optional(__S(1080, __c135, 0).pipe(T.Query())),
           filter_items_in_personal_collection: S.optional(S.String.pipe(T.Query())),
           created_at: S.optional(S.String.pipe(T.Query())),
-          created_by: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          display_type: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          created_by: S.optional(__S(5280, __c660, 0).pipe(T.Query())),
+          display_type: S.optional(__S(504, __c63, 0).pipe(T.Query())),
           last_edited_at: S.optional(S.String.pipe(T.Query())),
-          last_edited_by: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          last_edited_by: S.optional(__S(5280, __c660, 0).pipe(T.Query())),
           model_ancestors: S.optional(S.Boolean.pipe(T.Query())),
           search_engine: S.optional(S.String.pipe(T.Query())),
           vector_search_strategy: S.optional(S.String.pipe(T.Query())),
@@ -23077,7 +24088,7 @@ function __c76(j: number): any {
           vector_search_explain: S.optional(S.Boolean.pipe(T.Query())),
           search_native_query: S.optional(S.Boolean.pipe(T.Query())),
           verified: S.optional(S.Boolean.pipe(T.Query())),
-          ids: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          ids: S.optional(__S(5280, __c660, 0).pipe(T.Query())),
           calculate_available_models: S.optional(S.Boolean.pipe(T.Query())),
           include_dashboard_questions: S.optional(S.Boolean.pipe(T.Query())),
           include_metadata: S.optional(S.Boolean.pipe(T.Query())),
@@ -23086,29 +24097,49 @@ function __c76(j: number): any {
           for_user_id: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/search/debug", code: 200 })),
       ).annotate({ identifier: "GetSearchDebugRequest" });
-    case 3:
+  }
+}
+function __c482(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           context: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/search/weights", code: 200 })),
       ).annotate({ identifier: "GetSearchWeightsRequest" });
-    case 4:
+  }
+}
+function __c483(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/segment", code: 200 })),
       ).annotate({ identifier: "GetSegmentRequest" });
-    case 5:
+  }
+}
+function __c484(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/segment/{id}", code: 200 })),
       ).annotate({ identifier: "GetSegmentByIdRequest" });
-    case 6:
+  }
+}
+function __c485(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/segment/{id}/related", code: 200 })),
       ).annotate({ identifier: "GetSegmentRelatedRequest" });
-    case 7:
+  }
+}
+function __c486(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Query()),
@@ -23120,7 +24151,7 @@ function __c76(j: number): any {
       });
   }
 }
-function __c77(j: number): any {
+function __c487(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23128,25 +24159,66 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "GetSessionPropertiesRequest",
       });
-    case 1:
+  }
+}
+function __c488(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/setting", code: 200 })),
       ).annotate({ identifier: "GetSettingRequest" });
-    case 2:
+  }
+}
+function __c489(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/setting/{key}", code: 200 })),
       ).annotate({ identifier: "GetSettingByKeyRequest" });
-    case 3:
+  }
+}
+function __c490(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.Unknown,
+          engine: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateDatabaseValidateRequestDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          details: __S(3920, __c490, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/api/database/validate", code: 200 })),
+      ).annotate({
+        identifier: "CreateDatabaseValidateRequest",
+      });
+  }
+}
+function __c491(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/slack/app-info", code: 200 })),
       ).annotate({ identifier: "GetSlackAppInfoRequest" });
-    case 4:
+  }
+}
+function __c492(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/slack/manifest", code: 200 })),
       ).annotate({ identifier: "GetSlackManifestRequest" });
-    case 5:
+  }
+}
+function __c493(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           term: S.optional(S.String.pipe(T.Query())),
@@ -23165,20 +24237,28 @@ function __c77(j: number): any {
           ),
         }).pipe(T.Http({ method: "GET", uri: "/api/table", code: 200 })),
       ).annotate({ identifier: "GetTableRequest" });
-    case 6:
+  }
+}
+function __c494(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           include_editable_data_model: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/table/{id}", code: 200 })),
       ).annotate({ identifier: "GetTableByIdRequest" });
-    case 7:
+  }
+}
+function __c495(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/table/card__:id/fks", code: 200 })),
       ).annotate({ identifier: "GetTableCardIdFksRequest" });
   }
 }
-function __c78(j: number): any {
+function __c496(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23188,19 +24268,31 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "GetTableCardIdQueryMetadataRequest",
       });
-    case 1:
+  }
+}
+function __c497(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           table_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/table/{table_id}/data", code: 200 })),
       ).annotate({ identifier: "GetTableDataRequest" });
-    case 2:
+  }
+}
+function __c498(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/table/{id}/fks", code: 200 })),
       ).annotate({ identifier: "GetTableFksRequest" });
-    case 3:
+  }
+}
+function __c499(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23211,29 +24303,55 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "GetTableQueryMetadataRequest",
       });
-    case 4:
+  }
+}
+function __c500(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/table/{id}/related", code: 200 })),
       ).annotate({ identifier: "GetTableRelatedRequest" });
-    case 5:
+  }
+}
+function __c501(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/api/dataset", code: 200 })),
+      ).annotate({ identifier: "CreateDatasetRequest" });
+  }
+}
+function __c502(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/task", code: 200 })),
       ).annotate({ identifier: "GetTaskRequest" });
-    case 6:
+  }
+}
+function __c503(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/task/{id}", code: 200 })),
       ).annotate({ identifier: "GetTaskByIdRequest" });
-    case 7:
+  }
+}
+function __c504(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/task/info", code: 200 })),
       ).annotate({ identifier: "GetTaskInfoRequest" });
   }
 }
-function __c79(j: number): any {
+function __c505(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23241,11 +24359,19 @@ function __c79(j: number): any {
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/task/runs/{id}", code: 200 })),
       ).annotate({ identifier: "GetTaskRunRequest" });
-    case 1:
+  }
+}
+function __c506(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/task/runs", code: 200 })),
       ).annotate({ identifier: "GetTaskRunsRequest" });
-    case 2:
+  }
+}
+function __c507(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           run_type: S.String.pipe(T.Query("run-type")),
@@ -23254,36 +24380,52 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "GetTaskRunsEntitiesRequest",
       });
-    case 3:
+  }
+}
+function __c508(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/task/unique-tasks", code: 200 })),
       ).annotate({
         identifier: "GetTaskUniqueTasksRequest",
       });
-    case 4:
+  }
+}
+function __c509(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           card_id: S.Number.pipe(T.Label()),
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/tiles/{card_id}/{zoom}/{x}/{y}", code: 200 })),
       ).annotate({ identifier: "GetTileRequest" });
-    case 5:
+  }
+}
+function __c510(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          query: __S(18, __c2, 2).pipe(T.Query()),
+          query: __S(1128, __c141, 0).pipe(T.Query()),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/tiles/{zoom}/{x}/{y}", code: 200 })),
       ).annotate({ identifier: "GetTileByYRequest" });
-    case 6:
+  }
+}
+function __c511(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dashboard_id: S.Number.pipe(T.Label()),
@@ -23292,7 +24434,7 @@ function __c79(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -23305,14 +24447,32 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "GetTileDashcardCardRequest",
       });
-    case 7:
+  }
+}
+function __c512(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          database: S.Number,
+          parameters: S.optional(S.NullOr(__S(1113, __c139, 1))),
+          pretty: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/dataset/native", code: 200 })),
+      ).annotate({
+        identifier: "CreateDatasetNativeRequest",
+      });
+  }
+}
+function __c513(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -23321,7 +24481,7 @@ function __c79(j: number): any {
       ).annotate({ identifier: "GetTilesCardRequest" });
   }
 }
-function __c80(j: number): any {
+function __c514(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23332,7 +24492,7 @@ function __c80(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(__S(55, __c6, 7).pipe(T.Query())),
+          parameters: S.optional(__S(1401, __c175, 1).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -23345,14 +24505,22 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "GetTilesDashboardDashcardCardRequest",
       });
-    case 1:
+  }
+}
+function __c515(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           include: S.optional(S.String.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/timeline", code: 200 })),
       ).annotate({ identifier: "GetTimelineRequest" });
-    case 2:
+  }
+}
+function __c516(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23362,7 +24530,11 @@ function __c80(j: number): any {
           end: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/timeline/{id}", code: 200 })),
       ).annotate({ identifier: "GetTimelineByIdRequest" });
-    case 3:
+  }
+}
+function __c517(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23372,7 +24544,11 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "GetTimelineCollectionRequest",
       });
-    case 4:
+  }
+}
+function __c518(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           include: S.optional(S.Unknown.pipe(T.Query())),
@@ -23381,22 +24557,34 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "GetTimelineCollectionRootRequest",
       });
-    case 5:
+  }
+}
+function __c519(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/timeline-event/{id}", code: 200 })),
       ).annotate({ identifier: "GetTimelineEventRequest" });
-    case 6:
+  }
+}
+function __c520(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           last_run_start_time: S.optional(S.String.pipe(T.Query("last-run-start-time"))),
-          last_run_statuses: S.optional(__S(5, __c0, 5).pipe(T.Query("last-run-statuses"))),
-          tag_ids: S.optional(__S(9, __c1, 1).pipe(T.Query("tag-ids"))),
+          last_run_statuses: S.optional(__S(1080, __c135, 0).pipe(T.Query("last-run-statuses"))),
+          tag_ids: S.optional(__S(5280, __c660, 0).pipe(T.Query("tag-ids"))),
           database_id: S.optional(S.Number.pipe(T.Query("database-id"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/transform", code: 200 })),
       ).annotate({ identifier: "GetTransformRequest" });
-    case 7:
+  }
+}
+function __c521(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23404,7 +24592,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "GetTransformByIdRequest" });
   }
 }
-function __c81(j: number): any {
+function __c522(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23414,16 +24602,38 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "GetTransformDependenciesRequest",
       });
-    case 1:
+  }
+}
+function __c523(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field_ids: S.optional(S.NullOr(__S(5280, __c660, 0))),
+          parameter: __S(1089, __c136, 1),
+          value: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/api/dataset/parameter/remapping", code: 200 })),
+      ).annotate({
+        identifier: "CreateDatasetParameterRemappingRequest",
+      });
+  }
+}
+function __c524(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           last_run_start_time: S.optional(S.String.pipe(T.Query("last-run-start-time"))),
           next_run_start_time: S.optional(S.String.pipe(T.Query("next-run-start-time"))),
-          last_run_statuses: S.optional(__S(5, __c0, 5).pipe(T.Query("last-run-statuses"))),
-          tag_ids: S.optional(__S(9, __c1, 1).pipe(T.Query("tag-ids"))),
+          last_run_statuses: S.optional(__S(1080, __c135, 0).pipe(T.Query("last-run-statuses"))),
+          tag_ids: S.optional(__S(5280, __c660, 0).pipe(T.Query("tag-ids"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/transform-job", code: 200 })),
       ).annotate({ identifier: "GetTransformJobRequest" });
-    case 2:
+  }
+}
+function __c525(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           job_id: S.Number.pipe(T.Label()),
@@ -23431,7 +24641,11 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "GetTransformJobByJobIdRequest",
       });
-    case 3:
+  }
+}
+function __c526(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           job_id: S.Number.pipe(T.Label()),
@@ -23444,7 +24658,11 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "GetTransformJobRunsRequest",
       });
-    case 4:
+  }
+}
+function __c527(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           job_id: S.Number.pipe(T.Label()),
@@ -23459,7 +24677,11 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "GetTransformJobRunTransformRunsRequest",
       });
-    case 5:
+  }
+}
+function __c528(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           job_id: S.Number.pipe(T.Label()),
@@ -23469,21 +24691,29 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "GetTransformJobTransformsRequest",
       });
-    case 6:
+  }
+}
+function __c529(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sort_column: S.optional(S.String.pipe(T.Query("sort-column"))),
           sort_direction: S.optional(S.String.pipe(T.Query("sort-direction"))),
-          transform_ids: S.optional(__S(9, __c1, 1).pipe(T.Query("transform-ids"))),
-          statuses: S.optional(__S(5, __c0, 5).pipe(T.Query())),
-          transform_tag_ids: S.optional(__S(9, __c1, 1).pipe(T.Query("transform-tag-ids"))),
+          transform_ids: S.optional(__S(5280, __c660, 0).pipe(T.Query("transform-ids"))),
+          statuses: S.optional(__S(1080, __c135, 0).pipe(T.Query())),
+          transform_tag_ids: S.optional(__S(5280, __c660, 0).pipe(T.Query("transform-tag-ids"))),
           start_time: S.optional(S.String.pipe(T.Query("start-time"))),
           end_time: S.optional(S.String.pipe(T.Query("end-time"))),
-          run_methods: S.optional(__S(5, __c0, 5).pipe(T.Query("run-methods"))),
+          run_methods: S.optional(__S(1080, __c135, 0).pipe(T.Query("run-methods"))),
           user_id: S.optional(S.Number.pipe(T.Query("user-id"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/transform/run", code: 200 })),
       ).annotate({ identifier: "GetTransformRunRequest" });
-    case 7:
+  }
+}
+function __c530(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           run_id: S.Number.pipe(T.Label()),
@@ -23493,13 +24723,17 @@ function __c81(j: number): any {
       });
   }
 }
-function __c82(j: number): any {
+function __c531(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/transform-tag", code: 200 })),
       ).annotate({ identifier: "GetTransformTagRequest" });
-    case 1:
+  }
+}
+function __c532(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
@@ -23512,17 +24746,42 @@ function __c82(j: number): any {
           tenant_id: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/user", code: 200 })),
       ).annotate({ identifier: "GetUserRequest" });
-    case 2:
+  }
+}
+function __c533(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/user/{id}", code: 200 })),
       ).annotate({ identifier: "GetUserByIdRequest" });
-    case 3:
+  }
+}
+function __c534(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field_ids: S.optional(S.NullOr(__S(5280, __c660, 0))),
+          parameter: __S(1089, __c136, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/api/dataset/parameter/values", code: 200 })),
+      ).annotate({
+        identifier: "CreateDatasetParameterValueRequest",
+      });
+  }
+}
+function __c535(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/user/current", code: 200 })),
       ).annotate({ identifier: "GetUserCurrentRequest" });
-    case 4:
+  }
+}
+function __c536(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -23532,7 +24791,11 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "GetUserKeyValueNamespaceRequest",
       });
-    case 5:
+  }
+}
+function __c537(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -23547,11 +24810,19 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "GetUserKeyValueNamespaceKeyRequest",
       });
-    case 6:
+  }
+}
+function __c538(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/user/recipients", code: 200 })),
       ).annotate({ identifier: "GetUserRecipientsRequest" });
-    case 7:
+  }
+}
+function __c539(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/util/random_token", code: 200 })),
       ).annotate({
@@ -23559,7 +24830,7 @@ function __c82(j: number): any {
       });
   }
 }
-function __c83(j: number): any {
+function __c540(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23567,7 +24838,7 @@ function __c83(j: number): any {
           card_id: S.Number,
           target_collection_id: S.optional(S.NullOr(S.Number)),
           transform_name: S.String,
-          transform_tag_ids: S.optional(S.NullOr(__S(65, __c8, 1))),
+          transform_tag_ids: S.optional(S.NullOr(__S(2208, __c276, 0))),
           transform_target: S.Unknown,
         }).pipe(
           T.Http({
@@ -23579,27 +24850,39 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "PostApiEeReplacementReplaceModelWithTransformRequest",
       });
-    case 1:
+  }
+}
+function __c541(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/api/action/{id}", code: 200 })),
       ).annotate({ identifier: "PutActionRequest" });
-    case 2:
+  }
+}
+function __c542(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           archived: S.optional(S.NullOr(S.Boolean)),
           collection_id: S.optional(S.NullOr(S.Number)),
-          dashcards: S.optional(S.NullOr(__S(666, __c83, 2))),
+          dashcards: S.optional(S.NullOr(__S(4336, __c542, 0))),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/agent/v1/dashboard/{id}", code: 200 })),
       ).annotate({ identifier: "PutAgentDashboardRequest" });
-    case 4:
+  }
+}
+function __c543(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23612,7 +24895,11 @@ function __c83(j: number): any {
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/agent/v1/metric/{id}", code: 200 })),
       ).annotate({ identifier: "PutAgentMetricRequest" });
-    case 5:
+  }
+}
+function __c544(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23625,7 +24912,39 @@ function __c83(j: number): any {
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/agent/v1/question/{id}", code: 200 })),
       ).annotate({ identifier: "PutAgentQuestionRequest" });
-    case 6:
+  }
+}
+function __c545(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lib_metadata: S.optional(S.Unknown.pipe(T.Body("lib/metadata"))),
+          show_column_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-column-totals"))),
+          pivot_rows: S.optional(S.NullOr(__S(5280, __c660, 0)).pipe(T.Body("pivot-rows"))),
+          update_row: S.optional(__S(24, __c3, 0).pipe(T.Body("update-row"))),
+          lib_type: S.optional(S.Unknown.pipe(T.Body("lib/type"))),
+          settings: S.optional(__S(1120, __c140, 0)),
+          constraints: S.optional(__S(1121, __c140, 1)),
+          info: S.optional(__S(1123, __c140, 3)),
+          show_row_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-row-totals"))),
+          middleware: S.optional(__S(1124, __c140, 4)),
+          database: S.optional(S.Unknown),
+          pivot_measures: S.optional(S.NullOr(__S(5280, __c660, 0)).pipe(T.Body("pivot-measures"))),
+          stages: S.Unknown,
+          pivot_cols: S.optional(S.NullOr(__S(5280, __c660, 0)).pipe(T.Body("pivot-cols"))),
+          parameters: S.optional(__S(1113, __c139, 1)),
+          create_row: S.optional(__S(24, __c3, 0).pipe(T.Body("create-row"))),
+          was_pivot: S.optional(S.NullOr(S.Boolean).pipe(T.Body("was-pivot"))),
+        }).pipe(T.Http({ method: "POST", uri: "/api/dataset/pivot", code: 200 })),
+      ).annotate({
+        identifier: "CreateDatasetPivotRequest",
+      });
+  }
+}
+function __c546(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           item_id: S.Number,
@@ -23634,21 +24953,21 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "PutBookmarkOrderingRequestOrderingsItem",
       });
-    case 7:
-      return S.Array(__S(670, __c83, 6));
-  }
-}
-function __c84(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(4368, __c546, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          orderings: __S(671, __c83, 7),
+          orderings: __S(4369, __c546, 1),
         }).pipe(T.Http({ method: "PUT", uri: "/api/bookmark/ordering", code: 200 })),
       ).annotate({
         identifier: "PutBookmarkOrderingRequest",
       });
-    case 1:
+  }
+}
+function __c547(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           model: S.String,
@@ -23656,9 +24975,11 @@ function __c84(j: number): any {
           strategy: S.Unknown,
         }).pipe(T.Http({ method: "PUT", uri: "/api/cache", code: 200 })),
       ).annotate({ identifier: "PutCacheRequest" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
+  }
+}
+function __c548(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23667,37 +24988,55 @@ function __c84(j: number): any {
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
           dashboard_tab_id: S.optional(S.NullOr(S.Number)),
           collection_preview: S.optional(S.NullOr(S.Boolean)),
-          dataset_query: S.optional(S.NullOr(__S(18, __c2, 2))),
-          parameter_mappings: S.optional(S.NullOr(__S(2, __c0, 2))),
+          dataset_query: S.optional(S.NullOr(__S(1128, __c141, 0))),
+          parameter_mappings: S.optional(S.NullOr(__S(1105, __c138, 1))),
           embedding_type: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.NullOr(S.Boolean)),
           collection_position: S.optional(S.NullOr(S.Number)),
-          embedding_params: S.optional(S.NullOr(__S(674, __c84, 2))),
-          result_metadata: S.optional(S.NullOr(__S(13, __c1, 5))),
+          embedding_params: S.optional(S.NullOr(__S(4392, __c549, 0))),
+          result_metadata: S.optional(S.NullOr(__S(1122, __c140, 2))),
           collection_id: S.optional(S.NullOr(S.Number)),
           cache_ttl: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.String)),
           display: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(__S(8, __c1, 0))),
+          parameters: S.optional(S.NullOr(__S(1096, __c137, 0))),
           description: S.optional(S.NullOr(S.String)),
           dashboard_id: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/card/{id}", code: 200 })),
       ).annotate({ identifier: "PutCardRequest" });
-    case 4:
+  }
+}
+function __c549(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c550(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/api/channel/{id}", code: 200 })),
       ).annotate({ identifier: "PutChannelRequest" });
-    case 5:
+  }
+}
+function __c551(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "PUT", uri: "/api/cloud-migration/cancel", code: 200 })),
       ).annotate({
         identifier: "PutCloudMigrationCancelRequest",
       });
-    case 6:
+  }
+}
+function __c552(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23708,7 +25047,11 @@ function __c84(j: number): any {
           parent_id: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/collection/{id}", code: 200 })),
       ).annotate({ identifier: "PutCollectionRequest" });
-    case 7:
+  }
+}
+function __c553(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean.pipe(T.Query())),
@@ -23722,7 +25065,7 @@ function __c84(j: number): any {
       });
   }
 }
-function __c85(j: number): any {
+function __c554(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23732,38 +25075,11 @@ function __c85(j: number): any {
           is_resolved: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/api/comment/{comment_id}", code: 200 })),
       ).annotate({ identifier: "PutCommentRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-        }),
-      ).annotate({
-        identifier: "PutDashboardRequestDashcardsItemSeriesItem",
-      });
-    case 2:
-      return S.Array(__S(681, __c85, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          inline_parameters: S.optional(S.NullOr(__S(3, __c0, 3))),
-          visualization_settings: S.optional(S.NullOr(S.Unknown)),
-          dashboard_tab_id: S.optional(S.NullOr(S.Number)),
-          parameter_mappings: S.optional(S.NullOr(__S(2, __c0, 2))),
-          id: S.Number,
-          card_id: S.optional(S.NullOr(S.Number)),
-          size_x: S.Number,
-          size_y: S.Number,
-          col: S.Number,
-          row: S.Number,
-          series: S.optional(S.NullOr(__S(682, __c85, 2))),
-          action_id: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "PutDashboardRequestDashcardsItem",
-      });
-    case 4:
-      return S.Array(__S(683, __c85, 3));
-    case 5:
+  }
+}
+function __c555(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23777,25 +25093,96 @@ function __c85(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.NullOr(S.Boolean)),
           collection_position: S.optional(S.NullOr(S.Number)),
-          embedding_params: S.optional(S.NullOr(__S(674, __c84, 2))),
-          tabs: S.optional(S.NullOr(__S(87, __c10, 7))),
+          embedding_params: S.optional(S.NullOr(__S(4392, __c549, 0))),
+          tabs: S.optional(S.NullOr(__S(3289, __c411, 1))),
           collection_id: S.optional(S.NullOr(S.Number)),
           cache_ttl: S.optional(S.NullOr(S.Number)),
           caveats: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(__S(8, __c1, 0))),
-          dashcards: S.optional(S.NullOr(__S(684, __c85, 4))),
+          parameters: S.optional(S.NullOr(__S(1096, __c137, 0))),
+          dashcards: S.optional(S.NullOr(__S(4451, __c556, 3))),
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/dashboard/{id}", code: 200 })),
       ).annotate({ identifier: "PutDashboardRequest" });
-    case 6:
+  }
+}
+function __c556(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+        }),
+      ).annotate({
+        identifier: "PutDashboardRequestDashcardsItemSeriesItem",
+      });
+    case 1:
+      return S.Array(__S(4448, __c556, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          inline_parameters: S.optional(S.NullOr(__S(504, __c63, 0))),
+          visualization_settings: S.optional(S.NullOr(S.Unknown)),
+          dashboard_tab_id: S.optional(S.NullOr(S.Number)),
+          parameter_mappings: S.optional(S.NullOr(__S(1105, __c138, 1))),
+          id: S.Number,
+          card_id: S.optional(S.NullOr(S.Number)),
+          size_x: S.Number,
+          size_y: S.Number,
+          col: S.Number,
+          row: S.Number,
+          series: S.optional(S.NullOr(__S(4449, __c556, 1))),
+          action_id: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "PutDashboardRequestDashcardsItem",
+      });
+    case 3:
+      return S.Array(__S(4450, __c556, 2));
+  }
+}
+function __c557(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          cards: __S(684, __c85, 4),
-          tabs: S.optional(S.NullOr(__S(87, __c10, 7))),
+          cards: __S(4451, __c556, 3),
+          tabs: S.optional(S.NullOr(__S(3289, __c411, 1))),
         }).pipe(T.Http({ method: "PUT", uri: "/api/dashboard/{id}/cards", code: 200 })),
       ).annotate({ identifier: "PutDashboardCardsRequest" });
-    case 7:
+  }
+}
+function __c558(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lib_metadata: S.optional(S.Unknown.pipe(T.Body("lib/metadata"))),
+          show_column_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-column-totals"))),
+          pivot_rows: S.optional(S.NullOr(__S(5280, __c660, 0)).pipe(T.Body("pivot-rows"))),
+          update_row: S.optional(__S(24, __c3, 0).pipe(T.Body("update-row"))),
+          lib_type: S.optional(S.Unknown.pipe(T.Body("lib/type"))),
+          settings: S.optional(__S(1120, __c140, 0)),
+          constraints: S.optional(__S(1121, __c140, 1)),
+          info: S.optional(__S(1123, __c140, 3)),
+          show_row_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-row-totals"))),
+          middleware: S.optional(__S(1124, __c140, 4)),
+          database: S.optional(S.Unknown),
+          pivot_measures: S.optional(S.NullOr(__S(5280, __c660, 0)).pipe(T.Body("pivot-measures"))),
+          stages: S.Unknown,
+          pivot_cols: S.optional(S.NullOr(__S(5280, __c660, 0)).pipe(T.Body("pivot-cols"))),
+          parameters: S.optional(__S(1113, __c139, 1)),
+          create_row: S.optional(__S(24, __c3, 0).pipe(T.Body("create-row"))),
+          was_pivot: S.optional(S.NullOr(S.Boolean).pipe(T.Body("was-pivot"))),
+        }).pipe(T.Http({ method: "POST", uri: "/api/dataset/query_metadata", code: 200 })),
+      ).annotate({
+        identifier: "CreateDatasetQueryMetadataRequest",
+      });
+  }
+}
+function __c559(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23814,34 +25201,38 @@ function __c85(j: number): any {
           is_stub: S.optional(S.NullOr(S.Boolean)),
           admin_details: S.optional(S.NullOr(S.Unknown)),
           refingerprint: S.optional(S.NullOr(S.Boolean)),
-          schedules: S.optional(S.NullOr(__S(90, __c11, 2))),
+          schedules: S.optional(S.NullOr(__S(3385, __c423, 1))),
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/database/{id}", code: 200 })),
       ).annotate({ identifier: "PutDatabaseRequest" });
   }
 }
-function __c86(j: number): any {
+function __c560(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           document_id: S.Number.pipe(T.Label()),
           archived: S.optional(S.NullOr(S.Boolean)),
-          cards: S.optional(S.NullOr(__S(111, __c13, 7))),
+          cards: S.optional(S.NullOr(__S(5025, __c628, 1))),
           collection_id: S.optional(S.NullOr(S.Number)),
           collection_position: S.optional(S.NullOr(S.Number)),
-          document: S.optional(S.NullOr(__S(112, __c14, 0))),
+          document: S.optional(S.NullOr(__S(5026, __c628, 2))),
           name: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/api/document/{document_id}", code: 200 })),
       ).annotate({ identifier: "PutDocumentRequest" });
+  }
+}
+function __c561(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(776, __c97, 0));
     case 1:
-      return S.Record(S.String, __S(43, __c5, 3));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           skip_graph: S.optional(S.Boolean.pipe(T.Query("skip-graph"))),
           force: S.optional(S.Boolean.pipe(T.Query())),
-          groups: __S(689, __c86, 1),
+          groups: __S(4488, __c561, 0),
           revision: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
@@ -23853,7 +25244,11 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "PutEeAdvancedPermissionsApplicationGraphRequest",
       });
-    case 3:
+  }
+}
+function __c562(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           group_id: S.Number,
@@ -23863,17 +25258,21 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "PutEeAiControlsPermissionsRequestPermissionsItem",
       });
-    case 4:
-      return S.Array(__S(691, __c86, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(4496, __c562, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          permissions: __S(692, __c86, 4),
+          permissions: __S(4497, __c562, 1),
         }).pipe(T.Http({ method: "PUT", uri: "/api/ee/ai-controls/permissions", code: 200 })),
       ).annotate({
         identifier: "PutEeAiControlsPermissionsRequest",
       });
-    case 6:
+  }
+}
+function __c563(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           group_id: S.Number.pipe(T.Label()),
@@ -23884,7 +25283,11 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "PutEeAiControlsUsageGroupRequest",
       });
-    case 7:
+  }
+}
+function __c564(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           max_usage: S.NullOr(S.Number),
@@ -23894,7 +25297,7 @@ function __c86(j: number): any {
       });
   }
 }
-function __c87(j: number): any {
+function __c565(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23907,7 +25310,11 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PutEeAiControlsUsageTenantRequest",
       });
-    case 1:
+  }
+}
+function __c566(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23916,11 +25323,15 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PutEeCustomVizPluginRequest",
       });
-    case 2:
+  }
+}
+function __c567(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          file: __S(122, __c15, 2),
+          file: __S(5208, __c651, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -23932,7 +25343,11 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PutEeCustomVizPluginBundleRequest",
       });
-    case 3:
+  }
+}
+function __c568(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23943,7 +25358,27 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PutEeCustomVizPluginDevUrlRequest",
       });
-    case 4:
+  }
+}
+function __c569(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          database_ids: S.optional(__S(5280, __c660, 0)),
+          schema_ids: S.optional(__S(504, __c63, 0)),
+          table_ids: S.optional(__S(5280, __c660, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/data-studio/table/discard-values", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDataStudioTableDiscardValueRequest",
+      });
+  }
+}
+function __c570(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -23958,7 +25393,11 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PutEeDatabaseRoutingRouterDatabaseRequest",
       });
-    case 5:
+  }
+}
+function __c571(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email_smtp_host_override: S.optional(
@@ -23980,12 +25419,16 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PutEeEmailOverrideRequest",
       });
-    case 6:
+  }
+}
+function __c572(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Boolean);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          collections: S.optional(S.NullOr(__S(702, __c87, 6))),
+          collections: S.optional(S.NullOr(__S(4576, __c572, 0))),
           remote_sync_auto_import: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("remote-sync-auto-import")),
           ),
@@ -24002,31 +25445,39 @@ function __c87(j: number): any {
       });
   }
 }
-function __c88(j: number): any {
+function __c573(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           displayName: S.String,
-          members: S.optional(__S(152, __c19, 0)),
-          schemas: __S(3, __c0, 3),
+          members: S.optional(__S(5441, __c680, 1)),
+          schemas: __S(504, __c63, 0),
         }).pipe(T.Http({ method: "PUT", uri: "/api/ee/scim/v2/Groups/{id}", code: 200 })),
       ).annotate({ identifier: "PutEeScimGroupRequest" });
-    case 1:
+  }
+}
+function __c574(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           active: S.optional(S.Boolean),
-          emails: __S(156, __c19, 4),
-          groups: S.optional(__S(158, __c19, 6)),
+          emails: __S(5465, __c683, 1),
+          groups: S.optional(__S(5467, __c683, 3)),
           locale: S.optional(S.NullOr(S.String)),
-          name: __S(159, __c19, 7),
-          schemas: __S(3, __c0, 3),
+          name: __S(5468, __c683, 4),
+          schemas: __S(504, __c63, 0),
           userName: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/api/ee/scim/v2/Users/{id}", code: 200 })),
       ).annotate({ identifier: "PutEeScimUserRequest" });
-    case 2:
+  }
+}
+function __c575(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24036,16 +25487,24 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "PutEeSupportAccessGrantRevokeRequest",
       });
-    case 3:
+  }
+}
+function __c576(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          attributes: S.optional(S.NullOr(__S(10, __c1, 2))),
+          attributes: S.optional(S.NullOr(__S(24, __c3, 0))),
           is_active: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/ee/tenant/{id}", code: 200 })),
       ).annotate({ identifier: "PutEeTenantRequest" });
-    case 4:
+  }
+}
+function __c577(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Label()),
@@ -24056,7 +25515,11 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "PutEeTransformsPythonLibraryRequest",
       });
-    case 5:
+  }
+}
+function __c578(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email_smtp_host: S.optional(S.NullOr(S.String).pipe(T.Body("email-smtp-host"))),
@@ -24066,7 +25529,11 @@ function __c88(j: number): any {
           email_smtp_username: S.optional(S.NullOr(S.String).pipe(T.Body("email-smtp-username"))),
         }).pipe(T.Http({ method: "PUT", uri: "/api/email", code: 200 })),
       ).annotate({ identifier: "PutEmailRequest" });
-    case 6:
+  }
+}
+function __c579(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24074,7 +25541,52 @@ function __c88(j: number): any {
           settings: S.optional(S.NullOr(S.Unknown)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/embed-theme/{id}", code: 200 })),
       ).annotate({ identifier: "PutEmbedThemeRequest" });
-    case 7:
+  }
+}
+function __c580(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          database_id: S.Number,
+          sql: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/construct-native-query", code: 200 })),
+      ).annotate({
+        identifier: "CreateAgentConstructNativeQueryRequest",
+      });
+  }
+}
+function __c581(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateAgentConstructNativeQueryResponse",
+      });
+  }
+}
+function __c582(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data_authority: S.optional(S.NullOr(S.String)),
+          data_layer: S.optional(S.NullOr(S.String)),
+          table_ids: S.optional(__S(5280, __c660, 0)),
+          owner_email: S.optional(S.NullOr(S.String)),
+          owner_user_id: S.optional(S.NullOr(S.Number)),
+          data_source: S.optional(S.NullOr(S.String)),
+          schema_ids: S.optional(__S(504, __c63, 0)),
+          entity_type: S.optional(S.NullOr(S.String)),
+          database_ids: S.optional(__S(5280, __c660, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/data-studio/table/edit", code: 200 })),
+      ).annotate({
+        identifier: "CreateDataStudioTableEditRequest",
+      });
+  }
+}
+function __c583(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24086,7 +25598,7 @@ function __c88(j: number): any {
           semantic_type: S.optional(S.NullOr(S.Unknown)),
           has_field_values: S.optional(S.NullOr(S.String)),
           display_name: S.optional(S.NullOr(S.String)),
-          nfc_path: S.optional(S.NullOr(__S(3, __c0, 3))),
+          nfc_path: S.optional(S.NullOr(__S(504, __c63, 0))),
           caveats: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           fk_target_field_id: S.optional(S.NullOr(S.Number)),
@@ -24094,7 +25606,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "PutFieldRequest" });
   }
 }
-function __c89(j: number): any {
+function __c584(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24104,7 +25616,11 @@ function __c89(j: number): any {
           term: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/api/glossary/{id}", code: 200 })),
       ).annotate({ identifier: "PutGlossaryRequest" });
-    case 1:
+  }
+}
+function __c585(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           google_auth_auto_create_accounts_domain: S.optional(
@@ -24116,7 +25632,11 @@ function __c89(j: number): any {
           google_auth_enabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("google-auth-enabled"))),
         }).pipe(T.Http({ method: "PUT", uri: "/api/google/settings", code: 200 })),
       ).annotate({ identifier: "PutGoogleSettingsRequest" });
-    case 2:
+  }
+}
+function __c586(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24124,15 +25644,23 @@ function __c89(j: number): any {
           name: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/api-key/{id}", code: 200 })),
       ).annotate({ identifier: "PutKeyRequest" });
-    case 3:
+  }
+}
+function __c587(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "PUT", uri: "/api/api-key/{id}/regenerate", code: 200 })),
       ).annotate({ identifier: "PutKeyRegenerateRequest" });
-    case 4:
-      return S.Record(S.String, __S(9, __c1, 1));
-    case 5:
+  }
+}
+function __c588(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(5280, __c660, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ldap_host: S.optional(S.NullOr(S.String).pipe(T.Body("ldap-host"))),
@@ -24148,7 +25676,7 @@ function __c89(j: number): any {
             S.NullOr(S.String).pipe(T.Body("ldap-attribute-firstname")),
           ),
           ldap_group_mappings: S.optional(
-            S.NullOr(__S(716, __c89, 4)).pipe(T.Body("ldap-group-mappings")),
+            S.NullOr(__S(4704, __c588, 0)).pipe(T.Body("ldap-group-mappings")),
           ),
           ldap_user_base: S.optional(S.NullOr(S.String).pipe(T.Body("ldap-user-base"))),
           ldap_security: S.optional(S.NullOr(S.String).pipe(T.Body("ldap-security"))),
@@ -24160,18 +25688,26 @@ function __c89(j: number): any {
           ldap_enabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("ldap-enabled"))),
         }).pipe(T.Http({ method: "PUT", uri: "/api/ldap/settings", code: 200 })),
       ).annotate({ identifier: "PutLdapSettingsRequest" });
-    case 6:
+  }
+}
+function __c589(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           archived: S.optional(S.NullOr(S.Boolean)),
-          definition: S.optional(S.NullOr(__S(18, __c2, 2))),
+          definition: S.optional(S.NullOr(__S(1128, __c141, 0))),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           revision_message: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/api/measure/{id}", code: 200 })),
       ).annotate({ identifier: "PutMeasureRequest" });
-    case 7:
+  }
+}
+function __c590(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24181,7 +25717,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "PutMetabotMetabotRequest" });
   }
 }
-function __c90(j: number): any {
+function __c591(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24200,14 +25736,18 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           api_key: S.optional(S.NullOr(S.String).pipe(T.Body("api-key"))),
-          credentials: S.optional(S.NullOr(__S(720, __c90, 0))),
+          credentials: S.optional(S.NullOr(__S(4728, __c591, 0))),
           model: S.optional(S.NullOr(S.String)),
           provider: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/api/metabot/settings", code: 200 })),
       ).annotate({
         identifier: "PutMetabotSettingsRequest",
       });
-    case 2:
+  }
+}
+function __c592(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           metabot_slack_signing_secret: S.NullOr(S.String).pipe(
@@ -24221,24 +25761,50 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "PutMetabotSlackSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c593(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          database_ids: S.optional(__S(5280, __c660, 0)),
+          schema_ids: S.optional(__S(504, __c63, 0)),
+          table_ids: S.optional(__S(5280, __c660, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/data-studio/table/rescan-values", code: 200 })),
+      ).annotate({
+        identifier: "CreateDataStudioTableRescanValueRequest",
+      });
+  }
+}
+function __c594(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          attribute_remappings: S.optional(S.NullOr(__S(232, __c29, 0))),
+          attribute_remappings: S.optional(S.NullOr(__S(424, __c53, 0))),
           card_id: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/mt/gtap/{id}", code: 200 })),
       ).annotate({ identifier: "PutMtGtapRequest" });
-    case 4:
+  }
+}
+function __c595(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          login_attributes: S.optional(S.NullOr(__S(10, __c1, 2))),
+          login_attributes: S.optional(S.NullOr(__S(24, __c3, 0))),
         }).pipe(T.Http({ method: "PUT", uri: "/api/mt/user/{id}/attributes", code: 200 })),
       ).annotate({
         identifier: "PutMtUserAttributesRequest",
       });
-    case 5:
+  }
+}
+function __c596(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24251,33 +25817,37 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "PutNativeQuerySnippetRequest",
       });
-    case 6:
+  }
+}
+function __c597(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/api/notification/{id}", code: 200 })),
       ).annotate({ identifier: "PutNotificationRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          examples: S.optional(__S(3, __c0, 3)),
-          instructions: S.optional(S.NullOr(S.String)),
-          synonyms: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "PutOsiAiContextRequestAiContext",
-      });
   }
 }
-function __c91(j: number): any {
+function __c598(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          examples: S.optional(__S(504, __c63, 0)),
+          instructions: S.optional(S.NullOr(S.String)),
+          synonyms: S.optional(__S(504, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "PutOsiAiContextRequestAiContext",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           entity_type: S.String.pipe(T.Label()),
           entity_local_id: S.Number.pipe(T.Label()),
-          ai_context: __S(727, __c90, 7),
+          ai_context: __S(4784, __c598, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -24286,7 +25856,11 @@ function __c91(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PutOsiAiContextRequest" });
-    case 1:
+  }
+}
+function __c599(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           attribute: S.String,
@@ -24296,14 +25870,14 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "MetabasePermissionsRestSchemaImpersonationUpdate",
       });
+    case 1:
+      return S.Array(__S(4792, __c599, 0));
     case 2:
-      return S.Array(__S(729, __c91, 1));
-    case 3:
       return S.Record(S.String, S.Unknown);
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          attribute_remappings: S.optional(S.NullOr(__S(731, __c91, 3))),
+          attribute_remappings: S.optional(S.NullOr(__S(4794, __c599, 2))),
           card_id: S.optional(S.NullOr(S.Number)),
           group_id: S.optional(S.Number),
           id: S.optional(S.Number),
@@ -24313,22 +25887,26 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "MetabasePermissionsRestSchemaSandboxUpdate",
       });
+    case 4:
+      return S.Array(__S(4795, __c599, 3));
     case 5:
-      return S.Array(__S(732, __c91, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           skip_graph: S.optional(S.Boolean.pipe(T.Query("skip-graph"))),
           force: S.optional(S.Boolean.pipe(T.Query())),
           groups: S.Unknown,
-          impersonations: S.optional(S.NullOr(__S(730, __c91, 2))),
+          impersonations: S.optional(S.NullOr(__S(4793, __c599, 1))),
           revision: S.optional(S.NullOr(S.Number)),
-          sandboxes: S.optional(S.NullOr(__S(733, __c91, 5))),
+          sandboxes: S.optional(S.NullOr(__S(4796, __c599, 4))),
         }).pipe(T.Http({ method: "PUT", uri: "/api/permissions/graph", code: 200 })),
       ).annotate({
         identifier: "PutPermissionsGraphRequest",
       });
-    case 7:
+  }
+}
+function __c600(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           group_id: S.Number.pipe(T.Label()),
@@ -24339,7 +25917,7 @@ function __c91(j: number): any {
       });
   }
 }
-function __c92(j: number): any {
+function __c601(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24350,7 +25928,11 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "PutPermissionsMembershipRequest",
       });
-    case 1:
+  }
+}
+function __c602(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           group_id: S.Number.pipe(T.Label()),
@@ -24360,7 +25942,11 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "PutPermissionsMembershipClearRequest",
       });
-    case 2:
+  }
+}
+function __c603(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24370,24 +25956,46 @@ function __c92(j: number): any {
           collection_id: S.optional(S.NullOr(S.Number)),
           collection_position: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(__S(8, __c1, 0))),
+          parameters: S.optional(S.NullOr(__S(1096, __c137, 0))),
           skip_if_empty: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/pulse/{id}", code: 200 })),
       ).annotate({ identifier: "PutPulseRequest" });
-    case 3:
+  }
+}
+function __c604(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          database_ids: S.optional(__S(5280, __c660, 0)),
+          schema_ids: S.optional(__S(504, __c63, 0)),
+          table_ids: S.optional(__S(5280, __c660, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/data-studio/table/selection", code: 200 })),
+      ).annotate({
+        identifier: "CreateDataStudioTableSelectionRequest",
+      });
+  }
+}
+function __c605(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           context: S.optional(S.String.pipe(T.Query())),
           search_engine: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(T.Http({ method: "PUT", uri: "/api/search/weights", code: 200 })),
       ).annotate({ identifier: "PutSearchWeightsRequest" });
-    case 4:
+  }
+}
+function __c606(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           archived: S.optional(S.NullOr(S.Boolean)),
           caveats: S.optional(S.NullOr(S.String)),
-          definition: S.optional(S.NullOr(__S(18, __c2, 2))),
+          definition: S.optional(S.NullOr(__S(1128, __c141, 0))),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           points_of_interest: S.optional(S.NullOr(S.String)),
@@ -24395,20 +26003,32 @@ function __c92(j: number): any {
           show_in_getting_started: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/segment/{id}", code: 200 })),
       ).annotate({ identifier: "PutSegmentRequest" });
-    case 5:
+  }
+}
+function __c607(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/api/setting", code: 200 })),
       ).annotate({ identifier: "PutSettingRequest" });
-    case 6:
+  }
+}
+function __c608(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String.pipe(T.Label()),
           value: S.Unknown,
         }).pipe(T.Http({ method: "PUT", uri: "/api/setting/{key}", code: 200 })),
       ).annotate({ identifier: "PutSettingByKeyRequest" });
-    case 7:
+  }
+}
+function __c609(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slack_app_token: S.optional(S.NullOr(S.String).pipe(T.Body("slack-app-token"))),
@@ -24419,7 +26039,7 @@ function __c92(j: number): any {
       ).annotate({ identifier: "PutSlackSettingsRequest" });
   }
 }
-function __c93(j: number): any {
+function __c610(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24431,7 +26051,7 @@ function __c93(j: number): any {
           show_in_getting_started: S.optional(S.NullOr(S.Boolean)),
           owner_email: S.optional(S.NullOr(S.String)),
           owner_user_id: S.optional(S.NullOr(S.Number)),
-          ids: __S(9, __c1, 1),
+          ids: __S(5280, __c660, 0),
           display_name: S.optional(S.NullOr(S.String)),
           data_source: S.optional(S.NullOr(S.String)),
           caveats: S.optional(S.NullOr(S.String)),
@@ -24439,7 +26059,11 @@ function __c93(j: number): any {
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/table", code: 200 })),
       ).annotate({ identifier: "PutTableRequest" });
-    case 1:
+  }
+}
+function __c611(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24459,7 +26083,11 @@ function __c93(j: number): any {
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/table/{id}", code: 200 })),
       ).annotate({ identifier: "PutTableByIdRequest" });
-    case 2:
+  }
+}
+function __c612(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24468,7 +26096,11 @@ function __c93(j: number): any {
       ).annotate({
         identifier: "PutTableFieldsOrderRequest",
       });
-    case 3:
+  }
+}
+function __c613(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24480,7 +26112,11 @@ function __c93(j: number): any {
           name: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/timeline/{id}", code: 200 })),
       ).annotate({ identifier: "PutTimelineRequest" });
-    case 4:
+  }
+}
+function __c614(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24494,14 +26130,32 @@ function __c93(j: number): any {
           timezone: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/timeline-event/{id}", code: 200 })),
       ).annotate({ identifier: "PutTimelineEventRequest" });
-    case 5:
+  }
+}
+function __c615(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          database_ids: S.optional(__S(5280, __c660, 0)),
+          schema_ids: S.optional(__S(504, __c63, 0)),
+          table_ids: S.optional(__S(5280, __c660, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/data-studio/table/sync-schema", code: 200 })),
+      ).annotate({
+        identifier: "CreateDataStudioTableSyncSchemaRequest",
+      });
+  }
+}
+function __c616(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           owner_email: S.optional(S.NullOr(S.String)),
           owner_user_id: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.String),
-          tag_ids: S.optional(__S(9, __c1, 1)),
+          tag_ids: S.optional(__S(5280, __c660, 0)),
           collection_id: S.optional(S.NullOr(S.Number)),
           source: S.optional(S.Unknown),
           target: S.optional(S.Unknown),
@@ -24509,7 +26163,11 @@ function __c93(j: number): any {
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/transform/{id}", code: 200 })),
       ).annotate({ identifier: "PutTransformRequest" });
-    case 6:
+  }
+}
+function __c617(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           job_id: S.Number.pipe(T.Label()),
@@ -24517,11 +26175,15 @@ function __c93(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
           schedule: S.optional(S.String),
-          tag_ids: S.optional(__S(9, __c1, 1)),
+          tag_ids: S.optional(__S(5280, __c660, 0)),
           ui_display_type: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/api/transform-job/{job_id}", code: 200 })),
       ).annotate({ identifier: "PutTransformJobRequest" });
-    case 7:
+  }
+}
+function __c618(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
@@ -24531,7 +26193,7 @@ function __c93(j: number): any {
       });
   }
 }
-function __c94(j: number): any {
+function __c619(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24540,12 +26202,16 @@ function __c94(j: number): any {
           name: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/api/transform-tag/{tag_id}", code: 200 })),
       ).annotate({ identifier: "PutTransformTagRequest" });
-    case 1:
+  }
+}
+function __c620(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          login_attributes: S.optional(S.NullOr(__S(10, __c1, 2))),
-          user_group_memberships: S.optional(S.NullOr(__S(295, __c36, 7))),
+          login_attributes: S.optional(S.NullOr(__S(24, __c3, 0))),
+          user_group_memberships: S.optional(S.NullOr(__S(961, __c120, 1))),
           email: S.optional(S.NullOr(S.String)),
           is_data_analyst: S.optional(S.NullOr(S.Boolean)),
           locale: S.optional(S.NullOr(S.String)),
@@ -24556,7 +26222,11 @@ function __c94(j: number): any {
           first_name: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/user/{id}", code: 200 })),
       ).annotate({ identifier: "PutUserRequest" });
-    case 2:
+  }
+}
+function __c621(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -24573,14 +26243,22 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "PutUserKeyValueNamespaceKeyRequest",
       });
-    case 3:
+  }
+}
+function __c622(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           modal: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "PUT", uri: "/api/user/{id}/modal/{modal}", code: 200 })),
       ).annotate({ identifier: "PutUserModalRequest" });
-    case 4:
+  }
+}
+function __c623(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24588,27 +26266,90 @@ function __c94(j: number): any {
           password: S.String.pipe(T.SensitiveValue({})),
         }).pipe(T.Http({ method: "PUT", uri: "/api/user/{id}/password", code: 200 })),
       ).annotate({ identifier: "PutUserPasswordRequest" });
-    case 5:
+  }
+}
+function __c624(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "PUT", uri: "/api/user/{id}/reactivate", code: 200 })),
       ).annotate({ identifier: "PutUserReactivateRequest" });
-    case 6:
+  }
+}
+function __c625(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           model: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/api/bookmark/{model}/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateBookmarkRequest" });
-    case 7:
+  }
+}
+function __c626(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cards: S.optional(S.NullOr(__S(5025, __c628, 1))),
+          collection_id: S.optional(S.NullOr(S.Number)),
+          collection_position: S.optional(S.NullOr(S.Number)),
+          document: __S(5026, __c628, 2),
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/document", code: 200 })),
+      ).annotate({ identifier: "CreateDocumentRequest" });
+  }
+}
+function __c627(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c628(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          visualization_settings: S.Unknown,
+          entity_id: S.optional(S.NullOr(S.String)),
+          dataset_query: __S(1128, __c141, 0),
+          parameter_mappings: S.optional(S.NullOr(__S(5016, __c627, 0))),
+          name: S.String,
+          result_metadata: S.optional(S.NullOr(__S(5016, __c627, 0))),
+          cache_ttl: S.optional(S.NullOr(S.Number)),
+          display: S.String,
+          parameters: S.optional(S.NullOr(__S(1096, __c137, 0))),
+          description: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateDocumentRequestCardsValue",
+      });
+    case 1:
+      return S.Record(S.String, __S(5024, __c628, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "MetabaseDocumentsProseMirrorAst",
+      });
+  }
+}
+function __c629(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           card_id: S.Number.pipe(T.Label()),
           export_format: S.String.pipe(T.Label()),
           csv_include_bom: S.optional(S.Boolean),
           format_rows: S.optional(S.Boolean),
-          parameters: S.optional(S.NullOr(__S(55, __c6, 7))),
+          parameters: S.optional(S.NullOr(__S(1401, __c175, 1))),
           pivot_results: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/card/{card_id}/query/{export_format}", code: 200 }),
@@ -24616,7 +26357,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "UpdateCardQueryRequest" });
   }
 }
-function __c95(j: number): any {
+function __c630(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24627,7 +26368,7 @@ function __c95(j: number): any {
           export_format: S.String.pipe(T.Label()),
           csv_include_bom: S.optional(S.NullOr(S.Boolean)),
           format_rows: S.optional(S.Boolean),
-          parameters: S.optional(S.NullOr(__S(55, __c6, 7))),
+          parameters: S.optional(S.NullOr(__S(1401, __c175, 1))),
           pivot_results: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -24639,7 +26380,11 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "UpdateDashboardDashcardCardRequest",
       });
-    case 1:
+  }
+}
+function __c631(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dashboard_id: S.Number.pipe(T.Label()),
@@ -24647,7 +26392,7 @@ function __c95(j: number): any {
           card_id: S.Number.pipe(T.Label()),
           export_format: S.String.pipe(T.Label()),
           format_rows: S.optional(S.Boolean),
-          parameters: S.optional(S.NullOr(__S(55, __c6, 7))),
+          parameters: S.optional(S.NullOr(__S(1401, __c175, 1))),
           pivot_results: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -24659,7 +26404,11 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "UpdateDashboardDashcardCardQueryRequest",
       });
-    case 2:
+  }
+}
+function __c632(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataset_query: S.optional(S.NullOr(S.Unknown)),
@@ -24672,9 +26421,9 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItem",
       });
-    case 3:
-      return S.Array(__S(762, __c95, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(5056, __c632, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           dataset_query: S.optional(S.NullOr(S.Unknown)),
@@ -24687,34 +26436,34 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "UpdateDashboardSaveCollectionRequestDashcardsItemCard",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
           dashboard_tab_id: S.optional(S.NullOr(S.Number)),
-          parameter_mappings: S.optional(S.NullOr(__S(2, __c0, 2))),
+          parameter_mappings: S.optional(S.NullOr(__S(1105, __c138, 1))),
           size_x: S.optional(S.NullOr(S.Number)),
           size_y: S.optional(S.NullOr(S.Number)),
           col: S.optional(S.NullOr(S.Number)),
           row: S.optional(S.NullOr(S.Number)),
-          series: S.optional(S.NullOr(__S(763, __c95, 3))),
-          card: S.optional(S.NullOr(__S(764, __c95, 4))),
+          series: S.optional(S.NullOr(__S(5057, __c632, 1))),
+          card: S.optional(S.NullOr(__S(5058, __c632, 2))),
         }),
       ).annotate({
         identifier: "UpdateDashboardSaveCollectionRequestDashcardsItem",
       });
-    case 6:
-      return S.Array(__S(765, __c95, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(5059, __c632, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           parent_collection_id: S.Number.pipe(T.Label()),
           auto_apply_filters: S.optional(S.NullOr(S.Boolean)),
-          dashcards: S.optional(S.NullOr(__S(766, __c95, 6))),
+          dashcards: S.optional(S.NullOr(__S(5060, __c632, 4))),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(__S(8, __c1, 0))),
-          tabs: S.optional(S.NullOr(__S(87, __c10, 7))),
+          parameters: S.optional(S.NullOr(__S(1096, __c137, 0))),
+          tabs: S.optional(S.NullOr(__S(3289, __c411, 1))),
           width: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -24728,7 +26477,7 @@ function __c95(j: number): any {
       });
   }
 }
-function __c96(j: number): any {
+function __c633(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24741,19 +26490,27 @@ function __c96(j: number): any {
           visualization_settings: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/api/dataset/{export_format}", code: 200 })),
       ).annotate({ identifier: "UpdateDatasetRequest" });
-    case 1:
+  }
+}
+function __c634(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.String.pipe(T.Label()),
-          field_ids: S.optional(S.NullOr(__S(9, __c1, 1))),
-          parameter: __S(7, __c0, 7),
+          field_ids: S.optional(S.NullOr(__S(5280, __c660, 0))),
+          parameter: __S(1089, __c136, 1),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/dataset/parameter/search/{query}", code: 200 }),
         ),
       ).annotate({
         identifier: "UpdateDatasetParameterSearchRequest",
       });
-    case 2:
+  }
+}
+function __c635(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -24761,7 +26518,7 @@ function __c96(j: number): any {
           export_format: S.String.pipe(T.Label()),
           csv_include_bom: S.optional(S.NullOr(S.Boolean)),
           format_rows: S.optional(S.Boolean),
-          parameters: S.optional(S.NullOr(__S(55, __c6, 7))),
+          parameters: S.optional(S.NullOr(__S(1401, __c175, 1))),
           pivot_results: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -24773,14 +26530,18 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "UpdateDocumentCardRequest",
       });
-    case 3:
+  }
+}
+function __c636(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           document_id: S.Number.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
           export_format: S.String.pipe(T.Label()),
           format_rows: S.optional(S.Boolean),
-          parameters: S.optional(S.NullOr(__S(55, __c6, 7))),
+          parameters: S.optional(S.NullOr(__S(1401, __c175, 1))),
           pivot_results: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -24792,7 +26553,11 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "UpdateDocumentCardQueryRequest",
       });
-    case 4:
+  }
+}
+function __c637(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           product_type: S.String.pipe(T.Label()),
@@ -24802,7 +26567,11 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "UpdateEeCloudAddOnsRequest",
       });
-    case 5:
+  }
+}
+function __c638(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force_end_trial: S.optional(S.Boolean.pipe(T.Body("force-end-trial"))),
@@ -24812,16 +26581,37 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "UpdateEeCloudProxyRequestBody",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           operation_id: S.String.pipe(T.Label()),
-          body: S.optional(S.NullOr(__S(773, __c96, 5)).pipe(T.HttpBody())),
+          body: S.optional(S.NullOr(__S(5104, __c638, 0)).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/ee/cloud-proxy/{operation_id}", code: 200 })),
       ).annotate({
         identifier: "UpdateEeCloudProxyRequest",
       });
-    case 7:
+  }
+}
+function __c639(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          from_document_id: S.Number.pipe(T.Label()),
+          collection_id: S.optional(S.NullOr(S.Number)),
+          collection_position: S.optional(S.NullOr(S.Number)),
+          name: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/document/{from_document_id}/copy", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDocumentCopyRequest",
+      });
+  }
+}
+function __c640(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           schema_filters_patterns: S.String.pipe(T.Body("schema-filters-patterns")),
@@ -24830,15 +26620,11 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "UpdateEeDatabaseReplicationConnectionDatabaseRequestReplicationSchemaFilters",
       });
-  }
-}
-function __c97(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           database_id: S.Number.pipe(T.Label()),
-          replicationSchemaFilters: S.optional(__S(775, __c96, 7)),
+          replicationSchemaFilters: S.optional(__S(5120, __c640, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24849,7 +26635,11 @@ function __c97(j: number): any {
       ).annotate({
         identifier: "UpdateEeDatabaseReplicationConnectionDatabaseRequest",
       });
-    case 1:
+  }
+}
+function __c641(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           op: S.String,
@@ -24859,17 +26649,21 @@ function __c97(j: number): any {
       ).annotate({
         identifier: "UpdateEeScimUserRequestOperationsItem",
       });
+    case 1:
+      return S.Array(__S(5128, __c641, 0));
     case 2:
-      return S.Array(__S(777, __c97, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          Operations: __S(778, __c97, 2),
-          schemas: __S(3, __c0, 3),
+          Operations: __S(5129, __c641, 1),
+          schemas: __S(504, __c63, 0),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/ee/scim/v2/Users/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateEeScimUserRequest" });
-    case 4:
+  }
+}
+function __c642(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -24881,7 +26675,612 @@ function __c97(j: number): any {
       ).annotate({ identifier: "UpdateNotifyDbRequest" });
   }
 }
-
+function __c643(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          document_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/document/{document_id}/public-link", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDocumentPublicLinkRequest",
+      });
+  }
+}
+function __c644(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.Unknown,
+          input: S.optional(__S(24, __c3, 0)),
+          params: S.optional(__S(24, __c3, 0)),
+          scope: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/action-v2/execute", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeActionV2ExecuteRequest",
+      });
+  }
+}
+function __c645(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(24, __c3, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.Unknown,
+          inputs: __S(5160, __c645, 0),
+          params: S.optional(__S(24, __c3, 0)),
+          scope: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/action-v2/execute-bulk", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeActionV2ExecuteBulkRequest",
+      });
+  }
+}
+function __c646(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.Unknown,
+          input: S.optional(__S(24, __c3, 0)),
+          scope: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/action-v2/execute-form", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeActionV2ExecuteFormRequest",
+      });
+  }
+}
+function __c647(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          prompt: S.optional(S.NullOr(S.String)),
+          query: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v2/construct-query", code: 200 })),
+      ).annotate({
+        identifier: "CreateAgentConstructQueryRequest",
+      });
+  }
+}
+function __c648(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "POST", uri: "/api/ee/ai-controls/permissions/advanced", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEeAiControlsPermissionsAdvancedRequest",
+      });
+  }
+}
+function __c649(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "POST", uri: "/api/ee/audit-app/analytics-dev/export", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEeAuditAppAnalyticsDevExportRequest",
+      });
+  }
+}
+function __c650(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          file: __S(5208, __c651, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ee/content-translation/upload-dictionary",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEeContentTranslationUploadDictionaryRequest",
+      });
+  }
+}
+function __c651(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filename: S.String,
+          size: S.Number,
+          tempfile: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateEeContentTranslationUploadDictionaryRequestFile",
+      });
+  }
+}
+function __c652(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          file: __S(5208, __c651, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ee/custom-viz-plugin",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEeCustomVizPluginRequest",
+      });
+  }
+}
+function __c653(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dev_bundle_url: S.String,
+          identifier: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/custom-viz-plugin/dev", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeCustomVizPluginDevRequest",
+      });
+  }
+}
+function __c654(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/ee/custom-viz-plugin/{id}/refresh", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEeCustomVizPluginRefreshRequest",
+      });
+  }
+}
+function __c655(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schema_filters_patterns: S.String.pipe(T.Body("schema-filters-patterns")),
+          schema_filters_type: S.String.pipe(T.Body("schema-filters-type")),
+        }),
+      ).annotate({
+        identifier:
+          "CreateEeDatabaseReplicationConnectionDatabasePreviewRequestReplicationSchemaFilters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          database_id: S.Number.pipe(T.Label()),
+          replicationSchemaFilters: S.optional(__S(5240, __c655, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ee/database-replication/connection/{database_id}/preview",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEeDatabaseReplicationConnectionDatabasePreviewRequest",
+      });
+  }
+}
+function __c656(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.Unknown,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsItem",
+      });
+    case 1:
+      return S.Array(__S(5248, __c656, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          check_connection_details: S.optional(S.Boolean.pipe(T.Query())),
+          destinations: __S(5249, __c656, 1),
+          router_database_id: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/ee/database-routing/destination-database",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEeDatabaseRoutingDestinationDatabaseRequest",
+      });
+  }
+}
+function __c657(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection_id: S.Number,
+          database_ids: S.optional(__S(5280, __c660, 0)),
+          schema_ids: S.optional(__S(504, __c63, 0)),
+          table_ids: S.optional(__S(5280, __c660, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/ee/data-studio/table/publish-tables", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEeDataStudioTablePublishTableRequest",
+      });
+  }
+}
+function __c658(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          database_ids: S.optional(__S(5280, __c660, 0)),
+          schema_ids: S.optional(__S(504, __c63, 0)),
+          table_ids: S.optional(__S(5280, __c660, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/ee/data-studio/table/unpublish-tables", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEeDataStudioTableUnpublishTableRequest",
+      });
+  }
+}
+function __c659(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection_id: S.optional(S.NullOr(S.Number)),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          question_ids: S.optional(S.NullOr(__S(5280, __c660, 0))),
+        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/dashboard", code: 200 })),
+      ).annotate({
+        identifier: "CreateAgentDashboardRequest",
+      });
+  }
+}
+function __c660(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c661(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/gsheets/connection", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeGsheetsConnectionRequest",
+      });
+  }
+}
+function __c662(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "POST", uri: "/api/ee/gsheets/connection/sync", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEeGsheetsConnectionSyncRequest",
+      });
+  }
+}
+function __c663(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/ee/library", code: 200 })),
+      ).annotate({ identifier: "CreateEeLibraryRequest" });
+  }
+}
+function __c664(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/mfa/admin/remove", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeMfaAdminRemoveRequest",
+      });
+  }
+}
+function __c665(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/mfa/disable", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeMfaDisableRequest",
+      });
+  }
+}
+function __c666(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/mfa/enroll", code: 200 })),
+      ).annotate({ identifier: "CreateEeMfaEnrollRequest" });
+  }
+}
+function __c667(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/mfa/enroll/confirm", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeMfaEnrollConfirmRequest",
+      });
+  }
+}
+function __c668(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/mfa/recovery-codes", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeMfaRecoveryCodeRequest",
+      });
+  }
+}
+function __c669(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/remote-sync/create-branch", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeRemoteSyncCreateBranchRequest",
+      });
+  }
+}
+function __c670(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "POST", uri: "/api/ee/remote-sync/current-task/cancel", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEeRemoteSyncCurrentTaskCancelRequest",
+      });
+  }
+}
+function __c671(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/execute", code: 200 })),
+      ).annotate({
+        identifier: "CreateAgentExecuteRequest",
+      });
+  }
+}
+function __c672(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          branch: S.String,
+          force: S.optional(S.Boolean),
+          merge: S.optional(S.Boolean),
+          message: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/remote-sync/export", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeRemoteSyncExportRequest",
+      });
+  }
+}
+function __c673(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          branch: S.optional(S.String),
+          expected_branch: S.String,
+          force: S.optional(S.Boolean),
+          merge: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/remote-sync/import", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeRemoteSyncImportRequest",
+      });
+  }
+}
+function __c674(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.String,
+          new_branch: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/remote-sync/stash", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeRemoteSyncStashRequest",
+      });
+  }
+}
+function __c675(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          remote_sync_token: S.optional(S.NullOr(S.String).pipe(T.Body("remote-sync-token"))),
+          remote_sync_url: S.optional(S.NullOr(S.String).pipe(T.Body("remote-sync-url"))),
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/remote-sync/test-connection", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeRemoteSyncTestConnectionRequest",
+      });
+  }
+}
+function __c676(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          source_entity_id: S.Number,
+          source_entity_type: S.String,
+          target_entity_id: S.Number,
+          target_entity_type: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/ee/replacement/check-replace-source", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEeReplacementCheckReplaceSourceRequest",
+      });
+  }
+}
+function __c677(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          source_entity_id: S.Number,
+          source_entity_type: S.String,
+          target_entity_id: S.Number,
+          target_entity_type: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/replacement/replace-source", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeReplacementReplaceSourceRequest",
+      });
+  }
+}
+function __c678(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/replacement/runs/{id}/cancel", code: 200 })),
+      ).annotate({
+        identifier: "CreateEeReplacementRunCancelRequest",
+      });
+  }
+}
+function __c679(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          id: S.optional(S.String),
+          members: S.optional(__S(5441, __c680, 1)),
+          schemas: __S(504, __c63, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/scim/v2/Groups", code: 200 })),
+      ).annotate({ identifier: "CreateEeScimGroupRequest" });
+  }
+}
+function __c680(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _ref: S.optional(S.String.pipe(T.Body("$ref"))),
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateEeScimGroupRequestMembersItem",
+      });
+    case 1:
+      return S.Array(__S(5440, __c680, 0));
+  }
+}
+function __c681(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/api/ee/scim/api_key", code: 200 })),
+      ).annotate({ identifier: "CreateEeScimKeyRequest" });
+  }
+}
+function __c682(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.optional(S.Boolean),
+          emails: __S(5465, __c683, 1),
+          groups: S.optional(__S(5467, __c683, 3)),
+          id: S.optional(S.String),
+          locale: S.optional(S.NullOr(S.String)),
+          name: __S(5468, __c683, 4),
+          schemas: __S(504, __c63, 0),
+          userName: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/api/ee/scim/v2/Users", code: 200 })),
+      ).annotate({ identifier: "CreateEeScimUserRequest" });
+  }
+}
+function __c683(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          primary: S.optional(S.Boolean),
+          type: S.optional(S.String),
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateEeScimUserRequestEmailsItem",
+      });
+    case 1:
+      return S.Array(__S(5464, __c683, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _ref: S.optional(S.String.pipe(T.Body("$ref"))),
+          display: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateEeScimUserRequestGroupsItem",
+      });
+    case 3:
+      return S.Array(__S(5466, __c683, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          familyName: S.String,
+          givenName: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateEeScimUserRequestName",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -721,8 +721,8 @@ export const cancelFoldersLocationsOperations: API.OperationMethod<
   CancelFoldersLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelFoldersLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(736, __c23, 0) as any as S.Schema<CancelFoldersLocationsOperationsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -741,8 +741,8 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(800, __c25, 0) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -761,8 +761,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(832, __c26, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -782,11 +782,11 @@ export const createFoldersLocationsGlobalPolicyOrchestrators: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    47,
-    __c5,
-    7,
+    864,
+    __c27,
+    0,
   ) as any as S.Schema<CreateFoldersLocationsGlobalPolicyOrchestratorsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  output: __S(928, __c29, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -806,11 +806,11 @@ export const createOrganizationsLocationsGlobalPolicyOrchestrators: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    1056,
+    __c33,
+    0,
   ) as any as S.Schema<CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  output: __S(928, __c29, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -830,11 +830,11 @@ export const createProjectsLocationsGlobalPolicyOrchestrators: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    1088,
+    __c34,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsGlobalPolicyOrchestratorsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  output: __S(928, __c29, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -853,12 +853,8 @@ export const deleteFoldersLocationsGlobalPolicyOrchestrators: API.OperationMetho
   DeleteFoldersLocationsGlobalPolicyOrchestratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    51,
-    __c6,
-    3,
-  ) as any as S.Schema<DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -877,8 +873,8 @@ export const deleteFoldersLocationsOperations: API.OperationMethod<
   DeleteFoldersLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteFoldersLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteFoldersLocationsOperationsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -898,11 +894,11 @@ export const deleteOrganizationsLocationsGlobalPolicyOrchestrators: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    53,
-    __c6,
-    5,
+    64,
+    __c2,
+    0,
   ) as any as S.Schema<DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  output: __S(928, __c29, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -921,8 +917,8 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -942,11 +938,11 @@ export const deleteProjectsLocationsGlobalPolicyOrchestrators: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    128,
+    __c4,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  output: __S(928, __c29, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -965,8 +961,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -980,8 +976,8 @@ export const getFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   GetFoldersLocationsGlobalPolicyOrchestratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetFoldersLocationsGlobalPolicyOrchestratorsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GoogleCloudOsconfigV2beta__PolicyOrchestrator>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetFoldersLocationsGlobalPolicyOrchestratorsRequest>,
+  output: __S(1030, __c32, 6) as any as S.Schema<GoogleCloudOsconfigV2beta__PolicyOrchestrator>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -995,8 +991,8 @@ export const getFoldersLocationsOperations: API.OperationMethod<
   GetFoldersLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetFoldersLocationsOperationsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetFoldersLocationsOperationsRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1014,11 +1010,11 @@ export const getOrganizationsLocationsGlobalPolicyOrchestrators: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    59,
-    __c7,
-    3,
+    256,
+    __c8,
+    0,
   ) as any as S.Schema<GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GoogleCloudOsconfigV2beta__PolicyOrchestrator>,
+  output: __S(1030, __c32, 6) as any as S.Schema<GoogleCloudOsconfigV2beta__PolicyOrchestrator>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1032,8 +1028,8 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1047,8 +1043,12 @@ export const getProjectsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
   GetProjectsLocationsGlobalPolicyOrchestratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetProjectsLocationsGlobalPolicyOrchestratorsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GoogleCloudOsconfigV2beta__PolicyOrchestrator>,
+  input: __S(
+    320,
+    __c10,
+    0,
+  ) as any as S.Schema<GetProjectsLocationsGlobalPolicyOrchestratorsRequest>,
+  output: __S(1030, __c32, 6) as any as S.Schema<GoogleCloudOsconfigV2beta__PolicyOrchestrator>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1062,8 +1062,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1078,10 +1078,14 @@ export const listFoldersLocationsGlobalPolicyOrchestrators: API.PaginatedOperati
   GcpOpContext,
   GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListFoldersLocationsGlobalPolicyOrchestratorsRequest>,
+  input: __S(
+    384,
+    __c12,
+    0,
+  ) as any as S.Schema<ListFoldersLocationsGlobalPolicyOrchestratorsRequest>,
   output: __S(
-    65,
-    __c8,
+    417,
+    __c13,
     1,
   ) as any as S.Schema<GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -1099,8 +1103,8 @@ export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListFoldersLocationsOperationsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListFoldersLocationsOperationsRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1120,13 +1124,13 @@ export const listOrganizationsLocationsGlobalPolicyOrchestrators: API.PaginatedO
   GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    69,
-    __c8,
-    5,
+    512,
+    __c16,
+    0,
   ) as any as S.Schema<ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest>,
   output: __S(
-    65,
-    __c8,
+    417,
+    __c13,
     1,
   ) as any as S.Schema<GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -1144,8 +1148,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1161,10 +1165,14 @@ export const listProjectsLocationsGlobalPolicyOrchestrators: API.PaginatedOperat
   GcpOpContext,
   GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListProjectsLocationsGlobalPolicyOrchestratorsRequest>,
+  input: __S(
+    576,
+    __c18,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsGlobalPolicyOrchestratorsRequest>,
   output: __S(
-    65,
-    __c8,
+    417,
+    __c13,
     1,
   ) as any as S.Schema<GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -1182,8 +1190,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1203,8 +1211,12 @@ export const patchFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod
   PatchFoldersLocationsGlobalPolicyOrchestratorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<PatchFoldersLocationsGlobalPolicyOrchestratorsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  input: __S(
+    640,
+    __c20,
+    0,
+  ) as any as S.Schema<PatchFoldersLocationsGlobalPolicyOrchestratorsRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1224,11 +1236,11 @@ export const patchOrganizationsLocationsGlobalPolicyOrchestrators: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    74,
-    __c9,
-    2,
+    672,
+    __c21,
+    0,
   ) as any as S.Schema<PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  output: __S(928, __c29, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1248,11 +1260,11 @@ export const patchProjectsLocationsGlobalPolicyOrchestrators: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    75,
-    __c9,
-    3,
+    704,
+    __c22,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsGlobalPolicyOrchestratorsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  output: __S(928, __c29, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1262,495 +1274,6 @@ export const patchProjectsLocationsGlobalPolicyOrchestrators: API.OperationMetho
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta/{+name}:cancel",
-            baseUrl: "https://osconfig.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelFoldersLocationsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta/{+name}:cancel",
-            baseUrl: "https://osconfig.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelOrganizationsLocationsOperationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta/{+name}:cancel",
-            baseUrl: "https://osconfig.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          includedProjects: S.optional(__S(5, __c0, 5)),
-          includedFolders: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          includedLocations: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceHierarchySelector: S.optional(__S(6, __c0, 6)),
-          locationSelector: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOsconfigV2beta_OrchestrationScope_Selector",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          selectors: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOsconfigV2beta__OrchestrationScope",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          osShortName: S.optional(S.String),
-          osVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OSPolicyInventoryFilter" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          sha256Checksum: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourceFileRemote",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          generation: S.optional(S.String),
-          bucket: S.optional(S.String),
-          object: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OSPolicyResourceFileGcs" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allowInsecure: S.optional(S.Boolean),
-          remote: S.optional(__S(13, __c1, 5)),
-          gcs: S.optional(__S(14, __c1, 6)),
-          localPath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OSPolicyResourceFile" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          interpreter: S.optional(S.String),
-          args: S.optional(__S(5, __c0, 5)),
-          file: S.optional(__S(15, __c1, 7)),
-          outputFilePath: S.optional(S.String),
-          script: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourceExecResourceExec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enforce: S.optional(__S(16, __c2, 0)),
-          validate: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourceExecResource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          path: S.optional(S.String),
-          state: S.optional(S.String),
-          file: S.optional(__S(15, __c1, 7)),
-          permissions: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourceFileResource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourceRepositoryResourceGooRepository",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          gpgKey: S.optional(S.String),
-          uri: S.optional(S.String),
-          distribution: S.optional(S.String),
-          archiveType: S.optional(S.String),
-          components: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourceRepositoryResourceAptRepository",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          gpgKeys: S.optional(__S(5, __c0, 5)),
-          displayName: S.optional(S.String),
-          baseUrl: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourceRepositoryResourceYumRepository",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          baseUrl: S.optional(S.String),
-          gpgKeys: S.optional(__S(5, __c0, 5)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourceRepositoryResourceZypperRepository",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          goo: S.optional(__S(19, __c2, 3)),
-          apt: S.optional(__S(20, __c2, 4)),
-          yum: S.optional(__S(21, __c2, 5)),
-          zypper: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourceRepositoryResource",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourcePackageResourceMSI",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourcePackageResourceAPT",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pullDeps: S.optional(S.Boolean),
-          source: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourcePackageResourceDeb",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          msi: S.optional(__S(24, __c3, 0)),
-          desiredState: S.optional(S.String),
-          apt: S.optional(__S(25, __c3, 1)),
-          zypper: S.optional(__S(25, __c3, 1)),
-          googet: S.optional(__S(25, __c3, 1)),
-          deb: S.optional(__S(26, __c3, 2)),
-          yum: S.optional(__S(25, __c3, 1)),
-          rpm: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "OSPolicyResourcePackageResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          exec: S.optional(__S(17, __c2, 1)),
-          file: S.optional(__S(18, __c2, 2)),
-          repository: S.optional(__S(23, __c2, 7)),
-          id: S.optional(S.String),
-          pkg: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "OSPolicyResource" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          inventoryFilters: S.optional(__S(12, __c1, 4)),
-          resources: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "OSPolicyResourceGroup" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowNoResourceGroupMatch: S.optional(S.Boolean),
-          resourceGroups: S.optional(__S(31, __c3, 7)),
-          description: S.optional(S.String),
-          id: S.optional(S.String),
-          mode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OSPolicy" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fixed: S.optional(S.Number),
-          percent: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "FixedOrPercent" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          disruptionBudget: S.optional(__S(34, __c4, 2)),
-          minWaitDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OSPolicyAssignmentRollout",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "OSPolicyAssignmentLabelSet",
-      });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          inclusionLabels: S.optional(__S(37, __c4, 5)),
-          exclusionLabels: S.optional(__S(37, __c4, 5)),
-          all: S.optional(S.Boolean),
-          inventories: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "OSPolicyAssignmentInstanceFilter",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          revisionCreateTime: S.optional(S.String),
-          rolloutState: S.optional(S.String),
-          baseline: S.optional(S.Boolean),
-          osPolicies: S.optional(__S(33, __c4, 1)),
-          uid: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          rollout: S.optional(__S(35, __c4, 3)),
-          reconciling: S.optional(S.Boolean),
-          instanceFilter: S.optional(__S(38, __c4, 6)),
-          revisionId: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "OSPolicyAssignment" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          osPolicyAssignmentV1Payload: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOsconfigV2beta__OrchestratedResource",
-      });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(42, __c5, 2)),
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          finishTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-          progress: S.optional(S.Number),
-          iterationId: S.optional(S.String),
-          failedActions: S.optional(S.String),
-          state: S.optional(S.String),
-          performedActions: S.optional(S.String),
-          error: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          previousIterationState: S.optional(__S(44, __c5, 4)),
-          currentIterationState: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(4, __c0, 4)),
-          orchestrationScope: S.optional(__S(10, __c1, 2)),
-          etag: S.optional(S.String),
-          orchestratedResource: S.optional(__S(40, __c5, 0)),
-          action: S.optional(S.String),
-          createTime: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          orchestrationState: S.optional(__S(45, __c5, 5)),
-          state: S.optional(S.String),
-          reconciling: S.optional(S.Boolean),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOsconfigV2beta__PolicyOrchestrator",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          policyOrchestratorId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta/{+parent}/policyOrchestrators",
-            baseUrl: "https://osconfig.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateFoldersLocationsGlobalPolicyOrchestratorsRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(41, __c5, 1)),
-          name: S.optional(S.String),
-          error: S.optional(__S(43, __c5, 3)),
-          metadata: S.optional(__S(41, __c5, 1)),
-          done: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          policyOrchestratorId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta/{+parent}/policyOrchestrators",
-            baseUrl: "https://osconfig.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          policyOrchestratorId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta/{+parent}/policyOrchestrators",
-            baseUrl: "https://osconfig.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsGlobalPolicyOrchestratorsRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String.pipe(T.Query())),
@@ -1766,7 +1289,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1780,7 +1307,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteFoldersLocationsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1796,7 +1327,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1810,7 +1345,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -1828,7 +1367,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1844,7 +1383,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1858,7 +1401,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetFoldersLocationsGlobalPolicyOrchestratorsRequest",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1872,7 +1419,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetFoldersLocationsOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1886,7 +1437,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1900,7 +1455,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1914,7 +1473,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsGlobalPolicyOrchestratorsRequest",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1928,7 +1491,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -1948,21 +1515,25 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(46, __c5, 6));
+      return S.Array(__S(1030, __c32, 6));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(5, __c0, 5)),
-          policyOrchestrators: S.optional(__S(64, __c8, 0)),
+          unreachable: S.optional(__S(960, __c30, 0)),
+          policyOrchestrators: S.optional(__S(416, __c13, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1980,17 +1551,25 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListFoldersLocationsOperationsRequest",
       });
-    case 3:
-      return S.Array(__S(48, __c6, 0));
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(928, __c29, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(5, __c0, 5)),
-          operations: S.optional(__S(67, __c8, 3)),
+          unreachable: S.optional(__S(960, __c30, 0)),
+          operations: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2008,7 +1587,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2026,7 +1609,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2046,7 +1633,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2066,12 +1653,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1030, __c32, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2082,12 +1673,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PatchFoldersLocationsGlobalPolicyOrchestratorsRequest",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1030, __c32, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2098,12 +1693,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1030, __c32, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2116,7 +1715,519 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta/{+name}:cancel",
+            baseUrl: "https://osconfig.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelFoldersLocationsOperationsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta/{+name}:cancel",
+            baseUrl: "https://osconfig.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelOrganizationsLocationsOperationsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(768, __c24, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta/{+name}:cancel",
+            baseUrl: "https://osconfig.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyOrchestratorId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1030, __c32, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta/{+parent}/policyOrchestrators",
+            baseUrl: "https://osconfig.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFoldersLocationsGlobalPolicyOrchestratorsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(896, __c28, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(897, __c28, 1)),
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(896, __c28, 0)),
+          name: S.optional(S.String),
+          error: S.optional(__S(898, __c28, 2)),
+          metadata: S.optional(__S(896, __c28, 0)),
+          done: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          includedProjects: S.optional(__S(960, __c30, 0)),
+          includedFolders: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOsconfigV2beta_OrchestrationScope_ResourceHierarchySelector",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          includedLocations: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOsconfigV2beta_OrchestrationScope_LocationSelector",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resourceHierarchySelector: S.optional(__S(993, __c31, 1)),
+          locationSelector: S.optional(__S(994, __c31, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOsconfigV2beta_OrchestrationScope_Selector",
+      });
+    case 4:
+      return S.Array(__S(995, __c31, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          selectors: S.optional(__S(996, __c31, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOsconfigV2beta__OrchestrationScope",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          osShortName: S.optional(S.String),
+          osVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OSPolicyInventoryFilter" });
+    case 7:
+      return S.Array(__S(998, __c31, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          sha256Checksum: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourceFileRemote",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          generation: S.optional(S.String),
+          bucket: S.optional(S.String),
+          object: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OSPolicyResourceFileGcs" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          allowInsecure: S.optional(S.Boolean),
+          remote: S.optional(__S(1000, __c31, 8)),
+          gcs: S.optional(__S(1001, __c31, 9)),
+          localPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OSPolicyResourceFile" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          interpreter: S.optional(S.String),
+          args: S.optional(__S(960, __c30, 0)),
+          file: S.optional(__S(1002, __c31, 10)),
+          outputFilePath: S.optional(S.String),
+          script: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourceExecResourceExec",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          enforce: S.optional(__S(1003, __c31, 11)),
+          validate: S.optional(__S(1003, __c31, 11)),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourceExecResource",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          path: S.optional(S.String),
+          state: S.optional(S.String),
+          file: S.optional(__S(1002, __c31, 10)),
+          permissions: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourceFileResource",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourceRepositoryResourceGooRepository",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          gpgKey: S.optional(S.String),
+          uri: S.optional(S.String),
+          distribution: S.optional(S.String),
+          archiveType: S.optional(S.String),
+          components: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourceRepositoryResourceAptRepository",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          gpgKeys: S.optional(__S(960, __c30, 0)),
+          displayName: S.optional(S.String),
+          baseUrl: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourceRepositoryResourceYumRepository",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          baseUrl: S.optional(S.String),
+          gpgKeys: S.optional(__S(960, __c30, 0)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourceRepositoryResourceZypperRepository",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          goo: S.optional(__S(1006, __c31, 14)),
+          apt: S.optional(__S(1007, __c31, 15)),
+          yum: S.optional(__S(1008, __c31, 16)),
+          zypper: S.optional(__S(1009, __c31, 17)),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourceRepositoryResource",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(__S(1002, __c31, 10)),
+          properties: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourcePackageResourceMSI",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourcePackageResourceAPT",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          pullDeps: S.optional(S.Boolean),
+          source: S.optional(__S(1002, __c31, 10)),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourcePackageResourceDeb",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          msi: S.optional(__S(1011, __c31, 19)),
+          desiredState: S.optional(S.String),
+          apt: S.optional(__S(1012, __c31, 20)),
+          zypper: S.optional(__S(1012, __c31, 20)),
+          googet: S.optional(__S(1012, __c31, 20)),
+          deb: S.optional(__S(1013, __c31, 21)),
+          yum: S.optional(__S(1012, __c31, 20)),
+          rpm: S.optional(__S(1013, __c31, 21)),
+        }),
+      ).annotate({
+        identifier: "OSPolicyResourcePackageResource",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          exec: S.optional(__S(1004, __c31, 12)),
+          file: S.optional(__S(1005, __c31, 13)),
+          repository: S.optional(__S(1010, __c31, 18)),
+          id: S.optional(S.String),
+          pkg: S.optional(__S(1014, __c31, 22)),
+        }),
+      ).annotate({ identifier: "OSPolicyResource" });
+    case 24:
+      return S.Array(__S(1015, __c31, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          inventoryFilters: S.optional(__S(999, __c31, 7)),
+          resources: S.optional(__S(1016, __c31, 24)),
+        }),
+      ).annotate({ identifier: "OSPolicyResourceGroup" });
+    case 26:
+      return S.Array(__S(1017, __c31, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          allowNoResourceGroupMatch: S.optional(S.Boolean),
+          resourceGroups: S.optional(__S(1018, __c31, 26)),
+          description: S.optional(S.String),
+          id: S.optional(S.String),
+          mode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OSPolicy" });
+    case 28:
+      return S.Array(__S(1019, __c31, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          fixed: S.optional(S.Number),
+          percent: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FixedOrPercent" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          disruptionBudget: S.optional(__S(1021, __c31, 29)),
+          minWaitDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OSPolicyAssignmentRollout",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({
+        identifier: "OSPolicyAssignmentLabelSet",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1023, __c31, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inclusionLabels: S.optional(__S(1024, __c32, 0)),
+          exclusionLabels: S.optional(__S(1024, __c32, 0)),
+          all: S.optional(S.Boolean),
+          inventories: S.optional(__S(999, __c31, 7)),
+        }),
+      ).annotate({
+        identifier: "OSPolicyAssignmentInstanceFilter",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          revisionCreateTime: S.optional(S.String),
+          rolloutState: S.optional(S.String),
+          baseline: S.optional(S.Boolean),
+          osPolicies: S.optional(__S(1020, __c31, 28)),
+          uid: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          rollout: S.optional(__S(1022, __c31, 30)),
+          reconciling: S.optional(S.Boolean),
+          instanceFilter: S.optional(__S(1025, __c32, 1)),
+          revisionId: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "OSPolicyAssignment" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          osPolicyAssignmentV1Payload: S.optional(__S(1026, __c32, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOsconfigV2beta__OrchestratedResource",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          finishTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+          progress: S.optional(S.Number),
+          iterationId: S.optional(S.String),
+          failedActions: S.optional(S.String),
+          state: S.optional(S.String),
+          performedActions: S.optional(S.String),
+          error: S.optional(__S(898, __c28, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationState",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          previousIterationState: S.optional(__S(1028, __c32, 4)),
+          currentIterationState: S.optional(__S(1028, __c32, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOsconfigV2beta_PolicyOrchestrator_OrchestrationState",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(992, __c31, 0)),
+          orchestrationScope: S.optional(__S(997, __c31, 5)),
+          etag: S.optional(S.String),
+          orchestratedResource: S.optional(__S(1027, __c32, 3)),
+          action: S.optional(S.String),
+          createTime: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          orchestrationState: S.optional(__S(1029, __c32, 5)),
+          state: S.optional(S.String),
+          reconciling: S.optional(S.Boolean),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOsconfigV2beta__PolicyOrchestrator",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          policyOrchestratorId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1030, __c32, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta/{+parent}/policyOrchestrators",
+            baseUrl: "https://osconfig.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyOrchestratorId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1030, __c32, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta/{+parent}/policyOrchestrators",
+            baseUrl: "https://osconfig.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsGlobalPolicyOrchestratorsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

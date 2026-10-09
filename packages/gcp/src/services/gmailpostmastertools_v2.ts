@@ -498,8 +498,8 @@ export const batchQueryDomainStats: API.OperationMethod<
   BatchQueryDomainStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<BatchQueryDomainStatsRequest_>,
-  output: __S(25, __c3, 1) as any as S.Schema<BatchQueryDomainStatsResponse>,
+  input: __S(290, __c9, 2) as any as S.Schema<BatchQueryDomainStatsRequest_>,
+  output: __S(296, __c9, 8) as any as S.Schema<BatchQueryDomainStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -519,8 +519,8 @@ export const createDomains: API.OperationMethod<
   CreateDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateDomainsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Domain>,
+  input: __S(353, __c11, 1) as any as S.Schema<CreateDomainsRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -540,8 +540,8 @@ export const createDomainsUsers: API.OperationMethod<
   CreateDomainsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateDomainsUsersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<User>,
+  input: __S(417, __c13, 1) as any as S.Schema<CreateDomainsUsersRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -561,8 +561,8 @@ export const deleteDomains: API.OperationMethod<
   DeleteDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteDomainsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteDomainsRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -582,8 +582,8 @@ export const deleteDomainsUsers: API.OperationMethod<
   DeleteDomainsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteDomainsUsersRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteDomainsUsersRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -601,8 +601,8 @@ export const getComplianceStatusDomains: API.OperationMethod<
   GetComplianceStatusDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetComplianceStatusDomainsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DomainComplianceStatus>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetComplianceStatusDomainsRequest>,
+  output: __S(8, __c0, 8) as any as S.Schema<DomainComplianceStatus>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -616,8 +616,8 @@ export const getDomains: API.OperationMethod<
   GetDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetDomainsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Domain>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetDomainsRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -631,8 +631,8 @@ export const getDomainsUsers: API.OperationMethod<
   GetDomainsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetDomainsUsersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<User>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetDomainsUsersRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -650,8 +650,8 @@ export const getVerificationTokenDomains: API.OperationMethod<
   GetVerificationTokenDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetVerificationTokenDomainsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DomainVerificationToken>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetVerificationTokenDomainsRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<DomainVerificationToken>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -666,8 +666,8 @@ export const listDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListDomainsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListDomainsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListDomainsRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<ListDomainsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -683,8 +683,8 @@ export const listDomainsUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListDomainsUsersRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListUsersResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListDomainsUsersRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<ListUsersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -705,8 +705,8 @@ export const patchDomainsUsers: API.OperationMethod<
   PatchDomainsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<PatchDomainsUsersRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<User>,
+  input: __S(192, __c6, 0) as any as S.Schema<PatchDomainsUsersRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -726,8 +726,8 @@ export const queryDomainsDomainStats: API.OperationMethod<
   QueryDomainsDomainStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<QueryDomainsDomainStatsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<QueryDomainStatsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<QueryDomainsDomainStatsRequest>,
+  output: __S(336, __c10, 16) as any as S.Schema<QueryDomainStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -747,8 +747,8 @@ export const verifyDomains: API.OperationMethod<
   VerifyDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<VerifyDomainsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<VerifyDomainResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<VerifyDomainsRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<VerifyDomainResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -758,270 +758,6 @@ export const verifyDomains: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          day: S.optional(S.Number),
-          year: S.optional(S.Number),
-          month: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "Gmailpostmastertools_Date",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(__S(0, __c0, 0)),
-          end: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "DateRange" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dateRanges: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "DateRanges" });
-    case 4:
-      return S.Array(__S(0, __c0, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dates: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "DateList" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dateRanges: S.optional(__S(3, __c0, 3)),
-          dateList: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "TimeQuery" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          standardMetric: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BaseMetric" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String),
-          baseMetric: S.optional(__S(7, __c0, 7)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricDefinition" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(S.String),
-          timeQuery: S.optional(__S(6, __c0, 6)),
-          pageToken: S.optional(S.String),
-          pageSize: S.optional(S.Number),
-          aggregationGranularity: S.optional(S.String),
-          metricDefinitions: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "QueryDomainStatsRequest" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "BatchQueryDomainStatsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/domainStats:batchQuery",
-            baseUrl: "https://gmailpostmastertools.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchQueryDomainStatsRequest_",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(15, __c1, 7)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "StringList" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          intValue: S.optional(S.String),
-          doubleValue: S.optional(S.Number),
-          stringValue: S.optional(S.String),
-          floatValue: S.optional(S.Number),
-          stringList: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "StatisticValue" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          metric: S.optional(S.String),
-          name: S.optional(S.String),
-          date: S.optional(__S(0, __c0, 0)),
-          value: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "DomainStat" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          domainStats: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "QueryDomainStatsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(16, __c2, 0)),
-          response: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchQueryDomainStatsResult",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchQueryDomainStatsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domainId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateDomainRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/domains",
-            baseUrl: "https://gmailpostmastertools.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateDomainsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          lastVerifyTime: S.optional(S.String),
-          verificationState: S.optional(S.String),
-          permission: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Domain" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.optional(S.String),
-          permission: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateUserRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/users",
-            baseUrl: "https://gmailpostmastertools.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDomainsUsersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          user: S.optional(S.String),
-          name: S.optional(S.String),
-          accessGranter: S.optional(S.String),
-          permission: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "User" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v2/{+name}",
-            baseUrl: "https://gmailpostmastertools.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDomainsRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v2/{+name}",
-            baseUrl: "https://gmailpostmastertools.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDomainsUsersRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1035,69 +771,69 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetComplianceStatusDomainsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComplianceStatus" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(36, __c4, 4)),
+          status: S.optional(__S(1, __c0, 1)),
           reason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OneClickUnsubscribeVerdict",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(36, __c4, 4)),
+          status: S.optional(__S(1, __c0, 1)),
           requirement: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComplianceRowData" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(__S(36, __c4, 4)),
+          state: S.optional(__S(1, __c0, 1)),
           reason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeliverabilityStatusVerdict",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(36, __c4, 4)),
+          status: S.optional(__S(1, __c0, 1)),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "HonorUnsubscribeVerdict" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           domainId: S.optional(S.String),
-          oneClickUnsubscribeVerdict: S.optional(__S(37, __c4, 5)),
-          rowData: S.optional(__S(39, __c4, 7)),
-          deliverabilityStatusVerdict: S.optional(__S(40, __c5, 0)),
-          honorUnsubscribeVerdict: S.optional(__S(41, __c5, 1)),
+          oneClickUnsubscribeVerdict: S.optional(__S(2, __c0, 2)),
+          rowData: S.optional(__S(4, __c0, 4)),
+          deliverabilityStatusVerdict: S.optional(__S(5, __c0, 5)),
+          honorUnsubscribeVerdict: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "DomainComplianceData" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          complianceData: S.optional(__S(42, __c5, 2)),
-          subdomainComplianceData: S.optional(__S(42, __c5, 2)),
+          complianceData: S.optional(__S(7, __c0, 7)),
+          subdomainComplianceData: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "DomainComplianceStatus" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1109,7 +845,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDomainsRequest" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1121,7 +861,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDomainsUsersRequest" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1136,7 +880,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetVerificationTokenDomainsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           verificationMethod: S.optional(S.String),
@@ -1146,7 +890,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "DomainVerificationToken" });
   }
 }
-function __c6(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1162,15 +906,19 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListDomainsRequest" });
     case 1:
-      return S.Array(__S(28, __c3, 4));
+      return S.Array(__S(384, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(49, __c6, 1)),
+          domains: S.optional(__S(129, __c4, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDomainsResponse" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1184,21 +932,25 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDomainsUsersRequest" });
-    case 4:
-      return S.Array(__S(31, __c3, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(__S(52, __c6, 4)),
+          users: S.optional(__S(161, __c5, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1207,11 +959,15 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchDomainsUsersRequest" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(330, __c10, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1224,7 +980,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1236,7 +992,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1247,7 +1003,290 @@ function __c7(j: number): any {
       ).annotate({ identifier: "VerifyDomainsRequest" });
   }
 }
-
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(330, __c10, 10));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchQueryDomainStatsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(289, __c9, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/domainStats:batchQuery",
+            baseUrl: "https://gmailpostmastertools.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchQueryDomainStatsRequest_",
+      });
+    case 3:
+      return S.Record(S.String, S.Unknown);
+    case 4:
+      return S.Array(__S(291, __c9, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(292, __c9, 4)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(293, __c9, 5)),
+          response: S.optional(__S(336, __c10, 16)),
+        }),
+      ).annotate({
+        identifier: "BatchQueryDomainStatsResult",
+      });
+    case 7:
+      return S.Array(__S(294, __c9, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(295, __c9, 7)),
+        }),
+      ).annotate({
+        identifier: "BatchQueryDomainStatsResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          day: S.optional(S.Number),
+          year: S.optional(S.Number),
+          month: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "Gmailpostmastertools_Date",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(__S(320, __c10, 0)),
+          end: S.optional(__S(320, __c10, 0)),
+        }),
+      ).annotate({ identifier: "DateRange" });
+    case 2:
+      return S.Array(__S(321, __c10, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dateRanges: S.optional(__S(322, __c10, 2)),
+        }),
+      ).annotate({ identifier: "DateRanges" });
+    case 4:
+      return S.Array(__S(320, __c10, 0));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          dates: S.optional(__S(324, __c10, 4)),
+        }),
+      ).annotate({ identifier: "DateList" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dateRanges: S.optional(__S(323, __c10, 3)),
+          dateList: S.optional(__S(325, __c10, 5)),
+        }),
+      ).annotate({ identifier: "TimeQuery" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          standardMetric: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BaseMetric" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+          baseMetric: S.optional(__S(327, __c10, 7)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricDefinition" });
+    case 9:
+      return S.Array(__S(328, __c10, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.optional(S.String),
+          timeQuery: S.optional(__S(326, __c10, 6)),
+          pageToken: S.optional(S.String),
+          pageSize: S.optional(S.Number),
+          aggregationGranularity: S.optional(S.String),
+          metricDefinitions: S.optional(__S(329, __c10, 9)),
+        }),
+      ).annotate({ identifier: "QueryDomainStatsRequest" });
+    case 11:
+      return S.Array(S.String);
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(331, __c10, 11)),
+        }),
+      ).annotate({ identifier: "StringList" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          intValue: S.optional(S.String),
+          doubleValue: S.optional(S.Number),
+          stringValue: S.optional(S.String),
+          floatValue: S.optional(S.Number),
+          stringList: S.optional(__S(332, __c10, 12)),
+        }),
+      ).annotate({ identifier: "StatisticValue" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          metric: S.optional(S.String),
+          name: S.optional(S.String),
+          date: S.optional(__S(320, __c10, 0)),
+          value: S.optional(__S(333, __c10, 13)),
+        }),
+      ).annotate({ identifier: "DomainStat" });
+    case 15:
+      return S.Array(__S(334, __c10, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          domainStats: S.optional(__S(335, __c10, 15)),
+        }),
+      ).annotate({ identifier: "QueryDomainStatsResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateDomainRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(352, __c11, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/domains",
+            baseUrl: "https://gmailpostmastertools.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateDomainsRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          lastVerifyTime: S.optional(S.String),
+          verificationState: S.optional(S.String),
+          permission: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Domain" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String),
+          permission: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateUserRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(416, __c13, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/users",
+            baseUrl: "https://gmailpostmastertools.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDomainsUsersRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          user: S.optional(S.String),
+          name: S.optional(S.String),
+          accessGranter: S.optional(S.String),
+          permission: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "User" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v2/{+name}",
+            baseUrl: "https://gmailpostmastertools.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDomainsRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v2/{+name}",
+            baseUrl: "https://gmailpostmastertools.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDomainsUsersRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

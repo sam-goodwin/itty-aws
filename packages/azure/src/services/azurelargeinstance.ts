@@ -584,7 +584,7 @@ export const AzureLargeInstanceShutdown: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AzureLargeInstanceShutdownRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AzureLargeInstanceShutdownResponse>,
+  output: __S(23, __c1, 7) as any as S.Schema<AzureLargeInstanceShutdownResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -598,8 +598,8 @@ export const GetAzureLargeInstance: API.OperationMethod<
   GetAzureLargeInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetAzureLargeInstanceRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetAzureLargeInstanceResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetAzureLargeInstanceRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<GetAzureLargeInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -613,8 +613,8 @@ export const GetAzureLargeStorageInstance: API.OperationMethod<
   GetAzureLargeStorageInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetAzureLargeStorageInstanceRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetAzureLargeStorageInstanceResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetAzureLargeStorageInstanceRequest>,
+  output: __S(147, __c9, 3) as any as S.Schema<GetAzureLargeStorageInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -628,8 +628,8 @@ export const ListAzureLargeInstanceByResourceGroup: API.OperationMethod<
   ListAzureLargeInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListAzureLargeInstanceByResourceGroupRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<AzureLargeInstanceListResult>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListAzureLargeInstanceByResourceGroupRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<AzureLargeInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -643,8 +643,8 @@ export const ListAzureLargeInstanceBySubscription: API.OperationMethod<
   ListAzureLargeInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListAzureLargeInstanceBySubscriptionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<AzureLargeInstanceListResult>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListAzureLargeInstanceBySubscriptionRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<AzureLargeInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -658,8 +658,8 @@ export const ListAzureLargeStorageInstanceByResourceGroup: API.OperationMethod<
   ListAzureLargeStorageInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListAzureLargeStorageInstanceByResourceGroupRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<AzureLargeStorageInstanceListResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListAzureLargeStorageInstanceByResourceGroupRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<AzureLargeStorageInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -673,8 +673,8 @@ export const ListAzureLargeStorageInstanceBySubscription: API.OperationMethod<
   ListAzureLargeStorageInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListAzureLargeStorageInstanceBySubscriptionRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<AzureLargeStorageInstanceListResult>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListAzureLargeStorageInstanceBySubscriptionRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<AzureLargeStorageInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -688,8 +688,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListOperationsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListOperationsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(260, __c16, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -703,8 +703,8 @@ export const RestartAzureLargeInstance: API.OperationMethod<
   RestartAzureLargeInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<RestartAzureLargeInstanceRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RestartAzureLargeInstanceResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<RestartAzureLargeInstanceRequest>,
+  output: __S(23, __c1, 7) as any as S.Schema<RestartAzureLargeInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -718,8 +718,8 @@ export const StartAzureLargeInstance: API.OperationMethod<
   StartAzureLargeInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<StartAzureLargeInstanceRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<StartAzureLargeInstanceResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<StartAzureLargeInstanceRequest>,
+  output: __S(23, __c1, 7) as any as S.Schema<StartAzureLargeInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -733,8 +733,8 @@ export const UpdateAzureLargeInstance: API.OperationMethod<
   UpdateAzureLargeInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<UpdateAzureLargeInstanceRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UpdateAzureLargeInstanceResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<UpdateAzureLargeInstanceRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<UpdateAzureLargeInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -748,8 +748,8 @@ export const UpdateAzureLargeStorageInstance: API.OperationMethod<
   UpdateAzureLargeStorageInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<UpdateAzureLargeStorageInstanceRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<UpdateAzureLargeStorageInstanceResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<UpdateAzureLargeStorageInstanceRequest>,
+  output: __S(147, __c9, 3) as any as S.Schema<UpdateAzureLargeStorageInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -775,30 +775,34 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AzureLargeInstanceShutdownRequest",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(21, __c1, 5)));
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(6, __c0, 6)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(20, __c1, 4)));
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(5, __c0, 5)));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           info: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
+    case 3:
+      return S.Array(__S(18, __c1, 2));
     case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(2, __c0, 2)),
-          additionalInfo: S.optional(__S(4, __c0, 4)),
+          details: S.optional(__S(17, __c1, 1)),
+          additionalInfo: S.optional(__S(19, __c1, 3)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -808,17 +812,13 @@ function __c0(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(1, __c0, 1)),
-          error: S.optional(__S(5, __c0, 5)),
+          operations: S.optional(__S(16, __c1, 0)),
+          error: S.optional(__S(20, __c1, 4)),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
+    case 6:
+      return S.Array(__S(21, __c1, 5));
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -828,13 +828,17 @@ function __c1(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(7, __c0, 7)),
-          error: S.optional(__S(5, __c0, 5)),
+          operations: S.optional(__S(22, __c1, 6)),
+          error: S.optional(__S(20, __c1, 4)),
         }),
       ).annotate({
         identifier: "AzureLargeInstanceShutdownResponse",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -851,7 +855,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAzureLargeInstanceRequest",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c4, 0)),
+          tags: S.optional(__S(65, __c4, 1)),
+          location: S.String,
+          properties: S.optional(__S(88, __c5, 8)),
+        }),
+      ).annotate({
+        identifier: "GetAzureLargeInstanceResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -862,16 +888,20 @@ function __c1(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 3:
+    case 1:
       return S.Record(S.String, S.String);
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           hardwareType: S.optional(S.String),
           azureLargeInstanceSize: S.optional(S.String),
         }),
       ).annotate({ identifier: "HardwareProfile" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -879,20 +909,16 @@ function __c1(j: number): any {
           lun: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Disk" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nfsIpAddress: S.optional(S.String),
-          osDisks: S.optional(__S(14, __c1, 6)),
+          osDisks: S.optional(__S(82, __c5, 2)),
         }),
       ).annotate({ identifier: "StorageProfile" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           computerName: S.optional(S.String),
@@ -901,28 +927,28 @@ function __c2(j: number): any {
           sshPublicKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "OsProfile" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpAddress" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(85, __c5, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          networkInterfaces: S.optional(__S(18, __c2, 2)),
+          networkInterfaces: S.optional(__S(86, __c5, 6)),
           circuitId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkProfile" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          hardwareProfile: S.optional(__S(12, __c1, 4)),
-          storageProfile: S.optional(__S(15, __c1, 7)),
-          osProfile: S.optional(__S(16, __c2, 0)),
-          networkProfile: S.optional(__S(19, __c2, 3)),
+          hardwareProfile: S.optional(__S(80, __c5, 0)),
+          storageProfile: S.optional(__S(83, __c5, 3)),
+          osProfile: S.optional(__S(84, __c5, 4)),
+          networkProfile: S.optional(__S(87, __c5, 7)),
           azureLargeInstanceId: S.optional(S.String),
           powerState: S.optional(S.String),
           proximityPlacementGroup: S.optional(S.String),
@@ -932,21 +958,55 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AzureLargeInstanceProperties",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(11, __c1, 3)),
-          location: S.String,
-          properties: S.optional(__S(20, __c2, 4)),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          azureLargeInstanceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(65, __c4, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}",
+            code: 200,
+            apiVersion: "2024-04-10",
+          }),
+        ),
       ).annotate({
-        identifier: "GetAzureLargeInstanceResponse",
+        identifier: "UpdateAzureLargeInstanceRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          azureLargeStorageInstanceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(65, __c4, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances/{azureLargeStorageInstanceName}",
+            code: 200,
+            apiVersion: "2024-04-10",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAzureLargeStorageInstanceRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -963,18 +1023,18 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAzureLargeStorageInstanceRequest",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           billingMode: S.optional(S.String),
           sku: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageBillingProperties" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -983,33 +1043,37 @@ function __c3(j: number): any {
           generation: S.optional(S.String),
           hardwareType: S.optional(S.String),
           workloadType: S.optional(S.String),
-          storageBillingProperties: S.optional(__S(23, __c2, 7)),
+          storageBillingProperties: S.optional(__S(144, __c9, 0)),
         }),
       ).annotate({ identifier: "StorageProperties" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           azureLargeStorageInstanceUniqueIdentifier: S.optional(S.String),
-          storageProperties: S.optional(__S(24, __c3, 0)),
+          storageProperties: S.optional(__S(145, __c9, 1)),
         }),
       ).annotate({
         identifier: "AzureLargeStorageInstanceProperties",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(11, __c1, 3)),
+          systemData: S.optional(__S(64, __c4, 0)),
+          tags: S.optional(__S(65, __c4, 1)),
           location: S.String,
-          properties: S.optional(__S(25, __c3, 1)),
+          properties: S.optional(__S(146, __c9, 2)),
         }),
       ).annotate({
         identifier: "GetAzureLargeStorageInstanceResponse",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1025,30 +1089,38 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListAzureLargeInstanceByResourceGroupRequest",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(11, __c1, 3)),
+          systemData: S.optional(__S(64, __c4, 0)),
+          tags: S.optional(__S(65, __c4, 1)),
           location: S.String,
-          properties: S.optional(__S(20, __c2, 4)),
+          properties: S.optional(__S(88, __c5, 8)),
         }),
       ).annotate({ identifier: "AzureLargeInstance" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(176, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(29, __c3, 5),
+          value: __S(177, __c11, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AzureLargeInstanceListResult",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1065,7 +1137,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1083,18 +1155,26 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAzureLargeStorageInstanceByResourceGroupRequest",
       });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(147, __c9, 3));
     case 1:
-      return S.Array(__S(26, __c3, 2));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(33, __c4, 1),
+          value: __S(224, __c14, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AzureLargeStorageInstanceListResult",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1109,7 +1189,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAzureLargeStorageInstanceBySubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1120,7 +1204,7 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -1129,30 +1213,30 @@ function __c4(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(37, __c4, 5)),
+          display: S.optional(__S(257, __c16, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(258, __c16, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(39, __c4, 7)),
+          value: S.optional(__S(259, __c16, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1170,7 +1254,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RestartAzureLargeInstanceRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1187,45 +1275,8 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "StartAzureLargeInstanceRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          azureLargeInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances/{azureLargeInstanceName}",
-            code: 200,
-            apiVersion: "2024-04-10",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAzureLargeInstanceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          azureLargeStorageInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances/{azureLargeStorageInstanceName}",
-            code: 200,
-            apiVersion: "2024-04-10",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAzureLargeStorageInstanceRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

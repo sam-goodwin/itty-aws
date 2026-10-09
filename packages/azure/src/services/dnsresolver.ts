@@ -1848,7 +1848,7 @@ export const BulkDnsResolverDomainList: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<BulkDnsResolverDomainListRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BulkDnsResolverDomainListResponse>,
+  output: __S(32, __c4, 0) as any as S.Schema<BulkDnsResolverDomainListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1862,8 +1862,8 @@ export const DeleteDnsForwardingRuleset: API.OperationMethod<
   DeleteDnsForwardingRulesetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteDnsForwardingRulesetRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteDnsForwardingRulesetResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteDnsForwardingRulesetRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteDnsForwardingRulesetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1877,8 +1877,8 @@ export const DeleteDnsResolver: API.OperationMethod<
   DeleteDnsResolverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteDnsResolverRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteDnsResolverResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<DeleteDnsResolverRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<DeleteDnsResolverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1892,8 +1892,8 @@ export const DeleteDnsResolverDomainList: API.OperationMethod<
   DeleteDnsResolverDomainListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteDnsResolverDomainListRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteDnsResolverDomainListResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<DeleteDnsResolverDomainListRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteDnsResolverDomainListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1907,8 +1907,8 @@ export const DeleteDnsResolverPolicy: API.OperationMethod<
   DeleteDnsResolverPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteDnsResolverPolicyRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteDnsResolverPolicyResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<DeleteDnsResolverPolicyRequest>,
+  output: __S(545, __c68, 1) as any as S.Schema<DeleteDnsResolverPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1922,8 +1922,8 @@ export const DeleteDnsResolverPolicyVirtualNetworkLink: API.OperationMethod<
   DeleteDnsResolverPolicyVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteDnsResolverPolicyVirtualNetworkLinkRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteDnsResolverPolicyVirtualNetworkLinkResponse>,
+  input: __S(632, __c79, 0) as any as S.Schema<DeleteDnsResolverPolicyVirtualNetworkLinkRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteDnsResolverPolicyVirtualNetworkLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1937,8 +1937,8 @@ export const DeleteDnsSecurityRule: API.OperationMethod<
   DeleteDnsSecurityRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteDnsSecurityRuleRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteDnsSecurityRuleResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<DeleteDnsSecurityRuleRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<DeleteDnsSecurityRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1952,8 +1952,8 @@ export const DeleteForwardingRule: API.OperationMethod<
   DeleteForwardingRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteForwardingRuleRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteForwardingRuleResponse>,
+  input: __S(712, __c89, 0) as any as S.Schema<DeleteForwardingRuleRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<DeleteForwardingRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1967,8 +1967,8 @@ export const DeleteInboundEndpoint: API.OperationMethod<
   DeleteInboundEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteInboundEndpointRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteInboundEndpointResponse>,
+  input: __S(720, __c90, 0) as any as S.Schema<DeleteInboundEndpointRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<DeleteInboundEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1982,8 +1982,8 @@ export const DeleteOutboundEndpoint: API.OperationMethod<
   DeleteOutboundEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteOutboundEndpointRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteOutboundEndpointResponse>,
+  input: __S(728, __c91, 0) as any as S.Schema<DeleteOutboundEndpointRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<DeleteOutboundEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1997,8 +1997,8 @@ export const DeleteVirtualNetworkLink: API.OperationMethod<
   DeleteVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteVirtualNetworkLinkRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteVirtualNetworkLinkResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteVirtualNetworkLinkRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteVirtualNetworkLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2012,8 +2012,8 @@ export const DnsForwardingRulesetsCreateOrUpdate: API.OperationMethod<
   DnsForwardingRulesetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DnsForwardingRulesetsCreateOrUpdateRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DnsForwardingRulesetsCreateOrUpdateResponse>,
+  input: __S(65, __c8, 1) as any as S.Schema<DnsForwardingRulesetsCreateOrUpdateRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DnsForwardingRulesetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2027,8 +2027,8 @@ export const DnsResolverDomainListsCreateOrUpdate: API.OperationMethod<
   DnsResolverDomainListsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DnsResolverDomainListsCreateOrUpdateRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DnsResolverDomainListsCreateOrUpdateResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DnsResolverDomainListsCreateOrUpdateRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DnsResolverDomainListsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2042,8 +2042,8 @@ export const DnsResolverPoliciesCreateOrUpdate: API.OperationMethod<
   DnsResolverPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DnsResolverPoliciesCreateOrUpdateRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DnsResolverPoliciesCreateOrUpdateResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DnsResolverPoliciesCreateOrUpdateRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<DnsResolverPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2058,14 +2058,14 @@ export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdate: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    34,
-    __c4,
-    2,
+    153,
+    __c19,
+    1,
   ) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequest>,
   output: __S(
-    35,
-    __c4,
-    3,
+    154,
+    __c19,
+    2,
   ) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2080,8 +2080,8 @@ export const DnsResolversCreateOrUpdate: API.OperationMethod<
   DnsResolversCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DnsResolversCreateOrUpdateRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<DnsResolversCreateOrUpdateResponse>,
+  input: __S(169, __c21, 1) as any as S.Schema<DnsResolversCreateOrUpdateRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<DnsResolversCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2095,8 +2095,8 @@ export const DnsSecurityRulesCreateOrUpdate: API.OperationMethod<
   DnsSecurityRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DnsSecurityRulesCreateOrUpdateRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DnsSecurityRulesCreateOrUpdateResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<DnsSecurityRulesCreateOrUpdateRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<DnsSecurityRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2110,8 +2110,8 @@ export const ForwardingRulesCreateOrUpdate: API.OperationMethod<
   ForwardingRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ForwardingRulesCreateOrUpdateRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ForwardingRulesCreateOrUpdateResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ForwardingRulesCreateOrUpdateRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<ForwardingRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2125,8 +2125,8 @@ export const GetDnsForwardingRuleset: API.OperationMethod<
   GetDnsForwardingRulesetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetDnsForwardingRulesetRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetDnsForwardingRulesetResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetDnsForwardingRulesetRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<GetDnsForwardingRulesetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2140,8 +2140,8 @@ export const GetDnsResolver: API.OperationMethod<
   GetDnsResolverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetDnsResolverRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetDnsResolverResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetDnsResolverRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<GetDnsResolverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2155,8 +2155,8 @@ export const GetDnsResolverDomainList: API.OperationMethod<
   GetDnsResolverDomainListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetDnsResolverDomainListRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetDnsResolverDomainListResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<GetDnsResolverDomainListRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetDnsResolverDomainListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2170,8 +2170,8 @@ export const GetDnsResolverPolicy: API.OperationMethod<
   GetDnsResolverPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetDnsResolverPolicyRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetDnsResolverPolicyResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<GetDnsResolverPolicyRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<GetDnsResolverPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2185,8 +2185,8 @@ export const GetDnsResolverPolicyVirtualNetworkLink: API.OperationMethod<
   GetDnsResolverPolicyVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetDnsResolverPolicyVirtualNetworkLinkRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetDnsResolverPolicyVirtualNetworkLinkResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<GetDnsResolverPolicyVirtualNetworkLinkRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<GetDnsResolverPolicyVirtualNetworkLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2200,8 +2200,8 @@ export const GetDnsSecurityRule: API.OperationMethod<
   GetDnsSecurityRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetDnsSecurityRuleRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetDnsSecurityRuleResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<GetDnsSecurityRuleRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<GetDnsSecurityRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2215,8 +2215,8 @@ export const GetForwardingRule: API.OperationMethod<
   GetForwardingRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetForwardingRuleRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetForwardingRuleResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<GetForwardingRuleRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetForwardingRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2230,8 +2230,8 @@ export const GetInboundEndpoint: API.OperationMethod<
   GetInboundEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetInboundEndpointRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetInboundEndpointResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<GetInboundEndpointRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<GetInboundEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2245,8 +2245,8 @@ export const GetOutboundEndpoint: API.OperationMethod<
   GetOutboundEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetOutboundEndpointRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetOutboundEndpointResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<GetOutboundEndpointRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<GetOutboundEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2260,8 +2260,8 @@ export const GetVirtualNetworkLink: API.OperationMethod<
   GetVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetVirtualNetworkLinkRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetVirtualNetworkLinkResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<GetVirtualNetworkLinkRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<GetVirtualNetworkLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2275,8 +2275,8 @@ export const InboundEndpointsCreateOrUpdate: API.OperationMethod<
   InboundEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<InboundEndpointsCreateOrUpdateRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<InboundEndpointsCreateOrUpdateResponse>,
+  input: __S(401, __c50, 1) as any as S.Schema<InboundEndpointsCreateOrUpdateRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<InboundEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2290,8 +2290,8 @@ export const ListDnsForwardingRulesetByResourceGroup: API.OperationMethod<
   ListDnsForwardingRulesetByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListDnsForwardingRulesetByResourceGroupRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<DnsForwardingRulesetListResult>,
+  input: __S(408, __c51, 0) as any as S.Schema<ListDnsForwardingRulesetByResourceGroupRequest>,
+  output: __S(418, __c52, 2) as any as S.Schema<DnsForwardingRulesetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2305,8 +2305,8 @@ export const ListDnsForwardingRulesetByVirtualNetwork: API.OperationMethod<
   ListDnsForwardingRulesetByVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListDnsForwardingRulesetByVirtualNetworkRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<VirtualNetworkDnsForwardingRulesetListResult>,
+  input: __S(432, __c54, 0) as any as S.Schema<ListDnsForwardingRulesetByVirtualNetworkRequest>,
+  output: __S(436, __c54, 4) as any as S.Schema<VirtualNetworkDnsForwardingRulesetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2320,8 +2320,8 @@ export const ListDnsForwardingRulesets: API.OperationMethod<
   ListDnsForwardingRulesetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListDnsForwardingRulesetsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<DnsForwardingRulesetListResult>,
+  input: __S(440, __c55, 0) as any as S.Schema<ListDnsForwardingRulesetsRequest>,
+  output: __S(418, __c52, 2) as any as S.Schema<DnsForwardingRulesetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2335,8 +2335,8 @@ export const ListDnsResolverByResourceGroup: API.OperationMethod<
   ListDnsResolverByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListDnsResolverByResourceGroupRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<DnsResolverListResult>,
+  input: __S(448, __c56, 0) as any as S.Schema<ListDnsResolverByResourceGroupRequest>,
+  output: __S(457, __c57, 1) as any as S.Schema<DnsResolverListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2350,8 +2350,8 @@ export const ListDnsResolverByVirtualNetwork: API.OperationMethod<
   ListDnsResolverByVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListDnsResolverByVirtualNetworkRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<SubResourceListResult>,
+  input: __S(464, __c58, 0) as any as S.Schema<ListDnsResolverByVirtualNetworkRequest>,
+  output: __S(472, __c59, 0) as any as S.Schema<SubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2365,8 +2365,8 @@ export const ListDnsResolverDomainListByResourceGroup: API.OperationMethod<
   ListDnsResolverDomainListByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListDnsResolverDomainListByResourceGroupRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DnsResolverDomainListListResult>,
+  input: __S(480, __c60, 0) as any as S.Schema<ListDnsResolverDomainListByResourceGroupRequest>,
+  output: __S(490, __c61, 2) as any as S.Schema<DnsResolverDomainListListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2380,8 +2380,8 @@ export const ListDnsResolverDomainLists: API.OperationMethod<
   ListDnsResolverDomainListsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListDnsResolverDomainListsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DnsResolverDomainListListResult>,
+  input: __S(496, __c62, 0) as any as S.Schema<ListDnsResolverDomainListsRequest>,
+  output: __S(490, __c61, 2) as any as S.Schema<DnsResolverDomainListListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2395,8 +2395,8 @@ export const ListDnsResolverPolicies: API.OperationMethod<
   ListDnsResolverPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ListDnsResolverPoliciesRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<DnsResolverPolicyListResult>,
+  input: __S(504, __c63, 0) as any as S.Schema<ListDnsResolverPoliciesRequest>,
+  output: __S(514, __c64, 2) as any as S.Schema<DnsResolverPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2410,8 +2410,8 @@ export const ListDnsResolverPolicyByResourceGroup: API.OperationMethod<
   ListDnsResolverPolicyByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListDnsResolverPolicyByResourceGroupRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<DnsResolverPolicyListResult>,
+  input: __S(520, __c65, 0) as any as S.Schema<ListDnsResolverPolicyByResourceGroupRequest>,
+  output: __S(514, __c64, 2) as any as S.Schema<DnsResolverPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2425,8 +2425,8 @@ export const ListDnsResolverPolicyByVirtualNetwork: API.OperationMethod<
   ListDnsResolverPolicyByVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListDnsResolverPolicyByVirtualNetworkRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<SubResourceListResult>,
+  input: __S(528, __c66, 0) as any as S.Schema<ListDnsResolverPolicyByVirtualNetworkRequest>,
+  output: __S(472, __c59, 0) as any as S.Schema<SubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2440,8 +2440,8 @@ export const ListDnsResolverPolicyVirtualNetworkLinks: API.OperationMethod<
   ListDnsResolverPolicyVirtualNetworkLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListDnsResolverPolicyVirtualNetworkLinksRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinkListResult>,
+  input: __S(536, __c67, 0) as any as S.Schema<ListDnsResolverPolicyVirtualNetworkLinksRequest>,
+  output: __S(538, __c67, 2) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2455,8 +2455,8 @@ export const ListDnsResolvers: API.OperationMethod<
   ListDnsResolversError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListDnsResolversRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<DnsResolverListResult>,
+  input: __S(552, __c69, 0) as any as S.Schema<ListDnsResolversRequest>,
+  output: __S(457, __c57, 1) as any as S.Schema<DnsResolverListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2470,8 +2470,8 @@ export const ListDnsSecurityRules: API.OperationMethod<
   ListDnsSecurityRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListDnsSecurityRulesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<DnsSecurityRuleListResult>,
+  input: __S(560, __c70, 0) as any as S.Schema<ListDnsSecurityRulesRequest>,
+  output: __S(563, __c70, 3) as any as S.Schema<DnsSecurityRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2485,8 +2485,8 @@ export const ListForwardingRules: API.OperationMethod<
   ListForwardingRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListForwardingRulesRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ForwardingRuleListResult>,
+  input: __S(568, __c71, 0) as any as S.Schema<ListForwardingRulesRequest>,
+  output: __S(571, __c71, 3) as any as S.Schema<ForwardingRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2500,8 +2500,8 @@ export const ListInboundEndpoints: API.OperationMethod<
   ListInboundEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListInboundEndpointsRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<InboundEndpointListResult>,
+  input: __S(576, __c72, 0) as any as S.Schema<ListInboundEndpointsRequest>,
+  output: __S(579, __c72, 3) as any as S.Schema<InboundEndpointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2515,8 +2515,8 @@ export const ListOutboundEndpoints: API.OperationMethod<
   ListOutboundEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<ListOutboundEndpointsRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<OutboundEndpointListResult>,
+  input: __S(584, __c73, 0) as any as S.Schema<ListOutboundEndpointsRequest>,
+  output: __S(587, __c73, 3) as any as S.Schema<OutboundEndpointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2530,8 +2530,8 @@ export const ListVirtualNetworkLinks: API.OperationMethod<
   ListVirtualNetworkLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ListVirtualNetworkLinksRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<VirtualNetworkLinkListResult>,
+  input: __S(592, __c74, 0) as any as S.Schema<ListVirtualNetworkLinksRequest>,
+  output: __S(595, __c74, 3) as any as S.Schema<VirtualNetworkLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2545,8 +2545,8 @@ export const OutboundEndpointsCreateOrUpdate: API.OperationMethod<
   OutboundEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<OutboundEndpointsCreateOrUpdateRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<OutboundEndpointsCreateOrUpdateResponse>,
+  input: __S(601, __c75, 1) as any as S.Schema<OutboundEndpointsCreateOrUpdateRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<OutboundEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2560,8 +2560,8 @@ export const UpdateDnsForwardingRuleset: API.OperationMethod<
   UpdateDnsForwardingRulesetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<UpdateDnsForwardingRulesetRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<UpdateDnsForwardingRulesetResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<UpdateDnsForwardingRulesetRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<UpdateDnsForwardingRulesetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2575,8 +2575,8 @@ export const UpdateDnsResolver: API.OperationMethod<
   UpdateDnsResolverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<UpdateDnsResolverRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<UpdateDnsResolverResponse>,
+  input: __S(616, __c77, 0) as any as S.Schema<UpdateDnsResolverRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<UpdateDnsResolverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2590,8 +2590,8 @@ export const UpdateDnsResolverDomainList: API.OperationMethod<
   UpdateDnsResolverDomainListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<UpdateDnsResolverDomainListRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateDnsResolverDomainListResponse>,
+  input: __S(624, __c78, 0) as any as S.Schema<UpdateDnsResolverDomainListRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<UpdateDnsResolverDomainListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2605,8 +2605,8 @@ export const UpdateDnsResolverPolicy: API.OperationMethod<
   UpdateDnsResolverPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<UpdateDnsResolverPolicyRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<UpdateDnsResolverPolicyResponse>,
+  input: __S(640, __c80, 0) as any as S.Schema<UpdateDnsResolverPolicyRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<UpdateDnsResolverPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2620,8 +2620,8 @@ export const UpdateDnsResolverPolicyVirtualNetworkLink: API.OperationMethod<
   UpdateDnsResolverPolicyVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<UpdateDnsResolverPolicyVirtualNetworkLinkRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpdateDnsResolverPolicyVirtualNetworkLinkResponse>,
+  input: __S(648, __c81, 0) as any as S.Schema<UpdateDnsResolverPolicyVirtualNetworkLinkRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<UpdateDnsResolverPolicyVirtualNetworkLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2635,8 +2635,8 @@ export const UpdateDnsSecurityRule: API.OperationMethod<
   UpdateDnsSecurityRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<UpdateDnsSecurityRuleRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<UpdateDnsSecurityRuleResponse>,
+  input: __S(657, __c82, 1) as any as S.Schema<UpdateDnsSecurityRuleRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<UpdateDnsSecurityRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2650,8 +2650,8 @@ export const UpdateForwardingRule: API.OperationMethod<
   UpdateForwardingRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<UpdateForwardingRuleRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<UpdateForwardingRuleResponse>,
+  input: __S(665, __c83, 1) as any as S.Schema<UpdateForwardingRuleRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<UpdateForwardingRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2665,8 +2665,8 @@ export const UpdateInboundEndpoint: API.OperationMethod<
   UpdateInboundEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<UpdateInboundEndpointRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<UpdateInboundEndpointResponse>,
+  input: __S(672, __c84, 0) as any as S.Schema<UpdateInboundEndpointRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<UpdateInboundEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2680,8 +2680,8 @@ export const UpdateOutboundEndpoint: API.OperationMethod<
   UpdateOutboundEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<UpdateOutboundEndpointRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<UpdateOutboundEndpointResponse>,
+  input: __S(680, __c85, 0) as any as S.Schema<UpdateOutboundEndpointRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<UpdateOutboundEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2695,8 +2695,8 @@ export const UpdateVirtualNetworkLink: API.OperationMethod<
   UpdateVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<UpdateVirtualNetworkLinkRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateVirtualNetworkLinkResponse>,
+  input: __S(689, __c86, 1) as any as S.Schema<UpdateVirtualNetworkLinkRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<UpdateVirtualNetworkLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2710,8 +2710,8 @@ export const VirtualNetworkLinksCreateOrUpdate: API.OperationMethod<
   VirtualNetworkLinksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2747,7 +2747,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BulkDnsResolverDomainListRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2758,14 +2762,22 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(4, __c0, 4)),
+          domains: S.optional(__S(24, __c3, 0)),
           domainsUrl: S.optional(S.String),
           provisioningState: S.optional(S.String),
           resourceGuid: S.optional(S.String),
@@ -2773,22 +2785,30 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DnsResolverDomainListProperties",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(25, __c3, 1)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BulkDnsResolverDomainListResponse",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2807,164 +2827,17 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteDnsForwardingRulesetResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dnsResolverName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDnsResolverRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDnsResolverResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dnsResolverDomainListName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDnsResolverDomainListRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dnsResolverPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDnsResolverPolicyRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDnsResolverPolicyResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dnsResolverPolicyName: S.String.pipe(T.Label()),
-          dnsResolverPolicyVirtualNetworkLinkName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDnsResolverPolicyVirtualNetworkLinkRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dnsResolverPolicyName: S.String.pipe(T.Label()),
-          dnsSecurityRuleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDnsSecurityRuleRequest",
-      });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dnsForwardingRulesetName: S.String.pipe(T.Label()),
-          forwardingRuleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteForwardingRuleRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dnsResolverName: S.String.pipe(T.Label()),
-          inboundEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteInboundEndpointRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          dnsResolverName: S.String.pipe(T.Label()),
-          outboundEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOutboundEndpointRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2982,31 +2855,27 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualNetworkLinkRequest",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-        }),
-      ).annotate({ identifier: "SubResource" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dnsResolverOutboundEndpoints: __S(21, __c2, 5),
+          dnsResolverOutboundEndpoints: __S(104, __c13, 0),
         }),
       ).annotate({
         identifier: "DnsForwardingRulesetPropertiesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsForwardingRulesetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(22, __c2, 6),
+          properties: __S(64, __c8, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3020,52 +2889,72 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(20, __c2, 4));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          dnsResolverOutboundEndpoints: __S(24, __c3, 0),
+          id: S.String,
+        }),
+      ).annotate({ identifier: "SubResource" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(72, __c9, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dnsResolverOutboundEndpoints: __S(80, __c10, 0),
           provisioningState: S.optional(S.String),
           resourceGuid: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DnsForwardingRulesetProperties",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(25, __c3, 1),
+          properties: __S(88, __c11, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DnsForwardingRulesetsCreateOrUpdateResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domains: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "DnsResolverDomainListPropertiesInput",
-      });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(72, __c9, 0));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverDomainListName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(27, __c3, 3)),
+          properties: S.optional(__S(120, __c15, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3077,15 +2966,31 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DnsResolverDomainListsCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domains: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "DnsResolverDomainListPropertiesInput",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverPolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(48, __c6, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3097,7 +3002,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DnsResolverPoliciesCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -3106,16 +3015,20 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DnsResolverPolicyProperties",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(30, __c3, 6)),
+          properties: S.optional(__S(136, __c17, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3123,29 +3036,20 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          virtualNetwork: __S(20, __c2, 4),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DnsResolverPolicyVirtualNetworkLinkProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverPolicyName: S.String.pipe(T.Label()),
           dnsResolverPolicyVirtualNetworkLinkName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(32, __c4, 0)),
+          tags: S.optional(__S(152, __c19, 0)),
           location: S.String,
-          properties: __S(33, __c4, 1),
+          properties: __S(160, __c20, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3157,38 +3061,55 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(32, __c4, 0)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(152, __c19, 0)),
           location: S.String,
-          properties: __S(33, __c4, 1),
+          properties: __S(160, __c20, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponse",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          virtualNetwork: __S(20, __c2, 4),
+          virtualNetwork: __S(72, __c9, 0),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DnsResolverPolicyVirtualNetworkLinkProperties",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          virtualNetwork: __S(72, __c9, 0),
         }),
       ).annotate({
         identifier: "DnsResolverPropertiesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(36, __c4, 4),
+          properties: __S(168, __c21, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3200,25 +3121,33 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DnsResolversCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          virtualNetwork: __S(20, __c2, 4),
+          virtualNetwork: __S(72, __c9, 0),
           dnsResolverState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           resourceGuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsResolverProperties" });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(38, __c4, 6),
+          properties: __S(176, __c22, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3226,36 +3155,18 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DnsSecurityRuleAction" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          priority: S.Number,
-          action: __S(40, __c5, 0),
-          dnsResolverDomainLists: __S(24, __c3, 0),
-          dnsSecurityRuleState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DnsSecurityRuleProperties",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverPolicyName: S.String.pipe(T.Label()),
           dnsSecurityRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(41, __c5, 1),
+          properties: __S(201, __c25, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3267,48 +3178,59 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DnsSecurityRulesCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DnsSecurityRuleAction" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          priority: S.Number,
+          action: __S(200, __c25, 0),
+          dnsResolverDomainLists: __S(80, __c10, 0),
+          dnsSecurityRuleState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DnsSecurityRuleProperties",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(41, __c5, 1),
+          properties: __S(201, __c25, 1),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DnsSecurityRulesCreateOrUpdateResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ipAddress: S.String,
-          port: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TargetDnsServer" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.String,
-          targetDnsServers: __S(45, __c5, 5),
-          metadata: S.optional(__S(3, __c0, 3)),
-          forwardingRuleState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ForwardingRuleProperties" });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsForwardingRulesetName: S.String.pipe(T.Label()),
           forwardingRuleName: S.String.pipe(T.Label()),
-          properties: __S(46, __c5, 6),
+          properties: __S(226, __c28, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3322,7 +3244,30 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipAddress: S.String,
+          port: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TargetDnsServer" });
+    case 1:
+      return S.Array(__S(224, __c28, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.String,
+          targetDnsServers: __S(225, __c28, 1),
+          metadata: S.optional(__S(16, __c2, 0)),
+          forwardingRuleState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ForwardingRuleProperties" });
+  }
+}
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3330,14 +3275,18 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(46, __c5, 6),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: __S(226, __c28, 2),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ForwardingRulesCreateOrUpdateResponse",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3354,7 +3303,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetDnsForwardingRulesetRequest",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3369,20 +3322,55 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDnsResolverRequest" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(38, __c4, 6),
+          properties: __S(176, __c22, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetDnsResolverResponse" });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dnsResolverName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDnsResolverRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteDnsResolverResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3399,7 +3387,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetDnsResolverDomainListRequest",
       });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3416,7 +3408,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetDnsResolverPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3434,16 +3430,20 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetDnsResolverPolicyVirtualNetworkLinkRequest",
       });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(33, __c4, 1),
+          properties: __S(160, __c20, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3451,7 +3451,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3471,7 +3471,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetDnsSecurityRuleRequest",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3487,7 +3491,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetForwardingRuleRequest" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3505,42 +3513,54 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetInboundEndpointRequest",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          subnet: __S(20, __c2, 4),
+          subnet: __S(72, __c9, 0),
           privateIpAddress: S.optional(S.String),
           privateIpAllocationMethod: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpConfiguration" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(336, __c42, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ipConfigurations: __S(60, __c7, 4),
+          ipConfigurations: __S(337, __c42, 1),
           provisioningState: S.optional(S.String),
           resourceGuid: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InboundEndpointProperties",
       });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(61, __c7, 5),
+          properties: __S(338, __c42, 2),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetInboundEndpointResponse",
       });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3560,34 +3580,42 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subnet: __S(20, __c2, 4),
+          subnet: __S(72, __c9, 0),
           provisioningState: S.optional(S.String),
           resourceGuid: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OutboundEndpointProperties",
       });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(64, __c8, 0),
+          properties: __S(360, __c45, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetOutboundEndpointResponse",
       });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3605,47 +3633,59 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetVirtualNetworkLinkRequest",
       });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          virtualNetwork: __S(20, __c2, 4),
-          metadata: S.optional(__S(3, __c0, 3)),
+          virtualNetwork: __S(72, __c9, 0),
+          metadata: S.optional(__S(16, __c2, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VirtualNetworkLinkProperties",
       });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(67, __c8, 3),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: __S(384, __c48, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetVirtualNetworkLinkResponse",
       });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ipConfigurations: __S(60, __c7, 4),
+          ipConfigurations: __S(337, __c42, 1),
         }),
       ).annotate({
         identifier: "InboundEndpointPropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverName: S.String.pipe(T.Label()),
           inboundEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(69, __c8, 5),
+          properties: __S(400, __c50, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3657,7 +3697,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InboundEndpointsCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3676,7 +3720,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3684,25 +3728,50 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(25, __c3, 1),
+          properties: __S(88, __c11, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsForwardingRuleset" });
     case 1:
-      return S.Array(__S(72, __c9, 0));
+      return S.Array(__S(416, __c52, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(73, __c9, 1),
+          value: __S(417, __c52, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DnsForwardingRulesetListResult",
       });
-    case 3:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dnsResolverDomainListName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDnsResolverDomainListRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3720,29 +3789,29 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListDnsForwardingRulesetByVirtualNetworkRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          virtualNetworkLink: S.optional(__S(20, __c2, 4)),
+          virtualNetworkLink: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({
         identifier: "VirtualNetworkLinkSubResourceProperties",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(76, __c9, 4)),
+          properties: S.optional(__S(433, __c54, 1)),
         }),
       ).annotate({
         identifier: "VirtualNetworkDnsForwardingRuleset",
       });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(434, __c54, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(78, __c9, 6),
+          value: __S(435, __c54, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3750,7 +3819,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3768,7 +3837,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListDnsForwardingRulesetsRequest",
       });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3785,16 +3858,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListDnsResolverByResourceGroupRequest",
       });
-    case 2:
-      return S.Array(__S(51, __c6, 3));
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(256, __c32, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(82, __c10, 2),
+          value: __S(456, __c57, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsResolverListResult" });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3812,14 +3893,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListDnsResolverByVirtualNetworkRequest",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(24, __c3, 0),
+          value: __S(80, __c10, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubResourceListResult" });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3836,35 +3925,39 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListDnsResolverDomainListByResourceGroupRequest",
       });
-    case 7:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(25, __c3, 1)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsResolverDomainList" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
     case 1:
+      return S.Array(__S(488, __c61, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(88, __c11, 0),
+          value: __S(489, __c61, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DnsResolverDomainListListResult",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3880,7 +3973,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListDnsResolverDomainListsRequest",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3896,31 +3993,39 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListDnsResolverPoliciesRequest",
       });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(30, __c3, 6)),
+          properties: S.optional(__S(136, __c17, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsResolverPolicy" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(512, __c64, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(93, __c11, 5),
+          value: __S(513, __c64, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DnsResolverPolicyListResult",
       });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3939,7 +4044,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3958,7 +4063,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListDnsResolverPolicyByVirtualNetworkRequest",
       });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3976,18 +4085,47 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListDnsResolverPolicyVirtualNetworkLinksRequest",
       });
+    case 1:
+      return S.Array(__S(304, __c38, 0));
     case 2:
-      return S.Array(__S(55, __c6, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(98, __c12, 2),
+          value: __S(537, __c67, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DnsResolverPolicyVirtualNetworkLinkListResult",
       });
-    case 4:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dnsResolverPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDnsResolverPolicyRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteDnsResolverPolicyResponse",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4001,7 +4139,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDnsResolversRequest" });
-    case 5:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4019,35 +4161,35 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListDnsSecurityRulesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(41, __c5, 1),
+          properties: __S(201, __c25, 1),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsSecurityRule" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(561, __c70, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(103, __c12, 7),
+          value: __S(562, __c70, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DnsSecurityRuleListResult",
       });
-    case 1:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4065,27 +4207,31 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListForwardingRulesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(46, __c5, 6),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: __S(226, __c28, 2),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ForwardingRule" });
+    case 2:
+      return S.Array(__S(569, __c71, 1));
     case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(107, __c13, 3),
+          value: __S(570, __c71, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ForwardingRuleListResult" });
-    case 5:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4103,35 +4249,35 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListInboundEndpointsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(61, __c7, 5),
+          properties: __S(338, __c42, 2),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "InboundEndpoint" });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(577, __c72, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(111, __c13, 7),
+          value: __S(578, __c72, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InboundEndpointListResult",
       });
-    case 1:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4149,31 +4295,35 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListOutboundEndpointsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(64, __c8, 0),
+          properties: __S(360, __c45, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "OutboundEndpoint" });
+    case 2:
+      return S.Array(__S(585, __c73, 1));
     case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(115, __c14, 3),
+          value: __S(586, __c73, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OutboundEndpointListResult",
       });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4191,50 +4341,50 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListVirtualNetworkLinksRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(67, __c8, 3),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: __S(384, __c48, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetworkLink" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(593, __c74, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(119, __c14, 7),
+          value: __S(594, __c74, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VirtualNetworkLinkListResult",
       });
-    case 1:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          subnet: __S(20, __c2, 4),
+          subnet: __S(72, __c9, 0),
         }),
       ).annotate({
         identifier: "OutboundEndpointPropertiesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverName: S.String.pipe(T.Label()),
           outboundEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: __S(121, __c15, 1),
+          properties: __S(600, __c75, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4246,14 +4396,18 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "OutboundEndpointsCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsForwardingRulesetName: S.String.pipe(T.Label()),
-          dnsResolverOutboundEndpoints: S.optional(__S(21, __c2, 5)),
-          tags: S.optional(__S(3, __c0, 3)),
+          dnsResolverOutboundEndpoints: S.optional(__S(104, __c13, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4265,13 +4419,17 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateDnsForwardingRulesetRequest",
       });
-    case 4:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4281,14 +4439,18 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDnsResolverRequest" });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverDomainListName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(27, __c3, 3)),
-          tags: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(120, __c15, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4300,13 +4462,39 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateDnsResolverDomainListRequest",
       });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverPolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
+          dnsResolverPolicyVirtualNetworkLinkName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDnsResolverPolicyVirtualNetworkLinkRequest",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dnsResolverPolicyName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4318,14 +4506,18 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateDnsResolverPolicyRequest",
       });
-    case 7:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverPolicyName: S.String.pipe(T.Label()),
           dnsResolverPolicyVirtualNetworkLinkName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4339,13 +4531,13 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(__S(40, __c5, 0)),
-          dnsResolverDomainLists: S.optional(__S(24, __c3, 0)),
+          action: S.optional(__S(200, __c25, 0)),
+          dnsResolverDomainLists: S.optional(__S(80, __c10, 0)),
           dnsSecurityRuleState: S.optional(S.String),
           priority: S.optional(S.Number),
         }),
@@ -4359,8 +4551,8 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverPolicyName: S.String.pipe(T.Label()),
           dnsSecurityRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(128, __c16, 0)),
-          tags: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(656, __c82, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4372,24 +4564,28 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "UpdateDnsSecurityRuleRequest",
       });
-    case 2:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          targetDnsServers: S.optional(__S(45, __c5, 5)),
-          metadata: S.optional(__S(3, __c0, 3)),
+          targetDnsServers: S.optional(__S(225, __c28, 1)),
+          metadata: S.optional(__S(16, __c2, 0)),
           forwardingRuleState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ForwardingRulePatchProperties",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsForwardingRulesetName: S.String.pipe(T.Label()),
           forwardingRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(130, __c16, 2)),
+          properties: S.optional(__S(664, __c83, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4401,14 +4597,18 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "UpdateForwardingRuleRequest",
       });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverName: S.String.pipe(T.Label()),
           inboundEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4420,14 +4620,18 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "UpdateInboundEndpointRequest",
       });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverName: S.String.pipe(T.Label()),
           outboundEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4439,22 +4643,26 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "UpdateOutboundEndpointRequest",
       });
-    case 6:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(3, __c0, 3)),
+          metadata: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "VirtualNetworkLinkPatchProperties",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsForwardingRulesetName: S.String.pipe(T.Label()),
           virtualNetworkLinkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(134, __c16, 6)),
+          properties: S.optional(__S(688, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4468,7 +4676,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4477,7 +4685,7 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsForwardingRulesetName: S.String.pipe(T.Label()),
           virtualNetworkLinkName: S.String.pipe(T.Label()),
-          properties: __S(67, __c8, 3),
+          properties: __S(384, __c48, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4491,7 +4699,94 @@ function __c17(j: number): any {
       });
   }
 }
-
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dnsResolverPolicyName: S.String.pipe(T.Label()),
+          dnsSecurityRuleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDnsSecurityRuleRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dnsForwardingRulesetName: S.String.pipe(T.Label()),
+          forwardingRuleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteForwardingRuleRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dnsResolverName: S.String.pipe(T.Label()),
+          inboundEndpointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteInboundEndpointRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          dnsResolverName: S.String.pipe(T.Label()),
+          outboundEndpointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOutboundEndpointRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

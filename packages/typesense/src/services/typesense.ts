@@ -2299,8 +2299,8 @@ export const clearCache: API.OperationMethod<
   ClearCacheError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ClearCacheRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SuccessStatus>,
+  input: __S(928, __c29, 0) as any as S.Schema<ClearCacheRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<SuccessStatus>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2314,8 +2314,8 @@ export const compactDb: API.OperationMethod<
   CompactDbError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CompactDbRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SuccessStatus>,
+  input: __S(1344, __c42, 0) as any as S.Schema<CompactDbRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<SuccessStatus>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2329,8 +2329,8 @@ export const createAnalyticsEvent: API.OperationMethod<
   CreateAnalyticsEventError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateAnalyticsEventRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AnalyticsEventCreateResponse>,
+  input: __S(1825, __c57, 1) as any as S.Schema<CreateAnalyticsEventRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<AnalyticsEventCreateResponse>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2344,8 +2344,8 @@ export const createAnalyticsRule: API.OperationMethod<
   CreateAnalyticsRuleError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateAnalyticsRuleRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateAnalyticsRuleResponse>,
+  input: __S(2369, __c74, 1) as any as S.Schema<CreateAnalyticsRuleRequest>,
+  output: __S(2371, __c74, 3) as any as S.Schema<CreateAnalyticsRuleResponse>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2359,8 +2359,8 @@ export const createCollection: API.OperationMethod<
   CreateCollectionError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateCollectionRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateCollectionResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<CreateCollectionRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<CreateCollectionResponse>,
   errors: [BadRequest, Conflict],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2374,8 +2374,8 @@ export const createConversationModel: API.OperationMethod<
   CreateConversationModelError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateConversationModelRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CreateConversationModelResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<CreateConversationModelRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<CreateConversationModelResponse>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2389,8 +2389,8 @@ export const createKey: API.OperationMethod<
   CreateKeyError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateKeyRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateKeyResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<CreateKeyRequest>,
+  output: __S(3328, __c104, 0) as any as S.Schema<CreateKeyResponse>,
   errors: [BadRequest, Conflict],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2404,8 +2404,8 @@ export const createNLSearchModel: API.OperationMethod<
   CreateNLSearchModelError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateNLSearchModelRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateNLSearchModelResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateNLSearchModelRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CreateNLSearchModelResponse>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2419,8 +2419,8 @@ export const debug: API.OperationMethod<
   DebugError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DebugRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DebugResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DebugRequest>,
+  output: __S(65, __c2, 1) as any as S.Schema<DebugResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2434,8 +2434,8 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteAliasRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CollectionAlias>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteAliasRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<CollectionAlias>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2449,8 +2449,8 @@ export const deleteAnalyticsRule: API.OperationMethod<
   DeleteAnalyticsRuleError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteAnalyticsRuleRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteAnalyticsRuleResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteAnalyticsRuleRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<DeleteAnalyticsRuleResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2464,8 +2464,8 @@ export const deleteCollection: API.OperationMethod<
   DeleteCollectionError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteCollectionRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteCollectionResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteCollectionRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<DeleteCollectionResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2479,8 +2479,8 @@ export const deleteConversationModel: API.OperationMethod<
   DeleteConversationModelError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteConversationModelRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteConversationModelResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteConversationModelRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<DeleteConversationModelResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2494,8 +2494,8 @@ export const deleteCurationSet: API.OperationMethod<
   DeleteCurationSetError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteCurationSetRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CurationSetDeleteSchema>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteCurationSetRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<CurationSetDeleteSchema>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2509,8 +2509,8 @@ export const deleteCurationSetItem: API.OperationMethod<
   DeleteCurationSetItemError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteCurationSetItemRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<CurationItemDeleteSchema>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteCurationSetItemRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<CurationItemDeleteSchema>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2524,8 +2524,8 @@ export const deleteDocument: API.OperationMethod<
   DeleteDocumentError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteDocumentRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteDocumentResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteDocumentRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<DeleteDocumentResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2539,8 +2539,8 @@ export const deleteDocuments: API.OperationMethod<
   DeleteDocumentsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteDocumentsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DeleteDocumentsResponse>,
+  input: __S(513, __c16, 1) as any as S.Schema<DeleteDocumentsRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<DeleteDocumentsResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2554,8 +2554,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteKeyRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ApiKeyDeleteResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteKeyRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<ApiKeyDeleteResponse>,
   errors: [BadRequest, NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2569,8 +2569,8 @@ export const deleteNLSearchModel: API.OperationMethod<
   DeleteNLSearchModelError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteNLSearchModelRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<NLSearchModelDeleteSchema>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteNLSearchModelRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<NLSearchModelDeleteSchema>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2584,8 +2584,8 @@ export const deletePreset: API.OperationMethod<
   DeletePresetError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeletePresetRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<PresetDeleteSchema>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeletePresetRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<PresetDeleteSchema>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2599,8 +2599,8 @@ export const deleteStopwordsSet: API.OperationMethod<
   DeleteStopwordsSetError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteStopwordsSetRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteStopwordsSetResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteStopwordsSetRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<DeleteStopwordsSetResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2614,8 +2614,8 @@ export const deleteSynonymSet: API.OperationMethod<
   DeleteSynonymSetError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteSynonymSetRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<SynonymSetDeleteSchema>,
+  input: __S(704, __c22, 0) as any as S.Schema<DeleteSynonymSetRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<SynonymSetDeleteSchema>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2629,8 +2629,8 @@ export const deleteSynonymSetItem: API.OperationMethod<
   DeleteSynonymSetItemError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteSynonymSetItemRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<SynonymItemDeleteSchema>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteSynonymSetItemRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<SynonymItemDeleteSchema>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2644,8 +2644,8 @@ export const exportDocuments: API.OperationMethod<
   ExportDocumentsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ExportDocumentsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ExportDocumentsResponse>,
+  input: __S(769, __c24, 1) as any as S.Schema<ExportDocumentsRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<ExportDocumentsResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2659,8 +2659,8 @@ export const flushAnalytics: API.OperationMethod<
   FlushAnalyticsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<FlushAnalyticsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AnalyticsEventCreateResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<FlushAnalyticsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<AnalyticsEventCreateResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2674,8 +2674,8 @@ export const getAlias: API.OperationMethod<
   GetAliasError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetAliasRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CollectionAlias>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetAliasRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<CollectionAlias>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2689,8 +2689,8 @@ export const getAliases: API.OperationMethod<
   GetAliasesError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetAliasesRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<CollectionAliasesResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetAliasesRequest>,
+  output: __S(898, __c28, 2) as any as S.Schema<CollectionAliasesResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2704,8 +2704,8 @@ export const getAllConversationModels: API.OperationMethod<
   GetAllConversationModelsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetAllConversationModelsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetAllConversationModelsResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetAllConversationModelsRequest>,
+  output: __S(995, __c31, 3) as any as S.Schema<GetAllConversationModelsResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2719,8 +2719,8 @@ export const getAllNLSearchModels: API.OperationMethod<
   GetAllNLSearchModelsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetAllNLSearchModelsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetAllNLSearchModelsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetAllNLSearchModelsRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<GetAllNLSearchModelsResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2734,8 +2734,8 @@ export const getAllPresets: API.OperationMethod<
   GetAllPresetsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetAllPresetsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<PresetsRetrieveSchema>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetAllPresetsRequest>,
+  output: __S(1092, __c34, 4) as any as S.Schema<PresetsRetrieveSchema>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2749,8 +2749,8 @@ export const getAnalyticsEvents: API.OperationMethod<
   GetAnalyticsEventsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetAnalyticsEventsRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<AnalyticsEventsResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetAnalyticsEventsRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<AnalyticsEventsResponse>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2764,8 +2764,8 @@ export const getAnalyticsRule: API.OperationMethod<
   GetAnalyticsRuleError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetAnalyticsRuleRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetAnalyticsRuleResponse>,
+  input: __S(1153, __c36, 1) as any as S.Schema<GetAnalyticsRuleRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<GetAnalyticsRuleResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2779,8 +2779,8 @@ export const getAnalyticsRules: API.OperationMethod<
   GetAnalyticsRulesError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetAnalyticsRulesRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GetAnalyticsRulesResponse>,
+  input: __S(1186, __c37, 2) as any as S.Schema<GetAnalyticsRulesRequest>,
+  output: __S(1188, __c37, 4) as any as S.Schema<GetAnalyticsRulesResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2794,8 +2794,8 @@ export const getAnalyticsStatus: API.OperationMethod<
   GetAnalyticsStatusError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetAnalyticsStatusRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<AnalyticsStatus>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetAnalyticsStatusRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<AnalyticsStatus>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2809,8 +2809,8 @@ export const getAPIStats: API.OperationMethod<
   GetAPIStatsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetAPIStatsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<APIStatsResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetAPIStatsRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<APIStatsResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2824,8 +2824,8 @@ export const getCollection: API.OperationMethod<
   GetCollectionError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetCollectionRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetCollectionResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetCollectionRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<GetCollectionResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2839,8 +2839,8 @@ export const getCollections: API.OperationMethod<
   GetCollectionsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetCollectionsRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<GetCollectionsResponse>,
+  input: __S(1313, __c41, 1) as any as S.Schema<GetCollectionsRequest>,
+  output: __S(1315, __c41, 3) as any as S.Schema<GetCollectionsResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2854,8 +2854,8 @@ export const getConversationModel: API.OperationMethod<
   GetConversationModelError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetConversationModelRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetConversationModelResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetConversationModelRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<GetConversationModelResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2869,8 +2869,8 @@ export const getCurationSet: API.OperationMethod<
   GetCurationSetError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetCurationSetRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GetCurationSetResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetCurationSetRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<GetCurationSetResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2884,8 +2884,8 @@ export const getCurationSetItem: API.OperationMethod<
   GetCurationSetItemError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetCurationSetItemRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetCurationSetItemResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetCurationSetItemRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<GetCurationSetItemResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2899,8 +2899,8 @@ export const getCurationSetItems: API.OperationMethod<
   GetCurationSetItemsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetCurationSetItemsRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<GetCurationSetItemsResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetCurationSetItemsRequest>,
+  output: __S(1603, __c50, 3) as any as S.Schema<GetCurationSetItemsResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2914,8 +2914,8 @@ export const getCurationSets: API.OperationMethod<
   GetCurationSetsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetCurationSetsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetCurationSetsResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<GetCurationSetsRequest>,
+  output: __S(1634, __c51, 2) as any as S.Schema<GetCurationSetsResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2929,8 +2929,8 @@ export const getDocument: API.OperationMethod<
   GetDocumentError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetDocumentRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetDocumentResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetDocumentRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<GetDocumentResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2944,8 +2944,8 @@ export const getKey: API.OperationMethod<
   GetKeyError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetKeyRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetKeyResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetKeyRequest>,
+  output: __S(3328, __c104, 0) as any as S.Schema<GetKeyResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2959,8 +2959,8 @@ export const getKeys: API.OperationMethod<
   GetKeysError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetKeysRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<ApiKeysResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GetKeysRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<ApiKeysResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2974,8 +2974,8 @@ export const getMetrics: API.OperationMethod<
   GetMetricsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetMetricsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetMetricsResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<GetMetricsRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<GetMetricsResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -2989,8 +2989,8 @@ export const getNLSearchModel: API.OperationMethod<
   GetNLSearchModelError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetNLSearchModelRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<GetNLSearchModelResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetNLSearchModelRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<GetNLSearchModelResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3004,8 +3004,8 @@ export const getPreset: API.OperationMethod<
   GetPresetError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<GetPresetRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<GetPresetResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetPresetRequest>,
+  output: __S(1922, __c60, 2) as any as S.Schema<GetPresetResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3019,8 +3019,8 @@ export const getSchemaChanges: API.OperationMethod<
   GetSchemaChangesError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<GetSchemaChangesRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<GetSchemaChangesResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetSchemaChangesRequest>,
+  output: __S(1955, __c61, 3) as any as S.Schema<GetSchemaChangesResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3034,8 +3034,8 @@ export const getStemmingDictionary: API.OperationMethod<
   GetStemmingDictionaryError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetStemmingDictionaryRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<StemmingDictionary>,
+  input: __S(1984, __c62, 0) as any as S.Schema<GetStemmingDictionaryRequest>,
+  output: __S(1987, __c62, 3) as any as S.Schema<StemmingDictionary>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3049,8 +3049,8 @@ export const getStopwordsSet: API.OperationMethod<
   GetStopwordsSetError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetStopwordsSetRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<StopwordsSetRetrieveSchema>,
+  input: __S(2016, __c63, 0) as any as S.Schema<GetStopwordsSetRequest>,
+  output: __S(2017, __c63, 1) as any as S.Schema<StopwordsSetRetrieveSchema>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3064,8 +3064,8 @@ export const getStopwordsSets: API.OperationMethod<
   GetStopwordsSetsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<GetStopwordsSetsRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<StopwordsSetsRetrieveAllSchema>,
+  input: __S(2080, __c65, 0) as any as S.Schema<GetStopwordsSetsRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<StopwordsSetsRetrieveAllSchema>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3079,8 +3079,8 @@ export const getSynonymSet: API.OperationMethod<
   GetSynonymSetError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetSynonymSetRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<GetSynonymSetResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<GetSynonymSetRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<GetSynonymSetResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3094,8 +3094,8 @@ export const getSynonymSetItem: API.OperationMethod<
   GetSynonymSetItemError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetSynonymSetItemRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GetSynonymSetItemResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<GetSynonymSetItemRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<GetSynonymSetItemResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3109,8 +3109,8 @@ export const getSynonymSetItems: API.OperationMethod<
   GetSynonymSetItemsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetSynonymSetItemsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<GetSynonymSetItemsResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetSynonymSetItemsRequest>,
+  output: __S(2273, __c71, 1) as any as S.Schema<GetSynonymSetItemsResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3124,8 +3124,8 @@ export const getSynonymSets: API.OperationMethod<
   GetSynonymSetsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetSynonymSetsRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GetSynonymSetsResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetSynonymSetsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<GetSynonymSetsResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3139,8 +3139,8 @@ export const health: API.OperationMethod<
   HealthError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<HealthRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<HealthStatus>,
+  input: __S(2336, __c73, 0) as any as S.Schema<HealthRequest>,
+  output: __S(2337, __c73, 1) as any as S.Schema<HealthStatus>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3154,8 +3154,8 @@ export const importDocuments: API.OperationMethod<
   ImportDocumentsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ImportDocumentsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ImportDocumentsResponse>,
+  input: __S(2401, __c75, 1) as any as S.Schema<ImportDocumentsRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<ImportDocumentsResponse>,
   errors: [BadRequest, NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3169,8 +3169,8 @@ export const importStemmingDictionary: API.OperationMethod<
   ImportStemmingDictionaryError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<ImportStemmingDictionaryRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<ImportStemmingDictionaryResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ImportStemmingDictionaryRequest>,
+  output: __S(2433, __c76, 1) as any as S.Schema<ImportStemmingDictionaryResponse>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3184,8 +3184,8 @@ export const indexDocument: API.OperationMethod<
   IndexDocumentError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<IndexDocumentRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<IndexDocumentResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<IndexDocumentRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<IndexDocumentResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3199,8 +3199,8 @@ export const listStemmingDictionaries: API.OperationMethod<
   ListStemmingDictionariesError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListStemmingDictionariesRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<ListStemmingDictionariesResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ListStemmingDictionariesRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<ListStemmingDictionariesResponse>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3214,8 +3214,8 @@ export const searchCollection: API.OperationMethod<
   SearchCollectionError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<SearchCollectionRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<SearchResult>,
+  input: __S(2529, __c79, 1) as any as S.Schema<SearchCollectionRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<SearchResult>,
   errors: [BadRequest, NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3229,8 +3229,8 @@ export const searchMulti: API.OperationMethod<
   SearchMultiError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<SearchMultiRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<MultiSearchResult>,
+  input: __S(2595, __c81, 3) as any as S.Schema<SearchMultiRequest>,
+  output: __S(2598, __c81, 6) as any as S.Schema<MultiSearchResult>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3244,8 +3244,8 @@ export const takeSnapshot: API.OperationMethod<
   TakeSnapshotError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<TakeSnapshotRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SuccessStatus>,
+  input: __S(2624, __c82, 0) as any as S.Schema<TakeSnapshotRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<SuccessStatus>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3259,8 +3259,8 @@ export const toggleSlowRequestLog: API.OperationMethod<
   ToggleSlowRequestLogError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ToggleSlowRequestLogRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SuccessStatus>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ToggleSlowRequestLogRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<SuccessStatus>,
   errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3274,8 +3274,8 @@ export const updateCollection: API.OperationMethod<
   UpdateCollectionError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<UpdateCollectionRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<CollectionUpdateSchema>,
+  input: __S(2688, __c84, 0) as any as S.Schema<UpdateCollectionRequest>,
+  output: __S(2689, __c84, 1) as any as S.Schema<CollectionUpdateSchema>,
   errors: [BadRequest, NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3289,8 +3289,8 @@ export const updateConversationModel: API.OperationMethod<
   UpdateConversationModelError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<UpdateConversationModelRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UpdateConversationModelResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<UpdateConversationModelRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<UpdateConversationModelResponse>,
   errors: [BadRequest, NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3304,8 +3304,8 @@ export const updateDocument: API.OperationMethod<
   UpdateDocumentError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<UpdateDocumentRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<UpdateDocumentResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<UpdateDocumentRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<UpdateDocumentResponse>,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3319,8 +3319,8 @@ export const updateDocuments: API.OperationMethod<
   UpdateDocumentsError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<UpdateDocumentsRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<UpdateDocumentsResponse>,
+  input: __S(2881, __c90, 1) as any as S.Schema<UpdateDocumentsRequest>,
+  output: __S(2882, __c90, 2) as any as S.Schema<UpdateDocumentsResponse>,
   errors: [BadRequest, NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3334,8 +3334,8 @@ export const updateNLSearchModel: API.OperationMethod<
   UpdateNLSearchModelError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<UpdateNLSearchModelRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateNLSearchModelResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<UpdateNLSearchModelRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<UpdateNLSearchModelResponse>,
   errors: [BadRequest, NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3349,8 +3349,8 @@ export const upsertAlias: API.OperationMethod<
   UpsertAliasError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<UpsertAliasRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CollectionAlias>,
+  input: __S(2944, __c92, 0) as any as S.Schema<UpsertAliasRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<CollectionAlias>,
   errors: [BadRequest, NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3364,8 +3364,8 @@ export const upsertAnalyticsRule: API.OperationMethod<
   UpsertAnalyticsRuleError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<UpsertAnalyticsRuleRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpsertAnalyticsRuleResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<UpsertAnalyticsRuleRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<UpsertAnalyticsRuleResponse>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3379,8 +3379,8 @@ export const upsertCurationSet: API.OperationMethod<
   UpsertCurationSetError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<UpsertCurationSetRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<UpsertCurationSetResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<UpsertCurationSetRequest>,
+  output: __S(3009, __c94, 1) as any as S.Schema<UpsertCurationSetResponse>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3394,8 +3394,8 @@ export const upsertCurationSetItem: API.OperationMethod<
   UpsertCurationSetItemError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<UpsertCurationSetItemRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<UpsertCurationSetItemResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<UpsertCurationSetItemRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<UpsertCurationSetItemResponse>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3409,8 +3409,8 @@ export const upsertPreset: API.OperationMethod<
   UpsertPresetError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<UpsertPresetRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<UpsertPresetResponse>,
+  input: __S(3073, __c96, 1) as any as S.Schema<UpsertPresetRequest>,
+  output: __S(3075, __c96, 3) as any as S.Schema<UpsertPresetResponse>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3424,8 +3424,8 @@ export const upsertStopwordsSet: API.OperationMethod<
   UpsertStopwordsSetError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<UpsertStopwordsSetRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<StopwordsSetSchema>,
+  input: __S(3104, __c97, 0) as any as S.Schema<UpsertStopwordsSetRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<StopwordsSetSchema>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3439,8 +3439,8 @@ export const upsertSynonymSet: API.OperationMethod<
   UpsertSynonymSetError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<UpsertSynonymSetRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<UpsertSynonymSetResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<UpsertSynonymSetRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<UpsertSynonymSetResponse>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3454,8 +3454,8 @@ export const upsertSynonymSetItem: API.OperationMethod<
   UpsertSynonymSetItemError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<UpsertSynonymSetItemRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<UpsertSynonymSetItemResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<UpsertSynonymSetItemRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<UpsertSynonymSetItemResponse>,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -3465,8 +3465,8 @@ export type VoteError = TypesenseOpError;
 /** Triggers a follower node to initiate the raft voting process, which triggers leader re-election. Triggers a follower node to initiate the raft voting process, which triggers leader re-election. The follower node that you run this operation against will become the new leader, once this command succeeds. */
 export const vote: API.OperationMethod<VoteRequest, SuccessStatus, VoteError, TypesenseOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(206, __c25, 6) as any as S.Schema<VoteRequest>,
-    output: __S(1, __c0, 1) as any as S.Schema<SuccessStatus>,
+    input: __S(3264, __c102, 0) as any as S.Schema<VoteRequest>,
+    output: __S(960, __c30, 0) as any as S.Schema<SuccessStatus>,
     errors: [],
     protocol: TypesenseProtocol,
     retry: Retry.Retry,
@@ -3477,279 +3477,6 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/operations/cache/clear", code: 200 })),
-      ).annotate({ identifier: "ClearCacheRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          success: S.Boolean,
-        }),
-      ).annotate({ identifier: "SuccessStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/operations/db/compact", code: 200 })),
-      ).annotate({ identifier: "CompactDbRequest" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.optional(S.String),
-          doc_id: S.optional(S.String),
-          doc_ids: S.optional(__S(3, __c0, 3)),
-          q: S.optional(S.String),
-          analytics_tag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateAnalyticsEventRequestData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          event_type: S.String,
-          data: __S(4, __c0, 4),
-        }).pipe(T.Http({ method: "POST", uri: "/analytics/events", code: 200 })),
-      ).annotate({
-        identifier: "CreateAnalyticsEventRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "AnalyticsEventCreateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          destination_collection: S.optional(S.String),
-          limit: S.optional(S.Number),
-          capture_search_requests: S.optional(S.Boolean),
-          meta_fields: S.optional(__S(3, __c0, 3)),
-          expand_query: S.optional(S.Boolean),
-          counter_field: S.optional(S.String),
-          weight: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AnalyticsRuleCreateParams",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-          collection: S.String,
-          event_type: S.String,
-          rule_tag: S.optional(S.String),
-          params: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "AnalyticsRuleCreate" });
-    case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["name", "type", "collection", "event_type", "rule_tag", "params"],
-          [],
-        ]),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: __S(9, __c1, 1).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/analytics/rules", code: 200 })),
-      ).annotate({
-        identifier: "CreateAnalyticsRuleRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          destination_collection: S.optional(S.String),
-          limit: S.optional(S.Number),
-          capture_search_requests: S.optional(S.Boolean),
-          meta_fields: S.optional(__S(3, __c0, 3)),
-          expand_query: S.optional(S.Boolean),
-          counter_field: S.optional(S.String),
-          weight: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AnalyticsRuleParams" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-          collection: S.String,
-          event_type: S.String,
-          rule_tag: S.optional(S.String),
-          params: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "AnalyticsRule" });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["name", "type", "collection", "event_type", "rule_tag", "params"],
-          [],
-        ]),
-      );
-    case 6:
-      return S.suspend(() => __S(13, __c1, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateAnalyticsRuleResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          model_name: S.String,
-          api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          url: S.optional(S.String),
-          access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          client_id: S.optional(S.String),
-          client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          project_id: S.optional(S.String),
-          indexing_prefix: S.optional(S.String),
-          query_prefix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FieldEmbedModelConfig" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          from: __S(3, __c0, 3),
-          model_config: __S(15, __c1, 7),
-        }),
-      ).annotate({ identifier: "FieldEmbed" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-          optional: S.optional(S.Boolean),
-          facet: S.optional(S.Boolean),
-          index: S.optional(S.Boolean),
-          locale: S.optional(S.String),
-          sort: S.optional(S.Boolean),
-          infix: S.optional(S.Boolean),
-          reference: S.optional(S.String),
-          async_reference: S.optional(S.Boolean),
-          num_dim: S.optional(S.Number),
-          drop: S.optional(S.Boolean),
-          store: S.optional(S.Boolean),
-          vec_dist: S.optional(S.String),
-          range_index: S.optional(S.Boolean),
-          stem: S.optional(S.Boolean),
-          stem_dictionary: S.optional(S.String),
-          token_separators: S.optional(__S(3, __c0, 3)),
-          symbols_to_index: S.optional(__S(3, __c0, 3)),
-          embed: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "Field" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          model_name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VoiceQueryModelCollectionConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          fields: __S(18, __c2, 2),
-          default_sorting_field: S.optional(S.String),
-          token_separators: S.optional(__S(3, __c0, 3)),
-          synonym_sets: S.optional(__S(3, __c0, 3)),
-          enable_nested_fields: S.optional(S.Boolean),
-          symbols_to_index: S.optional(__S(3, __c0, 3)),
-          voice_query_model: S.optional(__S(19, __c2, 3)),
-          metadata: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "POST", uri: "/collections", code: 200 })),
-      ).annotate({ identifier: "CreateCollectionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          fields: __S(18, __c2, 2),
-          default_sorting_field: S.optional(S.String),
-          token_separators: S.optional(__S(3, __c0, 3)),
-          synonym_sets: S.optional(__S(3, __c0, 3)),
-          enable_nested_fields: S.optional(S.Boolean),
-          symbols_to_index: S.optional(__S(3, __c0, 3)),
-          voice_query_model: S.optional(__S(19, __c2, 3)),
-          metadata: S.optional(S.Unknown),
-          num_documents: S.Number,
-          created_at: S.Number,
-        }),
-      ).annotate({ identifier: "CreateCollectionResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          model_name: S.String,
-          api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          history_collection: S.String,
-          account_id: S.optional(S.String),
-          system_prompt: S.optional(S.String),
-          ttl: S.optional(S.Number),
-          max_bytes: S.Number,
-          vllm_url: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/conversations/models", code: 200 })),
-      ).annotate({
-        identifier: "CreateConversationModelRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          model_name: S.String,
-          api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          history_collection: S.String,
-          account_id: S.optional(S.String),
-          system_prompt: S.optional(S.String),
-          ttl: S.optional(S.Number),
-          max_bytes: S.Number,
-          vllm_url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateConversationModelResponse",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          description: S.String,
-          actions: __S(3, __c0, 3),
-          collections: __S(3, __c0, 3),
-          expires_at: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/keys", code: 200 })),
-      ).annotate({ identifier: "CreateKeyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          description: S.String,
-          actions: __S(3, __c0, 3),
-          collections: __S(3, __c0, 3),
-          expires_at: S.optional(S.Number),
-          id: S.optional(S.Number),
-          value_prefix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateKeyResponse" });
-    case 2:
-      return S.suspend(() =>
         S.Struct({
           model_name: S.optional(S.String),
           api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -3759,7 +3486,7 @@ function __c3(j: number): any {
           system_prompt: S.optional(S.String),
           top_p: S.optional(S.Number),
           top_k: S.optional(S.Number),
-          stop_sequences: S.optional(__S(3, __c0, 3)),
+          stop_sequences: S.optional(__S(1888, __c59, 0)),
           api_version: S.optional(S.String),
           project_id: S.optional(S.String),
           access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -3774,7 +3501,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateNLSearchModelRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           model_name: S.optional(S.String),
@@ -3785,7 +3516,7 @@ function __c3(j: number): any {
           system_prompt: S.optional(S.String),
           top_p: S.optional(S.Number),
           top_k: S.optional(S.Number),
-          stop_sequences: S.optional(__S(3, __c0, 3)),
+          stop_sequences: S.optional(__S(1888, __c59, 0)),
           api_version: S.optional(S.String),
           project_id: S.optional(S.String),
           access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -3800,23 +3531,35 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateNLSearchModelResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/debug", code: 200 })),
       ).annotate({ identifier: "DebugRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "DebugResponse" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           aliasName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/aliases/{aliasName}", code: 200 })),
       ).annotate({ identifier: "DeleteAliasRequest" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -3825,7 +3568,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "CollectionAlias" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3835,7 +3578,29 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteAnalyticsRuleRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          destination_collection: S.optional(S.String),
+          limit: S.optional(S.Number),
+          capture_search_requests: S.optional(S.Boolean),
+          meta_fields: S.optional(__S(1888, __c59, 0)),
+          expand_query: S.optional(S.Boolean),
+          counter_field: S.optional(S.String),
+          weight: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AnalyticsRuleCreateParams",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -3843,18 +3608,26 @@ function __c4(j: number): any {
           collection: S.String,
           event_type: S.String,
           rule_tag: S.optional(S.String),
-          params: S.optional(__S(7, __c0, 7)),
+          params: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({
         identifier: "DeleteAnalyticsRuleResponse",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collectionName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/collections/{collectionName}", code: 200 })),
       ).annotate({ identifier: "DeleteCollectionRequest" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String.pipe(T.Label()),
@@ -3862,19 +3635,31 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteConversationModelRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           curationSetName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/curation_sets/{curationSetName}", code: 200 })),
       ).annotate({ identifier: "DeleteCurationSetRequest" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
         }),
       ).annotate({ identifier: "CurationSetDeleteSchema" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           curationSetName: S.String.pipe(T.Label()),
@@ -3889,7 +3674,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteCurationSetItemRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -3897,7 +3686,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "CurationItemDeleteSchema" });
   }
 }
-function __c5(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3912,11 +3701,19 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteDocumentRequest" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteDocumentResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter_by: S.String,
@@ -3927,34 +3724,42 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteDocumentsRequestDeleteDocumentsParameters",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           collectionName: S.String.pipe(T.Label()),
-          deleteDocumentsParameters: S.optional(__S(42, __c5, 2).pipe(T.Query())),
+          deleteDocumentsParameters: S.optional(__S(512, __c16, 0).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/collections/{collectionName}/documents", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteDocumentsRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           num_deleted: S.Number,
         }),
       ).annotate({ identifier: "DeleteDocumentsResponse" });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyId: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/keys/{keyId}", code: 200 })),
       ).annotate({ identifier: "DeleteKeyRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
         }),
       ).annotate({ identifier: "ApiKeyDeleteResponse" });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String.pipe(T.Label()),
@@ -3964,7 +3769,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3974,13 +3779,21 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "NLSearchModelDeleteSchema",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           presetId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/presets/{presetId}", code: 200 })),
       ).annotate({ identifier: "DeletePresetRequest" });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           setId: S.String.pipe(T.Label()),
@@ -3988,13 +3801,21 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteStopwordsSetRequest",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           synonymSetName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/synonym_sets/{synonymSetName}", code: 200 })),
       ).annotate({ identifier: "DeleteSynonymSetRequest" });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           synonymSetName: S.String.pipe(T.Label()),
@@ -4009,7 +3830,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteSynonymSetItemRequest",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter_by: S.optional(S.String),
@@ -4019,11 +3844,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ExportDocumentsRequestExportDocumentsParameters",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           collectionName: S.String.pipe(T.Label()),
-          exportDocumentsParameters: S.optional(__S(53, __c6, 5).pipe(T.Query())),
+          exportDocumentsParameters: S.optional(__S(768, __c24, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4032,45 +3857,79 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ExportDocumentsRequest" });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ExportDocumentsResponse",
       });
   }
 }
-function __c7(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/analytics/flush", code: 200 })),
       ).annotate({ identifier: "FlushAnalyticsRequest" });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           aliasName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/aliases/{aliasName}", code: 200 })),
       ).annotate({ identifier: "GetAliasRequest" });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/aliases", code: 200 })),
       ).annotate({ identifier: "GetAliasesRequest" });
-    case 3:
-      return S.Array(__S(31, __c3, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          aliases: __S(59, __c7, 3),
+          aliases: __S(897, __c28, 1),
         }),
       ).annotate({
         identifier: "CollectionAliasesResponse",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/operations/cache/clear", code: 200 })),
+      ).annotate({ identifier: "ClearCacheRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.Boolean,
+        }),
+      ).annotate({ identifier: "SuccessStatus" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/conversations/models", code: 200 })),
       ).annotate({
         identifier: "GetAllConversationModelsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4084,23 +3943,33 @@ function __c7(j: number): any {
           vllm_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConversationModelSchema" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(63, __c7, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(993, __c31, 1));
+    case 3:
+      return S.suspend(() => __S(994, __c31, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAllConversationModelsResponse",
       });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/nl_search_models", code: 200 })),
       ).annotate({
         identifier: "GetAllNLSearchModelsRequest",
       });
+    case 1:
+      return S.Array(__S(1056, __c33, 0));
     case 2:
+      return S.suspend(() => __S(1025, __c32, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetAllNLSearchModelsResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           model_name: S.optional(S.String),
@@ -4111,7 +3980,7 @@ function __c8(j: number): any {
           system_prompt: S.optional(S.String),
           top_p: S.optional(S.Number),
           top_k: S.optional(S.Number),
-          stop_sequences: S.optional(__S(3, __c0, 3)),
+          stop_sequences: S.optional(__S(1888, __c59, 0)),
           api_version: S.optional(S.String),
           project_id: S.optional(S.String),
           access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -4124,17 +3993,1023 @@ function __c8(j: number): any {
           id: S.String,
         }),
       ).annotate({ identifier: "NLSearchModelSchema" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() => __S(67, __c8, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetAllNLSearchModelsResponse",
-      });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/presets", code: 200 })),
       ).annotate({ identifier: "GetAllPresetsRequest" });
-    case 6:
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "q",
+            "query_by",
+            "validate_field_names",
+            "nl_query",
+            "nl_model_id",
+            "query_by_weights",
+            "text_match_type",
+            "prefix",
+            "infix",
+            "max_extra_prefix",
+            "max_extra_suffix",
+            "filter_by",
+            "enable_lazy_filter",
+            "max_filter_by_candidates",
+            "sort_by",
+            "facet_by",
+            "max_facet_values",
+            "facet_query",
+            "facet_query_num_typos",
+            "num_typos",
+            "page",
+            "per_page",
+            "limit",
+            "offset",
+            "group_by",
+            "group_limit",
+            "group_missing_values",
+            "group_max_candidates",
+            "include_fields",
+            "exclude_fields",
+            "highlight_full_fields",
+            "highlight_affix_num_tokens",
+            "highlight_start_tag",
+            "highlight_end_tag",
+            "enable_highlight_v1",
+            "enable_analytics",
+            "snippet_threshold",
+            "synonym_sets",
+            "drop_tokens_threshold",
+            "drop_tokens_mode",
+            "typo_tokens_threshold",
+            "enable_typos_for_alpha_numerical_tokens",
+            "filter_curated_hits",
+            "enable_synonyms",
+            "synonym_prefix",
+            "demote_synonym_match",
+            "synonym_num_typos",
+            "pinned_hits",
+            "hidden_hits",
+            "curation_tags",
+            "highlight_fields",
+            "rerank_hybrid_matches",
+            "split_join_tokens",
+            "pre_segmented_query",
+            "preset",
+            "enable_curations",
+            "prioritize_exact_match",
+            "max_candidates",
+            "prioritize_token_position",
+            "prioritize_num_matching_fields",
+            "enable_typos_for_numerical_tokens",
+            "exhaustive_search",
+            "search_cutoff_ms",
+            "limit_hits",
+            "use_cache",
+            "cache_ttl",
+            "min_len_1typo",
+            "min_len_2typo",
+            "vector_query",
+            "remote_embedding_timeout_ms",
+            "remote_embedding_num_tries",
+            "facet_strategy",
+            "stopwords",
+            "facet_return_parent",
+            "facet_sample_percent",
+            "facet_sample_threshold",
+            "facet_sample_slope",
+            "voice_query",
+            "conversation",
+            "conversation_model_id",
+            "conversation_id",
+          ],
+          ["union", "searches"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1089, __c34, 1),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "PresetSchema" });
+    case 3:
+      return S.Array(__S(1090, __c34, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          presets: __S(1091, __c34, 3),
+        }),
+      ).annotate({ identifier: "PresetsRetrieveSchema" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Query()),
+          name: S.String.pipe(T.Query()),
+          n: S.Number.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/analytics/events", code: 200 })),
+      ).annotate({
+        identifier: "GetAnalyticsEventsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          event_type: S.optional(S.String),
+          collection: S.optional(S.String),
+          timestamp: S.optional(S.Number),
+          user_id: S.optional(S.String),
+          doc_id: S.optional(S.String),
+          doc_ids: S.optional(__S(1888, __c59, 0)),
+          query: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AnalyticsEventsResponseEventsItem",
+      });
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          events: __S(1122, __c35, 2),
+        }),
+      ).annotate({ identifier: "AnalyticsEventsResponse" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+          collection: S.String,
+          event_type: S.String,
+          rule_tag: S.optional(S.String),
+          params: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "AnalyticsRuleCreate" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ruleName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/analytics/rules/{ruleName}", code: 200 })),
+      ).annotate({ identifier: "GetAnalyticsRuleRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          destination_collection: S.optional(S.String),
+          limit: S.optional(S.Number),
+          capture_search_requests: S.optional(S.Boolean),
+          meta_fields: S.optional(__S(1888, __c59, 0)),
+          expand_query: S.optional(S.Boolean),
+          counter_field: S.optional(S.String),
+          weight: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AnalyticsRuleParams" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+          collection: S.String,
+          event_type: S.String,
+          rule_tag: S.optional(S.String),
+          params: S.optional(__S(1184, __c37, 0)),
+        }),
+      ).annotate({ identifier: "AnalyticsRule" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          rule_tag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/analytics/rules", code: 200 })),
+      ).annotate({ identifier: "GetAnalyticsRulesRequest" });
+    case 3:
+      return S.Array(__S(1185, __c37, 1));
+    case 4:
+      return S.suspend(() => __S(1187, __c37, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetAnalyticsRulesResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/analytics/status", code: 200 })),
+      ).annotate({
+        identifier: "GetAnalyticsStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          popular_prefix_queries: S.optional(S.Number),
+          nohits_prefix_queries: S.optional(S.Number),
+          log_prefix_queries: S.optional(S.Number),
+          query_log_events: S.optional(S.Number),
+          query_counter_events: S.optional(S.Number),
+          doc_log_events: S.optional(S.Number),
+          doc_counter_events: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AnalyticsStatus" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/stats.json", code: 200 })),
+      ).annotate({ identifier: "GetAPIStatsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          delete_latency_ms: S.optional(S.Number),
+          delete_requests_per_second: S.optional(S.Number),
+          import_latency_ms: S.optional(S.Number),
+          import_requests_per_second: S.optional(S.Number),
+          latency_ms: S.optional(S.Unknown),
+          overloaded_requests_per_second: S.optional(S.Number),
+          pending_write_batches: S.optional(S.Number),
+          requests_per_second: S.optional(S.Unknown),
+          search_latency_ms: S.optional(S.Number),
+          search_requests_per_second: S.optional(S.Number),
+          total_requests_per_second: S.optional(S.Number),
+          write_latency_ms: S.optional(S.Number),
+          write_requests_per_second: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "APIStatsResponse" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collectionName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/collections/{collectionName}", code: 200 })),
+      ).annotate({ identifier: "GetCollectionRequest" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          exclude_fields: S.optional(S.String),
+          limit: S.optional(S.Number),
+          offset: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetCollectionsRequestGetCollectionsParameters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          getCollectionsParameters: S.optional(__S(1312, __c41, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/collections", code: 200 })),
+      ).annotate({ identifier: "GetCollectionsRequest" });
+    case 2:
+      return S.Array(__S(2785, __c87, 1));
+    case 3:
+      return S.suspend(() => __S(1314, __c41, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetCollectionsResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/operations/db/compact", code: 200 })),
+      ).annotate({ identifier: "CompactDbRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/conversations/models/{modelId}", code: 200 })),
+      ).annotate({
+        identifier: "GetConversationModelRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          curationSetName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/curation_sets/{curationSetName}", code: 200 })),
+      ).annotate({ identifier: "GetCurationSetRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tags: S.optional(__S(1888, __c59, 0)),
+          query: S.optional(S.String),
+          match: S.optional(S.String),
+          filter_by: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CurationRule" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          position: S.Number,
+        }),
+      ).annotate({ identifier: "CurationInclude" });
+    case 2:
+      return S.Array(__S(1441, __c45, 1));
+    case 3:
+      return S.Array(__S(416, __c13, 0));
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1505, __c47, 1),
+          description: S.optional(S.String),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "GetCurationSetResponse" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rule: __S(1440, __c45, 0),
+          includes: S.optional(__S(1442, __c45, 2)),
+          excludes: S.optional(__S(1443, __c45, 3)),
+          filter_by: S.optional(S.String),
+          remove_matched_tokens: S.optional(S.Boolean),
+          metadata: S.optional(S.Unknown),
+          sort_by: S.optional(S.String),
+          replace_query: S.optional(S.String),
+          filter_curated_hits: S.optional(S.Boolean),
+          effective_from_ts: S.optional(S.Number),
+          effective_to_ts: S.optional(S.Number),
+          stop_processing: S.optional(S.Boolean),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CurationItemCreateSchema" });
+    case 1:
+      return S.Array(__S(1504, __c47, 0));
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          curationSetName: S.String.pipe(T.Label()),
+          itemId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/curation_sets/{curationSetName}/items/{itemId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCurationSetItemRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rule: __S(1440, __c45, 0),
+          includes: S.optional(__S(1442, __c45, 2)),
+          excludes: S.optional(__S(1443, __c45, 3)),
+          filter_by: S.optional(S.String),
+          remove_matched_tokens: S.optional(S.Boolean),
+          metadata: S.optional(S.Unknown),
+          sort_by: S.optional(S.String),
+          replace_query: S.optional(S.String),
+          filter_curated_hits: S.optional(S.Boolean),
+          effective_from_ts: S.optional(S.Number),
+          effective_to_ts: S.optional(S.Number),
+          stop_processing: S.optional(S.Boolean),
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "GetCurationSetItemResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          curationSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/curation_sets/{curationSetName}/items", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetCurationSetItemsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          rule: __S(1440, __c45, 0),
+          includes: S.optional(__S(1442, __c45, 2)),
+          excludes: S.optional(__S(1443, __c45, 3)),
+          filter_by: S.optional(S.String),
+          remove_matched_tokens: S.optional(S.Boolean),
+          metadata: S.optional(S.Unknown),
+          sort_by: S.optional(S.String),
+          replace_query: S.optional(S.String),
+          filter_curated_hits: S.optional(S.Boolean),
+          effective_from_ts: S.optional(S.Number),
+          effective_to_ts: S.optional(S.Number),
+          stop_processing: S.optional(S.Boolean),
+          id: S.String,
+        }),
+      ).annotate({ identifier: "CurationItemSchema" });
+    case 2:
+      return S.Array(__S(1601, __c50, 1));
+    case 3:
+      return S.suspend(() => __S(1602, __c50, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetCurationSetItemsResponse",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/curation_sets", code: 200 })),
+      ).annotate({ identifier: "GetCurationSetsRequest" });
+    case 1:
+      return S.Array(__S(1472, __c46, 0));
+    case 2:
+      return S.suspend(() => __S(1633, __c51, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetCurationSetsResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collectionName: S.String.pipe(T.Label()),
+          documentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/collections/{collectionName}/documents/{documentId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetDocumentRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyId: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/keys/{keyId}", code: 200 })),
+      ).annotate({ identifier: "GetKeyRequest" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/keys", code: 200 })),
+      ).annotate({ identifier: "GetKeysRequest" });
+    case 1:
+      return S.Array(__S(3328, __c104, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          keys: __S(1729, __c54, 1),
+        }),
+      ).annotate({ identifier: "ApiKeysResponse" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/metrics.json", code: 200 })),
+      ).annotate({ identifier: "GetMetricsRequest" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/nl_search_models/{modelId}", code: 200 })),
+      ).annotate({ identifier: "GetNLSearchModelRequest" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.optional(S.String),
+          doc_id: S.optional(S.String),
+          doc_ids: S.optional(__S(1888, __c59, 0)),
+          q: S.optional(S.String),
+          analytics_tag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateAnalyticsEventRequestData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          event_type: S.String,
+          data: __S(1824, __c57, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/analytics/events", code: 200 })),
+      ).annotate({
+        identifier: "CreateAnalyticsEventRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "AnalyticsEventCreateResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          presetId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/presets/{presetId}", code: 200 })),
+      ).annotate({ identifier: "GetPresetRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "q",
+            "query_by",
+            "validate_field_names",
+            "nl_query",
+            "nl_model_id",
+            "query_by_weights",
+            "text_match_type",
+            "prefix",
+            "infix",
+            "max_extra_prefix",
+            "max_extra_suffix",
+            "filter_by",
+            "enable_lazy_filter",
+            "max_filter_by_candidates",
+            "sort_by",
+            "facet_by",
+            "max_facet_values",
+            "facet_query",
+            "facet_query_num_typos",
+            "num_typos",
+            "page",
+            "per_page",
+            "limit",
+            "offset",
+            "group_by",
+            "group_limit",
+            "group_missing_values",
+            "group_max_candidates",
+            "include_fields",
+            "exclude_fields",
+            "highlight_full_fields",
+            "highlight_affix_num_tokens",
+            "highlight_start_tag",
+            "highlight_end_tag",
+            "enable_highlight_v1",
+            "enable_analytics",
+            "snippet_threshold",
+            "synonym_sets",
+            "drop_tokens_threshold",
+            "drop_tokens_mode",
+            "typo_tokens_threshold",
+            "enable_typos_for_alpha_numerical_tokens",
+            "filter_curated_hits",
+            "enable_synonyms",
+            "synonym_prefix",
+            "demote_synonym_match",
+            "synonym_num_typos",
+            "pinned_hits",
+            "hidden_hits",
+            "curation_tags",
+            "highlight_fields",
+            "rerank_hybrid_matches",
+            "split_join_tokens",
+            "pre_segmented_query",
+            "preset",
+            "enable_curations",
+            "prioritize_exact_match",
+            "max_candidates",
+            "prioritize_token_position",
+            "prioritize_num_matching_fields",
+            "enable_typos_for_numerical_tokens",
+            "exhaustive_search",
+            "search_cutoff_ms",
+            "limit_hits",
+            "use_cache",
+            "cache_ttl",
+            "min_len_1typo",
+            "min_len_2typo",
+            "vector_query",
+            "remote_embedding_timeout_ms",
+            "remote_embedding_num_tries",
+            "facet_strategy",
+            "stopwords",
+            "facet_return_parent",
+            "facet_sample_percent",
+            "facet_sample_threshold",
+            "facet_sample_slope",
+            "voice_query",
+            "conversation",
+            "conversation_model_id",
+            "conversation_id",
+          ],
+          ["union", "searches"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1921, __c60, 1),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "GetPresetResponse" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/operations/schema_changes", code: 200 })),
+      ).annotate({ identifier: "GetSchemaChangesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          collection: S.optional(S.String),
+          validated_docs: S.optional(S.Number),
+          altered_docs: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SchemaChangeStatus" });
+    case 2:
+      return S.Array(__S(1953, __c61, 1));
+    case 3:
+      return S.suspend(() => __S(1954, __c61, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetSchemaChangesResponse",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dictionaryId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/stemming/dictionaries/{dictionaryId}", code: 200 })),
+      ).annotate({
+        identifier: "GetStemmingDictionaryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          word: S.String,
+          root: S.String,
+        }),
+      ).annotate({
+        identifier: "StemmingDictionaryWordsItem",
+      });
+    case 2:
+      return S.Array(__S(1985, __c62, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          words: __S(1986, __c62, 2),
+        }),
+      ).annotate({ identifier: "StemmingDictionary" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          setId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/stopwords/{setId}", code: 200 })),
+      ).annotate({ identifier: "GetStopwordsSetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stopwords: __S(2048, __c64, 0),
+        }),
+      ).annotate({
+        identifier: "StopwordsSetRetrieveSchema",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          stopwords: __S(1888, __c59, 0),
+          locale: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StopwordsSetSchema" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/stopwords", code: 200 })),
+      ).annotate({ identifier: "GetStopwordsSetsRequest" });
+    case 1:
+      return S.Array(__S(2048, __c64, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          stopwords: __S(2081, __c65, 1),
+        }),
+      ).annotate({
+        identifier: "StopwordsSetsRetrieveAllSchema",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          synonymSetName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/synonym_sets/{synonymSetName}", code: 200 })),
+      ).annotate({ identifier: "GetSynonymSetRequest" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          synonyms: __S(1888, __c59, 0),
+          root: S.optional(S.String),
+          locale: S.optional(S.String),
+          symbols_to_index: S.optional(__S(1888, __c59, 0)),
+        }),
+      ).annotate({ identifier: "SynonymItemSchema" });
+    case 1:
+      return S.Array(__S(2144, __c67, 0));
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(2145, __c67, 1),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "GetSynonymSetResponse" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          synonymSetName: S.String.pipe(T.Label()),
+          itemId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/synonym_sets/{synonymSetName}/items/{itemId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetSynonymSetItemRequest" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          synonyms: __S(1888, __c59, 0),
+          root: S.optional(S.String),
+          locale: S.optional(S.String),
+          symbols_to_index: S.optional(__S(1888, __c59, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSynonymSetItemResponse",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          synonymSetName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/synonym_sets/{synonymSetName}/items", code: 200 })),
+      ).annotate({
+        identifier: "GetSynonymSetItemsRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(2145, __c67, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetSynonymSetItemsResponse",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/synonym_sets", code: 200 })),
+      ).annotate({ identifier: "GetSynonymSetsRequest" });
+    case 1:
+      return S.Array(__S(2176, __c68, 0));
+    case 2:
+      return S.suspend(() => __S(2305, __c72, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetSynonymSetsResponse",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
+      ).annotate({ identifier: "HealthRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+        }),
+      ).annotate({ identifier: "HealthStatus" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["name", "type", "collection", "event_type", "rule_tag", "params"],
+          [],
+        ]),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: __S(2368, __c74, 0).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/analytics/rules", code: 200 })),
+      ).annotate({
+        identifier: "CreateAnalyticsRuleRequest",
+      });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["name", "type", "collection", "event_type", "rule_tag", "params"],
+          [],
+        ]),
+      );
+    case 3:
+      return S.suspend(() => __S(2370, __c74, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateAnalyticsRuleResponse",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          batch_size: S.optional(S.Number),
+          return_id: S.optional(S.Boolean),
+          remote_embedding_batch_size: S.optional(S.Number),
+          return_doc: S.optional(S.Boolean),
+          action: S.optional(S.String),
+          dirty_values: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ImportDocumentsRequestImportDocumentsParameters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          collectionName: S.String.pipe(T.Label()),
+          importDocumentsParameters: S.optional(__S(2400, __c75, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/collections/{collectionName}/documents/import",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ImportDocumentsRequest" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Query()),
+          body: S.String.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/stemming/dictionaries/import", code: 200 })),
+      ).annotate({
+        identifier: "ImportStemmingDictionaryRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ImportStemmingDictionaryResponse",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collectionName: S.String.pipe(T.Label()),
+          action: S.optional(S.String.pipe(T.Query())),
+          dirty_values: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/collections/{collectionName}/documents", code: 200 }),
+        ),
+      ).annotate({ identifier: "IndexDocumentRequest" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/stemming/dictionaries", code: 200 })),
+      ).annotate({
+        identifier: "ListStemmingDictionariesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dictionaries: S.optional(__S(1888, __c59, 0)),
+        }),
+      ).annotate({
+        identifier: "ListStemmingDictionariesResponse",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           q: S.optional(S.String),
@@ -4220,7 +5095,177 @@ function __c8(j: number): any {
           conversation_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchParameters" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          collectionName: S.String.pipe(T.Label()),
+          searchParameters: __S(2528, __c79, 0).pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/collections/{collectionName}/documents/search",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "SearchCollectionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          facet_counts: S.optional(__S(2564, __c80, 4)),
+          found: S.optional(S.Number),
+          found_docs: S.optional(S.Number),
+          search_time_ms: S.optional(S.Number),
+          out_of: S.optional(S.Number),
+          search_cutoff: S.optional(S.Boolean),
+          page: S.optional(S.Number),
+          grouped_hits: S.optional(__S(2576, __c80, 16)),
+          hits: S.optional(__S(2574, __c80, 14)),
+          request_params: S.optional(__S(2578, __c80, 18)),
+          conversation: S.optional(__S(2579, __c80, 19)),
+          union_request_params: S.optional(__S(2580, __c80, 20)),
+          metadata: S.optional(__S(2569, __c80, 9)),
+        }),
+      ).annotate({ identifier: "SearchResult" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          highlighted: S.optional(S.String),
+          value: S.optional(S.String),
+          parent: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "FacetCountsCountsItem" });
+    case 1:
+      return S.Array(__S(2560, __c80, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          max: S.optional(S.Number),
+          min: S.optional(S.Number),
+          sum: S.optional(S.Number),
+          total_values: S.optional(S.Number),
+          avg: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FacetCountsStats" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          counts: S.optional(__S(2561, __c80, 1)),
+          field_name: S.optional(S.String),
+          sampled: S.optional(S.Boolean),
+          stats: S.optional(__S(2562, __c80, 2)),
+        }),
+      ).annotate({ identifier: "FacetCounts" });
+    case 4:
+      return S.Array(__S(2563, __c80, 3));
+    case 5:
+      return S.Array(S.Unknown);
+    case 6:
+      return S.Array(S.Number);
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          snippet: S.optional(S.String),
+          snippets: S.optional(__S(1888, __c59, 0)),
+          value: S.optional(S.String),
+          values: S.optional(__S(1888, __c59, 0)),
+          indices: S.optional(__S(2566, __c80, 6)),
+          matched_tokens: S.optional(__S(2565, __c80, 5)),
+        }),
+      ).annotate({ identifier: "SearchHighlight" });
+    case 8:
+      return S.Array(__S(2567, __c80, 7));
+    case 9:
+      return S.Record(S.String, S.Unknown);
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          best_field_score: S.optional(S.String),
+          best_field_weight: S.optional(S.Number),
+          fields_matched: S.optional(S.Number),
+          num_tokens_dropped: S.optional(S.Number),
+          score: S.optional(S.String),
+          tokens_matched: S.optional(S.Number),
+          typo_prefix_score: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SearchResultHitTextMatchInfo",
+      });
+    case 11:
+      return S.Record(S.String, S.Number);
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          rank_fusion_score: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SearchResultHitHybridSearchInfo",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          highlights: S.optional(__S(2568, __c80, 8)),
+          highlight: S.optional(__S(2569, __c80, 9)),
+          document: S.optional(__S(2569, __c80, 9)),
+          text_match: S.optional(S.Number),
+          text_match_info: S.optional(__S(2570, __c80, 10)),
+          geo_distance_meters: S.optional(__S(2571, __c80, 11)),
+          vector_distance: S.optional(S.Number),
+          hybrid_search_info: S.optional(__S(2572, __c80, 12)),
+          search_index: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SearchResultHit" });
+    case 14:
+      return S.Array(__S(2573, __c80, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          found: S.optional(S.Number),
+          group_key: __S(2565, __c80, 5),
+          hits: __S(2574, __c80, 14),
+        }),
+      ).annotate({ identifier: "SearchGroupedHit" });
+    case 16:
+      return S.Array(__S(2575, __c80, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          transcribed_query: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SearchRequestParamsVoiceQuery",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          collection_name: S.String,
+          first_q: S.optional(S.String),
+          q: S.String,
+          per_page: S.Number,
+          voice_query: S.optional(__S(2577, __c80, 17)),
+        }),
+      ).annotate({ identifier: "SearchRequestParams" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          answer: S.String,
+          conversation_history: __S(2565, __c80, 5),
+          conversation_id: S.String,
+          query: S.String,
+        }),
+      ).annotate({ identifier: "SearchResultConversation" });
+    case 20:
+      return S.Array(__S(2578, __c80, 18));
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           q: S.optional(S.String),
@@ -4304,959 +5349,9 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "MultiSearchCollectionParameters",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
     case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "q",
-            "query_by",
-            "validate_field_names",
-            "nl_query",
-            "nl_model_id",
-            "query_by_weights",
-            "text_match_type",
-            "prefix",
-            "infix",
-            "max_extra_prefix",
-            "max_extra_suffix",
-            "filter_by",
-            "enable_lazy_filter",
-            "max_filter_by_candidates",
-            "sort_by",
-            "facet_by",
-            "max_facet_values",
-            "facet_query",
-            "facet_query_num_typos",
-            "num_typos",
-            "page",
-            "per_page",
-            "limit",
-            "offset",
-            "group_by",
-            "group_limit",
-            "group_missing_values",
-            "group_max_candidates",
-            "include_fields",
-            "exclude_fields",
-            "highlight_full_fields",
-            "highlight_affix_num_tokens",
-            "highlight_start_tag",
-            "highlight_end_tag",
-            "enable_highlight_v1",
-            "enable_analytics",
-            "snippet_threshold",
-            "synonym_sets",
-            "drop_tokens_threshold",
-            "drop_tokens_mode",
-            "typo_tokens_threshold",
-            "enable_typos_for_alpha_numerical_tokens",
-            "filter_curated_hits",
-            "enable_synonyms",
-            "synonym_prefix",
-            "demote_synonym_match",
-            "synonym_num_typos",
-            "pinned_hits",
-            "hidden_hits",
-            "curation_tags",
-            "highlight_fields",
-            "rerank_hybrid_matches",
-            "split_join_tokens",
-            "pre_segmented_query",
-            "preset",
-            "enable_curations",
-            "prioritize_exact_match",
-            "max_candidates",
-            "prioritize_token_position",
-            "prioritize_num_matching_fields",
-            "enable_typos_for_numerical_tokens",
-            "exhaustive_search",
-            "search_cutoff_ms",
-            "limit_hits",
-            "use_cache",
-            "cache_ttl",
-            "min_len_1typo",
-            "min_len_2typo",
-            "vector_query",
-            "remote_embedding_timeout_ms",
-            "remote_embedding_num_tries",
-            "facet_strategy",
-            "stopwords",
-            "facet_return_parent",
-            "facet_sample_percent",
-            "facet_sample_threshold",
-            "facet_sample_slope",
-            "voice_query",
-            "conversation",
-            "conversation_model_id",
-            "conversation_id",
-          ],
-          ["union", "searches"],
-        ]),
-      );
+      return S.Array(__S(2592, __c81, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(73, __c9, 1),
-          name: S.String,
-        }),
-      ).annotate({ identifier: "PresetSchema" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          presets: __S(75, __c9, 3),
-        }),
-      ).annotate({ identifier: "PresetsRetrieveSchema" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Query()),
-          name: S.String.pipe(T.Query()),
-          n: S.Number.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/analytics/events", code: 200 })),
-      ).annotate({
-        identifier: "GetAnalyticsEventsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          event_type: S.optional(S.String),
-          collection: S.optional(S.String),
-          timestamp: S.optional(S.Number),
-          user_id: S.optional(S.String),
-          doc_id: S.optional(S.String),
-          doc_ids: S.optional(__S(3, __c0, 3)),
-          query: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AnalyticsEventsResponseEventsItem",
-      });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          events: __S(79, __c9, 7),
-        }),
-      ).annotate({ identifier: "AnalyticsEventsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ruleName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/analytics/rules/{ruleName}", code: 200 })),
-      ).annotate({ identifier: "GetAnalyticsRuleRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          rule_tag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/analytics/rules", code: 200 })),
-      ).annotate({ identifier: "GetAnalyticsRulesRequest" });
-    case 3:
-      return S.Array(__S(12, __c1, 4));
-    case 4:
-      return S.suspend(() => __S(83, __c10, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetAnalyticsRulesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/analytics/status", code: 200 })),
-      ).annotate({
-        identifier: "GetAnalyticsStatusRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          popular_prefix_queries: S.optional(S.Number),
-          nohits_prefix_queries: S.optional(S.Number),
-          log_prefix_queries: S.optional(S.Number),
-          query_log_events: S.optional(S.Number),
-          query_counter_events: S.optional(S.Number),
-          doc_log_events: S.optional(S.Number),
-          doc_counter_events: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AnalyticsStatus" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/stats.json", code: 200 })),
-      ).annotate({ identifier: "GetAPIStatsRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          delete_latency_ms: S.optional(S.Number),
-          delete_requests_per_second: S.optional(S.Number),
-          import_latency_ms: S.optional(S.Number),
-          import_requests_per_second: S.optional(S.Number),
-          latency_ms: S.optional(S.Unknown),
-          overloaded_requests_per_second: S.optional(S.Number),
-          pending_write_batches: S.optional(S.Number),
-          requests_per_second: S.optional(S.Unknown),
-          search_latency_ms: S.optional(S.Number),
-          search_requests_per_second: S.optional(S.Number),
-          total_requests_per_second: S.optional(S.Number),
-          write_latency_ms: S.optional(S.Number),
-          write_requests_per_second: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "APIStatsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          collectionName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/collections/{collectionName}", code: 200 })),
-      ).annotate({ identifier: "GetCollectionRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          exclude_fields: S.optional(S.String),
-          limit: S.optional(S.Number),
-          offset: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetCollectionsRequestGetCollectionsParameters",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          getCollectionsParameters: S.optional(__S(90, __c11, 2).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/collections", code: 200 })),
-      ).annotate({ identifier: "GetCollectionsRequest" });
-    case 4:
-      return S.Array(__S(21, __c2, 5));
-    case 5:
-      return S.suspend(() => __S(92, __c11, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetCollectionsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          modelId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/conversations/models/{modelId}", code: 200 })),
-      ).annotate({
-        identifier: "GetConversationModelRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          curationSetName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/curation_sets/{curationSetName}", code: 200 })),
-      ).annotate({ identifier: "GetCurationSetRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(__S(3, __c0, 3)),
-          query: S.optional(S.String),
-          match: S.optional(S.String),
-          filter_by: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CurationRule" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          position: S.Number,
-        }),
-      ).annotate({ identifier: "CurationInclude" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
-      return S.Array(__S(39, __c4, 7));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          rule: __S(96, __c12, 0),
-          includes: S.optional(__S(98, __c12, 2)),
-          excludes: S.optional(__S(99, __c12, 3)),
-          filter_by: S.optional(S.String),
-          remove_matched_tokens: S.optional(S.Boolean),
-          metadata: S.optional(S.Unknown),
-          sort_by: S.optional(S.String),
-          replace_query: S.optional(S.String),
-          filter_curated_hits: S.optional(S.Boolean),
-          effective_from_ts: S.optional(S.Number),
-          effective_to_ts: S.optional(S.Number),
-          stop_processing: S.optional(S.Boolean),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CurationItemCreateSchema" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(101, __c12, 5),
-          description: S.optional(S.String),
-          name: S.String,
-        }),
-      ).annotate({ identifier: "GetCurationSetResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          curationSetName: S.String.pipe(T.Label()),
-          itemId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/curation_sets/{curationSetName}/items/{itemId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCurationSetItemRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          rule: __S(96, __c12, 0),
-          includes: S.optional(__S(98, __c12, 2)),
-          excludes: S.optional(__S(99, __c12, 3)),
-          filter_by: S.optional(S.String),
-          remove_matched_tokens: S.optional(S.Boolean),
-          metadata: S.optional(S.Unknown),
-          sort_by: S.optional(S.String),
-          replace_query: S.optional(S.String),
-          filter_curated_hits: S.optional(S.Boolean),
-          effective_from_ts: S.optional(S.Number),
-          effective_to_ts: S.optional(S.Number),
-          stop_processing: S.optional(S.Boolean),
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "GetCurationSetItemResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          curationSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/curation_sets/{curationSetName}/items", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetCurationSetItemsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          rule: __S(96, __c12, 0),
-          includes: S.optional(__S(98, __c12, 2)),
-          excludes: S.optional(__S(99, __c12, 3)),
-          filter_by: S.optional(S.String),
-          remove_matched_tokens: S.optional(S.Boolean),
-          metadata: S.optional(S.Unknown),
-          sort_by: S.optional(S.String),
-          replace_query: S.optional(S.String),
-          filter_curated_hits: S.optional(S.Boolean),
-          effective_from_ts: S.optional(S.Number),
-          effective_to_ts: S.optional(S.Number),
-          stop_processing: S.optional(S.Boolean),
-          id: S.String,
-        }),
-      ).annotate({ identifier: "CurationItemSchema" });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
-      return S.suspend(() => __S(107, __c13, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetCurationSetItemsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/curation_sets", code: 200 })),
-      ).annotate({ identifier: "GetCurationSetsRequest" });
-    case 6:
-      return S.Array(__S(102, __c12, 6));
-    case 7:
-      return S.suspend(() => __S(110, __c13, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetCurationSetsResponse",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          collectionName: S.String.pipe(T.Label()),
-          documentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/collections/{collectionName}/documents/{documentId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetDocumentRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          keyId: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/keys/{keyId}", code: 200 })),
-      ).annotate({ identifier: "GetKeyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/keys", code: 200 })),
-      ).annotate({ identifier: "GetKeysRequest" });
-    case 3:
-      return S.Array(__S(25, __c3, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keys: __S(115, __c14, 3),
-        }),
-      ).annotate({ identifier: "ApiKeysResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/metrics.json", code: 200 })),
-      ).annotate({ identifier: "GetMetricsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          modelId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/nl_search_models/{modelId}", code: 200 })),
-      ).annotate({ identifier: "GetNLSearchModelRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          presetId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/presets/{presetId}", code: 200 })),
-      ).annotate({ identifier: "GetPresetRequest" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "q",
-            "query_by",
-            "validate_field_names",
-            "nl_query",
-            "nl_model_id",
-            "query_by_weights",
-            "text_match_type",
-            "prefix",
-            "infix",
-            "max_extra_prefix",
-            "max_extra_suffix",
-            "filter_by",
-            "enable_lazy_filter",
-            "max_filter_by_candidates",
-            "sort_by",
-            "facet_by",
-            "max_facet_values",
-            "facet_query",
-            "facet_query_num_typos",
-            "num_typos",
-            "page",
-            "per_page",
-            "limit",
-            "offset",
-            "group_by",
-            "group_limit",
-            "group_missing_values",
-            "group_max_candidates",
-            "include_fields",
-            "exclude_fields",
-            "highlight_full_fields",
-            "highlight_affix_num_tokens",
-            "highlight_start_tag",
-            "highlight_end_tag",
-            "enable_highlight_v1",
-            "enable_analytics",
-            "snippet_threshold",
-            "synonym_sets",
-            "drop_tokens_threshold",
-            "drop_tokens_mode",
-            "typo_tokens_threshold",
-            "enable_typos_for_alpha_numerical_tokens",
-            "filter_curated_hits",
-            "enable_synonyms",
-            "synonym_prefix",
-            "demote_synonym_match",
-            "synonym_num_typos",
-            "pinned_hits",
-            "hidden_hits",
-            "curation_tags",
-            "highlight_fields",
-            "rerank_hybrid_matches",
-            "split_join_tokens",
-            "pre_segmented_query",
-            "preset",
-            "enable_curations",
-            "prioritize_exact_match",
-            "max_candidates",
-            "prioritize_token_position",
-            "prioritize_num_matching_fields",
-            "enable_typos_for_numerical_tokens",
-            "exhaustive_search",
-            "search_cutoff_ms",
-            "limit_hits",
-            "use_cache",
-            "cache_ttl",
-            "min_len_1typo",
-            "min_len_2typo",
-            "vector_query",
-            "remote_embedding_timeout_ms",
-            "remote_embedding_num_tries",
-            "facet_strategy",
-            "stopwords",
-            "facet_return_parent",
-            "facet_sample_percent",
-            "facet_sample_threshold",
-            "facet_sample_slope",
-            "voice_query",
-            "conversation",
-            "conversation_model_id",
-            "conversation_id",
-          ],
-          ["union", "searches"],
-        ]),
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(120, __c15, 0),
-          name: S.String,
-        }),
-      ).annotate({ identifier: "GetPresetResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/operations/schema_changes", code: 200 })),
-      ).annotate({ identifier: "GetSchemaChangesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          collection: S.optional(S.String),
-          validated_docs: S.optional(S.Number),
-          altered_docs: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SchemaChangeStatus" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
-      return S.suspend(() => __S(124, __c15, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetSchemaChangesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dictionaryId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/stemming/dictionaries/{dictionaryId}", code: 200 })),
-      ).annotate({
-        identifier: "GetStemmingDictionaryRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          word: S.String,
-          root: S.String,
-        }),
-      ).annotate({
-        identifier: "StemmingDictionaryWordsItem",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          words: __S(128, __c16, 0),
-        }),
-      ).annotate({ identifier: "StemmingDictionary" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          setId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/stopwords/{setId}", code: 200 })),
-      ).annotate({ identifier: "GetStopwordsSetRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          stopwords: __S(3, __c0, 3),
-          locale: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StopwordsSetSchema" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          stopwords: __S(131, __c16, 3),
-        }),
-      ).annotate({
-        identifier: "StopwordsSetRetrieveSchema",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/stopwords", code: 200 })),
-      ).annotate({ identifier: "GetStopwordsSetsRequest" });
-    case 6:
-      return S.Array(__S(131, __c16, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          stopwords: __S(134, __c16, 6),
-        }),
-      ).annotate({
-        identifier: "StopwordsSetsRetrieveAllSchema",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          synonymSetName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/synonym_sets/{synonymSetName}", code: 200 })),
-      ).annotate({ identifier: "GetSynonymSetRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          synonyms: __S(3, __c0, 3),
-          root: S.optional(S.String),
-          locale: S.optional(S.String),
-          symbols_to_index: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "SynonymItemSchema" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(138, __c17, 2),
-          name: S.String,
-        }),
-      ).annotate({ identifier: "GetSynonymSetResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          synonymSetName: S.String.pipe(T.Label()),
-          itemId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/synonym_sets/{synonymSetName}/items/{itemId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetSynonymSetItemRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          synonyms: __S(3, __c0, 3),
-          root: S.optional(S.String),
-          locale: S.optional(S.String),
-          symbols_to_index: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GetSynonymSetItemResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          synonymSetName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/synonym_sets/{synonymSetName}/items", code: 200 })),
-      ).annotate({
-        identifier: "GetSynonymSetItemsRequest",
-      });
-    case 7:
-      return S.suspend(() => __S(138, __c17, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetSynonymSetItemsResponse",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/synonym_sets", code: 200 })),
-      ).annotate({ identifier: "GetSynonymSetsRequest" });
-    case 1:
-      return S.Array(__S(139, __c17, 3));
-    case 2:
-      return S.suspend(() => __S(145, __c18, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetSynonymSetsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
-      ).annotate({ identifier: "HealthRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-        }),
-      ).annotate({ identifier: "HealthStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          batch_size: S.optional(S.Number),
-          return_id: S.optional(S.Boolean),
-          remote_embedding_batch_size: S.optional(S.Number),
-          return_doc: S.optional(S.Boolean),
-          action: S.optional(S.String),
-          dirty_values: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ImportDocumentsRequestImportDocumentsParameters",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          collectionName: S.String.pipe(T.Label()),
-          importDocumentsParameters: S.optional(__S(149, __c18, 5).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/collections/{collectionName}/documents/import",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ImportDocumentsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          body: S.String.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/stemming/dictionaries/import", code: 200 })),
-      ).annotate({
-        identifier: "ImportStemmingDictionaryRequest",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ImportStemmingDictionaryResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          collectionName: S.String.pipe(T.Label()),
-          action: S.optional(S.String.pipe(T.Query())),
-          dirty_values: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/collections/{collectionName}/documents", code: 200 }),
-        ),
-      ).annotate({ identifier: "IndexDocumentRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/stemming/dictionaries", code: 200 })),
-      ).annotate({
-        identifier: "ListStemmingDictionariesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dictionaries: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ListStemmingDictionariesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          collectionName: S.String.pipe(T.Label()),
-          searchParameters: __S(70, __c8, 6).pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/collections/{collectionName}/documents/search",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "SearchCollectionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          highlighted: S.optional(S.String),
-          value: S.optional(S.String),
-          parent: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "FacetCountsCountsItem" });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          max: S.optional(S.Number),
-          min: S.optional(S.Number),
-          sum: S.optional(S.Number),
-          total_values: S.optional(S.Number),
-          avg: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "FacetCountsStats" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          counts: S.optional(__S(158, __c19, 6)),
-          field_name: S.optional(S.String),
-          sampled: S.optional(S.Boolean),
-          stats: S.optional(__S(159, __c19, 7)),
-        }),
-      ).annotate({ identifier: "FacetCounts" });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.Array(S.Number);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          snippet: S.optional(S.String),
-          snippets: S.optional(__S(3, __c0, 3)),
-          value: S.optional(S.String),
-          values: S.optional(__S(3, __c0, 3)),
-          indices: S.optional(__S(163, __c20, 3)),
-          matched_tokens: S.optional(__S(162, __c20, 2)),
-        }),
-      ).annotate({ identifier: "SearchHighlight" });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          best_field_score: S.optional(S.String),
-          best_field_weight: S.optional(S.Number),
-          fields_matched: S.optional(S.Number),
-          num_tokens_dropped: S.optional(S.Number),
-          score: S.optional(S.String),
-          tokens_matched: S.optional(S.Number),
-          typo_prefix_score: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SearchResultHitTextMatchInfo",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Number);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rank_fusion_score: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SearchResultHitHybridSearchInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          highlights: S.optional(__S(165, __c20, 5)),
-          highlight: S.optional(__S(166, __c20, 6)),
-          document: S.optional(__S(166, __c20, 6)),
-          text_match: S.optional(S.Number),
-          text_match_info: S.optional(__S(167, __c20, 7)),
-          geo_distance_meters: S.optional(__S(168, __c21, 0)),
-          vector_distance: S.optional(S.Number),
-          hybrid_search_info: S.optional(__S(169, __c21, 1)),
-          search_index: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SearchResultHit" });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          found: S.optional(S.Number),
-          group_key: __S(162, __c20, 2),
-          hits: __S(171, __c21, 3),
-        }),
-      ).annotate({ identifier: "SearchGroupedHit" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          transcribed_query: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SearchRequestParamsVoiceQuery",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          collection_name: S.String,
-          first_q: S.optional(S.String),
-          q: S.String,
-          per_page: S.Number,
-          voice_query: S.optional(__S(174, __c21, 6)),
-        }),
-      ).annotate({ identifier: "SearchRequestParams" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          answer: S.String,
-          conversation_history: __S(162, __c20, 2),
-          conversation_id: S.String,
-          query: S.String,
-        }),
-      ).annotate({ identifier: "SearchResultConversation" });
-    case 1:
-      return S.Array(__S(175, __c21, 7));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          facet_counts: S.optional(__S(161, __c20, 1)),
-          found: S.optional(S.Number),
-          found_docs: S.optional(S.Number),
-          search_time_ms: S.optional(S.Number),
-          out_of: S.optional(S.Number),
-          search_cutoff: S.optional(S.Boolean),
-          page: S.optional(S.Number),
-          grouped_hits: S.optional(__S(173, __c21, 5)),
-          hits: S.optional(__S(171, __c21, 3)),
-          request_params: S.optional(__S(175, __c21, 7)),
-          conversation: S.optional(__S(176, __c22, 0)),
-          union_request_params: S.optional(__S(177, __c22, 1)),
-          metadata: S.optional(__S(166, __c20, 6)),
-        }),
-      ).annotate({ identifier: "SearchResult" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           q: S.optional(S.String),
@@ -5336,46 +5431,46 @@ function __c22(j: number): any {
           validate_field_names: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MultiSearchParameters" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          multiSearchParameters: __S(2594, __c81, 2).pipe(T.Query()),
+          union: S.optional(S.Boolean),
+          searches: __S(2593, __c81, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/multi_search", code: 200 })),
+      ).annotate({ identifier: "SearchMultiRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          multiSearchParameters: __S(179, __c22, 3).pipe(T.Query()),
-          union: S.optional(S.Boolean),
-          searches: __S(72, __c9, 0),
-        }).pipe(T.Http({ method: "POST", uri: "/multi_search", code: 200 })),
-      ).annotate({ identifier: "SearchMultiRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          facet_counts: S.optional(__S(161, __c20, 1)),
+          facet_counts: S.optional(__S(2564, __c80, 4)),
           found: S.optional(S.Number),
           found_docs: S.optional(S.Number),
           search_time_ms: S.optional(S.Number),
           out_of: S.optional(S.Number),
           search_cutoff: S.optional(S.Boolean),
           page: S.optional(S.Number),
-          grouped_hits: S.optional(__S(173, __c21, 5)),
-          hits: S.optional(__S(171, __c21, 3)),
-          request_params: S.optional(__S(175, __c21, 7)),
-          conversation: S.optional(__S(176, __c22, 0)),
-          union_request_params: S.optional(__S(177, __c22, 1)),
-          metadata: S.optional(__S(166, __c20, 6)),
+          grouped_hits: S.optional(__S(2576, __c80, 16)),
+          hits: S.optional(__S(2574, __c80, 14)),
+          request_params: S.optional(__S(2578, __c80, 18)),
+          conversation: S.optional(__S(2579, __c80, 19)),
+          union_request_params: S.optional(__S(2580, __c80, 20)),
+          metadata: S.optional(__S(2569, __c80, 9)),
           code: S.optional(S.Number),
           error: S.optional(S.String),
         }),
       ).annotate({ identifier: "MultiSearchResultItem" });
+    case 5:
+      return S.Array(__S(2596, __c81, 4));
     case 6:
-      return S.Array(__S(181, __c22, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          results: __S(182, __c22, 6),
-          conversation: S.optional(__S(176, __c22, 0)),
+          results: __S(2597, __c81, 5),
+          conversation: S.optional(__S(2579, __c80, 19)),
         }),
       ).annotate({ identifier: "MultiSearchResult" });
   }
 }
-function __c23(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5383,7 +5478,11 @@ function __c23(j: number): any {
           snapshot_path: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "POST", uri: "/operations/snapshot", code: 200 })),
       ).annotate({ identifier: "TakeSnapshotRequest" });
-    case 1:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           log_slow_requests_time_ms: S.Number.pipe(T.Body("log-slow-requests-time-ms")),
@@ -5391,24 +5490,32 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ToggleSlowRequestLogRequest",
       });
-    case 2:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collectionName: S.String.pipe(T.Label()),
-          fields: S.optional(__S(18, __c2, 2)),
-          synonym_sets: S.optional(__S(3, __c0, 3)),
+          fields: S.optional(__S(2819, __c88, 3)),
+          synonym_sets: S.optional(__S(1888, __c59, 0)),
           metadata: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "PATCH", uri: "/collections/{collectionName}", code: 200 })),
       ).annotate({ identifier: "UpdateCollectionRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(__S(18, __c2, 2)),
-          synonym_sets: S.optional(__S(3, __c0, 3)),
+          fields: S.optional(__S(2819, __c88, 3)),
+          synonym_sets: S.optional(__S(1888, __c59, 0)),
           metadata: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "CollectionUpdateSchema" });
-    case 4:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String.pipe(T.Label()),
@@ -5425,7 +5532,110 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateConversationModelRequest",
       });
-    case 5:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          fields: __S(2819, __c88, 3),
+          default_sorting_field: S.optional(S.String),
+          token_separators: S.optional(__S(1888, __c59, 0)),
+          synonym_sets: S.optional(__S(1888, __c59, 0)),
+          enable_nested_fields: S.optional(S.Boolean),
+          symbols_to_index: S.optional(__S(1888, __c59, 0)),
+          voice_query_model: S.optional(__S(2784, __c87, 0)),
+          metadata: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "POST", uri: "/collections", code: 200 })),
+      ).annotate({ identifier: "CreateCollectionRequest" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          model_name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VoiceQueryModelCollectionConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          fields: __S(2819, __c88, 3),
+          default_sorting_field: S.optional(S.String),
+          token_separators: S.optional(__S(1888, __c59, 0)),
+          synonym_sets: S.optional(__S(1888, __c59, 0)),
+          enable_nested_fields: S.optional(S.Boolean),
+          symbols_to_index: S.optional(__S(1888, __c59, 0)),
+          voice_query_model: S.optional(__S(2784, __c87, 0)),
+          metadata: S.optional(S.Unknown),
+          num_documents: S.Number,
+          created_at: S.Number,
+        }),
+      ).annotate({ identifier: "CreateCollectionResponse" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          model_name: S.String,
+          api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          url: S.optional(S.String),
+          access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          client_id: S.optional(S.String),
+          client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          project_id: S.optional(S.String),
+          indexing_prefix: S.optional(S.String),
+          query_prefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FieldEmbedModelConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          from: __S(1888, __c59, 0),
+          model_config: __S(2816, __c88, 0),
+        }),
+      ).annotate({ identifier: "FieldEmbed" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+          optional: S.optional(S.Boolean),
+          facet: S.optional(S.Boolean),
+          index: S.optional(S.Boolean),
+          locale: S.optional(S.String),
+          sort: S.optional(S.Boolean),
+          infix: S.optional(S.Boolean),
+          reference: S.optional(S.String),
+          async_reference: S.optional(S.Boolean),
+          num_dim: S.optional(S.Number),
+          drop: S.optional(S.Boolean),
+          store: S.optional(S.Boolean),
+          vec_dist: S.optional(S.String),
+          range_index: S.optional(S.Boolean),
+          stem: S.optional(S.Boolean),
+          stem_dictionary: S.optional(S.String),
+          token_separators: S.optional(__S(1888, __c59, 0)),
+          symbols_to_index: S.optional(__S(1888, __c59, 0)),
+          embed: S.optional(__S(2817, __c88, 1)),
+        }),
+      ).annotate({ identifier: "Field" });
+    case 3:
+      return S.Array(__S(2818, __c88, 2));
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collectionName: S.String.pipe(T.Label()),
@@ -5439,7 +5649,11 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDocumentRequest" });
-    case 6:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter_by: S.optional(S.String),
@@ -5447,26 +5661,26 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateDocumentsRequestUpdateDocumentsParameters",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           collectionName: S.String.pipe(T.Label()),
-          updateDocumentsParameters: S.optional(__S(190, __c23, 6).pipe(T.Query())),
+          updateDocumentsParameters: S.optional(__S(2880, __c90, 0).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/collections/{collectionName}/documents", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateDocumentsRequest" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           num_updated: S.Number,
         }),
       ).annotate({ identifier: "UpdateDocumentsResponse" });
-    case 1:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String.pipe(T.Label()),
@@ -5478,7 +5692,7 @@ function __c24(j: number): any {
           system_prompt: S.optional(S.String),
           top_p: S.optional(S.Number),
           top_k: S.optional(S.Number),
-          stop_sequences: S.optional(__S(3, __c0, 3)),
+          stop_sequences: S.optional(__S(1888, __c59, 0)),
           api_version: S.optional(S.String),
           project_id: S.optional(S.String),
           access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -5493,50 +5707,66 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateNLSearchModelRequest",
       });
-    case 2:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           aliasName: S.String.pipe(T.Label()),
           collection_name: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/aliases/{aliasName}", code: 200 })),
       ).annotate({ identifier: "UpsertAliasRequest" });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ruleName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           rule_tag: S.optional(S.String),
-          params: S.optional(__S(7, __c0, 7)),
+          params: S.optional(__S(192, __c6, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/analytics/rules/{ruleName}", code: 200 })),
       ).annotate({
         identifier: "UpsertAnalyticsRuleRequest",
       });
-    case 4:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           curationSetName: S.String.pipe(T.Label()),
-          items: __S(101, __c12, 5),
+          items: __S(1505, __c47, 1),
           description: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/curation_sets/{curationSetName}", code: 200 })),
       ).annotate({ identifier: "UpsertCurationSetRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          items: __S(101, __c12, 5),
+          items: __S(1505, __c47, 1),
           description: S.optional(S.String),
           name: S.String,
         }),
       ).annotate({
         identifier: "UpsertCurationSetResponse",
       });
-    case 6:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           curationSetName: S.String.pipe(T.Label()),
           itemId: S.String.pipe(T.Label()),
-          rule: __S(96, __c12, 0),
-          includes: S.optional(__S(98, __c12, 2)),
-          excludes: S.optional(__S(99, __c12, 3)),
+          rule: __S(1440, __c45, 0),
+          includes: S.optional(__S(1442, __c45, 2)),
+          excludes: S.optional(__S(1443, __c45, 3)),
           filter_by: S.optional(S.String),
           remove_matched_tokens: S.optional(S.Boolean),
           metadata: S.optional(S.Unknown),
@@ -5557,7 +5787,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpsertCurationSetItemRequest",
       });
-    case 7:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -5646,139 +5880,187 @@ function __c24(j: number): any {
           ["union", "searches"],
         ]),
       );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          presetId: S.String.pipe(T.Label()),
+          value: __S(3072, __c96, 0),
+        }).pipe(T.Http({ method: "PUT", uri: "/presets/{presetId}", code: 200 })),
+      ).annotate({ identifier: "UpsertPresetRequest" });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "q",
+            "query_by",
+            "validate_field_names",
+            "nl_query",
+            "nl_model_id",
+            "query_by_weights",
+            "text_match_type",
+            "prefix",
+            "infix",
+            "max_extra_prefix",
+            "max_extra_suffix",
+            "filter_by",
+            "enable_lazy_filter",
+            "max_filter_by_candidates",
+            "sort_by",
+            "facet_by",
+            "max_facet_values",
+            "facet_query",
+            "facet_query_num_typos",
+            "num_typos",
+            "page",
+            "per_page",
+            "limit",
+            "offset",
+            "group_by",
+            "group_limit",
+            "group_missing_values",
+            "group_max_candidates",
+            "include_fields",
+            "exclude_fields",
+            "highlight_full_fields",
+            "highlight_affix_num_tokens",
+            "highlight_start_tag",
+            "highlight_end_tag",
+            "enable_highlight_v1",
+            "enable_analytics",
+            "snippet_threshold",
+            "synonym_sets",
+            "drop_tokens_threshold",
+            "drop_tokens_mode",
+            "typo_tokens_threshold",
+            "enable_typos_for_alpha_numerical_tokens",
+            "filter_curated_hits",
+            "enable_synonyms",
+            "synonym_prefix",
+            "demote_synonym_match",
+            "synonym_num_typos",
+            "pinned_hits",
+            "hidden_hits",
+            "curation_tags",
+            "highlight_fields",
+            "rerank_hybrid_matches",
+            "split_join_tokens",
+            "pre_segmented_query",
+            "preset",
+            "enable_curations",
+            "prioritize_exact_match",
+            "max_candidates",
+            "prioritize_token_position",
+            "prioritize_num_matching_fields",
+            "enable_typos_for_numerical_tokens",
+            "exhaustive_search",
+            "search_cutoff_ms",
+            "limit_hits",
+            "use_cache",
+            "cache_ttl",
+            "min_len_1typo",
+            "min_len_2typo",
+            "vector_query",
+            "remote_embedding_timeout_ms",
+            "remote_embedding_num_tries",
+            "facet_strategy",
+            "stopwords",
+            "facet_return_parent",
+            "facet_sample_percent",
+            "facet_sample_threshold",
+            "facet_sample_slope",
+            "voice_query",
+            "conversation",
+            "conversation_model_id",
+            "conversation_id",
+          ],
+          ["union", "searches"],
+        ]),
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3074, __c96, 2),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "UpsertPresetResponse" });
   }
 }
-function __c25(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          presetId: S.String.pipe(T.Label()),
-          value: __S(199, __c24, 7),
-        }).pipe(T.Http({ method: "PUT", uri: "/presets/{presetId}", code: 200 })),
-      ).annotate({ identifier: "UpsertPresetRequest" });
-    case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "q",
-            "query_by",
-            "validate_field_names",
-            "nl_query",
-            "nl_model_id",
-            "query_by_weights",
-            "text_match_type",
-            "prefix",
-            "infix",
-            "max_extra_prefix",
-            "max_extra_suffix",
-            "filter_by",
-            "enable_lazy_filter",
-            "max_filter_by_candidates",
-            "sort_by",
-            "facet_by",
-            "max_facet_values",
-            "facet_query",
-            "facet_query_num_typos",
-            "num_typos",
-            "page",
-            "per_page",
-            "limit",
-            "offset",
-            "group_by",
-            "group_limit",
-            "group_missing_values",
-            "group_max_candidates",
-            "include_fields",
-            "exclude_fields",
-            "highlight_full_fields",
-            "highlight_affix_num_tokens",
-            "highlight_start_tag",
-            "highlight_end_tag",
-            "enable_highlight_v1",
-            "enable_analytics",
-            "snippet_threshold",
-            "synonym_sets",
-            "drop_tokens_threshold",
-            "drop_tokens_mode",
-            "typo_tokens_threshold",
-            "enable_typos_for_alpha_numerical_tokens",
-            "filter_curated_hits",
-            "enable_synonyms",
-            "synonym_prefix",
-            "demote_synonym_match",
-            "synonym_num_typos",
-            "pinned_hits",
-            "hidden_hits",
-            "curation_tags",
-            "highlight_fields",
-            "rerank_hybrid_matches",
-            "split_join_tokens",
-            "pre_segmented_query",
-            "preset",
-            "enable_curations",
-            "prioritize_exact_match",
-            "max_candidates",
-            "prioritize_token_position",
-            "prioritize_num_matching_fields",
-            "enable_typos_for_numerical_tokens",
-            "exhaustive_search",
-            "search_cutoff_ms",
-            "limit_hits",
-            "use_cache",
-            "cache_ttl",
-            "min_len_1typo",
-            "min_len_2typo",
-            "vector_query",
-            "remote_embedding_timeout_ms",
-            "remote_embedding_num_tries",
-            "facet_strategy",
-            "stopwords",
-            "facet_return_parent",
-            "facet_sample_percent",
-            "facet_sample_threshold",
-            "facet_sample_slope",
-            "voice_query",
-            "conversation",
-            "conversation_model_id",
-            "conversation_id",
-          ],
-          ["union", "searches"],
-        ]),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(201, __c25, 1),
-          name: S.String,
-        }),
-      ).annotate({ identifier: "UpsertPresetResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           setId: S.String.pipe(T.Label()),
-          stopwords: __S(3, __c0, 3),
+          stopwords: __S(1888, __c59, 0),
           locale: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/stopwords/{setId}", code: 200 })),
       ).annotate({
         identifier: "UpsertStopwordsSetRequest",
       });
-    case 4:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           synonymSetName: S.String.pipe(T.Label()),
-          items: __S(138, __c17, 2),
+          items: __S(2145, __c67, 1),
         }).pipe(T.Http({ method: "PUT", uri: "/synonym_sets/{synonymSetName}", code: 200 })),
       ).annotate({ identifier: "UpsertSynonymSetRequest" });
-    case 5:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          model_name: S.String,
+          api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          history_collection: S.String,
+          account_id: S.optional(S.String),
+          system_prompt: S.optional(S.String),
+          ttl: S.optional(S.Number),
+          max_bytes: S.Number,
+          vllm_url: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/conversations/models", code: 200 })),
+      ).annotate({
+        identifier: "CreateConversationModelRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          model_name: S.String,
+          api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          history_collection: S.String,
+          account_id: S.optional(S.String),
+          system_prompt: S.optional(S.String),
+          ttl: S.optional(S.Number),
+          max_bytes: S.Number,
+          vllm_url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateConversationModelResponse",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           synonymSetName: S.String.pipe(T.Label()),
           itemId: S.String.pipe(T.Label()),
-          synonyms: __S(3, __c0, 3),
+          synonyms: __S(1888, __c59, 0),
           root: S.optional(S.String),
           locale: S.optional(S.String),
-          symbols_to_index: S.optional(__S(3, __c0, 3)),
+          symbols_to_index: S.optional(__S(1888, __c59, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5789,13 +6071,46 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpsertSynonymSetItemRequest",
       });
-    case 6:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/operations/vote", code: 200 })),
       ).annotate({ identifier: "VoteRequest" });
   }
 }
-
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          description: S.String,
+          actions: __S(1888, __c59, 0),
+          collections: __S(1888, __c59, 0),
+          expires_at: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/keys", code: 200 })),
+      ).annotate({ identifier: "CreateKeyRequest" });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          description: S.String,
+          actions: __S(1888, __c59, 0),
+          collections: __S(1888, __c59, 0),
+          expires_at: S.optional(S.Number),
+          id: S.optional(S.Number),
+          value_prefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateKeyResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

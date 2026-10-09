@@ -157,7 +157,7 @@ export const getLoadBalancerType: API.OperationMethod<
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetLoadBalancerTypeRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetLoadBalancerTypeResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetLoadBalancerTypeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -173,8 +173,8 @@ export const listLoadBalancerTypes: API.PaginatedOperationMethod<
   ListLoadBalancerTypesResponseLoadBalancerTypesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(7, __c0, 7) as any as S.Schema<ListLoadBalancerTypesRequest>,
-    output: __S(11, __c1, 3) as any as S.Schema<ListLoadBalancerTypesResponse>,
+    input: __S(16, __c2, 0) as any as S.Schema<ListLoadBalancerTypesRequest>,
+    output: __S(20, __c2, 4) as any as S.Schema<ListLoadBalancerTypesResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -203,13 +203,25 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          load_balancer_type: __S(12, __c1, 4),
+        }),
+      ).annotate({
+        identifier: "GetLoadBalancerTypeResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           unavailable_after: S.String,
           announced: S.String,
         }),
       ).annotate({
         identifier: "GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           net: S.String,
@@ -218,21 +230,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          price_hourly: __S(2, __c0, 2),
-          price_monthly: __S(2, __c0, 2),
+          price_hourly: __S(9, __c1, 1),
+          price_monthly: __S(9, __c1, 1),
           included_traffic: S.Number,
-          price_per_tb_traffic: __S(2, __c0, 2),
+          price_per_tb_traffic: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "GetLoadBalancerTypeResponseLoadBalancerTypePricesItem",
       });
+    case 3:
+      return S.Array(__S(10, __c1, 2));
     case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -243,21 +255,17 @@ function __c0(j: number): any {
           max_targets: S.Number,
           max_assigned_certificates: S.Number,
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(1, __c0, 1)),
-          prices: __S(4, __c0, 4),
+          deprecation: S.NullOr(__S(8, __c1, 0)),
+          prices: __S(11, __c1, 3),
         }),
       ).annotate({
         identifier: "GetLoadBalancerTypeResponseLoadBalancerType",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          load_balancer_type: __S(5, __c0, 5),
-        }),
-      ).annotate({
-        identifier: "GetLoadBalancerTypeResponse",
-      });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
@@ -267,13 +275,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListLoadBalancerTypesRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(5, __c0, 5));
     case 1:
+      return S.Array(__S(12, __c1, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -286,26 +290,25 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListLoadBalancerTypesResponseMetaPagination",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(9, __c1, 1),
+          pagination: __S(18, __c2, 2),
         }),
       ).annotate({
         identifier: "ListLoadBalancerTypesResponseMeta",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          load_balancer_types: __S(8, __c1, 0),
-          meta: __S(10, __c1, 2),
+          load_balancer_types: __S(17, __c2, 1),
+          meta: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "ListLoadBalancerTypesResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

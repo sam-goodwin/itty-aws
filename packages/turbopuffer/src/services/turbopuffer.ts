@@ -694,8 +694,8 @@ export const createNamespaceDebugRecall: API.OperationMethod<
   CreateNamespaceDebugRecallError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateNamespaceDebugRecallRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateNamespaceDebugRecallResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateNamespaceDebugRecallRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<CreateNamespaceDebugRecallResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -709,8 +709,8 @@ export const createNamespaceExplainQuery: API.OperationMethod<
   CreateNamespaceExplainQueryError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateNamespaceExplainQueryRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateNamespaceExplainQueryResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateNamespaceExplainQueryRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<CreateNamespaceExplainQueryResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -724,8 +724,8 @@ export const createNamespaceQuery: API.OperationMethod<
   CreateNamespaceQueryError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateNamespaceQueryRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateNamespaceQueryResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateNamespaceQueryRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<CreateNamespaceQueryResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -739,8 +739,8 @@ export const createNamespaceQuery2: API.OperationMethod<
   CreateNamespaceQuery2Error,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateNamespaceQueryRequest2>,
-  output: __S(26, __c3, 2) as any as S.Schema<MultiQueryResult>,
+  input: __S(138, __c17, 2) as any as S.Schema<CreateNamespaceQueryRequest2>,
+  output: __S(141, __c17, 5) as any as S.Schema<MultiQueryResult>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -754,8 +754,8 @@ export const createNamespaceSchema: API.OperationMethod<
   CreateNamespaceSchemaError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateNamespaceSchemaRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<CreateNamespaceSchemaResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<CreateNamespaceSchemaRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<CreateNamespaceSchemaResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -769,8 +769,8 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteNamespaceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DeleteNamespaceResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteNamespaceRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<DeleteNamespaceResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -784,8 +784,8 @@ export const getNamespaceHintCacheWarm: API.OperationMethod<
   GetNamespaceHintCacheWarmError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetNamespaceHintCacheWarmRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetNamespaceHintCacheWarmResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<GetNamespaceHintCacheWarmRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<GetNamespaceHintCacheWarmResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -799,8 +799,8 @@ export const getNamespaceMetadata: API.OperationMethod<
   GetNamespaceMetadataError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetNamespaceMetadataRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<NamespaceMetadata>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetNamespaceMetadataRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<NamespaceMetadata>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -814,8 +814,8 @@ export const getNamespaceOperation: API.OperationMethod<
   GetNamespaceOperationError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetNamespaceOperationRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetNamespaceOperationResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetNamespaceOperationRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<GetNamespaceOperationResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -829,8 +829,8 @@ export const getNamespaceSchema: API.OperationMethod<
   GetNamespaceSchemaError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetNamespaceSchemaRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetNamespaceSchemaResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetNamespaceSchemaRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetNamespaceSchemaResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -844,8 +844,8 @@ export const listNamespaces: API.OperationMethod<
   ListNamespacesError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListNamespacesRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListNamespacesResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListNamespacesRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListNamespacesResponse>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -859,8 +859,8 @@ export const updateNamespace: API.OperationMethod<
   UpdateNamespaceError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<UpdateNamespaceRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<WriteResult>,
+  input: __S(43, __c5, 3) as any as S.Schema<UpdateNamespaceRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<WriteResult>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -874,8 +874,8 @@ export const updateNamespaceByNamespace: API.OperationMethod<
   UpdateNamespaceByNamespaceError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<UpdateNamespaceByNamespaceRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<WriteResult>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateNamespaceByNamespaceRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<WriteResult>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -889,8 +889,8 @@ export const updateNamespaceByNamespace2: API.OperationMethod<
   UpdateNamespaceByNamespace2Error,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<UpdateNamespaceByNamespaceRequest2>,
-  output: __S(46, __c5, 6) as any as S.Schema<WriteResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateNamespaceByNamespaceRequest2>,
+  output: __S(51, __c6, 3) as any as S.Schema<WriteResult>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -904,8 +904,8 @@ export const updateNamespaceMetadata: API.OperationMethod<
   UpdateNamespaceMetadataError,
   TurbopufferOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<UpdateNamespaceMetadataRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<NamespaceMetadata>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateNamespaceMetadataRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<NamespaceMetadata>,
   errors: [UnknownTurbopufferError],
   protocol: TurbopufferProtocol,
   retry: Retry.Retry,
@@ -934,7 +934,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateNamespaceAsyncResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -949,72 +953,226 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateNamespaceDebugRecallRequest",
       });
-    case 3:
+    case 1:
       return S.Array(S.Number);
+    case 2:
+      return S.Array(__S(16, __c2, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          query_vector: __S(9, __c1, 1),
+          nearest_neighbors: __S(10, __c1, 2),
+        }),
+      ).annotate({
+        identifier: "CreateNamespaceDebugRecallResponseGroundTruthItem",
+      });
     case 4:
+      return S.Array(__S(11, __c1, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          avg_recall: S.Number,
+          avg_exhaustive_count: S.Number,
+          avg_ann_count: S.Number,
+          ground_truth: S.optional(__S(12, __c1, 4)),
+        }),
+      ).annotate({
+        identifier: "CreateNamespaceDebugRecallResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Unknown,
           vector: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Row" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          query_vector: __S(3, __c0, 3),
-          nearest_neighbors: __S(5, __c0, 5),
-        }),
-      ).annotate({
-        identifier: "CreateNamespaceDebugRecallResponseGroundTruthItem",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          avg_recall: S.Number,
-          avg_exhaustive_count: S.Number,
-          avg_ann_count: S.Number,
-          ground_truth: S.optional(__S(7, __c0, 7)),
-        }),
+          namespace: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/namespaces/{namespace}/schema", code: 200 })),
       ).annotate({
-        identifier: "CreateNamespaceDebugRecallResponse",
+        identifier: "GetNamespaceSchemaRequest",
       });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cursor: S.optional(S.String.pipe(T.Query())),
+          prefix: S.optional(S.String.pipe(T.Query())),
+          page_size: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/namespaces", code: 200 })),
+      ).annotate({ identifier: "ListNamespacesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          level: S.optional(S.Unknown),
+          id: S.String,
         }),
-      ).annotate({
-        identifier: "CreateNamespaceExplainQueryRequestConsistency",
-      });
+      ).annotate({ identifier: "NamespaceSummary" });
     case 2:
-      return S.Array(S.String);
+      return S.Array(__S(33, __c4, 1));
     case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          namespaces: S.optional(__S(34, __c4, 2)),
+          next_cursor: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListNamespacesResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: __S(40, __c5, 0),
+          vector: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "Columns" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          patch: __S(96, __c12, 0),
+          filters: S.Unknown,
+        }),
+      ).annotate({ identifier: "PatchByFilter" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          upsert_columns: S.optional(__S(41, __c5, 1)),
+          upsert_rows: S.optional(__S(120, __c15, 0)),
+          patch_columns: S.optional(__S(41, __c5, 1)),
+          patch_rows: S.optional(__S(120, __c15, 0)),
+          deletes: S.optional(__S(48, __c6, 0)),
+          upsert_condition: S.optional(S.Unknown),
+          patch_condition: S.optional(S.Unknown),
+          delete_condition: S.optional(S.Unknown),
+          distance_metric: S.optional(S.Unknown),
+          schema: S.optional(__S(160, __c20, 0)),
+          branch_from_namespace: S.optional(S.Unknown),
+          copy_from_namespace: S.optional(S.Unknown),
+          delete_by_filter: S.optional(S.Unknown),
+          delete_by_filter_allow_partial: S.optional(S.Boolean),
+          patch_by_filter: S.optional(__S(42, __c5, 2)),
+          patch_by_filter_allow_partial: S.optional(S.Boolean),
+          return_affected_ids: S.optional(S.Boolean),
+          encryption: S.optional(S.Unknown),
+          sharding: S.optional(__S(200, __c25, 0)),
+          disable_backpressure: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}", code: 200 })),
+      ).annotate({ identifier: "UpdateNamespaceRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          billable_logical_bytes_written: S.Number,
+          query: S.optional(__S(128, __c16, 0)),
+        }),
+      ).annotate({ identifier: "WriteBilling" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          server_total_ms: S.Number,
+        }),
+      ).annotate({ identifier: "WritePerformance" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.Unknown,
+          message: S.String,
+          rows_affected: S.Number,
+          rows_upserted: S.optional(S.Number),
+          rows_patched: S.optional(S.Number),
+          rows_deleted: S.optional(S.Number),
+          rows_remaining: S.optional(S.Boolean),
+          upserted_ids: S.optional(__S(48, __c6, 0)),
+          patched_ids: S.optional(__S(48, __c6, 0)),
+          deleted_ids: S.optional(__S(48, __c6, 0)),
+          billing: __S(49, __c6, 1),
+          performance: S.optional(__S(50, __c6, 2)),
+        }),
+      ).annotate({ identifier: "WriteResult" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          source_namespace: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateNamespaceByNamespaceRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          source_namespace: S.String,
+          source_api_key: S.optional(S.String),
+          source_region: S.optional(S.String),
+          dest_encryption: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateNamespaceByNamespaceRequest2",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pinning: S.optional(S.NullOr(S.Unknown)),
+          read_only: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/namespaces/{namespace}/metadata", code: 200 })),
+      ).annotate({
+        identifier: "UpdateNamespaceMetadataRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           vector_encoding: S.optional(S.Unknown),
-          consistency: S.optional(__S(9, __c1, 1)),
+          consistency: S.optional(__S(88, __c11, 0)),
           rank_by: S.optional(S.Unknown),
           top_k: S.optional(S.Number),
           offset: S.optional(S.Number),
           filters: S.optional(S.Unknown),
           include_attributes: S.optional(S.Unknown),
-          exclude_attributes: S.optional(__S(10, __c1, 2)),
-          aggregate_by: S.optional(__S(11, __c1, 3)),
-          group_by: S.optional(__S(12, __c1, 4)),
-          compute_attributes: S.optional(__S(11, __c1, 3)),
+          exclude_attributes: S.optional(__S(89, __c11, 1)),
+          aggregate_by: S.optional(__S(96, __c12, 0)),
+          group_by: S.optional(__S(90, __c11, 2)),
+          compute_attributes: S.optional(__S(96, __c12, 0)),
           distance_metric: S.optional(S.Unknown),
           limit: S.optional(S.Unknown),
         }).pipe(
@@ -1023,7 +1181,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateNamespaceExplainQueryRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           plan_text: S.optional(S.String),
@@ -1031,36 +1189,72 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateNamespaceExplainQueryResponse",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          level: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "CreateNamespaceExplainQueryRequestConsistency",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.Array(S.Unknown);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           vector_encoding: S.optional(S.Unknown),
-          consistency: S.optional(__S(9, __c1, 1)),
+          consistency: S.optional(__S(88, __c11, 0)),
           rank_by: S.optional(S.Unknown),
           top_k: S.optional(S.Number),
           offset: S.optional(S.Number),
           filters: S.optional(S.Unknown),
           include_attributes: S.optional(S.Unknown),
-          exclude_attributes: S.optional(__S(10, __c1, 2)),
-          aggregate_by: S.optional(__S(11, __c1, 3)),
-          group_by: S.optional(__S(12, __c1, 4)),
-          compute_attributes: S.optional(__S(11, __c1, 3)),
+          exclude_attributes: S.optional(__S(89, __c11, 1)),
+          aggregate_by: S.optional(__S(96, __c12, 0)),
+          group_by: S.optional(__S(90, __c11, 2)),
+          compute_attributes: S.optional(__S(96, __c12, 0)),
           distance_metric: S.optional(S.Unknown),
           limit: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}/query", code: 200 })),
       ).annotate({
         identifier: "CreateNamespaceQueryRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          aggregations: S.optional(__S(96, __c12, 0)),
+          aggregation_groups: S.optional(__S(112, __c14, 0)),
+          rows: S.optional(__S(120, __c15, 0)),
+          performance: __S(113, __c14, 1),
+          billing: __S(128, __c16, 0),
+        }),
+      ).annotate({
+        identifier: "CreateNamespaceQueryResponse",
+      });
   }
 }
-function __c2(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(96, __c12, 0));
     case 1:
-      return S.Array(__S(4, __c0, 4));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           cache_hit_ratio: S.Number,
@@ -1071,26 +1265,28 @@ function __c2(j: number): any {
           approx_namespace_size: S.Number,
         }),
       ).annotate({ identifier: "QueryPerformance" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(16, __c2, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           billable_logical_bytes_queried: S.Number,
           billable_logical_bytes_returned: S.Number,
         }),
       ).annotate({ identifier: "QueryBilling" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          aggregations: S.optional(__S(11, __c1, 3)),
-          aggregation_groups: S.optional(__S(16, __c2, 0)),
-          rows: S.optional(__S(17, __c2, 1)),
-          performance: __S(18, __c2, 2),
-          billing: __S(19, __c2, 3),
-        }),
-      ).annotate({
-        identifier: "CreateNamespaceQueryResponse",
-      });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           rank_by: S.optional(S.Unknown),
@@ -1098,23 +1294,23 @@ function __c2(j: number): any {
           offset: S.optional(S.Number),
           filters: S.optional(S.Unknown),
           include_attributes: S.optional(S.Unknown),
-          exclude_attributes: S.optional(__S(10, __c1, 2)),
-          aggregate_by: S.optional(__S(11, __c1, 3)),
-          group_by: S.optional(__S(12, __c1, 4)),
-          compute_attributes: S.optional(__S(11, __c1, 3)),
+          exclude_attributes: S.optional(__S(89, __c11, 1)),
+          aggregate_by: S.optional(__S(96, __c12, 0)),
+          group_by: S.optional(__S(90, __c11, 2)),
+          compute_attributes: S.optional(__S(96, __c12, 0)),
           distance_metric: S.optional(S.Unknown),
           limit: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Query" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(136, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           vector_encoding: S.optional(S.Unknown),
-          consistency: S.optional(__S(9, __c1, 1)),
-          queries: __S(22, __c2, 6),
+          consistency: S.optional(__S(88, __c11, 0)),
+          queries: __S(137, __c17, 1),
           rerank_by: S.optional(S.Unknown),
           limit: S.optional(S.Unknown),
           offset: S.optional(S.Number),
@@ -1122,35 +1318,62 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateNamespaceQueryRequest2",
       });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          aggregations: S.optional(__S(96, __c12, 0)),
+          aggregation_groups: S.optional(__S(112, __c14, 0)),
+          rows: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({ identifier: "SingleQueryResult" });
+    case 4:
+      return S.Array(__S(139, __c17, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(140, __c17, 4),
+          performance: __S(113, __c14, 1),
+          billing: __S(128, __c16, 0),
+        }),
+      ).annotate({ identifier: "MultiQueryResult" });
   }
 }
-function __c3(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          aggregations: S.optional(__S(11, __c1, 3)),
-          aggregation_groups: S.optional(__S(16, __c2, 0)),
-          rows: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "SingleQueryResult" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(25, __c3, 1),
-          performance: __S(18, __c2, 2),
-          billing: __S(19, __c2, 3),
-        }),
-      ).annotate({ identifier: "MultiQueryResult" });
-    case 3:
+          namespace: S.String.pipe(T.Label()),
+          body: S.optional(__S(160, __c20, 0).pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/namespaces/{namespace}/schema", code: 200 })),
+      ).annotate({
+        identifier: "CreateNamespaceSchemaRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(170, __c21, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateNamespaceSchemaResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           distance_metric: S.Unknown,
         }),
       ).annotate({ identifier: "SparseKnn" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -1160,44 +1383,33 @@ function __c3(j: number): any {
           fuzzy: S.optional(S.Boolean),
           full_text_search: S.optional(S.Unknown),
           ann: S.optional(S.Unknown),
-          sparse_knn: S.optional(__S(27, __c3, 3)),
+          sparse_knn: S.optional(__S(168, __c21, 0)),
           embed: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "AttributeSchemaConfig" });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/namespaces/{namespace}/schema", code: 200 })),
-      ).annotate({
-        identifier: "CreateNamespaceSchemaRequest",
-      });
-    case 7:
-      return S.Record(S.String, __S(28, __c3, 4));
+    case 2:
+      return S.Record(S.String, __S(169, __c21, 1));
   }
 }
-function __c4(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(31, __c3, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateNamespaceSchemaResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v2/namespaces/{namespace}", code: 200 })),
       ).annotate({ identifier: "DeleteNamespaceRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.Unknown,
         }),
       ).annotate({ identifier: "DeleteNamespaceResponse" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1207,7 +1419,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetNamespaceHintCacheWarmRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.Unknown,
@@ -1216,7 +1428,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetNamespaceHintCacheWarmResponse",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1224,7 +1440,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetNamespaceMetadataRequest",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          num_shards: S.Number,
+        }),
+      ).annotate({ identifier: "ShardingConfig" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updated_at: S.String,
@@ -1233,39 +1463,33 @@ function __c4(j: number): any {
           utilization: S.Number,
         }),
       ).annotate({ identifier: "PinningStatus" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          replicas: S.optional(S.Number),
-          status: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "PinningConfigResponse" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          num_shards: S.Number,
-        }),
-      ).annotate({ identifier: "ShardingConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          schema: __S(31, __c3, 7),
+          replicas: S.optional(S.Number),
+          status: S.optional(__S(208, __c26, 0)),
+        }),
+      ).annotate({ identifier: "PinningConfigResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          schema: __S(170, __c21, 2),
           approx_row_count: S.Number,
           approx_logical_bytes: S.Number,
           created_at: S.String,
           updated_at: S.String,
           encryption: S.Unknown,
           index: S.Unknown,
-          pinning: S.optional(__S(39, __c4, 7)),
-          sharding: S.optional(__S(40, __c5, 0)),
+          pinning: S.optional(__S(209, __c26, 1)),
+          sharding: S.optional(__S(200, __c25, 0)),
           read_only: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NamespaceMetadata" });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1280,157 +1504,12 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetNamespaceOperationRequest",
       });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          billable_logical_bytes_written: S.Number,
-          query: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "WriteBilling" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          server_total_ms: S.Number,
-        }),
-      ).annotate({ identifier: "WritePerformance" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.Unknown,
-          message: S.String,
-          rows_affected: S.Number,
-          rows_upserted: S.optional(S.Number),
-          rows_patched: S.optional(S.Number),
-          rows_deleted: S.optional(S.Number),
-          rows_remaining: S.optional(S.Boolean),
-          upserted_ids: S.optional(__S(43, __c5, 3)),
-          patched_ids: S.optional(__S(43, __c5, 3)),
-          deleted_ids: S.optional(__S(43, __c5, 3)),
-          billing: __S(44, __c5, 4),
-          performance: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "WriteResult" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetNamespaceOperationResponse",
       });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/namespaces/{namespace}/schema", code: 200 })),
-      ).annotate({
-        identifier: "GetNamespaceSchemaRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cursor: S.optional(S.String.pipe(T.Query())),
-          prefix: S.optional(S.String.pipe(T.Query())),
-          page_size: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/namespaces", code: 200 })),
-      ).annotate({ identifier: "ListNamespacesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({ identifier: "NamespaceSummary" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespaces: S.optional(__S(51, __c6, 3)),
-          next_cursor: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListNamespacesResponse" });
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: __S(53, __c6, 5),
-          vector: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "Columns" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          patch: __S(11, __c1, 3),
-          filters: S.Unknown,
-        }),
-      ).annotate({ identifier: "PatchByFilter" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          upsert_columns: S.optional(__S(54, __c6, 6)),
-          upsert_rows: S.optional(__S(17, __c2, 1)),
-          patch_columns: S.optional(__S(54, __c6, 6)),
-          patch_rows: S.optional(__S(17, __c2, 1)),
-          deletes: S.optional(__S(43, __c5, 3)),
-          upsert_condition: S.optional(S.Unknown),
-          patch_condition: S.optional(S.Unknown),
-          delete_condition: S.optional(S.Unknown),
-          distance_metric: S.optional(S.Unknown),
-          schema: S.optional(__S(29, __c3, 5)),
-          branch_from_namespace: S.optional(S.Unknown),
-          copy_from_namespace: S.optional(S.Unknown),
-          delete_by_filter: S.optional(S.Unknown),
-          delete_by_filter_allow_partial: S.optional(S.Boolean),
-          patch_by_filter: S.optional(__S(55, __c6, 7)),
-          patch_by_filter_allow_partial: S.optional(S.Boolean),
-          return_affected_ids: S.optional(S.Boolean),
-          encryption: S.optional(S.Unknown),
-          sharding: S.optional(__S(40, __c5, 0)),
-          disable_backpressure: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}", code: 200 })),
-      ).annotate({ identifier: "UpdateNamespaceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          source_namespace: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateNamespaceByNamespaceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          source_namespace: S.String,
-          source_api_key: S.optional(S.String),
-          source_region: S.optional(S.String),
-          dest_encryption: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "POST", uri: "/v2/namespaces/{namespace}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateNamespaceByNamespaceRequest2",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pinning: S.optional(S.NullOr(S.Unknown)),
-          read_only: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/namespaces/{namespace}/metadata", code: 200 })),
-      ).annotate({
-        identifier: "UpdateNamespaceMetadataRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

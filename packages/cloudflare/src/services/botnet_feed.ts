@@ -69,7 +69,7 @@ export const dayReportAsn: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DayReportAsnRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DayReportAsnResponse>,
+  output: __S(2, __c1, 0) as any as S.Schema<DayReportAsnResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -83,8 +83,8 @@ export const deleteConfigAsn: API.OperationMethod<
   DeleteConfigAsnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteConfigAsnRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteConfigAsnResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<DeleteConfigAsnRequest>,
+  output: __S(6, __c3, 0) as any as S.Schema<DeleteConfigAsnResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -98,8 +98,8 @@ export const fullReportAsn: API.OperationMethod<
   FullReportAsnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<FullReportAsnRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FullReportAsnResponse>,
+  input: __S(8, __c4, 0) as any as S.Schema<FullReportAsnRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<FullReportAsnResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -113,8 +113,8 @@ export const getConfigAsn: API.OperationMethod<
   GetConfigAsnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetConfigAsnRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetConfigAsnResponse>,
+  input: __S(10, __c5, 0) as any as S.Schema<GetConfigAsnRequest>,
+  output: __S(6, __c3, 0) as any as S.Schema<GetConfigAsnResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -139,7 +139,11 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DayReportAsnRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cidr: S.optional(S.NullOr(S.String)),
@@ -147,7 +151,11 @@ function __c0(j: number): any {
           offenseCount: S.optional(S.NullOr(S.Number).pipe(T.Body("offense_count"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DayReportAsnResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -162,13 +170,21 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteConfigAsnRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           asn: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteConfigAsnResponse" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -183,7 +199,11 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "FullReportAsnRequest" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -199,7 +219,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "GetConfigAsnRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

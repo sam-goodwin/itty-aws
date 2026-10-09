@@ -438,7 +438,7 @@ export const cancelResourceRequest: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelResourceRequestInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<CancelResourceRequestOutput>,
+  output: __S(1, __c0, 1) as any as S.Schema<CancelResourceRequestOutput>,
   errors: [ConcurrentModificationException, RequestTokenNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -480,8 +480,8 @@ export const createResource: API.OperationMethod<
   CreateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateResourceInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateResourceOutput>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateResourceInput>,
+  output: __S(24, __c3, 0) as any as S.Schema<CreateResourceOutput>,
   errors: [
     AlreadyExistsException,
     ClientTokenConflictException,
@@ -543,8 +543,8 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteResourceInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteResourceOutput>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteResourceInput>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteResourceOutput>,
   errors: [
     AlreadyExistsException,
     ClientTokenConflictException,
@@ -603,8 +603,8 @@ export const getResource: API.OperationMethod<
   GetResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetResourceInput>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetResourceOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetResourceInput>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetResourceOutput>,
   errors: [
     AlreadyExistsException,
     GeneralServiceException,
@@ -641,8 +641,8 @@ export const getResourceRequestStatus: API.OperationMethod<
   GetResourceRequestStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetResourceRequestStatusInput>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetResourceRequestStatusOutput>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetResourceRequestStatusInput>,
+  output: __S(59, __c7, 3) as any as S.Schema<GetResourceRequestStatusOutput>,
   errors: [RequestTokenNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -664,8 +664,8 @@ export const listResourceRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProgressEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListResourceRequestsInput>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListResourceRequestsOutput>,
+  input: __S(66, __c8, 2) as any as S.Schema<ListResourceRequestsInput>,
+  output: __S(68, __c8, 4) as any as S.Schema<ListResourceRequestsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -710,8 +710,8 @@ export const listResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListResourcesInput>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListResourcesOutput>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListResourcesInput>,
+  output: __S(74, __c9, 2) as any as S.Schema<ListResourcesOutput>,
   errors: [
     AlreadyExistsException,
     GeneralServiceException,
@@ -787,8 +787,8 @@ export const updateResource: API.OperationMethod<
   UpdateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<UpdateResourceInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<UpdateResourceOutput>,
+  input: __S(80, __c10, 0) as any as S.Schema<UpdateResourceInput>,
+  output: __S(24, __c3, 0) as any as S.Schema<UpdateResourceOutput>,
   errors: [
     AlreadyExistsException,
     ClientTokenConflictException,
@@ -827,6 +827,14 @@ function __c0(j: number): any {
         identifier: "CancelResourceRequestInput",
       });
     case 1:
+      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(__S(8, __c1, 0)) })).annotate({
+        identifier: "CancelResourceRequestOutput",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TypeName: S.optional(S.String),
@@ -842,11 +850,11 @@ function __c0(j: number): any {
           RetryAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ProgressEvent" });
-    case 2:
-      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(__S(1, __c0, 1)) })).annotate({
-        identifier: "CancelResourceRequestOutput",
-      });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TypeName: S.String,
@@ -856,11 +864,19 @@ function __c0(j: number): any {
           DesiredState: SensitiveString,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateResourceInput" });
-    case 4:
-      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(__S(1, __c0, 1)) })).annotate({
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(__S(8, __c1, 0)) })).annotate({
         identifier: "CreateResourceOutput",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TypeName: S.String,
@@ -870,7 +886,11 @@ function __c0(j: number): any {
           Identifier: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteResourceInput" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TypeName: S.String,
@@ -879,22 +899,26 @@ function __c0(j: number): any {
           Identifier: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetResourceInput" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TypeName: S.optional(S.String),
+          ResourceDescription: S.optional(__S(48, __c6, 0)),
+        }),
+      ).annotate({ identifier: "GetResourceOutput" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.optional(S.String), Properties: S.optional(SensitiveString) }),
       ).annotate({ identifier: "ResourceDescription" });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          TypeName: S.optional(S.String),
-          ResourceDescription: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "GetResourceOutput" });
-    case 1:
       return S.suspend(() =>
         S.Struct({ RequestToken: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -902,7 +926,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetResourceRequestStatusInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           HookTypeName: S.optional(S.String),
@@ -915,54 +939,58 @@ function __c1(j: number): any {
           FailureMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "HookProgressEvent" });
+    case 2:
+      return S.Array(__S(57, __c7, 1));
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          ProgressEvent: S.optional(__S(1, __c0, 1)),
-          HooksProgressEvent: S.optional(__S(11, __c1, 3)),
+          ProgressEvent: S.optional(__S(8, __c1, 0)),
+          HooksProgressEvent: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({
         identifier: "GetResourceRequestStatusOutput",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Operations: S.optional(__S(13, __c1, 5)),
-          OperationStatuses: S.optional(__S(13, __c1, 5)),
+          Operations: S.optional(__S(64, __c8, 0)),
+          OperationStatuses: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "ResourceRequestStatusFilter",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          ResourceRequestStatusFilter: S.optional(__S(14, __c1, 6)),
+          ResourceRequestStatusFilter: S.optional(__S(65, __c8, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListResourceRequestsInput",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(1, __c0, 1));
-    case 1:
+    case 3:
+      return S.Array(__S(8, __c1, 0));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          ResourceRequestStatusSummaries: S.optional(__S(16, __c2, 0)),
+          ResourceRequestStatusSummaries: S.optional(__S(67, __c8, 3)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListResourceRequestsOutput",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TypeName: S.String,
@@ -973,17 +1001,21 @@ function __c2(j: number): any {
           ResourceModel: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListResourcesInput" });
-    case 3:
-      return S.Array(__S(7, __c0, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           TypeName: S.optional(S.String),
-          ResourceDescriptions: S.optional(__S(19, __c2, 3)),
+          ResourceDescriptions: S.optional(__S(73, __c9, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListResourcesOutput" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TypeName: S.String,
@@ -996,7 +1028,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "UpdateResourceInput" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

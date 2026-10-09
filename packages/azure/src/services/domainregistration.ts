@@ -804,8 +804,8 @@ export const DeleteDomain: API.OperationMethod<
   DeleteDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDomainResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -819,8 +819,8 @@ export const DeleteDomainOwnershipIdentifier: API.OperationMethod<
   DeleteDomainOwnershipIdentifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteDomainOwnershipIdentifierRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteDomainOwnershipIdentifierResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteDomainOwnershipIdentifierRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<DeleteDomainOwnershipIdentifierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -834,8 +834,8 @@ export const DomainsCreateOrUpdate: API.OperationMethod<
   DomainsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DomainsCreateOrUpdateRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DomainsCreateOrUpdateResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DomainsCreateOrUpdateRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<DomainsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -849,8 +849,8 @@ export const DomainsCreateOrUpdateOwnershipIdentifier: API.OperationMethod<
   DomainsCreateOrUpdateOwnershipIdentifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DomainsCreateOrUpdateOwnershipIdentifierRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DomainsCreateOrUpdateOwnershipIdentifierResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DomainsCreateOrUpdateOwnershipIdentifierRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<DomainsCreateOrUpdateOwnershipIdentifierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -864,8 +864,8 @@ export const GetDomain: API.OperationMethod<
   GetDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetDomainRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetDomainResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<GetDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -879,8 +879,8 @@ export const GetDomainControlCenterSsoRequest: API.OperationMethod<
   GetDomainControlCenterSsoRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetDomainControlCenterSsoRequestRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DomainControlCenterSsoRequest>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetDomainControlCenterSsoRequestRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<DomainControlCenterSsoRequest>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -894,8 +894,8 @@ export const GetDomainOwnershipIdentifier: API.OperationMethod<
   GetDomainOwnershipIdentifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetDomainOwnershipIdentifierRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetDomainOwnershipIdentifierResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetDomainOwnershipIdentifierRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<GetDomainOwnershipIdentifierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -909,8 +909,8 @@ export const GetTopLevelDomain: API.OperationMethod<
   GetTopLevelDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetTopLevelDomainRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetTopLevelDomainResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetTopLevelDomainRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<GetTopLevelDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -924,8 +924,8 @@ export const ListDomainByResourceGroup: API.OperationMethod<
   ListDomainByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListDomainByResourceGroupRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DomainCollection>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListDomainByResourceGroupRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<DomainCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -939,8 +939,8 @@ export const ListDomainOwnershipIdentifiers: API.OperationMethod<
   ListDomainOwnershipIdentifiersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListDomainOwnershipIdentifiersRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<DomainOwnershipIdentifierCollection>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListDomainOwnershipIdentifiersRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<DomainOwnershipIdentifierCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -954,8 +954,8 @@ export const ListDomainRecommendations: API.OperationMethod<
   ListDomainRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListDomainRecommendationsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<NameIdentifierCollection>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListDomainRecommendationsRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<NameIdentifierCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -969,8 +969,8 @@ export const ListDomainRegistrationProviderOperations: API.OperationMethod<
   ListDomainRegistrationProviderOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListDomainRegistrationProviderOperationsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<CsmOperationCollection>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListDomainRegistrationProviderOperationsRequest>,
+  output: __S(94, __c5, 14) as any as S.Schema<CsmOperationCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -984,8 +984,8 @@ export const ListDomains: API.OperationMethod<
   ListDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListDomainsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DomainCollection>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListDomainsRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<DomainCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -999,8 +999,8 @@ export const ListTopLevelDomainAgreements: API.OperationMethod<
   ListTopLevelDomainAgreementsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListTopLevelDomainAgreementsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<TldLegalAgreementCollection>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListTopLevelDomainAgreementsRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<TldLegalAgreementCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1014,8 +1014,8 @@ export const ListTopLevelDomains: API.OperationMethod<
   ListTopLevelDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListTopLevelDomainsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<TopLevelDomainCollection>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListTopLevelDomainsRequest>,
+  output: __S(131, __c8, 3) as any as S.Schema<TopLevelDomainCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1029,8 +1029,8 @@ export const RenewDomain: API.OperationMethod<
   RenewDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<RenewDomainRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RenewDomainResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<RenewDomainRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<RenewDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1044,8 +1044,8 @@ export const TransferDomainOut: API.OperationMethod<
   TransferDomainOutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<TransferDomainOutRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<TransferDomainOutResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<TransferDomainOutRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<TransferDomainOutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1059,8 +1059,8 @@ export const UpdateDomain: API.OperationMethod<
   UpdateDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UpdateDomainResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<UpdateDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1074,8 +1074,8 @@ export const UpdateDomainOwnershipIdentifier: API.OperationMethod<
   UpdateDomainOwnershipIdentifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<UpdateDomainOwnershipIdentifierRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UpdateDomainOwnershipIdentifierResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<UpdateDomainOwnershipIdentifierRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<UpdateDomainOwnershipIdentifierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1110,7 +1110,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DomainAvailabilityCheckResult",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1126,359 +1130,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteDomainRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDomainResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDomainOwnershipIdentifierRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDomainOwnershipIdentifierResponse",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          address1: S.String,
-          address2: S.optional(S.String),
-          city: S.String,
-          country: S.String,
-          postalCode: S.String,
-          state: S.String,
-        }),
-      ).annotate({ identifier: "Address" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          addressMailing: S.optional(__S(7, __c0, 7)),
-          email: S.String,
-          fax: S.optional(S.String),
-          jobTitle: S.optional(S.String),
-          nameFirst: S.String,
-          nameLast: S.String,
-          nameMiddle: S.optional(S.String),
-          organization: S.optional(S.String),
-          phone: S.String,
-        }),
-      ).annotate({ identifier: "Contact" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          agreementKeys: S.optional(__S(9, __c1, 1)),
-          agreedBy: S.optional(S.String),
-          agreedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainPurchaseConsent" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          contactAdmin: __S(8, __c1, 0),
-          contactBilling: __S(8, __c1, 0),
-          contactRegistrant: __S(8, __c1, 0),
-          contactTech: __S(8, __c1, 0),
-          privacy: S.optional(S.Boolean),
-          autoRenew: S.optional(S.Boolean),
-          consent: __S(10, __c1, 2),
-          dnsType: S.optional(S.String),
-          dnsZoneId: S.optional(S.String),
-          targetDnsType: S.optional(S.String),
-          authCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainPropertiesInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(11, __c1, 3)),
-          kind: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DomainsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          siteNames: S.optional(__S(9, __c1, 1)),
-          azureResourceName: S.optional(S.String),
-          azureResourceType: S.optional(S.String),
-          customHostNameDnsRecordType: S.optional(S.String),
-          hostNameType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostName" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          contactAdmin: __S(8, __c1, 0),
-          contactBilling: __S(8, __c1, 0),
-          contactRegistrant: __S(8, __c1, 0),
-          contactTech: __S(8, __c1, 0),
-          registrationStatus: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          nameServers: S.optional(__S(9, __c1, 1)),
-          privacy: S.optional(S.Boolean),
-          createdTime: S.optional(S.String),
-          expirationTime: S.optional(S.String),
-          lastRenewedTime: S.optional(S.String),
-          autoRenew: S.optional(S.Boolean),
-          readyForDnsRecordManagement: S.optional(S.Boolean),
-          managedHostNames: S.optional(__S(15, __c1, 7)),
-          consent: __S(10, __c1, 2),
-          domainNotRenewableReasons: S.optional(__S(16, __c2, 0)),
-          dnsType: S.optional(S.String),
-          dnsZoneId: S.optional(S.String),
-          targetDnsType: S.optional(S.String),
-          authCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(17, __c2, 1)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DomainsCreateOrUpdateResponse",
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteDomainResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ownershipId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DomainOwnershipIdentifierProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(19, __c2, 3)),
-          kind: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DomainsCreateOrUpdateOwnershipIdentifierRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(19, __c2, 3)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DomainsCreateOrUpdateOwnershipIdentifierResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetDomainRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          tags: S.optional(__S(6, __c0, 6)),
-          location: S.String,
-          properties: S.optional(__S(17, __c2, 1)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetDomainResponse" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/generateSsoRequest",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDomainControlCenterSsoRequestRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          postParameterKey: S.optional(S.String),
-          postParameterValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DomainControlCenterSsoRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDomainOwnershipIdentifierRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetTopLevelDomainRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          privacy: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TopLevelDomainProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(28, __c3, 4)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetTopLevelDomainResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDomainByResourceGroupRequest",
-      });
-    case 7:
-      return S.Array(__S(23, __c2, 7));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(31, __c3, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainCollection" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1495,18 +1159,22 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListDomainOwnershipIdentifiersRequest",
       });
+    case 1:
+      return S.Array(__S(337, __c21, 1));
     case 2:
-      return S.Array(__S(21, __c2, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(34, __c4, 2),
+          value: __S(49, __c3, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DomainOwnershipIdentifierCollection",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1523,18 +1191,18 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListDomainRecommendationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "NameIdentifier" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(38, __c4, 6),
+          value: __S(66, __c4, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NameIdentifierCollection" });
@@ -1574,7 +1242,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 3:
-      return S.Array(__S(42, __c5, 2));
+      return S.Array(__S(82, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1583,7 +1251,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "MetricAvailability" });
     case 5:
-      return S.Array(__S(44, __c5, 4));
+      return S.Array(__S(84, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1599,20 +1267,16 @@ function __c5(j: number): any {
           metricFilterPattern: S.optional(S.String),
           fillGapWithZero: S.optional(S.Boolean),
           isInternal: S.optional(S.Boolean),
-          dimensions: S.optional(__S(43, __c5, 3)),
+          dimensions: S.optional(__S(83, __c5, 3)),
           category: S.optional(S.String),
-          availabilities: S.optional(__S(45, __c5, 5)),
-          supportedTimeGrainTypes: S.optional(__S(9, __c1, 1)),
-          supportedAggregationTypes: S.optional(__S(9, __c1, 1)),
+          availabilities: S.optional(__S(85, __c5, 5)),
+          supportedTimeGrainTypes: S.optional(__S(288, __c18, 0)),
+          supportedAggregationTypes: S.optional(__S(288, __c18, 0)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(86, __c5, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1621,43 +1285,47 @@ function __c6(j: number): any {
           logFilterPattern: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogSpecification" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(88, __c5, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(47, __c5, 7)),
-          logSpecifications: S.optional(__S(49, __c6, 1)),
+          metricSpecifications: S.optional(__S(87, __c5, 7)),
+          logSpecifications: S.optional(__S(89, __c5, 9)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(50, __c6, 2)),
+          serviceSpecification: S.optional(__S(90, __c5, 10)),
         }),
       ).annotate({
         identifier: "CsmOperationDescriptionProperties",
       });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(41, __c5, 1)),
+          display: S.optional(__S(81, __c5, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(51, __c6, 3)),
+          properties: S.optional(__S(91, __c5, 11)),
         }),
       ).annotate({ identifier: "CsmOperationDescription" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(92, __c5, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          value: __S(53, __c6, 5),
+          value: __S(93, __c5, 13),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CsmOperationCollection" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1702,17 +1370,21 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "TldLegalAgreement" });
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(113, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(58, __c7, 2),
+          value: __S(114, __c7, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TldLegalAgreementCollection",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1727,29 +1399,29 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListTopLevelDomainsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(28, __c3, 4)),
+          systemData: S.optional(__S(272, __c17, 0)),
+          properties: S.optional(__S(432, __c27, 0)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "TopLevelDomain" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(62, __c7, 6),
+          value: __S(130, __c8, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TopLevelDomainCollection" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1766,7 +1438,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RenewDomainRequest" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1781,14 +1457,18 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TransferDomainOutRequest" });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           kind: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(256, __c16, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1798,14 +1478,18 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDomainRequest" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(19, __c2, 3)),
+          properties: S.optional(__S(336, __c21, 0)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1820,7 +1504,406 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDomainOwnershipIdentifierRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteDomainOwnershipIdentifierResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(304, __c19, 0)),
+          location: S.String,
+          properties: S.optional(__S(256, __c16, 0)),
+          kind: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DomainsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(272, __c17, 0)),
+          tags: S.optional(__S(304, __c19, 0)),
+          location: S.String,
+          properties: S.optional(__S(311, __c19, 7)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DomainsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contactAdmin: __S(306, __c19, 2),
+          contactBilling: __S(306, __c19, 2),
+          contactRegistrant: __S(306, __c19, 2),
+          contactTech: __S(306, __c19, 2),
+          privacy: S.optional(S.Boolean),
+          autoRenew: S.optional(S.Boolean),
+          consent: __S(307, __c19, 3),
+          dnsType: S.optional(S.String),
+          dnsZoneId: S.optional(S.String),
+          targetDnsType: S.optional(S.String),
+          authCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainPropertiesInput" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          address1: S.String,
+          address2: S.optional(S.String),
+          city: S.String,
+          country: S.String,
+          postalCode: S.String,
+          state: S.String,
+        }),
+      ).annotate({ identifier: "Address" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          addressMailing: S.optional(__S(305, __c19, 1)),
+          email: S.String,
+          fax: S.optional(S.String),
+          jobTitle: S.optional(S.String),
+          nameFirst: S.String,
+          nameLast: S.String,
+          nameMiddle: S.optional(S.String),
+          organization: S.optional(S.String),
+          phone: S.String,
+        }),
+      ).annotate({ identifier: "Contact" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          agreementKeys: S.optional(__S(288, __c18, 0)),
+          agreedBy: S.optional(S.String),
+          agreedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainPurchaseConsent" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          siteNames: S.optional(__S(288, __c18, 0)),
+          azureResourceName: S.optional(S.String),
+          azureResourceType: S.optional(S.String),
+          customHostNameDnsRecordType: S.optional(S.String),
+          hostNameType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostName" });
+    case 5:
+      return S.Array(__S(308, __c19, 4));
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          contactAdmin: __S(306, __c19, 2),
+          contactBilling: __S(306, __c19, 2),
+          contactRegistrant: __S(306, __c19, 2),
+          contactTech: __S(306, __c19, 2),
+          registrationStatus: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          nameServers: S.optional(__S(288, __c18, 0)),
+          privacy: S.optional(S.Boolean),
+          createdTime: S.optional(S.String),
+          expirationTime: S.optional(S.String),
+          lastRenewedTime: S.optional(S.String),
+          autoRenew: S.optional(S.Boolean),
+          readyForDnsRecordManagement: S.optional(S.Boolean),
+          managedHostNames: S.optional(__S(309, __c19, 5)),
+          consent: __S(307, __c19, 3),
+          domainNotRenewableReasons: S.optional(__S(310, __c19, 6)),
+          dnsType: S.optional(S.String),
+          dnsZoneId: S.optional(S.String),
+          targetDnsType: S.optional(S.String),
+          authCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainProperties" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          properties: S.optional(__S(336, __c21, 0)),
+          kind: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DomainsCreateOrUpdateOwnershipIdentifierRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ownershipId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DomainOwnershipIdentifierProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(272, __c17, 0)),
+          properties: S.optional(__S(336, __c21, 0)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DomainsCreateOrUpdateOwnershipIdentifierResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetDomainRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(272, __c17, 0)),
+          tags: S.optional(__S(304, __c19, 0)),
+          location: S.String,
+          properties: S.optional(__S(311, __c19, 7)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetDomainResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/generateSsoRequest",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDomainControlCenterSsoRequestRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          postParameterKey: S.optional(S.String),
+          postParameterValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DomainControlCenterSsoRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers/{name}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDomainOwnershipIdentifierRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetTopLevelDomainRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(272, __c17, 0)),
+          properties: S.optional(__S(432, __c27, 0)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetTopLevelDomainResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privacy: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TopLevelDomainProperties" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDomainByResourceGroupRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(368, __c23, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(464, __c29, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainCollection" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

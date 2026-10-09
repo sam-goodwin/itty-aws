@@ -567,8 +567,8 @@ export const createFeatureRequest: API.OperationMethod<
   CreateFeatureRequestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateFeatureRequestRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateFeatureRequestRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -581,8 +581,8 @@ export const createFeatureRequestsLinkGithub: API.OperationMethod<
   CreateFeatureRequestsLinkGithubError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateFeatureRequestsLinkGithubRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateFeatureRequestsLinkGithubRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -595,8 +595,8 @@ export const createFeatureRequestsPauseGithub: API.OperationMethod<
   CreateFeatureRequestsPauseGithubError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateFeatureRequestsPauseGithubRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateFeatureRequestsPauseGithubRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -609,8 +609,8 @@ export const featureRequestsAddAccountCreate: API.OperationMethod<
   FeatureRequestsAddAccountCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<FeatureRequestsAddAccountCreateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(192, __c12, 0) as any as S.Schema<FeatureRequestsAddAccountCreateRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -623,8 +623,8 @@ export const featureRequestsAddEvidenceCreate: API.OperationMethod<
   FeatureRequestsAddEvidenceCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<FeatureRequestsAddEvidenceCreateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(208, __c13, 0) as any as S.Schema<FeatureRequestsAddEvidenceCreateRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -637,8 +637,8 @@ export const featureRequestsArchiveCreate: API.OperationMethod<
   FeatureRequestsArchiveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<FeatureRequestsArchiveCreateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(224, __c14, 0) as any as S.Schema<FeatureRequestsArchiveCreateRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -651,8 +651,8 @@ export const featureRequestsRemoveEvidenceCreate: API.OperationMethod<
   FeatureRequestsRemoveEvidenceCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<FeatureRequestsRemoveEvidenceCreateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(240, __c15, 0) as any as S.Schema<FeatureRequestsRemoveEvidenceCreateRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -665,8 +665,8 @@ export const featureRequestsRestoreCreate: API.OperationMethod<
   FeatureRequestsRestoreCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<FeatureRequestsRestoreCreateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(256, __c16, 0) as any as S.Schema<FeatureRequestsRestoreCreateRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -679,8 +679,8 @@ export const featureRequestsResumeGithubCreate: API.OperationMethod<
   FeatureRequestsResumeGithubCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<FeatureRequestsResumeGithubCreateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(272, __c17, 0) as any as S.Schema<FeatureRequestsResumeGithubCreateRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -693,8 +693,8 @@ export const featureRequestsUnlinkGithubCreate: API.OperationMethod<
   FeatureRequestsUnlinkGithubCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<FeatureRequestsUnlinkGithubCreateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(288, __c18, 0) as any as S.Schema<FeatureRequestsUnlinkGithubCreateRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -707,8 +707,8 @@ export const featureRequestsUpdateEvidenceCreate: API.OperationMethod<
   FeatureRequestsUpdateEvidenceCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<FeatureRequestsUpdateEvidenceCreateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(64, __c4, 0) as any as S.Schema<FeatureRequestsUpdateEvidenceCreateRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -721,8 +721,8 @@ export const getFeatureRequest: API.OperationMethod<
   GetFeatureRequestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetFeatureRequestRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetFeatureRequestRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -735,8 +735,8 @@ export const listFeatureRequests: API.OperationMethod<
   ListFeatureRequestsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListFeatureRequestsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<PaginatedFeatureRequestList>,
+  input: __S(98, __c6, 2) as any as S.Schema<ListFeatureRequestsRequest>,
+  output: __S(100, __c6, 4) as any as S.Schema<PaginatedFeatureRequestList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -749,8 +749,8 @@ export const listFeatureRequestsHistory: API.OperationMethod<
   ListFeatureRequestsHistoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListFeatureRequestsHistoryRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListFeatureRequestsHistoryResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListFeatureRequestsHistoryRequest>,
+  output: __S(117, __c7, 5) as any as S.Schema<ListFeatureRequestsHistoryResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -763,8 +763,8 @@ export const listFeatureRequestsStatusHistory: API.OperationMethod<
   ListFeatureRequestsStatusHistoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListFeatureRequestsStatusHistoryRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListFeatureRequestsStatusHistoryResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListFeatureRequestsStatusHistoryRequest>,
+  output: __S(131, __c8, 3) as any as S.Schema<ListFeatureRequestsStatusHistoryResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -777,8 +777,8 @@ export const updateFeatureRequest: API.OperationMethod<
   UpdateFeatureRequestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UpdateFeatureRequestRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(144, __c9, 0) as any as S.Schema<UpdateFeatureRequestRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -791,8 +791,8 @@ export const updateFeatureRequestsPartial: API.OperationMethod<
   UpdateFeatureRequestsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<UpdateFeatureRequestsPartialRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FeatureRequest>,
+  input: __S(160, __c10, 0) as any as S.Schema<UpdateFeatureRequestsPartialRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<FeatureRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -802,30 +802,15 @@ export const updateFeatureRequestsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          summary: S.optional(S.String),
-          customer_quote: S.optional(S.String),
-          evidence_source: S.String,
-          source_url: S.optional(S.String),
-          requested_on: S.optional(S.NullOr(S.String)),
-          image_ids: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "FeatureRequestEvidencePayload",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           title: S.String,
           description: S.optional(S.String),
           account_id: S.String,
-          product_area_ids: __S(0, __c0, 0),
+          product_area_ids: __S(16, __c1, 0),
           idempotency_key: S.String,
-          evidence: S.optional(S.NullOr(__S(1, __c0, 1))),
+          evidence: S.optional(S.NullOr(__S(32, __c2, 0))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -836,14 +821,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateFeatureRequestRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "FeatureRequestAccount" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -852,21 +843,21 @@ function __c0(j: number): any {
           evidence_source: S.String,
           source_url: S.String,
           requested_on: S.NullOr(S.String),
-          image_ids: __S(0, __c0, 0),
+          image_ids: __S(16, __c1, 0),
           created_by: S.NullOr(S.Number),
           updated_by: S.NullOr(S.Number),
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "FeatureRequestEvidence" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(18, __c1, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          account: __S(3, __c0, 3),
-          evidence: __S(5, __c0, 5),
+          account: __S(17, __c1, 1),
+          evidence: __S(19, __c1, 3),
           evidence_count: S.Number,
           created_at: S.String,
           updated_at: S.NullOr(S.String),
@@ -874,13 +865,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FeatureRequestAccountLink",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(20, __c1, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -893,9 +880,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "FeatureRequestProductArea",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(22, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -908,7 +895,7 @@ function __c1(j: number): any {
           last_synced_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "FeatureRequestGitHubLink" });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -921,18 +908,39 @@ function __c1(j: number): any {
           archived_by: S.NullOr(S.Number),
           version: S.Number,
           can_update: S.Boolean,
-          account: __S(3, __c0, 3),
-          account_links: __S(7, __c0, 7),
+          account: __S(17, __c1, 1),
+          account_links: __S(21, __c1, 5),
           evidence_count: S.Number,
-          product_areas: __S(9, __c1, 1),
-          github_link: S.NullOr(__S(10, __c1, 2)),
+          product_areas: __S(23, __c1, 7),
+          github_link: S.NullOr(__S(24, __c1, 8)),
           created_by: S.NullOr(S.Number),
           updated_by: S.NullOr(S.Number),
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "FeatureRequest" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          summary: S.optional(S.String),
+          customer_quote: S.optional(S.String),
+          evidence_source: S.String,
+          source_url: S.optional(S.String),
+          requested_on: S.optional(S.NullOr(S.String)),
+          image_ids: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "FeatureRequestEvidencePayload",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -950,7 +958,238 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateFeatureRequestsLinkGithubRequest",
       });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          summary: S.optional(S.String),
+          customer_quote: S.optional(S.String),
+          evidence_source: S.String,
+          source_url: S.optional(S.String),
+          requested_on: S.optional(S.NullOr(S.String)),
+          image_ids: S.optional(__S(16, __c1, 0)),
+          expected_version: S.Number,
+          evidence_id: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/feature_requests/{id}/update_evidence/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "FeatureRequestsUpdateEvidenceCreateRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/feature_requests/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetFeatureRequestRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          account_ids: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          archive_state: S.optional(S.String.pipe(T.Query())),
+          created_by_ids: S.optional(__S(96, __c6, 0).pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          priorities: S.optional(__S(97, __c6, 1).pipe(T.Query())),
+          product_area_ids: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          request_ordering: S.optional(S.String.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+          statuses: S.optional(__S(97, __c6, 1).pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/feature_requests/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListFeatureRequestsRequest",
+      });
+    case 3:
+      return S.Array(__S(25, __c1, 9));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(99, __c6, 3),
+        }),
+      ).annotate({
+        identifier: "PaginatedFeatureRequestList",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/feature_requests/{id}/history/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListFeatureRequestsHistoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.String,
+          before: S.NullOr(S.Unknown),
+          after: S.NullOr(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "FeatureRequestHistoryChange",
+      });
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          changes: __S(114, __c7, 2),
+          is_initial: S.Boolean,
+          change_source: S.String,
+          actor_id: S.NullOr(S.Number),
+          actor_name: S.NullOr(S.String),
+          changed_at: S.String,
+        }),
+      ).annotate({ identifier: "FeatureRequestHistory" });
+    case 4:
+      return S.Array(__S(115, __c7, 3));
     case 5:
+      return S.suspend(() => __S(116, __c7, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListFeatureRequestsHistoryResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/feature_requests/{id}/status_history/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListFeatureRequestsStatusHistoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          previous_status: S.NullOr(S.String),
+          request_status: S.String,
+          change_source: S.String,
+          actor_id: S.NullOr(S.Number),
+          actor_name: S.NullOr(S.String),
+          changed_at: S.String,
+        }),
+      ).annotate({
+        identifier: "FeatureRequestStatusHistory",
+      });
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
+      return S.suspend(() => __S(130, __c8, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListFeatureRequestsStatusHistoryResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          expected_version: S.Number,
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          account_id: S.optional(S.String),
+          account_ids: S.optional(__S(16, __c1, 0)),
+          product_area_ids: S.optional(__S(16, __c1, 0)),
+          request_status: S.optional(S.String),
+          request_priority: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/projects/{project_id}/feature_requests/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateFeatureRequestRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          expected_version: S.optional(S.Number),
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          account_id: S.optional(S.String),
+          account_ids: S.optional(__S(16, __c1, 0)),
+          product_area_ids: S.optional(__S(16, __c1, 0)),
+          request_status: S.optional(S.String),
+          request_priority: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/projects/{project_id}/feature_requests/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateFeatureRequestsPartialRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -966,14 +1205,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateFeatureRequestsPauseGithubRequest",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           expected_version: S.Number,
           account_id: S.String,
-          evidence: S.optional(S.NullOr(__S(1, __c0, 1))),
+          evidence: S.optional(S.NullOr(__S(32, __c2, 0))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -984,7 +1227,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "FeatureRequestsAddAccountCreateRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -994,7 +1241,7 @@ function __c1(j: number): any {
           evidence_source: S.String,
           source_url: S.optional(S.String),
           requested_on: S.optional(S.NullOr(S.String)),
-          image_ids: S.optional(__S(0, __c0, 0)),
+          image_ids: S.optional(__S(16, __c1, 0)),
           expected_version: S.Number,
           account_link_id: S.String,
         }).pipe(
@@ -1009,7 +1256,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1027,7 +1274,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "FeatureRequestsArchiveCreateRequest",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1044,7 +1295,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "FeatureRequestsRemoveEvidenceCreateRequest",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1060,7 +1315,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "FeatureRequestsRestoreCreateRequest",
       });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1076,7 +1335,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "FeatureRequestsResumeGithubCreateRequest",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1092,216 +1355,8 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "FeatureRequestsUnlinkGithubCreateRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          summary: S.optional(S.String),
-          customer_quote: S.optional(S.String),
-          evidence_source: S.String,
-          source_url: S.optional(S.String),
-          requested_on: S.optional(S.NullOr(S.String)),
-          image_ids: S.optional(__S(0, __c0, 0)),
-          expected_version: S.Number,
-          evidence_id: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/feature_requests/{id}/update_evidence/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "FeatureRequestsUpdateEvidenceCreateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/feature_requests/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetFeatureRequestRequest" });
-    case 7:
-      return S.Array(S.Number);
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          account_ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          archive_state: S.optional(S.String.pipe(T.Query())),
-          created_by_ids: S.optional(__S(23, __c2, 7).pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          priorities: S.optional(__S(24, __c3, 0).pipe(T.Query())),
-          product_area_ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          request_ordering: S.optional(S.String.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-          statuses: S.optional(__S(24, __c3, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/feature_requests/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListFeatureRequestsRequest",
-      });
-    case 2:
-      return S.Array(__S(11, __c1, 3));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(26, __c3, 2),
-        }),
-      ).annotate({
-        identifier: "PaginatedFeatureRequestList",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/feature_requests/{id}/history/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListFeatureRequestsHistoryRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.String,
-          before: S.NullOr(S.Unknown),
-          after: S.NullOr(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "FeatureRequestHistoryChange",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          changes: __S(30, __c3, 6),
-          is_initial: S.Boolean,
-          change_source: S.String,
-          actor_id: S.NullOr(S.Number),
-          actor_name: S.NullOr(S.String),
-          changed_at: S.String,
-        }),
-      ).annotate({ identifier: "FeatureRequestHistory" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() => __S(32, __c4, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListFeatureRequestsHistoryResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/feature_requests/{id}/status_history/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListFeatureRequestsStatusHistoryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          previous_status: S.NullOr(S.String),
-          request_status: S.String,
-          change_source: S.String,
-          actor_id: S.NullOr(S.Number),
-          actor_name: S.NullOr(S.String),
-          changed_at: S.String,
-        }),
-      ).annotate({
-        identifier: "FeatureRequestStatusHistory",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() => __S(36, __c4, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListFeatureRequestsStatusHistoryResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          expected_version: S.Number,
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          account_id: S.optional(S.String),
-          account_ids: S.optional(__S(0, __c0, 0)),
-          product_area_ids: S.optional(__S(0, __c0, 0)),
-          request_status: S.optional(S.String),
-          request_priority: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/projects/{project_id}/feature_requests/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateFeatureRequestRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          expected_version: S.optional(S.Number),
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          account_id: S.optional(S.String),
-          account_ids: S.optional(__S(0, __c0, 0)),
-          product_area_ids: S.optional(__S(0, __c0, 0)),
-          request_status: S.optional(S.String),
-          request_priority: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/projects/{project_id}/feature_requests/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateFeatureRequestsPartialRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

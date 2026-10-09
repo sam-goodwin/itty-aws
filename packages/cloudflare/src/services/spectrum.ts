@@ -924,8 +924,8 @@ export const createApp: API.OperationMethod<
   CreateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateAppRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateAppResponse>,
+  input: __S(18, __c2, 2) as any as S.Schema<CreateAppRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<CreateAppResponse>,
   errors: [SpectrumProtocolNotAvailable, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -939,8 +939,8 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteAppRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteAppResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteAppRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<DeleteAppResponse>,
   errors: [SpectrumAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -954,8 +954,8 @@ export const getAnalyticAggregateCurrent: API.OperationMethod<
   GetAnalyticAggregateCurrentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetAnalyticAggregateCurrentRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetAnalyticAggregateCurrentResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetAnalyticAggregateCurrentRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<GetAnalyticAggregateCurrentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -969,8 +969,8 @@ export const getAnalyticEventBytime: API.OperationMethod<
   GetAnalyticEventBytimeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetAnalyticEventBytimeRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetAnalyticEventBytimeResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetAnalyticEventBytimeRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<GetAnalyticEventBytimeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -984,8 +984,8 @@ export const getAnalyticEventSummary: API.OperationMethod<
   GetAnalyticEventSummaryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetAnalyticEventSummaryRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetAnalyticEventSummaryResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetAnalyticEventSummaryRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<GetAnalyticEventSummaryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -999,8 +999,8 @@ export const getApp: API.OperationMethod<
   GetAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetAppRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetAppResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetAppRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetAppResponse>,
   errors: [SpectrumAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1015,8 +1015,8 @@ export const listApps: API.PaginatedOperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(33, __c4, 1) as any as S.Schema<ListAppsRequest>,
-    output: __S(35, __c4, 3) as any as S.Schema<ListAppsResponse>,
+    input: __S(88, __c11, 0) as any as S.Schema<ListAppsRequest>,
+    output: __S(90, __c11, 2) as any as S.Schema<ListAppsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1039,8 +1039,8 @@ export const listProtocols: API.OperationMethod<
   ListProtocolsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListProtocolsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListProtocolsResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<ListProtocolsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListProtocolsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1058,8 +1058,8 @@ export const updateApp: API.OperationMethod<
   UpdateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UpdateAppRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<UpdateAppResponse>,
+  input: __S(10, __c1, 2) as any as S.Schema<UpdateAppRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<UpdateAppResponse>,
   errors: [
     SpectrumAppNotFound,
     SpectrumProtocolNotAvailable,
@@ -1075,354 +1075,8 @@ export const updateApp: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppsCreateRequestDns" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases(
-          [
-            ["connectivity", "type"],
-            ["ips", "type"],
-          ],
-          { key: "type", values: ["dynamic", "static"] },
-        ),
-      );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          ttl: S.optional(S.Number),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AppsCreateRequestOriginDns",
-      });
-    case 4:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          dns: __S(0, __c0, 0),
-          protocol: S.String,
-          trafficType: S.optional(S.String.pipe(T.Body("traffic_type"))),
-          argoSmartRouting: S.optional(S.Boolean.pipe(T.Body("argo_smart_routing"))),
-          edgeIps: S.optional(__S(2, __c0, 2).pipe(T.Body("edge_ips"))),
-          ipFirewall: S.optional(S.Boolean.pipe(T.Body("ip_firewall"))),
-          originDirect: S.optional(__S(1, __c0, 1).pipe(T.Body("origin_direct"))),
-          originDns: S.optional(__S(3, __c0, 3).pipe(T.Body("origin_dns"))),
-          originPort: S.optional(__S(4, __c0, 4).pipe(T.Body("origin_port"))),
-          originWorkerId: S.optional(S.String.pipe(T.Body("origin_worker_id"))),
-          proxyProtocol: S.optional(S.String.pipe(T.Body("proxy_protocol"))),
-          tls: S.optional(S.String),
-          virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/spectrum/apps", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateAppRequest" });
-    case 6:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "createdOn",
-            "dns",
-            "modifiedOn",
-            "protocol",
-            "trafficType",
-            "argoSmartRouting",
-            "edgeIps",
-            "ipFirewall",
-            "originDirect",
-            "originDns",
-            "originPort",
-            "originWorkerId",
-            "proxyProtocol",
-            "tls",
-            "virtualNetworkId",
-          ],
-          ["id", "createdOn", "dns", "modifiedOn", "protocol", "originDirect"],
-        ]),
-      );
-    case 7:
-      return S.suspend(() =>
-        __S(6, __c0, 6).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateAppResponse" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-        })
-          .pipe(
-            T.Http({ method: "DELETE", uri: "/zones/{zone_id}/spectrum/apps/{app_id}", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteAppRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteAppResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          appID: S.optional(S.String.pipe(T.Query())),
-          coloName: S.optional(S.String.pipe(T.Query("colo_name"))),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/spectrum/analytics/aggregate/current",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetAnalyticAggregateCurrentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          appID: S.String,
-          bytesEgress: S.Number,
-          bytesIngress: S.Number,
-          connections: S.Number,
-          durationAvg: S.Number,
-        }),
-      ).annotate({
-        identifier: "AnalyticsAggregatesCurrentsGetResultItem",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        __S(12, __c1, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetAnalyticAggregateCurrentResponse",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          timeDelta: S.String.pipe(T.Query("time_delta")),
-          dimensions: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          filters: S.optional(S.String.pipe(T.Query())),
-          metrics: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-          since: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          until: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/spectrum/analytics/events/bytime",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetAnalyticEventBytimeRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
       return S.Array(S.Number);
     case 1:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(S.NullOr(__S(1, __c0, 1))),
-          metrics: S.optional(S.NullOr(__S(17, __c2, 1))),
-        }),
-      ).annotate({
-        identifier: "AnalyticsEventsBytimesGetResponseDataItem",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.Record(S.String, S.Number);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(S.NullOr(__S(14, __c1, 6))),
-          filters: S.optional(S.NullOr(S.String)),
-          limit: S.optional(S.NullOr(S.Number)),
-          metrics: S.optional(S.NullOr(__S(14, __c1, 6))),
-          since: S.optional(S.NullOr(S.String)),
-          sort: S.optional(S.NullOr(__S(1, __c0, 1))),
-          until: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "AnalyticsEventsBytimesGetResponseQuery",
-      });
-    case 6:
-      return S.Array(__S(1, __c0, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(19, __c2, 3),
-          dataLag: S.Number.pipe(T.Body("data_lag")),
-          max: __S(20, __c2, 4),
-          min: __S(20, __c2, 4),
-          query: __S(21, __c2, 5),
-          rows: S.Number,
-          totals: __S(20, __c2, 4),
-          timeIntervals: S.optional(S.NullOr(__S(22, __c2, 6)).pipe(T.Body("time_intervals"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetAnalyticEventBytimeResponse",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          dimensions: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          filters: S.optional(S.String.pipe(T.Query())),
-          metrics: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-          since: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          until: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/spectrum/analytics/events/summary",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetAnalyticEventSummaryRequest",
-      });
-    case 1:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(S.NullOr(__S(1, __c0, 1))),
-          metrics: S.optional(S.NullOr(__S(25, __c3, 1))),
-        }),
-      ).annotate({
-        identifier: "AnalyticsEventsSummariesGetResponseDataItem",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(S.NullOr(__S(14, __c1, 6))),
-          filters: S.optional(S.NullOr(S.String)),
-          limit: S.optional(S.NullOr(S.Number)),
-          metrics: S.optional(S.NullOr(__S(14, __c1, 6))),
-          since: S.optional(S.NullOr(S.String)),
-          sort: S.optional(S.NullOr(__S(1, __c0, 1))),
-          until: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "AnalyticsEventsSummariesGetResponseQuery",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(27, __c3, 3),
-          dataLag: S.Number.pipe(T.Body("data_lag")),
-          max: __S(20, __c2, 4),
-          min: __S(20, __c2, 4),
-          query: __S(28, __c3, 4),
-          rows: S.Number,
-          totals: __S(20, __c2, 4),
-          timeIntervals: S.optional(S.NullOr(__S(22, __c2, 6)).pipe(T.Body("time_intervals"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetAnalyticEventSummaryResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/zones/{zone_id}/spectrum/apps/{app_id}", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetAppRequest" });
-    case 7:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "createdOn",
-            "dns",
-            "modifiedOn",
-            "protocol",
-            "trafficType",
-            "argoSmartRouting",
-            "edgeIps",
-            "ipFirewall",
-            "originDirect",
-            "originDns",
-            "originPort",
-            "originWorkerId",
-            "proxyProtocol",
-            "tls",
-            "virtualNetworkId",
-          ],
-          ["id", "createdOn", "dns", "modifiedOn", "protocol", "originDirect"],
-        ]),
-      );
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        __S(31, __c3, 7).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetAppResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          direction: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/spectrum/apps", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListAppsRequest" });
-    case 2:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(34, __c4, 2).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListAppsResponse" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1430,24 +1084,24 @@ function __c4(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/spectrum/protocols", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListProtocolsRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
           name: S.String,
-          ports: __S(16, __c2, 0),
+          ports: __S(0, __c0, 0),
           transport: S.String,
         }),
       ).annotate({ identifier: "ListProtocolsResultItem" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
       return S.suspend(() =>
-        __S(38, __c4, 6).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(3, __c0, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListProtocolsResponse" });
   }
 }
-function __c5(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(
@@ -1466,15 +1120,15 @@ function __c5(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           appId: S.String.pipe(T.Label("app_id")),
-          dns: __S(0, __c0, 0),
+          dns: __S(24, __c3, 0),
           protocol: S.String,
           trafficType: S.optional(S.String.pipe(T.Body("traffic_type"))),
           argoSmartRouting: S.optional(S.Boolean.pipe(T.Body("argo_smart_routing"))),
-          edgeIps: S.optional(__S(40, __c5, 0).pipe(T.Body("edge_ips"))),
+          edgeIps: S.optional(__S(8, __c1, 0).pipe(T.Body("edge_ips"))),
           ipFirewall: S.optional(S.Boolean.pipe(T.Body("ip_firewall"))),
-          originDirect: S.optional(__S(1, __c0, 1).pipe(T.Body("origin_direct"))),
-          originDns: S.optional(__S(3, __c0, 3).pipe(T.Body("origin_dns"))),
-          originPort: S.optional(__S(41, __c5, 1).pipe(T.Body("origin_port"))),
+          originDirect: S.optional(__S(32, __c4, 0).pipe(T.Body("origin_direct"))),
+          originDns: S.optional(__S(25, __c3, 1).pipe(T.Body("origin_dns"))),
+          originPort: S.optional(__S(9, __c1, 1).pipe(T.Body("origin_port"))),
           originWorkerId: S.optional(S.String.pipe(T.Body("origin_worker_id"))),
           proxyProtocol: S.optional(S.String.pipe(T.Body("proxy_protocol"))),
           tls: S.optional(S.String),
@@ -1511,11 +1165,380 @@ function __c5(j: number): any {
       );
     case 4:
       return S.suspend(() =>
-        __S(43, __c5, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(11, __c1, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateAppResponse" });
   }
 }
-
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["connectivity", "type"],
+            ["ips", "type"],
+          ],
+          { key: "type", values: ["dynamic", "static"] },
+        ),
+      );
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          dns: __S(24, __c3, 0),
+          protocol: S.String,
+          trafficType: S.optional(S.String.pipe(T.Body("traffic_type"))),
+          argoSmartRouting: S.optional(S.Boolean.pipe(T.Body("argo_smart_routing"))),
+          edgeIps: S.optional(__S(16, __c2, 0).pipe(T.Body("edge_ips"))),
+          ipFirewall: S.optional(S.Boolean.pipe(T.Body("ip_firewall"))),
+          originDirect: S.optional(__S(32, __c4, 0).pipe(T.Body("origin_direct"))),
+          originDns: S.optional(__S(25, __c3, 1).pipe(T.Body("origin_dns"))),
+          originPort: S.optional(__S(17, __c2, 1).pipe(T.Body("origin_port"))),
+          originWorkerId: S.optional(S.String.pipe(T.Body("origin_worker_id"))),
+          proxyProtocol: S.optional(S.String.pipe(T.Body("proxy_protocol"))),
+          tls: S.optional(S.String),
+          virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/spectrum/apps", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAppRequest" });
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "createdOn",
+            "dns",
+            "modifiedOn",
+            "protocol",
+            "trafficType",
+            "argoSmartRouting",
+            "edgeIps",
+            "ipFirewall",
+            "originDirect",
+            "originDns",
+            "originPort",
+            "originWorkerId",
+            "proxyProtocol",
+            "tls",
+            "virtualNetworkId",
+          ],
+          ["id", "createdOn", "dns", "modifiedOn", "protocol", "originDirect"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        __S(19, __c2, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAppResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppsCreateRequestDns" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          ttl: S.optional(S.Number),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AppsCreateRequestOriginDns",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+        })
+          .pipe(
+            T.Http({ method: "DELETE", uri: "/zones/{zone_id}/spectrum/apps/{app_id}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteAppRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteAppResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          appID: S.optional(S.String.pipe(T.Query())),
+          coloName: S.optional(S.String.pipe(T.Query("colo_name"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/spectrum/analytics/aggregate/current",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetAnalyticAggregateCurrentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appID: S.String,
+          bytesEgress: S.Number,
+          bytesIngress: S.Number,
+          connections: S.Number,
+          durationAvg: S.Number,
+        }),
+      ).annotate({
+        identifier: "AnalyticsAggregatesCurrentsGetResultItem",
+      });
+    case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
+      return S.suspend(() =>
+        __S(50, __c6, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetAnalyticAggregateCurrentResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          timeDelta: S.String.pipe(T.Query("time_delta")),
+          dimensions: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          filters: S.optional(S.String.pipe(T.Query())),
+          metrics: S.optional(__S(64, __c8, 0).pipe(T.Query())),
+          since: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          until: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/spectrum/analytics/events/bytime",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetAnalyticEventBytimeRequest",
+      });
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(S.NullOr(__S(32, __c4, 0))),
+          metrics: S.optional(S.NullOr(__S(57, __c7, 1))),
+        }),
+      ).annotate({
+        identifier: "AnalyticsEventsBytimesGetResponseDataItem",
+      });
+    case 3:
+      return S.Array(__S(58, __c7, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(S.NullOr(__S(64, __c8, 0))),
+          filters: S.optional(S.NullOr(S.String)),
+          limit: S.optional(S.NullOr(S.Number)),
+          metrics: S.optional(S.NullOr(__S(64, __c8, 0))),
+          since: S.optional(S.NullOr(S.String)),
+          sort: S.optional(S.NullOr(__S(32, __c4, 0))),
+          until: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "AnalyticsEventsBytimesGetResponseQuery",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(59, __c7, 3),
+          dataLag: S.Number.pipe(T.Body("data_lag")),
+          max: __S(65, __c8, 1),
+          min: __S(65, __c8, 1),
+          query: __S(60, __c7, 4),
+          rows: S.Number,
+          totals: __S(65, __c8, 1),
+          timeIntervals: S.optional(S.NullOr(__S(66, __c8, 2)).pipe(T.Body("time_intervals"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetAnalyticEventBytimeResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Record(S.String, S.Number);
+    case 2:
+      return S.Array(__S(32, __c4, 0));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          dimensions: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          filters: S.optional(S.String.pipe(T.Query())),
+          metrics: S.optional(__S(64, __c8, 0).pipe(T.Query())),
+          since: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          until: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/spectrum/analytics/events/summary",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetAnalyticEventSummaryRequest",
+      });
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(S.NullOr(__S(32, __c4, 0))),
+          metrics: S.optional(S.NullOr(__S(73, __c9, 1))),
+        }),
+      ).annotate({
+        identifier: "AnalyticsEventsSummariesGetResponseDataItem",
+      });
+    case 3:
+      return S.Array(__S(74, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(S.NullOr(__S(64, __c8, 0))),
+          filters: S.optional(S.NullOr(S.String)),
+          limit: S.optional(S.NullOr(S.Number)),
+          metrics: S.optional(S.NullOr(__S(64, __c8, 0))),
+          since: S.optional(S.NullOr(S.String)),
+          sort: S.optional(S.NullOr(__S(32, __c4, 0))),
+          until: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "AnalyticsEventsSummariesGetResponseQuery",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(75, __c9, 3),
+          dataLag: S.Number.pipe(T.Body("data_lag")),
+          max: __S(65, __c8, 1),
+          min: __S(65, __c8, 1),
+          query: __S(76, __c9, 4),
+          rows: S.Number,
+          totals: __S(65, __c8, 1),
+          timeIntervals: S.optional(S.NullOr(__S(66, __c8, 2)).pipe(T.Body("time_intervals"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetAnalyticEventSummaryResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/zones/{zone_id}/spectrum/apps/{app_id}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAppRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "createdOn",
+            "dns",
+            "modifiedOn",
+            "protocol",
+            "trafficType",
+            "argoSmartRouting",
+            "edgeIps",
+            "ipFirewall",
+            "originDirect",
+            "originDns",
+            "originPort",
+            "originWorkerId",
+            "proxyProtocol",
+            "tls",
+            "virtualNetworkId",
+          ],
+          ["id", "createdOn", "dns", "modifiedOn", "protocol", "originDirect"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        __S(81, __c10, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAppResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/spectrum/apps", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListAppsRequest" });
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(89, __c11, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListAppsResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

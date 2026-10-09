@@ -408,11 +408,11 @@ export const createServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3,
-    __c0,
-    3,
+    80,
+    __c10,
+    0,
   ) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(91, __c11, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -432,11 +432,11 @@ export const createServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    9,
-    __c1,
-    1,
+    120,
+    __c15,
+    0,
   ) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(91, __c11, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -456,11 +456,11 @@ export const deleteServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    10,
-    __c1,
-    2,
+    136,
+    __c17,
+    0,
   ) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(91, __c11, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -480,11 +480,11 @@ export const deleteServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    11,
-    __c1,
-    3,
+    144,
+    __c18,
+    0,
   ) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(91, __c11, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -498,8 +498,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetOperationsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -513,8 +513,8 @@ export const getServicesConsumerQuotaMetrics: API.OperationMethod<
   GetServicesConsumerQuotaMetricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetServicesConsumerQuotaMetricsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<V1Beta1ConsumerQuotaMetric>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetServicesConsumerQuotaMetricsRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<V1Beta1ConsumerQuotaMetric>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -528,8 +528,8 @@ export const getServicesConsumerQuotaMetricsLimits: API.OperationMethod<
   GetServicesConsumerQuotaMetricsLimitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetServicesConsumerQuotaMetricsLimitsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<V1Beta1ConsumerQuotaLimit>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetServicesConsumerQuotaMetricsLimitsRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<V1Beta1ConsumerQuotaLimit>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -549,11 +549,11 @@ export const importProducerOverridesServicesConsumerQuotaMetrics: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    26,
-    __c3,
-    2,
+    11,
+    __c1,
+    3,
   ) as any as S.Schema<ImportProducerOverridesServicesConsumerQuotaMetricsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(91, __c11, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -573,11 +573,11 @@ export const importProducerQuotaPoliciesServicesConsumerQuotaMetrics: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    30,
+    26,
     __c3,
-    6,
+    2,
   ) as any as S.Schema<ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(91, __c11, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -592,8 +592,8 @@ export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
   GcpOpContext,
   V1Beta1ListConsumerQuotaMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListServicesConsumerQuotaMetricsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<V1Beta1ListConsumerQuotaMetricsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListServicesConsumerQuotaMetricsRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<V1Beta1ListConsumerQuotaMetricsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -613,11 +613,11 @@ export const listServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Pagina
   V1Beta1ListProducerOverridesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    34,
-    __c4,
-    2,
+    48,
+    __c6,
+    0,
   ) as any as S.Schema<ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<V1Beta1ListProducerOverridesResponse>,
+  output: __S(49, __c6, 1) as any as S.Schema<V1Beta1ListProducerOverridesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -637,11 +637,11 @@ export const listServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.Pa
   V1Beta1ListProducerQuotaPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    36,
-    __c4,
-    4,
+    56,
+    __c7,
+    0,
   ) as any as S.Schema<ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<V1Beta1ListProducerQuotaPoliciesResponse>,
+  output: __S(57, __c7, 1) as any as S.Schema<V1Beta1ListProducerQuotaPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -662,11 +662,11 @@ export const patchServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    38,
-    __c4,
-    6,
+    64,
+    __c8,
+    0,
   ) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(91, __c11, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -686,11 +686,11 @@ export const patchServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    39,
-    __c4,
-    7,
+    72,
+    __c9,
+    0,
   ) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(91, __c11, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -700,212 +700,6 @@ export const patchServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.O
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          adminOverrideAncestor: S.optional(S.String),
-          overrideValue: S.optional(S.String),
-          name: S.optional(S.String),
-          metric: S.optional(S.String),
-          unit: S.optional(S.String),
-          dimensions: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "V1Beta1QuotaOverride" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          forceOnly: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          forceJustification: S.optional(S.String.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/producerOverrides",
-            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(5, __c0, 5)),
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(4, __c0, 4)),
-          error: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Operation" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          policyValue: S.optional(S.String),
-          dimensions: S.optional(__S(1, __c0, 1)),
-          container: S.optional(S.String),
-          name: S.optional(S.String),
-          metric: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V1Beta1ProducerQuotaPolicy",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          forceJustification: S.optional(S.String.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/producerQuotaPolicies",
-            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          force: S.optional(S.Boolean.pipe(T.Query())),
-          forceJustification: S.optional(S.String.pipe(T.Query())),
-          forceOnly: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          forceJustification: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetOperationsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetServicesConsumerQuotaMetricsRequest",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          defaultLimitOngoingRollout: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "V1Beta1RolloutInfo" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          consumerOverride: S.optional(__S(2, __c0, 2)),
-          dimensions: S.optional(__S(1, __c0, 1)),
-          producerQuotaPolicy: S.optional(__S(8, __c1, 0)),
-          producerOverride: S.optional(__S(2, __c0, 2)),
-          effectiveLimit: S.optional(S.String),
-          defaultLimit: S.optional(S.String),
-          adminOverride: S.optional(__S(2, __c0, 2)),
-          rolloutInfo: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "V1Beta1QuotaBucket" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          metric: S.optional(S.String),
-          isPrecise: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          supportedLocations: S.optional(__S(14, __c1, 6)),
-          quotaBuckets: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "V1Beta1ConsumerQuotaLimit",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          metric: S.optional(S.String),
-          unit: S.optional(S.String),
-          displayName: S.optional(S.String),
-          descendantConsumerQuotaLimits: S.optional(__S(19, __c2, 3)),
-          consumerQuotaLimits: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "V1Beta1ConsumerQuotaMetric",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -920,38 +714,36 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetServicesConsumerQuotaMetricsLimitsRequest",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.Array(__S(2, __c0, 2));
   }
 }
-function __c3(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          overrides: S.optional(__S(23, __c2, 7)),
+          overrides: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "V1Beta1OverrideInlineSource",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          forceOnly: S.optional(__S(22, __c2, 6)),
+          forceOnly: S.optional(__S(8, __c1, 0)),
           forceJustification: S.optional(S.String),
           force: S.optional(S.Boolean),
-          inlineSource: S.optional(__S(24, __c3, 0)),
+          inlineSource: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "V1Beta1ImportProducerOverridesRequest",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -962,20 +754,28 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ImportProducerOverridesServicesConsumerQuotaMetricsRequest",
       });
-    case 3:
-      return S.Array(__S(8, __c1, 0));
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(112, __c14, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          policies: S.optional(__S(27, __c3, 3)),
+          policies: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({
         identifier: "V1Beta1PolicyInlineSource",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          inlineSource: S.optional(__S(28, __c3, 4)),
+          inlineSource: S.optional(__S(24, __c3, 0)),
           validateOnly: S.optional(S.Boolean),
           force: S.optional(S.Boolean),
           forceJustification: S.optional(S.String),
@@ -984,11 +784,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "V1Beta1ImportProducerQuotaPoliciesRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -999,7 +799,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(128, __c16, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -1016,22 +826,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListServicesConsumerQuotaMetricsRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(20, __c2, 4));
     case 1:
+      return S.Array(__S(177, __c22, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(__S(32, __c4, 0)),
+          metrics: S.optional(__S(41, __c5, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "V1Beta1ListConsumerQuotaMetricsResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1047,16 +857,20 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          overrides: S.optional(__S(23, __c2, 7)),
+          overrides: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "V1Beta1ListProducerOverridesResponse",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1072,24 +886,28 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          producerQuotaPolicies: S.optional(__S(27, __c3, 3)),
+          producerQuotaPolicies: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({
         identifier: "V1Beta1ListProducerQuotaPoliciesResponse",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean.pipe(T.Query())),
           forceJustification: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          forceOnly: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          forceOnly: S.optional(__S(104, __c13, 0).pipe(T.Query())),
+          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1100,7 +918,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           forceJustification: S.optional(S.String.pipe(T.Query())),
@@ -1108,7 +930,7 @@ function __c4(j: number): any {
           name: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1121,7 +943,256 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          forceOnly: S.optional(__S(104, __c13, 0).pipe(T.Query())),
+          forceJustification: S.optional(S.String.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/producerOverrides",
+            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(89, __c11, 1)),
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(88, __c11, 0)),
+          name: S.optional(S.String),
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(88, __c11, 0)),
+          error: S.optional(__S(90, __c11, 2)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adminOverrideAncestor: S.optional(S.String),
+          overrideValue: S.optional(S.String),
+          name: S.optional(S.String),
+          metric: S.optional(S.String),
+          unit: S.optional(S.String),
+          dimensions: S.optional(__S(96, __c12, 0)),
+        }),
+      ).annotate({ identifier: "V1Beta1QuotaOverride" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          forceJustification: S.optional(S.String.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/producerQuotaPolicies",
+            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          policyValue: S.optional(S.String),
+          dimensions: S.optional(__S(96, __c12, 0)),
+          container: S.optional(S.String),
+          name: S.optional(S.String),
+          metric: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V1Beta1ProducerQuotaPolicy",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          force: S.optional(S.Boolean.pipe(T.Query())),
+          forceJustification: S.optional(S.String.pipe(T.Query())),
+          forceOnly: S.optional(__S(104, __c13, 0).pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          forceJustification: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetOperationsRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          view: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://serviceconsumermanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetServicesConsumerQuotaMetricsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          defaultLimitOngoingRollout: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "V1Beta1RolloutInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          consumerOverride: S.optional(__S(112, __c14, 0)),
+          dimensions: S.optional(__S(96, __c12, 0)),
+          producerQuotaPolicy: S.optional(__S(128, __c16, 0)),
+          producerOverride: S.optional(__S(112, __c14, 0)),
+          effectiveLimit: S.optional(S.String),
+          defaultLimit: S.optional(S.String),
+          adminOverride: S.optional(__S(112, __c14, 0)),
+          rolloutInfo: S.optional(__S(169, __c21, 1)),
+        }),
+      ).annotate({ identifier: "V1Beta1QuotaBucket" });
+    case 3:
+      return S.Array(__S(170, __c21, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          metric: S.optional(S.String),
+          isPrecise: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          supportedLocations: S.optional(__S(168, __c21, 0)),
+          quotaBuckets: S.optional(__S(171, __c21, 3)),
+        }),
+      ).annotate({
+        identifier: "V1Beta1ConsumerQuotaLimit",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(172, __c21, 4));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          metric: S.optional(S.String),
+          unit: S.optional(S.String),
+          displayName: S.optional(S.String),
+          descendantConsumerQuotaLimits: S.optional(__S(176, __c22, 0)),
+          consumerQuotaLimits: S.optional(__S(176, __c22, 0)),
+        }),
+      ).annotate({
+        identifier: "V1Beta1ConsumerQuotaMetric",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

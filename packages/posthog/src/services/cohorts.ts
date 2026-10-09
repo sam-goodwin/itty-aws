@@ -492,8 +492,12 @@ export const cohortsAddPersonsToStaticCohortPartialUpdate: API.OperationMethod<
   CohortsAddPersonsToStaticCohortPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CohortsAddPersonsToStaticCohortPartialUpdateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CohortsAddPersonsToStaticCohortPartialUpdateResponse>,
+  input: __S(97, __c6, 1) as any as S.Schema<CohortsAddPersonsToStaticCohortPartialUpdateRequest>,
+  output: __S(
+    112,
+    __c7,
+    0,
+  ) as any as S.Schema<CohortsAddPersonsToStaticCohortPartialUpdateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -507,8 +511,8 @@ export const cohortsDestroy: API.OperationMethod<
   CohortsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CohortsDestroyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CohortsDestroyResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<CohortsDestroyRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<CohortsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -526,14 +530,14 @@ export const cohortsRemovePersonFromStaticCohortPartialUpdate: API.OperationMeth
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5,
-    __c0,
-    5,
+    160,
+    __c10,
+    0,
   ) as any as S.Schema<CohortsRemovePersonFromStaticCohortPartialUpdateRequest>,
   output: __S(
-    6,
-    __c0,
-    6,
+    161,
+    __c10,
+    1,
   ) as any as S.Schema<CohortsRemovePersonFromStaticCohortPartialUpdateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
@@ -547,8 +551,8 @@ export const createCohort: API.OperationMethod<
   CreateCohortError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateCohortRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CohortOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateCohortRequest>,
+  output: __S(232, __c14, 8) as any as S.Schema<CohortOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -561,8 +565,8 @@ export const getCohort: API.OperationMethod<
   GetCohortError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetCohortRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CohortOutput>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetCohortRequest>,
+  output: __S(232, __c14, 8) as any as S.Schema<CohortOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -575,8 +579,8 @@ export const getCohortsActivity: API.OperationMethod<
   GetCohortsActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetCohortsActivityRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetCohortsActivityResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetCohortsActivityRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<GetCohortsActivityResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -589,8 +593,8 @@ export const getCohortsAllActivity: API.OperationMethod<
   GetCohortsAllActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetCohortsAllActivityRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetCohortsAllActivityResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetCohortsAllActivityRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<GetCohortsAllActivityResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -603,8 +607,8 @@ export const getCohortsCalculationHistory: API.OperationMethod<
   GetCohortsCalculationHistoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetCohortsCalculationHistoryRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetCohortsCalculationHistoryResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetCohortsCalculationHistoryRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<GetCohortsCalculationHistoryResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -617,8 +621,8 @@ export const getCohortsPerson: API.OperationMethod<
   GetCohortsPersonError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetCohortsPersonRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CohortPersonsResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetCohortsPersonRequest>,
+  output: __S(20, __c1, 4) as any as S.Schema<CohortPersonsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -631,8 +635,8 @@ export const getCohortsUsedIn: API.OperationMethod<
   GetCohortsUsedInError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetCohortsUsedInRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CohortUsedInResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetCohortsUsedInRequest>,
+  output: __S(42, __c2, 10) as any as S.Schema<CohortUsedInResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -645,8 +649,8 @@ export const listCohorts: API.OperationMethod<
   ListCohortsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListCohortsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<PaginatedCohortListOutput>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListCohortsRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<PaginatedCohortListOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -659,8 +663,8 @@ export const updateCohort: API.OperationMethod<
   UpdateCohortError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UpdateCohortRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CohortOutput>,
+  input: __S(64, __c4, 0) as any as S.Schema<UpdateCohortRequest>,
+  output: __S(232, __c14, 8) as any as S.Schema<CohortOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -673,8 +677,8 @@ export const updateCohortsPartial: API.OperationMethod<
   UpdateCohortsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<UpdateCohortsPartialRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CohortOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<UpdateCohortsPartialRequest>,
+  output: __S(232, __c14, 8) as any as S.Schema<CohortOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -684,210 +688,6 @@ export const updateCohortsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          person_ids: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/projects/{project_id}/cohorts/{id}/add_persons_to_static_cohort/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CohortsAddPersonsToStaticCohortPartialUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CohortsAddPersonsToStaticCohortPartialUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/cohorts/{id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CohortsDestroyRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CohortsDestroyResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          person_id: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/projects/{project_id}/cohorts/{id}/remove_person_from_static_cohort/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CohortsRemovePersonFromStaticCohortPartialUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CohortsRemovePersonFromStaticCohortPartialUpdateResponse",
-      });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          values: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "CohortFilterGroup" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(8, __c1, 0)),
-          filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "CohortFilters" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.String),
-          groups: S.optional(S.Unknown),
-          deleted: S.optional(S.Boolean),
-          filters: S.optional(S.NullOr(__S(9, __c1, 1))),
-          query: S.optional(S.Unknown),
-          is_static: S.optional(S.Boolean),
-          cohort_type: S.optional(S.NullOr(S.Unknown)),
-          _create_in_folder: S.optional(S.String),
-          _create_static_person_ids: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/cohorts/", code: 200 })),
-      ).annotate({ identifier: "CreateCohortRequest" });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(12, __c1, 4))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          person_properties: S.Boolean,
-          behavioral: S.Boolean,
-          lifecycle: S.Boolean,
-          cohorts: S.Boolean,
-        }),
-      ).annotate({ identifier: "CohortConditionTypeFlags" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          phase: S.String,
-          percent_complete: S.NullOr(S.Number),
-          updated_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "CohortHistoryBuild" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          ready_at: S.NullOr(S.String),
-          build: S.NullOr(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "CohortRealtimeReadiness" });
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          name: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.String),
-          groups: S.optional(S.Unknown),
-          deleted: S.optional(S.Boolean),
-          filters: S.optional(S.NullOr(__S(9, __c1, 1))),
-          query: S.optional(S.Unknown),
-          version: S.optional(S.NullOr(S.Number)),
-          pending_version: S.optional(S.NullOr(S.Number)),
-          is_calculating: S.optional(S.Boolean),
-          created_by: S.optional(S.NullOr(__S(13, __c1, 5))),
-          created_at: S.optional(S.NullOr(S.String)),
-          last_calculation: S.optional(S.NullOr(S.String)),
-          last_backfill_person_properties_at: S.optional(S.NullOr(S.String)),
-          errors_calculating: S.optional(S.Number),
-          last_error_message: S.optional(S.NullOr(S.String)),
-          count: S.optional(S.NullOr(S.Number)),
-          last_import_total_count: S.optional(S.NullOr(S.Number)),
-          last_import_unmatched_count: S.optional(S.NullOr(S.Number)),
-          is_static: S.optional(S.Boolean),
-          cohort_type: S.optional(S.NullOr(S.Unknown)),
-          condition_type: S.optional(S.NullOr(__S(14, __c1, 6))),
-          realtime: S.optional(S.NullOr(__S(16, __c2, 0))),
-          experiment_set: S.optional(__S(17, __c2, 1)),
-          search_match_type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "CohortOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/cohorts/{id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetCohortRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/cohorts/{id}/activity/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCohortsActivityRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/cohorts/activity/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetCohortsAllActivityRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -902,7 +702,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetCohortsCalculationHistoryRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -918,39 +722,39 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCohortsPersonRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(12, __c1, 4));
     case 1:
+      return S.Array(__S(208, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          properties: __S(12, __c1, 4),
+          properties: __S(208, __c13, 0),
           created_at: S.NullOr(S.String),
-          matched_recordings: __S(24, __c3, 0),
+          matched_recordings: __S(17, __c1, 1),
           value_at_data_point: S.NullOr(S.Number),
           type: S.String,
           uuid: S.String,
           name: S.String,
-          distinct_ids: __S(10, __c1, 2),
+          distinct_ids: __S(192, __c12, 0),
           last_seen_at: S.NullOr(S.String),
           is_identified: S.NullOr(S.Boolean),
         }),
       ).annotate({ identifier: "SerializedPersonActor" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
     case 3:
+      return S.Array(__S(18, __c1, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(26, __c3, 2),
+          results: __S(19, __c1, 3),
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CohortPersonsResponse" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -963,7 +767,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCohortsUsedInRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -971,21 +775,17 @@ function __c3(j: number): any {
           name: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CohortUsedInFlag" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(33, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(30, __c3, 6),
+          results: __S(34, __c2, 2),
           total: S.Number,
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "CohortUsedInFlagsBlock" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -993,44 +793,48 @@ function __c4(j: number): any {
           name: S.String,
         }),
       ).annotate({ identifier: "CohortUsedInInsight" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(36, __c2, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          results: __S(33, __c4, 1),
+          results: __S(37, __c2, 5),
           total: S.Number,
           has_more: S.Boolean,
         }),
       ).annotate({
         identifier: "CohortUsedInInsightsBlock",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
         }),
       ).annotate({ identifier: "CohortUsedInCohort" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(39, __c2, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          results: __S(36, __c4, 4),
+          results: __S(40, __c2, 8),
           total: S.Number,
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "CohortUsedInCohortsBlock" });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          feature_flags: __S(31, __c3, 7),
-          insights: __S(34, __c4, 2),
-          cohorts: __S(37, __c4, 5),
+          feature_flags: __S(35, __c2, 3),
+          insights: __S(38, __c2, 6),
+          cohorts: __S(41, __c2, 9),
         }),
       ).annotate({ identifier: "CohortUsedInResponse" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1041,24 +845,24 @@ function __c4(j: number): any {
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/cohorts/", code: 200 })),
       ).annotate({ identifier: "ListCohortsRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(18, __c2, 2));
     case 1:
+      return S.Array(__S(232, __c14, 8));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(40, __c5, 0)),
+          results: S.optional(__S(49, __c3, 1)),
         }),
       ).annotate({
         identifier: "PaginatedCohortListOutput",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1067,17 +871,21 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           groups: S.optional(S.Unknown),
           deleted: S.optional(S.Boolean),
-          filters: S.optional(S.NullOr(__S(9, __c1, 1))),
+          filters: S.optional(S.NullOr(__S(226, __c14, 2))),
           query: S.optional(S.Unknown),
           is_static: S.optional(S.Boolean),
           cohort_type: S.optional(S.NullOr(S.Unknown)),
           _create_in_folder: S.optional(S.String),
-          _create_static_person_ids: S.optional(__S(10, __c1, 2)),
+          _create_static_person_ids: S.optional(__S(192, __c12, 0)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/cohorts/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateCohortRequest" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1086,12 +894,12 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           groups: S.optional(S.Unknown),
           deleted: S.optional(S.Boolean),
-          filters: S.optional(S.NullOr(__S(9, __c1, 1))),
+          filters: S.optional(S.NullOr(__S(226, __c14, 2))),
           query: S.optional(S.Unknown),
           is_static: S.optional(S.Boolean),
           cohort_type: S.optional(S.NullOr(S.Unknown)),
           _create_in_folder: S.optional(S.String),
-          _create_static_person_ids: S.optional(__S(10, __c1, 2)),
+          _create_static_person_ids: S.optional(__S(192, __c12, 0)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/cohorts/{id}/", code: 200 }),
         ),
@@ -1100,7 +908,250 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          person_ids: S.optional(__S(96, __c6, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/projects/{project_id}/cohorts/{id}/add_persons_to_static_cohort/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CohortsAddPersonsToStaticCohortPartialUpdateRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CohortsAddPersonsToStaticCohortPartialUpdateResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/cohorts/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CohortsDestroyRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CohortsDestroyResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          person_id: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/projects/{project_id}/cohorts/{id}/remove_person_from_static_cohort/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CohortsRemovePersonFromStaticCohortPartialUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CohortsRemovePersonFromStaticCohortPartialUpdateResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.String),
+          groups: S.optional(S.Unknown),
+          deleted: S.optional(S.Boolean),
+          filters: S.optional(S.NullOr(__S(226, __c14, 2))),
+          query: S.optional(S.Unknown),
+          is_static: S.optional(S.Boolean),
+          cohort_type: S.optional(S.NullOr(S.Unknown)),
+          _create_in_folder: S.optional(S.String),
+          _create_static_person_ids: S.optional(__S(192, __c12, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/cohorts/", code: 200 })),
+      ).annotate({ identifier: "CreateCohortRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          values: S.optional(__S(224, __c14, 0)),
+        }),
+      ).annotate({ identifier: "CohortFilterGroup" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(225, __c14, 1)),
+          filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "CohortFilters" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(208, __c13, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          person_properties: S.Boolean,
+          behavioral: S.Boolean,
+          lifecycle: S.Boolean,
+          cohorts: S.Boolean,
+        }),
+      ).annotate({ identifier: "CohortConditionTypeFlags" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          phase: S.String,
+          percent_complete: S.NullOr(S.Number),
+          updated_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "CohortHistoryBuild" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          ready_at: S.NullOr(S.String),
+          build: S.NullOr(__S(229, __c14, 5)),
+        }),
+      ).annotate({ identifier: "CohortRealtimeReadiness" });
+    case 7:
+      return S.Array(S.Number);
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          name: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.String),
+          groups: S.optional(S.Unknown),
+          deleted: S.optional(S.Boolean),
+          filters: S.optional(S.NullOr(__S(226, __c14, 2))),
+          query: S.optional(S.Unknown),
+          version: S.optional(S.NullOr(S.Number)),
+          pending_version: S.optional(S.NullOr(S.Number)),
+          is_calculating: S.optional(S.Boolean),
+          created_by: S.optional(S.NullOr(__S(227, __c14, 3))),
+          created_at: S.optional(S.NullOr(S.String)),
+          last_calculation: S.optional(S.NullOr(S.String)),
+          last_backfill_person_properties_at: S.optional(S.NullOr(S.String)),
+          errors_calculating: S.optional(S.Number),
+          last_error_message: S.optional(S.NullOr(S.String)),
+          count: S.optional(S.NullOr(S.Number)),
+          last_import_total_count: S.optional(S.NullOr(S.Number)),
+          last_import_unmatched_count: S.optional(S.NullOr(S.Number)),
+          is_static: S.optional(S.Boolean),
+          cohort_type: S.optional(S.NullOr(S.Unknown)),
+          condition_type: S.optional(S.NullOr(__S(228, __c14, 4))),
+          realtime: S.optional(S.NullOr(__S(230, __c14, 6))),
+          experiment_set: S.optional(__S(231, __c14, 7)),
+          search_match_type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "CohortOutput" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/cohorts/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetCohortRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/cohorts/{id}/activity/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCohortsActivityRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/cohorts/activity/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetCohortsAllActivityRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

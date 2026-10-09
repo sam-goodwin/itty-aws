@@ -1201,8 +1201,8 @@ export const createOrg: API.OperationMethod<
   CreateOrgError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateOrgRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Organization>,
+  input: __S(960, __c60, 0) as any as S.Schema<CreateOrgRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<Organization>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1216,8 +1216,8 @@ export const createOrgRepo: API.OperationMethod<
   CreateOrgRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateOrgRepoRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Repository>,
+  input: __S(1152, __c72, 0) as any as S.Schema<CreateOrgRepoRequest>,
+  output: __S(1237, __c77, 5) as any as S.Schema<Repository>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1231,8 +1231,8 @@ export const createOrgVariable: API.OperationMethod<
   CreateOrgVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateOrgVariableRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateOrgVariableResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<CreateOrgVariableRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<CreateOrgVariableResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1246,8 +1246,8 @@ export const deleteOrg: API.OperationMethod<
   DeleteOrgError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteOrgRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteOrgResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<DeleteOrgRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteOrgResponse>,
   errors: [NotFound, OrganizationOwnsRepositories],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1261,8 +1261,8 @@ export const deleteOrgRunner: API.OperationMethod<
   DeleteOrgRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteOrgRunnerRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteOrgRunnerResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteOrgRunnerRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteOrgRunnerResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1276,8 +1276,8 @@ export const deleteOrgSecret: API.OperationMethod<
   DeleteOrgSecretError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteOrgSecretRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteOrgSecretResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteOrgSecretRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteOrgSecretResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1291,8 +1291,8 @@ export const deleteOrgVariable: API.OperationMethod<
   DeleteOrgVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteOrgVariableRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteOrgVariableResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteOrgVariableRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteOrgVariableResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1306,8 +1306,8 @@ export const editOrg: API.OperationMethod<
   EditOrgError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<EditOrgRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Organization>,
+  input: __S(48, __c3, 0) as any as S.Schema<EditOrgRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<Organization>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1321,8 +1321,8 @@ export const getOrg: API.OperationMethod<
   GetOrgError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetOrgRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Organization>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetOrgRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<Organization>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1336,8 +1336,8 @@ export const getOrgRunner: API.OperationMethod<
   GetOrgRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetOrgRunnerRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ActionRunner>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetOrgRunnerRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<ActionRunner>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1351,8 +1351,8 @@ export const getOrgRunners: API.OperationMethod<
   GetOrgRunnersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetOrgRunnersRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetOrgRunnersResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetOrgRunnersRequest>,
+  output: __S(114, __c7, 2) as any as S.Schema<GetOrgRunnersResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1366,8 +1366,8 @@ export const getOrgVariable: API.OperationMethod<
   GetOrgVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetOrgVariableRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ActionVariable>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetOrgVariableRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<ActionVariable>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1381,8 +1381,8 @@ export const getOrgVariablesList: API.OperationMethod<
   GetOrgVariablesListError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetOrgVariablesListRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetOrgVariablesListResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetOrgVariablesListRequest>,
+  output: __S(162, __c10, 2) as any as S.Schema<GetOrgVariablesListResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1396,8 +1396,8 @@ export const orgAddTeamMember: API.OperationMethod<
   OrgAddTeamMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<OrgAddTeamMemberRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgAddTeamMemberResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<OrgAddTeamMemberRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgAddTeamMemberResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1411,8 +1411,8 @@ export const orgAddTeamRepository: API.OperationMethod<
   OrgAddTeamRepositoryError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<OrgAddTeamRepositoryRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgAddTeamRepositoryResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<OrgAddTeamRepositoryRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgAddTeamRepositoryResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1426,8 +1426,8 @@ export const orgBlockUser: API.OperationMethod<
   OrgBlockUserError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<OrgBlockUserRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgBlockUserResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<OrgBlockUserRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgBlockUserResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1441,8 +1441,8 @@ export const orgCheckQuota: API.OperationMethod<
   OrgCheckQuotaError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<OrgCheckQuotaRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<OrgCheckQuotaResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<OrgCheckQuotaRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<OrgCheckQuotaResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1456,8 +1456,8 @@ export const orgConcealMember: API.OperationMethod<
   OrgConcealMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<OrgConcealMemberRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgConcealMemberResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<OrgConcealMemberRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgConcealMemberResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1471,8 +1471,8 @@ export const orgCreateHook: API.OperationMethod<
   OrgCreateHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<OrgCreateHookRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Hook>,
+  input: __S(256, __c16, 0) as any as S.Schema<OrgCreateHookRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<Hook>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1486,8 +1486,8 @@ export const orgCreateLabel: API.OperationMethod<
   OrgCreateLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<OrgCreateLabelRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Label>,
+  input: __S(288, __c18, 0) as any as S.Schema<OrgCreateLabelRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<Label>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1501,8 +1501,8 @@ export const orgCreateTeam: API.OperationMethod<
   OrgCreateTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<OrgCreateTeamRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Team>,
+  input: __S(320, __c20, 0) as any as S.Schema<OrgCreateTeamRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<Team>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1516,8 +1516,8 @@ export const orgDeleteAvatar: API.OperationMethod<
   OrgDeleteAvatarError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<OrgDeleteAvatarRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgDeleteAvatarResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<OrgDeleteAvatarRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgDeleteAvatarResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1531,8 +1531,8 @@ export const orgDeleteHook: API.OperationMethod<
   OrgDeleteHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<OrgDeleteHookRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgDeleteHookResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<OrgDeleteHookRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgDeleteHookResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1546,8 +1546,8 @@ export const orgDeleteLabel: API.OperationMethod<
   OrgDeleteLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<OrgDeleteLabelRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgDeleteLabelResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<OrgDeleteLabelRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgDeleteLabelResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1561,8 +1561,8 @@ export const orgDeleteMember: API.OperationMethod<
   OrgDeleteMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<OrgDeleteMemberRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgDeleteMemberResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<OrgDeleteMemberRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgDeleteMemberResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1576,8 +1576,8 @@ export const orgDeleteTeam: API.OperationMethod<
   OrgDeleteTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<OrgDeleteTeamRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgDeleteTeamResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<OrgDeleteTeamRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgDeleteTeamResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1591,8 +1591,8 @@ export const orgEditHook: API.OperationMethod<
   OrgEditHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<OrgEditHookRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Hook>,
+  input: __S(416, __c26, 0) as any as S.Schema<OrgEditHookRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<Hook>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1606,8 +1606,8 @@ export const orgEditLabel: API.OperationMethod<
   OrgEditLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<OrgEditLabelRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Label>,
+  input: __S(432, __c27, 0) as any as S.Schema<OrgEditLabelRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<Label>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1621,8 +1621,8 @@ export const orgEditTeam: API.OperationMethod<
   OrgEditTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<OrgEditTeamRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Team>,
+  input: __S(448, __c28, 0) as any as S.Schema<OrgEditTeamRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<Team>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1636,8 +1636,8 @@ export const orgGetAll: API.OperationMethod<
   OrgGetAllError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<OrgGetAllRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<OrgGetAllResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<OrgGetAllRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<OrgGetAllResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1651,8 +1651,8 @@ export const orgGetHook: API.OperationMethod<
   OrgGetHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<OrgGetHookRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Hook>,
+  input: __S(512, __c32, 0) as any as S.Schema<OrgGetHookRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<Hook>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1666,8 +1666,8 @@ export const orgGetLabel: API.OperationMethod<
   OrgGetLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<OrgGetLabelRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Label>,
+  input: __S(528, __c33, 0) as any as S.Schema<OrgGetLabelRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<Label>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1681,8 +1681,8 @@ export const orgGetQuota: API.OperationMethod<
   OrgGetQuotaError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<OrgGetQuotaRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<QuotaInfo>,
+  input: __S(544, __c34, 0) as any as S.Schema<OrgGetQuotaRequest>,
+  output: __S(556, __c34, 12) as any as S.Schema<QuotaInfo>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1696,8 +1696,8 @@ export const orgGetTeam: API.OperationMethod<
   OrgGetTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<OrgGetTeamRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Team>,
+  input: __S(560, __c35, 0) as any as S.Schema<OrgGetTeamRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<Team>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1711,8 +1711,8 @@ export const orgGetUserPermissions: API.OperationMethod<
   OrgGetUserPermissionsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<OrgGetUserPermissionsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<OrganizationPermissions>,
+  input: __S(576, __c36, 0) as any as S.Schema<OrgGetUserPermissionsRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<OrganizationPermissions>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1726,8 @@ export const orgIsMember: API.OperationMethod<
   OrgIsMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<OrgIsMemberRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgIsMemberResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<OrgIsMemberRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgIsMemberResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1741,8 @@ export const orgIsPublicMember: API.OperationMethod<
   OrgIsPublicMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<OrgIsPublicMemberRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgIsPublicMemberResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<OrgIsPublicMemberRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgIsPublicMemberResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1756,8 +1756,8 @@ export const orgListActionsSecrets: API.OperationMethod<
   OrgListActionsSecretsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<OrgListActionsSecretsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<OrgListActionsSecretsResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<OrgListActionsSecretsRequest>,
+  output: __S(627, __c39, 3) as any as S.Schema<OrgListActionsSecretsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1771,8 +1771,8 @@ export const orgListActivityFeeds: API.OperationMethod<
   OrgListActivityFeedsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<OrgListActivityFeedsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<OrgListActivityFeedsResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<OrgListActivityFeedsRequest>,
+  output: __S(661, __c41, 5) as any as S.Schema<OrgListActivityFeedsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1786,8 @@ export const orgListBlockedUsers: API.OperationMethod<
   OrgListBlockedUsersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<OrgListBlockedUsersRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<OrgListBlockedUsersResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<OrgListBlockedUsersRequest>,
+  output: __S(675, __c42, 3) as any as S.Schema<OrgListBlockedUsersResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1801,8 @@ export const orgListCurrentUserOrgs: API.OperationMethod<
   OrgListCurrentUserOrgsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<OrgListCurrentUserOrgsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<OrgListCurrentUserOrgsResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<OrgListCurrentUserOrgsRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<OrgListCurrentUserOrgsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1816,8 +1816,8 @@ export const orgListHooks: API.OperationMethod<
   OrgListHooksError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<OrgListHooksRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<OrgListHooksResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<OrgListHooksRequest>,
+  output: __S(706, __c44, 2) as any as S.Schema<OrgListHooksResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1831,8 +1831,8 @@ export const orgListLabels: API.OperationMethod<
   OrgListLabelsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<OrgListLabelsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<OrgListLabelsResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<OrgListLabelsRequest>,
+  output: __S(722, __c45, 2) as any as S.Schema<OrgListLabelsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1846,8 +1846,8 @@ export const orgListMembers: API.OperationMethod<
   OrgListMembersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<OrgListMembersRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<OrgListMembersResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<OrgListMembersRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<OrgListMembersResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1861,8 +1861,8 @@ export const orgListPublicMembers: API.OperationMethod<
   OrgListPublicMembersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<OrgListPublicMembersRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<OrgListPublicMembersResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<OrgListPublicMembersRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<OrgListPublicMembersResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1876,8 +1876,8 @@ export const orgListQuotaArtifacts: API.OperationMethod<
   OrgListQuotaArtifactsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<OrgListQuotaArtifactsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<OrgListQuotaArtifactsResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<OrgListQuotaArtifactsRequest>,
+  output: __S(803, __c50, 3) as any as S.Schema<OrgListQuotaArtifactsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1891,8 +1891,8 @@ export const orgListQuotaAttachments: API.OperationMethod<
   OrgListQuotaAttachmentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<OrgListQuotaAttachmentsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<OrgListQuotaAttachmentsResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<OrgListQuotaAttachmentsRequest>,
+  output: __S(820, __c51, 4) as any as S.Schema<OrgListQuotaAttachmentsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1906,8 +1906,8 @@ export const orgListQuotaPackages: API.OperationMethod<
   OrgListQuotaPackagesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<OrgListQuotaPackagesRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<OrgListQuotaPackagesResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<OrgListQuotaPackagesRequest>,
+  output: __S(835, __c52, 3) as any as S.Schema<OrgListQuotaPackagesResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1921,8 +1921,8 @@ export const orgListRepos: API.OperationMethod<
   OrgListReposError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<OrgListReposRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<OrgListReposResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<OrgListReposRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<OrgListReposResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1936,8 +1936,8 @@ export const orgListTeamActivityFeeds: API.OperationMethod<
   OrgListTeamActivityFeedsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<OrgListTeamActivityFeedsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<OrgListTeamActivityFeedsResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<OrgListTeamActivityFeedsRequest>,
+  output: __S(661, __c41, 5) as any as S.Schema<OrgListTeamActivityFeedsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1951,8 +1951,8 @@ export const orgListTeamMember: API.OperationMethod<
   OrgListTeamMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<OrgListTeamMemberRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<User>,
+  input: __S(896, __c56, 0) as any as S.Schema<OrgListTeamMemberRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<User>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1966,8 +1966,8 @@ export const orgListTeamMembers: API.OperationMethod<
   OrgListTeamMembersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<OrgListTeamMembersRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<OrgListTeamMembersResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<OrgListTeamMembersRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<OrgListTeamMembersResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1981,8 +1981,8 @@ export const orgListTeamRepo: API.OperationMethod<
   OrgListTeamRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<OrgListTeamRepoRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Repository>,
+  input: __S(928, __c58, 0) as any as S.Schema<OrgListTeamRepoRequest>,
+  output: __S(1237, __c77, 5) as any as S.Schema<Repository>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1996,8 +1996,8 @@ export const orgListTeamRepos: API.OperationMethod<
   OrgListTeamReposError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<OrgListTeamReposRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<OrgListTeamReposResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<OrgListTeamReposRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<OrgListTeamReposResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2011,8 +2011,8 @@ export const orgListTeams: API.OperationMethod<
   OrgListTeamsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<OrgListTeamsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<OrgListTeamsResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<OrgListTeamsRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<OrgListTeamsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2026,8 +2026,8 @@ export const orgListUserOrgs: API.OperationMethod<
   OrgListUserOrgsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<OrgListUserOrgsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<OrgListUserOrgsResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<OrgListUserOrgsRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<OrgListUserOrgsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2041,8 +2041,8 @@ export const orgPublicizeMember: API.OperationMethod<
   OrgPublicizeMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<OrgPublicizeMemberRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgPublicizeMemberResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<OrgPublicizeMemberRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgPublicizeMemberResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2056,8 +2056,8 @@ export const orgRemoveTeamMember: API.OperationMethod<
   OrgRemoveTeamMemberError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<OrgRemoveTeamMemberRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgRemoveTeamMemberResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<OrgRemoveTeamMemberRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgRemoveTeamMemberResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2071,8 +2071,8 @@ export const orgRemoveTeamRepository: API.OperationMethod<
   OrgRemoveTeamRepositoryError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<OrgRemoveTeamRepositoryRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<OrgRemoveTeamRepositoryResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<OrgRemoveTeamRepositoryRequest>,
+  output: __S(1057, __c66, 1) as any as S.Schema<OrgRemoveTeamRepositoryResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2086,8 +2086,8 @@ export const orgSearchRunJobs: API.OperationMethod<
   OrgSearchRunJobsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<OrgSearchRunJobsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<OrgSearchRunJobsResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<OrgSearchRunJobsRequest>,
+  output: __S(1075, __c67, 3) as any as S.Schema<OrgSearchRunJobsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2101,8 +2101,8 @@ export const orgUnblockUser: API.OperationMethod<
   OrgUnblockUserError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<OrgUnblockUserRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgUnblockUserResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<OrgUnblockUserRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgUnblockUserResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2116,8 +2116,8 @@ export const orgUpdateAvatar: API.OperationMethod<
   OrgUpdateAvatarError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<OrgUpdateAvatarRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrgUpdateAvatarResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<OrgUpdateAvatarRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<OrgUpdateAvatarResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2131,8 +2131,8 @@ export const registerOrgRunner: API.OperationMethod<
   RegisterOrgRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<RegisterOrgRunnerRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<RegisterRunnerResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<RegisterOrgRunnerRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<RegisterRunnerResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2146,8 +2146,8 @@ export const renameOrg: API.OperationMethod<
   RenameOrgError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<RenameOrgRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<RenameOrgResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<RenameOrgRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<RenameOrgResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2161,8 +2161,8 @@ export const searchTeam: API.OperationMethod<
   SearchTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<SearchTeamRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<SearchTeamResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<SearchTeamRequest>,
+  output: __S(1265, __c79, 1) as any as S.Schema<SearchTeamResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2176,8 +2176,8 @@ export const updateOrgSecret: API.OperationMethod<
   UpdateOrgSecretError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<UpdateOrgSecretRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<UpdateOrgSecretResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<UpdateOrgSecretRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<UpdateOrgSecretResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2191,8 +2191,8 @@ export const updateOrgVariable: API.OperationMethod<
   UpdateOrgVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<UpdateOrgVariableRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<UpdateOrgVariableResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<UpdateOrgVariableRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<UpdateOrgVariableResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2200,6 +2200,1024 @@ export const updateOrgVariable: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          runner_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/orgs/{org}/actions/runners/{runner_id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteOrgRunnerRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          secretname: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/orgs/{org}/actions/secrets/{secretname}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteOrgSecretRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          variablename: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/orgs/{org}/actions/variables/{variablename}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteOrgVariableRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          description: S.optional(S.String),
+          email: S.optional(S.String),
+          full_name: S.optional(S.String),
+          location: S.optional(S.String),
+          repo_admin_change_team_access: S.optional(S.Boolean),
+          visibility: S.optional(S.String),
+          website: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}", code: 200 })),
+      ).annotate({ identifier: "EditOrgRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}", code: 200 })),
+      ).annotate({ identifier: "GetOrgRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          runner_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/orgs/{org}/actions/runners/{runner_id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetOrgRunnerRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          ephemeral: S.optional(S.Boolean),
+          id: S.optional(S.Number),
+          labels: S.optional(__S(1168, __c73, 0)),
+          name: S.optional(S.String),
+          owner_id: S.optional(S.Number),
+          repo_id: S.optional(S.Number),
+          status: S.optional(S.String),
+          uuid: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActionRunner" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          visible: S.optional(S.Boolean.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/actions/runners", code: 200 })),
+      ).annotate({ identifier: "GetOrgRunnersRequest" });
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+    case 2:
+      return S.suspend(() => __S(113, __c7, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetOrgRunnersResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          variablename: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/orgs/{org}/actions/variables/{variablename}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetOrgVariableRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.String,
+          name: S.String,
+          owner_id: S.optional(S.Number),
+          repo_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ActionVariable" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/actions/variables", code: 200 })),
+      ).annotate({
+        identifier: "GetOrgVariablesListRequest",
+      });
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+    case 2:
+      return S.suspend(() => __S(161, __c10, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetOrgVariablesListResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PUT", uri: "/teams/{id}/members/{username}", code: 200 })),
+      ).annotate({ identifier: "OrgAddTeamMemberRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          org: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PUT", uri: "/teams/{id}/repos/{org}/{repo}", code: 200 })),
+      ).annotate({
+        identifier: "OrgAddTeamRepositoryRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/block/{username}", code: 200 })),
+      ).annotate({ identifier: "OrgBlockUserRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          subject: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/quota/check", code: 200 })),
+      ).annotate({ identifier: "OrgCheckQuotaRequest" });
+    case 1:
+      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgCheckQuotaResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/orgs/{org}/public_members/{username}", code: 200 }),
+        ),
+      ).annotate({ identifier: "OrgConcealMemberRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          active: S.optional(S.Boolean),
+          authorization_header: S.optional(S.String),
+          branch_filter: S.optional(S.String),
+          config: __S(1185, __c74, 1),
+          events: S.optional(__S(1168, __c73, 0)),
+          type: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/hooks", code: 200 })),
+      ).annotate({ identifier: "OrgCreateHookRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          authorization_header: S.optional(S.String),
+          branch_filter: S.optional(S.String),
+          config: S.optional(__S(1185, __c74, 1)),
+          content_type: S.optional(S.String),
+          created_at: S.String,
+          events: S.optional(__S(1184, __c74, 0)),
+          id: S.Number,
+          metadata: S.optional(S.Unknown),
+          type: S.String,
+          updated_at: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "Hook" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          color: S.String,
+          description: S.optional(S.String),
+          exclusive: S.optional(S.Boolean),
+          is_archived: S.optional(S.Boolean),
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/labels", code: 200 })),
+      ).annotate({ identifier: "OrgCreateLabelRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          color: S.String,
+          description: S.optional(S.String),
+          exclusive: S.optional(S.Boolean),
+          id: S.Number,
+          is_archived: S.optional(S.Boolean),
+          name: S.String,
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Label" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          can_create_org_repo: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          includes_all_repositories: S.optional(S.Boolean),
+          name: S.String,
+          permission: S.optional(S.String),
+          units: S.optional(__S(1168, __c73, 0)),
+          units_map: S.optional(__S(1185, __c74, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/teams", code: 200 })),
+      ).annotate({ identifier: "OrgCreateTeamRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}/avatar", code: 200 })),
+      ).annotate({ identifier: "OrgDeleteAvatarRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}/hooks/{id}", code: 200 })),
+      ).annotate({ identifier: "OrgDeleteHookRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}/labels/{id}", code: 200 })),
+      ).annotate({ identifier: "OrgDeleteLabelRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}/members/{username}", code: 200 })),
+      ).annotate({ identifier: "OrgDeleteMemberRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/teams/{id}", code: 200 })),
+      ).annotate({ identifier: "OrgDeleteTeamRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          active: S.optional(S.Boolean),
+          authorization_header: S.optional(S.String),
+          branch_filter: S.optional(S.String),
+          config: S.optional(__S(1185, __c74, 1)),
+          events: S.optional(__S(1168, __c73, 0)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/hooks/{id}", code: 200 })),
+      ).annotate({ identifier: "OrgEditHookRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          color: S.optional(S.String),
+          description: S.optional(S.String),
+          exclusive: S.optional(S.Boolean),
+          is_archived: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/labels/{id}", code: 200 })),
+      ).annotate({ identifier: "OrgEditLabelRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          can_create_org_repo: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          includes_all_repositories: S.optional(S.Boolean),
+          name: S.String,
+          permission: S.optional(S.String),
+          units: S.optional(__S(1168, __c73, 0)),
+          units_map: S.optional(__S(1185, __c74, 1)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/teams/{id}", code: 200 })),
+      ).annotate({ identifier: "OrgEditTeamRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs", code: 200 })),
+      ).annotate({ identifier: "OrgGetAllRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(976, __c61, 0));
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(480, __c30, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgGetAllResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/hooks/{id}", code: 200 })),
+      ).annotate({ identifier: "OrgGetHookRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/labels/{id}", code: 200 })),
+      ).annotate({ identifier: "OrgGetLabelRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/quota", code: 200 })),
+      ).annotate({ identifier: "OrgGetQuotaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number),
+          name: S.optional(S.String),
+          subjects: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({ identifier: "QuotaRuleInfo" });
+    case 2:
+      return S.Array(__S(545, __c34, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          rules: S.optional(__S(546, __c34, 2)),
+        }),
+      ).annotate({ identifier: "QuotaGroup" });
+    case 4:
+      return S.Array(__S(547, __c34, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          issues: S.optional(S.Number),
+          releases: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "QuotaUsedSizeAssetsAttachments",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          all: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "QuotaUsedSizeAssetsPackages",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          artifacts: S.optional(S.Number),
+          attachments: S.optional(__S(549, __c34, 5)),
+          packages: S.optional(__S(550, __c34, 6)),
+        }),
+      ).annotate({ identifier: "QuotaUsedSizeAssets" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          LFS: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QuotaUsedSizeGit" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          private: S.optional(S.Number),
+          public: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QuotaUsedSizeRepos" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          assets: S.optional(__S(551, __c34, 7)),
+          git: S.optional(__S(552, __c34, 8)),
+          repos: S.optional(__S(553, __c34, 9)),
+        }),
+      ).annotate({ identifier: "QuotaUsedSize" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          size: S.optional(__S(554, __c34, 10)),
+        }),
+      ).annotate({ identifier: "QuotaUsed" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          groups: S.optional(__S(548, __c34, 4)),
+          used: S.optional(__S(555, __c34, 11)),
+        }),
+      ).annotate({ identifier: "QuotaInfo" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/teams/{id}", code: 200 })),
+      ).annotate({ identifier: "OrgGetTeamRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          org: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/users/{username}/orgs/{org}/permissions", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "OrgGetUserPermissionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          can_create_repository: S.optional(S.Boolean),
+          can_read: S.optional(S.Boolean),
+          can_write: S.optional(S.Boolean),
+          is_admin: S.optional(S.Boolean),
+          is_owner: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "OrganizationPermissions" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/members/{username}", code: 200 })),
+      ).annotate({ identifier: "OrgIsMemberRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/public_members/{username}", code: 200 })),
+      ).annotate({ identifier: "OrgIsPublicMemberRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/actions/secrets", code: 200 })),
+      ).annotate({
+        identifier: "OrgListActionsSecretsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "Secret" });
+    case 2:
+      return S.Array(__S(625, __c39, 1));
+    case 3:
+      return S.suspend(() => __S(626, __c39, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListActionsSecretsResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          date: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/activities/feeds", code: 200 })),
+      ).annotate({
+        identifier: "OrgListActivityFeedsRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          browser_download_url: S.optional(S.String),
+          created_at: S.optional(S.String),
+          download_count: S.optional(S.Number),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          size: S.optional(S.Number),
+          type: S.optional(S.String),
+          uuid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Attachment" });
+    case 1:
+      return S.Array(__S(656, __c41, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assets: S.optional(__S(657, __c41, 1)),
+          body: S.optional(S.String),
+          created_at: S.optional(S.String),
+          html_url: S.optional(S.String),
+          id: S.optional(S.Number),
+          issue_url: S.optional(S.String),
+          original_author: S.optional(S.String),
+          original_author_id: S.optional(S.Number),
+          pull_request_url: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          user: S.optional(__S(1216, __c76, 0)),
+        }),
+      ).annotate({ identifier: "Comment" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          act_user: S.optional(__S(1216, __c76, 0)),
+          act_user_id: S.optional(S.Number),
+          comment: S.optional(__S(658, __c41, 2)),
+          comment_id: S.optional(S.Number),
+          content: S.optional(S.String),
+          created: S.optional(S.String),
+          id: S.optional(S.Number),
+          is_private: S.optional(S.Boolean),
+          op_type: S.optional(S.String),
+          ref_name: S.optional(S.String),
+          repo: S.optional(__S(1237, __c77, 5)),
+          repo_id: S.optional(S.Number),
+          user_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Activity" });
+    case 4:
+      return S.Array(__S(659, __c41, 3));
+    case 5:
+      return S.suspend(() => __S(660, __c41, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListActivityFeedsResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/list_blocked", code: 200 })),
+      ).annotate({
+        identifier: "OrgListBlockedUsersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          block_id: S.optional(S.Number),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BlockedUser" });
+    case 2:
+      return S.Array(__S(673, __c42, 1));
+    case 3:
+      return S.suspend(() => __S(674, __c42, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListBlockedUsersResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/orgs", code: 200 })),
+      ).annotate({
+        identifier: "OrgListCurrentUserOrgsRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(480, __c30, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListCurrentUserOrgsResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/hooks", code: 200 })),
+      ).annotate({ identifier: "OrgListHooksRequest" });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
+      return S.suspend(() => __S(705, __c44, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListHooksResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          sort: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/labels", code: 200 })),
+      ).annotate({ identifier: "OrgListLabelsRequest" });
+    case 1:
+      return S.Array(__S(304, __c19, 0));
+    case 2:
+      return S.suspend(() => __S(721, __c45, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListLabelsResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/members", code: 200 })),
+      ).annotate({ identifier: "OrgListMembersRequest" });
+    case 1:
+      return S.suspend(() => __S(752, __c47, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListMembersResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1216, __c76, 0));
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/public_members", code: 200 })),
+      ).annotate({
+        identifier: "OrgListPublicMembersRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(752, __c47, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListPublicMembersResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/quota/artifacts", code: 200 })),
+      ).annotate({
+        identifier: "OrgListQuotaArtifactsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          html_url: S.optional(S.String),
+          name: S.optional(S.String),
+          size: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QuotaUsedArtifact" });
+    case 2:
+      return S.Array(__S(801, __c50, 1));
+    case 3:
+      return S.suspend(() => __S(802, __c50, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListQuotaArtifactsResponse",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/quota/attachments", code: 200 })),
+      ).annotate({
+        identifier: "OrgListQuotaAttachmentsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          api_url: S.optional(S.String),
+          html_url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "QuotaUsedAttachmentContainedIn",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          api_url: S.optional(S.String),
+          contained_in: S.optional(__S(817, __c51, 1)),
+          name: S.optional(S.String),
+          size: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QuotaUsedAttachment" });
+    case 3:
+      return S.Array(__S(818, __c51, 2));
+    case 4:
+      return S.suspend(() => __S(819, __c51, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListQuotaAttachmentsResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/quota/packages", code: 200 })),
+      ).annotate({
+        identifier: "OrgListQuotaPackagesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          html_url: S.optional(S.String),
+          name: S.optional(S.String),
+          size: S.optional(S.Number),
+          type: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuotaUsedPackage" });
+    case 2:
+      return S.Array(__S(833, __c52, 1));
+    case 3:
+      return S.suspend(() => __S(834, __c52, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListQuotaPackagesResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/repos", code: 200 })),
+      ).annotate({ identifier: "OrgListReposRequest" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1237, __c77, 5));
+    case 1:
+      return S.suspend(() => __S(864, __c54, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListReposResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          date: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/teams/{id}/activities/feeds", code: 200 })),
+      ).annotate({
+        identifier: "OrgListTeamActivityFeedsRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/teams/{id}/members/{username}", code: 200 })),
+      ).annotate({ identifier: "OrgListTeamMemberRequest" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/teams/{id}/members", code: 200 })),
+      ).annotate({
+        identifier: "OrgListTeamMembersRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          org: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/teams/{id}/repos/{org}/{repo}", code: 200 })),
+      ).annotate({ identifier: "OrgListTeamRepoRequest" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/teams/{id}/repos", code: 200 })),
+      ).annotate({ identifier: "OrgListTeamReposRequest" });
+  }
+}
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2214,7 +3232,11 @@ function __c0(j: number): any {
           website: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/orgs", code: 200 })),
       ).annotate({ identifier: "CreateOrgRequest" });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           avatar_url: S.optional(S.String),
@@ -2231,7 +3253,170 @@ function __c0(j: number): any {
           website: S.optional(S.String),
         }),
       ).annotate({ identifier: "Organization" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams", code: 200 })),
+      ).annotate({ identifier: "OrgListTeamsRequest" });
+    case 1:
+      return S.suspend(() => __S(1248, __c78, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgListTeamsResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/orgs", code: 200 })),
+      ).annotate({ identifier: "OrgListUserOrgsRequest" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/public_members/{username}", code: 200 })),
+      ).annotate({
+        identifier: "OrgPublicizeMemberRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/teams/{id}/members/{username}", code: 200 })),
+      ).annotate({
+        identifier: "OrgRemoveTeamMemberRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          org: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/teams/{id}/repos/{org}/{repo}", code: 200 })),
+      ).annotate({
+        identifier: "OrgRemoveTeamRepositoryRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "OrgRemoveTeamRepositoryResponse",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          labels: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/actions/runners/jobs", code: 200 })),
+      ).annotate({ identifier: "OrgSearchRunJobsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attempt: S.optional(S.Number),
+          handle: S.optional(S.String),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          needs: S.optional(__S(1168, __c73, 0)),
+          owner_id: S.optional(S.Number),
+          repo_id: S.optional(S.Number),
+          run_id: S.optional(S.Number),
+          runs_on: S.optional(__S(1168, __c73, 0)),
+          status: S.optional(S.String),
+          task_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ActionRunJob" });
     case 2:
+      return S.Array(__S(1073, __c67, 1));
+    case 3:
+      return S.suspend(() => __S(1074, __c67, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "OrgSearchRunJobsResponse",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/unblock/{username}", code: 200 })),
+      ).annotate({ identifier: "OrgUnblockUserRequest" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          image: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/avatar", code: 200 })),
+      ).annotate({ identifier: "OrgUpdateAvatarRequest" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          description: S.optional(S.String),
+          ephemeral: S.optional(S.Boolean),
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/actions/runners", code: 200 })),
+      ).annotate({ identifier: "RegisterOrgRunnerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          token: S.optional(S.String),
+          uuid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegisterRunnerResponse" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          new_name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/rename", code: 200 })),
+      ).annotate({ identifier: "RenameOrgRequest" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -2249,30 +3434,43 @@ function __c0(j: number): any {
           trust_model: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/repos", code: 200 })),
       ).annotate({ identifier: "CreateOrgRepoRequest" });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          external_tracker_format: S.optional(S.String),
-          external_tracker_regexp_pattern: S.optional(S.String),
-          external_tracker_style: S.optional(S.String),
-          external_tracker_url: S.optional(S.String),
+          can_create_org_repo: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          id: S.Number,
+          includes_all_repositories: S.optional(S.Boolean),
+          name: S.String,
+          organization: S.optional(__S(976, __c61, 0)),
+          permission: S.optional(S.String),
+          units: S.optional(__S(1184, __c74, 0)),
+          units_map: S.optional(__S(1185, __c74, 1)),
         }),
-      ).annotate({ identifier: "ExternalTracker" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          external_wiki_url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalWiki" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allow_only_contributors_to_track_time: S.optional(S.Boolean),
-          enable_issue_dependencies: S.optional(S.Boolean),
-          enable_time_tracker: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "InternalTracker" });
-    case 6:
+      ).annotate({ identifier: "Team" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean),
@@ -2300,7 +3498,34 @@ function __c0(j: number): any {
           website: S.optional(S.String),
         }),
       ).annotate({ identifier: "User" });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_tracker_format: S.optional(S.String),
+          external_tracker_regexp_pattern: S.optional(S.String),
+          external_tracker_style: S.optional(S.String),
+          external_tracker_url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalTracker" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          external_wiki_url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalWiki" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allow_only_contributors_to_track_time: S.optional(S.Boolean),
+          enable_issue_dependencies: S.optional(S.Boolean),
+          enable_time_tracker: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "InternalTracker" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           admin: S.optional(S.Boolean),
@@ -2308,41 +3533,15 @@ function __c0(j: number): any {
           push: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Permission" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          can_create_org_repo: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          id: S.Number,
-          includes_all_repositories: S.optional(S.Boolean),
-          name: S.String,
-          organization: S.optional(__S(1, __c0, 1)),
-          permission: S.optional(S.String),
-          units: S.optional(__S(8, __c1, 0)),
-          units_map: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "Team" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          doer: S.optional(__S(6, __c0, 6)),
-          recipient: S.optional(__S(6, __c0, 6)),
-          teams: S.optional(__S(11, __c1, 3)),
+          doer: S.optional(__S(1216, __c76, 0)),
+          recipient: S.optional(__S(1216, __c76, 0)),
+          teams: S.optional(__S(1248, __c78, 0)),
         }),
       ).annotate({ identifier: "RepoTransfer" });
     case 5:
-      return S.Array(S.String);
-    case 6:
       return S.suspend(() =>
         S.Struct({
           allow_fast_forward_only_merge: S.optional(S.Boolean),
@@ -2363,8 +3562,8 @@ function __c1(j: number): any {
           default_update_style: S.optional(S.String),
           description: S.optional(S.String),
           empty: S.optional(S.Boolean),
-          external_tracker: S.optional(__S(3, __c0, 3)),
-          external_wiki: S.optional(__S(4, __c0, 4)),
+          external_tracker: S.optional(__S(1232, __c77, 0)),
+          external_wiki: S.optional(__S(1233, __c77, 1)),
           fork: S.optional(S.Boolean),
           forks_count: S.optional(S.Number),
           full_name: S.String,
@@ -2381,7 +3580,7 @@ function __c1(j: number): any {
           id: S.Number,
           ignore_whitespace_conflicts: S.optional(S.Boolean),
           internal: S.optional(S.Boolean),
-          internal_tracker: S.optional(__S(5, __c0, 5)),
+          internal_tracker: S.optional(__S(1234, __c77, 2)),
           language: S.optional(S.String),
           languages_url: S.optional(S.String),
           link: S.optional(S.String),
@@ -2393,17 +3592,17 @@ function __c1(j: number): any {
           open_issues_count: S.optional(S.Number),
           open_pr_counter: S.optional(S.Number),
           original_url: S.optional(S.String),
-          owner: __S(6, __c0, 6),
-          parent: S.optional(__S(14, __c1, 6)),
-          permissions: S.optional(__S(7, __c0, 7)),
+          owner: __S(1216, __c76, 0),
+          parent: S.optional(__S(1237, __c77, 5)),
+          permissions: S.optional(__S(1235, __c77, 3)),
           private: S.optional(S.Boolean),
           release_counter: S.optional(S.Number),
-          repo_transfer: S.optional(__S(12, __c1, 4)),
+          repo_transfer: S.optional(__S(1236, __c77, 4)),
           size: S.optional(S.Number),
           ssh_url: S.String,
           stars_count: S.optional(S.Number),
           template: S.optional(S.Boolean),
-          topics: S.optional(__S(13, __c1, 5)),
+          topics: S.optional(__S(1168, __c73, 0)),
           updated_at: S.String,
           url: S.optional(S.String),
           watchers_count: S.optional(S.Number),
@@ -2413,7 +3612,67 @@ function __c1(j: number): any {
           wiki_ssh_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "Repository" });
-    case 7:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1200, __c75, 0));
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          q: S.optional(S.String.pipe(T.Query())),
+          include_desc: S.optional(S.Boolean.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams/search", code: 200 })),
+      ).annotate({ identifier: "SearchTeamRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(1248, __c78, 0)),
+          ok: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SearchTeamResponse" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          secretname: S.String.pipe(T.Label()),
+          data: S.String,
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/orgs/{org}/actions/secrets/{secretname}", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpdateOrgSecretRequest" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          variablename: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          value: S.String,
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/orgs/{org}/actions/variables/{variablename}", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpdateOrgVariableRequest" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -2429,1016 +3688,24 @@ function __c1(j: number): any {
       ).annotate({ identifier: "CreateOrgVariableRequest" });
   }
 }
-function __c2(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateOrgVariableResponse",
       });
-    case 1:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}", code: 200 })),
       ).annotate({ identifier: "DeleteOrgRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          runner_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/orgs/{org}/actions/runners/{runner_id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteOrgRunnerRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          secretname: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/orgs/{org}/actions/secrets/{secretname}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteOrgSecretRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          variablename: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/orgs/{org}/actions/variables/{variablename}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteOrgVariableRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          description: S.optional(S.String),
-          email: S.optional(S.String),
-          full_name: S.optional(S.String),
-          location: S.optional(S.String),
-          repo_admin_change_team_access: S.optional(S.Boolean),
-          visibility: S.optional(S.String),
-          website: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}", code: 200 })),
-      ).annotate({ identifier: "EditOrgRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}", code: 200 })),
-      ).annotate({ identifier: "GetOrgRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          runner_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/orgs/{org}/actions/runners/{runner_id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetOrgRunnerRequest" });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          ephemeral: S.optional(S.Boolean),
-          id: S.optional(S.Number),
-          labels: S.optional(__S(13, __c1, 5)),
-          name: S.optional(S.String),
-          owner_id: S.optional(S.Number),
-          repo_id: S.optional(S.Number),
-          status: S.optional(S.String),
-          uuid: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActionRunner" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          visible: S.optional(S.Boolean.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/actions/runners", code: 200 })),
-      ).annotate({ identifier: "GetOrgRunnersRequest" });
-    case 2:
-      return S.Array(__S(24, __c3, 0));
-    case 3:
-      return S.suspend(() => __S(26, __c3, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetOrgRunnersResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          variablename: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/orgs/{org}/actions/variables/{variablename}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetOrgVariableRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.String,
-          name: S.String,
-          owner_id: S.optional(S.Number),
-          repo_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ActionVariable" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/actions/variables", code: 200 })),
-      ).annotate({
-        identifier: "GetOrgVariablesListRequest",
-      });
-    case 7:
-      return S.Array(__S(29, __c3, 5));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(31, __c3, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetOrgVariablesListResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "PUT", uri: "/teams/{id}/members/{username}", code: 200 })),
-      ).annotate({ identifier: "OrgAddTeamMemberRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          org: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "PUT", uri: "/teams/{id}/repos/{org}/{repo}", code: 200 })),
-      ).annotate({
-        identifier: "OrgAddTeamRepositoryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/block/{username}", code: 200 })),
-      ).annotate({ identifier: "OrgBlockUserRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          subject: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/quota/check", code: 200 })),
-      ).annotate({ identifier: "OrgCheckQuotaRequest" });
-    case 5:
-      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgCheckQuotaResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/orgs/{org}/public_members/{username}", code: 200 }),
-        ),
-      ).annotate({ identifier: "OrgConcealMemberRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          active: S.optional(S.Boolean),
-          authorization_header: S.optional(S.String),
-          branch_filter: S.optional(S.String),
-          config: __S(9, __c1, 1),
-          events: S.optional(__S(13, __c1, 5)),
-          type: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/hooks", code: 200 })),
-      ).annotate({ identifier: "OrgCreateHookRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          authorization_header: S.optional(S.String),
-          branch_filter: S.optional(S.String),
-          config: S.optional(__S(9, __c1, 1)),
-          content_type: S.optional(S.String),
-          created_at: S.String,
-          events: S.optional(__S(8, __c1, 0)),
-          id: S.Number,
-          metadata: S.optional(S.Unknown),
-          type: S.String,
-          updated_at: S.String,
-          url: S.String,
-        }),
-      ).annotate({ identifier: "Hook" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          color: S.String,
-          description: S.optional(S.String),
-          exclusive: S.optional(S.Boolean),
-          is_archived: S.optional(S.Boolean),
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/labels", code: 200 })),
-      ).annotate({ identifier: "OrgCreateLabelRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          color: S.String,
-          description: S.optional(S.String),
-          exclusive: S.optional(S.Boolean),
-          id: S.Number,
-          is_archived: S.optional(S.Boolean),
-          name: S.String,
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Label" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          can_create_org_repo: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          includes_all_repositories: S.optional(S.Boolean),
-          name: S.String,
-          permission: S.optional(S.String),
-          units: S.optional(__S(13, __c1, 5)),
-          units_map: S.optional(__S(9, __c1, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/teams", code: 200 })),
-      ).annotate({ identifier: "OrgCreateTeamRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}/avatar", code: 200 })),
-      ).annotate({ identifier: "OrgDeleteAvatarRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}/hooks/{id}", code: 200 })),
-      ).annotate({ identifier: "OrgDeleteHookRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}/labels/{id}", code: 200 })),
-      ).annotate({ identifier: "OrgDeleteLabelRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}/members/{username}", code: 200 })),
-      ).annotate({ identifier: "OrgDeleteMemberRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/teams/{id}", code: 200 })),
-      ).annotate({ identifier: "OrgDeleteTeamRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          active: S.optional(S.Boolean),
-          authorization_header: S.optional(S.String),
-          branch_filter: S.optional(S.String),
-          config: S.optional(__S(9, __c1, 1)),
-          events: S.optional(__S(13, __c1, 5)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/hooks/{id}", code: 200 })),
-      ).annotate({ identifier: "OrgEditHookRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          color: S.optional(S.String),
-          description: S.optional(S.String),
-          exclusive: S.optional(S.Boolean),
-          is_archived: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/labels/{id}", code: 200 })),
-      ).annotate({ identifier: "OrgEditLabelRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          can_create_org_repo: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          includes_all_repositories: S.optional(S.Boolean),
-          name: S.String,
-          permission: S.optional(S.String),
-          units: S.optional(__S(13, __c1, 5)),
-          units_map: S.optional(__S(9, __c1, 1)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/teams/{id}", code: 200 })),
-      ).annotate({ identifier: "OrgEditTeamRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs", code: 200 })),
-      ).annotate({ identifier: "OrgGetAllRequest" });
-    case 5:
-      return S.Array(__S(1, __c0, 1));
-    case 6:
-      return S.suspend(() => __S(53, __c6, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgGetAllResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/hooks/{id}", code: 200 })),
-      ).annotate({ identifier: "OrgGetHookRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/labels/{id}", code: 200 })),
-      ).annotate({ identifier: "OrgGetLabelRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/quota", code: 200 })),
-      ).annotate({ identifier: "OrgGetQuotaRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number),
-          name: S.optional(S.String),
-          subjects: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "QuotaRuleInfo" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          rules: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "QuotaGroup" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          issues: S.optional(S.Number),
-          releases: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "QuotaUsedSizeAssetsAttachments",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          all: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "QuotaUsedSizeAssetsPackages",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          artifacts: S.optional(S.Number),
-          attachments: S.optional(__S(62, __c7, 6)),
-          packages: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({ identifier: "QuotaUsedSizeAssets" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          LFS: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QuotaUsedSizeGit" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          private: S.optional(S.Number),
-          public: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QuotaUsedSizeRepos" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          assets: S.optional(__S(64, __c8, 0)),
-          git: S.optional(__S(65, __c8, 1)),
-          repos: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({ identifier: "QuotaUsedSize" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          size: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({ identifier: "QuotaUsed" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groups: S.optional(__S(61, __c7, 5)),
-          used: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({ identifier: "QuotaInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/teams/{id}", code: 200 })),
-      ).annotate({ identifier: "OrgGetTeamRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          org: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/users/{username}/orgs/{org}/permissions", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "OrgGetUserPermissionsRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          can_create_repository: S.optional(S.Boolean),
-          can_read: S.optional(S.Boolean),
-          can_write: S.optional(S.Boolean),
-          is_admin: S.optional(S.Boolean),
-          is_owner: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "OrganizationPermissions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/members/{username}", code: 200 })),
-      ).annotate({ identifier: "OrgIsMemberRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/public_members/{username}", code: 200 })),
-      ).annotate({ identifier: "OrgIsPublicMemberRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/actions/secrets", code: 200 })),
-      ).annotate({
-        identifier: "OrgListActionsSecretsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "Secret" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() => __S(77, __c9, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListActionsSecretsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          date: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/activities/feeds", code: 200 })),
-      ).annotate({
-        identifier: "OrgListActivityFeedsRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          browser_download_url: S.optional(S.String),
-          created_at: S.optional(S.String),
-          download_count: S.optional(S.Number),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          size: S.optional(S.Number),
-          type: S.optional(S.String),
-          uuid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Attachment" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          assets: S.optional(__S(81, __c10, 1)),
-          body: S.optional(S.String),
-          created_at: S.optional(S.String),
-          html_url: S.optional(S.String),
-          id: S.optional(S.Number),
-          issue_url: S.optional(S.String),
-          original_author: S.optional(S.String),
-          original_author_id: S.optional(S.Number),
-          pull_request_url: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          user: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Comment" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          act_user: S.optional(__S(6, __c0, 6)),
-          act_user_id: S.optional(S.Number),
-          comment: S.optional(__S(82, __c10, 2)),
-          comment_id: S.optional(S.Number),
-          content: S.optional(S.String),
-          created: S.optional(S.String),
-          id: S.optional(S.Number),
-          is_private: S.optional(S.Boolean),
-          op_type: S.optional(S.String),
-          ref_name: S.optional(S.String),
-          repo: S.optional(__S(14, __c1, 6)),
-          repo_id: S.optional(S.Number),
-          user_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Activity" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() => __S(84, __c10, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListActivityFeedsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/list_blocked", code: 200 })),
-      ).annotate({
-        identifier: "OrgListBlockedUsersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          block_id: S.optional(S.Number),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BlockedUser" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() => __S(88, __c11, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListBlockedUsersResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/orgs", code: 200 })),
-      ).annotate({
-        identifier: "OrgListCurrentUserOrgsRequest",
-      });
-    case 3:
-      return S.suspend(() => __S(53, __c6, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListCurrentUserOrgsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/hooks", code: 200 })),
-      ).annotate({ identifier: "OrgListHooksRequest" });
-    case 5:
-      return S.Array(__S(40, __c5, 0));
-    case 6:
-      return S.suspend(() => __S(93, __c11, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListHooksResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          sort: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/labels", code: 200 })),
-      ).annotate({ identifier: "OrgListLabelsRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(42, __c5, 2));
-    case 1:
-      return S.suspend(() => __S(96, __c12, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListLabelsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/members", code: 200 })),
-      ).annotate({ identifier: "OrgListMembersRequest" });
-    case 3:
-      return S.Array(__S(6, __c0, 6));
-    case 4:
-      return S.suspend(() => __S(99, __c12, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListMembersResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/public_members", code: 200 })),
-      ).annotate({
-        identifier: "OrgListPublicMembersRequest",
-      });
-    case 6:
-      return S.suspend(() => __S(99, __c12, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListPublicMembersResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/quota/artifacts", code: 200 })),
-      ).annotate({
-        identifier: "OrgListQuotaArtifactsRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          html_url: S.optional(S.String),
-          name: S.optional(S.String),
-          size: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QuotaUsedArtifact" });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
-      return S.suspend(() => __S(105, __c13, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListQuotaArtifactsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/quota/attachments", code: 200 })),
-      ).annotate({
-        identifier: "OrgListQuotaAttachmentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          api_url: S.optional(S.String),
-          html_url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "QuotaUsedAttachmentContainedIn",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          api_url: S.optional(S.String),
-          contained_in: S.optional(__S(108, __c13, 4)),
-          name: S.optional(S.String),
-          size: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QuotaUsedAttachment" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
-      return S.suspend(() => __S(110, __c13, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListQuotaAttachmentsResponse",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/quota/packages", code: 200 })),
-      ).annotate({
-        identifier: "OrgListQuotaPackagesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          html_url: S.optional(S.String),
-          name: S.optional(S.String),
-          size: S.optional(S.Number),
-          type: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QuotaUsedPackage" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() => __S(114, __c14, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListQuotaPackagesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/repos", code: 200 })),
-      ).annotate({ identifier: "OrgListReposRequest" });
-    case 5:
-      return S.Array(__S(14, __c1, 6));
-    case 6:
-      return S.suspend(() => __S(117, __c14, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListReposResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          date: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/teams/{id}/activities/feeds", code: 200 })),
-      ).annotate({
-        identifier: "OrgListTeamActivityFeedsRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/teams/{id}/members/{username}", code: 200 })),
-      ).annotate({ identifier: "OrgListTeamMemberRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/teams/{id}/members", code: 200 })),
-      ).annotate({
-        identifier: "OrgListTeamMembersRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          org: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/teams/{id}/repos/{org}/{repo}", code: 200 })),
-      ).annotate({ identifier: "OrgListTeamRepoRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/teams/{id}/repos", code: 200 })),
-      ).annotate({ identifier: "OrgListTeamReposRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams", code: 200 })),
-      ).annotate({ identifier: "OrgListTeamsRequest" });
-    case 5:
-      return S.suspend(() => __S(11, __c1, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgListTeamsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/orgs", code: 200 })),
-      ).annotate({ identifier: "OrgListUserOrgsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/public_members/{username}", code: 200 })),
-      ).annotate({
-        identifier: "OrgPublicizeMemberRequest",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/teams/{id}/members/{username}", code: 200 })),
-      ).annotate({
-        identifier: "OrgRemoveTeamMemberRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          org: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/teams/{id}/repos/{org}/{repo}", code: 200 })),
-      ).annotate({
-        identifier: "OrgRemoveTeamRepositoryRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "OrgRemoveTeamRepositoryResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          labels: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/actions/runners/jobs", code: 200 })),
-      ).annotate({ identifier: "OrgSearchRunJobsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          attempt: S.optional(S.Number),
-          handle: S.optional(S.String),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          needs: S.optional(__S(13, __c1, 5)),
-          owner_id: S.optional(S.Number),
-          repo_id: S.optional(S.Number),
-          run_id: S.optional(S.Number),
-          runs_on: S.optional(__S(13, __c1, 5)),
-          status: S.optional(S.String),
-          task_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ActionRunJob" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
-      return S.suspend(() => __S(133, __c16, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "OrgSearchRunJobsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/unblock/{username}", code: 200 })),
-      ).annotate({ identifier: "OrgUnblockUserRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          image: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/avatar", code: 200 })),
-      ).annotate({ identifier: "OrgUpdateAvatarRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          description: S.optional(S.String),
-          ephemeral: S.optional(S.Boolean),
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/actions/runners", code: 200 })),
-      ).annotate({ identifier: "RegisterOrgRunnerRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          token: S.optional(S.String),
-          uuid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RegisterRunnerResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          new_name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/rename", code: 200 })),
-      ).annotate({ identifier: "RenameOrgRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          q: S.optional(S.String.pipe(T.Query())),
-          include_desc: S.optional(S.Boolean.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/teams/search", code: 200 })),
-      ).annotate({ identifier: "SearchTeamRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(11, __c1, 3)),
-          ok: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SearchTeamResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          secretname: S.String.pipe(T.Label()),
-          data: S.String,
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/orgs/{org}/actions/secrets/{secretname}", code: 200 }),
-        ),
-      ).annotate({ identifier: "UpdateOrgSecretRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          variablename: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          value: S.String,
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/orgs/{org}/actions/variables/{variablename}", code: 200 }),
-        ),
-      ).annotate({ identifier: "UpdateOrgVariableRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

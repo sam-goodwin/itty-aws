@@ -4523,8 +4523,8 @@ export const assetsCheckMissing: API.OperationMethod<
   AssetsCheckMissingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AssetsCheckMissingRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AssetsCheckMissingResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<AssetsCheckMissingRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<AssetsCheckMissingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4538,8 +4538,8 @@ export const assetsUpsertHashes: API.OperationMethod<
   AssetsUpsertHashesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AssetsUpsertHashesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AssetsUpsertHashesResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<AssetsUpsertHashesRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<AssetsUpsertHashesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4553,8 +4553,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateProjectRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CreateProjectResponse>,
+  input: __S(869, __c27, 5) as any as S.Schema<CreateProjectRequest>,
+  output: __S(883, __c27, 19) as any as S.Schema<CreateProjectResponse>,
   errors: [ProjectAlreadyExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4568,8 +4568,8 @@ export const createProjectDeployment: API.OperationMethod<
   CreateProjectDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CreateProjectDeploymentRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<CreateProjectDeploymentResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectDeploymentRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateProjectDeploymentResponse>,
   errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4587,8 +4587,8 @@ export const createProjectDomain: API.OperationMethod<
   CreateProjectDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateProjectDomainRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<CreateProjectDomainResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<CreateProjectDomainRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<CreateProjectDomainResponse>,
   errors: [
     ProjectNotFound,
     PagesDomainAlreadyExists,
@@ -4608,8 +4608,8 @@ export const createProjectsDeploymentsTail: API.OperationMethod<
   CreateProjectsDeploymentsTailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateProjectsDeploymentsTailRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<CreateProjectsDeploymentsTailResponse>,
+  input: __S(97, __c3, 1) as any as S.Schema<CreateProjectsDeploymentsTailRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<CreateProjectsDeploymentsTailResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4623,8 +4623,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<DeleteProjectResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(129, __c4, 1) as any as S.Schema<DeleteProjectResponse>,
   errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4643,8 +4643,8 @@ export const deleteProjectDeployment: API.OperationMethod<
   DeleteProjectDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteProjectDeploymentRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<DeleteProjectDeploymentResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteProjectDeploymentRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<DeleteProjectDeploymentResponse>,
   errors: [
     DeploymentNotFound,
     ProjectNotFound,
@@ -4669,8 +4669,8 @@ export const deleteProjectDomain: API.OperationMethod<
   DeleteProjectDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteProjectDomainRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<DeleteProjectDomainResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteProjectDomainRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<DeleteProjectDomainResponse>,
   errors: [ProjectNotFound, PagesDomainNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4684,8 +4684,8 @@ export const deleteProjectsDeploymentsTail: API.OperationMethod<
   DeleteProjectsDeploymentsTailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteProjectsDeploymentsTailRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<DeleteProjectsDeploymentsTailResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteProjectsDeploymentsTailRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<DeleteProjectsDeploymentsTailResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4699,8 +4699,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetProjectRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GetProjectResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(302, __c9, 14) as any as S.Schema<GetProjectResponse>,
   errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4718,8 +4718,8 @@ export const getProjectDeployment: API.OperationMethod<
   GetProjectDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetProjectDeploymentRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetProjectDeploymentResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetProjectDeploymentRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<GetProjectDeploymentResponse>,
   errors: [DeploymentNotFound, ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4733,8 +4733,8 @@ export const getProjectDeploymentHistoryLog: API.OperationMethod<
   GetProjectDeploymentHistoryLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetProjectDeploymentHistoryLogRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GetProjectDeploymentHistoryLogResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetProjectDeploymentHistoryLogRequest>,
+  output: __S(387, __c12, 3) as any as S.Schema<GetProjectDeploymentHistoryLogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4752,8 +4752,8 @@ export const getProjectDomain: API.OperationMethod<
   GetProjectDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetProjectDomainRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<GetProjectDomainResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetProjectDomainRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<GetProjectDomainResponse>,
   errors: [ProjectNotFound, PagesDomainNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4769,8 +4769,8 @@ export const listProjectDeployments: API.PaginatedOperationMethod<
   ProjectsDeploymentsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(99, __c12, 3) as any as S.Schema<ListProjectDeploymentsRequest>,
-    output: __S(104, __c13, 0) as any as S.Schema<ListProjectDeploymentsResponse>,
+    input: __S(448, __c14, 0) as any as S.Schema<ListProjectDeploymentsRequest>,
+    output: __S(453, __c14, 5) as any as S.Schema<ListProjectDeploymentsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4795,8 +4795,8 @@ export const listProjectDomains: API.PaginatedOperationMethod<
   ProjectsDomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(105, __c13, 1) as any as S.Schema<ListProjectDomainsRequest>,
-    output: __S(108, __c13, 4) as any as S.Schema<ListProjectDomainsResponse>,
+    input: __S(480, __c15, 0) as any as S.Schema<ListProjectDomainsRequest>,
+    output: __S(483, __c15, 3) as any as S.Schema<ListProjectDomainsResponse>,
     errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4815,8 +4815,8 @@ export const listProjects: API.PaginatedOperationMethod<
   ProjectsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(109, __c13, 5) as any as S.Schema<ListProjectsRequest>,
-    output: __S(125, __c15, 5) as any as S.Schema<ListProjectsResponse>,
+    input: __S(512, __c16, 0) as any as S.Schema<ListProjectsRequest>,
+    output: __S(528, __c16, 16) as any as S.Schema<ListProjectsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4839,8 +4839,8 @@ export const patchProject: API.OperationMethod<
   PatchProjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<PatchProjectRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<PatchProjectResponse>,
+  input: __S(549, __c17, 5) as any as S.Schema<PatchProjectRequest>,
+  output: __S(563, __c17, 19) as any as S.Schema<PatchProjectResponse>,
   errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4858,8 +4858,8 @@ export const patchProjectDomain: API.OperationMethod<
   PatchProjectDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<PatchProjectDomainRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<PatchProjectDomainResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<PatchProjectDomainRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<PatchProjectDomainResponse>,
   errors: [ProjectNotFound, PagesDomainNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4873,8 +4873,8 @@ export const projectsGetUploadToken: API.OperationMethod<
   ProjectsGetUploadTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ProjectsGetUploadTokenRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ProjectsGetUploadTokenResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ProjectsGetUploadTokenRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<ProjectsGetUploadTokenResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4888,8 +4888,8 @@ export const purgeBuildCacheProject: API.OperationMethod<
   PurgeBuildCacheProjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<PurgeBuildCacheProjectRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<PurgeBuildCacheProjectResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<PurgeBuildCacheProjectRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<PurgeBuildCacheProjectResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4903,8 +4903,8 @@ export const retryProjectDeployment: API.OperationMethod<
   RetryProjectDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<RetryProjectDeploymentRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<RetryProjectDeploymentResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<RetryProjectDeploymentRequest>,
+  output: __S(675, __c21, 3) as any as S.Schema<RetryProjectDeploymentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4918,8 +4918,8 @@ export const rollbackProjectDeployment: API.OperationMethod<
   RollbackProjectDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<RollbackProjectDeploymentRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<RollbackProjectDeploymentResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<RollbackProjectDeploymentRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<RollbackProjectDeploymentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4933,8 +4933,8 @@ export const uploadAsset: API.OperationMethod<
   UploadAssetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<UploadAssetRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<UploadAssetResponse>,
+  input: __S(739, __c23, 3) as any as S.Schema<UploadAssetRequest>,
+  output: __S(740, __c23, 4) as any as S.Schema<UploadAssetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4942,640 +4942,6 @@ export const uploadAsset: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hashes: __S(0, __c0, 0),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/pages/assets/check-missing", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "AssetsCheckMissingRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        __S(0, __c0, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "AssetsCheckMissingResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hashes: __S(0, __c0, 0),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/pages/assets/upsert-hashes", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "AssetsUpsertHashesRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "AssetsUpsertHashesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          buildCaching: S.optional(S.Boolean.pipe(T.Body("build_caching"))),
-          buildCommand: S.optional(S.String.pipe(T.Body("build_command"))),
-          destinationDir: S.optional(S.String.pipe(T.Body("destination_dir"))),
-          rootDir: S.optional(S.String.pipe(T.Body("root_dir"))),
-          webAnalyticsTag: S.optional(S.String.pipe(T.Body("web_analytics_tag"))),
-          webAnalyticsToken: S.optional(S.String.pipe(T.Body("web_analytics_token"))),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestBuildConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Body("project_id")),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue",
-      });
-    case 7:
-      return S.Record(S.String, __S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dataset: S.String,
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue",
-      });
-    case 1:
-      return S.Record(S.String, __S(8, __c1, 0));
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespaceId: S.String.pipe(T.Body("namespace_id")),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue",
-      });
-    case 5:
-      return S.Record(S.String, __S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue",
-      });
-    case 7:
-      return S.Record(S.String, __S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cpuMs: S.Number.pipe(T.Body("cpu_ms")),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewLimits",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          certificateId: S.String.pipe(T.Body("certificate_id")),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue",
-      });
-    case 2:
-      return S.Record(S.String, __S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.String,
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewPlacement",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue",
-      });
-    case 5:
-      return S.Record(S.String, __S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.String,
-          entrypoint: S.optional(S.String),
-          environment: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewServicesValue",
-      });
-    case 7:
-      return S.Record(S.String, __S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          indexName: S.String.pipe(T.Body("index_name")),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue",
-      });
-    case 1:
-      return S.Record(S.String, __S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          aiBindings: S.optional(__S(7, __c0, 7).pipe(T.Body("ai_bindings"))),
-          alwaysUseLatestCompatibilityDate: S.optional(
-            S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
-          ),
-          analyticsEngineDatasets: S.optional(
-            __S(9, __c1, 1).pipe(T.Body("analytics_engine_datasets")),
-          ),
-          browsers: S.optional(__S(10, __c1, 2)),
-          buildImageMajorVersion: S.optional(S.Number.pipe(T.Body("build_image_major_version"))),
-          compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(__S(11, __c1, 3).pipe(T.Body("compatibility_flags"))),
-          d1Databases: S.optional(__S(10, __c1, 2).pipe(T.Body("d1_databases"))),
-          durableObjectNamespaces: S.optional(
-            __S(13, __c1, 5).pipe(T.Body("durable_object_namespaces")),
-          ),
-          envVars: S.optional(__S(10, __c1, 2).pipe(T.Body("env_vars"))),
-          failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
-          hyperdriveBindings: S.optional(__S(15, __c1, 7).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(__S(10, __c1, 2).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(__S(16, __c2, 0)),
-          mtlsCertificates: S.optional(__S(18, __c2, 2).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(__S(19, __c2, 3)),
-          queueProducers: S.optional(__S(21, __c2, 5).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(__S(10, __c1, 2).pipe(T.Body("r2_buckets"))),
-          services: S.optional(__S(23, __c2, 7)),
-          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
-          vectorizeBindings: S.optional(__S(25, __c3, 1).pipe(T.Body("vectorize_bindings"))),
-          wranglerConfigHash: S.optional(S.String.pipe(T.Body("wrangler_config_hash"))),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigsPreview",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          aiBindings: S.optional(__S(7, __c0, 7).pipe(T.Body("ai_bindings"))),
-          alwaysUseLatestCompatibilityDate: S.optional(
-            S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
-          ),
-          analyticsEngineDatasets: S.optional(
-            __S(9, __c1, 1).pipe(T.Body("analytics_engine_datasets")),
-          ),
-          browsers: S.optional(__S(10, __c1, 2)),
-          buildImageMajorVersion: S.optional(S.Number.pipe(T.Body("build_image_major_version"))),
-          compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(__S(11, __c1, 3).pipe(T.Body("compatibility_flags"))),
-          d1Databases: S.optional(__S(27, __c3, 3).pipe(T.Body("d1_databases"))),
-          durableObjectNamespaces: S.optional(
-            __S(13, __c1, 5).pipe(T.Body("durable_object_namespaces")),
-          ),
-          envVars: S.optional(__S(10, __c1, 2).pipe(T.Body("env_vars"))),
-          failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
-          hyperdriveBindings: S.optional(__S(15, __c1, 7).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(__S(27, __c3, 3).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(__S(16, __c2, 0)),
-          mtlsCertificates: S.optional(__S(18, __c2, 2).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(__S(19, __c2, 3)),
-          queueProducers: S.optional(__S(21, __c2, 5).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(__S(10, __c1, 2).pipe(T.Body("r2_buckets"))),
-          services: S.optional(__S(23, __c2, 7)),
-          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
-          vectorizeBindings: S.optional(__S(25, __c3, 1).pipe(T.Body("vectorize_bindings"))),
-          wranglerConfigHash: S.optional(S.String.pipe(T.Body("wrangler_config_hash"))),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigsProduction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          preview: S.optional(__S(26, __c3, 2)),
-          production: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestDeploymentConfigs",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentsEnabled: S.optional(S.Boolean.pipe(T.Body("deployments_enabled"))),
-          owner: S.optional(S.String),
-          ownerId: S.optional(S.String.pipe(T.Body("owner_id"))),
-          pathExcludes: S.optional(__S(0, __c0, 0).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(__S(0, __c0, 0).pipe(T.Body("path_includes"))),
-          prCommentsEnabled: S.optional(S.Boolean.pipe(T.Body("pr_comments_enabled"))),
-          previewBranchExcludes: S.optional(
-            __S(0, __c0, 0).pipe(T.Body("preview_branch_excludes")),
-          ),
-          previewBranchIncludes: S.optional(
-            __S(0, __c0, 0).pipe(T.Body("preview_branch_includes")),
-          ),
-          previewDeploymentSetting: S.optional(S.String.pipe(T.Body("preview_deployment_setting"))),
-          productionBranch: S.optional(S.String.pipe(T.Body("production_branch"))),
-          productionDeploymentsEnabled: S.optional(
-            S.Boolean.pipe(T.Body("production_deployments_enabled")),
-          ),
-          repoId: S.optional(S.String.pipe(T.Body("repo_id"))),
-          repoName: S.optional(S.String.pipe(T.Body("repo_name"))),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestSourceConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          config: __S(30, __c3, 6),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateRequestSource",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String,
-          productionBranch: S.String.pipe(T.Body("production_branch")),
-          buildConfig: S.optional(__S(5, __c0, 5).pipe(T.Body("build_config"))),
-          deploymentConfigs: S.optional(__S(29, __c3, 5).pipe(T.Body("deployment_configs"))),
-          source: S.optional(__S(31, __c3, 7)),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/pages/projects", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateProjectRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          webAnalyticsTag: S.String.pipe(T.Body("web_analytics_tag")),
-          webAnalyticsToken: S.String.pipe(T.Body("web_analytics_token")),
-          buildCaching: S.optional(S.NullOr(S.Boolean).pipe(T.Body("build_caching"))),
-          buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
-          destinationDir: S.optional(S.NullOr(S.String).pipe(T.Body("destination_dir"))),
-          rootDir: S.optional(S.NullOr(S.String).pipe(T.Body("root_dir"))),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseCanonicalDeploymentBuildConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          branch: S.String,
-          commitDirty: S.Boolean.pipe(T.Body("commit_dirty")),
-          commitHash: S.String.pipe(T.Body("commit_hash")),
-          commitMessage: S.String.pipe(T.Body("commit_message")),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: __S(34, __c4, 2),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          endedOn: S.String.pipe(T.Body("ended_on")),
-          name: S.String,
-          startedOn: S.String.pipe(T.Body("started_on")),
-          status: S.String,
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseCanonicalDeploymentLatestStage",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
-          owner: S.String,
-          ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11, __c1, 3).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11, __c1, 3).pipe(T.Body("path_includes")),
-          prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
-          productionBranch: S.String.pipe(T.Body("production_branch")),
-          productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
-          repoId: S.String.pipe(T.Body("repo_id")),
-          repoName: S.String.pipe(T.Body("repo_name")),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseCanonicalDeploymentSourceConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          config: __S(37, __c4, 5),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseCanonicalDeploymentSource",
-      });
-    case 7:
-      return S.Array(__S(36, __c4, 4));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
-          createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(35, __c4, 3).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
-          environment: S.String,
-          isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
-          modifiedOn: S.String.pipe(T.Body("modified_on")),
-          projectId: S.String.pipe(T.Body("project_id")),
-          projectName: S.String.pipe(T.Body("project_name")),
-          shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(38, __c4, 6),
-          stages: __S(39, __c4, 7),
-          url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
-          usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseCanonicalDeployment",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.String,
-          service: S.String,
-          entrypoint: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseDeploymentConfigsPreviewServicesValue",
-      });
-    case 2:
-      return S.Record(S.String, __S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
-            T.Body("always_use_latest_compatibility_date"),
-          ),
-          buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
-          compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11, __c1, 3).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
-          failOpen: S.Boolean.pipe(T.Body("fail_open")),
-          usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("ai_bindings"))),
-          analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9, __c1, 1)).pipe(T.Body("analytics_engine_datasets")),
-          ),
-          browsers: S.optional(S.NullOr(__S(10, __c1, 2))),
-          d1Databases: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("d1_databases"))),
-          durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("durable_object_namespaces")),
-          ),
-          hyperdriveBindings: S.optional(
-            S.NullOr(__S(15, __c1, 7)).pipe(T.Body("hyperdrive_bindings")),
-          ),
-          kvNamespaces: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16, __c2, 0))),
-          mtlsCertificates: S.optional(
-            S.NullOr(__S(18, __c2, 2)).pipe(T.Body("mtls_certificates")),
-          ),
-          placement: S.optional(S.NullOr(__S(19, __c2, 3))),
-          queueProducers: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42, __c5, 2))),
-          vectorizeBindings: S.optional(
-            S.NullOr(__S(25, __c3, 1)).pipe(T.Body("vectorize_bindings")),
-          ),
-          wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseDeploymentConfigsPreview",
-      });
-    case 4:
-      return S.Record(S.String, __S(6, __c0, 6));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
-            T.Body("always_use_latest_compatibility_date"),
-          ),
-          buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
-          compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11, __c1, 3).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
-          failOpen: S.Boolean.pipe(T.Body("fail_open")),
-          usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(44, __c5, 4)).pipe(T.Body("ai_bindings"))),
-          analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9, __c1, 1)).pipe(T.Body("analytics_engine_datasets")),
-          ),
-          browsers: S.optional(S.NullOr(__S(10, __c1, 2))),
-          d1Databases: S.optional(S.NullOr(__S(27, __c3, 3)).pipe(T.Body("d1_databases"))),
-          durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("durable_object_namespaces")),
-          ),
-          hyperdriveBindings: S.optional(
-            S.NullOr(__S(15, __c1, 7)).pipe(T.Body("hyperdrive_bindings")),
-          ),
-          kvNamespaces: S.optional(S.NullOr(__S(27, __c3, 3)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16, __c2, 0))),
-          mtlsCertificates: S.optional(
-            S.NullOr(__S(18, __c2, 2)).pipe(T.Body("mtls_certificates")),
-          ),
-          placement: S.optional(S.NullOr(__S(19, __c2, 3))),
-          queueProducers: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42, __c5, 2))),
-          vectorizeBindings: S.optional(
-            S.NullOr(__S(25, __c3, 1)).pipe(T.Body("vectorize_bindings")),
-          ),
-          wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseDeploymentConfigsProduction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          preview: __S(43, __c5, 3),
-          production: __S(45, __c5, 5),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseDeploymentConfigs",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: __S(34, __c4, 2),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseLatestDeploymentDeploymentTrigger",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases(
-          [
-            ["type", "value"],
-            ["type", "value"],
-          ],
-          { key: "type", values: ["plain_text", "secret_text"] },
-        ),
-      );
-    case 1:
-      return S.Record(S.String, __S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
-          owner: S.String,
-          ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11, __c1, 3).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11, __c1, 3).pipe(T.Body("path_includes")),
-          prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
-          productionBranch: S.String.pipe(T.Body("production_branch")),
-          productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
-          repoId: S.String.pipe(T.Body("repo_id")),
-          repoName: S.String.pipe(T.Body("repo_name")),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseLatestDeploymentSourceConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          config: __S(50, __c6, 2),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseLatestDeploymentSource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
-          createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47, __c5, 7).pipe(T.Body("deployment_trigger")),
-          envVars: __S(49, __c6, 1).pipe(T.Body("env_vars")),
-          environment: S.String,
-          isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
-          modifiedOn: S.String.pipe(T.Body("modified_on")),
-          projectId: S.String.pipe(T.Body("project_id")),
-          projectName: S.String.pipe(T.Body("project_name")),
-          shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(51, __c6, 3),
-          stages: __S(39, __c4, 7),
-          url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
-          usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseLatestDeployment",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
-          owner: S.String,
-          ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0, __c0, 0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0, __c0, 0).pipe(T.Body("path_includes")),
-          prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(0, __c0, 0).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(0, __c0, 0).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
-          productionBranch: S.String.pipe(T.Body("production_branch")),
-          productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
-          repoId: S.String.pipe(T.Body("repo_id")),
-          repoName: S.String.pipe(T.Body("repo_name")),
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseSourceConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          config: __S(53, __c6, 5),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ProjectsCreateResponseSource",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          canonicalDeployment: __S(40, __c5, 0).pipe(T.Body("canonical_deployment")),
-          createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentConfigs: __S(46, __c5, 6).pipe(T.Body("deployment_configs")),
-          framework: S.String,
-          frameworkVersion: S.String.pipe(T.Body("framework_version")),
-          latestDeployment: __S(52, __c6, 4).pipe(T.Body("latest_deployment")),
-          name: S.String,
-          previewScriptName: S.String.pipe(T.Body("preview_script_name")),
-          productionBranch: S.String.pipe(T.Body("production_branch")),
-          productionScriptName: S.String.pipe(T.Body("production_script_name")),
-          usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
-          buildConfig: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("build_config"))),
-          domains: S.optional(S.NullOr(__S(0, __c0, 0))),
-          source: S.optional(S.NullOr(__S(54, __c6, 6))),
-          subdomain: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateProjectResponse" });
-  }
-}
-function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5616,11 +4982,11 @@ function __c7(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0, __c0, 0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0, __c0, 0).pipe(T.Body("path_includes")),
+          pathExcludes: __S(800, __c25, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(800, __c25, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -5633,7 +4999,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(57, __c7, 1),
+          config: __S(1, __c0, 1),
           type: S.String,
         }),
       ).annotate({
@@ -5643,20 +5009,20 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47, __c5, 7).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          deploymentTrigger: __S(933, __c29, 5).pipe(T.Body("deployment_trigger")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           environment: S.String,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(58, __c7, 2),
-          stages: __S(39, __c4, 7),
+          source: __S(2, __c0, 2),
+          stages: __S(932, __c29, 4),
           url: S.String,
           skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
@@ -5664,7 +5030,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectDeploymentResponse",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5682,7 +5052,27 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectDomainRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          certificateAuthority: S.String.pipe(T.Body("certificate_authority")),
+          createdOn: S.String.pipe(T.Body("created_on")),
+          domainId: S.String.pipe(T.Body("domain_id")),
+          name: S.String,
+          status: S.String,
+          validationData: __S(64, __c2, 0).pipe(T.Body("validation_data")),
+          verificationData: __S(65, __c2, 1).pipe(T.Body("verification_data")),
+          zoneTag: S.String.pipe(T.Body("zone_tag")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateProjectDomainResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           method: S.String,
@@ -5694,7 +5084,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ProjectsDomainsCreateResponseValidationData",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -5703,35 +5093,19 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ProjectsDomainsCreateResponseVerificationData",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          certificateAuthority: S.String.pipe(T.Body("certificate_authority")),
-          createdOn: S.String.pipe(T.Body("created_on")),
-          domainId: S.String.pipe(T.Body("domain_id")),
-          name: S.String,
-          status: S.String,
-          validationData: __S(61, __c7, 5).pipe(T.Body("validation_data")),
-          verificationData: __S(62, __c7, 6).pipe(T.Body("verification_data")),
-          zoneTag: S.String.pipe(T.Body("zone_tag")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateProjectDomainResponse",
-      });
   }
 }
-function __c8(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(10, __c1, 2));
+      return S.Array(__S(896, __c28, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           projectName: S.String.pipe(T.Label("project_name")),
           deploymentId: S.String.pipe(T.Label("deployment_id")),
-          filters: S.optional(__S(64, __c8, 0)),
+          filters: S.optional(__S(96, __c3, 0)),
         })
           .pipe(
             T.Http({
@@ -5753,7 +5127,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateProjectsDeploymentsTailResponse",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5768,11 +5146,15 @@ function __c8(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteProjectRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteProjectResponse" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5791,13 +5173,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectDeploymentRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "DeleteProjectDeploymentResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5817,7 +5207,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5838,7 +5228,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsDeploymentsTailRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5853,17 +5247,17 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetProjectRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11, __c1, 3).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11, __c1, 3).pipe(T.Body("path_includes")),
+          pathExcludes: __S(928, __c29, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(928, __c29, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -5873,33 +5267,33 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ProjectsGetResponseCanonicalDeploymentSourceConfig",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(74, __c9, 2),
+          config: __S(289, __c9, 1),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsGetResponseCanonicalDeploymentSource",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47, __c5, 7).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          deploymentTrigger: __S(933, __c29, 5).pipe(T.Body("deployment_trigger")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           environment: S.String,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(75, __c9, 3),
-          stages: __S(39, __c4, 7),
+          source: __S(290, __c9, 2),
+          stages: __S(932, __c29, 4),
           url: S.String,
           skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
@@ -5907,9 +5301,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ProjectsGetResponseCanonicalDeployment",
       });
-    case 5:
-      return S.Record(S.String, __S(20, __c2, 4));
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
@@ -5917,40 +5309,40 @@ function __c9(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11, __c1, 3).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          compatibilityFlags: __S(928, __c29, 0).pipe(T.Body("compatibility_flags")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
           usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("ai_bindings"))),
+          aiBindings: S.optional(S.NullOr(__S(961, __c30, 1)).pipe(T.Body("ai_bindings"))),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9, __c1, 1)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(__S(963, __c30, 3)).pipe(T.Body("analytics_engine_datasets")),
           ),
-          browsers: S.optional(S.NullOr(__S(10, __c1, 2))),
-          d1Databases: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(S.NullOr(__S(896, __c28, 0))),
+          d1Databases: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("d1_databases"))),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(__S(965, __c30, 5)).pipe(T.Body("durable_object_namespaces")),
           ),
           hyperdriveBindings: S.optional(
-            S.NullOr(__S(15, __c1, 7)).pipe(T.Body("hyperdrive_bindings")),
+            S.NullOr(__S(967, __c30, 7)).pipe(T.Body("hyperdrive_bindings")),
           ),
-          kvNamespaces: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16, __c2, 0))),
+          kvNamespaces: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("kv_namespaces"))),
+          limits: S.optional(S.NullOr(__S(968, __c30, 8))),
           mtlsCertificates: S.optional(
-            S.NullOr(__S(18, __c2, 2)).pipe(T.Body("mtls_certificates")),
+            S.NullOr(__S(970, __c30, 10)).pipe(T.Body("mtls_certificates")),
           ),
-          placement: S.optional(S.NullOr(__S(19, __c2, 3))),
-          queueProducers: S.optional(S.NullOr(__S(77, __c9, 5)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42, __c5, 2))),
+          placement: S.optional(S.NullOr(__S(971, __c30, 11))),
+          queueProducers: S.optional(S.NullOr(__S(320, __c10, 0)).pipe(T.Body("queue_producers"))),
+          r2Buckets: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("r2_buckets"))),
+          services: S.optional(S.NullOr(__S(977, __c30, 17))),
           vectorizeBindings: S.optional(
-            S.NullOr(__S(25, __c3, 1)).pipe(T.Body("vectorize_bindings")),
+            S.NullOr(__S(975, __c30, 15)).pipe(T.Body("vectorize_bindings")),
           ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
         identifier: "ProjectsGetResponseDeploymentConfigsPreview",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
@@ -5958,53 +5350,49 @@ function __c9(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11, __c1, 3).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          compatibilityFlags: __S(928, __c29, 0).pipe(T.Body("compatibility_flags")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
           usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("ai_bindings"))),
+          aiBindings: S.optional(S.NullOr(__S(961, __c30, 1)).pipe(T.Body("ai_bindings"))),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9, __c1, 1)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(__S(963, __c30, 3)).pipe(T.Body("analytics_engine_datasets")),
           ),
-          browsers: S.optional(S.NullOr(__S(10, __c1, 2))),
-          d1Databases: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(S.NullOr(__S(896, __c28, 0))),
+          d1Databases: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("d1_databases"))),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(__S(965, __c30, 5)).pipe(T.Body("durable_object_namespaces")),
           ),
           hyperdriveBindings: S.optional(
-            S.NullOr(__S(15, __c1, 7)).pipe(T.Body("hyperdrive_bindings")),
+            S.NullOr(__S(967, __c30, 7)).pipe(T.Body("hyperdrive_bindings")),
           ),
-          kvNamespaces: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16, __c2, 0))),
+          kvNamespaces: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("kv_namespaces"))),
+          limits: S.optional(S.NullOr(__S(968, __c30, 8))),
           mtlsCertificates: S.optional(
-            S.NullOr(__S(18, __c2, 2)).pipe(T.Body("mtls_certificates")),
+            S.NullOr(__S(970, __c30, 10)).pipe(T.Body("mtls_certificates")),
           ),
-          placement: S.optional(S.NullOr(__S(19, __c2, 3))),
-          queueProducers: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42, __c5, 2))),
+          placement: S.optional(S.NullOr(__S(971, __c30, 11))),
+          queueProducers: S.optional(S.NullOr(__S(973, __c30, 13)).pipe(T.Body("queue_producers"))),
+          r2Buckets: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("r2_buckets"))),
+          services: S.optional(S.NullOr(__S(977, __c30, 17))),
           vectorizeBindings: S.optional(
-            S.NullOr(__S(25, __c3, 1)).pipe(T.Body("vectorize_bindings")),
+            S.NullOr(__S(975, __c30, 15)).pipe(T.Body("vectorize_bindings")),
           ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
         identifier: "ProjectsGetResponseDeploymentConfigsProduction",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          preview: __S(78, __c9, 6),
-          production: __S(79, __c9, 7),
+          preview: __S(292, __c9, 4),
+          production: __S(293, __c9, 5),
         }),
       ).annotate({
         identifier: "ProjectsGetResponseDeploymentConfigs",
       });
-    case 1:
+    case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -6014,19 +5402,19 @@ function __c10(j: number): any {
           { key: "type", values: ["plain_text", "secret_text"] },
         ),
       );
-    case 2:
-      return S.Record(S.String, __S(81, __c10, 1));
-    case 3:
+    case 8:
+      return S.Record(S.String, __S(295, __c9, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11, __c1, 3).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11, __c1, 3).pipe(T.Body("path_includes")),
+          pathExcludes: __S(928, __c29, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(928, __c29, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -6036,33 +5424,33 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ProjectsGetResponseLatestDeploymentSourceConfig",
       });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          config: __S(83, __c10, 3),
+          config: __S(297, __c9, 9),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsGetResponseLatestDeploymentSource",
       });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47, __c5, 7).pipe(T.Body("deployment_trigger")),
-          envVars: __S(82, __c10, 2).pipe(T.Body("env_vars")),
+          deploymentTrigger: __S(933, __c29, 5).pipe(T.Body("deployment_trigger")),
+          envVars: __S(296, __c9, 8).pipe(T.Body("env_vars")),
           environment: S.String,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(84, __c10, 4),
-          stages: __S(39, __c4, 7),
+          source: __S(298, __c9, 10),
+          stages: __S(932, __c29, 4),
           url: S.String,
           skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
@@ -6070,17 +5458,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ProjectsGetResponseLatestDeployment",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0, __c0, 0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0, __c0, 0).pipe(T.Body("path_includes")),
+          pathExcludes: __S(800, __c25, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(800, __c25, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(0, __c0, 0).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(0, __c0, 0).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(800, __c25, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(800, __c25, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -6090,41 +5478,47 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ProjectsGetResponseSourceConfig",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          config: __S(86, __c10, 6),
+          config: __S(300, __c9, 12),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsGetResponseSource",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          canonicalDeployment: __S(76, __c9, 4).pipe(T.Body("canonical_deployment")),
+          canonicalDeployment: __S(291, __c9, 3).pipe(T.Body("canonical_deployment")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentConfigs: __S(80, __c10, 0).pipe(T.Body("deployment_configs")),
+          deploymentConfigs: __S(294, __c9, 6).pipe(T.Body("deployment_configs")),
           framework: S.String,
           frameworkVersion: S.String.pipe(T.Body("framework_version")),
-          latestDeployment: __S(85, __c10, 5).pipe(T.Body("latest_deployment")),
+          latestDeployment: __S(299, __c9, 11).pipe(T.Body("latest_deployment")),
           name: S.String,
           previewScriptName: S.String.pipe(T.Body("preview_script_name")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionScriptName: S.String.pipe(T.Body("production_script_name")),
           usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
-          buildConfig: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("build_config"))),
-          domains: S.optional(S.NullOr(__S(0, __c0, 0))),
-          source: S.optional(S.NullOr(__S(87, __c10, 7))),
+          buildConfig: S.optional(S.NullOr(__S(929, __c29, 1)).pipe(T.Body("build_config"))),
+          domains: S.optional(S.NullOr(__S(800, __c25, 0))),
+          source: S.optional(S.NullOr(__S(301, __c9, 13))),
           subdomain: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetProjectResponse" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(972, __c30, 12));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6142,17 +5536,17 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectDeploymentRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0, __c0, 0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0, __c0, 0).pipe(T.Body("path_includes")),
+          pathExcludes: __S(800, __c25, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(800, __c25, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -6162,33 +5556,33 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ProjectsDeploymentsGetResponseSourceConfig",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(90, __c11, 2),
+          config: __S(353, __c11, 1),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsDeploymentsGetResponseSource",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47, __c5, 7).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          deploymentTrigger: __S(933, __c29, 5).pipe(T.Body("deployment_trigger")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           environment: S.String,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(91, __c11, 3),
-          stages: __S(39, __c4, 7),
+          source: __S(354, __c11, 2),
+          stages: __S(932, __c29, 4),
           url: S.String,
           skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
@@ -6196,7 +5590,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectDeploymentResponse",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6214,7 +5612,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectDeploymentHistoryLogRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           line: S.String,
@@ -6223,23 +5621,23 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ProjectsDeploymentsHistoryLogsGetResponseDataItem",
       });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(385, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(95, __c11, 7),
+          data: __S(386, __c12, 2),
           includesContainerLogs: S.Boolean.pipe(T.Body("includes_container_logs")),
           total: S.Number,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetProjectDeploymentHistoryLogResponse",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6255,7 +5653,7 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetProjectDomainRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6264,12 +5662,16 @@ function __c12(j: number): any {
           domainId: S.String.pipe(T.Body("domain_id")),
           name: S.String,
           status: S.String,
-          validationData: __S(61, __c7, 5).pipe(T.Body("validation_data")),
-          verificationData: __S(62, __c7, 6).pipe(T.Body("verification_data")),
+          validationData: __S(64, __c2, 0).pipe(T.Body("validation_data")),
+          verificationData: __S(65, __c2, 1).pipe(T.Body("verification_data")),
           zoneTag: S.String.pipe(T.Body("zone_tag")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetProjectDomainResponse" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6289,17 +5691,17 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListProjectDeploymentsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0, __c0, 0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0, __c0, 0).pipe(T.Body("path_includes")),
+          pathExcludes: __S(800, __c25, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(800, __c25, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -6309,33 +5711,33 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ProjectsDeploymentsListResultItemSourceConfig",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(100, __c12, 4),
+          config: __S(449, __c14, 1),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsDeploymentsListResultItemSource",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47, __c5, 7).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          deploymentTrigger: __S(933, __c29, 5).pipe(T.Body("deployment_trigger")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           environment: S.String,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(101, __c12, 5),
-          stages: __S(39, __c4, 7),
+          source: __S(450, __c14, 2),
+          stages: __S(932, __c29, 4),
           url: S.String,
           skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
@@ -6343,22 +5745,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ProjectsDeploymentsListResultItem",
       });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(451, __c14, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(103, __c12, 7).pipe(T.EnvelopePayload()),
+          result: __S(452, __c14, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListProjectDeploymentsResponse",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6375,7 +5777,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListProjectDomainsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6384,25 +5786,29 @@ function __c13(j: number): any {
           domainId: S.String.pipe(T.Body("domain_id")),
           name: S.String,
           status: S.String,
-          validationData: __S(61, __c7, 5).pipe(T.Body("validation_data")),
-          verificationData: __S(62, __c7, 6).pipe(T.Body("verification_data")),
+          validationData: __S(64, __c2, 0).pipe(T.Body("validation_data")),
+          verificationData: __S(65, __c2, 1).pipe(T.Body("verification_data")),
           zoneTag: S.String.pipe(T.Body("zone_tag")),
         }),
       ).annotate({
         identifier: "ProjectsDomainsListResultItem",
       });
+    case 2:
+      return S.Array(__S(481, __c15, 1));
     case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(107, __c13, 3).pipe(T.EnvelopePayload()),
+          result: __S(482, __c15, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListProjectDomainsResponse",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6412,17 +5818,17 @@ function __c13(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/pages/projects", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListProjectsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11, __c1, 3).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11, __c1, 3).pipe(T.Body("path_includes")),
+          pathExcludes: __S(928, __c29, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(928, __c29, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -6432,37 +5838,33 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ProjectsListResultItemCanonicalDeploymentSourceConfig",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(110, __c13, 6),
+          config: __S(513, __c16, 1),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsListResultItemCanonicalDeploymentSource",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(35, __c4, 3).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          deploymentTrigger: __S(1025, __c32, 1).pipe(T.Body("deployment_trigger")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           environment: S.String,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(111, __c13, 7),
-          stages: __S(39, __c4, 7),
+          source: __S(514, __c16, 2),
+          stages: __S(932, __c29, 4),
           url: S.String,
           skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
@@ -6470,7 +5872,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ProjectsListResultItemCanonicalDeployment",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
@@ -6478,40 +5880,40 @@ function __c14(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11, __c1, 3).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          compatibilityFlags: __S(928, __c29, 0).pipe(T.Body("compatibility_flags")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
           usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("ai_bindings"))),
+          aiBindings: S.optional(S.NullOr(__S(961, __c30, 1)).pipe(T.Body("ai_bindings"))),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9, __c1, 1)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(__S(963, __c30, 3)).pipe(T.Body("analytics_engine_datasets")),
           ),
-          browsers: S.optional(S.NullOr(__S(10, __c1, 2))),
-          d1Databases: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(S.NullOr(__S(896, __c28, 0))),
+          d1Databases: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("d1_databases"))),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(__S(965, __c30, 5)).pipe(T.Body("durable_object_namespaces")),
           ),
           hyperdriveBindings: S.optional(
-            S.NullOr(__S(15, __c1, 7)).pipe(T.Body("hyperdrive_bindings")),
+            S.NullOr(__S(967, __c30, 7)).pipe(T.Body("hyperdrive_bindings")),
           ),
-          kvNamespaces: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16, __c2, 0))),
+          kvNamespaces: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("kv_namespaces"))),
+          limits: S.optional(S.NullOr(__S(968, __c30, 8))),
           mtlsCertificates: S.optional(
-            S.NullOr(__S(18, __c2, 2)).pipe(T.Body("mtls_certificates")),
+            S.NullOr(__S(970, __c30, 10)).pipe(T.Body("mtls_certificates")),
           ),
-          placement: S.optional(S.NullOr(__S(19, __c2, 3))),
-          queueProducers: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42, __c5, 2))),
+          placement: S.optional(S.NullOr(__S(971, __c30, 11))),
+          queueProducers: S.optional(S.NullOr(__S(973, __c30, 13)).pipe(T.Body("queue_producers"))),
+          r2Buckets: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("r2_buckets"))),
+          services: S.optional(S.NullOr(__S(977, __c30, 17))),
           vectorizeBindings: S.optional(
-            S.NullOr(__S(25, __c3, 1)).pipe(T.Body("vectorize_bindings")),
+            S.NullOr(__S(975, __c30, 15)).pipe(T.Body("vectorize_bindings")),
           ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
         identifier: "ProjectsListResultItemDeploymentConfigsPreview",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
@@ -6519,49 +5921,49 @@ function __c14(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11, __c1, 3).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          compatibilityFlags: __S(928, __c29, 0).pipe(T.Body("compatibility_flags")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
           usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(44, __c5, 4)).pipe(T.Body("ai_bindings"))),
+          aiBindings: S.optional(S.NullOr(__S(992, __c31, 0)).pipe(T.Body("ai_bindings"))),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9, __c1, 1)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(__S(963, __c30, 3)).pipe(T.Body("analytics_engine_datasets")),
           ),
-          browsers: S.optional(S.NullOr(__S(10, __c1, 2))),
-          d1Databases: S.optional(S.NullOr(__S(27, __c3, 3)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(S.NullOr(__S(896, __c28, 0))),
+          d1Databases: S.optional(S.NullOr(__S(1024, __c32, 0)).pipe(T.Body("d1_databases"))),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(__S(965, __c30, 5)).pipe(T.Body("durable_object_namespaces")),
           ),
           hyperdriveBindings: S.optional(
-            S.NullOr(__S(15, __c1, 7)).pipe(T.Body("hyperdrive_bindings")),
+            S.NullOr(__S(967, __c30, 7)).pipe(T.Body("hyperdrive_bindings")),
           ),
-          kvNamespaces: S.optional(S.NullOr(__S(27, __c3, 3)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16, __c2, 0))),
+          kvNamespaces: S.optional(S.NullOr(__S(1024, __c32, 0)).pipe(T.Body("kv_namespaces"))),
+          limits: S.optional(S.NullOr(__S(968, __c30, 8))),
           mtlsCertificates: S.optional(
-            S.NullOr(__S(18, __c2, 2)).pipe(T.Body("mtls_certificates")),
+            S.NullOr(__S(970, __c30, 10)).pipe(T.Body("mtls_certificates")),
           ),
-          placement: S.optional(S.NullOr(__S(19, __c2, 3))),
-          queueProducers: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42, __c5, 2))),
+          placement: S.optional(S.NullOr(__S(971, __c30, 11))),
+          queueProducers: S.optional(S.NullOr(__S(973, __c30, 13)).pipe(T.Body("queue_producers"))),
+          r2Buckets: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("r2_buckets"))),
+          services: S.optional(S.NullOr(__S(977, __c30, 17))),
           vectorizeBindings: S.optional(
-            S.NullOr(__S(25, __c3, 1)).pipe(T.Body("vectorize_bindings")),
+            S.NullOr(__S(975, __c30, 15)).pipe(T.Body("vectorize_bindings")),
           ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
         identifier: "ProjectsListResultItemDeploymentConfigsProduction",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          preview: __S(113, __c14, 1),
-          production: __S(114, __c14, 2),
+          preview: __S(516, __c16, 4),
+          production: __S(517, __c16, 5),
         }),
       ).annotate({
         identifier: "ProjectsListResultItemDeploymentConfigs",
       });
-    case 4:
+    case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -6571,19 +5973,19 @@ function __c14(j: number): any {
           { key: "type", values: ["plain_text", "secret_text"] },
         ),
       );
-    case 5:
-      return S.Record(S.String, __S(116, __c14, 4));
-    case 6:
+    case 8:
+      return S.Record(S.String, __S(519, __c16, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11, __c1, 3).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11, __c1, 3).pipe(T.Body("path_includes")),
+          pathExcludes: __S(928, __c29, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(928, __c29, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -6593,37 +5995,33 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ProjectsListResultItemLatestDeploymentSourceConfig",
       });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          config: __S(118, __c14, 6),
+          config: __S(521, __c16, 9),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsListResultItemLatestDeploymentSource",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47, __c5, 7).pipe(T.Body("deployment_trigger")),
-          envVars: __S(117, __c14, 5).pipe(T.Body("env_vars")),
+          deploymentTrigger: __S(933, __c29, 5).pipe(T.Body("deployment_trigger")),
+          envVars: __S(520, __c16, 8).pipe(T.Body("env_vars")),
           environment: S.String,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(119, __c14, 7),
-          stages: __S(39, __c4, 7),
+          source: __S(522, __c16, 10),
+          stages: __S(932, __c29, 4),
           url: S.String,
           skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
@@ -6631,17 +6029,17 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ProjectsListResultItemLatestDeployment",
       });
-    case 1:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0, __c0, 0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0, __c0, 0).pipe(T.Body("path_includes")),
+          pathExcludes: __S(800, __c25, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(800, __c25, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(0, __c0, 0).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(0, __c0, 0).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(800, __c25, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(800, __c25, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -6651,142 +6049,142 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ProjectsListResultItemSourceConfig",
       });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          config: __S(121, __c15, 1),
+          config: __S(524, __c16, 12),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsListResultItemSource",
       });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          canonicalDeployment: __S(112, __c14, 0).pipe(T.Body("canonical_deployment")),
+          canonicalDeployment: __S(515, __c16, 3).pipe(T.Body("canonical_deployment")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentConfigs: __S(115, __c14, 3).pipe(T.Body("deployment_configs")),
+          deploymentConfigs: __S(518, __c16, 6).pipe(T.Body("deployment_configs")),
           framework: S.String,
           frameworkVersion: S.String.pipe(T.Body("framework_version")),
-          latestDeployment: __S(120, __c15, 0).pipe(T.Body("latest_deployment")),
+          latestDeployment: __S(523, __c16, 11).pipe(T.Body("latest_deployment")),
           name: S.String,
           previewScriptName: S.String.pipe(T.Body("preview_script_name")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionScriptName: S.String.pipe(T.Body("production_script_name")),
           usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
-          buildConfig: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("build_config"))),
-          domains: S.optional(S.NullOr(__S(0, __c0, 0))),
-          source: S.optional(S.NullOr(__S(122, __c15, 2))),
+          buildConfig: S.optional(S.NullOr(__S(929, __c29, 1)).pipe(T.Body("build_config"))),
+          domains: S.optional(S.NullOr(__S(800, __c25, 0))),
+          source: S.optional(S.NullOr(__S(525, __c16, 13))),
           subdomain: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ProjectsListResultItem" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 15:
+      return S.Array(__S(526, __c16, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          result: __S(124, __c15, 4).pipe(T.EnvelopePayload()),
+          result: __S(527, __c16, 15).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListProjectsResponse" });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          aiBindings: S.optional(__S(7, __c0, 7).pipe(T.Body("ai_bindings"))),
+          aiBindings: S.optional(__S(961, __c30, 1).pipe(T.Body("ai_bindings"))),
           alwaysUseLatestCompatibilityDate: S.optional(
             S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
           ),
           analyticsEngineDatasets: S.optional(
-            __S(9, __c1, 1).pipe(T.Body("analytics_engine_datasets")),
+            __S(963, __c30, 3).pipe(T.Body("analytics_engine_datasets")),
           ),
-          browsers: S.optional(__S(10, __c1, 2)),
+          browsers: S.optional(__S(896, __c28, 0)),
           buildImageMajorVersion: S.optional(S.Number.pipe(T.Body("build_image_major_version"))),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(__S(11, __c1, 3).pipe(T.Body("compatibility_flags"))),
-          d1Databases: S.optional(__S(10, __c1, 2).pipe(T.Body("d1_databases"))),
+          compatibilityFlags: S.optional(__S(928, __c29, 0).pipe(T.Body("compatibility_flags"))),
+          d1Databases: S.optional(__S(896, __c28, 0).pipe(T.Body("d1_databases"))),
           durableObjectNamespaces: S.optional(
-            __S(13, __c1, 5).pipe(T.Body("durable_object_namespaces")),
+            __S(965, __c30, 5).pipe(T.Body("durable_object_namespaces")),
           ),
-          envVars: S.optional(__S(10, __c1, 2).pipe(T.Body("env_vars"))),
+          envVars: S.optional(__S(896, __c28, 0).pipe(T.Body("env_vars"))),
           failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
-          hyperdriveBindings: S.optional(__S(15, __c1, 7).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(__S(10, __c1, 2).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(__S(16, __c2, 0)),
-          mtlsCertificates: S.optional(__S(18, __c2, 2).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(__S(19, __c2, 3)),
-          queueProducers: S.optional(__S(77, __c9, 5).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(__S(10, __c1, 2).pipe(T.Body("r2_buckets"))),
-          services: S.optional(__S(23, __c2, 7)),
+          hyperdriveBindings: S.optional(__S(967, __c30, 7).pipe(T.Body("hyperdrive_bindings"))),
+          kvNamespaces: S.optional(__S(896, __c28, 0).pipe(T.Body("kv_namespaces"))),
+          limits: S.optional(__S(968, __c30, 8)),
+          mtlsCertificates: S.optional(__S(970, __c30, 10).pipe(T.Body("mtls_certificates"))),
+          placement: S.optional(__S(971, __c30, 11)),
+          queueProducers: S.optional(__S(320, __c10, 0).pipe(T.Body("queue_producers"))),
+          r2Buckets: S.optional(__S(896, __c28, 0).pipe(T.Body("r2_buckets"))),
+          services: S.optional(__S(1058, __c33, 2)),
           usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
-          vectorizeBindings: S.optional(__S(25, __c3, 1).pipe(T.Body("vectorize_bindings"))),
+          vectorizeBindings: S.optional(__S(975, __c30, 15).pipe(T.Body("vectorize_bindings"))),
           wranglerConfigHash: S.optional(S.String.pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
         identifier: "ProjectsEditRequestDeploymentConfigsPreview",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          aiBindings: S.optional(__S(7, __c0, 7).pipe(T.Body("ai_bindings"))),
+          aiBindings: S.optional(__S(961, __c30, 1).pipe(T.Body("ai_bindings"))),
           alwaysUseLatestCompatibilityDate: S.optional(
             S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
           ),
           analyticsEngineDatasets: S.optional(
-            __S(9, __c1, 1).pipe(T.Body("analytics_engine_datasets")),
+            __S(963, __c30, 3).pipe(T.Body("analytics_engine_datasets")),
           ),
-          browsers: S.optional(__S(10, __c1, 2)),
+          browsers: S.optional(__S(896, __c28, 0)),
           buildImageMajorVersion: S.optional(S.Number.pipe(T.Body("build_image_major_version"))),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(__S(11, __c1, 3).pipe(T.Body("compatibility_flags"))),
-          d1Databases: S.optional(__S(10, __c1, 2).pipe(T.Body("d1_databases"))),
+          compatibilityFlags: S.optional(__S(928, __c29, 0).pipe(T.Body("compatibility_flags"))),
+          d1Databases: S.optional(__S(896, __c28, 0).pipe(T.Body("d1_databases"))),
           durableObjectNamespaces: S.optional(
-            __S(13, __c1, 5).pipe(T.Body("durable_object_namespaces")),
+            __S(965, __c30, 5).pipe(T.Body("durable_object_namespaces")),
           ),
-          envVars: S.optional(__S(10, __c1, 2).pipe(T.Body("env_vars"))),
+          envVars: S.optional(__S(896, __c28, 0).pipe(T.Body("env_vars"))),
           failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
-          hyperdriveBindings: S.optional(__S(15, __c1, 7).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(__S(10, __c1, 2).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(__S(16, __c2, 0)),
-          mtlsCertificates: S.optional(__S(18, __c2, 2).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(__S(19, __c2, 3)),
-          queueProducers: S.optional(__S(21, __c2, 5).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(__S(10, __c1, 2).pipe(T.Body("r2_buckets"))),
-          services: S.optional(__S(23, __c2, 7)),
+          hyperdriveBindings: S.optional(__S(967, __c30, 7).pipe(T.Body("hyperdrive_bindings"))),
+          kvNamespaces: S.optional(__S(896, __c28, 0).pipe(T.Body("kv_namespaces"))),
+          limits: S.optional(__S(968, __c30, 8)),
+          mtlsCertificates: S.optional(__S(970, __c30, 10).pipe(T.Body("mtls_certificates"))),
+          placement: S.optional(__S(971, __c30, 11)),
+          queueProducers: S.optional(__S(973, __c30, 13).pipe(T.Body("queue_producers"))),
+          r2Buckets: S.optional(__S(896, __c28, 0).pipe(T.Body("r2_buckets"))),
+          services: S.optional(__S(1058, __c33, 2)),
           usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
-          vectorizeBindings: S.optional(__S(25, __c3, 1).pipe(T.Body("vectorize_bindings"))),
+          vectorizeBindings: S.optional(__S(975, __c30, 15).pipe(T.Body("vectorize_bindings"))),
           wranglerConfigHash: S.optional(S.String.pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
         identifier: "ProjectsEditRequestDeploymentConfigsProduction",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          preview: S.optional(__S(126, __c15, 6)),
-          production: S.optional(__S(127, __c15, 7)),
+          preview: S.optional(__S(544, __c17, 0)),
+          production: S.optional(__S(545, __c17, 1)),
         }),
       ).annotate({
         identifier: "ProjectsEditRequestDeploymentConfigs",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.optional(S.Boolean.pipe(T.Body("deployments_enabled"))),
           owner: S.optional(S.String),
           ownerId: S.optional(S.String.pipe(T.Body("owner_id"))),
-          pathExcludes: S.optional(__S(0, __c0, 0).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(__S(0, __c0, 0).pipe(T.Body("path_includes"))),
+          pathExcludes: S.optional(__S(800, __c25, 0).pipe(T.Body("path_excludes"))),
+          pathIncludes: S.optional(__S(800, __c25, 0).pipe(T.Body("path_includes"))),
           prCommentsEnabled: S.optional(S.Boolean.pipe(T.Body("pr_comments_enabled"))),
           previewBranchExcludes: S.optional(
-            __S(0, __c0, 0).pipe(T.Body("preview_branch_excludes")),
+            __S(800, __c25, 0).pipe(T.Body("preview_branch_excludes")),
           ),
           previewBranchIncludes: S.optional(
-            __S(0, __c0, 0).pipe(T.Body("preview_branch_includes")),
+            __S(800, __c25, 0).pipe(T.Body("preview_branch_includes")),
           ),
           previewDeploymentSetting: S.optional(S.String.pipe(T.Body("preview_deployment_setting"))),
           productionBranch: S.optional(S.String.pipe(T.Body("production_branch"))),
@@ -6799,25 +6197,25 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ProjectsEditRequestSourceConfig",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          config: __S(129, __c16, 1),
+          config: __S(547, __c17, 3),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsEditRequestSource",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           projectName: S.String.pipe(T.Label("project_name")),
-          buildConfig: S.optional(__S(5, __c0, 5).pipe(T.Body("build_config"))),
-          deploymentConfigs: S.optional(__S(128, __c16, 0).pipe(T.Body("deployment_configs"))),
+          buildConfig: S.optional(__S(1056, __c33, 0).pipe(T.Body("build_config"))),
+          deploymentConfigs: S.optional(__S(546, __c17, 2).pipe(T.Body("deployment_configs"))),
           name: S.optional(S.String),
           productionBranch: S.optional(S.String.pipe(T.Body("production_branch"))),
-          source: S.optional(__S(130, __c16, 2)),
+          source: S.optional(__S(548, __c17, 4)),
         })
           .pipe(
             T.Http({
@@ -6828,17 +6226,17 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchProjectRequest" });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11, __c1, 3).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11, __c1, 3).pipe(T.Body("path_includes")),
+          pathExcludes: __S(928, __c29, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(928, __c29, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -6848,33 +6246,33 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ProjectsEditResponseCanonicalDeploymentSourceConfig",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          config: __S(132, __c16, 4),
+          config: __S(550, __c17, 6),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsEditResponseCanonicalDeploymentSource",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(35, __c4, 3).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          deploymentTrigger: __S(1025, __c32, 1).pipe(T.Body("deployment_trigger")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           environment: S.String,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(133, __c16, 5),
-          stages: __S(39, __c4, 7),
+          source: __S(551, __c17, 7),
+          stages: __S(932, __c29, 4),
           url: S.String,
           skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
@@ -6882,7 +6280,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ProjectsEditResponseCanonicalDeployment",
       });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
@@ -6890,44 +6288,40 @@ function __c16(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11, __c1, 3).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          compatibilityFlags: __S(928, __c29, 0).pipe(T.Body("compatibility_flags")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
           usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("ai_bindings"))),
+          aiBindings: S.optional(S.NullOr(__S(961, __c30, 1)).pipe(T.Body("ai_bindings"))),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9, __c1, 1)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(__S(963, __c30, 3)).pipe(T.Body("analytics_engine_datasets")),
           ),
-          browsers: S.optional(S.NullOr(__S(10, __c1, 2))),
-          d1Databases: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(S.NullOr(__S(896, __c28, 0))),
+          d1Databases: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("d1_databases"))),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(__S(965, __c30, 5)).pipe(T.Body("durable_object_namespaces")),
           ),
           hyperdriveBindings: S.optional(
-            S.NullOr(__S(15, __c1, 7)).pipe(T.Body("hyperdrive_bindings")),
+            S.NullOr(__S(967, __c30, 7)).pipe(T.Body("hyperdrive_bindings")),
           ),
-          kvNamespaces: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16, __c2, 0))),
+          kvNamespaces: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("kv_namespaces"))),
+          limits: S.optional(S.NullOr(__S(968, __c30, 8))),
           mtlsCertificates: S.optional(
-            S.NullOr(__S(18, __c2, 2)).pipe(T.Body("mtls_certificates")),
+            S.NullOr(__S(970, __c30, 10)).pipe(T.Body("mtls_certificates")),
           ),
-          placement: S.optional(S.NullOr(__S(19, __c2, 3))),
-          queueProducers: S.optional(S.NullOr(__S(77, __c9, 5)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42, __c5, 2))),
+          placement: S.optional(S.NullOr(__S(971, __c30, 11))),
+          queueProducers: S.optional(S.NullOr(__S(320, __c10, 0)).pipe(T.Body("queue_producers"))),
+          r2Buckets: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("r2_buckets"))),
+          services: S.optional(S.NullOr(__S(977, __c30, 17))),
           vectorizeBindings: S.optional(
-            S.NullOr(__S(25, __c3, 1)).pipe(T.Body("vectorize_bindings")),
+            S.NullOr(__S(975, __c30, 15)).pipe(T.Body("vectorize_bindings")),
           ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
         identifier: "ProjectsEditResponseDeploymentConfigsPreview",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
@@ -6935,49 +6329,49 @@ function __c17(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11, __c1, 3).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          compatibilityFlags: __S(928, __c29, 0).pipe(T.Body("compatibility_flags")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
           usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("ai_bindings"))),
+          aiBindings: S.optional(S.NullOr(__S(961, __c30, 1)).pipe(T.Body("ai_bindings"))),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9, __c1, 1)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(__S(963, __c30, 3)).pipe(T.Body("analytics_engine_datasets")),
           ),
-          browsers: S.optional(S.NullOr(__S(10, __c1, 2))),
-          d1Databases: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(S.NullOr(__S(896, __c28, 0))),
+          d1Databases: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("d1_databases"))),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(__S(965, __c30, 5)).pipe(T.Body("durable_object_namespaces")),
           ),
           hyperdriveBindings: S.optional(
-            S.NullOr(__S(15, __c1, 7)).pipe(T.Body("hyperdrive_bindings")),
+            S.NullOr(__S(967, __c30, 7)).pipe(T.Body("hyperdrive_bindings")),
           ),
-          kvNamespaces: S.optional(S.NullOr(__S(27, __c3, 3)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16, __c2, 0))),
+          kvNamespaces: S.optional(S.NullOr(__S(1024, __c32, 0)).pipe(T.Body("kv_namespaces"))),
+          limits: S.optional(S.NullOr(__S(968, __c30, 8))),
           mtlsCertificates: S.optional(
-            S.NullOr(__S(18, __c2, 2)).pipe(T.Body("mtls_certificates")),
+            S.NullOr(__S(970, __c30, 10)).pipe(T.Body("mtls_certificates")),
           ),
-          placement: S.optional(S.NullOr(__S(19, __c2, 3))),
-          queueProducers: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42, __c5, 2))),
+          placement: S.optional(S.NullOr(__S(971, __c30, 11))),
+          queueProducers: S.optional(S.NullOr(__S(973, __c30, 13)).pipe(T.Body("queue_producers"))),
+          r2Buckets: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("r2_buckets"))),
+          services: S.optional(S.NullOr(__S(977, __c30, 17))),
           vectorizeBindings: S.optional(
-            S.NullOr(__S(25, __c3, 1)).pipe(T.Body("vectorize_bindings")),
+            S.NullOr(__S(975, __c30, 15)).pipe(T.Body("vectorize_bindings")),
           ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
         identifier: "ProjectsEditResponseDeploymentConfigsProduction",
       });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          preview: __S(135, __c16, 7),
-          production: __S(136, __c17, 0),
+          preview: __S(553, __c17, 9),
+          production: __S(554, __c17, 10),
         }),
       ).annotate({
         identifier: "ProjectsEditResponseDeploymentConfigs",
       });
-    case 2:
+    case 12:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -6987,19 +6381,19 @@ function __c17(j: number): any {
           { key: "type", values: ["plain_text", "secret_text"] },
         ),
       );
-    case 3:
-      return S.Record(S.String, __S(138, __c17, 2));
-    case 4:
+    case 13:
+      return S.Record(S.String, __S(556, __c17, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11, __c1, 3).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11, __c1, 3).pipe(T.Body("path_includes")),
+          pathExcludes: __S(928, __c29, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(928, __c29, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -7009,33 +6403,33 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ProjectsEditResponseLatestDeploymentSourceConfig",
       });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          config: __S(140, __c17, 4),
+          config: __S(558, __c17, 14),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsEditResponseLatestDeploymentSource",
       });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47, __c5, 7).pipe(T.Body("deployment_trigger")),
-          envVars: __S(139, __c17, 3).pipe(T.Body("env_vars")),
+          deploymentTrigger: __S(933, __c29, 5).pipe(T.Body("deployment_trigger")),
+          envVars: __S(557, __c17, 13).pipe(T.Body("env_vars")),
           environment: S.String,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(141, __c17, 5),
-          stages: __S(39, __c4, 7),
+          source: __S(559, __c17, 15),
+          stages: __S(932, __c29, 4),
           url: S.String,
           skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
@@ -7043,17 +6437,17 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ProjectsEditResponseLatestDeployment",
       });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0, __c0, 0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0, __c0, 0).pipe(T.Body("path_includes")),
+          pathExcludes: __S(800, __c25, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(800, __c25, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(0, __c0, 0).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(0, __c0, 0).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(800, __c25, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(800, __c25, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -7063,41 +6457,41 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ProjectsEditResponseSourceConfig",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          config: __S(143, __c17, 7),
+          config: __S(561, __c17, 17),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsEditResponseSource",
       });
-    case 1:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          canonicalDeployment: __S(134, __c16, 6).pipe(T.Body("canonical_deployment")),
+          canonicalDeployment: __S(552, __c17, 8).pipe(T.Body("canonical_deployment")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentConfigs: __S(137, __c17, 1).pipe(T.Body("deployment_configs")),
+          deploymentConfigs: __S(555, __c17, 11).pipe(T.Body("deployment_configs")),
           framework: S.String,
           frameworkVersion: S.String.pipe(T.Body("framework_version")),
-          latestDeployment: __S(142, __c17, 6).pipe(T.Body("latest_deployment")),
+          latestDeployment: __S(560, __c17, 16).pipe(T.Body("latest_deployment")),
           name: S.String,
           previewScriptName: S.String.pipe(T.Body("preview_script_name")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionScriptName: S.String.pipe(T.Body("production_script_name")),
           usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
-          buildConfig: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("build_config"))),
-          domains: S.optional(S.NullOr(__S(0, __c0, 0))),
-          source: S.optional(S.NullOr(__S(144, __c18, 0))),
+          buildConfig: S.optional(S.NullOr(__S(929, __c29, 1)).pipe(T.Body("build_config"))),
+          domains: S.optional(S.NullOr(__S(800, __c25, 0))),
+          source: S.optional(S.NullOr(__S(562, __c17, 18))),
           subdomain: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchProjectResponse" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7115,7 +6509,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchProjectDomainRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7124,14 +6518,18 @@ function __c18(j: number): any {
           domainId: S.String.pipe(T.Body("domain_id")),
           name: S.String,
           status: S.String,
-          validationData: __S(61, __c7, 5).pipe(T.Body("validation_data")),
-          verificationData: __S(62, __c7, 6).pipe(T.Body("verification_data")),
+          validationData: __S(64, __c2, 0).pipe(T.Body("validation_data")),
+          verificationData: __S(65, __c2, 1).pipe(T.Body("verification_data")),
           zoneTag: S.String.pipe(T.Body("zone_tag")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchProjectDomainResponse",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7148,7 +6546,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ProjectsGetUploadTokenRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           jwt: S.String,
@@ -7156,7 +6554,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ProjectsGetUploadTokenResponse",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7173,7 +6575,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PurgeBuildCacheProjectRequest",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7191,21 +6597,17 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "RetryProjectDeploymentRequest",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0, __c0, 0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0, __c0, 0).pipe(T.Body("path_includes")),
+          pathExcludes: __S(800, __c25, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(800, __c25, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -7215,33 +6617,33 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ProjectsDeploymentsRetryResponseSourceConfig",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(152, __c19, 0),
+          config: __S(673, __c21, 1),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsDeploymentsRetryResponseSource",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47, __c5, 7).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          deploymentTrigger: __S(933, __c29, 5).pipe(T.Body("deployment_trigger")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           environment: S.String,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(153, __c19, 1),
-          stages: __S(39, __c4, 7),
+          source: __S(674, __c21, 2),
+          stages: __S(932, __c29, 4),
           url: S.String,
           skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
@@ -7249,7 +6651,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "RetryProjectDeploymentResponse",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7267,17 +6673,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "RollbackProjectDeploymentRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11, __c1, 3).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11, __c1, 3).pipe(T.Body("path_includes")),
+          pathExcludes: __S(928, __c29, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(928, __c29, 0).pipe(T.Body("path_includes")),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11, __c1, 3).pipe(T.Body("preview_branch_includes")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
           previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -7287,33 +6693,33 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ProjectsDeploymentsRollbackResponseSourceConfig",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(156, __c19, 4),
+          config: __S(705, __c22, 1),
           type: S.String,
         }),
       ).annotate({
         identifier: "ProjectsDeploymentsRollbackResponseSource",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0, __c0, 0),
-          buildConfig: __S(33, __c4, 1).pipe(T.Body("build_config")),
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47, __c5, 7).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10, __c1, 2).pipe(T.Body("env_vars")),
+          deploymentTrigger: __S(933, __c29, 5).pipe(T.Body("deployment_trigger")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
           environment: S.String,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36, __c4, 4).pipe(T.Body("latest_stage")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(157, __c19, 5),
-          stages: __S(39, __c4, 7),
+          source: __S(706, __c22, 2),
+          stages: __S(932, __c29, 4),
           url: S.String,
           skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
@@ -7321,7 +6727,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "RollbackProjectDeploymentResponse",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentType: S.String,
@@ -7329,38 +6739,679 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "UploadAssetRequestBodyItemMetadata",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           base64: S.Boolean,
           key: S.String,
-          metadata: __S(159, __c19, 7),
+          metadata: __S(736, __c23, 0),
           value: S.String,
         }),
       ).annotate({
         identifier: "UploadAssetRequestBodyItem",
       });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
     case 2:
+      return S.Array(__S(737, __c23, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          body: __S(161, __c20, 1).pipe(T.HttpBody()),
+          body: __S(738, __c23, 2).pipe(T.HttpBody()),
         })
           .pipe(T.Http({ method: "POST", uri: "/pages/assets/upload", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UploadAssetRequest" });
-    case 3:
+    case 4:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "UploadAssetResponse",
       });
   }
 }
-
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hashes: __S(800, __c25, 0),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/pages/assets/check-missing", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "AssetsCheckMissingRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        __S(800, __c25, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "AssetsCheckMissingResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hashes: __S(800, __c25, 0),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/pages/assets/upsert-hashes", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "AssetsUpsertHashesRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "AssetsUpsertHashesResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          aiBindings: S.optional(__S(961, __c30, 1).pipe(T.Body("ai_bindings"))),
+          alwaysUseLatestCompatibilityDate: S.optional(
+            S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
+          ),
+          analyticsEngineDatasets: S.optional(
+            __S(963, __c30, 3).pipe(T.Body("analytics_engine_datasets")),
+          ),
+          browsers: S.optional(__S(896, __c28, 0)),
+          buildImageMajorVersion: S.optional(S.Number.pipe(T.Body("build_image_major_version"))),
+          compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(__S(928, __c29, 0).pipe(T.Body("compatibility_flags"))),
+          d1Databases: S.optional(__S(896, __c28, 0).pipe(T.Body("d1_databases"))),
+          durableObjectNamespaces: S.optional(
+            __S(965, __c30, 5).pipe(T.Body("durable_object_namespaces")),
+          ),
+          envVars: S.optional(__S(896, __c28, 0).pipe(T.Body("env_vars"))),
+          failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
+          hyperdriveBindings: S.optional(__S(967, __c30, 7).pipe(T.Body("hyperdrive_bindings"))),
+          kvNamespaces: S.optional(__S(896, __c28, 0).pipe(T.Body("kv_namespaces"))),
+          limits: S.optional(__S(968, __c30, 8)),
+          mtlsCertificates: S.optional(__S(970, __c30, 10).pipe(T.Body("mtls_certificates"))),
+          placement: S.optional(__S(971, __c30, 11)),
+          queueProducers: S.optional(__S(973, __c30, 13).pipe(T.Body("queue_producers"))),
+          r2Buckets: S.optional(__S(896, __c28, 0).pipe(T.Body("r2_buckets"))),
+          services: S.optional(__S(1058, __c33, 2)),
+          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
+          vectorizeBindings: S.optional(__S(975, __c30, 15).pipe(T.Body("vectorize_bindings"))),
+          wranglerConfigHash: S.optional(S.String.pipe(T.Body("wrangler_config_hash"))),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigsPreview",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          aiBindings: S.optional(__S(961, __c30, 1).pipe(T.Body("ai_bindings"))),
+          alwaysUseLatestCompatibilityDate: S.optional(
+            S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
+          ),
+          analyticsEngineDatasets: S.optional(
+            __S(963, __c30, 3).pipe(T.Body("analytics_engine_datasets")),
+          ),
+          browsers: S.optional(__S(896, __c28, 0)),
+          buildImageMajorVersion: S.optional(S.Number.pipe(T.Body("build_image_major_version"))),
+          compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(__S(928, __c29, 0).pipe(T.Body("compatibility_flags"))),
+          d1Databases: S.optional(__S(1024, __c32, 0).pipe(T.Body("d1_databases"))),
+          durableObjectNamespaces: S.optional(
+            __S(965, __c30, 5).pipe(T.Body("durable_object_namespaces")),
+          ),
+          envVars: S.optional(__S(896, __c28, 0).pipe(T.Body("env_vars"))),
+          failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
+          hyperdriveBindings: S.optional(__S(967, __c30, 7).pipe(T.Body("hyperdrive_bindings"))),
+          kvNamespaces: S.optional(__S(1024, __c32, 0).pipe(T.Body("kv_namespaces"))),
+          limits: S.optional(__S(968, __c30, 8)),
+          mtlsCertificates: S.optional(__S(970, __c30, 10).pipe(T.Body("mtls_certificates"))),
+          placement: S.optional(__S(971, __c30, 11)),
+          queueProducers: S.optional(__S(973, __c30, 13).pipe(T.Body("queue_producers"))),
+          r2Buckets: S.optional(__S(896, __c28, 0).pipe(T.Body("r2_buckets"))),
+          services: S.optional(__S(1058, __c33, 2)),
+          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
+          vectorizeBindings: S.optional(__S(975, __c30, 15).pipe(T.Body("vectorize_bindings"))),
+          wranglerConfigHash: S.optional(S.String.pipe(T.Body("wrangler_config_hash"))),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigsProduction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          preview: S.optional(__S(864, __c27, 0)),
+          production: S.optional(__S(865, __c27, 1)),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigs",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentsEnabled: S.optional(S.Boolean.pipe(T.Body("deployments_enabled"))),
+          owner: S.optional(S.String),
+          ownerId: S.optional(S.String.pipe(T.Body("owner_id"))),
+          pathExcludes: S.optional(__S(800, __c25, 0).pipe(T.Body("path_excludes"))),
+          pathIncludes: S.optional(__S(800, __c25, 0).pipe(T.Body("path_includes"))),
+          prCommentsEnabled: S.optional(S.Boolean.pipe(T.Body("pr_comments_enabled"))),
+          previewBranchExcludes: S.optional(
+            __S(800, __c25, 0).pipe(T.Body("preview_branch_excludes")),
+          ),
+          previewBranchIncludes: S.optional(
+            __S(800, __c25, 0).pipe(T.Body("preview_branch_includes")),
+          ),
+          previewDeploymentSetting: S.optional(S.String.pipe(T.Body("preview_deployment_setting"))),
+          productionBranch: S.optional(S.String.pipe(T.Body("production_branch"))),
+          productionDeploymentsEnabled: S.optional(
+            S.Boolean.pipe(T.Body("production_deployments_enabled")),
+          ),
+          repoId: S.optional(S.String.pipe(T.Body("repo_id"))),
+          repoName: S.optional(S.String.pipe(T.Body("repo_name"))),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestSourceConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          config: __S(867, __c27, 3),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestSource",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          name: S.String,
+          productionBranch: S.String.pipe(T.Body("production_branch")),
+          buildConfig: S.optional(__S(1056, __c33, 0).pipe(T.Body("build_config"))),
+          deploymentConfigs: S.optional(__S(866, __c27, 2).pipe(T.Body("deployment_configs"))),
+          source: S.optional(__S(868, __c27, 4)),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/pages/projects", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateProjectRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
+          owner: S.String,
+          ownerId: S.String.pipe(T.Body("owner_id")),
+          pathExcludes: __S(928, __c29, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(928, __c29, 0).pipe(T.Body("path_includes")),
+          prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
+          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          productionBranch: S.String.pipe(T.Body("production_branch")),
+          productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
+          repoId: S.String.pipe(T.Body("repo_id")),
+          repoName: S.String.pipe(T.Body("repo_name")),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseCanonicalDeploymentSourceConfig",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          config: __S(870, __c27, 6),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseCanonicalDeploymentSource",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
+          createdOn: S.String.pipe(T.Body("created_on")),
+          deploymentTrigger: __S(1025, __c32, 1).pipe(T.Body("deployment_trigger")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
+          environment: S.String,
+          isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
+          modifiedOn: S.String.pipe(T.Body("modified_on")),
+          projectId: S.String.pipe(T.Body("project_id")),
+          projectName: S.String.pipe(T.Body("project_name")),
+          shortId: S.String.pipe(T.Body("short_id")),
+          source: __S(871, __c27, 7),
+          stages: __S(932, __c29, 4),
+          url: S.String,
+          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseCanonicalDeployment",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
+            T.Body("always_use_latest_compatibility_date"),
+          ),
+          buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
+          compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
+          compatibilityFlags: __S(928, __c29, 0).pipe(T.Body("compatibility_flags")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
+          failOpen: S.Boolean.pipe(T.Body("fail_open")),
+          usageModel: S.String.pipe(T.Body("usage_model")),
+          aiBindings: S.optional(S.NullOr(__S(961, __c30, 1)).pipe(T.Body("ai_bindings"))),
+          analyticsEngineDatasets: S.optional(
+            S.NullOr(__S(963, __c30, 3)).pipe(T.Body("analytics_engine_datasets")),
+          ),
+          browsers: S.optional(S.NullOr(__S(896, __c28, 0))),
+          d1Databases: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("d1_databases"))),
+          durableObjectNamespaces: S.optional(
+            S.NullOr(__S(965, __c30, 5)).pipe(T.Body("durable_object_namespaces")),
+          ),
+          hyperdriveBindings: S.optional(
+            S.NullOr(__S(967, __c30, 7)).pipe(T.Body("hyperdrive_bindings")),
+          ),
+          kvNamespaces: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("kv_namespaces"))),
+          limits: S.optional(S.NullOr(__S(968, __c30, 8))),
+          mtlsCertificates: S.optional(
+            S.NullOr(__S(970, __c30, 10)).pipe(T.Body("mtls_certificates")),
+          ),
+          placement: S.optional(S.NullOr(__S(971, __c30, 11))),
+          queueProducers: S.optional(S.NullOr(__S(973, __c30, 13)).pipe(T.Body("queue_producers"))),
+          r2Buckets: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("r2_buckets"))),
+          services: S.optional(S.NullOr(__S(977, __c30, 17))),
+          vectorizeBindings: S.optional(
+            S.NullOr(__S(975, __c30, 15)).pipe(T.Body("vectorize_bindings")),
+          ),
+          wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseDeploymentConfigsPreview",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          alwaysUseLatestCompatibilityDate: S.Boolean.pipe(
+            T.Body("always_use_latest_compatibility_date"),
+          ),
+          buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
+          compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
+          compatibilityFlags: __S(928, __c29, 0).pipe(T.Body("compatibility_flags")),
+          envVars: __S(896, __c28, 0).pipe(T.Body("env_vars")),
+          failOpen: S.Boolean.pipe(T.Body("fail_open")),
+          usageModel: S.String.pipe(T.Body("usage_model")),
+          aiBindings: S.optional(S.NullOr(__S(992, __c31, 0)).pipe(T.Body("ai_bindings"))),
+          analyticsEngineDatasets: S.optional(
+            S.NullOr(__S(963, __c30, 3)).pipe(T.Body("analytics_engine_datasets")),
+          ),
+          browsers: S.optional(S.NullOr(__S(896, __c28, 0))),
+          d1Databases: S.optional(S.NullOr(__S(1024, __c32, 0)).pipe(T.Body("d1_databases"))),
+          durableObjectNamespaces: S.optional(
+            S.NullOr(__S(965, __c30, 5)).pipe(T.Body("durable_object_namespaces")),
+          ),
+          hyperdriveBindings: S.optional(
+            S.NullOr(__S(967, __c30, 7)).pipe(T.Body("hyperdrive_bindings")),
+          ),
+          kvNamespaces: S.optional(S.NullOr(__S(1024, __c32, 0)).pipe(T.Body("kv_namespaces"))),
+          limits: S.optional(S.NullOr(__S(968, __c30, 8))),
+          mtlsCertificates: S.optional(
+            S.NullOr(__S(970, __c30, 10)).pipe(T.Body("mtls_certificates")),
+          ),
+          placement: S.optional(S.NullOr(__S(971, __c30, 11))),
+          queueProducers: S.optional(S.NullOr(__S(973, __c30, 13)).pipe(T.Body("queue_producers"))),
+          r2Buckets: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("r2_buckets"))),
+          services: S.optional(S.NullOr(__S(977, __c30, 17))),
+          vectorizeBindings: S.optional(
+            S.NullOr(__S(975, __c30, 15)).pipe(T.Body("vectorize_bindings")),
+          ),
+          wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseDeploymentConfigsProduction",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          preview: __S(873, __c27, 9),
+          production: __S(874, __c27, 10),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseDeploymentConfigs",
+      });
+    case 12:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["type", "value"],
+            ["type", "value"],
+          ],
+          { key: "type", values: ["plain_text", "secret_text"] },
+        ),
+      );
+    case 13:
+      return S.Record(S.String, __S(876, __c27, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
+          owner: S.String,
+          ownerId: S.String.pipe(T.Body("owner_id")),
+          pathExcludes: __S(928, __c29, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(928, __c29, 0).pipe(T.Body("path_includes")),
+          prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
+          previewBranchExcludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(928, __c29, 0).pipe(T.Body("preview_branch_includes")),
+          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          productionBranch: S.String.pipe(T.Body("production_branch")),
+          productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
+          repoId: S.String.pipe(T.Body("repo_id")),
+          repoName: S.String.pipe(T.Body("repo_name")),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseLatestDeploymentSourceConfig",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          config: __S(878, __c27, 14),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseLatestDeploymentSource",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          aliases: __S(800, __c25, 0),
+          buildConfig: __S(929, __c29, 1).pipe(T.Body("build_config")),
+          createdOn: S.String.pipe(T.Body("created_on")),
+          deploymentTrigger: __S(933, __c29, 5).pipe(T.Body("deployment_trigger")),
+          envVars: __S(877, __c27, 13).pipe(T.Body("env_vars")),
+          environment: S.String,
+          isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
+          latestStage: __S(931, __c29, 3).pipe(T.Body("latest_stage")),
+          modifiedOn: S.String.pipe(T.Body("modified_on")),
+          projectId: S.String.pipe(T.Body("project_id")),
+          projectName: S.String.pipe(T.Body("project_name")),
+          shortId: S.String.pipe(T.Body("short_id")),
+          source: __S(879, __c27, 15),
+          stages: __S(932, __c29, 4),
+          url: S.String,
+          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseLatestDeployment",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
+          owner: S.String,
+          ownerId: S.String.pipe(T.Body("owner_id")),
+          pathExcludes: __S(800, __c25, 0).pipe(T.Body("path_excludes")),
+          pathIncludes: __S(800, __c25, 0).pipe(T.Body("path_includes")),
+          prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
+          previewBranchExcludes: __S(800, __c25, 0).pipe(T.Body("preview_branch_excludes")),
+          previewBranchIncludes: __S(800, __c25, 0).pipe(T.Body("preview_branch_includes")),
+          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          productionBranch: S.String.pipe(T.Body("production_branch")),
+          productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
+          repoId: S.String.pipe(T.Body("repo_id")),
+          repoName: S.String.pipe(T.Body("repo_name")),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseSourceConfig",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          config: __S(881, __c27, 17),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseSource",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          canonicalDeployment: __S(872, __c27, 8).pipe(T.Body("canonical_deployment")),
+          createdOn: S.String.pipe(T.Body("created_on")),
+          deploymentConfigs: __S(875, __c27, 11).pipe(T.Body("deployment_configs")),
+          framework: S.String,
+          frameworkVersion: S.String.pipe(T.Body("framework_version")),
+          latestDeployment: __S(880, __c27, 16).pipe(T.Body("latest_deployment")),
+          name: S.String,
+          previewScriptName: S.String.pipe(T.Body("preview_script_name")),
+          productionBranch: S.String.pipe(T.Body("production_branch")),
+          productionScriptName: S.String.pipe(T.Body("production_script_name")),
+          usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
+          buildConfig: S.optional(S.NullOr(__S(929, __c29, 1)).pipe(T.Body("build_config"))),
+          domains: S.optional(S.NullOr(__S(800, __c25, 0))),
+          source: S.optional(S.NullOr(__S(882, __c27, 18))),
+          subdomain: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateProjectResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          webAnalyticsTag: S.String.pipe(T.Body("web_analytics_tag")),
+          webAnalyticsToken: S.String.pipe(T.Body("web_analytics_token")),
+          buildCaching: S.optional(S.NullOr(S.Boolean).pipe(T.Body("build_caching"))),
+          buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
+          destinationDir: S.optional(S.NullOr(S.String).pipe(T.Body("destination_dir"))),
+          rootDir: S.optional(S.NullOr(S.String).pipe(T.Body("root_dir"))),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseCanonicalDeploymentBuildConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          branch: S.String,
+          commitDirty: S.Boolean.pipe(T.Body("commit_dirty")),
+          commitHash: S.String.pipe(T.Body("commit_hash")),
+          commitMessage: S.String.pipe(T.Body("commit_message")),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          endedOn: S.String.pipe(T.Body("ended_on")),
+          name: S.String,
+          startedOn: S.String.pipe(T.Body("started_on")),
+          status: S.String,
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseCanonicalDeploymentLatestStage",
+      });
+    case 4:
+      return S.Array(__S(931, __c29, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: __S(930, __c29, 2),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseLatestDeploymentDeploymentTrigger",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Body("project_id")),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue",
+      });
+    case 1:
+      return S.Record(S.String, __S(960, __c30, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataset: S.String,
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue",
+      });
+    case 3:
+      return S.Record(S.String, __S(962, __c30, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          namespaceId: S.String.pipe(T.Body("namespace_id")),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue",
+      });
+    case 5:
+      return S.Record(S.String, __S(964, __c30, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue",
+      });
+    case 7:
+      return S.Record(S.String, __S(966, __c30, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          cpuMs: S.Number.pipe(T.Body("cpu_ms")),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewLimits",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          certificateId: S.String.pipe(T.Body("certificate_id")),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue",
+      });
+    case 10:
+      return S.Record(S.String, __S(969, __c30, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.String,
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewPlacement",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue",
+      });
+    case 13:
+      return S.Record(S.String, __S(972, __c30, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          indexName: S.String.pipe(T.Body("index_name")),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue",
+      });
+    case 15:
+      return S.Record(S.String, __S(974, __c30, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.String,
+          service: S.String,
+          entrypoint: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseDeploymentConfigsPreviewServicesValue",
+      });
+    case 17:
+      return S.Record(S.String, __S(976, __c30, 16));
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(960, __c30, 0));
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: __S(930, __c29, 2),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildCaching: S.optional(S.Boolean.pipe(T.Body("build_caching"))),
+          buildCommand: S.optional(S.String.pipe(T.Body("build_command"))),
+          destinationDir: S.optional(S.String.pipe(T.Body("destination_dir"))),
+          rootDir: S.optional(S.String.pipe(T.Body("root_dir"))),
+          webAnalyticsTag: S.optional(S.String.pipe(T.Body("web_analytics_tag"))),
+          webAnalyticsToken: S.optional(S.String.pipe(T.Body("web_analytics_token"))),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestBuildConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String,
+          entrypoint: S.optional(S.String),
+          environment: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProjectsCreateRequestDeploymentConfigsPreviewServicesValue",
+      });
+    case 2:
+      return S.Record(S.String, __S(1057, __c33, 1));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

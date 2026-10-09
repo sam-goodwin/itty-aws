@@ -46,8 +46,8 @@ export const isPortInUse: API.OperationMethod<
   IsPortInUseError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<IsPortInUseRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<IsPortInUseResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<IsPortInUseRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<IsPortInUseResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -68,13 +68,17 @@ function __c0(j: number): any {
           ports: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "PortList" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           port: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/port/{port}/in-use", code: 200 })),
       ).annotate({ identifier: "IsPortInUseRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           isInUse: S.optional(S.Boolean),
@@ -82,7 +86,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "IsPortInUseResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

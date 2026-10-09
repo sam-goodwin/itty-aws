@@ -2779,7 +2779,7 @@ export const GetProductGetByBillingAccount: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetProductGetByBillingAccountRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ProductDetails>,
+  output: __S(81, __c2, 17) as any as S.Schema<ProductDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2793,8 +2793,8 @@ export const GetProductGetByBillingProfile: API.OperationMethod<
   GetProductGetByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetProductGetByBillingProfileRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ProductDetails>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetProductGetByBillingProfileRequest>,
+  output: __S(81, __c2, 17) as any as S.Schema<ProductDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2808,8 +2808,8 @@ export const GetProductGetBySubscription: API.OperationMethod<
   GetProductGetBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetProductGetBySubscriptionRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ProductDetails>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetProductGetBySubscriptionRequest>,
+  output: __S(81, __c2, 17) as any as S.Schema<ProductDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2823,8 +2823,8 @@ export const GetProductGetByTenant: API.OperationMethod<
   GetProductGetByTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetProductGetByTenantRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ProductDetails>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetProductGetByTenantRequest>,
+  output: __S(81, __c2, 17) as any as S.Schema<ProductDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2838,8 +2838,8 @@ export const GetSkusByBillingAccount: API.OperationMethod<
   GetSkusByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetSkusByBillingAccountRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<GetSkusByBillingAccountResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetSkusByBillingAccountRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<GetSkusByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2853,8 +2853,8 @@ export const GetSkusByBillingProfile: API.OperationMethod<
   GetSkusByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetSkusByBillingProfileRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<GetSkusByBillingProfileResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetSkusByBillingProfileRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<GetSkusByBillingProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2868,8 +2868,8 @@ export const ListEdgeZonesProducts: API.OperationMethod<
   ListEdgeZonesProductsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListEdgeZonesProductsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<PageResultOfCatalogItem>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListEdgeZonesProductsRequest>,
+  output: __S(839, __c26, 7) as any as S.Schema<PageResultOfCatalogItem>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2883,8 +2883,8 @@ export const ListGetApiKeys: API.OperationMethod<
   ListGetApiKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListGetApiKeysRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<ApiKeys>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListGetApiKeysRequest>,
+  output: __S(898, __c28, 2) as any as S.Schema<ApiKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2898,8 +2898,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<ListOperationsResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(964, __c30, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2913,8 +2913,8 @@ export const ListProductListByBillingAccount: API.OperationMethod<
   ListProductListByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListProductListByBillingAccountRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<ProductSummaryListResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListProductListByBillingAccountRequest>,
+  output: __S(1028, __c32, 4) as any as S.Schema<ProductSummaryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2928,8 +2928,8 @@ export const ListProductListByBillingProfile: API.OperationMethod<
   ListProductListByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListProductListByBillingProfileRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<ProductSummaryListResult>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListProductListByBillingProfileRequest>,
+  output: __S(1028, __c32, 4) as any as S.Schema<ProductSummaryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2943,8 +2943,8 @@ export const ListProductListBySubscription: API.OperationMethod<
   ListProductListBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListProductListBySubscriptionRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<ProductSummaryListResult>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListProductListBySubscriptionRequest>,
+  output: __S(1028, __c32, 4) as any as S.Schema<ProductSummaryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2958,8 +2958,8 @@ export const ListProductListByTenant: API.OperationMethod<
   ListProductListByTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<ListProductListByTenantRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<ProductSummaryListResult>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListProductListByTenantRequest>,
+  output: __S(1028, __c32, 4) as any as S.Schema<ProductSummaryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2973,8 +2973,8 @@ export const ListSkusByBillingAccount: API.OperationMethod<
   ListSkusByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListSkusByBillingAccountRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<SkuSummaryListResult>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListSkusByBillingAccountRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<SkuSummaryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2988,8 +2988,8 @@ export const ListSkusByBillingProfile: API.OperationMethod<
   ListSkusByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListSkusByBillingProfileRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<SkuSummaryListResult>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListSkusByBillingProfileRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<SkuSummaryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3003,8 +3003,8 @@ export const PostCreateApiKey: API.OperationMethod<
   PostCreateApiKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<PostCreateApiKeyRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<ApiKey>,
+  input: __S(480, __c15, 0) as any as S.Schema<PostCreateApiKeyRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<ApiKey>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3018,8 +3018,8 @@ export const PostRevokeApiKey: API.OperationMethod<
   PostRevokeApiKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<PostRevokeApiKeyRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<PostRevokeApiKeyResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<PostRevokeApiKeyRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<PostRevokeApiKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3033,8 +3033,8 @@ export const SearchPostArm: API.OperationMethod<
   SearchPostArmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<SearchPostArmRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<SearchResponseDto>,
+  input: __S(544, __c17, 0) as any as S.Schema<SearchPostArmRequest>,
+  output: __S(555, __c17, 11) as any as S.Schema<SearchResponseDto>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3065,18 +3065,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetProductGetByBillingAccountRequest",
       });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Attribute" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           caption: S.optional(S.String),
@@ -3084,18 +3077,18 @@ function __c0(j: number): any {
           imagePurpose: S.optional(S.String),
         }),
       ).annotate({ identifier: "PreviewImage_2" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           caption: S.optional(S.String),
           uri: S.optional(S.String),
           videoPurpose: S.optional(S.String),
-          previewImage: S.optional(__S(4, __c0, 4)),
+          previewImage: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "ProductVideo_2" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(33, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3103,22 +3096,18 @@ function __c0(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Image_2" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(35, __c1, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           context: S.optional(S.String),
-          items: S.optional(__S(8, __c1, 0)),
+          items: S.optional(__S(36, __c1, 4)),
         }),
       ).annotate({ identifier: "ImageGroup_2" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(37, __c1, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3126,9 +3115,9 @@ function __c1(j: number): any {
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkProperties_2" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(39, __c1, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           startDate: S.optional(S.String),
@@ -3137,14 +3126,14 @@ function __c1(j: number): any {
           alternativePlanId: S.optional(S.String),
         }),
       ).annotate({ identifier: "StopSellInfo_2" });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
           learnUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "MarketingMaterial_2" });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -3152,113 +3141,9 @@ function __c1(j: number): any {
           artifactType: S.String,
         }),
       ).annotate({ identifier: "Artifact_2" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          generation: S.optional(S.String),
-          altStackReference: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlanMetadata" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.String),
-          isPiRequired: S.Boolean,
-          listPrice: S.Number,
-          msrp: S.Number,
-        }),
-      ).annotate({ identifier: "Price_2" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          termId: S.optional(S.String),
-          quantity: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IncludedQuantityProperty_2",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          meterId: S.optional(S.String),
-          partNumber: S.optional(S.String),
-          consumptionResourceId: S.optional(S.String),
-          price: S.optional(__S(18, __c2, 2)),
-          type: S.optional(S.String),
-          includedQuantityProperties: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "Meter_2" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parameter: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TermDescriptionParameter_2",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          minimumProratedUnits: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProrationPolicy_2" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          billingPeriod: S.optional(S.String),
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          price: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "BillingPlan_2" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          graceDuration: S.optional(S.String),
-          inactiveDuration: S.optional(S.String),
-          lockoutDuration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LifecyclePolicy" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          termDescriptionParameters: S.optional(__S(23, __c2, 7)),
-          termId: S.optional(S.String),
-          termUnit: S.optional(S.String),
-          prorationPolicy: S.optional(__S(24, __c3, 0)),
-          termDescription: S.optional(S.String),
-          price: S.optional(__S(18, __c2, 2)),
-          renewTermId: S.optional(S.String),
-          renewTermUnits: S.optional(S.String),
-          billingPlan: S.optional(__S(25, __c3, 1)),
-          renewToTermBillingPlan: S.optional(S.String),
-          isAutorenewable: S.optional(S.Boolean),
-          lifecyclePolicy: S.optional(__S(26, __c3, 2)),
-          productCode: S.optional(S.String),
-          state: S.optional(S.String),
-          actions: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "Term_2" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(43, __c1, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           basePlanId: S.optional(S.String),
@@ -3266,13 +3151,9 @@ function __c3(j: number): any {
           maxSeats: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PrerequisiteProduct" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
+      return S.Array(__S(45, __c1, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -3280,38 +3161,38 @@ function __c4(j: number): any {
           maxSeats: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MinMaxSeatsConstraint" });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           period: S.optional(S.String),
         }),
       ).annotate({ identifier: "LookbackWindow" });
-    case 2:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(__S(31, __c3, 7)),
-          seatConstraint: S.optional(__S(32, __c4, 0)),
-          lookbackWindow: S.optional(__S(33, __c4, 1)),
+          products: S.optional(__S(46, __c1, 14)),
+          seatConstraint: S.optional(__S(47, __c1, 15)),
+          lookbackWindow: S.optional(__S(48, __c1, 16)),
         }),
       ).annotate({ identifier: "PrerequisiteConstraint" });
-    case 3:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          mustHaveAll: S.optional(__S(34, __c4, 2)),
-          mustHaveAny: S.optional(__S(34, __c4, 2)),
-          mustHaveNone: S.optional(__S(34, __c4, 2)),
+          mustHaveAll: S.optional(__S(49, __c1, 17)),
+          mustHaveAny: S.optional(__S(49, __c1, 17)),
+          mustHaveNone: S.optional(__S(49, __c1, 17)),
         }),
       ).annotate({ identifier: "PrerequisiteConstraints" });
-    case 4:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          requireAnyOf: S.optional(__S(1, __c0, 1)),
+          requireAnyOf: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({
         identifier: "SubscriptionStatusConstraints",
       });
-    case 5:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           rank: S.optional(S.Number),
@@ -3319,37 +3200,33 @@ function __c4(j: number): any {
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PricingBenefit" });
-    case 6:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          actions: S.optional(__S(1, __c0, 1)),
-          meter: S.optional(__S(21, __c2, 5)),
+          actions: S.optional(__S(160, __c5, 0)),
+          meter: S.optional(__S(99, __c3, 3)),
           pricingAudience: S.String,
-          terms: S.optional(__S(29, __c3, 5)),
+          terms: S.optional(__S(107, __c3, 11)),
           hasFreeTrials: S.Boolean,
           consumptionUnitType: S.optional(S.String),
           displayRank: S.Number,
-          prerequisiteConstraints: S.optional(__S(35, __c4, 3)),
-          subscriptionStatusConstraints: S.optional(__S(36, __c4, 4)),
-          pricingBenefit: S.optional(__S(37, __c4, 5)),
+          prerequisiteConstraints: S.optional(__S(50, __c1, 18)),
+          subscriptionStatusConstraints: S.optional(__S(51, __c1, 19)),
+          pricingBenefit: S.optional(__S(52, __c1, 20)),
         }),
       ).annotate({ identifier: "Availability" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
+      return S.Array(__S(53, __c1, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
           billingTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingComponent_2" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 24:
+      return S.Array(__S(55, __c1, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           duration: S.optional(S.String),
@@ -3358,9 +3235,368 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PurchaseDurationDiscount_2",
       });
+    case 26:
+      return S.Array(__S(57, __c1, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          productCode: S.optional(S.String),
+          termId: S.optional(S.String),
+          meterType: S.optional(S.String),
+          billingMeterId: S.optional(S.String),
+          offeringId: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OfferingProperties" });
+    case 28:
+      return S.Array(__S(59, __c1, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          fulfillmentTiming: S.optional(S.String),
+          fulfillmentDelayMitigation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FulfillmentAttributes" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          productSkuId: S.optional(S.String),
+          defaultKeyActivationCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ProductFulfillmentConfig" });
+    case 31:
+      return S.Array(__S(62, __c1, 30));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fulfillmentType: S.optional(S.String),
+          attributes: S.optional(__S(61, __c1, 29)),
+          additionalProducts: S.optional(__S(63, __c1, 31)),
+        }),
+      ).annotate({ identifier: "FulfillmentData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          benefitType: S.optional(S.String),
+          basePlanId: S.optional(S.String),
+          billingPlan: S.optional(S.String),
+          termDuration: S.optional(S.String),
+          meterType: S.optional(S.String),
+          baseProductCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Benefit" });
+    case 2:
+      return S.Array(__S(65, __c2, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
+      return S.Array(__S(47, __c1, 15));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          minAssets: S.optional(S.Number),
+          maxAssets: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AssetOwnershipLimit" });
+    case 5:
+      return S.Array(__S(68, __c2, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.optional(S.String),
+          skuIds: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "PrerequisiteSet" });
+    case 7:
+      return S.Array(__S(70, __c2, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          minPercentSeats: S.optional(S.Number),
+          maxPercentSeats: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MinMaxPercentageSeatsConstraint",
+      });
+    case 9:
+      return S.Array(__S(72, __c2, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          mustHaveAll: S.optional(__S(71, __c2, 7)),
+          mustHaveAny: S.optional(__S(71, __c2, 7)),
+          seatConstraints: S.optional(__S(73, __c2, 9)),
+        }),
+      ).annotate({ identifier: "Prerequisites" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          seatConstraints: S.optional(__S(67, __c2, 3)),
+          assetOwnershipLimits: S.optional(__S(69, __c2, 5)),
+          prerequisiteSkus: S.optional(__S(74, __c2, 10)),
+        }),
+      ).annotate({ identifier: "ConstraintsData" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          meterType: S.optional(S.String),
+          unitOfMeasure: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MeterTypeDescriptionValue",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(__S(76, __c2, 12)),
+        }),
+      ).annotate({ identifier: "MeterTypeDescription" });
+    case 14:
+      return S.Array(__S(77, __c2, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          planId: S.optional(S.String),
+          uniquePlanId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          vmArchitectureType: S.optional(S.String),
+          cspState: S.optional(S.String),
+          metadata: S.optional(__S(224, __c7, 0)),
+          altStackReference: S.optional(S.String),
+          stackType: S.optional(S.String),
+          altArchitectureReference: S.optional(S.String),
+          categoryIds: S.optional(__S(160, __c5, 0)),
+          hasProtectedArtifacts: S.optional(S.Boolean),
+          pricingTypes: S.optional(__S(160, __c5, 0)),
+          vmSecuritytypes: S.optional(__S(160, __c5, 0)),
+          summary: S.optional(S.String),
+          description: S.optional(S.String),
+          skuId: S.optional(S.String),
+          planType: S.String,
+          displayRank: S.optional(S.String),
+          isPrivate: S.optional(S.Boolean),
+          hasRi: S.optional(S.Boolean),
+          id: S.optional(S.String),
+          availabilities: S.optional(__S(54, __c1, 22)),
+          uiDefinitionUri: S.optional(S.String),
+          artifacts: S.optional(__S(44, __c1, 12)),
+          version: S.optional(S.String),
+          isHidden: S.Boolean,
+          isStopSell: S.Boolean,
+          stopSellInfo: S.optional(__S(41, __c1, 9)),
+          minQuantity: S.optional(S.Number),
+          maxQuantity: S.optional(S.Number),
+          isQuantifiable: S.Boolean,
+          billingComponents: S.optional(__S(56, __c1, 24)),
+          purchaseDurationDiscounts: S.optional(__S(58, __c1, 26)),
+          isHiddenPrivateOffer: S.optional(S.Boolean),
+          certifications: S.optional(__S(40, __c1, 8)),
+          customerInstruction: S.optional(S.String),
+          planLabels: S.optional(__S(160, __c5, 0)),
+          skuType: S.optional(S.String),
+          skuTitle: S.optional(S.String),
+          location: S.optional(S.String),
+          armRegionName: S.optional(S.String),
+          cloud: S.optional(S.String),
+          locationType: S.optional(S.String),
+          region: S.optional(S.String),
+          skuGroupId: S.optional(S.String),
+          zone: S.optional(S.String),
+          feature: S.optional(S.String),
+          serviceType: S.optional(S.String),
+          skuAttributes: S.optional(__S(193, __c6, 1)),
+          skuProperties: S.optional(__S(128, __c4, 0)),
+          offeringProperties: S.optional(__S(60, __c1, 28)),
+          hasConsumptionComponents: S.optional(S.Boolean),
+          isEndUserEligible: S.optional(S.Boolean),
+          isAdminEligible: S.optional(S.Boolean),
+          entraIdVersion: S.optional(S.String),
+          technicalRequirements: S.optional(S.String),
+          faqUri: S.optional(S.String),
+          fulfillmentData: S.optional(__S(64, __c2, 0)),
+          benefits: S.optional(__S(66, __c2, 2)),
+          constraintsData: S.optional(__S(75, __c2, 11)),
+          meterTypeDescriptions: S.optional(__S(78, __c2, 14)),
+          usageUnit: S.optional(S.String),
+          skuName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlanDetails" });
+    case 16:
+      return S.Array(__S(79, __c2, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          popularity: S.optional(S.Number),
+          categoryIds: S.optional(__S(160, __c5, 0)),
+          industryIds: S.optional(__S(160, __c5, 0)),
+          publisherId: S.optional(S.String),
+          azureBenefit: S.optional(S.String),
+          badges: S.optional(__S(160, __c5, 0)),
+          publisherType: S.optional(S.String),
+          publishingStage: S.optional(S.String),
+          uniqueProductId: S.String,
+          productType: S.String,
+          productSubType: S.optional(S.String),
+          productFamily: S.optional(S.String),
+          operatingSystems: S.optional(__S(160, __c5, 0)),
+          pricingTypes: S.optional(__S(160, __c5, 0)),
+          publisherDisplayName: S.optional(S.String),
+          longSummary: S.optional(S.String),
+          summary: S.optional(S.String),
+          smallIconUri: S.optional(S.String),
+          description: S.optional(S.String),
+          cspLegalTermsUri: S.optional(S.String),
+          privacyPolicyUri: S.optional(S.String),
+          ratingBuckets: S.optional(__S(160, __c5, 0)),
+          ratingAverage: S.optional(S.Number),
+          ratingCount: S.optional(S.Number),
+          supportedProducts: S.optional(__S(160, __c5, 0)),
+          applicableProducts: S.optional(__S(160, __c5, 0)),
+          lastModifiedDateTime: S.optional(S.String),
+          locations: S.optional(__S(160, __c5, 0)),
+          serviceFamily: S.optional(S.String),
+          service: S.optional(S.String),
+          productId: S.optional(S.String),
+          hasRiPlans: S.optional(S.Boolean),
+          hasMarketplaceFootprint: S.optional(S.Boolean),
+          attributes: S.optional(__S(193, __c6, 1)),
+          offeringType: S.optional(S.String),
+          videos: S.optional(__S(34, __c1, 2)),
+          images: S.optional(__S(38, __c1, 6)),
+          linkedAddIns: S.optional(__S(160, __c5, 0)),
+          links: S.optional(__S(40, __c1, 8)),
+          language: S.optional(S.String),
+          hasStandardContractAmendments: S.optional(S.Boolean),
+          offerId: S.optional(S.String),
+          standardContractAmendmentsRevisionId: S.optional(S.String),
+          universalAmendmentUrl: S.optional(S.String),
+          isPrivate: S.Boolean,
+          isStopSell: S.Boolean,
+          legalTermsUri: S.optional(S.String),
+          legalTermsType: S.optional(S.String),
+          supportUri: S.optional(S.String),
+          uiDefinitionUri: S.optional(S.String),
+          screenshotUris: S.optional(__S(160, __c5, 0)),
+          mediumIconUri: S.optional(S.String),
+          largeIconUri: S.optional(S.String),
+          wideIconUri: S.optional(S.String),
+          pricingDetailsUri: S.optional(S.String),
+          isReseller: S.optional(S.Boolean),
+          productOwnershipSellingMotion: S.optional(S.String),
+          disableSendEmailOnPurchase: S.optional(S.Boolean),
+          isCoreVm: S.optional(S.Boolean),
+          stopSellInfo: S.optional(__S(41, __c1, 9)),
+          marketingMaterial: S.optional(__S(42, __c1, 10)),
+          artifacts: S.optional(__S(44, __c1, 12)),
+          plans: S.optional(__S(80, __c2, 16)),
+          hasAddOns: S.optional(S.Boolean),
+          productCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductDetails" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.String),
+          isPiRequired: S.Boolean,
+          listPrice: S.Number,
+          msrp: S.Number,
+        }),
+      ).annotate({ identifier: "Price_2" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          termId: S.optional(S.String),
+          quantity: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IncludedQuantityProperty_2",
+      });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          meterId: S.optional(S.String),
+          partNumber: S.optional(S.String),
+          consumptionResourceId: S.optional(S.String),
+          price: S.optional(__S(96, __c3, 0)),
+          type: S.optional(S.String),
+          includedQuantityProperties: S.optional(__S(98, __c3, 2)),
+        }),
+      ).annotate({ identifier: "Meter_2" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          parameter: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TermDescriptionParameter_2",
+      });
+    case 5:
+      return S.Array(__S(100, __c3, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          minimumProratedUnits: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProrationPolicy_2" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          billingPeriod: S.optional(S.String),
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          price: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "BillingPlan_2" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          graceDuration: S.optional(S.String),
+          inactiveDuration: S.optional(S.String),
+          lockoutDuration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LifecyclePolicy" });
+    case 9:
+      return S.Array(S.String);
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          termDescriptionParameters: S.optional(__S(101, __c3, 5)),
+          termId: S.optional(S.String),
+          termUnit: S.optional(S.String),
+          prorationPolicy: S.optional(__S(102, __c3, 6)),
+          termDescription: S.optional(S.String),
+          price: S.optional(__S(96, __c3, 0)),
+          renewTermId: S.optional(S.String),
+          renewTermUnits: S.optional(S.String),
+          billingPlan: S.optional(__S(103, __c3, 7)),
+          renewToTermBillingPlan: S.optional(S.String),
+          isAutorenewable: S.optional(S.Boolean),
+          lifecyclePolicy: S.optional(__S(104, __c3, 8)),
+          productCode: S.optional(S.String),
+          state: S.optional(S.String),
+          actions: S.optional(__S(105, __c3, 9)),
+        }),
+      ).annotate({ identifier: "Term_2" });
+    case 11:
+      return S.Array(__S(106, __c3, 10));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
@@ -3373,26 +3609,12 @@ function __c5(j: number): any {
           accessTier: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          productCode: S.optional(S.String),
-          termId: S.optional(S.String),
-          meterType: S.optional(S.String),
-          billingMeterId: S.optional(S.String),
-          offeringId: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OfferingProperties" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fulfillmentTiming: S.optional(S.String),
-          fulfillmentDelayMitigation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FulfillmentAttributes" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
   }
 }
 function __c6(j: number): any {
@@ -3400,45 +3622,12 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          productSkuId: S.optional(S.String),
-          defaultKeyActivationCount: S.optional(S.Number),
+          key: S.optional(S.String),
+          value: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ProductFulfillmentConfig" });
+      ).annotate({ identifier: "Attribute" });
     case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fulfillmentType: S.optional(S.String),
-          attributes: S.optional(__S(47, __c5, 7)),
-          additionalProducts: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "FulfillmentData" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          benefitType: S.optional(S.String),
-          basePlanId: S.optional(S.String),
-          billingPlan: S.optional(S.String),
-          termDuration: S.optional(S.String),
-          meterType: S.optional(S.String),
-          baseProductCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Benefit" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.Array(__S(32, __c4, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          minAssets: S.optional(S.Number),
-          maxAssets: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AssetOwnershipLimit" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
+      return S.Array(__S(192, __c6, 0));
   }
 }
 function __c7(j: number): any {
@@ -3446,204 +3635,15 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          productId: S.optional(S.String),
-          skuIds: S.optional(__S(1, __c0, 1)),
+          generation: S.optional(S.String),
+          altStackReference: S.optional(S.String),
         }),
-      ).annotate({ identifier: "PrerequisiteSet" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          minPercentSeats: S.optional(S.Number),
-          maxPercentSeats: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MinMaxPercentageSeatsConstraint",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mustHaveAll: S.optional(__S(57, __c7, 1)),
-          mustHaveAny: S.optional(__S(57, __c7, 1)),
-          seatConstraints: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "Prerequisites" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          seatConstraints: S.optional(__S(53, __c6, 5)),
-          assetOwnershipLimits: S.optional(__S(55, __c6, 7)),
-          prerequisiteSkus: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "ConstraintsData" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          meterType: S.optional(S.String),
-          unitOfMeasure: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MeterTypeDescriptionValue",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({ identifier: "MeterTypeDescription" });
+      ).annotate({ identifier: "PlanMetadata" });
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          planId: S.optional(S.String),
-          uniquePlanId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          vmArchitectureType: S.optional(S.String),
-          cspState: S.optional(S.String),
-          metadata: S.optional(__S(17, __c2, 1)),
-          altStackReference: S.optional(S.String),
-          stackType: S.optional(S.String),
-          altArchitectureReference: S.optional(S.String),
-          categoryIds: S.optional(__S(1, __c0, 1)),
-          hasProtectedArtifacts: S.optional(S.Boolean),
-          pricingTypes: S.optional(__S(1, __c0, 1)),
-          vmSecuritytypes: S.optional(__S(1, __c0, 1)),
-          summary: S.optional(S.String),
-          description: S.optional(S.String),
-          skuId: S.optional(S.String),
-          planType: S.String,
-          displayRank: S.optional(S.String),
-          isPrivate: S.optional(S.Boolean),
-          hasRi: S.optional(S.Boolean),
-          id: S.optional(S.String),
-          availabilities: S.optional(__S(39, __c4, 7)),
-          uiDefinitionUri: S.optional(S.String),
-          artifacts: S.optional(__S(16, __c2, 0)),
-          version: S.optional(S.String),
-          isHidden: S.Boolean,
-          isStopSell: S.Boolean,
-          stopSellInfo: S.optional(__S(13, __c1, 5)),
-          minQuantity: S.optional(S.Number),
-          maxQuantity: S.optional(S.Number),
-          isQuantifiable: S.Boolean,
-          billingComponents: S.optional(__S(41, __c5, 1)),
-          purchaseDurationDiscounts: S.optional(__S(43, __c5, 3)),
-          isHiddenPrivateOffer: S.optional(S.Boolean),
-          certifications: S.optional(__S(12, __c1, 4)),
-          customerInstruction: S.optional(S.String),
-          planLabels: S.optional(__S(1, __c0, 1)),
-          skuType: S.optional(S.String),
-          skuTitle: S.optional(S.String),
-          location: S.optional(S.String),
-          armRegionName: S.optional(S.String),
-          cloud: S.optional(S.String),
-          locationType: S.optional(S.String),
-          region: S.optional(S.String),
-          skuGroupId: S.optional(S.String),
-          zone: S.optional(S.String),
-          feature: S.optional(S.String),
-          serviceType: S.optional(S.String),
-          skuAttributes: S.optional(__S(3, __c0, 3)),
-          skuProperties: S.optional(__S(44, __c5, 4)),
-          offeringProperties: S.optional(__S(46, __c5, 6)),
-          hasConsumptionComponents: S.optional(S.Boolean),
-          isEndUserEligible: S.optional(S.Boolean),
-          isAdminEligible: S.optional(S.Boolean),
-          entraIdVersion: S.optional(S.String),
-          technicalRequirements: S.optional(S.String),
-          faqUri: S.optional(S.String),
-          fulfillmentData: S.optional(__S(50, __c6, 2)),
-          benefits: S.optional(__S(52, __c6, 4)),
-          constraintsData: S.optional(__S(61, __c7, 5)),
-          meterTypeDescriptions: S.optional(__S(64, __c8, 0)),
-          usageUnit: S.optional(S.String),
-          skuName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlanDetails" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          popularity: S.optional(S.Number),
-          categoryIds: S.optional(__S(1, __c0, 1)),
-          industryIds: S.optional(__S(1, __c0, 1)),
-          publisherId: S.optional(S.String),
-          azureBenefit: S.optional(S.String),
-          badges: S.optional(__S(1, __c0, 1)),
-          publisherType: S.optional(S.String),
-          publishingStage: S.optional(S.String),
-          uniqueProductId: S.String,
-          productType: S.String,
-          productSubType: S.optional(S.String),
-          productFamily: S.optional(S.String),
-          operatingSystems: S.optional(__S(1, __c0, 1)),
-          pricingTypes: S.optional(__S(1, __c0, 1)),
-          publisherDisplayName: S.optional(S.String),
-          longSummary: S.optional(S.String),
-          summary: S.optional(S.String),
-          smallIconUri: S.optional(S.String),
-          description: S.optional(S.String),
-          cspLegalTermsUri: S.optional(S.String),
-          privacyPolicyUri: S.optional(S.String),
-          ratingBuckets: S.optional(__S(1, __c0, 1)),
-          ratingAverage: S.optional(S.Number),
-          ratingCount: S.optional(S.Number),
-          supportedProducts: S.optional(__S(1, __c0, 1)),
-          applicableProducts: S.optional(__S(1, __c0, 1)),
-          lastModifiedDateTime: S.optional(S.String),
-          locations: S.optional(__S(1, __c0, 1)),
-          serviceFamily: S.optional(S.String),
-          service: S.optional(S.String),
-          productId: S.optional(S.String),
-          hasRiPlans: S.optional(S.Boolean),
-          hasMarketplaceFootprint: S.optional(S.Boolean),
-          attributes: S.optional(__S(3, __c0, 3)),
-          offeringType: S.optional(S.String),
-          videos: S.optional(__S(6, __c0, 6)),
-          images: S.optional(__S(10, __c1, 2)),
-          linkedAddIns: S.optional(__S(1, __c0, 1)),
-          links: S.optional(__S(12, __c1, 4)),
-          language: S.optional(S.String),
-          hasStandardContractAmendments: S.optional(S.Boolean),
-          offerId: S.optional(S.String),
-          standardContractAmendmentsRevisionId: S.optional(S.String),
-          universalAmendmentUrl: S.optional(S.String),
-          isPrivate: S.Boolean,
-          isStopSell: S.Boolean,
-          legalTermsUri: S.optional(S.String),
-          legalTermsType: S.optional(S.String),
-          supportUri: S.optional(S.String),
-          uiDefinitionUri: S.optional(S.String),
-          screenshotUris: S.optional(__S(1, __c0, 1)),
-          mediumIconUri: S.optional(S.String),
-          largeIconUri: S.optional(S.String),
-          wideIconUri: S.optional(S.String),
-          pricingDetailsUri: S.optional(S.String),
-          isReseller: S.optional(S.Boolean),
-          productOwnershipSellingMotion: S.optional(S.String),
-          disableSendEmailOnPurchase: S.optional(S.Boolean),
-          isCoreVm: S.optional(S.Boolean),
-          stopSellInfo: S.optional(__S(13, __c1, 5)),
-          marketingMaterial: S.optional(__S(14, __c1, 6)),
-          artifacts: S.optional(__S(16, __c2, 0)),
-          plans: S.optional(__S(66, __c8, 2)),
-          hasAddOns: S.optional(S.Boolean),
-          productCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductDetails" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
@@ -3666,1046 +3666,9 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProductGetByBillingProfileRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          includeStopSoldPlans: S.optional(S.Boolean.pipe(T.Query())),
-          language: S.optional(S.String.pipe(T.Query())),
-          includeHiddenPlans: S.optional(S.Boolean.pipe(T.Query())),
-          includeServiceInstructionTemplates: S.optional(S.Boolean.pipe(T.Query())),
-          planId: S.optional(S.String.pipe(T.Query())),
-          skuId: S.optional(S.String.pipe(T.Query())),
-          lookUpOfferInTenantLevel: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/products/{productId}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProductGetBySubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.String.pipe(T.Label()),
-          market: S.String.pipe(T.Query()),
-          includeStopSoldPlans: S.optional(S.Boolean.pipe(T.Query())),
-          language: S.optional(S.String.pipe(T.Query())),
-          pricingAudience: S.optional(S.String.pipe(T.Query())),
-          includeHiddenPlans: S.optional(S.Boolean.pipe(T.Query())),
-          includeServiceInstructionTemplates: S.optional(S.Boolean.pipe(T.Query())),
-          planId: S.optional(S.String.pipe(T.Query())),
-          skuId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Marketplace/products/{productId}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProductGetByTenantRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccountId: S.String.pipe(T.Label()),
-          skuId: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-          includeStopSold: S.optional(S.Boolean.pipe(T.Query())),
-          includeFutureAvailabilities: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/skus/{skuId}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSkusByBillingAccountRequest",
-      });
   }
 }
 function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          meterType: S.optional(S.String),
-          billingMeterId: S.optional(S.String),
-          offeringId: S.optional(S.String),
-          productCode: S.optional(S.String),
-          termId: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OfferingProperties_2" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicablePromotion: S.optional(__S(1, __c0, 1)),
-          addOnParent: S.optional(__S(1, __c0, 1)),
-          applicableFuturePriceConcession: S.optional(__S(1, __c0, 1)),
-          benefitSku: S.optional(__S(1, __c0, 1)),
-          includedInBundle: S.optional(__S(1, __c0, 1)),
-          associatedSku: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "ProductAlternateIds" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          aadSkuId: S.optional(__S(1, __c0, 1)),
-          legacyOfferGuid: S.optional(__S(1, __c0, 1)),
-          applicablePromotion: S.optional(__S(1, __c0, 1)),
-          addOnParent: S.optional(__S(1, __c0, 1)),
-          applicableFuturePriceConcession: S.optional(__S(1, __c0, 1)),
-          benefitSku: S.optional(__S(1, __c0, 1)),
-          includedInBundle: S.optional(__S(1, __c0, 1)),
-          associatedSku: S.optional(__S(1, __c0, 1)),
-          products: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({ identifier: "SkuAlternateIds" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          actions: S.optional(__S(1, __c0, 1)),
-          meter: S.optional(__S(21, __c2, 5)),
-          pricingAudience: S.String,
-          terms: S.optional(__S(29, __c3, 5)),
-          hasFreeTrials: S.Boolean,
-          consumptionUnitType: S.optional(S.String),
-          displayRank: S.Number,
-        }),
-      ).annotate({ identifier: "Availability_2" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.String,
-          productDisplayName: S.optional(S.String),
-          productDescription: S.optional(S.String),
-          serviceFamily: S.optional(S.String),
-          service: S.optional(S.String),
-          publisherId: S.optional(S.String),
-          publisherType: S.optional(S.String),
-          productType: S.optional(S.String),
-          productSubType: S.optional(S.String),
-          summary: S.optional(S.String),
-          productAttributes: S.optional(__S(3, __c0, 3)),
-          skuName: S.String,
-          skuId: S.String,
-          skuType: S.String,
-          language: S.String,
-          skuDescription: S.String,
-          skuTitle: S.String,
-          lastModifiedDateTime: S.optional(S.String),
-          location: S.String,
-          armRegionName: S.optional(S.String),
-          cloud: S.String,
-          locationType: S.String,
-          region: S.optional(S.String),
-          skuGroupId: S.optional(S.String),
-          zone: S.optional(S.String),
-          feature: S.optional(S.String),
-          serviceType: S.optional(S.String),
-          minQuantity: S.optional(S.Number),
-          maxQuantity: S.optional(S.Number),
-          cspState: S.optional(S.String),
-          hasRi: S.optional(S.Boolean),
-          skuAttributes: S.optional(__S(3, __c0, 3)),
-          skuProperties: S.optional(__S(44, __c5, 4)),
-          offeringProperties: S.optional(__S(73, __c9, 1)),
-          alternateIds: S.optional(__S(75, __c9, 3)),
-          offeringType: S.optional(S.String),
-          categoryIds: S.optional(__S(1, __c0, 1)),
-          pricingAudiences: S.optional(__S(1, __c0, 1)),
-          availabilities: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "GetSkusByBillingAccountResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccountId: S.String.pipe(T.Label()),
-          billingProfileId: S.String.pipe(T.Label()),
-          skuId: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-          includeStopSold: S.optional(S.Boolean.pipe(T.Query())),
-          includeFutureAvailabilities: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/skus/{skuId}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSkusByBillingProfileRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          edgeZone: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-          market: S.optional(S.String.pipe(T.Query())),
-          _select: S.optional(S.String.pipe(T.Query("$select"))),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/locations/{location}/edgeZones/{edgeZone}/products",
-            code: 200,
-            apiVersion: "2022-07-31",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEdgeZonesProductsRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          startDate: S.optional(S.NullOr(S.String)),
-          reason: S.optional(S.NullOr(S.String)),
-          alternativeOfferId: S.optional(S.NullOr(S.String)),
-          alternativePlanId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "StopSellInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.NullOr(S.String)),
-          learnUri: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "MarketingMaterial" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          competencyName: S.optional(S.NullOr(S.String)),
-          competencyLevel: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Competency" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          durationValue: S.optional(S.Number),
-          durationUnit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Duration" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          planId: S.optional(S.NullOr(S.String)),
-          currencyDecorator: S.optional(S.Number),
-          price: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PlanPrice" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.NullOr(S.String)),
-          planPrices: S.optional(S.NullOr(__S(89, __c11, 1))),
-        }),
-      ).annotate({ identifier: "Pricing" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pricing: S.optional(S.NullOr(__S(90, __c11, 2))),
-          marketCode: S.optional(S.NullOr(S.String)),
-          marketStates: S.optional(S.NullOr(__S(1, __c0, 1))),
-        }),
-      ).annotate({ identifier: "MarketPricingDetailsItem" });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          market: S.String,
-          termUnits: S.optional(S.NullOr(S.String)),
-          meterUnits: S.optional(S.NullOr(S.String)),
-          minTermPrice: S.optional(S.NullOr(S.Number)),
-          minMeterPrice: S.optional(S.NullOr(S.Number)),
-          currency: S.String,
-        }),
-      ).annotate({ identifier: "MarketStartPrice" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          displayName: S.optional(S.NullOr(S.String)),
-          uri: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "LinkProperties" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Filter" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          uri: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Artifact" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.optional(S.NullOr(S.String)),
-          leadGenEnabled: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "LeadGeneration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          caption: S.optional(S.NullOr(S.String)),
-          uri: S.optional(S.NullOr(S.String)),
-          imagePurpose: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "PreviewImage" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          caption: S.optional(S.NullOr(S.String)),
-          uri: S.optional(S.NullOr(S.String)),
-          videoPurpose: S.optional(S.NullOr(S.String)),
-          previewImage: S.optional(S.NullOr(__S(101, __c12, 5))),
-        }),
-      ).annotate({ identifier: "ProductVideo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          userManual: S.optional(S.NullOr(S.String)),
-          testDriveDuration: S.optional(S.NullOr(S.String)),
-          accessInformation: S.optional(S.NullOr(S.String)),
-          orchestrationType: S.optional(S.NullOr(S.String)),
-          labId: S.optional(S.NullOr(S.String)),
-          demoId: S.optional(S.NullOr(S.String)),
-          video: S.optional(S.NullOr(__S(102, __c12, 6))),
-          powerBiDashboardLink: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "TestDrive" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          leadGeneration: S.optional(S.NullOr(__S(100, __c12, 4))),
-          testDrive: S.optional(S.NullOr(__S(103, __c12, 7))),
-        }),
-      ).annotate({ identifier: "OfferMetadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          uri: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Image" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          context: S.optional(S.NullOr(S.String)),
-          items: S.optional(S.NullOr(__S(106, __c13, 2))),
-        }),
-      ).annotate({ identifier: "ImageGroup" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.Array(__S(102, __c12, 6));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptions: S.optional(S.NullOr(__S(1, __c0, 1))),
-          tenants: S.optional(S.NullOr(__S(1, __c0, 1))),
-          users: S.optional(S.NullOr(__S(1, __c0, 1))),
-          groups: S.optional(S.NullOr(__S(1, __c0, 1))),
-        }),
-      ).annotate({ identifier: "RestrictedAudience" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.NullOr(S.String)),
-          isPIRequired: S.optional(S.Boolean),
-          listPrice: S.optional(S.Number),
-          msrp: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Price" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          termId: S.optional(S.NullOr(S.String)),
-          quantity: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "IncludedQuantityProperty" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          meterId: S.optional(S.NullOr(S.String)),
-          partNumber: S.optional(S.NullOr(S.String)),
-          consumptionResourceId: S.optional(S.NullOr(S.String)),
-          price: S.optional(S.NullOr(__S(111, __c13, 7))),
-          type: S.optional(S.NullOr(S.String)),
-          includedQuantityProperties: S.optional(S.NullOr(__S(113, __c14, 1))),
-        }),
-      ).annotate({ identifier: "Meter" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parameter: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "TermDescriptionParameter" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          minimumProratedUnits: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ProrationPolicy" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          billingPeriod: S.optional(S.NullOr(S.String)),
-          title: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          price: S.optional(S.NullOr(__S(111, __c13, 7))),
-        }),
-      ).annotate({ identifier: "BillingPlan" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          termDescriptionParameters: S.optional(S.NullOr(__S(116, __c14, 4))),
-          termId: S.optional(S.NullOr(S.String)),
-          termUnits: S.optional(S.NullOr(S.String)),
-          prorationPolicy: S.optional(S.NullOr(__S(117, __c14, 5))),
-          termDescription: S.optional(S.NullOr(S.String)),
-          price: S.optional(S.NullOr(__S(111, __c13, 7))),
-          renewTermId: S.optional(S.NullOr(S.String)),
-          renewTermUnits: S.optional(S.NullOr(S.String)),
-          billingPlan: S.optional(S.NullOr(__S(118, __c14, 6))),
-          renewToTermBillingPlan: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Term" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          exclusionProperties: S.optional(S.NullOr(__S(1, __c0, 1))),
-          inclusionProperties: S.optional(S.NullOr(__S(1, __c0, 1))),
-        }),
-      ).annotate({ identifier: "PIFilter" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          remediationId: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Remediation" });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(125, __c15, 5)));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          partitionKey: S.optional(S.NullOr(S.String)),
-          ts: S.optional(S.Number),
-          actions: S.optional(S.NullOr(__S(1, __c0, 1))),
-          market: S.optional(S.NullOr(S.String)),
-          isPIRequired: S.optional(S.Boolean),
-          appId: S.optional(S.NullOr(S.String)),
-          planID: S.optional(S.NullOr(S.String)),
-          meterId: S.optional(S.NullOr(S.String)),
-          meter: S.optional(S.NullOr(__S(114, __c14, 2))),
-          pricingAudience: S.optional(S.String),
-          terms: S.optional(S.NullOr(__S(120, __c15, 0))),
-          piFilter: S.optional(S.NullOr(__S(121, __c15, 1))),
-          isStopSell: S.optional(S.Boolean),
-          hasFreeTrials: S.optional(S.Boolean),
-          assetBehaviors: S.optional(S.NullOr(__S(1, __c0, 1))),
-          consumptionUnitType: S.optional(S.NullOr(S.String)),
-          displayRank: S.optional(S.Number),
-          remediationRequired: S.optional(S.Boolean),
-          remediations: S.optional(S.NullOr(__S(123, __c15, 3))),
-          startDate: S.optional(S.NullOr(S.Number)),
-          endDate: S.optional(S.NullOr(S.Number)),
-          planAvailabilities: S.optional(S.NullOr(__S(124, __c15, 4))),
-        }),
-      ).annotate({ identifier: "AvailabilityEntity" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(S.NullOr(__S(127, __c15, 7))),
-        }),
-      ).annotate({ identifier: "OpenProperty" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          family: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "OperatingSystem" });
-    case 2:
-      return S.Array(S.Number);
-    case 3:
-      return S.Record(S.String, __S(130, __c16, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          billingTag: S.optional(S.NullOr(S.String)),
-          customMeterIds: S.optional(S.NullOr(__S(131, __c16, 3))),
-        }),
-      ).annotate({ identifier: "BillingComponent" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(S.NullOr(S.String)),
-          discountPercentage: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PurchaseDurationDiscount" });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          termId: S.optional(S.NullOr(S.String)),
-          upn: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "TermUpn" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          displayName: S.optional(S.NullOr(S.String)),
-          summary: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          restrictedAudience: S.optional(S.NullOr(__S(110, __c13, 6))),
-          skuId: S.optional(S.NullOr(S.String)),
-          planId: S.optional(S.NullOr(S.String)),
-          legacyPlanId: S.optional(S.NullOr(S.String)),
-          keywords: S.optional(S.NullOr(__S(1, __c0, 1))),
-          type: S.optional(S.String),
-          leadGeneration: S.optional(S.NullOr(__S(100, __c12, 4))),
-          testDrive: S.optional(S.NullOr(__S(103, __c12, 7))),
-          availabilities: S.optional(S.NullOr(__S(126, __c15, 6))),
-          categoryIds: S.optional(S.NullOr(__S(1, __c0, 1))),
-          conversionPaths: S.optional(S.NullOr(__S(1, __c0, 1))),
-          metadata: S.optional(S.NullOr(__S(128, __c16, 0))),
-          operatingSystem: S.optional(S.NullOr(__S(129, __c16, 1))),
-          uiDefinitionUri: S.optional(S.NullOr(S.String)),
-          artifacts: S.optional(S.NullOr(__S(99, __c12, 3))),
-          version: S.optional(S.NullOr(S.String)),
-          itemName: S.optional(S.NullOr(S.String)),
-          isPrivate: S.optional(S.Boolean),
-          isHidden: S.optional(S.Boolean),
-          hasFreeTrials: S.optional(S.Boolean),
-          isByol: S.optional(S.Boolean),
-          isFree: S.optional(S.Boolean),
-          isPayg: S.optional(S.Boolean),
-          isStopSell: S.optional(S.Boolean),
-          stopSellInfo: S.optional(S.NullOr(__S(82, __c10, 2))),
-          altStackReference: S.optional(S.NullOr(S.String)),
-          stackType: S.optional(S.NullOr(S.String)),
-          altArchitectureReference: S.optional(S.NullOr(S.String)),
-          architectureType: S.optional(S.NullOr(S.String)),
-          cspState: S.optional(S.NullOr(S.String)),
-          resourceProviderNamespace: S.optional(S.NullOr(S.String)),
-          resourceType: S.optional(S.NullOr(S.String)),
-          minQuantity: S.optional(S.NullOr(S.Number)),
-          maxQuantity: S.optional(S.NullOr(S.Number)),
-          isQuantifiable: S.optional(S.Boolean),
-          callToAction: S.optional(S.NullOr(S.String)),
-          redirectUrl: S.optional(S.NullOr(S.String)),
-          serviceIdentifier: S.optional(S.NullOr(S.String)),
-          vmSecurityType: S.optional(S.NullOr(S.String)),
-          displayRank: S.optional(S.NullOr(S.String)),
-          billingComponents: S.optional(S.NullOr(__S(133, __c16, 5))),
-          purchaseDurationDiscounts: S.optional(S.NullOr(__S(135, __c16, 7))),
-          upns: S.optional(S.NullOr(__S(137, __c17, 1))),
-          hasRI: S.optional(S.Boolean),
-          isHiddenPrivateOffer: S.optional(S.NullOr(S.Boolean)),
-          certifications: S.optional(S.NullOr(__S(95, __c11, 7))),
-          pricingTypes: S.optional(S.NullOr(__S(81, __c10, 1))),
-        }),
-      ).annotate({ identifier: "Plan" });
-    case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uiDefinitionFileUri: S.optional(S.NullOr(S.String)),
-          defaultDeploymentTemplateId: S.optional(S.NullOr(S.String)),
-          deploymentTemplateFileUris: S.optional(S.NullOr(__S(84, __c10, 4))),
-          deploymentFragmentFileUris: S.optional(S.NullOr(__S(84, __c10, 4))),
-        }),
-      ).annotate({ identifier: "DefinitionTemplates" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          m365CertificationType: S.optional(S.Number),
-          m365CertificationDetailsUrl: S.optional(S.NullOr(S.String)),
-          m365CertificationId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "M365CertificationInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pricingOptions: S.optional(S.Number),
-          hasPrices: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "UIPricing" });
-    case 7:
-      return S.Record(S.String, __S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          appSourceCs: S.optional(S.Number),
-          appSourceApps: S.optional(S.Number),
-          ampCs: S.optional(S.Number),
-          ampApps: S.optional(S.Number),
-          azurePortalApps: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PopularityEnrichedData" });
-    case 1:
-      return S.Record(S.String, S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          totalRatings: S.optional(S.Number),
-          source: S.optional(S.String),
-          averageRating: S.optional(S.Number),
-          createdAt: S.optional(S.String),
-          externalOfferReference: S.optional(S.NullOr(S.String)),
-          starsDistribution: S.optional(S.NullOr(__S(145, __c18, 1))),
-          buckets: S.optional(S.NullOr(__S(1, __c0, 1))),
-        }),
-      ).annotate({ identifier: "RatingSummary" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          appSource: S.optional(S.NullOr(__S(146, __c18, 2))),
-          amp: S.optional(S.NullOr(__S(146, __c18, 2))),
-          azurePortal: S.optional(S.NullOr(__S(146, __c18, 2))),
-          g2: S.optional(S.NullOr(__S(146, __c18, 2))),
-        }),
-      ).annotate({ identifier: "RatingEnrichedData" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(S.NullOr(__S(1, __c0, 1))),
-          popularity: S.optional(S.NullOr(__S(144, __c18, 0))),
-          rating: S.optional(S.NullOr(__S(147, __c18, 3))),
-          isAzureBenefitEligible: S.optional(S.Boolean),
-          isSolutionMap: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "EnrichedData" });
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          language: S.String,
-          displayName: S.optional(S.NullOr(S.String)),
-          hasStandardContractAmendments: S.optional(S.Boolean),
-          publisherMpnId: S.optional(S.NullOr(S.String)),
-          sellerId: S.optional(S.NullOr(S.String)),
-          publisherId: S.optional(S.NullOr(S.String)),
-          partnerCenterId: S.optional(S.NullOr(S.String)),
-          publisherDisplayName: S.optional(S.NullOr(S.String)),
-          offerId: S.String,
-          legacyId: S.String,
-          determinedStorefronts: S.optional(S.NullOr(__S(81, __c10, 1))),
-          standardContractAmendmentsRevisionId: S.optional(S.String),
-          universalAmendmentUrl: S.optional(S.NullOr(S.String)),
-          summary: S.optional(S.NullOr(S.String)),
-          longSummary: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          offerType: S.optional(S.String),
-          isPrivate: S.optional(S.Boolean),
-          isPreview: S.optional(S.Boolean),
-          isStopSell: S.optional(S.Boolean),
-          stopSellInfo: S.optional(S.NullOr(__S(82, __c10, 2))),
-          fulfillBeforeChargeEligible: S.optional(S.Boolean),
-          marketingMaterial: S.optional(S.NullOr(__S(83, __c10, 3))),
-          markets: S.optional(S.NullOr(__S(1, __c0, 1))),
-          isvContactDetails: S.optional(S.NullOr(__S(84, __c10, 4))),
-          bigId: S.String,
-          ocpSolutionId: S.optional(S.NullOr(S.String)),
-          legalTermsUri: S.optional(S.NullOr(S.String)),
-          cspLegalTermsUri: S.optional(S.NullOr(S.String)),
-          legalTermsType: S.optional(S.String),
-          privacyPolicyUri: S.optional(S.NullOr(S.String)),
-          helpLink: S.optional(S.NullOr(S.String)),
-          supportUri: S.optional(S.NullOr(S.String)),
-          version: S.optional(S.NullOr(S.String)),
-          uiDefinitionUri: S.optional(S.NullOr(S.String)),
-          categoryIds: S.optional(S.NullOr(__S(1, __c0, 1))),
-          operatingSystems: S.optional(S.NullOr(__S(1, __c0, 1))),
-          marketCode: S.optional(S.NullOr(S.String)),
-          marketStates: S.optional(S.NullOr(__S(1, __c0, 1))),
-          industryIds: S.optional(S.NullOr(__S(1, __c0, 1))),
-          primaryIndustry: S.optional(S.NullOr(__S(1, __c0, 1))),
-          primaryCategories: S.optional(S.NullOr(__S(1, __c0, 1))),
-          cloudIndustryCategories: S.optional(S.NullOr(__S(1, __c0, 1))),
-          primaryProduct: S.optional(S.NullOr(S.String)),
-          supportedProducts: S.optional(S.NullOr(__S(1, __c0, 1))),
-          applicableProducts: S.optional(S.NullOr(__S(1, __c0, 1))),
-          serviceType: S.optional(S.NullOr(S.String)),
-          competencies: S.optional(S.NullOr(__S(86, __c10, 6))),
-          hasPrices: S.optional(S.NullOr(S.Boolean)),
-          duration: S.optional(S.NullOr(__S(87, __c10, 7))),
-          marketPricingDetails: S.optional(S.NullOr(__S(92, __c11, 4))),
-          startingPrice: S.optional(S.NullOr(__S(93, __c11, 5))),
-          pricing: S.optional(S.NullOr(__S(90, __c11, 2))),
-          solutionAreas: S.optional(S.NullOr(__S(1, __c0, 1))),
-          screenshotUris: S.optional(S.NullOr(__S(1, __c0, 1))),
-          links: S.optional(S.NullOr(__S(95, __c11, 7))),
-          filters: S.optional(S.NullOr(__S(97, __c12, 1))),
-          iconFileUris: S.optional(S.NullOr(__S(84, __c10, 4))),
-          artifacts: S.optional(S.NullOr(__S(99, __c12, 3))),
-          metadata: S.optional(S.NullOr(__S(104, __c13, 0))),
-          properties: S.optional(S.NullOr(__S(84, __c10, 4))),
-          images: S.optional(S.NullOr(__S(108, __c13, 4))),
-          videos: S.optional(S.NullOr(__S(109, __c13, 5))),
-          plans: S.optional(S.NullOr(__S(139, __c17, 3))),
-          resourceGroupName: S.optional(S.NullOr(S.String)),
-          definitionTemplates: S.optional(S.NullOr(__S(140, __c17, 4))),
-          additionalProperties: S.optional(S.NullOr(__S(84, __c10, 4))),
-          restrictedAudience: S.optional(S.NullOr(__S(110, __c13, 6))),
-          isDeleted: S.optional(S.Boolean),
-          isThirdParty: S.optional(S.Boolean),
-          groupId: S.optional(S.NullOr(S.String)),
-          hideKeys: S.optional(S.NullOr(__S(1, __c0, 1))),
-          keywords: S.optional(S.NullOr(__S(1, __c0, 1))),
-          popularity: S.optional(S.Number),
-          pricingDetailsUri: S.optional(S.NullOr(S.String)),
-          hasFreeTrials: S.optional(S.Boolean),
-          isByol: S.optional(S.Boolean),
-          isMacc: S.optional(S.Boolean),
-          hasFreePlans: S.optional(S.Boolean),
-          isQuantifiable: S.optional(S.Boolean),
-          altStackReference: S.optional(S.NullOr(S.String)),
-          hasPaygPlans: S.optional(S.Boolean),
-          isReseller: S.optional(S.Boolean),
-          ttl: S.optional(S.NullOr(S.Number)),
-          isExcludedFromSearch: S.optional(S.Boolean),
-          applicableStoreFronts: S.optional(S.NullOr(S.Number)),
-          offerVersion: S.optional(S.NullOr(S.String)),
-          isMicrosoftProduct: S.optional(S.NullOr(S.Boolean)),
-          productOwnershipSellingMotion: S.optional(S.NullOr(S.String)),
-          documentLinks: S.optional(S.NullOr(__S(95, __c11, 7))),
-          offerEnvironment: S.optional(S.Number),
-          linkedAddIns: S.optional(S.NullOr(__S(1, __c0, 1))),
-          linkedAddInsTypes: S.optional(S.NullOr(__S(84, __c10, 4))),
-          excludeFromBootstrap: S.optional(S.Boolean),
-          hydrationNotificationReceivedAt: S.optional(S.NullOr(S.String)),
-          bigCatLastModifiedDate: S.optional(S.NullOr(S.String)),
-          disableSendEmailOnPurchase: S.optional(S.Boolean),
-          hideFromSaasBlade: S.optional(S.Boolean),
-          integratedWithMicrosoftGraphApi: S.optional(S.Boolean),
-          multiTenantAadAppId: S.optional(S.NullOr(S.String)),
-          licenseManagementType: S.optional(S.NullOr(S.String)),
-          licenseModel: S.optional(S.NullOr(S.String)),
-          pbiServicePrincipalIds: S.optional(S.NullOr(__S(1, __c0, 1))),
-          isCoreVm: S.optional(S.NullOr(S.Boolean)),
-          m365CertificationInfo: S.optional(S.NullOr(__S(141, __c17, 5))),
-          downloadLink: S.optional(S.NullOr(S.String)),
-          downloadSampleLink: S.optional(S.NullOr(S.String)),
-          omexAssetId: S.optional(S.NullOr(S.String)),
-          mixProductId: S.optional(S.NullOr(S.String)),
-          appFreeType: S.optional(S.NullOr(S.String)),
-          storeFrontPricings: S.optional(S.NullOr(__S(143, __c17, 7))),
-          hasRIPlans: S.optional(S.Boolean),
-          enrichedData: S.optional(S.NullOr(__S(148, __c18, 4))),
-          capabilities: S.optional(S.NullOr(__S(149, __c18, 5))),
-          releaseDate: S.optional(S.NullOr(S.String)),
-          hideFromAdminPortal: S.optional(S.Boolean),
-          awards: S.optional(S.NullOr(__S(1, __c0, 1))),
-          powerBIVisualId: S.optional(S.NullOr(S.String)),
-          pricingTypes: S.optional(S.NullOr(__S(81, __c10, 1))),
-          autoRunLaunchEvents: S.optional(S.NullOr(__S(1, __c0, 1))),
-          service: S.optional(S.NullOr(S.String)),
-          serviceId: S.optional(S.NullOr(S.String)),
-          productType: S.optional(S.NullOr(S.String)),
-          productFamily: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(S.String)),
-          partitionKey: S.optional(S.NullOr(S.String)),
-          ts: S.optional(S.Number),
-          searchScore: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "CatalogItem" });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageLink: S.optional(S.NullOr(S.String)),
-          count: S.optional(S.NullOr(S.Number)),
-          items: S.optional(S.NullOr(__S(151, __c18, 7))),
-        }),
-      ).annotate({ identifier: "PageResultOfCatalogItem" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/keys",
-            code: 200,
-            apiVersion: "2023-01-01-preview",
-          }),
-        ),
-      ).annotate({ identifier: "ListGetApiKeysRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          keyAlias: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApiKey" });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(155, __c19, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApiKeys" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Marketplace/operations",
-            code: 200,
-            apiVersion: "2023-01-01-preview",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(158, __c19, 6)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(160, __c20, 0)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccountId: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-          excludePublicOffersAndPublicPlans: S.optional(S.Boolean.pipe(T.Query())),
-          locations: S.optional(S.String.pipe(T.Query())),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _select: S.optional(S.String.pipe(T.Query("$select"))),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-          _orderBy: S.optional(S.String.pipe(T.Query("$orderBy"))),
-          _search: S.optional(S.String.pipe(T.Query("$search"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/products",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProductListByBillingAccountRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          planId: S.optional(S.String),
-          uniquePlanId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          vmArchitectureType: S.optional(S.String),
-          cspState: S.optional(S.String),
-          metadata: S.optional(__S(17, __c2, 1)),
-          altStackReference: S.optional(S.String),
-          stackType: S.optional(S.String),
-          altArchitectureReference: S.optional(S.String),
-          categoryIds: S.optional(__S(1, __c0, 1)),
-          hasProtectedArtifacts: S.optional(S.Boolean),
-          pricingTypes: S.optional(__S(1, __c0, 1)),
-          vmSecuritytypes: S.optional(__S(1, __c0, 1)),
-          summary: S.optional(S.String),
-          description: S.optional(S.String),
-          skuId: S.optional(S.String),
-          planType: S.String,
-          displayRank: S.optional(S.String),
-          isPrivate: S.optional(S.Boolean),
-          hasRi: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PlanSummary" });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          popularity: S.optional(S.Number),
-          categoryIds: S.optional(__S(1, __c0, 1)),
-          industryIds: S.optional(__S(1, __c0, 1)),
-          publisherId: S.optional(S.String),
-          azureBenefit: S.optional(S.String),
-          badges: S.optional(__S(1, __c0, 1)),
-          publisherType: S.optional(S.String),
-          publishingStage: S.optional(S.String),
-          uniqueProductId: S.String,
-          productType: S.String,
-          productSubType: S.optional(S.String),
-          productFamily: S.optional(S.String),
-          operatingSystems: S.optional(__S(1, __c0, 1)),
-          pricingTypes: S.optional(__S(1, __c0, 1)),
-          publisherDisplayName: S.optional(S.String),
-          longSummary: S.optional(S.String),
-          summary: S.optional(S.String),
-          smallIconUri: S.optional(S.String),
-          description: S.optional(S.String),
-          cspLegalTermsUri: S.optional(S.String),
-          privacyPolicyUri: S.optional(S.String),
-          ratingBuckets: S.optional(__S(1, __c0, 1)),
-          ratingAverage: S.optional(S.Number),
-          ratingCount: S.optional(S.Number),
-          supportedProducts: S.optional(__S(1, __c0, 1)),
-          applicableProducts: S.optional(__S(1, __c0, 1)),
-          lastModifiedDateTime: S.optional(S.String),
-          locations: S.optional(__S(1, __c0, 1)),
-          serviceFamily: S.optional(S.String),
-          service: S.optional(S.String),
-          productId: S.optional(S.String),
-          hasRiPlans: S.optional(S.Boolean),
-          hasMarketplaceFootprint: S.optional(S.Boolean),
-          attributes: S.optional(__S(3, __c0, 3)),
-          offeringType: S.optional(S.String),
-          plans: S.optional(__S(164, __c20, 4)),
-        }),
-      ).annotate({ identifier: "ProductSummary" });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(166, __c20, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductSummaryListResult" });
-  }
-}
-function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4731,7 +3694,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProductListByBillingProfileRequest",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4753,7 +3720,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProductListBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           market: S.optional(S.String.pipe(T.Query())),
@@ -4775,14 +3746,18 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProductListByTenantRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
           serviceFamily: S.String.pipe(T.Query()),
           service: S.String.pipe(T.Query()),
           language: S.optional(S.String.pipe(T.Query())),
-          locations: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          locations: S.optional(__S(160, __c5, 0).pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _select: S.optional(S.String.pipe(T.Query("$select"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -4798,7 +3773,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSkusByBillingAccountRequest",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String,
@@ -4811,7 +3790,7 @@ function __c21(j: number): any {
           productType: S.optional(S.String),
           productSubType: S.optional(S.String),
           summary: S.optional(S.String),
-          productAttributes: S.optional(__S(3, __c0, 3)),
+          productAttributes: S.optional(__S(193, __c6, 1)),
           skuName: S.String,
           skuId: S.String,
           skuType: S.String,
@@ -4832,25 +3811,29 @@ function __c21(j: number): any {
           maxQuantity: S.optional(S.Number),
           cspState: S.optional(S.String),
           hasRi: S.optional(S.Boolean),
-          skuAttributes: S.optional(__S(3, __c0, 3)),
-          skuProperties: S.optional(__S(44, __c5, 4)),
-          offeringProperties: S.optional(__S(73, __c9, 1)),
-          alternateIds: S.optional(__S(75, __c9, 3)),
+          skuAttributes: S.optional(__S(193, __c6, 1)),
+          skuProperties: S.optional(__S(128, __c4, 0)),
+          offeringProperties: S.optional(__S(705, __c22, 1)),
+          alternateIds: S.optional(__S(707, __c22, 3)),
           offeringType: S.optional(S.String),
-          categoryIds: S.optional(__S(1, __c0, 1)),
-          pricingAudiences: S.optional(__S(1, __c0, 1)),
+          categoryIds: S.optional(__S(160, __c5, 0)),
+          pricingAudiences: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "SkuSummary" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(173, __c21, 5),
+          value: __S(417, __c13, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuSummaryListResult" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
@@ -4858,7 +3841,7 @@ function __c21(j: number): any {
           serviceFamily: S.String.pipe(T.Query()),
           service: S.String.pipe(T.Query()),
           language: S.optional(S.String.pipe(T.Query())),
-          locations: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          locations: S.optional(__S(160, __c5, 0).pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _select: S.optional(S.String.pipe(T.Query("$select"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -4876,7 +3859,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4892,7 +3875,11 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PostCreateApiKeyRequest" });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4906,11 +3893,15 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PostRevokeApiKeyRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PostRevokeApiKeyResponse",
       });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           searchQuery: S.optional(S.String),
@@ -4925,20 +3916,20 @@ function __c22(j: number): any {
           isAdditionalPurchaseRequired: S.optional(S.Boolean),
           isPowerBICertified: S.optional(S.Boolean),
           isIndustryCloud: S.optional(S.Boolean),
-          languages: __S(1, __c0, 1),
-          stores: __S(81, __c10, 1),
-          select: S.optional(__S(1, __c0, 1)),
-          sortBy: S.optional(__S(1, __c0, 1)),
-          offerTypes: S.optional(__S(1, __c0, 1)),
-          pricingTypes: S.optional(__S(81, __c10, 1)),
-          privateStoreAllowances: S.optional(__S(81, __c10, 1)),
-          appSourceIndustries: S.optional(__S(1, __c0, 1)),
-          operatingSystems: S.optional(__S(1, __c0, 1)),
-          appSourceCategories: S.optional(__S(1, __c0, 1)),
-          azureIndustries: S.optional(__S(1, __c0, 1)),
-          azureCategories: S.optional(__S(1, __c0, 1)),
-          azurePortalCategories: S.optional(__S(1, __c0, 1)),
-          facets: S.optional(__S(1, __c0, 1)),
+          languages: __S(160, __c5, 0),
+          stores: __S(864, __c27, 0),
+          select: S.optional(__S(160, __c5, 0)),
+          sortBy: S.optional(__S(160, __c5, 0)),
+          offerTypes: S.optional(__S(160, __c5, 0)),
+          pricingTypes: S.optional(__S(864, __c27, 0)),
+          privateStoreAllowances: S.optional(__S(864, __c27, 0)),
+          appSourceIndustries: S.optional(__S(160, __c5, 0)),
+          operatingSystems: S.optional(__S(160, __c5, 0)),
+          appSourceCategories: S.optional(__S(160, __c5, 0)),
+          azureIndustries: S.optional(__S(160, __c5, 0)),
+          azureCategories: S.optional(__S(160, __c5, 0)),
+          azurePortalCategories: S.optional(__S(160, __c5, 0)),
+          facets: S.optional(__S(160, __c5, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4948,35 +3939,31 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SearchPostArmRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FacetValueDto" });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(545, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           facetName: S.optional(S.String),
-          facetValues: S.optional(__S(181, __c22, 5)),
+          facetValues: S.optional(__S(546, __c17, 2)),
         }),
       ).annotate({ identifier: "FacetsItemDto" });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(547, __c17, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           generation: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlanMetadataDto" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           family: S.optional(S.String),
@@ -4984,35 +3971,35 @@ function __c23(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperatingSystemDto" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           cspState: S.optional(S.String),
           legacyPlanId: S.optional(S.String),
           displayName: S.optional(S.String),
           architectureType: S.optional(S.String),
-          metadata: S.optional(__S(184, __c23, 0)),
-          operatingSystem: S.optional(__S(185, __c23, 1)),
+          metadata: S.optional(__S(549, __c17, 5)),
+          operatingSystem: S.optional(__S(550, __c17, 6)),
         }),
       ).annotate({ identifier: "PlanDto" });
-    case 3:
-      return S.Array(__S(186, __c23, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(551, __c17, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           ampAppsPopularity: S.optional(S.Number),
           ampCsPopularity: S.optional(S.Number),
-          applicableProducts: S.optional(__S(1, __c0, 1)),
+          applicableProducts: S.optional(__S(160, __c5, 0)),
           appSourceAppsPopularity: S.optional(S.Number),
-          appSourceCategories: S.optional(__S(1, __c0, 1)),
+          appSourceCategories: S.optional(__S(160, __c5, 0)),
           appSourceCsPopularity: S.optional(S.Number),
-          appSourceIndustries: S.optional(__S(1, __c0, 1)),
-          azureCategories: S.optional(__S(1, __c0, 1)),
-          azurePortalCategories: S.optional(__S(1, __c0, 1)),
-          azureIndustries: S.optional(__S(1, __c0, 1)),
+          appSourceIndustries: S.optional(__S(160, __c5, 0)),
+          azureCategories: S.optional(__S(160, __c5, 0)),
+          azurePortalCategories: S.optional(__S(160, __c5, 0)),
+          azureIndustries: S.optional(__S(160, __c5, 0)),
           bigId: S.optional(S.String),
-          cspStates: S.optional(__S(1, __c0, 1)),
-          determinedStorefronts: S.optional(__S(1, __c0, 1)),
+          cspStates: S.optional(__S(160, __c5, 0)),
+          determinedStorefronts: S.optional(__S(160, __c5, 0)),
           displayName: S.optional(S.String),
           isAzureBenefitEligible: S.optional(S.Boolean),
           isCoreVm: S.optional(S.Boolean),
@@ -5025,14 +4012,14 @@ function __c23(j: number): any {
           language: S.optional(S.String),
           legacyId: S.optional(S.String),
           offerType: S.optional(S.String),
-          operatingSystems: S.optional(__S(1, __c0, 1)),
-          plans: S.optional(__S(187, __c23, 3)),
-          pricingTypes: S.optional(__S(1, __c0, 1)),
+          operatingSystems: S.optional(__S(160, __c5, 0)),
+          plans: S.optional(__S(552, __c17, 8)),
+          pricingTypes: S.optional(__S(160, __c5, 0)),
           publisherDisplayName: S.optional(S.String),
           summary: S.optional(S.String),
-          vmGenerations: S.optional(__S(1, __c0, 1)),
-          vmImageTypes: S.optional(__S(1, __c0, 1)),
-          vmSecurityTypes: S.optional(__S(1, __c0, 1)),
+          vmGenerations: S.optional(__S(160, __c5, 0)),
+          vmImageTypes: S.optional(__S(160, __c5, 0)),
+          vmSecurityTypes: S.optional(__S(160, __c5, 0)),
           smallIconUri: S.optional(S.String),
           mediumIconUri: S.optional(S.String),
           largeIconUri: S.optional(S.String),
@@ -5040,19 +4027,1067 @@ function __c23(j: number): any {
           heroIconUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchItemDto" });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(553, __c17, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          facets: S.optional(__S(183, __c22, 7)),
-          results: S.optional(__S(189, __c23, 5)),
+          facets: S.optional(__S(548, __c17, 4)),
+          results: S.optional(__S(554, __c17, 10)),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SearchResponseDto" });
   }
 }
-
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          includeStopSoldPlans: S.optional(S.Boolean.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
+          includeHiddenPlans: S.optional(S.Boolean.pipe(T.Query())),
+          includeServiceInstructionTemplates: S.optional(S.Boolean.pipe(T.Query())),
+          planId: S.optional(S.String.pipe(T.Query())),
+          skuId: S.optional(S.String.pipe(T.Query())),
+          lookUpOfferInTenantLevel: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/products/{productId}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProductGetBySubscriptionRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.String.pipe(T.Label()),
+          market: S.String.pipe(T.Query()),
+          includeStopSoldPlans: S.optional(S.Boolean.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
+          pricingAudience: S.optional(S.String.pipe(T.Query())),
+          includeHiddenPlans: S.optional(S.Boolean.pipe(T.Query())),
+          includeServiceInstructionTemplates: S.optional(S.Boolean.pipe(T.Query())),
+          planId: S.optional(S.String.pipe(T.Query())),
+          skuId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Marketplace/products/{productId}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProductGetByTenantRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccountId: S.String.pipe(T.Label()),
+          skuId: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+          includeStopSold: S.optional(S.Boolean.pipe(T.Query())),
+          includeFutureAvailabilities: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/skus/{skuId}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSkusByBillingAccountRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          actions: S.optional(__S(160, __c5, 0)),
+          meter: S.optional(__S(99, __c3, 3)),
+          pricingAudience: S.String,
+          terms: S.optional(__S(107, __c3, 11)),
+          hasFreeTrials: S.Boolean,
+          consumptionUnitType: S.optional(S.String),
+          displayRank: S.Number,
+        }),
+      ).annotate({ identifier: "Availability_2" });
+    case 1:
+      return S.Array(__S(672, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.String,
+          productDisplayName: S.optional(S.String),
+          productDescription: S.optional(S.String),
+          serviceFamily: S.optional(S.String),
+          service: S.optional(S.String),
+          publisherId: S.optional(S.String),
+          publisherType: S.optional(S.String),
+          productType: S.optional(S.String),
+          productSubType: S.optional(S.String),
+          summary: S.optional(S.String),
+          productAttributes: S.optional(__S(193, __c6, 1)),
+          skuName: S.String,
+          skuId: S.String,
+          skuType: S.String,
+          language: S.String,
+          skuDescription: S.String,
+          skuTitle: S.String,
+          lastModifiedDateTime: S.optional(S.String),
+          location: S.String,
+          armRegionName: S.optional(S.String),
+          cloud: S.String,
+          locationType: S.String,
+          region: S.optional(S.String),
+          skuGroupId: S.optional(S.String),
+          zone: S.optional(S.String),
+          feature: S.optional(S.String),
+          serviceType: S.optional(S.String),
+          minQuantity: S.optional(S.Number),
+          maxQuantity: S.optional(S.Number),
+          cspState: S.optional(S.String),
+          hasRi: S.optional(S.Boolean),
+          skuAttributes: S.optional(__S(193, __c6, 1)),
+          skuProperties: S.optional(__S(128, __c4, 0)),
+          offeringProperties: S.optional(__S(705, __c22, 1)),
+          alternateIds: S.optional(__S(707, __c22, 3)),
+          offeringType: S.optional(S.String),
+          categoryIds: S.optional(__S(160, __c5, 0)),
+          pricingAudiences: S.optional(__S(160, __c5, 0)),
+          availabilities: S.optional(__S(673, __c21, 1)),
+        }),
+      ).annotate({
+        identifier: "GetSkusByBillingAccountResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          meterType: S.optional(S.String),
+          billingMeterId: S.optional(S.String),
+          offeringId: S.optional(S.String),
+          productCode: S.optional(S.String),
+          termId: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OfferingProperties_2" });
+    case 1:
+      return S.Array(__S(704, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          applicablePromotion: S.optional(__S(160, __c5, 0)),
+          addOnParent: S.optional(__S(160, __c5, 0)),
+          applicableFuturePriceConcession: S.optional(__S(160, __c5, 0)),
+          benefitSku: S.optional(__S(160, __c5, 0)),
+          includedInBundle: S.optional(__S(160, __c5, 0)),
+          associatedSku: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "ProductAlternateIds" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          aadSkuId: S.optional(__S(160, __c5, 0)),
+          legacyOfferGuid: S.optional(__S(160, __c5, 0)),
+          applicablePromotion: S.optional(__S(160, __c5, 0)),
+          addOnParent: S.optional(__S(160, __c5, 0)),
+          applicableFuturePriceConcession: S.optional(__S(160, __c5, 0)),
+          benefitSku: S.optional(__S(160, __c5, 0)),
+          includedInBundle: S.optional(__S(160, __c5, 0)),
+          associatedSku: S.optional(__S(160, __c5, 0)),
+          products: S.optional(__S(706, __c22, 2)),
+        }),
+      ).annotate({ identifier: "SkuAlternateIds" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccountId: S.String.pipe(T.Label()),
+          billingProfileId: S.String.pipe(T.Label()),
+          skuId: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+          includeStopSold: S.optional(S.Boolean.pipe(T.Query())),
+          includeFutureAvailabilities: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/skus/{skuId}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSkusByBillingProfileRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          edgeZone: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+          market: S.optional(S.String.pipe(T.Query())),
+          _select: S.optional(S.String.pipe(T.Query("$select"))),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/locations/{location}/edgeZones/{edgeZone}/products",
+            code: 200,
+            apiVersion: "2022-07-31",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEdgeZonesProductsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startDate: S.optional(S.NullOr(S.String)),
+          reason: S.optional(S.NullOr(S.String)),
+          alternativeOfferId: S.optional(S.NullOr(S.String)),
+          alternativePlanId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "StopSellInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.NullOr(S.String)),
+          learnUri: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "MarketingMaterial" });
+    case 3:
+      return S.Record(S.String, S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          competencyName: S.optional(S.NullOr(S.String)),
+          competencyLevel: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Competency" });
+    case 5:
+      return S.Array(__S(772, __c24, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          durationValue: S.optional(S.Number),
+          durationUnit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Duration" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          planId: S.optional(S.NullOr(S.String)),
+          currencyDecorator: S.optional(S.Number),
+          price: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PlanPrice" });
+    case 8:
+      return S.Array(__S(775, __c24, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.NullOr(S.String)),
+          planPrices: S.optional(S.NullOr(__S(776, __c24, 8))),
+        }),
+      ).annotate({ identifier: "Pricing" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          pricing: S.optional(S.NullOr(__S(777, __c24, 9))),
+          marketCode: S.optional(S.NullOr(S.String)),
+          marketStates: S.optional(S.NullOr(__S(160, __c5, 0))),
+        }),
+      ).annotate({ identifier: "MarketPricingDetailsItem" });
+    case 11:
+      return S.Array(__S(778, __c24, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          market: S.String,
+          termUnits: S.optional(S.NullOr(S.String)),
+          meterUnits: S.optional(S.NullOr(S.String)),
+          minTermPrice: S.optional(S.NullOr(S.Number)),
+          minMeterPrice: S.optional(S.NullOr(S.Number)),
+          currency: S.String,
+        }),
+      ).annotate({ identifier: "MarketStartPrice" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          displayName: S.optional(S.NullOr(S.String)),
+          uri: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "LinkProperties" });
+    case 14:
+      return S.Array(__S(781, __c24, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Filter" });
+    case 16:
+      return S.Array(__S(783, __c24, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          uri: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Artifact" });
+    case 18:
+      return S.Array(__S(785, __c24, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.optional(S.NullOr(S.String)),
+          leadGenEnabled: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "LeadGeneration" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          caption: S.optional(S.NullOr(S.String)),
+          uri: S.optional(S.NullOr(S.String)),
+          imagePurpose: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "PreviewImage" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          caption: S.optional(S.NullOr(S.String)),
+          uri: S.optional(S.NullOr(S.String)),
+          videoPurpose: S.optional(S.NullOr(S.String)),
+          previewImage: S.optional(S.NullOr(__S(788, __c24, 20))),
+        }),
+      ).annotate({ identifier: "ProductVideo" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          userManual: S.optional(S.NullOr(S.String)),
+          testDriveDuration: S.optional(S.NullOr(S.String)),
+          accessInformation: S.optional(S.NullOr(S.String)),
+          orchestrationType: S.optional(S.NullOr(S.String)),
+          labId: S.optional(S.NullOr(S.String)),
+          demoId: S.optional(S.NullOr(S.String)),
+          video: S.optional(S.NullOr(__S(789, __c24, 21))),
+          powerBiDashboardLink: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "TestDrive" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          leadGeneration: S.optional(S.NullOr(__S(787, __c24, 19))),
+          testDrive: S.optional(S.NullOr(__S(790, __c24, 22))),
+        }),
+      ).annotate({ identifier: "OfferMetadata" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          uri: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Image" });
+    case 25:
+      return S.Array(__S(792, __c24, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          context: S.optional(S.NullOr(S.String)),
+          items: S.optional(S.NullOr(__S(793, __c24, 25))),
+        }),
+      ).annotate({ identifier: "ImageGroup" });
+    case 27:
+      return S.Array(__S(794, __c24, 26));
+    case 28:
+      return S.Array(__S(789, __c24, 21));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptions: S.optional(S.NullOr(__S(160, __c5, 0))),
+          tenants: S.optional(S.NullOr(__S(160, __c5, 0))),
+          users: S.optional(S.NullOr(__S(160, __c5, 0))),
+          groups: S.optional(S.NullOr(__S(160, __c5, 0))),
+        }),
+      ).annotate({ identifier: "RestrictedAudience" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.NullOr(S.String)),
+          isPIRequired: S.optional(S.Boolean),
+          listPrice: S.optional(S.Number),
+          msrp: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Price" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          termId: S.optional(S.NullOr(S.String)),
+          quantity: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "IncludedQuantityProperty" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(799, __c24, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          meterId: S.optional(S.NullOr(S.String)),
+          partNumber: S.optional(S.NullOr(S.String)),
+          consumptionResourceId: S.optional(S.NullOr(S.String)),
+          price: S.optional(S.NullOr(__S(798, __c24, 30))),
+          type: S.optional(S.NullOr(S.String)),
+          includedQuantityProperties: S.optional(S.NullOr(__S(800, __c25, 0))),
+        }),
+      ).annotate({ identifier: "Meter" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          parameter: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "TermDescriptionParameter" });
+    case 3:
+      return S.Array(__S(802, __c25, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          minimumProratedUnits: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ProrationPolicy" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          billingPeriod: S.optional(S.NullOr(S.String)),
+          title: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          price: S.optional(S.NullOr(__S(798, __c24, 30))),
+        }),
+      ).annotate({ identifier: "BillingPlan" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          termDescriptionParameters: S.optional(S.NullOr(__S(803, __c25, 3))),
+          termId: S.optional(S.NullOr(S.String)),
+          termUnits: S.optional(S.NullOr(S.String)),
+          prorationPolicy: S.optional(S.NullOr(__S(804, __c25, 4))),
+          termDescription: S.optional(S.NullOr(S.String)),
+          price: S.optional(S.NullOr(__S(798, __c24, 30))),
+          renewTermId: S.optional(S.NullOr(S.String)),
+          renewTermUnits: S.optional(S.NullOr(S.String)),
+          billingPlan: S.optional(S.NullOr(__S(805, __c25, 5))),
+          renewToTermBillingPlan: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Term" });
+    case 7:
+      return S.Array(__S(806, __c25, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          exclusionProperties: S.optional(S.NullOr(__S(160, __c5, 0))),
+          inclusionProperties: S.optional(S.NullOr(__S(160, __c5, 0))),
+        }),
+      ).annotate({ identifier: "PIFilter" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          remediationId: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Remediation" });
+    case 10:
+      return S.Array(__S(809, __c25, 9));
+    case 11:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(812, __c25, 12)));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          partitionKey: S.optional(S.NullOr(S.String)),
+          ts: S.optional(S.Number),
+          actions: S.optional(S.NullOr(__S(160, __c5, 0))),
+          market: S.optional(S.NullOr(S.String)),
+          isPIRequired: S.optional(S.Boolean),
+          appId: S.optional(S.NullOr(S.String)),
+          planID: S.optional(S.NullOr(S.String)),
+          meterId: S.optional(S.NullOr(S.String)),
+          meter: S.optional(S.NullOr(__S(801, __c25, 1))),
+          pricingAudience: S.optional(S.String),
+          terms: S.optional(S.NullOr(__S(807, __c25, 7))),
+          piFilter: S.optional(S.NullOr(__S(808, __c25, 8))),
+          isStopSell: S.optional(S.Boolean),
+          hasFreeTrials: S.optional(S.Boolean),
+          assetBehaviors: S.optional(S.NullOr(__S(160, __c5, 0))),
+          consumptionUnitType: S.optional(S.NullOr(S.String)),
+          displayRank: S.optional(S.Number),
+          remediationRequired: S.optional(S.Boolean),
+          remediations: S.optional(S.NullOr(__S(810, __c25, 10))),
+          startDate: S.optional(S.NullOr(S.Number)),
+          endDate: S.optional(S.NullOr(S.Number)),
+          planAvailabilities: S.optional(S.NullOr(__S(811, __c25, 11))),
+        }),
+      ).annotate({ identifier: "AvailabilityEntity" });
+    case 13:
+      return S.Array(__S(812, __c25, 12));
+    case 14:
+      return S.Record(S.String, S.Unknown);
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(S.NullOr(__S(814, __c25, 14))),
+        }),
+      ).annotate({ identifier: "OpenProperty" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          family: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "OperatingSystem" });
+    case 17:
+      return S.Array(S.Number);
+    case 18:
+      return S.Record(S.String, __S(817, __c25, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          billingTag: S.optional(S.NullOr(S.String)),
+          customMeterIds: S.optional(S.NullOr(__S(818, __c25, 18))),
+        }),
+      ).annotate({ identifier: "BillingComponent" });
+    case 20:
+      return S.Array(__S(819, __c25, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.optional(S.NullOr(S.String)),
+          discountPercentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PurchaseDurationDiscount" });
+    case 22:
+      return S.Array(__S(821, __c25, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          termId: S.optional(S.NullOr(S.String)),
+          upn: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "TermUpn" });
+    case 24:
+      return S.Array(__S(823, __c25, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          displayName: S.optional(S.NullOr(S.String)),
+          summary: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          restrictedAudience: S.optional(S.NullOr(__S(797, __c24, 29))),
+          skuId: S.optional(S.NullOr(S.String)),
+          planId: S.optional(S.NullOr(S.String)),
+          legacyPlanId: S.optional(S.NullOr(S.String)),
+          keywords: S.optional(S.NullOr(__S(160, __c5, 0))),
+          type: S.optional(S.String),
+          leadGeneration: S.optional(S.NullOr(__S(787, __c24, 19))),
+          testDrive: S.optional(S.NullOr(__S(790, __c24, 22))),
+          availabilities: S.optional(S.NullOr(__S(813, __c25, 13))),
+          categoryIds: S.optional(S.NullOr(__S(160, __c5, 0))),
+          conversionPaths: S.optional(S.NullOr(__S(160, __c5, 0))),
+          metadata: S.optional(S.NullOr(__S(815, __c25, 15))),
+          operatingSystem: S.optional(S.NullOr(__S(816, __c25, 16))),
+          uiDefinitionUri: S.optional(S.NullOr(S.String)),
+          artifacts: S.optional(S.NullOr(__S(786, __c24, 18))),
+          version: S.optional(S.NullOr(S.String)),
+          itemName: S.optional(S.NullOr(S.String)),
+          isPrivate: S.optional(S.Boolean),
+          isHidden: S.optional(S.Boolean),
+          hasFreeTrials: S.optional(S.Boolean),
+          isByol: S.optional(S.Boolean),
+          isFree: S.optional(S.Boolean),
+          isPayg: S.optional(S.Boolean),
+          isStopSell: S.optional(S.Boolean),
+          stopSellInfo: S.optional(S.NullOr(__S(769, __c24, 1))),
+          altStackReference: S.optional(S.NullOr(S.String)),
+          stackType: S.optional(S.NullOr(S.String)),
+          altArchitectureReference: S.optional(S.NullOr(S.String)),
+          architectureType: S.optional(S.NullOr(S.String)),
+          cspState: S.optional(S.NullOr(S.String)),
+          resourceProviderNamespace: S.optional(S.NullOr(S.String)),
+          resourceType: S.optional(S.NullOr(S.String)),
+          minQuantity: S.optional(S.NullOr(S.Number)),
+          maxQuantity: S.optional(S.NullOr(S.Number)),
+          isQuantifiable: S.optional(S.Boolean),
+          callToAction: S.optional(S.NullOr(S.String)),
+          redirectUrl: S.optional(S.NullOr(S.String)),
+          serviceIdentifier: S.optional(S.NullOr(S.String)),
+          vmSecurityType: S.optional(S.NullOr(S.String)),
+          displayRank: S.optional(S.NullOr(S.String)),
+          billingComponents: S.optional(S.NullOr(__S(820, __c25, 20))),
+          purchaseDurationDiscounts: S.optional(S.NullOr(__S(822, __c25, 22))),
+          upns: S.optional(S.NullOr(__S(824, __c25, 24))),
+          hasRI: S.optional(S.Boolean),
+          isHiddenPrivateOffer: S.optional(S.NullOr(S.Boolean)),
+          certifications: S.optional(S.NullOr(__S(782, __c24, 14))),
+          pricingTypes: S.optional(S.NullOr(__S(864, __c27, 0))),
+        }),
+      ).annotate({ identifier: "Plan" });
+    case 26:
+      return S.Array(__S(825, __c25, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          uiDefinitionFileUri: S.optional(S.NullOr(S.String)),
+          defaultDeploymentTemplateId: S.optional(S.NullOr(S.String)),
+          deploymentTemplateFileUris: S.optional(S.NullOr(__S(771, __c24, 3))),
+          deploymentFragmentFileUris: S.optional(S.NullOr(__S(771, __c24, 3))),
+        }),
+      ).annotate({ identifier: "DefinitionTemplates" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          m365CertificationType: S.optional(S.Number),
+          m365CertificationDetailsUrl: S.optional(S.NullOr(S.String)),
+          m365CertificationId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "M365CertificationInfo" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          pricingOptions: S.optional(S.Number),
+          hasPrices: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "UIPricing" });
+    case 30:
+      return S.Record(S.String, __S(829, __c25, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          appSourceCs: S.optional(S.Number),
+          appSourceApps: S.optional(S.Number),
+          ampCs: S.optional(S.Number),
+          ampApps: S.optional(S.Number),
+          azurePortalApps: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PopularityEnrichedData" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          totalRatings: S.optional(S.Number),
+          source: S.optional(S.String),
+          averageRating: S.optional(S.Number),
+          createdAt: S.optional(S.String),
+          externalOfferReference: S.optional(S.NullOr(S.String)),
+          starsDistribution: S.optional(S.NullOr(__S(832, __c26, 0))),
+          buckets: S.optional(S.NullOr(__S(160, __c5, 0))),
+        }),
+      ).annotate({ identifier: "RatingSummary" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          appSource: S.optional(S.NullOr(__S(833, __c26, 1))),
+          amp: S.optional(S.NullOr(__S(833, __c26, 1))),
+          azurePortal: S.optional(S.NullOr(__S(833, __c26, 1))),
+          g2: S.optional(S.NullOr(__S(833, __c26, 1))),
+        }),
+      ).annotate({ identifier: "RatingEnrichedData" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          tags: S.optional(S.NullOr(__S(160, __c5, 0))),
+          popularity: S.optional(S.NullOr(__S(831, __c25, 31))),
+          rating: S.optional(S.NullOr(__S(834, __c26, 2))),
+          isAzureBenefitEligible: S.optional(S.Boolean),
+          isSolutionMap: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "EnrichedData" });
+    case 4:
+      return S.Array(S.Number);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          language: S.String,
+          displayName: S.optional(S.NullOr(S.String)),
+          hasStandardContractAmendments: S.optional(S.Boolean),
+          publisherMpnId: S.optional(S.NullOr(S.String)),
+          sellerId: S.optional(S.NullOr(S.String)),
+          publisherId: S.optional(S.NullOr(S.String)),
+          partnerCenterId: S.optional(S.NullOr(S.String)),
+          publisherDisplayName: S.optional(S.NullOr(S.String)),
+          offerId: S.String,
+          legacyId: S.String,
+          determinedStorefronts: S.optional(S.NullOr(__S(864, __c27, 0))),
+          standardContractAmendmentsRevisionId: S.optional(S.String),
+          universalAmendmentUrl: S.optional(S.NullOr(S.String)),
+          summary: S.optional(S.NullOr(S.String)),
+          longSummary: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          offerType: S.optional(S.String),
+          isPrivate: S.optional(S.Boolean),
+          isPreview: S.optional(S.Boolean),
+          isStopSell: S.optional(S.Boolean),
+          stopSellInfo: S.optional(S.NullOr(__S(769, __c24, 1))),
+          fulfillBeforeChargeEligible: S.optional(S.Boolean),
+          marketingMaterial: S.optional(S.NullOr(__S(770, __c24, 2))),
+          markets: S.optional(S.NullOr(__S(160, __c5, 0))),
+          isvContactDetails: S.optional(S.NullOr(__S(771, __c24, 3))),
+          bigId: S.String,
+          ocpSolutionId: S.optional(S.NullOr(S.String)),
+          legalTermsUri: S.optional(S.NullOr(S.String)),
+          cspLegalTermsUri: S.optional(S.NullOr(S.String)),
+          legalTermsType: S.optional(S.String),
+          privacyPolicyUri: S.optional(S.NullOr(S.String)),
+          helpLink: S.optional(S.NullOr(S.String)),
+          supportUri: S.optional(S.NullOr(S.String)),
+          version: S.optional(S.NullOr(S.String)),
+          uiDefinitionUri: S.optional(S.NullOr(S.String)),
+          categoryIds: S.optional(S.NullOr(__S(160, __c5, 0))),
+          operatingSystems: S.optional(S.NullOr(__S(160, __c5, 0))),
+          marketCode: S.optional(S.NullOr(S.String)),
+          marketStates: S.optional(S.NullOr(__S(160, __c5, 0))),
+          industryIds: S.optional(S.NullOr(__S(160, __c5, 0))),
+          primaryIndustry: S.optional(S.NullOr(__S(160, __c5, 0))),
+          primaryCategories: S.optional(S.NullOr(__S(160, __c5, 0))),
+          cloudIndustryCategories: S.optional(S.NullOr(__S(160, __c5, 0))),
+          primaryProduct: S.optional(S.NullOr(S.String)),
+          supportedProducts: S.optional(S.NullOr(__S(160, __c5, 0))),
+          applicableProducts: S.optional(S.NullOr(__S(160, __c5, 0))),
+          serviceType: S.optional(S.NullOr(S.String)),
+          competencies: S.optional(S.NullOr(__S(773, __c24, 5))),
+          hasPrices: S.optional(S.NullOr(S.Boolean)),
+          duration: S.optional(S.NullOr(__S(774, __c24, 6))),
+          marketPricingDetails: S.optional(S.NullOr(__S(779, __c24, 11))),
+          startingPrice: S.optional(S.NullOr(__S(780, __c24, 12))),
+          pricing: S.optional(S.NullOr(__S(777, __c24, 9))),
+          solutionAreas: S.optional(S.NullOr(__S(160, __c5, 0))),
+          screenshotUris: S.optional(S.NullOr(__S(160, __c5, 0))),
+          links: S.optional(S.NullOr(__S(782, __c24, 14))),
+          filters: S.optional(S.NullOr(__S(784, __c24, 16))),
+          iconFileUris: S.optional(S.NullOr(__S(771, __c24, 3))),
+          artifacts: S.optional(S.NullOr(__S(786, __c24, 18))),
+          metadata: S.optional(S.NullOr(__S(791, __c24, 23))),
+          properties: S.optional(S.NullOr(__S(771, __c24, 3))),
+          images: S.optional(S.NullOr(__S(795, __c24, 27))),
+          videos: S.optional(S.NullOr(__S(796, __c24, 28))),
+          plans: S.optional(S.NullOr(__S(826, __c25, 26))),
+          resourceGroupName: S.optional(S.NullOr(S.String)),
+          definitionTemplates: S.optional(S.NullOr(__S(827, __c25, 27))),
+          additionalProperties: S.optional(S.NullOr(__S(771, __c24, 3))),
+          restrictedAudience: S.optional(S.NullOr(__S(797, __c24, 29))),
+          isDeleted: S.optional(S.Boolean),
+          isThirdParty: S.optional(S.Boolean),
+          groupId: S.optional(S.NullOr(S.String)),
+          hideKeys: S.optional(S.NullOr(__S(160, __c5, 0))),
+          keywords: S.optional(S.NullOr(__S(160, __c5, 0))),
+          popularity: S.optional(S.Number),
+          pricingDetailsUri: S.optional(S.NullOr(S.String)),
+          hasFreeTrials: S.optional(S.Boolean),
+          isByol: S.optional(S.Boolean),
+          isMacc: S.optional(S.Boolean),
+          hasFreePlans: S.optional(S.Boolean),
+          isQuantifiable: S.optional(S.Boolean),
+          altStackReference: S.optional(S.NullOr(S.String)),
+          hasPaygPlans: S.optional(S.Boolean),
+          isReseller: S.optional(S.Boolean),
+          ttl: S.optional(S.NullOr(S.Number)),
+          isExcludedFromSearch: S.optional(S.Boolean),
+          applicableStoreFronts: S.optional(S.NullOr(S.Number)),
+          offerVersion: S.optional(S.NullOr(S.String)),
+          isMicrosoftProduct: S.optional(S.NullOr(S.Boolean)),
+          productOwnershipSellingMotion: S.optional(S.NullOr(S.String)),
+          documentLinks: S.optional(S.NullOr(__S(782, __c24, 14))),
+          offerEnvironment: S.optional(S.Number),
+          linkedAddIns: S.optional(S.NullOr(__S(160, __c5, 0))),
+          linkedAddInsTypes: S.optional(S.NullOr(__S(771, __c24, 3))),
+          excludeFromBootstrap: S.optional(S.Boolean),
+          hydrationNotificationReceivedAt: S.optional(S.NullOr(S.String)),
+          bigCatLastModifiedDate: S.optional(S.NullOr(S.String)),
+          disableSendEmailOnPurchase: S.optional(S.Boolean),
+          hideFromSaasBlade: S.optional(S.Boolean),
+          integratedWithMicrosoftGraphApi: S.optional(S.Boolean),
+          multiTenantAadAppId: S.optional(S.NullOr(S.String)),
+          licenseManagementType: S.optional(S.NullOr(S.String)),
+          licenseModel: S.optional(S.NullOr(S.String)),
+          pbiServicePrincipalIds: S.optional(S.NullOr(__S(160, __c5, 0))),
+          isCoreVm: S.optional(S.NullOr(S.Boolean)),
+          m365CertificationInfo: S.optional(S.NullOr(__S(828, __c25, 28))),
+          downloadLink: S.optional(S.NullOr(S.String)),
+          downloadSampleLink: S.optional(S.NullOr(S.String)),
+          omexAssetId: S.optional(S.NullOr(S.String)),
+          mixProductId: S.optional(S.NullOr(S.String)),
+          appFreeType: S.optional(S.NullOr(S.String)),
+          storeFrontPricings: S.optional(S.NullOr(__S(830, __c25, 30))),
+          hasRIPlans: S.optional(S.Boolean),
+          enrichedData: S.optional(S.NullOr(__S(835, __c26, 3))),
+          capabilities: S.optional(S.NullOr(__S(836, __c26, 4))),
+          releaseDate: S.optional(S.NullOr(S.String)),
+          hideFromAdminPortal: S.optional(S.Boolean),
+          awards: S.optional(S.NullOr(__S(160, __c5, 0))),
+          powerBIVisualId: S.optional(S.NullOr(S.String)),
+          pricingTypes: S.optional(S.NullOr(__S(864, __c27, 0))),
+          autoRunLaunchEvents: S.optional(S.NullOr(__S(160, __c5, 0))),
+          service: S.optional(S.NullOr(S.String)),
+          serviceId: S.optional(S.NullOr(S.String)),
+          productType: S.optional(S.NullOr(S.String)),
+          productFamily: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(S.String)),
+          partitionKey: S.optional(S.NullOr(S.String)),
+          ts: S.optional(S.Number),
+          searchScore: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "CatalogItem" });
+    case 6:
+      return S.Array(__S(837, __c26, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageLink: S.optional(S.NullOr(S.String)),
+          count: S.optional(S.NullOr(S.Number)),
+          items: S.optional(S.NullOr(__S(838, __c26, 6))),
+        }),
+      ).annotate({ identifier: "PageResultOfCatalogItem" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/keys",
+            code: 200,
+            apiVersion: "2023-01-01-preview",
+          }),
+        ),
+      ).annotate({ identifier: "ListGetApiKeysRequest" });
+    case 1:
+      return S.Array(__S(928, __c29, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(897, __c28, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApiKeys" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyAlias: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApiKey" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Marketplace/operations",
+            code: 200,
+            apiVersion: "2023-01-01-preview",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(961, __c30, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(962, __c30, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(963, __c30, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccountId: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+          excludePublicOffersAndPublicPlans: S.optional(S.Boolean.pipe(T.Query())),
+          locations: S.optional(S.String.pipe(T.Query())),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _select: S.optional(S.String.pipe(T.Query("$select"))),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          _orderBy: S.optional(S.String.pipe(T.Query("$orderBy"))),
+          _search: S.optional(S.String.pipe(T.Query("$search"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/products",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProductListByBillingAccountRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          planId: S.optional(S.String),
+          uniquePlanId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          vmArchitectureType: S.optional(S.String),
+          cspState: S.optional(S.String),
+          metadata: S.optional(__S(224, __c7, 0)),
+          altStackReference: S.optional(S.String),
+          stackType: S.optional(S.String),
+          altArchitectureReference: S.optional(S.String),
+          categoryIds: S.optional(__S(160, __c5, 0)),
+          hasProtectedArtifacts: S.optional(S.Boolean),
+          pricingTypes: S.optional(__S(160, __c5, 0)),
+          vmSecuritytypes: S.optional(__S(160, __c5, 0)),
+          summary: S.optional(S.String),
+          description: S.optional(S.String),
+          skuId: S.optional(S.String),
+          planType: S.String,
+          displayRank: S.optional(S.String),
+          isPrivate: S.optional(S.Boolean),
+          hasRi: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PlanSummary" });
+    case 1:
+      return S.Array(__S(1024, __c32, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          popularity: S.optional(S.Number),
+          categoryIds: S.optional(__S(160, __c5, 0)),
+          industryIds: S.optional(__S(160, __c5, 0)),
+          publisherId: S.optional(S.String),
+          azureBenefit: S.optional(S.String),
+          badges: S.optional(__S(160, __c5, 0)),
+          publisherType: S.optional(S.String),
+          publishingStage: S.optional(S.String),
+          uniqueProductId: S.String,
+          productType: S.String,
+          productSubType: S.optional(S.String),
+          productFamily: S.optional(S.String),
+          operatingSystems: S.optional(__S(160, __c5, 0)),
+          pricingTypes: S.optional(__S(160, __c5, 0)),
+          publisherDisplayName: S.optional(S.String),
+          longSummary: S.optional(S.String),
+          summary: S.optional(S.String),
+          smallIconUri: S.optional(S.String),
+          description: S.optional(S.String),
+          cspLegalTermsUri: S.optional(S.String),
+          privacyPolicyUri: S.optional(S.String),
+          ratingBuckets: S.optional(__S(160, __c5, 0)),
+          ratingAverage: S.optional(S.Number),
+          ratingCount: S.optional(S.Number),
+          supportedProducts: S.optional(__S(160, __c5, 0)),
+          applicableProducts: S.optional(__S(160, __c5, 0)),
+          lastModifiedDateTime: S.optional(S.String),
+          locations: S.optional(__S(160, __c5, 0)),
+          serviceFamily: S.optional(S.String),
+          service: S.optional(S.String),
+          productId: S.optional(S.String),
+          hasRiPlans: S.optional(S.Boolean),
+          hasMarketplaceFootprint: S.optional(S.Boolean),
+          attributes: S.optional(__S(193, __c6, 1)),
+          offeringType: S.optional(S.String),
+          plans: S.optional(__S(1025, __c32, 1)),
+        }),
+      ).annotate({ identifier: "ProductSummary" });
+    case 3:
+      return S.Array(__S(1026, __c32, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1027, __c32, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductSummaryListResult" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -137,8 +137,8 @@ export const createAccountTrackRulesPreview: API.OperationMethod<
   CreateAccountTrackRulesPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateAccountTrackRulesPreviewRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<AccountTrackRulePreview>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateAccountTrackRulesPreviewRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<AccountTrackRulePreview>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -151,8 +151,8 @@ export const createAccountTrackRulesRun: API.OperationMethod<
   CreateAccountTrackRulesRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateAccountTrackRulesRunRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateAccountTrackRulesRunResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateAccountTrackRulesRunRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CreateAccountTrackRulesRunResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -165,8 +165,8 @@ export const listAccountTrackRules: API.OperationMethod<
   ListAccountTrackRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListAccountTrackRulesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AccountTrackRulesConfig>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListAccountTrackRulesRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AccountTrackRulesConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -179,8 +179,8 @@ export const listAccountTrackRulesRuns: API.OperationMethod<
   ListAccountTrackRulesRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListAccountTrackRulesRunsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<PaginatedAccountTrackRuleRunViewList>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListAccountTrackRulesRunsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<PaginatedAccountTrackRuleRunViewList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -193,8 +193,8 @@ export const updateAccountTrackRule: API.OperationMethod<
   UpdateAccountTrackRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<UpdateAccountTrackRuleRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AccountTrackRulesConfig>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateAccountTrackRuleRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AccountTrackRulesConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -202,6 +202,58 @@ export const updateAccountTrackRule: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          schema_version: S.Number,
+          version: S.Number,
+          enabled: S.Boolean,
+          groups: __S(13, __c1, 5),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/account_track_rules/preview/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountTrackRulesPreviewRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          external_id: S.NullOr(S.String),
+          rule_values: __S(1, __c0, 1),
+        }),
+      ).annotate({ identifier: "AccountTrackRuleSample" });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          config_version: S.Number,
+          eligible_active: S.Number,
+          skipped_churned: S.Number,
+          tracked: S.Number,
+          ignored: S.Number,
+          newly_ignored: S.Number,
+          restored: S.Number,
+          tracked_samples: __S(3, __c0, 3),
+          ignored_samples: __S(3, __c0, 3),
+          validation_errors: S.optional(__S(4, __c0, 4)),
+        }),
+      ).annotate({ identifier: "AccountTrackRulePreview" });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -216,76 +268,28 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          field: __S(0, __c0, 0),
+          field: __S(8, __c1, 0),
           operator: S.String,
-          values: S.optional(__S(1, __c0, 1)),
+          values: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "AccountTrackRuleCondition",
       });
     case 3:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(10, __c1, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(3, __c0, 3),
+          conditions: __S(11, __c1, 3),
         }),
       ).annotate({ identifier: "AccountTrackRuleGroup" });
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          schema_version: S.Number,
-          version: S.Number,
-          enabled: S.Boolean,
-          groups: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/account_track_rules/preview/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountTrackRulesPreviewRequest",
-      });
-    case 7:
-      return S.Record(S.String, S.Unknown);
+      return S.Array(__S(12, __c1, 4));
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          external_id: S.NullOr(S.String),
-          rule_values: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "AccountTrackRuleSample" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          config_version: S.Number,
-          eligible_active: S.Number,
-          skipped_churned: S.Number,
-          tracked: S.Number,
-          ignored: S.Number,
-          newly_ignored: S.Number,
-          restored: S.Number,
-          tracked_samples: __S(9, __c1, 1),
-          ignored_samples: __S(9, __c1, 1),
-          validation_errors: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "AccountTrackRulePreview" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -301,11 +305,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAccountTrackRulesRunRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateAccountTrackRulesRunResponse",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -319,18 +327,22 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListAccountTrackRulesRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           schema_version: S.Number,
           version: S.Number,
           enabled: S.Boolean,
-          groups: __S(5, __c0, 5),
+          groups: __S(13, __c1, 5),
         }),
       ).annotate({ identifier: "AccountTrackRulesConfig" });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -369,26 +381,30 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AccountTrackRuleRunView" });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(18, __c2, 2),
+          results: __S(42, __c5, 2),
         }),
       ).annotate({
         identifier: "PaginatedAccountTrackRuleRunViewList",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           schema_version: S.Number,
           version: S.Number,
           enabled: S.Boolean,
-          groups: __S(5, __c0, 5),
+          groups: __S(13, __c1, 5),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -401,7 +417,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

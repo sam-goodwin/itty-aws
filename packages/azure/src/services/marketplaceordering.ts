@@ -272,7 +272,7 @@ export const CancelMarketplaceAgreement: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelMarketplaceAgreementRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CancelMarketplaceAgreementResponse>,
+  output: __S(16, __c2, 0) as any as S.Schema<CancelMarketplaceAgreementResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -286,8 +286,8 @@ export const CreateMarketplaceAgreement: API.OperationMethod<
   CreateMarketplaceAgreementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateMarketplaceAgreementRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateMarketplaceAgreementResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateMarketplaceAgreementRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<CreateMarketplaceAgreementResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -301,8 +301,8 @@ export const GetMarketplaceAgreement: API.OperationMethod<
   GetMarketplaceAgreementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetMarketplaceAgreementRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetMarketplaceAgreementResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetMarketplaceAgreementRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetMarketplaceAgreementResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -316,8 +316,8 @@ export const GetMarketplaceAgreementAgreement: API.OperationMethod<
   GetMarketplaceAgreementAgreementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetMarketplaceAgreementAgreementRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetMarketplaceAgreementAgreementResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetMarketplaceAgreementAgreementRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetMarketplaceAgreementAgreementResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -331,8 +331,8 @@ export const ListMarketplaceAgreements: API.OperationMethod<
   ListMarketplaceAgreementsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ListMarketplaceAgreementsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OldAgreementTermsList>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListMarketplaceAgreementsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<OldAgreementTermsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -346,8 +346,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<OperationListResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -361,8 +361,8 @@ export const SignMarketplaceAgreement: API.OperationMethod<
   SignMarketplaceAgreementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<SignMarketplaceAgreementRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<SignMarketplaceAgreementResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<SignMarketplaceAgreementRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<SignMarketplaceAgreementResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -389,7 +389,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelMarketplaceAgreementRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -400,18 +404,50 @@ function __c0(j: number): any {
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "OldAgreementProperties" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "CancelMarketplaceAgreementResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          offerType: S.String.pipe(T.Label()),
+          publisherId: S.String.pipe(T.Label()),
+          offerId: S.String.pipe(T.Label()),
+          planId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(32, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/offerTypes/{offerType}/publishers/{publisherId}/offers/{offerId}/plans/{planId}/agreements/current",
+            code: 200,
+            apiVersion: "2021-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateMarketplaceAgreementRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           publisher: S.optional(S.String),
@@ -425,27 +461,7 @@ function __c0(j: number): any {
           accepted: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AgreementProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          offerType: S.String.pipe(T.Label()),
-          publisherId: S.String.pipe(T.Label()),
-          offerId: S.String.pipe(T.Label()),
-          planId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3, __c0, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/offerTypes/{offerType}/publishers/{publisherId}/offers/{offerId}/plans/{planId}/agreements/current",
-            code: 200,
-            apiVersion: "2021-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateMarketplaceAgreementRequest",
-      });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -458,19 +474,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateMarketplaceAgreementResponseSystemData",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(3, __c0, 3)),
-          systemData: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(32, __c4, 0)),
+          systemData: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "CreateMarketplaceAgreementResponse",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -491,7 +511,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -511,7 +531,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetMarketplaceAgreementAgreementRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -526,24 +550,28 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListMarketplaceAgreementsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "OldAgreementTerms" });
+    case 2:
+      return S.Array(__S(57, __c7, 1));
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(11, __c1, 3)),
+          value: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "OldAgreementTermsList" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -554,7 +582,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -563,27 +591,27 @@ function __c1(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(14, __c1, 6)),
+          display: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "Operation" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(66, __c8, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(16, __c2, 0)),
+          value: S.optional(__S(67, __c8, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -603,7 +631,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

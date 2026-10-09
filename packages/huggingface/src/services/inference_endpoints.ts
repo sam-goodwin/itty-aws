@@ -67,7 +67,7 @@ export const checkEndpointAccess: API.OperationMethod<
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CheckEndpointAccessRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CheckEndpointAccessResponse>,
+  output: __S(6, __c1, 2) as any as S.Schema<CheckEndpointAccessResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -81,8 +81,8 @@ export const checkNamespaceAccess: API.OperationMethod<
   CheckNamespaceAccessError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CheckNamespaceAccessRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CheckNamespaceAccessResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CheckNamespaceAccessRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<CheckNamespaceAccessResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -113,7 +113,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckEndpointAccessRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -122,7 +126,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckEndpointAccessResponseNamespace",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -132,17 +136,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckEndpointAccessResponseUser",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          namespace: __S(1, __c0, 1),
-          user: __S(2, __c0, 2),
+          namespace: __S(4, __c1, 0),
+          user: __S(5, __c1, 1),
           resourceGroupId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CheckEndpointAccessResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -165,7 +173,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1898,8 +1898,12 @@ export const cancelOrganizationsLocationsGlobalOperations: API.OperationMethod<
   CancelOrganizationsLocationsGlobalOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelOrganizationsLocationsGlobalOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(
+    1056,
+    __c33,
+    0,
+  ) as any as S.Schema<CancelOrganizationsLocationsGlobalOperationsRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1918,8 +1922,8 @@ export const cancelProjectsLocationsGlobalOperations: API.OperationMethod<
   CancelProjectsLocationsGlobalOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelProjectsLocationsGlobalOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(1120, __c35, 0) as any as S.Schema<CancelProjectsLocationsGlobalOperationsRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1938,8 +1942,12 @@ export const createOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod
   CreateOrganizationsLocationsVpcFlowLogsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateOrganizationsLocationsVpcFlowLogsConfigsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(
+    1152,
+    __c36,
+    0,
+  ) as any as S.Schema<CreateOrganizationsLocationsVpcFlowLogsConfigsRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1958,8 +1966,12 @@ export const createProjectsLocationsGlobalConnectivityTests: API.OperationMethod
   CreateProjectsLocationsGlobalConnectivityTestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CreateProjectsLocationsGlobalConnectivityTestsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(
+    1376,
+    __c43,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsGlobalConnectivityTestsRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1978,8 +1990,8 @@ export const createProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   CreateProjectsLocationsVpcFlowLogsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreateProjectsLocationsVpcFlowLogsConfigsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(1472, __c46, 0) as any as S.Schema<CreateProjectsLocationsVpcFlowLogsConfigsRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1998,8 +2010,12 @@ export const deleteOrganizationsLocationsGlobalOperations: API.OperationMethod<
   DeleteOrganizationsLocationsGlobalOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteOrganizationsLocationsGlobalOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(
+    1504,
+    __c47,
+    0,
+  ) as any as S.Schema<DeleteOrganizationsLocationsGlobalOperationsRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2018,8 +2034,8 @@ export const deleteOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod
   DeleteOrganizationsLocationsVpcFlowLogsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2038,8 +2054,8 @@ export const deleteProjectsLocationsGlobalConnectivityTests: API.OperationMethod
   DeleteProjectsLocationsGlobalConnectivityTestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteProjectsLocationsGlobalConnectivityTestsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteProjectsLocationsGlobalConnectivityTestsRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2058,8 +2074,8 @@ export const deleteProjectsLocationsGlobalOperations: API.OperationMethod<
   DeleteProjectsLocationsGlobalOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteProjectsLocationsGlobalOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteProjectsLocationsGlobalOperationsRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2078,8 +2094,8 @@ export const deleteProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   DeleteProjectsLocationsVpcFlowLogsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteProjectsLocationsVpcFlowLogsConfigsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteProjectsLocationsVpcFlowLogsConfigsRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2098,11 +2114,11 @@ export const getEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API
   ShowEffectiveFlowLogsConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    75,
-    __c9,
-    3,
+    128,
+    __c4,
+    0,
   ) as any as S.Schema<GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<ShowEffectiveFlowLogsConfigsResponse>,
+  output: __S(131, __c4, 3) as any as S.Schema<ShowEffectiveFlowLogsConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2121,11 +2137,11 @@ export const getIamPolicyProjectsLocationsGlobalConnectivityTests: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    79,
-    __c9,
-    7,
+    160,
+    __c5,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<Policy>,
+  output: __S(199, __c6, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2139,8 +2155,8 @@ export const getOrganizationsLocations: API.OperationMethod<
   GetOrganizationsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetOrganizationsLocationsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<Location>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetOrganizationsLocationsRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2154,8 +2170,8 @@ export const getOrganizationsLocationsGlobalOperations: API.OperationMethod<
   GetOrganizationsLocationsGlobalOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetOrganizationsLocationsGlobalOperationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetOrganizationsLocationsGlobalOperationsRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2169,8 +2185,8 @@ export const getOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   GetOrganizationsLocationsVpcFlowLogsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetOrganizationsLocationsVpcFlowLogsConfigsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpcFlowLogsConfig>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetOrganizationsLocationsVpcFlowLogsConfigsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<VpcFlowLogsConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2184,8 +2200,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<Location>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2199,8 +2215,8 @@ export const getProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   GetProjectsLocationsGlobalConnectivityTestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetProjectsLocationsGlobalConnectivityTestsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ConnectivityTest>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetProjectsLocationsGlobalConnectivityTestsRequest>,
+  output: __S(1464, __c45, 24) as any as S.Schema<ConnectivityTest>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2214,8 +2230,8 @@ export const getProjectsLocationsGlobalOperations: API.OperationMethod<
   GetProjectsLocationsGlobalOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetProjectsLocationsGlobalOperationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetProjectsLocationsGlobalOperationsRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2229,8 +2245,8 @@ export const getProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   GetProjectsLocationsVpcFlowLogsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetProjectsLocationsVpcFlowLogsConfigsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpcFlowLogsConfig>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetProjectsLocationsVpcFlowLogsConfigsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<VpcFlowLogsConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2245,8 +2261,8 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListOrganizationsLocationsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListLocationsResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListOrganizationsLocationsRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2262,8 +2278,8 @@ export const listOrganizationsLocationsGlobalOperations: API.PaginatedOperationM
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListOrganizationsLocationsGlobalOperationsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ListOperationsResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListOrganizationsLocationsGlobalOperationsRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2279,8 +2295,8 @@ export const listOrganizationsLocationsVpcFlowLogsConfigs: API.PaginatedOperatio
   GcpOpContext,
   ListVpcFlowLogsConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListOrganizationsLocationsVpcFlowLogsConfigsRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListVpcFlowLogsConfigsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListOrganizationsLocationsVpcFlowLogsConfigsRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<ListVpcFlowLogsConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2296,8 +2312,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListLocationsResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2313,8 +2329,8 @@ export const listProjectsLocationsGlobalConnectivityTests: API.PaginatedOperatio
   GcpOpContext,
   ListConnectivityTestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListProjectsLocationsGlobalConnectivityTestsRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListConnectivityTestsResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListProjectsLocationsGlobalConnectivityTestsRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<ListConnectivityTestsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2330,8 +2346,8 @@ export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListProjectsLocationsGlobalOperationsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ListOperationsResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListProjectsLocationsGlobalOperationsRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2347,8 +2363,8 @@ export const listProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMeth
   GcpOpContext,
   ListVpcFlowLogsConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListProjectsLocationsVpcFlowLogsConfigsRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListVpcFlowLogsConfigsResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListProjectsLocationsVpcFlowLogsConfigsRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<ListVpcFlowLogsConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2369,11 +2385,11 @@ export const patchOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    111,
-    __c13,
-    7,
+    832,
+    __c26,
+    0,
   ) as any as S.Schema<PatchOrganizationsLocationsVpcFlowLogsConfigsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2393,11 +2409,11 @@ export const patchProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    112,
-    __c14,
+    864,
+    __c27,
     0,
   ) as any as S.Schema<PatchProjectsLocationsGlobalConnectivityTestsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2416,8 +2432,8 @@ export const patchProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
   PatchProjectsLocationsVpcFlowLogsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<PatchProjectsLocationsVpcFlowLogsConfigsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(896, __c28, 0) as any as S.Schema<PatchProjectsLocationsVpcFlowLogsConfigsRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2436,11 +2452,11 @@ export const queryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.
   QueryOrgVpcFlowLogsConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    114,
-    __c14,
-    2,
+    928,
+    __c29,
+    0,
   ) as any as S.Schema<QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<QueryOrgVpcFlowLogsConfigsResponse>,
+  output: __S(929, __c29, 1) as any as S.Schema<QueryOrgVpcFlowLogsConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2461,11 +2477,11 @@ export const rerunProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    116,
-    __c14,
-    4,
+    960,
+    __c30,
+    0,
   ) as any as S.Schema<RerunProjectsLocationsGlobalConnectivityTestsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(1248, __c39, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2485,11 +2501,11 @@ export const setIamPolicyProjectsLocationsGlobalConnectivityTests: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    118,
-    __c14,
-    6,
+    993,
+    __c31,
+    1,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<Policy>,
+  output: __S(199, __c6, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2509,11 +2525,11 @@ export const testIamPermissionsProjectsLocationsGlobalConnectivityTests: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    120,
-    __c15,
-    0,
+    1025,
+    __c32,
+    1,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(1024, __c32, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2523,14 +2539,722 @@ export const testIamPermissionsProjectsLocationsGlobalConnectivityTests: API.Ope
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsGlobalConnectivityTestsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsGlobalOperationsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsVpcFlowLogsConfigsRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+parent}/vpcFlowLogsConfigs:showEffectiveFlowLogsConfigs",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
+          name: S.optional(S.String),
+          metadataFields: S.optional(__S(1280, __c40, 0)),
+          metadata: S.optional(S.String),
+          crossProjectMetadata: S.optional(S.String),
+          scope: S.optional(S.String),
+          filterExpr: S.optional(S.String),
+          network: S.optional(S.String),
+          flowSampling: S.optional(S.Number),
+          subnet: S.optional(S.String),
+          vpnTunnel: S.optional(S.String),
+          state: S.optional(S.String),
+          interconnectAttachment: S.optional(S.String),
+          connectionLogging: S.optional(S.String),
+          aggregationInterval: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EffectiveVpcFlowLogsConfig",
+      });
+    case 2:
+      return S.Array(__S(129, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(1280, __c40, 0)),
+          nextPageToken: S.optional(S.String),
+          effectiveFlowLogsConfigs: S.optional(__S(130, __c4, 2)),
+        }),
+      ).annotate({
+        identifier: "ShowEffectiveFlowLogsConfigsResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+resource}:getIamPolicy",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          expression: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expr" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          members: S.optional(__S(1280, __c40, 0)),
+          role: S.optional(S.String),
+          condition: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "Binding" });
+    case 2:
+      return S.Array(__S(193, __c6, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({ identifier: "AuditLogConfig" });
+    case 4:
+      return S.Array(__S(195, __c6, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          auditLogConfigs: S.optional(__S(196, __c6, 4)),
+        }),
+      ).annotate({ identifier: "AuditConfig" });
+    case 6:
+      return S.Array(__S(197, __c6, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          bindings: S.optional(__S(194, __c6, 2)),
+          version: S.optional(S.Number),
+          auditConfigs: S.optional(__S(198, __c6, 6)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Policy" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationsLocationsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(1184, __c37, 0)),
+          displayName: S.optional(S.String),
+          labels: S.optional(__S(1312, __c41, 0)),
+          locationId: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Location" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationsLocationsGlobalOperationsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationsLocationsVpcFlowLogsConfigsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsGlobalConnectivityTestsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsGlobalOperationsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsVpcFlowLogsConfigsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(1280, __c40, 0).pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}/locations",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationsLocationsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(256, __c8, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          locations: S.optional(__S(512, __c16, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListLocationsResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}/operations",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationsLocationsGlobalOperationsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1248, __c39, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          operations: S.optional(__S(576, __c18, 0)),
+          unreachable: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+parent}/vpcFlowLogsConfigs",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationsLocationsVpcFlowLogsConfigsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          vpcFlowLogsConfigs: S.optional(__S(672, __c21, 0)),
+          unreachable: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({
+        identifier: "ListVpcFlowLogsConfigsResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1344, __c42, 0));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          extraLocationTypes: S.optional(__S(1280, __c40, 0).pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}/locations",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+parent}/connectivityTests",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsGlobalConnectivityTestsRequest",
+      });
+    case 1:
+      return S.Array(__S(1464, __c45, 24));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(1280, __c40, 0)),
+          resources: S.optional(__S(737, __c23, 1)),
+        }),
+      ).annotate({
+        identifier: "ListConnectivityTestsResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}/operations",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsGlobalOperationsRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+parent}/vpcFlowLogsConfigs",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsVpcFlowLogsConfigsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchOrganizationsLocationsVpcFlowLogsConfigsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1464, __c45, 24).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsGlobalConnectivityTestsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsVpcFlowLogsConfigsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+parent}/vpcFlowLogsConfigs:queryOrgVpcFlowLogsConfigs",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          vpcFlowLogsConfigs: S.optional(__S(672, __c21, 0)),
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({
+        identifier: "QueryOrgVpcFlowLogsConfigsResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1088, __c34, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+name}:rerun",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RerunProjectsLocationsGlobalConnectivityTestsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(199, __c6, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(992, __c31, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+resource}:setIamPolicy",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(1024, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+resource}:testIamPermissions",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1088, __c34, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2541,11 +3265,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelOrganizationsLocationsGlobalOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1088, __c34, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2556,39 +3292,16 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelProjectsLocationsGlobalOperationsRequest",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          interconnectAttachment: S.optional(S.String),
-          state: S.optional(S.String),
-          metadata: S.optional(S.String),
-          connectionLogging: S.optional(S.String),
-          flowSampling: S.optional(S.Number),
-          filterExpr: S.optional(S.String),
-          metadataFields: S.optional(__S(3, __c0, 3)),
-          createTime: S.optional(S.String),
-          targetResourceState: S.optional(S.String),
-          crossProjectMetadata: S.optional(S.String),
-          subnet: S.optional(S.String),
-          aggregationInterval: S.optional(S.String),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          description: S.optional(S.String),
-          vpnTunnel: S.optional(S.String),
-          labels: S.optional(__S(4, __c0, 4)),
-          network: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VpcFlowLogsConfig" });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vpcFlowLogsConfigId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2599,39 +3312,110 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOrganizationsLocationsVpcFlowLogsConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
   }
 }
-function __c1(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(__S(1184, __c37, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(8, __c1, 0)),
+          details: S.optional(__S(1216, __c38, 0)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
-    case 2:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(9, __c1, 1)),
+          error: S.optional(__S(1217, __c38, 1)),
           name: S.optional(S.String),
-          metadata: S.optional(__S(7, __c0, 7)),
-          response: S.optional(__S(7, __c0, 7)),
+          metadata: S.optional(__S(1184, __c37, 0)),
+          response: S.optional(__S(1184, __c37, 0)),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
-    case 3:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          interconnectAttachment: S.optional(S.String),
+          state: S.optional(S.String),
+          metadata: S.optional(S.String),
+          connectionLogging: S.optional(S.String),
+          flowSampling: S.optional(S.Number),
+          filterExpr: S.optional(S.String),
+          metadataFields: S.optional(__S(1280, __c40, 0)),
+          createTime: S.optional(S.String),
+          targetResourceState: S.optional(S.String),
+          crossProjectMetadata: S.optional(S.String),
+          subnet: S.optional(S.String),
+          aggregationInterval: S.optional(S.String),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          description: S.optional(S.String),
+          vpnTunnel: S.optional(S.String),
+          labels: S.optional(__S(1312, __c41, 0)),
+          network: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VpcFlowLogsConfig" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          testId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1464, __c45, 24).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/connectivityTests",
+            baseUrl: "https://networkmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsGlobalConnectivityTestsRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppEngineVersionEndpoint" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
@@ -2639,7 +3423,7 @@ function __c1(j: number): any {
           serviceUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudRunRevisionEndpoint" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           forwardingRuleTarget: S.optional(S.String),
@@ -2648,14 +3432,14 @@ function __c1(j: number): any {
           port: S.optional(S.Number),
           datastreamPrivateConnection: S.optional(S.String),
           redisInstance: S.optional(S.String),
-          appEngineVersion: S.optional(__S(11, __c1, 3)),
+          appEngineVersion: S.optional(__S(1408, __c44, 0)),
           gkeMasterCluster: S.optional(S.String),
-          cloudFunction: S.optional(__S(11, __c1, 3)),
+          cloudFunction: S.optional(__S(1408, __c44, 0)),
           network: S.optional(S.String),
           forwardingRule: S.optional(S.String),
           cloudSqlInstance: S.optional(S.String),
           projectId: S.optional(S.String),
-          cloudRunRevision: S.optional(__S(12, __c1, 4)),
+          cloudRunRevision: S.optional(__S(1409, __c44, 1)),
           gkePod: S.optional(S.String),
           loadBalancerType: S.optional(S.String),
           ipAddress: S.optional(S.String),
@@ -2666,16 +3450,16 @@ function __c1(j: number): any {
           fqdn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Endpoint" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           priority: S.optional(S.Number),
-          targetServiceAccounts: S.optional(__S(3, __c0, 3)),
+          targetServiceAccounts: S.optional(__S(1280, __c40, 0)),
           policyPriority: S.optional(S.Number),
           policy: S.optional(S.String),
           policyUri: S.optional(S.String),
           direction: S.optional(S.String),
-          targetTags: S.optional(__S(3, __c0, 3)),
+          targetTags: S.optional(__S(1280, __c40, 0)),
           targetType: S.optional(S.String),
           networkUri: S.optional(S.String),
           firewallRuleType: S.optional(S.String),
@@ -2684,7 +3468,7 @@ function __c1(j: number): any {
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "FirewallInfo" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
@@ -2696,11 +3480,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DirectVpcEgressConnectionInfo",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           matchedProtocol: S.optional(S.String),
@@ -2717,7 +3497,7 @@ function __c2(j: number): any {
           matchedPortRange: S.optional(S.String),
         }),
       ).annotate({ identifier: "ForwardingRuleInfo" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           matchedIpRange: S.optional(S.String),
@@ -2727,7 +3507,7 @@ function __c2(j: number): any {
           region: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkInfo" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -2735,7 +3515,7 @@ function __c2(j: number): any {
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpcConnectorInfo" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           ruleNumber: S.optional(S.Number),
@@ -2755,7 +3535,7 @@ function __c2(j: number): any {
           oldDestinationPort: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NatInfo" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           destinationIp: S.optional(S.String),
@@ -2767,7 +3547,7 @@ function __c2(j: number): any {
           destinationGeolocationCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DropInfo" });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           secondaryEndpointIpAddress: S.optional(S.String),
@@ -2778,7 +3558,7 @@ function __c2(j: number): any {
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedisClusterInfo" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
@@ -2792,7 +3572,7 @@ function __c2(j: number): any {
           remoteGateway: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpnTunnelInfo" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
@@ -2803,11 +3583,7 @@ function __c2(j: number): any {
           vpnTunnelUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpnGatewayInfo" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           destinationNetworkUri: S.optional(S.String),
@@ -2820,13 +3596,13 @@ function __c3(j: number): any {
           sourceAgentUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointInfo" });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           bucket: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageBucketInfo" });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
@@ -2834,7 +3610,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GkeNetworkPolicySkippedInfo",
       });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.optional(S.String),
@@ -2842,7 +3618,7 @@ function __c3(j: number): any {
           resourceUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ForwardInfo" });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           environment: S.optional(S.String),
@@ -2851,13 +3627,13 @@ function __c3(j: number): any {
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppEngineVersionInfo" });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           negUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerlessNegInfo" });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           selectedIpAddress: S.optional(S.String),
@@ -2865,15 +3641,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ServerlessExternalConnectionInfo",
       });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          destPortRanges: S.optional(__S(3, __c0, 3)),
+          destPortRanges: S.optional(__S(1280, __c40, 0)),
           nextHopNetworkUri: S.optional(S.String),
           originatingRouteDisplayName: S.optional(S.String),
           nextHopUri: S.optional(S.String),
           nextHop: S.optional(S.String),
-          instanceTags: S.optional(__S(3, __c0, 3)),
+          instanceTags: S.optional(__S(1280, __c40, 0)),
           nccSpokeUri: S.optional(S.String),
           originatingRouteUri: S.optional(S.String),
           nccHubUri: S.optional(S.String),
@@ -2885,26 +3661,22 @@ function __c3(j: number): any {
           priority: S.optional(S.Number),
           displayName: S.optional(S.String),
           destIpRange: S.optional(S.String),
-          srcPortRanges: S.optional(__S(3, __c0, 3)),
+          srcPortRanges: S.optional(__S(1280, __c40, 0)),
           advertisedRouteSourceRouterUri: S.optional(S.String),
-          protocols: S.optional(__S(3, __c0, 3)),
+          protocols: S.optional(__S(1280, __c40, 0)),
           advertisedRouteNextHopUri: S.optional(S.String),
           nccHubRouteUri: S.optional(S.String),
           routeType: S.optional(S.String),
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "RouteInfo" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           securityProfileGroupUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "NgfwPacketInspectionInfo" });
-    case 1:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
@@ -2913,7 +3685,7 @@ function __c4(j: number): any {
           versionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudFunctionInfo" });
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.optional(S.String),
@@ -2921,17 +3693,17 @@ function __c4(j: number): any {
           networkUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "GkePodInfo" });
-    case 3:
+    case 24:
       return S.Array(S.String);
-    case 4:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          resourceTypes: S.optional(__S(35, __c4, 3)),
+          resourceTypes: S.optional(__S(1432, __c44, 24)),
         }),
       ).annotate({
         identifier: "ViewerPermissionMissingInfo",
       });
-    case 5:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
@@ -2939,7 +3711,7 @@ function __c4(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudRunJobInfo" });
-    case 6:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
@@ -2950,7 +3722,7 @@ function __c4(j: number): any {
           workerPoolUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudRunRevisionInfo" });
-    case 7:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           internalIp: S.optional(S.String),
@@ -2961,11 +3733,7 @@ function __c4(j: number): any {
           externalIp: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudSQLInstanceInfo" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           dnsEndpoint: S.optional(S.String),
@@ -2975,7 +3743,7 @@ function __c5(j: number): any {
           internalIp: S.optional(S.String),
         }),
       ).annotate({ identifier: "GKEMasterInfo" });
-    case 1:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -2989,7 +3757,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "InterconnectAttachmentInfo",
       });
-    case 2:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           oldSourcePort: S.optional(S.Number),
@@ -3005,13 +3773,17 @@ function __c5(j: number): any {
           oldSourceIp: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProxyConnectionInfo" });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           running: S.optional(S.Boolean),
           internalIp: S.optional(S.String),
           interface: S.optional(S.String),
-          networkTags: S.optional(__S(3, __c0, 3)),
+          networkTags: S.optional(__S(1280, __c40, 0)),
           networkUri: S.optional(S.String),
           externalIp: S.optional(S.String),
           status: S.optional(S.String),
@@ -3021,16 +3793,16 @@ function __c5(j: number): any {
           serviceAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceInfo" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.optional(S.String),
           resourceUri: S.optional(S.String),
           cause: S.optional(S.String),
-          projectsMissingPermission: S.optional(__S(3, __c0, 3)),
+          projectsMissingPermission: S.optional(__S(1280, __c40, 0)),
         }),
       ).annotate({ identifier: "AbortInfo" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -3039,7 +3811,7 @@ function __c5(j: number): any {
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "GkeNetworkPolicyInfo" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -3047,7 +3819,7 @@ function __c5(j: number): any {
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "HybridSubnetInfo" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
@@ -3058,33 +3830,29 @@ function __c5(j: number): any {
           networkUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedisInstanceInfo" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           healthCheckFirewallState: S.optional(S.String),
-          healthCheckAllowingFirewallRules: S.optional(__S(3, __c0, 3)),
-          healthCheckBlockingFirewallRules: S.optional(__S(3, __c0, 3)),
+          healthCheckAllowingFirewallRules: S.optional(__S(1280, __c40, 0)),
+          healthCheckBlockingFirewallRules: S.optional(__S(1280, __c40, 0)),
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoadBalancerBackend" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(1445, __c45, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           loadBalancerType: S.optional(S.String),
-          backends: S.optional(__S(49, __c6, 1)),
+          backends: S.optional(__S(1446, __c45, 6)),
           healthCheckUri: S.optional(S.String),
           backendType: S.optional(S.String),
           backendUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoadBalancerInfo" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.optional(S.String),
@@ -3095,7 +3863,7 @@ function __c6(j: number): any {
           googleServiceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeliverInfo" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
@@ -3104,7 +3872,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "IpMasqueradingSkippedInfo",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           backendServiceUri: S.optional(S.String),
@@ -3119,183 +3887,163 @@ function __c6(j: number): any {
           instanceUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoadBalancerBackendInfo" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           sourceIp: S.optional(S.String),
           googleServiceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleServiceInfo" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          firewall: S.optional(__S(14, __c1, 6)),
-          directVpcEgressConnection: S.optional(__S(15, __c1, 7)),
-          forwardingRule: S.optional(__S(16, __c2, 0)),
-          network: S.optional(__S(17, __c2, 1)),
-          vpcConnector: S.optional(__S(18, __c2, 2)),
-          nat: S.optional(__S(19, __c2, 3)),
-          drop: S.optional(__S(20, __c2, 4)),
-          redisCluster: S.optional(__S(21, __c2, 5)),
-          vpnTunnel: S.optional(__S(22, __c2, 6)),
-          vpnGateway: S.optional(__S(23, __c2, 7)),
+          firewall: S.optional(__S(1411, __c44, 3)),
+          directVpcEgressConnection: S.optional(__S(1412, __c44, 4)),
+          forwardingRule: S.optional(__S(1413, __c44, 5)),
+          network: S.optional(__S(1414, __c44, 6)),
+          vpcConnector: S.optional(__S(1415, __c44, 7)),
+          nat: S.optional(__S(1416, __c44, 8)),
+          drop: S.optional(__S(1417, __c44, 9)),
+          redisCluster: S.optional(__S(1418, __c44, 10)),
+          vpnTunnel: S.optional(__S(1419, __c44, 11)),
+          vpnGateway: S.optional(__S(1420, __c44, 12)),
           projectId: S.optional(S.String),
-          endpoint: S.optional(__S(24, __c3, 0)),
-          storageBucket: S.optional(__S(25, __c3, 1)),
-          gkeNetworkPolicySkipped: S.optional(__S(26, __c3, 2)),
-          forward: S.optional(__S(27, __c3, 3)),
-          appEngineVersion: S.optional(__S(28, __c3, 4)),
-          serverlessNeg: S.optional(__S(29, __c3, 5)),
-          serverlessExternalConnection: S.optional(__S(30, __c3, 6)),
-          route: S.optional(__S(31, __c3, 7)),
-          ngfwPacketInspection: S.optional(__S(32, __c4, 0)),
-          cloudFunction: S.optional(__S(33, __c4, 1)),
-          dmsPrivateConnection: S.optional(__S(11, __c1, 3)),
-          gkePod: S.optional(__S(34, __c4, 2)),
-          viewerPermissionMissingInfo: S.optional(__S(36, __c4, 4)),
-          cloudRunJob: S.optional(__S(37, __c4, 5)),
-          cloudRunRevision: S.optional(__S(38, __c4, 6)),
-          cloudSqlInstance: S.optional(__S(39, __c4, 7)),
-          gkeMaster: S.optional(__S(40, __c5, 0)),
-          interconnectAttachment: S.optional(__S(41, __c5, 1)),
-          proxyConnection: S.optional(__S(42, __c5, 2)),
-          instance: S.optional(__S(43, __c5, 3)),
+          endpoint: S.optional(__S(1421, __c44, 13)),
+          storageBucket: S.optional(__S(1422, __c44, 14)),
+          gkeNetworkPolicySkipped: S.optional(__S(1423, __c44, 15)),
+          forward: S.optional(__S(1424, __c44, 16)),
+          appEngineVersion: S.optional(__S(1425, __c44, 17)),
+          serverlessNeg: S.optional(__S(1426, __c44, 18)),
+          serverlessExternalConnection: S.optional(__S(1427, __c44, 19)),
+          route: S.optional(__S(1428, __c44, 20)),
+          ngfwPacketInspection: S.optional(__S(1429, __c44, 21)),
+          cloudFunction: S.optional(__S(1430, __c44, 22)),
+          dmsPrivateConnection: S.optional(__S(1408, __c44, 0)),
+          gkePod: S.optional(__S(1431, __c44, 23)),
+          viewerPermissionMissingInfo: S.optional(__S(1433, __c44, 25)),
+          cloudRunJob: S.optional(__S(1434, __c44, 26)),
+          cloudRunRevision: S.optional(__S(1435, __c44, 27)),
+          cloudSqlInstance: S.optional(__S(1436, __c44, 28)),
+          gkeMaster: S.optional(__S(1437, __c44, 29)),
+          interconnectAttachment: S.optional(__S(1438, __c44, 30)),
+          proxyConnection: S.optional(__S(1439, __c44, 31)),
+          instance: S.optional(__S(1440, __c45, 0)),
           description: S.optional(S.String),
-          abort: S.optional(__S(44, __c5, 4)),
-          gkeNetworkPolicy: S.optional(__S(45, __c5, 5)),
-          hybridSubnet: S.optional(__S(46, __c5, 6)),
-          datastreamPrivateConnection: S.optional(__S(11, __c1, 3)),
-          redisInstance: S.optional(__S(47, __c5, 7)),
+          abort: S.optional(__S(1441, __c45, 1)),
+          gkeNetworkPolicy: S.optional(__S(1442, __c45, 2)),
+          hybridSubnet: S.optional(__S(1443, __c45, 3)),
+          datastreamPrivateConnection: S.optional(__S(1408, __c44, 0)),
+          redisInstance: S.optional(__S(1444, __c45, 4)),
           state: S.optional(S.String),
           causesDrop: S.optional(S.Boolean),
-          loadBalancer: S.optional(__S(50, __c6, 2)),
-          deliver: S.optional(__S(51, __c6, 3)),
-          ipMasqueradingSkipped: S.optional(__S(52, __c6, 4)),
-          loadBalancerBackendInfo: S.optional(__S(53, __c6, 5)),
-          googleService: S.optional(__S(54, __c6, 6)),
+          loadBalancer: S.optional(__S(1447, __c45, 7)),
+          deliver: S.optional(__S(1448, __c45, 8)),
+          ipMasqueradingSkipped: S.optional(__S(1449, __c45, 9)),
+          loadBalancerBackendInfo: S.optional(__S(1450, __c45, 10)),
+          googleService: S.optional(__S(1451, __c45, 11)),
         }),
       ).annotate({ identifier: "Step" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 13:
+      return S.Array(__S(1452, __c45, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          steps: S.optional(__S(56, __c7, 0)),
-          endpointInfo: S.optional(__S(24, __c3, 0)),
+          steps: S.optional(__S(1453, __c45, 13)),
+          endpointInfo: S.optional(__S(1421, __c44, 13)),
           forwardTraceId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Trace" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
+    case 15:
+      return S.Array(__S(1454, __c45, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(9, __c1, 1)),
-          traces: S.optional(__S(58, __c7, 2)),
+          error: S.optional(__S(1217, __c38, 1)),
+          traces: S.optional(__S(1455, __c45, 15)),
           result: S.optional(S.String),
           verifyTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReachabilityDetails" });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           percent: S.optional(S.Number),
           latencyMicros: S.optional(S.String),
         }),
       ).annotate({ identifier: "LatencyPercentile" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 18:
+      return S.Array(__S(1457, __c45, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          latencyPercentiles: S.optional(__S(61, __c7, 5)),
+          latencyPercentiles: S.optional(__S(1458, __c45, 18)),
         }),
       ).annotate({ identifier: "LatencyDistribution" });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           metropolitanArea: S.optional(S.String),
         }),
       ).annotate({ identifier: "EdgeLocation" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           sentProbeCount: S.optional(S.Number),
           successfulProbeCount: S.optional(S.Number),
           result: S.optional(S.String),
-          probingLatency: S.optional(__S(62, __c7, 6)),
+          probingLatency: S.optional(__S(1459, __c45, 19)),
           destinationRouter: S.optional(S.String),
-          destinationEgressLocation: S.optional(__S(63, __c7, 7)),
+          destinationEgressLocation: S.optional(__S(1460, __c45, 20)),
         }),
       ).annotate({ identifier: "SingleEdgeResponse" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
+    case 22:
+      return S.Array(__S(1461, __c45, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
           verifyTime: S.optional(S.String),
-          probingLatency: S.optional(__S(62, __c7, 6)),
-          edgeResponses: S.optional(__S(65, __c8, 1)),
-          error: S.optional(__S(9, __c1, 1)),
+          probingLatency: S.optional(__S(1459, __c45, 19)),
+          edgeResponses: S.optional(__S(1462, __c45, 22)),
+          error: S.optional(__S(1217, __c38, 1)),
           probedAllDevices: S.optional(S.Boolean),
           result: S.optional(S.String),
           sentProbeCount: S.optional(S.Number),
           successfulProbeCount: S.optional(S.Number),
-          endpointInfo: S.optional(__S(24, __c3, 0)),
+          endpointInfo: S.optional(__S(1421, __c44, 13)),
           abortCause: S.optional(S.String),
-          destinationEgressLocation: S.optional(__S(63, __c7, 7)),
+          destinationEgressLocation: S.optional(__S(1460, __c45, 20)),
         }),
       ).annotate({ identifier: "ProbingDetails" });
-    case 3:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           roundTrip: S.optional(S.Boolean),
           createTime: S.optional(S.String),
           bypassFirewallChecks: S.optional(S.Boolean),
-          source: S.optional(__S(13, __c1, 5)),
-          returnReachabilityDetails: S.optional(__S(59, __c7, 3)),
-          probingDetails: S.optional(__S(66, __c8, 2)),
+          source: S.optional(__S(1410, __c44, 2)),
+          returnReachabilityDetails: S.optional(__S(1456, __c45, 16)),
+          probingDetails: S.optional(__S(1463, __c45, 23)),
           description: S.optional(S.String),
-          reachabilityDetails: S.optional(__S(59, __c7, 3)),
-          destination: S.optional(__S(13, __c1, 5)),
+          reachabilityDetails: S.optional(__S(1456, __c45, 16)),
+          destination: S.optional(__S(1410, __c44, 2)),
           name: S.optional(S.String),
-          relatedProjects: S.optional(__S(3, __c0, 3)),
+          relatedProjects: S.optional(__S(1280, __c40, 0)),
           protocol: S.optional(S.String),
-          labels: S.optional(__S(4, __c0, 4)),
+          labels: S.optional(__S(1312, __c41, 0)),
           displayName: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectivityTest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          testId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/connectivityTests",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsGlobalConnectivityTestsRequest",
-      });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vpcFlowLogsConfigId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3306,7 +4054,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsVpcFlowLogsConfigsRequest",
       });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3320,617 +4072,8 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationsLocationsGlobalOperationsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest",
-      });
   }
 }
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsGlobalConnectivityTestsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsGlobalOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsVpcFlowLogsConfigsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+parent}/vpcFlowLogsConfigs:showEffectiveFlowLogsConfigs",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          metadataFields: S.optional(__S(3, __c0, 3)),
-          metadata: S.optional(S.String),
-          crossProjectMetadata: S.optional(S.String),
-          scope: S.optional(S.String),
-          filterExpr: S.optional(S.String),
-          network: S.optional(S.String),
-          flowSampling: S.optional(S.Number),
-          subnet: S.optional(S.String),
-          vpnTunnel: S.optional(S.String),
-          state: S.optional(S.String),
-          interconnectAttachment: S.optional(S.String),
-          connectionLogging: S.optional(S.String),
-          aggregationInterval: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EffectiveVpcFlowLogsConfig",
-      });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          unreachable: S.optional(__S(3, __c0, 3)),
-          nextPageToken: S.optional(S.String),
-          effectiveFlowLogsConfigs: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "ShowEffectiveFlowLogsConfigsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+resource}:getIamPolicy",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          expression: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          members: S.optional(__S(3, __c0, 3)),
-          role: S.optional(S.String),
-          condition: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "Binding" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "AuditLogConfig" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "AuditConfig" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bindings: S.optional(__S(82, __c10, 2)),
-          version: S.optional(S.Number),
-          auditConfigs: S.optional(__S(86, __c10, 6)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Policy" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationsLocationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(7, __c0, 7)),
-          displayName: S.optional(S.String),
-          labels: S.optional(__S(4, __c0, 4)),
-          locationId: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationsLocationsGlobalOperationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationsLocationsVpcFlowLogsConfigsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsGlobalConnectivityTestsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsGlobalOperationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsVpcFlowLogsConfigsRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}/locations",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationsLocationsRequest",
-      });
-    case 1:
-      return S.Array(__S(89, __c11, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          locations: S.optional(__S(97, __c12, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListLocationsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}/operations",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationsLocationsGlobalOperationsRequest",
-      });
-    case 4:
-      return S.Array(__S(10, __c1, 2));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(100, __c12, 4)),
-          unreachable: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+parent}/vpcFlowLogsConfigs",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationsLocationsVpcFlowLogsConfigsRequest",
-      });
-    case 7:
-      return S.Array(__S(5, __c0, 5));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          vpcFlowLogsConfigs: S.optional(__S(103, __c12, 7)),
-          unreachable: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ListVpcFlowLogsConfigsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          extraLocationTypes: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}/locations",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+parent}/connectivityTests",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsGlobalConnectivityTestsRequest",
-      });
-    case 3:
-      return S.Array(__S(67, __c8, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
-          resources: S.optional(__S(107, __c13, 3)),
-        }),
-      ).annotate({
-        identifier: "ListConnectivityTestsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}/operations",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsGlobalOperationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+parent}/vpcFlowLogsConfigs",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsVpcFlowLogsConfigsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchOrganizationsLocationsVpcFlowLogsConfigsRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsGlobalConnectivityTestsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsVpcFlowLogsConfigsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+parent}/vpcFlowLogsConfigs:queryOrgVpcFlowLogsConfigs",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          vpcFlowLogsConfigs: S.optional(__S(103, __c12, 7)),
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "QueryOrgVpcFlowLogsConfigsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+name}:rerun",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RerunProjectsLocationsGlobalConnectivityTestsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(87, __c10, 7)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(117, __c14, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+resource}:setIamPolicy",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(119, __c14, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+resource}:testIamPermissions",
-            baseUrl: "https://networkmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

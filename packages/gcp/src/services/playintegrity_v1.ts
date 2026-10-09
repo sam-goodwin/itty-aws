@@ -348,8 +348,8 @@ export const decodeIntegrityTokenV1: API.OperationMethod<
   DecodeIntegrityTokenV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<DecodeIntegrityTokenV1Request>,
-  output: __S(18, __c2, 2) as any as S.Schema<DecodeIntegrityTokenResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DecodeIntegrityTokenV1Request>,
+  output: __S(14, __c0, 14) as any as S.Schema<DecodeIntegrityTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -368,8 +368,8 @@ export const decodePcIntegrityTokenV1: API.OperationMethod<
   DecodePcIntegrityTokenV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DecodePcIntegrityTokenV1Request>,
-  output: __S(24, __c3, 0) as any as S.Schema<DecodePcIntegrityTokenResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DecodePcIntegrityTokenV1Request>,
+  output: __S(53, __c3, 5) as any as S.Schema<DecodePcIntegrityTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -383,8 +383,8 @@ export const writeDeviceRecall: API.OperationMethod<
   WriteDeviceRecallError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<WriteDeviceRecallRequest_>,
-  output: __S(27, __c3, 3) as any as S.Schema<WriteDeviceRecallResponse>,
+  input: __S(65, __c4, 1) as any as S.Schema<WriteDeviceRecallRequest_>,
+  output: __S(66, __c4, 2) as any as S.Schema<WriteDeviceRecallResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -396,16 +396,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          integrityToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DecodeIntegrityTokenRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -416,7 +408,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DecodeIntegrityTokenV1Request",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nonce: S.optional(S.String),
@@ -425,46 +417,34 @@ function __c0(j: number): any {
           requestHash: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestDetails" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          appsDetected: S.optional(__S(3, __c0, 3)),
+          appsDetected: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({ identifier: "AppAccessRiskVerdict" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           playProtectVerdict: S.optional(S.String),
-          appAccessRiskVerdict: S.optional(__S(4, __c0, 4)),
-          locationSpoofingRiskVerdict: S.optional(__S(3, __c0, 3)),
+          appAccessRiskVerdict: S.optional(__S(2, __c0, 2)),
+          locationSpoofingRiskVerdict: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({ identifier: "EnvironmentDetails" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           activityLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountActivity" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          accountActivity: S.optional(__S(6, __c0, 6)),
+          accountActivity: S.optional(__S(4, __c0, 4)),
           appLicensingVerdict: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountDetails" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          isTestingResponse: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TestingDetails" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           yyyymmFirst: S.optional(S.Number),
@@ -472,45 +452,85 @@ function __c1(j: number): any {
           yyyymmThird: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WriteDates" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          bitSecond: S.optional(S.Boolean),
-          bitFirst: S.optional(S.Boolean),
-          bitThird: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Values" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          writeDates: S.optional(__S(9, __c1, 1)),
-          values: S.optional(__S(10, __c1, 2)),
+          writeDates: S.optional(__S(6, __c0, 6)),
+          values: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "DeviceRecall" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           sdkVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DeviceAttributes" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           deviceActivityLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecentDeviceActivity" });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          deviceRecognitionVerdict: S.optional(__S(3, __c0, 3)),
-          deviceRecall: S.optional(__S(11, __c1, 3)),
-          deviceAttributes: S.optional(__S(12, __c1, 4)),
-          legacyDeviceRecognitionVerdict: S.optional(__S(3, __c0, 3)),
-          recentDeviceActivity: S.optional(__S(13, __c1, 5)),
+          deviceRecognitionVerdict: S.optional(__S(17, __c1, 1)),
+          deviceRecall: S.optional(__S(7, __c0, 7)),
+          deviceAttributes: S.optional(__S(8, __c0, 8)),
+          legacyDeviceRecognitionVerdict: S.optional(__S(17, __c1, 1)),
+          recentDeviceActivity: S.optional(__S(9, __c0, 9)),
         }),
       ).annotate({ identifier: "DeviceIntegrity" });
-    case 7:
+    case 11:
       return S.Array(S.String);
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.optional(S.String),
+          versionCode: S.optional(S.String),
+          appRecognitionVerdict: S.optional(S.String),
+          certificateSha256Digest: S.optional(__S(11, __c0, 11)),
+        }),
+      ).annotate({ identifier: "AppIntegrity" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          requestDetails: S.optional(__S(1, __c0, 1)),
+          environmentDetails: S.optional(__S(3, __c0, 3)),
+          accountDetails: S.optional(__S(5, __c0, 5)),
+          testingDetails: S.optional(__S(18, __c1, 2)),
+          deviceIntegrity: S.optional(__S(10, __c0, 10)),
+          appIntegrity: S.optional(__S(12, __c0, 12)),
+        }),
+      ).annotate({ identifier: "TokenPayloadExternal" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          tokenPayloadExternal: S.optional(__S(13, __c0, 13)),
+        }),
+      ).annotate({
+        identifier: "DecodeIntegrityTokenResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          integrityToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DecodeIntegrityTokenRequest",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          isTestingResponse: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TestingDetails" });
   }
 }
 function __c2(j: number): any {
@@ -518,36 +538,20 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          packageName: S.optional(S.String),
-          versionCode: S.optional(S.String),
-          appRecognitionVerdict: S.optional(S.String),
-          certificateSha256Digest: S.optional(__S(15, __c1, 7)),
+          bitSecond: S.optional(S.Boolean),
+          bitFirst: S.optional(S.Boolean),
+          bitThird: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "AppIntegrity" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          requestDetails: S.optional(__S(2, __c0, 2)),
-          environmentDetails: S.optional(__S(5, __c0, 5)),
-          accountDetails: S.optional(__S(7, __c0, 7)),
-          testingDetails: S.optional(__S(8, __c1, 0)),
-          deviceIntegrity: S.optional(__S(14, __c1, 6)),
-          appIntegrity: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "TokenPayloadExternal" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tokenPayloadExternal: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "DecodeIntegrityTokenResponse",
-      });
-    case 3:
+      ).annotate({ identifier: "Values" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -558,7 +562,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DecodePcIntegrityTokenV1Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestPackageName: S.optional(S.String),
@@ -566,51 +570,51 @@ function __c2(j: number): any {
           requestHash: S.optional(S.String),
         }),
       ).annotate({ identifier: "PcRequestDetails" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           appLicensingVerdict: S.optional(S.String),
         }),
       ).annotate({ identifier: "PcAccountDetails" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          deviceRecognitionVerdict: S.optional(__S(3, __c0, 3)),
+          deviceRecognitionVerdict: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({ identifier: "PcDeviceIntegrity" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          requestDetails: S.optional(__S(20, __c2, 4)),
-          accountDetails: S.optional(__S(21, __c2, 5)),
-          testingDetails: S.optional(__S(8, __c1, 0)),
-          deviceIntegrity: S.optional(__S(22, __c2, 6)),
+          requestDetails: S.optional(__S(49, __c3, 1)),
+          accountDetails: S.optional(__S(50, __c3, 2)),
+          testingDetails: S.optional(__S(18, __c1, 2)),
+          deviceIntegrity: S.optional(__S(51, __c3, 3)),
         }),
       ).annotate({ identifier: "PcTokenPayloadExternal" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          tokenPayloadExternal: S.optional(__S(23, __c2, 7)),
+          tokenPayloadExternal: S.optional(__S(52, __c3, 4)),
         }),
       ).annotate({
         identifier: "DecodePcIntegrityTokenResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          newValues: S.optional(__S(10, __c1, 2)),
+          newValues: S.optional(__S(32, __c2, 0)),
           integrityToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "WriteDeviceRecallRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           packageName: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -621,13 +625,12 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "WriteDeviceRecallRequest_",
       });
-    case 3:
+    case 2:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "WriteDeviceRecallResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

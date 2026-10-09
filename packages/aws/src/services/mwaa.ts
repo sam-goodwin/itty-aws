@@ -409,8 +409,8 @@ export const createCliToken: API.OperationMethod<
   CreateCliTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateCliTokenRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateCliTokenResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateCliTokenRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<CreateCliTokenResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -432,8 +432,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateEnvironmentInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateEnvironmentOutput>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateEnvironmentInput>,
+  output: __S(130, __c16, 2) as any as S.Schema<CreateEnvironmentOutput>,
   errors: [InternalServerException, ServiceUnavailableException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -456,8 +456,8 @@ export const createWebLoginToken: API.OperationMethod<
   CreateWebLoginTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateWebLoginTokenRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateWebLoginTokenResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<CreateWebLoginTokenRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<CreateWebLoginTokenResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -485,8 +485,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteEnvironmentInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteEnvironmentOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteEnvironmentInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteEnvironmentOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -513,8 +513,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetEnvironmentInput>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEnvironmentOutput>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetEnvironmentInput>,
+  output: __S(22, __c2, 6) as any as S.Schema<GetEnvironmentOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -539,8 +539,8 @@ export const invokeRestApi: API.OperationMethod<
   InvokeRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<InvokeRestApiRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<InvokeRestApiResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<InvokeRestApiRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<InvokeRestApiResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -566,8 +566,8 @@ export const listEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListEnvironmentsInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListEnvironmentsOutput>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListEnvironmentsInput>,
+  output: __S(33, __c4, 1) as any as S.Schema<ListEnvironmentsOutput>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -595,8 +595,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(41, __c5, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -614,8 +614,8 @@ export const publishMetrics: API.OperationMethod<
   PublishMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<PublishMetricsInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<PublishMetricsOutput>,
+  input: __S(53, __c6, 5) as any as S.Schema<PublishMetricsInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<PublishMetricsOutput>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -637,8 +637,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<TagResourceInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<TagResourceOutput>,
+  input: __S(56, __c7, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<TagResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -660,8 +660,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<UntagResourceInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<UntagResourceOutput>,
+  input: __S(64, __c8, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -684,8 +684,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<UpdateEnvironmentInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<UpdateEnvironmentOutput>,
+  input: __S(73, __c9, 1) as any as S.Schema<UpdateEnvironmentInput>,
+  output: __S(130, __c16, 2) as any as S.Schema<UpdateEnvironmentOutput>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -704,114 +704,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/clitoken/{Name}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateCliTokenRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          CliToken: S.optional(SensitiveString),
-          WebServerHostname: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateCliTokenResponse" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          SubnetIds: S.optional(__S(2, __c0, 2)),
-          SecurityGroupIds: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "NetworkConfiguration" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
-    case 5:
-      return S.suspend(() => S.Struct({ Enabled: S.Boolean, LogLevel: S.String })).annotate({
-        identifier: "ModuleLoggingConfigurationInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DagProcessingLogs: S.optional(__S(5, __c0, 5)),
-          SchedulerLogs: S.optional(__S(5, __c0, 5)),
-          WebserverLogs: S.optional(__S(5, __c0, 5)),
-          WorkerLogs: S.optional(__S(5, __c0, 5)),
-          TaskLogs: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "LoggingConfigurationInput",
-      });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String.pipe(T.HttpLabel("Name")),
-          ExecutionRoleArn: S.String,
-          SourceBucketArn: S.String,
-          DagS3Path: S.String,
-          NetworkConfiguration: __S(3, __c0, 3),
-          PluginsS3Path: S.optional(S.String),
-          PluginsS3ObjectVersion: S.optional(S.String),
-          RequirementsS3Path: S.optional(S.String),
-          RequirementsS3ObjectVersion: S.optional(S.String),
-          StartupScriptS3Path: S.optional(S.String),
-          StartupScriptS3ObjectVersion: S.optional(S.String),
-          AirflowConfigurationOptions: S.optional(__S(4, __c0, 4)),
-          EnvironmentClass: S.optional(S.String),
-          MaxWorkers: S.optional(S.Number),
-          KmsKey: S.optional(S.String),
-          AirflowVersion: S.optional(S.String),
-          LoggingConfiguration: S.optional(__S(6, __c0, 6)),
-          WeeklyMaintenanceWindowStart: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
-          WebserverAccessMode: S.optional(S.String),
-          MinWorkers: S.optional(S.Number),
-          Schedulers: S.optional(S.Number),
-          EndpointManagement: S.optional(S.String),
-          MinWebservers: S.optional(S.Number),
-          MaxWebservers: S.optional(S.Number),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/environments/{Name}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateEnvironmentInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
-        identifier: "CreateEnvironmentOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/webtoken/{Name}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateWebLoginTokenRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          WebToken: S.optional(SensitiveString),
-          WebServerHostname: S.optional(S.String),
-          IamIdentity: S.optional(S.String),
-          AirflowIdentity: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateWebLoginTokenResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/environments/{Name}" }),
             svc,
@@ -822,11 +714,19 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteEnvironmentInput" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteEnvironmentOutput",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
           T.all(
@@ -839,7 +739,7 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEnvironmentInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.optional(S.Boolean),
@@ -849,35 +749,31 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ModuleLoggingConfiguration",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          DagProcessingLogs: S.optional(__S(15, __c1, 7)),
-          SchedulerLogs: S.optional(__S(15, __c1, 7)),
-          WebserverLogs: S.optional(__S(15, __c1, 7)),
-          WorkerLogs: S.optional(__S(15, __c1, 7)),
-          TaskLogs: S.optional(__S(15, __c1, 7)),
+          DagProcessingLogs: S.optional(__S(17, __c2, 1)),
+          SchedulerLogs: S.optional(__S(17, __c2, 1)),
+          WebserverLogs: S.optional(__S(17, __c2, 1)),
+          WorkerLogs: S.optional(__S(17, __c2, 1)),
+          TaskLogs: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "LoggingConfiguration" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
       ).annotate({ identifier: "UpdateError" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Error: S.optional(__S(17, __c2, 1)),
+          Error: S.optional(__S(19, __c2, 3)),
           Source: S.optional(S.String),
           WorkerReplacementStrategy: S.optional(S.String),
         }),
       ).annotate({ identifier: "LastUpdate" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -897,14 +793,14 @@ function __c2(j: number): any {
           RequirementsS3ObjectVersion: S.optional(S.String),
           StartupScriptS3Path: S.optional(S.String),
           StartupScriptS3ObjectVersion: S.optional(S.String),
-          AirflowConfigurationOptions: S.optional(__S(4, __c0, 4)),
+          AirflowConfigurationOptions: S.optional(__S(120, __c15, 0)),
           EnvironmentClass: S.optional(S.String),
           MaxWorkers: S.optional(S.Number),
-          NetworkConfiguration: S.optional(__S(3, __c0, 3)),
-          LoggingConfiguration: S.optional(__S(16, __c2, 0)),
-          LastUpdate: S.optional(__S(18, __c2, 2)),
+          NetworkConfiguration: S.optional(__S(96, __c12, 0)),
+          LoggingConfiguration: S.optional(__S(18, __c2, 2)),
+          LastUpdate: S.optional(__S(20, __c2, 4)),
           WeeklyMaintenanceWindowStart: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
+          Tags: S.optional(__S(112, __c14, 0)),
           WebserverAccessMode: S.optional(S.String),
           MinWorkers: S.optional(S.Number),
           Schedulers: S.optional(S.Number),
@@ -916,11 +812,15 @@ function __c2(j: number): any {
           MaxWebservers: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Environment" });
-    case 4:
-      return S.suspend(() => S.Struct({ Environment: S.optional(__S(19, __c2, 3)) })).annotate({
+    case 6:
+      return S.suspend(() => S.Struct({ Environment: S.optional(__S(21, __c2, 5)) })).annotate({
         identifier: "GetEnvironmentOutput",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
@@ -932,11 +832,15 @@ function __c2(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/restapi/{Name}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "InvokeRestApiRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ RestApiStatusCode: S.optional(S.Number), RestApiResponse: S.optional(S.Any) }),
       ).annotate({ identifier: "InvokeRestApiResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
@@ -945,15 +849,15 @@ function __c2(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/environments" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListEnvironmentsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Environments: __S(104, __c13, 0), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEnvironmentsOutput" });
   }
 }
-function __c3(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Environments: __S(2, __c0, 2), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListEnvironmentsOutput" });
-    case 1:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
           T.all(
@@ -966,17 +870,21 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(7, __c0, 7)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(112, __c14, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
         identifier: "Dimension",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           SampleCount: S.optional(S.Number),
@@ -985,28 +893,24 @@ function __c3(j: number): any {
           Maximum: S.optional(S.Number),
         }),
       ).annotate({ identifier: "StatisticSet" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           MetricName: S.String,
           Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Dimensions: S.optional(__S(28, __c3, 4)),
+          Dimensions: S.optional(__S(49, __c6, 1)),
           Value: S.optional(S.Number),
           Unit: S.optional(S.String),
-          StatisticValues: S.optional(__S(29, __c3, 5)),
+          StatisticValues: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({ identifier: "MetricDatum" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(51, __c6, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           EnvironmentName: S.String.pipe(T.HttpLabel("EnvironmentName")),
-          MetricData: __S(31, __c3, 7),
+          MetricData: __S(52, __c6, 4),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/metrics/environments/{EnvironmentName}" }),
@@ -1018,11 +922,15 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PublishMetricsInput" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(7, __c0, 7),
+          Tags: __S(112, __c14, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -1034,11 +942,15 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          tagKeys: __S(2, __c0, 2).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(104, __c13, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1050,26 +962,30 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 3:
-      return S.suspend(() => S.Struct({ SecurityGroupIds: __S(2, __c0, 2) })).annotate({
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ SecurityGroupIds: __S(104, __c13, 0) })).annotate({
         identifier: "UpdateNetworkConfigurationInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
           ExecutionRoleArn: S.optional(S.String),
-          AirflowConfigurationOptions: S.optional(__S(4, __c0, 4)),
+          AirflowConfigurationOptions: S.optional(__S(120, __c15, 0)),
           AirflowVersion: S.optional(S.String),
           DagS3Path: S.optional(S.String),
           EnvironmentClass: S.optional(S.String),
-          LoggingConfiguration: S.optional(__S(6, __c0, 6)),
+          LoggingConfiguration: S.optional(__S(129, __c16, 1)),
           MaxWorkers: S.optional(S.Number),
           MinWorkers: S.optional(S.Number),
           MaxWebservers: S.optional(S.Number),
           MinWebservers: S.optional(S.Number),
           WorkerReplacementStrategy: S.optional(S.String),
-          NetworkConfiguration: S.optional(__S(35, __c4, 3)),
+          NetworkConfiguration: S.optional(__S(72, __c9, 0)),
           PluginsS3Path: S.optional(S.String),
           PluginsS3ObjectVersion: S.optional(S.String),
           RequirementsS3Path: S.optional(S.String),
@@ -1093,7 +1009,142 @@ function __c4(j: number): any {
       ).annotate({ identifier: "UpdateEnvironmentInput" });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/clitoken/{Name}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateCliTokenRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CliToken: S.optional(SensitiveString),
+          WebServerHostname: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateCliTokenResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String.pipe(T.HttpLabel("Name")),
+          ExecutionRoleArn: S.String,
+          SourceBucketArn: S.String,
+          DagS3Path: S.String,
+          NetworkConfiguration: __S(96, __c12, 0),
+          PluginsS3Path: S.optional(S.String),
+          PluginsS3ObjectVersion: S.optional(S.String),
+          RequirementsS3Path: S.optional(S.String),
+          RequirementsS3ObjectVersion: S.optional(S.String),
+          StartupScriptS3Path: S.optional(S.String),
+          StartupScriptS3ObjectVersion: S.optional(S.String),
+          AirflowConfigurationOptions: S.optional(__S(120, __c15, 0)),
+          EnvironmentClass: S.optional(S.String),
+          MaxWorkers: S.optional(S.Number),
+          KmsKey: S.optional(S.String),
+          AirflowVersion: S.optional(S.String),
+          LoggingConfiguration: S.optional(__S(129, __c16, 1)),
+          WeeklyMaintenanceWindowStart: S.optional(S.String),
+          Tags: S.optional(__S(112, __c14, 0)),
+          WebserverAccessMode: S.optional(S.String),
+          MinWorkers: S.optional(S.Number),
+          Schedulers: S.optional(S.Number),
+          EndpointManagement: S.optional(S.String),
+          MinWebservers: S.optional(S.Number),
+          MaxWebservers: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/environments/{Name}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateEnvironmentInput" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SubnetIds: S.optional(__S(104, __c13, 0)),
+          SecurityGroupIds: S.optional(__S(104, __c13, 0)),
+        }),
+      ).annotate({ identifier: "NetworkConfiguration" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Enabled: S.Boolean, LogLevel: S.String })).annotate({
+        identifier: "ModuleLoggingConfigurationInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DagProcessingLogs: S.optional(__S(128, __c16, 0)),
+          SchedulerLogs: S.optional(__S(128, __c16, 0)),
+          WebserverLogs: S.optional(__S(128, __c16, 0)),
+          WorkerLogs: S.optional(__S(128, __c16, 0)),
+          TaskLogs: S.optional(__S(128, __c16, 0)),
+        }),
+      ).annotate({
+        identifier: "LoggingConfigurationInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
+        identifier: "CreateEnvironmentOutput",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/webtoken/{Name}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateWebLoginTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          WebToken: S.optional(SensitiveString),
+          WebServerHostname: S.optional(S.String),
+          IamIdentity: S.optional(S.String),
+          AirflowIdentity: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateWebLoginTokenResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

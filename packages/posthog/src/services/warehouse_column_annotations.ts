@@ -106,7 +106,7 @@ export const createWarehouseColumnAnnotation: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateWarehouseColumnAnnotationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<WarehouseColumnAnnotation>,
+  output: __S(4, __c1, 0) as any as S.Schema<WarehouseColumnAnnotation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -120,8 +120,8 @@ export const getWarehouseColumnAnnotation: API.OperationMethod<
   GetWarehouseColumnAnnotationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetWarehouseColumnAnnotationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<WarehouseColumnAnnotation>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetWarehouseColumnAnnotationRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<WarehouseColumnAnnotation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -135,8 +135,8 @@ export const listWarehouseColumnAnnotations: API.OperationMethod<
   ListWarehouseColumnAnnotationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListWarehouseColumnAnnotationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PaginatedWarehouseColumnAnnotationList>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListWarehouseColumnAnnotationsRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<PaginatedWarehouseColumnAnnotationList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -150,8 +150,8 @@ export const updateWarehouseColumnAnnotation: API.OperationMethod<
   UpdateWarehouseColumnAnnotationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<UpdateWarehouseColumnAnnotationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<WarehouseColumnAnnotation>,
+  input: __S(16, __c4, 0) as any as S.Schema<UpdateWarehouseColumnAnnotationRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<WarehouseColumnAnnotation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -165,8 +165,8 @@ export const updateWarehouseColumnAnnotationsPartial: API.OperationMethod<
   UpdateWarehouseColumnAnnotationsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<UpdateWarehouseColumnAnnotationsPartialRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<WarehouseColumnAnnotation>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateWarehouseColumnAnnotationsPartialRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<WarehouseColumnAnnotation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -180,8 +180,8 @@ export const warehouseColumnAnnotationsDestroy: API.OperationMethod<
   WarehouseColumnAnnotationsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<WarehouseColumnAnnotationsDestroyRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<WarehouseColumnAnnotationsDestroyResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<WarehouseColumnAnnotationsDestroyRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<WarehouseColumnAnnotationsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -207,7 +207,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateWarehouseColumnAnnotationRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -223,7 +227,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "WarehouseColumnAnnotation",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -238,7 +246,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetWarehouseColumnAnnotationRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -255,20 +267,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListWarehouseColumnAnnotationsRequest",
       });
-    case 4:
-      return S.Array(__S(1, __c0, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(4, __c0, 4),
+          results: __S(13, __c3, 1),
         }),
       ).annotate({
         identifier: "PaginatedWarehouseColumnAnnotationList",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -286,7 +302,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "UpdateWarehouseColumnAnnotationRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -306,7 +326,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -329,7 +349,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

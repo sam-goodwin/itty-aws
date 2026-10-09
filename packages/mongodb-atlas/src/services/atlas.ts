@@ -32151,8 +32151,8 @@ export const acceptGroupStreamVpcPeeringConnection: API.OperationMethod<
   AcceptGroupStreamVpcPeeringConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptGroupStreamVpcPeeringConnectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptGroupStreamVpcPeeringConnectionResponse>,
+  input: __S(16832, __c526, 0) as any as S.Schema<AcceptGroupStreamVpcPeeringConnectionRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<AcceptGroupStreamVpcPeeringConnectionResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32166,8 +32166,8 @@ export const acknowledgeGroupAlert: API.OperationMethod<
   AcknowledgeGroupAlertError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AcknowledgeGroupAlertRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AcknowledgeGroupAlertResponse>,
+  input: __S(17504, __c547, 0) as any as S.Schema<AcknowledgeGroupAlertRequest>,
+  output: __S(17505, __c547, 1) as any as S.Schema<AcknowledgeGroupAlertResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32181,8 +32181,8 @@ export const addGroupApiKey: API.OperationMethod<
   AddGroupApiKeyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AddGroupApiKeyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<AddGroupApiKeyResponse>,
+  input: __S(18306, __c572, 2) as any as S.Schema<AddGroupApiKeyRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<AddGroupApiKeyResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32196,8 +32196,8 @@ export const addGroupTeams: API.OperationMethod<
   AddGroupTeamsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<AddGroupTeamsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PaginatedTeamRoleView>,
+  input: __S(18818, __c588, 2) as any as S.Schema<AddGroupTeamsRequest>,
+  output: __S(18977, __c593, 1) as any as S.Schema<PaginatedTeamRoleView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32216,7 +32216,7 @@ export const addGroupUserRole: API.OperationMethod<
   AddGroupUserRoleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<AddGroupUserRoleRequest>,
+  input: __S(19392, __c606, 0) as any as S.Schema<AddGroupUserRoleRequest>,
   output: S.Unknown as any as S.Schema<GroupUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -32231,7 +32231,7 @@ export const addGroupUsers: API.OperationMethod<
   AddGroupUsersError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<AddGroupUsersRequest>,
+  input: __S(0, __c0, 0) as any as S.Schema<AddGroupUsersRequest>,
   output: S.Unknown as any as S.Schema<GroupUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -32246,7 +32246,7 @@ export const addOrgTeamUser: API.OperationMethod<
   AddOrgTeamUserError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<AddOrgTeamUserRequest>,
+  input: __S(352, __c11, 0) as any as S.Schema<AddOrgTeamUserRequest>,
   output: S.Unknown as any as S.Schema<OrgUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -32266,7 +32266,7 @@ export const addOrgUserRole: API.OperationMethod<
   AddOrgUserRoleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<AddOrgUserRoleRequest>,
+  input: __S(704, __c22, 0) as any as S.Schema<AddOrgUserRoleRequest>,
   output: S.Unknown as any as S.Schema<OrgUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -32286,7 +32286,7 @@ export const authorizeGroupCloudProviderAccessRole: API.OperationMethod<
   AuthorizeGroupCloudProviderAccessRoleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<AuthorizeGroupCloudProviderAccessRoleRequest>,
+  input: __S(1056, __c33, 0) as any as S.Schema<AuthorizeGroupCloudProviderAccessRoleRequest>,
   output: S.Unknown as any as S.Schema<CloudProviderAccessRole>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -32305,8 +32305,8 @@ export const cancelGroupClusterBackupRestoreJob: API.OperationMethod<
   CancelGroupClusterBackupRestoreJobError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CancelGroupClusterBackupRestoreJobRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelGroupClusterBackupRestoreJobResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<CancelGroupClusterBackupRestoreJobRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<CancelGroupClusterBackupRestoreJobResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32325,11 +32325,11 @@ export const createFederationSettingConnectedOrgConfigRoleMapping: API.Operation
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    34,
-    __c4,
-    2,
+    1856,
+    __c58,
+    0,
   ) as any as S.Schema<CreateFederationSettingConnectedOrgConfigRoleMappingRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<AuthFederationRoleMapping>,
+  output: __S(1890, __c59, 2) as any as S.Schema<AuthFederationRoleMapping>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32347,7 +32347,7 @@ export const createFederationSettingIdentityProvider: API.OperationMethod<
   CreateFederationSettingIdentityProviderError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateFederationSettingIdentityProviderRequest>,
+  input: __S(2400, __c75, 0) as any as S.Schema<CreateFederationSettingIdentityProviderRequest>,
   output: S.Unknown as any as S.Schema<FederationOidcIdentityProvider>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -32362,8 +32362,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateGroupRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Group>,
+  input: __S(2912, __c91, 0) as any as S.Schema<CreateGroupRequest>,
+  output: __S(2945, __c92, 1) as any as S.Schema<Group>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32381,8 +32381,8 @@ export const createGroupAccessListEntry: API.OperationMethod<
   CreateGroupAccessListEntryError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreateGroupAccessListEntryRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<PaginatedNetworkAccessView>,
+  input: __S(3490, __c109, 2) as any as S.Schema<CreateGroupAccessListEntryRequest>,
+  output: __S(3553, __c111, 1) as any as S.Schema<PaginatedNetworkAccessView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32396,8 +32396,8 @@ export const createGroupAiModelApiKey: API.OperationMethod<
   CreateGroupAiModelApiKeyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CreateGroupAiModelApiKeyRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<AiModelApiKeyResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<CreateGroupAiModelApiKeyRequest>,
+  output: __S(4096, __c128, 0) as any as S.Schema<AiModelApiKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32411,8 +32411,8 @@ export const createGroupAlertConfig: API.OperationMethod<
   CreateGroupAlertConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateGroupAlertConfigRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<CreateGroupAlertConfigResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<CreateGroupAlertConfigRequest>,
+  output: __S(4576, __c143, 0) as any as S.Schema<CreateGroupAlertConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32426,8 +32426,8 @@ export const createGroupApiKey: API.OperationMethod<
   CreateGroupApiKeyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CreateGroupApiKeyRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ApiKeyUserDetails>,
+  input: __S(5088, __c159, 0) as any as S.Schema<CreateGroupApiKeyRequest>,
+  output: __S(5152, __c161, 0) as any as S.Schema<ApiKeyUserDetails>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32445,8 +32445,8 @@ export const createGroupBackupExportBucket: API.OperationMethod<
   CreateGroupBackupExportBucketError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreateGroupBackupExportBucketRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DiskBackupSnapshotExportBucketResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<CreateGroupBackupExportBucketRequest>,
+  output: __S(5632, __c176, 0) as any as S.Schema<DiskBackupSnapshotExportBucketResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32465,8 +32465,8 @@ export const createGroupBackupPrivateEndpoint: API.OperationMethod<
   CreateGroupBackupPrivateEndpointError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateGroupBackupPrivateEndpointRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ObjectStoragePrivateEndpointResponse>,
+  input: __S(6112, __c191, 0) as any as S.Schema<CreateGroupBackupPrivateEndpointRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<ObjectStoragePrivateEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32480,7 +32480,7 @@ export const createGroupCloudProviderAccess: API.OperationMethod<
   CreateGroupCloudProviderAccessError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateGroupCloudProviderAccessRequest>,
+  input: __S(6592, __c206, 0) as any as S.Schema<CreateGroupCloudProviderAccessRequest>,
   output: S.Unknown as any as S.Schema<CloudProviderAccessRole>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -32501,8 +32501,8 @@ export const createGroupCluster: API.OperationMethod<
   CreateGroupClusterError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<CreateGroupClusterRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ClusterDescription20240805>,
+  input: __S(7040, __c220, 0) as any as S.Schema<CreateGroupClusterRequest>,
+  output: __S(7139, __c223, 3) as any as S.Schema<ClusterDescription20240805>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32521,8 +32521,8 @@ export const createGroupClusterBackupExport: API.OperationMethod<
   CreateGroupClusterBackupExportError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CreateGroupClusterBackupExportRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<DiskBackupExportJob>,
+  input: __S(7744, __c242, 0) as any as S.Schema<CreateGroupClusterBackupExportRequest>,
+  output: __S(7780, __c243, 4) as any as S.Schema<DiskBackupExportJob>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32541,8 +32541,8 @@ export const createGroupClusterBackupRestoreJob: API.OperationMethod<
   CreateGroupClusterBackupRestoreJobError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<CreateGroupClusterBackupRestoreJobRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<DiskBackupSnapshotRestoreJob>,
+  input: __S(8160, __c255, 0) as any as S.Schema<CreateGroupClusterBackupRestoreJobRequest>,
+  output: __S(8197, __c256, 5) as any as S.Schema<DiskBackupSnapshotRestoreJob>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32561,8 +32561,8 @@ export const createGroupClusterCollectionRestoreJob: API.OperationMethod<
   CreateGroupClusterCollectionRestoreJobError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<CreateGroupClusterCollectionRestoreJobRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ApiAtlasCollectionRestoreJobResponse>,
+  input: __S(8672, __c271, 0) as any as S.Schema<CreateGroupClusterCollectionRestoreJobRequest>,
+  output: __S(8707, __c272, 3) as any as S.Schema<ApiAtlasCollectionRestoreJobResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32581,11 +32581,11 @@ export const createGroupClusterGlobalWriteCustomZoneMapping: API.OperationMethod
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    109,
-    __c13,
-    5,
+    9090,
+    __c284,
+    2,
   ) as any as S.Schema<CreateGroupClusterGlobalWriteCustomZoneMappingRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GeoSharding20240805>,
+  output: __S(9122, __c285, 2) as any as S.Schema<GeoSharding20240805>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32604,11 +32604,11 @@ export const createGroupClusterGlobalWriteManagedNamespace: API.OperationMethod<
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    113,
-    __c14,
-    1,
+    9536,
+    __c298,
+    0,
   ) as any as S.Schema<CreateGroupClusterGlobalWriteManagedNamespaceRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GeoSharding20240805>,
+  output: __S(9122, __c285, 2) as any as S.Schema<GeoSharding20240805>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32627,8 +32627,8 @@ export const createGroupClusterIndexRollingIndex: API.OperationMethod<
   CreateGroupClusterIndexRollingIndexError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<CreateGroupClusterIndexRollingIndexRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateGroupClusterIndexRollingIndexResponse>,
+  input: __S(9988, __c312, 4) as any as S.Schema<CreateGroupClusterIndexRollingIndexRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<CreateGroupClusterIndexRollingIndexResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32647,8 +32647,8 @@ export const createGroupClusterOnlineArchive: API.OperationMethod<
   CreateGroupClusterOnlineArchiveError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<CreateGroupClusterOnlineArchiveRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<BackupOnlineArchive>,
+  input: __S(10435, __c326, 3) as any as S.Schema<CreateGroupClusterOnlineArchiveRequest>,
+  output: __S(10469, __c327, 5) as any as S.Schema<BackupOnlineArchive>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32667,8 +32667,8 @@ export const createGroupClusterOverloadSimulation: API.OperationMethod<
   CreateGroupClusterOverloadSimulationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<CreateGroupClusterOverloadSimulationRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<OverloadProtectionSimulationResponse>,
+  input: __S(10816, __c338, 0) as any as S.Schema<CreateGroupClusterOverloadSimulationRequest>,
+  output: __S(10848, __c339, 0) as any as S.Schema<OverloadProtectionSimulationResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32687,8 +32687,8 @@ export const createGroupClusterSearchDeployment: API.OperationMethod<
   CreateGroupClusterSearchDeploymentError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<CreateGroupClusterSearchDeploymentRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ApiSearchDeploymentResponseView>,
+  input: __S(11232, __c351, 0) as any as S.Schema<CreateGroupClusterSearchDeploymentRequest>,
+  output: __S(11270, __c352, 6) as any as S.Schema<ApiSearchDeploymentResponseView>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32707,8 +32707,8 @@ export const createGroupClusterSearchIndex: API.OperationMethod<
   CreateGroupClusterSearchIndexError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<CreateGroupClusterSearchIndexRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<SearchIndexResponse>,
+  input: __S(11648, __c364, 0) as any as S.Schema<CreateGroupClusterSearchIndexRequest>,
+  output: __S(11685, __c365, 5) as any as S.Schema<SearchIndexResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32727,7 +32727,7 @@ export const createGroupContainer: API.OperationMethod<
   CreateGroupContainerError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<CreateGroupContainerRequest>,
+  input: __S(12064, __c377, 0) as any as S.Schema<CreateGroupContainerRequest>,
   output: S.Unknown as any as S.Schema<CloudProviderContainer>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -32747,8 +32747,8 @@ export const createGroupCustomDbRoleRole: API.OperationMethod<
   CreateGroupCustomDbRoleRoleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<CreateGroupCustomDbRoleRoleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateGroupCustomDbRoleRoleResponse>,
+  input: __S(12416, __c388, 0) as any as S.Schema<CreateGroupCustomDbRoleRoleRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<CreateGroupCustomDbRoleRoleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32767,8 +32767,8 @@ export const createGroupDatabaseUser: API.OperationMethod<
   CreateGroupDatabaseUserError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<CreateGroupDatabaseUserRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<CloudDatabaseUserOutput>,
+  input: __S(12832, __c401, 0) as any as S.Schema<CreateGroupDatabaseUserRequest>,
+  output: __S(12868, __c402, 4) as any as S.Schema<CloudDatabaseUserOutput>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32787,8 +32787,8 @@ export const createGroupDatabaseUserCert: API.OperationMethod<
   CreateGroupDatabaseUserCertError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<CreateGroupDatabaseUserCertRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<CreateGroupDatabaseUserCertResponse>,
+  input: __S(13216, __c413, 0) as any as S.Schema<CreateGroupDatabaseUserCertRequest>,
+  output: __S(13248, __c414, 0) as any as S.Schema<CreateGroupDatabaseUserCertResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32806,8 +32806,8 @@ export const createGroupDataFederation: API.OperationMethod<
   CreateGroupDataFederationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<CreateGroupDataFederationRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<DataLakeTenantOutput>,
+  input: __S(13600, __c425, 0) as any as S.Schema<CreateGroupDataFederationRequest>,
+  output: __S(13649, __c426, 17) as any as S.Schema<DataLakeTenantOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32824,8 +32824,16 @@ export const createGroupEncryptionAtRestPrivateEndpoint: API.OperationMethod<
   CreateGroupEncryptionAtRestPrivateEndpointError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<CreateGroupEncryptionAtRestPrivateEndpointRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateGroupEncryptionAtRestPrivateEndpointResponse>,
+  input: __S(
+    14016,
+    __c438,
+    0,
+  ) as any as S.Schema<CreateGroupEncryptionAtRestPrivateEndpointRequest>,
+  output: __S(
+    16864,
+    __c527,
+    0,
+  ) as any as S.Schema<CreateGroupEncryptionAtRestPrivateEndpointResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32845,8 +32853,8 @@ export const createGroupFlexCluster: API.OperationMethod<
   CreateGroupFlexClusterError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<CreateGroupFlexClusterRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<FlexClusterDescription20241113>,
+  input: __S(14369, __c449, 1) as any as S.Schema<CreateGroupFlexClusterRequest>,
+  output: __S(14403, __c450, 3) as any as S.Schema<FlexClusterDescription20241113>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32865,8 +32873,8 @@ export const createGroupFlexClusterBackupRestoreJob: API.OperationMethod<
   CreateGroupFlexClusterBackupRestoreJobError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<CreateGroupFlexClusterBackupRestoreJobRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<FlexBackupRestoreJob20241113>,
+  input: __S(14784, __c462, 0) as any as S.Schema<CreateGroupFlexClusterBackupRestoreJobRequest>,
+  output: __S(14816, __c463, 0) as any as S.Schema<FlexBackupRestoreJob20241113>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32885,8 +32893,8 @@ export const createGroupIntegration: API.OperationMethod<
   CreateGroupIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<CreateGroupIntegrationRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<PaginatedIntegrationViewOutput>,
+  input: __S(15168, __c474, 0) as any as S.Schema<CreateGroupIntegrationRequest>,
+  output: __S(15201, __c475, 1) as any as S.Schema<PaginatedIntegrationViewOutput>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32900,8 +32908,8 @@ export const createGroupLiveMigration: API.OperationMethod<
   CreateGroupLiveMigrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<CreateGroupLiveMigrationRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<LiveMigrationResponse>,
+  input: __S(15552, __c486, 0) as any as S.Schema<CreateGroupLiveMigrationRequest>,
+  output: __S(15616, __c488, 0) as any as S.Schema<LiveMigrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32919,7 +32927,7 @@ export const createGroupLogIntegration: API.OperationMethod<
   CreateGroupLogIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<CreateGroupLogIntegrationRequest>,
+  input: __S(16000, __c500, 0) as any as S.Schema<CreateGroupLogIntegrationRequest>,
   output: S.Unknown as any as S.Schema<LogIntegrationResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -32934,8 +32942,8 @@ export const createGroupMcpConfig: API.OperationMethod<
   CreateGroupMcpConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<CreateGroupMcpConfigRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GroupMcpConfigResponse>,
+  input: __S(16384, __c512, 0) as any as S.Schema<CreateGroupMcpConfigRequest>,
+  output: __S(16416, __c513, 0) as any as S.Schema<GroupMcpConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32954,8 +32962,8 @@ export const createGroupMcpConfigSecret: API.OperationMethod<
   CreateGroupMcpConfigSecretError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<CreateGroupMcpConfigSecretRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ServiceAccountSecret>,
+  input: __S(16640, __c520, 0) as any as S.Schema<CreateGroupMcpConfigSecretRequest>,
+  output: __S(16672, __c521, 0) as any as S.Schema<ServiceAccountSecret>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32973,8 +32981,8 @@ export const createGroupMetricIntegration: API.OperationMethod<
   CreateGroupMetricIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<CreateGroupMetricIntegrationRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<MetricIntegrationResponse>,
+  input: __S(16704, __c522, 0) as any as S.Schema<CreateGroupMetricIntegrationRequest>,
+  output: __S(16770, __c524, 2) as any as S.Schema<MetricIntegrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -32993,7 +33001,7 @@ export const createGroupPeer: API.OperationMethod<
   CreateGroupPeerError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<CreateGroupPeerRequest>,
+  input: __S(16896, __c528, 0) as any as S.Schema<CreateGroupPeerRequest>,
   output: S.Unknown as any as S.Schema<BaseNetworkPeeringConnectionSettings>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -33012,8 +33020,8 @@ export const createGroupPrivateEndpointEndpointService: API.OperationMethod<
   CreateGroupPrivateEndpointEndpointServiceError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<CreateGroupPrivateEndpointEndpointServiceRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<EndpointService>,
+  input: __S(16928, __c529, 0) as any as S.Schema<CreateGroupPrivateEndpointEndpointServiceRequest>,
+  output: __S(16960, __c530, 0) as any as S.Schema<EndpointService>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33034,11 +33042,11 @@ export const createGroupPrivateEndpointEndpointServiceEndpoint: API.OperationMet
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    230,
-    __c28,
-    6,
+    17024,
+    __c532,
+    0,
   ) as any as S.Schema<CreateGroupPrivateEndpointEndpointServiceEndpointRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<PrivateLinkEndpoint>,
+  output: __S(17056, __c533, 0) as any as S.Schema<PrivateLinkEndpoint>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33056,8 +33064,12 @@ export const createGroupPrivateNetworkSettingEndpointId: API.OperationMethod<
   CreateGroupPrivateNetworkSettingEndpointIdError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<CreateGroupPrivateNetworkSettingEndpointIdRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<PaginatedPrivateNetworkEndpointIdEntryView>,
+  input: __S(
+    17088,
+    __c534,
+    0,
+  ) as any as S.Schema<CreateGroupPrivateNetworkSettingEndpointIdRequest>,
+  output: __S(17153, __c536, 1) as any as S.Schema<PaginatedPrivateNetworkEndpointIdEntryView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33075,8 +33087,8 @@ export const createGroupServiceAccount: API.OperationMethod<
   CreateGroupServiceAccountError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<CreateGroupServiceAccountRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<GroupServiceAccount>,
+  input: __S(17184, __c537, 0) as any as S.Schema<CreateGroupServiceAccountRequest>,
+  output: __S(17216, __c538, 0) as any as S.Schema<GroupServiceAccount>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33095,8 +33107,8 @@ export const createGroupServiceAccountAccessList: API.OperationMethod<
   CreateGroupServiceAccountAccessListError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<CreateGroupServiceAccountAccessListRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<PaginatedServiceAccountIPAccessEntryView>,
+  input: __S(17280, __c540, 0) as any as S.Schema<CreateGroupServiceAccountAccessListRequest>,
+  output: __S(17312, __c541, 0) as any as S.Schema<PaginatedServiceAccountIPAccessEntryView>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33114,8 +33126,8 @@ export const createGroupServiceAccountSecret: API.OperationMethod<
   CreateGroupServiceAccountSecretError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<CreateGroupServiceAccountSecretRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ServiceAccountSecret>,
+  input: __S(17344, __c542, 0) as any as S.Schema<CreateGroupServiceAccountSecretRequest>,
+  output: __S(16672, __c521, 0) as any as S.Schema<ServiceAccountSecret>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33134,7 +33146,7 @@ export const createGroupStreamConnection: API.OperationMethod<
   CreateGroupStreamConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<CreateGroupStreamConnectionRequest>,
+  input: __S(17376, __c543, 0) as any as S.Schema<CreateGroupStreamConnectionRequest>,
   output: S.Unknown as any as S.Schema<StreamsConnectionOutput>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -33155,9 +33167,9 @@ export const createGroupStreamConnectionFailoverConnection: API.OperationMethod<
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    243,
-    __c30,
-    3,
+    17408,
+    __c544,
+    0,
   ) as any as S.Schema<CreateGroupStreamConnectionFailoverConnectionRequest>,
   output: S.Unknown as any as S.Schema<StreamsFailoverConnectionOutput>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
@@ -33178,8 +33190,8 @@ export const createGroupStreamPrivateLinkConnection: API.OperationMethod<
   CreateGroupStreamPrivateLinkConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<CreateGroupStreamPrivateLinkConnectionRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<StreamsPrivateLinkConnection>,
+  input: __S(17440, __c545, 0) as any as S.Schema<CreateGroupStreamPrivateLinkConnectionRequest>,
+  output: __S(17472, __c546, 0) as any as S.Schema<StreamsPrivateLinkConnection>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33198,8 +33210,8 @@ export const createGroupStreamProcessor: API.OperationMethod<
   CreateGroupStreamProcessorError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<CreateGroupStreamProcessorRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<StreamsProcessor>,
+  input: __S(17537, __c548, 1) as any as S.Schema<CreateGroupStreamProcessorRequest>,
+  output: __S(17538, __c548, 2) as any as S.Schema<StreamsProcessor>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33217,8 +33229,8 @@ export const createGroupStreamWorkspace: API.OperationMethod<
   CreateGroupStreamWorkspaceError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<CreateGroupStreamWorkspaceRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<StreamsTenantOutput>,
+  input: __S(17665, __c552, 1) as any as S.Schema<CreateGroupStreamWorkspaceRequest>,
+  output: __S(17732, __c554, 4) as any as S.Schema<StreamsTenantOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33232,8 +33244,8 @@ export const createOrg: API.OperationMethod<
   CreateOrgError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<CreateOrgRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<CreateOrganizationResponse>,
+  input: __S(17794, __c556, 2) as any as S.Schema<CreateOrgRequest>,
+  output: __S(17795, __c556, 3) as any as S.Schema<CreateOrganizationResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33247,8 +33259,8 @@ export const createOrgApiKey: API.OperationMethod<
   CreateOrgApiKeyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<CreateOrgApiKeyRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ApiKeyUserDetails>,
+  input: __S(17920, __c560, 0) as any as S.Schema<CreateOrgApiKeyRequest>,
+  output: __S(5152, __c161, 0) as any as S.Schema<ApiKeyUserDetails>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33267,8 +33279,8 @@ export const createOrgApiKeyAccessListEntry: API.OperationMethod<
   CreateOrgApiKeyAccessListEntryError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<CreateOrgApiKeyAccessListEntryRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<PaginatedApiUserAccessListResponseView>,
+  input: __S(17954, __c561, 2) as any as S.Schema<CreateOrgApiKeyAccessListEntryRequest>,
+  output: __S(18017, __c563, 1) as any as S.Schema<PaginatedApiUserAccessListResponseView>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33286,8 +33298,12 @@ export const createOrgBillingCostExplorerUsageProcess: API.OperationMethod<
   CreateOrgBillingCostExplorerUsageProcessError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessResponse>,
+  input: __S(18048, __c564, 0) as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessRequest>,
+  output: __S(
+    16864,
+    __c527,
+    0,
+  ) as any as S.Schema<CreateOrgBillingCostExplorerUsageProcessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33301,8 +33317,8 @@ export const createOrgInvoiceReport: API.OperationMethod<
   CreateOrgInvoiceReportError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<CreateOrgInvoiceReportRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<InvoiceReportResponse>,
+  input: __S(18080, __c565, 0) as any as S.Schema<CreateOrgInvoiceReportRequest>,
+  output: __S(18112, __c566, 0) as any as S.Schema<InvoiceReportResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33320,8 +33336,8 @@ export const createOrgLiveMigrationLinkToken: API.OperationMethod<
   CreateOrgLiveMigrationLinkTokenError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<CreateOrgLiveMigrationLinkTokenRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<TargetOrg>,
+  input: __S(18144, __c567, 0) as any as S.Schema<CreateOrgLiveMigrationLinkTokenRequest>,
+  output: __S(18145, __c567, 1) as any as S.Schema<TargetOrg>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33335,8 +33351,8 @@ export const createOrgLogIntegration: API.OperationMethod<
   CreateOrgLogIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<CreateOrgLogIntegrationRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<CreateOrgLogIntegrationResponse>,
+  input: __S(18176, __c568, 0) as any as S.Schema<CreateOrgLogIntegrationRequest>,
+  output: __S(18208, __c569, 0) as any as S.Schema<CreateOrgLogIntegrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33350,8 +33366,8 @@ export const createOrgMcpConfig: API.OperationMethod<
   CreateOrgMcpConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<CreateOrgMcpConfigRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<OrgMcpConfigResponse>,
+  input: __S(18240, __c570, 0) as any as S.Schema<CreateOrgMcpConfigRequest>,
+  output: __S(18272, __c571, 0) as any as S.Schema<OrgMcpConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33370,8 +33386,8 @@ export const createOrgMcpConfigSecret: API.OperationMethod<
   CreateOrgMcpConfigSecretError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<CreateOrgMcpConfigSecretRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ServiceAccountSecret>,
+  input: __S(18400, __c575, 0) as any as S.Schema<CreateOrgMcpConfigSecretRequest>,
+  output: __S(16672, __c521, 0) as any as S.Schema<ServiceAccountSecret>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33385,8 +33401,8 @@ export const createOrgResourcePolicy: API.OperationMethod<
   CreateOrgResourcePolicyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<CreateOrgResourcePolicyRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<ApiAtlasResourcePolicyView>,
+  input: __S(18432, __c576, 0) as any as S.Schema<CreateOrgResourcePolicyRequest>,
+  output: __S(18467, __c577, 3) as any as S.Schema<ApiAtlasResourcePolicyView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33400,8 +33416,8 @@ export const createOrgServiceAccount: API.OperationMethod<
   CreateOrgServiceAccountError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<CreateOrgServiceAccountRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<OrgServiceAccount>,
+  input: __S(18528, __c579, 0) as any as S.Schema<CreateOrgServiceAccountRequest>,
+  output: __S(17888, __c559, 0) as any as S.Schema<OrgServiceAccount>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33420,8 +33436,8 @@ export const createOrgServiceAccountAccessList: API.OperationMethod<
   CreateOrgServiceAccountAccessListError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<CreateOrgServiceAccountAccessListRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<PaginatedServiceAccountIPAccessEntryView>,
+  input: __S(18560, __c580, 0) as any as S.Schema<CreateOrgServiceAccountAccessListRequest>,
+  output: __S(17312, __c541, 0) as any as S.Schema<PaginatedServiceAccountIPAccessEntryView>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33439,8 +33455,8 @@ export const createOrgServiceAccountSecret: API.OperationMethod<
   CreateOrgServiceAccountSecretError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<CreateOrgServiceAccountSecretRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ServiceAccountSecret>,
+  input: __S(18592, __c581, 0) as any as S.Schema<CreateOrgServiceAccountSecretRequest>,
+  output: __S(16672, __c521, 0) as any as S.Schema<ServiceAccountSecret>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33454,8 +33470,8 @@ export const createOrgTeam: API.OperationMethod<
   CreateOrgTeamError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<CreateOrgTeamRequest>,
-  output: __S(301, __c37, 5) as any as S.Schema<Team>,
+  input: __S(18624, __c582, 0) as any as S.Schema<CreateOrgTeamRequest>,
+  output: __S(18625, __c582, 1) as any as S.Schema<Team>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33469,7 +33485,7 @@ export const createOrgUser: API.OperationMethod<
   CreateOrgUserError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<CreateOrgUserRequest>,
+  input: __S(18656, __c583, 0) as any as S.Schema<CreateOrgUserRequest>,
   output: S.Unknown as any as S.Schema<OrgUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -33488,8 +33504,8 @@ export const cutoverGroupLiveMigration: API.OperationMethod<
   CutoverGroupLiveMigrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<CutoverGroupLiveMigrationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CutoverGroupLiveMigrationResponse>,
+  input: __S(18720, __c585, 0) as any as S.Schema<CutoverGroupLiveMigrationRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<CutoverGroupLiveMigrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33507,8 +33523,8 @@ export const deauthorizeGroupCloudProviderAccessRole: API.OperationMethod<
   DeauthorizeGroupCloudProviderAccessRoleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<DeauthorizeGroupCloudProviderAccessRoleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeauthorizeGroupCloudProviderAccessRoleResponse>,
+  input: __S(18752, __c586, 0) as any as S.Schema<DeauthorizeGroupCloudProviderAccessRoleRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeauthorizeGroupCloudProviderAccessRoleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33526,8 +33542,8 @@ export const deferGroupMaintenanceWindow: API.OperationMethod<
   DeferGroupMaintenanceWindowError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<DeferGroupMaintenanceWindowRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeferGroupMaintenanceWindowResponse>,
+  input: __S(18784, __c587, 0) as any as S.Schema<DeferGroupMaintenanceWindowRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeferGroupMaintenanceWindowResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33541,8 +33557,8 @@ export const deleteFederationSetting: API.OperationMethod<
   DeleteFederationSettingError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<DeleteFederationSettingRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<DeleteFederationSettingResponse>,
+  input: __S(19008, __c594, 0) as any as S.Schema<DeleteFederationSettingRequest>,
+  output: __S(19040, __c595, 0) as any as S.Schema<DeleteFederationSettingResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33561,14 +33577,14 @@ export const deleteFederationSettingConnectedOrgConfigRoleMapping: API.Operation
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    309,
-    __c38,
-    5,
+    19072,
+    __c596,
+    0,
   ) as any as S.Schema<DeleteFederationSettingConnectedOrgConfigRoleMappingRequest>,
   output: __S(
-    310,
-    __c38,
-    6,
+    19104,
+    __c597,
+    0,
   ) as any as S.Schema<DeleteFederationSettingConnectedOrgConfigRoleMappingResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -33587,8 +33603,8 @@ export const deleteFederationSettingIdentityProvider: API.OperationMethod<
   DeleteFederationSettingIdentityProviderError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<DeleteFederationSettingIdentityProviderRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteFederationSettingIdentityProviderResponse>,
+  input: __S(19136, __c598, 0) as any as S.Schema<DeleteFederationSettingIdentityProviderRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteFederationSettingIdentityProviderResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33602,8 +33618,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<DeleteGroupRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteGroupResponse>,
+  input: __S(19168, __c599, 0) as any as S.Schema<DeleteGroupRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33621,8 +33637,8 @@ export const deleteGroupAccessListEntry: API.OperationMethod<
   DeleteGroupAccessListEntryError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<DeleteGroupAccessListEntryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupAccessListEntryResponse>,
+  input: __S(19200, __c600, 0) as any as S.Schema<DeleteGroupAccessListEntryRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupAccessListEntryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33636,8 +33652,8 @@ export const deleteGroupAiModelApiKey: API.OperationMethod<
   DeleteGroupAiModelApiKeyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<DeleteGroupAiModelApiKeyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupAiModelApiKeyResponse>,
+  input: __S(19232, __c601, 0) as any as S.Schema<DeleteGroupAiModelApiKeyRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupAiModelApiKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33651,8 +33667,8 @@ export const deleteGroupAlertConfig: API.OperationMethod<
   DeleteGroupAlertConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<DeleteGroupAlertConfigRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteGroupAlertConfigResponse>,
+  input: __S(19264, __c602, 0) as any as S.Schema<DeleteGroupAlertConfigRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteGroupAlertConfigResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33670,8 +33686,8 @@ export const deleteGroupBackupExportBucket: API.OperationMethod<
   DeleteGroupBackupExportBucketError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<DeleteGroupBackupExportBucketRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupBackupExportBucketResponse>,
+  input: __S(19296, __c603, 0) as any as S.Schema<DeleteGroupBackupExportBucketRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupBackupExportBucketResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33685,8 +33701,8 @@ export const deleteGroupBackupPrivateEndpoint: API.OperationMethod<
   DeleteGroupBackupPrivateEndpointError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<DeleteGroupBackupPrivateEndpointRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupBackupPrivateEndpointResponse>,
+  input: __S(19328, __c604, 0) as any as S.Schema<DeleteGroupBackupPrivateEndpointRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupBackupPrivateEndpointResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33705,8 +33721,8 @@ export const deleteGroupCluster: API.OperationMethod<
   DeleteGroupClusterError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<DeleteGroupClusterRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteGroupClusterResponse>,
+  input: __S(19360, __c605, 0) as any as S.Schema<DeleteGroupClusterRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteGroupClusterResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33724,8 +33740,8 @@ export const deleteGroupClusterBackupSchedule: API.OperationMethod<
   DeleteGroupClusterBackupScheduleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<DeleteGroupClusterBackupScheduleRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<DiskBackupSnapshotSchedule20240805Output>,
+  input: __S(19424, __c607, 0) as any as S.Schema<DeleteGroupClusterBackupScheduleRequest>,
+  output: __S(19466, __c608, 10) as any as S.Schema<DiskBackupSnapshotSchedule20240805Output>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33743,8 +33759,8 @@ export const deleteGroupClusterBackupSnapshot: API.OperationMethod<
   DeleteGroupClusterBackupSnapshotError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<DeleteGroupClusterBackupSnapshotRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupClusterBackupSnapshotResponse>,
+  input: __S(19488, __c609, 0) as any as S.Schema<DeleteGroupClusterBackupSnapshotRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupClusterBackupSnapshotResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33762,14 +33778,14 @@ export const deleteGroupClusterBackupSnapshotShardedCluster: API.OperationMethod
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    332,
-    __c41,
-    4,
+    19520,
+    __c610,
+    0,
   ) as any as S.Schema<DeleteGroupClusterBackupSnapshotShardedClusterRequest>,
   output: __S(
-    1,
-    __c0,
-    1,
+    16864,
+    __c527,
+    0,
   ) as any as S.Schema<DeleteGroupClusterBackupSnapshotShardedClusterResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -33788,11 +33804,11 @@ export const deleteGroupClusterGlobalWriteCustomZoneMapping: API.OperationMethod
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    333,
-    __c41,
-    5,
+    19552,
+    __c611,
+    0,
   ) as any as S.Schema<DeleteGroupClusterGlobalWriteCustomZoneMappingRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GeoSharding20240805>,
+  output: __S(9122, __c285, 2) as any as S.Schema<GeoSharding20240805>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33811,11 +33827,11 @@ export const deleteGroupClusterGlobalWriteManagedNamespaces: API.OperationMethod
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    334,
-    __c41,
-    6,
+    19584,
+    __c612,
+    0,
   ) as any as S.Schema<DeleteGroupClusterGlobalWriteManagedNamespacesRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GeoSharding20240805>,
+  output: __S(9122, __c285, 2) as any as S.Schema<GeoSharding20240805>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33829,8 +33845,8 @@ export const deleteGroupClusterOnlineArchive: API.OperationMethod<
   DeleteGroupClusterOnlineArchiveError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<DeleteGroupClusterOnlineArchiveRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupClusterOnlineArchiveResponse>,
+  input: __S(19616, __c613, 0) as any as S.Schema<DeleteGroupClusterOnlineArchiveRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupClusterOnlineArchiveResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33849,8 +33865,8 @@ export const deleteGroupClusterOverloadSimulation: API.OperationMethod<
   DeleteGroupClusterOverloadSimulationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<DeleteGroupClusterOverloadSimulationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupClusterOverloadSimulationResponse>,
+  input: __S(19648, __c614, 0) as any as S.Schema<DeleteGroupClusterOverloadSimulationRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupClusterOverloadSimulationResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33869,8 +33885,8 @@ export const deleteGroupClusterSearchDeployment: API.OperationMethod<
   DeleteGroupClusterSearchDeploymentError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<DeleteGroupClusterSearchDeploymentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupClusterSearchDeploymentResponse>,
+  input: __S(19680, __c615, 0) as any as S.Schema<DeleteGroupClusterSearchDeploymentRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupClusterSearchDeploymentResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33888,8 +33904,8 @@ export const deleteGroupClusterSearchIndex: API.OperationMethod<
   DeleteGroupClusterSearchIndexError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<DeleteGroupClusterSearchIndexRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupClusterSearchIndexResponse>,
+  input: __S(19712, __c616, 0) as any as S.Schema<DeleteGroupClusterSearchIndexRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupClusterSearchIndexResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33907,8 +33923,8 @@ export const deleteGroupClusterSearchIndexByName: API.OperationMethod<
   DeleteGroupClusterSearchIndexByNameError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<DeleteGroupClusterSearchIndexByNameRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupClusterSearchIndexByNameResponse>,
+  input: __S(19744, __c617, 0) as any as S.Schema<DeleteGroupClusterSearchIndexByNameRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupClusterSearchIndexByNameResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33927,8 +33943,8 @@ export const deleteGroupContainer: API.OperationMethod<
   DeleteGroupContainerError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340, __c42, 4) as any as S.Schema<DeleteGroupContainerRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteGroupContainerResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteGroupContainerRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteGroupContainerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33947,8 +33963,8 @@ export const deleteGroupCustomDbRoleRole: API.OperationMethod<
   DeleteGroupCustomDbRoleRoleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<DeleteGroupCustomDbRoleRoleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupCustomDbRoleRoleResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteGroupCustomDbRoleRoleRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupCustomDbRoleRoleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33962,8 +33978,8 @@ export const deleteGroupDatabaseUser: API.OperationMethod<
   DeleteGroupDatabaseUserError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<DeleteGroupDatabaseUserRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<DeleteGroupDatabaseUserResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteGroupDatabaseUserRequest>,
+  output: __S(19040, __c595, 0) as any as S.Schema<DeleteGroupDatabaseUserResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33977,8 +33993,8 @@ export const deleteGroupDataFederation: API.OperationMethod<
   DeleteGroupDataFederationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<DeleteGroupDataFederationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupDataFederationResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteGroupDataFederationRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupDataFederationResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -33996,8 +34012,8 @@ export const deleteGroupDataFederationLimit: API.OperationMethod<
   DeleteGroupDataFederationLimitError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<DeleteGroupDataFederationLimitRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupDataFederationLimitResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteGroupDataFederationLimitRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupDataFederationLimitResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34016,8 +34032,8 @@ export const deleteGroupFlexCluster: API.OperationMethod<
   DeleteGroupFlexClusterError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<DeleteGroupFlexClusterRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteGroupFlexClusterResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeleteGroupFlexClusterRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteGroupFlexClusterResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34031,8 +34047,8 @@ export const deleteGroupIntegration: API.OperationMethod<
   DeleteGroupIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<DeleteGroupIntegrationRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteGroupIntegrationResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteGroupIntegrationRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteGroupIntegrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34051,8 +34067,8 @@ export const deleteGroupLimit: API.OperationMethod<
   DeleteGroupLimitError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<DeleteGroupLimitRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteGroupLimitResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteGroupLimitRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteGroupLimitResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34070,8 +34086,8 @@ export const deleteGroupLogIntegration: API.OperationMethod<
   DeleteGroupLogIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<DeleteGroupLogIntegrationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupLogIntegrationResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteGroupLogIntegrationRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupLogIntegrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34085,8 +34101,8 @@ export const deleteGroupMcpConfig: API.OperationMethod<
   DeleteGroupMcpConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<DeleteGroupMcpConfigRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteGroupMcpConfigResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteGroupMcpConfigRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteGroupMcpConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34100,8 +34116,8 @@ export const deleteGroupMcpConfigSecret: API.OperationMethod<
   DeleteGroupMcpConfigSecretError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<DeleteGroupMcpConfigSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupMcpConfigSecretResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteGroupMcpConfigSecretRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupMcpConfigSecretResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34119,8 +34135,8 @@ export const deleteGroupMetricIntegration: API.OperationMethod<
   DeleteGroupMetricIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<DeleteGroupMetricIntegrationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupMetricIntegrationResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteGroupMetricIntegrationRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupMetricIntegrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34134,8 +34150,8 @@ export const deleteGroupPeer: API.OperationMethod<
   DeleteGroupPeerError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<DeleteGroupPeerRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteGroupPeerResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteGroupPeerRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteGroupPeerResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34153,8 +34169,12 @@ export const deleteGroupPrivateEndpointEndpointService: API.OperationMethod<
   DeleteGroupPrivateEndpointEndpointServiceError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceRequest>,
+  output: __S(
+    16864,
+    __c527,
+    0,
+  ) as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34173,14 +34193,14 @@ export const deleteGroupPrivateEndpointEndpointServiceEndpoint: API.OperationMet
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    354,
-    __c44,
-    2,
+    512,
+    __c16,
+    0,
   ) as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceEndpointRequest>,
   output: __S(
-    310,
-    __c38,
-    6,
+    19104,
+    __c597,
+    0,
   ) as any as S.Schema<DeleteGroupPrivateEndpointEndpointServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -34198,8 +34218,12 @@ export const deleteGroupPrivateNetworkSettingEndpointId: API.OperationMethod<
   DeleteGroupPrivateNetworkSettingEndpointIdError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<DeleteGroupPrivateNetworkSettingEndpointIdRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupPrivateNetworkSettingEndpointIdResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteGroupPrivateNetworkSettingEndpointIdRequest>,
+  output: __S(
+    16864,
+    __c527,
+    0,
+  ) as any as S.Schema<DeleteGroupPrivateNetworkSettingEndpointIdResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34213,8 +34237,8 @@ export const deleteGroupServiceAccount: API.OperationMethod<
   DeleteGroupServiceAccountError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<DeleteGroupServiceAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupServiceAccountResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteGroupServiceAccountRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupServiceAccountResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34232,8 +34256,12 @@ export const deleteGroupServiceAccountAccessListEntry: API.OperationMethod<
   DeleteGroupServiceAccountAccessListEntryError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<DeleteGroupServiceAccountAccessListEntryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupServiceAccountAccessListEntryResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteGroupServiceAccountAccessListEntryRequest>,
+  output: __S(
+    16864,
+    __c527,
+    0,
+  ) as any as S.Schema<DeleteGroupServiceAccountAccessListEntryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34247,8 +34275,8 @@ export const deleteGroupServiceAccountSecret: API.OperationMethod<
   DeleteGroupServiceAccountSecretError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<DeleteGroupServiceAccountSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupServiceAccountSecretResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteGroupServiceAccountSecretRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupServiceAccountSecretResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34266,8 +34294,8 @@ export const deleteGroupStreamConnection: API.OperationMethod<
   DeleteGroupStreamConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<DeleteGroupStreamConnectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupStreamConnectionResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteGroupStreamConnectionRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupStreamConnectionResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34285,11 +34313,15 @@ export const deleteGroupStreamConnectionFailoverConnection: API.OperationMethod<
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    360,
-    __c45,
+    736,
+    __c23,
     0,
   ) as any as S.Schema<DeleteGroupStreamConnectionFailoverConnectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupStreamConnectionFailoverConnectionResponse>,
+  output: __S(
+    16864,
+    __c527,
+    0,
+  ) as any as S.Schema<DeleteGroupStreamConnectionFailoverConnectionResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34306,8 +34338,8 @@ export const deleteGroupStreamPrivateLinkConnection: API.OperationMethod<
   DeleteGroupStreamPrivateLinkConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<DeleteGroupStreamPrivateLinkConnectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupStreamPrivateLinkConnectionResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteGroupStreamPrivateLinkConnectionRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupStreamPrivateLinkConnectionResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34321,8 +34353,8 @@ export const deleteGroupStreamProcessor: API.OperationMethod<
   DeleteGroupStreamProcessorError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<DeleteGroupStreamProcessorRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupStreamProcessorResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeleteGroupStreamProcessorRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupStreamProcessorResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34336,8 +34368,8 @@ export const deleteGroupStreamVpcPeeringConnection: API.OperationMethod<
   DeleteGroupStreamVpcPeeringConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<DeleteGroupStreamVpcPeeringConnectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupStreamVpcPeeringConnectionResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteGroupStreamVpcPeeringConnectionRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupStreamVpcPeeringConnectionResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34351,8 +34383,8 @@ export const deleteGroupStreamWorkspace: API.OperationMethod<
   DeleteGroupStreamWorkspaceError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<DeleteGroupStreamWorkspaceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupStreamWorkspaceResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteGroupStreamWorkspaceRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteGroupStreamWorkspaceResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34369,8 +34401,12 @@ export const deleteGroupUserSecurityLdapUserToDnMapping: API.OperationMethod<
   DeleteGroupUserSecurityLdapUserToDnMappingError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365, __c45, 5) as any as S.Schema<DeleteGroupUserSecurityLdapUserToDnMappingRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGroupUserSecurityLdapUserToDnMappingResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteGroupUserSecurityLdapUserToDnMappingRequest>,
+  output: __S(
+    16864,
+    __c527,
+    0,
+  ) as any as S.Schema<DeleteGroupUserSecurityLdapUserToDnMappingResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34390,8 +34426,8 @@ export const deleteOrg: API.OperationMethod<
   DeleteOrgError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<DeleteOrgRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteOrgResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteOrgRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteOrgResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34405,8 +34441,8 @@ export const deleteOrgApiKey: API.OperationMethod<
   DeleteOrgApiKeyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<DeleteOrgApiKeyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteOrgApiKeyResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<DeleteOrgApiKeyRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteOrgApiKeyResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34424,8 +34460,8 @@ export const deleteOrgApiKeyAccessListEntry: API.OperationMethod<
   DeleteOrgApiKeyAccessListEntryError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<DeleteOrgApiKeyAccessListEntryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteOrgApiKeyAccessListEntryResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<DeleteOrgApiKeyAccessListEntryRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteOrgApiKeyAccessListEntryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34443,8 +34479,8 @@ export const deleteOrgLiveMigrationLinkTokens: API.OperationMethod<
   DeleteOrgLiveMigrationLinkTokensError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<DeleteOrgLiveMigrationLinkTokensRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteOrgLiveMigrationLinkTokensResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteOrgLiveMigrationLinkTokensRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteOrgLiveMigrationLinkTokensResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34458,8 +34494,8 @@ export const deleteOrgLogIntegration: API.OperationMethod<
   DeleteOrgLogIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<DeleteOrgLogIntegrationRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<DeleteOrgLogIntegrationResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DeleteOrgLogIntegrationRequest>,
+  output: __S(19040, __c595, 0) as any as S.Schema<DeleteOrgLogIntegrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34473,8 +34509,8 @@ export const deleteOrgMcpConfig: API.OperationMethod<
   DeleteOrgMcpConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371, __c46, 3) as any as S.Schema<DeleteOrgMcpConfigRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteOrgMcpConfigResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<DeleteOrgMcpConfigRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteOrgMcpConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34488,8 +34524,8 @@ export const deleteOrgMcpConfigSecret: API.OperationMethod<
   DeleteOrgMcpConfigSecretError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<DeleteOrgMcpConfigSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteOrgMcpConfigSecretResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<DeleteOrgMcpConfigSecretRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteOrgMcpConfigSecretResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34503,8 +34539,8 @@ export const deleteOrgResourcePolicy: API.OperationMethod<
   DeleteOrgResourcePolicyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(373, __c46, 5) as any as S.Schema<DeleteOrgResourcePolicyRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<DeleteOrgResourcePolicyResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<DeleteOrgResourcePolicyRequest>,
+  output: __S(19040, __c595, 0) as any as S.Schema<DeleteOrgResourcePolicyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34518,8 +34554,8 @@ export const deleteOrgServiceAccount: API.OperationMethod<
   DeleteOrgServiceAccountError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<DeleteOrgServiceAccountRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<DeleteOrgServiceAccountResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<DeleteOrgServiceAccountRequest>,
+  output: __S(19040, __c595, 0) as any as S.Schema<DeleteOrgServiceAccountResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34537,8 +34573,8 @@ export const deleteOrgServiceAccountAccessListEntry: API.OperationMethod<
   DeleteOrgServiceAccountAccessListEntryError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<DeleteOrgServiceAccountAccessListEntryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteOrgServiceAccountAccessListEntryResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<DeleteOrgServiceAccountAccessListEntryRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteOrgServiceAccountAccessListEntryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34552,8 +34588,8 @@ export const deleteOrgServiceAccountSecret: API.OperationMethod<
   DeleteOrgServiceAccountSecretError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<DeleteOrgServiceAccountSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteOrgServiceAccountSecretResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DeleteOrgServiceAccountSecretRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DeleteOrgServiceAccountSecretResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34567,8 +34603,8 @@ export const deleteOrgTeam: API.OperationMethod<
   DeleteOrgTeamError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377, __c47, 1) as any as S.Schema<DeleteOrgTeamRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteOrgTeamResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<DeleteOrgTeamRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<DeleteOrgTeamResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34586,8 +34622,8 @@ export const disableGroupBackupCompliancePolicy: API.OperationMethod<
   DisableGroupBackupCompliancePolicyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<DisableGroupBackupCompliancePolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisableGroupBackupCompliancePolicyResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DisableGroupBackupCompliancePolicyRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DisableGroupBackupCompliancePolicyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34601,8 +34637,8 @@ export const disableGroupManagedSlowMs: API.OperationMethod<
   DisableGroupManagedSlowMsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379, __c47, 3) as any as S.Schema<DisableGroupManagedSlowMsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisableGroupManagedSlowMsResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<DisableGroupManagedSlowMsRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DisableGroupManagedSlowMsResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34616,8 +34652,8 @@ export const disableGroupUserSecurityCustomerX509: API.OperationMethod<
   DisableGroupUserSecurityCustomerX509Error,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<DisableGroupUserSecurityCustomerX509Request>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisableGroupUserSecurityCustomerX509Response>,
+  input: __S(1440, __c45, 0) as any as S.Schema<DisableGroupUserSecurityCustomerX509Request>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DisableGroupUserSecurityCustomerX509Response>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34636,8 +34672,8 @@ export const downloadGroupClusterLog: API.OperationMethod<
   DownloadGroupClusterLogError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381, __c47, 5) as any as S.Schema<DownloadGroupClusterLogRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<DownloadGroupClusterLogResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DownloadGroupClusterLogRequest>,
+  output: __S(19040, __c595, 0) as any as S.Schema<DownloadGroupClusterLogResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34655,8 +34691,12 @@ export const downloadGroupClusterOnlineArchiveQueryLogs: API.OperationMethod<
   DownloadGroupClusterOnlineArchiveQueryLogsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382, __c47, 6) as any as S.Schema<DownloadGroupClusterOnlineArchiveQueryLogsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DownloadGroupClusterOnlineArchiveQueryLogsResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<DownloadGroupClusterOnlineArchiveQueryLogsRequest>,
+  output: __S(
+    16864,
+    __c527,
+    0,
+  ) as any as S.Schema<DownloadGroupClusterOnlineArchiveQueryLogsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34675,8 +34715,8 @@ export const downloadGroupDataFederationQueryLogs: API.OperationMethod<
   DownloadGroupDataFederationQueryLogsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<DownloadGroupDataFederationQueryLogsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DownloadGroupDataFederationQueryLogsResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<DownloadGroupDataFederationQueryLogsRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DownloadGroupDataFederationQueryLogsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34695,8 +34735,8 @@ export const downloadGroupFlexClusterBackup: API.OperationMethod<
   DownloadGroupFlexClusterBackupError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<DownloadGroupFlexClusterBackupRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<FlexBackupRestoreJob20241113>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DownloadGroupFlexClusterBackupRequest>,
+  output: __S(14816, __c463, 0) as any as S.Schema<FlexBackupRestoreJob20241113>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34715,8 +34755,8 @@ export const downloadGroupStreamAuditLogs: API.OperationMethod<
   DownloadGroupStreamAuditLogsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<DownloadGroupStreamAuditLogsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DownloadGroupStreamAuditLogsResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<DownloadGroupStreamAuditLogsRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DownloadGroupStreamAuditLogsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34735,8 +34775,8 @@ export const downloadGroupStreamOperationalLogs: API.OperationMethod<
   DownloadGroupStreamOperationalLogsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<DownloadGroupStreamOperationalLogsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DownloadGroupStreamOperationalLogsResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DownloadGroupStreamOperationalLogsRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<DownloadGroupStreamOperationalLogsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34750,8 +34790,8 @@ export const enableGroupManagedSlowMs: API.OperationMethod<
   EnableGroupManagedSlowMsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<EnableGroupManagedSlowMsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EnableGroupManagedSlowMsResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<EnableGroupManagedSlowMsRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<EnableGroupManagedSlowMsResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34769,8 +34809,8 @@ export const endGroupClusterOutageSimulation: API.OperationMethod<
   EndGroupClusterOutageSimulationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<EndGroupClusterOutageSimulationRequest>,
-  output: __S(391, __c48, 7) as any as S.Schema<ClusterOutageSimulation>,
+  input: __S(1696, __c53, 0) as any as S.Schema<EndGroupClusterOutageSimulationRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<ClusterOutageSimulation>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34788,8 +34828,8 @@ export const getFederationSettingConnectedOrgConfig: API.OperationMethod<
   GetFederationSettingConnectedOrgConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<GetFederationSettingConnectedOrgConfigRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ConnectedOrgConfig>,
+  input: __S(1760, __c55, 0) as any as S.Schema<GetFederationSettingConnectedOrgConfigRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<ConnectedOrgConfig>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34808,11 +34848,11 @@ export const getFederationSettingConnectedOrgConfigRoleMapping: API.OperationMet
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    393,
-    __c49,
-    1,
+    1952,
+    __c61,
+    0,
   ) as any as S.Schema<GetFederationSettingConnectedOrgConfigRoleMappingRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<AuthFederationRoleMapping>,
+  output: __S(1890, __c59, 2) as any as S.Schema<AuthFederationRoleMapping>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34830,7 +34870,7 @@ export const getFederationSettingIdentityProvider: API.OperationMethod<
   GetFederationSettingIdentityProviderError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<GetFederationSettingIdentityProviderRequest>,
+  input: __S(1984, __c62, 0) as any as S.Schema<GetFederationSettingIdentityProviderRequest>,
   output: S.Unknown as any as S.Schema<FederationIdentityProvider>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -34849,11 +34889,15 @@ export const getFederationSettingIdentityProviderMetadata: API.OperationMethod<
   GetFederationSettingIdentityProviderMetadataError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<GetFederationSettingIdentityProviderMetadataRequest>,
+  input: __S(
+    2016,
+    __c63,
+    0,
+  ) as any as S.Schema<GetFederationSettingIdentityProviderMetadataRequest>,
   output: __S(
-    164,
-    __c20,
-    4,
+    13248,
+    __c414,
+    0,
   ) as any as S.Schema<GetFederationSettingIdentityProviderMetadataResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -34868,8 +34912,8 @@ export const getGroup: API.OperationMethod<
   GetGroupError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396, __c49, 4) as any as S.Schema<GetGroupRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Group>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetGroupRequest>,
+  output: __S(2945, __c92, 1) as any as S.Schema<Group>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34883,8 +34927,8 @@ export const getGroupAccessListEntry: API.OperationMethod<
   GetGroupAccessListEntryError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<GetGroupAccessListEntryRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<NetworkPermissionEntry>,
+  input: __S(2080, __c65, 0) as any as S.Schema<GetGroupAccessListEntryRequest>,
+  output: __S(3520, __c110, 0) as any as S.Schema<NetworkPermissionEntry>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34898,8 +34942,8 @@ export const getGroupAccessListStatus: API.OperationMethod<
   GetGroupAccessListStatusError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<GetGroupAccessListStatusRequest>,
-  output: __S(399, __c49, 7) as any as S.Schema<NetworkPermissionEntryStatus>,
+  input: __S(2112, __c66, 0) as any as S.Schema<GetGroupAccessListStatusRequest>,
+  output: __S(2113, __c66, 1) as any as S.Schema<NetworkPermissionEntryStatus>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34913,8 +34957,8 @@ export const getGroupActivityFeed: API.OperationMethod<
   GetGroupActivityFeedError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<GetGroupActivityFeedRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<ActivityFeedLinkResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<GetGroupActivityFeedRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<ActivityFeedLinkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34933,11 +34977,11 @@ export const getGroupAiModelApiCloudGeographyModelGroupNameRateLimits: API.Opera
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    403,
-    __c50,
-    3,
+    2240,
+    __c70,
+    0,
   ) as any as S.Schema<GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<AiModelRateLimitResponse>,
+  output: __S(2272, __c71, 0) as any as S.Schema<AiModelRateLimitResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34951,8 +34995,8 @@ export const getGroupAiModelApiKey: API.OperationMethod<
   GetGroupAiModelApiKeyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<GetGroupAiModelApiKeyRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<AiModelApiKeyResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetGroupAiModelApiKeyRequest>,
+  output: __S(4096, __c128, 0) as any as S.Schema<AiModelApiKeyResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34966,8 +35010,8 @@ export const getGroupAiModelApiRateLimits: API.OperationMethod<
   GetGroupAiModelApiRateLimitsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<GetGroupAiModelApiRateLimitsRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<PaginatedAtlasAiModelRateLimitsResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<GetGroupAiModelApiRateLimitsRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<PaginatedAtlasAiModelRateLimitsResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34981,8 +35025,8 @@ export const getGroupAlert: API.OperationMethod<
   GetGroupAlertError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<GetGroupAlertRequest>,
-  output: __S(410, __c51, 2) as any as S.Schema<GetGroupAlertResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<GetGroupAlertRequest>,
+  output: __S(2433, __c76, 1) as any as S.Schema<GetGroupAlertResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -34996,8 +35040,8 @@ export const getGroupAlertAlertConfigs: API.OperationMethod<
   GetGroupAlertAlertConfigsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<GetGroupAlertAlertConfigsRequest>,
-  output: __S(413, __c51, 5) as any as S.Schema<PaginatedAlertConfigView>,
+  input: __S(2464, __c77, 0) as any as S.Schema<GetGroupAlertAlertConfigsRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<PaginatedAlertConfigView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35011,8 +35055,8 @@ export const getGroupAlertConfig: API.OperationMethod<
   GetGroupAlertConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<GetGroupAlertConfigRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetGroupAlertConfigResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<GetGroupAlertConfigRequest>,
+  output: __S(4576, __c143, 0) as any as S.Schema<GetGroupAlertConfigResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35026,8 +35070,8 @@ export const getGroupAlertConfigAlerts: API.OperationMethod<
   GetGroupAlertConfigAlertsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<GetGroupAlertConfigAlertsRequest>,
-  output: __S(417, __c52, 1) as any as S.Schema<PaginatedAlertView>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetGroupAlertConfigAlertsRequest>,
+  output: __S(2593, __c81, 1) as any as S.Schema<PaginatedAlertView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35041,8 +35085,8 @@ export const getGroupAuditLog: API.OperationMethod<
   GetGroupAuditLogError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<GetGroupAuditLogRequest>,
-  output: __S(419, __c52, 3) as any as S.Schema<AuditLog>,
+  input: __S(2624, __c82, 0) as any as S.Schema<GetGroupAuditLogRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<AuditLog>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35056,8 +35100,8 @@ export const getGroupAwsCustomDns: API.OperationMethod<
   GetGroupAwsCustomDnsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<GetGroupAwsCustomDnsRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<AWSCustomDNSEnabledView>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetGroupAwsCustomDnsRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<AWSCustomDNSEnabledView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35071,8 +35115,8 @@ export const getGroupBackupCompliancePolicy: API.OperationMethod<
   GetGroupBackupCompliancePolicyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<GetGroupBackupCompliancePolicyRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<DataProtectionSettings20231001>,
+  input: __S(2752, __c86, 0) as any as S.Schema<GetGroupBackupCompliancePolicyRequest>,
+  output: __S(2786, __c87, 2) as any as S.Schema<DataProtectionSettings20231001>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35086,8 +35130,8 @@ export const getGroupBackupExportBucket: API.OperationMethod<
   GetGroupBackupExportBucketError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<GetGroupBackupExportBucketRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DiskBackupSnapshotExportBucketResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<GetGroupBackupExportBucketRequest>,
+  output: __S(5632, __c176, 0) as any as S.Schema<DiskBackupSnapshotExportBucketResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35101,8 +35145,8 @@ export const getGroupBackupPrivateEndpoint: API.OperationMethod<
   GetGroupBackupPrivateEndpointError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<GetGroupBackupPrivateEndpointRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ObjectStoragePrivateEndpointResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<GetGroupBackupPrivateEndpointRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<ObjectStoragePrivateEndpointResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35121,8 +35165,8 @@ export const getGroupByName: API.OperationMethod<
   GetGroupByNameError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<GetGroupByNameRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Group>,
+  input: __S(2880, __c90, 0) as any as S.Schema<GetGroupByNameRequest>,
+  output: __S(2945, __c92, 1) as any as S.Schema<Group>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35136,7 +35180,7 @@ export const getGroupCloudProviderAccess: API.OperationMethod<
   GetGroupCloudProviderAccessError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<GetGroupCloudProviderAccessRequest>,
+  input: __S(3040, __c95, 0) as any as S.Schema<GetGroupCloudProviderAccessRequest>,
   output: S.Unknown as any as S.Schema<CloudProviderAccessRole>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -35151,8 +35195,8 @@ export const getGroupCluster: API.OperationMethod<
   GetGroupClusterError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<GetGroupClusterRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ClusterDescription20240805>,
+  input: __S(3072, __c96, 0) as any as S.Schema<GetGroupClusterRequest>,
+  output: __S(7139, __c223, 3) as any as S.Schema<ClusterDescription20240805>,
   errors: [Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35170,8 +35214,8 @@ export const getGroupClusterAdaptiveSettings: API.OperationMethod<
   GetGroupClusterAdaptiveSettingsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<GetGroupClusterAdaptiveSettingsRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<AdaptiveSettingsResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<GetGroupClusterAdaptiveSettingsRequest>,
+  output: __S(3136, __c98, 0) as any as S.Schema<AdaptiveSettingsResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35185,8 +35229,8 @@ export const getGroupClusterBackupExport: API.OperationMethod<
   GetGroupClusterBackupExportError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<GetGroupClusterBackupExportRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<DiskBackupExportJob>,
+  input: __S(3168, __c99, 0) as any as S.Schema<GetGroupClusterBackupExportRequest>,
+  output: __S(7780, __c243, 4) as any as S.Schema<DiskBackupExportJob>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35200,8 +35244,8 @@ export const getGroupClusterBackupRestoreJob: API.OperationMethod<
   GetGroupClusterBackupRestoreJobError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<GetGroupClusterBackupRestoreJobRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<DiskBackupSnapshotRestoreJob>,
+  input: __S(3200, __c100, 0) as any as S.Schema<GetGroupClusterBackupRestoreJobRequest>,
+  output: __S(8197, __c256, 5) as any as S.Schema<DiskBackupSnapshotRestoreJob>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35215,8 +35259,8 @@ export const getGroupClusterBackupSchedule: API.OperationMethod<
   GetGroupClusterBackupScheduleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<GetGroupClusterBackupScheduleRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<DiskBackupSnapshotSchedule20240805Output>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GetGroupClusterBackupScheduleRequest>,
+  output: __S(19466, __c608, 10) as any as S.Schema<DiskBackupSnapshotSchedule20240805Output>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35234,8 +35278,8 @@ export const getGroupClusterBackupSnapshot: API.OperationMethod<
   GetGroupClusterBackupSnapshotError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<GetGroupClusterBackupSnapshotRequest>,
-  output: __S(437, __c54, 5) as any as S.Schema<DiskBackupReplicaSet>,
+  input: __S(3264, __c102, 0) as any as S.Schema<GetGroupClusterBackupSnapshotRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<DiskBackupReplicaSet>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35249,8 +35293,8 @@ export const getGroupClusterBackupSnapshotDatabase: API.OperationMethod<
   GetGroupClusterBackupSnapshotDatabaseError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<GetGroupClusterBackupSnapshotDatabaseRequest>,
-  output: __S(439, __c54, 7) as any as S.Schema<DiskBackupDatabaseResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<GetGroupClusterBackupSnapshotDatabaseRequest>,
+  output: __S(3360, __c105, 0) as any as S.Schema<DiskBackupDatabaseResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35268,11 +35312,11 @@ export const getGroupClusterBackupSnapshotDatabaseCollection: API.OperationMetho
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    440,
-    __c55,
+    3392,
+    __c106,
     0,
   ) as any as S.Schema<GetGroupClusterBackupSnapshotDatabaseCollectionRequest>,
-  output: __S(439, __c54, 7) as any as S.Schema<DiskBackupCollectionResponse>,
+  output: __S(3360, __c105, 0) as any as S.Schema<DiskBackupCollectionResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35290,8 +35334,12 @@ export const getGroupClusterBackupSnapshotShardedCluster: API.OperationMethod<
   GetGroupClusterBackupSnapshotShardedClusterError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<GetGroupClusterBackupSnapshotShardedClusterRequest>,
-  output: __S(444, __c55, 4) as any as S.Schema<DiskBackupShardedClusterSnapshot>,
+  input: __S(
+    3424,
+    __c107,
+    0,
+  ) as any as S.Schema<GetGroupClusterBackupSnapshotShardedClusterRequest>,
+  output: __S(3458, __c108, 2) as any as S.Schema<DiskBackupShardedClusterSnapshot>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35309,8 +35357,8 @@ export const getGroupClusterCollectionRestoreJob: API.OperationMethod<
   GetGroupClusterCollectionRestoreJobError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<GetGroupClusterCollectionRestoreJobRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ApiAtlasCollectionRestoreJobResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<GetGroupClusterCollectionRestoreJobRequest>,
+  output: __S(8707, __c272, 3) as any as S.Schema<ApiAtlasCollectionRestoreJobResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35329,11 +35377,11 @@ export const getGroupClusterCollectionRestoreJobCollection: API.OperationMethod<
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    446,
-    __c55,
-    6,
+    3616,
+    __c113,
+    0,
   ) as any as S.Schema<GetGroupClusterCollectionRestoreJobCollectionRequest>,
-  output: __S(448, __c56, 0) as any as S.Schema<ApiAtlasCollectionRestoreCollectionStateResponse>,
+  output: __S(3649, __c114, 1) as any as S.Schema<ApiAtlasCollectionRestoreCollectionStateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35347,8 +35395,8 @@ export const getGroupClusterCollStatNamespaces: API.OperationMethod<
   GetGroupClusterCollStatNamespacesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<GetGroupClusterCollStatNamespacesRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<CollStatsRankedNamespacesView>,
+  input: __S(3680, __c115, 0) as any as S.Schema<GetGroupClusterCollStatNamespacesRequest>,
+  output: __S(3712, __c116, 0) as any as S.Schema<CollStatsRankedNamespacesView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35362,8 +35410,8 @@ export const getGroupClusterGlobalWrites: API.OperationMethod<
   GetGroupClusterGlobalWritesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<GetGroupClusterGlobalWritesRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GeoSharding20240805>,
+  input: __S(3744, __c117, 0) as any as S.Schema<GetGroupClusterGlobalWritesRequest>,
+  output: __S(9122, __c285, 2) as any as S.Schema<GeoSharding20240805>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35381,8 +35429,8 @@ export const getGroupClusterOnlineArchive: API.OperationMethod<
   GetGroupClusterOnlineArchiveError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<GetGroupClusterOnlineArchiveRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<BackupOnlineArchive>,
+  input: __S(3776, __c118, 0) as any as S.Schema<GetGroupClusterOnlineArchiveRequest>,
+  output: __S(10469, __c327, 5) as any as S.Schema<BackupOnlineArchive>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35400,8 +35448,8 @@ export const getGroupClusterOutageSimulation: API.OperationMethod<
   GetGroupClusterOutageSimulationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<GetGroupClusterOutageSimulationRequest>,
-  output: __S(391, __c48, 7) as any as S.Schema<ClusterOutageSimulation>,
+  input: __S(3808, __c119, 0) as any as S.Schema<GetGroupClusterOutageSimulationRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<ClusterOutageSimulation>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35419,8 +35467,8 @@ export const getGroupClusterOverloadSimulation: API.OperationMethod<
   GetGroupClusterOverloadSimulationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<GetGroupClusterOverloadSimulationRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<OverloadProtectionSimulationResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<GetGroupClusterOverloadSimulationRequest>,
+  output: __S(10848, __c339, 0) as any as S.Schema<OverloadProtectionSimulationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35438,8 +35486,8 @@ export const getGroupClusterProcessArgs: API.OperationMethod<
   GetGroupClusterProcessArgsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<GetGroupClusterProcessArgsRequest>,
-  output: __S(456, __c57, 0) as any as S.Schema<ClusterDescriptionProcessArgs20240805>,
+  input: __S(3872, __c121, 0) as any as S.Schema<GetGroupClusterProcessArgsRequest>,
+  output: __S(3904, __c122, 0) as any as S.Schema<ClusterDescriptionProcessArgs20240805>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35457,8 +35505,8 @@ export const getGroupClusterQueryShape: API.OperationMethod<
   GetGroupClusterQueryShapeError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457, __c57, 1) as any as S.Schema<GetGroupClusterQueryShapeRequest>,
-  output: __S(458, __c57, 2) as any as S.Schema<QueryShapeResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<GetGroupClusterQueryShapeRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<QueryShapeResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35476,8 +35524,8 @@ export const getGroupClusterQueryShapeInsightDetails: API.OperationMethod<
   GetGroupClusterQueryShapeInsightDetailsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<GetGroupClusterQueryShapeInsightDetailsRequest>,
-  output: __S(462, __c57, 6) as any as S.Schema<QueryStatsDetailsResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<GetGroupClusterQueryShapeInsightDetailsRequest>,
+  output: __S(4002, __c125, 2) as any as S.Schema<QueryStatsDetailsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35495,8 +35543,8 @@ export const getGroupClusterSearchDeployment: API.OperationMethod<
   GetGroupClusterSearchDeploymentError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<GetGroupClusterSearchDeploymentRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ApiSearchDeploymentResponseView>,
+  input: __S(4128, __c129, 0) as any as S.Schema<GetGroupClusterSearchDeploymentRequest>,
+  output: __S(11270, __c352, 6) as any as S.Schema<ApiSearchDeploymentResponseView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35514,8 +35562,8 @@ export const getGroupClusterSearchIndex: API.OperationMethod<
   GetGroupClusterSearchIndexError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<GetGroupClusterSearchIndexRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<SearchIndexResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<GetGroupClusterSearchIndexRequest>,
+  output: __S(11685, __c365, 5) as any as S.Schema<SearchIndexResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35533,8 +35581,8 @@ export const getGroupClusterSearchIndexByName: API.OperationMethod<
   GetGroupClusterSearchIndexByNameError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465, __c58, 1) as any as S.Schema<GetGroupClusterSearchIndexByNameRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<SearchIndexResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<GetGroupClusterSearchIndexByNameRequest>,
+  output: __S(11685, __c365, 5) as any as S.Schema<SearchIndexResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35548,8 +35596,8 @@ export const getGroupClusterStatus: API.OperationMethod<
   GetGroupClusterStatusError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<GetGroupClusterStatusRequest>,
-  output: __S(467, __c58, 3) as any as S.Schema<ClusterStatus>,
+  input: __S(4224, __c132, 0) as any as S.Schema<GetGroupClusterStatusRequest>,
+  output: __S(4225, __c132, 1) as any as S.Schema<ClusterStatus>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35563,7 +35611,7 @@ export const getGroupContainer: API.OperationMethod<
   GetGroupContainerError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468, __c58, 4) as any as S.Schema<GetGroupContainerRequest>,
+  input: __S(4256, __c133, 0) as any as S.Schema<GetGroupContainerRequest>,
   output: S.Unknown as any as S.Schema<CloudProviderContainer>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -35578,8 +35626,8 @@ export const getGroupCustomDbRoleRole: API.OperationMethod<
   GetGroupCustomDbRoleRoleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<GetGroupCustomDbRoleRoleRequest>,
-  output: __S(470, __c58, 6) as any as S.Schema<UserCustomDBRole>,
+  input: __S(4288, __c134, 0) as any as S.Schema<GetGroupCustomDbRoleRoleRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<UserCustomDBRole>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35593,8 +35641,8 @@ export const getGroupDatabaseUser: API.OperationMethod<
   GetGroupDatabaseUserError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<GetGroupDatabaseUserRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<CloudDatabaseUserOutput>,
+  input: __S(4352, __c136, 0) as any as S.Schema<GetGroupDatabaseUserRequest>,
+  output: __S(12868, __c402, 4) as any as S.Schema<CloudDatabaseUserOutput>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35608,8 +35656,8 @@ export const getGroupDataFederation: API.OperationMethod<
   GetGroupDataFederationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<GetGroupDataFederationRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<DataLakeTenantOutput>,
+  input: __S(4384, __c137, 0) as any as S.Schema<GetGroupDataFederationRequest>,
+  output: __S(13649, __c426, 17) as any as S.Schema<DataLakeTenantOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35623,8 +35671,8 @@ export const getGroupDataFederationLimit: API.OperationMethod<
   GetGroupDataFederationLimitError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<GetGroupDataFederationLimitRequest>,
-  output: __S(474, __c59, 2) as any as S.Schema<DataFederationTenantQueryLimit>,
+  input: __S(4416, __c138, 0) as any as S.Schema<GetGroupDataFederationLimitRequest>,
+  output: __S(4448, __c139, 0) as any as S.Schema<DataFederationTenantQueryLimit>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35642,8 +35690,8 @@ export const getGroupDbAccessHistoryCluster: API.OperationMethod<
   GetGroupDbAccessHistoryClusterError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475, __c59, 3) as any as S.Schema<GetGroupDbAccessHistoryClusterRequest>,
-  output: __S(478, __c59, 6) as any as S.Schema<MongoDBAccessLogsList>,
+  input: __S(4480, __c140, 0) as any as S.Schema<GetGroupDbAccessHistoryClusterRequest>,
+  output: __S(4514, __c141, 2) as any as S.Schema<MongoDBAccessLogsList>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35657,8 +35705,8 @@ export const getGroupDbAccessHistoryProcess: API.OperationMethod<
   GetGroupDbAccessHistoryProcessError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479, __c59, 7) as any as S.Schema<GetGroupDbAccessHistoryProcessRequest>,
-  output: __S(478, __c59, 6) as any as S.Schema<MongoDBAccessLogsList>,
+  input: __S(4608, __c144, 0) as any as S.Schema<GetGroupDbAccessHistoryProcessRequest>,
+  output: __S(4514, __c141, 2) as any as S.Schema<MongoDBAccessLogsList>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35672,8 +35720,8 @@ export const getGroupEncryptionAtRest: API.OperationMethod<
   GetGroupEncryptionAtRestError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<GetGroupEncryptionAtRestRequest>,
-  output: __S(484, __c60, 4) as any as S.Schema<EncryptionAtRestOutput>,
+  input: __S(4640, __c145, 0) as any as S.Schema<GetGroupEncryptionAtRestRequest>,
+  output: __S(4675, __c146, 3) as any as S.Schema<EncryptionAtRestOutput>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35690,7 +35738,7 @@ export const getGroupEncryptionAtRestPrivateEndpoint: API.OperationMethod<
   GetGroupEncryptionAtRestPrivateEndpointError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485, __c60, 5) as any as S.Schema<GetGroupEncryptionAtRestPrivateEndpointRequest>,
+  input: __S(4704, __c147, 0) as any as S.Schema<GetGroupEncryptionAtRestPrivateEndpointRequest>,
   output: S.Unknown as any as S.Schema<EARPrivateEndpoint>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -35705,8 +35753,8 @@ export const getGroupEvent: API.OperationMethod<
   GetGroupEventError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(486, __c60, 6) as any as S.Schema<GetGroupEventRequest>,
-  output: __S(487, __c60, 7) as any as S.Schema<GetGroupEventResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<GetGroupEventRequest>,
+  output: __S(4737, __c148, 1) as any as S.Schema<GetGroupEventResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35725,8 +35773,8 @@ export const getGroupFlexCluster: API.OperationMethod<
   GetGroupFlexClusterError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<GetGroupFlexClusterRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<FlexClusterDescription20241113>,
+  input: __S(4768, __c149, 0) as any as S.Schema<GetGroupFlexClusterRequest>,
+  output: __S(14403, __c450, 3) as any as S.Schema<FlexClusterDescription20241113>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35744,8 +35792,8 @@ export const getGroupFlexClusterBackupRestoreJob: API.OperationMethod<
   GetGroupFlexClusterBackupRestoreJobError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<GetGroupFlexClusterBackupRestoreJobRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<FlexBackupRestoreJob20241113>,
+  input: __S(4800, __c150, 0) as any as S.Schema<GetGroupFlexClusterBackupRestoreJobRequest>,
+  output: __S(14816, __c463, 0) as any as S.Schema<FlexBackupRestoreJob20241113>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35763,8 +35811,8 @@ export const getGroupFlexClusterBackupSnapshot: API.OperationMethod<
   GetGroupFlexClusterBackupSnapshotError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(490, __c61, 2) as any as S.Schema<GetGroupFlexClusterBackupSnapshotRequest>,
-  output: __S(491, __c61, 3) as any as S.Schema<FlexBackupSnapshot20241113>,
+  input: __S(4832, __c151, 0) as any as S.Schema<GetGroupFlexClusterBackupSnapshotRequest>,
+  output: __S(4864, __c152, 0) as any as S.Schema<FlexBackupSnapshot20241113>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35782,8 +35830,8 @@ export const getGroupHostFtsMetricIndexMeasurements: API.OperationMethod<
   GetGroupHostFtsMetricIndexMeasurementsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(492, __c61, 4) as any as S.Schema<GetGroupHostFtsMetricIndexMeasurementsRequest>,
-  output: __S(498, __c62, 2) as any as S.Schema<MeasurementsIndexes>,
+  input: __S(4896, __c153, 0) as any as S.Schema<GetGroupHostFtsMetricIndexMeasurementsRequest>,
+  output: __S(4993, __c156, 1) as any as S.Schema<MeasurementsIndexes>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35797,7 +35845,7 @@ export const getGroupIntegration: API.OperationMethod<
   GetGroupIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(499, __c62, 3) as any as S.Schema<GetGroupIntegrationRequest>,
+  input: __S(5024, __c157, 0) as any as S.Schema<GetGroupIntegrationRequest>,
   output: S.Unknown as any as S.Schema<ThirdPartyIntegrationOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -35812,8 +35860,8 @@ export const getGroupIpAddresses: API.OperationMethod<
   GetGroupIpAddressesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(500, __c62, 4) as any as S.Schema<GetGroupIpAddressesRequest>,
-  output: __S(504, __c63, 0) as any as S.Schema<GroupIPAddresses>,
+  input: __S(5056, __c158, 0) as any as S.Schema<GetGroupIpAddressesRequest>,
+  output: __S(5060, __c158, 4) as any as S.Schema<GroupIPAddresses>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35827,8 +35875,8 @@ export const getGroupLimit: API.OperationMethod<
   GetGroupLimitError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<GetGroupLimitRequest>,
-  output: __S(506, __c63, 2) as any as S.Schema<DataFederationLimit>,
+  input: __S(5184, __c162, 0) as any as S.Schema<GetGroupLimitRequest>,
+  output: __S(5216, __c163, 0) as any as S.Schema<DataFederationLimit>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35842,8 +35890,8 @@ export const getGroupLiveMigration: API.OperationMethod<
   GetGroupLiveMigrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(507, __c63, 3) as any as S.Schema<GetGroupLiveMigrationRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<LiveMigrationResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<GetGroupLiveMigrationRequest>,
+  output: __S(15616, __c488, 0) as any as S.Schema<LiveMigrationResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35861,8 +35909,8 @@ export const getGroupLiveMigrationValidateStatus: API.OperationMethod<
   GetGroupLiveMigrationValidateStatusError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(508, __c63, 4) as any as S.Schema<GetGroupLiveMigrationValidateStatusRequest>,
-  output: __S(509, __c63, 5) as any as S.Schema<LiveImportValidation>,
+  input: __S(5280, __c165, 0) as any as S.Schema<GetGroupLiveMigrationValidateStatusRequest>,
+  output: __S(5312, __c166, 0) as any as S.Schema<LiveImportValidation>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35876,7 +35924,7 @@ export const getGroupLogIntegration: API.OperationMethod<
   GetGroupLogIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(510, __c63, 6) as any as S.Schema<GetGroupLogIntegrationRequest>,
+  input: __S(5344, __c167, 0) as any as S.Schema<GetGroupLogIntegrationRequest>,
   output: S.Unknown as any as S.Schema<LogIntegrationResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -35891,8 +35939,8 @@ export const getGroupMaintenanceWindow: API.OperationMethod<
   GetGroupMaintenanceWindowError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(511, __c63, 7) as any as S.Schema<GetGroupMaintenanceWindowRequest>,
-  output: __S(513, __c64, 1) as any as S.Schema<GroupMaintenanceWindow>,
+  input: __S(5376, __c168, 0) as any as S.Schema<GetGroupMaintenanceWindowRequest>,
+  output: __S(5377, __c168, 1) as any as S.Schema<GroupMaintenanceWindow>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35906,8 +35954,8 @@ export const getGroupManagedSlowMs: API.OperationMethod<
   GetGroupManagedSlowMsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(514, __c64, 2) as any as S.Schema<GetGroupManagedSlowMsRequest>,
-  output: __S(515, __c64, 3) as any as S.Schema<GetGroupManagedSlowMsResponse>,
+  input: __S(5440, __c170, 0) as any as S.Schema<GetGroupManagedSlowMsRequest>,
+  output: __S(5441, __c170, 1) as any as S.Schema<GetGroupManagedSlowMsResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35921,8 +35969,8 @@ export const getGroupMcpConfig: API.OperationMethod<
   GetGroupMcpConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(516, __c64, 4) as any as S.Schema<GetGroupMcpConfigRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GroupMcpConfigResponse>,
+  input: __S(5472, __c171, 0) as any as S.Schema<GetGroupMcpConfigRequest>,
+  output: __S(16416, __c513, 0) as any as S.Schema<GroupMcpConfigResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35936,8 +35984,8 @@ export const getGroupMcpConfigSecret: API.OperationMethod<
   GetGroupMcpConfigSecretError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(517, __c64, 5) as any as S.Schema<GetGroupMcpConfigSecretRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ServiceAccountSecret>,
+  input: __S(5504, __c172, 0) as any as S.Schema<GetGroupMcpConfigSecretRequest>,
+  output: __S(16672, __c521, 0) as any as S.Schema<ServiceAccountSecret>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35955,8 +36003,8 @@ export const getGroupMetricIntegration: API.OperationMethod<
   GetGroupMetricIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(518, __c64, 6) as any as S.Schema<GetGroupMetricIntegrationRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<MetricIntegrationResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<GetGroupMetricIntegrationRequest>,
+  output: __S(16770, __c524, 2) as any as S.Schema<MetricIntegrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35975,8 +36023,8 @@ export const getGroupMongoDbVersions: API.OperationMethod<
   GetGroupMongoDbVersionsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<GetGroupMongoDbVersionsRequest>,
-  output: __S(522, __c65, 2) as any as S.Schema<PaginatedAvailableVersionView>,
+  input: __S(5568, __c174, 0) as any as S.Schema<GetGroupMongoDbVersionsRequest>,
+  output: __S(5571, __c174, 3) as any as S.Schema<PaginatedAvailableVersionView>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -35990,7 +36038,7 @@ export const getGroupPeer: API.OperationMethod<
   GetGroupPeerError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(523, __c65, 3) as any as S.Schema<GetGroupPeerRequest>,
+  input: __S(5664, __c177, 0) as any as S.Schema<GetGroupPeerRequest>,
   output: S.Unknown as any as S.Schema<BaseNetworkPeeringConnectionSettings>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -36009,8 +36057,8 @@ export const getGroupPrivateEndpointEndpointService: API.OperationMethod<
   GetGroupPrivateEndpointEndpointServiceError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<GetGroupPrivateEndpointEndpointServiceRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<EndpointService>,
+  input: __S(5696, __c178, 0) as any as S.Schema<GetGroupPrivateEndpointEndpointServiceRequest>,
+  output: __S(16960, __c530, 0) as any as S.Schema<EndpointService>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36029,11 +36077,11 @@ export const getGroupPrivateEndpointEndpointServiceEndpoint: API.OperationMethod
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    525,
-    __c65,
-    5,
+    5728,
+    __c179,
+    0,
   ) as any as S.Schema<GetGroupPrivateEndpointEndpointServiceEndpointRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<PrivateLinkEndpoint>,
+  output: __S(17056, __c533, 0) as any as S.Schema<PrivateLinkEndpoint>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36047,8 +36095,8 @@ export const getGroupPrivateEndpointRegionalMode: API.OperationMethod<
   GetGroupPrivateEndpointRegionalModeError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(526, __c65, 6) as any as S.Schema<GetGroupPrivateEndpointRegionalModeRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<ProjectSettingItemView>,
+  input: __S(5760, __c180, 0) as any as S.Schema<GetGroupPrivateEndpointRegionalModeRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<ProjectSettingItemView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36066,8 +36114,8 @@ export const getGroupPrivateNetworkSettingEndpointId: API.OperationMethod<
   GetGroupPrivateNetworkSettingEndpointIdError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(527, __c65, 7) as any as S.Schema<GetGroupPrivateNetworkSettingEndpointIdRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<PrivateNetworkEndpointIdEntry>,
+  input: __S(5792, __c181, 0) as any as S.Schema<GetGroupPrivateNetworkSettingEndpointIdRequest>,
+  output: __S(17120, __c535, 0) as any as S.Schema<PrivateNetworkEndpointIdEntry>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36081,8 +36129,8 @@ export const getGroupProcess: API.OperationMethod<
   GetGroupProcessError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<GetGroupProcessRequest>,
-  output: __S(529, __c66, 1) as any as S.Schema<ApiHostViewAtlas>,
+  input: __S(5824, __c182, 0) as any as S.Schema<GetGroupProcessRequest>,
+  output: __S(5856, __c183, 0) as any as S.Schema<ApiHostViewAtlas>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36096,8 +36144,8 @@ export const getGroupProcessCollStatNamespaces: API.OperationMethod<
   GetGroupProcessCollStatNamespacesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<GetGroupProcessCollStatNamespacesRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<CollStatsRankedNamespacesView>,
+  input: __S(5888, __c184, 0) as any as S.Schema<GetGroupProcessCollStatNamespacesRequest>,
+  output: __S(3712, __c116, 0) as any as S.Schema<CollStatsRankedNamespacesView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36111,8 +36159,8 @@ export const getGroupProcessDatabase: API.OperationMethod<
   GetGroupProcessDatabaseError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<GetGroupProcessDatabaseRequest>,
-  output: __S(532, __c66, 4) as any as S.Schema<MesurementsDatabase>,
+  input: __S(5920, __c185, 0) as any as S.Schema<GetGroupProcessDatabaseRequest>,
+  output: __S(5952, __c186, 0) as any as S.Schema<MesurementsDatabase>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36126,8 +36174,8 @@ export const getGroupProcessDatabaseMeasurements: API.OperationMethod<
   GetGroupProcessDatabaseMeasurementsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(533, __c66, 5) as any as S.Schema<GetGroupProcessDatabaseMeasurementsRequest>,
-  output: __S(536, __c67, 0) as any as S.Schema<ApiMeasurementsGeneralViewAtlas>,
+  input: __S(5984, __c187, 0) as any as S.Schema<GetGroupProcessDatabaseMeasurementsRequest>,
+  output: __S(6018, __c188, 2) as any as S.Schema<ApiMeasurementsGeneralViewAtlas>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36141,8 +36189,8 @@ export const getGroupProcessDisk: API.OperationMethod<
   GetGroupProcessDiskError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<GetGroupProcessDiskRequest>,
-  output: __S(538, __c67, 2) as any as S.Schema<MeasurementDiskPartition>,
+  input: __S(6048, __c189, 0) as any as S.Schema<GetGroupProcessDiskRequest>,
+  output: __S(6080, __c190, 0) as any as S.Schema<MeasurementDiskPartition>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36156,8 +36204,8 @@ export const getGroupProcessDiskMeasurements: API.OperationMethod<
   GetGroupProcessDiskMeasurementsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<GetGroupProcessDiskMeasurementsRequest>,
-  output: __S(536, __c67, 0) as any as S.Schema<ApiMeasurementsGeneralViewAtlas>,
+  input: __S(6176, __c193, 0) as any as S.Schema<GetGroupProcessDiskMeasurementsRequest>,
+  output: __S(6018, __c188, 2) as any as S.Schema<ApiMeasurementsGeneralViewAtlas>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36171,8 +36219,8 @@ export const getGroupProcessMeasurements: API.OperationMethod<
   GetGroupProcessMeasurementsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540, __c67, 4) as any as S.Schema<GetGroupProcessMeasurementsRequest>,
-  output: __S(536, __c67, 0) as any as S.Schema<ApiMeasurementsGeneralViewAtlas>,
+  input: __S(6208, __c194, 0) as any as S.Schema<GetGroupProcessMeasurementsRequest>,
+  output: __S(6018, __c188, 2) as any as S.Schema<ApiMeasurementsGeneralViewAtlas>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36186,8 +36234,8 @@ export const getGroupSampleDatasetLoad: API.OperationMethod<
   GetGroupSampleDatasetLoadError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<GetGroupSampleDatasetLoadRequest>,
-  output: __S(542, __c67, 6) as any as S.Schema<SampleDatasetStatus>,
+  input: __S(6240, __c195, 0) as any as S.Schema<GetGroupSampleDatasetLoadRequest>,
+  output: __S(6272, __c196, 0) as any as S.Schema<SampleDatasetStatus>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36201,8 +36249,8 @@ export const getGroupServiceAccount: API.OperationMethod<
   GetGroupServiceAccountError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(543, __c67, 7) as any as S.Schema<GetGroupServiceAccountRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<GroupServiceAccount>,
+  input: __S(6304, __c197, 0) as any as S.Schema<GetGroupServiceAccountRequest>,
+  output: __S(17216, __c538, 0) as any as S.Schema<GroupServiceAccount>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36216,8 +36264,8 @@ export const getGroupSettings: API.OperationMethod<
   GetGroupSettingsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<GetGroupSettingsRequest>,
-  output: __S(545, __c68, 1) as any as S.Schema<GroupSettings>,
+  input: __S(6336, __c198, 0) as any as S.Schema<GetGroupSettingsRequest>,
+  output: __S(6368, __c199, 0) as any as S.Schema<GroupSettings>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36231,8 +36279,8 @@ export const getGroupStreamAccountDetails: API.OperationMethod<
   GetGroupStreamAccountDetailsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546, __c68, 2) as any as S.Schema<GetGroupStreamAccountDetailsRequest>,
-  output: __S(547, __c68, 3) as any as S.Schema<GetGroupStreamAccountDetailsResponse>,
+  input: __S(6400, __c200, 0) as any as S.Schema<GetGroupStreamAccountDetailsRequest>,
+  output: __S(6401, __c200, 1) as any as S.Schema<GetGroupStreamAccountDetailsResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36246,7 +36294,7 @@ export const getGroupStreamConnection: API.OperationMethod<
   GetGroupStreamConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<GetGroupStreamConnectionRequest>,
+  input: __S(6432, __c201, 0) as any as S.Schema<GetGroupStreamConnectionRequest>,
   output: S.Unknown as any as S.Schema<StreamsConnectionOutput>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -36264,7 +36312,7 @@ export const getGroupStreamConnectionFailoverConnection: API.OperationMethod<
   GetGroupStreamConnectionFailoverConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(549, __c68, 5) as any as S.Schema<GetGroupStreamConnectionFailoverConnectionRequest>,
+  input: __S(6464, __c202, 0) as any as S.Schema<GetGroupStreamConnectionFailoverConnectionRequest>,
   output: S.Unknown as any as S.Schema<StreamsFailoverConnectionOutput>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -36279,8 +36327,8 @@ export const getGroupStreamPrivateLinkConnection: API.OperationMethod<
   GetGroupStreamPrivateLinkConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(550, __c68, 6) as any as S.Schema<GetGroupStreamPrivateLinkConnectionRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<StreamsPrivateLinkConnection>,
+  input: __S(6496, __c203, 0) as any as S.Schema<GetGroupStreamPrivateLinkConnectionRequest>,
+  output: __S(17472, __c546, 0) as any as S.Schema<StreamsPrivateLinkConnection>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36294,8 +36342,8 @@ export const getGroupStreamProcessor: API.OperationMethod<
   GetGroupStreamProcessorError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(551, __c68, 7) as any as S.Schema<GetGroupStreamProcessorRequest>,
-  output: __S(552, __c69, 0) as any as S.Schema<StreamsProcessorWithStats>,
+  input: __S(6528, __c204, 0) as any as S.Schema<GetGroupStreamProcessorRequest>,
+  output: __S(6560, __c205, 0) as any as S.Schema<StreamsProcessorWithStats>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36309,8 +36357,8 @@ export const getGroupStreamProcessors: API.OperationMethod<
   GetGroupStreamProcessorsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(553, __c69, 1) as any as S.Schema<GetGroupStreamProcessorsRequest>,
-  output: __S(555, __c69, 3) as any as S.Schema<PaginatedApiStreamsStreamProcessorWithStatsView>,
+  input: __S(6624, __c207, 0) as any as S.Schema<GetGroupStreamProcessorsRequest>,
+  output: __S(6626, __c207, 2) as any as S.Schema<PaginatedApiStreamsStreamProcessorWithStatsView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36324,8 +36372,8 @@ export const getGroupStreamWorkspace: API.OperationMethod<
   GetGroupStreamWorkspaceError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(556, __c69, 4) as any as S.Schema<GetGroupStreamWorkspaceRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<StreamsTenantOutput>,
+  input: __S(6656, __c208, 0) as any as S.Schema<GetGroupStreamWorkspaceRequest>,
+  output: __S(17732, __c554, 4) as any as S.Schema<StreamsTenantOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36339,8 +36387,8 @@ export const getGroupTeam: API.OperationMethod<
   GetGroupTeamError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(557, __c69, 5) as any as S.Schema<GetGroupTeamRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<TeamRole>,
+  input: __S(6688, __c209, 0) as any as S.Schema<GetGroupTeamRequest>,
+  output: __S(18944, __c592, 0) as any as S.Schema<TeamRole>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36354,7 +36402,7 @@ export const getGroupUser: API.OperationMethod<
   GetGroupUserError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(558, __c69, 6) as any as S.Schema<GetGroupUserRequest>,
+  input: __S(6720, __c210, 0) as any as S.Schema<GetGroupUserRequest>,
   output: S.Unknown as any as S.Schema<GroupUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -36369,8 +36417,8 @@ export const getGroupUserSecurity: API.OperationMethod<
   GetGroupUserSecurityError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(559, __c69, 7) as any as S.Schema<GetGroupUserSecurityRequest>,
-  output: __S(564, __c70, 4) as any as S.Schema<UserSecurityOutput>,
+  input: __S(6752, __c211, 0) as any as S.Schema<GetGroupUserSecurityRequest>,
+  output: __S(6755, __c211, 3) as any as S.Schema<UserSecurityOutput>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36384,8 +36432,8 @@ export const getGroupUserSecurityLdapVerify: API.OperationMethod<
   GetGroupUserSecurityLdapVerifyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(565, __c70, 5) as any as S.Schema<GetGroupUserSecurityLdapVerifyRequest>,
-  output: __S(569, __c71, 1) as any as S.Schema<LDAPVerifyConnectivityJobRequestOutput>,
+  input: __S(6816, __c213, 0) as any as S.Schema<GetGroupUserSecurityLdapVerifyRequest>,
+  output: __S(6851, __c214, 3) as any as S.Schema<LDAPVerifyConnectivityJobRequestOutput>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36399,8 +36447,8 @@ export const getOrg: API.OperationMethod<
   GetOrgError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(570, __c71, 2) as any as S.Schema<GetOrgRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<AtlasOrganization>,
+  input: __S(6880, __c215, 0) as any as S.Schema<GetOrgRequest>,
+  output: __S(17824, __c557, 0) as any as S.Schema<AtlasOrganization>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36414,8 +36462,8 @@ export const getOrgActivityFeed: API.OperationMethod<
   GetOrgActivityFeedError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(572, __c71, 4) as any as S.Schema<GetOrgActivityFeedRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<ActivityFeedLinkResponse>,
+  input: __S(6912, __c216, 0) as any as S.Schema<GetOrgActivityFeedRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<ActivityFeedLinkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36434,11 +36482,11 @@ export const getOrgAiModelApiCloudGeographyModelGroupNameRateLimits: API.Operati
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    573,
-    __c71,
-    5,
+    6976,
+    __c218,
+    0,
   ) as any as S.Schema<GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<AiModelRateLimitResponse>,
+  output: __S(2272, __c71, 0) as any as S.Schema<AiModelRateLimitResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36452,8 +36500,8 @@ export const getOrgAiModelApiKey: API.OperationMethod<
   GetOrgAiModelApiKeyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574, __c71, 6) as any as S.Schema<GetOrgAiModelApiKeyRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<AiModelApiKeyResponse>,
+  input: __S(7008, __c219, 0) as any as S.Schema<GetOrgAiModelApiKeyRequest>,
+  output: __S(4096, __c128, 0) as any as S.Schema<AiModelApiKeyResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36467,8 +36515,8 @@ export const getOrgAiModelApiRateLimits: API.OperationMethod<
   GetOrgAiModelApiRateLimitsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(575, __c71, 7) as any as S.Schema<GetOrgAiModelApiRateLimitsRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<PaginatedAtlasAiModelRateLimitsResponse>,
+  input: __S(7296, __c228, 0) as any as S.Schema<GetOrgAiModelApiRateLimitsRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<PaginatedAtlasAiModelRateLimitsResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36482,8 +36530,8 @@ export const getOrgApiKey: API.OperationMethod<
   GetOrgApiKeyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c72, 0) as any as S.Schema<GetOrgApiKeyRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ApiKeyUserDetails>,
+  input: __S(7328, __c229, 0) as any as S.Schema<GetOrgApiKeyRequest>,
+  output: __S(5152, __c161, 0) as any as S.Schema<ApiKeyUserDetails>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36497,8 +36545,8 @@ export const getOrgApiKeyAccessListEntry: API.OperationMethod<
   GetOrgApiKeyAccessListEntryError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(577, __c72, 1) as any as S.Schema<GetOrgApiKeyAccessListEntryRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<UserAccessListResponse>,
+  input: __S(7360, __c230, 0) as any as S.Schema<GetOrgApiKeyAccessListEntryRequest>,
+  output: __S(17984, __c562, 0) as any as S.Schema<UserAccessListResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36512,8 +36560,8 @@ export const getOrgAssociatedInvoices: API.OperationMethod<
   GetOrgAssociatedInvoicesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(578, __c72, 2) as any as S.Schema<GetOrgAssociatedInvoicesRequest>,
-  output: __S(581, __c72, 5) as any as S.Schema<OrgAssociatedInvoiceResponse>,
+  input: __S(7392, __c231, 0) as any as S.Schema<GetOrgAssociatedInvoicesRequest>,
+  output: __S(7395, __c231, 3) as any as S.Schema<OrgAssociatedInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36531,8 +36579,8 @@ export const getOrgBillingCostExplorerUsage: API.OperationMethod<
   GetOrgBillingCostExplorerUsageError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(582, __c72, 6) as any as S.Schema<GetOrgBillingCostExplorerUsageRequest>,
-  output: __S(583, __c72, 7) as any as S.Schema<GetOrgBillingCostExplorerUsageResponse>,
+  input: __S(7424, __c232, 0) as any as S.Schema<GetOrgBillingCostExplorerUsageRequest>,
+  output: __S(7425, __c232, 1) as any as S.Schema<GetOrgBillingCostExplorerUsageResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36546,8 +36594,8 @@ export const getOrgDelegationSettings: API.OperationMethod<
   GetOrgDelegationSettingsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<GetOrgDelegationSettingsRequest>,
-  output: __S(585, __c73, 1) as any as S.Schema<OrgDelegationSettingsResponse>,
+  input: __S(7456, __c233, 0) as any as S.Schema<GetOrgDelegationSettingsRequest>,
+  output: __S(7488, __c234, 0) as any as S.Schema<OrgDelegationSettingsResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36561,8 +36609,8 @@ export const getOrgEvent: API.OperationMethod<
   GetOrgEventError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(586, __c73, 2) as any as S.Schema<GetOrgEventRequest>,
-  output: __S(587, __c73, 3) as any as S.Schema<GetOrgEventResponse>,
+  input: __S(7520, __c235, 0) as any as S.Schema<GetOrgEventRequest>,
+  output: __S(7521, __c235, 1) as any as S.Schema<GetOrgEventResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36576,8 +36624,8 @@ export const getOrgFederationSettings: API.OperationMethod<
   GetOrgFederationSettingsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(588, __c73, 4) as any as S.Schema<GetOrgFederationSettingsRequest>,
-  output: __S(589, __c73, 5) as any as S.Schema<OrgFederationSettings>,
+  input: __S(7552, __c236, 0) as any as S.Schema<GetOrgFederationSettingsRequest>,
+  output: __S(7553, __c236, 1) as any as S.Schema<OrgFederationSettings>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36591,8 +36639,8 @@ export const getOrgGroups: API.OperationMethod<
   GetOrgGroupsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(590, __c73, 6) as any as S.Schema<GetOrgGroupsRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<PaginatedAtlasGroupView>,
+  input: __S(7584, __c237, 0) as any as S.Schema<GetOrgGroupsRequest>,
+  output: __S(7617, __c238, 1) as any as S.Schema<PaginatedAtlasGroupView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36606,8 +36654,8 @@ export const getOrgInvoice: API.OperationMethod<
   GetOrgInvoiceError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(593, __c74, 1) as any as S.Schema<GetOrgInvoiceRequest>,
-  output: __S(602, __c75, 2) as any as S.Schema<BillingInvoice>,
+  input: __S(7648, __c239, 0) as any as S.Schema<GetOrgInvoiceRequest>,
+  output: __S(7719, __c241, 7) as any as S.Schema<BillingInvoice>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36621,8 +36669,8 @@ export const getOrgInvoiceCsv: API.OperationMethod<
   GetOrgInvoiceCsvError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(603, __c75, 3) as any as S.Schema<GetOrgInvoiceCsvRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetOrgInvoiceCsvResponse>,
+  input: __S(7808, __c244, 0) as any as S.Schema<GetOrgInvoiceCsvRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<GetOrgInvoiceCsvResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36636,8 +36684,8 @@ export const getOrgInvoiceReport: API.OperationMethod<
   GetOrgInvoiceReportError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(604, __c75, 4) as any as S.Schema<GetOrgInvoiceReportRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<InvoiceReportResponse>,
+  input: __S(7840, __c245, 0) as any as S.Schema<GetOrgInvoiceReportRequest>,
+  output: __S(18112, __c566, 0) as any as S.Schema<InvoiceReportResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36651,8 +36699,8 @@ export const getOrgLogIntegration: API.OperationMethod<
   GetOrgLogIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(605, __c75, 5) as any as S.Schema<GetOrgLogIntegrationRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<GetOrgLogIntegrationResponse>,
+  input: __S(7872, __c246, 0) as any as S.Schema<GetOrgLogIntegrationRequest>,
+  output: __S(18208, __c569, 0) as any as S.Schema<GetOrgLogIntegrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36670,8 +36718,8 @@ export const getOrgMaintenanceSettings: API.OperationMethod<
   GetOrgMaintenanceSettingsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(606, __c75, 6) as any as S.Schema<GetOrgMaintenanceSettingsRequest>,
-  output: __S(607, __c75, 7) as any as S.Schema<OrganizationMaintenanceSettingsResponse>,
+  input: __S(7904, __c247, 0) as any as S.Schema<GetOrgMaintenanceSettingsRequest>,
+  output: __S(7936, __c248, 0) as any as S.Schema<OrganizationMaintenanceSettingsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36685,8 +36733,8 @@ export const getOrgMcpConfig: API.OperationMethod<
   GetOrgMcpConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c76, 0) as any as S.Schema<GetOrgMcpConfigRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<OrgMcpConfigResponse>,
+  input: __S(7968, __c249, 0) as any as S.Schema<GetOrgMcpConfigRequest>,
+  output: __S(18272, __c571, 0) as any as S.Schema<OrgMcpConfigResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36700,8 +36748,8 @@ export const getOrgMcpConfigSecret: API.OperationMethod<
   GetOrgMcpConfigSecretError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(609, __c76, 1) as any as S.Schema<GetOrgMcpConfigSecretRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ServiceAccountSecret>,
+  input: __S(8000, __c250, 0) as any as S.Schema<GetOrgMcpConfigSecretRequest>,
+  output: __S(16672, __c521, 0) as any as S.Schema<ServiceAccountSecret>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36719,8 +36767,8 @@ export const getOrgNonCompliantResources: API.OperationMethod<
   GetOrgNonCompliantResourcesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(610, __c76, 2) as any as S.Schema<GetOrgNonCompliantResourcesRequest>,
-  output: __S(617, __c77, 1) as any as S.Schema<GetOrgNonCompliantResourcesResponse>,
+  input: __S(8032, __c251, 0) as any as S.Schema<GetOrgNonCompliantResourcesRequest>,
+  output: __S(8039, __c251, 7) as any as S.Schema<GetOrgNonCompliantResourcesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36734,8 +36782,8 @@ export const getOrgResourcePolicy: API.OperationMethod<
   GetOrgResourcePolicyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(618, __c77, 2) as any as S.Schema<GetOrgResourcePolicyRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<ApiAtlasResourcePolicyView>,
+  input: __S(8064, __c252, 0) as any as S.Schema<GetOrgResourcePolicyRequest>,
+  output: __S(18467, __c577, 3) as any as S.Schema<ApiAtlasResourcePolicyView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36749,8 +36797,8 @@ export const getOrgServiceAccount: API.OperationMethod<
   GetOrgServiceAccountError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(619, __c77, 3) as any as S.Schema<GetOrgServiceAccountRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<OrgServiceAccount>,
+  input: __S(8096, __c253, 0) as any as S.Schema<GetOrgServiceAccountRequest>,
+  output: __S(17888, __c559, 0) as any as S.Schema<OrgServiceAccount>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36764,8 +36812,8 @@ export const getOrgServiceAccountGroups: API.OperationMethod<
   GetOrgServiceAccountGroupsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(620, __c77, 4) as any as S.Schema<GetOrgServiceAccountGroupsRequest>,
-  output: __S(623, __c77, 7) as any as S.Schema<PaginatedServiceAccountGroup>,
+  input: __S(8128, __c254, 0) as any as S.Schema<GetOrgServiceAccountGroupsRequest>,
+  output: __S(8131, __c254, 3) as any as S.Schema<PaginatedServiceAccountGroup>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36779,8 +36827,8 @@ export const getOrgSettings: API.OperationMethod<
   GetOrgSettingsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c78, 0) as any as S.Schema<GetOrgSettingsRequest>,
-  output: __S(626, __c78, 2) as any as S.Schema<OrganizationSettings>,
+  input: __S(8224, __c257, 0) as any as S.Schema<GetOrgSettingsRequest>,
+  output: __S(8257, __c258, 1) as any as S.Schema<OrganizationSettings>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36794,8 +36842,8 @@ export const getOrgTeam: API.OperationMethod<
   GetOrgTeamError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(627, __c78, 3) as any as S.Schema<GetOrgTeamRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<TeamResponse>,
+  input: __S(8288, __c259, 0) as any as S.Schema<GetOrgTeamRequest>,
+  output: __S(8320, __c260, 0) as any as S.Schema<TeamResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36809,8 +36857,8 @@ export const getOrgTeamByName: API.OperationMethod<
   GetOrgTeamByNameError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(629, __c78, 5) as any as S.Schema<GetOrgTeamByNameRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<TeamResponse>,
+  input: __S(8352, __c261, 0) as any as S.Schema<GetOrgTeamByNameRequest>,
+  output: __S(8320, __c260, 0) as any as S.Schema<TeamResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36824,7 +36872,7 @@ export const getOrgUser: API.OperationMethod<
   GetOrgUserError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(630, __c78, 6) as any as S.Schema<GetOrgUserRequest>,
+  input: __S(8384, __c262, 0) as any as S.Schema<GetOrgUserRequest>,
   output: S.Unknown as any as S.Schema<OrgUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -36839,8 +36887,8 @@ export const getRateLimit: API.OperationMethod<
   GetRateLimitError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(631, __c78, 7) as any as S.Schema<GetRateLimitRequest>,
-  output: __S(635, __c79, 3) as any as S.Schema<RateLimitEndpointSetResponse>,
+  input: __S(8416, __c263, 0) as any as S.Schema<GetRateLimitRequest>,
+  output: __S(8451, __c264, 3) as any as S.Schema<RateLimitEndpointSetResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36854,8 +36902,8 @@ export const getSku: API.OperationMethod<
   GetSkuError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(636, __c79, 4) as any as S.Schema<GetSkuRequest>,
-  output: __S(637, __c79, 5) as any as S.Schema<SkuResponse>,
+  input: __S(8480, __c265, 0) as any as S.Schema<GetSkuRequest>,
+  output: __S(8512, __c266, 0) as any as S.Schema<SkuResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36869,8 +36917,8 @@ export const getSystemStatus: API.OperationMethod<
   GetSystemStatusError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(638, __c79, 6) as any as S.Schema<GetSystemStatusRequest>,
-  output: __S(643, __c80, 3) as any as S.Schema<SystemStatus>,
+  input: __S(8544, __c267, 0) as any as S.Schema<GetSystemStatusRequest>,
+  output: __S(8549, __c267, 5) as any as S.Schema<SystemStatus>,
   errors: [Forbidden, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36889,8 +36937,8 @@ export const grantGroupClusterMongoDbEmployeeAccess: API.OperationMethod<
   GrantGroupClusterMongoDbEmployeeAccessError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(644, __c80, 4) as any as S.Schema<GrantGroupClusterMongoDbEmployeeAccessRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GrantGroupClusterMongoDbEmployeeAccessResponse>,
+  input: __S(8576, __c268, 0) as any as S.Schema<GrantGroupClusterMongoDbEmployeeAccessRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<GrantGroupClusterMongoDbEmployeeAccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36904,8 +36952,8 @@ export const inviteGroupServiceAccount: API.OperationMethod<
   InviteGroupServiceAccountError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(645, __c80, 5) as any as S.Schema<InviteGroupServiceAccountRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<GroupServiceAccount>,
+  input: __S(8608, __c269, 0) as any as S.Schema<InviteGroupServiceAccountRequest>,
+  output: __S(17216, __c538, 0) as any as S.Schema<GroupServiceAccount>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36919,8 +36967,8 @@ export const listAlertConfigMatcherFieldNames: API.OperationMethod<
   ListAlertConfigMatcherFieldNamesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(646, __c80, 6) as any as S.Schema<ListAlertConfigMatcherFieldNamesRequest>,
-  output: __S(648, __c81, 0) as any as S.Schema<ListAlertConfigMatcherFieldNamesResponse>,
+  input: __S(8640, __c270, 0) as any as S.Schema<ListAlertConfigMatcherFieldNamesRequest>,
+  output: __S(8642, __c270, 2) as any as S.Schema<ListAlertConfigMatcherFieldNamesResponse>,
   errors: [Forbidden, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36934,8 +36982,8 @@ export const listClusterDetails: API.OperationMethod<
   ListClusterDetailsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(649, __c81, 1) as any as S.Schema<ListClusterDetailsRequest>,
-  output: __S(654, __c81, 6) as any as S.Schema<PaginatedOrgGroupView>,
+  input: __S(8736, __c273, 0) as any as S.Schema<ListClusterDetailsRequest>,
+  output: __S(8741, __c273, 5) as any as S.Schema<PaginatedOrgGroupView>,
   errors: [Forbidden, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36949,8 +36997,8 @@ export const listControlPlaneIpAddresses: API.OperationMethod<
   ListControlPlaneIpAddressesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(655, __c81, 7) as any as S.Schema<ListControlPlaneIpAddressesRequest>,
-  output: __S(660, __c82, 4) as any as S.Schema<ControlPlaneIPAddresses>,
+  input: __S(8768, __c274, 0) as any as S.Schema<ListControlPlaneIpAddressesRequest>,
+  output: __S(8773, __c274, 5) as any as S.Schema<ControlPlaneIPAddresses>,
   errors: [UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36964,8 +37012,8 @@ export const listEventTypes: API.OperationMethod<
   ListEventTypesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(661, __c82, 5) as any as S.Schema<ListEventTypesRequest>,
-  output: __S(664, __c83, 0) as any as S.Schema<PaginatedEventTypeDetailsResponse>,
+  input: __S(8800, __c275, 0) as any as S.Schema<ListEventTypesRequest>,
+  output: __S(8803, __c275, 3) as any as S.Schema<PaginatedEventTypeDetailsResponse>,
   errors: [Forbidden, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -36984,11 +37032,11 @@ export const listFederationSettingConnectedOrgConfigRoleMappings: API.OperationM
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    665,
-    __c83,
-    1,
+    8832,
+    __c276,
+    0,
   ) as any as S.Schema<ListFederationSettingConnectedOrgConfigRoleMappingsRequest>,
-  output: __S(666, __c83, 2) as any as S.Schema<PaginatedRoleMappingView>,
+  output: __S(8833, __c276, 1) as any as S.Schema<PaginatedRoleMappingView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37006,8 +37054,8 @@ export const listFederationSettingConnectedOrgConfigs: API.OperationMethod<
   ListFederationSettingConnectedOrgConfigsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(667, __c83, 3) as any as S.Schema<ListFederationSettingConnectedOrgConfigsRequest>,
-  output: __S(668, __c83, 4) as any as S.Schema<PaginatedConnectedOrgConfigsView>,
+  input: __S(8865, __c277, 1) as any as S.Schema<ListFederationSettingConnectedOrgConfigsRequest>,
+  output: __S(8866, __c277, 2) as any as S.Schema<PaginatedConnectedOrgConfigsView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37025,8 +37073,8 @@ export const listFederationSettingIdentityProviders: API.OperationMethod<
   ListFederationSettingIdentityProvidersError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(669, __c83, 5) as any as S.Schema<ListFederationSettingIdentityProvidersRequest>,
-  output: __S(671, __c83, 7) as any as S.Schema<PaginatedFederationIdentityProvider>,
+  input: __S(8896, __c278, 0) as any as S.Schema<ListFederationSettingIdentityProvidersRequest>,
+  output: __S(8898, __c278, 2) as any as S.Schema<PaginatedFederationIdentityProvider>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37040,8 +37088,8 @@ export const listGroupAccessListEntries: API.OperationMethod<
   ListGroupAccessListEntriesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c84, 0) as any as S.Schema<ListGroupAccessListEntriesRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<PaginatedNetworkAccessView>,
+  input: __S(8928, __c279, 0) as any as S.Schema<ListGroupAccessListEntriesRequest>,
+  output: __S(3553, __c111, 1) as any as S.Schema<PaginatedNetworkAccessView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37055,8 +37103,8 @@ export const listGroupAiModelApiKeys: API.OperationMethod<
   ListGroupAiModelApiKeysError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(673, __c84, 1) as any as S.Schema<ListGroupAiModelApiKeysRequest>,
-  output: __S(675, __c84, 3) as any as S.Schema<PaginatedAtlasAiModelApiKeysResponse>,
+  input: __S(8960, __c280, 0) as any as S.Schema<ListGroupAiModelApiKeysRequest>,
+  output: __S(8993, __c281, 1) as any as S.Schema<PaginatedAtlasAiModelApiKeysResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37070,8 +37118,8 @@ export const listGroupAlertConfigs: API.OperationMethod<
   ListGroupAlertConfigsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(676, __c84, 4) as any as S.Schema<ListGroupAlertConfigsRequest>,
-  output: __S(413, __c51, 5) as any as S.Schema<PaginatedAlertConfigView>,
+  input: __S(9024, __c282, 0) as any as S.Schema<ListGroupAlertConfigsRequest>,
+  output: __S(2497, __c78, 1) as any as S.Schema<PaginatedAlertConfigView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37085,8 +37133,8 @@ export const listGroupAlerts: API.OperationMethod<
   ListGroupAlertsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(677, __c84, 5) as any as S.Schema<ListGroupAlertsRequest>,
-  output: __S(417, __c52, 1) as any as S.Schema<PaginatedAlertView>,
+  input: __S(9056, __c283, 0) as any as S.Schema<ListGroupAlertsRequest>,
+  output: __S(2593, __c81, 1) as any as S.Schema<PaginatedAlertView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37100,8 +37148,8 @@ export const listGroupApiKeys: API.OperationMethod<
   ListGroupApiKeysError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(678, __c84, 6) as any as S.Schema<ListGroupApiKeysRequest>,
-  output: __S(680, __c85, 0) as any as S.Schema<PaginatedApiApiUserView>,
+  input: __S(9152, __c286, 0) as any as S.Schema<ListGroupApiKeysRequest>,
+  output: __S(9185, __c287, 1) as any as S.Schema<PaginatedApiApiUserView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37115,8 +37163,8 @@ export const listGroupBackupExportBuckets: API.OperationMethod<
   ListGroupBackupExportBucketsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(681, __c85, 1) as any as S.Schema<ListGroupBackupExportBucketsRequest>,
-  output: __S(683, __c85, 3) as any as S.Schema<PaginatedBackupSnapshotExportBucketsView>,
+  input: __S(9216, __c288, 0) as any as S.Schema<ListGroupBackupExportBucketsRequest>,
+  output: __S(9218, __c288, 2) as any as S.Schema<PaginatedBackupSnapshotExportBucketsView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37130,11 +37178,11 @@ export const listGroupBackupPrivateEndpoints: API.OperationMethod<
   ListGroupBackupPrivateEndpointsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(684, __c85, 4) as any as S.Schema<ListGroupBackupPrivateEndpointsRequest>,
+  input: __S(9248, __c289, 0) as any as S.Schema<ListGroupBackupPrivateEndpointsRequest>,
   output: __S(
-    687,
-    __c85,
-    7,
+    9251,
+    __c289,
+    3,
   ) as any as S.Schema<PaginatedApiAtlasObjectStoragePrivateEndpointResponseView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -37149,8 +37197,8 @@ export const listGroupCloudProviderAccess: API.OperationMethod<
   ListGroupCloudProviderAccessError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c86, 0) as any as S.Schema<ListGroupCloudProviderAccessRequest>,
-  output: __S(692, __c86, 4) as any as S.Schema<CloudProviderAccessRoles>,
+  input: __S(9285, __c290, 5) as any as S.Schema<ListGroupCloudProviderAccessRequest>,
+  output: __S(9289, __c290, 9) as any as S.Schema<CloudProviderAccessRoles>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37164,8 +37212,8 @@ export const listGroupClusterBackupExports: API.OperationMethod<
   ListGroupClusterBackupExportsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(693, __c86, 5) as any as S.Schema<ListGroupClusterBackupExportsRequest>,
-  output: __S(695, __c86, 7) as any as S.Schema<PaginatedApiAtlasDiskBackupExportJobView>,
+  input: __S(9312, __c291, 0) as any as S.Schema<ListGroupClusterBackupExportsRequest>,
+  output: __S(9314, __c291, 2) as any as S.Schema<PaginatedApiAtlasDiskBackupExportJobView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37179,8 +37227,8 @@ export const listGroupClusterBackupRestoreJobs: API.OperationMethod<
   ListGroupClusterBackupRestoreJobsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696, __c87, 0) as any as S.Schema<ListGroupClusterBackupRestoreJobsRequest>,
-  output: __S(698, __c87, 2) as any as S.Schema<PaginatedCloudBackupRestoreJobView>,
+  input: __S(9344, __c292, 0) as any as S.Schema<ListGroupClusterBackupRestoreJobsRequest>,
+  output: __S(9346, __c292, 2) as any as S.Schema<PaginatedCloudBackupRestoreJobView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37199,11 +37247,11 @@ export const listGroupClusterBackupSnapshotDatabaseCollections: API.OperationMet
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    699,
-    __c87,
-    3,
+    9376,
+    __c293,
+    0,
   ) as any as S.Schema<ListGroupClusterBackupSnapshotDatabaseCollectionsRequest>,
-  output: __S(701, __c87, 5) as any as S.Schema<PaginatedApiAtlasDiskBackupCollectionView>,
+  output: __S(9409, __c294, 1) as any as S.Schema<PaginatedApiAtlasDiskBackupCollectionView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37221,8 +37269,8 @@ export const listGroupClusterBackupSnapshotDatabases: API.OperationMethod<
   ListGroupClusterBackupSnapshotDatabasesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(702, __c87, 6) as any as S.Schema<ListGroupClusterBackupSnapshotDatabasesRequest>,
-  output: __S(701, __c87, 5) as any as S.Schema<PaginatedApiAtlasDiskBackupDatabaseView>,
+  input: __S(9440, __c295, 0) as any as S.Schema<ListGroupClusterBackupSnapshotDatabasesRequest>,
+  output: __S(9409, __c294, 1) as any as S.Schema<PaginatedApiAtlasDiskBackupDatabaseView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37240,8 +37288,8 @@ export const listGroupClusterBackupSnapshots: API.OperationMethod<
   ListGroupClusterBackupSnapshotsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(703, __c87, 7) as any as S.Schema<ListGroupClusterBackupSnapshotsRequest>,
-  output: __S(705, __c88, 1) as any as S.Schema<PaginatedCloudBackupReplicaSetView>,
+  input: __S(9472, __c296, 0) as any as S.Schema<ListGroupClusterBackupSnapshotsRequest>,
+  output: __S(9474, __c296, 2) as any as S.Schema<PaginatedCloudBackupReplicaSetView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37260,11 +37308,11 @@ export const listGroupClusterBackupSnapshotShardedClusters: API.OperationMethod<
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    706,
-    __c88,
-    2,
+    9504,
+    __c297,
+    0,
   ) as any as S.Schema<ListGroupClusterBackupSnapshotShardedClustersRequest>,
-  output: __S(708, __c88, 4) as any as S.Schema<PaginatedCloudBackupShardedClusterSnapshotView>,
+  output: __S(9506, __c297, 2) as any as S.Schema<PaginatedCloudBackupShardedClusterSnapshotView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37283,14 +37331,14 @@ export const listGroupClusterCollectionRestoreJobCollections: API.OperationMetho
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    709,
-    __c88,
-    5,
+    9568,
+    __c299,
+    0,
   ) as any as S.Schema<ListGroupClusterCollectionRestoreJobCollectionsRequest>,
   output: __S(
-    711,
-    __c88,
-    7,
+    9570,
+    __c299,
+    2,
   ) as any as S.Schema<PaginatedApiAtlasCollectionRestoreCollectionStateView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -37309,8 +37357,8 @@ export const listGroupClusterCollectionRestoreJobs: API.OperationMethod<
   ListGroupClusterCollectionRestoreJobsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(712, __c89, 0) as any as S.Schema<ListGroupClusterCollectionRestoreJobsRequest>,
-  output: __S(714, __c89, 2) as any as S.Schema<PaginatedApiAtlasCollectionRestoreJobView>,
+  input: __S(9600, __c300, 0) as any as S.Schema<ListGroupClusterCollectionRestoreJobsRequest>,
+  output: __S(9602, __c300, 2) as any as S.Schema<PaginatedApiAtlasCollectionRestoreJobView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37328,8 +37376,8 @@ export const listGroupClusterCollStatMeasurements: API.OperationMethod<
   ListGroupClusterCollStatMeasurementsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(715, __c89, 3) as any as S.Schema<ListGroupClusterCollStatMeasurementsRequest>,
-  output: __S(716, __c89, 4) as any as S.Schema<MeasurementsCollStatsLatencyCluster>,
+  input: __S(9632, __c301, 0) as any as S.Schema<ListGroupClusterCollStatMeasurementsRequest>,
+  output: __S(9633, __c301, 1) as any as S.Schema<MeasurementsCollStatsLatencyCluster>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37347,8 +37395,8 @@ export const listGroupClusterCollStatPinnedNamespaces: API.OperationMethod<
   ListGroupClusterCollStatPinnedNamespacesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(717, __c89, 5) as any as S.Schema<ListGroupClusterCollStatPinnedNamespacesRequest>,
-  output: __S(718, __c89, 6) as any as S.Schema<PinnedNamespaces>,
+  input: __S(9664, __c302, 0) as any as S.Schema<ListGroupClusterCollStatPinnedNamespacesRequest>,
+  output: __S(9696, __c303, 0) as any as S.Schema<PinnedNamespaces>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37362,8 +37410,8 @@ export const listGroupClusterOnlineArchives: API.OperationMethod<
   ListGroupClusterOnlineArchivesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(719, __c89, 7) as any as S.Schema<ListGroupClusterOnlineArchivesRequest>,
-  output: __S(721, __c90, 1) as any as S.Schema<PaginatedOnlineArchiveView>,
+  input: __S(9728, __c304, 0) as any as S.Schema<ListGroupClusterOnlineArchivesRequest>,
+  output: __S(9730, __c304, 2) as any as S.Schema<PaginatedOnlineArchiveView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37381,8 +37429,8 @@ export const listGroupClusterOverloadSimulations: API.OperationMethod<
   ListGroupClusterOverloadSimulationsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(722, __c90, 2) as any as S.Schema<ListGroupClusterOverloadSimulationsRequest>,
-  output: __S(724, __c90, 4) as any as S.Schema<PaginatedOverloadProtectionSimulationResponse>,
+  input: __S(9760, __c305, 0) as any as S.Schema<ListGroupClusterOverloadSimulationsRequest>,
+  output: __S(9762, __c305, 2) as any as S.Schema<PaginatedOverloadProtectionSimulationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37401,11 +37449,11 @@ export const listGroupClusterPerformanceAdvisorDropIndexSuggestions: API.Operati
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    725,
-    __c90,
-    5,
+    9792,
+    __c306,
+    0,
   ) as any as S.Schema<ListGroupClusterPerformanceAdvisorDropIndexSuggestionsRequest>,
-  output: __S(730, __c91, 2) as any as S.Schema<EnvelopedDropIndexSuggestionsResponse>,
+  output: __S(9796, __c306, 4) as any as S.Schema<EnvelopedDropIndexSuggestionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37424,11 +37472,11 @@ export const listGroupClusterPerformanceAdvisorSchemaAdvice: API.OperationMethod
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    731,
-    __c91,
-    3,
+    9856,
+    __c308,
+    0,
   ) as any as S.Schema<ListGroupClusterPerformanceAdvisorSchemaAdviceRequest>,
-  output: __S(739, __c92, 3) as any as S.Schema<EnvelopedSchemaAdvisorResponse>,
+  output: __S(9864, __c308, 8) as any as S.Schema<EnvelopedSchemaAdvisorResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37447,11 +37495,11 @@ export const listGroupClusterPerformanceAdvisorSuggestedIndexes: API.OperationMe
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    740,
-    __c92,
-    4,
+    9888,
+    __c309,
+    0,
   ) as any as S.Schema<ListGroupClusterPerformanceAdvisorSuggestedIndexesRequest>,
-  output: __S(751, __c93, 7) as any as S.Schema<EnvelopedPerformanceAdvisorResponse>,
+  output: __S(9889, __c309, 1) as any as S.Schema<EnvelopedPerformanceAdvisorResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37465,8 +37513,8 @@ export const listGroupClusterProviderRegions: API.OperationMethod<
   ListGroupClusterProviderRegionsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c94, 0) as any as S.Schema<ListGroupClusterProviderRegionsRequest>,
-  output: __S(759, __c94, 7) as any as S.Schema<PaginatedApiAtlasProviderRegionsView>,
+  input: __S(9952, __c311, 0) as any as S.Schema<ListGroupClusterProviderRegionsRequest>,
+  output: __S(9959, __c311, 7) as any as S.Schema<PaginatedApiAtlasProviderRegionsView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37484,8 +37532,12 @@ export const listGroupClusterQueryShapeInsightSummaries: API.OperationMethod<
   ListGroupClusterQueryShapeInsightSummariesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(760, __c95, 0) as any as S.Schema<ListGroupClusterQueryShapeInsightSummariesRequest>,
-  output: __S(762, __c95, 2) as any as S.Schema<QueryStatsSummaryListResponse>,
+  input: __S(
+    10048,
+    __c314,
+    0,
+  ) as any as S.Schema<ListGroupClusterQueryShapeInsightSummariesRequest>,
+  output: __S(10050, __c314, 2) as any as S.Schema<QueryStatsSummaryListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37503,8 +37555,8 @@ export const listGroupClusterQueryShapes: API.OperationMethod<
   ListGroupClusterQueryShapesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(763, __c95, 3) as any as S.Schema<ListGroupClusterQueryShapesRequest>,
-  output: __S(765, __c95, 5) as any as S.Schema<PaginatedQueryShapes>,
+  input: __S(10080, __c315, 0) as any as S.Schema<ListGroupClusterQueryShapesRequest>,
+  output: __S(10082, __c315, 2) as any as S.Schema<PaginatedQueryShapes>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37518,8 +37570,8 @@ export const listGroupClusters: API.OperationMethod<
   ListGroupClustersError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(766, __c95, 6) as any as S.Schema<ListGroupClustersRequest>,
-  output: __S(768, __c96, 0) as any as S.Schema<PaginatedClusterDescription20240805>,
+  input: __S(10112, __c316, 0) as any as S.Schema<ListGroupClustersRequest>,
+  output: __S(10114, __c316, 2) as any as S.Schema<PaginatedClusterDescription20240805>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37537,8 +37589,8 @@ export const listGroupClusterSearchIndex: API.OperationMethod<
   ListGroupClusterSearchIndexError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(769, __c96, 1) as any as S.Schema<ListGroupClusterSearchIndexRequest>,
-  output: __S(771, __c96, 3) as any as S.Schema<ListGroupClusterSearchIndexResponse>,
+  input: __S(10144, __c317, 0) as any as S.Schema<ListGroupClusterSearchIndexRequest>,
+  output: __S(10177, __c318, 1) as any as S.Schema<ListGroupClusterSearchIndexResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37556,8 +37608,8 @@ export const listGroupClusterSearchIndexes: API.OperationMethod<
   ListGroupClusterSearchIndexesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(772, __c96, 4) as any as S.Schema<ListGroupClusterSearchIndexesRequest>,
-  output: __S(771, __c96, 3) as any as S.Schema<ListGroupClusterSearchIndexesResponse>,
+  input: __S(10208, __c319, 0) as any as S.Schema<ListGroupClusterSearchIndexesRequest>,
+  output: __S(10177, __c318, 1) as any as S.Schema<ListGroupClusterSearchIndexesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37571,8 +37623,8 @@ export const listGroupCollStatMetrics: API.OperationMethod<
   ListGroupCollStatMetricsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(773, __c96, 5) as any as S.Schema<ListGroupCollStatMetricsRequest>,
-  output: __S(776, __c97, 0) as any as S.Schema<CollStatsLatencyNamespaceMetrics>,
+  input: __S(10240, __c320, 0) as any as S.Schema<ListGroupCollStatMetricsRequest>,
+  output: __S(10243, __c320, 3) as any as S.Schema<CollStatsLatencyNamespaceMetrics>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37586,8 +37638,8 @@ export const listGroupContainerAll: API.OperationMethod<
   ListGroupContainerAllError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(777, __c97, 1) as any as S.Schema<ListGroupContainerAllRequest>,
-  output: __S(779, __c97, 3) as any as S.Schema<PaginatedCloudProviderContainerView>,
+  input: __S(10272, __c321, 0) as any as S.Schema<ListGroupContainerAllRequest>,
+  output: __S(10305, __c322, 1) as any as S.Schema<PaginatedCloudProviderContainerView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37601,8 +37653,8 @@ export const listGroupContainers: API.OperationMethod<
   ListGroupContainersError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(780, __c97, 4) as any as S.Schema<ListGroupContainersRequest>,
-  output: __S(779, __c97, 3) as any as S.Schema<PaginatedCloudProviderContainerView>,
+  input: __S(10336, __c323, 0) as any as S.Schema<ListGroupContainersRequest>,
+  output: __S(10305, __c322, 1) as any as S.Schema<PaginatedCloudProviderContainerView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37616,8 +37668,8 @@ export const listGroupCustomDbRoleRoles: API.OperationMethod<
   ListGroupCustomDbRoleRolesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(781, __c97, 5) as any as S.Schema<ListGroupCustomDbRoleRolesRequest>,
-  output: __S(783, __c97, 7) as any as S.Schema<ListGroupCustomDbRoleRolesResponse>,
+  input: __S(10368, __c324, 0) as any as S.Schema<ListGroupCustomDbRoleRolesRequest>,
+  output: __S(10370, __c324, 2) as any as S.Schema<ListGroupCustomDbRoleRolesResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37635,8 +37687,8 @@ export const listGroupDatabaseUserCerts: API.OperationMethod<
   ListGroupDatabaseUserCertsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c98, 0) as any as S.Schema<ListGroupDatabaseUserCertsRequest>,
-  output: __S(787, __c98, 3) as any as S.Schema<PaginatedUserCertViewOutput>,
+  input: __S(10400, __c325, 0) as any as S.Schema<ListGroupDatabaseUserCertsRequest>,
+  output: __S(10403, __c325, 3) as any as S.Schema<PaginatedUserCertViewOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37650,8 +37702,8 @@ export const listGroupDatabaseUsers: API.OperationMethod<
   ListGroupDatabaseUsersError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(788, __c98, 4) as any as S.Schema<ListGroupDatabaseUsersRequest>,
-  output: __S(790, __c98, 6) as any as S.Schema<PaginatedApiAtlasDatabaseUserViewOutput>,
+  input: __S(10496, __c328, 0) as any as S.Schema<ListGroupDatabaseUsersRequest>,
+  output: __S(10498, __c328, 2) as any as S.Schema<PaginatedApiAtlasDatabaseUserViewOutput>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37665,8 +37717,8 @@ export const listGroupDataFederation: API.OperationMethod<
   ListGroupDataFederationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(791, __c98, 7) as any as S.Schema<ListGroupDataFederationRequest>,
-  output: __S(793, __c99, 1) as any as S.Schema<ListGroupDataFederationResponse>,
+  input: __S(10528, __c329, 0) as any as S.Schema<ListGroupDataFederationRequest>,
+  output: __S(10530, __c329, 2) as any as S.Schema<ListGroupDataFederationResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37680,8 +37732,8 @@ export const listGroupDataFederationLimits: API.OperationMethod<
   ListGroupDataFederationLimitsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(794, __c99, 2) as any as S.Schema<ListGroupDataFederationLimitsRequest>,
-  output: __S(796, __c99, 4) as any as S.Schema<ListGroupDataFederationLimitsResponse>,
+  input: __S(10560, __c330, 0) as any as S.Schema<ListGroupDataFederationLimitsRequest>,
+  output: __S(10562, __c330, 2) as any as S.Schema<ListGroupDataFederationLimitsResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37698,8 +37750,8 @@ export const listGroupEncryptionAtRestPrivateEndpoints: API.OperationMethod<
   ListGroupEncryptionAtRestPrivateEndpointsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(797, __c99, 5) as any as S.Schema<ListGroupEncryptionAtRestPrivateEndpointsRequest>,
-  output: __S(799, __c99, 7) as any as S.Schema<PaginatedApiAtlasEARPrivateEndpointView>,
+  input: __S(10592, __c331, 0) as any as S.Schema<ListGroupEncryptionAtRestPrivateEndpointsRequest>,
+  output: __S(10594, __c331, 2) as any as S.Schema<PaginatedApiAtlasEARPrivateEndpointView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37713,8 +37765,8 @@ export const listGroupEvents: API.OperationMethod<
   ListGroupEventsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c100, 0) as any as S.Schema<ListGroupEventsRequest>,
-  output: __S(802, __c100, 2) as any as S.Schema<GroupPaginatedEventView>,
+  input: __S(10624, __c332, 0) as any as S.Schema<ListGroupEventsRequest>,
+  output: __S(10626, __c332, 2) as any as S.Schema<GroupPaginatedEventView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37732,8 +37784,12 @@ export const listGroupFlexClusterBackupRestoreJobs: API.OperationMethod<
   ListGroupFlexClusterBackupRestoreJobsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(803, __c100, 3) as any as S.Schema<ListGroupFlexClusterBackupRestoreJobsRequest>,
-  output: __S(805, __c100, 5) as any as S.Schema<PaginatedApiAtlasFlexBackupRestoreJob20241113View>,
+  input: __S(10656, __c333, 0) as any as S.Schema<ListGroupFlexClusterBackupRestoreJobsRequest>,
+  output: __S(
+    10658,
+    __c333,
+    2,
+  ) as any as S.Schema<PaginatedApiAtlasFlexBackupRestoreJob20241113View>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37751,8 +37807,8 @@ export const listGroupFlexClusterBackupSnapshots: API.OperationMethod<
   ListGroupFlexClusterBackupSnapshotsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(806, __c100, 6) as any as S.Schema<ListGroupFlexClusterBackupSnapshotsRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<PaginatedApiAtlasFlexBackupSnapshot20241113View>,
+  input: __S(10688, __c334, 0) as any as S.Schema<ListGroupFlexClusterBackupSnapshotsRequest>,
+  output: __S(10690, __c334, 2) as any as S.Schema<PaginatedApiAtlasFlexBackupSnapshot20241113View>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37766,8 +37822,8 @@ export const listGroupFlexClusters: API.OperationMethod<
   ListGroupFlexClustersError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(809, __c101, 1) as any as S.Schema<ListGroupFlexClustersRequest>,
-  output: __S(811, __c101, 3) as any as S.Schema<PaginatedFlexClusters20241113>,
+  input: __S(10720, __c335, 0) as any as S.Schema<ListGroupFlexClustersRequest>,
+  output: __S(10722, __c335, 2) as any as S.Schema<PaginatedFlexClusters20241113>,
   errors: [Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37785,8 +37841,8 @@ export const listGroupHostFtsMetricIndexMeasurements: API.OperationMethod<
   ListGroupHostFtsMetricIndexMeasurementsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(812, __c101, 4) as any as S.Schema<ListGroupHostFtsMetricIndexMeasurementsRequest>,
-  output: __S(498, __c62, 2) as any as S.Schema<MeasurementsIndexes>,
+  input: __S(10752, __c336, 0) as any as S.Schema<ListGroupHostFtsMetricIndexMeasurementsRequest>,
+  output: __S(4993, __c156, 1) as any as S.Schema<MeasurementsIndexes>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37804,8 +37860,8 @@ export const listGroupHostFtsMetricMeasurements: API.OperationMethod<
   ListGroupHostFtsMetricMeasurementsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(813, __c101, 5) as any as S.Schema<ListGroupHostFtsMetricMeasurementsRequest>,
-  output: __S(814, __c101, 6) as any as S.Schema<MeasurementsNonIndex>,
+  input: __S(10784, __c337, 0) as any as S.Schema<ListGroupHostFtsMetricMeasurementsRequest>,
+  output: __S(10785, __c337, 1) as any as S.Schema<MeasurementsNonIndex>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37819,8 +37875,8 @@ export const listGroupHostFtsMetrics: API.OperationMethod<
   ListGroupHostFtsMetricsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(815, __c101, 7) as any as S.Schema<ListGroupHostFtsMetricsRequest>,
-  output: __S(818, __c102, 2) as any as S.Schema<CloudSearchMetrics>,
+  input: __S(10880, __c340, 0) as any as S.Schema<ListGroupHostFtsMetricsRequest>,
+  output: __S(10883, __c340, 3) as any as S.Schema<CloudSearchMetrics>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37834,8 +37890,8 @@ export const listGroupIntegrations: API.OperationMethod<
   ListGroupIntegrationsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(819, __c102, 3) as any as S.Schema<ListGroupIntegrationsRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<PaginatedIntegrationViewOutput>,
+  input: __S(10912, __c341, 0) as any as S.Schema<ListGroupIntegrationsRequest>,
+  output: __S(15201, __c475, 1) as any as S.Schema<PaginatedIntegrationViewOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37854,8 +37910,8 @@ export const listGroupLimits: API.OperationMethod<
   ListGroupLimitsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(820, __c102, 4) as any as S.Schema<ListGroupLimitsRequest>,
-  output: __S(822, __c102, 6) as any as S.Schema<ListGroupLimitsResponse>,
+  input: __S(10944, __c342, 0) as any as S.Schema<ListGroupLimitsRequest>,
+  output: __S(10946, __c342, 2) as any as S.Schema<ListGroupLimitsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37869,8 +37925,8 @@ export const listGroupLogIntegrations: API.OperationMethod<
   ListGroupLogIntegrationsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(823, __c102, 7) as any as S.Schema<ListGroupLogIntegrationsRequest>,
-  output: __S(825, __c103, 1) as any as S.Schema<PaginatedLogIntegrationResponseOutput>,
+  input: __S(10976, __c343, 0) as any as S.Schema<ListGroupLogIntegrationsRequest>,
+  output: __S(10978, __c343, 2) as any as S.Schema<PaginatedLogIntegrationResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37884,8 +37940,8 @@ export const listGroupMcpConfigs: API.OperationMethod<
   ListGroupMcpConfigsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(826, __c103, 2) as any as S.Schema<ListGroupMcpConfigsRequest>,
-  output: __S(828, __c103, 4) as any as S.Schema<PaginatedGroupMcpConfigView>,
+  input: __S(11008, __c344, 0) as any as S.Schema<ListGroupMcpConfigsRequest>,
+  output: __S(11010, __c344, 2) as any as S.Schema<PaginatedGroupMcpConfigView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37899,8 +37955,8 @@ export const listGroupMcpConfigSecrets: API.OperationMethod<
   ListGroupMcpConfigSecretsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(829, __c103, 5) as any as S.Schema<ListGroupMcpConfigSecretsRequest>,
-  output: __S(830, __c103, 6) as any as S.Schema<PaginatedMcpConfigSecretView>,
+  input: __S(11040, __c345, 0) as any as S.Schema<ListGroupMcpConfigSecretsRequest>,
+  output: __S(11072, __c346, 0) as any as S.Schema<PaginatedMcpConfigSecretView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37918,8 +37974,8 @@ export const listGroupMetricIntegrations: API.OperationMethod<
   ListGroupMetricIntegrationsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(831, __c103, 7) as any as S.Schema<ListGroupMetricIntegrationsRequest>,
-  output: __S(833, __c104, 1) as any as S.Schema<PaginatedMetricIntegrationResponse>,
+  input: __S(11104, __c347, 0) as any as S.Schema<ListGroupMetricIntegrationsRequest>,
+  output: __S(11106, __c347, 2) as any as S.Schema<PaginatedMetricIntegrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37933,8 +37989,8 @@ export const listGroupPeers: API.OperationMethod<
   ListGroupPeersError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(834, __c104, 2) as any as S.Schema<ListGroupPeersRequest>,
-  output: __S(836, __c104, 4) as any as S.Schema<PaginatedContainerPeerView>,
+  input: __S(11136, __c348, 0) as any as S.Schema<ListGroupPeersRequest>,
+  output: __S(11138, __c348, 2) as any as S.Schema<PaginatedContainerPeerView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37952,8 +38008,8 @@ export const listGroupPrivateEndpointEndpointService: API.OperationMethod<
   ListGroupPrivateEndpointEndpointServiceError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(837, __c104, 5) as any as S.Schema<ListGroupPrivateEndpointEndpointServiceRequest>,
-  output: __S(839, __c104, 7) as any as S.Schema<ListGroupPrivateEndpointEndpointServiceResponse>,
+  input: __S(11168, __c349, 0) as any as S.Schema<ListGroupPrivateEndpointEndpointServiceRequest>,
+  output: __S(11170, __c349, 2) as any as S.Schema<ListGroupPrivateEndpointEndpointServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37971,8 +38027,8 @@ export const listGroupPrivateNetworkSettingEndpointIds: API.OperationMethod<
   ListGroupPrivateNetworkSettingEndpointIdsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(840, __c105, 0) as any as S.Schema<ListGroupPrivateNetworkSettingEndpointIdsRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<PaginatedPrivateNetworkEndpointIdEntryView>,
+  input: __S(11200, __c350, 0) as any as S.Schema<ListGroupPrivateNetworkSettingEndpointIdsRequest>,
+  output: __S(17153, __c536, 1) as any as S.Schema<PaginatedPrivateNetworkEndpointIdEntryView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -37990,8 +38046,8 @@ export const listGroupProcessCollStatMeasurements: API.OperationMethod<
   ListGroupProcessCollStatMeasurementsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(841, __c105, 1) as any as S.Schema<ListGroupProcessCollStatMeasurementsRequest>,
-  output: __S(842, __c105, 2) as any as S.Schema<MeasurementsCollStatsLatencyHost>,
+  input: __S(11328, __c354, 0) as any as S.Schema<ListGroupProcessCollStatMeasurementsRequest>,
+  output: __S(11329, __c354, 1) as any as S.Schema<MeasurementsCollStatsLatencyHost>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38005,8 +38061,8 @@ export const listGroupProcessDatabases: API.OperationMethod<
   ListGroupProcessDatabasesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(843, __c105, 3) as any as S.Schema<ListGroupProcessDatabasesRequest>,
-  output: __S(845, __c105, 5) as any as S.Schema<PaginatedDatabaseView>,
+  input: __S(11360, __c355, 0) as any as S.Schema<ListGroupProcessDatabasesRequest>,
+  output: __S(11362, __c355, 2) as any as S.Schema<PaginatedDatabaseView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38020,8 +38076,8 @@ export const listGroupProcessDisks: API.OperationMethod<
   ListGroupProcessDisksError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(846, __c105, 6) as any as S.Schema<ListGroupProcessDisksRequest>,
-  output: __S(848, __c106, 0) as any as S.Schema<PaginatedDiskPartitionView>,
+  input: __S(11392, __c356, 0) as any as S.Schema<ListGroupProcessDisksRequest>,
+  output: __S(11394, __c356, 2) as any as S.Schema<PaginatedDiskPartitionView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38035,8 +38091,8 @@ export const listGroupProcesses: API.OperationMethod<
   ListGroupProcessesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(849, __c106, 1) as any as S.Schema<ListGroupProcessesRequest>,
-  output: __S(851, __c106, 3) as any as S.Schema<PaginatedHostViewAtlas>,
+  input: __S(11424, __c357, 0) as any as S.Schema<ListGroupProcessesRequest>,
+  output: __S(11426, __c357, 2) as any as S.Schema<PaginatedHostViewAtlas>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38054,11 +38110,11 @@ export const listGroupProcessPerformanceAdvisorNamespaces: API.OperationMethod<
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    852,
-    __c106,
-    4,
+    11456,
+    __c358,
+    0,
   ) as any as S.Schema<ListGroupProcessPerformanceAdvisorNamespacesRequest>,
-  output: __S(855, __c106, 7) as any as S.Schema<Namespaces>,
+  output: __S(11459, __c358, 3) as any as S.Schema<Namespaces>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38076,11 +38132,11 @@ export const listGroupProcessPerformanceAdvisorSlowQueryLogs: API.OperationMetho
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    856,
-    __c107,
+    11488,
+    __c359,
     0,
   ) as any as S.Schema<ListGroupProcessPerformanceAdvisorSlowQueryLogsRequest>,
-  output: __S(860, __c107, 4) as any as S.Schema<PerformanceAdvisorSlowQueryList>,
+  output: __S(11492, __c359, 4) as any as S.Schema<PerformanceAdvisorSlowQueryList>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38098,11 +38154,11 @@ export const listGroupProcessPerformanceAdvisorSuggestedIndexes: API.OperationMe
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    861,
-    __c107,
-    5,
+    11520,
+    __c360,
+    0,
   ) as any as S.Schema<ListGroupProcessPerformanceAdvisorSuggestedIndexesRequest>,
-  output: __S(750, __c93, 6) as any as S.Schema<PerformanceAdvisorResponse>,
+  output: __S(9929, __c310, 9) as any as S.Schema<PerformanceAdvisorResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38116,8 +38172,8 @@ export const listGroups: API.OperationMethod<
   ListGroupsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(862, __c107, 6) as any as S.Schema<ListGroupsRequest>,
-  output: __S(592, __c74, 0) as any as S.Schema<PaginatedAtlasGroupView>,
+  input: __S(11552, __c361, 0) as any as S.Schema<ListGroupsRequest>,
+  output: __S(7617, __c238, 1) as any as S.Schema<PaginatedAtlasGroupView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38131,8 +38187,8 @@ export const listGroupServiceAccountAccessList: API.OperationMethod<
   ListGroupServiceAccountAccessListError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(863, __c107, 7) as any as S.Schema<ListGroupServiceAccountAccessListRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<PaginatedServiceAccountIPAccessEntryView>,
+  input: __S(11584, __c362, 0) as any as S.Schema<ListGroupServiceAccountAccessListRequest>,
+  output: __S(17312, __c541, 0) as any as S.Schema<PaginatedServiceAccountIPAccessEntryView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38146,8 +38202,8 @@ export const listGroupServiceAccounts: API.OperationMethod<
   ListGroupServiceAccountsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c108, 0) as any as S.Schema<ListGroupServiceAccountsRequest>,
-  output: __S(866, __c108, 2) as any as S.Schema<PaginatedGroupServiceAccounts>,
+  input: __S(11616, __c363, 0) as any as S.Schema<ListGroupServiceAccountsRequest>,
+  output: __S(11618, __c363, 2) as any as S.Schema<PaginatedGroupServiceAccounts>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38164,8 +38220,12 @@ export const listGroupStreamActiveVpcPeeringConnections: API.OperationMethod<
   ListGroupStreamActiveVpcPeeringConnectionsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(867, __c108, 3) as any as S.Schema<ListGroupStreamActiveVpcPeeringConnectionsRequest>,
-  output: __S(870, __c108, 6) as any as S.Schema<PaginatedApiStreamsVPCPeeringConnectionView>,
+  input: __S(
+    11712,
+    __c366,
+    0,
+  ) as any as S.Schema<ListGroupStreamActiveVpcPeeringConnectionsRequest>,
+  output: __S(11746, __c367, 2) as any as S.Schema<PaginatedApiStreamsVPCPeeringConnectionView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38184,11 +38244,11 @@ export const listGroupStreamConnectionFailoverConnections: API.OperationMethod<
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    871,
-    __c108,
-    7,
+    11776,
+    __c368,
+    0,
   ) as any as S.Schema<ListGroupStreamConnectionFailoverConnectionsRequest>,
-  output: __S(873, __c109, 1) as any as S.Schema<PaginatedApiStreamsFailoverConnectionOutput>,
+  output: __S(11778, __c368, 2) as any as S.Schema<PaginatedApiStreamsFailoverConnectionOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38202,8 +38262,8 @@ export const listGroupStreamConnections: API.OperationMethod<
   ListGroupStreamConnectionsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(874, __c109, 2) as any as S.Schema<ListGroupStreamConnectionsRequest>,
-  output: __S(875, __c109, 3) as any as S.Schema<PaginatedApiStreamsConnectionViewOutput>,
+  input: __S(11808, __c369, 0) as any as S.Schema<ListGroupStreamConnectionsRequest>,
+  output: __S(11809, __c369, 1) as any as S.Schema<PaginatedApiStreamsConnectionViewOutput>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38217,8 +38277,8 @@ export const listGroupStreamPrivateLinkConnections: API.OperationMethod<
   ListGroupStreamPrivateLinkConnectionsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(876, __c109, 4) as any as S.Schema<ListGroupStreamPrivateLinkConnectionsRequest>,
-  output: __S(878, __c109, 6) as any as S.Schema<PaginatedApiStreamsPrivateLinkView>,
+  input: __S(11840, __c370, 0) as any as S.Schema<ListGroupStreamPrivateLinkConnectionsRequest>,
+  output: __S(11842, __c370, 2) as any as S.Schema<PaginatedApiStreamsPrivateLinkView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38232,8 +38292,8 @@ export const listGroupStreamVpcPeeringConnections: API.OperationMethod<
   ListGroupStreamVpcPeeringConnectionsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(879, __c109, 7) as any as S.Schema<ListGroupStreamVpcPeeringConnectionsRequest>,
-  output: __S(870, __c108, 6) as any as S.Schema<PaginatedApiStreamsVPCPeeringConnectionView>,
+  input: __S(11872, __c371, 0) as any as S.Schema<ListGroupStreamVpcPeeringConnectionsRequest>,
+  output: __S(11746, __c367, 2) as any as S.Schema<PaginatedApiStreamsVPCPeeringConnectionView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38247,8 +38307,8 @@ export const listGroupStreamWorkspaces: API.OperationMethod<
   ListGroupStreamWorkspacesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c110, 0) as any as S.Schema<ListGroupStreamWorkspacesRequest>,
-  output: __S(882, __c110, 2) as any as S.Schema<PaginatedApiStreamsTenantViewOutput>,
+  input: __S(11904, __c372, 0) as any as S.Schema<ListGroupStreamWorkspacesRequest>,
+  output: __S(11906, __c372, 2) as any as S.Schema<PaginatedApiStreamsTenantViewOutput>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38262,8 +38322,8 @@ export const listGroupTeams: API.OperationMethod<
   ListGroupTeamsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(883, __c110, 3) as any as S.Schema<ListGroupTeamsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PaginatedTeamRoleView>,
+  input: __S(11936, __c373, 0) as any as S.Schema<ListGroupTeamsRequest>,
+  output: __S(18977, __c593, 1) as any as S.Schema<PaginatedTeamRoleView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38277,8 +38337,8 @@ export const listGroupUsers: API.OperationMethod<
   ListGroupUsersError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(884, __c110, 4) as any as S.Schema<ListGroupUsersRequest>,
-  output: __S(886, __c110, 6) as any as S.Schema<PaginatedGroupUserView>,
+  input: __S(11968, __c374, 0) as any as S.Schema<ListGroupUsersRequest>,
+  output: __S(11970, __c374, 2) as any as S.Schema<PaginatedGroupUserView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38292,8 +38352,8 @@ export const listOrgAiModelApiKeys: API.OperationMethod<
   ListOrgAiModelApiKeysError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(887, __c110, 7) as any as S.Schema<ListOrgAiModelApiKeysRequest>,
-  output: __S(675, __c84, 3) as any as S.Schema<PaginatedAtlasAiModelApiKeysResponse>,
+  input: __S(12000, __c375, 0) as any as S.Schema<ListOrgAiModelApiKeysRequest>,
+  output: __S(8993, __c281, 1) as any as S.Schema<PaginatedAtlasAiModelApiKeysResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38307,8 +38367,8 @@ export const listOrgApiKeyAccessListEntries: API.OperationMethod<
   ListOrgApiKeyAccessListEntriesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(888, __c111, 0) as any as S.Schema<ListOrgApiKeyAccessListEntriesRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<PaginatedApiUserAccessListResponseView>,
+  input: __S(12032, __c376, 0) as any as S.Schema<ListOrgApiKeyAccessListEntriesRequest>,
+  output: __S(18017, __c563, 1) as any as S.Schema<PaginatedApiUserAccessListResponseView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38322,8 +38382,8 @@ export const listOrgApiKeys: API.OperationMethod<
   ListOrgApiKeysError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(889, __c111, 1) as any as S.Schema<ListOrgApiKeysRequest>,
-  output: __S(680, __c85, 0) as any as S.Schema<PaginatedApiApiUserView>,
+  input: __S(12096, __c378, 0) as any as S.Schema<ListOrgApiKeysRequest>,
+  output: __S(9185, __c287, 1) as any as S.Schema<PaginatedApiApiUserView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38337,8 +38397,8 @@ export const listOrgEvents: API.OperationMethod<
   ListOrgEventsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(890, __c111, 2) as any as S.Schema<ListOrgEventsRequest>,
-  output: __S(892, __c111, 4) as any as S.Schema<OrgPaginatedEventView>,
+  input: __S(12128, __c379, 0) as any as S.Schema<ListOrgEventsRequest>,
+  output: __S(12130, __c379, 2) as any as S.Schema<OrgPaginatedEventView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38352,8 +38412,8 @@ export const listOrgInvoicePending: API.OperationMethod<
   ListOrgInvoicePendingError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(893, __c111, 5) as any as S.Schema<ListOrgInvoicePendingRequest>,
-  output: __S(895, __c111, 7) as any as S.Schema<PaginatedApiInvoiceView>,
+  input: __S(12160, __c380, 0) as any as S.Schema<ListOrgInvoicePendingRequest>,
+  output: __S(12162, __c380, 2) as any as S.Schema<PaginatedApiInvoiceView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38367,8 +38427,8 @@ export const listOrgInvoiceReports: API.OperationMethod<
   ListOrgInvoiceReportsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c112, 0) as any as S.Schema<ListOrgInvoiceReportsRequest>,
-  output: __S(898, __c112, 2) as any as S.Schema<PaginatedInvoiceReportView>,
+  input: __S(12192, __c381, 0) as any as S.Schema<ListOrgInvoiceReportsRequest>,
+  output: __S(12194, __c381, 2) as any as S.Schema<PaginatedInvoiceReportView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38382,8 +38442,8 @@ export const listOrgInvoices: API.OperationMethod<
   ListOrgInvoicesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(899, __c112, 3) as any as S.Schema<ListOrgInvoicesRequest>,
-  output: __S(903, __c112, 7) as any as S.Schema<PaginatedApiInvoiceMetadataView>,
+  input: __S(12224, __c382, 0) as any as S.Schema<ListOrgInvoicesRequest>,
+  output: __S(12228, __c382, 4) as any as S.Schema<PaginatedApiInvoiceMetadataView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38401,8 +38461,8 @@ export const listOrgLiveMigrationAvailableProjects: API.OperationMethod<
   ListOrgLiveMigrationAvailableProjectsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(904, __c113, 0) as any as S.Schema<ListOrgLiveMigrationAvailableProjectsRequest>,
-  output: __S(909, __c113, 5) as any as S.Schema<ListOrgLiveMigrationAvailableProjectsResponse>,
+  input: __S(12256, __c383, 0) as any as S.Schema<ListOrgLiveMigrationAvailableProjectsRequest>,
+  output: __S(12261, __c383, 5) as any as S.Schema<ListOrgLiveMigrationAvailableProjectsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38416,8 +38476,8 @@ export const listOrgLogIntegrations: API.OperationMethod<
   ListOrgLogIntegrationsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(910, __c113, 6) as any as S.Schema<ListOrgLogIntegrationsRequest>,
-  output: __S(913, __c114, 1) as any as S.Schema<PaginatedOrgLogIntegrationResponse>,
+  input: __S(12288, __c384, 0) as any as S.Schema<ListOrgLogIntegrationsRequest>,
+  output: __S(12291, __c384, 3) as any as S.Schema<PaginatedOrgLogIntegrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38431,8 +38491,8 @@ export const listOrgMcpConfigs: API.OperationMethod<
   ListOrgMcpConfigsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(914, __c114, 2) as any as S.Schema<ListOrgMcpConfigsRequest>,
-  output: __S(916, __c114, 4) as any as S.Schema<PaginatedOrgMcpConfigView>,
+  input: __S(12320, __c385, 0) as any as S.Schema<ListOrgMcpConfigsRequest>,
+  output: __S(12322, __c385, 2) as any as S.Schema<PaginatedOrgMcpConfigView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38446,8 +38506,8 @@ export const listOrgMcpConfigSecrets: API.OperationMethod<
   ListOrgMcpConfigSecretsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(917, __c114, 5) as any as S.Schema<ListOrgMcpConfigSecretsRequest>,
-  output: __S(830, __c103, 6) as any as S.Schema<PaginatedMcpConfigSecretView>,
+  input: __S(12352, __c386, 0) as any as S.Schema<ListOrgMcpConfigSecretsRequest>,
+  output: __S(11072, __c346, 0) as any as S.Schema<PaginatedMcpConfigSecretView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38461,8 +38521,8 @@ export const listOrgResourcePolicies: API.OperationMethod<
   ListOrgResourcePoliciesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(918, __c114, 6) as any as S.Schema<ListOrgResourcePoliciesRequest>,
-  output: __S(920, __c115, 0) as any as S.Schema<ListOrgResourcePoliciesResponse>,
+  input: __S(12384, __c387, 0) as any as S.Schema<ListOrgResourcePoliciesRequest>,
+  output: __S(12386, __c387, 2) as any as S.Schema<ListOrgResourcePoliciesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38476,8 +38536,8 @@ export const listOrgs: API.OperationMethod<
   ListOrgsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(921, __c115, 1) as any as S.Schema<ListOrgsRequest>,
-  output: __S(923, __c115, 3) as any as S.Schema<PaginatedOrganizationView>,
+  input: __S(12480, __c390, 0) as any as S.Schema<ListOrgsRequest>,
+  output: __S(12482, __c390, 2) as any as S.Schema<PaginatedOrganizationView>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38491,8 +38551,8 @@ export const listOrgServiceAccountAccessList: API.OperationMethod<
   ListOrgServiceAccountAccessListError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(924, __c115, 4) as any as S.Schema<ListOrgServiceAccountAccessListRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<PaginatedServiceAccountIPAccessEntryView>,
+  input: __S(12512, __c391, 0) as any as S.Schema<ListOrgServiceAccountAccessListRequest>,
+  output: __S(17312, __c541, 0) as any as S.Schema<PaginatedServiceAccountIPAccessEntryView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38506,8 +38566,8 @@ export const listOrgServiceAccounts: API.OperationMethod<
   ListOrgServiceAccountsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(925, __c115, 5) as any as S.Schema<ListOrgServiceAccountsRequest>,
-  output: __S(927, __c115, 7) as any as S.Schema<PaginatedOrgServiceAccounts>,
+  input: __S(12544, __c392, 0) as any as S.Schema<ListOrgServiceAccountsRequest>,
+  output: __S(12546, __c392, 2) as any as S.Schema<PaginatedOrgServiceAccounts>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38521,8 +38581,8 @@ export const listOrgTeams: API.OperationMethod<
   ListOrgTeamsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c116, 0) as any as S.Schema<ListOrgTeamsRequest>,
-  output: __S(930, __c116, 2) as any as S.Schema<PaginatedTeamView>,
+  input: __S(12576, __c393, 0) as any as S.Schema<ListOrgTeamsRequest>,
+  output: __S(12578, __c393, 2) as any as S.Schema<PaginatedTeamView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38541,8 +38601,8 @@ export const listOrgTeamUsers: API.OperationMethod<
   ListOrgTeamUsersError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(931, __c116, 3) as any as S.Schema<ListOrgTeamUsersRequest>,
-  output: __S(933, __c116, 5) as any as S.Schema<PaginatedOrgUserView>,
+  input: __S(12608, __c394, 0) as any as S.Schema<ListOrgTeamUsersRequest>,
+  output: __S(12641, __c395, 1) as any as S.Schema<PaginatedOrgUserView>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38556,8 +38616,8 @@ export const listOrgUsers: API.OperationMethod<
   ListOrgUsersError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(934, __c116, 6) as any as S.Schema<ListOrgUsersRequest>,
-  output: __S(933, __c116, 5) as any as S.Schema<PaginatedOrgUserView>,
+  input: __S(12672, __c396, 0) as any as S.Schema<ListOrgUsersRequest>,
+  output: __S(12641, __c395, 1) as any as S.Schema<PaginatedOrgUserView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38571,8 +38631,8 @@ export const listRateLimits: API.OperationMethod<
   ListRateLimitsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(935, __c116, 7) as any as S.Schema<ListRateLimitsRequest>,
-  output: __S(937, __c117, 1) as any as S.Schema<PaginatedRateLimitEndpointSets>,
+  input: __S(12704, __c397, 0) as any as S.Schema<ListRateLimitsRequest>,
+  output: __S(12706, __c397, 2) as any as S.Schema<PaginatedRateLimitEndpointSets>,
   errors: [BadRequest, Forbidden, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38586,8 +38646,8 @@ export const listSkus: API.OperationMethod<
   ListSkusError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(938, __c117, 2) as any as S.Schema<ListSkusRequest>,
-  output: __S(940, __c117, 4) as any as S.Schema<PaginatedApiSKUView>,
+  input: __S(12736, __c398, 0) as any as S.Schema<ListSkusRequest>,
+  output: __S(12738, __c398, 2) as any as S.Schema<PaginatedApiSKUView>,
   errors: [Forbidden, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38601,8 +38661,8 @@ export const migrateGroup: API.OperationMethod<
   MigrateGroupError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(941, __c117, 5) as any as S.Schema<MigrateGroupRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Group>,
+  input: __S(12768, __c399, 0) as any as S.Schema<MigrateGroupRequest>,
+  output: __S(2945, __c92, 1) as any as S.Schema<Group>,
   errors: [PaymentRequired, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38620,8 +38680,8 @@ export const pinGroupClusterCollStatPinnedNamespaces: API.OperationMethod<
   PinGroupClusterCollStatPinnedNamespacesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(942, __c117, 6) as any as S.Schema<PinGroupClusterCollStatPinnedNamespacesRequest>,
-  output: __S(718, __c89, 6) as any as S.Schema<PinnedNamespaces>,
+  input: __S(12800, __c400, 0) as any as S.Schema<PinGroupClusterCollStatPinnedNamespacesRequest>,
+  output: __S(9696, __c303, 0) as any as S.Schema<PinnedNamespaces>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38640,8 +38700,16 @@ export const pinGroupClusterFeatureCompatibilityVersion: API.OperationMethod<
   PinGroupClusterFeatureCompatibilityVersionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(943, __c117, 7) as any as S.Schema<PinGroupClusterFeatureCompatibilityVersionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PinGroupClusterFeatureCompatibilityVersionResponse>,
+  input: __S(
+    12896,
+    __c403,
+    0,
+  ) as any as S.Schema<PinGroupClusterFeatureCompatibilityVersionRequest>,
+  output: __S(
+    16864,
+    __c527,
+    0,
+  ) as any as S.Schema<PinGroupClusterFeatureCompatibilityVersionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38655,8 +38723,8 @@ export const rejectGroupStreamVpcPeeringConnection: API.OperationMethod<
   RejectGroupStreamVpcPeeringConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c118, 0) as any as S.Schema<RejectGroupStreamVpcPeeringConnectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RejectGroupStreamVpcPeeringConnectionResponse>,
+  input: __S(12928, __c404, 0) as any as S.Schema<RejectGroupStreamVpcPeeringConnectionRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<RejectGroupStreamVpcPeeringConnectionResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38674,8 +38742,12 @@ export const removeFederationSettingConnectedOrgConfig: API.OperationMethod<
   RemoveFederationSettingConnectedOrgConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(945, __c118, 1) as any as S.Schema<RemoveFederationSettingConnectedOrgConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RemoveFederationSettingConnectedOrgConfigResponse>,
+  input: __S(12960, __c405, 0) as any as S.Schema<RemoveFederationSettingConnectedOrgConfigRequest>,
+  output: __S(
+    16864,
+    __c527,
+    0,
+  ) as any as S.Schema<RemoveFederationSettingConnectedOrgConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38689,8 +38761,8 @@ export const removeGroupApiKey: API.OperationMethod<
   RemoveGroupApiKeyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(946, __c118, 2) as any as S.Schema<RemoveGroupApiKeyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<RemoveGroupApiKeyResponse>,
+  input: __S(12992, __c406, 0) as any as S.Schema<RemoveGroupApiKeyRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<RemoveGroupApiKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38704,8 +38776,8 @@ export const removeGroupTeam: API.OperationMethod<
   RemoveGroupTeamError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(947, __c118, 3) as any as S.Schema<RemoveGroupTeamRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<RemoveGroupTeamResponse>,
+  input: __S(13024, __c407, 0) as any as S.Schema<RemoveGroupTeamRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<RemoveGroupTeamResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38719,8 +38791,8 @@ export const removeGroupUser: API.OperationMethod<
   RemoveGroupUserError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(948, __c118, 4) as any as S.Schema<RemoveGroupUserRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<RemoveGroupUserResponse>,
+  input: __S(13056, __c408, 0) as any as S.Schema<RemoveGroupUserRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<RemoveGroupUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38739,7 +38811,7 @@ export const removeGroupUserRole: API.OperationMethod<
   RemoveGroupUserRoleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(949, __c118, 5) as any as S.Schema<RemoveGroupUserRoleRequest>,
+  input: __S(13088, __c409, 0) as any as S.Schema<RemoveGroupUserRoleRequest>,
   output: S.Unknown as any as S.Schema<GroupUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -38754,7 +38826,7 @@ export const removeOrgTeamUser: API.OperationMethod<
   RemoveOrgTeamUserError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(950, __c118, 6) as any as S.Schema<RemoveOrgTeamUserRequest>,
+  input: __S(13120, __c410, 0) as any as S.Schema<RemoveOrgTeamUserRequest>,
   output: S.Unknown as any as S.Schema<OrgUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -38769,8 +38841,8 @@ export const removeOrgUser: API.OperationMethod<
   RemoveOrgUserError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(951, __c118, 7) as any as S.Schema<RemoveOrgUserRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<RemoveOrgUserResponse>,
+  input: __S(13152, __c411, 0) as any as S.Schema<RemoveOrgUserRequest>,
+  output: __S(18368, __c574, 0) as any as S.Schema<RemoveOrgUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38784,7 +38856,7 @@ export const removeOrgUserRole: API.OperationMethod<
   RemoveOrgUserRoleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(952, __c119, 0) as any as S.Schema<RemoveOrgUserRoleRequest>,
+  input: __S(13184, __c412, 0) as any as S.Schema<RemoveOrgUserRoleRequest>,
   output: S.Unknown as any as S.Schema<OrgUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -38799,8 +38871,8 @@ export const renameOrgTeam: API.OperationMethod<
   RenameOrgTeamError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(953, __c119, 1) as any as S.Schema<RenameOrgTeamRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<TeamResponse>,
+  input: __S(13280, __c415, 0) as any as S.Schema<RenameOrgTeamRequest>,
+  output: __S(8320, __c260, 0) as any as S.Schema<TeamResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38818,14 +38890,14 @@ export const requestGroupEncryptionAtRestPrivateEndpointDeletion: API.OperationM
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    954,
-    __c119,
-    2,
+    13312,
+    __c416,
+    0,
   ) as any as S.Schema<RequestGroupEncryptionAtRestPrivateEndpointDeletionRequest>,
   output: __S(
-    310,
-    __c38,
-    6,
+    19104,
+    __c597,
+    0,
   ) as any as S.Schema<RequestGroupEncryptionAtRestPrivateEndpointDeletionResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -38845,8 +38917,8 @@ export const requestGroupSampleDatasetLoad: API.OperationMethod<
   RequestGroupSampleDatasetLoadError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(955, __c119, 3) as any as S.Schema<RequestGroupSampleDatasetLoadRequest>,
-  output: __S(542, __c67, 6) as any as S.Schema<SampleDatasetStatus>,
+  input: __S(13344, __c417, 0) as any as S.Schema<RequestGroupSampleDatasetLoadRequest>,
+  output: __S(6272, __c196, 0) as any as S.Schema<SampleDatasetStatus>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38865,11 +38937,11 @@ export const resetGroupAiModelApiCloudGeographyModelGroupNameRateLimits: API.Ope
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    956,
-    __c119,
-    4,
+    13376,
+    __c418,
+    0,
   ) as any as S.Schema<ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<AiModelRateLimitResponse>,
+  output: __S(2272, __c71, 0) as any as S.Schema<AiModelRateLimitResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38883,8 +38955,8 @@ export const resetGroupAiModelApiRateLimits: API.OperationMethod<
   ResetGroupAiModelApiRateLimitsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(957, __c119, 5) as any as S.Schema<ResetGroupAiModelApiRateLimitsRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<PaginatedAtlasAiModelRateLimitsResponse>,
+  input: __S(13408, __c419, 0) as any as S.Schema<ResetGroupAiModelApiRateLimitsRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<PaginatedAtlasAiModelRateLimitsResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38902,8 +38974,8 @@ export const resetGroupMaintenanceWindow: API.OperationMethod<
   ResetGroupMaintenanceWindowError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(958, __c119, 6) as any as S.Schema<ResetGroupMaintenanceWindowRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ResetGroupMaintenanceWindowResponse>,
+  input: __S(13440, __c420, 0) as any as S.Schema<ResetGroupMaintenanceWindowRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<ResetGroupMaintenanceWindowResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38921,8 +38993,8 @@ export const resetOrgMaintenanceSettings: API.OperationMethod<
   ResetOrgMaintenanceSettingsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(959, __c119, 7) as any as S.Schema<ResetOrgMaintenanceSettingsRequest>,
-  output: __S(607, __c75, 7) as any as S.Schema<OrganizationMaintenanceSettingsResponse>,
+  input: __S(13472, __c421, 0) as any as S.Schema<ResetOrgMaintenanceSettingsRequest>,
+  output: __S(7936, __c248, 0) as any as S.Schema<OrganizationMaintenanceSettingsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38936,8 +39008,8 @@ export const restartGroupClusterPrimaries: API.OperationMethod<
   RestartGroupClusterPrimariesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c120, 0) as any as S.Schema<RestartGroupClusterPrimariesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RestartGroupClusterPrimariesResponse>,
+  input: __S(13504, __c422, 0) as any as S.Schema<RestartGroupClusterPrimariesRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<RestartGroupClusterPrimariesResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38955,8 +39027,16 @@ export const revokeFederationSettingIdentityProviderJwks: API.OperationMethod<
   RevokeFederationSettingIdentityProviderJwksError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(961, __c120, 1) as any as S.Schema<RevokeFederationSettingIdentityProviderJwksRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RevokeFederationSettingIdentityProviderJwksResponse>,
+  input: __S(
+    13536,
+    __c423,
+    0,
+  ) as any as S.Schema<RevokeFederationSettingIdentityProviderJwksRequest>,
+  output: __S(
+    16864,
+    __c527,
+    0,
+  ) as any as S.Schema<RevokeFederationSettingIdentityProviderJwksResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38975,8 +39055,8 @@ export const revokeGroupClusterMongoDbEmployeeAccess: API.OperationMethod<
   RevokeGroupClusterMongoDbEmployeeAccessError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(962, __c120, 2) as any as S.Schema<RevokeGroupClusterMongoDbEmployeeAccessRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RevokeGroupClusterMongoDbEmployeeAccessResponse>,
+  input: __S(13568, __c424, 0) as any as S.Schema<RevokeGroupClusterMongoDbEmployeeAccessRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<RevokeGroupClusterMongoDbEmployeeAccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -38994,8 +39074,8 @@ export const searchOrgInvoiceLineItems: API.OperationMethod<
   SearchOrgInvoiceLineItemsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(964, __c120, 4) as any as S.Schema<SearchOrgInvoiceLineItemsRequest>,
-  output: __S(968, __c121, 0) as any as S.Schema<PaginatedPublicApiUsageDetailsLineItemView>,
+  input: __S(13697, __c428, 1) as any as S.Schema<SearchOrgInvoiceLineItemsRequest>,
+  output: __S(13701, __c428, 5) as any as S.Schema<PaginatedPublicApiUsageDetailsLineItemView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39013,8 +39093,8 @@ export const setGroupDataFederationLimit: API.OperationMethod<
   SetGroupDataFederationLimitError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(969, __c121, 1) as any as S.Schema<SetGroupDataFederationLimitRequest>,
-  output: __S(474, __c59, 2) as any as S.Schema<DataFederationTenantQueryLimit>,
+  input: __S(13728, __c429, 0) as any as S.Schema<SetGroupDataFederationLimitRequest>,
+  output: __S(4448, __c139, 0) as any as S.Schema<DataFederationTenantQueryLimit>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39028,8 +39108,8 @@ export const setGroupLimit: API.OperationMethod<
   SetGroupLimitError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(970, __c121, 2) as any as S.Schema<SetGroupLimitRequest>,
-  output: __S(506, __c63, 2) as any as S.Schema<DataFederationLimit>,
+  input: __S(13760, __c430, 0) as any as S.Schema<SetGroupLimitRequest>,
+  output: __S(5216, __c163, 0) as any as S.Schema<DataFederationLimit>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39048,8 +39128,8 @@ export const startGroupClusterOutageSimulation: API.OperationMethod<
   StartGroupClusterOutageSimulationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(971, __c121, 3) as any as S.Schema<StartGroupClusterOutageSimulationRequest>,
-  output: __S(391, __c48, 7) as any as S.Schema<ClusterOutageSimulation>,
+  input: __S(13792, __c431, 0) as any as S.Schema<StartGroupClusterOutageSimulationRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<ClusterOutageSimulation>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39063,8 +39143,8 @@ export const startGroupStreamProcessor: API.OperationMethod<
   StartGroupStreamProcessorError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(972, __c121, 4) as any as S.Schema<StartGroupStreamProcessorRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StartGroupStreamProcessorResponse>,
+  input: __S(13824, __c432, 0) as any as S.Schema<StartGroupStreamProcessorRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<StartGroupStreamProcessorResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39082,8 +39162,8 @@ export const startGroupStreamProcessorWith: API.OperationMethod<
   StartGroupStreamProcessorWithError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(974, __c121, 6) as any as S.Schema<StartGroupStreamProcessorWithRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StartGroupStreamProcessorWithResponse>,
+  input: __S(13857, __c433, 1) as any as S.Schema<StartGroupStreamProcessorWithRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<StartGroupStreamProcessorWithResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39097,8 +39177,8 @@ export const stopGroupStreamProcessor: API.OperationMethod<
   StopGroupStreamProcessorError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(975, __c121, 7) as any as S.Schema<StopGroupStreamProcessorRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StopGroupStreamProcessorResponse>,
+  input: __S(13888, __c434, 0) as any as S.Schema<StopGroupStreamProcessorRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<StopGroupStreamProcessorResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39116,8 +39196,8 @@ export const takeGroupClusterBackupSnapshots: API.OperationMethod<
   TakeGroupClusterBackupSnapshotsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(976, __c122, 0) as any as S.Schema<TakeGroupClusterBackupSnapshotsRequest>,
-  output: __S(977, __c122, 1) as any as S.Schema<DiskBackupSnapshot>,
+  input: __S(13920, __c435, 0) as any as S.Schema<TakeGroupClusterBackupSnapshotsRequest>,
+  output: __S(13921, __c435, 1) as any as S.Schema<DiskBackupSnapshot>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39137,8 +39217,8 @@ export const tenantGroupFlexClusterUpgrade: API.OperationMethod<
   TenantGroupFlexClusterUpgradeError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(978, __c122, 2) as any as S.Schema<TenantGroupFlexClusterUpgradeRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<FlexClusterDescription20241113>,
+  input: __S(13952, __c436, 0) as any as S.Schema<TenantGroupFlexClusterUpgradeRequest>,
+  output: __S(14403, __c450, 3) as any as S.Schema<FlexClusterDescription20241113>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39152,8 +39232,8 @@ export const toggleGroupAlertConfig: API.OperationMethod<
   ToggleGroupAlertConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(979, __c122, 3) as any as S.Schema<ToggleGroupAlertConfigRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ToggleGroupAlertConfigResponse>,
+  input: __S(13984, __c437, 0) as any as S.Schema<ToggleGroupAlertConfigRequest>,
+  output: __S(4576, __c143, 0) as any as S.Schema<ToggleGroupAlertConfigResponse>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39167,8 +39247,8 @@ export const toggleGroupAwsCustomDns: API.OperationMethod<
   ToggleGroupAwsCustomDnsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(980, __c122, 4) as any as S.Schema<ToggleGroupAwsCustomDnsRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<AWSCustomDNSEnabledView>,
+  input: __S(14048, __c439, 0) as any as S.Schema<ToggleGroupAwsCustomDnsRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<AWSCustomDNSEnabledView>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39186,8 +39266,8 @@ export const toggleGroupMaintenanceWindowAutoDefer: API.OperationMethod<
   ToggleGroupMaintenanceWindowAutoDeferError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(981, __c122, 5) as any as S.Schema<ToggleGroupMaintenanceWindowAutoDeferRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ToggleGroupMaintenanceWindowAutoDeferResponse>,
+  input: __S(14080, __c440, 0) as any as S.Schema<ToggleGroupMaintenanceWindowAutoDeferRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<ToggleGroupMaintenanceWindowAutoDeferResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39205,8 +39285,8 @@ export const toggleGroupPrivateEndpointRegionalMode: API.OperationMethod<
   ToggleGroupPrivateEndpointRegionalModeError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(982, __c122, 6) as any as S.Schema<ToggleGroupPrivateEndpointRegionalModeRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<ProjectSettingItemView>,
+  input: __S(14112, __c441, 0) as any as S.Schema<ToggleGroupPrivateEndpointRegionalModeRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<ProjectSettingItemView>,
   errors: [Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39224,8 +39304,8 @@ export const unpinGroupClusterCollStatUnpinNamespaces: API.OperationMethod<
   UnpinGroupClusterCollStatUnpinNamespacesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(983, __c122, 7) as any as S.Schema<UnpinGroupClusterCollStatUnpinNamespacesRequest>,
-  output: __S(718, __c89, 6) as any as S.Schema<PinnedNamespaces>,
+  input: __S(14144, __c442, 0) as any as S.Schema<UnpinGroupClusterCollStatUnpinNamespacesRequest>,
+  output: __S(9696, __c303, 0) as any as S.Schema<PinnedNamespaces>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39246,11 +39326,15 @@ export const unpinGroupClusterFeatureCompatibilityVersion: API.OperationMethod<
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    984,
-    __c123,
+    14176,
+    __c443,
     0,
   ) as any as S.Schema<UnpinGroupClusterFeatureCompatibilityVersionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UnpinGroupClusterFeatureCompatibilityVersionResponse>,
+  output: __S(
+    16864,
+    __c527,
+    0,
+  ) as any as S.Schema<UnpinGroupClusterFeatureCompatibilityVersionResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39268,8 +39352,8 @@ export const updateFederationSettingConnectedOrgConfig: API.OperationMethod<
   UpdateFederationSettingConnectedOrgConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(990, __c123, 6) as any as S.Schema<UpdateFederationSettingConnectedOrgConfigRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ConnectedOrgConfig>,
+  input: __S(14213, __c444, 5) as any as S.Schema<UpdateFederationSettingConnectedOrgConfigRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<ConnectedOrgConfig>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39288,11 +39372,11 @@ export const updateFederationSettingConnectedOrgConfigRoleMapping: API.Operation
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    991,
-    __c123,
-    7,
+    14240,
+    __c445,
+    0,
   ) as any as S.Schema<UpdateFederationSettingConnectedOrgConfigRoleMappingRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<AuthFederationRoleMapping>,
+  output: __S(1890, __c59, 2) as any as S.Schema<AuthFederationRoleMapping>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39310,7 +39394,7 @@ export const updateFederationSettingIdentityProvider: API.OperationMethod<
   UpdateFederationSettingIdentityProviderError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c124, 0) as any as S.Schema<UpdateFederationSettingIdentityProviderRequest>,
+  input: __S(14272, __c446, 0) as any as S.Schema<UpdateFederationSettingIdentityProviderRequest>,
   output: S.Unknown as any as S.Schema<FederationIdentityProvider>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -39325,8 +39409,8 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(993, __c124, 1) as any as S.Schema<UpdateGroupRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Group>,
+  input: __S(14304, __c447, 0) as any as S.Schema<UpdateGroupRequest>,
+  output: __S(2945, __c92, 1) as any as S.Schema<Group>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39345,11 +39429,11 @@ export const updateGroupAiModelApiCloudGeographyModelGroupNameRateLimits: API.Op
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    994,
-    __c124,
-    2,
+    14336,
+    __c448,
+    0,
   ) as any as S.Schema<UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<AiModelRateLimitResponse>,
+  output: __S(2272, __c71, 0) as any as S.Schema<AiModelRateLimitResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39363,8 +39447,8 @@ export const updateGroupAiModelApiKey: API.OperationMethod<
   UpdateGroupAiModelApiKeyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(995, __c124, 3) as any as S.Schema<UpdateGroupAiModelApiKeyRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<AiModelApiKeyResponse>,
+  input: __S(14432, __c451, 0) as any as S.Schema<UpdateGroupAiModelApiKeyRequest>,
+  output: __S(4096, __c128, 0) as any as S.Schema<AiModelApiKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39378,8 +39462,8 @@ export const updateGroupAlertConfig: API.OperationMethod<
   UpdateGroupAlertConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(996, __c124, 4) as any as S.Schema<UpdateGroupAlertConfigRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<UpdateGroupAlertConfigResponse>,
+  input: __S(14464, __c452, 0) as any as S.Schema<UpdateGroupAlertConfigRequest>,
+  output: __S(4576, __c143, 0) as any as S.Schema<UpdateGroupAlertConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39393,8 +39477,8 @@ export const updateGroupApiKeyRoles: API.OperationMethod<
   UpdateGroupApiKeyRolesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(997, __c124, 5) as any as S.Schema<UpdateGroupApiKeyRolesRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ApiKeyUserDetails>,
+  input: __S(14496, __c453, 0) as any as S.Schema<UpdateGroupApiKeyRolesRequest>,
+  output: __S(5152, __c161, 0) as any as S.Schema<ApiKeyUserDetails>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39408,8 +39492,8 @@ export const updateGroupAuditLog: API.OperationMethod<
   UpdateGroupAuditLogError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(998, __c124, 6) as any as S.Schema<UpdateGroupAuditLogRequest>,
-  output: __S(419, __c52, 3) as any as S.Schema<AuditLog>,
+  input: __S(14528, __c454, 0) as any as S.Schema<UpdateGroupAuditLogRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<AuditLog>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39427,8 +39511,8 @@ export const updateGroupBackupCompliancePolicy: API.OperationMethod<
   UpdateGroupBackupCompliancePolicyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1001, __c125, 1) as any as S.Schema<UpdateGroupBackupCompliancePolicyRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<DataProtectionSettings20231001>,
+  input: __S(14561, __c455, 1) as any as S.Schema<UpdateGroupBackupCompliancePolicyRequest>,
+  output: __S(2786, __c87, 2) as any as S.Schema<DataProtectionSettings20231001>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39446,8 +39530,8 @@ export const updateGroupBackupExportBucket: API.OperationMethod<
   UpdateGroupBackupExportBucketError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1002, __c125, 2) as any as S.Schema<UpdateGroupBackupExportBucketRequest>,
-  output: __S(1003, __c125, 3) as any as S.Schema<DiskBackupSnapshotAWSExportBucketResponse>,
+  input: __S(14624, __c457, 0) as any as S.Schema<UpdateGroupBackupExportBucketRequest>,
+  output: __S(14625, __c457, 1) as any as S.Schema<DiskBackupSnapshotAWSExportBucketResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39466,8 +39550,8 @@ export const updateGroupCluster: API.OperationMethod<
   UpdateGroupClusterError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1004, __c125, 4) as any as S.Schema<UpdateGroupClusterRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ClusterDescription20240805>,
+  input: __S(14656, __c458, 0) as any as S.Schema<UpdateGroupClusterRequest>,
+  output: __S(7139, __c223, 3) as any as S.Schema<ClusterDescription20240805>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39486,8 +39570,8 @@ export const updateGroupClusterAdaptiveSettings: API.OperationMethod<
   UpdateGroupClusterAdaptiveSettingsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1005, __c125, 5) as any as S.Schema<UpdateGroupClusterAdaptiveSettingsRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<AdaptiveSettingsResponse>,
+  input: __S(14688, __c459, 0) as any as S.Schema<UpdateGroupClusterAdaptiveSettingsRequest>,
+  output: __S(3136, __c98, 0) as any as S.Schema<AdaptiveSettingsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39505,8 +39589,8 @@ export const updateGroupClusterBackupSchedule: API.OperationMethod<
   UpdateGroupClusterBackupScheduleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1014, __c126, 6) as any as S.Schema<UpdateGroupClusterBackupScheduleRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<DiskBackupSnapshotSchedule20240805Output>,
+  input: __S(14728, __c460, 8) as any as S.Schema<UpdateGroupClusterBackupScheduleRequest>,
+  output: __S(19466, __c608, 10) as any as S.Schema<DiskBackupSnapshotSchedule20240805Output>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39524,8 +39608,8 @@ export const updateGroupClusterBackupSnapshot: API.OperationMethod<
   UpdateGroupClusterBackupSnapshotError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1015, __c126, 7) as any as S.Schema<UpdateGroupClusterBackupSnapshotRequest>,
-  output: __S(437, __c54, 5) as any as S.Schema<DiskBackupReplicaSet>,
+  input: __S(14752, __c461, 0) as any as S.Schema<UpdateGroupClusterBackupSnapshotRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<DiskBackupReplicaSet>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39543,8 +39627,12 @@ export const updateGroupClusterCollStatPinnedNamespaces: API.OperationMethod<
   UpdateGroupClusterCollStatPinnedNamespacesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1016, __c127, 0) as any as S.Schema<UpdateGroupClusterCollStatPinnedNamespacesRequest>,
-  output: __S(718, __c89, 6) as any as S.Schema<PinnedNamespaces>,
+  input: __S(
+    14848,
+    __c464,
+    0,
+  ) as any as S.Schema<UpdateGroupClusterCollStatPinnedNamespacesRequest>,
+  output: __S(9696, __c303, 0) as any as S.Schema<PinnedNamespaces>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39563,8 +39651,8 @@ export const updateGroupClusterOnlineArchive: API.OperationMethod<
   UpdateGroupClusterOnlineArchiveError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1017, __c127, 1) as any as S.Schema<UpdateGroupClusterOnlineArchiveRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<BackupOnlineArchive>,
+  input: __S(14880, __c465, 0) as any as S.Schema<UpdateGroupClusterOnlineArchiveRequest>,
+  output: __S(10469, __c327, 5) as any as S.Schema<BackupOnlineArchive>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39582,8 +39670,8 @@ export const updateGroupClusterProcessArgs: API.OperationMethod<
   UpdateGroupClusterProcessArgsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1018, __c127, 2) as any as S.Schema<UpdateGroupClusterProcessArgsRequest>,
-  output: __S(456, __c57, 0) as any as S.Schema<ClusterDescriptionProcessArgs20240805>,
+  input: __S(14912, __c466, 0) as any as S.Schema<UpdateGroupClusterProcessArgsRequest>,
+  output: __S(3904, __c122, 0) as any as S.Schema<ClusterDescriptionProcessArgs20240805>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39601,8 +39689,8 @@ export const updateGroupClusterQueryShape: API.OperationMethod<
   UpdateGroupClusterQueryShapeError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1019, __c127, 3) as any as S.Schema<UpdateGroupClusterQueryShapeRequest>,
-  output: __S(458, __c57, 2) as any as S.Schema<QueryShapeResponse>,
+  input: __S(14944, __c467, 0) as any as S.Schema<UpdateGroupClusterQueryShapeRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<QueryShapeResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39621,8 +39709,8 @@ export const updateGroupClusterSearchDeployment: API.OperationMethod<
   UpdateGroupClusterSearchDeploymentError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1020, __c127, 4) as any as S.Schema<UpdateGroupClusterSearchDeploymentRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ApiSearchDeploymentResponseView>,
+  input: __S(14976, __c468, 0) as any as S.Schema<UpdateGroupClusterSearchDeploymentRequest>,
+  output: __S(11270, __c352, 6) as any as S.Schema<ApiSearchDeploymentResponseView>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39641,8 +39729,8 @@ export const updateGroupClusterSearchIndex: API.OperationMethod<
   UpdateGroupClusterSearchIndexError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1021, __c127, 5) as any as S.Schema<UpdateGroupClusterSearchIndexRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<SearchIndexResponse>,
+  input: __S(15008, __c469, 0) as any as S.Schema<UpdateGroupClusterSearchIndexRequest>,
+  output: __S(11685, __c365, 5) as any as S.Schema<SearchIndexResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39661,8 +39749,8 @@ export const updateGroupClusterSearchIndexByName: API.OperationMethod<
   UpdateGroupClusterSearchIndexByNameError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1022, __c127, 6) as any as S.Schema<UpdateGroupClusterSearchIndexByNameRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<SearchIndexResponse>,
+  input: __S(15040, __c470, 0) as any as S.Schema<UpdateGroupClusterSearchIndexByNameRequest>,
+  output: __S(11685, __c365, 5) as any as S.Schema<SearchIndexResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39681,7 +39769,7 @@ export const updateGroupContainer: API.OperationMethod<
   UpdateGroupContainerError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1023, __c127, 7) as any as S.Schema<UpdateGroupContainerRequest>,
+  input: __S(15072, __c471, 0) as any as S.Schema<UpdateGroupContainerRequest>,
   output: S.Unknown as any as S.Schema<CloudProviderContainer>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -39701,8 +39789,8 @@ export const updateGroupCustomDbRoleRole: API.OperationMethod<
   UpdateGroupCustomDbRoleRoleError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c128, 0) as any as S.Schema<UpdateGroupCustomDbRoleRoleRequest>,
-  output: __S(470, __c58, 6) as any as S.Schema<UserCustomDBRole>,
+  input: __S(15104, __c472, 0) as any as S.Schema<UpdateGroupCustomDbRoleRoleRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<UserCustomDBRole>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39721,8 +39809,8 @@ export const updateGroupDatabaseUser: API.OperationMethod<
   UpdateGroupDatabaseUserError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1025, __c128, 1) as any as S.Schema<UpdateGroupDatabaseUserRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<CloudDatabaseUserOutput>,
+  input: __S(15136, __c473, 0) as any as S.Schema<UpdateGroupDatabaseUserRequest>,
+  output: __S(12868, __c402, 4) as any as S.Schema<CloudDatabaseUserOutput>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39740,8 +39828,8 @@ export const updateGroupDataFederation: API.OperationMethod<
   UpdateGroupDataFederationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1026, __c128, 2) as any as S.Schema<UpdateGroupDataFederationRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<DataLakeTenantOutput>,
+  input: __S(15232, __c476, 0) as any as S.Schema<UpdateGroupDataFederationRequest>,
+  output: __S(13649, __c426, 17) as any as S.Schema<DataLakeTenantOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39760,8 +39848,8 @@ export const updateGroupEncryptionAtRest: API.OperationMethod<
   UpdateGroupEncryptionAtRestError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1030, __c128, 6) as any as S.Schema<UpdateGroupEncryptionAtRestRequest>,
-  output: __S(484, __c60, 4) as any as S.Schema<EncryptionAtRestOutput>,
+  input: __S(15267, __c477, 3) as any as S.Schema<UpdateGroupEncryptionAtRestRequest>,
+  output: __S(4675, __c146, 3) as any as S.Schema<EncryptionAtRestOutput>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39781,8 +39869,8 @@ export const updateGroupFlexCluster: API.OperationMethod<
   UpdateGroupFlexClusterError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1031, __c128, 7) as any as S.Schema<UpdateGroupFlexClusterRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<FlexClusterDescription20241113>,
+  input: __S(15296, __c478, 0) as any as S.Schema<UpdateGroupFlexClusterRequest>,
+  output: __S(14403, __c450, 3) as any as S.Schema<FlexClusterDescription20241113>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39796,8 +39884,8 @@ export const updateGroupIntegration: API.OperationMethod<
   UpdateGroupIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1032, __c129, 0) as any as S.Schema<UpdateGroupIntegrationRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<PaginatedIntegrationViewOutput>,
+  input: __S(15328, __c479, 0) as any as S.Schema<UpdateGroupIntegrationRequest>,
+  output: __S(15201, __c475, 1) as any as S.Schema<PaginatedIntegrationViewOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39815,7 +39903,7 @@ export const updateGroupLogIntegration: API.OperationMethod<
   UpdateGroupLogIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1033, __c129, 1) as any as S.Schema<UpdateGroupLogIntegrationRequest>,
+  input: __S(15360, __c480, 0) as any as S.Schema<UpdateGroupLogIntegrationRequest>,
   output: S.Unknown as any as S.Schema<LogIntegrationResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -39834,8 +39922,8 @@ export const updateGroupMaintenanceWindow: API.OperationMethod<
   UpdateGroupMaintenanceWindowError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1034, __c129, 2) as any as S.Schema<UpdateGroupMaintenanceWindowRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateGroupMaintenanceWindowResponse>,
+  input: __S(15392, __c481, 0) as any as S.Schema<UpdateGroupMaintenanceWindowRequest>,
+  output: __S(16864, __c527, 0) as any as S.Schema<UpdateGroupMaintenanceWindowResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39849,8 +39937,8 @@ export const updateGroupMcpConfig: API.OperationMethod<
   UpdateGroupMcpConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1035, __c129, 3) as any as S.Schema<UpdateGroupMcpConfigRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GroupMcpConfigResponse>,
+  input: __S(15424, __c482, 0) as any as S.Schema<UpdateGroupMcpConfigRequest>,
+  output: __S(16416, __c513, 0) as any as S.Schema<GroupMcpConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39868,8 +39956,8 @@ export const updateGroupMetricIntegration: API.OperationMethod<
   UpdateGroupMetricIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1036, __c129, 4) as any as S.Schema<UpdateGroupMetricIntegrationRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<MetricIntegrationResponse>,
+  input: __S(15456, __c483, 0) as any as S.Schema<UpdateGroupMetricIntegrationRequest>,
+  output: __S(16770, __c524, 2) as any as S.Schema<MetricIntegrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39888,7 +39976,7 @@ export const updateGroupPeer: API.OperationMethod<
   UpdateGroupPeerError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1037, __c129, 5) as any as S.Schema<UpdateGroupPeerRequest>,
+  input: __S(15488, __c484, 0) as any as S.Schema<UpdateGroupPeerRequest>,
   output: S.Unknown as any as S.Schema<BaseNetworkPeeringConnectionSettings>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -39907,8 +39995,8 @@ export const updateGroupPrivateEndpointEndpointService: API.OperationMethod<
   UpdateGroupPrivateEndpointEndpointServiceError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1038, __c129, 6) as any as S.Schema<UpdateGroupPrivateEndpointEndpointServiceRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<EndpointService>,
+  input: __S(15520, __c485, 0) as any as S.Schema<UpdateGroupPrivateEndpointEndpointServiceRequest>,
+  output: __S(16960, __c530, 0) as any as S.Schema<EndpointService>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39926,8 +40014,8 @@ export const updateGroupServiceAccount: API.OperationMethod<
   UpdateGroupServiceAccountError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1039, __c129, 7) as any as S.Schema<UpdateGroupServiceAccountRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<GroupServiceAccount>,
+  input: __S(15680, __c490, 0) as any as S.Schema<UpdateGroupServiceAccountRequest>,
+  output: __S(17216, __c538, 0) as any as S.Schema<GroupServiceAccount>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39941,8 +40029,8 @@ export const updateGroupSettings: API.OperationMethod<
   UpdateGroupSettingsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c130, 0) as any as S.Schema<UpdateGroupSettingsRequest>,
-  output: __S(545, __c68, 1) as any as S.Schema<GroupSettings>,
+  input: __S(15712, __c491, 0) as any as S.Schema<UpdateGroupSettingsRequest>,
+  output: __S(6368, __c199, 0) as any as S.Schema<GroupSettings>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -39961,7 +40049,7 @@ export const updateGroupStreamConnection: API.OperationMethod<
   UpdateGroupStreamConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1041, __c130, 1) as any as S.Schema<UpdateGroupStreamConnectionRequest>,
+  input: __S(15744, __c492, 0) as any as S.Schema<UpdateGroupStreamConnectionRequest>,
   output: S.Unknown as any as S.Schema<StreamsConnectionOutput>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -39980,9 +40068,9 @@ export const updateGroupStreamConnectionFailoverConnection: API.OperationMethod<
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1042,
-    __c130,
-    2,
+    15776,
+    __c493,
+    0,
   ) as any as S.Schema<UpdateGroupStreamConnectionFailoverConnectionRequest>,
   output: S.Unknown as any as S.Schema<StreamsFailoverConnectionOutput>,
   errors: [Forbidden, NotFound, UnknownMongodbAtlasError],
@@ -40003,8 +40091,8 @@ export const updateGroupStreamPrivateLinkConnection: API.OperationMethod<
   UpdateGroupStreamPrivateLinkConnectionError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1043, __c130, 3) as any as S.Schema<UpdateGroupStreamPrivateLinkConnectionRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<StreamsPrivateLinkConnection>,
+  input: __S(15808, __c494, 0) as any as S.Schema<UpdateGroupStreamPrivateLinkConnectionRequest>,
+  output: __S(17472, __c546, 0) as any as S.Schema<StreamsPrivateLinkConnection>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40022,8 +40110,8 @@ export const updateGroupStreamProcessor: API.OperationMethod<
   UpdateGroupStreamProcessorError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1045, __c130, 5) as any as S.Schema<UpdateGroupStreamProcessorRequest>,
-  output: __S(552, __c69, 0) as any as S.Schema<StreamsProcessorWithStats>,
+  input: __S(15841, __c495, 1) as any as S.Schema<UpdateGroupStreamProcessorRequest>,
+  output: __S(6560, __c205, 0) as any as S.Schema<StreamsProcessorWithStats>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40041,8 +40129,8 @@ export const updateGroupStreamWorkspace: API.OperationMethod<
   UpdateGroupStreamWorkspaceError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1047, __c130, 7) as any as S.Schema<UpdateGroupStreamWorkspaceRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<StreamsTenantOutput>,
+  input: __S(15873, __c496, 1) as any as S.Schema<UpdateGroupStreamWorkspaceRequest>,
+  output: __S(17732, __c554, 4) as any as S.Schema<StreamsTenantOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40056,8 +40144,8 @@ export const updateGroupTeam: API.OperationMethod<
   UpdateGroupTeamError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1048, __c131, 0) as any as S.Schema<UpdateGroupTeamRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PaginatedTeamRoleView>,
+  input: __S(15904, __c497, 0) as any as S.Schema<UpdateGroupTeamRequest>,
+  output: __S(18977, __c593, 1) as any as S.Schema<PaginatedTeamRoleView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40071,8 +40159,8 @@ export const updateGroupUserSecurity: API.OperationMethod<
   UpdateGroupUserSecurityError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1051, __c131, 3) as any as S.Schema<UpdateGroupUserSecurityRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<UpdateGroupUserSecurityResponse>,
+  input: __S(15938, __c498, 2) as any as S.Schema<UpdateGroupUserSecurityRequest>,
+  output: __S(19040, __c595, 0) as any as S.Schema<UpdateGroupUserSecurityResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40086,8 +40174,8 @@ export const updateOrg: API.OperationMethod<
   UpdateOrgError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1052, __c131, 4) as any as S.Schema<UpdateOrgRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<AtlasOrganization>,
+  input: __S(15968, __c499, 0) as any as S.Schema<UpdateOrgRequest>,
+  output: __S(17824, __c557, 0) as any as S.Schema<AtlasOrganization>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40101,8 +40189,8 @@ export const updateOrgApiKey: API.OperationMethod<
   UpdateOrgApiKeyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1053, __c131, 5) as any as S.Schema<UpdateOrgApiKeyRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ApiKeyUserDetails>,
+  input: __S(16064, __c502, 0) as any as S.Schema<UpdateOrgApiKeyRequest>,
+  output: __S(5152, __c161, 0) as any as S.Schema<ApiKeyUserDetails>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40120,8 +40208,8 @@ export const updateOrgDelegationSettings: API.OperationMethod<
   UpdateOrgDelegationSettingsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1054, __c131, 6) as any as S.Schema<UpdateOrgDelegationSettingsRequest>,
-  output: __S(585, __c73, 1) as any as S.Schema<OrgDelegationSettingsResponse>,
+  input: __S(16096, __c503, 0) as any as S.Schema<UpdateOrgDelegationSettingsRequest>,
+  output: __S(7488, __c234, 0) as any as S.Schema<OrgDelegationSettingsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40135,8 +40223,8 @@ export const updateOrgLogIntegration: API.OperationMethod<
   UpdateOrgLogIntegrationError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1055, __c131, 7) as any as S.Schema<UpdateOrgLogIntegrationRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<UpdateOrgLogIntegrationResponse>,
+  input: __S(16128, __c504, 0) as any as S.Schema<UpdateOrgLogIntegrationRequest>,
+  output: __S(18208, __c569, 0) as any as S.Schema<UpdateOrgLogIntegrationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40154,8 +40242,8 @@ export const updateOrgMaintenanceSettings: API.OperationMethod<
   UpdateOrgMaintenanceSettingsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c132, 0) as any as S.Schema<UpdateOrgMaintenanceSettingsRequest>,
-  output: __S(607, __c75, 7) as any as S.Schema<OrganizationMaintenanceSettingsResponse>,
+  input: __S(16160, __c505, 0) as any as S.Schema<UpdateOrgMaintenanceSettingsRequest>,
+  output: __S(7936, __c248, 0) as any as S.Schema<OrganizationMaintenanceSettingsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40169,8 +40257,8 @@ export const updateOrgMcpConfig: API.OperationMethod<
   UpdateOrgMcpConfigError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1057, __c132, 1) as any as S.Schema<UpdateOrgMcpConfigRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<OrgMcpConfigResponse>,
+  input: __S(16192, __c506, 0) as any as S.Schema<UpdateOrgMcpConfigRequest>,
+  output: __S(18272, __c571, 0) as any as S.Schema<OrgMcpConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40184,8 +40272,8 @@ export const updateOrgResourcePolicy: API.OperationMethod<
   UpdateOrgResourcePolicyError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1058, __c132, 2) as any as S.Schema<UpdateOrgResourcePolicyRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<ApiAtlasResourcePolicyView>,
+  input: __S(16224, __c507, 0) as any as S.Schema<UpdateOrgResourcePolicyRequest>,
+  output: __S(18467, __c577, 3) as any as S.Schema<ApiAtlasResourcePolicyView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40199,8 +40287,8 @@ export const updateOrgServiceAccount: API.OperationMethod<
   UpdateOrgServiceAccountError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1059, __c132, 3) as any as S.Schema<UpdateOrgServiceAccountRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<OrgServiceAccount>,
+  input: __S(16256, __c508, 0) as any as S.Schema<UpdateOrgServiceAccountRequest>,
+  output: __S(17888, __c559, 0) as any as S.Schema<OrgServiceAccount>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40214,8 +40302,8 @@ export const updateOrgSettings: API.OperationMethod<
   UpdateOrgSettingsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1060, __c132, 4) as any as S.Schema<UpdateOrgSettingsRequest>,
-  output: __S(626, __c78, 2) as any as S.Schema<OrganizationSettings>,
+  input: __S(16288, __c509, 0) as any as S.Schema<UpdateOrgSettingsRequest>,
+  output: __S(8257, __c258, 1) as any as S.Schema<OrganizationSettings>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40229,7 +40317,7 @@ export const updateOrgUser: API.OperationMethod<
   UpdateOrgUserError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1061, __c132, 5) as any as S.Schema<UpdateOrgUserRequest>,
+  input: __S(16320, __c510, 0) as any as S.Schema<UpdateOrgUserRequest>,
   output: S.Unknown as any as S.Schema<OrgUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
@@ -40250,8 +40338,8 @@ export const upgradeGroupClusterTenantUpgrade: API.OperationMethod<
   UpgradeGroupClusterTenantUpgradeError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1067, __c133, 3) as any as S.Schema<UpgradeGroupClusterTenantUpgradeRequest>,
-  output: __S(1068, __c133, 4) as any as S.Schema<LegacyAtlasCluster>,
+  input: __S(16358, __c511, 6) as any as S.Schema<UpgradeGroupClusterTenantUpgradeRequest>,
+  output: __S(16359, __c511, 7) as any as S.Schema<LegacyAtlasCluster>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40269,8 +40357,8 @@ export const validateGroupLiveMigrations: API.OperationMethod<
   ValidateGroupLiveMigrationsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1069, __c133, 5) as any as S.Schema<ValidateGroupLiveMigrationsRequest>,
-  output: __S(509, __c63, 5) as any as S.Schema<LiveImportValidation>,
+  input: __S(16512, __c516, 0) as any as S.Schema<ValidateGroupLiveMigrationsRequest>,
+  output: __S(5312, __c166, 0) as any as S.Schema<LiveImportValidation>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40288,8 +40376,8 @@ export const validateOrgResourcePolicies: API.OperationMethod<
   ValidateOrgResourcePoliciesError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1070, __c133, 6) as any as S.Schema<ValidateOrgResourcePoliciesRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<ApiAtlasResourcePolicyView>,
+  input: __S(16544, __c517, 0) as any as S.Schema<ValidateOrgResourcePoliciesRequest>,
+  output: __S(18467, __c577, 3) as any as S.Schema<ApiAtlasResourcePolicyView>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40307,8 +40395,8 @@ export const verifyGroupUserSecurityLdap: API.OperationMethod<
   VerifyGroupUserSecurityLdapError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1071, __c133, 7) as any as S.Schema<VerifyGroupUserSecurityLdapRequest>,
-  output: __S(569, __c71, 1) as any as S.Schema<LDAPVerifyConnectivityJobRequestOutput>,
+  input: __S(16576, __c518, 0) as any as S.Schema<VerifyGroupUserSecurityLdapRequest>,
+  output: __S(6851, __c214, 3) as any as S.Schema<LDAPVerifyConnectivityJobRequestOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40326,8 +40414,8 @@ export const withGroupStreamSampleConnections: API.OperationMethod<
   WithGroupStreamSampleConnectionsError,
   MongodbAtlasOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c134, 0) as any as S.Schema<WithGroupStreamSampleConnectionsRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<StreamsTenantOutput>,
+  input: __S(16608, __c519, 0) as any as S.Schema<WithGroupStreamSampleConnectionsRequest>,
+  output: __S(17732, __c554, 4) as any as S.Schema<StreamsTenantOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownMongodbAtlasError],
   protocol: MongodbAtlasProtocol,
   retry: Retry.Retry,
@@ -40340,169 +40428,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          requesterAccountId: S.optional(S.String),
-          requesterVpcId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept",
-            code: 200,
-            accept: "application/vnd.atlas.2023-02-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "AcceptGroupStreamVpcPeeringConnectionRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AcceptGroupStreamVpcPeeringConnectionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          alertId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          acknowledgedUntil: S.optional(S.String),
-          acknowledgementComment: S.optional(S.String),
-          unacknowledgeAlert: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/atlas/v2/groups/{groupId}/alerts/{alertId}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-05-30+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "AcknowledgeGroupAlertRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.optional(S.String),
-          rel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Link" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "AcknowledgeGroupAlertResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          roles: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "UserAccessRoleAssignmentInput",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          apiUserId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          body: __S(8, __c1, 0).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "AddGroupApiKeyRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AddGroupApiKeyResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          roleNames: __S(5, __c0, 5),
-          teamId: S.String,
-        }),
-      ).annotate({ identifier: "TeamRoleInput" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          body: __S(12, __c1, 4).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/teams",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "AddGroupTeamsRequest" });
-    case 6:
-      return S.Array(__S(3, __c0, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(14, __c1, 6)),
-          roleNames: __S(5, __c0, 5),
-          teamId: S.String,
-        }),
-      ).annotate({ identifier: "TeamRole" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(16, __c2, 0),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PaginatedTeamRoleView" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          userId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          groupRole: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/users/{userId}:addRole",
-            code: 200,
-            accept: "application/vnd.atlas.2025-02-19+json",
-          }),
-        ),
-      ).annotate({ identifier: "AddGroupUserRoleRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          roles: __S(5, __c0, 5),
+          roles: __S(18336, __c573, 0),
           username: S.String,
         }).pipe(
           T.Http({
@@ -40513,7 +40441,229 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddGroupUsersRequest" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          containerId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/containers/{containerId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupContainerRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          roleName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupCustomDbRoleRoleRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupDatabaseUserRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          tenantName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupDataFederationRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          tenantName: S.String.pipe(T.Label()),
+          limitName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupDataFederationLimitRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-11-13+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupFlexClusterRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          integrationType: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupIntegrationRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          limitName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/limits/{limitName}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteGroupLimitRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/logIntegrations/{id}",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupLogIntegrationRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          mcpConfigId: S.String.pipe(T.Label()),
+          cascading: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupMcpConfigRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -40530,20 +40680,232 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddOrgTeamUserRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          groupRoles: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "GroupRoleAssignment" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c3(j: number): any {
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          mcpConfigId: S.String.pipe(T.Label()),
+          secretId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupMcpConfigSecretRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          metricIntegrationId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/metricIntegrations/{metricIntegrationId}",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupMetricIntegrationRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          peerId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/peers/{peerId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteGroupPeerRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          cloudProvider: S.String.pipe(T.Label()),
+          endpointServiceId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupPrivateEndpointEndpointServiceRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          cloudProvider: S.String.pipe(T.Label()),
+          endpointServiceId: S.String.pipe(T.Label()),
+          endpointId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupPrivateEndpointEndpointServiceEndpointRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          endpointId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupPrivateNetworkSettingEndpointIdRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clientId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupServiceAccountRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clientId: S.String.pipe(T.Label()),
+          ipAddress: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupServiceAccountAccessListEntryRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clientId: S.String.pipe(T.Label()),
+          secretId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupServiceAccountSecretRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          tenantName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-02-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupStreamConnectionRequest",
+      });
+  }
+}
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40562,7 +40924,225 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddOrgUserRoleRequest" });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          tenantName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+          failoverConnectionId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId}",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupStreamConnectionFailoverConnectionRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          connectionId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-02-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupStreamPrivateLinkConnectionRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          tenantName: S.String.pipe(T.Label()),
+          processorName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-05-30+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupStreamProcessorRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-02-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupStreamVpcPeeringConnectionRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          tenantName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-02-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupStreamWorkspaceRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupUserSecurityLdapUserToDnMappingRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/orgs/{orgId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteOrgRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          apiUserId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteOrgApiKeyRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          apiUserId: S.String.pipe(T.Label()),
+          ipAddress: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrgApiKeyAccessListEntryRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrgLiveMigrationLinkTokensRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -40581,83 +41161,227 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "AuthorizeGroupCloudProviderAccessRoleRequest",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          featureType: S.optional(S.String),
-        }),
+          orgId: S.String.pipe(T.Label()),
+          logIntegrationId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
       ).annotate({
-        identifier: "CloudProviderAccessFeatureUsage",
+        identifier: "DeleteOrgLogIntegrationRequest",
       });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          _id: S.optional(S.String),
-          atlasAzureAppId: S.optional(S.String),
-          createdDate: S.optional(S.String),
-          featureUsages: S.optional(__S(27, __c3, 3)),
-          lastUpdatedDate: S.optional(S.String),
-          servicePrincipalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          gcpServiceAccountForAtlas: S.optional(S.String),
-          roleId: S.optional(S.String),
-          status: S.optional(S.String),
-          providerName: S.String,
-          atlasAWSAccountArn: S.optional(S.String),
-          atlasAssumedRoleExternalId: S.optional(S.String),
-          authorizedDate: S.optional(S.String),
-          iamAssumedRoleArn: S.optional(S.String),
-        }),
+          orgId: S.String.pipe(T.Label()),
+          mcpConfigId: S.String.pipe(T.Label()),
+          cascading: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
       ).annotate({
-        identifier: "CloudProviderAccessAWSIAMRole",
+        identifier: "DeleteOrgMcpConfigRequest",
       });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          _id: S.optional(S.String),
-          atlasAzureAppId: S.optional(S.String),
-          createdDate: S.optional(S.String),
-          featureUsages: S.optional(__S(27, __c3, 3)),
-          lastUpdatedDate: S.optional(S.String),
-          servicePrincipalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          gcpServiceAccountForAtlas: S.optional(S.String),
-          roleId: S.optional(S.String),
-          status: S.optional(S.String),
-          providerName: S.String,
-          atlasAWSAccountArn: S.optional(S.String),
-          atlasAssumedRoleExternalId: S.optional(S.String),
-          authorizedDate: S.optional(S.String),
-          iamAssumedRoleArn: S.optional(S.String),
-        }),
+          orgId: S.String.pipe(T.Label()),
+          mcpConfigId: S.String.pipe(T.Label()),
+          secretId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
       ).annotate({
-        identifier: "CloudProviderAccessAzureServicePrincipal",
+        identifier: "DeleteOrgMcpConfigSecretRequest",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          _id: S.optional(S.String),
-          atlasAzureAppId: S.optional(S.String),
-          createdDate: S.optional(S.String),
-          featureUsages: S.optional(__S(27, __c3, 3)),
-          lastUpdatedDate: S.optional(S.String),
-          servicePrincipalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          gcpServiceAccountForAtlas: S.optional(S.String),
-          roleId: S.optional(S.String),
-          status: S.optional(S.String),
-          providerName: S.String,
-          atlasAWSAccountArn: S.optional(S.String),
-          atlasAssumedRoleExternalId: S.optional(S.String),
-          authorizedDate: S.optional(S.String),
-          iamAssumedRoleArn: S.optional(S.String),
-        }),
+          orgId: S.String.pipe(T.Label()),
+          resourcePolicyId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
       ).annotate({
-        identifier: "CloudProviderAccessGCPServiceAccount",
+        identifier: "DeleteOrgResourcePolicyRequest",
       });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          clientId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrgServiceAccountRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          clientId: S.String.pipe(T.Label()),
+          ipAddress: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrgServiceAccountAccessListEntryRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          clientId: S.String.pipe(T.Label()),
+          secretId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrgServiceAccountSecretRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          teamId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteOrgTeamRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy",
+            code: 200,
+            accept: "application/vnd.atlas.2024-11-13+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableGroupBackupCompliancePolicyRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/managedSlowMs/disable",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableGroupManagedSlowMsRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -40678,7 +41402,319 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/userSecurity/customerX509",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableGroupUserSecurityCustomerX509Request",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          hostName: S.String.pipe(T.Label()),
+          logName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          endDate: S.optional(S.Number.pipe(T.Query())),
+          startDate: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz",
+            code: 200,
+            accept: "application/vnd.atlas.2023-02-01+gzip",
+          }),
+        ),
+      ).annotate({
+        identifier: "DownloadGroupClusterLogRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          startDate: S.optional(S.Number.pipe(T.Query())),
+          endDate: S.optional(S.Number.pipe(T.Query())),
+          archiveOnly: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+gzip",
+          }),
+        ),
+      ).annotate({
+        identifier: "DownloadGroupClusterOnlineArchiveQueryLogsRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          tenantName: S.String.pipe(T.Label()),
+          endDate: S.optional(S.Number.pipe(T.Query())),
+          startDate: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+gzip",
+          }),
+        ),
+      ).annotate({
+        identifier: "DownloadGroupDataFederationQueryLogsRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          snapshotId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download",
+            code: 200,
+            accept: "application/vnd.atlas.2024-11-13+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DownloadGroupFlexClusterBackupRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          tenantName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          endDate: S.optional(S.Number.pipe(T.Query())),
+          startDate: S.optional(S.Number.pipe(T.Query())),
+          spName: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs",
+            code: 200,
+            accept: "application/vnd.atlas.2023-02-01+gzip",
+          }),
+        ),
+      ).annotate({
+        identifier: "DownloadGroupStreamAuditLogsRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          tenantName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          endDate: S.optional(S.Number.pipe(T.Query())),
+          startDate: S.optional(S.Number.pipe(T.Query())),
+          spName: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}:downloadOperationalLogs",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+gzip",
+          }),
+        ),
+      ).annotate({
+        identifier: "DownloadGroupStreamOperationalLogsRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/managedSlowMs/enable",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableGroupManagedSlowMsRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "EndGroupClusterOutageSimulationRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.optional(S.String),
+          regionName: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AtlasClusterOutageSimulationOutageFilter",
+      });
+    case 1:
+      return S.Array(__S(1728, __c54, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clusterName: S.optional(S.String),
+          expirationDate: S.optional(S.String),
+          groupId: S.optional(S.String),
+          id: S.optional(S.String),
+          outageFilters: S.optional(__S(1729, __c54, 1)),
+          startRequestDate: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterOutageSimulation" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          federationSettingsId: S.String.pipe(T.Label()),
+          orgId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFederationSettingConnectedOrgConfigRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1890, __c59, 2));
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          emailAddress: S.String,
+          federationSettingsId: S.String,
+          firstName: S.String,
+          lastName: S.String,
+          userId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FederatedUser" });
+    case 1:
+      return S.Array(__S(1824, __c57, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataAccessIdentityProviderIds: S.optional(__S(18336, __c573, 0)),
+          domainAllowList: S.optional(__S(18336, __c573, 0)),
+          domainRestrictionEnabled: S.Boolean,
+          identityProviderId: S.optional(S.NullOr(S.String)),
+          instantUserProvisioningDisabled: S.optional(S.NullOr(S.Boolean)),
+          orgId: S.String,
+          postAuthRoleGrants: S.optional(__S(17856, __c558, 0)),
+          roleMappings: S.optional(__S(1792, __c56, 0)),
+          userConflicts: S.optional(__S(1825, __c57, 1)),
+        }),
+      ).annotate({ identifier: "ConnectedOrgConfig" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          federationSettingsId: S.String.pipe(T.Label()),
+          orgId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          externalGroupName: S.String,
+          roleAssignments: __S(1920, __c60, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFederationSettingConnectedOrgConfigRoleMappingRequest",
+      });
+  }
+}
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40691,39 +41727,304 @@ function __c4(j: number): any {
         identifier: "ConnectedOrgConfigRoleAssignment",
       });
     case 1:
-      return S.Array(__S(32, __c4, 0));
+      return S.Array(__S(1888, __c59, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          externalGroupName: S.String,
+          id: S.optional(S.String),
+          roleAssignments: __S(1889, __c59, 1),
+        }),
+      ).annotate({
+        identifier: "AuthFederationRoleMapping",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1888, __c59, 0));
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           federationSettingsId: S.String.pipe(T.Label()),
           orgId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
-          externalGroupName: S.String,
-          roleAssignments: __S(33, __c4, 1),
         }).pipe(
           T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings",
+            method: "GET",
+            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}",
             code: 200,
             accept: "application/vnd.atlas.2023-01-01+json",
           }),
         ),
       ).annotate({
-        identifier: "CreateFederationSettingConnectedOrgConfigRoleMappingRequest",
+        identifier: "GetFederationSettingConnectedOrgConfigRoleMappingRequest",
       });
-    case 3:
-      return S.Array(__S(32, __c4, 0));
-    case 4:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          externalGroupName: S.String,
-          id: S.optional(S.String),
-          roleAssignments: __S(35, __c4, 3),
+          federationSettingsId: S.String.pipe(T.Label()),
+          identityProviderId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-11-15+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFederationSettingIdentityProviderRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          federationSettingsId: S.String.pipe(T.Label()),
+          identityProviderId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFederationSettingIdentityProviderMetadataRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/groups/{groupId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "GetGroupRequest" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          entryValue: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGroupAccessListEntryRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          entryValue: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGroupAccessListStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          STATUS: S.String,
         }),
       ).annotate({
-        identifier: "AuthFederationRoleMapping",
+        identifier: "NetworkPermissionEntryStatus",
       });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          eventType: S.optional(__S(2208, __c69, 0).pipe(T.Query())),
+          maxDate: S.optional(S.String.pipe(T.Query())),
+          minDate: S.optional(S.String.pipe(T.Query())),
+          clusterName: S.optional(__S(18336, __c573, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/groups/{groupId}/activityFeed",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGroupActivityFeedRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          link: S.String,
+          links: S.optional(__S(18912, __c591, 0)),
+        }),
+      ).annotate({ identifier: "ActivityFeedLinkResponse" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          cloud: S.String.pipe(T.Label()),
+          geography: S.String.pipe(T.Label()),
+          modelGroupName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloud: S.optional(S.String),
+          endpoint: S.optional(S.String),
+          geography: S.optional(S.String),
+          modelGroupName: S.optional(S.String),
+          modelNames: S.optional(__S(18336, __c573, 0)),
+          requestsPerMinuteLimit: S.optional(S.Number),
+          tokensPerMinuteLimit: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AiModelRateLimitResponse" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          apiKeyId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGroupAiModelApiKeyRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+          pageNum: S.optional(S.Number.pipe(T.Query())),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/atlas/v2/groups/{groupId}/aiModelApiRateLimits",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGroupAiModelApiRateLimitsRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2272, __c71, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(2368, __c74, 0),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PaginatedAtlasAiModelRateLimitsResponse",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           federationSettingsId: S.String.pipe(T.Label()),
@@ -40748,4763 +42049,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateFederationSettingIdentityProviderRequest",
       });
-    case 6:
-      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
-    case 7:
-      return S.Array(__S(36, __c4, 4));
   }
 }
-function __c5(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          emailAddress: S.String,
-          federationSettingsId: S.String,
-          firstName: S.String,
-          lastName: S.String,
-          userId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FederatedUser" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dataAccessIdentityProviderIds: S.optional(__S(5, __c0, 5)),
-          domainAllowList: S.optional(__S(5, __c0, 5)),
-          domainRestrictionEnabled: S.Boolean,
-          identityProviderId: S.optional(S.NullOr(S.String)),
-          instantUserProvisioningDisabled: S.optional(S.NullOr(S.Boolean)),
-          orgId: S.String,
-          postAuthRoleGrants: S.optional(__S(38, __c4, 6)),
-          roleMappings: S.optional(__S(39, __c4, 7)),
-          userConflicts: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "ConnectedOrgConfig" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "ResourceTag" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          projectOwnerId: S.optional(S.String.pipe(T.Query())),
-          name: S.String,
-          orgId: S.String,
-          regionUsageRestrictions: S.optional(S.String),
-          tags: S.optional(__S(45, __c5, 5)),
-          withDefaultAlertsSettings: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "CreateGroupRequest" });
-    case 7:
-      return S.Array(__S(44, __c5, 4));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clusterCount: S.Number,
-          created: S.String,
-          id: S.optional(S.String),
-          links: S.optional(__S(14, __c1, 6)),
-          name: S.String,
-          orgId: S.String,
-          regionUsageRestrictions: S.optional(S.String),
-          tags: S.optional(__S(47, __c5, 7)),
-          withDefaultAlertsSettings: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Group" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          awsSecurityGroup: S.optional(S.String),
-          cidrBlock: S.optional(S.String),
-          comment: S.optional(S.String),
-          deleteAfterDate: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkPermissionEntryInput",
-      });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          includeCount: S.optional(S.Boolean.pipe(T.Query())),
-          itemsPerPage: S.optional(S.Number.pipe(T.Query())),
-          pageNum: S.optional(S.Number.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          body: __S(50, __c6, 2).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/accessList",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupAccessListEntryRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          awsSecurityGroup: S.optional(S.String),
-          cidrBlock: S.optional(S.String),
-          comment: S.optional(S.String),
-          deleteAfterDate: S.optional(S.String),
-          groupId: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "NetworkPermissionEntry" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(53, __c6, 5),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PaginatedNetworkAccessView",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          cloud: S.String,
-          geography: S.String,
-          name: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/aiModelApiKeys",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupAiModelApiKeyRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiKeyId: S.optional(S.String),
-          cloud: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          createdBy: S.optional(S.String),
-          endpoint: S.optional(S.String),
-          geography: S.optional(S.String),
-          groupId: S.optional(S.String),
-          lastUsedAt: S.optional(S.NullOr(S.String)),
-          maskedSecret: S.optional(S.String),
-          name: S.optional(S.String),
-          secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AiModelApiKeyResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/alertConfigs",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupAlertConfigRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateGroupAlertConfigResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          desc: S.String,
-          roles: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/apiKeys",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "CreateGroupApiKeyRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          orgId: S.optional(S.String),
-          roleName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CloudAccessRoleAssignment",
-      });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          desc: S.optional(S.String),
-          id: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-          privateKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          publicKey: S.optional(S.String),
-          roles: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({ identifier: "ApiKeyUserDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          cloudProvider: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/backup/exportBuckets",
-            code: 200,
-            accept: "application/vnd.atlas.2024-05-30+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupBackupExportBucketRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          bucketName: S.String,
-          cloudProvider: S.String,
-          links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "DiskBackupSnapshotExportBucketResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          cloudProvider: S.String.pipe(T.Label()),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          regionName: S.optional(S.String),
-          vpcRegionName: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints",
-            code: 200,
-            accept: "application/vnd.atlas.2024-11-13+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupBackupPrivateEndpointRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          id: S.optional(S.String),
-          privateEndpointConnectionName: S.optional(S.String),
-          regionName: S.optional(S.String),
-          status: S.optional(S.String),
-          vpcRegionName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ObjectStoragePrivateEndpointResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          providerName: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupCloudProviderAccessRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customOpensslCipherConfigTls12: S.optional(__S(68, __c8, 4)),
-          customOpensslCipherConfigTls13: S.optional(__S(68, __c8, 4)),
-          minimumEnabledTlsProtocol: S.optional(S.String),
-          tlsCipherConfigMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApiAtlasClusterAdvancedConfigurationView",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          readPreference: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BiConnector" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ComponentLabel" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          scaleDownEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AdvancedComputeAutoScalingInput",
-      });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          regionConfigs: S.optional(__S(74, __c9, 2)),
-          zoneName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReplicationSpec20240805Input",
-      });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          acceptDataRisksAndForceReplicaSetReconfig: S.optional(S.String),
-          adaptiveCapacity: S.optional(S.NullOr(S.String)),
-          advancedConfiguration: S.optional(__S(69, __c8, 5)),
-          backupEnabled: S.optional(S.Boolean),
-          biConnector: S.optional(__S(70, __c8, 6)),
-          clusterType: S.optional(S.String),
-          configServerManagementMode: S.optional(S.String),
-          databaseEdition: S.optional(S.String),
-          diskWarmingMode: S.optional(S.String),
-          encryptionAtRestProvider: S.optional(S.String),
-          globalClusterSelfManagedSharding: S.optional(S.Boolean),
-          labels: S.optional(__S(72, __c9, 0)),
-          mongoDBMajorVersion: S.optional(S.String),
-          name: S.optional(S.String),
-          paused: S.optional(S.Boolean),
-          pitEnabled: S.optional(S.Boolean),
-          redactClientLogData: S.optional(S.Boolean),
-          replicaSetScalingStrategy: S.optional(S.String),
-          replicationSpecs: S.optional(__S(76, __c9, 4)),
-          retainBackups: S.optional(S.Boolean),
-          rootCertType: S.optional(S.String),
-          tags: S.optional(__S(45, __c5, 5)),
-          terminationProtectionEnabled: S.optional(S.Boolean),
-          useAwsTimeBasedSnapshotCopyForFastInitialSync: S.optional(S.Boolean),
-          versionReleaseSystem: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters",
-            code: 200,
-            accept: "application/vnd.atlas.2024-10-23+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupClusterRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endpointId: S.optional(S.String),
-          providerName: S.optional(S.String),
-          region: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClusterDescriptionConnectionStringsPrivateEndpointEndpoint",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          endpoints: S.optional(__S(80, __c10, 0)),
-          srvConnectionString: S.optional(S.String),
-          srvShardOptimizedConnectionString: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClusterDescriptionConnectionStringsPrivateEndpoint",
-      });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          awsPrivateLink: S.optional(__S(78, __c9, 6)),
-          awsPrivateLinkSrv: S.optional(__S(78, __c9, 6)),
-          private: S.optional(S.String),
-          privateEndpoint: S.optional(__S(82, __c10, 2)),
-          privateSrv: S.optional(S.String),
-          standard: S.optional(S.String),
-          standardSrv: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterConnectionStrings" });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          regionConfigs: S.optional(__S(84, __c10, 4)),
-          zoneId: S.optional(S.String),
-          zoneName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReplicationSpec20240805" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          expirationTime: S.String,
-          grantType: S.String,
-          links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "EmployeeAccessGrantView" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          acceptDataRisksAndForceReplicaSetReconfig: S.optional(S.String),
-          adaptiveCapacity: S.optional(S.NullOr(S.String)),
-          advancedConfiguration: S.optional(__S(69, __c8, 5)),
-          backupEnabled: S.optional(S.Boolean),
-          biConnector: S.optional(__S(70, __c8, 6)),
-          clusterType: S.optional(S.String),
-          configServerManagementMode: S.optional(S.String),
-          configServerType: S.optional(S.String),
-          connectionStrings: S.optional(__S(83, __c10, 3)),
-          createDate: S.optional(S.String),
-          databaseEdition: S.optional(S.String),
-          diskWarmingMode: S.optional(S.String),
-          effectiveDatabaseEdition: S.optional(S.String),
-          effectiveReplicationSpecs: S.optional(__S(86, __c10, 6)),
-          encryptionAtRestProvider: S.optional(S.String),
-          featureCompatibilityVersion: S.optional(S.String),
-          featureCompatibilityVersionExpirationDate: S.optional(S.String),
-          globalClusterSelfManagedSharding: S.optional(S.Boolean),
-          groupId: S.optional(S.String),
-          id: S.optional(S.String),
-          internalClusterRole: S.optional(S.String),
-          labels: S.optional(__S(72, __c9, 0)),
-          links: S.optional(__S(4, __c0, 4)),
-          mongoDBEmployeeAccessGrant: S.optional(__S(87, __c10, 7)),
-          mongoDBMajorVersion: S.optional(S.String),
-          mongoDBVersion: S.optional(S.String),
-          name: S.optional(S.String),
-          paused: S.optional(S.Boolean),
-          pitEnabled: S.optional(S.Boolean),
-          redactClientLogData: S.optional(S.Boolean),
-          replicaSetScalingStrategy: S.optional(S.String),
-          replicationSpecs: S.optional(__S(86, __c10, 6)),
-          retainBackups: S.optional(S.Boolean),
-          rootCertType: S.optional(S.String),
-          stateName: S.optional(S.String),
-          tags: S.optional(__S(45, __c5, 5)),
-          terminationProtectionEnabled: S.optional(S.Boolean),
-          useAwsTimeBasedSnapshotCopyForFastInitialSync: S.optional(S.Boolean),
-          versionReleaseSystem: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClusterDescription20240805",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          customData: S.optional(__S(72, __c9, 0)),
-          exportBucketId: S.String,
-          snapshotId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupClusterBackupExportRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          exportId: S.optional(S.String),
-          replicaSetName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiskBackupExportMember" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          exportedCollections: S.optional(S.Number),
-          totalCollections: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ExportStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          errorCode: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StateReason" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          components: S.optional(__S(91, __c11, 3)),
-          createdAt: S.optional(S.String),
-          customData: S.optional(__S(72, __c9, 0)),
-          exportBucketId: S.String,
-          exportStatus: S.optional(__S(92, __c11, 4)),
-          finishedAt: S.optional(S.String),
-          id: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-          prefix: S.optional(S.String),
-          snapshotId: S.optional(S.String),
-          state: S.optional(S.String),
-          stateReason: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({ identifier: "DiskBackupExportJob" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          deliveryType: S.String,
-          oplogInc: S.optional(S.Number),
-          oplogTs: S.optional(S.Number),
-          pointInTimeUTCSeconds: S.optional(S.Number),
-          snapshotId: S.optional(S.String),
-          targetClusterName: S.optional(S.String),
-          targetGroupId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupClusterBackupRestoreJobRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          deliveryUrl: S.optional(S.String),
-          endpointId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApiPrivateDownloadDeliveryUrl",
-      });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          downloadUrl: S.optional(S.String),
-          privateDownloadDeliveryUrls: S.optional(__S(97, __c12, 1)),
-          replicaSetName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiskBackupRestoreMember" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.String),
-          increment: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ApiBSONTimestampView" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cancelled: S.optional(S.Boolean),
-          components: S.optional(__S(99, __c12, 3)),
-          deliveryType: S.String,
-          deliveryUrl: S.optional(__S(5, __c0, 5)),
-          desiredTimestamp: S.optional(__S(100, __c12, 4)),
-          expired: S.optional(S.Boolean),
-          expiresAt: S.optional(S.String),
-          failed: S.optional(S.Boolean),
-          finishedAt: S.optional(S.String),
-          id: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-          oplogInc: S.optional(S.Number),
-          oplogTs: S.optional(S.Number),
-          pointInTimeUTCSeconds: S.optional(S.Number),
-          privateDownloadDeliveryUrls: S.optional(__S(97, __c12, 1)),
-          snapshotId: S.optional(S.String),
-          targetClusterName: S.optional(S.String),
-          targetGroupId: S.optional(S.String),
-          timestamp: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DiskBackupSnapshotRestoreJob",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sourceNamespace: S.String,
-          targetNamespace: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApiAtlasRestoreCollectionNamespaceView",
-      });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          collectionSuffix: S.optional(S.NullOr(S.String)),
-          collections: S.optional(__S(103, __c12, 7)),
-          databaseSuffix: S.optional(S.NullOr(S.String)),
-          databases: S.optional(__S(103, __c12, 7)),
-          indexStrategy: S.String,
-          oplogInc: S.optional(S.NullOr(S.Number)),
-          oplogTs: S.optional(S.NullOr(S.Number)),
-          pointInTimeUtcSeconds: S.optional(S.NullOr(S.Number)),
-          snapshotId: S.optional(S.String),
-          targetClusterName: S.String,
-          targetGroupId: S.String,
-          writeStrategy: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupClusterCollectionRestoreJobRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          failedCollectionCount: S.optional(S.Number),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApiAtlasCollectionRestoreJobIndexStatus",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          collectionSuffix: S.optional(S.String),
-          collections: S.optional(__S(103, __c12, 7)),
-          createdAt: S.optional(S.String),
-          databaseSuffix: S.optional(S.String),
-          databases: S.optional(__S(103, __c12, 7)),
-          errorMessage: S.optional(S.String),
-          finishedAt: S.optional(S.String),
-          id: S.optional(S.String),
-          indexStatus: S.optional(__S(105, __c13, 1)),
-          indexStrategy: S.optional(S.String),
-          oplogInc: S.optional(S.Number),
-          oplogTs: S.optional(S.Number),
-          pointInTimeUtcSeconds: S.optional(S.Number),
-          restoredDocuments: S.optional(S.Number),
-          snapshotId: S.optional(S.String),
-          state: S.optional(S.String),
-          targetClusterName: S.optional(S.String),
-          targetGroupId: S.optional(S.String),
-          totalDocuments: S.optional(S.Number),
-          writeStrategy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApiAtlasCollectionRestoreJobResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.String,
-          zone: S.String,
-        }),
-      ).annotate({ identifier: "ZoneMapping" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          customZoneMappings: __S(108, __c13, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupClusterGlobalWriteCustomZoneMappingRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          collection: S.String,
-          customShardKey: S.String,
-          db: S.String,
-          isCustomShardKeyHashed: S.optional(S.Boolean),
-          isShardKeyUnique: S.optional(S.Boolean),
-          numInitialChunks: S.optional(S.Number),
-          presplitHashedZones: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ManagedNamespaces" });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          customZoneMapping: S.optional(__S(78, __c9, 6)),
-          managedNamespaces: S.optional(__S(111, __c13, 7)),
-          selfManagedSharding: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GeoSharding20240805" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          collection: S.String,
-          customShardKey: S.String,
-          db: S.String,
-          isCustomShardKeyHashed: S.optional(S.Boolean),
-          isShardKeyUnique: S.optional(S.Boolean),
-          numInitialChunks: S.optional(S.Number),
-          presplitHashedZones: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupClusterGlobalWriteManagedNamespaceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          alternate: S.optional(S.String),
-          backwards: S.optional(S.Boolean),
-          caseFirst: S.optional(S.String),
-          caseLevel: S.optional(S.Boolean),
-          locale: S.String,
-          maxVariable: S.optional(S.String),
-          normalization: S.optional(S.Boolean),
-          numericOrdering: S.optional(S.Boolean),
-          strength: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Collation" });
-    case 3:
-      return S.Array(__S(78, __c9, 6));
-    case 4:
-      return S.Record(S.String, S.Number);
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _2dsphereIndexVersion: S.optional(S.Number.pipe(T.Body("2dsphereIndexVersion"))),
-          background: S.optional(S.Boolean),
-          bits: S.optional(S.Number),
-          bucketSize: S.optional(S.Number),
-          columnstoreProjection: S.optional(__S(116, __c14, 4)),
-          default_language: S.optional(S.String),
-          expireAfterSeconds: S.optional(S.Number),
-          hidden: S.optional(S.Boolean),
-          language_override: S.optional(S.String),
-          max: S.optional(S.Number),
-          min: S.optional(S.Number),
-          name: S.optional(S.String),
-          partialFilterExpression: S.optional(__S(117, __c14, 5)),
-          sparse: S.optional(S.Boolean),
-          storageEngine: S.optional(__S(117, __c14, 5)),
-          textIndexVersion: S.optional(S.Number),
-          weights: S.optional(__S(117, __c14, 5)),
-        }),
-      ).annotate({ identifier: "IndexOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          collation: S.optional(__S(114, __c14, 2)),
-          collection: S.String,
-          db: S.String,
-          keys: __S(115, __c14, 3),
-          options: S.optional(__S(118, __c14, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupClusterIndexRollingIndexRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CriteriaView" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          expireAfterDays: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DataExpirationRuleView" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateDataProcessRegionView",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fieldName: S.String,
-          order: S.Number,
-        }),
-      ).annotate({ identifier: "PartitionFieldViewInput" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          collName: S.String,
-          collectionType: S.optional(S.String),
-          criteria: __S(120, __c15, 0),
-          dataExpirationRule: S.optional(__S(121, __c15, 1)),
-          dataProcessRegion: S.optional(__S(122, __c15, 2)),
-          dbName: S.String,
-          partitionFields: S.optional(__S(124, __c15, 4)),
-          paused: S.optional(S.Boolean),
-          schedule: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupClusterOnlineArchiveRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataProcessRegionView" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fieldName: S.String,
-          fieldType: S.optional(S.String),
-          order: S.Number,
-        }),
-      ).annotate({ identifier: "PartitionFieldView" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          clusterName: S.optional(S.String),
-          collName: S.optional(S.String),
-          collectionType: S.optional(S.String),
-          criteria: S.optional(__S(120, __c15, 0)),
-          dataExpirationRule: S.optional(__S(121, __c15, 1)),
-          dataProcessRegion: S.optional(__S(126, __c15, 6)),
-          dataSetName: S.optional(S.String),
-          dbName: S.optional(S.String),
-          groupId: S.optional(S.String),
-          partitionFields: S.optional(__S(128, __c16, 0)),
-          paused: S.optional(S.Boolean),
-          schedule: S.optional(S.Unknown),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BackupOnlineArchive" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          durationSeconds: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupClusterOverloadSimulationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cancelRequestedAt: S.optional(S.String),
-          clusterName: S.String,
-          durationSeconds: S.Number,
-          expiresAt: S.String,
-          groupId: S.String,
-          requestDate: S.String,
-          simulationId: S.String,
-          state: S.String,
-        }),
-      ).annotate({
-        identifier: "OverloadProtectionSimulationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          maxInstanceTier: S.optional(S.String),
-          minInstanceTier: S.optional(S.String),
-          scaleDownEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ApiSearchComputeAutoScalingView",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          compute: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({ identifier: "ApiSearchAutoScalingView" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.optional(S.NullOr(S.String)),
-          instanceSize: S.String,
-          nodeCount: S.optional(S.NullOr(S.Number)),
-          regionName: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ApiSearchDeploymentRequestSpecView",
-      });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          autoScaling: S.optional(__S(133, __c16, 5)),
-          defaultNodeCount: S.optional(S.NullOr(S.Number)),
-          specs: __S(135, __c16, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment",
-            code: 200,
-            accept: "application/vnd.atlas.2024-05-30+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupClusterSearchDeploymentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.optional(S.String),
-          instanceSize: S.optional(S.String),
-          nodeCount: S.optional(S.Number),
-          regionName: S.optional(S.String),
-          shardId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApiSearchDeploymentEffectiveSpecView",
-      });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          instanceSize: S.String,
-          nodeCount: S.Number,
-        }),
-      ).annotate({
-        identifier: "ApiSearchDeploymentSpecView",
-      });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          autoScaling: S.optional(__S(133, __c16, 5)),
-          baselineSpecs: S.optional(__S(138, __c17, 2)),
-          effectiveSpecs: S.optional(__S(138, __c17, 2)),
-          encryptionAtRestProvider: S.optional(S.NullOr(S.String)),
-          groupId: S.optional(S.String),
-          id: S.optional(S.String),
-          specs: S.optional(__S(140, __c17, 4)),
-          stateName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApiSearchDeploymentResponseView",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          collectionName: S.String,
-          database: S.String,
-          name: S.String,
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes",
-            code: 200,
-            accept: "application/vnd.atlas.2024-05-30+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupClusterSearchIndexRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          numPartitions: S.optional(S.Number),
-          storedSource: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "SearchIndexDefinition" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.String),
-          version: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SearchIndexDefinitionVersion",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          definition: S.optional(__S(143, __c17, 7)),
-          definitionVersion: S.optional(__S(144, __c18, 0)),
-          message: S.optional(S.String),
-          queryable: S.optional(S.Boolean),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SearchMainIndexStatusDetail",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hostname: S.optional(S.String),
-          mainIndex: S.optional(__S(145, __c18, 1)),
-          queryable: S.optional(S.Boolean),
-          stagedIndex: S.optional(__S(145, __c18, 1)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SearchHostStatusDetail" });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          collectionName: S.optional(S.String),
-          database: S.optional(S.String),
-          indexID: S.optional(S.String),
-          latestDefinition: S.optional(__S(143, __c17, 7)),
-          latestDefinitionVersion: S.optional(__S(144, __c18, 0)),
-          name: S.optional(S.String),
-          queryable: S.optional(S.Boolean),
-          status: S.optional(S.String),
-          statusDetail: S.optional(__S(147, __c18, 3)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SearchIndexResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          providerName: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/containers",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupContainerRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cluster: S.Boolean,
-          collection: S.String,
-          db: S.String,
-        }),
-      ).annotate({
-        identifier: "DatabasePermittedNamespaceResource",
-      });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          resources: __S(151, __c18, 7),
-        }),
-      ).annotate({ identifier: "DatabasePrivilegeAction" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          db: S.String,
-          role: S.String,
-        }),
-      ).annotate({ identifier: "DatabaseInheritedRole" });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          actions: S.optional(__S(153, __c19, 1)),
-          inheritedRoles: S.optional(__S(155, __c19, 3)),
-          roleName: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupCustomDbRoleRoleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          collectionName: S.optional(S.String),
-          databaseName: S.String,
-          roleName: S.String,
-        }),
-      ).annotate({ identifier: "DatabaseUserRole" });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "UserScope" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          awsIAMType: S.optional(S.String),
-          databaseName: S.String,
-          deleteAfterDate: S.optional(S.String),
-          description: S.optional(S.String),
-          labels: S.optional(__S(72, __c9, 0)),
-          ldapAuthType: S.optional(S.String),
-          oidcAuthType: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          roles: __S(158, __c19, 6),
-          scopes: S.optional(__S(160, __c20, 0)),
-          username: S.String,
-          x509Type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/databaseUsers",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupDatabaseUserRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          awsIAMType: S.optional(S.String),
-          databaseName: S.String,
-          deleteAfterDate: S.optional(S.String),
-          description: S.optional(S.String),
-          labels: S.optional(__S(72, __c9, 0)),
-          ldapAuthType: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-          oidcAuthType: S.optional(S.String),
-          roles: __S(158, __c19, 6),
-          scopes: S.optional(__S(160, __c20, 0)),
-          username: S.String,
-          x509Type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloudDatabaseUserOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          monthsUntilExpiration: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupDatabaseUserCertRequest",
-      });
-    case 4:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateGroupDatabaseUserCertResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          roleId: S.String,
-          testS3Bucket: S.String,
-        }),
-      ).annotate({
-        identifier: "DataLakeAWSCloudProviderConfigInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          roleId: S.String,
-        }),
-      ).annotate({
-        identifier: "DataFederationAzureCloudProviderConfigInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          aws: S.optional(__S(165, __c20, 5)),
-          azure: S.optional(__S(166, __c20, 6)),
-          gcp: S.optional(__S(166, __c20, 6)),
-        }),
-      ).annotate({
-        identifier: "DataLakeCloudProviderConfigInput",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.String,
-          region: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "DataLakeDataProcessRegion",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          allowInsecure: S.optional(S.Boolean),
-          collection: S.optional(S.String),
-          collectionRegex: S.optional(S.String),
-          database: S.optional(S.String),
-          databaseRegex: S.optional(S.String),
-          datasetName: S.optional(S.String),
-          datasetPrefix: S.optional(S.String),
-          defaultFormat: S.optional(S.String),
-          path: S.optional(S.String),
-          provenanceFieldName: S.optional(S.String),
-          storeName: S.optional(S.String),
-          trimLevel: S.optional(S.Number),
-          urls: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "DataLakeDatabaseDataSourceSettings",
-      });
-    case 2:
-      return S.Array(__S(169, __c21, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataSources: S.optional(__S(170, __c21, 2)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataLakeDatabaseCollection",
-      });
-    case 4:
-      return S.Array(__S(171, __c21, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          pipeline: S.optional(S.String),
-          source: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataLakeApiBase" });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          collections: S.optional(__S(172, __c21, 4)),
-          maxWildcardCollections: S.optional(S.Number),
-          name: S.optional(S.String),
-          views: S.optional(__S(174, __c21, 6)),
-        }),
-      ).annotate({ identifier: "DataLakeDatabaseInstance" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          databases: S.optional(__S(176, __c22, 0)),
-          stores: S.optional(__S(177, __c22, 1)),
-        }),
-      ).annotate({ identifier: "DataLakeStorageInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          skipRoleValidation: S.optional(S.Boolean.pipe(T.Query())),
-          cloudProviderConfig: S.optional(__S(167, __c20, 7)),
-          dataProcessRegion: S.optional(__S(168, __c21, 0)),
-          name: S.optional(S.String),
-          storage: S.optional(__S(178, __c22, 2)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/dataFederation",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupDataFederationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          externalId: S.optional(S.String),
-          iamAssumedRoleARN: S.optional(S.String),
-          iamUserARN: S.optional(S.String),
-          roleId: S.String,
-        }),
-      ).annotate({
-        identifier: "DataLakeAWSCloudProviderConfigOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          atlasAppId: S.optional(S.String),
-          roleId: S.String,
-          servicePrincipalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataFederationAzureCloudProviderConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          gcpServiceAccount: S.optional(S.String),
-          roleId: S.String,
-        }),
-      ).annotate({
-        identifier: "DataFederationGCPCloudProviderConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          aws: S.optional(__S(180, __c22, 4)),
-          azure: S.optional(__S(181, __c22, 5)),
-          gcp: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({
-        identifier: "DataLakeCloudProviderConfigOutput",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hostname: S.optional(S.String),
-          privateEndpoint: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpointHostname" });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          databases: S.optional(__S(176, __c22, 0)),
-          stores: S.optional(__S(186, __c23, 2)),
-        }),
-      ).annotate({ identifier: "DataLakeStorage" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProviderConfig: S.optional(__S(183, __c22, 7)),
-          dataProcessRegion: S.optional(__S(168, __c21, 0)),
-          groupId: S.optional(S.String),
-          hostnames: S.optional(__S(5, __c0, 5)),
-          name: S.optional(S.String),
-          privateEndpointHostnames: S.optional(__S(185, __c23, 1)),
-          state: S.optional(S.String),
-          storage: S.optional(__S(187, __c23, 3)),
-        }),
-      ).annotate({ identifier: "DataLakeTenantOutput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          cloudProvider: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          regionName: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupEncryptionAtRestPrivateEndpointRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          backingProviderName: S.String,
-          regionName: S.String,
-        }),
-      ).annotate({
-        identifier: "FlexProviderSettingsCreate20241113Input",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          databaseEdition: S.optional(S.String),
-          name: S.String,
-          providerSettings: __S(190, __c23, 6),
-          tags: S.optional(__S(45, __c5, 5)),
-          terminationProtectionEnabled: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/flexClusters",
-            code: 200,
-            accept: "application/vnd.atlas.2024-11-13+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupFlexClusterRequest",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "FlexBackupSettings20241113",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          standard: S.optional(S.String),
-          standardSrv: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FlexConnectionStrings20241113",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          backingProviderName: S.optional(S.String),
-          diskSizeGB: S.optional(S.Number),
-          providerName: S.optional(S.String),
-          regionName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FlexProviderSettings20241113",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          backupSettings: S.optional(__S(192, __c24, 0)),
-          clusterType: S.optional(S.String),
-          connectionStrings: S.optional(__S(193, __c24, 1)),
-          createDate: S.optional(S.String),
-          databaseEdition: S.optional(S.String),
-          groupId: S.optional(S.String),
-          id: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-          mongoDBVersion: S.optional(S.String),
-          name: S.optional(S.String),
-          providerSettings: __S(194, __c24, 2),
-          stateName: S.optional(S.String),
-          tags: S.optional(__S(45, __c5, 5)),
-          terminationProtectionEnabled: S.optional(S.Boolean),
-          versionReleaseSystem: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FlexClusterDescription20241113",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          snapshotId: S.String,
-          targetDeploymentItemName: S.String,
-          targetProjectId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs",
-            code: 200,
-            accept: "application/vnd.atlas.2024-11-13+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupFlexClusterBackupRestoreJobRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          deliveryType: S.optional(S.String),
-          expirationDate: S.optional(S.String),
-          id: S.optional(S.String),
-          instanceName: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-          projectId: S.optional(S.String),
-          restoreFinishedDate: S.optional(S.String),
-          restoreScheduledDate: S.optional(S.String),
-          snapshotFinishedDate: S.optional(S.String),
-          snapshotId: S.optional(S.String),
-          snapshotUrl: S.optional(S.String),
-          status: S.optional(S.String),
-          targetDeploymentItemName: S.optional(S.String),
-          targetProjectId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FlexBackupRestoreJob20241113",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          integrationType: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          includeCount: S.optional(S.Boolean.pipe(T.Query())),
-          itemsPerPage: S.optional(S.Number.pipe(T.Query())),
-          pageNum: S.optional(S.Number.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          id: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupIntegrationRequest",
-      });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(199, __c24, 7),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PaginatedIntegrationViewOutput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          clusterName: S.String,
-          groupId: S.String,
-          hostnameSchemaType: S.String,
-          privateLinkId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Destination" });
-    case 2:
-      return S.Array(__S(117, __c14, 5));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: __S(202, __c25, 2),
-        }),
-      ).annotate({ identifier: "ShardKeys" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          collection: S.String,
-          database: S.String,
-          shardCollection: __S(203, __c25, 3),
-        }),
-      ).annotate({ identifier: "ShardEntry" });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createSupportingIndexes: S.Boolean,
-          shardingEntries: __S(205, __c25, 5),
-        }),
-      ).annotate({ identifier: "ShardingRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          caCertificatePath: S.optional(S.NullOr(S.String)),
-          clusterName: S.String,
-          groupId: S.String,
-          managedAuthentication: S.Boolean,
-          password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          ssl: S.Boolean,
-          username: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Source" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          destination: __S(201, __c25, 1),
-          dropDestinationData: S.optional(S.Boolean),
-          migrationHosts: __S(5, __c0, 5),
-          sharding: S.optional(__S(206, __c25, 6)),
-          source: __S(207, __c25, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/liveMigrations",
-            code: 200,
-            accept: "application/vnd.atlas.2024-05-30+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupLiveMigrationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          lagTimeSeconds: S.optional(S.NullOr(S.Number)),
-          migrationHosts: S.optional(__S(5, __c0, 5)),
-          readyForCutover: S.optional(S.Boolean),
-          status: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "LiveMigrationResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          logTypes: __S(23, __c2, 7),
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/logIntegrations",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupLogIntegrationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cidrBlock: S.optional(S.NullOr(S.String)),
-          ipAddress: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ServiceAccountIPAccessListEntryInput",
-      });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          ipAccessList: S.optional(__S(212, __c26, 4)),
-          mcpConfigName: S.String,
-          roles: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupMcpConfigRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cidrBlock: S.optional(S.NullOr(S.String)),
-          createdAt: S.optional(S.String),
-          ipAddress: S.optional(S.NullOr(S.String)),
-          lastUsedAddress: S.optional(S.NullOr(S.String)),
-          lastUsedAt: S.optional(S.NullOr(S.String)),
-          requestCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ServiceAccountIPAccessListEntry",
-      });
-    case 7:
-      return S.Array(__S(214, __c26, 6));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-          egressClientId: S.optional(S.String),
-          ipAccessList: S.optional(__S(215, __c26, 7)),
-          mcpConfigId: S.optional(S.String),
-          mcpConfigName: S.optional(S.NullOr(S.String)),
-          roles: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "GroupMcpConfigResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          mcpConfigId: S.String.pipe(T.Label()),
-          secretExpiresAfterHours: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupMcpConfigSecretRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String,
-          expiresAt: S.String,
-          id: S.String,
-          lastUsedAt: S.optional(S.NullOr(S.String)),
-          maskedSecretValue: S.optional(S.String),
-          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({ identifier: "ServiceAccountSecret" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "Header" });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          clientAuthMethod: S.String,
-          clientId: S.String,
-          clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          scopes: S.optional(__S(5, __c0, 5)),
-          tokenEndpoint: S.String,
-          tokenRequestParams: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({ identifier: "OAuthConfigRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          aggregationTemporality: S.String,
-          authType: S.String,
-          endpoint: S.String,
-          headers: S.optional(__S(220, __c27, 4)),
-          integrationType: S.String,
-          metricSelection: __S(23, __c2, 7),
-          oauth: S.optional(__S(221, __c27, 5)),
-          providerType: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/metricIntegrations",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupMetricIntegrationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          algorithm: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          jwksUri: S.optional(S.String),
-          kid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OAuthSigningKeyInfo" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clientAuthMethod: S.String,
-          clientId: S.String,
-          scopes: S.optional(__S(5, __c0, 5)),
-          signingKeyInfo: S.optional(__S(223, __c27, 7)),
-          tokenEndpoint: S.String,
-          tokenRequestParams: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({ identifier: "OAuthConfigResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          aggregationTemporality: S.String,
-          authType: S.String,
-          endpoint: S.String,
-          headersRedacted: S.optional(__S(220, __c27, 4)),
-          integrationType: S.String,
-          metricIntegrationId: S.String,
-          metricSelection: __S(23, __c2, 7),
-          oauth: S.optional(__S(224, __c28, 0)),
-          providerType: S.String,
-        }),
-      ).annotate({
-        identifier: "MetricIntegrationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          containerId: S.String,
-          providerName: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/peers",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "CreateGroupPeerRequest" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          portMappingEnabled: S.optional(S.Boolean),
-          providerName: S.String,
-          region: S.String,
-          supportedRemoteRegions: S.optional(S.NullOr(__S(227, __c28, 3))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupPrivateEndpointEndpointServiceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.String,
-          errorMessage: S.optional(S.String),
-          id: S.optional(S.String),
-          regionName: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EndpointService" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          cloudProvider: S.String.pipe(T.Label()),
-          endpointServiceId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupPrivateEndpointEndpointServiceEndpointRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.String,
-          deleteRequested: S.optional(S.Boolean),
-          errorMessage: S.optional(S.String),
-          regionName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateLinkEndpoint" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          azureLinkId: S.optional(S.String),
-          comment: S.optional(S.String),
-          customerEndpointDNSName: S.optional(S.String),
-          customerEndpointIPAddress: S.optional(S.String),
-          endpointId: S.String,
-          errorMessage: S.optional(S.String),
-          provider: S.optional(S.String),
-          region: S.optional(S.String),
-          status: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupPrivateNetworkSettingEndpointIdRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          azureLinkId: S.optional(S.String),
-          comment: S.optional(S.String),
-          customerEndpointDNSName: S.optional(S.String),
-          customerEndpointIPAddress: S.optional(S.String),
-          endpointId: S.String,
-          errorMessage: S.optional(S.String),
-          provider: S.optional(S.String),
-          region: S.optional(S.String),
-          status: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateNetworkEndpointIdEntry",
-      });
-    case 2:
-      return S.Array(__S(233, __c29, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(234, __c29, 2),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PaginatedPrivateNetworkEndpointIdEntryView",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          description: S.String,
-          name: S.String,
-          roles: __S(5, __c0, 5),
-          secretExpiresAfterHours: S.optional(S.NullOr(S.Number)),
-          withoutInitialSecret: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/serviceAccounts",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupServiceAccountRequest",
-      });
-    case 5:
-      return S.Array(__S(218, __c27, 2));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          roles: S.optional(__S(5, __c0, 5)),
-          secrets: S.optional(__S(237, __c29, 5)),
-          systemManaged: S.Boolean,
-        }),
-      ).annotate({ identifier: "GroupServiceAccount" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clientId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          includeCount: S.optional(S.Boolean.pipe(T.Query())),
-          itemsPerPage: S.optional(S.Number.pipe(T.Query())),
-          pageNum: S.optional(S.Number.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          body: __S(212, __c26, 4).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupServiceAccountAccessListRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(215, __c26, 7),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PaginatedServiceAccountIPAccessEntryView",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clientId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          secretExpiresAfterHours: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupServiceAccountSecretRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          tenantName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.optional(S.String),
-          region: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections",
-            code: 200,
-            accept: "application/vnd.atlas.2023-02-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupStreamConnectionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          tenantName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.optional(S.String),
-          region: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupStreamConnectionFailoverConnectionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          arn: S.optional(S.String),
-          authenticationScheme: S.optional(S.String),
-          azureResourceIds: S.optional(__S(227, __c28, 3)),
-          dnsDomain: S.optional(S.String),
-          dnsSubDomain: S.optional(__S(5, __c0, 5)),
-          gcpConnectionIds: S.optional(__S(227, __c28, 3)),
-          gcpServiceAttachmentUris: S.optional(__S(227, __c28, 3)),
-          provider: S.String,
-          region: S.optional(S.String),
-          serviceEndpointId: S.optional(S.String),
-          vendor: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections",
-            code: 200,
-            accept: "application/vnd.atlas.2023-02-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupStreamPrivateLinkConnectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          arn: S.optional(S.String),
-          authenticationScheme: S.optional(S.String),
-          azureResourceIds: S.optional(__S(5, __c0, 5)),
-          dnsDomain: S.optional(S.String),
-          dnsSubDomain: S.optional(__S(5, __c0, 5)),
-          errorMessage: S.optional(S.String),
-          gcpConnectionIds: S.optional(__S(5, __c0, 5)),
-          gcpServiceAttachmentUris: S.optional(__S(5, __c0, 5)),
-          interfaceEndpointId: S.optional(S.String),
-          interfaceEndpointName: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-          provider: S.String,
-          providerAccountId: S.optional(S.String),
-          region: S.optional(S.String),
-          serviceEndpointId: S.optional(S.String),
-          state: S.optional(S.String),
-          vendor: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StreamsPrivateLinkConnection",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          maxTier: S.optional(S.NullOr(S.String)),
-          minTier: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "StreamsAutoscalingInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          coll: S.optional(S.String),
-          connectionName: S.optional(S.String),
-          db: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StreamsDLQInput" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          autoscaling: S.optional(S.NullOr(__S(246, __c30, 6))),
-          dlq: S.optional(__S(247, __c30, 7)),
-        }),
-      ).annotate({ identifier: "StreamsOptionsInput" });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(249, __c31, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          tenantName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          failoverEnabled: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          options: S.optional(__S(248, __c31, 0)),
-          pipeline: S.optional(__S(250, __c31, 2)),
-          tier: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor",
-            code: 200,
-            accept: "application/vnd.atlas.2024-05-30+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupStreamProcessorRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          links: S.optional(__S(4, __c0, 4)),
-          maxTier: S.optional(S.NullOr(S.String)),
-          minTier: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "StreamsAutoscaling" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          coll: S.optional(S.String),
-          connectionName: S.optional(S.String),
-          db: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "StreamsDLQ" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          autoscaling: S.optional(S.NullOr(__S(252, __c31, 4))),
-          dlq: S.optional(__S(253, __c31, 5)),
-          links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "StreamsOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          effectiveTier: S.String,
-          failoverEnabled: S.optional(S.Boolean),
-          links: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          options: S.optional(__S(254, __c31, 6)),
-          pipeline: S.optional(__S(250, __c31, 2)),
-          tier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StreamsProcessor" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.String,
-          region: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "StreamsDataProcessRegionInput",
-      });
-    case 1:
-      return S.Array(__S(256, __c32, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          solar: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "StreamsSampleConnectionsInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          maxTierSize: S.optional(S.String),
-          tier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StreamConfigInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          dataProcessRegion: S.optional(__S(256, __c32, 0)),
-          failoverRegions: S.optional(__S(257, __c32, 1)),
-          name: S.optional(S.String),
-          sampleConnections: S.optional(__S(258, __c32, 2)),
-          streamConfig: S.optional(S.NullOr(__S(259, __c32, 3))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/streams",
-            code: 200,
-            accept: "application/vnd.atlas.2023-02-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupStreamWorkspaceRequest",
-      });
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.String,
-          links: S.optional(__S(4, __c0, 4)),
-          region: S.Unknown,
-        }),
-      ).annotate({ identifier: "StreamsDataProcessRegion" });
-    case 7:
-      return S.Array(__S(262, __c32, 6));
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          solar: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "StreamsSampleConnections" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          maxTierSize: S.optional(S.String),
-          tier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StreamConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.optional(S.String),
-          connections: S.optional(__S(261, __c32, 5)),
-          dataProcessRegion: S.optional(__S(262, __c32, 6)),
-          failoverRegions: S.optional(__S(263, __c32, 7)),
-          groupId: S.optional(S.String),
-          hostnames: S.optional(__S(5, __c0, 5)),
-          links: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          sampleConnections: S.optional(__S(264, __c33, 0)),
-          streamConfig: S.optional(S.NullOr(__S(265, __c33, 1))),
-        }),
-      ).annotate({ identifier: "StreamsTenantOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          desc: S.String,
-          roles: __S(38, __c4, 6),
-        }),
-      ).annotate({
-        identifier: "CreateAtlasOrganizationApiKey",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-          name: S.String,
-          roles: __S(23, __c2, 7),
-          secretExpiresAfterHours: S.optional(S.NullOr(S.Number)),
-          withoutInitialSecret: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "OrgServiceAccountRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          apiKey: S.optional(__S(267, __c33, 3)),
-          federationSettingsId: S.optional(S.String),
-          name: S.String,
-          orgOwnerId: S.optional(S.String),
-          serviceAccount: S.optional(__S(268, __c33, 4)),
-          skipDefaultAlertsSettings: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "CreateOrgRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          isDeleted: S.optional(S.Boolean),
-          links: S.optional(__S(4, __c0, 4)),
-          name: S.String,
-          skipDefaultAlertsSettings: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AtlasOrganization" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          roles: S.optional(__S(23, __c2, 7)),
-          secrets: S.optional(__S(237, __c29, 5)),
-          systemManaged: S.Boolean,
-        }),
-      ).annotate({ identifier: "OrgServiceAccount" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiKey: S.optional(__S(62, __c7, 6)),
-          federationSettingsId: S.optional(S.String),
-          orgOwnerId: S.optional(S.String),
-          organization: S.optional(__S(270, __c33, 6)),
-          serviceAccount: S.optional(__S(271, __c33, 7)),
-          skipDefaultAlertsSettings: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          desc: S.String,
-          roles: __S(38, __c4, 6),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/apiKeys",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "CreateOrgApiKeyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cidrBlock: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAccessListRequest" });
-    case 3:
-      return S.Array(__S(274, __c34, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          apiUserId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          includeCount: S.optional(S.Boolean.pipe(T.Query())),
-          itemsPerPage: S.optional(S.Number.pipe(T.Query())),
-          pageNum: S.optional(S.Number.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          body: __S(275, __c34, 3).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrgApiKeyAccessListEntryRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cidrBlock: S.optional(S.String),
-          count: S.optional(S.Number),
-          created: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          lastUsed: S.optional(S.String),
-          lastUsedAddress: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "UserAccessListResponse" });
-    case 6:
-      return S.Array(__S(277, __c34, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(278, __c34, 6),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PaginatedApiUserAccessListResponseView",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          clusters: S.optional(__S(5, __c0, 5)),
-          endDate: S.String,
-          groupBy: S.optional(S.String),
-          includePartialMatches: S.optional(S.Boolean),
-          organizations: S.optional(__S(227, __c28, 3)),
-          projects: S.optional(__S(5, __c0, 5)),
-          services: S.optional(__S(23, __c2, 7)),
-          startDate: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrgBillingCostExplorerUsageProcessRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          invoiceId: S.String.pipe(T.Label()),
-          formatSpecVersion: S.optional(S.String),
-          reportFormat: S.String,
-          reportType: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/reports",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrgInvoiceReportRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          downloadUrl: S.optional(S.String),
-          expiresAt: S.optional(S.String),
-          failureReason: S.optional(S.String),
-          formatSpecVersion: S.optional(S.String),
-          invoiceId: S.String,
-          reportFormat: S.String,
-          reportId: S.String,
-          reportType: S.String,
-          state: S.String,
-        }),
-      ).annotate({ identifier: "InvoiceReportResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          accessListIps: S.optional(__S(5, __c0, 5)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrgLiveMigrationLinkTokenRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          linkToken: S.String,
-        }),
-      ).annotate({ identifier: "TargetOrg" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          logTypes: __S(23, __c2, 7),
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/logIntegrations",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrgLogIntegrationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          logTypes: __S(23, __c2, 7),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrgLogIntegrationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          ipAccessList: S.optional(__S(212, __c26, 4)),
-          mcpConfigName: S.String,
-          roles: __S(23, __c2, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrgMcpConfigRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-          egressClientId: S.optional(S.String),
-          ipAccessList: S.optional(__S(215, __c26, 7)),
-          mcpConfigId: S.optional(S.String),
-          mcpConfigName: S.optional(S.NullOr(S.String)),
-          roles: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "OrgMcpConfigResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          mcpConfigId: S.String.pipe(T.Label()),
-          secretExpiresAfterHours: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrgMcpConfigSecretRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.String,
-        }),
-      ).annotate({ identifier: "ApiAtlasPolicyCreateView" });
-    case 3:
-      return S.Array(__S(290, __c36, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          policies: __S(291, __c36, 3),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/resourcePolicies",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrgResourcePolicyRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApiAtlasUserMetadataView" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApiAtlasPolicyView" });
-    case 7:
-      return S.Array(__S(294, __c36, 6));
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createdByUser: S.optional(__S(293, __c36, 5)),
-          createdDate: S.optional(S.String),
-          description: S.optional(S.String),
-          id: S.optional(S.String),
-          lastUpdatedByUser: S.optional(__S(293, __c36, 5)),
-          lastUpdatedDate: S.optional(S.String),
-          name: S.optional(S.String),
-          orgId: S.optional(S.String),
-          policies: S.optional(__S(295, __c36, 7)),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApiAtlasResourcePolicyView",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          description: S.String,
-          name: S.String,
-          roles: __S(23, __c2, 7),
-          secretExpiresAfterHours: S.optional(S.NullOr(S.Number)),
-          withoutInitialSecret: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/serviceAccounts",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrgServiceAccountRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          clientId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          includeCount: S.optional(S.Boolean.pipe(T.Query())),
-          itemsPerPage: S.optional(S.Number.pipe(T.Query())),
-          pageNum: S.optional(S.Number.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          body: __S(212, __c26, 4).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrgServiceAccountAccessListRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          clientId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          secretExpiresAfterHours: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrgServiceAccountSecretRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String,
-          usernames: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/teams",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "CreateOrgTeamRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          links: S.optional(__S(14, __c1, 6)),
-          name: S.String,
-          usernames: __S(5, __c0, 5),
-        }),
-      ).annotate({ identifier: "Team" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupRoleAssignments: S.optional(__S(22, __c2, 6)),
-          orgRoles: __S(23, __c2, 7),
-        }),
-      ).annotate({ identifier: "OrgUserRolesRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          roles: __S(302, __c37, 6),
-          teamIds: S.optional(__S(5, __c0, 5)),
-          username: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/orgs/{orgId}/users",
-            code: 200,
-            accept: "application/vnd.atlas.2025-02-19+json",
-          }),
-        ),
-      ).annotate({ identifier: "CreateOrgUserRequest" });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          liveMigrationId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "CutoverGroupLiveMigrationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          cloudProvider: S.String.pipe(T.Label()),
-          roleId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeauthorizeGroupCloudProviderAccessRoleRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/maintenanceWindow/defer",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeferGroupMaintenanceWindowRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          federationSettingsId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFederationSettingRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteFederationSettingResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          federationSettingsId: S.String.pipe(T.Label()),
-          orgId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFederationSettingConnectedOrgConfigRoleMappingRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteFederationSettingConnectedOrgConfigRoleMappingResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          federationSettingsId: S.String.pipe(T.Label()),
-          identityProviderId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-11-15+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFederationSettingIdentityProviderRequest",
-      });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteGroupRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          entryValue: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupAccessListEntryRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          apiKeyId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupAiModelApiKeyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          alertConfigId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupAlertConfigRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          exportBucketId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupBackupExportBucketRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          cloudProvider: S.String.pipe(T.Label()),
-          endpointId: S.String.pipe(T.Label()),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-11-13+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupBackupPrivateEndpointRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          retainBackups: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-02-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupClusterRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupClusterBackupScheduleRequest",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.optional(S.String),
-          copyPolicyItems: S.optional(__S(320, __c40, 0)),
-          frequencies: S.optional(__S(23, __c2, 7)),
-          lastNumberOfSnapshots: S.optional(S.Number),
-          regionName: S.optional(S.String),
-          shouldCopyOplogs: S.optional(S.Boolean),
-          zoneId: S.String,
-        }),
-      ).annotate({
-        identifier: "DiskBackupCopySetting20240805",
-      });
-    case 2:
-      return S.Array(__S(321, __c40, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          exportBucketId: S.optional(S.String),
-          frequencyType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutoExportPolicyView" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          frequencyType: S.optional(S.String),
-          retentionDays: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ExtraRetentionSetting" });
-    case 5:
-      return S.Array(__S(324, __c40, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          frequencyInterval: S.Number,
-          frequencyType: S.String,
-          id: S.optional(S.String),
-          retentionUnit: S.String,
-          retentionValue: S.Number,
-        }),
-      ).annotate({ identifier: "DiskBackupApiPolicyItem" });
-    case 7:
-      return S.Array(__S(326, __c40, 6));
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          policyItems: __S(327, __c40, 7),
-        }),
-      ).annotate({
-        identifier: "AdvancedDiskBackupSnapshotSchedulePolicy",
-      });
-    case 1:
-      return S.Array(__S(328, __c41, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          autoCopySettingsEnabled: S.optional(S.Boolean),
-          autoExportEnabled: S.optional(S.Boolean),
-          clusterId: S.optional(S.String),
-          clusterName: S.optional(S.String),
-          copyPolicyItemsEnabled: S.optional(S.Boolean),
-          copySettings: S.optional(__S(322, __c40, 2)),
-          export: S.optional(__S(323, __c40, 3)),
-          extraRetentionSettings: S.optional(__S(325, __c40, 5)),
-          links: S.optional(__S(4, __c0, 4)),
-          nextSnapshot: S.optional(S.String),
-          policies: __S(329, __c41, 1),
-          referenceHourOfDay: S.optional(S.Number),
-          referenceMinuteOfHour: S.optional(S.Number),
-          restoreWindowDays: S.optional(S.Number),
-          useOrgAndGroupNamesInExportPrefix: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DiskBackupSnapshotSchedule20240805Output",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          snapshotId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupClusterBackupSnapshotRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          snapshotId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupClusterBackupSnapshotShardedClusterRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupClusterGlobalWriteCustomZoneMappingRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          db: S.optional(S.String.pipe(T.Query())),
-          collection: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupClusterGlobalWriteManagedNamespacesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          archiveId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupClusterOnlineArchiveRequest",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          simulationId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations/{simulationId}",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupClusterOverloadSimulationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment",
-            code: 200,
-            accept: "application/vnd.atlas.2024-05-30+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupClusterSearchDeploymentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          indexId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-05-30+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupClusterSearchIndexRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          collectionName: S.String.pipe(T.Label()),
-          indexName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-05-30+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupClusterSearchIndexByNameRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          containerId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/containers/{containerId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupContainerRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          roleName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupCustomDbRoleRoleRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupDatabaseUserRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          tenantName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupDataFederationRequest",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          tenantName: S.String.pipe(T.Label()),
-          limitName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupDataFederationLimitRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-11-13+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupFlexClusterRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          integrationType: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupIntegrationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          limitName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/limits/{limitName}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteGroupLimitRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/logIntegrations/{id}",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupLogIntegrationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          mcpConfigId: S.String.pipe(T.Label()),
-          cascading: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupMcpConfigRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          mcpConfigId: S.String.pipe(T.Label()),
-          secretId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupMcpConfigSecretRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          metricIntegrationId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/metricIntegrations/{metricIntegrationId}",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupMetricIntegrationRequest",
-      });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          peerId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/peers/{peerId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteGroupPeerRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          cloudProvider: S.String.pipe(T.Label()),
-          endpointServiceId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupPrivateEndpointEndpointServiceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          cloudProvider: S.String.pipe(T.Label()),
-          endpointServiceId: S.String.pipe(T.Label()),
-          endpointId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupPrivateEndpointEndpointServiceEndpointRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          endpointId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupPrivateNetworkSettingEndpointIdRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clientId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupServiceAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clientId: S.String.pipe(T.Label()),
-          ipAddress: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupServiceAccountAccessListEntryRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clientId: S.String.pipe(T.Label()),
-          secretId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupServiceAccountSecretRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          tenantName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-02-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupStreamConnectionRequest",
-      });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          tenantName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-          failoverConnectionId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId}",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupStreamConnectionFailoverConnectionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          connectionId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-02-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupStreamPrivateLinkConnectionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          tenantName: S.String.pipe(T.Label()),
-          processorName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-05-30+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupStreamProcessorRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-02-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupStreamVpcPeeringConnectionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          tenantName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-02-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupStreamWorkspaceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGroupUserSecurityLdapUserToDnMappingRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/orgs/{orgId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteOrgRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          apiUserId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteOrgApiKeyRequest" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          apiUserId: S.String.pipe(T.Label()),
-          ipAddress: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrgApiKeyAccessListEntryRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrgLiveMigrationLinkTokensRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          logIntegrationId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrgLogIntegrationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          mcpConfigId: S.String.pipe(T.Label()),
-          cascading: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrgMcpConfigRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          mcpConfigId: S.String.pipe(T.Label()),
-          secretId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets/{secretId}",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrgMcpConfigSecretRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          resourcePolicyId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrgResourcePolicyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          clientId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrgServiceAccountRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          clientId: S.String.pipe(T.Label()),
-          ipAddress: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrgServiceAccountAccessListEntryRequest",
-      });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          clientId: S.String.pipe(T.Label()),
-          secretId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId}",
-            code: 200,
-            accept: "application/vnd.atlas.2024-08-05+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrgServiceAccountSecretRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          orgId: S.String.pipe(T.Label()),
-          teamId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/orgs/{orgId}/teams/{teamId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteOrgTeamRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy",
-            code: 200,
-            accept: "application/vnd.atlas.2024-11-13+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableGroupBackupCompliancePolicyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/managedSlowMs/disable",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableGroupManagedSlowMsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/userSecurity/customerX509",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableGroupUserSecurityCustomerX509Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          hostName: S.String.pipe(T.Label()),
-          logName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          endDate: S.optional(S.Number.pipe(T.Query())),
-          startDate: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz",
-            code: 200,
-            accept: "application/vnd.atlas.2023-02-01+gzip",
-          }),
-        ),
-      ).annotate({
-        identifier: "DownloadGroupClusterLogRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          startDate: S.optional(S.Number.pipe(T.Query())),
-          endDate: S.optional(S.Number.pipe(T.Query())),
-          archiveOnly: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+gzip",
-          }),
-        ),
-      ).annotate({
-        identifier: "DownloadGroupClusterOnlineArchiveQueryLogsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          tenantName: S.String.pipe(T.Label()),
-          endDate: S.optional(S.Number.pipe(T.Query())),
-          startDate: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+gzip",
-          }),
-        ),
-      ).annotate({
-        identifier: "DownloadGroupDataFederationQueryLogsRequest",
-      });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          snapshotId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download",
-            code: 200,
-            accept: "application/vnd.atlas.2024-11-13+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "DownloadGroupFlexClusterBackupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          tenantName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          endDate: S.optional(S.Number.pipe(T.Query())),
-          startDate: S.optional(S.Number.pipe(T.Query())),
-          spName: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs",
-            code: 200,
-            accept: "application/vnd.atlas.2023-02-01+gzip",
-          }),
-        ),
-      ).annotate({
-        identifier: "DownloadGroupStreamAuditLogsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          tenantName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          endDate: S.optional(S.Number.pipe(T.Query())),
-          startDate: S.optional(S.Number.pipe(T.Query())),
-          spName: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}:downloadOperationalLogs",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+gzip",
-          }),
-        ),
-      ).annotate({
-        identifier: "DownloadGroupStreamOperationalLogsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/atlas/v2/groups/{groupId}/managedSlowMs/enable",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableGroupManagedSlowMsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "EndGroupClusterOutageSimulationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.optional(S.String),
-          regionName: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AtlasClusterOutageSimulationOutageFilter",
-      });
-    case 6:
-      return S.Array(__S(389, __c48, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clusterName: S.optional(S.String),
-          expirationDate: S.optional(S.String),
-          groupId: S.optional(S.String),
-          id: S.optional(S.String),
-          outageFilters: S.optional(__S(390, __c48, 6)),
-          startRequestDate: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterOutageSimulation" });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          federationSettingsId: S.String.pipe(T.Label()),
-          orgId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFederationSettingConnectedOrgConfigRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          federationSettingsId: S.String.pipe(T.Label()),
-          orgId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFederationSettingConnectedOrgConfigRoleMappingRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          federationSettingsId: S.String.pipe(T.Label()),
-          identityProviderId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-11-15+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFederationSettingIdentityProviderRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          federationSettingsId: S.String.pipe(T.Label()),
-          identityProviderId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFederationSettingIdentityProviderMetadataRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/groups/{groupId}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({ identifier: "GetGroupRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          entryValue: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGroupAccessListEntryRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          entryValue: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status",
-            code: 200,
-            accept: "application/vnd.atlas.2023-01-01+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGroupAccessListStatusRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          STATUS: S.String,
-        }),
-      ).annotate({
-        identifier: "NetworkPermissionEntryStatus",
-      });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-          eventType: S.optional(__S(400, __c50, 0).pipe(T.Query())),
-          maxDate: S.optional(S.String.pipe(T.Query())),
-          minDate: S.optional(S.String.pipe(T.Query())),
-          clusterName: S.optional(__S(5, __c0, 5).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/groups/{groupId}/activityFeed",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGroupActivityFeedRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          link: S.String,
-          links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ActivityFeedLinkResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          cloud: S.String.pipe(T.Label()),
-          geography: S.String.pipe(T.Label()),
-          modelGroupName: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cloud: S.optional(S.String),
-          endpoint: S.optional(S.String),
-          geography: S.optional(S.String),
-          modelGroupName: S.optional(S.String),
-          modelNames: S.optional(__S(5, __c0, 5)),
-          requestsPerMinuteLimit: S.optional(S.Number),
-          tokensPerMinuteLimit: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AiModelRateLimitResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          apiKeyId: S.String.pipe(T.Label()),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGroupAiModelApiKeyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String.pipe(T.Label()),
-          itemsPerPage: S.optional(S.Number.pipe(T.Query())),
-          pageNum: S.optional(S.Number.pipe(T.Query())),
-          envelope: S.optional(S.Boolean.pipe(T.Query())),
-          pretty: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/atlas/v2/groups/{groupId}/aiModelApiRateLimits",
-            code: 200,
-            accept: "application/vnd.atlas.2025-03-12+json",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGroupAiModelApiRateLimitsRequest",
-      });
-    case 7:
-      return S.Array(__S(404, __c50, 4));
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(407, __c50, 7),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PaginatedAtlasAiModelRateLimitsResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45520,11 +42069,15 @@ function __c51(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupAlertRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetGroupAlertResponse",
       });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45545,17 +42098,25 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetGroupAlertAlertConfigsRequest",
       });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(412, __c51, 4),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(2496, __c78, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedAlertConfigView" });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45573,7 +42134,11 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetGroupAlertConfigRequest",
       });
-    case 7:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45596,19 +42161,23 @@ function __c51(j: number): any {
       });
   }
 }
-function __c52(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(416, __c52, 0),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(2592, __c81, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedAlertView" });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45623,7 +42192,11 @@ function __c52(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupAuditLogRequest" });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auditAuthorizationSuccess: S.optional(S.Boolean),
@@ -45632,7 +42205,11 @@ function __c52(j: number): any {
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AuditLog" });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45649,13 +42226,21 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetGroupAwsCustomDnsRequest",
       });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
         }),
       ).annotate({ identifier: "AWSCustomDNSEnabledView" });
-    case 6:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45672,7 +42257,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetGroupBackupCompliancePolicyRequest",
       });
-    case 7:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           frequencyInterval: S.Number,
@@ -45684,13 +42273,9 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "BackupComplianceOnDemandPolicyItem",
       });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(423, __c52, 7));
     case 1:
+      return S.Array(__S(2784, __c87, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           authorizedEmail: S.String,
@@ -45699,11 +42284,11 @@ function __c53(j: number): any {
           copyProtectionEnabled: S.optional(S.Boolean),
           deletable: S.optional(S.Boolean),
           encryptionAtRestEnabled: S.optional(S.Boolean),
-          onDemandPolicyItem: S.optional(__S(423, __c52, 7)),
+          onDemandPolicyItem: S.optional(__S(2784, __c87, 0)),
           pitEnabled: S.optional(S.Boolean),
           projectId: S.optional(S.String),
           restoreWindowDays: S.optional(S.Number),
-          scheduledPolicyItems: S.optional(__S(424, __c53, 0)),
+          scheduledPolicyItems: S.optional(__S(2785, __c87, 1)),
           state: S.optional(S.String),
           updatedDate: S.optional(S.String),
           updatedUser: S.optional(S.String),
@@ -45711,7 +42296,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "DataProtectionSettings20231001",
       });
-    case 2:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45728,7 +42317,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetGroupBackupExportBucketRequest",
       });
-    case 3:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45747,7 +42340,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetGroupBackupPrivateEndpointRequest",
       });
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupName: S.String.pipe(T.Label()),
@@ -45762,7 +42359,72 @@ function __c53(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupByNameRequest" });
-    case 5:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          projectOwnerId: S.optional(S.String.pipe(T.Query())),
+          name: S.String,
+          orgId: S.String,
+          regionUsageRestrictions: S.optional(S.String),
+          tags: S.optional(__S(3008, __c94, 0)),
+          withDefaultAlertsSettings: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "CreateGroupRequest" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2976, __c93, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clusterCount: S.Number,
+          created: S.String,
+          id: S.optional(S.String),
+          links: S.optional(__S(18880, __c590, 0)),
+          name: S.String,
+          orgId: S.String,
+          regionUsageRestrictions: S.optional(S.String),
+          tags: S.optional(__S(2944, __c92, 0)),
+          withDefaultAlertsSettings: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Group" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "ResourceTag" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2976, __c93, 0));
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45780,7 +42442,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetGroupCloudProviderAccessRequest",
       });
-    case 6:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45796,7 +42462,11 @@ function __c53(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupClusterRequest" });
-    case 7:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45816,16 +42486,20 @@ function __c53(j: number): any {
       });
   }
 }
-function __c54(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          adaptiveSettingsOverrides: S.optional(__S(117, __c14, 5)),
-          effectiveAdaptiveSettings: __S(117, __c14, 5),
+          adaptiveSettingsOverrides: S.optional(__S(10016, __c313, 0)),
+          effectiveAdaptiveSettings: __S(10016, __c313, 0),
         }),
       ).annotate({ identifier: "AdaptiveSettingsResponse" });
-    case 1:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45843,7 +42517,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterBackupExportRequest",
       });
-    case 2:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45862,7 +42540,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterBackupRestoreJobRequest",
       });
-    case 3:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45880,7 +42562,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterBackupScheduleRequest",
       });
-    case 4:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45899,20 +42585,24 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterBackupSnapshotRequest",
       });
-    case 5:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cloudProvider: S.optional(S.String),
-          copyRegions: S.optional(__S(5, __c0, 5)),
+          copyRegions: S.optional(__S(18336, __c573, 0)),
           createdAt: S.optional(S.String),
           description: S.optional(S.String),
           expiresAt: S.optional(S.String),
           frequencyType: S.optional(S.String),
           id: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           masterKeyUUID: S.optional(S.String),
           mongodVersion: S.optional(S.String),
-          policyItems: S.optional(__S(5, __c0, 5)),
+          policyItems: S.optional(__S(18336, __c573, 0)),
           replicaSetName: S.optional(S.String),
           snapshotType: S.optional(S.String),
           status: S.optional(S.String),
@@ -45920,7 +42610,11 @@ function __c54(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskBackupReplicaSet" });
-    case 6:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45940,10 +42634,14 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterBackupSnapshotDatabaseRequest",
       });
-    case 7:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           name: S.String,
         }),
       ).annotate({
@@ -45951,7 +42649,7 @@ function __c54(j: number): any {
       });
   }
 }
-function __c55(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45974,7 +42672,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterBackupSnapshotDatabaseCollectionRequest",
       });
-    case 1:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -45993,7 +42695,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterBackupSnapshotShardedClusterRequest",
       });
-    case 2:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cloudProvider: S.String,
@@ -46003,9 +42709,9 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DiskBackupShardedClusterSnapshotMember",
       });
-    case 3:
-      return S.Array(__S(442, __c55, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(3456, __c108, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           configServerType: S.optional(S.String),
@@ -46014,12 +42720,12 @@ function __c55(j: number): any {
           expiresAt: S.optional(S.String),
           frequencyType: S.optional(S.String),
           id: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           masterKeyUUID: S.optional(S.String),
-          members: S.optional(__S(443, __c55, 3)),
+          members: S.optional(__S(3457, __c108, 1)),
           mongodVersion: S.optional(S.String),
-          policyItems: S.optional(__S(5, __c0, 5)),
-          snapshotIds: S.optional(__S(5, __c0, 5)),
+          policyItems: S.optional(__S(18336, __c573, 0)),
+          snapshotIds: S.optional(__S(18336, __c573, 0)),
           snapshotType: S.optional(S.String),
           status: S.optional(S.String),
           storageSizeBytes: S.optional(S.Number),
@@ -46028,7 +42734,82 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DiskBackupShardedClusterSnapshot",
       });
-    case 5:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          awsSecurityGroup: S.optional(S.String),
+          cidrBlock: S.optional(S.String),
+          comment: S.optional(S.String),
+          deleteAfterDate: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkPermissionEntryInput",
+      });
+    case 1:
+      return S.Array(__S(3488, __c109, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          includeCount: S.optional(S.Boolean.pipe(T.Query())),
+          itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+          pageNum: S.optional(S.Number.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          body: __S(3489, __c109, 1).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/accessList",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupAccessListEntryRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          awsSecurityGroup: S.optional(S.String),
+          cidrBlock: S.optional(S.String),
+          comment: S.optional(S.String),
+          deleteAfterDate: S.optional(S.String),
+          groupId: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          links: S.optional(__S(18912, __c591, 0)),
+        }),
+      ).annotate({ identifier: "NetworkPermissionEntry" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3520, __c110, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(3552, __c111, 0),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PaginatedNetworkAccessView",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46047,7 +42828,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterCollectionRestoreJobRequest",
       });
-    case 6:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46067,25 +42852,25 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterCollectionRestoreJobCollectionRequest",
       });
-    case 7:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           errorMessage: S.optional(S.String),
-          failedIndexes: S.optional(__S(202, __c25, 2)),
+          failedIndexes: S.optional(__S(15584, __c487, 0)),
           state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ApiAtlasCollectionRestoreIndexStatus",
       });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           effectiveTargetNamespace: S.optional(S.String),
-          indexStatus: S.optional(__S(447, __c55, 7)),
+          indexStatus: S.optional(__S(3648, __c114, 0)),
           restoredDocuments: S.optional(S.Number),
           sourceNamespace: S.optional(S.String),
           state: S.optional(S.String),
@@ -46095,7 +42880,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ApiAtlasCollectionRestoreCollectionStateResponse",
       });
-    case 1:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46116,17 +42905,25 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterCollStatNamespacesRequest",
       });
-    case 2:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
           identifierId: S.optional(S.String),
-          rankedNamespaces: __S(5, __c0, 5),
+          rankedNamespaces: __S(18336, __c573, 0),
         }),
       ).annotate({
         identifier: "CollStatsRankedNamespacesView",
       });
-    case 3:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46144,7 +42941,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterGlobalWritesRequest",
       });
-    case 4:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46163,7 +42964,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterOnlineArchiveRequest",
       });
-    case 5:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46181,7 +42986,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterOutageSimulationRequest",
       });
-    case 6:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46200,7 +43009,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterOverloadSimulationRequest",
       });
-    case 7:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46220,15 +43033,15 @@ function __c56(j: number): any {
       });
   }
 }
-function __c57(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           changeStreamOptionsPreAndPostImagesExpireAfterSeconds: S.optional(S.Number),
           chunkMigrationConcurrency: S.optional(S.Number),
-          customOpensslCipherConfigTls12: S.optional(__S(68, __c8, 4)),
-          customOpensslCipherConfigTls13: S.optional(__S(68, __c8, 4)),
+          customOpensslCipherConfigTls12: S.optional(__S(7072, __c221, 0)),
+          customOpensslCipherConfigTls13: S.optional(__S(7072, __c221, 0)),
           defaultMaxTimeMS: S.optional(S.Number),
           defaultWriteConcern: S.optional(S.String),
           javascriptEnabled: S.optional(S.Boolean),
@@ -46245,7 +43058,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ClusterDescriptionProcessArgs20240805",
       });
-    case 1:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46264,7 +43081,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterQueryShapeRequest",
       });
-    case 2:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           command: S.optional(S.String),
@@ -46274,7 +43095,11 @@ function __c57(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "QueryShapeResponse" });
-    case 3:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46284,7 +43109,7 @@ function __c57(j: number): any {
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           since: S.optional(S.Number.pipe(T.Query())),
           until: S.optional(S.Number.pipe(T.Query())),
-          processIds: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          processIds: S.optional(__S(18336, __c573, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -46296,7 +43121,7 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterQueryShapeInsightDetailsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationName: S.optional(S.String),
@@ -46305,7 +43130,22 @@ function __c57(j: number): any {
           timestamp: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryShapeSeenMetadata" });
-    case 5:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          firstSeen: S.optional(__S(4001, __c125, 1)),
+          lastSeen: S.optional(__S(4001, __c125, 1)),
+          queryStats: S.optional(__S(4032, __c126, 0)),
+          queryStatsCollection: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "QueryStatsDetailsResponse",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           avgWorkingMillis: S.optional(S.Number),
@@ -46337,18 +43177,56 @@ function __c57(j: number): any {
           totalWorkingMillis: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryStatsSummary" });
-    case 6:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          firstSeen: S.optional(__S(460, __c57, 4)),
-          lastSeen: S.optional(__S(460, __c57, 4)),
-          queryStats: S.optional(__S(461, __c57, 5)),
-          queryStatsCollection: S.optional(S.Unknown),
-        }),
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          cloud: S.String,
+          geography: S.String,
+          name: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/aiModelApiKeys",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
       ).annotate({
-        identifier: "QueryStatsDetailsResponse",
+        identifier: "CreateGroupAiModelApiKeyRequest",
       });
-    case 7:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiKeyId: S.optional(S.String),
+          cloud: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          createdBy: S.optional(S.String),
+          endpoint: S.optional(S.String),
+          geography: S.optional(S.String),
+          groupId: S.optional(S.String),
+          lastUsedAt: S.optional(S.NullOr(S.String)),
+          maskedSecret: S.optional(S.String),
+          name: S.optional(S.String),
+          secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AiModelApiKeyResponse" });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46368,7 +43246,7 @@ function __c57(j: number): any {
       });
   }
 }
-function __c58(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46389,7 +43267,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterSearchIndexRequest",
       });
-    case 1:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46410,7 +43292,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterSearchIndexByNameRequest",
       });
-    case 2:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46428,14 +43314,18 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetGroupClusterStatusRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           changeStatus: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
         }),
       ).annotate({ identifier: "ClusterStatus" });
-    case 4:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46451,7 +43341,11 @@ function __c58(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupContainerRequest" });
-    case 5:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46469,15 +43363,23 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetGroupCustomDbRoleRoleRequest",
       });
-    case 6:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(__S(153, __c19, 1)),
-          inheritedRoles: S.optional(__S(155, __c19, 3)),
+          actions: S.optional(__S(12451, __c389, 3)),
+          inheritedRoles: S.optional(__S(12453, __c389, 5)),
           roleName: S.String,
         }),
       ).annotate({ identifier: "UserCustomDBRole" });
-    case 7:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46498,7 +43400,7 @@ function __c58(j: number): any {
       });
   }
 }
-function __c59(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46517,7 +43419,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetGroupDataFederationRequest",
       });
-    case 1:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46536,7 +43442,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetGroupDataFederationLimitRequest",
       });
-    case 2:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           currentUsage: S.optional(S.Number),
@@ -46551,7 +43461,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "DataFederationTenantQueryLimit",
       });
-    case 3:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46574,7 +43488,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetGroupDbAccessHistoryClusterRequest",
       });
-    case 4:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           authResult: S.optional(S.Boolean),
@@ -46588,15 +43506,49 @@ function __c59(j: number): any {
           username: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoDBAccessLogs" });
-    case 5:
-      return S.Array(__S(476, __c59, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(4512, __c141, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          accessLogs: S.optional(__S(477, __c59, 5)),
+          accessLogs: S.optional(__S(4513, __c141, 1)),
         }),
       ).annotate({ identifier: "MongoDBAccessLogsList" });
-    case 7:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/alertConfigs",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupAlertConfigRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateGroupAlertConfigResponse",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46621,7 +43573,7 @@ function __c59(j: number): any {
       });
   }
 }
-function __c60(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46640,7 +43592,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetGroupEncryptionAtRestRequest",
       });
-    case 1:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessKeyID: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -46653,7 +43609,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "AWSKMSConfigurationOutput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           azureEnvironment: S.optional(S.String),
@@ -46669,7 +43625,7 @@ function __c60(j: number): any {
           valid: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AzureKeyVaultOutput" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -46678,16 +43634,20 @@ function __c60(j: number): any {
           valid: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GoogleCloudKMSOutput" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          awsKms: S.optional(__S(481, __c60, 1)),
-          azureKeyVault: S.optional(__S(482, __c60, 2)),
+          awsKms: S.optional(__S(4672, __c146, 0)),
+          azureKeyVault: S.optional(__S(4673, __c146, 1)),
           enabledForSearchNodes: S.optional(S.Boolean),
-          googleCloudKms: S.optional(__S(483, __c60, 3)),
+          googleCloudKms: S.optional(__S(4674, __c146, 2)),
         }),
       ).annotate({ identifier: "EncryptionAtRestOutput" });
-    case 5:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46706,7 +43666,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetGroupEncryptionAtRestPrivateEndpointRequest",
       });
-    case 6:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46723,13 +43687,13 @@ function __c60(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupEventRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetGroupEventResponse",
       });
   }
 }
-function __c61(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46749,7 +43713,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetGroupFlexClusterRequest",
       });
-    case 1:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46768,7 +43736,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetGroupFlexClusterBackupRestoreJobRequest",
       });
-    case 2:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46786,13 +43758,17 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetGroupFlexClusterBackupSnapshotRequest",
       });
-    case 3:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expiration: S.optional(S.String),
           finishTime: S.optional(S.String),
           id: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           mongoDBVersion: S.optional(S.String),
           scheduledTime: S.optional(S.String),
           startTime: S.optional(S.String),
@@ -46801,7 +43777,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "FlexBackupSnapshot20241113",
       });
-    case 4:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46814,7 +43794,7 @@ function __c61(j: number): any {
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
-          metrics: __S(23, __c2, 7).pipe(T.Query()),
+          metrics: __S(16032, __c501, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -46826,32 +43806,40 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetGroupHostFtsMetricIndexMeasurementsRequest",
       });
-    case 5:
-      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
-    case 6:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.String),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MetricDataPoint" });
-    case 7:
-      return S.Array(__S(494, __c61, 6));
+    case 1:
+      return S.Array(__S(4928, __c154, 0));
   }
 }
-function __c62(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dataPoints: S.optional(__S(495, __c61, 7)),
+          dataPoints: S.optional(__S(4929, __c154, 1)),
           name: S.optional(S.String),
           units: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricsMeasurement" });
     case 1:
-      return S.Array(__S(496, __c62, 0));
-    case 2:
+      return S.Array(__S(4960, __c155, 0));
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           collectionName: S.optional(S.String),
@@ -46859,14 +43847,18 @@ function __c62(j: number): any {
           end: S.optional(S.String),
           granularity: S.optional(S.String),
           groupId: S.optional(S.String),
-          indexIds: S.optional(__S(493, __c61, 5)),
-          indexStatsMeasurements: S.optional(__S(497, __c62, 1)),
-          links: S.optional(__S(4, __c0, 4)),
+          indexIds: S.optional(__S(4992, __c156, 0)),
+          indexStatsMeasurements: S.optional(__S(4961, __c155, 1)),
+          links: S.optional(__S(18912, __c591, 0)),
           processId: S.optional(S.String),
           start: S.optional(S.String),
         }),
       ).annotate({ identifier: "MeasurementsIndexes" });
-    case 3:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46884,7 +43876,11 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "GetGroupIntegrationRequest",
       });
-    case 4:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46901,36 +43897,88 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "GetGroupIpAddressesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clusterName: S.optional(S.String),
-          futureInbound: S.optional(__S(5, __c0, 5)),
-          futureOutbound: S.optional(__S(5, __c0, 5)),
-          inbound: S.optional(__S(5, __c0, 5)),
-          outbound: S.optional(__S(5, __c0, 5)),
+          futureInbound: S.optional(__S(18336, __c573, 0)),
+          futureOutbound: S.optional(__S(18336, __c573, 0)),
+          inbound: S.optional(__S(18336, __c573, 0)),
+          outbound: S.optional(__S(18336, __c573, 0)),
         }),
       ).annotate({ identifier: "ClusterIPAddresses" });
-    case 6:
-      return S.Array(__S(501, __c62, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(5057, __c158, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          clusters: S.optional(__S(502, __c62, 6)),
+          clusters: S.optional(__S(5058, __c158, 2)),
         }),
       ).annotate({ identifier: "GroupService" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          services: S.optional(__S(5059, __c158, 3)),
+        }),
+      ).annotate({ identifier: "GroupIPAddresses" });
   }
 }
-function __c63(j: number): any {
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          desc: S.String,
+          roles: __S(18336, __c573, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/apiKeys",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "CreateGroupApiKeyRequest" });
+  }
+}
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          services: S.optional(__S(503, __c62, 7)),
+          orgId: S.optional(S.String),
+          roleName: S.optional(S.String),
         }),
-      ).annotate({ identifier: "GroupIPAddresses" });
+      ).annotate({
+        identifier: "CloudAccessRoleAssignment",
+      });
     case 1:
+      return S.Array(__S(5120, __c160, 0));
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          desc: S.optional(S.String),
+          id: S.optional(S.String),
+          links: S.optional(__S(18912, __c591, 0)),
+          privateKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          publicKey: S.optional(S.String),
+          roles: S.optional(__S(5121, __c160, 1)),
+        }),
+      ).annotate({ identifier: "ApiKeyUserDetails" });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46946,7 +43994,11 @@ function __c63(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupLimitRequest" });
-    case 2:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           currentUsage: S.optional(S.Number),
@@ -46956,7 +44008,11 @@ function __c63(j: number): any {
           value: S.Number,
         }),
       ).annotate({ identifier: "DataFederationLimit" });
-    case 3:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46974,7 +44030,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GetGroupLiveMigrationRequest",
       });
-    case 4:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -46991,7 +44051,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GetGroupLiveMigrationValidateStatusRequest",
       });
-    case 5:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _id: S.optional(S.String),
@@ -47001,7 +44065,11 @@ function __c63(j: number): any {
           status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "LiveImportValidation" });
-    case 6:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47019,7 +44087,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GetGroupLogIntegrationRequest",
       });
-    case 7:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47036,17 +44108,6 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GetGroupMaintenanceWindowRequest",
       });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          endHourOfDay: S.optional(S.Number),
-          startHourOfDay: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ProtectedHours" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -47055,13 +44116,28 @@ function __c64(j: number): any {
           effectiveWaveAssignment: S.optional(S.Number),
           hourOfDay: S.optional(S.Number),
           numberOfDeferrals: S.optional(S.Number),
-          protectedHours: S.optional(__S(512, __c64, 0)),
+          protectedHours: S.optional(__S(5408, __c169, 0)),
           startASAP: S.optional(S.Boolean),
           timeZoneId: S.optional(S.String),
           waveAssignment: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "GroupMaintenanceWindow" });
-    case 2:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endHourOfDay: S.optional(S.Number),
+          startHourOfDay: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ProtectedHours" });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47078,11 +44154,15 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetGroupManagedSlowMsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetGroupManagedSlowMsResponse",
       });
-    case 4:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47098,7 +44178,11 @@ function __c64(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupMcpConfigRequest" });
-    case 5:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47117,7 +44201,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetGroupMcpConfigSecretRequest",
       });
-    case 6:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47135,7 +44223,11 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetGroupMetricIntegrationRequest",
       });
-    case 7:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47157,33 +44249,70 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GetGroupMongoDbVersionsRequest",
       });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cloudProvider: S.optional(S.String),
           defaultStatus: S.optional(S.String),
           instanceSize: S.optional(S.Unknown),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "MdbAvailableVersion" });
-    case 1:
-      return S.Array(__S(520, __c65, 0));
     case 2:
+      return S.Array(__S(5569, __c174, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(521, __c65, 1),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(5570, __c174, 2),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedAvailableVersionView",
       });
-    case 3:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          cloudProvider: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/backup/exportBuckets",
+            code: 200,
+            accept: "application/vnd.atlas.2024-05-30+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupBackupExportBucketRequest",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          bucketName: S.String,
+          cloudProvider: S.String,
+          links: S.optional(__S(18912, __c591, 0)),
+        }),
+      ).annotate({
+        identifier: "DiskBackupSnapshotExportBucketResponse",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47199,7 +44328,11 @@ function __c65(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupPeerRequest" });
-    case 4:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47218,7 +44351,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetGroupPrivateEndpointEndpointServiceRequest",
       });
-    case 5:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47238,7 +44375,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetGroupPrivateEndpointEndpointServiceEndpointRequest",
       });
-    case 6:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47255,7 +44396,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetGroupPrivateEndpointRegionalModeRequest",
       });
-    case 7:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47275,7 +44420,7 @@ function __c65(j: number): any {
       });
   }
 }
-function __c66(j: number): any {
+function __c182(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47293,7 +44438,11 @@ function __c66(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupProcessRequest" });
-    case 1:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.String),
@@ -47301,7 +44450,7 @@ function __c66(j: number): any {
           hostname: S.optional(S.String),
           id: S.optional(S.String),
           lastPing: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           port: S.optional(S.Number),
           replicaSetName: S.optional(S.String),
           shardName: S.optional(S.String),
@@ -47310,7 +44459,11 @@ function __c66(j: number): any {
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiHostViewAtlas" });
-    case 2:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47330,7 +44483,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetGroupProcessCollStatNamespacesRequest",
       });
-    case 3:
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47349,14 +44506,22 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetGroupProcessDatabaseRequest",
       });
-    case 4:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           databaseName: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
         }),
       ).annotate({ identifier: "MesurementsDatabase" });
-    case 5:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47364,7 +44529,7 @@ function __c66(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          m: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          m: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
           granularity: S.String.pipe(T.Query()),
           period: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
@@ -47380,21 +44545,21 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetGroupProcessDatabaseMeasurementsRequest",
       });
-    case 6:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          dataPoints: S.optional(__S(495, __c61, 7)),
+          dataPoints: S.optional(__S(4929, __c154, 1)),
           name: S.optional(S.String),
           units: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricsMeasurementAtlas" });
-    case 7:
-      return S.Array(__S(534, __c66, 6));
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(6016, __c188, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           databaseName: S.optional(S.String),
@@ -47402,8 +44567,8 @@ function __c67(j: number): any {
           granularity: S.optional(S.String),
           groupId: S.optional(S.String),
           hostId: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-          measurements: S.optional(__S(535, __c66, 7)),
+          links: S.optional(__S(18912, __c591, 0)),
+          measurements: S.optional(__S(6017, __c188, 1)),
           partitionName: S.optional(S.String),
           processId: S.optional(S.String),
           start: S.optional(S.String),
@@ -47411,7 +44576,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "ApiMeasurementsGeneralViewAtlas",
       });
-    case 1:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47429,14 +44598,64 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetGroupProcessDiskRequest",
       });
-    case 2:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           partitionName: S.optional(S.String),
         }),
       ).annotate({ identifier: "MeasurementDiskPartition" });
-    case 3:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          cloudProvider: S.String.pipe(T.Label()),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          regionName: S.optional(S.String),
+          vpcRegionName: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints",
+            code: 200,
+            accept: "application/vnd.atlas.2024-11-13+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupBackupPrivateEndpointRequest",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          id: S.optional(S.String),
+          privateEndpointConnectionName: S.optional(S.String),
+          regionName: S.optional(S.String),
+          status: S.optional(S.String),
+          vpcRegionName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ObjectStoragePrivateEndpointResponse",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47444,7 +44663,7 @@ function __c67(j: number): any {
           partitionName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          m: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          m: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
           granularity: S.String.pipe(T.Query()),
           period: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
@@ -47460,14 +44679,18 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetGroupProcessDiskMeasurementsRequest",
       });
-    case 4:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           processId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          m: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          m: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
           period: S.optional(S.String.pipe(T.Query())),
           granularity: S.String.pipe(T.Query()),
           start: S.optional(S.String.pipe(T.Query())),
@@ -47483,7 +44706,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetGroupProcessMeasurementsRequest",
       });
-    case 5:
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47500,7 +44727,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetGroupSampleDatasetLoadRequest",
       });
-    case 6:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _id: S.optional(S.String),
@@ -47511,7 +44742,11 @@ function __c67(j: number): any {
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "SampleDatasetStatus" });
-    case 7:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47531,7 +44766,7 @@ function __c67(j: number): any {
       });
   }
 }
-function __c68(j: number): any {
+function __c198(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47548,7 +44783,11 @@ function __c68(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupSettingsRequest" });
-    case 1:
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isAtlasHomePageAiAssistantEnabled: S.optional(S.Boolean),
@@ -47565,7 +44804,11 @@ function __c68(j: number): any {
           isSchemaAdvisorEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GroupSettings" });
-    case 2:
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47583,11 +44826,15 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetGroupStreamAccountDetailsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetGroupStreamAccountDetailsResponse",
       });
-    case 4:
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47605,7 +44852,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetGroupStreamConnectionRequest",
       });
-    case 5:
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47625,7 +44876,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetGroupStreamConnectionFailoverConnectionRequest",
       });
-    case 6:
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47642,7 +44897,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetGroupStreamPrivateLinkConnectionRequest",
       });
-    case 7:
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47663,7 +44922,7 @@ function __c68(j: number): any {
       });
   }
 }
-function __c69(j: number): any {
+function __c205(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47672,18 +44931,44 @@ function __c69(j: number): any {
           effectiveTier: S.String,
           eligibleForFailover: S.optional(S.Boolean),
           failoverEnabled: S.optional(S.Boolean),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           name: S.String,
-          options: S.optional(__S(254, __c31, 6)),
-          pipeline: __S(202, __c25, 2),
+          options: S.optional(__S(17570, __c549, 2)),
+          pipeline: __S(15584, __c487, 0),
           state: S.String,
-          stats: S.optional(__S(117, __c14, 5)),
+          stats: S.optional(__S(10016, __c313, 0)),
           tier: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StreamsProcessorWithStats",
       });
-    case 1:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          providerName: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupCloudProviderAccessRequest",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47704,19 +44989,23 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetGroupStreamProcessorsRequest",
       });
+    case 1:
+      return S.Array(__S(6560, __c205, 0));
     case 2:
-      return S.Array(__S(552, __c69, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(554, __c69, 2),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(6625, __c207, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedApiStreamsStreamProcessorWithStatsView",
       });
-    case 4:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47734,7 +45023,11 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetGroupStreamWorkspaceRequest",
       });
-    case 5:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47750,14 +45043,18 @@ function __c69(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupTeamRequest" });
-    case 6:
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          orgMembershipStatuses: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          orgMembershipStatuses: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -47767,7 +45064,11 @@ function __c69(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupUserRequest" });
-    case 7:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47784,28 +45085,14 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetGroupUserSecurityRequest",
       });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cas: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "DBUserTLSX509Settings" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ldapQuery: S.optional(S.String),
-          match: S.String,
-          substitution: S.optional(S.String),
+          cas: S.optional(S.String),
+          links: S.optional(__S(18912, __c591, 0)),
         }),
-      ).annotate({ identifier: "UserToDNMapping" });
+      ).annotate({ identifier: "DBUserTLSX509Settings" });
     case 2:
-      return S.Array(__S(561, __c70, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           authenticationEnabled: S.optional(S.Boolean),
@@ -47814,22 +45101,40 @@ function __c70(j: number): any {
           bindUsername: S.optional(S.String),
           caCertificate: S.optional(S.String),
           hostname: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           port: S.optional(S.Number),
-          userToDNMapping: S.optional(__S(562, __c70, 2)),
+          userToDNMapping: S.optional(__S(6785, __c212, 1)),
         }),
       ).annotate({
         identifier: "LDAPSecuritySettingsOutput",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          customerX509: S.optional(__S(560, __c70, 0)),
-          ldap: S.optional(__S(563, __c70, 3)),
-          links: S.optional(__S(4, __c0, 4)),
+          customerX509: S.optional(__S(6753, __c211, 1)),
+          ldap: S.optional(__S(6754, __c211, 2)),
+          links: S.optional(__S(18912, __c591, 0)),
         }),
       ).annotate({ identifier: "UserSecurityOutput" });
-    case 5:
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ldapQuery: S.optional(S.String),
+          match: S.String,
+          substitution: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserToDNMapping" });
+    case 1:
+      return S.Array(__S(6784, __c212, 0));
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -47847,19 +45152,23 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "GetGroupUserSecurityLdapVerifyRequest",
       });
-    case 6:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bindUsername: S.String,
           caCertificate: S.optional(S.String),
           hostname: S.String,
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           port: S.Number,
         }),
       ).annotate({
         identifier: "LDAPVerifyConnectivityJobRequestParamsOutput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -47868,26 +45177,26 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "LDAPVerifyConnectivityJobRequestValidation",
       });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(567, __c70, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(6849, __c214, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-          request: S.optional(__S(566, __c70, 6)),
+          links: S.optional(__S(18912, __c591, 0)),
+          request: S.optional(__S(6848, __c214, 0)),
           requestId: S.optional(S.String),
           status: S.optional(S.String),
-          validations: S.optional(__S(568, __c71, 0)),
+          validations: S.optional(__S(6850, __c214, 2)),
         }),
       ).annotate({
         identifier: "LDAPVerifyConnectivityJobRequestOutput",
       });
-    case 2:
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -47902,14 +45211,16 @@ function __c71(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrgRequest" });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          eventType: S.optional(__S(571, __c71, 3).pipe(T.Query())),
+          eventType: S.optional(__S(6944, __c217, 0).pipe(T.Query())),
           maxDate: S.optional(S.String.pipe(T.Query())),
           minDate: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -47923,7 +45234,17 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetOrgActivityFeedRequest",
       });
-    case 5:
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -47943,7 +45264,11 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsRequest",
       });
-    case 6:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -47961,7 +45286,234 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GetOrgAiModelApiKeyRequest",
       });
-    case 7:
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          acceptDataRisksAndForceReplicaSetReconfig: S.optional(S.String),
+          adaptiveCapacity: S.optional(S.NullOr(S.String)),
+          advancedConfiguration: S.optional(__S(7104, __c222, 0)),
+          backupEnabled: S.optional(S.Boolean),
+          biConnector: S.optional(__S(7105, __c222, 1)),
+          clusterType: S.optional(S.String),
+          configServerManagementMode: S.optional(S.String),
+          databaseEdition: S.optional(S.String),
+          diskWarmingMode: S.optional(S.String),
+          encryptionAtRestProvider: S.optional(S.String),
+          globalClusterSelfManagedSharding: S.optional(S.Boolean),
+          labels: S.optional(__S(7201, __c225, 1)),
+          mongoDBMajorVersion: S.optional(S.String),
+          name: S.optional(S.String),
+          paused: S.optional(S.Boolean),
+          pitEnabled: S.optional(S.Boolean),
+          redactClientLogData: S.optional(S.Boolean),
+          replicaSetScalingStrategy: S.optional(S.String),
+          replicationSpecs: S.optional(__S(7266, __c227, 2)),
+          retainBackups: S.optional(S.Boolean),
+          rootCertType: S.optional(S.String),
+          tags: S.optional(__S(3008, __c94, 0)),
+          terminationProtectionEnabled: S.optional(S.Boolean),
+          useAwsTimeBasedSnapshotCopyForFastInitialSync: S.optional(S.Boolean),
+          versionReleaseSystem: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters",
+            code: 200,
+            accept: "application/vnd.atlas.2024-10-23+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupClusterRequest",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customOpensslCipherConfigTls12: S.optional(__S(7072, __c221, 0)),
+          customOpensslCipherConfigTls13: S.optional(__S(7072, __c221, 0)),
+          minimumEnabledTlsProtocol: S.optional(S.String),
+          tlsCipherConfigMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApiAtlasClusterAdvancedConfigurationView",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          readPreference: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BiConnector" });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          regionConfigs: S.optional(__S(7136, __c223, 0)),
+          zoneId: S.optional(S.String),
+          zoneName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReplicationSpec20240805" });
+    case 2:
+      return S.Array(__S(7137, __c223, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          acceptDataRisksAndForceReplicaSetReconfig: S.optional(S.String),
+          adaptiveCapacity: S.optional(S.NullOr(S.String)),
+          advancedConfiguration: S.optional(__S(7104, __c222, 0)),
+          backupEnabled: S.optional(S.Boolean),
+          biConnector: S.optional(__S(7105, __c222, 1)),
+          clusterType: S.optional(S.String),
+          configServerManagementMode: S.optional(S.String),
+          configServerType: S.optional(S.String),
+          connectionStrings: S.optional(__S(7172, __c224, 4)),
+          createDate: S.optional(S.String),
+          databaseEdition: S.optional(S.String),
+          diskWarmingMode: S.optional(S.String),
+          effectiveDatabaseEdition: S.optional(S.String),
+          effectiveReplicationSpecs: S.optional(__S(7138, __c223, 2)),
+          encryptionAtRestProvider: S.optional(S.String),
+          featureCompatibilityVersion: S.optional(S.String),
+          featureCompatibilityVersionExpirationDate: S.optional(S.String),
+          globalClusterSelfManagedSharding: S.optional(S.Boolean),
+          groupId: S.optional(S.String),
+          id: S.optional(S.String),
+          internalClusterRole: S.optional(S.String),
+          labels: S.optional(__S(7201, __c225, 1)),
+          links: S.optional(__S(18912, __c591, 0)),
+          mongoDBEmployeeAccessGrant: S.optional(__S(7173, __c224, 5)),
+          mongoDBMajorVersion: S.optional(S.String),
+          mongoDBVersion: S.optional(S.String),
+          name: S.optional(S.String),
+          paused: S.optional(S.Boolean),
+          pitEnabled: S.optional(S.Boolean),
+          redactClientLogData: S.optional(S.Boolean),
+          replicaSetScalingStrategy: S.optional(S.String),
+          replicationSpecs: S.optional(__S(7138, __c223, 2)),
+          retainBackups: S.optional(S.Boolean),
+          rootCertType: S.optional(S.String),
+          stateName: S.optional(S.String),
+          tags: S.optional(__S(3008, __c94, 0)),
+          terminationProtectionEnabled: S.optional(S.Boolean),
+          useAwsTimeBasedSnapshotCopyForFastInitialSync: S.optional(S.Boolean),
+          versionReleaseSystem: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClusterDescription20240805",
+      });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpointId: S.optional(S.String),
+          providerName: S.optional(S.String),
+          region: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClusterDescriptionConnectionStringsPrivateEndpointEndpoint",
+      });
+    case 1:
+      return S.Array(__S(7168, __c224, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          endpoints: S.optional(__S(7169, __c224, 1)),
+          srvConnectionString: S.optional(S.String),
+          srvShardOptimizedConnectionString: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClusterDescriptionConnectionStringsPrivateEndpoint",
+      });
+    case 3:
+      return S.Array(__S(7170, __c224, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          awsPrivateLink: S.optional(__S(7232, __c226, 0)),
+          awsPrivateLinkSrv: S.optional(__S(7232, __c226, 0)),
+          private: S.optional(S.String),
+          privateEndpoint: S.optional(__S(7171, __c224, 3)),
+          privateSrv: S.optional(S.String),
+          standard: S.optional(S.String),
+          standardSrv: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterConnectionStrings" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          expirationTime: S.String,
+          grantType: S.String,
+          links: S.optional(__S(18912, __c591, 0)),
+        }),
+      ).annotate({ identifier: "EmployeeAccessGrantView" });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComponentLabel" });
+    case 1:
+      return S.Array(__S(7200, __c225, 0));
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          regionConfigs: S.optional(__S(7264, __c227, 0)),
+          zoneName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReplicationSpec20240805Input",
+      });
+    case 2:
+      return S.Array(__S(7265, __c227, 1));
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -47982,7 +45534,7 @@ function __c71(j: number): any {
       });
   }
 }
-function __c72(j: number): any {
+function __c229(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48000,7 +45552,11 @@ function __c72(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrgApiKeyRequest" });
-    case 1:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48019,7 +45575,11 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "GetOrgApiKeyAccessListEntryRequest",
       });
-    case 2:
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48037,26 +45597,30 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "GetOrgAssociatedInvoicesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           invoiceId: S.optional(S.String),
           orgId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociatedInvoice" });
-    case 4:
-      return S.Array(__S(579, __c72, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(7393, __c231, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          associatedInvoices: S.optional(__S(580, __c72, 4)),
+          associatedInvoices: S.optional(__S(7394, __c231, 2)),
           month: S.optional(S.String),
           year: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OrgAssociatedInvoiceResponse",
       });
-    case 6:
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48073,13 +45637,13 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "GetOrgBillingCostExplorerUsageRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOrgBillingCostExplorerUsageResponse",
       });
   }
 }
-function __c73(j: number): any {
+function __c233(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48098,7 +45662,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GetOrgDelegationSettingsRequest",
       });
-    case 1:
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           delegatedMcpAccess: S.optional(S.NullOr(S.String)),
@@ -48109,7 +45677,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "OrgDelegationSettingsResponse",
       });
-    case 2:
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48126,11 +45698,15 @@ function __c73(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrgEventRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOrgEventResponse",
       });
-    case 4:
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48147,17 +45723,21 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GetOrgFederationSettingsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          federatedDomains: __S(5, __c0, 5),
+          federatedDomains: __S(18336, __c573, 0),
           hasRoleMappings: S.optional(S.Boolean),
           id: S.optional(S.String),
           identityProviderId: S.optional(S.String),
           identityProviderStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrgFederationSettings" });
-    case 6:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48176,21 +45756,25 @@ function __c73(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrgGroupsRequest" });
-    case 7:
-      return S.Array(__S(48, __c6, 0));
   }
 }
-function __c74(j: number): any {
+function __c238(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(2945, __c92, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(591, __c73, 7),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(7616, __c238, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedAtlasGroupView" });
-    case 1:
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48206,9 +45790,17 @@ function __c74(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrgInvoiceRequest" });
-    case 2:
-      return S.Record(S.String, __S(5, __c0, 5));
-    case 3:
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(18336, __c573, 0));
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cloudProvider: S.optional(S.String),
@@ -48224,7 +45816,7 @@ function __c74(j: number): any {
           sku: S.optional(S.String),
           startDate: S.optional(S.String),
           stitchAppName: S.optional(S.String),
-          tags: S.optional(__S(594, __c74, 2)),
+          tags: S.optional(__S(7680, __c240, 0)),
           tierLowerBound: S.optional(S.Number),
           tierUpperBound: S.optional(S.Number),
           totalPriceCents: S.optional(S.Number),
@@ -48232,11 +45824,11 @@ function __c74(j: number): any {
           unitPriceDollars: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InvoiceLineItem" });
-    case 4:
-      return S.Array(__S(595, __c74, 3));
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(602, __c75, 2)));
-    case 6:
+    case 1:
+      return S.Array(__S(7712, __c241, 0));
+    case 2:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(7719, __c241, 7)));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           amountBilledCents: S.optional(S.Number),
@@ -48251,13 +45843,9 @@ function __c74(j: number): any {
           updated: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingPayment" });
-    case 7:
-      return S.Array(__S(598, __c74, 6));
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(7715, __c241, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           amountCents: S.optional(S.Number),
@@ -48266,9 +45854,9 @@ function __c75(j: number): any {
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingRefund" });
-    case 1:
-      return S.Array(__S(600, __c75, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(7717, __c241, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           amountBilledCents: S.optional(S.Number),
@@ -48277,12 +45865,12 @@ function __c75(j: number): any {
           creditsCents: S.optional(S.Number),
           endDate: S.optional(S.String),
           id: S.optional(S.String),
-          lineItems: S.optional(__S(596, __c74, 4)),
-          linkedInvoices: S.optional(__S(597, __c74, 5)),
-          links: S.optional(__S(4, __c0, 4)),
+          lineItems: S.optional(__S(7713, __c241, 1)),
+          linkedInvoices: S.optional(__S(7714, __c241, 2)),
+          links: S.optional(__S(18912, __c591, 0)),
           orgId: S.optional(S.String),
-          payments: S.optional(__S(599, __c74, 7)),
-          refunds: S.optional(__S(601, __c75, 1)),
+          payments: S.optional(__S(7716, __c241, 4)),
+          refunds: S.optional(__S(7718, __c241, 6)),
           salesTaxCents: S.optional(S.Number),
           startDate: S.optional(S.String),
           startingBalanceCents: S.optional(S.Number),
@@ -48291,7 +45879,79 @@ function __c75(j: number): any {
           updated: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingInvoice" });
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          customData: S.optional(__S(7201, __c225, 1)),
+          exportBucketId: S.String,
+          snapshotId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupClusterBackupExportRequest",
+      });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          exportId: S.optional(S.String),
+          replicaSetName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiskBackupExportMember" });
+    case 1:
+      return S.Array(__S(7776, __c243, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          exportedCollections: S.optional(S.Number),
+          totalCollections: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ExportStatus" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StateReason" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          components: S.optional(__S(7777, __c243, 1)),
+          createdAt: S.optional(S.String),
+          customData: S.optional(__S(7201, __c225, 1)),
+          exportBucketId: S.String,
+          exportStatus: S.optional(__S(7778, __c243, 2)),
+          finishedAt: S.optional(S.String),
+          id: S.optional(S.String),
+          links: S.optional(__S(18912, __c591, 0)),
+          prefix: S.optional(S.String),
+          snapshotId: S.optional(S.String),
+          state: S.optional(S.String),
+          stateReason: S.optional(__S(7779, __c243, 3)),
+        }),
+      ).annotate({ identifier: "DiskBackupExportJob" });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48307,7 +45967,11 @@ function __c75(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrgInvoiceCsvRequest" });
-    case 4:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48324,7 +45988,11 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "GetOrgInvoiceReportRequest",
       });
-    case 5:
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48342,7 +46010,11 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "GetOrgLogIntegrationRequest",
       });
-    case 6:
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48359,7 +46031,11 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "GetOrgMaintenanceSettingsRequest",
       });
-    case 7:
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           effectiveWaveAssignmentMode: S.optional(S.String),
@@ -48370,7 +46046,7 @@ function __c75(j: number): any {
       });
   }
 }
-function __c76(j: number): any {
+function __c249(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48388,7 +46064,11 @@ function __c76(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrgMcpConfigRequest" });
-    case 1:
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48407,7 +46087,11 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "GetOrgMcpConfigSecretRequest",
       });
-    case 2:
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48424,7 +46108,7 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "GetOrgNonCompliantResourcesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           policyId: S.optional(S.String),
@@ -48432,43 +46116,43 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ApiAtlasPolicyMetadataView",
       });
-    case 4:
-      return S.Array(__S(611, __c76, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(8033, __c251, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          policiesCausingNonCompliance: S.optional(__S(612, __c76, 4)),
+          policiesCausingNonCompliance: S.optional(__S(8034, __c251, 2)),
           resourcePolicyId: S.optional(S.String),
           resourcePolicyName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ApiAtlasResourcePolicyMetadataView",
       });
-    case 6:
-      return S.Array(__S(613, __c76, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(8035, __c251, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           orgId: S.optional(S.String),
           resourceId: S.optional(S.String),
           resourceName: S.optional(S.String),
-          resourcePoliciesCausingNonCompliance: S.optional(__S(614, __c76, 6)),
+          resourcePoliciesCausingNonCompliance: S.optional(__S(8036, __c251, 4)),
           resourceType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ApiAtlasNonCompliantResourceView",
       });
-  }
-}
-function __c77(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(615, __c76, 7));
-    case 1:
-      return S.suspend(() => __S(616, __c77, 0).pipe(T.RawResponseRoot())).annotate({
+    case 6:
+      return S.Array(__S(8037, __c251, 5));
+    case 7:
+      return S.suspend(() => __S(8038, __c251, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOrgNonCompliantResourcesResponse",
       });
-    case 2:
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48486,7 +46170,11 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "GetOrgResourcePolicyRequest",
       });
-    case 3:
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48504,7 +46192,11 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "GetOrgServiceAccountRequest",
       });
-    case 4:
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48524,20 +46216,20 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "GetOrgServiceAccountGroupsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          roles: S.optional(__S(5, __c0, 5)),
+          roles: S.optional(__S(18336, __c573, 0)),
         }),
       ).annotate({ identifier: "ServiceAccountGroup" });
-    case 6:
-      return S.Array(__S(621, __c77, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(8129, __c254, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(622, __c77, 6),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(8130, __c254, 2),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -48545,7 +46237,94 @@ function __c77(j: number): any {
       });
   }
 }
-function __c78(j: number): any {
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          deliveryType: S.String,
+          oplogInc: S.optional(S.Number),
+          oplogTs: S.optional(S.Number),
+          pointInTimeUTCSeconds: S.optional(S.Number),
+          snapshotId: S.optional(S.String),
+          targetClusterName: S.optional(S.String),
+          targetGroupId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupClusterBackupRestoreJobRequest",
+      });
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deliveryUrl: S.optional(S.String),
+          endpointId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApiPrivateDownloadDeliveryUrl",
+      });
+    case 1:
+      return S.Array(__S(8192, __c256, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          downloadUrl: S.optional(S.String),
+          privateDownloadDeliveryUrls: S.optional(__S(8193, __c256, 1)),
+          replicaSetName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiskBackupRestoreMember" });
+    case 3:
+      return S.Array(__S(8194, __c256, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.String),
+          increment: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ApiBSONTimestampView" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cancelled: S.optional(S.Boolean),
+          components: S.optional(__S(8195, __c256, 3)),
+          deliveryType: S.String,
+          deliveryUrl: S.optional(__S(18336, __c573, 0)),
+          desiredTimestamp: S.optional(__S(8196, __c256, 4)),
+          expired: S.optional(S.Boolean),
+          expiresAt: S.optional(S.String),
+          failed: S.optional(S.Boolean),
+          finishedAt: S.optional(S.String),
+          id: S.optional(S.String),
+          links: S.optional(__S(18912, __c591, 0)),
+          oplogInc: S.optional(S.Number),
+          oplogTs: S.optional(S.Number),
+          pointInTimeUTCSeconds: S.optional(S.Number),
+          privateDownloadDeliveryUrls: S.optional(__S(8193, __c256, 1)),
+          snapshotId: S.optional(S.String),
+          targetClusterName: S.optional(S.String),
+          targetGroupId: S.optional(S.String),
+          timestamp: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DiskBackupSnapshotRestoreJob",
+      });
+  }
+}
+function __c257(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48562,18 +46341,22 @@ function __c78(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrgSettingsRequest" });
-    case 1:
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           absoluteSessionTimeoutInSeconds: S.optional(S.Number),
           idleSessionTimeoutInSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CustomSessionTimeouts" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiAccessListRequired: S.optional(S.Boolean),
-          customSessionTimeouts: S.optional(__S(625, __c78, 1)),
+          customSessionTimeouts: S.optional(__S(8256, __c258, 0)),
           genAIFeaturesEnabled: S.optional(S.Boolean),
           maxServiceAccountSecretValidityInHours: S.optional(S.Number),
           multiFactorAuthRequired: S.optional(S.Boolean),
@@ -48583,7 +46366,11 @@ function __c78(j: number): any {
           streamsCrossGroupEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OrganizationSettings" });
-    case 3:
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48599,15 +46386,23 @@ function __c78(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrgTeamRequest" });
-    case 4:
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "TeamResponse" });
-    case 5:
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -48623,14 +46418,18 @@ function __c78(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrgTeamByNameRequest" });
-    case 6:
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          orgMembershipStatuses: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          orgMembershipStatuses: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -48640,7 +46439,11 @@ function __c78(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrgUserRequest" });
-    case 7:
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endpointSetId: S.String.pipe(T.Label()),
@@ -48661,7 +46464,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "GetRateLimitRequest" });
   }
 }
-function __c79(j: number): any {
+function __c264(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48682,22 +46485,26 @@ function __c79(j: number): any {
         identifier: "RateLimitEndpointSetEndpoint",
       });
     case 2:
-      return S.Array(__S(633, __c79, 1));
+      return S.Array(__S(8449, __c264, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(__S(632, __c79, 0)),
+          capacity: S.optional(__S(8448, __c264, 0)),
           endpointSetId: S.optional(S.String),
           endpointSetName: S.optional(S.String),
-          endpoints: S.optional(__S(634, __c79, 2)),
-          refillDurationSeconds: S.optional(__S(632, __c79, 0)),
-          refillRate: S.optional(__S(632, __c79, 0)),
+          endpoints: S.optional(__S(8450, __c264, 2)),
+          refillDurationSeconds: S.optional(__S(8448, __c264, 0)),
+          refillRate: S.optional(__S(8448, __c264, 0)),
           scope: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RateLimitEndpointSetResponse",
       });
-    case 4:
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           skuId: S.String.pipe(T.Label()),
@@ -48712,14 +46519,22 @@ function __c79(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSkuRequest" });
-    case 5:
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuResponse" });
-    case 6:
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           envelope: S.optional(S.Boolean.pipe(T.Query())),
@@ -48733,47 +46548,47 @@ function __c79(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSystemStatusRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cidrBlock: S.optional(S.NullOr(S.String)),
           ipAddress: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AccessListItemView" });
-  }
-}
-function __c80(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(639, __c79, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(8545, __c267, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          accessList: __S(640, __c80, 0),
+          accessList: __S(8546, __c267, 2),
           id: S.String,
           publicKey: S.String,
-          roles: __S(61, __c7, 5),
+          roles: __S(5121, __c160, 1),
         }),
       ).annotate({ identifier: "ApiKey" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthenticatedUser" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          apiKey: S.optional(S.NullOr(__S(641, __c80, 1))),
+          apiKey: S.optional(S.NullOr(__S(8547, __c267, 3))),
           appName: S.String,
           build: S.String,
           ipAddress: S.String,
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           throttling: S.Boolean,
-          user: S.optional(S.NullOr(__S(642, __c80, 2))),
+          user: S.optional(S.NullOr(__S(8548, __c267, 4))),
         }),
       ).annotate({ identifier: "SystemStatus" });
-    case 4:
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -48793,14 +46608,18 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "GrantGroupClusterMongoDbEmployeeAccessRequest",
       });
-    case 5:
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           clientId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          roles: __S(5, __c0, 5),
+          roles: __S(18336, __c573, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -48812,7 +46631,11 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "InviteGroupServiceAccountRequest",
       });
-    case 6:
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           envelope: S.optional(S.Boolean.pipe(T.Query())),
@@ -48828,17 +46651,102 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListAlertConfigMatcherFieldNamesRequest",
       });
-    case 7:
+    case 1:
       return S.Array(S.Unknown);
-  }
-}
-function __c81(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(647, __c80, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(8641, __c270, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAlertConfigMatcherFieldNamesResponse",
       });
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          collectionSuffix: S.optional(S.NullOr(S.String)),
+          collections: S.optional(__S(8705, __c272, 1)),
+          databaseSuffix: S.optional(S.NullOr(S.String)),
+          databases: S.optional(__S(8705, __c272, 1)),
+          indexStrategy: S.String,
+          oplogInc: S.optional(S.NullOr(S.Number)),
+          oplogTs: S.optional(S.NullOr(S.Number)),
+          pointInTimeUtcSeconds: S.optional(S.NullOr(S.Number)),
+          snapshotId: S.optional(S.String),
+          targetClusterName: S.String,
+          targetGroupId: S.String,
+          writeStrategy: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupClusterCollectionRestoreJobRequest",
+      });
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceNamespace: S.String,
+          targetNamespace: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApiAtlasRestoreCollectionNamespaceView",
+      });
     case 1:
+      return S.Array(__S(8704, __c272, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          failedCollectionCount: S.optional(S.Number),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApiAtlasCollectionRestoreJobIndexStatus",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          collectionSuffix: S.optional(S.String),
+          collections: S.optional(__S(8705, __c272, 1)),
+          createdAt: S.optional(S.String),
+          databaseSuffix: S.optional(S.String),
+          databases: S.optional(__S(8705, __c272, 1)),
+          errorMessage: S.optional(S.String),
+          finishedAt: S.optional(S.String),
+          id: S.optional(S.String),
+          indexStatus: S.optional(__S(8706, __c272, 2)),
+          indexStrategy: S.optional(S.String),
+          oplogInc: S.optional(S.Number),
+          oplogTs: S.optional(S.Number),
+          pointInTimeUtcSeconds: S.optional(S.Number),
+          restoredDocuments: S.optional(S.Number),
+          snapshotId: S.optional(S.String),
+          state: S.optional(S.String),
+          targetClusterName: S.optional(S.String),
+          targetGroupId: S.optional(S.String),
+          totalDocuments: S.optional(S.Number),
+          writeStrategy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApiAtlasCollectionRestoreJobResponse",
+      });
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           envelope: S.optional(S.Boolean.pipe(T.Query())),
@@ -48857,7 +46765,7 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListClusterDetailsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           alertCount: S.optional(S.Number),
@@ -48870,34 +46778,38 @@ function __c81(j: number): any {
           nodeCount: S.optional(S.Number),
           sslEnabled: S.optional(S.Boolean),
           type: S.optional(S.String),
-          versions: S.optional(__S(5, __c0, 5)),
+          versions: S.optional(__S(18336, __c573, 0)),
         }),
       ).annotate({ identifier: "CloudCluster" });
+    case 2:
+      return S.Array(__S(8737, __c273, 1));
     case 3:
-      return S.Array(__S(650, __c81, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          clusters: S.optional(__S(651, __c81, 3)),
+          clusters: S.optional(__S(8738, __c273, 2)),
           groupId: S.optional(S.String),
           groupName: S.optional(S.String),
           orgId: S.optional(S.String),
           orgName: S.optional(S.String),
           planType: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(18336, __c573, 0)),
         }),
       ).annotate({ identifier: "OrgGroup" });
+    case 4:
+      return S.Array(__S(8739, __c273, 3));
     case 5:
-      return S.Array(__S(652, __c81, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(653, __c81, 5),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(8740, __c273, 4),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedOrgGroupView" });
-    case 7:
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           envelope: S.optional(S.Boolean.pipe(T.Query())),
@@ -48912,45 +46824,45 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListControlPlaneIpAddressesRequest",
       });
-  }
-}
-function __c82(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          aws: S.optional(__S(594, __c74, 2)),
-          azure: S.optional(__S(594, __c74, 2)),
-          gcp: S.optional(__S(594, __c74, 2)),
+          aws: S.optional(__S(7680, __c240, 0)),
+          azure: S.optional(__S(7680, __c240, 0)),
+          gcp: S.optional(__S(7680, __c240, 0)),
         }),
       ).annotate({
         identifier: "InboundControlPlaneCloudProviderIPAddresses",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          inbound: S.optional(__S(656, __c82, 0)),
-          outbound: S.optional(__S(656, __c82, 0)),
-        }),
-      ).annotate({ identifier: "GatewayIpAddresses" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ips: S.optional(__S(657, __c82, 1)),
+          inbound: S.optional(__S(8769, __c274, 1)),
+          outbound: S.optional(__S(8769, __c274, 1)),
+        }),
+      ).annotate({ identifier: "GatewayIpAddresses" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ips: S.optional(__S(8770, __c274, 2)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Gateway" });
-    case 3:
-      return S.Array(__S(658, __c82, 2));
     case 4:
+      return S.Array(__S(8771, __c274, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          gateways: S.optional(__S(659, __c82, 3)),
-          inbound: S.optional(__S(656, __c82, 0)),
-          outbound: S.optional(__S(656, __c82, 0)),
+          gateways: S.optional(__S(8772, __c274, 4)),
+          inbound: S.optional(__S(8769, __c274, 1)),
+          outbound: S.optional(__S(8769, __c274, 1)),
         }),
       ).annotate({ identifier: "ControlPlaneIPAddresses" });
-    case 5:
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           envelope: S.optional(S.Boolean.pipe(T.Query())),
@@ -48967,7 +46879,7 @@ function __c82(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListEventTypesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           alertable: S.optional(S.Boolean),
@@ -48975,23 +46887,23 @@ function __c82(j: number): any {
           eventType: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventTypeDetails" });
-    case 7:
-      return S.Array(__S(662, __c82, 6));
-  }
-}
-function __c83(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(8801, __c275, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(663, __c82, 7),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(8802, __c275, 2),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedEventTypeDetailsResponse",
       });
-    case 1:
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           federationSettingsId: S.String.pipe(T.Label()),
@@ -49008,15 +46920,21 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListFederationSettingConnectedOrgConfigRoleMappingsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(39, __c4, 7),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(1792, __c56, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedRoleMappingView" });
-    case 3:
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1826, __c57, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           federationSettingsId: S.String.pipe(T.Label()),
@@ -49034,25 +46952,29 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListFederationSettingConnectedOrgConfigsRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(43, __c5, 3),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(8864, __c277, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedConnectedOrgConfigsView",
       });
-    case 5:
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           federationSettingsId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           itemsPerPage: S.optional(S.Number.pipe(T.Query())),
           pageNum: S.optional(S.Number.pipe(T.Query())),
-          protocol: S.optional(__S(23, __c2, 7).pipe(T.Query())),
-          idpType: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          protocol: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
+          idpType: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -49064,13 +46986,13 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListFederationSettingIdentityProvidersRequest",
       });
-    case 6:
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(670, __c83, 6),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(8897, __c278, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -49078,7 +47000,7 @@ function __c83(j: number): any {
       });
   }
 }
-function __c84(j: number): any {
+function __c279(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49100,7 +47022,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListGroupAccessListEntriesRequest",
       });
-    case 1:
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49119,19 +47045,27 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListGroupAiModelApiKeysRequest",
       });
-    case 2:
-      return S.Array(__S(56, __c7, 0));
-    case 3:
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4096, __c128, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(674, __c84, 2),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(8992, __c281, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedAtlasAiModelApiKeysResponse",
       });
-    case 4:
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49151,7 +47085,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListGroupAlertConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49170,7 +47108,69 @@ function __c84(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupAlertsRequest" });
-    case 6:
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.String,
+          zone: S.String,
+        }),
+      ).annotate({ identifier: "ZoneMapping" });
+    case 1:
+      return S.Array(__S(9088, __c284, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          customZoneMappings: __S(9089, __c284, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupClusterGlobalWriteCustomZoneMappingRequest",
+      });
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection: S.String,
+          customShardKey: S.String,
+          db: S.String,
+          isCustomShardKeyHashed: S.optional(S.Boolean),
+          isShardKeyUnique: S.optional(S.Boolean),
+          numInitialChunks: S.optional(S.Number),
+          presplitHashedZones: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ManagedNamespaces" });
+    case 1:
+      return S.Array(__S(9120, __c285, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customZoneMapping: S.optional(__S(7232, __c226, 0)),
+          managedNamespaces: S.optional(__S(9121, __c285, 1)),
+          selfManagedSharding: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GeoSharding20240805" });
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49188,21 +47188,25 @@ function __c84(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupApiKeysRequest" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
   }
 }
-function __c85(j: number): any {
+function __c287(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(5152, __c161, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(679, __c84, 7),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(9184, __c287, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedApiApiUserView" });
-    case 1:
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49222,19 +47226,23 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "ListGroupBackupExportBucketsRequest",
       });
+    case 1:
+      return S.Array(__S(5632, __c176, 0));
     case 2:
-      return S.Array(__S(64, __c8, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(682, __c85, 2),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(9217, __c288, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedBackupSnapshotExportBucketsView",
       });
-    case 4:
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49255,15 +47263,15 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "ListGroupBackupPrivateEndpointsRequest",
       });
-    case 5:
-      return S.Array(__S(3, __c0, 3));
-    case 6:
-      return S.Array(__S(66, __c8, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(18848, __c589, 0));
+    case 2:
+      return S.Array(__S(6144, __c192, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(685, __c85, 5)),
-          results: __S(686, __c85, 6),
+          links: S.optional(__S(9249, __c289, 1)),
+          results: __S(9250, __c289, 2),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -49271,9 +47279,85 @@ function __c85(j: number): any {
       });
   }
 }
-function __c86(j: number): any {
+function __c290(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          featureType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CloudProviderAccessFeatureUsage",
+      });
+    case 1:
+      return S.Array(__S(9280, __c290, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          atlasAzureAppId: S.optional(S.String),
+          createdDate: S.optional(S.String),
+          featureUsages: S.optional(__S(9281, __c290, 1)),
+          lastUpdatedDate: S.optional(S.String),
+          servicePrincipalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          gcpServiceAccountForAtlas: S.optional(S.String),
+          roleId: S.optional(S.String),
+          status: S.optional(S.String),
+          providerName: S.String,
+          atlasAWSAccountArn: S.optional(S.String),
+          atlasAssumedRoleExternalId: S.optional(S.String),
+          authorizedDate: S.optional(S.String),
+          iamAssumedRoleArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CloudProviderAccessAWSIAMRole",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          atlasAzureAppId: S.optional(S.String),
+          createdDate: S.optional(S.String),
+          featureUsages: S.optional(__S(9281, __c290, 1)),
+          lastUpdatedDate: S.optional(S.String),
+          servicePrincipalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          gcpServiceAccountForAtlas: S.optional(S.String),
+          roleId: S.optional(S.String),
+          status: S.optional(S.String),
+          providerName: S.String,
+          atlasAWSAccountArn: S.optional(S.String),
+          atlasAssumedRoleExternalId: S.optional(S.String),
+          authorizedDate: S.optional(S.String),
+          iamAssumedRoleArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CloudProviderAccessAzureServicePrincipal",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          atlasAzureAppId: S.optional(S.String),
+          createdDate: S.optional(S.String),
+          featureUsages: S.optional(__S(9281, __c290, 1)),
+          lastUpdatedDate: S.optional(S.String),
+          servicePrincipalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          gcpServiceAccountForAtlas: S.optional(S.String),
+          roleId: S.optional(S.String),
+          status: S.optional(S.String),
+          providerName: S.String,
+          atlasAWSAccountArn: S.optional(S.String),
+          atlasAssumedRoleExternalId: S.optional(S.String),
+          authorizedDate: S.optional(S.String),
+          iamAssumedRoleArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CloudProviderAccessGCPServiceAccount",
+      });
+    case 5:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49290,21 +47374,25 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "ListGroupCloudProviderAccessRequest",
       });
-    case 1:
-      return S.Array(__S(28, __c3, 4));
-    case 2:
-      return S.Array(__S(29, __c3, 5));
-    case 3:
-      return S.Array(__S(30, __c3, 6));
-    case 4:
+    case 6:
+      return S.Array(__S(9282, __c290, 2));
+    case 7:
+      return S.Array(__S(9283, __c290, 3));
+    case 8:
+      return S.Array(__S(9284, __c290, 4));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          awsIamRoles: S.optional(__S(689, __c86, 1)),
-          azureServicePrincipals: S.optional(__S(690, __c86, 2)),
-          gcpServiceAccounts: S.optional(__S(691, __c86, 3)),
+          awsIamRoles: S.optional(__S(9286, __c290, 6)),
+          azureServicePrincipals: S.optional(__S(9287, __c290, 7)),
+          gcpServiceAccounts: S.optional(__S(9288, __c290, 8)),
         }),
       ).annotate({ identifier: "CloudProviderAccessRoles" });
-    case 5:
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49325,13 +47413,13 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterBackupExportsRequest",
       });
-    case 6:
-      return S.Array(__S(94, __c11, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(7780, __c243, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(694, __c86, 6),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(9313, __c291, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -49339,7 +47427,7 @@ function __c86(j: number): any {
       });
   }
 }
-function __c87(j: number): any {
+function __c292(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49363,18 +47451,22 @@ function __c87(j: number): any {
         identifier: "ListGroupClusterBackupRestoreJobsRequest",
       });
     case 1:
-      return S.Array(__S(101, __c12, 5));
+      return S.Array(__S(8197, __c256, 5));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(697, __c87, 1),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(9345, __c292, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedCloudBackupRestoreJobView",
       });
-    case 3:
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49397,19 +47489,27 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterBackupSnapshotDatabaseCollectionsRequest",
       });
-    case 4:
-      return S.Array(__S(439, __c54, 7));
-    case 5:
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3360, __c105, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(700, __c87, 4),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(9408, __c294, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedApiAtlasDiskBackupCollectionView",
       });
-    case 6:
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49431,7 +47531,11 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterBackupSnapshotDatabasesRequest",
       });
-    case 7:
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49455,23 +47559,23 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterBackupSnapshotsRequest",
       });
-  }
-}
-function __c88(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(437, __c54, 5));
     case 1:
+      return S.Array(__S(3296, __c103, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(704, __c88, 0),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(9473, __c296, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedCloudBackupReplicaSetView",
       });
-    case 2:
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49489,19 +47593,52 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterBackupSnapshotShardedClustersRequest",
       });
-    case 3:
-      return S.Array(__S(444, __c55, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(3458, __c108, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(707, __c88, 3),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(9505, __c297, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedCloudBackupShardedClusterSnapshotView",
       });
-    case 5:
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          collection: S.String,
+          customShardKey: S.String,
+          db: S.String,
+          isCustomShardKeyHashed: S.optional(S.Boolean),
+          isShardKeyUnique: S.optional(S.Boolean),
+          numInitialChunks: S.optional(S.Number),
+          presplitHashedZones: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupClusterGlobalWriteManagedNamespaceRequest",
+      });
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49525,13 +47662,13 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterCollectionRestoreJobCollectionsRequest",
       });
-    case 6:
-      return S.Array(__S(448, __c56, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(3649, __c114, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(710, __c88, 6),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(9569, __c299, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -49539,7 +47676,7 @@ function __c88(j: number): any {
       });
   }
 }
-function __c89(j: number): any {
+function __c300(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49562,18 +47699,22 @@ function __c89(j: number): any {
         identifier: "ListGroupClusterCollectionRestoreJobsRequest",
       });
     case 1:
-      return S.Array(__S(106, __c13, 2));
+      return S.Array(__S(8707, __c272, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(713, __c89, 1),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(9601, __c300, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedApiAtlasCollectionRestoreJobView",
       });
-    case 3:
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49582,7 +47723,7 @@ function __c89(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           collectionName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
-          metrics: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          metrics: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
           period: S.optional(S.String.pipe(T.Query())),
@@ -49597,7 +47738,7 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterCollStatMeasurementsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clusterId: S.optional(S.String),
@@ -49607,15 +47748,19 @@ function __c89(j: number): any {
           end: S.optional(S.String),
           granularity: S.optional(S.String),
           groupId: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-          measurements: S.optional(__S(497, __c62, 1)),
+          links: S.optional(__S(18912, __c591, 0)),
+          measurements: S.optional(__S(4961, __c155, 1)),
           processId: S.optional(S.String),
           start: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MeasurementsCollStatsLatencyCluster",
       });
-    case 5:
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49632,15 +47777,23 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterCollStatPinnedNamespacesRequest",
       });
-    case 6:
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clusterId: S.optional(S.String),
           groupId: S.optional(S.String),
-          pinnedNamespaces: __S(5, __c0, 5),
+          pinnedNamespaces: __S(18336, __c573, 0),
         }),
       ).annotate({ identifier: "PinnedNamespaces" });
-    case 7:
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49661,23 +47814,23 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterOnlineArchivesRequest",
       });
-  }
-}
-function __c90(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(129, __c16, 1));
     case 1:
+      return S.Array(__S(10469, __c327, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(720, __c90, 0),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(9729, __c304, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedOnlineArchiveView",
       });
-    case 2:
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49697,19 +47850,23 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterOverloadSimulationsRequest",
       });
-    case 3:
-      return S.Array(__S(131, __c16, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(10848, __c339, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(723, __c90, 3),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(9761, __c305, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedOverloadProtectionSimulationResponse",
       });
-    case 5:
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49726,51 +47883,55 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterPerformanceAdvisorDropIndexSuggestionsRequest",
       });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accessCount: S.optional(S.Number),
-          collation: S.optional(__S(117, __c14, 5)),
-          index: S.optional(__S(726, __c90, 6)),
+          collation: S.optional(__S(10016, __c313, 0)),
+          index: S.optional(__S(9824, __c307, 0)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          shards: S.optional(__S(5, __c0, 5)),
+          shards: S.optional(__S(18336, __c573, 0)),
           since: S.optional(S.String),
           sizeBytes: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "DropIndexSuggestionsIndex",
       });
-  }
-}
-function __c91(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(727, __c90, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(9793, __c306, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          hiddenIndexes: S.optional(__S(728, __c91, 0)),
-          redundantIndexes: S.optional(__S(728, __c91, 0)),
-          unusedIndexes: S.optional(__S(728, __c91, 0)),
+          hiddenIndexes: S.optional(__S(9794, __c306, 2)),
+          redundantIndexes: S.optional(__S(9794, __c306, 2)),
+          unusedIndexes: S.optional(__S(9794, __c306, 2)),
         }),
       ).annotate({
         identifier: "DropIndexSuggestionsResponse",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          content: __S(729, __c91, 1),
-          links: S.optional(__S(4, __c0, 4)),
-          locations: S.optional(__S(5, __c0, 5)),
+          content: __S(9795, __c306, 3),
+          links: S.optional(__S(18912, __c591, 0)),
+          locations: S.optional(__S(18336, __c573, 0)),
           status: S.Number,
         }),
       ).annotate({
         identifier: "EnvelopedDropIndexSuggestionsResponse",
       });
-    case 3:
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -49787,7 +47948,7 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterPerformanceAdvisorSchemaAdviceRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -49796,60 +47957,60 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "SchemaAdvisorTriggerDetails",
       });
-    case 5:
-      return S.Array(__S(732, __c91, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(9857, __c308, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.NullOr(S.String)),
-          triggers: S.optional(__S(733, __c91, 5)),
+          triggers: S.optional(__S(9858, __c308, 2)),
         }),
       ).annotate({
         identifier: "SchemaAdvisorNamespaceTriggers",
       });
-    case 7:
-      return S.Array(__S(734, __c91, 6));
-  }
-}
-function __c92(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(9859, __c308, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          affectedNamespaces: S.optional(__S(735, __c91, 7)),
+          affectedNamespaces: S.optional(__S(9860, __c308, 4)),
           description: S.optional(S.String),
           recommendation: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SchemaAdvisorItemRecommendation",
       });
-    case 1:
-      return S.Array(__S(736, __c92, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(9861, __c308, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          recommendations: S.optional(__S(737, __c92, 1)),
+          recommendations: S.optional(__S(9862, __c308, 6)),
         }),
       ).annotate({ identifier: "SchemaAdvisorResponse" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          content: __S(738, __c92, 2),
-          links: S.optional(__S(4, __c0, 4)),
-          locations: S.optional(__S(5, __c0, 5)),
+          content: __S(9863, __c308, 7),
+          links: S.optional(__S(18912, __c591, 0)),
+          locations: S.optional(__S(18336, __c573, 0)),
           status: S.Number,
         }),
       ).annotate({
         identifier: "EnvelopedSchemaAdvisorResponse",
       });
-    case 4:
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
-          processIds: S.optional(__S(227, __c28, 3).pipe(T.Query())),
-          namespaces: S.optional(__S(227, __c28, 3).pipe(T.Query())),
+          processIds: S.optional(__S(16992, __c531, 0).pipe(T.Query())),
+          namespaces: S.optional(__S(16992, __c531, 0).pipe(T.Query())),
           since: S.optional(S.Number.pipe(T.Query())),
           until: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -49863,7 +48024,22 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterPerformanceAdvisorSuggestedIndexesRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          content: __S(9929, __c310, 9),
+          links: S.optional(__S(18912, __c591, 0)),
+          locations: S.optional(__S(18336, __c573, 0)),
+          status: S.Number,
+        }),
+      ).annotate({
+        identifier: "EnvelopedPerformanceAdvisorResponse",
+      });
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ms: S.optional(S.Number),
@@ -49874,23 +48050,19 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "PerformanceAdvisorOpStats",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          predicates: S.optional(__S(726, __c90, 6)),
+          predicates: S.optional(__S(9824, __c307, 0)),
           raw: S.optional(S.NullOr(S.String)),
-          stats: S.optional(__S(741, __c92, 5)),
+          stats: S.optional(__S(9920, __c310, 0)),
         }),
       ).annotate({
         identifier: "PerformanceAdvisorOperationView",
       });
-    case 7:
-      return S.Array(__S(742, __c92, 6));
-  }
-}
-function __c93(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(9921, __c310, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           avgMs: S.optional(S.Number),
@@ -49898,52 +48070,41 @@ function __c93(j: number): any {
           id: S.optional(S.String),
           inefficiencyScore: S.optional(S.Number),
           namespace: S.optional(S.String),
-          operations: S.optional(__S(743, __c92, 7)),
+          operations: S.optional(__S(9922, __c310, 2)),
         }),
       ).annotate({ identifier: "PerformanceAdvisorShape" });
-    case 1:
-      return S.Array(__S(744, __c93, 0));
-    case 2:
-      return S.Record(S.String, S.Number);
-    case 3:
-      return S.Array(__S(746, __c93, 2));
     case 4:
+      return S.Array(__S(9923, __c310, 3));
+    case 5:
+      return S.Record(S.String, S.Number);
+    case 6:
+      return S.Array(__S(9925, __c310, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           avgObjSize: S.optional(S.Number),
-          collation: S.optional(__S(117, __c14, 5)),
+          collation: S.optional(__S(10016, __c313, 0)),
           id: S.optional(S.String),
-          impact: S.optional(__S(5, __c0, 5)),
-          index: S.optional(__S(747, __c93, 3)),
+          impact: S.optional(__S(18336, __c573, 0)),
+          index: S.optional(__S(9926, __c310, 6)),
           namespace: S.optional(S.String),
           weight: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PerformanceAdvisorIndex" });
-    case 5:
-      return S.Array(__S(748, __c93, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(9927, __c310, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          shapes: S.optional(__S(745, __c93, 1)),
-          suggestedIndexes: S.optional(__S(749, __c93, 5)),
+          shapes: S.optional(__S(9924, __c310, 4)),
+          suggestedIndexes: S.optional(__S(9928, __c310, 8)),
         }),
       ).annotate({
         identifier: "PerformanceAdvisorResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          content: __S(750, __c93, 6),
-          links: S.optional(__S(4, __c0, 4)),
-          locations: S.optional(__S(5, __c0, 5)),
-          status: S.Number,
-        }),
-      ).annotate({
-        identifier: "EnvelopedPerformanceAdvisorResponse",
-      });
   }
 }
-function __c94(j: number): any {
+function __c311(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49954,7 +48115,7 @@ function __c94(j: number): any {
           itemsPerPage: S.optional(S.Number.pipe(T.Query())),
           pageNum: S.optional(S.Number.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          providers: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          providers: S.optional(__S(18336, __c573, 0).pipe(T.Query())),
           tier: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -49977,32 +48138,32 @@ function __c94(j: number): any {
         identifier: "AvailableCloudProviderRegion",
       });
     case 2:
-      return S.Array(__S(753, __c94, 1));
+      return S.Array(__S(9953, __c311, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          availableRegions: S.optional(__S(754, __c94, 2)),
+          availableRegions: S.optional(__S(9954, __c311, 2)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ClusterCloudProviderInstanceSize",
       });
     case 4:
-      return S.Array(__S(755, __c94, 3));
+      return S.Array(__S(9955, __c311, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          instanceSizes: S.optional(__S(756, __c94, 4)),
+          instanceSizes: S.optional(__S(9956, __c311, 4)),
           provider: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudProviderRegions" });
     case 6:
-      return S.Array(__S(757, __c94, 5));
+      return S.Array(__S(9957, __c311, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(758, __c94, 6),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(9958, __c311, 6),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -50010,7 +48171,80 @@ function __c94(j: number): any {
       });
   }
 }
-function __c95(j: number): any {
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alternate: S.optional(S.String),
+          backwards: S.optional(S.Boolean),
+          caseFirst: S.optional(S.String),
+          caseLevel: S.optional(S.Boolean),
+          locale: S.String,
+          maxVariable: S.optional(S.String),
+          normalization: S.optional(S.Boolean),
+          numericOrdering: S.optional(S.Boolean),
+          strength: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Collation" });
+    case 1:
+      return S.Array(__S(7232, __c226, 0));
+    case 2:
+      return S.Record(S.String, S.Number);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          _2dsphereIndexVersion: S.optional(S.Number.pipe(T.Body("2dsphereIndexVersion"))),
+          background: S.optional(S.Boolean),
+          bits: S.optional(S.Number),
+          bucketSize: S.optional(S.Number),
+          columnstoreProjection: S.optional(__S(9986, __c312, 2)),
+          default_language: S.optional(S.String),
+          expireAfterSeconds: S.optional(S.Number),
+          hidden: S.optional(S.Boolean),
+          language_override: S.optional(S.String),
+          max: S.optional(S.Number),
+          min: S.optional(S.Number),
+          name: S.optional(S.String),
+          partialFilterExpression: S.optional(__S(10016, __c313, 0)),
+          sparse: S.optional(S.Boolean),
+          storageEngine: S.optional(__S(10016, __c313, 0)),
+          textIndexVersion: S.optional(S.Number),
+          weights: S.optional(__S(10016, __c313, 0)),
+        }),
+      ).annotate({ identifier: "IndexOptions" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          collation: S.optional(__S(9984, __c312, 0)),
+          collection: S.String,
+          db: S.String,
+          keys: __S(9985, __c312, 1),
+          options: S.optional(__S(9987, __c312, 3)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupClusterIndexRollingIndexRequest",
+      });
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c314(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -50019,12 +48253,12 @@ function __c95(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           since: S.optional(S.Number.pipe(T.Query())),
           until: S.optional(S.Number.pipe(T.Query())),
-          processIds: S.optional(__S(227, __c28, 3).pipe(T.Query())),
-          namespaces: S.optional(__S(227, __c28, 3).pipe(T.Query())),
-          commands: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          processIds: S.optional(__S(16992, __c531, 0).pipe(T.Query())),
+          namespaces: S.optional(__S(16992, __c531, 0).pipe(T.Query())),
+          commands: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
           nSummaries: S.optional(S.Number.pipe(T.Query())),
-          series: S.optional(__S(23, __c2, 7).pipe(T.Query())),
-          queryShapeHashes: S.optional(__S(227, __c28, 3).pipe(T.Query())),
+          series: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
+          queryShapeHashes: S.optional(__S(16992, __c531, 0).pipe(T.Query())),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -50039,17 +48273,21 @@ function __c95(j: number): any {
         identifier: "ListGroupClusterQueryShapeInsightSummariesRequest",
       });
     case 1:
-      return S.Array(__S(461, __c57, 5));
+      return S.Array(__S(4032, __c126, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           queryStatsCollection: S.optional(S.Unknown),
-          summaries: S.optional(__S(761, __c95, 1)),
+          summaries: S.optional(__S(10049, __c314, 1)),
         }),
       ).annotate({
         identifier: "QueryStatsSummaryListResponse",
       });
-    case 3:
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50071,17 +48309,21 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterQueryShapesRequest",
       });
-    case 4:
-      return S.Array(__S(458, __c57, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(3968, __c124, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(764, __c95, 4),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(10081, __c315, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedQueryShapes" });
-    case 6:
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50100,23 +48342,23 @@ function __c95(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupClustersRequest" });
-    case 7:
-      return S.Array(__S(88, __c11, 0));
-  }
-}
-function __c96(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(7139, __c223, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(767, __c95, 7),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(10113, __c316, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedClusterDescription20240805",
       });
-    case 1:
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50136,13 +48378,21 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterSearchIndexRequest",
       });
-    case 2:
-      return S.Array(__S(148, __c18, 4));
-    case 3:
-      return S.suspend(() => __S(770, __c96, 2).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(11685, __c365, 5));
+    case 1:
+      return S.suspend(() => __S(10176, __c318, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGroupClusterSearchIndexResponse",
       });
-    case 4:
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50160,7 +48410,11 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "ListGroupClusterSearchIndexesRequest",
       });
-    case 5:
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50176,7 +48430,7 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "ListGroupCollStatMetricsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           metricName: S.NullOr(S.String),
@@ -50185,23 +48439,23 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "CollStatsLatencyNamespaceMetric",
       });
-    case 7:
-      return S.Array(__S(774, __c96, 6));
-  }
-}
-function __c97(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(10241, __c320, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String,
-          links: S.optional(__S(4, __c0, 4)),
-          metrics: __S(775, __c96, 7),
+          links: S.optional(__S(18912, __c591, 0)),
+          metrics: __S(10242, __c320, 2),
         }),
       ).annotate({
         identifier: "CollStatsLatencyNamespaceMetrics",
       });
-    case 1:
+  }
+}
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50221,19 +48475,27 @@ function __c97(j: number): any {
       ).annotate({
         identifier: "ListGroupContainerAllRequest",
       });
-    case 2:
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(778, __c97, 2),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(10304, __c322, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedCloudProviderContainerView",
       });
-    case 4:
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50254,7 +48516,11 @@ function __c97(j: number): any {
       ).annotate({
         identifier: "ListGroupContainersRequest",
       });
-    case 5:
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50271,15 +48537,15 @@ function __c97(j: number): any {
       ).annotate({
         identifier: "ListGroupCustomDbRoleRolesRequest",
       });
-    case 6:
-      return S.Array(__S(470, __c58, 6));
-    case 7:
-      return S.suspend(() => __S(782, __c97, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(4320, __c135, 0));
+    case 2:
+      return S.suspend(() => __S(10369, __c324, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGroupCustomDbRoleRolesResponse",
       });
   }
 }
-function __c98(j: number): any {
+function __c325(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -50308,24 +48574,127 @@ function __c98(j: number): any {
           _id: S.optional(S.Number),
           createdAt: S.optional(S.String),
           groupId: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           notAfter: S.optional(S.String),
           subject: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserCertOutput" });
     case 2:
-      return S.Array(__S(785, __c98, 1));
+      return S.Array(__S(10401, __c325, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(786, __c98, 2),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(10402, __c325, 2),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedUserCertViewOutput",
       });
+  }
+}
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateDataProcessRegionView",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fieldName: S.String,
+          order: S.Number,
+        }),
+      ).annotate({ identifier: "PartitionFieldViewInput" });
+    case 2:
+      return S.Array(__S(10433, __c326, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          collName: S.String,
+          collectionType: S.optional(S.String),
+          criteria: __S(10464, __c327, 0),
+          dataExpirationRule: S.optional(__S(10465, __c327, 1)),
+          dataProcessRegion: S.optional(__S(10432, __c326, 0)),
+          dbName: S.String,
+          partitionFields: S.optional(__S(10434, __c326, 2)),
+          paused: S.optional(S.Boolean),
+          schedule: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupClusterOnlineArchiveRequest",
+      });
+  }
+}
+function __c327(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CriteriaView" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expireAfterDays: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DataExpirationRuleView" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataProcessRegionView" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          fieldName: S.String,
+          fieldType: S.optional(S.String),
+          order: S.Number,
+        }),
+      ).annotate({ identifier: "PartitionFieldView" });
     case 4:
+      return S.Array(__S(10467, __c327, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          clusterName: S.optional(S.String),
+          collName: S.optional(S.String),
+          collectionType: S.optional(S.String),
+          criteria: S.optional(__S(10464, __c327, 0)),
+          dataExpirationRule: S.optional(__S(10465, __c327, 1)),
+          dataProcessRegion: S.optional(__S(10466, __c327, 2)),
+          dataSetName: S.optional(S.String),
+          dbName: S.optional(S.String),
+          groupId: S.optional(S.String),
+          partitionFields: S.optional(__S(10468, __c327, 4)),
+          paused: S.optional(S.Boolean),
+          schedule: S.optional(S.Unknown),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BackupOnlineArchive" });
+  }
+}
+function __c328(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50345,19 +48714,23 @@ function __c98(j: number): any {
       ).annotate({
         identifier: "ListGroupDatabaseUsersRequest",
       });
-    case 5:
-      return S.Array(__S(162, __c20, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(12868, __c402, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(789, __c98, 5),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(10497, __c328, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedApiAtlasDatabaseUserViewOutput",
       });
-    case 7:
+  }
+}
+function __c329(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50375,17 +48748,17 @@ function __c98(j: number): any {
       ).annotate({
         identifier: "ListGroupDataFederationRequest",
       });
-  }
-}
-function __c99(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(188, __c23, 4));
     case 1:
-      return S.suspend(() => __S(792, __c99, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(13649, __c426, 17));
+    case 2:
+      return S.suspend(() => __S(10529, __c329, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGroupDataFederationResponse",
       });
-    case 2:
+  }
+}
+function __c330(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50403,13 +48776,17 @@ function __c99(j: number): any {
       ).annotate({
         identifier: "ListGroupDataFederationLimitsRequest",
       });
-    case 3:
-      return S.Array(__S(474, __c59, 2));
-    case 4:
-      return S.suspend(() => __S(795, __c99, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(4448, __c139, 0));
+    case 2:
+      return S.suspend(() => __S(10561, __c330, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGroupDataFederationLimitsResponse",
       });
-    case 5:
+  }
+}
+function __c331(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50430,13 +48807,13 @@ function __c99(j: number): any {
       ).annotate({
         identifier: "ListGroupEncryptionAtRestPrivateEndpointsRequest",
       });
-    case 6:
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(798, __c99, 6),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(10593, __c331, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -50444,7 +48821,7 @@ function __c99(j: number): any {
       });
   }
 }
-function __c100(j: number): any {
+function __c332(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -50455,9 +48832,9 @@ function __c100(j: number): any {
           itemsPerPage: S.optional(S.Number.pipe(T.Query())),
           pageNum: S.optional(S.Number.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          clusterNames: S.optional(__S(5, __c0, 5).pipe(T.Query())),
-          eventType: S.optional(__S(400, __c50, 0).pipe(T.Query())),
-          excludedEventType: S.optional(__S(400, __c50, 0).pipe(T.Query())),
+          clusterNames: S.optional(__S(18336, __c573, 0).pipe(T.Query())),
+          eventType: S.optional(__S(2208, __c69, 0).pipe(T.Query())),
+          excludedEventType: S.optional(__S(2208, __c69, 0).pipe(T.Query())),
           includeRaw: S.optional(S.Boolean.pipe(T.Query())),
           maxDate: S.optional(S.String.pipe(T.Query())),
           minDate: S.optional(S.String.pipe(T.Query())),
@@ -50475,12 +48852,16 @@ function __c100(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(801, __c100, 1),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(10625, __c332, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GroupPaginatedEventView" });
-    case 3:
+  }
+}
+function __c333(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50501,19 +48882,23 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "ListGroupFlexClusterBackupRestoreJobsRequest",
       });
-    case 4:
-      return S.Array(__S(197, __c24, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(14816, __c463, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(804, __c100, 4),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(10657, __c333, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedApiAtlasFlexBackupRestoreJob20241113View",
       });
-    case 6:
+  }
+}
+function __c334(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50534,23 +48919,23 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "ListGroupFlexClusterBackupSnapshotsRequest",
       });
-    case 7:
-      return S.Array(__S(491, __c61, 3));
-  }
-}
-function __c101(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(4864, __c152, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(807, __c100, 7),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(10689, __c334, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedApiAtlasFlexBackupSnapshot20241113View",
       });
-    case 1:
+  }
+}
+function __c335(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50570,19 +48955,23 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "ListGroupFlexClustersRequest",
       });
+    case 1:
+      return S.Array(__S(14403, __c450, 3));
     case 2:
-      return S.Array(__S(195, __c24, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(810, __c101, 2),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(10721, __c335, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedFlexClusters20241113",
       });
-    case 4:
+  }
+}
+function __c336(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50594,7 +48983,7 @@ function __c101(j: number): any {
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
-          metrics: __S(23, __c2, 7).pipe(T.Query()),
+          metrics: __S(16032, __c501, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -50606,7 +48995,11 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "ListGroupHostFtsMetricIndexMeasurementsRequest",
       });
-    case 5:
+  }
+}
+function __c337(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50616,7 +49009,7 @@ function __c101(j: number): any {
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
-          metrics: __S(23, __c2, 7).pipe(T.Query()),
+          metrics: __S(16032, __c501, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -50628,20 +49021,66 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "ListGroupHostFtsMetricMeasurementsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           end: S.optional(S.String),
           granularity: S.optional(S.String),
           groupId: S.optional(S.String),
-          hardwareMeasurements: S.optional(__S(497, __c62, 1)),
-          links: S.optional(__S(4, __c0, 4)),
+          hardwareMeasurements: S.optional(__S(4961, __c155, 1)),
+          links: S.optional(__S(18912, __c591, 0)),
           processId: S.optional(S.String),
           start: S.optional(S.String),
-          statusMeasurements: S.optional(__S(497, __c62, 1)),
+          statusMeasurements: S.optional(__S(4961, __c155, 1)),
         }),
       ).annotate({ identifier: "MeasurementsNonIndex" });
-    case 7:
+  }
+}
+function __c338(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          durationSeconds: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupClusterOverloadSimulationRequest",
+      });
+  }
+}
+function __c339(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cancelRequestedAt: S.optional(S.String),
+          clusterName: S.String,
+          durationSeconds: S.Number,
+          expiresAt: S.String,
+          groupId: S.String,
+          requestDate: S.String,
+          simulationId: S.String,
+          state: S.String,
+        }),
+      ).annotate({
+        identifier: "OverloadProtectionSimulationResponse",
+      });
+  }
+}
+function __c340(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50658,31 +49097,31 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "ListGroupHostFtsMetricsRequest",
       });
-  }
-}
-function __c102(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           metricName: S.NullOr(S.String),
           units: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "FTSMetric" });
-    case 1:
-      return S.Array(__S(816, __c102, 0));
     case 2:
+      return S.Array(__S(10881, __c340, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String,
-          hardwareMetrics: __S(817, __c102, 1),
-          indexMetrics: __S(817, __c102, 1),
-          links: S.optional(__S(4, __c0, 4)),
+          hardwareMetrics: __S(10882, __c340, 2),
+          indexMetrics: __S(10882, __c340, 2),
+          links: S.optional(__S(18912, __c591, 0)),
           processId: S.String,
-          statusMetrics: __S(817, __c102, 1),
+          statusMetrics: __S(10882, __c340, 2),
         }),
       ).annotate({ identifier: "CloudSearchMetrics" });
-    case 3:
+  }
+}
+function __c341(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50702,7 +49141,11 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "ListGroupIntegrationsRequest",
       });
-    case 4:
+  }
+}
+function __c342(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50717,13 +49160,17 @@ function __c102(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupLimitsRequest" });
-    case 5:
-      return S.Array(__S(506, __c63, 2));
-    case 6:
-      return S.suspend(() => __S(821, __c102, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(5216, __c163, 0));
+    case 2:
+      return S.suspend(() => __S(10945, __c342, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGroupLimitsResponse",
       });
-    case 7:
+  }
+}
+function __c343(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50744,23 +49191,23 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "ListGroupLogIntegrationsRequest",
       });
-  }
-}
-function __c103(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
     case 1:
+      return S.Array(S.Unknown);
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(824, __c103, 0),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(10977, __c343, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedLogIntegrationResponseOutput",
       });
-    case 2:
+  }
+}
+function __c344(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50780,19 +49227,23 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "ListGroupMcpConfigsRequest",
       });
-    case 3:
-      return S.Array(__S(216, __c27, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(16416, __c513, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(827, __c103, 3),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(11009, __c344, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedGroupMcpConfigView",
       });
-    case 5:
+  }
+}
+function __c345(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50813,17 +49264,25 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "ListGroupMcpConfigSecretsRequest",
       });
-    case 6:
+  }
+}
+function __c346(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(237, __c29, 5),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(17248, __c539, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedMcpConfigSecretView",
       });
-    case 7:
+  }
+}
+function __c347(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50845,23 +49304,23 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "ListGroupMetricIntegrationsRequest",
       });
-  }
-}
-function __c104(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(225, __c28, 1));
     case 1:
+      return S.Array(__S(16770, __c524, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(832, __c104, 0),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(11105, __c347, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedMetricIntegrationResponse",
       });
-    case 2:
+  }
+}
+function __c348(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50880,19 +49339,23 @@ function __c104(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupPeersRequest" });
-    case 3:
+    case 1:
       return S.Array(S.Unknown);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(835, __c104, 3),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(11137, __c348, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedContainerPeerView",
       });
-    case 5:
+  }
+}
+function __c349(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50910,15 +49373,15 @@ function __c104(j: number): any {
       ).annotate({
         identifier: "ListGroupPrivateEndpointEndpointServiceRequest",
       });
-    case 6:
-      return S.Array(__S(229, __c28, 5));
-    case 7:
-      return S.suspend(() => __S(838, __c104, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(16960, __c530, 0));
+    case 2:
+      return S.suspend(() => __S(11169, __c349, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGroupPrivateEndpointEndpointServiceResponse",
       });
   }
 }
-function __c105(j: number): any {
+function __c350(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -50940,7 +49403,114 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "ListGroupPrivateNetworkSettingEndpointIdsRequest",
       });
+  }
+}
+function __c351(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          autoScaling: S.optional(__S(11265, __c352, 1)),
+          defaultNodeCount: S.optional(S.NullOr(S.Number)),
+          specs: __S(11297, __c353, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment",
+            code: 200,
+            accept: "application/vnd.atlas.2024-05-30+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupClusterSearchDeploymentRequest",
+      });
+  }
+}
+function __c352(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          maxInstanceTier: S.optional(S.String),
+          minInstanceTier: S.optional(S.String),
+          scaleDownEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ApiSearchComputeAutoScalingView",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          compute: S.optional(__S(11264, __c352, 0)),
+        }),
+      ).annotate({ identifier: "ApiSearchAutoScalingView" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.optional(S.String),
+          instanceSize: S.optional(S.String),
+          nodeCount: S.optional(S.Number),
+          regionName: S.optional(S.String),
+          shardId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApiSearchDeploymentEffectiveSpecView",
+      });
+    case 3:
+      return S.Array(__S(11266, __c352, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          instanceSize: S.String,
+          nodeCount: S.Number,
+        }),
+      ).annotate({
+        identifier: "ApiSearchDeploymentSpecView",
+      });
+    case 5:
+      return S.Array(__S(11268, __c352, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          autoScaling: S.optional(__S(11265, __c352, 1)),
+          baselineSpecs: S.optional(__S(11267, __c352, 3)),
+          effectiveSpecs: S.optional(__S(11267, __c352, 3)),
+          encryptionAtRestProvider: S.optional(S.NullOr(S.String)),
+          groupId: S.optional(S.String),
+          id: S.optional(S.String),
+          specs: S.optional(__S(11269, __c352, 5)),
+          stateName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApiSearchDeploymentResponseView",
+      });
+  }
+}
+function __c353(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.optional(S.NullOr(S.String)),
+          instanceSize: S.String,
+          nodeCount: S.optional(S.NullOr(S.Number)),
+          regionName: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ApiSearchDeploymentRequestSpecView",
+      });
+    case 1:
+      return S.Array(__S(11296, __c353, 0));
+  }
+}
+function __c354(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -50948,7 +49518,7 @@ function __c105(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           collectionName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
-          metrics: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          metrics: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
           period: S.optional(S.String.pipe(T.Query())),
@@ -50963,7 +49533,7 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "ListGroupProcessCollStatMeasurementsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           collectionName: S.optional(S.String),
@@ -50971,15 +49541,19 @@ function __c105(j: number): any {
           end: S.optional(S.String),
           granularity: S.optional(S.String),
           groupId: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
-          measurements: S.optional(__S(497, __c62, 1)),
+          links: S.optional(__S(18912, __c591, 0)),
+          measurements: S.optional(__S(4961, __c155, 1)),
           processId: S.optional(S.String),
           start: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MeasurementsCollStatsLatencyHost",
       });
-    case 3:
+  }
+}
+function __c355(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51000,17 +49574,21 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "ListGroupProcessDatabasesRequest",
       });
-    case 4:
-      return S.Array(__S(532, __c66, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(5952, __c186, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(844, __c105, 4),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(11361, __c355, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedDatabaseView" });
-    case 6:
+  }
+}
+function __c356(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51031,23 +49609,23 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "ListGroupProcessDisksRequest",
       });
-    case 7:
-      return S.Array(__S(538, __c67, 2));
-  }
-}
-function __c106(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(6080, __c190, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(847, __c105, 7),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(11393, __c356, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedDiskPartitionView",
       });
-    case 1:
+  }
+}
+function __c357(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51067,17 +49645,21 @@ function __c106(j: number): any {
       ).annotate({
         identifier: "ListGroupProcessesRequest",
       });
+    case 1:
+      return S.Array(__S(5856, __c183, 0));
     case 2:
-      return S.Array(__S(529, __c66, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(850, __c106, 2),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(11425, __c357, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedHostViewAtlas" });
-    case 4:
+  }
+}
+function __c358(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51097,24 +49679,24 @@ function __c106(j: number): any {
       ).annotate({
         identifier: "ListGroupProcessPerformanceAdvisorNamespacesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamespaceObj" });
-    case 6:
-      return S.Array(__S(853, __c106, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(11457, __c358, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          namespaces: S.optional(__S(854, __c106, 6)),
+          namespaces: S.optional(__S(11458, __c358, 2)),
         }),
       ).annotate({ identifier: "Namespaces" });
   }
 }
-function __c107(j: number): any {
+function __c359(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -51124,7 +49706,7 @@ function __c107(j: number): any {
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           duration: S.optional(S.Number.pipe(T.Query())),
-          namespaces: S.optional(__S(227, __c28, 3).pipe(T.Query())),
+          namespaces: S.optional(__S(16992, __c531, 0).pipe(T.Query())),
           nLogs: S.optional(S.Number.pipe(T.Query())),
           since: S.optional(S.Number.pipe(T.Query())),
           includeMetrics: S.optional(S.Boolean.pipe(T.Query())),
@@ -51166,7 +49748,7 @@ function __c107(j: number): any {
       return S.suspend(() =>
         S.Struct({
           line: S.optional(S.String),
-          metrics: S.optional(__S(857, __c107, 1)),
+          metrics: S.optional(__S(11489, __c359, 1)),
           namespace: S.optional(S.String),
           opType: S.optional(S.String),
           replicaState: S.optional(S.String),
@@ -51175,16 +49757,20 @@ function __c107(j: number): any {
         identifier: "PerformanceAdvisorSlowQuery",
       });
     case 3:
-      return S.Array(__S(858, __c107, 2));
+      return S.Array(__S(11490, __c359, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          slowQueries: S.optional(__S(859, __c107, 3)),
+          slowQueries: S.optional(__S(11491, __c359, 3)),
         }),
       ).annotate({
         identifier: "PerformanceAdvisorSlowQueryList",
       });
-    case 5:
+  }
+}
+function __c360(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51195,7 +49781,7 @@ function __c107(j: number): any {
           pageNum: S.optional(S.Number.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           duration: S.optional(S.Number.pipe(T.Query())),
-          namespaces: S.optional(__S(227, __c28, 3).pipe(T.Query())),
+          namespaces: S.optional(__S(16992, __c531, 0).pipe(T.Query())),
           nExamples: S.optional(S.Number.pipe(T.Query())),
           nIndexes: S.optional(S.Number.pipe(T.Query())),
           since: S.optional(S.Number.pipe(T.Query())),
@@ -51210,7 +49796,11 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "ListGroupProcessPerformanceAdvisorSuggestedIndexesRequest",
       });
-    case 6:
+  }
+}
+function __c361(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           envelope: S.optional(S.Boolean.pipe(T.Query())),
@@ -51227,7 +49817,11 @@ function __c107(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupsRequest" });
-    case 7:
+  }
+}
+function __c362(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51250,7 +49844,7 @@ function __c107(j: number): any {
       });
   }
 }
-function __c108(j: number): any {
+function __c363(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -51273,18 +49867,107 @@ function __c108(j: number): any {
         identifier: "ListGroupServiceAccountsRequest",
       });
     case 1:
-      return S.Array(__S(238, __c29, 6));
+      return S.Array(__S(17216, __c538, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(865, __c108, 1),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(11617, __c363, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedGroupServiceAccounts",
       });
+  }
+}
+function __c364(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          collectionName: S.String,
+          database: S.String,
+          name: S.String,
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes",
+            code: 200,
+            accept: "application/vnd.atlas.2024-05-30+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupClusterSearchIndexRequest",
+      });
+  }
+}
+function __c365(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          numPartitions: S.optional(S.Number),
+          storedSource: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "SearchIndexDefinition" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.String),
+          version: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SearchIndexDefinitionVersion",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          definition: S.optional(__S(11680, __c365, 0)),
+          definitionVersion: S.optional(__S(11681, __c365, 1)),
+          message: S.optional(S.String),
+          queryable: S.optional(S.Boolean),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SearchMainIndexStatusDetail",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          hostname: S.optional(S.String),
+          mainIndex: S.optional(__S(11682, __c365, 2)),
+          queryable: S.optional(S.Boolean),
+          stagedIndex: S.optional(__S(11682, __c365, 2)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SearchHostStatusDetail" });
+    case 4:
+      return S.Array(__S(11683, __c365, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          collectionName: S.optional(S.String),
+          database: S.optional(S.String),
+          indexID: S.optional(S.String),
+          latestDefinition: S.optional(__S(11680, __c365, 0)),
+          latestDefinitionVersion: S.optional(__S(11681, __c365, 1)),
+          name: S.optional(S.String),
+          queryable: S.optional(S.Boolean),
+          status: S.optional(S.String),
+          statusDetail: S.optional(__S(11684, __c365, 4)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SearchIndexResponse" });
+  }
+}
+function __c366(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51303,7 +49986,11 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "ListGroupStreamActiveVpcPeeringConnectionsRequest",
       });
-    case 4:
+  }
+}
+function __c367(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _id: S.optional(S.String),
@@ -51313,7 +50000,7 @@ function __c108(j: number): any {
           cloudStatus: S.optional(S.String),
           expirationTime: S.optional(S.String),
           groupId: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           localStatus: S.optional(S.String),
           name: S.optional(S.String),
           requesterAccountId: S.optional(S.String),
@@ -51322,19 +50009,23 @@ function __c108(j: number): any {
           statusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "VPCPeeringConnection" });
-    case 5:
-      return S.Array(__S(868, __c108, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(11744, __c367, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(869, __c108, 5),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(11745, __c367, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedApiStreamsVPCPeeringConnectionView",
       });
-    case 7:
+  }
+}
+function __c368(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51355,23 +50046,23 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "ListGroupStreamConnectionFailoverConnectionsRequest",
       });
-  }
-}
-function __c109(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
     case 1:
+      return S.Array(S.Unknown);
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(872, __c109, 0),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(11777, __c368, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedApiStreamsFailoverConnectionOutput",
       });
-    case 2:
+  }
+}
+function __c369(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51391,17 +50082,21 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "ListGroupStreamConnectionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(261, __c32, 5),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(17696, __c553, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedApiStreamsConnectionViewOutput",
       });
-    case 4:
+  }
+}
+function __c370(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51420,19 +50115,23 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "ListGroupStreamPrivateLinkConnectionsRequest",
       });
-    case 5:
-      return S.Array(__S(245, __c30, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(17472, __c546, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(877, __c109, 5),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(11841, __c370, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedApiStreamsPrivateLinkView",
       });
-    case 7:
+  }
+}
+function __c371(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51454,7 +50153,7 @@ function __c109(j: number): any {
       });
   }
 }
-function __c110(j: number): any {
+function __c372(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -51476,18 +50175,22 @@ function __c110(j: number): any {
         identifier: "ListGroupStreamWorkspacesRequest",
       });
     case 1:
-      return S.Array(__S(266, __c33, 2));
+      return S.Array(__S(17732, __c554, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(881, __c110, 1),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(11905, __c372, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedApiStreamsTenantViewOutput",
       });
-    case 3:
+  }
+}
+function __c373(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51505,7 +50208,11 @@ function __c110(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupTeamsRequest" });
-    case 4:
+  }
+}
+function __c374(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -51517,7 +50224,7 @@ function __c110(j: number): any {
           flattenTeams: S.optional(S.Boolean.pipe(T.Query())),
           includeOrgUsers: S.optional(S.Boolean.pipe(T.Query())),
           orgMembershipStatus: S.optional(S.String.pipe(T.Query())),
-          orgMembershipStatuses: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          orgMembershipStatuses: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
           username: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -51528,17 +50235,21 @@ function __c110(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupUsersRequest" });
-    case 5:
+    case 1:
       return S.Array(S.Unknown);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(885, __c110, 5),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(11969, __c374, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedGroupUserView" });
-    case 7:
+  }
+}
+function __c375(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -51559,7 +50270,7 @@ function __c110(j: number): any {
       });
   }
 }
-function __c111(j: number): any {
+function __c376(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -51582,7 +50293,33 @@ function __c111(j: number): any {
       ).annotate({
         identifier: "ListOrgApiKeyAccessListEntriesRequest",
       });
-    case 1:
+  }
+}
+function __c377(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          providerName: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/containers",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupContainerRequest",
+      });
+  }
+}
+function __c378(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -51600,7 +50337,11 @@ function __c111(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOrgApiKeysRequest" });
-    case 2:
+  }
+}
+function __c379(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -51609,7 +50350,7 @@ function __c111(j: number): any {
           itemsPerPage: S.optional(S.Number.pipe(T.Query())),
           pageNum: S.optional(S.Number.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          eventType: S.optional(__S(571, __c71, 3).pipe(T.Query())),
+          eventType: S.optional(__S(6944, __c217, 0).pipe(T.Query())),
           includeRaw: S.optional(S.Boolean.pipe(T.Query())),
           maxDate: S.optional(S.String.pipe(T.Query())),
           minDate: S.optional(S.String.pipe(T.Query())),
@@ -51622,17 +50363,21 @@ function __c111(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOrgEventsRequest" });
-    case 3:
+    case 1:
       return S.Array(S.Unknown);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(891, __c111, 3),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(12129, __c379, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OrgPaginatedEventView" });
-    case 5:
+  }
+}
+function __c380(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -51649,19 +50394,19 @@ function __c111(j: number): any {
       ).annotate({
         identifier: "ListOrgInvoicePendingRequest",
       });
-    case 6:
-      return S.Array(__S(602, __c75, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(7719, __c241, 7));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(894, __c111, 6),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(12161, __c380, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedApiInvoiceView" });
   }
 }
-function __c112(j: number): any {
+function __c381(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -51685,18 +50430,22 @@ function __c112(j: number): any {
         identifier: "ListOrgInvoiceReportsRequest",
       });
     case 1:
-      return S.Array(__S(282, __c35, 2));
+      return S.Array(__S(18112, __c566, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(897, __c112, 1),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(12193, __c381, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedInvoiceReportView",
       });
-    case 3:
+  }
+}
+function __c382(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -51706,7 +50455,7 @@ function __c112(j: number): any {
           pageNum: S.optional(S.Number.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           viewLinkedInvoices: S.optional(S.Boolean.pipe(T.Query())),
-          statusNames: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          statusNames: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
           fromDate: S.optional(S.String.pipe(T.Query())),
           toDate: S.optional(S.String.pipe(T.Query())),
           sortBy: S.optional(S.String.pipe(T.Query())),
@@ -51720,9 +50469,9 @@ function __c112(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOrgInvoicesRequest" });
-    case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(901, __c112, 5)));
-    case 5:
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(12226, __c382, 2)));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           amountBilledCents: S.optional(S.Number),
@@ -51731,8 +50480,8 @@ function __c112(j: number): any {
           creditsCents: S.optional(S.Number),
           endDate: S.optional(S.String),
           id: S.optional(S.String),
-          linkedInvoices: S.optional(__S(900, __c112, 4)),
-          links: S.optional(__S(4, __c0, 4)),
+          linkedInvoices: S.optional(__S(12225, __c382, 1)),
+          links: S.optional(__S(18912, __c591, 0)),
           orgId: S.optional(S.String),
           salesTaxCents: S.optional(S.Number),
           startDate: S.optional(S.String),
@@ -51742,13 +50491,13 @@ function __c112(j: number): any {
           updated: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingInvoiceMetadata" });
-    case 6:
-      return S.Array(__S(901, __c112, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(12226, __c382, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(902, __c112, 6),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(12227, __c382, 3),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -51756,7 +50505,7 @@ function __c112(j: number): any {
       });
   }
 }
-function __c113(j: number): any {
+function __c383(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -51794,12 +50543,12 @@ function __c113(j: number): any {
         identifier: "AvailableClustersDeployment",
       });
     case 2:
-      return S.Array(__S(905, __c113, 1));
+      return S.Array(__S(12257, __c383, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          deployments: __S(906, __c113, 2),
-          migrationHosts: __S(5, __c0, 5),
+          deployments: __S(12258, __c383, 2),
+          migrationHosts: __S(18336, __c573, 0),
           name: S.String,
           projectId: S.String,
         }),
@@ -51807,12 +50556,16 @@ function __c113(j: number): any {
         identifier: "LiveImportAvailableProject",
       });
     case 4:
-      return S.Array(__S(907, __c113, 3));
+      return S.Array(__S(12259, __c383, 3));
     case 5:
-      return S.suspend(() => __S(908, __c113, 4).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(12260, __c383, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrgLiveMigrationAvailableProjectsResponse",
       });
-    case 6:
+  }
+}
+function __c384(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -51832,35 +50585,35 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "ListOrgLogIntegrationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          logTypes: __S(23, __c2, 7),
+          logTypes: __S(16032, __c501, 0),
           type: S.String,
           otelEndpoint: S.String,
-          otelSuppliedHeaders: __S(220, __c27, 4),
+          otelSuppliedHeaders: __S(16737, __c523, 1),
         }),
       ).annotate({
         identifier: "OrgOtelLogIntegrationResponse",
       });
-  }
-}
-function __c114(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(911, __c113, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(12289, __c384, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(912, __c114, 0),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(12290, __c384, 2),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedOrgLogIntegrationResponse",
       });
-    case 2:
+  }
+}
+function __c385(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -51878,19 +50631,23 @@ function __c114(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOrgMcpConfigsRequest" });
-    case 3:
-      return S.Array(__S(288, __c36, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(18272, __c571, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(915, __c114, 3),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(12321, __c385, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedOrgMcpConfigView",
       });
-    case 5:
+  }
+}
+function __c386(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -51911,7 +50668,11 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "ListOrgMcpConfigSecretsRequest",
       });
-    case 6:
+  }
+}
+function __c387(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -51928,17 +50689,75 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "ListOrgResourcePoliciesRequest",
       });
-    case 7:
-      return S.Array(__S(296, __c37, 0));
-  }
-}
-function __c115(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(919, __c114, 7).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(18467, __c577, 3));
+    case 2:
+      return S.suspend(() => __S(12385, __c387, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrgResourcePoliciesResponse",
       });
+  }
+}
+function __c388(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          actions: S.optional(__S(12451, __c389, 3)),
+          inheritedRoles: S.optional(__S(12453, __c389, 5)),
+          roleName: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/customDBRoles/roles",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupCustomDbRoleRoleRequest",
+      });
+  }
+}
+function __c389(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cluster: S.Boolean,
+          collection: S.String,
+          db: S.String,
+        }),
+      ).annotate({
+        identifier: "DatabasePermittedNamespaceResource",
+      });
     case 1:
+      return S.Array(__S(12448, __c389, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          resources: __S(12449, __c389, 1),
+        }),
+      ).annotate({ identifier: "DatabasePrivilegeAction" });
+    case 3:
+      return S.Array(__S(12450, __c389, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          db: S.String,
+          role: S.String,
+        }),
+      ).annotate({ identifier: "DatabaseInheritedRole" });
+    case 5:
+      return S.Array(__S(12452, __c389, 4));
+  }
+}
+function __c390(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           envelope: S.optional(S.Boolean.pipe(T.Query())),
@@ -51956,19 +50775,23 @@ function __c115(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOrgsRequest" });
+    case 1:
+      return S.Array(__S(17824, __c557, 0));
     case 2:
-      return S.Array(__S(270, __c33, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(922, __c115, 2),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(12481, __c390, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationView",
       });
-    case 4:
+  }
+}
+function __c391(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -51989,7 +50812,11 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "ListOrgServiceAccountAccessListRequest",
       });
-    case 5:
+  }
+}
+function __c392(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -52009,13 +50836,13 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "ListOrgServiceAccountsRequest",
       });
-    case 6:
-      return S.Array(__S(271, __c33, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(17888, __c559, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(926, __c115, 6),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(12545, __c392, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -52023,7 +50850,7 @@ function __c115(j: number): any {
       });
   }
 }
-function __c116(j: number): any {
+function __c393(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -52044,16 +50871,20 @@ function __c116(j: number): any {
         ),
       ).annotate({ identifier: "ListOrgTeamsRequest" });
     case 1:
-      return S.Array(__S(628, __c78, 4));
+      return S.Array(__S(8320, __c260, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(929, __c116, 1),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(12577, __c393, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedTeamView" });
-    case 3:
+  }
+}
+function __c394(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -52064,7 +50895,7 @@ function __c116(j: number): any {
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           username: S.optional(S.String.pipe(T.Query())),
           orgMembershipStatus: S.optional(S.String.pipe(T.Query())),
-          orgMembershipStatuses: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          orgMembershipStatuses: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
           userId: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -52075,17 +50906,25 @@ function __c116(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOrgTeamUsersRequest" });
-    case 4:
+  }
+}
+function __c395(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(932, __c116, 4),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(12640, __c395, 0),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedOrgUserView" });
-    case 6:
+  }
+}
+function __c396(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -52096,7 +50935,7 @@ function __c116(j: number): any {
           pageNum: S.optional(S.Number.pipe(T.Query())),
           username: S.optional(S.String.pipe(T.Query())),
           orgMembershipStatus: S.optional(S.String.pipe(T.Query())),
-          orgMembershipStatuses: S.optional(__S(23, __c2, 7).pipe(T.Query())),
+          orgMembershipStatuses: S.optional(__S(16032, __c501, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -52106,7 +50945,11 @@ function __c116(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOrgUsersRequest" });
-    case 7:
+  }
+}
+function __c397(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           itemsPerPage: S.optional(S.Number.pipe(T.Query())),
@@ -52128,23 +50971,23 @@ function __c116(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRateLimitsRequest" });
-  }
-}
-function __c117(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(635, __c79, 3));
     case 1:
+      return S.Array(__S(8451, __c264, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(936, __c117, 0),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(12705, __c397, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedRateLimitEndpointSets",
       });
-    case 2:
+  }
+}
+function __c398(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           envelope: S.optional(S.Boolean.pipe(T.Query())),
@@ -52161,17 +51004,21 @@ function __c117(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSkusRequest" });
-    case 3:
-      return S.Array(__S(637, __c79, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(8512, __c266, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(939, __c117, 3),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(12737, __c398, 1),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaginatedApiSKUView" });
-    case 5:
+  }
+}
+function __c399(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52188,13 +51035,17 @@ function __c117(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MigrateGroupRequest" });
-    case 6:
+  }
+}
+function __c400(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
-          namespaces: S.optional(__S(5, __c0, 5)),
+          namespaces: S.optional(__S(18336, __c573, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -52206,7 +51057,84 @@ function __c117(j: number): any {
       ).annotate({
         identifier: "PinGroupClusterCollStatPinnedNamespacesRequest",
       });
-    case 7:
+  }
+}
+function __c401(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          awsIAMType: S.optional(S.String),
+          databaseName: S.String,
+          deleteAfterDate: S.optional(S.String),
+          description: S.optional(S.String),
+          labels: S.optional(__S(7201, __c225, 1)),
+          ldapAuthType: S.optional(S.String),
+          oidcAuthType: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          roles: __S(12865, __c402, 1),
+          scopes: S.optional(__S(12867, __c402, 3)),
+          username: S.String,
+          x509Type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/databaseUsers",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupDatabaseUserRequest",
+      });
+  }
+}
+function __c402(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collectionName: S.optional(S.String),
+          databaseName: S.String,
+          roleName: S.String,
+        }),
+      ).annotate({ identifier: "DatabaseUserRole" });
+    case 1:
+      return S.Array(__S(12864, __c402, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "UserScope" });
+    case 3:
+      return S.Array(__S(12866, __c402, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          awsIAMType: S.optional(S.String),
+          databaseName: S.String,
+          deleteAfterDate: S.optional(S.String),
+          description: S.optional(S.String),
+          labels: S.optional(__S(7201, __c225, 1)),
+          ldapAuthType: S.optional(S.String),
+          links: S.optional(__S(18912, __c591, 0)),
+          oidcAuthType: S.optional(S.String),
+          roles: __S(12865, __c402, 1),
+          scopes: S.optional(__S(12867, __c402, 3)),
+          username: S.String,
+          x509Type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudDatabaseUserOutput" });
+  }
+}
+function __c403(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52227,7 +51155,7 @@ function __c117(j: number): any {
       });
   }
 }
-function __c118(j: number): any {
+function __c404(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -52246,7 +51174,11 @@ function __c118(j: number): any {
       ).annotate({
         identifier: "RejectGroupStreamVpcPeeringConnectionRequest",
       });
-    case 1:
+  }
+}
+function __c405(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           federationSettingsId: S.String.pipe(T.Label()),
@@ -52263,7 +51195,11 @@ function __c118(j: number): any {
       ).annotate({
         identifier: "RemoveFederationSettingConnectedOrgConfigRequest",
       });
-    case 2:
+  }
+}
+function __c406(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52279,7 +51215,11 @@ function __c118(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveGroupApiKeyRequest" });
-    case 3:
+  }
+}
+function __c407(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52294,7 +51234,11 @@ function __c118(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveGroupTeamRequest" });
-    case 4:
+  }
+}
+function __c408(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52310,7 +51254,11 @@ function __c118(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveGroupUserRequest" });
-    case 5:
+  }
+}
+function __c409(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52329,7 +51277,11 @@ function __c118(j: number): any {
       ).annotate({
         identifier: "RemoveGroupUserRoleRequest",
       });
-    case 6:
+  }
+}
+function __c410(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -52346,7 +51298,11 @@ function __c118(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveOrgTeamUserRequest" });
-    case 7:
+  }
+}
+function __c411(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -52364,7 +51320,7 @@ function __c118(j: number): any {
       ).annotate({ identifier: "RemoveOrgUserRequest" });
   }
 }
-function __c119(j: number): any {
+function __c412(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -52383,7 +51339,42 @@ function __c119(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveOrgUserRoleRequest" });
-    case 1:
+  }
+}
+function __c413(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          monthsUntilExpiration: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupDatabaseUserCertRequest",
+      });
+  }
+}
+function __c414(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateGroupDatabaseUserCertResponse",
+      });
+  }
+}
+function __c415(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -52400,7 +51391,11 @@ function __c119(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RenameOrgTeamRequest" });
-    case 2:
+  }
+}
+function __c416(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52419,7 +51414,11 @@ function __c119(j: number): any {
       ).annotate({
         identifier: "RequestGroupEncryptionAtRestPrivateEndpointDeletionRequest",
       });
-    case 3:
+  }
+}
+function __c417(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52436,7 +51435,11 @@ function __c119(j: number): any {
       ).annotate({
         identifier: "RequestGroupSampleDatasetLoadRequest",
       });
-    case 4:
+  }
+}
+function __c418(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52456,7 +51459,11 @@ function __c119(j: number): any {
       ).annotate({
         identifier: "ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest",
       });
-    case 5:
+  }
+}
+function __c419(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52473,7 +51480,11 @@ function __c119(j: number): any {
       ).annotate({
         identifier: "ResetGroupAiModelApiRateLimitsRequest",
       });
-    case 6:
+  }
+}
+function __c420(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52489,7 +51500,11 @@ function __c119(j: number): any {
       ).annotate({
         identifier: "ResetGroupMaintenanceWindowRequest",
       });
-    case 7:
+  }
+}
+function __c421(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -52508,7 +51523,7 @@ function __c119(j: number): any {
       });
   }
 }
-function __c120(j: number): any {
+function __c422(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -52528,7 +51543,11 @@ function __c120(j: number): any {
       ).annotate({
         identifier: "RestartGroupClusterPrimariesRequest",
       });
-    case 1:
+  }
+}
+function __c423(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           federationSettingsId: S.String.pipe(T.Label()),
@@ -52545,7 +51564,11 @@ function __c120(j: number): any {
       ).annotate({
         identifier: "RevokeFederationSettingIdentityProviderJwksRequest",
       });
-    case 2:
+  }
+}
+function __c424(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52563,22 +51586,231 @@ function __c120(j: number): any {
       ).annotate({
         identifier: "RevokeGroupClusterMongoDbEmployeeAccessRequest",
       });
+  }
+}
+function __c425(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          skipRoleValidation: S.optional(S.Boolean.pipe(T.Query())),
+          cloudProviderConfig: S.optional(__S(13666, __c427, 2)),
+          dataProcessRegion: S.optional(__S(13632, __c426, 0)),
+          name: S.optional(S.String),
+          storage: S.optional(__S(13668, __c427, 4)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/dataFederation",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupDataFederationRequest",
+      });
+  }
+}
+function __c426(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.String,
+          region: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "DataLakeDataProcessRegion",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          allowInsecure: S.optional(S.Boolean),
+          collection: S.optional(S.String),
+          collectionRegex: S.optional(S.String),
+          database: S.optional(S.String),
+          databaseRegex: S.optional(S.String),
+          datasetName: S.optional(S.String),
+          datasetPrefix: S.optional(S.String),
+          defaultFormat: S.optional(S.String),
+          path: S.optional(S.String),
+          provenanceFieldName: S.optional(S.String),
+          storeName: S.optional(S.String),
+          trimLevel: S.optional(S.Number),
+          urls: S.optional(__S(18336, __c573, 0)),
+        }),
+      ).annotate({
+        identifier: "DataLakeDatabaseDataSourceSettings",
+      });
+    case 2:
+      return S.Array(__S(13633, __c426, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dataSources: S.optional(__S(13634, __c426, 2)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataLakeDatabaseCollection",
+      });
+    case 4:
+      return S.Array(__S(13635, __c426, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          pipeline: S.optional(S.String),
+          source: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataLakeApiBase" });
+    case 6:
+      return S.Array(__S(13637, __c426, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          collections: S.optional(__S(13636, __c426, 4)),
+          maxWildcardCollections: S.optional(S.Number),
+          name: S.optional(S.String),
+          views: S.optional(__S(13638, __c426, 6)),
+        }),
+      ).annotate({ identifier: "DataLakeDatabaseInstance" });
+    case 8:
+      return S.Array(__S(13639, __c426, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          externalId: S.optional(S.String),
+          iamAssumedRoleARN: S.optional(S.String),
+          iamUserARN: S.optional(S.String),
+          roleId: S.String,
+        }),
+      ).annotate({
+        identifier: "DataLakeAWSCloudProviderConfigOutput",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          atlasAppId: S.optional(S.String),
+          roleId: S.String,
+          servicePrincipalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataFederationAzureCloudProviderConfig",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          gcpServiceAccount: S.optional(S.String),
+          roleId: S.String,
+        }),
+      ).annotate({
+        identifier: "DataFederationGCPCloudProviderConfig",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          aws: S.optional(__S(13641, __c426, 9)),
+          azure: S.optional(__S(13642, __c426, 10)),
+          gcp: S.optional(__S(13643, __c426, 11)),
+        }),
+      ).annotate({
+        identifier: "DataLakeCloudProviderConfigOutput",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          hostname: S.optional(S.String),
+          privateEndpoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpointHostname" });
+    case 14:
+      return S.Array(__S(13645, __c426, 13));
+    case 15:
+      return S.Array(S.Unknown);
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          databases: S.optional(__S(13640, __c426, 8)),
+          stores: S.optional(__S(13647, __c426, 15)),
+        }),
+      ).annotate({ identifier: "DataLakeStorage" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProviderConfig: S.optional(__S(13644, __c426, 12)),
+          dataProcessRegion: S.optional(__S(13632, __c426, 0)),
+          groupId: S.optional(S.String),
+          hostnames: S.optional(__S(18336, __c573, 0)),
+          name: S.optional(S.String),
+          privateEndpointHostnames: S.optional(__S(13646, __c426, 14)),
+          state: S.optional(S.String),
+          storage: S.optional(__S(13648, __c426, 16)),
+        }),
+      ).annotate({ identifier: "DataLakeTenantOutput" });
+  }
+}
+function __c427(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleId: S.String,
+          testS3Bucket: S.String,
+        }),
+      ).annotate({
+        identifier: "DataLakeAWSCloudProviderConfigInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          roleId: S.String,
+        }),
+      ).annotate({
+        identifier: "DataFederationAzureCloudProviderConfigInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          aws: S.optional(__S(13664, __c427, 0)),
+          azure: S.optional(__S(13665, __c427, 1)),
+          gcp: S.optional(__S(13665, __c427, 1)),
+        }),
+      ).annotate({
+        identifier: "DataLakeCloudProviderConfigInput",
+      });
+    case 3:
+      return S.Array(S.Unknown);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          databases: S.optional(__S(13640, __c426, 8)),
+          stores: S.optional(__S(13667, __c427, 3)),
+        }),
+      ).annotate({ identifier: "DataLakeStorageInput" });
+  }
+}
+function __c428(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           billEndDate: S.optional(S.String),
           billStartDate: S.optional(S.String),
-          clusterIds: S.optional(__S(5, __c0, 5)),
-          groupIds: S.optional(__S(5, __c0, 5)),
+          clusterIds: S.optional(__S(18336, __c573, 0)),
+          groupIds: S.optional(__S(18336, __c573, 0)),
           includeZeroCentLineItems: S.optional(S.Boolean),
-          skuServices: S.optional(__S(23, __c2, 7)),
+          skuServices: S.optional(__S(16032, __c501, 0)),
           usageEndDate: S.optional(S.String),
           usageStartDate: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UsageDetailsFilterRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -52586,7 +51818,7 @@ function __c120(j: number): any {
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           itemsPerPage: S.optional(S.Number.pipe(T.Query())),
           pageNum: S.optional(S.Number.pipe(T.Query())),
-          filters: S.optional(__S(963, __c120, 3)),
+          filters: S.optional(__S(13696, __c428, 0)),
           sortField: S.optional(S.String),
           sortOrder: S.optional(S.String),
         }).pipe(
@@ -52600,7 +51832,7 @@ function __c120(j: number): any {
       ).annotate({
         identifier: "SearchOrgInvoiceLineItemsRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           processorId: S.optional(S.String),
@@ -52608,10 +51840,10 @@ function __c120(j: number): any {
           workspace: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdditionalData" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          additionalData: S.optional(__S(965, __c120, 5)),
+          additionalData: S.optional(__S(13698, __c428, 2)),
           billDate: S.optional(S.String),
           cloudProvider: S.optional(S.String),
           clusterName: S.optional(S.String),
@@ -52625,23 +51857,23 @@ function __c120(j: number): any {
       ).annotate({
         identifier: "PublicApiUsageDetailsLineItemView",
       });
-    case 7:
-      return S.Array(__S(966, __c120, 6));
-  }
-}
-function __c121(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(13699, __c428, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          results: __S(967, __c120, 7),
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(13700, __c428, 4),
           totalCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PaginatedPublicApiUsageDetailsLineItemView",
       });
-    case 1:
+  }
+}
+function __c429(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52661,7 +51893,11 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "SetGroupDataFederationLimitRequest",
       });
-    case 2:
+  }
+}
+function __c430(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52678,14 +51914,18 @@ function __c121(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SetGroupLimitRequest" });
-    case 3:
+  }
+}
+function __c431(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          outageFilters: S.optional(__S(390, __c48, 6)),
+          outageFilters: S.optional(__S(1729, __c54, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -52697,7 +51937,11 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "StartGroupClusterOutageSimulationRequest",
       });
-    case 4:
+  }
+}
+function __c432(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52716,7 +51960,11 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "StartGroupStreamProcessorRequest",
       });
-    case 5:
+  }
+}
+function __c433(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clearCheckpoint: S.optional(S.Boolean),
@@ -52727,7 +51975,7 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "StreamsStartProcessorFailover",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52735,8 +51983,8 @@ function __c121(j: number): any {
           processorName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          autoscaling: S.optional(S.NullOr(__S(246, __c30, 6))),
-          failover: S.optional(__S(973, __c121, 5)),
+          autoscaling: S.optional(S.NullOr(__S(17600, __c550, 0))),
+          failover: S.optional(__S(13856, __c433, 0)),
           resumeFromCheckpoint: S.optional(S.Boolean),
           startAtOperationTime: S.optional(S.String),
           tier: S.optional(S.String),
@@ -52751,7 +51999,11 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "StartGroupStreamProcessorWithRequest",
       });
-    case 7:
+  }
+}
+function __c434(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52772,7 +52024,7 @@ function __c121(j: number): any {
       });
   }
 }
-function __c122(j: number): any {
+function __c435(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -52802,17 +52054,21 @@ function __c122(j: number): any {
           expiresAt: S.optional(S.String),
           frequencyType: S.optional(S.String),
           id: S.optional(S.String),
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           masterKeyUUID: S.optional(S.String),
           mongodVersion: S.optional(S.String),
-          policyItems: S.optional(__S(5, __c0, 5)),
+          policyItems: S.optional(__S(18336, __c573, 0)),
           snapshotType: S.optional(S.String),
           status: S.optional(S.String),
           storageSizeBytes: S.optional(S.Number),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskBackupSnapshot" });
-    case 2:
+  }
+}
+function __c436(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52820,26 +52076,26 @@ function __c122(j: number): any {
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           acceptDataRisksAndForceReplicaSetReconfig: S.optional(S.String),
           adaptiveCapacity: S.optional(S.NullOr(S.String)),
-          advancedConfiguration: S.optional(__S(69, __c8, 5)),
+          advancedConfiguration: S.optional(__S(7104, __c222, 0)),
           backupEnabled: S.optional(S.Boolean),
-          biConnector: S.optional(__S(70, __c8, 6)),
+          biConnector: S.optional(__S(7105, __c222, 1)),
           clusterType: S.optional(S.String),
           configServerManagementMode: S.optional(S.String),
           databaseEdition: S.optional(S.String),
           diskWarmingMode: S.optional(S.String),
           encryptionAtRestProvider: S.optional(S.String),
           globalClusterSelfManagedSharding: S.optional(S.Boolean),
-          labels: S.optional(__S(72, __c9, 0)),
+          labels: S.optional(__S(7201, __c225, 1)),
           mongoDBMajorVersion: S.optional(S.String),
           name: S.String,
           paused: S.optional(S.Boolean),
           pitEnabled: S.optional(S.Boolean),
           redactClientLogData: S.optional(S.Boolean),
           replicaSetScalingStrategy: S.optional(S.String),
-          replicationSpecs: S.optional(__S(76, __c9, 4)),
+          replicationSpecs: S.optional(__S(7266, __c227, 2)),
           retainBackups: S.optional(S.Boolean),
           rootCertType: S.optional(S.String),
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(3008, __c94, 0)),
           terminationProtectionEnabled: S.optional(S.Boolean),
           useAwsTimeBasedSnapshotCopyForFastInitialSync: S.optional(S.Boolean),
           versionReleaseSystem: S.optional(S.String),
@@ -52854,7 +52110,11 @@ function __c122(j: number): any {
       ).annotate({
         identifier: "TenantGroupFlexClusterUpgradeRequest",
       });
-    case 3:
+  }
+}
+function __c437(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52873,7 +52133,34 @@ function __c122(j: number): any {
       ).annotate({
         identifier: "ToggleGroupAlertConfigRequest",
       });
-    case 4:
+  }
+}
+function __c438(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          cloudProvider: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          regionName: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupEncryptionAtRestPrivateEndpointRequest",
+      });
+  }
+}
+function __c439(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52891,7 +52178,11 @@ function __c122(j: number): any {
       ).annotate({
         identifier: "ToggleGroupAwsCustomDnsRequest",
       });
-    case 5:
+  }
+}
+function __c440(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52907,7 +52198,11 @@ function __c122(j: number): any {
       ).annotate({
         identifier: "ToggleGroupMaintenanceWindowAutoDeferRequest",
       });
-    case 6:
+  }
+}
+function __c441(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -52925,13 +52220,17 @@ function __c122(j: number): any {
       ).annotate({
         identifier: "ToggleGroupPrivateEndpointRegionalModeRequest",
       });
-    case 7:
+  }
+}
+function __c442(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
-          namespaces: S.optional(__S(5, __c0, 5)),
+          namespaces: S.optional(__S(18336, __c573, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -52945,7 +52244,7 @@ function __c122(j: number): any {
       });
   }
 }
-function __c123(j: number): any {
+function __c443(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -52965,20 +52264,24 @@ function __c123(j: number): any {
       ).annotate({
         identifier: "UnpinGroupClusterFeatureCompatibilityVersionRequest",
       });
-    case 1:
+  }
+}
+function __c444(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(/*@__PURE__*/ S.NullOr(S.String));
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           externalGroupName: S.String,
-          roleAssignments: __S(35, __c4, 3),
+          roleAssignments: __S(1889, __c59, 1),
         }),
       ).annotate({
         identifier: "AuthFederationRoleMappingInput",
       });
+    case 2:
+      return S.Array(__S(14209, __c444, 1));
     case 3:
-      return S.Array(__S(986, __c123, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           emailAddress: S.String,
@@ -52987,22 +52290,22 @@ function __c123(j: number): any {
           lastName: S.String,
         }),
       ).annotate({ identifier: "FederatedUserInput" });
+    case 4:
+      return S.Array(__S(14211, __c444, 3));
     case 5:
-      return S.Array(__S(988, __c123, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           federationSettingsId: S.String.pipe(T.Label()),
           orgId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
-          dataAccessIdentityProviderIds: S.optional(__S(227, __c28, 3)),
-          domainAllowList: S.optional(__S(227, __c28, 3)),
+          dataAccessIdentityProviderIds: S.optional(__S(16992, __c531, 0)),
+          domainAllowList: S.optional(__S(16992, __c531, 0)),
           domainRestrictionEnabled: S.Boolean,
           identityProviderId: S.optional(S.NullOr(S.String)),
           instantUserProvisioningDisabled: S.optional(S.NullOr(S.Boolean)),
-          postAuthRoleGrants: S.optional(__S(985, __c123, 1)),
-          roleMappings: S.optional(__S(987, __c123, 3)),
-          userConflicts: S.optional(__S(989, __c123, 5)),
+          postAuthRoleGrants: S.optional(__S(14208, __c444, 0)),
+          roleMappings: S.optional(__S(14210, __c444, 2)),
+          userConflicts: S.optional(__S(14212, __c444, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -53014,7 +52317,11 @@ function __c123(j: number): any {
       ).annotate({
         identifier: "UpdateFederationSettingConnectedOrgConfigRequest",
       });
-    case 7:
+  }
+}
+function __c445(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           federationSettingsId: S.String.pipe(T.Label()),
@@ -53022,7 +52329,7 @@ function __c123(j: number): any {
           id: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           externalGroupName: S.String,
-          roleAssignments: __S(33, __c4, 1),
+          roleAssignments: __S(1920, __c60, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -53036,7 +52343,7 @@ function __c123(j: number): any {
       });
   }
 }
-function __c124(j: number): any {
+function __c446(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -53060,14 +52367,18 @@ function __c124(j: number): any {
       ).annotate({
         identifier: "UpdateFederationSettingIdentityProviderRequest",
       });
-    case 1:
+  }
+}
+function __c447(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           name: S.optional(S.String),
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(3008, __c94, 0)),
           withDefaultAlertsSettings: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -53078,7 +52389,11 @@ function __c124(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateGroupRequest" });
-    case 2:
+  }
+}
+function __c448(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53100,7 +52415,100 @@ function __c124(j: number): any {
       ).annotate({
         identifier: "UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsRequest",
       });
+  }
+}
+function __c449(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          backingProviderName: S.String,
+          regionName: S.String,
+        }),
+      ).annotate({
+        identifier: "FlexProviderSettingsCreate20241113Input",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          databaseEdition: S.optional(S.String),
+          name: S.String,
+          providerSettings: __S(14368, __c449, 0),
+          tags: S.optional(__S(3008, __c94, 0)),
+          terminationProtectionEnabled: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/flexClusters",
+            code: 200,
+            accept: "application/vnd.atlas.2024-11-13+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupFlexClusterRequest",
+      });
+  }
+}
+function __c450(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "FlexBackupSettings20241113",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          standard: S.optional(S.String),
+          standardSrv: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FlexConnectionStrings20241113",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          backingProviderName: S.optional(S.String),
+          diskSizeGB: S.optional(S.Number),
+          providerName: S.optional(S.String),
+          regionName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FlexProviderSettings20241113",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          backupSettings: S.optional(__S(14400, __c450, 0)),
+          clusterType: S.optional(S.String),
+          connectionStrings: S.optional(__S(14401, __c450, 1)),
+          createDate: S.optional(S.String),
+          databaseEdition: S.optional(S.String),
+          groupId: S.optional(S.String),
+          id: S.optional(S.String),
+          links: S.optional(__S(18912, __c591, 0)),
+          mongoDBVersion: S.optional(S.String),
+          name: S.optional(S.String),
+          providerSettings: __S(14402, __c450, 2),
+          stateName: S.optional(S.String),
+          tags: S.optional(__S(3008, __c94, 0)),
+          terminationProtectionEnabled: S.optional(S.Boolean),
+          versionReleaseSystem: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FlexClusterDescription20241113",
+      });
+  }
+}
+function __c451(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53119,7 +52527,11 @@ function __c124(j: number): any {
       ).annotate({
         identifier: "UpdateGroupAiModelApiKeyRequest",
       });
-    case 4:
+  }
+}
+function __c452(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53138,7 +52550,11 @@ function __c124(j: number): any {
       ).annotate({
         identifier: "UpdateGroupAlertConfigRequest",
       });
-    case 5:
+  }
+}
+function __c453(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53149,7 +52565,7 @@ function __c124(j: number): any {
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           desc: S.optional(S.String),
-          roles: S.optional(__S(5, __c0, 5)),
+          roles: S.optional(__S(18336, __c573, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -53161,7 +52577,11 @@ function __c124(j: number): any {
       ).annotate({
         identifier: "UpdateGroupApiKeyRolesRequest",
       });
-    case 6:
+  }
+}
+function __c454(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53181,23 +52601,12 @@ function __c124(j: number): any {
       ).annotate({
         identifier: "UpdateGroupAuditLogRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          frequencyInterval: S.Number,
-          frequencyType: S.String,
-          retentionUnit: S.String,
-          retentionValue: S.Number,
-        }),
-      ).annotate({
-        identifier: "BackupComplianceOnDemandPolicyItemInput",
-      });
   }
 }
-function __c125(j: number): any {
+function __c455(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(999, __c124, 7));
+      return S.Array(__S(14592, __c456, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -53210,11 +52619,11 @@ function __c125(j: number): any {
           authorizedUserLastName: S.String,
           copyProtectionEnabled: S.optional(S.Boolean),
           encryptionAtRestEnabled: S.optional(S.Boolean),
-          onDemandPolicyItem: S.optional(__S(999, __c124, 7)),
+          onDemandPolicyItem: S.optional(__S(14592, __c456, 0)),
           pitEnabled: S.optional(S.Boolean),
           projectId: S.optional(S.String),
           restoreWindowDays: S.optional(S.Number),
-          scheduledPolicyItems: S.optional(__S(1000, __c125, 0)),
+          scheduledPolicyItems: S.optional(__S(14560, __c455, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -53226,7 +52635,26 @@ function __c125(j: number): any {
       ).annotate({
         identifier: "UpdateGroupBackupCompliancePolicyRequest",
       });
-    case 2:
+  }
+}
+function __c456(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          frequencyInterval: S.Number,
+          frequencyType: S.String,
+          retentionUnit: S.String,
+          retentionValue: S.Number,
+        }),
+      ).annotate({
+        identifier: "BackupComplianceOnDemandPolicyItemInput",
+      });
+  }
+}
+function __c457(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53245,21 +52673,25 @@ function __c125(j: number): any {
       ).annotate({
         identifier: "UpdateGroupBackupExportBucketRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
           bucketName: S.String,
           cloudProvider: S.String,
           iamRoleId: S.String,
-          links: S.optional(__S(4, __c0, 4)),
+          links: S.optional(__S(18912, __c591, 0)),
           region: S.optional(S.String),
           requirePrivateNetworking: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "DiskBackupSnapshotAWSExportBucketResponse",
       });
-    case 4:
+  }
+}
+function __c458(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53268,26 +52700,26 @@ function __c125(j: number): any {
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           acceptDataRisksAndForceReplicaSetReconfig: S.optional(S.String),
           adaptiveCapacity: S.optional(S.NullOr(S.String)),
-          advancedConfiguration: S.optional(__S(69, __c8, 5)),
+          advancedConfiguration: S.optional(__S(7104, __c222, 0)),
           backupEnabled: S.optional(S.Boolean),
-          biConnector: S.optional(__S(70, __c8, 6)),
+          biConnector: S.optional(__S(7105, __c222, 1)),
           clusterType: S.optional(S.String),
           configServerManagementMode: S.optional(S.String),
           databaseEdition: S.optional(S.String),
           diskWarmingMode: S.optional(S.String),
           encryptionAtRestProvider: S.optional(S.String),
           globalClusterSelfManagedSharding: S.optional(S.Boolean),
-          labels: S.optional(__S(72, __c9, 0)),
+          labels: S.optional(__S(7201, __c225, 1)),
           mongoDBMajorVersion: S.optional(S.String),
           name: S.optional(S.String),
           paused: S.optional(S.Boolean),
           pitEnabled: S.optional(S.Boolean),
           redactClientLogData: S.optional(S.Boolean),
           replicaSetScalingStrategy: S.optional(S.String),
-          replicationSpecs: S.optional(__S(76, __c9, 4)),
+          replicationSpecs: S.optional(__S(7266, __c227, 2)),
           retainBackups: S.optional(S.Boolean),
           rootCertType: S.optional(S.String),
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(3008, __c94, 0)),
           terminationProtectionEnabled: S.optional(S.Boolean),
           useAwsTimeBasedSnapshotCopyForFastInitialSync: S.optional(S.Boolean),
           versionReleaseSystem: S.optional(S.String),
@@ -53302,14 +52734,18 @@ function __c125(j: number): any {
       ).annotate({
         identifier: "UpdateGroupClusterRequest",
       });
-    case 5:
+  }
+}
+function __c459(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          adaptiveSettingsOverrides: S.optional(__S(117, __c14, 5)),
+          adaptiveSettingsOverrides: S.optional(__S(10016, __c313, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -53321,14 +52757,18 @@ function __c125(j: number): any {
       ).annotate({
         identifier: "UpdateGroupClusterAdaptiveSettingsRequest",
       });
-    case 6:
+  }
+}
+function __c460(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cloudProvider: S.optional(S.String),
-          copyPolicyItems: S.optional(__S(1006, __c125, 6)),
-          frequencies: S.optional(__S(23, __c2, 7)),
+          copyPolicyItems: S.optional(__S(14720, __c460, 0)),
+          frequencies: S.optional(__S(16032, __c501, 0)),
           lastNumberOfSnapshots: S.optional(S.Number),
           regionName: S.optional(S.String),
           shouldCopyOplogs: S.optional(S.Boolean),
@@ -53337,13 +52777,9 @@ function __c125(j: number): any {
       ).annotate({
         identifier: "DiskBackupCopySetting20240805Input",
       });
-  }
-}
-function __c126(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(1007, __c125, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(14721, __c460, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           cloudProvider: S.optional(S.String),
@@ -53353,22 +52789,22 @@ function __c126(j: number): any {
       ).annotate({
         identifier: "DeleteCopiedBackups20240805",
       });
-    case 2:
-      return S.Array(__S(1009, __c126, 1));
-    case 3:
-      return S.Array(__S(999, __c124, 7));
     case 4:
+      return S.Array(__S(14723, __c460, 3));
+    case 5:
+      return S.Array(__S(14592, __c456, 0));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          policyItems: __S(1011, __c126, 3),
+          policyItems: __S(14725, __c460, 5),
         }),
       ).annotate({
         identifier: "AdvancedDiskBackupSnapshotSchedulePolicyInput",
       });
-    case 5:
-      return S.Array(__S(1012, __c126, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(14726, __c460, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53378,13 +52814,13 @@ function __c126(j: number): any {
           autoCopySettingsEnabled: S.optional(S.Boolean),
           autoExportEnabled: S.optional(S.Boolean),
           copyPolicyItemsEnabled: S.optional(S.Boolean),
-          copySettings: S.optional(__S(1008, __c126, 0)),
-          deleteCopiedBackups: S.optional(__S(1010, __c126, 2)),
+          copySettings: S.optional(__S(14722, __c460, 2)),
+          deleteCopiedBackups: S.optional(__S(14724, __c460, 4)),
           deleteCopySnapshots: S.optional(S.Boolean),
           deleteSnapshots: S.optional(S.Boolean),
-          export: S.optional(__S(323, __c40, 3)),
-          extraRetentionSettings: S.optional(__S(325, __c40, 5)),
-          policies: __S(1013, __c126, 5),
+          export: S.optional(__S(19459, __c608, 3)),
+          extraRetentionSettings: S.optional(__S(19461, __c608, 5)),
+          policies: __S(14727, __c460, 7),
           referenceHourOfDay: S.optional(S.Number),
           referenceMinuteOfHour: S.optional(S.Number),
           restoreWindowDays: S.optional(S.Number),
@@ -53402,7 +52838,11 @@ function __c126(j: number): any {
       ).annotate({
         identifier: "UpdateGroupClusterBackupScheduleRequest",
       });
-    case 7:
+  }
+}
+function __c461(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53425,7 +52865,57 @@ function __c126(j: number): any {
       });
   }
 }
-function __c127(j: number): any {
+function __c462(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          snapshotId: S.String,
+          targetDeploymentItemName: S.String,
+          targetProjectId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs",
+            code: 200,
+            accept: "application/vnd.atlas.2024-11-13+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupFlexClusterBackupRestoreJobRequest",
+      });
+  }
+}
+function __c463(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deliveryType: S.optional(S.String),
+          expirationDate: S.optional(S.String),
+          id: S.optional(S.String),
+          instanceName: S.optional(S.String),
+          links: S.optional(__S(18912, __c591, 0)),
+          projectId: S.optional(S.String),
+          restoreFinishedDate: S.optional(S.String),
+          restoreScheduledDate: S.optional(S.String),
+          snapshotFinishedDate: S.optional(S.String),
+          snapshotId: S.optional(S.String),
+          snapshotUrl: S.optional(S.String),
+          status: S.optional(S.String),
+          targetDeploymentItemName: S.optional(S.String),
+          targetProjectId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FlexBackupRestoreJob20241113",
+      });
+  }
+}
+function __c464(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -53433,7 +52923,7 @@ function __c127(j: number): any {
           groupId: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
-          namespaces: S.optional(__S(227, __c28, 3)),
+          namespaces: S.optional(__S(16992, __c531, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -53445,7 +52935,11 @@ function __c127(j: number): any {
       ).annotate({
         identifier: "UpdateGroupClusterCollStatPinnedNamespacesRequest",
       });
-    case 1:
+  }
+}
+function __c465(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53453,8 +52947,8 @@ function __c127(j: number): any {
           archiveId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          criteria: S.optional(__S(120, __c15, 0)),
-          dataExpirationRule: S.optional(__S(121, __c15, 1)),
+          criteria: S.optional(__S(10464, __c327, 0)),
+          dataExpirationRule: S.optional(__S(10465, __c327, 1)),
           paused: S.optional(S.Boolean),
           schedule: S.optional(S.Unknown),
         }).pipe(
@@ -53468,7 +52962,11 @@ function __c127(j: number): any {
       ).annotate({
         identifier: "UpdateGroupClusterOnlineArchiveRequest",
       });
-    case 2:
+  }
+}
+function __c466(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53477,8 +52975,8 @@ function __c127(j: number): any {
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           changeStreamOptionsPreAndPostImagesExpireAfterSeconds: S.optional(S.Number),
           chunkMigrationConcurrency: S.optional(S.Number),
-          customOpensslCipherConfigTls12: S.optional(__S(68, __c8, 4)),
-          customOpensslCipherConfigTls13: S.optional(__S(68, __c8, 4)),
+          customOpensslCipherConfigTls12: S.optional(__S(7072, __c221, 0)),
+          customOpensslCipherConfigTls13: S.optional(__S(7072, __c221, 0)),
           defaultMaxTimeMS: S.optional(S.Number),
           defaultWriteConcern: S.optional(S.String),
           javascriptEnabled: S.optional(S.Boolean),
@@ -53502,7 +53000,11 @@ function __c127(j: number): any {
       ).annotate({
         identifier: "UpdateGroupClusterProcessArgsRequest",
       });
-    case 3:
+  }
+}
+function __c467(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53522,16 +53024,20 @@ function __c127(j: number): any {
       ).annotate({
         identifier: "UpdateGroupClusterQueryShapeRequest",
       });
-    case 4:
+  }
+}
+function __c468(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          autoScaling: S.optional(__S(133, __c16, 5)),
+          autoScaling: S.optional(__S(11265, __c352, 1)),
           defaultNodeCount: S.optional(S.NullOr(S.Number)),
-          specs: __S(135, __c16, 7),
+          specs: __S(11297, __c353, 1),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -53543,7 +53049,11 @@ function __c127(j: number): any {
       ).annotate({
         identifier: "UpdateGroupClusterSearchDeploymentRequest",
       });
-    case 5:
+  }
+}
+function __c469(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53563,7 +53073,11 @@ function __c127(j: number): any {
       ).annotate({
         identifier: "UpdateGroupClusterSearchIndexRequest",
       });
-    case 6:
+  }
+}
+function __c470(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53585,7 +53099,11 @@ function __c127(j: number): any {
       ).annotate({
         identifier: "UpdateGroupClusterSearchIndexByNameRequest",
       });
-    case 7:
+  }
+}
+function __c471(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53606,7 +53124,7 @@ function __c127(j: number): any {
       });
   }
 }
-function __c128(j: number): any {
+function __c472(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -53615,8 +53133,8 @@ function __c128(j: number): any {
           roleName: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          actions: S.optional(__S(153, __c19, 1)),
-          inheritedRoles: S.optional(__S(155, __c19, 3)),
+          actions: S.optional(__S(12451, __c389, 3)),
+          inheritedRoles: S.optional(__S(12453, __c389, 5)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -53628,7 +53146,11 @@ function __c128(j: number): any {
       ).annotate({
         identifier: "UpdateGroupCustomDbRoleRoleRequest",
       });
-    case 1:
+  }
+}
+function __c473(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53639,12 +53161,12 @@ function __c128(j: number): any {
           awsIAMType: S.optional(S.String),
           deleteAfterDate: S.optional(S.String),
           description: S.optional(S.String),
-          labels: S.optional(__S(72, __c9, 0)),
+          labels: S.optional(__S(7201, __c225, 1)),
           ldapAuthType: S.optional(S.String),
           oidcAuthType: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          roles: __S(158, __c19, 6),
-          scopes: S.optional(__S(160, __c20, 0)),
+          roles: __S(12865, __c402, 1),
+          scopes: S.optional(__S(12867, __c402, 3)),
           x509Type: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -53657,7 +53179,54 @@ function __c128(j: number): any {
       ).annotate({
         identifier: "UpdateGroupDatabaseUserRequest",
       });
-    case 2:
+  }
+}
+function __c474(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          integrationType: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          includeCount: S.optional(S.Boolean.pipe(T.Query())),
+          itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+          pageNum: S.optional(S.Number.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          id: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/integrations/{integrationType}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupIntegrationRequest",
+      });
+  }
+}
+function __c475(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(15200, __c475, 0),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PaginatedIntegrationViewOutput",
+      });
+  }
+}
+function __c476(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53665,10 +53234,10 @@ function __c128(j: number): any {
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           skipRoleValidation: S.Boolean.pipe(T.Query()),
-          cloudProviderConfig: S.optional(__S(167, __c20, 7)),
-          dataProcessRegion: S.optional(__S(168, __c21, 0)),
+          cloudProviderConfig: S.optional(__S(13666, __c427, 2)),
+          dataProcessRegion: S.optional(__S(13632, __c426, 0)),
           name: S.optional(S.String),
-          storage: S.optional(__S(178, __c22, 2)),
+          storage: S.optional(__S(13668, __c427, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -53680,7 +53249,11 @@ function __c128(j: number): any {
       ).annotate({
         identifier: "UpdateGroupDataFederationRequest",
       });
-    case 3:
+  }
+}
+function __c477(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessKeyID: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -53692,7 +53265,7 @@ function __c128(j: number): any {
           secretAccessKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "AWSKMSConfigurationInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           azureEnvironment: S.optional(S.String),
@@ -53708,7 +53281,7 @@ function __c128(j: number): any {
           tenantID: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureKeyVaultInput" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -53717,16 +53290,16 @@ function __c128(j: number): any {
           serviceAccountKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleCloudKMSInput" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          awsKms: S.optional(__S(1027, __c128, 3)),
-          azureKeyVault: S.optional(__S(1028, __c128, 4)),
+          awsKms: S.optional(__S(15264, __c477, 0)),
+          azureKeyVault: S.optional(__S(15265, __c477, 1)),
           enabledForSearchNodes: S.optional(S.Boolean),
-          googleCloudKms: S.optional(__S(1029, __c128, 5)),
+          googleCloudKms: S.optional(__S(15266, __c477, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -53738,7 +53311,11 @@ function __c128(j: number): any {
       ).annotate({
         identifier: "UpdateGroupEncryptionAtRestRequest",
       });
-    case 7:
+  }
+}
+function __c478(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53746,7 +53323,7 @@ function __c128(j: number): any {
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           databaseEdition: S.optional(S.String),
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(3008, __c94, 0)),
           terminationProtectionEnabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -53761,7 +53338,7 @@ function __c128(j: number): any {
       });
   }
 }
-function __c129(j: number): any {
+function __c479(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -53786,14 +53363,18 @@ function __c129(j: number): any {
       ).annotate({
         identifier: "UpdateGroupIntegrationRequest",
       });
-    case 1:
+  }
+}
+function __c480(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          logTypes: __S(23, __c2, 7),
+          logTypes: __S(16032, __c501, 0),
           type: S.String,
         }).pipe(
           T.Http({
@@ -53806,7 +53387,11 @@ function __c129(j: number): any {
       ).annotate({
         identifier: "UpdateGroupLogIntegrationRequest",
       });
-    case 2:
+  }
+}
+function __c481(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53814,7 +53399,7 @@ function __c129(j: number): any {
           autoDeferOnceEnabled: S.optional(S.Boolean),
           dayOfWeek: S.optional(S.Number),
           hourOfDay: S.optional(S.Number),
-          protectedHours: S.optional(__S(512, __c64, 0)),
+          protectedHours: S.optional(__S(5408, __c169, 0)),
           startASAP: S.optional(S.Boolean),
           waveAssignment: S.optional(S.NullOr(S.Number)),
         }).pipe(
@@ -53828,15 +53413,19 @@ function __c129(j: number): any {
       ).annotate({
         identifier: "UpdateGroupMaintenanceWindowRequest",
       });
-    case 3:
+  }
+}
+function __c482(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           mcpConfigId: S.String.pipe(T.Label()),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          ipAccessList: S.optional(__S(212, __c26, 4)),
+          ipAccessList: S.optional(__S(16481, __c515, 1)),
           mcpConfigName: S.optional(S.NullOr(S.String)),
-          roles: S.optional(__S(5, __c0, 5)),
+          roles: S.optional(__S(18336, __c573, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -53848,7 +53437,11 @@ function __c129(j: number): any {
       ).annotate({
         identifier: "UpdateGroupMcpConfigRequest",
       });
-    case 4:
+  }
+}
+function __c483(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53858,10 +53451,10 @@ function __c129(j: number): any {
           aggregationTemporality: S.String,
           authType: S.String,
           endpoint: S.String,
-          headers: S.optional(__S(220, __c27, 4)),
+          headers: S.optional(__S(16737, __c523, 1)),
           integrationType: S.String,
-          metricSelection: __S(23, __c2, 7),
-          oauth: S.optional(__S(221, __c27, 5)),
+          metricSelection: __S(16032, __c501, 0),
+          oauth: S.optional(__S(16800, __c525, 0)),
           providerType: S.String,
         }).pipe(
           T.Http({
@@ -53874,7 +53467,11 @@ function __c129(j: number): any {
       ).annotate({
         identifier: "UpdateGroupMetricIntegrationRequest",
       });
-    case 5:
+  }
+}
+function __c484(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53892,7 +53489,11 @@ function __c129(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateGroupPeerRequest" });
-    case 6:
+  }
+}
+function __c485(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53900,7 +53501,7 @@ function __c129(j: number): any {
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           cloudProvider: S.String,
-          supportedRemoteRegions: S.optional(S.NullOr(__S(227, __c28, 3))),
+          supportedRemoteRegions: S.optional(S.NullOr(__S(16992, __c531, 0))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -53912,7 +53513,105 @@ function __c129(j: number): any {
       ).annotate({
         identifier: "UpdateGroupPrivateEndpointEndpointServiceRequest",
       });
-    case 7:
+  }
+}
+function __c486(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          destination: __S(15648, __c489, 0),
+          dropDestinationData: S.optional(S.Boolean),
+          migrationHosts: __S(18336, __c573, 0),
+          sharding: S.optional(__S(15652, __c489, 4)),
+          source: __S(15653, __c489, 5),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/liveMigrations",
+            code: 200,
+            accept: "application/vnd.atlas.2024-05-30+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupLiveMigrationRequest",
+      });
+  }
+}
+function __c487(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(10016, __c313, 0));
+  }
+}
+function __c488(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          lagTimeSeconds: S.optional(S.NullOr(S.Number)),
+          migrationHosts: S.optional(__S(18336, __c573, 0)),
+          readyForCutover: S.optional(S.Boolean),
+          status: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "LiveMigrationResponse" });
+  }
+}
+function __c489(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clusterName: S.String,
+          groupId: S.String,
+          hostnameSchemaType: S.String,
+          privateLinkId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Destination" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: __S(15584, __c487, 0),
+        }),
+      ).annotate({ identifier: "ShardKeys" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          collection: S.String,
+          database: S.String,
+          shardCollection: __S(15649, __c489, 1),
+        }),
+      ).annotate({ identifier: "ShardEntry" });
+    case 3:
+      return S.Array(__S(15650, __c489, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          createSupportingIndexes: S.Boolean,
+          shardingEntries: __S(15651, __c489, 3),
+        }),
+      ).annotate({ identifier: "ShardingRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          caCertificatePath: S.optional(S.NullOr(S.String)),
+          clusterName: S.String,
+          groupId: S.String,
+          managedAuthentication: S.Boolean,
+          password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          ssl: S.Boolean,
+          username: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Source" });
+  }
+}
+function __c490(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53921,7 +53620,7 @@ function __c129(j: number): any {
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          roles: S.optional(__S(5, __c0, 5)),
+          roles: S.optional(__S(18336, __c573, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -53935,7 +53634,7 @@ function __c129(j: number): any {
       });
   }
 }
-function __c130(j: number): any {
+function __c491(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -53966,7 +53665,11 @@ function __c130(j: number): any {
       ).annotate({
         identifier: "UpdateGroupSettingsRequest",
       });
-    case 1:
+  }
+}
+function __c492(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -53988,7 +53691,11 @@ function __c130(j: number): any {
       ).annotate({
         identifier: "UpdateGroupStreamConnectionRequest",
       });
-    case 2:
+  }
+}
+function __c493(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -54011,7 +53718,11 @@ function __c130(j: number): any {
       ).annotate({
         identifier: "UpdateGroupStreamConnectionFailoverConnectionRequest",
       });
-    case 3:
+  }
+}
+function __c494(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -54030,17 +53741,21 @@ function __c130(j: number): any {
       ).annotate({
         identifier: "UpdateGroupStreamPrivateLinkConnectionRequest",
       });
-    case 4:
+  }
+}
+function __c495(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          autoscaling: S.optional(S.NullOr(__S(246, __c30, 6))),
-          dlq: S.optional(__S(247, __c30, 7)),
+          autoscaling: S.optional(S.NullOr(__S(17600, __c550, 0))),
+          dlq: S.optional(__S(17632, __c551, 0)),
           resumeFromCheckpoint: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "StreamsModifyStreamProcessorOptionsInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -54050,8 +53765,8 @@ function __c130(j: number): any {
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           failoverEnabled: S.optional(S.Boolean),
           name: S.optional(S.String),
-          options: S.optional(__S(1044, __c130, 4)),
-          pipeline: S.optional(__S(250, __c31, 2)),
+          options: S.optional(__S(15840, __c495, 0)),
+          pipeline: S.optional(__S(17634, __c551, 2)),
           tier: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -54064,7 +53779,11 @@ function __c130(j: number): any {
       ).annotate({
         identifier: "UpdateGroupStreamProcessorRequest",
       });
-    case 6:
+  }
+}
+function __c496(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.NullOr(S.String)),
@@ -54074,7 +53793,7 @@ function __c130(j: number): any {
       ).annotate({
         identifier: "StreamsProcessorStatusInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -54082,10 +53801,10 @@ function __c130(j: number): any {
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           cloudProvider: S.optional(S.String),
-          failoverRegions: S.optional(__S(257, __c32, 1)),
-          processorStatus: S.optional(__S(1046, __c130, 6)),
+          failoverRegions: S.optional(__S(17761, __c555, 1)),
+          processorStatus: S.optional(__S(15872, __c496, 0)),
           region: S.optional(S.Unknown),
-          streamConfig: S.optional(S.NullOr(__S(259, __c32, 3))),
+          streamConfig: S.optional(S.NullOr(__S(17762, __c555, 2))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -54099,7 +53818,7 @@ function __c130(j: number): any {
       });
   }
 }
-function __c131(j: number): any {
+function __c497(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -54108,7 +53827,7 @@ function __c131(j: number): any {
           teamId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          roleNames: __S(5, __c0, 5),
+          roleNames: __S(18336, __c573, 0),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -54118,7 +53837,11 @@ function __c131(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateGroupTeamRequest" });
-    case 1:
+  }
+}
+function __c498(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cas: S.optional(S.String),
@@ -54126,7 +53849,7 @@ function __c131(j: number): any {
       ).annotate({
         identifier: "DBUserTLSX509SettingsInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           authenticationEnabled: S.optional(S.Boolean),
@@ -54137,19 +53860,19 @@ function __c131(j: number): any {
           caCertificate: S.optional(S.String),
           hostname: S.optional(S.String),
           port: S.optional(S.Number),
-          userToDNMapping: S.optional(__S(562, __c70, 2)),
+          userToDNMapping: S.optional(__S(6785, __c212, 1)),
         }),
       ).annotate({
         identifier: "LDAPSecuritySettingsInput",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          customerX509: S.optional(__S(1049, __c131, 1)),
-          ldap: S.optional(__S(1050, __c131, 2)),
+          customerX509: S.optional(__S(15936, __c498, 0)),
+          ldap: S.optional(__S(15937, __c498, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -54161,7 +53884,11 @@ function __c131(j: number): any {
       ).annotate({
         identifier: "UpdateGroupUserSecurityRequest",
       });
-    case 4:
+  }
+}
+function __c499(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -54178,7 +53905,40 @@ function __c131(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateOrgRequest" });
-    case 5:
+  }
+}
+function __c500(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          logTypes: __S(16032, __c501, 0),
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/logIntegrations",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupLogIntegrationRequest",
+      });
+  }
+}
+function __c501(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c502(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -54186,7 +53946,7 @@ function __c131(j: number): any {
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           desc: S.optional(S.String),
-          roles: S.optional(__S(38, __c4, 6)),
+          roles: S.optional(__S(17856, __c558, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -54196,7 +53956,11 @@ function __c131(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateOrgApiKeyRequest" });
-    case 6:
+  }
+}
+function __c503(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -54217,14 +53981,18 @@ function __c131(j: number): any {
       ).annotate({
         identifier: "UpdateOrgDelegationSettingsRequest",
       });
-    case 7:
+  }
+}
+function __c504(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
           logIntegrationId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          logTypes: __S(23, __c2, 7),
+          logTypes: __S(16032, __c501, 0),
           type: S.String,
         }).pipe(
           T.Http({
@@ -54239,7 +54007,7 @@ function __c131(j: number): any {
       });
   }
 }
-function __c132(j: number): any {
+function __c505(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -54259,15 +54027,19 @@ function __c132(j: number): any {
       ).annotate({
         identifier: "UpdateOrgMaintenanceSettingsRequest",
       });
-    case 1:
+  }
+}
+function __c506(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
           mcpConfigId: S.String.pipe(T.Label()),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          ipAccessList: S.optional(__S(212, __c26, 4)),
+          ipAccessList: S.optional(__S(16481, __c515, 1)),
           mcpConfigName: S.optional(S.NullOr(S.String)),
-          roles: S.optional(__S(38, __c4, 6)),
+          roles: S.optional(__S(17856, __c558, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -54279,7 +54051,11 @@ function __c132(j: number): any {
       ).annotate({
         identifier: "UpdateOrgMcpConfigRequest",
       });
-    case 2:
+  }
+}
+function __c507(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -54288,7 +54064,7 @@ function __c132(j: number): any {
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          policies: S.optional(__S(291, __c36, 3)),
+          policies: S.optional(__S(18497, __c578, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -54300,7 +54076,11 @@ function __c132(j: number): any {
       ).annotate({
         identifier: "UpdateOrgResourcePolicyRequest",
       });
-    case 3:
+  }
+}
+function __c508(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -54309,7 +54089,7 @@ function __c132(j: number): any {
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          roles: S.optional(__S(23, __c2, 7)),
+          roles: S.optional(__S(16032, __c501, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -54321,14 +54101,18 @@ function __c132(j: number): any {
       ).annotate({
         identifier: "UpdateOrgServiceAccountRequest",
       });
-    case 4:
+  }
+}
+function __c509(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           apiAccessListRequired: S.optional(S.Boolean),
-          customSessionTimeouts: S.optional(__S(625, __c78, 1)),
+          customSessionTimeouts: S.optional(__S(8256, __c258, 0)),
           genAIFeaturesEnabled: S.optional(S.Boolean),
           maxServiceAccountSecretValidityInHours: S.optional(S.Number),
           multiFactorAuthRequired: S.optional(S.Boolean),
@@ -54345,15 +54129,19 @@ function __c132(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateOrgSettingsRequest" });
-    case 5:
+  }
+}
+function __c510(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          roles: S.optional(__S(302, __c37, 6)),
-          teamIds: S.optional(__S(5, __c0, 5)),
+          roles: S.optional(__S(18690, __c584, 2)),
+          teamIds: S.optional(__S(18336, __c573, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -54363,16 +54151,29 @@ function __c132(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateOrgUserRequest" });
-    case 6:
+  }
+}
+function __c511(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          compute: S.optional(__S(73, __c9, 1)),
+          enabled: S.optional(S.Boolean),
+          scaleDownEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AdvancedComputeAutoScalingInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          compute: S.optional(__S(16352, __c511, 0)),
           diskGBEnabled: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ClusterAutoScalingSettings",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           analyticsNodes: S.optional(S.Number),
@@ -54381,34 +54182,30 @@ function __c132(j: number): any {
           readOnlyNodes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RegionSpec" });
-  }
-}
-function __c133(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(1063, __c132, 7));
-    case 1:
+    case 3:
+      return S.Record(S.String, __S(16354, __c511, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           numShards: S.optional(S.Number),
-          regionsConfig: S.optional(__S(1064, __c133, 0)),
+          regionsConfig: S.optional(__S(16355, __c511, 3)),
           zoneName: S.optional(S.String),
         }),
       ).annotate({ identifier: "LegacyReplicationSpec" });
-    case 2:
-      return S.Array(__S(1065, __c133, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(16356, __c511, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           acceptDataRisksAndForceReplicaSetReconfig: S.optional(S.String),
-          advancedConfiguration: S.optional(__S(69, __c8, 5)),
-          autoScaling: S.optional(__S(1062, __c132, 6)),
+          advancedConfiguration: S.optional(__S(7104, __c222, 0)),
+          autoScaling: S.optional(__S(16353, __c511, 1)),
           backupEnabled: S.optional(S.Boolean),
-          biConnector: S.optional(__S(70, __c8, 6)),
+          biConnector: S.optional(__S(7105, __c222, 1)),
           clusterType: S.optional(S.String),
           configServerManagementMode: S.optional(S.String),
           databaseEdition: S.optional(S.String),
@@ -54417,7 +54214,7 @@ function __c133(j: number): any {
           diskWarmingMode: S.optional(S.String),
           encryptionAtRestProvider: S.optional(S.String),
           globalClusterSelfManagedSharding: S.optional(S.Boolean),
-          labels: S.optional(__S(72, __c9, 0)),
+          labels: S.optional(__S(7201, __c225, 1)),
           mongoDBMajorVersion: S.optional(S.String),
           mongoDBVersion: S.optional(S.String),
           name: S.String,
@@ -54428,10 +54225,10 @@ function __c133(j: number): any {
           providerSettings: S.optional(S.Unknown),
           replicaSetScalingStrategy: S.optional(S.String),
           replicationFactor: S.optional(S.Number),
-          replicationSpec: S.optional(__S(1064, __c133, 0)),
-          replicationSpecs: S.optional(__S(1066, __c133, 2)),
+          replicationSpec: S.optional(__S(16355, __c511, 3)),
+          replicationSpecs: S.optional(__S(16357, __c511, 5)),
           rootCertType: S.optional(S.String),
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(3008, __c94, 0)),
           terminationProtectionEnabled: S.optional(S.Boolean),
           versionReleaseSystem: S.optional(S.String),
         }).pipe(
@@ -54445,18 +54242,18 @@ function __c133(j: number): any {
       ).annotate({
         identifier: "UpgradeGroupClusterTenantUpgradeRequest",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           acceptDataRisksAndForceReplicaSetReconfig: S.optional(S.String),
-          advancedConfiguration: S.optional(__S(69, __c8, 5)),
-          autoScaling: S.optional(__S(1062, __c132, 6)),
+          advancedConfiguration: S.optional(__S(7104, __c222, 0)),
+          autoScaling: S.optional(__S(16353, __c511, 1)),
           backupEnabled: S.optional(S.Boolean),
-          biConnector: S.optional(__S(70, __c8, 6)),
+          biConnector: S.optional(__S(7105, __c222, 1)),
           clusterType: S.optional(S.String),
           configServerManagementMode: S.optional(S.String),
           configServerType: S.optional(S.String),
-          connectionStrings: S.optional(__S(83, __c10, 3)),
+          connectionStrings: S.optional(__S(7172, __c224, 4)),
           createDate: S.optional(S.String),
           databaseEdition: S.optional(S.String),
           deleteAfterCreationHours: S.optional(S.Number),
@@ -54470,9 +54267,9 @@ function __c133(j: number): any {
           globalClusterSelfManagedSharding: S.optional(S.Boolean),
           groupId: S.optional(S.String),
           id: S.optional(S.String),
-          labels: S.optional(__S(72, __c9, 0)),
-          links: S.optional(__S(4, __c0, 4)),
-          mongoDBEmployeeAccessGrant: S.optional(__S(87, __c10, 7)),
+          labels: S.optional(__S(7201, __c225, 1)),
+          links: S.optional(__S(18912, __c591, 0)),
+          mongoDBEmployeeAccessGrant: S.optional(__S(7173, __c224, 5)),
           mongoDBMajorVersion: S.optional(S.String),
           mongoDBVersion: S.optional(S.String),
           mongoURI: S.optional(S.String),
@@ -54486,27 +54283,102 @@ function __c133(j: number): any {
           providerSettings: S.optional(S.Unknown),
           replicaSetScalingStrategy: S.optional(S.String),
           replicationFactor: S.optional(S.Number),
-          replicationSpec: S.optional(__S(1064, __c133, 0)),
-          replicationSpecs: S.optional(__S(1066, __c133, 2)),
+          replicationSpec: S.optional(__S(16355, __c511, 3)),
+          replicationSpecs: S.optional(__S(16357, __c511, 5)),
           rootCertType: S.optional(S.String),
           srvAddress: S.optional(S.String),
           stateName: S.optional(S.String),
-          tags: S.optional(__S(45, __c5, 5)),
+          tags: S.optional(__S(3008, __c94, 0)),
           terminationProtectionEnabled: S.optional(S.Boolean),
           versionReleaseSystem: S.optional(S.String),
         }),
       ).annotate({ identifier: "LegacyAtlasCluster" });
-    case 5:
+  }
+}
+function __c512(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          ipAccessList: S.optional(__S(16481, __c515, 1)),
+          mcpConfigName: S.String,
+          roles: __S(18336, __c573, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupMcpConfigRequest",
+      });
+  }
+}
+function __c513(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+          egressClientId: S.optional(S.String),
+          ipAccessList: S.optional(__S(16449, __c514, 1)),
+          mcpConfigId: S.optional(S.String),
+          mcpConfigName: S.optional(S.NullOr(S.String)),
+          roles: S.optional(__S(18336, __c573, 0)),
+        }),
+      ).annotate({ identifier: "GroupMcpConfigResponse" });
+  }
+}
+function __c514(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cidrBlock: S.optional(S.NullOr(S.String)),
+          createdAt: S.optional(S.String),
+          ipAddress: S.optional(S.NullOr(S.String)),
+          lastUsedAddress: S.optional(S.NullOr(S.String)),
+          lastUsedAt: S.optional(S.NullOr(S.String)),
+          requestCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ServiceAccountIPAccessListEntry",
+      });
+    case 1:
+      return S.Array(__S(16448, __c514, 0));
+  }
+}
+function __c515(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cidrBlock: S.optional(S.NullOr(S.String)),
+          ipAddress: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ServiceAccountIPAccessListEntryInput",
+      });
+    case 1:
+      return S.Array(__S(16480, __c515, 0));
+  }
+}
+function __c516(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           envelope: S.optional(S.Boolean.pipe(T.Query())),
           pretty: S.optional(S.Boolean.pipe(T.Query())),
-          destination: __S(201, __c25, 1),
+          destination: __S(15648, __c489, 0),
           dropDestinationData: S.optional(S.Boolean),
-          migrationHosts: __S(5, __c0, 5),
-          sharding: S.optional(__S(206, __c25, 6)),
-          source: __S(207, __c25, 7),
+          migrationHosts: __S(18336, __c573, 0),
+          sharding: S.optional(__S(15652, __c489, 4)),
+          source: __S(15653, __c489, 5),
         }).pipe(
           T.Http({
             method: "POST",
@@ -54518,7 +54390,11 @@ function __c133(j: number): any {
       ).annotate({
         identifier: "ValidateGroupLiveMigrationsRequest",
       });
-    case 6:
+  }
+}
+function __c517(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgId: S.String.pipe(T.Label()),
@@ -54526,7 +54402,7 @@ function __c133(j: number): any {
           pretty: S.optional(S.Boolean.pipe(T.Query())),
           description: S.optional(S.NullOr(S.String)),
           name: S.String,
-          policies: __S(291, __c36, 3),
+          policies: __S(18497, __c578, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -54538,7 +54414,11 @@ function __c133(j: number): any {
       ).annotate({
         identifier: "ValidateOrgResourcePoliciesRequest",
       });
-    case 7:
+  }
+}
+function __c518(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -54563,7 +54443,7 @@ function __c133(j: number): any {
       });
   }
 }
-function __c134(j: number): any {
+function __c519(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -54584,7 +54464,2146 @@ function __c134(j: number): any {
       });
   }
 }
-
+function __c520(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          mcpConfigId: S.String.pipe(T.Label()),
+          secretExpiresAfterHours: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupMcpConfigSecretRequest",
+      });
+  }
+}
+function __c521(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String,
+          expiresAt: S.String,
+          id: S.String,
+          lastUsedAt: S.optional(S.NullOr(S.String)),
+          maskedSecretValue: S.optional(S.String),
+          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({ identifier: "ServiceAccountSecret" });
+  }
+}
+function __c522(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          aggregationTemporality: S.String,
+          authType: S.String,
+          endpoint: S.String,
+          headers: S.optional(__S(16737, __c523, 1)),
+          integrationType: S.String,
+          metricSelection: __S(16032, __c501, 0),
+          oauth: S.optional(__S(16800, __c525, 0)),
+          providerType: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/metricIntegrations",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupMetricIntegrationRequest",
+      });
+  }
+}
+function __c523(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "Header" });
+    case 1:
+      return S.Array(__S(16736, __c523, 0));
+  }
+}
+function __c524(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          algorithm: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          jwksUri: S.optional(S.String),
+          kid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OAuthSigningKeyInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clientAuthMethod: S.String,
+          clientId: S.String,
+          scopes: S.optional(__S(18336, __c573, 0)),
+          signingKeyInfo: S.optional(__S(16768, __c524, 0)),
+          tokenEndpoint: S.String,
+          tokenRequestParams: S.optional(__S(7232, __c226, 0)),
+        }),
+      ).annotate({ identifier: "OAuthConfigResponse" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          aggregationTemporality: S.String,
+          authType: S.String,
+          endpoint: S.String,
+          headersRedacted: S.optional(__S(16737, __c523, 1)),
+          integrationType: S.String,
+          metricIntegrationId: S.String,
+          metricSelection: __S(16032, __c501, 0),
+          oauth: S.optional(__S(16769, __c524, 1)),
+          providerType: S.String,
+        }),
+      ).annotate({
+        identifier: "MetricIntegrationResponse",
+      });
+  }
+}
+function __c525(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientAuthMethod: S.String,
+          clientId: S.String,
+          clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          scopes: S.optional(__S(18336, __c573, 0)),
+          tokenEndpoint: S.String,
+          tokenRequestParams: S.optional(__S(7232, __c226, 0)),
+        }),
+      ).annotate({ identifier: "OAuthConfigRequest" });
+  }
+}
+function __c526(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          requesterAccountId: S.optional(S.String),
+          requesterVpcId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept",
+            code: 200,
+            accept: "application/vnd.atlas.2023-02-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "AcceptGroupStreamVpcPeeringConnectionRequest",
+      });
+  }
+}
+function __c527(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcceptGroupStreamVpcPeeringConnectionResponse",
+      });
+  }
+}
+function __c528(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          containerId: S.String,
+          providerName: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/peers",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "CreateGroupPeerRequest" });
+  }
+}
+function __c529(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          portMappingEnabled: S.optional(S.Boolean),
+          providerName: S.String,
+          region: S.String,
+          supportedRemoteRegions: S.optional(S.NullOr(__S(16992, __c531, 0))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupPrivateEndpointEndpointServiceRequest",
+      });
+  }
+}
+function __c530(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.String,
+          errorMessage: S.optional(S.String),
+          id: S.optional(S.String),
+          regionName: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointService" });
+  }
+}
+function __c531(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c532(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          cloudProvider: S.String.pipe(T.Label()),
+          endpointServiceId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupPrivateEndpointEndpointServiceEndpointRequest",
+      });
+  }
+}
+function __c533(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.String,
+          deleteRequested: S.optional(S.Boolean),
+          errorMessage: S.optional(S.String),
+          regionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateLinkEndpoint" });
+  }
+}
+function __c534(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          azureLinkId: S.optional(S.String),
+          comment: S.optional(S.String),
+          customerEndpointDNSName: S.optional(S.String),
+          customerEndpointIPAddress: S.optional(S.String),
+          endpointId: S.String,
+          errorMessage: S.optional(S.String),
+          provider: S.optional(S.String),
+          region: S.optional(S.String),
+          status: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupPrivateNetworkSettingEndpointIdRequest",
+      });
+  }
+}
+function __c535(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureLinkId: S.optional(S.String),
+          comment: S.optional(S.String),
+          customerEndpointDNSName: S.optional(S.String),
+          customerEndpointIPAddress: S.optional(S.String),
+          endpointId: S.String,
+          errorMessage: S.optional(S.String),
+          provider: S.optional(S.String),
+          region: S.optional(S.String),
+          status: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateNetworkEndpointIdEntry",
+      });
+  }
+}
+function __c536(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(17120, __c535, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(17152, __c536, 0),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PaginatedPrivateNetworkEndpointIdEntryView",
+      });
+  }
+}
+function __c537(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          description: S.String,
+          name: S.String,
+          roles: __S(18336, __c573, 0),
+          secretExpiresAfterHours: S.optional(S.NullOr(S.Number)),
+          withoutInitialSecret: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/serviceAccounts",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupServiceAccountRequest",
+      });
+  }
+}
+function __c538(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          roles: S.optional(__S(18336, __c573, 0)),
+          secrets: S.optional(__S(17248, __c539, 0)),
+          systemManaged: S.Boolean,
+        }),
+      ).annotate({ identifier: "GroupServiceAccount" });
+  }
+}
+function __c539(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(16672, __c521, 0));
+  }
+}
+function __c540(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clientId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          includeCount: S.optional(S.Boolean.pipe(T.Query())),
+          itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+          pageNum: S.optional(S.Number.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          body: __S(16481, __c515, 1).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupServiceAccountAccessListRequest",
+      });
+  }
+}
+function __c541(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(16449, __c514, 1),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PaginatedServiceAccountIPAccessEntryView",
+      });
+  }
+}
+function __c542(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clientId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          secretExpiresAfterHours: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupServiceAccountSecretRequest",
+      });
+  }
+}
+function __c543(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          tenantName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.optional(S.String),
+          region: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections",
+            code: 200,
+            accept: "application/vnd.atlas.2023-02-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupStreamConnectionRequest",
+      });
+  }
+}
+function __c544(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          tenantName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.optional(S.String),
+          region: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupStreamConnectionFailoverConnectionRequest",
+      });
+  }
+}
+function __c545(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          arn: S.optional(S.String),
+          authenticationScheme: S.optional(S.String),
+          azureResourceIds: S.optional(__S(16992, __c531, 0)),
+          dnsDomain: S.optional(S.String),
+          dnsSubDomain: S.optional(__S(18336, __c573, 0)),
+          gcpConnectionIds: S.optional(__S(16992, __c531, 0)),
+          gcpServiceAttachmentUris: S.optional(__S(16992, __c531, 0)),
+          provider: S.String,
+          region: S.optional(S.String),
+          serviceEndpointId: S.optional(S.String),
+          vendor: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections",
+            code: 200,
+            accept: "application/vnd.atlas.2023-02-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupStreamPrivateLinkConnectionRequest",
+      });
+  }
+}
+function __c546(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          arn: S.optional(S.String),
+          authenticationScheme: S.optional(S.String),
+          azureResourceIds: S.optional(__S(18336, __c573, 0)),
+          dnsDomain: S.optional(S.String),
+          dnsSubDomain: S.optional(__S(18336, __c573, 0)),
+          errorMessage: S.optional(S.String),
+          gcpConnectionIds: S.optional(__S(18336, __c573, 0)),
+          gcpServiceAttachmentUris: S.optional(__S(18336, __c573, 0)),
+          interfaceEndpointId: S.optional(S.String),
+          interfaceEndpointName: S.optional(S.String),
+          links: S.optional(__S(18912, __c591, 0)),
+          provider: S.String,
+          providerAccountId: S.optional(S.String),
+          region: S.optional(S.String),
+          serviceEndpointId: S.optional(S.String),
+          state: S.optional(S.String),
+          vendor: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StreamsPrivateLinkConnection",
+      });
+  }
+}
+function __c547(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          alertId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          acknowledgedUntil: S.optional(S.String),
+          acknowledgementComment: S.optional(S.String),
+          unacknowledgeAlert: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/atlas/v2/groups/{groupId}/alerts/{alertId}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-05-30+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "AcknowledgeGroupAlertRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "AcknowledgeGroupAlertResponse",
+      });
+  }
+}
+function __c548(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          autoscaling: S.optional(S.NullOr(__S(17600, __c550, 0))),
+          dlq: S.optional(__S(17632, __c551, 0)),
+        }),
+      ).annotate({ identifier: "StreamsOptionsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          tenantName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          failoverEnabled: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          options: S.optional(__S(17536, __c548, 0)),
+          pipeline: S.optional(__S(17634, __c551, 2)),
+          tier: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor",
+            code: 200,
+            accept: "application/vnd.atlas.2024-05-30+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupStreamProcessorRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          effectiveTier: S.String,
+          failoverEnabled: S.optional(S.Boolean),
+          links: S.optional(__S(18912, __c591, 0)),
+          name: S.optional(S.String),
+          options: S.optional(__S(17570, __c549, 2)),
+          pipeline: S.optional(__S(17634, __c551, 2)),
+          tier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StreamsProcessor" });
+  }
+}
+function __c549(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          links: S.optional(__S(18912, __c591, 0)),
+          maxTier: S.optional(S.NullOr(S.String)),
+          minTier: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "StreamsAutoscaling" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          coll: S.optional(S.String),
+          connectionName: S.optional(S.String),
+          db: S.optional(S.String),
+          links: S.optional(__S(18912, __c591, 0)),
+        }),
+      ).annotate({ identifier: "StreamsDLQ" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          autoscaling: S.optional(S.NullOr(__S(17568, __c549, 0))),
+          dlq: S.optional(__S(17569, __c549, 1)),
+          links: S.optional(__S(18912, __c591, 0)),
+        }),
+      ).annotate({ identifier: "StreamsOptions" });
+  }
+}
+function __c550(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          maxTier: S.optional(S.NullOr(S.String)),
+          minTier: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "StreamsAutoscalingInput" });
+  }
+}
+function __c551(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          coll: S.optional(S.String),
+          connectionName: S.optional(S.String),
+          db: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StreamsDLQInput" });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.Array(__S(17633, __c551, 1));
+  }
+}
+function __c552(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          solar: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "StreamsSampleConnectionsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          dataProcessRegion: S.optional(__S(17760, __c555, 0)),
+          failoverRegions: S.optional(__S(17761, __c555, 1)),
+          name: S.optional(S.String),
+          sampleConnections: S.optional(__S(17664, __c552, 0)),
+          streamConfig: S.optional(S.NullOr(__S(17762, __c555, 2))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/streams",
+            code: 200,
+            accept: "application/vnd.atlas.2023-02-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupStreamWorkspaceRequest",
+      });
+  }
+}
+function __c553(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c554(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.String,
+          links: S.optional(__S(18912, __c591, 0)),
+          region: S.Unknown,
+        }),
+      ).annotate({ identifier: "StreamsDataProcessRegion" });
+    case 1:
+      return S.Array(__S(17728, __c554, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(18912, __c591, 0)),
+          solar: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "StreamsSampleConnections" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(18912, __c591, 0)),
+          maxTierSize: S.optional(S.String),
+          tier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StreamConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.optional(S.String),
+          connections: S.optional(__S(17696, __c553, 0)),
+          dataProcessRegion: S.optional(__S(17728, __c554, 0)),
+          failoverRegions: S.optional(__S(17729, __c554, 1)),
+          groupId: S.optional(S.String),
+          hostnames: S.optional(__S(18336, __c573, 0)),
+          links: S.optional(__S(18912, __c591, 0)),
+          name: S.optional(S.String),
+          sampleConnections: S.optional(__S(17730, __c554, 2)),
+          streamConfig: S.optional(S.NullOr(__S(17731, __c554, 3))),
+        }),
+      ).annotate({ identifier: "StreamsTenantOutput" });
+  }
+}
+function __c555(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.String,
+          region: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "StreamsDataProcessRegionInput",
+      });
+    case 1:
+      return S.Array(__S(17760, __c555, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          maxTierSize: S.optional(S.String),
+          tier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StreamConfigInput" });
+  }
+}
+function __c556(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          desc: S.String,
+          roles: __S(17856, __c558, 0),
+        }),
+      ).annotate({
+        identifier: "CreateAtlasOrganizationApiKey",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+          name: S.String,
+          roles: __S(16032, __c501, 0),
+          secretExpiresAfterHours: S.optional(S.NullOr(S.Number)),
+          withoutInitialSecret: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "OrgServiceAccountRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          apiKey: S.optional(__S(17792, __c556, 0)),
+          federationSettingsId: S.optional(S.String),
+          name: S.String,
+          orgOwnerId: S.optional(S.String),
+          serviceAccount: S.optional(__S(17793, __c556, 1)),
+          skipDefaultAlertsSettings: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "CreateOrgRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiKey: S.optional(__S(5152, __c161, 0)),
+          federationSettingsId: S.optional(S.String),
+          orgOwnerId: S.optional(S.String),
+          organization: S.optional(__S(17824, __c557, 0)),
+          serviceAccount: S.optional(__S(17888, __c559, 0)),
+          skipDefaultAlertsSettings: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationResponse",
+      });
+  }
+}
+function __c557(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          isDeleted: S.optional(S.Boolean),
+          links: S.optional(__S(18912, __c591, 0)),
+          name: S.String,
+          skipDefaultAlertsSettings: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AtlasOrganization" });
+  }
+}
+function __c558(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
+  }
+}
+function __c559(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          roles: S.optional(__S(16032, __c501, 0)),
+          secrets: S.optional(__S(17248, __c539, 0)),
+          systemManaged: S.Boolean,
+        }),
+      ).annotate({ identifier: "OrgServiceAccount" });
+  }
+}
+function __c560(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          desc: S.String,
+          roles: __S(17856, __c558, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/apiKeys",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "CreateOrgApiKeyRequest" });
+  }
+}
+function __c561(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cidrBlock: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAccessListRequest" });
+    case 1:
+      return S.Array(__S(17952, __c561, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          apiUserId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          includeCount: S.optional(S.Boolean.pipe(T.Query())),
+          itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+          pageNum: S.optional(S.Number.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          body: __S(17953, __c561, 1).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrgApiKeyAccessListEntryRequest",
+      });
+  }
+}
+function __c562(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cidrBlock: S.optional(S.String),
+          count: S.optional(S.Number),
+          created: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          lastUsed: S.optional(S.String),
+          lastUsedAddress: S.optional(S.String),
+          links: S.optional(__S(18912, __c591, 0)),
+        }),
+      ).annotate({ identifier: "UserAccessListResponse" });
+  }
+}
+function __c563(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(17984, __c562, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(18016, __c563, 0),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PaginatedApiUserAccessListResponseView",
+      });
+  }
+}
+function __c564(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          clusters: S.optional(__S(18336, __c573, 0)),
+          endDate: S.String,
+          groupBy: S.optional(S.String),
+          includePartialMatches: S.optional(S.Boolean),
+          organizations: S.optional(__S(16992, __c531, 0)),
+          projects: S.optional(__S(18336, __c573, 0)),
+          services: S.optional(__S(16032, __c501, 0)),
+          startDate: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrgBillingCostExplorerUsageProcessRequest",
+      });
+  }
+}
+function __c565(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          invoiceId: S.String.pipe(T.Label()),
+          formatSpecVersion: S.optional(S.String),
+          reportFormat: S.String,
+          reportType: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/reports",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrgInvoiceReportRequest",
+      });
+  }
+}
+function __c566(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          downloadUrl: S.optional(S.String),
+          expiresAt: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          formatSpecVersion: S.optional(S.String),
+          invoiceId: S.String,
+          reportFormat: S.String,
+          reportId: S.String,
+          reportType: S.String,
+          state: S.String,
+        }),
+      ).annotate({ identifier: "InvoiceReportResponse" });
+  }
+}
+function __c567(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          accessListIps: S.optional(__S(18336, __c573, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrgLiveMigrationLinkTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          linkToken: S.String,
+        }),
+      ).annotate({ identifier: "TargetOrg" });
+  }
+}
+function __c568(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          logTypes: __S(16032, __c501, 0),
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/logIntegrations",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrgLogIntegrationRequest",
+      });
+  }
+}
+function __c569(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          logTypes: __S(16032, __c501, 0),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrgLogIntegrationResponse",
+      });
+  }
+}
+function __c570(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          ipAccessList: S.optional(__S(16481, __c515, 1)),
+          mcpConfigName: S.String,
+          roles: __S(16032, __c501, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrgMcpConfigRequest",
+      });
+  }
+}
+function __c571(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+          egressClientId: S.optional(S.String),
+          ipAccessList: S.optional(__S(16449, __c514, 1)),
+          mcpConfigId: S.optional(S.String),
+          mcpConfigName: S.optional(S.NullOr(S.String)),
+          roles: S.optional(__S(16032, __c501, 0)),
+        }),
+      ).annotate({ identifier: "OrgMcpConfigResponse" });
+  }
+}
+function __c572(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roles: S.optional(__S(18336, __c573, 0)),
+        }),
+      ).annotate({
+        identifier: "UserAccessRoleAssignmentInput",
+      });
+    case 1:
+      return S.Array(__S(18304, __c572, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          apiUserId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          body: __S(18305, __c572, 1).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "AddGroupApiKeyRequest" });
+  }
+}
+function __c573(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c574(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AddGroupApiKeyResponse",
+      });
+  }
+}
+function __c575(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          mcpConfigId: S.String.pipe(T.Label()),
+          secretExpiresAfterHours: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrgMcpConfigSecretRequest",
+      });
+  }
+}
+function __c576(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          policies: __S(18497, __c578, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/resourcePolicies",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrgResourcePolicyRequest",
+      });
+  }
+}
+function __c577(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApiAtlasUserMetadataView" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApiAtlasPolicyView" });
+    case 2:
+      return S.Array(__S(18465, __c577, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          createdByUser: S.optional(__S(18464, __c577, 0)),
+          createdDate: S.optional(S.String),
+          description: S.optional(S.String),
+          id: S.optional(S.String),
+          lastUpdatedByUser: S.optional(__S(18464, __c577, 0)),
+          lastUpdatedDate: S.optional(S.String),
+          name: S.optional(S.String),
+          orgId: S.optional(S.String),
+          policies: S.optional(__S(18466, __c577, 2)),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApiAtlasResourcePolicyView",
+      });
+  }
+}
+function __c578(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.String,
+        }),
+      ).annotate({ identifier: "ApiAtlasPolicyCreateView" });
+    case 1:
+      return S.Array(__S(18496, __c578, 0));
+  }
+}
+function __c579(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          description: S.String,
+          name: S.String,
+          roles: __S(16032, __c501, 0),
+          secretExpiresAfterHours: S.optional(S.NullOr(S.Number)),
+          withoutInitialSecret: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/serviceAccounts",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrgServiceAccountRequest",
+      });
+  }
+}
+function __c580(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          clientId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          includeCount: S.optional(S.Boolean.pipe(T.Query())),
+          itemsPerPage: S.optional(S.Number.pipe(T.Query())),
+          pageNum: S.optional(S.Number.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          body: __S(16481, __c515, 1).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrgServiceAccountAccessListRequest",
+      });
+  }
+}
+function __c581(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          clientId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          secretExpiresAfterHours: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrgServiceAccountSecretRequest",
+      });
+  }
+}
+function __c582(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String,
+          usernames: __S(18336, __c573, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/teams",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "CreateOrgTeamRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          links: S.optional(__S(18880, __c590, 0)),
+          name: S.String,
+          usernames: __S(18336, __c573, 0),
+        }),
+      ).annotate({ identifier: "Team" });
+  }
+}
+function __c583(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          roles: __S(18690, __c584, 2),
+          teamIds: S.optional(__S(18336, __c573, 0)),
+          username: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/orgs/{orgId}/users",
+            code: 200,
+            accept: "application/vnd.atlas.2025-02-19+json",
+          }),
+        ),
+      ).annotate({ identifier: "CreateOrgUserRequest" });
+  }
+}
+function __c584(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          groupRoles: S.optional(__S(18336, __c573, 0)),
+        }),
+      ).annotate({ identifier: "GroupRoleAssignment" });
+    case 1:
+      return S.Array(__S(18688, __c584, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          groupRoleAssignments: S.optional(__S(18689, __c584, 1)),
+          orgRoles: __S(16032, __c501, 0),
+        }),
+      ).annotate({ identifier: "OrgUserRolesRequest" });
+  }
+}
+function __c585(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          liveMigrationId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "CutoverGroupLiveMigrationRequest",
+      });
+  }
+}
+function __c586(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          cloudProvider: S.String.pipe(T.Label()),
+          roleId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeauthorizeGroupCloudProviderAccessRoleRequest",
+      });
+  }
+}
+function __c587(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/maintenanceWindow/defer",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeferGroupMaintenanceWindowRequest",
+      });
+  }
+}
+function __c588(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleNames: __S(18336, __c573, 0),
+          teamId: S.String,
+        }),
+      ).annotate({ identifier: "TeamRoleInput" });
+    case 1:
+      return S.Array(__S(18816, __c588, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          body: __S(18817, __c588, 1).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/teams",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "AddGroupTeamsRequest" });
+  }
+}
+function __c589(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.optional(S.String),
+          rel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Link" });
+  }
+}
+function __c590(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(18848, __c589, 0));
+  }
+}
+function __c591(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(18848, __c589, 0));
+  }
+}
+function __c592(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(18880, __c590, 0)),
+          roleNames: __S(18336, __c573, 0),
+          teamId: S.String,
+        }),
+      ).annotate({ identifier: "TeamRole" });
+  }
+}
+function __c593(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(18944, __c592, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(18912, __c591, 0)),
+          results: __S(18976, __c593, 0),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PaginatedTeamRoleView" });
+  }
+}
+function __c594(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          federationSettingsId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFederationSettingRequest",
+      });
+  }
+}
+function __c595(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteFederationSettingResponse",
+      });
+  }
+}
+function __c596(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          federationSettingsId: S.String.pipe(T.Label()),
+          orgId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFederationSettingConnectedOrgConfigRoleMappingRequest",
+      });
+  }
+}
+function __c597(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteFederationSettingConnectedOrgConfigRoleMappingResponse",
+      });
+  }
+}
+function __c598(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          federationSettingsId: S.String.pipe(T.Label()),
+          identityProviderId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-11-15+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFederationSettingIdentityProviderRequest",
+      });
+  }
+}
+function __c599(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteGroupRequest" });
+  }
+}
+function __c600(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          entryValue: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupAccessListEntryRequest",
+      });
+  }
+}
+function __c601(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          apiKeyId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupAiModelApiKeyRequest",
+      });
+  }
+}
+function __c602(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          alertConfigId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupAlertConfigRequest",
+      });
+  }
+}
+function __c603(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          exportBucketId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupBackupExportBucketRequest",
+      });
+  }
+}
+function __c604(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          cloudProvider: S.String.pipe(T.Label()),
+          endpointId: S.String.pipe(T.Label()),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-11-13+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupBackupPrivateEndpointRequest",
+      });
+  }
+}
+function __c605(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          retainBackups: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-02-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupClusterRequest",
+      });
+  }
+}
+function __c606(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          userId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          groupRole: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/atlas/v2/groups/{groupId}/users/{userId}:addRole",
+            code: 200,
+            accept: "application/vnd.atlas.2025-02-19+json",
+          }),
+        ),
+      ).annotate({ identifier: "AddGroupUserRoleRequest" });
+  }
+}
+function __c607(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupClusterBackupScheduleRequest",
+      });
+  }
+}
+function __c608(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.optional(S.String),
+          copyPolicyItems: S.optional(__S(19456, __c608, 0)),
+          frequencies: S.optional(__S(16032, __c501, 0)),
+          lastNumberOfSnapshots: S.optional(S.Number),
+          regionName: S.optional(S.String),
+          shouldCopyOplogs: S.optional(S.Boolean),
+          zoneId: S.String,
+        }),
+      ).annotate({
+        identifier: "DiskBackupCopySetting20240805",
+      });
+    case 2:
+      return S.Array(__S(19457, __c608, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          exportBucketId: S.optional(S.String),
+          frequencyType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutoExportPolicyView" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          frequencyType: S.optional(S.String),
+          retentionDays: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ExtraRetentionSetting" });
+    case 5:
+      return S.Array(__S(19460, __c608, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          frequencyInterval: S.Number,
+          frequencyType: S.String,
+          id: S.optional(S.String),
+          retentionUnit: S.String,
+          retentionValue: S.Number,
+        }),
+      ).annotate({ identifier: "DiskBackupApiPolicyItem" });
+    case 7:
+      return S.Array(__S(19462, __c608, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          policyItems: __S(19463, __c608, 7),
+        }),
+      ).annotate({
+        identifier: "AdvancedDiskBackupSnapshotSchedulePolicy",
+      });
+    case 9:
+      return S.Array(__S(19464, __c608, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          autoCopySettingsEnabled: S.optional(S.Boolean),
+          autoExportEnabled: S.optional(S.Boolean),
+          clusterId: S.optional(S.String),
+          clusterName: S.optional(S.String),
+          copyPolicyItemsEnabled: S.optional(S.Boolean),
+          copySettings: S.optional(__S(19458, __c608, 2)),
+          export: S.optional(__S(19459, __c608, 3)),
+          extraRetentionSettings: S.optional(__S(19461, __c608, 5)),
+          links: S.optional(__S(18912, __c591, 0)),
+          nextSnapshot: S.optional(S.String),
+          policies: __S(19465, __c608, 9),
+          referenceHourOfDay: S.optional(S.Number),
+          referenceMinuteOfHour: S.optional(S.Number),
+          restoreWindowDays: S.optional(S.Number),
+          useOrgAndGroupNamesInExportPrefix: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DiskBackupSnapshotSchedule20240805Output",
+      });
+  }
+}
+function __c609(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          snapshotId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupClusterBackupSnapshotRequest",
+      });
+  }
+}
+function __c610(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          snapshotId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupClusterBackupSnapshotShardedClusterRequest",
+      });
+  }
+}
+function __c611(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupClusterGlobalWriteCustomZoneMappingRequest",
+      });
+  }
+}
+function __c612(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+          db: S.optional(S.String.pipe(T.Query())),
+          collection: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces",
+            code: 200,
+            accept: "application/vnd.atlas.2024-08-05+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupClusterGlobalWriteManagedNamespacesRequest",
+      });
+  }
+}
+function __c613(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          archiveId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}",
+            code: 200,
+            accept: "application/vnd.atlas.2023-01-01+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupClusterOnlineArchiveRequest",
+      });
+  }
+}
+function __c614(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          simulationId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations/{simulationId}",
+            code: 200,
+            accept: "application/vnd.atlas.2025-03-12+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupClusterOverloadSimulationRequest",
+      });
+  }
+}
+function __c615(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment",
+            code: 200,
+            accept: "application/vnd.atlas.2024-05-30+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupClusterSearchDeploymentRequest",
+      });
+  }
+}
+function __c616(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          indexId: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-05-30+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupClusterSearchIndexRequest",
+      });
+  }
+}
+function __c617(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          collectionName: S.String.pipe(T.Label()),
+          indexName: S.String.pipe(T.Label()),
+          envelope: S.optional(S.Boolean.pipe(T.Query())),
+          pretty: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName}",
+            code: 200,
+            accept: "application/vnd.atlas.2024-05-30+json",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGroupClusterSearchIndexByNameRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

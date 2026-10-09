@@ -895,8 +895,8 @@ export const allocateIdsProjects: API.OperationMethod<
   AllocateIdsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<AllocateIdsProjectsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AllocateIdsResponse>,
+  input: __S(513, __c16, 1) as any as S.Schema<AllocateIdsProjectsRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<AllocateIdsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -915,8 +915,8 @@ export const beginTransactionProjects: API.OperationMethod<
   BeginTransactionProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<BeginTransactionProjectsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BeginTransactionResponse>,
+  input: __S(673, __c21, 1) as any as S.Schema<BeginTransactionProjectsRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<BeginTransactionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -935,8 +935,8 @@ export const cancelProjectsOperations: API.OperationMethod<
   CancelProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CancelProjectsOperationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Empty>,
+  input: __S(736, __c23, 0) as any as S.Schema<CancelProjectsOperationsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -950,8 +950,8 @@ export const commitProjects: API.OperationMethod<
   CommitProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CommitProjectsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CommitResponse>,
+  input: __S(805, __c25, 5) as any as S.Schema<CommitProjectsRequest>,
+  output: __S(808, __c25, 8) as any as S.Schema<CommitResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -965,8 +965,8 @@ export const createProjectsIndexes: API.OperationMethod<
   CreateProjectsIndexesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateProjectsIndexesRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(896, __c28, 0) as any as S.Schema<CreateProjectsIndexesRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -980,8 +980,8 @@ export const deleteProjectsIndexes: API.OperationMethod<
   DeleteProjectsIndexesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteProjectsIndexesRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteProjectsIndexesRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1000,8 +1000,8 @@ export const deleteProjectsOperations: API.OperationMethod<
   DeleteProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteProjectsOperationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectsOperationsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1015,8 +1015,8 @@ export const exportProjects: API.OperationMethod<
   ExportProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ExportProjectsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(33, __c1, 1) as any as S.Schema<ExportProjectsRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1030,8 +1030,8 @@ export const getProjectsIndexes: API.OperationMethod<
   GetProjectsIndexesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetProjectsIndexesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GoogleDatastoreAdminV1Index>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetProjectsIndexesRequest>,
+  output: __S(930, __c29, 2) as any as S.Schema<GoogleDatastoreAdminV1Index>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1045,8 +1045,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetProjectsOperationsRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1060,8 +1060,8 @@ export const importProjects: API.OperationMethod<
   ImportProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ImportProjectsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(161, __c5, 1) as any as S.Schema<ImportProjectsRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1076,8 +1076,8 @@ export const listProjectsIndexes: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleDatastoreAdminV1ListIndexesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListProjectsIndexesRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GoogleDatastoreAdminV1ListIndexesResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListProjectsIndexesRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<GoogleDatastoreAdminV1ListIndexesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1093,8 +1093,8 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListProjectsOperationsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListProjectsOperationsRequest>,
+  output: __S(226, __c7, 2) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1109,8 +1109,8 @@ export const lookupProjects: API.OperationMethod<
   LookupProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<LookupProjectsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<LookupResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<LookupProjectsRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<LookupResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1124,8 +1124,8 @@ export const reserveIdsProjects: API.OperationMethod<
   ReserveIdsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ReserveIdsProjectsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ReserveIdsResponse>,
+  input: __S(353, __c11, 1) as any as S.Schema<ReserveIdsProjectsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<ReserveIdsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1139,8 +1139,8 @@ export const rollbackProjects: API.OperationMethod<
   RollbackProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<RollbackProjectsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<RollbackResponse>,
+  input: __S(385, __c12, 1) as any as S.Schema<RollbackProjectsRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<RollbackResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1159,8 +1159,8 @@ export const runAggregationQueryProjects: API.OperationMethod<
   RunAggregationQueryProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<RunAggregationQueryProjectsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<RunAggregationQueryResponse>,
+  input: __S(421, __c13, 5) as any as S.Schema<RunAggregationQueryProjectsRequest>,
+  output: __S(425, __c13, 9) as any as S.Schema<RunAggregationQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1174,8 +1174,8 @@ export const runQueryProjects: API.OperationMethod<
   RunQueryProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<RunQueryProjectsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<RunQueryResponse>,
+  input: __S(481, __c15, 1) as any as S.Schema<RunQueryProjectsRequest>,
+  output: __S(483, __c15, 3) as any as S.Schema<RunQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1185,363 +1185,6 @@ export const runQueryProjects: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          requestTags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "RequestOptions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespaceId: S.optional(S.String),
-          databaseId: S.optional(S.String),
-          projectId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PartitionId" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PathElement" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          partitionId: S.optional(__S(2, __c0, 2)),
-          path: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Key" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestOptions: S.optional(__S(1, __c0, 1)),
-          keys: S.optional(__S(6, __c0, 6)),
-          databaseId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AllocateIdsRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-          requestParams: S.optional(S.String.pipe(T.Header("x-goog-request-params"))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{projectId}:allocateIds",
-            baseUrl: "https://datastore.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AllocateIdsProjectsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          keys: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "AllocateIdsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          previousTransaction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReadWrite" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          readTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReadOnly" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          readWrite: S.optional(__S(10, __c1, 2)),
-          readOnly: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "TransactionOptions" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          requestOptions: S.optional(__S(1, __c0, 1)),
-          databaseId: S.optional(S.String),
-          transactionOptions: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "BeginTransactionRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-          requestParams: S.optional(S.String.pipe(T.Header("x-goog-request-params"))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{projectId}:beginTransaction",
-            baseUrl: "https://datastore.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BeginTransactionProjectsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          transaction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BeginTransactionResponse" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://datastore.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsOperationsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          latitude: S.optional(S.Number),
-          longitude: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LatLng" });
-    case 3:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.suspend(() => __S(21, __c2, 5)),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "Entity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nullValue: S.optional(S.String),
-          geoPointValue: S.optional(__S(18, __c2, 2)),
-          timestampValue: S.optional(S.String),
-          excludeFromIndexes: S.optional(S.Boolean),
-          meaning: S.optional(S.Number),
-          booleanValue: S.optional(S.Boolean),
-          blobValue: S.optional(S.String),
-          doubleValue: S.optional(S.Number),
-          integerValue: S.optional(S.String),
-          arrayValue: S.optional(S.suspend(() => __S(23, __c2, 7))),
-          keyValue: S.optional(__S(5, __c0, 5)),
-          entityValue: S.optional(__S(20, __c2, 4)),
-          stringValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Value" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "ArrayValue" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          removeAllFromArray: S.optional(__S(23, __c2, 7)),
-          maximum: S.optional(__S(21, __c2, 5)),
-          increment: S.optional(__S(21, __c2, 5)),
-          property: S.optional(S.String),
-          setToServerValue: S.optional(S.String),
-          minimum: S.optional(__S(21, __c2, 5)),
-          appendMissingElements: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "PropertyTransform" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          paths: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "PropertyMask" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          propertyTransforms: S.optional(__S(25, __c3, 1)),
-          upsert: S.optional(__S(20, __c2, 4)),
-          propertyMask: S.optional(__S(26, __c3, 2)),
-          update: S.optional(__S(20, __c2, 4)),
-          delete: S.optional(__S(5, __c0, 5)),
-          conflictResolutionStrategy: S.optional(S.String),
-          baseVersion: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          insert: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "Mutation" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          singleUseTransaction: S.optional(__S(12, __c1, 4)),
-          databaseId: S.optional(S.String),
-          mode: S.optional(S.String),
-          mutations: S.optional(__S(28, __c3, 4)),
-          requestOptions: S.optional(__S(1, __c0, 1)),
-          transaction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CommitRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
-          requestParams: S.optional(S.String.pipe(T.Header("x-goog-request-params"))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{projectId}:commit",
-            baseUrl: "https://datastore.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CommitProjectsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conflictDetected: S.optional(S.Boolean),
-          updateTime: S.optional(S.String),
-          transformResults: S.optional(__S(22, __c2, 6)),
-          version: S.optional(S.String),
-          createTime: S.optional(S.String),
-          key: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "MutationResult" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          indexUpdates: S.optional(S.Number),
-          commitTime: S.optional(S.String),
-          mutationResults: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "CommitResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          direction: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleDatastoreAdminV1IndexedProperty",
-      });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ancestor: S.optional(S.String),
-          indexId: S.optional(S.String),
-          state: S.optional(S.String),
-          properties: S.optional(__S(35, __c4, 3)),
-          kind: S.optional(S.String),
-          projectId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleDatastoreAdminV1Index",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{projectId}/indexes",
-            baseUrl: "https://datastore.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsIndexesRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          details: S.optional(__S(39, __c4, 7)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(38, __c4, 6)),
-          name: S.optional(S.String),
-          error: S.optional(__S(40, __c5, 0)),
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningOperation",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          indexId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/projects/{projectId}/indexes/{indexId}",
-            baseUrl: "https://datastore.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsIndexesRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1555,32 +1198,25 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsOperationsRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          kinds: S.optional(__S(0, __c0, 0)),
-          namespaceIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleDatastoreAdminV1EntityFilter",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          entityFilter: S.optional(__S(44, __c5, 4)),
-          labels: S.optional(__S(45, __c5, 5)),
+          entityFilter: S.optional(__S(64, __c2, 0)),
+          labels: S.optional(__S(65, __c2, 1)),
           outputUrlPrefix: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleDatastoreAdminV1ExportEntitiesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1591,7 +1227,22 @@ function __c5(j: number): any {
       ).annotate({ identifier: "ExportProjectsRequest" });
   }
 }
-function __c6(j: number): any {
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kinds: S.optional(__S(576, __c18, 0)),
+          namespaceIds: S.optional(__S(576, __c18, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleDatastoreAdminV1EntityFilter",
+      });
+    case 1:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1608,7 +1259,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsIndexesRequest",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1622,21 +1277,25 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(45, __c5, 5)),
+          labels: S.optional(__S(65, __c2, 1)),
           inputUrl: S.optional(S.String),
-          entityFilter: S.optional(__S(44, __c5, 4)),
+          entityFilter: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({
         identifier: "GoogleDatastoreAdminV1ImportEntitiesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(160, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1645,7 +1304,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ImportProjectsRequest" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1662,18 +1325,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsIndexesRequest",
       });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(930, __c29, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          indexes: S.optional(__S(53, __c6, 5)),
+          indexes: S.optional(__S(193, __c6, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleDatastoreAdminV1ListIndexesResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -1691,46 +1358,37 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsOperationsRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(41, __c5, 1));
     case 1:
+      return S.Array(__S(961, __c30, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(0, __c0, 0)),
-          operations: S.optional(__S(56, __c7, 0)),
+          unreachable: S.optional(__S(576, __c18, 0)),
+          operations: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          transaction: S.optional(S.String),
-          newTransaction: S.optional(__S(12, __c1, 4)),
-          readTime: S.optional(S.String),
-          readConsistency: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReadOptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requestOptions: S.optional(__S(1, __c0, 1)),
-          readOptions: S.optional(__S(58, __c7, 2)),
-          keys: S.optional(__S(6, __c0, 6)),
-          propertyMask: S.optional(__S(26, __c3, 2)),
+          requestOptions: S.optional(__S(608, __c19, 0)),
+          readOptions: S.optional(__S(288, __c9, 0)),
+          keys: S.optional(__S(544, __c17, 0)),
+          propertyMask: S.optional(__S(864, __c27, 0)),
           databaseId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LookupRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
           requestParams: S.optional(S.String.pipe(T.Header("x-goog-request-params"))),
         }).pipe(
           T.Http({
@@ -1740,45 +1398,62 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "LookupProjectsRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          entity: S.optional(__S(20, __c2, 4)),
-          cursor: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EntityResult" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          found: S.optional(__S(62, __c7, 6)),
-          missing: S.optional(__S(62, __c7, 6)),
+          found: S.optional(__S(321, __c10, 1)),
+          missing: S.optional(__S(321, __c10, 1)),
           readTime: S.optional(S.String),
-          deferred: S.optional(__S(6, __c0, 6)),
+          deferred: S.optional(__S(544, __c17, 0)),
           transaction: S.optional(S.String),
         }),
       ).annotate({ identifier: "LookupResponse" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          requestOptions: S.optional(__S(1, __c0, 1)),
+          transaction: S.optional(S.String),
+          newTransaction: S.optional(__S(706, __c22, 2)),
+          readTime: S.optional(S.String),
+          readConsistency: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReadOptions" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          entity: S.optional(__S(834, __c26, 2)),
+          cursor: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EntityResult" });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestOptions: S.optional(__S(608, __c19, 0)),
           databaseId: S.optional(S.String),
-          keys: S.optional(__S(6, __c0, 6)),
+          keys: S.optional(__S(544, __c17, 0)),
         }),
       ).annotate({ identifier: "ReserveIdsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(352, __c11, 0).pipe(T.HttpBody())),
           requestParams: S.optional(S.String.pipe(T.Header("x-goog-request-params"))),
         }).pipe(
           T.Http({
@@ -1790,19 +1465,23 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ReserveIdsProjectsRequest",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           transaction: S.optional(S.String),
           databaseId: S.optional(S.String),
-          requestOptions: S.optional(__S(1, __c0, 1)),
+          requestOptions: S.optional(__S(608, __c19, 0)),
         }),
       ).annotate({ identifier: "RollbackRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
           requestParams: S.optional(S.String.pipe(T.Header("x-goog-request-params"))),
         }).pipe(
           T.Http({
@@ -1812,162 +1491,53 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RollbackProjectsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(21, __c2, 5)),
-          cursor: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GqlQueryParameter" });
-    case 5:
-      return S.Record(S.String, __S(68, __c8, 4));
-    case 6:
-      return S.Array(__S(68, __c8, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          queryString: S.optional(S.String),
-          namedBindings: S.optional(__S(69, __c8, 5)),
-          positionalBindings: S.optional(__S(70, __c8, 6)),
-          allowLiterals: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GqlQuery" });
   }
 }
-function __c9(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PropertyReference" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          queryVector: S.optional(__S(21, __c2, 5)),
-          distanceResultProperty: S.optional(S.String),
-          distanceThreshold: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          vectorProperty: S.optional(__S(72, __c9, 0)),
-          distanceMeasure: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FindNearest" });
-    case 2:
-      return S.Array(__S(72, __c9, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          direction: S.optional(S.String),
-          property: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({ identifier: "PropertyOrder" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(80, __c10, 0)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          op: S.optional(S.String),
-          filters: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({ identifier: "CompositeFilter" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          property: S.optional(__S(72, __c9, 0)),
-          op: S.optional(S.String),
-          value: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "PropertyFilter" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          compositeFilter: S.optional(__S(78, __c9, 6)),
-          propertyFilter: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "Filter" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          property: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({ identifier: "Projection" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          findNearest: S.optional(__S(73, __c9, 1)),
-          offset: S.optional(S.Number),
-          distinctOn: S.optional(__S(74, __c9, 2)),
-          order: S.optional(__S(76, __c9, 4)),
-          filter: S.optional(__S(80, __c10, 0)),
-          startCursor: S.optional(S.String),
-          projection: S.optional(__S(82, __c10, 2)),
-          limit: S.optional(S.Number),
-          kind: S.optional(__S(74, __c9, 2)),
-          endCursor: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Query" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           upTo: S.optional(S.String),
         }),
       ).annotate({ identifier: "Count" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          avg: S.optional(__S(81, __c10, 1)),
-          count: S.optional(__S(84, __c10, 4)),
-          alias: S.optional(S.String),
-          sum: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({ identifier: "Aggregation" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nestedQuery: S.optional(__S(83, __c10, 3)),
-          aggregations: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "AggregationQuery" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          analyze: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ExplainOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          gqlQuery: S.optional(__S(71, __c8, 7)),
-          aggregationQuery: S.optional(__S(87, __c10, 7)),
-          readOptions: S.optional(__S(58, __c7, 2)),
+          avg: S.optional(__S(461, __c14, 13)),
+          count: S.optional(__S(416, __c13, 0)),
+          alias: S.optional(S.String),
+          sum: S.optional(__S(461, __c14, 13)),
+        }),
+      ).annotate({ identifier: "Aggregation" });
+    case 2:
+      return S.Array(__S(417, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nestedQuery: S.optional(__S(463, __c14, 15)),
+          aggregations: S.optional(__S(418, __c13, 2)),
+        }),
+      ).annotate({ identifier: "AggregationQuery" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          gqlQuery: S.optional(__S(451, __c14, 3)),
+          aggregationQuery: S.optional(__S(419, __c13, 3)),
+          readOptions: S.optional(__S(288, __c9, 0)),
           databaseId: S.optional(S.String),
-          explainOptions: S.optional(__S(88, __c11, 0)),
-          requestOptions: S.optional(__S(1, __c0, 1)),
-          partitionId: S.optional(__S(2, __c0, 2)),
+          explainOptions: S.optional(__S(464, __c14, 16)),
+          requestOptions: S.optional(__S(608, __c19, 0)),
+          partitionId: S.optional(__S(640, __c20, 0)),
         }),
       ).annotate({
         identifier: "RunAggregationQueryRequest",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(89, __c11, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(420, __c13, 4).pipe(T.HttpBody())),
           requestParams: S.optional(S.String.pipe(T.Header("x-goog-request-params"))),
         }).pipe(
           T.Http({
@@ -1979,77 +1549,182 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "RunAggregationQueryProjectsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          readOperations: S.optional(S.String),
-          debugStats: S.optional(__S(38, __c4, 6)),
-          resultsReturned: S.optional(S.String),
-          executionDuration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExecutionStats" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          indexesUsed: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "PlanSummary" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          executionStats: S.optional(__S(91, __c11, 3)),
-          planSummary: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "ExplainMetrics" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          aggregateProperties: S.optional(__S(19, __c2, 3)),
+          aggregateProperties: S.optional(__S(833, __c26, 1)),
         }),
       ).annotate({ identifier: "AggregationResult" });
     case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(422, __c13, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           readTime: S.optional(S.String),
-          aggregationResults: S.optional(__S(95, __c11, 7)),
+          aggregationResults: S.optional(__S(423, __c13, 7)),
           moreResults: S.optional(S.String),
         }),
       ).annotate({ identifier: "AggregationResultBatch" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          explainMetrics: S.optional(__S(93, __c11, 5)),
+          explainMetrics: S.optional(__S(467, __c14, 19)),
           transaction: S.optional(S.String),
-          batch: S.optional(__S(96, __c12, 0)),
-          query: S.optional(__S(87, __c10, 7)),
+          batch: S.optional(__S(424, __c13, 8)),
+          query: S.optional(__S(419, __c13, 3)),
         }),
       ).annotate({
         identifier: "RunAggregationQueryResponse",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          partitionId: S.optional(__S(2, __c0, 2)),
-          explainOptions: S.optional(__S(88, __c11, 0)),
-          requestOptions: S.optional(__S(1, __c0, 1)),
-          databaseId: S.optional(S.String),
-          readOptions: S.optional(__S(58, __c7, 2)),
-          propertyMask: S.optional(__S(26, __c3, 2)),
-          gqlQuery: S.optional(__S(71, __c8, 7)),
-          query: S.optional(__S(83, __c10, 3)),
+          value: S.optional(__S(835, __c26, 3)),
+          cursor: S.optional(S.String),
         }),
-      ).annotate({ identifier: "RunQueryRequest" });
+      ).annotate({ identifier: "GqlQueryParameter" });
+    case 1:
+      return S.Record(S.String, __S(448, __c14, 0));
+    case 2:
+      return S.Array(__S(448, __c14, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
+          queryString: S.optional(S.String),
+          namedBindings: S.optional(__S(449, __c14, 1)),
+          positionalBindings: S.optional(__S(450, __c14, 2)),
+          allowLiterals: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GqlQuery" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PropertyReference" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          queryVector: S.optional(__S(835, __c26, 3)),
+          distanceResultProperty: S.optional(S.String),
+          distanceThreshold: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          vectorProperty: S.optional(__S(452, __c14, 4)),
+          distanceMeasure: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FindNearest" });
+    case 6:
+      return S.Array(__S(452, __c14, 4));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          direction: S.optional(S.String),
+          property: S.optional(__S(452, __c14, 4)),
+        }),
+      ).annotate({ identifier: "PropertyOrder" });
+    case 8:
+      return S.Array(__S(455, __c14, 7));
+    case 9:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(460, __c14, 12)));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          op: S.optional(S.String),
+          filters: S.optional(__S(457, __c14, 9)),
+        }),
+      ).annotate({ identifier: "CompositeFilter" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          property: S.optional(__S(452, __c14, 4)),
+          op: S.optional(S.String),
+          value: S.optional(__S(835, __c26, 3)),
+        }),
+      ).annotate({ identifier: "PropertyFilter" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          compositeFilter: S.optional(__S(458, __c14, 10)),
+          propertyFilter: S.optional(__S(459, __c14, 11)),
+        }),
+      ).annotate({ identifier: "Filter" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          property: S.optional(__S(452, __c14, 4)),
+        }),
+      ).annotate({ identifier: "Projection" });
+    case 14:
+      return S.Array(__S(461, __c14, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          findNearest: S.optional(__S(453, __c14, 5)),
+          offset: S.optional(S.Number),
+          distinctOn: S.optional(__S(454, __c14, 6)),
+          order: S.optional(__S(456, __c14, 8)),
+          filter: S.optional(__S(460, __c14, 12)),
+          startCursor: S.optional(S.String),
+          projection: S.optional(__S(462, __c14, 14)),
+          limit: S.optional(S.Number),
+          kind: S.optional(__S(454, __c14, 6)),
+          endCursor: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Query" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          analyze: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ExplainOptions" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          readOperations: S.optional(S.String),
+          debugStats: S.optional(__S(992, __c31, 0)),
+          resultsReturned: S.optional(S.String),
+          executionDuration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExecutionStats" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          indexesUsed: S.optional(__S(993, __c31, 1)),
+        }),
+      ).annotate({ identifier: "PlanSummary" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          executionStats: S.optional(__S(465, __c14, 17)),
+          planSummary: S.optional(__S(466, __c14, 18)),
+        }),
+      ).annotate({ identifier: "ExplainMetrics" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partitionId: S.optional(__S(640, __c20, 0)),
+          explainOptions: S.optional(__S(464, __c14, 16)),
+          requestOptions: S.optional(__S(608, __c19, 0)),
+          databaseId: S.optional(S.String),
+          readOptions: S.optional(__S(288, __c9, 0)),
+          propertyMask: S.optional(__S(864, __c27, 0)),
+          gqlQuery: S.optional(__S(451, __c14, 3)),
+          query: S.optional(__S(463, __c14, 15)),
+        }),
+      ).annotate({ identifier: "RunQueryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(98, __c12, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(480, __c15, 0).pipe(T.HttpBody())),
           requestParams: S.optional(S.String.pipe(T.Header("x-goog-request-params"))),
         }).pipe(
           T.Http({
@@ -2059,7 +1734,7 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RunQueryProjectsRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           skippedResults: S.optional(S.Number),
@@ -2069,21 +1744,425 @@ function __c12(j: number): any {
           moreResults: S.optional(S.String),
           readTime: S.optional(S.String),
           endCursor: S.optional(S.String),
-          entityResults: S.optional(__S(62, __c7, 6)),
+          entityResults: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({ identifier: "QueryResultBatch" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          explainMetrics: S.optional(__S(93, __c11, 5)),
-          batch: S.optional(__S(100, __c12, 4)),
-          query: S.optional(__S(83, __c10, 3)),
+          explainMetrics: S.optional(__S(467, __c14, 19)),
+          batch: S.optional(__S(482, __c15, 2)),
+          query: S.optional(__S(463, __c14, 15)),
           transaction: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunQueryResponse" });
   }
 }
-
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestOptions: S.optional(__S(608, __c19, 0)),
+          keys: S.optional(__S(544, __c17, 0)),
+          databaseId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AllocateIdsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(512, __c16, 0).pipe(T.HttpBody())),
+          requestParams: S.optional(S.String.pipe(T.Header("x-goog-request-params"))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{projectId}:allocateIds",
+            baseUrl: "https://datastore.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AllocateIdsProjectsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          keys: S.optional(__S(544, __c17, 0)),
+        }),
+      ).annotate({ identifier: "AllocateIdsResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(643, __c20, 3));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestTags: S.optional(__S(576, __c18, 0)),
+        }),
+      ).annotate({ identifier: "RequestOptions" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespaceId: S.optional(S.String),
+          databaseId: S.optional(S.String),
+          projectId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartitionId" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PathElement" });
+    case 2:
+      return S.Array(__S(641, __c20, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          partitionId: S.optional(__S(640, __c20, 0)),
+          path: S.optional(__S(642, __c20, 2)),
+        }),
+      ).annotate({ identifier: "Key" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestOptions: S.optional(__S(608, __c19, 0)),
+          databaseId: S.optional(S.String),
+          transactionOptions: S.optional(__S(706, __c22, 2)),
+        }),
+      ).annotate({ identifier: "BeginTransactionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(672, __c21, 0).pipe(T.HttpBody())),
+          requestParams: S.optional(S.String.pipe(T.Header("x-goog-request-params"))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{projectId}:beginTransaction",
+            baseUrl: "https://datastore.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BeginTransactionProjectsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          transaction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BeginTransactionResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          previousTransaction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReadWrite" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          readTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReadOnly" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          readWrite: S.optional(__S(704, __c22, 0)),
+          readOnly: S.optional(__S(705, __c22, 1)),
+        }),
+      ).annotate({ identifier: "TransactionOptions" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://datastore.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsOperationsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          removeAllFromArray: S.optional(__S(837, __c26, 5)),
+          maximum: S.optional(__S(835, __c26, 3)),
+          increment: S.optional(__S(835, __c26, 3)),
+          property: S.optional(S.String),
+          setToServerValue: S.optional(S.String),
+          minimum: S.optional(__S(835, __c26, 3)),
+          appendMissingElements: S.optional(__S(837, __c26, 5)),
+        }),
+      ).annotate({ identifier: "PropertyTransform" });
+    case 1:
+      return S.Array(__S(800, __c25, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          propertyTransforms: S.optional(__S(801, __c25, 1)),
+          upsert: S.optional(__S(834, __c26, 2)),
+          propertyMask: S.optional(__S(864, __c27, 0)),
+          update: S.optional(__S(834, __c26, 2)),
+          delete: S.optional(__S(643, __c20, 3)),
+          conflictResolutionStrategy: S.optional(S.String),
+          baseVersion: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          insert: S.optional(__S(834, __c26, 2)),
+        }),
+      ).annotate({ identifier: "Mutation" });
+    case 3:
+      return S.Array(__S(802, __c25, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          singleUseTransaction: S.optional(__S(706, __c22, 2)),
+          databaseId: S.optional(S.String),
+          mode: S.optional(S.String),
+          mutations: S.optional(__S(803, __c25, 3)),
+          requestOptions: S.optional(__S(608, __c19, 0)),
+          transaction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommitRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(804, __c25, 4).pipe(T.HttpBody())),
+          requestParams: S.optional(S.String.pipe(T.Header("x-goog-request-params"))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{projectId}:commit",
+            baseUrl: "https://datastore.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CommitProjectsRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          conflictDetected: S.optional(S.Boolean),
+          updateTime: S.optional(S.String),
+          transformResults: S.optional(__S(836, __c26, 4)),
+          version: S.optional(S.String),
+          createTime: S.optional(S.String),
+          key: S.optional(__S(643, __c20, 3)),
+        }),
+      ).annotate({ identifier: "MutationResult" });
+    case 7:
+      return S.Array(__S(806, __c25, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          indexUpdates: S.optional(S.Number),
+          commitTime: S.optional(S.String),
+          mutationResults: S.optional(__S(807, __c25, 7)),
+        }),
+      ).annotate({ identifier: "CommitResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          latitude: S.optional(S.Number),
+          longitude: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LatLng" });
+    case 1:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => __S(835, __c26, 3)),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(__S(643, __c20, 3)),
+          properties: S.optional(__S(833, __c26, 1)),
+        }),
+      ).annotate({ identifier: "Entity" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nullValue: S.optional(S.String),
+          geoPointValue: S.optional(__S(832, __c26, 0)),
+          timestampValue: S.optional(S.String),
+          excludeFromIndexes: S.optional(S.Boolean),
+          meaning: S.optional(S.Number),
+          booleanValue: S.optional(S.Boolean),
+          blobValue: S.optional(S.String),
+          doubleValue: S.optional(S.Number),
+          integerValue: S.optional(S.String),
+          arrayValue: S.optional(S.suspend(() => __S(837, __c26, 5))),
+          keyValue: S.optional(__S(643, __c20, 3)),
+          entityValue: S.optional(__S(834, __c26, 2)),
+          stringValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Value" });
+    case 4:
+      return S.Array(__S(835, __c26, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(836, __c26, 4)),
+        }),
+      ).annotate({ identifier: "ArrayValue" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paths: S.optional(__S(576, __c18, 0)),
+        }),
+      ).annotate({ identifier: "PropertyMask" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(930, __c29, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{projectId}/indexes",
+            baseUrl: "https://datastore.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsIndexesRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          direction: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleDatastoreAdminV1IndexedProperty",
+      });
+    case 1:
+      return S.Array(__S(928, __c29, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ancestor: S.optional(S.String),
+          indexId: S.optional(S.String),
+          state: S.optional(S.String),
+          properties: S.optional(__S(929, __c29, 1)),
+          kind: S.optional(S.String),
+          projectId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleDatastoreAdminV1Index",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          details: S.optional(__S(993, __c31, 1)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(992, __c31, 0)),
+          name: S.optional(S.String),
+          error: S.optional(__S(960, __c30, 0)),
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunningOperation",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(992, __c31, 0));
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          indexId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/projects/{projectId}/indexes/{indexId}",
+            baseUrl: "https://datastore.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsIndexesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

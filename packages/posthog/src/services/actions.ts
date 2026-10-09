@@ -425,8 +425,8 @@ export const createAction: API.OperationMethod<
   CreateActionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateActionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ActionOutput>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateActionRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<ActionOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -439,8 +439,8 @@ export const getAction: API.OperationMethod<
   GetActionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetActionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ActionOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetActionRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<ActionOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -453,8 +453,8 @@ export const listActions: API.OperationMethod<
   ListActionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListActionsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<PaginatedActionListOutput>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListActionsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<PaginatedActionListOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -467,8 +467,8 @@ export const listActionsReferences: API.OperationMethod<
   ListActionsReferencesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListActionsReferencesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListActionsReferencesResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListActionsReferencesRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<ListActionsReferencesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -481,8 +481,8 @@ export const updateAction: API.OperationMethod<
   UpdateActionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<UpdateActionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ActionOutput>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateActionRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<ActionOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -495,8 +495,8 @@ export const updateActionsPartial: API.OperationMethod<
   UpdateActionsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<UpdateActionsPartialRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ActionOutput>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateActionsPartialRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<ActionOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -519,49 +519,60 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ActionsDestroyResponse",
       });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          event: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(3, __c0, 3))),
-          selector: S.optional(S.NullOr(S.String)),
-          tag_name: S.optional(S.NullOr(S.String)),
-          text: S.optional(S.NullOr(S.String)),
-          text_matching: S.optional(S.NullOr(S.String)),
-          href: S.optional(S.NullOr(S.String)),
-          href_matching: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-          url_matching: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ActionStepJSONInput" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           format: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(24, __c3, 0)),
           post_to_slack: S.optional(S.Boolean),
           slack_message_format: S.optional(S.String),
-          steps: S.optional(__S(5, __c0, 5)),
+          steps: S.optional(__S(33, __c4, 1)),
           deleted: S.optional(S.Boolean),
           last_calculated_at: S.optional(S.String),
           pinned_at: S.optional(S.NullOr(S.String)),
           _create_in_folder: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/actions/", code: 200 })),
       ).annotate({ identifier: "CreateActionRequest" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(16, __c2, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           event: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(3, __c0, 3))),
+          properties: S.optional(S.NullOr(__S(25, __c3, 1))),
           selector: S.optional(S.NullOr(S.String)),
           selector_regex: S.optional(S.NullOr(S.String)),
           tag_name: S.optional(S.NullOr(S.String)),
@@ -573,40 +584,20 @@ function __c0(j: number): any {
           url_matching: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ActionStepJSON" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(9, __c1, 1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
     case 3:
+      return S.Array(__S(26, __c3, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(24, __c3, 0)),
           post_to_slack: S.optional(S.Boolean),
           slack_message_format: S.optional(S.String),
-          steps: S.optional(__S(8, __c1, 0)),
+          steps: S.optional(__S(27, __c3, 3)),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(10, __c1, 2))),
+          created_by: S.optional(S.NullOr(__S(17, __c2, 1))),
           deleted: S.optional(S.Boolean),
           is_calculating: S.optional(S.Boolean),
           last_calculated_at: S.optional(S.String),
@@ -618,7 +609,32 @@ function __c1(j: number): any {
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ActionOutput" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          event: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(25, __c3, 1))),
+          selector: S.optional(S.NullOr(S.String)),
+          tag_name: S.optional(S.NullOr(S.String)),
+          text: S.optional(S.NullOr(S.String)),
+          text_matching: S.optional(S.NullOr(S.String)),
+          href: S.optional(S.NullOr(S.String)),
+          href_matching: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+          url_matching: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ActionStepJSONInput" });
+    case 1:
+      return S.Array(__S(32, __c4, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -628,7 +644,11 @@ function __c1(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/actions/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "GetActionRequest" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -641,22 +661,22 @@ function __c1(j: number): any {
           tags: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/actions/", code: 200 })),
       ).annotate({ identifier: "ListActionsRequest" });
-    case 6:
-      return S.Array(__S(11, __c1, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(28, __c3, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(14, __c1, 6)),
+          results: S.optional(__S(49, __c6, 1)),
         }),
       ).annotate({
         identifier: "PaginatedActionListOutput",
       });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -682,16 +702,20 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           url: S.optional(S.String),
           created_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(10, __c1, 2))),
+          created_by: S.optional(S.NullOr(__S(17, __c2, 1))),
         }),
       ).annotate({ identifier: "ActionReference" });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(57, __c7, 1));
     case 3:
-      return S.suspend(() => __S(18, __c2, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(58, __c7, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListActionsReferencesResponse",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -699,10 +723,10 @@ function __c2(j: number): any {
           format: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(24, __c3, 0)),
           post_to_slack: S.optional(S.Boolean),
           slack_message_format: S.optional(S.String),
-          steps: S.optional(__S(5, __c0, 5)),
+          steps: S.optional(__S(33, __c4, 1)),
           deleted: S.optional(S.Boolean),
           last_calculated_at: S.optional(S.String),
           pinned_at: S.optional(S.NullOr(S.String)),
@@ -711,7 +735,11 @@ function __c2(j: number): any {
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/actions/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateActionRequest" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -719,10 +747,10 @@ function __c2(j: number): any {
           format: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(24, __c3, 0)),
           post_to_slack: S.optional(S.Boolean),
           slack_message_format: S.optional(S.String),
-          steps: S.optional(__S(5, __c0, 5)),
+          steps: S.optional(__S(33, __c4, 1)),
           deleted: S.optional(S.Boolean),
           last_calculated_at: S.optional(S.String),
           pinned_at: S.optional(S.NullOr(S.String)),
@@ -735,7 +763,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

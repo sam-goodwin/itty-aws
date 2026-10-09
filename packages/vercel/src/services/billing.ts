@@ -968,8 +968,8 @@ export const listBillingCharges: API.OperationMethod<
   ListBillingChargesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListBillingChargesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListBillingChargesResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListBillingChargesRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<ListBillingChargesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -983,8 +983,8 @@ export const listContractCommitments: API.OperationMethod<
   ListContractCommitmentsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListContractCommitmentsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListContractCommitmentsResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListContractCommitmentsRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<ListContractCommitmentsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1014,7 +1014,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "BuyCreditsResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.String.pipe(T.Query()),
@@ -1025,11 +1029,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListBillingChargesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ListBillingChargesResponse",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -1038,13 +1046,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListContractCommitmentsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ListContractCommitmentsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -114,8 +114,8 @@ export const getOriginTlsComplianceMode: API.OperationMethod<
   GetOriginTlsComplianceModeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetOriginTlsComplianceModeRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetOriginTlsComplianceModeResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<GetOriginTlsComplianceModeRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<GetOriginTlsComplianceModeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -129,8 +129,8 @@ export const patchOriginTlsComplianceMode: API.OperationMethod<
   PatchOriginTlsComplianceModeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<PatchOriginTlsComplianceModeRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PatchOriginTlsComplianceModeResponse>,
+  input: __S(6, __c3, 0) as any as S.Schema<PatchOriginTlsComplianceModeRequest>,
+  output: __S(7, __c3, 1) as any as S.Schema<PatchOriginTlsComplianceModeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -144,8 +144,8 @@ export const putOriginTlsComplianceMode: API.OperationMethod<
   PutOriginTlsComplianceModeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<PutOriginTlsComplianceModeRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PutOriginTlsComplianceModeResponse>,
+  input: __S(8, __c4, 0) as any as S.Schema<PutOriginTlsComplianceModeRequest>,
+  output: __S(9, __c4, 1) as any as S.Schema<PutOriginTlsComplianceModeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -180,7 +180,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteOriginTlsComplianceModeResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -196,24 +200,32 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetOriginTlsComplianceModeRequest",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           editable: S.Boolean,
-          value: __S(3, __c0, 3),
+          value: __S(4, __c2, 0),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetOriginTlsComplianceModeResponse",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: __S(3, __c0, 3),
+          value: __S(4, __c2, 0),
         })
           .pipe(
             T.Http({
@@ -226,22 +238,26 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PatchOriginTlsComplianceModeRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           editable: S.Boolean,
-          value: __S(3, __c0, 3),
+          value: __S(4, __c2, 0),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchOriginTlsComplianceModeResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: __S(3, __c0, 3),
+          value: __S(4, __c2, 0),
         })
           .pipe(
             T.Http({
@@ -254,16 +270,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PutOriginTlsComplianceModeRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           editable: S.Boolean,
-          value: __S(3, __c0, 3),
+          value: __S(4, __c2, 0),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -271,7 +283,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

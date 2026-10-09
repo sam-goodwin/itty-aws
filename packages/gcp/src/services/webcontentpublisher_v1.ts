@@ -306,8 +306,8 @@ export const checkFreeAccessPublications: API.OperationMethod<
   CheckFreeAccessPublicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CheckFreeAccessPublicationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CheckFreeAccessResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CheckFreeAccessPublicationsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<CheckFreeAccessResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -326,8 +326,8 @@ export const createOrganizationsPublications: API.OperationMethod<
   CreateOrganizationsPublicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateOrganizationsPublicationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Publication>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateOrganizationsPublicationsRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<Publication>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -346,8 +346,8 @@ export const createOrganizationsPublicationsCtas: API.OperationMethod<
   CreateOrganizationsPublicationsCtasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateOrganizationsPublicationsCtasRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Cta>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateOrganizationsPublicationsCtasRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<Cta>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -366,8 +366,8 @@ export const generatePlatformSiteTokensUsers: API.OperationMethod<
   GeneratePlatformSiteTokensUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GeneratePlatformSiteTokensUsersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GeneratePlatformSiteTokensResponse>,
+  input: __S(73, __c9, 1) as any as S.Schema<GeneratePlatformSiteTokensUsersRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<GeneratePlatformSiteTokensResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -381,8 +381,8 @@ export const getOrganizationsPublications: API.OperationMethod<
   GetOrganizationsPublicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetOrganizationsPublicationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Publication>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetOrganizationsPublicationsRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<Publication>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -396,8 +396,8 @@ export const getOrganizationsPublicationsCtas: API.OperationMethod<
   GetOrganizationsPublicationsCtasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetOrganizationsPublicationsCtasRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Cta>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetOrganizationsPublicationsCtasRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<Cta>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -412,8 +412,8 @@ export const listOrganizationsPublications: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPublicationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListOrganizationsPublicationsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ListPublicationsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListOrganizationsPublicationsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListPublicationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -429,8 +429,8 @@ export const listOrganizationsPublicationsCtas: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCtasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListOrganizationsPublicationsCtasRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListCtasResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListOrganizationsPublicationsCtasRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ListCtasResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -450,8 +450,8 @@ export const patchOrganizationsPublications: API.OperationMethod<
   PatchOrganizationsPublicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<PatchOrganizationsPublicationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Publication>,
+  input: __S(16, __c2, 0) as any as S.Schema<PatchOrganizationsPublicationsRequest>,
+  output: __S(55, __c6, 7) as any as S.Schema<Publication>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -470,8 +470,8 @@ export const patchOrganizationsPublicationsCtas: API.OperationMethod<
   PatchOrganizationsPublicationsCtasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<PatchOrganizationsPublicationsCtasRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Cta>,
+  input: __S(24, __c3, 0) as any as S.Schema<PatchOrganizationsPublicationsCtasRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<Cta>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -479,6 +479,105 @@ export const patchOrganizationsPublicationsCtas: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/publications",
+            baseUrl: "https://webcontentpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationsPublicationsRequest",
+      });
+    case 1:
+      return S.Array(__S(55, __c6, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          publications: S.optional(__S(1, __c0, 1)),
+        }),
+      ).annotate({ identifier: "ListPublicationsResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/ctas",
+            baseUrl: "https://webcontentpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationsPublicationsCtasRequest",
+      });
+    case 1:
+      return S.Array(__S(65, __c8, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ctas: S.optional(__S(9, __c1, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListCtasResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://webcontentpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchOrganizationsPublicationsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://webcontentpublisher.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchOrganizationsPublicationsCtasRequest",
+      });
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -502,78 +601,16 @@ function __c0(j: number): any {
           isAllowed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CheckFreeAccessResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          gcpProjectNumber: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SlProduct" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          emailOptIn: S.optional(S.Boolean),
-          userAccepted: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TosAcceptance" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tosAcceptance: S.optional(__S(3, __c0, 3)),
-          enabled: S.optional(S.Boolean),
-          productTosUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RrmProduct" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          ownershipVerified: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DomainProperty" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          policyInfoUrl: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContentPolicyStatus" });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          onboardingState: S.optional(S.String),
-          publicationId: S.optional(S.String),
-          name: S.optional(S.String),
-          slProduct: S.optional(__S(2, __c0, 2)),
-          publicationPrivacyPolicyUrl: S.optional(S.String),
-          rrmProduct: S.optional(__S(4, __c0, 4)),
-          additionalDomains: S.optional(__S(6, __c0, 6)),
-          primaryDomain: S.optional(__S(5, __c0, 5)),
-          displayName: S.optional(S.String),
-          organizationId: S.optional(S.String),
-          contentPolicyStatus: S.optional(__S(7, __c0, 7)),
-          paymentOption: S.optional(S.String),
-          regionCode: S.optional(S.String),
-          publicationType: S.optional(S.String),
-          products: S.optional(__S(8, __c1, 0)),
-          languageCode: S.optional(S.String),
-          publicationTosUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Publication" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           publicationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -584,32 +621,82 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateOrganizationsPublicationsRequest",
       });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gcpProjectNumber: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SlProduct" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          emailOptIn: S.optional(S.Boolean),
+          userAccepted: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TosAcceptance" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tosAcceptance: S.optional(__S(49, __c6, 1)),
+          enabled: S.optional(S.Boolean),
+          productTosUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RrmProduct" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          title: S.optional(S.String),
-          optInRequired: S.optional(S.Boolean),
-          nameRequired: S.optional(S.Boolean),
-          customMessage: S.optional(S.String),
-          customConsentText: S.optional(S.String),
+          url: S.optional(S.String),
+          ownershipVerified: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "NewsletterConfig" });
+      ).annotate({ identifier: "DomainProperty" });
     case 4:
+      return S.Array(__S(51, __c6, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(S.String),
-          type: S.optional(S.String),
+          policyInfoUrl: S.optional(S.String),
           state: S.optional(S.String),
-          newsletterConfig: S.optional(__S(11, __c1, 3)),
-          name: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Cta" });
-    case 5:
+      ).annotate({ identifier: "ContentPolicyStatus" });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          onboardingState: S.optional(S.String),
+          publicationId: S.optional(S.String),
+          name: S.optional(S.String),
+          slProduct: S.optional(__S(48, __c6, 0)),
+          publicationPrivacyPolicyUrl: S.optional(S.String),
+          rrmProduct: S.optional(__S(50, __c6, 2)),
+          additionalDomains: S.optional(__S(52, __c6, 4)),
+          primaryDomain: S.optional(__S(51, __c6, 3)),
+          displayName: S.optional(S.String),
+          organizationId: S.optional(S.String),
+          contentPolicyStatus: S.optional(__S(53, __c6, 5)),
+          paymentOption: S.optional(S.String),
+          regionCode: S.optional(S.String),
+          publicationType: S.optional(S.String),
+          products: S.optional(__S(54, __c6, 6)),
+          languageCode: S.optional(S.String),
+          publicationTosUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Publication" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           ctaId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -620,15 +707,43 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateOrganizationsPublicationsCtasRequest",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          optInRequired: S.optional(S.Boolean),
+          nameRequired: S.optional(S.Boolean),
+          customMessage: S.optional(S.String),
+          customConsentText: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NewsletterConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          type: S.optional(S.String),
+          state: S.optional(S.String),
+          newsletterConfig: S.optional(__S(64, __c8, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Cta" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GeneratePlatformSiteTokensRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -639,28 +754,28 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GeneratePlatformSiteTokensUsersRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.String),
           domain: S.optional(S.String),
         }),
       ).annotate({ identifier: "SiteToken" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(74, __c9, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          siteTokens: S.optional(__S(17, __c2, 1)),
+          siteTokens: S.optional(__S(75, __c9, 3)),
         }),
       ).annotate({
         identifier: "GeneratePlatformSiteTokensResponse",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -674,7 +789,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsPublicationsRequest",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -688,96 +807,8 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsPublicationsCtasRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/publications",
-            baseUrl: "https://webcontentpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationsPublicationsRequest",
-      });
-    case 6:
-      return S.Array(__S(9, __c1, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          publications: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "ListPublicationsResponse" });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/ctas",
-            baseUrl: "https://webcontentpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationsPublicationsCtasRequest",
-      });
-    case 1:
-      return S.Array(__S(12, __c1, 4));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ctas: S.optional(__S(25, __c3, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListCtasResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://webcontentpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchOrganizationsPublicationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://webcontentpublisher.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchOrganizationsPublicationsCtasRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

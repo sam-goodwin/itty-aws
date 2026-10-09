@@ -336,8 +336,8 @@ export const CreateCommunityTraining: API.OperationMethod<
   CreateCommunityTrainingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateCommunityTrainingRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateCommunityTrainingResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCommunityTrainingRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateCommunityTrainingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -351,8 +351,8 @@ export const DeleteCommunityTraining: API.OperationMethod<
   DeleteCommunityTrainingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteCommunityTrainingRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteCommunityTrainingResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteCommunityTrainingRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DeleteCommunityTrainingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -366,8 +366,8 @@ export const GetCommunityTraining: API.OperationMethod<
   GetCommunityTrainingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetCommunityTrainingRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetCommunityTrainingResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetCommunityTrainingRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetCommunityTrainingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -381,8 +381,8 @@ export const ListCommunityTrainingByResourceGroup: API.OperationMethod<
   ListCommunityTrainingByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListCommunityTrainingByResourceGroupRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CommunityTrainingListResult>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListCommunityTrainingByResourceGroupRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<CommunityTrainingListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -396,8 +396,8 @@ export const ListCommunityTrainingBySubscription: API.OperationMethod<
   ListCommunityTrainingBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListCommunityTrainingBySubscriptionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CommunityTrainingListResult>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListCommunityTrainingBySubscriptionRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<CommunityTrainingListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -411,8 +411,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(68, __c8, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -426,8 +426,8 @@ export const UpdateCommunityTraining: API.OperationMethod<
   UpdateCommunityTrainingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<UpdateCommunityTrainingRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateCommunityTrainingResponse>,
+  input: __S(74, __c9, 2) as any as S.Schema<UpdateCommunityTrainingRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateCommunityTrainingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -435,6 +435,31 @@ export const UpdateCommunityTraining: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityTrainingName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(10, __c1, 2)),
+          sku: S.optional(__S(11, __c1, 3)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
+            code: 200,
+            apiVersion: "2023-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCommunityTrainingRequest",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -461,7 +486,7 @@ function __c0(j: number): any {
           portalAdminEmailAddress: S.String,
           portalOwnerOrganizationName: S.String,
           portalOwnerEmailAddress: S.String,
-          identityConfiguration: __S(1, __c0, 1),
+          identityConfiguration: __S(9, __c1, 1),
           zoneRedundancyEnabled: S.Boolean,
           disasterRecoveryEnabled: S.Boolean,
           provisioningState: S.optional(S.String),
@@ -484,27 +509,6 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityTrainingName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(2, __c0, 2)),
-          sku: S.optional(__S(3, __c0, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings/{communityTrainingName}",
-            code: 200,
-            apiVersion: "2023-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCommunityTrainingRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           createdBy: S.optional(S.String),
           createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
@@ -513,22 +517,30 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(2, __c0, 2)),
-          sku: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(10, __c1, 2)),
+          sku: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "CreateCommunityTrainingResponse",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -545,15 +557,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteCommunityTrainingRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteCommunityTrainingResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -570,7 +582,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetCommunityTrainingRequest",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -586,31 +602,39 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListCommunityTrainingByResourceGroupRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(2, __c0, 2)),
-          sku: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(10, __c1, 2)),
+          sku: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "CommunityTraining" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(12, __c1, 4),
+          value: __S(49, __c6, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CommunityTrainingListResult",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -625,7 +649,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListCommunityTrainingBySubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -636,11 +664,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -649,26 +673,30 @@ function __c2(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(16, __c2, 0)),
+          display: S.optional(__S(65, __c8, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
     case 3:
+      return S.Array(__S(66, __c8, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(18, __c2, 2)),
+          value: S.optional(__S(67, __c8, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           identityType: S.optional(S.String),
@@ -684,23 +712,23 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "IdentityConfigurationPropertiesUpdate",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          identityConfiguration: S.optional(__S(20, __c2, 4)),
+          identityConfiguration: S.optional(__S(72, __c9, 0)),
         }),
       ).annotate({
         identifier: "CommunityTrainingUpdateProperties",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityTrainingName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(21, __c2, 5)),
+          sku: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(73, __c9, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -714,7 +742,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

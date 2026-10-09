@@ -1130,11 +1130,11 @@ export const batchCreateProjectsLocationsRepositoriesPullRequestsPullRequestComm
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8,
-    __c1,
-    0,
+    299,
+    __c37,
+    3,
   ) as any as S.Schema<BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1153,8 +1153,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
+  input: __S(408, __c51, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1173,8 +1173,8 @@ export const closeProjectsLocationsRepositoriesIssues: API.OperationMethod<
   CloseProjectsLocationsRepositoriesIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CloseProjectsLocationsRepositoriesIssuesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(504, __c63, 0) as any as S.Schema<CloseProjectsLocationsRepositoriesIssuesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1193,8 +1193,12 @@ export const closeProjectsLocationsRepositoriesPullRequests: API.OperationMethod
   CloseProjectsLocationsRepositoriesPullRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CloseProjectsLocationsRepositoriesPullRequestsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(
+    584,
+    __c73,
+    0,
+  ) as any as S.Schema<CloseProjectsLocationsRepositoriesPullRequestsRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1213,8 +1217,8 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(592, __c74, 0) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1233,8 +1237,8 @@ export const createProjectsLocationsRepositories: API.OperationMethod<
   CreateProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(624, __c78, 0) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1253,8 +1257,8 @@ export const createProjectsLocationsRepositoriesBranchRules: API.OperationMethod
   CreateProjectsLocationsRepositoriesBranchRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateProjectsLocationsRepositoriesBranchRulesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsRepositoriesBranchRulesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1273,8 +1277,8 @@ export const createProjectsLocationsRepositoriesHooks: API.OperationMethod<
   CreateProjectsLocationsRepositoriesHooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateProjectsLocationsRepositoriesHooksRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateProjectsLocationsRepositoriesHooksRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1293,8 +1297,8 @@ export const createProjectsLocationsRepositoriesIssues: API.OperationMethod<
   CreateProjectsLocationsRepositoriesIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateProjectsLocationsRepositoriesIssuesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateProjectsLocationsRepositoriesIssuesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1314,11 +1318,11 @@ export const createProjectsLocationsRepositoriesIssuesIssueComments: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    42,
-    __c5,
-    2,
+    48,
+    __c6,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1338,11 +1342,11 @@ export const createProjectsLocationsRepositoriesPullRequests: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    45,
-    __c5,
-    5,
+    64,
+    __c8,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsRepositoriesPullRequestsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1362,11 +1366,11 @@ export const createProjectsLocationsRepositoriesPullRequestsPullRequestComments:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    46,
-    __c5,
-    6,
+    80,
+    __c10,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1389,8 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1409,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(416, __c52, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1425,8 +1429,8 @@ export const deleteProjectsLocationsRepositories: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteProjectsLocationsRepositoriesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteProjectsLocationsRepositoriesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1445,8 +1449,12 @@ export const deleteProjectsLocationsRepositoriesBranchRules: API.OperationMethod
   DeleteProjectsLocationsRepositoriesBranchRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteProjectsLocationsRepositoriesBranchRulesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(
+    112,
+    __c14,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsRepositoriesBranchRulesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1465,8 +1473,8 @@ export const deleteProjectsLocationsRepositoriesHooks: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesHooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteProjectsLocationsRepositoriesHooksRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteProjectsLocationsRepositoriesHooksRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1485,8 +1493,8 @@ export const deleteProjectsLocationsRepositoriesIssues: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteProjectsLocationsRepositoriesIssuesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteProjectsLocationsRepositoriesIssuesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1506,11 +1514,11 @@ export const deleteProjectsLocationsRepositoriesIssuesIssueComments: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    53,
-    __c6,
-    5,
+    136,
+    __c17,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1530,11 +1538,11 @@ export const deleteProjectsLocationsRepositoriesPullRequestsPullRequestComments:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    54,
-    __c6,
-    6,
+    144,
+    __c18,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1548,8 +1556,8 @@ export const fetchBlobProjectsLocationsRepositories: API.OperationMethod<
   FetchBlobProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<FetchBlobProjectsLocationsRepositoriesRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<FetchBlobResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<FetchBlobProjectsLocationsRepositoriesRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<FetchBlobResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1564,8 +1572,8 @@ export const fetchRefsProjectsLocationsRepositories: API.PaginatedOperationMetho
   GcpOpContext,
   FetchRefsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<FetchRefsProjectsLocationsRepositoriesRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<FetchRefsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<FetchRefsProjectsLocationsRepositoriesRequest>,
+  output: __S(163, __c20, 3) as any as S.Schema<FetchRefsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1581,8 +1589,8 @@ export const fetchTreeProjectsLocationsRepositories: API.PaginatedOperationMetho
   GcpOpContext,
   FetchTreeResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<FetchTreeProjectsLocationsRepositoriesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<FetchTreeResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<FetchTreeProjectsLocationsRepositoriesRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<FetchTreeResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1597,8 +1605,8 @@ export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
   GetIamPolicyProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<Policy>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>,
+  output: __S(191, __c23, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1612,8 +1620,8 @@ export const getIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   GetIamPolicyProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<Policy>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>,
+  output: __S(191, __c23, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1627,8 +1635,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<Location>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1642,8 +1650,8 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Instance>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
+  output: __S(611, __c76, 3) as any as S.Schema<Instance>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1657,8 +1665,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1672,8 +1680,8 @@ export const getProjectsLocationsRepositories: API.OperationMethod<
   GetProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetProjectsLocationsRepositoriesRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Repository>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetProjectsLocationsRepositoriesRequest>,
+  output: __S(636, __c79, 4) as any as S.Schema<Repository>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1687,8 +1695,8 @@ export const getProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
   GetProjectsLocationsRepositoriesBranchRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetProjectsLocationsRepositoriesBranchRulesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<BranchRule>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetProjectsLocationsRepositoriesBranchRulesRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<BranchRule>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1702,8 +1710,8 @@ export const getProjectsLocationsRepositoriesHooks: API.OperationMethod<
   GetProjectsLocationsRepositoriesHooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetProjectsLocationsRepositoriesHooksRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Hook>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetProjectsLocationsRepositoriesHooksRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Hook>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1717,8 +1725,8 @@ export const getProjectsLocationsRepositoriesIssues: API.OperationMethod<
   GetProjectsLocationsRepositoriesIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetProjectsLocationsRepositoriesIssuesRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<Issue>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetProjectsLocationsRepositoriesIssuesRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<Issue>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1736,11 +1744,11 @@ export const getProjectsLocationsRepositoriesIssuesIssueComments: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    83,
-    __c10,
-    3,
+    264,
+    __c33,
+    0,
   ) as any as S.Schema<GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<IssueComment>,
+  output: __S(56, __c7, 0) as any as S.Schema<IssueComment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1754,8 +1762,8 @@ export const getProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
   GetProjectsLocationsRepositoriesPullRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetProjectsLocationsRepositoriesPullRequestsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<PullRequest>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetProjectsLocationsRepositoriesPullRequestsRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<PullRequest>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1773,11 +1781,11 @@ export const getProjectsLocationsRepositoriesPullRequestsPullRequestComments: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    85,
-    __c10,
-    5,
+    280,
+    __c35,
+    0,
   ) as any as S.Schema<GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PullRequestComment>,
+  output: __S(308, __c38, 4) as any as S.Schema<PullRequestComment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1796,11 +1804,11 @@ export const listFileDiffsProjectsLocationsRepositoriesPullRequests: API.Paginat
   ListPullRequestFileDiffsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    86,
-    __c10,
-    6,
+    288,
+    __c36,
+    0,
   ) as any as S.Schema<ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<ListPullRequestFileDiffsResponse>,
+  output: __S(291, __c36, 3) as any as S.Schema<ListPullRequestFileDiffsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1816,8 +1824,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ListLocationsResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(330, __c41, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1833,8 +1841,8 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ListInstancesResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
+  output: __S(338, __c42, 2) as any as S.Schema<ListInstancesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1850,8 +1858,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListOperationsResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1867,8 +1875,8 @@ export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ListRepositoriesResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>,
+  output: __S(354, __c44, 2) as any as S.Schema<ListRepositoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1884,8 +1892,8 @@ export const listProjectsLocationsRepositoriesBranchRules: API.PaginatedOperatio
   GcpOpContext,
   ListBranchRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListProjectsLocationsRepositoriesBranchRulesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListBranchRulesResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListProjectsLocationsRepositoriesBranchRulesRequest>,
+  output: __S(362, __c45, 2) as any as S.Schema<ListBranchRulesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1901,8 +1909,8 @@ export const listProjectsLocationsRepositoriesHooks: API.PaginatedOperationMetho
   GcpOpContext,
   ListHooksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListProjectsLocationsRepositoriesHooksRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ListHooksResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<ListProjectsLocationsRepositoriesHooksRequest>,
+  output: __S(370, __c46, 2) as any as S.Schema<ListHooksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1918,8 +1926,8 @@ export const listProjectsLocationsRepositoriesIssues: API.PaginatedOperationMeth
   GcpOpContext,
   ListIssuesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListProjectsLocationsRepositoriesIssuesRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ListIssuesResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListProjectsLocationsRepositoriesIssuesRequest>,
+  output: __S(378, __c47, 2) as any as S.Schema<ListIssuesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1939,11 +1947,11 @@ export const listProjectsLocationsRepositoriesIssuesIssueComments: API.Paginated
   ListIssueCommentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    111,
-    __c13,
-    7,
+    384,
+    __c48,
+    0,
   ) as any as S.Schema<ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListIssueCommentsResponse>,
+  output: __S(386, __c48, 2) as any as S.Schema<ListIssueCommentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1960,11 +1968,11 @@ export const listProjectsLocationsRepositoriesPullRequests: API.PaginatedOperati
   ListPullRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    114,
-    __c14,
-    2,
+    392,
+    __c49,
+    0,
   ) as any as S.Schema<ListProjectsLocationsRepositoriesPullRequestsRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<ListPullRequestsResponse>,
+  output: __S(394, __c49, 2) as any as S.Schema<ListPullRequestsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1984,11 +1992,11 @@ export const listProjectsLocationsRepositoriesPullRequestsPullRequestComments: A
   ListPullRequestCommentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    117,
-    __c14,
-    5,
+    400,
+    __c50,
+    0,
   ) as any as S.Schema<ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<ListPullRequestCommentsResponse>,
+  output: __S(402, __c50, 2) as any as S.Schema<ListPullRequestCommentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2009,11 +2017,11 @@ export const mergeProjectsLocationsRepositoriesPullRequests: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    120,
-    __c15,
+    424,
+    __c53,
     0,
   ) as any as S.Schema<MergeProjectsLocationsRepositoriesPullRequestsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2032,8 +2040,8 @@ export const openProjectsLocationsRepositoriesIssues: API.OperationMethod<
   OpenProjectsLocationsRepositoriesIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<OpenProjectsLocationsRepositoriesIssuesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(432, __c54, 0) as any as S.Schema<OpenProjectsLocationsRepositoriesIssuesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2053,11 +2061,11 @@ export const openProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    122,
-    __c15,
-    2,
+    440,
+    __c55,
+    0,
   ) as any as S.Schema<OpenProjectsLocationsRepositoriesPullRequestsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2076,8 +2084,8 @@ export const patchProjectsLocationsRepositories: API.OperationMethod<
   PatchProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<PatchProjectsLocationsRepositoriesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(448, __c56, 0) as any as S.Schema<PatchProjectsLocationsRepositoriesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2097,11 +2105,11 @@ export const patchProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    124,
-    __c15,
-    4,
+    456,
+    __c57,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsRepositoriesBranchRulesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2120,8 +2128,8 @@ export const patchProjectsLocationsRepositoriesHooks: API.OperationMethod<
   PatchProjectsLocationsRepositoriesHooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<PatchProjectsLocationsRepositoriesHooksRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(464, __c58, 0) as any as S.Schema<PatchProjectsLocationsRepositoriesHooksRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2140,8 +2148,8 @@ export const patchProjectsLocationsRepositoriesIssues: API.OperationMethod<
   PatchProjectsLocationsRepositoriesIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<PatchProjectsLocationsRepositoriesIssuesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  input: __S(472, __c59, 0) as any as S.Schema<PatchProjectsLocationsRepositoriesIssuesRequest>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2161,11 +2169,11 @@ export const patchProjectsLocationsRepositoriesIssuesIssueComments: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    127,
-    __c15,
-    7,
+    480,
+    __c60,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsRepositoriesIssuesIssueCommentsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2185,11 +2193,11 @@ export const patchProjectsLocationsRepositoriesPullRequests: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    128,
-    __c16,
+    488,
+    __c61,
     0,
   ) as any as S.Schema<PatchProjectsLocationsRepositoriesPullRequestsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2209,11 +2217,11 @@ export const patchProjectsLocationsRepositoriesPullRequestsPullRequestComments: 
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    129,
-    __c16,
-    1,
+    496,
+    __c62,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2233,11 +2241,11 @@ export const resolveProjectsLocationsRepositoriesPullRequestsPullRequestComments
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    131,
-    __c16,
-    3,
+    521,
+    __c65,
+    1,
   ) as any as S.Schema<ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2256,8 +2264,8 @@ export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   SetIamPolicyProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<Policy>,
+  input: __S(528, __c66, 0) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>,
+  output: __S(191, __c23, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2276,8 +2284,8 @@ export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   SetIamPolicyProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<Policy>,
+  input: __S(544, __c68, 0) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>,
+  output: __S(191, __c23, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2296,8 +2304,8 @@ export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   TestIamPermissionsProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>,
+  output: __S(560, __c70, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2317,11 +2325,11 @@ export const testIamPermissionsProjectsLocationsRepositories: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    137,
-    __c17,
-    1,
+    568,
+    __c71,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(560, __c70, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2341,11 +2349,11 @@ export const unresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommen
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    139,
-    __c17,
-    3,
+    577,
+    __c72,
+    1,
   ) as any as S.Schema<UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Operation>,
+  output: __S(322, __c40, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2353,6 +2361,852 @@ export const unresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommen
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          branchRuleId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/branchRules",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsRepositoriesBranchRulesRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          context: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Check" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(600, __c75, 0)),
+          includePattern: S.optional(S.String),
+          minimumReviewsCount: S.optional(S.Number),
+          minimumApprovalsCount: S.optional(S.Number),
+          disabled: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          requiredStatusChecks: S.optional(__S(9, __c1, 1)),
+          requirePullRequest: S.optional(S.Boolean),
+          requireLinearHistory: S.optional(S.Boolean),
+          uid: S.optional(S.String),
+          requireCommentsResolved: S.optional(S.Boolean),
+          updateTime: S.optional(S.String),
+          requireCodeOwnerApproval: S.optional(S.Boolean),
+          etag: S.optional(S.String),
+          allowStaleReviews: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BranchRule" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          hookId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/hooks",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsRepositoriesHooksRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          branchFilter: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PushOption" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.String),
+          sensitiveQueryString: S.optional(S.String),
+          createTime: S.optional(S.String),
+          targetUri: S.optional(S.String),
+          name: S.optional(S.String),
+          events: S.optional(__S(24, __c3, 0)),
+          serviceAccountAuth: S.optional(S.Boolean),
+          updateTime: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
+          pushOption: S.optional(__S(25, __c3, 1)),
+        }),
+      ).annotate({ identifier: "Hook" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/issues",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsRepositoriesIssuesRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          createTime: S.optional(S.String),
+          etag: S.optional(S.String),
+          name: S.optional(S.String),
+          body: S.optional(S.String),
+          title: S.optional(S.String),
+          closeTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Issue" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/issueComments",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          body: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IssueComment" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/pullRequests",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsRepositoriesPullRequestsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ref: S.optional(S.String),
+          sha: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Branch" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          head: S.optional(__S(72, __c9, 0)),
+          state: S.optional(S.String),
+          base: S.optional(__S(72, __c9, 0)),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          body: S.optional(S.String),
+          closeTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PullRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(308, __c38, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/pullRequestComments",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsInstancesRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsRepositoriesRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsRepositoriesBranchRulesRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsRepositoriesHooksRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsRepositoriesIssuesRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repository: S.String.pipe(T.Label()),
+          sha: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+repository}:fetchBlob",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "FetchBlobProjectsLocationsRepositoriesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          sha: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FetchBlobResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          repository: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+repository}:fetchRefs",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "FetchRefsProjectsLocationsRepositoriesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          target: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Ref" });
+    case 2:
+      return S.Array(__S(161, __c20, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          refs: S.optional(__S(162, __c20, 2)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FetchRefsResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          recursive: S.optional(S.Boolean.pipe(T.Query())),
+          ref: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          repository: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+repository}:fetchTree",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "FetchTreeProjectsLocationsRepositoriesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          path: S.optional(S.String),
+          type: S.optional(S.String),
+          size: S.optional(S.String),
+          sha: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TreeEntry" });
+    case 2:
+      return S.Array(__S(169, __c21, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          treeEntries: S.optional(__S(170, __c21, 2)),
+        }),
+      ).annotate({ identifier: "FetchTreeResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsInstancesRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          description: S.optional(S.String),
+          expression: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expr" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          condition: S.optional(__S(184, __c23, 0)),
+          members: S.optional(__S(616, __c77, 0)),
+        }),
+      ).annotate({ identifier: "Binding" });
+    case 2:
+      return S.Array(__S(185, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(616, __c77, 0)),
+        }),
+      ).annotate({ identifier: "AuditLogConfig" });
+    case 4:
+      return S.Array(__S(187, __c23, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          auditLogConfigs: S.optional(__S(188, __c23, 4)),
+          service: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuditConfig" });
+    case 6:
+      return S.Array(__S(189, __c23, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          bindings: S.optional(__S(186, __c23, 2)),
+          auditConfigs: S.optional(__S(190, __c23, 6)),
+          version: S.optional(S.Number),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Policy" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsLocationsRepositoriesRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          labels: S.optional(__S(600, __c75, 0)),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(312, __c39, 0)),
+        }),
+      ).annotate({ identifier: "Location" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsInstancesRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRepositoriesRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRepositoriesBranchRulesRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRepositoriesHooksRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRepositoriesIssuesRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRepositoriesPullRequestsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}:listFileDiffs",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          sha: S.optional(S.String),
+          name: S.optional(S.String),
+          patch: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FileDiff" });
+    case 2:
+      return S.Array(__S(289, __c36, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          fileDiffs: S.optional(__S(290, __c36, 2)),
+        }),
+      ).annotate({
+        identifier: "ListPullRequestFileDiffsResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.optional(S.String),
+          pullRequestComment: S.optional(__S(308, __c38, 4)),
+        }),
+      ).annotate({
+        identifier: "CreatePullRequestCommentRequest",
+      });
+    case 1:
+      return S.Array(__S(296, __c37, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(297, __c37, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchCreatePullRequestCommentsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(298, __c37, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/pullRequestComments:batchCreate",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
+      });
+  }
+}
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2382,7 +3236,7 @@ function __c0(j: number): any {
           resolved: S.optional(S.Boolean),
           reply: S.optional(S.String),
           effectiveCommitSha: S.optional(S.String),
-          position: S.optional(__S(2, __c0, 2)),
+          position: S.optional(__S(306, __c38, 2)),
           body: S.optional(S.String),
         }),
       ).annotate({ identifier: "Code" });
@@ -2390,960 +3244,51 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          comment: S.optional(__S(0, __c0, 0)),
+          comment: S.optional(__S(304, __c38, 0)),
           name: S.optional(S.String),
-          review: S.optional(__S(1, __c0, 1)),
-          code: S.optional(__S(3, __c0, 3)),
+          review: S.optional(__S(305, __c38, 1)),
+          code: S.optional(__S(307, __c38, 3)),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PullRequestComment" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(S.String),
-          pullRequestComment: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "CreatePullRequestCommentRequest",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchCreatePullRequestCommentsRequest",
-      });
   }
 }
-function __c1(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/pullRequestComments:batchCreate",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-      });
-    case 1:
       return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(312, __c39, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(10, __c1, 2)),
+          details: S.optional(__S(320, __c40, 0)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          error: S.optional(__S(11, __c1, 3)),
-          metadata: S.optional(__S(9, __c1, 1)),
+          error: S.optional(__S(321, __c40, 1)),
+          metadata: S.optional(__S(312, __c39, 0)),
           done: S.optional(S.Boolean),
-          response: S.optional(__S(9, __c1, 1)),
+          response: S.optional(__S(312, __c39, 0)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloseIssueRequest" });
   }
 }
-function __c2(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:close",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CloseProjectsLocationsRepositoriesIssuesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:close",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CloseProjectsLocationsRepositoriesPullRequestsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "WorkforceIdentityFederationConfig",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          gitSsh: S.optional(S.String),
-          gitHttp: S.optional(S.String),
-          api: S.optional(S.String),
-          html: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomHostConfig" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          httpServiceAttachment: S.optional(S.String),
-          caPool: S.optional(S.String),
-          isPrivate: S.optional(S.Boolean),
-          customHostConfig: S.optional(__S(20, __c2, 4)),
-          pscAllowedProjects: S.optional(__S(21, __c2, 5)),
-          sshServiceAttachment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          stateNote: S.optional(S.String),
-          workforceIdentityFederationConfig: S.optional(__S(18, __c2, 2)),
-          labels: S.optional(__S(19, __c2, 3)),
-          privateConfig: S.optional(__S(22, __c2, 6)),
-          satisfiesPzi: S.optional(S.Boolean),
-          hostConfig: S.optional(__S(20, __c2, 4)),
-          createTime: S.optional(S.String),
-          satisfiesPzs: S.optional(S.Boolean),
-          state: S.optional(S.String),
-          kmsKey: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Instance" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          instanceId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/instances",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsInstancesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          inspectTemplate: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SecretScanConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          secretScanConfig: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "ScanConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          gitHttps: S.optional(S.String),
-          api: S.optional(S.String),
-          html: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "URIs" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          readme: S.optional(S.String),
-          defaultBranch: S.optional(S.String),
-          gitignores: S.optional(__S(21, __c2, 5)),
-          license: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InitialConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          etag: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-          scanConfig: S.optional(__S(26, __c3, 2)),
-          uid: S.optional(S.String),
-          description: S.optional(S.String),
-          uris: S.optional(__S(27, __c3, 3)),
-          createTime: S.optional(S.String),
-          initialConfig: S.optional(__S(28, __c3, 4)),
-          instance: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Repository" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          repositoryId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/repositories",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsRepositoriesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          context: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Check" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(19, __c2, 3)),
-          includePattern: S.optional(S.String),
-          minimumReviewsCount: S.optional(S.Number),
-          minimumApprovalsCount: S.optional(S.Number),
-          disabled: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          requiredStatusChecks: S.optional(__S(32, __c4, 0)),
-          requirePullRequest: S.optional(S.Boolean),
-          requireLinearHistory: S.optional(S.Boolean),
-          uid: S.optional(S.String),
-          requireCommentsResolved: S.optional(S.Boolean),
-          updateTime: S.optional(S.String),
-          requireCodeOwnerApproval: S.optional(S.Boolean),
-          etag: S.optional(S.String),
-          allowStaleReviews: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BranchRule" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          branchRuleId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/branchRules",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsRepositoriesBranchRulesRequest",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          branchFilter: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PushOption" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.String),
-          sensitiveQueryString: S.optional(S.String),
-          createTime: S.optional(S.String),
-          targetUri: S.optional(S.String),
-          name: S.optional(S.String),
-          events: S.optional(__S(35, __c4, 3)),
-          serviceAccountAuth: S.optional(S.Boolean),
-          updateTime: S.optional(S.String),
-          disabled: S.optional(S.Boolean),
-          pushOption: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "Hook" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          hookId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/hooks",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsRepositoriesHooksRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          createTime: S.optional(S.String),
-          etag: S.optional(S.String),
-          name: S.optional(S.String),
-          body: S.optional(S.String),
-          title: S.optional(S.String),
-          closeTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Issue" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/issues",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsRepositoriesIssuesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          body: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IssueComment" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/issueComments",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ref: S.optional(S.String),
-          sha: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Branch" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          head: S.optional(__S(43, __c5, 3)),
-          state: S.optional(S.String),
-          base: S.optional(__S(43, __c5, 3)),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          body: S.optional(S.String),
-          closeTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PullRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/pullRequests",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsRepositoriesPullRequestsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/pullRequestComments",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsInstancesRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsRepositoriesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsRepositoriesBranchRulesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsRepositoriesHooksRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsRepositoriesIssuesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          repository: S.String.pipe(T.Label()),
-          sha: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+repository}:fetchBlob",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "FetchBlobProjectsLocationsRepositoriesRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          sha: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FetchBlobResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          repository: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+repository}:fetchRefs",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "FetchRefsProjectsLocationsRepositoriesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          target: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Ref" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          refs: S.optional(__S(59, __c7, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FetchRefsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          recursive: S.optional(S.Boolean.pipe(T.Query())),
-          ref: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          repository: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+repository}:fetchTree",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "FetchTreeProjectsLocationsRepositoriesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          path: S.optional(S.String),
-          type: S.optional(S.String),
-          size: S.optional(S.String),
-          sha: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TreeEntry" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          treeEntries: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({ identifier: "FetchTreeResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsInstancesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          description: S.optional(S.String),
-          expression: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          condition: S.optional(__S(66, __c8, 2)),
-          members: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "Binding" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "AuditLogConfig" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          auditLogConfigs: S.optional(__S(70, __c8, 6)),
-          service: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuditConfig" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          bindings: S.optional(__S(68, __c8, 4)),
-          auditConfigs: S.optional(__S(72, __c9, 0)),
-          version: S.optional(S.Number),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Policy" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsLocationsRepositoriesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          locationId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          labels: S.optional(__S(19, __c2, 3)),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsInstancesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsOperationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRepositoriesRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRepositoriesBranchRulesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRepositoriesHooksRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRepositoriesIssuesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRepositoriesPullRequestsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}:listFileDiffs",
-            baseUrl: "https://securesourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          sha: S.optional(S.String),
-          name: S.optional(S.String),
-          patch: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FileDiff" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          fileDiffs: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "ListPullRequestFileDiffsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          extraLocationTypes: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(616, __c77, 0).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3358,16 +3303,20 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 3:
-      return S.Array(__S(76, __c9, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(208, __c26, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(91, __c11, 3)),
+          locations: S.optional(__S(329, __c41, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3385,19 +3334,19 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsInstancesRequest",
       });
-    case 6:
-      return S.Array(__S(23, __c2, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(611, __c76, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(21, __c2, 5)),
-          instances: S.optional(__S(94, __c11, 6)),
+          unreachable: S.optional(__S(616, __c77, 0)),
+          instances: S.optional(__S(337, __c42, 1)),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
   }
 }
-function __c12(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3418,16 +3367,20 @@ function __c12(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 1:
-      return S.Array(__S(12, __c1, 4));
+      return S.Array(__S(322, __c40, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(21, __c2, 5)),
-          operations: S.optional(__S(97, __c12, 1)),
+          unreachable: S.optional(__S(616, __c77, 0)),
+          operations: S.optional(__S(345, __c43, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3445,16 +3398,20 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRepositoriesRequest",
       });
-    case 4:
-      return S.Array(__S(29, __c3, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(636, __c79, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          repositories: S.optional(__S(100, __c12, 4)),
+          repositories: S.optional(__S(353, __c44, 1)),
         }),
       ).annotate({ identifier: "ListRepositoriesResponse" });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3470,20 +3427,20 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRepositoriesBranchRulesRequest",
       });
-    case 7:
-      return S.Array(__S(33, __c4, 1));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(10, __c1, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          branchRules: S.optional(__S(103, __c12, 7)),
+          branchRules: S.optional(__S(361, __c45, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBranchRulesResponse" });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3499,16 +3456,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRepositoriesHooksRequest",
       });
+    case 1:
+      return S.Array(__S(26, __c3, 2));
     case 2:
-      return S.Array(__S(37, __c4, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          hooks: S.optional(__S(106, __c13, 2)),
+          hooks: S.optional(__S(369, __c46, 1)),
         }),
       ).annotate({ identifier: "ListHooksResponse" });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3525,16 +3486,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRepositoriesIssuesRequest",
       });
-    case 5:
-      return S.Array(__S(39, __c4, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          issues: S.optional(__S(109, __c13, 5)),
+          issues: S.optional(__S(377, __c47, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListIssuesResponse" });
-    case 7:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3550,22 +3515,22 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(41, __c5, 1));
     case 1:
+      return S.Array(__S(56, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          issueComments: S.optional(__S(112, __c14, 0)),
+          issueComments: S.optional(__S(385, __c48, 1)),
         }),
       ).annotate({
         identifier: "ListIssueCommentsResponse",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3581,16 +3546,20 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRepositoriesPullRequestsRequest",
       });
-    case 3:
-      return S.Array(__S(44, __c5, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(73, __c9, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          pullRequests: S.optional(__S(115, __c14, 3)),
+          pullRequests: S.optional(__S(393, __c49, 1)),
         }),
       ).annotate({ identifier: "ListPullRequestsResponse" });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3606,26 +3575,53 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
       });
-    case 6:
-      return S.Array(__S(4, __c0, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(308, __c38, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          pullRequestComments: S.optional(__S(118, __c14, 6)),
+          pullRequestComments: S.optional(__S(401, __c50, 1)),
         }),
       ).annotate({
         identifier: "ListPullRequestCommentsResponse",
       });
   }
 }
-function __c15(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(416, __c52, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(416, __c52, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3636,11 +3632,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "MergeProjectsLocationsRepositoriesPullRequestsRequest",
       });
-    case 1:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(512, __c64, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3651,11 +3651,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "OpenProjectsLocationsRepositoriesIssuesRequest",
       });
-    case 2:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(416, __c52, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3666,13 +3670,17 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "OpenProjectsLocationsRepositoriesPullRequestsRequest",
       });
-    case 3:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(636, __c79, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3683,13 +3691,17 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsRepositoriesRequest",
       });
-    case 4:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3700,12 +3712,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsRepositoriesBranchRulesRequest",
       });
-    case 5:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3716,12 +3732,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsRepositoriesHooksRequest",
       });
-    case 6:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3732,12 +3752,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsRepositoriesIssuesRequest",
       });
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3750,14 +3774,14 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3768,12 +3792,16 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsRepositoriesPullRequestsRequest",
       });
-    case 1:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(308, __c38, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3784,20 +3812,53 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
       });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(512, __c64, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:close",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CloseProjectsLocationsRepositoriesIssuesRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloseIssueRequest" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           autoFill: S.optional(S.Boolean),
-          names: S.optional(__S(21, __c2, 5)),
+          names: S.optional(__S(616, __c77, 0)),
         }),
       ).annotate({
         identifier: "ResolvePullRequestCommentsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(520, __c65, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3808,18 +3869,15 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(73, __c9, 1)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(132, __c16, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(536, __c67, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3830,11 +3888,26 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsInstancesRequest",
       });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(191, __c23, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(132, __c16, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(536, __c67, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3845,23 +3918,15 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsRepositoriesRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
   }
 }
-function __c17(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(135, __c16, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(560, __c70, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3872,11 +3937,27 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsInstancesRequest",
       });
-    case 1:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(616, __c77, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(135, __c16, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(560, __c70, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3887,20 +3968,24 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsRepositoriesRequest",
       });
-    case 2:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(21, __c2, 5)),
+          names: S.optional(__S(616, __c77, 0)),
           autoFill: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "UnresolvePullRequestCommentsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(138, __c17, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c72, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3913,7 +3998,177 @@ function __c17(j: number): any {
       });
   }
 }
-
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(416, __c52, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:close",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CloseProjectsLocationsRepositoriesPullRequestsRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          instanceId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(611, __c76, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/instances",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsInstancesRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "WorkforceIdentityFederationConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          gitSsh: S.optional(S.String),
+          gitHttp: S.optional(S.String),
+          api: S.optional(S.String),
+          html: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomHostConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          httpServiceAttachment: S.optional(S.String),
+          caPool: S.optional(S.String),
+          isPrivate: S.optional(S.Boolean),
+          customHostConfig: S.optional(__S(609, __c76, 1)),
+          pscAllowedProjects: S.optional(__S(616, __c77, 0)),
+          sshServiceAttachment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          stateNote: S.optional(S.String),
+          workforceIdentityFederationConfig: S.optional(__S(608, __c76, 0)),
+          labels: S.optional(__S(600, __c75, 0)),
+          privateConfig: S.optional(__S(610, __c76, 2)),
+          satisfiesPzi: S.optional(S.Boolean),
+          hostConfig: S.optional(__S(609, __c76, 1)),
+          createTime: S.optional(S.String),
+          satisfiesPzs: S.optional(S.Boolean),
+          state: S.optional(S.String),
+          kmsKey: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Instance" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          repositoryId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(636, __c79, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/repositories",
+            baseUrl: "https://securesourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsRepositoriesRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inspectTemplate: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SecretScanConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          secretScanConfig: S.optional(__S(632, __c79, 0)),
+        }),
+      ).annotate({ identifier: "ScanConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          gitHttps: S.optional(S.String),
+          api: S.optional(S.String),
+          html: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "URIs" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          readme: S.optional(S.String),
+          defaultBranch: S.optional(S.String),
+          gitignores: S.optional(__S(616, __c77, 0)),
+          license: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InitialConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          etag: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+          scanConfig: S.optional(__S(633, __c79, 1)),
+          uid: S.optional(S.String),
+          description: S.optional(S.String),
+          uris: S.optional(__S(634, __c79, 2)),
+          createTime: S.optional(S.String),
+          initialConfig: S.optional(__S(635, __c79, 3)),
+          instance: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Repository" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

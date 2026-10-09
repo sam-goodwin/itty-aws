@@ -357,7 +357,7 @@ export const DeleteFederatedIdentityCredentials: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteFederatedIdentityCredentialsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteFederatedIdentityCredentialsResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteFederatedIdentityCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -371,8 +371,8 @@ export const DeleteUserAssignedIdentity: API.OperationMethod<
   DeleteUserAssignedIdentityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteUserAssignedIdentityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteUserAssignedIdentityResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteUserAssignedIdentityRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteUserAssignedIdentityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -386,8 +386,8 @@ export const FederatedIdentityCredentialsCreateOrUpdate: API.OperationMethod<
   FederatedIdentityCredentialsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<FederatedIdentityCredentialsCreateOrUpdateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<FederatedIdentityCredentialsCreateOrUpdateResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<FederatedIdentityCredentialsCreateOrUpdateRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<FederatedIdentityCredentialsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -401,8 +401,8 @@ export const GetFederatedIdentityCredentials: API.OperationMethod<
   GetFederatedIdentityCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetFederatedIdentityCredentialsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetFederatedIdentityCredentialsResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetFederatedIdentityCredentialsRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<GetFederatedIdentityCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -416,8 +416,8 @@ export const GetSystemAssignedIdentityByScope: API.OperationMethod<
   GetSystemAssignedIdentityByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetSystemAssignedIdentityByScopeRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetSystemAssignedIdentityByScopeResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetSystemAssignedIdentityByScopeRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<GetSystemAssignedIdentityByScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -431,8 +431,8 @@ export const GetUserAssignedIdentity: API.OperationMethod<
   GetUserAssignedIdentityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetUserAssignedIdentityRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetUserAssignedIdentityResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetUserAssignedIdentityRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<GetUserAssignedIdentityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -446,8 +446,8 @@ export const ListFederatedIdentityCredentials: API.OperationMethod<
   ListFederatedIdentityCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListFederatedIdentityCredentialsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<FederatedIdentityCredentialsListResult>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListFederatedIdentityCredentialsRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<FederatedIdentityCredentialsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -461,8 +461,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListOperationsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<OperationListResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -476,8 +476,8 @@ export const ListUserAssignedIdentityByResourceGroup: API.OperationMethod<
   ListUserAssignedIdentityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListUserAssignedIdentityByResourceGroupRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UserAssignedIdentitiesListResult>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListUserAssignedIdentityByResourceGroupRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<UserAssignedIdentitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -491,8 +491,8 @@ export const ListUserAssignedIdentityBySubscription: API.OperationMethod<
   ListUserAssignedIdentityBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListUserAssignedIdentityBySubscriptionRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UserAssignedIdentitiesListResult>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListUserAssignedIdentityBySubscriptionRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<UserAssignedIdentitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -506,8 +506,8 @@ export const UpdateUserAssignedIdentity: API.OperationMethod<
   UpdateUserAssignedIdentityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UpdateUserAssignedIdentityRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdateUserAssignedIdentityResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<UpdateUserAssignedIdentityRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<UpdateUserAssignedIdentityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -521,8 +521,8 @@ export const UserAssignedIdentitiesCreateOrUpdate: API.OperationMethod<
   UserAssignedIdentitiesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -549,11 +549,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteFederatedIdentityCredentialsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteFederatedIdentityCredentialsResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -570,26 +578,66 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteUserAssignedIdentityRequest",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          issuer: S.String,
-          subject: S.String,
-          audiences: __S(3, __c0, 3),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(80, __c10, 0)),
+          properties: S.optional(__S(104, __c13, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
+            code: 200,
+            apiVersion: "2024-11-30",
+          }),
+        ),
       ).annotate({
-        identifier: "FederatedIdentityCredentialProperties",
+        identifier: "UpdateUserAssignedIdentityRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(80, __c10, 0)),
+          location: S.String,
+          properties: S.optional(__S(104, __c13, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
+            code: 200,
+            apiVersion: "2024-11-30",
+          }),
+        ),
+      ).annotate({
+        identifier: "UserAssignedIdentitiesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           federatedIdentityCredentialResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(57, __c7, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -601,7 +649,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FederatedIdentityCredentialsCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -612,21 +664,37 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          issuer: S.String,
+          subject: S.String,
+          audiences: __S(56, __c7, 0),
+        }),
+      ).annotate({
+        identifier: "FederatedIdentityCredentialProperties",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(48, __c6, 0)),
+          properties: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({
         identifier: "FederatedIdentityCredentialsCreateOrUpdateResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -646,7 +714,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetFederatedIdentityCredentialsRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -661,7 +733,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetSystemAssignedIdentityByScopeRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
@@ -672,23 +744,31 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SystemAssignedIdentityProperties",
       });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(10, __c1, 2)),
+          systemData: S.optional(__S(48, __c6, 0)),
+          properties: S.optional(__S(73, __c9, 1)),
           location: S.String,
-          tags: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "GetSystemAssignedIdentityByScopeResponse",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -705,7 +785,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetUserAssignedIdentityRequest",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c6, 0)),
+          tags: S.optional(__S(80, __c10, 0)),
+          location: S.String,
+          properties: S.optional(__S(104, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "GetUserAssignedIdentityResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
@@ -716,23 +818,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UserAssignedIdentityProperties",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(11, __c1, 3)),
-          location: S.String,
-          properties: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GetUserAssignedIdentityResponse",
-      });
   }
 }
-function __c2(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -754,17 +842,21 @@ function __c2(j: number): any {
         identifier: "ListFederatedIdentityCredentialsRequest",
       });
     case 1:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(__S(58, __c7, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17, __c2, 1),
+          value: __S(113, __c14, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FederatedIdentityCredentialsListResult",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -775,7 +867,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -784,25 +876,25 @@ function __c2(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(20, __c2, 4)),
+          display: S.optional(__S(121, __c15, 1)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(122, __c15, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(22, __c2, 6),
+          value: __S(123, __c15, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c3(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -820,30 +912,38 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListUserAssignedIdentityByResourceGroupRequest",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(11, __c1, 3)),
+          systemData: S.optional(__S(48, __c6, 0)),
+          tags: S.optional(__S(80, __c10, 0)),
           location: S.String,
-          properties: S.optional(__S(14, __c1, 6)),
+          properties: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "Identity" });
+    case 1:
+      return S.Array(__S(136, __c17, 0));
     case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(26, __c3, 2),
+          value: __S(137, __c17, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UserAssignedIdentitiesListResult",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -858,49 +958,8 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListUserAssignedIdentityBySubscriptionRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
-            code: 200,
-            apiVersion: "2024-11-30",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateUserAssignedIdentityRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(11, __c1, 3)),
-          location: S.String,
-          properties: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
-            code: 200,
-            apiVersion: "2024-11-30",
-          }),
-        ),
-      ).annotate({
-        identifier: "UserAssignedIdentitiesCreateOrUpdateRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

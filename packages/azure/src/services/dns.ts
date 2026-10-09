@@ -589,7 +589,7 @@ export const DeleteRecordSet: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteRecordSetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteRecordSetResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteRecordSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -603,8 +603,8 @@ export const DeleteZone: API.OperationMethod<
   DeleteZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteZoneRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteZoneResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteZoneRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -618,8 +618,8 @@ export const GetDnsResourceReferenceByTargetResources: API.OperationMethod<
   GetDnsResourceReferenceByTargetResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetDnsResourceReferenceByTargetResourcesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DnsResourceReferenceResult>,
+  input: __S(257, __c8, 1) as any as S.Schema<GetDnsResourceReferenceByTargetResourcesRequest>,
+  output: __S(261, __c8, 5) as any as S.Schema<DnsResourceReferenceResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -633,8 +633,8 @@ export const GetRecordSet: API.OperationMethod<
   GetRecordSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetRecordSetRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<RecordSet>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetRecordSetRequest>,
+  output: __S(435, __c13, 19) as any as S.Schema<RecordSet>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -648,8 +648,8 @@ export const GetZone: API.OperationMethod<
   GetZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetZoneRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetZoneResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetZoneRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<GetZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -663,8 +663,8 @@ export const ListRecordSetAllByDnsZone: API.OperationMethod<
   ListRecordSetAllByDnsZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListRecordSetAllByDnsZoneRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<RecordSetListResult>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListRecordSetAllByDnsZoneRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<RecordSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -678,8 +678,8 @@ export const ListRecordSetByDnsZone: API.OperationMethod<
   ListRecordSetByDnsZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListRecordSetByDnsZoneRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<RecordSetListResult>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListRecordSetByDnsZoneRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<RecordSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -693,8 +693,8 @@ export const ListRecordSetByType: API.OperationMethod<
   ListRecordSetByTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListRecordSetByTypeRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<RecordSetListResult>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListRecordSetByTypeRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<RecordSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -708,8 +708,8 @@ export const ListZoneByResourceGroup: API.OperationMethod<
   ListZoneByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListZoneByResourceGroupRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ZoneListResult>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListZoneByResourceGroupRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<ZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -723,8 +723,8 @@ export const ListZones: API.OperationMethod<
   ListZonesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListZonesRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ZoneListResult>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListZonesRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<ZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -738,8 +738,8 @@ export const RecordSetsCreateOrUpdate: API.OperationMethod<
   RecordSetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<RecordSetsCreateOrUpdateRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<RecordSet>,
+  input: __S(96, __c3, 0) as any as S.Schema<RecordSetsCreateOrUpdateRequest>,
+  output: __S(435, __c13, 19) as any as S.Schema<RecordSet>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -753,8 +753,8 @@ export const UpdateRecordSet: API.OperationMethod<
   UpdateRecordSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<UpdateRecordSetRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<RecordSet>,
+  input: __S(160, __c5, 0) as any as S.Schema<UpdateRecordSetRequest>,
+  output: __S(435, __c13, 19) as any as S.Schema<RecordSet>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -768,8 +768,8 @@ export const UpdateZone: API.OperationMethod<
   UpdateZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<UpdateZoneRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdateZoneResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<UpdateZoneRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<UpdateZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -783,8 +783,8 @@ export const ZonesCreateOrUpdate: API.OperationMethod<
   ZonesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ZonesCreateOrUpdateRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ZonesCreateOrUpdateResponse>,
+  input: __S(225, __c7, 1) as any as S.Schema<ZonesCreateOrUpdateRequest>,
+  output: __S(226, __c7, 2) as any as S.Schema<ZonesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -810,11 +810,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteRecordSetRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteRecordSetResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -829,27 +837,160 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteZoneRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          zoneName: S.String.pipe(T.Label()),
+          recordType: S.String.pipe(T.Label()),
+          relativeRecordSetName: S.String.pipe(T.Label()),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(128, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}",
+            code: 200,
+            apiVersion: "2018-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RecordSetsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(384, __c12, 0)),
+          TTL: S.optional(S.Number),
+          targetResource: S.optional(__S(288, __c9, 0)),
+          ARecords: S.optional(__S(417, __c13, 1)),
+          AAAARecords: S.optional(__S(419, __c13, 3)),
+          MXRecords: S.optional(__S(421, __c13, 5)),
+          NSRecords: S.optional(__S(423, __c13, 7)),
+          PTRRecords: S.optional(__S(425, __c13, 9)),
+          SRVRecords: S.optional(__S(427, __c13, 11)),
+          TXTRecords: S.optional(__S(429, __c13, 13)),
+          CNAMERecord: S.optional(__S(430, __c13, 14)),
+          SOARecord: S.optional(__S(431, __c13, 15)),
+          caaRecords: S.optional(__S(433, __c13, 17)),
+        }),
+      ).annotate({ identifier: "RecordSetPropertiesInput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          zoneName: S.String.pipe(T.Label()),
+          recordType: S.String.pipe(T.Label()),
+          relativeRecordSetName: S.String.pipe(T.Label()),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(128, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}",
+            code: 200,
+            apiVersion: "2018-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateRecordSetRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          zoneName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(384, __c12, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
+            code: 200,
+            apiVersion: "2018-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateZoneRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneType: S.optional(S.String),
+          registrationVirtualNetworks: S.optional(__S(320, __c10, 0)),
+          resolutionVirtualNetworks: S.optional(__S(320, __c10, 0)),
+        }),
+      ).annotate({ identifier: "ZonePropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          zoneName: S.String.pipe(T.Label()),
+          location: S.String,
+          tags: S.optional(__S(384, __c12, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(224, __c7, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
+            code: 200,
+            apiVersion: "2018-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ZonesCreateOrUpdateRequest",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(384, __c12, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(512, __c16, 0)),
         }),
-      ).annotate({ identifier: "SubResource" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+      ).annotate({
+        identifier: "ZonesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          targetResources: S.optional(__S(4, __c0, 4)),
+          targetResources: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({
         identifier: "DnsResourceReferenceRequestProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(256, __c8, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -861,36 +1002,52 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetDnsResourceReferenceByTargetResourcesRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          dnsResources: S.optional(__S(4, __c0, 4)),
-          targetResource: S.optional(__S(3, __c0, 3)),
+          dnsResources: S.optional(__S(320, __c10, 0)),
+          targetResource: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "DnsResourceReference" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          dnsResourceReferences: S.optional(__S(8, __c1, 0)),
+          dnsResourceReferences: S.optional(__S(259, __c8, 3)),
         }),
       ).annotate({
         identifier: "DnsResourceReferenceResultProperties",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(9, __c1, 1)),
+          properties: S.optional(__S(260, __c8, 4)),
         }),
       ).annotate({
         identifier: "DnsResourceReferenceResult",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubResource" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(288, __c9, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -907,54 +1064,60 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRecordSetRequest" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 5:
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ipv4Address: S.optional(S.String),
         }),
       ).annotate({ identifier: "ARecord" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ipv6Address: S.optional(S.String),
         }),
       ).annotate({ identifier: "AaaaRecord" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(418, __c13, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           preference: S.optional(S.Number),
           exchange: S.optional(S.String),
         }),
       ).annotate({ identifier: "MxRecord" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(420, __c13, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           nsdname: S.optional(S.String),
         }),
       ).annotate({ identifier: "NsRecord" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(422, __c13, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           ptrdname: S.optional(S.String),
         }),
       ).annotate({ identifier: "PtrRecord" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 9:
+      return S.Array(__S(424, __c13, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           priority: S.optional(S.Number),
@@ -963,29 +1126,23 @@ function __c2(j: number): any {
           target: S.optional(S.String),
         }),
       ).annotate({ identifier: "SrvRecord" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.Array(S.String);
-    case 2:
+    case 11:
+      return S.Array(__S(426, __c13, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(25, __c3, 1)),
+          value: S.optional(__S(385, __c12, 1)),
         }),
       ).annotate({ identifier: "TxtRecord" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 13:
+      return S.Array(__S(428, __c13, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           cname: S.optional(S.String),
         }),
       ).annotate({ identifier: "CnameRecord" });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           host: S.optional(S.String),
@@ -997,7 +1154,7 @@ function __c3(j: number): any {
           minimumTTL: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SoaRecord" });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           flags: S.optional(S.Number),
@@ -1005,43 +1162,43 @@ function __c3(j: number): any {
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "CaaRecord" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
+      return S.Array(__S(432, __c13, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(12, __c1, 4)),
+          metadata: S.optional(__S(384, __c12, 0)),
           TTL: S.optional(S.Number),
           fqdn: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          targetResource: S.optional(__S(3, __c0, 3)),
-          ARecords: S.optional(__S(14, __c1, 6)),
-          AAAARecords: S.optional(__S(16, __c2, 0)),
-          MXRecords: S.optional(__S(18, __c2, 2)),
-          NSRecords: S.optional(__S(20, __c2, 4)),
-          PTRRecords: S.optional(__S(22, __c2, 6)),
-          SRVRecords: S.optional(__S(24, __c3, 0)),
-          TXTRecords: S.optional(__S(27, __c3, 3)),
-          CNAMERecord: S.optional(__S(28, __c3, 4)),
-          SOARecord: S.optional(__S(29, __c3, 5)),
-          caaRecords: S.optional(__S(31, __c3, 7)),
+          targetResource: S.optional(__S(288, __c9, 0)),
+          ARecords: S.optional(__S(417, __c13, 1)),
+          AAAARecords: S.optional(__S(419, __c13, 3)),
+          MXRecords: S.optional(__S(421, __c13, 5)),
+          NSRecords: S.optional(__S(423, __c13, 7)),
+          PTRRecords: S.optional(__S(425, __c13, 9)),
+          SRVRecords: S.optional(__S(427, __c13, 11)),
+          TXTRecords: S.optional(__S(429, __c13, 13)),
+          CNAMERecord: S.optional(__S(430, __c13, 14)),
+          SOARecord: S.optional(__S(431, __c13, 15)),
+          caaRecords: S.optional(__S(433, __c13, 17)),
         }),
       ).annotate({ identifier: "RecordSetProperties" });
-    case 1:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(434, __c13, 18)),
         }),
       ).annotate({ identifier: "RecordSet" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1056,31 +1213,43 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetZoneRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          maxNumberOfRecordSets: S.optional(S.Number),
-          maxNumberOfRecordsPerRecordSet: S.optional(S.Number),
-          numberOfRecordSets: S.optional(S.Number),
-          nameServers: S.optional(__S(25, __c3, 1)),
-          zoneType: S.optional(S.String),
-          registrationVirtualNetworks: S.optional(__S(4, __c0, 4)),
-          resolutionVirtualNetworks: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ZoneProperties" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(384, __c12, 0)),
           etag: S.optional(S.String),
-          properties: S.optional(__S(35, __c4, 3)),
+          properties: S.optional(__S(512, __c16, 0)),
         }),
       ).annotate({ identifier: "GetZoneResponse" });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxNumberOfRecordSets: S.optional(S.Number),
+          maxNumberOfRecordsPerRecordSet: S.optional(S.Number),
+          numberOfRecordSets: S.optional(S.Number),
+          nameServers: S.optional(__S(385, __c12, 1)),
+          zoneType: S.optional(S.String),
+          registrationVirtualNetworks: S.optional(__S(320, __c10, 0)),
+          resolutionVirtualNetworks: S.optional(__S(320, __c10, 0)),
+        }),
+      ).annotate({ identifier: "ZoneProperties" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1099,18 +1268,22 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListRecordSetAllByDnsZoneRequest",
       });
-    case 6:
-      return S.Array(__S(33, __c4, 1));
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(435, __c13, 19));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(38, __c4, 6)),
+          value: S.optional(__S(576, __c18, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecordSetListResult" });
   }
 }
-function __c5(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1131,7 +1304,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListRecordSetByDnsZoneRequest",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1151,7 +1328,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListRecordSetByTypeRequest",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1168,16 +1349,24 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListZoneByResourceGroupRequest",
       });
-    case 3:
-      return S.Array(__S(36, __c4, 4));
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(480, __c15, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(43, __c5, 3)),
+          value: S.optional(__S(704, __c22, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ZoneListResult" });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1191,130 +1380,8 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListZonesRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(12, __c1, 4)),
-          TTL: S.optional(S.Number),
-          targetResource: S.optional(__S(3, __c0, 3)),
-          ARecords: S.optional(__S(14, __c1, 6)),
-          AAAARecords: S.optional(__S(16, __c2, 0)),
-          MXRecords: S.optional(__S(18, __c2, 2)),
-          NSRecords: S.optional(__S(20, __c2, 4)),
-          PTRRecords: S.optional(__S(22, __c2, 6)),
-          SRVRecords: S.optional(__S(24, __c3, 0)),
-          TXTRecords: S.optional(__S(27, __c3, 3)),
-          CNAMERecord: S.optional(__S(28, __c3, 4)),
-          SOARecord: S.optional(__S(29, __c3, 5)),
-          caaRecords: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "RecordSetPropertiesInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          zoneName: S.String.pipe(T.Label()),
-          recordType: S.String.pipe(T.Label()),
-          relativeRecordSetName: S.String.pipe(T.Label()),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(46, __c5, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}",
-            code: 200,
-            apiVersion: "2018-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RecordSetsCreateOrUpdateRequest",
-      });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          zoneName: S.String.pipe(T.Label()),
-          recordType: S.String.pipe(T.Label()),
-          relativeRecordSetName: S.String.pipe(T.Label()),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(46, __c5, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}/{relativeRecordSetName}",
-            code: 200,
-            apiVersion: "2018-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateRecordSetRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          zoneName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
-            code: 200,
-            apiVersion: "2018-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateZoneRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneType: S.optional(S.String),
-          registrationVirtualNetworks: S.optional(__S(4, __c0, 4)),
-          resolutionVirtualNetworks: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ZonePropertiesInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          zoneName: S.String.pipe(T.Label()),
-          location: S.String,
-          tags: S.optional(__S(12, __c1, 4)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(50, __c6, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
-            code: 200,
-            apiVersion: "2018-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ZonesCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(12, __c1, 4)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "ZonesCreateOrUpdateResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

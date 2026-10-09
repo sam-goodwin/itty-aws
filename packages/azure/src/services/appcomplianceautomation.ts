@@ -1287,7 +1287,7 @@ export const CheckProviderActionNameAvailability: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CheckProviderActionNameAvailabilityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CheckProviderActionNameAvailabilityResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<CheckProviderActionNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1301,8 +1301,8 @@ export const DeleteEvidence: API.OperationMethod<
   DeleteEvidenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteEvidenceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteEvidenceResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteEvidenceRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteEvidenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1316,8 +1316,8 @@ export const DeleteReport: API.OperationMethod<
   DeleteReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteReportRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteReportResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteReportRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteReportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1331,8 +1331,8 @@ export const DeleteScopingConfiguration: API.OperationMethod<
   DeleteScopingConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteScopingConfigurationRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteScopingConfigurationResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<DeleteScopingConfigurationRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<DeleteScopingConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1346,8 +1346,8 @@ export const DeleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteWebhookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1361,8 +1361,8 @@ export const DownloadEvidence: API.OperationMethod<
   DownloadEvidenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DownloadEvidenceRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<EvidenceFileDownloadResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<DownloadEvidenceRequest>,
+  output: __S(1378, __c43, 2) as any as S.Schema<EvidenceFileDownloadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1376,8 +1376,8 @@ export const DownloadSnapshot: API.OperationMethod<
   DownloadSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DownloadSnapshotRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DownloadResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<DownloadSnapshotRequest>,
+  output: __S(1414, __c44, 6) as any as S.Schema<DownloadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1391,8 +1391,8 @@ export const EvidenceCreateOrUpdate: API.OperationMethod<
   EvidenceCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<EvidenceCreateOrUpdateRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<EvidenceCreateOrUpdateResponse>,
+  input: __S(1441, __c45, 1) as any as S.Schema<EvidenceCreateOrUpdateRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<EvidenceCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1406,8 +1406,8 @@ export const GetEvidence: API.OperationMethod<
   GetEvidenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetEvidenceRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetEvidenceResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetEvidenceRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<GetEvidenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1421,8 +1421,8 @@ export const GetProviderActionCollectionCount: API.OperationMethod<
   GetProviderActionCollectionCountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetProviderActionCollectionCountRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetCollectionCountResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetProviderActionCollectionCountRequest>,
+  output: __S(1601, __c50, 1) as any as S.Schema<GetCollectionCountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1436,8 +1436,8 @@ export const GetProviderActionOverviewStatus: API.OperationMethod<
   GetProviderActionOverviewStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetProviderActionOverviewStatusRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetOverviewStatusResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetProviderActionOverviewStatusRequest>,
+  output: __S(131, __c4, 3) as any as S.Schema<GetOverviewStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1451,8 +1451,8 @@ export const GetReport: API.OperationMethod<
   GetReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetReportRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetReportResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetReportRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<GetReportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1466,8 +1466,8 @@ export const GetReportScopingQuestions: API.OperationMethod<
   GetReportScopingQuestionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetReportScopingQuestionsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ScopingQuestions>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetReportScopingQuestionsRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<ScopingQuestions>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1481,8 +1481,8 @@ export const GetScopingConfiguration: API.OperationMethod<
   GetScopingConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetScopingConfigurationRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetScopingConfigurationResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetScopingConfigurationRequest>,
+  output: __S(451, __c14, 3) as any as S.Schema<GetScopingConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1496,8 +1496,8 @@ export const GetSnapshot: API.OperationMethod<
   GetSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetSnapshotRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetSnapshotResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetSnapshotRequest>,
+  output: __S(530, __c16, 18) as any as S.Schema<GetSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1511,8 +1511,8 @@ export const GetWebhook: API.OperationMethod<
   GetWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetWebhookRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GetWebhookResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<GetWebhookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1526,8 +1526,8 @@ export const ListEvidenceByReport: API.OperationMethod<
   ListEvidenceByReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListEvidenceByReportRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<EvidenceResourceListResult>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListEvidenceByReportRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<EvidenceResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1541,8 +1541,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(676, __c21, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1556,8 +1556,8 @@ export const ListProviderActionInUseStorageAccounts: API.OperationMethod<
   ListProviderActionInUseStorageAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListProviderActionInUseStorageAccountsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ListInUseStorageAccountsResponse>,
+  input: __S(705, __c22, 1) as any as S.Schema<ListProviderActionInUseStorageAccountsRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<ListInUseStorageAccountsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1571,8 +1571,8 @@ export const ListReport: API.OperationMethod<
   ListReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListReportRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ReportResourceListResult>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListReportRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<ReportResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1586,8 +1586,8 @@ export const ListScopingConfiguration: API.OperationMethod<
   ListScopingConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ListScopingConfigurationRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<ScopingConfigurationResourceListResult>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListScopingConfigurationRequest>,
+  output: __S(802, __c25, 2) as any as S.Schema<ScopingConfigurationResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1601,8 +1601,8 @@ export const ListSnapshot: API.OperationMethod<
   ListSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListSnapshotRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<SnapshotResourceListResult>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListSnapshotRequest>,
+  output: __S(834, __c26, 2) as any as S.Schema<SnapshotResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1616,8 +1616,8 @@ export const ListWebhook: API.OperationMethod<
   ListWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListWebhookRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<WebhookResourceListResult>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListWebhookRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<WebhookResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1631,8 +1631,8 @@ export const ProviderActionsOnboard: API.OperationMethod<
   ProviderActionsOnboardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ProviderActionsOnboardRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<OnboardResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ProviderActionsOnboardRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<OnboardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1646,8 +1646,8 @@ export const ReportCreateOrUpdate: API.OperationMethod<
   ReportCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ReportCreateOrUpdateRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<ReportCreateOrUpdateResponse>,
+  input: __S(929, __c29, 1) as any as S.Schema<ReportCreateOrUpdateRequest>,
+  output: __S(930, __c29, 2) as any as S.Schema<ReportCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1661,8 +1661,8 @@ export const ReportFix: API.OperationMethod<
   ReportFixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ReportFixRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ReportFixResult>,
+  input: __S(960, __c30, 0) as any as S.Schema<ReportFixRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<ReportFixResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1676,8 +1676,8 @@ export const ReportNestedResourceCheckNameAvailability: API.OperationMethod<
   ReportNestedResourceCheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ReportNestedResourceCheckNameAvailabilityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ReportNestedResourceCheckNameAvailabilityResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ReportNestedResourceCheckNameAvailabilityRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<ReportNestedResourceCheckNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1691,8 +1691,8 @@ export const ScopingConfigurationCreateOrUpdate: API.OperationMethod<
   ScopingConfigurationCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ScopingConfigurationCreateOrUpdateRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ScopingConfigurationCreateOrUpdateResponse>,
+  input: __S(1057, __c33, 1) as any as S.Schema<ScopingConfigurationCreateOrUpdateRequest>,
+  output: __S(451, __c14, 3) as any as S.Schema<ScopingConfigurationCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1706,8 +1706,8 @@ export const SyncReportCertRecord: API.OperationMethod<
   SyncReportCertRecordError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<SyncReportCertRecordRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<SyncCertRecordResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<SyncReportCertRecordRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<SyncCertRecordResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1721,8 +1721,8 @@ export const TriggerProviderActionEvaluation: API.OperationMethod<
   TriggerProviderActionEvaluationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<TriggerProviderActionEvaluationRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<TriggerEvaluationResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<TriggerProviderActionEvaluationRequest>,
+  output: __S(1124, __c35, 4) as any as S.Schema<TriggerEvaluationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1736,8 +1736,8 @@ export const UpdateReport: API.OperationMethod<
   UpdateReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<UpdateReportRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<UpdateReportResponse>,
+  input: __S(1185, __c37, 1) as any as S.Schema<UpdateReportRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<UpdateReportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1751,8 +1751,8 @@ export const UpdateWebhook: API.OperationMethod<
   UpdateWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<UpdateWebhookResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<UpdateWebhookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1766,8 +1766,8 @@ export const VerifyReport: API.OperationMethod<
   VerifyReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<VerifyReportRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ReportVerificationResult>,
+  input: __S(1280, __c40, 0) as any as S.Schema<VerifyReportRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<ReportVerificationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1781,8 +1781,8 @@ export const WebhookCreateOrUpdate: API.OperationMethod<
   WebhookCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<WebhookCreateOrUpdateRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<WebhookCreateOrUpdateResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<WebhookCreateOrUpdateRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<WebhookCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1807,7 +1807,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckProviderActionNameAvailabilityRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
@@ -1817,7 +1821,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckProviderActionNameAvailabilityResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportName: S.String.pipe(T.Label()),
@@ -1831,11 +1839,629 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteEvidenceRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteEvidenceResponse",
       });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.AppComplianceAutomation/getOverviewStatus",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProviderActionOverviewStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          statusName: S.optional(S.String),
+          statusValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StatusItem" });
+    case 2:
+      return S.Array(__S(129, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          statusList: S.optional(__S(130, __c4, 2)),
+        }),
+      ).annotate({
+        identifier: "GetOverviewStatusResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({ identifier: "GetReportRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.optional(S.String),
+          resourceGroup: S.optional(S.String),
+          accountName: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageInfo" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          controlId: S.optional(S.String),
+          controlStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ControlSyncRecord" });
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          offerGuid: S.optional(S.String),
+          certificationStatus: S.optional(S.String),
+          ingestionStatus: S.optional(S.String),
+          controls: S.optional(__S(257, __c8, 1)),
+        }),
+      ).annotate({ identifier: "CertSyncRecord" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String,
+          resourceType: S.optional(S.String),
+          resourceKind: S.optional(S.String),
+          resourceOrigin: S.optional(S.String),
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceMetadata" });
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          passedCount: S.optional(S.Number),
+          failedCount: S.optional(S.Number),
+          manualCount: S.optional(S.Number),
+          notApplicableCount: S.optional(S.Number),
+          pendingCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "OverviewStatus" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          m365: S.optional(__S(290, __c9, 2)),
+        }),
+      ).annotate({ identifier: "ReportComplianceStatus" });
     case 4:
+      return S.Array(__S(258, __c8, 2));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          triggerTime: S.String,
+          timeZone: S.String,
+          resources: __S(289, __c9, 1),
+          status: S.optional(S.String),
+          errors: S.optional(__S(192, __c6, 0)),
+          tenantId: S.optional(S.String),
+          offerGuid: S.optional(S.String),
+          nextTriggerTime: S.optional(S.String),
+          lastTriggerTime: S.optional(S.String),
+          subscriptions: S.optional(__S(192, __c6, 0)),
+          complianceStatus: S.optional(__S(291, __c9, 3)),
+          storageInfo: S.optional(__S(224, __c7, 0)),
+          certRecords: S.optional(__S(292, __c9, 4)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReportProperties" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1472, __c46, 0)),
+          properties: __S(293, __c9, 5),
+        }),
+      ).annotate({ identifier: "GetReportResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/getScopingQuestions",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetReportScopingQuestionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          questionId: S.String,
+          superiorQuestionId: S.optional(S.String),
+          inputType: S.String,
+          optionIds: __S(192, __c6, 0),
+          rules: __S(384, __c12, 0),
+          showSubQuestionsValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScopingQuestion" });
+    case 2:
+      return S.Array(__S(353, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          questions: S.optional(__S(354, __c11, 2)),
+        }),
+      ).annotate({ identifier: "ScopingQuestions" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          scopingConfigurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetScopingConfigurationRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          questionId: S.String,
+          answers: __S(192, __c6, 0),
+        }),
+      ).annotate({ identifier: "ScopingAnswer" });
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          answers: S.optional(__S(449, __c14, 1)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ScopingConfigurationProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1472, __c46, 0)),
+          properties: __S(450, __c14, 2),
+        }),
+      ).annotate({
+        identifier: "GetScopingConfigurationResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          snapshotName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/snapshots/{snapshotName}",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({ identifier: "GetSnapshotRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SnapshotPropertiesReportSystemData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.String),
+          accountId: S.optional(S.String),
+          resourceType: S.optional(S.String),
+          resourceOrigin: S.optional(S.String),
+          resourceStatus: S.optional(S.String),
+          resourceStatusChangeDate: S.optional(S.String),
+          recommendationIds: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "ResponsibilityResource" });
+    case 2:
+      return S.Array(__S(513, __c16, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          recommendationSolutionIndex: S.optional(S.String),
+          recommendationSolutionContent: S.optional(S.String),
+          isRecommendSolution: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecommendationSolution" });
+    case 4:
+      return S.Array(__S(515, __c16, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          recommendationId: S.optional(S.String),
+          recommendationShortName: S.optional(S.String),
+          recommendationSolutions: S.optional(__S(516, __c16, 4)),
+        }),
+      ).annotate({ identifier: "Recommendation" });
+    case 6:
+      return S.Array(__S(517, __c16, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          responsibilityId: S.optional(S.String),
+          responsibilityTitle: S.optional(S.String),
+          responsibilityDescription: S.optional(S.String),
+          responsibilityType: S.optional(S.String),
+          responsibilitySeverity: S.optional(S.String),
+          responsibilityStatus: S.optional(S.String),
+          responsibilityEnvironment: S.optional(S.String),
+          failedResourceCount: S.optional(S.Number),
+          totalResourceCount: S.optional(S.Number),
+          resourceList: S.optional(__S(514, __c16, 2)),
+          recommendationList: S.optional(__S(518, __c16, 6)),
+          guidance: S.optional(S.String),
+          justification: S.optional(S.String),
+          evidenceFiles: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "Responsibility" });
+    case 8:
+      return S.Array(__S(519, __c16, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          controlId: S.optional(S.String),
+          controlName: S.optional(S.String),
+          controlFullName: S.optional(S.String),
+          controlDescription: S.optional(S.String),
+          controlDescriptionHyperLink: S.optional(S.String),
+          controlStatus: S.optional(S.String),
+          responsibilities: S.optional(__S(520, __c16, 8)),
+        }),
+      ).annotate({ identifier: "Control" });
+    case 10:
+      return S.Array(__S(521, __c16, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          controlFamilyName: S.optional(S.String),
+          controlFamilyStatus: S.optional(S.String),
+          controls: S.optional(__S(522, __c16, 10)),
+        }),
+      ).annotate({ identifier: "ControlFamily" });
+    case 12:
+      return S.Array(__S(523, __c16, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          categoryName: S.optional(S.String),
+          categoryStatus: S.optional(S.String),
+          controlFamilies: S.optional(__S(524, __c16, 12)),
+        }),
+      ).annotate({ identifier: "Category" });
+    case 14:
+      return S.Array(__S(525, __c16, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          complianceName: S.optional(S.String),
+          categories: S.optional(__S(526, __c16, 14)),
+        }),
+      ).annotate({ identifier: "ComplianceResult" });
+    case 16:
+      return S.Array(__S(527, __c16, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          snapshotName: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          reportProperties: S.optional(__S(293, __c9, 5)),
+          reportSystemData: S.optional(__S(512, __c16, 0)),
+          complianceResults: S.optional(__S(528, __c16, 16)),
+        }),
+      ).annotate({ identifier: "SnapshotProperties" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1472, __c46, 0)),
+          properties: S.optional(__S(529, __c16, 17)),
+        }),
+      ).annotate({ identifier: "GetSnapshotResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          webhookName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({ identifier: "GetWebhookRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1472, __c46, 0)),
+          properties: __S(608, __c19, 0),
+        }),
+      ).annotate({ identifier: "GetWebhookResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhookId: S.optional(S.String),
+          status: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          sendAllEvents: S.optional(S.String),
+          events: S.optional(__S(384, __c12, 0)),
+          payloadUrl: S.optional(S.String),
+          contentType: S.optional(S.String),
+          webhookKey: S.optional(S.String),
+          updateWebhookKey: S.optional(S.String),
+          webhookKeyEnabled: S.optional(S.String),
+          enableSslVerification: S.optional(S.String),
+          deliveryStatus: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebhookProperties" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _select: S.optional(S.String.pipe(T.Query("$select"))),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          offerGuid: S.optional(S.String.pipe(T.Query())),
+          reportCreatorTenantId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEvidenceByReportRequest",
+      });
+    case 1:
+      return S.Array(__S(1568, __c49, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(641, __c20, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EvidenceResourceListResult",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AppComplianceAutomation/operations",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(673, __c21, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(674, __c21, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(675, __c21, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionIds: S.optional(__S(704, __c22, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.AppComplianceAutomation/listInUseStorageAccounts",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProviderActionInUseStorageAccountsRequest",
+      });
+    case 2:
+      return S.Array(__S(224, __c7, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          storageAccountList: S.optional(__S(706, __c22, 2)),
+        }),
+      ).annotate({
+        identifier: "ListInUseStorageAccountsResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _select: S.optional(S.String.pipe(T.Query("$select"))),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          offerGuid: S.optional(S.String.pipe(T.Query())),
+          reportCreatorTenantId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({ identifier: "ListReportRequest" });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(737, __c23, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReportResourceListResult" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportName: S.String.pipe(T.Label()),
@@ -1848,7 +2474,334 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteReportRequest" });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListScopingConfigurationRequest",
+      });
+    case 1:
+      return S.Array(__S(451, __c14, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(801, __c25, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ScopingConfigurationResourceListResult",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _select: S.optional(S.String.pipe(T.Query("$select"))),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          offerGuid: S.optional(S.String.pipe(T.Query())),
+          reportCreatorTenantId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/snapshots",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({ identifier: "ListSnapshotRequest" });
+    case 1:
+      return S.Array(__S(530, __c16, 18));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(833, __c26, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SnapshotResourceListResult",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _select: S.optional(S.String.pipe(T.Query("$select"))),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          offerGuid: S.optional(S.String.pipe(T.Query())),
+          reportCreatorTenantId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({ identifier: "ListWebhookRequest" });
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(865, __c27, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WebhookResourceListResult",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionIds: __S(192, __c6, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.AppComplianceAutomation/onboard",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProviderActionsOnboardRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionIds: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "OnboardResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          triggerTime: S.String,
+          timeZone: S.String,
+          resources: __S(289, __c9, 1),
+          offerGuid: S.optional(S.String),
+          storageInfo: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({ identifier: "ReportPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          properties: __S(928, __c29, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReportCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1472, __c46, 0)),
+          properties: __S(293, __c9, 5),
+        }),
+      ).annotate({
+        identifier: "ReportCreateOrUpdateResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/fix",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({ identifier: "ReportFixRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          result: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReportFixResult" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/checkNameAvailability",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReportNestedResourceCheckNameAvailabilityRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          answers: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "ScopingConfigurationPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          scopingConfigurationName: S.String.pipe(T.Label()),
+          properties: __S(1056, __c33, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "ScopingConfigurationCreateOrUpdateRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          certRecord: __S(258, __c8, 2),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/syncCertRecord",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "SyncReportCertRecordRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          certRecord: S.optional(__S(258, __c8, 2)),
+        }),
+      ).annotate({ identifier: "SyncCertRecordResponse" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceIds: __S(192, __c6, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.AppComplianceAutomation/triggerEvaluation",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "TriggerProviderActionEvaluationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.String),
+          responsibilityId: S.optional(S.String),
+          timestamp: S.optional(S.String),
+          resourceStatus: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          remediationLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuickAssessment" });
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          triggerTime: S.optional(S.String),
+          evaluationEndTime: S.optional(S.String),
+          resourceIds: S.optional(__S(192, __c6, 0)),
+          quickAssessments: S.optional(__S(1122, __c35, 2)),
+        }),
+      ).annotate({
+        identifier: "TriggerEvaluationProperty",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(1123, __c35, 3)),
+        }),
+      ).annotate({
+        identifier: "TriggerEvaluationResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportName: S.String.pipe(T.Label()),
@@ -1864,11 +2817,131 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteScopingConfigurationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteScopingConfigurationResponse",
       });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          triggerTime: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          resources: S.optional(__S(289, __c9, 1)),
+          offerGuid: S.optional(S.String),
+          storageInfo: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "ReportPatchPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1184, __c37, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateReportRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          webhookName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1248, __c39, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateWebhookRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          sendAllEvents: S.optional(S.Boolean.pipe(T.StringEncoded())),
+          events: S.optional(__S(384, __c12, 0)),
+          payloadUrl: S.optional(S.String),
+          contentType: S.optional(S.String),
+          webhookKey: S.optional(S.String),
+          updateWebhookKey: S.optional(S.Boolean.pipe(T.StringEncoded())),
+          enableSslVerification: S.optional(S.Boolean.pipe(T.StringEncoded())),
+        }),
+      ).annotate({ identifier: "WebhookPropertiesInput" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/verify",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({ identifier: "VerifyReportRequest" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reportName: S.String.pipe(T.Label()),
+          webhookName: S.String.pipe(T.Label()),
+          properties: __S(1248, __c39, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
+            code: 200,
+            apiVersion: "2024-06-27",
+          }),
+        ),
+      ).annotate({
+        identifier: "WebhookCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1472, __c46, 0)),
+          properties: __S(608, __c19, 0),
+        }),
+      ).annotate({
+        identifier: "WebhookCreateOrUpdateResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportName: S.String.pipe(T.Label()),
@@ -1884,7 +2957,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "DeleteWebhookRequest" });
   }
 }
-function __c1(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1913,12 +2986,16 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          evidenceFile: S.optional(__S(9, __c1, 1)),
+          evidenceFile: S.optional(__S(1377, __c43, 1)),
         }),
       ).annotate({
         identifier: "EvidenceFileDownloadResponse",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportName: S.String.pipe(T.Label()),
@@ -1935,7 +3012,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DownloadSnapshotRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.String),
@@ -1944,9 +3021,9 @@ function __c1(j: number): any {
           resourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceItem" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1409, __c44, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           categoryName: S.optional(S.String),
@@ -1963,13 +3040,9 @@ function __c1(j: number): any {
           resourceStatusChangeDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComplianceReportItem" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(1411, __c44, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           sasUri: S.optional(S.String),
@@ -1977,16 +3050,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DownloadResponseCompliancePdfReport",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          resourceList: S.optional(__S(13, __c1, 5)),
-          complianceReport: S.optional(__S(15, __c1, 7)),
-          compliancePdfReport: S.optional(__S(16, __c2, 0)),
-          complianceDetailedPdfReport: S.optional(__S(16, __c2, 0)),
+          resourceList: S.optional(__S(1410, __c44, 2)),
+          complianceReport: S.optional(__S(1412, __c44, 4)),
+          compliancePdfReport: S.optional(__S(1413, __c44, 5)),
+          complianceDetailedPdfReport: S.optional(__S(1413, __c44, 5)),
         }),
       ).annotate({ identifier: "DownloadResponse" });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           evidenceType: S.optional(S.String),
@@ -1996,14 +3073,14 @@ function __c2(j: number): any {
           responsibilityId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EvidencePropertiesInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           reportName: S.String.pipe(T.Label()),
           evidenceName: S.String.pipe(T.Label()),
           offerGuid: S.optional(S.String.pipe(T.Query())),
           reportCreatorTenantId: S.optional(S.String.pipe(T.Query())),
-          properties: __S(18, __c2, 2),
+          properties: __S(1440, __c45, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2015,7 +3092,23 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "EvidenceCreateOrUpdateRequest",
       });
-    case 4:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1472, __c46, 0)),
+          properties: __S(1504, __c47, 0),
+        }),
+      ).annotate({
+        identifier: "EvidenceCreateOrUpdateResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2026,7 +3119,11 @@ function __c2(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 5:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           evidenceType: S.optional(S.String),
@@ -2037,19 +3134,11 @@ function __c2(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "EvidenceProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(20, __c2, 4)),
-          properties: __S(21, __c2, 5),
-        }),
-      ).annotate({
-        identifier: "EvidenceCreateOrUpdateResponse",
-      });
-    case 7:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportName: S.String.pipe(T.Label()),
@@ -2065,7 +3154,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "GetEvidenceRequest" });
   }
 }
-function __c3(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2073,11 +3162,15 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20, __c2, 4)),
-          properties: __S(21, __c2, 5),
+          systemData: S.optional(__S(1472, __c46, 0)),
+          properties: __S(1504, __c47, 0),
         }),
       ).annotate({ identifier: "GetEvidenceResponse" });
-    case 1:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -2092,7 +3185,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProviderActionCollectionCountRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
@@ -2100,962 +3193,8 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetCollectionCountResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.AppComplianceAutomation/getOverviewStatus",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProviderActionOverviewStatusRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          statusName: S.optional(S.String),
-          statusValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StatusItem" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          statusList: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "GetOverviewStatusResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({ identifier: "GetReportRequest" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String,
-          resourceType: S.optional(S.String),
-          resourceKind: S.optional(S.String),
-          resourceOrigin: S.optional(S.String),
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceMetadata" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          passedCount: S.optional(S.Number),
-          failedCount: S.optional(S.Number),
-          manualCount: S.optional(S.Number),
-          notApplicableCount: S.optional(S.Number),
-          pendingCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "OverviewStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          m365: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "ReportComplianceStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.optional(S.String),
-          resourceGroup: S.optional(S.String),
-          accountName: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          controlId: S.optional(S.String),
-          controlStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ControlSyncRecord" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          offerGuid: S.optional(S.String),
-          certificationStatus: S.optional(S.String),
-          ingestionStatus: S.optional(S.String),
-          controls: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "CertSyncRecord" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          triggerTime: S.String,
-          timeZone: S.String,
-          resources: __S(33, __c4, 1),
-          status: S.optional(S.String),
-          errors: S.optional(__S(34, __c4, 2)),
-          tenantId: S.optional(S.String),
-          offerGuid: S.optional(S.String),
-          nextTriggerTime: S.optional(S.String),
-          lastTriggerTime: S.optional(S.String),
-          subscriptions: S.optional(__S(34, __c4, 2)),
-          complianceStatus: S.optional(__S(36, __c4, 4)),
-          storageInfo: S.optional(__S(37, __c4, 5)),
-          certRecords: S.optional(__S(41, __c5, 1)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReportProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(20, __c2, 4)),
-          properties: __S(42, __c5, 2),
-        }),
-      ).annotate({ identifier: "GetReportResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/getScopingQuestions",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetReportScopingQuestionsRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          questionId: S.String,
-          superiorQuestionId: S.optional(S.String),
-          inputType: S.String,
-          optionIds: __S(34, __c4, 2),
-          rules: __S(45, __c5, 5),
-          showSubQuestionsValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScopingQuestion" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          questions: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "ScopingQuestions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          scopingConfigurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetScopingConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          questionId: S.String,
-          answers: __S(34, __c4, 2),
-        }),
-      ).annotate({ identifier: "ScopingAnswer" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          answers: S.optional(__S(51, __c6, 3)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ScopingConfigurationProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(20, __c2, 4)),
-          properties: __S(52, __c6, 4),
-        }),
-      ).annotate({
-        identifier: "GetScopingConfigurationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          snapshotName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/snapshots/{snapshotName}",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({ identifier: "GetSnapshotRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SnapshotPropertiesReportSystemData",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(S.String),
-          accountId: S.optional(S.String),
-          resourceType: S.optional(S.String),
-          resourceOrigin: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          resourceStatusChangeDate: S.optional(S.String),
-          recommendationIds: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "ResponsibilityResource" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          recommendationSolutionIndex: S.optional(S.String),
-          recommendationSolutionContent: S.optional(S.String),
-          isRecommendSolution: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RecommendationSolution" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          recommendationId: S.optional(S.String),
-          recommendationShortName: S.optional(S.String),
-          recommendationSolutions: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "Recommendation" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          responsibilityId: S.optional(S.String),
-          responsibilityTitle: S.optional(S.String),
-          responsibilityDescription: S.optional(S.String),
-          responsibilityType: S.optional(S.String),
-          responsibilitySeverity: S.optional(S.String),
-          responsibilityStatus: S.optional(S.String),
-          responsibilityEnvironment: S.optional(S.String),
-          failedResourceCount: S.optional(S.Number),
-          totalResourceCount: S.optional(S.Number),
-          resourceList: S.optional(__S(57, __c7, 1)),
-          recommendationList: S.optional(__S(61, __c7, 5)),
-          guidance: S.optional(S.String),
-          justification: S.optional(S.String),
-          evidenceFiles: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "Responsibility" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          controlId: S.optional(S.String),
-          controlName: S.optional(S.String),
-          controlFullName: S.optional(S.String),
-          controlDescription: S.optional(S.String),
-          controlDescriptionHyperLink: S.optional(S.String),
-          controlStatus: S.optional(S.String),
-          responsibilities: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({ identifier: "Control" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          controlFamilyName: S.optional(S.String),
-          controlFamilyStatus: S.optional(S.String),
-          controls: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({ identifier: "ControlFamily" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          categoryName: S.optional(S.String),
-          categoryStatus: S.optional(S.String),
-          controlFamilies: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({ identifier: "Category" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          complianceName: S.optional(S.String),
-          categories: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "ComplianceResult" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          snapshotName: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          reportProperties: S.optional(__S(42, __c5, 2)),
-          reportSystemData: S.optional(__S(55, __c6, 7)),
-          complianceResults: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "SnapshotProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(20, __c2, 4)),
-          properties: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({ identifier: "GetSnapshotResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          webhookName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({ identifier: "GetWebhookRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          webhookId: S.optional(S.String),
-          status: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          sendAllEvents: S.optional(S.String),
-          events: S.optional(__S(45, __c5, 5)),
-          payloadUrl: S.optional(S.String),
-          contentType: S.optional(S.String),
-          webhookKey: S.optional(S.String),
-          updateWebhookKey: S.optional(S.String),
-          webhookKeyEnabled: S.optional(S.String),
-          enableSslVerification: S.optional(S.String),
-          deliveryStatus: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebhookProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(20, __c2, 4)),
-          properties: __S(75, __c9, 3),
-        }),
-      ).annotate({ identifier: "GetWebhookResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _select: S.optional(S.String.pipe(T.Query("$select"))),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-          offerGuid: S.optional(S.String.pipe(T.Query())),
-          reportCreatorTenantId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEvidenceByReportRequest",
-      });
-    case 6:
-      return S.Array(__S(24, __c3, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(78, __c9, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EvidenceResourceListResult",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AppComplianceAutomation/operations",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(81, __c10, 1)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(83, __c10, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionIds: S.optional(__S(85, __c10, 5)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.AppComplianceAutomation/listInUseStorageAccounts",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProviderActionInUseStorageAccountsRequest",
-      });
-    case 7:
-      return S.Array(__S(37, __c4, 5));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          storageAccountList: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({
-        identifier: "ListInUseStorageAccountsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _select: S.optional(S.String.pipe(T.Query("$select"))),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-          offerGuid: S.optional(S.String.pipe(T.Query())),
-          reportCreatorTenantId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({ identifier: "ListReportRequest" });
-    case 2:
-      return S.Array(__S(43, __c5, 3));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(90, __c11, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReportResourceListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListScopingConfigurationRequest",
-      });
-    case 5:
-      return S.Array(__S(53, __c6, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(93, __c11, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ScopingConfigurationResourceListResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _select: S.optional(S.String.pipe(T.Query("$select"))),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-          offerGuid: S.optional(S.String.pipe(T.Query())),
-          reportCreatorTenantId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/snapshots",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({ identifier: "ListSnapshotRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(73, __c9, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(96, __c12, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SnapshotResourceListResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _select: S.optional(S.String.pipe(T.Query("$select"))),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-          offerGuid: S.optional(S.String.pipe(T.Query())),
-          reportCreatorTenantId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({ identifier: "ListWebhookRequest" });
-    case 3:
-      return S.Array(__S(76, __c9, 4));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(99, __c12, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WebhookResourceListResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionIds: __S(34, __c4, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.AppComplianceAutomation/onboard",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProviderActionsOnboardRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionIds: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "OnboardResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          triggerTime: S.String,
-          timeZone: S.String,
-          resources: __S(33, __c4, 1),
-          offerGuid: S.optional(S.String),
-          storageInfo: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "ReportPropertiesInput" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          properties: __S(103, __c12, 7),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReportCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(20, __c2, 4)),
-          properties: __S(42, __c5, 2),
-        }),
-      ).annotate({
-        identifier: "ReportCreateOrUpdateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/fix",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({ identifier: "ReportFixRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          result: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReportFixResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/checkNameAvailability",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReportNestedResourceCheckNameAvailabilityRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          answers: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "ScopingConfigurationPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          scopingConfigurationName: S.String.pipe(T.Label()),
-          properties: __S(109, __c13, 5),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScopingConfigurationCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          certRecord: __S(40, __c5, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/syncCertRecord",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "SyncReportCertRecordRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          certRecord: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "SyncCertRecordResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceIds: __S(34, __c4, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.AppComplianceAutomation/triggerEvaluation",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "TriggerProviderActionEvaluationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(S.String),
-          responsibilityId: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          remediationLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QuickAssessment" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          triggerTime: S.optional(S.String),
-          evaluationEndTime: S.optional(S.String),
-          resourceIds: S.optional(__S(34, __c4, 2)),
-          quickAssessments: S.optional(__S(115, __c14, 3)),
-        }),
-      ).annotate({
-        identifier: "TriggerEvaluationProperty",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(116, __c14, 4)),
-        }),
-      ).annotate({
-        identifier: "TriggerEvaluationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          triggerTime: S.optional(S.String),
-          timeZone: S.optional(S.String),
-          resources: S.optional(__S(33, __c4, 1)),
-          offerGuid: S.optional(S.String),
-          storageInfo: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "ReportPatchPropertiesInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(118, __c14, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateReportRequest" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          sendAllEvents: S.optional(S.Boolean.pipe(T.StringEncoded())),
-          events: S.optional(__S(45, __c5, 5)),
-          payloadUrl: S.optional(S.String),
-          contentType: S.optional(S.String),
-          webhookKey: S.optional(S.String),
-          updateWebhookKey: S.optional(S.Boolean.pipe(T.StringEncoded())),
-          enableSslVerification: S.optional(S.Boolean.pipe(T.StringEncoded())),
-        }),
-      ).annotate({ identifier: "WebhookPropertiesInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          webhookName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(120, __c15, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateWebhookRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/verify",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({ identifier: "VerifyReportRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          reportName: S.String.pipe(T.Label()),
-          webhookName: S.String.pipe(T.Label()),
-          properties: __S(120, __c15, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks/{webhookName}",
-            code: 200,
-            apiVersion: "2024-06-27",
-          }),
-        ),
-      ).annotate({
-        identifier: "WebhookCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(20, __c2, 4)),
-          properties: __S(75, __c9, 3),
-        }),
-      ).annotate({
-        identifier: "WebhookCreateOrUpdateResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

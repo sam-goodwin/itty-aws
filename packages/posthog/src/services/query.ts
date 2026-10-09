@@ -16526,8 +16526,8 @@ export const createQuery: API.OperationMethod<
   CreateQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateQueryRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateQueryResponse>,
+  input: __S(22, __c2, 6) as any as S.Schema<CreateQueryRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<CreateQueryResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16540,8 +16540,8 @@ export const createQueryCheckAuthForAsync: API.OperationMethod<
   CreateQueryCheckAuthForAsyncError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateQueryCheckAuthForAsyncRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CreateQueryCheckAuthForAsyncResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateQueryCheckAuthForAsyncRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<CreateQueryCheckAuthForAsyncResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16555,8 +16555,8 @@ export const createQueryUpgrade: API.OperationMethod<
   CreateQueryUpgradeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateQueryUpgradeRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<QueryUpgradeResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateQueryUpgradeRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<QueryUpgradeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16569,8 +16569,8 @@ export const createQueryWithKind: API.OperationMethod<
   CreateQueryWithKindError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateQueryWithKindRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateQueryWithKindResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateQueryWithKindRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<CreateQueryWithKindResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16584,8 +16584,8 @@ export const getQuery: API.OperationMethod<
   GetQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetQueryRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<QueryStatusResponse>,
+  input: __S(68, __c8, 4) as any as S.Schema<GetQueryRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<QueryStatusResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16598,8 +16598,8 @@ export const getQueryDraftSql: API.OperationMethod<
   GetQueryDraftSqlError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetQueryDraftSqlRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetQueryDraftSqlResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetQueryDraftSqlRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetQueryDraftSqlResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16613,8 +16613,8 @@ export const getQueryLog: API.OperationMethod<
   GetQueryLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetQueryLogRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetQueryLogResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetQueryLogRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetQueryLogResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16628,8 +16628,8 @@ export const getQueryScan: API.OperationMethod<
   GetQueryScanError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetQueryScanRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<QueryScanResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetQueryScanRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<QueryScanResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16643,8 +16643,8 @@ export const queryDestroy: API.OperationMethod<
   QueryDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<QueryDestroyRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<QueryDestroyResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<QueryDestroyRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<QueryDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -16652,6 +16652,42 @@ export const queryDestroy: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          cache_key: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/query/scan/{cache_key}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetQueryScanRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          analysis: S.optional(S.NullOr(__S(74, __c9, 2))),
+        }),
+      ).annotate({ identifier: "QueryScanResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/query/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "QueryDestroyRequest" });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16664,7 +16700,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Breakdown" });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -16676,7 +16712,7 @@ function __c0(j: number): any {
           breakdown_normalize_url: S.optional(S.NullOr(S.Boolean)),
           breakdown_path_cleaning: S.optional(S.NullOr(S.Boolean)),
           breakdown_type: S.optional(S.NullOr(S.String)),
-          breakdowns: S.optional(S.NullOr(__S(1, __c0, 1))),
+          breakdowns: S.optional(S.NullOr(__S(17, __c2, 1))),
         }),
       ).annotate({ identifier: "BreakdownFilter" });
     case 3:
@@ -16684,107 +16720,29 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          breakdown_filter: S.optional(S.NullOr(__S(2, __c0, 2))),
+          breakdown_filter: S.optional(S.NullOr(__S(18, __c2, 2))),
           date_from: S.optional(S.NullOr(S.String)),
           date_to: S.optional(S.NullOr(S.String)),
           explicitDate: S.optional(S.NullOr(S.Boolean)),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
           interval: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(3, __c0, 3))),
+          properties: S.optional(S.NullOr(__S(19, __c2, 3))),
         }),
       ).annotate({ identifier: "DashboardFilter" });
     case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          active_cpu_time: S.optional(S.Number),
-          bytes_read: S.optional(S.Number),
-          estimated_rows_total: S.optional(S.Number),
-          rows_read: S.optional(S.Number),
-          time_elapsed: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ClickhouseQueryProgress" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          actionable: S.Boolean,
-          by_design: S.optional(S.NullOr(S.Boolean)),
-          cause: S.optional(S.NullOr(S.String)),
-          evidence: S.optional(S.NullOr(S.String)),
-          fix: S.String,
-          fix_location: S.optional(S.NullOr(S.String)),
-          kind: S.String,
-          message: S.String,
-        }),
-      ).annotate({ identifier: "QueryScanWarning" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          assistant_prompt: S.optional(S.NullOr(S.String)),
-          findings: __S(9, __c1, 1),
-          project_share: S.optional(S.NullOr(S.Number)),
-          range_share: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "QueryScanAnalysis" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          analysis: S.optional(S.NullOr(__S(10, __c1, 2))),
-          analysis_requested: S.optional(S.NullOr(S.Boolean)),
-          duration_ms: S.Number,
-          killed: S.optional(S.NullOr(S.Boolean)),
-          rows_read: S.Number,
-        }),
-      ).annotate({ identifier: "QueryScanSummary" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          budget_remaining_bytes: S.optional(S.NullOr(S.Number)),
-          bytes_read: S.optional(S.NullOr(S.Number)),
-          cache_key: S.optional(S.NullOr(S.String)),
-          complete: S.optional(S.NullOr(S.Boolean)),
-          dashboard_id: S.optional(S.NullOr(S.Number)),
-          end_time: S.optional(S.NullOr(S.String)),
-          error: S.optional(S.NullOr(S.Boolean)),
-          error_code: S.optional(S.NullOr(S.String)),
-          error_message: S.optional(S.NullOr(S.String)),
-          expiration_time: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          insight_id: S.optional(S.NullOr(S.Number)),
-          labels: S.optional(S.NullOr(__S(5, __c0, 5))),
-          pickup_time: S.optional(S.NullOr(S.String)),
-          query_async: S.optional(S.Boolean),
-          query_progress: S.optional(S.NullOr(__S(7, __c0, 7))),
-          query_scan: S.optional(S.NullOr(__S(11, __c1, 3))),
-          results: S.optional(S.Unknown),
-          start_time: S.optional(S.NullOr(S.String)),
-          task_id: S.optional(S.NullOr(S.String)),
-          team_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QueryStatus" });
-    case 5:
-      return S.Record(S.String, __S(6, __c0, 6));
+      return S.Record(S.String, __S(24, __c3, 0));
     case 6:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           async: S.optional(S.NullOr(S.Boolean)),
           client_query_id: S.optional(S.NullOr(S.String)),
-          filters_override: S.optional(S.NullOr(__S(4, __c0, 4))),
+          filters_override: S.optional(S.NullOr(__S(20, __c2, 4))),
           limit_context: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           query: S.optional(S.Unknown),
           refresh: S.optional(S.NullOr(S.String)),
-          variables_override: S.optional(S.NullOr(__S(13, __c1, 5))),
+          variables_override: S.optional(S.NullOr(__S(21, __c2, 5))),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/query/", code: 200 })),
       ).annotate({ identifier: "CreateQueryRequest" });
     case 7:
@@ -16793,7 +16751,13 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16810,10 +16774,14 @@ function __c2(j: number): any {
         identifier: "CreateQueryCheckAuthForAsyncRequest",
       });
     case 1:
-      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(24, __c3, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateQueryCheckAuthForAsyncResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -16824,13 +16792,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateQueryUpgradeRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "QueryUpgradeResponse" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -16845,11 +16817,67 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateQueryWithKindRequest",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateQueryWithKindResponse",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          active_cpu_time: S.optional(S.Number),
+          bytes_read: S.optional(S.Number),
+          estimated_rows_total: S.optional(S.Number),
+          rows_read: S.optional(S.Number),
+          time_elapsed: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ClickhouseQueryProgress" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          analysis: S.optional(S.NullOr(__S(74, __c9, 2))),
+          analysis_requested: S.optional(S.NullOr(S.Boolean)),
+          duration_ms: S.Number,
+          killed: S.optional(S.NullOr(S.Boolean)),
+          rows_read: S.Number,
+        }),
+      ).annotate({ identifier: "QueryScanSummary" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          budget_remaining_bytes: S.optional(S.NullOr(S.Number)),
+          bytes_read: S.optional(S.NullOr(S.Number)),
+          cache_key: S.optional(S.NullOr(S.String)),
+          complete: S.optional(S.NullOr(S.Boolean)),
+          dashboard_id: S.optional(S.NullOr(S.Number)),
+          end_time: S.optional(S.NullOr(S.String)),
+          error: S.optional(S.NullOr(S.Boolean)),
+          error_code: S.optional(S.NullOr(S.String)),
+          error_message: S.optional(S.NullOr(S.String)),
+          expiration_time: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          insight_id: S.optional(S.NullOr(S.Number)),
+          labels: S.optional(S.NullOr(__S(64, __c8, 0))),
+          pickup_time: S.optional(S.NullOr(S.String)),
+          query_async: S.optional(S.Boolean),
+          query_progress: S.optional(S.NullOr(__S(65, __c8, 1))),
+          query_scan: S.optional(S.NullOr(__S(66, __c8, 2))),
+          results: S.optional(S.Unknown),
+          start_time: S.optional(S.NullOr(S.String)),
+          task_id: S.optional(S.NullOr(S.String)),
+          team_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QueryStatus" });
+    case 4:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -16858,15 +16886,43 @@ function __c2(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/query/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "GetQueryRequest" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          query_status: S.optional(__S(12, __c1, 4)),
+          query_status: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "QueryStatusResponse" });
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          actionable: S.Boolean,
+          by_design: S.optional(S.NullOr(S.Boolean)),
+          cause: S.optional(S.NullOr(S.String)),
+          evidence: S.optional(S.NullOr(S.String)),
+          fix: S.String,
+          fix_location: S.optional(S.NullOr(S.String)),
+          kind: S.String,
+          message: S.String,
+        }),
+      ).annotate({ identifier: "QueryScanWarning" });
+    case 1:
+      return S.Array(__S(72, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assistant_prompt: S.optional(S.NullOr(S.String)),
+          findings: __S(73, __c9, 1),
+          project_share: S.optional(S.NullOr(S.Number)),
+          range_share: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "QueryScanAnalysis" });
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16876,11 +16932,19 @@ function __c3(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/query/draft_sql/", code: 200 }),
         ),
       ).annotate({ identifier: "GetQueryDraftSqlRequest" });
-    case 1:
-      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(24, __c3, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetQueryDraftSqlResponse",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -16889,37 +16953,8 @@ function __c3(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/query/{id}/log/", code: 200 }),
         ),
       ).annotate({ identifier: "GetQueryLogRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          cache_key: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/query/scan/{cache_key}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetQueryScanRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          analysis: S.optional(S.NullOr(__S(10, __c1, 2))),
-        }),
-      ).annotate({ identifier: "QueryScanResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/query/{id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "QueryDestroyRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -132,7 +132,7 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       FieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(91, __c11, 3)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(305, __c38, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -538,8 +538,8 @@ export const associateDefaultView: API.OperationMethod<
   AssociateDefaultViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateDefaultViewInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateDefaultViewOutput>,
+  input: __S(312, __c39, 0) as any as S.Schema<AssociateDefaultViewInput>,
+  output: __S(313, __c39, 1) as any as S.Schema<AssociateDefaultViewOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -568,8 +568,8 @@ export const batchGetView: API.OperationMethod<
   BatchGetViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BatchGetViewInput>,
-  output: __S(11, __c1, 3) as any as S.Schema<BatchGetViewOutput>,
+  input: __S(320, __c40, 0) as any as S.Schema<BatchGetViewInput>,
+  output: __S(324, __c40, 4) as any as S.Schema<BatchGetViewOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -618,8 +618,8 @@ export const createIndex: API.OperationMethod<
   CreateIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateIndexInput>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateIndexOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateIndexInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateIndexOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -648,8 +648,8 @@ export const createResourceExplorerSetup: API.OperationMethod<
   CreateResourceExplorerSetupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateResourceExplorerSetupInput>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateResourceExplorerSetupOutput>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateResourceExplorerSetupInput>,
+  output: __S(24, __c3, 0) as any as S.Schema<CreateResourceExplorerSetupOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -682,8 +682,8 @@ export const createView: API.OperationMethod<
   CreateViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateViewInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateViewOutput>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateViewInput>,
+  output: __S(40, __c5, 0) as any as S.Schema<CreateViewOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -716,8 +716,8 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteIndexInput>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteIndexOutput>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteIndexInput>,
+  output: __S(49, __c6, 1) as any as S.Schema<DeleteIndexOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -746,8 +746,8 @@ export const deleteResourceExplorerSetup: API.OperationMethod<
   DeleteResourceExplorerSetupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteResourceExplorerSetupInput>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteResourceExplorerSetupOutput>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteResourceExplorerSetupInput>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteResourceExplorerSetupOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -779,8 +779,8 @@ export const deleteView: API.OperationMethod<
   DeleteViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteViewInput>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteViewOutput>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteViewInput>,
+  output: __S(72, __c9, 0) as any as S.Schema<DeleteViewOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -812,8 +812,8 @@ export const disassociateDefaultView: API.OperationMethod<
   DisassociateDefaultViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DisassociateDefaultViewRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DisassociateDefaultViewResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DisassociateDefaultViewRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<DisassociateDefaultViewResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -841,8 +841,8 @@ export const getAccountLevelServiceConfiguration: API.OperationMethod<
   GetAccountLevelServiceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetAccountLevelServiceConfigurationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetAccountLevelServiceConfigurationOutput>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetAccountLevelServiceConfigurationRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<GetAccountLevelServiceConfigurationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -870,8 +870,8 @@ export const getDefaultView: API.OperationMethod<
   GetDefaultViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetDefaultViewRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetDefaultViewOutput>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetDefaultViewRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetDefaultViewOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -900,8 +900,8 @@ export const getIndex: API.OperationMethod<
   GetIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetIndexRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetIndexOutput>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetIndexRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<GetIndexOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -931,8 +931,8 @@ export const getManagedView: API.OperationMethod<
   GetManagedViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetManagedViewInput>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetManagedViewOutput>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetManagedViewInput>,
+  output: __S(114, __c14, 2) as any as S.Schema<GetManagedViewOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -963,8 +963,8 @@ export const getResourceExplorerSetup: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegionStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetResourceExplorerSetupInput>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetResourceExplorerSetupOutput>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetResourceExplorerSetupInput>,
+  output: __S(126, __c15, 6) as any as S.Schema<GetResourceExplorerSetupOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -999,8 +999,8 @@ export const getServiceIndex: API.OperationMethod<
   GetServiceIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetServiceIndexRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetServiceIndexOutput>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetServiceIndexRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<GetServiceIndexOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1029,8 +1029,8 @@ export const getServiceView: API.OperationMethod<
   GetServiceViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetServiceViewInput>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetServiceViewOutput>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetServiceViewInput>,
+  output: __S(147, __c18, 3) as any as S.Schema<GetServiceViewOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1060,8 +1060,8 @@ export const getView: API.OperationMethod<
   GetViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetViewInput>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetViewOutput>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetViewInput>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetViewOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1091,8 +1091,8 @@ export const listIndexes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Index
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListIndexesInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListIndexesOutput>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListIndexesInput>,
+  output: __S(169, __c21, 1) as any as S.Schema<ListIndexesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1126,8 +1126,8 @@ export const listIndexesForMembers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MemberIndex
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListIndexesForMembersInput>,
-  output: __S(57, __c7, 1) as any as S.Schema<ListIndexesForMembersOutput>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListIndexesForMembersInput>,
+  output: __S(179, __c22, 3) as any as S.Schema<ListIndexesForMembersOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1162,8 +1162,8 @@ export const listManagedViews: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListManagedViewsInput>,
-  output: __S(59, __c7, 3) as any as S.Schema<ListManagedViewsOutput>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListManagedViewsInput>,
+  output: __S(185, __c23, 1) as any as S.Schema<ListManagedViewsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1200,8 +1200,8 @@ export const listResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Resource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListResourcesInput>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListResourcesOutput>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListResourcesInput>,
+  output: __S(193, __c24, 1) as any as S.Schema<ListResourcesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1237,8 +1237,8 @@ export const listServiceIndexes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Index
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListServiceIndexesInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListServiceIndexesOutput>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListServiceIndexesInput>,
+  output: __S(169, __c21, 1) as any as S.Schema<ListServiceIndexesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1272,8 +1272,8 @@ export const listServiceViews: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListServiceViewsInput>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListServiceViewsOutput>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListServiceViewsInput>,
+  output: __S(217, __c27, 1) as any as S.Schema<ListServiceViewsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1306,8 +1306,8 @@ export const listStreamingAccessForServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StreamingAccessDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListStreamingAccessForServicesInput>,
-  output: __S(72, __c9, 0) as any as S.Schema<ListStreamingAccessForServicesOutput>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListStreamingAccessForServicesInput>,
+  output: __S(227, __c28, 3) as any as S.Schema<ListStreamingAccessForServicesOutput>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1336,8 +1336,8 @@ export const listSupportedResourceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SupportedResourceType
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListSupportedResourceTypesInput>,
-  output: __S(76, __c9, 4) as any as S.Schema<ListSupportedResourceTypesOutput>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListSupportedResourceTypesInput>,
+  output: __S(235, __c29, 3) as any as S.Schema<ListSupportedResourceTypesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1372,8 +1372,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(78, __c9, 6) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(240, __c30, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(241, __c30, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1405,8 +1405,8 @@ export const listViews: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListViewsInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<ListViewsOutput>,
+  input: __S(248, __c31, 0) as any as S.Schema<ListViewsInput>,
+  output: __S(249, __c31, 1) as any as S.Schema<ListViewsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1448,8 +1448,8 @@ export const search: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Resource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<SearchInput>,
-  output: __S(83, __c10, 3) as any as S.Schema<SearchOutput>,
+  input: __S(256, __c32, 0) as any as S.Schema<SearchInput>,
+  output: __S(258, __c32, 2) as any as S.Schema<SearchOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1486,8 +1486,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<TagResourceInput>,
-  output: __S(85, __c10, 5) as any as S.Schema<TagResourceOutput>,
+  input: __S(264, __c33, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(272, __c34, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1518,8 +1518,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<UntagResourceInput>,
-  output: __S(85, __c10, 5) as any as S.Schema<UntagResourceOutput>,
+  input: __S(280, __c35, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(272, __c34, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1567,8 +1567,8 @@ export const updateIndexType: API.OperationMethod<
   UpdateIndexTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<UpdateIndexTypeInput>,
-  output: __S(88, __c11, 0) as any as S.Schema<UpdateIndexTypeOutput>,
+  input: __S(288, __c36, 0) as any as S.Schema<UpdateIndexTypeInput>,
+  output: __S(289, __c36, 1) as any as S.Schema<UpdateIndexTypeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1600,8 +1600,8 @@ export const updateView: API.OperationMethod<
   UpdateViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<UpdateViewInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdateViewOutput>,
+  input: __S(296, __c37, 0) as any as S.Schema<UpdateViewInput>,
+  output: __S(40, __c5, 0) as any as S.Schema<UpdateViewOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1620,81 +1620,14 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ViewArn: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/AssociateDefaultView" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "AssociateDefaultViewInput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ ViewArn: S.optional(S.String) })).annotate({
-        identifier: "AssociateDefaultViewOutput",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ViewArns: S.optional(__S(2, __c0, 2)) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/BatchGetView" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "BatchGetViewInput" });
-    case 4:
-      return S.suspend(() => S.Struct({ Name: S.String })).annotate({
-        identifier: "IncludedProperty",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ FilterString: S.String })).annotate({
-        identifier: "SearchFilter",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ViewArn: S.optional(S.String),
-          ViewName: S.optional(S.String),
-          Owner: S.optional(S.String),
-          LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Scope: S.optional(S.String),
-          IncludedProperties: S.optional(__S(5, __c0, 5)),
-          Filters: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "View" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ ViewArn: S.String, ErrorMessage: S.String })).annotate({
-        identifier: "BatchGetViewError",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Views: S.optional(__S(8, __c1, 0)), Errors: S.optional(__S(10, __c1, 2)) }),
-      ).annotate({ identifier: "BatchGetViewOutput" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(12, __c1, 4)),
+          Tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateIndex" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateIndexInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -1702,11 +1635,21 @@ function __c1(j: number): any {
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CreateIndexOutput" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          RegionList: __S(2, __c0, 2),
-          AggregatorRegions: S.optional(__S(2, __c0, 2)),
+          RegionList: __S(328, __c41, 0),
+          AggregatorRegions: S.optional(__S(328, __c41, 0)),
           ViewName: S.String,
         }).pipe(
           T.all(
@@ -1723,36 +1666,48 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ TaskId: S.String })).annotate({
         identifier: "CreateResourceExplorerSetupOutput",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           ViewName: S.String,
-          IncludedProperties: S.optional(__S(5, __c0, 5)),
+          IncludedProperties: S.optional(__S(345, __c43, 1)),
           Scope: S.optional(S.String),
-          Filters: S.optional(__S(6, __c0, 6)),
-          Tags: S.optional(__S(12, __c1, 4)),
+          Filters: S.optional(__S(336, __c42, 0)),
+          Tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateView" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateViewInput" });
-    case 2:
-      return S.suspend(() => S.Struct({ View: S.optional(__S(7, __c0, 7)) })).annotate({
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ View: S.optional(__S(352, __c44, 0)) })).annotate({
         identifier: "CreateViewOutput",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/DeleteIndex" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteIndexInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -1760,10 +1715,14 @@ function __c2(j: number): any {
           LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "DeleteIndexOutput" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          RegionList: S.optional(__S(2, __c0, 2)),
+          RegionList: S.optional(__S(328, __c41, 0)),
           DeleteInAllRegions: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -1778,19 +1737,27 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteResourceExplorerSetupInput",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ViewArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/DeleteView" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteViewInput" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ ViewArn: S.optional(S.String) })).annotate({
         identifier: "DeleteViewOutput",
       });
   }
 }
-function __c3(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1811,7 +1778,11 @@ function __c3(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DisassociateDefaultViewResponse",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -1826,44 +1797,52 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetAccountLevelServiceConfigurationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ AWSServiceAccessStatus: S.String, ServiceLinkedRole: S.optional(S.String) }),
       ).annotate({ identifier: "OrgConfiguration" });
-    case 4:
-      return S.suspend(() => S.Struct({ OrgConfiguration: S.optional(__S(27, __c3, 3)) })).annotate(
-        {
-          identifier: "GetAccountLevelServiceConfigurationOutput",
-        },
-      );
-    case 5:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ OrgConfiguration: S.optional(__S(89, __c11, 1)) }),
+      ).annotate({
+        identifier: "GetAccountLevelServiceConfigurationOutput",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/GetDefaultView" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDefaultViewRequest" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/GetIndex" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetIndexRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           Type: S.optional(S.String),
           State: S.optional(S.String),
-          ReplicatingFrom: S.optional(__S(2, __c0, 2)),
-          ReplicatingTo: S.optional(__S(2, __c0, 2)),
+          ReplicatingFrom: S.optional(__S(328, __c41, 0)),
+          ReplicatingTo: S.optional(__S(328, __c41, 0)),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Tags: S.optional(__S(12, __c1, 4)),
+          Tags: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "GetIndexOutput" });
   }
 }
-function __c4(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1880,17 +1859,21 @@ function __c4(j: number): any {
           LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Owner: S.optional(S.String),
           Scope: S.optional(S.String),
-          IncludedProperties: S.optional(__S(5, __c0, 5)),
-          Filters: S.optional(__S(6, __c0, 6)),
+          IncludedProperties: S.optional(__S(345, __c43, 1)),
+          Filters: S.optional(__S(336, __c42, 0)),
           ResourcePolicy: S.optional(S.String),
           Version: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedView" });
     case 2:
-      return S.suspend(() => S.Struct({ ManagedView: S.optional(__S(33, __c4, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ ManagedView: S.optional(__S(113, __c14, 1)) })).annotate({
         identifier: "GetManagedViewOutput",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TaskId: S.String,
@@ -1909,7 +1892,47 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetResourceExplorerSetupInput",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }),
+      ).annotate({ identifier: "ErrorDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          Index: S.optional(__S(128, __c16, 0)),
+          ErrorDetails: S.optional(__S(121, __c15, 1)),
+        }),
+      ).annotate({ identifier: "IndexStatus" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          View: S.optional(__S(352, __c44, 0)),
+          ErrorDetails: S.optional(__S(121, __c15, 1)),
+        }),
+      ).annotate({ identifier: "ViewStatus" });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Region: S.optional(S.String),
+          Index: S.optional(__S(122, __c15, 2)),
+          View: S.optional(__S(123, __c15, 3)),
+        }),
+      ).annotate({ identifier: "RegionStatus" });
+    case 5:
+      return S.Array(__S(124, __c15, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Regions: S.optional(__S(125, __c15, 5)), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetResourceExplorerSetupOutput",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Region: S.optional(S.String),
@@ -1917,63 +1940,31 @@ function __c4(j: number): any {
           Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Index" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }),
-      ).annotate({ identifier: "ErrorDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          Index: S.optional(__S(36, __c4, 4)),
-          ErrorDetails: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "IndexStatus" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          View: S.optional(__S(7, __c0, 7)),
-          ErrorDetails: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "ViewStatus" });
   }
 }
-function __c5(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Region: S.optional(S.String),
-          Index: S.optional(__S(38, __c4, 6)),
-          View: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "RegionStatus" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Regions: S.optional(__S(41, __c5, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetResourceExplorerSetupOutput",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/GetServiceIndex" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetServiceIndexRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Type: S.optional(S.String) }),
       ).annotate({ identifier: "GetServiceIndexOutput" });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServiceViewArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/GetServiceView" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetServiceViewInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ServicePrincipal: S.optional(S.String),
@@ -1983,57 +1974,69 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ServiceLinkedRecorderInfo",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ServiceViewArn: S.String,
           ServiceViewName: S.optional(S.String),
-          Filters: S.optional(__S(6, __c0, 6)),
-          IncludedProperties: S.optional(__S(5, __c0, 5)),
+          Filters: S.optional(__S(336, __c42, 0)),
+          IncludedProperties: S.optional(__S(345, __c43, 1)),
           StreamingAccessForService: S.optional(S.String),
           ScopeType: S.optional(S.String),
-          ServiceLinkedRecorder: S.optional(__S(46, __c5, 6)),
+          ServiceLinkedRecorder: S.optional(__S(145, __c18, 1)),
         }),
       ).annotate({ identifier: "ServiceView" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ View: __S(47, __c5, 7) })).annotate({
+    case 3:
+      return S.suspend(() => S.Struct({ View: __S(146, __c18, 2) })).annotate({
         identifier: "GetServiceViewOutput",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ViewArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/GetView" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetViewInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ View: S.optional(__S(7, __c0, 7)), Tags: S.optional(__S(12, __c1, 4)) }),
+        S.Struct({ View: S.optional(__S(352, __c44, 0)), Tags: S.optional(__S(8, __c1, 0)) }),
       ).annotate({ identifier: "GetViewOutput" });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
-          Regions: S.optional(__S(2, __c0, 2)),
+          Regions: S.optional(__S(328, __c41, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/ListIndexes" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListIndexesInput" });
-    case 4:
-      return S.Array(__S(36, __c4, 4));
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(128, __c16, 0));
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Indexes: S.optional(__S(52, __c6, 4)), NextToken: S.optional(S.String) }),
+        S.Struct({ Indexes: S.optional(__S(168, __c21, 0)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListIndexesOutput" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          AccountIdList: __S(2, __c0, 2),
+          AccountIdList: __S(328, __c41, 0),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -2049,7 +2052,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListIndexesForMembersInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
@@ -2058,19 +2061,19 @@ function __c6(j: number): any {
           Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "MemberIndex" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(177, __c22, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Indexes: S.optional(__S(56, __c7, 0)), NextToken: S.optional(S.String) }),
+        S.Struct({ Indexes: S.optional(__S(178, __c22, 2)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListIndexesForMembersOutput",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
@@ -2080,14 +2083,18 @@ function __c7(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ListManagedViews" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListManagedViewsInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), ManagedViews: S.optional(__S(2, __c0, 2)) }),
+        S.Struct({ NextToken: S.optional(S.String), ManagedViews: S.optional(__S(328, __c41, 0)) }),
       ).annotate({ identifier: "ListManagedViewsOutput" });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(6, __c0, 6)),
+          Filters: S.optional(__S(336, __c42, 0)),
           MaxResults: S.optional(S.Number),
           ViewArn: S.optional(S.String),
           NextToken: S.optional(S.String),
@@ -2095,7 +2102,19 @@ function __c7(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ListResources" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListResourcesInput" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Resources: S.optional(__S(203, __c25, 3)),
+          NextToken: S.optional(S.String),
+          ViewArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListResourcesOutput" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -2103,9 +2122,9 @@ function __c7(j: number): any {
           Data: S.optional(S.Any),
         }),
       ).annotate({ identifier: "ResourceProperty" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(200, __c25, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -2115,27 +2134,19 @@ function __c7(j: number): any {
           Service: S.optional(S.String),
           CfnResourceType: S.optional(S.String),
           LastReportedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Properties: S.optional(__S(62, __c7, 6)),
+          Properties: S.optional(__S(201, __c25, 1)),
         }),
       ).annotate({ identifier: "Resource" });
+    case 3:
+      return S.Array(__S(202, __c25, 2));
   }
 }
-function __c8(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          Resources: S.optional(__S(64, __c8, 0)),
-          NextToken: S.optional(S.String),
-          ViewArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListResourcesOutput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Regions: S.optional(__S(2, __c0, 2)),
+          Regions: S.optional(__S(328, __c41, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -2149,17 +2160,25 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListServiceIndexesInput" });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/ListServiceViews" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListServiceViewsInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), ServiceViews: S.optional(__S(2, __c0, 2)) }),
+        S.Struct({ NextToken: S.optional(S.String), ServiceViews: S.optional(__S(328, __c41, 0)) }),
       ).annotate({ identifier: "ListServiceViewsOutput" });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
           T.all(
@@ -2174,29 +2193,29 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListStreamingAccessForServicesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ServicePrincipal: S.String,
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "StreamingAccessDetails" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(225, __c28, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          StreamingAccessForServices: __S(71, __c8, 7),
+          StreamingAccessForServices: __S(226, __c28, 2),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListStreamingAccessForServicesOutput",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(
@@ -2211,23 +2230,30 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListSupportedResourceTypesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Service: S.optional(S.String),
           ResourceType: S.optional(S.String),
-          CFNResourceTypes: S.optional(__S(2, __c0, 2)),
+          CFNResourceTypes: S.optional(__S(328, __c41, 0)),
         }),
       ).annotate({ identifier: "SupportedResourceType" });
+    case 2:
+      return S.Array(__S(233, __c29, 1));
     case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceTypes: S.optional(__S(75, __c9, 3)), NextToken: S.optional(S.String) }),
+        S.Struct({
+          ResourceTypes: S.optional(__S(234, __c29, 2)),
+          NextToken: S.optional(S.String),
+        }),
       ).annotate({
         identifier: "ListSupportedResourceTypesOutput",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -2240,25 +2266,29 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 6:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(12, __c1, 4)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(8, __c1, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/ListViews" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListViewsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Views: S.optional(__S(328, __c41, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListViewsOutput" });
   }
 }
-function __c10(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Views: S.optional(__S(2, __c0, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListViewsOutput" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           QueryString: SensitiveString,
@@ -2267,24 +2297,28 @@ function __c10(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/Search" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SearchInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ TotalResources: S.optional(S.Number), Complete: S.optional(S.Boolean) }),
       ).annotate({ identifier: "ResourceCount" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Resources: S.optional(__S(64, __c8, 0)),
+          Resources: S.optional(__S(203, __c25, 3)),
           NextToken: S.optional(S.String),
           ViewArn: S.optional(S.String),
-          Count: S.optional(__S(82, __c10, 2)),
+          Count: S.optional(__S(257, __c32, 1)),
         }),
       ).annotate({ identifier: "SearchOutput" });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          Tags: S.optional(__S(12, __c1, 4)),
+          Tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -2296,15 +2330,23 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceOutput",
       });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(2, __c0, 2).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(328, __c41, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2316,17 +2358,17 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Arn: S.String, Type: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UpdateIndexType" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateIndexTypeInput" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -2335,25 +2377,117 @@ function __c11(j: number): any {
           LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "UpdateIndexTypeOutput" });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ViewArn: S.String,
-          IncludedProperties: S.optional(__S(5, __c0, 5)),
-          Filters: S.optional(__S(6, __c0, 6)),
+          IncludedProperties: S.optional(__S(345, __c43, 1)),
+          Filters: S.optional(__S(336, __c42, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UpdateView" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateViewInput" });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Name: S.String, ValidationIssue: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
+    case 1:
+      return S.Array(__S(304, __c38, 0));
   }
 }
-
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ViewArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/AssociateDefaultView" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateDefaultViewInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ ViewArn: S.optional(S.String) })).annotate({
+        identifier: "AssociateDefaultViewOutput",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ViewArns: S.optional(__S(328, __c41, 0)) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/BatchGetView" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchGetViewInput" });
+    case 1:
+      return S.Array(__S(352, __c44, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ ViewArn: S.String, ErrorMessage: S.String })).annotate({
+        identifier: "BatchGetViewError",
+      });
+    case 3:
+      return S.Array(__S(322, __c40, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Views: S.optional(__S(321, __c40, 1)), Errors: S.optional(__S(323, __c40, 3)) }),
+      ).annotate({ identifier: "BatchGetViewOutput" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ FilterString: S.String })).annotate({
+        identifier: "SearchFilter",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.String })).annotate({
+        identifier: "IncludedProperty",
+      });
+    case 1:
+      return S.Array(__S(344, __c43, 0));
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ViewArn: S.optional(S.String),
+          ViewName: S.optional(S.String),
+          Owner: S.optional(S.String),
+          LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Scope: S.optional(S.String),
+          IncludedProperties: S.optional(__S(345, __c43, 1)),
+          Filters: S.optional(__S(336, __c42, 0)),
+        }),
+      ).annotate({ identifier: "View" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

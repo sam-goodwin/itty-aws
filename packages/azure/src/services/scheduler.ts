@@ -568,7 +568,7 @@ export const DeleteJob: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteJobRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteJobResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -582,8 +582,8 @@ export const DeleteJobCollection: API.OperationMethod<
   DeleteJobCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteJobCollectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteJobCollectionResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteJobCollectionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteJobCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -597,8 +597,8 @@ export const DisableJobCollection: API.OperationMethod<
   DisableJobCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DisableJobCollectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisableJobCollectionResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DisableJobCollectionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DisableJobCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -612,8 +612,8 @@ export const EnableJobCollection: API.OperationMethod<
   EnableJobCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<EnableJobCollectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EnableJobCollectionResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<EnableJobCollectionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<EnableJobCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -627,8 +627,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetJobRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<JobDefinition>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(402, __c12, 18) as any as S.Schema<JobDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -642,8 +642,8 @@ export const GetJobCollection: API.OperationMethod<
   GetJobCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetJobCollectionRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<JobCollectionDefinition>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetJobCollectionRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<JobCollectionDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -657,8 +657,8 @@ export const JobCollectionsCreateOrUpdate: API.OperationMethod<
   JobCollectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<JobCollectionsCreateOrUpdateRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<JobCollectionDefinition>,
+  input: __S(480, __c15, 0) as any as S.Schema<JobCollectionsCreateOrUpdateRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<JobCollectionDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -672,8 +672,8 @@ export const JobsCreateOrUpdate: API.OperationMethod<
   JobsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<JobsCreateOrUpdateRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<JobDefinition>,
+  input: __S(512, __c16, 0) as any as S.Schema<JobsCreateOrUpdateRequest>,
+  output: __S(402, __c12, 18) as any as S.Schema<JobDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -687,8 +687,8 @@ export const ListJobCollectionByResourceGroup: API.OperationMethod<
   ListJobCollectionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListJobCollectionByResourceGroupRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<JobCollectionListResult>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListJobCollectionByResourceGroupRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<JobCollectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -702,8 +702,8 @@ export const ListJobCollectionBySubscription: API.OperationMethod<
   ListJobCollectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListJobCollectionBySubscriptionRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<JobCollectionListResult>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListJobCollectionBySubscriptionRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<JobCollectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -717,8 +717,8 @@ export const ListJobJobHistory: API.OperationMethod<
   ListJobJobHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListJobJobHistoryRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<JobHistoryListResult>,
+  input: __S(96, __c3, 0) as any as S.Schema<ListJobJobHistoryRequest>,
+  output: __S(100, __c3, 4) as any as S.Schema<JobHistoryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -732,8 +732,8 @@ export const ListJobs: API.OperationMethod<
   ListJobsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListJobsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<JobListResult>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListJobsRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<JobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -747,8 +747,8 @@ export const PatchJob: API.OperationMethod<
   PatchJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<PatchJobRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<JobDefinition>,
+  input: __S(160, __c5, 0) as any as S.Schema<PatchJobRequest>,
+  output: __S(402, __c12, 18) as any as S.Schema<JobDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -762,8 +762,8 @@ export const PatchJobCollection: API.OperationMethod<
   PatchJobCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<PatchJobCollectionRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<JobCollectionDefinition>,
+  input: __S(192, __c6, 0) as any as S.Schema<PatchJobCollectionRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<JobCollectionDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -777,8 +777,8 @@ export const RunJob: API.OperationMethod<
   RunJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<RunJobRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RunJobResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<RunJobRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<RunJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -803,11 +803,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteJobRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteJobResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -824,391 +832,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteJobCollectionRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobCollectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/disable",
-            code: 200,
-            apiVersion: "2016-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableJobCollectionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobCollectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/enable",
-            code: 200,
-            apiVersion: "2016-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableJobCollectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobCollectionName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}",
-            code: 200,
-            apiVersion: "2016-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetJobRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-        }),
-      ).annotate({ identifier: "HttpAuthentication" });
-    case 7:
-      return S.Record(S.String, S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authentication: S.optional(__S(6, __c0, 6)),
-          uri: S.optional(S.String),
-          method: S.optional(S.String),
-          body: S.optional(S.String),
-          headers: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "HttpRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          storageAccount: S.optional(S.String),
-          queueName: S.optional(S.String),
-          sasToken: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageQueueMessage" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sasKey: S.optional(S.String),
-          sasKeyName: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceBusAuthentication" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          contentType: S.optional(S.String),
-          correlationId: S.optional(S.String),
-          forcePersistence: S.optional(S.Boolean),
-          label: S.optional(S.String),
-          messageId: S.optional(S.String),
-          partitionKey: S.optional(S.String),
-          replyTo: S.optional(S.String),
-          replyToSessionId: S.optional(S.String),
-          scheduledEnqueueTimeUtc: S.optional(S.String),
-          sessionId: S.optional(S.String),
-          timeToLive: S.optional(S.String),
-          to: S.optional(S.String),
-          viaPartitionKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ServiceBusBrokeredMessageProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          authentication: S.optional(__S(10, __c1, 2)),
-          brokeredMessageProperties: S.optional(__S(11, __c1, 3)),
-          customMessageProperties: S.optional(__S(7, __c0, 7)),
-          message: S.optional(S.String),
-          namespace: S.optional(S.String),
-          transportType: S.optional(S.String),
-          queueName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceBusQueueMessage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          authentication: S.optional(__S(10, __c1, 2)),
-          brokeredMessageProperties: S.optional(__S(11, __c1, 3)),
-          customMessageProperties: S.optional(__S(7, __c0, 7)),
-          message: S.optional(S.String),
-          namespace: S.optional(S.String),
-          transportType: S.optional(S.String),
-          topicPath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceBusTopicMessage" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          retryType: S.optional(S.String),
-          retryInterval: S.optional(S.String),
-          retryCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RetryPolicy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          request: S.optional(__S(8, __c1, 0)),
-          queueMessage: S.optional(__S(9, __c1, 1)),
-          serviceBusQueueMessage: S.optional(__S(12, __c1, 4)),
-          serviceBusTopicMessage: S.optional(__S(13, __c1, 5)),
-          retryPolicy: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "JobErrorAction" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          request: S.optional(__S(8, __c1, 0)),
-          queueMessage: S.optional(__S(9, __c1, 1)),
-          serviceBusQueueMessage: S.optional(__S(12, __c1, 4)),
-          serviceBusTopicMessage: S.optional(__S(13, __c1, 5)),
-          retryPolicy: S.optional(__S(14, __c1, 6)),
-          errorAction: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "JobAction" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Array(S.Number);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          day: S.optional(S.String),
-          Occurrence: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "JobRecurrenceScheduleMonthlyOccurrence",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          weekDays: S.optional(__S(17, __c2, 1)),
-          hours: S.optional(__S(18, __c2, 2)),
-          minutes: S.optional(__S(18, __c2, 2)),
-          monthDays: S.optional(__S(18, __c2, 2)),
-          monthlyOccurrences: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "JobRecurrenceSchedule" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          frequency: S.optional(S.String),
-          interval: S.optional(S.Number),
-          count: S.optional(S.Number),
-          endTime: S.optional(S.String),
-          schedule: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "JobRecurrence" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          executionCount: S.optional(S.Number),
-          failureCount: S.optional(S.Number),
-          faultedCount: S.optional(S.Number),
-          lastExecutionTime: S.optional(S.String),
-          nextExecutionTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobStatus" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          action: S.optional(__S(16, __c2, 0)),
-          recurrence: S.optional(__S(22, __c2, 6)),
-          state: S.optional(S.String),
-          status: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "JobProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          properties: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "JobDefinition" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobCollectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}",
-            code: 200,
-            apiVersion: "2016-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetJobCollectionRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          frequency: S.optional(S.String),
-          interval: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "JobMaxRecurrence" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          maxJobCount: S.optional(S.Number),
-          maxJobOccurrence: S.optional(S.Number),
-          maxRecurrence: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "JobCollectionQuota" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sku: S.optional(__S(27, __c3, 3)),
-          state: S.optional(S.String),
-          quota: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "JobCollectionProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "JobCollectionDefinition" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobCollectionName: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(30, __c3, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}",
-            code: 200,
-            apiVersion: "2016-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "JobCollectionsCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          action: S.optional(__S(16, __c2, 0)),
-          recurrence: S.optional(__S(22, __c2, 6)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobPropertiesInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobCollectionName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33, __c4, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}",
-            code: 200,
-            apiVersion: "2016-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "JobsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections",
-            code: 200,
-            apiVersion: "2016-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListJobCollectionByResourceGroupRequest",
-      });
-    case 4:
-      return S.Array(__S(31, __c3, 7));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(36, __c4, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobCollectionListResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Scheduler/jobCollections",
-            code: 200,
-            apiVersion: "2016-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListJobCollectionBySubscriptionRequest",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1227,11 +855,7 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListJobJobHistoryRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
@@ -1246,25 +870,29 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "JobHistoryDefinitionProperties",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(97, __c3, 1)),
         }),
       ).annotate({ identifier: "JobHistoryDefinition" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
     case 3:
+      return S.Array(__S(98, __c3, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(42, __c5, 2)),
+          value: S.optional(__S(99, __c3, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobHistoryListResult" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1282,23 +910,27 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListJobsRequest" });
-    case 5:
-      return S.Array(__S(25, __c3, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(402, __c12, 18));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(45, __c5, 5)),
+          value: S.optional(__S(129, __c4, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobListResult" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           jobCollectionName: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33, __c4, 1)),
+          properties: S.optional(__S(544, __c17, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1320,8 +952,8 @@ function __c6(j: number): any {
           jobCollectionName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(30, __c3, 6)),
+          tags: S.optional(__S(352, __c11, 0)),
+          properties: S.optional(__S(451, __c14, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1333,7 +965,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchJobCollectionRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1351,7 +987,426 @@ function __c6(j: number): any {
       ).annotate({ identifier: "RunJobRequest" });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobCollectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/disable",
+            code: 200,
+            apiVersion: "2016-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableJobCollectionRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobCollectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/enable",
+            code: 200,
+            apiVersion: "2016-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableJobCollectionRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobCollectionName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}",
+            code: 200,
+            apiVersion: "2016-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetJobRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+        }),
+      ).annotate({ identifier: "HttpAuthentication" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          authentication: S.optional(__S(384, __c12, 0)),
+          uri: S.optional(S.String),
+          method: S.optional(S.String),
+          body: S.optional(S.String),
+          headers: S.optional(__S(352, __c11, 0)),
+        }),
+      ).annotate({ identifier: "HttpRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          storageAccount: S.optional(S.String),
+          queueName: S.optional(S.String),
+          sasToken: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageQueueMessage" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          sasKey: S.optional(S.String),
+          sasKeyName: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceBusAuthentication" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          contentType: S.optional(S.String),
+          correlationId: S.optional(S.String),
+          forcePersistence: S.optional(S.Boolean),
+          label: S.optional(S.String),
+          messageId: S.optional(S.String),
+          partitionKey: S.optional(S.String),
+          replyTo: S.optional(S.String),
+          replyToSessionId: S.optional(S.String),
+          scheduledEnqueueTimeUtc: S.optional(S.String),
+          sessionId: S.optional(S.String),
+          timeToLive: S.optional(S.String),
+          to: S.optional(S.String),
+          viaPartitionKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ServiceBusBrokeredMessageProperties",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          authentication: S.optional(__S(387, __c12, 3)),
+          brokeredMessageProperties: S.optional(__S(388, __c12, 4)),
+          customMessageProperties: S.optional(__S(352, __c11, 0)),
+          message: S.optional(S.String),
+          namespace: S.optional(S.String),
+          transportType: S.optional(S.String),
+          queueName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceBusQueueMessage" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          authentication: S.optional(__S(387, __c12, 3)),
+          brokeredMessageProperties: S.optional(__S(388, __c12, 4)),
+          customMessageProperties: S.optional(__S(352, __c11, 0)),
+          message: S.optional(S.String),
+          namespace: S.optional(S.String),
+          transportType: S.optional(S.String),
+          topicPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceBusTopicMessage" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          retryType: S.optional(S.String),
+          retryInterval: S.optional(S.String),
+          retryCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RetryPolicy" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          request: S.optional(__S(385, __c12, 1)),
+          queueMessage: S.optional(__S(386, __c12, 2)),
+          serviceBusQueueMessage: S.optional(__S(389, __c12, 5)),
+          serviceBusTopicMessage: S.optional(__S(390, __c12, 6)),
+          retryPolicy: S.optional(__S(391, __c12, 7)),
+        }),
+      ).annotate({ identifier: "JobErrorAction" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          request: S.optional(__S(385, __c12, 1)),
+          queueMessage: S.optional(__S(386, __c12, 2)),
+          serviceBusQueueMessage: S.optional(__S(389, __c12, 5)),
+          serviceBusTopicMessage: S.optional(__S(390, __c12, 6)),
+          retryPolicy: S.optional(__S(391, __c12, 7)),
+          errorAction: S.optional(__S(392, __c12, 8)),
+        }),
+      ).annotate({ identifier: "JobAction" });
+    case 10:
+      return S.Array(S.String);
+    case 11:
+      return S.Array(S.Number);
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          day: S.optional(S.String),
+          Occurrence: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "JobRecurrenceScheduleMonthlyOccurrence",
+      });
+    case 13:
+      return S.Array(__S(396, __c12, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          weekDays: S.optional(__S(394, __c12, 10)),
+          hours: S.optional(__S(395, __c12, 11)),
+          minutes: S.optional(__S(395, __c12, 11)),
+          monthDays: S.optional(__S(395, __c12, 11)),
+          monthlyOccurrences: S.optional(__S(397, __c12, 13)),
+        }),
+      ).annotate({ identifier: "JobRecurrenceSchedule" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          frequency: S.optional(S.String),
+          interval: S.optional(S.Number),
+          count: S.optional(S.Number),
+          endTime: S.optional(S.String),
+          schedule: S.optional(__S(398, __c12, 14)),
+        }),
+      ).annotate({ identifier: "JobRecurrence" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          executionCount: S.optional(S.Number),
+          failureCount: S.optional(S.Number),
+          faultedCount: S.optional(S.Number),
+          lastExecutionTime: S.optional(S.String),
+          nextExecutionTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobStatus" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          action: S.optional(__S(393, __c12, 9)),
+          recurrence: S.optional(__S(399, __c12, 15)),
+          state: S.optional(S.String),
+          status: S.optional(__S(400, __c12, 16)),
+        }),
+      ).annotate({ identifier: "JobProperties" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          properties: S.optional(__S(401, __c12, 17)),
+        }),
+      ).annotate({ identifier: "JobDefinition" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobCollectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}",
+            code: 200,
+            apiVersion: "2016-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetJobCollectionRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Sku" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          frequency: S.optional(S.String),
+          interval: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "JobMaxRecurrence" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          maxJobCount: S.optional(S.Number),
+          maxJobOccurrence: S.optional(S.Number),
+          maxRecurrence: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({ identifier: "JobCollectionQuota" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          sku: S.optional(__S(448, __c14, 0)),
+          state: S.optional(S.String),
+          quota: S.optional(__S(450, __c14, 2)),
+        }),
+      ).annotate({ identifier: "JobCollectionProperties" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(352, __c11, 0)),
+          properties: S.optional(__S(451, __c14, 3)),
+        }),
+      ).annotate({ identifier: "JobCollectionDefinition" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobCollectionName: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(352, __c11, 0)),
+          properties: S.optional(__S(451, __c14, 3)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}",
+            code: 200,
+            apiVersion: "2016-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "JobCollectionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobCollectionName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(544, __c17, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}",
+            code: 200,
+            apiVersion: "2016-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "JobsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          action: S.optional(__S(393, __c12, 9)),
+          recurrence: S.optional(__S(399, __c12, 15)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobPropertiesInput" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections",
+            code: 200,
+            apiVersion: "2016-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListJobCollectionByResourceGroupRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(452, __c14, 4));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(608, __c19, 0)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobCollectionListResult" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Scheduler/jobCollections",
+            code: 200,
+            apiVersion: "2016-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListJobCollectionBySubscriptionRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

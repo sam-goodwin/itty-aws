@@ -103,7 +103,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(10, __c1, 2)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(1, __c0, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -217,8 +217,8 @@ export const listRecommendedActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommendedAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListRecommendedActionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ListRecommendedActionsResponse>,
+  input: __S(20, __c1, 4) as any as S.Schema<ListRecommendedActionsRequest>,
+  output: __S(24, __c1, 8) as any as S.Schema<ListRecommendedActionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -240,21 +240,31 @@ export const listRecommendedActions: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ key: S.String, matchOption: S.String, values: __S(0, __c0, 0) }),
+        S.Struct({ key: S.String, matchOption: S.String, values: __S(16, __c1, 0) }),
       ).annotate({ identifier: "ActionFilter" });
     case 2:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(17, __c1, 1));
     case 3:
-      return S.suspend(() => S.Struct({ actions: S.optional(__S(2, __c0, 2)) })).annotate({
+      return S.suspend(() => S.Struct({ actions: S.optional(__S(18, __c1, 2)) })).annotate({
         identifier: "RequestFilter",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(3, __c0, 3)),
+          filter: S.optional(__S(19, __c1, 3)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -271,32 +281,21 @@ function __c0(j: number): any {
           accountId: S.optional(S.String),
           severity: S.optional(S.String),
           feature: S.optional(S.String),
-          context: S.optional(__S(5, __c0, 5)),
-          nextSteps: S.optional(__S(0, __c0, 0)),
+          context: S.optional(__S(21, __c1, 5)),
+          nextSteps: S.optional(__S(16, __c1, 0)),
           lastUpdatedTimeStamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecommendedAction" });
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(22, __c1, 6));
+    case 8:
       return S.suspend(() =>
-        S.Struct({ recommendedActions: __S(7, __c0, 7), nextToken: S.optional(S.String) }),
+        S.Struct({ recommendedActions: __S(23, __c1, 7), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRecommendedActionsResponse",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -4032,8 +4032,8 @@ export const cancelLogs: API.OperationMethod<
   CancelLogsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CancelLogsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelLogsResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<CancelLogsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<CancelLogsResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4047,8 +4047,8 @@ export const cancelTasks: API.OperationMethod<
   CancelTasksError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CancelTasksRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<SummarizedTaskView>,
+  input: __S(2304, __c72, 0) as any as S.Schema<CancelTasksRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<SummarizedTaskView>,
   errors: [BadRequest, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4062,8 +4062,8 @@ export const chat: API.OperationMethod<
   ChatError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ChatRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateChatCompletionResponse>,
+  input: __S(2796, __c87, 12) as any as S.Schema<ChatRequest>,
+  output: __S(2809, __c87, 25) as any as S.Schema<CreateChatCompletionResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4077,8 +4077,8 @@ export const clearAllDocuments: API.OperationMethod<
   ClearAllDocumentsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ClearAllDocumentsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ClearAllDocumentsResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<ClearAllDocumentsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<ClearAllDocumentsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4092,8 +4092,8 @@ export const clearRules: API.OperationMethod<
   ClearRulesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ClearRulesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ClearRulesResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<ClearRulesRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<ClearRulesResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4107,8 +4107,8 @@ export const compact: API.OperationMethod<
   CompactError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CompactRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CompactResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<CompactRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<CompactResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4122,8 +4122,8 @@ export const compactTaskQueue: API.OperationMethod<
   CompactTaskQueueError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CompactTaskQueueRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<TaskCompactionSummary>,
+  input: __S(5024, __c157, 0) as any as S.Schema<CompactTaskQueueRequest>,
+  output: __S(5025, __c157, 1) as any as S.Schema<TaskCompactionSummary>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4137,8 +4137,8 @@ export const createApiKey: API.OperationMethod<
   CreateApiKeyError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateApiKeyRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<KeyView>,
+  input: __S(5504, __c172, 0) as any as S.Schema<CreateApiKeyRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<KeyView>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4152,8 +4152,8 @@ export const createDump: API.OperationMethod<
   CreateDumpError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateDumpRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateDumpResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDumpRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<CreateDumpResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4167,8 +4167,8 @@ export const createIndex: API.OperationMethod<
   CreateIndexError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateIndexRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateIndexResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateIndexRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<CreateIndexResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4182,8 +4182,8 @@ export const createIndexField: API.OperationMethod<
   CreateIndexFieldError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateIndexFieldRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<PaginationViewField>,
+  input: __S(705, __c22, 1) as any as S.Schema<CreateIndexFieldRequest>,
+  output: __S(712, __c22, 8) as any as S.Schema<PaginationViewField>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4197,8 +4197,8 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateSnapshotRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateSnapshotResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<CreateSnapshotRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<CreateSnapshotResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4212,8 +4212,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CreateWebhookResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<CreateWebhookResponse>,
   errors: [BadRequest, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4227,8 +4227,8 @@ export const deleteAll: API.OperationMethod<
   DeleteAllError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteAllRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAllResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<DeleteAllRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteAllResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4242,8 +4242,8 @@ export const deleteApiKey: API.OperationMethod<
   DeleteApiKeyError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteApiKeyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteApiKeyResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<DeleteApiKeyRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteApiKeyResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4257,8 +4257,8 @@ export const deletechat: API.OperationMethod<
   DeletechatError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeletechatRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletechatResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<DeletechatRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeletechatResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4272,8 +4272,8 @@ export const deleteChat: API.OperationMethod<
   DeleteChatError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteChatRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteChatResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<DeleteChatRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteChatResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4287,8 +4287,8 @@ export const deletedictionary: API.OperationMethod<
   DeletedictionaryError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeletedictionaryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletedictionaryResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<DeletedictionaryRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeletedictionaryResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4302,8 +4302,8 @@ export const deletedisplayedAttributes: API.OperationMethod<
   DeletedisplayedAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeletedisplayedAttributesRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeletedisplayedAttributesResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<DeletedisplayedAttributesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<DeletedisplayedAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4317,8 +4317,8 @@ export const deletedistinctAttribute: API.OperationMethod<
   DeletedistinctAttributeError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeletedistinctAttributeRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeletedistinctAttributeResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<DeletedistinctAttributeRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeletedistinctAttributeResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4332,8 +4332,8 @@ export const deleteDocument: API.OperationMethod<
   DeleteDocumentError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteDocumentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteDocumentResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DeleteDocumentRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteDocumentResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4347,8 +4347,8 @@ export const deleteDocumentsBatch: API.OperationMethod<
   DeleteDocumentsBatchError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteDocumentsBatchRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteDocumentsBatchResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<DeleteDocumentsBatchRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteDocumentsBatchResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4362,8 +4362,8 @@ export const deleteDocumentsByFilter: API.OperationMethod<
   DeleteDocumentsByFilterError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteDocumentsByFilterRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteDocumentsByFilterResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<DeleteDocumentsByFilterRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeleteDocumentsByFilterResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4377,8 +4377,8 @@ export const deleteembedders: API.OperationMethod<
   DeleteembeddersError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteembeddersRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteembeddersResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<DeleteembeddersRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteembeddersResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4392,8 +4392,8 @@ export const deletefaceting: API.OperationMethod<
   DeletefacetingError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeletefacetingRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletefacetingResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DeletefacetingRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeletefacetingResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4407,8 +4407,8 @@ export const deletefilterableAttributes: API.OperationMethod<
   DeletefilterableAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeletefilterableAttributesRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeletefilterableAttributesResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<DeletefilterableAttributesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<DeletefilterableAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4422,8 +4422,8 @@ export const deleteforeignKeys: API.OperationMethod<
   DeleteforeignKeysError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteforeignKeysRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteforeignKeysResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<DeleteforeignKeysRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteforeignKeysResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4437,8 +4437,8 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteIndexRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIndexResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<DeleteIndexRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteIndexResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4452,8 +4452,8 @@ export const deletelocalizedAttributes: API.OperationMethod<
   DeletelocalizedAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeletelocalizedAttributesRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeletelocalizedAttributesResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<DeletelocalizedAttributesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<DeletelocalizedAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4467,8 +4467,8 @@ export const deletenonSeparatorTokens: API.OperationMethod<
   DeletenonSeparatorTokensError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeletenonSeparatorTokensRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeletenonSeparatorTokensResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<DeletenonSeparatorTokensRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<DeletenonSeparatorTokensResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4482,8 +4482,8 @@ export const deletepagination: API.OperationMethod<
   DeletepaginationError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeletepaginationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletepaginationResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<DeletepaginationRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeletepaginationResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4497,8 +4497,8 @@ export const deleteproximityPrecision: API.OperationMethod<
   DeleteproximityPrecisionError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteproximityPrecisionRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeleteproximityPrecisionResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<DeleteproximityPrecisionRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<DeleteproximityPrecisionResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4512,8 +4512,8 @@ export const deleterankingRules: API.OperationMethod<
   DeleterankingRulesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleterankingRulesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleterankingRulesResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<DeleterankingRulesRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleterankingRulesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4527,8 +4527,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteRuleResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteRuleResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4542,8 +4542,8 @@ export const deletesearchableAttributes: API.OperationMethod<
   DeletesearchableAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeletesearchableAttributesRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeletesearchableAttributesResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<DeletesearchableAttributesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<DeletesearchableAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4557,8 +4557,8 @@ export const deletesearchCutoffMs: API.OperationMethod<
   DeletesearchCutoffMsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DeletesearchCutoffMsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletesearchCutoffMsResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<DeletesearchCutoffMsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeletesearchCutoffMsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4572,8 +4572,8 @@ export const deleteseparatorTokens: API.OperationMethod<
   DeleteseparatorTokensError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DeleteseparatorTokensRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteseparatorTokensResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<DeleteseparatorTokensRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteseparatorTokensResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4587,8 +4587,8 @@ export const deletesortableAttributes: API.OperationMethod<
   DeletesortableAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeletesortableAttributesRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeletesortableAttributesResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<DeletesortableAttributesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<DeletesortableAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4602,8 +4602,8 @@ export const deletestopWords: API.OperationMethod<
   DeletestopWordsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeletestopWordsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletestopWordsResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<DeletestopWordsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeletestopWordsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4617,8 +4617,8 @@ export const deletesynonyms: API.OperationMethod<
   DeletesynonymsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeletesynonymsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletesynonymsResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<DeletesynonymsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeletesynonymsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4632,8 +4632,8 @@ export const deleteTasks: API.OperationMethod<
   DeleteTasksError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<DeleteTasksRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<SummarizedTaskView>,
+  input: __S(2912, __c91, 0) as any as S.Schema<DeleteTasksRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<SummarizedTaskView>,
   errors: [BadRequest, NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4647,8 +4647,8 @@ export const deletetypoTolerance: API.OperationMethod<
   DeletetypoToleranceError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<DeletetypoToleranceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletetypoToleranceResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<DeletetypoToleranceRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeletetypoToleranceResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4662,8 +4662,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<DeleteWebhookResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4677,8 +4677,8 @@ export const editDocumentsByFunction: API.OperationMethod<
   EditDocumentsByFunctionError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<EditDocumentsByFunctionRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<EditDocumentsByFunctionResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<EditDocumentsByFunctionRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<EditDocumentsByFunctionResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4692,8 +4692,8 @@ export const Export: API.OperationMethod<
   ExportError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ExportRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ExportResponse>,
+  input: __S(3042, __c95, 2) as any as S.Schema<ExportRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<ExportResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4707,8 +4707,8 @@ export const getAll: API.OperationMethod<
   GetAllError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetAllRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<SettingsUnchecked>,
+  input: __S(3072, __c96, 0) as any as S.Schema<GetAllRequest>,
+  output: __S(3073, __c96, 1) as any as S.Schema<SettingsUnchecked>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4722,8 +4722,8 @@ export const getApiKey: API.OperationMethod<
   GetApiKeyError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetApiKeyRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<KeyView>,
+  input: __S(3552, __c111, 0) as any as S.Schema<GetApiKeyRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<KeyView>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4737,8 +4737,8 @@ export const getBatch: API.OperationMethod<
   GetBatchError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetBatchRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<BatchView>,
+  input: __S(3584, __c112, 0) as any as S.Schema<GetBatchRequest>,
+  output: __S(3621, __c113, 5) as any as S.Schema<BatchView>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4752,8 +4752,8 @@ export const getBatches: API.OperationMethod<
   GetBatchesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<GetBatchesRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<AllBatches>,
+  input: __S(3712, __c116, 0) as any as S.Schema<GetBatchesRequest>,
+  output: __S(3714, __c116, 2) as any as S.Schema<AllBatches>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4767,8 +4767,8 @@ export const getBatchesStream: API.OperationMethod<
   GetBatchesStreamError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetBatchesStreamRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetBatchesStreamResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<GetBatchesStreamRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<GetBatchesStreamResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4782,8 +4782,8 @@ export const getchat: API.OperationMethod<
   GetchatError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetchatRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<ChatSettings>,
+  input: __S(3776, __c118, 0) as any as S.Schema<GetchatRequest>,
+  output: __S(3168, __c99, 0) as any as S.Schema<ChatSettings>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4797,8 +4797,8 @@ export const getChat: API.OperationMethod<
   GetChatError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<GetChatRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetChatResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<GetChatRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<GetChatResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4812,8 +4812,8 @@ export const getdictionary: API.OperationMethod<
   GetdictionaryError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetdictionaryRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetdictionaryResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<GetdictionaryRequest>,
+  output: __S(3872, __c121, 0) as any as S.Schema<GetdictionaryResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4827,8 +4827,8 @@ export const getdisplayedAttributes: API.OperationMethod<
   GetdisplayedAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetdisplayedAttributesRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetdisplayedAttributesResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<GetdisplayedAttributesRequest>,
+  output: __S(3936, __c123, 0) as any as S.Schema<GetdisplayedAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4842,8 +4842,8 @@ export const getdistinctAttribute: API.OperationMethod<
   GetdistinctAttributeError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetdistinctAttributeRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetdistinctAttributeResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<GetdistinctAttributeRequest>,
+  output: __S(3969, __c124, 1) as any as S.Schema<GetdistinctAttributeResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4857,8 +4857,8 @@ export const getDocument: API.OperationMethod<
   GetDocumentError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetDocumentRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GetDocumentResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<GetDocumentRequest>,
+  output: __S(4001, __c125, 1) as any as S.Schema<GetDocumentResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4872,8 +4872,8 @@ export const getDocuments: API.OperationMethod<
   GetDocumentsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetDocumentsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<PaginationViewValue>,
+  input: __S(4032, __c126, 0) as any as S.Schema<GetDocumentsRequest>,
+  output: __S(4064, __c127, 0) as any as S.Schema<PaginationViewValue>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4887,8 +4887,8 @@ export const getembedders: API.OperationMethod<
   GetembeddersError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetembeddersRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<GetembeddersResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<GetembeddersRequest>,
+  output: __S(4097, __c128, 1) as any as S.Schema<GetembeddersResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4902,8 +4902,8 @@ export const getfaceting: API.OperationMethod<
   GetfacetingError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetfacetingRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<FacetingSettings>,
+  input: __S(4192, __c131, 0) as any as S.Schema<GetfacetingRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<FacetingSettings>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4917,8 +4917,8 @@ export const getFeatures: API.OperationMethod<
   GetFeaturesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetFeaturesRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<RuntimeTogglableFeatures>,
+  input: __S(4224, __c132, 0) as any as S.Schema<GetFeaturesRequest>,
+  output: __S(4256, __c133, 0) as any as S.Schema<RuntimeTogglableFeatures>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4932,8 +4932,8 @@ export const getfilterableAttributes: API.OperationMethod<
   GetfilterableAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetfilterableAttributesRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<GetfilterableAttributesResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<GetfilterableAttributesRequest>,
+  output: __S(4289, __c134, 1) as any as S.Schema<GetfilterableAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4947,8 +4947,8 @@ export const getforeignKeys: API.OperationMethod<
   GetforeignKeysError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetforeignKeysRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<GetforeignKeysResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<GetforeignKeysRequest>,
+  output: __S(4321, __c135, 1) as any as S.Schema<GetforeignKeysResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4962,8 +4962,8 @@ export const getHealth: API.OperationMethod<
   GetHealthError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetHealthRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<HealthResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<GetHealthRequest>,
+  output: __S(4353, __c136, 1) as any as S.Schema<HealthResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4977,8 +4977,8 @@ export const getIndex: API.OperationMethod<
   GetIndexError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetIndexRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<IndexView>,
+  input: __S(4384, __c137, 0) as any as S.Schema<GetIndexRequest>,
+  output: __S(4385, __c137, 1) as any as S.Schema<IndexView>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -4992,8 +4992,8 @@ export const getIndexStats: API.OperationMethod<
   GetIndexStatsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetIndexStatsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<IndexStats>,
+  input: __S(4416, __c138, 0) as any as S.Schema<GetIndexStatsRequest>,
+  output: __S(4449, __c139, 1) as any as S.Schema<IndexStats>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5007,8 +5007,8 @@ export const getlocalizedAttributes: API.OperationMethod<
   GetlocalizedAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<GetlocalizedAttributesRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<GetlocalizedAttributesResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<GetlocalizedAttributesRequest>,
+  output: __S(4481, __c140, 1) as any as S.Schema<GetlocalizedAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5022,8 +5022,8 @@ export const getLogs: API.OperationMethod<
   GetLogsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetLogsRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<GetLogsResponse>,
+  input: __S(4512, __c141, 0) as any as S.Schema<GetLogsRequest>,
+  output: __S(4513, __c141, 1) as any as S.Schema<GetLogsResponse>,
   errors: [BadRequest, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5037,8 +5037,8 @@ export const getMetrics: API.OperationMethod<
   GetMetricsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<GetMetricsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetMetricsResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<GetMetricsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<GetMetricsResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5052,8 +5052,8 @@ export const getNetwork: API.OperationMethod<
   GetNetworkError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetNetworkRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<Network>,
+  input: __S(4608, __c144, 0) as any as S.Schema<GetNetworkRequest>,
+  output: __S(4644, __c145, 4) as any as S.Schema<Network>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5067,8 +5067,8 @@ export const getnonSeparatorTokens: API.OperationMethod<
   GetnonSeparatorTokensError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<GetnonSeparatorTokensRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetnonSeparatorTokensResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<GetnonSeparatorTokensRequest>,
+  output: __S(3936, __c123, 0) as any as S.Schema<GetnonSeparatorTokensResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5082,8 +5082,8 @@ export const getpagination: API.OperationMethod<
   GetpaginationError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<GetpaginationRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<PaginationSettings>,
+  input: __S(4704, __c147, 0) as any as S.Schema<GetpaginationRequest>,
+  output: __S(3424, __c107, 0) as any as S.Schema<PaginationSettings>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5097,8 +5097,8 @@ export const getproximityPrecision: API.OperationMethod<
   GetproximityPrecisionError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<GetproximityPrecisionRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<GetproximityPrecisionResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<GetproximityPrecisionRequest>,
+  output: __S(4737, __c148, 1) as any as S.Schema<GetproximityPrecisionResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5112,8 +5112,8 @@ export const getrankingRules: API.OperationMethod<
   GetrankingRulesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<GetrankingRulesRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<GetrankingRulesResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<GetrankingRulesRequest>,
+  output: __S(4769, __c149, 1) as any as S.Schema<GetrankingRulesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5127,8 +5127,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<GetRuleRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DynamicSearchRule>,
+  input: __S(4832, __c151, 0) as any as S.Schema<GetRuleRequest>,
+  output: __S(4833, __c151, 1) as any as S.Schema<DynamicSearchRule>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5142,8 +5142,8 @@ export const getsearchableAttributes: API.OperationMethod<
   GetsearchableAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<GetsearchableAttributesRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetsearchableAttributesResponse>,
+  input: __S(4896, __c153, 0) as any as S.Schema<GetsearchableAttributesRequest>,
+  output: __S(3936, __c123, 0) as any as S.Schema<GetsearchableAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5157,8 +5157,8 @@ export const getsearchCutoffMs: API.OperationMethod<
   GetsearchCutoffMsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<GetsearchCutoffMsRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GetsearchCutoffMsResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<GetsearchCutoffMsRequest>,
+  output: __S(4929, __c154, 1) as any as S.Schema<GetsearchCutoffMsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5172,8 +5172,8 @@ export const getseparatorTokens: API.OperationMethod<
   GetseparatorTokensError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<GetseparatorTokensRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetseparatorTokensResponse>,
+  input: __S(4960, __c155, 0) as any as S.Schema<GetseparatorTokensRequest>,
+  output: __S(3936, __c123, 0) as any as S.Schema<GetseparatorTokensResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5187,8 +5187,8 @@ export const getSettings: API.OperationMethod<
   GetSettingsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<GetSettingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetSettingsResponse>,
+  input: __S(4992, __c156, 0) as any as S.Schema<GetSettingsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<GetSettingsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5202,8 +5202,8 @@ export const getSimilar: API.OperationMethod<
   GetSimilarError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<GetSimilarRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<GetSimilarResponse>,
+  input: __S(5056, __c158, 0) as any as S.Schema<GetSimilarRequest>,
+  output: __S(5088, __c159, 0) as any as S.Schema<GetSimilarResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5217,8 +5217,8 @@ export const getsortableAttributes: API.OperationMethod<
   GetsortableAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<GetsortableAttributesRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetsortableAttributesResponse>,
+  input: __S(5152, __c161, 0) as any as S.Schema<GetsortableAttributesRequest>,
+  output: __S(3936, __c123, 0) as any as S.Schema<GetsortableAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5232,8 +5232,8 @@ export const getStats: API.OperationMethod<
   GetStatsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<GetStatsRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<Stats>,
+  input: __S(5184, __c162, 0) as any as S.Schema<GetStatsRequest>,
+  output: __S(5186, __c162, 2) as any as S.Schema<Stats>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5247,8 +5247,8 @@ export const getstopWords: API.OperationMethod<
   GetstopWordsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<GetstopWordsRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetstopWordsResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<GetstopWordsRequest>,
+  output: __S(3872, __c121, 0) as any as S.Schema<GetstopWordsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5262,8 +5262,8 @@ export const getsynonyms: API.OperationMethod<
   GetsynonymsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<GetsynonymsRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<GetsynonymsResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<GetsynonymsRequest>,
+  output: __S(5249, __c164, 1) as any as S.Schema<GetsynonymsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5277,8 +5277,8 @@ export const getTask: API.OperationMethod<
   GetTaskError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<GetTaskRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<TaskView>,
+  input: __S(5280, __c165, 0) as any as S.Schema<GetTaskRequest>,
+  output: __S(5312, __c166, 0) as any as S.Schema<TaskView>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5292,8 +5292,8 @@ export const getTaskDocumentsFile: API.OperationMethod<
   GetTaskDocumentsFileError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<GetTaskDocumentsFileRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetTaskDocumentsFileResponse>,
+  input: __S(5376, __c168, 0) as any as S.Schema<GetTaskDocumentsFileRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<GetTaskDocumentsFileResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5307,8 +5307,8 @@ export const getTasks: API.OperationMethod<
   GetTasksError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<GetTasksRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<AllTasks>,
+  input: __S(5408, __c169, 0) as any as S.Schema<GetTasksRequest>,
+  output: __S(5410, __c169, 2) as any as S.Schema<AllTasks>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5322,8 +5322,8 @@ export const getTasksStream: API.OperationMethod<
   GetTasksStreamError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<GetTasksStreamRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetTasksStreamResponse>,
+  input: __S(5440, __c170, 0) as any as S.Schema<GetTasksStreamRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<GetTasksStreamResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5337,8 +5337,8 @@ export const gettypoTolerance: API.OperationMethod<
   GettypoToleranceError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<GettypoToleranceRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<TypoSettings>,
+  input: __S(5472, __c171, 0) as any as S.Schema<GettypoToleranceRequest>,
+  output: __S(3520, __c110, 0) as any as S.Schema<TypoSettings>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5352,8 +5352,8 @@ export const getVersion: API.OperationMethod<
   GetVersionError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<GetVersionRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<VersionResponse>,
+  input: __S(5568, __c174, 0) as any as S.Schema<GetVersionRequest>,
+  output: __S(5569, __c174, 1) as any as S.Schema<VersionResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5367,8 +5367,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GetWebhookRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetWebhookResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<GetWebhookResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5382,8 +5382,8 @@ export const getWebhooks: API.OperationMethod<
   GetWebhooksError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<GetWebhooksRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<WebhookResults>,
+  input: __S(5632, __c176, 0) as any as S.Schema<GetWebhooksRequest>,
+  output: __S(5635, __c176, 3) as any as S.Schema<WebhookResults>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5397,8 +5397,8 @@ export const listApiKeys: API.OperationMethod<
   ListApiKeysError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<ListApiKeysRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<PaginationViewKeyView>,
+  input: __S(5664, __c177, 0) as any as S.Schema<ListApiKeysRequest>,
+  output: __S(5667, __c177, 3) as any as S.Schema<PaginationViewKeyView>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5412,8 +5412,8 @@ export const listIndexes: API.OperationMethod<
   ListIndexesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<ListIndexesRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<PaginationViewIndexView>,
+  input: __S(5696, __c178, 0) as any as S.Schema<ListIndexesRequest>,
+  output: __S(5699, __c178, 3) as any as S.Schema<PaginationViewIndexView>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5427,8 +5427,8 @@ export const listRules: API.OperationMethod<
   ListRulesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<ListRulesRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<PaginationViewDynamicSearchRule>,
+  input: __S(5729, __c179, 1) as any as S.Schema<ListRulesRequest>,
+  output: __S(5732, __c179, 4) as any as S.Schema<PaginationViewDynamicSearchRule>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5442,8 +5442,8 @@ export const listWorkspaces: API.OperationMethod<
   ListWorkspacesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<ListWorkspacesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ListWorkspacesResponse>,
+  input: __S(5760, __c180, 0) as any as S.Schema<ListWorkspacesRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<ListWorkspacesResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5453,8 +5453,8 @@ export type McpError = MeilisearchOpError;
 /** Model context protocol (MCP) The `/mcp` route exposes [the MCP open protocol](https://modelcontextprotocol.io) that enables seamless integration between LLM applications and external data sources and tools. */
 export const mcp: API.OperationMethod<McpRequest, McpResponse, McpError, MeilisearchOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(238, __c29, 6) as any as S.Schema<McpRequest>,
-    output: __S(249, __c31, 1) as any as S.Schema<McpResponse>,
+    input: __S(5794, __c181, 2) as any as S.Schema<McpRequest>,
+    output: __S(5805, __c181, 13) as any as S.Schema<McpResponse>,
     errors: [UnknownMeilisearchError],
     protocol: MeilisearchProtocol,
     retry: Retry.Retry,
@@ -5468,8 +5468,8 @@ export const multiSearchWithPost: API.OperationMethod<
   MultiSearchWithPostError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<MultiSearchWithPostRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<MultiSearchWithPostResponse>,
+  input: __S(5829, __c182, 5) as any as S.Schema<MultiSearchWithPostRequest>,
+  output: __S(5836, __c182, 12) as any as S.Schema<MultiSearchWithPostResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5483,8 +5483,8 @@ export const patchApiKey: API.OperationMethod<
   PatchApiKeyError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<PatchApiKeyRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<KeyView>,
+  input: __S(5952, __c186, 0) as any as S.Schema<PatchApiKeyRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<KeyView>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5498,8 +5498,8 @@ export const patchchat: API.OperationMethod<
   PatchchatError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<PatchchatRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PatchchatResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<PatchchatRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PatchchatResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5513,8 +5513,8 @@ export const patchembedders: API.OperationMethod<
   PatchembeddersError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<PatchembeddersRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PatchembeddersResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<PatchembeddersRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PatchembeddersResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5528,8 +5528,8 @@ export const patchfaceting: API.OperationMethod<
   PatchfacetingError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<PatchfacetingRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PatchfacetingResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<PatchfacetingRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PatchfacetingResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5543,8 +5543,8 @@ export const patchFeatures: API.OperationMethod<
   PatchFeaturesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<PatchFeaturesRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<RuntimeTogglableFeatures>,
+  input: __S(128, __c4, 0) as any as S.Schema<PatchFeaturesRequest>,
+  output: __S(4256, __c133, 0) as any as S.Schema<RuntimeTogglableFeatures>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5558,8 +5558,8 @@ export const patchpagination: API.OperationMethod<
   PatchpaginationError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<PatchpaginationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PatchpaginationResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<PatchpaginationRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PatchpaginationResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5573,8 +5573,8 @@ export const patchSettings: API.OperationMethod<
   PatchSettingsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<PatchSettingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PatchSettingsResponse>,
+  input: __S(193, __c6, 1) as any as S.Schema<PatchSettingsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PatchSettingsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5588,8 +5588,8 @@ export const patchtypoTolerance: API.OperationMethod<
   PatchtypoToleranceError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<PatchtypoToleranceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PatchtypoToleranceResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<PatchtypoToleranceRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PatchtypoToleranceResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5603,8 +5603,8 @@ export const postDocumentsByQuery: API.OperationMethod<
   PostDocumentsByQueryError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<PostDocumentsByQueryRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<PaginationViewValue>,
+  input: __S(256, __c8, 0) as any as S.Schema<PostDocumentsByQueryRequest>,
+  output: __S(4064, __c127, 0) as any as S.Schema<PaginationViewValue>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5618,8 +5618,8 @@ export const postNetworkChange: API.OperationMethod<
   PostNetworkChangeError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<PostNetworkChangeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PostNetworkChangeResponse>,
+  input: __S(289, __c9, 1) as any as S.Schema<PostNetworkChangeRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PostNetworkChangeResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5633,8 +5633,8 @@ export const postRender: API.OperationMethod<
   PostRenderError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<PostRenderRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<RenderResult>,
+  input: __S(322, __c10, 2) as any as S.Schema<PostRenderRequest>,
+  output: __S(323, __c10, 3) as any as S.Schema<RenderResult>,
   errors: [BadRequest, NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5648,8 +5648,8 @@ export const postSimilar: API.OperationMethod<
   PostSimilarError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<PostSimilarRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<PostSimilarResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<PostSimilarRequest>,
+  output: __S(5088, __c159, 0) as any as S.Schema<PostSimilarResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5663,8 +5663,8 @@ export const putdictionary: API.OperationMethod<
   PutdictionaryError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<PutdictionaryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutdictionaryResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<PutdictionaryRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutdictionaryResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5678,8 +5678,8 @@ export const putdisplayedAttributes: API.OperationMethod<
   PutdisplayedAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<PutdisplayedAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutdisplayedAttributesResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<PutdisplayedAttributesRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutdisplayedAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5693,8 +5693,8 @@ export const putdistinctAttribute: API.OperationMethod<
   PutdistinctAttributeError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<PutdistinctAttributeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutdistinctAttributeResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<PutdistinctAttributeRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutdistinctAttributeResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5708,8 +5708,8 @@ export const putfilterableAttributes: API.OperationMethod<
   PutfilterableAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<PutfilterableAttributesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<PutfilterableAttributesResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<PutfilterableAttributesRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<PutfilterableAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5723,8 +5723,8 @@ export const putforeignKeys: API.OperationMethod<
   PutforeignKeysError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<PutforeignKeysRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutforeignKeysResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<PutforeignKeysRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutforeignKeysResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5738,8 +5738,8 @@ export const putlocalizedAttributes: API.OperationMethod<
   PutlocalizedAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<PutlocalizedAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutlocalizedAttributesResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<PutlocalizedAttributesRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutlocalizedAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5753,8 +5753,8 @@ export const putnonSeparatorTokens: API.OperationMethod<
   PutnonSeparatorTokensError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<PutnonSeparatorTokensRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutnonSeparatorTokensResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<PutnonSeparatorTokensRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutnonSeparatorTokensResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5768,8 +5768,8 @@ export const putproximityPrecision: API.OperationMethod<
   PutproximityPrecisionError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<PutproximityPrecisionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutproximityPrecisionResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<PutproximityPrecisionRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutproximityPrecisionResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5783,8 +5783,8 @@ export const putrankingRules: API.OperationMethod<
   PutrankingRulesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<PutrankingRulesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutrankingRulesResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<PutrankingRulesRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutrankingRulesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5798,8 +5798,8 @@ export const putsearchableAttributes: API.OperationMethod<
   PutsearchableAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<PutsearchableAttributesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<PutsearchableAttributesResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<PutsearchableAttributesRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<PutsearchableAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5813,8 +5813,8 @@ export const putsearchCutoffMs: API.OperationMethod<
   PutsearchCutoffMsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<PutsearchCutoffMsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutsearchCutoffMsResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<PutsearchCutoffMsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutsearchCutoffMsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5828,8 +5828,8 @@ export const putseparatorTokens: API.OperationMethod<
   PutseparatorTokensError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<PutseparatorTokensRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutseparatorTokensResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<PutseparatorTokensRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutseparatorTokensResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5843,8 +5843,8 @@ export const putsortableAttributes: API.OperationMethod<
   PutsortableAttributesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<PutsortableAttributesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutsortableAttributesResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<PutsortableAttributesRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutsortableAttributesResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5858,8 +5858,8 @@ export const putstopWords: API.OperationMethod<
   PutstopWordsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<PutstopWordsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutstopWordsResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<PutstopWordsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutstopWordsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5873,8 +5873,8 @@ export const putsynonyms: API.OperationMethod<
   PutsynonymsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<PutsynonymsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutsynonymsResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<PutsynonymsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PutsynonymsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5888,8 +5888,8 @@ export const replaceDocuments: API.OperationMethod<
   ReplaceDocumentsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<ReplaceDocumentsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ReplaceDocumentsResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ReplaceDocumentsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<ReplaceDocumentsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5903,8 +5903,8 @@ export const resetSettings: API.OperationMethod<
   ResetSettingsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<ResetSettingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ResetSettingsResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ResetSettingsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<ResetSettingsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5918,8 +5918,8 @@ export const search: API.OperationMethod<
   SearchError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<SearchRequest>,
-  output: __S(304, __c38, 0) as any as S.Schema<FacetSearchResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<SearchRequest>,
+  output: __S(995, __c31, 3) as any as S.Schema<FacetSearchResult>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5933,8 +5933,8 @@ export const searchDeletefacet: API.OperationMethod<
   SearchDeletefacetError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<SearchDeletefacetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SearchDeletefacetResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<SearchDeletefacetRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<SearchDeletefacetResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5948,8 +5948,8 @@ export const searchDeleteprefix: API.OperationMethod<
   SearchDeleteprefixError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<SearchDeleteprefixRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SearchDeleteprefixResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<SearchDeleteprefixRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<SearchDeleteprefixResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5963,8 +5963,8 @@ export const searchGetfacet: API.OperationMethod<
   SearchGetfacetError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<SearchGetfacetRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<SearchGetfacetResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<SearchGetfacetRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<SearchGetfacetResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5978,8 +5978,8 @@ export const searchGetprefix: API.OperationMethod<
   SearchGetprefixError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<SearchGetprefixRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<SearchGetprefixResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<SearchGetprefixRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<SearchGetprefixResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -5993,8 +5993,8 @@ export const searchPutfacet: API.OperationMethod<
   SearchPutfacetError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<SearchPutfacetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SearchPutfacetResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<SearchPutfacetRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<SearchPutfacetResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -6008,8 +6008,8 @@ export const searchPutprefix: API.OperationMethod<
   SearchPutprefixError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<SearchPutprefixRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SearchPutprefixResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<SearchPutprefixRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<SearchPutprefixResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -6023,8 +6023,8 @@ export const searchWithPost: API.OperationMethod<
   SearchWithPostError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<SearchWithPostRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<SearchWithPostResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<SearchWithPostRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<SearchWithPostResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -6038,8 +6038,8 @@ export const searchWithUrlQuery: API.OperationMethod<
   SearchWithUrlQueryError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<SearchWithUrlQueryRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<SearchWithUrlQueryResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<SearchWithUrlQueryRequest>,
+  output: __S(1281, __c40, 1) as any as S.Schema<SearchWithUrlQueryResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -6053,8 +6053,8 @@ export const swapIndexes: API.OperationMethod<
   SwapIndexesError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<SwapIndexesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SwapIndexesResponse>,
+  input: __S(1314, __c41, 2) as any as S.Schema<SwapIndexesRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<SwapIndexesResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -6068,8 +6068,8 @@ export const updateAll: API.OperationMethod<
   UpdateAllError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<UpdateAllRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateAllResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<UpdateAllRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<UpdateAllResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -6083,8 +6083,8 @@ export const updateDocuments: API.OperationMethod<
   UpdateDocumentsError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<UpdateDocumentsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateDocumentsResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<UpdateDocumentsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<UpdateDocumentsResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -6098,8 +6098,8 @@ export const updateIndex: API.OperationMethod<
   UpdateIndexError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<UpdateIndexRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateIndexResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<UpdateIndexRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<UpdateIndexResponse>,
   errors: [NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -6113,8 +6113,8 @@ export const updateNetwork: API.OperationMethod<
   UpdateNetworkError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<UpdateNetworkRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<Network>,
+  input: __S(1536, __c48, 0) as any as S.Schema<UpdateNetworkRequest>,
+  output: __S(4644, __c145, 4) as any as S.Schema<Network>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -6128,8 +6128,8 @@ export const updateOrCreateRule: API.OperationMethod<
   UpdateOrCreateRuleError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<UpdateOrCreateRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateOrCreateRuleResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<UpdateOrCreateRuleRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<UpdateOrCreateRuleResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -6143,8 +6143,8 @@ export const updateStderrTarget: API.OperationMethod<
   UpdateStderrTargetError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<UpdateStderrTargetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateStderrTargetResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<UpdateStderrTargetRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<UpdateStderrTargetResponse>,
   errors: [UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -6158,8 +6158,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   MeilisearchOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpdateWebhookResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<UpdateWebhookResponse>,
   errors: [BadRequest, NotFound, UnknownMeilisearchError],
   protocol: MeilisearchProtocol,
   retry: Retry.Retry,
@@ -6170,27 +6170,1295 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/logs/stream", code: 200 })),
-      ).annotate({ identifier: "CancelLogsRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelLogsResponse",
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/dumps", code: 200 })),
+      ).annotate({ identifier: "CreateDumpRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          description: S.optional(S.NullOr(S.String)),
+          documentTemplate: S.optional(S.NullOr(S.String)),
+          documentTemplateMaxBytes: S.optional(S.NullOr(S.Number)),
+          searchParameters: S.optional(S.NullOr(__S(3136, __c98, 0))),
+        }).pipe(T.Http({ method: "PATCH", uri: "/indexes/{index_uid}/settings/chat", code: 200 })),
+      ).annotate({ identifier: "PatchchatRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(4130, __c129, 2).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/indexes/{index_uid}/settings/embedders", code: 200 }),
+        ),
+      ).annotate({ identifier: "PatchembeddersRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          maxValuesPerFacet: S.optional(S.NullOr(S.Number)),
+          sortFacetValuesBy: S.optional(S.NullOr(__S(3264, __c102, 0))),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/indexes/{index_uid}/settings/faceting", code: 200 }),
+        ),
+      ).annotate({ identifier: "PatchfacetingRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metrics: S.optional(S.NullOr(S.Boolean)),
+          logsRoute: S.optional(S.NullOr(S.Boolean)),
+          tasksStreamingRoute: S.optional(S.NullOr(S.Boolean)),
+          editDocumentsByFunction: S.optional(S.NullOr(S.Boolean)),
+          containsFilter: S.optional(S.NullOr(S.Boolean)),
+          dynamicSearchRules: S.optional(S.NullOr(S.Boolean)),
+          network: S.optional(S.NullOr(S.Boolean)),
+          getTaskDocumentsRoute: S.optional(S.NullOr(S.Boolean)),
+          taskQueueCompactionRoute: S.optional(S.NullOr(S.Boolean)),
+          compositeEmbedders: S.optional(S.NullOr(S.Boolean)),
+          chatCompletions: S.optional(S.NullOr(S.Boolean)),
+          multimodal: S.optional(S.NullOr(S.Boolean)),
+          foreignKeys: S.optional(S.NullOr(S.Boolean)),
+          disableDocumentsFetchQueue: S.optional(S.NullOr(S.Boolean)),
+          legacySearch: S.optional(S.NullOr(S.Boolean)),
+          renderRoute: S.optional(S.NullOr(S.Boolean)),
+          mcpRoute: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/experimental-features", code: 200 })),
+      ).annotate({ identifier: "PatchFeaturesRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          maxTotalHits: S.optional(S.NullOr(S.Number)),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/indexes/{index_uid}/settings/pagination", code: 200 }),
+        ),
+      ).annotate({ identifier: "PatchpaginationRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          system: S.optional(S.NullOr(S.String)),
+          searchDescription: S.optional(S.NullOr(S.String)),
+          searchQParam: S.optional(S.NullOr(S.String)),
+          searchFilterParam: S.optional(S.NullOr(S.String)),
+          searchIndexUidParam: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PatchSettingsRequestPrompts",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workspace_uid: S.String.pipe(T.Label()),
+          source: S.optional(S.NullOr(S.String)),
+          orgId: S.optional(S.NullOr(S.String)),
+          projectId: S.optional(S.NullOr(S.String)),
+          apiVersion: S.optional(S.NullOr(S.String)),
+          deploymentId: S.optional(S.NullOr(S.String)),
+          baseUrl: S.optional(S.NullOr(S.String)),
+          apiKey: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          prompts: S.optional(S.NullOr(__S(192, __c6, 0))),
+        }).pipe(T.Http({ method: "PATCH", uri: "/chats/{workspace_uid}/settings", code: 200 })),
+      ).annotate({ identifier: "PatchSettingsRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          minWordSizeForTypos: S.optional(S.NullOr(__S(3488, __c109, 0))),
+          disableOnWords: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          disableOnAttributes: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          disableOnNumbers: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/indexes/{index_uid}/settings/typo-tolerance",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchtypoToleranceRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          offset: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          fields: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          retrieveVectors: S.optional(S.Boolean),
+          ids: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          filter: S.optional(S.Unknown),
+          sort: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          useNetwork: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/documents/fetch", code: 200 })),
+      ).annotate({
+        identifier: "PostDocumentsByQueryRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          remoteName: S.String,
+          taskUid: S.Number,
+          networkVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Origin" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          origin: __S(288, __c9, 0),
+          message: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/network/control", code: 200 })),
+      ).annotate({ identifier: "PostNetworkChangeRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          indexUid: S.optional(S.NullOr(S.String)),
+          embedder: S.optional(S.NullOr(S.String)),
+          fragment: S.optional(S.NullOr(S.String)),
+          inline: S.optional(S.Unknown),
+          documentTemplateMaxBytes: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "RenderQueryTemplate" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          indexUid: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(S.String)),
+          inline: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "RenderQueryInput" });
     case 2:
-      return S.Array(S.Number);
+      return S.suspend(() =>
+        S.Struct({
+          template: __S(320, __c10, 0),
+          input: S.optional(S.NullOr(__S(321, __c10, 1))),
+        }).pipe(T.Http({ method: "POST", uri: "/render-template", code: 200 })),
+      ).annotate({ identifier: "PostRenderRequest" });
     case 3:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          template: S.Unknown,
+          rendered: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "RenderResult" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.String,
+          primaryKey: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/indexes", code: 200 })),
+      ).annotate({ identifier: "CreateIndexRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          id: S.String,
+          offset: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          filter: S.optional(S.Unknown),
+          embedder: S.String,
+          attributesToRetrieve: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          retrieveVectors: S.optional(S.Boolean),
+          showRankingScore: S.optional(S.Boolean),
+          showRankingScoreDetails: S.optional(S.Boolean),
+          showPerformanceDetails: S.optional(S.Boolean),
+          rankingScoreThreshold: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/similar", code: 200 })),
+      ).annotate({ identifier: "PostSimilarRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(2432, __c76, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/dictionary", code: 200 }),
+        ),
+      ).annotate({ identifier: "PutdictionaryRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(2432, __c76, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/indexes/{index_uid}/settings/displayed-attributes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutdisplayedAttributesRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/indexes/{index_uid}/settings/distinct-attribute",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutdistinctAttributeRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(3328, __c104, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/indexes/{index_uid}/settings/filterable-attributes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutfilterableAttributesRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(3361, __c105, 1).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/foreign-keys", code: 200 }),
+        ),
+      ).annotate({ identifier: "PutforeignKeysRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(3393, __c106, 1).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/indexes/{index_uid}/settings/localized-attributes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutlocalizedAttributesRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(2432, __c76, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/indexes/{index_uid}/settings/non-separator-tokens",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutnonSeparatorTokensRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: S.String.pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/indexes/{index_uid}/settings/proximity-precision",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutproximityPrecisionRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(4800, __c150, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/ranking-rules", code: 200 }),
+        ),
+      ).annotate({ identifier: "PutrankingRulesRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attributePatterns: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          displayed: S.optional(S.NullOr(S.Boolean)),
+          searchable: S.optional(S.NullOr(S.Boolean)),
+          sortable: S.optional(S.NullOr(S.Boolean)),
+          distinct: S.optional(S.NullOr(S.Boolean)),
+          rankingRule: S.optional(S.NullOr(S.Boolean)),
+          filterable: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "ListFieldsFilter" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          offset: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          filter: S.optional(S.NullOr(__S(704, __c22, 0))),
+        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/fields", code: 200 })),
+      ).annotate({ identifier: "CreateIndexFieldRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+        }),
+      ).annotate({ identifier: "FieldDisplayConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          order: S.optional(__S(2432, __c76, 0)),
+        }),
+      ).annotate({ identifier: "FieldRankingRuleConfig" });
     case 4:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          sortBy: S.String,
+          facetSearch: S.Boolean,
+          equality: S.Boolean,
+          comparison: S.Boolean,
+        }),
+      ).annotate({ identifier: "FieldFilterableConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          uids: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          batchUids: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          canceledBy: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          types: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          statuses: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          indexUids: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          locales: __S(2432, __c76, 0),
+        }),
+      ).annotate({ identifier: "FieldLocalizedConfig" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          displayed: __S(706, __c22, 2),
+          searchable: __S(706, __c22, 2),
+          sortable: __S(706, __c22, 2),
+          distinct: __S(706, __c22, 2),
+          rankingRule: __S(707, __c22, 3),
+          filterable: __S(708, __c22, 4),
+          localized: __S(709, __c22, 5),
+        }),
+      ).annotate({
+        identifier: "PaginationViewFieldResultsItem",
+      });
+    case 7:
+      return S.Array(__S(710, __c22, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(711, __c22, 7),
+          offset: S.Number,
+          limit: S.Number,
+          total: S.Number,
+        }),
+      ).annotate({ identifier: "PaginationViewField" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(2432, __c76, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/indexes/{index_uid}/settings/searchable-attributes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutsearchableAttributesRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/indexes/{index_uid}/settings/search-cutoff-ms",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "PutsearchCutoffMsRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(2432, __c76, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/indexes/{index_uid}/settings/separator-tokens",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutseparatorTokensRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(2432, __c76, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/indexes/{index_uid}/settings/sortable-attributes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutsortableAttributesRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(2432, __c76, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/stop-words", code: 200 }),
+        ),
+      ).annotate({ identifier: "PutstopWordsRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: __S(3456, __c108, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/synonyms", code: 200 }),
+        ),
+      ).annotate({ identifier: "PutsynonymsRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          primaryKey: S.optional(S.String.pipe(T.Query())),
+          csvDelimiter: S.optional(S.String.pipe(T.Query())),
+          customMetadata: S.optional(S.String.pipe(T.Query())),
+          skipCreation: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/documents", code: 200 })),
+      ).annotate({ identifier: "ReplaceDocumentsRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspace_uid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/chats/{workspace_uid}/settings", code: 200 })),
+      ).annotate({ identifier: "ResetSettingsRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          facetQuery: S.optional(S.NullOr(S.String)),
+          facetName: S.String,
+          q: S.optional(S.NullOr(S.String)),
+          vector: S.optional(S.NullOr(__S(2336, __c73, 0))),
+          media: S.optional(S.Unknown),
+          hybrid: S.optional(S.NullOr(__S(3200, __c100, 0))),
+          filter: S.optional(S.Unknown),
+          matchingStrategy: S.optional(S.String),
+          attributesToSearchOn: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          rankingScoreThreshold: S.optional(S.NullOr(S.Number)),
+          locales: S.optional(S.NullOr(__S(2368, __c74, 0))),
+          exhaustiveFacetCount: S.optional(S.NullOr(S.Boolean)),
+          useNetwork: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/facet-search", code: 200 })),
+      ).annotate({ identifier: "SearchRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          count: S.Number,
+        }),
+      ).annotate({ identifier: "FacetValueHitSchema" });
+    case 2:
+      return S.Array(__S(993, __c31, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          facetHits: __S(994, __c31, 2),
+          facetQuery: S.optional(S.NullOr(S.String)),
+          processingTimeMs: S.Number,
+          remoteErrors: S.optional(S.NullOr(__S(5856, __c183, 0))),
+        }),
+      ).annotate({ identifier: "FacetSearchResult" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/facet-search",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "SearchDeletefacetRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/snapshots", code: 200 })),
+      ).annotate({ identifier: "CreateSnapshotRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/prefix-search",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchDeleteprefixRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/facet-search", code: 200 }),
+        ),
+      ).annotate({ identifier: "SearchGetfacetRequest" });
+    case 1:
+      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
+        identifier: "SearchGetfacetResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/prefix-search", code: 200 }),
+        ),
+      ).annotate({ identifier: "SearchGetprefixRequest" });
+    case 1:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "SearchGetprefixResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/facet-search", code: 200 }),
+        ),
+      ).annotate({ identifier: "SearchPutfacetRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          body: S.String.pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/prefix-search", code: 200 }),
+        ),
+      ).annotate({ identifier: "SearchPutprefixRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          q: S.optional(S.NullOr(S.String)),
+          offset: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          page: S.optional(S.NullOr(S.Number)),
+          hitsPerPage: S.optional(S.NullOr(S.Number)),
+          attributesToRetrieve: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          attributesToCrop: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          cropLength: S.optional(S.Number),
+          cropMarker: S.optional(S.String),
+          attributesToHighlight: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          highlightPreTag: S.optional(S.String),
+          highlightPostTag: S.optional(S.String),
+          showMatchesPosition: S.optional(S.Boolean),
+          filter: S.optional(S.Unknown),
+          sort: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          distinct: S.optional(S.NullOr(S.String)),
+          facets: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          matchingStrategy: S.optional(S.String),
+          attributesToSearchOn: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          rankingScoreThreshold: S.optional(S.NullOr(S.Number)),
+          locales: S.optional(S.NullOr(__S(2368, __c74, 0))),
+          hybrid: S.optional(S.NullOr(__S(3200, __c100, 0))),
+          vector: S.optional(S.NullOr(__S(2336, __c73, 0))),
+          retrieveVectors: S.optional(S.Boolean),
+          media: S.optional(S.Unknown),
+          personalize: S.optional(S.NullOr(__S(5888, __c184, 0))),
+          useNetwork: S.optional(S.NullOr(S.Boolean)),
+          showRankingScore: S.optional(S.Boolean),
+          showRankingScoreDetails: S.optional(S.Boolean),
+          showPerformanceDetails: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/search", code: 200 })),
+      ).annotate({ identifier: "SearchWithPostRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hitsPerPage: S.optional(S.Number),
+          page: S.optional(S.Number),
+          totalPages: S.optional(S.Number),
+          totalHits: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          offset: S.optional(S.Number),
+          estimatedTotalHits: S.optional(S.Number),
+          hits: __S(5124, __c160, 4),
+          query: S.String,
+          queryVector: S.optional(S.NullOr(__S(2336, __c73, 0))),
+          processingTimeMs: S.Number,
+          facetDistribution: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          facetStats: S.optional(S.NullOr(__S(5921, __c185, 1))),
+          requestUid: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(S.NullOr(__S(5922, __c185, 2))),
+          performanceDetails: S.optional(S.Unknown),
+          remoteErrors: S.optional(S.NullOr(__S(5856, __c183, 0))),
+          semanticHitCount: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "SearchWithPostResponse" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          q: S.optional(S.String.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          hitsPerPage: S.optional(S.Number.pipe(T.Query())),
+          attributesToRetrieve: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
+          attributesToCrop: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
+          cropLength: S.optional(S.Number.pipe(T.Query())),
+          cropMarker: S.optional(S.String.pipe(T.Query())),
+          attributesToHighlight: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
+          highlightPreTag: S.optional(S.String.pipe(T.Query())),
+          highlightPostTag: S.optional(S.String.pipe(T.Query())),
+          showMatchesPosition: S.optional(S.Boolean.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          distinct: S.optional(S.String.pipe(T.Query())),
+          facets: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
+          matchingStrategy: S.optional(S.String.pipe(T.Query())),
+          attributesToSearchOn: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
+          rankingScoreThreshold: S.optional(S.Number.pipe(T.Query())),
+          locales: S.optional(__S(2368, __c74, 0).pipe(T.Query())),
+          hybridEmbedder: S.optional(S.String.pipe(T.Query())),
+          hybridSemanticRatio: S.optional(S.Number.pipe(T.Query())),
+          vector: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          retrieveVectors: S.optional(S.Boolean.pipe(T.Query())),
+          personalizeUserContext: S.optional(S.String.pipe(T.Query())),
+          useNetwork: S.optional(S.Boolean.pipe(T.Query())),
+          showRankingScore: S.optional(S.Boolean.pipe(T.Query())),
+          showRankingScoreDetails: S.optional(S.Boolean.pipe(T.Query())),
+          showPerformanceDetails: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/search", code: 200 })),
+      ).annotate({
+        identifier: "SearchWithUrlQueryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hitsPerPage: S.optional(S.Number),
+          page: S.optional(S.Number),
+          totalPages: S.optional(S.Number),
+          totalHits: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          offset: S.optional(S.Number),
+          estimatedTotalHits: S.optional(S.Number),
+          hits: __S(5124, __c160, 4),
+          query: S.String,
+          queryVector: S.optional(S.NullOr(__S(2336, __c73, 0))),
+          processingTimeMs: S.Number,
+          facetDistribution: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          facetStats: S.optional(S.NullOr(__S(5921, __c185, 1))),
+          requestUid: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(S.NullOr(__S(5922, __c185, 2))),
+          performanceDetails: S.optional(S.Unknown),
+          remoteErrors: S.optional(S.NullOr(__S(5856, __c183, 0))),
+          semanticHitCount: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "SearchWithUrlQueryResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          indexes: __S(2432, __c76, 0),
+          rename: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SwapIndexesPayload" });
+    case 1:
+      return S.Array(__S(1312, __c41, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          body: __S(1313, __c41, 1).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/swap-indexes", code: 200 })),
+      ).annotate({ identifier: "SwapIndexesRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          displayedAttributes: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          searchableAttributes: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          filterableAttributes: S.optional(S.NullOr(__S(3328, __c104, 0))),
+          sortableAttributes: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          foreignKeys: S.optional(S.NullOr(__S(3361, __c105, 1))),
+          rankingRules: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          stopWords: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          nonSeparatorTokens: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          separatorTokens: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          dictionary: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          synonyms: S.optional(S.NullOr(__S(3456, __c108, 0))),
+          distinctAttribute: S.optional(S.NullOr(S.String)),
+          proximityPrecision: S.optional(S.NullOr(S.String)),
+          typoTolerance: S.optional(S.NullOr(__S(3520, __c110, 0))),
+          faceting: S.optional(S.NullOr(__S(3296, __c103, 0))),
+          pagination: S.optional(S.NullOr(__S(3424, __c107, 0))),
+          embedders: S.optional(S.NullOr(__S(3105, __c97, 1))),
+          searchCutoffMs: S.optional(S.NullOr(S.Number)),
+          localizedAttributes: S.optional(S.NullOr(__S(3393, __c106, 1))),
+          facetSearch: S.optional(S.NullOr(S.Boolean)),
+          prefixSearch: S.optional(S.NullOr(S.String)),
+          chat: S.optional(S.NullOr(__S(3168, __c99, 0))),
+        }).pipe(T.Http({ method: "PATCH", uri: "/indexes/{index_uid}/settings", code: 200 })),
+      ).annotate({ identifier: "UpdateAllRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          primaryKey: S.optional(S.String.pipe(T.Query())),
+          csvDelimiter: S.optional(S.String.pipe(T.Query())),
+          customMetadata: S.optional(S.String.pipe(T.Query())),
+          skipCreation: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "PUT", uri: "/indexes/{index_uid}/documents", code: 200 })),
+      ).annotate({ identifier: "UpdateDocumentsRequest" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.NullOr(S.String)),
+          headers: S.optional(S.NullOr(__S(1440, __c45, 0))),
+        }).pipe(T.Http({ method: "POST", uri: "/webhooks", code: 200 })),
+      ).annotate({ identifier: "CreateWebhookRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.NullOr(S.String)),
+          headers: S.optional(S.NullOr(__S(1440, __c45, 0))),
+          uuid: S.String,
+          isEditable: S.Boolean,
+        }),
+      ).annotate({ identifier: "CreateWebhookResponse" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          primaryKey: S.optional(S.NullOr(S.String)),
+          uid: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/indexes/{index_uid}", code: 200 })),
+      ).annotate({ identifier: "UpdateIndexRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          remotes: S.optional(S.NullOr(__S(4641, __c145, 1))),
+          shards: S.optional(S.NullOr(__S(4643, __c145, 3))),
+          previousShards: S.optional(S.NullOr(__S(4643, __c145, 3))),
+          self: S.optional(S.NullOr(S.String)),
+          leader: S.optional(S.NullOr(S.String)),
+          previousRemotes: S.optional(S.NullOr(__S(4641, __c145, 1))),
+        }).pipe(T.Http({ method: "PATCH", uri: "/network", code: 200 })),
+      ).annotate({ identifier: "UpdateNetworkRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.String.pipe(T.Label()),
+          description: S.optional(S.NullOr(S.String)),
+          precedence: S.optional(S.NullOr(S.Number)),
+          active: S.optional(S.NullOr(S.Boolean)),
+          conditions: S.optional(S.NullOr(__S(4867, __c152, 3))),
+          actions: S.optional(S.NullOr(__S(4872, __c152, 8))),
+        }).pipe(T.Http({ method: "PATCH", uri: "/dynamic-search-rules/{uid}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateOrCreateRuleRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          target: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/logs/stderr", code: 200 })),
+      ).annotate({
+        identifier: "UpdateStderrTargetRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+          url: S.optional(S.NullOr(S.String)),
+          headers: S.optional(S.NullOr(__S(1440, __c45, 0))),
+        }).pipe(T.Http({ method: "PATCH", uri: "/webhooks/{uuid}", code: 200 })),
+      ).annotate({ identifier: "UpdateWebhookRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings", code: 200 })),
+      ).annotate({ identifier: "DeleteAllRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/keys/{key}", code: 200 })),
+      ).annotate({ identifier: "DeleteApiKeyRequest" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/chat", code: 200 })),
+      ).annotate({ identifier: "DeletechatRequest" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspace_uid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/chats/{workspace_uid}", code: 200 })),
+      ).annotate({ identifier: "DeleteChatRequest" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/dictionary", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeletedictionaryRequest" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/logs/stream", code: 200 })),
+      ).annotate({ identifier: "CancelLogsRequest" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelLogsResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/displayed-attributes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletedisplayedAttributesRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletedisplayedAttributesResponse",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/distinct-attribute",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletedistinctAttributeRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletedistinctAttributeResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          document_id: S.String.pipe(T.Label()),
+          customMetadata: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/documents/{document_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDocumentRequest" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          customMetadata: S.optional(S.String.pipe(T.Query())),
+          body: __S(2080, __c65, 0).pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/indexes/{index_uid}/documents/delete-batch", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteDocumentsBatchRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          customMetadata: S.optional(S.String.pipe(T.Query())),
+          filter: S.Unknown,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/indexes/{index_uid}/documents/delete", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteDocumentsByFilterRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/embedders", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteembeddersRequest" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/faceting", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeletefacetingRequest" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/filterable-attributes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletefilterableAttributesRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/foreign-keys",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteforeignKeysRequest" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}", code: 200 })),
+      ).annotate({ identifier: "DeleteIndexRequest" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uids: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          batchUids: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          canceledBy: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          types: S.optional(__S(2368, __c74, 0).pipe(T.Query())),
+          statuses: S.optional(__S(2368, __c74, 0).pipe(T.Query())),
+          indexUids: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
           afterEnqueuedAt: S.optional(S.String.pipe(T.Query())),
           beforeEnqueuedAt: S.optional(S.String.pipe(T.Query())),
           afterStartedAt: S.optional(S.String.pipe(T.Query())),
@@ -6199,7 +7467,23 @@ function __c0(j: number): any {
           beforeFinishedAt: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/tasks/cancel", code: 200 })),
       ).annotate({ identifier: "CancelTasksRequest" });
-    case 6:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskUid: S.Number,
@@ -6210,33 +7494,203 @@ function __c0(j: number): any {
           customMetadata: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SummarizedTaskView" });
-    case 7:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/localized-attributes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletelocalizedAttributesRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/non-separator-tokens",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletenonSeparatorTokensRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/pagination", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeletepaginationRequest" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/proximity-precision",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteproximityPrecisionRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/ranking-rules",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleterankingRulesRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/dynamic-search-rules/{uid}", code: 200 })),
+      ).annotate({ identifier: "DeleteRuleRequest" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/searchable-attributes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletesearchableAttributesRequest",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/search-cutoff-ms",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletesearchCutoffMsRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/separator-tokens",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteseparatorTokensRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/indexes/{index_uid}/settings/sortable-attributes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletesortableAttributesRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           arguments: S.String,
         }),
       ).annotate({ identifier: "FunctionCall" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           type: S.optional(S.NullOr(S.String)),
-          function: __S(7, __c0, 7),
+          function: __S(2784, __c87, 0),
         }),
       ).annotate({
         identifier: "ChatCompletionMessageToolCall",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
-      return S.Array(S.Unknown);
+      return S.Array(__S(2785, __c87, 1));
     case 3:
-      return S.Record(S.String, S.Unknown);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6268,20 +7722,16 @@ function __c1(j: number): any {
           strict: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "FunctionObject" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          function: __S(15, __c1, 7),
+          function: __S(2791, __c87, 7),
         }),
       ).annotate({ identifier: "ChatCompletionTool" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(2792, __c87, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6289,47 +7739,47 @@ function __c2(j: number): any {
           parameters: S.Unknown,
         }),
       ).annotate({ identifier: "ChatCompletionFunctions" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(2794, __c87, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           workspace_uid: S.String.pipe(T.Label()),
-          messages: __S(10, __c1, 2),
+          messages: __S(2787, __c87, 3),
           model: S.String,
           store: S.optional(S.NullOr(S.Boolean)),
           reasoning_effort: S.optional(S.NullOr(S.String)),
           metadata: S.optional(S.Unknown),
           frequency_penalty: S.optional(S.NullOr(S.Number)),
-          logit_bias: S.optional(S.NullOr(__S(11, __c1, 3))),
+          logit_bias: S.optional(S.NullOr(__S(2816, __c88, 0))),
           logprobs: S.optional(S.NullOr(S.Boolean)),
           top_logprobs: S.optional(S.NullOr(S.Number)),
           max_tokens: S.optional(S.NullOr(S.Number)),
           max_completion_tokens: S.optional(S.NullOr(S.Number)),
           n: S.optional(S.NullOr(S.Number)),
-          modalities: S.optional(S.NullOr(__S(3, __c0, 3))),
-          prediction: S.optional(S.NullOr(__S(12, __c1, 4))),
-          audio: S.optional(S.NullOr(__S(13, __c1, 5))),
+          modalities: S.optional(S.NullOr(__S(2368, __c74, 0))),
+          prediction: S.optional(S.NullOr(__S(2788, __c87, 4))),
+          audio: S.optional(S.NullOr(__S(2789, __c87, 5))),
           presence_penalty: S.optional(S.NullOr(S.Number)),
           response_format: S.optional(S.NullOr(S.Unknown)),
           seed: S.optional(S.NullOr(S.Number)),
           service_tier: S.optional(S.NullOr(S.String)),
           stop: S.optional(S.NullOr(S.Unknown)),
           stream: S.optional(S.NullOr(S.Boolean)),
-          stream_options: S.optional(S.NullOr(__S(14, __c1, 6))),
+          stream_options: S.optional(S.NullOr(__S(2790, __c87, 6))),
           temperature: S.optional(S.NullOr(S.Number)),
           top_p: S.optional(S.NullOr(S.Number)),
-          tools: S.optional(S.NullOr(__S(17, __c2, 1))),
+          tools: S.optional(S.NullOr(__S(2793, __c87, 9))),
           tool_choice: S.optional(S.NullOr(S.Unknown)),
           parallel_tool_calls: S.optional(S.NullOr(S.Boolean)),
           user: S.optional(S.NullOr(S.String)),
           function_call: S.optional(S.NullOr(S.Unknown)),
-          functions: S.optional(S.NullOr(__S(19, __c2, 3))),
+          functions: S.optional(S.NullOr(__S(2795, __c87, 11))),
         }).pipe(
           T.Http({ method: "POST", uri: "/chats/{workspace_uid}/chat/completions", code: 200 }),
         ),
       ).annotate({ identifier: "ChatRequest" });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6340,72 +7790,68 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ChatCompletionResponseMessageAudio",
       });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.NullOr(S.String)),
           refusal: S.optional(S.NullOr(S.String)),
-          tool_calls: S.optional(S.NullOr(__S(9, __c1, 1))),
+          tool_calls: S.optional(S.NullOr(__S(2786, __c87, 2))),
           role: S.String,
-          function_call: S.optional(S.NullOr(__S(7, __c0, 7))),
-          audio: S.optional(S.NullOr(__S(21, __c2, 5))),
+          function_call: S.optional(S.NullOr(__S(2784, __c87, 0))),
+          audio: S.optional(S.NullOr(__S(2797, __c87, 13))),
         }),
       ).annotate({
         identifier: "ChatCompletionResponseMessage",
       });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
           logprob: S.Number,
-          bytes: S.optional(S.NullOr(__S(2, __c0, 2))),
+          bytes: S.optional(S.NullOr(__S(2336, __c73, 0))),
         }),
       ).annotate({ identifier: "TopLogprobs" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 16:
+      return S.Array(__S(2799, __c87, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
           logprob: S.Number,
-          bytes: S.optional(S.NullOr(__S(2, __c0, 2))),
-          top_logprobs: __S(24, __c3, 0),
+          bytes: S.optional(S.NullOr(__S(2336, __c73, 0))),
+          top_logprobs: __S(2800, __c87, 16),
         }),
       ).annotate({
         identifier: "ChatCompletionTokenLogprob",
       });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 18:
+      return S.Array(__S(2801, __c87, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          content: S.optional(S.NullOr(__S(26, __c3, 2))),
-          refusal: S.optional(S.NullOr(__S(26, __c3, 2))),
+          content: S.optional(S.NullOr(__S(2802, __c87, 18))),
+          refusal: S.optional(S.NullOr(__S(2802, __c87, 18))),
         }),
       ).annotate({ identifier: "ChatChoiceLogprobs" });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           index: S.Number,
-          message: __S(22, __c2, 6),
+          message: __S(2798, __c87, 14),
           finish_reason: S.optional(S.NullOr(S.String)),
-          logprobs: S.optional(S.NullOr(__S(27, __c3, 3))),
+          logprobs: S.optional(S.NullOr(__S(2803, __c87, 19))),
         }),
       ).annotate({ identifier: "ChatChoice" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 21:
+      return S.Array(__S(2804, __c87, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           audio_tokens: S.optional(S.NullOr(S.Number)),
           cached_tokens: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "PromptTokensDetails" });
-    case 7:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           accepted_prediction_tokens: S.optional(S.NullOr(S.Number)),
@@ -6414,507 +7860,42 @@ function __c3(j: number): any {
           rejected_prediction_tokens: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "CompletionTokensDetails" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           prompt_tokens: S.Number,
           completion_tokens: S.Number,
           total_tokens: S.Number,
-          prompt_tokens_details: S.optional(S.NullOr(__S(30, __c3, 6))),
-          completion_tokens_details: S.optional(S.NullOr(__S(31, __c3, 7))),
+          prompt_tokens_details: S.optional(S.NullOr(__S(2806, __c87, 22))),
+          completion_tokens_details: S.optional(S.NullOr(__S(2807, __c87, 23))),
         }),
       ).annotate({ identifier: "CompletionUsage" });
-    case 1:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          choices: __S(29, __c3, 5),
+          choices: __S(2805, __c87, 21),
           created: S.Number,
           model: S.String,
           service_tier: S.optional(S.NullOr(S.String)),
           system_fingerprint: S.optional(S.NullOr(S.String)),
           object: S.String,
-          usage: S.optional(S.NullOr(__S(32, __c4, 0))),
+          usage: S.optional(S.NullOr(__S(2808, __c87, 24))),
         }),
       ).annotate({
         identifier: "CreateChatCompletionResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          customMetadata: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/documents", code: 200 })),
-      ).annotate({ identifier: "ClearAllDocumentsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/dynamic-search-rules", code: 200 })),
-      ).annotate({ identifier: "ClearRulesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/compact", code: 200 })),
-      ).annotate({ identifier: "CompactRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/tasks/compact", code: 200 })),
-      ).annotate({ identifier: "CompactTaskQueueRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          preSize: S.optional(S.String),
-          postSize: S.optional(S.String),
-          status: S.String,
-          actionRequired: S.optional(S.NullOr(S.String)),
-          errorMessage: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "TaskCompactionSummary" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          uid: S.optional(S.NullOr(S.String)),
-          actions: __S(3, __c0, 3),
-          indexes: __S(4, __c0, 4),
-          expiresAt: S.NullOr(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/keys", code: 200 })),
-      ).annotate({ identifier: "CreateApiKeyRequest" });
   }
 }
-function __c5(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          key: S.String,
-          uid: S.String,
-          actions: __S(3, __c0, 3),
-          indexes: __S(4, __c0, 4),
-          expiresAt: S.optional(S.NullOr(S.String)),
-          createdAt: S.String,
-          updatedAt: S.String,
-        }),
-      ).annotate({ identifier: "KeyView" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/dumps", code: 200 })),
-      ).annotate({ identifier: "CreateDumpRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.String,
-          primaryKey: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/indexes", code: 200 })),
-      ).annotate({ identifier: "CreateIndexRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          attributePatterns: S.optional(S.NullOr(__S(4, __c0, 4))),
-          displayed: S.optional(S.NullOr(S.Boolean)),
-          searchable: S.optional(S.NullOr(S.Boolean)),
-          sortable: S.optional(S.NullOr(S.Boolean)),
-          distinct: S.optional(S.NullOr(S.Boolean)),
-          rankingRule: S.optional(S.NullOr(S.Boolean)),
-          filterable: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "ListFieldsFilter" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          offset: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          filter: S.optional(S.NullOr(__S(43, __c5, 3))),
-        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/fields", code: 200 })),
-      ).annotate({ identifier: "CreateIndexFieldRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-        }),
-      ).annotate({ identifier: "FieldDisplayConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          order: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "FieldRankingRuleConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          sortBy: S.String,
-          facetSearch: S.Boolean,
-          equality: S.Boolean,
-          comparison: S.Boolean,
-        }),
-      ).annotate({ identifier: "FieldFilterableConfig" });
+      return S.Record(S.String, S.Unknown);
   }
 }
-function __c6(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          locales: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "FieldLocalizedConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          displayed: __S(45, __c5, 5),
-          searchable: __S(45, __c5, 5),
-          sortable: __S(45, __c5, 5),
-          distinct: __S(45, __c5, 5),
-          rankingRule: __S(46, __c5, 6),
-          filterable: __S(47, __c5, 7),
-          localized: __S(48, __c6, 0),
-        }),
-      ).annotate({
-        identifier: "PaginationViewFieldResultsItem",
-      });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(50, __c6, 2),
-          offset: S.Number,
-          limit: S.Number,
-          total: S.Number,
-        }),
-      ).annotate({ identifier: "PaginationViewField" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/snapshots", code: 200 })),
-      ).annotate({ identifier: "CreateSnapshotRequest" });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.NullOr(S.String)),
-          headers: S.optional(S.NullOr(__S(53, __c6, 5))),
-        }).pipe(T.Http({ method: "POST", uri: "/webhooks", code: 200 })),
-      ).annotate({ identifier: "CreateWebhookRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.NullOr(S.String)),
-          headers: S.optional(S.NullOr(__S(53, __c6, 5))),
-          uuid: S.String,
-          isEditable: S.Boolean,
-        }),
-      ).annotate({ identifier: "CreateWebhookResponse" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings", code: 200 })),
-      ).annotate({ identifier: "DeleteAllRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/keys/{key}", code: 200 })),
-      ).annotate({ identifier: "DeleteApiKeyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/chat", code: 200 })),
-      ).annotate({ identifier: "DeletechatRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          workspace_uid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/chats/{workspace_uid}", code: 200 })),
-      ).annotate({ identifier: "DeleteChatRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/dictionary", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeletedictionaryRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/displayed-attributes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletedisplayedAttributesRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletedisplayedAttributesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/distinct-attribute",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletedistinctAttributeRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletedistinctAttributeResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          document_id: S.String.pipe(T.Label()),
-          customMetadata: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/documents/{document_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDocumentRequest" });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          customMetadata: S.optional(S.String.pipe(T.Query())),
-          body: __S(66, __c8, 2).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/indexes/{index_uid}/documents/delete-batch", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteDocumentsBatchRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          customMetadata: S.optional(S.String.pipe(T.Query())),
-          filter: S.Unknown,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/indexes/{index_uid}/documents/delete", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteDocumentsByFilterRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/embedders", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteembeddersRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/faceting", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeletefacetingRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/filterable-attributes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletefilterableAttributesRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/foreign-keys",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteforeignKeysRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}", code: 200 })),
-      ).annotate({ identifier: "DeleteIndexRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/localized-attributes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletelocalizedAttributesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/non-separator-tokens",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletenonSeparatorTokensRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/pagination", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeletepaginationRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/proximity-precision",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteproximityPrecisionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/ranking-rules",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleterankingRulesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/dynamic-search-rules/{uid}", code: 200 })),
-      ).annotate({ identifier: "DeleteRuleRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/searchable-attributes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletesearchableAttributesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/search-cutoff-ms",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletesearchCutoffMsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/separator-tokens",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteseparatorTokensRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/sortable-attributes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletesortableAttributesRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -6922,7 +7903,11 @@ function __c10(j: number): any {
           T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/stop-words", code: 200 }),
         ),
       ).annotate({ identifier: "DeletestopWordsRequest" });
-    case 5:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -6930,15 +7915,19 @@ function __c10(j: number): any {
           T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/synonyms", code: 200 }),
         ),
       ).annotate({ identifier: "DeletesynonymsRequest" });
-    case 6:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          uids: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          batchUids: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          canceledBy: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          types: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          statuses: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          indexUids: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          uids: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          batchUids: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          canceledBy: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          types: S.optional(__S(2368, __c74, 0).pipe(T.Query())),
+          statuses: S.optional(__S(2368, __c74, 0).pipe(T.Query())),
+          indexUids: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
           afterEnqueuedAt: S.optional(S.String.pipe(T.Query())),
           beforeEnqueuedAt: S.optional(S.String.pipe(T.Query())),
           afterStartedAt: S.optional(S.String.pipe(T.Query())),
@@ -6947,7 +7936,11 @@ function __c10(j: number): any {
           beforeFinishedAt: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/tasks", code: 200 })),
       ).annotate({ identifier: "DeleteTasksRequest" });
-    case 7:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -6963,7 +7956,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6971,7 +7964,11 @@ function __c11(j: number): any {
           uuid: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/webhooks/{uuid}", code: 200 })),
       ).annotate({ identifier: "DeleteWebhookRequest" });
-    case 1:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -6983,110 +7980,70 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "EditDocumentsByFunctionRequest",
       });
-    case 2:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.NullOr(S.String)),
           overrideSettings: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "ExportIndexSettings" });
-    case 3:
-      return S.Record(S.String, __S(90, __c11, 2));
-    case 4:
+    case 1:
+      return S.Record(S.String, __S(3040, __c95, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
           apiKey: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           payloadSize: S.optional(S.NullOr(S.String)),
-          indexes: S.optional(S.NullOr(__S(91, __c11, 3))),
+          indexes: S.optional(S.NullOr(__S(3041, __c95, 1))),
         }).pipe(T.Http({ method: "POST", uri: "/export", code: 200 })),
       ).annotate({ identifier: "ExportRequest" });
-    case 5:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings", code: 200 })),
       ).annotate({ identifier: "GetAllRequest" });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          foreignIndexUid: S.String,
-          fieldName: S.String,
+          displayedAttributes: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          searchableAttributes: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          filterableAttributes: S.optional(S.NullOr(__S(3328, __c104, 0))),
+          sortableAttributes: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          foreignKeys: S.optional(S.NullOr(__S(3361, __c105, 1))),
+          rankingRules: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          stopWords: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          nonSeparatorTokens: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          separatorTokens: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          dictionary: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          synonyms: S.optional(S.NullOr(__S(3456, __c108, 0))),
+          distinctAttribute: S.optional(S.NullOr(S.String)),
+          proximityPrecision: S.optional(S.NullOr(S.String)),
+          typoTolerance: S.optional(S.NullOr(__S(3520, __c110, 0))),
+          faceting: S.optional(S.NullOr(__S(3296, __c103, 0))),
+          pagination: S.optional(S.NullOr(__S(3424, __c107, 0))),
+          embedders: S.optional(S.NullOr(__S(3105, __c97, 1))),
+          searchCutoffMs: S.optional(S.NullOr(S.Number)),
+          localizedAttributes: S.optional(S.NullOr(__S(3393, __c106, 1))),
+          facetSearch: S.optional(S.NullOr(S.Boolean)),
+          prefixSearch: S.optional(S.NullOr(S.String)),
+          chat: S.optional(S.NullOr(__S(3168, __c99, 0))),
         }),
-      ).annotate({ identifier: "ForeignKey" });
+      ).annotate({ identifier: "SettingsUnchecked" });
   }
 }
-function __c12(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
-      return S.Record(S.String, __S(4, __c0, 4));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          oneTypo: S.optional(S.NullOr(S.Number)),
-          twoTypos: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "MinWordSizeTyposSetting" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          minWordSizeForTypos: S.optional(S.NullOr(__S(98, __c12, 2))),
-          disableOnWords: S.optional(S.NullOr(__S(4, __c0, 4))),
-          disableOnAttributes: S.optional(S.NullOr(__S(4, __c0, 4))),
-          disableOnNumbers: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "TypoSettings" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          maxValuesPerFacet: S.optional(S.NullOr(S.Number)),
-          sortFacetValuesBy: S.optional(S.NullOr(__S(100, __c12, 4))),
-        }),
-      ).annotate({ identifier: "FacetingSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          maxTotalHits: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "PaginationSettings" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(S.NullOr(S.String)),
-          model: S.optional(S.NullOr(S.String)),
-          revision: S.optional(S.NullOr(S.String)),
-          pooling: S.optional(S.NullOr(S.String)),
-          apiKey: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          dimensions: S.optional(S.NullOr(S.Number)),
-          documentTemplate: S.optional(S.NullOr(S.String)),
-          documentTemplateMaxBytes: S.optional(S.NullOr(S.Number)),
-          url: S.optional(S.NullOr(S.String)),
-          indexingFragments: S.optional(S.NullOr(__S(11, __c1, 3))),
-          searchFragments: S.optional(S.NullOr(__S(11, __c1, 3))),
-          request: S.optional(S.Unknown),
-          response: S.optional(S.Unknown),
-          headers: S.optional(S.NullOr(__S(53, __c6, 5))),
-        }),
-      ).annotate({ identifier: "SubEmbeddingSettings" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          current_mean: S.Number,
-          current_sigma: S.Number,
-        }),
-      ).annotate({ identifier: "DistributionShift" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.NullOr(S.String)),
@@ -7099,101 +8056,205 @@ function __c13(j: number): any {
           documentTemplate: S.optional(S.NullOr(S.String)),
           documentTemplateMaxBytes: S.optional(S.NullOr(S.Number)),
           url: S.optional(S.NullOr(S.String)),
-          indexingFragments: S.optional(S.NullOr(__S(11, __c1, 3))),
-          searchFragments: S.optional(S.NullOr(__S(11, __c1, 3))),
+          indexingFragments: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          searchFragments: S.optional(S.NullOr(__S(2816, __c88, 0))),
           request: S.optional(S.Unknown),
           response: S.optional(S.Unknown),
-          headers: S.optional(S.NullOr(__S(53, __c6, 5))),
-          searchEmbedder: S.optional(S.NullOr(__S(103, __c12, 7))),
-          indexingEmbedder: S.optional(S.NullOr(__S(103, __c12, 7))),
-          distribution: S.optional(S.NullOr(__S(104, __c13, 0))),
+          headers: S.optional(S.NullOr(__S(1440, __c45, 0))),
+          searchEmbedder: S.optional(S.NullOr(__S(3232, __c101, 0))),
+          indexingEmbedder: S.optional(S.NullOr(__S(3232, __c101, 0))),
+          distribution: S.optional(S.NullOr(__S(3233, __c101, 1))),
         }),
       ).annotate({ identifier: "EmbeddingSettings" });
-    case 2:
-      return S.Record(S.String, __S(105, __c13, 1));
-    case 3:
+    case 1:
+      return S.Record(S.String, __S(3104, __c97, 0));
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          attributePatterns: __S(4, __c0, 4),
-          locales: __S(3, __c0, 3),
+          hybrid: S.optional(S.NullOr(__S(3200, __c100, 0))),
+          limit: S.optional(S.NullOr(S.Number)),
+          sort: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          distinct: S.optional(S.NullOr(S.String)),
+          matchingStrategy: S.optional(S.NullOr(S.String)),
+          attributesToSearchOn: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          rankingScoreThreshold: S.optional(S.NullOr(S.Number)),
         }),
-      ).annotate({
-        identifier: "LocalizedAttributesRuleView",
-      });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+      ).annotate({ identifier: "ChatSearchParams" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          documentTemplate: S.optional(S.NullOr(S.String)),
+          documentTemplateMaxBytes: S.optional(S.NullOr(S.Number)),
+          searchParameters: S.optional(S.NullOr(__S(3136, __c98, 0))),
+        }),
+      ).annotate({ identifier: "ChatSettings" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           semanticRatio: S.optional(S.Number),
           embedder: S.String,
         }),
       ).annotate({ identifier: "HybridQuery" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          hybrid: S.optional(S.NullOr(__S(109, __c13, 5))),
-          limit: S.optional(S.NullOr(S.Number)),
-          sort: S.optional(S.NullOr(__S(4, __c0, 4))),
-          distinct: S.optional(S.NullOr(S.String)),
-          matchingStrategy: S.optional(S.NullOr(S.String)),
-          attributesToSearchOn: S.optional(S.NullOr(__S(4, __c0, 4))),
-          rankingScoreThreshold: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ChatSearchParams" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          documentTemplate: S.optional(S.NullOr(S.String)),
-          documentTemplateMaxBytes: S.optional(S.NullOr(S.Number)),
-          searchParameters: S.optional(S.NullOr(__S(110, __c13, 6))),
-        }),
-      ).annotate({ identifier: "ChatSettings" });
   }
 }
-function __c14(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          displayedAttributes: S.optional(S.NullOr(__S(4, __c0, 4))),
-          searchableAttributes: S.optional(S.NullOr(__S(4, __c0, 4))),
-          filterableAttributes: S.optional(S.NullOr(__S(94, __c11, 6))),
-          sortableAttributes: S.optional(S.NullOr(__S(4, __c0, 4))),
-          foreignKeys: S.optional(S.NullOr(__S(96, __c12, 0))),
-          rankingRules: S.optional(S.NullOr(__S(4, __c0, 4))),
-          stopWords: S.optional(S.NullOr(__S(4, __c0, 4))),
-          nonSeparatorTokens: S.optional(S.NullOr(__S(4, __c0, 4))),
-          separatorTokens: S.optional(S.NullOr(__S(4, __c0, 4))),
-          dictionary: S.optional(S.NullOr(__S(4, __c0, 4))),
-          synonyms: S.optional(S.NullOr(__S(97, __c12, 1))),
-          distinctAttribute: S.optional(S.NullOr(S.String)),
-          proximityPrecision: S.optional(S.NullOr(S.String)),
-          typoTolerance: S.optional(S.NullOr(__S(99, __c12, 3))),
-          faceting: S.optional(S.NullOr(__S(101, __c12, 5))),
-          pagination: S.optional(S.NullOr(__S(102, __c12, 6))),
-          embedders: S.optional(S.NullOr(__S(106, __c13, 2))),
-          searchCutoffMs: S.optional(S.NullOr(S.Number)),
-          localizedAttributes: S.optional(S.NullOr(__S(108, __c13, 4))),
-          facetSearch: S.optional(S.NullOr(S.Boolean)),
-          prefixSearch: S.optional(S.NullOr(S.String)),
-          chat: S.optional(S.NullOr(__S(111, __c13, 7))),
+          source: S.optional(S.NullOr(S.String)),
+          model: S.optional(S.NullOr(S.String)),
+          revision: S.optional(S.NullOr(S.String)),
+          pooling: S.optional(S.NullOr(S.String)),
+          apiKey: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          dimensions: S.optional(S.NullOr(S.Number)),
+          documentTemplate: S.optional(S.NullOr(S.String)),
+          documentTemplateMaxBytes: S.optional(S.NullOr(S.Number)),
+          url: S.optional(S.NullOr(S.String)),
+          indexingFragments: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          searchFragments: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          request: S.optional(S.Unknown),
+          response: S.optional(S.Unknown),
+          headers: S.optional(S.NullOr(__S(1440, __c45, 0))),
         }),
-      ).annotate({ identifier: "SettingsUnchecked" });
+      ).annotate({ identifier: "SubEmbeddingSettings" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          current_mean: S.Number,
+          current_sigma: S.Number,
+        }),
+      ).annotate({ identifier: "DistributionShift" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxValuesPerFacet: S.optional(S.NullOr(S.Number)),
+          sortFacetValuesBy: S.optional(S.NullOr(__S(3264, __c102, 0))),
+        }),
+      ).annotate({ identifier: "FacetingSettings" });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          foreignIndexUid: S.String,
+          fieldName: S.String,
+        }),
+      ).annotate({ identifier: "ForeignKey" });
+    case 1:
+      return S.Array(__S(3360, __c105, 0));
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attributePatterns: __S(2432, __c76, 0),
+          locales: __S(2368, __c74, 0),
+        }),
+      ).annotate({
+        identifier: "LocalizedAttributesRuleView",
+      });
+    case 1:
+      return S.Array(__S(3392, __c106, 0));
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxTotalHits: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "PaginationSettings" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(2432, __c76, 0));
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          oneTypo: S.optional(S.NullOr(S.Number)),
+          twoTypos: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "MinWordSizeTyposSetting" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          minWordSizeForTypos: S.optional(S.NullOr(__S(3488, __c109, 0))),
+          disableOnWords: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          disableOnAttributes: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          disableOnNumbers: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "TypoSettings" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/keys/{key}", code: 200 })),
       ).annotate({ identifier: "GetApiKeyRequest" });
-    case 2:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           batch_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/batches/{batch_id}", code: 200 })),
       ).annotate({ identifier: "GetBatchRequest" });
-    case 3:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           currentStep: S.String,
@@ -7201,18 +8262,16 @@ function __c14(j: number): any {
           total: S.Number,
         }),
       ).annotate({ identifier: "ProgressStepView" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(3616, __c113, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          steps: __S(116, __c14, 4),
+          steps: __S(3617, __c113, 1),
           percentage: S.Number,
         }),
       ).annotate({ identifier: "ProgressView" });
-    case 6:
-      return S.Record(S.String, S.Number);
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           total: S.Number,
@@ -7220,48 +8279,65 @@ function __c14(j: number): any {
           lastError: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "EmbedderStatsView" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           totalNbTasks: S.Number,
-          status: __S(118, __c14, 6),
-          types: __S(118, __c14, 6),
-          indexUids: __S(118, __c14, 6),
-          progressTrace: S.optional(__S(11, __c1, 3)),
-          writeChannelCongestion: S.optional(S.NullOr(__S(11, __c1, 3))),
-          internalDatabaseSizes: S.optional(__S(11, __c1, 3)),
-          embedderRequests: S.optional(__S(119, __c14, 7)),
+          status: __S(3648, __c114, 0),
+          types: __S(3648, __c114, 0),
+          indexUids: __S(3648, __c114, 0),
+          progressTrace: S.optional(__S(2816, __c88, 0)),
+          writeChannelCongestion: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          internalDatabaseSizes: S.optional(__S(2816, __c88, 0)),
+          embedderRequests: S.optional(__S(3619, __c113, 3)),
         }),
       ).annotate({ identifier: "BatchStatsView" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           uid: S.Number,
-          progress: S.optional(S.NullOr(__S(117, __c14, 5))),
+          progress: S.optional(S.NullOr(__S(3618, __c113, 2))),
           details: S.Unknown,
-          stats: __S(120, __c15, 0),
+          stats: __S(3620, __c113, 4),
           duration: S.optional(S.NullOr(S.String)),
           startedAt: S.optional(S.String),
           finishedAt: S.optional(S.NullOr(S.String)),
           batchStrategy: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchView" });
-    case 2:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Number);
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+          customMetadata: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/documents", code: 200 })),
+      ).annotate({ identifier: "ClearAllDocumentsRequest" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
           from: S.optional(S.Number.pipe(T.Query())),
           reverse: S.optional(S.Boolean.pipe(T.Query())),
-          batchUids: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          uids: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          canceledBy: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          types: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          statuses: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          indexUids: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          batchUids: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          uids: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          canceledBy: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          types: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
+          statuses: S.optional(__S(2368, __c74, 0).pipe(T.Query())),
+          indexUids: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
           afterEnqueuedAt: S.optional(S.String.pipe(T.Query())),
           beforeEnqueuedAt: S.optional(S.String.pipe(T.Query())),
           afterStartedAt: S.optional(S.String.pipe(T.Query())),
@@ -7270,29 +8346,41 @@ function __c15(j: number): any {
           beforeFinishedAt: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/batches", code: 200 })),
       ).annotate({ identifier: "GetBatchesRequest" });
-    case 3:
-      return S.Array(__S(121, __c15, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(3621, __c113, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: __S(123, __c15, 3),
+          results: __S(3713, __c116, 1),
           total: S.Number,
           limit: S.Number,
           from: S.optional(S.NullOr(S.Number)),
           next: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "AllBatches" });
-    case 5:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/batches/stream", code: 200 })),
       ).annotate({ identifier: "GetBatchesStreamRequest" });
-    case 6:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/chat", code: 200 })),
       ).annotate({ identifier: "GetchatRequest" });
-    case 7:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspace_uid: S.String.pipe(T.Label()),
@@ -7300,7 +8388,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "GetChatRequest" });
   }
 }
-function __c16(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7310,11 +8398,19 @@ function __c16(j: number): any {
           T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/dictionary", code: 200 }),
         ),
       ).annotate({ identifier: "GetdictionaryRequest" });
-    case 1:
-      return S.suspend(() => __S(4, __c0, 4).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2432, __c76, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetdictionaryResponse",
       });
-    case 2:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7328,11 +8424,19 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetdisplayedAttributesRequest",
       });
-    case 3:
-      return S.suspend(() => __S(4, __c0, 4).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2432, __c76, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetdisplayedAttributesResponse",
       });
-    case 4:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7346,29 +8450,33 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetdistinctAttributeRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetdistinctAttributeResponse",
       });
-    case 6:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
           document_id: S.String.pipe(T.Label()),
-          fields: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          fields: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
           retrieveVectors: S.optional(S.Boolean.pipe(T.Query())),
           useNetwork: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/indexes/{index_uid}/documents/{document_id}", code: 200 }),
         ),
       ).annotate({ identifier: "GetDocumentRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDocumentResponse",
       });
   }
 }
-function __c17(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7376,24 +8484,32 @@ function __c17(j: number): any {
           index_uid: S.String.pipe(T.Label()),
           offset: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          fields: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          fields: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
           retrieveVectors: S.optional(S.Boolean.pipe(T.Query())),
-          ids: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          ids: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           sort: S.optional(S.String.pipe(T.Query())),
           useNetwork: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/documents", code: 200 })),
       ).annotate({ identifier: "GetDocumentsRequest" });
-    case 1:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          results: __S(66, __c8, 2),
+          results: __S(2080, __c65, 0),
           offset: S.Number,
           limit: S.Number,
           total: S.Number,
         }),
       ).annotate({ identifier: "PaginationViewValue" });
-    case 2:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7401,7 +8517,15 @@ function __c17(j: number): any {
           T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/embedders", code: 200 }),
         ),
       ).annotate({ identifier: "GetembeddersRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() => __S(4130, __c129, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetembeddersResponse",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.NullOr(S.String)),
@@ -7414,31 +8538,39 @@ function __c17(j: number): any {
           documentTemplate: S.optional(S.NullOr(S.String)),
           documentTemplateMaxBytes: S.optional(S.NullOr(S.Number)),
           url: S.optional(S.NullOr(S.String)),
-          indexingFragments: S.optional(S.NullOr(__S(11, __c1, 3))),
-          searchFragments: S.optional(S.NullOr(__S(11, __c1, 3))),
+          indexingFragments: S.optional(S.NullOr(__S(2816, __c88, 0))),
+          searchFragments: S.optional(S.NullOr(__S(2816, __c88, 0))),
           request: S.optional(S.Unknown),
           response: S.optional(S.Unknown),
-          headers: S.optional(S.NullOr(__S(53, __c6, 5))),
-          searchEmbedder: S.optional(S.NullOr(__S(103, __c12, 7))),
-          indexingEmbedder: S.optional(S.NullOr(__S(103, __c12, 7))),
-          distribution: S.optional(S.NullOr(__S(104, __c13, 0))),
+          headers: S.optional(S.NullOr(__S(1440, __c45, 0))),
+          searchEmbedder: S.optional(S.NullOr(__S(3232, __c101, 0))),
+          indexingEmbedder: S.optional(S.NullOr(__S(3232, __c101, 0))),
+          distribution: S.optional(S.NullOr(__S(3233, __c101, 1))),
         }),
       ).annotate({
         identifier: "SettingEmbeddingSettingsInner",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          inner: S.optional(S.NullOr(__S(139, __c17, 3))),
+          inner: S.optional(S.NullOr(__S(4128, __c129, 0))),
         }),
       ).annotate({ identifier: "SettingEmbeddingSettings" });
-    case 5:
-      return S.Record(S.String, __S(140, __c17, 4));
-    case 6:
-      return S.suspend(() => __S(141, __c17, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetembeddersResponse",
-      });
-    case 7:
+    case 2:
+      return S.Record(S.String, __S(4129, __c129, 1));
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/dynamic-search-rules", code: 200 })),
+      ).annotate({ identifier: "ClearRulesRequest" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7448,13 +8580,17 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetfacetingRequest" });
   }
 }
-function __c18(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/experimental-features", code: 200 })),
       ).annotate({ identifier: "GetFeaturesRequest" });
-    case 1:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           metrics: S.optional(S.NullOr(S.Boolean)),
@@ -7476,7 +8612,11 @@ function __c18(j: number): any {
           mcpRoute: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "RuntimeTogglableFeatures" });
-    case 2:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7490,11 +8630,15 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetfilterableAttributesRequest",
       });
-    case 3:
-      return S.suspend(() => __S(94, __c11, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(3328, __c104, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetfilterableAttributesResponse",
       });
-    case 4:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7502,15 +8646,19 @@ function __c18(j: number): any {
           T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/foreign-keys", code: 200 }),
         ),
       ).annotate({ identifier: "GetforeignKeysRequest" });
-    case 5:
-      return S.suspend(() => __S(96, __c12, 0).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(3361, __c105, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetforeignKeysResponse",
       });
-    case 6:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
       ).annotate({ identifier: "GetHealthRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -7518,7 +8666,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "HealthResponse" });
   }
 }
-function __c19(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7535,7 +8683,11 @@ function __c19(j: number): any {
           primaryKey: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "IndexView" });
-    case 2:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7543,9 +8695,13 @@ function __c19(j: number): any {
           sizeFormat: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/stats", code: 200 })),
       ).annotate({ identifier: "GetIndexStatsRequest" });
-    case 3:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           numberOfDocuments: S.Number,
@@ -7554,13 +8710,17 @@ function __c19(j: number): any {
           rawDocumentDbSize: S.Unknown,
           avgDocumentSize: S.Unknown,
           isIndexing: S.Boolean,
-          internalDatabaseSizes: S.optional(__S(155, __c19, 3)),
+          internalDatabaseSizes: S.optional(__S(4448, __c139, 0)),
           numberOfEmbeddings: S.optional(S.NullOr(S.Number)),
           numberOfEmbeddedDocuments: S.optional(S.NullOr(S.Number)),
-          fieldDistribution: __S(118, __c14, 6),
+          fieldDistribution: __S(3648, __c114, 0),
         }),
       ).annotate({ identifier: "IndexStats" });
-    case 5:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7574,11 +8734,15 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetlocalizedAttributesRequest",
       });
-    case 6:
-      return S.suspend(() => __S(108, __c13, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(3393, __c106, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetlocalizedAttributesResponse",
       });
-    case 7:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           target: S.optional(S.String),
@@ -7586,23 +8750,41 @@ function __c19(j: number): any {
           profileMemory: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/logs/stream", code: 200 })),
       ).annotate({ identifier: "GetLogsRequest" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetLogsResponse",
       });
-    case 1:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/metrics", code: 200 })),
       ).annotate({ identifier: "GetMetricsRequest" });
-    case 2:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          index_uid: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/compact", code: 200 })),
+      ).annotate({ identifier: "CompactRequest" });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/network", code: 200 })),
       ).annotate({ identifier: "GetNetworkRequest" });
-    case 3:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.NullOr(S.String)),
@@ -7610,32 +8792,32 @@ function __c20(j: number): any {
           writeApiKey: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Remote" });
-    case 4:
-      return S.Record(S.String, __S(163, __c20, 3));
-    case 5:
+    case 1:
+      return S.Record(S.String, __S(4640, __c145, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          remotes: S.optional(S.NullOr(__S(4, __c0, 4))),
-          addRemotes: S.optional(S.NullOr(__S(4, __c0, 4))),
-          removeRemotes: S.optional(S.NullOr(__S(4, __c0, 4))),
+          remotes: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          addRemotes: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          removeRemotes: S.optional(S.NullOr(__S(2432, __c76, 0))),
         }),
       ).annotate({ identifier: "Shard" });
-    case 6:
-      return S.Record(S.String, __S(165, __c20, 5));
-    case 7:
+    case 3:
+      return S.Record(S.String, __S(4642, __c145, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          remotes: S.optional(S.NullOr(__S(164, __c20, 4))),
-          shards: S.optional(S.NullOr(__S(166, __c20, 6))),
-          previousShards: S.optional(S.NullOr(__S(166, __c20, 6))),
+          remotes: S.optional(S.NullOr(__S(4641, __c145, 1))),
+          shards: S.optional(S.NullOr(__S(4643, __c145, 3))),
+          previousShards: S.optional(S.NullOr(__S(4643, __c145, 3))),
           self: S.optional(S.NullOr(S.String)),
           leader: S.optional(S.NullOr(S.String)),
-          previousRemotes: S.optional(S.NullOr(__S(164, __c20, 4))),
+          previousRemotes: S.optional(S.NullOr(__S(4641, __c145, 1))),
         }),
       ).annotate({ identifier: "Network" });
   }
 }
-function __c21(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7651,7 +8833,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetnonSeparatorTokensRequest",
       });
-    case 1:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7659,7 +8845,11 @@ function __c21(j: number): any {
           T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/pagination", code: 200 }),
         ),
       ).annotate({ identifier: "GetpaginationRequest" });
-    case 2:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7673,11 +8863,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetproximityPrecisionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetproximityPrecisionResponse",
       });
-    case 4:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7685,21 +8879,41 @@ function __c21(j: number): any {
           T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/ranking-rules", code: 200 }),
         ),
       ).annotate({ identifier: "GetrankingRulesRequest" });
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.suspend(() => __S(173, __c21, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(4800, __c150, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetrankingRulesResponse",
       });
-    case 7:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uid: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/dynamic-search-rules/{uid}", code: 200 })),
       ).annotate({ identifier: "GetRuleRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          lastUpdatedAt: S.optional(S.NullOr(S.String)),
+          precedence: S.optional(S.NullOr(S.Number)),
+          active: S.optional(S.Boolean),
+          conditions: S.optional(__S(4867, __c152, 3)),
+          actions: S.optional(__S(4872, __c152, 8)),
+        }),
+      ).annotate({ identifier: "DynamicSearchRule" });
   }
 }
-function __c22(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7718,15 +8932,15 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(11, __c1, 3)),
+          values: S.optional(__S(2816, __c88, 0)),
         }),
       ).annotate({ identifier: "FilterCondition" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          time: S.optional(S.NullOr(__S(176, __c22, 0))),
-          query: S.optional(S.NullOr(__S(177, __c22, 1))),
-          filter: S.optional(S.NullOr(__S(178, __c22, 2))),
+          time: S.optional(S.NullOr(__S(4864, __c152, 0))),
+          query: S.optional(S.NullOr(__S(4865, __c152, 1))),
+          filter: S.optional(S.NullOr(__S(4866, __c152, 2))),
         }),
       ).annotate({ identifier: "Conditions" });
     case 4:
@@ -7738,42 +8952,30 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "PinAction" });
     case 5:
-      return S.Array(__S(180, __c22, 4));
+      return S.Array(__S(4868, __c152, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           indexUid: S.optional(S.NullOr(S.String)),
-          ids: S.optional(S.NullOr(__S(4, __c0, 4))),
+          ids: S.optional(S.NullOr(__S(2432, __c76, 0))),
           filter: S.optional(S.Unknown),
           weight: S.Number,
         }),
       ).annotate({ identifier: "ScaleAction" });
     case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(4870, __c152, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          pin: S.optional(__S(181, __c22, 5)),
-          scale: S.optional(__S(183, __c22, 7)),
+          pin: S.optional(__S(4869, __c152, 5)),
+          scale: S.optional(__S(4871, __c152, 7)),
         }),
       ).annotate({ identifier: "RuleActions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          lastUpdatedAt: S.optional(S.NullOr(S.String)),
-          precedence: S.optional(S.NullOr(S.Number)),
-          active: S.optional(S.Boolean),
-          conditions: S.optional(__S(179, __c22, 3)),
-          actions: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({ identifier: "DynamicSearchRule" });
-    case 2:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7787,7 +8989,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetsearchableAttributesRequest",
       });
-    case 3:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7799,11 +9005,15 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetsearchCutoffMsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Number.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetsearchCutoffMsResponse",
       });
-    case 5:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7817,13 +9027,39 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetseparatorTokensRequest",
       });
-    case 6:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspace_uid: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/chats/{workspace_uid}/settings", code: 200 })),
       ).annotate({ identifier: "GetSettingsRequest" });
-    case 7:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/tasks/compact", code: 200 })),
+      ).annotate({ identifier: "CompactTaskQueueRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          preSize: S.optional(S.String),
+          postSize: S.optional(S.String),
+          status: S.String,
+          actionRequired: S.optional(S.NullOr(S.String)),
+          errorMessage: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "TaskCompactionSummary" });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7831,7 +9067,7 @@ function __c23(j: number): any {
           embedder: S.String.pipe(T.Query()),
           offset: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          attributes_to_retrieve: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          attributes_to_retrieve: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
           retrieve_vectors: S.optional(S.Boolean.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           show_ranking_score: S.optional(S.Boolean.pipe(T.Query())),
@@ -7842,32 +9078,9 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetSimilarRequest" });
   }
 }
-function __c24(j: number): any {
+function __c159(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.Number,
-          length: S.Number,
-          indices: S.optional(S.NullOr(__S(2, __c0, 2))),
-        }),
-      ).annotate({ identifier: "MatchBounds" });
-    case 1:
-      return S.Array(__S(192, __c24, 0));
-    case 2:
-      return S.Record(S.String, __S(193, __c24, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _formatted: S.optional(__S(11, __c1, 3)),
-          _matchesPosition: S.optional(S.NullOr(__S(194, __c24, 2))),
-          _rankingScore: S.optional(S.NullOr(S.Number)),
-          _rankingScoreDetails: S.optional(S.NullOr(__S(11, __c1, 3))),
-        }),
-      ).annotate({ identifier: "SearchHit" });
-    case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           hitsPerPage: S.optional(S.Number),
@@ -7877,13 +9090,44 @@ function __c24(j: number): any {
           limit: S.optional(S.Number),
           offset: S.optional(S.Number),
           estimatedTotalHits: S.optional(S.Number),
-          hits: __S(196, __c24, 4),
+          hits: __S(5124, __c160, 4),
           id: S.String,
           processingTimeMs: S.Number,
           performanceDetails: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "GetSimilarResponse" });
-    case 6:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.Number,
+          length: S.Number,
+          indices: S.optional(S.NullOr(__S(2336, __c73, 0))),
+        }),
+      ).annotate({ identifier: "MatchBounds" });
+    case 1:
+      return S.Array(__S(5120, __c160, 0));
+    case 2:
+      return S.Record(S.String, __S(5121, __c160, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          _formatted: S.optional(__S(2816, __c88, 0)),
+          _matchesPosition: S.optional(S.NullOr(__S(5122, __c160, 2))),
+          _rankingScore: S.optional(S.NullOr(S.Number)),
+          _rankingScoreDetails: S.optional(S.NullOr(__S(2816, __c88, 0))),
+        }),
+      ).annotate({ identifier: "SearchHit" });
+    case 4:
+      return S.Array(__S(5123, __c160, 3));
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7897,29 +9141,33 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetsortableAttributesRequest",
       });
-    case 7:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showInternalDatabaseSizes: S.optional(S.Boolean.pipe(T.Query())),
           sizeFormat: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/stats", code: 200 })),
       ).annotate({ identifier: "GetStatsRequest" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(156, __c19, 4));
     case 1:
+      return S.Record(S.String, __S(4449, __c139, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           databaseSize: S.Unknown,
           usedDatabaseSize: S.Unknown,
           lastUpdate: S.optional(S.NullOr(S.String)),
-          indexes: __S(200, __c25, 0),
+          indexes: __S(5185, __c162, 1),
         }),
       ).annotate({ identifier: "Stats" });
-    case 2:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7927,7 +9175,11 @@ function __c25(j: number): any {
           T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/stop-words", code: 200 }),
         ),
       ).annotate({ identifier: "GetstopWordsRequest" });
-    case 3:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -7935,36 +9187,23 @@ function __c25(j: number): any {
           T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/synonyms", code: 200 }),
         ),
       ).annotate({ identifier: "GetsynonymsRequest" });
-    case 4:
-      return S.suspend(() => __S(97, __c12, 1).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(3456, __c108, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetsynonymsResponse",
       });
-    case 5:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           task_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/tasks/{task_id}", code: 200 })),
       ).annotate({ identifier: "GetTaskRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.String,
-          code: S.String,
-          type: S.String,
-          link: S.String,
-        }),
-      ).annotate({ identifier: "ResponseError" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          remoteName: S.String,
-          taskUid: S.Number,
-          networkVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Origin" });
   }
 }
-function __c26(j: number): any {
+function __c166(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7976,7 +9215,7 @@ function __c26(j: number): any {
           type: S.String,
           canceledBy: S.optional(S.NullOr(S.Number)),
           details: S.optional(S.NullOr(S.Unknown)),
-          error: S.optional(S.NullOr(__S(206, __c25, 6))),
+          error: S.optional(S.NullOr(__S(5344, __c167, 0))),
           duration: S.optional(S.NullOr(S.String)),
           enqueuedAt: S.String,
           startedAt: S.optional(S.String),
@@ -7985,7 +9224,24 @@ function __c26(j: number): any {
           customMetadata: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskView" });
-    case 1:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.String,
+          code: S.String,
+          type: S.String,
+          link: S.String,
+        }),
+      ).annotate({ identifier: "ResponseError" });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           task_id: S.Number.pipe(T.Label()),
@@ -7993,18 +9249,22 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetTaskDocumentsFileRequest",
       });
-    case 2:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
           from: S.optional(S.Number.pipe(T.Query())),
           reverse: S.optional(S.Boolean.pipe(T.Query())),
-          batchUids: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          uids: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          canceledBy: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          types: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          statuses: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          indexUids: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          batchUids: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          uids: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          canceledBy: S.optional(__S(2336, __c73, 0).pipe(T.Query())),
+          types: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
+          statuses: S.optional(__S(2368, __c74, 0).pipe(T.Query())),
+          indexUids: S.optional(__S(2432, __c76, 0).pipe(T.Query())),
           afterEnqueuedAt: S.optional(S.String.pipe(T.Query())),
           beforeEnqueuedAt: S.optional(S.String.pipe(T.Query())),
           afterStartedAt: S.optional(S.String.pipe(T.Query())),
@@ -8013,23 +9273,31 @@ function __c26(j: number): any {
           beforeFinishedAt: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/tasks", code: 200 })),
       ).annotate({ identifier: "GetTasksRequest" });
-    case 3:
-      return S.Array(__S(208, __c26, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(5312, __c166, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: __S(211, __c26, 3),
+          results: __S(5409, __c169, 1),
           total: S.Number,
           limit: S.Number,
           from: S.optional(S.NullOr(S.Number)),
           next: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "AllTasks" });
-    case 5:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tasks/stream", code: 200 })),
       ).annotate({ identifier: "GetTasksStreamRequest" });
-    case 6:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           index_uid: S.String.pipe(T.Label()),
@@ -8037,15 +9305,48 @@ function __c26(j: number): any {
           T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/typo-tolerance", code: 200 }),
         ),
       ).annotate({ identifier: "GettypoToleranceRequest" });
-    case 7:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          uid: S.optional(S.NullOr(S.String)),
+          actions: __S(2368, __c74, 0),
+          indexes: __S(2432, __c76, 0),
+          expiresAt: S.NullOr(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/keys", code: 200 })),
+      ).annotate({ identifier: "CreateApiKeyRequest" });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          key: S.String,
+          uid: S.String,
+          actions: __S(2368, __c74, 0),
+          indexes: __S(2432, __c76, 0),
+          expiresAt: S.optional(S.NullOr(S.String)),
+          createdAt: S.String,
+          updatedAt: S.String,
+        }),
+      ).annotate({ identifier: "KeyView" });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/version", code: 200 })),
       ).annotate({ identifier: "GetVersionRequest" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           commitSha: S.String,
@@ -8053,51 +9354,63 @@ function __c27(j: number): any {
           pkgVersion: S.String,
         }),
       ).annotate({ identifier: "VersionResponse" });
-    case 1:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/webhooks/{uuid}", code: 200 })),
       ).annotate({ identifier: "GetWebhookRequest" });
-    case 2:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/webhooks", code: 200 })),
       ).annotate({ identifier: "GetWebhooksRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.NullOr(S.String)),
-          headers: S.optional(S.NullOr(__S(53, __c6, 5))),
+          headers: S.optional(S.NullOr(__S(1440, __c45, 0))),
           uuid: S.String,
           isEditable: S.Boolean,
         }),
       ).annotate({
         identifier: "WebhookWithMetadataRedactedAuthorization",
       });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(5633, __c176, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(220, __c27, 4),
+          results: __S(5634, __c176, 2),
         }),
       ).annotate({ identifier: "WebhookResults" });
-    case 6:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           offset: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/keys", code: 200 })),
       ).annotate({ identifier: "ListApiKeysRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           key: S.String,
           uid: S.String,
-          actions: __S(3, __c0, 3),
-          indexes: __S(4, __c0, 4),
+          actions: __S(2368, __c74, 0),
+          indexes: __S(2432, __c76, 0),
           expiresAt: S.optional(S.NullOr(S.String)),
           createdAt: S.String,
           updatedAt: S.String,
@@ -8105,29 +9418,29 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "PaginationViewKeyViewResultsItem",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(223, __c27, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(5665, __c177, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(224, __c28, 0),
+          results: __S(5666, __c177, 2),
           offset: S.Number,
           limit: S.Number,
           total: S.Number,
         }),
       ).annotate({ identifier: "PaginationViewKeyView" });
-    case 2:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           offset: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/indexes", code: 200 })),
       ).annotate({ identifier: "ListIndexesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uid: S.String,
@@ -8138,37 +9451,37 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "PaginationViewIndexViewResultsItem",
       });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(5697, __c178, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(228, __c28, 4),
+          results: __S(5698, __c178, 2),
           offset: S.Number,
           limit: S.Number,
           total: S.Number,
         }),
       ).annotate({ identifier: "PaginationViewIndexView" });
-    case 6:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.NullOr(S.String)),
           active: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "ListRulesFilter" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           offset: S.optional(S.Number),
           limit: S.optional(S.Number),
-          filter: S.optional(S.NullOr(__S(230, __c28, 6))),
+          filter: S.optional(S.NullOr(__S(5728, __c179, 0))),
         }).pipe(T.Http({ method: "POST", uri: "/dynamic-search-rules", code: 200 })),
       ).annotate({ identifier: "ListRulesRequest" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           uid: S.String,
@@ -8176,18 +9489,18 @@ function __c29(j: number): any {
           lastUpdatedAt: S.optional(S.NullOr(S.String)),
           precedence: S.optional(S.NullOr(S.Number)),
           active: S.optional(S.Boolean),
-          conditions: S.optional(__S(179, __c22, 3)),
-          actions: S.optional(__S(184, __c23, 0)),
+          conditions: S.optional(__S(4867, __c152, 3)),
+          actions: S.optional(__S(4872, __c152, 8)),
         }),
       ).annotate({
         identifier: "PaginationViewDynamicSearchRuleResultsItem",
       });
-    case 1:
-      return S.Array(__S(232, __c29, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(5730, __c179, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(233, __c29, 1),
+          results: __S(5731, __c179, 3),
           offset: S.Number,
           limit: S.Number,
           total: S.Number,
@@ -8195,11 +9508,19 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "PaginationViewDynamicSearchRule",
       });
-    case 3:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/chats", code: 200 })),
       ).annotate({ identifier: "ListWorkspacesRequest" });
-    case 4:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           io_modelcontextprotocol_protocolVersion: S.String.pipe(
@@ -8213,24 +9534,24 @@ function __c29(j: number): any {
           ),
         }),
       ).annotate({ identifier: "McpClientMeta" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _meta: S.optional(S.NullOr(__S(236, __c29, 4))),
+          _meta: S.optional(S.NullOr(__S(5792, __c181, 0))),
           name: S.optional(S.NullOr(S.String)),
           arguments: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ParamsWithMeta" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           jsonrpc: S.String,
           id: S.Unknown,
           method: S.String,
-          params: __S(237, __c29, 5),
+          params: __S(5793, __c181, 1),
         }).pipe(T.Http({ method: "POST", uri: "/mcp", code: 200 })),
       ).annotate({ identifier: "McpRequest" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -8239,61 +9560,57 @@ function __c29(j: number): any {
           inputSchema: S.Unknown,
         }),
       ).annotate({ identifier: "McpToolDefinition" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(239, __c29, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(5795, __c181, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           version: S.String,
         }),
       ).annotate({ identifier: "ClientServerInfo" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          io_modelcontextprotocol_serverInfo: __S(241, __c30, 1).pipe(
+          io_modelcontextprotocol_serverInfo: __S(5797, __c181, 5).pipe(
             T.Body("io.modelcontextprotocol/serverInfo"),
           ),
         }),
       ).annotate({ identifier: "McpServerMeta" });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          tools: S.optional(S.NullOr(__S(11, __c1, 3))),
+          tools: S.optional(S.NullOr(__S(2816, __c88, 0))),
         }),
       ).annotate({ identifier: "McpCapabilities" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           text: S.String,
         }),
       ).annotate({ identifier: "McpTextContentOutput" });
-    case 5:
-      return S.Array(__S(244, __c30, 4));
-    case 6:
+    case 9:
+      return S.Array(__S(5800, __c181, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           resultType: S.String,
           isError: S.optional(S.NullOr(S.Boolean)),
-          supportedVersions: S.optional(S.NullOr(__S(4, __c0, 4))),
-          tools: S.optional(S.NullOr(__S(240, __c30, 0))),
-          resources: S.optional(S.NullOr(__S(66, __c8, 2))),
-          prompts: S.optional(S.NullOr(__S(66, __c8, 2))),
-          _meta: S.optional(S.NullOr(__S(242, __c30, 2))),
-          capabilities: S.optional(S.NullOr(__S(243, __c30, 3))),
-          content: S.optional(S.NullOr(__S(245, __c30, 5))),
+          supportedVersions: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          tools: S.optional(S.NullOr(__S(5796, __c181, 4))),
+          resources: S.optional(S.NullOr(__S(2080, __c65, 0))),
+          prompts: S.optional(S.NullOr(__S(2080, __c65, 0))),
+          _meta: S.optional(S.NullOr(__S(5798, __c181, 6))),
+          capabilities: S.optional(S.NullOr(__S(5799, __c181, 7))),
+          content: S.optional(S.NullOr(__S(5801, __c181, 9))),
           structuredContent: S.optional(S.Unknown),
           instructions: S.optional(S.NullOr(S.String)),
           ttlMs: S.Number,
           cacheScope: S.String,
         }),
       ).annotate({ identifier: "McpResult" });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.Number,
@@ -8302,34 +9619,28 @@ function __c30(j: number): any {
           errorLink: S.String,
         }),
       ).annotate({ identifier: "McpErrorData" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           code: S.Number,
           message: S.String,
-          data: S.optional(S.NullOr(__S(247, __c30, 7))),
+          data: S.optional(S.NullOr(__S(5803, __c181, 11))),
         }),
       ).annotate({ identifier: "McpJsonRpcError" });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           jsonrpc: S.String,
           id: S.Unknown,
-          result: S.optional(S.NullOr(__S(246, __c30, 6))),
-          error: S.optional(S.NullOr(__S(248, __c31, 0))),
+          result: S.optional(S.NullOr(__S(5802, __c181, 10))),
+          error: S.optional(S.NullOr(__S(5804, __c181, 12))),
         }),
       ).annotate({ identifier: "McpResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userContext: S.String,
-        }),
-      ).annotate({ identifier: "Personalize" });
-    case 3:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           weight: S.optional(S.Number),
@@ -8337,7 +9648,7 @@ function __c31(j: number): any {
           queryPosition: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "FederationOptions" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           indexUid: S.String,
@@ -8346,98 +9657,137 @@ function __c31(j: number): any {
           limit: S.optional(S.NullOr(S.Number)),
           page: S.optional(S.NullOr(S.Number)),
           hitsPerPage: S.optional(S.NullOr(S.Number)),
-          attributesToRetrieve: S.optional(S.NullOr(__S(4, __c0, 4))),
-          attributesToCrop: S.optional(S.NullOr(__S(4, __c0, 4))),
+          attributesToRetrieve: S.optional(S.NullOr(__S(2432, __c76, 0))),
+          attributesToCrop: S.optional(S.NullOr(__S(2432, __c76, 0))),
           cropLength: S.optional(S.Number),
           cropMarker: S.optional(S.String),
-          attributesToHighlight: S.optional(S.NullOr(__S(4, __c0, 4))),
+          attributesToHighlight: S.optional(S.NullOr(__S(2432, __c76, 0))),
           highlightPreTag: S.optional(S.String),
           highlightPostTag: S.optional(S.String),
           showMatchesPosition: S.optional(S.Boolean),
           filter: S.optional(S.Unknown),
-          sort: S.optional(S.NullOr(__S(4, __c0, 4))),
+          sort: S.optional(S.NullOr(__S(2432, __c76, 0))),
           distinct: S.optional(S.NullOr(S.String)),
-          facets: S.optional(S.NullOr(__S(4, __c0, 4))),
+          facets: S.optional(S.NullOr(__S(2432, __c76, 0))),
           matchingStrategy: S.optional(S.String),
-          attributesToSearchOn: S.optional(S.NullOr(__S(4, __c0, 4))),
+          attributesToSearchOn: S.optional(S.NullOr(__S(2432, __c76, 0))),
           rankingScoreThreshold: S.optional(S.NullOr(S.Number)),
-          locales: S.optional(S.NullOr(__S(3, __c0, 3))),
-          hybrid: S.optional(S.NullOr(__S(109, __c13, 5))),
-          vector: S.optional(S.NullOr(__S(2, __c0, 2))),
+          locales: S.optional(S.NullOr(__S(2368, __c74, 0))),
+          hybrid: S.optional(S.NullOr(__S(3200, __c100, 0))),
+          vector: S.optional(S.NullOr(__S(2336, __c73, 0))),
           retrieveVectors: S.optional(S.Boolean),
           media: S.optional(S.Unknown),
-          personalize: S.optional(S.NullOr(__S(250, __c31, 2))),
+          personalize: S.optional(S.NullOr(__S(5888, __c184, 0))),
           useNetwork: S.optional(S.NullOr(S.Boolean)),
           showRankingScore: S.optional(S.Boolean),
           showRankingScoreDetails: S.optional(S.Boolean),
           showPerformanceDetails: S.optional(S.NullOr(S.Boolean)),
-          federationOptions: S.optional(S.NullOr(__S(251, __c31, 3))),
+          federationOptions: S.optional(S.NullOr(__S(5824, __c182, 0))),
         }),
       ).annotate({ identifier: "SearchQueryWithIndex" });
-    case 5:
-      return S.Array(__S(252, __c31, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(5825, __c182, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           maxValuesPerFacet: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "MergeFacets" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
           offset: S.optional(S.Number),
           page: S.optional(S.NullOr(S.Number)),
           hitsPerPage: S.optional(S.NullOr(S.Number)),
-          facetsByIndex: S.optional(__S(97, __c12, 1)),
-          mergeFacets: S.optional(S.NullOr(__S(254, __c31, 6))),
+          facetsByIndex: S.optional(__S(3456, __c108, 0)),
+          mergeFacets: S.optional(S.NullOr(__S(5827, __c182, 3))),
           distinct: S.optional(S.NullOr(S.String)),
           showPerformanceDetails: S.optional(S.Boolean),
-          personalize: S.optional(S.NullOr(__S(250, __c31, 2))),
+          personalize: S.optional(S.NullOr(__S(5888, __c184, 0))),
         }),
       ).annotate({ identifier: "Federation" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          queries: __S(253, __c31, 5),
-          federation: S.optional(S.NullOr(__S(255, __c31, 7))),
+          queries: __S(5826, __c182, 2),
+          federation: S.optional(S.NullOr(__S(5828, __c182, 4))),
         }).pipe(T.Http({ method: "POST", uri: "/multi-search", code: 200 })),
       ).annotate({
         identifier: "MultiSearchWithPostRequest",
       });
-    case 1:
+    case 6:
       return S.Array(S.Number);
-    case 2:
-      return S.Record(S.String, __S(257, __c32, 1));
-    case 3:
-      return S.Record(S.String, __S(118, __c14, 6));
-    case 4:
+    case 7:
+      return S.Record(S.String, __S(5830, __c182, 6));
+    case 8:
+      return S.Record(S.String, __S(3648, __c114, 0));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          distribution: __S(5832, __c182, 8),
+          stats: __S(5921, __c185, 1),
+        }),
+      ).annotate({ identifier: "ComputedFacets" });
+    case 10:
+      return S.Record(S.String, __S(5833, __c182, 9));
+    case 11:
+      return S.Array(__S(5922, __c185, 2));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          hitsPerPage: S.optional(S.Number),
+          page: S.optional(S.Number),
+          totalPages: S.optional(S.Number),
+          totalHits: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          offset: S.optional(S.Number),
+          estimatedTotalHits: S.optional(S.Number),
+          hits: __S(5124, __c160, 4),
+          queryVectors: S.optional(S.NullOr(__S(5831, __c182, 7))),
+          processingTimeMs: S.Number,
+          facetDistribution: S.optional(S.NullOr(__S(5832, __c182, 8))),
+          facetStats: S.optional(S.NullOr(__S(5921, __c185, 1))),
+          facetsByIndex: S.optional(__S(5834, __c182, 10)),
+          requestUid: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(S.NullOr(__S(5835, __c182, 11))),
+          remoteErrors: S.optional(S.NullOr(__S(5856, __c183, 0))),
+          semanticHitCount: S.optional(S.NullOr(S.Number)),
+          performanceDetails: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "MultiSearchWithPostResponse",
+      });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(5344, __c167, 0));
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userContext: S.String,
+        }),
+      ).annotate({ identifier: "Personalize" });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           min: S.Number,
           max: S.Number,
         }),
       ).annotate({ identifier: "FacetStats" });
-    case 5:
-      return S.Record(S.String, __S(260, __c32, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          distribution: __S(259, __c32, 3),
-          stats: __S(261, __c32, 5),
-        }),
-      ).annotate({ identifier: "ComputedFacets" });
-    case 7:
-      return S.Record(S.String, __S(262, __c32, 6));
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Record(S.String, __S(5920, __c185, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.NullOr(S.String)),
@@ -8447,36 +9797,11 @@ function __c33(j: number): any {
           remote: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SearchMetadata" });
-    case 1:
-      return S.Array(__S(264, __c33, 0));
-    case 2:
-      return S.Record(S.String, __S(206, __c25, 6));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hitsPerPage: S.optional(S.Number),
-          page: S.optional(S.Number),
-          totalPages: S.optional(S.Number),
-          totalHits: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          offset: S.optional(S.Number),
-          estimatedTotalHits: S.optional(S.Number),
-          hits: __S(196, __c24, 4),
-          queryVectors: S.optional(S.NullOr(__S(258, __c32, 2))),
-          processingTimeMs: S.Number,
-          facetDistribution: S.optional(S.NullOr(__S(259, __c32, 3))),
-          facetStats: S.optional(S.NullOr(__S(261, __c32, 5))),
-          facetsByIndex: S.optional(__S(263, __c32, 7)),
-          requestUid: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(265, __c33, 1))),
-          remoteErrors: S.optional(S.NullOr(__S(266, __c33, 2))),
-          semanticHitCount: S.optional(S.NullOr(S.Number)),
-          performanceDetails: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "MultiSearchWithPostResponse",
-      });
-    case 4:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String.pipe(T.Label()),
@@ -8484,750 +9809,8 @@ function __c33(j: number): any {
           name: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/keys/{key}", code: 200 })),
       ).annotate({ identifier: "PatchApiKeyRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          description: S.optional(S.NullOr(S.String)),
-          documentTemplate: S.optional(S.NullOr(S.String)),
-          documentTemplateMaxBytes: S.optional(S.NullOr(S.Number)),
-          searchParameters: S.optional(S.NullOr(__S(110, __c13, 6))),
-        }).pipe(T.Http({ method: "PATCH", uri: "/indexes/{index_uid}/settings/chat", code: 200 })),
-      ).annotate({ identifier: "PatchchatRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(141, __c17, 5).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/indexes/{index_uid}/settings/embedders", code: 200 }),
-        ),
-      ).annotate({ identifier: "PatchembeddersRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          maxValuesPerFacet: S.optional(S.NullOr(S.Number)),
-          sortFacetValuesBy: S.optional(S.NullOr(__S(100, __c12, 4))),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/indexes/{index_uid}/settings/faceting", code: 200 }),
-        ),
-      ).annotate({ identifier: "PatchfacetingRequest" });
   }
 }
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          metrics: S.optional(S.NullOr(S.Boolean)),
-          logsRoute: S.optional(S.NullOr(S.Boolean)),
-          tasksStreamingRoute: S.optional(S.NullOr(S.Boolean)),
-          editDocumentsByFunction: S.optional(S.NullOr(S.Boolean)),
-          containsFilter: S.optional(S.NullOr(S.Boolean)),
-          dynamicSearchRules: S.optional(S.NullOr(S.Boolean)),
-          network: S.optional(S.NullOr(S.Boolean)),
-          getTaskDocumentsRoute: S.optional(S.NullOr(S.Boolean)),
-          taskQueueCompactionRoute: S.optional(S.NullOr(S.Boolean)),
-          compositeEmbedders: S.optional(S.NullOr(S.Boolean)),
-          chatCompletions: S.optional(S.NullOr(S.Boolean)),
-          multimodal: S.optional(S.NullOr(S.Boolean)),
-          foreignKeys: S.optional(S.NullOr(S.Boolean)),
-          disableDocumentsFetchQueue: S.optional(S.NullOr(S.Boolean)),
-          legacySearch: S.optional(S.NullOr(S.Boolean)),
-          renderRoute: S.optional(S.NullOr(S.Boolean)),
-          mcpRoute: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/experimental-features", code: 200 })),
-      ).annotate({ identifier: "PatchFeaturesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          maxTotalHits: S.optional(S.NullOr(S.Number)),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/indexes/{index_uid}/settings/pagination", code: 200 }),
-        ),
-      ).annotate({ identifier: "PatchpaginationRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          system: S.optional(S.NullOr(S.String)),
-          searchDescription: S.optional(S.NullOr(S.String)),
-          searchQParam: S.optional(S.NullOr(S.String)),
-          searchFilterParam: S.optional(S.NullOr(S.String)),
-          searchIndexUidParam: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PatchSettingsRequestPrompts",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          workspace_uid: S.String.pipe(T.Label()),
-          source: S.optional(S.NullOr(S.String)),
-          orgId: S.optional(S.NullOr(S.String)),
-          projectId: S.optional(S.NullOr(S.String)),
-          apiVersion: S.optional(S.NullOr(S.String)),
-          deploymentId: S.optional(S.NullOr(S.String)),
-          baseUrl: S.optional(S.NullOr(S.String)),
-          apiKey: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          prompts: S.optional(S.NullOr(__S(274, __c34, 2))),
-        }).pipe(T.Http({ method: "PATCH", uri: "/chats/{workspace_uid}/settings", code: 200 })),
-      ).annotate({ identifier: "PatchSettingsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          minWordSizeForTypos: S.optional(S.NullOr(__S(98, __c12, 2))),
-          disableOnWords: S.optional(S.NullOr(__S(4, __c0, 4))),
-          disableOnAttributes: S.optional(S.NullOr(__S(4, __c0, 4))),
-          disableOnNumbers: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/indexes/{index_uid}/settings/typo-tolerance",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchtypoToleranceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          offset: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          fields: S.optional(S.NullOr(__S(4, __c0, 4))),
-          retrieveVectors: S.optional(S.Boolean),
-          ids: S.optional(S.NullOr(__S(4, __c0, 4))),
-          filter: S.optional(S.Unknown),
-          sort: S.optional(S.NullOr(__S(4, __c0, 4))),
-          useNetwork: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/documents/fetch", code: 200 })),
-      ).annotate({
-        identifier: "PostDocumentsByQueryRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          origin: __S(207, __c25, 7),
-          message: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/network/control", code: 200 })),
-      ).annotate({ identifier: "PostNetworkChangeRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          indexUid: S.optional(S.NullOr(S.String)),
-          embedder: S.optional(S.NullOr(S.String)),
-          fragment: S.optional(S.NullOr(S.String)),
-          inline: S.optional(S.Unknown),
-          documentTemplateMaxBytes: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "RenderQueryTemplate" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          indexUid: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(S.String)),
-          inline: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "RenderQueryInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          template: __S(279, __c34, 7),
-          input: S.optional(S.NullOr(__S(280, __c35, 0))),
-        }).pipe(T.Http({ method: "POST", uri: "/render-template", code: 200 })),
-      ).annotate({ identifier: "PostRenderRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          template: S.Unknown,
-          rendered: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "RenderResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          id: S.String,
-          offset: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          filter: S.optional(S.Unknown),
-          embedder: S.String,
-          attributesToRetrieve: S.optional(S.NullOr(__S(4, __c0, 4))),
-          retrieveVectors: S.optional(S.Boolean),
-          showRankingScore: S.optional(S.Boolean),
-          showRankingScoreDetails: S.optional(S.Boolean),
-          showPerformanceDetails: S.optional(S.Boolean),
-          rankingScoreThreshold: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/similar", code: 200 })),
-      ).annotate({ identifier: "PostSimilarRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(4, __c0, 4).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/dictionary", code: 200 }),
-        ),
-      ).annotate({ identifier: "PutdictionaryRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(4, __c0, 4).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/indexes/{index_uid}/settings/displayed-attributes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutdisplayedAttributesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/indexes/{index_uid}/settings/distinct-attribute",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutdistinctAttributeRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(94, __c11, 6).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/indexes/{index_uid}/settings/filterable-attributes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutfilterableAttributesRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(96, __c12, 0).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/foreign-keys", code: 200 }),
-        ),
-      ).annotate({ identifier: "PutforeignKeysRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(108, __c13, 4).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/indexes/{index_uid}/settings/localized-attributes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutlocalizedAttributesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(4, __c0, 4).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/indexes/{index_uid}/settings/non-separator-tokens",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutnonSeparatorTokensRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: S.String.pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/indexes/{index_uid}/settings/proximity-precision",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutproximityPrecisionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(173, __c21, 5).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/ranking-rules", code: 200 }),
-        ),
-      ).annotate({ identifier: "PutrankingRulesRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(4, __c0, 4).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/indexes/{index_uid}/settings/searchable-attributes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutsearchableAttributesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/indexes/{index_uid}/settings/search-cutoff-ms",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "PutsearchCutoffMsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(4, __c0, 4).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/indexes/{index_uid}/settings/separator-tokens",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutseparatorTokensRequest",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(4, __c0, 4).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/indexes/{index_uid}/settings/sortable-attributes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutsortableAttributesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(4, __c0, 4).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/stop-words", code: 200 }),
-        ),
-      ).annotate({ identifier: "PutstopWordsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: __S(97, __c12, 1).pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/synonyms", code: 200 }),
-        ),
-      ).annotate({ identifier: "PutsynonymsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          primaryKey: S.optional(S.String.pipe(T.Query())),
-          csvDelimiter: S.optional(S.String.pipe(T.Query())),
-          customMetadata: S.optional(S.String.pipe(T.Query())),
-          skipCreation: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/documents", code: 200 })),
-      ).annotate({ identifier: "ReplaceDocumentsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workspace_uid: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/chats/{workspace_uid}/settings", code: 200 })),
-      ).annotate({ identifier: "ResetSettingsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          facetQuery: S.optional(S.NullOr(S.String)),
-          facetName: S.String,
-          q: S.optional(S.NullOr(S.String)),
-          vector: S.optional(S.NullOr(__S(2, __c0, 2))),
-          media: S.optional(S.Unknown),
-          hybrid: S.optional(S.NullOr(__S(109, __c13, 5))),
-          filter: S.optional(S.Unknown),
-          matchingStrategy: S.optional(S.String),
-          attributesToSearchOn: S.optional(S.NullOr(__S(4, __c0, 4))),
-          rankingScoreThreshold: S.optional(S.NullOr(S.Number)),
-          locales: S.optional(S.NullOr(__S(3, __c0, 3))),
-          exhaustiveFacetCount: S.optional(S.NullOr(S.Boolean)),
-          useNetwork: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/facet-search", code: 200 })),
-      ).annotate({ identifier: "SearchRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.String,
-          count: S.Number,
-        }),
-      ).annotate({ identifier: "FacetValueHitSchema" });
-    case 7:
-      return S.Array(__S(302, __c37, 6));
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          facetHits: __S(303, __c37, 7),
-          facetQuery: S.optional(S.NullOr(S.String)),
-          processingTimeMs: S.Number,
-          remoteErrors: S.optional(S.NullOr(__S(266, __c33, 2))),
-        }),
-      ).annotate({ identifier: "FacetSearchResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/facet-search",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "SearchDeletefacetRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/indexes/{index_uid}/settings/prefix-search",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchDeleteprefixRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/facet-search", code: 200 }),
-        ),
-      ).annotate({ identifier: "SearchGetfacetRequest" });
-    case 4:
-      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
-        identifier: "SearchGetfacetResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/prefix-search", code: 200 }),
-        ),
-      ).annotate({ identifier: "SearchGetprefixRequest" });
-    case 6:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "SearchGetprefixResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/facet-search", code: 200 }),
-        ),
-      ).annotate({ identifier: "SearchPutfacetRequest" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          body: S.String.pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/prefix-search", code: 200 }),
-        ),
-      ).annotate({ identifier: "SearchPutprefixRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          q: S.optional(S.NullOr(S.String)),
-          offset: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          page: S.optional(S.NullOr(S.Number)),
-          hitsPerPage: S.optional(S.NullOr(S.Number)),
-          attributesToRetrieve: S.optional(S.NullOr(__S(4, __c0, 4))),
-          attributesToCrop: S.optional(S.NullOr(__S(4, __c0, 4))),
-          cropLength: S.optional(S.Number),
-          cropMarker: S.optional(S.String),
-          attributesToHighlight: S.optional(S.NullOr(__S(4, __c0, 4))),
-          highlightPreTag: S.optional(S.String),
-          highlightPostTag: S.optional(S.String),
-          showMatchesPosition: S.optional(S.Boolean),
-          filter: S.optional(S.Unknown),
-          sort: S.optional(S.NullOr(__S(4, __c0, 4))),
-          distinct: S.optional(S.NullOr(S.String)),
-          facets: S.optional(S.NullOr(__S(4, __c0, 4))),
-          matchingStrategy: S.optional(S.String),
-          attributesToSearchOn: S.optional(S.NullOr(__S(4, __c0, 4))),
-          rankingScoreThreshold: S.optional(S.NullOr(S.Number)),
-          locales: S.optional(S.NullOr(__S(3, __c0, 3))),
-          hybrid: S.optional(S.NullOr(__S(109, __c13, 5))),
-          vector: S.optional(S.NullOr(__S(2, __c0, 2))),
-          retrieveVectors: S.optional(S.Boolean),
-          media: S.optional(S.Unknown),
-          personalize: S.optional(S.NullOr(__S(250, __c31, 2))),
-          useNetwork: S.optional(S.NullOr(S.Boolean)),
-          showRankingScore: S.optional(S.Boolean),
-          showRankingScoreDetails: S.optional(S.Boolean),
-          showPerformanceDetails: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/search", code: 200 })),
-      ).annotate({ identifier: "SearchWithPostRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hitsPerPage: S.optional(S.Number),
-          page: S.optional(S.Number),
-          totalPages: S.optional(S.Number),
-          totalHits: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          offset: S.optional(S.Number),
-          estimatedTotalHits: S.optional(S.Number),
-          hits: __S(196, __c24, 4),
-          query: S.String,
-          queryVector: S.optional(S.NullOr(__S(2, __c0, 2))),
-          processingTimeMs: S.Number,
-          facetDistribution: S.optional(S.NullOr(__S(11, __c1, 3))),
-          facetStats: S.optional(S.NullOr(__S(261, __c32, 5))),
-          requestUid: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(264, __c33, 0))),
-          performanceDetails: S.optional(S.Unknown),
-          remoteErrors: S.optional(S.NullOr(__S(266, __c33, 2))),
-          semanticHitCount: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "SearchWithPostResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          q: S.optional(S.String.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          hitsPerPage: S.optional(S.Number.pipe(T.Query())),
-          attributesToRetrieve: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          attributesToCrop: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          cropLength: S.optional(S.Number.pipe(T.Query())),
-          cropMarker: S.optional(S.String.pipe(T.Query())),
-          attributesToHighlight: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          highlightPreTag: S.optional(S.String.pipe(T.Query())),
-          highlightPostTag: S.optional(S.String.pipe(T.Query())),
-          showMatchesPosition: S.optional(S.Boolean.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          distinct: S.optional(S.String.pipe(T.Query())),
-          facets: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          matchingStrategy: S.optional(S.String.pipe(T.Query())),
-          attributesToSearchOn: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          rankingScoreThreshold: S.optional(S.Number.pipe(T.Query())),
-          locales: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          hybridEmbedder: S.optional(S.String.pipe(T.Query())),
-          hybridSemanticRatio: S.optional(S.Number.pipe(T.Query())),
-          vector: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          retrieveVectors: S.optional(S.Boolean.pipe(T.Query())),
-          personalizeUserContext: S.optional(S.String.pipe(T.Query())),
-          useNetwork: S.optional(S.Boolean.pipe(T.Query())),
-          showRankingScore: S.optional(S.Boolean.pipe(T.Query())),
-          showRankingScoreDetails: S.optional(S.Boolean.pipe(T.Query())),
-          showPerformanceDetails: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/search", code: 200 })),
-      ).annotate({
-        identifier: "SearchWithUrlQueryRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          hitsPerPage: S.optional(S.Number),
-          page: S.optional(S.Number),
-          totalPages: S.optional(S.Number),
-          totalHits: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          offset: S.optional(S.Number),
-          estimatedTotalHits: S.optional(S.Number),
-          hits: __S(196, __c24, 4),
-          query: S.String,
-          queryVector: S.optional(S.NullOr(__S(2, __c0, 2))),
-          processingTimeMs: S.Number,
-          facetDistribution: S.optional(S.NullOr(__S(11, __c1, 3))),
-          facetStats: S.optional(S.NullOr(__S(261, __c32, 5))),
-          requestUid: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(264, __c33, 0))),
-          performanceDetails: S.optional(S.Unknown),
-          remoteErrors: S.optional(S.NullOr(__S(266, __c33, 2))),
-          semanticHitCount: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "SearchWithUrlQueryResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          indexes: __S(4, __c0, 4),
-          rename: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SwapIndexesPayload" });
-    case 6:
-      return S.Array(__S(317, __c39, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: __S(318, __c39, 6).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/swap-indexes", code: 200 })),
-      ).annotate({ identifier: "SwapIndexesRequest" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          displayedAttributes: S.optional(S.NullOr(__S(4, __c0, 4))),
-          searchableAttributes: S.optional(S.NullOr(__S(4, __c0, 4))),
-          filterableAttributes: S.optional(S.NullOr(__S(94, __c11, 6))),
-          sortableAttributes: S.optional(S.NullOr(__S(4, __c0, 4))),
-          foreignKeys: S.optional(S.NullOr(__S(96, __c12, 0))),
-          rankingRules: S.optional(S.NullOr(__S(4, __c0, 4))),
-          stopWords: S.optional(S.NullOr(__S(4, __c0, 4))),
-          nonSeparatorTokens: S.optional(S.NullOr(__S(4, __c0, 4))),
-          separatorTokens: S.optional(S.NullOr(__S(4, __c0, 4))),
-          dictionary: S.optional(S.NullOr(__S(4, __c0, 4))),
-          synonyms: S.optional(S.NullOr(__S(97, __c12, 1))),
-          distinctAttribute: S.optional(S.NullOr(S.String)),
-          proximityPrecision: S.optional(S.NullOr(S.String)),
-          typoTolerance: S.optional(S.NullOr(__S(99, __c12, 3))),
-          faceting: S.optional(S.NullOr(__S(101, __c12, 5))),
-          pagination: S.optional(S.NullOr(__S(102, __c12, 6))),
-          embedders: S.optional(S.NullOr(__S(106, __c13, 2))),
-          searchCutoffMs: S.optional(S.NullOr(S.Number)),
-          localizedAttributes: S.optional(S.NullOr(__S(108, __c13, 4))),
-          facetSearch: S.optional(S.NullOr(S.Boolean)),
-          prefixSearch: S.optional(S.NullOr(S.String)),
-          chat: S.optional(S.NullOr(__S(111, __c13, 7))),
-        }).pipe(T.Http({ method: "PATCH", uri: "/indexes/{index_uid}/settings", code: 200 })),
-      ).annotate({ identifier: "UpdateAllRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          primaryKey: S.optional(S.String.pipe(T.Query())),
-          csvDelimiter: S.optional(S.String.pipe(T.Query())),
-          customMetadata: S.optional(S.String.pipe(T.Query())),
-          skipCreation: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "PUT", uri: "/indexes/{index_uid}/documents", code: 200 })),
-      ).annotate({ identifier: "UpdateDocumentsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          index_uid: S.String.pipe(T.Label()),
-          primaryKey: S.optional(S.NullOr(S.String)),
-          uid: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/indexes/{index_uid}", code: 200 })),
-      ).annotate({ identifier: "UpdateIndexRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          remotes: S.optional(S.NullOr(__S(164, __c20, 4))),
-          shards: S.optional(S.NullOr(__S(166, __c20, 6))),
-          previousShards: S.optional(S.NullOr(__S(166, __c20, 6))),
-          self: S.optional(S.NullOr(S.String)),
-          leader: S.optional(S.NullOr(S.String)),
-          previousRemotes: S.optional(S.NullOr(__S(164, __c20, 4))),
-        }).pipe(T.Http({ method: "PATCH", uri: "/network", code: 200 })),
-      ).annotate({ identifier: "UpdateNetworkRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.String.pipe(T.Label()),
-          description: S.optional(S.NullOr(S.String)),
-          precedence: S.optional(S.NullOr(S.Number)),
-          active: S.optional(S.NullOr(S.Boolean)),
-          conditions: S.optional(S.NullOr(__S(179, __c22, 3))),
-          actions: S.optional(S.NullOr(__S(184, __c23, 0))),
-        }).pipe(T.Http({ method: "PATCH", uri: "/dynamic-search-rules/{uid}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateOrCreateRuleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          target: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/logs/stderr", code: 200 })),
-      ).annotate({
-        identifier: "UpdateStderrTargetRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-          url: S.optional(S.NullOr(S.String)),
-          headers: S.optional(S.NullOr(__S(53, __c6, 5))),
-        }).pipe(T.Http({ method: "PATCH", uri: "/webhooks/{uuid}", code: 200 })),
-      ).annotate({ identifier: "UpdateWebhookRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

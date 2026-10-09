@@ -70,7 +70,7 @@ export const createWarmPool: API.OperationMethod<
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateWarmPoolRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<WarmPool>,
+  output: __S(5, __c1, 1) as any as S.Schema<WarmPool>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -84,8 +84,8 @@ export const deleteWarmPool: API.OperationMethod<
   DeleteWarmPoolError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteWarmPoolRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteWarmPoolResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteWarmPoolRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DeleteWarmPoolResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -99,8 +99,8 @@ export const listWarmPools: API.OperationMethod<
   ListWarmPoolsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListWarmPoolsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListWarmPoolsResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListWarmPoolsRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<ListWarmPoolsResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -114,8 +114,8 @@ export const updateWarmPool: API.OperationMethod<
   UpdateWarmPoolError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<UpdateWarmPoolRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<WarmPool>,
+  input: __S(16, __c4, 0) as any as S.Schema<UpdateWarmPoolRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<WarmPool>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -133,9 +133,13 @@ function __c0(j: number): any {
           target: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/warm-pools", code: 200 })),
       ).annotate({ identifier: "CreateWarmPoolRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -148,38 +152,46 @@ function __c0(j: number): any {
           mem: S.Number,
           disk: S.Number,
           osUser: S.String,
-          env: __S(1, __c0, 1),
+          env: __S(4, __c1, 0),
           errorReason: S.optional(S.NullOr(S.String)),
           createdAt: S.String,
           updatedAt: S.String,
         }),
       ).annotate({ identifier: "WarmPool" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "DELETE", uri: "/warm-pools/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteWarmPoolRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteWarmPoolResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/warm-pools", code: 200 })),
       ).annotate({ identifier: "ListWarmPoolsRequest" });
-    case 6:
-      return S.Array(__S(2, __c0, 2));
-    case 7:
-      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(5, __c1, 1));
+    case 2:
+      return S.suspend(() => __S(13, __c3, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListWarmPoolsResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -191,7 +203,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UpdateWarmPoolRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

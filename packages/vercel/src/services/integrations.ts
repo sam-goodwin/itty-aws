@@ -3579,8 +3579,8 @@ export const connectIntegrationResourceToProject: API.OperationMethod<
   ConnectIntegrationResourceToProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ConnectIntegrationResourceToProjectRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ConnectIntegrationResourceToProjectResponse>,
+  input: __S(129, __c4, 1) as any as S.Schema<ConnectIntegrationResourceToProjectRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<ConnectIntegrationResourceToProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3600,8 +3600,8 @@ export const createIntegrationStoreDirect: API.OperationMethod<
   CreateIntegrationStoreDirectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateIntegrationStoreDirectRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<CreateIntegrationStoreDirectResponse>,
+  input: __S(162, __c5, 2) as any as S.Schema<CreateIntegrationStoreDirectRequest>,
+  output: __S(199, __c6, 7) as any as S.Schema<CreateIntegrationStoreDirectResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3615,8 +3615,8 @@ export const deleteConfiguration: API.OperationMethod<
   DeleteConfigurationError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteConfigurationRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DeleteConfigurationResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteConfigurationRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<DeleteConfigurationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3630,8 +3630,8 @@ export const getBillingPlans: API.OperationMethod<
   GetBillingPlansError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetBillingPlansRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetBillingPlansResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetBillingPlansRequest>,
+  output: __S(324, __c10, 4) as any as S.Schema<GetBillingPlansResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3645,8 +3645,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetConfigurationResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<GetConfigurationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3660,8 +3660,8 @@ export const getConfigurationProducts: API.OperationMethod<
   GetConfigurationProductsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetConfigurationProductsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<GetConfigurationProductsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetConfigurationProductsRequest>,
+  output: __S(17, __c0, 17) as any as S.Schema<GetConfigurationProductsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3675,8 +3675,8 @@ export const getConfigurations: API.OperationMethod<
   GetConfigurationsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetConfigurationsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GetConfigurationsResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetConfigurationsRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<GetConfigurationsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3690,8 +3690,8 @@ export const gitNamespaces: API.OperationMethod<
   GitNamespacesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GitNamespacesRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GitNamespacesResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<GitNamespacesRequest>,
+  output: __S(68, __c2, 4) as any as S.Schema<GitNamespacesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3705,8 +3705,8 @@ export const searchRepo: API.OperationMethod<
   SearchRepoError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<SearchRepoRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<SearchRepoResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<SearchRepoRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<SearchRepoResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3714,6 +3714,253 @@ export const searchRepo: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/integrations/configuration/{id}/products", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetConfigurationProductsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          slug: S.String,
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseIntegration",
+      });
+    case 3:
+      return S.Record(S.String, S.Unknown);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(3, __c0, 3),
+          required: S.optional(__S(224, __c7, 0)),
+          type: S.String,
+          ui_order: S.optional(__S(224, __c7, 0).pipe(T.Body("ui:order"))),
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseProductsItemMetadataSchema",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseProductsItemProtocolsAi",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          appUrlRegistrationSupport: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseProductsItemProtocolsAuthentication",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseProductsItemProtocolsChecks",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          edgeConfigSyncingSupport: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseProductsItemProtocolsExperimentation",
+      });
+    case 9:
+      return S.Record(S.String, S.String);
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          endpoint: S.String,
+          headers: S.optional(__S(9, __c0, 9)),
+          format: S.String,
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseProductsItemProtocolsLogDrain",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseProductsItemProtocolsMessaging",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          repl: S.optional(__S(225, __c7, 1)),
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseProductsItemProtocolsStorage",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          endpoint: S.String,
+          headers: S.optional(__S(9, __c0, 9)),
+          format: S.String,
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseProductsItemProtocolsTraceDrain",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          ai: S.optional(__S(5, __c0, 5)),
+          authentication: S.optional(__S(6, __c0, 6)),
+          checks: S.optional(__S(7, __c0, 7)),
+          experimentation: S.optional(__S(8, __c0, 8)),
+          logDrain: S.optional(__S(10, __c0, 10)),
+          messaging: S.optional(__S(11, __c0, 11)),
+          observability: S.optional(__S(11, __c0, 11)),
+          other: S.optional(__S(7, __c0, 7)),
+          storage: S.optional(__S(12, __c0, 12)),
+          traceDrain: S.optional(__S(13, __c0, 13)),
+          video: S.optional(__S(7, __c0, 7)),
+          workflow: S.optional(__S(11, __c0, 11)),
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseProductsItemProtocols",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          metadataSchema: __S(4, __c0, 4),
+          name: S.String,
+          primaryProtocol: S.optional(S.String),
+          protocols: __S(14, __c0, 14),
+          slug: S.String,
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponseProductsItem",
+      });
+    case 16:
+      return S.Array(__S(15, __c0, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          configuration: __S(1, __c0, 1),
+          integration: __S(2, __c0, 2),
+          products: __S(16, __c0, 16),
+        }),
+      ).annotate({
+        identifier: "GetConfigurationProductsResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          view: S.String.pipe(T.Query()),
+          installationType: S.optional(S.String.pipe(T.Query())),
+          integrationIdOrSlug: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/integrations/configurations", code: 200 })),
+      ).annotate({ identifier: "GetConfigurationsRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetConfigurationsResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String.pipe(T.Query())),
+          provider: S.optional(S.String.pipe(T.Query())),
+          viewerMetadata: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/integrations/git-namespaces", code: 200 })),
+      ).annotate({ identifier: "GitNamespacesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          canCreateApp: S.optional(S.Boolean),
+          role: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "GitNamespacesResponseBodyItemViewer",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Unknown,
+          installationId: S.optional(S.Number),
+          isAccessRestricted: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          ownerType: S.String,
+          provider: S.String,
+          requireReauth: S.optional(S.Boolean),
+          slug: S.String,
+          viewer: S.optional(__S(65, __c2, 1)),
+        }),
+      ).annotate({
+        identifier: "GitNamespacesResponseBodyItem",
+      });
+    case 3:
+      return S.Array(__S(66, __c2, 2));
+    case 4:
+      return S.suspend(() => __S(67, __c2, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GitNamespacesResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String.pipe(T.Query())),
+          namespaceId: S.optional(S.Unknown.pipe(T.Query())),
+          provider: S.optional(S.String.pipe(T.Query())),
+          installationId: S.optional(S.String.pipe(T.Query())),
+          host: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/integrations/search-repo", code: 200 })),
+      ).annotate({ identifier: "SearchRepoRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "SearchRepoResponse",
+      });
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
@@ -3725,7 +3972,7 @@ function __c0(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           projectId: S.String,
-          envVarEnvironments: S.optional(__S(0, __c0, 0)),
+          envVarEnvironments: S.optional(__S(128, __c4, 0)),
           makeEnvVarsSensitive: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -3741,11 +3988,15 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ConnectIntegrationResourceToProjectResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 4:
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -3753,9 +4004,9 @@ function __c0(j: number): any {
           name: S.String,
           integrationConfigurationId: S.String,
           integrationProductIdOrSlug: S.Unknown,
-          metadata: S.optional(__S(3, __c0, 3)),
+          metadata: S.optional(__S(160, __c5, 0)),
           externalId: S.optional(S.String),
-          protocolSettings: S.optional(__S(4, __c0, 4)),
+          protocolSettings: S.optional(__S(161, __c5, 1)),
           source: S.optional(S.String),
           billingPlanId: S.optional(S.String),
           paymentMethodId: S.optional(S.String),
@@ -3766,59 +4017,53 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateIntegrationStoreDirectRequest",
       });
-    case 6:
+    case 3:
       return S.Array(S.String);
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          owners: S.optional(__S(6, __c0, 6)),
+          owners: S.optional(__S(224, __c7, 0)),
           providers: S.Unknown,
-          repos: S.optional(__S(6, __c0, 6)),
+          repos: S.optional(__S(224, __c7, 0)),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProjectFilterGit",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          git: S.optional(__S(8, __c1, 0)),
+          git: S.optional(__S(164, __c5, 4)),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProjectFilter",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          environments: __S(6, __c0, 6),
+          environments: __S(224, __c7, 0),
           slug: S.String,
         }),
       ).annotate({
         identifier:
           "CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(166, __c5, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(11, __c1, 3),
+          actions: __S(167, __c5, 7),
           required: S.Boolean,
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments",
       });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(__S(12, __c1, 4)),
-          environments: __S(6, __c0, 6),
-          environmentVariables: __S(6, __c0, 6),
+          deployments: S.optional(__S(168, __c5, 8)),
+          environments: __S(224, __c7, 0),
+          environmentVariables: __S(224, __c7, 0),
           envVarPrefix: S.NullOr(S.String),
           framework: S.optional(S.NullOr(S.String)),
           id: S.String,
@@ -3830,43 +4075,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.String,
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.String,
-          line: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 10:
+      return S.Array(__S(169, __c5, 9));
+    case 11:
+      return S.Array(__S(256, __c8, 0));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           cost: S.optional(S.String),
           description: S.String,
-          details: S.optional(__S(16, __c2, 0)),
+          details: S.optional(__S(171, __c5, 11)),
           disabled: S.optional(S.Boolean),
           effectiveDate: S.optional(S.String),
-          highlightedDetails: S.optional(__S(16, __c2, 0)),
+          highlightedDetails: S.optional(__S(171, __c5, 11)),
           id: S.String,
           initialCharge: S.optional(S.String),
           maximumAmount: S.optional(S.String),
@@ -3875,14 +4096,14 @@ function __c2(j: number): any {
           name: S.String,
           paymentMethodRequired: S.Boolean,
           preauthorizationAmount: S.optional(S.Number),
-          quote: S.optional(__S(18, __c2, 2)),
+          quote: S.optional(__S(258, __c8, 2)),
           scope: S.String,
           type: S.String,
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreBillingPlan",
       });
-    case 4:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           agentTools: S.optional(S.Boolean),
@@ -3900,9 +4121,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreCapabilities",
       });
-    case 5:
+    case 14:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           href: S.optional(S.String),
@@ -3913,7 +4134,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreNotification",
       });
-    case 7:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           agentTools: S.optional(S.Boolean),
@@ -3938,24 +4159,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProductCapabilities",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
       return S.Record(S.String, S.Unknown);
-    case 1:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(24, __c3, 0),
-          required: S.optional(__S(6, __c0, 6)),
+          properties: __S(177, __c5, 17),
+          required: S.optional(__S(224, __c7, 0)),
           type: S.String,
-          ui_order: S.optional(__S(6, __c0, 6).pipe(T.Body("ui:order"))),
+          ui_order: S.optional(__S(224, __c7, 0).pipe(T.Body("ui:order"))),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProductMetadataSchema",
       });
-    case 2:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
@@ -3964,21 +4181,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem",
       });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 20:
+      return S.Array(__S(179, __c5, 19));
+    case 21:
       return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          supportsReadOnlyMode: S.Boolean,
-          welcomeMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateIntegrationStoreDirectResponseStoreProductRepl",
-      });
-    case 6:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -3987,37 +4194,33 @@ function __c3(j: number): any {
         identifier:
           "CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItem",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 23:
+      return S.Array(__S(182, __c5, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(__S(31, __c3, 7)),
+          actions: S.optional(__S(183, __c5, 23)),
           content: S.String,
           title: S.String,
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem",
       });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 25:
+      return S.Array(__S(184, __c5, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({
           framework: S.String,
-          steps: __S(33, __c4, 1),
+          steps: __S(185, __c5, 25),
           title: S.String,
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProductGuidesItem",
       });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 27:
+      return S.Array(__S(186, __c5, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           billable: S.optional(S.Boolean),
@@ -4043,11 +4246,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities",
       });
-    case 5:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.optional(__S(36, __c4, 4)),
-          flags: S.optional(__S(6, __c0, 6)),
+          capabilities: S.optional(__S(188, __c5, 28)),
+          flags: S.optional(__S(224, __c7, 0)),
           icon: S.String,
           id: S.String,
           name: S.String,
@@ -4057,35 +4260,35 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProductIntegration",
       });
-    case 6:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          agentSkills: S.optional(__S(6, __c0, 6)),
-          capabilities: S.optional(__S(23, __c2, 7)),
+          agentSkills: S.optional(__S(224, __c7, 0)),
+          capabilities: S.optional(__S(176, __c5, 16)),
           disableResourceRenaming: S.optional(S.Boolean),
           iconUrl: S.optional(S.String),
           id: S.optional(S.String),
-          metadataSchema: S.optional(__S(25, __c3, 1)),
+          metadataSchema: S.optional(__S(178, __c5, 18)),
           name: S.optional(S.String),
-          projectConnectionScopes: S.optional(__S(7, __c0, 7)),
-          resourceLinks: S.optional(__S(27, __c3, 3)),
+          projectConnectionScopes: S.optional(__S(163, __c5, 3)),
+          resourceLinks: S.optional(__S(180, __c5, 20)),
           resourceTitle: S.optional(S.String),
           shortDescription: S.optional(S.String),
           showSSOLinkOnProjectConnection: S.optional(S.Boolean),
           slug: S.optional(S.String),
-          tags: S.optional(__S(28, __c3, 4)),
-          repl: S.optional(__S(29, __c3, 5)),
-          guides: S.optional(__S(35, __c4, 3)),
-          integration: __S(37, __c4, 5),
+          tags: S.optional(__S(181, __c5, 21)),
+          repl: S.optional(__S(225, __c7, 1)),
+          guides: S.optional(__S(187, __c5, 27)),
+          integration: __S(189, __c5, 29),
           integrationConfigurationId: S.String,
           logDrainStatus: S.optional(S.String),
           primaryProtocol: S.optional(S.String),
-          supportedProtocols: __S(7, __c0, 7),
+          supportedProtocols: __S(163, __c5, 3),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProduct",
       });
-    case 7:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           target: S.String,
@@ -4097,14 +4300,14 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
+      return S.Array(__S(191, __c5, 31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          appUrls: S.optional(__S(40, __c5, 0)),
+          appUrls: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication",
@@ -4124,8 +4327,8 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          authentication: S.optional(__S(41, __c5, 1)),
-          experimentation: S.optional(__S(42, __c5, 2)),
+          authentication: S.optional(__S(193, __c6, 1)),
+          experimentation: S.optional(__S(194, __c6, 2)),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProtocolSettings",
@@ -4141,32 +4344,32 @@ function __c5(j: number): any {
         identifier: "CreateIntegrationStoreDirectResponseStoreSecretsItem",
       });
     case 5:
-      return S.Array(__S(44, __c5, 4));
+      return S.Array(__S(196, __c6, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          projectFilter: S.optional(__S(9, __c1, 1)),
-          projectsMetadata: __S(14, __c1, 6),
+          projectFilter: S.optional(__S(165, __c5, 5)),
+          projectsMetadata: __S(170, __c5, 10),
           status: S.NullOr(S.String),
           totalConnectedProjects: S.optional(S.Number),
           usageQuotaExceeded: S.Boolean,
-          billingPlan: S.optional(__S(19, __c2, 3)),
-          capabilities: S.optional(__S(20, __c2, 4)),
+          billingPlan: S.optional(__S(172, __c5, 12)),
+          capabilities: S.optional(__S(173, __c5, 13)),
           directPartnerConsoleUrl: S.optional(S.String),
           externalResourceId: S.String,
           externalResourceStatus: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(__S(21, __c2, 5)),
-          notification: S.optional(__S(22, __c2, 6)),
+          metadata: S.optional(__S(174, __c5, 14)),
+          notification: S.optional(__S(175, __c5, 15)),
           ownership: S.optional(S.String),
           parentId: S.optional(S.String),
-          product: __S(38, __c4, 6),
-          protocolSettings: S.optional(__S(43, __c5, 3)),
+          product: __S(190, __c5, 30),
+          protocolSettings: S.optional(__S(195, __c6, 3)),
           secretRotationCompletedAt: S.optional(S.Number),
           secretRotationRequestedAt: S.optional(S.Number),
           secretRotationRequestedBy: S.optional(S.String),
           secretRotationRequestedReason: S.optional(S.String),
-          secrets: __S(45, __c5, 5),
-          targets: S.optional(__S(28, __c3, 4)),
+          secrets: __S(197, __c6, 5),
+          targets: S.optional(__S(181, __c5, 21)),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStore",
@@ -4174,14 +4377,54 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          store: S.NullOr(__S(46, __c5, 6)),
+          store: S.NullOr(__S(198, __c6, 6)),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponse",
       });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          supportsReadOnlyMode: S.Boolean,
+          welcomeMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateIntegrationStoreDirectResponseStoreProductRepl",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.String,
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.String,
+          line: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem",
+      });
+    case 2:
+      return S.Array(__S(257, __c8, 1));
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4199,7 +4442,11 @@ function __c6(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteConfigurationResponse",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationIdOrSlug: S.String.pipe(T.Label()),
@@ -4217,17 +4464,17 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBillingPlansRequest" });
-    case 3:
-      return S.Array(__S(15, __c1, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           cost: S.optional(S.String),
           description: S.String,
-          details: S.optional(__S(51, __c6, 3)),
+          details: S.optional(__S(321, __c10, 1)),
           disabled: S.optional(S.Boolean),
           effectiveDate: S.optional(S.String),
-          highlightedDetails: S.optional(__S(51, __c6, 3)),
+          highlightedDetails: S.optional(__S(321, __c10, 1)),
           id: S.String,
           initialCharge: S.optional(S.String),
           maximumAmount: S.optional(S.String),
@@ -4236,22 +4483,26 @@ function __c6(j: number): any {
           name: S.String,
           paymentMethodRequired: S.Boolean,
           preauthorizationAmount: S.optional(S.Number),
-          quote: S.optional(__S(18, __c2, 2)),
+          quote: S.optional(__S(258, __c8, 2)),
           scope: S.String,
           type: S.String,
         }),
       ).annotate({
         identifier: "GetBillingPlansResponsePlansItem",
       });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(322, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          plans: __S(53, __c6, 5),
+          plans: __S(323, __c10, 3),
         }),
       ).annotate({ identifier: "GetBillingPlansResponse" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -4259,260 +4510,12 @@ function __c6(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/integrations/configuration/{id}", code: 200 })),
       ).annotate({ identifier: "GetConfigurationRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetConfigurationResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/integrations/configuration/{id}/products", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetConfigurationProductsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          slug: S.String,
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseIntegration",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(60, __c7, 4),
-          required: S.optional(__S(6, __c0, 6)),
-          type: S.String,
-          ui_order: S.optional(__S(6, __c0, 6).pipe(T.Body("ui:order"))),
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseProductsItemMetadataSchema",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseProductsItemProtocolsAi",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          appUrlRegistrationSupport: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseProductsItemProtocolsAuthentication",
-      });
   }
 }
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseProductsItemProtocolsChecks",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          edgeConfigSyncingSupport: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseProductsItemProtocolsExperimentation",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          endpoint: S.String,
-          headers: S.optional(__S(66, __c8, 2)),
-          format: S.String,
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseProductsItemProtocolsLogDrain",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseProductsItemProtocolsMessaging",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          repl: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseProductsItemProtocolsStorage",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          endpoint: S.String,
-          headers: S.optional(__S(66, __c8, 2)),
-          format: S.String,
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseProductsItemProtocolsTraceDrain",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ai: S.optional(__S(62, __c7, 6)),
-          authentication: S.optional(__S(63, __c7, 7)),
-          checks: S.optional(__S(64, __c8, 0)),
-          experimentation: S.optional(__S(65, __c8, 1)),
-          logDrain: S.optional(__S(67, __c8, 3)),
-          messaging: S.optional(__S(68, __c8, 4)),
-          observability: S.optional(__S(68, __c8, 4)),
-          other: S.optional(__S(64, __c8, 0)),
-          storage: S.optional(__S(69, __c8, 5)),
-          traceDrain: S.optional(__S(70, __c8, 6)),
-          video: S.optional(__S(64, __c8, 0)),
-          workflow: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseProductsItemProtocols",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          metadataSchema: __S(61, __c7, 5),
-          name: S.String,
-          primaryProtocol: S.optional(S.String),
-          protocols: __S(71, __c8, 7),
-          slug: S.String,
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponseProductsItem",
-      });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          configuration: __S(58, __c7, 2),
-          integration: __S(59, __c7, 3),
-          products: __S(73, __c9, 1),
-        }),
-      ).annotate({
-        identifier: "GetConfigurationProductsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          view: S.String.pipe(T.Query()),
-          installationType: S.optional(S.String.pipe(T.Query())),
-          integrationIdOrSlug: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/integrations/configurations", code: 200 })),
-      ).annotate({ identifier: "GetConfigurationsRequest" });
-    case 4:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetConfigurationsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String.pipe(T.Query())),
-          provider: S.optional(S.String.pipe(T.Query())),
-          viewerMetadata: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/integrations/git-namespaces", code: 200 })),
-      ).annotate({ identifier: "GitNamespacesRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          canCreateApp: S.optional(S.Boolean),
-          role: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "GitNamespacesResponseBodyItemViewer",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Unknown,
-          installationId: S.optional(S.Number),
-          isAccessRestricted: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          ownerType: S.String,
-          provider: S.String,
-          requireReauth: S.optional(S.Boolean),
-          slug: S.String,
-          viewer: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({
-        identifier: "GitNamespacesResponseBodyItem",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() => __S(80, __c10, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GitNamespacesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          namespaceId: S.optional(S.Unknown.pipe(T.Query())),
-          provider: S.optional(S.String.pipe(T.Query())),
-          installationId: S.optional(S.String.pipe(T.Query())),
-          host: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/integrations/search-repo", code: 200 })),
-      ).annotate({ identifier: "SearchRepoRequest" });
-    case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "SearchRepoResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

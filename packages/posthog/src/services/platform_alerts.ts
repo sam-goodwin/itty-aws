@@ -123,7 +123,7 @@ export const getPlatformAlert: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetPlatformAlertRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PlatformAlertConfiguration>,
+  output: __S(14, __c1, 6) as any as S.Schema<PlatformAlertConfiguration>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -136,8 +136,8 @@ export const listPlatformAlerts: API.OperationMethod<
   ListPlatformAlertsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListPlatformAlertsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<PaginatedPlatformAlertConfigurationList>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListPlatformAlertsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<PaginatedPlatformAlertConfigurationList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -159,9 +159,13 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPlatformAlertRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           start: S.optional(S.String),
@@ -170,15 +174,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AlertScheduleRestrictionWindow",
       });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          blocked_windows: S.optional(__S(3, __c0, 3)),
+          blocked_windows: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "AlertScheduleRestriction" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -189,16 +193,16 @@ function __c0(j: number): any {
           snooze_until: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PlatformAlert" });
+    case 5:
+      return S.Array(__S(12, __c1, 4));
     case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           enabled: S.Boolean,
           source_kind: S.String,
-          source_config: __S(1, __c0, 1),
+          source_config: __S(8, __c1, 0),
           threshold_count: S.Number,
           threshold_operator: S.String,
           window_minutes: S.Number,
@@ -208,20 +212,20 @@ function __c0(j: number): any {
           evaluation_periods: S.Number,
           datapoints_to_alarm: S.Number,
           cooldown_minutes: S.Number,
-          schedule_restriction: S.NullOr(__S(4, __c0, 4)),
+          schedule_restriction: S.NullOr(__S(11, __c1, 3)),
           next_check_at: S.NullOr(S.String),
           consecutive_failures: S.Number,
           legacy_configuration_id: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          alerts: __S(6, __c0, 6),
+          alerts: __S(13, __c1, 5),
         }),
       ).annotate({
         identifier: "PlatformAlertConfiguration",
       });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -236,21 +240,20 @@ function __c1(j: number): any {
         identifier: "ListPlatformAlertsRequest",
       });
     case 1:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(__S(14, __c1, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(9, __c1, 1),
+          results: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "PaginatedPlatformAlertConfigurationList",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

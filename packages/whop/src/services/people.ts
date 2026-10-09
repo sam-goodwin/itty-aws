@@ -425,7 +425,7 @@ export const getPerson: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetPersonRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetPersonResponse>,
+  output: __S(7, __c0, 7) as any as S.Schema<GetPersonResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -441,8 +441,8 @@ export const listPeople: API.PaginatedOperationMethod<
   ListPeopleResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(15, __c1, 7) as any as S.Schema<ListPeopleRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<ListPeopleResponse>,
+    input: __S(16, __c2, 0) as any as S.Schema<ListPeopleRequest>,
+    output: __S(20, __c2, 4) as any as S.Schema<ListPeopleResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -469,60 +469,6 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/people/{id}", code: 200 })),
       ).annotate({ identifier: "GetPersonRequest" });
     case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          browser: S.optional(S.NullOr(S.String)),
-          device: S.optional(S.NullOr(S.String)),
-          os: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "GetPersonResponseDevice" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          thumbnail_url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetPersonResponseFirstSourceAd",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ad: S.optional(S.NullOr(__S(3, __c0, 3))),
-          ad_group: S.optional(S.NullOr(__S(3, __c0, 3))),
-          campaign: S.optional(S.NullOr(__S(3, __c0, 3))),
-          domain: S.optional(S.NullOr(S.String)),
-          occurred_at: S.optional(S.NullOr(S.String)),
-          platform: S.optional(S.NullOr(S.String)),
-          type: S.String,
-          utm_source: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetPersonResponseFirstSource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.optional(S.NullOr(S.String)),
-          continent: S.optional(S.NullOr(S.String)),
-          country: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetPersonResponseLocation",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          joined_at: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-          usd_total_spend: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GetPersonResponseMember" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           event_id: S.String,
@@ -532,15 +478,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPersonResponsePurchasesItem",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.Array(__S(4, __c0, 4));
     case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.Array(__S(11, __c1, 3));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           events: S.Number,
@@ -549,22 +491,117 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetPersonResponseUsageBrowserItem",
       });
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          browser: S.optional(__S(5, __c0, 5)),
+          city: S.optional(__S(5, __c0, 5)),
+          country: S.optional(__S(5, __c0, 5)),
+          device: S.optional(__S(5, __c0, 5)),
+          ip: S.optional(__S(5, __c0, 5)),
+          os: S.optional(__S(5, __c0, 5)),
+          referrer: S.optional(__S(5, __c0, 5)),
+          timezone: S.optional(__S(5, __c0, 5)),
+        }),
+      ).annotate({ identifier: "GetPersonResponseUsage" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.String,
+          aov: S.optional(S.Number),
+          audience_ids: S.optional(__S(8, __c1, 0)),
+          custom_event_names: S.optional(__S(8, __c1, 0)),
+          device: S.optional(__S(9, __c1, 1)),
+          email: S.optional(S.NullOr(S.String)),
+          emails: S.optional(__S(8, __c1, 0)),
+          event_count: S.Number,
+          event_names: S.optional(__S(8, __c1, 0)),
+          first_purchase_at: S.optional(S.NullOr(S.String)),
+          first_seen_at: S.String,
+          first_source: S.optional(S.NullOr(__S(11, __c1, 3))),
+          id: S.String,
+          last_ip: S.optional(S.NullOr(S.String)),
+          last_purchase_at: S.optional(S.NullOr(S.String)),
+          last_seen_at: S.String,
+          last_source: S.optional(S.NullOr(__S(11, __c1, 3))),
+          location: S.optional(__S(12, __c1, 4)),
+          ltv: S.optional(S.Number),
+          member: S.optional(S.NullOr(__S(13, __c1, 5))),
+          name: S.optional(S.NullOr(S.String)),
+          names: S.optional(__S(8, __c1, 0)),
+          phone: S.optional(S.NullOr(S.String)),
+          phones: S.optional(__S(8, __c1, 0)),
+          purchase_count: S.Number,
+          purchases: S.optional(__S(2, __c0, 2)),
+          roles: S.optional(__S(8, __c1, 0)),
+          sources: S.optional(__S(3, __c0, 3)),
+          timezone: S.optional(S.NullOr(S.String)),
+          usage: S.optional(__S(6, __c0, 6)),
+          user: S.optional(S.NullOr(__S(14, __c1, 6))),
+          user_ids: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetPersonResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          browser: S.optional(S.NullOr(S.String)),
+          device: S.optional(S.NullOr(S.String)),
+          os: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "GetPersonResponseDevice" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          thumbnail_url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "GetPersonResponseFirstSourceAd",
+      });
     case 3:
-      return S.Array(__S(10, __c1, 2));
+      return S.suspend(() =>
+        S.Struct({
+          ad: S.optional(S.NullOr(__S(10, __c1, 2))),
+          ad_group: S.optional(S.NullOr(__S(10, __c1, 2))),
+          campaign: S.optional(S.NullOr(__S(10, __c1, 2))),
+          domain: S.optional(S.NullOr(S.String)),
+          occurred_at: S.optional(S.NullOr(S.String)),
+          platform: S.optional(S.NullOr(S.String)),
+          type: S.String,
+          utm_source: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "GetPersonResponseFirstSource",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          browser: S.optional(__S(11, __c1, 3)),
-          city: S.optional(__S(11, __c1, 3)),
-          country: S.optional(__S(11, __c1, 3)),
-          device: S.optional(__S(11, __c1, 3)),
-          ip: S.optional(__S(11, __c1, 3)),
-          os: S.optional(__S(11, __c1, 3)),
-          referrer: S.optional(__S(11, __c1, 3)),
-          timezone: S.optional(__S(11, __c1, 3)),
+          city: S.optional(S.NullOr(S.String)),
+          continent: S.optional(S.NullOr(S.String)),
+          country: S.optional(S.NullOr(S.String)),
         }),
-      ).annotate({ identifier: "GetPersonResponseUsage" });
+      ).annotate({
+        identifier: "GetPersonResponseLocation",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          joined_at: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(S.String)),
+          usd_total_spend: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GetPersonResponseMember" });
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -573,51 +610,18 @@ function __c1(j: number): any {
           username: S.String,
         }),
       ).annotate({ identifier: "GetPersonResponseUser" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.String,
-          aov: S.optional(S.Number),
-          audience_ids: S.optional(__S(1, __c0, 1)),
-          custom_event_names: S.optional(__S(1, __c0, 1)),
-          device: S.optional(__S(2, __c0, 2)),
-          email: S.optional(S.NullOr(S.String)),
-          emails: S.optional(__S(1, __c0, 1)),
-          event_count: S.Number,
-          event_names: S.optional(__S(1, __c0, 1)),
-          first_purchase_at: S.optional(S.NullOr(S.String)),
-          first_seen_at: S.String,
-          first_source: S.optional(S.NullOr(__S(4, __c0, 4))),
-          id: S.String,
-          last_ip: S.optional(S.NullOr(S.String)),
-          last_purchase_at: S.optional(S.NullOr(S.String)),
-          last_seen_at: S.String,
-          last_source: S.optional(S.NullOr(__S(4, __c0, 4))),
-          location: S.optional(__S(5, __c0, 5)),
-          ltv: S.optional(S.Number),
-          member: S.optional(S.NullOr(__S(6, __c0, 6))),
-          name: S.optional(S.NullOr(S.String)),
-          names: S.optional(__S(1, __c0, 1)),
-          phone: S.optional(S.NullOr(S.String)),
-          phones: S.optional(__S(1, __c0, 1)),
-          purchase_count: S.Number,
-          purchases: S.optional(__S(8, __c1, 0)),
-          roles: S.optional(__S(1, __c0, 1)),
-          sources: S.optional(__S(9, __c1, 1)),
-          timezone: S.optional(S.NullOr(S.String)),
-          usage: S.optional(__S(12, __c1, 4)),
-          user: S.optional(S.NullOr(__S(13, __c1, 5))),
-          user_ids: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "GetPersonResponse" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          source: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          source: S.optional(__S(8, __c1, 0).pipe(T.Query())),
           attribution_model: S.optional(S.String.pipe(T.Query())),
-          event_name: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          event_name: S.optional(__S(8, __c1, 0).pipe(T.Query())),
           custom_event: S.optional(S.String.pipe(T.Query())),
           event_within_days: S.optional(S.Number.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
@@ -660,41 +664,37 @@ function __c1(j: number): any {
           direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/people", code: 200 })),
       ).annotate({ identifier: "ListPeopleRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           aov: S.optional(S.Number),
-          device: S.optional(__S(2, __c0, 2)),
+          device: S.optional(__S(9, __c1, 1)),
           email: S.optional(S.NullOr(S.String)),
           event_count: S.Number,
           first_purchase_at: S.optional(S.NullOr(S.String)),
           first_seen_at: S.String,
-          first_source: S.optional(S.NullOr(__S(4, __c0, 4))),
+          first_source: S.optional(S.NullOr(__S(11, __c1, 3))),
           id: S.String,
           last_ip: S.optional(S.NullOr(S.String)),
           last_purchase_at: S.optional(S.NullOr(S.String)),
           last_seen_at: S.String,
-          last_source: S.optional(S.NullOr(__S(4, __c0, 4))),
-          location: S.optional(__S(5, __c0, 5)),
+          last_source: S.optional(S.NullOr(__S(11, __c1, 3))),
+          location: S.optional(__S(12, __c1, 4)),
           ltv: S.optional(S.Number),
-          member: S.optional(S.NullOr(__S(6, __c0, 6))),
+          member: S.optional(S.NullOr(__S(13, __c1, 5))),
           name: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
           purchase_count: S.Number,
           timezone: S.optional(S.NullOr(S.String)),
-          user: S.optional(S.NullOr(__S(13, __c1, 5))),
+          user: S.optional(S.NullOr(__S(14, __c1, 6))),
         }),
       ).annotate({
         identifier: "ListPeopleResponseDataItem",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.optional(S.NullOr(S.String)),
@@ -705,17 +705,16 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListPeopleResponsePageInfo",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(17, __c2, 1),
-          page_info: __S(18, __c2, 2),
+          data: __S(18, __c2, 2),
+          page_info: __S(19, __c2, 3),
           total_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListPeopleResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

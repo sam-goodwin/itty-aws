@@ -959,8 +959,8 @@ export const addHeldAccountsMattersHolds: API.OperationMethod<
   AddHeldAccountsMattersHoldsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddHeldAccountsMattersHoldsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AddHeldAccountsResponse>,
+  input: __S(497, __c31, 1) as any as S.Schema<AddHeldAccountsMattersHoldsRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<AddHeldAccountsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -979,8 +979,8 @@ export const addPermissionsMatters: API.OperationMethod<
   AddPermissionsMattersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<AddPermissionsMattersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<MatterPermission>,
+  input: __S(561, __c35, 1) as any as S.Schema<AddPermissionsMattersRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<MatterPermission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -999,8 +999,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CancelOperationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
+  input: __S(592, __c37, 0) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1019,8 +1019,8 @@ export const closeMatters: API.OperationMethod<
   CloseMattersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CloseMattersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CloseMatterResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<CloseMattersRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<CloseMatterResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1039,8 +1039,8 @@ export const countMatters: API.OperationMethod<
   CountMattersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CountMattersRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<Operation>,
+  input: __S(673, __c42, 1) as any as S.Schema<CountMattersRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1059,8 +1059,8 @@ export const createMatters: API.OperationMethod<
   CreateMattersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateMattersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Matter>,
+  input: __S(736, __c46, 0) as any as S.Schema<CreateMattersRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<Matter>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1079,8 +1079,8 @@ export const createMattersExports: API.OperationMethod<
   CreateMattersExportsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateMattersExportsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Export>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateMattersExportsRequest>,
+  output: __S(26, __c1, 10) as any as S.Schema<Export>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1099,8 +1099,8 @@ export const createMattersHolds: API.OperationMethod<
   CreateMattersHoldsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateMattersHoldsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Hold>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateMattersHoldsRequest>,
+  output: __S(69, __c4, 5) as any as S.Schema<Hold>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1119,8 +1119,8 @@ export const createMattersHoldsAccounts: API.OperationMethod<
   CreateMattersHoldsAccountsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateMattersHoldsAccountsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<HeldAccount>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateMattersHoldsAccountsRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<HeldAccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1139,8 +1139,8 @@ export const createMattersSavedQueries: API.OperationMethod<
   CreateMattersSavedQueriesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateMattersSavedQueriesRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<SavedQuery>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateMattersSavedQueriesRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1159,8 +1159,8 @@ export const deleteMatters: API.OperationMethod<
   DeleteMattersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteMattersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Matter>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteMattersRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<Matter>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1179,8 +1179,8 @@ export const deleteMattersExports: API.OperationMethod<
   DeleteMattersExportsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteMattersExportsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteMattersExportsRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1199,8 +1199,8 @@ export const deleteMattersHolds: API.OperationMethod<
   DeleteMattersHoldsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteMattersHoldsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteMattersHoldsRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1219,8 +1219,8 @@ export const deleteMattersHoldsAccounts: API.OperationMethod<
   DeleteMattersHoldsAccountsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteMattersHoldsAccountsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteMattersHoldsAccountsRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1239,8 +1239,8 @@ export const deleteMattersSavedQueries: API.OperationMethod<
   DeleteMattersSavedQueriesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteMattersSavedQueriesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteMattersSavedQueriesRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1259,8 +1259,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteOperationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteOperationsRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1274,8 +1274,8 @@ export const getMatters: API.OperationMethod<
   GetMattersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetMattersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Matter>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetMattersRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<Matter>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1289,8 +1289,8 @@ export const getMattersExports: API.OperationMethod<
   GetMattersExportsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetMattersExportsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Export>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetMattersExportsRequest>,
+  output: __S(26, __c1, 10) as any as S.Schema<Export>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1304,8 +1304,8 @@ export const getMattersHolds: API.OperationMethod<
   GetMattersHoldsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetMattersHoldsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Hold>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetMattersHoldsRequest>,
+  output: __S(69, __c4, 5) as any as S.Schema<Hold>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1319,8 +1319,8 @@ export const getMattersSavedQueries: API.OperationMethod<
   GetMattersSavedQueriesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetMattersSavedQueriesRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<SavedQuery>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetMattersSavedQueriesRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1334,8 +1334,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetOperationsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<Operation>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1350,8 +1350,8 @@ export const listMatters: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListMattersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListMattersRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<ListMattersResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListMattersRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<ListMattersResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1367,8 +1367,8 @@ export const listMattersExports: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListExportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListMattersExportsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListExportsResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListMattersExportsRequest>,
+  output: __S(322, __c20, 2) as any as S.Schema<ListExportsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1384,8 +1384,8 @@ export const listMattersHolds: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListHoldsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListMattersHoldsRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<ListHoldsResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListMattersHoldsRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<ListHoldsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1400,8 +1400,8 @@ export const listMattersHoldsAccounts: API.OperationMethod<
   ListMattersHoldsAccountsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListMattersHoldsAccountsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ListHeldAccountsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListMattersHoldsAccountsRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<ListHeldAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1416,8 +1416,8 @@ export const listMattersSavedQueries: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListSavedQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListMattersSavedQueriesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ListSavedQueriesResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListMattersSavedQueriesRequest>,
+  output: __S(370, __c23, 2) as any as S.Schema<ListSavedQueriesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1433,8 +1433,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ListOperationsResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1454,8 +1454,8 @@ export const removeHeldAccountsMattersHolds: API.OperationMethod<
   RemoveHeldAccountsMattersHoldsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<RemoveHeldAccountsMattersHoldsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<RemoveHeldAccountsResponse>,
+  input: __S(401, __c25, 1) as any as S.Schema<RemoveHeldAccountsMattersHoldsRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<RemoveHeldAccountsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1474,8 +1474,8 @@ export const removePermissionsMatters: API.OperationMethod<
   RemovePermissionsMattersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<RemovePermissionsMattersRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
+  input: __S(417, __c26, 1) as any as S.Schema<RemovePermissionsMattersRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1494,8 +1494,8 @@ export const reopenMatters: API.OperationMethod<
   ReopenMattersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ReopenMattersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ReopenMatterResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ReopenMattersRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ReopenMatterResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1514,8 +1514,8 @@ export const undeleteMatters: API.OperationMethod<
   UndeleteMattersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<UndeleteMattersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Matter>,
+  input: __S(448, __c28, 0) as any as S.Schema<UndeleteMattersRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<Matter>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1534,8 +1534,8 @@ export const updateMatters: API.OperationMethod<
   UpdateMattersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<UpdateMattersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Matter>,
+  input: __S(464, __c29, 0) as any as S.Schema<UpdateMattersRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<Matter>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1554,8 +1554,8 @@ export const updateMattersHolds: API.OperationMethod<
   UpdateMattersHoldsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<UpdateMattersHoldsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<Hold>,
+  input: __S(480, __c30, 0) as any as S.Schema<UpdateMattersHoldsRequest>,
+  output: __S(69, __c4, 5) as any as S.Schema<Hold>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1565,420 +1565,10 @@ export const updateMattersHolds: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountIds: S.optional(__S(0, __c0, 0)),
-          emails: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "AddHeldAccountsRequest" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
-          holdId: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/matters/{matterId}/holds/{holdId}:addHeldAccounts",
-            baseUrl: "https://vault.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddHeldAccountsMattersHoldsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          firstName: S.optional(S.String),
-          holdTime: S.optional(S.String),
-          lastName: S.optional(S.String),
-          accountId: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HeldAccount" });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(5, __c0, 5)),
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          account: S.optional(__S(3, __c0, 3)),
-          status: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "AddHeldAccountResult" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          responses: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "AddHeldAccountsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-          role: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MatterPermission" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sendEmails: S.optional(S.Boolean),
-          ccMe: S.optional(S.Boolean),
-          matterPermission: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "AddMatterPermissionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          matterId: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/matters/{matterId}:addPermissions",
-            baseUrl: "https://vault.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddPermissionsMattersRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://vault.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CancelOperationsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          matterId: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/matters/{matterId}:close",
-            baseUrl: "https://vault.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CloseMattersRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(10, __c1, 2));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          matterId: S.optional(S.String),
-          state: S.optional(S.String),
-          description: S.optional(S.String),
-          matterRegion: S.optional(S.String),
-          name: S.optional(S.String),
-          matterPermissions: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "Matter" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          matter: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "CloseMatterResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          teamDriveIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "TeamDriveInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sharedDriveIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "SharedDriveInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          excludeDrafts: S.optional(S.Boolean),
-          clientSideEncryptedOption: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MailOptions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ids: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "DriveDocumentIds" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          documentIds: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "DriveDocumentInfo" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          urls: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "SitesUrlInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          emails: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "AccountInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          includeRooms: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "HangoutsChatOptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          orgUnitId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OrgUnitInfo" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          versionDate: S.optional(S.String),
-          locationQuery: S.optional(__S(0, __c0, 0)),
-          minusWords: S.optional(__S(0, __c0, 0)),
-          peopleQuery: S.optional(__S(0, __c0, 0)),
-          responseStatuses: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "CalendarOptions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          coveredData: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "VoiceOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sharedDrivesOption: S.optional(S.String),
-          versionDate: S.optional(S.String),
-          includeSharedDrives: S.optional(S.Boolean),
-          includeTeamDrives: S.optional(S.Boolean),
-          clientSideEncryptedOption: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DriveOptions" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          roomId: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "HangoutsChatInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          teamDriveInfo: S.optional(__S(19, __c2, 3)),
-          sharedDriveInfo: S.optional(__S(20, __c2, 4)),
-          mailOptions: S.optional(__S(21, __c2, 5)),
-          driveDocumentInfo: S.optional(__S(23, __c2, 7)),
-          sitesUrlInfo: S.optional(__S(24, __c3, 0)),
-          dataScope: S.optional(S.String),
-          accountInfo: S.optional(__S(25, __c3, 1)),
-          startTime: S.optional(S.String),
-          hangoutsChatOptions: S.optional(__S(26, __c3, 2)),
-          geminiOptions: S.optional(__S(13, __c1, 5)),
-          orgUnitInfo: S.optional(__S(27, __c3, 3)),
-          calendarOptions: S.optional(__S(29, __c3, 5)),
-          voiceOptions: S.optional(__S(30, __c3, 6)),
-          driveOptions: S.optional(__S(31, __c3, 7)),
-          searchMethod: S.optional(S.String),
-          terms: S.optional(S.String),
-          corpus: S.optional(S.String),
-          endTime: S.optional(S.String),
-          timeZone: S.optional(S.String),
-          method: S.optional(S.String),
-          hangoutsChatInfo: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "Query" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          view: S.optional(S.String),
-          query: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "CountArtifactsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          matterId: S.String.pipe(T.Label()),
-          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/matters/{matterId}:count",
-            baseUrl: "https://vault.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CountMattersRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(4, __c0, 4)),
-          error: S.optional(__S(6, __c0, 6)),
-          name: S.optional(S.String),
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "v1/matters", baseUrl: "https://vault.googleapis.com/" }),
-        ),
-      ).annotate({ identifier: "CreateMattersRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          exportFormat: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GroupsExportOptions" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          showConfidentialModeContent: S.optional(S.Boolean),
-          exportFormat: S.optional(S.String),
-          useNewExport: S.optional(S.Boolean),
-          exportLinkedDriveFiles: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "MailExportOptions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          includeAccessInfo: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DriveExportOptions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          exportFormat: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HangoutsChatExportOptions",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupsOptions: S.optional(__S(39, __c4, 7)),
-          mailOptions: S.optional(__S(40, __c5, 0)),
-          driveOptions: S.optional(__S(41, __c5, 1)),
-          geminiOptions: S.optional(__S(39, __c4, 7)),
-          hangoutsChatOptions: S.optional(__S(42, __c5, 2)),
-          voiceOptions: S.optional(__S(39, __c4, 7)),
-          calendarOptions: S.optional(__S(39, __c4, 7)),
-          region: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExportOptions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          bucketName: S.optional(S.String),
-          objectName: S.optional(S.String),
-          size: S.optional(S.String),
-          md5Hash: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloudStorageFile" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          files: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "CloudStorageSink" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          totalArtifactCount: S.optional(S.String),
-          exportedArtifactCount: S.optional(S.String),
-          sizeInBytes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExportStats" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requester: S.optional(__S(38, __c4, 6)),
-          status: S.optional(S.String),
-          name: S.optional(S.String),
-          matterId: S.optional(S.String),
-          exportOptions: S.optional(__S(43, __c5, 3)),
-          cloudStorageSink: S.optional(__S(46, __c5, 6)),
-          createTime: S.optional(S.String),
-          id: S.optional(S.String),
-          parentExportId: S.optional(S.String),
-          stats: S.optional(__S(47, __c5, 7)),
-          query: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "Export" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          matterId: S.String.pipe(T.Label()),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(26, __c1, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1989,71 +1579,109 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateMattersExportsRequest",
       });
-    case 2:
-      return S.Array(__S(3, __c0, 3));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          terms: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HeldGroupsQuery" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          includeTeamDriveFiles: S.optional(S.Boolean),
-          includeSharedDriveFiles: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "HeldDriveQuery" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          terms: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HeldMailQuery" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupsQuery: S.optional(__S(51, __c6, 3)),
-          driveQuery: S.optional(__S(52, __c6, 4)),
-          mailQuery: S.optional(__S(53, __c6, 5)),
-          geminiQuery: S.optional(__S(13, __c1, 5)),
-          calendarQuery: S.optional(__S(13, __c1, 5)),
-          voiceQuery: S.optional(__S(30, __c3, 6)),
-          hangoutsChatQuery: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "CorpusQuery" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          holdTime: S.optional(S.String),
-          orgUnitId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HeldOrgUnit" });
   }
 }
-function __c7(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(__S(50, __c6, 2)),
-          holdId: S.optional(S.String),
-          name: S.optional(S.String),
-          query: S.optional(__S(54, __c6, 6)),
-          updateTime: S.optional(S.String),
-          corpus: S.optional(S.String),
-          orgUnit: S.optional(__S(55, __c6, 7)),
+          displayName: S.optional(S.String),
+          email: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Hold" });
+      ).annotate({ identifier: "UserInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
+          exportFormat: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GroupsExportOptions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          showConfidentialModeContent: S.optional(S.Boolean),
+          exportFormat: S.optional(S.String),
+          useNewExport: S.optional(S.Boolean),
+          exportLinkedDriveFiles: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MailExportOptions" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          includeAccessInfo: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DriveExportOptions" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          exportFormat: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HangoutsChatExportOptions",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          groupsOptions: S.optional(__S(17, __c1, 1)),
+          mailOptions: S.optional(__S(18, __c1, 2)),
+          driveOptions: S.optional(__S(19, __c1, 3)),
+          geminiOptions: S.optional(__S(17, __c1, 1)),
+          hangoutsChatOptions: S.optional(__S(20, __c1, 4)),
+          voiceOptions: S.optional(__S(17, __c1, 1)),
+          calendarOptions: S.optional(__S(17, __c1, 1)),
+          region: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportOptions" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          bucketName: S.optional(S.String),
+          objectName: S.optional(S.String),
+          size: S.optional(S.String),
+          md5Hash: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudStorageFile" });
+    case 7:
+      return S.Array(__S(22, __c1, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          files: S.optional(__S(23, __c1, 7)),
+        }),
+      ).annotate({ identifier: "CloudStorageSink" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          totalArtifactCount: S.optional(S.String),
+          exportedArtifactCount: S.optional(S.String),
+          sizeInBytes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportStats" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          requester: S.optional(__S(16, __c1, 0)),
+          status: S.optional(S.String),
+          name: S.optional(S.String),
+          matterId: S.optional(S.String),
+          exportOptions: S.optional(__S(21, __c1, 5)),
+          cloudStorageSink: S.optional(__S(24, __c1, 8)),
+          createTime: S.optional(S.String),
+          id: S.optional(S.String),
+          parentExportId: S.optional(S.String),
+          stats: S.optional(__S(25, __c1, 9)),
+          query: S.optional(__S(715, __c44, 11)),
+        }),
+      ).annotate({ identifier: "Export" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           matterId: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(69, __c4, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2064,12 +1692,80 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateMattersHoldsRequest",
       });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(512, __c32, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          terms: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HeldGroupsQuery" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          includeTeamDriveFiles: S.optional(S.Boolean),
+          includeSharedDriveFiles: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "HeldDriveQuery" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          terms: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HeldMailQuery" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          groupsQuery: S.optional(__S(64, __c4, 0)),
+          driveQuery: S.optional(__S(65, __c4, 1)),
+          mailQuery: S.optional(__S(66, __c4, 2)),
+          geminiQuery: S.optional(__S(608, __c38, 0)),
+          calendarQuery: S.optional(__S(608, __c38, 0)),
+          voiceQuery: S.optional(__S(690, __c43, 2)),
+          hangoutsChatQuery: S.optional(__S(688, __c43, 0)),
+        }),
+      ).annotate({ identifier: "CorpusQuery" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          holdTime: S.optional(S.String),
+          orgUnitId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HeldOrgUnit" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          accounts: S.optional(__S(48, __c3, 0)),
+          holdId: S.optional(S.String),
+          name: S.optional(S.String),
+          query: S.optional(__S(67, __c4, 3)),
+          updateTime: S.optional(S.String),
+          corpus: S.optional(S.String),
+          orgUnit: S.optional(__S(68, __c4, 4)),
+        }),
+      ).annotate({ identifier: "Hold" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           holdId: S.String.pipe(T.Label()),
           matterId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(512, __c32, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2080,21 +1776,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateMattersHoldsAccountsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          createTime: S.optional(S.String),
-          query: S.optional(__S(33, __c4, 1)),
-          matterId: S.optional(S.String),
-          savedQueryId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SavedQuery" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(112, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2105,7 +1795,25 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateMattersSavedQueriesRequest",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          createTime: S.optional(S.String),
+          query: S.optional(__S(715, __c44, 11)),
+          matterId: S.optional(S.String),
+          savedQueryId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SavedQuery" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
@@ -2117,7 +1825,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteMattersRequest" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
@@ -2132,7 +1844,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteMattersExportsRequest",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
@@ -2149,7 +1865,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2167,7 +1883,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteMattersHoldsAccountsRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           savedQueryId: S.String.pipe(T.Label()),
@@ -2182,7 +1902,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteMattersSavedQueriesRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2190,7 +1914,11 @@ function __c8(j: number): any {
           T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://vault.googleapis.com/" }),
         ),
       ).annotate({ identifier: "DeleteOperationsRequest" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -2203,7 +1931,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMattersRequest" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
@@ -2216,7 +1948,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMattersExportsRequest" });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           holdId: S.String.pipe(T.Label()),
@@ -2230,7 +1966,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMattersHoldsRequest" });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           savedQueryId: S.String.pipe(T.Label()),
@@ -2245,7 +1985,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetMattersSavedQueriesRequest",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2255,7 +1999,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetOperationsRequest" });
   }
 }
-function __c9(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2269,15 +2013,19 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListMattersRequest" });
     case 1:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(657, __c41, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          matters: S.optional(__S(73, __c9, 1)),
+          matters: S.optional(__S(305, __c19, 1)),
         }),
       ).annotate({ identifier: "ListMattersResponse" });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2293,16 +2041,20 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListMattersExportsRequest",
       });
-    case 4:
-      return S.Array(__S(48, __c6, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(26, __c1, 10));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          exports: S.optional(__S(76, __c9, 4)),
+          exports: S.optional(__S(321, __c20, 1)),
         }),
       ).annotate({ identifier: "ListExportsResponse" });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
@@ -2317,20 +2069,20 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListMattersHoldsRequest" });
-    case 7:
-      return S.Array(__S(56, __c7, 0));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(69, __c4, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          holds: S.optional(__S(79, __c9, 7)),
+          holds: S.optional(__S(337, __c21, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListHoldsResponse" });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
@@ -2345,13 +2097,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListMattersHoldsAccountsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(__S(50, __c6, 2)),
+          accounts: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "ListHeldAccountsResponse" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2367,16 +2123,20 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListMattersSavedQueriesRequest",
       });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          savedQueries: S.optional(__S(84, __c10, 4)),
+          savedQueries: S.optional(__S(369, __c23, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSavedQueriesResponse" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -2388,34 +2148,34 @@ function __c10(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://vault.googleapis.com/" }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
-      return S.Array(__S(36, __c4, 4));
+    case 1:
+      return S.Array(__S(720, __c45, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(528, __c33, 0)),
+          nextPageToken: S.optional(S.String),
+          operations: S.optional(__S(385, __c24, 1)),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c11(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
-          nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountIds: S.optional(__S(0, __c0, 0)),
+          accountIds: S.optional(__S(528, __c33, 0)),
         }),
       ).annotate({
         identifier: "RemoveHeldAccountsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
           holdId: S.String.pipe(T.Label()),
-          body: S.optional(__S(89, __c11, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(400, __c25, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2426,17 +2186,21 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "RemoveHeldAccountsMattersHoldsRequest",
       });
+    case 2:
+      return S.Array(__S(546, __c34, 2));
     case 3:
-      return S.Array(__S(6, __c0, 6));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          statuses: S.optional(__S(91, __c11, 3)),
+          statuses: S.optional(__S(402, __c25, 2)),
         }),
       ).annotate({
         identifier: "RemoveHeldAccountsResponse",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
@@ -2444,11 +2208,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "RemoveMatterPermissionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
-          body: S.optional(__S(93, __c11, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(416, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2459,11 +2223,15 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "RemovePermissionsMattersRequest",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(608, __c38, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2474,13 +2242,13 @@ function __c11(j: number): any {
       ).annotate({ identifier: "ReopenMattersRequest" });
   }
 }
-function __c12(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(608, __c38, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2489,11 +2257,15 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UndeleteMattersRequest" });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           matterId: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(657, __c41, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2502,12 +2274,16 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateMattersRequest" });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           holdId: S.String.pipe(T.Label()),
           matterId: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(69, __c4, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2520,7 +2296,366 @@ function __c12(j: number): any {
       });
   }
 }
-
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountIds: S.optional(__S(528, __c33, 0)),
+          emails: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({ identifier: "AddHeldAccountsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          matterId: S.String.pipe(T.Label()),
+          holdId: S.String.pipe(T.Label()),
+          body: S.optional(__S(496, __c31, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/matters/{matterId}/holds/{holdId}:addHeldAccounts",
+            baseUrl: "https://vault.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddHeldAccountsMattersHoldsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.optional(__S(512, __c32, 0)),
+          status: S.optional(__S(546, __c34, 2)),
+        }),
+      ).annotate({ identifier: "AddHeldAccountResult" });
+    case 3:
+      return S.Array(__S(498, __c31, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          responses: S.optional(__S(499, __c31, 3)),
+        }),
+      ).annotate({ identifier: "AddHeldAccountsResponse" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          firstName: S.optional(S.String),
+          holdTime: S.optional(S.String),
+          lastName: S.optional(S.String),
+          accountId: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HeldAccount" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(544, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(545, __c34, 1)),
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sendEmails: S.optional(S.Boolean),
+          ccMe: S.optional(S.Boolean),
+          matterPermission: S.optional(__S(576, __c36, 0)),
+        }),
+      ).annotate({
+        identifier: "AddMatterPermissionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          matterId: S.String.pipe(T.Label()),
+          body: S.optional(__S(560, __c35, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/matters/{matterId}:addPermissions",
+            baseUrl: "https://vault.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddPermissionsMattersRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          role: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MatterPermission" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(608, __c38, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://vault.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CancelOperationsRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          matterId: S.String.pipe(T.Label()),
+          body: S.optional(__S(608, __c38, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/matters/{matterId}:close",
+            baseUrl: "https://vault.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CloseMattersRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          matter: S.optional(__S(657, __c41, 1)),
+        }),
+      ).annotate({ identifier: "CloseMatterResponse" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(576, __c36, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          matterId: S.optional(S.String),
+          state: S.optional(S.String),
+          description: S.optional(S.String),
+          matterRegion: S.optional(S.String),
+          name: S.optional(S.String),
+          matterPermissions: S.optional(__S(656, __c41, 0)),
+        }),
+      ).annotate({ identifier: "Matter" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          view: S.optional(S.String),
+          query: S.optional(__S(715, __c44, 11)),
+        }),
+      ).annotate({ identifier: "CountArtifactsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          matterId: S.String.pipe(T.Label()),
+          body: S.optional(__S(672, __c42, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/matters/{matterId}:count",
+            baseUrl: "https://vault.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CountMattersRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          includeRooms: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "HangoutsChatOptions" });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          coveredData: S.optional(__S(689, __c43, 1)),
+        }),
+      ).annotate({ identifier: "VoiceOptions" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamDriveIds: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({ identifier: "TeamDriveInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sharedDriveIds: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({ identifier: "SharedDriveInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          excludeDrafts: S.optional(S.Boolean),
+          clientSideEncryptedOption: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MailOptions" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ids: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({ identifier: "DriveDocumentIds" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          documentIds: S.optional(__S(707, __c44, 3)),
+        }),
+      ).annotate({ identifier: "DriveDocumentInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          urls: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({ identifier: "SitesUrlInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          emails: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({ identifier: "AccountInfo" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          orgUnitId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OrgUnitInfo" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          versionDate: S.optional(S.String),
+          locationQuery: S.optional(__S(528, __c33, 0)),
+          minusWords: S.optional(__S(528, __c33, 0)),
+          peopleQuery: S.optional(__S(528, __c33, 0)),
+          responseStatuses: S.optional(__S(689, __c43, 1)),
+        }),
+      ).annotate({ identifier: "CalendarOptions" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          sharedDrivesOption: S.optional(S.String),
+          versionDate: S.optional(S.String),
+          includeSharedDrives: S.optional(S.Boolean),
+          includeTeamDrives: S.optional(S.Boolean),
+          clientSideEncryptedOption: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DriveOptions" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          roomId: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({ identifier: "HangoutsChatInfo" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          teamDriveInfo: S.optional(__S(704, __c44, 0)),
+          sharedDriveInfo: S.optional(__S(705, __c44, 1)),
+          mailOptions: S.optional(__S(706, __c44, 2)),
+          driveDocumentInfo: S.optional(__S(708, __c44, 4)),
+          sitesUrlInfo: S.optional(__S(709, __c44, 5)),
+          dataScope: S.optional(S.String),
+          accountInfo: S.optional(__S(710, __c44, 6)),
+          startTime: S.optional(S.String),
+          hangoutsChatOptions: S.optional(__S(688, __c43, 0)),
+          geminiOptions: S.optional(__S(608, __c38, 0)),
+          orgUnitInfo: S.optional(__S(711, __c44, 7)),
+          calendarOptions: S.optional(__S(712, __c44, 8)),
+          voiceOptions: S.optional(__S(690, __c43, 2)),
+          driveOptions: S.optional(__S(713, __c44, 9)),
+          searchMethod: S.optional(S.String),
+          terms: S.optional(S.String),
+          corpus: S.optional(S.String),
+          endTime: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          method: S.optional(S.String),
+          hangoutsChatInfo: S.optional(__S(714, __c44, 10)),
+        }),
+      ).annotate({ identifier: "Query" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(544, __c34, 0)),
+          error: S.optional(__S(546, __c34, 2)),
+          name: S.optional(S.String),
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(544, __c34, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(657, __c41, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "v1/matters", baseUrl: "https://vault.googleapis.com/" }),
+        ),
+      ).annotate({ identifier: "CreateMattersRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

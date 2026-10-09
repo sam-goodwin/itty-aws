@@ -5759,8 +5759,8 @@ export const addBypassIp: API.OperationMethod<
   AddBypassIpError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddBypassIpRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AddBypassIpResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<AddBypassIpRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<AddBypassIpResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5780,14 +5780,14 @@ export const createSecurityFirewallConfigByConfigVersionActivate: API.OperationM
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4,
-    __c0,
-    4,
+    384,
+    __c12,
+    0,
   ) as any as S.Schema<CreateSecurityFirewallConfigByConfigVersionActivateRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    399,
+    __c12,
+    15,
   ) as any as S.Schema<CreateSecurityFirewallConfigByConfigVersionActivateResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
@@ -5802,8 +5802,8 @@ export const deleteSecurityFirewallConfig: API.OperationMethod<
   DeleteSecurityFirewallConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteSecurityFirewallConfigRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteSecurityFirewallConfigResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteSecurityFirewallConfigRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<DeleteSecurityFirewallConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5817,8 +5817,8 @@ export const generateFirewallRule: API.OperationMethod<
   GenerateFirewallRuleError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GenerateFirewallRuleRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GenerateFirewallRuleResponse>,
+  input: __S(482, __c15, 2) as any as S.Schema<GenerateFirewallRuleRequest>,
+  output: __S(491, __c15, 11) as any as S.Schema<GenerateFirewallRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5832,8 +5832,8 @@ export const getActiveAttackStatus: API.OperationMethod<
   GetActiveAttackStatusError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetActiveAttackStatusRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetActiveAttackStatusResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetActiveAttackStatusRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<GetActiveAttackStatusResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5847,8 +5847,8 @@ export const getBypassIp: API.OperationMethod<
   GetBypassIpError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetBypassIpRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetBypassIpResponse>,
+  input: __S(546, __c17, 2) as any as S.Schema<GetBypassIpRequest>,
+  output: __S(548, __c17, 4) as any as S.Schema<GetBypassIpResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5862,8 +5862,8 @@ export const getFirewallConfig: API.OperationMethod<
   GetFirewallConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetFirewallConfigRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetFirewallConfigResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetFirewallConfigRequest>,
+  output: __S(9, __c0, 9) as any as S.Schema<GetFirewallConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5877,8 +5877,8 @@ export const getSecurityFirewallConfig: API.OperationMethod<
   GetSecurityFirewallConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetSecurityFirewallConfigRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GetSecurityFirewallConfigResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetSecurityFirewallConfigRequest>,
+  output: __S(94, __c2, 30) as any as S.Schema<GetSecurityFirewallConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5892,8 +5892,8 @@ export const getSecurityFirewallEvents: API.OperationMethod<
   GetSecurityFirewallEventsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetSecurityFirewallEventsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<GetSecurityFirewallEventsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetSecurityFirewallEventsRequest>,
+  output: __S(132, __c4, 4) as any as S.Schema<GetSecurityFirewallEventsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5911,8 +5911,8 @@ export const getSecurityFirewallEventsSummary: API.OperationMethod<
   GetSecurityFirewallEventsSummaryError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetSecurityFirewallEventsSummaryRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<GetSecurityFirewallEventsSummaryResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetSecurityFirewallEventsSummaryRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<GetSecurityFirewallEventsSummaryResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5931,8 +5931,8 @@ export const putFirewallConfig: API.OperationMethod<
   PutFirewallConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<PutFirewallConfigRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<PutFirewallConfigResponse>,
+  input: __S(236, __c7, 12) as any as S.Schema<PutFirewallConfigRequest>,
+  output: __S(246, __c7, 22) as any as S.Schema<PutFirewallConfigResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5951,8 +5951,8 @@ export const removeBypassIp: API.OperationMethod<
   RemoveBypassIpError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<RemoveBypassIpRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<RemoveBypassIpResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<RemoveBypassIpRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<RemoveBypassIpResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5966,8 +5966,8 @@ export const updateAttackChallengeMode: API.OperationMethod<
   UpdateAttackChallengeModeError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<UpdateAttackChallengeModeRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<UpdateAttackChallengeModeResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<UpdateAttackChallengeModeRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<UpdateAttackChallengeModeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5986,8 +5986,8 @@ export const updateFirewallConfig: API.OperationMethod<
   UpdateFirewallConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<UpdateFirewallConfigRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<UpdateFirewallConfigResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<UpdateFirewallConfigRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<UpdateFirewallConfigResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -5995,6 +5995,810 @@ export const updateFirewallConfig: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configVersion: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Query()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/security/firewall/config/{configVersion}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetFirewallConfigRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          neg: S.optional(S.Boolean),
+          op: S.String,
+          type: S.String,
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "GetFirewallConfigResponseConditionsItemConditionGroupItemConditionsItem",
+      });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(2, __c0, 2),
+        }),
+      ).annotate({
+        identifier: "GetFirewallConfigResponseConditionsItemConditionGroupItem",
+      });
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          conditionGroup: __S(4, __c0, 4),
+          description: S.optional(S.String),
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "GetFirewallConfigResponseConditionsItem",
+      });
+    case 6:
+      return S.Array(__S(5, __c0, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ai_bots: S.optional(__S(37, __c1, 5)),
+          bot_protection: S.optional(__S(37, __c1, 5)),
+          owasp: S.optional(__S(37, __c1, 5)),
+          traffic_sources: S.optional(__S(37, __c1, 5)),
+          vercel_ruleset: S.optional(__S(37, __c1, 5)),
+        }),
+      ).annotate({
+        identifier: "GetFirewallConfigResponseManagedRules",
+      });
+    case 8:
+      return S.Array(S.Unknown);
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          botIdEnabled: S.optional(S.Boolean),
+          changes: __S(32, __c1, 0),
+          conditions: S.optional(__S(6, __c0, 6)),
+          crs: S.optional(__S(34, __c1, 2)),
+          firewallEnabled: S.Boolean,
+          id: S.String,
+          ips: __S(36, __c1, 4),
+          logHeaders: S.optional(S.Unknown),
+          managedRules: S.optional(__S(7, __c0, 7)),
+          ownerId: S.String,
+          projectKey: S.String,
+          rules: __S(8, __c0, 8),
+          rulesets: S.optional(S.Unknown),
+          updatedAt: S.String,
+          version: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetFirewallConfigResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          active: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GetFirewallConfigResponseCrsGen",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          gen: __S(33, __c1, 1),
+          java: __S(33, __c1, 1),
+          lfi: __S(33, __c1, 1),
+          ma: __S(33, __c1, 1),
+          php: __S(33, __c1, 1),
+          rce: __S(33, __c1, 1),
+          rfi: __S(33, __c1, 1),
+          sd: __S(33, __c1, 1),
+          sf: __S(33, __c1, 1),
+          sqli: __S(33, __c1, 1),
+          xss: __S(33, __c1, 1),
+        }),
+      ).annotate({
+        identifier: "GetFirewallConfigResponseCrs",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          hostname: S.String,
+          id: S.String,
+          ip: S.String,
+          notes: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetFirewallConfigResponseIpsItem",
+      });
+    case 4:
+      return S.Array(__S(35, __c1, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          active: S.Boolean,
+          updatedAt: S.optional(S.String),
+          userId: S.optional(S.String),
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetFirewallConfigResponseManagedRulesAiBots",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/v1/security/firewall/config", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          neg: S.optional(S.Boolean),
+          op: S.String,
+          type: S.String,
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier:
+          "GetSecurityFirewallConfigResponseActiveConditionsItemConditionGroupItemConditionsItem",
+      });
+    case 2:
+      return S.Array(__S(65, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(66, __c2, 2),
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseActiveConditionsItemConditionGroupItem",
+      });
+    case 4:
+      return S.Array(__S(67, __c2, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          conditionGroup: __S(68, __c2, 4),
+          description: S.optional(S.String),
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseActiveConditionsItem",
+      });
+    case 6:
+      return S.Array(__S(69, __c2, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          active: S.Boolean,
+          updatedAt: S.optional(S.String),
+          userId: S.optional(S.String),
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseActiveManagedRulesBotProtection",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          ai_bots: S.optional(__S(96, __c3, 0)),
+          bot_protection: S.optional(__S(71, __c2, 7)),
+          owasp: S.optional(__S(96, __c3, 0)),
+          traffic_sources: S.optional(__S(71, __c2, 7)),
+          vercel_ruleset: S.optional(__S(71, __c2, 7)),
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseActiveManagedRules",
+      });
+    case 9:
+      return S.Array(S.Unknown);
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          botIdEnabled: S.optional(S.Boolean),
+          changes: __S(32, __c1, 0),
+          conditions: S.optional(__S(70, __c2, 6)),
+          crs: S.optional(__S(34, __c1, 2)),
+          firewallEnabled: S.Boolean,
+          id: S.String,
+          ips: __S(36, __c1, 4),
+          logHeaders: S.optional(S.Unknown),
+          managedRules: S.optional(__S(72, __c2, 8)),
+          ownerId: S.String,
+          projectKey: S.String,
+          rules: __S(73, __c2, 9),
+          rulesets: S.optional(S.Unknown),
+          updatedAt: S.String,
+          version: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseActive",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          neg: S.optional(S.Boolean),
+          op: S.String,
+          type: S.String,
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier:
+          "GetSecurityFirewallConfigResponseDraftConditionsItemConditionGroupItemConditionsItem",
+      });
+    case 12:
+      return S.Array(__S(75, __c2, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(76, __c2, 12),
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseDraftConditionsItemConditionGroupItem",
+      });
+    case 14:
+      return S.Array(__S(77, __c2, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          conditionGroup: __S(78, __c2, 14),
+          description: S.optional(S.String),
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseDraftConditionsItem",
+      });
+    case 16:
+      return S.Array(__S(79, __c2, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          ai_bots: S.optional(__S(96, __c3, 0)),
+          bot_protection: S.optional(__S(71, __c2, 7)),
+          owasp: S.optional(__S(37, __c1, 5)),
+          traffic_sources: S.optional(__S(71, __c2, 7)),
+          vercel_ruleset: S.optional(__S(71, __c2, 7)),
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseDraftManagedRules",
+      });
+    case 18:
+      return S.Array(S.Unknown);
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          botIdEnabled: S.optional(S.Boolean),
+          changes: __S(32, __c1, 0),
+          conditions: S.optional(__S(80, __c2, 16)),
+          crs: S.optional(__S(34, __c1, 2)),
+          firewallEnabled: S.Boolean,
+          id: S.String,
+          ips: __S(36, __c1, 4),
+          logHeaders: S.optional(S.Unknown),
+          managedRules: S.optional(__S(81, __c2, 17)),
+          ownerId: S.String,
+          projectKey: S.String,
+          rules: __S(82, __c2, 18),
+          rulesets: S.optional(S.Unknown),
+          updatedAt: S.String,
+          version: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseDraft",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          neg: S.optional(S.Boolean),
+          op: S.String,
+          type: S.String,
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier:
+          "GetSecurityFirewallConfigResponseVersionsItemConditionsItemConditionGroupItemConditionsItem",
+      });
+    case 21:
+      return S.Array(__S(84, __c2, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(85, __c2, 21),
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseVersionsItemConditionsItemConditionGroupItem",
+      });
+    case 23:
+      return S.Array(__S(86, __c2, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          conditionGroup: __S(87, __c2, 23),
+          description: S.optional(S.String),
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseVersionsItemConditionsItem",
+      });
+    case 25:
+      return S.Array(__S(88, __c2, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          ai_bots: S.optional(__S(71, __c2, 7)),
+          bot_protection: S.optional(__S(416, __c13, 0)),
+          owasp: S.optional(__S(71, __c2, 7)),
+          traffic_sources: S.optional(__S(416, __c13, 0)),
+          vercel_ruleset: S.optional(__S(416, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseVersionsItemManagedRules",
+      });
+    case 27:
+      return S.Array(S.Unknown);
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          botIdEnabled: S.optional(S.Boolean),
+          changes: __S(32, __c1, 0),
+          conditions: S.optional(__S(89, __c2, 25)),
+          crs: S.optional(__S(34, __c1, 2)),
+          firewallEnabled: S.Boolean,
+          id: S.String,
+          ips: __S(36, __c1, 4),
+          logHeaders: S.optional(S.Unknown),
+          managedRules: S.optional(__S(90, __c2, 26)),
+          ownerId: S.String,
+          projectKey: S.String,
+          rules: __S(91, __c2, 27),
+          rulesets: S.optional(S.Unknown),
+          updatedAt: S.String,
+          version: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseVersionsItem",
+      });
+    case 29:
+      return S.Array(__S(92, __c2, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.NullOr(__S(74, __c2, 10)),
+          draft: S.NullOr(__S(83, __c2, 19)),
+          versions: __S(93, __c2, 29),
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          active: S.Boolean,
+          updatedAt: S.optional(S.String),
+          userId: S.optional(S.String),
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallConfigResponseActiveManagedRulesAiBots",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sort: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          projectId: S.String.pipe(T.Query()),
+          startTimestamp: S.optional(S.Number.pipe(T.Query())),
+          endTimestamp: S.optional(S.Number.pipe(T.Query())),
+          hosts: S.optional(S.String.pipe(T.Query())),
+          ip: S.optional(__S(160, __c5, 0).pipe(T.Query())),
+          isActive: S.optional(S.Boolean.pipe(T.Query())),
+          action: S.optional(__S(161, __c5, 1).pipe(T.Query())),
+          actionType: S.optional(__S(161, __c5, 1).pipe(T.Query())),
+          ruleKind: S.optional(S.String.pipe(T.Query())),
+          ruleId: S.optional(__S(160, __c5, 0).pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/security/firewall/events", code: 200 })),
+      ).annotate({
+        identifier: "GetSecurityFirewallEventsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          action_type: S.String,
+          count: S.Number,
+          endTime: S.String,
+          host: S.String,
+          isActive: S.Boolean,
+          public_ip: S.String,
+          ruleId: S.NullOr(S.String),
+          ruleName: S.NullOr(S.String),
+          startTime: S.String,
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallEventsResponseActionsItem",
+      });
+    case 2:
+      return S.Array(__S(129, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          hasMore: S.Boolean,
+          next: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallEventsResponsePagination",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          actions: __S(130, __c4, 2),
+          pagination: __S(131, __c4, 3),
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallEventsResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Query()),
+          startTimestamp: S.optional(S.Number.pipe(T.Query())),
+          endTimestamp: S.optional(S.Number.pipe(T.Query())),
+          hosts: S.optional(S.String.pipe(T.Query())),
+          ip: S.optional(__S(160, __c5, 0).pipe(T.Query())),
+          isActive: S.optional(S.Boolean.pipe(T.Query())),
+          action: S.optional(__S(161, __c5, 1).pipe(T.Query())),
+          actionType: S.optional(__S(161, __c5, 1).pipe(T.Query())),
+          ruleKind: S.optional(S.String.pipe(T.Query())),
+          ruleId: S.optional(__S(160, __c5, 0).pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/security/firewall/events/summary", code: 200 })),
+      ).annotate({
+        identifier: "GetSecurityFirewallEventsSummaryRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.Number);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          blockingIps: S.Number,
+          byAction: __S(193, __c6, 1),
+          byActionType: __S(193, __c6, 1),
+          challengingIps: S.Number,
+          other: S.Number,
+          total: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetSecurityFirewallEventsSummaryResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          action: S.String,
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigRequestCrsSd",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sd: S.optional(__S(224, __c7, 0)),
+          ma: S.optional(__S(224, __c7, 0)),
+          lfi: S.optional(__S(224, __c7, 0)),
+          rfi: S.optional(__S(224, __c7, 0)),
+          rce: S.optional(__S(224, __c7, 0)),
+          php: S.optional(__S(224, __c7, 0)),
+          gen: S.optional(__S(224, __c7, 0)),
+          xss: S.optional(__S(224, __c7, 0)),
+          sqli: S.optional(__S(224, __c7, 0)),
+          sf: S.optional(__S(224, __c7, 0)),
+          java: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigRequestCrs",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          op: S.String,
+          neg: S.optional(S.Boolean),
+          key: S.optional(S.String),
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigRequestRulesItemConditionGroupItemConditionsItem",
+      });
+    case 3:
+      return S.Array(__S(226, __c7, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(227, __c7, 3),
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigRequestRulesItemConditionGroupItem",
+      });
+    case 5:
+      return S.Array(__S(228, __c7, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          rateLimit: S.optional(S.NullOr(S.Unknown)),
+          redirect: S.optional(S.NullOr(S.Unknown)),
+          actionDuration: S.optional(S.NullOr(S.String)),
+          bypassSystem: S.optional(S.NullOr(S.Boolean)),
+          logHeaders: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigRequestRulesItemActionMitigate",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          mitigate: S.optional(__S(230, __c7, 6)),
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigRequestRulesItemAction",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.String,
+          description: S.optional(S.String),
+          active: S.Boolean,
+          conditionGroup: __S(229, __c7, 5),
+          action: __S(231, __c7, 7),
+          valid: S.optional(S.Boolean),
+          validationErrors: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigRequestRulesItem",
+      });
+    case 9:
+      return S.Array(__S(232, __c7, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          hostname: S.String,
+          ip: S.String,
+          notes: S.optional(S.String),
+          action: S.String,
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigRequestIpsItem",
+      });
+    case 11:
+      return S.Array(__S(234, __c7, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Query()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          firewallEnabled: S.Boolean,
+          managedRules: S.optional(S.Unknown),
+          crs: S.optional(__S(225, __c7, 1)),
+          rules: S.optional(__S(233, __c7, 9)),
+          rulesets: S.optional(S.Unknown),
+          ips: S.optional(__S(235, __c7, 11)),
+          botIdEnabled: S.optional(S.Boolean),
+          logHeaders: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/security/firewall/config", code: 200 })),
+      ).annotate({ identifier: "PutFirewallConfigRequest" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          neg: S.optional(S.Boolean),
+          op: S.String,
+          type: S.String,
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigResponseActiveConditionsItemConditionGroupItemConditionsItem",
+      });
+    case 14:
+      return S.Array(__S(237, __c7, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(238, __c7, 14),
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigResponseActiveConditionsItemConditionGroupItem",
+      });
+    case 16:
+      return S.Array(__S(239, __c7, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          conditionGroup: __S(240, __c7, 16),
+          description: S.optional(S.String),
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigResponseActiveConditionsItem",
+      });
+    case 18:
+      return S.Array(__S(241, __c7, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          ai_bots: S.optional(__S(37, __c1, 5)),
+          bot_protection: S.optional(__S(96, __c3, 0)),
+          owasp: S.optional(__S(37, __c1, 5)),
+          traffic_sources: S.optional(__S(96, __c3, 0)),
+          vercel_ruleset: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigResponseActiveManagedRules",
+      });
+    case 20:
+      return S.Array(S.Unknown);
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          botIdEnabled: S.optional(S.Boolean),
+          changes: __S(32, __c1, 0),
+          conditions: S.optional(__S(242, __c7, 18)),
+          crs: S.optional(__S(34, __c1, 2)),
+          firewallEnabled: S.Boolean,
+          id: S.String,
+          ips: __S(36, __c1, 4),
+          logHeaders: S.optional(S.Unknown),
+          managedRules: S.optional(__S(243, __c7, 19)),
+          ownerId: S.String,
+          projectKey: S.String,
+          rules: __S(244, __c7, 20),
+          rulesets: S.optional(S.Unknown),
+          updatedAt: S.String,
+          version: S.Number,
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigResponseActive",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          active: __S(245, __c7, 21),
+        }),
+      ).annotate({
+        identifier: "PutFirewallConfigResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Query()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          domain: S.optional(S.String),
+          projectScope: S.optional(S.Boolean),
+          sourceIp: S.optional(S.String),
+          allSources: S.optional(S.Boolean),
+          note: S.optional(S.String),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/security/firewall/bypass", code: 200 })),
+      ).annotate({ identifier: "RemoveBypassIpRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+        }),
+      ).annotate({ identifier: "RemoveBypassIpResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/security/attack-mode", code: 200 })),
+      ).annotate({
+        identifier: "UpdateAttackChallengeModeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attackModeEnabled: S.Boolean,
+          attackModeUpdatedAt: S.Number,
+        }),
+      ).annotate({
+        identifier: "UpdateAttackChallengeModeResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Query()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/security/firewall/config", code: 200 })),
+      ).annotate({
+        identifier: "UpdateFirewallConfigRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "UpdateFirewallConfigResponse",
+      });
+  }
+}
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6011,6 +6815,325 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/v1/security/firewall/bypass", code: 200 })),
       ).annotate({ identifier: "AddBypassIpRequest" });
     case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "AddBypassIpResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configVersion: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/security/firewall/config/{configVersion}/activate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateRequest",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          neg: S.optional(S.Boolean),
+          op: S.String,
+          type: S.String,
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier:
+          "CreateSecurityFirewallConfigByConfigVersionActivateResponseConditionsItemConditionGroupItemConditionsItem",
+      });
+    case 3:
+      return S.Array(__S(386, __c12, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(387, __c12, 3),
+        }),
+      ).annotate({
+        identifier:
+          "CreateSecurityFirewallConfigByConfigVersionActivateResponseConditionsItemConditionGroupItem",
+      });
+    case 5:
+      return S.Array(__S(388, __c12, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          conditionGroup: __S(389, __c12, 5),
+          description: S.optional(S.String),
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponseConditionsItem",
+      });
+    case 7:
+      return S.Array(__S(390, __c12, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          active: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsGen",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          gen: __S(392, __c12, 8),
+          java: __S(392, __c12, 8),
+          lfi: __S(392, __c12, 8),
+          ma: __S(392, __c12, 8),
+          php: __S(392, __c12, 8),
+          rce: __S(392, __c12, 8),
+          rfi: __S(392, __c12, 8),
+          sd: __S(392, __c12, 8),
+          sf: __S(392, __c12, 8),
+          sqli: __S(392, __c12, 8),
+          xss: __S(392, __c12, 8),
+        }),
+      ).annotate({
+        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponseCrs",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          hostname: S.String,
+          id: S.String,
+          ip: S.String,
+          notes: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponseIpsItem",
+      });
+    case 11:
+      return S.Array(__S(394, __c12, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          active: S.Boolean,
+          updatedAt: S.optional(S.String),
+          userId: S.optional(S.String),
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "CreateSecurityFirewallConfigByConfigVersionActivateResponseManagedRulesBotProtection",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          ai_bots: S.optional(__S(416, __c13, 0)),
+          bot_protection: S.optional(__S(396, __c12, 12)),
+          owasp: S.optional(__S(416, __c13, 0)),
+          traffic_sources: S.optional(__S(396, __c12, 12)),
+          vercel_ruleset: S.optional(__S(396, __c12, 12)),
+        }),
+      ).annotate({
+        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponseManagedRules",
+      });
+    case 14:
+      return S.Array(S.Unknown);
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          botIdEnabled: S.optional(S.Boolean),
+          changes: __S(385, __c12, 1),
+          conditions: S.optional(__S(391, __c12, 7)),
+          crs: S.optional(__S(393, __c12, 9)),
+          firewallEnabled: S.Boolean,
+          id: S.String,
+          ips: __S(395, __c12, 11),
+          logHeaders: S.optional(S.Unknown),
+          managedRules: S.optional(__S(397, __c12, 13)),
+          ownerId: S.String,
+          projectKey: S.String,
+          rules: __S(398, __c12, 14),
+          rulesets: S.optional(S.Unknown),
+          updatedAt: S.String,
+          version: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          active: S.Boolean,
+          updatedAt: S.optional(S.String),
+          userId: S.optional(S.String),
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponseManagedRulesAiBots",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configVersion: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/security/firewall/config/{configVersion}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSecurityFirewallConfigRequest",
+      });
+    case 1:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteSecurityFirewallConfigResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.String,
+          permanent: S.Boolean,
+        }),
+      ).annotate({
+        identifier:
+          "CreateSecurityFirewallConfigByConfigVersionActivateResponseRulesItemCase0ActionMitigateRedirect",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/security/firewall/config/generate-rule", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GenerateFirewallRuleRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.NullOr(S.String)),
+          algo: S.String,
+          keys: __S(480, __c15, 0),
+          limit: S.Number,
+          window: S.Number,
+        }),
+      ).annotate({
+        identifier: "GenerateFirewallRuleResponseRuleActionMitigateRateLimit",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          actionDuration: S.optional(S.NullOr(S.String)),
+          rateLimit: S.optional(S.NullOr(__S(483, __c15, 3))),
+          redirect: S.optional(S.NullOr(__S(481, __c15, 1))),
+        }),
+      ).annotate({
+        identifier: "GenerateFirewallRuleResponseRuleActionMitigate",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          mitigate: S.optional(__S(484, __c15, 4)),
+        }),
+      ).annotate({
+        identifier: "GenerateFirewallRuleResponseRuleAction",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          neg: S.optional(S.Boolean),
+          op: S.String,
+          type: S.String,
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "GenerateFirewallRuleResponseRuleConditionGroupItemConditionsItem",
+      });
+    case 7:
+      return S.Array(__S(486, __c15, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(487, __c15, 7),
+        }),
+      ).annotate({
+        identifier: "GenerateFirewallRuleResponseRuleConditionGroupItem",
+      });
+    case 9:
+      return S.Array(__S(488, __c15, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(485, __c15, 5),
+          active: S.Boolean,
+          conditionGroup: __S(489, __c15, 9),
+          description: S.optional(S.String),
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "GenerateFirewallRuleResponseRule",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(S.String),
+          rule: S.optional(__S(490, __c15, 10)),
+        }),
+      ).annotate({
+        identifier: "GenerateFirewallRuleResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Query()),
+          since: S.optional(S.Number.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/security/firewall/attack-status", code: 200 })),
+      ).annotate({
+        identifier: "GetActiveAttackStatusRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetActiveAttackStatusResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Action: S.optional(S.String),
@@ -6031,320 +7154,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddBypassIpResponseBodyCase1ResultItem",
       });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "AddBypassIpResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          configVersion: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/security/firewall/config/{configVersion}/activate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateRequest",
-      });
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          neg: S.optional(S.Boolean),
-          op: S.String,
-          type: S.String,
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier:
-          "CreateSecurityFirewallConfigByConfigVersionActivateResponseConditionsItemConditionGroupItemConditionsItem",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(8, __c1, 0),
-        }),
-      ).annotate({
-        identifier:
-          "CreateSecurityFirewallConfigByConfigVersionActivateResponseConditionsItemConditionGroupItem",
-      });
+      return S.Array(__S(544, __c17, 0));
     case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          conditionGroup: __S(10, __c1, 2),
-          description: S.optional(S.String),
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponseConditionsItem",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          active: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponseCrsGen",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          gen: __S(13, __c1, 5),
-          java: __S(13, __c1, 5),
-          lfi: __S(13, __c1, 5),
-          ma: __S(13, __c1, 5),
-          php: __S(13, __c1, 5),
-          rce: __S(13, __c1, 5),
-          rfi: __S(13, __c1, 5),
-          sd: __S(13, __c1, 5),
-          sf: __S(13, __c1, 5),
-          sqli: __S(13, __c1, 5),
-          xss: __S(13, __c1, 5),
-        }),
-      ).annotate({
-        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponseCrs",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          hostname: S.String,
-          id: S.String,
-          ip: S.String,
-          notes: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponseIpsItem",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          active: S.Boolean,
-          updatedAt: S.optional(S.String),
-          userId: S.optional(S.String),
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponseManagedRulesAiBots",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          active: S.Boolean,
-          updatedAt: S.optional(S.String),
-          userId: S.optional(S.String),
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "CreateSecurityFirewallConfigByConfigVersionActivateResponseManagedRulesBotProtection",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ai_bots: S.optional(__S(17, __c2, 1)),
-          bot_protection: S.optional(__S(18, __c2, 2)),
-          owasp: S.optional(__S(17, __c2, 1)),
-          traffic_sources: S.optional(__S(18, __c2, 2)),
-          vercel_ruleset: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponseManagedRules",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.String,
-          permanent: S.Boolean,
-        }),
-      ).annotate({
-        identifier:
-          "CreateSecurityFirewallConfigByConfigVersionActivateResponseRulesItemCase0ActionMitigateRedirect",
-      });
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          botIdEnabled: S.optional(S.Boolean),
-          changes: __S(5, __c0, 5),
-          conditions: S.optional(__S(12, __c1, 4)),
-          crs: S.optional(__S(14, __c1, 6)),
-          firewallEnabled: S.Boolean,
-          id: S.String,
-          ips: __S(16, __c2, 0),
-          logHeaders: S.optional(S.Unknown),
-          managedRules: S.optional(__S(19, __c2, 3)),
-          ownerId: S.String,
-          projectKey: S.String,
-          rules: __S(21, __c2, 5),
-          rulesets: S.optional(S.Unknown),
-          updatedAt: S.String,
-          version: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateSecurityFirewallConfigByConfigVersionActivateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          configVersion: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/security/firewall/config/{configVersion}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSecurityFirewallConfigRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteSecurityFirewallConfigResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/security/firewall/config/generate-rule", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GenerateFirewallRuleRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.NullOr(S.String)),
-          algo: S.String,
-          keys: __S(6, __c0, 6),
-          limit: S.Number,
-          window: S.Number,
-        }),
-      ).annotate({
-        identifier: "GenerateFirewallRuleResponseRuleActionMitigateRateLimit",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          actionDuration: S.optional(S.NullOr(S.String)),
-          rateLimit: S.optional(S.NullOr(__S(26, __c3, 2))),
-          redirect: S.optional(S.NullOr(__S(20, __c2, 4))),
-        }),
-      ).annotate({
-        identifier: "GenerateFirewallRuleResponseRuleActionMitigate",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mitigate: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "GenerateFirewallRuleResponseRuleAction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          neg: S.optional(S.Boolean),
-          op: S.String,
-          type: S.String,
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "GenerateFirewallRuleResponseRuleConditionGroupItemConditionsItem",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(30, __c3, 6),
-        }),
-      ).annotate({
-        identifier: "GenerateFirewallRuleResponseRuleConditionGroupItem",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(28, __c3, 4),
-          active: S.Boolean,
-          conditionGroup: __S(32, __c4, 0),
-          description: S.optional(S.String),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "GenerateFirewallRuleResponseRule",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(S.String),
-          rule: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "GenerateFirewallRuleResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Query()),
-          since: S.optional(S.Number.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/security/firewall/attack-status", code: 200 })),
-      ).annotate({
-        identifier: "GetActiveAttackStatusRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetActiveAttackStatusResponse",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
@@ -6357,7 +7169,7 @@ function __c4(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/security/firewall/bypass", code: 200 })),
       ).annotate({ identifier: "GetBypassIpRequest" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
@@ -6366,820 +7178,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetBypassIpResponsePagination",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(__S(38, __c4, 6)),
-          result: __S(2, __c0, 2),
+          pagination: S.optional(__S(547, __c17, 3)),
+          result: __S(545, __c17, 1),
         }),
       ).annotate({ identifier: "GetBypassIpResponse" });
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          configVersion: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Query()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/security/firewall/config/{configVersion}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetFirewallConfigRequest" });
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          neg: S.optional(S.Boolean),
-          op: S.String,
-          type: S.String,
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "GetFirewallConfigResponseConditionsItemConditionGroupItemConditionsItem",
-      });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(43, __c5, 3),
-        }),
-      ).annotate({
-        identifier: "GetFirewallConfigResponseConditionsItemConditionGroupItem",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          conditionGroup: __S(45, __c5, 5),
-          description: S.optional(S.String),
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "GetFirewallConfigResponseConditionsItem",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          active: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GetFirewallConfigResponseCrsGen",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          gen: __S(48, __c6, 0),
-          java: __S(48, __c6, 0),
-          lfi: __S(48, __c6, 0),
-          ma: __S(48, __c6, 0),
-          php: __S(48, __c6, 0),
-          rce: __S(48, __c6, 0),
-          rfi: __S(48, __c6, 0),
-          sd: __S(48, __c6, 0),
-          sf: __S(48, __c6, 0),
-          sqli: __S(48, __c6, 0),
-          xss: __S(48, __c6, 0),
-        }),
-      ).annotate({
-        identifier: "GetFirewallConfigResponseCrs",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          hostname: S.String,
-          id: S.String,
-          ip: S.String,
-          notes: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetFirewallConfigResponseIpsItem",
-      });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          active: S.Boolean,
-          updatedAt: S.optional(S.String),
-          userId: S.optional(S.String),
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetFirewallConfigResponseManagedRulesAiBots",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ai_bots: S.optional(__S(53, __c6, 5)),
-          bot_protection: S.optional(__S(53, __c6, 5)),
-          owasp: S.optional(__S(53, __c6, 5)),
-          traffic_sources: S.optional(__S(53, __c6, 5)),
-          vercel_ruleset: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "GetFirewallConfigResponseManagedRules",
-      });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          botIdEnabled: S.optional(S.Boolean),
-          changes: __S(41, __c5, 1),
-          conditions: S.optional(__S(47, __c5, 7)),
-          crs: S.optional(__S(49, __c6, 1)),
-          firewallEnabled: S.Boolean,
-          id: S.String,
-          ips: __S(51, __c6, 3),
-          logHeaders: S.optional(S.Unknown),
-          managedRules: S.optional(__S(54, __c6, 6)),
-          ownerId: S.String,
-          projectKey: S.String,
-          rules: __S(55, __c6, 7),
-          rulesets: S.optional(S.Unknown),
-          updatedAt: S.String,
-          version: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetFirewallConfigResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/v1/security/firewall/config", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          neg: S.optional(S.Boolean),
-          op: S.String,
-          type: S.String,
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier:
-          "GetSecurityFirewallConfigResponseActiveConditionsItemConditionGroupItemConditionsItem",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(59, __c7, 3),
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseActiveConditionsItemConditionGroupItem",
-      });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          conditionGroup: __S(61, __c7, 5),
-          description: S.optional(S.String),
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseActiveConditionsItem",
-      });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          active: S.Boolean,
-          updatedAt: S.optional(S.String),
-          userId: S.optional(S.String),
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseActiveManagedRulesAiBots",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          active: S.Boolean,
-          updatedAt: S.optional(S.String),
-          userId: S.optional(S.String),
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseActiveManagedRulesBotProtection",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ai_bots: S.optional(__S(64, __c8, 0)),
-          bot_protection: S.optional(__S(65, __c8, 1)),
-          owasp: S.optional(__S(64, __c8, 0)),
-          traffic_sources: S.optional(__S(65, __c8, 1)),
-          vercel_ruleset: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseActiveManagedRules",
-      });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          botIdEnabled: S.optional(S.Boolean),
-          changes: __S(41, __c5, 1),
-          conditions: S.optional(__S(63, __c7, 7)),
-          crs: S.optional(__S(49, __c6, 1)),
-          firewallEnabled: S.Boolean,
-          id: S.String,
-          ips: __S(51, __c6, 3),
-          logHeaders: S.optional(S.Unknown),
-          managedRules: S.optional(__S(66, __c8, 2)),
-          ownerId: S.String,
-          projectKey: S.String,
-          rules: __S(67, __c8, 3),
-          rulesets: S.optional(S.Unknown),
-          updatedAt: S.String,
-          version: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseActive",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          neg: S.optional(S.Boolean),
-          op: S.String,
-          type: S.String,
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier:
-          "GetSecurityFirewallConfigResponseDraftConditionsItemConditionGroupItemConditionsItem",
-      });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(70, __c8, 6),
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseDraftConditionsItemConditionGroupItem",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          conditionGroup: __S(72, __c9, 0),
-          description: S.optional(S.String),
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseDraftConditionsItem",
-      });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ai_bots: S.optional(__S(64, __c8, 0)),
-          bot_protection: S.optional(__S(65, __c8, 1)),
-          owasp: S.optional(__S(53, __c6, 5)),
-          traffic_sources: S.optional(__S(65, __c8, 1)),
-          vercel_ruleset: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseDraftManagedRules",
-      });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          botIdEnabled: S.optional(S.Boolean),
-          changes: __S(41, __c5, 1),
-          conditions: S.optional(__S(74, __c9, 2)),
-          crs: S.optional(__S(49, __c6, 1)),
-          firewallEnabled: S.Boolean,
-          id: S.String,
-          ips: __S(51, __c6, 3),
-          logHeaders: S.optional(S.Unknown),
-          managedRules: S.optional(__S(75, __c9, 3)),
-          ownerId: S.String,
-          projectKey: S.String,
-          rules: __S(76, __c9, 4),
-          rulesets: S.optional(S.Unknown),
-          updatedAt: S.String,
-          version: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseDraft",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          neg: S.optional(S.Boolean),
-          op: S.String,
-          type: S.String,
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier:
-          "GetSecurityFirewallConfigResponseVersionsItemConditionsItemConditionGroupItemConditionsItem",
-      });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(79, __c9, 7),
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseVersionsItemConditionsItemConditionGroupItem",
-      });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          conditionGroup: __S(81, __c10, 1),
-          description: S.optional(S.String),
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseVersionsItemConditionsItem",
-      });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ai_bots: S.optional(__S(65, __c8, 1)),
-          bot_protection: S.optional(__S(17, __c2, 1)),
-          owasp: S.optional(__S(65, __c8, 1)),
-          traffic_sources: S.optional(__S(17, __c2, 1)),
-          vercel_ruleset: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseVersionsItemManagedRules",
-      });
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          botIdEnabled: S.optional(S.Boolean),
-          changes: __S(41, __c5, 1),
-          conditions: S.optional(__S(83, __c10, 3)),
-          crs: S.optional(__S(49, __c6, 1)),
-          firewallEnabled: S.Boolean,
-          id: S.String,
-          ips: __S(51, __c6, 3),
-          logHeaders: S.optional(S.Unknown),
-          managedRules: S.optional(__S(84, __c10, 4)),
-          ownerId: S.String,
-          projectKey: S.String,
-          rules: __S(85, __c10, 5),
-          rulesets: S.optional(S.Unknown),
-          updatedAt: S.String,
-          version: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponseVersionsItem",
-      });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.NullOr(__S(68, __c8, 4)),
-          draft: S.NullOr(__S(77, __c9, 5)),
-          versions: __S(87, __c10, 7),
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallConfigResponse",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sort: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          projectId: S.String.pipe(T.Query()),
-          startTimestamp: S.optional(S.Number.pipe(T.Query())),
-          endTimestamp: S.optional(S.Number.pipe(T.Query())),
-          hosts: S.optional(S.String.pipe(T.Query())),
-          ip: S.optional(__S(52, __c6, 4).pipe(T.Query())),
-          isActive: S.optional(S.Boolean.pipe(T.Query())),
-          action: S.optional(__S(89, __c11, 1).pipe(T.Query())),
-          actionType: S.optional(__S(89, __c11, 1).pipe(T.Query())),
-          ruleKind: S.optional(S.String.pipe(T.Query())),
-          ruleId: S.optional(__S(52, __c6, 4).pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/security/firewall/events", code: 200 })),
-      ).annotate({
-        identifier: "GetSecurityFirewallEventsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          action_type: S.String,
-          count: S.Number,
-          endTime: S.String,
-          host: S.String,
-          isActive: S.Boolean,
-          public_ip: S.String,
-          ruleId: S.NullOr(S.String),
-          ruleName: S.NullOr(S.String),
-          startTime: S.String,
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallEventsResponseActionsItem",
-      });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hasMore: S.Boolean,
-          next: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallEventsResponsePagination",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          actions: __S(92, __c11, 4),
-          pagination: __S(93, __c11, 5),
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallEventsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Query()),
-          startTimestamp: S.optional(S.Number.pipe(T.Query())),
-          endTimestamp: S.optional(S.Number.pipe(T.Query())),
-          hosts: S.optional(S.String.pipe(T.Query())),
-          ip: S.optional(__S(52, __c6, 4).pipe(T.Query())),
-          isActive: S.optional(S.Boolean.pipe(T.Query())),
-          action: S.optional(__S(89, __c11, 1).pipe(T.Query())),
-          actionType: S.optional(__S(89, __c11, 1).pipe(T.Query())),
-          ruleKind: S.optional(S.String.pipe(T.Query())),
-          ruleId: S.optional(__S(52, __c6, 4).pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/security/firewall/events/summary", code: 200 })),
-      ).annotate({
-        identifier: "GetSecurityFirewallEventsSummaryRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Number);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          blockingIps: S.Number,
-          byAction: __S(96, __c12, 0),
-          byActionType: __S(96, __c12, 0),
-          challengingIps: S.Number,
-          other: S.Number,
-          total: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetSecurityFirewallEventsSummaryResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          action: S.String,
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigRequestCrsSd",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sd: S.optional(__S(98, __c12, 2)),
-          ma: S.optional(__S(98, __c12, 2)),
-          lfi: S.optional(__S(98, __c12, 2)),
-          rfi: S.optional(__S(98, __c12, 2)),
-          rce: S.optional(__S(98, __c12, 2)),
-          php: S.optional(__S(98, __c12, 2)),
-          gen: S.optional(__S(98, __c12, 2)),
-          xss: S.optional(__S(98, __c12, 2)),
-          sqli: S.optional(__S(98, __c12, 2)),
-          sf: S.optional(__S(98, __c12, 2)),
-          java: S.optional(__S(98, __c12, 2)),
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigRequestCrs",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          op: S.String,
-          neg: S.optional(S.Boolean),
-          key: S.optional(S.String),
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigRequestRulesItemConditionGroupItemConditionsItem",
-      });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(101, __c12, 5),
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigRequestRulesItemConditionGroupItem",
-      });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          rateLimit: S.optional(S.NullOr(S.Unknown)),
-          redirect: S.optional(S.NullOr(S.Unknown)),
-          actionDuration: S.optional(S.NullOr(S.String)),
-          bypassSystem: S.optional(S.NullOr(S.Boolean)),
-          logHeaders: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigRequestRulesItemActionMitigate",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mitigate: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigRequestRulesItemAction",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.String,
-          description: S.optional(S.String),
-          active: S.Boolean,
-          conditionGroup: __S(103, __c12, 7),
-          action: __S(105, __c13, 1),
-          valid: S.optional(S.Boolean),
-          validationErrors: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigRequestRulesItem",
-      });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          hostname: S.String,
-          ip: S.String,
-          notes: S.optional(S.String),
-          action: S.String,
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigRequestIpsItem",
-      });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Query()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          firewallEnabled: S.Boolean,
-          managedRules: S.optional(S.Unknown),
-          crs: S.optional(__S(99, __c12, 3)),
-          rules: S.optional(__S(107, __c13, 3)),
-          rulesets: S.optional(S.Unknown),
-          ips: S.optional(__S(109, __c13, 5)),
-          botIdEnabled: S.optional(S.Boolean),
-          logHeaders: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/security/firewall/config", code: 200 })),
-      ).annotate({ identifier: "PutFirewallConfigRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          neg: S.optional(S.Boolean),
-          op: S.String,
-          type: S.String,
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigResponseActiveConditionsItemConditionGroupItemConditionsItem",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(112, __c14, 0),
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigResponseActiveConditionsItemConditionGroupItem",
-      });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          conditionGroup: __S(114, __c14, 2),
-          description: S.optional(S.String),
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigResponseActiveConditionsItem",
-      });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ai_bots: S.optional(__S(53, __c6, 5)),
-          bot_protection: S.optional(__S(64, __c8, 0)),
-          owasp: S.optional(__S(53, __c6, 5)),
-          traffic_sources: S.optional(__S(64, __c8, 0)),
-          vercel_ruleset: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigResponseActiveManagedRules",
-      });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          botIdEnabled: S.optional(S.Boolean),
-          changes: __S(41, __c5, 1),
-          conditions: S.optional(__S(116, __c14, 4)),
-          crs: S.optional(__S(49, __c6, 1)),
-          firewallEnabled: S.Boolean,
-          id: S.String,
-          ips: __S(51, __c6, 3),
-          logHeaders: S.optional(S.Unknown),
-          managedRules: S.optional(__S(117, __c14, 5)),
-          ownerId: S.String,
-          projectKey: S.String,
-          rules: __S(118, __c14, 6),
-          rulesets: S.optional(S.Unknown),
-          updatedAt: S.String,
-          version: S.Number,
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigResponseActive",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          active: __S(119, __c14, 7),
-        }),
-      ).annotate({
-        identifier: "PutFirewallConfigResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Query()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          domain: S.optional(S.String),
-          projectScope: S.optional(S.Boolean),
-          sourceIp: S.optional(S.String),
-          allSources: S.optional(S.Boolean),
-          note: S.optional(S.String),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/security/firewall/bypass", code: 200 })),
-      ).annotate({ identifier: "RemoveBypassIpRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-        }),
-      ).annotate({ identifier: "RemoveBypassIpResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/security/attack-mode", code: 200 })),
-      ).annotate({
-        identifier: "UpdateAttackChallengeModeRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          attackModeEnabled: S.Boolean,
-          attackModeUpdatedAt: S.Number,
-        }),
-      ).annotate({
-        identifier: "UpdateAttackChallengeModeResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Query()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/security/firewall/config", code: 200 })),
-      ).annotate({
-        identifier: "UpdateFirewallConfigRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "UpdateFirewallConfigResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -577,8 +577,8 @@ export const createConfig: API.OperationMethod<
   CreateConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateConfigRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateConfigResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<CreateConfigRequest>,
+  output: __S(50, __c12, 2) as any as S.Schema<CreateConfigResponse>,
   errors: [
     MnmConfigAlreadyExists,
     InvalidMnmConfig,
@@ -602,8 +602,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateRuleRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateRuleResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<CreateRuleRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<CreateRuleResponse>,
   errors: [
     DuplicateMnmRuleName,
     MnmConfigMissing,
@@ -623,8 +623,8 @@ export const createVpcFlowToken: API.OperationMethod<
   CreateVpcFlowTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateVpcFlowTokenRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateVpcFlowTokenResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<CreateVpcFlowTokenRequest>,
+  output: __S(61, __c15, 1) as any as S.Schema<CreateVpcFlowTokenResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -638,8 +638,8 @@ export const deleteConfig: API.OperationMethod<
   DeleteConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteConfigRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteConfigResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteConfigRequest>,
+  output: __S(50, __c12, 2) as any as S.Schema<DeleteConfigResponse>,
   errors: [MnmConfigNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -653,8 +653,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteRuleResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<DeleteRuleResponse>,
   errors: [MnmRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -668,8 +668,8 @@ export const getConfig: API.OperationMethod<
   GetConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetConfigRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetConfigResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetConfigRequest>,
+  output: __S(50, __c12, 2) as any as S.Schema<GetConfigResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -683,8 +683,8 @@ export const getConfigFull: API.OperationMethod<
   GetConfigFullError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetConfigFullRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetConfigFullResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetConfigFullRequest>,
+  output: __S(50, __c12, 2) as any as S.Schema<GetConfigFullResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -698,8 +698,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetRuleRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetRuleResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetRuleRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<GetRuleResponse>,
   errors: [MnmRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -715,8 +715,8 @@ export const listRules: API.PaginatedOperationMethod<
   RulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16, __c2, 0) as any as S.Schema<ListRulesRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<ListRulesResponse>,
+    input: __S(20, __c5, 0) as any as S.Schema<ListRulesRequest>,
+    output: __S(23, __c5, 3) as any as S.Schema<ListRulesResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -733,8 +733,8 @@ export const patchConfig: API.OperationMethod<
   PatchConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<PatchConfigRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PatchConfigResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<PatchConfigRequest>,
+  output: __S(50, __c12, 2) as any as S.Schema<PatchConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -748,8 +748,8 @@ export const patchRule: API.OperationMethod<
   PatchRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<PatchRuleRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<PatchRuleResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<PatchRuleRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<PatchRuleResponse>,
   errors: [MnmRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -763,8 +763,8 @@ export const patchRuleAdvertisement: API.OperationMethod<
   PatchRuleAdvertisementError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<PatchRuleAdvertisementRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<PatchRuleAdvertisementResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<PatchRuleAdvertisementRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<PatchRuleAdvertisementResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -778,8 +778,8 @@ export const updateConfig: API.OperationMethod<
   UpdateConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<UpdateConfigRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UpdateConfigResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<UpdateConfigRequest>,
+  output: __S(50, __c12, 2) as any as S.Schema<UpdateConfigResponse>,
   errors: [Forbidden, InvalidMnmConfig, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -793,8 +793,8 @@ export const updateRule: API.OperationMethod<
   UpdateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UpdateRuleRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateRuleResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<UpdateRuleRequest>,
+  output: __S(41, __c10, 1) as any as S.Schema<UpdateRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -804,101 +804,6 @@ export const updateRule: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          routerIp: S.String.pipe(T.Body("router_ip")),
-        }),
-      ).annotate({
-        identifier: "ConfigsCreateRequestWarpDevicesItem",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          defaultSampling: S.Number.pipe(T.Body("default_sampling")),
-          name: S.String,
-          routerIps: S.optional(__S(0, __c0, 0).pipe(T.Body("router_ips"))),
-          warpDevices: S.optional(__S(2, __c0, 2).pipe(T.Body("warp_devices"))),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/mnm/config", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateConfigRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          defaultSampling: S.Number.pipe(T.Body("default_sampling")),
-          name: S.String,
-          routerIps: __S(0, __c0, 0).pipe(T.Body("router_ips")),
-          warpDevices: __S(2, __c0, 2).pipe(T.Body("warp_devices")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateConfigResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
-          name: S.String,
-          prefixes: __S(0, __c0, 0),
-          type: S.String,
-          bandwidthThreshold: S.optional(S.Number.pipe(T.Body("bandwidth_threshold"))),
-          duration: S.optional(S.String),
-          packetThreshold: S.optional(S.Number.pipe(T.Body("packet_threshold"))),
-          prefixMatch: S.optional(S.String.pipe(T.Body("prefix_match"))),
-          zscoreSensitivity: S.optional(S.String.pipe(T.Body("zscore_sensitivity"))),
-          zscoreTarget: S.optional(S.String.pipe(T.Body("zscore_target"))),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/mnm/rules", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRuleRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
-          name: S.String,
-          prefixes: __S(0, __c0, 0),
-          type: S.String,
-          bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
-          duration: S.optional(S.NullOr(S.String)),
-          packetThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("packet_threshold"))),
-          prefixMatch: S.optional(S.NullOr(S.String).pipe(T.Body("prefix_match"))),
-          zscoreSensitivity: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_sensitivity"))),
-          zscoreTarget: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_target"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRuleResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/mnm/vpc-flows/token",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateVpcFlowTokenRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateVpcFlowTokenResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -906,7 +811,11 @@ function __c1(j: number): any {
           .pipe(T.Http({ method: "DELETE", uri: "/accounts/{account_id}/mnm/config", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteConfigRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -921,13 +830,13 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRuleRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0, __c0, 0),
+          prefixes: __S(52, __c13, 0),
           type: S.String,
           bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
           duration: S.optional(S.NullOr(S.String)),
@@ -937,7 +846,11 @@ function __c1(j: number): any {
           zscoreTarget: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_target"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRuleResponse" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -945,7 +858,11 @@ function __c1(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/mnm/config", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigRequest" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -953,7 +870,11 @@ function __c1(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/mnm/config/full", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigFullRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -964,13 +885,13 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRuleRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0, __c0, 0),
+          prefixes: __S(52, __c13, 0),
           type: S.String,
           bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
           duration: S.optional(S.NullOr(S.String)),
@@ -982,7 +903,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "GetRuleResponse" });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -998,7 +919,7 @@ function __c2(j: number): any {
           id: S.String,
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0, __c0, 0),
+          prefixes: __S(52, __c13, 0),
           type: S.String,
           bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
           duration: S.optional(S.NullOr(S.String)),
@@ -1009,34 +930,42 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "RulesListResultItem" });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(21, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(18, __c2, 2).pipe(T.EnvelopePayload()),
+          result: __S(22, __c5, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRulesResponse" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           defaultSampling: S.optional(S.Number.pipe(T.Body("default_sampling"))),
           name: S.optional(S.String),
-          routerIps: S.optional(__S(0, __c0, 0).pipe(T.Body("router_ips"))),
-          warpDevices: S.optional(__S(2, __c0, 2).pipe(T.Body("warp_devices"))),
+          routerIps: S.optional(__S(52, __c13, 0).pipe(T.Body("router_ips"))),
+          warpDevices: S.optional(__S(49, __c12, 1).pipe(T.Body("warp_devices"))),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/accounts/{account_id}/mnm/config", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchConfigRequest" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           ruleId: S.String.pipe(T.Label("rule_id")),
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0, __c0, 0),
+          prefixes: __S(52, __c13, 0),
           type: S.String,
           bandwidthThreshold: S.optional(S.Number.pipe(T.Body("bandwidth_threshold"))),
           duration: S.optional(S.String),
@@ -1054,13 +983,13 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchRuleRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0, __c0, 0),
+          prefixes: __S(52, __c13, 0),
           type: S.String,
           bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
           duration: S.optional(S.NullOr(S.String)),
@@ -1070,7 +999,11 @@ function __c2(j: number): any {
           zscoreTarget: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_target"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchRuleResponse" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1087,11 +1020,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PatchRuleAdvertisementRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
@@ -1099,25 +1028,33 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PatchRuleAdvertisementResponse",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           defaultSampling: S.Number.pipe(T.Body("default_sampling")),
           name: S.String,
-          routerIps: S.optional(__S(0, __c0, 0).pipe(T.Body("router_ips"))),
-          warpDevices: S.optional(__S(2, __c0, 2).pipe(T.Body("warp_devices"))),
+          routerIps: S.optional(__S(52, __c13, 0).pipe(T.Body("router_ips"))),
+          warpDevices: S.optional(__S(49, __c12, 1).pipe(T.Body("warp_devices"))),
         })
           .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}/mnm/config", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateConfigRequest" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0, __c0, 0),
+          prefixes: __S(52, __c13, 0),
           type: S.String,
           bandwidthThreshold: S.optional(S.Number.pipe(T.Body("bandwidth_threshold"))),
           duration: S.optional(S.String),
@@ -1129,13 +1066,13 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}/mnm/rules", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateRuleRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
           name: S.String,
-          prefixes: __S(0, __c0, 0),
+          prefixes: __S(52, __c13, 0),
           type: S.String,
           bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
           duration: S.optional(S.NullOr(S.String)),
@@ -1147,7 +1084,117 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UpdateRuleResponse" });
   }
 }
-
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          defaultSampling: S.Number.pipe(T.Body("default_sampling")),
+          name: S.String,
+          routerIps: S.optional(__S(52, __c13, 0).pipe(T.Body("router_ips"))),
+          warpDevices: S.optional(__S(49, __c12, 1).pipe(T.Body("warp_devices"))),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/mnm/config", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateConfigRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          routerIp: S.String.pipe(T.Body("router_ip")),
+        }),
+      ).annotate({
+        identifier: "ConfigsCreateRequestWarpDevicesItem",
+      });
+    case 1:
+      return S.Array(__S(48, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          defaultSampling: S.Number.pipe(T.Body("default_sampling")),
+          name: S.String,
+          routerIps: __S(52, __c13, 0).pipe(T.Body("router_ips")),
+          warpDevices: __S(49, __c12, 1).pipe(T.Body("warp_devices")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateConfigResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
+          name: S.String,
+          prefixes: __S(52, __c13, 0),
+          type: S.String,
+          bandwidthThreshold: S.optional(S.Number.pipe(T.Body("bandwidth_threshold"))),
+          duration: S.optional(S.String),
+          packetThreshold: S.optional(S.Number.pipe(T.Body("packet_threshold"))),
+          prefixMatch: S.optional(S.String.pipe(T.Body("prefix_match"))),
+          zscoreSensitivity: S.optional(S.String.pipe(T.Body("zscore_sensitivity"))),
+          zscoreTarget: S.optional(S.String.pipe(T.Body("zscore_target"))),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/mnm/rules", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRuleRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
+          name: S.String,
+          prefixes: __S(52, __c13, 0),
+          type: S.String,
+          bandwidthThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("bandwidth_threshold"))),
+          duration: S.optional(S.NullOr(S.String)),
+          packetThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("packet_threshold"))),
+          prefixMatch: S.optional(S.NullOr(S.String).pipe(T.Body("prefix_match"))),
+          zscoreSensitivity: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_sensitivity"))),
+          zscoreTarget: S.optional(S.NullOr(S.String).pipe(T.Body("zscore_target"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRuleResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/mnm/vpc-flows/token",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateVpcFlowTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateVpcFlowTokenResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

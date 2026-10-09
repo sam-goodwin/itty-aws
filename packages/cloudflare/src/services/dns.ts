@@ -11564,8 +11564,8 @@ export const batchRecord: API.OperationMethod<
   BatchRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<BatchRecordRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<BatchRecordResponse>,
+  input: __S(6, __c0, 6) as any as S.Schema<BatchRecordRequest>,
+  output: __S(15, __c0, 15) as any as S.Schema<BatchRecordResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11579,8 +11579,8 @@ export const createRecord: API.OperationMethod<
   CreateRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateRecordRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CreateRecordResponse>,
+  input: __S(34, __c2, 2) as any as S.Schema<CreateRecordRequest>,
+  output: __S(36, __c2, 4) as any as S.Schema<CreateRecordResponse>,
   errors: [DnsRecordAlreadyExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11594,8 +11594,8 @@ export const createSettingAccountView: API.OperationMethod<
   CreateSettingAccountViewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateSettingAccountViewRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateSettingAccountViewResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreateSettingAccountViewRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<CreateSettingAccountViewResponse>,
   errors: [InternalDnsNotAvailable, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11609,8 +11609,8 @@ export const createSettingsAccountNameserverSet: API.OperationMethod<
   CreateSettingsAccountNameserverSetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateSettingsAccountNameserverSetRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CreateSettingsAccountNameserverSetResponse>,
+  input: __S(98, __c6, 2) as any as S.Schema<CreateSettingsAccountNameserverSetRequest>,
+  output: __S(100, __c6, 4) as any as S.Schema<CreateSettingsAccountNameserverSetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11624,8 +11624,8 @@ export const createZoneTransferAcl: API.OperationMethod<
   CreateZoneTransferAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateZoneTransferAclRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<CreateZoneTransferAclResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateZoneTransferAclRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<CreateZoneTransferAclResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11639,8 +11639,8 @@ export const createZoneTransferForceAxfr: API.OperationMethod<
   CreateZoneTransferForceAxfrError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateZoneTransferForceAxfrRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreateZoneTransferForceAxfrResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateZoneTransferForceAxfrRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<CreateZoneTransferForceAxfrResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11654,8 +11654,8 @@ export const createZoneTransferIncoming: API.OperationMethod<
   CreateZoneTransferIncomingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateZoneTransferIncomingRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CreateZoneTransferIncomingResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateZoneTransferIncomingRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<CreateZoneTransferIncomingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11669,8 +11669,8 @@ export const createZoneTransferOutgoing: API.OperationMethod<
   CreateZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateZoneTransferOutgoingRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateZoneTransferOutgoingResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<CreateZoneTransferOutgoingRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<CreateZoneTransferOutgoingResponse>,
   errors: [OutgoingZoneTransfersNotAllowed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11684,8 +11684,8 @@ export const createZoneTransferPeer: API.OperationMethod<
   CreateZoneTransferPeerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateZoneTransferPeerRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<CreateZoneTransferPeerResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateZoneTransferPeerRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<CreateZoneTransferPeerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11699,8 +11699,8 @@ export const createZoneTransferTsig: API.OperationMethod<
   CreateZoneTransferTsigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateZoneTransferTsigRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<CreateZoneTransferTsigResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<CreateZoneTransferTsigRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<CreateZoneTransferTsigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11714,8 +11714,8 @@ export const deleteDnssec: API.OperationMethod<
   DeleteDnssecError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteDnssecRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DeleteDnssecResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteDnssecRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<DeleteDnssecResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11729,8 +11729,8 @@ export const deleteRecord: API.OperationMethod<
   DeleteRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteRecordRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<DeleteRecordResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteRecordRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<DeleteRecordResponse>,
   errors: [RecordNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11744,8 +11744,8 @@ export const deleteSettingAccountView: API.OperationMethod<
   DeleteSettingAccountViewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteSettingAccountViewRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteSettingAccountViewResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteSettingAccountViewRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<DeleteSettingAccountViewResponse>,
   errors: [ViewNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11759,8 +11759,8 @@ export const deleteSettingsAccountNameserverSet: API.OperationMethod<
   DeleteSettingsAccountNameserverSetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteSettingsAccountNameserverSetRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeleteSettingsAccountNameserverSetResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DeleteSettingsAccountNameserverSetRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<DeleteSettingsAccountNameserverSetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11774,8 +11774,8 @@ export const deleteZoneTransferAcl: API.OperationMethod<
   DeleteZoneTransferAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteZoneTransferAclRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteZoneTransferAclResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteZoneTransferAclRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<DeleteZoneTransferAclResponse>,
   errors: [AclNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11789,8 +11789,8 @@ export const deleteZoneTransferIncoming: API.OperationMethod<
   DeleteZoneTransferIncomingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteZoneTransferIncomingRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteZoneTransferIncomingResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteZoneTransferIncomingRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<DeleteZoneTransferIncomingResponse>,
   errors: [IncomingZoneTransferNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11807,8 +11807,8 @@ export const deleteZoneTransferOutgoing: API.OperationMethod<
   DeleteZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteZoneTransferOutgoingRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteZoneTransferOutgoingResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeleteZoneTransferOutgoingRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<DeleteZoneTransferOutgoingResponse>,
   errors: [
     OutgoingZoneTransferNotFound,
     OutgoingZoneTransfersNotAllowed,
@@ -11827,8 +11827,8 @@ export const deleteZoneTransferPeer: API.OperationMethod<
   DeleteZoneTransferPeerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteZoneTransferPeerRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteZoneTransferPeerResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteZoneTransferPeerRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<DeleteZoneTransferPeerResponse>,
   errors: [PeerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11842,8 +11842,8 @@ export const deleteZoneTransferTsig: API.OperationMethod<
   DeleteZoneTransferTsigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteZoneTransferTsigRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteZoneTransferTsigResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteZoneTransferTsigRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<DeleteZoneTransferTsigResponse>,
   errors: [TsigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11857,8 +11857,8 @@ export const disableZoneTransferOutgoing: API.OperationMethod<
   DisableZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DisableZoneTransferOutgoingRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DisableZoneTransferOutgoingResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<DisableZoneTransferOutgoingRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<DisableZoneTransferOutgoingResponse>,
   errors: [OutgoingZoneTransfersNotAllowed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11872,8 +11872,8 @@ export const enableZoneTransferOutgoing: API.OperationMethod<
   EnableZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<EnableZoneTransferOutgoingRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<EnableZoneTransferOutgoingResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<EnableZoneTransferOutgoingRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<EnableZoneTransferOutgoingResponse>,
   errors: [OutgoingZoneTransfersNotAllowed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11887,8 +11887,8 @@ export const exportRecord: API.OperationMethod<
   ExportRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ExportRecordRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ExportRecordResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<ExportRecordRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<ExportRecordResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11902,8 +11902,8 @@ export const forceNotifyZoneTransferOutgoing: API.OperationMethod<
   ForceNotifyZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ForceNotifyZoneTransferOutgoingRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ForceNotifyZoneTransferOutgoingResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ForceNotifyZoneTransferOutgoingRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<ForceNotifyZoneTransferOutgoingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11917,8 +11917,8 @@ export const getAnalyticReport: API.OperationMethod<
   GetAnalyticReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetAnalyticReportRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<GetAnalyticReportResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetAnalyticReportRequest>,
+  output: __S(532, __c33, 4) as any as S.Schema<GetAnalyticReportResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11932,8 +11932,8 @@ export const getAnalyticReportBytime: API.OperationMethod<
   GetAnalyticReportBytimeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetAnalyticReportBytimeRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetAnalyticReportBytimeResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetAnalyticReportBytimeRequest>,
+  output: __S(566, __c35, 6) as any as S.Schema<GetAnalyticReportBytimeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11947,8 +11947,8 @@ export const getDnssec: API.OperationMethod<
   GetDnssecError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetDnssecRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GetDnssecResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetDnssecRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<GetDnssecResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11962,8 +11962,8 @@ export const getRecord: API.OperationMethod<
   GetRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetRecordRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<GetRecordResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetRecordRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<GetRecordResponse>,
   errors: [Forbidden, RecordNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11977,8 +11977,8 @@ export const getSettingAccount: API.OperationMethod<
   GetSettingAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetSettingAccountRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GetSettingAccountResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetSettingAccountRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<GetSettingAccountResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11992,8 +11992,8 @@ export const getSettingAccountView: API.OperationMethod<
   GetSettingAccountViewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetSettingAccountViewRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetSettingAccountViewResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetSettingAccountViewRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<GetSettingAccountViewResponse>,
   errors: [ViewNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12007,8 +12007,8 @@ export const getSettingsAccountNameserverSet: API.OperationMethod<
   GetSettingsAccountNameserverSetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetSettingsAccountNameserverSetRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GetSettingsAccountNameserverSetResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetSettingsAccountNameserverSetRequest>,
+  output: __S(690, __c43, 2) as any as S.Schema<GetSettingsAccountNameserverSetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12022,8 +12022,8 @@ export const getSettingZone: API.OperationMethod<
   GetSettingZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetSettingZoneRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<GetSettingZoneResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetSettingZoneRequest>,
+  output: __S(706, __c44, 2) as any as S.Schema<GetSettingZoneResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12037,8 +12037,8 @@ export const getUsageAccount: API.OperationMethod<
   GetUsageAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetUsageAccountRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<GetUsageAccountResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetUsageAccountRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<GetUsageAccountResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12052,8 +12052,8 @@ export const getUsageZone: API.OperationMethod<
   GetUsageZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetUsageZoneRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<GetUsageZoneResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetUsageZoneRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<GetUsageZoneResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12067,8 +12067,8 @@ export const getZoneTransferAcl: API.OperationMethod<
   GetZoneTransferAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetZoneTransferAclRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetZoneTransferAclResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetZoneTransferAclRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<GetZoneTransferAclResponse>,
   errors: [AclNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12082,8 +12082,8 @@ export const getZoneTransferIncoming: API.OperationMethod<
   GetZoneTransferIncomingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetZoneTransferIncomingRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetZoneTransferIncomingResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetZoneTransferIncomingRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<GetZoneTransferIncomingResponse>,
   errors: [IncomingZoneTransferNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12100,8 +12100,8 @@ export const getZoneTransferOutgoing: API.OperationMethod<
   GetZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetZoneTransferOutgoingRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetZoneTransferOutgoingResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetZoneTransferOutgoingRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<GetZoneTransferOutgoingResponse>,
   errors: [
     OutgoingZoneTransferNotFound,
     OutgoingZoneTransfersNotAllowed,
@@ -12120,8 +12120,8 @@ export const getZoneTransferOutgoingStatus: API.OperationMethod<
   GetZoneTransferOutgoingStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetZoneTransferOutgoingStatusRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetZoneTransferOutgoingStatusResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetZoneTransferOutgoingStatusRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<GetZoneTransferOutgoingStatusResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12135,8 +12135,8 @@ export const getZoneTransferPeer: API.OperationMethod<
   GetZoneTransferPeerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetZoneTransferPeerRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetZoneTransferPeerResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetZoneTransferPeerRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<GetZoneTransferPeerResponse>,
   errors: [PeerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12150,8 +12150,8 @@ export const getZoneTransferTsig: API.OperationMethod<
   GetZoneTransferTsigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetZoneTransferTsigRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetZoneTransferTsigResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetZoneTransferTsigRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<GetZoneTransferTsigResponse>,
   errors: [TsigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12165,8 +12165,8 @@ export const importRecord: API.OperationMethod<
   ImportRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ImportRecordRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ImportRecordResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<ImportRecordRequest>,
+  output: __S(864, __c54, 0) as any as S.Schema<ImportRecordResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12180,8 +12180,8 @@ export const listDnssecZsk: API.OperationMethod<
   ListDnssecZskError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListDnssecZskRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ListDnssecZskResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListDnssecZskRequest>,
+  output: __S(886, __c55, 6) as any as S.Schema<ListDnssecZskResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12197,8 +12197,8 @@ export const listRecords: API.PaginatedOperationMethod<
   RecordsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(115, __c14, 3) as any as S.Schema<ListRecordsRequest>,
-    output: __S(118, __c14, 6) as any as S.Schema<ListRecordsResponse>,
+    input: __S(899, __c56, 3) as any as S.Schema<ListRecordsRequest>,
+    output: __S(902, __c56, 6) as any as S.Schema<ListRecordsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -12223,8 +12223,8 @@ export const listSettingAccountViews: API.PaginatedOperationMethod<
   SettingsAccountViewsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(119, __c14, 7) as any as S.Schema<ListSettingAccountViewsRequest>,
-    output: __S(122, __c15, 2) as any as S.Schema<ListSettingAccountViewsResponse>,
+    input: __S(928, __c58, 0) as any as S.Schema<ListSettingAccountViewsRequest>,
+    output: __S(931, __c58, 3) as any as S.Schema<ListSettingAccountViewsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -12247,8 +12247,8 @@ export const listSettingsAccountNameserverSets: API.OperationMethod<
   ListSettingsAccountNameserverSetsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListSettingsAccountNameserverSetsRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<ListSettingsAccountNameserverSetsResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListSettingsAccountNameserverSetsRequest>,
+  output: __S(947, __c59, 3) as any as S.Schema<ListSettingsAccountNameserverSetsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12264,8 +12264,8 @@ export const listZoneTransferAcls: API.PaginatedOperationMethod<
   ZoneTransfersAclsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(127, __c15, 7) as any as S.Schema<ListZoneTransferAclsRequest>,
-    output: __S(130, __c16, 2) as any as S.Schema<ListZoneTransferAclsResponse>,
+    input: __S(960, __c60, 0) as any as S.Schema<ListZoneTransferAclsRequest>,
+    output: __S(963, __c60, 3) as any as S.Schema<ListZoneTransferAclsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -12284,8 +12284,8 @@ export const listZoneTransferPeers: API.PaginatedOperationMethod<
   ZoneTransfersPeersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(131, __c16, 3) as any as S.Schema<ListZoneTransferPeersRequest>,
-    output: __S(134, __c16, 6) as any as S.Schema<ListZoneTransferPeersResponse>,
+    input: __S(976, __c61, 0) as any as S.Schema<ListZoneTransferPeersRequest>,
+    output: __S(979, __c61, 3) as any as S.Schema<ListZoneTransferPeersResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -12304,8 +12304,8 @@ export const listZoneTransferTsigs: API.PaginatedOperationMethod<
   ZoneTransfersTsigsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(135, __c16, 7) as any as S.Schema<ListZoneTransferTsigsRequest>,
-    output: __S(138, __c17, 2) as any as S.Schema<ListZoneTransferTsigsResponse>,
+    input: __S(992, __c62, 0) as any as S.Schema<ListZoneTransferTsigsRequest>,
+    output: __S(995, __c62, 3) as any as S.Schema<ListZoneTransferTsigsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -12322,8 +12322,8 @@ export const patchDnssec: API.OperationMethod<
   PatchDnssecError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<PatchDnssecRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<PatchDnssecResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<PatchDnssecRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<PatchDnssecResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12337,8 +12337,8 @@ export const patchRecord: API.OperationMethod<
   PatchRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<PatchRecordRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<PatchRecordResponse>,
+  input: __S(1026, __c64, 2) as any as S.Schema<PatchRecordRequest>,
+  output: __S(1028, __c64, 4) as any as S.Schema<PatchRecordResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12352,8 +12352,8 @@ export const patchSettingAccount: API.OperationMethod<
   PatchSettingAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<PatchSettingAccountRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<PatchSettingAccountResponse>,
+  input: __S(1042, __c65, 2) as any as S.Schema<PatchSettingAccountRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<PatchSettingAccountResponse>,
   errors: [DnsSettingNotAvailable, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12367,8 +12367,8 @@ export const patchSettingAccountView: API.OperationMethod<
   PatchSettingAccountViewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<PatchSettingAccountViewRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<PatchSettingAccountViewResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<PatchSettingAccountViewRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<PatchSettingAccountViewResponse>,
   errors: [ViewNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12382,8 +12382,8 @@ export const patchSettingZone: API.OperationMethod<
   PatchSettingZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<PatchSettingZoneRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<PatchSettingZoneResponse>,
+  input: __S(1089, __c68, 1) as any as S.Schema<PatchSettingZoneRequest>,
+  output: __S(1091, __c68, 3) as any as S.Schema<PatchSettingZoneResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12399,8 +12399,8 @@ export const scanListRecord: API.PaginatedOperationMethod<
   RecordsScanListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(155, __c19, 3) as any as S.Schema<ScanListRecordRequest>,
-    output: __S(158, __c19, 6) as any as S.Schema<ScanListRecordResponse>,
+    input: __S(1104, __c69, 0) as any as S.Schema<ScanListRecordRequest>,
+    output: __S(1107, __c69, 3) as any as S.Schema<ScanListRecordResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -12417,8 +12417,8 @@ export const scanRecord: API.OperationMethod<
   ScanRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ScanRecordRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ScanRecordResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ScanRecordRequest>,
+  output: __S(864, __c54, 0) as any as S.Schema<ScanRecordResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12432,8 +12432,8 @@ export const scanReviewRecord: API.OperationMethod<
   ScanReviewRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ScanReviewRecordRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<ScanReviewRecordResponse>,
+  input: __S(1138, __c71, 2) as any as S.Schema<ScanReviewRecordRequest>,
+  output: __S(1141, __c71, 5) as any as S.Schema<ScanReviewRecordResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12447,8 +12447,8 @@ export const scanTriggerRecord: API.OperationMethod<
   ScanTriggerRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<ScanTriggerRecordRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<ScanTriggerRecordResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ScanTriggerRecordRequest>,
+  output: __S(1153, __c72, 1) as any as S.Schema<ScanTriggerRecordResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12462,8 +12462,8 @@ export const updateRecord: API.OperationMethod<
   UpdateRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<UpdateRecordRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<UpdateRecordResponse>,
+  input: __S(1170, __c73, 2) as any as S.Schema<UpdateRecordRequest>,
+  output: __S(1172, __c73, 4) as any as S.Schema<UpdateRecordResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12477,8 +12477,8 @@ export const updateZoneTransferAcl: API.OperationMethod<
   UpdateZoneTransferAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<UpdateZoneTransferAclRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<UpdateZoneTransferAclResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<UpdateZoneTransferAclRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<UpdateZoneTransferAclResponse>,
   errors: [AclNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12492,8 +12492,8 @@ export const updateZoneTransferIncoming: API.OperationMethod<
   UpdateZoneTransferIncomingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<UpdateZoneTransferIncomingRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdateZoneTransferIncomingResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<UpdateZoneTransferIncomingRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdateZoneTransferIncomingResponse>,
   errors: [IncomingZoneTransferNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12510,8 +12510,8 @@ export const updateZoneTransferOutgoing: API.OperationMethod<
   UpdateZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<UpdateZoneTransferOutgoingRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<UpdateZoneTransferOutgoingResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<UpdateZoneTransferOutgoingRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<UpdateZoneTransferOutgoingResponse>,
   errors: [
     OutgoingZoneTransferNotFound,
     OutgoingZoneTransfersNotAllowed,
@@ -12530,8 +12530,8 @@ export const updateZoneTransferPeer: API.OperationMethod<
   UpdateZoneTransferPeerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<UpdateZoneTransferPeerRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<UpdateZoneTransferPeerResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<UpdateZoneTransferPeerRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<UpdateZoneTransferPeerResponse>,
   errors: [PeerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12545,8 +12545,8 @@ export const updateZoneTransferTsig: API.OperationMethod<
   UpdateZoneTransferTsigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<UpdateZoneTransferTsigRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<UpdateZoneTransferTsigResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<UpdateZoneTransferTsigRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<UpdateZoneTransferTsigResponse>,
   errors: [TsigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12556,18 +12556,6 @@ export const updateZoneTransferTsig: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "RecordsBatchRequestDeletesItem",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["id"],
@@ -12593,9 +12581,9 @@ function __c0(j: number): any {
           ["id"],
         ]),
       );
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -12690,9 +12678,9 @@ function __c0(j: number): any {
           },
         ),
       );
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["id"],
@@ -12718,637 +12706,860 @@ function __c0(j: number): any {
           ["id"],
         ]),
       );
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          includeShadowMetadata: S.optional(S.Boolean.pipe(T.Query("include_shadow_metadata"))),
+          deletes: S.optional(__S(17, __c1, 1)),
+          patches: S.optional(__S(1, __c0, 1)),
+          posts: S.optional(__S(3, __c0, 3)),
+          puts: S.optional(__S(5, __c0, 5)),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/dns_records/batch", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BatchRecordRequest" });
+    case 7:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "comment",
+            "content",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "name",
+            "proxiable",
+            "proxied",
+            "settings",
+            "tags",
+            "ttl",
+            "type",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+        ]),
+      );
+    case 8:
+      return S.Array(__S(7, __c0, 7));
+    case 9:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "comment",
+            "content",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "name",
+            "proxiable",
+            "proxied",
+            "settings",
+            "tags",
+            "ttl",
+            "type",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+        ]),
+      );
+    case 10:
+      return S.Array(__S(9, __c0, 9));
+    case 11:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "comment",
+            "content",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "name",
+            "proxiable",
+            "proxied",
+            "settings",
+            "tags",
+            "ttl",
+            "type",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+        ]),
+      );
+    case 12:
+      return S.Array(__S(11, __c0, 11));
+    case 13:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "comment",
+            "content",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "name",
+            "proxiable",
+            "proxied",
+            "settings",
+            "tags",
+            "ttl",
+            "type",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+          [
+            "id",
+            "createdOn",
+            "meta",
+            "modifiedOn",
+            "proxiable",
+            "commentModifiedOn",
+            "tagsModifiedOn",
+          ],
+        ]),
+      );
+    case 14:
+      return S.Array(__S(13, __c0, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          deletes: S.optional(S.NullOr(__S(8, __c0, 8))),
+          patches: S.optional(S.NullOr(__S(10, __c0, 10))),
+          posts: S.optional(S.NullOr(__S(12, __c0, 12))),
+          puts: S.optional(S.NullOr(__S(14, __c0, 14))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BatchRecordResponse" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          includeShadowMetadata: S.optional(S.Boolean.pipe(T.Query("include_shadow_metadata"))),
-          deletes: S.optional(__S(1, __c0, 1)),
-          patches: S.optional(__S(4, __c0, 4)),
-          posts: S.optional(__S(6, __c0, 6)),
-          puts: S.optional(__S(8, __c1, 0)),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/dns_records/batch", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "BatchRecordRequest" });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "comment",
-            "content",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "name",
-            "proxiable",
-            "proxied",
-            "settings",
-            "tags",
-            "ttl",
-            "type",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-        ]),
-      );
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "comment",
-            "content",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "name",
-            "proxiable",
-            "proxied",
-            "settings",
-            "tags",
-            "ttl",
-            "type",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-        ]),
-      );
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "comment",
-            "content",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "name",
-            "proxiable",
-            "proxied",
-            "settings",
-            "tags",
-            "ttl",
-            "type",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-        ]),
-      );
-    case 7:
-      return S.Array(__S(14, __c1, 6));
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "RecordsBatchRequestDeletesItem",
+      });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
   }
 }
 function __c2(j: number): any {
@@ -13356,224 +13567,11 @@ function __c2(j: number): any {
     case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "comment",
-            "content",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "name",
-            "proxiable",
-            "proxied",
-            "settings",
-            "tags",
-            "ttl",
-            "type",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-          [
-            "id",
-            "createdOn",
-            "meta",
-            "modifiedOn",
-            "proxiable",
-            "commentModifiedOn",
-            "tagsModifiedOn",
-          ],
-        ]),
-      );
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deletes: S.optional(S.NullOr(__S(11, __c1, 3))),
-          patches: S.optional(S.NullOr(__S(13, __c1, 5))),
-          posts: S.optional(S.NullOr(__S(15, __c1, 7))),
-          puts: S.optional(S.NullOr(__S(17, __c2, 1))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "BatchRecordResponse" });
-    case 3:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
           ["ipv4Only", "ipv6Only"],
           ["flattenCname", "ipv4Only", "ipv6Only"],
         ]),
       );
-    case 4:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["flags", "tag", "value"],
@@ -13602,7 +13600,7 @@ function __c2(j: number): any {
           ["target", "weight"],
         ]),
       );
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -13614,15 +13612,15 @@ function __c2(j: number): any {
           content: S.optional(S.String),
           privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
           proxied: S.optional(S.Boolean),
-          settings: S.optional(__S(19, __c2, 3)),
-          tags: S.optional(__S(2, __c0, 2)),
+          settings: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           priority: S.optional(S.Number),
-          data: S.optional(__S(20, __c2, 4)),
+          data: S.optional(__S(33, __c2, 1)),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/dns_records", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateRecordRequest" });
-    case 6:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -14052,20 +14050,26 @@ function __c2(j: number): any {
           },
         ),
       );
-    case 7:
+    case 4:
       return S.suspend(() =>
-        __S(22, __c2, 6).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(35, __c2, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateRecordResponse" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
-          zones: __S(2, __c0, 2),
+          zones: __S(48, __c3, 0),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/accounts/{account_id}/dns_settings/views", code: 200 }),
@@ -14074,19 +14078,27 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSettingAccountViewRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdTime: S.String.pipe(T.Body("created_time")),
           modifiedTime: S.String.pipe(T.Body("modified_time")),
           name: S.String,
-          zones: __S(2, __c0, 2),
+          zones: __S(48, __c3, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateSettingAccountViewResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -14095,13 +14107,13 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSettingsAccountNameserverSetRequestNameserversItem",
       });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          nameservers: __S(27, __c3, 3),
+          nameservers: __S(97, __c6, 1),
           advanced: S.optional(S.Boolean),
           ipSet: S.optional(S.Number.pipe(T.Body("ip_set"))),
         })
@@ -14116,20 +14128,24 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSettingsAccountNameserverSetRequest",
       });
-    case 5:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["id", "advanced", "createdOn", "ipSet", "nameservers"],
           ["id", "advanced", "createdOn", "ipSet", "nameservers"],
         ]),
       );
-    case 6:
+    case 4:
       return S.suspend(() =>
-        __S(29, __c3, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(99, __c6, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateSettingsAccountNameserverSetResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -14145,7 +14161,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14157,7 +14173,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateZoneTransferAclResponse",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -14169,19 +14189,27 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateZoneTransferForceAxfrRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateZoneTransferForceAxfrResponse",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           autoRefreshSeconds: S.Number.pipe(T.Body("auto_refresh_seconds")),
           name: S.String,
-          peers: __S(2, __c0, 2),
+          peers: __S(48, __c3, 0),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/zones/{zone_id}/secondary_dns/incoming", code: 200 }),
@@ -14190,7 +14218,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateZoneTransferIncomingRequest",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -14199,18 +14231,22 @@ function __c4(j: number): any {
           createdTime: S.optional(S.NullOr(S.String).pipe(T.Body("created_time"))),
           modifiedTime: S.optional(S.NullOr(S.String).pipe(T.Body("modified_time"))),
           name: S.optional(S.NullOr(S.String)),
-          peers: S.optional(S.NullOr(__S(2, __c0, 2))),
+          peers: S.optional(S.NullOr(__S(48, __c3, 0))),
           soaSerial: S.optional(S.NullOr(S.Number).pipe(T.Body("soa_serial"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateZoneTransferIncomingResponse",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           name: S.String,
-          peers: __S(2, __c0, 2),
+          peers: __S(48, __c3, 0),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/zones/{zone_id}/secondary_dns/outgoing", code: 200 }),
@@ -14219,7 +14255,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateZoneTransferOutgoingRequest",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -14227,13 +14267,17 @@ function __c4(j: number): any {
           createdTime: S.optional(S.NullOr(S.String).pipe(T.Body("created_time"))),
           lastTransferredTime: S.optional(S.NullOr(S.String).pipe(T.Body("last_transferred_time"))),
           name: S.optional(S.NullOr(S.String)),
-          peers: S.optional(S.NullOr(__S(2, __c0, 2))),
+          peers: S.optional(S.NullOr(__S(48, __c3, 0))),
           soaSerial: S.optional(S.NullOr(S.Number).pipe(T.Body("soa_serial"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateZoneTransferOutgoingResponse",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -14252,7 +14296,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14267,7 +14311,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateZoneTransferPeerResponse",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -14286,7 +14334,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateZoneTransferTsigRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -14297,7 +14349,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateZoneTransferTsigResponse",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -14305,11 +14361,15 @@ function __c5(j: number): any {
           .pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}/dnssec", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteDnssecRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteDnssecResponse" });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -14324,13 +14384,17 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRecordRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRecordResponse" });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -14349,7 +14413,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14359,7 +14423,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteSettingAccountViewResponse",
       });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -14376,7 +14444,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteSettingsAccountNameserverSetRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -14384,7 +14452,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteSettingsAccountNameserverSetResponse",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -14401,7 +14473,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteZoneTransferAclRequest",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -14413,7 +14489,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteZoneTransferIncomingRequest",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -14425,7 +14505,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteZoneTransferOutgoingRequest",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -14442,7 +14526,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteZoneTransferPeerRequest",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -14461,7 +14549,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14479,7 +14567,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DisableZoneTransferOutgoingRequest",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -14495,7 +14587,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "EnableZoneTransferOutgoingRequest",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -14503,11 +14599,15 @@ function __c7(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_records/export", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ExportRecordRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "ExportRecordResponse",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -14523,7 +14623,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ForceNotifyZoneTransferOutgoingRequest",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -14538,52 +14642,56 @@ function __c7(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_analytics/report", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAnalyticReportRequest" });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(2, __c0, 2),
-          metrics: __S(62, __c7, 6),
+          dimensions: __S(48, __c3, 0),
+          metrics: __S(544, __c34, 0),
         }),
       ).annotate({
         identifier: "AnalyticsReportsGetResponseDataItem",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(529, __c33, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(2, __c0, 2),
+          dimensions: __S(48, __c3, 0),
           limit: S.Number,
-          metrics: __S(2, __c0, 2),
+          metrics: __S(48, __c3, 0),
           since: S.String,
           until: S.String,
           filters: S.optional(S.NullOr(S.String)),
-          sort: S.optional(S.NullOr(__S(2, __c0, 2))),
+          sort: S.optional(S.NullOr(__S(48, __c3, 0))),
         }),
       ).annotate({
         identifier: "AnalyticsReportsGetResponseQuery",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(64, __c8, 0),
+          data: __S(530, __c33, 2),
           dataLag: S.Number.pipe(T.Body("data_lag")),
           max: S.Unknown,
           min: S.Unknown,
-          query: __S(65, __c8, 1),
+          query: __S(531, __c33, 3),
           rows: S.Number,
           totals: S.Unknown,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetAnalyticReportResponse",
       });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -14607,56 +14715,56 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetAnalyticReportBytimeRequest",
       });
-    case 4:
-      return S.Array(__S(62, __c7, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(544, __c34, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(2, __c0, 2),
-          metrics: __S(68, __c8, 4),
+          dimensions: __S(48, __c3, 0),
+          metrics: __S(561, __c35, 1),
         }),
       ).annotate({
         identifier: "AnalyticsReportsBytimesGetResponseDataItem",
       });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(562, __c35, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(2, __c0, 2),
+          dimensions: __S(48, __c3, 0),
           limit: S.Number,
-          metrics: __S(2, __c0, 2),
+          metrics: __S(48, __c3, 0),
           since: S.String,
           timeDelta: S.String.pipe(T.Body("time_delta")),
           until: S.String,
           filters: S.optional(S.NullOr(S.String)),
-          sort: S.optional(S.NullOr(__S(2, __c0, 2))),
+          sort: S.optional(S.NullOr(__S(48, __c3, 0))),
         }),
       ).annotate({
         identifier: "AnalyticsReportsBytimesGetResponseQuery",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(2, __c0, 2));
-    case 1:
+    case 5:
+      return S.Array(__S(48, __c3, 0));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(70, __c8, 6),
+          data: __S(563, __c35, 3),
           dataLag: S.Number.pipe(T.Body("data_lag")),
           max: S.Unknown,
           min: S.Unknown,
-          query: __S(71, __c8, 7),
+          query: __S(564, __c35, 4),
           rows: S.Number,
-          timeIntervals: __S(72, __c9, 0).pipe(T.Body("time_intervals")),
+          timeIntervals: __S(565, __c35, 5).pipe(T.Body("time_intervals")),
           totals: S.Unknown,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetAnalyticReportBytimeResponse",
       });
-    case 2:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -14664,7 +14772,11 @@ function __c9(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/dnssec", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDnssecRequest" });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           algorithm: S.optional(S.NullOr(S.String)),
@@ -14683,7 +14795,11 @@ function __c9(j: number): any {
           status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDnssecResponse" });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -14699,7 +14815,7 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRecordRequest" });
-    case 5:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -15129,11 +15245,15 @@ function __c9(j: number): any {
           },
         ),
       );
-    case 6:
+    case 2:
       return S.suspend(() =>
-        __S(77, __c9, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(609, __c38, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRecordResponse" });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -15143,7 +15263,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetSettingAccountRequest" });
   }
 }
-function __c10(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15154,14 +15274,6 @@ function __c10(j: number): any {
         identifier: "SettingsAccountGetResponseZoneDefaultsInternalDns",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "SettingsAccountGetResponseZoneDefaultsNameservers",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           expire: S.optional(S.NullOr(S.Number)),
@@ -15175,32 +15287,48 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "SettingsAccountGetResponseZoneDefaultsSoa",
       });
-    case 3:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "SettingsAccountGetResponseZoneDefaultsNameservers",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
           foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-          internalDns: __S(80, __c10, 0).pipe(T.Body("internal_dns")),
+          internalDns: __S(640, __c40, 0).pipe(T.Body("internal_dns")),
           multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
-          nameservers: __S(81, __c10, 1),
+          nameservers: __S(656, __c41, 0),
           nsTtl: S.Number.pipe(T.Body("ns_ttl")),
           secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-          soa: __S(82, __c10, 2),
+          soa: __S(641, __c40, 1),
           zoneMode: S.String.pipe(T.Body("zone_mode")),
         }),
       ).annotate({
         identifier: "SettingsAccountGetResponseZoneDefaults",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          zoneDefaults: __S(83, __c10, 3).pipe(T.Body("zone_defaults")),
+          zoneDefaults: __S(657, __c41, 1).pipe(T.Body("zone_defaults")),
           enforceDnsOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("enforce_dns_only"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSettingAccountResponse",
       });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -15217,7 +15345,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetSettingAccountViewRequest",
       });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -15234,24 +15366,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetSettingsAccountNameserverSetRequest",
       });
-    case 7:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["id", "advanced", "createdOn", "ipSet", "nameservers"],
           ["id", "advanced", "createdOn", "ipSet", "nameservers"],
         ]),
       );
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
-        __S(87, __c10, 7).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(689, __c43, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSettingsAccountNameserverSetResponse",
       });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -15259,25 +15391,29 @@ function __c11(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_settings", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingZoneRequest" });
-    case 2:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["type"], ["type", "nsSet"], ["nameserverSetId", "type"]]),
       );
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
           foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-          internalDns: __S(80, __c10, 0).pipe(T.Body("internal_dns")),
+          internalDns: __S(640, __c40, 0).pipe(T.Body("internal_dns")),
           multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
-          nameservers: __S(90, __c11, 2),
+          nameservers: __S(705, __c44, 1),
           nsTtl: S.Number.pipe(T.Body("ns_ttl")),
           secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-          soa: __S(82, __c10, 2),
+          soa: __S(641, __c40, 1),
           zoneMode: S.String.pipe(T.Body("zone_mode")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingZoneResponse" });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -15287,7 +15423,7 @@ function __c11(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetUsageAccountRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recordQuota: S.Number.pipe(T.Body("record_quota")),
@@ -15296,7 +15432,11 @@ function __c11(j: number): any {
           internalRecordUsage: S.optional(S.NullOr(S.Number).pipe(T.Body("internal_record_usage"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetUsageAccountResponse" });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -15304,7 +15444,7 @@ function __c11(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_records/usage", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetUsageZoneRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recordQuota: S.Number.pipe(T.Body("record_quota")),
@@ -15313,7 +15453,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetUsageZoneResponse" });
   }
 }
-function __c12(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15332,7 +15472,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetZoneTransferAclRequest",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -15344,7 +15488,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetZoneTransferIncomingRequest",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -15356,7 +15504,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetZoneTransferOutgoingRequest",
       });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -15372,7 +15524,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetZoneTransferOutgoingStatusRequest",
       });
-    case 4:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -15389,7 +15545,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetZoneTransferPeerRequest",
       });
-    case 5:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -15406,7 +15566,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetZoneTransferTsigRequest",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -15416,7 +15580,11 @@ function __c12(j: number): any {
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/dns_records/import", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ImportRecordRequest" });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           recsAdded: S.optional(S.NullOr(S.Number).pipe(T.Body("recs_added"))),
@@ -15425,7 +15593,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ImportRecordResponse" });
   }
 }
-function __c13(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15452,7 +15620,7 @@ function __c13(j: number): any {
         S.Struct({
           algorithm: S.optional(S.NullOr(S.Number).pipe(T.Body("Algorithm"))),
           flags: S.optional(S.NullOr(S.Number).pipe(T.Body("Flags"))),
-          hdr: S.optional(S.NullOr(__S(105, __c13, 1)).pipe(T.Body("Hdr"))),
+          hdr: S.optional(S.NullOr(__S(881, __c55, 1)).pipe(T.Body("Hdr"))),
           protocol: S.optional(S.NullOr(S.Number).pipe(T.Body("Protocol"))),
           publicKey: S.optional(S.NullOr(S.String).pipe(T.Body("PublicKey"))),
         }),
@@ -15472,20 +15640,24 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dNSKEY: S.optional(S.NullOr(__S(106, __c13, 2)).pipe(T.Body("DNSKEY"))),
+          dNSKEY: S.optional(S.NullOr(__S(882, __c55, 2)).pipe(T.Body("DNSKEY"))),
           location: S.optional(S.NullOr(S.String).pipe(T.Body("Location"))),
           name: S.optional(S.NullOr(S.String).pipe(T.Body("Name"))),
-          signingKey: S.optional(S.NullOr(__S(107, __c13, 3)).pipe(T.Body("SigningKey"))),
+          signingKey: S.optional(S.NullOr(__S(883, __c55, 3)).pipe(T.Body("SigningKey"))),
           tag: S.optional(S.NullOr(S.String).pipe(T.Body("Tag"))),
         }),
       ).annotate({ identifier: "ListDnssecZskResultItem" });
     case 5:
-      return S.Array(__S(108, __c13, 4));
+      return S.Array(__S(884, __c55, 4));
     case 6:
       return S.suspend(() =>
-        __S(109, __c13, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(885, __c55, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDnssecZskResponse" });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           absent: S.optional(S.String),
@@ -15497,21 +15669,6 @@ function __c13(j: number): any {
         }),
       ).annotate({
         identifier: "RecordsListRequestComment",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contains: S.optional(S.String),
-          endswith: S.optional(S.String),
-          exact: S.optional(S.String),
-          startswith: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RecordsListRequestContent",
       });
     case 1:
       return S.suspend(() =>
@@ -15537,12 +15694,12 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          comment: S.optional(__S(111, __c13, 7).pipe(T.DeepQuery("comment"))),
-          content: S.optional(__S(112, __c14, 0).pipe(T.DeepQuery("content"))),
+          comment: S.optional(__S(896, __c56, 0).pipe(T.DeepQuery("comment"))),
+          content: S.optional(__S(912, __c57, 0).pipe(T.DeepQuery("content"))),
           direction: S.optional(S.String.pipe(T.Query())),
           includeShadowMetadata: S.optional(S.Boolean.pipe(T.Query("include_shadow_metadata"))),
           match: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(__S(113, __c14, 1).pipe(T.DeepQuery("name"))),
+          name: S.optional(__S(897, __c56, 1).pipe(T.DeepQuery("name"))),
           order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
@@ -15550,7 +15707,7 @@ function __c14(j: number): any {
           search: S.optional(S.String.pipe(T.Query())),
           shadowedByName: S.optional(S.String.pipe(T.Query("shadowed_by_name"))),
           shadowingName: S.optional(S.String.pipe(T.Query("shadowing_name"))),
-          tag: S.optional(__S(114, __c14, 2).pipe(T.DeepQuery("tag"))),
+          tag: S.optional(__S(898, __c56, 2).pipe(T.DeepQuery("tag"))),
           tagMatch: S.optional(S.String.pipe(T.Query("tag_match"))),
           type: S.optional(S.String.pipe(T.Query())),
         })
@@ -15988,21 +16145,40 @@ function __c14(j: number): any {
         ),
       );
     case 5:
-      return S.Array(__S(116, __c14, 4));
+      return S.Array(__S(900, __c56, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: __S(117, __c14, 5).pipe(T.EnvelopePayload()),
+          result: __S(901, __c56, 5).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRecordsResponse" });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contains: S.optional(S.String),
+          endswith: S.optional(S.String),
+          exact: S.optional(S.String),
+          startswith: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RecordsListRequestContent",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           direction: S.optional(S.String.pipe(T.Query())),
           match: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(__S(112, __c14, 0).pipe(T.DeepQuery("name"))),
+          name: S.optional(__S(912, __c57, 0).pipe(T.DeepQuery("name"))),
           order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
@@ -16016,34 +16192,34 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListSettingAccountViewsRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdTime: S.String.pipe(T.Body("created_time")),
           modifiedTime: S.String.pipe(T.Body("modified_time")),
           name: S.String,
-          zones: __S(2, __c0, 2),
+          zones: __S(48, __c3, 0),
         }),
       ).annotate({
         identifier: "SettingsAccountViewsListResultItem",
       });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
     case 2:
+      return S.Array(__S(929, __c58, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(121, __c15, 1).pipe(T.EnvelopePayload()),
+          result: __S(930, __c58, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListSettingAccountViewsResponse",
       });
-    case 3:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -16061,22 +16237,26 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListSettingsAccountNameserverSetsRequest",
       });
-    case 4:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["id", "advanced", "createdOn", "ipSet", "nameservers"],
           ["id", "advanced", "createdOn", "ipSet", "nameservers"],
         ]),
       );
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(945, __c59, 1));
+    case 3:
       return S.suspend(() =>
-        __S(125, __c15, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(946, __c59, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListSettingsAccountNameserverSetsResponse",
       });
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -16088,11 +16268,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListZoneTransferAclsRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -16102,18 +16278,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ZoneTransfersAclsListResultItem",
       });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
     case 2:
+      return S.Array(__S(961, __c60, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(129, __c16, 1).pipe(T.EnvelopePayload()),
+          result: __S(962, __c60, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListZoneTransferAclsResponse",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -16125,7 +16305,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListZoneTransferPeersRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -16138,18 +16318,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ZoneTransfersPeersListResultItem",
       });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(977, __c61, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(133, __c16, 5).pipe(T.EnvelopePayload()),
+          result: __S(978, __c61, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListZoneTransferPeersResponse",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -16161,11 +16345,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListZoneTransferTsigsRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -16176,18 +16356,22 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ZoneTransfersTsigsListResultItem",
       });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
     case 2:
+      return S.Array(__S(993, __c62, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(137, __c17, 1).pipe(T.EnvelopePayload()),
+          result: __S(994, __c62, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListZoneTransferTsigsResponse",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -16199,14 +16383,18 @@ function __c17(j: number): any {
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/dnssec", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchDnssecRequest" });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["ipv4Only", "ipv6Only"],
           ["flattenCname", "ipv4Only", "ipv6Only"],
         ]),
       );
-    case 5:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["flags", "tag", "value"],
@@ -16235,7 +16423,7 @@ function __c17(j: number): any {
           ["target", "weight"],
         ]),
       );
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -16248,10 +16436,10 @@ function __c17(j: number): any {
           content: S.optional(S.String),
           privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
           proxied: S.optional(S.Boolean),
-          settings: S.optional(__S(140, __c17, 4)),
-          tags: S.optional(__S(2, __c0, 2)),
+          settings: S.optional(__S(1024, __c64, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           priority: S.optional(S.Number),
-          data: S.optional(__S(141, __c17, 5)),
+          data: S.optional(__S(1025, __c64, 1)),
         })
           .pipe(
             T.Http({
@@ -16262,7 +16450,7 @@ function __c17(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchRecordRequest" });
-    case 7:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -16692,23 +16880,15 @@ function __c17(j: number): any {
           },
         ),
       );
+    case 4:
+      return S.suspend(() =>
+        __S(1027, __c64, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchRecordResponse" });
   }
 }
-function __c18(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        __S(143, __c17, 7).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PatchRecordResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
-        }),
-      ).annotate({
-        identifier: "SettingsAccountEditRequestZoneDefaultsInternalDns",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -16716,7 +16896,47 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "SettingsAccountEditRequestZoneDefaultsNameservers",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          flattenAllCnames: S.optional(S.Boolean.pipe(T.Body("flatten_all_cnames"))),
+          foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
+          internalDns: S.optional(__S(1056, __c66, 0).pipe(T.Body("internal_dns"))),
+          multiProvider: S.optional(S.Boolean.pipe(T.Body("multi_provider"))),
+          nameservers: S.optional(__S(1040, __c65, 0)),
+          nsTtl: S.optional(S.Number.pipe(T.Body("ns_ttl"))),
+          secondaryOverrides: S.optional(S.Boolean.pipe(T.Body("secondary_overrides"))),
+          soa: S.optional(__S(1057, __c66, 1)),
+          zoneMode: S.optional(S.String.pipe(T.Body("zone_mode"))),
+        }),
+      ).annotate({
+        identifier: "SettingsAccountEditRequestZoneDefaults",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
+          zoneDefaults: S.optional(__S(1041, __c65, 1).pipe(T.Body("zone_defaults"))),
+        })
+          .pipe(T.Http({ method: "PATCH", uri: "/accounts/{account_id}/dns_settings", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "PatchSettingAccountRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
+        }),
+      ).annotate({
+        identifier: "SettingsAccountEditRequestZoneDefaultsInternalDns",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expire: S.optional(S.Number),
@@ -16730,41 +16950,17 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "SettingsAccountEditRequestZoneDefaultsSoa",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          flattenAllCnames: S.optional(S.Boolean.pipe(T.Body("flatten_all_cnames"))),
-          foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
-          internalDns: S.optional(__S(145, __c18, 1).pipe(T.Body("internal_dns"))),
-          multiProvider: S.optional(S.Boolean.pipe(T.Body("multi_provider"))),
-          nameservers: S.optional(__S(146, __c18, 2)),
-          nsTtl: S.optional(S.Number.pipe(T.Body("ns_ttl"))),
-          secondaryOverrides: S.optional(S.Boolean.pipe(T.Body("secondary_overrides"))),
-          soa: S.optional(__S(147, __c18, 3)),
-          zoneMode: S.optional(S.String.pipe(T.Body("zone_mode"))),
-        }),
-      ).annotate({
-        identifier: "SettingsAccountEditRequestZoneDefaults",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
-          zoneDefaults: S.optional(__S(148, __c18, 4).pipe(T.Body("zone_defaults"))),
-        })
-          .pipe(T.Http({ method: "PATCH", uri: "/accounts/{account_id}/dns_settings", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "PatchSettingAccountRequest",
-      });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           viewId: S.String.pipe(T.Label("view_id")),
           name: S.optional(S.String),
-          zones: S.optional(__S(2, __c0, 2)),
+          zones: S.optional(__S(48, __c3, 0)),
         })
           .pipe(
             T.Http({
@@ -16777,50 +16973,54 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchSettingAccountViewRequest",
       });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["type"], ["type", "nsSet"], ["nameserverSetId", "type"]]),
       );
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           flattenAllCnames: S.optional(S.Boolean.pipe(T.Body("flatten_all_cnames"))),
           foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
-          internalDns: S.optional(__S(145, __c18, 1).pipe(T.Body("internal_dns"))),
+          internalDns: S.optional(__S(1056, __c66, 0).pipe(T.Body("internal_dns"))),
           multiProvider: S.optional(S.Boolean.pipe(T.Body("multi_provider"))),
-          nameservers: S.optional(__S(151, __c18, 7)),
+          nameservers: S.optional(__S(1088, __c68, 0)),
           nsTtl: S.optional(S.Number.pipe(T.Body("ns_ttl"))),
           secondaryOverrides: S.optional(S.Boolean.pipe(T.Body("secondary_overrides"))),
-          soa: S.optional(__S(147, __c18, 3)),
+          soa: S.optional(__S(1057, __c66, 1)),
           zoneMode: S.optional(S.String.pipe(T.Body("zone_mode"))),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/dns_settings", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchSettingZoneRequest" });
-    case 1:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["type"], ["type", "nsSet"], ["nameserverSetId", "type"]]),
       );
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
           foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-          internalDns: __S(80, __c10, 0).pipe(T.Body("internal_dns")),
+          internalDns: __S(640, __c40, 0).pipe(T.Body("internal_dns")),
           multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
-          nameservers: __S(153, __c19, 1),
+          nameservers: __S(1090, __c68, 2),
           nsTtl: S.Number.pipe(T.Body("ns_ttl")),
           secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-          soa: __S(82, __c10, 2),
+          soa: __S(641, __c40, 1),
           zoneMode: S.String.pipe(T.Body("zone_mode")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchSettingZoneResponse" });
-    case 3:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -16830,7 +17030,7 @@ function __c19(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ScanListRecordRequest" });
-    case 4:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -17260,16 +17460,20 @@ function __c19(j: number): any {
           },
         ),
       );
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1105, __c69, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(157, __c19, 5).pipe(T.EnvelopePayload()),
+          result: __S(1106, __c69, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ScanListRecordResponse" });
-    case 7:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -17279,7 +17483,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "ScanRecordRequest" });
   }
 }
-function __c20(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(
@@ -17377,13 +17581,13 @@ function __c20(j: number): any {
         ),
       );
     case 1:
-      return S.Array(__S(160, __c20, 0));
+      return S.Array(__S(1136, __c71, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          accepts: S.optional(__S(161, __c20, 1)),
-          rejects: S.optional(__S(1, __c0, 1)),
+          accepts: S.optional(__S(1137, __c71, 1)),
+          rejects: S.optional(__S(17, __c1, 1)),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/zones/{zone_id}/dns_records/scan/review", code: 200 }),
@@ -17593,15 +17797,19 @@ function __c20(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(__S(163, __c20, 3));
+      return S.Array(__S(1139, __c71, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accepts: S.optional(S.NullOr(__S(164, __c20, 4))),
-          rejects: S.optional(S.NullOr(__S(2, __c0, 2))),
+          accepts: S.optional(S.NullOr(__S(1140, __c71, 4))),
+          rejects: S.optional(S.NullOr(__S(48, __c3, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ScanReviewRecordResponse" });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -17611,13 +17819,13 @@ function __c20(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ScanTriggerRecordRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "ScanTriggerRecordResponse",
       });
   }
 }
-function __c21(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(
@@ -17668,10 +17876,10 @@ function __c21(j: number): any {
           content: S.optional(S.String),
           privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
           proxied: S.optional(S.Boolean),
-          settings: S.optional(__S(168, __c21, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
+          settings: S.optional(__S(1168, __c73, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           priority: S.optional(S.Number),
-          data: S.optional(__S(169, __c21, 1)),
+          data: S.optional(__S(1169, __c73, 1)),
         })
           .pipe(
             T.Http({
@@ -18114,9 +18322,13 @@ function __c21(j: number): any {
       );
     case 4:
       return S.suspend(() =>
-        __S(171, __c21, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(1171, __c73, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateRecordResponse" });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -18135,13 +18347,17 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateZoneTransferAclRequest",
       });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           autoRefreshSeconds: S.Number.pipe(T.Body("auto_refresh_seconds")),
           name: S.String,
-          peers: __S(2, __c0, 2),
+          peers: __S(48, __c3, 0),
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/zones/{zone_id}/secondary_dns/incoming", code: 200 }),
@@ -18150,12 +18366,16 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateZoneTransferIncomingRequest",
       });
-    case 7:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           name: S.String,
-          peers: __S(2, __c0, 2),
+          peers: __S(48, __c3, 0),
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/zones/{zone_id}/secondary_dns/outgoing", code: 200 }),
@@ -18166,7 +18386,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18190,7 +18410,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateZoneTransferPeerRequest",
       });
-    case 1:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -18212,7 +18436,6 @@ function __c22(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

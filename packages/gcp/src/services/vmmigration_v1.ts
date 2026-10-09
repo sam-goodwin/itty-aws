@@ -2320,8 +2320,8 @@ export const addGroupMigrationProjectsLocationsGroups: API.OperationMethod<
   AddGroupMigrationProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddGroupMigrationProjectsLocationsGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(1761, __c55, 1) as any as S.Schema<AddGroupMigrationProjectsLocationsGroupsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2341,11 +2341,11 @@ export const cancelProjectsLocationsImageImportsImageImportJobs: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7,
-    __c0,
-    7,
+    2208,
+    __c69,
+    0,
   ) as any as S.Schema<CancelProjectsLocationsImageImportsImageImportJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2364,8 +2364,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
+  input: __S(2592, __c81, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2384,8 +2384,12 @@ export const cancelProjectsLocationsSourcesDiskMigrationJobs: API.OperationMetho
   CancelProjectsLocationsSourcesDiskMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CancelProjectsLocationsSourcesDiskMigrationJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(
+    2944,
+    __c92,
+    0,
+  ) as any as S.Schema<CancelProjectsLocationsSourcesDiskMigrationJobsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2405,11 +2409,11 @@ export const cancelProjectsLocationsSourcesMigratingVmsCloneJobs: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    10,
-    __c1,
-    2,
+    3040,
+    __c95,
+    0,
   ) as any as S.Schema<CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2429,11 +2433,11 @@ export const cancelProjectsLocationsSourcesMigratingVmsCutoverJobs: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    11,
-    __c1,
-    3,
+    3072,
+    __c96,
+    0,
   ) as any as S.Schema<CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2452,8 +2456,8 @@ export const createProjectsLocationsGroups: API.OperationMethod<
   CreateProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateProjectsLocationsGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsGroupsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2472,8 +2476,8 @@ export const createProjectsLocationsImageImports: API.OperationMethod<
   CreateProjectsLocationsImageImportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateProjectsLocationsImageImportsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(64, __c2, 0) as any as S.Schema<CreateProjectsLocationsImageImportsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2492,8 +2496,8 @@ export const createProjectsLocationsSources: API.OperationMethod<
   CreateProjectsLocationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateProjectsLocationsSourcesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(384, __c12, 0) as any as S.Schema<CreateProjectsLocationsSourcesRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2513,11 +2517,11 @@ export const createProjectsLocationsSourcesDatacenterConnectors: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    53,
-    __c6,
-    5,
+    448,
+    __c14,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsSourcesDatacenterConnectorsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2537,11 +2541,11 @@ export const createProjectsLocationsSourcesDiskMigrationJobs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    60,
-    __c7,
-    4,
+    512,
+    __c16,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsSourcesDiskMigrationJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2560,8 +2564,8 @@ export const createProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   CreateProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(608, __c19, 0) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2581,11 +2585,11 @@ export const createProjectsLocationsSourcesMigratingVmsCloneJobs: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    107,
-    __c13,
-    3,
+    864,
+    __c27,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2605,11 +2609,11 @@ export const createProjectsLocationsSourcesMigratingVmsCutoverJobs: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    108,
-    __c13,
-    4,
+    896,
+    __c28,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2629,11 +2633,11 @@ export const createProjectsLocationsSourcesUtilizationReports: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    114,
-    __c14,
-    2,
+    928,
+    __c29,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsSourcesUtilizationReportsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2652,8 +2656,8 @@ export const createProjectsLocationsTargetProjects: API.OperationMethod<
   CreateProjectsLocationsTargetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<CreateProjectsLocationsTargetProjectsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(1024, __c32, 0) as any as S.Schema<CreateProjectsLocationsTargetProjectsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2672,8 +2676,8 @@ export const deleteProjectsLocationsGroups: API.OperationMethod<
   DeleteProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<DeleteProjectsLocationsGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DeleteProjectsLocationsGroupsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2692,8 +2696,8 @@ export const deleteProjectsLocationsImageImports: API.OperationMethod<
   DeleteProjectsLocationsImageImportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<DeleteProjectsLocationsImageImportsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(1120, __c35, 0) as any as S.Schema<DeleteProjectsLocationsImageImportsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2712,8 +2716,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
+  input: __S(1152, __c36, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2732,8 +2736,8 @@ export const deleteProjectsLocationsSources: API.OperationMethod<
   DeleteProjectsLocationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteProjectsLocationsSourcesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(1184, __c37, 0) as any as S.Schema<DeleteProjectsLocationsSourcesRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2753,11 +2757,11 @@ export const deleteProjectsLocationsSourcesDatacenterConnectors: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    121,
-    __c15,
-    1,
+    1216,
+    __c38,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsSourcesDatacenterConnectorsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2777,11 +2781,11 @@ export const deleteProjectsLocationsSourcesDiskMigrationJobs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    122,
-    __c15,
-    2,
+    1248,
+    __c39,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsSourcesDiskMigrationJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2800,8 +2804,8 @@ export const deleteProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   DeleteProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DeleteProjectsLocationsSourcesMigratingVmsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DeleteProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2821,11 +2825,11 @@ export const deleteProjectsLocationsSourcesUtilizationReports: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    124,
-    __c15,
-    4,
+    1312,
+    __c41,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsSourcesUtilizationReportsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2844,8 +2848,8 @@ export const deleteProjectsLocationsTargetProjects: API.OperationMethod<
   DeleteProjectsLocationsTargetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<DeleteProjectsLocationsTargetProjectsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DeleteProjectsLocationsTargetProjectsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2865,11 +2869,11 @@ export const extendMigrationProjectsLocationsSourcesMigratingVms: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    126,
-    __c15,
-    6,
+    1376,
+    __c43,
+    0,
   ) as any as S.Schema<ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2884,8 +2888,8 @@ export const fetchInventoryProjectsLocationsSources: API.PaginatedOperationMetho
   GcpOpContext,
   FetchInventoryResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<FetchInventoryProjectsLocationsSourcesRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<FetchInventoryResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<FetchInventoryProjectsLocationsSourcesRequest>,
+  output: __S(1423, __c44, 15) as any as S.Schema<FetchInventoryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2902,11 +2906,11 @@ export const fetchStorageInventoryProjectsLocationsSources: API.PaginatedOperati
   FetchStorageInventoryResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    143,
-    __c17,
-    7,
+    1440,
+    __c45,
+    0,
   ) as any as S.Schema<FetchStorageInventoryProjectsLocationsSourcesRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<FetchStorageInventoryResponse>,
+  output: __S(1443, __c45, 3) as any as S.Schema<FetchStorageInventoryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2927,11 +2931,11 @@ export const finalizeMigrationProjectsLocationsSourcesMigratingVms: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    147,
-    __c18,
-    3,
+    1472,
+    __c46,
+    0,
   ) as any as S.Schema<FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2945,8 +2949,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<Location>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2960,8 +2964,8 @@ export const getProjectsLocationsGroups: API.OperationMethod<
   GetProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetProjectsLocationsGroupsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Group>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetProjectsLocationsGroupsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2975,8 +2979,8 @@ export const getProjectsLocationsImageImports: API.OperationMethod<
   GetProjectsLocationsImageImportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetProjectsLocationsImageImportsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ImageImport>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetProjectsLocationsImageImportsRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<ImageImport>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2994,11 +2998,11 @@ export const getProjectsLocationsImageImportsImageImportJobs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    152,
-    __c19,
+    1632,
+    __c51,
     0,
   ) as any as S.Schema<GetProjectsLocationsImageImportsImageImportJobsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ImageImportJob>,
+  output: __S(297, __c9, 9) as any as S.Schema<ImageImportJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3012,8 +3016,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3027,8 +3031,8 @@ export const getProjectsLocationsSources: API.OperationMethod<
   GetProjectsLocationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetProjectsLocationsSourcesRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<Source>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetProjectsLocationsSourcesRequest>,
+  output: __S(423, __c13, 7) as any as S.Schema<Source>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3046,11 +3050,11 @@ export const getProjectsLocationsSourcesDatacenterConnectors: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    155,
-    __c19,
-    3,
+    1728,
+    __c54,
+    0,
   ) as any as S.Schema<GetProjectsLocationsSourcesDatacenterConnectorsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<DatacenterConnector>,
+  output: __S(483, __c15, 3) as any as S.Schema<DatacenterConnector>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3064,8 +3068,12 @@ export const getProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod<
   GetProjectsLocationsSourcesDiskMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetProjectsLocationsSourcesDiskMigrationJobsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<DiskMigrationJob>,
+  input: __S(
+    1888,
+    __c59,
+    0,
+  ) as any as S.Schema<GetProjectsLocationsSourcesDiskMigrationJobsRequest>,
+  output: __S(580, __c18, 4) as any as S.Schema<DiskMigrationJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3079,8 +3087,8 @@ export const getProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   GetProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<MigratingVm>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(855, __c26, 23) as any as S.Schema<MigratingVm>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3098,11 +3106,11 @@ export const getProjectsLocationsSourcesMigratingVmsCloneJobs: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    158,
-    __c19,
-    6,
+    1952,
+    __c61,
+    0,
   ) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<CloneJob>,
+  output: __S(674, __c21, 2) as any as S.Schema<CloneJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3120,11 +3128,11 @@ export const getProjectsLocationsSourcesMigratingVmsCutoverJobs: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    159,
-    __c19,
-    7,
+    1984,
+    __c62,
+    0,
   ) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<CutoverJob>,
+  output: __S(738, __c23, 2) as any as S.Schema<CutoverJob>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3142,11 +3150,11 @@ export const getProjectsLocationsSourcesMigratingVmsReplicationCycles: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    160,
-    __c20,
+    2016,
+    __c63,
     0,
   ) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ReplicationCycle>,
+  output: __S(707, __c22, 3) as any as S.Schema<ReplicationCycle>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3161,11 +3169,11 @@ export const getProjectsLocationsSourcesUtilizationReports: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    161,
-    __c20,
-    1,
+    2048,
+    __c64,
+    0,
   ) as any as S.Schema<GetProjectsLocationsSourcesUtilizationReportsRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<UtilizationReport>,
+  output: __S(995, __c31, 3) as any as S.Schema<UtilizationReport>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3179,8 +3187,8 @@ export const getProjectsLocationsTargetProjects: API.OperationMethod<
   GetProjectsLocationsTargetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetProjectsLocationsTargetProjectsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<TargetProject>,
+  input: __S(2080, __c65, 0) as any as S.Schema<GetProjectsLocationsTargetProjectsRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<TargetProject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3195,8 +3203,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<ListLocationsResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3212,8 +3220,8 @@ export const listProjectsLocationsGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<ListProjectsLocationsGroupsRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<ListGroupsResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListProjectsLocationsGroupsRequest>,
+  output: __S(2146, __c67, 2) as any as S.Schema<ListGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3229,8 +3237,8 @@ export const listProjectsLocationsImageImports: API.PaginatedOperationMethod<
   GcpOpContext,
   ListImageImportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListProjectsLocationsImageImportsRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<ListImageImportsResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListProjectsLocationsImageImportsRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<ListImageImportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3250,11 +3258,11 @@ export const listProjectsLocationsImageImportsImageImportJobs: API.PaginatedOper
   ListImageImportJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    172,
-    __c21,
-    4,
+    2272,
+    __c71,
+    0,
   ) as any as S.Schema<ListProjectsLocationsImageImportsImageImportJobsRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<ListImageImportJobsResponse>,
+  output: __S(2273, __c71, 1) as any as S.Schema<ListImageImportJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3270,8 +3278,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListOperationsResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3287,8 +3295,8 @@ export const listProjectsLocationsSources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListProjectsLocationsSourcesRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListSourcesResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListProjectsLocationsSourcesRequest>,
+  output: __S(2338, __c73, 2) as any as S.Schema<ListSourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3308,11 +3316,11 @@ export const listProjectsLocationsSourcesDatacenterConnectors: API.PaginatedOper
   ListDatacenterConnectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    180,
-    __c22,
-    4,
+    2368,
+    __c74,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSourcesDatacenterConnectorsRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<ListDatacenterConnectorsResponse>,
+  output: __S(2370, __c74, 2) as any as S.Schema<ListDatacenterConnectorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3329,11 +3337,11 @@ export const listProjectsLocationsSourcesDiskMigrationJobs: API.PaginatedOperati
   ListDiskMigrationJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    183,
-    __c22,
-    7,
+    2400,
+    __c75,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSourcesDiskMigrationJobsRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<ListDiskMigrationJobsResponse>,
+  output: __S(2402, __c75, 2) as any as S.Schema<ListDiskMigrationJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3349,8 +3357,8 @@ export const listProjectsLocationsSourcesMigratingVms: API.PaginatedOperationMet
   GcpOpContext,
   ListMigratingVmsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListMigratingVmsResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(2434, __c76, 2) as any as S.Schema<ListMigratingVmsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3370,11 +3378,11 @@ export const listProjectsLocationsSourcesMigratingVmsCloneJobs: API.PaginatedOpe
   ListCloneJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    189,
-    __c23,
-    5,
+    2464,
+    __c77,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ListCloneJobsResponse>,
+  output: __S(2465, __c77, 1) as any as S.Schema<ListCloneJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3394,11 +3402,11 @@ export const listProjectsLocationsSourcesMigratingVmsCutoverJobs: API.PaginatedO
   ListCutoverJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    191,
-    __c23,
-    7,
+    2496,
+    __c78,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<ListCutoverJobsResponse>,
+  output: __S(2497, __c78, 1) as any as S.Schema<ListCutoverJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3418,11 +3426,11 @@ export const listProjectsLocationsSourcesMigratingVmsReplicationCycles: API.Pagi
   ListReplicationCyclesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    193,
-    __c24,
-    1,
+    2528,
+    __c79,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<ListReplicationCyclesResponse>,
+  output: __S(2530, __c79, 2) as any as S.Schema<ListReplicationCyclesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3439,11 +3447,11 @@ export const listProjectsLocationsSourcesUtilizationReports: API.PaginatedOperat
   ListUtilizationReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    196,
-    __c24,
-    4,
+    2560,
+    __c80,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSourcesUtilizationReportsRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<ListUtilizationReportsResponse>,
+  output: __S(2562, __c80, 2) as any as S.Schema<ListUtilizationReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3459,8 +3467,8 @@ export const listProjectsLocationsTargetProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTargetProjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<ListProjectsLocationsTargetProjectsRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<ListTargetProjectsResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<ListProjectsLocationsTargetProjectsRequest>,
+  output: __S(2626, __c82, 2) as any as S.Schema<ListTargetProjectsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3480,8 +3488,8 @@ export const patchProjectsLocationsGroups: API.OperationMethod<
   PatchProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<PatchProjectsLocationsGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2656, __c83, 0) as any as S.Schema<PatchProjectsLocationsGroupsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3500,8 +3508,8 @@ export const patchProjectsLocationsSources: API.OperationMethod<
   PatchProjectsLocationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<PatchProjectsLocationsSourcesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2688, __c84, 0) as any as S.Schema<PatchProjectsLocationsSourcesRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3521,11 +3529,11 @@ export const patchProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    204,
-    __c25,
-    4,
+    2720,
+    __c85,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsSourcesDiskMigrationJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3544,8 +3552,8 @@ export const patchProjectsLocationsSourcesMigratingVms: API.OperationMethod<
   PatchProjectsLocationsSourcesMigratingVmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<PatchProjectsLocationsSourcesMigratingVmsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2752, __c86, 0) as any as S.Schema<PatchProjectsLocationsSourcesMigratingVmsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3564,8 +3572,8 @@ export const patchProjectsLocationsTargetProjects: API.OperationMethod<
   PatchProjectsLocationsTargetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<PatchProjectsLocationsTargetProjectsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2784, __c87, 0) as any as S.Schema<PatchProjectsLocationsTargetProjectsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3585,11 +3593,11 @@ export const pauseMigrationProjectsLocationsSourcesMigratingVms: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    207,
-    __c25,
-    7,
+    2816,
+    __c88,
+    0,
   ) as any as S.Schema<PauseMigrationProjectsLocationsSourcesMigratingVmsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3608,8 +3616,8 @@ export const removeGroupMigrationProjectsLocationsGroups: API.OperationMethod<
   RemoveGroupMigrationProjectsLocationsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<RemoveGroupMigrationProjectsLocationsGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2849, __c89, 1) as any as S.Schema<RemoveGroupMigrationProjectsLocationsGroupsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3629,11 +3637,11 @@ export const resumeMigrationProjectsLocationsSourcesMigratingVms: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    210,
-    __c26,
-    2,
+    2880,
+    __c90,
+    0,
   ) as any as S.Schema<ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3652,8 +3660,12 @@ export const runProjectsLocationsSourcesDiskMigrationJobs: API.OperationMethod<
   RunProjectsLocationsSourcesDiskMigrationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<RunProjectsLocationsSourcesDiskMigrationJobsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(
+    2912,
+    __c91,
+    0,
+  ) as any as S.Schema<RunProjectsLocationsSourcesDiskMigrationJobsRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3673,11 +3685,11 @@ export const startMigrationProjectsLocationsSourcesMigratingVms: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    212,
-    __c26,
-    4,
+    2976,
+    __c93,
+    0,
   ) as any as S.Schema<StartMigrationProjectsLocationsSourcesMigratingVmsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3697,11 +3709,11 @@ export const upgradeApplianceProjectsLocationsSourcesDatacenterConnectors: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    214,
-    __c26,
-    6,
+    3009,
+    __c94,
+    1,
   ) as any as S.Schema<UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  output: __S(1856, __c58, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3713,147 +3725,10 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          migratingVm: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddGroupMigrationRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+group}:addGroupMigration",
-            baseUrl: "https://vmmigration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddGroupMigrationProjectsLocationsGroupsRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(3, __c0, 3)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(4, __c0, 4)),
-          response: S.optional(__S(2, __c0, 2)),
-          done: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelImageImportJobRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://vmmigration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsImageImportsImageImportJobsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://vmmigration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://vmmigration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsSourcesDiskMigrationJobsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://vmmigration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://vmmigration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          description: S.optional(S.String),
-          migrationTargetType: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Group" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           groupId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3864,10 +3739,21 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsGroupsRequest",
       });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.Array(S.String);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          description: S.optional(S.String),
+          migrationTargetType: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Group" });
   }
 }
 function __c2(j: number): any {
@@ -3875,7 +3761,113 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(__S(15, __c1, 7)),
+          imageImportId: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(320, __c10, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/imageImports",
+            baseUrl: "https://vmmigration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsImageImportsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Encryption" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1825, __c57, 1));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          modifier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdaptationModifier" });
+    case 1:
+      return S.Array(__S(224, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          externalIp: S.optional(S.String),
+          internalIp: S.optional(S.String),
+          network: S.optional(S.String),
+          subnetwork: S.optional(S.String),
+          networkTier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkInterface" });
+    case 3:
+      return S.Array(__S(226, __c7, 2));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          locale: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocalizedMessage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Link" });
+    case 2:
+      return S.Array(__S(257, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          warningMessage: S.optional(__S(256, __c8, 0)),
+          actionItem: S.optional(__S(256, __c8, 0)),
+          code: S.optional(S.String),
+          warningTime: S.optional(S.String),
+          helpLinks: S.optional(__S(258, __c8, 2)),
+        }),
+      ).annotate({ identifier: "MigrationWarning" });
+    case 4:
+      return S.Array(__S(259, __c8, 3));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(128, __c4, 0)),
           email: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceAccount" });
@@ -3890,46 +3882,15 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          kmsKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Encryption" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          modifier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdaptationModifier" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           bootConversion: S.optional(S.String),
           generalize: S.optional(S.Boolean),
-          adaptationModifiers: S.optional(__S(20, __c2, 4)),
+          adaptationModifiers: S.optional(__S(225, __c7, 1)),
           licenseType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ImageImportOsAdaptationParameters",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          externalIp: S.optional(S.String),
-          internalIp: S.optional(S.String),
-          network: S.optional(S.String),
-          subnetwork: S.optional(S.String),
-          networkTier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkInterface" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           enableIntegrityMonitoring: S.optional(S.Boolean),
@@ -3937,145 +3898,123 @@ function __c3(j: number): any {
           enableVtpm: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ShieldedInstanceConfig" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           targetProject: S.optional(S.String),
-          labels: S.optional(__S(14, __c1, 6)),
-          serviceAccount: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(15, __c1, 7)),
+          labels: S.optional(__S(96, __c3, 0)),
+          serviceAccount: S.optional(__S(288, __c9, 0)),
+          tags: S.optional(__S(128, __c4, 0)),
           machineImageName: S.optional(S.String),
-          machineImageParametersOverrides: S.optional(__S(17, __c2, 1)),
-          encryption: S.optional(__S(18, __c2, 2)),
-          osAdaptationParameters: S.optional(__S(21, __c2, 5)),
+          machineImageParametersOverrides: S.optional(__S(289, __c9, 1)),
+          encryption: S.optional(__S(160, __c5, 0)),
+          osAdaptationParameters: S.optional(__S(290, __c9, 2)),
           description: S.optional(S.String),
-          skipOsAdaptation: S.optional(__S(6, __c0, 6)),
-          networkInterfaces: S.optional(__S(23, __c2, 7)),
+          skipOsAdaptation: S.optional(__S(2240, __c70, 0)),
+          networkInterfaces: S.optional(__S(227, __c7, 3)),
           singleRegionStorage: S.optional(S.Boolean),
-          shieldedInstanceConfig: S.optional(__S(24, __c3, 0)),
-          additionalLicenses: S.optional(__S(15, __c1, 7)),
+          shieldedInstanceConfig: S.optional(__S(291, __c9, 3)),
+          additionalLicenses: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({
         identifier: "MachineImageTargetDetails",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          loadingSourceFiles: S.optional(__S(6, __c0, 6)),
-          creatingImage: S.optional(__S(6, __c0, 6)),
-          initializing: S.optional(__S(6, __c0, 6)),
+          loadingSourceFiles: S.optional(__S(2240, __c70, 0)),
+          creatingImage: S.optional(__S(2240, __c70, 0)),
+          initializing: S.optional(__S(2240, __c70, 0)),
           startTime: S.optional(S.String),
-          adaptingOs: S.optional(__S(6, __c0, 6)),
+          adaptingOs: S.optional(__S(2240, __c70, 0)),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageImportStep" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          locale: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocalizedMessage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Link" });
     case 6:
-      return S.Array(__S(29, __c3, 5));
+      return S.Array(__S(293, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          warningMessage: S.optional(__S(28, __c3, 4)),
-          actionItem: S.optional(__S(28, __c3, 4)),
-          code: S.optional(S.String),
-          warningTime: S.optional(S.String),
-          helpLinks: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "MigrationWarning" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          guestOsFeatures: S.optional(__S(15, __c1, 7)),
+          guestOsFeatures: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "DataDiskImageImport" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          additionalLicenses: S.optional(__S(15, __c1, 7)),
+          additionalLicenses: S.optional(__S(128, __c4, 0)),
           description: S.optional(S.String),
-          labels: S.optional(__S(14, __c1, 6)),
-          encryption: S.optional(__S(18, __c2, 2)),
+          labels: S.optional(__S(96, __c3, 0)),
+          encryption: S.optional(__S(160, __c5, 0)),
           singleRegionStorage: S.optional(S.Boolean),
           targetProject: S.optional(S.String),
-          osAdaptationParameters: S.optional(__S(21, __c2, 5)),
+          osAdaptationParameters: S.optional(__S(290, __c9, 2)),
           familyName: S.optional(S.String),
           imageName: S.optional(S.String),
-          dataDiskImageImport: S.optional(__S(33, __c4, 1)),
+          dataDiskImageImport: S.optional(__S(295, __c9, 7)),
         }),
       ).annotate({ identifier: "DiskImageTargetDetails" });
-    case 3:
-      return S.Array(__S(4, __c0, 4));
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          machineImageTargetDetails: S.optional(__S(25, __c3, 1)),
-          createdResources: S.optional(__S(15, __c1, 7)),
+          machineImageTargetDetails: S.optional(__S(292, __c9, 4)),
+          createdResources: S.optional(__S(128, __c4, 0)),
           endTime: S.optional(S.String),
-          steps: S.optional(__S(27, __c3, 3)),
-          warnings: S.optional(__S(32, __c4, 0)),
+          steps: S.optional(__S(294, __c9, 6)),
+          warnings: S.optional(__S(260, __c8, 4)),
           state: S.optional(S.String),
-          diskImageTargetDetails: S.optional(__S(34, __c4, 2)),
+          diskImageTargetDetails: S.optional(__S(296, __c9, 8)),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          errors: S.optional(__S(35, __c4, 3)),
+          errors: S.optional(__S(192, __c6, 0)),
           cloudStorageUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageImportJob" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          recentImageImportJobs: S.optional(__S(37, __c4, 5)),
-          machineImageTargetDefaults: S.optional(__S(25, __c3, 1)),
+          recentImageImportJobs: S.optional(__S(352, __c11, 0)),
+          machineImageTargetDefaults: S.optional(__S(292, __c9, 4)),
           createTime: S.optional(S.String),
-          encryption: S.optional(__S(18, __c2, 2)),
+          encryption: S.optional(__S(160, __c5, 0)),
           cloudStorageUri: S.optional(S.String),
-          diskImageTargetDefaults: S.optional(__S(34, __c4, 2)),
+          diskImageTargetDefaults: S.optional(__S(296, __c9, 8)),
         }),
       ).annotate({ identifier: "ImageImport" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(297, __c9, 9));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          imageImportId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          sourceId: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(423, __c13, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1/{+parent}/imageImports",
+            uri: "v1/{+parent}/sources",
             baseUrl: "https://vmmigration.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "CreateProjectsLocationsImageImportsRequest",
+        identifier: "CreateProjectsLocationsSourcesRequest",
       });
   }
 }
-function __c5(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4088,12 +4027,12 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          migrationResourcesUserTags: S.optional(__S(14, __c1, 6)),
-          clientSecretCreds: S.optional(__S(40, __c5, 0)),
+          migrationResourcesUserTags: S.optional(__S(96, __c3, 0)),
+          clientSecretCreds: S.optional(__S(416, __c13, 0)),
           azureLocation: S.optional(S.String),
           subscriptionId: S.optional(S.String),
           resourceGroupId: S.optional(S.String),
-          error: S.optional(__S(4, __c0, 4)),
+          error: S.optional(__S(1825, __c57, 1)),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureSourceDetails" });
@@ -4105,7 +4044,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Tag" });
     case 3:
-      return S.Array(__S(42, __c5, 2));
+      return S.Array(__S(418, __c13, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4118,13 +4057,13 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          inventoryTagList: S.optional(__S(43, __c5, 3)),
-          accessKeyCreds: S.optional(__S(44, __c5, 4)),
-          error: S.optional(__S(4, __c0, 4)),
+          inventoryTagList: S.optional(__S(419, __c13, 3)),
+          accessKeyCreds: S.optional(__S(420, __c13, 4)),
+          error: S.optional(__S(1825, __c57, 1)),
           publicIp: S.optional(S.String),
-          migrationResourcesUserTags: S.optional(__S(14, __c1, 6)),
+          migrationResourcesUserTags: S.optional(__S(96, __c3, 0)),
           awsRegion: S.optional(S.String),
-          inventorySecurityGroupNames: S.optional(__S(15, __c1, 7)),
+          inventorySecurityGroupNames: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "AwsSourceDetails" });
     case 6:
@@ -4140,90 +4079,28 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          azure: S.optional(__S(41, __c5, 1)),
-          aws: S.optional(__S(45, __c5, 5)),
+          azure: S.optional(__S(417, __c13, 1)),
+          aws: S.optional(__S(421, __c13, 5)),
           createTime: S.optional(S.String),
-          labels: S.optional(__S(14, __c1, 6)),
-          vmware: S.optional(__S(46, __c5, 6)),
+          labels: S.optional(__S(96, __c3, 0)),
+          vmware: S.optional(__S(422, __c13, 6)),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           description: S.optional(S.String),
-          encryption: S.optional(__S(18, __c2, 2)),
+          encryption: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "Source" });
   }
 }
-function __c6(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          sourceId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/sources",
-            baseUrl: "https://vmmigration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsSourcesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          error: S.optional(__S(4, __c0, 4)),
-          version: S.optional(S.String),
-          previousVersion: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpgradeStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          releaseNotesUri: S.optional(S.String),
-          version: S.optional(S.String),
-          uri: S.optional(S.String),
-          critical: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ApplianceVersion" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          newDeployableAppliance: S.optional(__S(50, __c6, 2)),
-          inPlaceUpdate: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "AvailableUpdates" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          upgradeStatus: S.optional(__S(49, __c6, 1)),
-          stateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          bucket: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-          state: S.optional(S.String),
-          applianceSoftwareVersion: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          applianceInfrastructureVersion: S.optional(S.String),
-          createTime: S.optional(S.String),
-          availableVersions: S.optional(__S(51, __c6, 3)),
-          error: S.optional(__S(4, __c0, 4)),
-          registrationId: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatacenterConnector" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           datacenterConnectorId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(52, __c6, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(483, __c15, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4234,71 +4111,66 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsSourcesDatacenterConnectorsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          copyingSourceDiskSnapshot: S.optional(__S(6, __c0, 6)),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          creatingSourceDiskSnapshot: S.optional(__S(6, __c0, 6)),
-          provisioningTargetDisk: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "DiskMigrationStep" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
   }
 }
-function __c7(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(14, __c1, 6)),
-          sizeGib: S.optional(S.String),
-          volumeId: S.optional(S.String),
-          diskType: S.optional(S.String),
+          startTime: S.optional(S.String),
+          error: S.optional(__S(1825, __c57, 1)),
+          version: S.optional(S.String),
+          previousVersion: S.optional(S.String),
+          state: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AwsSourceDiskDetails" });
+      ).annotate({ identifier: "UpgradeStatus" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          diskId: S.optional(S.String),
-          zone: S.optional(S.String),
-          replicaZones: S.optional(__S(15, __c1, 7)),
-          diskType: S.optional(S.String),
+          releaseNotesUri: S.optional(S.String),
+          version: S.optional(S.String),
+          uri: S.optional(S.String),
+          critical: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "ComputeEngineDisk" });
+      ).annotate({ identifier: "ApplianceVersion" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(14, __c1, 6)),
-          targetDisk: S.optional(__S(57, __c7, 1)),
-          targetProject: S.optional(S.String),
-          encryption: S.optional(__S(18, __c2, 2)),
+          newDeployableAppliance: S.optional(__S(481, __c15, 1)),
+          inPlaceUpdate: S.optional(__S(481, __c15, 1)),
         }),
-      ).annotate({
-        identifier: "DiskMigrationJobTargetDetails",
-      });
+      ).annotate({ identifier: "AvailableUpdates" });
     case 3:
       return S.suspend(() =>
         S.Struct({
+          upgradeStatus: S.optional(__S(480, __c15, 0)),
+          stateTime: S.optional(S.String),
           name: S.optional(S.String),
-          steps: S.optional(__S(55, __c6, 7)),
-          updateTime: S.optional(S.String),
-          awsSourceDiskDetails: S.optional(__S(56, __c7, 0)),
-          targetDetails: S.optional(__S(58, __c7, 2)),
+          bucket: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
           state: S.optional(S.String),
+          applianceSoftwareVersion: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          applianceInfrastructureVersion: S.optional(S.String),
           createTime: S.optional(S.String),
-          errors: S.optional(__S(35, __c4, 3)),
+          availableVersions: S.optional(__S(482, __c15, 2)),
+          error: S.optional(__S(1825, __c57, 1)),
+          registrationId: S.optional(S.String),
+          version: S.optional(S.String),
         }),
-      ).annotate({ identifier: "DiskMigrationJob" });
-    case 4:
+      ).annotate({ identifier: "DatacenterConnector" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           diskMigrationJobId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(580, __c18, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4309,446 +4181,79 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsSourcesDiskMigrationJobsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          extendable: S.optional(S.Boolean),
-          extensionCount: S.optional(S.Number),
-          expireTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expiration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          lastSyncTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReplicationSync" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          osLicense: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppliedLicense" });
   }
 }
-function __c8(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          operator: S.optional(S.String),
-          values: S.optional(__S(15, __c1, 7)),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchedulingNodeAffinity" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nodeAffinities: S.optional(__S(65, __c8, 1)),
-          restartType: S.optional(S.String),
-          onHostMaintenance: S.optional(S.String),
-          minNodeCpus: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ComputeScheduling" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          adaptationModifiers: S.optional(__S(20, __c2, 4)),
-          diskType: S.optional(S.String),
-          licenseType: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-          labels: S.optional(__S(14, __c1, 6)),
-          machineType: S.optional(S.String),
-          appliedLicense: S.optional(__S(63, __c7, 7)),
-          hostname: S.optional(S.String),
-          zone: S.optional(S.String),
-          secureBoot: S.optional(S.Boolean),
-          networkTags: S.optional(__S(15, __c1, 7)),
-          encryption: S.optional(__S(18, __c2, 2)),
-          additionalLicenses: S.optional(__S(15, __c1, 7)),
-          enableIntegrityMonitoring: S.optional(S.Boolean),
-          metadata: S.optional(__S(14, __c1, 6)),
-          bootConversion: S.optional(S.String),
-          vmName: S.optional(S.String),
-          networkInterfaces: S.optional(__S(23, __c2, 7)),
-          storagePool: S.optional(S.String),
-          enableVtpm: S.optional(S.Boolean),
-          project: S.optional(S.String),
-          machineTypeSeries: S.optional(S.String),
-          diskReplicaZones: S.optional(__S(15, __c1, 7)),
-          bootOption: S.optional(S.String),
-          computeScheduling: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({
-        identifier: "ComputeEngineTargetDetails",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          preparingVmDisks: S.optional(__S(6, __c0, 6)),
-          instantiatingMigratedVm: S.optional(__S(6, __c0, 6)),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          adaptingOs: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "CloneStep" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          vmUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DisksMigrationVmTargetDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sourceDiskNumber: S.optional(S.Number),
-          diskUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PersistentDisk" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          vmTargetDetails: S.optional(__S(70, __c8, 6)),
-          disksTargetDetails: S.optional(__S(6, __c0, 6)),
-          disks: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "ComputeEngineDisksTargetDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          error: S.optional(__S(4, __c0, 4)),
-          computeEngineTargetDetails: S.optional(__S(67, __c8, 3)),
-          state: S.optional(S.String),
-          steps: S.optional(__S(69, __c8, 5)),
-          endTime: S.optional(S.String),
-          stateTime: S.optional(S.String),
-          computeEngineDisksTargetDetails: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({ identifier: "CloneJob" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          lastThirtyMinutesAverageBytesPerSecond: S.optional(S.String),
-          replicatedBytes: S.optional(S.String),
-          totalBytes: S.optional(S.String),
-          lastTwoMinutesAverageBytesPerSecond: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReplicatingStep" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          initializingReplication: S.optional(__S(6, __c0, 6)),
-          replicating: S.optional(__S(76, __c9, 4)),
-          postProcessing: S.optional(__S(6, __c0, 6)),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CycleStep" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          progressPercent: S.optional(S.Number),
-          endTime: S.optional(S.String),
-          name: S.optional(S.String),
-          steps: S.optional(__S(78, __c9, 6)),
-          totalPauseDuration: S.optional(S.String),
-          cycleNumber: S.optional(S.Number),
-          state: S.optional(S.String),
-          error: S.optional(__S(4, __c0, 4)),
-          warnings: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "ReplicationCycle" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
+          tags: S.optional(__S(96, __c3, 0)),
+          sizeGib: S.optional(S.String),
           volumeId: S.optional(S.String),
-          diskNumber: S.optional(S.Number),
-          sizeGb: S.optional(S.String),
+          diskType: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AwsDiskDetails" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          osCapabilities: S.optional(__S(82, __c10, 2)),
-          lastOsCapabilitiesUpdateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VmCapabilities" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          disks: S.optional(__S(81, __c10, 1)),
-          committedStorageBytes: S.optional(S.String),
-          architecture: S.optional(S.String),
-          vmCapabilitiesInfo: S.optional(__S(83, __c10, 3)),
-          firmware: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AwsSourceVmDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          estimatedCutoverJobDuration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CutoverForecast" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sizeGb: S.optional(S.String),
-          diskNumber: S.optional(S.Number),
-          diskId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AzureDiskDetails" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
+      ).annotate({ identifier: "AwsSourceDiskDetails" });
   }
 }
-function __c11(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          architecture: S.optional(S.String),
-          firmware: S.optional(S.String),
-          disks: S.optional(__S(87, __c10, 7)),
-          vmCapabilitiesInfo: S.optional(__S(83, __c10, 3)),
-          committedStorageBytes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AzureSourceVmDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sizeGb: S.optional(S.String),
-          diskNumber: S.optional(S.Number),
-          label: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VmwareDiskDetails" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          disks: S.optional(__S(90, __c11, 2)),
-          architecture: S.optional(S.String),
-          vmCapabilitiesInfo: S.optional(__S(83, __c10, 3)),
-          firmware: S.optional(S.String),
-          committedStorageBytes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VmwareSourceVmDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          idleDuration: S.optional(S.String),
-          skipOsAdaptation: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SchedulePolicy" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sourceImage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiskImageDefaults" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(__S(93, __c11, 5)),
-          diskType: S.optional(S.String),
-          encryption: S.optional(__S(18, __c2, 2)),
-          diskName: S.optional(S.String),
-          deviceName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BootDiskDefaults" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          encryption: S.optional(__S(18, __c2, 2)),
-          enableIntegrityMonitoring: S.optional(S.Boolean),
-          serviceAccount: S.optional(S.String),
-          secureBoot: S.optional(S.Boolean),
-          labels: S.optional(__S(14, __c1, 6)),
-          machineTypeSeries: S.optional(S.String),
-          additionalLicenses: S.optional(__S(15, __c1, 7)),
-          computeScheduling: S.optional(__S(66, __c8, 2)),
-          machineType: S.optional(S.String),
-          bootDiskDefaults: S.optional(__S(94, __c11, 6)),
-          vmName: S.optional(S.String),
-          networkInterfaces: S.optional(__S(23, __c2, 7)),
-          metadata: S.optional(__S(14, __c1, 6)),
-          networkTags: S.optional(__S(15, __c1, 7)),
-          enableVtpm: S.optional(S.Boolean),
-          hostname: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DisksMigrationVmTargetDefaults",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          deviceName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VmAttachmentDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sourceDiskNumber: S.optional(S.Number),
-          additionalLabels: S.optional(__S(14, __c1, 6)),
-          diskType: S.optional(S.String),
-          encryption: S.optional(__S(18, __c2, 2)),
-          diskName: S.optional(S.String),
-          vmAttachmentDetails: S.optional(__S(96, __c12, 0)),
-        }),
-      ).annotate({ identifier: "PersistentDiskDefaults" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          vmTargetDefaults: S.optional(__S(95, __c11, 7)),
-          disks: S.optional(__S(98, __c12, 2)),
-          disksTargetDefaults: S.optional(__S(6, __c0, 6)),
-          targetProject: S.optional(S.String),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ComputeEngineDisksTargetDefaults",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          secureBoot: S.optional(S.Boolean),
-          enableIntegrityMonitoring: S.optional(S.Boolean),
-          appliedLicense: S.optional(__S(63, __c7, 7)),
-          serviceAccount: S.optional(S.String),
-          encryption: S.optional(__S(18, __c2, 2)),
-          vmName: S.optional(S.String),
-          networkTags: S.optional(__S(15, __c1, 7)),
-          machineType: S.optional(S.String),
-          additionalLicenses: S.optional(__S(15, __c1, 7)),
-          licenseType: S.optional(S.String),
-          targetProject: S.optional(S.String),
-          disks: S.optional(__S(98, __c12, 2)),
-          adaptationModifiers: S.optional(__S(20, __c2, 4)),
-          labels: S.optional(__S(14, __c1, 6)),
-          metadata: S.optional(__S(14, __c1, 6)),
-          computeScheduling: S.optional(__S(66, __c8, 2)),
-          hostname: S.optional(S.String),
-          diskReplicaZones: S.optional(__S(15, __c1, 7)),
-          bootOption: S.optional(S.String),
-          machineTypeSeries: S.optional(S.String),
-          zone: S.optional(S.String),
-          bootConversion: S.optional(S.String),
-          storagePool: S.optional(S.String),
-          diskType: S.optional(S.String),
-          enableVtpm: S.optional(S.Boolean),
-          networkInterfaces: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "ComputeEngineTargetDefaults",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          shuttingDownSourceVm: S.optional(__S(6, __c0, 6)),
-          finalSync: S.optional(__S(79, __c9, 7)),
+          copyingSourceDiskSnapshot: S.optional(__S(2240, __c70, 0)),
           startTime: S.optional(S.String),
-          preparingVmDisks: S.optional(__S(6, __c0, 6)),
-          instantiatingMigratedVm: S.optional(__S(6, __c0, 6)),
           endTime: S.optional(S.String),
-          previousReplicationCycle: S.optional(__S(79, __c9, 7)),
+          creatingSourceDiskSnapshot: S.optional(__S(2240, __c70, 0)),
+          provisioningTargetDisk: S.optional(__S(2240, __c70, 0)),
         }),
-      ).annotate({ identifier: "CutoverStep" });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+      ).annotate({ identifier: "DiskMigrationStep" });
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          stateTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          steps: S.optional(__S(102, __c12, 6)),
-          computeEngineDisksTargetDetails: S.optional(__S(73, __c9, 1)),
-          progressPercent: S.optional(S.Number),
-          endTime: S.optional(S.String),
-          stateMessage: S.optional(S.String),
-          computeEngineTargetDetails: S.optional(__S(67, __c8, 3)),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-          error: S.optional(__S(4, __c0, 4)),
+          diskId: S.optional(S.String),
+          zone: S.optional(S.String),
+          replicaZones: S.optional(__S(128, __c4, 0)),
+          diskType: S.optional(S.String),
         }),
-      ).annotate({ identifier: "CutoverJob" });
+      ).annotate({ identifier: "ComputeEngineDisk" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(96, __c3, 0)),
+          targetDisk: S.optional(__S(578, __c18, 2)),
+          targetProject: S.optional(S.String),
+          encryption: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "DiskMigrationJobTargetDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          steps: S.optional(__S(577, __c18, 1)),
+          updateTime: S.optional(S.String),
+          awsSourceDiskDetails: S.optional(__S(544, __c17, 0)),
+          targetDetails: S.optional(__S(579, __c18, 3)),
+          state: S.optional(S.String),
+          createTime: S.optional(S.String),
+          errors: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "DiskMigrationJob" });
   }
 }
-function __c13(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sourceVmId: S.optional(S.String),
-          expiration: S.optional(__S(61, __c7, 5)),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          lastSync: S.optional(__S(62, __c7, 6)),
-          recentCloneJobs: S.optional(__S(75, __c9, 3)),
-          lastReplicationCycle: S.optional(__S(79, __c9, 7)),
-          description: S.optional(S.String),
-          awsSourceVmDetails: S.optional(__S(84, __c10, 4)),
-          displayName: S.optional(S.String),
-          cutoverForecast: S.optional(__S(85, __c10, 5)),
-          azureSourceVmDetails: S.optional(__S(88, __c11, 0)),
-          error: S.optional(__S(4, __c0, 4)),
-          labels: S.optional(__S(14, __c1, 6)),
-          vmwareSourceVmDetails: S.optional(__S(91, __c11, 3)),
-          policy: S.optional(__S(92, __c11, 4)),
-          computeEngineDisksTargetDefaults: S.optional(__S(99, __c12, 3)),
-          currentSyncInfo: S.optional(__S(79, __c9, 7)),
-          computeEngineTargetDefaults: S.optional(__S(100, __c12, 4)),
-          createTime: S.optional(S.String),
-          stateTime: S.optional(S.String),
-          group: S.optional(S.String),
-          recentCutoverJobs: S.optional(__S(104, __c13, 0)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MigratingVm" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           migratingVmId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(855, __c26, 23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4759,13 +4264,454 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsSourcesMigratingVmsRequest",
       });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          osLicense: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppliedLicense" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          operator: S.optional(S.String),
+          values: S.optional(__S(128, __c4, 0)),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchedulingNodeAffinity" });
+    case 2:
+      return S.Array(__S(641, __c20, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nodeAffinities: S.optional(__S(642, __c20, 2)),
+          restartType: S.optional(S.String),
+          onHostMaintenance: S.optional(S.String),
+          minNodeCpus: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ComputeScheduling" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          adaptationModifiers: S.optional(__S(225, __c7, 1)),
+          diskType: S.optional(S.String),
+          licenseType: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+          labels: S.optional(__S(96, __c3, 0)),
+          machineType: S.optional(S.String),
+          appliedLicense: S.optional(__S(640, __c20, 0)),
+          hostname: S.optional(S.String),
+          zone: S.optional(S.String),
+          secureBoot: S.optional(S.Boolean),
+          networkTags: S.optional(__S(128, __c4, 0)),
+          encryption: S.optional(__S(160, __c5, 0)),
+          additionalLicenses: S.optional(__S(128, __c4, 0)),
+          enableIntegrityMonitoring: S.optional(S.Boolean),
+          metadata: S.optional(__S(96, __c3, 0)),
+          bootConversion: S.optional(S.String),
+          vmName: S.optional(S.String),
+          networkInterfaces: S.optional(__S(227, __c7, 3)),
+          storagePool: S.optional(S.String),
+          enableVtpm: S.optional(S.Boolean),
+          project: S.optional(S.String),
+          machineTypeSeries: S.optional(S.String),
+          diskReplicaZones: S.optional(__S(128, __c4, 0)),
+          bootOption: S.optional(S.String),
+          computeScheduling: S.optional(__S(643, __c20, 3)),
+        }),
+      ).annotate({
+        identifier: "ComputeEngineTargetDetails",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          vmUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DisksMigrationVmTargetDetails",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          sourceDiskNumber: S.optional(S.Number),
+          diskUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PersistentDisk" });
+    case 7:
+      return S.Array(__S(646, __c20, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          vmTargetDetails: S.optional(__S(645, __c20, 5)),
+          disksTargetDetails: S.optional(__S(2240, __c70, 0)),
+          disks: S.optional(__S(647, __c20, 7)),
+        }),
+      ).annotate({
+        identifier: "ComputeEngineDisksTargetDetails",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          preparingVmDisks: S.optional(__S(2240, __c70, 0)),
+          instantiatingMigratedVm: S.optional(__S(2240, __c70, 0)),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          adaptingOs: S.optional(__S(2240, __c70, 0)),
+        }),
+      ).annotate({ identifier: "CloneStep" });
+    case 1:
+      return S.Array(__S(672, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          error: S.optional(__S(1825, __c57, 1)),
+          computeEngineTargetDetails: S.optional(__S(644, __c20, 4)),
+          state: S.optional(S.String),
+          steps: S.optional(__S(673, __c21, 1)),
+          endTime: S.optional(S.String),
+          stateTime: S.optional(S.String),
+          computeEngineDisksTargetDetails: S.optional(__S(648, __c20, 8)),
+        }),
+      ).annotate({ identifier: "CloneJob" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lastThirtyMinutesAverageBytesPerSecond: S.optional(S.String),
+          replicatedBytes: S.optional(S.String),
+          totalBytes: S.optional(S.String),
+          lastTwoMinutesAverageBytesPerSecond: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReplicatingStep" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          initializingReplication: S.optional(__S(2240, __c70, 0)),
+          replicating: S.optional(__S(704, __c22, 0)),
+          postProcessing: S.optional(__S(2240, __c70, 0)),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CycleStep" });
+    case 2:
+      return S.Array(__S(705, __c22, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          progressPercent: S.optional(S.Number),
+          endTime: S.optional(S.String),
+          name: S.optional(S.String),
+          steps: S.optional(__S(706, __c22, 2)),
+          totalPauseDuration: S.optional(S.String),
+          cycleNumber: S.optional(S.Number),
+          state: S.optional(S.String),
+          error: S.optional(__S(1825, __c57, 1)),
+          warnings: S.optional(__S(260, __c8, 4)),
+        }),
+      ).annotate({ identifier: "ReplicationCycle" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          shuttingDownSourceVm: S.optional(__S(2240, __c70, 0)),
+          finalSync: S.optional(__S(707, __c22, 3)),
+          startTime: S.optional(S.String),
+          preparingVmDisks: S.optional(__S(2240, __c70, 0)),
+          instantiatingMigratedVm: S.optional(__S(2240, __c70, 0)),
+          endTime: S.optional(S.String),
+          previousReplicationCycle: S.optional(__S(707, __c22, 3)),
+        }),
+      ).annotate({ identifier: "CutoverStep" });
+    case 1:
+      return S.Array(__S(736, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          stateTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          steps: S.optional(__S(737, __c23, 1)),
+          computeEngineDisksTargetDetails: S.optional(__S(648, __c20, 8)),
+          progressPercent: S.optional(S.Number),
+          endTime: S.optional(S.String),
+          stateMessage: S.optional(S.String),
+          computeEngineTargetDetails: S.optional(__S(644, __c20, 4)),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+          error: S.optional(__S(1825, __c57, 1)),
+        }),
+      ).annotate({ identifier: "CutoverJob" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(674, __c21, 2));
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(738, __c23, 2));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          extendable: S.optional(S.Boolean),
+          extensionCount: S.optional(S.Number),
+          expireTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expiration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          lastSyncTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReplicationSync" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          volumeId: S.optional(S.String),
+          diskNumber: S.optional(S.Number),
+          sizeGb: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AwsDiskDetails" });
+    case 3:
+      return S.Array(__S(834, __c26, 2));
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          osCapabilities: S.optional(__S(836, __c26, 4)),
+          lastOsCapabilitiesUpdateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VmCapabilities" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          disks: S.optional(__S(835, __c26, 3)),
+          committedStorageBytes: S.optional(S.String),
+          architecture: S.optional(S.String),
+          vmCapabilitiesInfo: S.optional(__S(837, __c26, 5)),
+          firmware: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AwsSourceVmDetails" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          estimatedCutoverJobDuration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CutoverForecast" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          sizeGb: S.optional(S.String),
+          diskNumber: S.optional(S.Number),
+          diskId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AzureDiskDetails" });
+    case 9:
+      return S.Array(__S(840, __c26, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          architecture: S.optional(S.String),
+          firmware: S.optional(S.String),
+          disks: S.optional(__S(841, __c26, 9)),
+          vmCapabilitiesInfo: S.optional(__S(837, __c26, 5)),
+          committedStorageBytes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AzureSourceVmDetails" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          sizeGb: S.optional(S.String),
+          diskNumber: S.optional(S.Number),
+          label: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VmwareDiskDetails" });
+    case 12:
+      return S.Array(__S(843, __c26, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          disks: S.optional(__S(844, __c26, 12)),
+          architecture: S.optional(S.String),
+          vmCapabilitiesInfo: S.optional(__S(837, __c26, 5)),
+          firmware: S.optional(S.String),
+          committedStorageBytes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VmwareSourceVmDetails" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          idleDuration: S.optional(S.String),
+          skipOsAdaptation: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SchedulePolicy" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          sourceImage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiskImageDefaults" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(__S(847, __c26, 15)),
+          diskType: S.optional(S.String),
+          encryption: S.optional(__S(160, __c5, 0)),
+          diskName: S.optional(S.String),
+          deviceName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BootDiskDefaults" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          encryption: S.optional(__S(160, __c5, 0)),
+          enableIntegrityMonitoring: S.optional(S.Boolean),
+          serviceAccount: S.optional(S.String),
+          secureBoot: S.optional(S.Boolean),
+          labels: S.optional(__S(96, __c3, 0)),
+          machineTypeSeries: S.optional(S.String),
+          additionalLicenses: S.optional(__S(128, __c4, 0)),
+          computeScheduling: S.optional(__S(643, __c20, 3)),
+          machineType: S.optional(S.String),
+          bootDiskDefaults: S.optional(__S(848, __c26, 16)),
+          vmName: S.optional(S.String),
+          networkInterfaces: S.optional(__S(227, __c7, 3)),
+          metadata: S.optional(__S(96, __c3, 0)),
+          networkTags: S.optional(__S(128, __c4, 0)),
+          enableVtpm: S.optional(S.Boolean),
+          hostname: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DisksMigrationVmTargetDefaults",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          deviceName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VmAttachmentDetails" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          sourceDiskNumber: S.optional(S.Number),
+          additionalLabels: S.optional(__S(96, __c3, 0)),
+          diskType: S.optional(S.String),
+          encryption: S.optional(__S(160, __c5, 0)),
+          diskName: S.optional(S.String),
+          vmAttachmentDetails: S.optional(__S(850, __c26, 18)),
+        }),
+      ).annotate({ identifier: "PersistentDiskDefaults" });
+    case 20:
+      return S.Array(__S(851, __c26, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          vmTargetDefaults: S.optional(__S(849, __c26, 17)),
+          disks: S.optional(__S(852, __c26, 20)),
+          disksTargetDefaults: S.optional(__S(2240, __c70, 0)),
+          targetProject: S.optional(S.String),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ComputeEngineDisksTargetDefaults",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          secureBoot: S.optional(S.Boolean),
+          enableIntegrityMonitoring: S.optional(S.Boolean),
+          appliedLicense: S.optional(__S(640, __c20, 0)),
+          serviceAccount: S.optional(S.String),
+          encryption: S.optional(__S(160, __c5, 0)),
+          vmName: S.optional(S.String),
+          networkTags: S.optional(__S(128, __c4, 0)),
+          machineType: S.optional(S.String),
+          additionalLicenses: S.optional(__S(128, __c4, 0)),
+          licenseType: S.optional(S.String),
+          targetProject: S.optional(S.String),
+          disks: S.optional(__S(852, __c26, 20)),
+          adaptationModifiers: S.optional(__S(225, __c7, 1)),
+          labels: S.optional(__S(96, __c3, 0)),
+          metadata: S.optional(__S(96, __c3, 0)),
+          computeScheduling: S.optional(__S(643, __c20, 3)),
+          hostname: S.optional(S.String),
+          diskReplicaZones: S.optional(__S(128, __c4, 0)),
+          bootOption: S.optional(S.String),
+          machineTypeSeries: S.optional(S.String),
+          zone: S.optional(S.String),
+          bootConversion: S.optional(S.String),
+          storagePool: S.optional(S.String),
+          diskType: S.optional(S.String),
+          enableVtpm: S.optional(S.Boolean),
+          networkInterfaces: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({
+        identifier: "ComputeEngineTargetDefaults",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          sourceVmId: S.optional(S.String),
+          expiration: S.optional(__S(832, __c26, 0)),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          lastSync: S.optional(__S(833, __c26, 1)),
+          recentCloneJobs: S.optional(__S(768, __c24, 0)),
+          lastReplicationCycle: S.optional(__S(707, __c22, 3)),
+          description: S.optional(S.String),
+          awsSourceVmDetails: S.optional(__S(838, __c26, 6)),
+          displayName: S.optional(S.String),
+          cutoverForecast: S.optional(__S(839, __c26, 7)),
+          azureSourceVmDetails: S.optional(__S(842, __c26, 10)),
+          error: S.optional(__S(1825, __c57, 1)),
+          labels: S.optional(__S(96, __c3, 0)),
+          vmwareSourceVmDetails: S.optional(__S(845, __c26, 13)),
+          policy: S.optional(__S(846, __c26, 14)),
+          computeEngineDisksTargetDefaults: S.optional(__S(853, __c26, 21)),
+          currentSyncInfo: S.optional(__S(707, __c22, 3)),
+          computeEngineTargetDefaults: S.optional(__S(854, __c26, 22)),
+          createTime: S.optional(S.String),
+          stateTime: S.optional(S.String),
+          group: S.optional(S.String),
+          recentCutoverJobs: S.optional(__S(800, __c25, 0)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MigratingVm" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cloneJobId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(674, __c21, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4776,13 +4722,17 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest",
       });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           cutoverJobId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(103, __c12, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(738, __c23, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4793,20 +4743,32 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          diskIoRateMaxKbps: S.optional(S.String),
-          networkThroughputAverageKbps: S.optional(S.String),
-          diskIoRateAverageKbps: S.optional(S.String),
-          cpuMaxPercent: S.optional(S.Number),
-          memoryMaxPercent: S.optional(S.Number),
-          cpuAveragePercent: S.optional(S.Number),
-          memoryAveragePercent: S.optional(S.Number),
-          networkThroughputMaxKbps: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VmUtilizationMetrics" });
-    case 6:
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          utilizationReportId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(995, __c31, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/utilizationReports",
+            baseUrl: "https://vmmigration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsSourcesUtilizationReportsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vmId: S.optional(S.String),
@@ -4824,21 +4786,34 @@ function __c13(j: number): any {
           committedStorageMb: S.optional(S.String),
         }),
       ).annotate({ identifier: "VmwareVmDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          utilization: S.optional(__S(109, __c13, 5)),
-          vmId: S.optional(S.String),
-          vmwareVmDetails: S.optional(__S(110, __c13, 6)),
-        }),
-      ).annotate({ identifier: "VmUtilizationInfo" });
   }
 }
-function __c14(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111, __c13, 7));
+      return S.suspend(() =>
+        S.Struct({
+          diskIoRateMaxKbps: S.optional(S.String),
+          networkThroughputAverageKbps: S.optional(S.String),
+          diskIoRateAverageKbps: S.optional(S.String),
+          cpuMaxPercent: S.optional(S.Number),
+          memoryMaxPercent: S.optional(S.Number),
+          cpuAveragePercent: S.optional(S.Number),
+          memoryAveragePercent: S.optional(S.Number),
+          networkThroughputMaxKbps: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VmUtilizationMetrics" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          utilization: S.optional(__S(992, __c31, 0)),
+          vmId: S.optional(S.String),
+          vmwareVmDetails: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({ identifier: "VmUtilizationInfo" });
+    case 2:
+      return S.Array(__S(993, __c31, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
@@ -4847,46 +4822,23 @@ function __c14(j: number): any {
           displayName: S.optional(S.String),
           vmCount: S.optional(S.Number),
           frameEndTime: S.optional(S.String),
-          vms: S.optional(__S(112, __c14, 0)),
-          error: S.optional(__S(4, __c0, 4)),
+          vms: S.optional(__S(994, __c31, 2)),
+          error: S.optional(__S(1825, __c57, 1)),
           name: S.optional(S.String),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "UtilizationReport" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          utilizationReportId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/utilizationReports",
-            baseUrl: "https://vmmigration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsSourcesUtilizationReportsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          project: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TargetProject" });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           targetProjectId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4897,7 +4849,25 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsTargetProjectsRequest",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          project: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TargetProject" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4912,7 +4882,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsGroupsRequest",
       });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4927,7 +4901,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsImageImportsRequest",
       });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4943,7 +4921,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4960,7 +4938,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSourcesRequest",
       });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4975,7 +4957,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSourcesDatacenterConnectorsRequest",
       });
-    case 2:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4989,7 +4975,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSourcesDiskMigrationJobsRequest",
       });
-    case 3:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5003,7 +4993,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSourcesMigratingVmsRequest",
       });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -5018,7 +5012,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSourcesUtilizationReportsRequest",
       });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5033,11 +5031,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsTargetProjectsRequest",
       });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           migratingVm: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2240, __c70, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5048,7 +5050,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest",
       });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5065,11 +5071,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "FetchInventoryProjectsLocationsSourcesRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sizeGb: S.optional(S.Number),
@@ -5077,9 +5079,9 @@ function __c16(j: number): any {
           lun: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Disk" });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
     case 2:
+      return S.Array(__S(1409, __c44, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5087,7 +5089,7 @@ function __c16(j: number): any {
           sizeGb: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OSDisk" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           publisher: S.optional(S.String),
@@ -5096,47 +5098,43 @@ function __c16(j: number): any {
           offer: S.optional(S.String),
         }),
       ).annotate({ identifier: "OSDescription" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           computerName: S.optional(S.String),
-          disks: S.optional(__S(129, __c16, 1)),
+          disks: S.optional(__S(1410, __c44, 2)),
           powerState: S.optional(S.String),
           cpuCount: S.optional(S.Number),
           diskCount: S.optional(S.Number),
-          tags: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(96, __c3, 0)),
           bootOption: S.optional(S.String),
           memoryMb: S.optional(S.Number),
-          osDisk: S.optional(__S(130, __c16, 2)),
+          osDisk: S.optional(__S(1411, __c44, 3)),
           vmSize: S.optional(S.String),
           vmId: S.optional(S.String),
-          osDescription: S.optional(__S(131, __c16, 3)),
+          osDescription: S.optional(__S(1412, __c44, 4)),
           architecture: S.optional(S.String),
           committedStorageMb: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureVmDetails" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
     case 6:
+      return S.Array(__S(1413, __c44, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(133, __c16, 5)),
+          details: S.optional(__S(1414, __c44, 6)),
         }),
       ).annotate({ identifier: "AzureVmsDetails" });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsSecurityGroup" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
+    case 9:
+      return S.Array(__S(1416, __c44, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           sourceId: S.optional(S.String),
@@ -5145,7 +5143,7 @@ function __c17(j: number): any {
           cpuCount: S.optional(S.Number),
           vcpuCount: S.optional(S.Number),
           zone: S.optional(S.String),
-          tags: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(96, __c3, 0)),
           displayName: S.optional(S.String),
           sourceDescription: S.optional(S.String),
           diskCount: S.optional(S.Number),
@@ -5155,38 +5153,42 @@ function __c17(j: number): any {
           vmId: S.optional(S.String),
           committedStorageMb: S.optional(S.String),
           bootOption: S.optional(S.String),
-          securityGroups: S.optional(__S(136, __c17, 0)),
+          securityGroups: S.optional(__S(1417, __c44, 9)),
           architecture: S.optional(S.String),
           powerState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsVmDetails" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
+    case 11:
+      return S.Array(__S(1418, __c44, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(138, __c17, 2)),
+          details: S.optional(__S(1419, __c44, 11)),
         }),
       ).annotate({ identifier: "AwsVmsDetails" });
-    case 4:
-      return S.Array(__S(110, __c13, 6));
-    case 5:
+    case 13:
+      return S.Array(__S(960, __c30, 0));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(140, __c17, 4)),
+          details: S.optional(__S(1421, __c44, 13)),
         }),
       ).annotate({ identifier: "VmwareVmsDetails" });
-    case 6:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          azureVms: S.optional(__S(134, __c16, 6)),
+          azureVms: S.optional(__S(1415, __c44, 7)),
           nextPageToken: S.optional(S.String),
-          awsVms: S.optional(__S(139, __c17, 3)),
-          vmwareVms: S.optional(__S(141, __c17, 5)),
+          awsVms: S.optional(__S(1420, __c44, 12)),
+          vmwareVms: S.optional(__S(1422, __c44, 14)),
         }),
       ).annotate({ identifier: "FetchInventoryResponse" });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5204,33 +5206,33 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "FetchStorageInventoryProjectsLocationsSourcesRequest",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          awsDiskDetails: S.optional(__S(56, __c7, 0)),
+          awsDiskDetails: S.optional(__S(544, __c17, 0)),
         }),
       ).annotate({ identifier: "SourceStorageResource" });
-    case 1:
-      return S.Array(__S(144, __c18, 0));
     case 2:
+      return S.Array(__S(1441, __c45, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           updateTime: S.optional(S.String),
-          resources: S.optional(__S(145, __c18, 1)),
+          resources: S.optional(__S(1442, __c45, 2)),
         }),
       ).annotate({
         identifier: "FetchStorageInventoryResponse",
       });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           migratingVm: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2240, __c70, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5241,7 +5243,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest",
       });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5255,17 +5261,25 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(14, __c1, 6)),
-          metadata: S.optional(__S(2, __c0, 2)),
+          labels: S.optional(__S(96, __c3, 0)),
+          metadata: S.optional(__S(1792, __c56, 0)),
         }),
       ).annotate({ identifier: "Location" });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5279,7 +5293,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsGroupsRequest",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5295,7 +5313,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5311,7 +5329,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsImageImportsImageImportJobsRequest",
       });
-    case 1:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5325,7 +5347,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5339,7 +5365,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSourcesRequest",
       });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5353,7 +5383,70 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSourcesDatacenterConnectorsRequest",
       });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          migratingVm: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddGroupMigrationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.String.pipe(T.Label()),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+group}:addGroupMigration",
+            baseUrl: "https://vmmigration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddGroupMigrationProjectsLocationsGroupsRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1792, __c56, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(1824, __c57, 0)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(1825, __c57, 1)),
+          response: S.optional(__S(1792, __c56, 0)),
+          done: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(1792, __c56, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5367,7 +5460,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSourcesDiskMigrationJobsRequest",
       });
-    case 5:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5382,7 +5479,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSourcesMigratingVmsRequest",
       });
-    case 6:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5396,7 +5497,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5412,7 +5517,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5428,7 +5533,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest",
       });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5443,7 +5552,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSourcesUtilizationReportsRequest",
       });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5457,12 +5570,16 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsTargetProjectsRequest",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(128, __c4, 0).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -5475,16 +5592,20 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 4:
-      return S.Array(__S(149, __c18, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(164, __c20, 4)),
+          locations: S.optional(__S(2113, __c66, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -5502,21 +5623,21 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsGroupsRequest",
       });
-    case 7:
-      return S.Array(__S(12, __c1, 4));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(32, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(15, __c1, 7)),
+          unreachable: S.optional(__S(128, __c4, 0)),
           nextPageToken: S.optional(S.String),
-          groups: S.optional(__S(167, __c20, 7)),
+          groups: S.optional(__S(2145, __c67, 1)),
         }),
       ).annotate({ identifier: "ListGroupsResponse" });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -5534,17 +5655,48 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsImageImportsRequest",
       });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
     case 2:
-      return S.Array(__S(38, __c4, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(15, __c1, 7)),
-          imageImports: S.optional(__S(170, __c21, 2)),
+          unreachable: S.optional(__S(128, __c4, 0)),
+          imageImports: S.optional(__S(2177, __c68, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListImageImportsResponse" });
-    case 4:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2240, __c70, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://vmmigration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsImageImportsImageImportJobsRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelImageImportJobRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5562,17 +5714,21 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsImageImportsImageImportJobsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          imageImportJobs: S.optional(__S(37, __c4, 5)),
+          imageImportJobs: S.optional(__S(352, __c11, 0)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          unreachable: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({
         identifier: "ListImageImportJobsResponse",
       });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5590,21 +5746,21 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 7:
-      return S.Array(__S(5, __c0, 5));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1856, __c58, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(15, __c1, 7)),
+          unreachable: S.optional(__S(128, __c4, 0)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(175, __c21, 7)),
+          operations: S.optional(__S(2305, __c72, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 1:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -5622,17 +5778,21 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSourcesRequest",
       });
+    case 1:
+      return S.Array(__S(423, __c13, 7));
     case 2:
-      return S.Array(__S(47, __c5, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(15, __c1, 7)),
-          sources: S.optional(__S(178, __c22, 2)),
+          unreachable: S.optional(__S(128, __c4, 0)),
+          sources: S.optional(__S(2337, __c73, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSourcesResponse" });
-    case 4:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -5650,19 +5810,23 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSourcesDatacenterConnectorsRequest",
       });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(483, __c15, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(15, __c1, 7)),
-          datacenterConnectors: S.optional(__S(181, __c22, 5)),
+          unreachable: S.optional(__S(128, __c4, 0)),
+          datacenterConnectors: S.optional(__S(2369, __c74, 1)),
         }),
       ).annotate({
         identifier: "ListDatacenterConnectorsResponse",
       });
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -5680,23 +5844,23 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSourcesDiskMigrationJobsRequest",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(59, __c7, 3));
     case 1:
+      return S.Array(__S(580, __c18, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          diskMigrationJobs: S.optional(__S(184, __c23, 0)),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          diskMigrationJobs: S.optional(__S(2401, __c75, 1)),
+          unreachable: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({
         identifier: "ListDiskMigrationJobsResponse",
       });
-    case 2:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -5715,17 +5879,21 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSourcesMigratingVmsRequest",
       });
-    case 3:
-      return S.Array(__S(105, __c13, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(855, __c26, 23));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          migratingVms: S.optional(__S(187, __c23, 3)),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          migratingVms: S.optional(__S(2433, __c76, 1)),
+          unreachable: S.optional(__S(128, __c4, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListMigratingVmsResponse" });
-    case 5:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5743,15 +5911,19 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          cloneJobs: S.optional(__S(75, __c9, 3)),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          cloneJobs: S.optional(__S(768, __c24, 0)),
+          unreachable: S.optional(__S(128, __c4, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCloneJobsResponse" });
-    case 7:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -5769,19 +5941,19 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          cutoverJobs: S.optional(__S(104, __c13, 0)),
+          cutoverJobs: S.optional(__S(800, __c25, 0)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          unreachable: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "ListCutoverJobsResponse" });
-    case 1:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -5799,19 +5971,23 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest",
       });
+    case 1:
+      return S.Array(__S(707, __c22, 3));
     case 2:
-      return S.Array(__S(79, __c9, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          replicationCycles: S.optional(__S(194, __c24, 2)),
+          replicationCycles: S.optional(__S(2529, __c79, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          unreachable: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({
         identifier: "ListReplicationCyclesResponse",
       });
-    case 4:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -5830,19 +6006,42 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSourcesUtilizationReportsRequest",
       });
-    case 5:
-      return S.Array(__S(113, __c14, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(995, __c31, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(15, __c1, 7)),
-          utilizationReports: S.optional(__S(197, __c24, 5)),
+          unreachable: S.optional(__S(128, __c4, 0)),
+          utilizationReports: S.optional(__S(2561, __c80, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListUtilizationReportsResponse",
       });
-    case 7:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2240, __c70, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://vmmigration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -5860,29 +6059,29 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsTargetProjectsRequest",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(115, __c14, 3));
     case 1:
+      return S.Array(__S(1056, __c33, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(15, __c1, 7)),
+          unreachable: S.optional(__S(128, __c4, 0)),
           nextPageToken: S.optional(S.String),
-          targetProjects: S.optional(__S(200, __c25, 0)),
+          targetProjects: S.optional(__S(2625, __c82, 1)),
         }),
       ).annotate({
         identifier: "ListTargetProjectsResponse",
       });
-    case 2:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5893,13 +6092,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsGroupsRequest",
       });
-    case 3:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(423, __c13, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5910,13 +6113,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsSourcesRequest",
       });
-    case 4:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(580, __c18, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5927,13 +6134,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsSourcesDiskMigrationJobsRequest",
       });
-    case 5:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(855, __c26, 23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5944,13 +6155,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsSourcesMigratingVmsRequest",
       });
-    case 6:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5961,11 +6176,15 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsTargetProjectsRequest",
       });
-    case 7:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           migratingVm: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2240, __c70, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5978,7 +6197,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5992,7 +6211,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           group: S.String.pipe(T.Label()),
-          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2848, __c89, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6003,11 +6222,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "RemoveGroupMigrationProjectsLocationsGroupsRequest",
       });
-    case 2:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           migratingVm: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2240, __c70, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6018,11 +6241,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest",
       });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2240, __c70, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6033,11 +6260,34 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "RunProjectsLocationsSourcesDiskMigrationJobsRequest",
       });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2240, __c70, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://vmmigration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsSourcesDiskMigrationJobsRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           migratingVm: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2240, __c70, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6048,17 +6298,21 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "StartMigrationProjectsLocationsSourcesMigratingVmsRequest",
       });
-    case 5:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpgradeApplianceRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           datacenterConnector: S.String.pipe(T.Label()),
-          body: S.optional(__S(213, __c26, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(3008, __c94, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6071,7 +6325,44 @@ function __c26(j: number): any {
       });
   }
 }
-
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2240, __c70, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://vmmigration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2240, __c70, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://vmmigration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

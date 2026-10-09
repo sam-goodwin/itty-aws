@@ -341,7 +341,7 @@ export const getLedgerAccount: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetLedgerAccountRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<LedgerAccount>,
+  output: __S(8, __c0, 8) as any as S.Schema<LedgerAccount>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -432,11 +432,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "LedgerAccountTreasuryBalance",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           balances: __S(2, __c0, 2),
@@ -453,7 +449,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "LedgerAccount" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

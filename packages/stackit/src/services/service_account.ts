@@ -381,8 +381,8 @@ export const createFederatedIdentityProvider: API.OperationMethod<
   CreateFederatedIdentityProviderError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateFederatedIdentityProviderRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<FederatedIdentityProvider>,
+  input: __S(41, __c10, 1) as any as S.Schema<CreateFederatedIdentityProviderRequest>,
+  output: __S(46, __c11, 2) as any as S.Schema<FederatedIdentityProvider>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -396,8 +396,8 @@ export const createServiceAccount: API.OperationMethod<
   CreateServiceAccountError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateServiceAccountRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ServiceAccount2>,
+  input: __S(52, __c13, 0) as any as S.Schema<CreateServiceAccountRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<ServiceAccount2>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -411,8 +411,8 @@ export const createServiceAccountKey: API.OperationMethod<
   CreateServiceAccountKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateServiceAccountKeyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateServiceAccountKeyResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<CreateServiceAccountKeyRequest>,
+  output: __S(62, __c15, 2) as any as S.Schema<CreateServiceAccountKeyResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -426,8 +426,8 @@ export const createShortLivedAccessToken: API.OperationMethod<
   CreateShortLivedAccessTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateShortLivedAccessTokenRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateShortLivedAccessTokenResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<CreateShortLivedAccessTokenRequest>,
+  output: __S(65, __c16, 1) as any as S.Schema<CreateShortLivedAccessTokenResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -441,8 +441,8 @@ export const deleteServiceAccount: API.OperationMethod<
   DeleteServiceAccountError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteServiceAccountRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteServiceAccountResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<DeleteServiceAccountRequest>,
+  output: __S(69, __c17, 1) as any as S.Schema<DeleteServiceAccountResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -456,8 +456,8 @@ export const deleteServiceAccountKey: API.OperationMethod<
   DeleteServiceAccountKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteServiceAccountKeyRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteServiceAccountKeyResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<DeleteServiceAccountKeyRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<DeleteServiceAccountKeyResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -471,8 +471,8 @@ export const deleteServiceFederatedIdentityProvider: API.OperationMethod<
   DeleteServiceFederatedIdentityProviderError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteServiceFederatedIdentityProviderRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteServiceFederatedIdentityProviderResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteServiceFederatedIdentityProviderRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteServiceFederatedIdentityProviderResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -486,8 +486,8 @@ export const getFederatedIdentityProvider: API.OperationMethod<
   GetFederatedIdentityProviderError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetFederatedIdentityProviderRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<FederatedIdentityProvider>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetFederatedIdentityProviderRequest>,
+  output: __S(46, __c11, 2) as any as S.Schema<FederatedIdentityProvider>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -497,8 +497,8 @@ export type GetJWKSError = StackitOpError;
 /** Get JSON Web Key set of the service account Get JSON Web Key set of the service account */
 export const getJWKS: API.OperationMethod<GetJWKSRequest, JWKS, GetJWKSError, StackitOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(20, __c2, 4) as any as S.Schema<GetJWKSRequest>,
-    output: __S(23, __c2, 7) as any as S.Schema<JWKS>,
+    input: __S(8, __c2, 0) as any as S.Schema<GetJWKSRequest>,
+    output: __S(11, __c2, 3) as any as S.Schema<JWKS>,
     errors: [UnknownStackitError],
     protocol: StackitProtocol,
     retry: Retry.Retry,
@@ -512,8 +512,8 @@ export const getServiceAccountKey: API.OperationMethod<
   GetServiceAccountKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetServiceAccountKeyRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetServiceAccountKeyResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetServiceAccountKeyRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<GetServiceAccountKeyResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -527,8 +527,8 @@ export const listFederatedIdentityProviders: API.OperationMethod<
   ListFederatedIdentityProvidersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListFederatedIdentityProvidersRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<FederatedListFederatedIdentityProvidersResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListFederatedIdentityProvidersRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<FederatedListFederatedIdentityProvidersResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -542,8 +542,8 @@ export const listServiceAccountKeys: API.OperationMethod<
   ListServiceAccountKeysError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListServiceAccountKeysRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListServiceAccountKeysResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListServiceAccountKeysRequest>,
+  output: __S(22, __c5, 2) as any as S.Schema<ListServiceAccountKeysResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -557,8 +557,8 @@ export const listServiceAccounts: API.OperationMethod<
   ListServiceAccountsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListServiceAccountsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListServiceAccountsResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<ListServiceAccountsRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<ListServiceAccountsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -577,11 +577,11 @@ export const partialUpdateServiceAccountFederatedIdentityProvider: API.Operation
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    38,
-    __c4,
-    6,
+    33,
+    __c8,
+    1,
   ) as any as S.Schema<PartialUpdateServiceAccountFederatedIdentityProviderRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<FederatedIdentityProvider>,
+  output: __S(46, __c11, 2) as any as S.Schema<FederatedIdentityProvider>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -599,8 +599,8 @@ export const partialUpdateServiceAccountKey: API.OperationMethod<
   PartialUpdateServiceAccountKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<PartialUpdateServiceAccountKeyRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<PartialUpdateServiceAccountKeyResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<PartialUpdateServiceAccountKeyRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<PartialUpdateServiceAccountKeyResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -610,213 +610,6 @@ export const partialUpdateServiceAccountKey: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          item: S.optional(S.String),
-          operator: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateFederatedIdentityProviderRequestAssertionsItem",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          serviceAccountEmail: S.String.pipe(T.Label()),
-          assertions: S.optional(__S(1, __c0, 1)),
-          issuer: S.String,
-          name: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/service-accounts/{serviceAccountEmail}/federations",
-            code: 200,
-            baseUrl: "https://service-account.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateFederatedIdentityProviderRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          item: S.String,
-          operator: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "FederatedIdentityProviderAssertionsItem",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          assertions: __S(4, __c0, 4),
-          createdAt: S.String,
-          id: S.optional(S.String),
-          issuer: S.String,
-          name: S.String,
-          updatedAt: S.String,
-        }),
-      ).annotate({
-        identifier: "FederatedIdentityProvider",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          name: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/service-accounts",
-            code: 200,
-            baseUrl: "https://service-account.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateServiceAccountRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          id: S.String,
-          internal: S.Boolean,
-          projectId: S.String,
-        }),
-      ).annotate({ identifier: "ServiceAccount2" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          serviceAccountEmail: S.String.pipe(T.Label()),
-          algorithm: S.optional(S.String),
-          publicKey: S.optional(S.String),
-          validUntil: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/service-accounts/{serviceAccountEmail}/keys",
-            code: 200,
-            baseUrl: "https://service-account.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateServiceAccountKeyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          aud: S.String,
-          iss: S.String,
-          kid: S.String,
-          privateKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          sub: S.String,
-          tokenEndpoint: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateServiceAccountKeyResponseCredentials",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          createdAt: S.String,
-          credentials: __S(9, __c1, 1),
-          id: S.String,
-          keyAlgorithm: S.String,
-          keyOrigin: S.String,
-          keyType: S.String,
-          publicKey: S.String,
-          validUntil: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateServiceAccountKeyResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          assertion: S.optional(S.String),
-          grant_type: S.String,
-          refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/token",
-            code: 200,
-            baseUrl: "https://service-account.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateShortLivedAccessTokenRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          access_token: S.String.pipe(T.SensitiveValue({})),
-          expires_in: S.Number,
-          refresh_token: S.String.pipe(T.SensitiveValue({})),
-          scope: S.String,
-          token_type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateShortLivedAccessTokenResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          serviceAccountEmail: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/projects/{projectId}/service-accounts/{serviceAccountEmail}",
-            code: 200,
-            baseUrl: "https://service-account.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteServiceAccountRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteServiceAccountResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          serviceAccountEmail: S.String.pipe(T.Label()),
-          keyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/projects/{projectId}/service-accounts/{serviceAccountEmail}/keys/{keyId}",
-            code: 200,
-            baseUrl: "https://service-account.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteServiceAccountKeyRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteServiceAccountKeyResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -833,11 +626,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteServiceFederatedIdentityProviderRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteServiceFederatedIdentityProviderResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -854,7 +651,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetFederatedIdentityProviderRequest",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceAccountEmail: S.String.pipe(T.Label()),
@@ -867,7 +668,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetJWKSRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           alg: S.optional(S.String),
@@ -883,12 +684,12 @@ function __c2(j: number): any {
           x5u: S.optional(S.String),
         }),
       ).annotate({ identifier: "JWK" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(22, __c2, 6),
+          keys: __S(10, __c2, 2),
         }),
       ).annotate({ identifier: "JWKS" });
   }
@@ -929,7 +730,7 @@ function __c3(j: number): any {
         S.Struct({
           active: S.Boolean,
           createdAt: S.String,
-          credentials: __S(25, __c3, 1),
+          credentials: __S(13, __c3, 1),
           id: S.String,
           keyAlgorithm: S.String,
           keyOrigin: S.String,
@@ -940,7 +741,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetServiceAccountKeyResponse",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -956,20 +761,24 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListFederatedIdentityProvidersRequest",
       });
-    case 4:
-      return S.Array(__S(5, __c0, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(46, __c11, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           itemsPerPage: S.Number,
-          resources: __S(28, __c3, 4),
+          resources: __S(17, __c4, 1),
           startIndex: S.Number,
           totalResults: S.Number,
         }),
       ).annotate({
         identifier: "FederatedListFederatedIdentityProvidersResponse",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -985,7 +794,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListServiceAccountKeysRequest",
       });
-    case 7:
+    case 1:
+      return S.Array(__S(24, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(21, __c5, 1),
+        }),
+      ).annotate({
+        identifier: "ListServiceAccountKeysResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
@@ -1001,19 +824,9 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(32, __c4, 0),
-        }),
-      ).annotate({
-        identifier: "ListServiceAccountKeysResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1028,25 +841,29 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListServiceAccountsRequest",
       });
-    case 3:
-      return S.Array(__S(7, __c0, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(56, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(35, __c4, 3),
+          items: __S(29, __c7, 1),
         }),
       ).annotate({
         identifier: "ListServiceAccountsResponse",
       });
-    case 5:
-      return S.Array(__S(0, __c0, 0));
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(48, __c12, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           serviceAccountEmail: S.String.pipe(T.Label()),
           federationId: S.String.pipe(T.Label()),
-          assertions: S.optional(__S(37, __c4, 5)),
+          assertions: S.optional(__S(32, __c8, 0)),
           issuer: S.String,
           name: S.String,
         }).pipe(
@@ -1060,7 +877,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PartialUpdateServiceAccountFederatedIdentityProviderRequest",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1081,7 +902,241 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(48, __c12, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          serviceAccountEmail: S.String.pipe(T.Label()),
+          assertions: S.optional(__S(40, __c10, 0)),
+          issuer: S.String,
+          name: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/service-accounts/{serviceAccountEmail}/federations",
+            code: 200,
+            baseUrl: "https://service-account.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFederatedIdentityProviderRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          item: S.String,
+          operator: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "FederatedIdentityProviderAssertionsItem",
+      });
+    case 1:
+      return S.Array(__S(44, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assertions: __S(45, __c11, 1),
+          createdAt: S.String,
+          id: S.optional(S.String),
+          issuer: S.String,
+          name: S.String,
+          updatedAt: S.String,
+        }),
+      ).annotate({
+        identifier: "FederatedIdentityProvider",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          item: S.optional(S.String),
+          operator: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateFederatedIdentityProviderRequestAssertionsItem",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          name: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/service-accounts",
+            code: 200,
+            baseUrl: "https://service-account.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateServiceAccountRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          id: S.String,
+          internal: S.Boolean,
+          projectId: S.String,
+        }),
+      ).annotate({ identifier: "ServiceAccount2" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          serviceAccountEmail: S.String.pipe(T.Label()),
+          algorithm: S.optional(S.String),
+          publicKey: S.optional(S.String),
+          validUntil: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/service-accounts/{serviceAccountEmail}/keys",
+            code: 200,
+            baseUrl: "https://service-account.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateServiceAccountKeyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          aud: S.String,
+          iss: S.String,
+          kid: S.String,
+          privateKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          sub: S.String,
+          tokenEndpoint: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateServiceAccountKeyResponseCredentials",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          createdAt: S.String,
+          credentials: __S(61, __c15, 1),
+          id: S.String,
+          keyAlgorithm: S.String,
+          keyOrigin: S.String,
+          keyType: S.String,
+          publicKey: S.String,
+          validUntil: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateServiceAccountKeyResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assertion: S.optional(S.String),
+          grant_type: S.String,
+          refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/token",
+            code: 200,
+            baseUrl: "https://service-account.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateShortLivedAccessTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          access_token: S.String.pipe(T.SensitiveValue({})),
+          expires_in: S.Number,
+          refresh_token: S.String.pipe(T.SensitiveValue({})),
+          scope: S.String,
+          token_type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateShortLivedAccessTokenResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          serviceAccountEmail: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/projects/{projectId}/service-accounts/{serviceAccountEmail}",
+            code: 200,
+            baseUrl: "https://service-account.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteServiceAccountRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteServiceAccountResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          serviceAccountEmail: S.String.pipe(T.Label()),
+          keyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/projects/{projectId}/service-accounts/{serviceAccountEmail}/keys/{keyId}",
+            code: 200,
+            baseUrl: "https://service-account.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteServiceAccountKeyRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteServiceAccountKeyResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

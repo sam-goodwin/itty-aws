@@ -740,8 +740,8 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(672, __c21, 0) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -761,11 +761,11 @@ export const createIaCValidationReportOrganizationsLocationsReports: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4,
-    __c0,
-    4,
+    738,
+    __c23,
+    2,
   ) as any as S.Schema<CreateIaCValidationReportOrganizationsLocationsReportsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  output: __S(802, __c25, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -784,8 +784,12 @@ export const createOrganizationsLocationsPostureDeployments: API.OperationMethod
   CreateOrganizationsLocationsPostureDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateOrganizationsLocationsPostureDeploymentsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(
+    832,
+    __c26,
+    0,
+  ) as any as S.Schema<CreateOrganizationsLocationsPostureDeploymentsRequest>,
+  output: __S(802, __c25, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -804,8 +808,8 @@ export const createOrganizationsLocationsPostures: API.OperationMethod<
   CreateOrganizationsLocationsPosturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateOrganizationsLocationsPosturesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(960, __c30, 0) as any as S.Schema<CreateOrganizationsLocationsPosturesRequest>,
+  output: __S(802, __c25, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -824,8 +828,8 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -844,8 +848,12 @@ export const deleteOrganizationsLocationsPostureDeployments: API.OperationMethod
   DeleteOrganizationsLocationsPostureDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteOrganizationsLocationsPostureDeploymentsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(
+    1120,
+    __c35,
+    0,
+  ) as any as S.Schema<DeleteOrganizationsLocationsPostureDeploymentsRequest>,
+  output: __S(802, __c25, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -864,8 +872,8 @@ export const deleteOrganizationsLocationsPostures: API.OperationMethod<
   DeleteOrganizationsLocationsPosturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteOrganizationsLocationsPosturesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteOrganizationsLocationsPosturesRequest>,
+  output: __S(802, __c25, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -884,8 +892,8 @@ export const extractOrganizationsLocationsPostures: API.OperationMethod<
   ExtractOrganizationsLocationsPosturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ExtractOrganizationsLocationsPosturesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(33, __c1, 1) as any as S.Schema<ExtractOrganizationsLocationsPosturesRequest>,
+  output: __S(802, __c25, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -899,8 +907,8 @@ export const getOrganizationsLocations: API.OperationMethod<
   GetOrganizationsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetOrganizationsLocationsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Location>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetOrganizationsLocationsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -914,8 +922,8 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
+  output: __S(802, __c25, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -929,8 +937,8 @@ export const getOrganizationsLocationsPostureDeployments: API.OperationMethod<
   GetOrganizationsLocationsPostureDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetOrganizationsLocationsPostureDeploymentsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<PostureDeployment>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetOrganizationsLocationsPostureDeploymentsRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<PostureDeployment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -944,8 +952,8 @@ export const getOrganizationsLocationsPostures: API.OperationMethod<
   GetOrganizationsLocationsPosturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetOrganizationsLocationsPosturesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Posture>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetOrganizationsLocationsPosturesRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<Posture>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -959,8 +967,8 @@ export const getOrganizationsLocationsPostureTemplates: API.OperationMethod<
   GetOrganizationsLocationsPostureTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetOrganizationsLocationsPostureTemplatesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<PostureTemplate>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetOrganizationsLocationsPostureTemplatesRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<PostureTemplate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -974,8 +982,8 @@ export const getOrganizationsLocationsReports: API.OperationMethod<
   GetOrganizationsLocationsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetOrganizationsLocationsReportsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<Report>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetOrganizationsLocationsReportsRequest>,
+  output: __S(326, __c10, 6) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -990,8 +998,8 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListOrganizationsLocationsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListLocationsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListOrganizationsLocationsRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1007,8 +1015,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ListOperationsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1024,8 +1032,8 @@ export const listOrganizationsLocationsPostureDeployments: API.PaginatedOperatio
   GcpOpContext,
   ListPostureDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListOrganizationsLocationsPostureDeploymentsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListPostureDeploymentsResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListOrganizationsLocationsPostureDeploymentsRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<ListPostureDeploymentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1041,8 +1049,8 @@ export const listOrganizationsLocationsPostures: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPosturesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListOrganizationsLocationsPosturesRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ListPosturesResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListOrganizationsLocationsPosturesRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<ListPosturesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1058,8 +1066,8 @@ export const listOrganizationsLocationsPostureTemplates: API.PaginatedOperationM
   GcpOpContext,
   ListPostureTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListOrganizationsLocationsPostureTemplatesRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListPostureTemplatesResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListOrganizationsLocationsPostureTemplatesRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<ListPostureTemplatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1075,8 +1083,8 @@ export const listOrganizationsLocationsReports: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListOrganizationsLocationsReportsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<ListReportsResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListOrganizationsLocationsReportsRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<ListReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1092,8 +1100,8 @@ export const listRevisionsOrganizationsLocationsPostures: API.PaginatedOperation
   GcpOpContext,
   ListPostureRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListRevisionsOrganizationsLocationsPosturesRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<ListPostureRevisionsResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListRevisionsOrganizationsLocationsPosturesRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<ListPostureRevisionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1113,8 +1121,12 @@ export const patchOrganizationsLocationsPostureDeployments: API.OperationMethod<
   PatchOrganizationsLocationsPostureDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<PatchOrganizationsLocationsPostureDeploymentsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(
+    608,
+    __c19,
+    0,
+  ) as any as S.Schema<PatchOrganizationsLocationsPostureDeploymentsRequest>,
+  output: __S(802, __c25, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1133,8 +1145,8 @@ export const patchOrganizationsLocationsPostures: API.OperationMethod<
   PatchOrganizationsLocationsPosturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<PatchOrganizationsLocationsPosturesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(640, __c20, 0) as any as S.Schema<PatchOrganizationsLocationsPosturesRequest>,
+  output: __S(802, __c25, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1144,363 +1156,6 @@ export const patchOrganizationsLocationsPostures: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://securityposture.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelOrganizationsLocationsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tfPlan: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IaC" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          iac: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateIaCValidationReportRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/reports:createIaCValidationReport",
-            baseUrl: "https://securityposture.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIaCValidationReportOrganizationsLocationsReportsRequest",
-      });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Status" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(5, __c0, 5)),
-          response: S.optional(__S(5, __c0, 5)),
-          error: S.optional(__S(7, __c0, 7)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          postureRevisionId: S.optional(S.String),
-          etag: S.optional(S.String),
-          name: S.optional(S.String),
-          failureMessage: S.optional(S.String),
-          desiredPostureRevisionId: S.optional(S.String),
-          description: S.optional(S.String),
-          targetResource: S.optional(S.String),
-          state: S.optional(S.String),
-          createTime: S.optional(S.String),
-          reconciling: S.optional(S.Boolean),
-          desiredPostureId: S.optional(S.String),
-          postureId: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          categories: S.optional(__S(9, __c1, 1)),
-          annotations: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "PostureDeployment" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          postureDeploymentId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/postureDeployments",
-            baseUrl: "https://securityposture.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsLocationsPostureDeploymentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          expression: S.optional(S.String),
-          description: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          included: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "ResourceTypes" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowedValues: S.optional(__S(14, __c1, 6)),
-          deniedValues: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudSecuritypostureV1PolicyRuleStringValues",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          condition: S.optional(__S(13, __c1, 5)),
-          parameters: S.optional(__S(5, __c0, 5)),
-          resourceTypes: S.optional(__S(15, __c1, 7)),
-          allowAll: S.optional(S.Boolean),
-          denyAll: S.optional(S.Boolean),
-          enforce: S.optional(S.Boolean),
-          values: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudSecuritypostureV1PolicyRule",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cannedConstraintId: S.optional(S.String),
-          policyRules: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "OrgPolicyConstraint" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          actionType: S.optional(S.String),
-          condition: S.optional(S.String),
-          description: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          methodTypes: S.optional(__S(20, __c2, 4)),
-          displayName: S.optional(S.String),
-          resourceTypes: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudSecuritypostureV1CustomConstraint",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          policyRules: S.optional(__S(18, __c2, 2)),
-          customConstraint: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "OrgPolicyConstraintCustom",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceTypes: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "ResourceSelector" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          valueExpression: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "Property" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "CustomOutputSpec" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourceSelector: S.optional(__S(23, __c2, 7)),
-          customOutput: S.optional(__S(26, __c3, 2)),
-          severity: S.optional(S.String),
-          predicate: S.optional(__S(13, __c1, 5)),
-          recommendation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          id: S.optional(S.String),
-          moduleEnablementState: S.optional(S.String),
-          config: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "SecurityHealthAnalyticsCustomModule",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          moduleName: S.optional(S.String),
-          moduleEnablementState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SecurityHealthAnalyticsModule",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          orgPolicyConstraint: S.optional(__S(19, __c2, 3)),
-          orgPolicyConstraintCustom: S.optional(__S(22, __c2, 6)),
-          securityHealthAnalyticsCustomModule: S.optional(__S(28, __c3, 4)),
-          securityHealthAnalyticsModule: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "Constraint" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          control: S.optional(S.String),
-          standard: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ComplianceStandard" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          constraint: S.optional(__S(30, __c3, 6)),
-          policyId: S.optional(S.String),
-          description: S.optional(S.String),
-          complianceStandards: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "Policy" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          policySetId: S.optional(S.String),
-          description: S.optional(S.String),
-          policies: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "PolicySet" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          reconciling: S.optional(S.Boolean),
-          updateTime: S.optional(S.String),
-          categories: S.optional(__S(9, __c1, 1)),
-          state: S.optional(S.String),
-          revisionId: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          annotations: S.optional(__S(10, __c1, 2)),
-          etag: S.optional(S.String),
-          description: S.optional(S.String),
-          policySets: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "Posture" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          postureId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/postures",
-            baseUrl: "https://securityposture.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsLocationsPosturesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://securityposture.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsLocationsOperationsRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://securityposture.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsLocationsPostureDeploymentsRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String.pipe(T.Query())),
@@ -1515,18 +1170,22 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationsLocationsPosturesRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           postureId: S.optional(S.String),
           workload: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtractPostureRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1537,7 +1196,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ExtractOrganizationsLocationsPosturesRequest",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1551,17 +1214,25 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(10, __c1, 2)),
+          labels: S.optional(__S(896, __c28, 0)),
           displayName: S.optional(S.String),
-          metadata: S.optional(__S(5, __c0, 5)),
+          metadata: S.optional(__S(768, __c24, 0)),
           name: S.optional(S.String),
           locationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1575,7 +1246,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1608,7 +1283,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsPosturesRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           revisionId: S.optional(S.String.pipe(T.Query())),
@@ -1623,18 +1302,26 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsPostureTemplatesRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           revisionId: S.optional(S.String),
-          policySets: S.optional(__S(36, __c4, 4)),
-          categories: S.optional(__S(9, __c1, 1)),
+          policySets: S.optional(__S(1046, __c32, 22)),
+          categories: S.optional(__S(928, __c29, 0)),
           description: S.optional(S.String),
           name: S.optional(S.String),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "PostureTemplate" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1648,23 +1335,27 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsReportsRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           constraintType: S.optional(S.String),
           description: S.optional(S.String),
-          complianceStandards: S.optional(__S(14, __c1, 6)),
+          complianceStandards: S.optional(__S(992, __c31, 0)),
           constraint: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyDetails" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           assetType: S.optional(S.String),
           asset: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssetDetails" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           policySet: S.optional(S.String),
@@ -1674,44 +1365,44 @@ function __c6(j: number): any {
           postureDeploymentTargetResource: S.optional(S.String),
         }),
       ).annotate({ identifier: "PostureDetails" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          violatedPolicy: S.optional(__S(52, __c6, 4)),
-          violatedAsset: S.optional(__S(53, __c6, 5)),
+          violatedPolicy: S.optional(__S(320, __c10, 0)),
+          violatedAsset: S.optional(__S(321, __c10, 1)),
           severity: S.optional(S.String),
           nextSteps: S.optional(S.String),
           assetId: S.optional(S.String),
-          violatedPosture: S.optional(__S(54, __c6, 6)),
+          violatedPosture: S.optional(__S(322, __c10, 2)),
           policyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Violation" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(323, __c10, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          violations: S.optional(__S(56, __c7, 0)),
+          violations: S.optional(__S(324, __c10, 4)),
           note: S.optional(S.String),
         }),
       ).annotate({ identifier: "IaCValidationReport" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          iacValidationReport: S.optional(__S(57, __c7, 1)),
+          iacValidationReport: S.optional(__S(325, __c10, 5)),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Report" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(__S(14, __c1, 6).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(992, __c31, 0).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
@@ -1726,16 +1417,20 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsRequest",
       });
-    case 4:
-      return S.Array(__S(45, __c5, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(60, __c7, 4)),
+          locations: S.optional(__S(353, __c11, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1753,21 +1448,21 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsOperationsRequest",
       });
-    case 7:
-      return S.Array(__S(8, __c1, 0));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(802, __c25, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(63, __c7, 7)),
+          operations: S.optional(__S(385, __c12, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(14, __c1, 6)),
+          unreachable: S.optional(__S(992, __c31, 0)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1784,19 +1479,23 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsPostureDeploymentsRequest",
       });
+    case 1:
+      return S.Array(__S(864, __c27, 0));
     case 2:
-      return S.Array(__S(11, __c1, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          postureDeployments: S.optional(__S(66, __c8, 2)),
-          unreachable: S.optional(__S(14, __c1, 6)),
+          postureDeployments: S.optional(__S(417, __c13, 1)),
+          unreachable: S.optional(__S(992, __c31, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPostureDeploymentsResponse",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1813,17 +1512,25 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsPosturesRequest",
       });
-    case 5:
-      return S.Array(__S(37, __c4, 5));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          postures: S.optional(__S(69, __c8, 5)),
-          unreachable: S.optional(__S(14, __c1, 6)),
+          postures: S.optional(__S(480, __c15, 0)),
+          unreachable: S.optional(__S(992, __c31, 0)),
         }),
       ).annotate({ identifier: "ListPosturesResponse" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1056, __c33, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1840,22 +1547,22 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsPostureTemplatesRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(50, __c6, 2));
     case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          postureTemplates: S.optional(__S(72, __c9, 0)),
+          postureTemplates: S.optional(__S(513, __c16, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPostureTemplatesResponse",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1872,17 +1579,21 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsReportsRequest",
       });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(326, __c10, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          reports: S.optional(__S(75, __c9, 3)),
-          unreachable: S.optional(__S(14, __c1, 6)),
+          reports: S.optional(__S(545, __c17, 1)),
+          unreachable: S.optional(__S(992, __c31, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReportsResponse" });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1898,21 +1609,25 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListRevisionsOrganizationsLocationsPosturesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          revisions: S.optional(__S(69, __c8, 5)),
+          revisions: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({
         identifier: "ListPostureRevisionsResponse",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(864, __c27, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1925,7 +1640,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1933,7 +1648,7 @@ function __c10(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           revisionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1946,7 +1661,403 @@ function __c10(j: number): any {
       });
   }
 }
-
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(704, __c22, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://securityposture.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelOrganizationsLocationsOperationsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tfPlan: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IaC" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          iac: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateIaCValidationReportRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(737, __c23, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/reports:createIaCValidationReport",
+            baseUrl: "https://securityposture.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIaCValidationReportOrganizationsLocationsReportsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(768, __c24, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(800, __c25, 0)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(768, __c24, 0)),
+          response: S.optional(__S(768, __c24, 0)),
+          error: S.optional(__S(801, __c25, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          postureDeploymentId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(864, __c27, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/postureDeployments",
+            baseUrl: "https://securityposture.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsLocationsPostureDeploymentsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          postureRevisionId: S.optional(S.String),
+          etag: S.optional(S.String),
+          name: S.optional(S.String),
+          failureMessage: S.optional(S.String),
+          desiredPostureRevisionId: S.optional(S.String),
+          description: S.optional(S.String),
+          targetResource: S.optional(S.String),
+          state: S.optional(S.String),
+          createTime: S.optional(S.String),
+          reconciling: S.optional(S.Boolean),
+          desiredPostureId: S.optional(S.String),
+          postureId: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          categories: S.optional(__S(928, __c29, 0)),
+          annotations: S.optional(__S(896, __c28, 0)),
+        }),
+      ).annotate({ identifier: "PostureDeployment" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          postureId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/postures",
+            baseUrl: "https://securityposture.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsLocationsPosturesRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          expression: S.optional(S.String),
+          description: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expr" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          included: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({ identifier: "ResourceTypes" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allowedValues: S.optional(__S(992, __c31, 0)),
+          deniedValues: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudSecuritypostureV1PolicyRuleStringValues",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          condition: S.optional(__S(1024, __c32, 0)),
+          parameters: S.optional(__S(768, __c24, 0)),
+          resourceTypes: S.optional(__S(1025, __c32, 1)),
+          allowAll: S.optional(S.Boolean),
+          denyAll: S.optional(S.Boolean),
+          enforce: S.optional(S.Boolean),
+          values: S.optional(__S(1026, __c32, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudSecuritypostureV1PolicyRule",
+      });
+    case 4:
+      return S.Array(__S(1027, __c32, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cannedConstraintId: S.optional(S.String),
+          policyRules: S.optional(__S(1028, __c32, 4)),
+        }),
+      ).annotate({ identifier: "OrgPolicyConstraint" });
+    case 6:
+      return S.Array(S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          actionType: S.optional(S.String),
+          condition: S.optional(S.String),
+          description: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          methodTypes: S.optional(__S(1030, __c32, 6)),
+          displayName: S.optional(S.String),
+          resourceTypes: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudSecuritypostureV1CustomConstraint",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          policyRules: S.optional(__S(1028, __c32, 4)),
+          customConstraint: S.optional(__S(1031, __c32, 7)),
+        }),
+      ).annotate({
+        identifier: "OrgPolicyConstraintCustom",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          resourceTypes: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({ identifier: "ResourceSelector" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          valueExpression: S.optional(__S(1024, __c32, 0)),
+        }),
+      ).annotate({ identifier: "Property" });
+    case 11:
+      return S.Array(__S(1034, __c32, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(1035, __c32, 11)),
+        }),
+      ).annotate({ identifier: "CustomOutputSpec" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          resourceSelector: S.optional(__S(1033, __c32, 9)),
+          customOutput: S.optional(__S(1036, __c32, 12)),
+          severity: S.optional(S.String),
+          predicate: S.optional(__S(1024, __c32, 0)),
+          recommendation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomConfig" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          id: S.optional(S.String),
+          moduleEnablementState: S.optional(S.String),
+          config: S.optional(__S(1037, __c32, 13)),
+        }),
+      ).annotate({
+        identifier: "SecurityHealthAnalyticsCustomModule",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          moduleName: S.optional(S.String),
+          moduleEnablementState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SecurityHealthAnalyticsModule",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          orgPolicyConstraint: S.optional(__S(1029, __c32, 5)),
+          orgPolicyConstraintCustom: S.optional(__S(1032, __c32, 8)),
+          securityHealthAnalyticsCustomModule: S.optional(__S(1038, __c32, 14)),
+          securityHealthAnalyticsModule: S.optional(__S(1039, __c32, 15)),
+        }),
+      ).annotate({ identifier: "Constraint" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          control: S.optional(S.String),
+          standard: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComplianceStandard" });
+    case 18:
+      return S.Array(__S(1041, __c32, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          constraint: S.optional(__S(1040, __c32, 16)),
+          policyId: S.optional(S.String),
+          description: S.optional(S.String),
+          complianceStandards: S.optional(__S(1042, __c32, 18)),
+        }),
+      ).annotate({ identifier: "Policy" });
+    case 20:
+      return S.Array(__S(1043, __c32, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          policySetId: S.optional(S.String),
+          description: S.optional(S.String),
+          policies: S.optional(__S(1044, __c32, 20)),
+        }),
+      ).annotate({ identifier: "PolicySet" });
+    case 22:
+      return S.Array(__S(1045, __c32, 21));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reconciling: S.optional(S.Boolean),
+          updateTime: S.optional(S.String),
+          categories: S.optional(__S(928, __c29, 0)),
+          state: S.optional(S.String),
+          revisionId: S.optional(S.String),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          annotations: S.optional(__S(896, __c28, 0)),
+          etag: S.optional(S.String),
+          description: S.optional(S.String),
+          policySets: S.optional(__S(1046, __c32, 22)),
+        }),
+      ).annotate({ identifier: "Posture" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://securityposture.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsLocationsOperationsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://securityposture.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsLocationsPostureDeploymentsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

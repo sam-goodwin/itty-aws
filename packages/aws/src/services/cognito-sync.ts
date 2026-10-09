@@ -478,8 +478,8 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteDatasetRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteDatasetResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<DeleteDatasetRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<DeleteDatasetResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -513,8 +513,8 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DescribeDatasetRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DescribeDatasetResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DescribeDatasetRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<DescribeDatasetResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -586,8 +586,8 @@ export const describeIdentityPoolUsage: API.OperationMethod<
   DescribeIdentityPoolUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DescribeIdentityPoolUsageRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DescribeIdentityPoolUsageResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<DescribeIdentityPoolUsageRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<DescribeIdentityPoolUsageResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -661,8 +661,8 @@ export const describeIdentityUsage: API.OperationMethod<
   DescribeIdentityUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DescribeIdentityUsageRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DescribeIdentityUsageResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<DescribeIdentityUsageRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<DescribeIdentityUsageResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -692,8 +692,8 @@ export const getBulkPublishDetails: API.OperationMethod<
   GetBulkPublishDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetBulkPublishDetailsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetBulkPublishDetailsResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<GetBulkPublishDetailsRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<GetBulkPublishDetailsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -723,8 +723,8 @@ export const getCognitoEvents: API.OperationMethod<
   GetCognitoEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetCognitoEventsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetCognitoEventsResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetCognitoEventsRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<GetCognitoEventsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -795,8 +795,8 @@ export const getIdentityPoolConfiguration: API.OperationMethod<
   GetIdentityPoolConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetIdentityPoolConfigurationRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetIdentityPoolConfigurationResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<GetIdentityPoolConfigurationRequest>,
+  output: __S(54, __c13, 2) as any as S.Schema<GetIdentityPoolConfigurationResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -878,8 +878,8 @@ export const listDatasets: API.OperationMethod<
   ListDatasetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListDatasetsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListDatasetsResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<ListDatasetsRequest>,
+  output: __S(58, __c14, 2) as any as S.Schema<ListDatasetsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -960,8 +960,8 @@ export const listIdentityPoolUsage: API.OperationMethod<
   ListIdentityPoolUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListIdentityPoolUsageRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListIdentityPoolUsageResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<ListIdentityPoolUsageRequest>,
+  output: __S(62, __c15, 2) as any as S.Schema<ListIdentityPoolUsageResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1039,8 +1039,8 @@ export const listRecords: API.OperationMethod<
   ListRecordsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListRecordsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListRecordsResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<ListRecordsRequest>,
+  output: __S(65, __c16, 1) as any as S.Schema<ListRecordsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1110,8 +1110,8 @@ export const registerDevice: API.OperationMethod<
   RegisterDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<RegisterDeviceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<RegisterDeviceResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<RegisterDeviceRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<RegisterDeviceResponse>,
   errors: [
     InternalErrorException,
     InvalidConfigurationException,
@@ -1143,8 +1143,8 @@ export const setCognitoEvents: API.OperationMethod<
   SetCognitoEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<SetCognitoEventsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<SetCognitoEventsResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<SetCognitoEventsRequest>,
+  output: __S(77, __c19, 1) as any as S.Schema<SetCognitoEventsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1221,8 +1221,8 @@ export const setIdentityPoolConfiguration: API.OperationMethod<
   SetIdentityPoolConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<SetIdentityPoolConfigurationRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<SetIdentityPoolConfigurationResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<SetIdentityPoolConfigurationRequest>,
+  output: __S(54, __c13, 2) as any as S.Schema<SetIdentityPoolConfigurationResponse>,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -1293,8 +1293,8 @@ export const subscribeToDataset: API.OperationMethod<
   SubscribeToDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<SubscribeToDatasetRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<SubscribeToDatasetResponse>,
+  input: __S(84, __c21, 0) as any as S.Schema<SubscribeToDatasetRequest>,
+  output: __S(88, __c22, 0) as any as S.Schema<SubscribeToDatasetResponse>,
   errors: [
     InternalErrorException,
     InvalidConfigurationException,
@@ -1366,8 +1366,8 @@ export const unsubscribeFromDataset: API.OperationMethod<
   UnsubscribeFromDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<UnsubscribeFromDatasetRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<UnsubscribeFromDatasetResponse>,
+  input: __S(92, __c23, 0) as any as S.Schema<UnsubscribeFromDatasetRequest>,
+  output: __S(88, __c22, 0) as any as S.Schema<UnsubscribeFromDatasetResponse>,
   errors: [
     InternalErrorException,
     InvalidConfigurationException,
@@ -1407,8 +1407,8 @@ export const updateRecords: API.OperationMethod<
   UpdateRecordsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UpdateRecordsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<UpdateRecordsResponse>,
+  input: __S(98, __c24, 2) as any as S.Schema<UpdateRecordsRequest>,
+  output: __S(99, __c24, 3) as any as S.Schema<UpdateRecordsResponse>,
   errors: [
     InternalErrorException,
     InvalidLambdaFunctionOutputException,
@@ -1446,7 +1446,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({ IdentityPoolId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "BulkPublishResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
@@ -1467,7 +1471,19 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteDatasetRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Dataset: S.optional(__S(12, __c3, 0)) }).pipe(ns)).annotate(
+        { identifier: "DeleteDatasetResponse" },
+      );
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IdentityId: S.optional(S.String),
@@ -1479,11 +1495,11 @@ function __c0(j: number): any {
           NumRecords: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Dataset" });
-    case 4:
-      return S.suspend(() => S.Struct({ Dataset: S.optional(__S(3, __c0, 3)) }).pipe(ns)).annotate({
-        identifier: "DeleteDatasetResponse",
-      });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
@@ -1504,7 +1520,11 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeDatasetRequest" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")) }).pipe(
           T.all(
@@ -1520,7 +1540,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DescribeIdentityPoolUsageRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ IdentityPoolUsage: S.optional(__S(24, __c6, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeIdentityPoolUsageResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.optional(S.String),
@@ -1531,15 +1561,9 @@ function __c0(j: number): any {
       ).annotate({ identifier: "IdentityPoolUsage" });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ IdentityPoolUsage: S.optional(__S(7, __c0, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeIdentityPoolUsageResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
@@ -1561,7 +1585,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DescribeIdentityUsageRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           IdentityId: S.optional(S.String),
@@ -1571,13 +1595,17 @@ function __c1(j: number): any {
           DataStorage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IdentityUsage" });
-    case 3:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ IdentityUsage: S.optional(__S(10, __c1, 2)) }).pipe(ns),
+        S.Struct({ IdentityUsage: S.optional(__S(29, __c7, 1)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeIdentityUsageResponse",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")) }).pipe(
           T.all(
@@ -1596,7 +1624,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetBulkPublishDetailsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.optional(S.String),
@@ -1608,7 +1636,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetBulkPublishDetailsResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")) }).pipe(
           T.all(
@@ -1622,17 +1654,21 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetCognitoEventsRequest" });
-    case 7:
+    case 1:
+      return S.suspend(() => S.Struct({ Events: S.optional(__S(40, __c10, 0)) }).pipe(ns)).annotate(
+        { identifier: "GetCognitoEventsResponse" },
+      );
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c2(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Events: S.optional(__S(15, __c1, 7)) }).pipe(ns)).annotate({
-        identifier: "GetCognitoEventsResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({ IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")) }).pipe(
           T.all(
@@ -1648,16 +1684,21 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetIdentityPoolConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          ApplicationArns: S.optional(__S(18, __c2, 2)),
-          RoleArn: S.optional(S.String),
-        }),
+        S.Struct({ ApplicationArns: S.optional(__S(48, __c12, 0)), RoleArn: S.optional(S.String) }),
       ).annotate({ identifier: "PushSync" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           StreamName: S.optional(S.String),
@@ -1665,17 +1706,21 @@ function __c2(j: number): any {
           StreamingStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "CognitoStreams" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.optional(S.String),
-          PushSync: S.optional(__S(19, __c2, 3)),
-          CognitoStreams: S.optional(__S(20, __c2, 4)),
+          PushSync: S.optional(__S(52, __c13, 0)),
+          CognitoStreams: S.optional(__S(53, __c13, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetIdentityPoolConfigurationResponse",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
@@ -1697,21 +1742,21 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListDatasetsRequest" });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(12, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Datasets: S.optional(__S(23, __c2, 7)),
+          Datasets: S.optional(__S(57, __c14, 1)),
           Count: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListDatasetsResponse" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1722,12 +1767,12 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListIdentityPoolUsageRequest",
       });
+    case 1:
+      return S.Array(__S(24, __c6, 0));
     case 2:
-      return S.Array(__S(7, __c0, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          IdentityPoolUsages: S.optional(__S(26, __c3, 2)),
+          IdentityPoolUsages: S.optional(__S(61, __c15, 1)),
           MaxResults: S.optional(S.Number),
           Count: S.optional(S.Number),
           NextToken: S.optional(S.String),
@@ -1735,7 +1780,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListIdentityPoolUsageResponse",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
@@ -1760,7 +1809,25 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListRecordsRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Records: S.optional(__S(69, __c17, 1)),
+          NextToken: S.optional(S.String),
+          Count: S.optional(S.Number),
+          DatasetSyncCount: S.optional(S.Number),
+          LastModifiedBy: S.optional(S.String),
+          MergedDatasetNames: S.optional(__S(48, __c12, 0)),
+          DatasetExists: S.optional(S.Boolean),
+          DatasetDeletedAfterRequestedSyncCount: S.optional(S.Boolean),
+          SyncSessionToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListRecordsResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
@@ -1771,25 +1838,11 @@ function __c3(j: number): any {
           DeviceLastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Record" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Records: S.optional(__S(30, __c3, 6)),
-          NextToken: S.optional(S.String),
-          Count: S.optional(S.Number),
-          DatasetSyncCount: S.optional(S.Number),
-          LastModifiedBy: S.optional(S.String),
-          MergedDatasetNames: S.optional(__S(18, __c2, 2)),
-          DatasetExists: S.optional(S.Boolean),
-          DatasetDeletedAfterRequestedSyncCount: S.optional(S.Boolean),
-          SyncSessionToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "ListRecordsResponse" });
+    case 1:
+      return S.Array(__S(68, __c17, 0));
   }
 }
-function __c4(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1817,11 +1870,15 @@ function __c4(j: number): any {
       return S.suspend(() => S.Struct({ DeviceId: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "RegisterDeviceResponse",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
-          Events: __S(15, __c1, 7),
+          Events: __S(40, __c10, 0),
         }).pipe(
           T.all(
             ns,
@@ -1834,16 +1891,20 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SetCognitoEventsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetCognitoEventsResponse",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
-          PushSync: S.optional(__S(19, __c2, 3)),
-          CognitoStreams: S.optional(__S(20, __c2, 4)),
+          PushSync: S.optional(__S(52, __c13, 0)),
+          CognitoStreams: S.optional(__S(53, __c13, 1)),
         }).pipe(
           T.all(
             ns,
@@ -1858,7 +1919,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "SetIdentityPoolConfigurationRequest",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
@@ -1882,11 +1947,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "SubscribeToDatasetRequest",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SubscribeToDatasetResponse",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
@@ -1912,7 +1985,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1925,7 +1998,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "RecordPatch" });
     case 1:
-      return S.Array(__S(40, __c5, 0));
+      return S.Array(__S(96, __c24, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1933,7 +2006,7 @@ function __c5(j: number): any {
           IdentityId: S.String.pipe(T.HttpLabel("IdentityId")),
           DatasetName: S.String.pipe(T.HttpLabel("DatasetName")),
           DeviceId: S.optional(S.String),
-          RecordPatches: S.optional(__S(41, __c5, 1)),
+          RecordPatches: S.optional(__S(97, __c24, 1)),
           SyncSessionToken: S.String,
           ClientContext: S.optional(S.String).pipe(T.HttpHeader("x-amz-Client-Context")),
         }).pipe(
@@ -1952,14 +2025,11 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "UpdateRecordsRequest" });
     case 3:
-      return S.suspend(() => S.Struct({ Records: S.optional(__S(30, __c3, 6)) }).pipe(ns)).annotate(
-        {
-          identifier: "UpdateRecordsResponse",
-        },
-      );
+      return S.suspend(() =>
+        S.Struct({ Records: S.optional(__S(69, __c17, 1)) }).pipe(ns),
+      ).annotate({ identifier: "UpdateRecordsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

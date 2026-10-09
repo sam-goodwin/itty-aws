@@ -1299,8 +1299,8 @@ export const addAclEntryProjectsLocationsClustersAcls: API.OperationMethod<
   AddAclEntryProjectsLocationsClustersAclsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddAclEntryProjectsLocationsClustersAclsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AddAclEntryResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<AddAclEntryProjectsLocationsClustersAclsRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<AddAclEntryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1319,8 +1319,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Empty>,
+  input: __S(1456, __c91, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1341,11 +1341,11 @@ export const checkCompatibilityProjectsLocationsSchemaRegistriesCompatibility: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    10,
-    __c1,
-    2,
+    1648,
+    __c103,
+    0,
   ) as any as S.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CheckCompatibilityResponse>,
+  output: __S(1665, __c104, 1) as any as S.Schema<CheckCompatibilityResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -1373,11 +1373,11 @@ export const checkCompatibilityProjectsLocationsSchemaRegistriesContextsCompatib
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    13,
-    __c1,
-    5,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CheckCompatibilityResponse>,
+  output: __S(1665, __c104, 1) as any as S.Schema<CheckCompatibilityResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -1403,8 +1403,8 @@ export const createProjectsLocationsClusters: API.OperationMethod<
   CreateProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateProjectsLocationsClustersRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(16, __c1, 0) as any as S.Schema<CreateProjectsLocationsClustersRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1424,8 +1424,8 @@ export const createProjectsLocationsClustersAcls: API.OperationMethod<
   CreateProjectsLocationsClustersAclsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateProjectsLocationsClustersAclsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Acl>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateProjectsLocationsClustersAclsRequest>,
+  output: __S(1266, __c79, 2) as any as S.Schema<Acl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1444,8 +1444,8 @@ export const createProjectsLocationsClustersTopics: API.OperationMethod<
   CreateProjectsLocationsClustersTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateProjectsLocationsClustersTopicsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<Topic>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateProjectsLocationsClustersTopicsRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1464,8 +1464,8 @@ export const createProjectsLocationsConnectClusters: API.OperationMethod<
   CreateProjectsLocationsConnectClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateProjectsLocationsConnectClustersRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateProjectsLocationsConnectClustersRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1485,11 +1485,11 @@ export const createProjectsLocationsConnectClustersConnectors: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    224,
+    __c14,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsConnectClustersConnectorsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Connector>,
+  output: __S(241, __c15, 1) as any as S.Schema<Connector>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1509,8 +1509,8 @@ export const createProjectsLocationsSchemaRegistries: API.OperationMethod<
   CreateProjectsLocationsSchemaRegistriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateProjectsLocationsSchemaRegistriesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<SchemaRegistry>,
+  input: __S(257, __c16, 1) as any as S.Schema<CreateProjectsLocationsSchemaRegistriesRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<SchemaRegistry>,
   errors: [
     NotFound,
     Forbidden,
@@ -1538,11 +1538,11 @@ export const createProjectsLocationsSchemaRegistriesContextsSubjectsVersions: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    54,
-    __c6,
-    6,
+    288,
+    __c18,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CreateVersionResponse>,
+  output: __S(305, __c19, 1) as any as S.Schema<CreateVersionResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -1570,11 +1570,11 @@ export const createProjectsLocationsSchemaRegistriesSubjectsVersions: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    56,
-    __c7,
+    320,
+    __c20,
     0,
   ) as any as S.Schema<CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CreateVersionResponse>,
+  output: __S(305, __c19, 1) as any as S.Schema<CreateVersionResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -1600,8 +1600,8 @@ export const deleteProjectsLocationsClusters: API.OperationMethod<
   DeleteProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteProjectsLocationsClustersRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteProjectsLocationsClustersRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1621,8 +1621,8 @@ export const deleteProjectsLocationsClustersAcls: API.OperationMethod<
   DeleteProjectsLocationsClustersAclsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteProjectsLocationsClustersAclsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Empty>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteProjectsLocationsClustersAclsRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1641,8 +1641,12 @@ export const deleteProjectsLocationsClustersConsumerGroups: API.OperationMethod<
   DeleteProjectsLocationsClustersConsumerGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteProjectsLocationsClustersConsumerGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Empty>,
+  input: __S(
+    368,
+    __c23,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsClustersConsumerGroupsRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1661,8 +1665,8 @@ export const deleteProjectsLocationsClustersTopics: API.OperationMethod<
   DeleteProjectsLocationsClustersTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteProjectsLocationsClustersTopicsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Empty>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteProjectsLocationsClustersTopicsRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1681,8 +1685,8 @@ export const deleteProjectsLocationsConnectClusters: API.OperationMethod<
   DeleteProjectsLocationsConnectClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteProjectsLocationsConnectClustersRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteProjectsLocationsConnectClustersRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1702,11 +1706,11 @@ export const deleteProjectsLocationsConnectClustersConnectors: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    62,
-    __c7,
-    6,
+    416,
+    __c26,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsConnectClustersConnectorsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Empty>,
+  output: __S(1472, __c92, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1725,8 +1729,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Empty>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1746,8 +1750,8 @@ export const deleteProjectsLocationsSchemaRegistries: API.OperationMethod<
   DeleteProjectsLocationsSchemaRegistriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Empty>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<Empty>,
   errors: [
     NotFound,
     Forbidden,
@@ -1774,8 +1778,12 @@ export const deleteProjectsLocationsSchemaRegistriesConfig: API.OperationMethod<
   DeleteProjectsLocationsSchemaRegistriesConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesConfigRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<SchemaConfig>,
+  input: __S(
+    464,
+    __c29,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesConfigRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<SchemaConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -1803,11 +1811,11 @@ export const deleteProjectsLocationsSchemaRegistriesContextsConfig: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
-    __c8,
-    3,
+    496,
+    __c31,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<SchemaConfig>,
+  output: __S(480, __c30, 0) as any as S.Schema<SchemaConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -1835,11 +1843,11 @@ export const deleteProjectsLocationsSchemaRegistriesContextsMode: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    68,
-    __c8,
-    4,
+    512,
+    __c32,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsModeRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<SchemaMode>,
+  output: __S(112, __c7, 0) as any as S.Schema<SchemaMode>,
   errors: [
     NotFound,
     Forbidden,
@@ -1868,11 +1876,11 @@ export const deleteProjectsLocationsSchemaRegistriesContextsSubjects: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    69,
-    __c8,
-    5,
+    528,
+    __c33,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [
     NotFound,
     Forbidden,
@@ -1902,11 +1910,11 @@ export const deleteProjectsLocationsSchemaRegistriesContextsSubjectsVersions: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    71,
-    __c8,
-    7,
+    560,
+    __c35,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [
     NotFound,
     Forbidden,
@@ -1934,8 +1942,8 @@ export const deleteProjectsLocationsSchemaRegistriesMode: API.OperationMethod<
   DeleteProjectsLocationsSchemaRegistriesModeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesModeRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<SchemaMode>,
+  input: __S(576, __c36, 0) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesModeRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<SchemaMode>,
   errors: [
     NotFound,
     Forbidden,
@@ -1964,11 +1972,11 @@ export const deleteProjectsLocationsSchemaRegistriesSubjects: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    73,
-    __c9,
-    1,
+    592,
+    __c37,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesSubjectsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [
     NotFound,
     Forbidden,
@@ -1998,11 +2006,11 @@ export const deleteProjectsLocationsSchemaRegistriesSubjectsVersions: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    74,
-    __c9,
-    2,
+    608,
+    __c38,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [
     NotFound,
     Forbidden,
@@ -2024,8 +2032,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<Location>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2039,8 +2047,8 @@ export const getProjectsLocationsClusters: API.OperationMethod<
   GetProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetProjectsLocationsClustersRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<Cluster>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetProjectsLocationsClustersRequest>,
+  output: __S(143, __c8, 15) as any as S.Schema<Cluster>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2058,8 +2066,8 @@ export const getProjectsLocationsClustersAcls: API.OperationMethod<
   GetProjectsLocationsClustersAclsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetProjectsLocationsClustersAclsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Acl>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetProjectsLocationsClustersAclsRequest>,
+  output: __S(1266, __c79, 2) as any as S.Schema<Acl>,
   errors: [NotFound, Forbidden, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2073,8 +2081,8 @@ export const getProjectsLocationsClustersConsumerGroups: API.OperationMethod<
   GetProjectsLocationsClustersConsumerGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetProjectsLocationsClustersConsumerGroupsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ConsumerGroup>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetProjectsLocationsClustersConsumerGroupsRequest>,
+  output: __S(708, __c44, 4) as any as S.Schema<ConsumerGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2088,8 +2096,8 @@ export const getProjectsLocationsClustersTopics: API.OperationMethod<
   GetProjectsLocationsClustersTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetProjectsLocationsClustersTopicsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<Topic>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetProjectsLocationsClustersTopicsRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2103,8 +2111,8 @@ export const getProjectsLocationsConnectClusters: API.OperationMethod<
   GetProjectsLocationsConnectClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetProjectsLocationsConnectClustersRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ConnectCluster>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetProjectsLocationsConnectClustersRequest>,
+  output: __S(212, __c13, 4) as any as S.Schema<ConnectCluster>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2118,8 +2126,12 @@ export const getProjectsLocationsConnectClustersConnectors: API.OperationMethod<
   GetProjectsLocationsConnectClustersConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetProjectsLocationsConnectClustersConnectorsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Connector>,
+  input: __S(
+    752,
+    __c47,
+    0,
+  ) as any as S.Schema<GetProjectsLocationsConnectClustersConnectorsRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<Connector>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2133,8 +2145,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2152,8 +2164,8 @@ export const getProjectsLocationsSchemaRegistries: API.OperationMethod<
   GetProjectsLocationsSchemaRegistriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetProjectsLocationsSchemaRegistriesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<SchemaRegistry>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetProjectsLocationsSchemaRegistriesRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<SchemaRegistry>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2171,8 +2183,8 @@ export const getProjectsLocationsSchemaRegistriesConfig: API.OperationMethod<
   GetProjectsLocationsSchemaRegistriesConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetProjectsLocationsSchemaRegistriesConfigRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<SchemaConfig>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetProjectsLocationsSchemaRegistriesConfigRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<SchemaConfig>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2190,8 +2202,8 @@ export const getProjectsLocationsSchemaRegistriesContexts: API.OperationMethod<
   GetProjectsLocationsSchemaRegistriesContextsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<Context>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<Context>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2210,11 +2222,11 @@ export const getProjectsLocationsSchemaRegistriesContextsConfig: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    93,
-    __c11,
-    5,
+    832,
+    __c52,
+    0,
   ) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsConfigRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<SchemaConfig>,
+  output: __S(480, __c30, 0) as any as S.Schema<SchemaConfig>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2233,11 +2245,11 @@ export const getProjectsLocationsSchemaRegistriesContextsMode: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    94,
-    __c11,
-    6,
+    848,
+    __c53,
+    0,
   ) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsModeRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<SchemaMode>,
+  output: __S(112, __c7, 0) as any as S.Schema<SchemaMode>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2256,11 +2268,11 @@ export const getProjectsLocationsSchemaRegistriesContextsSchemas: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    95,
-    __c11,
-    7,
+    864,
+    __c54,
+    0,
   ) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsSchemasRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<Managedkafka_Schema>,
+  output: __S(880, __c55, 0) as any as S.Schema<Managedkafka_Schema>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2280,11 +2292,11 @@ export const getProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    97,
-    __c12,
-    1,
+    896,
+    __c56,
+    0,
   ) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<SchemaVersion>,
+  output: __S(912, __c57, 0) as any as S.Schema<SchemaVersion>,
   errors: [
     NotFound,
     Forbidden,
@@ -2308,8 +2320,8 @@ export const getProjectsLocationsSchemaRegistriesMode: API.OperationMethod<
   GetProjectsLocationsSchemaRegistriesModeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetProjectsLocationsSchemaRegistriesModeRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<SchemaMode>,
+  input: __S(928, __c58, 0) as any as S.Schema<GetProjectsLocationsSchemaRegistriesModeRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<SchemaMode>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2327,8 +2339,8 @@ export const getProjectsLocationsSchemaRegistriesSchemas: API.OperationMethod<
   GetProjectsLocationsSchemaRegistriesSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetProjectsLocationsSchemaRegistriesSchemasRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<Managedkafka_Schema>,
+  input: __S(944, __c59, 0) as any as S.Schema<GetProjectsLocationsSchemaRegistriesSchemasRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<Managedkafka_Schema>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2348,11 +2360,11 @@ export const getProjectsLocationsSchemaRegistriesSubjectsVersions: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    101,
-    __c12,
-    5,
+    960,
+    __c60,
+    0,
   ) as any as S.Schema<GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<SchemaVersion>,
+  output: __S(912, __c57, 0) as any as S.Schema<SchemaVersion>,
   errors: [
     NotFound,
     Forbidden,
@@ -2377,11 +2389,11 @@ export const getSchemaProjectsLocationsSchemaRegistriesContextsSchemas: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    102,
-    __c12,
-    6,
+    976,
+    __c61,
+    0,
   ) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2400,11 +2412,11 @@ export const getSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersions:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    103,
-    __c12,
-    7,
+    992,
+    __c62,
+    0,
   ) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2423,11 +2435,11 @@ export const getSchemaProjectsLocationsSchemaRegistriesSchemas: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    104,
-    __c13,
+    1008,
+    __c63,
     0,
   ) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2446,11 +2458,11 @@ export const getSchemaProjectsLocationsSchemaRegistriesSubjectsVersions: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    105,
-    __c13,
-    1,
+    1024,
+    __c64,
+    0,
   ) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2465,8 +2477,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListLocationsResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(1042, __c65, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2482,8 +2494,8 @@ export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
   GcpOpContext,
   ListClustersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListProjectsLocationsClustersRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<ListClustersResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListProjectsLocationsClustersRequest>,
+  output: __S(1058, __c66, 2) as any as S.Schema<ListClustersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2503,8 +2515,8 @@ export const listProjectsLocationsClustersAcls: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAclsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListProjectsLocationsClustersAclsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ListAclsResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListProjectsLocationsClustersAclsRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<ListAclsResponse>,
   errors: [NotFound, Forbidden, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2520,8 +2532,8 @@ export const listProjectsLocationsClustersConsumerGroups: API.PaginatedOperation
   GcpOpContext,
   ListConsumerGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListProjectsLocationsClustersConsumerGroupsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<ListConsumerGroupsResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListProjectsLocationsClustersConsumerGroupsRequest>,
+  output: __S(1090, __c68, 2) as any as S.Schema<ListConsumerGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2537,8 +2549,8 @@ export const listProjectsLocationsClustersTopics: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTopicsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListProjectsLocationsClustersTopicsRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<ListTopicsResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<ListProjectsLocationsClustersTopicsRequest>,
+  output: __S(1106, __c69, 2) as any as S.Schema<ListTopicsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2554,8 +2566,8 @@ export const listProjectsLocationsConnectClusters: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConnectClustersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ListProjectsLocationsConnectClustersRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<ListConnectClustersResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ListProjectsLocationsConnectClustersRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<ListConnectClustersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2572,11 +2584,11 @@ export const listProjectsLocationsConnectClustersConnectors: API.PaginatedOperat
   ListConnectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    124,
-    __c15,
-    4,
+    1136,
+    __c71,
+    0,
   ) as any as S.Schema<ListProjectsLocationsConnectClustersConnectorsRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<ListConnectorsResponse>,
+  output: __S(1138, __c71, 2) as any as S.Schema<ListConnectorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2592,8 +2604,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<ListOperationsResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(1154, __c72, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2612,8 +2624,8 @@ export const listProjectsLocationsSchemaRegistries: API.OperationMethod<
   ListProjectsLocationsSchemaRegistriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListProjectsLocationsSchemaRegistriesRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<ListSchemaRegistriesResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ListProjectsLocationsSchemaRegistriesRequest>,
+  output: __S(1170, __c73, 2) as any as S.Schema<ListSchemaRegistriesResponse>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2632,11 +2644,11 @@ export const listProjectsLocationsSchemaRegistriesContexts: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    133,
-    __c16,
-    5,
+    1184,
+    __c74,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2655,11 +2667,11 @@ export const listProjectsLocationsSchemaRegistriesContextsSchemasSubjects: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    134,
-    __c16,
-    6,
+    1200,
+    __c75,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2678,11 +2690,11 @@ export const listProjectsLocationsSchemaRegistriesContextsSchemasTypes: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    135,
-    __c16,
-    7,
+    1216,
+    __c76,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2701,11 +2713,11 @@ export const listProjectsLocationsSchemaRegistriesContextsSchemasVersions: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    136,
-    __c17,
+    1232,
+    __c77,
     0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2724,11 +2736,11 @@ export const listProjectsLocationsSchemaRegistriesContextsSubjects: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    137,
-    __c17,
-    1,
+    1280,
+    __c80,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2747,11 +2759,11 @@ export const listProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    138,
-    __c17,
-    2,
+    1296,
+    __c81,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2770,11 +2782,11 @@ export const listProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRefere
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    139,
-    __c17,
-    3,
+    1312,
+    __c82,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2793,11 +2805,11 @@ export const listProjectsLocationsSchemaRegistriesSchemasSubjects: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    140,
-    __c17,
-    4,
+    1328,
+    __c83,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2816,11 +2828,11 @@ export const listProjectsLocationsSchemaRegistriesSchemasTypes: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    141,
-    __c17,
-    5,
+    1344,
+    __c84,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSchemasTypesRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2839,11 +2851,11 @@ export const listProjectsLocationsSchemaRegistriesSchemasVersions: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    142,
-    __c17,
-    6,
+    1360,
+    __c85,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2862,11 +2874,11 @@ export const listProjectsLocationsSchemaRegistriesSubjects: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    143,
-    __c17,
-    7,
+    1376,
+    __c86,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSubjectsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2885,11 +2897,11 @@ export const listProjectsLocationsSchemaRegistriesSubjectsVersions: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    144,
-    __c18,
+    1392,
+    __c87,
     0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2908,11 +2920,11 @@ export const listProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedby: 
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    145,
-    __c18,
-    1,
+    1408,
+    __c88,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<HttpBody>,
+  output: __S(544, __c34, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2933,11 +2945,11 @@ export const lookupVersionProjectsLocationsSchemaRegistriesContextsSubjects: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    147,
-    __c18,
-    3,
+    1424,
+    __c89,
+    0,
   ) as any as S.Schema<LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<SchemaVersion>,
+  output: __S(912, __c57, 0) as any as S.Schema<SchemaVersion>,
   errors: [
     NotFound,
     Forbidden,
@@ -2965,11 +2977,11 @@ export const lookupVersionProjectsLocationsSchemaRegistriesSubjects: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    148,
-    __c18,
-    4,
+    1488,
+    __c93,
+    0,
   ) as any as S.Schema<LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<SchemaVersion>,
+  output: __S(912, __c57, 0) as any as S.Schema<SchemaVersion>,
   errors: [
     NotFound,
     Forbidden,
@@ -2995,8 +3007,8 @@ export const patchProjectsLocationsClusters: API.OperationMethod<
   PatchProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<PatchProjectsLocationsClustersRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(1504, __c94, 0) as any as S.Schema<PatchProjectsLocationsClustersRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3016,8 +3028,8 @@ export const patchProjectsLocationsClustersAcls: API.OperationMethod<
   PatchProjectsLocationsClustersAclsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<PatchProjectsLocationsClustersAclsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Acl>,
+  input: __S(1520, __c95, 0) as any as S.Schema<PatchProjectsLocationsClustersAclsRequest>,
+  output: __S(1266, __c79, 2) as any as S.Schema<Acl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3036,8 +3048,12 @@ export const patchProjectsLocationsClustersConsumerGroups: API.OperationMethod<
   PatchProjectsLocationsClustersConsumerGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<PatchProjectsLocationsClustersConsumerGroupsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ConsumerGroup>,
+  input: __S(
+    1536,
+    __c96,
+    0,
+  ) as any as S.Schema<PatchProjectsLocationsClustersConsumerGroupsRequest>,
+  output: __S(708, __c44, 4) as any as S.Schema<ConsumerGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3056,8 +3072,8 @@ export const patchProjectsLocationsClustersTopics: API.OperationMethod<
   PatchProjectsLocationsClustersTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<PatchProjectsLocationsClustersTopicsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<Topic>,
+  input: __S(1552, __c97, 0) as any as S.Schema<PatchProjectsLocationsClustersTopicsRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3076,8 +3092,8 @@ export const patchProjectsLocationsConnectClusters: API.OperationMethod<
   PatchProjectsLocationsConnectClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<PatchProjectsLocationsConnectClustersRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Operation>,
+  input: __S(1568, __c98, 0) as any as S.Schema<PatchProjectsLocationsConnectClustersRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3097,11 +3113,11 @@ export const patchProjectsLocationsConnectClustersConnectors: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    154,
-    __c19,
-    2,
+    1584,
+    __c99,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsConnectClustersConnectorsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Connector>,
+  output: __S(241, __c15, 1) as any as S.Schema<Connector>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3121,11 +3137,11 @@ export const pauseProjectsLocationsConnectClustersConnectors: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    155,
-    __c19,
-    3,
+    1600,
+    __c100,
+    0,
   ) as any as S.Schema<PauseProjectsLocationsConnectClustersConnectorsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PauseConnectorResponse>,
+  output: __S(1472, __c92, 0) as any as S.Schema<PauseConnectorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3145,8 +3161,12 @@ export const removeAclEntryProjectsLocationsClustersAcls: API.OperationMethod<
   RemoveAclEntryProjectsLocationsClustersAclsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<RemoveAclEntryProjectsLocationsClustersAclsRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<RemoveAclEntryResponse>,
+  input: __S(
+    1616,
+    __c101,
+    0,
+  ) as any as S.Schema<RemoveAclEntryProjectsLocationsClustersAclsRequest>,
+  output: __S(1617, __c101, 1) as any as S.Schema<RemoveAclEntryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3166,11 +3186,11 @@ export const restartProjectsLocationsConnectClustersConnectors: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    158,
-    __c19,
-    6,
+    1632,
+    __c102,
+    0,
   ) as any as S.Schema<RestartProjectsLocationsConnectClustersConnectorsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<RestartConnectorResponse>,
+  output: __S(1472, __c92, 0) as any as S.Schema<RestartConnectorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3190,11 +3210,11 @@ export const resumeProjectsLocationsConnectClustersConnectors: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    159,
-    __c19,
-    7,
+    1712,
+    __c107,
+    0,
   ) as any as S.Schema<ResumeProjectsLocationsConnectClustersConnectorsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ResumeConnectorResponse>,
+  output: __S(1472, __c92, 0) as any as S.Schema<ResumeConnectorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3214,11 +3234,11 @@ export const stopProjectsLocationsConnectClustersConnectors: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    160,
-    __c20,
+    1728,
+    __c108,
     0,
   ) as any as S.Schema<StopProjectsLocationsConnectClustersConnectorsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<StopConnectorResponse>,
+  output: __S(1472, __c92, 0) as any as S.Schema<StopConnectorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3239,11 +3259,11 @@ export const updateProjectsLocationsSchemaRegistriesConfig: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    162,
-    __c20,
-    2,
+    1744,
+    __c109,
+    0,
   ) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesConfigRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<SchemaConfig>,
+  output: __S(480, __c30, 0) as any as S.Schema<SchemaConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -3271,11 +3291,11 @@ export const updateProjectsLocationsSchemaRegistriesContextsConfig: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    163,
-    __c20,
-    3,
+    1776,
+    __c111,
+    0,
   ) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesContextsConfigRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<SchemaConfig>,
+  output: __S(480, __c30, 0) as any as S.Schema<SchemaConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -3303,11 +3323,11 @@ export const updateProjectsLocationsSchemaRegistriesContextsMode: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    164,
-    __c20,
-    4,
+    1792,
+    __c112,
+    0,
   ) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesContextsModeRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<SchemaMode>,
+  output: __S(112, __c7, 0) as any as S.Schema<SchemaMode>,
   errors: [
     NotFound,
     Forbidden,
@@ -3334,8 +3354,12 @@ export const updateProjectsLocationsSchemaRegistriesMode: API.OperationMethod<
   UpdateProjectsLocationsSchemaRegistriesModeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesModeRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<SchemaMode>,
+  input: __S(
+    1808,
+    __c113,
+    0,
+  ) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesModeRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<SchemaMode>,
   errors: [
     NotFound,
     Forbidden,
@@ -3354,122 +3378,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          host: S.optional(S.String),
-          principal: S.optional(S.String),
-          permissionType: S.optional(S.String),
-          operation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AclEntry" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          acl: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+acl}:addAclEntry",
-            baseUrl: "https://managedkafka.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddAclEntryProjectsLocationsClustersAclsRequest",
-      });
-    case 2:
-      return S.Array(__S(0, __c0, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          patternType: S.optional(S.String),
-          aclEntries: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          resourceName: S.optional(S.String),
-          etag: S.optional(S.String),
-          resourceType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Acl" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          aclCreated: S.optional(S.Boolean),
-          acl: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "AddAclEntryResponse" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://managedkafka.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          subject: S.optional(S.String),
-          version: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SchemaReference" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          verbose: S.optional(S.Boolean),
-          schema: S.optional(S.String),
-          schemaType: S.optional(S.String),
-          references: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "CheckCompatibilityRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}",
-            baseUrl: "https://managedkafka.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          is_compatible: S.optional(S.Boolean),
-          messages: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "CheckCompatibilityResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1664, __c104, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3481,150 +3391,17 @@ function __c1(j: number): any {
         identifier:
           "CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RebalanceConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          brokerCount: S.optional(S.String),
-          brokerDiskSizeGib: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EffectiveCapacityConfig" });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          diskSizeGib: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BrokerCapacityConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          memoryBytes: S.optional(S.String),
-          vcpuCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CapacityConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          caPool: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CertificateAuthorityServiceConfig",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          casConfigs: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "TrustConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sslPrincipalMappingRules: S.optional(S.String),
-          trustConfig: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "TlsConfig" });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subnet: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkConfig" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          allowedSourceIpRanges: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "PublicClusterConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          networkConfigs: S.optional(__S(24, __c3, 0)),
-          publicClusterConfig: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "AccessConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKey: S.optional(S.String),
-          accessConfig: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "GcpConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          rack: S.optional(S.String),
-          nodeId: S.optional(S.String),
-          brokerIndex: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BrokerDetails" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allowBrokerDownscaleOnClusterUpscale: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "UpdateOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          discoveryDnsRecords: S.optional(__S(11, __c1, 3)),
-          externalIpAddresses: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "PublicClusterDetails" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          satisfiesPzs: S.optional(S.Boolean),
-          rebalanceConfig: S.optional(__S(14, __c1, 6)),
-          effectiveCapacityConfig: S.optional(__S(15, __c1, 7)),
-          kafkaVersion: S.optional(S.String),
-          brokerCapacityConfig: S.optional(__S(16, __c2, 0)),
-          capacityConfig: S.optional(__S(17, __c2, 1)),
-          bootstrapAddress: S.optional(S.String),
-          state: S.optional(S.String),
-          tlsConfig: S.optional(__S(21, __c2, 5)),
-          labels: S.optional(__S(22, __c2, 6)),
-          gcpConfig: S.optional(__S(27, __c3, 3)),
-          brokerDetails: S.optional(__S(29, __c3, 5)),
-          updateOptions: S.optional(__S(30, __c3, 6)),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          satisfiesPzi: S.optional(S.Boolean),
-          publicClusterDetails: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "Cluster" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           clusterId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(143, __c8, 15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3635,34 +3412,191 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsClustersRequest",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(48, __c3, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(35, __c4, 3)),
+          details: S.optional(__S(64, __c4, 0)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(36, __c4, 4)),
-          response: S.optional(__S(34, __c4, 2)),
+          error: S.optional(__S(80, __c5, 0)),
+          response: S.optional(__S(48, __c3, 0)),
           done: S.optional(S.Boolean),
-          metadata: S.optional(__S(34, __c4, 2)),
+          metadata: S.optional(__S(48, __c3, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          memoryBytes: S.optional(S.String),
+          vcpuCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CapacityConfig" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RebalanceConfig" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          brokerCount: S.optional(S.String),
+          brokerDiskSizeGib: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EffectiveCapacityConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          diskSizeGib: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BrokerCapacityConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          caPool: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CertificateAuthorityServiceConfig",
+      });
+    case 3:
+      return S.Array(__S(130, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          casConfigs: S.optional(__S(131, __c8, 3)),
+        }),
+      ).annotate({ identifier: "TrustConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          sslPrincipalMappingRules: S.optional(S.String),
+          trustConfig: S.optional(__S(132, __c8, 4)),
+        }),
+      ).annotate({ identifier: "TlsConfig" });
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          subnet: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkConfig" });
+    case 7:
+      return S.Array(__S(134, __c8, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          allowedSourceIpRanges: S.optional(__S(1680, __c105, 0)),
+        }),
+      ).annotate({ identifier: "PublicClusterConfig" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          networkConfigs: S.optional(__S(135, __c8, 7)),
+          publicClusterConfig: S.optional(__S(136, __c8, 8)),
+        }),
+      ).annotate({ identifier: "AccessConfig" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKey: S.optional(S.String),
+          accessConfig: S.optional(__S(137, __c8, 9)),
+        }),
+      ).annotate({ identifier: "GcpConfig" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          rack: S.optional(S.String),
+          nodeId: S.optional(S.String),
+          brokerIndex: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BrokerDetails" });
+    case 12:
+      return S.Array(__S(139, __c8, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          allowBrokerDownscaleOnClusterUpscale: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UpdateOptions" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          discoveryDnsRecords: S.optional(__S(1680, __c105, 0)),
+          externalIpAddresses: S.optional(__S(1680, __c105, 0)),
+        }),
+      ).annotate({ identifier: "PublicClusterDetails" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          satisfiesPzs: S.optional(S.Boolean),
+          rebalanceConfig: S.optional(__S(112, __c7, 0)),
+          effectiveCapacityConfig: S.optional(__S(128, __c8, 0)),
+          kafkaVersion: S.optional(S.String),
+          brokerCapacityConfig: S.optional(__S(129, __c8, 1)),
+          capacityConfig: S.optional(__S(96, __c6, 0)),
+          bootstrapAddress: S.optional(S.String),
+          state: S.optional(S.String),
+          tlsConfig: S.optional(__S(133, __c8, 5)),
+          labels: S.optional(__S(32, __c2, 0)),
+          gcpConfig: S.optional(__S(138, __c8, 10)),
+          brokerDetails: S.optional(__S(140, __c8, 12)),
+          updateOptions: S.optional(__S(141, __c8, 13)),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          satisfiesPzi: S.optional(S.Boolean),
+          publicClusterDetails: S.optional(__S(142, __c8, 14)),
+        }),
+      ).annotate({ identifier: "Cluster" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           aclId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1266, __c79, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3673,25 +3607,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsClustersAclsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          partitionCount: S.optional(S.Number),
-          replicationFactor: S.optional(S.Number),
-          configs: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "Topic" });
   }
 }
-function __c5(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           topicId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(176, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3702,52 +3627,30 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsClustersTopicsRequest",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          primarySubnet: S.optional(S.String),
-          additionalSubnets: S.optional(__S(11, __c1, 3)),
-          dnsDomainNames: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "ConnectNetworkConfig" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          networkConfigs: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "ConnectAccessConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          secretPaths: S.optional(__S(11, __c1, 3)),
-          accessConfig: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "ConnectGcpConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          capacityConfig: S.optional(__S(17, __c2, 1)),
-          satisfiesPzi: S.optional(S.Boolean),
-          labels: S.optional(__S(22, __c2, 6)),
-          config: S.optional(__S(22, __c2, 6)),
           name: S.optional(S.String),
-          kafkaCluster: S.optional(S.String),
-          createTime: S.optional(S.String),
-          gcpConfig: S.optional(__S(44, __c5, 4)),
-          satisfiesPzs: S.optional(S.Boolean),
-          updateTime: S.optional(S.String),
-          state: S.optional(S.String),
+          partitionCount: S.optional(S.Number),
+          replicationFactor: S.optional(S.Number),
+          configs: S.optional(__S(32, __c2, 0)),
         }),
-      ).annotate({ identifier: "ConnectCluster" });
-    case 6:
+      ).annotate({ identifier: "Topic" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           connectClusterId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(212, __c13, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3758,33 +3661,59 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsConnectClustersRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          minimumBackoff: S.optional(S.String),
-          maximumBackoff: S.optional(S.String),
-          taskRetryDisabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TaskRetryPolicy" });
   }
 }
-function __c6(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          taskRestartPolicy: S.optional(__S(47, __c5, 7)),
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          configs: S.optional(__S(22, __c2, 6)),
+          primarySubnet: S.optional(S.String),
+          additionalSubnets: S.optional(__S(1680, __c105, 0)),
+          dnsDomainNames: S.optional(__S(1680, __c105, 0)),
         }),
-      ).annotate({ identifier: "Connector" });
+      ).annotate({ identifier: "ConnectNetworkConfig" });
     case 1:
+      return S.Array(__S(208, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          networkConfigs: S.optional(__S(209, __c13, 1)),
+        }),
+      ).annotate({ identifier: "ConnectAccessConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          secretPaths: S.optional(__S(1680, __c105, 0)),
+          accessConfig: S.optional(__S(210, __c13, 2)),
+        }),
+      ).annotate({ identifier: "ConnectGcpConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          capacityConfig: S.optional(__S(96, __c6, 0)),
+          satisfiesPzi: S.optional(S.Boolean),
+          labels: S.optional(__S(32, __c2, 0)),
+          config: S.optional(__S(32, __c2, 0)),
+          name: S.optional(S.String),
+          kafkaCluster: S.optional(S.String),
+          createTime: S.optional(S.String),
+          gcpConfig: S.optional(__S(211, __c13, 3)),
+          satisfiesPzs: S.optional(S.Boolean),
+          updateTime: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectCluster" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           connectorId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(241, __c15, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3795,27 +3724,45 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsConnectClustersConnectorsRequest",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          contexts: S.optional(__S(11, __c1, 3)),
-          name: S.optional(S.String),
+          minimumBackoff: S.optional(S.String),
+          maximumBackoff: S.optional(S.String),
+          taskRetryDisabled: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "SchemaRegistry" });
-    case 3:
+      ).annotate({ identifier: "TaskRetryPolicy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          taskRestartPolicy: S.optional(__S(240, __c15, 0)),
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          configs: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "Connector" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           schemaRegistryId: S.optional(S.String),
-          schemaRegistry: S.optional(__S(50, __c6, 2)),
+          schemaRegistry: S.optional(__S(272, __c17, 0)),
         }),
       ).annotate({
         identifier: "CreateSchemaRegistryRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(51, __c6, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3826,22 +3773,26 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsSchemaRegistriesRequest",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          schemaType: S.optional(S.String),
-          version: S.optional(S.Number),
-          id: S.optional(S.Number),
-          schema: S.optional(S.String),
-          normalize: S.optional(S.Boolean),
-          references: S.optional(__S(8, __c1, 0)),
+          contexts: S.optional(__S(1680, __c105, 0)),
+          name: S.optional(S.String),
         }),
-      ).annotate({ identifier: "CreateVersionRequest" });
-    case 6:
+      ).annotate({ identifier: "SchemaRegistry" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(53, __c6, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(304, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3852,7 +3803,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schemaType: S.optional(S.String),
+          version: S.optional(S.Number),
+          id: S.optional(S.Number),
+          schema: S.optional(S.String),
+          normalize: S.optional(S.Boolean),
+          references: S.optional(__S(1697, __c106, 1)),
+        }),
+      ).annotate({ identifier: "CreateVersionRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -3860,13 +3826,13 @@ function __c6(j: number): any {
       ).annotate({ identifier: "CreateVersionResponse" });
   }
 }
-function __c7(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(53, __c6, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(304, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3877,7 +3843,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3892,7 +3862,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsClustersRequest",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3906,7 +3880,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsClustersAclsRequest",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3920,7 +3898,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsClustersConsumerGroupsRequest",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3934,7 +3916,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsClustersTopicsRequest",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -3949,7 +3935,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsConnectClustersRequest",
       });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3963,7 +3953,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsConnectClustersConnectorsRequest",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3979,7 +3973,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3995,7 +3989,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSchemaRegistriesRequest",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4009,7 +4007,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSchemaRegistriesConfigRequest",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           compatibility: S.optional(S.String),
@@ -4017,7 +4019,11 @@ function __c8(j: number): any {
           normalize: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SchemaConfig" });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4031,7 +4037,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4045,7 +4055,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSchemaRegistriesContextsModeRequest",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           permanent: S.optional(S.Boolean.pipe(T.Query())),
@@ -4060,15 +4074,23 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest",
       });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
-          extensions: S.optional(__S(35, __c4, 3)),
+          extensions: S.optional(__S(64, __c4, 0)),
           contentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpBody" });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           permanent: S.optional(S.Boolean.pipe(T.Query())),
@@ -4085,7 +4107,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4101,7 +4123,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSchemaRegistriesModeRequest",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4116,7 +4142,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSchemaRegistriesSubjectsRequest",
       });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4131,7 +4161,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
       });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4145,17 +4179,25 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
-          metadata: S.optional(__S(34, __c4, 2)),
-          labels: S.optional(__S(22, __c2, 6)),
+          metadata: S.optional(__S(48, __c3, 0)),
+          labels: S.optional(__S(32, __c2, 0)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4170,7 +4212,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsClustersRequest",
       });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4184,7 +4230,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsClustersAclsRequest",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4200,7 +4250,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4212,23 +4262,27 @@ function __c10(j: number): any {
         identifier: "ConsumerPartitionMetadata",
       });
     case 1:
-      return S.Record(S.String, __S(80, __c10, 0));
+      return S.Record(S.String, __S(704, __c44, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          partitions: S.optional(__S(81, __c10, 1)),
+          partitions: S.optional(__S(705, __c44, 1)),
         }),
       ).annotate({ identifier: "ConsumerTopicMetadata" });
     case 3:
-      return S.Record(S.String, __S(82, __c10, 2));
+      return S.Record(S.String, __S(706, __c44, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          topics: S.optional(__S(83, __c10, 3)),
+          topics: S.optional(__S(707, __c44, 3)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConsumerGroup" });
-    case 5:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4242,7 +4296,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsClustersTopicsRequest",
       });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4256,7 +4314,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsConnectClustersRequest",
       });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4272,7 +4334,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4288,7 +4350,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4302,7 +4368,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSchemaRegistriesRequest",
       });
-    case 2:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           defaultToGlobal: S.optional(S.Boolean.pipe(T.Query())),
@@ -4317,7 +4387,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSchemaRegistriesConfigRequest",
       });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4331,14 +4405,18 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSchemaRegistriesContextsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          subjects: S.optional(__S(11, __c1, 3)),
+          subjects: S.optional(__S(1680, __c105, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Context" });
-    case 5:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           defaultToGlobal: S.optional(S.Boolean.pipe(T.Query())),
@@ -4353,7 +4431,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSchemaRegistriesContextsConfigRequest",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4367,7 +4449,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSchemaRegistriesContextsModeRequest",
       });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subject: S.optional(S.String.pipe(T.Query())),
@@ -4384,17 +4470,21 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           schemaType: S.optional(S.String),
-          references: S.optional(__S(8, __c1, 0)),
+          references: S.optional(__S(1697, __c106, 1)),
           schema: S.optional(S.String),
         }),
       ).annotate({ identifier: "Managedkafka_Schema" });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4409,18 +4499,26 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           schemaType: S.optional(S.String),
           schema: S.optional(S.String),
           subject: S.optional(S.String),
           version: S.optional(S.Number),
-          references: S.optional(__S(8, __c1, 0)),
+          references: S.optional(__S(1697, __c106, 1)),
           id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SchemaVersion" });
-    case 3:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4434,7 +4532,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSchemaRegistriesModeRequest",
       });
-    case 4:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subject: S.optional(S.String.pipe(T.Query())),
@@ -4449,7 +4551,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSchemaRegistriesSchemasRequest",
       });
-    case 5:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -4464,7 +4570,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
       });
-    case 6:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4479,7 +4589,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4496,7 +4610,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4513,7 +4627,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest",
       });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4528,11 +4646,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(11, __c1, 3).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(1680, __c105, 0).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4546,16 +4668,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 3:
-      return S.Array(__S(76, __c9, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(640, __c40, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(107, __c13, 3)),
+          locations: S.optional(__S(1041, __c65, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -4573,19 +4699,19 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsClustersRequest",
       });
-    case 6:
-      return S.Array(__S(32, __c4, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(143, __c8, 15));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          clusters: S.optional(__S(110, __c13, 6)),
-          unreachable: S.optional(__S(11, __c1, 3)),
+          clusters: S.optional(__S(1057, __c66, 1)),
+          unreachable: S.optional(__S(1680, __c105, 0)),
         }),
       ).annotate({ identifier: "ListClustersResponse" });
   }
 }
-function __c14(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4604,15 +4730,19 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsClustersAclsRequest",
       });
     case 1:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(1266, __c79, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          acls: S.optional(__S(113, __c14, 1)),
+          acls: S.optional(__S(1073, __c67, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAclsResponse" });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4630,18 +4760,22 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsClustersConsumerGroupsRequest",
       });
-    case 4:
-      return S.Array(__S(84, __c10, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(708, __c44, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          consumerGroups: S.optional(__S(116, __c14, 4)),
+          consumerGroups: S.optional(__S(1089, __c68, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListConsumerGroupsResponse",
       });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4657,20 +4791,20 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsClustersTopicsRequest",
       });
-    case 7:
-      return S.Array(__S(39, __c4, 7));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(176, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          topics: S.optional(__S(119, __c14, 7)),
+          topics: S.optional(__S(1105, __c69, 1)),
         }),
       ).annotate({ identifier: "ListTopicsResponse" });
-    case 1:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -4688,19 +4822,23 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsConnectClustersRequest",
       });
+    case 1:
+      return S.Array(__S(212, __c13, 4));
     case 2:
-      return S.Array(__S(45, __c5, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          connectClusters: S.optional(__S(122, __c15, 2)),
-          unreachable: S.optional(__S(11, __c1, 3)),
+          connectClusters: S.optional(__S(1121, __c70, 1)),
+          unreachable: S.optional(__S(1680, __c105, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListConnectClustersResponse",
       });
-    case 4:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4716,16 +4854,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsConnectClustersConnectorsRequest",
       });
-    case 5:
-      return S.Array(__S(48, __c6, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(241, __c15, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          connectors: S.optional(__S(125, __c15, 5)),
+          connectors: S.optional(__S(1137, __c71, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListConnectorsResponse" });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4743,21 +4885,21 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(37, __c4, 5));
     case 1:
+      return S.Array(__S(81, __c5, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(128, __c16, 0)),
+          operations: S.optional(__S(1153, __c72, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(11, __c1, 3)),
+          unreachable: S.optional(__S(1680, __c105, 0)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -4772,17 +4914,21 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSchemaRegistriesRequest",
       });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          schemaRegistries: S.optional(__S(131, __c16, 3)),
+          schemaRegistries: S.optional(__S(1169, __c73, 1)),
         }),
       ).annotate({
         identifier: "ListSchemaRegistriesResponse",
       });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4796,7 +4942,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSchemaRegistriesContextsRequest",
       });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subject: S.optional(S.String.pipe(T.Query())),
@@ -4812,7 +4962,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest",
       });
-    case 7:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4828,7 +4982,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4846,7 +5000,63 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest",
       });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          acl: S.String.pipe(T.Label()),
+          body: S.optional(__S(1264, __c79, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+acl}:addAclEntry",
+            baseUrl: "https://managedkafka.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddAclEntryProjectsLocationsClustersAclsRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          aclCreated: S.optional(S.Boolean),
+          acl: S.optional(__S(1266, __c79, 2)),
+        }),
+      ).annotate({ identifier: "AddAclEntryResponse" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          principal: S.optional(S.String),
+          permissionType: S.optional(S.String),
+          operation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AclEntry" });
+    case 1:
+      return S.Array(__S(1264, __c79, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          patternType: S.optional(S.String),
+          aclEntries: S.optional(__S(1265, __c79, 1)),
+          name: S.optional(S.String),
+          resourceName: S.optional(S.String),
+          etag: S.optional(S.String),
+          resourceType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Acl" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -4862,7 +5072,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest",
       });
-    case 2:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -4877,7 +5091,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest",
       });
-    case 3:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4892,7 +5110,11 @@ function __c17(j: number): any {
         identifier:
           "ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyRequest",
       });
-    case 4:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4908,7 +5130,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest",
       });
-    case 5:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4922,7 +5148,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSchemaRegistriesSchemasTypesRequest",
       });
-    case 6:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -4938,7 +5168,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest",
       });
-    case 7:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subjectPrefix: S.optional(S.String.pipe(T.Query())),
@@ -4956,7 +5190,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4973,7 +5207,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
       });
-    case 1:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4987,21 +5225,15 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          references: S.optional(__S(8, __c1, 0)),
-          schemaType: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-          schema: S.optional(S.String),
-          normalize: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "LookupVersionRequest" });
-    case 3:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(146, __c18, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1440, __c90, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5012,11 +5244,56 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsRequest",
       });
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          references: S.optional(__S(1697, __c106, 1)),
+          schemaType: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+          schema: S.optional(S.String),
+          normalize: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LookupVersionRequest" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1472, __c92, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://managedkafka.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(146, __c18, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1440, __c90, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5027,13 +5304,17 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest",
       });
-    case 5:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(143, __c8, 15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5044,12 +5325,16 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsClustersRequest",
       });
-    case 6:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1266, __c79, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5060,12 +5345,16 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsClustersAclsRequest",
       });
-    case 7:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(84, __c10, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(708, __c44, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5078,14 +5367,14 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(176, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5096,13 +5385,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsClustersTopicsRequest",
       });
-    case 1:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(212, __c13, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5113,12 +5406,16 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsConnectClustersRequest",
       });
-    case 2:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(241, __c15, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5129,11 +5426,15 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsConnectClustersConnectorsRequest",
       });
-    case 3:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1472, __c92, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5144,11 +5445,15 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PauseProjectsLocationsConnectClustersConnectorsRequest",
       });
-    case 4:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           acl: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1264, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5159,18 +5464,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "RemoveAclEntryProjectsLocationsClustersAclsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           aclDeleted: S.optional(S.Boolean),
-          acl: S.optional(__S(3, __c0, 3)),
+          acl: S.optional(__S(1266, __c79, 2)),
         }),
       ).annotate({ identifier: "RemoveAclEntryResponse" });
-    case 6:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1472, __c92, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5181,11 +5490,78 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "RestartProjectsLocationsConnectClustersConnectorsRequest",
       });
-    case 7:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1664, __c104, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}",
+            baseUrl: "https://managedkafka.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          verbose: S.optional(S.Boolean),
+          schema: S.optional(S.String),
+          schemaType: S.optional(S.String),
+          references: S.optional(__S(1697, __c106, 1)),
+        }),
+      ).annotate({
+        identifier: "CheckCompatibilityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          is_compatible: S.optional(S.Boolean),
+          messages: S.optional(__S(1680, __c105, 0)),
+        }),
+      ).annotate({
+        identifier: "CheckCompatibilityResponse",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          subject: S.optional(S.String),
+          version: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SchemaReference" });
+    case 1:
+      return S.Array(__S(1696, __c106, 0));
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1472, __c92, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5198,13 +5574,13 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1472, __c92, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5215,20 +5591,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "StopProjectsLocationsConnectClustersConnectorsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          normalize: S.optional(S.Boolean),
-          compatibility: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateSchemaConfigRequest",
-      });
-    case 2:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(161, __c20, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c110, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5239,11 +5610,28 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "UpdateProjectsLocationsSchemaRegistriesConfigRequest",
       });
-    case 3:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          normalize: S.optional(S.Boolean),
+          compatibility: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateSchemaConfigRequest",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(161, __c20, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c110, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5254,11 +5642,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "UpdateProjectsLocationsSchemaRegistriesContextsConfigRequest",
       });
-    case 4:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(112, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5269,11 +5661,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "UpdateProjectsLocationsSchemaRegistriesContextsModeRequest",
       });
-    case 5:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(112, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5286,7 +5682,6 @@ function __c20(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

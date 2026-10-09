@@ -431,7 +431,7 @@ export const getProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeys: AP
     __c0,
     0,
   ) as any as S.Schema<GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleCloudKmsInventoryV1ProtectedResourcesSummary>,
+  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudKmsInventoryV1ProtectedResourcesSummary>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -446,8 +446,8 @@ export const listProjectsCryptoKeys: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudKmsInventoryV1ListCryptoKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListProjectsCryptoKeysRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleCloudKmsInventoryV1ListCryptoKeysResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListProjectsCryptoKeysRequest>,
+  output: __S(42, __c2, 10) as any as S.Schema<GoogleCloudKmsInventoryV1ListCryptoKeysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -463,11 +463,11 @@ export const searchOrganizationsProtectedResources: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<SearchOrganizationsProtectedResourcesRequest>,
+  input: __S(64, __c4, 0) as any as S.Schema<SearchOrganizationsProtectedResourcesRequest>,
   output: __S(
-    20,
-    __c2,
-    4,
+    82,
+    __c5,
+    2,
   ) as any as S.Schema<GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -484,11 +484,11 @@ export const searchProjectsProtectedResources: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<SearchProjectsProtectedResourcesRequest>,
+  input: __S(96, __c6, 0) as any as S.Schema<SearchProjectsProtectedResourcesRequest>,
   output: __S(
-    20,
-    __c2,
-    4,
+    82,
+    __c5,
+    2,
   ) as any as S.Schema<GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -526,22 +526,30 @@ function __c0(j: number): any {
     case 2:
       return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.Record(S.String, S.String);
-    case 4:
       return S.suspend(() =>
         S.Struct({
           resourceCount: S.optional(S.String),
           warnings: S.optional(__S(2, __c0, 2)),
-          locations: S.optional(__S(3, __c0, 3)),
+          locations: S.optional(__S(16, __c1, 0)),
           projectCount: S.optional(S.Number),
-          cloudProducts: S.optional(__S(3, __c0, 3)),
+          cloudProducts: S.optional(__S(16, __c1, 0)),
           name: S.optional(S.String),
-          resourceTypes: S.optional(__S(3, __c0, 3)),
+          resourceTypes: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudKmsInventoryV1ProtectedResourcesSummary",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -557,7 +565,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListProjectsCryptoKeysRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           protectionLevel: S.optional(S.String),
@@ -566,21 +574,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleCloudKmsV1CryptoKeyVersionTemplate",
       });
-    case 7:
+    case 2:
       return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          allowedAccessReasons: S.optional(__S(7, __c0, 7)),
+          allowedAccessReasons: S.optional(__S(34, __c2, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudKmsV1KeyAccessJustificationsPolicy",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           externalKeyUri: S.optional(S.String),
@@ -590,29 +594,27 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudKmsV1ExternalProtectionLevelOptions",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          googleCardCerts: S.optional(__S(10, __c1, 2)),
-          caviumCerts: S.optional(__S(10, __c1, 2)),
-          googlePartitionCerts: S.optional(__S(10, __c1, 2)),
+          googleCardCerts: S.optional(__S(48, __c3, 0)),
+          caviumCerts: S.optional(__S(48, __c3, 0)),
+          googlePartitionCerts: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudKmsV1KeyOperationAttestationCertificateChains",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
-          certChains: S.optional(__S(11, __c1, 3)),
+          certChains: S.optional(__S(37, __c2, 5)),
           format: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudKmsV1KeyOperationAttestation",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           generateTime: S.optional(S.String),
@@ -625,10 +627,10 @@ function __c1(j: number): any {
           algorithm: S.optional(S.String),
           trustedWrappingEnabled: S.optional(S.Boolean),
           reimportEligible: S.optional(S.Boolean),
-          externalProtectionLevelOptions: S.optional(__S(9, __c1, 1)),
+          externalProtectionLevelOptions: S.optional(__S(36, __c2, 4)),
           importFailureReason: S.optional(S.String),
           state: S.optional(S.String),
-          attestation: S.optional(__S(12, __c1, 4)),
+          attestation: S.optional(__S(38, __c2, 6)),
           protectionLevel: S.optional(S.String),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
@@ -637,46 +639,52 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudKmsV1CryptoKeyVersion",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           destroyScheduledDuration: S.optional(S.String),
           importOnly: S.optional(S.Boolean),
           purpose: S.optional(S.String),
           rotationPeriod: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
+          labels: S.optional(__S(16, __c1, 0)),
           name: S.optional(S.String),
           nextRotationTime: S.optional(S.String),
-          versionTemplate: S.optional(__S(6, __c0, 6)),
-          keyAccessJustificationsPolicy: S.optional(__S(8, __c1, 0)),
-          primary: S.optional(__S(13, __c1, 5)),
+          versionTemplate: S.optional(__S(33, __c2, 1)),
+          keyAccessJustificationsPolicy: S.optional(__S(35, __c2, 3)),
+          primary: S.optional(__S(39, __c2, 7)),
           createTime: S.optional(S.String),
           cryptoKeyBackend: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudKmsV1CryptoKey",
       });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(40, __c2, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          cryptoKeys: S.optional(__S(15, __c1, 7)),
+          cryptoKeys: S.optional(__S(41, __c2, 9)),
         }),
       ).annotate({
         identifier: "GoogleCloudKmsInventoryV1ListCryptoKeysResponse",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cryptoKey: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          resourceTypes: S.optional(__S(10, __c1, 2).pipe(T.Query())),
+          resourceTypes: S.optional(__S(48, __c3, 0).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           scope: S.String.pipe(T.Label()),
         }).pipe(
@@ -689,15 +697,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "SearchOrganizationsProtectedResourcesRequest",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          cryptoKeyVersions: S.optional(__S(10, __c1, 2)),
+          cryptoKeyVersions: S.optional(__S(48, __c3, 0)),
           createTime: S.optional(S.String),
           project: S.optional(S.String),
           cloudProduct: S.optional(S.String),
           projectId: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
+          labels: S.optional(__S(16, __c1, 0)),
           cryptoKeyVersion: S.optional(S.String),
           resourceType: S.optional(S.String),
           name: S.optional(S.String),
@@ -706,24 +718,28 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleCloudKmsInventoryV1ProtectedResource",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(80, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          protectedResources: S.optional(__S(19, __c2, 3)),
+          protectedResources: S.optional(__S(81, __c5, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           cryptoKey: S.optional(S.String.pipe(T.Query())),
-          resourceTypes: S.optional(__S(10, __c1, 2).pipe(T.Query())),
+          resourceTypes: S.optional(__S(48, __c3, 0).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -737,7 +753,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

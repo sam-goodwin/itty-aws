@@ -2711,8 +2711,8 @@ export const CreateApplication: API.OperationMethod<
   CreateApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<CreateApplicationResponse>,
+  input: __S(22, __c1, 6) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(23, __c1, 7) as any as S.Schema<CreateApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2726,8 +2726,8 @@ export const CreateCluster: API.OperationMethod<
   CreateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<CreateClusterRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<CreateClusterResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<CreateClusterRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<CreateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2741,8 +2741,8 @@ export const CreateExtension: API.OperationMethod<
   CreateExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<CreateExtensionRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<CreateExtensionResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<CreateExtensionRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<CreateExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2756,8 +2756,8 @@ export const DeleteApplication: API.OperationMethod<
   DeleteApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2771,8 +2771,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2786,8 +2786,8 @@ export const DeleteExtension: API.OperationMethod<
   DeleteExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DeleteExtensionRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DeleteExtensionResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<DeleteExtensionRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<DeleteExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2801,8 +2801,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2816,8 +2816,8 @@ export const DeleteScriptAction: API.OperationMethod<
   DeleteScriptActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<DeleteScriptActionRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DeleteScriptActionResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<DeleteScriptActionRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<DeleteScriptActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2831,8 +2831,8 @@ export const DisableExtensionAzureMonitor: API.OperationMethod<
   DisableExtensionAzureMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<DisableExtensionAzureMonitorRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<DisableExtensionAzureMonitorResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<DisableExtensionAzureMonitorRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<DisableExtensionAzureMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2846,8 +2846,8 @@ export const DisableExtensionMonitoring: API.OperationMethod<
   DisableExtensionMonitoringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<DisableExtensionMonitoringRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<DisableExtensionMonitoringResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DisableExtensionMonitoringRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<DisableExtensionMonitoringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2861,8 +2861,8 @@ export const EnableExtensionAzureMonitor: API.OperationMethod<
   EnableExtensionAzureMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<EnableExtensionAzureMonitorRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<EnableExtensionAzureMonitorResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<EnableExtensionAzureMonitorRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<EnableExtensionAzureMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2876,8 +2876,8 @@ export const EnableExtensionMonitoring: API.OperationMethod<
   EnableExtensionMonitoringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<EnableExtensionMonitoringRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<EnableExtensionMonitoringResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<EnableExtensionMonitoringRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<EnableExtensionMonitoringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2891,8 +2891,8 @@ export const ExecuteClusterScriptActions: API.OperationMethod<
   ExecuteClusterScriptActionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ExecuteClusterScriptActionsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ExecuteClusterScriptActionsResponse>,
+  input: __S(274, __c17, 2) as any as S.Schema<ExecuteClusterScriptActionsRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<ExecuteClusterScriptActionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2906,8 +2906,8 @@ export const GetApplication: API.OperationMethod<
   GetApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<GetApplicationRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetApplicationResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2921,8 +2921,8 @@ export const GetApplicationAzureAsyncOperationStatus: API.OperationMethod<
   GetApplicationAzureAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetApplicationAzureAsyncOperationStatusRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<GetApplicationAzureAsyncOperationStatusResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetApplicationAzureAsyncOperationStatusRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<GetApplicationAzureAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2936,8 +2936,8 @@ export const GetCluster: API.OperationMethod<
   GetClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetClusterRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GetClusterResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetClusterRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<GetClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2951,8 +2951,8 @@ export const GetClusterAzureAsyncOperationStatus: API.OperationMethod<
   GetClusterAzureAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetClusterAzureAsyncOperationStatusRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<AsyncOperationResult>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetClusterAzureAsyncOperationStatusRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<AsyncOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2966,8 +2966,8 @@ export const GetClusterGatewaySettings: API.OperationMethod<
   GetClusterGatewaySettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetClusterGatewaySettingsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<GatewaySettings>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetClusterGatewaySettingsRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<GatewaySettings>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2981,8 +2981,8 @@ export const GetConfiguration: API.OperationMethod<
   GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<GetConfigurationResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<GetConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2996,8 +2996,8 @@ export const GetExtension: API.OperationMethod<
   GetExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<GetExtensionRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<ClusterMonitoringResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetExtensionRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<ClusterMonitoringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3011,8 +3011,8 @@ export const GetExtensionAzureAsyncOperationStatus: API.OperationMethod<
   GetExtensionAzureAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetExtensionAzureAsyncOperationStatusRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<GetExtensionAzureAsyncOperationStatusResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetExtensionAzureAsyncOperationStatusRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<GetExtensionAzureAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3026,8 +3026,8 @@ export const GetExtensionAzureMonitorStatus: API.OperationMethod<
   GetExtensionAzureMonitorStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetExtensionAzureMonitorStatusRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<AzureMonitorResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetExtensionAzureMonitorStatusRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<AzureMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3041,8 +3041,8 @@ export const GetExtensionMonitoringStatus: API.OperationMethod<
   GetExtensionMonitoringStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<GetExtensionMonitoringStatusRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<ClusterMonitoringResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetExtensionMonitoringStatusRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<ClusterMonitoringResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3056,8 +3056,8 @@ export const GetLocationAzureAsyncOperationStatus: API.OperationMethod<
   GetLocationAzureAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetLocationAzureAsyncOperationStatusRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<GetLocationAzureAsyncOperationStatusResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetLocationAzureAsyncOperationStatusRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<GetLocationAzureAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3071,8 +3071,8 @@ export const GetLocationCapabilities: API.OperationMethod<
   GetLocationCapabilitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetLocationCapabilitiesRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<CapabilitiesResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetLocationCapabilitiesRequest>,
+  output: __S(602, __c37, 10) as any as S.Schema<CapabilitiesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3086,8 +3086,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3101,8 +3101,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3116,11 +3116,11 @@ export const GetScriptActionExecutionAsyncOperationStatus: API.OperationMethod<
   GetScriptActionExecutionAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetScriptActionExecutionAsyncOperationStatusRequest>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetScriptActionExecutionAsyncOperationStatusRequest>,
   output: __S(
-    113,
-    __c14,
-    1,
+    320,
+    __c20,
+    0,
   ) as any as S.Schema<GetScriptActionExecutionAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3135,8 +3135,8 @@ export const GetScriptActionExecutionDetail: API.OperationMethod<
   GetScriptActionExecutionDetailError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<GetScriptActionExecutionDetailRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<GetScriptActionExecutionDetailResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetScriptActionExecutionDetailRequest>,
+  output: __S(690, __c43, 2) as any as S.Schema<GetScriptActionExecutionDetailResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3150,8 +3150,8 @@ export const GetVirtualMachineAsyncOperationStatus: API.OperationMethod<
   GetVirtualMachineAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetVirtualMachineAsyncOperationStatusRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<GetVirtualMachineAsyncOperationStatusResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetVirtualMachineAsyncOperationStatusRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<GetVirtualMachineAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3165,8 +3165,8 @@ export const ListApplicationByCluster: API.OperationMethod<
   ListApplicationByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListApplicationByClusterRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<ApplicationListResult>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListApplicationByClusterRequest>,
+  output: __S(755, __c47, 3) as any as S.Schema<ApplicationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3180,8 +3180,8 @@ export const ListClusterByResourceGroup: API.OperationMethod<
   ListClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListClusterByResourceGroupRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<ClusterListResult>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
+  output: __S(802, __c50, 2) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3195,8 +3195,8 @@ export const ListClusters: API.OperationMethod<
   ListClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListClustersRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<ClusterListResult>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListClustersRequest>,
+  output: __S(802, __c50, 2) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3210,8 +3210,8 @@ export const ListConfigurations: API.OperationMethod<
   ListConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListConfigurationsRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ClusterConfigurations>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListConfigurationsRequest>,
+  output: __S(834, __c52, 2) as any as S.Schema<ClusterConfigurations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3225,8 +3225,8 @@ export const ListLocationBillingSpecs: API.OperationMethod<
   ListLocationBillingSpecsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListLocationBillingSpecsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<BillingResponseListResult>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListLocationBillingSpecsRequest>,
+  output: __S(859, __c53, 11) as any as S.Schema<BillingResponseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3240,8 +3240,8 @@ export const ListLocationUsages: API.OperationMethod<
   ListLocationUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListLocationUsagesRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<UsagesListResult>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListLocationUsagesRequest>,
+  output: __S(868, __c54, 4) as any as S.Schema<UsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3255,8 +3255,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<OperationListResult>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(890, __c55, 10) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3270,8 +3270,8 @@ export const ListPrivateEndpointConnectionByCluster: API.OperationMethod<
   ListPrivateEndpointConnectionByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ListPrivateEndpointConnectionByClusterRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListPrivateEndpointConnectionByClusterRequest>,
+  output: __S(899, __c56, 3) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3285,8 +3285,8 @@ export const ListPrivateLinkResourceByCluster: API.OperationMethod<
   ListPrivateLinkResourceByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<ListPrivateLinkResourceByClusterRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListPrivateLinkResourceByClusterRequest>,
+  output: __S(915, __c57, 3) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3300,8 +3300,8 @@ export const ListScriptActionByCluster: API.OperationMethod<
   ListScriptActionByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<ListScriptActionByClusterRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<ScriptActionsList>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListScriptActionByClusterRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<ScriptActionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3315,8 +3315,8 @@ export const ListScriptExecutionHistoryByCluster: API.OperationMethod<
   ListScriptExecutionHistoryByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<ListScriptExecutionHistoryByClusterRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<ScriptActionExecutionHistoryList>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListScriptExecutionHistoryByClusterRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<ScriptActionExecutionHistoryList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3330,8 +3330,8 @@ export const ListVirtualMachineHosts: API.OperationMethod<
   ListVirtualMachineHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<ListVirtualMachineHostsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<ListVirtualMachineHostsResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListVirtualMachineHostsRequest>,
+  output: __S(995, __c62, 3) as any as S.Schema<ListVirtualMachineHostsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3345,8 +3345,8 @@ export const LocationsValidateClusterCreateRequest: API.OperationMethod<
   LocationsValidateClusterCreateRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<LocationsValidateClusterCreateRequestRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<ClusterCreateValidationResult>,
+  input: __S(1008, __c63, 0) as any as S.Schema<LocationsValidateClusterCreateRequestRequest>,
+  output: __S(1013, __c63, 5) as any as S.Schema<ClusterCreateValidationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3360,8 +3360,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: __S(1025, __c64, 1) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3375,8 +3375,8 @@ export const PromoteScriptExecutionHistory: API.OperationMethod<
   PromoteScriptExecutionHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<PromoteScriptExecutionHistoryRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<PromoteScriptExecutionHistoryResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<PromoteScriptExecutionHistoryRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<PromoteScriptExecutionHistoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3390,8 +3390,8 @@ export const ResizeCluster: API.OperationMethod<
   ResizeClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<ResizeClusterRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ResizeClusterResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ResizeClusterRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<ResizeClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3405,8 +3405,8 @@ export const RestartVirtualMachineHosts: API.OperationMethod<
   RestartVirtualMachineHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<RestartVirtualMachineHostsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<RestartVirtualMachineHostsResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<RestartVirtualMachineHostsRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<RestartVirtualMachineHostsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3420,8 +3420,8 @@ export const RotateClusterDiskEncryptionKey: API.OperationMethod<
   RotateClusterDiskEncryptionKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<RotateClusterDiskEncryptionKeyRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<RotateClusterDiskEncryptionKeyResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<RotateClusterDiskEncryptionKeyRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<RotateClusterDiskEncryptionKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3435,8 +3435,8 @@ export const UpdateCluster: API.OperationMethod<
   UpdateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<UpdateClusterResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<UpdateClusterRequest>,
+  output: __S(1105, __c69, 1) as any as S.Schema<UpdateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3450,8 +3450,8 @@ export const UpdateClusterAutoScaleConfiguration: API.OperationMethod<
   UpdateClusterAutoScaleConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<UpdateClusterAutoScaleConfigurationRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<UpdateClusterAutoScaleConfigurationResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<UpdateClusterAutoScaleConfigurationRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<UpdateClusterAutoScaleConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3465,8 +3465,8 @@ export const UpdateClusterGatewaySettings: API.OperationMethod<
   UpdateClusterGatewaySettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<UpdateClusterGatewaySettingsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<UpdateClusterGatewaySettingsResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<UpdateClusterGatewaySettingsRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<UpdateClusterGatewaySettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3480,8 +3480,8 @@ export const UpdateClusterIdentityCertificate: API.OperationMethod<
   UpdateClusterIdentityCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<UpdateClusterIdentityCertificateRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<UpdateClusterIdentityCertificateResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<UpdateClusterIdentityCertificateRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<UpdateClusterIdentityCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3518,34 +3518,6 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "NameAvailabilityCheckResult",
       });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          minInstanceCount: S.optional(S.Number),
-          maxInstanceCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AutoscaleCapacity" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          time: S.optional(S.String),
-          minInstanceCount: S.optional(S.Number),
-          maxInstanceCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AutoscaleTimeAndCapacity" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          days: S.optional(__S(4, __c0, 4)),
-          timeAndCapacity: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "AutoscaleSchedule" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -3553,133 +3525,28 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          timeZone: S.optional(S.String),
-          schedule: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "AutoscaleRecurrence" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          capacity: S.optional(__S(3, __c0, 3)),
-          recurrence: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Autoscale" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          vmSize: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HardwareProfile" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          certificateData: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SshPublicKey" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          publicKeys: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "SshProfile" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          sshProfile: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "LinuxOperatingSystemProfile",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          linuxOperatingSystemProfile: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "OsProfile" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          subnet: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualNetworkProfile" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          disksPerNode: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DataDisksGroupsInput" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          uri: S.String,
-          parameters: S.String,
-        }),
-      ).annotate({
-        identifier: "RoleInputScriptActionsItem",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          minInstanceCount: S.optional(S.Number),
-          targetInstanceCount: S.optional(S.Number),
-          VMGroupName: S.optional(S.String),
-          autoscale: S.optional(__S(9, __c1, 1)),
-          hardwareProfile: S.optional(__S(10, __c1, 2)),
-          osProfile: S.optional(__S(15, __c1, 7)),
-          virtualNetworkProfile: S.optional(__S(16, __c2, 0)),
-          dataDisksGroups: S.optional(__S(18, __c2, 2)),
-          scriptActions: S.optional(__S(20, __c2, 4)),
-          encryptDataDisks: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RoleInput" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          roles: S.optional(__S(22, __c2, 6)),
+          roles: S.optional(__S(195, __c12, 3)),
         }),
       ).annotate({
         identifier: "ApplicationPropertiesInputComputeProfile",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           uri: S.String,
           parameters: S.optional(S.String),
-          roles: __S(24, __c3, 0),
+          roles: __S(64, __c4, 0),
         }),
       ).annotate({
         identifier: "ApplicationPropertiesInputInstallScriptActionsItem",
       });
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(17, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accessModes: S.optional(__S(24, __c3, 0)),
+          accessModes: S.optional(__S(64, __c4, 0)),
           destinationPort: S.optional(S.Number),
           privateIPAddress: S.optional(S.String),
           subDomainSuffix: S.optional(S.String),
@@ -3689,99 +3556,23 @@ function __c3(j: number): any {
         identifier: "ApplicationGetHttpsEndpointInput",
       });
     case 4:
-      return S.Array(__S(27, __c3, 3));
+      return S.Array(__S(19, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          location: S.optional(S.String),
-          destinationPort: S.optional(S.Number),
-          publicPort: S.optional(S.Number),
-          privateIPAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationGetEndpoint" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationPropertiesInputErrorsItem",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceId" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          primary: S.optional(S.Boolean),
-          privateIPAddress: S.optional(S.String),
-          privateIPAllocationMethod: S.optional(S.String),
-          subnet: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "IPConfigurationPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "IPConfigurationInput" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String,
-          ipConfigurations: __S(36, __c4, 4),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkConfigurationPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: __S(37, __c4, 5),
-        }),
-      ).annotate({
-        identifier: "ApplicationPropertiesInputPrivateLinkConfigurationsItem",
-      });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          computeProfile: S.optional(__S(23, __c2, 7)),
-          installScriptActions: S.optional(__S(26, __c3, 2)),
-          uninstallScriptActions: S.optional(__S(26, __c3, 2)),
-          httpsEndpoints: S.optional(__S(28, __c3, 4)),
-          sshEndpoints: S.optional(__S(30, __c3, 6)),
+          computeProfile: S.optional(__S(16, __c1, 0)),
+          installScriptActions: S.optional(__S(18, __c1, 2)),
+          uninstallScriptActions: S.optional(__S(18, __c1, 2)),
+          httpsEndpoints: S.optional(__S(20, __c1, 4)),
+          sshEndpoints: S.optional(__S(33, __c2, 1)),
           applicationType: S.optional(S.String),
-          errors: S.optional(__S(32, __c4, 0)),
-          privateLinkConfigurations: S.optional(__S(39, __c4, 7)),
+          errors: S.optional(__S(176, __c11, 0)),
+          privateLinkConfigurations: S.optional(__S(201, __c12, 9)),
         }),
       ).annotate({
         identifier: "ApplicationPropertiesInput",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3789,8 +3580,8 @@ function __c5(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(40, __c5, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(21, __c1, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3800,64 +3591,61 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateApplicationRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(39, __c2, 7)),
+          systemData: S.optional(__S(112, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateApplicationResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          destinationPort: S.optional(S.Number),
+          publicPort: S.optional(S.Number),
+          privateIPAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationGetEndpoint" });
+    case 1:
+      return S.Array(__S(32, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          disksPerNode: S.optional(S.Number),
-          storageAccountType: S.optional(S.String),
-          diskSizeGB: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DataDisksGroups" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          minInstanceCount: S.optional(S.Number),
-          targetInstanceCount: S.optional(S.Number),
-          VMGroupName: S.optional(S.String),
-          autoscale: S.optional(__S(9, __c1, 1)),
-          hardwareProfile: S.optional(__S(10, __c1, 2)),
-          osProfile: S.optional(__S(15, __c1, 7)),
-          virtualNetworkProfile: S.optional(__S(16, __c2, 0)),
-          dataDisksGroups: S.optional(__S(43, __c5, 3)),
-          scriptActions: S.optional(__S(20, __c2, 4)),
-          encryptDataDisks: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Role" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          roles: S.optional(__S(45, __c5, 5)),
+          roles: S.optional(__S(180, __c11, 4)),
         }),
       ).annotate({
         identifier: "ApplicationPropertiesComputeProfile",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           uri: S.String,
           parameters: S.optional(S.String),
-          roles: __S(24, __c3, 0),
+          roles: __S(64, __c4, 0),
           applicationName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ApplicationPropertiesInstallScriptActionsItem",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(35, __c2, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          accessModes: S.optional(__S(24, __c3, 0)),
+          accessModes: S.optional(__S(64, __c4, 0)),
           location: S.optional(S.String),
           destinationPort: S.optional(S.Number),
           publicPort: S.optional(S.Number),
@@ -3868,76 +3656,65 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ApplicationGetHttpsEndpoint",
       });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          primary: S.optional(S.Boolean),
-          privateIPAddress: S.optional(S.String),
-          privateIPAllocationMethod: S.optional(S.String),
-          subnet: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "IPConfigurationProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.String,
-          type: S.optional(S.String),
-          properties: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "IPConfiguration" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String,
-          provisioningState: S.optional(S.String),
-          ipConfigurations: __S(53, __c6, 5),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkConfigurationProperties",
-      });
+      return S.Array(__S(37, __c2, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.String,
-          type: S.optional(S.String),
-          properties: __S(54, __c6, 6),
+          computeProfile: S.optional(__S(34, __c2, 2)),
+          installScriptActions: S.optional(__S(36, __c2, 4)),
+          uninstallScriptActions: S.optional(__S(36, __c2, 4)),
+          httpsEndpoints: S.optional(__S(38, __c2, 6)),
+          sshEndpoints: S.optional(__S(33, __c2, 1)),
+          provisioningState: S.optional(S.String),
+          applicationType: S.optional(S.String),
+          applicationState: S.optional(S.String),
+          errors: S.optional(__S(176, __c11, 0)),
+          createdDate: S.optional(S.String),
+          marketplaceIdentifier: S.optional(S.String),
+          privateLinkConfigurations: S.optional(__S(186, __c11, 10)),
+        }),
+      ).annotate({ identifier: "ApplicationProperties" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "ApplicationPropertiesPrivateLinkConfigurationsItem",
+        identifier: "ApplicationPropertiesInputErrorsItem",
       });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceId" });
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          computeProfile: S.optional(__S(46, __c5, 6)),
-          installScriptActions: S.optional(__S(48, __c6, 0)),
-          uninstallScriptActions: S.optional(__S(48, __c6, 0)),
-          httpsEndpoints: S.optional(__S(50, __c6, 2)),
-          sshEndpoints: S.optional(__S(30, __c3, 6)),
-          provisioningState: S.optional(S.String),
-          applicationType: S.optional(S.String),
-          applicationState: S.optional(S.String),
-          errors: S.optional(__S(32, __c4, 0)),
-          createdDate: S.optional(S.String),
-          marketplaceIdentifier: S.optional(S.String),
-          privateLinkConfigurations: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "ApplicationProperties" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -3950,124 +3727,12 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateApplicationResponseSystemData",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(57, __c7, 1)),
-          systemData: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateApplicationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          blueprint: S.optional(S.String),
-          kind: S.optional(S.String),
-          componentVersion: S.optional(__S(2, __c0, 2)),
-          configurations: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "ClusterDefinition" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupName: S.optional(S.String),
-          groupId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientGroupInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          clientGroupInfo: S.optional(__S(61, __c7, 5)),
-          configurationOverride: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "KafkaRestProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          directoryType: S.optional(S.String),
-          domain: S.optional(S.String),
-          organizationalUnitDN: S.optional(S.String),
-          ldapsUrls: S.optional(__S(24, __c3, 0)),
-          domainUsername: S.optional(S.String),
-          domainUserPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          clusterUsersGroupDNs: S.optional(__S(24, __c3, 0)),
-          aaddsResourceId: S.optional(S.String),
-          msiResourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecurityProfile" });
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          roles: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "ComputeProfileInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDefault: S.optional(S.Boolean),
-          container: S.optional(S.String),
-          fileSystem: S.optional(S.String),
-          key: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          msiResourceId: S.optional(S.String),
-          saskey: S.optional(S.String),
-          fileshare: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageAccount" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          storageaccounts: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({ identifier: "StorageProfile" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          vaultUri: S.optional(S.String),
-          keyName: S.optional(S.String),
-          keyVersion: S.optional(S.String),
-          encryptionAlgorithm: S.optional(S.String),
-          msiResourceId: S.optional(S.String),
-          encryptionAtHost: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DiskEncryptionProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          isEncryptionInTransitEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "EncryptionInTransitProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceProviderConnection: S.optional(S.String),
-          privateLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enableComputeIsolation: S.optional(S.Boolean),
-          hostSku: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ComputeIsolationProperties",
-      });
+      return S.Array(S.String);
   }
 }
 function __c9(j: number): any {
@@ -4075,264 +3740,180 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          clusterVersion: S.optional(S.String),
-          osType: S.optional(S.String),
-          tier: S.optional(S.String),
-          clusterDefinition: S.optional(__S(60, __c7, 4)),
-          kafkaRestProperties: S.optional(__S(62, __c7, 6)),
-          securityProfile: S.optional(__S(63, __c7, 7)),
-          computeProfile: S.optional(__S(64, __c8, 0)),
-          storageProfile: S.optional(__S(67, __c8, 3)),
-          diskEncryptionProperties: S.optional(__S(68, __c8, 4)),
-          encryptionInTransitProperties: S.optional(__S(69, __c8, 5)),
-          minSupportedTlsVersion: S.optional(S.String),
-          networkProperties: S.optional(__S(70, __c8, 6)),
-          computeIsolationProperties: S.optional(__S(71, __c8, 7)),
-          privateLinkConfigurations: S.optional(__S(39, __c4, 7)),
+          vmSize: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ClusterCreatePropertiesInput",
-      });
+      ).annotate({ identifier: "HardwareProfile" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tenantId: S.optional(S.String),
+          certificateData: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
+      ).annotate({ identifier: "SshPublicKey" });
     case 2:
-      return S.Record(S.String, __S(73, __c9, 1));
+      return S.Array(__S(145, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(74, __c9, 2)),
+          publicKeys: S.optional(__S(146, __c9, 2)),
         }),
-      ).annotate({ identifier: "ClusterIdentityInput" });
+      ).annotate({ identifier: "SshProfile" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-          zones: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(72, __c9, 0)),
-          identity: S.optional(__S(75, __c9, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateClusterRequest" });
+          username: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          sshProfile: S.optional(__S(147, __c9, 3)),
+        }),
+      ).annotate({
+        identifier: "LinuxOperatingSystemProfile",
+      });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(__S(45, __c5, 5)),
+          linuxOperatingSystemProfile: S.optional(__S(148, __c9, 4)),
         }),
-      ).annotate({ identifier: "ComputeProfile" });
+      ).annotate({ identifier: "OsProfile" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          coresUsed: S.optional(S.Number),
+          id: S.optional(S.String),
+          subnet: S.optional(S.String),
         }),
-      ).annotate({ identifier: "QuotaInfo" });
+      ).annotate({ identifier: "VirtualNetworkProfile" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          protocol: S.optional(S.String),
-          location: S.optional(S.String),
-          port: S.optional(S.Number),
-          privateIPAddress: S.optional(S.String),
+          name: S.String,
+          uri: S.String,
+          parameters: S.String,
         }),
-      ).annotate({ identifier: "ConnectivityEndpoint" });
+      ).annotate({
+        identifier: "RoleInputScriptActionsItem",
+      });
+    case 8:
+      return S.Array(__S(151, __c9, 7));
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79, __c9, 7));
+      return S.suspend(() =>
+        S.Struct({
+          minInstanceCount: S.optional(S.Number),
+          maxInstanceCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AutoscaleCapacity" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          excludedServicesConfigId: S.optional(S.String),
-          excludedServicesList: S.optional(S.String),
+          time: S.optional(S.String),
+          minInstanceCount: S.optional(S.Number),
+          maxInstanceCount: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "ExcludedServicesConfig" });
+      ).annotate({ identifier: "AutoscaleTimeAndCapacity" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
+          days: S.optional(__S(128, __c8, 0)),
+          timeAndCapacity: S.optional(__S(161, __c10, 1)),
         }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
+      ).annotate({ identifier: "AutoscaleSchedule" });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(33, __c4, 1)),
-          privateLinkServiceConnectionState: __S(82, __c10, 2),
-          linkIdentifier: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
+      return S.Array(__S(162, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          schedule: S.optional(__S(163, __c10, 3)),
         }),
-      ).annotate({
-        identifier: "ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData",
-      });
+      ).annotate({ identifier: "AutoscaleRecurrence" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: __S(83, __c10, 3),
-          systemData: S.optional(__S(84, __c10, 4)),
+          capacity: S.optional(__S(160, __c10, 0)),
+          recurrence: S.optional(__S(164, __c10, 4)),
         }),
-      ).annotate({
-        identifier: "ClusterGetPropertiesPrivateEndpointConnectionsItem",
-      });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clusterVersion: S.optional(S.String),
-          clusterHdpVersion: S.optional(S.String),
-          osType: S.optional(S.String),
-          tier: S.optional(S.String),
-          clusterId: S.optional(S.String),
-          clusterDefinition: __S(60, __c7, 4),
-          kafkaRestProperties: S.optional(__S(62, __c7, 6)),
-          securityProfile: S.optional(__S(63, __c7, 7)),
-          computeProfile: S.optional(__S(77, __c9, 5)),
-          provisioningState: S.optional(S.String),
-          createdDate: S.optional(S.String),
-          clusterState: S.optional(S.String),
-          quotaInfo: S.optional(__S(78, __c9, 6)),
-          errors: S.optional(__S(32, __c4, 0)),
-          connectivityEndpoints: S.optional(__S(80, __c10, 0)),
-          diskEncryptionProperties: S.optional(__S(68, __c8, 4)),
-          encryptionInTransitProperties: S.optional(__S(69, __c8, 5)),
-          storageProfile: S.optional(__S(67, __c8, 3)),
-          minSupportedTlsVersion: S.optional(S.String),
-          excludedServicesConfig: S.optional(__S(81, __c10, 1)),
-          networkProperties: S.optional(__S(70, __c8, 6)),
-          computeIsolationProperties: S.optional(__S(71, __c8, 7)),
-          privateLinkConfigurations: S.optional(__S(56, __c7, 0)),
-          privateEndpointConnections: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "ClusterGetProperties" });
+      ).annotate({ identifier: "Autoscale" });
   }
 }
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
+      return S.Array(__S(80, __c5, 0));
     case 1:
-      return S.Record(S.String, __S(88, __c11, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(89, __c11, 1)),
+          disksPerNode: S.optional(S.Number),
+          storageAccountType: S.optional(S.String),
+          diskSizeGB: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "ClusterIdentity" });
+      ).annotate({ identifier: "DataDisksGroups" });
+    case 2:
+      return S.Array(__S(177, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          etag: S.optional(S.String),
-          zones: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(87, __c10, 7)),
-          identity: S.optional(__S(90, __c11, 2)),
-          systemData: S.optional(__S(58, __c7, 2)),
+          minInstanceCount: S.optional(S.Number),
+          targetInstanceCount: S.optional(S.Number),
+          VMGroupName: S.optional(S.String),
+          autoscale: S.optional(__S(165, __c10, 5)),
+          hardwareProfile: S.optional(__S(144, __c9, 0)),
+          osProfile: S.optional(__S(149, __c9, 5)),
+          virtualNetworkProfile: S.optional(__S(150, __c9, 6)),
+          dataDisksGroups: S.optional(__S(178, __c11, 2)),
+          scriptActions: S.optional(__S(152, __c9, 8)),
+          encryptDataDisks: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "CreateClusterResponse" });
+      ).annotate({ identifier: "Role" });
     case 4:
+      return S.Array(__S(179, __c11, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          extensionName: S.String.pipe(T.Label()),
-          workspaceId: S.optional(S.String),
-          primaryKey: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateExtensionRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateExtensionResponse",
+          provisioningState: S.optional(S.String),
+          primary: S.optional(S.Boolean),
+          privateIPAddress: S.optional(S.String),
+          privateIPAllocationMethod: S.optional(S.String),
+          subnet: S.optional(__S(96, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "IPConfigurationProperties",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteApplicationRequest" });
+          id: S.optional(S.String),
+          name: S.String,
+          type: S.optional(S.String),
+          properties: S.optional(__S(181, __c11, 5)),
+        }),
+      ).annotate({ identifier: "IPConfiguration" });
     case 7:
+      return S.Array(__S(182, __c11, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteClusterRequest" });
+          groupId: S.String,
+          provisioningState: S.optional(S.String),
+          ipConfigurations: __S(183, __c11, 7),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkConfigurationProperties",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.String,
+          type: S.optional(S.String),
+          properties: __S(184, __c11, 8),
+        }),
+      ).annotate({
+        identifier: "ApplicationPropertiesPrivateLinkConfigurationsItem",
+      });
+    case 10:
+      return S.Array(__S(185, __c11, 9));
   }
 }
 function __c12(j: number): any {
@@ -4340,77 +3921,74 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          extensionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteExtensionRequest" });
+          disksPerNode: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DataDisksGroupsInput" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionRequest",
-      });
+      return S.Array(__S(192, __c12, 0));
     case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePrivateEndpointConnectionResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          scriptName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptActions/{scriptName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteScriptActionRequest",
-      });
+          name: S.optional(S.String),
+          minInstanceCount: S.optional(S.Number),
+          targetInstanceCount: S.optional(S.Number),
+          VMGroupName: S.optional(S.String),
+          autoscale: S.optional(__S(165, __c10, 5)),
+          hardwareProfile: S.optional(__S(144, __c9, 0)),
+          osProfile: S.optional(__S(149, __c9, 5)),
+          virtualNetworkProfile: S.optional(__S(150, __c9, 6)),
+          dataDisksGroups: S.optional(__S(193, __c12, 1)),
+          scriptActions: S.optional(__S(152, __c9, 8)),
+          encryptDataDisks: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RoleInput" });
+    case 3:
+      return S.Array(__S(194, __c12, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
+          primary: S.optional(S.Boolean),
+          privateIPAddress: S.optional(S.String),
+          privateIPAllocationMethod: S.optional(S.String),
+          subnet: S.optional(__S(96, __c6, 0)),
+        }),
       ).annotate({
-        identifier: "DisableExtensionAzureMonitorRequest",
+        identifier: "IPConfigurationPropertiesInput",
       });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          properties: S.optional(__S(196, __c12, 4)),
+        }),
+      ).annotate({ identifier: "IPConfigurationInput" });
+    case 6:
+      return S.Array(__S(197, __c12, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String,
+          ipConfigurations: __S(198, __c12, 6),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkConfigurationPropertiesInput",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          properties: __S(199, __c12, 7),
+        }),
+      ).annotate({
+        identifier: "ApplicationPropertiesInputPrivateLinkConfigurationsItem",
+      });
+    case 9:
+      return S.Array(__S(200, __c12, 8));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4427,31 +4005,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DisableExtensionMonitoringRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AzureMonitorTableConfiguration",
-      });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          configurationVersion: S.optional(S.String),
-          globalConfigurations: S.optional(__S(2, __c0, 2)),
-          tableList: S.optional(__S(103, __c12, 7)),
-        }),
-      ).annotate({
-        identifier: "AzureMonitorSelectedConfigurations",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4459,7 +4017,7 @@ function __c13(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           workspaceId: S.optional(S.String),
           primaryKey: S.optional(S.String),
-          selectedConfigurations: S.optional(__S(104, __c13, 0)),
+          selectedConfigurations: S.optional(__S(242, __c15, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4471,7 +4029,35 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "EnableExtensionAzureMonitorRequest",
       });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AzureMonitorTableConfiguration",
+      });
+    case 1:
+      return S.Array(__S(240, __c15, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          configurationVersion: S.optional(S.String),
+          globalConfigurations: S.optional(__S(48, __c3, 0)),
+          tableList: S.optional(__S(241, __c15, 1)),
+        }),
+      ).annotate({
+        identifier: "AzureMonitorSelectedConfigurations",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4490,24 +4076,28 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "EnableExtensionMonitoringRequest",
       });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           uri: S.String,
           parameters: S.optional(S.String),
-          roles: __S(24, __c3, 0),
+          roles: __S(64, __c4, 0),
         }),
       ).annotate({ identifier: "RuntimeScriptActionInput" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          scriptActions: S.optional(__S(108, __c13, 4)),
+          scriptActions: S.optional(__S(273, __c17, 1)),
           persistOnSuccess: S.Boolean,
         }).pipe(
           T.Http({
@@ -4520,7 +4110,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ExecuteClusterScriptActionsRequest",
       });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4536,21 +4130,21 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetApplicationRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(57, __c7, 1)),
-          systemData: S.optional(__S(58, __c7, 2)),
+          tags: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(39, __c2, 7)),
+          systemData: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
   }
 }
-function __c14(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4571,16 +4165,24 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetApplicationAzureAsyncOperationStatusRequest",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          error: S.optional(__S(31, __c3, 7)),
+          error: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({
         identifier: "GetApplicationAzureAsyncOperationStatusResponse",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4595,22 +4197,26 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetClusterRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
           etag: S.optional(S.String),
-          zones: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(87, __c10, 7)),
-          identity: S.optional(__S(90, __c11, 2)),
-          systemData: S.optional(__S(58, __c7, 2)),
+          zones: S.optional(__S(64, __c4, 0)),
+          properties: S.optional(__S(470, __c29, 6)),
+          identity: S.optional(__S(473, __c29, 9)),
+          systemData: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "GetClusterResponse" });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4628,14 +4234,18 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetClusterAzureAsyncOperationStatusRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          error: S.optional(__S(31, __c3, 7)),
+          error: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "AsyncOperationResult" });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4652,7 +4262,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetClusterGatewaySettingsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           restAuthCredential_isEnabled: S.optional(
@@ -4668,7 +4278,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GatewaySettings" });
   }
 }
-function __c15(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4687,10 +4297,338 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "GetConfigurationRequest" });
     case 1:
-      return S.suspend(() => __S(2, __c0, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(48, __c3, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetConfigurationResponse",
       });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(48, __c3, 0)),
+          zones: S.optional(__S(64, __c4, 0)),
+          properties: S.optional(__S(481, __c30, 1)),
+          identity: S.optional(__S(484, __c30, 4)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateClusterRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(48, __c3, 0)),
+          location: S.String,
+          etag: S.optional(S.String),
+          zones: S.optional(__S(64, __c4, 0)),
+          properties: S.optional(__S(470, __c29, 6)),
+          identity: S.optional(__S(473, __c29, 9)),
+          systemData: S.optional(__S(112, __c7, 0)),
+        }),
+      ).annotate({ identifier: "CreateClusterResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(96, __c6, 0)),
+          privateLinkServiceConnectionState: __S(416, __c26, 0),
+          linkIdentifier: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          blueprint: S.optional(S.String),
+          kind: S.optional(S.String),
+          componentVersion: S.optional(__S(48, __c3, 0)),
+          configurations: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "ClusterDefinition" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupName: S.optional(S.String),
+          groupId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientGroupInfo" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientGroupInfo: S.optional(__S(433, __c27, 1)),
+          configurationOverride: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({ identifier: "KafkaRestProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          directoryType: S.optional(S.String),
+          domain: S.optional(S.String),
+          organizationalUnitDN: S.optional(S.String),
+          ldapsUrls: S.optional(__S(64, __c4, 0)),
+          domainUsername: S.optional(S.String),
+          domainUserPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          clusterUsersGroupDNs: S.optional(__S(64, __c4, 0)),
+          aaddsResourceId: S.optional(S.String),
+          msiResourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecurityProfile" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDefault: S.optional(S.Boolean),
+          container: S.optional(S.String),
+          fileSystem: S.optional(S.String),
+          key: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          msiResourceId: S.optional(S.String),
+          saskey: S.optional(S.String),
+          fileshare: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageAccount" });
+    case 5:
+      return S.Array(__S(436, __c27, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          storageaccounts: S.optional(__S(437, __c27, 5)),
+        }),
+      ).annotate({ identifier: "StorageProfile" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          vaultUri: S.optional(S.String),
+          keyName: S.optional(S.String),
+          keyVersion: S.optional(S.String),
+          encryptionAlgorithm: S.optional(S.String),
+          msiResourceId: S.optional(S.String),
+          encryptionAtHost: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DiskEncryptionProperties" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          isEncryptionInTransitEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "EncryptionInTransitProperties",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          resourceProviderConnection: S.optional(S.String),
+          privateLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkProperties" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          enableComputeIsolation: S.optional(S.Boolean),
+          hostSku: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ComputeIsolationProperties",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: __S(417, __c26, 1),
+          systemData: S.optional(__S(448, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "ClusterGetPropertiesPrivateEndpointConnectionsItem",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roles: S.optional(__S(180, __c11, 4)),
+        }),
+      ).annotate({ identifier: "ComputeProfile" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          coresUsed: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QuotaInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          protocol: S.optional(S.String),
+          location: S.optional(S.String),
+          port: S.optional(S.Number),
+          privateIPAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectivityEndpoint" });
+    case 3:
+      return S.Array(__S(466, __c29, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          excludedServicesConfigId: S.optional(S.String),
+          excludedServicesList: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExcludedServicesConfig" });
+    case 5:
+      return S.Array(__S(449, __c28, 1));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clusterVersion: S.optional(S.String),
+          clusterHdpVersion: S.optional(S.String),
+          osType: S.optional(S.String),
+          tier: S.optional(S.String),
+          clusterId: S.optional(S.String),
+          clusterDefinition: __S(432, __c27, 0),
+          kafkaRestProperties: S.optional(__S(434, __c27, 2)),
+          securityProfile: S.optional(__S(435, __c27, 3)),
+          computeProfile: S.optional(__S(464, __c29, 0)),
+          provisioningState: S.optional(S.String),
+          createdDate: S.optional(S.String),
+          clusterState: S.optional(S.String),
+          quotaInfo: S.optional(__S(465, __c29, 1)),
+          errors: S.optional(__S(176, __c11, 0)),
+          connectivityEndpoints: S.optional(__S(467, __c29, 3)),
+          diskEncryptionProperties: S.optional(__S(439, __c27, 7)),
+          encryptionInTransitProperties: S.optional(__S(440, __c27, 8)),
+          storageProfile: S.optional(__S(438, __c27, 6)),
+          minSupportedTlsVersion: S.optional(S.String),
+          excludedServicesConfig: S.optional(__S(468, __c29, 4)),
+          networkProperties: S.optional(__S(441, __c27, 9)),
+          computeIsolationProperties: S.optional(__S(442, __c27, 10)),
+          privateLinkConfigurations: S.optional(__S(186, __c11, 10)),
+          privateEndpointConnections: S.optional(__S(469, __c29, 5)),
+        }),
+      ).annotate({ identifier: "ClusterGetProperties" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 8:
+      return S.Record(S.String, __S(471, __c29, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(472, __c29, 8)),
+        }),
+      ).annotate({ identifier: "ClusterIdentity" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roles: S.optional(__S(195, __c12, 3)),
+        }),
+      ).annotate({ identifier: "ComputeProfileInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clusterVersion: S.optional(S.String),
+          osType: S.optional(S.String),
+          tier: S.optional(S.String),
+          clusterDefinition: S.optional(__S(432, __c27, 0)),
+          kafkaRestProperties: S.optional(__S(434, __c27, 2)),
+          securityProfile: S.optional(__S(435, __c27, 3)),
+          computeProfile: S.optional(__S(480, __c30, 0)),
+          storageProfile: S.optional(__S(438, __c27, 6)),
+          diskEncryptionProperties: S.optional(__S(439, __c27, 7)),
+          encryptionInTransitProperties: S.optional(__S(440, __c27, 8)),
+          minSupportedTlsVersion: S.optional(S.String),
+          networkProperties: S.optional(__S(441, __c27, 9)),
+          computeIsolationProperties: S.optional(__S(442, __c27, 10)),
+          privateLinkConfigurations: S.optional(__S(201, __c12, 9)),
+        }),
+      ).annotate({
+        identifier: "ClusterCreatePropertiesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tenantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+    case 3:
+      return S.Record(S.String, __S(482, __c30, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(483, __c30, 3)),
+        }),
+      ).annotate({ identifier: "ClusterIdentityInput" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4706,7 +4644,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetExtensionRequest" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clusterMonitoringEnabled: S.optional(S.Boolean),
@@ -4715,7 +4657,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ClusterMonitoringResponse",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4734,7 +4680,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetExtensionAzureAsyncOperationStatusRequest",
       });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4751,15 +4701,19 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetExtensionAzureMonitorStatusRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clusterMonitoringEnabled: S.optional(S.Boolean),
           workspaceId: S.optional(S.String),
-          selectedConfigurations: S.optional(__S(104, __c13, 0)),
+          selectedConfigurations: S.optional(__S(242, __c15, 2)),
         }),
       ).annotate({ identifier: "AzureMonitorResponse" });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4778,7 +4732,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4797,7 +4751,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetLocationAzureAsyncOperationStatusRequest",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4813,38 +4771,34 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetLocationCapabilitiesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           friendlyName: S.optional(S.String),
           displayName: S.optional(S.String),
           isDefault: S.optional(S.Boolean),
-          componentVersions: S.optional(__S(2, __c0, 2)),
+          componentVersions: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "VersionSpec" });
+    case 2:
+      return S.Array(__S(593, __c37, 1));
     case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          available: S.optional(__S(131, __c16, 3)),
+          available: S.optional(__S(594, __c37, 2)),
         }),
       ).annotate({ identifier: "VersionsCapability" });
+    case 4:
+      return S.Record(S.String, __S(595, __c37, 3));
     case 5:
-      return S.Record(S.String, __S(132, __c16, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          available: S.optional(__S(24, __c3, 0)),
+          available: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "RegionsCapability" });
+    case 6:
+      return S.Record(S.String, __S(597, __c37, 5));
     case 7:
-      return S.Record(S.String, __S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           regionName: S.optional(S.String),
@@ -4852,26 +4806,30 @@ function __c17(j: number): any {
           coresAvailable: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RegionalQuotaCapability" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(599, __c37, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           coresUsed: S.optional(S.Number),
           maxCoresAllowed: S.optional(S.Number),
-          regionalQuotas: S.optional(__S(137, __c17, 1)),
+          regionalQuotas: S.optional(__S(600, __c37, 8)),
         }),
       ).annotate({ identifier: "QuotaCapability" });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          versions: S.optional(__S(133, __c16, 5)),
-          regions: S.optional(__S(135, __c16, 7)),
-          features: S.optional(__S(24, __c3, 0)),
-          quota: S.optional(__S(138, __c17, 2)),
+          versions: S.optional(__S(596, __c37, 4)),
+          regions: S.optional(__S(598, __c37, 6)),
+          features: S.optional(__S(64, __c4, 0)),
+          quota: S.optional(__S(601, __c37, 9)),
         }),
       ).annotate({ identifier: "CapabilitiesResult" });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4889,7 +4847,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -4902,19 +4860,23 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionResponseSystemData",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(83, __c10, 3),
-          systemData: S.optional(__S(141, __c17, 5)),
+          properties: __S(417, __c26, 1),
+          systemData: S.optional(__S(609, __c38, 1)),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionResponse",
       });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4932,33 +4894,37 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourceRequest",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(24, __c3, 0)),
-          requiredZoneNames: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkResourceResponseProperties",
-      });
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(144, __c18, 0)),
-          systemData: S.optional(__S(58, __c7, 2)),
+          properties: S.optional(__S(640, __c40, 0)),
+          systemData: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
       });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(64, __c4, 0)),
+          requiredZoneNames: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkResourceResponseProperties",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4976,7 +4942,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetScriptActionExecutionAsyncOperationStatusRequest",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4994,7 +4964,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetScriptActionExecutionDetailRequest",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5003,28 +4977,62 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ScriptActionExecutionSummary",
       });
-    case 5:
-      return S.Array(__S(148, __c18, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(688, __c43, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           uri: S.String,
           parameters: S.optional(S.String),
-          roles: __S(24, __c3, 0),
+          roles: __S(64, __c4, 0),
           applicationName: S.optional(S.String),
           scriptExecutionId: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           status: S.optional(S.String),
           operation: S.optional(S.String),
-          executionSummary: S.optional(__S(149, __c18, 5)),
+          executionSummary: S.optional(__S(689, __c43, 1)),
           debugInformation: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetScriptActionExecutionDetailResponse",
       });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          extensionName: S.String.pipe(T.Label()),
+          workspaceId: S.optional(S.String),
+          primaryKey: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateExtensionRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateExtensionResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5044,7 +5052,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5066,6 +5074,31 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(39, __c2, 7)),
+          systemData: S.optional(__S(768, __c48, 0)),
+        }),
+      ).annotate({ identifier: "Application" });
+    case 2:
+      return S.Array(__S(753, __c47, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(754, __c47, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationListResult" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           createdBy: S.optional(S.String),
           createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
@@ -5074,28 +5107,11 @@ function __c19(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationSystemData" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(57, __c7, 1)),
-          systemData: S.optional(__S(153, __c19, 1)),
-        }),
-      ).annotate({ identifier: "Application" });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(155, __c19, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationListResult" });
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5111,35 +5127,39 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListClusterByResourceGroupRequest",
       });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
           etag: S.optional(S.String),
-          zones: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(87, __c10, 7)),
-          identity: S.optional(__S(90, __c11, 2)),
-          systemData: S.optional(__S(153, __c19, 1)),
+          zones: S.optional(__S(64, __c4, 0)),
+          properties: S.optional(__S(470, __c29, 6)),
+          identity: S.optional(__S(473, __c29, 9)),
+          systemData: S.optional(__S(768, __c48, 0)),
         }),
       ).annotate({ identifier: "Cluster" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(800, __c50, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(159, __c19, 7)),
+          value: S.optional(__S(801, __c50, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterListResult" });
-    case 1:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5152,7 +5172,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListClustersRequest" });
-    case 2:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5169,15 +5193,19 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListConfigurationsRequest",
       });
-    case 3:
-      return S.Record(S.String, __S(2, __c0, 2));
-    case 4:
+    case 1:
+      return S.Record(S.String, __S(48, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          configurations: S.optional(__S(163, __c20, 3)),
+          configurations: S.optional(__S(833, __c52, 1)),
         }),
       ).annotate({ identifier: "ClusterConfigurations" });
-    case 5:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5193,29 +5221,25 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListLocationBillingSpecsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           filterMode: S.optional(S.String),
-          regions: S.optional(__S(24, __c3, 0)),
-          clusterFlavors: S.optional(__S(24, __c3, 0)),
-          nodeTypes: S.optional(__S(24, __c3, 0)),
-          clusterVersions: S.optional(__S(24, __c3, 0)),
-          osType: S.optional(__S(4, __c0, 4)),
-          vmSizes: S.optional(__S(24, __c3, 0)),
+          regions: S.optional(__S(64, __c4, 0)),
+          clusterFlavors: S.optional(__S(64, __c4, 0)),
+          nodeTypes: S.optional(__S(64, __c4, 0)),
+          clusterVersions: S.optional(__S(64, __c4, 0)),
+          osType: S.optional(__S(128, __c8, 0)),
+          vmSizes: S.optional(__S(64, __c4, 0)),
           espApplied: S.optional(S.String),
           computeIsolationSupported: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VmSizeCompatibilityFilterV2",
       });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(849, __c53, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5230,9 +5254,9 @@ function __c21(j: number): any {
           webWorkerResourceDiskSizeInMb: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VmSizeProperty" });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(851, __c53, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           meterParameter: S.optional(S.String),
@@ -5240,9 +5264,9 @@ function __c21(j: number): any {
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingMeters" });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(853, __c53, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           diskRpMeter: S.optional(S.String),
@@ -5250,35 +5274,35 @@ function __c21(j: number): any {
           tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskBillingMeters" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(855, __c53, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
-          billingMeters: S.optional(__S(171, __c21, 3)),
-          diskBillingMeters: S.optional(__S(173, __c21, 5)),
+          billingMeters: S.optional(__S(854, __c53, 6)),
+          diskBillingMeters: S.optional(__S(856, __c53, 8)),
         }),
       ).annotate({ identifier: "BillingResources" });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
+      return S.Array(__S(857, __c53, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          vmSizes: S.optional(__S(24, __c3, 0)),
-          vmSizesWithEncryptionAtHost: S.optional(__S(24, __c3, 0)),
-          vmSizeFilters: S.optional(__S(167, __c20, 7)),
-          vmSizeProperties: S.optional(__S(169, __c21, 1)),
-          billingResources: S.optional(__S(175, __c21, 7)),
+          vmSizes: S.optional(__S(64, __c4, 0)),
+          vmSizesWithEncryptionAtHost: S.optional(__S(64, __c4, 0)),
+          vmSizeFilters: S.optional(__S(850, __c53, 2)),
+          vmSizeProperties: S.optional(__S(852, __c53, 4)),
+          billingResources: S.optional(__S(858, __c53, 10)),
         }),
       ).annotate({
         identifier: "BillingResponseListResult",
       });
-    case 1:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5294,31 +5318,35 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListLocationUsagesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           localizedValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalizedName" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(__S(178, __c22, 2)),
+          name: S.optional(__S(865, __c54, 1)),
         }),
       ).annotate({ identifier: "Usage" });
+    case 3:
+      return S.Array(__S(866, __c54, 2));
     case 4:
-      return S.Array(__S(179, __c22, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(180, __c22, 4)),
+          value: S.optional(__S(867, __c54, 3)),
         }),
       ).annotate({ identifier: "UsagesListResult" });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -5329,7 +5357,7 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -5338,11 +5366,7 @@ function __c22(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5351,9 +5375,9 @@ function __c23(j: number): any {
           toBeExportedForShoebox: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Dimension" });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(882, __c55, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5361,8 +5385,8 @@ function __c23(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          supportedAggregationTypes: S.optional(__S(24, __c3, 0)),
-          supportedTimeGrainTypes: S.optional(__S(24, __c3, 0)),
+          supportedAggregationTypes: S.optional(__S(64, __c4, 0)),
+          supportedTimeGrainTypes: S.optional(__S(64, __c4, 0)),
           enableRegionalMdmAccount: S.optional(S.Boolean),
           sourceMdmAccount: S.optional(S.String),
           sourceMdmNamespace: S.optional(S.String),
@@ -5372,45 +5396,45 @@ function __c23(j: number): any {
           resourceIdDimensionNameOverride: S.optional(S.String),
           isInternal: S.optional(S.Boolean),
           delegateMetricNameOverride: S.optional(S.String),
-          dimensions: S.optional(__S(185, __c23, 1)),
+          dimensions: S.optional(__S(883, __c55, 3)),
         }),
       ).annotate({ identifier: "MetricSpecifications" });
-    case 3:
-      return S.Array(__S(186, __c23, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          metricSpecifications: S.optional(__S(187, __c23, 3)),
-        }),
-      ).annotate({ identifier: "ServiceSpecification" });
     case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceSpecification: S.optional(__S(188, __c23, 4)),
-        }),
-      ).annotate({ identifier: "OperationProperties" });
+      return S.Array(__S(884, __c55, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(183, __c22, 7)),
-          properties: S.optional(__S(189, __c23, 5)),
+          metricSpecifications: S.optional(__S(885, __c55, 5)),
         }),
-      ).annotate({ identifier: "Operation" });
+      ).annotate({ identifier: "ServiceSpecification" });
     case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(191, __c23, 7)),
+          serviceSpecification: S.optional(__S(886, __c55, 6)),
+        }),
+      ).annotate({ identifier: "OperationProperties" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(__S(881, __c55, 1)),
+          properties: S.optional(__S(887, __c55, 7)),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 9:
+      return S.Array(__S(888, __c55, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(889, __c55, 9)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5427,30 +5451,34 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionByClusterRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(83, __c10, 3),
-          systemData: S.optional(__S(58, __c7, 2)),
+          properties: __S(417, __c26, 1),
+          systemData: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
+    case 2:
+      return S.Array(__S(897, __c56, 1));
     case 3:
-      return S.Array(__S(194, __c24, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(195, __c24, 3)),
+          value: S.optional(__S(898, __c56, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionListResult",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5467,31 +5495,51 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourceByClusterRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(144, __c18, 0)),
-          systemData: S.optional(__S(58, __c7, 2)),
+          properties: S.optional(__S(640, __c40, 0)),
+          systemData: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
-    case 7:
-      return S.Array(__S(198, __c24, 6));
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(913, __c57, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(199, __c24, 7)),
+          value: S.optional(__S(914, __c57, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
       });
-    case 1:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteApplicationRequest" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5508,16 +5556,24 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListScriptActionByClusterRequest",
       });
-    case 2:
-      return S.Array(__S(150, __c18, 6));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(202, __c25, 2)),
+          value: S.optional(__S(960, __c60, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptActionsList" });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(690, __c43, 2));
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5534,16 +5590,20 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListScriptExecutionHistoryByClusterRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(202, __c25, 2)),
+          value: S.optional(__S(960, __c60, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ScriptActionExecutionHistoryList",
       });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5560,7 +5620,7 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListVirtualMachineHostsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5568,25 +5628,25 @@ function __c25(j: number): any {
           effectiveDiskEncryptionKeyUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostInfo" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
-      return S.suspend(() => __S(208, __c26, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(993, __c62, 1));
+    case 3:
+      return S.suspend(() => __S(994, __c62, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVirtualMachineHostsResponse",
       });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          zones: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(72, __c9, 0)),
-          identity: S.optional(__S(75, __c9, 3)),
+          tags: S.optional(__S(48, __c3, 0)),
+          zones: S.optional(__S(64, __c4, 0)),
+          properties: S.optional(__S(481, __c30, 1)),
+          identity: S.optional(__S(484, __c30, 4)),
           name: S.optional(S.String),
           type: S.optional(S.String),
           tenantId: S.optional(S.String),
@@ -5602,18 +5662,18 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "LocationsValidateClusterCreateRequestRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           errorResource: S.optional(S.String),
-          messageArguments: S.optional(__S(24, __c3, 0)),
+          messageArguments: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "ValidationErrorInfo" });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1009, __c63, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
@@ -5625,27 +5685,27 @@ function __c26(j: number): any {
           tenantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AaddsResourceDetails" });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(1011, __c63, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          validationErrors: S.optional(__S(212, __c26, 4)),
-          validationWarnings: S.optional(__S(212, __c26, 4)),
+          validationErrors: S.optional(__S(1010, __c63, 2)),
+          validationWarnings: S.optional(__S(1010, __c63, 2)),
           estimatedCreationDuration: S.optional(S.String),
-          aaddsResourcesDetails: S.optional(__S(214, __c26, 6)),
+          aaddsResourcesDetails: S.optional(__S(1012, __c63, 4)),
         }),
       ).annotate({
         identifier: "ClusterCreateValidationResult",
       });
   }
 }
-function __c27(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateLinkServiceConnectionState: __S(82, __c10, 2),
+          privateLinkServiceConnectionState: __S(416, __c26, 0),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -5657,7 +5717,7 @@ function __c27(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: __S(216, __c27, 0),
+          properties: __S(1024, __c64, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5669,7 +5729,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
       });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5687,7 +5751,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "PromoteScriptExecutionHistoryRequest",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5704,13 +5772,17 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResizeClusterRequest" });
-    case 4:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          body: __S(24, __c3, 0).pipe(T.HttpBody()),
+          body: __S(64, __c4, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5722,7 +5794,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "RestartVirtualMachineHostsRequest",
       });
-    case 5:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5742,13 +5818,17 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "RotateClusterDiskEncryptionKeyRequest",
       });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
+          tags: S.optional(S.NullOr(__S(48, __c3, 0))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5758,24 +5838,43 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateClusterRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
           etag: S.optional(S.String),
-          zones: S.optional(__S(24, __c3, 0)),
-          properties: S.optional(__S(87, __c10, 7)),
-          identity: S.optional(__S(90, __c11, 2)),
-          systemData: S.optional(__S(58, __c7, 2)),
+          zones: S.optional(__S(64, __c4, 0)),
+          properties: S.optional(__S(470, __c29, 6)),
+          identity: S.optional(__S(473, __c29, 9)),
+          systemData: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "UpdateClusterResponse" });
   }
 }
-function __c28(j: number): any {
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteClusterRequest" });
+  }
+}
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5784,7 +5883,7 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           roleName: S.String.pipe(T.Label()),
-          autoscale: S.optional(__S(9, __c1, 1)),
+          autoscale: S.optional(__S(165, __c10, 5)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5796,7 +5895,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "UpdateClusterAutoScaleConfigurationRequest",
       });
-    case 1:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5822,7 +5925,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "UpdateClusterGatewaySettingsRequest",
       });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5844,7 +5951,99 @@ function __c28(j: number): any {
       });
   }
 }
-
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          extensionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteExtensionRequest" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          scriptName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptActions/{scriptName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteScriptActionRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableExtensionAzureMonitorRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

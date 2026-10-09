@@ -3496,8 +3496,8 @@ export const addmessageEventticketclass: API.OperationMethod<
   AddmessageEventticketclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AddmessageEventticketclassRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<EventTicketClassAddMessageResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<AddmessageEventticketclassRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<EventTicketClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3516,8 +3516,8 @@ export const addmessageEventticketobject: API.OperationMethod<
   AddmessageEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<AddmessageEventticketobjectRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<EventTicketObjectAddMessageResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<AddmessageEventticketobjectRequest>,
+  output: __S(2465, __c77, 1) as any as S.Schema<EventTicketObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3531,8 +3531,8 @@ export const addmessageFlightclass: API.OperationMethod<
   AddmessageFlightclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<AddmessageFlightclassRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<FlightClassAddMessageResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<AddmessageFlightclassRequest>,
+  output: __S(2945, __c92, 1) as any as S.Schema<FlightClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3546,8 +3546,8 @@ export const addmessageFlightobject: API.OperationMethod<
   AddmessageFlightobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<AddmessageFlightobjectRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<FlightObjectAddMessageResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<AddmessageFlightobjectRequest>,
+  output: __S(3361, __c105, 1) as any as S.Schema<FlightObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3561,8 +3561,8 @@ export const addmessageGenericclass: API.OperationMethod<
   AddmessageGenericclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<AddmessageGenericclassRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<GenericClassAddMessageResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<AddmessageGenericclassRequest>,
+  output: __S(3745, __c117, 1) as any as S.Schema<GenericClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3581,8 +3581,8 @@ export const addmessageGenericobject: API.OperationMethod<
   AddmessageGenericobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<AddmessageGenericobjectRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<GenericObjectAddMessageResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<AddmessageGenericobjectRequest>,
+  output: __S(4161, __c130, 1) as any as S.Schema<GenericObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3601,8 +3601,8 @@ export const addmessageGiftcardclass: API.OperationMethod<
   AddmessageGiftcardclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<AddmessageGiftcardclassRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<GiftCardClassAddMessageResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AddmessageGiftcardclassRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GiftCardClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3621,8 +3621,8 @@ export const addmessageGiftcardobject: API.OperationMethod<
   AddmessageGiftcardobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<AddmessageGiftcardobjectRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<GiftCardObjectAddMessageResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<AddmessageGiftcardobjectRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<GiftCardObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3636,8 +3636,8 @@ export const addmessageLoyaltyclass: API.OperationMethod<
   AddmessageLoyaltyclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<AddmessageLoyaltyclassRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<LoyaltyClassAddMessageResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<AddmessageLoyaltyclassRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<LoyaltyClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3656,8 +3656,8 @@ export const addmessageLoyaltyobject: API.OperationMethod<
   AddmessageLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<AddmessageLoyaltyobjectRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<LoyaltyObjectAddMessageResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<AddmessageLoyaltyobjectRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<LoyaltyObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3671,8 +3671,8 @@ export const addmessageOfferclass: API.OperationMethod<
   AddmessageOfferclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<AddmessageOfferclassRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<OfferClassAddMessageResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<AddmessageOfferclassRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<OfferClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3686,8 +3686,8 @@ export const addmessageOfferobject: API.OperationMethod<
   AddmessageOfferobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<AddmessageOfferobjectRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<OfferObjectAddMessageResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<AddmessageOfferobjectRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<OfferObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3701,8 +3701,8 @@ export const addmessageTransitclass: API.OperationMethod<
   AddmessageTransitclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<AddmessageTransitclassRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<TransitClassAddMessageResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<AddmessageTransitclassRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<TransitClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3721,8 +3721,8 @@ export const addmessageTransitobject: API.OperationMethod<
   AddmessageTransitobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<AddmessageTransitobjectRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<TransitObjectAddMessageResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<AddmessageTransitobjectRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<TransitObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3736,8 +3736,8 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<DownloadMediaRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<Media>,
+  input: __S(608, __c19, 0) as any as S.Schema<DownloadMediaRequest>,
+  output: __S(651, __c20, 11) as any as S.Schema<Media>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3751,8 +3751,8 @@ export const getEventticketclass: API.OperationMethod<
   GetEventticketclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetEventticketclassRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<EventTicketClass>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetEventticketclassRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<EventTicketClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3766,8 +3766,8 @@ export const getEventticketobject: API.OperationMethod<
   GetEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetEventticketobjectRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<EventTicketObject>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetEventticketobjectRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<EventTicketObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3781,8 +3781,8 @@ export const getFlightclass: API.OperationMethod<
   GetFlightclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetFlightclassRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<FlightClass>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetFlightclassRequest>,
+  output: __S(2980, __c93, 4) as any as S.Schema<FlightClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3796,8 +3796,8 @@ export const getFlightobject: API.OperationMethod<
   GetFlightobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetFlightobjectRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<FlightObject>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetFlightobjectRequest>,
+  output: __S(3395, __c106, 3) as any as S.Schema<FlightObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3811,8 +3811,8 @@ export const getGenericclass: API.OperationMethod<
   GetGenericclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetGenericclassRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GenericClass>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetGenericclassRequest>,
+  output: __S(3776, __c118, 0) as any as S.Schema<GenericClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3826,8 +3826,8 @@ export const getGenericobject: API.OperationMethod<
   GetGenericobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetGenericobjectRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<GenericObject>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetGenericobjectRequest>,
+  output: __S(4194, __c131, 2) as any as S.Schema<GenericObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3841,8 +3841,8 @@ export const getGiftcardclass: API.OperationMethod<
   GetGiftcardclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetGiftcardclassRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GiftCardClass>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetGiftcardclassRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<GiftCardClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3856,8 +3856,8 @@ export const getGiftcardobject: API.OperationMethod<
   GetGiftcardobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetGiftcardobjectRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<GiftCardObject>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetGiftcardobjectRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GiftCardObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3871,8 +3871,8 @@ export const getIssuer: API.OperationMethod<
   GetIssuerError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetIssuerRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<Issuer>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetIssuerRequest>,
+  output: __S(964, __c30, 4) as any as S.Schema<Issuer>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3886,8 +3886,8 @@ export const getLoyaltyclass: API.OperationMethod<
   GetLoyaltyclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetLoyaltyclassRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<LoyaltyClass>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetLoyaltyclassRequest>,
+  output: __S(260, __c8, 4) as any as S.Schema<LoyaltyClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3901,8 +3901,8 @@ export const getLoyaltyobject: API.OperationMethod<
   GetLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetLoyaltyobjectRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<LoyaltyObject>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetLoyaltyobjectRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<LoyaltyObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3916,8 +3916,8 @@ export const getOfferclass: API.OperationMethod<
   GetOfferclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetOfferclassRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<OfferClass>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetOfferclassRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<OfferClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3931,8 +3931,8 @@ export const getOfferobject: API.OperationMethod<
   GetOfferobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<GetOfferobjectRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<OfferObject>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetOfferobjectRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<OfferObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3946,8 +3946,8 @@ export const getPermissions: API.OperationMethod<
   GetPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<GetPermissionsRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<Permissions>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetPermissionsRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<Permissions>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3961,8 +3961,8 @@ export const getTransitclass: API.OperationMethod<
   GetTransitclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<GetTransitclassRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<TransitClass>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetTransitclassRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<TransitClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3976,8 +3976,8 @@ export const getTransitobject: API.OperationMethod<
   GetTransitobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<GetTransitobjectRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<TransitObject>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetTransitobjectRequest>,
+  output: __S(585, __c18, 9) as any as S.Schema<TransitObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3991,8 +3991,8 @@ export const insertEventticketclass: API.OperationMethod<
   InsertEventticketclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<InsertEventticketclassRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<EventTicketClass>,
+  input: __S(1248, __c39, 0) as any as S.Schema<InsertEventticketclassRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<EventTicketClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4011,8 +4011,8 @@ export const insertEventticketobject: API.OperationMethod<
   InsertEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<InsertEventticketobjectRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<EventTicketObject>,
+  input: __S(1280, __c40, 0) as any as S.Schema<InsertEventticketobjectRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<EventTicketObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4026,8 +4026,8 @@ export const insertFlightclass: API.OperationMethod<
   InsertFlightclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<InsertFlightclassRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<FlightClass>,
+  input: __S(1312, __c41, 0) as any as S.Schema<InsertFlightclassRequest>,
+  output: __S(2980, __c93, 4) as any as S.Schema<FlightClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4041,8 +4041,8 @@ export const insertFlightobject: API.OperationMethod<
   InsertFlightobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<InsertFlightobjectRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<FlightObject>,
+  input: __S(1344, __c42, 0) as any as S.Schema<InsertFlightobjectRequest>,
+  output: __S(3395, __c106, 3) as any as S.Schema<FlightObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4056,8 +4056,8 @@ export const insertGenericclass: API.OperationMethod<
   InsertGenericclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<InsertGenericclassRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GenericClass>,
+  input: __S(1376, __c43, 0) as any as S.Schema<InsertGenericclassRequest>,
+  output: __S(3776, __c118, 0) as any as S.Schema<GenericClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4071,8 +4071,8 @@ export const insertGenericobject: API.OperationMethod<
   InsertGenericobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<InsertGenericobjectRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<GenericObject>,
+  input: __S(1664, __c52, 0) as any as S.Schema<InsertGenericobjectRequest>,
+  output: __S(4194, __c131, 2) as any as S.Schema<GenericObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4086,8 +4086,8 @@ export const insertGiftcardclass: API.OperationMethod<
   InsertGiftcardclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<InsertGiftcardclassRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GiftCardClass>,
+  input: __S(1696, __c53, 0) as any as S.Schema<InsertGiftcardclassRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<GiftCardClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4101,8 +4101,8 @@ export const insertGiftcardobject: API.OperationMethod<
   InsertGiftcardobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<InsertGiftcardobjectRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<GiftCardObject>,
+  input: __S(1728, __c54, 0) as any as S.Schema<InsertGiftcardobjectRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GiftCardObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4116,8 +4116,8 @@ export const insertIssuer: API.OperationMethod<
   InsertIssuerError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<InsertIssuerRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<Issuer>,
+  input: __S(1760, __c55, 0) as any as S.Schema<InsertIssuerRequest>,
+  output: __S(964, __c30, 4) as any as S.Schema<Issuer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4131,8 +4131,8 @@ export const insertJwt: API.OperationMethod<
   InsertJwtError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<InsertJwtRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<JwtInsertResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<InsertJwtRequest>,
+  output: __S(1794, __c56, 2) as any as S.Schema<JwtInsertResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4146,8 +4146,8 @@ export const insertLoyaltyclass: API.OperationMethod<
   InsertLoyaltyclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<InsertLoyaltyclassRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<LoyaltyClass>,
+  input: __S(2304, __c72, 0) as any as S.Schema<InsertLoyaltyclassRequest>,
+  output: __S(260, __c8, 4) as any as S.Schema<LoyaltyClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4161,8 +4161,8 @@ export const insertLoyaltyobject: API.OperationMethod<
   InsertLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<InsertLoyaltyobjectRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<LoyaltyObject>,
+  input: __S(2336, __c73, 0) as any as S.Schema<InsertLoyaltyobjectRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<LoyaltyObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4176,8 +4176,8 @@ export const insertOfferclass: API.OperationMethod<
   InsertOfferclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<InsertOfferclassRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<OfferClass>,
+  input: __S(2368, __c74, 0) as any as S.Schema<InsertOfferclassRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<OfferClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4191,8 +4191,8 @@ export const insertOfferobject: API.OperationMethod<
   InsertOfferobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<InsertOfferobjectRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<OfferObject>,
+  input: __S(2400, __c75, 0) as any as S.Schema<InsertOfferobjectRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<OfferObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4206,8 +4206,8 @@ export const insertSmarttap: API.OperationMethod<
   InsertSmarttapError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<InsertSmarttapRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<SmartTap>,
+  input: __S(2436, __c76, 4) as any as S.Schema<InsertSmarttapRequest>,
+  output: __S(2435, __c76, 3) as any as S.Schema<SmartTap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4221,8 +4221,8 @@ export const insertTransitclass: API.OperationMethod<
   InsertTransitclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<InsertTransitclassRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<TransitClass>,
+  input: __S(2592, __c81, 0) as any as S.Schema<InsertTransitclassRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<TransitClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4236,8 +4236,8 @@ export const insertTransitobject: API.OperationMethod<
   InsertTransitobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<InsertTransitobjectRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<TransitObject>,
+  input: __S(2624, __c82, 0) as any as S.Schema<InsertTransitobjectRequest>,
+  output: __S(585, __c18, 9) as any as S.Schema<TransitObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4251,8 +4251,8 @@ export const listEventticketclass: API.OperationMethod<
   ListEventticketclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<ListEventticketclassRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<EventTicketClassListResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ListEventticketclassRequest>,
+  output: __S(2657, __c83, 1) as any as S.Schema<EventTicketClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4266,8 +4266,8 @@ export const listEventticketobject: API.OperationMethod<
   ListEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<ListEventticketobjectRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<EventTicketObjectListResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListEventticketobjectRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<EventTicketObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4281,8 +4281,8 @@ export const listFlightclass: API.OperationMethod<
   ListFlightclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<ListFlightclassRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<FlightClassListResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<ListFlightclassRequest>,
+  output: __S(2753, __c86, 1) as any as S.Schema<FlightClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4296,8 +4296,8 @@ export const listFlightobject: API.OperationMethod<
   ListFlightobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<ListFlightobjectRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<FlightObjectListResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<ListFlightobjectRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<FlightObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4311,8 +4311,8 @@ export const listGenericclass: API.OperationMethod<
   ListGenericclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<ListGenericclassRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<GenericClassListResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<ListGenericclassRequest>,
+  output: __S(2817, __c88, 1) as any as S.Schema<GenericClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4326,8 +4326,8 @@ export const listGenericobject: API.OperationMethod<
   ListGenericobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<ListGenericobjectRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<GenericObjectListResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<ListGenericobjectRequest>,
+  output: __S(2849, __c89, 1) as any as S.Schema<GenericObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4341,8 +4341,8 @@ export const listGiftcardclass: API.OperationMethod<
   ListGiftcardclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<ListGiftcardclassRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<GiftCardClassListResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<ListGiftcardclassRequest>,
+  output: __S(2881, __c90, 1) as any as S.Schema<GiftCardClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4356,8 +4356,8 @@ export const listGiftcardobject: API.OperationMethod<
   ListGiftcardobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<ListGiftcardobjectRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<GiftCardObjectListResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<ListGiftcardobjectRequest>,
+  output: __S(2913, __c91, 1) as any as S.Schema<GiftCardObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4371,8 +4371,8 @@ export const listIssuer: API.OperationMethod<
   ListIssuerError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<ListIssuerRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<IssuerListResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<ListIssuerRequest>,
+  output: __S(3010, __c94, 2) as any as S.Schema<IssuerListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4386,8 +4386,8 @@ export const listLoyaltyclass: API.OperationMethod<
   ListLoyaltyclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<ListLoyaltyclassRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<LoyaltyClassListResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<ListLoyaltyclassRequest>,
+  output: __S(3041, __c95, 1) as any as S.Schema<LoyaltyClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4401,8 +4401,8 @@ export const listLoyaltyobject: API.OperationMethod<
   ListLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<ListLoyaltyobjectRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<LoyaltyObjectListResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ListLoyaltyobjectRequest>,
+  output: __S(3073, __c96, 1) as any as S.Schema<LoyaltyObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4416,8 +4416,8 @@ export const listOfferclass: API.OperationMethod<
   ListOfferclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<ListOfferclassRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<OfferClassListResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<ListOfferclassRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<OfferClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4431,8 +4431,8 @@ export const listOfferobject: API.OperationMethod<
   ListOfferobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<ListOfferobjectRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<OfferObjectListResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<ListOfferobjectRequest>,
+  output: __S(3137, __c98, 1) as any as S.Schema<OfferObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4446,8 +4446,8 @@ export const listTransitclass: API.OperationMethod<
   ListTransitclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<ListTransitclassRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<TransitClassListResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<ListTransitclassRequest>,
+  output: __S(3169, __c99, 1) as any as S.Schema<TransitClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4461,8 +4461,8 @@ export const listTransitobject: API.OperationMethod<
   ListTransitobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<ListTransitobjectRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<TransitObjectListResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<ListTransitobjectRequest>,
+  output: __S(3201, __c100, 1) as any as S.Schema<TransitObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4481,8 +4481,8 @@ export const modifylinkedofferobjectsEventticketobject: API.OperationMethod<
   ModifylinkedofferobjectsEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ModifylinkedofferobjectsEventticketobjectRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<EventTicketObject>,
+  input: __S(3232, __c101, 0) as any as S.Schema<ModifylinkedofferobjectsEventticketobjectRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<EventTicketObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4501,8 +4501,8 @@ export const modifylinkedofferobjectsLoyaltyobject: API.OperationMethod<
   ModifylinkedofferobjectsLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<ModifylinkedofferobjectsLoyaltyobjectRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<LoyaltyObject>,
+  input: __S(3296, __c103, 0) as any as S.Schema<ModifylinkedofferobjectsLoyaltyobjectRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<LoyaltyObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4516,8 +4516,8 @@ export const patchEventticketclass: API.OperationMethod<
   PatchEventticketclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<PatchEventticketclassRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<EventTicketClass>,
+  input: __S(3328, __c104, 0) as any as S.Schema<PatchEventticketclassRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<EventTicketClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4531,8 +4531,8 @@ export const patchEventticketobject: API.OperationMethod<
   PatchEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<PatchEventticketobjectRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<EventTicketObject>,
+  input: __S(3424, __c107, 0) as any as S.Schema<PatchEventticketobjectRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<EventTicketObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4546,8 +4546,8 @@ export const patchFlightclass: API.OperationMethod<
   PatchFlightclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<PatchFlightclassRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<FlightClass>,
+  input: __S(3456, __c108, 0) as any as S.Schema<PatchFlightclassRequest>,
+  output: __S(2980, __c93, 4) as any as S.Schema<FlightClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4561,8 +4561,8 @@ export const patchFlightobject: API.OperationMethod<
   PatchFlightobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<PatchFlightobjectRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<FlightObject>,
+  input: __S(3488, __c109, 0) as any as S.Schema<PatchFlightobjectRequest>,
+  output: __S(3395, __c106, 3) as any as S.Schema<FlightObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4576,8 +4576,8 @@ export const patchGenericclass: API.OperationMethod<
   PatchGenericclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<PatchGenericclassRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GenericClass>,
+  input: __S(3520, __c110, 0) as any as S.Schema<PatchGenericclassRequest>,
+  output: __S(3776, __c118, 0) as any as S.Schema<GenericClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4591,8 +4591,8 @@ export const patchGenericobject: API.OperationMethod<
   PatchGenericobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<PatchGenericobjectRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<GenericObject>,
+  input: __S(3552, __c111, 0) as any as S.Schema<PatchGenericobjectRequest>,
+  output: __S(4194, __c131, 2) as any as S.Schema<GenericObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4606,8 +4606,8 @@ export const patchGiftcardclass: API.OperationMethod<
   PatchGiftcardclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<PatchGiftcardclassRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GiftCardClass>,
+  input: __S(3584, __c112, 0) as any as S.Schema<PatchGiftcardclassRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<GiftCardClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4621,8 +4621,8 @@ export const patchGiftcardobject: API.OperationMethod<
   PatchGiftcardobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<PatchGiftcardobjectRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<GiftCardObject>,
+  input: __S(3616, __c113, 0) as any as S.Schema<PatchGiftcardobjectRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GiftCardObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4636,8 +4636,8 @@ export const patchIssuer: API.OperationMethod<
   PatchIssuerError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<PatchIssuerRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<Issuer>,
+  input: __S(3648, __c114, 0) as any as S.Schema<PatchIssuerRequest>,
+  output: __S(964, __c30, 4) as any as S.Schema<Issuer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4651,8 +4651,8 @@ export const patchLoyaltyclass: API.OperationMethod<
   PatchLoyaltyclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<PatchLoyaltyclassRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<LoyaltyClass>,
+  input: __S(3680, __c115, 0) as any as S.Schema<PatchLoyaltyclassRequest>,
+  output: __S(260, __c8, 4) as any as S.Schema<LoyaltyClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4666,8 +4666,8 @@ export const patchLoyaltyobject: API.OperationMethod<
   PatchLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<PatchLoyaltyobjectRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<LoyaltyObject>,
+  input: __S(3712, __c116, 0) as any as S.Schema<PatchLoyaltyobjectRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<LoyaltyObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4681,8 +4681,8 @@ export const patchOfferclass: API.OperationMethod<
   PatchOfferclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<PatchOfferclassRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<OfferClass>,
+  input: __S(3808, __c119, 0) as any as S.Schema<PatchOfferclassRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<OfferClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4696,8 +4696,8 @@ export const patchOfferobject: API.OperationMethod<
   PatchOfferobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<PatchOfferobjectRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<OfferObject>,
+  input: __S(3840, __c120, 0) as any as S.Schema<PatchOfferobjectRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<OfferObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4711,8 +4711,8 @@ export const patchTransitclass: API.OperationMethod<
   PatchTransitclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<PatchTransitclassRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<TransitClass>,
+  input: __S(3872, __c121, 0) as any as S.Schema<PatchTransitclassRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<TransitClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4726,8 +4726,8 @@ export const patchTransitobject: API.OperationMethod<
   PatchTransitobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<PatchTransitobjectRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<TransitObject>,
+  input: __S(3904, __c122, 0) as any as S.Schema<PatchTransitobjectRequest>,
+  output: __S(585, __c18, 9) as any as S.Schema<TransitObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4747,11 +4747,11 @@ export const setPassUpdateNoticeWalletobjectsV1PrivateContent: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    262,
-    __c32,
-    6,
+    3937,
+    __c123,
+    1,
   ) as any as S.Schema<SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<SetPassUpdateNoticeResponse>,
+  output: __S(3968, __c124, 0) as any as S.Schema<SetPassUpdateNoticeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4765,8 +4765,8 @@ export const updateEventticketclass: API.OperationMethod<
   UpdateEventticketclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<UpdateEventticketclassRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<EventTicketClass>,
+  input: __S(4000, __c125, 0) as any as S.Schema<UpdateEventticketclassRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<EventTicketClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4785,8 +4785,8 @@ export const updateEventticketobject: API.OperationMethod<
   UpdateEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<UpdateEventticketobjectRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<EventTicketObject>,
+  input: __S(4032, __c126, 0) as any as S.Schema<UpdateEventticketobjectRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<EventTicketObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4800,8 +4800,8 @@ export const updateFlightclass: API.OperationMethod<
   UpdateFlightclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<UpdateFlightclassRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<FlightClass>,
+  input: __S(4064, __c127, 0) as any as S.Schema<UpdateFlightclassRequest>,
+  output: __S(2980, __c93, 4) as any as S.Schema<FlightClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4815,8 +4815,8 @@ export const updateFlightobject: API.OperationMethod<
   UpdateFlightobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<UpdateFlightobjectRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<FlightObject>,
+  input: __S(4096, __c128, 0) as any as S.Schema<UpdateFlightobjectRequest>,
+  output: __S(3395, __c106, 3) as any as S.Schema<FlightObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4830,8 +4830,8 @@ export const updateGenericclass: API.OperationMethod<
   UpdateGenericclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<UpdateGenericclassRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GenericClass>,
+  input: __S(4128, __c129, 0) as any as S.Schema<UpdateGenericclassRequest>,
+  output: __S(3776, __c118, 0) as any as S.Schema<GenericClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4845,8 +4845,8 @@ export const updateGenericobject: API.OperationMethod<
   UpdateGenericobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<UpdateGenericobjectRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<GenericObject>,
+  input: __S(4224, __c132, 0) as any as S.Schema<UpdateGenericobjectRequest>,
+  output: __S(4194, __c131, 2) as any as S.Schema<GenericObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4860,8 +4860,8 @@ export const updateGiftcardclass: API.OperationMethod<
   UpdateGiftcardclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<UpdateGiftcardclassRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GiftCardClass>,
+  input: __S(4256, __c133, 0) as any as S.Schema<UpdateGiftcardclassRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<GiftCardClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4875,8 +4875,8 @@ export const updateGiftcardobject: API.OperationMethod<
   UpdateGiftcardobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<UpdateGiftcardobjectRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<GiftCardObject>,
+  input: __S(4288, __c134, 0) as any as S.Schema<UpdateGiftcardobjectRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GiftCardObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4890,8 +4890,8 @@ export const updateIssuer: API.OperationMethod<
   UpdateIssuerError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<UpdateIssuerRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<Issuer>,
+  input: __S(4320, __c135, 0) as any as S.Schema<UpdateIssuerRequest>,
+  output: __S(964, __c30, 4) as any as S.Schema<Issuer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4905,8 +4905,8 @@ export const updateLoyaltyclass: API.OperationMethod<
   UpdateLoyaltyclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<UpdateLoyaltyclassRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<LoyaltyClass>,
+  input: __S(4352, __c136, 0) as any as S.Schema<UpdateLoyaltyclassRequest>,
+  output: __S(260, __c8, 4) as any as S.Schema<LoyaltyClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4920,8 +4920,8 @@ export const updateLoyaltyobject: API.OperationMethod<
   UpdateLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<UpdateLoyaltyobjectRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<LoyaltyObject>,
+  input: __S(4384, __c137, 0) as any as S.Schema<UpdateLoyaltyobjectRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<LoyaltyObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4935,8 +4935,8 @@ export const updateOfferclass: API.OperationMethod<
   UpdateOfferclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<UpdateOfferclassRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<OfferClass>,
+  input: __S(4416, __c138, 0) as any as S.Schema<UpdateOfferclassRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<OfferClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4950,8 +4950,8 @@ export const updateOfferobject: API.OperationMethod<
   UpdateOfferobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<UpdateOfferobjectRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<OfferObject>,
+  input: __S(4448, __c139, 0) as any as S.Schema<UpdateOfferobjectRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<OfferObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4965,8 +4965,8 @@ export const updatePermissions: API.OperationMethod<
   UpdatePermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<UpdatePermissionsRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<Permissions>,
+  input: __S(4480, __c140, 0) as any as S.Schema<UpdatePermissionsRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<Permissions>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4980,8 +4980,8 @@ export const updateTransitclass: API.OperationMethod<
   UpdateTransitclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<UpdateTransitclassRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<TransitClass>,
+  input: __S(4512, __c141, 0) as any as S.Schema<UpdateTransitclassRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<TransitClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4995,8 +4995,8 @@ export const updateTransitobject: API.OperationMethod<
   UpdateTransitobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<UpdateTransitobjectRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<TransitObject>,
+  input: __S(64, __c2, 0) as any as S.Schema<UpdateTransitobjectRequest>,
+  output: __S(585, __c18, 9) as any as S.Schema<TransitObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5010,8 +5010,8 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<UploadMediaRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<TransitObjectUploadRotatingBarcodeValuesResponse>,
+  input: __S(98, __c3, 2) as any as S.Schema<UploadMediaRequest>,
+  output: __S(99, __c3, 3) as any as S.Schema<TransitObjectUploadRotatingBarcodeValuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5025,8 +5025,8 @@ export const validateJwt: API.OperationMethod<
   ValidateJwtError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<ValidateJwtRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<JwtValidateResponse>,
+  input: __S(130, __c4, 2) as any as S.Schema<ValidateJwtRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<JwtValidateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5038,953 +5038,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          date: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DateTime" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(__S(0, __c0, 0)),
-          end: S.optional(__S(0, __c0, 0)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeInterval" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          language: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TranslatedString" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          translatedValues: S.optional(__S(3, __c0, 3)),
-          defaultValue: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "LocalizedString" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          displayInterval: S.optional(__S(1, __c0, 1)),
-          id: S.optional(S.String),
-          body: S.optional(S.String),
-          kind: S.optional(S.String),
-          localizedBody: S.optional(__S(4, __c0, 4)),
-          localizedHeader: S.optional(__S(4, __c0, 4)),
-          messageType: S.optional(S.String),
-          header: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Message" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "AddMessageRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "walletobjects/v1/eventTicketClass/{resourceId}/addMessage",
-            baseUrl: "https://walletobjects.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddmessageEventticketclassRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(__S(4, __c0, 4)),
-          kind: S.optional(S.String),
-          name: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "EventVenue" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          fieldPath: S.optional(S.String),
-          dateFormat: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FieldReference" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "FieldSelector" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          firstValue: S.optional(__S(11, __c1, 3)),
-          secondValue: S.optional(__S(11, __c1, 3)),
-          predefinedItem: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TemplateItem" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          middleItem: S.optional(__S(12, __c1, 4)),
-          endItem: S.optional(__S(12, __c1, 4)),
-          startItem: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "CardRowThreeItems" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          item: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "CardRowOneItem" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startItem: S.optional(__S(12, __c1, 4)),
-          endItem: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "CardRowTwoItems" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          threeItems: S.optional(__S(13, __c1, 5)),
-          oneItem: S.optional(__S(14, __c1, 6)),
-          twoItems: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "CardRowTemplateInfo" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cardRowTemplateInfos: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "CardTemplateOverride" });
-    case 3:
-      return S.Array(__S(14, __c1, 6));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          detailsItemInfos: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "DetailsTemplateOverride" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          fieldSelector: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "BarcodeSectionDetail" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          secondTopDetail: S.optional(__S(21, __c2, 5)),
-          firstTopDetail: S.optional(__S(21, __c2, 5)),
-          firstBottomDetail: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "CardBarcodeSectionDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fieldOption: S.optional(__S(11, __c1, 3)),
-          transitOption: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FirstRowOption" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          firstRowOption: S.optional(__S(23, __c2, 7)),
-          thirdRowOption: S.optional(__S(11, __c1, 3)),
-          secondRowOption: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "ListTemplateOverride" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cardTemplateOverride: S.optional(__S(18, __c2, 2)),
-          detailsTemplateOverride: S.optional(__S(20, __c2, 4)),
-          cardBarcodeSectionDetails: S.optional(__S(22, __c2, 6)),
-          listTemplateOverride: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "ClassTemplateInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          uri: S.optional(S.String),
-          localizedDescription: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ImageUri" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sourceUri: S.optional(__S(26, __c3, 2)),
-          contentDescription: S.optional(__S(4, __c0, 4)),
-          kind: S.optional(S.String),
-          privateImageId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Image" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mainImage: S.optional(__S(27, __c3, 3)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImageModuleData" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          updateRequestUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CallbackOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          uri: S.optional(S.String),
-          id: S.optional(S.String),
-          localizedDescription: S.optional(__S(4, __c0, 4)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Uri" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.optional(S.String),
-          targetUri: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "AppLinkDataAppLinkInfoAppTarget",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(__S(4, __c0, 4)),
-          description: S.optional(__S(4, __c0, 4)),
-          appLogoImage: S.optional(__S(27, __c3, 3)),
-          appTarget: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "AppLinkDataAppLinkInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayText: S.optional(__S(4, __c0, 4)),
-          androidAppLinkInfo: S.optional(__S(33, __c4, 1)),
-          iosAppLinkInfo: S.optional(__S(33, __c4, 1)),
-          webAppLinkInfo: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "AppLinkData" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          customDoorsOpenLabel: S.optional(__S(4, __c0, 4)),
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-          doorsOpen: S.optional(S.String),
-          doorsOpenLabel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventDateTime" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          localizedLabel: S.optional(__S(4, __c0, 4)),
-          label: S.optional(S.String),
-          value: S.optional(S.String),
-          localizedValue: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "LabelValue" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          columns: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "LabelValueRow" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          showLastUpdateTime: S.optional(S.Boolean),
-          labelValueRows: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "InfoModuleData" });
-    case 1:
-      return S.Array(__S(5, __c0, 5));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          comments: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Review" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayInterval: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "ModuleViewConstraints" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(__S(27, __c3, 3)),
-          header: S.optional(__S(4, __c0, 4)),
-          sortIndex: S.optional(S.Number),
-          viewConstraints: S.optional(__S(43, __c5, 3)),
-          body: S.optional(__S(4, __c0, 4)),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ValueAddedModuleData" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          localizedHeader: S.optional(__S(4, __c0, 4)),
-          id: S.optional(S.String),
-          header: S.optional(S.String),
-          localizedBody: S.optional(__S(4, __c0, 4)),
-          body: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TextModuleData" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          animationType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecurityAnimation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          longitude: S.optional(S.Number),
-          kind: S.optional(S.String),
-          latitude: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LatLongPoint" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          longitude: S.optional(S.Number),
-          latitude: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MerchantLocation" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.Array(__S(31, __c3, 7));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uris: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({ identifier: "LinksModuleData" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          customGateLabel: S.optional(__S(4, __c0, 4)),
-          venue: S.optional(__S(8, __c1, 0)),
-          customSeatLabel: S.optional(__S(4, __c0, 4)),
-          issuerName: S.optional(S.String),
-          classTemplateInfo: S.optional(__S(25, __c3, 1)),
-          sectionLabel: S.optional(S.String),
-          localizedIssuerName: S.optional(__S(4, __c0, 4)),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          finePrint: S.optional(__S(4, __c0, 4)),
-          confirmationCodeLabel: S.optional(S.String),
-          allowMultipleUsersPerObject: S.optional(S.Boolean),
-          callbackOptions: S.optional(__S(30, __c3, 6)),
-          notifyPreference: S.optional(S.String),
-          eventId: S.optional(S.String),
-          logo: S.optional(__S(27, __c3, 3)),
-          viewUnlockRequirement: S.optional(S.String),
-          countryCode: S.optional(S.String),
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          dateTime: S.optional(__S(35, __c4, 3)),
-          infoModuleData: S.optional(__S(40, __c5, 0)),
-          messages: S.optional(__S(41, __c5, 1)),
-          version: S.optional(S.String),
-          kind: S.optional(S.String),
-          review: S.optional(__S(42, __c5, 2)),
-          seatLabel: S.optional(S.String),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          rowLabel: S.optional(S.String),
-          textModulesData: S.optional(__S(47, __c5, 7)),
-          customSectionLabel: S.optional(__S(4, __c0, 4)),
-          securityAnimation: S.optional(__S(48, __c6, 0)),
-          eventName: S.optional(__S(4, __c0, 4)),
-          locations: S.optional(__S(50, __c6, 2)),
-          wideLogo: S.optional(__S(27, __c3, 3)),
-          hexBackgroundColor: S.optional(S.String),
-          customConfirmationCodeLabel: S.optional(__S(4, __c0, 4)),
-          id: S.optional(S.String),
-          homepageUri: S.optional(__S(31, __c3, 7)),
-          enableSmartTap: S.optional(S.Boolean),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
-          gateLabel: S.optional(S.String),
-          reviewStatus: S.optional(S.String),
-          wordMark: S.optional(__S(27, __c3, 3)),
-          heroImage: S.optional(__S(27, __c3, 3)),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          redemptionIssuers: S.optional(__S(55, __c6, 7)),
-          customRowLabel: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "EventTicketClass" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "EventTicketClassAddMessageResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "walletobjects/v1/eventTicketObject/{resourceId}/addMessage",
-            baseUrl: "https://walletobjects.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddmessageEventticketobjectRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          micros: S.optional(S.String),
-          kind: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Money" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          restrictToEmailSha256: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SaveRestrictions" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sortIndex: S.optional(S.Number),
-          groupingId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GroupingInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          row: S.optional(__S(4, __c0, 4)),
-          section: S.optional(__S(4, __c0, 4)),
-          seat: S.optional(__S(4, __c0, 4)),
-          kind: S.optional(S.String),
-          gate: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "EventSeat" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          screenshotEligibility: S.optional(S.String),
-          nfcConstraint: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({ identifier: "PassConstraints" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          confirmationCode: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventReservationInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          valueLength: S.optional(S.Number),
-          key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RotatingBarcodeTotpDetailsTotpParameters",
-      });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          periodMillis: S.optional(S.String),
-          parameters: S.optional(__S(67, __c8, 3)),
-          algorithm: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RotatingBarcodeTotpDetails",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          startDateTime: S.optional(S.String),
-          values: S.optional(__S(55, __c6, 7)),
-          periodMillis: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RotatingBarcodeValues" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          renderEncoding: S.optional(S.String),
-          totpDetails: S.optional(__S(68, __c8, 4)),
-          initialRotatingBarcodeValues: S.optional(__S(69, __c8, 5)),
-          type: S.optional(S.String),
-          showCodeText: S.optional(__S(4, __c0, 4)),
-          alternateText: S.optional(S.String),
-          valuePattern: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RotatingBarcode" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          showCodeText: S.optional(__S(4, __c0, 4)),
-          value: S.optional(S.String),
-          type: S.optional(S.String),
-          renderEncoding: S.optional(S.String),
-          alternateText: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Barcode" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          classReference: S.optional(__S(56, __c7, 0)),
-          id: S.optional(S.String),
-          infoModuleData: S.optional(__S(40, __c5, 0)),
-          hasLinkedDevice: S.optional(S.Boolean),
-          locations: S.optional(__S(50, __c6, 2)),
-          kind: S.optional(S.String),
-          classId: S.optional(S.String),
-          state: S.optional(S.String),
-          disableExpirationNotification: S.optional(S.Boolean),
-          faceValue: S.optional(__S(59, __c7, 3)),
-          heroImage: S.optional(__S(27, __c3, 3)),
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          saveRestrictions: S.optional(__S(60, __c7, 4)),
-          groupingInfo: S.optional(__S(61, __c7, 5)),
-          linkedObjectIds: S.optional(__S(55, __c6, 7)),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          ticketNumber: S.optional(S.String),
-          validTimeInterval: S.optional(__S(1, __c0, 1)),
-          messages: S.optional(__S(41, __c5, 1)),
-          hasUsers: S.optional(S.Boolean),
-          linkedOfferIds: S.optional(__S(55, __c6, 7)),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-          textModulesData: S.optional(__S(47, __c5, 7)),
-          seatInfo: S.optional(__S(62, __c7, 6)),
-          notifyPreference: S.optional(S.String),
-          ticketType: S.optional(__S(4, __c0, 4)),
-          passConstraints: S.optional(__S(64, __c8, 0)),
-          reservationInfo: S.optional(__S(65, __c8, 1)),
-          version: S.optional(S.String),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          rotatingBarcode: S.optional(__S(70, __c8, 6)),
-          smartTapRedemptionValue: S.optional(S.String),
-          hexBackgroundColor: S.optional(S.String),
-          ticketHolderName: S.optional(S.String),
-          barcode: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "EventTicketObject" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "EventTicketObjectAddMessageResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "walletobjects/v1/flightClass/{resourceId}/addMessage",
-            baseUrl: "https://walletobjects.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddmessageFlightclassRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          carrierIataCode: S.optional(S.String),
-          wideAirlineLogo: S.optional(__S(27, __c3, 3)),
-          kind: S.optional(S.String),
-          airlineName: S.optional(__S(4, __c0, 4)),
-          airlineLogo: S.optional(__S(27, __c3, 3)),
-          airlineAllianceLogo: S.optional(__S(27, __c3, 3)),
-          carrierIcaoCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FlightCarrier" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          carrier: S.optional(__S(75, __c9, 3)),
-          flightNumberDisplayOverride: S.optional(S.String),
-          flightNumber: S.optional(S.String),
-          kind: S.optional(S.String),
-          operatingCarrier: S.optional(__S(75, __c9, 3)),
-          operatingFlightNumber: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FlightHeader" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          airportNameOverride: S.optional(__S(4, __c0, 4)),
-          terminal: S.optional(S.String),
-          kind: S.optional(S.String),
-          airportIataCode: S.optional(S.String),
-          gate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AirportInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          seatClassPolicy: S.optional(S.String),
-          kind: S.optional(S.String),
-          boardingPolicy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BoardingAndSeatingPolicy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          review: S.optional(__S(42, __c5, 2)),
-          hexBackgroundColor: S.optional(S.String),
-          notifyPreference: S.optional(S.String),
-          textModulesData: S.optional(__S(47, __c5, 7)),
-          messages: S.optional(__S(41, __c5, 1)),
-          locations: S.optional(__S(50, __c6, 2)),
-          classTemplateInfo: S.optional(__S(25, __c3, 1)),
-          id: S.optional(S.String),
-          reviewStatus: S.optional(S.String),
-          flightHeader: S.optional(__S(76, __c9, 4)),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          countryCode: S.optional(S.String),
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          origin: S.optional(__S(77, __c9, 5)),
-          infoModuleData: S.optional(__S(40, __c5, 0)),
-          heroImage: S.optional(__S(27, __c3, 3)),
-          wordMark: S.optional(__S(27, __c3, 3)),
-          localEstimatedOrActualArrivalDateTime: S.optional(S.String),
-          localScheduledArrivalDateTime: S.optional(S.String),
-          securityAnimation: S.optional(__S(48, __c6, 0)),
-          destination: S.optional(__S(77, __c9, 5)),
-          languageOverride: S.optional(S.String),
-          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
-          viewUnlockRequirement: S.optional(S.String),
-          localBoardingDateTime: S.optional(S.String),
-          version: S.optional(S.String),
-          localizedIssuerName: S.optional(__S(4, __c0, 4)),
-          boardingAndSeatingPolicy: S.optional(__S(78, __c9, 6)),
-          localScheduledDepartureDateTime: S.optional(S.String),
-          localEstimatedOrActualDepartureDateTime: S.optional(S.String),
-          redemptionIssuers: S.optional(__S(55, __c6, 7)),
-          allowMultipleUsersPerObject: S.optional(S.Boolean),
-          kind: S.optional(S.String),
-          homepageUri: S.optional(__S(31, __c3, 7)),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          callbackOptions: S.optional(__S(30, __c3, 6)),
-          enableSmartTap: S.optional(S.Boolean),
-          flightStatus: S.optional(S.String),
-          issuerName: S.optional(S.String),
-          localGateClosingDateTime: S.optional(S.String),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "FlightClass" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({
-        identifier: "FlightClassAddMessageResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "walletobjects/v1/flightObject/{resourceId}/addMessage",
-            baseUrl: "https://walletobjects.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddmessageFlightobjectRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          seatNumber: S.optional(S.String),
-          boardingPosition: S.optional(S.String),
-          boardingGroup: S.optional(S.String),
-          kind: S.optional(S.String),
-          seatAssignment: S.optional(__S(4, __c0, 4)),
-          seatClass: S.optional(S.String),
-          boardingDoor: S.optional(S.String),
-          sequenceNumber: S.optional(S.String),
-          boardingPrivilegeImage: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "BoardingAndSeatingInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          frequentFlyerProgramName: S.optional(__S(4, __c0, 4)),
-          kind: S.optional(S.String),
-          frequentFlyerNumber: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FrequentFlyerInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          frequentFlyerInfo: S.optional(__S(83, __c10, 3)),
-          eticketNumber: S.optional(S.String),
-          confirmationCode: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReservationInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hasLinkedDevice: S.optional(S.Boolean),
-          validTimeInterval: S.optional(__S(1, __c0, 1)),
-          messages: S.optional(__S(41, __c5, 1)),
-          saveRestrictions: S.optional(__S(60, __c7, 4)),
-          infoModuleData: S.optional(__S(40, __c5, 0)),
-          hasUsers: S.optional(S.Boolean),
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          notifyPreference: S.optional(S.String),
-          classReference: S.optional(__S(79, __c9, 7)),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-          kind: S.optional(S.String),
-          classId: S.optional(S.String),
-          groupingInfo: S.optional(__S(61, __c7, 5)),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          textModulesData: S.optional(__S(47, __c5, 7)),
-          smartTapRedemptionValue: S.optional(S.String),
-          locations: S.optional(__S(50, __c6, 2)),
-          id: S.optional(S.String),
-          linkedObjectIds: S.optional(__S(55, __c6, 7)),
-          securityProgramLogo: S.optional(__S(27, __c3, 3)),
-          boardingAndSeatingInfo: S.optional(__S(82, __c10, 2)),
-          passengerName: S.optional(S.String),
-          version: S.optional(S.String),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          rotatingBarcode: S.optional(__S(70, __c8, 6)),
-          hexBackgroundColor: S.optional(S.String),
-          state: S.optional(S.String),
-          disableExpirationNotification: S.optional(S.Boolean),
-          passConstraints: S.optional(__S(64, __c8, 0)),
-          barcode: S.optional(__S(71, __c8, 7)),
-          heroImage: S.optional(__S(27, __c3, 3)),
-          reservationInfo: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "FlightObject" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(85, __c10, 5)),
-        }),
-      ).annotate({
-        identifier: "FlightObjectAddMessageResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "walletobjects/v1/genericClass/{resourceId}/addMessage",
-            baseUrl: "https://walletobjects.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddmessageGenericclassRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          messages: S.optional(__S(41, __c5, 1)),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
-          enableSmartTap: S.optional(S.Boolean),
-          redemptionIssuers: S.optional(__S(55, __c6, 7)),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-          callbackOptions: S.optional(__S(30, __c3, 6)),
-          viewUnlockRequirement: S.optional(S.String),
-          id: S.optional(S.String),
-          securityAnimation: S.optional(__S(48, __c6, 0)),
-          classTemplateInfo: S.optional(__S(25, __c3, 1)),
-          textModulesData: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "GenericClass" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "GenericClassAddMessageResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "walletobjects/v1/genericObject/{resourceId}/addMessage",
-            baseUrl: "https://walletobjects.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddmessageGenericobjectRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enableNotification: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "UpcomingNotification" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          upcomingNotification: S.optional(__S(91, __c11, 3)),
-          expiryNotification: S.optional(__S(91, __c11, 3)),
-        }),
-      ).annotate({ identifier: "Notifications" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          heroImage: S.optional(__S(27, __c3, 3)),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          rotatingBarcode: S.optional(__S(70, __c8, 6)),
-          wideLogo: S.optional(__S(27, __c3, 3)),
-          subheader: S.optional(__S(4, __c0, 4)),
-          notifications: S.optional(__S(92, __c11, 4)),
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          messages: S.optional(__S(41, __c5, 1)),
-          groupingInfo: S.optional(__S(61, __c7, 5)),
-          hasUsers: S.optional(S.Boolean),
-          passConstraints: S.optional(__S(64, __c8, 0)),
-          textModulesData: S.optional(__S(47, __c5, 7)),
-          classId: S.optional(S.String),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          linkedObjectIds: S.optional(__S(55, __c6, 7)),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          id: S.optional(S.String),
-          hexBackgroundColor: S.optional(S.String),
-          validTimeInterval: S.optional(__S(1, __c0, 1)),
-          genericType: S.optional(S.String),
-          state: S.optional(S.String),
-          header: S.optional(__S(4, __c0, 4)),
-          saveRestrictions: S.optional(__S(60, __c7, 4)),
-          smartTapRedemptionValue: S.optional(S.String),
-          barcode: S.optional(__S(71, __c8, 7)),
-          cardTitle: S.optional(__S(4, __c0, 4)),
-          logo: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "GenericObject" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({
-        identifier: "GenericObjectAddMessageResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5995,69 +5050,166 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "AddmessageGiftcardclassRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "GiftCardClassAddMessageResponse",
+      });
   }
 }
-function __c12(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          homepageUri: S.optional(__S(31, __c3, 7)),
-          callbackOptions: S.optional(__S(30, __c3, 6)),
+          homepageUri: S.optional(__S(1642, __c51, 10)),
+          callbackOptions: S.optional(__S(1504, __c47, 0)),
           hexBackgroundColor: S.optional(S.String),
-          programLogo: S.optional(__S(27, __c3, 3)),
+          programLogo: S.optional(__S(1639, __c51, 7)),
           notifyPreference: S.optional(S.String),
           enableSmartTap: S.optional(S.Boolean),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          redemptionIssuers: S.optional(__S(55, __c6, 7)),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          redemptionIssuers: S.optional(__S(1600, __c50, 0)),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
           multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
           issuerName: S.optional(S.String),
-          localizedIssuerName: S.optional(__S(4, __c0, 4)),
-          review: S.optional(__S(42, __c5, 2)),
-          heroImage: S.optional(__S(27, __c3, 3)),
+          localizedIssuerName: S.optional(__S(1636, __c51, 4)),
+          review: S.optional(__S(1477, __c46, 5)),
+          heroImage: S.optional(__S(1639, __c51, 7)),
           viewUnlockRequirement: S.optional(S.String),
           eventNumberLabel: S.optional(S.String),
           merchantName: S.optional(S.String),
-          localizedEventNumberLabel: S.optional(__S(4, __c0, 4)),
-          localizedPinLabel: S.optional(__S(4, __c0, 4)),
-          localizedMerchantName: S.optional(__S(4, __c0, 4)),
-          localizedCardNumberLabel: S.optional(__S(4, __c0, 4)),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          securityAnimation: S.optional(__S(48, __c6, 0)),
-          locations: S.optional(__S(50, __c6, 2)),
-          wideProgramLogo: S.optional(__S(27, __c3, 3)),
+          localizedEventNumberLabel: S.optional(__S(1636, __c51, 4)),
+          localizedPinLabel: S.optional(__S(1636, __c51, 4)),
+          localizedMerchantName: S.optional(__S(1636, __c51, 4)),
+          localizedCardNumberLabel: S.optional(__S(1636, __c51, 4)),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          securityAnimation: S.optional(__S(1553, __c48, 17)),
+          locations: S.optional(__S(1479, __c46, 7)),
+          wideProgramLogo: S.optional(__S(1639, __c51, 7)),
           cardNumberLabel: S.optional(S.String),
           allowMultipleUsersPerObject: S.optional(S.Boolean),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
           pinLabel: S.optional(S.String),
-          messages: S.optional(__S(41, __c5, 1)),
+          messages: S.optional(__S(1646, __c51, 14)),
           allowBarcodeRedemption: S.optional(S.Boolean),
-          infoModuleData: S.optional(__S(40, __c5, 0)),
+          infoModuleData: S.optional(__S(1476, __c46, 4)),
           id: S.optional(S.String),
           countryCode: S.optional(S.String),
-          appLinkData: S.optional(__S(34, __c4, 2)),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
           reviewStatus: S.optional(S.String),
-          textModulesData: S.optional(__S(47, __c5, 7)),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
           version: S.optional(S.String),
           kind: S.optional(S.String),
-          classTemplateInfo: S.optional(__S(25, __c3, 1)),
-          wordMark: S.optional(__S(27, __c3, 3)),
+          classTemplateInfo: S.optional(__S(1552, __c48, 16)),
+          wordMark: S.optional(__S(1639, __c51, 7)),
         }),
       ).annotate({ identifier: "GiftCardClass" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String.pipe(T.Label()),
+          body: S.optional(__S(585, __c18, 9).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "walletobjects/v1/transitObject/{resourceId}",
+            baseUrl: "https://walletobjects.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateTransitobjectRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          finalStatus: S.optional(S.Number),
+          physicalHeaders: S.optional(S.String),
+          notificationType: S.optional(S.String),
+          diffObjectVersion: S.optional(S.String),
+          totalBytesIsEstimated: S.optional(S.Boolean),
+          customData: S.optional(S.String),
+          requestReceivedParamsServingInfo: S.optional(S.String),
+          totalBytes: S.optional(S.String),
+          currentBytes: S.optional(S.String),
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MediaRequestInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(96, __c12, 0)),
+          blob: S.optional(__S(651, __c20, 11)),
+          mediaRequestInfo: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
-        identifier: "GiftCardClassAddMessageResponse",
+        identifier: "TransitObjectUploadRotatingBarcodeValuesRequest",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(97, __c3, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "walletobjects/v1/transitObject/{resourceId}/uploadRotatingBarcodeValues",
+            baseUrl: "https://walletobjects.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UploadMediaRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TransitObjectUploadRotatingBarcodeValuesResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          json: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JsonResource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jsonResource: S.optional(__S(128, __c4, 0)),
+          jwtResource: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "JwtValidateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(129, __c4, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "walletobjects/v1/jwt/validate",
+            baseUrl: "https://walletobjects.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ValidateJwtRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6068,57 +5220,65 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "AddmessageGiftcardobjectRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          classId: S.optional(S.String),
-          classReference: S.optional(__S(96, __c12, 0)),
-          validTimeInterval: S.optional(__S(1, __c0, 1)),
-          kind: S.optional(S.String),
-          textModulesData: S.optional(__S(47, __c5, 7)),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-          smartTapRedemptionValue: S.optional(S.String),
-          infoModuleData: S.optional(__S(40, __c5, 0)),
-          messages: S.optional(__S(41, __c5, 1)),
-          hasUsers: S.optional(S.Boolean),
-          linkedObjectIds: S.optional(__S(55, __c6, 7)),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          rotatingBarcode: S.optional(__S(70, __c8, 6)),
-          cardNumber: S.optional(S.String),
-          passConstraints: S.optional(__S(64, __c8, 0)),
-          heroImage: S.optional(__S(27, __c3, 3)),
-          id: S.optional(S.String),
-          pin: S.optional(S.String),
-          balance: S.optional(__S(59, __c7, 3)),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          hasLinkedDevice: S.optional(S.Boolean),
-          version: S.optional(S.String),
-          state: S.optional(S.String),
-          barcode: S.optional(__S(71, __c8, 7)),
-          eventNumber: S.optional(S.String),
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          balanceUpdateTime: S.optional(__S(0, __c0, 0)),
-          disableExpirationNotification: S.optional(S.Boolean),
-          locations: S.optional(__S(50, __c6, 2)),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          notifyPreference: S.optional(S.String),
-          saveRestrictions: S.optional(__S(60, __c7, 4)),
-          groupingInfo: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({ identifier: "GiftCardObject" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(99, __c12, 3)),
+          resource: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({
         identifier: "GiftCardObjectAddMessageResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          classId: S.optional(S.String),
+          classReference: S.optional(__S(32, __c1, 0)),
+          validTimeInterval: S.optional(__S(1633, __c51, 1)),
+          kind: S.optional(S.String),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+          smartTapRedemptionValue: S.optional(S.String),
+          infoModuleData: S.optional(__S(1476, __c46, 4)),
+          messages: S.optional(__S(1646, __c51, 14)),
+          hasUsers: S.optional(S.Boolean),
+          linkedObjectIds: S.optional(__S(1600, __c50, 0)),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          rotatingBarcode: S.optional(__S(2568, __c80, 8)),
+          cardNumber: S.optional(S.String),
+          passConstraints: S.optional(__S(2563, __c80, 3)),
+          heroImage: S.optional(__S(1639, __c51, 7)),
+          id: S.optional(S.String),
+          pin: S.optional(S.String),
+          balance: S.optional(__S(2496, __c78, 0)),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          hasLinkedDevice: S.optional(S.Boolean),
+          version: S.optional(S.String),
+          state: S.optional(S.String),
+          barcode: S.optional(__S(2569, __c80, 9)),
+          eventNumber: S.optional(S.String),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          balanceUpdateTime: S.optional(__S(1632, __c51, 0)),
+          disableExpirationNotification: S.optional(S.Boolean),
+          locations: S.optional(__S(1479, __c46, 7)),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          notifyPreference: S.optional(S.String),
+          saveRestrictions: S.optional(__S(2560, __c80, 0)),
+          groupingInfo: S.optional(__S(2561, __c80, 1)),
+        }),
+      ).annotate({ identifier: "GiftCardObject" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6129,102 +5289,106 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "AddmessageLoyaltyclassRequest",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          signupSharedDatas: S.optional(__S(102, __c12, 6)),
-          signupWebsite: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "DiscoverableProgramMerchantSignupInfo",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          signinWebsite: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "DiscoverableProgramMerchantSigninInfo",
-      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          merchantSignupInfo: S.optional(__S(103, __c12, 7)),
-          merchantSigninInfo: S.optional(__S(104, __c13, 0)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiscoverableProgram" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          discoverableProgram: S.optional(__S(105, __c13, 1)),
-          classTemplateInfo: S.optional(__S(25, __c3, 1)),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          localizedAccountIdLabel: S.optional(__S(4, __c0, 4)),
-          accountNameLabel: S.optional(S.String),
-          localizedIssuerName: S.optional(__S(4, __c0, 4)),
-          heroImage: S.optional(__S(27, __c3, 3)),
-          programLogo: S.optional(__S(27, __c3, 3)),
-          homepageUri: S.optional(__S(31, __c3, 7)),
-          textModulesData: S.optional(__S(47, __c5, 7)),
-          kind: S.optional(S.String),
-          locations: S.optional(__S(50, __c6, 2)),
-          infoModuleData: S.optional(__S(40, __c5, 0)),
-          hexBackgroundColor: S.optional(S.String),
-          localizedSecondaryRewardsTier: S.optional(__S(4, __c0, 4)),
-          localizedRewardsTier: S.optional(__S(4, __c0, 4)),
-          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
-          programName: S.optional(S.String),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          accountIdLabel: S.optional(S.String),
-          rewardsTierLabel: S.optional(S.String),
-          id: S.optional(S.String),
-          wideProgramLogo: S.optional(__S(27, __c3, 3)),
-          localizedAccountNameLabel: S.optional(__S(4, __c0, 4)),
-          secondaryRewardsTier: S.optional(S.String),
-          notifyPreference: S.optional(S.String),
-          countryCode: S.optional(S.String),
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          secondaryRewardsTierLabel: S.optional(S.String),
-          securityAnimation: S.optional(__S(48, __c6, 0)),
-          issuerName: S.optional(S.String),
-          localizedProgramName: S.optional(__S(4, __c0, 4)),
-          wordMark: S.optional(__S(27, __c3, 3)),
-          allowMultipleUsersPerObject: S.optional(S.Boolean),
-          localizedRewardsTierLabel: S.optional(__S(4, __c0, 4)),
-          reviewStatus: S.optional(S.String),
-          viewUnlockRequirement: S.optional(S.String),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-          messages: S.optional(__S(41, __c5, 1)),
-          version: S.optional(S.String),
-          localizedSecondaryRewardsTierLabel: S.optional(__S(4, __c0, 4)),
-          redemptionIssuers: S.optional(__S(55, __c6, 7)),
-          review: S.optional(__S(42, __c5, 2)),
-          enableSmartTap: S.optional(S.Boolean),
-          rewardsTier: S.optional(S.String),
-          callbackOptions: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "LoyaltyClass" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(106, __c13, 2)),
+          resource: S.optional(__S(260, __c8, 4)),
         }),
       ).annotate({
         identifier: "LoyaltyClassAddMessageResponse",
       });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          signupSharedDatas: S.optional(__S(256, __c8, 0)),
+          signupWebsite: S.optional(__S(1642, __c51, 10)),
+        }),
+      ).annotate({
+        identifier: "DiscoverableProgramMerchantSignupInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          signinWebsite: S.optional(__S(1642, __c51, 10)),
+        }),
+      ).annotate({
+        identifier: "DiscoverableProgramMerchantSigninInfo",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          merchantSignupInfo: S.optional(__S(257, __c8, 1)),
+          merchantSigninInfo: S.optional(__S(258, __c8, 2)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiscoverableProgram" });
     case 4:
       return S.suspend(() =>
         S.Struct({
+          discoverableProgram: S.optional(__S(259, __c8, 3)),
+          classTemplateInfo: S.optional(__S(1552, __c48, 16)),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          localizedAccountIdLabel: S.optional(__S(1636, __c51, 4)),
+          accountNameLabel: S.optional(S.String),
+          localizedIssuerName: S.optional(__S(1636, __c51, 4)),
+          heroImage: S.optional(__S(1639, __c51, 7)),
+          programLogo: S.optional(__S(1639, __c51, 7)),
+          homepageUri: S.optional(__S(1642, __c51, 10)),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
+          kind: S.optional(S.String),
+          locations: S.optional(__S(1479, __c46, 7)),
+          infoModuleData: S.optional(__S(1476, __c46, 4)),
+          hexBackgroundColor: S.optional(S.String),
+          localizedSecondaryRewardsTier: S.optional(__S(1636, __c51, 4)),
+          localizedRewardsTier: S.optional(__S(1636, __c51, 4)),
+          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
+          programName: S.optional(S.String),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          accountIdLabel: S.optional(S.String),
+          rewardsTierLabel: S.optional(S.String),
+          id: S.optional(S.String),
+          wideProgramLogo: S.optional(__S(1639, __c51, 7)),
+          localizedAccountNameLabel: S.optional(__S(1636, __c51, 4)),
+          secondaryRewardsTier: S.optional(S.String),
+          notifyPreference: S.optional(S.String),
+          countryCode: S.optional(S.String),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          secondaryRewardsTierLabel: S.optional(S.String),
+          securityAnimation: S.optional(__S(1553, __c48, 17)),
+          issuerName: S.optional(S.String),
+          localizedProgramName: S.optional(__S(1636, __c51, 4)),
+          wordMark: S.optional(__S(1639, __c51, 7)),
+          allowMultipleUsersPerObject: S.optional(S.Boolean),
+          localizedRewardsTierLabel: S.optional(__S(1636, __c51, 4)),
+          reviewStatus: S.optional(S.String),
+          viewUnlockRequirement: S.optional(S.String),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+          messages: S.optional(__S(1646, __c51, 14)),
+          version: S.optional(S.String),
+          localizedSecondaryRewardsTierLabel: S.optional(__S(1636, __c51, 4)),
+          redemptionIssuers: S.optional(__S(1600, __c50, 0)),
+          review: S.optional(__S(1477, __c46, 5)),
+          enableSmartTap: S.optional(S.Boolean),
+          rewardsTier: S.optional(S.String),
+          callbackOptions: S.optional(__S(1504, __c47, 0)),
+        }),
+      ).annotate({ identifier: "LoyaltyClass" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6235,78 +5399,82 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "AddmessageLoyaltyobjectRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          money: S.optional(__S(59, __c7, 3)),
+          resource: S.optional(__S(322, __c10, 2)),
+        }),
+      ).annotate({
+        identifier: "LoyaltyObjectAddMessageResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          money: S.optional(__S(2496, __c78, 0)),
           string: S.optional(S.String),
           double: S.optional(S.Number),
           int: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LoyaltyPointsBalance" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          balance: S.optional(__S(109, __c13, 5)),
-          localizedLabel: S.optional(__S(4, __c0, 4)),
+          balance: S.optional(__S(320, __c10, 0)),
+          localizedLabel: S.optional(__S(1636, __c51, 4)),
           label: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoyaltyPoints" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          locations: S.optional(__S(50, __c6, 2)),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          rotatingBarcode: S.optional(__S(70, __c8, 6)),
-          groupingInfo: S.optional(__S(61, __c7, 5)),
-          passConstraints: S.optional(__S(64, __c8, 0)),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          locations: S.optional(__S(1479, __c46, 7)),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          rotatingBarcode: S.optional(__S(2568, __c80, 8)),
+          groupingInfo: S.optional(__S(2561, __c80, 1)),
+          passConstraints: S.optional(__S(2563, __c80, 3)),
           accountId: S.optional(S.String),
-          linkedOfferIds: S.optional(__S(55, __c6, 7)),
-          textModulesData: S.optional(__S(47, __c5, 7)),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-          heroImage: S.optional(__S(27, __c3, 3)),
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          messages: S.optional(__S(41, __c5, 1)),
+          linkedOfferIds: S.optional(__S(1600, __c50, 0)),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+          heroImage: S.optional(__S(1639, __c51, 7)),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          messages: S.optional(__S(1646, __c51, 14)),
           classId: S.optional(S.String),
           smartTapRedemptionValue: S.optional(S.String),
           hasUsers: S.optional(S.Boolean),
-          linkedObjectIds: S.optional(__S(55, __c6, 7)),
-          validTimeInterval: S.optional(__S(1, __c0, 1)),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          loyaltyPoints: S.optional(__S(110, __c13, 6)),
+          linkedObjectIds: S.optional(__S(1600, __c50, 0)),
+          validTimeInterval: S.optional(__S(1633, __c51, 1)),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          loyaltyPoints: S.optional(__S(321, __c10, 1)),
           state: S.optional(S.String),
-          secondaryLoyaltyPoints: S.optional(__S(110, __c13, 6)),
+          secondaryLoyaltyPoints: S.optional(__S(321, __c10, 1)),
           hasLinkedDevice: S.optional(S.Boolean),
           disableExpirationNotification: S.optional(S.Boolean),
           notifyPreference: S.optional(S.String),
           kind: S.optional(S.String),
-          barcode: S.optional(__S(71, __c8, 7)),
-          classReference: S.optional(__S(106, __c13, 2)),
+          barcode: S.optional(__S(2569, __c80, 9)),
+          classReference: S.optional(__S(260, __c8, 4)),
           accountName: S.optional(S.String),
-          saveRestrictions: S.optional(__S(60, __c7, 4)),
+          saveRestrictions: S.optional(__S(2560, __c80, 0)),
           version: S.optional(S.String),
           id: S.optional(S.String),
-          infoModuleData: S.optional(__S(40, __c5, 0)),
+          infoModuleData: S.optional(__S(1476, __c46, 4)),
         }),
       ).annotate({ identifier: "LoyaltyObject" });
   }
 }
-function __c14(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(111, __c13, 7)),
-        }),
-      ).annotate({
-        identifier: "LoyaltyObjectAddMessageResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6317,68 +5485,76 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "AddmessageOfferclassRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          helpUri: S.optional(__S(31, __c3, 7)),
-          title: S.optional(S.String),
-          allowMultipleUsersPerObject: S.optional(S.Boolean),
-          review: S.optional(__S(42, __c5, 2)),
-          redemptionChannel: S.optional(S.String),
-          notifyPreference: S.optional(S.String),
-          textModulesData: S.optional(__S(47, __c5, 7)),
-          securityAnimation: S.optional(__S(48, __c6, 0)),
-          issuerName: S.optional(S.String),
-          enableSmartTap: S.optional(S.Boolean),
-          locations: S.optional(__S(50, __c6, 2)),
-          localizedTitle: S.optional(__S(4, __c0, 4)),
-          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-          heroImage: S.optional(__S(27, __c3, 3)),
-          redemptionIssuers: S.optional(__S(55, __c6, 7)),
-          reviewStatus: S.optional(S.String),
-          homepageUri: S.optional(__S(31, __c3, 7)),
-          provider: S.optional(S.String),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          shortTitle: S.optional(S.String),
-          titleImage: S.optional(__S(27, __c3, 3)),
-          classTemplateInfo: S.optional(__S(25, __c3, 1)),
-          infoModuleData: S.optional(__S(40, __c5, 0)),
-          messages: S.optional(__S(41, __c5, 1)),
-          kind: S.optional(S.String),
-          wideTitleImage: S.optional(__S(27, __c3, 3)),
-          localizedFinePrint: S.optional(__S(4, __c0, 4)),
-          finePrint: S.optional(S.String),
-          viewUnlockRequirement: S.optional(S.String),
-          localizedIssuerName: S.optional(__S(4, __c0, 4)),
-          version: S.optional(S.String),
-          localizedProvider: S.optional(__S(4, __c0, 4)),
-          details: S.optional(S.String),
-          countryCode: S.optional(S.String),
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          id: S.optional(S.String),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          hexBackgroundColor: S.optional(S.String),
-          localizedDetails: S.optional(__S(4, __c0, 4)),
-          localizedShortTitle: S.optional(__S(4, __c0, 4)),
-          callbackOptions: S.optional(__S(30, __c3, 6)),
-          wordMark: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "OfferClass" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(114, __c14, 2)),
+          resource: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({
         identifier: "OfferClassAddMessageResponse",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          helpUri: S.optional(__S(1642, __c51, 10)),
+          title: S.optional(S.String),
+          allowMultipleUsersPerObject: S.optional(S.Boolean),
+          review: S.optional(__S(1477, __c46, 5)),
+          redemptionChannel: S.optional(S.String),
+          notifyPreference: S.optional(S.String),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
+          securityAnimation: S.optional(__S(1553, __c48, 17)),
+          issuerName: S.optional(S.String),
+          enableSmartTap: S.optional(S.Boolean),
+          locations: S.optional(__S(1479, __c46, 7)),
+          localizedTitle: S.optional(__S(1636, __c51, 4)),
+          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+          heroImage: S.optional(__S(1639, __c51, 7)),
+          redemptionIssuers: S.optional(__S(1600, __c50, 0)),
+          reviewStatus: S.optional(S.String),
+          homepageUri: S.optional(__S(1642, __c51, 10)),
+          provider: S.optional(S.String),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          shortTitle: S.optional(S.String),
+          titleImage: S.optional(__S(1639, __c51, 7)),
+          classTemplateInfo: S.optional(__S(1552, __c48, 16)),
+          infoModuleData: S.optional(__S(1476, __c46, 4)),
+          messages: S.optional(__S(1646, __c51, 14)),
+          kind: S.optional(S.String),
+          wideTitleImage: S.optional(__S(1639, __c51, 7)),
+          localizedFinePrint: S.optional(__S(1636, __c51, 4)),
+          finePrint: S.optional(S.String),
+          viewUnlockRequirement: S.optional(S.String),
+          localizedIssuerName: S.optional(__S(1636, __c51, 4)),
+          version: S.optional(S.String),
+          localizedProvider: S.optional(__S(1636, __c51, 4)),
+          details: S.optional(S.String),
+          countryCode: S.optional(S.String),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          id: S.optional(S.String),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          hexBackgroundColor: S.optional(S.String),
+          localizedDetails: S.optional(__S(1636, __c51, 4)),
+          localizedShortTitle: S.optional(__S(1636, __c51, 4)),
+          callbackOptions: S.optional(__S(1504, __c47, 0)),
+          wordMark: S.optional(__S(1639, __c51, 7)),
+        }),
+      ).annotate({ identifier: "OfferClass" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6389,52 +5565,60 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "AddmessageOfferobjectRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          classId: S.optional(S.String),
-          hasLinkedDevice: S.optional(S.Boolean),
-          messages: S.optional(__S(41, __c5, 1)),
-          smartTapRedemptionValue: S.optional(S.String),
-          hasUsers: S.optional(S.Boolean),
-          validTimeInterval: S.optional(__S(1, __c0, 1)),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-          kind: S.optional(S.String),
-          state: S.optional(S.String),
-          barcode: S.optional(__S(71, __c8, 7)),
-          classReference: S.optional(__S(114, __c14, 2)),
-          linkedObjectIds: S.optional(__S(55, __c6, 7)),
-          version: S.optional(S.String),
-          infoModuleData: S.optional(__S(40, __c5, 0)),
-          disableExpirationNotification: S.optional(S.Boolean),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          locations: S.optional(__S(50, __c6, 2)),
-          textModulesData: S.optional(__S(47, __c5, 7)),
-          groupingInfo: S.optional(__S(61, __c7, 5)),
-          passConstraints: S.optional(__S(64, __c8, 0)),
-          saveRestrictions: S.optional(__S(60, __c7, 4)),
-          notifyPreference: S.optional(S.String),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          rotatingBarcode: S.optional(__S(70, __c8, 6)),
-          heroImage: S.optional(__S(27, __c3, 3)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OfferObject" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(117, __c14, 5)),
+          resource: S.optional(__S(448, __c14, 0)),
         }),
       ).annotate({
         identifier: "OfferObjectAddMessageResponse",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          classId: S.optional(S.String),
+          hasLinkedDevice: S.optional(S.Boolean),
+          messages: S.optional(__S(1646, __c51, 14)),
+          smartTapRedemptionValue: S.optional(S.String),
+          hasUsers: S.optional(S.Boolean),
+          validTimeInterval: S.optional(__S(1633, __c51, 1)),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+          kind: S.optional(S.String),
+          state: S.optional(S.String),
+          barcode: S.optional(__S(2569, __c80, 9)),
+          classReference: S.optional(__S(384, __c12, 0)),
+          linkedObjectIds: S.optional(__S(1600, __c50, 0)),
+          version: S.optional(S.String),
+          infoModuleData: S.optional(__S(1476, __c46, 4)),
+          disableExpirationNotification: S.optional(S.Boolean),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          locations: S.optional(__S(1479, __c46, 7)),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
+          groupingInfo: S.optional(__S(2561, __c80, 1)),
+          passConstraints: S.optional(__S(2563, __c80, 3)),
+          saveRestrictions: S.optional(__S(2560, __c80, 0)),
+          notifyPreference: S.optional(S.String),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          rotatingBarcode: S.optional(__S(2568, __c80, 8)),
+          heroImage: S.optional(__S(1639, __c51, 7)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OfferObject" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6445,9 +5629,17 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "AddmessageTransitclassRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(513, __c16, 1)),
+        }),
+      ).annotate({
+        identifier: "TransitClassAddMessageResponse",
+      });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6462,74 +5654,70 @@ function __c15(j: number): any {
           issuerName: S.optional(S.String),
           hexBackgroundColor: S.optional(S.String),
           allowMultipleUsersPerObject: S.optional(S.Boolean),
-          customTransitTerminusNameLabel: S.optional(__S(4, __c0, 4)),
-          customTicketNumberLabel: S.optional(__S(4, __c0, 4)),
-          messages: S.optional(__S(41, __c5, 1)),
-          homepageUri: S.optional(__S(31, __c3, 7)),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          customDiscountMessageLabel: S.optional(__S(4, __c0, 4)),
+          customTransitTerminusNameLabel: S.optional(__S(1636, __c51, 4)),
+          customTicketNumberLabel: S.optional(__S(1636, __c51, 4)),
+          messages: S.optional(__S(1646, __c51, 14)),
+          homepageUri: S.optional(__S(1642, __c51, 10)),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          customDiscountMessageLabel: S.optional(__S(1636, __c51, 4)),
           id: S.optional(S.String),
-          customRouteRestrictionsLabel: S.optional(__S(4, __c0, 4)),
+          customRouteRestrictionsLabel: S.optional(__S(1636, __c51, 4)),
           transitType: S.optional(S.String),
-          customFareNameLabel: S.optional(__S(4, __c0, 4)),
-          heroImage: S.optional(__S(27, __c3, 3)),
-          redemptionIssuers: S.optional(__S(55, __c6, 7)),
+          customFareNameLabel: S.optional(__S(1636, __c51, 4)),
+          heroImage: S.optional(__S(1639, __c51, 7)),
+          redemptionIssuers: S.optional(__S(1600, __c50, 0)),
           multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
           viewUnlockRequirement: S.optional(S.String),
-          customSeatLabel: S.optional(__S(4, __c0, 4)),
-          customCarriageLabel: S.optional(__S(4, __c0, 4)),
-          customZoneLabel: S.optional(__S(4, __c0, 4)),
-          infoModuleData: S.optional(__S(40, __c5, 0)),
-          securityAnimation: S.optional(__S(48, __c6, 0)),
+          customSeatLabel: S.optional(__S(1636, __c51, 4)),
+          customCarriageLabel: S.optional(__S(1636, __c51, 4)),
+          customZoneLabel: S.optional(__S(1636, __c51, 4)),
+          infoModuleData: S.optional(__S(1476, __c46, 4)),
+          securityAnimation: S.optional(__S(1553, __c48, 17)),
           enableSingleLegItinerary: S.optional(S.Boolean),
-          callbackOptions: S.optional(__S(30, __c3, 6)),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          customConcessionCategoryLabel: S.optional(__S(4, __c0, 4)),
-          customFareClassLabel: S.optional(__S(4, __c0, 4)),
+          callbackOptions: S.optional(__S(1504, __c47, 0)),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          customConcessionCategoryLabel: S.optional(__S(1636, __c51, 4)),
+          customFareClassLabel: S.optional(__S(1636, __c51, 4)),
           countryCode: S.optional(S.String),
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          activationOptions: S.optional(__S(120, __c15, 0)),
-          textModulesData: S.optional(__S(47, __c5, 7)),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          activationOptions: S.optional(__S(512, __c16, 0)),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
           languageOverride: S.optional(S.String),
-          customPurchaseReceiptNumberLabel: S.optional(__S(4, __c0, 4)),
-          wordMark: S.optional(__S(27, __c3, 3)),
-          customRouteRestrictionsDetailsLabel: S.optional(__S(4, __c0, 4)),
-          customPurchasePriceLabel: S.optional(__S(4, __c0, 4)),
-          classTemplateInfo: S.optional(__S(25, __c3, 1)),
+          customPurchaseReceiptNumberLabel: S.optional(__S(1636, __c51, 4)),
+          wordMark: S.optional(__S(1639, __c51, 7)),
+          customRouteRestrictionsDetailsLabel: S.optional(__S(1636, __c51, 4)),
+          customPurchasePriceLabel: S.optional(__S(1636, __c51, 4)),
+          classTemplateInfo: S.optional(__S(1552, __c48, 16)),
           version: S.optional(S.String),
           enableSmartTap: S.optional(S.Boolean),
-          wideLogo: S.optional(__S(27, __c3, 3)),
-          review: S.optional(__S(42, __c5, 2)),
+          wideLogo: S.optional(__S(1639, __c51, 7)),
+          review: S.optional(__S(1477, __c46, 5)),
           notifyPreference: S.optional(S.String),
-          customPlatformLabel: S.optional(__S(4, __c0, 4)),
+          customPlatformLabel: S.optional(__S(1636, __c51, 4)),
           reviewStatus: S.optional(S.String),
-          customConfirmationCodeLabel: S.optional(__S(4, __c0, 4)),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-          customTimeRestrictionsLabel: S.optional(__S(4, __c0, 4)),
-          localizedIssuerName: S.optional(__S(4, __c0, 4)),
-          watermark: S.optional(__S(27, __c3, 3)),
-          logo: S.optional(__S(27, __c3, 3)),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
-          locations: S.optional(__S(50, __c6, 2)),
-          customCoachLabel: S.optional(__S(4, __c0, 4)),
-          customOtherRestrictionsLabel: S.optional(__S(4, __c0, 4)),
-          customPurchaseFaceValueLabel: S.optional(__S(4, __c0, 4)),
-          transitOperatorName: S.optional(__S(4, __c0, 4)),
+          customConfirmationCodeLabel: S.optional(__S(1636, __c51, 4)),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+          customTimeRestrictionsLabel: S.optional(__S(1636, __c51, 4)),
+          localizedIssuerName: S.optional(__S(1636, __c51, 4)),
+          watermark: S.optional(__S(1639, __c51, 7)),
+          logo: S.optional(__S(1639, __c51, 7)),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          locations: S.optional(__S(1479, __c46, 7)),
+          customCoachLabel: S.optional(__S(1636, __c51, 4)),
+          customOtherRestrictionsLabel: S.optional(__S(1636, __c51, 4)),
+          customPurchaseFaceValueLabel: S.optional(__S(1636, __c51, 4)),
+          transitOperatorName: S.optional(__S(1636, __c51, 4)),
         }),
       ).annotate({ identifier: "TransitClass" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(121, __c15, 1)),
-        }),
-      ).annotate({
-        identifier: "TransitClassAddMessageResponse",
-      });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6540,139 +5728,143 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "AddmessageTransitobjectRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(585, __c18, 9)),
+        }),
+      ).annotate({
+        identifier: "TransitObjectAddMessageResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           seat: S.optional(S.String),
-          seatAssignment: S.optional(__S(4, __c0, 4)),
+          seatAssignment: S.optional(__S(1636, __c51, 4)),
           coach: S.optional(S.String),
           fareClass: S.optional(S.String),
-          customFareClass: S.optional(__S(4, __c0, 4)),
+          customFareClass: S.optional(__S(1636, __c51, 4)),
         }),
       ).annotate({ identifier: "TicketSeat" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          transitOperatorName: S.optional(__S(4, __c0, 4)),
+          transitOperatorName: S.optional(__S(1636, __c51, 4)),
           departureDateTime: S.optional(S.String),
           destinationStationCode: S.optional(S.String),
           platform: S.optional(S.String),
-          destinationName: S.optional(__S(4, __c0, 4)),
+          destinationName: S.optional(__S(1636, __c51, 4)),
           arrivalDateTime: S.optional(S.String),
           zone: S.optional(S.String),
           carriage: S.optional(S.String),
-          originName: S.optional(__S(4, __c0, 4)),
-          ticketSeat: S.optional(__S(124, __c15, 4)),
-          transitTerminusName: S.optional(__S(4, __c0, 4)),
-          ticketSeats: S.optional(__S(125, __c15, 5)),
+          originName: S.optional(__S(1636, __c51, 4)),
+          ticketSeat: S.optional(__S(576, __c18, 0)),
+          transitTerminusName: S.optional(__S(1636, __c51, 4)),
+          ticketSeats: S.optional(__S(577, __c18, 1)),
           originStationCode: S.optional(S.String),
-          fareName: S.optional(__S(4, __c0, 4)),
+          fareName: S.optional(__S(1636, __c51, 4)),
         }),
       ).annotate({ identifier: "TicketLeg" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           deviceToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceContext" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          routeRestrictions: S.optional(__S(4, __c0, 4)),
-          otherRestrictions: S.optional(__S(4, __c0, 4)),
-          timeRestrictions: S.optional(__S(4, __c0, 4)),
-          routeRestrictionsDetails: S.optional(__S(4, __c0, 4)),
+          routeRestrictions: S.optional(__S(1636, __c51, 4)),
+          otherRestrictions: S.optional(__S(1636, __c51, 4)),
+          timeRestrictions: S.optional(__S(1636, __c51, 4)),
+          routeRestrictionsDetails: S.optional(__S(1636, __c51, 4)),
         }),
       ).annotate({ identifier: "TicketRestrictions" });
-    case 1:
-      return S.Array(__S(126, __c15, 6));
-    case 2:
+    case 5:
+      return S.Array(__S(578, __c18, 2));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActivationStatus" });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          faceValue: S.optional(__S(59, __c7, 3)),
-          purchasePrice: S.optional(__S(59, __c7, 3)),
-          discountMessage: S.optional(__S(4, __c0, 4)),
+          faceValue: S.optional(__S(2496, __c78, 0)),
+          purchasePrice: S.optional(__S(2496, __c78, 0)),
+          discountMessage: S.optional(__S(1636, __c51, 4)),
         }),
       ).annotate({ identifier: "TicketCost" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          ticketCost: S.optional(__S(131, __c16, 3)),
+          ticketCost: S.optional(__S(583, __c18, 7)),
           confirmationCode: S.optional(S.String),
           accountId: S.optional(S.String),
           purchaseDateTime: S.optional(S.String),
           purchaseReceiptNumber: S.optional(S.String),
         }),
       ).annotate({ identifier: "PurchaseDetails" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          classReference: S.optional(__S(121, __c15, 1)),
+          classReference: S.optional(__S(513, __c16, 1)),
           tripType: S.optional(S.String),
-          ticketLeg: S.optional(__S(126, __c15, 6)),
+          ticketLeg: S.optional(__S(578, __c18, 2)),
           disableExpirationNotification: S.optional(S.Boolean),
-          deviceContext: S.optional(__S(127, __c15, 7)),
-          ticketRestrictions: S.optional(__S(128, __c16, 0)),
-          infoModuleData: S.optional(__S(40, __c5, 0)),
-          ticketLegs: S.optional(__S(129, __c16, 1)),
+          deviceContext: S.optional(__S(579, __c18, 3)),
+          ticketRestrictions: S.optional(__S(580, __c18, 4)),
+          infoModuleData: S.optional(__S(1476, __c46, 4)),
+          ticketLegs: S.optional(__S(581, __c18, 5)),
           concessionCategory: S.optional(S.String),
-          merchantLocations: S.optional(__S(52, __c6, 4)),
-          activationStatus: S.optional(__S(130, __c16, 2)),
-          validTimeInterval: S.optional(__S(1, __c0, 1)),
-          valueAddedModuleData: S.optional(__S(45, __c5, 5)),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+          activationStatus: S.optional(__S(582, __c18, 6)),
+          validTimeInterval: S.optional(__S(1633, __c51, 1)),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
           smartTapRedemptionValue: S.optional(S.String),
-          purchaseDetails: S.optional(__S(132, __c16, 4)),
+          purchaseDetails: S.optional(__S(584, __c18, 8)),
           hasLinkedDevice: S.optional(S.Boolean),
           classId: S.optional(S.String),
-          groupingInfo: S.optional(__S(61, __c7, 5)),
+          groupingInfo: S.optional(__S(2561, __c80, 1)),
           ticketNumber: S.optional(S.String),
           notifyPreference: S.optional(S.String),
-          passConstraints: S.optional(__S(64, __c8, 0)),
+          passConstraints: S.optional(__S(2563, __c80, 3)),
           ticketStatus: S.optional(S.String),
-          linksModuleData: S.optional(__S(54, __c6, 6)),
-          rotatingBarcode: S.optional(__S(70, __c8, 6)),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          rotatingBarcode: S.optional(__S(2568, __c80, 8)),
           state: S.optional(S.String),
-          saveRestrictions: S.optional(__S(60, __c7, 4)),
-          locations: S.optional(__S(50, __c6, 2)),
+          saveRestrictions: S.optional(__S(2560, __c80, 0)),
+          locations: S.optional(__S(1479, __c46, 7)),
           passengerNames: S.optional(S.String),
-          imageModulesData: S.optional(__S(29, __c3, 5)),
-          appLinkData: S.optional(__S(34, __c4, 2)),
-          barcode: S.optional(__S(71, __c8, 7)),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          barcode: S.optional(__S(2569, __c80, 9)),
           id: S.optional(S.String),
-          linkedObjectIds: S.optional(__S(55, __c6, 7)),
+          linkedObjectIds: S.optional(__S(1600, __c50, 0)),
           hasUsers: S.optional(S.Boolean),
           passengerType: S.optional(S.String),
-          customTicketStatus: S.optional(__S(4, __c0, 4)),
+          customTicketStatus: S.optional(__S(1636, __c51, 4)),
           version: S.optional(S.String),
-          messages: S.optional(__S(41, __c5, 1)),
+          messages: S.optional(__S(1646, __c51, 14)),
           hexBackgroundColor: S.optional(S.String),
-          heroImage: S.optional(__S(27, __c3, 3)),
+          heroImage: S.optional(__S(1639, __c51, 7)),
           tripId: S.optional(S.String),
-          textModulesData: S.optional(__S(47, __c5, 7)),
-          customConcessionCategory: S.optional(__S(4, __c0, 4)),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
+          customConcessionCategory: S.optional(__S(1636, __c51, 4)),
         }),
       ).annotate({ identifier: "TransitObject" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(133, __c16, 5)),
-        }),
-      ).annotate({
-        identifier: "TransitObjectAddMessageResponse",
-      });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -6686,7 +5878,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "DownloadMediaRequest" });
   }
 }
-function __c17(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6716,16 +5908,16 @@ function __c17(j: number): any {
           md5Hash: S.optional(S.String),
           length: S.optional(S.String),
           cosmoBinaryReference: S.optional(S.String),
-          blobstore2Info: S.optional(__S(136, __c17, 0)),
+          blobstore2Info: S.optional(__S(640, __c20, 0)),
           path: S.optional(S.String),
-          objectId: S.optional(__S(137, __c17, 1)),
+          objectId: S.optional(__S(641, __c20, 1)),
           sha1Hash: S.optional(S.String),
           crc32cHash: S.optional(S.Number),
           blobRef: S.optional(S.String),
         }),
       ).annotate({ identifier: "CompositeMedia" });
     case 3:
-      return S.Array(__S(138, __c17, 2));
+      return S.Array(__S(642, __c20, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6737,8 +5929,8 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           objectVersion: S.optional(S.String),
-          checksumsInfo: S.optional(__S(138, __c17, 2)),
-          objectInfo: S.optional(__S(138, __c17, 2)),
+          checksumsInfo: S.optional(__S(642, __c20, 2)),
+          objectInfo: S.optional(__S(642, __c20, 2)),
         }),
       ).annotate({ identifier: "DiffUploadRequest" });
     case 6:
@@ -6756,57 +5948,53 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          objectLocation: S.optional(__S(138, __c17, 2)),
+          objectLocation: S.optional(__S(642, __c20, 2)),
           chunkSizeBytes: S.optional(S.String),
-          checksumsLocation: S.optional(__S(138, __c17, 2)),
+          checksumsLocation: S.optional(__S(642, __c20, 2)),
           objectSizeBytes: S.optional(S.String),
           objectVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiffChecksumsResponse" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          originalObject: S.optional(__S(138, __c17, 2)),
+          originalObject: S.optional(__S(642, __c20, 2)),
           objectVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiffUploadResponse" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           ignoreRange: S.optional(S.Boolean),
           allowGzipCompression: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DownloadParameters" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          objectLocation: S.optional(__S(138, __c17, 2)),
+          objectLocation: S.optional(__S(642, __c20, 2)),
         }),
       ).annotate({ identifier: "DiffDownloadResponse" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          compositeMedia: S.optional(__S(139, __c17, 3)),
+          compositeMedia: S.optional(__S(643, __c20, 3)),
           sha256Hash: S.optional(S.String),
           path: S.optional(S.String),
-          diffVersionResponse: S.optional(__S(140, __c17, 4)),
-          diffUploadRequest: S.optional(__S(141, __c17, 5)),
-          objectId: S.optional(__S(137, __c17, 1)),
+          diffVersionResponse: S.optional(__S(644, __c20, 4)),
+          diffUploadRequest: S.optional(__S(645, __c20, 5)),
+          objectId: S.optional(__S(641, __c20, 1)),
           sha1Hash: S.optional(S.String),
           token: S.optional(S.String),
-          contentTypeInfo: S.optional(__S(142, __c17, 6)),
+          contentTypeInfo: S.optional(__S(646, __c20, 6)),
           hash: S.optional(S.String),
-          diffChecksumsResponse: S.optional(__S(143, __c17, 7)),
-          diffUploadResponse: S.optional(__S(144, __c18, 0)),
+          diffChecksumsResponse: S.optional(__S(647, __c20, 7)),
+          diffUploadResponse: S.optional(__S(648, __c20, 8)),
           md5Hash: S.optional(S.String),
           blobRef: S.optional(S.String),
-          downloadParameters: S.optional(__S(145, __c18, 1)),
-          blobstore2Info: S.optional(__S(136, __c17, 0)),
-          diffDownloadResponse: S.optional(__S(146, __c18, 2)),
+          downloadParameters: S.optional(__S(649, __c20, 9)),
+          blobstore2Info: S.optional(__S(640, __c20, 0)),
+          diffDownloadResponse: S.optional(__S(650, __c20, 10)),
           isPotentialRetry: S.optional(S.Boolean),
           bigstoreObjectRef: S.optional(S.String),
           sha512Hash: S.optional(S.String),
@@ -6823,7 +6011,11 @@ function __c18(j: number): any {
           referenceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Media" });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -6837,7 +6029,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetEventticketclassRequest",
       });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -6851,7 +6047,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetEventticketobjectRequest",
       });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -6863,7 +6063,11 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFlightclassRequest" });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -6877,7 +6081,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "GetFlightobjectRequest" });
   }
 }
-function __c19(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6891,7 +6095,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGenericclassRequest" });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -6903,7 +6111,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGenericobjectRequest" });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -6915,7 +6127,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGiftcardclassRequest" });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -6927,7 +6143,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGiftcardobjectRequest" });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -6939,47 +6159,51 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetIssuerRequest" });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
           name: S.optional(S.String),
-          alertsEmails: S.optional(__S(55, __c6, 7)),
+          alertsEmails: S.optional(__S(1600, __c50, 0)),
           phone: S.optional(S.String),
         }),
       ).annotate({ identifier: "IssuerContactInfo" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           publicKeyPem: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthenticationKey" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(961, __c30, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           smartTapMerchantId: S.optional(S.String),
-          authenticationKeys: S.optional(__S(159, __c19, 7)),
+          authenticationKeys: S.optional(__S(962, __c30, 2)),
         }),
       ).annotate({ identifier: "SmartTapMerchantData" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          contactInfo: S.optional(__S(157, __c19, 5)),
+          contactInfo: S.optional(__S(960, __c30, 0)),
           homepageUrl: S.optional(S.String),
-          smartTapMerchantData: S.optional(__S(160, __c20, 0)),
+          smartTapMerchantData: S.optional(__S(963, __c30, 3)),
           issuerId: S.optional(S.String),
-          callbackOptions: S.optional(__S(30, __c3, 6)),
+          callbackOptions: S.optional(__S(1504, __c47, 0)),
         }),
       ).annotate({ identifier: "Issuer" });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -6991,7 +6215,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLoyaltyclassRequest" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -7003,7 +6231,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLoyaltyobjectRequest" });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -7015,7 +6247,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOfferclassRequest" });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -7027,7 +6263,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOfferobjectRequest" });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -7039,27 +6279,31 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPermissionsRequest" });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
           emailAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "Permission" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
     case 1:
+      return S.Array(__S(1152, __c36, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(168, __c21, 0)),
+          permissions: S.optional(__S(1153, __c36, 1)),
           issuerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Permissions" });
-    case 2:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -7071,7 +6315,11 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTransitclassRequest" });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
@@ -7083,10 +6331,14 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTransitobjectRequest" });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1442, __c45, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7097,10 +6349,14 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "InsertEventticketclassRequest",
       });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2530, __c79, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7111,10 +6367,14 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "InsertEventticketobjectRequest",
       });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(79, __c9, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2980, __c93, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7123,10 +6383,14 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertFlightclassRequest" });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(3395, __c106, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7139,12 +6403,12 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(3776, __c118, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7155,10 +6419,469 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "InsertGenericclassRequest",
       });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "walletobjects/v1/eventTicketClass/{resourceId}/addMessage",
+            baseUrl: "https://walletobjects.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddmessageEventticketclassRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(93, __c11, 5).pipe(T.HttpBody())),
+          resource: S.optional(__S(1442, __c45, 2)),
+        }),
+      ).annotate({
+        identifier: "EventTicketClassAddMessageResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(__S(1636, __c51, 4)),
+          kind: S.optional(S.String),
+          name: S.optional(__S(1636, __c51, 4)),
+        }),
+      ).annotate({ identifier: "EventVenue" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          customDoorsOpenLabel: S.optional(__S(1636, __c51, 4)),
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+          doorsOpen: S.optional(S.String),
+          doorsOpenLabel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventDateTime" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customGateLabel: S.optional(__S(1636, __c51, 4)),
+          venue: S.optional(__S(1440, __c45, 0)),
+          customSeatLabel: S.optional(__S(1636, __c51, 4)),
+          issuerName: S.optional(S.String),
+          classTemplateInfo: S.optional(__S(1552, __c48, 16)),
+          sectionLabel: S.optional(S.String),
+          localizedIssuerName: S.optional(__S(1636, __c51, 4)),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          finePrint: S.optional(__S(1636, __c51, 4)),
+          confirmationCodeLabel: S.optional(S.String),
+          allowMultipleUsersPerObject: S.optional(S.Boolean),
+          callbackOptions: S.optional(__S(1504, __c47, 0)),
+          notifyPreference: S.optional(S.String),
+          eventId: S.optional(S.String),
+          logo: S.optional(__S(1639, __c51, 7)),
+          viewUnlockRequirement: S.optional(S.String),
+          countryCode: S.optional(S.String),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          dateTime: S.optional(__S(1441, __c45, 1)),
+          infoModuleData: S.optional(__S(1476, __c46, 4)),
+          messages: S.optional(__S(1646, __c51, 14)),
+          version: S.optional(S.String),
+          kind: S.optional(S.String),
+          review: S.optional(__S(1477, __c46, 5)),
+          seatLabel: S.optional(S.String),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          rowLabel: S.optional(S.String),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
+          customSectionLabel: S.optional(__S(1636, __c51, 4)),
+          securityAnimation: S.optional(__S(1553, __c48, 17)),
+          eventName: S.optional(__S(1636, __c51, 4)),
+          locations: S.optional(__S(1479, __c46, 7)),
+          wideLogo: S.optional(__S(1639, __c51, 7)),
+          hexBackgroundColor: S.optional(S.String),
+          customConfirmationCodeLabel: S.optional(__S(1636, __c51, 4)),
+          id: S.optional(S.String),
+          homepageUri: S.optional(__S(1642, __c51, 10)),
+          enableSmartTap: S.optional(S.Boolean),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
+          gateLabel: S.optional(S.String),
+          reviewStatus: S.optional(S.String),
+          wordMark: S.optional(__S(1639, __c51, 7)),
+          heroImage: S.optional(__S(1639, __c51, 7)),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          redemptionIssuers: S.optional(__S(1600, __c50, 0)),
+          customRowLabel: S.optional(__S(1636, __c51, 4)),
+        }),
+      ).annotate({ identifier: "EventTicketClass" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          localizedLabel: S.optional(__S(1636, __c51, 4)),
+          label: S.optional(S.String),
+          value: S.optional(S.String),
+          localizedValue: S.optional(__S(1636, __c51, 4)),
+        }),
+      ).annotate({ identifier: "LabelValue" });
+    case 1:
+      return S.Array(__S(1472, __c46, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          columns: S.optional(__S(1473, __c46, 1)),
+        }),
+      ).annotate({ identifier: "LabelValueRow" });
+    case 3:
+      return S.Array(__S(1474, __c46, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          showLastUpdateTime: S.optional(S.Boolean),
+          labelValueRows: S.optional(__S(1475, __c46, 3)),
+        }),
+      ).annotate({ identifier: "InfoModuleData" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          comments: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Review" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          longitude: S.optional(S.Number),
+          kind: S.optional(S.String),
+          latitude: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LatLongPoint" });
+    case 7:
+      return S.Array(__S(1478, __c46, 6));
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          updateRequestUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CallbackOptions" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fieldPath: S.optional(S.String),
+          dateFormat: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FieldReference" });
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(__S(1537, __c48, 1)),
+        }),
+      ).annotate({ identifier: "FieldSelector" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          firstValue: S.optional(__S(1538, __c48, 2)),
+          secondValue: S.optional(__S(1538, __c48, 2)),
+          predefinedItem: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TemplateItem" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          middleItem: S.optional(__S(1539, __c48, 3)),
+          endItem: S.optional(__S(1539, __c48, 3)),
+          startItem: S.optional(__S(1539, __c48, 3)),
+        }),
+      ).annotate({ identifier: "CardRowThreeItems" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          item: S.optional(__S(1539, __c48, 3)),
+        }),
+      ).annotate({ identifier: "CardRowOneItem" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          startItem: S.optional(__S(1539, __c48, 3)),
+          endItem: S.optional(__S(1539, __c48, 3)),
+        }),
+      ).annotate({ identifier: "CardRowTwoItems" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          threeItems: S.optional(__S(1540, __c48, 4)),
+          oneItem: S.optional(__S(1541, __c48, 5)),
+          twoItems: S.optional(__S(1542, __c48, 6)),
+        }),
+      ).annotate({ identifier: "CardRowTemplateInfo" });
+    case 8:
+      return S.Array(__S(1543, __c48, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          cardRowTemplateInfos: S.optional(__S(1544, __c48, 8)),
+        }),
+      ).annotate({ identifier: "CardTemplateOverride" });
+    case 10:
+      return S.Array(__S(1541, __c48, 5));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          detailsItemInfos: S.optional(__S(1546, __c48, 10)),
+        }),
+      ).annotate({ identifier: "DetailsTemplateOverride" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          fieldSelector: S.optional(__S(1538, __c48, 2)),
+        }),
+      ).annotate({ identifier: "BarcodeSectionDetail" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          secondTopDetail: S.optional(__S(1548, __c48, 12)),
+          firstTopDetail: S.optional(__S(1548, __c48, 12)),
+          firstBottomDetail: S.optional(__S(1548, __c48, 12)),
+        }),
+      ).annotate({
+        identifier: "CardBarcodeSectionDetails",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          fieldOption: S.optional(__S(1538, __c48, 2)),
+          transitOption: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FirstRowOption" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          firstRowOption: S.optional(__S(1550, __c48, 14)),
+          thirdRowOption: S.optional(__S(1538, __c48, 2)),
+          secondRowOption: S.optional(__S(1538, __c48, 2)),
+        }),
+      ).annotate({ identifier: "ListTemplateOverride" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          cardTemplateOverride: S.optional(__S(1545, __c48, 9)),
+          detailsTemplateOverride: S.optional(__S(1547, __c48, 11)),
+          cardBarcodeSectionDetails: S.optional(__S(1549, __c48, 13)),
+          listTemplateOverride: S.optional(__S(1551, __c48, 15)),
+        }),
+      ).annotate({ identifier: "ClassTemplateInfo" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          animationType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecurityAnimation" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(__S(1637, __c51, 5)),
+        }),
+      ).annotate({ identifier: "AddMessageRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DateTime" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(__S(1632, __c51, 0)),
+          end: S.optional(__S(1632, __c51, 0)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeInterval" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          language: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TranslatedString" });
+    case 3:
+      return S.Array(__S(1634, __c51, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          translatedValues: S.optional(__S(1635, __c51, 3)),
+          defaultValue: S.optional(__S(1634, __c51, 2)),
+        }),
+      ).annotate({ identifier: "LocalizedString" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          displayInterval: S.optional(__S(1633, __c51, 1)),
+          id: S.optional(S.String),
+          body: S.optional(S.String),
+          kind: S.optional(S.String),
+          localizedBody: S.optional(__S(1636, __c51, 4)),
+          localizedHeader: S.optional(__S(1636, __c51, 4)),
+          messageType: S.optional(S.String),
+          header: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Message" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          uri: S.optional(S.String),
+          localizedDescription: S.optional(__S(1636, __c51, 4)),
+        }),
+      ).annotate({ identifier: "ImageUri" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sourceUri: S.optional(__S(1638, __c51, 6)),
+          contentDescription: S.optional(__S(1636, __c51, 4)),
+          kind: S.optional(S.String),
+          privateImageId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Image" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          mainImage: S.optional(__S(1639, __c51, 7)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImageModuleData" });
+    case 9:
+      return S.Array(__S(1640, __c51, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          uri: S.optional(S.String),
+          id: S.optional(S.String),
+          localizedDescription: S.optional(__S(1636, __c51, 4)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Uri" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.optional(S.String),
+          targetUri: S.optional(__S(1642, __c51, 10)),
+        }),
+      ).annotate({
+        identifier: "AppLinkDataAppLinkInfoAppTarget",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(__S(1636, __c51, 4)),
+          description: S.optional(__S(1636, __c51, 4)),
+          appLogoImage: S.optional(__S(1639, __c51, 7)),
+          appTarget: S.optional(__S(1643, __c51, 11)),
+        }),
+      ).annotate({ identifier: "AppLinkDataAppLinkInfo" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          displayText: S.optional(__S(1636, __c51, 4)),
+          androidAppLinkInfo: S.optional(__S(1644, __c51, 12)),
+          iosAppLinkInfo: S.optional(__S(1644, __c51, 12)),
+          webAppLinkInfo: S.optional(__S(1644, __c51, 12)),
+        }),
+      ).annotate({ identifier: "AppLinkData" });
+    case 14:
+      return S.Array(__S(1637, __c51, 5));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          displayInterval: S.optional(__S(1633, __c51, 1)),
+        }),
+      ).annotate({ identifier: "ModuleViewConstraints" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(__S(1639, __c51, 7)),
+          header: S.optional(__S(1636, __c51, 4)),
+          sortIndex: S.optional(S.Number),
+          viewConstraints: S.optional(__S(1647, __c51, 15)),
+          body: S.optional(__S(1636, __c51, 4)),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ValueAddedModuleData" });
+    case 17:
+      return S.Array(__S(1648, __c51, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          localizedHeader: S.optional(__S(1636, __c51, 4)),
+          id: S.optional(S.String),
+          header: S.optional(S.String),
+          localizedBody: S.optional(__S(1636, __c51, 4)),
+          body: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TextModuleData" });
+    case 19:
+      return S.Array(__S(1650, __c51, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          longitude: S.optional(S.Number),
+          latitude: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MerchantLocation" });
+    case 21:
+      return S.Array(__S(1652, __c51, 20));
+    case 22:
+      return S.Array(__S(1642, __c51, 10));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          uris: S.optional(__S(1654, __c51, 22)),
+        }),
+      ).annotate({ identifier: "LinksModuleData" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(4194, __c131, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7169,10 +6892,14 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "InsertGenericobjectRequest",
       });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7183,10 +6910,14 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "InsertGiftcardclassRequest",
       });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(99, __c12, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(192, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7197,10 +6928,14 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "InsertGiftcardobjectRequest",
       });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(161, __c20, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(964, __c30, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7209,16 +6944,14 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertIssuerRequest" });
-    case 5:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          jwt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JwtResource" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(181, __c22, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7227,72 +6960,134 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertJwtRequest" });
-    case 7:
-      return S.Array(__S(106, __c13, 2));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(88, __c11, 0));
     case 1:
-      return S.Array(__S(99, __c12, 3));
-    case 2:
-      return S.Array(__S(93, __c11, 5));
-    case 3:
-      return S.Array(__S(117, __c14, 5));
-    case 4:
-      return S.Array(__S(56, __c7, 0));
-    case 5:
-      return S.Array(__S(111, __c13, 7));
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.Array(__S(133, __c16, 5));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(121, __c15, 1));
-    case 1:
-      return S.Array(__S(79, __c9, 7));
-    case 2:
-      return S.Array(__S(114, __c14, 2));
-    case 3:
-      return S.Array(__S(96, __c12, 0));
-    case 4:
-      return S.Array(__S(72, __c9, 0));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          loyaltyClasses: S.optional(__S(183, __c22, 7)),
-          genericClasses: S.optional(__S(184, __c23, 0)),
-          giftCardObjects: S.optional(__S(185, __c23, 1)),
-          genericObjects: S.optional(__S(186, __c23, 2)),
-          offerObjects: S.optional(__S(187, __c23, 3)),
-          eventTicketClasses: S.optional(__S(188, __c23, 4)),
-          loyaltyObjects: S.optional(__S(189, __c23, 5)),
-          flightObjects: S.optional(__S(190, __c23, 6)),
-          transitObjects: S.optional(__S(191, __c23, 7)),
-          transitClasses: S.optional(__S(192, __c24, 0)),
-          flightClasses: S.optional(__S(193, __c24, 1)),
-          offerClasses: S.optional(__S(194, __c24, 2)),
-          giftCardClasses: S.optional(__S(195, __c24, 3)),
-          eventTicketObjects: S.optional(__S(196, __c24, 4)),
+          loyaltyClasses: S.optional(__S(2112, __c66, 0)),
+          genericClasses: S.optional(__S(1984, __c62, 0)),
+          giftCardObjects: S.optional(__S(2080, __c65, 0)),
+          genericObjects: S.optional(__S(2016, __c63, 0)),
+          offerObjects: S.optional(__S(2208, __c69, 0)),
+          eventTicketClasses: S.optional(__S(1856, __c58, 0)),
+          loyaltyObjects: S.optional(__S(2144, __c67, 0)),
+          flightObjects: S.optional(__S(1952, __c61, 0)),
+          transitObjects: S.optional(__S(2272, __c71, 0)),
+          transitClasses: S.optional(__S(2240, __c70, 0)),
+          flightClasses: S.optional(__S(1920, __c60, 0)),
+          offerClasses: S.optional(__S(2176, __c68, 0)),
+          giftCardClasses: S.optional(__S(2048, __c64, 0)),
+          eventTicketObjects: S.optional(__S(1888, __c59, 0)),
         }),
       ).annotate({ identifier: "Resources" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           saveUri: S.optional(S.String),
-          resources: S.optional(__S(197, __c24, 5)),
+          resources: S.optional(__S(1793, __c56, 1)),
         }),
       ).annotate({ identifier: "JwtInsertResponse" });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(106, __c13, 2).pipe(T.HttpBody())),
+          jwt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JwtResource" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1442, __c45, 2));
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2530, __c79, 2));
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2980, __c93, 4));
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3395, __c106, 3));
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3776, __c118, 0));
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4194, __c131, 2));
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(32, __c1, 0));
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(192, __c6, 0));
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(260, __c8, 4));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(322, __c10, 2));
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(384, __c12, 0));
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(448, __c14, 0));
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(513, __c16, 1));
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(585, __c18, 9));
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(260, __c8, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7305,12 +7100,12 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(111, __c13, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(322, __c10, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7321,10 +7116,14 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "InsertLoyaltyobjectRequest",
       });
-    case 1:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7333,10 +7132,14 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertOfferclassRequest" });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(117, __c14, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7345,36 +7148,40 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertOfferobjectRequest" });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           classId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignUpInfo" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
           url: S.optional(S.String),
           value: S.optional(S.String),
-          signUpInfo: S.optional(__S(203, __c25, 3)),
+          signUpInfo: S.optional(__S(2432, __c76, 0)),
         }),
       ).annotate({ identifier: "IssuerToUserInfo" });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2433, __c76, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           merchantId: S.optional(S.String),
-          infos: S.optional(__S(205, __c25, 5)),
+          infos: S.optional(__S(2434, __c76, 2)),
           id: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "SmartTap" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(206, __c25, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2435, __c76, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7385,12 +7192,191 @@ function __c25(j: number): any {
       ).annotate({ identifier: "InsertSmarttapRequest" });
   }
 }
-function __c26(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(121, __c15, 1).pipe(T.HttpBody())),
+          resourceId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "walletobjects/v1/eventTicketObject/{resourceId}/addMessage",
+            baseUrl: "https://walletobjects.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddmessageEventticketobjectRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(2530, __c79, 2)),
+        }),
+      ).annotate({
+        identifier: "EventTicketObjectAddMessageResponse",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          micros: S.optional(S.String),
+          kind: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Money" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          row: S.optional(__S(1636, __c51, 4)),
+          section: S.optional(__S(1636, __c51, 4)),
+          seat: S.optional(__S(1636, __c51, 4)),
+          kind: S.optional(S.String),
+          gate: S.optional(__S(1636, __c51, 4)),
+        }),
+      ).annotate({ identifier: "EventSeat" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          confirmationCode: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventReservationInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          classReference: S.optional(__S(1442, __c45, 2)),
+          id: S.optional(S.String),
+          infoModuleData: S.optional(__S(1476, __c46, 4)),
+          hasLinkedDevice: S.optional(S.Boolean),
+          locations: S.optional(__S(1479, __c46, 7)),
+          kind: S.optional(S.String),
+          classId: S.optional(S.String),
+          state: S.optional(S.String),
+          disableExpirationNotification: S.optional(S.Boolean),
+          faceValue: S.optional(__S(2496, __c78, 0)),
+          heroImage: S.optional(__S(1639, __c51, 7)),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          saveRestrictions: S.optional(__S(2560, __c80, 0)),
+          groupingInfo: S.optional(__S(2561, __c80, 1)),
+          linkedObjectIds: S.optional(__S(1600, __c50, 0)),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          ticketNumber: S.optional(S.String),
+          validTimeInterval: S.optional(__S(1633, __c51, 1)),
+          messages: S.optional(__S(1646, __c51, 14)),
+          hasUsers: S.optional(S.Boolean),
+          linkedOfferIds: S.optional(__S(1600, __c50, 0)),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
+          seatInfo: S.optional(__S(2528, __c79, 0)),
+          notifyPreference: S.optional(S.String),
+          ticketType: S.optional(__S(1636, __c51, 4)),
+          passConstraints: S.optional(__S(2563, __c80, 3)),
+          reservationInfo: S.optional(__S(2529, __c79, 1)),
+          version: S.optional(S.String),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          rotatingBarcode: S.optional(__S(2568, __c80, 8)),
+          smartTapRedemptionValue: S.optional(S.String),
+          hexBackgroundColor: S.optional(S.String),
+          ticketHolderName: S.optional(S.String),
+          barcode: S.optional(__S(2569, __c80, 9)),
+        }),
+      ).annotate({ identifier: "EventTicketObject" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restrictToEmailSha256: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SaveRestrictions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sortIndex: S.optional(S.Number),
+          groupingId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GroupingInfo" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          screenshotEligibility: S.optional(S.String),
+          nfcConstraint: S.optional(__S(2562, __c80, 2)),
+        }),
+      ).annotate({ identifier: "PassConstraints" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          valueLength: S.optional(S.Number),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RotatingBarcodeTotpDetailsTotpParameters",
+      });
+    case 5:
+      return S.Array(__S(2564, __c80, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          periodMillis: S.optional(S.String),
+          parameters: S.optional(__S(2565, __c80, 5)),
+          algorithm: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RotatingBarcodeTotpDetails",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          startDateTime: S.optional(S.String),
+          values: S.optional(__S(1600, __c50, 0)),
+          periodMillis: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RotatingBarcodeValues" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          renderEncoding: S.optional(S.String),
+          totpDetails: S.optional(__S(2566, __c80, 6)),
+          initialRotatingBarcodeValues: S.optional(__S(2567, __c80, 7)),
+          type: S.optional(S.String),
+          showCodeText: S.optional(__S(1636, __c51, 4)),
+          alternateText: S.optional(S.String),
+          valuePattern: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RotatingBarcode" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          showCodeText: S.optional(__S(1636, __c51, 4)),
+          value: S.optional(S.String),
+          type: S.optional(S.String),
+          renderEncoding: S.optional(S.String),
+          alternateText: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Barcode" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(513, __c16, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7401,10 +7387,14 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "InsertTransitclassRequest",
       });
-    case 1:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(133, __c16, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(585, __c18, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7415,7 +7405,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "InsertTransitobjectRequest",
       });
-    case 2:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           issuerId: S.optional(S.String.pipe(T.Query())),
@@ -7431,7 +7425,20 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListEventticketclassRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pagination: S.optional(__S(2688, __c84, 0)),
+          resources: S.optional(__S(1856, __c58, 0)),
+        }),
+      ).annotate({
+        identifier: "EventTicketClassListResponse",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
@@ -7439,16 +7446,11 @@ function __c26(j: number): any {
           resultsPerPage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Pagination" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pagination: S.optional(__S(211, __c26, 3)),
-          resources: S.optional(__S(188, __c23, 4)),
-        }),
-      ).annotate({
-        identifier: "EventTicketClassListResponse",
-      });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7464,16 +7466,20 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListEventticketobjectRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(196, __c24, 4)),
-          pagination: S.optional(__S(211, __c26, 3)),
+          resources: S.optional(__S(1888, __c59, 0)),
+          pagination: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({
         identifier: "EventTicketObjectListResponse",
       });
-    case 7:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.String.pipe(T.Query())),
@@ -7487,18 +7493,18 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFlightclassRequest" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(193, __c24, 1)),
-          pagination: S.optional(__S(211, __c26, 3)),
+          resources: S.optional(__S(1920, __c60, 0)),
+          pagination: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({ identifier: "FlightClassListResponse" });
-    case 1:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           classId: S.optional(S.String.pipe(T.Query())),
@@ -7512,14 +7518,18 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFlightobjectRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(190, __c23, 6)),
-          pagination: S.optional(__S(211, __c26, 3)),
+          resources: S.optional(__S(1952, __c61, 0)),
+          pagination: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({ identifier: "FlightObjectListResponse" });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7533,14 +7543,18 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGenericclassRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(__S(211, __c26, 3)),
-          resources: S.optional(__S(184, __c23, 0)),
+          pagination: S.optional(__S(2688, __c84, 0)),
+          resources: S.optional(__S(1984, __c62, 0)),
         }),
       ).annotate({ identifier: "GenericClassListResponse" });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.String.pipe(T.Query())),
@@ -7554,16 +7568,20 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGenericobjectRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(186, __c23, 2)),
-          pagination: S.optional(__S(211, __c26, 3)),
+          resources: S.optional(__S(2016, __c63, 0)),
+          pagination: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({
         identifier: "GenericObjectListResponse",
       });
-    case 7:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7577,20 +7595,20 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGiftcardclassRequest" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(__S(211, __c26, 3)),
-          resources: S.optional(__S(195, __c24, 3)),
+          pagination: S.optional(__S(2688, __c84, 0)),
+          resources: S.optional(__S(2048, __c64, 0)),
         }),
       ).annotate({
         identifier: "GiftCardClassListResponse",
       });
-    case 1:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7606,16 +7624,139 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListGiftcardobjectRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(__S(211, __c26, 3)),
-          resources: S.optional(__S(185, __c23, 1)),
+          pagination: S.optional(__S(2688, __c84, 0)),
+          resources: S.optional(__S(2080, __c65, 0)),
         }),
       ).annotate({
         identifier: "GiftCardObjectListResponse",
       });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "walletobjects/v1/flightClass/{resourceId}/addMessage",
+            baseUrl: "https://walletobjects.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddmessageFlightclassRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(2980, __c93, 4)),
+        }),
+      ).annotate({
+        identifier: "FlightClassAddMessageResponse",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          carrierIataCode: S.optional(S.String),
+          wideAirlineLogo: S.optional(__S(1639, __c51, 7)),
+          kind: S.optional(S.String),
+          airlineName: S.optional(__S(1636, __c51, 4)),
+          airlineLogo: S.optional(__S(1639, __c51, 7)),
+          airlineAllianceLogo: S.optional(__S(1639, __c51, 7)),
+          carrierIcaoCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FlightCarrier" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          carrier: S.optional(__S(2976, __c93, 0)),
+          flightNumberDisplayOverride: S.optional(S.String),
+          flightNumber: S.optional(S.String),
+          kind: S.optional(S.String),
+          operatingCarrier: S.optional(__S(2976, __c93, 0)),
+          operatingFlightNumber: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FlightHeader" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          airportNameOverride: S.optional(__S(1636, __c51, 4)),
+          terminal: S.optional(S.String),
+          kind: S.optional(S.String),
+          airportIataCode: S.optional(S.String),
+          gate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AirportInfo" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          seatClassPolicy: S.optional(S.String),
+          kind: S.optional(S.String),
+          boardingPolicy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BoardingAndSeatingPolicy" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          review: S.optional(__S(1477, __c46, 5)),
+          hexBackgroundColor: S.optional(S.String),
+          notifyPreference: S.optional(S.String),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
+          messages: S.optional(__S(1646, __c51, 14)),
+          locations: S.optional(__S(1479, __c46, 7)),
+          classTemplateInfo: S.optional(__S(1552, __c48, 16)),
+          id: S.optional(S.String),
+          reviewStatus: S.optional(S.String),
+          flightHeader: S.optional(__S(2977, __c93, 1)),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          countryCode: S.optional(S.String),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          origin: S.optional(__S(2978, __c93, 2)),
+          infoModuleData: S.optional(__S(1476, __c46, 4)),
+          heroImage: S.optional(__S(1639, __c51, 7)),
+          wordMark: S.optional(__S(1639, __c51, 7)),
+          localEstimatedOrActualArrivalDateTime: S.optional(S.String),
+          localScheduledArrivalDateTime: S.optional(S.String),
+          securityAnimation: S.optional(__S(1553, __c48, 17)),
+          destination: S.optional(__S(2978, __c93, 2)),
+          languageOverride: S.optional(S.String),
+          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
+          viewUnlockRequirement: S.optional(S.String),
+          localBoardingDateTime: S.optional(S.String),
+          version: S.optional(S.String),
+          localizedIssuerName: S.optional(__S(1636, __c51, 4)),
+          boardingAndSeatingPolicy: S.optional(__S(2979, __c93, 3)),
+          localScheduledDepartureDateTime: S.optional(S.String),
+          localEstimatedOrActualDepartureDateTime: S.optional(S.String),
+          redemptionIssuers: S.optional(__S(1600, __c50, 0)),
+          allowMultipleUsersPerObject: S.optional(S.Boolean),
+          kind: S.optional(S.String),
+          homepageUri: S.optional(__S(1642, __c51, 10)),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          callbackOptions: S.optional(__S(1504, __c47, 0)),
+          enableSmartTap: S.optional(S.Boolean),
+          flightStatus: S.optional(S.String),
+          issuerName: S.optional(S.String),
+          localGateClosingDateTime: S.optional(S.String),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+        }),
+      ).annotate({ identifier: "FlightClass" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -7625,15 +7766,19 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListIssuerRequest" });
-    case 4:
-      return S.Array(__S(161, __c20, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(964, __c30, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(228, __c28, 4)),
+          resources: S.optional(__S(3009, __c94, 1)),
         }),
       ).annotate({ identifier: "IssuerListResponse" });
-    case 6:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7647,16 +7792,16 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListLoyaltyclassRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(__S(211, __c26, 3)),
-          resources: S.optional(__S(183, __c22, 7)),
+          pagination: S.optional(__S(2688, __c84, 0)),
+          resources: S.optional(__S(2112, __c66, 0)),
         }),
       ).annotate({ identifier: "LoyaltyClassListResponse" });
   }
 }
-function __c29(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7675,13 +7820,17 @@ function __c29(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(189, __c23, 5)),
-          pagination: S.optional(__S(211, __c26, 3)),
+          resources: S.optional(__S(2144, __c67, 0)),
+          pagination: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({
         identifier: "LoyaltyObjectListResponse",
       });
-    case 2:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.String.pipe(T.Query())),
@@ -7695,14 +7844,18 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOfferclassRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(194, __c24, 2)),
-          pagination: S.optional(__S(211, __c26, 3)),
+          resources: S.optional(__S(2176, __c68, 0)),
+          pagination: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({ identifier: "OfferClassListResponse" });
-    case 4:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           classId: S.optional(S.String.pipe(T.Query())),
@@ -7716,14 +7869,18 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOfferobjectRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(__S(211, __c26, 3)),
-          resources: S.optional(__S(187, __c23, 3)),
+          pagination: S.optional(__S(2688, __c84, 0)),
+          resources: S.optional(__S(2208, __c69, 0)),
         }),
       ).annotate({ identifier: "OfferObjectListResponse" });
-    case 6:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           issuerId: S.optional(S.String.pipe(T.Query())),
@@ -7737,16 +7894,16 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTransitclassRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(192, __c24, 0)),
-          pagination: S.optional(__S(211, __c26, 3)),
+          resources: S.optional(__S(2240, __c70, 0)),
+          pagination: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({ identifier: "TransitClassListResponse" });
   }
 }
-function __c30(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7765,32 +7922,21 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(191, __c23, 7)),
-          pagination: S.optional(__S(211, __c26, 3)),
+          resources: S.optional(__S(2272, __c71, 0)),
+          pagination: S.optional(__S(2688, __c84, 0)),
         }),
       ).annotate({
         identifier: "TransitObjectListResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          removeLinkedOfferObjectIds: S.optional(__S(55, __c6, 7)),
-          addLinkedOfferObjectIds: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "ModifyLinkedOfferObjects" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          linkedOfferObjectIds: S.optional(__S(242, __c30, 2)),
-        }),
-      ).annotate({
-        identifier: "ModifyLinkedOfferObjectsRequest",
-      });
-    case 4:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(243, __c30, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3265, __c102, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7801,11 +7947,34 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ModifylinkedofferobjectsEventticketobjectRequest",
       });
-    case 5:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          removeLinkedOfferObjectIds: S.optional(__S(1600, __c50, 0)),
+          addLinkedOfferObjectIds: S.optional(__S(1600, __c50, 0)),
+        }),
+      ).annotate({ identifier: "ModifyLinkedOfferObjects" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          linkedOfferObjectIds: S.optional(__S(3264, __c102, 0)),
+        }),
+      ).annotate({
+        identifier: "ModifyLinkedOfferObjectsRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(243, __c30, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3265, __c102, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7816,11 +7985,15 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ModifylinkedofferobjectsLoyaltyobjectRequest",
       });
-    case 6:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1442, __c45, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7831,11 +8004,115 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "PatchEventticketclassRequest",
       });
-    case 7:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "walletobjects/v1/flightObject/{resourceId}/addMessage",
+            baseUrl: "https://walletobjects.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddmessageFlightobjectRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(3395, __c106, 3)),
+        }),
+      ).annotate({
+        identifier: "FlightObjectAddMessageResponse",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          seatNumber: S.optional(S.String),
+          boardingPosition: S.optional(S.String),
+          boardingGroup: S.optional(S.String),
+          kind: S.optional(S.String),
+          seatAssignment: S.optional(__S(1636, __c51, 4)),
+          seatClass: S.optional(S.String),
+          boardingDoor: S.optional(S.String),
+          sequenceNumber: S.optional(S.String),
+          boardingPrivilegeImage: S.optional(__S(1639, __c51, 7)),
+        }),
+      ).annotate({ identifier: "BoardingAndSeatingInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          frequentFlyerProgramName: S.optional(__S(1636, __c51, 4)),
+          kind: S.optional(S.String),
+          frequentFlyerNumber: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FrequentFlyerInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          frequentFlyerInfo: S.optional(__S(3393, __c106, 1)),
+          eticketNumber: S.optional(S.String),
+          confirmationCode: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReservationInfo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          hasLinkedDevice: S.optional(S.Boolean),
+          validTimeInterval: S.optional(__S(1633, __c51, 1)),
+          messages: S.optional(__S(1646, __c51, 14)),
+          saveRestrictions: S.optional(__S(2560, __c80, 0)),
+          infoModuleData: S.optional(__S(1476, __c46, 4)),
+          hasUsers: S.optional(S.Boolean),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          notifyPreference: S.optional(S.String),
+          classReference: S.optional(__S(2980, __c93, 4)),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+          kind: S.optional(S.String),
+          classId: S.optional(S.String),
+          groupingInfo: S.optional(__S(2561, __c80, 1)),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
+          smartTapRedemptionValue: S.optional(S.String),
+          locations: S.optional(__S(1479, __c46, 7)),
+          id: S.optional(S.String),
+          linkedObjectIds: S.optional(__S(1600, __c50, 0)),
+          securityProgramLogo: S.optional(__S(1639, __c51, 7)),
+          boardingAndSeatingInfo: S.optional(__S(3392, __c106, 0)),
+          passengerName: S.optional(S.String),
+          version: S.optional(S.String),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          rotatingBarcode: S.optional(__S(2568, __c80, 8)),
+          hexBackgroundColor: S.optional(S.String),
+          state: S.optional(S.String),
+          disableExpirationNotification: S.optional(S.Boolean),
+          passConstraints: S.optional(__S(2563, __c80, 3)),
+          barcode: S.optional(__S(2569, __c80, 9)),
+          heroImage: S.optional(__S(1639, __c51, 7)),
+          reservationInfo: S.optional(__S(3394, __c106, 2)),
+        }),
+      ).annotate({ identifier: "FlightObject" });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2530, __c79, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7848,13 +8125,13 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(79, __c9, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2980, __c93, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7863,11 +8140,15 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchFlightclassRequest" });
-    case 1:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(3395, __c106, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7876,11 +8157,15 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchFlightobjectRequest" });
-    case 2:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(3776, __c118, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7889,11 +8174,15 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchGenericclassRequest" });
-    case 3:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(93, __c11, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(4194, __c131, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7904,11 +8193,15 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "PatchGenericobjectRequest",
       });
-    case 4:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7919,11 +8212,15 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "PatchGiftcardclassRequest",
       });
-    case 5:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(99, __c12, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(192, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7934,11 +8231,15 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "PatchGiftcardobjectRequest",
       });
-    case 6:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(161, __c20, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(964, __c30, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7947,11 +8248,15 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchIssuerRequest" });
-    case 7:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(106, __c13, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(260, __c8, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7962,13 +8267,13 @@ function __c31(j: number): any {
       ).annotate({ identifier: "PatchLoyaltyclassRequest" });
   }
 }
-function __c32(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(111, __c13, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(322, __c10, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7979,11 +8284,66 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "PatchLoyaltyobjectRequest",
       });
-    case 1:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "walletobjects/v1/genericClass/{resourceId}/addMessage",
+            baseUrl: "https://walletobjects.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddmessageGenericclassRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(3776, __c118, 0)),
+        }),
+      ).annotate({
+        identifier: "GenericClassAddMessageResponse",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          messages: S.optional(__S(1646, __c51, 14)),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
+          enableSmartTap: S.optional(S.Boolean),
+          redemptionIssuers: S.optional(__S(1600, __c50, 0)),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+          callbackOptions: S.optional(__S(1504, __c47, 0)),
+          viewUnlockRequirement: S.optional(S.String),
+          id: S.optional(S.String),
+          securityAnimation: S.optional(__S(1553, __c48, 17)),
+          classTemplateInfo: S.optional(__S(1552, __c48, 16)),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
+        }),
+      ).annotate({ identifier: "GenericClass" });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String.pipe(T.Label()),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7992,11 +8352,15 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchOfferclassRequest" });
-    case 2:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(117, __c14, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8005,11 +8369,15 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchOfferobjectRequest" });
-    case 3:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(121, __c15, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(513, __c16, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8018,11 +8386,15 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchTransitclassRequest" });
-    case 4:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(133, __c16, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(585, __c18, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8033,7 +8405,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "PatchTransitobjectRequest",
       });
-    case 5:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateUri: S.optional(S.String),
@@ -8043,10 +8419,10 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "SetPassUpdateNoticeRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(261, __c32, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(3936, __c123, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8057,19 +8433,23 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest",
       });
-    case 7:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SetPassUpdateNoticeResponse",
       });
   }
 }
-function __c33(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1442, __c45, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8080,11 +8460,15 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateEventticketclassRequest",
       });
-    case 1:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2530, __c79, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8095,11 +8479,15 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateEventticketobjectRequest",
       });
-    case 2:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(79, __c9, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2980, __c93, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8108,11 +8496,15 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFlightclassRequest" });
-    case 3:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(3395, __c106, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8123,11 +8515,15 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateFlightobjectRequest",
       });
-    case 4:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(3776, __c118, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8138,11 +8534,92 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateGenericclassRequest",
       });
-    case 5:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(93, __c11, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "walletobjects/v1/genericObject/{resourceId}/addMessage",
+            baseUrl: "https://walletobjects.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddmessageGenericobjectRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(4194, __c131, 2)),
+        }),
+      ).annotate({
+        identifier: "GenericObjectAddMessageResponse",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enableNotification: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UpcomingNotification" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          upcomingNotification: S.optional(__S(4192, __c131, 0)),
+          expiryNotification: S.optional(__S(4192, __c131, 0)),
+        }),
+      ).annotate({ identifier: "Notifications" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          heroImage: S.optional(__S(1639, __c51, 7)),
+          linksModuleData: S.optional(__S(1655, __c51, 23)),
+          rotatingBarcode: S.optional(__S(2568, __c80, 8)),
+          wideLogo: S.optional(__S(1639, __c51, 7)),
+          subheader: S.optional(__S(1636, __c51, 4)),
+          notifications: S.optional(__S(4193, __c131, 1)),
+          appLinkData: S.optional(__S(1645, __c51, 13)),
+          messages: S.optional(__S(1646, __c51, 14)),
+          groupingInfo: S.optional(__S(2561, __c80, 1)),
+          hasUsers: S.optional(S.Boolean),
+          passConstraints: S.optional(__S(2563, __c80, 3)),
+          textModulesData: S.optional(__S(1651, __c51, 19)),
+          classId: S.optional(S.String),
+          valueAddedModuleData: S.optional(__S(1649, __c51, 17)),
+          linkedObjectIds: S.optional(__S(1600, __c50, 0)),
+          merchantLocations: S.optional(__S(1653, __c51, 21)),
+          imageModulesData: S.optional(__S(1641, __c51, 9)),
+          id: S.optional(S.String),
+          hexBackgroundColor: S.optional(S.String),
+          validTimeInterval: S.optional(__S(1633, __c51, 1)),
+          genericType: S.optional(S.String),
+          state: S.optional(S.String),
+          header: S.optional(__S(1636, __c51, 4)),
+          saveRestrictions: S.optional(__S(2560, __c80, 0)),
+          smartTapRedemptionValue: S.optional(S.String),
+          barcode: S.optional(__S(2569, __c80, 9)),
+          cardTitle: S.optional(__S(1636, __c51, 4)),
+          logo: S.optional(__S(1639, __c51, 7)),
+        }),
+      ).annotate({ identifier: "GenericObject" });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4194, __c131, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8153,11 +8630,15 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateGenericobjectRequest",
       });
-    case 6:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8168,11 +8649,15 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateGiftcardclassRequest",
       });
-    case 7:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(99, __c12, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(192, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8185,13 +8670,13 @@ function __c33(j: number): any {
       });
   }
 }
-function __c34(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(161, __c20, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(964, __c30, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8200,11 +8685,15 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateIssuerRequest" });
-    case 1:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(106, __c13, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(260, __c8, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8215,11 +8704,15 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "UpdateLoyaltyclassRequest",
       });
-    case 2:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(111, __c13, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(322, __c10, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8230,11 +8723,15 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "UpdateLoyaltyobjectRequest",
       });
-    case 3:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8243,11 +8740,15 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateOfferclassRequest" });
-    case 4:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(117, __c14, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8256,11 +8757,15 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateOfferobjectRequest" });
-    case 5:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(169, __c21, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1154, __c36, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8269,11 +8774,15 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePermissionsRequest" });
-    case 6:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(121, __c15, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(513, __c16, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8284,94 +8793,8 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "UpdateTransitclassRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(133, __c16, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "walletobjects/v1/transitObject/{resourceId}",
-            baseUrl: "https://walletobjects.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateTransitobjectRequest",
-      });
   }
 }
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          finalStatus: S.optional(S.Number),
-          physicalHeaders: S.optional(S.String),
-          notificationType: S.optional(S.String),
-          diffObjectVersion: S.optional(S.String),
-          totalBytesIsEstimated: S.optional(S.Boolean),
-          customData: S.optional(S.String),
-          requestReceivedParamsServingInfo: S.optional(S.String),
-          totalBytes: S.optional(S.String),
-          currentBytes: S.optional(S.String),
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MediaRequestInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          blob: S.optional(__S(147, __c18, 3)),
-          mediaRequestInfo: S.optional(__S(280, __c35, 0)),
-        }),
-      ).annotate({
-        identifier: "TransitObjectUploadRotatingBarcodeValuesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(281, __c35, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "walletobjects/v1/transitObject/{resourceId}/uploadRotatingBarcodeValues",
-            baseUrl: "https://walletobjects.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UploadMediaRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TransitObjectUploadRotatingBarcodeValuesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          json: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JsonResource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          jsonResource: S.optional(__S(284, __c35, 4)),
-          jwtResource: S.optional(__S(181, __c22, 5)),
-        }),
-      ).annotate({ identifier: "JwtValidateRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(285, __c35, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "walletobjects/v1/jwt/validate",
-            baseUrl: "https://walletobjects.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ValidateJwtRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

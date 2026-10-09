@@ -2903,8 +2903,8 @@ export const createSandboxesByNameForkV2: API.OperationMethod<
   CreateSandboxesByNameForkV2Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateSandboxesByNameForkV2Request>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateSandboxesByNameForkV2Response>,
+  input: __S(281, __c35, 1) as any as S.Schema<CreateSandboxesByNameForkV2Request>,
+  output: __S(288, __c36, 0) as any as S.Schema<CreateSandboxesByNameForkV2Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2925,8 +2925,8 @@ export const createSandboxesByNameForkV3: API.OperationMethod<
   CreateSandboxesByNameForkV3Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateSandboxesByNameForkV3Request>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateSandboxesByNameForkV3Response>,
+  input: __S(352, __c44, 0) as any as S.Schema<CreateSandboxesByNameForkV3Request>,
+  output: __S(288, __c36, 0) as any as S.Schema<CreateSandboxesByNameForkV3Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2946,8 +2946,12 @@ export const createSandboxesSessionsBySessionIdSnapshotV2: API.OperationMethod<
   CreateSandboxesSessionsBySessionIdSnapshotV2Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV2Request>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV2Response>,
+  input: __S(360, __c45, 0) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV2Request>,
+  output: __S(
+    368,
+    __c46,
+    0,
+  ) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV2Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2967,8 +2971,12 @@ export const createSandboxesSessionsBySessionIdSnapshotV3: API.OperationMethod<
   CreateSandboxesSessionsBySessionIdSnapshotV3Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV3Request>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV3Response>,
+  input: __S(384, __c48, 0) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV3Request>,
+  output: __S(
+    368,
+    __c46,
+    0,
+  ) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV3Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2989,8 +2997,8 @@ export const createSandboxesV2: API.OperationMethod<
   CreateSandboxesV2Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateSandboxesV2Request>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateSandboxesV2Response>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateSandboxesV2Request>,
+  output: __S(288, __c36, 0) as any as S.Schema<CreateSandboxesV2Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3011,8 +3019,8 @@ export const createSandboxesV3: API.OperationMethod<
   CreateSandboxesV3Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateSandboxesV3Request>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateSandboxesV3Response>,
+  input: __S(9, __c1, 1) as any as S.Schema<CreateSandboxesV3Request>,
+  output: __S(288, __c36, 0) as any as S.Schema<CreateSandboxesV3Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3033,8 +3041,8 @@ export const createSandboxesV4: API.OperationMethod<
   CreateSandboxesV4Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateSandboxesV4Request>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateSandboxesV4Response>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateSandboxesV4Request>,
+  output: __S(288, __c36, 0) as any as S.Schema<CreateSandboxesV4Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3053,8 +3061,8 @@ export const createSessionDirectory: API.OperationMethod<
   CreateSessionDirectoryError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateSessionDirectoryRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateSessionDirectoryResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateSessionDirectoryRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<CreateSessionDirectoryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3068,8 +3076,8 @@ export const deleteDrive: API.OperationMethod<
   DeleteDriveError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteDriveRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteDriveResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteDriveRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteDriveResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3083,8 +3091,8 @@ export const deleteSandbox: API.OperationMethod<
   DeleteSandboxError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteSandboxRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeleteSandboxResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteSandboxRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DeleteSandboxResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3098,8 +3106,8 @@ export const deleteSessionSnapshot: API.OperationMethod<
   DeleteSessionSnapshotError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteSessionSnapshotRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DeleteSessionSnapshotResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteSessionSnapshotRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteSessionSnapshotResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3118,8 +3126,8 @@ export const extendSessionTimeout: API.OperationMethod<
   ExtendSessionTimeoutError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ExtendSessionTimeoutRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ExtendSessionTimeoutResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ExtendSessionTimeoutRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<ExtendSessionTimeoutResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3140,8 +3148,8 @@ export const getNamedSandbox: API.OperationMethod<
   GetNamedSandboxError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetNamedSandboxRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetNamedSandboxResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetNamedSandboxRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<GetNamedSandboxResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3161,8 +3169,8 @@ export const getOrCreateDrive: API.OperationMethod<
   GetOrCreateDriveError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetOrCreateDriveRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetOrCreateDriveResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetOrCreateDriveRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetOrCreateDriveResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3176,8 +3184,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetSessionRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetSessionResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetSessionRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<GetSessionResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3196,8 +3204,8 @@ export const getSessionCommand: API.OperationMethod<
   GetSessionCommandError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetSessionCommandRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetSessionCommandResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetSessionCommandRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<GetSessionCommandResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3216,8 +3224,8 @@ export const getSessionCommandLogs: API.OperationMethod<
   GetSessionCommandLogsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetSessionCommandLogsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetSessionCommandLogsResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetSessionCommandLogsRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<GetSessionCommandLogsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3231,8 +3239,8 @@ export const getSessionSnapshot: API.OperationMethod<
   GetSessionSnapshotError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetSessionSnapshotRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetSessionSnapshotResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetSessionSnapshotRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<GetSessionSnapshotResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3251,8 +3259,8 @@ export const killSessionCommand: API.OperationMethod<
   KillSessionCommandError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<KillSessionCommandRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<KillSessionCommandResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<KillSessionCommandRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<KillSessionCommandResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3266,8 +3274,8 @@ export const listDrives: API.OperationMethod<
   ListDrivesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListDrivesRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListDrivesResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListDrivesRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<ListDrivesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3281,8 +3289,8 @@ export const listNamedSandboxes: API.OperationMethod<
   ListNamedSandboxesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListNamedSandboxesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListNamedSandboxesResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListNamedSandboxesRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<ListNamedSandboxesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3296,8 +3304,8 @@ export const listSessionCommands: API.OperationMethod<
   ListSessionCommandsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListSessionCommandsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ListSessionCommandsResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListSessionCommandsRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<ListSessionCommandsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3311,8 +3319,8 @@ export const listSessions: API.OperationMethod<
   ListSessionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListSessionsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ListSessionsResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListSessionsRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<ListSessionsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3326,8 +3334,8 @@ export const listSessionSnapshots: API.OperationMethod<
   ListSessionSnapshotsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListSessionSnapshotsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListSessionSnapshotsResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListSessionSnapshotsRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<ListSessionSnapshotsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3346,8 +3354,8 @@ export const readSessionFile: API.OperationMethod<
   ReadSessionFileError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ReadSessionFileRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ReadSessionFileResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<ReadSessionFileRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<ReadSessionFileResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3366,8 +3374,8 @@ export const runSessionCommand: API.OperationMethod<
   RunSessionCommandError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<RunSessionCommandRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<RunSessionCommandResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<RunSessionCommandRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<RunSessionCommandResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3386,8 +3394,8 @@ export const stopSession: API.OperationMethod<
   StopSessionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<StopSessionRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<StopSessionResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<StopSessionRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<StopSessionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3408,8 +3416,8 @@ export const updateSandbox: API.OperationMethod<
   UpdateSandboxError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<UpdateSandboxRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<UpdateSandboxResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<UpdateSandboxRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<UpdateSandboxResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3428,8 +3436,8 @@ export const updateSessionNetworkPolicy: API.OperationMethod<
   UpdateSessionNetworkPolicyError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<UpdateSessionNetworkPolicyRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<UpdateSessionNetworkPolicyResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<UpdateSessionNetworkPolicyRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<UpdateSessionNetworkPolicyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3448,8 +3456,8 @@ export const writeSessionFiles: API.OperationMethod<
   WriteSessionFilesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<WriteSessionFilesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<WriteSessionFilesResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<WriteSessionFilesRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<WriteSessionFilesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3457,6 +3465,849 @@ export const writeSessionFiles: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          expiration: S.optional(S.Unknown),
+          deleteEvicted: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateSandboxesV2RequestKeepLastSnapshots",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          networkPolicy: S.optional(S.Unknown),
+          runtime: S.optional(S.String),
+          architecture: S.optional(S.String),
+          resources: S.optional(__S(328, __c41, 0)),
+          source: S.optional(S.Unknown),
+          projectId: S.optional(S.String),
+          ports: S.optional(__S(329, __c41, 1)),
+          image: S.optional(S.String),
+          timeout: S.optional(S.Number),
+          env: S.optional(__S(304, __c38, 0)),
+          mounts: S.optional(__S(331, __c41, 3)),
+          region: S.optional(S.String),
+          failoverRegions: S.optional(__S(312, __c39, 0)),
+          networkId: S.optional(S.String),
+          name: S.optional(S.String),
+          persistent: S.optional(S.Boolean),
+          snapshotExpiration: S.optional(S.Unknown),
+          keepLastSnapshots: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(304, __c38, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/v2/sandboxes", code: 200 })),
+      ).annotate({ identifier: "CreateSandboxesV2Request" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          expiration: S.optional(S.Unknown),
+          deleteEvicted: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateSandboxesV3RequestKeepLastSnapshots",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          networkPolicy: S.optional(S.Unknown),
+          architecture: S.optional(S.String),
+          resources: S.optional(__S(328, __c41, 0)),
+          source: S.optional(S.Unknown),
+          projectId: S.optional(S.String),
+          ports: S.optional(__S(329, __c41, 1)),
+          image: S.optional(S.String),
+          timeout: S.optional(S.Number),
+          env: S.optional(__S(304, __c38, 0)),
+          mounts: S.optional(__S(331, __c41, 3)),
+          region: S.optional(S.String),
+          failoverRegions: S.optional(__S(312, __c39, 0)),
+          networkId: S.optional(S.String),
+          name: S.optional(S.String),
+          persistent: S.optional(S.Boolean),
+          snapshotExpiration: S.optional(S.Unknown),
+          keepLastSnapshots: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(304, __c38, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/v3/sandboxes", code: 200 })),
+      ).annotate({ identifier: "CreateSandboxesV3Request" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          networkPolicy: S.optional(S.Unknown),
+          architecture: S.optional(S.String),
+          resources: S.optional(__S(328, __c41, 0)),
+          source: S.optional(S.Unknown),
+          projectId: S.optional(S.String),
+          ports: S.optional(__S(329, __c41, 1)),
+          image: S.optional(S.String),
+          timeout: S.optional(S.Number),
+          env: S.optional(__S(304, __c38, 0)),
+          mounts: S.optional(__S(331, __c41, 3)),
+          region: S.optional(S.String),
+          failoverRegions: S.optional(__S(312, __c39, 0)),
+          networkId: S.optional(S.String),
+          name: S.optional(S.String),
+          persistent: S.optional(S.Boolean),
+          snapshotExpiration: S.optional(S.Unknown),
+          keepLastSnapshots: S.optional(S.Unknown),
+          tags: S.optional(__S(304, __c38, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/v4/sandboxes", code: 200 })),
+      ).annotate({ identifier: "CreateSandboxesV4Request" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          cwd: S.optional(S.String),
+          path: S.String,
+          recursive: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v2/sandboxes/sessions/{sessionId}/fs/mkdir", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateSessionDirectoryRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateSessionDirectoryResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          projectId: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v2/sandboxes/drives/{name}", code: 200 })),
+      ).annotate({ identifier: "DeleteDriveRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          drive: __S(56, __c7, 0),
+        }),
+      ).annotate({ identifier: "DeleteDriveResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.Number,
+          currentSandboxName: S.optional(S.String),
+          currentSessionId: S.optional(S.String),
+          id: S.String,
+          maxSizeBytes: S.Number,
+          name: S.String,
+          projectId: S.String,
+          region: S.String,
+          updatedAt: S.Number,
+          v0: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Drive" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          projectId: S.optional(S.String.pipe(T.Query())),
+          deleteOrphanSnapshots: S.optional(S.Boolean.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v2/sandboxes/{name}", code: 200 })),
+      ).annotate({ identifier: "DeleteSandboxRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sandbox: __S(300, __c37, 4),
+        }),
+      ).annotate({ identifier: "DeleteSandboxResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          snapshotId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v2/sandboxes/snapshots/{snapshotId}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteSessionSnapshotRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          snapshot: __S(376, __c47, 0),
+        }),
+      ).annotate({
+        identifier: "DeleteSessionSnapshotResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          duration: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/sandboxes/sessions/{sessionId}/extend-timeout",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ExtendSessionTimeoutRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          session: __S(348, __c43, 4),
+        }),
+      ).annotate({
+        identifier: "ExtendSessionTimeoutResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          projectId: S.optional(S.String.pipe(T.Query())),
+          resume: S.optional(S.Boolean.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/{name}", code: 200 })),
+      ).annotate({ identifier: "GetNamedSandboxRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resumed: S.Boolean,
+          routes: __S(321, __c40, 1),
+          sandbox: __S(300, __c37, 4),
+          session: __S(348, __c43, 4),
+        }),
+      ).annotate({ identifier: "GetNamedSandboxResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          projectId: S.optional(S.String),
+          maxSizeBytes: S.optional(S.Number),
+          region: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v2/sandboxes/drives/{name}", code: 200 })),
+      ).annotate({ identifier: "GetOrCreateDriveRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/sessions/{sessionId}", code: 200 })),
+      ).annotate({ identifier: "GetSessionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          routes: __S(321, __c40, 1),
+          session: __S(348, __c43, 4),
+        }),
+      ).annotate({ identifier: "GetSessionResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+          cmdId: S.String.pipe(T.Label()),
+          wait: S.optional(S.Boolean.pipe(T.Query(), T.StringEncoded())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetSessionCommandRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          args: __S(336, __c42, 0),
+          cwd: S.String,
+          durationMs: S.optional(S.Number),
+          exitCode: S.NullOr(S.Number),
+          id: S.String,
+          name: S.String,
+          sessionId: S.String,
+          startedAt: S.Number,
+        }),
+      ).annotate({ identifier: "SessionCommand" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          command: __S(136, __c17, 0),
+        }),
+      ).annotate({
+        identifier: "GetSessionCommandResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+          cmdId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}/logs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSessionCommandLogsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GetSessionCommandLogsResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          snapshotId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/snapshots/{snapshotId}", code: 200 })),
+      ).annotate({
+        identifier: "GetSessionSnapshotRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+          cmdId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          signal: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}/kill",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "KillSessionCommandRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          sortBy: S.optional(S.String.pipe(T.Query())),
+          namePrefix: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/drives", code: 200 })),
+      ).annotate({ identifier: "ListDrivesRequest" });
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          drives: __S(185, __c23, 1),
+          pagination: __S(192, __c24, 0),
+        }),
+      ).annotate({ identifier: "ListDrivesResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "ListDrivesResponsePagination",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sortBy: S.optional(S.String.pipe(T.Query())),
+          namePrefix: S.optional(S.String.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          tags: S.optional(S.Unknown.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes", code: 200 })),
+      ).annotate({
+        identifier: "ListNamedSandboxesRequest",
+      });
+    case 1:
+      return S.Array(__S(300, __c37, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pagination: __S(192, __c24, 0),
+          sandboxes: __S(201, __c25, 1),
+        }),
+      ).annotate({
+        identifier: "ListNamedSandboxesResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v2/sandboxes/sessions/{sessionId}/cmd", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListSessionCommandsRequest",
+      });
+    case 1:
+      return S.Array(__S(136, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          commands: __S(209, __c26, 1),
+        }),
+      ).annotate({
+        identifier: "ListSessionCommandsResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/sessions", code: 200 })),
+      ).annotate({ identifier: "ListSessionsRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListSessionsResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/snapshots", code: 200 })),
+      ).annotate({
+        identifier: "ListSessionSnapshotsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListSessionSnapshotsResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          cwd: S.optional(S.String),
+          path: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v2/sandboxes/sessions/{sessionId}/fs/read", code: 200 }),
+        ),
+      ).annotate({ identifier: "ReadSessionFileRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+          cmdId: S.String.pipe(T.Query()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          command: S.String,
+          args: S.optional(__S(336, __c42, 0)),
+          cwd: S.optional(S.String),
+          env: S.optional(__S(304, __c38, 0)),
+          sudo: S.optional(S.Boolean),
+          wait: S.optional(S.Boolean),
+          logs: S.optional(S.Boolean),
+          timeout: S.optional(S.Number),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v2/sandboxes/sessions/{sessionId}/cmd", code: 200 }),
+        ),
+      ).annotate({ identifier: "RunSessionCommandRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v2/sandboxes/sessions/{sessionId}/stop", code: 200 }),
+        ),
+      ).annotate({ identifier: "StopSessionRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "StopSessionResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          projectId: S.optional(S.String.pipe(T.Query())),
+          resume: S.optional(S.Boolean.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          resources: S.optional(__S(328, __c41, 0)),
+          runtime: S.optional(S.String),
+          timeout: S.optional(S.Number),
+          persistent: S.optional(S.Boolean),
+          snapshotExpiration: S.optional(S.Unknown),
+          keepLastSnapshots: S.optional(S.Unknown),
+          networkPolicy: S.optional(S.Unknown),
+          region: S.optional(S.String),
+          failoverRegions: S.optional(__S(312, __c39, 0)),
+          mounts: S.optional(__S(331, __c41, 3)),
+          networkId: S.optional(S.String),
+          env: S.optional(__S(304, __c38, 0)),
+          ports: S.optional(__S(329, __c41, 1)),
+          currentSnapshotId: S.optional(S.String),
+          tags: S.optional(__S(304, __c38, 0)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v2/sandboxes/{name}", code: 200 })),
+      ).annotate({ identifier: "UpdateSandboxRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "UpdateSandboxResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/sandboxes/sessions/{sessionId}/network-policy",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateSessionNetworkPolicyRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          xCwd: S.optional(S.String.pipe(T.Header("x-cwd"))),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v2/sandboxes/sessions/{sessionId}/fs/write", code: 200 }),
+        ),
+      ).annotate({ identifier: "WriteSessionFilesRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          expiration: S.optional(S.Unknown),
+          deleteEvicted: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateSandboxesByNameForkV2RequestKeepLastSnapshots",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          projectId: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          networkPolicy: S.optional(S.Unknown),
+          resources: S.optional(__S(328, __c41, 0)),
+          ports: S.optional(__S(329, __c41, 1)),
+          image: S.optional(S.String),
+          timeout: S.optional(S.Number),
+          env: S.optional(__S(304, __c38, 0)),
+          mounts: S.optional(__S(331, __c41, 3)),
+          region: S.optional(S.String),
+          failoverRegions: S.optional(__S(312, __c39, 0)),
+          networkId: S.optional(S.String),
+          persistent: S.optional(S.Boolean),
+          snapshotExpiration: S.optional(S.Unknown),
+          keepLastSnapshots: S.optional(__S(280, __c35, 0)),
+          tags: S.optional(__S(304, __c38, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/v2/sandboxes/{name}/fork", code: 200 })),
+      ).annotate({
+        identifier: "CreateSandboxesByNameForkV2Request",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          routes: __S(321, __c40, 1),
+          sandbox: __S(300, __c37, 4),
+          session: __S(348, __c43, 4),
+        }),
+      ).annotate({
+        identifier: "CreateSandboxesByNameForkV2Response",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          deleteEvicted: S.Boolean,
+          expiration: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "NamedSandboxKeepLastSnapshots",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          drive: S.String,
+          mode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NamedSandboxMountsValue" });
+    case 2:
+      return S.Record(S.String, __S(297, __c37, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          allowedCIDRs: S.optional(__S(336, __c42, 0)),
+          allowedDomains: S.optional(__S(336, __c42, 0)),
+          deniedCIDRs: S.optional(__S(336, __c42, 0)),
+          mode: S.String,
+          s3Key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamedSandboxNetworkPolicy",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          architecture: S.optional(S.String),
+          createdAt: S.Number,
+          currentSessionId: S.String,
+          currentSnapshotId: S.optional(S.String),
+          cwd: S.optional(S.String),
+          expiresAt: S.optional(S.Number),
+          failoverRegions: S.optional(__S(312, __c39, 0)),
+          image: S.optional(S.String),
+          keepLastSnapshots: S.optional(__S(296, __c37, 0)),
+          memory: S.optional(S.Number),
+          mounts: S.optional(__S(298, __c37, 2)),
+          name: S.String,
+          networkId: S.optional(S.String),
+          networkPolicy: S.optional(__S(299, __c37, 3)),
+          persistent: S.Boolean,
+          region: S.optional(S.String),
+          runtime: S.optional(S.String),
+          snapshotExpiration: S.optional(S.Number),
+          status: S.String,
+          statusUpdatedAt: S.Number,
+          tags: S.optional(__S(304, __c38, 0)),
+          timeout: S.optional(S.Number),
+          totalActiveCpuDurationMs: S.optional(S.Number),
+          totalDurationMs: S.optional(S.Number),
+          totalEgressBytes: S.optional(S.Number),
+          totalIngressBytes: S.optional(S.Number),
+          updatedAt: S.Number,
+          v0: S.optional(S.Boolean),
+          vcpus: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NamedSandbox" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          port: S.Number,
+          subdomain: S.String,
+          system: S.optional(S.Boolean),
+          url: S.String,
+        }),
+      ).annotate({ identifier: "SandboxPublicRoute" });
+    case 1:
+      return S.Array(__S(320, __c40, 0));
+  }
+}
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3470,8 +4321,6 @@ function __c0(j: number): any {
     case 1:
       return S.Array(S.Number);
     case 2:
-      return S.Record(S.String, S.String);
-    case 3:
       return S.suspend(() =>
         S.Struct({
           drive: S.String,
@@ -3480,147 +4329,34 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateSandboxesByNameForkV2RequestMountsValue",
       });
-    case 4:
-      return S.Record(S.String, __S(3, __c0, 3));
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          expiration: S.optional(S.Unknown),
-          deleteEvicted: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateSandboxesByNameForkV2RequestKeepLastSnapshots",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          projectId: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          networkPolicy: S.optional(S.Unknown),
-          resources: S.optional(__S(0, __c0, 0)),
-          ports: S.optional(__S(1, __c0, 1)),
-          image: S.optional(S.String),
-          timeout: S.optional(S.Number),
-          env: S.optional(__S(2, __c0, 2)),
-          mounts: S.optional(__S(4, __c0, 4)),
-          region: S.optional(S.String),
-          failoverRegions: S.optional(__S(5, __c0, 5)),
-          networkId: S.optional(S.String),
-          persistent: S.optional(S.Boolean),
-          snapshotExpiration: S.optional(S.Unknown),
-          keepLastSnapshots: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/v2/sandboxes/{name}/fork", code: 200 })),
-      ).annotate({
-        identifier: "CreateSandboxesByNameForkV2Request",
-      });
+    case 3:
+      return S.Record(S.String, __S(330, __c41, 2));
   }
 }
-function __c1(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          port: S.Number,
-          subdomain: S.String,
-          system: S.optional(S.Boolean),
-          url: S.String,
-        }),
-      ).annotate({ identifier: "SandboxPublicRoute" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          deleteEvicted: S.Boolean,
-          expiration: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "NamedSandboxKeepLastSnapshots",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          drive: S.String,
-          mode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NamedSandboxMountsValue" });
-    case 4:
-      return S.Record(S.String, __S(11, __c1, 3));
-    case 5:
       return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allowedCIDRs: S.optional(__S(13, __c1, 5)),
-          allowedDomains: S.optional(__S(13, __c1, 5)),
-          deniedCIDRs: S.optional(__S(13, __c1, 5)),
-          mode: S.String,
-          s3Key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamedSandboxNetworkPolicy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          architecture: S.optional(S.String),
-          createdAt: S.Number,
-          currentSessionId: S.String,
-          currentSnapshotId: S.optional(S.String),
-          cwd: S.optional(S.String),
-          expiresAt: S.optional(S.Number),
-          failoverRegions: S.optional(__S(5, __c0, 5)),
-          image: S.optional(S.String),
-          keepLastSnapshots: S.optional(__S(10, __c1, 2)),
-          memory: S.optional(S.Number),
-          mounts: S.optional(__S(12, __c1, 4)),
-          name: S.String,
-          networkId: S.optional(S.String),
-          networkPolicy: S.optional(__S(14, __c1, 6)),
-          persistent: S.Boolean,
-          region: S.optional(S.String),
-          runtime: S.optional(S.String),
-          snapshotExpiration: S.optional(S.Number),
-          status: S.String,
-          statusUpdatedAt: S.Number,
-          tags: S.optional(__S(2, __c0, 2)),
-          timeout: S.optional(S.Number),
-          totalActiveCpuDurationMs: S.optional(S.Number),
-          totalDurationMs: S.optional(S.Number),
-          totalEgressBytes: S.optional(S.Number),
-          totalIngressBytes: S.optional(S.Number),
-          updatedAt: S.Number,
-          v0: S.optional(S.Boolean),
-          vcpus: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NamedSandbox" });
   }
 }
-function __c2(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
-          headerNames: S.optional(__S(13, __c1, 5)),
+          headerNames: S.optional(__S(336, __c42, 0)),
         }),
       ).annotate({ identifier: "SandboxInjectionRule" });
     case 1:
-      return S.Array(__S(16, __c2, 0));
+      return S.Array(__S(344, __c43, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedCIDRs: S.optional(__S(13, __c1, 5)),
-          allowedDomains: S.optional(__S(13, __c1, 5)),
-          deniedCIDRs: S.optional(__S(13, __c1, 5)),
-          injectionRules: S.optional(__S(17, __c2, 1)),
+          allowedCIDRs: S.optional(__S(336, __c42, 0)),
+          allowedDomains: S.optional(__S(336, __c42, 0)),
+          deniedCIDRs: S.optional(__S(336, __c42, 0)),
+          injectionRules: S.optional(__S(345, __c43, 1)),
           mode: S.String,
         }),
       ).annotate({ identifier: "SandboxNetworkPolicy" });
@@ -3642,8 +4378,8 @@ function __c2(j: number): any {
           duration: S.optional(S.Number),
           id: S.String,
           memory: S.Number,
-          networkPolicy: S.optional(__S(18, __c2, 2)),
-          networkTransfer: S.optional(__S(19, __c2, 3)),
+          networkPolicy: S.optional(__S(346, __c43, 2)),
+          networkTransfer: S.optional(__S(347, __c43, 3)),
           projectId: S.String,
           region: S.String,
           requestedAt: S.Number,
@@ -3661,17 +4397,11 @@ function __c2(j: number): any {
           vcpus: S.Number,
         }),
       ).annotate({ identifier: "Session" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          routes: __S(9, __c1, 1),
-          sandbox: __S(15, __c1, 7),
-          session: __S(20, __c2, 4),
-        }),
-      ).annotate({
-        identifier: "CreateSandboxesByNameForkV2Response",
-      });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3679,24 +4409,28 @@ function __c2(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           networkPolicy: S.optional(S.Unknown),
-          resources: S.optional(__S(0, __c0, 0)),
-          ports: S.optional(__S(1, __c0, 1)),
+          resources: S.optional(__S(328, __c41, 0)),
+          ports: S.optional(__S(329, __c41, 1)),
           image: S.optional(S.String),
           timeout: S.optional(S.Number),
-          env: S.optional(__S(2, __c0, 2)),
-          mounts: S.optional(__S(4, __c0, 4)),
+          env: S.optional(__S(304, __c38, 0)),
+          mounts: S.optional(__S(331, __c41, 3)),
           region: S.optional(S.String),
-          failoverRegions: S.optional(__S(5, __c0, 5)),
+          failoverRegions: S.optional(__S(312, __c39, 0)),
           networkId: S.optional(S.String),
           persistent: S.optional(S.Boolean),
           snapshotExpiration: S.optional(S.Unknown),
           keepLastSnapshots: S.optional(S.Unknown),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(304, __c38, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/v3/sandboxes/{name}/fork", code: 200 })),
       ).annotate({
         identifier: "CreateSandboxesByNameForkV3Request",
       });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sessionId: S.String.pipe(T.Label()),
@@ -3711,7 +4445,20 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          session: __S(348, __c43, 4),
+          snapshot: __S(376, __c47, 0),
+        }),
+      ).annotate({
+        identifier: "CreateSandboxesSessionsBySessionIdSnapshotV2Response",
+      });
+  }
+}
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3724,7 +4471,7 @@ function __c3(j: number): any {
           lastUsedAt: S.Number,
           parentId: S.optional(S.String),
           region: S.optional(S.String),
-          regions: S.optional(__S(13, __c1, 5)),
+          regions: S.optional(__S(336, __c42, 0)),
           sizeBytes: S.Number,
           sourceSessionId: S.String,
           status: S.String,
@@ -3732,16 +4479,11 @@ function __c3(j: number): any {
           v0: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Snapshot" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          session: __S(20, __c2, 4),
-          snapshot: __S(24, __c3, 0),
-        }),
-      ).annotate({
-        identifier: "CreateSandboxesSessionsBySessionIdSnapshotV2Response",
-      });
-    case 2:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sessionId: S.String.pipe(T.Label()),
@@ -3754,587 +4496,8 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSandboxesSessionsBySessionIdSnapshotV3Request",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          expiration: S.optional(S.Unknown),
-          deleteEvicted: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateSandboxesV2RequestKeepLastSnapshots",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          networkPolicy: S.optional(S.Unknown),
-          runtime: S.optional(S.String),
-          architecture: S.optional(S.String),
-          resources: S.optional(__S(0, __c0, 0)),
-          source: S.optional(S.Unknown),
-          projectId: S.optional(S.String),
-          ports: S.optional(__S(1, __c0, 1)),
-          image: S.optional(S.String),
-          timeout: S.optional(S.Number),
-          env: S.optional(__S(2, __c0, 2)),
-          mounts: S.optional(__S(4, __c0, 4)),
-          region: S.optional(S.String),
-          failoverRegions: S.optional(__S(5, __c0, 5)),
-          networkId: S.optional(S.String),
-          name: S.optional(S.String),
-          persistent: S.optional(S.Boolean),
-          snapshotExpiration: S.optional(S.Unknown),
-          keepLastSnapshots: S.optional(__S(27, __c3, 3)),
-          tags: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/v2/sandboxes", code: 200 })),
-      ).annotate({ identifier: "CreateSandboxesV2Request" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          expiration: S.optional(S.Unknown),
-          deleteEvicted: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateSandboxesV3RequestKeepLastSnapshots",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          networkPolicy: S.optional(S.Unknown),
-          architecture: S.optional(S.String),
-          resources: S.optional(__S(0, __c0, 0)),
-          source: S.optional(S.Unknown),
-          projectId: S.optional(S.String),
-          ports: S.optional(__S(1, __c0, 1)),
-          image: S.optional(S.String),
-          timeout: S.optional(S.Number),
-          env: S.optional(__S(2, __c0, 2)),
-          mounts: S.optional(__S(4, __c0, 4)),
-          region: S.optional(S.String),
-          failoverRegions: S.optional(__S(5, __c0, 5)),
-          networkId: S.optional(S.String),
-          name: S.optional(S.String),
-          persistent: S.optional(S.Boolean),
-          snapshotExpiration: S.optional(S.Unknown),
-          keepLastSnapshots: S.optional(__S(29, __c3, 5)),
-          tags: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/v3/sandboxes", code: 200 })),
-      ).annotate({ identifier: "CreateSandboxesV3Request" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          networkPolicy: S.optional(S.Unknown),
-          architecture: S.optional(S.String),
-          resources: S.optional(__S(0, __c0, 0)),
-          source: S.optional(S.Unknown),
-          projectId: S.optional(S.String),
-          ports: S.optional(__S(1, __c0, 1)),
-          image: S.optional(S.String),
-          timeout: S.optional(S.Number),
-          env: S.optional(__S(2, __c0, 2)),
-          mounts: S.optional(__S(4, __c0, 4)),
-          region: S.optional(S.String),
-          failoverRegions: S.optional(__S(5, __c0, 5)),
-          networkId: S.optional(S.String),
-          name: S.optional(S.String),
-          persistent: S.optional(S.Boolean),
-          snapshotExpiration: S.optional(S.Unknown),
-          keepLastSnapshots: S.optional(S.Unknown),
-          tags: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/v4/sandboxes", code: 200 })),
-      ).annotate({ identifier: "CreateSandboxesV4Request" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          cwd: S.optional(S.String),
-          path: S.String,
-          recursive: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v2/sandboxes/sessions/{sessionId}/fs/mkdir", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateSessionDirectoryRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateSessionDirectoryResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          projectId: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v2/sandboxes/drives/{name}", code: 200 })),
-      ).annotate({ identifier: "DeleteDriveRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.Number,
-          currentSandboxName: S.optional(S.String),
-          currentSessionId: S.optional(S.String),
-          id: S.String,
-          maxSizeBytes: S.Number,
-          name: S.String,
-          projectId: S.String,
-          region: S.String,
-          updatedAt: S.Number,
-          v0: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Drive" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          drive: __S(35, __c4, 3),
-        }),
-      ).annotate({ identifier: "DeleteDriveResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          projectId: S.optional(S.String.pipe(T.Query())),
-          deleteOrphanSnapshots: S.optional(S.Boolean.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v2/sandboxes/{name}", code: 200 })),
-      ).annotate({ identifier: "DeleteSandboxRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sandbox: __S(15, __c1, 7),
-        }),
-      ).annotate({ identifier: "DeleteSandboxResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          snapshotId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v2/sandboxes/snapshots/{snapshotId}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteSessionSnapshotRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          snapshot: __S(24, __c3, 0),
-        }),
-      ).annotate({
-        identifier: "DeleteSessionSnapshotResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          duration: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/sandboxes/sessions/{sessionId}/extend-timeout",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ExtendSessionTimeoutRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          session: __S(20, __c2, 4),
-        }),
-      ).annotate({
-        identifier: "ExtendSessionTimeoutResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          projectId: S.optional(S.String.pipe(T.Query())),
-          resume: S.optional(S.Boolean.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/{name}", code: 200 })),
-      ).annotate({ identifier: "GetNamedSandboxRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resumed: S.Boolean,
-          routes: __S(9, __c1, 1),
-          sandbox: __S(15, __c1, 7),
-          session: __S(20, __c2, 4),
-        }),
-      ).annotate({ identifier: "GetNamedSandboxResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          projectId: S.optional(S.String),
-          maxSizeBytes: S.optional(S.Number),
-          region: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v2/sandboxes/drives/{name}", code: 200 })),
-      ).annotate({ identifier: "GetOrCreateDriveRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/sessions/{sessionId}", code: 200 })),
-      ).annotate({ identifier: "GetSessionRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          routes: __S(9, __c1, 1),
-          session: __S(20, __c2, 4),
-        }),
-      ).annotate({ identifier: "GetSessionResponse" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-          cmdId: S.String.pipe(T.Label()),
-          wait: S.optional(S.Boolean.pipe(T.Query(), T.StringEncoded())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetSessionCommandRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          args: __S(13, __c1, 5),
-          cwd: S.String,
-          durationMs: S.optional(S.Number),
-          exitCode: S.NullOr(S.Number),
-          id: S.String,
-          name: S.String,
-          sessionId: S.String,
-          startedAt: S.Number,
-        }),
-      ).annotate({ identifier: "SessionCommand" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          command: __S(49, __c6, 1),
-        }),
-      ).annotate({
-        identifier: "GetSessionCommandResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-          cmdId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}/logs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSessionCommandLogsRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GetSessionCommandLogsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          snapshotId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/snapshots/{snapshotId}", code: 200 })),
-      ).annotate({
-        identifier: "GetSessionSnapshotRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-          cmdId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          signal: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}/kill",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "KillSessionCommandRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          sortBy: S.optional(S.String.pipe(T.Query())),
-          namePrefix: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/drives", code: 200 })),
-      ).annotate({ identifier: "ListDrivesRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(35, __c4, 3));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "ListDrivesResponsePagination",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          drives: __S(56, __c7, 0),
-          pagination: __S(57, __c7, 1),
-        }),
-      ).annotate({ identifier: "ListDrivesResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sortBy: S.optional(S.String.pipe(T.Query())),
-          namePrefix: S.optional(S.String.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          tags: S.optional(S.Unknown.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes", code: 200 })),
-      ).annotate({
-        identifier: "ListNamedSandboxesRequest",
-      });
-    case 4:
-      return S.Array(__S(15, __c1, 7));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pagination: __S(57, __c7, 1),
-          sandboxes: __S(60, __c7, 4),
-        }),
-      ).annotate({
-        identifier: "ListNamedSandboxesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v2/sandboxes/sessions/{sessionId}/cmd", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListSessionCommandsRequest",
-      });
-    case 7:
-      return S.Array(__S(49, __c6, 1));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          commands: __S(63, __c7, 7),
-        }),
-      ).annotate({
-        identifier: "ListSessionCommandsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/sessions", code: 200 })),
-      ).annotate({ identifier: "ListSessionsRequest" });
-    case 2:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListSessionsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/snapshots", code: 200 })),
-      ).annotate({
-        identifier: "ListSessionSnapshotsRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListSessionSnapshotsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          cwd: S.optional(S.String),
-          path: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v2/sandboxes/sessions/{sessionId}/fs/read", code: 200 }),
-        ),
-      ).annotate({ identifier: "ReadSessionFileRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-          cmdId: S.String.pipe(T.Query()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          command: S.String,
-          args: S.optional(__S(13, __c1, 5)),
-          cwd: S.optional(S.String),
-          env: S.optional(__S(2, __c0, 2)),
-          sudo: S.optional(S.Boolean),
-          wait: S.optional(S.Boolean),
-          logs: S.optional(S.Boolean),
-          timeout: S.optional(S.Number),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v2/sandboxes/sessions/{sessionId}/cmd", code: 200 }),
-        ),
-      ).annotate({ identifier: "RunSessionCommandRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v2/sandboxes/sessions/{sessionId}/stop", code: 200 }),
-        ),
-      ).annotate({ identifier: "StopSessionRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "StopSessionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          projectId: S.optional(S.String.pipe(T.Query())),
-          resume: S.optional(S.Boolean.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          resources: S.optional(__S(0, __c0, 0)),
-          runtime: S.optional(S.String),
-          timeout: S.optional(S.Number),
-          persistent: S.optional(S.Boolean),
-          snapshotExpiration: S.optional(S.Unknown),
-          keepLastSnapshots: S.optional(S.Unknown),
-          networkPolicy: S.optional(S.Unknown),
-          region: S.optional(S.String),
-          failoverRegions: S.optional(__S(5, __c0, 5)),
-          mounts: S.optional(__S(4, __c0, 4)),
-          networkId: S.optional(S.String),
-          env: S.optional(__S(2, __c0, 2)),
-          ports: S.optional(__S(1, __c0, 1)),
-          currentSnapshotId: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v2/sandboxes/{name}", code: 200 })),
-      ).annotate({ identifier: "UpdateSandboxRequest" });
-    case 2:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "UpdateSandboxResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/sandboxes/sessions/{sessionId}/network-policy",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateSessionNetworkPolicyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          xCwd: S.optional(S.String.pipe(T.Header("x-cwd"))),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v2/sandboxes/sessions/{sessionId}/fs/write", code: 200 }),
-        ),
-      ).annotate({ identifier: "WriteSessionFilesRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

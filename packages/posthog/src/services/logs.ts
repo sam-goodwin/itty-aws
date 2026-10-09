@@ -2397,8 +2397,8 @@ export const createLogsAlert: API.OperationMethod<
   CreateLogsAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateLogsAlertRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<LogsAlertConfiguration>,
+  input: __S(624, __c39, 0) as any as S.Schema<CreateLogsAlertRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<LogsAlertConfiguration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2412,8 +2412,8 @@ export const createLogsAlertsDestination: API.OperationMethod<
   CreateLogsAlertsDestinationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateLogsAlertsDestinationRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<LogsAlertDestinationResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<CreateLogsAlertsDestinationRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<LogsAlertDestinationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2427,8 +2427,8 @@ export const createLogsAlertsSimulate: API.OperationMethod<
   CreateLogsAlertsSimulateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateLogsAlertsSimulateRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<LogsAlertSimulateResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<CreateLogsAlertsSimulateRequest>,
+  output: __S(1123, __c70, 3) as any as S.Schema<LogsAlertSimulateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2442,8 +2442,8 @@ export const createLogsAnomaliesScan: API.OperationMethod<
   CreateLogsAnomaliesScanError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateLogsAnomaliesScanRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<LogsAnomalyScanResponse>,
+  input: __S(1137, __c71, 1) as any as S.Schema<CreateLogsAnomaliesScanRequest>,
+  output: __S(1144, __c71, 8) as any as S.Schema<LogsAnomalyScanResponse>,
   errors: [UnprocessableEntity],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2457,8 +2457,8 @@ export const createLogsAnomaliesSeriesBand: API.OperationMethod<
   CreateLogsAnomaliesSeriesBandError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateLogsAnomaliesSeriesBandRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<LogsSeriesBandsResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<CreateLogsAnomaliesSeriesBandRequest>,
+  output: __S(1157, __c72, 5) as any as S.Schema<LogsSeriesBandsResponse>,
   errors: [BadRequest, UnprocessableEntity],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2471,8 +2471,8 @@ export const createLogsCount: API.OperationMethod<
   CreateLogsCountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateLogsCountRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<LogsCountResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<CreateLogsCountRequest>,
+  output: __S(1185, __c74, 1) as any as S.Schema<LogsCountResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2485,8 +2485,8 @@ export const createLogsCountRange: API.OperationMethod<
   CreateLogsCountRangeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateLogsCountRangeRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<LogsCountRangesResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateLogsCountRangeRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<LogsCountRangesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2500,8 +2500,8 @@ export const createLogsExplainLogWithAI: API.OperationMethod<
   CreateLogsExplainLogWithAIError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateLogsExplainLogWithAIRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ExplainRequest>,
+  input: __S(16, __c1, 0) as any as S.Schema<CreateLogsExplainLogWithAIRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<ExplainRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2514,8 +2514,8 @@ export const createLogsFacetValue: API.OperationMethod<
   CreateLogsFacetValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateLogsFacetValueRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<LogsFacetValuesResponse>,
+  input: __S(33, __c2, 1) as any as S.Schema<CreateLogsFacetValueRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<LogsFacetValuesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2528,8 +2528,8 @@ export const createLogsGroupBy: API.OperationMethod<
   CreateLogsGroupByError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CreateLogsGroupByRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<LogsGroupByResponse>,
+  input: __S(67, __c4, 3) as any as S.Schema<CreateLogsGroupByRequest>,
+  output: __S(70, __c4, 6) as any as S.Schema<LogsGroupByResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2542,8 +2542,8 @@ export const createLogsImpact: API.OperationMethod<
   CreateLogsImpactError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreateLogsImpactRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<LogsImpactResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateLogsImpactRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<LogsImpactResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2556,8 +2556,8 @@ export const createLogsMetricRule: API.OperationMethod<
   CreateLogsMetricRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<CreateLogsMetricRuleRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<LogsMetricRule>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateLogsMetricRuleRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<LogsMetricRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2570,8 +2570,8 @@ export const createLogsPattern: API.OperationMethod<
   CreateLogsPatternError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreateLogsPatternRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<LogsPatternsResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreateLogsPatternRequest>,
+  output: __S(132, __c8, 4) as any as S.Schema<LogsPatternsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2584,8 +2584,8 @@ export const createLogsPatternsDiff: API.OperationMethod<
   CreateLogsPatternsDiffError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<CreateLogsPatternsDiffRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<LogsPatternsDiffResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateLogsPatternsDiffRequest>,
+  output: __S(164, __c10, 4) as any as S.Schema<LogsPatternsDiffResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2598,8 +2598,8 @@ export const createLogsQuery: API.OperationMethod<
   CreateLogsQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<CreateLogsQueryRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<LogsQueryResponse>,
+  input: __S(178, __c11, 2) as any as S.Schema<CreateLogsQueryRequest>,
+  output: __S(181, __c11, 5) as any as S.Schema<LogsQueryResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2613,8 +2613,8 @@ export const createLogsRetentionRule: API.OperationMethod<
   CreateLogsRetentionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CreateLogsRetentionRuleRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<LogsRetentionRule>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateLogsRetentionRuleRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<LogsRetentionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2628,8 +2628,8 @@ export const createLogsRetentionRulesReorder: API.OperationMethod<
   CreateLogsRetentionRulesReorderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<CreateLogsRetentionRulesReorderRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<PaginatedLogsRetentionRuleList>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreateLogsRetentionRulesReorderRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<PaginatedLogsRetentionRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2643,8 +2643,8 @@ export const createLogsRetentionRulesSuggestName: API.OperationMethod<
   CreateLogsRetentionRulesSuggestNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<CreateLogsRetentionRulesSuggestNameRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<LogsRetentionRuleNameSuggestion>,
+  input: __S(256, __c16, 0) as any as S.Schema<CreateLogsRetentionRulesSuggestNameRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<LogsRetentionRuleNameSuggestion>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2657,8 +2657,8 @@ export const createLogsSamplingRule: API.OperationMethod<
   CreateLogsSamplingRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<CreateLogsSamplingRuleRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<LogsSamplingRule>,
+  input: __S(272, __c17, 0) as any as S.Schema<CreateLogsSamplingRuleRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<LogsSamplingRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2672,8 +2672,8 @@ export const createLogsSamplingRulesReorder: API.OperationMethod<
   CreateLogsSamplingRulesReorderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<CreateLogsSamplingRulesReorderRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<PaginatedLogsSamplingRuleList>,
+  input: __S(304, __c19, 0) as any as S.Schema<CreateLogsSamplingRulesReorderRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<PaginatedLogsSamplingRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2687,8 +2687,8 @@ export const createLogsSamplingRulesSimulate: API.OperationMethod<
   CreateLogsSamplingRulesSimulateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<CreateLogsSamplingRulesSimulateRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<LogsSamplingRuleSimulateResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<CreateLogsSamplingRulesSimulateRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<LogsSamplingRuleSimulateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2701,8 +2701,8 @@ export const createLogsService: API.OperationMethod<
   CreateLogsServiceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<CreateLogsServiceRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<LogsServicesResponse>,
+  input: __S(353, __c22, 1) as any as S.Schema<CreateLogsServiceRequest>,
+  output: __S(362, __c22, 10) as any as S.Schema<LogsServicesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2715,8 +2715,8 @@ export const createLogsSparkline: API.OperationMethod<
   CreateLogsSparklineError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<CreateLogsSparklineRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<LogsSparklineResponse>,
+  input: __S(369, __c23, 1) as any as S.Schema<CreateLogsSparklineRequest>,
+  output: __S(372, __c23, 4) as any as S.Schema<LogsSparklineResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2729,8 +2729,8 @@ export const createLogsView: API.OperationMethod<
   CreateLogsViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<CreateLogsViewRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<LogsView>,
+  input: __S(384, __c24, 0) as any as S.Schema<CreateLogsViewRequest>,
+  output: __S(402, __c25, 2) as any as S.Schema<LogsView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2743,8 +2743,8 @@ export const getLogsAlert: API.OperationMethod<
   GetLogsAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetLogsAlertRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<LogsAlertConfigurationDetail>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetLogsAlertRequest>,
+  output: __S(419, __c26, 3) as any as S.Schema<LogsAlertConfigurationDetail>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2757,8 +2757,8 @@ export const getLogsAttribute: API.OperationMethod<
   GetLogsAttributeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetLogsAttributeRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<LogsAttributesResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetLogsAttributeRequest>,
+  output: __S(435, __c27, 3) as any as S.Schema<LogsAttributesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2771,8 +2771,8 @@ export const getLogsHasLog: API.OperationMethod<
   GetLogsHasLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetLogsHasLogRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetLogsHasLogResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetLogsHasLogRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<GetLogsHasLogResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2785,8 +2785,8 @@ export const getLogsMetricRule: API.OperationMethod<
   GetLogsMetricRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetLogsMetricRuleRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<LogsMetricRule>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetLogsMetricRuleRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<LogsMetricRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2800,8 +2800,8 @@ export const getLogsRetentionRule: API.OperationMethod<
   GetLogsRetentionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetLogsRetentionRuleRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<LogsRetentionRule>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetLogsRetentionRuleRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<LogsRetentionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2814,8 +2814,8 @@ export const getLogsSamplingRule: API.OperationMethod<
   GetLogsSamplingRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetLogsSamplingRuleRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<LogsSamplingRule>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetLogsSamplingRuleRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<LogsSamplingRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2828,8 +2828,8 @@ export const getLogsValue: API.OperationMethod<
   GetLogsValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<GetLogsValueRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<LogsValuesResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetLogsValueRequest>,
+  output: __S(531, __c33, 3) as any as S.Schema<LogsValuesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2842,8 +2842,8 @@ export const getLogsView: API.OperationMethod<
   GetLogsViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<GetLogsViewRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<LogsView>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetLogsViewRequest>,
+  output: __S(402, __c25, 2) as any as S.Schema<LogsView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2856,8 +2856,8 @@ export const listLogsAlerts: API.OperationMethod<
   ListLogsAlertsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListLogsAlertsRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<PaginatedLogsAlertConfigurationList>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListLogsAlertsRequest>,
+  output: __S(562, __c35, 2) as any as S.Schema<PaginatedLogsAlertConfigurationList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2871,8 +2871,8 @@ export const listLogsAlertsEvents: API.OperationMethod<
   ListLogsAlertsEventsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListLogsAlertsEventsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<PaginatedLogsAlertEventList>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListLogsAlertsEventsRequest>,
+  output: __S(579, __c36, 3) as any as S.Schema<PaginatedLogsAlertEventList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2885,8 +2885,8 @@ export const listLogsMetricRules: API.OperationMethod<
   ListLogsMetricRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListLogsMetricRulesRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<PaginatedLogsMetricRuleList>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListLogsMetricRulesRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<PaginatedLogsMetricRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2900,8 +2900,8 @@ export const listLogsRetentionRules: API.OperationMethod<
   ListLogsRetentionRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListLogsRetentionRulesRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<PaginatedLogsRetentionRuleList>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListLogsRetentionRulesRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<PaginatedLogsRetentionRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2914,8 +2914,8 @@ export const listLogsSamplingRules: API.OperationMethod<
   ListLogsSamplingRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListLogsSamplingRulesRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<PaginatedLogsSamplingRuleList>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListLogsSamplingRulesRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<PaginatedLogsSamplingRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2928,8 +2928,8 @@ export const listLogsViews: API.OperationMethod<
   ListLogsViewsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListLogsViewsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<PaginatedLogsViewList>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListLogsViewsRequest>,
+  output: __S(770, __c48, 2) as any as S.Schema<PaginatedLogsViewList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2947,8 +2947,8 @@ export const logsAlertsDestinationsDeleteCreate: API.OperationMethod<
   LogsAlertsDestinationsDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<LogsAlertsDestinationsDeleteCreateRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<LogsAlertsDestinationsDeleteCreateResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<LogsAlertsDestinationsDeleteCreateRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<LogsAlertsDestinationsDeleteCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2961,8 +2961,8 @@ export const logsAlertsDestroy: API.OperationMethod<
   LogsAlertsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<LogsAlertsDestroyRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<LogsAlertsDestroyResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<LogsAlertsDestroyRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<LogsAlertsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2976,8 +2976,8 @@ export const logsAlertsResetCreate: API.OperationMethod<
   LogsAlertsResetCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<LogsAlertsResetCreateRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<LogsAlertConfiguration>,
+  input: __S(848, __c53, 0) as any as S.Schema<LogsAlertsResetCreateRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<LogsAlertConfiguration>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2990,8 +2990,8 @@ export const logsExportCreate: API.OperationMethod<
   LogsExportCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<LogsExportCreateRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<LogsExportCreateResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<LogsExportCreateRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<LogsExportCreateResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3004,8 +3004,8 @@ export const logsMetricRulesDestroy: API.OperationMethod<
   LogsMetricRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<LogsMetricRulesDestroyRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<LogsMetricRulesDestroyResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<LogsMetricRulesDestroyRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<LogsMetricRulesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3019,8 +3019,8 @@ export const logsRetentionRulesDestroy: API.OperationMethod<
   LogsRetentionRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<LogsRetentionRulesDestroyRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<LogsRetentionRulesDestroyResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<LogsRetentionRulesDestroyRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<LogsRetentionRulesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3033,8 +3033,8 @@ export const logsSamplingRulesDestroy: API.OperationMethod<
   LogsSamplingRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<LogsSamplingRulesDestroyRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<LogsSamplingRulesDestroyResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<LogsSamplingRulesDestroyRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<LogsSamplingRulesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3047,8 +3047,8 @@ export const logsViewsDestroy: API.OperationMethod<
   LogsViewsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<LogsViewsDestroyRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<LogsViewsDestroyResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<LogsViewsDestroyRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<LogsViewsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3061,8 +3061,8 @@ export const updateLogsAlert: API.OperationMethod<
   UpdateLogsAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<UpdateLogsAlertRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<LogsAlertConfiguration>,
+  input: __S(960, __c60, 0) as any as S.Schema<UpdateLogsAlertRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<LogsAlertConfiguration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3075,8 +3075,8 @@ export const updateLogsAlertsPartial: API.OperationMethod<
   UpdateLogsAlertsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<UpdateLogsAlertsPartialRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<LogsAlertConfiguration>,
+  input: __S(976, __c61, 0) as any as S.Schema<UpdateLogsAlertsPartialRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<LogsAlertConfiguration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3089,8 +3089,8 @@ export const updateLogsMetricRule: API.OperationMethod<
   UpdateLogsMetricRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<UpdateLogsMetricRuleRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<LogsMetricRule>,
+  input: __S(992, __c62, 0) as any as S.Schema<UpdateLogsMetricRuleRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<LogsMetricRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3103,8 +3103,8 @@ export const updateLogsMetricRulesPartial: API.OperationMethod<
   UpdateLogsMetricRulesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<UpdateLogsMetricRulesPartialRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<LogsMetricRule>,
+  input: __S(1008, __c63, 0) as any as S.Schema<UpdateLogsMetricRulesPartialRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<LogsMetricRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3118,8 +3118,8 @@ export const updateLogsRetentionRule: API.OperationMethod<
   UpdateLogsRetentionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<UpdateLogsRetentionRuleRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<LogsRetentionRule>,
+  input: __S(1024, __c64, 0) as any as S.Schema<UpdateLogsRetentionRuleRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<LogsRetentionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3133,8 +3133,8 @@ export const updateLogsRetentionRulesPartial: API.OperationMethod<
   UpdateLogsRetentionRulesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<UpdateLogsRetentionRulesPartialRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<LogsRetentionRule>,
+  input: __S(1040, __c65, 0) as any as S.Schema<UpdateLogsRetentionRulesPartialRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<LogsRetentionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3147,8 +3147,8 @@ export const updateLogsSamplingRule: API.OperationMethod<
   UpdateLogsSamplingRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<UpdateLogsSamplingRuleRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<LogsSamplingRule>,
+  input: __S(1056, __c66, 0) as any as S.Schema<UpdateLogsSamplingRuleRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<LogsSamplingRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3161,8 +3161,8 @@ export const updateLogsSamplingRulesPartial: API.OperationMethod<
   UpdateLogsSamplingRulesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<UpdateLogsSamplingRulesPartialRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<LogsSamplingRule>,
+  input: __S(1074, __c67, 2) as any as S.Schema<UpdateLogsSamplingRulesPartialRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<LogsSamplingRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3175,8 +3175,8 @@ export const updateLogsView: API.OperationMethod<
   UpdateLogsViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<UpdateLogsViewRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<LogsView>,
+  input: __S(1088, __c68, 0) as any as S.Schema<UpdateLogsViewRequest>,
+  output: __S(402, __c25, 2) as any as S.Schema<LogsView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3189,8 +3189,8 @@ export const updateLogsViewsPartial: API.OperationMethod<
   UpdateLogsViewsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<UpdateLogsViewsPartialRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<LogsView>,
+  input: __S(1104, __c69, 0) as any as S.Schema<UpdateLogsViewsPartialRequest>,
+  output: __S(402, __c25, 2) as any as S.Schema<LogsView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3200,422 +3200,21 @@ export const updateLogsViewsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          values: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "PropertyGroupFilterValue" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          values: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "PropertyGroupFilter" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          filterGroup: S.optional(S.NullOr(__S(4, __c0, 4))),
-          serviceNames: S.optional(S.NullOr(__S(5, __c0, 5))),
-          severityLevels: S.optional(S.NullOr(__S(6, __c0, 6))),
-        }),
-      ).annotate({ identifier: "LogsAlertFilters" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AlertScheduleRestrictionWindow",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          blocked_windows: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "AlertScheduleRestriction" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          filters: S.optional(__S(7, __c0, 7)),
-          threshold_count: S.optional(S.Number),
-          threshold_operator: S.optional(S.String),
-          window_minutes: S.optional(S.Number),
-          evaluation_periods: S.optional(S.Number),
-          datapoints_to_alarm: S.optional(S.Number),
-          cooldown_minutes: S.optional(S.Number),
-          schedule_restriction: S.optional(S.NullOr(__S(10, __c1, 2))),
-          snooze_until: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/alerts/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateLogsAlertRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-          state: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "LogsAlertStateInterval" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(14, __c1, 6))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          filters: S.optional(__S(7, __c0, 7)),
-          threshold_count: S.optional(S.Number),
-          threshold_operator: S.optional(S.String),
-          window_minutes: S.optional(S.Number),
-          check_interval_minutes: S.optional(S.Number),
-          state: S.optional(S.String),
-          evaluation_periods: S.optional(S.Number),
-          datapoints_to_alarm: S.optional(S.Number),
-          cooldown_minutes: S.optional(S.Number),
-          schedule_restriction: S.optional(S.NullOr(__S(10, __c1, 2))),
-          snooze_until: S.optional(S.NullOr(S.String)),
-          next_check_at: S.optional(S.NullOr(S.String)),
-          last_notified_at: S.optional(S.NullOr(S.String)),
-          last_checked_at: S.optional(S.NullOr(S.String)),
-          consecutive_failures: S.optional(S.Number),
-          last_error_message: S.optional(S.NullOr(S.String)),
-          state_timeline: S.optional(__S(13, __c1, 5)),
-          destination_types: S.optional(__S(6, __c0, 6)),
-          first_enabled_at: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(15, __c1, 7))),
-          updated_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "LogsAlertConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          type: S.optional(S.String),
-          slack_workspace_id: S.optional(S.Number),
-          slack_channel_id: S.optional(S.String),
-          slack_channel_name: S.optional(S.String),
-          webhook_url: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/logs/alerts/{id}/destinations/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLogsAlertsDestinationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hog_function_ids: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "LogsAlertDestinationResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          filters: S.optional(__S(7, __c0, 7)),
-          threshold_count: S.optional(S.Number),
-          threshold_operator: S.optional(S.String),
-          window_minutes: S.optional(S.Number),
-          check_interval_minutes: S.optional(S.Number),
-          evaluation_periods: S.optional(S.Number),
-          datapoints_to_alarm: S.optional(S.Number),
-          cooldown_minutes: S.optional(S.Number),
-          date_from: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/logs/alerts/simulate/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLogsAlertsSimulateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          timestamp: S.optional(S.String),
-          count: S.optional(S.Number),
-          threshold_breached: S.optional(S.Boolean),
-          state: S.optional(S.String),
-          notification: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LogsAlertSimulateBucket" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          buckets: S.optional(__S(21, __c2, 5)),
-          fire_count: S.optional(S.Number),
-          resolve_count: S.optional(S.Number),
-          total_buckets: S.optional(S.Number),
-          threshold_count: S.optional(S.Number),
-          threshold_operator: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LogsAlertSimulateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          date_from: S.String,
-          date_to: S.String,
-        }),
-      ).annotate({ identifier: "ScanDateRange" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          serviceName: S.String,
-          dateRange: __S(23, __c2, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/logs/anomalies/scan/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLogsAnomaliesScanRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          time: S.String,
-          observed: S.Number,
-          expected: S.NullOr(S.Number),
-          lower: S.NullOr(S.Number),
-          upper: S.NullOr(S.Number),
-          stage: S.NullOr(S.String),
-          verdict: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "LogsAnomalyScanBucket" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          severity: S.String,
-          stage: S.NullOr(S.String),
-          tier: S.NullOr(S.String),
-          history_start: S.NullOr(S.String),
-          limited_by: S.NullOr(S.String),
-          buckets: __S(26, __c3, 2),
-        }),
-      ).annotate({ identifier: "LogsAnomalyScanSeries" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          direction: S.String,
-          severity: S.NullOr(S.String),
-          kind: S.String,
-          state: S.String,
-          opened_at: S.String,
-          last_anomalous_at: S.String,
-          resolved_at: S.NullOr(S.String),
-          anomalous_bucket_times: __S(5, __c0, 5),
-        }),
-      ).annotate({ identifier: "LogsAnomalyScanIssue" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          service_name: S.String,
-          eval_start: S.String,
-          eval_end: S.String,
-          lookback_days: S.Number,
-          eval_clipped: S.Boolean,
-          degraded: S.Boolean,
-          binding_constraints: __S(6, __c0, 6),
-          series: __S(28, __c3, 4),
-          issues: __S(30, __c3, 6),
-        }),
-      ).annotate({ identifier: "LogsAnomalyScanResponse" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          date_from: S.optional(S.NullOr(S.String)),
-          date_to: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "SeriesBandsDateRange" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          serviceName: S.String,
-          dateRange: S.optional(__S(32, __c4, 0)),
-          intervalMinutes: S.optional(S.NullOr(S.Number)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/logs/anomalies/series_bands/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLogsAnomaliesSeriesBandRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          time: S.String,
-          observed: S.Number,
-          lower: S.NullOr(S.Number),
-          upper: S.NullOr(S.Number),
-          verdict: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "LogsSeriesBandBucket" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String,
-          environment: S.String,
-          severity: S.String,
-          total_count: S.Number,
-          baseline_weeks: S.Number,
-          history_start: S.String,
-          band_ready_at: S.NullOr(S.String),
-          interval_minutes: S.Number,
-          coarsened_reason: S.NullOr(S.String),
-          buckets: __S(35, __c4, 3),
-        }),
-      ).annotate({ identifier: "LogsSeriesBandSeries" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          service_name: S.String,
-          window_start: S.String,
-          window_end: S.String,
-          interval_minutes: S.Number,
-          series_truncated: S.Boolean,
-          series: __S(37, __c4, 5),
-        }),
-      ).annotate({ identifier: "LogsSeriesBandsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          type: S.optional(S.String),
-          operator: S.optional(S.String),
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "LogPropertyFilter2" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dateRange: S.optional(__S(32, __c4, 0)),
-          severityLevels: S.optional(__S(6, __c0, 6)),
-          serviceNames: S.optional(__S(5, __c0, 5)),
-          searchTerm: S.optional(S.String),
-          filterGroup: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "LogsCountBody" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          query: S.optional(__S(41, __c5, 1)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/count/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateLogsCountRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LogsCountResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dateRange: S.optional(__S(32, __c4, 0)),
+          dateRange: S.optional(__S(1168, __c73, 0)),
           targetBuckets: S.optional(S.Number),
-          severityLevels: S.optional(__S(6, __c0, 6)),
-          serviceNames: S.optional(__S(5, __c0, 5)),
+          severityLevels: S.optional(__S(736, __c46, 0)),
+          serviceNames: S.optional(__S(704, __c44, 0)),
           searchTerm: S.optional(S.String),
-          filterGroup: S.optional(__S(40, __c5, 0)),
+          filterGroup: S.optional(__S(1201, __c75, 1)),
         }),
       ).annotate({ identifier: "LogsCountRangesBody" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: __S(44, __c5, 4),
+          query: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3626,7 +3225,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateLogsCountRangeRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           date_from: S.String,
@@ -3634,20 +3233,20 @@ function __c5(j: number): any {
           count: S.Number,
         }),
       ).annotate({ identifier: "LogsCountRangeBucket" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          ranges: __S(47, __c5, 7),
+          ranges: __S(3, __c0, 3),
           interval: S.String,
         }),
       ).annotate({ identifier: "LogsCountRangesResponse" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3664,7 +3263,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateLogsExplainLogWithAIRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -3672,27 +3271,31 @@ function __c6(j: number): any {
           force_refresh: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ExplainRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           facetField: S.optional(S.NullOr(S.String)),
           facetResourceAttribute: S.optional(S.NullOr(S.String)),
           facetAttribute: S.optional(S.NullOr(S.String)),
-          dateRange: S.optional(__S(32, __c4, 0)),
-          severityLevels: S.optional(__S(6, __c0, 6)),
-          serviceNames: S.optional(__S(5, __c0, 5)),
+          dateRange: S.optional(__S(1168, __c73, 0)),
+          severityLevels: S.optional(__S(736, __c46, 0)),
+          serviceNames: S.optional(__S(704, __c44, 0)),
           searchTerm: S.optional(S.String),
           facetSearch: S.optional(S.String),
-          filterGroup: S.optional(__S(40, __c5, 0)),
+          filterGroup: S.optional(__S(1201, __c75, 1)),
           personId: S.optional(S.String),
           sessionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogsFacetValuesBody" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: __S(51, __c6, 3),
+          query: __S(32, __c2, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3703,24 +3306,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateLogsFacetValueRequest",
       });
-    case 5:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(49, __c3, 1),
+        }),
+      ).annotate({ identifier: "LogsFacetValuesResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.String,
           count: S.Number,
         }),
       ).annotate({ identifier: "LogFacetValue" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(54, __c6, 6),
-        }),
-      ).annotate({ identifier: "LogsFacetValuesResponse" });
+    case 1:
+      return S.Array(__S(48, __c3, 0));
   }
 }
-function __c7(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3730,18 +3337,18 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "LogsGroupByDimension" });
     case 1:
-      return S.Array(__S(56, __c7, 0));
+      return S.Array(__S(64, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dateRange: S.optional(__S(32, __c4, 0)),
-          severityLevels: S.optional(__S(6, __c0, 6)),
-          serviceNames: S.optional(__S(5, __c0, 5)),
+          dateRange: S.optional(__S(1168, __c73, 0)),
+          severityLevels: S.optional(__S(736, __c46, 0)),
+          serviceNames: S.optional(__S(704, __c44, 0)),
           searchTerm: S.optional(S.String),
-          filterGroup: S.optional(__S(40, __c5, 0)),
+          filterGroup: S.optional(__S(1201, __c75, 1)),
           groupBy: S.optional(S.String),
           groupBySource: S.optional(S.String),
-          groupBys: S.optional(__S(57, __c7, 1)),
+          groupBys: S.optional(__S(65, __c4, 1)),
           orderGroupsBy: S.optional(S.String),
           limit: S.optional(S.Number),
           personId: S.optional(S.String),
@@ -3752,7 +3359,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: __S(58, __c7, 2),
+          query: __S(66, __c4, 2),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/group-by/", code: 200 }),
         ),
@@ -3761,44 +3368,44 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           value: S.String,
-          values: __S(5, __c0, 5),
+          values: __S(704, __c44, 0),
           log_count: S.Number,
           error_count: S.Number,
           last_seen: S.String,
         }),
       ).annotate({ identifier: "LogsGroupByGroup" });
     case 5:
-      return S.Array(__S(60, __c7, 4));
+      return S.Array(__S(68, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          groups: __S(61, __c7, 5),
+          groups: __S(69, __c4, 5),
           total_groups: S.Number,
           total_logs: S.Number,
           truncated: S.Boolean,
         }),
       ).annotate({ identifier: "LogsGroupByResponse" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: __S(41, __c5, 1),
+          query: __S(1216, __c76, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/impact/", code: 200 }),
         ),
       ).annotate({ identifier: "CreateLogsImpactRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           source: S.String,
           key: S.String,
         }),
       ).annotate({ identifier: "LogsImpactGroupKey" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           total: S.Number,
@@ -3806,13 +3413,17 @@ function __c8(j: number): any {
           sessions: S.Number,
           logsWithDistinctId: S.Number,
           users: S.Number,
-          topSessions: __S(54, __c6, 6),
-          topUsers: __S(54, __c6, 6),
-          sessionGroupKey: S.NullOr(__S(64, __c8, 0)),
-          personGroupKey: S.NullOr(__S(64, __c8, 0)),
+          topSessions: __S(49, __c3, 1),
+          topUsers: __S(49, __c3, 1),
+          sessionGroupKey: S.NullOr(__S(81, __c5, 1)),
+          personGroupKey: S.NullOr(__S(81, __c5, 1)),
         }),
       ).annotate({ identifier: "LogsImpactResponse" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3821,7 +3432,7 @@ function __c8(j: number): any {
           enabled: S.optional(S.Boolean),
           filter_group: S.optional(S.Unknown),
           value_attribute: S.optional(S.NullOr(S.String)),
-          group_by: S.optional(__S(5, __c0, 5)),
+          group_by: S.optional(__S(704, __c44, 0)),
           source: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -3833,7 +3444,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateLogsMetricRuleRequest",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -3842,7 +3457,7 @@ function __c8(j: number): any {
           enabled: S.optional(S.Boolean),
           filter_group: S.optional(S.Unknown),
           value_attribute: S.optional(S.NullOr(S.String)),
-          group_by: S.optional(__S(5, __c0, 5)),
+          group_by: S.optional(__S(704, __c44, 0)),
           source: S.optional(S.String),
           version: S.Number,
           created_by: S.Number,
@@ -3850,28 +3465,66 @@ function __c8(j: number): any {
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "LogsMetricRule" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dateRange: S.optional(__S(32, __c4, 0)),
-          severityLevels: S.optional(__S(6, __c0, 6)),
-          serviceNames: S.optional(__S(5, __c0, 5)),
-          searchTerm: S.optional(S.String),
-          filterGroup: S.optional(__S(40, __c5, 0)),
-          personId: S.optional(S.String),
-          sessionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LogsPatternsBody" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: __S(68, __c8, 4),
+          query: __S(144, __c9, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/patterns/", code: 200 }),
         ),
       ).annotate({ identifier: "CreateLogsPatternRequest" });
-    case 6:
+    case 1:
+      return S.Array(__S(149, __c9, 5));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.String,
+          end: S.String,
+        }),
+      ).annotate({
+        identifier: "LogsPatternsSparklineBucket",
+      });
+    case 3:
+      return S.Array(__S(130, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(S.String),
+          pattern_version: S.optional(S.NullOr(S.Number)),
+          fallback_reason: S.optional(S.NullOr(S.String)),
+          pattern_coverage_pct: S.optional(S.NullOr(S.Number)),
+          represented_count: S.optional(S.NullOr(S.Number)),
+          remainder_count: S.optional(S.NullOr(S.Number)),
+          patterns: __S(129, __c8, 1),
+          scanned_count: S.Number,
+          total_count: S.Number,
+          sampled: S.Boolean,
+          sample_coverage_pct: S.Number,
+          sparkline_buckets: __S(131, __c8, 3),
+        }),
+      ).annotate({ identifier: "LogsPatternsResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dateRange: S.optional(__S(1168, __c73, 0)),
+          severityLevels: S.optional(__S(736, __c46, 0)),
+          serviceNames: S.optional(__S(704, __c44, 0)),
+          searchTerm: S.optional(S.String),
+          filterGroup: S.optional(__S(1201, __c75, 1)),
+          personId: S.optional(S.String),
+          sessionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LogsPatternsBody" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           body: S.String,
@@ -3880,17 +3533,13 @@ function __c8(j: number): any {
           timestamp: S.String,
         }),
       ).annotate({ identifier: "LogPatternExample" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Number);
-    case 1:
-      return S.Record(S.String, S.Number);
     case 2:
+      return S.Array(__S(145, __c9, 1));
+    case 3:
+      return S.Array(S.Number);
+    case 4:
+      return S.Record(S.String, S.Number);
+    case 5:
       return S.suspend(() =>
         S.Struct({
           pattern: S.String,
@@ -3901,52 +3550,26 @@ function __c9(j: number): any {
           estimated_error_count: S.Number,
           first_seen: S.String,
           last_seen: S.String,
-          examples: __S(71, __c8, 7),
-          services: __S(5, __c0, 5),
-          sparkline: __S(72, __c9, 0),
-          severity_counts: __S(73, __c9, 1),
+          examples: __S(146, __c9, 2),
+          services: __S(704, __c44, 0),
+          sparkline: __S(147, __c9, 3),
+          severity_counts: __S(148, __c9, 4),
           match_regex: S.NullOr(S.String),
           match_literal: S.NullOr(S.String),
-          match_patterns: S.optional(__S(5, __c0, 5)),
+          match_patterns: S.optional(__S(704, __c44, 0)),
           pattern_version: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "LogPattern" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.String,
-          end: S.String,
-        }),
-      ).annotate({
-        identifier: "LogsPatternsSparklineBucket",
-      });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(S.String),
-          pattern_version: S.optional(S.NullOr(S.Number)),
-          fallback_reason: S.optional(S.NullOr(S.String)),
-          pattern_coverage_pct: S.optional(S.NullOr(S.Number)),
-          represented_count: S.optional(S.NullOr(S.Number)),
-          remainder_count: S.optional(S.NullOr(S.Number)),
-          patterns: __S(75, __c9, 3),
-          scanned_count: S.Number,
-          total_count: S.Number,
-          sampled: S.Boolean,
-          sample_coverage_pct: S.Number,
-          sparkline_buckets: __S(77, __c9, 5),
-        }),
-      ).annotate({ identifier: "LogsPatternsResponse" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: __S(68, __c8, 4),
-          baselineDateRange: S.optional(__S(32, __c4, 0)),
+          query: __S(144, __c9, 0),
+          baselineDateRange: S.optional(__S(1168, __c73, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3957,23 +3580,19 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateLogsPatternsDiffRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           classification: S.String,
           rate_ratio: S.NullOr(S.Number),
-          pattern: __S(74, __c9, 2),
+          pattern: __S(149, __c9, 5),
           baseline_estimated_count: S.NullOr(S.Number),
           baseline_volume_share_pct: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "LogPatternDiffEntry" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
     case 2:
+      return S.Array(__S(161, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String),
@@ -3990,41 +3609,47 @@ function __c10(j: number): any {
           date_to: S.String,
         }),
       ).annotate({ identifier: "LogsPatternsDiffWindow" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          entries: __S(81, __c10, 1),
-          current: __S(82, __c10, 2),
-          baseline: __S(82, __c10, 2),
-        }),
-      ).annotate({ identifier: "LogsPatternsDiffResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dateRange: S.optional(__S(32, __c4, 0)),
-          severityLevels: S.optional(__S(6, __c0, 6)),
-          serviceNames: S.optional(__S(5, __c0, 5)),
+          entries: __S(162, __c10, 2),
+          current: __S(163, __c10, 3),
+          baseline: __S(163, __c10, 3),
+        }),
+      ).annotate({ identifier: "LogsPatternsDiffResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dateRange: S.optional(__S(1168, __c73, 0)),
+          severityLevels: S.optional(__S(736, __c46, 0)),
+          serviceNames: S.optional(__S(704, __c44, 0)),
           orderBy: S.optional(S.String),
           searchTerm: S.optional(S.String),
-          filterGroup: S.optional(__S(40, __c5, 0)),
+          filterGroup: S.optional(__S(1201, __c75, 1)),
           limit: S.optional(S.Number),
           after: S.optional(S.String),
           excludeAttributes: S.optional(S.Boolean),
-          customColumns: S.optional(__S(5, __c0, 5)),
+          customColumns: S.optional(__S(704, __c44, 0)),
           personId: S.optional(S.String),
           sessionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogsQueryBody" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: S.optional(__S(84, __c10, 4)),
+          query: S.optional(__S(177, __c11, 1)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/query/", code: 200 }),
         ),
       ).annotate({ identifier: "CreateLogsQueryRequest" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -4037,29 +3662,29 @@ function __c10(j: number): any {
           trace_id: S.optional(S.String),
           span_id: S.optional(S.String),
           trace_flags: S.optional(S.Number),
-          attributes: S.optional(__S(0, __c0, 0)),
-          resource_attributes: S.optional(__S(0, __c0, 0)),
+          attributes: S.optional(__S(176, __c11, 0)),
+          resource_attributes: S.optional(__S(176, __c11, 0)),
           event_name: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogEntry" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(179, __c11, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          query: S.optional(__S(14, __c1, 6)),
-          results: S.optional(__S(87, __c10, 7)),
+          query: S.optional(__S(640, __c40, 0)),
+          results: S.optional(__S(180, __c11, 4)),
           hasMore: S.optional(S.Boolean),
           nextCursor: S.optional(S.NullOr(S.String)),
           maxExportableLogs: S.optional(S.Number),
-          columns: S.optional(S.NullOr(__S(5, __c0, 5))),
+          columns: S.optional(S.NullOr(__S(704, __c44, 0))),
         }),
       ).annotate({ identifier: "LogsQueryResponse" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4077,7 +3702,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateLogsRetentionRuleRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4091,13 +3720,17 @@ function __c11(j: number): any {
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "LogsRetentionRule" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ordered_ids: __S(5, __c0, 5),
+          ordered_ids: __S(704, __c44, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4108,20 +3741,28 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateLogsRetentionRulesReorderRequest",
       });
-    case 4:
-      return S.Array(__S(90, __c11, 2));
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(208, __c13, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(92, __c11, 4),
+          results: __S(240, __c15, 0),
         }),
       ).annotate({
         identifier: "PaginatedLogsRetentionRuleList",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4137,7 +3778,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateLogsRetentionRulesSuggestNameRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -4147,11 +3788,9 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(14, __c1, 6));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4161,7 +3800,7 @@ function __c12(j: number): any {
           rule_type: S.String,
           scope_service: S.optional(S.NullOr(S.String)),
           scope_path_pattern: S.optional(S.NullOr(S.String)),
-          scope_attribute_filters: S.optional(__S(96, __c12, 0)),
+          scope_attribute_filters: S.optional(__S(288, __c18, 0)),
           config: S.Unknown,
         }).pipe(
           T.Http({
@@ -4173,7 +3812,13 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateLogsSamplingRuleRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(640, __c40, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4183,7 +3828,7 @@ function __c12(j: number): any {
           rule_type: S.String,
           scope_service: S.optional(S.NullOr(S.String)),
           scope_path_pattern: S.optional(S.NullOr(S.String)),
-          scope_attribute_filters: S.optional(__S(96, __c12, 0)),
+          scope_attribute_filters: S.optional(__S(288, __c18, 0)),
           config: S.Unknown,
           version: S.Number,
           created_by: S.Number,
@@ -4191,13 +3836,17 @@ function __c12(j: number): any {
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "LogsSamplingRule" });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ordered_ids: __S(5, __c0, 5),
+          ordered_ids: __S(704, __c44, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4208,20 +3857,28 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateLogsSamplingRulesReorderRequest",
       });
-    case 4:
-      return S.Array(__S(98, __c12, 2));
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(289, __c18, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(100, __c12, 4),
+          results: __S(320, __c20, 0),
         }),
       ).annotate({
         identifier: "PaginatedLogsSamplingRuleList",
       });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4236,7 +3893,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateLogsSamplingRulesSimulateRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           estimated_reduction_pct: S.Number,
@@ -4247,24 +3904,24 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dateRange: S.optional(__S(32, __c4, 0)),
-          severityLevels: S.optional(__S(6, __c0, 6)),
-          serviceNames: S.optional(__S(5, __c0, 5)),
+          dateRange: S.optional(__S(1168, __c73, 0)),
+          severityLevels: S.optional(__S(736, __c46, 0)),
+          serviceNames: S.optional(__S(704, __c44, 0)),
           searchTerm: S.optional(S.String),
           serviceNameSearch: S.optional(S.String),
-          filterGroup: S.optional(__S(40, __c5, 0)),
+          filterGroup: S.optional(__S(1201, __c75, 1)),
         }),
       ).annotate({ identifier: "LogsServicesBody" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: S.optional(__S(104, __c13, 0)),
+          query: S.optional(__S(352, __c22, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/services/", code: 200 }),
         ),
@@ -4289,7 +3946,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "LogsServiceActiveRule" });
     case 4:
-      return S.Array(__S(107, __c13, 3));
+      return S.Array(__S(355, __c22, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4298,12 +3955,12 @@ function __c13(j: number): any {
           error_count: S.optional(S.Number),
           error_rate: S.optional(S.Number),
           volume_share_pct: S.optional(S.Number),
-          severity_breakdown: S.optional(__S(106, __c13, 2)),
-          active_rules: S.optional(__S(108, __c13, 4)),
+          severity_breakdown: S.optional(__S(354, __c22, 2)),
+          active_rules: S.optional(__S(356, __c22, 4)),
         }),
       ).annotate({ identifier: "LogsServiceAggregate" });
     case 6:
-      return S.Array(__S(109, __c13, 5));
+      return S.Array(__S(357, __c22, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4314,54 +3971,54 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "LogsServicesSparklineBucket",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(359, __c22, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           top_services_count: S.Number,
           top_services_volume_share_pct: S.Number,
         }),
       ).annotate({ identifier: "LogsServicesSummary" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(__S(110, __c13, 6)),
-          sparkline: S.optional(__S(112, __c14, 0)),
+          services: S.optional(__S(358, __c22, 6)),
+          sparkline: S.optional(__S(360, __c22, 8)),
           total_services: S.optional(S.Number),
-          summary: S.optional(__S(113, __c14, 1)),
+          summary: S.optional(__S(361, __c22, 9)),
         }),
       ).annotate({ identifier: "LogsServicesResponse" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          dateRange: S.optional(__S(32, __c4, 0)),
-          severityLevels: S.optional(__S(6, __c0, 6)),
-          serviceNames: S.optional(__S(5, __c0, 5)),
+          dateRange: S.optional(__S(1168, __c73, 0)),
+          severityLevels: S.optional(__S(736, __c46, 0)),
+          serviceNames: S.optional(__S(704, __c44, 0)),
           searchTerm: S.optional(S.String),
-          filterGroup: S.optional(__S(40, __c5, 0)),
+          filterGroup: S.optional(__S(1201, __c75, 1)),
           sparklineBreakdownBy: S.optional(S.String),
           sparklineRankBy: S.optional(S.String),
           personId: S.optional(S.String),
           sessionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogsSparklineBody" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: S.optional(__S(115, __c14, 3)),
+          query: S.optional(__S(368, __c23, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/sparkline/", code: 200 }),
         ),
       ).annotate({
         identifier: "CreateLogsSparklineRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           time: S.optional(S.String),
@@ -4371,17 +4028,33 @@ function __c14(j: number): any {
           bytes_uncompressed: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LogsSparklineBucket" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(370, __c23, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(118, __c14, 6)),
+          results: S.optional(__S(371, __c23, 3)),
         }),
       ).annotate({ identifier: "LogsSparklineResponse" });
   }
 }
-function __c15(j: number): any {
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          filters: S.optional(__S(640, __c40, 0)),
+          columns: S.optional(S.NullOr(__S(401, __c25, 1))),
+          pinned: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/views/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateLogsViewRequest" });
+  }
+}
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4394,34 +4067,26 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "LogsViewColumn" });
     case 1:
-      return S.Array(__S(120, __c15, 0));
+      return S.Array(__S(400, __c25, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          filters: S.optional(__S(14, __c1, 6)),
-          columns: S.optional(S.NullOr(__S(121, __c15, 1))),
-          pinned: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/views/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateLogsViewRequest" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           short_id: S.optional(S.String),
           name: S.optional(S.String),
-          filters: S.optional(__S(14, __c1, 6)),
-          columns: S.optional(S.NullOr(__S(121, __c15, 1))),
+          filters: S.optional(__S(640, __c40, 0)),
+          columns: S.optional(S.NullOr(__S(401, __c25, 1))),
           pinned: S.optional(S.Boolean),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(15, __c1, 7))),
+          created_by: S.optional(S.NullOr(__S(656, __c41, 0))),
           updated_at: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "LogsView" });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4430,10 +4095,10 @@ function __c15(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/logs/alerts/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "GetLogsAlertRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          hog_function_ids: __S(5, __c0, 5),
+          hog_function_ids: __S(704, __c44, 0),
           type: S.String,
           enabled: S.Boolean,
           slack_workspace_id: S.optional(S.Number),
@@ -4443,15 +4108,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "LogsAlertDestinationConfig",
       });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(417, __c26, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          filters: S.optional(__S(7, __c0, 7)),
+          filters: S.optional(__S(724, __c45, 4)),
           threshold_count: S.optional(S.Number),
           threshold_operator: S.optional(S.String),
           window_minutes: S.optional(S.Number),
@@ -4460,43 +4125,43 @@ function __c15(j: number): any {
           evaluation_periods: S.optional(S.Number),
           datapoints_to_alarm: S.optional(S.Number),
           cooldown_minutes: S.optional(S.Number),
-          schedule_restriction: S.optional(S.NullOr(__S(10, __c1, 2))),
+          schedule_restriction: S.optional(S.NullOr(__S(674, __c42, 2))),
           snooze_until: S.optional(S.NullOr(S.String)),
           next_check_at: S.NullOr(S.String),
           last_notified_at: S.NullOr(S.String),
           last_checked_at: S.NullOr(S.String),
           consecutive_failures: S.Number,
           last_error_message: S.NullOr(S.String),
-          state_timeline: __S(13, __c1, 5),
-          destination_types: __S(6, __c0, 6),
+          state_timeline: __S(676, __c42, 4),
+          destination_types: __S(736, __c46, 0),
           first_enabled_at: S.NullOr(S.String),
           created_at: S.String,
-          created_by: __S(15, __c1, 7),
+          created_by: __S(656, __c41, 0),
           updated_at: S.NullOr(S.String),
-          destinations: __S(126, __c15, 6),
+          destinations: __S(418, __c26, 2),
         }),
       ).annotate({
         identifier: "LogsAlertConfigurationDetail",
       });
   }
 }
-function __c16(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           attribute_type: S.optional(S.String.pipe(T.Query())),
-          dateRange: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          dateRange: S.optional(__S(1168, __c73, 0).pipe(T.Query())),
           date_from: S.optional(S.String.pipe(T.Query())),
           date_to: S.optional(S.String.pipe(T.Query())),
-          filterGroup: S.optional(__S(40, __c5, 0).pipe(T.Query())),
+          filterGroup: S.optional(__S(1201, __c75, 1).pipe(T.Query())),
           keys: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           search_values: S.optional(S.Boolean.pipe(T.Query())),
-          serviceNames: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          serviceNames: S.optional(__S(704, __c44, 0).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/logs/attributes/", code: 200 }),
         ),
@@ -4511,15 +4176,19 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "LogAttributeEntry" });
     case 2:
-      return S.Array(__S(129, __c16, 1));
+      return S.Array(__S(433, __c27, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(130, __c16, 2)),
+          results: S.optional(__S(434, __c27, 2)),
           count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LogsAttributesResponse" });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4527,11 +4196,19 @@ function __c16(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/logs/has_logs/", code: 200 }),
         ),
       ).annotate({ identifier: "GetLogsHasLogRequest" });
-    case 5:
-      return S.suspend(() => __S(14, __c1, 6).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(640, __c40, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetLogsHasLogResponse",
       });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4544,7 +4221,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLogsMetricRuleRequest" });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4561,7 +4242,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4578,21 +4259,25 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetLogsSamplingRuleRequest",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           attribute_type: S.optional(S.String.pipe(T.Query())),
-          dateRange: S.optional(__S(32, __c4, 0).pipe(T.Query())),
-          filterGroup: S.optional(__S(40, __c5, 0).pipe(T.Query())),
+          dateRange: S.optional(__S(1168, __c73, 0).pipe(T.Query())),
+          filterGroup: S.optional(__S(1201, __c75, 1).pipe(T.Query())),
           key: S.String.pipe(T.Query()),
-          serviceNames: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          serviceNames: S.optional(__S(704, __c44, 0).pipe(T.Query())),
           value: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/logs/values/", code: 200 }),
         ),
       ).annotate({ identifier: "GetLogsValueRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4600,16 +4285,20 @@ function __c17(j: number): any {
           count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LogAttributeValue" });
+    case 2:
+      return S.Array(__S(529, __c33, 1));
     case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(139, __c17, 3)),
+          results: S.optional(__S(530, __c33, 2)),
           refreshing: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LogsValuesResponse" });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4622,7 +4311,11 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLogsViewRequest" });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4633,24 +4326,24 @@ function __c17(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/logs/alerts/", code: 200 }),
         ),
       ).annotate({ identifier: "ListLogsAlertsRequest" });
-    case 7:
-      return S.Array(__S(16, __c2, 0));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(688, __c43, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(143, __c17, 7)),
+          results: S.optional(__S(561, __c35, 1)),
         }),
       ).annotate({
         identifier: "PaginatedLogsAlertConfigurationList",
       });
-    case 1:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4667,7 +4360,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListLogsAlertsEventsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4681,20 +4374,24 @@ function __c18(j: number): any {
           query_duration_ms: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "LogsAlertEvent" });
+    case 2:
+      return S.Array(__S(577, __c36, 1));
     case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(147, __c18, 3)),
+          results: S.optional(__S(578, __c36, 2)),
         }),
       ).annotate({
         identifier: "PaginatedLogsAlertEventList",
       });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4710,22 +4407,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListLogsMetricRulesRequest",
       });
-    case 6:
-      return S.Array(__S(67, __c8, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(150, __c18, 6),
+          results: __S(593, __c37, 1),
         }),
       ).annotate({
         identifier: "PaginatedLogsMetricRuleList",
       });
   }
 }
-function __c19(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4743,7 +4440,166 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListLogsRetentionRulesRequest",
       });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          filters: S.optional(__S(724, __c45, 4)),
+          threshold_count: S.optional(S.Number),
+          threshold_operator: S.optional(S.String),
+          window_minutes: S.optional(S.Number),
+          evaluation_periods: S.optional(S.Number),
+          datapoints_to_alarm: S.optional(S.Number),
+          cooldown_minutes: S.optional(S.Number),
+          schedule_restriction: S.optional(S.NullOr(__S(674, __c42, 2))),
+          snooze_until: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/alerts/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateLogsAlertRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(640, __c40, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AlertScheduleRestrictionWindow",
+      });
     case 1:
+      return S.Array(__S(672, __c42, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          blocked_windows: S.optional(__S(673, __c42, 1)),
+        }),
+      ).annotate({ identifier: "AlertScheduleRestriction" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+          state: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LogsAlertStateInterval" });
+    case 4:
+      return S.Array(__S(675, __c42, 3));
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          filters: S.optional(__S(724, __c45, 4)),
+          threshold_count: S.optional(S.Number),
+          threshold_operator: S.optional(S.String),
+          window_minutes: S.optional(S.Number),
+          check_interval_minutes: S.optional(S.Number),
+          state: S.optional(S.String),
+          evaluation_periods: S.optional(S.Number),
+          datapoints_to_alarm: S.optional(S.Number),
+          cooldown_minutes: S.optional(S.Number),
+          schedule_restriction: S.optional(S.NullOr(__S(674, __c42, 2))),
+          snooze_until: S.optional(S.NullOr(S.String)),
+          next_check_at: S.optional(S.NullOr(S.String)),
+          last_notified_at: S.optional(S.NullOr(S.String)),
+          last_checked_at: S.optional(S.NullOr(S.String)),
+          consecutive_failures: S.optional(S.Number),
+          last_error_message: S.optional(S.NullOr(S.String)),
+          state_timeline: S.optional(__S(676, __c42, 4)),
+          destination_types: S.optional(__S(736, __c46, 0)),
+          first_enabled_at: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          created_by: S.optional(S.NullOr(__S(656, __c41, 0))),
+          updated_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "LogsAlertConfiguration" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          values: S.optional(__S(720, __c45, 0)),
+        }),
+      ).annotate({ identifier: "PropertyGroupFilterValue" });
+    case 2:
+      return S.Array(__S(721, __c45, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          values: S.optional(__S(722, __c45, 2)),
+        }),
+      ).annotate({ identifier: "PropertyGroupFilter" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          filterGroup: S.optional(S.NullOr(__S(723, __c45, 3))),
+          serviceNames: S.optional(S.NullOr(__S(704, __c44, 0))),
+          severityLevels: S.optional(S.NullOr(__S(736, __c46, 0))),
+        }),
+      ).annotate({ identifier: "LogsAlertFilters" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4759,7 +4615,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListLogsSamplingRulesRequest",
       });
-    case 2:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4769,23 +4629,27 @@ function __c19(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/logs/views/", code: 200 }),
         ),
       ).annotate({ identifier: "ListLogsViewsRequest" });
-    case 3:
-      return S.Array(__S(123, __c15, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(402, __c25, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(155, __c19, 3)),
+          results: S.optional(__S(769, __c48, 1)),
         }),
       ).annotate({ identifier: "PaginatedLogsViewList" });
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          hog_function_ids: S.optional(__S(5, __c0, 5)),
+          hog_function_ids: S.optional(__S(704, __c44, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4796,11 +4660,19 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "LogsAlertsDestinationsDeleteCreateRequest",
       });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "LogsAlertsDestinationsDeleteCreateResponse",
       });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4815,13 +4687,17 @@ function __c19(j: number): any {
       ).annotate({ identifier: "LogsAlertsDestroyRequest" });
   }
 }
-function __c20(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "LogsAlertsDestroyResponse",
       });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4836,7 +4712,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "LogsAlertsResetCreateRequest",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4844,7 +4724,11 @@ function __c20(j: number): any {
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/export/", code: 200 }),
         ),
       ).annotate({ identifier: "LogsExportCreateRequest" });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4859,7 +4743,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "LogsMetricRulesDestroyRequest",
       });
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4874,7 +4762,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "LogsRetentionRulesDestroyRequest",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4889,7 +4781,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "LogsSamplingRulesDestroyRequest",
       });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4902,29 +4798,41 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "LogsViewsDestroyRequest" });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          filters: S.optional(__S(7, __c0, 7)),
-          threshold_count: S.optional(S.Number),
-          threshold_operator: S.optional(S.String),
-          window_minutes: S.optional(S.Number),
-          evaluation_periods: S.optional(S.Number),
-          datapoints_to_alarm: S.optional(S.Number),
-          cooldown_minutes: S.optional(S.Number),
-          schedule_restriction: S.optional(S.NullOr(__S(10, __c1, 2))),
-          snooze_until: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+          slack_workspace_id: S.optional(S.Number),
+          slack_channel_id: S.optional(S.String),
+          slack_channel_name: S.optional(S.String),
+          webhook_url: S.optional(S.String),
         }).pipe(
-          T.Http({ method: "PUT", uri: "/api/projects/{project_id}/logs/alerts/{id}/", code: 200 }),
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/logs/alerts/{id}/destinations/",
+            code: 200,
+          }),
         ),
-      ).annotate({ identifier: "UpdateLogsAlertRequest" });
+      ).annotate({
+        identifier: "CreateLogsAlertsDestinationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hog_function_ids: S.optional(__S(704, __c44, 0)),
+        }),
+      ).annotate({
+        identifier: "LogsAlertDestinationResponse",
+      });
   }
 }
-function __c21(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4933,14 +4841,38 @@ function __c21(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          filters: S.optional(__S(7, __c0, 7)),
+          filters: S.optional(__S(724, __c45, 4)),
           threshold_count: S.optional(S.Number),
           threshold_operator: S.optional(S.String),
           window_minutes: S.optional(S.Number),
           evaluation_periods: S.optional(S.Number),
           datapoints_to_alarm: S.optional(S.Number),
           cooldown_minutes: S.optional(S.Number),
-          schedule_restriction: S.optional(S.NullOr(__S(10, __c1, 2))),
+          schedule_restriction: S.optional(S.NullOr(__S(674, __c42, 2))),
+          snooze_until: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/projects/{project_id}/logs/alerts/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpdateLogsAlertRequest" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          filters: S.optional(__S(724, __c45, 4)),
+          threshold_count: S.optional(S.Number),
+          threshold_operator: S.optional(S.String),
+          window_minutes: S.optional(S.Number),
+          evaluation_periods: S.optional(S.Number),
+          datapoints_to_alarm: S.optional(S.Number),
+          cooldown_minutes: S.optional(S.Number),
+          schedule_restriction: S.optional(S.NullOr(__S(674, __c42, 2))),
           snooze_until: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -4952,7 +4884,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateLogsAlertsPartialRequest",
       });
-    case 1:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4962,7 +4898,7 @@ function __c21(j: number): any {
           enabled: S.optional(S.Boolean),
           filter_group: S.optional(S.Unknown),
           value_attribute: S.optional(S.NullOr(S.String)),
-          group_by: S.optional(__S(5, __c0, 5)),
+          group_by: S.optional(__S(704, __c44, 0)),
           source: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4974,7 +4910,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateLogsMetricRuleRequest",
       });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4984,7 +4924,7 @@ function __c21(j: number): any {
           enabled: S.optional(S.Boolean),
           filter_group: S.optional(S.Unknown),
           value_attribute: S.optional(S.NullOr(S.String)),
-          group_by: S.optional(__S(5, __c0, 5)),
+          group_by: S.optional(__S(704, __c44, 0)),
           source: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4996,7 +4936,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateLogsMetricRulesPartialRequest",
       });
-    case 3:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5015,7 +4959,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateLogsRetentionRuleRequest",
       });
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5034,7 +4982,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateLogsRetentionRulesPartialRequest",
       });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5045,7 +4997,7 @@ function __c21(j: number): any {
           rule_type: S.String,
           scope_service: S.optional(S.NullOr(S.String)),
           scope_path_pattern: S.optional(S.NullOr(S.String)),
-          scope_attribute_filters: S.optional(__S(96, __c12, 0)),
+          scope_attribute_filters: S.optional(__S(288, __c18, 0)),
           config: S.Unknown,
         }).pipe(
           T.Http({
@@ -5057,15 +5009,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateLogsSamplingRuleRequest",
       });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(174, __c21, 6));
   }
 }
-function __c22(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(1072, __c67, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5076,7 +5028,7 @@ function __c22(j: number): any {
           rule_type: S.optional(S.String),
           scope_service: S.optional(S.NullOr(S.String)),
           scope_path_pattern: S.optional(S.NullOr(S.String)),
-          scope_attribute_filters: S.optional(__S(175, __c21, 7)),
+          scope_attribute_filters: S.optional(__S(1073, __c67, 1)),
           config: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -5088,14 +5040,18 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateLogsSamplingRulesPartialRequest",
       });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           short_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          filters: S.optional(__S(14, __c1, 6)),
-          columns: S.optional(S.NullOr(__S(121, __c15, 1))),
+          filters: S.optional(__S(640, __c40, 0)),
+          columns: S.optional(S.NullOr(__S(401, __c25, 1))),
           pinned: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -5105,14 +5061,18 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateLogsViewRequest" });
-    case 2:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           short_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          filters: S.optional(__S(14, __c1, 6)),
-          columns: S.optional(S.NullOr(__S(121, __c15, 1))),
+          filters: S.optional(__S(640, __c40, 0)),
+          columns: S.optional(S.NullOr(__S(401, __c25, 1))),
           pinned: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -5126,7 +5086,262 @@ function __c22(j: number): any {
       });
   }
 }
-
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          filters: S.optional(__S(724, __c45, 4)),
+          threshold_count: S.optional(S.Number),
+          threshold_operator: S.optional(S.String),
+          window_minutes: S.optional(S.Number),
+          check_interval_minutes: S.optional(S.Number),
+          evaluation_periods: S.optional(S.Number),
+          datapoints_to_alarm: S.optional(S.Number),
+          cooldown_minutes: S.optional(S.Number),
+          date_from: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/logs/alerts/simulate/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLogsAlertsSimulateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.optional(S.String),
+          count: S.optional(S.Number),
+          threshold_breached: S.optional(S.Boolean),
+          state: S.optional(S.String),
+          notification: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LogsAlertSimulateBucket" });
+    case 2:
+      return S.Array(__S(1121, __c70, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          buckets: S.optional(__S(1122, __c70, 2)),
+          fire_count: S.optional(S.Number),
+          resolve_count: S.optional(S.Number),
+          total_buckets: S.optional(S.Number),
+          threshold_count: S.optional(S.Number),
+          threshold_operator: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LogsAlertSimulateResponse",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          date_from: S.String,
+          date_to: S.String,
+        }),
+      ).annotate({ identifier: "ScanDateRange" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          serviceName: S.String,
+          dateRange: __S(1136, __c71, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/logs/anomalies/scan/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLogsAnomaliesScanRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          time: S.String,
+          observed: S.Number,
+          expected: S.NullOr(S.Number),
+          lower: S.NullOr(S.Number),
+          upper: S.NullOr(S.Number),
+          stage: S.NullOr(S.String),
+          verdict: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "LogsAnomalyScanBucket" });
+    case 3:
+      return S.Array(__S(1138, __c71, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          severity: S.String,
+          stage: S.NullOr(S.String),
+          tier: S.NullOr(S.String),
+          history_start: S.NullOr(S.String),
+          limited_by: S.NullOr(S.String),
+          buckets: __S(1139, __c71, 3),
+        }),
+      ).annotate({ identifier: "LogsAnomalyScanSeries" });
+    case 5:
+      return S.Array(__S(1140, __c71, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          direction: S.String,
+          severity: S.NullOr(S.String),
+          kind: S.String,
+          state: S.String,
+          opened_at: S.String,
+          last_anomalous_at: S.String,
+          resolved_at: S.NullOr(S.String),
+          anomalous_bucket_times: __S(704, __c44, 0),
+        }),
+      ).annotate({ identifier: "LogsAnomalyScanIssue" });
+    case 7:
+      return S.Array(__S(1142, __c71, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          service_name: S.String,
+          eval_start: S.String,
+          eval_end: S.String,
+          lookback_days: S.Number,
+          eval_clipped: S.Boolean,
+          degraded: S.Boolean,
+          binding_constraints: __S(736, __c46, 0),
+          series: __S(1141, __c71, 5),
+          issues: __S(1143, __c71, 7),
+        }),
+      ).annotate({ identifier: "LogsAnomalyScanResponse" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          serviceName: S.String,
+          dateRange: S.optional(__S(1168, __c73, 0)),
+          intervalMinutes: S.optional(S.NullOr(S.Number)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/logs/anomalies/series_bands/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLogsAnomaliesSeriesBandRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          time: S.String,
+          observed: S.Number,
+          lower: S.NullOr(S.Number),
+          upper: S.NullOr(S.Number),
+          verdict: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "LogsSeriesBandBucket" });
+    case 2:
+      return S.Array(__S(1153, __c72, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String,
+          environment: S.String,
+          severity: S.String,
+          total_count: S.Number,
+          baseline_weeks: S.Number,
+          history_start: S.String,
+          band_ready_at: S.NullOr(S.String),
+          interval_minutes: S.Number,
+          coarsened_reason: S.NullOr(S.String),
+          buckets: __S(1154, __c72, 2),
+        }),
+      ).annotate({ identifier: "LogsSeriesBandSeries" });
+    case 4:
+      return S.Array(__S(1155, __c72, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          service_name: S.String,
+          window_start: S.String,
+          window_end: S.String,
+          interval_minutes: S.Number,
+          series_truncated: S.Boolean,
+          series: __S(1156, __c72, 4),
+        }),
+      ).annotate({ identifier: "LogsSeriesBandsResponse" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          date_from: S.optional(S.NullOr(S.String)),
+          date_to: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "SeriesBandsDateRange" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          query: S.optional(__S(1216, __c76, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/logs/count/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateLogsCountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LogsCountResponse" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          type: S.optional(S.String),
+          operator: S.optional(S.String),
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "LogPropertyFilter2" });
+    case 1:
+      return S.Array(__S(1200, __c75, 0));
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dateRange: S.optional(__S(1168, __c73, 0)),
+          severityLevels: S.optional(__S(736, __c46, 0)),
+          serviceNames: S.optional(__S(704, __c44, 0)),
+          searchTerm: S.optional(S.String),
+          filterGroup: S.optional(__S(1201, __c75, 1)),
+        }),
+      ).annotate({ identifier: "LogsCountBody" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -2764,7 +2764,7 @@ export const approveDomainOutgoingTransfer: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ApproveDomainOutgoingTransferRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ApproveDomainOutgoingTransferResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<ApproveDomainOutgoingTransferResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2778,8 +2778,8 @@ export const cancelDomainTask: API.OperationMethod<
   CancelDomainTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelDomainTaskRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelDomainTaskResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CancelDomainTaskRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<CancelDomainTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2793,8 +2793,8 @@ export const cancelDomainZoneTask: API.OperationMethod<
   CancelDomainZoneTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CancelDomainZoneTaskRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelDomainZoneTaskResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<CancelDomainZoneTaskRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<CancelDomainZoneTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2808,8 +2808,8 @@ export const changePasswordDynDnsLogin: API.OperationMethod<
   ChangePasswordDynDnsLoginError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ChangePasswordDynDnsLoginRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ChangePasswordDynDnsLoginResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<ChangePasswordDynDnsLoginRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<ChangePasswordDynDnsLoginResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2823,8 +2823,8 @@ export const checkDomainConfigurationRule: API.OperationMethod<
   CheckDomainConfigurationRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CheckDomainConfigurationRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CheckDomainConfigurationRuleResponse>,
+  input: __S(883, __c55, 3) as any as S.Schema<CheckDomainConfigurationRuleRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CheckDomainConfigurationRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2838,8 +2838,8 @@ export const confirmDomainZoneTermination: API.OperationMethod<
   ConfirmDomainZoneTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ConfirmDomainZoneTerminationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ConfirmDomainZoneTerminationResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ConfirmDomainZoneTerminationRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<ConfirmDomainZoneTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2853,8 +2853,8 @@ export const createContact: API.OperationMethod<
   CreateContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateContactRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DomainContact>,
+  input: __S(1376, __c86, 0) as any as S.Schema<CreateContactRequest>,
+  output: __S(1392, __c87, 0) as any as S.Schema<DomainContact>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2868,8 +2868,8 @@ export const createDomainChangeContact: API.OperationMethod<
   CreateDomainChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateDomainChangeContactRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CreateDomainChangeContactResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<CreateDomainChangeContactRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<CreateDomainChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2883,8 +2883,8 @@ export const createDomainDataSmd: API.OperationMethod<
   CreateDomainDataSmdError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateDomainDataSmdRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DomainDataSmdSmd>,
+  input: __S(1840, __c115, 0) as any as S.Schema<CreateDomainDataSmdRequest>,
+  output: __S(1858, __c116, 2) as any as S.Schema<DomainDataSmdSmd>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2898,8 +2898,8 @@ export const createDomainDsRecord: API.OperationMethod<
   CreateDomainDsRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateDomainDsRecordRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DomainTask>,
+  input: __S(2050, __c128, 2) as any as S.Schema<CreateDomainDsRecordRequest>,
+  output: __S(2064, __c129, 0) as any as S.Schema<DomainTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2913,8 +2913,8 @@ export const createDomainGlueRecord: API.OperationMethod<
   CreateDomainGlueRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateDomainGlueRecordRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DomainTask>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreateDomainGlueRecordRequest>,
+  output: __S(2064, __c129, 0) as any as S.Schema<DomainTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2928,8 +2928,8 @@ export const createDomainNameServer: API.OperationMethod<
   CreateDomainNameServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateDomainNameServerRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DomainTask>,
+  input: __S(256, __c16, 0) as any as S.Schema<CreateDomainNameServerRequest>,
+  output: __S(2064, __c129, 0) as any as S.Schema<DomainTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2943,8 +2943,8 @@ export const createDomainOrder: API.OperationMethod<
   CreateDomainOrderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateDomainOrderRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DomainOrderOrderResponse>,
+  input: __S(324, __c20, 4) as any as S.Schema<CreateDomainOrderRequest>,
+  output: __S(329, __c20, 9) as any as S.Schema<DomainOrderOrderResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2958,8 +2958,8 @@ export const createDomainTaskAccelerate: API.OperationMethod<
   CreateDomainTaskAccelerateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateDomainTaskAccelerateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateDomainTaskAccelerateResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<CreateDomainTaskAccelerateRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateDomainTaskAccelerateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2973,8 +2973,8 @@ export const createDomainTaskRelaunch: API.OperationMethod<
   CreateDomainTaskRelaunchError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateDomainTaskRelaunchRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateDomainTaskRelaunchResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<CreateDomainTaskRelaunchRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateDomainTaskRelaunchResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2988,8 +2988,8 @@ export const createDomainUkOutgoingTransfer: API.OperationMethod<
   CreateDomainUkOutgoingTransferError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CreateDomainUkOutgoingTransferRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DomainTask>,
+  input: __S(368, __c23, 0) as any as S.Schema<CreateDomainUkOutgoingTransferRequest>,
+  output: __S(2064, __c129, 0) as any as S.Schema<DomainTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3003,8 +3003,8 @@ export const createDomainZoneChangeContact: API.OperationMethod<
   CreateDomainZoneChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateDomainZoneChangeContactRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CreateDomainZoneChangeContactResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<CreateDomainZoneChangeContactRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<CreateDomainZoneChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3018,8 +3018,8 @@ export const createDomainZoneTaskAccelerate: API.OperationMethod<
   CreateDomainZoneTaskAccelerateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateDomainZoneTaskAccelerateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateDomainZoneTaskAccelerateResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<CreateDomainZoneTaskAccelerateRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateDomainZoneTaskAccelerateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3033,8 +3033,8 @@ export const createDomainZoneTaskRelaunch: API.OperationMethod<
   CreateDomainZoneTaskRelaunchError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateDomainZoneTaskRelaunchRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateDomainZoneTaskRelaunchResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<CreateDomainZoneTaskRelaunchRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateDomainZoneTaskRelaunchResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3048,8 +3048,8 @@ export const createDynDnsLogin: API.OperationMethod<
   CreateDynDnsLoginError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateDynDnsLoginRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DomainZoneDynHostLogin>,
+  input: __S(432, __c27, 0) as any as S.Schema<CreateDynDnsLoginRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<DomainZoneDynHostLogin>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3063,8 +3063,8 @@ export const createDynDnsRecord: API.OperationMethod<
   CreateDynDnsRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateDynDnsRecordRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DomainZoneDynHostRecord>,
+  input: __S(480, __c30, 0) as any as S.Schema<CreateDynDnsRecordRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DomainZoneDynHostRecord>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3078,8 +3078,8 @@ export const createRecord: API.OperationMethod<
   CreateRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreateRecordRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<DomainZoneRecord>,
+  input: __S(512, __c32, 0) as any as S.Schema<CreateRecordRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<DomainZoneRecord>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3093,8 +3093,8 @@ export const createRedirection: API.OperationMethod<
   CreateRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateRedirectionRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DomainZoneRedirection>,
+  input: __S(544, __c34, 0) as any as S.Schema<CreateRedirectionRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DomainZoneRedirection>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3108,8 +3108,8 @@ export const deleteDomainDataSmd: API.OperationMethod<
   DeleteDomainDataSmdError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteDomainDataSmdRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDomainDataSmdResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<DeleteDomainDataSmdRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteDomainDataSmdResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3123,8 +3123,8 @@ export const deleteDomainGlueRecord: API.OperationMethod<
   DeleteDomainGlueRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteDomainGlueRecordRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DomainTask>,
+  input: __S(592, __c37, 0) as any as S.Schema<DeleteDomainGlueRecordRequest>,
+  output: __S(2064, __c129, 0) as any as S.Schema<DomainTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3138,8 +3138,8 @@ export const deleteDomainNameServer: API.OperationMethod<
   DeleteDomainNameServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteDomainNameServerRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DomainTask>,
+  input: __S(608, __c38, 0) as any as S.Schema<DeleteDomainNameServerRequest>,
+  output: __S(2064, __c129, 0) as any as S.Schema<DomainTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3153,8 +3153,8 @@ export const deleteDomainOption: API.OperationMethod<
   DeleteDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteDomainOptionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDomainOptionResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<DeleteDomainOptionRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteDomainOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3168,8 +3168,8 @@ export const deleteDynHostLogin: API.OperationMethod<
   DeleteDynHostLoginError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteDynHostLoginRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDynHostLoginResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<DeleteDynHostLoginRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteDynHostLoginResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3183,8 +3183,8 @@ export const deleteDynHostRecord: API.OperationMethod<
   DeleteDynHostRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteDynHostRecordRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDynHostRecordResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<DeleteDynHostRecordRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteDynHostRecordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3198,8 +3198,8 @@ export const deleteRecord: API.OperationMethod<
   DeleteRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteRecordRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteRecordResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<DeleteRecordRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteRecordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3213,8 +3213,8 @@ export const deleteRedirection: API.OperationMethod<
   DeleteRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteRedirectionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteRedirectionResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<DeleteRedirectionRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteRedirectionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3228,8 +3228,8 @@ export const disableDNSSEC: API.OperationMethod<
   DisableDNSSECError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DisableDNSSECRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DisableDNSSECResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<DisableDNSSECRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DisableDNSSECResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3243,8 +3243,8 @@ export const editDomain: API.OperationMethod<
   EditDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<EditDomainRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DomainDomainService>,
+  input: __S(736, __c46, 0) as any as S.Schema<EditDomainRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<DomainDomainService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3258,8 +3258,8 @@ export const editDynDnsLogin: API.OperationMethod<
   EditDynDnsLoginError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<EditDynDnsLoginRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EditDynDnsLoginResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<EditDynDnsLoginRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<EditDynDnsLoginResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3273,8 +3273,8 @@ export const editDynDnsRecord: API.OperationMethod<
   EditDynDnsRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<EditDynDnsRecordRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EditDynDnsRecordResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<EditDynDnsRecordRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<EditDynDnsRecordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3288,8 +3288,8 @@ export const editRecord: API.OperationMethod<
   EditRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<EditRecordRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EditRecordResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<EditRecordRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<EditRecordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3303,8 +3303,8 @@ export const editRedirection: API.OperationMethod<
   EditRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<EditRedirectionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EditRedirectionResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<EditRedirectionRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<EditRedirectionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3318,8 +3318,8 @@ export const enableDNSSEC: API.OperationMethod<
   EnableDNSSECError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<EnableDNSSECRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EnableDNSSECResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<EnableDNSSECRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<EnableDNSSECResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3333,8 +3333,8 @@ export const getContact: API.OperationMethod<
   GetContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetContactRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DomainContact>,
+  input: __S(848, __c53, 0) as any as S.Schema<GetContactRequest>,
+  output: __S(1392, __c87, 0) as any as S.Schema<DomainContact>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3348,8 +3348,8 @@ export const getContacts: API.OperationMethod<
   GetContactsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetContactsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<GetContactsResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<GetContactsRequest>,
+  output: __S(866, __c54, 2) as any as S.Schema<GetContactsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3363,8 +3363,8 @@ export const getDNSSECStatus: API.OperationMethod<
   GetDNSSECStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetDNSSECStatusRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<DomainZoneDnssec>,
+  input: __S(912, __c57, 0) as any as S.Schema<GetDNSSECStatusRequest>,
+  output: __S(913, __c57, 1) as any as S.Schema<DomainZoneDnssec>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3378,8 +3378,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetDomainRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<DomainDomainServiceWithIAM>,
+  input: __S(928, __c58, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(929, __c58, 1) as any as S.Schema<DomainDomainServiceWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3393,8 +3393,8 @@ export const getDomainAuthInfo: API.OperationMethod<
   GetDomainAuthInfoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetDomainAuthInfoRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetDomainAuthInfoResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<GetDomainAuthInfoRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<GetDomainAuthInfoResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3408,8 +3408,8 @@ export const getDomainConfigurationData: API.OperationMethod<
   GetDomainConfigurationDataError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetDomainConfigurationDataRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<DomainConfigurationsCustomFields>,
+  input: __S(976, __c61, 0) as any as S.Schema<GetDomainConfigurationDataRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DomainConfigurationsCustomFields>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3423,8 +3423,8 @@ export const getDomainConfigurationRule: API.OperationMethod<
   GetDomainConfigurationRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetDomainConfigurationRuleRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DomainConfigurationRulesRule>,
+  input: __S(1024, __c64, 0) as any as S.Schema<GetDomainConfigurationRuleRequest>,
+  output: __S(1028, __c64, 4) as any as S.Schema<DomainConfigurationRulesRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3438,8 +3438,8 @@ export const getDomainDataClaimNotice: API.OperationMethod<
   GetDomainDataClaimNoticeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetDomainDataClaimNoticeRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<DomainDataClaimNoticeClaimNotice>,
+  input: __S(1040, __c65, 0) as any as S.Schema<GetDomainDataClaimNoticeRequest>,
+  output: __S(1052, __c65, 12) as any as S.Schema<DomainDataClaimNoticeClaimNotice>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3453,8 +3453,8 @@ export const getDomainDataSmd: API.OperationMethod<
   GetDomainDataSmdError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetDomainDataSmdRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DomainDataSmdSmd>,
+  input: __S(1056, __c66, 0) as any as S.Schema<GetDomainDataSmdRequest>,
+  output: __S(1858, __c116, 2) as any as S.Schema<DomainDataSmdSmd>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3468,8 +3468,8 @@ export const getDomainDsRecord: API.OperationMethod<
   GetDomainDsRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetDomainDsRecordRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<DnssecKey>,
+  input: __S(1072, __c67, 0) as any as S.Schema<GetDomainDsRecordRequest>,
+  output: __S(1073, __c67, 1) as any as S.Schema<DnssecKey>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3483,8 +3483,8 @@ export const getDomainExtension: API.OperationMethod<
   GetDomainExtensionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<GetDomainExtensionRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<DomainExtensionsExtension>,
+  input: __S(1088, __c68, 0) as any as S.Schema<GetDomainExtensionRequest>,
+  output: __S(1089, __c68, 1) as any as S.Schema<DomainExtensionsExtension>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3498,11 +3498,11 @@ export const getDomainExtensionRegistryConfigurations: API.OperationMethod<
   GetDomainExtensionRegistryConfigurationsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetDomainExtensionRegistryConfigurationsRequest>,
+  input: __S(1104, __c69, 0) as any as S.Schema<GetDomainExtensionRegistryConfigurationsRequest>,
   output: __S(
-    123,
-    __c15,
-    3,
+    1115,
+    __c69,
+    11,
   ) as any as S.Schema<DomainExtensionsRegistryConfigurationsRegistryConfigurations>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -3517,8 +3517,8 @@ export const getDomainGlueRecord: API.OperationMethod<
   GetDomainGlueRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetDomainGlueRecordRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<DomainGlueRecordGlueRecord>,
+  input: __S(1152, __c72, 0) as any as S.Schema<GetDomainGlueRecordRequest>,
+  output: __S(1153, __c72, 1) as any as S.Schema<DomainGlueRecordGlueRecord>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3532,8 +3532,8 @@ export const getDomainNameServer: API.OperationMethod<
   GetDomainNameServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetDomainNameServerRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<DomainNameServerFullNameServer>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GetDomainNameServerRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<DomainNameServerFullNameServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3547,8 +3547,8 @@ export const getDomainNameServerStatus: API.OperationMethod<
   GetDomainNameServerStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetDomainNameServerStatusRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<DomainNameServerNameServerStatus>,
+  input: __S(1184, __c74, 0) as any as S.Schema<GetDomainNameServerStatusRequest>,
+  output: __S(1185, __c74, 1) as any as S.Schema<DomainNameServerNameServerStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3562,8 +3562,8 @@ export const getDomainOption: API.OperationMethod<
   GetDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetDomainOptionRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DomainOption>,
+  input: __S(1200, __c75, 0) as any as S.Schema<GetDomainOptionRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<DomainOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3577,8 +3577,8 @@ export const getDomainOptions: API.OperationMethod<
   GetDomainOptionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetDomainOptionsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<DomainServiceOptions>,
+  input: __S(1216, __c76, 0) as any as S.Schema<GetDomainOptionsRequest>,
+  output: __S(1218, __c76, 2) as any as S.Schema<DomainServiceOptions>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3592,8 +3592,8 @@ export const getDomains: API.OperationMethod<
   GetDomainsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<GetDomainsRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<GetDomainsResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<GetDomainsRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<GetDomainsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3607,8 +3607,8 @@ export const getDomainServiceInfos: API.OperationMethod<
   GetDomainServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetDomainServiceInfosRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ServicesService>,
+  input: __S(1280, __c80, 0) as any as S.Schema<GetDomainServiceInfosRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3622,8 +3622,8 @@ export const getDomainTask: API.OperationMethod<
   GetDomainTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetDomainTaskRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DomainTask>,
+  input: __S(1328, __c83, 0) as any as S.Schema<GetDomainTaskRequest>,
+  output: __S(2064, __c129, 0) as any as S.Schema<DomainTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3637,8 +3637,8 @@ export const getDomainZoneCapabilities: API.OperationMethod<
   GetDomainZoneCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetDomainZoneCapabilitiesRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<DomainZoneCapabilities>,
+  input: __S(1344, __c84, 0) as any as S.Schema<GetDomainZoneCapabilitiesRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<DomainZoneCapabilities>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3652,8 +3652,8 @@ export const getDomainZoneExport: API.OperationMethod<
   GetDomainZoneExportError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetDomainZoneExportRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetDomainZoneExportResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<GetDomainZoneExportRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<GetDomainZoneExportResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3667,8 +3667,8 @@ export const getDomainZoneHistory: API.OperationMethod<
   GetDomainZoneHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetDomainZoneHistoryRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<DomainZoneZoneRestorePoint>,
+  input: __S(1408, __c88, 0) as any as S.Schema<GetDomainZoneHistoryRequest>,
+  output: __S(1409, __c88, 1) as any as S.Schema<DomainZoneZoneRestorePoint>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3682,8 +3682,8 @@ export const getDomainZoneOption: API.OperationMethod<
   GetDomainZoneOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetDomainZoneOptionRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<DomainZoneOption>,
+  input: __S(1424, __c89, 0) as any as S.Schema<GetDomainZoneOptionRequest>,
+  output: __S(1425, __c89, 1) as any as S.Schema<DomainZoneOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3697,8 +3697,8 @@ export const getDomainZoneOptionServiceInfos: API.OperationMethod<
   GetDomainZoneOptionServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetDomainZoneOptionServiceInfosRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ServicesService>,
+  input: __S(1440, __c90, 0) as any as S.Schema<GetDomainZoneOptionServiceInfosRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3712,8 +3712,8 @@ export const getDomainZoneServiceInfos: API.OperationMethod<
   GetDomainZoneServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetDomainZoneServiceInfosRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ServicesService>,
+  input: __S(1456, __c91, 0) as any as S.Schema<GetDomainZoneServiceInfosRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3727,8 +3727,8 @@ export const getDomainZoneSoa: API.OperationMethod<
   GetDomainZoneSoaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetDomainZoneSoaRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<DomainZoneSoa>,
+  input: __S(1472, __c92, 0) as any as S.Schema<GetDomainZoneSoaRequest>,
+  output: __S(1473, __c92, 1) as any as S.Schema<DomainZoneSoa>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3742,8 +3742,8 @@ export const getDomainZoneTask: API.OperationMethod<
   GetDomainZoneTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetDomainZoneTaskRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<DomainZoneTask>,
+  input: __S(1488, __c93, 0) as any as S.Schema<GetDomainZoneTaskRequest>,
+  output: __S(1504, __c94, 0) as any as S.Schema<DomainZoneTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3757,8 +3757,8 @@ export const getDynHostLogin: API.OperationMethod<
   GetDynHostLoginError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetDynHostLoginRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DomainZoneDynHostLogin>,
+  input: __S(1520, __c95, 0) as any as S.Schema<GetDynHostLoginRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<DomainZoneDynHostLogin>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3772,8 +3772,8 @@ export const getDynHostLogins: API.OperationMethod<
   GetDynHostLoginsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<GetDynHostLoginsRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<GetDynHostLoginsResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<GetDynHostLoginsRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<GetDynHostLoginsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3787,8 +3787,8 @@ export const getDynHostRecord: API.OperationMethod<
   GetDynHostRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<GetDynHostRecordRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DomainZoneDynHostRecord>,
+  input: __S(1552, __c97, 0) as any as S.Schema<GetDynHostRecordRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DomainZoneDynHostRecord>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3802,8 +3802,8 @@ export const getDynHostRecords: API.OperationMethod<
   GetDynHostRecordsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetDynHostRecordsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetDynHostRecordsResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<GetDynHostRecordsRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<GetDynHostRecordsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3817,8 +3817,8 @@ export const getRecord: API.OperationMethod<
   GetRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetRecordRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<DomainZoneRecord>,
+  input: __S(1632, __c102, 0) as any as S.Schema<GetRecordRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<DomainZoneRecord>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3832,8 +3832,8 @@ export const getRecords: API.OperationMethod<
   GetRecordsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<GetRecordsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<GetRecordsResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<GetRecordsRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<GetRecordsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3847,8 +3847,8 @@ export const getRedirection: API.OperationMethod<
   GetRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetRedirectionRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DomainZoneRedirection>,
+  input: __S(1680, __c105, 0) as any as S.Schema<GetRedirectionRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DomainZoneRedirection>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3862,8 +3862,8 @@ export const getRedirections: API.OperationMethod<
   GetRedirectionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetRedirectionsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<GetRedirectionsResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<GetRedirectionsRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<GetRedirectionsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3877,8 +3877,8 @@ export const getZone: API.OperationMethod<
   GetZoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<GetZoneRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<DomainZoneWithIAM>,
+  input: __S(1712, __c107, 0) as any as S.Schema<GetZoneRequest>,
+  output: __S(1713, __c107, 1) as any as S.Schema<DomainZoneWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3892,8 +3892,8 @@ export const getZones: API.OperationMethod<
   GetZonesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<GetZonesRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<GetZonesResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<GetZonesRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<GetZonesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3907,8 +3907,8 @@ export const importDomainZone: API.OperationMethod<
   ImportDomainZoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ImportDomainZoneRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<DomainZoneTask>,
+  input: __S(1744, __c109, 0) as any as S.Schema<ImportDomainZoneRequest>,
+  output: __S(1504, __c94, 0) as any as S.Schema<DomainZoneTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3922,8 +3922,8 @@ export const listDomainConfigurationObfuscatedEmails: API.OperationMethod<
   ListDomainConfigurationObfuscatedEmailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListDomainConfigurationObfuscatedEmailsRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<ListDomainConfigurationObfuscatedEmailsResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<ListDomainConfigurationObfuscatedEmailsRequest>,
+  output: __S(1778, __c111, 2) as any as S.Schema<ListDomainConfigurationObfuscatedEmailsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3937,8 +3937,8 @@ export const listDomainConfigurationOptin: API.OperationMethod<
   ListDomainConfigurationOptinError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ListDomainConfigurationOptinRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListDomainConfigurationOptinResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<ListDomainConfigurationOptinRequest>,
+  output: __S(1810, __c113, 2) as any as S.Schema<ListDomainConfigurationOptinResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3952,8 +3952,8 @@ export const listDomainDataSmd: API.OperationMethod<
   ListDomainDataSmdError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListDomainDataSmdRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListDomainDataSmdResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<ListDomainDataSmdRequest>,
+  output: __S(1826, __c114, 2) as any as S.Schema<ListDomainDataSmdResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3967,8 +3967,8 @@ export const listDomainDsRecord: API.OperationMethod<
   ListDomainDsRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<ListDomainDsRecordRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListDomainDsRecordResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<ListDomainDsRecordRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<ListDomainDsRecordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3982,8 +3982,8 @@ export const listDomainExtensionByCategory: API.OperationMethod<
   ListDomainExtensionByCategoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListDomainExtensionByCategoryRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<DomainExtensionsExtensionsByCategory>,
+  input: __S(1888, __c118, 0) as any as S.Schema<ListDomainExtensionByCategoryRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<DomainExtensionsExtensionsByCategory>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3997,8 +3997,8 @@ export const listDomainExtensionHighlighted: API.OperationMethod<
   ListDomainExtensionHighlightedError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListDomainExtensionHighlightedRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListDomainExtensionHighlightedResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<ListDomainExtensionHighlightedRequest>,
+  output: __S(1920, __c120, 0) as any as S.Schema<ListDomainExtensionHighlightedResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4012,8 +4012,8 @@ export const listDomainExtensionPricingAttributes: API.OperationMethod<
   ListDomainExtensionPricingAttributesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ListDomainExtensionPricingAttributesRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ListDomainExtensionPricingAttributesResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<ListDomainExtensionPricingAttributesRequest>,
+  output: __S(1939, __c121, 3) as any as S.Schema<ListDomainExtensionPricingAttributesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4027,8 +4027,8 @@ export const listDomainExtensions: API.OperationMethod<
   ListDomainExtensionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ListDomainExtensionsRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListDomainExtensionsResponse>,
+  input: __S(1952, __c122, 0) as any as S.Schema<ListDomainExtensionsRequest>,
+  output: __S(1920, __c120, 0) as any as S.Schema<ListDomainExtensionsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4042,8 +4042,8 @@ export const listDomainGlueRecord: API.OperationMethod<
   ListDomainGlueRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListDomainGlueRecordRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListDomainGlueRecordResponse>,
+  input: __S(1968, __c123, 0) as any as S.Schema<ListDomainGlueRecordRequest>,
+  output: __S(1920, __c120, 0) as any as S.Schema<ListDomainGlueRecordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4057,8 +4057,8 @@ export const listDomainNameServer: API.OperationMethod<
   ListDomainNameServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ListDomainNameServerRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListDomainNameServerResponse>,
+  input: __S(1984, __c124, 0) as any as S.Schema<ListDomainNameServerRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<ListDomainNameServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4072,8 +4072,8 @@ export const listDomainOption: API.OperationMethod<
   ListDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListDomainOptionRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<ListDomainOptionResponse>,
+  input: __S(2000, __c125, 0) as any as S.Schema<ListDomainOptionRequest>,
+  output: __S(2001, __c125, 1) as any as S.Schema<ListDomainOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4087,8 +4087,8 @@ export const listDomainRuleEmailsObfuscation: API.OperationMethod<
   ListDomainRuleEmailsObfuscationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<ListDomainRuleEmailsObfuscationRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<ListDomainRuleEmailsObfuscationResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<ListDomainRuleEmailsObfuscationRequest>,
+  output: __S(2017, __c126, 1) as any as S.Schema<ListDomainRuleEmailsObfuscationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4102,8 +4102,8 @@ export const listDomainRuleOptin: API.OperationMethod<
   ListDomainRuleOptinError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<ListDomainRuleOptinRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<ListDomainRuleOptinResponse>,
+  input: __S(2032, __c127, 0) as any as S.Schema<ListDomainRuleOptinRequest>,
+  output: __S(2035, __c127, 3) as any as S.Schema<ListDomainRuleOptinResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4117,8 +4117,8 @@ export const listDomainTask: API.OperationMethod<
   ListDomainTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<ListDomainTaskRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<ListDomainTaskResponse>,
+  input: __S(2080, __c130, 0) as any as S.Schema<ListDomainTaskRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<ListDomainTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4132,8 +4132,8 @@ export const listDomainUkRegistrars: API.OperationMethod<
   ListDomainUkRegistrarsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<ListDomainUkRegistrarsRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<ListDomainUkRegistrarsResponse>,
+  input: __S(2096, __c131, 0) as any as S.Schema<ListDomainUkRegistrarsRequest>,
+  output: __S(2099, __c131, 3) as any as S.Schema<ListDomainUkRegistrarsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4147,8 +4147,8 @@ export const listDomainZoneHistory: API.OperationMethod<
   ListDomainZoneHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<ListDomainZoneHistoryRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListDomainZoneHistoryResponse>,
+  input: __S(2112, __c132, 0) as any as S.Schema<ListDomainZoneHistoryRequest>,
+  output: __S(1920, __c120, 0) as any as S.Schema<ListDomainZoneHistoryResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4162,8 +4162,8 @@ export const listDomainZoneOption: API.OperationMethod<
   ListDomainZoneOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListDomainZoneOptionRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListDomainZoneOptionResponse>,
+  input: __S(2128, __c133, 0) as any as S.Schema<ListDomainZoneOptionRequest>,
+  output: __S(1920, __c120, 0) as any as S.Schema<ListDomainZoneOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4177,8 +4177,8 @@ export const listDomainZoneStatus: API.OperationMethod<
   ListDomainZoneStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<ListDomainZoneStatusRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DomainZoneStatus>,
+  input: __S(2144, __c134, 0) as any as S.Schema<ListDomainZoneStatusRequest>,
+  output: __S(2145, __c134, 1) as any as S.Schema<DomainZoneStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4192,8 +4192,8 @@ export const listDomainZoneTask: API.OperationMethod<
   ListDomainZoneTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<ListDomainZoneTaskRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListDomainZoneTaskResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<ListDomainZoneTaskRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<ListDomainZoneTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4207,8 +4207,8 @@ export const putDomainConfigurationData: API.OperationMethod<
   PutDomainConfigurationDataError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<PutDomainConfigurationDataRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<DomainConfigurationsCustomFields>,
+  input: __S(2177, __c136, 1) as any as S.Schema<PutDomainConfigurationDataRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DomainConfigurationsCustomFields>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4222,8 +4222,8 @@ export const putDomainConfigurationObfuscatedEmails: API.OperationMethod<
   PutDomainConfigurationObfuscatedEmailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<PutDomainConfigurationObfuscatedEmailsRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<PutDomainConfigurationObfuscatedEmailsResponse>,
+  input: __S(2192, __c137, 0) as any as S.Schema<PutDomainConfigurationObfuscatedEmailsRequest>,
+  output: __S(1778, __c111, 2) as any as S.Schema<PutDomainConfigurationObfuscatedEmailsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4237,8 +4237,8 @@ export const putDomainConfigurationOptin: API.OperationMethod<
   PutDomainConfigurationOptinError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<PutDomainConfigurationOptinRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<PutDomainConfigurationOptinResponse>,
+  input: __S(2208, __c138, 0) as any as S.Schema<PutDomainConfigurationOptinRequest>,
+  output: __S(1810, __c113, 2) as any as S.Schema<PutDomainConfigurationOptinResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4252,8 +4252,8 @@ export const putDomainDataSmd: API.OperationMethod<
   PutDomainDataSmdError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<PutDomainDataSmdRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DomainDataSmdSmd>,
+  input: __S(2224, __c139, 0) as any as S.Schema<PutDomainDataSmdRequest>,
+  output: __S(1858, __c116, 2) as any as S.Schema<DomainDataSmdSmd>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4267,8 +4267,8 @@ export const putDomainServiceInfos: API.OperationMethod<
   PutDomainServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<PutDomainServiceInfosRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PutDomainServiceInfosResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<PutDomainServiceInfosRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<PutDomainServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4282,8 +4282,8 @@ export const putDomainZoneOptionServiceInfos: API.OperationMethod<
   PutDomainZoneOptionServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<PutDomainZoneOptionServiceInfosRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutDomainZoneOptionServiceInfosResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<PutDomainZoneOptionServiceInfosRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<PutDomainZoneOptionServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4297,8 +4297,8 @@ export const putDomainZoneServiceInfos: API.OperationMethod<
   PutDomainZoneServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<PutDomainZoneServiceInfosRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutDomainZoneServiceInfosResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<PutDomainZoneServiceInfosRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<PutDomainZoneServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4312,8 +4312,8 @@ export const putDomainZoneSoa: API.OperationMethod<
   PutDomainZoneSoaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<PutDomainZoneSoaRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PutDomainZoneSoaResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<PutDomainZoneSoaRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<PutDomainZoneSoaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4327,8 +4327,8 @@ export const refreshDomainConfigurationsObfuscatedEmail: API.OperationMethod<
   RefreshDomainConfigurationsObfuscatedEmailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<RefreshDomainConfigurationsObfuscatedEmailRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RefreshDomainConfigurationsObfuscatedEmailResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<RefreshDomainConfigurationsObfuscatedEmailRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<RefreshDomainConfigurationsObfuscatedEmailResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4342,8 +4342,8 @@ export const refreshZone: API.OperationMethod<
   RefreshZoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<RefreshZoneRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RefreshZoneResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<RefreshZoneRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<RefreshZoneResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4357,8 +4357,8 @@ export const resetDomainZone: API.OperationMethod<
   ResetDomainZoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<ResetDomainZoneRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ResetDomainZoneResponse>,
+  input: __S(194, __c12, 2) as any as S.Schema<ResetDomainZoneRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<ResetDomainZoneResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4372,8 +4372,8 @@ export const restoreDomainZoneHistory: API.OperationMethod<
   RestoreDomainZoneHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<RestoreDomainZoneHistoryRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<DomainZoneTask>,
+  input: __S(208, __c13, 0) as any as S.Schema<RestoreDomainZoneHistoryRequest>,
+  output: __S(1504, __c94, 0) as any as S.Schema<DomainZoneTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4387,8 +4387,8 @@ export const terminateDomainZone: API.OperationMethod<
   TerminateDomainZoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<TerminateDomainZoneRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<TerminateDomainZoneResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<TerminateDomainZoneRequest>,
+  output: __S(1136, __c71, 0) as any as S.Schema<TerminateDomainZoneResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4402,8 +4402,8 @@ export const updateContact: API.OperationMethod<
   UpdateContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<UpdateContactRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DomainContact>,
+  input: __S(240, __c15, 0) as any as S.Schema<UpdateContactRequest>,
+  output: __S(1392, __c87, 0) as any as S.Schema<DomainContact>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4417,8 +4417,8 @@ export const updateDomainGlueRecord: API.OperationMethod<
   UpdateDomainGlueRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<UpdateDomainGlueRecordRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DomainTask>,
+  input: __S(288, __c18, 0) as any as S.Schema<UpdateDomainGlueRecordRequest>,
+  output: __S(2064, __c129, 0) as any as S.Schema<DomainTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4432,8 +4432,8 @@ export const updateDomainNameServer: API.OperationMethod<
   UpdateDomainNameServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<UpdateDomainNameServerRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DomainTask>,
+  input: __S(304, __c19, 0) as any as S.Schema<UpdateDomainNameServerRequest>,
+  output: __S(2064, __c129, 0) as any as S.Schema<DomainTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4458,11 +4458,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApproveDomainOutgoingTransferRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ApproveDomainOutgoingTransferResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4471,11 +4479,509 @@ function __c0(j: number): any {
           T.Http({ method: "POST", uri: "/domain/{serviceName}/task/{id}/cancel", code: 200 }),
         ),
       ).annotate({ identifier: "CancelDomainTaskRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelDomainTaskResponse",
       });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          host: S.String,
+          ips: __S(80, __c5, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/{serviceName}/glueRecord", code: 200 })),
+      ).annotate({
+        identifier: "CreateDomainGlueRecordRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          renew: S.optional(S.NullOr(__S(1312, __c82, 0))),
+        }).pipe(T.Http({ method: "PUT", uri: "/domain/{serviceName}/serviceInfos", code: 200 })),
+      ).annotate({
+        identifier: "PutDomainServiceInfosRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          renew: __S(1312, __c82, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/domain/zone/{zoneName}/option/{name}/serviceInfos",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutDomainZoneOptionServiceInfosRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          renew: S.optional(S.NullOr(__S(1312, __c82, 0))),
+        }).pipe(T.Http({ method: "PUT", uri: "/domain/zone/{zoneName}/serviceInfos", code: 200 })),
+      ).annotate({
+        identifier: "PutDomainZoneServiceInfosRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          email: S.optional(S.String),
+          expire: S.optional(S.Number),
+          nxDomainTtl: S.optional(S.Number),
+          refresh: S.optional(S.Number),
+          serial: S.optional(S.Number),
+          server: S.optional(S.String),
+          ttl: S.optional(S.Number),
+        }).pipe(T.Http({ method: "PUT", uri: "/domain/zone/{zoneName}/soa", code: 200 })),
+      ).annotate({ identifier: "PutDomainZoneSoaRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          contacts: __S(992, __c62, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/domain/{serviceName}/configurations/obfuscatedEmails/refresh",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RefreshDomainConfigurationsObfuscatedEmailRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/refresh", code: 200 })),
+      ).annotate({ identifier: "RefreshZoneRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fieldType: S.optional(S.String),
+          target: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainZoneResetRecord" });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          DnsRecords: S.optional(__S(193, __c12, 1)),
+          minimized: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/reset", code: 200 })),
+      ).annotate({ identifier: "ResetDomainZoneRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          creationDate: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/domain/zone/{zoneName}/history/{creationDate}/restore",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RestoreDomainZoneHistoryRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/terminate", code: 200 })),
+      ).annotate({
+        identifier: "TerminateDomainZoneRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contactId: S.Number.pipe(T.Label()),
+          accreditationCountry: S.optional(S.NullOr(S.String)),
+          accreditationId: S.optional(S.NullOr(S.String)),
+          accreditationOrganism: S.optional(S.NullOr(S.String)),
+          accreditationYear: S.optional(S.NullOr(S.Number)),
+          address: S.optional(S.NullOr(__S(896, __c56, 0))),
+          birthCity: S.optional(S.NullOr(S.String)),
+          birthCountry: S.optional(S.NullOr(S.String)),
+          birthDay: S.optional(S.NullOr(S.String)),
+          birthZip: S.optional(S.NullOr(S.String)),
+          cellPhone: S.optional(S.NullOr(S.String)),
+          companyNationalIdentificationNumber: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          enterpriseId: S.optional(S.NullOr(S.String)),
+          fax: S.optional(S.NullOr(S.String)),
+          firstName: S.optional(S.NullOr(S.String)),
+          gender: S.optional(S.NullOr(S.String)),
+          insee: S.optional(S.NullOr(S.String)),
+          language: S.optional(S.NullOr(S.String)),
+          lastName: S.optional(S.NullOr(S.String)),
+          legalForm: S.optional(S.NullOr(S.String)),
+          legalFormCategory: S.optional(S.NullOr(S.String)),
+          nationalIdentificationNumber: S.optional(S.NullOr(S.String)),
+          nationality: S.optional(S.NullOr(S.String)),
+          organisationAccountable: S.optional(S.NullOr(S.String)),
+          organisationFunding: S.optional(S.NullOr(S.String)),
+          organisationFundingOther: S.optional(S.NullOr(S.String)),
+          organisationName: S.optional(S.NullOr(S.String)),
+          organisationRole: S.optional(S.NullOr(S.String)),
+          organisationRoleOther: S.optional(S.NullOr(S.String)),
+          organisationStaffStatus: S.optional(S.NullOr(S.String)),
+          organisationStaffStatusOther: S.optional(S.NullOr(S.String)),
+          organisationType: S.optional(S.NullOr(S.String)),
+          organisationTypeOther: S.optional(S.NullOr(S.String)),
+          phone: S.optional(S.NullOr(S.String)),
+          registrantDocumentType: S.optional(S.NullOr(S.String)),
+          registrantDocumentTypeOther: S.optional(S.NullOr(S.String)),
+          roleInOrganisation: S.optional(S.NullOr(S.String)),
+          trademarkId: S.optional(S.NullOr(S.String)),
+          vat: S.optional(S.NullOr(S.String)),
+          website: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PUT", uri: "/domain/contact/{contactId}", code: 200 })),
+      ).annotate({ identifier: "UpdateContactRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          nameServer: __S(273, __c17, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/{serviceName}/nameServer", code: 200 })),
+      ).annotate({
+        identifier: "CreateDomainNameServerRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          ip: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "DomainNameServerNameServerInput",
+      });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          host: S.String.pipe(T.Label()),
+          ips: __S(80, __c5, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/domain/{serviceName}/glueRecord/{host}/update",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDomainGlueRecordRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          nameServers: __S(273, __c17, 1),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/domain/{serviceName}/nameServers/update", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateDomainNameServerRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "DomainOrderContactOwner" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          admin: S.optional(S.NullOr(S.String)),
+          owner: S.optional(S.NullOr(__S(320, __c20, 0))),
+          tech: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "DomainOrderContacts" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.String,
+          value: S.Number,
+        }),
+      ).annotate({
+        identifier: "DomainOrderPriceAcknowledge",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          anycast: S.optional(S.NullOr(S.Boolean)),
+          create: S.optional(S.NullOr(S.Boolean)),
+          dnssec: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "DomainOrderZoneOptions" });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dryRun: S.optional(S.Boolean.pipe(T.Query())),
+          contacts: S.optional(S.NullOr(__S(321, __c20, 1))),
+          dns: S.optional(S.NullOr(__S(80, __c5, 0))),
+          domain: S.String,
+          duration: S.optional(S.NullOr(S.String)),
+          priceAcknowledge: S.optional(S.NullOr(__S(322, __c20, 2))),
+          promoCodes: S.optional(S.NullOr(__S(80, __c5, 0))),
+          waiveRetractationPeriod: S.optional(S.NullOr(S.Boolean)),
+          zone: S.optional(S.NullOr(__S(323, __c20, 3))),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/order/create", code: 200 })),
+      ).annotate({ identifier: "CreateDomainOrderRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainOrderContract" });
+    case 6:
+      return S.Array(__S(325, __c20, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.String),
+          text: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DomainOrderPrice" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          basePriceWithoutTax: S.optional(__S(327, __c20, 7)),
+          discount: S.optional(__S(327, __c20, 7)),
+          finalPriceWithTax: S.optional(__S(327, __c20, 7)),
+          finalPriceWithoutTax: S.optional(__S(327, __c20, 7)),
+          tax: S.optional(__S(327, __c20, 7)),
+        }),
+      ).annotate({ identifier: "DomainOrderPricing" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          contacts: S.optional(S.NullOr(__S(321, __c20, 1))),
+          contracts: S.optional(S.NullOr(__S(326, __c20, 6))),
+          dns: S.optional(S.NullOr(__S(80, __c5, 0))),
+          domain: S.optional(S.String),
+          duration: S.optional(S.String),
+          orderId: S.optional(S.NullOr(S.Number)),
+          pricing: S.optional(__S(328, __c20, 8)),
+          url: S.optional(S.NullOr(S.String)),
+          zone: S.optional(S.NullOr(__S(323, __c20, 3))),
+        }),
+      ).annotate({ identifier: "DomainOrderOrderResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/domain/{serviceName}/task/{id}/accelerate", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDomainTaskAccelerateRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/domain/{serviceName}/task/{id}/relaunch", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDomainTaskRelaunchRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          tag: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/domain/{serviceName}/ukOutgoingTransfer", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDomainUkOutgoingTransferRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/changeContact", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDomainZoneChangeContactRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/domain/zone/{zoneName}/task/{id}/accelerate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDomainZoneTaskAccelerateRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/task/{id}/relaunch", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDomainZoneTaskRelaunchRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          loginSuffix: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+          subDomain: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/dynHost/login", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateDynDnsLoginRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          login: S.optional(S.String),
+          subDomain: S.optional(S.String),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainZoneDynHostLogin" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneName: S.String.pipe(T.Label()),
@@ -4486,7 +4992,211 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelDomainZoneTaskRequest",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          ip: S.optional(S.String),
+          subDomain: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/dynHost/record", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateDynDnsRecordRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          ip: S.optional(S.String),
+          subDomain: S.optional(S.NullOr(S.String)),
+          ttl: S.optional(S.NullOr(S.Number)),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainZoneDynHostRecord" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          fieldType: S.String,
+          subDomain: S.optional(S.NullOr(S.String)),
+          target: S.String,
+          ttl: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/record", code: 200 })),
+      ).annotate({ identifier: "CreateRecordRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fieldType: S.optional(S.String),
+          id: S.optional(S.Number),
+          subDomain: S.optional(S.NullOr(S.String)),
+          target: S.optional(S.String),
+          ttl: S.optional(S.NullOr(S.Number)),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainZoneRecord" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          description: S.optional(S.NullOr(S.String)),
+          keywords: S.optional(S.NullOr(S.String)),
+          subDomain: S.optional(S.String),
+          target: S.String,
+          title: S.optional(S.NullOr(S.String)),
+          type: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/redirection", code: 200 })),
+      ).annotate({ identifier: "CreateRedirectionRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.Number),
+          keywords: S.optional(S.NullOr(S.String)),
+          subDomain: S.optional(S.NullOr(S.String)),
+          target: S.optional(S.String),
+          title: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainZoneRedirection" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          smdId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/domain/data/smd/{smdId}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteDomainDataSmdRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          host: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/domain/{serviceName}/glueRecord/{host}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteDomainGlueRecordRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/domain/{serviceName}/nameServer/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteDomainNameServerRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          option: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/domain/{serviceName}/option/{option}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteDomainOptionRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          login: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/domain/zone/{zoneName}/dynHost/login/{login}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDynHostLoginRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/domain/zone/{zoneName}/dynHost/record/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDynHostRecordRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/domain/zone/{zoneName}/record/{id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteRecordRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneName: S.String.pipe(T.Label()),
@@ -4502,7 +5212,205 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ChangePasswordDynDnsLoginRequest",
       });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/domain/zone/{zoneName}/redirection/{id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteRedirectionRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/domain/zone/{zoneName}/dnssec", code: 200 })),
+      ).annotate({ identifier: "DisableDNSSECRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          nameServerType: S.optional(S.String),
+          transferLockStatus: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/domain/{serviceName}", code: 200 })),
+      ).annotate({ identifier: "EditDomainRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contactAdmin: S.optional(__S(752, __c47, 0)),
+          contactBilling: S.optional(__S(752, __c47, 0)),
+          contactOwner: S.optional(__S(752, __c47, 0)),
+          contactTech: S.optional(__S(752, __c47, 0)),
+          dnssecState: S.optional(S.String),
+          dnssecSupported: S.optional(S.Boolean),
+          domain: S.optional(S.String),
+          expirationDate: S.optional(S.String),
+          glueRecordIpv6Supported: S.optional(S.Boolean),
+          glueRecordMultiIpSupported: S.optional(S.Boolean),
+          hostSupported: S.optional(S.Boolean),
+          lastUpdate: S.optional(S.String),
+          nameServerType: S.optional(S.String),
+          nameServers: S.optional(__S(754, __c47, 2)),
+          offer: S.optional(S.String),
+          owoSupported: S.optional(S.Boolean),
+          parentService: S.optional(S.NullOr(__S(755, __c47, 3))),
+          renewalDate: S.optional(S.String),
+          renewalState: S.optional(S.String),
+          serviceId: S.optional(S.Number),
+          state: S.optional(S.String),
+          suspensionState: S.optional(S.String),
+          transferLockStatus: S.optional(S.String),
+          whoisOwner: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainDomainService" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainContactSummary" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          ipv4: S.optional(S.NullOr(S.String)),
+          ipv6: S.optional(S.NullOr(S.String)),
+          nameServer: S.optional(S.String),
+          nameServerType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DomainNameServerNameServer",
+      });
+    case 2:
+      return S.Array(__S(753, __c47, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainParentService" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          login: S.String.pipe(T.Label()),
+          subDomain: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/domain/zone/{zoneName}/dynHost/login/{login}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "EditDynDnsLoginRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          ip: S.optional(S.String),
+          subDomain: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/domain/zone/{zoneName}/dynHost/record/{id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "EditDynDnsRecordRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          subDomain: S.optional(S.NullOr(S.String)),
+          target: S.optional(S.String),
+          ttl: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "PUT", uri: "/domain/zone/{zoneName}/record/{id}", code: 200 })),
+      ).annotate({ identifier: "EditRecordRequest" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          description: S.optional(S.NullOr(S.String)),
+          keywords: S.optional(S.NullOr(S.String)),
+          target: S.optional(S.String),
+          title: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/domain/zone/{zoneName}/redirection/{id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "EditRedirectionRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/dnssec", code: 200 })),
+      ).annotate({ identifier: "EnableDNSSECRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contactId: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/contact/{contactId}", code: 200 })),
+      ).annotate({ identifier: "GetContactRequest" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domain/contact", code: 200 })),
+      ).annotate({ identifier: "GetContactsRequest" });
+    case 1:
+      return S.Array(__S(1392, __c87, 0));
+    case 2:
+      return S.suspend(() => __S(865, __c54, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetContactsResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.NullOr(S.String)),
@@ -4533,7 +5441,7 @@ function __c0(j: number): any {
           zip: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "NichandleNichandleInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           acceptCondition: S.optional(S.NullOr(S.Boolean)),
@@ -4542,31 +5450,14 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DomainConfigurationRulesRuleExtraData",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.optional(S.NullOr(S.String)),
-          country: S.optional(S.NullOr(S.String)),
-          line1: S.optional(S.NullOr(S.String)),
-          line2: S.optional(S.NullOr(S.String)),
-          line3: S.optional(S.NullOr(S.String)),
-          otherDetails: S.optional(S.NullOr(S.String)),
-          province: S.optional(S.NullOr(S.String)),
-          zip: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "DomainContactAddress" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accreditationCountry: S.optional(S.NullOr(S.String)),
           accreditationId: S.optional(S.NullOr(S.String)),
           accreditationOrganism: S.optional(S.NullOr(S.String)),
           accreditationYear: S.optional(S.NullOr(S.Number)),
-          address: S.optional(S.NullOr(__S(8, __c1, 0))),
+          address: S.optional(S.NullOr(__S(896, __c56, 0))),
           birthCity: S.optional(S.NullOr(S.String)),
           birthCountry: S.optional(S.NullOr(S.String)),
           birthDay: S.optional(S.NullOr(S.String)),
@@ -4604,793 +5495,69 @@ function __c1(j: number): any {
           website: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "DomainContactInput" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           action: S.String.pipe(T.Query()),
           domain: S.String.pipe(T.Query()),
-          adminAccount: S.optional(S.NullOr(__S(6, __c0, 6))),
-          extras: S.optional(S.NullOr(__S(7, __c0, 7))),
-          owner: S.optional(S.NullOr(__S(9, __c1, 1))),
-          techAccount: S.optional(S.NullOr(__S(6, __c0, 6))),
+          adminAccount: S.optional(S.NullOr(__S(880, __c55, 0))),
+          extras: S.optional(S.NullOr(__S(881, __c55, 1))),
+          owner: S.optional(S.NullOr(__S(882, __c55, 2))),
+          techAccount: S.optional(S.NullOr(__S(880, __c55, 0))),
         }).pipe(T.Http({ method: "POST", uri: "/domain/configurationRule/check", code: 200 })),
       ).annotate({
         identifier: "CheckDomainConfigurationRuleRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          commentary: S.optional(S.String),
-          commentaryFutureUse: S.optional(S.String),
-          commentaryReason: S.optional(S.String),
-          futureUse: S.optional(S.String),
-          reason: S.optional(S.String),
-          token: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/confirmTermination", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ConfirmDomainZoneTerminationRequest",
-      });
-    case 4:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "ConfirmDomainZoneTerminationResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accreditationCountry: S.optional(S.NullOr(S.String)),
-          accreditationId: S.optional(S.NullOr(S.String)),
-          accreditationOrganism: S.optional(S.NullOr(S.String)),
-          accreditationYear: S.optional(S.NullOr(S.Number)),
-          address: S.optional(S.NullOr(__S(8, __c1, 0))),
-          birthCity: S.optional(S.NullOr(S.String)),
-          birthCountry: S.optional(S.NullOr(S.String)),
-          birthDay: S.optional(S.NullOr(S.String)),
-          birthZip: S.optional(S.NullOr(S.String)),
-          cellPhone: S.optional(S.NullOr(S.String)),
-          companyNationalIdentificationNumber: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          enterpriseId: S.optional(S.NullOr(S.String)),
-          fax: S.optional(S.NullOr(S.String)),
-          firstName: S.optional(S.NullOr(S.String)),
-          gender: S.optional(S.NullOr(S.String)),
-          insee: S.optional(S.NullOr(S.String)),
-          language: S.optional(S.NullOr(S.String)),
-          lastName: S.optional(S.NullOr(S.String)),
-          legalForm: S.optional(S.NullOr(S.String)),
-          legalFormCategory: S.optional(S.NullOr(S.String)),
-          nationalIdentificationNumber: S.optional(S.NullOr(S.String)),
-          nationality: S.optional(S.NullOr(S.String)),
-          organisationAccountable: S.optional(S.NullOr(S.String)),
-          organisationFunding: S.optional(S.NullOr(S.String)),
-          organisationFundingOther: S.optional(S.NullOr(S.String)),
-          organisationName: S.optional(S.NullOr(S.String)),
-          organisationRole: S.optional(S.NullOr(S.String)),
-          organisationRoleOther: S.optional(S.NullOr(S.String)),
-          organisationStaffStatus: S.optional(S.NullOr(S.String)),
-          organisationStaffStatusOther: S.optional(S.NullOr(S.String)),
-          organisationType: S.optional(S.NullOr(S.String)),
-          organisationTypeOther: S.optional(S.NullOr(S.String)),
-          phone: S.optional(S.NullOr(S.String)),
-          registrantDocumentType: S.optional(S.NullOr(S.String)),
-          registrantDocumentTypeOther: S.optional(S.NullOr(S.String)),
-          roleInOrganisation: S.optional(S.NullOr(S.String)),
-          trademarkId: S.optional(S.NullOr(S.String)),
-          vat: S.optional(S.NullOr(S.String)),
-          website: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/contact", code: 200 })),
-      ).annotate({ identifier: "CreateContactRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accreditationCountry: S.optional(S.NullOr(S.String)),
-          accreditationId: S.optional(S.NullOr(S.String)),
-          accreditationOrganism: S.optional(S.NullOr(S.String)),
-          accreditationYear: S.optional(S.NullOr(S.Number)),
-          address: S.optional(S.NullOr(__S(8, __c1, 0))),
-          birthCity: S.optional(S.NullOr(S.String)),
-          birthCountry: S.optional(S.NullOr(S.String)),
-          birthDay: S.optional(S.NullOr(S.String)),
-          birthZip: S.optional(S.NullOr(S.String)),
-          cellPhone: S.optional(S.NullOr(S.String)),
-          companyNationalIdentificationNumber: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          enterpriseId: S.optional(S.NullOr(S.String)),
-          fax: S.optional(S.NullOr(S.String)),
-          firstName: S.optional(S.NullOr(S.String)),
-          gender: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.Number),
-          insee: S.optional(S.NullOr(S.String)),
-          language: S.optional(S.NullOr(S.String)),
-          lastName: S.optional(S.NullOr(S.String)),
-          legalForm: S.optional(S.NullOr(S.String)),
-          legalFormCategory: S.optional(S.NullOr(S.String)),
-          nationalIdentificationNumber: S.optional(S.NullOr(S.String)),
-          nationality: S.optional(S.NullOr(S.String)),
-          organisationAccountable: S.optional(S.NullOr(S.String)),
-          organisationFunding: S.optional(S.NullOr(S.String)),
-          organisationFundingOther: S.optional(S.NullOr(S.String)),
-          organisationName: S.optional(S.NullOr(S.String)),
-          organisationRole: S.optional(S.NullOr(S.String)),
-          organisationRoleOther: S.optional(S.NullOr(S.String)),
-          organisationStaffStatus: S.optional(S.NullOr(S.String)),
-          organisationStaffStatusOther: S.optional(S.NullOr(S.String)),
-          organisationType: S.optional(S.NullOr(S.String)),
-          organisationTypeOther: S.optional(S.NullOr(S.String)),
-          phone: S.optional(S.NullOr(S.String)),
-          registrantDocumentType: S.optional(S.NullOr(S.String)),
-          registrantDocumentTypeOther: S.optional(S.NullOr(S.String)),
-          roleInOrganisation: S.optional(S.NullOr(S.String)),
-          trademarkId: S.optional(S.NullOr(S.String)),
-          vat: S.optional(S.NullOr(S.String)),
-          website: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "DomainContact" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/{serviceName}/changeContact", code: 200 })),
-      ).annotate({
-        identifier: "CreateDomainChangeContactRequest",
-      });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Number);
-    case 1:
-      return S.suspend(() => __S(16, __c2, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateDomainChangeContactResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/domain/data/smd", code: 200 })),
-      ).annotate({
-        identifier: "CreateDomainDataSmdRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.String),
-          trademark: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainDataSmdSmdLabel" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.String),
-          id: S.optional(S.String),
-          notAfter: S.optional(S.String),
-          notBefore: S.optional(S.String),
-          protectedLabels: S.optional(__S(20, __c2, 4)),
-          smdId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainDataSmdSmd" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          algorithm: S.optional(S.Number),
-          flags: S.optional(S.Number),
-          publicKey: S.optional(S.String),
-          tag: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DnssecKeyInput" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          keys: __S(23, __c2, 7),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/{serviceName}/dsRecord", code: 200 })),
-      ).annotate({
-        identifier: "CreateDomainDsRecordRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          canAccelerate: S.optional(S.Boolean),
-          canCancel: S.optional(S.Boolean),
-          canRelaunch: S.optional(S.Boolean),
-          comment: S.optional(S.NullOr(S.String)),
-          creationDate: S.optional(S.String),
-          domain: S.optional(S.NullOr(S.String)),
-          doneDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(S.String),
-          id: S.optional(S.Number),
-          lastUpdate: S.optional(S.String),
-          status: S.optional(S.String),
-          todoDate: S.optional(S.String),
-          type: S.optional(S.String),
+          city: S.optional(S.NullOr(S.String)),
+          country: S.optional(S.NullOr(S.String)),
+          line1: S.optional(S.NullOr(S.String)),
+          line2: S.optional(S.NullOr(S.String)),
+          line3: S.optional(S.NullOr(S.String)),
+          otherDetails: S.optional(S.NullOr(S.String)),
+          province: S.optional(S.NullOr(S.String)),
+          zip: S.optional(S.NullOr(S.String)),
         }),
-      ).annotate({ identifier: "DomainTask" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          host: S.String,
-          ips: __S(26, __c3, 2),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/{serviceName}/glueRecord", code: 200 })),
-      ).annotate({
-        identifier: "CreateDomainGlueRecordRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          ip: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "DomainNameServerNameServerInput",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          nameServer: __S(29, __c3, 5),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/{serviceName}/nameServer", code: 200 })),
-      ).annotate({
-        identifier: "CreateDomainNameServerRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "DomainOrderContactOwner" });
+      ).annotate({ identifier: "DomainContactAddress" });
   }
 }
-function __c4(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          admin: S.optional(S.NullOr(S.String)),
-          owner: S.optional(S.NullOr(__S(31, __c3, 7))),
-          tech: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "DomainOrderContacts" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.String,
-          value: S.Number,
-        }),
-      ).annotate({
-        identifier: "DomainOrderPriceAcknowledge",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          anycast: S.optional(S.NullOr(S.Boolean)),
-          create: S.optional(S.NullOr(S.Boolean)),
-          dnssec: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "DomainOrderZoneOptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dryRun: S.optional(S.Boolean.pipe(T.Query())),
-          contacts: S.optional(S.NullOr(__S(32, __c4, 0))),
-          dns: S.optional(S.NullOr(__S(26, __c3, 2))),
-          domain: S.String,
-          duration: S.optional(S.NullOr(S.String)),
-          priceAcknowledge: S.optional(S.NullOr(__S(33, __c4, 1))),
-          promoCodes: S.optional(S.NullOr(__S(26, __c3, 2))),
-          waiveRetractationPeriod: S.optional(S.NullOr(S.Boolean)),
-          zone: S.optional(S.NullOr(__S(34, __c4, 2))),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/order/create", code: 200 })),
-      ).annotate({ identifier: "CreateDomainOrderRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainOrderContract" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.String),
-          text: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DomainOrderPrice" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          basePriceWithoutTax: S.optional(__S(38, __c4, 6)),
-          discount: S.optional(__S(38, __c4, 6)),
-          finalPriceWithTax: S.optional(__S(38, __c4, 6)),
-          finalPriceWithoutTax: S.optional(__S(38, __c4, 6)),
-          tax: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "DomainOrderPricing" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contacts: S.optional(S.NullOr(__S(32, __c4, 0))),
-          contracts: S.optional(S.NullOr(__S(37, __c4, 5))),
-          dns: S.optional(S.NullOr(__S(26, __c3, 2))),
-          domain: S.optional(S.String),
-          duration: S.optional(S.String),
-          orderId: S.optional(S.NullOr(S.Number)),
-          pricing: S.optional(__S(39, __c4, 7)),
-          url: S.optional(S.NullOr(S.String)),
-          zone: S.optional(S.NullOr(__S(34, __c4, 2))),
-        }),
-      ).annotate({ identifier: "DomainOrderOrderResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/domain/{serviceName}/task/{id}/accelerate", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDomainTaskAccelerateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/domain/{serviceName}/task/{id}/relaunch", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDomainTaskRelaunchRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          tag: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/domain/{serviceName}/ukOutgoingTransfer", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDomainUkOutgoingTransferRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/changeContact", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDomainZoneChangeContactRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/domain/zone/{zoneName}/task/{id}/accelerate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDomainZoneTaskAccelerateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/task/{id}/relaunch", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDomainZoneTaskRelaunchRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          loginSuffix: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-          subDomain: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/dynHost/login", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateDynDnsLoginRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          login: S.optional(S.String),
-          subDomain: S.optional(S.String),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainZoneDynHostLogin" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          ip: S.optional(S.String),
-          subDomain: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/dynHost/record", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateDynDnsRecordRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          ip: S.optional(S.String),
-          subDomain: S.optional(S.NullOr(S.String)),
-          ttl: S.optional(S.NullOr(S.Number)),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainZoneDynHostRecord" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          fieldType: S.String,
-          subDomain: S.optional(S.NullOr(S.String)),
-          target: S.String,
-          ttl: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/record", code: 200 })),
-      ).annotate({ identifier: "CreateRecordRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fieldType: S.optional(S.String),
-          id: S.optional(S.Number),
-          subDomain: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.String),
-          ttl: S.optional(S.NullOr(S.Number)),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainZoneRecord" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          description: S.optional(S.NullOr(S.String)),
-          keywords: S.optional(S.NullOr(S.String)),
-          subDomain: S.optional(S.String),
-          target: S.String,
-          title: S.optional(S.NullOr(S.String)),
-          type: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/redirection", code: 200 })),
-      ).annotate({ identifier: "CreateRedirectionRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.Number),
-          keywords: S.optional(S.NullOr(S.String)),
-          subDomain: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.String),
-          title: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainZoneRedirection" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          smdId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/domain/data/smd/{smdId}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteDomainDataSmdRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          host: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/domain/{serviceName}/glueRecord/{host}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteDomainGlueRecordRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/domain/{serviceName}/nameServer/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteDomainNameServerRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          option: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/domain/{serviceName}/option/{option}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteDomainOptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          login: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/domain/zone/{zoneName}/dynHost/login/{login}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDynHostLoginRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/domain/zone/{zoneName}/dynHost/record/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDynHostRecordRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/domain/zone/{zoneName}/record/{id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteRecordRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/domain/zone/{zoneName}/redirection/{id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteRedirectionRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/domain/zone/{zoneName}/dnssec", code: 200 })),
-      ).annotate({ identifier: "DisableDNSSECRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          nameServerType: S.optional(S.String),
-          transferLockStatus: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/domain/{serviceName}", code: 200 })),
-      ).annotate({ identifier: "EditDomainRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainContactSummary" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          ipv4: S.optional(S.NullOr(S.String)),
-          ipv6: S.optional(S.NullOr(S.String)),
-          nameServer: S.optional(S.String),
-          nameServerType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DomainNameServerNameServer",
-      });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainParentService" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          contactAdmin: S.optional(__S(65, __c8, 1)),
-          contactBilling: S.optional(__S(65, __c8, 1)),
-          contactOwner: S.optional(__S(65, __c8, 1)),
-          contactTech: S.optional(__S(65, __c8, 1)),
-          dnssecState: S.optional(S.String),
-          dnssecSupported: S.optional(S.Boolean),
-          domain: S.optional(S.String),
-          expirationDate: S.optional(S.String),
-          glueRecordIpv6Supported: S.optional(S.Boolean),
-          glueRecordMultiIpSupported: S.optional(S.Boolean),
-          hostSupported: S.optional(S.Boolean),
-          lastUpdate: S.optional(S.String),
-          nameServerType: S.optional(S.String),
-          nameServers: S.optional(__S(67, __c8, 3)),
-          offer: S.optional(S.String),
-          owoSupported: S.optional(S.Boolean),
-          parentService: S.optional(S.NullOr(__S(68, __c8, 4))),
-          renewalDate: S.optional(S.String),
-          renewalState: S.optional(S.String),
-          serviceId: S.optional(S.Number),
-          state: S.optional(S.String),
-          suspensionState: S.optional(S.String),
-          transferLockStatus: S.optional(S.String),
-          whoisOwner: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainDomainService" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          login: S.String.pipe(T.Label()),
-          subDomain: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/domain/zone/{zoneName}/dynHost/login/{login}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "EditDynDnsLoginRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          ip: S.optional(S.String),
-          subDomain: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/domain/zone/{zoneName}/dynHost/record/{id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "EditDynDnsRecordRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          subDomain: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.String),
-          ttl: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "PUT", uri: "/domain/zone/{zoneName}/record/{id}", code: 200 })),
-      ).annotate({ identifier: "EditRecordRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          description: S.optional(S.NullOr(S.String)),
-          keywords: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.String),
-          title: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/domain/zone/{zoneName}/redirection/{id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "EditRedirectionRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/dnssec", code: 200 })),
-      ).annotate({ identifier: "EnableDNSSECRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          contactId: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/contact/{contactId}", code: 200 })),
-      ).annotate({ identifier: "GetContactRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domain/contact", code: 200 })),
-      ).annotate({ identifier: "GetContactsRequest" });
-    case 5:
-      return S.Array(__S(14, __c1, 6));
-    case 6:
-      return S.suspend(() => __S(77, __c9, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetContactsResponse",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           zoneName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/dnssec", code: 200 })),
       ).annotate({ identifier: "GetDNSSECStatusRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainZoneDnssec" });
-    case 1:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}", code: 200 })),
       ).annotate({ identifier: "GetDomainRequest" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          state: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(82, __c10, 2))),
-          urn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IamResourceMetadata" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          contactAdmin: S.optional(__S(65, __c8, 1)),
-          contactBilling: S.optional(__S(65, __c8, 1)),
-          contactOwner: S.optional(__S(65, __c8, 1)),
-          contactTech: S.optional(__S(65, __c8, 1)),
+          contactAdmin: S.optional(__S(752, __c47, 0)),
+          contactBilling: S.optional(__S(752, __c47, 0)),
+          contactOwner: S.optional(__S(752, __c47, 0)),
+          contactTech: S.optional(__S(752, __c47, 0)),
           dnssecState: S.optional(S.String),
           dnssecSupported: S.optional(S.Boolean),
           domain: S.optional(S.String),
@@ -5398,13 +5565,13 @@ function __c10(j: number): any {
           glueRecordIpv6Supported: S.optional(S.Boolean),
           glueRecordMultiIpSupported: S.optional(S.Boolean),
           hostSupported: S.optional(S.Boolean),
-          iam: S.optional(S.NullOr(__S(83, __c10, 3))),
+          iam: S.optional(S.NullOr(__S(945, __c59, 1))),
           lastUpdate: S.optional(S.String),
           nameServerType: S.optional(S.String),
-          nameServers: S.optional(__S(67, __c8, 3)),
+          nameServers: S.optional(__S(754, __c47, 2)),
           offer: S.optional(S.String),
           owoSupported: S.optional(S.Boolean),
-          parentService: S.optional(S.NullOr(__S(68, __c8, 4))),
+          parentService: S.optional(S.NullOr(__S(755, __c47, 3))),
           renewalDate: S.optional(S.String),
           renewalState: S.optional(S.String),
           serviceId: S.optional(S.Number),
@@ -5416,13 +5583,37 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DomainDomainServiceWithIAM",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          state: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(944, __c59, 0))),
+          urn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IamResourceMetadata" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/authInfo", code: 200 })),
       ).annotate({ identifier: "GetDomainAuthInfoRequest" });
-    case 6:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5432,18 +5623,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetDomainConfigurationDataRequest",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
   }
 }
-function __c11(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           audience: S.optional(S.NullOr(S.String)),
           authInfo: S.optional(S.NullOr(S.String)),
-          isFor: S.optional(S.NullOr(__S(87, __c10, 7))),
+          isFor: S.optional(S.NullOr(__S(992, __c62, 0))),
           otherPurpose: S.optional(S.NullOr(S.String)),
           reason: S.optional(S.NullOr(S.String)),
           represent: S.optional(S.NullOr(S.String)),
@@ -5451,7 +5646,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DomainConfigurationsCustomFields",
       });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.String.pipe(T.Query()),
@@ -5460,40 +5659,44 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetDomainConfigurationRuleRequest",
       });
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1028, __c64, 4)));
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(93, __c11, 5)));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(S.NullOr(S.suspend(() => __S(93, __c11, 5)))),
-          contexts: S.optional(S.NullOr(__S(87, __c10, 7))),
+          conditions: S.optional(S.NullOr(S.suspend(() => __S(1028, __c64, 4)))),
+          contexts: S.optional(S.NullOr(__S(992, __c62, 0))),
           operator: S.optional(S.NullOr(S.String)),
           value: S.optional(S.NullOr(S.String)),
-          values: S.optional(S.NullOr(__S(26, __c3, 2))),
+          values: S.optional(S.NullOr(__S(80, __c5, 0))),
         }),
       ).annotate({
         identifier: "DomainConfigurationRulesConstraint",
       });
+    case 3:
+      return S.Array(__S(1026, __c64, 2));
     case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          and: S.optional(S.NullOr(__S(90, __c11, 2))),
-          conditions: S.optional(S.NullOr(__S(93, __c11, 5))),
-          constraints: S.optional(S.NullOr(__S(92, __c11, 4))),
-          contexts: S.optional(S.NullOr(__S(87, __c10, 7))),
+          and: S.optional(S.NullOr(__S(1025, __c64, 1))),
+          conditions: S.optional(S.NullOr(__S(1028, __c64, 4))),
+          constraints: S.optional(S.NullOr(__S(1027, __c64, 3))),
+          contexts: S.optional(S.NullOr(__S(992, __c62, 0))),
           description: S.optional(S.NullOr(S.String)),
-          fields: S.optional(S.NullOr(__S(93, __c11, 5))),
+          fields: S.optional(S.NullOr(__S(1028, __c64, 4))),
           label: S.optional(S.NullOr(S.String)),
-          or: S.optional(S.NullOr(__S(90, __c11, 2))),
+          or: S.optional(S.NullOr(__S(1025, __c64, 1))),
           placeholder: S.optional(S.NullOr(S.String)),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DomainConfigurationRulesRule",
       });
-    case 6:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Query()),
@@ -5501,7 +5704,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetDomainDataClaimNoticeRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -5510,26 +5713,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DomainDataClaimNoticeClassification",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1041, __c65, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           countryCode: S.optional(S.String),
           courtName: S.optional(S.String),
           referenceNumber: S.optional(S.String),
-          regions: S.optional(__S(26, __c3, 2)),
+          regions: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({
         identifier: "DomainDataClaimNoticeCourtDecision",
       });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(1043, __c65, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.NullOr(S.String)),
@@ -5538,17 +5737,17 @@ function __c12(j: number): any {
           faxExtension: S.optional(S.NullOr(S.String)),
           postalCode: S.optional(S.NullOr(S.String)),
           stateOrProvince: S.optional(S.NullOr(S.String)),
-          streets: S.optional(__S(26, __c3, 2)),
+          streets: S.optional(__S(80, __c5, 0)),
           voice: S.optional(S.NullOr(S.String)),
           voiceExtension: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DomainDataClaimNoticeAddress",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(__S(99, __c12, 3)),
+          address: S.optional(__S(1045, __c65, 5)),
           email: S.optional(S.NullOr(S.String)),
           entitlement: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
@@ -5558,9 +5757,9 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DomainDataClaimNoticeContact",
       });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(1046, __c65, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           caseNumber: S.optional(S.String),
@@ -5569,34 +5768,30 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DomainDataClaimNoticeUDRP",
       });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(1048, __c65, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          classifications: S.optional(__S(96, __c12, 0)),
-          courtDecisions: S.optional(__S(98, __c12, 2)),
+          classifications: S.optional(__S(1042, __c65, 2)),
+          courtDecisions: S.optional(__S(1044, __c65, 4)),
           goodsAndServices: S.optional(S.String),
           jurisdiction: S.optional(S.String),
           jurisdictionCountryCode: S.optional(S.String),
           markName: S.optional(S.String),
-          trademarkContacts: S.optional(__S(101, __c12, 5)),
-          trademarkHolders: S.optional(__S(101, __c12, 5)),
-          trademarkUDRP: S.optional(__S(103, __c12, 7)),
+          trademarkContacts: S.optional(__S(1047, __c65, 7)),
+          trademarkHolders: S.optional(__S(1047, __c65, 7)),
+          trademarkUDRP: S.optional(__S(1049, __c65, 9)),
         }),
       ).annotate({
         identifier: "DomainDataClaimNoticeClaimNoticeDecision",
       });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
+    case 11:
+      return S.Array(__S(1050, __c65, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          claims: S.optional(S.NullOr(__S(105, __c13, 1))),
+          claims: S.optional(S.NullOr(__S(1051, __c65, 11))),
           endingDate: S.optional(S.String),
           id: S.optional(S.String),
           label: S.optional(S.String),
@@ -5606,20 +5801,28 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DomainDataClaimNoticeClaimNotice",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           smdId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domain/data/smd/{smdId}", code: 200 })),
       ).annotate({ identifier: "GetDomainDataSmdRequest" });
-    case 4:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/dsRecord/{id}", code: 200 })),
       ).annotate({ identifier: "GetDomainDsRecordRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           algorithm: S.optional(S.Number),
@@ -5630,7 +5833,11 @@ function __c13(j: number): any {
           tag: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DnssecKey" });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5638,7 +5845,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetDomainExtensionRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5648,7 +5855,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5689,7 +5896,7 @@ function __c14(j: number): any {
         S.Struct({
           extension_type: S.optional(S.String),
           isPremiumSupported: S.optional(S.Boolean),
-          label: S.optional(__S(114, __c14, 2)),
+          label: S.optional(__S(1106, __c69, 2)),
         }),
       ).annotate({
         identifier: "DomainExtensionsRegistryConfigurationsDomainRegistryConfiguration",
@@ -5699,7 +5906,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          allowedPeriodsInMonths: S.optional(S.NullOr(__S(116, __c14, 4))),
+          allowedPeriodsInMonths: S.optional(S.NullOr(__S(1108, __c69, 4))),
         }),
       ).annotate({
         identifier: "DomainExtensionsRegistryConfigurationsCreateLifecycleRegistryConfiguration",
@@ -5717,17 +5924,13 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allowedPeriodsInMonths: S.optional(S.NullOr(__S(116, __c14, 4))),
+          allowedPeriodsInMonths: S.optional(S.NullOr(__S(1108, __c69, 4))),
           gracePeriodInDays: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "DomainExtensionsRegistryConfigurationsRenewLifecycleRegistryConfiguration",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           gracePeriodInDays: S.optional(S.NullOr(S.Number)),
@@ -5735,38 +5938,70 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DomainExtensionsRegistryConfigurationsRestoreLifecycleRegistryConfiguration",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          allowedPeriodsInMonths: S.optional(S.NullOr(__S(116, __c14, 4))),
+          allowedPeriodsInMonths: S.optional(S.NullOr(__S(1108, __c69, 4))),
           includeRenew: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "DomainExtensionsRegistryConfigurationsTransferLifecycleRegistryConfiguration",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          create: S.optional(__S(117, __c14, 5)),
-          order: S.optional(__S(118, __c14, 6)),
-          renew: S.optional(__S(119, __c14, 7)),
-          restore: S.optional(__S(120, __c15, 0)),
-          transfer: S.optional(__S(121, __c15, 1)),
+          create: S.optional(__S(1109, __c69, 5)),
+          order: S.optional(__S(1110, __c69, 6)),
+          renew: S.optional(__S(1111, __c69, 7)),
+          restore: S.optional(__S(1112, __c69, 8)),
+          transfer: S.optional(__S(1113, __c69, 9)),
         }),
       ).annotate({
         identifier: "DomainExtensionsRegistryConfigurationsLifecycleRegistryConfiguration",
       });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          dns: S.optional(__S(113, __c14, 1)),
-          domain: S.optional(__S(115, __c14, 3)),
-          lifecycle: S.optional(__S(122, __c15, 2)),
+          dns: S.optional(__S(1105, __c69, 1)),
+          domain: S.optional(__S(1107, __c69, 3)),
+          lifecycle: S.optional(__S(1114, __c69, 10)),
         }),
       ).annotate({
         identifier: "DomainExtensionsRegistryConfigurationsRegistryConfigurations",
       });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          commentary: S.optional(S.String),
+          commentaryFutureUse: S.optional(S.String),
+          commentaryReason: S.optional(S.String),
+          futureUse: S.optional(S.String),
+          reason: S.optional(S.String),
+          token: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/confirmTermination", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ConfirmDomainZoneTerminationRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "ConfirmDomainZoneTerminationResponse",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5777,16 +6012,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetDomainGlueRecordRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           host: S.optional(S.String),
-          ips: __S(26, __c3, 2),
+          ips: __S(80, __c5, 0),
         }),
       ).annotate({
         identifier: "DomainGlueRecordGlueRecord",
       });
-    case 6:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5795,7 +6034,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetDomainNameServerRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           host: S.optional(S.String),
@@ -5809,7 +6048,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5832,14 +6071,18 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DomainNameServerNameServerStatus",
       });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           option: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/option/{option}", code: 200 })),
       ).annotate({ identifier: "GetDomainOptionRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expirationDate: S.optional(S.String),
@@ -5847,46 +6090,62 @@ function __c16(j: number): any {
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainOption" });
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/options", code: 200 })),
       ).annotate({ identifier: "GetDomainOptionsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainServiceOption" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          hosting: S.optional(S.NullOr(__S(133, __c16, 5))),
-          offer: S.optional(S.NullOr(__S(133, __c16, 5))),
-          zone: S.optional(S.NullOr(__S(133, __c16, 5))),
+          hosting: S.optional(S.NullOr(__S(1217, __c76, 1))),
+          offer: S.optional(S.NullOr(__S(1217, __c76, 1))),
+          zone: S.optional(S.NullOr(__S(1217, __c76, 1))),
         }),
       ).annotate({ identifier: "DomainServiceOptions" });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
   }
 }
-function __c17(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(135, __c16, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(136, __c17, 0).pipe(T.Query())),
+          iamTags: S.optional(__S(1265, __c79, 1).pipe(T.Query())),
           whoisOwner: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/domain", code: 200 })),
       ).annotate({ identifier: "GetDomainsRequest" });
-    case 2:
-      return S.suspend(() => __S(26, __c3, 2).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(80, __c5, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDomainsResponse",
       });
-    case 3:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(48, __c3, 0));
+    case 1:
+      return S.Record(S.String, __S(1264, __c79, 0));
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5894,17 +6153,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetDomainServiceInfosRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          deleteAtExpiration: S.optional(S.Boolean),
-          forced: S.optional(S.Boolean),
-          manualPayment: S.optional(S.NullOr(S.Boolean)),
-          period: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ServiceRenewType" });
-    case 5:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           canDeleteAtExpiration: S.optional(S.Boolean),
@@ -5915,21 +6168,43 @@ function __c17(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(16, __c2, 0))),
-          renew: S.optional(S.NullOr(__S(140, __c17, 4))),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(1600, __c100, 0))),
+          renew: S.optional(S.NullOr(__S(1312, __c82, 0))),
           renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
-    case 6:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          deleteAtExpiration: S.optional(S.Boolean),
+          forced: S.optional(S.Boolean),
+          manualPayment: S.optional(S.NullOr(S.Boolean)),
+          period: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ServiceRenewType" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/task/{id}", code: 200 })),
       ).annotate({ identifier: "GetDomainTaskRequest" });
-    case 7:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneName: S.String.pipe(T.Label()),
@@ -5937,17 +6212,17 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetDomainZoneCapabilitiesRequest",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dynHost: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DomainZoneCapabilities" });
-    case 1:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneName: S.String.pipe(T.Label()),
@@ -5955,717 +6230,18 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetDomainZoneExportRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          creationDate: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/domain/zone/{zoneName}/history/{creationDate}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDomainZoneHistoryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          creationDate: S.optional(S.String),
-          zoneFileUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DomainZoneZoneRestorePoint",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/option/{name}", code: 200 })),
-      ).annotate({
-        identifier: "GetDomainZoneOptionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainZoneOption" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/domain/zone/{zoneName}/option/{name}/serviceInfos",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDomainZoneOptionServiceInfosRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/serviceInfos", code: 200 })),
-      ).annotate({
-        identifier: "GetDomainZoneServiceInfosRequest",
-      });
   }
 }
-function __c19(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/soa", code: 200 })),
-      ).annotate({ identifier: "GetDomainZoneSoaRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          expire: S.optional(S.Number),
-          nxDomainTtl: S.optional(S.Number),
-          refresh: S.optional(S.Number),
-          serial: S.optional(S.Number),
-          server: S.optional(S.String),
-          ttl: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DomainZoneSoa" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/task/{id}", code: 200 })),
-      ).annotate({ identifier: "GetDomainZoneTaskRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          canAccelerate: S.optional(S.Boolean),
-          canCancel: S.optional(S.Boolean),
-          canRelaunch: S.optional(S.Boolean),
-          comment: S.optional(S.NullOr(S.String)),
-          creationDate: S.optional(S.String),
-          doneDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(S.String),
-          id: S.optional(S.Number),
-          lastUpdate: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-          todoDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainZoneTask" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          login: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/domain/zone/{zoneName}/dynHost/login/{login}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetDynHostLoginRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          login: S.optional(S.String.pipe(T.Query())),
-          subDomain: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/dynHost/login", code: 200 })),
-      ).annotate({ identifier: "GetDynHostLoginsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/dynHost/record/{id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetDynHostRecordRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          subDomain: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/dynHost/record", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetDynHostRecordsRequest" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/record/{id}", code: 200 })),
-      ).annotate({ identifier: "GetRecordRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          fieldType: S.optional(S.String.pipe(T.Query())),
-          subDomain: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/record", code: 200 })),
-      ).annotate({ identifier: "GetRecordsRequest" });
-    case 2:
-      return S.suspend(() => __S(16, __c2, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetRecordsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/redirection/{id}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetRedirectionRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          subDomain: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/redirection", code: 200 })),
-      ).annotate({ identifier: "GetRedirectionsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}", code: 200 })),
-      ).annotate({ identifier: "GetZoneRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dnssecActivated: S.optional(S.Boolean),
-          dnssecSupported: S.optional(S.Boolean),
-          hasDnsAnycast: S.optional(S.Boolean),
-          iam: S.optional(S.NullOr(__S(83, __c10, 3))),
-          lastUpdate: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.String),
-          nameServers: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "DomainZoneWithIAM" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          iamTags: S.optional(__S(136, __c17, 0).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone", code: 200 })),
-      ).annotate({ identifier: "GetZonesRequest" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          zoneFile: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/import", code: 200 })),
-      ).annotate({ identifier: "ImportDomainZoneRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/domain/{serviceName}/configurations/obfuscatedEmails",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDomainConfigurationObfuscatedEmailsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DomainConfigurationsObfuscatedEmail",
-      });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
-      return S.suspend(() => __S(171, __c21, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDomainConfigurationObfuscatedEmailsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/domain/{serviceName}/configurations/optin", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListDomainConfigurationOptinRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(__S(87, __c10, 7)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DomainConfigurationsOptin",
-      });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(175, __c21, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDomainConfigurationOptinResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domain/data/smd", code: 200 })),
-      ).annotate({ identifier: "ListDomainDataSmdRequest" });
-    case 2:
-      return S.Array(__S(21, __c2, 5));
-    case 3:
-      return S.suspend(() => __S(178, __c22, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDomainDataSmdResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          flags: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/dsRecord", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainDsRecordRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          categoryType: S.optional(__S(87, __c10, 7).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/extensions/byCategory", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainExtensionByCategoryRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          extensions: S.optional(__S(26, __c3, 2)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DomainExtensionsCategoryNameWithExtensions",
-      });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          geolocalization: S.optional(S.NullOr(__S(183, __c22, 7))),
-          thematic: S.optional(S.NullOr(__S(183, __c22, 7))),
-        }),
-      ).annotate({
-        identifier: "DomainExtensionsExtensionsByCategory",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ovhSubsidiary: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/extensions/highlighted", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainExtensionHighlightedRequest",
-      });
-    case 2:
-      return S.suspend(() => __S(26, __c3, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDomainExtensionHighlightedResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ovhSubsidiary: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/extensions/pricingAttributes", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainExtensionPricingAttributesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          brandNew: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          priceDrop: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DomainExtensionsExtensionsPricingAttributes",
-      });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
-      return S.suspend(() => __S(189, __c23, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDomainExtensionPricingAttributesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          geolocalizations: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          ovhSubsidiary: S.optional(S.String.pipe(T.Query())),
-          thematics: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/extensions", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainExtensionsRequest",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          host: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/glueRecord", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainGlueRecordRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/nameServer", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainNameServerRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/option", code: 200 })),
-      ).annotate({ identifier: "ListDomainOptionRequest" });
-    case 3:
-      return S.suspend(() => __S(87, __c10, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDomainOptionResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/domain/{serviceName}/rules/emailsObfuscation",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDomainRuleEmailsObfuscationRequest",
-      });
-    case 5:
-      return S.suspend(() => __S(87, __c10, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDomainRuleEmailsObfuscationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/rules/optin", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainRuleOptinRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(__S(87, __c10, 7)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainRulesOptin" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(199, __c24, 7));
-    case 1:
-      return S.suspend(() => __S(200, __c25, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDomainRuleOptinResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          function: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/task", code: 200 })),
-      ).annotate({ identifier: "ListDomainTaskRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/ukRegistrars", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainUkRegistrarsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          tag: S.String,
-        }),
-      ).annotate({ identifier: "DomainUkRegistrar" });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
-      return S.suspend(() => __S(205, __c25, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListDomainUkRegistrarsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          creationDate_from: S.optional(S.String.pipe(T.Query("creationDate.from"))),
-          creationDate_to: S.optional(S.String.pipe(T.Query("creationDate.to"))),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/history", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainZoneHistoryRequest",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/option", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainZoneOptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/status", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainZoneStatusRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(S.NullOr(__S(26, __c3, 2))),
-          isDeployed: S.optional(S.Boolean),
-          warnings: S.optional(S.NullOr(__S(26, __c3, 2))),
-        }),
-      ).annotate({ identifier: "DomainZoneStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          function: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/task", code: 200 })),
-      ).annotate({
-        identifier: "ListDomainZoneTaskRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          audience: S.optional(S.NullOr(S.String)),
-          isFor: S.optional(S.NullOr(__S(87, __c10, 7))),
-          otherPurpose: S.optional(S.NullOr(S.String)),
-          reason: S.optional(S.NullOr(S.String)),
-          represent: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "DomainConfigurationsCustomFieldsInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          customFields: S.optional(__S(212, __c26, 4)),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/domain/{serviceName}/configurations/data", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "PutDomainConfigurationDataRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          contacts: __S(87, __c10, 7),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/domain/{serviceName}/configurations/obfuscatedEmails",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutDomainConfigurationObfuscatedEmailsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          optin: S.optional(__S(175, __c21, 7)),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/domain/{serviceName}/configurations/optin", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "PutDomainConfigurationOptinRequest",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          smdId: S.String.pipe(T.Label()),
-          data: S.String,
-        }).pipe(T.Http({ method: "PUT", uri: "/domain/data/smd/{smdId}", code: 200 })),
-      ).annotate({ identifier: "PutDomainDataSmdRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(140, __c17, 4))),
-        }).pipe(T.Http({ method: "PUT", uri: "/domain/{serviceName}/serviceInfos", code: 200 })),
-      ).annotate({
-        identifier: "PutDomainServiceInfosRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          renew: __S(140, __c17, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/domain/zone/{zoneName}/option/{name}/serviceInfos",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutDomainZoneOptionServiceInfosRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(140, __c17, 4))),
-        }).pipe(T.Http({ method: "PUT", uri: "/domain/zone/{zoneName}/serviceInfos", code: 200 })),
-      ).annotate({
-        identifier: "PutDomainZoneServiceInfosRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          email: S.optional(S.String),
-          expire: S.optional(S.Number),
-          nxDomainTtl: S.optional(S.Number),
-          refresh: S.optional(S.Number),
-          serial: S.optional(S.Number),
-          server: S.optional(S.String),
-          ttl: S.optional(S.Number),
-        }).pipe(T.Http({ method: "PUT", uri: "/domain/zone/{zoneName}/soa", code: 200 })),
-      ).annotate({ identifier: "PutDomainZoneSoaRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          contacts: __S(87, __c10, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/domain/{serviceName}/configurations/obfuscatedEmails/refresh",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RefreshDomainConfigurationsObfuscatedEmailRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/refresh", code: 200 })),
-      ).annotate({ identifier: "RefreshZoneRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fieldType: S.optional(S.String),
-          target: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainZoneResetRecord" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(223, __c27, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          DnsRecords: S.optional(__S(224, __c28, 0)),
-          minimized: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/reset", code: 200 })),
-      ).annotate({ identifier: "ResetDomainZoneRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-          creationDate: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/domain/zone/{zoneName}/history/{creationDate}/restore",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RestoreDomainZoneHistoryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/terminate", code: 200 })),
-      ).annotate({
-        identifier: "TerminateDomainZoneRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          contactId: S.Number.pipe(T.Label()),
           accreditationCountry: S.optional(S.NullOr(S.String)),
           accreditationId: S.optional(S.NullOr(S.String)),
           accreditationOrganism: S.optional(S.NullOr(S.String)),
           accreditationYear: S.optional(S.NullOr(S.Number)),
-          address: S.optional(S.NullOr(__S(8, __c1, 0))),
+          address: S.optional(S.NullOr(__S(896, __c56, 0))),
           birthCity: S.optional(S.NullOr(S.String)),
           birthCountry: S.optional(S.NullOr(S.String)),
           birthDay: S.optional(S.NullOr(S.String)),
@@ -6701,38 +6277,905 @@ function __c28(j: number): any {
           trademarkId: S.optional(S.NullOr(S.String)),
           vat: S.optional(S.NullOr(S.String)),
           website: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PUT", uri: "/domain/contact/{contactId}", code: 200 })),
-      ).annotate({ identifier: "UpdateContactRequest" });
-    case 5:
+        }).pipe(T.Http({ method: "POST", uri: "/domain/contact", code: 200 })),
+      ).annotate({ identifier: "CreateContactRequest" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          host: S.String.pipe(T.Label()),
-          ips: __S(26, __c3, 2),
+          accreditationCountry: S.optional(S.NullOr(S.String)),
+          accreditationId: S.optional(S.NullOr(S.String)),
+          accreditationOrganism: S.optional(S.NullOr(S.String)),
+          accreditationYear: S.optional(S.NullOr(S.Number)),
+          address: S.optional(S.NullOr(__S(896, __c56, 0))),
+          birthCity: S.optional(S.NullOr(S.String)),
+          birthCountry: S.optional(S.NullOr(S.String)),
+          birthDay: S.optional(S.NullOr(S.String)),
+          birthZip: S.optional(S.NullOr(S.String)),
+          cellPhone: S.optional(S.NullOr(S.String)),
+          companyNationalIdentificationNumber: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          enterpriseId: S.optional(S.NullOr(S.String)),
+          fax: S.optional(S.NullOr(S.String)),
+          firstName: S.optional(S.NullOr(S.String)),
+          gender: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.Number),
+          insee: S.optional(S.NullOr(S.String)),
+          language: S.optional(S.NullOr(S.String)),
+          lastName: S.optional(S.NullOr(S.String)),
+          legalForm: S.optional(S.NullOr(S.String)),
+          legalFormCategory: S.optional(S.NullOr(S.String)),
+          nationalIdentificationNumber: S.optional(S.NullOr(S.String)),
+          nationality: S.optional(S.NullOr(S.String)),
+          organisationAccountable: S.optional(S.NullOr(S.String)),
+          organisationFunding: S.optional(S.NullOr(S.String)),
+          organisationFundingOther: S.optional(S.NullOr(S.String)),
+          organisationName: S.optional(S.NullOr(S.String)),
+          organisationRole: S.optional(S.NullOr(S.String)),
+          organisationRoleOther: S.optional(S.NullOr(S.String)),
+          organisationStaffStatus: S.optional(S.NullOr(S.String)),
+          organisationStaffStatusOther: S.optional(S.NullOr(S.String)),
+          organisationType: S.optional(S.NullOr(S.String)),
+          organisationTypeOther: S.optional(S.NullOr(S.String)),
+          phone: S.optional(S.NullOr(S.String)),
+          registrantDocumentType: S.optional(S.NullOr(S.String)),
+          registrantDocumentTypeOther: S.optional(S.NullOr(S.String)),
+          roleInOrganisation: S.optional(S.NullOr(S.String)),
+          trademarkId: S.optional(S.NullOr(S.String)),
+          vat: S.optional(S.NullOr(S.String)),
+          website: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "DomainContact" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          creationDate: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
-            method: "POST",
-            uri: "/domain/{serviceName}/glueRecord/{host}/update",
+            method: "GET",
+            uri: "/domain/zone/{zoneName}/history/{creationDate}",
             code: 200,
           }),
         ),
       ).annotate({
-        identifier: "UpdateDomainGlueRecordRequest",
+        identifier: "GetDomainZoneHistoryRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          nameServers: __S(29, __c3, 5),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/domain/{serviceName}/nameServers/update", code: 200 }),
-        ),
+          creationDate: S.optional(S.String),
+          zoneFileUrl: S.optional(S.String),
+        }),
       ).annotate({
-        identifier: "UpdateDomainNameServerRequest",
+        identifier: "DomainZoneZoneRestorePoint",
       });
   }
 }
-
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/option/{name}", code: 200 })),
+      ).annotate({
+        identifier: "GetDomainZoneOptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainZoneOption" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/domain/zone/{zoneName}/option/{name}/serviceInfos",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDomainZoneOptionServiceInfosRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/serviceInfos", code: 200 })),
+      ).annotate({
+        identifier: "GetDomainZoneServiceInfosRequest",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/soa", code: 200 })),
+      ).annotate({ identifier: "GetDomainZoneSoaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          expire: S.optional(S.Number),
+          nxDomainTtl: S.optional(S.Number),
+          refresh: S.optional(S.Number),
+          serial: S.optional(S.Number),
+          server: S.optional(S.String),
+          ttl: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DomainZoneSoa" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/task/{id}", code: 200 })),
+      ).annotate({ identifier: "GetDomainZoneTaskRequest" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          canAccelerate: S.optional(S.Boolean),
+          canCancel: S.optional(S.Boolean),
+          canRelaunch: S.optional(S.Boolean),
+          comment: S.optional(S.NullOr(S.String)),
+          creationDate: S.optional(S.String),
+          doneDate: S.optional(S.NullOr(S.String)),
+          function: S.optional(S.String),
+          id: S.optional(S.Number),
+          lastUpdate: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+          todoDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainZoneTask" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          login: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/domain/zone/{zoneName}/dynHost/login/{login}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetDynHostLoginRequest" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          login: S.optional(S.String.pipe(T.Query())),
+          subDomain: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/dynHost/login", code: 200 })),
+      ).annotate({ identifier: "GetDynHostLoginsRequest" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/dynHost/record/{id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetDynHostRecordRequest" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          subDomain: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/dynHost/record", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetDynHostRecordsRequest" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/{serviceName}/changeContact", code: 200 })),
+      ).annotate({
+        identifier: "CreateDomainChangeContactRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(1600, __c100, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateDomainChangeContactResponse",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/record/{id}", code: 200 })),
+      ).annotate({ identifier: "GetRecordRequest" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          fieldType: S.optional(S.String.pipe(T.Query())),
+          subDomain: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/record", code: 200 })),
+      ).annotate({ identifier: "GetRecordsRequest" });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(1600, __c100, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetRecordsResponse",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/redirection/{id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetRedirectionRequest" });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          subDomain: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/redirection", code: 200 })),
+      ).annotate({ identifier: "GetRedirectionsRequest" });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}", code: 200 })),
+      ).annotate({ identifier: "GetZoneRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dnssecActivated: S.optional(S.Boolean),
+          dnssecSupported: S.optional(S.Boolean),
+          hasDnsAnycast: S.optional(S.Boolean),
+          iam: S.optional(S.NullOr(__S(945, __c59, 1))),
+          lastUpdate: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.String),
+          nameServers: S.optional(__S(80, __c5, 0)),
+        }),
+      ).annotate({ identifier: "DomainZoneWithIAM" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          iamTags: S.optional(__S(1265, __c79, 1).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone", code: 200 })),
+      ).annotate({ identifier: "GetZonesRequest" });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          zoneFile: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/import", code: 200 })),
+      ).annotate({ identifier: "ImportDomainZoneRequest" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/domain/{serviceName}/configurations/obfuscatedEmails",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDomainConfigurationObfuscatedEmailsRequest",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DomainConfigurationsObfuscatedEmail",
+      });
+    case 1:
+      return S.Array(__S(1776, __c111, 0));
+    case 2:
+      return S.suspend(() => __S(1777, __c111, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDomainConfigurationObfuscatedEmailsResponse",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/domain/{serviceName}/configurations/optin", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListDomainConfigurationOptinRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(__S(992, __c62, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DomainConfigurationsOptin",
+      });
+    case 1:
+      return S.Array(__S(1808, __c113, 0));
+    case 2:
+      return S.suspend(() => __S(1809, __c113, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDomainConfigurationOptinResponse",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domain/data/smd", code: 200 })),
+      ).annotate({ identifier: "ListDomainDataSmdRequest" });
+    case 1:
+      return S.Array(__S(1858, __c116, 2));
+    case 2:
+      return S.suspend(() => __S(1825, __c114, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDomainDataSmdResponse",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/domain/data/smd", code: 200 })),
+      ).annotate({
+        identifier: "CreateDomainDataSmdRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.String),
+          trademark: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainDataSmdSmdLabel" });
+    case 1:
+      return S.Array(__S(1856, __c116, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.String),
+          id: S.optional(S.String),
+          notAfter: S.optional(S.String),
+          notBefore: S.optional(S.String),
+          protectedLabels: S.optional(__S(1857, __c116, 1)),
+          smdId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainDataSmdSmd" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          flags: S.optional(S.Number.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/dsRecord", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainDsRecordRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          categoryType: S.optional(__S(992, __c62, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/extensions/byCategory", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainExtensionByCategoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          extensions: S.optional(__S(80, __c5, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DomainExtensionsCategoryNameWithExtensions",
+      });
+    case 2:
+      return S.Array(__S(1889, __c118, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          geolocalization: S.optional(S.NullOr(__S(1890, __c118, 2))),
+          thematic: S.optional(S.NullOr(__S(1890, __c118, 2))),
+        }),
+      ).annotate({
+        identifier: "DomainExtensionsExtensionsByCategory",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ovhSubsidiary: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/extensions/highlighted", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainExtensionHighlightedRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(80, __c5, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDomainExtensionHighlightedResponse",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ovhSubsidiary: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/extensions/pricingAttributes", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainExtensionPricingAttributesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          brandNew: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          priceDrop: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DomainExtensionsExtensionsPricingAttributes",
+      });
+    case 2:
+      return S.Array(__S(1937, __c121, 1));
+    case 3:
+      return S.suspend(() => __S(1938, __c121, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDomainExtensionPricingAttributesResponse",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          geolocalizations: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          ovhSubsidiary: S.optional(S.String.pipe(T.Query())),
+          thematics: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/extensions", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainExtensionsRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          host: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/glueRecord", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainGlueRecordRequest",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/nameServer", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainNameServerRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/option", code: 200 })),
+      ).annotate({ identifier: "ListDomainOptionRequest" });
+    case 1:
+      return S.suspend(() => __S(992, __c62, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDomainOptionResponse",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/domain/{serviceName}/rules/emailsObfuscation",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDomainRuleEmailsObfuscationRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(992, __c62, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDomainRuleEmailsObfuscationResponse",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/rules/optin", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainRuleOptinRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(__S(992, __c62, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainRulesOptin" });
+    case 2:
+      return S.Array(__S(2033, __c127, 1));
+    case 3:
+      return S.suspend(() => __S(2034, __c127, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDomainRuleOptinResponse",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          algorithm: S.optional(S.Number),
+          flags: S.optional(S.Number),
+          publicKey: S.optional(S.String),
+          tag: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DnssecKeyInput" });
+    case 1:
+      return S.Array(__S(2048, __c128, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          keys: __S(2049, __c128, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/{serviceName}/dsRecord", code: 200 })),
+      ).annotate({
+        identifier: "CreateDomainDsRecordRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          canAccelerate: S.optional(S.Boolean),
+          canCancel: S.optional(S.Boolean),
+          canRelaunch: S.optional(S.Boolean),
+          comment: S.optional(S.NullOr(S.String)),
+          creationDate: S.optional(S.String),
+          domain: S.optional(S.NullOr(S.String)),
+          doneDate: S.optional(S.NullOr(S.String)),
+          function: S.optional(S.String),
+          id: S.optional(S.Number),
+          lastUpdate: S.optional(S.String),
+          status: S.optional(S.String),
+          todoDate: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainTask" });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          function: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/task", code: 200 })),
+      ).annotate({ identifier: "ListDomainTaskRequest" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/ukRegistrars", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainUkRegistrarsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          tag: S.String,
+        }),
+      ).annotate({ identifier: "DomainUkRegistrar" });
+    case 2:
+      return S.Array(__S(2097, __c131, 1));
+    case 3:
+      return S.suspend(() => __S(2098, __c131, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListDomainUkRegistrarsResponse",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          creationDate_from: S.optional(S.String.pipe(T.Query("creationDate.from"))),
+          creationDate_to: S.optional(S.String.pipe(T.Query("creationDate.to"))),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/history", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainZoneHistoryRequest",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/option", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainZoneOptionRequest",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/status", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainZoneStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(S.NullOr(__S(80, __c5, 0))),
+          isDeployed: S.optional(S.Boolean),
+          warnings: S.optional(S.NullOr(__S(80, __c5, 0))),
+        }),
+      ).annotate({ identifier: "DomainZoneStatus" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneName: S.String.pipe(T.Label()),
+          function: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/task", code: 200 })),
+      ).annotate({
+        identifier: "ListDomainZoneTaskRequest",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          audience: S.optional(S.NullOr(S.String)),
+          isFor: S.optional(S.NullOr(__S(992, __c62, 0))),
+          otherPurpose: S.optional(S.NullOr(S.String)),
+          reason: S.optional(S.NullOr(S.String)),
+          represent: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "DomainConfigurationsCustomFieldsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          customFields: S.optional(__S(2176, __c136, 0)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/domain/{serviceName}/configurations/data", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "PutDomainConfigurationDataRequest",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          contacts: __S(992, __c62, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/domain/{serviceName}/configurations/obfuscatedEmails",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutDomainConfigurationObfuscatedEmailsRequest",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          optin: S.optional(__S(1809, __c113, 1)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/domain/{serviceName}/configurations/optin", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "PutDomainConfigurationOptinRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          smdId: S.String.pipe(T.Label()),
+          data: S.String,
+        }).pipe(T.Http({ method: "PUT", uri: "/domain/data/smd/{smdId}", code: 200 })),
+      ).annotate({ identifier: "PutDomainDataSmdRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

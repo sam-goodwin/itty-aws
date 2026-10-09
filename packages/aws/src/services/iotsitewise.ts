@@ -3665,8 +3665,8 @@ export const associateAssets: API.OperationMethod<
   AssociateAssetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateAssetsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateAssetsResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<AssociateAssetsRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<AssociateAssetsResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -3698,8 +3698,8 @@ export const associateTimeSeriesToAssetProperty: API.OperationMethod<
   AssociateTimeSeriesToAssetPropertyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AssociateTimeSeriesToAssetPropertyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AssociateTimeSeriesToAssetPropertyResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<AssociateTimeSeriesToAssetPropertyRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<AssociateTimeSeriesToAssetPropertyResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -3733,8 +3733,8 @@ export const batchAssociateDataSegmentsToDataset: API.OperationMethod<
   BatchAssociateDataSegmentsToDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BatchAssociateDataSegmentsToDatasetRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<BatchAssociateDataSegmentsToDatasetResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<BatchAssociateDataSegmentsToDatasetRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<BatchAssociateDataSegmentsToDatasetResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -3770,8 +3770,8 @@ export const batchAssociateProjectAssets: API.OperationMethod<
   BatchAssociateProjectAssetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<BatchAssociateProjectAssetsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BatchAssociateProjectAssetsResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<BatchAssociateProjectAssetsRequest>,
+  output: __S(1186, __c74, 2) as any as S.Schema<BatchAssociateProjectAssetsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -3802,8 +3802,8 @@ export const batchDeleteDatasetDataSegments: API.OperationMethod<
   BatchDeleteDatasetDataSegmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<BatchDeleteDatasetDataSegmentsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<BatchDeleteDatasetDataSegmentsResponse>,
+  input: __S(1218, __c76, 2) as any as S.Schema<BatchDeleteDatasetDataSegmentsRequest>,
+  output: __S(1221, __c76, 5) as any as S.Schema<BatchDeleteDatasetDataSegmentsResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -3834,8 +3834,8 @@ export const batchDisassociateDataSegmentsFromDataset: API.OperationMethod<
   BatchDisassociateDataSegmentsFromDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<BatchDisassociateDataSegmentsFromDatasetRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<BatchDisassociateDataSegmentsFromDatasetResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<BatchDisassociateDataSegmentsFromDatasetRequest>,
+  output: __S(1234, __c77, 2) as any as S.Schema<BatchDisassociateDataSegmentsFromDatasetResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -3864,8 +3864,8 @@ export const batchDisassociateProjectAssets: API.OperationMethod<
   BatchDisassociateProjectAssetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<BatchDisassociateProjectAssetsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BatchDisassociateProjectAssetsResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<BatchDisassociateProjectAssetsRequest>,
+  output: __S(1186, __c74, 2) as any as S.Schema<BatchDisassociateProjectAssetsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -3896,8 +3896,8 @@ export const batchGetAssetPropertyAggregates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<BatchGetAssetPropertyAggregatesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<BatchGetAssetPropertyAggregatesResponse>,
+  input: __S(1266, __c79, 2) as any as S.Schema<BatchGetAssetPropertyAggregatesRequest>,
+  output: __S(1269, __c79, 5) as any as S.Schema<BatchGetAssetPropertyAggregatesResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -3932,8 +3932,8 @@ export const batchGetAssetPropertyValue: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<BatchGetAssetPropertyValueRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<BatchGetAssetPropertyValueResponse>,
+  input: __S(1330, __c83, 2) as any as S.Schema<BatchGetAssetPropertyValueRequest>,
+  output: __S(1333, __c83, 5) as any as S.Schema<BatchGetAssetPropertyValueResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -3964,8 +3964,8 @@ export const batchGetAssetPropertyValueHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<BatchGetAssetPropertyValueHistoryRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<BatchGetAssetPropertyValueHistoryResponse>,
+  input: __S(1378, __c86, 2) as any as S.Schema<BatchGetAssetPropertyValueHistoryRequest>,
+  output: __S(1381, __c86, 5) as any as S.Schema<BatchGetAssetPropertyValueHistoryResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -4023,8 +4023,8 @@ export const batchPutAssetPropertyValue: API.OperationMethod<
   BatchPutAssetPropertyValueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<BatchPutAssetPropertyValueRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<BatchPutAssetPropertyValueResponse>,
+  input: __S(1410, __c88, 2) as any as S.Schema<BatchPutAssetPropertyValueRequest>,
+  output: __S(1416, __c88, 8) as any as S.Schema<BatchPutAssetPropertyValueResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -4090,8 +4090,8 @@ export const cancelEnrichmentJob: API.OperationMethod<
   CancelEnrichmentJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<CancelEnrichmentJobRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<CancelEnrichmentJobResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<CancelEnrichmentJobRequest>,
+  output: __S(1425, __c89, 1) as any as S.Schema<CancelEnrichmentJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -4130,8 +4130,8 @@ export const cancelPipelineExecution: API.OperationMethod<
   CancelPipelineExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CancelPipelineExecutionRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<CancelPipelineExecutionResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<CancelPipelineExecutionRequest>,
+  output: __S(1441, __c90, 1) as any as S.Schema<CancelPipelineExecutionResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -4163,8 +4163,8 @@ export const cancelQuery: API.OperationMethod<
   CancelQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<CancelQueryRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<CancelQueryResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<CancelQueryRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<CancelQueryResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -4203,8 +4203,8 @@ export const createAccessPolicy: API.OperationMethod<
   CreateAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<CreateAccessPolicyRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<CreateAccessPolicyResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<CreateAccessPolicyRequest>,
+  output: __S(1489, __c93, 1) as any as S.Schema<CreateAccessPolicyResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -4236,8 +4236,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<CreateApplicationResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(1537, __c96, 1) as any as S.Schema<CreateApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -4272,8 +4272,8 @@ export const createAsset: API.OperationMethod<
   CreateAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<CreateAssetRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<CreateAssetResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<CreateAssetRequest>,
+  output: __S(1553, __c97, 1) as any as S.Schema<CreateAssetResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -4325,8 +4325,8 @@ export const createAssetModel: API.OperationMethod<
   CreateAssetModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<CreateAssetModelRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<CreateAssetModelResponse>,
+  input: __S(1620, __c101, 4) as any as S.Schema<CreateAssetModelRequest>,
+  output: __S(1621, __c101, 5) as any as S.Schema<CreateAssetModelResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -4381,8 +4381,8 @@ export const createAssetModelCompositeModel: API.OperationMethod<
   CreateAssetModelCompositeModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<CreateAssetModelCompositeModelRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<CreateAssetModelCompositeModelResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<CreateAssetModelCompositeModelRequest>,
+  output: __S(1713, __c107, 1) as any as S.Schema<CreateAssetModelCompositeModelResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -4434,8 +4434,8 @@ export const createBulkImportJob: API.OperationMethod<
   CreateBulkImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<CreateBulkImportJobRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<CreateBulkImportJobResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<CreateBulkImportJobRequest>,
+  output: __S(1745, __c109, 1) as any as S.Schema<CreateBulkImportJobResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -4469,8 +4469,8 @@ export const createComputationModel: API.OperationMethod<
   CreateComputationModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<CreateComputationModelRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<CreateComputationModelResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<CreateComputationModelRequest>,
+  output: __S(1777, __c111, 1) as any as S.Schema<CreateComputationModelResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -4507,8 +4507,8 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<CreateDashboardRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<CreateDashboardResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<CreateDashboardRequest>,
+  output: __S(1825, __c114, 1) as any as S.Schema<CreateDashboardResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -4540,8 +4540,8 @@ export const createDataset: API.OperationMethod<
   CreateDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<CreateDatasetRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<CreateDatasetResponse>,
+  input: __S(1840, __c115, 0) as any as S.Schema<CreateDatasetRequest>,
+  output: __S(1841, __c115, 1) as any as S.Schema<CreateDatasetResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -4576,8 +4576,8 @@ export const createDatasetExportJob: API.OperationMethod<
   CreateDatasetExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<CreateDatasetExportJobRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<CreateDatasetExportJobResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<CreateDatasetExportJobRequest>,
+  output: __S(1873, __c117, 1) as any as S.Schema<CreateDatasetExportJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -4650,8 +4650,8 @@ export const createEnrichmentJob: API.OperationMethod<
   CreateEnrichmentJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<CreateEnrichmentJobRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<CreateEnrichmentJobResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<CreateEnrichmentJobRequest>,
+  output: __S(1937, __c121, 1) as any as S.Schema<CreateEnrichmentJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -4685,8 +4685,8 @@ export const createGateway: API.OperationMethod<
   CreateGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<CreateGatewayRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<CreateGatewayResponse>,
+  input: __S(1968, __c123, 0) as any as S.Schema<CreateGatewayRequest>,
+  output: __S(1969, __c123, 1) as any as S.Schema<CreateGatewayResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -4725,8 +4725,8 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<CreatePipelineRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<CreatePipelineResponse>,
+  input: __S(2000, __c125, 0) as any as S.Schema<CreatePipelineRequest>,
+  output: __S(2001, __c125, 1) as any as S.Schema<CreatePipelineResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -4768,8 +4768,8 @@ export const createPortal: API.OperationMethod<
   CreatePortalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<CreatePortalRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<CreatePortalResponse>,
+  input: __S(2080, __c130, 0) as any as S.Schema<CreatePortalRequest>,
+  output: __S(2081, __c130, 1) as any as S.Schema<CreatePortalResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -4807,8 +4807,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<CreateProjectRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<CreateProjectResponse>,
+  input: __S(2144, __c134, 0) as any as S.Schema<CreateProjectRequest>,
+  output: __S(2145, __c134, 1) as any as S.Schema<CreateProjectResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -4844,8 +4844,8 @@ export const createTask: API.OperationMethod<
   CreateTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<CreateTaskRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<CreateTaskResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<CreateTaskRequest>,
+  output: __S(2161, __c135, 1) as any as S.Schema<CreateTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -4883,8 +4883,8 @@ export const createWorkspace: API.OperationMethod<
   CreateWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<CreateWorkspaceRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<CreateWorkspaceResponse>,
+  input: __S(2208, __c138, 0) as any as S.Schema<CreateWorkspaceRequest>,
+  output: __S(2209, __c138, 1) as any as S.Schema<CreateWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -4916,8 +4916,8 @@ export const deleteAccessPolicy: API.OperationMethod<
   DeleteAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<DeleteAccessPolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAccessPolicyResponse>,
+  input: __S(2256, __c141, 0) as any as S.Schema<DeleteAccessPolicyRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteAccessPolicyResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -4947,8 +4947,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(2272, __c142, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -4983,8 +4983,8 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<DeleteAssetRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<DeleteAssetResponse>,
+  input: __S(2288, __c143, 0) as any as S.Schema<DeleteAssetRequest>,
+  output: __S(2304, __c144, 0) as any as S.Schema<DeleteAssetResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -5019,8 +5019,8 @@ export const deleteAssetModel: API.OperationMethod<
   DeleteAssetModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DeleteAssetModelRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<DeleteAssetModelResponse>,
+  input: __S(2320, __c145, 0) as any as S.Schema<DeleteAssetModelRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<DeleteAssetModelResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -5056,8 +5056,8 @@ export const deleteAssetModelCompositeModel: API.OperationMethod<
   DeleteAssetModelCompositeModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<DeleteAssetModelCompositeModelRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<DeleteAssetModelCompositeModelResponse>,
+  input: __S(2352, __c147, 0) as any as S.Schema<DeleteAssetModelCompositeModelRequest>,
+  output: __S(2353, __c147, 1) as any as S.Schema<DeleteAssetModelCompositeModelResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -5089,8 +5089,8 @@ export const deleteAssetModelInterfaceRelationship: API.OperationMethod<
   DeleteAssetModelInterfaceRelationshipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<DeleteAssetModelInterfaceRelationshipRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<DeleteAssetModelInterfaceRelationshipResponse>,
+  input: __S(2368, __c148, 0) as any as S.Schema<DeleteAssetModelInterfaceRelationshipRequest>,
+  output: __S(2384, __c149, 0) as any as S.Schema<DeleteAssetModelInterfaceRelationshipResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -5120,8 +5120,8 @@ export const deleteComputationModel: API.OperationMethod<
   DeleteComputationModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<DeleteComputationModelRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<DeleteComputationModelResponse>,
+  input: __S(2400, __c150, 0) as any as S.Schema<DeleteComputationModelRequest>,
+  output: __S(2416, __c151, 0) as any as S.Schema<DeleteComputationModelResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -5150,8 +5150,8 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<DeleteDashboardRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteDashboardResponse>,
+  input: __S(2432, __c152, 0) as any as S.Schema<DeleteDashboardRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteDashboardResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5180,8 +5180,8 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<DeleteDatasetRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<DeleteDatasetResponse>,
+  input: __S(2448, __c153, 0) as any as S.Schema<DeleteDatasetRequest>,
+  output: __S(2449, __c153, 1) as any as S.Schema<DeleteDatasetResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -5212,8 +5212,8 @@ export const deleteGateway: API.OperationMethod<
   DeleteGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<DeleteGatewayRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGatewayResponse>,
+  input: __S(2464, __c154, 0) as any as S.Schema<DeleteGatewayRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteGatewayResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -5247,8 +5247,8 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<DeletePipelineRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<DeletePipelineResponse>,
+  input: __S(2480, __c155, 0) as any as S.Schema<DeletePipelineRequest>,
+  output: __S(2496, __c156, 0) as any as S.Schema<DeletePipelineResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -5279,8 +5279,8 @@ export const deletePortal: API.OperationMethod<
   DeletePortalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<DeletePortalRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<DeletePortalResponse>,
+  input: __S(2512, __c157, 0) as any as S.Schema<DeletePortalRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<DeletePortalResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -5309,8 +5309,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteProjectResponse>,
+  input: __S(2544, __c159, 0) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteProjectResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5342,8 +5342,8 @@ export const deleteTask: API.OperationMethod<
   DeleteTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<DeleteTaskRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<DeleteTaskResponse>,
+  input: __S(2560, __c160, 0) as any as S.Schema<DeleteTaskRequest>,
+  output: __S(2496, __c156, 0) as any as S.Schema<DeleteTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -5389,8 +5389,8 @@ export const deleteTimeSeries: API.OperationMethod<
   DeleteTimeSeriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<DeleteTimeSeriesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteTimeSeriesResponse>,
+  input: __S(2576, __c161, 0) as any as S.Schema<DeleteTimeSeriesRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DeleteTimeSeriesResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -5423,8 +5423,8 @@ export const deleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<DeleteWorkspaceResponse>,
+  input: __S(2592, __c162, 0) as any as S.Schema<DeleteWorkspaceRequest>,
+  output: __S(2608, __c163, 0) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -5455,8 +5455,8 @@ export const describeAccessPolicy: API.OperationMethod<
   DescribeAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<DescribeAccessPolicyRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<DescribeAccessPolicyResponse>,
+  input: __S(2624, __c164, 0) as any as S.Schema<DescribeAccessPolicyRequest>,
+  output: __S(2625, __c164, 1) as any as S.Schema<DescribeAccessPolicyResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5484,8 +5484,8 @@ export const describeAction: API.OperationMethod<
   DescribeActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<DescribeActionRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<DescribeActionResponse>,
+  input: __S(2640, __c165, 0) as any as S.Schema<DescribeActionRequest>,
+  output: __S(2641, __c165, 1) as any as S.Schema<DescribeActionResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5514,8 +5514,8 @@ export const describeApplication: API.OperationMethod<
   DescribeApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<DescribeApplicationRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<DescribeApplicationResponse>,
+  input: __S(2704, __c169, 0) as any as S.Schema<DescribeApplicationRequest>,
+  output: __S(2705, __c169, 1) as any as S.Schema<DescribeApplicationResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -5544,8 +5544,8 @@ export const describeAsset: API.OperationMethod<
   DescribeAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<DescribeAssetRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<DescribeAssetResponse>,
+  input: __S(2720, __c170, 0) as any as S.Schema<DescribeAssetRequest>,
+  output: __S(2723, __c170, 3) as any as S.Schema<DescribeAssetResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5576,8 +5576,8 @@ export const describeAssetCompositeModel: API.OperationMethod<
   DescribeAssetCompositeModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<DescribeAssetCompositeModelRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<DescribeAssetCompositeModelResponse>,
+  input: __S(2784, __c174, 0) as any as S.Schema<DescribeAssetCompositeModelRequest>,
+  output: __S(2785, __c174, 1) as any as S.Schema<DescribeAssetCompositeModelResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5607,8 +5607,8 @@ export const describeAssetModel: API.OperationMethod<
   DescribeAssetModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<DescribeAssetModelRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<DescribeAssetModelResponse>,
+  input: __S(2816, __c176, 0) as any as S.Schema<DescribeAssetModelRequest>,
+  output: __S(2819, __c176, 3) as any as S.Schema<DescribeAssetModelResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5638,8 +5638,8 @@ export const describeAssetModelCompositeModel: API.OperationMethod<
   DescribeAssetModelCompositeModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<DescribeAssetModelCompositeModelRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<DescribeAssetModelCompositeModelResponse>,
+  input: __S(2880, __c180, 0) as any as S.Schema<DescribeAssetModelCompositeModelRequest>,
+  output: __S(2884, __c180, 4) as any as S.Schema<DescribeAssetModelCompositeModelResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5668,8 +5668,8 @@ export const describeAssetModelInterfaceRelationship: API.OperationMethod<
   DescribeAssetModelInterfaceRelationshipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<DescribeAssetModelInterfaceRelationshipRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<DescribeAssetModelInterfaceRelationshipResponse>,
+  input: __S(2896, __c181, 0) as any as S.Schema<DescribeAssetModelInterfaceRelationshipRequest>,
+  output: __S(2899, __c181, 3) as any as S.Schema<DescribeAssetModelInterfaceRelationshipResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5704,8 +5704,8 @@ export const describeAssetProperty: API.OperationMethod<
   DescribeAssetPropertyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<DescribeAssetPropertyRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<DescribeAssetPropertyResponse>,
+  input: __S(2928, __c183, 0) as any as S.Schema<DescribeAssetPropertyRequest>,
+  output: __S(2931, __c183, 3) as any as S.Schema<DescribeAssetPropertyResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5734,8 +5734,8 @@ export const describeBulkImportJob: API.OperationMethod<
   DescribeBulkImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<DescribeBulkImportJobRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<DescribeBulkImportJobResponse>,
+  input: __S(2944, __c184, 0) as any as S.Schema<DescribeBulkImportJobRequest>,
+  output: __S(2945, __c184, 1) as any as S.Schema<DescribeBulkImportJobResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5763,8 +5763,8 @@ export const describeComputationModel: API.OperationMethod<
   DescribeComputationModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<DescribeComputationModelRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<DescribeComputationModelResponse>,
+  input: __S(2960, __c185, 0) as any as S.Schema<DescribeComputationModelRequest>,
+  output: __S(2961, __c185, 1) as any as S.Schema<DescribeComputationModelResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5792,8 +5792,8 @@ export const describeComputationModelExecutionSummary: API.OperationMethod<
   DescribeComputationModelExecutionSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<DescribeComputationModelExecutionSummaryRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<DescribeComputationModelExecutionSummaryResponse>,
+  input: __S(2976, __c186, 0) as any as S.Schema<DescribeComputationModelExecutionSummaryRequest>,
+  output: __S(2977, __c186, 1) as any as S.Schema<DescribeComputationModelExecutionSummaryResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5821,8 +5821,8 @@ export const describeDashboard: API.OperationMethod<
   DescribeDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<DescribeDashboardRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<DescribeDashboardResponse>,
+  input: __S(2992, __c187, 0) as any as S.Schema<DescribeDashboardRequest>,
+  output: __S(2993, __c187, 1) as any as S.Schema<DescribeDashboardResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5850,8 +5850,8 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<DescribeDatasetRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<DescribeDatasetResponse>,
+  input: __S(3008, __c188, 0) as any as S.Schema<DescribeDatasetRequest>,
+  output: __S(3009, __c188, 1) as any as S.Schema<DescribeDatasetResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5880,8 +5880,8 @@ export const describeDatasetExportJob: API.OperationMethod<
   DescribeDatasetExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<DescribeDatasetExportJobRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<DescribeDatasetExportJobResponse>,
+  input: __S(3056, __c191, 0) as any as S.Schema<DescribeDatasetExportJobRequest>,
+  output: __S(3057, __c191, 1) as any as S.Schema<DescribeDatasetExportJobResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -5912,8 +5912,8 @@ export const describeDefaultEncryptionConfiguration: API.OperationMethod<
   DescribeDefaultEncryptionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<DescribeDefaultEncryptionConfigurationRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<DescribeDefaultEncryptionConfigurationResponse>,
+  input: __S(3072, __c192, 0) as any as S.Schema<DescribeDefaultEncryptionConfigurationRequest>,
+  output: __S(3088, __c193, 0) as any as S.Schema<DescribeDefaultEncryptionConfigurationResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -5981,8 +5981,8 @@ export const describeEnrichmentJob: API.OperationMethod<
   DescribeEnrichmentJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<DescribeEnrichmentJobRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<DescribeEnrichmentJobResponse>,
+  input: __S(3120, __c195, 0) as any as S.Schema<DescribeEnrichmentJobRequest>,
+  output: __S(3121, __c195, 1) as any as S.Schema<DescribeEnrichmentJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -6013,8 +6013,8 @@ export const describeExecution: API.OperationMethod<
   DescribeExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<DescribeExecutionRequest>,
-  output: __S(287, __c35, 7) as any as S.Schema<DescribeExecutionResponse>,
+  input: __S(3136, __c196, 0) as any as S.Schema<DescribeExecutionRequest>,
+  output: __S(3137, __c196, 1) as any as S.Schema<DescribeExecutionResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6042,8 +6042,8 @@ export const describeGateway: API.OperationMethod<
   DescribeGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<DescribeGatewayRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<DescribeGatewayResponse>,
+  input: __S(3152, __c197, 0) as any as S.Schema<DescribeGatewayRequest>,
+  output: __S(3153, __c197, 1) as any as S.Schema<DescribeGatewayResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6083,8 +6083,8 @@ export const describeGatewayCapabilityConfiguration: API.OperationMethod<
   DescribeGatewayCapabilityConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<DescribeGatewayCapabilityConfigurationRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<DescribeGatewayCapabilityConfigurationResponse>,
+  input: __S(3184, __c199, 0) as any as S.Schema<DescribeGatewayCapabilityConfigurationRequest>,
+  output: __S(3185, __c199, 1) as any as S.Schema<DescribeGatewayCapabilityConfigurationResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6112,8 +6112,8 @@ export const describeLoggingOptions: API.OperationMethod<
   DescribeLoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<DescribeLoggingOptionsRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<DescribeLoggingOptionsResponse>,
+  input: __S(3200, __c200, 0) as any as S.Schema<DescribeLoggingOptionsRequest>,
+  output: __S(3201, __c200, 1) as any as S.Schema<DescribeLoggingOptionsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6142,8 +6142,8 @@ export const describePipeline: API.OperationMethod<
   DescribePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<DescribePipelineRequest>,
-  output: __S(298, __c37, 2) as any as S.Schema<DescribePipelineResponse>,
+  input: __S(3232, __c202, 0) as any as S.Schema<DescribePipelineRequest>,
+  output: __S(3233, __c202, 1) as any as S.Schema<DescribePipelineResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -6177,8 +6177,8 @@ export const describePipelineExecution: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ComputeNodeExecutionDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<DescribePipelineExecutionRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<DescribePipelineExecutionResponse>,
+  input: __S(3248, __c203, 0) as any as S.Schema<DescribePipelineExecutionRequest>,
+  output: __S(3253, __c203, 5) as any as S.Schema<DescribePipelineExecutionResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -6213,8 +6213,8 @@ export const describePortal: API.OperationMethod<
   DescribePortalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<DescribePortalRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<DescribePortalResponse>,
+  input: __S(3296, __c206, 0) as any as S.Schema<DescribePortalRequest>,
+  output: __S(3298, __c206, 2) as any as S.Schema<DescribePortalResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6242,8 +6242,8 @@ export const describeProject: API.OperationMethod<
   DescribeProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<DescribeProjectRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<DescribeProjectResponse>,
+  input: __S(3312, __c207, 0) as any as S.Schema<DescribeProjectRequest>,
+  output: __S(3313, __c207, 1) as any as S.Schema<DescribeProjectResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6272,8 +6272,8 @@ export const describeQuery: API.OperationMethod<
   DescribeQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<DescribeQueryRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<DescribeQueryResponse>,
+  input: __S(3328, __c208, 0) as any as S.Schema<DescribeQueryRequest>,
+  output: __S(3330, __c208, 2) as any as S.Schema<DescribeQueryResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -6306,8 +6306,8 @@ export const describeSearch: API.OperationMethod<
   DescribeSearchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<DescribeSearchRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<DescribeSearchResponse>,
+  input: __S(3344, __c209, 0) as any as S.Schema<DescribeSearchRequest>,
+  output: __S(3360, __c210, 0) as any as S.Schema<DescribeSearchResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -6338,8 +6338,8 @@ export const describeStorageConfiguration: API.OperationMethod<
   DescribeStorageConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<DescribeStorageConfigurationRequest>,
-  output: __S(325, __c40, 5) as any as S.Schema<DescribeStorageConfigurationResponse>,
+  input: __S(3376, __c211, 0) as any as S.Schema<DescribeStorageConfigurationRequest>,
+  output: __S(3377, __c211, 1) as any as S.Schema<DescribeStorageConfigurationResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -6370,8 +6370,8 @@ export const describeTask: API.OperationMethod<
   DescribeTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<DescribeTaskRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<DescribeTaskResponse>,
+  input: __S(3408, __c213, 0) as any as S.Schema<DescribeTaskRequest>,
+  output: __S(3409, __c213, 1) as any as S.Schema<DescribeTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -6412,8 +6412,8 @@ export const describeTimeSeries: API.OperationMethod<
   DescribeTimeSeriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<DescribeTimeSeriesRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<DescribeTimeSeriesResponse>,
+  input: __S(3424, __c214, 0) as any as S.Schema<DescribeTimeSeriesRequest>,
+  output: __S(3425, __c214, 1) as any as S.Schema<DescribeTimeSeriesResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6442,8 +6442,8 @@ export const describeWorkspace: API.OperationMethod<
   DescribeWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<DescribeWorkspaceRequest>,
-  output: __S(332, __c41, 4) as any as S.Schema<DescribeWorkspaceResponse>,
+  input: __S(3440, __c215, 0) as any as S.Schema<DescribeWorkspaceRequest>,
+  output: __S(3442, __c215, 2) as any as S.Schema<DescribeWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -6474,8 +6474,8 @@ export const disassociateAssets: API.OperationMethod<
   DisassociateAssetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<DisassociateAssetsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateAssetsResponse>,
+  input: __S(3456, __c216, 0) as any as S.Schema<DisassociateAssetsRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<DisassociateAssetsResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -6505,8 +6505,8 @@ export const disassociateTimeSeriesFromAssetProperty: API.OperationMethod<
   DisassociateTimeSeriesFromAssetPropertyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<DisassociateTimeSeriesFromAssetPropertyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DisassociateTimeSeriesFromAssetPropertyResponse>,
+  input: __S(3472, __c217, 0) as any as S.Schema<DisassociateTimeSeriesFromAssetPropertyRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<DisassociateTimeSeriesFromAssetPropertyResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -6537,8 +6537,8 @@ export const executeAction: API.OperationMethod<
   ExecuteActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<ExecuteActionRequest>,
-  output: __S(336, __c42, 0) as any as S.Schema<ExecuteActionResponse>,
+  input: __S(3488, __c218, 0) as any as S.Schema<ExecuteActionRequest>,
+  output: __S(3489, __c218, 1) as any as S.Schema<ExecuteActionResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -6573,8 +6573,8 @@ export const executeQuery: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Row
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<ExecuteQueryRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<ExecuteQueryResponse>,
+  input: __S(3504, __c219, 0) as any as S.Schema<ExecuteQueryRequest>,
+  output: __S(3512, __c219, 8) as any as S.Schema<ExecuteQueryResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -6621,8 +6621,8 @@ export const getAssetPropertyAggregates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AggregatedValue
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<GetAssetPropertyAggregatesRequest>,
-  output: __S(347, __c43, 3) as any as S.Schema<GetAssetPropertyAggregatesResponse>,
+  input: __S(3520, __c220, 0) as any as S.Schema<GetAssetPropertyAggregatesRequest>,
+  output: __S(3521, __c220, 1) as any as S.Schema<GetAssetPropertyAggregatesResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6666,8 +6666,8 @@ export const getAssetPropertyValue: API.OperationMethod<
   GetAssetPropertyValueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<GetAssetPropertyValueRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<GetAssetPropertyValueResponse>,
+  input: __S(3536, __c221, 0) as any as S.Schema<GetAssetPropertyValueRequest>,
+  output: __S(3537, __c221, 1) as any as S.Schema<GetAssetPropertyValueResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6706,8 +6706,8 @@ export const getAssetPropertyValueHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetPropertyValue
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<GetAssetPropertyValueHistoryRequest>,
-  output: __S(351, __c43, 7) as any as S.Schema<GetAssetPropertyValueHistoryResponse>,
+  input: __S(3552, __c222, 0) as any as S.Schema<GetAssetPropertyValueHistoryRequest>,
+  output: __S(3553, __c222, 1) as any as S.Schema<GetAssetPropertyValueHistoryResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6743,8 +6743,8 @@ export const getCaptureData: API.OperationMethod<
   GetCaptureDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<GetCaptureDataRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<GetCaptureDataResponse>,
+  input: __S(3568, __c223, 0) as any as S.Schema<GetCaptureDataRequest>,
+  output: __S(3569, __c223, 1) as any as S.Schema<GetCaptureDataResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -6787,8 +6787,8 @@ export const getInterpolatedAssetPropertyValues: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InterpolatedAssetPropertyValue
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<GetInterpolatedAssetPropertyValuesRequest>,
-  output: __S(357, __c44, 5) as any as S.Schema<GetInterpolatedAssetPropertyValuesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetInterpolatedAssetPropertyValuesRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GetInterpolatedAssetPropertyValuesResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -6825,8 +6825,8 @@ export const getQueryResults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ColumnValue[]
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<GetQueryResultsRequest>,
-  output: __S(363, __c45, 3) as any as S.Schema<GetQueryResultsResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetQueryResultsRequest>,
+  output: __S(21, __c1, 5) as any as S.Schema<GetQueryResultsResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -6867,8 +6867,8 @@ export const getSearchResults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SearchResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<GetSearchResultsRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<GetSearchResultsResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetSearchResultsRequest>,
+  output: __S(35, __c2, 3) as any as S.Schema<GetSearchResultsResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -6906,8 +6906,8 @@ export const invokeAssistant: API.OperationMethod<
   InvokeAssistantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<InvokeAssistantRequest>,
-  output: __S(378, __c47, 2) as any as S.Schema<InvokeAssistantResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<InvokeAssistantRequest>,
+  output: __S(58, __c3, 10) as any as S.Schema<InvokeAssistantResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -6939,8 +6939,8 @@ export const listAccessPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccessPolicySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(379, __c47, 3) as any as S.Schema<ListAccessPoliciesRequest>,
-  output: __S(382, __c47, 6) as any as S.Schema<ListAccessPoliciesResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListAccessPoliciesRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<ListAccessPoliciesResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6970,8 +6970,8 @@ export const listActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<ListActionsRequest>,
-  output: __S(386, __c48, 2) as any as S.Schema<ListActionsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListActionsRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<ListActionsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7007,8 +7007,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<ListApplicationsResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -7044,8 +7044,8 @@ export const listAssetModelCompositeModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetModelCompositeModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<ListAssetModelCompositeModelsRequest>,
-  output: __S(392, __c49, 0) as any as S.Schema<ListAssetModelCompositeModelsResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListAssetModelCompositeModelsRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<ListAssetModelCompositeModelsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7082,8 +7082,8 @@ export const listAssetModelProperties: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetModelPropertySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<ListAssetModelPropertiesRequest>,
-  output: __S(398, __c49, 6) as any as S.Schema<ListAssetModelPropertiesResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListAssetModelPropertiesRequest>,
+  output: __S(133, __c8, 5) as any as S.Schema<ListAssetModelPropertiesResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7118,8 +7118,8 @@ export const listAssetModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<ListAssetModelsRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<ListAssetModelsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListAssetModelsRequest>,
+  output: __S(147, __c9, 3) as any as S.Schema<ListAssetModelsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7156,8 +7156,8 @@ export const listAssetProperties: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetPropertySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<ListAssetPropertiesRequest>,
-  output: __S(406, __c50, 6) as any as S.Schema<ListAssetPropertiesResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListAssetPropertiesRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<ListAssetPropertiesResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7194,8 +7194,8 @@ export const listAssetRelationships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetRelationshipSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<ListAssetRelationshipsRequest>,
-  output: __S(411, __c51, 3) as any as S.Schema<ListAssetRelationshipsResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListAssetRelationshipsRequest>,
+  output: __S(180, __c11, 4) as any as S.Schema<ListAssetRelationshipsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7240,8 +7240,8 @@ export const listAssets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<ListAssetsRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<ListAssetsResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListAssetsRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<ListAssetsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7282,8 +7282,8 @@ export const listAssociatedAssets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssociatedAssetsSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<ListAssociatedAssetsRequest>,
-  output: __S(417, __c52, 1) as any as S.Schema<ListAssociatedAssetsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListAssociatedAssetsRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<ListAssociatedAssetsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7319,8 +7319,8 @@ export const listBulkImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<ListBulkImportJobsRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<ListBulkImportJobsResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListBulkImportJobsRequest>,
+  output: __S(243, __c15, 3) as any as S.Schema<ListBulkImportJobsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7356,8 +7356,8 @@ export const listCompositionRelationships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CompositionRelationshipSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<ListCompositionRelationshipsRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<ListCompositionRelationshipsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListCompositionRelationshipsRequest>,
+  output: __S(259, __c16, 3) as any as S.Schema<ListCompositionRelationshipsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7393,8 +7393,8 @@ export const listComputationModelDataBindingUsages: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   ComputationModelDataBindingUsageSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<ListComputationModelDataBindingUsagesRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<ListComputationModelDataBindingUsagesResponse>,
+  input: __S(275, __c17, 3) as any as S.Schema<ListComputationModelDataBindingUsagesRequest>,
+  output: __S(280, __c17, 8) as any as S.Schema<ListComputationModelDataBindingUsagesResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7425,8 +7425,8 @@ export const listComputationModelResolveToResources: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   ComputationModelResolveToResourceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<ListComputationModelResolveToResourcesRequest>,
-  output: __S(438, __c54, 6) as any as S.Schema<ListComputationModelResolveToResourcesResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListComputationModelResolveToResourcesRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<ListComputationModelResolveToResourcesResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7460,8 +7460,8 @@ export const listComputationModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ComputationModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<ListComputationModelsRequest>,
-  output: __S(442, __c55, 2) as any as S.Schema<ListComputationModelsResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListComputationModelsRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<ListComputationModelsResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7490,8 +7490,8 @@ export const listDashboards: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DashboardSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<ListDashboardsRequest>,
-  output: __S(446, __c55, 6) as any as S.Schema<ListDashboardsResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListDashboardsRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<ListDashboardsResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7523,8 +7523,8 @@ export const listDatasetDataSegmentRelationships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSegmentRelationshipSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<ListDatasetDataSegmentRelationshipsRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<ListDatasetDataSegmentRelationshipsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListDatasetDataSegmentRelationshipsRequest>,
+  output: __S(355, __c22, 3) as any as S.Schema<ListDatasetDataSegmentRelationshipsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7559,8 +7559,8 @@ export const listDatasetDataSegments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSegmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<ListDatasetDataSegmentsRequest>,
-  output: __S(454, __c56, 6) as any as S.Schema<ListDatasetDataSegmentsResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListDatasetDataSegmentsRequest>,
+  output: __S(371, __c23, 3) as any as S.Schema<ListDatasetDataSegmentsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7596,8 +7596,8 @@ export const listDatasetExportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<ListDatasetExportJobsRequest>,
-  output: __S(458, __c57, 2) as any as S.Schema<ListDatasetExportJobsResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListDatasetExportJobsRequest>,
+  output: __S(387, __c24, 3) as any as S.Schema<ListDatasetExportJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -7633,8 +7633,8 @@ export const listDatasets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DatasetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<ListDatasetsRequest>,
-  output: __S(462, __c57, 6) as any as S.Schema<ListDatasetsResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListDatasetsRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<ListDatasetsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7716,8 +7716,8 @@ export const listEnrichmentJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnrichmentJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<ListEnrichmentJobsRequest>,
-  output: __S(466, __c58, 2) as any as S.Schema<ListEnrichmentJobsResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListEnrichmentJobsRequest>,
+  output: __S(419, __c26, 3) as any as S.Schema<ListEnrichmentJobsResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -7755,8 +7755,8 @@ export const listExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExecutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<ListExecutionsRequest>,
-  output: __S(470, __c58, 6) as any as S.Schema<ListExecutionsResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListExecutionsRequest>,
+  output: __S(435, __c27, 3) as any as S.Schema<ListExecutionsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7790,8 +7790,8 @@ export const listGateways: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GatewaySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<ListGatewaysRequest>,
-  output: __S(474, __c59, 2) as any as S.Schema<ListGatewaysResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListGatewaysRequest>,
+  output: __S(451, __c28, 3) as any as S.Schema<ListGatewaysResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7822,8 +7822,8 @@ export const listInterfaceRelationships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InterfaceRelationshipSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(475, __c59, 3) as any as S.Schema<ListInterfaceRelationshipsRequest>,
-  output: __S(478, __c59, 6) as any as S.Schema<ListInterfaceRelationshipsResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListInterfaceRelationshipsRequest>,
+  output: __S(467, __c29, 3) as any as S.Schema<ListInterfaceRelationshipsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -7865,8 +7865,8 @@ export const listPipelineExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PipelineExecutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(479, __c59, 7) as any as S.Schema<ListPipelineExecutionsRequest>,
-  output: __S(482, __c60, 2) as any as S.Schema<ListPipelineExecutionsResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListPipelineExecutionsRequest>,
+  output: __S(483, __c30, 3) as any as S.Schema<ListPipelineExecutionsResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -7903,8 +7903,8 @@ export const listPipelines: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PipelineSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<ListPipelinesRequest>,
-  output: __S(486, __c60, 6) as any as S.Schema<ListPipelinesResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListPipelinesRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<ListPipelinesResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -7939,8 +7939,8 @@ export const listPortals: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PortalSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(487, __c60, 7) as any as S.Schema<ListPortalsRequest>,
-  output: __S(490, __c61, 2) as any as S.Schema<ListPortalsResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListPortalsRequest>,
+  output: __S(515, __c32, 3) as any as S.Schema<ListPortalsResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7969,8 +7969,8 @@ export const listProjectAssets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ID
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(491, __c61, 3) as any as S.Schema<ListProjectAssetsRequest>,
-  output: __S(492, __c61, 4) as any as S.Schema<ListProjectAssetsResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListProjectAssetsRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<ListProjectAssetsResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7999,8 +7999,8 @@ export const listProjects: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProjectSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(493, __c61, 5) as any as S.Schema<ListProjectsRequest>,
-  output: __S(494, __c61, 6) as any as S.Schema<ListProjectsResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListProjectsRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<ListProjectsResponse>,
   errors: [InternalFailureException, InvalidRequestException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8031,8 +8031,8 @@ export const listQueries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   QuerySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(495, __c61, 7) as any as S.Schema<ListQueriesRequest>,
-  output: __S(498, __c62, 2) as any as S.Schema<ListQueriesResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListQueriesRequest>,
+  output: __S(563, __c35, 3) as any as S.Schema<ListQueriesResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -8071,8 +8071,8 @@ export const listSearches: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SearchSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(500, __c62, 4) as any as S.Schema<ListSearchesRequest>,
-  output: __S(502, __c62, 6) as any as S.Schema<ListSearchesResponse>,
+  input: __S(577, __c36, 1) as any as S.Schema<ListSearchesRequest>,
+  output: __S(579, __c36, 3) as any as S.Schema<ListSearchesResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -8110,8 +8110,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(503, __c62, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(504, __c63, 0) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8144,8 +8144,8 @@ export const listTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<ListTasksRequest>,
-  output: __S(508, __c63, 4) as any as S.Schema<ListTasksResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListTasksRequest>,
+  output: __S(611, __c38, 3) as any as S.Schema<ListTasksResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -8181,8 +8181,8 @@ export const listTimeSeries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TimeSeriesSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(509, __c63, 5) as any as S.Schema<ListTimeSeriesRequest>,
-  output: __S(512, __c64, 0) as any as S.Schema<ListTimeSeriesResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListTimeSeriesRequest>,
+  output: __S(627, __c39, 3) as any as S.Schema<ListTimeSeriesResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8217,8 +8217,8 @@ export const listWorkspaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkspaceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(513, __c64, 1) as any as S.Schema<ListWorkspacesRequest>,
-  output: __S(516, __c64, 4) as any as S.Schema<ListWorkspacesResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListWorkspacesRequest>,
+  output: __S(643, __c40, 3) as any as S.Schema<ListWorkspacesResponse>,
   errors: [
     AccessDeniedException,
     InternalFailureException,
@@ -8255,8 +8255,8 @@ export const putAssetModelInterfaceRelationship: API.OperationMethod<
   PutAssetModelInterfaceRelationshipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(518, __c64, 6) as any as S.Schema<PutAssetModelInterfaceRelationshipRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<PutAssetModelInterfaceRelationshipResponse>,
+  input: __S(657, __c41, 1) as any as S.Schema<PutAssetModelInterfaceRelationshipRequest>,
+  output: __S(2384, __c149, 0) as any as S.Schema<PutAssetModelInterfaceRelationshipResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8290,8 +8290,8 @@ export const putDefaultEncryptionConfiguration: API.OperationMethod<
   PutDefaultEncryptionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<PutDefaultEncryptionConfigurationRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<PutDefaultEncryptionConfigurationResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<PutDefaultEncryptionConfigurationRequest>,
+  output: __S(3088, __c193, 0) as any as S.Schema<PutDefaultEncryptionConfigurationResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8322,8 +8322,8 @@ export const putLoggingOptions: API.OperationMethod<
   PutLoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(520, __c65, 0) as any as S.Schema<PutLoggingOptionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutLoggingOptionsResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<PutLoggingOptionsRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<PutLoggingOptionsResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8355,8 +8355,8 @@ export const putStorageConfiguration: API.OperationMethod<
   PutStorageConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(521, __c65, 1) as any as S.Schema<PutStorageConfigurationRequest>,
-  output: __S(522, __c65, 2) as any as S.Schema<PutStorageConfigurationResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<PutStorageConfigurationRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<PutStorageConfigurationResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8396,8 +8396,8 @@ export const startPipelineExecution: API.OperationMethod<
   StartPipelineExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(523, __c65, 3) as any as S.Schema<StartPipelineExecutionRequest>,
-  output: __S(524, __c65, 4) as any as S.Schema<StartPipelineExecutionResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<StartPipelineExecutionRequest>,
+  output: __S(753, __c47, 1) as any as S.Schema<StartPipelineExecutionResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -8430,8 +8430,8 @@ export const startQuery: API.OperationMethod<
   StartQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(525, __c65, 5) as any as S.Schema<StartQueryRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<StartQueryResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<StartQueryRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<StartQueryResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -8468,8 +8468,8 @@ export const startSearch: API.OperationMethod<
   StartSearchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<StartSearchRequest>,
-  output: __S(529, __c66, 1) as any as S.Schema<StartSearchResponse>,
+  input: __S(786, __c49, 2) as any as S.Schema<StartSearchRequest>,
+  output: __S(787, __c49, 3) as any as S.Schema<StartSearchResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -8505,8 +8505,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TagResourceResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8541,8 +8541,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UntagResourceResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8579,8 +8579,8 @@ export const updateAccessPolicy: API.OperationMethod<
   UpdateAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(532, __c66, 4) as any as S.Schema<UpdateAccessPolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateAccessPolicyResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<UpdateAccessPolicyRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateAccessPolicyResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8611,8 +8611,8 @@ export const updateAsset: API.OperationMethod<
   UpdateAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(533, __c66, 5) as any as S.Schema<UpdateAssetRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<UpdateAssetResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<UpdateAssetRequest>,
+  output: __S(2304, __c144, 0) as any as S.Schema<UpdateAssetResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8662,8 +8662,8 @@ export const updateAssetModel: API.OperationMethod<
   UpdateAssetModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(534, __c66, 6) as any as S.Schema<UpdateAssetModelRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<UpdateAssetModelResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<UpdateAssetModelRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<UpdateAssetModelResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8715,8 +8715,8 @@ export const updateAssetModelCompositeModel: API.OperationMethod<
   UpdateAssetModelCompositeModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(535, __c66, 7) as any as S.Schema<UpdateAssetModelCompositeModelRequest>,
-  output: __S(536, __c67, 0) as any as S.Schema<UpdateAssetModelCompositeModelResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<UpdateAssetModelCompositeModelRequest>,
+  output: __S(913, __c57, 1) as any as S.Schema<UpdateAssetModelCompositeModelResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8753,8 +8753,8 @@ export const updateAssetProperty: API.OperationMethod<
   UpdateAssetPropertyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<UpdateAssetPropertyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateAssetPropertyResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<UpdateAssetPropertyRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateAssetPropertyResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8786,8 +8786,8 @@ export const updateComputationModel: API.OperationMethod<
   UpdateComputationModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(538, __c67, 2) as any as S.Schema<UpdateComputationModelRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<UpdateComputationModelResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<UpdateComputationModelRequest>,
+  output: __S(2416, __c151, 0) as any as S.Schema<UpdateComputationModelResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8823,8 +8823,8 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<UpdateDashboardRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateDashboardResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<UpdateDashboardRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateDashboardResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -8855,8 +8855,8 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540, __c67, 4) as any as S.Schema<UpdateDatasetRequest>,
-  output: __S(541, __c67, 5) as any as S.Schema<UpdateDatasetResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<UpdateDatasetRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<UpdateDatasetResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8888,8 +8888,8 @@ export const updateGateway: API.OperationMethod<
   UpdateGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(542, __c67, 6) as any as S.Schema<UpdateGatewayRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateGatewayResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<UpdateGatewayRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateGatewayResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8936,8 +8936,8 @@ export const updateGatewayCapabilityConfiguration: API.OperationMethod<
   UpdateGatewayCapabilityConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(543, __c67, 7) as any as S.Schema<UpdateGatewayCapabilityConfigurationRequest>,
-  output: __S(544, __c68, 0) as any as S.Schema<UpdateGatewayCapabilityConfigurationResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<UpdateGatewayCapabilityConfigurationRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<UpdateGatewayCapabilityConfigurationResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -8973,8 +8973,8 @@ export const updatePipeline: API.OperationMethod<
   UpdatePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c68, 1) as any as S.Schema<UpdatePipelineRequest>,
-  output: __S(546, __c68, 2) as any as S.Schema<UpdatePipelineResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<UpdatePipelineRequest>,
+  output: __S(1040, __c65, 0) as any as S.Schema<UpdatePipelineResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -9011,8 +9011,8 @@ export const updatePortal: API.OperationMethod<
   UpdatePortalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<UpdatePortalRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<UpdatePortalResponse>,
+  input: __S(1057, __c66, 1) as any as S.Schema<UpdatePortalRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<UpdatePortalResponse>,
   errors: [
     ConflictingOperationException,
     InternalFailureException,
@@ -9046,8 +9046,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(549, __c68, 5) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateProjectResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<UpdateProjectResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -9079,8 +9079,8 @@ export const updateTask: API.OperationMethod<
   UpdateTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(550, __c68, 6) as any as S.Schema<UpdateTaskRequest>,
-  output: __S(546, __c68, 2) as any as S.Schema<UpdateTaskResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<UpdateTaskRequest>,
+  output: __S(1040, __c65, 0) as any as S.Schema<UpdateTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -9115,8 +9115,8 @@ export const updateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(551, __c68, 7) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(2608, __c163, 0) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     ConflictingOperationException,
@@ -9135,3494 +9135,6 @@ export const updateWorkspace: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.String.pipe(T.HttpLabel("assetId")),
-          hierarchyId: S.String,
-          childAssetId: S.String,
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/assets/{assetId}/associate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "AssociateAssetsRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AssociateAssetsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.String.pipe(T.HttpQuery("alias")),
-          assetId: S.String.pipe(T.HttpQuery("assetId")),
-          propertyId: S.String.pipe(T.HttpQuery("propertyId")),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/timeseries/associate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "AssociateTimeSeriesToAssetPropertyRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AssociateTimeSeriesToAssetPropertyResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ timeInSeconds: S.Number, offsetInNanos: S.optional(S.Number) }),
-      ).annotate({ identifier: "TimeInNanos" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sourceDatasetId: S.String,
-          timeSeriesId: S.String,
-          startTimestamp: __S(4, __c0, 4),
-          endTimestamp: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "AssociateDataSegmentEntry",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-          workspaceName: S.String,
-          associateDataSegmentEntries: __S(6, __c0, 6),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/datasets/{datasetId}/data-segments/associate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchAssociateDataSegmentsToDatasetRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sourceDatasetId: S.String,
-          timeSeriesId: S.String,
-          startTimestamp: __S(4, __c0, 4),
-          endTimestamp: __S(4, __c0, 4),
-          errorCode: S.String,
-          errorMessage: S.String,
-        }),
-      ).annotate({
-        identifier: "FailedDataSegmentAssociation",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.String,
-          datasetVersion: S.String,
-          failedAssociations: __S(9, __c1, 1),
-        }),
-      ).annotate({
-        identifier: "BatchAssociateDataSegmentsToDatasetResponse",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.HttpLabel("projectId")),
-          assetIds: __S(11, __c1, 3),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/projects/{projectId}/assets/associate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchAssociateProjectAssetsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ assetId: S.String, code: S.String, message: S.String }),
-      ).annotate({ identifier: "AssetErrorDetails" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ errors: S.optional(__S(14, __c1, 6)) })).annotate({
-        identifier: "BatchAssociateProjectAssetsResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          timeSeriesId: S.String,
-          startTimestamp: __S(4, __c0, 4),
-          endTimestamp: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "DeleteDataSegmentEntry" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-          workspaceName: S.String,
-          deleteDataSegmentEntries: __S(17, __c2, 1),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/datasets/{datasetId}/data-segments/batch-delete" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteDatasetDataSegmentsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          timeSeriesId: S.String,
-          startTimestamp: __S(4, __c0, 4),
-          endTimestamp: __S(4, __c0, 4),
-          errorCode: S.String,
-          errorMessage: S.String,
-        }),
-      ).annotate({
-        identifier: "FailedDataSegmentDeletion",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.String,
-          datasetVersion: S.String,
-          errors: __S(20, __c2, 4),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteDatasetDataSegmentsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-          workspaceName: S.String,
-          disassociateDataSegmentEntries: __S(6, __c0, 6),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/datasets/{datasetId}/data-segments/disassociate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchDisassociateDataSegmentsFromDatasetRequest",
-      });
-    case 7:
-      return S.Array(__S(8, __c1, 0));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.String,
-          datasetVersion: S.String,
-          failedDisassociations: __S(23, __c2, 7),
-        }),
-      ).annotate({
-        identifier: "BatchDisassociateDataSegmentsFromDatasetResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.HttpLabel("projectId")),
-          assetIds: __S(11, __c1, 3),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/projects/{projectId}/assets/disassociate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchDisassociateProjectAssetsRequest",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          entryId: S.String,
-          assetId: S.optional(S.String),
-          propertyId: S.optional(S.String),
-          propertyAlias: S.optional(S.String),
-          aggregateTypes: __S(26, __c3, 2),
-          resolution: S.String,
-          startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          endDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          qualities: S.optional(__S(26, __c3, 2)),
-          timeOrdering: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyAggregatesEntry",
-      });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          entries: __S(28, __c3, 4),
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/properties/batch/aggregates" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyAggregatesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          errorCode: S.String,
-          errorMessage: S.String,
-          entryId: S.String,
-        }),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyAggregatesErrorEntry",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          average: S.optional(S.Number),
-          count: S.optional(S.Number),
-          maximum: S.optional(S.Number),
-          minimum: S.optional(S.Number),
-          sum: S.optional(S.Number),
-          standardDeviation: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Aggregates" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          quality: S.optional(S.String),
-          value: __S(32, __c4, 0),
-        }),
-      ).annotate({ identifier: "AggregatedValue" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ entryId: S.String, aggregatedValues: __S(34, __c4, 2) }),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyAggregatesSuccessEntry",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          errorCode: S.String,
-          errorTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyAggregatesErrorInfo",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          entryId: S.String,
-          completionStatus: S.String,
-          errorInfo: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyAggregatesSkippedEntry",
-      });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          errorEntries: __S(31, __c3, 7),
-          successEntries: __S(36, __c4, 4),
-          skippedEntries: __S(39, __c4, 7),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyAggregatesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          entryId: S.String,
-          assetId: S.optional(S.String),
-          propertyId: S.optional(S.String),
-          propertyAlias: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyValueEntry",
-      });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          entries: __S(42, __c5, 2),
-          nextToken: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/properties/batch/latest" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyValueRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ valueType: S.String })).annotate({
-        identifier: "PropertyValueNullValue",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          stringValue: S.optional(S.String),
-          integerValue: S.optional(S.Number),
-          doubleValue: S.optional(S.Number),
-          booleanValue: S.optional(S.Boolean),
-          nullValue: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "Variant" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(45, __c5, 5),
-          timestamp: __S(4, __c0, 4),
-          quality: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssetPropertyValue" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ entryId: S.String, assetPropertyValue: S.optional(__S(46, __c5, 6)) }),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyValueSuccessEntry",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          errorEntries: __S(31, __c3, 7),
-          successEntries: __S(48, __c6, 0),
-          skippedEntries: __S(39, __c4, 7),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyValueResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          entryId: S.String,
-          assetId: S.optional(S.String),
-          propertyId: S.optional(S.String),
-          propertyAlias: S.optional(S.String),
-          startDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          qualities: S.optional(__S(26, __c3, 2)),
-          timeOrdering: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyValueHistoryEntry",
-      });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          entries: __S(51, __c6, 3),
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/properties/batch/history" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyValueHistoryRequest",
-      });
-    case 5:
-      return S.Array(__S(46, __c5, 6));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ entryId: S.String, assetPropertyValueHistory: __S(53, __c6, 5) }),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyValueHistorySuccessEntry",
-      });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          errorEntries: __S(31, __c3, 7),
-          successEntries: __S(55, __c6, 7),
-          skippedEntries: __S(39, __c4, 7),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchGetAssetPropertyValueHistoryResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          entryId: S.String,
-          assetId: S.optional(S.String),
-          propertyId: S.optional(S.String),
-          propertyAlias: S.optional(S.String),
-          propertyValues: __S(53, __c6, 5),
-        }),
-      ).annotate({
-        identifier: "PutAssetPropertyValueEntry",
-      });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enablePartialEntryProcessing: S.optional(S.Boolean),
-          entries: __S(58, __c7, 2),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/properties" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "BatchPutAssetPropertyValueRequest",
-      });
-    case 4:
-      return S.Array(__S(4, __c0, 4));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          errorCode: S.String,
-          errorMessage: S.String,
-          timestamps: __S(60, __c7, 4),
-        }),
-      ).annotate({
-        identifier: "BatchPutAssetPropertyError",
-      });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ entryId: S.String, errors: __S(62, __c7, 6) })).annotate({
-        identifier: "BatchPutAssetPropertyErrorEntry",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ errorEntries: __S(64, __c8, 0) })).annotate({
-        identifier: "BatchPutAssetPropertyValueResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          jobId: S.String.pipe(T.HttpLabel("jobId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/workspaces/{workspaceName}/enrichment-jobs/{jobId}/cancel",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CancelEnrichmentJobRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ jobId: S.String, status: S.String })).annotate({
-        identifier: "CancelEnrichmentJobResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          pipelineName: S.String.pipe(T.HttpLabel("pipelineName")),
-          pipelineExecutionId: S.String.pipe(T.HttpLabel("pipelineExecutionId")),
-          reason: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/workspaces/{workspaceName}/pipelines/{pipelineName}/executions/{pipelineExecutionId}/cancel",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CancelPipelineExecutionRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ state: S.String })).annotate({
-        identifier: "CancelPipelineExecutionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          queryId: S.String.pipe(T.HttpLabel("queryId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/queries/{queryId}/cancel" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CancelQueryRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ queryId: S.String, status: S.String })).annotate({
-        identifier: "CancelQueryResponse",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ id: S.String })).annotate({
-        identifier: "UserIdentity",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
-        identifier: "IAMUserIdentity",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          user: S.optional(__S(72, __c9, 0)),
-          group: S.optional(__S(72, __c9, 0)),
-          iamUser: S.optional(__S(73, __c9, 1)),
-          iamRole: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({ identifier: "Identity" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ portal: S.optional(__S(72, __c9, 0)), project: S.optional(__S(72, __c9, 0)) }),
-      ).annotate({ identifier: "Resource" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accessPolicyIdentity: __S(74, __c9, 2),
-          accessPolicyResource: __S(75, __c9, 3),
-          accessPolicyPermission: S.String,
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(76, __c9, 4)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/access-policies" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateAccessPolicyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ accessPolicyId: S.String, accessPolicyArn: S.String }),
-      ).annotate({
-        identifier: "CreateAccessPolicyResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          idcInstanceArn: S.String,
-          workspaceName: S.String,
-          name: S.String,
-          description: S.optional(S.String),
-          tags: S.optional(__S(76, __c9, 4)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateApplicationRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          arn: S.String,
-          id: S.String,
-          dnsSubdomain: S.String,
-          name: S.String,
-          status: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateApplicationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          assetName: S.String,
-          assetModelId: S.String,
-          assetId: S.optional(S.String),
-          assetExternalId: S.optional(S.String),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(76, __c9, 4)),
-          assetDescription: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/assets" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateAssetRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ code: S.String, message: S.String })).annotate({
-        identifier: "DetailedError",
-      });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ code: S.String, message: S.String, details: S.optional(__S(83, __c10, 3)) }),
-      ).annotate({ identifier: "ErrorDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ state: S.String, error: S.optional(__S(84, __c10, 4)) }),
-      ).annotate({ identifier: "AssetStatus" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ assetId: S.String, assetArn: S.String, assetStatus: __S(85, __c10, 5) }),
-      ).annotate({ identifier: "CreateAssetResponse" });
-    case 7:
-      return S.suspend(() => S.Struct({ defaultValue: S.optional(S.String) })).annotate({
-        identifier: "Attribute",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ state: S.String })).annotate({
-        identifier: "ForwardingConfig",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ forwardingConfig: __S(88, __c11, 0) })).annotate({
-        identifier: "MeasurementProcessingConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ processingConfig: S.optional(__S(89, __c11, 1)) }),
-      ).annotate({ identifier: "Measurement" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), name: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AssetModelPropertyPathSegment",
-      });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          propertyId: S.optional(S.String),
-          hierarchyId: S.optional(S.String),
-          propertyPath: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "VariableValue" });
-    case 6:
-      return S.suspend(() => S.Struct({ name: S.String, value: __S(93, __c11, 5) })).annotate({
-        identifier: "ExpressionVariable",
-      });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          computeLocation: S.String,
-          forwardingConfig: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "TransformProcessingConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.String,
-          variables: __S(95, __c11, 7),
-          processingConfig: S.optional(__S(96, __c12, 0)),
-        }),
-      ).annotate({ identifier: "Transform" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ interval: S.String, offset: S.optional(S.String) }),
-      ).annotate({ identifier: "TumblingWindow" });
-    case 3:
-      return S.suspend(() => S.Struct({ tumbling: S.optional(__S(98, __c12, 2)) })).annotate({
-        identifier: "MetricWindow",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ computeLocation: S.String })).annotate({
-        identifier: "MetricProcessingConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-          variables: S.optional(__S(95, __c11, 7)),
-          window: __S(99, __c12, 3),
-          processingConfig: S.optional(__S(100, __c12, 4)),
-        }),
-      ).annotate({ identifier: "Metric" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          attribute: S.optional(__S(87, __c10, 7)),
-          measurement: S.optional(__S(90, __c11, 2)),
-          transform: S.optional(__S(97, __c12, 1)),
-          metric: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({ identifier: "PropertyType" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          externalId: S.optional(S.String),
-          name: S.String,
-          dataType: S.String,
-          dataTypeSpec: S.optional(S.String),
-          unit: S.optional(S.String),
-          type: __S(102, __c12, 6),
-        }),
-      ).annotate({
-        identifier: "AssetModelPropertyDefinition",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          externalId: S.optional(S.String),
-          name: S.String,
-          childAssetModelId: S.String,
-        }),
-      ).annotate({
-        identifier: "AssetModelHierarchyDefinition",
-      });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          externalId: S.optional(S.String),
-          name: S.String,
-          description: S.optional(S.String),
-          type: S.String,
-          properties: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({
-        identifier: "AssetModelCompositeModelDefinition",
-      });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelName: S.String,
-          assetModelType: S.optional(S.String),
-          assetModelId: S.optional(S.String),
-          assetModelExternalId: S.optional(S.String),
-          assetModelDescription: S.optional(S.String),
-          assetModelProperties: S.optional(__S(104, __c13, 0)),
-          assetModelHierarchies: S.optional(__S(106, __c13, 2)),
-          assetModelCompositeModels: S.optional(__S(108, __c13, 4)),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(76, __c9, 4)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/asset-models" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateAssetModelRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelId: S.String,
-          assetModelArn: S.String,
-          assetModelStatus: __S(85, __c10, 5),
-        }),
-      ).annotate({ identifier: "CreateAssetModelResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
-          assetModelCompositeModelExternalId: S.optional(S.String),
-          parentAssetModelCompositeModelId: S.optional(S.String),
-          assetModelCompositeModelId: S.optional(S.String),
-          assetModelCompositeModelDescription: S.optional(S.String),
-          assetModelCompositeModelName: S.String,
-          assetModelCompositeModelType: S.String,
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          composedAssetModelId: S.optional(S.String),
-          assetModelCompositeModelProperties: S.optional(__S(104, __c13, 0)),
-          ifMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
-          ifNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
-          matchForVersionType: S.optional(S.String).pipe(T.HttpHeader("Match-For-Version-Type")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/asset-models/{assetModelId}/composite-models" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateAssetModelCompositeModelRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(91, __c11, 3));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelCompositeModelId: S.String,
-          assetModelCompositeModelPath: __S(112, __c14, 0),
-          assetModelStatus: __S(85, __c10, 5),
-          assetModelId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateAssetModelCompositeModelResponse",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ columnNames: __S(26, __c3, 2) })).annotate({
-        identifier: "Csv",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          csv: S.optional(__S(114, __c14, 2)),
-          parquet: S.optional(__S(1, __c0, 1)),
-          mp4: S.optional(__S(1, __c0, 1)),
-          annotation: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "FileFormat" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.String,
-          key: S.String,
-          versionId: S.optional(S.String),
-          alias: S.optional(S.String),
-          startTime: S.optional(__S(4, __c0, 4)),
-          fileFormat: S.optional(__S(115, __c14, 3)),
-        }),
-      ).annotate({ identifier: "File" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ bucket: S.String, prefix: S.String })).annotate({
-        identifier: "ErrorReportLocation",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ fileFormat: S.optional(__S(115, __c14, 3)) })).annotate({
-        identifier: "JobConfiguration",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          jobName: S.String,
-          jobRoleArn: S.String,
-          files: __S(117, __c14, 5),
-          errorReportLocation: __S(118, __c14, 6),
-          jobConfiguration: S.optional(__S(119, __c14, 7)),
-          adaptiveIngestion: S.optional(S.Boolean),
-          deleteFilesAfterImport: S.optional(S.Boolean),
-          datasetId: S.optional(S.String),
-          workspaceName: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/jobs" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateBulkImportJobRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ jobId: S.String, jobName: S.String, jobStatus: S.String }),
-      ).annotate({
-        identifier: "CreateBulkImportJobResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ inputProperties: S.String, resultProperty: S.String }),
-      ).annotate({
-        identifier: "ComputationModelAnomalyDetectionConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ anomalyDetection: S.optional(__S(122, __c15, 2)) }),
-      ).annotate({
-        identifier: "ComputationModelConfiguration",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ assetModelId: S.String, propertyId: S.String })).annotate({
-        identifier: "AssetModelPropertyBindingValue",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ assetId: S.String, propertyId: S.String })).annotate({
-        identifier: "AssetPropertyBindingValue",
-      });
-    case 6:
-      return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<ComputationModelDataBindingValue> =>
-          __S(127, __c15, 7),
-        ).annotate({ identifier: "ComputationModelDataBindingValue" }),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelProperty: S.optional(__S(124, __c15, 4)),
-          assetProperty: S.optional(__S(125, __c15, 5)),
-          list: S.optional(
-            S.suspend(() => __S(126, __c15, 6)).annotate({ identifier: "BindingValueList" }),
-          ),
-        }),
-      ).annotate({
-        identifier: "ComputationModelDataBindingValue",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.suspend((): S.Schema<ComputationModelDataBindingValue> =>
-          __S(127, __c15, 7),
-        )
-          .annotate({ identifier: "ComputationModelDataBindingValue" })
-          .pipe(S.optional),
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          computationModelName: S.String,
-          computationModelDescription: S.optional(S.String),
-          computationModelConfiguration: __S(123, __c15, 3),
-          computationModelDataBinding: __S(128, __c16, 0),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(76, __c9, 4)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/computation-models" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateComputationModelRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          computationModelId: S.String,
-          computationModelArn: S.String,
-          computationModelStatus: __S(85, __c10, 5),
-        }),
-      ).annotate({
-        identifier: "CreateComputationModelResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String,
-          dashboardName: S.String,
-          dashboardDescription: S.optional(S.String),
-          dashboardDefinition: S.String,
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(76, __c9, 4)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/dashboards" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateDashboardRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ dashboardId: S.String, dashboardArn: S.String })).annotate({
-        identifier: "CreateDashboardResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ sessionStartTimestamp: __S(4, __c0, 4), sessionEndTimestamp: __S(4, __c0, 4) }),
-      ).annotate({ identifier: "SessionConfig" });
-    case 6:
-      return S.suspend(() => S.Struct({ session: S.optional(__S(133, __c16, 5)) })).annotate({
-        identifier: "DatasetConfig",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ knowledgeBaseArn: S.String, roleArn: S.String })).annotate({
-        identifier: "KendraSourceDetail",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ kendra: S.optional(__S(135, __c16, 7)) })).annotate({
-        identifier: "SourceDetail",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sourceType: S.String,
-          sourceFormat: S.String,
-          sourceDetail: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({ identifier: "DatasetSource" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.optional(S.String),
-          datasetName: S.String,
-          datasetDescription: S.optional(S.String),
-          datasetType: S.optional(S.String),
-          datasetConfig: S.optional(__S(134, __c16, 6)),
-          workspaceName: S.optional(S.String),
-          metadata: S.optional(__S(76, __c9, 4)),
-          datasetSource: __S(137, __c17, 1),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(76, __c9, 4)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/datasets" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateDatasetRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ datasetId: S.String, datasetArn: S.String, datasetStatus: __S(85, __c10, 5) }),
-      ).annotate({ identifier: "CreateDatasetResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ startTime: __S(4, __c0, 4), endTime: __S(4, __c0, 4) }),
-      ).annotate({
-        identifier: "TrimSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          framesPerSecond: S.optional(S.Number),
-          widthInPixels: S.optional(S.Number),
-          heightInPixels: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "FormatSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timeSeriesId: S.optional(S.String),
-          propertyAlias: S.optional(S.String),
-          trimSettings: S.optional(__S(140, __c17, 4)),
-          formatSettings: S.optional(__S(141, __c17, 5)),
-        }),
-      ).annotate({ identifier: "TimeseriesItem" });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.String,
-          trimSettings: S.optional(__S(140, __c17, 4)),
-          exportDataTypes: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "DatasetItem" });
-    case 1:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ timeseries: __S(143, __c17, 7) }),
-        /*@__PURE__*/ S.Struct({ dataset: __S(144, __c18, 0) }),
-      ]);
-    case 2:
-      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
-        identifier: "ExportErrorReportLocation",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          destinationS3Uri: S.String,
-          input: __S(145, __c18, 1),
-          errorReportLocation: __S(146, __c18, 2),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/dataset-export-jobs" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateDatasetExportJobRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ jobId: S.String, workspaceName: S.String })).annotate({
-        identifier: "CreateDatasetExportJobResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.String,
-          timeSeriesId: S.optional(S.String),
-          propertyAlias: S.optional(S.String),
-          trimSettings: __S(140, __c17, 4),
-        }),
-      ).annotate({ identifier: "EventDetection" });
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ eventDetection: __S(149, __c18, 5) })]);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          jobConfiguration: __S(150, __c18, 6),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/enrichment-jobs" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateEnrichmentJobRequest",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.String,
-          status: S.String,
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({
-        identifier: "CreateEnrichmentJobResponse",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ groupArn: S.String })).annotate({
-        identifier: "Greengrass",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          coreDeviceThingName: S.String,
-          coreDeviceOperatingSystem: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GreengrassV2" });
-    case 3:
-      return S.suspend(() => S.Struct({ iotCoreThingName: S.String })).annotate({
-        identifier: "SiemensIE",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          greengrass: S.optional(__S(153, __c19, 1)),
-          greengrassV2: S.optional(__S(154, __c19, 2)),
-          siemensIE: S.optional(__S(155, __c19, 3)),
-        }),
-      ).annotate({ identifier: "GatewayPlatform" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          gatewayName: S.String,
-          gatewayPlatform: __S(156, __c19, 4),
-          gatewayVersion: S.optional(S.String),
-          tags: S.optional(__S(76, __c9, 4)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/20200301/gateways" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateGatewayRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({ gatewayId: S.String, gatewayArn: S.String })).annotate({
-        identifier: "CreateGatewayResponse",
-      });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          computeNodeName: S.String,
-          taskName: S.String,
-          environmentVariables: S.optional(__S(159, __c19, 7)),
-          dependsOn: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "ComputeNode" });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          pipelineName: S.String,
-          description: S.optional(S.String),
-          environmentVariables: S.optional(__S(159, __c19, 7)),
-          computations: __S(161, __c20, 1),
-          tags: S.optional(__S(76, __c9, 4)),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/pipelines" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreatePipelineRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
-      ).annotate({ identifier: "ResourceError" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ error: S.optional(__S(163, __c20, 3)), state: S.optional(S.String) }),
-      ).annotate({ identifier: "ResourceStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pipelineName: S.String,
-          pipelineArn: S.String,
-          version: S.String,
-          status: __S(164, __c20, 4),
-        }),
-      ).annotate({ identifier: "CreatePipelineResponse" });
-    case 6:
-      return S.suspend(() => S.Struct({ data: T.Blob, type: S.String })).annotate({
-        identifier: "ImageFile",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ alarmRoleArn: S.String, notificationLambdaArn: S.optional(S.String) }),
-      ).annotate({ identifier: "Alarms" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ portalTools: S.optional(__S(11, __c1, 3)) })).annotate({
-        identifier: "PortalTypeEntry",
-      });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(168, __c21, 0).pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          portalName: S.String,
-          portalDescription: S.optional(S.String),
-          portalContactEmail: SensitiveString,
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          portalLogoImageFile: S.optional(__S(166, __c20, 6)),
-          roleArn: S.String,
-          tags: S.optional(__S(76, __c9, 4)),
-          portalAuthMode: S.optional(S.String),
-          notificationSenderEmail: S.optional(SensitiveString),
-          alarms: S.optional(__S(167, __c20, 7)),
-          portalType: S.optional(S.String),
-          portalTypeConfiguration: S.optional(__S(169, __c21, 1)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/portals" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreatePortalRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ state: S.String, error: S.optional(__S(163, __c20, 3)) }),
-      ).annotate({ identifier: "PortalStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          portalId: S.String,
-          portalArn: S.String,
-          portalStartUrl: S.String,
-          portalStatus: __S(171, __c21, 3),
-          ssoApplicationId: S.String,
-        }),
-      ).annotate({ identifier: "CreatePortalResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          portalId: S.String,
-          projectName: S.String,
-          projectDescription: S.optional(S.String),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(76, __c9, 4)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/projects" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateProjectRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({ projectId: S.String, projectArn: S.String })).annotate({
-        identifier: "CreateProjectResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ storageClass: S.String, storageSizeInGiB: S.Number }),
-      ).annotate({
-        identifier: "EphemeralStorageConfiguration",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ accessPointArn: S.String, prefix: S.optional(S.String) }),
-      ).annotate({ identifier: "S3AccessPointSource" });
-    case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ s3AccessPoint: __S(176, __c22, 0) })]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          relativePath: S.String,
-          source: __S(177, __c22, 1),
-          storageType: S.String,
-        }),
-      ).annotate({ identifier: "Mount" });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ecrUri: SensitiveString,
-          taskExecutionRole: SensitiveString,
-          processingType: S.String,
-          processingUnit: S.String,
-          ephemeralStorageConfiguration: S.optional(__S(175, __c21, 7)),
-          command: S.optional(__S(11, __c1, 3)),
-          timeoutSeconds: S.optional(S.Number),
-          environmentVariables: S.optional(__S(159, __c19, 7)),
-          mounts: S.optional(__S(179, __c22, 3)),
-        }),
-      ).annotate({
-        identifier: "ContainerTaskConfiguration",
-      });
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ containerTaskConfiguration: __S(180, __c22, 4) })]);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          taskName: S.String,
-          description: S.optional(S.String),
-          taskConfiguration: __S(181, __c22, 5),
-          tags: S.optional(__S(76, __c9, 4)),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/tasks" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateTaskRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          taskName: S.String,
-          taskArn: S.String,
-          version: S.String,
-          status: __S(164, __c20, 4),
-        }),
-      ).annotate({ identifier: "CreateTaskResponse" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ encryptionType: S.String, kmsKeyId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "WorkspaceEncryptionConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String,
-          workspaceDescription: S.optional(S.String),
-          encryptionConfiguration: __S(184, __c23, 0),
-          tags: S.optional(__S(76, __c9, 4)),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/workspaces" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateWorkspaceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ state: S.String, error: S.optional(__S(82, __c10, 2)) }),
-      ).annotate({ identifier: "WorkspaceStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String,
-          workspaceArn: S.String,
-          workspaceStatus: __S(186, __c23, 2),
-        }),
-      ).annotate({ identifier: "CreateWorkspaceResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accessPolicyId: S.String.pipe(T.HttpLabel("accessPolicyId")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/access-policies/{accessPolicyId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteAccessPolicyRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          id: S.String.pipe(T.HttpLabel("id")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/workspaces/{workspaceName}/applications/{id}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteApplicationRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.String.pipe(T.HttpLabel("assetId")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/assets/{assetId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteAssetRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ assetId: S.optional(S.String), assetStatus: __S(85, __c10, 5) }),
-      ).annotate({ identifier: "DeleteAssetResponse" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-          ifMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
-          ifNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
-          matchForVersionType: S.optional(S.String).pipe(T.HttpHeader("Match-For-Version-Type")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/asset-models/{assetModelId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteAssetModelRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ assetModelId: S.optional(S.String), assetModelStatus: __S(85, __c10, 5) }),
-      ).annotate({ identifier: "DeleteAssetModelResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
-          assetModelCompositeModelId: S.String.pipe(T.HttpLabel("assetModelCompositeModelId")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-          ifMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
-          ifNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
-          matchForVersionType: S.optional(S.String).pipe(T.HttpHeader("Match-For-Version-Type")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/asset-models/{assetModelId}/composite-models/{assetModelCompositeModelId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteAssetModelCompositeModelRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ assetModelStatus: __S(85, __c10, 5), assetModelId: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DeleteAssetModelCompositeModelResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
-          interfaceAssetModelId: S.String.pipe(T.HttpLabel("interfaceAssetModelId")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/asset-models/{assetModelId}/interface/{interfaceAssetModelId}/asset-model-interface-relationship",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteAssetModelInterfaceRelationshipRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelId: S.String,
-          interfaceAssetModelId: S.String,
-          assetModelArn: S.String,
-          assetModelStatus: __S(85, __c10, 5),
-        }),
-      ).annotate({
-        identifier: "DeleteAssetModelInterfaceRelationshipResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          computationModelId: S.String.pipe(T.HttpLabel("computationModelId")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/computation-models/{computationModelId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteComputationModelRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ computationModelStatus: __S(85, __c10, 5) })).annotate({
-        identifier: "DeleteComputationModelResponse",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dashboardId: S.String.pipe(T.HttpLabel("dashboardId")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/dashboards/{dashboardId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteDashboardRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-          workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/datasets/{datasetId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteDatasetRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ datasetStatus: __S(85, __c10, 5) })).annotate({
-        identifier: "DeleteDatasetResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ gatewayId: S.String.pipe(T.HttpLabel("gatewayId")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/20200301/gateways/{gatewayId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteGatewayRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          pipelineName: S.String.pipe(T.HttpLabel("pipelineName")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/workspaces/{workspaceName}/pipelines/{pipelineName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeletePipelineRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ status: __S(164, __c20, 4) })).annotate({
-        identifier: "DeletePipelineResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          portalId: S.String.pipe(T.HttpLabel("portalId")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/portals/{portalId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeletePortalRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ portalStatus: __S(171, __c21, 3) })).annotate({
-        identifier: "DeletePortalResponse",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.HttpLabel("projectId")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/projects/{projectId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteProjectRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          taskName: S.String.pipe(T.HttpLabel("taskName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/workspaces/{workspaceName}/tasks/{taskName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteTaskRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.optional(S.String).pipe(T.HttpQuery("alias")),
-          assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
-          propertyId: S.optional(S.String).pipe(T.HttpQuery("propertyId")),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/timeseries/delete" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteTimeSeriesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/workspaces/{workspaceName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteWorkspaceRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ workspaceStatus: __S(186, __c23, 2) })).annotate({
-        identifier: "DeleteWorkspaceResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ accessPolicyId: S.String.pipe(T.HttpLabel("accessPolicyId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/access-policies/{accessPolicyId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeAccessPolicyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accessPolicyId: S.String,
-          accessPolicyArn: S.String,
-          accessPolicyIdentity: __S(74, __c9, 2),
-          accessPolicyResource: __S(75, __c9, 3),
-          accessPolicyPermission: S.String,
-          accessPolicyCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          accessPolicyLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({
-        identifier: "DescribeAccessPolicyResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ actionId: S.String.pipe(T.HttpLabel("actionId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/actions/{actionId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeActionRequest" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ assetId: S.optional(S.String), computationModelId: S.optional(S.String) }),
-      ).annotate({ identifier: "TargetResource" });
-    case 1:
-      return S.suspend(() => S.Struct({ stringValue: S.String })).annotate({
-        identifier: "ActionPayload",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ assetId: S.String })).annotate({
-        identifier: "ResolveTo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          actionId: S.String,
-          targetResource: __S(216, __c27, 0),
-          actionDefinitionId: S.String,
-          actionPayload: __S(217, __c27, 1),
-          executionTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          resolveTo: S.optional(__S(218, __c27, 2)),
-        }),
-      ).annotate({ identifier: "DescribeActionResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          id: S.String.pipe(T.HttpLabel("id")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}/applications/{id}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeApplicationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          arn: S.String,
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          dnsSubdomain: S.String,
-          description: S.optional(S.String),
-          id: S.String,
-          idcApplicationArn: S.String,
-          name: S.String,
-          status: S.String,
-          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          workspaceName: S.String,
-        }),
-      ).annotate({
-        identifier: "DescribeApplicationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.String.pipe(T.HttpLabel("assetId")),
-          excludeProperties: S.optional(S.Boolean).pipe(T.HttpQuery("excludeProperties")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/assets/{assetId}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DescribeAssetRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ topic: S.String, state: S.String })).annotate({
-        identifier: "PropertyNotification",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), name: S.optional(S.String) }),
-      ).annotate({ identifier: "AssetPropertyPathSegment" });
-    case 1:
-      return S.Array(__S(224, __c28, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          externalId: S.optional(S.String),
-          name: S.String,
-          alias: S.optional(S.String),
-          notification: S.optional(__S(223, __c27, 7)),
-          dataType: S.String,
-          dataTypeSpec: S.optional(S.String),
-          unit: S.optional(S.String),
-          path: S.optional(__S(225, __c28, 1)),
-        }),
-      ).annotate({ identifier: "AssetProperty" });
-    case 3:
-      return S.Array(__S(226, __c28, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), externalId: S.optional(S.String), name: S.String }),
-      ).annotate({ identifier: "AssetHierarchy" });
-    case 5:
-      return S.Array(__S(228, __c28, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          type: S.String,
-          properties: __S(227, __c28, 3),
-          id: S.optional(S.String),
-          externalId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssetCompositeModel" });
-    case 7:
-      return S.Array(__S(230, __c28, 6));
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          externalId: S.optional(S.String),
-          name: S.String,
-          type: S.String,
-          description: S.String,
-          path: __S(92, __c11, 4),
-        }),
-      ).annotate({
-        identifier: "AssetCompositeModelSummary",
-      });
-    case 1:
-      return S.Array(__S(232, __c29, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.String,
-          assetExternalId: S.optional(S.String),
-          assetArn: S.String,
-          assetName: S.String,
-          assetModelId: S.String,
-          assetProperties: __S(227, __c28, 3),
-          assetHierarchies: __S(229, __c28, 5),
-          assetCompositeModels: S.optional(__S(231, __c28, 7)),
-          assetCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          assetLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          assetStatus: __S(85, __c10, 5),
-          assetDescription: S.optional(S.String),
-          assetCompositeModelSummaries: S.optional(__S(233, __c29, 1)),
-        }),
-      ).annotate({ identifier: "DescribeAssetResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.String.pipe(T.HttpLabel("assetId")),
-          assetCompositeModelId: S.String.pipe(T.HttpLabel("assetCompositeModelId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/assets/{assetId}/composite-models/{assetCompositeModelId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeAssetCompositeModelRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ actionDefinitionId: S.String, actionName: S.String, actionType: S.String }),
-      ).annotate({ identifier: "ActionDefinition" });
-    case 5:
-      return S.Array(__S(236, __c29, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.String,
-          assetCompositeModelId: S.String,
-          assetCompositeModelExternalId: S.optional(S.String),
-          assetCompositeModelPath: __S(92, __c11, 4),
-          assetCompositeModelName: S.String,
-          assetCompositeModelDescription: S.String,
-          assetCompositeModelType: S.String,
-          assetCompositeModelProperties: __S(227, __c28, 3),
-          assetCompositeModelSummaries: __S(233, __c29, 1),
-          actionDefinitions: S.optional(__S(237, __c29, 5)),
-        }),
-      ).annotate({
-        identifier: "DescribeAssetCompositeModelResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
-          excludeProperties: S.optional(S.Boolean).pipe(T.HttpQuery("excludeProperties")),
-          assetModelVersion: S.optional(S.String).pipe(T.HttpQuery("assetModelVersion")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/asset-models/{assetModelId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeAssetModelRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          externalId: S.optional(S.String),
-          name: S.String,
-          dataType: S.String,
-          dataTypeSpec: S.optional(S.String),
-          unit: S.optional(S.String),
-          type: __S(102, __c12, 6),
-          path: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "AssetModelProperty" });
-    case 1:
-      return S.Array(__S(240, __c30, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          externalId: S.optional(S.String),
-          name: S.String,
-          childAssetModelId: S.String,
-        }),
-      ).annotate({ identifier: "AssetModelHierarchy" });
-    case 3:
-      return S.Array(__S(242, __c30, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          type: S.String,
-          properties: S.optional(__S(241, __c30, 1)),
-          id: S.optional(S.String),
-          externalId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssetModelCompositeModel" });
-    case 5:
-      return S.Array(__S(244, __c30, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          externalId: S.optional(S.String),
-          name: S.String,
-          type: S.String,
-          description: S.optional(S.String),
-          path: S.optional(__S(112, __c14, 0)),
-        }),
-      ).annotate({
-        identifier: "AssetModelCompositeModelSummary",
-      });
-    case 7:
-      return S.Array(__S(246, __c30, 6));
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ id: S.String })).annotate({
-        identifier: "InterfaceRelationship",
-      });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelId: S.String,
-          assetModelExternalId: S.optional(S.String),
-          assetModelArn: S.String,
-          assetModelName: S.String,
-          assetModelType: S.optional(S.String),
-          assetModelDescription: S.String,
-          assetModelProperties: __S(241, __c30, 1),
-          assetModelHierarchies: __S(243, __c30, 3),
-          assetModelCompositeModels: S.optional(__S(245, __c30, 5)),
-          assetModelCompositeModelSummaries: S.optional(__S(247, __c30, 7)),
-          assetModelCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          assetModelLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          assetModelStatus: __S(85, __c10, 5),
-          assetModelVersion: S.optional(S.String),
-          interfaceDetails: S.optional(__S(249, __c31, 1)),
-          eTag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-        }),
-      ).annotate({
-        identifier: "DescribeAssetModelResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
-          assetModelCompositeModelId: S.String.pipe(T.HttpLabel("assetModelCompositeModelId")),
-          assetModelVersion: S.optional(S.String).pipe(T.HttpQuery("assetModelVersion")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/asset-models/{assetModelId}/composite-models/{assetModelCompositeModelId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeAssetModelCompositeModelRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ id: S.optional(S.String) })).annotate({
-        identifier: "CompositionRelationshipItem",
-      });
-    case 5:
-      return S.Array(__S(252, __c31, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ compositionRelationship: S.optional(__S(253, __c31, 5)) }),
-      ).annotate({ identifier: "CompositionDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelId: S.String,
-          assetModelCompositeModelId: S.String,
-          assetModelCompositeModelExternalId: S.optional(S.String),
-          assetModelCompositeModelPath: __S(112, __c14, 0),
-          assetModelCompositeModelName: S.String,
-          assetModelCompositeModelDescription: S.String,
-          assetModelCompositeModelType: S.String,
-          assetModelCompositeModelProperties: __S(241, __c30, 1),
-          compositionDetails: S.optional(__S(254, __c31, 6)),
-          assetModelCompositeModelSummaries: __S(247, __c30, 7),
-          actionDefinitions: S.optional(__S(237, __c29, 5)),
-        }),
-      ).annotate({
-        identifier: "DescribeAssetModelCompositeModelResponse",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
-          interfaceAssetModelId: S.String.pipe(T.HttpLabel("interfaceAssetModelId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/asset-models/{assetModelId}/interface/{interfaceAssetModelId}/asset-model-interface-relationship",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeAssetModelInterfaceRelationshipRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ assetModelPropertyId: S.String, interfaceAssetModelPropertyId: S.String }),
-      ).annotate({ identifier: "PropertyMapping" });
-    case 2:
-      return S.Array(__S(257, __c32, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ assetModelHierarchyId: S.String, interfaceAssetModelHierarchyId: S.String }),
-      ).annotate({ identifier: "HierarchyMapping" });
-    case 4:
-      return S.Array(__S(259, __c32, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          assetModelId: S.String,
-          interfaceAssetModelId: S.String,
-          propertyMappings: __S(258, __c32, 2),
-          hierarchyMappings: __S(260, __c32, 4),
-        }),
-      ).annotate({
-        identifier: "DescribeAssetModelInterfaceRelationshipResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.String.pipe(T.HttpLabel("assetId")),
-          propertyId: S.String.pipe(T.HttpLabel("propertyId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/assets/{assetId}/properties/{propertyId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeAssetPropertyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          externalId: S.optional(S.String),
-          name: S.String,
-          alias: S.optional(S.String),
-          notification: S.optional(__S(223, __c27, 7)),
-          dataType: S.String,
-          unit: S.optional(S.String),
-          type: S.optional(__S(102, __c12, 6)),
-          path: S.optional(__S(225, __c28, 1)),
-        }),
-      ).annotate({ identifier: "Property" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-          assetProperty: __S(263, __c32, 7),
-          id: S.optional(S.String),
-          externalId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CompositeModelProperty" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.String,
-          assetExternalId: S.optional(S.String),
-          assetName: S.String,
-          assetModelId: S.String,
-          assetProperty: S.optional(__S(263, __c32, 7)),
-          compositeModel: S.optional(__S(264, __c33, 0)),
-        }),
-      ).annotate({
-        identifier: "DescribeAssetPropertyResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.String.pipe(T.HttpLabel("jobId")),
-          workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/jobs/{jobId}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeBulkImportJobRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.String,
-          jobName: S.String,
-          jobStatus: S.String,
-          jobRoleArn: S.String,
-          files: __S(117, __c14, 5),
-          errorReportLocation: __S(118, __c14, 6),
-          jobConfiguration: S.optional(__S(119, __c14, 7)),
-          jobCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          jobLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          adaptiveIngestion: S.optional(S.Boolean),
-          deleteFilesAfterImport: S.optional(S.Boolean),
-          datasetId: S.optional(S.String),
-          workspaceName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DescribeBulkImportJobResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          computationModelId: S.String.pipe(T.HttpLabel("computationModelId")),
-          computationModelVersion: S.optional(S.String).pipe(
-            T.HttpQuery("computationModelVersion"),
-          ),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/computation-models/{computationModelId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeComputationModelRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          computationModelId: S.String,
-          computationModelArn: S.String,
-          computationModelName: S.String,
-          computationModelDescription: S.optional(S.String),
-          computationModelConfiguration: __S(123, __c15, 3),
-          computationModelDataBinding: __S(128, __c16, 0),
-          computationModelCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          computationModelLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          computationModelStatus: __S(85, __c10, 5),
-          computationModelVersion: S.String,
-          actionDefinitions: __S(237, __c29, 5),
-        }),
-      ).annotate({
-        identifier: "DescribeComputationModelResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          computationModelId: S.String.pipe(T.HttpLabel("computationModelId")),
-          resolveToResourceType: S.optional(S.String).pipe(T.HttpQuery("resolveToResourceType")),
-          resolveToResourceId: S.optional(S.String).pipe(T.HttpQuery("resolveToResourceId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/computation-models/{computationModelId}/execution-summary",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeComputationModelExecutionSummaryRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          computationModelId: S.String,
-          resolveTo: S.optional(__S(218, __c27, 2)),
-          computationModelExecutionSummary: __S(159, __c19, 7),
-        }),
-      ).annotate({
-        identifier: "DescribeComputationModelExecutionSummaryResponse",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ dashboardId: S.String.pipe(T.HttpLabel("dashboardId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/dashboards/{dashboardId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeDashboardRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dashboardId: S.String,
-          dashboardArn: S.String,
-          dashboardName: S.String,
-          projectId: S.String,
-          dashboardDescription: S.optional(S.String),
-          dashboardDefinition: S.String,
-          dashboardCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          dashboardLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({
-        identifier: "DescribeDashboardResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-          workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")),
-          datasetVersion: S.optional(S.String).pipe(T.HttpQuery("datasetVersion")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/datasets/{datasetId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeDatasetRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          lastEnrichedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "DatasetEnrichmentEntry" });
-    case 4:
-      return S.suspend(() => S.Struct({ video: S.optional(__S(275, __c34, 3)) })).annotate({
-        identifier: "DatasetEnrichment",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.String,
-          datasetArn: S.String,
-          datasetName: S.String,
-          datasetDescription: S.String,
-          datasetType: S.optional(S.String),
-          datasetConfig: S.optional(__S(134, __c16, 6)),
-          workspaceName: S.optional(S.String),
-          metadata: S.optional(__S(76, __c9, 4)),
-          datasetSource: __S(137, __c17, 1),
-          datasetStatus: __S(85, __c10, 5),
-          datasetCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          datasetLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          datasetVersion: S.optional(S.String),
-          enrichmentStatus: S.optional(__S(276, __c34, 4)),
-        }),
-      ).annotate({ identifier: "DescribeDatasetResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          jobId: S.String.pipe(T.HttpLabel("jobId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/workspaces/{workspaceName}/dataset-export-jobs/{jobId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeDatasetExportJobRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.String,
-          workspaceName: S.String,
-          status: S.String,
-          startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          destinationS3Uri: S.String,
-          errorReportLocation: __S(146, __c18, 2),
-          input: __S(145, __c18, 1),
-        }),
-      ).annotate({
-        identifier: "DescribeDatasetExportJobResponse",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/configuration/account/encryption" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeDefaultEncryptionConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ code: S.String, message: S.String })).annotate({
-        identifier: "ConfigurationErrorDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ state: S.String, error: S.optional(__S(281, __c35, 1)) }),
-      ).annotate({ identifier: "ConfigurationStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          encryptionType: S.String,
-          kmsKeyArn: S.optional(S.String),
-          configurationStatus: __S(282, __c35, 2),
-        }),
-      ).annotate({
-        identifier: "DescribeDefaultEncryptionConfigurationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          jobId: S.String.pipe(T.HttpLabel("jobId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}/enrichment-jobs/{jobId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeEnrichmentJobRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.String,
-          status: S.String,
-          workspaceName: S.String,
-          jobType: S.String,
-          jobConfiguration: __S(150, __c18, 6),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          cancelledAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          failureMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DescribeEnrichmentJobResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ executionId: S.String.pipe(T.HttpLabel("executionId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/executions/{executionId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeExecutionRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          executionId: S.String,
-          actionType: S.optional(S.String),
-          targetResource: __S(216, __c27, 0),
-          targetResourceVersion: S.String,
-          resolveTo: S.optional(__S(218, __c27, 2)),
-          executionStartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          executionEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          executionStatus: __S(88, __c11, 0),
-          executionResult: S.optional(__S(159, __c19, 7)),
-          executionDetails: S.optional(__S(159, __c19, 7)),
-          executionEntityVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DescribeExecutionResponse",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ gatewayId: S.String.pipe(T.HttpLabel("gatewayId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/20200301/gateways/{gatewayId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeGatewayRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ capabilityNamespace: S.String, capabilitySyncStatus: S.String }),
-      ).annotate({ identifier: "GatewayCapabilitySummary" });
-    case 2:
-      return S.Array(__S(289, __c36, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          gatewayId: S.String,
-          gatewayName: S.String,
-          gatewayArn: S.String,
-          gatewayPlatform: S.optional(__S(156, __c19, 4)),
-          gatewayVersion: S.optional(S.String),
-          gatewayCapabilitySummaries: __S(290, __c36, 2),
-          creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          lastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "DescribeGatewayResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
-          capabilityNamespace: S.String.pipe(T.HttpLabel("capabilityNamespace")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/20200301/gateways/{gatewayId}/capability/{capabilityNamespace}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeGatewayCapabilityConfigurationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          gatewayId: S.String,
-          capabilityNamespace: S.String,
-          capabilityConfiguration: S.String,
-          capabilitySyncStatus: S.String,
-        }),
-      ).annotate({
-        identifier: "DescribeGatewayCapabilityConfigurationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")) }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/logging" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeLoggingOptionsRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ level: S.String })).annotate({
-        identifier: "LoggingOptions",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ loggingOptions: __S(295, __c36, 7) })).annotate({
-        identifier: "DescribeLoggingOptionsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          pipelineName: S.String.pipe(T.HttpLabel("pipelineName")),
-          pipelineVersion: S.optional(S.String).pipe(T.HttpQuery("version")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}/pipelines/{pipelineName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribePipelineRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pipelineName: S.String,
-          workspaceName: S.String,
-          description: S.optional(S.String),
-          pipelineArn: S.String,
-          version: S.String,
-          environmentVariables: S.optional(__S(159, __c19, 7)),
-          computations: __S(161, __c20, 1),
-          status: __S(164, __c20, 4),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "DescribePipelineResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          pipelineName: S.String.pipe(T.HttpLabel("pipelineName")),
-          pipelineExecutionId: S.String.pipe(T.HttpLabel("pipelineExecutionId")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/workspaces/{workspaceName}/pipelines/{pipelineName}/executions/{pipelineExecutionId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribePipelineExecutionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.String,
-          details: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({
-        identifier: "PipelineExecutionStateDetails",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          stateDetails: S.optional(__S(300, __c37, 4)),
-        }),
-      ).annotate({ identifier: "PipelineExecutionStatus" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(159, __c19, 7).pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          global: S.optional(__S(159, __c19, 7)),
-          computeNodes: S.optional(__S(302, __c37, 6)),
-        }),
-      ).annotate({
-        identifier: "ExecutionEnvironmentVariables",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(179, __c22, 3).pipe(S.optional));
-    case 1:
-      return S.suspend(() => S.Struct({ computeNodes: __S(304, __c38, 0) })).annotate({
-        identifier: "MountOverrides",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-          details: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({
-        identifier: "ComputeNodeExecutionStateDetails",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          stateDetails: S.optional(__S(306, __c38, 2)),
-        }),
-      ).annotate({
-        identifier: "ComputeNodeExecutionStatus",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          computeNodeName: S.String,
-          taskName: S.String,
-          taskArn: S.String,
-          taskVersion: S.String,
-          dependsOn: __S(11, __c1, 3),
-          status: __S(307, __c38, 3),
-          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          executionEnvironmentVariables: S.optional(__S(159, __c19, 7)),
-          executionMounts: S.optional(__S(179, __c22, 3)),
-        }),
-      ).annotate({
-        identifier: "ComputeNodeExecutionDetails",
-      });
-    case 5:
-      return S.Array(__S(308, __c38, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pipelineExecutionId: S.String,
-          pipelineName: S.String,
-          workspaceName: S.String,
-          pipelineVersion: S.String,
-          status: __S(301, __c37, 5),
-          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          requestEnvironmentVariables: __S(303, __c37, 7),
-          requestMountOverrides: S.optional(__S(305, __c38, 1)),
-          executionPriority: S.optional(S.Number),
-          computeNodeExecutionDetails: __S(309, __c38, 5),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DescribePipelineExecutionResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ portalId: S.String.pipe(T.HttpLabel("portalId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/portals/{portalId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribePortalRequest" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ id: S.String, url: S.String })).annotate({
-        identifier: "ImageLocation",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          portalId: S.String,
-          portalArn: S.String,
-          portalName: S.String,
-          portalDescription: S.optional(S.String),
-          portalClientId: S.String,
-          portalStartUrl: S.String,
-          portalContactEmail: SensitiveString,
-          portalStatus: __S(171, __c21, 3),
-          portalCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          portalLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          portalLogoImageLocation: S.optional(__S(312, __c39, 0)),
-          roleArn: S.optional(S.String),
-          portalAuthMode: S.optional(S.String),
-          notificationSenderEmail: S.optional(SensitiveString),
-          alarms: S.optional(__S(167, __c20, 7)),
-          portalType: S.optional(S.String),
-          portalTypeConfiguration: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({ identifier: "DescribePortalResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ projectId: S.String.pipe(T.HttpLabel("projectId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/projects/{projectId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeProjectRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String,
-          projectArn: S.String,
-          projectName: S.String,
-          portalId: S.String,
-          projectDescription: S.optional(S.String),
-          projectCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          projectLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "DescribeProjectResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          queryId: S.String.pipe(T.HttpLabel("queryId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}/queries/{queryId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeQueryRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ rowCount: S.Number, bytesScanned: S.Number, executionTimeInMillis: S.Number }),
-      ).annotate({ identifier: "QueryStatistics" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          queryId: S.String,
-          status: S.String,
-          submittedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          statistics: S.optional(__S(317, __c39, 5)),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DescribeQueryResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          searchId: S.String.pipe(T.HttpLabel("searchId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}/searches/{searchId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeSearchRequest" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          searchId: S.String,
-          workspaceName: S.String,
-          status: S.String,
-          queryStatement: SensitiveString,
-          searchType: S.String,
-          statusReason: S.optional(S.String),
-          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          groupId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DescribeSearchResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/configuration/account/storage" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeStorageConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ s3ResourceArn: S.String, roleArn: S.String })).annotate({
-        identifier: "CustomerManagedS3Storage",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ customerManagedS3Storage: __S(322, __c40, 2) })).annotate({
-        identifier: "MultiLayerStorage",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ numberOfDays: S.optional(S.Number), unlimited: S.optional(S.Boolean) }),
-      ).annotate({ identifier: "RetentionPeriod" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          storageType: S.String,
-          multiLayerStorage: S.optional(__S(323, __c40, 3)),
-          disassociatedDataStorage: S.optional(S.String),
-          retentionPeriod: S.optional(__S(324, __c40, 4)),
-          configurationStatus: __S(282, __c35, 2),
-          lastUpdateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          warmTier: S.optional(S.String),
-          warmTierRetentionPeriod: S.optional(__S(324, __c40, 4)),
-          disallowIngestNullNaN: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DescribeStorageConfigurationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          taskName: S.String.pipe(T.HttpLabel("taskName")),
-          taskVersion: S.optional(S.String).pipe(T.HttpQuery("version")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}/tasks/{taskName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeTaskRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String,
-          taskName: S.String,
-          description: S.optional(S.String),
-          taskArn: S.String,
-          version: S.String,
-          taskConfiguration: __S(181, __c22, 5),
-          status: __S(164, __c20, 4),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "DescribeTaskResponse" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.optional(S.String).pipe(T.HttpQuery("alias")),
-          assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
-          propertyId: S.optional(S.String).pipe(T.HttpQuery("propertyId")),
-          workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/timeseries/describe" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeTimeSeriesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.optional(S.String),
-          propertyId: S.optional(S.String),
-          alias: S.optional(S.String),
-          timeSeriesId: S.String,
-          dataType: S.String,
-          dataTypeSpec: S.optional(S.String),
-          timeSeriesCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          timeSeriesLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          timeSeriesArn: S.String,
-          workspaceName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DescribeTimeSeriesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ workspaceName: S.String.pipe(T.HttpLabel("workspaceName")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeWorkspaceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ encryptionType: S.String, kmsKeyArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "WorkspaceEncryptionConfigurationInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceArn: S.String,
-          workspaceName: S.String,
-          workspaceDescription: S.optional(S.String),
-          workspaceStatus: __S(186, __c23, 2),
-          encryptionConfiguration: S.optional(__S(331, __c41, 3)),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({
-        identifier: "DescribeWorkspaceResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.String.pipe(T.HttpLabel("assetId")),
-          hierarchyId: S.String,
-          childAssetId: S.String,
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/assets/{assetId}/disassociate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DisassociateAssetsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.String.pipe(T.HttpQuery("alias")),
-          assetId: S.String.pipe(T.HttpQuery("assetId")),
-          propertyId: S.String.pipe(T.HttpQuery("propertyId")),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/timeseries/disassociate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DisassociateTimeSeriesFromAssetPropertyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          targetResource: __S(216, __c27, 0),
-          actionDefinitionId: S.String,
-          actionPayload: __S(217, __c27, 1),
-          clientToken: S.optional(S.String),
-          resolveTo: S.optional(__S(218, __c27, 2)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/actions" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ExecuteActionRequest" });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ actionId: S.String })).annotate({
-        identifier: "ExecuteActionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          queryStatement: SensitiveString,
-          nextToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/queries/execution" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ExecuteQueryRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ scalarType: S.optional(S.String) })).annotate({
-        identifier: "ColumnType",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), type: S.optional(__S(338, __c42, 2)) }),
-      ).annotate({ identifier: "ColumnInfo" });
-    case 4:
-      return S.Array(__S(339, __c42, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scalarValue: S.optional(S.String),
-          arrayValue: S.optional(
-            S.suspend(() => __S(342, __c42, 6)).annotate({ identifier: "DatumList" }),
-          ),
-          rowValue: S.optional(
-            S.suspend((): S.Schema<Row> => __S(343, __c42, 7)).annotate({ identifier: "Row" }),
-          ),
-          nullValue: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Datum" });
-    case 6:
-      return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Datum> => __S(341, __c42, 5)).annotate({
-          identifier: "Datum",
-        }),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.suspend(() => __S(342, __c42, 6)).annotate({ identifier: "DatumList" }),
-        }),
-      ).annotate({ identifier: "Row" });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Row> => __S(343, __c42, 7)).annotate({
-          identifier: "Row",
-        }),
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          columns: S.optional(__S(340, __c42, 4)),
-          rows: S.optional(__S(344, __c43, 0)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExecuteQueryResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
-          propertyId: S.optional(S.String).pipe(T.HttpQuery("propertyId")),
-          propertyAlias: S.optional(S.String).pipe(T.HttpQuery("propertyAlias")),
-          aggregateTypes: __S(26, __c3, 2).pipe(T.HttpQuery("aggregateTypes")),
-          resolution: S.String.pipe(T.HttpQuery("resolution")),
-          qualities: S.optional(__S(26, __c3, 2)).pipe(T.HttpQuery("qualities")),
-          startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("startDate")),
-          endDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("endDate")),
-          timeOrdering: S.optional(S.String).pipe(T.HttpQuery("timeOrdering")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/properties/aggregates" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetAssetPropertyAggregatesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ aggregatedValues: __S(34, __c4, 2), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetAssetPropertyAggregatesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
-          propertyId: S.optional(S.String).pipe(T.HttpQuery("propertyId")),
-          propertyAlias: S.optional(S.String).pipe(T.HttpQuery("propertyAlias")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/properties/latest" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetAssetPropertyValueRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ propertyValue: S.optional(__S(46, __c5, 6)) })).annotate({
-        identifier: "GetAssetPropertyValueResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
-          propertyId: S.optional(S.String).pipe(T.HttpQuery("propertyId")),
-          propertyAlias: S.optional(S.String).pipe(T.HttpQuery("propertyAlias")),
-          startDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-            T.HttpQuery("startDate"),
-          ),
-          endDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-            T.HttpQuery("endDate"),
-          ),
-          qualities: S.optional(__S(26, __c3, 2)).pipe(T.HttpQuery("qualities")),
-          timeOrdering: S.optional(S.String).pipe(T.HttpQuery("timeOrdering")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/properties/history" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetAssetPropertyValueHistoryRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          assetPropertyValueHistory: __S(53, __c6, 5),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetAssetPropertyValueHistoryResponse",
-      });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
-          startTime: __S(4, __c0, 4),
-          endTime: __S(4, __c0, 4),
-          timeSeriesId: S.optional(S.String),
-          propertyAlias: S.optional(S.String),
-          formatSettings: S.optional(__S(141, __c17, 5)),
-          nextToken: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/get-capture-data" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetCaptureDataRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: T.Blob,
-          startTime: __S(4, __c0, 4),
-          endTime: __S(4, __c0, 4),
-          dataType: S.String,
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetCaptureDataResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
@@ -12653,24 +9165,28 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "GetInterpolatedAssetPropertyValuesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ timestamp: __S(4, __c0, 4), value: __S(45, __c5, 5) }),
+        S.Struct({ timestamp: __S(1088, __c68, 0), value: __S(1361, __c85, 1) }),
       ).annotate({
         identifier: "InterpolatedAssetPropertyValue",
       });
-    case 4:
-      return S.Array(__S(355, __c44, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          interpolatedAssetPropertyValues: __S(356, __c44, 4),
+          interpolatedAssetPropertyValues: __S(2, __c0, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetInterpolatedAssetPropertyValuesResponse",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
@@ -12688,29 +9204,29 @@ function __c44(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetQueryResultsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ name: S.String, type: S.String })).annotate({
         identifier: "ColumnInformation",
       });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(359, __c44, 7));
-    case 1:
-      return S.Array(S.String).pipe(/*@__PURE__*/ T.Sparse());
     case 2:
-      return S.Array(__S(361, __c45, 1));
+      return S.Array(__S(17, __c1, 1));
     case 3:
+      return S.Array(S.String).pipe(/*@__PURE__*/ T.Sparse());
+    case 4:
+      return S.Array(__S(19, __c1, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          columnInfo: S.optional(__S(360, __c45, 0)),
-          rows: S.optional(__S(362, __c45, 2)),
+          columnInfo: S.optional(__S(18, __c1, 2)),
+          rows: S.optional(__S(20, __c1, 4)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQueryResultsResponse" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           searchId: S.String.pipe(T.HttpLabel("searchId")),
@@ -12731,28 +9247,28 @@ function __c45(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSearchResultsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           searchId: S.String,
           workspaceName: S.String,
           datasetId: S.String,
           timeSeriesId: S.String,
-          startTimestamp: __S(4, __c0, 4),
-          endTimestamp: __S(4, __c0, 4),
-          topTimestamp: __S(4, __c0, 4),
+          startTimestamp: __S(1088, __c68, 0),
+          endTimestamp: __S(1088, __c68, 0),
+          topTimestamp: __S(1088, __c68, 0),
           score: S.Number,
         }),
       ).annotate({ identifier: "SearchResult" });
-    case 6:
-      return S.Array(__S(365, __c45, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(33, __c2, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ searchResults: __S(366, __c45, 6), nextToken: S.optional(S.String) }),
+        S.Struct({ searchResults: __S(34, __c2, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetSearchResultsResponse" });
   }
 }
-function __c46(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12781,40 +9297,34 @@ function __c46(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ arn: S.optional(S.String), location: S.optional(__S(370, __c46, 2)) }),
+        S.Struct({ arn: S.optional(S.String), location: S.optional(__S(50, __c3, 2)) }),
       ).annotate({ identifier: "Source" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ datasetArn: S.optional(S.String), source: S.optional(__S(371, __c46, 3)) }),
+        S.Struct({ datasetArn: S.optional(S.String), source: S.optional(__S(51, __c3, 3)) }),
       ).annotate({ identifier: "DataSetReference" });
     case 5:
-      return S.suspend(() => S.Struct({ dataset: S.optional(__S(372, __c46, 4)) })).annotate({
+      return S.suspend(() => S.Struct({ dataset: S.optional(__S(52, __c3, 4)) })).annotate({
         identifier: "Reference",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          reference: S.optional(__S(373, __c46, 5)),
-          content: S.optional(__S(369, __c46, 1)),
+          reference: S.optional(__S(53, __c3, 5)),
+          content: S.optional(__S(49, __c3, 1)),
         }),
       ).annotate({ identifier: "Citation" });
     case 7:
-      return S.Array(__S(374, __c46, 6));
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(54, __c3, 6));
+    case 8:
       return S.suspend(() =>
-        S.Struct({ message: S.optional(S.String), citations: S.optional(__S(375, __c46, 7)) }),
+        S.Struct({ message: S.optional(S.String), citations: S.optional(__S(55, __c3, 7)) }),
       ).annotate({ identifier: "InvocationOutput" });
-    case 1:
+    case 9:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ trace: __S(369, __c46, 1) }),
-          /*@__PURE__*/ S.Struct({
-            output: __S(376, __c47, 0) as any as S.Schema<InvocationOutput>,
-          }),
+          /*@__PURE__*/ S.Struct({ trace: __S(49, __c3, 1) }),
+          /*@__PURE__*/ S.Struct({ output: __S(56, __c3, 8) as any as S.Schema<InvocationOutput> }),
           /*@__PURE__*/ S.Struct({
             accessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
               identifier: "AccessDeniedException",
@@ -12860,16 +9370,20 @@ function __c47(j: number): any {
           }),
         ]),
       );
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          body: __S(377, __c47, 1).pipe(T.HttpPayload()),
+          body: __S(57, __c3, 9).pipe(T.HttpPayload()),
           conversationId: S.String.pipe(
             T.HttpHeader("x-amz-iotsitewise-assistant-conversation-id"),
           ),
         }),
       ).annotate({ identifier: "InvokeAssistantResponse" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           identityType: S.optional(S.String).pipe(T.HttpQuery("identityType")),
@@ -12885,26 +9399,30 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListAccessPoliciesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          identity: __S(74, __c9, 2),
-          resource: __S(75, __c9, 3),
+          identity: __S(1522, __c95, 2),
+          resource: __S(1523, __c95, 3),
           permission: S.String,
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AccessPolicySummary" });
-    case 5:
-      return S.Array(__S(380, __c47, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ accessPolicySummaries: __S(381, __c47, 5), nextToken: S.optional(S.String) }),
+        S.Struct({ accessPolicySummaries: __S(66, __c4, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAccessPoliciesResponse",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetResourceType: S.String.pipe(T.HttpQuery("targetResourceType")),
@@ -12915,26 +9433,26 @@ function __c47(j: number): any {
           resolveToResourceId: S.optional(S.String).pipe(T.HttpQuery("resolveToResourceId")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/actions" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListActionsRequest" });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           actionId: S.optional(S.String),
           actionDefinitionId: S.optional(S.String),
-          targetResource: S.optional(__S(216, __c27, 0)),
-          resolveTo: S.optional(__S(218, __c27, 2)),
+          targetResource: S.optional(__S(2672, __c167, 0)),
+          resolveTo: S.optional(__S(2656, __c166, 0)),
         }),
       ).annotate({ identifier: "ActionSummary" });
-    case 1:
-      return S.Array(__S(384, __c48, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ actionSummaries: __S(385, __c48, 1), nextToken: S.String }),
-      ).annotate({ identifier: "ListActionsResponse" });
+      return S.Array(__S(81, __c5, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ actionSummaries: __S(82, __c5, 2), nextToken: S.String }),
+      ).annotate({ identifier: "ListActionsResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -12943,7 +9461,7 @@ function __c48(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListApplicationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -12954,13 +9472,17 @@ function __c48(j: number): any {
           workspaceName: S.String,
         }),
       ).annotate({ identifier: "ApplicationSummary" });
-    case 5:
-      return S.Array(__S(388, __c48, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(97, __c6, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), applications: __S(389, __c48, 5) }),
+        S.Struct({ nextToken: S.optional(S.String), applications: __S(98, __c6, 2) }),
       ).annotate({ identifier: "ListApplicationsResponse" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
@@ -12980,20 +9502,20 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListAssetModelCompositeModelsRequest",
       });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          assetModelCompositeModelSummaries: __S(247, __c30, 7),
+          assetModelCompositeModelSummaries: __S(2849, __c178, 1),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAssetModelCompositeModelsResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
@@ -13014,13 +9536,13 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ListAssetModelPropertiesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ interfaceAssetModelId: S.String, interfaceAssetModelPropertyId: S.String }),
       ).annotate({ identifier: "InterfaceSummary" });
+    case 2:
+      return S.Array(__S(129, __c8, 1));
     case 3:
-      return S.Array(__S(394, __c49, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -13029,29 +9551,33 @@ function __c49(j: number): any {
           dataType: S.String,
           dataTypeSpec: S.optional(S.String),
           unit: S.optional(S.String),
-          type: __S(102, __c12, 6),
+          type: __S(1692, __c105, 12),
           assetModelCompositeModelId: S.optional(S.String),
-          path: S.optional(__S(92, __c11, 4)),
-          interfaceSummaries: S.optional(__S(395, __c49, 3)),
+          path: S.optional(__S(1664, __c104, 0)),
+          interfaceSummaries: S.optional(__S(130, __c8, 2)),
         }),
       ).annotate({
         identifier: "AssetModelPropertySummary",
       });
+    case 4:
+      return S.Array(__S(131, __c8, 3));
     case 5:
-      return S.Array(__S(396, __c49, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          assetModelPropertySummaries: __S(397, __c49, 5),
+          assetModelPropertySummaries: __S(132, __c8, 4),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAssetModelPropertiesResponse",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          assetModelTypes: S.optional(__S(26, __c3, 2)).pipe(T.HttpQuery("assetModelTypes")),
+          assetModelTypes: S.optional(__S(1296, __c81, 0)).pipe(T.HttpQuery("assetModelTypes")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           assetModelVersion: S.optional(S.String).pipe(T.HttpQuery("assetModelVersion")),
@@ -13059,11 +9585,7 @@ function __c49(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/asset-models" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListAssetModelsRequest" });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -13074,17 +9596,21 @@ function __c50(j: number): any {
           description: S.optional(S.String),
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: __S(85, __c10, 5),
+          status: __S(1585, __c99, 1),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssetModelSummary" });
-    case 1:
-      return S.Array(__S(400, __c50, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ assetModelSummaries: __S(401, __c50, 1), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListAssetModelsResponse" });
+      return S.Array(__S(145, __c9, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ assetModelSummaries: __S(146, __c9, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAssetModelsResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assetId: S.String.pipe(T.HttpLabel("assetId")),
@@ -13104,30 +9630,31 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ListAssetPropertiesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           externalId: S.optional(S.String),
           alias: S.optional(S.String),
           unit: S.optional(S.String),
-          notification: S.optional(__S(223, __c27, 7)),
+          notification: S.optional(__S(2768, __c173, 0)),
           assetCompositeModelId: S.optional(S.String),
-          path: S.optional(__S(225, __c28, 1)),
+          path: S.optional(__S(2770, __c173, 2)),
         }),
       ).annotate({ identifier: "AssetPropertySummary" });
-    case 5:
-      return S.Array(__S(404, __c50, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(161, __c10, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          assetPropertySummaries: __S(405, __c50, 5),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ assetPropertySummaries: __S(162, __c10, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAssetPropertiesResponse",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assetId: S.String.pipe(T.HttpLabel("assetId")),
@@ -13147,33 +9674,33 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ListAssetRelationshipsRequest",
       });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ parentAssetId: S.optional(S.String), childAssetId: S.optional(S.String) }),
       ).annotate({ identifier: "AssetHierarchyInfo" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          hierarchyInfo: S.optional(__S(408, __c51, 0)),
+          hierarchyInfo: S.optional(__S(177, __c11, 1)),
           relationshipType: S.String,
         }),
       ).annotate({ identifier: "AssetRelationshipSummary" });
-    case 2:
-      return S.Array(__S(409, __c51, 1));
     case 3:
+      return S.Array(__S(178, __c11, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          assetRelationshipSummaries: __S(410, __c51, 2),
+          assetRelationshipSummaries: __S(179, __c11, 3),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAssetRelationshipsResponse",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -13182,7 +9709,15 @@ function __c51(j: number): any {
           filter: S.optional(S.String).pipe(T.HttpQuery("filter")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/assets" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAssetsRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ assetSummaries: __S(209, __c13, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAssetsResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -13192,20 +9727,16 @@ function __c51(j: number): any {
           assetModelId: S.String,
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: __S(85, __c10, 5),
-          hierarchies: __S(229, __c28, 5),
+          status: __S(1585, __c99, 1),
+          hierarchies: __S(2737, __c171, 1),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssetSummary" });
-    case 6:
-      return S.Array(__S(413, __c51, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ assetSummaries: __S(414, __c51, 6), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListAssetsResponse" });
+    case 1:
+      return S.Array(__S(208, __c13, 0));
   }
 }
-function __c52(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13230,11 +9761,15 @@ function __c52(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ assetSummaries: __S(414, __c51, 6), nextToken: S.optional(S.String) }),
+        S.Struct({ assetSummaries: __S(209, __c13, 1), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAssociatedAssetsResponse",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -13245,19 +9780,23 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ListBulkImportJobsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ id: S.String, name: S.String, status: S.String })).annotate(
         { identifier: "JobSummary" },
       );
-    case 4:
-      return S.Array(__S(419, __c52, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(241, __c15, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ jobSummaries: __S(420, __c52, 4), nextToken: S.optional(S.String) }),
+        S.Struct({ jobSummaries: __S(242, __c15, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListBulkImportJobsResponse",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
@@ -13279,7 +9818,7 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ListCompositionRelationshipsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           assetModelId: S.String,
@@ -13289,42 +9828,42 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "CompositionRelationshipSummary",
       });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(423, __c52, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(257, __c16, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          compositionRelationshipSummaries: __S(424, __c53, 0),
+          compositionRelationshipSummaries: __S(258, __c16, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCompositionRelationshipsResponse",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ assetId: S.String })).annotate({
         identifier: "AssetBindingValueFilter",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ assetModelId: S.String })).annotate({
         identifier: "AssetModelBindingValueFilter",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          asset: S.optional(__S(426, __c53, 2)),
-          assetModel: S.optional(__S(427, __c53, 3)),
-          assetProperty: S.optional(__S(125, __c15, 5)),
-          assetModelProperty: S.optional(__S(124, __c15, 4)),
+          asset: S.optional(__S(272, __c17, 0)),
+          assetModel: S.optional(__S(273, __c17, 1)),
+          assetProperty: S.optional(__S(1793, __c112, 1)),
+          assetModelProperty: S.optional(__S(1792, __c112, 0)),
         }),
       ).annotate({ identifier: "DataBindingValueFilter" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          dataBindingValueFilter: __S(428, __c53, 4),
+          dataBindingValueFilter: __S(274, __c17, 2),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -13340,42 +9879,42 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "ListComputationModelDataBindingUsagesRequest",
       });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelProperty: S.optional(__S(1792, __c112, 0)),
+          assetProperty: S.optional(__S(1793, __c112, 1)),
+        }),
+      ).annotate({ identifier: "DataBindingValue" });
+    case 5:
+      return S.suspend(() => S.Struct({ value: __S(276, __c17, 4) })).annotate({
+        identifier: "MatchedDataBinding",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          assetModelProperty: S.optional(__S(124, __c15, 4)),
-          assetProperty: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({ identifier: "DataBindingValue" });
-    case 7:
-      return S.suspend(() => S.Struct({ value: __S(430, __c53, 6) })).annotate({
-        identifier: "MatchedDataBinding",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          computationModelIds: __S(11, __c1, 3),
-          matchedDataBinding: __S(431, __c53, 7),
+          computationModelIds: __S(1200, __c75, 0),
+          matchedDataBinding: __S(277, __c17, 5),
         }),
       ).annotate({
         identifier: "ComputationModelDataBindingUsageSummary",
       });
-    case 1:
-      return S.Array(__S(432, __c54, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(278, __c17, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          dataBindingUsageSummaries: __S(433, __c54, 1),
+          dataBindingUsageSummaries: __S(279, __c17, 7),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListComputationModelDataBindingUsagesResponse",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           computationModelId: S.String.pipe(T.HttpLabel("computationModelId")),
@@ -13397,22 +9936,26 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ListComputationModelResolveToResourcesRequest",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ resolveTo: S.optional(__S(218, __c27, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ resolveTo: S.optional(__S(2656, __c166, 0)) })).annotate({
         identifier: "ComputationModelResolveToResourceSummary",
       });
-    case 5:
-      return S.Array(__S(436, __c54, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(289, __c18, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          computationModelResolveToResourceSummaries: __S(437, __c54, 5),
+          computationModelResolveToResourceSummaries: __S(290, __c18, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListComputationModelResolveToResourcesResponse",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           computationModelType: S.optional(S.String).pipe(T.HttpQuery("computationModelType")),
@@ -13431,11 +9974,7 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ListComputationModelsRequest",
       });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -13445,22 +9984,26 @@ function __c55(j: number): any {
           type: S.String,
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: __S(85, __c10, 5),
+          status: __S(1585, __c99, 1),
           version: S.String,
         }),
       ).annotate({ identifier: "ComputationModelSummary" });
-    case 1:
-      return S.Array(__S(440, __c55, 0));
     case 2:
+      return S.Array(__S(305, __c19, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          computationModelSummaries: __S(441, __c55, 1),
+          computationModelSummaries: __S(306, __c19, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListComputationModelsResponse",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.HttpQuery("projectId")),
@@ -13468,7 +10011,15 @@ function __c55(j: number): any {
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/dashboards" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDashboardsRequest" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ dashboardSummaries: __S(337, __c21, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDashboardsResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -13478,13 +10029,13 @@ function __c55(j: number): any {
           lastUpdateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DashboardSummary" });
-    case 5:
-      return S.Array(__S(444, __c55, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ dashboardSummaries: __S(445, __c55, 5), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListDashboardsResponse" });
-    case 7:
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.String.pipe(T.HttpLabel("datasetId")),
@@ -13504,34 +10055,34 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "ListDatasetDataSegmentRelationshipsRequest",
       });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           targetDatasetId: S.String,
           sourceDatasetId: S.String,
           timeSeriesId: S.String,
-          startTimestamp: __S(4, __c0, 4),
-          endTimestamp: __S(4, __c0, 4),
+          startTimestamp: __S(1088, __c68, 0),
+          endTimestamp: __S(1088, __c68, 0),
         }),
       ).annotate({
         identifier: "DataSegmentRelationshipSummary",
       });
-    case 1:
-      return S.Array(__S(448, __c56, 0));
     case 2:
+      return S.Array(__S(353, __c22, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          dataSegmentRelationshipSummaries: __S(449, __c56, 1),
+          dataSegmentRelationshipSummaries: __S(354, __c22, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDatasetDataSegmentRelationshipsResponse",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.String.pipe(T.HttpLabel("datasetId")),
@@ -13552,27 +10103,31 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ListDatasetDataSegmentsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sourceDatasetId: S.String,
           timeSeriesId: S.String,
-          startTimestamp: __S(4, __c0, 4),
-          endTimestamp: __S(4, __c0, 4),
+          startTimestamp: __S(1088, __c68, 0),
+          endTimestamp: __S(1088, __c68, 0),
           alias: S.String,
           dataType: S.String,
-          enrichment: S.optional(__S(275, __c34, 3)),
+          enrichment: S.optional(__S(3024, __c189, 0)),
         }),
       ).annotate({ identifier: "DataSegmentSummary" });
-    case 5:
-      return S.Array(__S(452, __c56, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(369, __c23, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ dataSegments: __S(453, __c56, 5), nextToken: S.optional(S.String) }),
+        S.Struct({ dataSegments: __S(370, __c23, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDatasetDataSegmentsResponse",
       });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
@@ -13592,11 +10147,7 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ListDatasetExportJobsRequest",
       });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           jobId: S.String,
@@ -13606,15 +10157,19 @@ function __c57(j: number): any {
           destinationS3Uri: S.String,
         }),
       ).annotate({ identifier: "ExportJobSummary" });
-    case 1:
-      return S.Array(__S(456, __c57, 0));
     case 2:
+      return S.Array(__S(385, __c24, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ jobs: __S(457, __c57, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ jobs: __S(386, __c24, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDatasetExportJobsResponse",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceType: S.String.pipe(T.HttpQuery("sourceType")),
@@ -13624,7 +10179,7 @@ function __c57(j: number): any {
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/datasets" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDatasetsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -13635,21 +10190,25 @@ function __c57(j: number): any {
           datasetType: S.optional(S.String),
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: __S(85, __c10, 5),
-          enrichmentStatus: S.optional(__S(276, __c34, 4)),
+          status: __S(1585, __c99, 1),
+          enrichmentStatus: S.optional(__S(3040, __c190, 0)),
         }),
       ).annotate({ identifier: "DatasetSummary" });
-    case 5:
-      return S.Array(__S(460, __c57, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(401, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          datasetSummaries: __S(461, __c57, 5),
+          datasetSummaries: __S(402, __c25, 2),
           nextToken: S.optional(S.String),
           workspaceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDatasetsResponse" });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
@@ -13679,11 +10238,7 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ListEnrichmentJobsRequest",
       });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           jobId: S.String,
@@ -13697,15 +10252,19 @@ function __c58(j: number): any {
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "EnrichmentJobSummary" });
-    case 1:
-      return S.Array(__S(464, __c58, 0));
     case 2:
+      return S.Array(__S(417, __c26, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ jobs: __S(465, __c58, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ jobs: __S(418, __c26, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListEnrichmentJobsResponse",
       });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetResourceType: S.String.pipe(T.HttpQuery("targetResourceType")),
@@ -13717,27 +10276,31 @@ function __c58(j: number): any {
           actionType: S.optional(S.String).pipe(T.HttpQuery("actionType")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/executions" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListExecutionsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           executionId: S.String,
           actionType: S.optional(S.String),
-          targetResource: __S(216, __c27, 0),
+          targetResource: __S(2672, __c167, 0),
           targetResourceVersion: S.String,
-          resolveTo: S.optional(__S(218, __c27, 2)),
+          resolveTo: S.optional(__S(2656, __c166, 0)),
           executionStartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           executionEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          executionStatus: __S(88, __c11, 0),
+          executionStatus: __S(1696, __c106, 0),
           executionEntityVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecutionSummary" });
-    case 5:
-      return S.Array(__S(468, __c58, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(433, __c27, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ executionSummaries: __S(469, __c58, 5), nextToken: S.optional(S.String) }),
+        S.Struct({ executionSummaries: __S(434, __c27, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListExecutionsResponse" });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -13746,29 +10309,29 @@ function __c58(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/20200301/gateways" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListGatewaysRequest" });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           gatewayId: S.String,
           gatewayName: S.String,
-          gatewayPlatform: S.optional(__S(156, __c19, 4)),
+          gatewayPlatform: S.optional(__S(1987, __c124, 3)),
           gatewayVersion: S.optional(S.String),
-          gatewayCapabilitySummaries: S.optional(__S(290, __c36, 2)),
+          gatewayCapabilitySummaries: S.optional(__S(3169, __c198, 1)),
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "GatewaySummary" });
-    case 1:
-      return S.Array(__S(472, __c59, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ gatewaySummaries: __S(473, __c59, 1), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListGatewaysResponse" });
+      return S.Array(__S(449, __c28, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ gatewaySummaries: __S(450, __c28, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListGatewaysResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           interfaceAssetModelId: S.String.pipe(T.HttpLabel("interfaceAssetModelId")),
@@ -13787,22 +10350,26 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ListInterfaceRelationshipsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ id: S.String })).annotate({
         identifier: "InterfaceRelationshipSummary",
       });
-    case 5:
-      return S.Array(__S(476, __c59, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(465, __c29, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          interfaceRelationshipSummaries: __S(477, __c59, 5),
+          interfaceRelationshipSummaries: __S(466, __c29, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListInterfaceRelationshipsResponse",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
@@ -13838,33 +10405,33 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ListPipelineExecutionsRequest",
       });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pipelineExecutionId: S.String,
           pipelineVersion: S.String,
-          status: __S(301, __c37, 5),
+          status: __S(3265, __c204, 1),
           executionPriority: S.optional(S.Number),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "PipelineExecutionSummary" });
-    case 1:
-      return S.Array(__S(480, __c60, 0));
     case 2:
+      return S.Array(__S(481, __c30, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pipelineExecutionSummaries: __S(481, __c60, 1),
+          pipelineExecutionSummaries: __S(482, __c30, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPipelineExecutionsResponse",
       });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
@@ -13881,36 +10448,36 @@ function __c60(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListPipelinesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pipelineName: S.String,
           description: S.optional(S.String),
           pipelineArn: S.String,
           version: S.String,
-          status: __S(164, __c20, 4),
+          status: __S(2032, __c127, 0),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "PipelineSummary" });
-    case 5:
-      return S.Array(__S(484, __c60, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(497, __c31, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ pipelineSummaries: __S(485, __c60, 5), nextToken: S.optional(S.String) }),
+        S.Struct({ pipelineSummaries: __S(498, __c31, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPipelinesResponse" });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/portals" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListPortalsRequest" });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -13920,20 +10487,24 @@ function __c61(j: number): any {
           creationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           roleArn: S.optional(S.String),
-          status: __S(171, __c21, 3),
+          status: __S(2112, __c132, 0),
           portalType: S.optional(S.String),
         }),
       ).annotate({ identifier: "PortalSummary" });
-    case 1:
-      return S.Array(__S(488, __c61, 0));
     case 2:
+      return S.Array(__S(513, __c32, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          portalSummaries: S.optional(__S(489, __c61, 1)),
+          portalSummaries: S.optional(__S(514, __c32, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPortalsResponse" });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.HttpLabel("projectId")),
@@ -13950,13 +10521,17 @@ function __c61(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListProjectAssetsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ assetIds: __S(11, __c1, 3), nextToken: S.optional(S.String) }),
+        S.Struct({ assetIds: __S(1200, __c75, 0), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListProjectAssetsResponse",
       });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           portalId: S.String.pipe(T.HttpQuery("portalId")),
@@ -13964,11 +10539,15 @@ function __c61(j: number): any {
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/projects" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListProjectsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ projectSummaries: __S(445, __c55, 5), nextToken: S.optional(S.String) }),
+        S.Struct({ projectSummaries: __S(337, __c21, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListProjectsResponse" });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
@@ -13986,11 +10565,7 @@ function __c61(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListQueriesRequest" });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           queryId: S.String,
@@ -13999,29 +10574,33 @@ function __c62(j: number): any {
           completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "QuerySummary" });
-    case 1:
-      return S.Array(__S(496, __c62, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ queries: __S(497, __c62, 1), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListQueriesResponse" });
+      return S.Array(__S(561, __c35, 1));
     case 3:
       return S.suspend(() =>
+        S.Struct({ queries: __S(562, __c35, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListQueriesResponse" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
-          statusFilter: S.optional(__S(26, __c3, 2)),
+          statusFilter: S.optional(__S(1296, __c81, 0)),
           startedAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           startedBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          groupIdFilter: S.optional(__S(11, __c1, 3)),
-          searchTypeFilter: S.optional(__S(26, __c3, 2)),
+          groupIdFilter: S.optional(__S(1200, __c75, 0)),
+          searchTypeFilter: S.optional(__S(1296, __c81, 0)),
         }),
       ).annotate({ identifier: "ListSearchesFilters" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
-          listSearchesFilters: S.optional(__S(499, __c62, 3)),
+          listSearchesFilters: S.optional(__S(576, __c36, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/searches/list" }),
@@ -14033,13 +10612,17 @@ function __c62(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListSearchesRequest" });
-    case 5:
-      return S.Array(__S(320, __c40, 0));
-    case 6:
+    case 2:
+      return S.Array(__S(3360, __c210, 0));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ searchSummaries: __S(501, __c62, 5), nextToken: S.optional(S.String) }),
+        S.Struct({ searchSummaries: __S(578, __c36, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSearchesResponse" });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/tags" }), svc, auth, proto, ver, rules),
@@ -14047,15 +10630,15 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(76, __c9, 4)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(1504, __c94, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
@@ -14072,25 +10655,29 @@ function __c63(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTasksRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           taskName: S.String,
           description: S.optional(S.String),
           taskArn: S.String,
           version: S.String,
-          status: __S(164, __c20, 4),
+          status: __S(2032, __c127, 0),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "TaskSummary" });
+    case 2:
+      return S.Array(__S(609, __c38, 1));
     case 3:
-      return S.Array(__S(506, __c63, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ taskSummaries: __S(507, __c63, 3), nextToken: S.optional(S.String) }),
+        S.Struct({ taskSummaries: __S(610, __c38, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTasksResponse" });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -14101,7 +10688,7 @@ function __c63(j: number): any {
           workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/timeseries" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTimeSeriesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           assetId: S.optional(S.String),
@@ -14115,59 +10702,63 @@ function __c63(j: number): any {
           timeSeriesArn: S.String,
         }),
       ).annotate({ identifier: "TimeSeriesSummary" });
-    case 7:
-      return S.Array(__S(510, __c63, 6));
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(625, __c39, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          TimeSeriesSummaries: __S(511, __c63, 7),
+          TimeSeriesSummaries: __S(626, __c39, 2),
           nextToken: S.optional(S.String),
           workspaceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTimeSeriesResponse" });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/workspaces" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListWorkspacesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           arn: S.String,
-          status: __S(186, __c23, 2),
+          status: __S(2240, __c140, 0),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "WorkspaceSummary" });
+    case 2:
+      return S.Array(__S(641, __c40, 1));
     case 3:
-      return S.Array(__S(514, __c64, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ workspaceSummaries: __S(515, __c64, 3), nextToken: S.optional(S.String) }),
+        S.Struct({ workspaceSummaries: __S(642, __c40, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWorkspacesResponse" });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           matchByPropertyName: S.optional(S.Boolean),
           createMissingProperty: S.optional(S.Boolean),
-          overrides: S.optional(__S(258, __c32, 2)),
+          overrides: S.optional(__S(2913, __c182, 1)),
         }),
       ).annotate({
         identifier: "PropertyMappingConfiguration",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
           interfaceAssetModelId: S.String.pipe(T.HttpLabel("interfaceAssetModelId")),
-          propertyMappingConfiguration: __S(517, __c64, 5),
+          propertyMappingConfiguration: __S(656, __c41, 0),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -14185,7 +10776,41 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "PutAssetModelInterfaceRelationshipRequest",
       });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.String.pipe(T.HttpLabel("assetId")),
+          hierarchyId: S.String,
+          childAssetId: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/assets/{assetId}/associate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "AssociateAssetsRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AssociateAssetsResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ encryptionType: S.String, kmsKeyId: S.optional(S.String) }).pipe(
           T.all(
@@ -14202,23 +10827,28 @@ function __c64(j: number): any {
       });
   }
 }
-function __c65(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ loggingOptions: __S(295, __c36, 7), workspaceName: S.optional(S.String) }).pipe(
-          T.all(T.Http({ method: "PUT", uri: "/logging" }), svc, auth, proto, ver, rules),
-        ),
+        S.Struct({
+          loggingOptions: __S(3216, __c201, 0),
+          workspaceName: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "PUT", uri: "/logging" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutLoggingOptionsRequest" });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           storageType: S.String,
-          multiLayerStorage: S.optional(__S(323, __c40, 3)),
+          multiLayerStorage: S.optional(__S(3393, __c212, 1)),
           disassociatedDataStorage: S.optional(S.String),
-          retentionPeriod: S.optional(__S(324, __c40, 4)),
+          retentionPeriod: S.optional(__S(3394, __c212, 2)),
           warmTier: S.optional(S.String),
-          warmTierRetentionPeriod: S.optional(__S(324, __c40, 4)),
+          warmTierRetentionPeriod: S.optional(__S(3394, __c212, 2)),
           disallowIngestNullNaN: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -14233,28 +10863,32 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "PutStorageConfigurationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           storageType: S.String,
-          multiLayerStorage: S.optional(__S(323, __c40, 3)),
+          multiLayerStorage: S.optional(__S(3393, __c212, 1)),
           disassociatedDataStorage: S.optional(S.String),
-          retentionPeriod: S.optional(__S(324, __c40, 4)),
-          configurationStatus: __S(282, __c35, 2),
+          retentionPeriod: S.optional(__S(3394, __c212, 2)),
+          configurationStatus: __S(3105, __c194, 1),
           warmTier: S.optional(S.String),
-          warmTierRetentionPeriod: S.optional(__S(324, __c40, 4)),
+          warmTierRetentionPeriod: S.optional(__S(3394, __c212, 2)),
           disallowIngestNullNaN: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "PutStorageConfigurationResponse",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
           pipelineName: S.String.pipe(T.HttpLabel("pipelineName")),
-          executionEnvironmentVariableOverrides: S.optional(__S(303, __c37, 7)),
-          executionMountOverrides: S.optional(__S(305, __c38, 1)),
+          executionEnvironmentVariableOverrides: S.optional(__S(3281, __c205, 1)),
+          executionMountOverrides: S.optional(__S(3283, __c205, 3)),
           executionPriority: S.optional(S.Number),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -14273,11 +10907,15 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "StartPipelineExecutionRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ pipelineExecutionId: S.String })).annotate({
         identifier: "StartPipelineExecutionResponse",
       });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -14294,28 +10932,28 @@ function __c65(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartQueryRequest" });
-    case 6:
-      return S.Array(__S(140, __c17, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          timeSeriesIds: S.optional(__S(11, __c1, 3)),
-          datasetIds: S.optional(__S(11, __c1, 3)),
-          timeIntervals: S.optional(__S(526, __c65, 6)),
-        }),
-      ).annotate({ identifier: "SearchFilters" });
   }
 }
-function __c66(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(1888, __c118, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          timeSeriesIds: S.optional(__S(1200, __c75, 0)),
+          datasetIds: S.optional(__S(1200, __c75, 0)),
+          timeIntervals: S.optional(__S(784, __c49, 0)),
+        }),
+      ).annotate({ identifier: "SearchFilters" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
           queryStatement: SensitiveString,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           searchType: S.optional(S.String),
-          searchFilters: S.optional(__S(527, __c65, 7)),
+          searchFilters: S.optional(__S(785, __c49, 1)),
           groupId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -14328,7 +10966,7 @@ function __c66(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartSearchRequest" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           searchId: S.String,
@@ -14337,26 +10975,38 @@ function __c66(j: number): any {
           groupId: S.optional(S.String),
         }),
       ).annotate({ identifier: "StartSearchResponse" });
-    case 2:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          tags: __S(76, __c9, 4),
+          tags: __S(1504, __c94, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          tagKeys: __S(11, __c1, 3).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(1200, __c75, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessPolicyId: S.String.pipe(T.HttpLabel("accessPolicyId")),
-          accessPolicyIdentity: __S(74, __c9, 2),
-          accessPolicyResource: __S(75, __c9, 3),
+          accessPolicyIdentity: __S(1522, __c95, 2),
+          accessPolicyResource: __S(1523, __c95, 3),
           accessPolicyPermission: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -14372,7 +11022,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "UpdateAccessPolicyRequest",
       });
-    case 5:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assetId: S.String.pipe(T.HttpLabel("assetId")),
@@ -14384,16 +11038,52 @@ function __c66(j: number): any {
           T.all(T.Http({ method: "PUT", uri: "/assets/{assetId}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateAssetRequest" });
-    case 6:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.String.pipe(T.HttpQuery("alias")),
+          assetId: S.String.pipe(T.HttpQuery("assetId")),
+          propertyId: S.String.pipe(T.HttpQuery("propertyId")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/timeseries/associate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateTimeSeriesToAssetPropertyRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AssociateTimeSeriesToAssetPropertyResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
           assetModelExternalId: S.optional(S.String),
           assetModelName: S.String,
           assetModelDescription: S.optional(S.String),
-          assetModelProperties: S.optional(__S(241, __c30, 1)),
-          assetModelHierarchies: S.optional(__S(243, __c30, 3)),
-          assetModelCompositeModels: S.optional(__S(245, __c30, 5)),
+          assetModelProperties: S.optional(__S(2865, __c179, 1)),
+          assetModelHierarchies: S.optional(__S(2833, __c177, 1)),
+          assetModelCompositeModels: S.optional(__S(2835, __c177, 3)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           ifMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
           ifNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
@@ -14409,7 +11099,11 @@ function __c66(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateAssetModelRequest" });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
@@ -14418,7 +11112,7 @@ function __c66(j: number): any {
           assetModelCompositeModelDescription: S.optional(S.String),
           assetModelCompositeModelName: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          assetModelCompositeModelProperties: S.optional(__S(241, __c30, 1)),
+          assetModelCompositeModelProperties: S.optional(__S(2865, __c179, 1)),
           ifMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
           ifNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
           matchForVersionType: S.optional(S.String).pipe(T.HttpHeader("Match-For-Version-Type")),
@@ -14438,21 +11132,21 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "UpdateAssetModelCompositeModelRequest",
       });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          assetModelCompositeModelPath: __S(112, __c14, 0),
-          assetModelStatus: __S(85, __c10, 5),
+          assetModelCompositeModelPath: __S(1728, __c108, 0),
+          assetModelStatus: __S(1585, __c99, 1),
           assetModelId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateAssetModelCompositeModelResponse",
       });
-    case 1:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assetId: S.String.pipe(T.HttpLabel("assetId")),
@@ -14474,14 +11168,18 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "UpdateAssetPropertyRequest",
       });
-    case 2:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           computationModelId: S.String.pipe(T.HttpLabel("computationModelId")),
           computationModelName: S.String,
           computationModelDescription: S.optional(S.String),
-          computationModelConfiguration: __S(123, __c15, 3),
-          computationModelDataBinding: __S(128, __c16, 0),
+          computationModelConfiguration: __S(1809, __c113, 1),
+          computationModelDataBinding: __S(1812, __c113, 4),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -14496,7 +11194,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "UpdateComputationModelRequest",
       });
-    case 3:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dashboardId: S.String.pipe(T.HttpLabel("dashboardId")),
@@ -14515,16 +11217,20 @@ function __c67(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateDashboardRequest" });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.String.pipe(T.HttpLabel("datasetId")),
           workspaceName: S.optional(S.String),
           datasetName: S.String,
           datasetDescription: S.optional(S.String),
-          datasetConfig: S.optional(__S(134, __c16, 6)),
-          metadata: S.optional(__S(76, __c9, 4)),
-          datasetSource: __S(137, __c17, 1),
+          datasetConfig: S.optional(__S(1857, __c116, 1)),
+          metadata: S.optional(__S(1504, __c94, 0)),
+          datasetSource: __S(1860, __c116, 4),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -14537,15 +11243,19 @@ function __c67(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateDatasetRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.optional(S.String),
           datasetArn: S.optional(S.String),
-          datasetStatus: S.optional(__S(85, __c10, 5)),
+          datasetStatus: S.optional(__S(1585, __c99, 1)),
         }),
       ).annotate({ identifier: "UpdateDatasetResponse" });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
@@ -14561,7 +11271,11 @@ function __c67(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateGatewayRequest" });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
@@ -14580,24 +11294,24 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "UpdateGatewayCapabilityConfigurationRequest",
       });
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ capabilityNamespace: S.String, capabilitySyncStatus: S.String }),
       ).annotate({
         identifier: "UpdateGatewayCapabilityConfigurationResponse",
       });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
           pipelineName: S.String.pipe(T.HttpLabel("pipelineName")),
           description: S.optional(S.String),
-          environmentVariables: S.optional(__S(159, __c19, 7)),
-          computations: S.optional(__S(161, __c20, 1)),
+          environmentVariables: S.optional(__S(2048, __c128, 0)),
+          computations: S.optional(__S(2065, __c129, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/workspaces/{workspaceName}/pipelines/{pipelineName}" }),
@@ -14609,28 +11323,36 @@ function __c68(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdatePipelineRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ version: S.String, status: __S(164, __c20, 4) })).annotate({
-        identifier: "UpdatePipelineResponse",
-      });
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), file: S.optional(__S(166, __c20, 6)) }),
+        S.Struct({ version: S.String, status: __S(2032, __c127, 0) }),
+      ).annotate({ identifier: "UpdatePipelineResponse" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), file: S.optional(__S(2096, __c131, 0)) }),
       ).annotate({ identifier: "Image" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           portalId: S.String.pipe(T.HttpLabel("portalId")),
           portalName: S.String,
           portalDescription: S.optional(S.String),
           portalContactEmail: SensitiveString,
-          portalLogoImage: S.optional(__S(547, __c68, 3)),
+          portalLogoImage: S.optional(__S(1056, __c66, 0)),
           roleArn: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           notificationSenderEmail: S.optional(SensitiveString),
-          alarms: S.optional(__S(167, __c20, 7)),
+          alarms: S.optional(__S(2128, __c133, 0)),
           portalType: S.optional(S.String),
-          portalTypeConfiguration: S.optional(__S(169, __c21, 1)),
+          portalTypeConfiguration: S.optional(__S(2130, __c133, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/portals/{portalId}" }),
@@ -14642,7 +11364,85 @@ function __c68(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdatePortalRequest" });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+          workspaceName: S.String,
+          associateDataSegmentEntries: __S(1105, __c69, 1),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/datasets/{datasetId}/data-segments/associate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchAssociateDataSegmentsToDatasetRequest",
+      });
+    case 1:
+      return S.Array(__S(1106, __c69, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.String,
+          datasetVersion: S.String,
+          failedAssociations: __S(1073, __c67, 1),
+        }),
+      ).annotate({
+        identifier: "BatchAssociateDataSegmentsToDatasetResponse",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ timeInSeconds: S.Number, offsetInNanos: S.optional(S.Number) }),
+      ).annotate({ identifier: "TimeInNanos" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceDatasetId: S.String,
+          timeSeriesId: S.String,
+          startTimestamp: __S(1088, __c68, 0),
+          endTimestamp: __S(1088, __c68, 0),
+        }),
+      ).annotate({
+        identifier: "AssociateDataSegmentEntry",
+      });
+    case 1:
+      return S.Array(__S(1104, __c69, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sourceDatasetId: S.String,
+          timeSeriesId: S.String,
+          startTimestamp: __S(1088, __c68, 0),
+          endTimestamp: __S(1088, __c68, 0),
+          errorCode: S.String,
+          errorMessage: S.String,
+        }),
+      ).annotate({
+        identifier: "FailedDataSegmentAssociation",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.HttpLabel("projectId")),
@@ -14660,13 +11460,17 @@ function __c68(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateProjectRequest" });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
           taskName: S.String.pipe(T.HttpLabel("taskName")),
           description: S.optional(S.String),
-          taskConfiguration: S.optional(__S(181, __c22, 5)),
+          taskConfiguration: S.optional(__S(2194, __c137, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/workspaces/{workspaceName}/tasks/{taskName}" }),
@@ -14678,12 +11482,16 @@ function __c68(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateTaskRequest" });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
           workspaceDescription: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(184, __c23, 0)),
+          encryptionConfiguration: S.optional(__S(2224, __c139, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -14698,7 +11506,3814 @@ function __c68(j: number): any {
       ).annotate({ identifier: "UpdateWorkspaceRequest" });
   }
 }
-
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.HttpLabel("projectId")),
+          assetIds: __S(1200, __c75, 0),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/projects/{projectId}/assets/associate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchAssociateProjectAssetsRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ assetId: S.String, code: S.String, message: S.String }),
+      ).annotate({ identifier: "AssetErrorDetails" });
+    case 1:
+      return S.Array(__S(1184, __c74, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ errors: S.optional(__S(1185, __c74, 1)) })).annotate({
+        identifier: "BatchAssociateProjectAssetsResponse",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeSeriesId: S.String,
+          startTimestamp: __S(1088, __c68, 0),
+          endTimestamp: __S(1088, __c68, 0),
+        }),
+      ).annotate({ identifier: "DeleteDataSegmentEntry" });
+    case 1:
+      return S.Array(__S(1216, __c76, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+          workspaceName: S.String,
+          deleteDataSegmentEntries: __S(1217, __c76, 1),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/datasets/{datasetId}/data-segments/batch-delete" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteDatasetDataSegmentsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          timeSeriesId: S.String,
+          startTimestamp: __S(1088, __c68, 0),
+          endTimestamp: __S(1088, __c68, 0),
+          errorCode: S.String,
+          errorMessage: S.String,
+        }),
+      ).annotate({
+        identifier: "FailedDataSegmentDeletion",
+      });
+    case 4:
+      return S.Array(__S(1219, __c76, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ datasetId: S.String, datasetVersion: S.String, errors: __S(1220, __c76, 4) }),
+      ).annotate({
+        identifier: "BatchDeleteDatasetDataSegmentsResponse",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+          workspaceName: S.String,
+          disassociateDataSegmentEntries: __S(1105, __c69, 1),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/datasets/{datasetId}/data-segments/disassociate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchDisassociateDataSegmentsFromDatasetRequest",
+      });
+    case 1:
+      return S.Array(__S(1106, __c69, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.String,
+          datasetVersion: S.String,
+          failedDisassociations: __S(1233, __c77, 1),
+        }),
+      ).annotate({
+        identifier: "BatchDisassociateDataSegmentsFromDatasetResponse",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.HttpLabel("projectId")),
+          assetIds: __S(1200, __c75, 0),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/projects/{projectId}/assets/disassociate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchDisassociateProjectAssetsRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entryId: S.String,
+          assetId: S.optional(S.String),
+          propertyId: S.optional(S.String),
+          propertyAlias: S.optional(S.String),
+          aggregateTypes: __S(1296, __c81, 0),
+          resolution: S.String,
+          startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          endDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          qualities: S.optional(__S(1296, __c81, 0)),
+          timeOrdering: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyAggregatesEntry",
+      });
+    case 1:
+      return S.Array(__S(1264, __c79, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: __S(1265, __c79, 1),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/properties/batch/aggregates" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyAggregatesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ entryId: S.String, aggregatedValues: __S(1314, __c82, 2) }),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyAggregatesSuccessEntry",
+      });
+    case 4:
+      return S.Array(__S(1267, __c79, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          errorEntries: __S(1281, __c80, 1),
+          successEntries: __S(1268, __c79, 4),
+          skippedEntries: __S(1284, __c80, 4),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyAggregatesResponse",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.String,
+          errorMessage: S.String,
+          entryId: S.String,
+        }),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyAggregatesErrorEntry",
+      });
+    case 1:
+      return S.Array(__S(1280, __c80, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.String,
+          errorTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyAggregatesErrorInfo",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          entryId: S.String,
+          completionStatus: S.String,
+          errorInfo: S.optional(__S(1282, __c80, 2)),
+        }),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyAggregatesSkippedEntry",
+      });
+    case 4:
+      return S.Array(__S(1283, __c80, 3));
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          average: S.optional(S.Number),
+          count: S.optional(S.Number),
+          maximum: S.optional(S.Number),
+          minimum: S.optional(S.Number),
+          sum: S.optional(S.Number),
+          standardDeviation: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Aggregates" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          quality: S.optional(S.String),
+          value: __S(1312, __c82, 0),
+        }),
+      ).annotate({ identifier: "AggregatedValue" });
+    case 2:
+      return S.Array(__S(1313, __c82, 1));
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entryId: S.String,
+          assetId: S.optional(S.String),
+          propertyId: S.optional(S.String),
+          propertyAlias: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyValueEntry",
+      });
+    case 1:
+      return S.Array(__S(1328, __c83, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ entries: __S(1329, __c83, 1), nextToken: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/properties/batch/latest" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyValueRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ entryId: S.String, assetPropertyValue: S.optional(__S(1344, __c84, 0)) }),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyValueSuccessEntry",
+      });
+    case 4:
+      return S.Array(__S(1331, __c83, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          errorEntries: __S(1281, __c80, 1),
+          successEntries: __S(1332, __c83, 4),
+          skippedEntries: __S(1284, __c80, 4),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyValueResponse",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1361, __c85, 1),
+          timestamp: __S(1088, __c68, 0),
+          quality: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetPropertyValue" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ valueType: S.String })).annotate({
+        identifier: "PropertyValueNullValue",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stringValue: S.optional(S.String),
+          integerValue: S.optional(S.Number),
+          doubleValue: S.optional(S.Number),
+          booleanValue: S.optional(S.Boolean),
+          nullValue: S.optional(__S(1360, __c85, 0)),
+        }),
+      ).annotate({ identifier: "Variant" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entryId: S.String,
+          assetId: S.optional(S.String),
+          propertyId: S.optional(S.String),
+          propertyAlias: S.optional(S.String),
+          startDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          qualities: S.optional(__S(1296, __c81, 0)),
+          timeOrdering: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyValueHistoryEntry",
+      });
+    case 1:
+      return S.Array(__S(1376, __c86, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: __S(1377, __c86, 1),
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/properties/batch/history" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyValueHistoryRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ entryId: S.String, assetPropertyValueHistory: __S(1392, __c87, 0) }),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyValueHistorySuccessEntry",
+      });
+    case 4:
+      return S.Array(__S(1379, __c86, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          errorEntries: __S(1281, __c80, 1),
+          successEntries: __S(1380, __c86, 4),
+          skippedEntries: __S(1284, __c80, 4),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchGetAssetPropertyValueHistoryResponse",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1344, __c84, 0));
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entryId: S.String,
+          assetId: S.optional(S.String),
+          propertyId: S.optional(S.String),
+          propertyAlias: S.optional(S.String),
+          propertyValues: __S(1392, __c87, 0),
+        }),
+      ).annotate({
+        identifier: "PutAssetPropertyValueEntry",
+      });
+    case 1:
+      return S.Array(__S(1408, __c88, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enablePartialEntryProcessing: S.optional(S.Boolean),
+          entries: __S(1409, __c88, 1),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/properties" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchPutAssetPropertyValueRequest",
+      });
+    case 3:
+      return S.Array(__S(1088, __c68, 0));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.String,
+          errorMessage: S.String,
+          timestamps: __S(1411, __c88, 3),
+        }),
+      ).annotate({
+        identifier: "BatchPutAssetPropertyError",
+      });
+    case 5:
+      return S.Array(__S(1412, __c88, 4));
+    case 6:
+      return S.suspend(() => S.Struct({ entryId: S.String, errors: __S(1413, __c88, 5) })).annotate(
+        {
+          identifier: "BatchPutAssetPropertyErrorEntry",
+        },
+      );
+    case 7:
+      return S.Array(__S(1414, __c88, 6));
+    case 8:
+      return S.suspend(() => S.Struct({ errorEntries: __S(1415, __c88, 7) })).annotate({
+        identifier: "BatchPutAssetPropertyValueResponse",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          jobId: S.String.pipe(T.HttpLabel("jobId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/workspaces/{workspaceName}/enrichment-jobs/{jobId}/cancel",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CancelEnrichmentJobRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ jobId: S.String, status: S.String })).annotate({
+        identifier: "CancelEnrichmentJobResponse",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          pipelineName: S.String.pipe(T.HttpLabel("pipelineName")),
+          pipelineExecutionId: S.String.pipe(T.HttpLabel("pipelineExecutionId")),
+          reason: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/workspaces/{workspaceName}/pipelines/{pipelineName}/executions/{pipelineExecutionId}/cancel",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CancelPipelineExecutionRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ state: S.String })).annotate({
+        identifier: "CancelPipelineExecutionResponse",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          queryId: S.String.pipe(T.HttpLabel("queryId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/queries/{queryId}/cancel" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CancelQueryRequest" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ queryId: S.String, status: S.String })).annotate({
+        identifier: "CancelQueryResponse",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessPolicyIdentity: __S(1522, __c95, 2),
+          accessPolicyResource: __S(1523, __c95, 3),
+          accessPolicyPermission: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(1504, __c94, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/access-policies" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateAccessPolicyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ accessPolicyId: S.String, accessPolicyArn: S.String }),
+      ).annotate({
+        identifier: "CreateAccessPolicyResponse",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ id: S.String })).annotate({
+        identifier: "UserIdentity",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
+        identifier: "IAMUserIdentity",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          user: S.optional(__S(1520, __c95, 0)),
+          group: S.optional(__S(1520, __c95, 0)),
+          iamUser: S.optional(__S(1521, __c95, 1)),
+          iamRole: S.optional(__S(1521, __c95, 1)),
+        }),
+      ).annotate({ identifier: "Identity" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          portal: S.optional(__S(1520, __c95, 0)),
+          project: S.optional(__S(1520, __c95, 0)),
+        }),
+      ).annotate({ identifier: "Resource" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          idcInstanceArn: S.String,
+          workspaceName: S.String,
+          name: S.String,
+          description: S.optional(S.String),
+          tags: S.optional(__S(1504, __c94, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateApplicationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          id: S.String,
+          dnsSubdomain: S.String,
+          name: S.String,
+          status: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateApplicationResponse",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetName: S.String,
+          assetModelId: S.String,
+          assetId: S.optional(S.String),
+          assetExternalId: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(1504, __c94, 0)),
+          assetDescription: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/assets" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateAssetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ assetId: S.String, assetArn: S.String, assetStatus: __S(1585, __c99, 1) }),
+      ).annotate({ identifier: "CreateAssetResponse" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ code: S.String, message: S.String })).annotate({
+        identifier: "DetailedError",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ code: S.String, message: S.String, details: S.optional(__S(1600, __c100, 0)) }),
+      ).annotate({ identifier: "ErrorDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ state: S.String, error: S.optional(__S(1584, __c99, 0)) }),
+      ).annotate({ identifier: "AssetStatus" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1568, __c98, 0));
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          externalId: S.optional(S.String),
+          name: S.String,
+          childAssetModelId: S.String,
+        }),
+      ).annotate({
+        identifier: "AssetModelHierarchyDefinition",
+      });
+    case 1:
+      return S.Array(__S(1616, __c101, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          externalId: S.optional(S.String),
+          name: S.String,
+          description: S.optional(S.String),
+          type: S.String,
+          properties: S.optional(__S(1633, __c102, 1)),
+        }),
+      ).annotate({
+        identifier: "AssetModelCompositeModelDefinition",
+      });
+    case 3:
+      return S.Array(__S(1618, __c101, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelName: S.String,
+          assetModelType: S.optional(S.String),
+          assetModelId: S.optional(S.String),
+          assetModelExternalId: S.optional(S.String),
+          assetModelDescription: S.optional(S.String),
+          assetModelProperties: S.optional(__S(1633, __c102, 1)),
+          assetModelHierarchies: S.optional(__S(1617, __c101, 1)),
+          assetModelCompositeModels: S.optional(__S(1619, __c101, 3)),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(1504, __c94, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/asset-models" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateAssetModelRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.String,
+          assetModelArn: S.String,
+          assetModelStatus: __S(1585, __c99, 1),
+        }),
+      ).annotate({ identifier: "CreateAssetModelResponse" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          externalId: S.optional(S.String),
+          name: S.String,
+          dataType: S.String,
+          dataTypeSpec: S.optional(S.String),
+          unit: S.optional(S.String),
+          type: __S(1692, __c105, 12),
+        }),
+      ).annotate({
+        identifier: "AssetModelPropertyDefinition",
+      });
+    case 1:
+      return S.Array(__S(1632, __c102, 0));
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), name: S.optional(S.String) }),
+      ).annotate({
+        identifier: "AssetModelPropertyPathSegment",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1648, __c103, 0));
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ defaultValue: S.optional(S.String) })).annotate({
+        identifier: "Attribute",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ forwardingConfig: __S(1696, __c106, 0) })).annotate({
+        identifier: "MeasurementProcessingConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ processingConfig: S.optional(__S(1681, __c105, 1)) }),
+      ).annotate({ identifier: "Measurement" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          propertyId: S.optional(S.String),
+          hierarchyId: S.optional(S.String),
+          propertyPath: S.optional(__S(1664, __c104, 0)),
+        }),
+      ).annotate({ identifier: "VariableValue" });
+    case 4:
+      return S.suspend(() => S.Struct({ name: S.String, value: __S(1683, __c105, 3) })).annotate({
+        identifier: "ExpressionVariable",
+      });
+    case 5:
+      return S.Array(__S(1684, __c105, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ computeLocation: S.String, forwardingConfig: S.optional(__S(1696, __c106, 0)) }),
+      ).annotate({
+        identifier: "TransformProcessingConfig",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.String,
+          variables: __S(1685, __c105, 5),
+          processingConfig: S.optional(__S(1686, __c105, 6)),
+        }),
+      ).annotate({ identifier: "Transform" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({ interval: S.String, offset: S.optional(S.String) }),
+      ).annotate({ identifier: "TumblingWindow" });
+    case 9:
+      return S.suspend(() => S.Struct({ tumbling: S.optional(__S(1688, __c105, 8)) })).annotate({
+        identifier: "MetricWindow",
+      });
+    case 10:
+      return S.suspend(() => S.Struct({ computeLocation: S.String })).annotate({
+        identifier: "MetricProcessingConfig",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+          variables: S.optional(__S(1685, __c105, 5)),
+          window: __S(1689, __c105, 9),
+          processingConfig: S.optional(__S(1690, __c105, 10)),
+        }),
+      ).annotate({ identifier: "Metric" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          attribute: S.optional(__S(1680, __c105, 0)),
+          measurement: S.optional(__S(1682, __c105, 2)),
+          transform: S.optional(__S(1687, __c105, 7)),
+          metric: S.optional(__S(1691, __c105, 11)),
+        }),
+      ).annotate({ identifier: "PropertyType" });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ state: S.String })).annotate({
+        identifier: "ForwardingConfig",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
+          assetModelCompositeModelExternalId: S.optional(S.String),
+          parentAssetModelCompositeModelId: S.optional(S.String),
+          assetModelCompositeModelId: S.optional(S.String),
+          assetModelCompositeModelDescription: S.optional(S.String),
+          assetModelCompositeModelName: S.String,
+          assetModelCompositeModelType: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          composedAssetModelId: S.optional(S.String),
+          assetModelCompositeModelProperties: S.optional(__S(1633, __c102, 1)),
+          ifMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
+          ifNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
+          matchForVersionType: S.optional(S.String).pipe(T.HttpHeader("Match-For-Version-Type")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/asset-models/{assetModelId}/composite-models" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateAssetModelCompositeModelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelCompositeModelId: S.String,
+          assetModelCompositeModelPath: __S(1728, __c108, 0),
+          assetModelStatus: __S(1585, __c99, 1),
+          assetModelId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateAssetModelCompositeModelResponse",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1648, __c103, 0));
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String,
+          jobRoleArn: S.String,
+          files: __S(1763, __c110, 3),
+          errorReportLocation: __S(1764, __c110, 4),
+          jobConfiguration: S.optional(__S(1765, __c110, 5)),
+          adaptiveIngestion: S.optional(S.Boolean),
+          deleteFilesAfterImport: S.optional(S.Boolean),
+          datasetId: S.optional(S.String),
+          workspaceName: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/jobs" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateBulkImportJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ jobId: S.String, jobName: S.String, jobStatus: S.String }),
+      ).annotate({
+        identifier: "CreateBulkImportJobResponse",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ columnNames: __S(1296, __c81, 0) })).annotate({
+        identifier: "Csv",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          csv: S.optional(__S(1760, __c110, 0)),
+          parquet: S.optional(__S(688, __c43, 0)),
+          mp4: S.optional(__S(688, __c43, 0)),
+          annotation: S.optional(__S(688, __c43, 0)),
+        }),
+      ).annotate({ identifier: "FileFormat" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.String,
+          key: S.String,
+          versionId: S.optional(S.String),
+          alias: S.optional(S.String),
+          startTime: S.optional(__S(1088, __c68, 0)),
+          fileFormat: S.optional(__S(1761, __c110, 1)),
+        }),
+      ).annotate({ identifier: "File" });
+    case 3:
+      return S.Array(__S(1762, __c110, 2));
+    case 4:
+      return S.suspend(() => S.Struct({ bucket: S.String, prefix: S.String })).annotate({
+        identifier: "ErrorReportLocation",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ fileFormat: S.optional(__S(1761, __c110, 1)) })).annotate({
+        identifier: "JobConfiguration",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          computationModelName: S.String,
+          computationModelDescription: S.optional(S.String),
+          computationModelConfiguration: __S(1809, __c113, 1),
+          computationModelDataBinding: __S(1812, __c113, 4),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(1504, __c94, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/computation-models" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateComputationModelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          computationModelId: S.String,
+          computationModelArn: S.String,
+          computationModelStatus: __S(1585, __c99, 1),
+        }),
+      ).annotate({
+        identifier: "CreateComputationModelResponse",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ assetModelId: S.String, propertyId: S.String })).annotate({
+        identifier: "AssetModelPropertyBindingValue",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ assetId: S.String, propertyId: S.String })).annotate({
+        identifier: "AssetPropertyBindingValue",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ inputProperties: S.String, resultProperty: S.String }),
+      ).annotate({
+        identifier: "ComputationModelAnomalyDetectionConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ anomalyDetection: S.optional(__S(1808, __c113, 0)) }),
+      ).annotate({
+        identifier: "ComputationModelConfiguration",
+      });
+    case 2:
+      return S.Array(
+        /*@__PURE__*/ S.suspend((): S.Schema<ComputationModelDataBindingValue> =>
+          __S(1811, __c113, 3),
+        ).annotate({ identifier: "ComputationModelDataBindingValue" }),
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelProperty: S.optional(__S(1792, __c112, 0)),
+          assetProperty: S.optional(__S(1793, __c112, 1)),
+          list: S.optional(
+            S.suspend(() => __S(1810, __c113, 2)).annotate({ identifier: "BindingValueList" }),
+          ),
+        }),
+      ).annotate({
+        identifier: "ComputationModelDataBindingValue",
+      });
+    case 4:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend((): S.Schema<ComputationModelDataBindingValue> =>
+          __S(1811, __c113, 3),
+        )
+          .annotate({ identifier: "ComputationModelDataBindingValue" })
+          .pipe(S.optional),
+      );
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String,
+          dashboardName: S.String,
+          dashboardDescription: S.optional(S.String),
+          dashboardDefinition: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(1504, __c94, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/dashboards" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateDashboardRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ dashboardId: S.String, dashboardArn: S.String })).annotate({
+        identifier: "CreateDashboardResponse",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.optional(S.String),
+          datasetName: S.String,
+          datasetDescription: S.optional(S.String),
+          datasetType: S.optional(S.String),
+          datasetConfig: S.optional(__S(1857, __c116, 1)),
+          workspaceName: S.optional(S.String),
+          metadata: S.optional(__S(1504, __c94, 0)),
+          datasetSource: __S(1860, __c116, 4),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(1504, __c94, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/datasets" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateDatasetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ datasetId: S.String, datasetArn: S.String, datasetStatus: __S(1585, __c99, 1) }),
+      ).annotate({ identifier: "CreateDatasetResponse" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionStartTimestamp: __S(1088, __c68, 0),
+          sessionEndTimestamp: __S(1088, __c68, 0),
+        }),
+      ).annotate({ identifier: "SessionConfig" });
+    case 1:
+      return S.suspend(() => S.Struct({ session: S.optional(__S(1856, __c116, 0)) })).annotate({
+        identifier: "DatasetConfig",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ knowledgeBaseArn: S.String, roleArn: S.String })).annotate({
+        identifier: "KendraSourceDetail",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ kendra: S.optional(__S(1858, __c116, 2)) })).annotate({
+        identifier: "SourceDetail",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          sourceType: S.String,
+          sourceFormat: S.String,
+          sourceDetail: S.optional(__S(1859, __c116, 3)),
+        }),
+      ).annotate({ identifier: "DatasetSource" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          destinationS3Uri: S.String,
+          input: __S(1907, __c119, 3),
+          errorReportLocation: __S(1908, __c119, 4),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/dataset-export-jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateDatasetExportJobRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ jobId: S.String, workspaceName: S.String })).annotate({
+        identifier: "CreateDatasetExportJobResponse",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ startTime: __S(1088, __c68, 0), endTime: __S(1088, __c68, 0) }),
+      ).annotate({ identifier: "TrimSettings" });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeSeriesId: S.optional(S.String),
+          propertyAlias: S.optional(S.String),
+          trimSettings: S.optional(__S(1888, __c118, 0)),
+          formatSettings: S.optional(__S(1920, __c120, 0)),
+        }),
+      ).annotate({ identifier: "TimeseriesItem" });
+    case 1:
+      return S.Array(__S(1904, __c119, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.String,
+          trimSettings: S.optional(__S(1888, __c118, 0)),
+          exportDataTypes: S.optional(__S(1296, __c81, 0)),
+        }),
+      ).annotate({ identifier: "DatasetItem" });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ timeseries: __S(1905, __c119, 1) }),
+        /*@__PURE__*/ S.Struct({ dataset: __S(1906, __c119, 2) }),
+      ]);
+    case 4:
+      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
+        identifier: "ExportErrorReportLocation",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          framesPerSecond: S.optional(S.Number),
+          widthInPixels: S.optional(S.Number),
+          heightInPixels: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FormatSettings" });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          jobConfiguration: __S(1953, __c122, 1),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/enrichment-jobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateEnrichmentJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          status: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "CreateEnrichmentJobResponse",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.String,
+          timeSeriesId: S.optional(S.String),
+          propertyAlias: S.optional(S.String),
+          trimSettings: __S(1888, __c118, 0),
+        }),
+      ).annotate({ identifier: "EventDetection" });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ eventDetection: __S(1952, __c122, 0) })]);
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gatewayName: S.String,
+          gatewayPlatform: __S(1987, __c124, 3),
+          gatewayVersion: S.optional(S.String),
+          tags: S.optional(__S(1504, __c94, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/20200301/gateways" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateGatewayRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ gatewayId: S.String, gatewayArn: S.String })).annotate({
+        identifier: "CreateGatewayResponse",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ groupArn: S.String })).annotate({
+        identifier: "Greengrass",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          coreDeviceThingName: S.String,
+          coreDeviceOperatingSystem: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GreengrassV2" });
+    case 2:
+      return S.suspend(() => S.Struct({ iotCoreThingName: S.String })).annotate({
+        identifier: "SiemensIE",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          greengrass: S.optional(__S(1984, __c124, 0)),
+          greengrassV2: S.optional(__S(1985, __c124, 1)),
+          siemensIE: S.optional(__S(1986, __c124, 2)),
+        }),
+      ).annotate({ identifier: "GatewayPlatform" });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          pipelineName: S.String,
+          description: S.optional(S.String),
+          environmentVariables: S.optional(__S(2048, __c128, 0)),
+          computations: __S(2065, __c129, 1),
+          tags: S.optional(__S(1504, __c94, 0)),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/pipelines" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreatePipelineRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pipelineName: S.String,
+          pipelineArn: S.String,
+          version: S.String,
+          status: __S(2032, __c127, 0),
+        }),
+      ).annotate({ identifier: "CreatePipelineResponse" });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
+      ).annotate({ identifier: "ResourceError" });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ error: S.optional(__S(2016, __c126, 0)), state: S.optional(S.String) }),
+      ).annotate({ identifier: "ResourceStatus" });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          computeNodeName: S.String,
+          taskName: S.String,
+          environmentVariables: S.optional(__S(2048, __c128, 0)),
+          dependsOn: S.optional(__S(1200, __c75, 0)),
+        }),
+      ).annotate({ identifier: "ComputeNode" });
+    case 1:
+      return S.Array(__S(2064, __c129, 0));
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          portalName: S.String,
+          portalDescription: S.optional(S.String),
+          portalContactEmail: SensitiveString,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          portalLogoImageFile: S.optional(__S(2096, __c131, 0)),
+          roleArn: S.String,
+          tags: S.optional(__S(1504, __c94, 0)),
+          portalAuthMode: S.optional(S.String),
+          notificationSenderEmail: S.optional(SensitiveString),
+          alarms: S.optional(__S(2128, __c133, 0)),
+          portalType: S.optional(S.String),
+          portalTypeConfiguration: S.optional(__S(2130, __c133, 2)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/portals" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreatePortalRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          portalId: S.String,
+          portalArn: S.String,
+          portalStartUrl: S.String,
+          portalStatus: __S(2112, __c132, 0),
+          ssoApplicationId: S.String,
+        }),
+      ).annotate({ identifier: "CreatePortalResponse" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ data: T.Blob, type: S.String })).annotate({
+        identifier: "ImageFile",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ state: S.String, error: S.optional(__S(2016, __c126, 0)) }),
+      ).annotate({ identifier: "PortalStatus" });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ alarmRoleArn: S.String, notificationLambdaArn: S.optional(S.String) }),
+      ).annotate({ identifier: "Alarms" });
+    case 1:
+      return S.suspend(() => S.Struct({ portalTools: S.optional(__S(1200, __c75, 0)) })).annotate({
+        identifier: "PortalTypeEntry",
+      });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(2129, __c133, 1).pipe(S.optional));
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          portalId: S.String,
+          projectName: S.String,
+          projectDescription: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(1504, __c94, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/projects" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateProjectRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ projectId: S.String, projectArn: S.String })).annotate({
+        identifier: "CreateProjectResponse",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          taskName: S.String,
+          description: S.optional(S.String),
+          taskConfiguration: __S(2194, __c137, 2),
+          tags: S.optional(__S(1504, __c94, 0)),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/tasks" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateTaskRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          taskName: S.String,
+          taskArn: S.String,
+          version: S.String,
+          status: __S(2032, __c127, 0),
+        }),
+      ).annotate({ identifier: "CreateTaskResponse" });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ accessPointArn: S.String, prefix: S.optional(S.String) }),
+      ).annotate({ identifier: "S3AccessPointSource" });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3AccessPoint: __S(2176, __c136, 0) })]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          relativePath: S.String,
+          source: __S(2177, __c136, 1),
+          storageType: S.String,
+        }),
+      ).annotate({ identifier: "Mount" });
+    case 3:
+      return S.Array(__S(2178, __c136, 2));
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ storageClass: S.String, storageSizeInGiB: S.Number }),
+      ).annotate({
+        identifier: "EphemeralStorageConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ecrUri: SensitiveString,
+          taskExecutionRole: SensitiveString,
+          processingType: S.String,
+          processingUnit: S.String,
+          ephemeralStorageConfiguration: S.optional(__S(2192, __c137, 0)),
+          command: S.optional(__S(1200, __c75, 0)),
+          timeoutSeconds: S.optional(S.Number),
+          environmentVariables: S.optional(__S(2048, __c128, 0)),
+          mounts: S.optional(__S(2179, __c136, 3)),
+        }),
+      ).annotate({
+        identifier: "ContainerTaskConfiguration",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ containerTaskConfiguration: __S(2193, __c137, 1) }),
+      ]);
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String,
+          workspaceDescription: S.optional(S.String),
+          encryptionConfiguration: __S(2224, __c139, 0),
+          tags: S.optional(__S(1504, __c94, 0)),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/workspaces" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateWorkspaceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String,
+          workspaceArn: S.String,
+          workspaceStatus: __S(2240, __c140, 0),
+        }),
+      ).annotate({ identifier: "CreateWorkspaceResponse" });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ encryptionType: S.String, kmsKeyId: S.optional(S.String) }),
+      ).annotate({
+        identifier: "WorkspaceEncryptionConfiguration",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ state: S.String, error: S.optional(__S(1568, __c98, 0)) }),
+      ).annotate({ identifier: "WorkspaceStatus" });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessPolicyId: S.String.pipe(T.HttpLabel("accessPolicyId")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/access-policies/{accessPolicyId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAccessPolicyRequest",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          id: S.String.pipe(T.HttpLabel("id")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/workspaces/{workspaceName}/applications/{id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteApplicationRequest" });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.String.pipe(T.HttpLabel("assetId")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/assets/{assetId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteAssetRequest" });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ assetId: S.optional(S.String), assetStatus: __S(1585, __c99, 1) }),
+      ).annotate({ identifier: "DeleteAssetResponse" });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+          ifMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
+          ifNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
+          matchForVersionType: S.optional(S.String).pipe(T.HttpHeader("Match-For-Version-Type")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/asset-models/{assetModelId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteAssetModelRequest" });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ assetModelId: S.optional(S.String), assetModelStatus: __S(1585, __c99, 1) }),
+      ).annotate({ identifier: "DeleteAssetModelResponse" });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
+          assetModelCompositeModelId: S.String.pipe(T.HttpLabel("assetModelCompositeModelId")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+          ifMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
+          ifNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
+          matchForVersionType: S.optional(S.String).pipe(T.HttpHeader("Match-For-Version-Type")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/asset-models/{assetModelId}/composite-models/{assetModelCompositeModelId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAssetModelCompositeModelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ assetModelStatus: __S(1585, __c99, 1), assetModelId: S.optional(S.String) }),
+      ).annotate({
+        identifier: "DeleteAssetModelCompositeModelResponse",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
+          interfaceAssetModelId: S.String.pipe(T.HttpLabel("interfaceAssetModelId")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/asset-models/{assetModelId}/interface/{interfaceAssetModelId}/asset-model-interface-relationship",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAssetModelInterfaceRelationshipRequest",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.String,
+          interfaceAssetModelId: S.String,
+          assetModelArn: S.String,
+          assetModelStatus: __S(1585, __c99, 1),
+        }),
+      ).annotate({
+        identifier: "DeleteAssetModelInterfaceRelationshipResponse",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          computationModelId: S.String.pipe(T.HttpLabel("computationModelId")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/computation-models/{computationModelId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteComputationModelRequest",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ computationModelStatus: __S(1585, __c99, 1) })).annotate({
+        identifier: "DeleteComputationModelResponse",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboardId: S.String.pipe(T.HttpLabel("dashboardId")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/dashboards/{dashboardId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteDashboardRequest" });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+          workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/datasets/{datasetId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteDatasetRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ datasetStatus: __S(1585, __c99, 1) })).annotate({
+        identifier: "DeleteDatasetResponse",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ gatewayId: S.String.pipe(T.HttpLabel("gatewayId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/20200301/gateways/{gatewayId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteGatewayRequest" });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          pipelineName: S.String.pipe(T.HttpLabel("pipelineName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/workspaces/{workspaceName}/pipelines/{pipelineName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeletePipelineRequest" });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ status: __S(2032, __c127, 0) })).annotate({
+        identifier: "DeletePipelineResponse",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          portalId: S.String.pipe(T.HttpLabel("portalId")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/portals/{portalId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeletePortalRequest" });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ portalStatus: __S(2112, __c132, 0) })).annotate({
+        identifier: "DeletePortalResponse",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.HttpLabel("projectId")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/projects/{projectId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteProjectRequest" });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          taskName: S.String.pipe(T.HttpLabel("taskName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/workspaces/{workspaceName}/tasks/{taskName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteTaskRequest" });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.optional(S.String).pipe(T.HttpQuery("alias")),
+          assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
+          propertyId: S.optional(S.String).pipe(T.HttpQuery("propertyId")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/timeseries/delete" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteTimeSeriesRequest" });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/workspaces/{workspaceName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteWorkspaceRequest" });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ workspaceStatus: __S(2240, __c140, 0) })).annotate({
+        identifier: "DeleteWorkspaceResponse",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ accessPolicyId: S.String.pipe(T.HttpLabel("accessPolicyId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/access-policies/{accessPolicyId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeAccessPolicyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accessPolicyId: S.String,
+          accessPolicyArn: S.String,
+          accessPolicyIdentity: __S(1522, __c95, 2),
+          accessPolicyResource: __S(1523, __c95, 3),
+          accessPolicyPermission: S.String,
+          accessPolicyCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          accessPolicyLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "DescribeAccessPolicyResponse",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ actionId: S.String.pipe(T.HttpLabel("actionId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/actions/{actionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeActionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          actionId: S.String,
+          targetResource: __S(2672, __c167, 0),
+          actionDefinitionId: S.String,
+          actionPayload: __S(2688, __c168, 0),
+          executionTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          resolveTo: S.optional(__S(2656, __c166, 0)),
+        }),
+      ).annotate({ identifier: "DescribeActionResponse" });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ assetId: S.String })).annotate({
+        identifier: "ResolveTo",
+      });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ assetId: S.optional(S.String), computationModelId: S.optional(S.String) }),
+      ).annotate({ identifier: "TargetResource" });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ stringValue: S.String })).annotate({
+        identifier: "ActionPayload",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          id: S.String.pipe(T.HttpLabel("id")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}/applications/{id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeApplicationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          dnsSubdomain: S.String,
+          description: S.optional(S.String),
+          id: S.String,
+          idcApplicationArn: S.String,
+          name: S.String,
+          status: S.String,
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          workspaceName: S.String,
+        }),
+      ).annotate({
+        identifier: "DescribeApplicationResponse",
+      });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.String.pipe(T.HttpLabel("assetId")),
+          excludeProperties: S.optional(S.Boolean).pipe(T.HttpQuery("excludeProperties")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/assets/{assetId}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeAssetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          type: S.String,
+          properties: __S(2753, __c172, 1),
+          id: S.optional(S.String),
+          externalId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetCompositeModel" });
+    case 2:
+      return S.Array(__S(2721, __c170, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.String,
+          assetExternalId: S.optional(S.String),
+          assetArn: S.String,
+          assetName: S.String,
+          assetModelId: S.String,
+          assetProperties: __S(2753, __c172, 1),
+          assetHierarchies: __S(2737, __c171, 1),
+          assetCompositeModels: S.optional(__S(2722, __c170, 2)),
+          assetCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          assetLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          assetStatus: __S(1585, __c99, 1),
+          assetDescription: S.optional(S.String),
+          assetCompositeModelSummaries: S.optional(__S(2755, __c172, 3)),
+        }),
+      ).annotate({ identifier: "DescribeAssetResponse" });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), externalId: S.optional(S.String), name: S.String }),
+      ).annotate({ identifier: "AssetHierarchy" });
+    case 1:
+      return S.Array(__S(2736, __c171, 0));
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          externalId: S.optional(S.String),
+          name: S.String,
+          alias: S.optional(S.String),
+          notification: S.optional(__S(2768, __c173, 0)),
+          dataType: S.String,
+          dataTypeSpec: S.optional(S.String),
+          unit: S.optional(S.String),
+          path: S.optional(__S(2770, __c173, 2)),
+        }),
+      ).annotate({ identifier: "AssetProperty" });
+    case 1:
+      return S.Array(__S(2752, __c172, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          externalId: S.optional(S.String),
+          name: S.String,
+          type: S.String,
+          description: S.String,
+          path: __S(1664, __c104, 0),
+        }),
+      ).annotate({
+        identifier: "AssetCompositeModelSummary",
+      });
+    case 3:
+      return S.Array(__S(2754, __c172, 2));
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ topic: S.String, state: S.String })).annotate({
+        identifier: "PropertyNotification",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), name: S.optional(S.String) }),
+      ).annotate({ identifier: "AssetPropertyPathSegment" });
+    case 2:
+      return S.Array(__S(2769, __c173, 1));
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.String.pipe(T.HttpLabel("assetId")),
+          assetCompositeModelId: S.String.pipe(T.HttpLabel("assetCompositeModelId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/assets/{assetId}/composite-models/{assetCompositeModelId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeAssetCompositeModelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.String,
+          assetCompositeModelId: S.String,
+          assetCompositeModelExternalId: S.optional(S.String),
+          assetCompositeModelPath: __S(1664, __c104, 0),
+          assetCompositeModelName: S.String,
+          assetCompositeModelDescription: S.String,
+          assetCompositeModelType: S.String,
+          assetCompositeModelProperties: __S(2753, __c172, 1),
+          assetCompositeModelSummaries: __S(2755, __c172, 3),
+          actionDefinitions: S.optional(__S(2801, __c175, 1)),
+        }),
+      ).annotate({
+        identifier: "DescribeAssetCompositeModelResponse",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ actionDefinitionId: S.String, actionName: S.String, actionType: S.String }),
+      ).annotate({ identifier: "ActionDefinition" });
+    case 1:
+      return S.Array(__S(2800, __c175, 0));
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
+          excludeProperties: S.optional(S.Boolean).pipe(T.HttpQuery("excludeProperties")),
+          assetModelVersion: S.optional(S.String).pipe(T.HttpQuery("assetModelVersion")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/asset-models/{assetModelId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeAssetModelRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ id: S.String })).annotate({
+        identifier: "InterfaceRelationship",
+      });
+    case 2:
+      return S.Array(__S(2817, __c176, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.String,
+          assetModelExternalId: S.optional(S.String),
+          assetModelArn: S.String,
+          assetModelName: S.String,
+          assetModelType: S.optional(S.String),
+          assetModelDescription: S.String,
+          assetModelProperties: __S(2865, __c179, 1),
+          assetModelHierarchies: __S(2833, __c177, 1),
+          assetModelCompositeModels: S.optional(__S(2835, __c177, 3)),
+          assetModelCompositeModelSummaries: S.optional(__S(2849, __c178, 1)),
+          assetModelCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          assetModelLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          assetModelStatus: __S(1585, __c99, 1),
+          assetModelVersion: S.optional(S.String),
+          interfaceDetails: S.optional(__S(2818, __c176, 2)),
+          eTag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+        }),
+      ).annotate({
+        identifier: "DescribeAssetModelResponse",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          externalId: S.optional(S.String),
+          name: S.String,
+          childAssetModelId: S.String,
+        }),
+      ).annotate({ identifier: "AssetModelHierarchy" });
+    case 1:
+      return S.Array(__S(2832, __c177, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          type: S.String,
+          properties: S.optional(__S(2865, __c179, 1)),
+          id: S.optional(S.String),
+          externalId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetModelCompositeModel" });
+    case 3:
+      return S.Array(__S(2834, __c177, 2));
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          externalId: S.optional(S.String),
+          name: S.String,
+          type: S.String,
+          description: S.optional(S.String),
+          path: S.optional(__S(1728, __c108, 0)),
+        }),
+      ).annotate({
+        identifier: "AssetModelCompositeModelSummary",
+      });
+    case 1:
+      return S.Array(__S(2848, __c178, 0));
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          externalId: S.optional(S.String),
+          name: S.String,
+          dataType: S.String,
+          dataTypeSpec: S.optional(S.String),
+          unit: S.optional(S.String),
+          type: __S(1692, __c105, 12),
+          path: S.optional(__S(1664, __c104, 0)),
+        }),
+      ).annotate({ identifier: "AssetModelProperty" });
+    case 1:
+      return S.Array(__S(2864, __c179, 0));
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
+          assetModelCompositeModelId: S.String.pipe(T.HttpLabel("assetModelCompositeModelId")),
+          assetModelVersion: S.optional(S.String).pipe(T.HttpQuery("assetModelVersion")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/asset-models/{assetModelId}/composite-models/{assetModelCompositeModelId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeAssetModelCompositeModelRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ id: S.optional(S.String) })).annotate({
+        identifier: "CompositionRelationshipItem",
+      });
+    case 2:
+      return S.Array(__S(2881, __c180, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ compositionRelationship: S.optional(__S(2882, __c180, 2)) }),
+      ).annotate({ identifier: "CompositionDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.String,
+          assetModelCompositeModelId: S.String,
+          assetModelCompositeModelExternalId: S.optional(S.String),
+          assetModelCompositeModelPath: __S(1728, __c108, 0),
+          assetModelCompositeModelName: S.String,
+          assetModelCompositeModelDescription: S.String,
+          assetModelCompositeModelType: S.String,
+          assetModelCompositeModelProperties: __S(2865, __c179, 1),
+          compositionDetails: S.optional(__S(2883, __c180, 3)),
+          assetModelCompositeModelSummaries: __S(2849, __c178, 1),
+          actionDefinitions: S.optional(__S(2801, __c175, 1)),
+        }),
+      ).annotate({
+        identifier: "DescribeAssetModelCompositeModelResponse",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.String.pipe(T.HttpLabel("assetModelId")),
+          interfaceAssetModelId: S.String.pipe(T.HttpLabel("interfaceAssetModelId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/asset-models/{assetModelId}/interface/{interfaceAssetModelId}/asset-model-interface-relationship",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeAssetModelInterfaceRelationshipRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ assetModelHierarchyId: S.String, interfaceAssetModelHierarchyId: S.String }),
+      ).annotate({ identifier: "HierarchyMapping" });
+    case 2:
+      return S.Array(__S(2897, __c181, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          assetModelId: S.String,
+          interfaceAssetModelId: S.String,
+          propertyMappings: __S(2913, __c182, 1),
+          hierarchyMappings: __S(2898, __c181, 2),
+        }),
+      ).annotate({
+        identifier: "DescribeAssetModelInterfaceRelationshipResponse",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ assetModelPropertyId: S.String, interfaceAssetModelPropertyId: S.String }),
+      ).annotate({ identifier: "PropertyMapping" });
+    case 1:
+      return S.Array(__S(2912, __c182, 0));
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.String.pipe(T.HttpLabel("assetId")),
+          propertyId: S.String.pipe(T.HttpLabel("propertyId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/assets/{assetId}/properties/{propertyId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeAssetPropertyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          externalId: S.optional(S.String),
+          name: S.String,
+          alias: S.optional(S.String),
+          notification: S.optional(__S(2768, __c173, 0)),
+          dataType: S.String,
+          unit: S.optional(S.String),
+          type: S.optional(__S(1692, __c105, 12)),
+          path: S.optional(__S(2770, __c173, 2)),
+        }),
+      ).annotate({ identifier: "Property" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+          assetProperty: __S(2929, __c183, 1),
+          id: S.optional(S.String),
+          externalId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CompositeModelProperty" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.String,
+          assetExternalId: S.optional(S.String),
+          assetName: S.String,
+          assetModelId: S.String,
+          assetProperty: S.optional(__S(2929, __c183, 1)),
+          compositeModel: S.optional(__S(2930, __c183, 2)),
+        }),
+      ).annotate({
+        identifier: "DescribeAssetPropertyResponse",
+      });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String.pipe(T.HttpLabel("jobId")),
+          workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/jobs/{jobId}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeBulkImportJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          jobName: S.String,
+          jobStatus: S.String,
+          jobRoleArn: S.String,
+          files: __S(1763, __c110, 3),
+          errorReportLocation: __S(1764, __c110, 4),
+          jobConfiguration: S.optional(__S(1765, __c110, 5)),
+          jobCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          jobLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          adaptiveIngestion: S.optional(S.Boolean),
+          deleteFilesAfterImport: S.optional(S.Boolean),
+          datasetId: S.optional(S.String),
+          workspaceName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeBulkImportJobResponse",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          computationModelId: S.String.pipe(T.HttpLabel("computationModelId")),
+          computationModelVersion: S.optional(S.String).pipe(
+            T.HttpQuery("computationModelVersion"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/computation-models/{computationModelId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeComputationModelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          computationModelId: S.String,
+          computationModelArn: S.String,
+          computationModelName: S.String,
+          computationModelDescription: S.optional(S.String),
+          computationModelConfiguration: __S(1809, __c113, 1),
+          computationModelDataBinding: __S(1812, __c113, 4),
+          computationModelCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          computationModelLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          computationModelStatus: __S(1585, __c99, 1),
+          computationModelVersion: S.String,
+          actionDefinitions: __S(2801, __c175, 1),
+        }),
+      ).annotate({
+        identifier: "DescribeComputationModelResponse",
+      });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          computationModelId: S.String.pipe(T.HttpLabel("computationModelId")),
+          resolveToResourceType: S.optional(S.String).pipe(T.HttpQuery("resolveToResourceType")),
+          resolveToResourceId: S.optional(S.String).pipe(T.HttpQuery("resolveToResourceId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/computation-models/{computationModelId}/execution-summary",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeComputationModelExecutionSummaryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          computationModelId: S.String,
+          resolveTo: S.optional(__S(2656, __c166, 0)),
+          computationModelExecutionSummary: __S(2048, __c128, 0),
+        }),
+      ).annotate({
+        identifier: "DescribeComputationModelExecutionSummaryResponse",
+      });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ dashboardId: S.String.pipe(T.HttpLabel("dashboardId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/dashboards/{dashboardId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeDashboardRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dashboardId: S.String,
+          dashboardArn: S.String,
+          dashboardName: S.String,
+          projectId: S.String,
+          dashboardDescription: S.optional(S.String),
+          dashboardDefinition: S.String,
+          dashboardCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          dashboardLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "DescribeDashboardResponse",
+      });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+          workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")),
+          datasetVersion: S.optional(S.String).pipe(T.HttpQuery("datasetVersion")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/datasets/{datasetId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeDatasetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.String,
+          datasetArn: S.String,
+          datasetName: S.String,
+          datasetDescription: S.String,
+          datasetType: S.optional(S.String),
+          datasetConfig: S.optional(__S(1857, __c116, 1)),
+          workspaceName: S.optional(S.String),
+          metadata: S.optional(__S(1504, __c94, 0)),
+          datasetSource: __S(1860, __c116, 4),
+          datasetStatus: __S(1585, __c99, 1),
+          datasetCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          datasetLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          datasetVersion: S.optional(S.String),
+          enrichmentStatus: S.optional(__S(3040, __c190, 0)),
+        }),
+      ).annotate({ identifier: "DescribeDatasetResponse" });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          lastEnrichedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DatasetEnrichmentEntry" });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ video: S.optional(__S(3024, __c189, 0)) })).annotate({
+        identifier: "DatasetEnrichment",
+      });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          jobId: S.String.pipe(T.HttpLabel("jobId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/workspaces/{workspaceName}/dataset-export-jobs/{jobId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeDatasetExportJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          workspaceName: S.String,
+          status: S.String,
+          startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          destinationS3Uri: S.String,
+          errorReportLocation: __S(1908, __c119, 4),
+          input: __S(1907, __c119, 3),
+        }),
+      ).annotate({
+        identifier: "DescribeDatasetExportJobResponse",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/configuration/account/encryption" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeDefaultEncryptionConfigurationRequest",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionType: S.String,
+          kmsKeyArn: S.optional(S.String),
+          configurationStatus: __S(3105, __c194, 1),
+        }),
+      ).annotate({
+        identifier: "DescribeDefaultEncryptionConfigurationResponse",
+      });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ code: S.String, message: S.String })).annotate({
+        identifier: "ConfigurationErrorDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ state: S.String, error: S.optional(__S(3104, __c194, 0)) }),
+      ).annotate({ identifier: "ConfigurationStatus" });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          jobId: S.String.pipe(T.HttpLabel("jobId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}/enrichment-jobs/{jobId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeEnrichmentJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          status: S.String,
+          workspaceName: S.String,
+          jobType: S.String,
+          jobConfiguration: __S(1953, __c122, 1),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          cancelledAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeEnrichmentJobResponse",
+      });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ executionId: S.String.pipe(T.HttpLabel("executionId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/executions/{executionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeExecutionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          executionId: S.String,
+          actionType: S.optional(S.String),
+          targetResource: __S(2672, __c167, 0),
+          targetResourceVersion: S.String,
+          resolveTo: S.optional(__S(2656, __c166, 0)),
+          executionStartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          executionEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          executionStatus: __S(1696, __c106, 0),
+          executionResult: S.optional(__S(2048, __c128, 0)),
+          executionDetails: S.optional(__S(2048, __c128, 0)),
+          executionEntityVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeExecutionResponse",
+      });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ gatewayId: S.String.pipe(T.HttpLabel("gatewayId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/20200301/gateways/{gatewayId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeGatewayRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          gatewayId: S.String,
+          gatewayName: S.String,
+          gatewayArn: S.String,
+          gatewayPlatform: S.optional(__S(1987, __c124, 3)),
+          gatewayVersion: S.optional(S.String),
+          gatewayCapabilitySummaries: __S(3169, __c198, 1),
+          creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "DescribeGatewayResponse" });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ capabilityNamespace: S.String, capabilitySyncStatus: S.String }),
+      ).annotate({ identifier: "GatewayCapabilitySummary" });
+    case 1:
+      return S.Array(__S(3168, __c198, 0));
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
+          capabilityNamespace: S.String.pipe(T.HttpLabel("capabilityNamespace")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/20200301/gateways/{gatewayId}/capability/{capabilityNamespace}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeGatewayCapabilityConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          gatewayId: S.String,
+          capabilityNamespace: S.String,
+          capabilityConfiguration: S.String,
+          capabilitySyncStatus: S.String,
+        }),
+      ).annotate({
+        identifier: "DescribeGatewayCapabilityConfigurationResponse",
+      });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")) }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/logging" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeLoggingOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ loggingOptions: __S(3216, __c201, 0) })).annotate({
+        identifier: "DescribeLoggingOptionsResponse",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ level: S.String })).annotate({
+        identifier: "LoggingOptions",
+      });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          pipelineName: S.String.pipe(T.HttpLabel("pipelineName")),
+          pipelineVersion: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}/pipelines/{pipelineName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribePipelineRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pipelineName: S.String,
+          workspaceName: S.String,
+          description: S.optional(S.String),
+          pipelineArn: S.String,
+          version: S.String,
+          environmentVariables: S.optional(__S(2048, __c128, 0)),
+          computations: __S(2065, __c129, 1),
+          status: __S(2032, __c127, 0),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "DescribePipelineResponse" });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          pipelineName: S.String.pipe(T.HttpLabel("pipelineName")),
+          pipelineExecutionId: S.String.pipe(T.HttpLabel("pipelineExecutionId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/workspaces/{workspaceName}/pipelines/{pipelineName}/executions/{pipelineExecutionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribePipelineExecutionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          message: S.String,
+          details: S.optional(__S(1600, __c100, 0)),
+        }),
+      ).annotate({
+        identifier: "ComputeNodeExecutionStateDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          stateDetails: S.optional(__S(3249, __c203, 1)),
+        }),
+      ).annotate({
+        identifier: "ComputeNodeExecutionStatus",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          computeNodeName: S.String,
+          taskName: S.String,
+          taskArn: S.String,
+          taskVersion: S.String,
+          dependsOn: __S(1200, __c75, 0),
+          status: __S(3250, __c203, 2),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          executionEnvironmentVariables: S.optional(__S(2048, __c128, 0)),
+          executionMounts: S.optional(__S(2179, __c136, 3)),
+        }),
+      ).annotate({
+        identifier: "ComputeNodeExecutionDetails",
+      });
+    case 4:
+      return S.Array(__S(3251, __c203, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          pipelineExecutionId: S.String,
+          pipelineName: S.String,
+          workspaceName: S.String,
+          pipelineVersion: S.String,
+          status: __S(3265, __c204, 1),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          requestEnvironmentVariables: __S(3281, __c205, 1),
+          requestMountOverrides: S.optional(__S(3283, __c205, 3)),
+          executionPriority: S.optional(S.Number),
+          computeNodeExecutionDetails: __S(3252, __c203, 4),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribePipelineExecutionResponse",
+      });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.String,
+          details: S.optional(__S(1600, __c100, 0)),
+        }),
+      ).annotate({
+        identifier: "PipelineExecutionStateDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          stateDetails: S.optional(__S(3264, __c204, 0)),
+        }),
+      ).annotate({ identifier: "PipelineExecutionStatus" });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(2048, __c128, 0).pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          global: S.optional(__S(2048, __c128, 0)),
+          computeNodes: S.optional(__S(3280, __c205, 0)),
+        }),
+      ).annotate({
+        identifier: "ExecutionEnvironmentVariables",
+      });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(2179, __c136, 3).pipe(S.optional));
+    case 3:
+      return S.suspend(() => S.Struct({ computeNodes: __S(3282, __c205, 2) })).annotate({
+        identifier: "MountOverrides",
+      });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ portalId: S.String.pipe(T.HttpLabel("portalId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/portals/{portalId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribePortalRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ id: S.String, url: S.String })).annotate({
+        identifier: "ImageLocation",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          portalId: S.String,
+          portalArn: S.String,
+          portalName: S.String,
+          portalDescription: S.optional(S.String),
+          portalClientId: S.String,
+          portalStartUrl: S.String,
+          portalContactEmail: SensitiveString,
+          portalStatus: __S(2112, __c132, 0),
+          portalCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          portalLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          portalLogoImageLocation: S.optional(__S(3297, __c206, 1)),
+          roleArn: S.optional(S.String),
+          portalAuthMode: S.optional(S.String),
+          notificationSenderEmail: S.optional(SensitiveString),
+          alarms: S.optional(__S(2128, __c133, 0)),
+          portalType: S.optional(S.String),
+          portalTypeConfiguration: S.optional(__S(2130, __c133, 2)),
+        }),
+      ).annotate({ identifier: "DescribePortalResponse" });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ projectId: S.String.pipe(T.HttpLabel("projectId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/projects/{projectId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeProjectRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String,
+          projectArn: S.String,
+          projectName: S.String,
+          portalId: S.String,
+          projectDescription: S.optional(S.String),
+          projectCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          projectLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "DescribeProjectResponse" });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          queryId: S.String.pipe(T.HttpLabel("queryId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}/queries/{queryId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeQueryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ rowCount: S.Number, bytesScanned: S.Number, executionTimeInMillis: S.Number }),
+      ).annotate({ identifier: "QueryStatistics" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          queryId: S.String,
+          status: S.String,
+          submittedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          statistics: S.optional(__S(3329, __c208, 1)),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DescribeQueryResponse" });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          searchId: S.String.pipe(T.HttpLabel("searchId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}/searches/{searchId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeSearchRequest" });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          searchId: S.String,
+          workspaceName: S.String,
+          status: S.String,
+          queryStatement: SensitiveString,
+          searchType: S.String,
+          statusReason: S.optional(S.String),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          groupId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DescribeSearchResponse" });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/configuration/account/storage" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeStorageConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          storageType: S.String,
+          multiLayerStorage: S.optional(__S(3393, __c212, 1)),
+          disassociatedDataStorage: S.optional(S.String),
+          retentionPeriod: S.optional(__S(3394, __c212, 2)),
+          configurationStatus: __S(3105, __c194, 1),
+          lastUpdateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          warmTier: S.optional(S.String),
+          warmTierRetentionPeriod: S.optional(__S(3394, __c212, 2)),
+          disallowIngestNullNaN: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DescribeStorageConfigurationResponse",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ s3ResourceArn: S.String, roleArn: S.String })).annotate({
+        identifier: "CustomerManagedS3Storage",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ customerManagedS3Storage: __S(3392, __c212, 0) })).annotate(
+        { identifier: "MultiLayerStorage" },
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ numberOfDays: S.optional(S.Number), unlimited: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "RetentionPeriod" });
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          taskName: S.String.pipe(T.HttpLabel("taskName")),
+          taskVersion: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}/tasks/{taskName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeTaskRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String,
+          taskName: S.String,
+          description: S.optional(S.String),
+          taskArn: S.String,
+          version: S.String,
+          taskConfiguration: __S(2194, __c137, 2),
+          status: __S(2032, __c127, 0),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "DescribeTaskResponse" });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.optional(S.String).pipe(T.HttpQuery("alias")),
+          assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
+          propertyId: S.optional(S.String).pipe(T.HttpQuery("propertyId")),
+          workspaceName: S.optional(S.String).pipe(T.HttpQuery("workspaceName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/timeseries/describe" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeTimeSeriesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.optional(S.String),
+          propertyId: S.optional(S.String),
+          alias: S.optional(S.String),
+          timeSeriesId: S.String,
+          dataType: S.String,
+          dataTypeSpec: S.optional(S.String),
+          timeSeriesCreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          timeSeriesLastUpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          timeSeriesArn: S.String,
+          workspaceName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeTimeSeriesResponse",
+      });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ workspaceName: S.String.pipe(T.HttpLabel("workspaceName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/workspaces/{workspaceName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeWorkspaceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ encryptionType: S.String, kmsKeyArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "WorkspaceEncryptionConfigurationInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceArn: S.String,
+          workspaceName: S.String,
+          workspaceDescription: S.optional(S.String),
+          workspaceStatus: __S(2240, __c140, 0),
+          encryptionConfiguration: S.optional(__S(3441, __c215, 1)),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "DescribeWorkspaceResponse",
+      });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.String.pipe(T.HttpLabel("assetId")),
+          hierarchyId: S.String,
+          childAssetId: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/assets/{assetId}/disassociate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateAssetsRequest",
+      });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.String.pipe(T.HttpQuery("alias")),
+          assetId: S.String.pipe(T.HttpQuery("assetId")),
+          propertyId: S.String.pipe(T.HttpQuery("propertyId")),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/timeseries/disassociate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateTimeSeriesFromAssetPropertyRequest",
+      });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetResource: __S(2672, __c167, 0),
+          actionDefinitionId: S.String,
+          actionPayload: __S(2688, __c168, 0),
+          clientToken: S.optional(S.String),
+          resolveTo: S.optional(__S(2656, __c166, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/actions" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ExecuteActionRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ actionId: S.String })).annotate({
+        identifier: "ExecuteActionResponse",
+      });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          queryStatement: SensitiveString,
+          nextToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/queries/execution" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ExecuteQueryRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ scalarType: S.optional(S.String) })).annotate({
+        identifier: "ColumnType",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), type: S.optional(__S(3505, __c219, 1)) }),
+      ).annotate({ identifier: "ColumnInfo" });
+    case 3:
+      return S.Array(__S(3506, __c219, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          scalarValue: S.optional(S.String),
+          arrayValue: S.optional(
+            S.suspend(() => __S(3509, __c219, 5)).annotate({ identifier: "DatumList" }),
+          ),
+          rowValue: S.optional(
+            S.suspend((): S.Schema<Row> => __S(3510, __c219, 6)).annotate({ identifier: "Row" }),
+          ),
+          nullValue: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Datum" });
+    case 5:
+      return S.Array(
+        /*@__PURE__*/ S.suspend((): S.Schema<Datum> => __S(3508, __c219, 4)).annotate({
+          identifier: "Datum",
+        }),
+      );
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.suspend(() => __S(3509, __c219, 5)).annotate({ identifier: "DatumList" }),
+        }),
+      ).annotate({ identifier: "Row" });
+    case 7:
+      return S.Array(
+        /*@__PURE__*/ S.suspend((): S.Schema<Row> => __S(3510, __c219, 6)).annotate({
+          identifier: "Row",
+        }),
+      );
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          columns: S.optional(__S(3507, __c219, 3)),
+          rows: S.optional(__S(3511, __c219, 7)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExecuteQueryResponse" });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
+          propertyId: S.optional(S.String).pipe(T.HttpQuery("propertyId")),
+          propertyAlias: S.optional(S.String).pipe(T.HttpQuery("propertyAlias")),
+          aggregateTypes: __S(1296, __c81, 0).pipe(T.HttpQuery("aggregateTypes")),
+          resolution: S.String.pipe(T.HttpQuery("resolution")),
+          qualities: S.optional(__S(1296, __c81, 0)).pipe(T.HttpQuery("qualities")),
+          startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("startDate")),
+          endDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("endDate")),
+          timeOrdering: S.optional(S.String).pipe(T.HttpQuery("timeOrdering")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/properties/aggregates" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAssetPropertyAggregatesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ aggregatedValues: __S(1314, __c82, 2), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetAssetPropertyAggregatesResponse",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
+          propertyId: S.optional(S.String).pipe(T.HttpQuery("propertyId")),
+          propertyAlias: S.optional(S.String).pipe(T.HttpQuery("propertyAlias")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/properties/latest" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetAssetPropertyValueRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ propertyValue: S.optional(__S(1344, __c84, 0)) })).annotate(
+        {
+          identifier: "GetAssetPropertyValueResponse",
+        },
+      );
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.optional(S.String).pipe(T.HttpQuery("assetId")),
+          propertyId: S.optional(S.String).pipe(T.HttpQuery("propertyId")),
+          propertyAlias: S.optional(S.String).pipe(T.HttpQuery("propertyAlias")),
+          startDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("startDate"),
+          ),
+          endDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("endDate"),
+          ),
+          qualities: S.optional(__S(1296, __c81, 0)).pipe(T.HttpQuery("qualities")),
+          timeOrdering: S.optional(S.String).pipe(T.HttpQuery("timeOrdering")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/properties/history" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAssetPropertyValueHistoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          assetPropertyValueHistory: __S(1392, __c87, 0),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetAssetPropertyValueHistoryResponse",
+      });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceName: S.String.pipe(T.HttpLabel("workspaceName")),
+          startTime: __S(1088, __c68, 0),
+          endTime: __S(1088, __c68, 0),
+          timeSeriesId: S.optional(S.String),
+          propertyAlias: S.optional(S.String),
+          formatSettings: S.optional(__S(1920, __c120, 0)),
+          nextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/workspaces/{workspaceName}/get-capture-data" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetCaptureDataRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: T.Blob,
+          startTime: __S(1088, __c68, 0),
+          endTime: __S(1088, __c68, 0),
+          dataType: S.String,
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetCaptureDataResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

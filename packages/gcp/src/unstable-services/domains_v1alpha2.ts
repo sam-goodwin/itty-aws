@@ -997,11 +997,11 @@ export const configureContactSettingsProjectsLocationsRegistrations: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    6,
-    __c0,
-    6,
+    449,
+    __c28,
+    1,
   ) as any as S.Schema<ConfigureContactSettingsProjectsLocationsRegistrationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(530, __c33, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1021,11 +1021,11 @@ export const configureDnsSettingsProjectsLocationsRegistrations: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19,
-    __c2,
-    3,
+    545,
+    __c34,
+    1,
   ) as any as S.Schema<ConfigureDnsSettingsProjectsLocationsRegistrationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(530, __c33, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1045,11 +1045,11 @@ export const configureManagementSettingsProjectsLocationsRegistrations: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    22,
-    __c2,
-    6,
+    577,
+    __c36,
+    1,
   ) as any as S.Schema<ConfigureManagementSettingsProjectsLocationsRegistrationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(530, __c33, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1068,8 +1068,8 @@ export const deleteProjectsLocationsRegistrations: API.OperationMethod<
   DeleteProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteProjectsLocationsRegistrationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(608, __c38, 0) as any as S.Schema<DeleteProjectsLocationsRegistrationsRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1088,8 +1088,8 @@ export const exportProjectsLocationsRegistrations: API.OperationMethod<
   ExportProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ExportProjectsLocationsRegistrationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(624, __c39, 0) as any as S.Schema<ExportProjectsLocationsRegistrationsRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1107,11 +1107,11 @@ export const getAuthorizationCodeProjectsLocationsRegistrations: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    26,
-    __c3,
-    2,
+    656,
+    __c41,
+    0,
   ) as any as S.Schema<GetAuthorizationCodeProjectsLocationsRegistrationsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AuthorizationCode>,
+  output: __S(672, __c42, 0) as any as S.Schema<AuthorizationCode>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1130,11 +1130,11 @@ export const getGoogleDomainsDnsRecordsProjectsLocationsRegistrations: API.Pagin
   RetrieveGoogleDomainsDnsRecordsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    28,
-    __c3,
-    4,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<RetrieveGoogleDomainsDnsRecordsResponse>,
+  output: __S(14, __c0, 14) as any as S.Schema<RetrieveGoogleDomainsDnsRecordsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1153,11 +1153,11 @@ export const getGoogleDomainsForwardingConfigProjectsLocationsRegistrations: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    43,
-    __c5,
-    3,
+    16,
+    __c1,
+    0,
   ) as any as S.Schema<GetGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<RetrieveGoogleDomainsForwardingConfigResponse>,
+  output: __S(21, __c1, 5) as any as S.Schema<RetrieveGoogleDomainsForwardingConfigResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1171,8 +1171,8 @@ export const getIamPolicyProjectsLocationsRegistrations: API.OperationMethod<
   GetIamPolicyProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetIamPolicyProjectsLocationsRegistrationsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<Policy>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetIamPolicyProjectsLocationsRegistrationsRequest>,
+  output: __S(55, __c3, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1191,11 +1191,11 @@ export const getImportableDomainsProjectsLocationsRegistrations: API.PaginatedOp
   RetrieveImportableDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    58,
-    __c7,
-    2,
+    64,
+    __c4,
+    0,
   ) as any as S.Schema<GetImportableDomainsProjectsLocationsRegistrationsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<RetrieveImportableDomainsResponse>,
+  output: __S(67, __c4, 3) as any as S.Schema<RetrieveImportableDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1210,8 +1210,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<Location>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1225,8 +1225,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1240,8 +1240,8 @@ export const getProjectsLocationsRegistrations: API.OperationMethod<
   GetProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetProjectsLocationsRegistrationsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<Registration>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetProjectsLocationsRegistrationsRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<Registration>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1259,11 +1259,11 @@ export const getRegisterParametersProjectsLocationsRegistrations: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    69,
-    __c8,
-    5,
+    192,
+    __c12,
+    0,
   ) as any as S.Schema<GetRegisterParametersProjectsLocationsRegistrationsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<RetrieveRegisterParametersResponse>,
+  output: __S(193, __c12, 1) as any as S.Schema<RetrieveRegisterParametersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1281,11 +1281,11 @@ export const getTransferParametersProjectsLocationsRegistrations: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    72,
-    __c9,
+    224,
+    __c14,
     0,
   ) as any as S.Schema<GetTransferParametersProjectsLocationsRegistrationsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<RetrieveTransferParametersResponse>,
+  output: __S(226, __c14, 2) as any as S.Schema<RetrieveTransferParametersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1304,8 +1304,8 @@ export const importProjectsLocationsRegistrations: API.OperationMethod<
   ImportProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ImportProjectsLocationsRegistrationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(241, __c15, 1) as any as S.Schema<ImportProjectsLocationsRegistrationsRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1325,11 +1325,11 @@ export const initiatePushTransferProjectsLocationsRegistrations: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    78,
-    __c9,
-    6,
+    257,
+    __c16,
+    1,
   ) as any as S.Schema<InitiatePushTransferProjectsLocationsRegistrationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  output: __S(530, __c33, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1344,8 +1344,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ListLocationsResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1361,8 +1361,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1378,8 +1378,8 @@ export const listProjectsLocationsRegistrations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRegistrationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListProjectsLocationsRegistrationsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<ListRegistrationsResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListProjectsLocationsRegistrationsRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<ListRegistrationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1399,8 +1399,8 @@ export const patchProjectsLocationsRegistrations: API.OperationMethod<
   PatchProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<PatchProjectsLocationsRegistrationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(320, __c20, 0) as any as S.Schema<PatchProjectsLocationsRegistrationsRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1419,8 +1419,8 @@ export const registerProjectsLocationsRegistrations: API.OperationMethod<
   RegisterProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<RegisterProjectsLocationsRegistrationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(337, __c21, 1) as any as S.Schema<RegisterProjectsLocationsRegistrationsRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1439,8 +1439,8 @@ export const renewDomainProjectsLocationsRegistrations: API.OperationMethod<
   RenewDomainProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<RenewDomainProjectsLocationsRegistrationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(353, __c22, 1) as any as S.Schema<RenewDomainProjectsLocationsRegistrationsRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1460,11 +1460,11 @@ export const resetAuthorizationCodeProjectsLocationsRegistrations: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    93,
-    __c11,
-    5,
+    368,
+    __c23,
+    0,
   ) as any as S.Schema<ResetAuthorizationCodeProjectsLocationsRegistrationsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AuthorizationCode>,
+  output: __S(672, __c42, 0) as any as S.Schema<AuthorizationCode>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1478,8 @@ export const searchDomainsProjectsLocationsRegistrations: API.OperationMethod<
   SearchDomainsProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<SearchDomainsProjectsLocationsRegistrationsRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<SearchDomainsResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<SearchDomainsProjectsLocationsRegistrationsRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<SearchDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1498,8 +1498,8 @@ export const setIamPolicyProjectsLocationsRegistrations: API.OperationMethod<
   SetIamPolicyProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<SetIamPolicyProjectsLocationsRegistrationsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<Policy>,
+  input: __S(401, __c25, 1) as any as S.Schema<SetIamPolicyProjectsLocationsRegistrationsRequest>,
+  output: __S(55, __c3, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1519,11 +1519,11 @@ export const testIamPermissionsProjectsLocationsRegistrations: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    100,
-    __c12,
-    4,
+    417,
+    __c26,
+    1,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsRegistrationsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(416, __c26, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1542,8 +1542,8 @@ export const transferProjectsLocationsRegistrations: API.OperationMethod<
   TransferProjectsLocationsRegistrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<TransferProjectsLocationsRegistrationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Operation>,
+  input: __S(433, __c27, 1) as any as S.Schema<TransferProjectsLocationsRegistrationsRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1553,261 +1553,6 @@ export const transferProjectsLocationsRegistrations: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sublocality: S.optional(S.String),
-          regionCode: S.optional(S.String),
-          addressLines: S.optional(__S(1, __c0, 1)),
-          administrativeArea: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          organization: S.optional(S.String),
-          revision: S.optional(S.Number),
-          sortingCode: S.optional(S.String),
-          locality: S.optional(S.String),
-          recipients: S.optional(__S(1, __c0, 1)),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PostalAddress" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          faxNumber: S.optional(S.String),
-          email: S.optional(S.String),
-          postalAddress: S.optional(__S(2, __c0, 2)),
-          phoneNumber: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Contact" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          privacy: S.optional(S.String),
-          adminContact: S.optional(__S(3, __c0, 3)),
-          registrantContact: S.optional(__S(3, __c0, 3)),
-          technicalContact: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ContactSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean),
-          contactNotices: S.optional(__S(0, __c0, 0)),
-          updateMask: S.optional(S.String),
-          contactSettings: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "ConfigureContactSettingsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          registration: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha2/{+registration}:configureContactSettings",
-            baseUrl: "https://domains.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigureContactSettingsProjectsLocationsRegistrationsRequest",
-      });
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(8, __c1, 0)),
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(9, __c1, 1)),
-          metadata: S.optional(__S(7, __c0, 7)),
-          response: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          algorithm: S.optional(S.String),
-          digestType: S.optional(S.String),
-          keyTag: S.optional(S.Number),
-          digest: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DsRecord" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nameServers: S.optional(__S(1, __c0, 1)),
-          dsRecords: S.optional(__S(12, __c1, 4)),
-          dsState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleDomainsDns" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dsRecords: S.optional(__S(12, __c1, 4)),
-          nameServers: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "CustomDns" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          hostName: S.optional(S.String),
-          ipv6Addresses: S.optional(__S(1, __c0, 1)),
-          ipv4Addresses: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "GlueRecord" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          googleDomainsDns: S.optional(__S(13, __c1, 5)),
-          customDns: S.optional(__S(14, __c1, 6)),
-          googleDomainsRedirectsDataAvailable: S.optional(S.Boolean),
-          glueRecords: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "DnsSettings" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dnsSettings: S.optional(__S(17, __c2, 1)),
-          updateMask: S.optional(S.String),
-          validateOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ConfigureDnsSettingsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          registration: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha2/{+registration}:configureDnsSettings",
-            baseUrl: "https://domains.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigureDnsSettingsProjectsLocationsRegistrationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          renewalMethod: S.optional(S.String),
-          transferLockState: S.optional(S.String),
-          effectiveTransferLockState: S.optional(S.String),
-          preferredRenewalMethod: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagementSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          validateOnly: S.optional(S.Boolean),
-          managementSettings: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "ConfigureManagementSettingsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          registration: S.String.pipe(T.Label()),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha2/{+registration}:configureManagementSettings",
-            baseUrl: "https://domains.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfigureManagementSettingsProjectsLocationsRegistrationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha2/{+name}",
-            baseUrl: "https://domains.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsRegistrationsRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ExportRegistrationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha2/{+name}:export",
-            baseUrl: "https://domains.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExportProjectsLocationsRegistrationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          registration: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha2/{+registration}:retrieveAuthorizationCode",
-            baseUrl: "https://domains.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAuthorizationCodeProjectsLocationsRegistrationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuthorizationCode" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1823,7 +1568,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           port: S.optional(S.String),
@@ -1835,100 +1580,96 @@ function __c3(j: number): any {
           loadBalancerType: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoadBalancerTarget" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          externalEndpoints: S.optional(__S(1, __c0, 1)),
-          internalLoadBalancer: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "HealthCheckTargets" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          healthCheckedTargets: S.optional(__S(31, __c3, 7)),
-          signatureRrdata: S.optional(__S(1, __c0, 1)),
-          rrdata: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "GeoPolicyItem" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          item: S.optional(__S(33, __c4, 1)),
-          enableFencing: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GeoPolicy" });
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          backupGeoTargets: S.optional(__S(34, __c4, 2)),
-          primaryTargets: S.optional(__S(31, __c3, 7)),
-          trickleTraffic: S.optional(S.Number),
+          externalEndpoints: S.optional(__S(496, __c31, 0)),
+          internalLoadBalancer: S.optional(__S(2, __c0, 2)),
         }),
-      ).annotate({ identifier: "PrimaryBackupPolicy" });
+      ).annotate({ identifier: "HealthCheckTargets" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          signatureRrdata: S.optional(__S(1, __c0, 1)),
-          weight: S.optional(S.Number),
-          healthCheckedTargets: S.optional(__S(31, __c3, 7)),
-          rrdata: S.optional(__S(1, __c0, 1)),
+          location: S.optional(S.String),
+          healthCheckedTargets: S.optional(__S(3, __c0, 3)),
+          signatureRrdata: S.optional(__S(496, __c31, 0)),
+          rrdata: S.optional(__S(496, __c31, 0)),
         }),
-      ).annotate({ identifier: "WrrPolicyItem" });
+      ).annotate({ identifier: "GeoPolicyItem" });
     case 5:
-      return S.Array(__S(36, __c4, 4));
+      return S.Array(__S(4, __c0, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          item: S.optional(__S(37, __c4, 5)),
+          item: S.optional(__S(5, __c0, 5)),
+          enableFencing: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "WrrPolicy" });
+      ).annotate({ identifier: "GeoPolicy" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          geo: S.optional(__S(34, __c4, 2)),
-          primaryBackup: S.optional(__S(35, __c4, 3)),
-          wrr: S.optional(__S(38, __c4, 6)),
-          healthCheck: S.optional(S.String),
-          wrrPolicy: S.optional(__S(38, __c4, 6)),
-          geoPolicy: S.optional(__S(34, __c4, 2)),
+          backupGeoTargets: S.optional(__S(6, __c0, 6)),
+          primaryTargets: S.optional(__S(3, __c0, 3)),
+          trickleTraffic: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "RRSetRoutingPolicy" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+      ).annotate({ identifier: "PrimaryBackupPolicy" });
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          signatureRrdata: S.optional(__S(1, __c0, 1)),
+          signatureRrdata: S.optional(__S(496, __c31, 0)),
+          weight: S.optional(S.Number),
+          healthCheckedTargets: S.optional(__S(3, __c0, 3)),
+          rrdata: S.optional(__S(496, __c31, 0)),
+        }),
+      ).annotate({ identifier: "WrrPolicyItem" });
+    case 9:
+      return S.Array(__S(8, __c0, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          item: S.optional(__S(9, __c0, 9)),
+        }),
+      ).annotate({ identifier: "WrrPolicy" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          geo: S.optional(__S(6, __c0, 6)),
+          primaryBackup: S.optional(__S(7, __c0, 7)),
+          wrr: S.optional(__S(10, __c0, 10)),
+          healthCheck: S.optional(S.String),
+          wrrPolicy: S.optional(__S(10, __c0, 10)),
+          geoPolicy: S.optional(__S(6, __c0, 6)),
+        }),
+      ).annotate({ identifier: "RRSetRoutingPolicy" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          signatureRrdata: S.optional(__S(496, __c31, 0)),
           ttl: S.optional(S.Number),
-          routingPolicy: S.optional(__S(39, __c4, 7)),
+          routingPolicy: S.optional(__S(11, __c0, 11)),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          rrdata: S.optional(__S(1, __c0, 1)),
+          rrdata: S.optional(__S(496, __c31, 0)),
         }),
       ).annotate({ identifier: "ResourceRecordSet" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 13:
+      return S.Array(__S(12, __c0, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          rrset: S.optional(__S(41, __c5, 1)),
+          rrset: S.optional(__S(13, __c0, 13)),
         }),
       ).annotate({
         identifier: "RetrieveGoogleDomainsDnsRecordsResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registration: S.String.pipe(T.Label()),
@@ -1942,16 +1683,16 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           targetEmailAddress: S.optional(S.String),
           alias: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailForwarding" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           redirectType: S.optional(S.String),
@@ -1962,22 +1703,22 @@ function __c5(j: number): any {
           pathForwarding: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DomainForwarding" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(19, __c1, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          emailForwardings: S.optional(__S(45, __c5, 5)),
-          domainForwardings: S.optional(__S(47, __c5, 7)),
+          emailForwardings: S.optional(__S(18, __c1, 2)),
+          domainForwardings: S.optional(__S(20, __c1, 4)),
         }),
       ).annotate({
         identifier: "RetrieveGoogleDomainsForwardingConfigResponse",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -1992,7 +1733,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsRegistrationsRequest",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -2001,48 +1746,48 @@ function __c6(j: number): any {
           expression: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          members: S.optional(__S(496, __c31, 0)),
+          role: S.optional(S.String),
+          condition: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({ identifier: "Binding" });
+    case 2:
+      return S.Array(__S(49, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(1, __c0, 1)),
-          role: S.optional(S.String),
-          condition: S.optional(__S(50, __c6, 2)),
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(496, __c31, 0)),
         }),
-      ).annotate({ identifier: "Binding" });
+      ).annotate({ identifier: "AuditLogConfig" });
     case 4:
-      return S.Array(__S(51, __c6, 3));
+      return S.Array(__S(51, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "AuditLogConfig" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(54, __c6, 6)),
+          auditLogConfigs: S.optional(__S(52, __c3, 4)),
         }),
       ).annotate({ identifier: "AuditConfig" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(53, __c3, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
           etag: S.optional(S.String),
-          bindings: S.optional(__S(52, __c6, 4)),
-          auditConfigs: S.optional(__S(56, __c7, 0)),
+          bindings: S.optional(__S(50, __c3, 2)),
+          auditConfigs: S.optional(__S(54, __c3, 6)),
         }),
       ).annotate({ identifier: "Policy" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2058,7 +1803,30 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetImportableDomainsProjectsLocationsRegistrationsRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.optional(S.String),
+          resourceState: S.optional(S.String),
+          yearlyPrice: S.optional(__S(80, __c5, 0)),
+        }),
+      ).annotate({ identifier: "Domain" });
+    case 2:
+      return S.Array(__S(65, __c4, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          domains: S.optional(__S(66, __c4, 2)),
+        }),
+      ).annotate({
+        identifier: "RetrieveImportableDomainsResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           units: S.optional(S.String),
@@ -2066,26 +1834,11 @@ function __c7(j: number): any {
           nanos: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Money" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.optional(S.String),
-          resourceState: S.optional(S.String),
-          yearlyPrice: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "Domain" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          domains: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({
-        identifier: "RetrieveImportableDomainsResponse",
-      });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2101,21 +1854,29 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(64, __c8, 0)),
-          metadata: S.optional(__S(7, __c0, 7)),
+          labels: S.optional(__S(112, __c7, 0)),
+          metadata: S.optional(__S(512, __c32, 0)),
         }),
       ).annotate({ identifier: "Location" });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2129,7 +1890,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2143,28 +1908,36 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRegistrationsRequest",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expireTime: S.optional(S.String),
           provider: S.optional(S.String),
           createTime: S.optional(S.String),
-          issues: S.optional(__S(0, __c0, 0)),
+          issues: S.optional(__S(464, __c29, 0)),
           name: S.optional(S.String),
-          pendingContactSettings: S.optional(__S(4, __c0, 4)),
-          domainProperties: S.optional(__S(0, __c0, 0)),
-          managementSettings: S.optional(__S(20, __c2, 4)),
-          supportedPrivacy: S.optional(__S(0, __c0, 0)),
-          contactSettings: S.optional(__S(4, __c0, 4)),
-          labels: S.optional(__S(64, __c8, 0)),
+          pendingContactSettings: S.optional(__S(482, __c30, 2)),
+          domainProperties: S.optional(__S(464, __c29, 0)),
+          managementSettings: S.optional(__S(592, __c37, 0)),
+          supportedPrivacy: S.optional(__S(464, __c29, 0)),
+          contactSettings: S.optional(__S(482, __c30, 2)),
+          labels: S.optional(__S(112, __c7, 0)),
           transferFailureReason: S.optional(S.String),
           domainName: S.optional(S.String),
           state: S.optional(S.String),
-          dnsSettings: S.optional(__S(17, __c2, 1)),
+          dnsSettings: S.optional(__S(566, __c35, 6)),
           registerFailureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "Registration" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String.pipe(T.Query())),
@@ -2179,27 +1952,31 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetRegisterParametersProjectsLocationsRegistrationsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          yearlyPrice: S.optional(__S(59, __c7, 3)),
-          supportedPrivacy: S.optional(__S(0, __c0, 0)),
-          domainName: S.optional(S.String),
-          domainNotices: S.optional(__S(0, __c0, 0)),
-          availability: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RegisterParameters" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          registerParameters: S.optional(__S(70, __c8, 6)),
+          registerParameters: S.optional(__S(208, __c13, 0)),
         }),
       ).annotate({
         identifier: "RetrieveRegisterParametersResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          yearlyPrice: S.optional(__S(80, __c5, 0)),
+          supportedPrivacy: S.optional(__S(464, __c29, 0)),
+          domainName: S.optional(S.String),
+          domainNotices: S.optional(__S(464, __c29, 0)),
+          availability: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegisterParameters" });
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2220,34 +1997,38 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           currentRegistrar: S.optional(S.String),
-          yearlyPrice: S.optional(__S(59, __c7, 3)),
+          yearlyPrice: S.optional(__S(80, __c5, 0)),
           currentRegistrarUri: S.optional(S.String),
-          supportedPrivacy: S.optional(__S(0, __c0, 0)),
+          supportedPrivacy: S.optional(__S(464, __c29, 0)),
           transferLockState: S.optional(S.String),
           domainName: S.optional(S.String),
-          nameServers: S.optional(__S(1, __c0, 1)),
+          nameServers: S.optional(__S(496, __c31, 0)),
         }),
       ).annotate({ identifier: "TransferParameters" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          transferParameters: S.optional(__S(73, __c9, 1)),
+          transferParameters: S.optional(__S(225, __c14, 1)),
         }),
       ).annotate({
         identifier: "RetrieveTransferParametersResponse",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(64, __c8, 0)),
+          labels: S.optional(__S(112, __c7, 0)),
           domainName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImportDomainRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(75, __c9, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(240, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2258,7 +2039,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsRegistrationsRequest",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
@@ -2267,11 +2052,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "InitiatePushTransferRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           registration: S.String.pipe(T.Label()),
-          body: S.optional(__S(77, __c9, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2282,12 +2067,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "InitiatePushTransferProjectsLocationsRegistrationsRequest",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(496, __c31, 0).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -2300,20 +2089,20 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(65, __c8, 1));
     case 1:
+      return S.Array(__S(128, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(80, __c10, 0)),
+          locations: S.optional(__S(273, __c17, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -2331,17 +2120,21 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(530, __c33, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(1, __c0, 1)),
-          operations: S.optional(__S(83, __c10, 3)),
+          unreachable: S.optional(__S(496, __c31, 0)),
+          operations: S.optional(__S(289, __c18, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2358,12 +2151,12 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRegistrationsRequest",
       });
-    case 6:
-      return S.Array(__S(68, __c8, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(176, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          registrations: S.optional(__S(86, __c10, 6)),
+          registrations: S.optional(__S(305, __c19, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2371,7 +2164,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2379,7 +2172,7 @@ function __c11(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(68, __c8, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(176, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2390,21 +2183,25 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsRegistrationsRequest",
       });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contactNotices: S.optional(__S(464, __c29, 0)),
+          yearlyPrice: S.optional(__S(80, __c5, 0)),
+          domainNotices: S.optional(__S(464, __c29, 0)),
+          validateOnly: S.optional(S.Boolean),
+          registration: S.optional(__S(176, __c11, 0)),
+        }),
+      ).annotate({ identifier: "RegisterDomainRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          contactNotices: S.optional(__S(0, __c0, 0)),
-          yearlyPrice: S.optional(__S(59, __c7, 3)),
-          domainNotices: S.optional(__S(0, __c0, 0)),
-          validateOnly: S.optional(S.Boolean),
-          registration: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({ identifier: "RegisterDomainRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(89, __c11, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(336, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2415,18 +2212,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "RegisterProjectsLocationsRegistrationsRequest",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
-          yearlyPrice: S.optional(__S(59, __c7, 3)),
+          yearlyPrice: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "RenewDomainRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           registration: S.String.pipe(T.Label()),
-          body: S.optional(__S(91, __c11, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(352, __c22, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2437,11 +2238,15 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "RenewDomainProjectsLocationsRegistrationsRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registration: S.String.pipe(T.Label()),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(640, __c40, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2452,7 +2257,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ResetAuthorizationCodeProjectsLocationsRegistrationsRequest",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
@@ -2467,30 +2276,30 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SearchDomainsProjectsLocationsRegistrationsRequest",
       });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
+    case 1:
+      return S.Array(__S(208, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          registerParameters: S.optional(__S(385, __c24, 1)),
+        }),
+      ).annotate({ identifier: "SearchDomainsResponse" });
   }
 }
-function __c12(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          registerParameters: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "SearchDomainsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(57, __c7, 1)),
+          policy: S.optional(__S(55, __c3, 7)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(97, __c12, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(400, __c25, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2501,19 +2310,23 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsRegistrationsRequest",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(1, __c0, 1)),
+          permissions: S.optional(__S(496, __c31, 0)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(99, __c12, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(416, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2524,21 +2337,25 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsRegistrationsRequest",
       });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          authorizationCode: S.optional(__S(27, __c3, 3)),
+          authorizationCode: S.optional(__S(672, __c42, 0)),
           validateOnly: S.optional(S.Boolean),
-          yearlyPrice: S.optional(__S(59, __c7, 3)),
-          registration: S.optional(__S(68, __c8, 4)),
-          contactNotices: S.optional(__S(0, __c0, 0)),
+          yearlyPrice: S.optional(__S(80, __c5, 0)),
+          registration: S.optional(__S(176, __c11, 0)),
+          contactNotices: S.optional(__S(464, __c29, 0)),
         }),
       ).annotate({ identifier: "TransferDomainRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(101, __c12, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(432, __c27, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2551,7 +2368,309 @@ function __c12(j: number): any {
       });
   }
 }
-
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean),
+          contactNotices: S.optional(__S(464, __c29, 0)),
+          updateMask: S.optional(S.String),
+          contactSettings: S.optional(__S(482, __c30, 2)),
+        }),
+      ).annotate({
+        identifier: "ConfigureContactSettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          registration: S.String.pipe(T.Label()),
+          body: S.optional(__S(448, __c28, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha2/{+registration}:configureContactSettings",
+            baseUrl: "https://domains.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigureContactSettingsProjectsLocationsRegistrationsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sublocality: S.optional(S.String),
+          regionCode: S.optional(S.String),
+          addressLines: S.optional(__S(496, __c31, 0)),
+          administrativeArea: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          organization: S.optional(S.String),
+          revision: S.optional(S.Number),
+          sortingCode: S.optional(S.String),
+          locality: S.optional(S.String),
+          recipients: S.optional(__S(496, __c31, 0)),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PostalAddress" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          faxNumber: S.optional(S.String),
+          email: S.optional(S.String),
+          postalAddress: S.optional(__S(480, __c30, 0)),
+          phoneNumber: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Contact" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          privacy: S.optional(S.String),
+          adminContact: S.optional(__S(481, __c30, 1)),
+          registrantContact: S.optional(__S(481, __c30, 1)),
+          technicalContact: S.optional(__S(481, __c30, 1)),
+        }),
+      ).annotate({ identifier: "ContactSettings" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(512, __c32, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(528, __c33, 0)),
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(529, __c33, 1)),
+          metadata: S.optional(__S(512, __c32, 0)),
+          response: S.optional(__S(512, __c32, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dnsSettings: S.optional(__S(566, __c35, 6)),
+          updateMask: S.optional(S.String),
+          validateOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ConfigureDnsSettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          registration: S.String.pipe(T.Label()),
+          body: S.optional(__S(544, __c34, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha2/{+registration}:configureDnsSettings",
+            baseUrl: "https://domains.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigureDnsSettingsProjectsLocationsRegistrationsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          algorithm: S.optional(S.String),
+          digestType: S.optional(S.String),
+          keyTag: S.optional(S.Number),
+          digest: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DsRecord" });
+    case 1:
+      return S.Array(__S(560, __c35, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nameServers: S.optional(__S(496, __c31, 0)),
+          dsRecords: S.optional(__S(561, __c35, 1)),
+          dsState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleDomainsDns" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dsRecords: S.optional(__S(561, __c35, 1)),
+          nameServers: S.optional(__S(496, __c31, 0)),
+        }),
+      ).annotate({ identifier: "CustomDns" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          hostName: S.optional(S.String),
+          ipv6Addresses: S.optional(__S(496, __c31, 0)),
+          ipv4Addresses: S.optional(__S(496, __c31, 0)),
+        }),
+      ).annotate({ identifier: "GlueRecord" });
+    case 5:
+      return S.Array(__S(564, __c35, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          googleDomainsDns: S.optional(__S(562, __c35, 2)),
+          customDns: S.optional(__S(563, __c35, 3)),
+          googleDomainsRedirectsDataAvailable: S.optional(S.Boolean),
+          glueRecords: S.optional(__S(565, __c35, 5)),
+        }),
+      ).annotate({ identifier: "DnsSettings" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          validateOnly: S.optional(S.Boolean),
+          managementSettings: S.optional(__S(592, __c37, 0)),
+        }),
+      ).annotate({
+        identifier: "ConfigureManagementSettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          registration: S.String.pipe(T.Label()),
+          body: S.optional(__S(576, __c36, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha2/{+registration}:configureManagementSettings",
+            baseUrl: "https://domains.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfigureManagementSettingsProjectsLocationsRegistrationsRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          renewalMethod: S.optional(S.String),
+          transferLockState: S.optional(S.String),
+          effectiveTransferLockState: S.optional(S.String),
+          preferredRenewalMethod: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagementSettings" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha2/{+name}",
+            baseUrl: "https://domains.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsRegistrationsRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(640, __c40, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha2/{+name}:export",
+            baseUrl: "https://domains.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExportProjectsLocationsRegistrationsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ExportRegistrationRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          registration: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha2/{+registration}:retrieveAuthorizationCode",
+            baseUrl: "https://domains.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAuthorizationCodeProjectsLocationsRegistrationsRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuthorizationCode" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -4593,8 +4593,8 @@ export const batchDeleteRowAccessPolicies: API.OperationMethod<
   BatchDeleteRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchDeleteRowAccessPoliciesRequest_>,
-  output: __S(3, __c0, 3) as any as S.Schema<BatchDeleteRowAccessPoliciesResponse>,
+  input: __S(1345, __c42, 1) as any as S.Schema<BatchDeleteRowAccessPoliciesRequest_>,
+  output: __S(1346, __c42, 2) as any as S.Schema<BatchDeleteRowAccessPoliciesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4608,8 +4608,8 @@ export const cancelJobs: API.OperationMethod<
   CancelJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CancelJobsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<JobCancelResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<CancelJobsRequest>,
+  output: __S(1793, __c56, 1) as any as S.Schema<JobCancelResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4623,8 +4623,8 @@ export const deleteDatasets: API.OperationMethod<
   DeleteDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<DeleteDatasetsRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<DeleteDatasetsResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<DeleteDatasetsRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<DeleteDatasetsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4638,8 +4638,8 @@ export const deleteJobs: API.OperationMethod<
   DeleteJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<DeleteJobsRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<DeleteJobsResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<DeleteJobsRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<DeleteJobsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4653,8 +4653,8 @@ export const deleteModels: API.OperationMethod<
   DeleteModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<DeleteModelsRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<DeleteModelsResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<DeleteModelsRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<DeleteModelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4668,8 +4668,8 @@ export const deleteRoutines: API.OperationMethod<
   DeleteRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<DeleteRoutinesRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<DeleteRoutinesResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<DeleteRoutinesRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<DeleteRoutinesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4688,8 +4688,8 @@ export const deleteRowAccessPolicies: API.OperationMethod<
   DeleteRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<DeleteRowAccessPoliciesRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<DeleteRowAccessPoliciesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteRowAccessPoliciesRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteRowAccessPoliciesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4703,8 +4703,8 @@ export const deleteTables: API.OperationMethod<
   DeleteTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<DeleteTablesRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<DeleteTablesResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteTablesRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<DeleteTablesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4718,8 +4718,8 @@ export const getDatasets: API.OperationMethod<
   GetDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<GetDatasetsRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<Dataset>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetDatasetsRequest>,
+  output: __S(200, __c6, 8) as any as S.Schema<Dataset>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4733,8 +4733,8 @@ export const getIamPolicyRoutines: API.OperationMethod<
   GetIamPolicyRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<GetIamPolicyRoutinesRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<Policy>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetIamPolicyRoutinesRequest>,
+  output: __S(294, __c9, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4753,8 +4753,8 @@ export const getIamPolicyRowAccessPolicies: API.OperationMethod<
   GetIamPolicyRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<GetIamPolicyRowAccessPoliciesRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<Policy>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetIamPolicyRowAccessPoliciesRequest>,
+  output: __S(294, __c9, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4768,8 +4768,8 @@ export const getIamPolicyTables: API.OperationMethod<
   GetIamPolicyTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<GetIamPolicyTablesRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<Policy>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetIamPolicyTablesRequest>,
+  output: __S(294, __c9, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4779,8 +4779,8 @@ export type GetJobsError = NotFound | Forbidden | GcpOpError;
 /** Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role. # IAM Permissions Requires the `bigquery.jobs.get` permission on the job resource. If the user matches the creator of the job, the `bigquery.jobs.create` permission on the project is required instead. */
 export const getJobs: API.OperationMethod<GetJobsRequest, Job, GetJobsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(236, __c29, 4) as any as S.Schema<GetJobsRequest>,
-    output: __S(201, __c25, 1) as any as S.Schema<Job>,
+    input: __S(384, __c12, 0) as any as S.Schema<GetJobsRequest>,
+    output: __S(2368, __c74, 0) as any as S.Schema<Job>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -4790,8 +4790,8 @@ export type GetModelsError = NotFound | Forbidden | GcpOpError;
 /** Gets the specified model resource by model ID. # IAM Permissions Requires the `bigquery.models.getMetadata` permission on the model. */
 export const getModels: API.OperationMethod<GetModelsRequest, Model, GetModelsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(237, __c29, 5) as any as S.Schema<GetModelsRequest>,
-    output: __S(258, __c32, 2) as any as S.Schema<Model>,
+    input: __S(416, __c13, 0) as any as S.Schema<GetModelsRequest>,
+    output: __S(468, __c14, 20) as any as S.Schema<Model>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -4805,8 +4805,8 @@ export const getQueryResultsJobs: API.OperationMethod<
   GetQueryResultsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<GetQueryResultsJobsRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<GetQueryResultsResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetQueryResultsJobsRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<GetQueryResultsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4820,8 +4820,8 @@ export const getRoutines: API.OperationMethod<
   GetRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<GetRoutinesRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<Routine>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetRoutinesRequest>,
+  output: __S(586, __c18, 10) as any as S.Schema<Routine>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4835,8 +4835,8 @@ export const getRowAccessPolicies: API.OperationMethod<
   GetRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<GetRowAccessPoliciesRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<RowAccessPolicy>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetRowAccessPoliciesRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<RowAccessPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4850,8 +4850,8 @@ export const getServiceAccountProjects: API.OperationMethod<
   GetServiceAccountProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<GetServiceAccountProjectsRequest>,
-  output: __S(280, __c35, 0) as any as S.Schema<GetServiceAccountResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetServiceAccountProjectsRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<GetServiceAccountResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4861,8 +4861,8 @@ export type GetTablesError = NotFound | Forbidden | GcpOpError;
 /** Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table. # IAM Permissions Requires the `bigquery.tables.get` permission on the table. */
 export const getTables: API.OperationMethod<GetTablesRequest, Table, GetTablesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(281, __c35, 1) as any as S.Schema<GetTablesRequest>,
-    output: __S(316, __c39, 4) as any as S.Schema<Table>,
+    input: __S(704, __c22, 0) as any as S.Schema<GetTablesRequest>,
+    output: __S(798, __c24, 30) as any as S.Schema<Table>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -4876,8 +4876,8 @@ export const insertAllTabledata: API.OperationMethod<
   InsertAllTabledataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<InsertAllTabledataRequest>,
-  output: __S(324, __c40, 4) as any as S.Schema<TableDataInsertAllResponse>,
+  input: __S(804, __c25, 4) as any as S.Schema<InsertAllTabledataRequest>,
+  output: __S(807, __c25, 7) as any as S.Schema<TableDataInsertAllResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4891,8 +4891,8 @@ export const insertDatasets: API.OperationMethod<
   InsertDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<InsertDatasetsRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<Dataset>,
+  input: __S(832, __c26, 0) as any as S.Schema<InsertDatasetsRequest>,
+  output: __S(200, __c6, 8) as any as S.Schema<Dataset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4906,8 +4906,8 @@ export const insertJobs: API.OperationMethod<
   InsertJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<InsertJobsRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<Job>,
+  input: __S(864, __c27, 0) as any as S.Schema<InsertJobsRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4921,8 +4921,8 @@ export const insertRoutines: API.OperationMethod<
   InsertRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<InsertRoutinesRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<Routine>,
+  input: __S(896, __c28, 0) as any as S.Schema<InsertRoutinesRequest>,
+  output: __S(586, __c18, 10) as any as S.Schema<Routine>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4941,8 +4941,8 @@ export const insertRowAccessPolicies: API.OperationMethod<
   InsertRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<InsertRowAccessPoliciesRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<RowAccessPolicy>,
+  input: __S(928, __c29, 0) as any as S.Schema<InsertRowAccessPoliciesRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<RowAccessPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4956,8 +4956,8 @@ export const insertTables: API.OperationMethod<
   InsertTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<InsertTablesRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<Table>,
+  input: __S(960, __c30, 0) as any as S.Schema<InsertTablesRequest>,
+  output: __S(798, __c24, 30) as any as S.Schema<Table>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4972,8 +4972,8 @@ export const listDatasets: API.PaginatedOperationMethod<
   GcpOpContext,
   DatasetList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<ListDatasetsRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<DatasetList>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListDatasetsRequest>,
+  output: __S(995, __c31, 3) as any as S.Schema<DatasetList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4989,8 +4989,8 @@ export const listJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   JobList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<ListJobsRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<JobList>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListJobsRequest>,
+  output: __S(1027, __c32, 3) as any as S.Schema<JobList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5006,8 +5006,8 @@ export const listModels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<ListModelsRequest>,
-  output: __S(340, __c42, 4) as any as S.Schema<ListModelsResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListModelsRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ListModelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5023,8 +5023,8 @@ export const listProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   ProjectList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<ListProjectsRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<ProjectList>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListProjectsRequest>,
+  output: __S(1092, __c34, 4) as any as S.Schema<ProjectList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5040,8 +5040,8 @@ export const listRoutines: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRoutinesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<ListRoutinesRequest>,
-  output: __S(348, __c43, 4) as any as S.Schema<ListRoutinesResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListRoutinesRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<ListRoutinesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5057,8 +5057,8 @@ export const listRowAccessPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRowAccessPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<ListRowAccessPoliciesRequest>,
-  output: __S(351, __c43, 7) as any as S.Schema<ListRowAccessPoliciesResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListRowAccessPoliciesRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<ListRowAccessPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5073,8 +5073,8 @@ export const listTabledata: API.OperationMethod<
   ListTabledataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<ListTabledataRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<TableDataList>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListTabledataRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<TableDataList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5089,8 +5089,8 @@ export const listTables: API.PaginatedOperationMethod<
   GcpOpContext,
   TableList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<ListTablesRequest>,
-  output: __S(358, __c44, 6) as any as S.Schema<TableList>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListTablesRequest>,
+  output: __S(1220, __c38, 4) as any as S.Schema<TableList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5105,8 +5105,8 @@ export const patchDatasets: API.OperationMethod<
   PatchDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<PatchDatasetsRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<Dataset>,
+  input: __S(1248, __c39, 0) as any as S.Schema<PatchDatasetsRequest>,
+  output: __S(200, __c6, 8) as any as S.Schema<Dataset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5120,8 +5120,8 @@ export const patchModels: API.OperationMethod<
   PatchModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<PatchModelsRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<Model>,
+  input: __S(1280, __c40, 0) as any as S.Schema<PatchModelsRequest>,
+  output: __S(468, __c14, 20) as any as S.Schema<Model>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5135,8 +5135,8 @@ export const patchTables: API.OperationMethod<
   PatchTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<PatchTablesRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<Table>,
+  input: __S(1312, __c41, 0) as any as S.Schema<PatchTablesRequest>,
+  output: __S(798, __c24, 30) as any as S.Schema<Table>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5150,8 +5150,8 @@ export const queryJobs: API.OperationMethod<
   QueryJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365, __c45, 5) as any as S.Schema<QueryJobsRequest>,
-  output: __S(368, __c46, 0) as any as S.Schema<QueryResponse>,
+  input: __S(1411, __c44, 3) as any as S.Schema<QueryJobsRequest>,
+  output: __S(1414, __c44, 6) as any as S.Schema<QueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5165,8 +5165,8 @@ export const setIamPolicyRoutines: API.OperationMethod<
   SetIamPolicyRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<SetIamPolicyRoutinesRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<Policy>,
+  input: __S(1440, __c45, 0) as any as S.Schema<SetIamPolicyRoutinesRequest>,
+  output: __S(294, __c9, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5180,8 +5180,8 @@ export const setIamPolicyTables: API.OperationMethod<
   SetIamPolicyTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371, __c46, 3) as any as S.Schema<SetIamPolicyTablesRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<Policy>,
+  input: __S(1504, __c47, 0) as any as S.Schema<SetIamPolicyTablesRequest>,
+  output: __S(294, __c9, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5200,8 +5200,8 @@ export const testIamPermissionsRoutines: API.OperationMethod<
   TestIamPermissionsRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(373, __c46, 5) as any as S.Schema<TestIamPermissionsRoutinesRequest>,
-  output: __S(372, __c46, 4) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<TestIamPermissionsRoutinesRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5220,8 +5220,8 @@ export const testIamPermissionsRowAccessPolicies: API.OperationMethod<
   TestIamPermissionsRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<TestIamPermissionsRowAccessPoliciesRequest>,
-  output: __S(372, __c46, 4) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<TestIamPermissionsRowAccessPoliciesRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5240,8 +5240,8 @@ export const testIamPermissionsTables: API.OperationMethod<
   TestIamPermissionsTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<TestIamPermissionsTablesRequest>,
-  output: __S(372, __c46, 4) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<TestIamPermissionsTablesRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5255,8 +5255,8 @@ export const undeleteDatasets: API.OperationMethod<
   UndeleteDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377, __c47, 1) as any as S.Schema<UndeleteDatasetsRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<Dataset>,
+  input: __S(1665, __c52, 1) as any as S.Schema<UndeleteDatasetsRequest>,
+  output: __S(200, __c6, 8) as any as S.Schema<Dataset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5270,8 +5270,8 @@ export const updateDatasets: API.OperationMethod<
   UpdateDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<UpdateDatasetsRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<Dataset>,
+  input: __S(1696, __c53, 0) as any as S.Schema<UpdateDatasetsRequest>,
+  output: __S(200, __c6, 8) as any as S.Schema<Dataset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5285,8 +5285,8 @@ export const updateRoutines: API.OperationMethod<
   UpdateRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379, __c47, 3) as any as S.Schema<UpdateRoutinesRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<Routine>,
+  input: __S(1728, __c54, 0) as any as S.Schema<UpdateRoutinesRequest>,
+  output: __S(586, __c18, 10) as any as S.Schema<Routine>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5305,8 +5305,8 @@ export const updateRowAccessPolicies: API.OperationMethod<
   UpdateRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<UpdateRowAccessPoliciesRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<RowAccessPolicy>,
+  input: __S(1760, __c55, 0) as any as S.Schema<UpdateRowAccessPoliciesRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<RowAccessPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5320,8 +5320,8 @@ export const updateTables: API.OperationMethod<
   UpdateTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381, __c47, 5) as any as S.Schema<UpdateTablesRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<Table>,
+  input: __S(2560, __c80, 0) as any as S.Schema<UpdateTablesRequest>,
+  output: __S(798, __c24, 30) as any as S.Schema<Table>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5329,1858 +5329,6 @@ export const updateTables: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          force: S.optional(S.Boolean),
-          policyIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteRowAccessPoliciesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tableId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          datasetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies:batchDelete",
-            baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteRowAccessPoliciesRequest_",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BatchDeleteRowAccessPoliciesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          location: S.optional(S.String.pipe(T.Query())),
-          jobId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "projects/{+projectId}/jobs/{+jobId}/cancel",
-            baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "CancelJobsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.optional(S.String),
-          projectId: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobReference" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          rowLevelSecurityApplied: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "RowLevelSecurityStatistics",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "GenAiErrorStats" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          numFailedRows: S.optional(S.String),
-          errors: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "GenAiFunctionErrorStats" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          numCostOptimizedRows: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GenAiFunctionCostOptimizationStats",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          numCacheHitRows: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GenAiFunctionCacheStats" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          prompt: S.optional(S.String),
-          errorStats: S.optional(__S(8, __c1, 0)),
-          costOptimizationStats: S.optional(__S(9, __c1, 1)),
-          cacheStats: S.optional(__S(10, __c1, 2)),
-          functionName: S.optional(S.String),
-          numProcessedRows: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GenAiFunctionStats" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          errorStats: S.optional(__S(7, __c0, 7)),
-          functionStats: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "GenAiStats" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.optional(S.String),
-          projectId: S.optional(S.String),
-          tableId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TableReference" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          postIndexPruningParallelInputCount: S.optional(S.String),
-          baseTable: S.optional(__S(14, __c1, 6)),
-          indexId: S.optional(S.String),
-          preIndexPruningParallelInputCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IndexPruningStats" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          baseTable: S.optional(__S(14, __c1, 6)),
-          indexName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IndexUnusedReason" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          indexPruningStats: S.optional(__S(16, __c2, 0)),
-          indexUsageMode: S.optional(S.String),
-          indexUnusedReasons: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "SearchStatistics" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          postCmetaPruningParallelInputCount: S.optional(S.String),
-          postCmetaPruningPartitionCount: S.optional(S.String),
-          preCmetaPruningParallelInputCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PruningStats" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          tableReference: S.optional(__S(14, __c1, 6)),
-          staleness: S.optional(S.String),
-          tableType: S.optional(S.String),
-          unusedReason: S.optional(S.String),
-          pruningStats: S.optional(__S(20, __c2, 4)),
-          explanation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TableMetadataCacheUsage" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tableMetadataCacheUsage: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "MetadataCacheStatistics" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          optimizationDetails: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "QueryInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          slotMs: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "JobStatistics2ReservationUsageItem",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uncoveredColumns: S.optional(__S(0, __c0, 0)),
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StoredColumnsUnusedReason",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          storedColumnsUnusedReasons: S.optional(__S(29, __c3, 5)),
-          baseTable: S.optional(__S(14, __c1, 6)),
-          isQueryAccelerated: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "StoredColumnsUsage" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          indexUnusedReasons: S.optional(__S(18, __c2, 2)),
-          storedColumnsUsages: S.optional(__S(31, __c3, 7)),
-          indexUsageMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VectorSearchStatistics" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.optional(S.String),
-          datasetId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatasetReference" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.optional(S.String),
-          tableId: S.optional(S.String),
-          policyId: S.optional(S.String),
-          projectId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RowAccessPolicyReference" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.optional(S.String),
-          routineId: S.optional(S.String),
-          datasetId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RoutineReference" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          reservedSlotCount: S.optional(S.String),
-          billingMethod: S.optional(S.String),
-          bytesBilled: S.optional(S.String),
-          externalService: S.optional(S.String),
-          bytesProcessed: S.optional(S.String),
-          slotMs: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalServiceCost" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          substeps: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ExplainQueryStep" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          waitRatioAvg: S.optional(S.Number),
-          waitMsMax: S.optional(S.String),
-          writeRatioAvg: S.optional(S.Number),
-          computeRatioMax: S.optional(S.Number),
-          waitMsAvg: S.optional(S.String),
-          writeRatioMax: S.optional(S.Number),
-          inputStages: S.optional(__S(0, __c0, 0)),
-          name: S.optional(S.String),
-          readRatioMax: S.optional(S.Number),
-          computeMsAvg: S.optional(S.String),
-          parallelInputs: S.optional(S.String),
-          startMs: S.optional(S.String),
-          computeMode: S.optional(S.String),
-          waitRatioMax: S.optional(S.Number),
-          computeRatioAvg: S.optional(S.Number),
-          recordsWritten: S.optional(S.String),
-          completedParallelInputs: S.optional(S.String),
-          shuffleOutputBytes: S.optional(S.String),
-          readRatioAvg: S.optional(S.Number),
-          endMs: S.optional(S.String),
-          writeMsAvg: S.optional(S.String),
-          status: S.optional(S.String),
-          steps: S.optional(__S(40, __c5, 0)),
-          writeMsMax: S.optional(S.String),
-          slotMs: S.optional(S.String),
-          id: S.optional(S.String),
-          recordsRead: S.optional(S.String),
-          readMsAvg: S.optional(S.String),
-          computeMsMax: S.optional(S.String),
-          shuffleOutputBytesSpilled: S.optional(S.String),
-          readMsMax: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExplainQueryStage" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          recordsReadDiffPercentage: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "InputDataChange" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          inputDataChange: S.optional(__S(43, __c5, 3)),
-          stageId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StagePerformanceChangeInsight",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          avgPreviousStalenessMs: S.optional(S.String),
-          stalenessPercentageIncrease: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MetadataCacheStalenessInsight",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metadataCacheStalenessInsight: S.optional(__S(46, __c5, 6)),
-          tableReference: S.optional(__S(14, __c1, 6)),
-          metadataCacheNotUsedButUsedPreviously: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TableChangeInsight" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BiEngineReason" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rightRows: S.optional(S.String),
-          leftRows: S.optional(S.String),
-          outputRows: S.optional(S.String),
-          stepIndex: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HighCardinalityJoin" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          outputBytesMax: S.optional(S.String),
-          outputBytesP95: S.optional(S.String),
-          stageId: S.optional(S.String),
-          outputBytesMedian: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SkewSource" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          skewSources: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "PartitionSkew" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          insufficientShuffleQuota: S.optional(S.Boolean),
-          biEngineReasons: S.optional(__S(50, __c6, 2)),
-          stageId: S.optional(S.String),
-          highCardinalityJoins: S.optional(__S(52, __c6, 4)),
-          slotContention: S.optional(S.Boolean),
-          partitionSkew: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({
-        identifier: "StagePerformanceStandaloneInsight",
-      });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          stagePerformanceChangeInsights: S.optional(__S(45, __c5, 5)),
-          tableChangeInsights: S.optional(__S(48, __c6, 0)),
-          stagePerformanceStandaloneInsights: S.optional(__S(57, __c7, 1)),
-          avgPreviousExecutionMs: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PerformanceInsights" });
-    case 3:
-      return S.Array(__S(14, __c1, 6));
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceType: S.optional(S.String),
-          projectId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SparkLoggingInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          endpoints: S.optional(__S(60, __c7, 4)),
-          loggingInfo: S.optional(__S(61, __c7, 5)),
-          sparkJobLocation: S.optional(S.String),
-          sparkJobId: S.optional(S.String),
-          kmsKeyName: S.optional(S.String),
-          gcsStagingBucket: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SparkStatistics" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fileCount: S.optional(S.String),
-          rowCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExportDataStatistics" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          outputBytes: S.optional(S.String),
-          bytesTransferred: S.optional(S.String),
-          inputFiles: S.optional(S.String),
-          badRecords: S.optional(S.String),
-          inputFileBytes: S.optional(S.String),
-          outputRows: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoadQueryStatistics" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tableReference: S.optional(__S(14, __c1, 6)),
-          chosen: S.optional(S.Boolean),
-          estimatedBytesSaved: S.optional(S.String),
-          rejectedReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MaterializedView" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          materializedView: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({
-        identifier: "MaterializedViewStatistics",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          elapsedMs: S.optional(S.String),
-          estimatedRunnableUnits: S.optional(S.String),
-          activeUnits: S.optional(S.String),
-          completedUnits: S.optional(S.String),
-          shuffleRamUsageRatio: S.optional(S.Number),
-          pendingUnits: S.optional(S.String),
-          totalSlotMs: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QueryTimelineSample" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          expectedTotalIterations: S.optional(S.String),
-          currentIteration: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BigQueryModelTraining" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accelerationMode: S.optional(S.String),
-          biEngineReasons: S.optional(__S(50, __c6, 2)),
-          biEngineMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BiEngineStatistics" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          lastIncrementalRowTime: S.optional(S.String),
-          disabledReasonDetails: S.optional(S.String),
-          resultSetLastModifyTime: S.optional(S.String),
-          resultSetLastReplaceTime: S.optional(S.String),
-          disabledReason: S.optional(S.String),
-          firstIncrementalRowTime: S.optional(S.String),
-          incrementalRowCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IncrementalResultStats" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cloudProvider: S.optional(S.String),
-          cacheBytesRead: S.optional(S.String),
-          objectStorageBytesRead: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ObjectStorageStats" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.Array(S.Number);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          autoRegressiveCoefficients: S.optional(__S(75, __c9, 3)),
-          interceptCoefficient: S.optional(S.Number),
-          movingAverageCoefficients: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({ identifier: "ArimaCoefficients" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          d: S.optional(S.String),
-          q: S.optional(S.String),
-          p: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ArimaOrder" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          variance: S.optional(S.Number),
-          logLikelihood: S.optional(S.Number),
-          aic: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ArimaFittingMetrics" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          arimaCoefficients: S.optional(__S(76, __c9, 4)),
-          hasDrift: S.optional(S.Boolean),
-          hasHolidayEffect: S.optional(S.Boolean),
-          nonSeasonalOrder: S.optional(__S(77, __c9, 5)),
-          arimaFittingMetrics: S.optional(__S(78, __c9, 6)),
-          hasStepChanges: S.optional(S.Boolean),
-          timeSeriesIds: S.optional(__S(0, __c0, 0)),
-          hasSpikesAndDips: S.optional(S.Boolean),
-          timeSeriesId: S.optional(S.String),
-          seasonalPeriods: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "ArimaModelInfo" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          arimaModelInfo: S.optional(__S(81, __c10, 1)),
-          seasonalPeriods: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "ArimaResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cumulativeExplainedVarianceRatio: S.optional(S.Number),
-          explainedVariance: S.optional(S.Number),
-          explainedVarianceRatio: S.optional(S.Number),
-          principalComponentId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrincipalComponentInfo" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          centroidId: S.optional(S.String),
-          clusterSize: S.optional(S.String),
-          clusterRadius: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ClusterInfo" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          learnRate: S.optional(S.Number),
-          arimaResult: S.optional(__S(82, __c10, 2)),
-          principalComponentInfos: S.optional(__S(84, __c10, 4)),
-          trainingLoss: S.optional(S.Number),
-          clusterInfos: S.optional(__S(86, __c10, 6)),
-          evalLoss: S.optional(S.Number),
-          index: S.optional(S.Number),
-          durationMs: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IterationResult" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.Record(S.String, S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          feedbackType: S.optional(S.String),
-          subsample: S.optional(S.Number),
-          reservationAffinityValues: S.optional(__S(0, __c0, 0)),
-          treeMethod: S.optional(S.String),
-          approxGlobalFeatureContrib: S.optional(S.Boolean),
-          reservationAffinityKey: S.optional(S.String),
-          holidayRegions: S.optional(__S(79, __c9, 7)),
-          timeSeriesLengthFraction: S.optional(S.Number),
-          numParallelTree: S.optional(S.String),
-          dataSplitMethod: S.optional(S.String),
-          timeSeriesDataColumn: S.optional(S.String),
-          fitIntercept: S.optional(S.Boolean),
-          maxParallelTrials: S.optional(S.String),
-          vertexAiModelVersionAliases: S.optional(__S(0, __c0, 0)),
-          trendSmoothingWindowSize: S.optional(S.String),
-          minAprioriSupport: S.optional(S.Number),
-          minReplicaCount: S.optional(S.String),
-          learnRateStrategy: S.optional(S.String),
-          boosterType: S.optional(S.String),
-          activationFn: S.optional(S.String),
-          hparamTuningObjectives: S.optional(__S(79, __c9, 7)),
-          warmStart: S.optional(S.Boolean),
-          timeSeriesTimestampColumn: S.optional(S.String),
-          batchSize: S.optional(S.String),
-          hiddenUnits: S.optional(__S(0, __c0, 0)),
-          includeDrift: S.optional(S.Boolean),
-          forecastLimitLowerBound: S.optional(S.Number),
-          horizon: S.optional(S.String),
-          pcaSolver: S.optional(S.String),
-          timeSeriesIdColumn: S.optional(S.String),
-          minTimeSeriesLength: S.optional(S.String),
-          maxReplicaCount: S.optional(S.String),
-          scaleFeatures: S.optional(S.Boolean),
-          maxTreeDepth: S.optional(S.String),
-          userColumn: S.optional(S.String),
-          numTrials: S.optional(S.String),
-          tfVersion: S.optional(S.String),
-          kmeansInitializationColumn: S.optional(S.String),
-          kmeansInitializationMethod: S.optional(S.String),
-          reservationAffinityType: S.optional(S.String),
-          autoClassWeights: S.optional(S.Boolean),
-          holidayRegion: S.optional(S.String),
-          xgboostVersion: S.optional(S.String),
-          initialLearnRate: S.optional(S.Number),
-          instanceWeightColumn: S.optional(S.String),
-          maxTimeSeriesLength: S.optional(S.String),
-          isTestColumn: S.optional(S.String),
-          machineType: S.optional(S.String),
-          labelClassWeights: S.optional(__S(89, __c11, 1)),
-          decomposeTimeSeries: S.optional(S.Boolean),
-          colsampleBylevel: S.optional(S.Number),
-          l1RegActivation: S.optional(S.Number),
-          enableGlobalExplain: S.optional(S.Boolean),
-          numFactors: S.optional(S.String),
-          earlyStop: S.optional(S.Boolean),
-          dimensionIdColumns: S.optional(__S(0, __c0, 0)),
-          autoArimaMinOrder: S.optional(S.String),
-          lossType: S.optional(S.String),
-          itemColumn: S.optional(S.String),
-          dataFrequency: S.optional(S.String),
-          l2Regularization: S.optional(S.Number),
-          dataSplitColumn: S.optional(S.String),
-          cleanSpikesAndDips: S.optional(S.Boolean),
-          autoArimaMaxOrder: S.optional(S.String),
-          numPrincipalComponents: S.optional(S.String),
-          forecastLimitUpperBound: S.optional(S.Number),
-          timeSeriesIdColumns: S.optional(__S(0, __c0, 0)),
-          colsampleBynode: S.optional(S.Number),
-          standardizeFeatures: S.optional(S.Boolean),
-          dartNormalizeType: S.optional(S.String),
-          distanceType: S.optional(S.String),
-          calculatePValues: S.optional(S.Boolean),
-          minRelativeProgress: S.optional(S.Number),
-          modelGardenModelName: S.optional(S.String),
-          colorSpace: S.optional(S.String),
-          adjustStepChanges: S.optional(S.Boolean),
-          budgetHours: S.optional(S.Number),
-          pcaExplainedVarianceRatio: S.optional(S.Number),
-          maxIterations: S.optional(S.String),
-          modelRegistry: S.optional(S.String),
-          l1Regularization: S.optional(S.Number),
-          huggingFaceModelId: S.optional(S.String),
-          optimizationStrategy: S.optional(S.String),
-          categoryEncodingMethod: S.optional(S.String),
-          inputLabelColumns: S.optional(__S(0, __c0, 0)),
-          contributionMetric: S.optional(S.String),
-          endpointIdleTtl: S.optional(S.String),
-          minSplitLoss: S.optional(S.Number),
-          sampledShapleyNumPaths: S.optional(S.String),
-          dataSplitEvalFraction: S.optional(S.Number),
-          numClusters: S.optional(S.String),
-          nonSeasonalOrder: S.optional(__S(77, __c9, 5)),
-          autoArima: S.optional(S.Boolean),
-          optimizer: S.optional(S.String),
-          dropout: S.optional(S.Number),
-          minTreeChildWeight: S.optional(S.String),
-          modelUri: S.optional(S.String),
-          colsampleBytree: S.optional(S.Number),
-          walsAlpha: S.optional(S.Number),
-          learnRate: S.optional(S.Number),
-          integratedGradientsNumSteps: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TrainingOptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          itemCount: S.optional(S.String),
-          predictedLabel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Entry" });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(92, __c11, 4)),
-          actualLabel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Row" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          confidenceThreshold: S.optional(S.Number),
-          rows: S.optional(__S(94, __c11, 6)),
-        }),
-      ).annotate({ identifier: "ConfusionMatrix" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rocAuc: S.optional(S.Number),
-          accuracy: S.optional(S.Number),
-          recall: S.optional(S.Number),
-          f1Score: S.optional(S.Number),
-          precision: S.optional(S.Number),
-          threshold: S.optional(S.Number),
-          logLoss: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AggregateClassificationMetrics",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          confusionMatrixList: S.optional(__S(96, __c12, 0)),
-          aggregateClassificationMetrics: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "MultiClassClassificationMetrics",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          totalExplainedVarianceRatio: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DimensionalityReductionMetrics",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          count: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CategoryCount" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          categoryCounts: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({ identifier: "CategoricalValue" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          numericalValue: S.optional(S.Number),
-          featureColumn: S.optional(S.String),
-          categoricalValue: S.optional(__S(102, __c12, 6)),
-        }),
-      ).annotate({ identifier: "FeatureValue" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          centroidId: S.optional(S.String),
-          featureValues: S.optional(__S(104, __c13, 0)),
-          count: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Cluster" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          meanSquaredDistance: S.optional(S.Number),
-          clusters: S.optional(__S(106, __c13, 2)),
-          daviesBouldinIndex: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ClusteringMetrics" });
-    case 4:
-      return S.Array(__S(78, __c9, 6));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hasDrift: S.optional(S.Boolean),
-          hasHolidayEffect: S.optional(S.Boolean),
-          nonSeasonalOrder: S.optional(__S(77, __c9, 5)),
-          timeSeriesId: S.optional(S.String),
-          hasSpikesAndDips: S.optional(S.Boolean),
-          arimaFittingMetrics: S.optional(__S(78, __c9, 6)),
-          timeSeriesIds: S.optional(__S(0, __c0, 0)),
-          hasStepChanges: S.optional(S.Boolean),
-          seasonalPeriods: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({
-        identifier: "ArimaSingleModelForecastingMetrics",
-      });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
-      return S.Array(S.Boolean);
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(77, __c9, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          arimaFittingMetrics: S.optional(__S(108, __c13, 4)),
-          arimaSingleModelForecastingMetrics: S.optional(__S(110, __c13, 6)),
-          hasDrift: S.optional(__S(111, __c13, 7)),
-          timeSeriesId: S.optional(__S(0, __c0, 0)),
-          nonSeasonalOrder: S.optional(__S(112, __c14, 0)),
-          seasonalPeriods: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "ArimaForecastingMetrics" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          meanAveragePrecision: S.optional(S.Number),
-          normalizedDiscountedCumulativeGain: S.optional(S.Number),
-          averageRank: S.optional(S.Number),
-          meanSquaredError: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RankingMetrics" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          recall: S.optional(S.Number),
-          f1Score: S.optional(S.Number),
-          falseNegatives: S.optional(S.String),
-          truePositives: S.optional(S.String),
-          accuracy: S.optional(S.Number),
-          positiveClassThreshold: S.optional(S.Number),
-          precision: S.optional(S.Number),
-          falsePositives: S.optional(S.String),
-          trueNegatives: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BinaryConfusionMatrix" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          aggregateClassificationMetrics: S.optional(__S(97, __c12, 1)),
-          binaryConfusionMatrixList: S.optional(__S(116, __c14, 4)),
-          negativeLabel: S.optional(S.String),
-          positiveLabel: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BinaryClassificationMetrics",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          meanSquaredLogError: S.optional(S.Number),
-          meanAbsoluteError: S.optional(S.Number),
-          medianAbsoluteError: S.optional(S.Number),
-          meanSquaredError: S.optional(S.Number),
-          rSquared: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RegressionMetrics" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          multiClassClassificationMetrics: S.optional(__S(98, __c12, 2)),
-          dimensionalityReductionMetrics: S.optional(__S(99, __c12, 3)),
-          clusteringMetrics: S.optional(__S(107, __c13, 3)),
-          arimaForecastingMetrics: S.optional(__S(113, __c14, 1)),
-          rankingMetrics: S.optional(__S(114, __c14, 2)),
-          binaryClassificationMetrics: S.optional(__S(117, __c14, 5)),
-          regressionMetrics: S.optional(__S(118, __c14, 6)),
-        }),
-      ).annotate({ identifier: "EvaluationMetrics" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hparams: S.optional(__S(90, __c11, 2)),
-          startTimeMs: S.optional(S.String),
-          evaluationMetrics: S.optional(__S(119, __c14, 7)),
-          evalLoss: S.optional(S.Number),
-          status: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          trialId: S.optional(S.String),
-          hparamTuningEvaluationMetrics: S.optional(__S(119, __c14, 7)),
-          endTimeMs: S.optional(S.String),
-          trainingLoss: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HparamTuningTrial" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          iterationResults: S.optional(__S(88, __c11, 0)),
-          modelType: S.optional(S.String),
-          trainingType: S.optional(S.String),
-          hparamTrials: S.optional(__S(121, __c15, 1)),
-          maxIterations: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MlStatistics" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fineGrainedDmlUnusedReason: S.optional(S.String),
-          updatedRowCount: S.optional(S.String),
-          insertedRowCount: S.optional(S.String),
-          dmlMode: S.optional(S.String),
-          deletedRowCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DmlStatistics" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          propertyGraphId: S.optional(S.String),
-          projectId: S.optional(S.String),
-          datasetId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PropertyGraphReference" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(129, __c16, 1)));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          end: S.optional(S.suspend(() => __S(129, __c16, 1))),
-          start: S.optional(S.suspend(() => __S(129, __c16, 1))),
-        }),
-      ).annotate({ identifier: "RangeValue" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.suspend(() => __S(129, __c16, 1)),
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          arrayValues: S.optional(__S(126, __c15, 6)),
-          value: S.optional(S.String),
-          rangeValue: S.optional(__S(127, __c15, 7)),
-          structValues: S.optional(__S(128, __c16, 0)),
-        }),
-      ).annotate({ identifier: "QueryParameterValue" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.suspend(() => __S(132, __c16, 4))),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "QueryParameterTypeStructTypesItem",
-      });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          timestampPrecision: S.optional(S.String),
-          rangeElementType: S.optional(__S(132, __c16, 4)),
-          arrayType: S.optional(__S(132, __c16, 4)),
-          structTypes: S.optional(__S(131, __c16, 3)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QueryParameterType" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          parameterValue: S.optional(__S(129, __c16, 1)),
-          parameterType: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({ identifier: "QueryParameter" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataPolicyOption" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dataPolicies: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({ identifier: "DataPolicyList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dataGovernanceTags: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({
-        identifier: "TableFieldSchemaDataGovernanceTagsInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          names: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "TableFieldSchemaCategories",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TableFieldSchemaRangeElementType",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          stored: S.optional(S.Boolean),
-          generationExpression: S.optional(S.String),
-          asynchronous: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GeneratedExpressionInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          generatedExpressionInfo: S.optional(__S(141, __c17, 5)),
-          generatedMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GeneratedColumn" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataPolicyList: S.optional(__S(137, __c17, 1)),
-          roundingMode: S.optional(S.String),
-          dataGovernanceTagsInfo: S.optional(__S(138, __c17, 2)),
-          categories: S.optional(__S(139, __c17, 3)),
-          mode: S.optional(S.String),
-          rangeElementType: S.optional(__S(140, __c17, 4)),
-          type: S.optional(S.String),
-          defaultValueExpression: S.optional(S.String),
-          fields: S.optional(S.suspend(() => __S(144, __c18, 0))),
-          name: S.optional(S.String),
-          timestampPrecision: S.optional(S.String),
-          precision: S.optional(S.String),
-          description: S.optional(S.String),
-          generatedColumn: S.optional(__S(142, __c17, 6)),
-          dataPolicies: S.optional(__S(136, __c17, 0)),
-          foreignTypeDefinition: S.optional(S.String),
-          scale: S.optional(S.String),
-          maxLength: S.optional(S.String),
-          policyTags: S.optional(__S(139, __c17, 3)),
-          collation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TableFieldSchema" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          typeSystem: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ForeignTypeInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(__S(144, __c18, 0)),
-          foreignTypeInfo: S.optional(__S(145, __c18, 1)),
-        }),
-      ).annotate({ identifier: "TableSchema" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          genAiStats: S.optional(__S(13, __c1, 5)),
-          searchStatistics: S.optional(__S(19, __c2, 3)),
-          metadataCacheStatistics: S.optional(__S(23, __c2, 7)),
-          queryInfo: S.optional(__S(25, __c3, 1)),
-          ddlOperationPerformed: S.optional(S.String),
-          statementType: S.optional(S.String),
-          reservationUsage: S.optional(__S(27, __c3, 3)),
-          vectorSearchStatistics: S.optional(__S(32, __c4, 0)),
-          dclTargetDataset: S.optional(__S(33, __c4, 1)),
-          ddlTargetRowAccessPolicy: S.optional(__S(34, __c4, 2)),
-          billingTier: S.optional(S.Number),
-          totalServicesSkuSlotMs: S.optional(S.String),
-          referencedRoutines: S.optional(__S(36, __c4, 4)),
-          externalServiceCosts: S.optional(__S(38, __c4, 6)),
-          ddlDestinationTable: S.optional(__S(14, __c1, 6)),
-          queryPlan: S.optional(__S(42, __c5, 2)),
-          performanceInsights: S.optional(__S(58, __c7, 2)),
-          dclTargetTable: S.optional(__S(14, __c1, 6)),
-          referencedLogicalViews: S.optional(__S(59, __c7, 3)),
-          totalPartitionsProcessed: S.optional(S.String),
-          totalSlotMs: S.optional(S.String),
-          sparkStatistics: S.optional(__S(62, __c7, 6)),
-          exportDataStatistics: S.optional(__S(63, __c7, 7)),
-          loadQueryStatistics: S.optional(__S(64, __c8, 0)),
-          totalBytesBilled: S.optional(S.String),
-          materializedViewStatistics: S.optional(__S(67, __c8, 3)),
-          timeline: S.optional(__S(69, __c8, 5)),
-          modelTraining: S.optional(__S(70, __c8, 6)),
-          cacheHit: S.optional(S.Boolean),
-          totalBytesProcessed: S.optional(S.String),
-          biEngineStatistics: S.optional(__S(71, __c8, 7)),
-          incrementalResultStats: S.optional(__S(72, __c9, 0)),
-          transferredBytes: S.optional(S.String),
-          ddlAffectedRowAccessPolicyCount: S.optional(S.String),
-          objectStorageStats: S.optional(__S(74, __c9, 2)),
-          ddlTargetTable: S.optional(__S(14, __c1, 6)),
-          ddlTargetDataset: S.optional(__S(33, __c4, 1)),
-          mlStatistics: S.optional(__S(122, __c15, 2)),
-          estimatedBytesProcessed: S.optional(S.String),
-          dmlStats: S.optional(__S(123, __c15, 3)),
-          referencedPropertyGraphs: S.optional(__S(125, __c15, 5)),
-          modelTrainingCurrentIteration: S.optional(S.Number),
-          ddlTargetRoutine: S.optional(__S(35, __c4, 3)),
-          numDmlAffectedRows: S.optional(S.String),
-          undeclaredQueryParameters: S.optional(__S(134, __c16, 6)),
-          dclTargetView: S.optional(__S(14, __c1, 6)),
-          referencedTables: S.optional(__S(59, __c7, 3)),
-          schema: S.optional(__S(146, __c18, 2)),
-          modelTrainingExpectedTotalIteration: S.optional(S.String),
-          totalBytesProcessedAccuracy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobStatistics2" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          inputFileBytes: S.optional(S.String),
-          timeline: S.optional(__S(69, __c8, 5)),
-          outputRows: S.optional(S.String),
-          outputBytes: S.optional(S.String),
-          inputFiles: S.optional(S.String),
-          badRecords: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobStatistics3" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dataMaskingApplied: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DataMaskingStatistics" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          transactionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TransactionInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endColumn: S.optional(S.Number),
-          endLine: S.optional(S.Number),
-          procedureId: S.optional(S.String),
-          text: S.optional(S.String),
-          startLine: S.optional(S.Number),
-          startColumn: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ScriptStackFrame" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          evaluationKind: S.optional(S.String),
-          stackFrames: S.optional(__S(152, __c19, 0)),
-        }),
-      ).annotate({ identifier: "ScriptStatistics" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SessionInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          destinationUriFileCounts: S.optional(__S(0, __c0, 0)),
-          inputBytes: S.optional(S.String),
-          timeline: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "JobStatistics4" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          remoteDestinationRegion: S.optional(S.String),
-          copiedRows: S.optional(S.String),
-          copiedLogicalBytes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobStatistics5" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          totalBytesProcessed: S.optional(S.String),
-          rowLevelSecurityStatistics: S.optional(__S(6, __c0, 6)),
-          totalSlotMs: S.optional(S.String),
-          globalQueryRemoteRegions: S.optional(__S(0, __c0, 0)),
-          query: S.optional(__S(147, __c18, 3)),
-          load: S.optional(__S(148, __c18, 4)),
-          parentJobId: S.optional(S.String),
-          dataMaskingStatistics: S.optional(__S(149, __c18, 5)),
-          transactionInfo: S.optional(__S(150, __c18, 6)),
-          scriptStatistics: S.optional(__S(153, __c19, 1)),
-          completionRatio: S.optional(S.Number),
-          reservationUsage: S.optional(__S(27, __c3, 3)),
-          quotaDeferments: S.optional(__S(0, __c0, 0)),
-          startTime: S.optional(S.String),
-          reservationGroupPath: S.optional(__S(0, __c0, 0)),
-          sessionInfo: S.optional(__S(154, __c19, 2)),
-          edition: S.optional(S.String),
-          finalExecutionDurationMs: S.optional(S.String),
-          endTime: S.optional(S.String),
-          extract: S.optional(__S(155, __c19, 3)),
-          reservation_id: S.optional(S.String),
-          numChildJobs: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          parentGlobalQueryJob: S.optional(__S(5, __c0, 5)),
-          copy: S.optional(__S(156, __c19, 4)),
-        }),
-      ).annotate({ identifier: "JobStatistics" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          debugInfo: S.optional(S.String),
-          reason: S.optional(S.String),
-          message: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ErrorProto" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          errors: S.optional(__S(159, __c19, 7)),
-          errorResult: S.optional(__S(158, __c19, 6)),
-        }),
-      ).annotate({ identifier: "JobStatus" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          sourceUriPrefix: S.optional(S.String),
-          fields: S.optional(__S(0, __c0, 0)),
-          requirePartitionFilter: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "HivePartitioningOptions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enableListInference: S.optional(S.Boolean),
-          mapTargetType: S.optional(S.String),
-          enumAsString: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ParquetOptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectionProperty" });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          friendlyName: S.optional(S.String),
-          expirationTime: S.optional(S.String),
-          labels: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({
-        identifier: "DestinationTableProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKeyName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "Clustering" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          expirationMs: S.optional(S.String),
-          requirePartitionFilter: S.optional(S.Boolean),
-          field: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimePartitioning" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-          interval: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RangePartitioningRange" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          range: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({ identifier: "RangePartitioning" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createSession: S.optional(S.Boolean),
-          schemaInline: S.optional(S.String),
-          referenceFileSchemaUri: S.optional(S.String),
-          nullMarkers: S.optional(__S(0, __c0, 0)),
-          preserveAsciiControlCharacters: S.optional(S.Boolean),
-          sourceUris: S.optional(__S(0, __c0, 0)),
-          skipLeadingRows: S.optional(S.Number),
-          schemaUpdateOptions: S.optional(__S(0, __c0, 0)),
-          hivePartitioningOptions: S.optional(__S(161, __c20, 1)),
-          parquetOptions: S.optional(__S(162, __c20, 2)),
-          projectionFields: S.optional(__S(0, __c0, 0)),
-          datetimeFormat: S.optional(S.String),
-          jsonExtension: S.optional(S.String),
-          encoding: S.optional(S.String),
-          connectionProperties: S.optional(__S(164, __c20, 4)),
-          timeZone: S.optional(S.String),
-          allowQuotedNewlines: S.optional(S.Boolean),
-          quote: S.optional(S.String),
-          ignoreUnknownValues: S.optional(S.Boolean),
-          sourceColumnMatch: S.optional(S.String),
-          destinationTableProperties: S.optional(__S(165, __c20, 5)),
-          destinationTable: S.optional(__S(14, __c1, 6)),
-          useAvroLogicalTypes: S.optional(S.Boolean),
-          decimalTargetTypes: S.optional(__S(79, __c9, 7)),
-          autodetect: S.optional(S.Boolean),
-          destinationEncryptionConfiguration: S.optional(__S(166, __c20, 6)),
-          maxBadRecords: S.optional(S.Number),
-          columnNameCharacterMap: S.optional(S.String),
-          sourceFormat: S.optional(S.String),
-          schemaInlineFormat: S.optional(S.String),
-          nullMarker: S.optional(S.String),
-          copyFilesOnly: S.optional(S.Boolean),
-          clustering: S.optional(__S(167, __c20, 7)),
-          schema: S.optional(__S(146, __c18, 2)),
-          timestampFormat: S.optional(S.String),
-          fieldDelimiter: S.optional(S.String),
-          timeFormat: S.optional(S.String),
-          fileSetSpecType: S.optional(S.String),
-          dateFormat: S.optional(S.String),
-          allowJaggedRows: S.optional(S.Boolean),
-          writeDisposition: S.optional(S.String),
-          timePartitioning: S.optional(__S(168, __c21, 0)),
-          createDisposition: S.optional(S.String),
-          rangePartitioning: S.optional(__S(170, __c21, 2)),
-          timestampTargetPrecision: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({ identifier: "JobConfigurationLoad" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createDisposition: S.optional(S.String),
-          operationType: S.optional(S.String),
-          writeDisposition: S.optional(S.String),
-          sourceTables: S.optional(__S(59, __c7, 3)),
-          sourceTable: S.optional(__S(14, __c1, 6)),
-          destinationExpirationTime: S.optional(S.String),
-          destinationTable: S.optional(__S(14, __c1, 6)),
-          destinationEncryptionConfiguration: S.optional(__S(166, __c20, 6)),
-        }),
-      ).annotate({
-        identifier: "JobConfigurationTableCopy",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.suspend(() => __S(176, __c22, 0))),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StandardSqlField" });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(__S(174, __c21, 6)),
-        }),
-      ).annotate({ identifier: "StandardSqlStructType" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          rangeElementType: S.optional(__S(176, __c22, 0)),
-          structType: S.optional(__S(175, __c21, 7)),
-          arrayElementType: S.optional(__S(176, __c22, 0)),
-          typeKind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StandardSqlDataType" });
-    case 1:
-      return S.Record(S.String, __S(176, __c22, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          types: S.optional(__S(177, __c22, 1)),
-          values: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "SystemVariables" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          inlineCode: S.optional(S.String),
-          resourceUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UserDefinedFunctionResource",
-      });
-    case 4:
-      return S.Array(__S(179, __c22, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          skipLeadingRows: S.optional(S.String),
-          preserveAsciiControlCharacters: S.optional(S.Boolean),
-          allowQuotedNewlines: S.optional(S.Boolean),
-          encoding: S.optional(S.String),
-          nullMarker: S.optional(S.String),
-          quote: S.optional(S.String),
-          nullMarkers: S.optional(__S(0, __c0, 0)),
-          fieldDelimiter: S.optional(S.String),
-          allowJaggedRows: S.optional(S.Boolean),
-          sourceColumnMatch: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CsvOptions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          range: S.optional(S.String),
-          skipLeadingRows: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleSheetsOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          encoding: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JsonOptions" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          protoMessageName: S.optional(S.String),
-          schemaBundleId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BigtableProtoConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          fieldName: S.optional(S.String),
-          type: S.optional(S.String),
-          qualifierEncoded: S.optional(S.String),
-          qualifierString: S.optional(S.String),
-          encoding: S.optional(S.String),
-          onlyReadLatest: S.optional(S.Boolean),
-          protoConfig: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({ identifier: "BigtableColumn" });
-    case 2:
-      return S.Array(__S(185, __c23, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          columns: S.optional(__S(186, __c23, 2)),
-          protoConfig: S.optional(__S(184, __c23, 0)),
-          type: S.optional(S.String),
-          encoding: S.optional(S.String),
-          familyId: S.optional(S.String),
-          onlyReadLatest: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "BigtableColumnFamily" });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          outputColumnFamiliesAsJson: S.optional(S.Boolean),
-          readRowkeyAsString: S.optional(S.Boolean),
-          columnFamilies: S.optional(__S(188, __c23, 4)),
-          ignoreUnspecifiedColumnFamilies: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "BigtableOptions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          useAvroLogicalTypes: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AvroOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ignoreUnknownValues: S.optional(S.Boolean),
-          fileSetSpecType: S.optional(S.String),
-          autodetect: S.optional(S.Boolean),
-          csvOptions: S.optional(__S(181, __c22, 5)),
-          jsonExtension: S.optional(S.String),
-          metadataCacheMode: S.optional(S.String),
-          googleSheetsOptions: S.optional(__S(182, __c22, 6)),
-          dateFormat: S.optional(S.String),
-          timeFormat: S.optional(S.String),
-          referenceFileSchemaUri: S.optional(S.String),
-          objectMetadata: S.optional(S.String),
-          timestampFormat: S.optional(S.String),
-          schema: S.optional(__S(146, __c18, 2)),
-          jsonOptions: S.optional(__S(183, __c22, 7)),
-          datetimeFormat: S.optional(S.String),
-          decimalTargetTypes: S.optional(__S(79, __c9, 7)),
-          hivePartitioningOptions: S.optional(__S(161, __c20, 1)),
-          sourceUris: S.optional(__S(0, __c0, 0)),
-          bigtableOptions: S.optional(__S(189, __c23, 5)),
-          timeZone: S.optional(S.String),
-          avroOptions: S.optional(__S(190, __c23, 6)),
-          timestampTargetPrecision: S.optional(__S(75, __c9, 3)),
-          maxBadRecords: S.optional(S.Number),
-          compression: S.optional(S.String),
-          parquetOptions: S.optional(__S(162, __c20, 2)),
-          connectionId: S.optional(S.String),
-          sourceFormat: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExternalDataConfiguration",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(191, __c23, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          keyResultStatement: S.optional(S.String),
-          statementByteBudget: S.optional(S.String),
-          statementTimeoutMs: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScriptOptions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          secureParameterEntries: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "SecureContext" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          useLegacySql: S.optional(S.Boolean),
-          defaultDataset: S.optional(__S(33, __c4, 1)),
-          destinationTable: S.optional(__S(14, __c1, 6)),
-          maximumBillingTier: S.optional(S.Number),
-          flattenResults: S.optional(S.Boolean),
-          systemVariables: S.optional(__S(178, __c22, 2)),
-          userDefinedFunctionResources: S.optional(__S(180, __c22, 4)),
-          schemaUpdateOptions: S.optional(__S(0, __c0, 0)),
-          createDisposition: S.optional(S.String),
-          rangePartitioning: S.optional(__S(170, __c21, 2)),
-          connectionProperties: S.optional(__S(164, __c20, 4)),
-          createSession: S.optional(S.Boolean),
-          continuous: S.optional(S.Boolean),
-          parameterMode: S.optional(S.String),
-          tableDefinitions: S.optional(__S(192, __c24, 0)),
-          maximumBytesBilled: S.optional(S.String),
-          priority: S.optional(S.String),
-          scriptOptions: S.optional(__S(193, __c24, 1)),
-          destinationEncryptionConfiguration: S.optional(__S(166, __c20, 6)),
-          allowLargeResults: S.optional(S.Boolean),
-          queryParameters: S.optional(__S(134, __c16, 6)),
-          clustering: S.optional(__S(167, __c20, 7)),
-          secureContext: S.optional(__S(194, __c24, 2)),
-          writeIncrementalResults: S.optional(S.Boolean),
-          writeDisposition: S.optional(S.String),
-          timePartitioning: S.optional(__S(168, __c21, 0)),
-          useQueryCache: S.optional(S.Boolean),
-          query: S.optional(S.String),
-          preserveNulls: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "JobConfigurationQuery" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          trialId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ModelExtractOptions" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          modelId: S.optional(S.String),
-          projectId: S.optional(S.String),
-          datasetId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ModelReference" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          modelExtractOptions: S.optional(__S(196, __c24, 4)),
-          printHeader: S.optional(S.Boolean),
-          sourceModel: S.optional(__S(197, __c24, 5)),
-          useAvroLogicalTypes: S.optional(S.Boolean),
-          sourceTable: S.optional(__S(14, __c1, 6)),
-          destinationUris: S.optional(__S(0, __c0, 0)),
-          destinationFormat: S.optional(S.String),
-          fieldDelimiter: S.optional(S.String),
-          nativeGeographyExportEnabled: S.optional(S.Boolean),
-          compression: S.optional(S.String),
-          destinationUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobConfigurationExtract" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          load: S.optional(__S(171, __c21, 3)),
-          dryRun: S.optional(S.Boolean),
-          maxSlots: S.optional(S.Number),
-          copy: S.optional(__S(172, __c21, 4)),
-          labels: S.optional(__S(60, __c7, 4)),
-          query: S.optional(__S(195, __c24, 3)),
-          reservation: S.optional(S.String),
-          jobTimeoutMs: S.optional(S.String),
-          jobType: S.optional(S.String),
-          extract: S.optional(__S(198, __c24, 6)),
-        }),
-      ).annotate({ identifier: "JobConfiguration" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobCreationReason" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          user_email: S.optional(S.String),
-          principal_subject: S.optional(S.String),
-          jobReference: S.optional(__S(5, __c0, 5)),
-          etag: S.optional(S.String),
-          statistics: S.optional(__S(157, __c19, 5)),
-          status: S.optional(__S(160, __c20, 0)),
-          configuration: S.optional(__S(199, __c24, 7)),
-          kind: S.optional(S.String),
-          jobCreationReason: S.optional(__S(200, __c25, 0)),
-          selfLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Job" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          job: S.optional(__S(201, __c25, 1)),
-        }),
-      ).annotate({ identifier: "JobCancelResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          deleteContents: S.optional(S.Boolean.pipe(T.Query())),
-          datasetId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "projects/{+projectId}/datasets/{+datasetId}",
-            baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDatasetsRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDatasetsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          jobId: S.String.pipe(T.Label()),
-          location: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "projects/{+projectId}/jobs/{+jobId}/delete",
-            baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteJobsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          datasetId: S.String.pipe(T.Label()),
-          modelId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}",
-            baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteModelsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          datasetId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          routineId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}",
-            baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRoutinesRequest" });
-  }
-}
-function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7204,7 +5352,11 @@ function __c26(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteRowAccessPoliciesResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tableId: S.String.pipe(T.Label()),
@@ -7218,7 +5370,11 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteTablesRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
@@ -7233,61 +5389,11 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDatasetsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RestrictionConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parameters: S.optional(__S(60, __c7, 4)),
-          defaultStorageLocationUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExternalCatalogDatasetOptions",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          linkState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkedDatasetMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sourceDataset: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "LinkedDatasetSource" });
   }
 }
-function __c27(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          connection: S.optional(S.String),
-          externalSource: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalDatasetReference" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tagValue: S.optional(S.String),
-          tagKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatasetTagsItem" });
-    case 2:
-      return S.Array(__S(217, __c27, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataset: S.optional(__S(33, __c4, 1)),
-          targetTypes: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "DatasetAccessEntry" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
@@ -7296,80 +5402,130 @@ function __c27(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RestrictionConfig" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connection: S.optional(S.String),
+          externalSource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalDatasetReference" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parameters: S.optional(__S(1824, __c57, 0)),
+          defaultStorageLocationUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExternalCatalogDatasetOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          linkState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkedDatasetMetadata" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sourceDataset: S.optional(__S(1984, __c62, 0)),
+        }),
+      ).annotate({ identifier: "LinkedDatasetSource" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          tagValue: S.optional(S.String),
+          tagKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatasetTagsItem" });
+    case 4:
+      return S.Array(__S(195, __c6, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dataset: S.optional(__S(219, __c27, 3)),
-          view: S.optional(__S(14, __c1, 6)),
+          dataset: S.optional(__S(1984, __c62, 0)),
+          targetTypes: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({ identifier: "DatasetAccessEntry" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dataset: S.optional(__S(197, __c6, 5)),
+          view: S.optional(__S(1856, __c58, 0)),
           iamMember: S.optional(S.String),
           specialGroup: S.optional(S.String),
           groupByEmail: S.optional(S.String),
           role: S.optional(S.String),
-          condition: S.optional(__S(220, __c27, 4)),
+          condition: S.optional(__S(96, __c3, 0)),
           userByEmail: S.optional(S.String),
           domain: S.optional(S.String),
-          routine: S.optional(__S(35, __c4, 3)),
+          routine: S.optional(__S(1952, __c61, 0)),
         }),
       ).annotate({ identifier: "DatasetAccessItem" });
-    case 6:
-      return S.Array(__S(221, __c27, 5));
     case 7:
+      return S.Array(__S(198, __c6, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           defaultTableExpirationMs: S.optional(S.String),
-          restrictions: S.optional(__S(212, __c26, 4)),
+          restrictions: S.optional(__S(128, __c4, 0)),
           lastModifiedTime: S.optional(S.String),
           storageBillingModel: S.optional(S.String),
-          labels: S.optional(__S(60, __c7, 4)),
+          labels: S.optional(__S(1824, __c57, 0)),
           satisfiesPzs: S.optional(S.Boolean),
-          externalCatalogDatasetOptions: S.optional(__S(213, __c26, 5)),
-          defaultEncryptionConfiguration: S.optional(__S(166, __c20, 6)),
-          linkedDatasetMetadata: S.optional(__S(214, __c26, 6)),
+          externalCatalogDatasetOptions: S.optional(__S(192, __c6, 0)),
+          defaultEncryptionConfiguration: S.optional(__S(1888, __c59, 0)),
+          linkedDatasetMetadata: S.optional(__S(193, __c6, 1)),
           isCaseInsensitive: S.optional(S.Boolean),
-          linkedDatasetSource: S.optional(__S(215, __c26, 7)),
-          resourceTags: S.optional(__S(60, __c7, 4)),
+          linkedDatasetSource: S.optional(__S(194, __c6, 2)),
+          resourceTags: S.optional(__S(1824, __c57, 0)),
           defaultPartitionExpirationMs: S.optional(S.String),
           friendlyName: S.optional(S.String),
           maxTimeTravelHours: S.optional(S.String),
-          externalDatasetReference: S.optional(__S(216, __c27, 0)),
+          externalDatasetReference: S.optional(__S(160, __c5, 0)),
           id: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
           catalogSource: S.optional(S.String),
           etag: S.optional(S.String),
           selfLink: S.optional(S.String),
-          datasetReference: S.optional(__S(33, __c4, 1)),
+          datasetReference: S.optional(__S(1984, __c62, 0)),
           creationTime: S.optional(S.String),
-          tags: S.optional(__S(218, __c27, 2)),
+          tags: S.optional(__S(196, __c6, 4)),
           defaultCollation: S.optional(S.String),
           defaultRoundingMode: S.optional(S.String),
           description: S.optional(S.String),
-          access: S.optional(__S(222, __c27, 6)),
+          access: S.optional(__S(199, __c6, 7)),
           satisfiesPzi: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Dataset" });
   }
 }
-function __c28(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          requestedPolicyVersion: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GetPolicyOptions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(224, __c28, 0)),
-        }),
-      ).annotate({ identifier: "GetIamPolicyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(225, __c28, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(257, __c8, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7380,52 +5536,72 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyRoutinesRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          condition: S.optional(__S(220, __c27, 4)),
-          members: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "Binding" });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "AuditLogConfig" });
-    case 6:
-      return S.Array(__S(229, __c28, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          auditLogConfigs: S.optional(__S(230, __c28, 6)),
-          service: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuditConfig" });
   }
 }
-function __c29(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(231, __c28, 7));
+      return S.suspend(() =>
+        S.Struct({
+          requestedPolicyVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GetPolicyOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(__S(228, __c28, 4)),
-          auditConfigs: S.optional(__S(232, __c29, 0)),
+          options: S.optional(__S(256, __c8, 0)),
+        }),
+      ).annotate({ identifier: "GetIamPolicyRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          condition: S.optional(__S(96, __c3, 0)),
+          members: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({ identifier: "Binding" });
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({ identifier: "AuditLogConfig" });
+    case 3:
+      return S.Array(__S(290, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          auditLogConfigs: S.optional(__S(291, __c9, 3)),
+          service: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuditConfig" });
+    case 5:
+      return S.Array(__S(292, __c9, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          bindings: S.optional(__S(289, __c9, 1)),
+          auditConfigs: S.optional(__S(293, __c9, 5)),
           version: S.optional(S.Number),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Policy" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(225, __c28, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(257, __c8, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7436,11 +5612,15 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyRowAccessPoliciesRequest",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(225, __c28, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(257, __c8, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7451,7 +5631,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyTablesRequest",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           jobId: S.String.pipe(T.Label()),
@@ -7465,7 +5649,11 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetJobsRequest" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String.pipe(T.Label()),
@@ -7479,141 +5667,137 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetModelsRequest" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           attribution: S.optional(S.Number),
           featureName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Explanation" });
-    case 7:
-      return S.Array(__S(238, __c29, 6));
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          classLabel: S.optional(S.String),
-          explanations: S.optional(__S(239, __c29, 7)),
-        }),
-      ).annotate({ identifier: "GlobalExplanation" });
     case 1:
-      return S.Array(__S(240, __c30, 0));
+      return S.Array(__S(448, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          testTable: S.optional(__S(14, __c1, 6)),
-          trainingTable: S.optional(__S(14, __c1, 6)),
-          evaluationTable: S.optional(__S(14, __c1, 6)),
+          classLabel: S.optional(S.String),
+          explanations: S.optional(__S(449, __c14, 1)),
         }),
-      ).annotate({ identifier: "DataSplitResult" });
+      ).annotate({ identifier: "GlobalExplanation" });
     case 3:
+      return S.Array(__S(450, __c14, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          evaluationMetrics: S.optional(__S(119, __c14, 7)),
-          results: S.optional(__S(88, __c11, 0)),
-          trainingStartTime: S.optional(S.String),
-          vertexAiModelVersion: S.optional(S.String),
-          vertexAiModelId: S.optional(S.String),
-          trainingOptions: S.optional(__S(90, __c11, 2)),
-          classLevelGlobalExplanations: S.optional(__S(241, __c30, 1)),
-          modelLevelGlobalExplanation: S.optional(__S(240, __c30, 0)),
-          dataSplitResult: S.optional(__S(242, __c30, 2)),
-          startTime: S.optional(S.String),
+          testTable: S.optional(__S(1856, __c58, 0)),
+          trainingTable: S.optional(__S(1856, __c58, 0)),
+          evaluationTable: S.optional(__S(1856, __c58, 0)),
         }),
-      ).annotate({ identifier: "TrainingRun" });
-    case 4:
-      return S.Array(__S(243, __c30, 3));
+      ).annotate({ identifier: "DataSplitResult" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          candidates: S.optional(__S(0, __c0, 0)),
+          evaluationMetrics: S.optional(__S(2122, __c66, 10)),
+          results: S.optional(__S(2091, __c65, 11)),
+          trainingStartTime: S.optional(S.String),
+          vertexAiModelVersion: S.optional(S.String),
+          vertexAiModelId: S.optional(S.String),
+          trainingOptions: S.optional(__S(2093, __c65, 13)),
+          classLevelGlobalExplanations: S.optional(__S(451, __c14, 3)),
+          modelLevelGlobalExplanation: S.optional(__S(450, __c14, 2)),
+          dataSplitResult: S.optional(__S(452, __c14, 4)),
+          startTime: S.optional(S.String),
         }),
-      ).annotate({ identifier: "StringHparamSearchSpace" });
+      ).annotate({ identifier: "TrainingRun" });
     case 6:
+      return S.Array(__S(453, __c14, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          candidates: S.optional(__S(75, __c9, 3)),
+          candidates: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({ identifier: "StringHparamSearchSpace" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          candidates: S.optional(__S(2048, __c64, 0)),
         }),
       ).annotate({ identifier: "DoubleCandidates" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           min: S.optional(S.Number),
           max: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DoubleRange" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          candidates: S.optional(__S(246, __c30, 6)),
-          range: S.optional(__S(247, __c30, 7)),
+          candidates: S.optional(__S(456, __c14, 8)),
+          range: S.optional(__S(457, __c14, 9)),
         }),
       ).annotate({ identifier: "DoubleHparamSearchSpace" });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           max: S.optional(S.String),
           min: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntRange" });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          range: S.optional(__S(249, __c31, 1)),
-          candidates: S.optional(__S(245, __c30, 5)),
+          range: S.optional(__S(459, __c14, 11)),
+          candidates: S.optional(__S(455, __c14, 7)),
         }),
       ).annotate({ identifier: "IntHparamSearchSpace" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          elements: S.optional(__S(0, __c0, 0)),
+          elements: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({ identifier: "IntArray" });
-    case 4:
-      return S.Array(__S(251, __c31, 3));
-    case 5:
+    case 14:
+      return S.Array(__S(461, __c14, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          candidates: S.optional(__S(252, __c31, 4)),
+          candidates: S.optional(__S(462, __c14, 14)),
         }),
       ).annotate({
         identifier: "IntArrayHparamSearchSpace",
       });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          boosterType: S.optional(__S(245, __c30, 5)),
-          minSplitLoss: S.optional(__S(248, __c31, 0)),
-          colsampleBytree: S.optional(__S(248, __c31, 0)),
-          colsampleBylevel: S.optional(__S(248, __c31, 0)),
-          numFactors: S.optional(__S(250, __c31, 2)),
-          l1Reg: S.optional(__S(248, __c31, 0)),
-          subsample: S.optional(__S(248, __c31, 0)),
-          l2Reg: S.optional(__S(248, __c31, 0)),
-          optimizer: S.optional(__S(245, __c30, 5)),
-          batchSize: S.optional(__S(250, __c31, 2)),
-          minTreeChildWeight: S.optional(__S(250, __c31, 2)),
-          treeMethod: S.optional(__S(245, __c30, 5)),
-          hiddenUnits: S.optional(__S(253, __c31, 5)),
-          maxTreeDepth: S.optional(__S(250, __c31, 2)),
-          learnRate: S.optional(__S(248, __c31, 0)),
-          walsAlpha: S.optional(__S(248, __c31, 0)),
-          dartNormalizeType: S.optional(__S(245, __c30, 5)),
-          colsampleBynode: S.optional(__S(248, __c31, 0)),
-          dropout: S.optional(__S(248, __c31, 0)),
-          numClusters: S.optional(__S(250, __c31, 2)),
-          numParallelTree: S.optional(__S(250, __c31, 2)),
-          activationFn: S.optional(__S(245, __c30, 5)),
+          boosterType: S.optional(__S(455, __c14, 7)),
+          minSplitLoss: S.optional(__S(458, __c14, 10)),
+          colsampleBytree: S.optional(__S(458, __c14, 10)),
+          colsampleBylevel: S.optional(__S(458, __c14, 10)),
+          numFactors: S.optional(__S(460, __c14, 12)),
+          l1Reg: S.optional(__S(458, __c14, 10)),
+          subsample: S.optional(__S(458, __c14, 10)),
+          l2Reg: S.optional(__S(458, __c14, 10)),
+          optimizer: S.optional(__S(455, __c14, 7)),
+          batchSize: S.optional(__S(460, __c14, 12)),
+          minTreeChildWeight: S.optional(__S(460, __c14, 12)),
+          treeMethod: S.optional(__S(455, __c14, 7)),
+          hiddenUnits: S.optional(__S(463, __c14, 15)),
+          maxTreeDepth: S.optional(__S(460, __c14, 12)),
+          learnRate: S.optional(__S(458, __c14, 10)),
+          walsAlpha: S.optional(__S(458, __c14, 10)),
+          dartNormalizeType: S.optional(__S(455, __c14, 7)),
+          colsampleBynode: S.optional(__S(458, __c14, 10)),
+          dropout: S.optional(__S(458, __c14, 10)),
+          numClusters: S.optional(__S(460, __c14, 12)),
+          numParallelTree: S.optional(__S(460, __c14, 12)),
+          activationFn: S.optional(__S(455, __c14, 7)),
         }),
       ).annotate({ identifier: "HparamSearchSpaces" });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           maxBatchingRows: S.optional(S.String),
@@ -7624,47 +5808,47 @@ function __c31(j: number): any {
           remoteModelVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemoteModelInfo" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           transformSql: S.optional(S.String),
-          type: S.optional(__S(176, __c22, 0)),
+          type: S.optional(__S(2019, __c63, 3)),
         }),
       ).annotate({ identifier: "TransformColumn" });
-    case 1:
-      return S.Array(__S(256, __c32, 0));
-    case 2:
+    case 19:
+      return S.Array(__S(466, __c14, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          optimalTrialIds: S.optional(__S(0, __c0, 0)),
-          featureColumns: S.optional(__S(174, __c21, 6)),
+          optimalTrialIds: S.optional(__S(1376, __c43, 0)),
+          featureColumns: S.optional(__S(2017, __c63, 1)),
           defaultTrialId: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(166, __c20, 6)),
+          encryptionConfiguration: S.optional(__S(1888, __c59, 0)),
           location: S.optional(S.String),
-          modelReference: S.optional(__S(197, __c24, 5)),
+          modelReference: S.optional(__S(2125, __c66, 13)),
           modelType: S.optional(S.String),
           etag: S.optional(S.String),
-          labelColumns: S.optional(__S(174, __c21, 6)),
+          labelColumns: S.optional(__S(2017, __c63, 1)),
           description: S.optional(S.String),
-          trainingRuns: S.optional(__S(244, __c30, 4)),
-          hparamTrials: S.optional(__S(121, __c15, 1)),
+          trainingRuns: S.optional(__S(454, __c14, 6)),
+          hparamTrials: S.optional(__S(2124, __c66, 12)),
           lastModifiedTime: S.optional(S.String),
-          labels: S.optional(__S(60, __c7, 4)),
+          labels: S.optional(__S(1824, __c57, 0)),
           friendlyName: S.optional(S.String),
           expirationTime: S.optional(S.String),
-          hparamSearchSpaces: S.optional(__S(254, __c31, 6)),
+          hparamSearchSpaces: S.optional(__S(464, __c14, 16)),
           bestTrialId: S.optional(S.String),
           creationTime: S.optional(S.String),
-          remoteModelInfo: S.optional(__S(255, __c31, 7)),
-          transformColumns: S.optional(__S(257, __c32, 1)),
+          remoteModelInfo: S.optional(__S(465, __c14, 17)),
+          transformColumns: S.optional(__S(467, __c14, 19)),
         }),
       ).annotate({ identifier: "Model" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String.pipe(T.Query())),
@@ -7686,36 +5870,16 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetQueryResultsJobsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          v: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "TableCell" });
-    case 5:
-      return S.Array(__S(260, __c32, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          f: S.optional(__S(261, __c32, 5)),
-        }),
-      ).annotate({ identifier: "TableRow" });
-    case 7:
-      return S.Array(__S(262, __c32, 6));
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          rows: S.optional(__S(263, __c32, 7)),
+          rows: S.optional(__S(515, __c16, 3)),
           numDmlAffectedRows: S.optional(S.String),
           etag: S.optional(S.String),
-          schema: S.optional(__S(146, __c18, 2)),
-          errors: S.optional(__S(159, __c19, 7)),
+          schema: S.optional(__S(2187, __c68, 11)),
+          errors: S.optional(__S(2208, __c69, 0)),
           cacheHit: S.optional(S.Boolean),
-          jobReference: S.optional(__S(5, __c0, 5)),
+          jobReference: S.optional(__S(2240, __c70, 0)),
           totalBytesProcessed: S.optional(S.String),
           kind: S.optional(S.String),
           jobComplete: S.optional(S.Boolean),
@@ -7723,7 +5887,31 @@ function __c33(j: number): any {
           pageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQueryResultsResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          v: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "TableCell" });
     case 1:
+      return S.Array(__S(512, __c16, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          f: S.optional(__S(513, __c16, 1)),
+        }),
+      ).annotate({ identifier: "TableRow" });
+    case 3:
+      return S.Array(__S(514, __c16, 2));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -7738,46 +5926,50 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRoutinesRequest" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           connection: S.optional(S.String),
-          userDefinedContext: S.optional(__S(60, __c7, 4)),
+          userDefinedContext: S.optional(__S(1824, __c57, 0)),
           endpoint: S.optional(S.String),
           maxBatchingRows: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemoteFunctionOptions" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           buildDuration: S.optional(S.String),
           buildStateUpdateTime: S.optional(S.String),
-          errorResult: S.optional(__S(158, __c19, 6)),
+          errorResult: S.optional(__S(2144, __c67, 0)),
           imageSizeBytes: S.optional(S.String),
           buildState: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoutineBuildStatus" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(174, __c21, 6)),
+          columns: S.optional(__S(2017, __c63, 1)),
         }),
       ).annotate({ identifier: "StandardSqlTableType" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           entryPoint: S.optional(S.String),
-          packages: S.optional(__S(0, __c0, 0)),
+          packages: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({ identifier: "PythonOptions" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(60, __c7, 4)),
-          jarUris: S.optional(__S(0, __c0, 0)),
-          pyFileUris: S.optional(__S(0, __c0, 0)),
-          fileUris: S.optional(__S(0, __c0, 0)),
-          archiveUris: S.optional(__S(0, __c0, 0)),
+          properties: S.optional(__S(1824, __c57, 0)),
+          jarUris: S.optional(__S(1376, __c43, 0)),
+          pyFileUris: S.optional(__S(1376, __c43, 0)),
+          fileUris: S.optional(__S(1376, __c43, 0)),
+          archiveUris: S.optional(__S(1376, __c43, 0)),
           containerImage: S.optional(S.String),
           connection: S.optional(S.String),
           runtimeVersion: S.optional(S.String),
@@ -7785,33 +5977,29 @@ function __c33(j: number): any {
           mainFileUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "SparkOptions" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          dataType: S.optional(__S(176, __c22, 0)),
-          tableType: S.optional(__S(268, __c33, 4)),
+          dataType: S.optional(__S(2019, __c63, 3)),
+          tableType: S.optional(__S(578, __c18, 2)),
           mode: S.optional(S.String),
           argumentKind: S.optional(S.String),
           name: S.optional(S.String),
           isAggregate: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Argument" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(271, __c33, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(581, __c18, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           mountPath: S.optional(S.String),
           sourcePath: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalVolumeMount" });
-    case 2:
-      return S.Array(__S(273, __c34, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(583, __c18, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           containerCpu: S.optional(S.Number),
@@ -7819,37 +6007,41 @@ function __c34(j: number): any {
           maxBatchingRows: S.optional(S.String),
           containerRequestConcurrency: S.optional(S.String),
           runtimeVersion: S.optional(S.String),
-          volumeMounts: S.optional(__S(274, __c34, 2)),
+          volumeMounts: S.optional(__S(584, __c18, 8)),
           runtimeConnection: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalRuntimeOptions" });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          remoteFunctionOptions: S.optional(__S(266, __c33, 2)),
+          remoteFunctionOptions: S.optional(__S(576, __c18, 0)),
           description: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
-          buildStatus: S.optional(__S(267, __c33, 3)),
-          returnTableType: S.optional(__S(268, __c33, 4)),
-          pythonOptions: S.optional(__S(269, __c33, 5)),
-          sparkOptions: S.optional(__S(270, __c33, 6)),
-          routineReference: S.optional(__S(35, __c4, 3)),
+          buildStatus: S.optional(__S(577, __c18, 1)),
+          returnTableType: S.optional(__S(578, __c18, 2)),
+          pythonOptions: S.optional(__S(579, __c18, 3)),
+          sparkOptions: S.optional(__S(580, __c18, 4)),
+          routineReference: S.optional(__S(1952, __c61, 0)),
           dataGovernanceType: S.optional(S.String),
-          arguments: S.optional(__S(272, __c34, 0)),
-          externalRuntimeOptions: S.optional(__S(275, __c34, 3)),
+          arguments: S.optional(__S(582, __c18, 6)),
+          externalRuntimeOptions: S.optional(__S(585, __c18, 9)),
           strictMode: S.optional(S.Boolean),
           etag: S.optional(S.String),
           language: S.optional(S.String),
           creationTime: S.optional(S.String),
-          importedLibraries: S.optional(__S(0, __c0, 0)),
+          importedLibraries: S.optional(__S(1376, __c43, 0)),
           determinismLevel: S.optional(S.String),
           securityMode: S.optional(S.String),
-          returnType: S.optional(__S(176, __c22, 0)),
+          returnType: S.optional(__S(2019, __c63, 3)),
           routineType: S.optional(S.String),
           definitionBody: S.optional(S.String),
         }),
       ).annotate({ identifier: "Routine" });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           policyId: S.String.pipe(T.Label()),
@@ -7866,18 +6058,26 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetRowAccessPoliciesRequest",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
-          grantees: S.optional(__S(0, __c0, 0)),
+          grantees: S.optional(__S(1376, __c43, 0)),
           creationTime: S.optional(S.String),
           filterPredicate: S.optional(S.String),
-          rowAccessPolicyReference: S.optional(__S(34, __c4, 2)),
+          rowAccessPolicyReference: S.optional(__S(2272, __c71, 0)),
         }),
       ).annotate({ identifier: "RowAccessPolicy" });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -7891,11 +6091,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetServiceAccountProjectsRequest",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -7904,7 +6100,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetServiceAccountResponse",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -7920,23 +6120,27 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTablesRequest" });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          joinAllowedColumns: S.optional(__S(0, __c0, 0)),
+          joinAllowedColumns: S.optional(__S(1376, __c43, 0)),
           joinCondition: S.optional(S.String),
         }),
       ).annotate({ identifier: "JoinRestrictionPolicy" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          privacyUnitColumns: S.optional(__S(0, __c0, 0)),
+          privacyUnitColumns: S.optional(__S(1376, __c43, 0)),
           threshold: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AggregationThresholdPolicy",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           maxEpsilonPerQuery: S.optional(S.Number),
@@ -7951,60 +6155,60 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DifferentialPrivacyPolicy",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          joinRestrictionPolicy: S.optional(__S(282, __c35, 2)),
-          aggregationThresholdPolicy: S.optional(__S(283, __c35, 3)),
-          differentialPrivacyPolicy: S.optional(__S(284, __c35, 4)),
+          joinRestrictionPolicy: S.optional(__S(736, __c23, 0)),
+          aggregationThresholdPolicy: S.optional(__S(737, __c23, 1)),
+          differentialPrivacyPolicy: S.optional(__S(738, __c23, 2)),
         }),
       ).annotate({ identifier: "PrivacyPolicy" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dialect: S.optional(S.String),
           query: S.optional(S.String),
         }),
       ).annotate({ identifier: "ForeignViewDefinition" });
-    case 7:
-      return S.Array(__S(286, __c35, 6));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          privacyPolicy: S.optional(__S(285, __c35, 5)),
-          userDefinedFunctionResources: S.optional(__S(180, __c22, 4)),
+          privacyPolicy: S.optional(__S(739, __c23, 3)),
+          userDefinedFunctionResources: S.optional(__S(2340, __c73, 4)),
           useLegacySql: S.optional(S.Boolean),
           query: S.optional(S.String),
           useExplicitColumnNames: S.optional(S.Boolean),
-          foreignDefinitions: S.optional(__S(287, __c35, 7)),
+          foreignDefinitions: S.optional(__S(769, __c24, 1)),
         }),
       ).annotate({ identifier: "ViewDefinition" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           cloneTime: S.optional(S.String),
-          baseTableReference: S.optional(__S(14, __c1, 6)),
+          baseTableReference: S.optional(__S(1856, __c58, 0)),
         }),
       ).annotate({ identifier: "CloneDefinition" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           field: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartitionedColumn" });
-    case 3:
-      return S.Array(__S(290, __c36, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(772, __c24, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          partitionedColumn: S.optional(__S(291, __c36, 3)),
+          partitionedColumn: S.optional(__S(773, __c24, 5)),
         }),
       ).annotate({ identifier: "PartitioningDefinition" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           oldestEntryTime: S.optional(S.String),
@@ -8012,48 +6216,44 @@ function __c36(j: number): any {
           estimatedRows: S.optional(S.String),
         }),
       ).annotate({ identifier: "Streamingbuffer" });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          replicationError: S.optional(__S(158, __c19, 6)),
+          replicationError: S.optional(__S(2144, __c67, 0)),
           replicationIntervalMs: S.optional(S.String),
           replicatedSourceLastRefreshTime: S.optional(S.String),
           replicationStatus: S.optional(S.String),
-          sourceTable: S.optional(__S(14, __c1, 6)),
+          sourceTable: S.optional(__S(1856, __c58, 0)),
         }),
       ).annotate({ identifier: "TableReplicationInfo" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           serializationLibrary: S.optional(S.String),
           name: S.optional(S.String),
-          parameters: S.optional(__S(60, __c7, 4)),
+          parameters: S.optional(__S(1824, __c57, 0)),
         }),
       ).annotate({ identifier: "SerDeInfo" });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          serdeInfo: S.optional(__S(295, __c36, 7)),
+          serdeInfo: S.optional(__S(777, __c24, 9)),
           inputFormat: S.optional(S.String),
           locationUri: S.optional(S.String),
           outputFormat: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageDescriptor" });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(60, __c7, 4)),
+          parameters: S.optional(__S(1824, __c57, 0)),
           connectionId: S.optional(S.String),
-          storageDescriptor: S.optional(__S(296, __c37, 0)),
+          storageDescriptor: S.optional(__S(778, __c24, 10)),
         }),
       ).annotate({
         identifier: "ExternalCatalogTableOptions",
       });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           allowNonIncrementalDefinition: S.optional(S.Boolean),
@@ -8066,14 +6266,14 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "MaterializedViewDefinition",
       });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          lastRefreshStatus: S.optional(__S(158, __c19, 6)),
+          lastRefreshStatus: S.optional(__S(2144, __c67, 0)),
           refreshWatermark: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaterializedViewStatus" });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           storageUri: S.optional(S.String),
@@ -8082,14 +6282,14 @@ function __c37(j: number): any {
           fileFormat: S.optional(S.String),
         }),
       ).annotate({ identifier: "BigLakeConfiguration" });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           snapshotTime: S.optional(S.String),
-          baseTableReference: S.optional(__S(14, __c1, 6)),
+          baseTableReference: S.optional(__S(1856, __c58, 0)),
         }),
       ).annotate({ identifier: "SnapshotDefinition" });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           tableId: S.optional(S.String),
@@ -8099,7 +6299,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "TableConstraintsForeignKeysItemReferencedTable",
       });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           referencedColumn: S.optional(S.String),
@@ -8108,50 +6308,46 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "TableConstraintsForeignKeysItemColumnReferencesItem",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(303, __c37, 7));
-    case 1:
+    case 18:
+      return S.Array(__S(785, __c24, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          referencedTable: S.optional(__S(302, __c37, 6)),
-          columnReferences: S.optional(__S(304, __c38, 0)),
+          referencedTable: S.optional(__S(784, __c24, 16)),
+          columnReferences: S.optional(__S(786, __c24, 18)),
         }),
       ).annotate({
         identifier: "TableConstraintsForeignKeysItem",
       });
-    case 2:
-      return S.Array(__S(305, __c38, 1));
-    case 3:
+    case 20:
+      return S.Array(__S(787, __c24, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(0, __c0, 0)),
+          columns: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({
         identifier: "TableConstraintsPrimaryKey",
       });
-    case 4:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          foreignKeys: S.optional(__S(306, __c38, 2)),
-          primaryKey: S.optional(__S(307, __c38, 3)),
+          foreignKeys: S.optional(__S(788, __c24, 20)),
+          primaryKey: S.optional(__S(789, __c24, 21)),
         }),
       ).annotate({ identifier: "TableConstraints" });
-    case 5:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(1376, __c43, 0)),
           lossType: S.optional(S.String),
           modelType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ModelDefinitionModelOptions",
       });
-    case 6:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           lineSearchInitLearnRate: S.optional(S.Number),
@@ -8167,7 +6363,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "BqmlTrainingRunTrainingOptions",
       });
-    case 7:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           index: S.optional(S.Number),
@@ -8177,109 +6373,105 @@ function __c38(j: number): any {
           learnRate: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BqmlIterationResult" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(311, __c38, 7));
-    case 1:
+    case 26:
+      return S.Array(__S(793, __c24, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
           startTime: S.optional(S.String),
-          trainingOptions: S.optional(__S(310, __c38, 6)),
-          iterationResults: S.optional(__S(312, __c39, 0)),
+          trainingOptions: S.optional(__S(792, __c24, 24)),
+          iterationResults: S.optional(__S(794, __c24, 26)),
         }),
       ).annotate({ identifier: "BqmlTrainingRun" });
-    case 2:
-      return S.Array(__S(313, __c39, 1));
-    case 3:
+    case 28:
+      return S.Array(__S(795, __c24, 27));
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          modelOptions: S.optional(__S(309, __c38, 5)),
-          trainingRuns: S.optional(__S(314, __c39, 2)),
+          modelOptions: S.optional(__S(791, __c24, 23)),
+          trainingRuns: S.optional(__S(796, __c24, 28)),
         }),
       ).annotate({ identifier: "ModelDefinition" });
-    case 4:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           numBytes: S.optional(S.String),
-          resourceTags: S.optional(__S(60, __c7, 4)),
+          resourceTags: S.optional(__S(1824, __c57, 0)),
           numActivePhysicalBytes: S.optional(S.String),
           location: S.optional(S.String),
           kind: S.optional(S.String),
           friendlyName: S.optional(S.String),
           id: S.optional(S.String),
-          rangePartitioning: S.optional(__S(170, __c21, 2)),
-          externalDataConfiguration: S.optional(__S(191, __c23, 7)),
+          rangePartitioning: S.optional(__S(2307, __c72, 3)),
+          externalDataConfiguration: S.optional(__S(2351, __c73, 15)),
           lastModifiedTime: S.optional(S.String),
           selfLink: S.optional(S.String),
-          labels: S.optional(__S(60, __c7, 4)),
+          labels: S.optional(__S(1824, __c57, 0)),
           numActiveLogicalBytes: S.optional(S.String),
           numCurrentPhysicalBytes: S.optional(S.String),
           numPartitions: S.optional(S.String),
           numLongTermLogicalBytes: S.optional(S.String),
           numPhysicalBytes: S.optional(S.String),
-          view: S.optional(__S(288, __c36, 0)),
+          view: S.optional(__S(770, __c24, 2)),
           numLongTermBytes: S.optional(S.String),
           numTotalPhysicalBytes: S.optional(S.String),
-          cloneDefinition: S.optional(__S(289, __c36, 1)),
-          clustering: S.optional(__S(167, __c20, 7)),
-          partitionDefinition: S.optional(__S(292, __c36, 4)),
-          streamingBuffer: S.optional(__S(293, __c36, 5)),
-          tableReplicationInfo: S.optional(__S(294, __c36, 6)),
-          tableReference: S.optional(__S(14, __c1, 6)),
-          externalCatalogTableOptions: S.optional(__S(297, __c37, 1)),
-          materializedView: S.optional(__S(298, __c37, 2)),
-          materializedViewStatus: S.optional(__S(299, __c37, 3)),
+          cloneDefinition: S.optional(__S(771, __c24, 3)),
+          clustering: S.optional(__S(2304, __c72, 0)),
+          partitionDefinition: S.optional(__S(774, __c24, 6)),
+          streamingBuffer: S.optional(__S(775, __c24, 7)),
+          tableReplicationInfo: S.optional(__S(776, __c24, 8)),
+          tableReference: S.optional(__S(1856, __c58, 0)),
+          externalCatalogTableOptions: S.optional(__S(779, __c24, 11)),
+          materializedView: S.optional(__S(780, __c24, 12)),
+          materializedViewStatus: S.optional(__S(781, __c24, 13)),
           numRows: S.optional(S.String),
           numLongTermPhysicalBytes: S.optional(S.String),
-          restrictions: S.optional(__S(212, __c26, 4)),
+          restrictions: S.optional(__S(128, __c4, 0)),
           numTimeTravelPhysicalBytes: S.optional(S.String),
-          biglakeConfiguration: S.optional(__S(300, __c37, 4)),
+          biglakeConfiguration: S.optional(__S(782, __c24, 14)),
           expirationTime: S.optional(S.String),
           requirePartitionFilter: S.optional(S.Boolean),
           maxStaleness: S.optional(S.String),
-          schema: S.optional(__S(146, __c18, 2)),
+          schema: S.optional(__S(2187, __c68, 11)),
           managedTableType: S.optional(S.String),
           type: S.optional(S.String),
-          snapshotDefinition: S.optional(__S(301, __c37, 5)),
-          replicas: S.optional(__S(59, __c7, 3)),
-          timePartitioning: S.optional(__S(168, __c21, 0)),
-          tableConstraints: S.optional(__S(308, __c38, 4)),
+          snapshotDefinition: S.optional(__S(783, __c24, 15)),
+          replicas: S.optional(__S(2336, __c73, 0)),
+          timePartitioning: S.optional(__S(2305, __c72, 1)),
+          tableConstraints: S.optional(__S(790, __c24, 22)),
           etag: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(166, __c20, 6)),
+          encryptionConfiguration: S.optional(__S(1888, __c59, 0)),
           creationTime: S.optional(S.String),
           numTotalLogicalBytes: S.optional(S.String),
           defaultCollation: S.optional(S.String),
           defaultRoundingMode: S.optional(S.String),
           description: S.optional(S.String),
-          model: S.optional(__S(315, __c39, 3)),
+          model: S.optional(__S(797, __c24, 29)),
         }),
       ).annotate({ identifier: "Table" });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          json: S.optional(__S(317, __c39, 5)),
+          json: S.optional(__S(800, __c25, 0)),
           insertId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TableDataInsertAllRequestRowsItem",
       });
-    case 7:
-      return S.Array(__S(318, __c39, 6));
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           templateSuffix: S.optional(S.String),
-          rows: S.optional(__S(319, __c39, 7)),
+          rows: S.optional(__S(802, __c25, 2)),
           ignoreUnknownValues: S.optional(S.Boolean),
           skipInvalidRows: S.optional(S.Boolean),
           kind: S.optional(S.String),
@@ -8288,13 +6480,13 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "TableDataInsertAllRequest",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
           tableId: S.String.pipe(T.Label()),
-          body: S.optional(__S(320, __c40, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(803, __c25, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8305,32 +6497,36 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "InsertAllTabledataRequest",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(159, __c19, 7)),
+          errors: S.optional(__S(2208, __c69, 0)),
           index: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "TableDataInsertAllResponseInsertErrorsItem",
       });
-    case 3:
-      return S.Array(__S(322, __c40, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(805, __c25, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          insertErrors: S.optional(__S(323, __c40, 3)),
+          insertErrors: S.optional(__S(806, __c25, 6)),
           kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TableDataInsertAllResponse",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessPolicyVersion: S.optional(S.Number.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(223, __c27, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(200, __c6, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8339,11 +6535,15 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertDatasetsRequest" });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(201, __c25, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2368, __c74, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8352,12 +6552,16 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertJobsRequest" });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(276, __c34, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(586, __c18, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8368,7 +6572,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "InsertRoutinesRequest" });
   }
 }
-function __c41(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8376,7 +6580,7 @@ function __c41(j: number): any {
           projectId: S.String.pipe(T.Label()),
           datasetId: S.String.pipe(T.Label()),
           tableId: S.String.pipe(T.Label()),
-          body: S.optional(__S(278, __c34, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8387,12 +6591,16 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "InsertRowAccessPoliciesRequest",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(316, __c39, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(798, __c24, 30).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8401,7 +6609,11 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertTablesRequest" });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -8417,33 +6629,37 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDatasetsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
           type: S.optional(S.String),
           catalogSource: S.optional(S.String),
-          externalDatasetReference: S.optional(__S(216, __c27, 0)),
+          externalDatasetReference: S.optional(__S(160, __c5, 0)),
           friendlyName: S.optional(S.String),
-          datasetReference: S.optional(__S(33, __c4, 1)),
+          datasetReference: S.optional(__S(1984, __c62, 0)),
           id: S.optional(S.String),
-          labels: S.optional(__S(60, __c7, 4)),
+          labels: S.optional(__S(1824, __c57, 0)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatasetListDatasetsItem" });
-    case 4:
-      return S.Array(__S(331, __c41, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(993, __c31, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          datasets: S.optional(__S(332, __c41, 4)),
+          datasets: S.optional(__S(994, __c31, 2)),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          unreachable: S.optional(__S(0, __c0, 0)),
+          unreachable: S.optional(__S(1376, __c43, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatasetList" });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allUsers: S.optional(S.Boolean.pipe(T.Query())),
@@ -8454,7 +6670,7 @@ function __c41(j: number): any {
           projectId: S.String.pipe(T.Label()),
           projection: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          stateFilter: S.optional(__S(79, __c9, 7).pipe(T.Query())),
+          stateFilter: S.optional(__S(1920, __c60, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8463,38 +6679,38 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListJobsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          jobReference: S.optional(__S(5, __c0, 5)),
-          errorResult: S.optional(__S(158, __c19, 6)),
-          statistics: S.optional(__S(157, __c19, 5)),
-          status: S.optional(__S(160, __c20, 0)),
+          jobReference: S.optional(__S(2240, __c70, 0)),
+          errorResult: S.optional(__S(2144, __c67, 0)),
+          statistics: S.optional(__S(2474, __c77, 10)),
+          status: S.optional(__S(2475, __c77, 11)),
           id: S.optional(S.String),
           principal_subject: S.optional(S.String),
           user_email: S.optional(S.String),
           kind: S.optional(S.String),
-          configuration: S.optional(__S(199, __c24, 7)),
+          configuration: S.optional(__S(2486, __c77, 22)),
         }),
       ).annotate({ identifier: "JobListJobsItem" });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(335, __c41, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1025, __c32, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          jobs: S.optional(__S(336, __c42, 0)),
+          jobs: S.optional(__S(1026, __c32, 2)),
           etag: S.optional(S.String),
-          unreachable: S.optional(__S(0, __c0, 0)),
+          unreachable: S.optional(__S(1376, __c43, 0)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobList" });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -8509,16 +6725,20 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListModelsRequest" });
-    case 3:
-      return S.Array(__S(258, __c32, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(468, __c14, 20));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          models: S.optional(__S(339, __c42, 3)),
+          models: S.optional(__S(1057, __c33, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListModelsResponse" });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8531,39 +6751,39 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectReference" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           friendlyName: S.optional(S.String),
           id: S.optional(S.String),
-          projectReference: S.optional(__S(342, __c42, 6)),
+          projectReference: S.optional(__S(1089, __c34, 1)),
           numericId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectListProjectsItem" });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(343, __c42, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(1090, __c34, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           totalItems: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
-          projects: S.optional(__S(344, __c43, 0)),
+          projects: S.optional(__S(1091, __c34, 3)),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectList" });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8580,16 +6800,20 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRoutinesRequest" });
-    case 3:
-      return S.Array(__S(276, __c34, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(586, __c18, 10));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          routines: S.optional(__S(347, __c43, 3)),
+          routines: S.optional(__S(1121, __c35, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRoutinesResponse" });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8607,20 +6831,20 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListRowAccessPoliciesRequest",
       });
-    case 6:
-      return S.Array(__S(278, __c34, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(640, __c20, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          rowAccessPolicies: S.optional(__S(350, __c43, 6)),
+          rowAccessPolicies: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({
         identifier: "ListRowAccessPoliciesResponse",
       });
   }
 }
-function __c44(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8646,13 +6870,17 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           totalRows: S.optional(S.String),
-          rows: S.optional(__S(263, __c32, 7)),
+          rows: S.optional(__S(515, __c16, 3)),
           pageToken: S.optional(S.String),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "TableDataList" });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
@@ -8667,51 +6895,55 @@ function __c44(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTablesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           useLegacySql: S.optional(S.Boolean),
-          privacyPolicy: S.optional(__S(285, __c35, 5)),
+          privacyPolicy: S.optional(__S(739, __c23, 3)),
         }),
       ).annotate({ identifier: "TableListTablesItemView" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          tableReference: S.optional(__S(14, __c1, 6)),
-          labels: S.optional(__S(60, __c7, 4)),
-          rangePartitioning: S.optional(__S(170, __c21, 2)),
-          view: S.optional(__S(355, __c44, 3)),
+          tableReference: S.optional(__S(1856, __c58, 0)),
+          labels: S.optional(__S(1824, __c57, 0)),
+          rangePartitioning: S.optional(__S(2307, __c72, 3)),
+          view: S.optional(__S(1217, __c38, 1)),
           expirationTime: S.optional(S.String),
           requirePartitionFilter: S.optional(S.Boolean),
           friendlyName: S.optional(S.String),
-          timePartitioning: S.optional(__S(168, __c21, 0)),
+          timePartitioning: S.optional(__S(2305, __c72, 1)),
           id: S.optional(S.String),
           creationTime: S.optional(S.String),
           type: S.optional(S.String),
-          clustering: S.optional(__S(167, __c20, 7)),
+          clustering: S.optional(__S(2304, __c72, 0)),
         }),
       ).annotate({ identifier: "TableListTablesItem" });
-    case 5:
-      return S.Array(__S(356, __c44, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(1218, __c38, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          tables: S.optional(__S(357, __c44, 5)),
+          tables: S.optional(__S(1219, __c38, 3)),
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
           totalItems: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TableList" });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
           updateMode: S.optional(S.String.pipe(T.Query())),
           accessPolicyVersion: S.optional(S.Number.pipe(T.Query())),
-          body: S.optional(__S(223, __c27, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(200, __c6, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8722,7 +6954,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "PatchDatasetsRequest" });
   }
 }
-function __c45(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8730,7 +6962,7 @@ function __c45(j: number): any {
           datasetId: S.String.pipe(T.Label()),
           modelId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(258, __c32, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(468, __c14, 20).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8739,14 +6971,18 @@ function __c45(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchModelsRequest" });
-    case 1:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
           tableId: S.String.pipe(T.Label()),
           autodetect_schema: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(316, __c39, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(798, __c24, 30).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8755,14 +6991,58 @@ function __c45(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchTablesRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          force: S.optional(S.Boolean),
+          policyIds: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchDeleteRowAccessPoliciesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tableId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          datasetId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies:batchDelete",
+            baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteRowAccessPoliciesRequest_",
+      });
     case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BatchDeleteRowAccessPoliciesResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           timestampOutputFormat: S.optional(S.String),
           useInt64Timestamp: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DataFormatOptions" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bufferCompression: S.optional(S.String),
@@ -8771,44 +7051,44 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ArrowSerializationOptions",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          secureContext: S.optional(__S(194, __c24, 2)),
+          secureContext: S.optional(__S(2510, __c78, 14)),
           location: S.optional(S.String),
           maximumBytesBilled: S.optional(S.String),
           maxResults: S.optional(S.Number),
           reservation: S.optional(S.String),
           maxSlots: S.optional(S.Number),
           createSession: S.optional(S.Boolean),
-          formatOptions: S.optional(__S(362, __c45, 2)),
+          formatOptions: S.optional(__S(1408, __c44, 0)),
           parameterMode: S.optional(S.String),
           timeoutMs: S.optional(S.Number),
-          queryParameters: S.optional(__S(134, __c16, 6)),
+          queryParameters: S.optional(__S(2506, __c78, 10)),
           writeIncrementalResults: S.optional(S.Boolean),
           continuous: S.optional(S.Boolean),
-          destinationEncryptionConfiguration: S.optional(__S(166, __c20, 6)),
+          destinationEncryptionConfiguration: S.optional(__S(1888, __c59, 0)),
           dryRun: S.optional(S.Boolean),
-          arrowSerializationOptions: S.optional(__S(363, __c45, 3)),
-          connectionProperties: S.optional(__S(164, __c20, 4)),
+          arrowSerializationOptions: S.optional(__S(1409, __c44, 1)),
+          connectionProperties: S.optional(__S(2509, __c78, 13)),
           preserveNulls: S.optional(S.Boolean),
           requestId: S.optional(S.String),
           queryResultsFormat: S.optional(S.String),
-          labels: S.optional(__S(60, __c7, 4)),
+          labels: S.optional(__S(1824, __c57, 0)),
           jobCreationMode: S.optional(S.String),
           query: S.optional(S.String),
           useQueryCache: S.optional(S.Boolean),
-          defaultDataset: S.optional(__S(33, __c4, 1)),
+          defaultDataset: S.optional(__S(1984, __c62, 0)),
           kind: S.optional(S.String),
           jobTimeoutMs: S.optional(S.String),
           useLegacySql: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "QueryRequest" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(364, __c45, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1410, __c44, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8817,45 +7097,41 @@ function __c45(j: number): any {
           }),
         ),
       ).annotate({ identifier: "QueryJobsRequest" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           serializedSchema: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArrowSchema" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           serializedRecordBatch: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArrowRecordBatch" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          dmlStats: S.optional(__S(123, __c15, 3)),
+          dmlStats: S.optional(__S(2497, __c78, 1)),
           numDmlAffectedRows: S.optional(S.String),
-          sessionInfo: S.optional(__S(154, __c19, 2)),
-          rows: S.optional(__S(263, __c32, 7)),
+          sessionInfo: S.optional(__S(2507, __c78, 11)),
+          rows: S.optional(__S(515, __c16, 3)),
           creationTime: S.optional(S.String),
           startTime: S.optional(S.String),
           cacheHit: S.optional(S.Boolean),
           location: S.optional(S.String),
-          jobReference: S.optional(__S(5, __c0, 5)),
+          jobReference: S.optional(__S(2240, __c70, 0)),
           pageRowCount: S.optional(S.String),
           totalBytesProcessed: S.optional(S.String),
           queryId: S.optional(S.String),
           totalRows: S.optional(S.String),
-          errors: S.optional(__S(159, __c19, 7)),
+          errors: S.optional(__S(2208, __c69, 0)),
           totalBytesBilled: S.optional(S.String),
-          arrowSchema: S.optional(__S(366, __c45, 6)),
-          arrowRecordBatch: S.optional(__S(367, __c45, 7)),
-          schema: S.optional(__S(146, __c18, 2)),
-          jobCreationReason: S.optional(__S(200, __c25, 0)),
+          arrowSchema: S.optional(__S(1412, __c44, 4)),
+          arrowRecordBatch: S.optional(__S(1413, __c44, 5)),
+          schema: S.optional(__S(2187, __c68, 11)),
+          jobCreationReason: S.optional(__S(2528, __c79, 0)),
           pageToken: S.optional(S.String),
           totalSlotMs: S.optional(S.String),
           kind: S.optional(S.String),
@@ -8863,18 +7139,15 @@ function __c46(j: number): any {
           statementType: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          policy: S.optional(__S(233, __c29, 1)),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(369, __c46, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1472, __c46, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8885,11 +7158,26 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyRoutinesRequest",
       });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          policy: S.optional(__S(294, __c9, 6)),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(369, __c46, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1472, __c46, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8900,19 +7188,15 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyTablesRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(372, __c46, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8923,11 +7207,27 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsRoutinesRequest",
       });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(372, __c46, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8938,11 +7238,15 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsRowAccessPoliciesRequest",
       });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(372, __c46, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8955,7 +7259,7 @@ function __c46(j: number): any {
       });
   }
 }
-function __c47(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8968,7 +7272,7 @@ function __c47(j: number): any {
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(376, __c47, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1664, __c52, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8977,14 +7281,18 @@ function __c47(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UndeleteDatasetsRequest" });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessPolicyVersion: S.optional(S.Number.pipe(T.Query())),
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
           updateMode: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(223, __c27, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(200, __c6, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8993,13 +7301,17 @@ function __c47(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDatasetsRequest" });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           routineId: S.String.pipe(T.Label()),
           datasetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(276, __c34, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(586, __c18, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9008,14 +7320,18 @@ function __c47(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRoutinesRequest" });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           datasetId: S.String.pipe(T.Label()),
           policyId: S.String.pipe(T.Label()),
           tableId: S.String.pipe(T.Label()),
-          body: S.optional(__S(278, __c34, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9026,14 +7342,1770 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "UpdateRowAccessPoliciesRequest",
       });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          location: S.optional(S.String.pipe(T.Query())),
+          jobId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "projects/{+projectId}/jobs/{+jobId}/cancel",
+            baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "CancelJobsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          job: S.optional(__S(2368, __c74, 0)),
+        }),
+      ).annotate({ identifier: "JobCancelResponse" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.optional(S.String),
+          projectId: S.optional(S.String),
+          tableId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TableReference" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKeyName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionConfiguration" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.optional(S.String),
+          routineId: S.optional(S.String),
+          datasetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RoutineReference" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.optional(S.String),
+          datasetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatasetReference" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.suspend(() => __S(2019, __c63, 3))),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StandardSqlField" });
+    case 1:
+      return S.Array(__S(2016, __c63, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(__S(2017, __c63, 1)),
+        }),
+      ).annotate({ identifier: "StandardSqlStructType" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          rangeElementType: S.optional(__S(2019, __c63, 3)),
+          structType: S.optional(__S(2018, __c63, 2)),
+          arrayElementType: S.optional(__S(2019, __c63, 3)),
+          typeKind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StandardSqlDataType" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          autoRegressiveCoefficients: S.optional(__S(2048, __c64, 0)),
+          interceptCoefficient: S.optional(S.Number),
+          movingAverageCoefficients: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({ identifier: "ArimaCoefficients" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          d: S.optional(S.String),
+          q: S.optional(S.String),
+          p: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ArimaOrder" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          variance: S.optional(S.Number),
+          logLikelihood: S.optional(S.Number),
+          aic: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ArimaFittingMetrics" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          arimaCoefficients: S.optional(__S(2080, __c65, 0)),
+          hasDrift: S.optional(S.Boolean),
+          hasHolidayEffect: S.optional(S.Boolean),
+          nonSeasonalOrder: S.optional(__S(2081, __c65, 1)),
+          arimaFittingMetrics: S.optional(__S(2082, __c65, 2)),
+          hasStepChanges: S.optional(S.Boolean),
+          timeSeriesIds: S.optional(__S(1376, __c43, 0)),
+          hasSpikesAndDips: S.optional(S.Boolean),
+          timeSeriesId: S.optional(S.String),
+          seasonalPeriods: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({ identifier: "ArimaModelInfo" });
+    case 4:
+      return S.Array(__S(2083, __c65, 3));
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          arimaModelInfo: S.optional(__S(2084, __c65, 4)),
+          seasonalPeriods: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({ identifier: "ArimaResult" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          cumulativeExplainedVarianceRatio: S.optional(S.Number),
+          explainedVariance: S.optional(S.Number),
+          explainedVarianceRatio: S.optional(S.Number),
+          principalComponentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrincipalComponentInfo" });
+    case 7:
+      return S.Array(__S(2086, __c65, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          centroidId: S.optional(S.String),
+          clusterSize: S.optional(S.String),
+          clusterRadius: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ClusterInfo" });
+    case 9:
+      return S.Array(__S(2088, __c65, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          learnRate: S.optional(S.Number),
+          arimaResult: S.optional(__S(2085, __c65, 5)),
+          principalComponentInfos: S.optional(__S(2087, __c65, 7)),
+          trainingLoss: S.optional(S.Number),
+          clusterInfos: S.optional(__S(2089, __c65, 9)),
+          evalLoss: S.optional(S.Number),
+          index: S.optional(S.Number),
+          durationMs: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IterationResult" });
+    case 11:
+      return S.Array(__S(2090, __c65, 10));
+    case 12:
+      return S.Record(S.String, S.Number);
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          feedbackType: S.optional(S.String),
+          subsample: S.optional(S.Number),
+          reservationAffinityValues: S.optional(__S(1376, __c43, 0)),
+          treeMethod: S.optional(S.String),
+          approxGlobalFeatureContrib: S.optional(S.Boolean),
+          reservationAffinityKey: S.optional(S.String),
+          holidayRegions: S.optional(__S(1920, __c60, 0)),
+          timeSeriesLengthFraction: S.optional(S.Number),
+          numParallelTree: S.optional(S.String),
+          dataSplitMethod: S.optional(S.String),
+          timeSeriesDataColumn: S.optional(S.String),
+          fitIntercept: S.optional(S.Boolean),
+          maxParallelTrials: S.optional(S.String),
+          vertexAiModelVersionAliases: S.optional(__S(1376, __c43, 0)),
+          trendSmoothingWindowSize: S.optional(S.String),
+          minAprioriSupport: S.optional(S.Number),
+          minReplicaCount: S.optional(S.String),
+          learnRateStrategy: S.optional(S.String),
+          boosterType: S.optional(S.String),
+          activationFn: S.optional(S.String),
+          hparamTuningObjectives: S.optional(__S(1920, __c60, 0)),
+          warmStart: S.optional(S.Boolean),
+          timeSeriesTimestampColumn: S.optional(S.String),
+          batchSize: S.optional(S.String),
+          hiddenUnits: S.optional(__S(1376, __c43, 0)),
+          includeDrift: S.optional(S.Boolean),
+          forecastLimitLowerBound: S.optional(S.Number),
+          horizon: S.optional(S.String),
+          pcaSolver: S.optional(S.String),
+          timeSeriesIdColumn: S.optional(S.String),
+          minTimeSeriesLength: S.optional(S.String),
+          maxReplicaCount: S.optional(S.String),
+          scaleFeatures: S.optional(S.Boolean),
+          maxTreeDepth: S.optional(S.String),
+          userColumn: S.optional(S.String),
+          numTrials: S.optional(S.String),
+          tfVersion: S.optional(S.String),
+          kmeansInitializationColumn: S.optional(S.String),
+          kmeansInitializationMethod: S.optional(S.String),
+          reservationAffinityType: S.optional(S.String),
+          autoClassWeights: S.optional(S.Boolean),
+          holidayRegion: S.optional(S.String),
+          xgboostVersion: S.optional(S.String),
+          initialLearnRate: S.optional(S.Number),
+          instanceWeightColumn: S.optional(S.String),
+          maxTimeSeriesLength: S.optional(S.String),
+          isTestColumn: S.optional(S.String),
+          machineType: S.optional(S.String),
+          labelClassWeights: S.optional(__S(2092, __c65, 12)),
+          decomposeTimeSeries: S.optional(S.Boolean),
+          colsampleBylevel: S.optional(S.Number),
+          l1RegActivation: S.optional(S.Number),
+          enableGlobalExplain: S.optional(S.Boolean),
+          numFactors: S.optional(S.String),
+          earlyStop: S.optional(S.Boolean),
+          dimensionIdColumns: S.optional(__S(1376, __c43, 0)),
+          autoArimaMinOrder: S.optional(S.String),
+          lossType: S.optional(S.String),
+          itemColumn: S.optional(S.String),
+          dataFrequency: S.optional(S.String),
+          l2Regularization: S.optional(S.Number),
+          dataSplitColumn: S.optional(S.String),
+          cleanSpikesAndDips: S.optional(S.Boolean),
+          autoArimaMaxOrder: S.optional(S.String),
+          numPrincipalComponents: S.optional(S.String),
+          forecastLimitUpperBound: S.optional(S.Number),
+          timeSeriesIdColumns: S.optional(__S(1376, __c43, 0)),
+          colsampleBynode: S.optional(S.Number),
+          standardizeFeatures: S.optional(S.Boolean),
+          dartNormalizeType: S.optional(S.String),
+          distanceType: S.optional(S.String),
+          calculatePValues: S.optional(S.Boolean),
+          minRelativeProgress: S.optional(S.Number),
+          modelGardenModelName: S.optional(S.String),
+          colorSpace: S.optional(S.String),
+          adjustStepChanges: S.optional(S.Boolean),
+          budgetHours: S.optional(S.Number),
+          pcaExplainedVarianceRatio: S.optional(S.Number),
+          maxIterations: S.optional(S.String),
+          modelRegistry: S.optional(S.String),
+          l1Regularization: S.optional(S.Number),
+          huggingFaceModelId: S.optional(S.String),
+          optimizationStrategy: S.optional(S.String),
+          categoryEncodingMethod: S.optional(S.String),
+          inputLabelColumns: S.optional(__S(1376, __c43, 0)),
+          contributionMetric: S.optional(S.String),
+          endpointIdleTtl: S.optional(S.String),
+          minSplitLoss: S.optional(S.Number),
+          sampledShapleyNumPaths: S.optional(S.String),
+          dataSplitEvalFraction: S.optional(S.Number),
+          numClusters: S.optional(S.String),
+          nonSeasonalOrder: S.optional(__S(2081, __c65, 1)),
+          autoArima: S.optional(S.Boolean),
+          optimizer: S.optional(S.String),
+          dropout: S.optional(S.Number),
+          minTreeChildWeight: S.optional(S.String),
+          modelUri: S.optional(S.String),
+          colsampleBytree: S.optional(S.Number),
+          walsAlpha: S.optional(S.Number),
+          learnRate: S.optional(S.Number),
+          integratedGradientsNumSteps: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TrainingOptions" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          itemCount: S.optional(S.String),
+          predictedLabel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Entry" });
+    case 15:
+      return S.Array(__S(2094, __c65, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2095, __c65, 15)),
+          actualLabel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Row" });
+    case 17:
+      return S.Array(__S(2096, __c65, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          confidenceThreshold: S.optional(S.Number),
+          rows: S.optional(__S(2097, __c65, 17)),
+        }),
+      ).annotate({ identifier: "ConfusionMatrix" });
+    case 19:
+      return S.Array(__S(2098, __c65, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          rocAuc: S.optional(S.Number),
+          accuracy: S.optional(S.Number),
+          recall: S.optional(S.Number),
+          f1Score: S.optional(S.Number),
+          precision: S.optional(S.Number),
+          threshold: S.optional(S.Number),
+          logLoss: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AggregateClassificationMetrics",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          confusionMatrixList: S.optional(__S(2099, __c65, 19)),
+          aggregateClassificationMetrics: S.optional(__S(2100, __c65, 20)),
+        }),
+      ).annotate({
+        identifier: "MultiClassClassificationMetrics",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          totalExplainedVarianceRatio: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DimensionalityReductionMetrics",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          count: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CategoryCount" });
+    case 24:
+      return S.Array(__S(2103, __c65, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          categoryCounts: S.optional(__S(2104, __c65, 24)),
+        }),
+      ).annotate({ identifier: "CategoricalValue" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          numericalValue: S.optional(S.Number),
+          featureColumn: S.optional(S.String),
+          categoricalValue: S.optional(__S(2105, __c65, 25)),
+        }),
+      ).annotate({ identifier: "FeatureValue" });
+    case 27:
+      return S.Array(__S(2106, __c65, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          centroidId: S.optional(S.String),
+          featureValues: S.optional(__S(2107, __c65, 27)),
+          count: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Cluster" });
+    case 29:
+      return S.Array(__S(2108, __c65, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          meanSquaredDistance: S.optional(S.Number),
+          clusters: S.optional(__S(2109, __c65, 29)),
+          daviesBouldinIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ClusteringMetrics" });
+    case 31:
+      return S.Array(__S(2082, __c65, 2));
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hasDrift: S.optional(S.Boolean),
+          hasHolidayEffect: S.optional(S.Boolean),
+          nonSeasonalOrder: S.optional(__S(2081, __c65, 1)),
+          timeSeriesId: S.optional(S.String),
+          hasSpikesAndDips: S.optional(S.Boolean),
+          arimaFittingMetrics: S.optional(__S(2082, __c65, 2)),
+          timeSeriesIds: S.optional(__S(1376, __c43, 0)),
+          hasStepChanges: S.optional(S.Boolean),
+          seasonalPeriods: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "ArimaSingleModelForecastingMetrics",
+      });
+    case 1:
+      return S.Array(__S(2112, __c66, 0));
+    case 2:
+      return S.Array(S.Boolean);
+    case 3:
+      return S.Array(__S(2081, __c65, 1));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          arimaFittingMetrics: S.optional(__S(2111, __c65, 31)),
+          arimaSingleModelForecastingMetrics: S.optional(__S(2113, __c66, 1)),
+          hasDrift: S.optional(__S(2114, __c66, 2)),
+          timeSeriesId: S.optional(__S(1376, __c43, 0)),
+          nonSeasonalOrder: S.optional(__S(2115, __c66, 3)),
+          seasonalPeriods: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({ identifier: "ArimaForecastingMetrics" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          meanAveragePrecision: S.optional(S.Number),
+          normalizedDiscountedCumulativeGain: S.optional(S.Number),
+          averageRank: S.optional(S.Number),
+          meanSquaredError: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RankingMetrics" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          recall: S.optional(S.Number),
+          f1Score: S.optional(S.Number),
+          falseNegatives: S.optional(S.String),
+          truePositives: S.optional(S.String),
+          accuracy: S.optional(S.Number),
+          positiveClassThreshold: S.optional(S.Number),
+          precision: S.optional(S.Number),
+          falsePositives: S.optional(S.String),
+          trueNegatives: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BinaryConfusionMatrix" });
+    case 7:
+      return S.Array(__S(2118, __c66, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          aggregateClassificationMetrics: S.optional(__S(2100, __c65, 20)),
+          binaryConfusionMatrixList: S.optional(__S(2119, __c66, 7)),
+          negativeLabel: S.optional(S.String),
+          positiveLabel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BinaryClassificationMetrics",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          meanSquaredLogError: S.optional(S.Number),
+          meanAbsoluteError: S.optional(S.Number),
+          medianAbsoluteError: S.optional(S.Number),
+          meanSquaredError: S.optional(S.Number),
+          rSquared: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RegressionMetrics" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          multiClassClassificationMetrics: S.optional(__S(2101, __c65, 21)),
+          dimensionalityReductionMetrics: S.optional(__S(2102, __c65, 22)),
+          clusteringMetrics: S.optional(__S(2110, __c65, 30)),
+          arimaForecastingMetrics: S.optional(__S(2116, __c66, 4)),
+          rankingMetrics: S.optional(__S(2117, __c66, 5)),
+          binaryClassificationMetrics: S.optional(__S(2120, __c66, 8)),
+          regressionMetrics: S.optional(__S(2121, __c66, 9)),
+        }),
+      ).annotate({ identifier: "EvaluationMetrics" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          hparams: S.optional(__S(2093, __c65, 13)),
+          startTimeMs: S.optional(S.String),
+          evaluationMetrics: S.optional(__S(2122, __c66, 10)),
+          evalLoss: S.optional(S.Number),
+          status: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          trialId: S.optional(S.String),
+          hparamTuningEvaluationMetrics: S.optional(__S(2122, __c66, 10)),
+          endTimeMs: S.optional(S.String),
+          trainingLoss: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HparamTuningTrial" });
+    case 12:
+      return S.Array(__S(2123, __c66, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          modelId: S.optional(S.String),
+          projectId: S.optional(S.String),
+          datasetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ModelReference" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          debugInfo: S.optional(S.String),
+          reason: S.optional(S.String),
+          message: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ErrorProto" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataPolicyOption" });
+    case 1:
+      return S.Array(__S(2176, __c68, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataPolicies: S.optional(__S(2177, __c68, 1)),
+        }),
+      ).annotate({ identifier: "DataPolicyList" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dataGovernanceTags: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({
+        identifier: "TableFieldSchemaDataGovernanceTagsInfo",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          names: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({
+        identifier: "TableFieldSchemaCategories",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TableFieldSchemaRangeElementType",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          stored: S.optional(S.Boolean),
+          generationExpression: S.optional(S.String),
+          asynchronous: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GeneratedExpressionInfo" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          generatedExpressionInfo: S.optional(__S(2182, __c68, 6)),
+          generatedMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GeneratedColumn" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          dataPolicyList: S.optional(__S(2178, __c68, 2)),
+          roundingMode: S.optional(S.String),
+          dataGovernanceTagsInfo: S.optional(__S(2179, __c68, 3)),
+          categories: S.optional(__S(2180, __c68, 4)),
+          mode: S.optional(S.String),
+          rangeElementType: S.optional(__S(2181, __c68, 5)),
+          type: S.optional(S.String),
+          defaultValueExpression: S.optional(S.String),
+          fields: S.optional(S.suspend(() => __S(2185, __c68, 9))),
+          name: S.optional(S.String),
+          timestampPrecision: S.optional(S.String),
+          precision: S.optional(S.String),
+          description: S.optional(S.String),
+          generatedColumn: S.optional(__S(2183, __c68, 7)),
+          dataPolicies: S.optional(__S(2177, __c68, 1)),
+          foreignTypeDefinition: S.optional(S.String),
+          scale: S.optional(S.String),
+          maxLength: S.optional(S.String),
+          policyTags: S.optional(__S(2180, __c68, 4)),
+          collation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TableFieldSchema" });
+    case 9:
+      return S.Array(__S(2184, __c68, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          typeSystem: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ForeignTypeInfo" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(__S(2185, __c68, 9)),
+          foreignTypeInfo: S.optional(__S(2186, __c68, 10)),
+        }),
+      ).annotate({ identifier: "TableSchema" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2144, __c67, 0));
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.optional(S.String),
+          projectId: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobReference" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.optional(S.String),
+          tableId: S.optional(S.String),
+          policyId: S.optional(S.String),
+          projectId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RowAccessPolicyReference" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({ identifier: "Clustering" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expirationMs: S.optional(S.String),
+          requirePartitionFilter: S.optional(S.Boolean),
+          field: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimePartitioning" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+          interval: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RangePartitioningRange" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          range: S.optional(__S(2306, __c72, 2)),
+        }),
+      ).annotate({ identifier: "RangePartitioning" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1856, __c58, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          sourceUriPrefix: S.optional(S.String),
+          fields: S.optional(__S(1376, __c43, 0)),
+          requirePartitionFilter: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "HivePartitioningOptions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enableListInference: S.optional(S.Boolean),
+          mapTargetType: S.optional(S.String),
+          enumAsString: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ParquetOptions" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          inlineCode: S.optional(S.String),
+          resourceUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UserDefinedFunctionResource",
+      });
+    case 4:
+      return S.Array(__S(2339, __c73, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          skipLeadingRows: S.optional(S.String),
+          preserveAsciiControlCharacters: S.optional(S.Boolean),
+          allowQuotedNewlines: S.optional(S.Boolean),
+          encoding: S.optional(S.String),
+          nullMarker: S.optional(S.String),
+          quote: S.optional(S.String),
+          nullMarkers: S.optional(__S(1376, __c43, 0)),
+          fieldDelimiter: S.optional(S.String),
+          allowJaggedRows: S.optional(S.Boolean),
+          sourceColumnMatch: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CsvOptions" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          range: S.optional(S.String),
+          skipLeadingRows: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleSheetsOptions" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          encoding: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JsonOptions" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          protoMessageName: S.optional(S.String),
+          schemaBundleId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BigtableProtoConfig" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          fieldName: S.optional(S.String),
+          type: S.optional(S.String),
+          qualifierEncoded: S.optional(S.String),
+          qualifierString: S.optional(S.String),
+          encoding: S.optional(S.String),
+          onlyReadLatest: S.optional(S.Boolean),
+          protoConfig: S.optional(__S(2344, __c73, 8)),
+        }),
+      ).annotate({ identifier: "BigtableColumn" });
+    case 10:
+      return S.Array(__S(2345, __c73, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          columns: S.optional(__S(2346, __c73, 10)),
+          protoConfig: S.optional(__S(2344, __c73, 8)),
+          type: S.optional(S.String),
+          encoding: S.optional(S.String),
+          familyId: S.optional(S.String),
+          onlyReadLatest: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BigtableColumnFamily" });
+    case 12:
+      return S.Array(__S(2347, __c73, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          outputColumnFamiliesAsJson: S.optional(S.Boolean),
+          readRowkeyAsString: S.optional(S.Boolean),
+          columnFamilies: S.optional(__S(2348, __c73, 12)),
+          ignoreUnspecifiedColumnFamilies: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BigtableOptions" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          useAvroLogicalTypes: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AvroOptions" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          ignoreUnknownValues: S.optional(S.Boolean),
+          fileSetSpecType: S.optional(S.String),
+          autodetect: S.optional(S.Boolean),
+          csvOptions: S.optional(__S(2341, __c73, 5)),
+          jsonExtension: S.optional(S.String),
+          metadataCacheMode: S.optional(S.String),
+          googleSheetsOptions: S.optional(__S(2342, __c73, 6)),
+          dateFormat: S.optional(S.String),
+          timeFormat: S.optional(S.String),
+          referenceFileSchemaUri: S.optional(S.String),
+          objectMetadata: S.optional(S.String),
+          timestampFormat: S.optional(S.String),
+          schema: S.optional(__S(2187, __c68, 11)),
+          jsonOptions: S.optional(__S(2343, __c73, 7)),
+          datetimeFormat: S.optional(S.String),
+          decimalTargetTypes: S.optional(__S(1920, __c60, 0)),
+          hivePartitioningOptions: S.optional(__S(2337, __c73, 1)),
+          sourceUris: S.optional(__S(1376, __c43, 0)),
+          bigtableOptions: S.optional(__S(2349, __c73, 13)),
+          timeZone: S.optional(S.String),
+          avroOptions: S.optional(__S(2350, __c73, 14)),
+          timestampTargetPrecision: S.optional(__S(2048, __c64, 0)),
+          maxBadRecords: S.optional(S.Number),
+          compression: S.optional(S.String),
+          parquetOptions: S.optional(__S(2338, __c73, 2)),
+          connectionId: S.optional(S.String),
+          sourceFormat: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExternalDataConfiguration",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          user_email: S.optional(S.String),
+          principal_subject: S.optional(S.String),
+          jobReference: S.optional(__S(2240, __c70, 0)),
+          etag: S.optional(S.String),
+          statistics: S.optional(__S(2474, __c77, 10)),
+          status: S.optional(__S(2475, __c77, 11)),
+          configuration: S.optional(__S(2486, __c77, 22)),
+          kind: S.optional(S.String),
+          jobCreationReason: S.optional(__S(2528, __c79, 0)),
+          selfLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Job" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rowLevelSecurityApplied: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "RowLevelSecurityStatistics",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({ identifier: "GenAiErrorStats" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          numFailedRows: S.optional(S.String),
+          errors: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({ identifier: "GenAiFunctionErrorStats" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          numCostOptimizedRows: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GenAiFunctionCostOptimizationStats",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          numCacheHitRows: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GenAiFunctionCacheStats" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          prompt: S.optional(S.String),
+          errorStats: S.optional(__S(2402, __c75, 2)),
+          costOptimizationStats: S.optional(__S(2403, __c75, 3)),
+          cacheStats: S.optional(__S(2404, __c75, 4)),
+          functionName: S.optional(S.String),
+          numProcessedRows: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GenAiFunctionStats" });
+    case 6:
+      return S.Array(__S(2405, __c75, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          errorStats: S.optional(__S(2401, __c75, 1)),
+          functionStats: S.optional(__S(2406, __c75, 6)),
+        }),
+      ).annotate({ identifier: "GenAiStats" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          postIndexPruningParallelInputCount: S.optional(S.String),
+          baseTable: S.optional(__S(1856, __c58, 0)),
+          indexId: S.optional(S.String),
+          preIndexPruningParallelInputCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IndexPruningStats" });
+    case 9:
+      return S.Array(__S(2408, __c75, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          baseTable: S.optional(__S(1856, __c58, 0)),
+          indexName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IndexUnusedReason" });
+    case 11:
+      return S.Array(__S(2410, __c75, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          indexPruningStats: S.optional(__S(2409, __c75, 9)),
+          indexUsageMode: S.optional(S.String),
+          indexUnusedReasons: S.optional(__S(2411, __c75, 11)),
+        }),
+      ).annotate({ identifier: "SearchStatistics" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          postCmetaPruningParallelInputCount: S.optional(S.String),
+          postCmetaPruningPartitionCount: S.optional(S.String),
+          preCmetaPruningParallelInputCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PruningStats" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          tableReference: S.optional(__S(1856, __c58, 0)),
+          staleness: S.optional(S.String),
+          tableType: S.optional(S.String),
+          unusedReason: S.optional(S.String),
+          pruningStats: S.optional(__S(2413, __c75, 13)),
+          explanation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TableMetadataCacheUsage" });
+    case 15:
+      return S.Array(__S(2414, __c75, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          tableMetadataCacheUsage: S.optional(__S(2415, __c75, 15)),
+        }),
+      ).annotate({ identifier: "MetadataCacheStatistics" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          optimizationDetails: S.optional(__S(2496, __c78, 0)),
+        }),
+      ).annotate({ identifier: "QueryInfo" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          slotMs: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "JobStatistics2ReservationUsageItem",
+      });
+    case 19:
+      return S.Array(__S(2418, __c75, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          uncoveredColumns: S.optional(__S(1376, __c43, 0)),
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StoredColumnsUnusedReason",
+      });
+    case 21:
+      return S.Array(__S(2420, __c75, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          storedColumnsUnusedReasons: S.optional(__S(2421, __c75, 21)),
+          baseTable: S.optional(__S(1856, __c58, 0)),
+          isQueryAccelerated: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "StoredColumnsUsage" });
+    case 23:
+      return S.Array(__S(2422, __c75, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          indexUnusedReasons: S.optional(__S(2411, __c75, 11)),
+          storedColumnsUsages: S.optional(__S(2423, __c75, 23)),
+          indexUsageMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VectorSearchStatistics" });
+    case 25:
+      return S.Array(__S(1952, __c61, 0));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          reservedSlotCount: S.optional(S.String),
+          billingMethod: S.optional(S.String),
+          bytesBilled: S.optional(S.String),
+          externalService: S.optional(S.String),
+          bytesProcessed: S.optional(S.String),
+          slotMs: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalServiceCost" });
+    case 27:
+      return S.Array(__S(2426, __c75, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          substeps: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({ identifier: "ExplainQueryStep" });
+    case 29:
+      return S.Array(__S(2428, __c75, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          waitRatioAvg: S.optional(S.Number),
+          waitMsMax: S.optional(S.String),
+          writeRatioAvg: S.optional(S.Number),
+          computeRatioMax: S.optional(S.Number),
+          waitMsAvg: S.optional(S.String),
+          writeRatioMax: S.optional(S.Number),
+          inputStages: S.optional(__S(1376, __c43, 0)),
+          name: S.optional(S.String),
+          readRatioMax: S.optional(S.Number),
+          computeMsAvg: S.optional(S.String),
+          parallelInputs: S.optional(S.String),
+          startMs: S.optional(S.String),
+          computeMode: S.optional(S.String),
+          waitRatioMax: S.optional(S.Number),
+          computeRatioAvg: S.optional(S.Number),
+          recordsWritten: S.optional(S.String),
+          completedParallelInputs: S.optional(S.String),
+          shuffleOutputBytes: S.optional(S.String),
+          readRatioAvg: S.optional(S.Number),
+          endMs: S.optional(S.String),
+          writeMsAvg: S.optional(S.String),
+          status: S.optional(S.String),
+          steps: S.optional(__S(2429, __c75, 29)),
+          writeMsMax: S.optional(S.String),
+          slotMs: S.optional(S.String),
+          id: S.optional(S.String),
+          recordsRead: S.optional(S.String),
+          readMsAvg: S.optional(S.String),
+          computeMsMax: S.optional(S.String),
+          shuffleOutputBytesSpilled: S.optional(S.String),
+          readMsMax: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExplainQueryStage" });
+    case 31:
+      return S.Array(__S(2430, __c75, 30));
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          recordsReadDiffPercentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "InputDataChange" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inputDataChange: S.optional(__S(2432, __c76, 0)),
+          stageId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StagePerformanceChangeInsight",
+      });
+    case 2:
+      return S.Array(__S(2433, __c76, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          avgPreviousStalenessMs: S.optional(S.String),
+          stalenessPercentageIncrease: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MetadataCacheStalenessInsight",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          metadataCacheStalenessInsight: S.optional(__S(2435, __c76, 3)),
+          tableReference: S.optional(__S(1856, __c58, 0)),
+          metadataCacheNotUsedButUsedPreviously: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TableChangeInsight" });
+    case 5:
+      return S.Array(__S(2436, __c76, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BiEngineReason" });
+    case 7:
+      return S.Array(__S(2438, __c76, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          rightRows: S.optional(S.String),
+          leftRows: S.optional(S.String),
+          outputRows: S.optional(S.String),
+          stepIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HighCardinalityJoin" });
+    case 9:
+      return S.Array(__S(2440, __c76, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          outputBytesMax: S.optional(S.String),
+          outputBytesP95: S.optional(S.String),
+          stageId: S.optional(S.String),
+          outputBytesMedian: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SkewSource" });
+    case 11:
+      return S.Array(__S(2442, __c76, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          skewSources: S.optional(__S(2443, __c76, 11)),
+        }),
+      ).annotate({ identifier: "PartitionSkew" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          insufficientShuffleQuota: S.optional(S.Boolean),
+          biEngineReasons: S.optional(__S(2439, __c76, 7)),
+          stageId: S.optional(S.String),
+          highCardinalityJoins: S.optional(__S(2441, __c76, 9)),
+          slotContention: S.optional(S.Boolean),
+          partitionSkew: S.optional(__S(2444, __c76, 12)),
+        }),
+      ).annotate({
+        identifier: "StagePerformanceStandaloneInsight",
+      });
+    case 14:
+      return S.Array(__S(2445, __c76, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          stagePerformanceChangeInsights: S.optional(__S(2434, __c76, 2)),
+          tableChangeInsights: S.optional(__S(2437, __c76, 5)),
+          stagePerformanceStandaloneInsights: S.optional(__S(2446, __c76, 14)),
+          avgPreviousExecutionMs: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PerformanceInsights" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.optional(S.String),
+          projectId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SparkLoggingInfo" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          endpoints: S.optional(__S(1824, __c57, 0)),
+          loggingInfo: S.optional(__S(2448, __c76, 16)),
+          sparkJobLocation: S.optional(S.String),
+          sparkJobId: S.optional(S.String),
+          kmsKeyName: S.optional(S.String),
+          gcsStagingBucket: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SparkStatistics" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          fileCount: S.optional(S.String),
+          rowCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportDataStatistics" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          outputBytes: S.optional(S.String),
+          bytesTransferred: S.optional(S.String),
+          inputFiles: S.optional(S.String),
+          badRecords: S.optional(S.String),
+          inputFileBytes: S.optional(S.String),
+          outputRows: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoadQueryStatistics" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          tableReference: S.optional(__S(1856, __c58, 0)),
+          chosen: S.optional(S.Boolean),
+          estimatedBytesSaved: S.optional(S.String),
+          rejectedReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MaterializedView" });
+    case 21:
+      return S.Array(__S(2452, __c76, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          materializedView: S.optional(__S(2453, __c76, 21)),
+        }),
+      ).annotate({
+        identifier: "MaterializedViewStatistics",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          elapsedMs: S.optional(S.String),
+          estimatedRunnableUnits: S.optional(S.String),
+          activeUnits: S.optional(S.String),
+          completedUnits: S.optional(S.String),
+          shuffleRamUsageRatio: S.optional(S.Number),
+          pendingUnits: S.optional(S.String),
+          totalSlotMs: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QueryTimelineSample" });
+    case 24:
+      return S.Array(__S(2455, __c76, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          expectedTotalIterations: S.optional(S.String),
+          currentIteration: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BigQueryModelTraining" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          accelerationMode: S.optional(S.String),
+          biEngineReasons: S.optional(__S(2439, __c76, 7)),
+          biEngineMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BiEngineStatistics" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          lastIncrementalRowTime: S.optional(S.String),
+          disabledReasonDetails: S.optional(S.String),
+          resultSetLastModifyTime: S.optional(S.String),
+          resultSetLastReplaceTime: S.optional(S.String),
+          disabledReason: S.optional(S.String),
+          firstIncrementalRowTime: S.optional(S.String),
+          incrementalRowCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IncrementalResultStats" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          cloudProvider: S.optional(S.String),
+          cacheBytesRead: S.optional(S.String),
+          objectStorageBytesRead: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ObjectStorageStats" });
+    case 29:
+      return S.Array(__S(2460, __c76, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          iterationResults: S.optional(__S(2091, __c65, 11)),
+          modelType: S.optional(S.String),
+          trainingType: S.optional(S.String),
+          hparamTrials: S.optional(__S(2124, __c66, 12)),
+          maxIterations: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MlStatistics" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          propertyGraphId: S.optional(S.String),
+          projectId: S.optional(S.String),
+          datasetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PropertyGraphReference" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2463, __c76, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          genAiStats: S.optional(__S(2407, __c75, 7)),
+          searchStatistics: S.optional(__S(2412, __c75, 12)),
+          metadataCacheStatistics: S.optional(__S(2416, __c75, 16)),
+          queryInfo: S.optional(__S(2417, __c75, 17)),
+          ddlOperationPerformed: S.optional(S.String),
+          statementType: S.optional(S.String),
+          reservationUsage: S.optional(__S(2419, __c75, 19)),
+          vectorSearchStatistics: S.optional(__S(2424, __c75, 24)),
+          dclTargetDataset: S.optional(__S(1984, __c62, 0)),
+          ddlTargetRowAccessPolicy: S.optional(__S(2272, __c71, 0)),
+          billingTier: S.optional(S.Number),
+          totalServicesSkuSlotMs: S.optional(S.String),
+          referencedRoutines: S.optional(__S(2425, __c75, 25)),
+          externalServiceCosts: S.optional(__S(2427, __c75, 27)),
+          ddlDestinationTable: S.optional(__S(1856, __c58, 0)),
+          queryPlan: S.optional(__S(2431, __c75, 31)),
+          performanceInsights: S.optional(__S(2447, __c76, 15)),
+          dclTargetTable: S.optional(__S(1856, __c58, 0)),
+          referencedLogicalViews: S.optional(__S(2336, __c73, 0)),
+          totalPartitionsProcessed: S.optional(S.String),
+          totalSlotMs: S.optional(S.String),
+          sparkStatistics: S.optional(__S(2449, __c76, 17)),
+          exportDataStatistics: S.optional(__S(2450, __c76, 18)),
+          loadQueryStatistics: S.optional(__S(2451, __c76, 19)),
+          totalBytesBilled: S.optional(S.String),
+          materializedViewStatistics: S.optional(__S(2454, __c76, 22)),
+          timeline: S.optional(__S(2456, __c76, 24)),
+          modelTraining: S.optional(__S(2457, __c76, 25)),
+          cacheHit: S.optional(S.Boolean),
+          totalBytesProcessed: S.optional(S.String),
+          biEngineStatistics: S.optional(__S(2458, __c76, 26)),
+          incrementalResultStats: S.optional(__S(2459, __c76, 27)),
+          transferredBytes: S.optional(S.String),
+          ddlAffectedRowAccessPolicyCount: S.optional(S.String),
+          objectStorageStats: S.optional(__S(2461, __c76, 29)),
+          ddlTargetTable: S.optional(__S(1856, __c58, 0)),
+          ddlTargetDataset: S.optional(__S(1984, __c62, 0)),
+          mlStatistics: S.optional(__S(2462, __c76, 30)),
+          estimatedBytesProcessed: S.optional(S.String),
+          dmlStats: S.optional(__S(2497, __c78, 1)),
+          referencedPropertyGraphs: S.optional(__S(2464, __c77, 0)),
+          modelTrainingCurrentIteration: S.optional(S.Number),
+          ddlTargetRoutine: S.optional(__S(1952, __c61, 0)),
+          numDmlAffectedRows: S.optional(S.String),
+          undeclaredQueryParameters: S.optional(__S(2506, __c78, 10)),
+          dclTargetView: S.optional(__S(1856, __c58, 0)),
+          referencedTables: S.optional(__S(2336, __c73, 0)),
+          schema: S.optional(__S(2187, __c68, 11)),
+          modelTrainingExpectedTotalIteration: S.optional(S.String),
+          totalBytesProcessedAccuracy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobStatistics2" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          inputFileBytes: S.optional(S.String),
+          timeline: S.optional(__S(2456, __c76, 24)),
+          outputRows: S.optional(S.String),
+          outputBytes: S.optional(S.String),
+          inputFiles: S.optional(S.String),
+          badRecords: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobStatistics3" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dataMaskingApplied: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DataMaskingStatistics" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          transactionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TransactionInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          endColumn: S.optional(S.Number),
+          endLine: S.optional(S.Number),
+          procedureId: S.optional(S.String),
+          text: S.optional(S.String),
+          startLine: S.optional(S.Number),
+          startColumn: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ScriptStackFrame" });
+    case 6:
+      return S.Array(__S(2469, __c77, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          evaluationKind: S.optional(S.String),
+          stackFrames: S.optional(__S(2470, __c77, 6)),
+        }),
+      ).annotate({ identifier: "ScriptStatistics" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          destinationUriFileCounts: S.optional(__S(1376, __c43, 0)),
+          inputBytes: S.optional(S.String),
+          timeline: S.optional(__S(2456, __c76, 24)),
+        }),
+      ).annotate({ identifier: "JobStatistics4" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          remoteDestinationRegion: S.optional(S.String),
+          copiedRows: S.optional(S.String),
+          copiedLogicalBytes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobStatistics5" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          totalBytesProcessed: S.optional(S.String),
+          rowLevelSecurityStatistics: S.optional(__S(2400, __c75, 0)),
+          totalSlotMs: S.optional(S.String),
+          globalQueryRemoteRegions: S.optional(__S(1376, __c43, 0)),
+          query: S.optional(__S(2465, __c77, 1)),
+          load: S.optional(__S(2466, __c77, 2)),
+          parentJobId: S.optional(S.String),
+          dataMaskingStatistics: S.optional(__S(2467, __c77, 3)),
+          transactionInfo: S.optional(__S(2468, __c77, 4)),
+          scriptStatistics: S.optional(__S(2471, __c77, 7)),
+          completionRatio: S.optional(S.Number),
+          reservationUsage: S.optional(__S(2419, __c75, 19)),
+          quotaDeferments: S.optional(__S(1376, __c43, 0)),
+          startTime: S.optional(S.String),
+          reservationGroupPath: S.optional(__S(1376, __c43, 0)),
+          sessionInfo: S.optional(__S(2507, __c78, 11)),
+          edition: S.optional(S.String),
+          finalExecutionDurationMs: S.optional(S.String),
+          endTime: S.optional(S.String),
+          extract: S.optional(__S(2472, __c77, 8)),
+          reservation_id: S.optional(S.String),
+          numChildJobs: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          parentGlobalQueryJob: S.optional(__S(2240, __c70, 0)),
+          copy: S.optional(__S(2473, __c77, 9)),
+        }),
+      ).annotate({ identifier: "JobStatistics" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          errors: S.optional(__S(2208, __c69, 0)),
+          errorResult: S.optional(__S(2144, __c67, 0)),
+        }),
+      ).annotate({ identifier: "JobStatus" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          friendlyName: S.optional(S.String),
+          expirationTime: S.optional(S.String),
+          labels: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({
+        identifier: "DestinationTableProperties",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          createSession: S.optional(S.Boolean),
+          schemaInline: S.optional(S.String),
+          referenceFileSchemaUri: S.optional(S.String),
+          nullMarkers: S.optional(__S(1376, __c43, 0)),
+          preserveAsciiControlCharacters: S.optional(S.Boolean),
+          sourceUris: S.optional(__S(1376, __c43, 0)),
+          skipLeadingRows: S.optional(S.Number),
+          schemaUpdateOptions: S.optional(__S(1376, __c43, 0)),
+          hivePartitioningOptions: S.optional(__S(2337, __c73, 1)),
+          parquetOptions: S.optional(__S(2338, __c73, 2)),
+          projectionFields: S.optional(__S(1376, __c43, 0)),
+          datetimeFormat: S.optional(S.String),
+          jsonExtension: S.optional(S.String),
+          encoding: S.optional(S.String),
+          connectionProperties: S.optional(__S(2509, __c78, 13)),
+          timeZone: S.optional(S.String),
+          allowQuotedNewlines: S.optional(S.Boolean),
+          quote: S.optional(S.String),
+          ignoreUnknownValues: S.optional(S.Boolean),
+          sourceColumnMatch: S.optional(S.String),
+          destinationTableProperties: S.optional(__S(2476, __c77, 12)),
+          destinationTable: S.optional(__S(1856, __c58, 0)),
+          useAvroLogicalTypes: S.optional(S.Boolean),
+          decimalTargetTypes: S.optional(__S(1920, __c60, 0)),
+          autodetect: S.optional(S.Boolean),
+          destinationEncryptionConfiguration: S.optional(__S(1888, __c59, 0)),
+          maxBadRecords: S.optional(S.Number),
+          columnNameCharacterMap: S.optional(S.String),
+          sourceFormat: S.optional(S.String),
+          schemaInlineFormat: S.optional(S.String),
+          nullMarker: S.optional(S.String),
+          copyFilesOnly: S.optional(S.Boolean),
+          clustering: S.optional(__S(2304, __c72, 0)),
+          schema: S.optional(__S(2187, __c68, 11)),
+          timestampFormat: S.optional(S.String),
+          fieldDelimiter: S.optional(S.String),
+          timeFormat: S.optional(S.String),
+          fileSetSpecType: S.optional(S.String),
+          dateFormat: S.optional(S.String),
+          allowJaggedRows: S.optional(S.Boolean),
+          writeDisposition: S.optional(S.String),
+          timePartitioning: S.optional(__S(2305, __c72, 1)),
+          createDisposition: S.optional(S.String),
+          rangePartitioning: S.optional(__S(2307, __c72, 3)),
+          timestampTargetPrecision: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({ identifier: "JobConfigurationLoad" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          createDisposition: S.optional(S.String),
+          operationType: S.optional(S.String),
+          writeDisposition: S.optional(S.String),
+          sourceTables: S.optional(__S(2336, __c73, 0)),
+          sourceTable: S.optional(__S(1856, __c58, 0)),
+          destinationExpirationTime: S.optional(S.String),
+          destinationTable: S.optional(__S(1856, __c58, 0)),
+          destinationEncryptionConfiguration: S.optional(__S(1888, __c59, 0)),
+        }),
+      ).annotate({
+        identifier: "JobConfigurationTableCopy",
+      });
+    case 15:
+      return S.Record(S.String, __S(2019, __c63, 3));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          types: S.optional(__S(2479, __c77, 15)),
+          values: S.optional(__S(2496, __c78, 0)),
+        }),
+      ).annotate({ identifier: "SystemVariables" });
+    case 17:
+      return S.Record(S.String, __S(2351, __c73, 15));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          keyResultStatement: S.optional(S.String),
+          statementByteBudget: S.optional(S.String),
+          statementTimeoutMs: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScriptOptions" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          useLegacySql: S.optional(S.Boolean),
+          defaultDataset: S.optional(__S(1984, __c62, 0)),
+          destinationTable: S.optional(__S(1856, __c58, 0)),
+          maximumBillingTier: S.optional(S.Number),
+          flattenResults: S.optional(S.Boolean),
+          systemVariables: S.optional(__S(2480, __c77, 16)),
+          userDefinedFunctionResources: S.optional(__S(2340, __c73, 4)),
+          schemaUpdateOptions: S.optional(__S(1376, __c43, 0)),
+          createDisposition: S.optional(S.String),
+          rangePartitioning: S.optional(__S(2307, __c72, 3)),
+          connectionProperties: S.optional(__S(2509, __c78, 13)),
+          createSession: S.optional(S.Boolean),
+          continuous: S.optional(S.Boolean),
+          parameterMode: S.optional(S.String),
+          tableDefinitions: S.optional(__S(2481, __c77, 17)),
+          maximumBytesBilled: S.optional(S.String),
+          priority: S.optional(S.String),
+          scriptOptions: S.optional(__S(2482, __c77, 18)),
+          destinationEncryptionConfiguration: S.optional(__S(1888, __c59, 0)),
+          allowLargeResults: S.optional(S.Boolean),
+          queryParameters: S.optional(__S(2506, __c78, 10)),
+          clustering: S.optional(__S(2304, __c72, 0)),
+          secureContext: S.optional(__S(2510, __c78, 14)),
+          writeIncrementalResults: S.optional(S.Boolean),
+          writeDisposition: S.optional(S.String),
+          timePartitioning: S.optional(__S(2305, __c72, 1)),
+          useQueryCache: S.optional(S.Boolean),
+          query: S.optional(S.String),
+          preserveNulls: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "JobConfigurationQuery" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          trialId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ModelExtractOptions" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          modelExtractOptions: S.optional(__S(2484, __c77, 20)),
+          printHeader: S.optional(S.Boolean),
+          sourceModel: S.optional(__S(2125, __c66, 13)),
+          useAvroLogicalTypes: S.optional(S.Boolean),
+          sourceTable: S.optional(__S(1856, __c58, 0)),
+          destinationUris: S.optional(__S(1376, __c43, 0)),
+          destinationFormat: S.optional(S.String),
+          fieldDelimiter: S.optional(S.String),
+          nativeGeographyExportEnabled: S.optional(S.Boolean),
+          compression: S.optional(S.String),
+          destinationUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobConfigurationExtract" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          load: S.optional(__S(2477, __c77, 13)),
+          dryRun: S.optional(S.Boolean),
+          maxSlots: S.optional(S.Number),
+          copy: S.optional(__S(2478, __c77, 14)),
+          labels: S.optional(__S(1824, __c57, 0)),
+          query: S.optional(__S(2483, __c77, 19)),
+          reservation: S.optional(S.String),
+          jobTimeoutMs: S.optional(S.String),
+          jobType: S.optional(S.String),
+          extract: S.optional(__S(2485, __c77, 21)),
+        }),
+      ).annotate({ identifier: "JobConfiguration" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fineGrainedDmlUnusedReason: S.optional(S.String),
+          updatedRowCount: S.optional(S.String),
+          insertedRowCount: S.optional(S.String),
+          dmlMode: S.optional(S.String),
+          deletedRowCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DmlStatistics" });
+    case 2:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(2501, __c78, 5)));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          end: S.optional(S.suspend(() => __S(2501, __c78, 5))),
+          start: S.optional(S.suspend(() => __S(2501, __c78, 5))),
+        }),
+      ).annotate({ identifier: "RangeValue" });
+    case 4:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => __S(2501, __c78, 5)),
+      );
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          arrayValues: S.optional(__S(2498, __c78, 2)),
+          value: S.optional(S.String),
+          rangeValue: S.optional(__S(2499, __c78, 3)),
+          structValues: S.optional(__S(2500, __c78, 4)),
+        }),
+      ).annotate({ identifier: "QueryParameterValue" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.suspend(() => __S(2504, __c78, 8))),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "QueryParameterTypeStructTypesItem",
+      });
+    case 7:
+      return S.Array(__S(2502, __c78, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          timestampPrecision: S.optional(S.String),
+          rangeElementType: S.optional(__S(2504, __c78, 8)),
+          arrayType: S.optional(__S(2504, __c78, 8)),
+          structTypes: S.optional(__S(2503, __c78, 7)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QueryParameterType" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          parameterValue: S.optional(__S(2501, __c78, 5)),
+          parameterType: S.optional(__S(2504, __c78, 8)),
+        }),
+      ).annotate({ identifier: "QueryParameter" });
+    case 10:
+      return S.Array(__S(2505, __c78, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SessionInfo" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectionProperty" });
+    case 13:
+      return S.Array(__S(2508, __c78, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          secureParameterEntries: S.optional(__S(2496, __c78, 0)),
+        }),
+      ).annotate({ identifier: "SecureContext" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobCreationReason" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           autodetect_schema: S.optional(S.Boolean.pipe(T.Query())),
           datasetId: S.String.pipe(T.Label()),
           tableId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(316, __c39, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(798, __c24, 30).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9044,7 +9116,86 @@ function __c47(j: number): any {
       ).annotate({ identifier: "UpdateTablesRequest" });
   }
 }
-
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deleteContents: S.optional(S.Boolean.pipe(T.Query())),
+          datasetId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "projects/{+projectId}/datasets/{+datasetId}",
+            baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDatasetsRequest" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteDatasetsResponse",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          jobId: S.String.pipe(T.Label()),
+          location: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "projects/{+projectId}/jobs/{+jobId}/delete",
+            baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteJobsRequest" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          datasetId: S.String.pipe(T.Label()),
+          modelId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}",
+            baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteModelsRequest" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          routineId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}",
+            baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRoutinesRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -147,7 +147,7 @@ export const getIamPolicyV1beta1: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2, __c0, 2) as any as S.Schema<GetIamPolicyV1beta1Request>,
-  output: __S(7, __c0, 7) as any as S.Schema<Policy>,
+  output: __S(7, __c1, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -161,8 +161,8 @@ export const setIamPolicyV1beta1: API.OperationMethod<
   SetIamPolicyV1beta1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<SetIamPolicyV1beta1Request>,
-  output: __S(7, __c0, 7) as any as S.Schema<Policy>,
+  input: __S(13, __c3, 1) as any as S.Schema<SetIamPolicyV1beta1Request>,
+  output: __S(7, __c1, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -181,8 +181,8 @@ export const testIamPermissionsV1beta1: API.OperationMethod<
   TestIamPermissionsV1beta1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<TestIamPermissionsV1beta1Request>,
-  output: __S(10, __c1, 2) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(17, __c4, 1) as any as S.Schema<TestIamPermissionsV1beta1Request>,
+  output: __S(16, __c4, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -218,7 +218,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyV1beta1Request",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expression: S.optional(S.String),
@@ -227,41 +231,45 @@ function __c0(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(__S(3, __c0, 3)),
-          members: S.optional(__S(4, __c0, 4)),
+          condition: S.optional(__S(4, __c1, 0)),
+          members: S.optional(__S(8, __c2, 0)),
         }),
       ).annotate({ identifier: "Binding" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(5, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(__S(6, __c0, 6)),
+          bindings: S.optional(__S(6, __c1, 2)),
           etag: S.optional(S.String),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Policy" });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(7, __c0, 7)),
+          policy: S.optional(__S(7, __c1, 3)),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -272,19 +280,23 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyV1beta1Request",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(4, __c0, 4)),
+          permissions: S.optional(__S(8, __c2, 0)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -297,7 +309,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

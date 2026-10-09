@@ -123,8 +123,8 @@ export const issueAccessToken: API.OperationMethod<
   IssueAccessTokenError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<IssueAccessTokenRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<IssueAccessTokenResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<IssueAccessTokenRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<IssueAccessTokenResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -140,8 +140,8 @@ export const listAccessTokens: API.PaginatedOperationMethod<
   AccessTokenInfo
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(6, __c0, 6) as any as S.Schema<ListAccessTokensRequest>,
-    output: __S(9, __c1, 1) as any as S.Schema<ListAccessTokensResponse>,
+    input: __S(8, __c2, 0) as any as S.Schema<ListAccessTokensRequest>,
+    output: __S(11, __c2, 3) as any as S.Schema<ListAccessTokensResponse>,
     errors: [UnknownS2Error],
     protocol: S2Protocol,
     retry: Retry.Retry,
@@ -164,8 +164,8 @@ export const revokeAccessToken: API.OperationMethod<
   RevokeAccessTokenError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<RevokeAccessTokenRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<RevokeAccessTokenResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<RevokeAccessTokenRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<RevokeAccessTokenResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -177,6 +177,25 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          auto_prefix_streams: S.optional(S.Boolean),
+          expires_at: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          scope: __S(7, __c1, 3),
+        }).pipe(T.Http({ method: "POST", uri: "/access-tokens", code: 200 })),
+      ).annotate({ identifier: "IssueAccessTokenRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          access_token: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({ identifier: "IssueAccessTokenResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           read: S.optional(S.Boolean),
           write: S.optional(S.Boolean),
         }),
@@ -184,9 +203,9 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          account: S.optional(S.NullOr(__S(0, __c0, 0))),
-          basin: S.optional(S.NullOr(__S(0, __c0, 0))),
-          stream: S.optional(S.NullOr(__S(0, __c0, 0))),
+          account: S.optional(S.NullOr(__S(4, __c1, 0))),
+          basin: S.optional(S.NullOr(__S(4, __c1, 0))),
+          stream: S.optional(S.NullOr(__S(4, __c1, 0))),
         }),
       ).annotate({ identifier: "PermittedOperationGroups" });
     case 2:
@@ -196,27 +215,16 @@ function __c0(j: number): any {
         S.Struct({
           access_tokens: S.optional(S.NullOr(S.Unknown)),
           basins: S.optional(S.NullOr(S.Unknown)),
-          op_groups: S.optional(S.NullOr(__S(1, __c0, 1))),
-          ops: S.optional(S.NullOr(__S(2, __c0, 2))),
+          op_groups: S.optional(S.NullOr(__S(5, __c1, 1))),
+          ops: S.optional(S.NullOr(__S(6, __c1, 2))),
           streams: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "AccessTokenScope" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          auto_prefix_streams: S.optional(S.Boolean),
-          expires_at: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          scope: __S(3, __c0, 3),
-        }).pipe(T.Http({ method: "POST", uri: "/access-tokens", code: 200 })),
-      ).annotate({ identifier: "IssueAccessTokenRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          access_token: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({ identifier: "IssueAccessTokenResponse" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String.pipe(T.Query())),
@@ -224,41 +232,40 @@ function __c0(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/access-tokens", code: 200 })),
       ).annotate({ identifier: "ListAccessTokensRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           auto_prefix_streams: S.Boolean,
           expires_at: S.optional(S.NullOr(S.String)),
           id: S.String,
-          scope: __S(3, __c0, 3),
+          scope: __S(7, __c1, 3),
         }),
       ).annotate({ identifier: "AccessTokenInfo" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          access_tokens: __S(8, __c1, 0),
+          access_tokens: __S(10, __c2, 2),
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "ListAccessTokensResponse" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/access-tokens/{id}", code: 200 })),
       ).annotate({ identifier: "RevokeAccessTokenRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "RevokeAccessTokenResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

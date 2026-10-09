@@ -18339,8 +18339,8 @@ export const addOrganizationMember: API.OperationMethod<
   AddOrganizationMemberError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AddOrganizationMemberRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AddOrganizationMemberResponse>,
+  input: __S(3952, __c247, 0) as any as S.Schema<AddOrganizationMemberRequest>,
+  output: __S(4096, __c256, 0) as any as S.Schema<AddOrganizationMemberResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18354,8 +18354,8 @@ export const addOrganizationMemberTeam: API.OperationMethod<
   AddOrganizationMemberTeamError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<AddOrganizationMemberTeamRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<AddOrganizationMemberTeamResponse>,
+  input: __S(4336, __c271, 0) as any as S.Schema<AddOrganizationMemberTeamRequest>,
+  output: __S(4352, __c272, 0) as any as S.Schema<AddOrganizationMemberTeamResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18369,8 +18369,8 @@ export const addProjectSymbolSource: API.OperationMethod<
   AddProjectSymbolSourceError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<AddProjectSymbolSourceRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<AddProjectSymbolSourceResponse>,
+  input: __S(4545, __c284, 1) as any as S.Schema<AddProjectSymbolSourceRequest>,
+  output: __S(4546, __c284, 2) as any as S.Schema<AddProjectSymbolSourceResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18384,8 +18384,8 @@ export const addProjectTeam: API.OperationMethod<
   AddProjectTeamError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<AddProjectTeamRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AddProjectTeamResponse>,
+  input: __S(4752, __c297, 0) as any as S.Schema<AddProjectTeamRequest>,
+  output: __S(4753, __c297, 1) as any as S.Schema<AddProjectTeamResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18399,8 +18399,8 @@ export const bulkMutateAListOfIssues: API.OperationMethod<
   BulkMutateAListOfIssuesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<BulkMutateAListOfIssuesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<BulkMutateAListOfIssuesResponse>,
+  input: __S(5025, __c314, 1) as any as S.Schema<BulkMutateAListOfIssuesRequest>,
+  output: __S(5026, __c314, 2) as any as S.Schema<BulkMutateAListOfIssuesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18414,8 +18414,8 @@ export const bulkRemoveAListOfIssues: API.OperationMethod<
   BulkRemoveAListOfIssuesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<BulkRemoveAListOfIssuesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<BulkRemoveAListOfIssuesResponse>,
+  input: __S(5440, __c340, 0) as any as S.Schema<BulkRemoveAListOfIssuesRequest>,
+  output: __S(5456, __c341, 0) as any as S.Schema<BulkRemoveAListOfIssuesResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18429,8 +18429,8 @@ export const bulkUpdateProjectEnvironments: API.OperationMethod<
   BulkUpdateProjectEnvironmentsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<BulkUpdateProjectEnvironmentsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<BulkUpdateProjectEnvironmentsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<BulkUpdateProjectEnvironmentsRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<BulkUpdateProjectEnvironmentsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18444,8 +18444,8 @@ export const createACustomInboundFilter: API.OperationMethod<
   CreateACustomInboundFilterError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateACustomInboundFilterRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<CreateACustomInboundFilterResponse>,
+  input: __S(274, __c17, 2) as any as S.Schema<CreateACustomInboundFilterRequest>,
+  output: __S(277, __c17, 5) as any as S.Schema<CreateACustomInboundFilterResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18459,8 +18459,8 @@ export const createAnExternalIssueAndLinkItToAnIssue: API.OperationMethod<
   CreateAnExternalIssueAndLinkItToAnIssueError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CreateAnExternalIssueAndLinkItToAnIssueRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<CreateAnExternalIssueAndLinkItToAnIssueResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<CreateAnExternalIssueAndLinkItToAnIssueRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<CreateAnExternalIssueAndLinkItToAnIssueResponse>,
   errors: [BadRequest, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18479,8 +18479,8 @@ export const createOrganizationDashboard: API.OperationMethod<
   CreateOrganizationDashboardError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateOrganizationDashboardRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<CreateOrganizationDashboardResponse>,
+  input: __S(755, __c47, 3) as any as S.Schema<CreateOrganizationDashboardRequest>,
+  output: __S(762, __c47, 10) as any as S.Schema<CreateOrganizationDashboardResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18498,8 +18498,8 @@ export const createOrganizationDiscoverSavedQuery: API.OperationMethod<
   CreateOrganizationDiscoverSavedQueryError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<CreateOrganizationDiscoverSavedQueryRequest>,
+  output: __S(1123, __c70, 3) as any as S.Schema<CreateOrganizationDiscoverSavedQueryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18513,8 +18513,8 @@ export const createOrganizationExternalUser: API.OperationMethod<
   CreateOrganizationExternalUserError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<CreateOrganizationExternalUserRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateOrganizationExternalUserResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<CreateOrganizationExternalUserRequest>,
+  output: __S(4080, __c255, 0) as any as S.Schema<CreateOrganizationExternalUserResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18528,8 +18528,8 @@ export const createOrganizationForwarding: API.OperationMethod<
   CreateOrganizationForwardingError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CreateOrganizationForwardingRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<CreateOrganizationForwardingResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<CreateOrganizationForwardingRequest>,
+  output: __S(1634, __c102, 2) as any as S.Schema<CreateOrganizationForwardingResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18543,8 +18543,8 @@ export const createOrganizationIssueView: API.OperationMethod<
   CreateOrganizationIssueViewError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<CreateOrganizationIssueViewRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<CreateOrganizationIssueViewResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<CreateOrganizationIssueViewRequest>,
+  output: __S(1857, __c116, 1) as any as S.Schema<CreateOrganizationIssueViewResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18558,8 +18558,8 @@ export const createOrganizationMonitor: API.OperationMethod<
   CreateOrganizationMonitorError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<CreateOrganizationMonitorRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<CreateOrganizationMonitorResponse>,
+  input: __S(2064, __c129, 0) as any as S.Schema<CreateOrganizationMonitorRequest>,
+  output: __S(2066, __c129, 2) as any as S.Schema<CreateOrganizationMonitorResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18573,8 +18573,8 @@ export const createOrganizationNotificationsAction: API.OperationMethod<
   CreateOrganizationNotificationsActionError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<CreateOrganizationNotificationsActionRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<CreateOrganizationNotificationsActionResponse>,
+  input: __S(2304, __c144, 0) as any as S.Schema<CreateOrganizationNotificationsActionRequest>,
+  output: __S(2320, __c145, 0) as any as S.Schema<CreateOrganizationNotificationsActionResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18593,8 +18593,8 @@ export const createOrganizationProject: API.OperationMethod<
   CreateOrganizationProjectError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<CreateOrganizationProjectRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<CreateOrganizationProjectResponse>,
+  input: __S(2496, __c156, 0) as any as S.Schema<CreateOrganizationProjectRequest>,
+  output: __S(2529, __c158, 1) as any as S.Schema<CreateOrganizationProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18612,8 +18612,8 @@ export const createOrganizationProjectDetector: API.OperationMethod<
   CreateOrganizationProjectDetectorError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<CreateOrganizationProjectDetectorRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<CreateOrganizationProjectDetectorResponse>,
+  input: __S(2705, __c169, 1) as any as S.Schema<CreateOrganizationProjectDetectorRequest>,
+  output: __S(2706, __c169, 2) as any as S.Schema<CreateOrganizationProjectDetectorResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18627,8 +18627,8 @@ export const createOrganizationRelease: API.OperationMethod<
   CreateOrganizationReleaseError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<CreateOrganizationReleaseRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<CreateOrganizationReleaseResponse>,
+  input: __S(2880, __c180, 0) as any as S.Schema<CreateOrganizationReleaseRequest>,
+  output: __S(2882, __c180, 2) as any as S.Schema<CreateOrganizationReleaseResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18642,8 +18642,8 @@ export const createOrganizationReleaseDeploy: API.OperationMethod<
   CreateOrganizationReleaseDeployError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<CreateOrganizationReleaseDeployRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<CreateOrganizationReleaseDeployResponse>,
+  input: __S(3104, __c194, 0) as any as S.Schema<CreateOrganizationReleaseDeployRequest>,
+  output: __S(3120, __c195, 0) as any as S.Schema<CreateOrganizationReleaseDeployResponse>,
   errors: [BadRequest, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18657,8 +18657,8 @@ export const createOrganizationTeam: API.OperationMethod<
   CreateOrganizationTeamError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<CreateOrganizationTeamRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<CreateOrganizationTeamResponse>,
+  input: __S(3296, __c206, 0) as any as S.Schema<CreateOrganizationTeamRequest>,
+  output: __S(3299, __c206, 3) as any as S.Schema<CreateOrganizationTeamResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18672,8 +18672,8 @@ export const createOrganizationWorkflow: API.OperationMethod<
   CreateOrganizationWorkflowError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<CreateOrganizationWorkflowRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<CreateOrganizationWorkflowResponse>,
+  input: __S(3523, __c220, 3) as any as S.Schema<CreateOrganizationWorkflowRequest>,
+  output: __S(3527, __c220, 7) as any as S.Schema<CreateOrganizationWorkflowResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18687,8 +18687,8 @@ export const createOrUpdateAnExternalIssue: API.OperationMethod<
   CreateOrUpdateAnExternalIssueError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<CreateOrUpdateAnExternalIssueRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<CreateOrUpdateAnExternalIssueResponse>,
+  input: __S(3568, __c223, 0) as any as S.Schema<CreateOrUpdateAnExternalIssueRequest>,
+  output: __S(3584, __c224, 0) as any as S.Schema<CreateOrUpdateAnExternalIssueResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18702,8 +18702,8 @@ export const createProjectCodeOwners: API.OperationMethod<
   CreateProjectCodeOwnersError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<CreateProjectCodeOwnersRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<CreateProjectCodeOwnersResponse>,
+  input: __S(3600, __c225, 0) as any as S.Schema<CreateProjectCodeOwnersRequest>,
+  output: __S(3601, __c225, 1) as any as S.Schema<CreateProjectCodeOwnersResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18717,8 +18717,8 @@ export const createProjectKey: API.OperationMethod<
   CreateProjectKeyError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<CreateProjectKeyRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<CreateProjectKeyResponse>,
+  input: __S(3632, __c227, 0) as any as S.Schema<CreateProjectKeyRequest>,
+  output: __S(3680, __c230, 0) as any as S.Schema<CreateProjectKeyResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18737,14 +18737,14 @@ export const createProjectPreprodSizeAnalysisSkippedStatusCheck: API.OperationMe
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    179,
-    __c22,
-    3,
+    3712,
+    __c232,
+    0,
   ) as any as S.Schema<CreateProjectPreprodSizeAnalysisSkippedStatusCheckRequest>,
   output: __S(
-    180,
-    __c22,
-    4,
+    3713,
+    __c232,
+    1,
   ) as any as S.Schema<CreateProjectPreprodSizeAnalysisSkippedStatusCheckResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
@@ -18764,14 +18764,14 @@ export const createProjectPreprodSnapshotSkippedStatusCheck: API.OperationMethod
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    181,
-    __c22,
-    5,
+    3728,
+    __c233,
+    0,
   ) as any as S.Schema<CreateProjectPreprodSnapshotSkippedStatusCheckRequest>,
   output: __S(
-    182,
-    __c22,
-    6,
+    3744,
+    __c234,
+    0,
   ) as any as S.Schema<CreateProjectPreprodSnapshotSkippedStatusCheckResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
@@ -18786,8 +18786,8 @@ export const createProjectReplayDeletionJob: API.OperationMethod<
   CreateProjectReplayDeletionJobError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<CreateProjectReplayDeletionJobRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<CreateProjectReplayDeletionJobResponse>,
+  input: __S(3761, __c235, 1) as any as S.Schema<CreateProjectReplayDeletionJobRequest>,
+  output: __S(3776, __c236, 0) as any as S.Schema<CreateProjectReplayDeletionJobResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18801,8 +18801,8 @@ export const createTeamExternalTeam: API.OperationMethod<
   CreateTeamExternalTeamError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<CreateTeamExternalTeamRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateTeamExternalTeamResponse>,
+  input: __S(3808, __c238, 0) as any as S.Schema<CreateTeamExternalTeamRequest>,
+  output: __S(4080, __c255, 0) as any as S.Schema<CreateTeamExternalTeamResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18816,8 +18816,8 @@ export const createTeamProject: API.OperationMethod<
   CreateTeamProjectError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<CreateTeamProjectRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<CreateTeamProjectResponse>,
+  input: __S(3824, __c239, 0) as any as S.Schema<CreateTeamProjectRequest>,
+  output: __S(2529, __c158, 1) as any as S.Schema<CreateTeamProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18831,8 +18831,8 @@ export const deleteACustomInboundFilter: API.OperationMethod<
   DeleteACustomInboundFilterError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<DeleteACustomInboundFilterRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteACustomInboundFilterResponse>,
+  input: __S(3840, __c240, 0) as any as S.Schema<DeleteACustomInboundFilterRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteACustomInboundFilterResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18846,8 +18846,8 @@ export const deleteAnExternalIssue: API.OperationMethod<
   DeleteAnExternalIssueError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<DeleteAnExternalIssueRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<DeleteAnExternalIssueResponse>,
+  input: __S(3856, __c241, 0) as any as S.Schema<DeleteAnExternalIssueRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<DeleteAnExternalIssueResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18861,8 +18861,8 @@ export const deleteOrganizationDashboard: API.OperationMethod<
   DeleteOrganizationDashboardError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DeleteOrganizationDashboardRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationDashboardResponse>,
+  input: __S(3888, __c243, 0) as any as S.Schema<DeleteOrganizationDashboardRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationDashboardResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18876,8 +18876,8 @@ export const deleteOrganizationDetector: API.OperationMethod<
   DeleteOrganizationDetectorError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<DeleteOrganizationDetectorRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationDetectorResponse>,
+  input: __S(3904, __c244, 0) as any as S.Schema<DeleteOrganizationDetectorRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationDetectorResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18891,8 +18891,8 @@ export const deleteOrganizationDetectors: API.OperationMethod<
   DeleteOrganizationDetectorsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<DeleteOrganizationDetectorsRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationDetectorsResponse>,
+  input: __S(3921, __c245, 1) as any as S.Schema<DeleteOrganizationDetectorsRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationDetectorsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18906,8 +18906,8 @@ export const deleteOrganizationDiscoverSavedQuery: API.OperationMethod<
   DeleteOrganizationDiscoverSavedQueryError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<DeleteOrganizationDiscoverSavedQueryRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationDiscoverSavedQueryResponse>,
+  input: __S(3936, __c246, 0) as any as S.Schema<DeleteOrganizationDiscoverSavedQueryRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationDiscoverSavedQueryResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18921,8 +18921,8 @@ export const deleteOrganizationExternalUser: API.OperationMethod<
   DeleteOrganizationExternalUserError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<DeleteOrganizationExternalUserRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationExternalUserResponse>,
+  input: __S(4176, __c261, 0) as any as S.Schema<DeleteOrganizationExternalUserRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationExternalUserResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18936,8 +18936,8 @@ export const deleteOrganizationForwarding: API.OperationMethod<
   DeleteOrganizationForwardingError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<DeleteOrganizationForwardingRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationForwardingResponse>,
+  input: __S(4192, __c262, 0) as any as S.Schema<DeleteOrganizationForwardingRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationForwardingResponse>,
   errors: [Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18951,8 +18951,8 @@ export const deleteOrganizationIntegration: API.OperationMethod<
   DeleteOrganizationIntegrationError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<DeleteOrganizationIntegrationRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationIntegrationResponse>,
+  input: __S(4208, __c263, 0) as any as S.Schema<DeleteOrganizationIntegrationRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationIntegrationResponse>,
   errors: [NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18966,8 +18966,8 @@ export const deleteOrganizationIssue: API.OperationMethod<
   DeleteOrganizationIssueError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<DeleteOrganizationIssueRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteOrganizationIssueResponse>,
+  input: __S(4224, __c264, 0) as any as S.Schema<DeleteOrganizationIssueRequest>,
+  output: __S(5456, __c341, 0) as any as S.Schema<DeleteOrganizationIssueResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -18985,8 +18985,8 @@ export const deleteOrganizationIssueExternalIssue: API.OperationMethod<
   DeleteOrganizationIssueExternalIssueError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<DeleteOrganizationIssueExternalIssueRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationIssueExternalIssueResponse>,
+  input: __S(4240, __c265, 0) as any as S.Schema<DeleteOrganizationIssueExternalIssueRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationIssueExternalIssueResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19000,8 +19000,8 @@ export const deleteOrganizationIssues: API.OperationMethod<
   DeleteOrganizationIssuesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<DeleteOrganizationIssuesRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationIssuesResponse>,
+  input: __S(4257, __c266, 1) as any as S.Schema<DeleteOrganizationIssuesRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationIssuesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19015,8 +19015,8 @@ export const deleteOrganizationMember: API.OperationMethod<
   DeleteOrganizationMemberError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<DeleteOrganizationMemberRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationMemberResponse>,
+  input: __S(4272, __c267, 0) as any as S.Schema<DeleteOrganizationMemberRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationMemberResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19030,8 +19030,8 @@ export const deleteOrganizationMemberTeam: API.OperationMethod<
   DeleteOrganizationMemberTeamError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<DeleteOrganizationMemberTeamRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteOrganizationMemberTeamResponse>,
+  input: __S(4288, __c268, 0) as any as S.Schema<DeleteOrganizationMemberTeamRequest>,
+  output: __S(4352, __c272, 0) as any as S.Schema<DeleteOrganizationMemberTeamResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19045,8 +19045,8 @@ export const deleteOrganizationMonitor: API.OperationMethod<
   DeleteOrganizationMonitorError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<DeleteOrganizationMonitorRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationMonitorResponse>,
+  input: __S(4304, __c269, 0) as any as S.Schema<DeleteOrganizationMonitorRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationMonitorResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19060,8 +19060,8 @@ export const deleteOrganizationNotificationsAction: API.OperationMethod<
   DeleteOrganizationNotificationsActionError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<DeleteOrganizationNotificationsActionRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationNotificationsActionResponse>,
+  input: __S(4320, __c270, 0) as any as S.Schema<DeleteOrganizationNotificationsActionRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationNotificationsActionResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19075,8 +19075,12 @@ export const deleteOrganizationPreprodArtifactSnapshot: API.OperationMethod<
   DeleteOrganizationPreprodArtifactSnapshotError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<DeleteOrganizationPreprodArtifactSnapshotRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationPreprodArtifactSnapshotResponse>,
+  input: __S(4384, __c274, 0) as any as S.Schema<DeleteOrganizationPreprodArtifactSnapshotRequest>,
+  output: __S(
+    3744,
+    __c234,
+    0,
+  ) as any as S.Schema<DeleteOrganizationPreprodArtifactSnapshotResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19090,8 +19094,8 @@ export const deleteOrganizationRelease: API.OperationMethod<
   DeleteOrganizationReleaseError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<DeleteOrganizationReleaseRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationReleaseResponse>,
+  input: __S(4400, __c275, 0) as any as S.Schema<DeleteOrganizationReleaseRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationReleaseResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19105,8 +19109,8 @@ export const deleteOrganizationReleaseFile: API.OperationMethod<
   DeleteOrganizationReleaseFileError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<DeleteOrganizationReleaseFileRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationReleaseFileResponse>,
+  input: __S(4416, __c276, 0) as any as S.Schema<DeleteOrganizationReleaseFileRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationReleaseFileResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19120,8 +19124,8 @@ export const deleteOrganizationScimV2Group: API.OperationMethod<
   DeleteOrganizationScimV2GroupError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<DeleteOrganizationScimV2GroupRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationScimV2GroupResponse>,
+  input: __S(4432, __c277, 0) as any as S.Schema<DeleteOrganizationScimV2GroupRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationScimV2GroupResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19135,8 +19139,8 @@ export const deleteOrganizationScimV2User: API.OperationMethod<
   DeleteOrganizationScimV2UserError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<DeleteOrganizationScimV2UserRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationScimV2UserResponse>,
+  input: __S(4448, __c278, 0) as any as S.Schema<DeleteOrganizationScimV2UserRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationScimV2UserResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19150,8 +19154,8 @@ export const deleteOrganizationWorkflow: API.OperationMethod<
   DeleteOrganizationWorkflowError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<DeleteOrganizationWorkflowRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationWorkflowResponse>,
+  input: __S(4464, __c279, 0) as any as S.Schema<DeleteOrganizationWorkflowRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationWorkflowResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19165,8 +19169,8 @@ export const deleteOrganizationWorkflows: API.OperationMethod<
   DeleteOrganizationWorkflowsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<DeleteOrganizationWorkflowsRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteOrganizationWorkflowsResponse>,
+  input: __S(4481, __c280, 1) as any as S.Schema<DeleteOrganizationWorkflowsRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteOrganizationWorkflowsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19180,8 +19184,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<DeleteProjectResponse>,
+  input: __S(4496, __c281, 0) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<DeleteProjectResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19195,8 +19199,8 @@ export const deleteProjectCodeOwners: API.OperationMethod<
   DeleteProjectCodeOwnersError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<DeleteProjectCodeOwnersRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteProjectCodeOwnersResponse>,
+  input: __S(4512, __c282, 0) as any as S.Schema<DeleteProjectCodeOwnersRequest>,
+  output: __S(5456, __c341, 0) as any as S.Schema<DeleteProjectCodeOwnersResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19210,8 +19214,8 @@ export const deleteProjectKey: API.OperationMethod<
   DeleteProjectKeyError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<DeleteProjectKeyRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<DeleteProjectKeyResponse>,
+  input: __S(4528, __c283, 0) as any as S.Schema<DeleteProjectKeyRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<DeleteProjectKeyResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19225,8 +19229,8 @@ export const deleteProjectMonitor: API.OperationMethod<
   DeleteProjectMonitorError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<DeleteProjectMonitorRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<DeleteProjectMonitorResponse>,
+  input: __S(4592, __c287, 0) as any as S.Schema<DeleteProjectMonitorRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<DeleteProjectMonitorResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19240,8 +19244,8 @@ export const deleteProjectReleaseFile: API.OperationMethod<
   DeleteProjectReleaseFileError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<DeleteProjectReleaseFileRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteProjectReleaseFileResponse>,
+  input: __S(4608, __c288, 0) as any as S.Schema<DeleteProjectReleaseFileRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteProjectReleaseFileResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19255,8 +19259,8 @@ export const deleteProjectReplay: API.OperationMethod<
   DeleteProjectReplayError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<DeleteProjectReplayRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<DeleteProjectReplayResponse>,
+  input: __S(4624, __c289, 0) as any as S.Schema<DeleteProjectReplayRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<DeleteProjectReplayResponse>,
   errors: [NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19270,8 +19274,8 @@ export const deleteProjectSymbolSource: API.OperationMethod<
   DeleteProjectSymbolSourceError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<DeleteProjectSymbolSourceRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<DeleteProjectSymbolSourceResponse>,
+  input: __S(4640, __c290, 0) as any as S.Schema<DeleteProjectSymbolSourceRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<DeleteProjectSymbolSourceResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19285,8 +19289,8 @@ export const deleteProjectTeam: API.OperationMethod<
   DeleteProjectTeamError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<DeleteProjectTeamRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<DeleteProjectTeamResponse>,
+  input: __S(4656, __c291, 0) as any as S.Schema<DeleteProjectTeamRequest>,
+  output: __S(4657, __c291, 1) as any as S.Schema<DeleteProjectTeamResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19300,8 +19304,8 @@ export const deleteSentryApp: API.OperationMethod<
   DeleteSentryAppError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<DeleteSentryAppRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<DeleteSentryAppResponse>,
+  input: __S(4672, __c292, 0) as any as S.Schema<DeleteSentryAppRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<DeleteSentryAppResponse>,
   errors: [Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19315,8 +19319,8 @@ export const deleteTeam: API.OperationMethod<
   DeleteTeamError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<DeleteTeamRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<DeleteTeamResponse>,
+  input: __S(4688, __c293, 0) as any as S.Schema<DeleteTeamRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<DeleteTeamResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19330,8 +19334,8 @@ export const deleteTeamExternalTeam: API.OperationMethod<
   DeleteTeamExternalTeamError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<DeleteTeamExternalTeamRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<DeleteTeamExternalTeamResponse>,
+  input: __S(4704, __c294, 0) as any as S.Schema<DeleteTeamExternalTeamRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<DeleteTeamExternalTeamResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19345,8 +19349,8 @@ export const disableSpikeProtection: API.OperationMethod<
   DisableSpikeProtectionError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<DisableSpikeProtectionRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<DisableSpikeProtectionResponse>,
+  input: __S(4720, __c295, 0) as any as S.Schema<DisableSpikeProtectionRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<DisableSpikeProtectionResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19360,8 +19364,8 @@ export const enableSpikeProtection: API.OperationMethod<
   EnableSpikeProtectionError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<EnableSpikeProtectionRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<EnableSpikeProtectionResponse>,
+  input: __S(4736, __c296, 0) as any as S.Schema<EnableSpikeProtectionRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<EnableSpikeProtectionResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19381,14 +19385,14 @@ export const executeSentryAppInstallationExternalIssueAction: API.OperationMetho
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    230,
-    __c28,
-    6,
+    4784,
+    __c299,
+    0,
   ) as any as S.Schema<ExecuteSentryAppInstallationExternalIssueActionRequest>,
   output: __S(
-    159,
-    __c19,
-    7,
+    3584,
+    __c224,
+    0,
   ) as any as S.Schema<ExecuteSentryAppInstallationExternalIssueActionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownSentryError],
   protocol: SentryProtocol,
@@ -19403,8 +19407,8 @@ export const getACustomInboundFilter: API.OperationMethod<
   GetACustomInboundFilterError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<GetACustomInboundFilterRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<GetACustomInboundFilterResponse>,
+  input: __S(4800, __c300, 0) as any as S.Schema<GetACustomInboundFilterRequest>,
+  output: __S(4803, __c300, 3) as any as S.Schema<GetACustomInboundFilterResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19422,8 +19426,8 @@ export const getAnIntegrationSIssueConfigForAnIssue: API.OperationMethod<
   GetAnIntegrationSIssueConfigForAnIssueError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponse>,
+  input: __S(4816, __c301, 0) as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueRequest>,
+  output: __S(4818, __c301, 2) as any as S.Schema<GetAnIntegrationSIssueConfigForAnIssueResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19437,8 +19441,8 @@ export const getAServiceHook: API.OperationMethod<
   GetAServiceHookError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<GetAServiceHookRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<GetAServiceHookResponse>,
+  input: __S(4880, __c305, 0) as any as S.Schema<GetAServiceHookRequest>,
+  output: __S(4881, __c305, 1) as any as S.Schema<GetAServiceHookResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19452,8 +19456,8 @@ export const getFilesChangedInAReleaseSCommits: API.OperationMethod<
   GetFilesChangedInAReleaseSCommitsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<GetFilesChangedInAReleaseSCommitsRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<GetFilesChangedInAReleaseSCommitsResponse>,
+  input: __S(4896, __c306, 0) as any as S.Schema<GetFilesChangedInAReleaseSCommitsRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<GetFilesChangedInAReleaseSCommitsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19467,8 +19471,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<GetOrganizationResponse>,
+  input: __S(4912, __c307, 0) as any as S.Schema<GetOrganizationRequest>,
+  output: __S(4913, __c307, 1) as any as S.Schema<GetOrganizationResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19482,8 +19486,8 @@ export const getOrganizationAIConversation: API.OperationMethod<
   GetOrganizationAIConversationError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<GetOrganizationAIConversationRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<GetOrganizationAIConversationResponse>,
+  input: __S(4945, __c309, 1) as any as S.Schema<GetOrganizationAIConversationRequest>,
+  output: __S(4949, __c309, 5) as any as S.Schema<GetOrganizationAIConversationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19497,8 +19501,8 @@ export const getOrganizationConfigIntegrations: API.OperationMethod<
   GetOrganizationConfigIntegrationsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<GetOrganizationConfigIntegrationsRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<GetOrganizationConfigIntegrationsResponse>,
+  input: __S(4976, __c311, 0) as any as S.Schema<GetOrganizationConfigIntegrationsRequest>,
+  output: __S(4979, __c311, 3) as any as S.Schema<GetOrganizationConfigIntegrationsResponse>,
   errors: [NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19512,8 +19516,8 @@ export const getOrganizationDashboard: API.OperationMethod<
   GetOrganizationDashboardError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<GetOrganizationDashboardRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<GetOrganizationDashboardResponse>,
+  input: __S(4992, __c312, 0) as any as S.Schema<GetOrganizationDashboardRequest>,
+  output: __S(5002, __c312, 10) as any as S.Schema<GetOrganizationDashboardResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19527,8 +19531,8 @@ export const getOrganizationDetector: API.OperationMethod<
   GetOrganizationDetectorError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<GetOrganizationDetectorRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<GetOrganizationDetectorResponse>,
+  input: __S(5008, __c313, 0) as any as S.Schema<GetOrganizationDetectorRequest>,
+  output: __S(5009, __c313, 1) as any as S.Schema<GetOrganizationDetectorResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19542,8 +19546,8 @@ export const getOrganizationDiscoverSavedQuery: API.OperationMethod<
   GetOrganizationDiscoverSavedQueryError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<GetOrganizationDiscoverSavedQueryRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponse>,
+  input: __S(5040, __c315, 0) as any as S.Schema<GetOrganizationDiscoverSavedQueryRequest>,
+  output: __S(5041, __c315, 1) as any as S.Schema<GetOrganizationDiscoverSavedQueryResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19557,8 +19561,8 @@ export const getOrganizationIntegration: API.OperationMethod<
   GetOrganizationIntegrationError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<GetOrganizationIntegrationRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<GetOrganizationIntegrationResponse>,
+  input: __S(5072, __c317, 0) as any as S.Schema<GetOrganizationIntegrationRequest>,
+  output: __S(5074, __c317, 2) as any as S.Schema<GetOrganizationIntegrationResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19572,8 +19576,8 @@ export const getOrganizationIssue: API.OperationMethod<
   GetOrganizationIssueError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<GetOrganizationIssueRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<GetOrganizationIssueResponse>,
+  input: __S(5088, __c318, 0) as any as S.Schema<GetOrganizationIssueRequest>,
+  output: __S(5093, __c318, 5) as any as S.Schema<GetOrganizationIssueResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19587,8 +19591,8 @@ export const getOrganizationIssueAutofixState: API.OperationMethod<
   GetOrganizationIssueAutofixStateError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<GetOrganizationIssueAutofixStateRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GetOrganizationIssueAutofixStateResponse>,
+  input: __S(5184, __c324, 0) as any as S.Schema<GetOrganizationIssueAutofixStateRequest>,
+  output: __S(5185, __c324, 1) as any as S.Schema<GetOrganizationIssueAutofixStateResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19602,8 +19606,8 @@ export const getOrganizationIssueEvent: API.OperationMethod<
   GetOrganizationIssueEventError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<GetOrganizationIssueEventRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<GetOrganizationIssueEventResponse>,
+  input: __S(5216, __c326, 0) as any as S.Schema<GetOrganizationIssueEventRequest>,
+  output: __S(5217, __c326, 1) as any as S.Schema<GetOrganizationIssueEventResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19617,8 +19621,8 @@ export const getOrganizationIssueTag: API.OperationMethod<
   GetOrganizationIssueTagError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<GetOrganizationIssueTagRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<GetOrganizationIssueTagResponse>,
+  input: __S(5280, __c330, 0) as any as S.Schema<GetOrganizationIssueTagRequest>,
+  output: __S(5312, __c332, 0) as any as S.Schema<GetOrganizationIssueTagResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19632,8 +19636,8 @@ export const getOrganizationMember: API.OperationMethod<
   GetOrganizationMemberError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<GetOrganizationMemberRequest>,
-  output: __S(328, __c41, 0) as any as S.Schema<GetOrganizationMemberResponse>,
+  input: __S(5328, __c333, 0) as any as S.Schema<GetOrganizationMemberRequest>,
+  output: __S(5362, __c335, 2) as any as S.Schema<GetOrganizationMemberResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19647,8 +19651,8 @@ export const getOrganizationMonitor: API.OperationMethod<
   GetOrganizationMonitorError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<GetOrganizationMonitorRequest>,
-  output: __S(331, __c41, 3) as any as S.Schema<GetOrganizationMonitorResponse>,
+  input: __S(5376, __c336, 0) as any as S.Schema<GetOrganizationMonitorRequest>,
+  output: __S(5378, __c336, 2) as any as S.Schema<GetOrganizationMonitorResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19662,8 +19666,8 @@ export const getOrganizationNotificationsAction: API.OperationMethod<
   GetOrganizationNotificationsActionError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<GetOrganizationNotificationsActionRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<GetOrganizationNotificationsActionResponse>,
+  input: __S(5392, __c337, 0) as any as S.Schema<GetOrganizationNotificationsActionRequest>,
+  output: __S(2320, __c145, 0) as any as S.Schema<GetOrganizationNotificationsActionResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19680,11 +19684,15 @@ export const getOrganizationPreprodArtifactInstallDetails: API.OperationMethod<
   GetOrganizationPreprodArtifactInstallDetailsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<GetOrganizationPreprodArtifactInstallDetailsRequest>,
-  output: __S(
-    336,
-    __c42,
+  input: __S(
+    5408,
+    __c338,
     0,
+  ) as any as S.Schema<GetOrganizationPreprodArtifactInstallDetailsRequest>,
+  output: __S(
+    5409,
+    __c338,
+    1,
   ) as any as S.Schema<GetOrganizationPreprodArtifactInstallDetailsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
@@ -19703,8 +19711,12 @@ export const getOrganizationPreprodArtifactSizeAnalysis: API.OperationMethod<
   GetOrganizationPreprodArtifactSizeAnalysisError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponse>,
+  input: __S(5472, __c342, 0) as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisRequest>,
+  output: __S(
+    5484,
+    __c342,
+    12,
+  ) as any as S.Schema<GetOrganizationPreprodArtifactSizeAnalysisResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19718,8 +19730,8 @@ export const getOrganizationPreprodArtifactSnapshot: API.OperationMethod<
   GetOrganizationPreprodArtifactSnapshotError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponse>,
+  input: __S(5488, __c343, 0) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotRequest>,
+  output: __S(5499, __c343, 11) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19733,11 +19745,15 @@ export const getOrganizationPreprodArtifactSnapshotImage: API.OperationMethod<
   GetOrganizationPreprodArtifactSnapshotImageError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotImageRequest>,
+  input: __S(
+    5504,
+    __c344,
+    0,
+  ) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotImageRequest>,
   output: __S(
-    365,
-    __c45,
-    5,
+    5507,
+    __c344,
+    3,
   ) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotImageResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
@@ -19757,14 +19773,14 @@ export const getOrganizationPreprodArtifactSnapshotLatestBase: API.OperationMeth
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    366,
-    __c45,
-    6,
+    5520,
+    __c345,
+    0,
   ) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotLatestBaseRequest>,
   output: __S(
-    370,
-    __c46,
-    2,
+    5524,
+    __c345,
+    4,
   ) as any as S.Schema<GetOrganizationPreprodArtifactSnapshotLatestBaseResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
@@ -19779,8 +19795,8 @@ export const getOrganizationProfilingFlamegraph: API.OperationMethod<
   GetOrganizationProfilingFlamegraphError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<GetOrganizationProfilingFlamegraphRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<GetOrganizationProfilingFlamegraphResponse>,
+  input: __S(5537, __c346, 1) as any as S.Schema<GetOrganizationProfilingFlamegraphRequest>,
+  output: __S(5552, __c347, 0) as any as S.Schema<GetOrganizationProfilingFlamegraphResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19794,8 +19810,8 @@ export const getOrganizationRelease: API.OperationMethod<
   GetOrganizationReleaseError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<GetOrganizationReleaseRequest>,
-  output: __S(379, __c47, 3) as any as S.Schema<GetOrganizationReleaseResponse>,
+  input: __S(5568, __c348, 0) as any as S.Schema<GetOrganizationReleaseRequest>,
+  output: __S(5573, __c348, 5) as any as S.Schema<GetOrganizationReleaseResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19809,8 +19825,8 @@ export const getOrganizationReleaseFile: API.OperationMethod<
   GetOrganizationReleaseFileError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<GetOrganizationReleaseFileRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<GetOrganizationReleaseFileResponse>,
+  input: __S(5584, __c349, 0) as any as S.Schema<GetOrganizationReleaseFileRequest>,
+  output: __S(5600, __c350, 0) as any as S.Schema<GetOrganizationReleaseFileResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19824,8 +19840,8 @@ export const getOrganizationReplay: API.OperationMethod<
   GetOrganizationReplayError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<GetOrganizationReplayRequest>,
-  output: __S(391, __c48, 7) as any as S.Schema<GetOrganizationReplayResponse>,
+  input: __S(5617, __c351, 1) as any as S.Schema<GetOrganizationReplayRequest>,
+  output: __S(5619, __c351, 3) as any as S.Schema<GetOrganizationReplayResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19839,8 +19855,8 @@ export const getOrganizationReplayCount: API.OperationMethod<
   GetOrganizationReplayCountError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<GetOrganizationReplayCountRequest>,
-  output: __S(394, __c49, 2) as any as S.Schema<GetOrganizationReplayCountResponse>,
+  input: __S(5649, __c353, 1) as any as S.Schema<GetOrganizationReplayCountRequest>,
+  output: __S(5650, __c353, 2) as any as S.Schema<GetOrganizationReplayCountResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19854,8 +19870,8 @@ export const getOrganizationScimV2Group: API.OperationMethod<
   GetOrganizationScimV2GroupError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<GetOrganizationScimV2GroupRequest>,
-  output: __S(399, __c49, 7) as any as S.Schema<GetOrganizationScimV2GroupResponse>,
+  input: __S(5664, __c354, 0) as any as S.Schema<GetOrganizationScimV2GroupRequest>,
+  output: __S(5698, __c356, 2) as any as S.Schema<GetOrganizationScimV2GroupResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19869,8 +19885,8 @@ export const getOrganizationScimV2ResourceType: API.OperationMethod<
   GetOrganizationScimV2ResourceTypeError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<GetOrganizationScimV2ResourceTypeRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<GetOrganizationScimV2ResourceTypeResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetOrganizationScimV2ResourceTypeRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<GetOrganizationScimV2ResourceTypeResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19884,8 +19900,8 @@ export const getOrganizationScimV2Schema: API.OperationMethod<
   GetOrganizationScimV2SchemaError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<GetOrganizationScimV2SchemaRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<GetOrganizationScimV2SchemaResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetOrganizationScimV2SchemaRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<GetOrganizationScimV2SchemaResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19899,8 +19915,8 @@ export const getOrganizationScimV2ServiceProviderConfig: API.OperationMethod<
   GetOrganizationScimV2ServiceProviderConfigError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<GetOrganizationScimV2ServiceProviderConfigRequest>,
-  output: __S(411, __c51, 3) as any as S.Schema<GetOrganizationScimV2ServiceProviderConfigResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetOrganizationScimV2ServiceProviderConfigRequest>,
+  output: __S(102, __c6, 6) as any as S.Schema<GetOrganizationScimV2ServiceProviderConfigResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19914,8 +19930,8 @@ export const getOrganizationScimV2User: API.OperationMethod<
   GetOrganizationScimV2UserError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<GetOrganizationScimV2UserRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<GetOrganizationScimV2UserResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetOrganizationScimV2UserRequest>,
+  output: __S(131, __c8, 3) as any as S.Schema<GetOrganizationScimV2UserResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19929,8 +19945,8 @@ export const getOrganizationSessions: API.OperationMethod<
   GetOrganizationSessionsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<GetOrganizationSessionsRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<GetOrganizationSessionsResponse>,
+  input: __S(145, __c9, 1) as any as S.Schema<GetOrganizationSessionsRequest>,
+  output: __S(152, __c9, 8) as any as S.Schema<GetOrganizationSessionsResponse>,
   errors: [BadRequest, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19944,8 +19960,8 @@ export const getOrganizationStatsSummary: API.OperationMethod<
   GetOrganizationStatsSummaryError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<GetOrganizationStatsSummaryRequest>,
-  output: __S(429, __c53, 5) as any as S.Schema<GetOrganizationStatsSummaryResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetOrganizationStatsSummaryRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<GetOrganizationStatsSummaryResponse>,
   errors: [NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19959,8 +19975,8 @@ export const getOrganizationTrace: API.OperationMethod<
   GetOrganizationTraceError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<GetOrganizationTraceRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<GetOrganizationTraceResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetOrganizationTraceRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<GetOrganizationTraceResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19974,8 +19990,8 @@ export const getOrganizationTraceMeta: API.OperationMethod<
   GetOrganizationTraceMetaError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<GetOrganizationTraceMetaRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<GetOrganizationTraceMetaResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetOrganizationTraceMetaRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<GetOrganizationTraceMetaResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -19989,8 +20005,8 @@ export const getOrganizationWorkflow: API.OperationMethod<
   GetOrganizationWorkflowError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<GetOrganizationWorkflowRequest>,
-  output: __S(439, __c54, 7) as any as S.Schema<GetOrganizationWorkflowResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetOrganizationWorkflowRequest>,
+  output: __S(212, __c13, 4) as any as S.Schema<GetOrganizationWorkflowResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20004,8 +20020,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<GetProjectRequest>,
-  output: __S(445, __c55, 5) as any as S.Schema<GetProjectResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<GetProjectResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20019,8 +20035,8 @@ export const getProjectCodeOwners: API.OperationMethod<
   GetProjectCodeOwnersError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<GetProjectCodeOwnersRequest>,
-  output: __S(447, __c55, 7) as any as S.Schema<GetProjectCodeOwnersResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetProjectCodeOwnersRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetProjectCodeOwnersResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20034,8 +20050,8 @@ export const getProjectEnvironment: API.OperationMethod<
   GetProjectEnvironmentError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<GetProjectEnvironmentRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetProjectEnvironmentResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetProjectEnvironmentRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<GetProjectEnvironmentResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20049,8 +20065,8 @@ export const getProjectEvent: API.OperationMethod<
   GetProjectEventError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<GetProjectEventRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<GetProjectEventResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetProjectEventRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<GetProjectEventResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20064,8 +20080,8 @@ export const getProjectEventAttachment: API.OperationMethod<
   GetProjectEventAttachmentError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<GetProjectEventAttachmentRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<GetProjectEventAttachmentResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetProjectEventAttachmentRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<GetProjectEventAttachmentResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20079,8 +20095,8 @@ export const getProjectEventSourceMapDebug: API.OperationMethod<
   GetProjectEventSourceMapDebugError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<GetProjectEventSourceMapDebugRequest>,
-  output: __S(462, __c57, 6) as any as S.Schema<GetProjectEventSourceMapDebugResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetProjectEventSourceMapDebugRequest>,
+  output: __S(392, __c24, 8) as any as S.Schema<GetProjectEventSourceMapDebugResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20094,8 +20110,8 @@ export const getProjectInstallableBuildLatest: API.OperationMethod<
   GetProjectInstallableBuildLatestError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<GetProjectInstallableBuildLatestRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<GetProjectInstallableBuildLatestResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetProjectInstallableBuildLatestRequest>,
+  output: __S(402, __c25, 2) as any as S.Schema<GetProjectInstallableBuildLatestResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20109,8 +20125,8 @@ export const getProjectKey: API.OperationMethod<
   GetProjectKeyError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<GetProjectKeyRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<GetProjectKeyResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetProjectKeyRequest>,
+  output: __S(3680, __c230, 0) as any as S.Schema<GetProjectKeyResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20124,8 +20140,8 @@ export const getProjectMonitor: API.OperationMethod<
   GetProjectMonitorError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<GetProjectMonitorRequest>,
-  output: __S(469, __c58, 5) as any as S.Schema<GetProjectMonitorResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetProjectMonitorRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<GetProjectMonitorResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20139,8 +20155,8 @@ export const getProjectOwnership: API.OperationMethod<
   GetProjectOwnershipError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<GetProjectOwnershipRequest>,
-  output: __S(471, __c58, 7) as any as S.Schema<GetProjectOwnershipResponse>,
+  input: __S(454, __c28, 6) as any as S.Schema<GetProjectOwnershipRequest>,
+  output: __S(455, __c28, 7) as any as S.Schema<GetProjectOwnershipResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20158,13 +20174,13 @@ export const getProjectPreprodSizeAnalysisStatusCheckRules: API.OperationMethod<
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    472,
-    __c59,
+    464,
+    __c29,
     0,
   ) as any as S.Schema<GetProjectPreprodSizeAnalysisStatusCheckRulesRequest>,
   output: __S(
-    479,
-    __c59,
+    471,
+    __c29,
     7,
   ) as any as S.Schema<GetProjectPreprodSizeAnalysisStatusCheckRulesResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
@@ -20180,8 +20196,8 @@ export const getProjectPreprodSnapshotStatusCheckRules: API.OperationMethod<
   GetProjectPreprodSnapshotStatusCheckRulesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<GetProjectPreprodSnapshotStatusCheckRulesRequest>,
-  output: __S(482, __c60, 2) as any as S.Schema<GetProjectPreprodSnapshotStatusCheckRulesResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetProjectPreprodSnapshotStatusCheckRulesRequest>,
+  output: __S(514, __c32, 2) as any as S.Schema<GetProjectPreprodSnapshotStatusCheckRulesResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20195,8 +20211,8 @@ export const getProjectProfilingProfile: API.OperationMethod<
   GetProjectProfilingProfileError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<GetProjectProfilingProfileRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<GetProjectProfilingProfileResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetProjectProfilingProfileRequest>,
+  output: __S(5552, __c347, 0) as any as S.Schema<GetProjectProfilingProfileResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20210,8 +20226,8 @@ export const getProjectReleaseFile: API.OperationMethod<
   GetProjectReleaseFileError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<GetProjectReleaseFileRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<GetProjectReleaseFileResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetProjectReleaseFileRequest>,
+  output: __S(5600, __c350, 0) as any as S.Schema<GetProjectReleaseFileResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20225,8 +20241,8 @@ export const getProjectReplayDeletionJob: API.OperationMethod<
   GetProjectReplayDeletionJobError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485, __c60, 5) as any as S.Schema<GetProjectReplayDeletionJobRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<GetProjectReplayDeletionJobResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetProjectReplayDeletionJobRequest>,
+  output: __S(3776, __c236, 0) as any as S.Schema<GetProjectReplayDeletionJobResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20244,8 +20260,8 @@ export const getProjectReplayRecordingSegment: API.OperationMethod<
   GetProjectReplayRecordingSegmentError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(486, __c60, 6) as any as S.Schema<GetProjectReplayRecordingSegmentRequest>,
-  output: __S(488, __c61, 0) as any as S.Schema<GetProjectReplayRecordingSegmentResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetProjectReplayRecordingSegmentRequest>,
+  output: __S(578, __c36, 2) as any as S.Schema<GetProjectReplayRecordingSegmentResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20259,8 +20275,8 @@ export const getSentryApp: API.OperationMethod<
   GetSentryAppError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<GetSentryAppRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<GetSentryAppResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetSentryAppRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<GetSentryAppResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20279,14 +20295,14 @@ export const getSentryAppInstallationExternalRequestOptions: API.OperationMethod
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    494,
-    __c61,
-    6,
+    656,
+    __c41,
+    0,
   ) as any as S.Schema<GetSentryAppInstallationExternalRequestOptionsRequest>,
   output: __S(
-    496,
-    __c62,
-    0,
+    657,
+    __c41,
+    1,
   ) as any as S.Schema<GetSentryAppInstallationExternalRequestOptionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
@@ -20301,8 +20317,8 @@ export const getTeam: API.OperationMethod<
   GetTeamError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c62, 1) as any as S.Schema<GetTeamRequest>,
-  output: __S(498, __c62, 2) as any as S.Schema<GetTeamResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetTeamRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<GetTeamResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20316,8 +20332,8 @@ export const getTraceItemStatistics: API.OperationMethod<
   GetTraceItemStatisticsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(500, __c62, 4) as any as S.Schema<GetTraceItemStatisticsRequest>,
-  output: __S(507, __c63, 3) as any as S.Schema<GetTraceItemStatisticsResponse>,
+  input: __S(721, __c45, 1) as any as S.Schema<GetTraceItemStatisticsRequest>,
+  output: __S(728, __c45, 8) as any as S.Schema<GetTraceItemStatisticsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20335,8 +20351,8 @@ export const linkAnExistingExternalIssueToAnIssue: API.OperationMethod<
   LinkAnExistingExternalIssueToAnIssueError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(508, __c63, 4) as any as S.Schema<LinkAnExistingExternalIssueToAnIssueRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<LinkAnExistingExternalIssueToAnIssueResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<LinkAnExistingExternalIssueToAnIssueRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<LinkAnExistingExternalIssueToAnIssueResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20350,8 +20366,8 @@ export const linkProjectRepository: API.OperationMethod<
   LinkProjectRepositoryError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(509, __c63, 5) as any as S.Schema<LinkProjectRepositoryRequest>,
-  output: __S(510, __c63, 6) as any as S.Schema<LinkProjectRepositoryResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<LinkProjectRepositoryRequest>,
+  output: __S(881, __c55, 1) as any as S.Schema<LinkProjectRepositoryResponse>,
   errors: [BadRequest, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20369,14 +20385,14 @@ export const listAnOrganizationSIntegrationPlatformInstallations: API.OperationM
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    511,
-    __c63,
-    7,
+    896,
+    __c56,
+    0,
   ) as any as S.Schema<ListAnOrganizationSIntegrationPlatformInstallationsRequest>,
   output: __S(
-    516,
-    __c64,
-    4,
+    901,
+    __c56,
+    5,
   ) as any as S.Schema<ListAnOrganizationSIntegrationPlatformInstallationsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
@@ -20395,8 +20411,8 @@ export const listAProjectSCustomInboundFilters: API.OperationMethod<
   ListAProjectSCustomInboundFiltersError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(517, __c64, 5) as any as S.Schema<ListAProjectSCustomInboundFiltersRequest>,
-  output: __S(522, __c65, 2) as any as S.Schema<ListAProjectSCustomInboundFiltersResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListAProjectSCustomInboundFiltersRequest>,
+  output: __S(917, __c57, 5) as any as S.Schema<ListAProjectSCustomInboundFiltersResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20410,8 +20426,8 @@ export const listAProjectSServiceHooks: API.OperationMethod<
   ListAProjectSServiceHooksError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(523, __c65, 3) as any as S.Schema<ListAProjectSServiceHooksRequest>,
-  output: __S(526, __c65, 6) as any as S.Schema<ListAProjectSServiceHooksResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListAProjectSServiceHooksRequest>,
+  output: __S(930, __c58, 2) as any as S.Schema<ListAProjectSServiceHooksResponse>,
   errors: [Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20425,8 +20441,8 @@ export const listAProjectSUserFeedback: API.OperationMethod<
   ListAProjectSUserFeedbackError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(527, __c65, 7) as any as S.Schema<ListAProjectSUserFeedbackRequest>,
-  output: __S(531, __c66, 3) as any as S.Schema<ListAProjectSUserFeedbackResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListAProjectSUserFeedbackRequest>,
+  output: __S(964, __c60, 4) as any as S.Schema<ListAProjectSUserFeedbackResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20440,8 +20456,8 @@ export const listATagSValues: API.OperationMethod<
   ListATagSValuesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(532, __c66, 4) as any as S.Schema<ListATagSValuesRequest>,
-  output: __S(535, __c66, 7) as any as S.Schema<ListATagSValuesResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListATagSValuesRequest>,
+  output: __S(979, __c61, 3) as any as S.Schema<ListATagSValuesResponse>,
   errors: [Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20459,8 +20475,8 @@ export const listOrganizationAIConversations: API.OperationMethod<
   ListOrganizationAIConversationsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<ListOrganizationAIConversationsRequest>,
-  output: __S(541, __c67, 5) as any as S.Schema<ListOrganizationAIConversationsResponse>,
+  input: __S(993, __c62, 1) as any as S.Schema<ListOrganizationAIConversationsRequest>,
+  output: __S(997, __c62, 5) as any as S.Schema<ListOrganizationAIConversationsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20474,8 +20490,8 @@ export const listOrganizationDashboards: API.OperationMethod<
   ListOrganizationDashboardsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(542, __c67, 6) as any as S.Schema<ListOrganizationDashboardsRequest>,
-  output: __S(548, __c68, 4) as any as S.Schema<ListOrganizationDashboardsResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListOrganizationDashboardsRequest>,
+  output: __S(1014, __c63, 6) as any as S.Schema<ListOrganizationDashboardsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20489,8 +20505,8 @@ export const listOrganizationDetectors: API.OperationMethod<
   ListOrganizationDetectorsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(550, __c68, 6) as any as S.Schema<ListOrganizationDetectorsRequest>,
-  output: __S(553, __c69, 1) as any as S.Schema<ListOrganizationDetectorsResponse>,
+  input: __S(1025, __c64, 1) as any as S.Schema<ListOrganizationDetectorsRequest>,
+  output: __S(1028, __c64, 4) as any as S.Schema<ListOrganizationDetectorsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20508,8 +20524,8 @@ export const listOrganizationDiscoverSavedQueries: API.OperationMethod<
   ListOrganizationDiscoverSavedQueriesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(554, __c69, 2) as any as S.Schema<ListOrganizationDiscoverSavedQueriesRequest>,
-  output: __S(558, __c69, 6) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListOrganizationDiscoverSavedQueriesRequest>,
+  output: __S(1044, __c65, 4) as any as S.Schema<ListOrganizationDiscoverSavedQueriesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20523,8 +20539,8 @@ export const listOrganizationEnvironments: API.OperationMethod<
   ListOrganizationEnvironmentsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(559, __c69, 7) as any as S.Schema<ListOrganizationEnvironmentsRequest>,
-  output: __S(561, __c70, 1) as any as S.Schema<ListOrganizationEnvironmentsResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListOrganizationEnvironmentsRequest>,
+  output: __S(1154, __c72, 2) as any as S.Schema<ListOrganizationEnvironmentsResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20538,8 +20554,8 @@ export const listOrganizationEvents: API.OperationMethod<
   ListOrganizationEventsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(563, __c70, 3) as any as S.Schema<ListOrganizationEventsRequest>,
-  output: __S(566, __c70, 6) as any as S.Schema<ListOrganizationEventsResponse>,
+  input: __S(1169, __c73, 1) as any as S.Schema<ListOrganizationEventsRequest>,
+  output: __S(1171, __c73, 3) as any as S.Schema<ListOrganizationEventsResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20553,8 +20569,8 @@ export const listOrganizationEventsTimeseries: API.OperationMethod<
   ListOrganizationEventsTimeseriesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(568, __c71, 0) as any as S.Schema<ListOrganizationEventsTimeseriesRequest>,
-  output: __S(579, __c72, 3) as any as S.Schema<ListOrganizationEventsTimeseriesResponse>,
+  input: __S(1201, __c75, 1) as any as S.Schema<ListOrganizationEventsTimeseriesRequest>,
+  output: __S(1212, __c75, 12) as any as S.Schema<ListOrganizationEventsTimeseriesResponse>,
   errors: [BadRequest, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20568,8 +20584,8 @@ export const listOrganizationForwarding: API.OperationMethod<
   ListOrganizationForwardingError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(580, __c72, 4) as any as S.Schema<ListOrganizationForwardingRequest>,
-  output: __S(585, __c73, 1) as any as S.Schema<ListOrganizationForwardingResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<ListOrganizationForwardingRequest>,
+  output: __S(1221, __c76, 5) as any as S.Schema<ListOrganizationForwardingResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20587,8 +20603,8 @@ export const listOrganizationIntegrationRepositories: API.OperationMethod<
   ListOrganizationIntegrationRepositoriesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(586, __c73, 2) as any as S.Schema<ListOrganizationIntegrationRepositoriesRequest>,
-  output: __S(589, __c73, 5) as any as S.Schema<ListOrganizationIntegrationRepositoriesResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListOrganizationIntegrationRepositoriesRequest>,
+  output: __S(1235, __c77, 3) as any as S.Schema<ListOrganizationIntegrationRepositoriesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20602,8 +20618,8 @@ export const listOrganizationIntegrations: API.OperationMethod<
   ListOrganizationIntegrationsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(590, __c73, 6) as any as S.Schema<ListOrganizationIntegrationsRequest>,
-  output: __S(593, __c74, 1) as any as S.Schema<ListOrganizationIntegrationsResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListOrganizationIntegrationsRequest>,
+  output: __S(1251, __c78, 3) as any as S.Schema<ListOrganizationIntegrationsResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20617,8 +20633,8 @@ export const listOrganizationIssueEvents: API.OperationMethod<
   ListOrganizationIssueEventsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(594, __c74, 2) as any as S.Schema<ListOrganizationIssueEventsRequest>,
-  output: __S(597, __c74, 5) as any as S.Schema<ListOrganizationIssueEventsResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListOrganizationIssueEventsRequest>,
+  output: __S(1282, __c80, 2) as any as S.Schema<ListOrganizationIssueEventsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20632,8 +20648,8 @@ export const listOrganizationIssueExternalIssues: API.OperationMethod<
   ListOrganizationIssueExternalIssuesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(598, __c74, 6) as any as S.Schema<ListOrganizationIssueExternalIssuesRequest>,
-  output: __S(599, __c74, 7) as any as S.Schema<ListOrganizationIssueExternalIssuesResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListOrganizationIssueExternalIssuesRequest>,
+  output: __S(1297, __c81, 1) as any as S.Schema<ListOrganizationIssueExternalIssuesResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20647,8 +20663,8 @@ export const listOrganizationIssueHashes: API.OperationMethod<
   ListOrganizationIssueHashesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(600, __c75, 0) as any as S.Schema<ListOrganizationIssueHashesRequest>,
-  output: __S(604, __c75, 4) as any as S.Schema<ListOrganizationIssueHashesResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListOrganizationIssueHashesRequest>,
+  output: __S(1315, __c82, 3) as any as S.Schema<ListOrganizationIssueHashesResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20662,8 +20678,8 @@ export const listOrganizationIssueIntegrations: API.OperationMethod<
   ListOrganizationIssueIntegrationsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(605, __c75, 5) as any as S.Schema<ListOrganizationIssueIntegrationsRequest>,
-  output: __S(611, __c76, 3) as any as S.Schema<ListOrganizationIssueIntegrationsResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ListOrganizationIssueIntegrationsRequest>,
+  output: __S(1333, __c83, 5) as any as S.Schema<ListOrganizationIssueIntegrationsResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20677,8 +20693,8 @@ export const listOrganizationIssues: API.OperationMethod<
   ListOrganizationIssuesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(613, __c76, 5) as any as S.Schema<ListOrganizationIssuesRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<ListOrganizationIssuesResponse>,
+  input: __S(1377, __c86, 1) as any as S.Schema<ListOrganizationIssuesRequest>,
+  output: __S(1381, __c86, 5) as any as S.Schema<ListOrganizationIssuesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20692,8 +20708,8 @@ export const listOrganizationIssueTagValues: API.OperationMethod<
   ListOrganizationIssueTagValuesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(620, __c77, 4) as any as S.Schema<ListOrganizationIssueTagValuesRequest>,
-  output: __S(621, __c77, 5) as any as S.Schema<ListOrganizationIssueTagValuesResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListOrganizationIssueTagValuesRequest>,
+  output: __S(1409, __c88, 1) as any as S.Schema<ListOrganizationIssueTagValuesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20707,8 +20723,8 @@ export const listOrganizationIssueViews: API.OperationMethod<
   ListOrganizationIssueViewsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(622, __c77, 6) as any as S.Schema<ListOrganizationIssueViewsRequest>,
-  output: __S(625, __c78, 1) as any as S.Schema<ListOrganizationIssueViewsResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<ListOrganizationIssueViewsRequest>,
+  output: __S(1427, __c89, 3) as any as S.Schema<ListOrganizationIssueViewsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20722,8 +20738,8 @@ export const listOrganizationMembers: API.OperationMethod<
   ListOrganizationMembersError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(626, __c78, 2) as any as S.Schema<ListOrganizationMembersRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<ListOrganizationMembersResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListOrganizationMembersRequest>,
+  output: __S(1457, __c91, 1) as any as S.Schema<ListOrganizationMembersResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20737,8 +20753,8 @@ export const listOrganizationMonitorCheckins: API.OperationMethod<
   ListOrganizationMonitorCheckinsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(629, __c78, 5) as any as S.Schema<ListOrganizationMonitorCheckinsRequest>,
-  output: __S(633, __c79, 1) as any as S.Schema<ListOrganizationMonitorCheckinsResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ListOrganizationMonitorCheckinsRequest>,
+  output: __S(1476, __c92, 4) as any as S.Schema<ListOrganizationMonitorCheckinsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20752,8 +20768,8 @@ export const listOrganizationMonitors: API.OperationMethod<
   ListOrganizationMonitorsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(635, __c79, 3) as any as S.Schema<ListOrganizationMonitorsRequest>,
-  output: __S(639, __c79, 7) as any as S.Schema<ListOrganizationMonitorsResponse>,
+  input: __S(1489, __c93, 1) as any as S.Schema<ListOrganizationMonitorsRequest>,
+  output: __S(1493, __c93, 5) as any as S.Schema<ListOrganizationMonitorsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20767,8 +20783,8 @@ export const listOrganizationNotificationsActions: API.OperationMethod<
   ListOrganizationNotificationsActionsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(641, __c80, 1) as any as S.Schema<ListOrganizationNotificationsActionsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ListOrganizationNotificationsActionsResponse>,
+  input: __S(1505, __c94, 1) as any as S.Schema<ListOrganizationNotificationsActionsRequest>,
+  output: __S(2320, __c145, 0) as any as S.Schema<ListOrganizationNotificationsActionsResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20786,8 +20802,8 @@ export const listOrganizationProfilingChunks: API.OperationMethod<
   ListOrganizationProfilingChunksError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(642, __c80, 2) as any as S.Schema<ListOrganizationProfilingChunksRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<ListOrganizationProfilingChunksResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<ListOrganizationProfilingChunksRequest>,
+  output: __S(5552, __c347, 0) as any as S.Schema<ListOrganizationProfilingChunksResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20801,8 +20817,8 @@ export const listOrganizationProjectKeys: API.OperationMethod<
   ListOrganizationProjectKeysError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(643, __c80, 3) as any as S.Schema<ListOrganizationProjectKeysRequest>,
-  output: __S(647, __c80, 7) as any as S.Schema<ListOrganizationProjectKeysResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<ListOrganizationProjectKeysRequest>,
+  output: __S(1540, __c96, 4) as any as S.Schema<ListOrganizationProjectKeysResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20816,8 +20832,8 @@ export const listOrganizationProjects: API.OperationMethod<
   ListOrganizationProjectsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(648, __c81, 0) as any as S.Schema<ListOrganizationProjectsRequest>,
-  output: __S(650, __c81, 2) as any as S.Schema<ListOrganizationProjectsResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<ListOrganizationProjectsRequest>,
+  output: __S(1553, __c97, 1) as any as S.Schema<ListOrganizationProjectsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20831,8 +20847,8 @@ export const listOrganizationRelayUsage: API.OperationMethod<
   ListOrganizationRelayUsageError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(651, __c81, 3) as any as S.Schema<ListOrganizationRelayUsageRequest>,
-  output: __S(654, __c81, 6) as any as S.Schema<ListOrganizationRelayUsageResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<ListOrganizationRelayUsageRequest>,
+  output: __S(1651, __c103, 3) as any as S.Schema<ListOrganizationRelayUsageResponse>,
   errors: [NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20846,8 +20862,8 @@ export const listOrganizationReleaseCommits: API.OperationMethod<
   ListOrganizationReleaseCommitsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(655, __c81, 7) as any as S.Schema<ListOrganizationReleaseCommitsRequest>,
-  output: __S(664, __c83, 0) as any as S.Schema<ListOrganizationReleaseCommitsResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<ListOrganizationReleaseCommitsRequest>,
+  output: __S(1669, __c104, 5) as any as S.Schema<ListOrganizationReleaseCommitsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20861,8 +20877,8 @@ export const listOrganizationReleaseDeploys: API.OperationMethod<
   ListOrganizationReleaseDeploysError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(665, __c83, 1) as any as S.Schema<ListOrganizationReleaseDeploysRequest>,
-  output: __S(667, __c83, 3) as any as S.Schema<ListOrganizationReleaseDeploysResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<ListOrganizationReleaseDeploysRequest>,
+  output: __S(1714, __c107, 2) as any as S.Schema<ListOrganizationReleaseDeploysResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20876,8 +20892,8 @@ export const listOrganizationReleaseFiles: API.OperationMethod<
   ListOrganizationReleaseFilesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(668, __c83, 4) as any as S.Schema<ListOrganizationReleaseFilesRequest>,
-  output: __S(670, __c83, 6) as any as S.Schema<ListOrganizationReleaseFilesResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<ListOrganizationReleaseFilesRequest>,
+  output: __S(1745, __c109, 1) as any as S.Schema<ListOrganizationReleaseFilesResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20891,8 +20907,8 @@ export const listOrganizationReleases: API.OperationMethod<
   ListOrganizationReleasesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c84, 0) as any as S.Schema<ListOrganizationReleasesRequest>,
-  output: __S(679, __c84, 7) as any as S.Schema<ListOrganizationReleasesResponse>,
+  input: __S(1761, __c110, 1) as any as S.Schema<ListOrganizationReleasesRequest>,
+  output: __S(1768, __c110, 8) as any as S.Schema<ListOrganizationReleasesResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20906,8 +20922,8 @@ export const listOrganizationReleaseThresholdStatuses: API.OperationMethod<
   ListOrganizationReleaseThresholdStatusesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(681, __c85, 1) as any as S.Schema<ListOrganizationReleaseThresholdStatusesRequest>,
-  output: __S(685, __c85, 5) as any as S.Schema<ListOrganizationReleaseThresholdStatusesResponse>,
+  input: __S(1777, __c111, 1) as any as S.Schema<ListOrganizationReleaseThresholdStatusesRequest>,
+  output: __S(1781, __c111, 5) as any as S.Schema<ListOrganizationReleaseThresholdStatusesResponse>,
   errors: [BadRequest, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20921,8 +20937,8 @@ export const listOrganizationReplays: API.OperationMethod<
   ListOrganizationReplaysError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(687, __c85, 7) as any as S.Schema<ListOrganizationReplaysRequest>,
-  output: __S(690, __c86, 2) as any as S.Schema<ListOrganizationReplaysResponse>,
+  input: __S(1793, __c112, 1) as any as S.Schema<ListOrganizationReplaysRequest>,
+  output: __S(1796, __c112, 4) as any as S.Schema<ListOrganizationReplaysResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20936,8 +20952,8 @@ export const listOrganizationReplaySelectors: API.OperationMethod<
   ListOrganizationReplaySelectorsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(692, __c86, 4) as any as S.Schema<ListOrganizationReplaySelectorsRequest>,
-  output: __S(696, __c87, 0) as any as S.Schema<ListOrganizationReplaySelectorsResponse>,
+  input: __S(1809, __c113, 1) as any as S.Schema<ListOrganizationReplaySelectorsRequest>,
+  output: __S(1813, __c113, 5) as any as S.Schema<ListOrganizationReplaySelectorsResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20951,8 +20967,8 @@ export const listOrganizationRepoCommits: API.OperationMethod<
   ListOrganizationRepoCommitsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(697, __c87, 1) as any as S.Schema<ListOrganizationRepoCommitsRequest>,
-  output: __S(702, __c87, 6) as any as S.Schema<ListOrganizationRepoCommitsResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<ListOrganizationRepoCommitsRequest>,
+  output: __S(1829, __c114, 5) as any as S.Schema<ListOrganizationRepoCommitsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20966,8 +20982,8 @@ export const listOrganizationRepos: API.OperationMethod<
   ListOrganizationReposError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(703, __c87, 7) as any as S.Schema<ListOrganizationReposRequest>,
-  output: __S(707, __c88, 3) as any as S.Schema<ListOrganizationReposResponse>,
+  input: __S(1840, __c115, 0) as any as S.Schema<ListOrganizationReposRequest>,
+  output: __S(1844, __c115, 4) as any as S.Schema<ListOrganizationReposResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20981,8 +20997,8 @@ export const listOrganizations: API.OperationMethod<
   ListOrganizationsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(708, __c88, 4) as any as S.Schema<ListOrganizationsRequest>,
-  output: __S(710, __c88, 6) as any as S.Schema<ListOrganizationsResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<ListOrganizationsRequest>,
+  output: __S(1890, __c118, 2) as any as S.Schema<ListOrganizationsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -20996,8 +21012,8 @@ export const listOrganizationScimV2Groups: API.OperationMethod<
   ListOrganizationScimV2GroupsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(711, __c88, 7) as any as S.Schema<ListOrganizationScimV2GroupsRequest>,
-  output: __S(713, __c89, 1) as any as S.Schema<ListOrganizationScimV2GroupsResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<ListOrganizationScimV2GroupsRequest>,
+  output: __S(1906, __c119, 2) as any as S.Schema<ListOrganizationScimV2GroupsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21011,8 +21027,8 @@ export const listOrganizationScimV2ResourceTypes: API.OperationMethod<
   ListOrganizationScimV2ResourceTypesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(714, __c89, 2) as any as S.Schema<ListOrganizationScimV2ResourceTypesRequest>,
-  output: __S(717, __c89, 5) as any as S.Schema<ListOrganizationScimV2ResourceTypesResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<ListOrganizationScimV2ResourceTypesRequest>,
+  output: __S(1923, __c120, 3) as any as S.Schema<ListOrganizationScimV2ResourceTypesResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21026,8 +21042,8 @@ export const listOrganizationScimV2Users: API.OperationMethod<
   ListOrganizationScimV2UsersError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(718, __c89, 6) as any as S.Schema<ListOrganizationScimV2UsersRequest>,
-  output: __S(720, __c90, 0) as any as S.Schema<ListOrganizationScimV2UsersResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<ListOrganizationScimV2UsersRequest>,
+  output: __S(1938, __c121, 2) as any as S.Schema<ListOrganizationScimV2UsersResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21041,8 +21057,8 @@ export const listOrganizationSentryAppComponents: API.OperationMethod<
   ListOrganizationSentryAppComponentsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(721, __c90, 1) as any as S.Schema<ListOrganizationSentryAppComponentsRequest>,
-  output: __S(726, __c90, 6) as any as S.Schema<ListOrganizationSentryAppComponentsResponse>,
+  input: __S(1952, __c122, 0) as any as S.Schema<ListOrganizationSentryAppComponentsRequest>,
+  output: __S(1957, __c122, 5) as any as S.Schema<ListOrganizationSentryAppComponentsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21056,8 +21072,8 @@ export const listOrganizationSentryApps: API.OperationMethod<
   ListOrganizationSentryAppsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(727, __c90, 7) as any as S.Schema<ListOrganizationSentryAppsRequest>,
-  output: __S(730, __c91, 2) as any as S.Schema<ListOrganizationSentryAppsResponse>,
+  input: __S(1968, __c123, 0) as any as S.Schema<ListOrganizationSentryAppsRequest>,
+  output: __S(1971, __c123, 3) as any as S.Schema<ListOrganizationSentryAppsResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21071,8 +21087,8 @@ export const listOrganizationStatsV2: API.OperationMethod<
   ListOrganizationStatsV2Error,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(731, __c91, 3) as any as S.Schema<ListOrganizationStatsV2Request>,
-  output: __S(734, __c91, 6) as any as S.Schema<ListOrganizationStatsV2Response>,
+  input: __S(1984, __c124, 0) as any as S.Schema<ListOrganizationStatsV2Request>,
+  output: __S(1987, __c124, 3) as any as S.Schema<ListOrganizationStatsV2Response>,
   errors: [NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21086,8 +21102,8 @@ export const listOrganizationTags: API.OperationMethod<
   ListOrganizationTagsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c92, 0) as any as S.Schema<ListOrganizationTagsRequest>,
-  output: __S(738, __c92, 2) as any as S.Schema<ListOrganizationTagsResponse>,
+  input: __S(2001, __c125, 1) as any as S.Schema<ListOrganizationTagsRequest>,
+  output: __S(2003, __c125, 3) as any as S.Schema<ListOrganizationTagsResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21101,8 +21117,8 @@ export const listOrganizationTeams: API.OperationMethod<
   ListOrganizationTeamsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(739, __c92, 3) as any as S.Schema<ListOrganizationTeamsRequest>,
-  output: __S(745, __c93, 1) as any as S.Schema<ListOrganizationTeamsResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<ListOrganizationTeamsRequest>,
+  output: __S(2020, __c126, 4) as any as S.Schema<ListOrganizationTeamsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21116,8 +21132,8 @@ export const listOrganizationTraceItemAttributes: API.OperationMethod<
   ListOrganizationTraceItemAttributesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(747, __c93, 3) as any as S.Schema<ListOrganizationTraceItemAttributesRequest>,
-  output: __S(751, __c93, 7) as any as S.Schema<ListOrganizationTraceItemAttributesResponse>,
+  input: __S(2049, __c128, 1) as any as S.Schema<ListOrganizationTraceItemAttributesRequest>,
+  output: __S(2053, __c128, 5) as any as S.Schema<ListOrganizationTraceItemAttributesResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21131,8 +21147,8 @@ export const listOrganizationTraceMetrics: API.OperationMethod<
   ListOrganizationTraceMetricsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(753, __c94, 1) as any as S.Schema<ListOrganizationTraceMetricsRequest>,
-  output: __S(757, __c94, 5) as any as S.Schema<ListOrganizationTraceMetricsResponse>,
+  input: __S(2145, __c134, 1) as any as S.Schema<ListOrganizationTraceMetricsRequest>,
+  output: __S(2149, __c134, 5) as any as S.Schema<ListOrganizationTraceMetricsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21146,8 +21162,8 @@ export const listOrganizationUserTeams: API.OperationMethod<
   ListOrganizationUserTeamsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(758, __c94, 6) as any as S.Schema<ListOrganizationUserTeamsRequest>,
-  output: __S(764, __c95, 4) as any as S.Schema<ListOrganizationUserTeamsResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<ListOrganizationUserTeamsRequest>,
+  output: __S(2166, __c135, 6) as any as S.Schema<ListOrganizationUserTeamsResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21161,8 +21177,8 @@ export const listOrganizationWorkflows: API.OperationMethod<
   ListOrganizationWorkflowsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(766, __c95, 6) as any as S.Schema<ListOrganizationWorkflowsRequest>,
-  output: __S(772, __c96, 4) as any as S.Schema<ListOrganizationWorkflowsResponse>,
+  input: __S(2177, __c136, 1) as any as S.Schema<ListOrganizationWorkflowsRequest>,
+  output: __S(2183, __c136, 7) as any as S.Schema<ListOrganizationWorkflowsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21176,8 +21192,8 @@ export const listProjectCodeOwners: API.OperationMethod<
   ListProjectCodeOwnersError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(773, __c96, 5) as any as S.Schema<ListProjectCodeOwnersRequest>,
-  output: __S(778, __c97, 2) as any as S.Schema<ListProjectCodeOwnersResponse>,
+  input: __S(2192, __c137, 0) as any as S.Schema<ListProjectCodeOwnersRequest>,
+  output: __S(2197, __c137, 5) as any as S.Schema<ListProjectCodeOwnersResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21191,8 +21207,8 @@ export const listProjectDebugFiles: API.OperationMethod<
   ListProjectDebugFilesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(779, __c97, 3) as any as S.Schema<ListProjectDebugFilesRequest>,
-  output: __S(782, __c97, 6) as any as S.Schema<ListProjectDebugFilesResponse>,
+  input: __S(2208, __c138, 0) as any as S.Schema<ListProjectDebugFilesRequest>,
+  output: __S(2211, __c138, 3) as any as S.Schema<ListProjectDebugFilesResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21206,8 +21222,8 @@ export const listProjectEnvironments: API.OperationMethod<
   ListProjectEnvironmentsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(783, __c97, 7) as any as S.Schema<ListProjectEnvironmentsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListProjectEnvironmentsResponse>,
+  input: __S(2224, __c139, 0) as any as S.Schema<ListProjectEnvironmentsRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<ListProjectEnvironmentsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21221,8 +21237,8 @@ export const listProjectEventAttachments: API.OperationMethod<
   ListProjectEventAttachmentsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c98, 0) as any as S.Schema<ListProjectEventAttachmentsRequest>,
-  output: __S(786, __c98, 2) as any as S.Schema<ListProjectEventAttachmentsResponse>,
+  input: __S(2240, __c140, 0) as any as S.Schema<ListProjectEventAttachmentsRequest>,
+  output: __S(2242, __c140, 2) as any as S.Schema<ListProjectEventAttachmentsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21236,8 +21252,8 @@ export const listProjectEvents: API.OperationMethod<
   ListProjectEventsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(787, __c98, 3) as any as S.Schema<ListProjectEventsRequest>,
-  output: __S(597, __c74, 5) as any as S.Schema<ListProjectEventsResponse>,
+  input: __S(2256, __c141, 0) as any as S.Schema<ListProjectEventsRequest>,
+  output: __S(1282, __c80, 2) as any as S.Schema<ListProjectEventsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21251,8 +21267,8 @@ export const listProjectFilters: API.OperationMethod<
   ListProjectFiltersError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(788, __c98, 4) as any as S.Schema<ListProjectFiltersRequest>,
-  output: __S(791, __c98, 7) as any as S.Schema<ListProjectFiltersResponse>,
+  input: __S(2272, __c142, 0) as any as S.Schema<ListProjectFiltersRequest>,
+  output: __S(2275, __c142, 3) as any as S.Schema<ListProjectFiltersResponse>,
   errors: [Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21266,8 +21282,8 @@ export const listProjectKeys: API.OperationMethod<
   ListProjectKeysError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(792, __c99, 0) as any as S.Schema<ListProjectKeysRequest>,
-  output: __S(795, __c99, 3) as any as S.Schema<ListProjectKeysResponse>,
+  input: __S(2288, __c143, 0) as any as S.Schema<ListProjectKeysRequest>,
+  output: __S(2291, __c143, 3) as any as S.Schema<ListProjectKeysResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21281,8 +21297,8 @@ export const listProjectMembers: API.OperationMethod<
   ListProjectMembersError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(796, __c99, 4) as any as S.Schema<ListProjectMembersRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<ListProjectMembersResponse>,
+  input: __S(2336, __c146, 0) as any as S.Schema<ListProjectMembersRequest>,
+  output: __S(1457, __c91, 1) as any as S.Schema<ListProjectMembersResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21296,8 +21312,8 @@ export const listProjectMonitorCheckins: API.OperationMethod<
   ListProjectMonitorCheckinsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(797, __c99, 5) as any as S.Schema<ListProjectMonitorCheckinsRequest>,
-  output: __S(801, __c100, 1) as any as S.Schema<ListProjectMonitorCheckinsResponse>,
+  input: __S(2352, __c147, 0) as any as S.Schema<ListProjectMonitorCheckinsRequest>,
+  output: __S(2356, __c147, 4) as any as S.Schema<ListProjectMonitorCheckinsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21311,8 +21327,8 @@ export const listProjectReleaseCommits: API.OperationMethod<
   ListProjectReleaseCommitsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(802, __c100, 2) as any as S.Schema<ListProjectReleaseCommitsRequest>,
-  output: __S(808, __c101, 0) as any as S.Schema<ListProjectReleaseCommitsResponse>,
+  input: __S(2368, __c148, 0) as any as S.Schema<ListProjectReleaseCommitsRequest>,
+  output: __S(2374, __c148, 6) as any as S.Schema<ListProjectReleaseCommitsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21326,8 +21342,8 @@ export const listProjectReleaseFiles: API.OperationMethod<
   ListProjectReleaseFilesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(809, __c101, 1) as any as S.Schema<ListProjectReleaseFilesRequest>,
-  output: __S(670, __c83, 6) as any as S.Schema<ListProjectReleaseFilesResponse>,
+  input: __S(2384, __c149, 0) as any as S.Schema<ListProjectReleaseFilesRequest>,
+  output: __S(1745, __c109, 1) as any as S.Schema<ListProjectReleaseFilesResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21341,8 +21357,8 @@ export const listProjectReleases: API.OperationMethod<
   ListProjectReleasesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(810, __c101, 2) as any as S.Schema<ListProjectReleasesRequest>,
-  output: __S(817, __c102, 1) as any as S.Schema<ListProjectReleasesResponse>,
+  input: __S(2400, __c150, 0) as any as S.Schema<ListProjectReleasesRequest>,
+  output: __S(2407, __c150, 7) as any as S.Schema<ListProjectReleasesResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21356,8 +21372,8 @@ export const listProjectReplayClicks: API.OperationMethod<
   ListProjectReplayClicksError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(818, __c102, 2) as any as S.Schema<ListProjectReplayClicksRequest>,
-  output: __S(821, __c102, 5) as any as S.Schema<ListProjectReplayClicksResponse>,
+  input: __S(2416, __c151, 0) as any as S.Schema<ListProjectReplayClicksRequest>,
+  output: __S(2419, __c151, 3) as any as S.Schema<ListProjectReplayClicksResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21371,8 +21387,8 @@ export const listProjectReplayDeletionJobs: API.OperationMethod<
   ListProjectReplayDeletionJobsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(822, __c102, 6) as any as S.Schema<ListProjectReplayDeletionJobsRequest>,
-  output: __S(824, __c103, 0) as any as S.Schema<ListProjectReplayDeletionJobsResponse>,
+  input: __S(2432, __c152, 0) as any as S.Schema<ListProjectReplayDeletionJobsRequest>,
+  output: __S(2434, __c152, 2) as any as S.Schema<ListProjectReplayDeletionJobsResponse>,
   errors: [Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21390,8 +21406,8 @@ export const listProjectReplayRecordingSegments: API.OperationMethod<
   ListProjectReplayRecordingSegmentsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(825, __c103, 1) as any as S.Schema<ListProjectReplayRecordingSegmentsRequest>,
-  output: __S(827, __c103, 3) as any as S.Schema<ListProjectReplayRecordingSegmentsResponse>,
+  input: __S(2448, __c153, 0) as any as S.Schema<ListProjectReplayRecordingSegmentsRequest>,
+  output: __S(2450, __c153, 2) as any as S.Schema<ListProjectReplayRecordingSegmentsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21405,8 +21421,8 @@ export const listProjectReplayViewedBy: API.OperationMethod<
   ListProjectReplayViewedByError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(828, __c103, 4) as any as S.Schema<ListProjectReplayViewedByRequest>,
-  output: __S(830, __c103, 6) as any as S.Schema<ListProjectReplayViewedByResponse>,
+  input: __S(2464, __c154, 0) as any as S.Schema<ListProjectReplayViewedByRequest>,
+  output: __S(2466, __c154, 2) as any as S.Schema<ListProjectReplayViewedByResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21420,8 +21436,8 @@ export const listProjectRepositories: API.OperationMethod<
   ListProjectRepositoriesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(831, __c103, 7) as any as S.Schema<ListProjectRepositoriesRequest>,
-  output: __S(834, __c104, 2) as any as S.Schema<ListProjectRepositoriesResponse>,
+  input: __S(2480, __c155, 0) as any as S.Schema<ListProjectRepositoriesRequest>,
+  output: __S(2483, __c155, 3) as any as S.Schema<ListProjectRepositoriesResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21435,8 +21451,8 @@ export const listProjectStats: API.OperationMethod<
   ListProjectStatsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(835, __c104, 3) as any as S.Schema<ListProjectStatsRequest>,
-  output: __S(836, __c104, 4) as any as S.Schema<ListProjectStatsResponse>,
+  input: __S(2544, __c159, 0) as any as S.Schema<ListProjectStatsRequest>,
+  output: __S(2545, __c159, 1) as any as S.Schema<ListProjectStatsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21450,8 +21466,8 @@ export const listProjectSymbolSources: API.OperationMethod<
   ListProjectSymbolSourcesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(837, __c104, 5) as any as S.Schema<ListProjectSymbolSourcesRequest>,
-  output: __S(839, __c104, 7) as any as S.Schema<ListProjectSymbolSourcesResponse>,
+  input: __S(2560, __c160, 0) as any as S.Schema<ListProjectSymbolSourcesRequest>,
+  output: __S(2562, __c160, 2) as any as S.Schema<ListProjectSymbolSourcesResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21465,8 +21481,8 @@ export const listProjectTeams: API.OperationMethod<
   ListProjectTeamsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(840, __c105, 0) as any as S.Schema<ListProjectTeamsRequest>,
-  output: __S(842, __c105, 2) as any as S.Schema<ListProjectTeamsResponse>,
+  input: __S(2576, __c161, 0) as any as S.Schema<ListProjectTeamsRequest>,
+  output: __S(2578, __c161, 2) as any as S.Schema<ListProjectTeamsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21480,8 +21496,8 @@ export const listProjectUsers: API.OperationMethod<
   ListProjectUsersError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(843, __c105, 3) as any as S.Schema<ListProjectUsersRequest>,
-  output: __S(846, __c105, 6) as any as S.Schema<ListProjectUsersResponse>,
+  input: __S(2592, __c162, 0) as any as S.Schema<ListProjectUsersRequest>,
+  output: __S(2595, __c162, 3) as any as S.Schema<ListProjectUsersResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21495,8 +21511,8 @@ export const listSeerModels: API.OperationMethod<
   ListSeerModelsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(847, __c105, 7) as any as S.Schema<ListSeerModelsRequest>,
-  output: __S(848, __c106, 0) as any as S.Schema<ListSeerModelsResponse>,
+  input: __S(2608, __c163, 0) as any as S.Schema<ListSeerModelsRequest>,
+  output: __S(2609, __c163, 1) as any as S.Schema<ListSeerModelsResponse>,
   errors: [UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21510,8 +21526,8 @@ export const listTeamMembers: API.OperationMethod<
   ListTeamMembersError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(849, __c106, 1) as any as S.Schema<ListTeamMembersRequest>,
-  output: __S(852, __c106, 4) as any as S.Schema<ListTeamMembersResponse>,
+  input: __S(2624, __c164, 0) as any as S.Schema<ListTeamMembersRequest>,
+  output: __S(2627, __c164, 3) as any as S.Schema<ListTeamMembersResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21525,8 +21541,8 @@ export const listTeamProjects: API.OperationMethod<
   ListTeamProjectsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(853, __c106, 5) as any as S.Schema<ListTeamProjectsRequest>,
-  output: __S(854, __c106, 6) as any as S.Schema<ListTeamProjectsResponse>,
+  input: __S(2640, __c165, 0) as any as S.Schema<ListTeamProjectsRequest>,
+  output: __S(2641, __c165, 1) as any as S.Schema<ListTeamProjectsResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21540,8 +21556,8 @@ export const provisionOrganizationScimV2Group: API.OperationMethod<
   ProvisionOrganizationScimV2GroupError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(855, __c106, 7) as any as S.Schema<ProvisionOrganizationScimV2GroupRequest>,
-  output: __S(399, __c49, 7) as any as S.Schema<ProvisionOrganizationScimV2GroupResponse>,
+  input: __S(2656, __c166, 0) as any as S.Schema<ProvisionOrganizationScimV2GroupRequest>,
+  output: __S(5698, __c356, 2) as any as S.Schema<ProvisionOrganizationScimV2GroupResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21555,8 +21571,8 @@ export const provisionOrganizationScimV2User: API.OperationMethod<
   ProvisionOrganizationScimV2UserError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(856, __c107, 0) as any as S.Schema<ProvisionOrganizationScimV2UserRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<ProvisionOrganizationScimV2UserResponse>,
+  input: __S(2672, __c167, 0) as any as S.Schema<ProvisionOrganizationScimV2UserRequest>,
+  output: __S(131, __c8, 3) as any as S.Schema<ProvisionOrganizationScimV2UserResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21570,8 +21586,8 @@ export const registerANewServiceHook: API.OperationMethod<
   RegisterANewServiceHookError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(857, __c107, 1) as any as S.Schema<RegisterANewServiceHookRequest>,
-  output: __S(524, __c65, 4) as any as S.Schema<RegisterANewServiceHookResponse>,
+  input: __S(2688, __c168, 0) as any as S.Schema<RegisterANewServiceHookRequest>,
+  output: __S(944, __c59, 0) as any as S.Schema<RegisterANewServiceHookResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21585,8 +21601,8 @@ export const removeAServiceHook: API.OperationMethod<
   RemoveAServiceHookError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(858, __c107, 2) as any as S.Schema<RemoveAServiceHookRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<RemoveAServiceHookResponse>,
+  input: __S(2720, __c170, 0) as any as S.Schema<RemoveAServiceHookRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<RemoveAServiceHookResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21600,8 +21616,8 @@ export const resolveOrganizationEventId: API.OperationMethod<
   ResolveOrganizationEventIdError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(859, __c107, 3) as any as S.Schema<ResolveOrganizationEventIdRequest>,
-  output: __S(862, __c107, 6) as any as S.Schema<ResolveOrganizationEventIdResponse>,
+  input: __S(2737, __c171, 1) as any as S.Schema<ResolveOrganizationEventIdRequest>,
+  output: __S(2740, __c171, 4) as any as S.Schema<ResolveOrganizationEventIdResponse>,
   errors: [NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21615,8 +21631,8 @@ export const resolveOrganizationShortId: API.OperationMethod<
   ResolveOrganizationShortIdError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(863, __c107, 7) as any as S.Schema<ResolveOrganizationShortIdRequest>,
-  output: __S(865, __c108, 1) as any as S.Schema<ResolveOrganizationShortIdResponse>,
+  input: __S(2752, __c172, 0) as any as S.Schema<ResolveOrganizationShortIdRequest>,
+  output: __S(2754, __c172, 2) as any as S.Schema<ResolveOrganizationShortIdResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21630,8 +21646,8 @@ export const startOrganizationIssueAutofix: API.OperationMethod<
   StartOrganizationIssueAutofixError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(866, __c108, 2) as any as S.Schema<StartOrganizationIssueAutofixRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<StartOrganizationIssueAutofixResponse>,
+  input: __S(2768, __c173, 0) as any as S.Schema<StartOrganizationIssueAutofixRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<StartOrganizationIssueAutofixResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21650,8 +21666,8 @@ export const unlinkAnExternalIssueFromAnIssue: API.OperationMethod<
   UnlinkAnExternalIssueFromAnIssueError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(867, __c108, 3) as any as S.Schema<UnlinkAnExternalIssueFromAnIssueRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<UnlinkAnExternalIssueFromAnIssueResponse>,
+  input: __S(2784, __c174, 0) as any as S.Schema<UnlinkAnExternalIssueFromAnIssueRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<UnlinkAnExternalIssueFromAnIssueResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21665,8 +21681,8 @@ export const updateACustomInboundFilter: API.OperationMethod<
   UpdateACustomInboundFilterError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(870, __c108, 6) as any as S.Schema<UpdateACustomInboundFilterRequest>,
-  output: __S(873, __c109, 1) as any as S.Schema<UpdateACustomInboundFilterResponse>,
+  input: __S(2802, __c175, 2) as any as S.Schema<UpdateACustomInboundFilterRequest>,
+  output: __S(2805, __c175, 5) as any as S.Schema<UpdateACustomInboundFilterResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21680,8 +21696,8 @@ export const updateAServiceHook: API.OperationMethod<
   UpdateAServiceHookError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(874, __c109, 2) as any as S.Schema<UpdateAServiceHookRequest>,
-  output: __S(524, __c65, 4) as any as S.Schema<UpdateAServiceHookResponse>,
+  input: __S(2816, __c176, 0) as any as S.Schema<UpdateAServiceHookRequest>,
+  output: __S(944, __c59, 0) as any as S.Schema<UpdateAServiceHookResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21695,8 +21711,8 @@ export const updateOrganization: API.OperationMethod<
   UpdateOrganizationError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(875, __c109, 3) as any as S.Schema<UpdateOrganizationRequest>,
-  output: __S(881, __c110, 1) as any as S.Schema<UpdateOrganizationResponse>,
+  input: __S(2832, __c177, 0) as any as S.Schema<UpdateOrganizationRequest>,
+  output: __S(2838, __c177, 6) as any as S.Schema<UpdateOrganizationResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21710,8 +21726,8 @@ export const updateOrganizationDashboard: API.OperationMethod<
   UpdateOrganizationDashboardError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(885, __c110, 5) as any as S.Schema<UpdateOrganizationDashboardRequest>,
-  output: __S(892, __c111, 4) as any as S.Schema<UpdateOrganizationDashboardResponse>,
+  input: __S(2851, __c178, 3) as any as S.Schema<UpdateOrganizationDashboardRequest>,
+  output: __S(2858, __c178, 10) as any as S.Schema<UpdateOrganizationDashboardResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21725,8 +21741,8 @@ export const updateOrganizationDetector: API.OperationMethod<
   UpdateOrganizationDetectorError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(894, __c111, 6) as any as S.Schema<UpdateOrganizationDetectorRequest>,
-  output: __S(895, __c111, 7) as any as S.Schema<UpdateOrganizationDetectorResponse>,
+  input: __S(2865, __c179, 1) as any as S.Schema<UpdateOrganizationDetectorRequest>,
+  output: __S(2866, __c179, 2) as any as S.Schema<UpdateOrganizationDetectorResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21740,8 +21756,8 @@ export const updateOrganizationDetectors: API.OperationMethod<
   UpdateOrganizationDetectorsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(897, __c112, 1) as any as S.Schema<UpdateOrganizationDetectorsRequest>,
-  output: __S(900, __c112, 4) as any as S.Schema<UpdateOrganizationDetectorsResponse>,
+  input: __S(2929, __c183, 1) as any as S.Schema<UpdateOrganizationDetectorsRequest>,
+  output: __S(2932, __c183, 4) as any as S.Schema<UpdateOrganizationDetectorsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21759,8 +21775,8 @@ export const updateOrganizationDiscoverSavedQuery: API.OperationMethod<
   UpdateOrganizationDiscoverSavedQueryError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(901, __c112, 5) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponse>,
+  input: __S(2944, __c184, 0) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryRequest>,
+  output: __S(1123, __c70, 3) as any as S.Schema<UpdateOrganizationDiscoverSavedQueryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21774,8 +21790,8 @@ export const updateOrganizationExternalUser: API.OperationMethod<
   UpdateOrganizationExternalUserError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(902, __c112, 6) as any as S.Schema<UpdateOrganizationExternalUserRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UpdateOrganizationExternalUserResponse>,
+  input: __S(2960, __c185, 0) as any as S.Schema<UpdateOrganizationExternalUserRequest>,
+  output: __S(4080, __c255, 0) as any as S.Schema<UpdateOrganizationExternalUserResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21789,8 +21805,8 @@ export const updateOrganizationForwarding: API.OperationMethod<
   UpdateOrganizationForwardingError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(903, __c112, 7) as any as S.Schema<UpdateOrganizationForwardingRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<UpdateOrganizationForwardingResponse>,
+  input: __S(2976, __c186, 0) as any as S.Schema<UpdateOrganizationForwardingRequest>,
+  output: __S(1634, __c102, 2) as any as S.Schema<UpdateOrganizationForwardingResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21804,8 +21820,8 @@ export const updateOrganizationIssue: API.OperationMethod<
   UpdateOrganizationIssueError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(906, __c113, 2) as any as S.Schema<UpdateOrganizationIssueRequest>,
-  output: __S(908, __c113, 4) as any as S.Schema<UpdateOrganizationIssueResponse>,
+  input: __S(2993, __c187, 1) as any as S.Schema<UpdateOrganizationIssueRequest>,
+  output: __S(2995, __c187, 3) as any as S.Schema<UpdateOrganizationIssueResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21819,8 +21835,8 @@ export const updateOrganizationIssues: API.OperationMethod<
   UpdateOrganizationIssuesError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(910, __c113, 6) as any as S.Schema<UpdateOrganizationIssuesRequest>,
-  output: __S(913, __c114, 1) as any as S.Schema<UpdateOrganizationIssuesResponse>,
+  input: __S(3025, __c189, 1) as any as S.Schema<UpdateOrganizationIssuesRequest>,
+  output: __S(3028, __c189, 4) as any as S.Schema<UpdateOrganizationIssuesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21834,8 +21850,8 @@ export const updateOrganizationMember: API.OperationMethod<
   UpdateOrganizationMemberError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(914, __c114, 2) as any as S.Schema<UpdateOrganizationMemberRequest>,
-  output: __S(328, __c41, 0) as any as S.Schema<UpdateOrganizationMemberResponse>,
+  input: __S(3040, __c190, 0) as any as S.Schema<UpdateOrganizationMemberRequest>,
+  output: __S(5362, __c335, 2) as any as S.Schema<UpdateOrganizationMemberResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21849,8 +21865,8 @@ export const updateOrganizationMemberTeam: API.OperationMethod<
   UpdateOrganizationMemberTeamError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(915, __c114, 3) as any as S.Schema<UpdateOrganizationMemberTeamRequest>,
-  output: __S(916, __c114, 4) as any as S.Schema<UpdateOrganizationMemberTeamResponse>,
+  input: __S(3056, __c191, 0) as any as S.Schema<UpdateOrganizationMemberTeamRequest>,
+  output: __S(3057, __c191, 1) as any as S.Schema<UpdateOrganizationMemberTeamResponse>,
   errors: [BadRequest, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21864,8 +21880,8 @@ export const updateOrganizationMonitor: API.OperationMethod<
   UpdateOrganizationMonitorError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(917, __c114, 5) as any as S.Schema<UpdateOrganizationMonitorRequest>,
-  output: __S(919, __c114, 7) as any as S.Schema<UpdateOrganizationMonitorResponse>,
+  input: __S(3072, __c192, 0) as any as S.Schema<UpdateOrganizationMonitorRequest>,
+  output: __S(3074, __c192, 2) as any as S.Schema<UpdateOrganizationMonitorResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21879,8 +21895,8 @@ export const updateOrganizationNotificationsAction: API.OperationMethod<
   UpdateOrganizationNotificationsActionError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(920, __c115, 0) as any as S.Schema<UpdateOrganizationNotificationsActionRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<UpdateOrganizationNotificationsActionResponse>,
+  input: __S(3088, __c193, 0) as any as S.Schema<UpdateOrganizationNotificationsActionRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<UpdateOrganizationNotificationsActionResponse>,
   errors: [BadRequest, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21894,8 +21910,8 @@ export const updateOrganizationRelease: API.OperationMethod<
   UpdateOrganizationReleaseError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(921, __c115, 1) as any as S.Schema<UpdateOrganizationReleaseRequest>,
-  output: __S(923, __c115, 3) as any as S.Schema<UpdateOrganizationReleaseResponse>,
+  input: __S(3136, __c196, 0) as any as S.Schema<UpdateOrganizationReleaseRequest>,
+  output: __S(3138, __c196, 2) as any as S.Schema<UpdateOrganizationReleaseResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21909,8 +21925,8 @@ export const updateOrganizationReleaseFile: API.OperationMethod<
   UpdateOrganizationReleaseFileError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(924, __c115, 4) as any as S.Schema<UpdateOrganizationReleaseFileRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<UpdateOrganizationReleaseFileResponse>,
+  input: __S(3152, __c197, 0) as any as S.Schema<UpdateOrganizationReleaseFileRequest>,
+  output: __S(5600, __c350, 0) as any as S.Schema<UpdateOrganizationReleaseFileResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21924,8 +21940,8 @@ export const updateOrganizationScimV2Group: API.OperationMethod<
   UpdateOrganizationScimV2GroupError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(927, __c115, 7) as any as S.Schema<UpdateOrganizationScimV2GroupRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<UpdateOrganizationScimV2GroupResponse>,
+  input: __S(3170, __c198, 2) as any as S.Schema<UpdateOrganizationScimV2GroupRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<UpdateOrganizationScimV2GroupResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21939,8 +21955,8 @@ export const updateOrganizationScimV2User: API.OperationMethod<
   UpdateOrganizationScimV2UserError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(930, __c116, 2) as any as S.Schema<UpdateOrganizationScimV2UserRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<UpdateOrganizationScimV2UserResponse>,
+  input: __S(3186, __c199, 2) as any as S.Schema<UpdateOrganizationScimV2UserRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<UpdateOrganizationScimV2UserResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21954,8 +21970,8 @@ export const updateOrganizationWorkflow: API.OperationMethod<
   UpdateOrganizationWorkflowError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(934, __c116, 6) as any as S.Schema<UpdateOrganizationWorkflowRequest>,
-  output: __S(938, __c117, 2) as any as S.Schema<UpdateOrganizationWorkflowResponse>,
+  input: __S(3203, __c200, 3) as any as S.Schema<UpdateOrganizationWorkflowRequest>,
+  output: __S(3207, __c200, 7) as any as S.Schema<UpdateOrganizationWorkflowResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21969,8 +21985,8 @@ export const updateOrganizationWorkflows: API.OperationMethod<
   UpdateOrganizationWorkflowsError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(940, __c117, 4) as any as S.Schema<UpdateOrganizationWorkflowsRequest>,
-  output: __S(946, __c118, 2) as any as S.Schema<UpdateOrganizationWorkflowsResponse>,
+  input: __S(3217, __c201, 1) as any as S.Schema<UpdateOrganizationWorkflowsRequest>,
+  output: __S(3223, __c201, 7) as any as S.Schema<UpdateOrganizationWorkflowsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21984,8 +22000,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(949, __c118, 5) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(952, __c119, 0) as any as S.Schema<UpdateProjectResponse>,
+  input: __S(3234, __c202, 2) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(3237, __c202, 5) as any as S.Schema<UpdateProjectResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -21999,8 +22015,8 @@ export const updateProjectCodeOwners: API.OperationMethod<
   UpdateProjectCodeOwnersError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(953, __c119, 1) as any as S.Schema<UpdateProjectCodeOwnersRequest>,
-  output: __S(954, __c119, 2) as any as S.Schema<UpdateProjectCodeOwnersResponse>,
+  input: __S(3248, __c203, 0) as any as S.Schema<UpdateProjectCodeOwnersRequest>,
+  output: __S(3249, __c203, 1) as any as S.Schema<UpdateProjectCodeOwnersResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22014,8 +22030,8 @@ export const updateProjectEnvironment: API.OperationMethod<
   UpdateProjectEnvironmentError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(955, __c119, 3) as any as S.Schema<UpdateProjectEnvironmentRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UpdateProjectEnvironmentResponse>,
+  input: __S(3264, __c204, 0) as any as S.Schema<UpdateProjectEnvironmentRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<UpdateProjectEnvironmentResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22029,8 +22045,8 @@ export const updateProjectFilter: API.OperationMethod<
   UpdateProjectFilterError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(956, __c119, 4) as any as S.Schema<UpdateProjectFilterRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<UpdateProjectFilterResponse>,
+  input: __S(3280, __c205, 0) as any as S.Schema<UpdateProjectFilterRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<UpdateProjectFilterResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22044,8 +22060,8 @@ export const updateProjectKey: API.OperationMethod<
   UpdateProjectKeyError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(958, __c119, 6) as any as S.Schema<UpdateProjectKeyRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<UpdateProjectKeyResponse>,
+  input: __S(3361, __c210, 1) as any as S.Schema<UpdateProjectKeyRequest>,
+  output: __S(3680, __c230, 0) as any as S.Schema<UpdateProjectKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22059,8 +22075,8 @@ export const updateProjectMonitor: API.OperationMethod<
   UpdateProjectMonitorError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(959, __c119, 7) as any as S.Schema<UpdateProjectMonitorRequest>,
-  output: __S(961, __c120, 1) as any as S.Schema<UpdateProjectMonitorResponse>,
+  input: __S(3376, __c211, 0) as any as S.Schema<UpdateProjectMonitorRequest>,
+  output: __S(3378, __c211, 2) as any as S.Schema<UpdateProjectMonitorResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22074,8 +22090,8 @@ export const updateProjectOwnership: API.OperationMethod<
   UpdateProjectOwnershipError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(962, __c120, 2) as any as S.Schema<UpdateProjectOwnershipRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<UpdateProjectOwnershipResponse>,
+  input: __S(3392, __c212, 0) as any as S.Schema<UpdateProjectOwnershipRequest>,
+  output: __S(3872, __c242, 0) as any as S.Schema<UpdateProjectOwnershipResponse>,
   errors: [BadRequest, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22089,8 +22105,8 @@ export const updateProjectReleaseFile: API.OperationMethod<
   UpdateProjectReleaseFileError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(963, __c120, 3) as any as S.Schema<UpdateProjectReleaseFileRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<UpdateProjectReleaseFileResponse>,
+  input: __S(3408, __c213, 0) as any as S.Schema<UpdateProjectReleaseFileRequest>,
+  output: __S(5600, __c350, 0) as any as S.Schema<UpdateProjectReleaseFileResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22104,8 +22120,8 @@ export const updateProjectSymbolSource: API.OperationMethod<
   UpdateProjectSymbolSourceError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(965, __c120, 5) as any as S.Schema<UpdateProjectSymbolSourceRequest>,
-  output: __S(966, __c120, 6) as any as S.Schema<UpdateProjectSymbolSourceResponse>,
+  input: __S(3425, __c214, 1) as any as S.Schema<UpdateProjectSymbolSourceRequest>,
+  output: __S(3426, __c214, 2) as any as S.Schema<UpdateProjectSymbolSourceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22119,8 +22135,8 @@ export const updateSentryApp: API.OperationMethod<
   UpdateSentryAppError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(967, __c120, 7) as any as S.Schema<UpdateSentryAppRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<UpdateSentryAppResponse>,
+  input: __S(3440, __c215, 0) as any as S.Schema<UpdateSentryAppRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<UpdateSentryAppResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22134,8 +22150,8 @@ export const updateTeam: API.OperationMethod<
   UpdateTeamError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(968, __c121, 0) as any as S.Schema<UpdateTeamRequest>,
-  output: __S(498, __c62, 2) as any as S.Schema<UpdateTeamResponse>,
+  input: __S(3456, __c216, 0) as any as S.Schema<UpdateTeamRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<UpdateTeamResponse>,
   errors: [Forbidden, NotFound, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22149,8 +22165,8 @@ export const updateTeamExternalTeam: API.OperationMethod<
   UpdateTeamExternalTeamError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(969, __c121, 1) as any as S.Schema<UpdateTeamExternalTeamRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UpdateTeamExternalTeamResponse>,
+  input: __S(3472, __c217, 0) as any as S.Schema<UpdateTeamExternalTeamRequest>,
+  output: __S(4080, __c255, 0) as any as S.Schema<UpdateTeamExternalTeamResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22169,8 +22185,8 @@ export const uploadOrganizationReleaseFile: API.OperationMethod<
   UploadOrganizationReleaseFileError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(970, __c121, 2) as any as S.Schema<UploadOrganizationReleaseFileRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<UploadOrganizationReleaseFileResponse>,
+  input: __S(3488, __c218, 0) as any as S.Schema<UploadOrganizationReleaseFileRequest>,
+  output: __S(5600, __c350, 0) as any as S.Schema<UploadOrganizationReleaseFileResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22184,8 +22200,8 @@ export const uploadProjectPreprodArtifactSnapshot: API.OperationMethod<
   UploadProjectPreprodArtifactSnapshotError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(971, __c121, 3) as any as S.Schema<UploadProjectPreprodArtifactSnapshotRequest>,
-  output: __S(972, __c121, 4) as any as S.Schema<UploadProjectPreprodArtifactSnapshotResponse>,
+  input: __S(3504, __c219, 0) as any as S.Schema<UploadProjectPreprodArtifactSnapshotRequest>,
+  output: __S(3505, __c219, 1) as any as S.Schema<UploadProjectPreprodArtifactSnapshotResponse>,
   errors: [BadRequest, Forbidden, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22204,8 +22220,8 @@ export const uploadProjectReleaseFile: API.OperationMethod<
   UploadProjectReleaseFileError,
   SentryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(973, __c121, 5) as any as S.Schema<UploadProjectReleaseFileRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<UploadProjectReleaseFileResponse>,
+  input: __S(3552, __c222, 0) as any as S.Schema<UploadProjectReleaseFileRequest>,
+  output: __S(5600, __c350, 0) as any as S.Schema<UploadProjectReleaseFileResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownSentryError],
   protocol: SentryProtocol,
   retry: Retry.Retry,
@@ -22215,425 +22231,11 @@ export const uploadProjectReleaseFile: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          email: S.String,
-          role: S.optional(S.String),
-          orgRole: S.optional(S.String),
-          teams: S.optional(__S(0, __c0, 0)),
-          teamRoles: S.optional(S.NullOr(__S(2, __c0, 2))),
-          sendInvite: S.optional(S.Boolean),
-          reinvite: S.optional(S.Boolean),
-          regenerate: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/members/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddOrganizationMemberRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          externalId: S.optional(S.String),
-          userId: S.optional(S.String),
-          teamId: S.optional(S.String),
-          id: S.String,
-          provider: S.String,
-          externalName: S.String,
-          integrationId: S.String,
-        }),
-      ).annotate({
-        identifier: "AddOrganizationMemberResponseExternalUsersItem",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "AddOrganizationMemberResponseUserIdentitiesItemOrganization",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "AddOrganizationMemberResponseUserIdentitiesItemProvider",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          organization: __S(6, __c0, 6),
-          provider: __S(7, __c0, 7),
-          dateVerified: S.String,
-          dateSynced: S.String,
-        }),
-      ).annotate({
-        identifier: "AddOrganizationMemberResponseUserIdentitiesItem",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          avatarType: S.optional(S.String),
-          avatarUuid: S.optional(S.NullOr(S.String)),
-          avatarUrl: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "AddOrganizationMemberResponseUserAvatar",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          email: S.String,
-          is_verified: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "AddOrganizationMemberResponseUserEmailsItem",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          identities: S.optional(__S(9, __c1, 1)),
-          avatar: S.optional(__S(10, __c1, 2)),
-          authenticators: S.optional(__S(0, __c0, 0)),
-          canReset2fa: S.optional(S.Boolean),
-          id: S.String,
-          name: S.String,
-          username: S.String,
-          email: S.String,
-          avatarUrl: S.String,
-          isActive: S.Boolean,
-          isSuspended: S.Boolean,
-          hasPasswordAuth: S.Boolean,
-          isManaged: S.Boolean,
-          dateJoined: S.String,
-          lastLogin: S.NullOr(S.String),
-          has2fa: S.Boolean,
-          lastActive: S.NullOr(S.String),
-          isSuperuser: S.Boolean,
-          isStaff: S.Boolean,
-          experiments: __S(1, __c0, 1),
-          emails: __S(12, __c1, 4),
-        }),
-      ).annotate({
-        identifier: "AddOrganizationMemberResponseUser",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          idp_provisioned: S.Boolean.pipe(T.Body("idp:provisioned")),
-          idp_role_restricted: S.Boolean.pipe(T.Body("idp:role-restricted")),
-          sso_linked: S.Boolean.pipe(T.Body("sso:linked")),
-          sso_invalid: S.Boolean.pipe(T.Body("sso:invalid")),
-          member_limit_restricted: S.Boolean.pipe(T.Body("member-limit:restricted")),
-          partnership_restricted: S.Boolean.pipe(T.Body("partnership:restricted")),
-        }),
-      ).annotate({
-        identifier: "AddOrganizationMemberResponseFlags",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          externalUsers: S.optional(__S(5, __c0, 5)),
-          id: S.String,
-          email: S.String,
-          name: S.String,
-          user: S.NullOr(__S(13, __c1, 5)),
-          orgRole: S.String,
-          pending: S.Boolean,
-          expired: S.Boolean,
-          flags: __S(14, __c1, 6),
-          dateCreated: S.String,
-          inviteStatus: S.String,
-          inviterName: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "AddOrganizationMemberResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          member_id: S.String.pipe(T.Label()),
-          team_id_or_slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/members/{member_id}/teams/{team_id_or_slug}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddOrganizationMemberTeamRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          slug: S.String,
-          name: S.String,
-          dateCreated: S.NullOr(S.String),
-          isMember: S.Boolean,
-          teamRole: S.NullOr(S.String),
-          flags: __S(1, __c0, 1),
-          access: __S(17, __c2, 1),
-          hasAccess: S.Boolean,
-          isPending: S.Boolean,
-          memberCount: S.Number,
-          avatar: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "AddOrganizationMemberTeamResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          casing: S.String,
-        }),
-      ).annotate({
-        identifier: "AddProjectSymbolSourceRequestLayout",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filetypes: S.optional(__S(20, __c2, 4)),
-          path_patterns: S.optional(__S(17, __c2, 1)),
-          requires_checksum: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AddProjectSymbolSourceRequestFilters",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           project_id_or_slug: S.String.pipe(T.Label()),
-          type: S.String,
-          name: S.String,
-          id: S.optional(S.String),
-          layout: S.optional(__S(19, __c2, 3)),
-          filters: S.optional(__S(21, __c2, 5)),
-          url: S.optional(S.String),
-          username: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          bucket: S.optional(S.String),
-          region: S.optional(S.String),
-          access_key: S.optional(S.String),
-          secret_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          prefix: S.optional(S.String),
-          client_email: S.optional(S.String),
-          private_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          account: S.optional(S.String),
-          container: S.optional(S.String),
-          tenant_id: S.optional(S.String),
-          client_id: S.optional(S.String),
-          client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/symbol-sources/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddProjectSymbolSourceRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "AddProjectSymbolSourceResponse",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          team_id_or_slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/teams/{team_id_or_slug}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "AddProjectTeamRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          slug: S.String,
-        }),
-      ).annotate({
-        identifier: "AddProjectTeamResponseTeam",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          stats: S.optional(S.Unknown),
-          transactionStats: S.optional(S.Unknown),
-          sessionStats: S.optional(S.Unknown),
-          id: S.String,
-          slug: S.String,
-          name: S.String,
-          platform: S.NullOr(S.String),
-          dateCreated: S.String,
-          isBookmarked: S.Boolean,
-          isMember: S.Boolean,
-          features: __S(17, __c2, 1),
-          firstEvent: S.NullOr(S.String),
-          firstTransactionEvent: S.Boolean,
-          access: __S(17, __c2, 1),
-          hasAccess: S.Boolean,
-          hasFeedbacks: S.Boolean,
-          hasFlags: S.Boolean,
-          hasMinifiedStackTrace: S.Boolean,
-          hasMonitors: S.Boolean,
-          hasNewFeedbacks: S.Boolean,
-          hasProfiles: S.Boolean,
-          hasReplays: S.Boolean,
-          hasSessions: S.Boolean,
-          hasInsightsHttp: S.Boolean,
-          hasInsightsDb: S.Boolean,
-          hasInsightsAssets: S.Boolean,
-          hasInsightsAppStart: S.Boolean,
-          hasInsightsScreenLoad: S.Boolean,
-          hasInsightsVitals: S.Boolean,
-          hasInsightsCaches: S.Boolean,
-          hasInsightsQueues: S.Boolean,
-          hasInsightsAgentMonitoring: S.Boolean,
-          hasInsightsMCP: S.Boolean,
-          hasLogs: S.Boolean,
-          hasTraceMetrics: S.Boolean,
-          isInternal: S.Boolean,
-          isPublic: S.Boolean,
-          avatar: __S(10, __c1, 2),
-          color: S.String,
-          status: S.String,
-          team: S.optional(__S(25, __c3, 1)),
-          teams: __S(26, __c3, 2),
-        }),
-      ).annotate({ identifier: "AddProjectTeamResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          inRelease: S.optional(S.String),
-          inNextRelease: S.optional(S.Boolean),
-          inCommit: S.optional(S.String),
-          ignoreDuration: S.optional(S.Number),
-          ignoreCount: S.optional(S.Number),
-          ignoreWindow: S.optional(S.Number),
-          ignoreUserCount: S.optional(S.Number),
-          ignoreUserWindow: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "BulkMutateAListOfIssuesRequestStatusDetails",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          id: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          statusDetails: S.optional(__S(28, __c3, 4)),
-          ignoreDuration: S.optional(S.Number),
-          isPublic: S.optional(S.Boolean),
-          merge: S.optional(S.Boolean),
-          assignedTo: S.optional(S.String),
-          hasSeen: S.optional(S.Boolean),
-          isBookmarked: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/issues/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkMutateAListOfIssuesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          isPublic: S.Boolean,
-          status: S.String,
-          statusDetails: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "BulkMutateAListOfIssuesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          id: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/issues/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkRemoveAListOfIssuesRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BulkRemoveAListOfIssuesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          environmentNames: __S(17, __c2, 1),
+          environmentNames: __S(4368, __c273, 0),
           isHidden: S.Boolean,
         }).pipe(
           T.Http({
@@ -22645,7 +22247,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "BulkUpdateProjectEnvironmentsRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -22655,4700 +22261,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "BulkUpdateProjectEnvironmentsResponseBodyItem",
       });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() => __S(35, __c4, 3).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(16, __c1, 0));
+    case 1:
+      return S.suspend(() => __S(32, __c2, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "BulkUpdateProjectEnvironmentsResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          value: __S(17, __c2, 1),
-        }),
-      ).annotate({
-        identifier: "CreateACustomInboundFilterRequestConditionsItem",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          dataType: S.String,
-          conditions: __S(38, __c4, 6),
-          name: S.optional(S.NullOr(S.String)),
-          active: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/custom-inbound-filters/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateACustomInboundFilterRequest",
-      });
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          value: __S(17, __c2, 1),
-        }),
-      ).annotate({
-        identifier: "CreateACustomInboundFilterResponseConditionsItem",
-      });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          dataType: S.String,
-          conditions: __S(41, __c5, 1),
-          dateCreated: S.String,
-          dateUpdated: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          active: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateACustomInboundFilterResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          issue_id: S.String.pipe(T.Label()),
-          integration_id: S.String.pipe(T.Label()),
-          title: S.String,
-          description: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/integrations/{integration_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAnExternalIssueAndLinkItToAnIssueRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          key: S.String,
-          url: S.String,
-          integrationId: S.Number,
-          displayName: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateAnExternalIssueAndLinkItToAnIssueResponse",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          extraction_state: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardRequestWidgetsItemQueriesItemOnDemandExtraction",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.String,
-          dashboard_id: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardRequestWidgetsItemQueriesItemLinkedDashboardsItem",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          fields: S.optional(__S(45, __c5, 5)),
-          aggregates: S.optional(S.NullOr(__S(45, __c5, 5))),
-          columns: S.optional(S.NullOr(__S(45, __c5, 5))),
-          field_aliases: S.optional(S.NullOr(__S(45, __c5, 5))),
-          name: S.optional(S.String),
-          conditions: S.optional(S.String),
-          orderby: S.optional(S.String),
-          is_hidden: S.optional(S.Boolean),
-          on_demand_extraction: S.optional(__S(46, __c5, 6)),
-          on_demand_extraction_disabled: S.optional(S.Boolean),
-          selected_aggregate: S.optional(S.NullOr(S.Number)),
-          linked_dashboards: S.optional(S.NullOr(__S(48, __c6, 0))),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardRequestWidgetsItemQueriesItem",
-      });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          x: S.Number,
-          y: S.Number,
-          w: S.Number,
-          h: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardRequestWidgetsItemLayout",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          title: S.optional(S.String),
-          description: S.optional(S.NullOr(S.String)),
-          thresholds: S.optional(S.NullOr(__S(1, __c0, 1))),
-          display_type: S.optional(S.String),
-          interval: S.optional(S.String),
-          queries: S.optional(__S(50, __c6, 2)),
-          widget_type: S.optional(S.NullOr(S.String)),
-          limit: S.optional(S.NullOr(S.Number)),
-          layout: S.optional(S.NullOr(__S(51, __c6, 3))),
-          axis_range: S.optional(S.NullOr(S.String)),
-          legend_type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardRequestWidgetsItem",
-      });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.Array(S.Number);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          is_editable_by_everyone: S.Boolean,
-          teams_with_edit_access: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardRequestPermissions",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          title: S.String,
-          id: S.optional(S.String),
-          widgets: S.optional(__S(53, __c6, 5)),
-          projects: S.optional(__S(54, __c6, 6)),
-          environment: S.optional(S.NullOr(__S(17, __c2, 1))),
-          period: S.optional(S.NullOr(S.String)),
-          start: S.optional(S.NullOr(S.String)),
-          end: S.optional(S.NullOr(S.String)),
-          filters: S.optional(__S(1, __c0, 1)),
-          utc: S.optional(S.Boolean),
-          permissions: S.optional(S.NullOr(__S(56, __c7, 0))),
-          is_favorited: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/dashboards/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Number);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          preferredPolarity: S.optional(S.String),
-          timeWindow: S.optional(S.String),
-          max_values: __S(58, __c7, 2),
-          unit: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardResponseWidgetsItemThresholds",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          extractionState: S.String,
-          dashboardWidgetQueryId: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandItem",
-      });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.String,
-          dashboardId: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsItem",
-      });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          fields: __S(45, __c5, 5),
-          aggregates: __S(45, __c5, 5),
-          columns: __S(45, __c5, 5),
-          fieldAliases: __S(45, __c5, 5),
-          conditions: S.String,
-          orderby: S.String,
-          widgetId: S.String,
-          onDemand: __S(61, __c7, 5),
-          isHidden: S.Boolean,
-          selectedAggregate: S.NullOr(S.Number),
-          linkedDashboards: __S(63, __c7, 7),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardResponseWidgetsItemQueriesItem",
-      });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.Record(S.String, S.Number);
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          orderby: S.NullOr(__S(68, __c8, 4)),
-          equations: S.NullOr(__S(70, __c8, 6)),
-          selected_columns: __S(45, __c5, 5),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardResponseWidgetsItemChangedReasonItem",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          title: S.String,
-          description: S.NullOr(S.String),
-          displayType: S.String,
-          thresholds: S.NullOr(__S(59, __c7, 3)),
-          interval: S.String,
-          dateCreated: S.String,
-          dashboardId: S.String,
-          queries: __S(65, __c8, 1),
-          limit: S.NullOr(S.Number),
-          widgetType: S.NullOr(S.String),
-          layout: S.NullOr(__S(66, __c8, 2)),
-          axisRange: S.NullOr(S.String),
-          legendType: S.NullOr(S.String),
-          datasetSource: S.NullOr(S.String),
-          exploreUrls: S.NullOr(__S(17, __c2, 1)),
-          changedReason: S.NullOr(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardResponseWidgetsItem",
-      });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          release: S.optional(__S(17, __c2, 1)),
-          releaseId: S.optional(__S(17, __c2, 1)),
-          globalFilter: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardResponseFilters",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          isEditableByEveryone: S.Boolean,
-          teamsWithEditAccess: __S(55, __c6, 7),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardResponsePermissions",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.optional(__S(17, __c2, 1)),
-          period: S.optional(S.String),
-          utc: S.optional(S.String),
-          expired: S.optional(S.Boolean),
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-          id: S.String,
-          title: S.String,
-          dateCreated: S.String,
-          createdBy: S.NullOr(__S(13, __c1, 5)),
-          widgets: __S(74, __c9, 2),
-          projects: __S(54, __c6, 6),
-          filters: __S(75, __c9, 3),
-          permissions: S.NullOr(__S(76, __c9, 4)),
-          isFavorited: S.Boolean,
-          prebuiltId: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDashboardResponse",
-      });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(0, __c0, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          name: S.String,
-          projects: S.optional(__S(54, __c6, 6)),
-          queryDataset: S.optional(S.String),
-          start: S.optional(S.NullOr(S.String)),
-          end: S.optional(S.NullOr(S.String)),
-          range: S.optional(S.NullOr(S.String)),
-          fields: S.optional(S.NullOr(__S(17, __c2, 1))),
-          orderby: S.optional(S.NullOr(S.String)),
-          rollup: S.optional(S.NullOr(S.Number)),
-          aggregations: S.optional(S.NullOr(__S(79, __c9, 7))),
-          groupby: S.optional(S.NullOr(__S(17, __c2, 1))),
-          conditions: S.optional(S.NullOr(__S(80, __c10, 0))),
-          limit: S.optional(S.NullOr(S.Number)),
-          version: S.optional(S.NullOr(S.Number)),
-          environment: S.optional(S.NullOr(__S(17, __c2, 1))),
-          query: S.optional(S.NullOr(S.String)),
-          widths: S.optional(S.NullOr(__S(17, __c2, 1))),
-          yAxis: S.optional(S.NullOr(__S(17, __c2, 1))),
-          display: S.optional(S.NullOr(S.String)),
-          topEvents: S.optional(S.NullOr(S.Number)),
-          interval: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/discover/saved/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationDiscoverSavedQueryRequest",
-      });
-    case 2:
-      return S.Array(__S(8, __c1, 0));
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          identities: S.optional(__S(82, __c10, 2)),
-          avatar: S.optional(__S(10, __c1, 2)),
-          authenticators: S.optional(__S(78, __c9, 6)),
-          canReset2fa: S.optional(S.Boolean),
-          id: S.String,
-          name: S.String,
-          username: S.String,
-          email: S.String,
-          avatarUrl: S.String,
-          isActive: S.Boolean,
-          isSuspended: S.Boolean,
-          hasPasswordAuth: S.Boolean,
-          isManaged: S.Boolean,
-          dateJoined: S.String,
-          lastLogin: S.NullOr(S.String),
-          has2fa: S.Boolean,
-          lastActive: S.NullOr(S.String),
-          isSuperuser: S.Boolean,
-          isStaff: S.Boolean,
-          experiments: __S(83, __c10, 3),
-          emails: __S(84, __c10, 4),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDiscoverSavedQueryResponseCreatedBy",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.optional(__S(17, __c2, 1)),
-          query: S.optional(S.String),
-          fields: S.optional(__S(17, __c2, 1)),
-          widths: S.optional(__S(17, __c2, 1)),
-          conditions: S.optional(__S(17, __c2, 1)),
-          aggregations: S.optional(__S(17, __c2, 1)),
-          range: S.optional(S.String),
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-          orderby: S.optional(S.String),
-          limit: S.optional(S.String),
-          yAxis: S.optional(__S(17, __c2, 1)),
-          display: S.optional(S.String),
-          topEvents: S.optional(S.Number),
-          interval: S.optional(S.String),
-          exploreQuery: S.optional(__S(1, __c0, 1)),
-          lastVisited: S.optional(S.String),
-          starred: S.optional(S.Boolean),
-          position: S.optional(S.NullOr(S.Number)),
-          id: S.String,
-          name: S.String,
-          projects: __S(54, __c6, 6),
-          version: S.Number,
-          queryDataset: S.String,
-          datasetSource: S.String,
-          expired: S.Boolean,
-          dateCreated: S.String,
-          dateUpdated: S.String,
-          createdBy: __S(85, __c10, 5),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationDiscoverSavedQueryResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          user_id: S.Number,
-          external_name: S.String,
-          provider: S.String,
-          integration_id: S.Number,
-          external_id: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/external-users/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationExternalUserRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          organization_id: S.Number,
-          provider: S.String,
-          is_enabled: S.optional(S.Boolean),
-          enroll_new_projects: S.optional(S.Boolean),
-          config: S.optional(__S(88, __c11, 0)),
-          project_ids: S.optional(__S(54, __c6, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/forwarding/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationForwardingRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          slug: S.String,
-          platform: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationForwardingResponseEnrolledProjectsItem",
-      });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          isEnabled: S.Boolean,
-          dataForwarderId: S.String,
-          project: __S(90, __c11, 2),
-          overrides: __S(67, __c8, 3),
-          effectiveConfig: __S(67, __c8, 3),
-          dateAdded: S.String,
-          dateUpdated: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationForwardingResponseProjectConfigsItem",
-      });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          organizationId: S.String,
-          isEnabled: S.Boolean,
-          enrollNewProjects: S.Boolean,
-          enrolledProjects: __S(91, __c11, 3),
-          provider: S.String,
-          config: S.NullOr(__S(88, __c11, 0)),
-          projectConfigs: __S(93, __c11, 5),
-          dateAdded: S.String,
-          dateUpdated: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationForwardingResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.NullOr(S.String)),
-          end: S.optional(S.NullOr(S.String)),
-          period: S.optional(S.NullOr(S.String)),
-          utc: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationIssueViewRequestTimeFilters",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          name: S.String,
-          query: S.String,
-          projects: __S(54, __c6, 6),
-          environments: __S(17, __c2, 1),
-          timeFilters: __S(95, __c11, 7),
-          querySort: S.optional(S.String),
-          starred: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/group-search-views/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationIssueViewRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdBy: S.NullOr(__S(13, __c1, 5)),
-          name: S.String,
-          query: S.String,
-          querySort: S.String,
-          projects: __S(54, __c6, 6),
-          environments: __S(17, __c2, 1),
-          timeFilters: __S(95, __c11, 7),
-          lastVisited: S.NullOr(S.String),
-          dateCreated: S.String,
-          dateUpdated: S.String,
-          starred: S.Boolean,
-          stars: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationIssueViewResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          schedule_type: S.optional(S.String),
-          schedule: S.Unknown,
-          checkin_margin: S.optional(S.NullOr(S.Number)),
-          max_runtime: S.optional(S.NullOr(S.Number)),
-          timezone: S.optional(S.String),
-          failure_issue_threshold: S.optional(S.NullOr(S.Number)),
-          recovery_threshold: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorRequestConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          target_identifier: S.Number,
-          target_type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorRequestAlertRuleTargetsItem",
-      });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.optional(S.NullOr(S.String)),
-          targets: __S(100, __c12, 4),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorRequestAlertRule",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project: S.String,
-          name: S.String,
-          config: __S(98, __c12, 2),
-          slug: S.optional(S.String),
-          status: S.optional(S.String),
-          owner: S.optional(S.NullOr(S.String)),
-          is_muted: S.optional(S.Boolean),
-          alert_rule: S.optional(__S(101, __c12, 5)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/monitors/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          targetIdentifier: S.Number,
-          targetType: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorResponseAlertRuleTargetsItem",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          targets: __S(104, __c13, 0),
-          environment: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorResponseAlertRule",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          schedule_type: S.String,
-          schedule: S.Unknown,
-          checkin_margin: S.NullOr(S.Number),
-          max_runtime: S.NullOr(S.Number),
-          timezone: S.NullOr(S.String),
-          failure_issue_threshold: S.NullOr(S.Number),
-          recovery_threshold: S.NullOr(S.Number),
-          alert_rule_id: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorResponseConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          stats: S.optional(S.Unknown),
-          transactionStats: S.optional(S.Unknown),
-          sessionStats: S.optional(S.Unknown),
-          id: S.String,
-          slug: S.String,
-          name: S.String,
-          platform: S.NullOr(S.String),
-          dateCreated: S.String,
-          isBookmarked: S.Boolean,
-          isMember: S.Boolean,
-          features: __S(17, __c2, 1),
-          firstEvent: S.NullOr(S.String),
-          firstTransactionEvent: S.Boolean,
-          access: __S(17, __c2, 1),
-          hasAccess: S.Boolean,
-          hasFeedbacks: S.Boolean,
-          hasFlags: S.Boolean,
-          hasMinifiedStackTrace: S.Boolean,
-          hasMonitors: S.Boolean,
-          hasNewFeedbacks: S.Boolean,
-          hasProfiles: S.Boolean,
-          hasReplays: S.Boolean,
-          hasSessions: S.Boolean,
-          hasInsightsHttp: S.Boolean,
-          hasInsightsDb: S.Boolean,
-          hasInsightsAssets: S.Boolean,
-          hasInsightsAppStart: S.Boolean,
-          hasInsightsScreenLoad: S.Boolean,
-          hasInsightsVitals: S.Boolean,
-          hasInsightsCaches: S.Boolean,
-          hasInsightsQueues: S.Boolean,
-          hasInsightsAgentMonitoring: S.Boolean,
-          hasInsightsMCP: S.Boolean,
-          hasLogs: S.Boolean,
-          hasTraceMetrics: S.Boolean,
-          isInternal: S.Boolean,
-          isPublic: S.Boolean,
-          avatar: __S(10, __c1, 2),
-          color: S.String,
-          status: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorResponseProject",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userNotifiedTimestamp: S.String,
-          environmentMutedTimestamp: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorResponseEnvironmentsActiveIncidentBrokenNotice",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          startingTimestamp: S.String,
-          resolvingTimestamp: S.String,
-          brokenNotice: S.NullOr(__S(108, __c13, 4)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorResponseEnvironmentsActiveIncident",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          status: S.String,
-          isMuted: S.Boolean,
-          dateCreated: S.String,
-          lastCheckIn: S.String,
-          nextCheckIn: S.String,
-          nextCheckInLatest: S.String,
-          activeIncident: S.NullOr(__S(109, __c13, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorResponseEnvironments",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          id: S.String,
-          name: S.String,
-          email: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorResponseOwner",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          alertRule: S.optional(__S(105, __c13, 1)),
-          id: S.String,
-          name: S.String,
-          slug: S.String,
-          status: S.String,
-          isMuted: S.Boolean,
-          isUpserting: S.Boolean,
-          config: __S(106, __c13, 2),
-          dateCreated: S.String,
-          project: __S(107, __c13, 3),
-          environments: __S(110, __c13, 6),
-          owner: __S(111, __c13, 7),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationMonitorResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          trigger_type: S.String,
-          service_type: S.String,
-          integration_id: S.optional(S.Number),
-          target_identifier: S.optional(S.String),
-          target_display: S.optional(S.String),
-          projects: S.optional(__S(17, __c2, 1)),
-          sentry_app_id: S.optional(S.Number),
-          target_type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/notifications/actions/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationNotificationsActionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          organizationId: S.Number,
-          integrationId: S.NullOr(S.Number),
-          sentryAppId: S.NullOr(S.Number),
-          projects: __S(54, __c6, 6),
-          serviceType: S.NullOr(S.String),
-          triggerType: S.String,
-          targetType: S.NullOr(S.String),
-          targetIdentifier: S.NullOr(S.String),
-          targetDisplay: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationNotificationsActionResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          name: S.String,
-          slug: S.optional(S.NullOr(S.String)),
-          platform: S.optional(S.NullOr(S.String)),
-          default_rules: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/projects/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationProjectRequest",
-      });
-    case 4:
-      return S.Record(S.String, __S(88, __c11, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationProjectResponseLatestRelease",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          latestDeploys: S.optional(S.NullOr(__S(116, __c14, 4))),
-          options: S.optional(__S(1, __c0, 1)),
-          stats: S.optional(S.Unknown),
-          transactionStats: S.optional(S.Unknown),
-          sessionStats: S.optional(S.Unknown),
-          id: S.String,
-          slug: S.String,
-          name: S.String,
-          platform: S.NullOr(S.String),
-          dateCreated: S.String,
-          isBookmarked: S.Boolean,
-          isMember: S.Boolean,
-          features: __S(17, __c2, 1),
-          firstEvent: S.NullOr(S.String),
-          firstTransactionEvent: S.Boolean,
-          access: __S(17, __c2, 1),
-          hasAccess: S.Boolean,
-          hasFeedbacks: S.Boolean,
-          hasFlags: S.Boolean,
-          hasMinifiedStackTrace: S.Boolean,
-          hasMonitors: S.Boolean,
-          hasNewFeedbacks: S.Boolean,
-          hasProfiles: S.Boolean,
-          hasReplays: S.Boolean,
-          hasSessions: S.Boolean,
-          hasInsightsHttp: S.Boolean,
-          hasInsightsDb: S.Boolean,
-          hasInsightsAssets: S.Boolean,
-          hasInsightsAppStart: S.Boolean,
-          hasInsightsScreenLoad: S.Boolean,
-          hasInsightsVitals: S.Boolean,
-          hasInsightsCaches: S.Boolean,
-          hasInsightsQueues: S.Boolean,
-          hasInsightsAgentMonitoring: S.Boolean,
-          hasInsightsMCP: S.Boolean,
-          hasLogs: S.Boolean,
-          hasTraceMetrics: S.Boolean,
-          team: S.NullOr(__S(25, __c3, 1)),
-          teams: __S(26, __c3, 2),
-          platforms: __S(17, __c2, 1),
-          hasUserReports: S.Boolean,
-          environments: __S(17, __c2, 1),
-          latestRelease: S.NullOr(__S(117, __c14, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationProjectResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          logic_type: S.String,
-          conditions: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationProjectDetectorRequestConditionGroup",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-          workflow_ids: S.optional(__S(54, __c6, 6)),
-          data_sources: S.optional(__S(0, __c0, 0)),
-          config: S.optional(__S(1, __c0, 1)),
-          condition_group: S.optional(__S(119, __c14, 7)),
-          owner: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          enabled: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/projects/{project_id_or_slug}/detectors/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationProjectDetectorRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.optional(S.NullOr(__S(111, __c13, 7))),
-          createdBy: S.optional(S.NullOr(S.String)),
-          latestGroup: S.optional(S.NullOr(__S(1, __c0, 1))),
-          description: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          projectId: S.NullOr(S.String),
-          name: S.String,
-          type: S.String,
-          workflowIds: S.NullOr(__S(17, __c2, 1)),
-          dateCreated: S.String,
-          dateUpdated: S.String,
-          dataSources: S.NullOr(__S(2, __c0, 2)),
-          conditionGroup: S.NullOr(__S(1, __c0, 1)),
-          config: __S(1, __c0, 1),
-          enabled: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationProjectDetectorResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseRequestCommitsItemPatchSetItem",
-      });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          repository: S.optional(S.NullOr(S.String)),
-          message: S.optional(S.NullOr(S.String)),
-          author_name: S.optional(S.NullOr(S.String)),
-          author_email: S.optional(S.NullOr(S.String)),
-          timestamp: S.optional(S.NullOr(S.String)),
-          patch_set: S.optional(S.NullOr(__S(123, __c15, 3))),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseRequestCommitsItem",
-      });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          currentId: S.String,
-          repository: S.String,
-          previousId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseRequestHeadCommitsItem",
-      });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          commit: S.String,
-          repository: S.String,
-          previousCommit: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseRequestRefsItem",
-      });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          version: S.String,
-          projects: __S(0, __c0, 0),
-          ref: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-          dateReleased: S.optional(S.NullOr(S.String)),
-          commits: S.optional(__S(125, __c15, 5)),
-          status: S.optional(S.String),
-          owner: S.optional(S.String),
-          headCommits: S.optional(__S(127, __c15, 7)),
-          refs: S.optional(__S(129, __c16, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/releases/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dateStarted: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          environment: S.String,
-          dateFinished: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseResponseLastDeploy",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          package: S.NullOr(S.String),
-          version: __S(1, __c0, 1),
-          buildHash: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseResponseVersionInfo",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          identities: S.optional(__S(82, __c10, 2)),
-          avatar: S.optional(__S(10, __c1, 2)),
-          authenticators: S.optional(__S(78, __c9, 6)),
-          canReset2fa: S.optional(S.Boolean),
-          id: S.String,
-          name: S.String,
-          username: S.String,
-          email: S.String,
-          avatarUrl: S.String,
-          isActive: S.Boolean,
-          isSuspended: S.Boolean,
-          hasPasswordAuth: S.Boolean,
-          isManaged: S.Boolean,
-          dateJoined: S.String,
-          lastLogin: S.NullOr(S.String),
-          has2fa: S.Boolean,
-          lastActive: S.NullOr(S.String),
-          isSuperuser: S.Boolean,
-          isStaff: S.Boolean,
-          experiments: __S(83, __c10, 3),
-          emails: __S(12, __c1, 4),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseResponseAuthorsItemCase0",
-      });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          durationP50: S.optional(S.NullOr(S.Number)),
-          durationP90: S.optional(S.NullOr(S.Number)),
-          crashFreeUsers: S.optional(S.NullOr(S.Number)),
-          crashFreeSessions: S.optional(S.NullOr(S.Number)),
-          totalUsers: S.optional(S.NullOr(S.Number)),
-          totalUsers24h: S.optional(S.NullOr(S.Number)),
-          totalProjectUsers24h: S.optional(S.NullOr(S.Number)),
-          totalSessions: S.optional(S.NullOr(S.Number)),
-          totalSessions24h: S.optional(S.NullOr(S.Number)),
-          totalProjectSessions24h: S.optional(S.NullOr(S.Number)),
-          adoption: S.optional(S.NullOr(S.Number)),
-          sessionsAdoption: S.optional(S.NullOr(S.Number)),
-          sessionsCrashed: S.Number,
-          sessionsErrored: S.Number,
-          hasHealthData: S.Boolean,
-          stats: __S(83, __c10, 3),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseResponseProjectsItemHealthData",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          healthData: S.optional(S.NullOr(__S(135, __c16, 7))),
-          dateReleased: S.optional(S.NullOr(S.String)),
-          dateCreated: S.optional(S.NullOr(S.String)),
-          dateStarted: S.optional(S.NullOr(S.String)),
-          id: S.Number,
-          slug: S.String,
-          name: S.String,
-          platform: S.NullOr(S.String),
-          platforms: S.NullOr(__S(17, __c2, 1)),
-          hasHealthData: S.Boolean,
-          newGroups: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseResponseProjectsItem",
-      });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ref: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-          dateReleased: S.optional(S.NullOr(S.String)),
-          dateCreated: S.optional(S.NullOr(S.String)),
-          dateStarted: S.optional(S.NullOr(S.String)),
-          owner: S.optional(S.NullOr(__S(1, __c0, 1))),
-          lastCommit: S.optional(S.NullOr(__S(1, __c0, 1))),
-          lastDeploy: S.optional(S.NullOr(__S(131, __c16, 3))),
-          firstEvent: S.optional(S.NullOr(S.String)),
-          lastEvent: S.optional(S.NullOr(S.String)),
-          currentProjectMeta: S.optional(S.NullOr(__S(1, __c0, 1))),
-          userAgent: S.optional(S.NullOr(S.String)),
-          adoptionStages: S.optional(S.NullOr(__S(1, __c0, 1))),
-          id: S.Number,
-          version: S.String,
-          newGroups: S.Number,
-          status: S.String,
-          shortVersion: S.String,
-          versionInfo: S.NullOr(__S(132, __c16, 4)),
-          data: __S(1, __c0, 1),
-          commitCount: S.Number,
-          deployCount: S.Number,
-          authors: __S(134, __c16, 6),
-          projects: __S(137, __c17, 1),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          version: S.String.pipe(T.Label()),
-          environment: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-          dateStarted: S.optional(S.NullOr(S.String)),
-          dateFinished: S.optional(S.NullOr(S.String)),
-          projects: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/releases/{version}/deploys/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseDeployRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          environment: S.String,
-          dateStarted: S.NullOr(S.String),
-          dateFinished: S.String,
-          name: S.NullOr(S.String),
-          url: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationReleaseDeployResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          slug: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/teams/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationTeamRequest",
-      });
-    case 6:
-      return S.Record(S.String, __S(83, __c10, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          task: S.NullOr(S.String),
-          status: S.String,
-          completionSeen: S.NullOr(S.String),
-          dateCompleted: S.String,
-          data: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationTeamResponseOrganizationOnboardingTasksItem",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organizationUrl: S.String,
-          regionUrl: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationTeamResponseOrganizationLinks",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          features: S.optional(__S(17, __c2, 1)),
-          extraOptions: S.optional(__S(142, __c17, 6)),
-          access: S.optional(__S(17, __c2, 1)),
-          onboardingTasks: S.optional(__S(144, __c18, 0)),
-          id: S.String,
-          slug: S.String,
-          status: __S(7, __c0, 7),
-          name: S.String,
-          dateCreated: S.String,
-          isEarlyAdopter: S.Boolean,
-          require2FA: S.Boolean,
-          avatar: __S(10, __c1, 2),
-          links: __S(145, __c18, 1),
-          hasAuthProvider: S.Boolean,
-          allowMemberInvite: S.Boolean,
-          allowMemberProjectCreation: S.Boolean,
-          allowSuperuserAccess: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationTeamResponseOrganization",
-      });
-    case 3:
-      return S.Array(__S(107, __c13, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          slug: S.String,
-          name: S.String,
-          dateCreated: S.NullOr(S.String),
-          isMember: S.Boolean,
-          teamRole: S.NullOr(S.String),
-          flags: __S(1, __c0, 1),
-          access: __S(17, __c2, 1),
-          hasAccess: S.Boolean,
-          isPending: S.Boolean,
-          memberCount: S.Number,
-          avatar: __S(10, __c1, 2),
-          externalTeams: S.optional(__S(5, __c0, 5)),
-          organization: S.optional(__S(146, __c18, 2)),
-          projects: S.optional(__S(147, __c18, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationTeamResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          logic_type: S.String,
-          conditions: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationWorkflowRequestTriggers",
-      });
-    case 6:
-      return S.Array(__S(83, __c10, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          logic_type: S.String,
-          conditions: S.optional(__S(78, __c9, 6)),
-          actions: __S(150, __c18, 6),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationWorkflowRequestActionFiltersItem",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          name: S.String,
-          id: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          detector_ids: S.optional(__S(54, __c6, 6)),
-          config: S.optional(__S(1, __c0, 1)),
-          environment: S.optional(S.NullOr(S.String)),
-          triggers: S.optional(__S(149, __c18, 5)),
-          action_filters: S.optional(__S(152, __c19, 0)),
-          owner: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/workflows/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationWorkflowRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          organizationId: S.optional(S.String),
-          logicType: S.optional(S.String),
-          conditions: S.optional(S.Unknown),
-          actions: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationWorkflowResponseTriggers",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          organizationId: S.optional(S.String),
-          logicType: S.optional(S.String),
-          conditions: S.optional(S.Unknown),
-          actions: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationWorkflowResponseActionFiltersItem",
-      });
-    case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          organizationId: S.String,
-          createdBy: S.NullOr(S.String),
-          dateCreated: S.String,
-          dateUpdated: S.String,
-          triggers: S.NullOr(__S(154, __c19, 2)),
-          actionFilters: S.NullOr(__S(156, __c19, 4)),
-          environment: S.NullOr(S.String),
-          config: __S(1, __c0, 1),
-          detectorIds: S.NullOr(__S(17, __c2, 1)),
-          enabled: S.Boolean,
-          lastTriggered: S.NullOr(S.String),
-          owner: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateOrganizationWorkflowResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-          issueId: S.Number,
-          webUrl: S.String,
-          project: S.String,
-          identifier: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/sentry-app-installations/{uuid}/external-issues/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrUpdateAnExternalIssueRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          issueId: S.String,
-          serviceType: S.String,
-          displayName: S.String,
-          webUrl: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateOrUpdateAnExternalIssueResponse",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          raw: S.String,
-          codeMappingId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/codeowners/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectCodeOwnersRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          slug: S.String,
-          name: S.String,
-          canAdd: S.Boolean,
-          canDisable: S.Boolean,
-          features: __S(17, __c2, 1),
-          aspects: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "CreateProjectCodeOwnersResponseCodeMappingProvider",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          projectId: S.String,
-          projectSlug: S.String,
-          repoId: S.String,
-          repoName: S.String,
-          integrationId: S.NullOr(S.String),
-          provider: S.NullOr(__S(161, __c20, 1)),
-          stackRoot: S.String,
-          sourceRoot: S.String,
-          defaultBranch: S.NullOr(S.String),
-          automaticallyGenerated: S.Boolean,
-          hasCodeOwner: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateProjectCodeOwnersResponseCodeMapping",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          missing_user_emails: __S(17, __c2, 1),
-          missing_external_users: __S(17, __c2, 1),
-          missing_external_teams: __S(17, __c2, 1),
-          teams_without_access: __S(17, __c2, 1),
-          users_without_access: __S(17, __c2, 1),
-        }),
-      ).annotate({
-        identifier: "CreateProjectCodeOwnersResponseErrors",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          pattern: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectCodeOwnersResponseSchemaCase0RulesItemMatcher",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          name: S.String,
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersItem",
-      });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          matcher: __S(164, __c20, 4),
-          owners: __S(166, __c20, 6),
-        }),
-      ).annotate({
-        identifier: "CreateProjectCodeOwnersResponseSchemaCase0RulesItem",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _version: S.Number.pipe(T.Body("$version")),
-          rules: __S(168, __c21, 0),
-        }),
-      ).annotate({
-        identifier: "CreateProjectCodeOwnersResponseSchemaCase0",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          codeMapping: S.optional(__S(162, __c20, 2)),
-          ownershipSyntax: S.optional(S.String),
-          errors: S.optional(__S(163, __c20, 3)),
-          schema: S.optional(S.Unknown),
-          codeOwnersUrl: S.optional(S.String),
-          id: S.String,
-          raw: S.String,
-          dateCreated: S.String,
-          dateUpdated: S.String,
-          dateSynced: S.NullOr(S.String),
-          codeMappingId: S.String,
-          provider: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectCodeOwnersResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.NullOr(S.Number)),
-          window: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "CreateProjectKeyRequestRateLimit",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          rateLimit: S.optional(__S(171, __c21, 3)),
-          useCase: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/keys/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateProjectKeyRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          window: S.Number,
-          count: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateProjectKeyResponseRateLimit",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          secret: S.String.pipe(T.SensitiveValue({})),
-          public: S.String,
-          csp: S.String,
-          security: S.String,
-          minidump: S.String,
-          nel: S.String,
-          unreal: S.String,
-          crons: S.String,
-          cdn: S.String,
-          playstation: S.String,
-          integration: S.String,
-          otlp_traces: S.String,
-          otlp_logs: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateProjectKeyResponseDsn",
-      });
-    case 7:
-      return S.Array(__S(17, __c2, 1));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          choices: __S(175, __c21, 7),
-        }),
-      ).annotate({
-        identifier: "CreateProjectKeyResponseBrowserSdk",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hasReplay: S.Boolean,
-          hasPerformance: S.Boolean,
-          hasDebug: S.Boolean,
-          hasFeedback: S.Boolean,
-          hasLogsAndMetrics: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateProjectKeyResponseDynamicSdkLoaderOptions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          label: S.String,
-          public: S.NullOr(S.String),
-          secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-          projectId: S.Number,
-          isActive: S.Boolean,
-          rateLimit: S.NullOr(__S(173, __c21, 5)),
-          dsn: __S(174, __c21, 6),
-          browserSdkVersion: S.String,
-          browserSdk: __S(176, __c22, 0),
-          dateCreated: S.NullOr(S.String),
-          dynamicSdkLoaderOptions: __S(177, __c22, 1),
-          useCase: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateProjectKeyResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          sha: S.String,
-          repository: S.String,
-          provider: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/preprod/size-analysis/status-checks/skip/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectPreprodSizeAnalysisSkippedStatusCheckRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateProjectPreprodSizeAnalysisSkippedStatusCheckResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          sha: S.String,
-          repository: S.String,
-          provider: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/preprod/snapshots/status-checks/skip/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectPreprodSnapshotSkippedStatusCheckRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateProjectPreprodSnapshotSkippedStatusCheckResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rangeStart: S.String,
-          rangeEnd: S.String,
-          environments: __S(17, __c2, 1),
-          query: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateProjectReplayDeletionJobRequestData",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          data: __S(183, __c22, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/replays/jobs/delete/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectReplayDeletionJobRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          dateCreated: S.String,
-          dateUpdated: S.String,
-          rangeStart: S.String,
-          rangeEnd: S.String,
-          environments: __S(17, __c2, 1),
-          status: S.String,
-          query: S.String,
-          countDeleted: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateProjectReplayDeletionJobResponseData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(185, __c23, 1),
-        }),
-      ).annotate({
-        identifier: "CreateProjectReplayDeletionJobResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          team_id_or_slug: S.String.pipe(T.Label()),
-          team_id: S.Number,
-          external_name: S.String,
-          provider: S.String,
-          integration_id: S.Number,
-          external_id: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/teams/{organization_id_or_slug}/{team_id_or_slug}/external-teams/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTeamExternalTeamRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          team_id_or_slug: S.String.pipe(T.Label()),
-          name: S.String,
-          slug: S.optional(S.NullOr(S.String)),
-          platform: S.optional(S.NullOr(S.String)),
-          default_rules: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/teams/{organization_id_or_slug}/{team_id_or_slug}/projects/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateTeamProjectRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          filter_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/custom-inbound-filters/{filter_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteACustomInboundFilterRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-          external_issue_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/sentry-app-installations/{uuid}/external-issues/{external_issue_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAnExternalIssueRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAnExternalIssueResponse",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          dashboard_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/dashboards/{dashboard_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationDashboardRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          detector_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/detectors/{detector_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationDetectorRequest",
-      });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project: S.optional(__S(194, __c24, 2).pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          sortBy: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(__S(54, __c6, 6).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/detectors/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationDetectorsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          query_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/discover/saved/{query_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationDiscoverSavedQueryRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          external_user_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/external-users/{external_user_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationExternalUserRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          data_forwarder_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/forwarding/{data_forwarder_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationForwardingRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          integration_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/integrations/{integration_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationIntegrationRequest",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          issue_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationIssueRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          issue_id: S.String.pipe(T.Label()),
-          external_issue_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/external-issues/{external_issue_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationIssueExternalIssueRequest",
-      });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          project: S.optional(__S(202, __c25, 2).pipe(T.Query())),
-          id: S.optional(__S(54, __c6, 6).pipe(T.Query())),
-          statsPeriod: S.optional(S.String.pipe(T.Query())),
-          start: S.optional(S.String.pipe(T.Query())),
-          end: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          viewId: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/issues/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationIssuesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          member_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/members/{member_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationMemberRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          member_id: S.String.pipe(T.Label()),
-          team_id_or_slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/members/{member_id}/teams/{team_id_or_slug}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationMemberTeamRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          monitor_id_or_slug: S.String.pipe(T.Label()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/monitors/{monitor_id_or_slug}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationMonitorRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          action_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/notifications/actions/{action_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationNotificationsActionRequest",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          snapshot_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/preprodartifacts/snapshots/{snapshot_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationPreprodArtifactSnapshotRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          version: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/releases/{version}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationReleaseRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          version: S.String.pipe(T.Label()),
-          file_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/releases/{version}/files/{file_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationReleaseFileRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          team_id_or_slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/scim/v2/Groups/{team_id_or_slug}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationScimV2GroupRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          member_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/scim/v2/Users/{member_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationScimV2UserRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          workflow_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/workflows/{workflow_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationWorkflowRequest",
-      });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          query: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(__S(54, __c6, 6).pipe(T.Query())),
-          project: S.optional(__S(214, __c26, 6).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/workflows/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationWorkflowsRequest",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteProjectRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          codeowners_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/codeowners/{codeowners_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectCodeOwnersRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          key_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/keys/{key_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteProjectKeyRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          monitor_id_or_slug: S.String.pipe(T.Label()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/monitors/{monitor_id_or_slug}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectMonitorRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          version: S.String.pipe(T.Label()),
-          file_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/releases/{version}/files/{file_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectReleaseFileRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          replay_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/replays/{replay_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectReplayRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/symbol-sources/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectSymbolSourceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          team_id_or_slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/teams/{team_id_or_slug}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteProjectTeamRequest" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          stats: S.optional(S.Unknown),
-          transactionStats: S.optional(S.Unknown),
-          sessionStats: S.optional(S.Unknown),
-          id: S.String,
-          slug: S.String,
-          name: S.String,
-          platform: S.NullOr(S.String),
-          dateCreated: S.String,
-          isBookmarked: S.Boolean,
-          isMember: S.Boolean,
-          features: __S(17, __c2, 1),
-          firstEvent: S.NullOr(S.String),
-          firstTransactionEvent: S.Boolean,
-          access: __S(17, __c2, 1),
-          hasAccess: S.Boolean,
-          hasFeedbacks: S.Boolean,
-          hasFlags: S.Boolean,
-          hasMinifiedStackTrace: S.Boolean,
-          hasMonitors: S.Boolean,
-          hasNewFeedbacks: S.Boolean,
-          hasProfiles: S.Boolean,
-          hasReplays: S.Boolean,
-          hasSessions: S.Boolean,
-          hasInsightsHttp: S.Boolean,
-          hasInsightsDb: S.Boolean,
-          hasInsightsAssets: S.Boolean,
-          hasInsightsAppStart: S.Boolean,
-          hasInsightsScreenLoad: S.Boolean,
-          hasInsightsVitals: S.Boolean,
-          hasInsightsCaches: S.Boolean,
-          hasInsightsQueues: S.Boolean,
-          hasInsightsAgentMonitoring: S.Boolean,
-          hasInsightsMCP: S.Boolean,
-          hasLogs: S.Boolean,
-          hasTraceMetrics: S.Boolean,
-          isInternal: S.Boolean,
-          isPublic: S.Boolean,
-          avatar: __S(10, __c1, 2),
-          color: S.String,
-          status: S.String,
-          team: S.optional(__S(25, __c3, 1)),
-          teams: __S(26, __c3, 2),
-        }),
-      ).annotate({
-        identifier: "DeleteProjectTeamResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sentry_app_id_or_slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/sentry-apps/{sentry_app_id_or_slug}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSentryAppRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          team_id_or_slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/teams/{organization_id_or_slug}/{team_id_or_slug}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTeamRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          team_id_or_slug: S.String.pipe(T.Label()),
-          external_team_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/teams/{organization_id_or_slug}/{team_id_or_slug}/external-teams/{external_team_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteTeamExternalTeamRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          projects: __S(17, __c2, 1),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/0/organizations/{organization_id_or_slug}/spike-protections/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableSpikeProtectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          projects: __S(17, __c2, 1),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/organizations/{organization_id_or_slug}/spike-protections/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableSpikeProtectionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.String.pipe(T.Label()),
-          expectedExternalIssueUrl: S.optional(S.String.pipe(T.Query())),
-          groupId: S.String,
-          action: S.String,
-          uri: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/0/sentry-app-installations/{uuid}/external-issue-actions/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ExecuteSentryAppInstallationExternalIssueActionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          filter_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/custom-inbound-filters/{filter_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetACustomInboundFilterRequest",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          value: __S(17, __c2, 1),
-        }),
-      ).annotate({
-        identifier: "GetACustomInboundFilterResponseConditionsItem",
-      });
-    case 1:
-      return S.Array(__S(232, __c29, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          dataType: S.String,
-          conditions: __S(233, __c29, 1),
-          dateCreated: S.String,
-          dateUpdated: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          active: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GetACustomInboundFilterResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          issue_id: S.String.pipe(T.Label()),
-          integration_id: S.String.pipe(T.Label()),
-          action: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/integrations/{integration_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAnIntegrationSIssueConfigForAnIssueRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          description: S.String,
-        }),
-      ).annotate({
-        identifier: "GetAnIntegrationSIssueConfigForAnIssueResponseMissingFeaturesItem",
-      });
-    case 5:
-      return S.Array(__S(236, __c29, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          slug: S.String,
-          name: S.String,
-          canAdd: S.Boolean,
-          canDisable: S.Boolean,
-          features: __S(45, __c5, 5),
-          aspects: __S(83, __c10, 3),
-        }),
-      ).annotate({
-        identifier: "GetAnIntegrationSIssueConfigForAnIssueResponseProvider",
-      });
-    case 7:
-      return S.Array(__S(83, __c10, 3));
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          icon: S.NullOr(S.String),
-          domainName: S.NullOr(S.String),
-          accountType: S.NullOr(S.String),
-          scopes: S.NullOr(__S(17, __c2, 1)),
-          outOfDate: S.NullOr(S.Boolean),
-          missingFeatures: S.NullOr(__S(237, __c29, 5)),
-          status: S.String,
-          provider: __S(238, __c29, 6),
-          linkIssueConfig: S.optional(__S(239, __c29, 7)),
-          createIssueConfig: S.optional(__S(239, __c29, 7)),
-        }),
-      ).annotate({
-        identifier: "GetAnIntegrationSIssueConfigForAnIssueResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project_id_or_slug: S.String.pipe(T.Label()),
-          hook_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/hooks/{hook_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetAServiceHookRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dateCreated: S.String,
-          events: __S(17, __c2, 1),
-          id: S.String,
-          secret: S.String.pipe(T.SensitiveValue({})),
-          status: S.String,
-          url: S.String,
-        }),
-      ).annotate({ identifier: "GetAServiceHookResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          version: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/releases/{version}/commitfiles/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFilesChangedInAReleaseSCommitsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          detailed: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetOrganizationRequest" });
-    case 5:
-      return S.Record(S.String, __S(1, __c0, 1));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          features: S.optional(__S(17, __c2, 1)),
-          extraOptions: S.optional(__S(245, __c30, 5)),
-          access: S.optional(__S(17, __c2, 1)),
-          onboardingTasks: S.optional(__S(144, __c18, 0)),
-          id: S.String,
-          slug: S.String,
-          status: __S(7, __c0, 7),
-          name: S.String,
-          dateCreated: S.String,
-          isEarlyAdopter: S.Boolean,
-          require2FA: S.Boolean,
-          avatar: __S(10, __c1, 2),
-          links: __S(145, __c18, 1),
-          hasAuthProvider: S.Boolean,
-          allowMemberInvite: S.Boolean,
-          allowMemberProjectCreation: S.Boolean,
-          allowSuperuserAccess: S.Boolean,
-        }),
-      ).annotate({ identifier: "GetOrganizationResponse" });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          conversation_id: S.String.pipe(T.Label()),
-          project: S.optional(__S(247, __c30, 7).pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          statsPeriod: S.optional(S.String.pipe(T.Query())),
-          start: S.optional(S.String.pipe(T.Query())),
-          end: S.optional(S.String.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/agents/conversations/{conversation_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationAIConversationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          slug: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationAIConversationResponseProjectsItem",
-      });
-    case 2:
-      return S.Array(__S(249, __c31, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          model: S.NullOr(S.String),
-          llmCalls: S.Number,
-          inputTokens: S.Number,
-          outputTokens: S.Number,
-          totalTokens: S.Number,
-          cacheReadTokens: S.Number,
-          cacheWriteTokens: S.Number,
-          reasoningTokens: S.Number,
-          inputCost: S.Number,
-          outputCost: S.Number,
-          totalCost: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationAIConversationResponseStatsUsageByModelItem",
-      });
-    case 4:
-      return S.Array(__S(251, __c31, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endTimestamp: S.Number,
-          generationDuration: S.Number,
-          inputTokens: S.Number,
-          llmCalls: S.Number,
-          outputTokens: S.Number,
-          startTimestamp: S.Number,
-          toolCalls: S.Number,
-          toolErrors: S.Number,
-          toolNames: __S(17, __c2, 1),
-          totalCost: S.Number,
-          totalTokens: S.Number,
-          usageByModel: __S(252, __c31, 4),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationAIConversationResponseStats",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conversationId: S.String,
-          title: S.NullOr(S.String),
-          projects: __S(250, __c31, 2),
-          webUrl: S.String,
-          spans: __S(2, __c0, 2),
-          stats: __S(253, __c31, 5),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationAIConversationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          providerKey: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/config/integrations/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationConfigIntegrationsRequest",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          slug: S.String,
-          name: S.String,
-          metadata: S.Unknown,
-          canAdd: S.Boolean,
-          canDisable: S.Boolean,
-          features: __S(45, __c5, 5),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationConfigIntegrationsResponseProvidersItem",
-      });
-    case 1:
-      return S.Array(__S(256, __c32, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          providers: __S(257, __c32, 1),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationConfigIntegrationsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          dashboard_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/dashboards/{dashboard_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationDashboardRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          preferredPolarity: S.optional(S.String),
-          timeWindow: S.optional(S.String),
-          max_values: __S(58, __c7, 2),
-          unit: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationDashboardResponseWidgetsItemThresholds",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          fields: __S(45, __c5, 5),
-          aggregates: __S(45, __c5, 5),
-          columns: __S(45, __c5, 5),
-          fieldAliases: __S(45, __c5, 5),
-          conditions: S.String,
-          orderby: S.String,
-          widgetId: S.String,
-          onDemand: __S(61, __c7, 5),
-          isHidden: S.Boolean,
-          selectedAggregate: S.NullOr(S.Number),
-          linkedDashboards: __S(63, __c7, 7),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationDashboardResponseWidgetsItemQueriesItem",
-      });
-    case 6:
-      return S.Array(__S(261, __c32, 5));
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(263, __c32, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          orderby: S.NullOr(__S(68, __c8, 4)),
-          equations: S.NullOr(__S(264, __c33, 0)),
-          selected_columns: __S(45, __c5, 5),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationDashboardResponseWidgetsItemChangedReasonItem",
-      });
-    case 2:
-      return S.Array(__S(265, __c33, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          title: S.String,
-          description: S.NullOr(S.String),
-          displayType: S.String,
-          thresholds: S.NullOr(__S(260, __c32, 4)),
-          interval: S.String,
-          dateCreated: S.String,
-          dashboardId: S.String,
-          queries: __S(262, __c32, 6),
-          limit: S.NullOr(S.Number),
-          widgetType: S.NullOr(S.String),
-          layout: S.NullOr(__S(66, __c8, 2)),
-          axisRange: S.NullOr(S.String),
-          legendType: S.NullOr(S.String),
-          datasetSource: S.NullOr(S.String),
-          exploreUrls: S.NullOr(__S(17, __c2, 1)),
-          changedReason: S.NullOr(__S(266, __c33, 2)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationDashboardResponseWidgetsItem",
-      });
-    case 4:
-      return S.Array(__S(267, __c33, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.optional(__S(17, __c2, 1)),
-          period: S.optional(S.String),
-          utc: S.optional(S.String),
-          expired: S.optional(S.Boolean),
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-          id: S.String,
-          title: S.String,
-          dateCreated: S.String,
-          createdBy: S.NullOr(__S(13, __c1, 5)),
-          widgets: __S(268, __c33, 4),
-          projects: __S(54, __c6, 6),
-          filters: __S(75, __c9, 3),
-          permissions: S.NullOr(__S(76, __c9, 4)),
-          isFavorited: S.Boolean,
-          prebuiltId: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationDashboardResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          detector_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/detectors/{detector_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationDetectorRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.optional(S.NullOr(__S(111, __c13, 7))),
-          createdBy: S.optional(S.NullOr(S.String)),
-          latestGroup: S.optional(S.NullOr(__S(1, __c0, 1))),
-          description: S.optional(S.NullOr(S.String)),
-          id: S.String,
-          projectId: S.NullOr(S.String),
-          name: S.String,
-          type: S.String,
-          workflowIds: S.NullOr(__S(17, __c2, 1)),
-          dateCreated: S.String,
-          dateUpdated: S.String,
-          dataSources: S.NullOr(__S(2, __c0, 2)),
-          conditionGroup: S.NullOr(__S(1, __c0, 1)),
-          config: __S(1, __c0, 1),
-          enabled: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationDetectorResponse",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          query_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/discover/saved/{query_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationDiscoverSavedQueryRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          identities: S.optional(__S(82, __c10, 2)),
-          avatar: S.optional(__S(10, __c1, 2)),
-          authenticators: S.optional(__S(78, __c9, 6)),
-          canReset2fa: S.optional(S.Boolean),
-          id: S.String,
-          name: S.String,
-          username: S.String,
-          email: S.String,
-          avatarUrl: S.String,
-          isActive: S.Boolean,
-          isSuspended: S.Boolean,
-          hasPasswordAuth: S.Boolean,
-          isManaged: S.Boolean,
-          dateJoined: S.String,
-          lastLogin: S.NullOr(S.String),
-          has2fa: S.Boolean,
-          lastActive: S.NullOr(S.String),
-          isSuperuser: S.Boolean,
-          isStaff: S.Boolean,
-          experiments: __S(83, __c10, 3),
-          emails: __S(12, __c1, 4),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationDiscoverSavedQueryResponseCreatedBy",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.optional(__S(17, __c2, 1)),
-          query: S.optional(S.String),
-          fields: S.optional(__S(17, __c2, 1)),
-          widths: S.optional(__S(17, __c2, 1)),
-          conditions: S.optional(__S(17, __c2, 1)),
-          aggregations: S.optional(__S(17, __c2, 1)),
-          range: S.optional(S.String),
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-          orderby: S.optional(S.String),
-          limit: S.optional(S.String),
-          yAxis: S.optional(__S(17, __c2, 1)),
-          display: S.optional(S.String),
-          topEvents: S.optional(S.Number),
-          interval: S.optional(S.String),
-          exploreQuery: S.optional(__S(1, __c0, 1)),
-          lastVisited: S.optional(S.String),
-          starred: S.optional(S.Boolean),
-          position: S.optional(S.NullOr(S.Number)),
-          id: S.String,
-          name: S.String,
-          projects: __S(54, __c6, 6),
-          version: S.Number,
-          queryDataset: S.String,
-          datasetSource: S.String,
-          expired: S.Boolean,
-          dateCreated: S.String,
-          dateUpdated: S.String,
-          createdBy: __S(273, __c34, 1),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationDiscoverSavedQueryResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          integration_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/integrations/{integration_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationIntegrationRequest",
-      });
-    case 4:
-      return S.Array(__S(236, __c29, 4));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          icon: S.NullOr(S.String),
-          domainName: S.NullOr(S.String),
-          accountType: S.NullOr(S.String),
-          scopes: S.NullOr(__S(17, __c2, 1)),
-          outOfDate: S.NullOr(S.Boolean),
-          missingFeatures: S.NullOr(__S(276, __c34, 4)),
-          status: S.String,
-          provider: S.Unknown,
-          configOrganization: S.Unknown,
-          configData: S.Unknown,
-          externalId: S.String,
-          organizationId: S.Number,
-          organizationIntegrationStatus: S.String,
-          gracePeriodEnd: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIntegrationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          issue_id: S.String.pipe(T.Label()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          expand: S.optional(__S(20, __c2, 4).pipe(T.Query())),
-          collapse: S.optional(__S(20, __c2, 4).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationIssueRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          blocker: S.String,
-          progress: S.String,
-          status: S.String,
-          viewCount: S.Number,
-          hasOpenFixPr: S.Boolean,
-          isAssigned: S.Boolean,
-          hasRootCause: S.Boolean,
-          lastCompletedAutofixStep: S.String,
-          lastProgressedAt: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueResponseDerivedData",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          identities: S.optional(__S(9, __c1, 1)),
-          avatar: S.optional(__S(10, __c1, 2)),
-          authenticators: S.optional(__S(78, __c9, 6)),
-          canReset2fa: S.optional(S.Boolean),
-          id: S.String,
-          name: S.String,
-          username: S.String,
-          email: S.String,
-          avatarUrl: S.String,
-          isActive: S.Boolean,
-          isSuspended: S.Boolean,
-          hasPasswordAuth: S.Boolean,
-          isManaged: S.Boolean,
-          dateJoined: S.String,
-          lastLogin: S.NullOr(S.String),
-          has2fa: S.Boolean,
-          lastActive: S.NullOr(S.String),
-          isSuperuser: S.Boolean,
-          isStaff: S.Boolean,
-          experiments: __S(1, __c0, 1),
-          emails: __S(12, __c1, 4),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueResponseStatusDetailsActor",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dateCreated: S.String,
-          syncCount: S.Number,
-          totalEvents: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueResponseStatusDetailsInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ignoreCount: S.optional(S.Number),
-          ignoreUntil: S.optional(S.String),
-          ignoreUserCount: S.optional(S.Number),
-          ignoreUserWindow: S.optional(S.Number),
-          ignoreWindow: S.optional(S.Number),
-          actor: S.optional(__S(280, __c35, 0)),
-          inNextRelease: S.optional(S.Boolean),
-          inRelease: S.optional(S.String),
-          inCommit: S.optional(S.String),
-          pendingEvents: S.optional(S.Number),
-          info: S.optional(S.NullOr(__S(281, __c35, 1))),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueResponseStatusDetails",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          slug: S.String,
-          platform: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueResponseProject",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: S.optional(S.Boolean),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueResponseSubscriptionDetails",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.String,
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueResponseAnnotationsItem",
-      });
-    case 6:
-      return S.Array(__S(285, __c35, 5));
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(287, __c35, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          until: S.NullOr(S.String),
-          count: S.NullOr(S.Number),
-          window: S.NullOr(S.Number),
-          user_count: S.NullOr(S.Number),
-          user_window: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueResponseInboxReasonDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.Number,
-          reason_details: S.NullOr(__S(289, __c36, 1)),
-          date_added: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueResponseInbox",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          owner: S.String,
-          date_added: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueResponseOwnersItem",
-      });
-    case 4:
-      return S.Array(__S(291, __c36, 3));
-    case 5:
-      return S.Array(__S(159, __c19, 7));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          isUnhandled: S.optional(S.Boolean),
-          count: S.optional(S.String),
-          userCount: S.optional(S.Number),
-          firstSeen: S.optional(S.NullOr(S.String)),
-          lastSeen: S.optional(S.NullOr(S.String)),
-          derivedData: S.optional(__S(279, __c34, 7)),
-          id: S.String,
-          shareId: S.NullOr(S.String),
-          shortId: S.String,
-          title: S.String,
-          culprit: S.NullOr(S.String),
-          permalink: S.String,
-          logger: S.NullOr(S.String),
-          level: S.String,
-          status: S.String,
-          statusDetails: __S(282, __c35, 2),
-          substatus: S.NullOr(S.String),
-          isPublic: S.Boolean,
-          platform: S.NullOr(S.String),
-          priority: S.NullOr(S.String),
-          priorityLockedAt: S.NullOr(S.String),
-          seerFixabilityScore: S.NullOr(S.Number),
-          seerAutofixLastTriggered: S.NullOr(S.String),
-          seerExplorerAutofixLastTriggered: S.NullOr(S.String),
-          project: __S(283, __c35, 3),
-          type: S.String,
-          issueType: S.String,
-          issueCategory: S.String,
-          metadata: __S(1, __c0, 1),
-          numComments: S.Number,
-          assignedTo: S.NullOr(__S(111, __c13, 7)),
-          isBookmarked: S.Boolean,
-          isSubscribed: S.Boolean,
-          subscriptionDetails: S.NullOr(__S(284, __c35, 4)),
-          hasSeen: S.Boolean,
-          annotations: __S(286, __c35, 6),
-          firstRelease: S.optional(S.NullOr(__S(1, __c0, 1))),
-          lastRelease: S.optional(S.NullOr(__S(1, __c0, 1))),
-          tags: S.optional(__S(2, __c0, 2)),
-          stats: S.optional(__S(288, __c36, 0)),
-          inbox: S.optional(S.NullOr(__S(290, __c36, 2))),
-          owners: S.optional(S.NullOr(__S(292, __c36, 4))),
-          forecast: S.optional(__S(1, __c0, 1)),
-          integrationIssues: S.optional(__S(2, __c0, 2)),
-          sentryAppIssues: S.optional(__S(293, __c36, 5)),
-          latestEventHasAttachments: S.optional(S.Boolean),
-          activity: __S(2, __c0, 2),
-          seenBy: __S(2, __c0, 2),
-          userReportCount: S.Number,
-          participants: __S(2, __c0, 2),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          issue_id: S.String.pipe(T.Label()),
-          llmFormat: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/autofix/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationIssueAutofixStateRequest",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          format: S.String,
-          content: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueAutofixStateResponseFormatted",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          formatted: S.optional(__S(296, __c37, 0)),
-          autofix: S.NullOr(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueAutofixStateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          issue_id: S.String.pipe(T.Label()),
-          event_id: S.String.pipe(T.Label()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          llmFormat: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/events/{event_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          username: S.optional(S.NullOr(S.String)),
-          ip_address: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          geo: S.optional(S.NullOr(__S(88, __c11, 0))),
-          data: S.optional(S.NullOr(__S(1, __c0, 1))),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponseUser",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String),
-          key: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponseTagsItem",
-      });
-    case 5:
-      return S.Array(__S(300, __c37, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.NullOr(S.String),
-          version: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponseSdk",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          message: S.String,
-          data: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponseErrorsItem",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(303, __c37, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.String,
-          important: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponseOccurrenceEvidenceDisplayItem",
-      });
-    case 2:
-      return S.Array(__S(305, __c38, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          projectId: S.Number,
-          eventId: S.String,
-          fingerprint: __S(17, __c2, 1),
-          issueTitle: S.String,
-          subtitle: S.String,
-          resourceId: S.NullOr(S.String),
-          evidenceData: __S(1, __c0, 1),
-          evidenceDisplay: __S(306, __c38, 2),
-          type: S.Number,
-          detectionTime: S.Number,
-          level: S.NullOr(S.String),
-          culprit: S.NullOr(S.String),
-          assignee: S.NullOr(S.String),
-          priority: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponseOccurrence",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          enhancements: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponseGroupingConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.Number,
-          unit: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponseMeasurementsValue",
-      });
-    case 6:
-      return S.Record(S.String, __S(309, __c38, 5));
-    case 7:
-      return S.Record(S.String, __S(310, __c38, 6));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          commitCount: S.optional(S.Number),
-          data: S.optional(__S(1, __c0, 1)),
-          dateCreated: S.optional(S.String),
-          dateReleased: S.optional(S.NullOr(S.String)),
-          deployCount: S.optional(S.Number),
-          ref: S.optional(S.NullOr(S.String)),
-          lastCommit: S.optional(S.NullOr(__S(1, __c0, 1))),
-          lastDeploy: S.optional(S.NullOr(__S(131, __c16, 3))),
-          status: S.optional(S.String),
-          url: S.optional(S.NullOr(S.String)),
-          userAgent: S.optional(S.NullOr(S.String)),
-          version: S.optional(S.NullOr(S.String)),
-          versionInfo: S.optional(S.NullOr(__S(132, __c16, 4))),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponseRelease",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          username: S.NullOr(S.String),
-          email: S.NullOr(S.String),
-          name: S.NullOr(S.String),
-          ipAddress: S.NullOr(S.String),
-          avatarUrl: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponseUserReportUser",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          eventID: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponseUserReportEvent",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          eventID: S.String,
-          name: S.NullOr(S.String),
-          email: S.NullOr(S.String),
-          comments: S.String,
-          dateCreated: S.String,
-          user: S.NullOr(__S(313, __c39, 1)),
-          event: __S(314, __c39, 2),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponseUserReport",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          groupID: S.NullOr(S.String),
-          eventID: S.String,
-          projectID: S.String,
-          message: S.NullOr(S.String),
-          title: S.String,
-          location: S.NullOr(S.String),
-          user: S.NullOr(__S(299, __c37, 3)),
-          tags: __S(301, __c37, 5),
-          platform: S.String,
-          dateReceived: S.NullOr(S.String),
-          contexts: S.NullOr(__S(1, __c0, 1)),
-          size: S.NullOr(S.Number),
-          entries: __S(0, __c0, 0),
-          dist: S.NullOr(S.String),
-          sdk: S.NullOr(__S(302, __c37, 6)),
-          context: S.NullOr(__S(1, __c0, 1)),
-          packages: __S(1, __c0, 1),
-          type: S.String,
-          metadata: __S(1, __c0, 1),
-          errors: __S(304, __c38, 0),
-          occurrence: S.NullOr(__S(307, __c38, 3)),
-          _meta: __S(1, __c0, 1),
-          crashFile: S.optional(S.NullOr(S.String)),
-          culprit: S.optional(S.NullOr(S.String)),
-          dateCreated: S.optional(S.String),
-          fingerprints: S.optional(__S(17, __c2, 1)),
-          groupingConfig: S.optional(__S(308, __c38, 4)),
-          startTimestamp: S.optional(S.Number),
-          endTimestamp: S.optional(S.Number),
-          measurements: S.optional(S.NullOr(__S(310, __c38, 6))),
-          breakdowns: S.optional(S.NullOr(__S(311, __c38, 7))),
-          release: S.NullOr(__S(312, __c39, 0)),
-          userReport: S.NullOr(__S(315, __c39, 3)),
-          sdkUpdates: __S(2, __c0, 2),
-          resolvedWith: __S(17, __c2, 1),
-          nextEventID: S.NullOr(S.String),
-          previousEventID: S.NullOr(S.String),
-          formatted: S.optional(__S(296, __c37, 0)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueEventResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          issue_id: S.String.pipe(T.Label()),
-          key: S.String.pipe(T.Label()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/tags/{key}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationIssueTagRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.NullOr(S.String)),
-          key: S.String,
-          name: S.String,
-          value: S.NullOr(S.String),
-          count: S.NullOr(S.Number),
-          lastSeen: S.NullOr(S.String),
-          firstSeen: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueTagResponseTopValuesItem",
-      });
-    case 7:
-      return S.Array(__S(318, __c39, 6));
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uniqueValues: S.optional(S.NullOr(S.Number)),
-          totalValues: S.optional(S.NullOr(S.Number)),
-          topValues: S.optional(S.NullOr(__S(319, __c39, 7))),
-          key: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationIssueTagResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          member_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/members/{member_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationMemberRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          teamSlug: S.String,
-          role: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationMemberResponseTeamRolesItem",
-      });
-    case 3:
-      return S.Array(__S(322, __c40, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          desc: S.String,
-          scopes: __S(17, __c2, 1),
-          allowed: S.Boolean,
-          isAllowed: S.Boolean,
-          isRetired: S.Boolean,
-          isTeamRolesAllowed: S.Boolean,
-          is_global: S.Boolean,
-          isGlobal: S.Boolean,
-          minimumTeamRole: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationMemberResponseOrgRoleListItem",
-      });
-    case 5:
-      return S.Array(__S(324, __c40, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          desc: S.String,
-          scopes: __S(17, __c2, 1),
-          allowed: S.Boolean,
-          isAllowed: S.Boolean,
-          isRetired: S.Boolean,
-          isTeamRolesAllowed: S.Boolean,
-          isMinimumRoleFor: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationMemberResponseTeamRoleListItem",
-      });
-    case 7:
-      return S.Array(__S(326, __c40, 6));
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          externalUsers: S.optional(__S(5, __c0, 5)),
-          role: S.optional(S.String),
-          roleName: S.optional(S.String),
-          id: S.String,
-          email: S.String,
-          name: S.String,
-          user: S.NullOr(__S(13, __c1, 5)),
-          orgRole: S.String,
-          pending: S.Boolean,
-          expired: S.Boolean,
-          flags: __S(14, __c1, 6),
-          dateCreated: S.String,
-          inviteStatus: S.String,
-          inviterName: S.NullOr(S.String),
-          teams: __S(17, __c2, 1),
-          teamRoles: __S(323, __c40, 3),
-          invite_link: S.NullOr(S.String),
-          isOnlyOwner: S.Boolean,
-          orgRoleList: __S(325, __c40, 5),
-          teamRoleList: __S(327, __c40, 7),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationMemberResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          monitor_id_or_slug: S.String.pipe(T.Label()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/monitors/{monitor_id_or_slug}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationMonitorRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          schedule_type: S.String,
-          schedule: S.Unknown,
-          checkin_margin: S.NullOr(S.Number),
-          max_runtime: S.NullOr(S.Number),
-          timezone: S.NullOr(S.String),
-          failure_issue_threshold: S.NullOr(S.Number),
-          recovery_threshold: S.NullOr(S.Number),
-          alert_rule_id: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationMonitorResponseConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          alertRule: S.optional(__S(105, __c13, 1)),
-          id: S.String,
-          name: S.String,
-          slug: S.String,
-          status: S.String,
-          isMuted: S.Boolean,
-          isUpserting: S.Boolean,
-          config: __S(330, __c41, 2),
-          dateCreated: S.String,
-          project: __S(107, __c13, 3),
-          environments: __S(110, __c13, 6),
-          owner: __S(111, __c13, 7),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationMonitorResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          action_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/notifications/actions/{action_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationNotificationsActionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          artifact_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/preprodartifacts/{artifact_id}/install-details/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactInstallDetailsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.NullOr(S.String),
-          name: S.NullOr(S.String),
-          version: S.NullOr(S.String),
-          buildNumber: S.NullOr(S.Number),
-          artifactType: S.NullOr(S.String),
-          dateAdded: S.NullOr(S.String),
-          dateBuilt: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactInstallDetailsResponseAppInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          headSha: S.NullOr(S.String),
-          baseSha: S.NullOr(S.String),
-          provider: S.NullOr(S.String),
-          headRepoName: S.NullOr(S.String),
-          baseRepoName: S.NullOr(S.String),
-          headRef: S.NullOr(S.String),
-          baseRef: S.NullOr(S.String),
-          prNumber: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactInstallDetailsResponseGitInfo",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          buildId: S.String,
-          state: S.String,
-          appInfo: __S(334, __c41, 6),
-          gitInfo: S.NullOr(__S(335, __c41, 7)),
-          platform: S.NullOr(S.String),
-          projectId: S.String,
-          projectSlug: S.String,
-          buildConfiguration: S.NullOr(S.String),
-          isInstallable: S.Boolean,
-          installUrl: S.NullOr(S.String),
-          installUrlExpiresAt: S.NullOr(S.String),
-          downloadCount: S.Number,
-          releaseNotes: S.NullOr(S.String),
-          installGroups: S.NullOr(__S(45, __c5, 5)),
-          isCodeSignatureValid: S.NullOr(S.Boolean),
-          profileName: S.NullOr(S.String),
-          codesigningType: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactInstallDetailsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          artifact_id: S.String.pipe(T.Label()),
-          baseArtifactId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/preprodartifacts/{artifact_id}/size-analysis/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSizeAnalysisRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          componentType: S.String,
-          name: S.String,
-          appId: S.String,
-          path: S.String,
-          downloadSize: S.Number,
-          installSize: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSizeAnalysisResponseAppComponentsItem",
-      });
-    case 3:
-      return S.Array(__S(338, __c42, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          metricsArtifactType: S.String,
-          identifier: S.NullOr(S.String),
-          headInstallSize: S.Number,
-          headDownloadSize: S.Number,
-          baseInstallSize: S.Number,
-          baseDownloadSize: S.Number,
-        }),
-      ).annotate({
-        identifier:
-          "GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemSizeMetricDiff",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sizeDiff: S.Number,
-          headSize: S.NullOr(S.Number),
-          baseSize: S.NullOr(S.Number),
-          path: S.String,
-          itemType: S.NullOr(S.String),
-          type: S.String,
-          diffItems: S.NullOr(__S(78, __c9, 6)),
-        }),
-      ).annotate({
-        identifier:
-          "GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemDiffItemsItem",
-      });
-    case 6:
-      return S.Array(__S(341, __c42, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sizeDiff: S.Number,
-          headSize: S.NullOr(S.Number),
-          baseSize: S.NullOr(S.Number),
-          path: S.String,
-          itemType: S.NullOr(S.String),
-          type: S.String,
-          diffItems: S.NullOr(__S(78, __c9, 6)),
-        }),
-      ).annotate({
-        identifier:
-          "GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemFileDiffsItem",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(343, __c42, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          insightType: S.String,
-          status: S.String,
-          totalSavingsChange: S.Number,
-          fileDiffs: __S(344, __c43, 0),
-          groupDiffs: __S(344, __c43, 0),
-        }),
-      ).annotate({
-        identifier:
-          "GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItem",
-      });
-    case 2:
-      return S.Array(__S(345, __c43, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metricsArtifactType: S.String,
-          identifier: S.NullOr(S.String),
-          state: S.String,
-          errorCode: S.NullOr(S.String),
-          errorMessage: S.NullOr(S.String),
-          sizeMetricDiff: S.NullOr(__S(340, __c42, 4)),
-          diffItems: S.NullOr(__S(342, __c42, 6)),
-          insightDiffItems: S.NullOr(__S(346, __c43, 2)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItem",
-      });
-    case 4:
-      return S.Array(__S(347, __c43, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          buildId: S.String,
-          state: S.String,
-          appInfo: __S(334, __c41, 6),
-          gitInfo: S.NullOr(__S(335, __c41, 7)),
-          errorCode: S.NullOr(S.String),
-          errorMessage: S.NullOr(S.String),
-          downloadSize: S.NullOr(S.Number),
-          installSize: S.NullOr(S.Number),
-          analysisDuration: S.NullOr(S.Number),
-          analysisVersion: S.NullOr(S.String),
-          baseBuildId: S.NullOr(S.String),
-          baseAppInfo: S.NullOr(__S(334, __c41, 6)),
-          insights: S.NullOr(__S(1, __c0, 1)),
-          appComponents: S.NullOr(__S(339, __c42, 3)),
-          comparisons: S.NullOr(__S(348, __c43, 4)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSizeAnalysisResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          snapshot_id: S.String.pipe(T.Label()),
-          compact_metadata: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/preprodartifacts/snapshots/{snapshot_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          head_sha: S.optional(S.NullOr(S.String)),
-          base_sha: S.optional(S.NullOr(S.String)),
-          provider: S.optional(S.NullOr(S.String)),
-          head_repo_name: S.optional(S.NullOr(S.String)),
-          base_repo_name: S.optional(S.NullOr(S.String)),
-          head_ref: S.optional(S.NullOr(S.String)),
-          base_ref: S.optional(S.NullOr(S.String)),
-          pr_number: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotResponseVcsInfo",
-      });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          display_name: S.optional(S.NullOr(S.String)),
-          group: S.optional(S.NullOr(S.String)),
-          image_file_name: S.optional(S.String),
-          width: S.optional(S.Number),
-          height: S.optional(S.Number),
-          canvas_theme: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotResponseImagesItem",
-      });
-    case 1:
-      return S.Array(__S(352, __c44, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          display_name: S.optional(S.NullOr(S.String)),
-          group: S.optional(S.NullOr(S.String)),
-          image_file_name: S.optional(S.String),
-          width: S.optional(S.Number),
-          height: S.optional(S.Number),
-          canvas_theme: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotResponseAddedItem",
-      });
-    case 3:
-      return S.Array(__S(354, __c44, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          display_name: S.optional(S.NullOr(S.String)),
-          group: S.optional(S.NullOr(S.String)),
-          image_file_name: S.optional(S.String),
-          width: S.optional(S.Number),
-          height: S.optional(S.Number),
-          canvas_theme: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotResponseRenamedItemBaseImage",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          base_image: S.optional(__S(356, __c44, 4)),
-          head_image: S.optional(__S(356, __c44, 4)),
-          diff_image_key: S.optional(S.NullOr(S.String)),
-          diff: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotResponseRenamedItem",
-      });
-    case 6:
-      return S.Array(__S(357, __c44, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          username: S.optional(S.NullOr(S.String)),
-          avatar_url: S.optional(S.NullOr(S.String)),
-          approved_at: S.optional(S.NullOr(S.String)),
-          source: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotResponseApproversItem",
-      });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(359, __c44, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          head_artifact_id: S.optional(S.String),
-          base_artifact_id: S.optional(S.NullOr(S.String)),
-          project_id: S.optional(S.String),
-          comparison_type: S.optional(S.String),
-          state: S.optional(S.String),
-          vcs_info: S.optional(__S(351, __c43, 7)),
-          app_id: S.optional(S.NullOr(S.String)),
-          is_selective: S.optional(S.Boolean),
-          images: S.optional(__S(353, __c44, 1)),
-          image_count: S.optional(S.Number),
-          added: S.optional(__S(355, __c44, 3)),
-          added_count: S.optional(S.Number),
-          removed: S.optional(__S(353, __c44, 1)),
-          removed_count: S.optional(S.Number),
-          renamed: S.optional(__S(358, __c44, 6)),
-          renamed_count: S.optional(S.Number),
-          changed: S.optional(__S(358, __c44, 6)),
-          changed_count: S.optional(S.Number),
-          unchanged: S.optional(__S(353, __c44, 1)),
-          unchanged_count: S.optional(S.Number),
-          errored: S.optional(__S(358, __c44, 6)),
-          errored_count: S.optional(S.Number),
-          skipped: S.optional(__S(353, __c44, 1)),
-          skipped_count: S.optional(S.Number),
-          diff_threshold: S.optional(S.NullOr(S.Number)),
-          comparison_state: S.optional(S.NullOr(S.String)),
-          approval_status: S.optional(S.NullOr(S.String)),
-          comparison_error_message: S.optional(S.NullOr(S.String)),
-          approvers: S.optional(__S(360, __c45, 0)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          snapshot_id: S.String.pipe(T.Label()),
-          image_identifier: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/preprodartifacts/snapshots/{snapshot_id}/images/{image_identifier}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotImageRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          display_name: S.optional(S.NullOr(S.String)),
-          group: S.optional(S.NullOr(S.String)),
-          image_file_name: S.optional(S.String),
-          width: S.optional(S.Number),
-          height: S.optional(S.Number),
-          canvas_theme: S.optional(S.NullOr(S.String)),
-          diff_threshold: S.optional(S.NullOr(S.Number)),
-          description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(67, __c8, 3))),
-          image_url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotImageResponseHeadImage",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          display_name: S.optional(S.NullOr(S.String)),
-          group: S.optional(S.NullOr(S.String)),
-          image_file_name: S.optional(S.String),
-          width: S.optional(S.Number),
-          height: S.optional(S.Number),
-          canvas_theme: S.optional(S.NullOr(S.String)),
-          diff_threshold: S.optional(S.NullOr(S.Number)),
-          description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(67, __c8, 3))),
-          image_url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotImageResponseBaseImage",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          image_file_name: S.optional(S.String),
-          comparison_status: S.optional(S.NullOr(S.String)),
-          head_image: S.optional(S.NullOr(__S(363, __c45, 3))),
-          base_image: S.optional(S.NullOr(__S(364, __c45, 4))),
-          diff_image_url: S.optional(S.NullOr(S.String)),
-          diff_percentage: S.optional(S.NullOr(S.Number)),
-          previous_image_file_name: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotImageResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          app_id: S.String.pipe(T.Query()),
-          branch: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.Unknown.pipe(T.Query())),
-          compact_metadata: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/preprodartifacts/snapshots/latest-base/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotLatestBaseRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          display_name: S.optional(S.NullOr(S.String)),
-          group: S.optional(S.NullOr(S.String)),
-          image_file_name: S.optional(S.String),
-          width: S.optional(S.Number),
-          height: S.optional(S.Number),
-          canvas_theme: S.optional(S.NullOr(S.String)),
-          image_url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotLatestBaseResponseImagesItem",
-      });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(367, __c45, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          head_sha: S.optional(S.NullOr(S.String)),
-          base_sha: S.optional(S.NullOr(S.String)),
-          head_ref: S.optional(S.NullOr(S.String)),
-          base_ref: S.optional(S.NullOr(S.String)),
-          head_repo_name: S.optional(S.NullOr(S.String)),
-          pr_number: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotLatestBaseResponseVcsInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          head_artifact_id: S.optional(S.String),
-          project_id: S.optional(S.String),
-          project_slug: S.optional(S.String),
-          app_id: S.optional(S.NullOr(S.String)),
-          image_count: S.optional(S.Number),
-          images: S.optional(__S(368, __c46, 0)),
-          diff_threshold: S.optional(S.NullOr(S.Number)),
-          date_added: S.optional(S.String),
-          vcs_info: S.optional(__S(369, __c46, 1)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationPreprodArtifactSnapshotLatestBaseResponse",
-      });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          project: S.optional(__S(371, __c46, 3).pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          statsPeriod: S.optional(S.String.pipe(T.Query())),
-          start: S.optional(S.String.pipe(T.Query())),
-          end: S.optional(S.String.pipe(T.Query())),
-          dataSource: S.optional(S.String.pipe(T.Query())),
-          fingerprint: S.optional(S.Number.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          expand: S.optional(__S(20, __c2, 4).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/profiling/flamegraph/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationProfilingFlamegraphRequest",
-      });
-    case 5:
-      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetOrganizationProfilingFlamegraphResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          version: S.String.pipe(T.Label()),
-          project_id: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(S.Unknown.pipe(T.Query())),
-          health: S.optional(S.Boolean.pipe(T.Query())),
-          adoptionStages: S.optional(S.Boolean.pipe(T.Query())),
-          summaryStatsPeriod: S.optional(S.String.pipe(T.Query())),
-          healthStatsPeriod: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/releases/{version}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationReleaseRequest",
-      });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          durationP50: S.optional(S.NullOr(S.Number)),
-          durationP90: S.optional(S.NullOr(S.Number)),
-          crashFreeUsers: S.optional(S.NullOr(S.Number)),
-          crashFreeSessions: S.optional(S.NullOr(S.Number)),
-          totalUsers: S.optional(S.NullOr(S.Number)),
-          totalUsers24h: S.optional(S.NullOr(S.Number)),
-          totalProjectUsers24h: S.optional(S.NullOr(S.Number)),
-          totalSessions: S.optional(S.NullOr(S.Number)),
-          totalSessions24h: S.optional(S.NullOr(S.Number)),
-          totalProjectSessions24h: S.optional(S.NullOr(S.Number)),
-          adoption: S.optional(S.NullOr(S.Number)),
-          sessionsAdoption: S.optional(S.NullOr(S.Number)),
-          sessionsCrashed: S.Number,
-          sessionsErrored: S.Number,
-          hasHealthData: S.Boolean,
-          stats: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationReleaseResponseProjectsItemHealthData",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          healthData: S.optional(S.NullOr(__S(376, __c47, 0))),
-          dateReleased: S.optional(S.NullOr(S.String)),
-          dateCreated: S.optional(S.NullOr(S.String)),
-          dateStarted: S.optional(S.NullOr(S.String)),
-          id: S.Number,
-          slug: S.String,
-          name: S.String,
-          platform: S.NullOr(S.String),
-          platforms: S.NullOr(__S(17, __c2, 1)),
-          hasHealthData: S.Boolean,
-          newGroups: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationReleaseResponseProjectsItem",
-      });
-    case 2:
-      return S.Array(__S(377, __c47, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ref: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-          dateReleased: S.optional(S.NullOr(S.String)),
-          dateCreated: S.optional(S.NullOr(S.String)),
-          dateStarted: S.optional(S.NullOr(S.String)),
-          owner: S.optional(S.NullOr(__S(1, __c0, 1))),
-          lastCommit: S.optional(S.NullOr(__S(1, __c0, 1))),
-          lastDeploy: S.optional(S.NullOr(__S(131, __c16, 3))),
-          firstEvent: S.optional(S.NullOr(S.String)),
-          lastEvent: S.optional(S.NullOr(S.String)),
-          currentProjectMeta: S.optional(S.NullOr(__S(1, __c0, 1))),
-          userAgent: S.optional(S.NullOr(S.String)),
-          adoptionStages: S.optional(S.NullOr(__S(1, __c0, 1))),
-          id: S.Number,
-          version: S.String,
-          newGroups: S.Number,
-          status: S.String,
-          shortVersion: S.String,
-          versionInfo: S.NullOr(__S(132, __c16, 4)),
-          data: __S(1, __c0, 1),
-          commitCount: S.Number,
-          deployCount: S.Number,
-          authors: __S(375, __c46, 7),
-          projects: __S(378, __c47, 2),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationReleaseResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          version: S.String.pipe(T.Label()),
-          file_id: S.String.pipe(T.Label()),
-          download: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/releases/{version}/files/{file_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationReleaseFileRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          dist: S.NullOr(S.String),
-          headers: __S(1, __c0, 1),
-          size: S.Number,
-          sha1: S.String,
-          dateCreated: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationReleaseFileResponse",
-      });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          replay_id: S.String.pipe(T.Label()),
-          statsPeriod: S.optional(S.String.pipe(T.Query())),
-          start: S.optional(S.String.pipe(T.Query())),
-          end: S.optional(S.String.pipe(T.Query())),
-          field: S.optional(__S(20, __c2, 4).pipe(T.Query())),
-          project: S.optional(__S(382, __c47, 6).pipe(T.Query())),
-          projectSlug: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          sortBy: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          queryReferrer: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/replays/{replay_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationReplayRequest",
-      });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(17, __c2, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.optional(S.NullOr(S.String)),
-          country_code: S.optional(S.NullOr(S.String)),
-          region: S.optional(S.NullOr(S.String)),
-          subdivision: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationReplayResponseDataUserGeo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          username: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          ip: S.optional(S.NullOr(S.String)),
-          display_name: S.optional(S.NullOr(S.String)),
-          geo: S.optional(__S(385, __c48, 1)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationReplayResponseDataUser",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          version: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationReplayResponseDataSdk",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          brand: S.optional(S.NullOr(S.String)),
-          model: S.optional(S.NullOr(S.String)),
-          family: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationReplayResponseDataDevice",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.optional(S.NullOr(S.String)),
-          runtime_version: S.optional(S.NullOr(S.String)),
-          update_id: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationReplayResponseDataOtaUpdates",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          project_id: S.optional(S.String),
-          trace_ids: S.optional(__S(17, __c2, 1)),
-          error_ids: S.optional(__S(17, __c2, 1)),
-          environment: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.Unknown),
-          user: S.optional(__S(386, __c48, 2)),
-          sdk: S.optional(__S(387, __c48, 3)),
-          os: S.optional(__S(387, __c48, 3)),
-          browser: S.optional(__S(387, __c48, 3)),
-          device: S.optional(__S(388, __c48, 4)),
-          ota_updates: S.optional(__S(389, __c48, 5)),
-          is_archived: S.optional(S.NullOr(S.Boolean)),
-          urls: S.optional(S.NullOr(__S(17, __c2, 1))),
-          segment_names: S.optional(S.NullOr(__S(17, __c2, 1))),
-          clicks: S.optional(__S(2, __c0, 2)),
-          count_dead_clicks: S.optional(S.NullOr(S.Number)),
-          count_rage_clicks: S.optional(S.NullOr(S.Number)),
-          count_errors: S.optional(S.NullOr(S.Number)),
-          duration: S.optional(S.NullOr(S.Number)),
-          finished_at: S.optional(S.NullOr(S.String)),
-          started_at: S.optional(S.NullOr(S.String)),
-          activity: S.optional(S.NullOr(S.Number)),
-          count_urls: S.optional(S.NullOr(S.Number)),
-          replay_type: S.optional(S.String),
-          count_segments: S.optional(S.NullOr(S.Number)),
-          platform: S.optional(S.NullOr(S.String)),
-          releases: S.optional(__S(17, __c2, 1)),
-          dist: S.optional(S.NullOr(S.String)),
-          count_warnings: S.optional(S.NullOr(S.Number)),
-          count_infos: S.optional(S.NullOr(S.Number)),
-          has_viewed: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationReplayResponseData",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(390, __c48, 6),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationReplayResponse",
-      });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          query: S.String.pipe(T.Query()),
-          data_source: S.String.pipe(T.Query()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          start: S.optional(S.String.pipe(T.Query())),
-          end: S.optional(S.String.pipe(T.Query())),
-          statsPeriod: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(__S(392, __c49, 0).pipe(T.Query())),
-          project_id_or_slug: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          returnIds: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/replay-count/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationReplayCountRequest",
-      });
-    case 2:
-      return S.suspend(() => __S(66, __c8, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetOrganizationReplayCountResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-          team_id_or_slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/scim/v2/Groups/{team_id_or_slug}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationScimV2GroupRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceType: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationScimV2GroupResponseMeta",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.String,
-          display: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationScimV2GroupResponseMembersItem",
-      });
-    case 6:
-      return S.Array(__S(397, __c49, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          schemas: __S(17, __c2, 1),
-          id: S.String,
-          displayName: S.String,
-          meta: __S(396, __c49, 4),
-          members: S.optional(__S(398, __c49, 6)),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationScimV2GroupResponse",
-      });
-  }
-}
-function __c50(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27368,27 +22293,35 @@ function __c50(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          schemas: __S(4368, __c273, 0),
+          id: S.String,
+          name: S.String,
+          description: S.String,
+          endpoint: S.String,
+          schema: S.String,
+          meta: __S(64, __c4, 0),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationScimV2ResourceTypeResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           resourceType: S.String,
           location: S.String,
         }),
       ).annotate({
         identifier: "GetOrganizationScimV2ResourceTypeResponseMeta",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          schemas: __S(17, __c2, 1),
-          id: S.String,
-          name: S.String,
-          description: S.String,
-          endpoint: S.String,
-          schema: S.String,
-          meta: __S(401, __c50, 1),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationScimV2ResourceTypeResponse",
-      });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -27403,20 +22336,24 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetOrganizationScimV2SchemaRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          schemas: __S(17, __c2, 1),
+          schemas: __S(4368, __c273, 0),
           id: S.String,
           name: S.String,
           description: S.String,
-          attributes: __S(2, __c0, 2),
-          meta: __S(401, __c50, 1),
+          attributes: __S(4064, __c254, 0),
+          meta: __S(64, __c4, 0),
         }),
       ).annotate({
         identifier: "GetOrganizationScimV2SchemaResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -27430,7 +22367,7 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetOrganizationScimV2ServiceProviderConfigRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           supported: S.Boolean,
@@ -27438,7 +22375,7 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetOrganizationScimV2ServiceProviderConfigResponsePatch",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           supported: S.Boolean,
@@ -27448,11 +22385,7 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetOrganizationScimV2ServiceProviderConfigResponseBulk",
       });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           supported: S.Boolean,
@@ -27461,7 +22394,7 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetOrganizationScimV2ServiceProviderConfigResponseFilter",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27473,26 +22406,30 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetOrganizationScimV2ServiceProviderConfigResponseAuthenticationSchemesItem",
       });
-    case 2:
-      return S.Array(__S(409, __c51, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(100, __c6, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          schemas: __S(17, __c2, 1),
+          schemas: __S(4368, __c273, 0),
           documentationUri: S.String,
-          patch: __S(406, __c50, 6),
-          bulk: __S(407, __c50, 7),
-          filter: __S(408, __c51, 0),
-          changePassword: __S(406, __c50, 6),
-          sort: __S(406, __c50, 6),
-          etag: __S(406, __c50, 6),
-          authenticationSchemes: __S(410, __c51, 2),
-          meta: __S(401, __c50, 1),
+          patch: __S(97, __c6, 1),
+          bulk: __S(98, __c6, 2),
+          filter: __S(99, __c6, 3),
+          changePassword: __S(97, __c6, 1),
+          sort: __S(97, __c6, 1),
+          etag: __S(97, __c6, 1),
+          authenticationSchemes: __S(101, __c6, 5),
+          meta: __S(64, __c4, 0),
         }),
       ).annotate({
         identifier: "GetOrganizationScimV2ServiceProviderConfigResponse",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -27507,7 +22444,11 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetOrganizationScimV2UserRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           givenName: S.String,
@@ -27516,7 +22457,7 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetOrganizationScimV2UserResponseName",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           primary: S.Boolean,
@@ -27526,42 +22467,42 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetOrganizationScimV2UserResponseEmailsItem",
       });
-    case 7:
-      return S.Array(__S(414, __c51, 6));
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean),
-          schemas: __S(17, __c2, 1),
+          schemas: __S(4368, __c273, 0),
           id: S.String,
           userName: S.String,
-          name: __S(413, __c51, 5),
-          emails: __S(415, __c51, 7),
-          meta: __S(396, __c49, 4),
+          name: __S(128, __c8, 0),
+          emails: __S(130, __c8, 2),
+          meta: __S(5680, __c355, 0),
           sentryOrgRole: S.String,
         }),
       ).annotate({
         identifier: "GetOrganizationScimV2UserResponse",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          field: __S(17, __c2, 1).pipe(T.Query()),
+          field: __S(4368, __c273, 0).pipe(T.Query()),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(__S(417, __c52, 1).pipe(T.Query())),
+          project: S.optional(__S(144, __c9, 0).pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           interval: S.optional(S.String.pipe(T.Query())),
-          groupBy: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          groupBy: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           includeTotals: S.optional(S.Number.pipe(T.Query())),
           includeSeries: S.optional(S.Number.pipe(T.Query())),
@@ -27576,7 +22517,7 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetOrganizationSessionsRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           project: S.optional(S.Number),
@@ -27587,41 +22528,41 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetOrganizationSessionsResponseGroupsItemBy",
       });
-    case 4:
+    case 3:
       return S.Array(/*@__PURE__*/ S.NullOr(S.Number));
+    case 4:
+      return S.Record(S.String, __S(147, __c9, 3));
     case 5:
-      return S.Record(S.String, __S(420, __c52, 4));
-    case 6:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Number));
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          by: __S(419, __c52, 3),
-          series: __S(421, __c52, 5),
-          totals: __S(422, __c52, 6),
+          by: __S(146, __c9, 2),
+          series: __S(148, __c9, 4),
+          totals: __S(149, __c9, 5),
         }),
       ).annotate({
         identifier: "GetOrganizationSessionsResponseGroupsItem",
       });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(423, __c52, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(150, __c9, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           start: S.String,
           end: S.String,
-          intervals: __S(17, __c2, 1),
-          groups: __S(424, __c53, 0),
+          intervals: __S(4368, __c273, 0),
+          groups: __S(151, __c9, 7),
           query: S.String,
         }),
       ).annotate({
         identifier: "GetOrganizationSessionsResponse",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -27630,7 +22571,7 @@ function __c53(j: number): any {
           interval: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          project: S.optional(__S(3968, __c248, 0).pipe(T.Query())),
           category: S.optional(S.String.pipe(T.Query())),
           outcome: S.optional(S.String.pipe(T.Query())),
           reason: S.optional(S.String.pipe(T.Query())),
@@ -27645,29 +22586,33 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetOrganizationStatsSummaryRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           slug: S.String,
-          stats: __S(2, __c0, 2),
+          stats: __S(4064, __c254, 0),
         }),
       ).annotate({
         identifier: "GetOrganizationStatsSummaryResponseProjectsItem",
       });
-    case 4:
-      return S.Array(__S(427, __c53, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(161, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           start: S.String,
           end: S.String,
-          projects: __S(428, __c53, 4),
+          projects: __S(162, __c10, 2),
         }),
       ).annotate({
         identifier: "GetOrganizationStatsSummaryResponse",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -27677,7 +22622,7 @@ function __c53(j: number): any {
           end: S.optional(S.String.pipe(T.Query())),
           referrer: S.optional(S.String.pipe(T.Query())),
           errorId: S.optional(S.String.pipe(T.Query())),
-          additional_attributes: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          additional_attributes: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           include_uptime: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -27689,17 +22634,17 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetOrganizationTraceRequest",
       });
-    case 7:
+    case 1:
       return S.Array(S.Unknown);
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(431, __c53, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(177, __c11, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOrganizationTraceResponse",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -27718,7 +22663,7 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetOrganizationTraceMetaRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uptimeCount: S.optional(S.Number),
@@ -27727,13 +22672,17 @@ function __c54(j: number): any {
           metricsCount: S.Number,
           performanceIssuesCount: S.Number,
           spansCount: S.Number,
-          transactionChildCountMap: __S(150, __c18, 6),
-          spansCountMap: __S(66, __c8, 2),
+          transactionChildCountMap: __S(3536, __c221, 0),
+          spansCountMap: __S(864, __c54, 0),
         }),
       ).annotate({
         identifier: "GetOrganizationTraceMetaResponse",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -27748,7 +22697,7 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetOrganizationWorkflowRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -27760,7 +22709,7 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetOrganizationWorkflowResponseTriggers",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -27772,9 +22721,9 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "GetOrganizationWorkflowResponseActionFiltersItem",
       });
-    case 6:
-      return S.Array(__S(437, __c54, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(210, __c13, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -27783,11 +22732,11 @@ function __c54(j: number): any {
           createdBy: S.NullOr(S.String),
           dateCreated: S.String,
           dateUpdated: S.String,
-          triggers: S.NullOr(__S(436, __c54, 4)),
-          actionFilters: S.NullOr(__S(438, __c54, 6)),
+          triggers: S.NullOr(__S(209, __c13, 1)),
+          actionFilters: S.NullOr(__S(211, __c13, 3)),
           environment: S.NullOr(S.String),
-          config: __S(1, __c0, 1),
-          detectorIds: S.NullOr(__S(17, __c2, 1)),
+          config: __S(4128, __c258, 0),
+          detectorIds: S.NullOr(__S(4368, __c273, 0)),
           enabled: S.Boolean,
           lastTriggered: S.NullOr(S.String),
           owner: S.NullOr(S.String),
@@ -27797,7 +22746,7 @@ function __c54(j: number): any {
       });
   }
 }
-function __c55(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27813,43 +22762,10 @@ function __c55(j: number): any {
         ),
       ).annotate({ identifier: "GetProjectRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tags: __S(17, __c2, 1),
-          context: __S(384, __c48, 0),
-        }),
-      ).annotate({
-        identifier: "GetProjectResponseHighlightPreset",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          features: S.optional(__S(17, __c2, 1)),
-          extraOptions: S.optional(__S(245, __c30, 5)),
-          access: S.optional(__S(17, __c2, 1)),
-          onboardingTasks: S.optional(__S(144, __c18, 0)),
-          id: S.String,
-          slug: S.String,
-          status: __S(7, __c0, 7),
-          name: S.String,
-          dateCreated: S.String,
-          isEarlyAdopter: S.Boolean,
-          require2FA: S.Boolean,
-          avatar: __S(10, __c1, 2),
-          links: __S(145, __c18, 1),
-          hasAuthProvider: S.Boolean,
-          allowMemberInvite: S.Boolean,
-          allowMemberProjectCreation: S.Boolean,
-          allowSuperuserAccess: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GetProjectResponseOrganization",
-      });
-    case 3:
       return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(443, __c55, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           stats: S.optional(S.Unknown),
@@ -27862,10 +22778,10 @@ function __c55(j: number): any {
           dateCreated: S.String,
           isBookmarked: S.Boolean,
           isMember: S.Boolean,
-          features: __S(17, __c2, 1),
+          features: __S(4368, __c273, 0),
           firstEvent: S.NullOr(S.String),
           firstTransactionEvent: S.Boolean,
-          access: __S(17, __c2, 1),
+          access: __S(4368, __c273, 0),
           hasAccess: S.Boolean,
           hasFeedbacks: S.Boolean,
           hasFlags: S.Boolean,
@@ -27889,23 +22805,23 @@ function __c55(j: number): any {
           hasTraceMetrics: S.Boolean,
           isInternal: S.Boolean,
           isPublic: S.Boolean,
-          avatar: __S(10, __c1, 2),
+          avatar: __S(4144, __c259, 0),
           color: S.String,
           status: S.String,
-          team: S.optional(__S(25, __c3, 1)),
-          teams: __S(26, __c3, 2),
-          latestRelease: S.NullOr(__S(117, __c14, 5)),
-          options: __S(1, __c0, 1),
+          team: S.optional(__S(4768, __c298, 0)),
+          teams: __S(4769, __c298, 1),
+          latestRelease: S.NullOr(__S(2512, __c157, 0)),
+          options: __S(4128, __c258, 0),
           digestsMinDelay: S.Number,
           digestsMaxDelay: S.Number,
           subjectPrefix: S.String,
-          allowedDomains: __S(17, __c2, 1),
+          allowedDomains: __S(4368, __c273, 0),
           resolveAge: S.Number,
           dataScrubber: S.Boolean,
           dataScrubberDefaults: S.Boolean,
-          safeFields: __S(17, __c2, 1),
+          safeFields: __S(4368, __c273, 0),
           storeCrashReports: S.NullOr(S.Number),
-          sensitiveFields: __S(17, __c2, 1),
+          sensitiveFields: __S(4368, __c273, 0),
           subjectTemplate: S.String,
           securityToken: S.String,
           securityTokenHeader: S.NullOr(S.String),
@@ -27913,22 +22829,22 @@ function __c55(j: number): any {
           scrubIPAddresses: S.Boolean,
           scrapeJavaScript: S.Boolean,
           enableAutoReleaseCreation: S.Boolean,
-          highlightTags: __S(17, __c2, 1),
-          highlightContext: __S(1, __c0, 1),
-          highlightPreset: __S(441, __c55, 1),
+          highlightTags: __S(4368, __c273, 0),
+          highlightContext: __S(4128, __c258, 0),
+          highlightPreset: __S(257, __c16, 1),
           groupingConfig: S.String,
           derivedGroupingEnhancements: S.String,
           groupingEnhancements: S.String,
           secondaryGroupingExpiry: S.Number,
           secondaryGroupingConfig: S.NullOr(S.String),
           fingerprintingRules: S.String,
-          organization: __S(442, __c55, 2),
-          platforms: __S(17, __c2, 1),
+          organization: __S(240, __c15, 0),
+          platforms: __S(4368, __c273, 0),
           processingIssues: S.Number,
           defaultEnvironment: S.NullOr(S.String),
           relayPiiConfig: S.NullOr(S.String),
-          builtinSymbolSources: __S(17, __c2, 1),
-          dynamicSamplingBiases: S.NullOr(__S(444, __c55, 4)),
+          builtinSymbolSources: __S(4368, __c273, 0),
+          dynamicSamplingBiases: S.NullOr(__S(226, __c14, 2)),
           symbolSources: S.String,
           isDynamicallySampled: S.Boolean,
           tempestFetchScreenshots: S.Boolean,
@@ -27939,7 +22855,113 @@ function __c55(j: number): any {
           debugFilesRole: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "GetProjectResponse" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          features: S.optional(__S(4368, __c273, 0)),
+          extraOptions: S.optional(__S(4928, __c308, 0)),
+          access: S.optional(__S(4368, __c273, 0)),
+          onboardingTasks: S.optional(__S(3344, __c209, 0)),
+          id: S.String,
+          slug: S.String,
+          status: __S(3984, __c249, 0),
+          name: S.String,
+          dateCreated: S.String,
+          isEarlyAdopter: S.Boolean,
+          require2FA: S.Boolean,
+          avatar: __S(4144, __c259, 0),
+          links: __S(3329, __c208, 1),
+          hasAuthProvider: S.Boolean,
+          allowMemberInvite: S.Boolean,
+          allowMemberProjectCreation: S.Boolean,
+          allowSuperuserAccess: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GetProjectResponseOrganization",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(4368, __c273, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tags: __S(4368, __c273, 0),
+          context: __S(256, __c16, 0),
+        }),
+      ).annotate({
+        identifier: "GetProjectResponseHighlightPreset",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          value: __S(4368, __c273, 0),
+        }),
+      ).annotate({
+        identifier: "CreateACustomInboundFilterRequestConditionsItem",
+      });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          dataType: S.String,
+          conditions: __S(273, __c17, 1),
+          name: S.optional(S.NullOr(S.String)),
+          active: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/custom-inbound-filters/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateACustomInboundFilterRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          value: __S(4368, __c273, 0),
+        }),
+      ).annotate({
+        identifier: "CreateACustomInboundFilterResponseConditionsItem",
+      });
+    case 4:
+      return S.Array(__S(275, __c17, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          dataType: S.String,
+          conditions: __S(276, __c17, 4),
+          dateCreated: S.String,
+          dateUpdated: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          active: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateACustomInboundFilterResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -27955,12 +22977,12 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetProjectCodeOwnersRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          codeMapping: S.optional(__S(162, __c20, 2)),
+          codeMapping: S.optional(__S(3617, __c226, 1)),
           ownershipSyntax: S.optional(S.String),
-          errors: S.optional(__S(163, __c20, 3)),
+          errors: S.optional(__S(3618, __c226, 2)),
           schema: S.optional(S.Unknown),
           codeOwnersUrl: S.optional(S.String),
           id: S.String,
@@ -27976,7 +22998,7 @@ function __c55(j: number): any {
       });
   }
 }
-function __c56(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27994,13 +23016,17 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetProjectEnvironmentRequest",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           project_id_or_slug: S.String.pipe(T.Label()),
           event_id: S.String.pipe(T.Label()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -28009,7 +23035,7 @@ function __c56(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectEventRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -28019,40 +23045,44 @@ function __c56(j: number): any {
           message: S.NullOr(S.String),
           title: S.String,
           location: S.NullOr(S.String),
-          user: S.NullOr(__S(299, __c37, 3)),
-          tags: __S(301, __c37, 5),
+          user: S.NullOr(__S(5248, __c328, 0)),
+          tags: __S(5250, __c328, 2),
           platform: S.String,
           dateReceived: S.NullOr(S.String),
-          contexts: S.NullOr(__S(1, __c0, 1)),
+          contexts: S.NullOr(__S(4128, __c258, 0)),
           size: S.NullOr(S.Number),
-          entries: __S(0, __c0, 0),
+          entries: __S(3968, __c248, 0),
           dist: S.NullOr(S.String),
-          sdk: S.NullOr(__S(302, __c37, 6)),
-          context: S.NullOr(__S(1, __c0, 1)),
-          packages: __S(1, __c0, 1),
+          sdk: S.NullOr(__S(5264, __c329, 0)),
+          context: S.NullOr(__S(4128, __c258, 0)),
+          packages: __S(4128, __c258, 0),
           type: S.String,
-          metadata: __S(1, __c0, 1),
-          errors: __S(304, __c38, 0),
-          occurrence: S.NullOr(__S(307, __c38, 3)),
-          _meta: __S(1, __c0, 1),
+          metadata: __S(4128, __c258, 0),
+          errors: __S(5266, __c329, 2),
+          occurrence: S.NullOr(__S(5233, __c327, 1)),
+          _meta: __S(4128, __c258, 0),
           crashFile: S.optional(S.NullOr(S.String)),
           culprit: S.optional(S.NullOr(S.String)),
           dateCreated: S.optional(S.String),
-          fingerprints: S.optional(__S(17, __c2, 1)),
-          groupingConfig: S.optional(__S(308, __c38, 4)),
+          fingerprints: S.optional(__S(4368, __c273, 0)),
+          groupingConfig: S.optional(__S(5268, __c329, 4)),
           startTimestamp: S.optional(S.Number),
           endTimestamp: S.optional(S.Number),
-          measurements: S.optional(S.NullOr(__S(310, __c38, 6))),
-          breakdowns: S.optional(S.NullOr(__S(311, __c38, 7))),
-          release: S.NullOr(__S(312, __c39, 0)),
-          userReport: S.NullOr(__S(315, __c39, 3)),
-          sdkUpdates: __S(2, __c0, 2),
-          resolvedWith: __S(17, __c2, 1),
+          measurements: S.optional(S.NullOr(__S(5270, __c329, 6))),
+          breakdowns: S.optional(S.NullOr(__S(5271, __c329, 7))),
+          release: S.NullOr(__S(5234, __c327, 2)),
+          userReport: S.NullOr(__S(5237, __c327, 5)),
+          sdkUpdates: __S(4064, __c254, 0),
+          resolvedWith: __S(4368, __c273, 0),
           nextEventID: S.NullOr(S.String),
           previousEventID: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "GetProjectEventResponse" });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28070,9 +23100,17 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetProjectEventAttachmentRequest",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -28082,13 +23120,17 @@ function __c56(j: number): any {
           mimetype: S.NullOr(S.String),
           dateCreated: S.String,
           size: S.Number,
-          headers: __S(452, __c56, 4),
+          headers: __S(352, __c22, 0),
           sha1: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "GetProjectEventAttachmentResponse",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28104,7 +23146,7 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetProjectEventSourceMapDebugRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           debug_id: S.NullOr(S.String),
@@ -28114,15 +23156,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemDebugIdProcess",
       });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           abs_path: S.String,
-          matching_source_file_names: __S(45, __c5, 5),
+          matching_source_file_names: __S(816, __c51, 0),
           matching_source_map_name: S.NullOr(S.String),
           source_map_reference: S.NullOr(S.String),
           source_file_lookup_result: S.String,
@@ -28131,7 +23169,7 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemReleaseProcess",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           source_file: S.Unknown,
@@ -28140,34 +23178,34 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetProjectEventSourceMapDebugResponseExceptionsItemFramesItemScrapingProcess",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          debug_id_process: __S(455, __c56, 7),
-          release_process: S.NullOr(__S(456, __c57, 0)),
-          scraping_process: __S(457, __c57, 1),
+          debug_id_process: __S(385, __c24, 1),
+          release_process: S.NullOr(__S(386, __c24, 2)),
+          scraping_process: __S(387, __c24, 3),
         }),
       ).annotate({
         identifier: "GetProjectEventSourceMapDebugResponseExceptionsItemFramesItem",
       });
-    case 3:
-      return S.Array(__S(458, __c57, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(388, __c24, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          frames: __S(459, __c57, 3),
+          frames: __S(389, __c24, 5),
         }),
       ).annotate({
         identifier: "GetProjectEventSourceMapDebugResponseExceptionsItem",
       });
-    case 5:
-      return S.Array(__S(460, __c57, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(390, __c24, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           dist: S.NullOr(S.String),
           release: S.NullOr(S.String),
-          exceptions: __S(461, __c57, 5),
+          exceptions: __S(391, __c24, 7),
           has_debug_ids: S.Boolean,
           min_debug_id_sdk_version: S.NullOr(S.String),
           sdk_version: S.NullOr(S.String),
@@ -28180,7 +23218,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetProjectEventSourceMapDebugResponse",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28192,7 +23234,7 @@ function __c57(j: number): any {
           mainBinaryIdentifier: S.optional(S.String.pipe(T.Query())),
           buildConfiguration: S.optional(S.String.pipe(T.Query())),
           codesigningType: S.optional(S.String.pipe(T.Query())),
-          installGroups: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          installGroups: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -28203,17 +23245,13 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetProjectInstallableBuildLatestRequest",
       });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           buildId: S.String,
           state: S.String,
-          appInfo: __S(334, __c41, 6),
-          gitInfo: S.NullOr(__S(335, __c41, 7)),
+          appInfo: __S(5424, __c339, 0),
+          gitInfo: S.NullOr(__S(5425, __c339, 1)),
           platform: S.NullOr(S.String),
           projectId: S.String,
           projectSlug: S.String,
@@ -28223,7 +23261,7 @@ function __c58(j: number): any {
           installUrlExpiresAt: S.NullOr(S.String),
           downloadCount: S.Number,
           releaseNotes: S.NullOr(S.String),
-          installGroups: S.NullOr(__S(45, __c5, 5)),
+          installGroups: S.NullOr(__S(816, __c51, 0)),
           isCodeSignatureValid: S.NullOr(S.Boolean),
           profileName: S.NullOr(S.String),
           codesigningType: S.NullOr(S.String),
@@ -28231,16 +23269,20 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetProjectInstallableBuildLatestResponseLatestArtifact",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          latestArtifact: S.NullOr(__S(464, __c58, 0)),
-          currentArtifact: S.NullOr(__S(464, __c58, 0)),
+          latestArtifact: S.NullOr(__S(401, __c25, 1)),
+          currentArtifact: S.NullOr(__S(401, __c25, 1)),
         }),
       ).annotate({
         identifier: "GetProjectInstallableBuildLatestResponse",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28254,7 +23296,11 @@ function __c58(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectKeyRequest" });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28268,7 +23314,7 @@ function __c58(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectMonitorRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           schedule_type: S.String,
@@ -28283,24 +23329,69 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetProjectMonitorResponseConfig",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          alertRule: S.optional(__S(105, __c13, 1)),
+          alertRule: S.optional(__S(2130, __c133, 2)),
           id: S.String,
           name: S.String,
           slug: S.String,
           status: S.String,
           isMuted: S.Boolean,
           isUpserting: S.Boolean,
-          config: __S(468, __c58, 4),
+          config: __S(433, __c27, 1),
           dateCreated: S.String,
-          project: __S(107, __c13, 3),
-          environments: __S(110, __c13, 6),
-          owner: __S(111, __c13, 7),
+          project: __S(2112, __c132, 0),
+          environments: __S(2133, __c133, 5),
+          owner: __S(2080, __c130, 0),
         }),
       ).annotate({
         identifier: "GetProjectMonitorResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          pattern: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectCodeOwnersResponseSchemaCase0RulesItemMatcher",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          name: S.String,
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProjectCodeOwnersResponseSchemaCase0RulesItemOwnersItem",
+      });
+    case 2:
+      return S.Array(__S(449, __c28, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          matcher: __S(448, __c28, 0),
+          owners: __S(450, __c28, 2),
+        }),
+      ).annotate({
+        identifier: "CreateProjectCodeOwnersResponseSchemaCase0RulesItem",
+      });
+    case 4:
+      return S.Array(__S(451, __c28, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          _version: S.Number.pipe(T.Body("$version")),
+          rules: __S(452, __c28, 4),
+        }),
+      ).annotate({
+        identifier: "CreateProjectCodeOwnersResponseSchemaCase0",
       });
     case 6:
       return S.suspend(() =>
@@ -28320,7 +23411,7 @@ function __c58(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          schema: S.optional(S.NullOr(__S(169, __c21, 1))),
+          schema: S.optional(S.NullOr(__S(453, __c28, 5))),
           raw: S.String,
           fallthrough: S.Boolean,
           dateCreated: S.String,
@@ -28334,7 +23425,7 @@ function __c58(j: number): any {
       });
   }
 }
-function __c59(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28355,25 +23446,25 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           operator: S.String,
-          values: __S(45, __c5, 5),
+          values: __S(816, __c51, 0),
         }),
       ).annotate({
         identifier:
           "GetProjectPreprodSizeAnalysisStatusCheckRulesResponseRulesItemFiltersItemConditionsItem",
       });
     case 2:
-      return S.Array(__S(473, __c59, 1));
+      return S.Array(__S(465, __c29, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          conditions: __S(474, __c59, 2),
+          conditions: __S(466, __c29, 2),
         }),
       ).annotate({
         identifier: "GetProjectPreprodSizeAnalysisStatusCheckRulesResponseRulesItemFiltersItem",
       });
     case 4:
-      return S.Array(__S(475, __c59, 3));
+      return S.Array(__S(467, __c29, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -28382,26 +23473,64 @@ function __c59(j: number): any {
           measurement: S.String,
           value: S.String,
           filterQuery: S.String,
-          filters: S.NullOr(__S(476, __c59, 4)),
+          filters: S.NullOr(__S(468, __c29, 4)),
           artifactType: S.String,
         }),
       ).annotate({
         identifier: "GetProjectPreprodSizeAnalysisStatusCheckRulesResponseRulesItem",
       });
     case 6:
-      return S.Array(__S(477, __c59, 5));
+      return S.Array(__S(469, __c29, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          rules: __S(478, __c59, 6),
+          rules: __S(470, __c29, 6),
         }),
       ).annotate({
         identifier: "GetProjectPreprodSizeAnalysisStatusCheckRulesResponse",
       });
   }
 }
-function __c60(j: number): any {
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          issue_id: S.String.pipe(T.Label()),
+          integration_id: S.String.pipe(T.Label()),
+          title: S.String,
+          description: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/integrations/{integration_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAnExternalIssueAndLinkItToAnIssueRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          key: S.String,
+          url: S.String,
+          integrationId: S.Number,
+          displayName: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateAnExternalIssueAndLinkItToAnIssueResponse",
+      });
+  }
+}
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28433,12 +23562,16 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          rules: __S(481, __c60, 1),
+          rules: __S(513, __c32, 1),
         }),
       ).annotate({
         identifier: "GetProjectPreprodSnapshotStatusCheckRulesResponse",
       });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28454,7 +23587,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetProjectProfilingProfileRequest",
       });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28472,7 +23609,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetProjectReleaseFileRequest",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28488,7 +23629,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetProjectReplayDeletionJobRequest",
       });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28505,7 +23650,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetProjectReplayRecordingSegmentRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           replayId: S.String,
@@ -28516,19 +23661,19 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetProjectReplayRecordingSegmentResponseData",
       });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(487, __c60, 7),
+          data: __S(577, __c36, 1),
         }),
       ).annotate({
         identifier: "GetProjectReplayRecordingSegmentResponse",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sentry_app_id_or_slug: S.String.pipe(T.Label()),
@@ -28536,7 +23681,11 @@ function __c61(j: number): any {
           T.Http({ method: "GET", uri: "/api/0/sentry-apps/{sentry_app_id_or_slug}/", code: 200 }),
         ),
       ).annotate({ identifier: "GetSentryAppRequest" });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           avatarType: S.String,
@@ -28548,9 +23697,13 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetSentryAppResponseAvatarsItem",
       });
-    case 3:
-      return S.Array(__S(490, __c61, 2));
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(608, __c38, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -28559,24 +23712,28 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetSentryAppResponseOwner",
       });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: __S(17, __c2, 1),
-          avatars: __S(491, __c61, 3),
-          events: __S(17, __c2, 1),
-          webhookEvents: __S(17, __c2, 1),
-          featureData: __S(17, __c2, 1),
+          allowedOrigins: __S(4368, __c273, 0),
+          avatars: __S(624, __c39, 0),
+          events: __S(4368, __c273, 0),
+          webhookEvents: __S(4368, __c273, 0),
+          featureData: __S(4368, __c273, 0),
           isAlertable: S.Boolean,
           metadata: S.String,
           name: S.String,
           schema: S.String,
-          scopes: __S(17, __c2, 1),
+          scopes: __S(4368, __c273, 0),
           slug: S.String,
           status: S.String,
           uuid: S.String,
           verifyInstall: S.Boolean,
-          webhookHeaders: __S(17, __c2, 1),
+          webhookHeaders: __S(4368, __c273, 0),
           isDisabled: S.optional(S.Boolean),
           author: S.optional(S.NullOr(S.String)),
           overview: S.optional(S.NullOr(S.String)),
@@ -28586,10 +23743,14 @@ function __c61(j: number): any {
           clientSecret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           datePublished: S.optional(S.String),
           clientId: S.optional(S.String),
-          owner: S.optional(__S(492, __c61, 4)),
+          owner: S.optional(__S(625, __c39, 1)),
         }),
       ).annotate({ identifier: "GetSentryAppResponse" });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
@@ -28607,22 +23768,26 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GetSentryAppInstallationExternalRequestOptionsRequest",
       });
-    case 7:
-      return S.Array(__S(45, __c5, 5));
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          choices: __S(495, __c61, 7),
+          choices: __S(672, __c42, 0),
           defaultValue: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetSentryAppInstallationExternalRequestOptionsResponse",
       });
-    case 1:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(816, __c51, 0));
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28637,7 +23802,11 @@ function __c62(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTeamRequest" });
-    case 2:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -28646,26 +23815,30 @@ function __c62(j: number): any {
           dateCreated: S.NullOr(S.String),
           isMember: S.Boolean,
           teamRole: S.NullOr(S.String),
-          flags: __S(1, __c0, 1),
-          access: __S(17, __c2, 1),
+          flags: __S(4128, __c258, 0),
+          access: __S(4368, __c273, 0),
           hasAccess: S.Boolean,
           isPending: S.Boolean,
           memberCount: S.Number,
-          avatar: __S(10, __c1, 2),
-          externalTeams: S.optional(__S(5, __c0, 5)),
-          organization: S.optional(__S(442, __c55, 2)),
-          projects: S.optional(__S(147, __c18, 3)),
+          avatar: __S(4144, __c259, 0),
+          externalTeams: S.optional(__S(4112, __c257, 0)),
+          organization: S.optional(__S(240, __c15, 0)),
+          projects: S.optional(__S(3312, __c207, 0)),
         }),
       ).annotate({ identifier: "GetTeamResponse" });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          statsType: __S(20, __c2, 4).pipe(T.Query()),
-          project: S.optional(__S(499, __c62, 3).pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          statsType: __S(4576, __c286, 0).pipe(T.Query()),
+          project: S.optional(__S(720, __c45, 0).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
@@ -28684,7 +23857,7 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "GetTraceItemStatisticsRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           label: S.String,
@@ -28693,41 +23866,41 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "GetTraceItemStatisticsResponseDataItemAttributeDistributionsDataValueItem",
       });
-    case 6:
-      return S.Array(__S(501, __c62, 5));
-    case 7:
-      return S.Record(S.String, __S(502, __c62, 6));
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(722, __c45, 2));
+    case 4:
+      return S.Record(S.String, __S(723, __c45, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(503, __c62, 7),
+          data: __S(724, __c45, 4),
         }),
       ).annotate({
         identifier: "GetTraceItemStatisticsResponseDataItemAttributeDistributions",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          attributeDistributions: __S(504, __c63, 0),
+          attributeDistributions: __S(725, __c45, 5),
         }),
       ).annotate({
         identifier: "GetTraceItemStatisticsResponseDataItem",
       });
-    case 2:
-      return S.Array(__S(505, __c63, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(726, __c45, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          data: __S(506, __c63, 2),
+          data: __S(727, __c45, 7),
         }),
       ).annotate({
         identifier: "GetTraceItemStatisticsResponse",
       });
-    case 4:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28746,7 +23919,306 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "LinkAnExistingExternalIssueToAnIssueRequest",
       });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          x: S.Number,
+          y: S.Number,
+          w: S.Number,
+          h: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardRequestWidgetsItemLayout",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          title: S.optional(S.String),
+          description: S.optional(S.NullOr(S.String)),
+          thresholds: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          display_type: S.optional(S.String),
+          interval: S.optional(S.String),
+          queries: S.optional(__S(804, __c50, 4)),
+          widget_type: S.optional(S.NullOr(S.String)),
+          limit: S.optional(S.NullOr(S.Number)),
+          layout: S.optional(S.NullOr(__S(752, __c47, 0))),
+          axis_range: S.optional(S.NullOr(S.String)),
+          legend_type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardRequestWidgetsItem",
+      });
+    case 2:
+      return S.Array(__S(753, __c47, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          title: S.String,
+          id: S.optional(S.String),
+          widgets: S.optional(__S(754, __c47, 2)),
+          projects: S.optional(__S(768, __c48, 0)),
+          environment: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          period: S.optional(S.NullOr(S.String)),
+          start: S.optional(S.NullOr(S.String)),
+          end: S.optional(S.NullOr(S.String)),
+          filters: S.optional(__S(4128, __c258, 0)),
+          utc: S.optional(S.Boolean),
+          permissions: S.optional(S.NullOr(__S(805, __c50, 5))),
+          is_favorited: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/dashboards/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardRequest",
+      });
+    case 4:
+      return S.Record(S.String, S.Unknown);
     case 5:
+      return S.Array(__S(756, __c47, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          orderby: S.NullOr(__S(853, __c53, 5)),
+          equations: S.NullOr(__S(757, __c47, 5)),
+          selected_columns: __S(816, __c51, 0),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardResponseWidgetsItemChangedReasonItem",
+      });
+    case 7:
+      return S.Array(__S(758, __c47, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+          description: S.NullOr(S.String),
+          displayType: S.String,
+          thresholds: S.NullOr(__S(806, __c50, 6)),
+          interval: S.String,
+          dateCreated: S.String,
+          dashboardId: S.String,
+          queries: __S(808, __c50, 8),
+          limit: S.NullOr(S.Number),
+          widgetType: S.NullOr(S.String),
+          layout: S.NullOr(__S(864, __c54, 0)),
+          axisRange: S.NullOr(S.String),
+          legendType: S.NullOr(S.String),
+          datasetSource: S.NullOr(S.String),
+          exploreUrls: S.NullOr(__S(4368, __c273, 0)),
+          changedReason: S.NullOr(__S(759, __c47, 7)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardResponseWidgetsItem",
+      });
+    case 9:
+      return S.Array(__S(760, __c47, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.optional(__S(4368, __c273, 0)),
+          period: S.optional(S.String),
+          utc: S.optional(S.String),
+          expired: S.optional(S.Boolean),
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+          id: S.String,
+          title: S.String,
+          dateCreated: S.String,
+          createdBy: S.NullOr(__S(4048, __c253, 0)),
+          widgets: __S(761, __c47, 9),
+          projects: __S(768, __c48, 0),
+          filters: __S(854, __c53, 6),
+          permissions: S.NullOr(__S(855, __c53, 7)),
+          isFavorited: S.Boolean,
+          prebuiltId: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          extraction_state: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardRequestWidgetsItemQueriesItemOnDemandExtraction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.String,
+          dashboard_id: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardRequestWidgetsItemQueriesItemLinkedDashboardsItem",
+      });
+    case 2:
+      return S.Array(__S(801, __c50, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          fields: S.optional(__S(816, __c51, 0)),
+          aggregates: S.optional(S.NullOr(__S(816, __c51, 0))),
+          columns: S.optional(S.NullOr(__S(816, __c51, 0))),
+          field_aliases: S.optional(S.NullOr(__S(816, __c51, 0))),
+          name: S.optional(S.String),
+          conditions: S.optional(S.String),
+          orderby: S.optional(S.String),
+          is_hidden: S.optional(S.Boolean),
+          on_demand_extraction: S.optional(__S(800, __c50, 0)),
+          on_demand_extraction_disabled: S.optional(S.Boolean),
+          selected_aggregate: S.optional(S.NullOr(S.Number)),
+          linked_dashboards: S.optional(S.NullOr(__S(802, __c50, 2))),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardRequestWidgetsItemQueriesItem",
+      });
+    case 4:
+      return S.Array(__S(803, __c50, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          is_editable_by_everyone: S.Boolean,
+          teams_with_edit_access: S.optional(__S(832, __c52, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardRequestPermissions",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          preferredPolarity: S.optional(S.String),
+          timeWindow: S.optional(S.String),
+          max_values: __S(848, __c53, 0),
+          unit: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardResponseWidgetsItemThresholds",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          fields: __S(816, __c51, 0),
+          aggregates: __S(816, __c51, 0),
+          columns: __S(816, __c51, 0),
+          fieldAliases: __S(816, __c51, 0),
+          conditions: S.String,
+          orderby: S.String,
+          widgetId: S.String,
+          onDemand: __S(850, __c53, 2),
+          isHidden: S.Boolean,
+          selectedAggregate: S.NullOr(S.Number),
+          linkedDashboards: __S(852, __c53, 4),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardResponseWidgetsItemQueriesItem",
+      });
+    case 8:
+      return S.Array(__S(807, __c50, 7));
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          extractionState: S.String,
+          dashboardWidgetQueryId: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardResponseWidgetsItemQueriesItemOnDemandItem",
+      });
+    case 2:
+      return S.Array(__S(849, __c53, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.String,
+          dashboardId: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardResponseWidgetsItemQueriesItemLinkedDashboardsItem",
+      });
+    case 4:
+      return S.Array(__S(851, __c53, 3));
+    case 5:
+      return S.Array(__S(784, __c49, 0));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          release: S.optional(__S(4368, __c273, 0)),
+          releaseId: S.optional(__S(4368, __c273, 0)),
+          globalFilter: S.optional(__S(4064, __c254, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardResponseFilters",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          isEditableByEveryone: S.Boolean,
+          teamsWithEditAccess: __S(832, __c52, 0),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDashboardResponsePermissions",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Number);
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28762,7 +24234,7 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "LinkProjectRepositoryRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -28774,7 +24246,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "LinkProjectRepositoryResponse",
       });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28789,11 +24265,7 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "ListAnOrganizationSIntegrationPlatformInstallationsRequest",
       });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String,
@@ -28803,7 +24275,7 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "ListAnOrganizationSIntegrationPlatformInstallationsResponseBodyItemApp",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           slug: S.String,
@@ -28812,24 +24284,28 @@ function __c64(j: number): any {
         identifier:
           "ListAnOrganizationSIntegrationPlatformInstallationsResponseBodyItemOrganization",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          app: __S(512, __c64, 0),
-          organization: __S(513, __c64, 1),
+          app: __S(897, __c56, 1),
+          organization: __S(898, __c56, 2),
           uuid: S.String,
           status: S.String,
         }),
       ).annotate({
         identifier: "ListAnOrganizationSIntegrationPlatformInstallationsResponseBodyItem",
       });
-    case 3:
-      return S.Array(__S(514, __c64, 2));
     case 4:
-      return S.suspend(() => __S(515, __c64, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(899, __c56, 3));
+    case 5:
+      return S.suspend(() => __S(900, __c56, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAnOrganizationSIntegrationPlatformInstallationsResponse",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28844,27 +24320,23 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "ListAProjectSCustomInboundFiltersRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: __S(45, __c5, 5),
+          value: __S(816, __c51, 0),
         }),
       ).annotate({
         identifier: "ListAProjectSCustomInboundFiltersResponseBodyItemConditionsItem",
       });
-    case 7:
-      return S.Array(__S(518, __c64, 6));
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(913, __c57, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           dataType: S.String,
-          conditions: __S(519, __c64, 7),
+          conditions: __S(914, __c57, 2),
           dateCreated: S.String,
           dateUpdated: S.String,
           name: S.optional(S.NullOr(S.String)),
@@ -28873,13 +24345,17 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "ListAProjectSCustomInboundFiltersResponseBodyItem",
       });
-    case 1:
-      return S.Array(__S(520, __c65, 0));
-    case 2:
-      return S.suspend(() => __S(521, __c65, 1).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(915, __c57, 3));
+    case 5:
+      return S.suspend(() => __S(916, __c57, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAProjectSCustomInboundFiltersResponse",
       });
-    case 3:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28895,11 +24371,21 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "ListAProjectSServiceHooksRequest",
       });
-    case 4:
+    case 1:
+      return S.Array(__S(944, __c59, 0));
+    case 2:
+      return S.suspend(() => __S(929, __c58, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListAProjectSServiceHooksResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dateCreated: S.String,
-          events: __S(17, __c2, 1),
+          events: __S(4368, __c273, 0),
           id: S.String,
           secret: S.String.pipe(T.SensitiveValue({})),
           status: S.String,
@@ -28908,13 +24394,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "ListAProjectSServiceHooksResponseBodyItem",
       });
-    case 5:
-      return S.Array(__S(524, __c65, 4));
-    case 6:
-      return S.suspend(() => __S(525, __c65, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListAProjectSServiceHooksResponse",
-      });
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28930,11 +24414,7 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "ListAProjectSUserFeedbackRequest",
       });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           eventID: S.optional(S.String),
@@ -28943,13 +24423,13 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "ListAProjectSUserFeedbackResponseBodyItemEvent",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           comments: S.String,
           dateCreated: S.String,
           email: S.String,
-          event: __S(528, __c66, 0),
+          event: __S(961, __c60, 1),
           eventID: S.String,
           id: S.String,
           issue: S.NullOr(S.Unknown),
@@ -28959,13 +24439,17 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "ListAProjectSUserFeedbackResponseBodyItem",
       });
-    case 2:
-      return S.Array(__S(529, __c66, 1));
     case 3:
-      return S.suspend(() => __S(530, __c66, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(962, __c60, 2));
+    case 4:
+      return S.suspend(() => __S(963, __c60, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAProjectSUserFeedbackResponse",
       });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -28980,7 +24464,7 @@ function __c66(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListATagSValuesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -28988,15 +24472,15 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "ListATagSValuesResponseBodyItem",
       });
-    case 6:
-      return S.Array(__S(533, __c66, 5));
-    case 7:
-      return S.suspend(() => __S(534, __c66, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(977, __c61, 1));
+    case 3:
+      return S.suspend(() => __S(978, __c61, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListATagSValuesResponse",
       });
   }
 }
-function __c67(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
@@ -29004,8 +24488,8 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          project: S.optional(__S(536, __c67, 0).pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          project: S.optional(__S(992, __c62, 0).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
@@ -29044,36 +24528,40 @@ function __c67(j: number): any {
           startTimestamp: S.Number,
           toolCalls: S.Number,
           toolErrors: S.Number,
-          toolNames: __S(17, __c2, 1),
+          toolNames: __S(4368, __c273, 0),
           totalCost: S.Number,
           totalTokens: S.Number,
           conversationId: S.String,
           errors: S.Number,
           title: S.NullOr(S.String),
           projectId: S.NullOr(S.Number),
-          flow: __S(17, __c2, 1),
+          flow: __S(4368, __c273, 0),
           traceCount: S.Number,
-          traceIds: __S(17, __c2, 1),
+          traceIds: __S(4368, __c273, 0),
           firstInput: S.NullOr(S.String),
           lastOutput: S.NullOr(S.String),
-          user: S.NullOr(__S(538, __c67, 2)),
-          projects: __S(250, __c31, 2),
+          user: S.NullOr(__S(994, __c62, 2)),
+          projects: __S(4961, __c310, 1),
           webUrl: S.String,
         }),
       ).annotate({
         identifier: "ListOrganizationAIConversationsResponseBodyItem",
       });
     case 4:
-      return S.Array(__S(539, __c67, 3));
+      return S.Array(__S(995, __c62, 3));
     case 5:
-      return S.suspend(() => __S(540, __c67, 4).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(996, __c62, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationAIConversationsResponse",
       });
-    case 6:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          filter: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          filter: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           sort: S.optional(S.String.pipe(T.Query())),
           pin: S.optional(S.String.pipe(T.Query())),
@@ -29089,68 +24577,68 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "ListOrganizationDashboardsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          release: S.optional(__S(17, __c2, 1)),
-          releaseId: S.optional(__S(17, __c2, 1)),
-          globalFilter: S.optional(__S(239, __c29, 7)),
+          release: S.optional(__S(4368, __c273, 0)),
+          releaseId: S.optional(__S(4368, __c273, 0)),
+          globalFilter: S.optional(__S(4832, __c302, 0)),
         }),
       ).annotate({
         identifier: "ListOrganizationDashboardsResponseBodyItemFilters",
       });
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(67, __c8, 3));
-    case 1:
+    case 2:
+      return S.Array(__S(784, __c49, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           isEditableByEveryone: S.Boolean,
-          teamsWithEditAccess: __S(55, __c6, 7),
+          teamsWithEditAccess: __S(832, __c52, 0),
         }),
       ).annotate({
         identifier: "ListOrganizationDashboardsResponseBodyItemPermissions",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
           dateCreated: S.String,
-          createdBy: __S(273, __c34, 1),
-          environment: __S(17, __c2, 1),
-          filters: __S(543, __c67, 7),
+          createdBy: __S(5056, __c316, 0),
+          environment: __S(4368, __c273, 0),
+          filters: __S(1009, __c63, 1),
           lastVisited: S.NullOr(S.String),
-          widgetDisplay: __S(17, __c2, 1),
-          widgetPreview: __S(544, __c68, 0),
-          permissions: S.NullOr(__S(545, __c68, 1)),
+          widgetDisplay: __S(4368, __c273, 0),
+          widgetPreview: __S(1010, __c63, 2),
+          permissions: S.NullOr(__S(1011, __c63, 3)),
           isFavorited: S.Boolean,
-          projects: __S(54, __c6, 6),
+          projects: __S(768, __c48, 0),
           prebuiltId: S.NullOr(S.Number),
         }),
       ).annotate({
         identifier: "ListOrganizationDashboardsResponseBodyItem",
       });
-    case 3:
-      return S.Array(__S(546, __c68, 2));
-    case 4:
-      return S.suspend(() => __S(547, __c68, 3).pipe(T.RawResponseRoot())).annotate({
+    case 5:
+      return S.Array(__S(1012, __c63, 4));
+    case 6:
+      return S.suspend(() => __S(1013, __c63, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationDashboardsResponse",
       });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          project: S.optional(__S(549, __c68, 5).pipe(T.Query())),
+          project: S.optional(__S(1024, __c64, 0).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           sortBy: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(__S(54, __c6, 6).pipe(T.Query())),
-          type: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          id: S.optional(__S(768, __c48, 0).pipe(T.Query())),
+          type: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           enabled: S.optional(S.Boolean.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
@@ -29164,39 +24652,39 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "ListOrganizationDetectorsRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          owner: S.optional(S.NullOr(__S(111, __c13, 7))),
+          owner: S.optional(S.NullOr(__S(2080, __c130, 0))),
           createdBy: S.optional(S.NullOr(S.String)),
-          latestGroup: S.optional(S.NullOr(__S(1, __c0, 1))),
+          latestGroup: S.optional(S.NullOr(__S(4128, __c258, 0))),
           description: S.optional(S.NullOr(S.String)),
           id: S.String,
           projectId: S.NullOr(S.String),
           name: S.String,
           type: S.String,
-          workflowIds: S.NullOr(__S(17, __c2, 1)),
+          workflowIds: S.NullOr(__S(4368, __c273, 0)),
           dateCreated: S.String,
           dateUpdated: S.String,
-          dataSources: S.NullOr(__S(2, __c0, 2)),
-          conditionGroup: S.NullOr(__S(1, __c0, 1)),
-          config: __S(1, __c0, 1),
+          dataSources: S.NullOr(__S(4064, __c254, 0)),
+          conditionGroup: S.NullOr(__S(4128, __c258, 0)),
+          config: __S(4128, __c258, 0),
           enabled: S.Boolean,
         }),
       ).annotate({
         identifier: "ListOrganizationDetectorsResponseBodyItem",
       });
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(551, __c68, 7));
-    case 1:
-      return S.suspend(() => __S(552, __c69, 0).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(1026, __c64, 2));
+    case 4:
+      return S.suspend(() => __S(1027, __c64, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationDetectorsResponse",
       });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -29214,12 +24702,12 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "ListOrganizationDiscoverSavedQueriesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          identities: S.optional(__S(82, __c10, 2)),
-          avatar: S.optional(__S(10, __c1, 2)),
-          authenticators: S.optional(__S(78, __c9, 6)),
+          identities: S.optional(__S(1136, __c71, 0)),
+          avatar: S.optional(__S(4144, __c259, 0)),
+          authenticators: S.optional(__S(1088, __c68, 0)),
           canReset2fa: S.optional(S.Boolean),
           id: S.String,
           name: S.String,
@@ -29236,55 +24724,194 @@ function __c69(j: number): any {
           lastActive: S.NullOr(S.String),
           isSuperuser: S.Boolean,
           isStaff: S.Boolean,
-          experiments: __S(83, __c10, 3),
-          emails: __S(84, __c10, 4),
+          experiments: __S(1104, __c69, 0),
+          emails: __S(1072, __c67, 0),
         }),
       ).annotate({
         identifier: "ListOrganizationDiscoverSavedQueriesResponseBodyItemCreatedBy",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(__S(45, __c5, 5)),
+          environment: S.optional(__S(816, __c51, 0)),
           query: S.optional(S.String),
-          fields: S.optional(__S(17, __c2, 1)),
-          widths: S.optional(__S(17, __c2, 1)),
-          conditions: S.optional(__S(45, __c5, 5)),
-          aggregations: S.optional(__S(45, __c5, 5)),
+          fields: S.optional(__S(4368, __c273, 0)),
+          widths: S.optional(__S(4368, __c273, 0)),
+          conditions: S.optional(__S(816, __c51, 0)),
+          aggregations: S.optional(__S(816, __c51, 0)),
           range: S.optional(S.String),
           start: S.optional(S.String),
           end: S.optional(S.String),
           orderby: S.optional(S.String),
           limit: S.optional(S.String),
-          yAxis: S.optional(__S(17, __c2, 1)),
+          yAxis: S.optional(__S(4368, __c273, 0)),
           display: S.optional(S.String),
           topEvents: S.optional(S.Number),
           interval: S.optional(S.String),
-          exploreQuery: S.optional(__S(83, __c10, 3)),
+          exploreQuery: S.optional(__S(1104, __c69, 0)),
           lastVisited: S.optional(S.String),
           starred: S.optional(S.Boolean),
           position: S.optional(S.NullOr(S.Number)),
           id: S.String,
           name: S.String,
-          projects: __S(55, __c6, 7),
+          projects: __S(832, __c52, 0),
           version: S.Number,
           queryDataset: S.String,
           datasetSource: S.String,
           expired: S.Boolean,
           dateCreated: S.String,
           dateUpdated: S.String,
-          createdBy: __S(555, __c69, 3),
+          createdBy: __S(1041, __c65, 1),
         }),
       ).annotate({
         identifier: "ListOrganizationDiscoverSavedQueriesResponseBodyItem",
       });
-    case 5:
-      return S.Array(__S(556, __c69, 4));
-    case 6:
-      return S.suspend(() => __S(557, __c69, 5).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(1042, __c65, 2));
+    case 4:
+      return S.suspend(() => __S(1043, __c65, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationDiscoverSavedQueriesResponse",
       });
-    case 7:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          name: S.String,
+          projects: S.optional(__S(768, __c48, 0)),
+          queryDataset: S.optional(S.String),
+          start: S.optional(S.NullOr(S.String)),
+          end: S.optional(S.NullOr(S.String)),
+          range: S.optional(S.NullOr(S.String)),
+          fields: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          orderby: S.optional(S.NullOr(S.String)),
+          rollup: S.optional(S.NullOr(S.Number)),
+          aggregations: S.optional(S.NullOr(__S(1120, __c70, 0))),
+          groupby: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          conditions: S.optional(S.NullOr(__S(1121, __c70, 1))),
+          limit: S.optional(S.NullOr(S.Number)),
+          version: S.optional(S.NullOr(S.Number)),
+          environment: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          query: S.optional(S.NullOr(S.String)),
+          widths: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          yAxis: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          display: S.optional(S.NullOr(S.String)),
+          topEvents: S.optional(S.NullOr(S.Number)),
+          interval: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/discover/saved/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationDiscoverSavedQueryRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4002, __c250, 2));
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1088, __c68, 0));
+    case 1:
+      return S.Array(__S(3968, __c248, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          identities: S.optional(__S(1136, __c71, 0)),
+          avatar: S.optional(__S(4144, __c259, 0)),
+          authenticators: S.optional(__S(1088, __c68, 0)),
+          canReset2fa: S.optional(S.Boolean),
+          id: S.String,
+          name: S.String,
+          username: S.String,
+          email: S.String,
+          avatarUrl: S.String,
+          isActive: S.Boolean,
+          isSuspended: S.Boolean,
+          hasPasswordAuth: S.Boolean,
+          isManaged: S.Boolean,
+          dateJoined: S.String,
+          lastLogin: S.NullOr(S.String),
+          has2fa: S.Boolean,
+          lastActive: S.NullOr(S.String),
+          isSuperuser: S.Boolean,
+          isStaff: S.Boolean,
+          experiments: __S(1104, __c69, 0),
+          emails: __S(1072, __c67, 0),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDiscoverSavedQueryResponseCreatedBy",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.optional(__S(4368, __c273, 0)),
+          query: S.optional(S.String),
+          fields: S.optional(__S(4368, __c273, 0)),
+          widths: S.optional(__S(4368, __c273, 0)),
+          conditions: S.optional(__S(4368, __c273, 0)),
+          aggregations: S.optional(__S(4368, __c273, 0)),
+          range: S.optional(S.String),
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+          orderby: S.optional(S.String),
+          limit: S.optional(S.String),
+          yAxis: S.optional(__S(4368, __c273, 0)),
+          display: S.optional(S.String),
+          topEvents: S.optional(S.Number),
+          interval: S.optional(S.String),
+          exploreQuery: S.optional(__S(4128, __c258, 0)),
+          lastVisited: S.optional(S.String),
+          starred: S.optional(S.Boolean),
+          position: S.optional(S.NullOr(S.Number)),
+          id: S.String,
+          name: S.String,
+          projects: __S(768, __c48, 0),
+          version: S.Number,
+          queryDataset: S.String,
+          datasetSource: S.String,
+          expired: S.Boolean,
+          dateCreated: S.String,
+          dateUpdated: S.String,
+          createdBy: __S(1122, __c70, 2),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationDiscoverSavedQueryResponse",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4001, __c250, 1));
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -29299,28 +24926,28 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "ListOrganizationEnvironmentsRequest",
       });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
-      return S.suspend(() => __S(560, __c70, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(3984, __c249, 0));
+    case 2:
+      return S.suspend(() => __S(1153, __c72, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationEnvironmentsResponse",
       });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          field: __S(17, __c2, 1).pipe(T.Query()),
+          field: __S(4368, __c273, 0).pipe(T.Query()),
           dataset: S.String.pipe(T.Query()),
           end: S.optional(S.String.pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           referrer: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(__S(562, __c70, 2).pipe(T.Query())),
+          project: S.optional(__S(1168, __c73, 0).pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
@@ -29338,22 +24965,12 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "ListOrganizationEventsRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
-          delaySeconds: S.optional(S.Number),
-          completeThrough: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationEventsResponseMetaIngestion",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(__S(88, __c11, 0)),
-          units: S.optional(__S(452, __c56, 4)),
-          tips: S.optional(__S(88, __c11, 0)),
+          fields: S.optional(__S(1616, __c101, 0)),
+          units: S.optional(__S(352, __c22, 0)),
+          tips: S.optional(__S(1616, __c101, 0)),
           datasetReason: S.optional(S.String),
           isMetricsData: S.optional(S.Boolean),
           isMetricsExtractedData: S.optional(S.Boolean),
@@ -29363,41 +24980,55 @@ function __c70(j: number): any {
           bytesScanned: S.optional(S.Number),
           routingHint: S.optional(S.String),
           debug_info: S.optional(S.Unknown),
-          ingestion: S.optional(__S(564, __c70, 4)),
+          ingestion: S.optional(__S(1184, __c74, 0)),
         }),
       ).annotate({
         identifier: "ListOrganizationEventsResponseMeta",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(2, __c0, 2),
-          meta: __S(565, __c70, 5),
+          data: __S(4064, __c254, 0),
+          meta: __S(1170, __c73, 2),
         }),
       ).annotate({
         identifier: "ListOrganizationEventsResponse",
       });
-    case 7:
-      return S.Array(S.Unknown);
   }
 }
-function __c71(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          delaySeconds: S.optional(S.Number),
+          completeThrough: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationEventsResponseMetaIngestion",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           dataset: S.String.pipe(T.Query()),
           end: S.optional(S.String.pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          project: S.optional(__S(567, __c70, 7).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          project: S.optional(__S(1200, __c75, 0).pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
           topEvents: S.optional(S.Number.pipe(T.Query())),
           comparisonDelta: S.optional(S.Number.pipe(T.Query())),
           interval: S.optional(S.Number.pipe(T.Query())),
           sort: S.optional(S.String.pipe(T.Query())),
-          groupBy: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          groupBy: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           yAxis: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           disableAggregateExtrapolation: S.optional(S.String.pipe(T.Query())),
@@ -29413,7 +25044,7 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "ListOrganizationEventsTimeseriesRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -29428,22 +25059,22 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "ListOrganizationEventsTimeseriesResponseMetaDroppedAnnotationsItem",
       });
-    case 2:
-      return S.Array(__S(569, __c71, 1));
     case 3:
+      return S.Array(__S(1202, __c75, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           dataset: S.String,
           start: S.Number,
           end: S.Number,
-          droppedAnnotations: S.optional(__S(570, __c71, 2)),
-          acceptedAnnotations: S.optional(__S(570, __c71, 2)),
-          ingestion: S.optional(__S(564, __c70, 4)),
+          droppedAnnotations: S.optional(__S(1203, __c75, 3)),
+          acceptedAnnotations: S.optional(__S(1203, __c75, 3)),
+          ingestion: S.optional(__S(1184, __c74, 0)),
         }),
       ).annotate({
         identifier: "ListOrganizationEventsTimeseriesResponseMeta",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.Number,
@@ -29458,9 +25089,9 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "ListOrganizationEventsTimeseriesResponseTimeSeriesItemValuesItem",
       });
-    case 5:
-      return S.Array(__S(572, __c71, 4));
     case 6:
+      return S.Array(__S(1205, __c75, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -29469,13 +25100,9 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "ListOrganizationEventsTimeseriesResponseTimeSeriesItemGroupByItem",
       });
-    case 7:
-      return S.Array(__S(574, __c71, 6));
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(1207, __c75, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           order: S.optional(S.Number),
@@ -29488,29 +25115,33 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "ListOrganizationEventsTimeseriesResponseTimeSeriesItemMeta",
       });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          values: __S(573, __c71, 5),
+          values: __S(1206, __c75, 6),
           yAxis: S.String,
-          groupBy: S.optional(__S(575, __c71, 7)),
-          meta: __S(576, __c72, 0),
+          groupBy: S.optional(__S(1208, __c75, 8)),
+          meta: __S(1209, __c75, 9),
         }),
       ).annotate({
         identifier: "ListOrganizationEventsTimeseriesResponseTimeSeriesItem",
       });
-    case 2:
-      return S.Array(__S(577, __c72, 1));
-    case 3:
+    case 11:
+      return S.Array(__S(1210, __c75, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          meta: S.optional(__S(571, __c71, 3)),
-          timeSeries: __S(578, __c72, 2),
+          meta: S.optional(__S(1204, __c75, 4)),
+          timeSeries: __S(1211, __c75, 11),
         }),
       ).annotate({
         identifier: "ListOrganizationEventsTimeseriesResponse",
       });
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -29524,51 +25155,51 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "ListOrganizationForwardingRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           isEnabled: S.Boolean,
           dataForwarderId: S.String,
-          project: __S(90, __c11, 2),
-          overrides: __S(67, __c8, 3),
-          effectiveConfig: __S(67, __c8, 3),
+          project: __S(1600, __c100, 0),
+          overrides: __S(784, __c49, 0),
+          effectiveConfig: __S(784, __c49, 0),
           dateAdded: S.String,
           dateUpdated: S.String,
         }),
       ).annotate({
         identifier: "ListOrganizationForwardingResponseBodyItemProjectConfigsItem",
       });
-    case 6:
-      return S.Array(__S(581, __c72, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1217, __c76, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           organizationId: S.String,
           isEnabled: S.Boolean,
           enrollNewProjects: S.Boolean,
-          enrolledProjects: __S(91, __c11, 3),
+          enrolledProjects: __S(1601, __c100, 1),
           provider: S.String,
-          config: S.NullOr(__S(88, __c11, 0)),
-          projectConfigs: __S(582, __c72, 6),
+          config: S.NullOr(__S(1616, __c101, 0)),
+          projectConfigs: __S(1218, __c76, 2),
           dateAdded: S.String,
           dateUpdated: S.String,
         }),
       ).annotate({
         identifier: "ListOrganizationForwardingResponseBodyItem",
       });
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(583, __c72, 7));
-    case 1:
-      return S.suspend(() => __S(584, __c73, 0).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(1219, __c76, 3));
+    case 5:
+      return S.suspend(() => __S(1220, __c76, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationForwardingResponse",
       });
-    case 2:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -29586,7 +25217,7 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIntegrationRepositoriesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -29599,23 +25230,27 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIntegrationRepositoriesResponseReposItem",
       });
-    case 4:
-      return S.Array(__S(587, __c73, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1233, __c77, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          repos: __S(588, __c73, 4),
+          repos: __S(1234, __c77, 2),
           searchable: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ListOrganizationIntegrationRepositoriesResponse",
       });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           providerKey: S.optional(S.String.pipe(T.Query())),
-          features: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          features: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           includeConfig: S.optional(S.Boolean.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -29628,7 +25263,7 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIntegrationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -29636,9 +25271,9 @@ function __c73(j: number): any {
           icon: S.NullOr(S.String),
           domainName: S.NullOr(S.String),
           accountType: S.NullOr(S.String),
-          scopes: S.NullOr(__S(17, __c2, 1)),
+          scopes: S.NullOr(__S(4368, __c273, 0)),
           outOfDate: S.NullOr(S.Boolean),
-          missingFeatures: S.NullOr(__S(237, __c29, 5)),
+          missingFeatures: S.NullOr(__S(4848, __c303, 0)),
           status: S.String,
           provider: S.Unknown,
           configOrganization: S.Unknown,
@@ -29651,17 +25286,17 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIntegrationsResponseBodyItem",
       });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(591, __c73, 7));
-    case 1:
-      return S.suspend(() => __S(592, __c74, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(1249, __c78, 1));
+    case 3:
+      return S.suspend(() => __S(1250, __c78, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationIntegrationsResponse",
       });
-    case 2:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -29669,7 +25304,7 @@ function __c74(j: number): any {
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           full: S.optional(S.Boolean.pipe(T.Query())),
           sample: S.optional(S.Boolean.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
@@ -29685,7 +25320,11 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIssueEventsRequest",
       });
-    case 3:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -29697,23 +25336,27 @@ function __c74(j: number): any {
           title: S.String,
           location: S.NullOr(S.String),
           culprit: S.NullOr(S.String),
-          user: S.NullOr(__S(299, __c37, 3)),
-          tags: __S(301, __c37, 5),
+          user: S.NullOr(__S(5248, __c328, 0)),
+          tags: __S(5250, __c328, 2),
           platform: S.NullOr(S.String),
           dateCreated: S.String,
           crashFile: S.NullOr(S.String),
-          metadata: __S(1, __c0, 1),
+          metadata: __S(4128, __c258, 0),
         }),
       ).annotate({
         identifier: "ListOrganizationIssueEventsResponseBodyItem",
       });
-    case 4:
-      return S.Array(__S(595, __c74, 3));
-    case 5:
-      return S.suspend(() => __S(596, __c74, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(1280, __c80, 0));
+    case 2:
+      return S.suspend(() => __S(1281, __c80, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationIssueEventsResponse",
       });
-    case 6:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -29729,13 +25372,13 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIssueExternalIssuesRequest",
       });
-    case 7:
-      return S.suspend(() => __S(293, __c36, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(5104, __c319, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationIssueExternalIssuesResponse",
       });
   }
 }
-function __c75(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -29755,8 +25398,6 @@ function __c75(j: number): any {
         identifier: "ListOrganizationIssueHashesRequest",
       });
     case 1:
-      return S.Array(__S(305, __c38, 1));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -29767,13 +25408,17 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIssueHashesResponseBodyItem",
       });
+    case 2:
+      return S.Array(__S(1313, __c82, 1));
     case 3:
-      return S.Array(__S(602, __c75, 2));
-    case 4:
-      return S.suspend(() => __S(603, __c75, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1314, __c82, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationIssueHashesResponse",
       });
-    case 5:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -29790,21 +25435,7 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIssueIntegrationsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          slug: S.String,
-          name: S.String,
-          canAdd: S.Boolean,
-          canDisable: S.Boolean,
-          features: __S(45, __c5, 5),
-          aspects: __S(83, __c10, 3),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationIssueIntegrationsResponseBodyItemProvider",
-      });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -29817,13 +25448,9 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIssueIntegrationsResponseBodyItemExternalIssuesItem",
       });
-  }
-}
-function __c76(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(607, __c75, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1329, __c83, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -29831,30 +25458,75 @@ function __c76(j: number): any {
           icon: S.NullOr(S.String),
           domainName: S.NullOr(S.String),
           accountType: S.NullOr(S.String),
-          scopes: S.NullOr(__S(17, __c2, 1)),
+          scopes: S.NullOr(__S(4368, __c273, 0)),
           outOfDate: S.NullOr(S.Boolean),
-          missingFeatures: S.NullOr(__S(237, __c29, 5)),
+          missingFeatures: S.NullOr(__S(4848, __c303, 0)),
           status: S.String,
-          provider: __S(606, __c75, 6),
-          externalIssues: __S(608, __c76, 0),
+          provider: __S(1344, __c84, 0),
+          externalIssues: __S(1330, __c83, 2),
         }),
       ).annotate({
         identifier: "ListOrganizationIssueIntegrationsResponseBodyItem",
       });
-    case 2:
-      return S.Array(__S(609, __c76, 1));
-    case 3:
-      return S.suspend(() => __S(610, __c76, 2).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(1331, __c83, 3));
+    case 5:
+      return S.suspend(() => __S(1332, __c83, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationIssueIntegrationsResponse",
       });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          slug: S.String,
+          name: S.String,
+          canAdd: S.Boolean,
+          canDisable: S.Boolean,
+          features: __S(816, __c51, 0),
+          aspects: __S(1104, __c69, 0),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationIssueIntegrationsResponseBodyItemProvider",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          project: S.optional(__S(612, __c76, 4).pipe(T.Query())),
+          user_id: S.Number,
+          external_name: S.String,
+          provider: S.String,
+          integration_id: S.Number,
+          external_id: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/external-users/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationExternalUserRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          project: S.optional(__S(1376, __c86, 0).pipe(T.Query())),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
@@ -29864,8 +25536,8 @@ function __c76(j: number): any {
           viewId: S.optional(S.String.pipe(T.Query())),
           sort: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          expand: S.optional(__S(20, __c2, 4).pipe(T.Query())),
-          collapse: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          expand: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
+          collapse: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -29877,12 +25549,88 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIssuesRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          identities: S.optional(__S(82, __c10, 2)),
-          avatar: S.optional(__S(10, __c1, 2)),
-          authenticators: S.optional(__S(78, __c9, 6)),
+          count: S.String,
+          userCount: S.Number,
+          firstSeen: S.NullOr(S.String),
+          lastSeen: S.NullOr(S.String),
+          stats: __S(4128, __c258, 0),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationIssuesResponseBodyItemFiltered",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          shareId: S.NullOr(S.String),
+          shortId: S.String,
+          title: S.String,
+          culprit: S.NullOr(S.String),
+          permalink: S.String,
+          logger: S.NullOr(S.String),
+          level: S.String,
+          status: S.String,
+          statusDetails: __S(1393, __c87, 1),
+          substatus: S.NullOr(S.String),
+          isPublic: S.Boolean,
+          platform: S.NullOr(S.String),
+          priority: S.NullOr(S.String),
+          priorityLockedAt: S.NullOr(S.String),
+          seerFixabilityScore: S.NullOr(S.Number),
+          seerAutofixLastTriggered: S.NullOr(S.String),
+          seerExplorerAutofixLastTriggered: S.NullOr(S.String),
+          project: __S(5138, __c321, 2),
+          type: S.String,
+          issueType: S.String,
+          issueCategory: S.String,
+          metadata: __S(4128, __c258, 0),
+          numComments: S.Number,
+          assignedTo: S.NullOr(__S(2080, __c130, 0)),
+          isBookmarked: S.Boolean,
+          isSubscribed: S.Boolean,
+          subscriptionDetails: S.NullOr(__S(5152, __c322, 0)),
+          hasSeen: S.Boolean,
+          annotations: __S(5140, __c321, 4),
+          isUnhandled: S.Boolean,
+          count: S.String,
+          userCount: S.Number,
+          firstSeen: S.NullOr(S.String),
+          lastSeen: S.NullOr(S.String),
+          derivedData: __S(5136, __c321, 0),
+          stats: __S(4128, __c258, 0),
+          lifetime: __S(4128, __c258, 0),
+          filtered: S.NullOr(__S(1378, __c86, 2)),
+          sessionCount: S.Number,
+          inbox: __S(5121, __c320, 1),
+          owners: __S(5122, __c320, 2),
+          integrationIssues: __S(3536, __c221, 0),
+          sentryAppIssues: __S(4064, __c254, 0),
+          latestEventHasAttachments: S.Boolean,
+          matchingEventId: S.NullOr(S.String),
+          matchingEventEnvironment: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationIssuesResponseBodyItem",
+      });
+    case 4:
+      return S.Array(__S(1379, __c86, 3));
+    case 5:
+      return S.suspend(() => __S(1380, __c86, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListOrganizationIssuesResponse",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identities: S.optional(__S(1136, __c71, 0)),
+          avatar: S.optional(__S(4144, __c259, 0)),
+          authenticators: S.optional(__S(1088, __c68, 0)),
           canReset2fa: S.optional(S.Boolean),
           id: S.String,
           name: S.String,
@@ -29899,13 +25647,13 @@ function __c76(j: number): any {
           lastActive: S.NullOr(S.String),
           isSuperuser: S.Boolean,
           isStaff: S.Boolean,
-          experiments: __S(83, __c10, 3),
-          emails: __S(84, __c10, 4),
+          experiments: __S(1104, __c69, 0),
+          emails: __S(1072, __c67, 0),
         }),
       ).annotate({
         identifier: "ListOrganizationIssuesResponseBodyItemStatusDetailsActor",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ignoreCount: S.optional(S.Number),
@@ -29913,100 +25661,28 @@ function __c76(j: number): any {
           ignoreUserCount: S.optional(S.Number),
           ignoreUserWindow: S.optional(S.Number),
           ignoreWindow: S.optional(S.Number),
-          actor: S.optional(__S(614, __c76, 6)),
+          actor: S.optional(__S(1392, __c87, 0)),
           inNextRelease: S.optional(S.Boolean),
           inRelease: S.optional(S.String),
           inCommit: S.optional(S.String),
           pendingEvents: S.optional(S.Number),
-          info: S.optional(S.NullOr(__S(281, __c35, 1))),
+          info: S.optional(S.NullOr(__S(5137, __c321, 1))),
         }),
       ).annotate({
         identifier: "ListOrganizationIssuesResponseBodyItemStatusDetails",
       });
   }
 }
-function __c77(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.String,
-          userCount: S.Number,
-          firstSeen: S.NullOr(S.String),
-          lastSeen: S.NullOr(S.String),
-          stats: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationIssuesResponseBodyItemFiltered",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          shareId: S.NullOr(S.String),
-          shortId: S.String,
-          title: S.String,
-          culprit: S.NullOr(S.String),
-          permalink: S.String,
-          logger: S.NullOr(S.String),
-          level: S.String,
-          status: S.String,
-          statusDetails: __S(615, __c76, 7),
-          substatus: S.NullOr(S.String),
-          isPublic: S.Boolean,
-          platform: S.NullOr(S.String),
-          priority: S.NullOr(S.String),
-          priorityLockedAt: S.NullOr(S.String),
-          seerFixabilityScore: S.NullOr(S.Number),
-          seerAutofixLastTriggered: S.NullOr(S.String),
-          seerExplorerAutofixLastTriggered: S.NullOr(S.String),
-          project: __S(283, __c35, 3),
-          type: S.String,
-          issueType: S.String,
-          issueCategory: S.String,
-          metadata: __S(1, __c0, 1),
-          numComments: S.Number,
-          assignedTo: S.NullOr(__S(111, __c13, 7)),
-          isBookmarked: S.Boolean,
-          isSubscribed: S.Boolean,
-          subscriptionDetails: S.NullOr(__S(284, __c35, 4)),
-          hasSeen: S.Boolean,
-          annotations: __S(286, __c35, 6),
-          isUnhandled: S.Boolean,
-          count: S.String,
-          userCount: S.Number,
-          firstSeen: S.NullOr(S.String),
-          lastSeen: S.NullOr(S.String),
-          derivedData: __S(279, __c34, 7),
-          stats: __S(1, __c0, 1),
-          lifetime: __S(1, __c0, 1),
-          filtered: S.NullOr(__S(616, __c77, 0)),
-          sessionCount: S.Number,
-          inbox: __S(290, __c36, 2),
-          owners: __S(291, __c36, 3),
-          integrationIssues: __S(150, __c18, 6),
-          sentryAppIssues: __S(2, __c0, 2),
-          latestEventHasAttachments: S.Boolean,
-          matchingEventId: S.NullOr(S.String),
-          matchingEventEnvironment: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationIssuesResponseBodyItem",
-      });
-    case 2:
-      return S.Array(__S(617, __c77, 1));
-    case 3:
-      return S.suspend(() => __S(618, __c77, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListOrganizationIssuesResponse",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           issue_id: S.String.pipe(T.Label()),
           key: S.String.pipe(T.Label()),
           sort: S.optional(S.String.pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -30017,16 +25693,20 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIssueTagValuesRequest",
       });
-    case 5:
-      return S.suspend(() => __S(319, __c39, 7).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(5297, __c331, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationIssueTagValuesResponse",
       });
-    case 6:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           createdBy: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          sort: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -30039,17 +25719,17 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIssueViewsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          createdBy: S.NullOr(__S(273, __c34, 1)),
+          createdBy: S.NullOr(__S(5056, __c316, 0)),
           name: S.String,
           query: S.String,
           querySort: S.String,
-          projects: __S(54, __c6, 6),
-          environments: __S(17, __c2, 1),
-          timeFilters: __S(95, __c11, 7),
+          projects: __S(768, __c48, 0),
+          environments: __S(4368, __c273, 0),
+          timeFilters: __S(1872, __c117, 0),
           lastVisited: S.NullOr(S.String),
           dateCreated: S.String,
           dateUpdated: S.String,
@@ -30059,17 +25739,17 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListOrganizationIssueViewsResponseBodyItem",
       });
-  }
-}
-function __c78(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(623, __c77, 7));
-    case 1:
-      return S.suspend(() => __S(624, __c78, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(1425, __c89, 1));
+    case 3:
+      return S.suspend(() => __S(1426, __c89, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationIssueViewsResponse",
       });
-    case 2:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -30085,13 +25765,21 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "ListOrganizationMembersRequest",
       });
-    case 3:
-      return S.Array(__S(15, __c1, 7));
-    case 4:
-      return S.suspend(() => __S(627, __c78, 3).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4096, __c256, 0));
+    case 1:
+      return S.suspend(() => __S(1456, __c91, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationMembersResponse",
       });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -30107,7 +25795,7 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "ListOrganizationMonitorCheckinsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           schedule_type: S.String,
@@ -30122,10 +25810,10 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "ListOrganizationMonitorCheckinsResponseBodyItemMonitorConfig",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(__S(17, __c2, 1)),
+          groups: S.optional(__S(4368, __c273, 0)),
           id: S.String,
           environment: S.String,
           status: S.String,
@@ -30136,29 +25824,29 @@ function __c78(j: number): any {
           dateInProgress: S.NullOr(S.String),
           dateClock: S.String,
           expectedTime: S.String,
-          monitorConfig: __S(630, __c78, 6),
+          monitorConfig: __S(1473, __c92, 1),
         }),
       ).annotate({
         identifier: "ListOrganizationMonitorCheckinsResponseBodyItem",
       });
-  }
-}
-function __c79(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(631, __c78, 7));
-    case 1:
-      return S.suspend(() => __S(632, __c79, 0).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(1474, __c92, 2));
+    case 4:
+      return S.suspend(() => __S(1475, __c92, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationMonitorCheckinsResponse",
       });
-    case 2:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          project: S.optional(__S(634, __c79, 2).pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          project: S.optional(__S(1488, __c93, 0).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           owner: S.optional(S.String.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -30171,7 +25859,7 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "ListOrganizationMonitorsRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           schedule_type: S.String,
@@ -30186,34 +25874,34 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "ListOrganizationMonitorsResponseBodyItemConfig",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          alertRule: S.optional(__S(105, __c13, 1)),
+          alertRule: S.optional(__S(2130, __c133, 2)),
           id: S.String,
           name: S.String,
           slug: S.String,
           status: S.String,
           isMuted: S.Boolean,
           isUpserting: S.Boolean,
-          config: __S(636, __c79, 4),
+          config: __S(1490, __c93, 2),
           dateCreated: S.String,
-          project: __S(107, __c13, 3),
-          environments: __S(110, __c13, 6),
-          owner: __S(111, __c13, 7),
+          project: __S(2112, __c132, 0),
+          environments: __S(2133, __c133, 5),
+          owner: __S(2080, __c130, 0),
         }),
       ).annotate({
         identifier: "ListOrganizationMonitorsResponseBodyItem",
       });
-    case 6:
-      return S.Array(__S(637, __c79, 5));
-    case 7:
-      return S.suspend(() => __S(638, __c79, 6).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(1491, __c93, 3));
+    case 5:
+      return S.suspend(() => __S(1492, __c93, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationMonitorsResponse",
       });
   }
 }
-function __c80(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
@@ -30221,8 +25909,8 @@ function __c80(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          project: S.optional(__S(640, __c80, 0).pipe(T.Query())),
-          project_id_or_slug: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          project: S.optional(__S(1504, __c94, 0).pipe(T.Query())),
+          project_id_or_slug: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           triggerType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -30234,7 +25922,11 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListOrganizationNotificationsActionsRequest",
       });
-    case 2:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -30253,7 +25945,11 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListOrganizationProfilingChunksRequest",
       });
-    case 3:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -30270,15 +25966,15 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListOrganizationProjectKeysRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          choices: __S(495, __c61, 7),
+          choices: __S(672, __c42, 0),
         }),
       ).annotate({
         identifier: "ListOrganizationProjectKeysResponseBodyItemBrowserSdk",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -30288,26 +25984,26 @@ function __c80(j: number): any {
           secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           projectId: S.Number,
           isActive: S.Boolean,
-          rateLimit: S.NullOr(__S(173, __c21, 5)),
-          dsn: __S(174, __c21, 6),
+          rateLimit: S.NullOr(__S(3648, __c228, 0)),
+          dsn: __S(3649, __c228, 1),
           browserSdkVersion: S.String,
-          browserSdk: __S(644, __c80, 4),
+          browserSdk: __S(1537, __c96, 1),
           dateCreated: S.NullOr(S.String),
-          dynamicSdkLoaderOptions: __S(177, __c22, 1),
+          dynamicSdkLoaderOptions: __S(3650, __c228, 2),
           useCase: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListOrganizationProjectKeysResponseBodyItem",
       });
-    case 6:
-      return S.Array(__S(645, __c80, 5));
-    case 7:
-      return S.suspend(() => __S(646, __c80, 6).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(1538, __c96, 2));
+    case 4:
+      return S.suspend(() => __S(1539, __c96, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationProjectKeysResponse",
       });
   }
 }
-function __c81(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -30327,12 +26023,104 @@ function __c81(j: number): any {
         identifier: "ListOrganizationProjectsRequest",
       });
     case 1:
-      return S.Array(__S(118, __c14, 6));
-    case 2:
-      return S.suspend(() => __S(649, __c81, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1568, __c98, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationProjectsResponse",
       });
-    case 3:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2529, __c158, 1));
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          organization_id: S.Number,
+          provider: S.String,
+          is_enabled: S.optional(S.Boolean),
+          enroll_new_projects: S.optional(S.Boolean),
+          config: S.optional(__S(1616, __c101, 0)),
+          project_ids: S.optional(__S(768, __c48, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/forwarding/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationForwardingRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          slug: S.String,
+          platform: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationForwardingResponseEnrolledProjectsItem",
+      });
+    case 1:
+      return S.Array(__S(1600, __c100, 0));
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          isEnabled: S.Boolean,
+          dataForwarderId: S.String,
+          project: __S(1600, __c100, 0),
+          overrides: __S(784, __c49, 0),
+          effectiveConfig: __S(784, __c49, 0),
+          dateAdded: S.String,
+          dateUpdated: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationForwardingResponseProjectConfigsItem",
+      });
+    case 1:
+      return S.Array(__S(1632, __c102, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          organizationId: S.String,
+          isEnabled: S.Boolean,
+          enrollNewProjects: S.Boolean,
+          enrolledProjects: __S(1601, __c100, 1),
+          provider: S.String,
+          config: S.NullOr(__S(1616, __c101, 0)),
+          projectConfigs: __S(1633, __c102, 1),
+          dateAdded: S.String,
+          dateUpdated: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationForwardingResponse",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -30346,7 +26134,7 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListOrganizationRelayUsageRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           relayId: S.String,
@@ -30358,13 +26146,17 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListOrganizationRelayUsageResponseBodyItem",
       });
-    case 5:
-      return S.Array(__S(652, __c81, 4));
-    case 6:
-      return S.suspend(() => __S(653, __c81, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(1649, __c103, 1));
+    case 3:
+      return S.suspend(() => __S(1650, __c103, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationRelayUsageResponse",
       });
-    case 7:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -30380,37 +26172,7 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListOrganizationReleaseCommitsRequest",
       });
-  }
-}
-function __c82(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enabledCodeReview: S.Boolean,
-          codeReviewTriggers: __S(45, __c5, 5),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositorySettings",
-      });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.NullOr(S.String)),
-          provider: S.optional(__S(67, __c8, 3)),
-          status: S.optional(S.String),
-          integrationId: S.optional(S.NullOr(S.String)),
-          externalSlug: S.optional(S.NullOr(S.String)),
-          externalId: S.optional(S.NullOr(S.String)),
-          settings: S.optional(S.NullOr(__S(656, __c82, 0))),
-          id: S.String,
-          name: S.String,
-          dateCreated: S.String,
-        }),
-      ).annotate({
-        identifier: "ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepository",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -30419,23 +26181,23 @@ function __c82(j: number): any {
           dateCreated: S.String,
           mergedAt: S.NullOr(S.String),
           status: S.NullOr(S.String),
-          repository: __S(657, __c82, 1),
+          repository: __S(1681, __c105, 1),
           author: S.Unknown,
           externalUrl: S.String,
         }),
       ).annotate({
         identifier: "ListOrganizationReleaseCommitsResponseBodyItemPullRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.NullOr(S.String)),
-          provider: S.optional(__S(67, __c8, 3)),
+          provider: S.optional(__S(784, __c49, 0)),
           status: S.optional(S.String),
           integrationId: S.optional(S.NullOr(S.String)),
           externalSlug: S.optional(S.NullOr(S.String)),
           externalId: S.optional(S.NullOr(S.String)),
-          settings: S.optional(S.NullOr(__S(656, __c82, 0))),
+          settings: S.optional(S.NullOr(__S(1680, __c105, 0))),
           id: S.String,
           name: S.String,
           dateCreated: S.String,
@@ -30443,7 +26205,62 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "ListOrganizationReleaseCommitsResponseBodyItemRepository",
       });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          message: S.NullOr(S.String),
+          dateCreated: S.String,
+          pullRequest: S.NullOr(__S(1665, __c104, 1)),
+          suspectCommitType: S.String,
+          repository: S.optional(__S(1666, __c104, 2)),
+          author: S.optional(S.Unknown),
+          releases: __S(1697, __c106, 1),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationReleaseCommitsResponseBodyItem",
+      });
     case 4:
+      return S.Array(__S(1667, __c104, 3));
+    case 5:
+      return S.suspend(() => __S(1668, __c104, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListOrganizationReleaseCommitsResponse",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabledCodeReview: S.Boolean,
+          codeReviewTriggers: __S(816, __c51, 0),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepositorySettings",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.NullOr(S.String)),
+          provider: S.optional(__S(784, __c49, 0)),
+          status: S.optional(S.String),
+          integrationId: S.optional(S.NullOr(S.String)),
+          externalSlug: S.optional(S.NullOr(S.String)),
+          externalId: S.optional(S.NullOr(S.String)),
+          settings: S.optional(S.NullOr(__S(1680, __c105, 0))),
+          id: S.String,
+          name: S.String,
+          dateCreated: S.String,
+        }),
+      ).annotate({
+        identifier: "ListOrganizationReleaseCommitsResponseBodyItemPullRequestRepository",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           version: S.String,
@@ -30456,34 +26273,13 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "ListOrganizationReleaseCommitsResponseBodyItemReleasesItem",
       });
-    case 5:
-      return S.Array(__S(660, __c82, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          message: S.NullOr(S.String),
-          dateCreated: S.String,
-          pullRequest: S.NullOr(__S(658, __c82, 2)),
-          suspectCommitType: S.String,
-          repository: S.optional(__S(659, __c82, 3)),
-          author: S.optional(S.Unknown),
-          releases: __S(661, __c82, 5),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationReleaseCommitsResponseBodyItem",
-      });
-    case 7:
-      return S.Array(__S(662, __c82, 6));
+    case 1:
+      return S.Array(__S(1696, __c106, 0));
   }
 }
-function __c83(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(663, __c82, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListOrganizationReleaseCommitsResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -30499,19 +26295,23 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListOrganizationReleaseDeploysRequest",
       });
+    case 1:
+      return S.Array(__S(3120, __c195, 0));
     case 2:
-      return S.Array(__S(140, __c17, 4));
-    case 3:
-      return S.suspend(() => __S(666, __c83, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1713, __c107, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationReleaseDeploysResponse",
       });
-    case 4:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          query: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          checksum: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          query: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          checksum: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -30523,24 +26323,28 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListOrganizationReleaseFilesRequest",
       });
-    case 5:
-      return S.Array(__S(381, __c47, 5));
-    case 6:
-      return S.suspend(() => __S(669, __c83, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListOrganizationReleaseFilesResponse",
-      });
-    case 7:
-      return S.Array(S.Unknown);
   }
 }
-function __c84(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(5600, __c350, 0));
+    case 1:
+      return S.suspend(() => __S(1744, __c109, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListOrganizationReleaseFilesResponse",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          project: S.optional(__S(671, __c83, 7).pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          project: S.optional(__S(1760, __c110, 0).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
@@ -30554,9 +26358,9 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListOrganizationReleasesRequest",
       });
-    case 1:
-      return S.Array(S.Unknown);
     case 2:
+      return S.Array(S.Unknown);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           durationP50: S.optional(S.NullOr(S.Number)),
@@ -30574,15 +26378,15 @@ function __c84(j: number): any {
           sessionsCrashed: S.Number,
           sessionsErrored: S.Number,
           hasHealthData: S.Boolean,
-          stats: __S(83, __c10, 3),
+          stats: __S(1104, __c69, 0),
         }),
       ).annotate({
         identifier: "ListOrganizationReleasesResponseBodyItemProjectsItemHealthData",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          healthData: S.optional(S.NullOr(__S(674, __c84, 2))),
+          healthData: S.optional(S.NullOr(__S(1763, __c110, 3))),
           dateReleased: S.optional(S.NullOr(S.String)),
           dateCreated: S.optional(S.NullOr(S.String)),
           dateStarted: S.optional(S.NullOr(S.String)),
@@ -30590,16 +26394,16 @@ function __c84(j: number): any {
           slug: S.String,
           name: S.String,
           platform: S.NullOr(S.String),
-          platforms: S.NullOr(__S(45, __c5, 5)),
+          platforms: S.NullOr(__S(816, __c51, 0)),
           hasHealthData: S.Boolean,
           newGroups: S.Number,
         }),
       ).annotate({
         identifier: "ListOrganizationReleasesResponseBodyItemProjectsItem",
       });
-    case 4:
-      return S.Array(__S(675, __c84, 3));
     case 5:
+      return S.Array(__S(1764, __c110, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           ref: S.optional(S.NullOr(S.String)),
@@ -30607,38 +26411,38 @@ function __c84(j: number): any {
           dateReleased: S.optional(S.NullOr(S.String)),
           dateCreated: S.optional(S.NullOr(S.String)),
           dateStarted: S.optional(S.NullOr(S.String)),
-          owner: S.optional(S.NullOr(__S(1, __c0, 1))),
-          lastCommit: S.optional(S.NullOr(__S(1, __c0, 1))),
-          lastDeploy: S.optional(S.NullOr(__S(131, __c16, 3))),
+          owner: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          lastCommit: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          lastDeploy: S.optional(S.NullOr(__S(2912, __c182, 0))),
           firstEvent: S.optional(S.NullOr(S.String)),
           lastEvent: S.optional(S.NullOr(S.String)),
-          currentProjectMeta: S.optional(S.NullOr(__S(1, __c0, 1))),
+          currentProjectMeta: S.optional(S.NullOr(__S(4128, __c258, 0))),
           userAgent: S.optional(S.NullOr(S.String)),
-          adoptionStages: S.optional(S.NullOr(__S(1, __c0, 1))),
+          adoptionStages: S.optional(S.NullOr(__S(4128, __c258, 0))),
           id: S.Number,
           version: S.String,
           newGroups: S.Number,
           status: S.String,
           shortVersion: S.String,
-          versionInfo: S.NullOr(__S(132, __c16, 4)),
-          data: __S(1, __c0, 1),
+          versionInfo: S.NullOr(__S(2913, __c182, 1)),
+          data: __S(4128, __c258, 0),
           commitCount: S.Number,
           deployCount: S.Number,
-          authors: __S(673, __c84, 1),
-          projects: __S(676, __c84, 4),
+          authors: __S(1762, __c110, 2),
+          projects: __S(1765, __c110, 5),
         }),
       ).annotate({
         identifier: "ListOrganizationReleasesResponseBodyItem",
       });
-    case 6:
-      return S.Array(__S(677, __c84, 5));
     case 7:
-      return S.suspend(() => __S(678, __c84, 6).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(1766, __c110, 6));
+    case 8:
+      return S.suspend(() => __S(1767, __c110, 7).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationReleasesResponse",
       });
   }
 }
-function __c85(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
@@ -30648,10 +26452,10 @@ function __c85(j: number): any {
           organization_id_or_slug: S.String.pipe(T.Label()),
           start: S.String.pipe(T.Query()),
           end: S.String.pipe(T.Query()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          projectSlug: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          release: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          project: S.optional(__S(680, __c85, 0).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          projectSlug: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          release: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          project: S.optional(__S(1776, __c111, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -30667,8 +26471,8 @@ function __c85(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           date_added: S.optional(S.String),
-          environment: S.optional(S.NullOr(__S(83, __c10, 3))),
-          project: S.optional(__S(83, __c10, 3)),
+          environment: S.optional(S.NullOr(__S(1104, __c69, 0))),
+          project: S.optional(__S(1104, __c69, 0)),
           release: S.optional(S.String),
           threshold_type: S.optional(S.String),
           trigger_type: S.optional(S.String),
@@ -30686,26 +26490,30 @@ function __c85(j: number): any {
         identifier: "ListOrganizationReleaseThresholdStatusesResponseBodyValueItem",
       });
     case 3:
-      return S.Array(__S(682, __c85, 2));
+      return S.Array(__S(1778, __c111, 2));
     case 4:
-      return S.Record(S.String, __S(683, __c85, 3));
+      return S.Record(S.String, __S(1779, __c111, 3));
     case 5:
-      return S.suspend(() => __S(684, __c85, 4).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1780, __c111, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationReleaseThresholdStatusesResponse",
       });
-    case 6:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
-          field: S.optional(__S(20, __c2, 4).pipe(T.Query())),
-          project: S.optional(__S(686, __c85, 6).pipe(T.Query())),
-          projectSlug: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          field: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
+          project: S.optional(__S(1792, __c112, 0).pipe(T.Query())),
+          projectSlug: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           sort: S.optional(S.String.pipe(T.Query())),
           sortBy: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -30723,29 +26531,25 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "ListOrganizationReplaysRequest",
       });
-  }
-}
-function __c86(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           project_id: S.optional(S.String),
-          trace_ids: S.optional(__S(17, __c2, 1)),
-          error_ids: S.optional(__S(17, __c2, 1)),
+          trace_ids: S.optional(__S(4368, __c273, 0)),
+          error_ids: S.optional(__S(4368, __c273, 0)),
           environment: S.optional(S.NullOr(S.String)),
           tags: S.optional(S.Unknown),
-          user: S.optional(__S(386, __c48, 2)),
-          sdk: S.optional(__S(387, __c48, 3)),
-          os: S.optional(__S(387, __c48, 3)),
-          browser: S.optional(__S(387, __c48, 3)),
-          device: S.optional(__S(388, __c48, 4)),
-          ota_updates: S.optional(__S(389, __c48, 5)),
+          user: S.optional(__S(5633, __c352, 1)),
+          sdk: S.optional(__S(5634, __c352, 2)),
+          os: S.optional(__S(5634, __c352, 2)),
+          browser: S.optional(__S(5634, __c352, 2)),
+          device: S.optional(__S(5635, __c352, 3)),
+          ota_updates: S.optional(__S(5636, __c352, 4)),
           is_archived: S.optional(S.NullOr(S.Boolean)),
-          urls: S.optional(S.NullOr(__S(17, __c2, 1))),
-          segment_names: S.optional(S.NullOr(__S(17, __c2, 1))),
-          clicks: S.optional(__S(2, __c0, 2)),
+          urls: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          segment_names: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          clicks: S.optional(__S(4064, __c254, 0)),
           count_dead_clicks: S.optional(S.NullOr(S.Number)),
           count_rage_clicks: S.optional(S.NullOr(S.Number)),
           count_errors: S.optional(S.NullOr(S.Number)),
@@ -30757,7 +26561,7 @@ function __c86(j: number): any {
           replay_type: S.optional(S.String),
           count_segments: S.optional(S.NullOr(S.Number)),
           platform: S.optional(S.NullOr(S.String)),
-          releases: S.optional(__S(17, __c2, 1)),
+          releases: S.optional(__S(4368, __c273, 0)),
           dist: S.optional(S.NullOr(S.String)),
           count_warnings: S.optional(S.NullOr(S.Number)),
           count_infos: S.optional(S.NullOr(S.Number)),
@@ -30766,28 +26570,32 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "ListOrganizationReplaysResponseDataItem",
       });
-    case 1:
-      return S.Array(__S(688, __c86, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(1794, __c112, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(689, __c86, 1),
+          data: __S(1795, __c112, 3),
         }),
       ).annotate({
         identifier: "ListOrganizationReplaysResponse",
       });
-    case 3:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(__S(691, __c86, 3).pipe(T.Query())),
-          projectSlug: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          project: S.optional(__S(1808, __c113, 0).pipe(T.Query())),
+          projectSlug: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           sort: S.optional(S.String.pipe(T.Query())),
           sortBy: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -30804,12 +26612,12 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "ListOrganizationReplaySelectorsRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           alt: S.String,
           aria_label: S.String,
-          class: __S(45, __c5, 5),
+          class: __S(816, __c51, 0),
           component_name: S.String,
           id: S.String,
           role: S.String,
@@ -30820,33 +26628,33 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "ListOrganizationReplaySelectorsResponseDataItemElement",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count_dead_clicks: S.optional(S.Number),
           count_rage_clicks: S.optional(S.Number),
           dom_element: S.optional(S.String),
-          element: S.optional(__S(693, __c86, 5)),
+          element: S.optional(__S(1810, __c113, 2)),
           project_id: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListOrganizationReplaySelectorsResponseDataItem",
       });
-    case 7:
-      return S.Array(__S(694, __c86, 6));
-  }
-}
-function __c87(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(1811, __c113, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(695, __c86, 7),
+          data: __S(1812, __c113, 4),
         }),
       ).annotate({
         identifier: "ListOrganizationReplaySelectorsResponse",
       });
-    case 1:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -30862,7 +26670,7 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "ListOrganizationRepoCommitsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -30871,23 +26679,23 @@ function __c87(j: number): any {
           dateCreated: S.String,
           mergedAt: S.NullOr(S.String),
           status: S.NullOr(S.String),
-          repository: __S(657, __c82, 1),
+          repository: __S(1681, __c105, 1),
           author: S.Unknown,
           externalUrl: S.String,
         }),
       ).annotate({
         identifier: "ListOrganizationRepoCommitsResponseBodyItemPullRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.NullOr(S.String)),
-          provider: S.optional(__S(67, __c8, 3)),
+          provider: S.optional(__S(784, __c49, 0)),
           status: S.optional(S.String),
           integrationId: S.optional(S.NullOr(S.String)),
           externalSlug: S.optional(S.NullOr(S.String)),
           externalId: S.optional(S.NullOr(S.String)),
-          settings: S.optional(S.NullOr(__S(656, __c82, 0))),
+          settings: S.optional(S.NullOr(__S(1680, __c105, 0))),
           id: S.String,
           name: S.String,
           dateCreated: S.String,
@@ -30895,34 +26703,38 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "ListOrganizationRepoCommitsResponseBodyItemRepository",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           message: S.NullOr(S.String),
           dateCreated: S.String,
-          pullRequest: S.NullOr(__S(698, __c87, 2)),
+          pullRequest: S.NullOr(__S(1825, __c114, 1)),
           suspectCommitType: S.String,
-          repository: S.optional(__S(699, __c87, 3)),
+          repository: S.optional(__S(1826, __c114, 2)),
           author: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "ListOrganizationRepoCommitsResponseBodyItem",
       });
+    case 4:
+      return S.Array(__S(1827, __c114, 3));
     case 5:
-      return S.Array(__S(700, __c87, 4));
-    case 6:
-      return S.suspend(() => __S(701, __c87, 5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1828, __c114, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationRepoCommitsResponse",
       });
-    case 7:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           query: S.optional(S.String.pipe(T.Query())),
           status: S.optional(S.String.pipe(T.Query())),
           integration_id: S.optional(S.String.pipe(T.Query())),
-          expand: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          expand: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -30935,29 +26747,25 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "ListOrganizationReposRequest",
       });
-  }
-}
-function __c88(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabledCodeReview: S.Boolean,
-          codeReviewTriggers: __S(45, __c5, 5),
+          codeReviewTriggers: __S(816, __c51, 0),
         }),
       ).annotate({
         identifier: "ListOrganizationReposResponseBodyItemSettings",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.NullOr(S.String)),
-          provider: S.optional(__S(88, __c11, 0)),
+          provider: S.optional(__S(1616, __c101, 0)),
           status: S.optional(S.String),
           integrationId: S.optional(S.NullOr(S.String)),
           externalSlug: S.optional(S.NullOr(S.String)),
           externalId: S.optional(S.NullOr(S.String)),
-          settings: S.optional(S.NullOr(__S(704, __c88, 0))),
+          settings: S.optional(S.NullOr(__S(1841, __c115, 1))),
           id: S.String,
           name: S.String,
           dateCreated: S.String,
@@ -30965,13 +26773,77 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "ListOrganizationReposResponseBodyItem",
       });
-    case 2:
-      return S.Array(__S(705, __c88, 1));
     case 3:
-      return S.suspend(() => __S(706, __c88, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(1842, __c115, 2));
+    case 4:
+      return S.suspend(() => __S(1843, __c115, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationReposResponse",
       });
-    case 4:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          name: S.String,
+          query: S.String,
+          projects: __S(768, __c48, 0),
+          environments: __S(4368, __c273, 0),
+          timeFilters: __S(1872, __c117, 0),
+          querySort: S.optional(S.String),
+          starred: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/group-search-views/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationIssueViewRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdBy: S.NullOr(__S(4048, __c253, 0)),
+          name: S.String,
+          query: S.String,
+          querySort: S.String,
+          projects: __S(768, __c48, 0),
+          environments: __S(4368, __c273, 0),
+          timeFilters: __S(1872, __c117, 0),
+          lastVisited: S.NullOr(S.String),
+          dateCreated: S.String,
+          dateUpdated: S.String,
+          starred: S.Boolean,
+          stars: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationIssueViewResponse",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.NullOr(S.String)),
+          end: S.optional(S.NullOr(S.String)),
+          period: S.optional(S.NullOr(S.String)),
+          utc: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationIssueViewRequestTimeFilters",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.optional(S.Boolean.pipe(T.Query())),
@@ -30981,20 +26853,24 @@ function __c88(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/0/organizations/", code: 200 })),
       ).annotate({ identifier: "ListOrganizationsRequest" });
-    case 5:
-      return S.Array(__S(442, __c55, 2));
-    case 6:
-      return S.suspend(() => __S(709, __c88, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(240, __c15, 0));
+    case 2:
+      return S.suspend(() => __S(1889, __c118, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationsResponse",
       });
-    case 7:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           startIndex: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          excludedAttributes: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          excludedAttributes: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -31005,25 +26881,25 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "ListOrganizationScimV2GroupsRequest",
       });
-  }
-}
-function __c89(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(399, __c49, 7));
     case 1:
+      return S.Array(__S(5698, __c356, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          schemas: __S(17, __c2, 1),
+          schemas: __S(4368, __c273, 0),
           totalResults: S.Number,
           startIndex: S.Number,
           itemsPerPage: S.Number,
-          Resources: __S(712, __c89, 0),
+          Resources: __S(1905, __c119, 1),
         }),
       ).annotate({
         identifier: "ListOrganizationScimV2GroupsResponse",
       });
-    case 2:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -31037,42 +26913,46 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "ListOrganizationScimV2ResourceTypesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          schemas: __S(45, __c5, 5),
+          schemas: __S(816, __c51, 0),
           id: S.String,
           name: S.String,
           description: S.String,
           endpoint: S.String,
           schema: S.String,
-          meta: __S(401, __c50, 1),
+          meta: __S(64, __c4, 0),
         }),
       ).annotate({
         identifier: "ListOrganizationScimV2ResourceTypesResponseResourcesItem",
       });
-    case 4:
-      return S.Array(__S(715, __c89, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1921, __c120, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          schemas: __S(17, __c2, 1),
+          schemas: __S(4368, __c273, 0),
           totalResults: S.Number,
           startIndex: S.Number,
           itemsPerPage: S.Number,
-          Resources: __S(716, __c89, 4),
+          Resources: __S(1922, __c120, 2),
         }),
       ).annotate({
         identifier: "ListOrganizationScimV2ResourceTypesResponse",
       });
-    case 6:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           startIndex: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          excludedAttributes: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          excludedAttributes: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -31083,25 +26963,25 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "ListOrganizationScimV2UsersRequest",
       });
-    case 7:
-      return S.Array(__S(416, __c52, 0));
-  }
-}
-function __c90(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(131, __c8, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          schemas: __S(17, __c2, 1),
+          schemas: __S(4368, __c273, 0),
           totalResults: S.Number,
           startIndex: S.Number,
           itemsPerPage: S.Number,
-          Resources: __S(719, __c89, 7),
+          Resources: __S(1937, __c121, 1),
         }),
       ).annotate({
         identifier: "ListOrganizationScimV2UsersResponse",
       });
-    case 1:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -31117,38 +26997,42 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "ListOrganizationSentryAppComponentsRequest",
       });
+    case 1:
+      return S.Array(__S(608, __c38, 0));
     case 2:
-      return S.Array(__S(490, __c61, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String,
           slug: S.String,
           name: S.String,
-          avatars: __S(722, __c90, 2),
+          avatars: __S(1953, __c122, 1),
         }),
       ).annotate({
         identifier: "ListOrganizationSentryAppComponentsResponseBodyItemSentryApp",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String,
           type: S.String,
-          schema: __S(1, __c0, 1),
+          schema: __S(4128, __c258, 0),
           error: S.Unknown,
-          sentryApp: __S(723, __c90, 3),
+          sentryApp: __S(1954, __c122, 2),
         }),
       ).annotate({
         identifier: "ListOrganizationSentryAppComponentsResponseBodyItem",
       });
+    case 4:
+      return S.Array(__S(1955, __c122, 3));
     case 5:
-      return S.Array(__S(724, __c90, 4));
-    case 6:
-      return S.suspend(() => __S(725, __c90, 5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1956, __c122, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationSentryAppComponentsResponse",
       });
-    case 7:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -31162,28 +27046,24 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "ListOrganizationSentryAppsRequest",
       });
-  }
-}
-function __c91(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: __S(17, __c2, 1),
-          avatars: __S(491, __c61, 3),
-          events: __S(17, __c2, 1),
-          webhookEvents: __S(17, __c2, 1),
-          featureData: __S(17, __c2, 1),
+          allowedOrigins: __S(4368, __c273, 0),
+          avatars: __S(624, __c39, 0),
+          events: __S(4368, __c273, 0),
+          webhookEvents: __S(4368, __c273, 0),
+          featureData: __S(4368, __c273, 0),
           isAlertable: S.Boolean,
           metadata: S.String,
           name: S.String,
           schema: S.String,
-          scopes: __S(17, __c2, 1),
+          scopes: __S(4368, __c273, 0),
           slug: S.String,
           status: S.String,
           uuid: S.String,
           verifyInstall: S.Boolean,
-          webhookHeaders: __S(17, __c2, 1),
+          webhookHeaders: __S(4368, __c273, 0),
           isDisabled: S.optional(S.Boolean),
           author: S.optional(S.NullOr(S.String)),
           overview: S.optional(S.NullOr(S.String)),
@@ -31193,28 +27073,32 @@ function __c91(j: number): any {
           clientSecret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           datePublished: S.optional(S.String),
           clientId: S.optional(S.String),
-          owner: S.optional(__S(492, __c61, 4)),
+          owner: S.optional(__S(625, __c39, 1)),
         }),
       ).annotate({
         identifier: "ListOrganizationSentryAppsResponseBodyItem",
       });
-    case 1:
-      return S.Array(__S(728, __c91, 0));
     case 2:
-      return S.suspend(() => __S(729, __c91, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(1969, __c123, 1));
+    case 3:
+      return S.suspend(() => __S(1970, __c123, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationSentryAppsResponse",
       });
-    case 3:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          groupBy: __S(20, __c2, 4).pipe(T.Query()),
+          groupBy: __S(4576, __c286, 0).pipe(T.Query()),
           field: S.String.pipe(T.Query()),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
           interval: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
-          project: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          project: S.optional(__S(3968, __c248, 0).pipe(T.Query())),
           category: S.optional(S.String.pipe(T.Query())),
           outcome: S.optional(S.String.pipe(T.Query())),
           reason: S.optional(S.String.pipe(T.Query())),
@@ -31228,41 +27112,41 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "ListOrganizationStatsV2Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          by: __S(1, __c0, 1),
-          totals: __S(1, __c0, 1),
-          series: __S(1, __c0, 1),
+          by: __S(4128, __c258, 0),
+          totals: __S(4128, __c258, 0),
+          series: __S(4128, __c258, 0),
         }),
       ).annotate({
         identifier: "ListOrganizationStatsV2ResponseGroupsItem",
       });
-    case 5:
-      return S.Array(__S(732, __c91, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1985, __c124, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           start: S.String,
           end: S.String,
-          intervals: __S(17, __c2, 1),
-          groups: __S(733, __c91, 5),
+          intervals: __S(4368, __c273, 0),
+          groups: __S(1986, __c124, 2),
         }),
       ).annotate({
         identifier: "ListOrganizationStatsV2Response",
       });
-    case 7:
-      return S.Array(S.Unknown);
   }
 }
-function __c92(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          project: S.optional(__S(735, __c91, 7).pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          project: S.optional(__S(2000, __c125, 0).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
@@ -31279,13 +27163,17 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "ListOrganizationTagsRequest",
       });
-    case 1:
-      return S.Array(__S(320, __c40, 0));
     case 2:
-      return S.suspend(() => __S(737, __c92, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(5312, __c332, 0));
+    case 3:
+      return S.suspend(() => __S(2002, __c125, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationTagsResponse",
       });
-    case 3:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -31303,26 +27191,22 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "ListOrganizationTeamsRequest",
       });
-    case 4:
-      return S.Record(S.String, __S(83, __c10, 3));
-    case 5:
-      return S.Array(__S(143, __c17, 7));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          features: S.optional(__S(17, __c2, 1)),
-          extraOptions: S.optional(__S(740, __c92, 4)),
-          access: S.optional(__S(17, __c2, 1)),
-          onboardingTasks: S.optional(__S(741, __c92, 5)),
+          features: S.optional(__S(4368, __c273, 0)),
+          extraOptions: S.optional(__S(2032, __c127, 0)),
+          access: S.optional(__S(4368, __c273, 0)),
+          onboardingTasks: S.optional(__S(2033, __c127, 1)),
           id: S.String,
           slug: S.String,
-          status: __S(7, __c0, 7),
+          status: __S(3984, __c249, 0),
           name: S.String,
           dateCreated: S.String,
           isEarlyAdopter: S.Boolean,
           require2FA: S.Boolean,
-          avatar: __S(10, __c1, 2),
-          links: __S(145, __c18, 1),
+          avatar: __S(4144, __c259, 0),
+          links: __S(3329, __c208, 1),
           hasAuthProvider: S.Boolean,
           allowMemberInvite: S.Boolean,
           allowMemberProjectCreation: S.Boolean,
@@ -31331,7 +27215,7 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "ListOrganizationTeamsResponseBodyItemOrganization",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -31340,43 +27224,51 @@ function __c92(j: number): any {
           dateCreated: S.NullOr(S.String),
           isMember: S.Boolean,
           teamRole: S.NullOr(S.String),
-          flags: __S(1, __c0, 1),
-          access: __S(17, __c2, 1),
+          flags: __S(4128, __c258, 0),
+          access: __S(4368, __c273, 0),
           hasAccess: S.Boolean,
           isPending: S.Boolean,
           memberCount: S.Number,
-          avatar: __S(10, __c1, 2),
-          externalTeams: S.optional(__S(5, __c0, 5)),
-          organization: S.optional(__S(742, __c92, 6)),
-          projects: S.optional(__S(147, __c18, 3)),
+          avatar: __S(4144, __c259, 0),
+          externalTeams: S.optional(__S(4112, __c257, 0)),
+          organization: S.optional(__S(2017, __c126, 1)),
+          projects: S.optional(__S(3312, __c207, 0)),
         }),
       ).annotate({
         identifier: "ListOrganizationTeamsResponseBodyItem",
       });
-  }
-}
-function __c93(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(743, __c92, 7));
-    case 1:
-      return S.suspend(() => __S(744, __c93, 0).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(2018, __c126, 2));
+    case 4:
+      return S.suspend(() => __S(2019, __c126, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationTeamsResponse",
       });
-    case 2:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(1104, __c69, 0));
+    case 1:
+      return S.Array(__S(3328, __c208, 0));
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          project: S.optional(__S(746, __c93, 2).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          project: S.optional(__S(2048, __c128, 0).pipe(T.Query())),
           dataset: S.optional(S.String.pipe(T.Query())),
           itemType: S.optional(S.String.pipe(T.Query())),
-          attributeType: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          attributeType: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
           substringMatch: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
@@ -31390,7 +27282,7 @@ function __c93(j: number): any {
       ).annotate({
         identifier: "ListOrganizationTraceItemAttributesRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           source_type: S.String,
@@ -31399,122 +27291,140 @@ function __c93(j: number): any {
       ).annotate({
         identifier: "ListOrganizationTraceItemAttributesResponseBodyItemAttributeSource",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           name: S.String,
-          secondaryAliases: S.optional(__S(45, __c5, 5)),
-          attributeSource: __S(748, __c93, 4),
+          secondaryAliases: S.optional(__S(816, __c51, 0)),
+          attributeSource: __S(2050, __c128, 2),
           attributeType: S.String,
         }),
       ).annotate({
         identifier: "ListOrganizationTraceItemAttributesResponseBodyItem",
       });
-    case 6:
-      return S.Array(__S(749, __c93, 5));
-    case 7:
-      return S.suspend(() => __S(750, __c93, 6).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(2051, __c128, 3));
+    case 5:
+      return S.suspend(() => __S(2052, __c128, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationTraceItemAttributesResponse",
       });
   }
 }
-function __c94(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          project: S.optional(__S(752, __c94, 0).pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          statsPeriod: S.optional(S.String.pipe(T.Query())),
-          start: S.optional(S.String.pipe(T.Query())),
-          end: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          expand: S.optional(__S(20, __c2, 4).pipe(T.Query())),
-          contextOnly: S.optional(S.Boolean.pipe(T.Query())),
+          project: S.String,
+          name: S.String,
+          config: __S(2096, __c131, 0),
+          slug: S.optional(S.String),
+          status: S.optional(S.String),
+          owner: S.optional(S.NullOr(S.String)),
+          is_muted: S.optional(S.Boolean),
+          alert_rule: S.optional(__S(2099, __c131, 3)),
         }).pipe(
           T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/trace-items/metrics/",
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/monitors/",
             code: 200,
           }),
         ),
       ).annotate({
-        identifier: "ListOrganizationTraceMetricsRequest",
+        identifier: "CreateOrganizationMonitorRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          schedule_type: S.String,
+          schedule: S.Unknown,
+          checkin_margin: S.NullOr(S.Number),
+          max_runtime: S.NullOr(S.Number),
+          timezone: S.NullOr(S.String),
+          failure_issue_threshold: S.NullOr(S.Number),
+          recovery_threshold: S.NullOr(S.Number),
+          alert_rule_id: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationMonitorResponseConfig",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          brief: S.optional(S.String),
-          details: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationTraceMetricsResponseBodyItemContext",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-          unit: S.NullOr(S.String),
-          count: S.Number,
-          lastSeen: S.NullOr(S.Number),
-          context: S.optional(__S(754, __c94, 2)),
-        }),
-      ).annotate({
-        identifier: "ListOrganizationTraceMetricsResponseBodyItem",
-      });
-    case 4:
-      return S.Array(__S(755, __c94, 3));
-    case 5:
-      return S.suspend(() => __S(756, __c94, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListOrganizationTraceMetricsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id_or_slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/0/organizations/{organization_id_or_slug}/user-teams/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationUserTeamsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          features: S.optional(__S(45, __c5, 5)),
-          extraOptions: S.optional(__S(740, __c92, 4)),
-          access: S.optional(__S(45, __c5, 5)),
-          onboardingTasks: S.optional(__S(741, __c92, 5)),
+          alertRule: S.optional(__S(2130, __c133, 2)),
           id: S.String,
-          slug: S.String,
-          status: __S(7, __c0, 7),
           name: S.String,
+          slug: S.String,
+          status: S.String,
+          isMuted: S.Boolean,
+          isUpserting: S.Boolean,
+          config: __S(2065, __c129, 1),
           dateCreated: S.String,
-          isEarlyAdopter: S.Boolean,
-          require2FA: S.Boolean,
-          avatar: __S(10, __c1, 2),
-          links: __S(145, __c18, 1),
-          hasAuthProvider: S.Boolean,
-          allowMemberInvite: S.Boolean,
-          allowMemberProjectCreation: S.Boolean,
-          allowSuperuserAccess: S.Boolean,
+          project: __S(2112, __c132, 0),
+          environments: __S(2133, __c133, 5),
+          owner: __S(2080, __c130, 0),
         }),
       ).annotate({
-        identifier: "ListOrganizationUserTeamsResponseBodyItemOrganization",
+        identifier: "CreateOrganizationMonitorResponse",
       });
   }
 }
-function __c95(j: number): any {
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          id: S.String,
+          name: S.String,
+          email: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationMonitorResponseOwner",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schedule_type: S.optional(S.String),
+          schedule: S.Unknown,
+          checkin_margin: S.optional(S.NullOr(S.Number)),
+          max_runtime: S.optional(S.NullOr(S.Number)),
+          timezone: S.optional(S.String),
+          failure_issue_threshold: S.optional(S.NullOr(S.Number)),
+          recovery_threshold: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationMonitorRequestConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          target_identifier: S.Number,
+          target_type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationMonitorRequestAlertRuleTargetsItem",
+      });
+    case 2:
+      return S.Array(__S(2097, __c131, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.optional(S.NullOr(S.String)),
+          targets: __S(2098, __c131, 2),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationMonitorRequestAlertRule",
+      });
+  }
+}
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -31529,10 +27439,10 @@ function __c95(j: number): any {
           dateCreated: S.String,
           isBookmarked: S.Boolean,
           isMember: S.Boolean,
-          features: __S(45, __c5, 5),
+          features: __S(4368, __c273, 0),
           firstEvent: S.NullOr(S.String),
           firstTransactionEvent: S.Boolean,
-          access: __S(45, __c5, 5),
+          access: __S(4368, __c273, 0),
           hasAccess: S.Boolean,
           hasFeedbacks: S.Boolean,
           hasFlags: S.Boolean,
@@ -31556,16 +27466,220 @@ function __c95(j: number): any {
           hasTraceMetrics: S.Boolean,
           isInternal: S.Boolean,
           isPublic: S.Boolean,
-          avatar: __S(10, __c1, 2),
+          avatar: __S(4144, __c259, 0),
+          color: S.String,
+          status: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationMonitorResponseProject",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetIdentifier: S.Number,
+          targetType: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationMonitorResponseAlertRuleTargetsItem",
+      });
+    case 1:
+      return S.Array(__S(2128, __c133, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          targets: __S(2129, __c133, 1),
+          environment: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationMonitorResponseAlertRule",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          userNotifiedTimestamp: S.String,
+          environmentMutedTimestamp: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationMonitorResponseEnvironmentsActiveIncidentBrokenNotice",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          startingTimestamp: S.String,
+          resolvingTimestamp: S.String,
+          brokenNotice: S.NullOr(__S(2131, __c133, 3)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationMonitorResponseEnvironmentsActiveIncident",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          status: S.String,
+          isMuted: S.Boolean,
+          dateCreated: S.String,
+          lastCheckIn: S.String,
+          nextCheckIn: S.String,
+          nextCheckInLatest: S.String,
+          activeIncident: S.NullOr(__S(2132, __c133, 4)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationMonitorResponseEnvironments",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project: S.optional(__S(2144, __c134, 0).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          statsPeriod: S.optional(S.String.pipe(T.Query())),
+          start: S.optional(S.String.pipe(T.Query())),
+          end: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          expand: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
+          contextOnly: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/trace-items/metrics/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationTraceMetricsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          brief: S.optional(S.String),
+          details: S.optional(__S(4368, __c273, 0)),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationTraceMetricsResponseBodyItemContext",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+          unit: S.NullOr(S.String),
+          count: S.Number,
+          lastSeen: S.NullOr(S.Number),
+          context: S.optional(__S(2146, __c134, 2)),
+        }),
+      ).annotate({
+        identifier: "ListOrganizationTraceMetricsResponseBodyItem",
+      });
+    case 4:
+      return S.Array(__S(2147, __c134, 3));
+    case 5:
+      return S.suspend(() => __S(2148, __c134, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListOrganizationTraceMetricsResponse",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/user-teams/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationUserTeamsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          features: S.optional(__S(816, __c51, 0)),
+          extraOptions: S.optional(__S(2032, __c127, 0)),
+          access: S.optional(__S(816, __c51, 0)),
+          onboardingTasks: S.optional(__S(2033, __c127, 1)),
+          id: S.String,
+          slug: S.String,
+          status: __S(3984, __c249, 0),
+          name: S.String,
+          dateCreated: S.String,
+          isEarlyAdopter: S.Boolean,
+          require2FA: S.Boolean,
+          avatar: __S(4144, __c259, 0),
+          links: __S(3329, __c208, 1),
+          hasAuthProvider: S.Boolean,
+          allowMemberInvite: S.Boolean,
+          allowMemberProjectCreation: S.Boolean,
+          allowSuperuserAccess: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "ListOrganizationUserTeamsResponseBodyItemOrganization",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          stats: S.optional(S.Unknown),
+          transactionStats: S.optional(S.Unknown),
+          sessionStats: S.optional(S.Unknown),
+          id: S.String,
+          slug: S.String,
+          name: S.String,
+          platform: S.NullOr(S.String),
+          dateCreated: S.String,
+          isBookmarked: S.Boolean,
+          isMember: S.Boolean,
+          features: __S(816, __c51, 0),
+          firstEvent: S.NullOr(S.String),
+          firstTransactionEvent: S.Boolean,
+          access: __S(816, __c51, 0),
+          hasAccess: S.Boolean,
+          hasFeedbacks: S.Boolean,
+          hasFlags: S.Boolean,
+          hasMinifiedStackTrace: S.Boolean,
+          hasMonitors: S.Boolean,
+          hasNewFeedbacks: S.Boolean,
+          hasProfiles: S.Boolean,
+          hasReplays: S.Boolean,
+          hasSessions: S.Boolean,
+          hasInsightsHttp: S.Boolean,
+          hasInsightsDb: S.Boolean,
+          hasInsightsAssets: S.Boolean,
+          hasInsightsAppStart: S.Boolean,
+          hasInsightsScreenLoad: S.Boolean,
+          hasInsightsVitals: S.Boolean,
+          hasInsightsCaches: S.Boolean,
+          hasInsightsQueues: S.Boolean,
+          hasInsightsAgentMonitoring: S.Boolean,
+          hasInsightsMCP: S.Boolean,
+          hasLogs: S.Boolean,
+          hasTraceMetrics: S.Boolean,
+          isInternal: S.Boolean,
+          isPublic: S.Boolean,
+          avatar: __S(4144, __c259, 0),
           color: S.String,
           status: S.String,
         }),
       ).annotate({
         identifier: "ListOrganizationUserTeamsResponseBodyItemProjectsItem",
       });
-    case 1:
-      return S.Array(__S(760, __c95, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(2162, __c135, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -31574,36 +27688,40 @@ function __c95(j: number): any {
           dateCreated: S.NullOr(S.String),
           isMember: S.Boolean,
           teamRole: S.NullOr(S.String),
-          flags: __S(1, __c0, 1),
-          access: __S(17, __c2, 1),
+          flags: __S(4128, __c258, 0),
+          access: __S(4368, __c273, 0),
           hasAccess: S.Boolean,
           isPending: S.Boolean,
           memberCount: S.Number,
-          avatar: __S(10, __c1, 2),
-          externalTeams: S.optional(__S(5, __c0, 5)),
-          organization: S.optional(__S(759, __c94, 7)),
-          projects: S.optional(__S(761, __c95, 1)),
+          avatar: __S(4144, __c259, 0),
+          externalTeams: S.optional(__S(4112, __c257, 0)),
+          organization: S.optional(__S(2161, __c135, 1)),
+          projects: S.optional(__S(2163, __c135, 3)),
         }),
       ).annotate({
         identifier: "ListOrganizationUserTeamsResponseBodyItem",
       });
-    case 3:
-      return S.Array(__S(762, __c95, 2));
-    case 4:
-      return S.suspend(() => __S(763, __c95, 3).pipe(T.RawResponseRoot())).annotate({
+    case 5:
+      return S.Array(__S(2164, __c135, 4));
+    case 6:
+      return S.suspend(() => __S(2165, __c135, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationUserTeamsResponse",
       });
-    case 5:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           sortBy: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(__S(54, __c6, 6).pipe(T.Query())),
-          detector: S.optional(__S(54, __c6, 6).pipe(T.Query())),
-          project: S.optional(__S(765, __c95, 5).pipe(T.Query())),
+          id: S.optional(__S(768, __c48, 0).pipe(T.Query())),
+          detector: S.optional(__S(768, __c48, 0).pipe(T.Query())),
+          project: S.optional(__S(2176, __c136, 0).pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -31616,7 +27734,7 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "ListOrganizationWorkflowsRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -31628,11 +27746,7 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "ListOrganizationWorkflowsResponseBodyItemTriggers",
       });
-  }
-}
-function __c96(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -31644,9 +27758,9 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "ListOrganizationWorkflowsResponseBodyItemActionFiltersItem",
       });
-    case 1:
-      return S.Array(__S(768, __c96, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(2179, __c136, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -31655,11 +27769,11 @@ function __c96(j: number): any {
           createdBy: S.NullOr(S.String),
           dateCreated: S.String,
           dateUpdated: S.String,
-          triggers: S.NullOr(__S(767, __c95, 7)),
-          actionFilters: S.NullOr(__S(769, __c96, 1)),
+          triggers: S.NullOr(__S(2178, __c136, 2)),
+          actionFilters: S.NullOr(__S(2180, __c136, 4)),
           environment: S.NullOr(S.String),
-          config: __S(1, __c0, 1),
-          detectorIds: S.NullOr(__S(17, __c2, 1)),
+          config: __S(4128, __c258, 0),
+          detectorIds: S.NullOr(__S(4368, __c273, 0)),
           enabled: S.Boolean,
           lastTriggered: S.NullOr(S.String),
           owner: S.NullOr(S.String),
@@ -31667,18 +27781,22 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "ListOrganizationWorkflowsResponseBodyItem",
       });
-    case 3:
-      return S.Array(__S(770, __c96, 2));
-    case 4:
-      return S.suspend(() => __S(771, __c96, 3).pipe(T.RawResponseRoot())).annotate({
+    case 6:
+      return S.Array(__S(2181, __c136, 5));
+    case 7:
+      return S.suspend(() => __S(2182, __c136, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationWorkflowsResponse",
       });
-    case 5:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           project_id_or_slug: S.String.pipe(T.Label()),
-          expand: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          expand: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -31689,7 +27807,7 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "ListProjectCodeOwnersRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -31698,7 +27816,7 @@ function __c96(j: number): any {
           repoId: S.String,
           repoName: S.String,
           integrationId: S.NullOr(S.String),
-          provider: S.NullOr(__S(606, __c75, 6)),
+          provider: S.NullOr(__S(1344, __c84, 0)),
           stackRoot: S.String,
           sourceRoot: S.String,
           defaultBranch: S.NullOr(S.String),
@@ -31708,28 +27826,24 @@ function __c96(j: number): any {
       ).annotate({
         identifier: "ListProjectCodeOwnersResponseBodyItemCodeMapping",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          missing_user_emails: __S(45, __c5, 5),
-          missing_external_users: __S(45, __c5, 5),
-          missing_external_teams: __S(45, __c5, 5),
-          teams_without_access: __S(45, __c5, 5),
-          users_without_access: __S(45, __c5, 5),
+          missing_user_emails: __S(816, __c51, 0),
+          missing_external_users: __S(816, __c51, 0),
+          missing_external_teams: __S(816, __c51, 0),
+          teams_without_access: __S(816, __c51, 0),
+          users_without_access: __S(816, __c51, 0),
         }),
       ).annotate({
         identifier: "ListProjectCodeOwnersResponseBodyItemErrors",
       });
-  }
-}
-function __c97(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          codeMapping: S.optional(__S(774, __c96, 6)),
+          codeMapping: S.optional(__S(2193, __c137, 1)),
           ownershipSyntax: S.optional(S.String),
-          errors: S.optional(__S(775, __c96, 7)),
+          errors: S.optional(__S(2194, __c137, 2)),
           schema: S.optional(S.Unknown),
           codeOwnersUrl: S.optional(S.String),
           id: S.String,
@@ -31743,13 +27857,17 @@ function __c97(j: number): any {
       ).annotate({
         identifier: "ListProjectCodeOwnersResponseBodyItem",
       });
-    case 1:
-      return S.Array(__S(776, __c97, 0));
-    case 2:
-      return S.suspend(() => __S(777, __c97, 1).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(2195, __c137, 3));
+    case 5:
+      return S.suspend(() => __S(2196, __c137, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectCodeOwnersResponse",
       });
-    case 3:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -31757,7 +27875,7 @@ function __c97(j: number): any {
           query: S.optional(S.String.pipe(T.Query())),
           debug_id: S.optional(S.String.pipe(T.Query())),
           code_id: S.optional(S.String.pipe(T.Query())),
-          file_formats: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          file_formats: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -31769,7 +27887,7 @@ function __c97(j: number): any {
       ).annotate({
         identifier: "ListProjectDebugFilesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -31779,22 +27897,26 @@ function __c97(j: number): any {
           cpuName: S.String,
           objectName: S.String,
           symbolType: S.String,
-          headers: __S(88, __c11, 0),
+          headers: __S(1616, __c101, 0),
           size: S.Number,
           sha1: S.String,
           dateCreated: S.String,
-          data: __S(1, __c0, 1),
+          data: __S(4128, __c258, 0),
         }),
       ).annotate({
         identifier: "ListProjectDebugFilesResponseBodyItem",
       });
-    case 5:
-      return S.Array(__S(780, __c97, 4));
-    case 6:
-      return S.suspend(() => __S(781, __c97, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(2209, __c138, 1));
+    case 3:
+      return S.suspend(() => __S(2210, __c138, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectDebugFilesResponse",
       });
-    case 7:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -31812,7 +27934,7 @@ function __c97(j: number): any {
       });
   }
 }
-function __c98(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -31833,12 +27955,16 @@ function __c98(j: number): any {
         identifier: "ListProjectEventAttachmentsRequest",
       });
     case 1:
-      return S.Array(__S(453, __c56, 5));
+      return S.Array(__S(368, __c23, 0));
     case 2:
-      return S.suspend(() => __S(785, __c98, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2241, __c140, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectEventAttachmentsResponse",
       });
-    case 3:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -31857,7 +27983,11 @@ function __c98(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProjectEventsRequest" });
-    case 4:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -31872,7 +28002,7 @@ function __c98(j: number): any {
       ).annotate({
         identifier: "ListProjectFiltersRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -31881,15 +28011,15 @@ function __c98(j: number): any {
       ).annotate({
         identifier: "ListProjectFiltersResponseBodyItem",
       });
-    case 6:
-      return S.Array(__S(789, __c98, 5));
-    case 7:
-      return S.suspend(() => __S(790, __c98, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(2273, __c142, 1));
+    case 3:
+      return S.suspend(() => __S(2274, __c142, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectFiltersResponse",
       });
   }
 }
-function __c99(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -31916,24 +28046,75 @@ function __c99(j: number): any {
           secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           projectId: S.Number,
           isActive: S.Boolean,
-          rateLimit: S.NullOr(__S(173, __c21, 5)),
-          dsn: __S(174, __c21, 6),
+          rateLimit: S.NullOr(__S(3648, __c228, 0)),
+          dsn: __S(3649, __c228, 1),
           browserSdkVersion: S.String,
-          browserSdk: __S(176, __c22, 0),
+          browserSdk: __S(3665, __c229, 1),
           dateCreated: S.NullOr(S.String),
-          dynamicSdkLoaderOptions: __S(177, __c22, 1),
+          dynamicSdkLoaderOptions: __S(3650, __c228, 2),
           useCase: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListProjectKeysResponseBodyItem",
       });
     case 2:
-      return S.Array(__S(793, __c99, 1));
+      return S.Array(__S(2289, __c143, 1));
     case 3:
-      return S.suspend(() => __S(794, __c99, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2290, __c143, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectKeysResponse",
       });
-    case 4:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          trigger_type: S.String,
+          service_type: S.String,
+          integration_id: S.optional(S.Number),
+          target_identifier: S.optional(S.String),
+          target_display: S.optional(S.String),
+          projects: S.optional(__S(4368, __c273, 0)),
+          sentry_app_id: S.optional(S.Number),
+          target_type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/notifications/actions/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationNotificationsActionRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          organizationId: S.Number,
+          integrationId: S.NullOr(S.Number),
+          sentryAppId: S.NullOr(S.Number),
+          projects: __S(768, __c48, 0),
+          serviceType: S.NullOr(S.String),
+          triggerType: S.String,
+          targetType: S.NullOr(S.String),
+          targetIdentifier: S.NullOr(S.String),
+          targetDisplay: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationNotificationsActionResponse",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -31948,7 +28129,11 @@ function __c99(j: number): any {
       ).annotate({
         identifier: "ListProjectMembersRequest",
       });
-    case 5:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -31964,7 +28149,7 @@ function __c99(j: number): any {
       ).annotate({
         identifier: "ListProjectMonitorCheckinsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           schedule_type: S.String,
@@ -31979,10 +28164,10 @@ function __c99(j: number): any {
       ).annotate({
         identifier: "ListProjectMonitorCheckinsResponseBodyItemMonitorConfig",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(__S(17, __c2, 1)),
+          groups: S.optional(__S(4368, __c273, 0)),
           id: S.String,
           environment: S.String,
           status: S.String,
@@ -31993,22 +28178,22 @@ function __c99(j: number): any {
           dateInProgress: S.NullOr(S.String),
           dateClock: S.String,
           expectedTime: S.String,
-          monitorConfig: __S(798, __c99, 6),
+          monitorConfig: __S(2353, __c147, 1),
         }),
       ).annotate({
         identifier: "ListProjectMonitorCheckinsResponseBodyItem",
       });
-  }
-}
-function __c100(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(799, __c99, 7));
-    case 1:
-      return S.suspend(() => __S(800, __c100, 0).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(2354, __c147, 2));
+    case 4:
+      return S.suspend(() => __S(2355, __c147, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectMonitorCheckinsResponse",
       });
-    case 2:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32025,7 +28210,7 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "ListProjectReleaseCommitsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -32034,32 +28219,32 @@ function __c100(j: number): any {
           dateCreated: S.String,
           mergedAt: S.NullOr(S.String),
           status: S.NullOr(S.String),
-          repository: __S(657, __c82, 1),
+          repository: __S(1681, __c105, 1),
           author: S.Unknown,
           externalUrl: S.String,
         }),
       ).annotate({
         identifier: "ListProjectReleaseCommitsResponseBodyItemPullRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           enabledCodeReview: S.Boolean,
-          codeReviewTriggers: __S(45, __c5, 5),
+          codeReviewTriggers: __S(816, __c51, 0),
         }),
       ).annotate({
         identifier: "ListProjectReleaseCommitsResponseBodyItemRepositorySettings",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.NullOr(S.String)),
-          provider: S.optional(__S(67, __c8, 3)),
+          provider: S.optional(__S(784, __c49, 0)),
           status: S.optional(S.String),
           integrationId: S.optional(S.NullOr(S.String)),
           externalSlug: S.optional(S.NullOr(S.String)),
           externalId: S.optional(S.NullOr(S.String)),
-          settings: S.optional(S.NullOr(__S(804, __c100, 4))),
+          settings: S.optional(S.NullOr(__S(2370, __c148, 2))),
           id: S.String,
           name: S.String,
           dateCreated: S.String,
@@ -32067,39 +28252,39 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "ListProjectReleaseCommitsResponseBodyItemRepository",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           message: S.NullOr(S.String),
           dateCreated: S.String,
-          pullRequest: S.NullOr(__S(803, __c100, 3)),
+          pullRequest: S.NullOr(__S(2369, __c148, 1)),
           suspectCommitType: S.String,
-          repository: S.optional(__S(805, __c100, 5)),
+          repository: S.optional(__S(2371, __c148, 3)),
           author: S.optional(S.Unknown),
-          releases: __S(661, __c82, 5),
+          releases: __S(1697, __c106, 1),
         }),
       ).annotate({
         identifier: "ListProjectReleaseCommitsResponseBodyItem",
       });
-    case 7:
-      return S.Array(__S(806, __c100, 6));
-  }
-}
-function __c101(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(807, __c100, 7).pipe(T.RawResponseRoot())).annotate({
+    case 5:
+      return S.Array(__S(2372, __c148, 4));
+    case 6:
+      return S.suspend(() => __S(2373, __c148, 5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectReleaseCommitsResponse",
       });
-    case 1:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           project_id_or_slug: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          query: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          checksum: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          query: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          checksum: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -32111,12 +28296,16 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "ListProjectReleaseFilesRequest",
       });
-    case 2:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           project_id_or_slug: S.String.pipe(T.Label()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
@@ -32130,9 +28319,9 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "ListProjectReleasesRequest",
       });
-    case 3:
+    case 1:
       return S.Array(S.Unknown);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           durationP50: S.optional(S.NullOr(S.Number)),
@@ -32150,15 +28339,15 @@ function __c101(j: number): any {
           sessionsCrashed: S.Number,
           sessionsErrored: S.Number,
           hasHealthData: S.Boolean,
-          stats: __S(83, __c10, 3),
+          stats: __S(1104, __c69, 0),
         }),
       ).annotate({
         identifier: "ListProjectReleasesResponseBodyItemProjectsItemHealthData",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          healthData: S.optional(S.NullOr(__S(812, __c101, 4))),
+          healthData: S.optional(S.NullOr(__S(2402, __c150, 2))),
           dateReleased: S.optional(S.NullOr(S.String)),
           dateCreated: S.optional(S.NullOr(S.String)),
           dateStarted: S.optional(S.NullOr(S.String)),
@@ -32166,16 +28355,16 @@ function __c101(j: number): any {
           slug: S.String,
           name: S.String,
           platform: S.NullOr(S.String),
-          platforms: S.NullOr(__S(17, __c2, 1)),
+          platforms: S.NullOr(__S(4368, __c273, 0)),
           hasHealthData: S.Boolean,
           newGroups: S.Number,
         }),
       ).annotate({
         identifier: "ListProjectReleasesResponseBodyItemProjectsItem",
       });
-    case 6:
-      return S.Array(__S(813, __c101, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(2403, __c150, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           ref: S.optional(S.NullOr(S.String)),
@@ -32183,47 +28372,47 @@ function __c101(j: number): any {
           dateReleased: S.optional(S.NullOr(S.String)),
           dateCreated: S.optional(S.NullOr(S.String)),
           dateStarted: S.optional(S.NullOr(S.String)),
-          owner: S.optional(S.NullOr(__S(1, __c0, 1))),
-          lastCommit: S.optional(S.NullOr(__S(1, __c0, 1))),
-          lastDeploy: S.optional(S.NullOr(__S(131, __c16, 3))),
+          owner: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          lastCommit: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          lastDeploy: S.optional(S.NullOr(__S(2912, __c182, 0))),
           firstEvent: S.optional(S.NullOr(S.String)),
           lastEvent: S.optional(S.NullOr(S.String)),
-          currentProjectMeta: S.optional(S.NullOr(__S(1, __c0, 1))),
+          currentProjectMeta: S.optional(S.NullOr(__S(4128, __c258, 0))),
           userAgent: S.optional(S.NullOr(S.String)),
-          adoptionStages: S.optional(S.NullOr(__S(1, __c0, 1))),
+          adoptionStages: S.optional(S.NullOr(__S(4128, __c258, 0))),
           id: S.Number,
           version: S.String,
           newGroups: S.Number,
           status: S.String,
           shortVersion: S.String,
-          versionInfo: S.NullOr(__S(132, __c16, 4)),
-          data: __S(1, __c0, 1),
+          versionInfo: S.NullOr(__S(2913, __c182, 1)),
+          data: __S(4128, __c258, 0),
           commitCount: S.Number,
           deployCount: S.Number,
-          authors: __S(811, __c101, 3),
-          projects: __S(814, __c101, 6),
+          authors: __S(2401, __c150, 1),
+          projects: __S(2404, __c150, 4),
         }),
       ).annotate({
         identifier: "ListProjectReleasesResponseBodyItem",
       });
-  }
-}
-function __c102(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(815, __c101, 7));
-    case 1:
-      return S.suspend(() => __S(816, __c102, 0).pipe(T.RawResponseRoot())).annotate({
+    case 6:
+      return S.Array(__S(2405, __c150, 5));
+    case 7:
+      return S.suspend(() => __S(2406, __c150, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectReleasesResponse",
       });
-    case 2:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           project_id_or_slug: S.String.pipe(T.Label()),
           replay_id: S.String.pipe(T.Label()),
           cursor: S.optional(S.String.pipe(T.Query())),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -32236,7 +28425,7 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "ListProjectReplayClicksRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           node_id: S.Number,
@@ -32245,17 +28434,21 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "ListProjectReplayClicksResponseDataItem",
       });
-    case 4:
-      return S.Array(__S(819, __c102, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2417, __c151, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(820, __c102, 4),
+          data: __S(2418, __c151, 2),
         }),
       ).annotate({
         identifier: "ListProjectReplayClicksResponse",
       });
-    case 6:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32270,21 +28463,21 @@ function __c102(j: number): any {
       ).annotate({
         identifier: "ListProjectReplayDeletionJobsRequest",
       });
-    case 7:
-      return S.Array(__S(185, __c23, 1));
-  }
-}
-function __c103(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(3792, __c237, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(823, __c102, 7),
+          data: __S(2433, __c152, 1),
         }),
       ).annotate({
         identifier: "ListProjectReplayDeletionJobsResponse",
       });
-    case 1:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32302,13 +28495,17 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "ListProjectReplayRecordingSegmentsRequest",
       });
+    case 1:
+      return S.Array(__S(4064, __c254, 0));
     case 2:
-      return S.Array(__S(2, __c0, 2));
-    case 3:
-      return S.suspend(() => __S(826, __c103, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2449, __c153, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectReplayRecordingSegmentsResponse",
       });
-    case 4:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32324,23 +28521,27 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "ListProjectReplayViewedByRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          viewed_by: __S(2, __c0, 2),
+          viewed_by: __S(4064, __c254, 0),
         }),
       ).annotate({
         identifier: "ListProjectReplayViewedByResponseData",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(829, __c103, 5),
+          data: __S(2465, __c154, 1),
         }),
       ).annotate({
         identifier: "ListProjectReplayViewedByResponse",
       });
-    case 7:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32356,11 +28557,7 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "ListProjectRepositoriesRequest",
       });
-  }
-}
-function __c104(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -32376,13 +28573,107 @@ function __c104(j: number): any {
       ).annotate({
         identifier: "ListProjectRepositoriesResponseBodyItem",
       });
-    case 1:
-      return S.Array(__S(832, __c104, 0));
     case 2:
-      return S.suspend(() => __S(833, __c104, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(2481, __c155, 1));
+    case 3:
+      return S.suspend(() => __S(2482, __c155, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectRepositoriesResponse",
       });
-    case 3:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          name: S.String,
+          slug: S.optional(S.NullOr(S.String)),
+          platform: S.optional(S.NullOr(S.String)),
+          default_rules: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/projects/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationProjectRequest",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationProjectResponseLatestRelease",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(1616, __c101, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          latestDeploys: S.optional(S.NullOr(__S(2528, __c158, 0))),
+          options: S.optional(__S(4128, __c258, 0)),
+          stats: S.optional(S.Unknown),
+          transactionStats: S.optional(S.Unknown),
+          sessionStats: S.optional(S.Unknown),
+          id: S.String,
+          slug: S.String,
+          name: S.String,
+          platform: S.NullOr(S.String),
+          dateCreated: S.String,
+          isBookmarked: S.Boolean,
+          isMember: S.Boolean,
+          features: __S(4368, __c273, 0),
+          firstEvent: S.NullOr(S.String),
+          firstTransactionEvent: S.Boolean,
+          access: __S(4368, __c273, 0),
+          hasAccess: S.Boolean,
+          hasFeedbacks: S.Boolean,
+          hasFlags: S.Boolean,
+          hasMinifiedStackTrace: S.Boolean,
+          hasMonitors: S.Boolean,
+          hasNewFeedbacks: S.Boolean,
+          hasProfiles: S.Boolean,
+          hasReplays: S.Boolean,
+          hasSessions: S.Boolean,
+          hasInsightsHttp: S.Boolean,
+          hasInsightsDb: S.Boolean,
+          hasInsightsAssets: S.Boolean,
+          hasInsightsAppStart: S.Boolean,
+          hasInsightsScreenLoad: S.Boolean,
+          hasInsightsVitals: S.Boolean,
+          hasInsightsCaches: S.Boolean,
+          hasInsightsQueues: S.Boolean,
+          hasInsightsAgentMonitoring: S.Boolean,
+          hasInsightsMCP: S.Boolean,
+          hasLogs: S.Boolean,
+          hasTraceMetrics: S.Boolean,
+          team: S.NullOr(__S(4768, __c298, 0)),
+          teams: __S(4769, __c298, 1),
+          platforms: __S(4368, __c273, 0),
+          hasUserReports: S.Boolean,
+          environments: __S(4368, __c273, 0),
+          latestRelease: S.NullOr(__S(2512, __c157, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationProjectResponse",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32399,11 +28690,15 @@ function __c104(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProjectStatsRequest" });
-    case 4:
-      return S.suspend(() => __S(287, __c35, 7).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(5168, __c323, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectStatsResponse",
       });
-    case 5:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32419,15 +28714,15 @@ function __c104(j: number): any {
       ).annotate({
         identifier: "ListProjectSymbolSourcesRequest",
       });
-    case 6:
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() => __S(838, __c104, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(2561, __c160, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectSymbolSourcesResponse",
       });
   }
 }
-function __c105(j: number): any {
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -32444,12 +28739,16 @@ function __c105(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectTeamsRequest" });
     case 1:
-      return S.Array(__S(18, __c2, 2));
+      return S.Array(__S(4352, __c272, 0));
     case 2:
-      return S.suspend(() => __S(841, __c105, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2577, __c161, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectTeamsResponse",
       });
-    case 3:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32464,7 +28763,7 @@ function __c105(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProjectUsersRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.NullOr(S.String),
@@ -32481,27 +28780,31 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "ListProjectUsersResponseBodyItem",
       });
-    case 5:
-      return S.Array(__S(844, __c105, 4));
-    case 6:
-      return S.suspend(() => __S(845, __c105, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(2593, __c162, 1));
+    case 3:
+      return S.suspend(() => __S(2594, __c162, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectUsersResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/0/seer/models/", code: 200 })),
-      ).annotate({ identifier: "ListSeerModelsRequest" });
   }
 }
-function __c106(j: number): any {
+function __c163(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/0/seer/models/", code: 200 })),
+      ).annotate({ identifier: "ListSeerModelsRequest" });
+    case 1:
+      return S.suspend(() =>
         S.Struct({
-          models: __S(17, __c2, 1),
+          models: __S(4368, __c273, 0),
         }),
       ).annotate({ identifier: "ListSeerModelsResponse" });
-    case 1:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32515,20 +28818,20 @@ function __c106(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTeamMembersRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          externalUsers: S.optional(__S(5, __c0, 5)),
+          externalUsers: S.optional(__S(4112, __c257, 0)),
           role: S.optional(S.String),
           roleName: S.optional(S.String),
           id: S.String,
           email: S.String,
           name: S.String,
-          user: __S(13, __c1, 5),
+          user: __S(4048, __c253, 0),
           orgRole: S.String,
           pending: S.Boolean,
           expired: S.Boolean,
-          flags: __S(14, __c1, 6),
+          flags: __S(4160, __c260, 0),
           dateCreated: S.String,
           inviteStatus: S.String,
           inviterName: S.NullOr(S.String),
@@ -32538,13 +28841,17 @@ function __c106(j: number): any {
       ).annotate({
         identifier: "ListTeamMembersResponseBodyItem",
       });
+    case 2:
+      return S.Array(__S(2625, __c164, 1));
     case 3:
-      return S.Array(__S(850, __c106, 2));
-    case 4:
-      return S.suspend(() => __S(851, __c106, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2626, __c164, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTeamMembersResponse",
       });
-    case 5:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32558,11 +28865,15 @@ function __c106(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTeamProjectsRequest" });
-    case 6:
-      return S.suspend(() => __S(649, __c81, 1).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(1568, __c98, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTeamProjectsResponse",
       });
-    case 7:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32579,7 +28890,7 @@ function __c106(j: number): any {
       });
   }
 }
-function __c107(j: number): any {
+function __c167(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -32597,13 +28908,17 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "ProvisionOrganizationScimV2UserRequest",
       });
-    case 1:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           project_id_or_slug: S.String.pipe(T.Label()),
           url: S.String,
-          events: __S(17, __c2, 1),
+          events: __S(4368, __c273, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -32614,7 +28929,71 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "RegisterANewServiceHookRequest",
       });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          logic_type: S.String,
+          conditions: S.optional(__S(1088, __c68, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationProjectDetectorRequestConditionGroup",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          name: S.String,
+          type: S.String,
+          workflow_ids: S.optional(__S(768, __c48, 0)),
+          data_sources: S.optional(__S(3968, __c248, 0)),
+          config: S.optional(__S(4128, __c258, 0)),
+          condition_group: S.optional(__S(2704, __c169, 0)),
+          owner: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          enabled: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/projects/{project_id_or_slug}/detectors/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationProjectDetectorRequest",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.optional(S.NullOr(__S(2080, __c130, 0))),
+          createdBy: S.optional(S.NullOr(S.String)),
+          latestGroup: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          description: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          projectId: S.NullOr(S.String),
+          name: S.String,
+          type: S.String,
+          workflowIds: S.NullOr(__S(4368, __c273, 0)),
+          dateCreated: S.String,
+          dateUpdated: S.String,
+          dataSources: S.NullOr(__S(4064, __c254, 0)),
+          conditionGroup: S.NullOr(__S(4128, __c258, 0)),
+          config: __S(4128, __c258, 0),
+          enabled: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationProjectDetectorResponse",
+      });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32630,7 +29009,13 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "RemoveAServiceHookRequest",
       });
-    case 3:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5267, __c329, 3));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32645,18 +29030,18 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "ResolveOrganizationEventIdRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           projectId: S.Number,
           eventId: S.String,
-          fingerprint: __S(45, __c5, 5),
+          fingerprint: __S(816, __c51, 0),
           issueTitle: S.String,
           subtitle: S.String,
           resourceId: S.NullOr(S.String),
-          evidenceData: __S(83, __c10, 3),
-          evidenceDisplay: __S(601, __c75, 1),
+          evidenceData: __S(1104, __c69, 0),
+          evidenceDisplay: __S(2736, __c171, 0),
           type: S.Number,
           detectionTime: S.Number,
           level: S.NullOr(S.String),
@@ -32667,7 +29052,7 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "ResolveOrganizationEventIdResponseEventOccurrence",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -32677,53 +29062,57 @@ function __c107(j: number): any {
           message: S.NullOr(S.String),
           title: S.String,
           location: S.NullOr(S.String),
-          user: S.NullOr(__S(299, __c37, 3)),
-          tags: __S(301, __c37, 5),
+          user: S.NullOr(__S(5248, __c328, 0)),
+          tags: __S(5250, __c328, 2),
           platform: S.String,
           dateReceived: S.NullOr(S.String),
-          contexts: S.NullOr(__S(1, __c0, 1)),
+          contexts: S.NullOr(__S(4128, __c258, 0)),
           size: S.NullOr(S.Number),
-          entries: __S(0, __c0, 0),
+          entries: __S(3968, __c248, 0),
           dist: S.NullOr(S.String),
-          sdk: S.NullOr(__S(302, __c37, 6)),
-          context: S.NullOr(__S(1, __c0, 1)),
-          packages: __S(1, __c0, 1),
+          sdk: S.NullOr(__S(5264, __c329, 0)),
+          context: S.NullOr(__S(4128, __c258, 0)),
+          packages: __S(4128, __c258, 0),
           type: S.String,
-          metadata: __S(1, __c0, 1),
-          errors: __S(304, __c38, 0),
-          occurrence: S.NullOr(__S(860, __c107, 4)),
-          _meta: __S(1, __c0, 1),
+          metadata: __S(4128, __c258, 0),
+          errors: __S(5266, __c329, 2),
+          occurrence: S.NullOr(__S(2738, __c171, 2)),
+          _meta: __S(4128, __c258, 0),
           crashFile: S.optional(S.NullOr(S.String)),
           culprit: S.optional(S.NullOr(S.String)),
           dateCreated: S.optional(S.String),
-          fingerprints: S.optional(__S(17, __c2, 1)),
-          groupingConfig: S.optional(__S(308, __c38, 4)),
+          fingerprints: S.optional(__S(4368, __c273, 0)),
+          groupingConfig: S.optional(__S(5268, __c329, 4)),
           startTimestamp: S.optional(S.Number),
           endTimestamp: S.optional(S.Number),
-          measurements: S.optional(S.NullOr(__S(310, __c38, 6))),
-          breakdowns: S.optional(S.NullOr(__S(311, __c38, 7))),
+          measurements: S.optional(S.NullOr(__S(5270, __c329, 6))),
+          breakdowns: S.optional(S.NullOr(__S(5271, __c329, 7))),
         }),
       ).annotate({
         identifier: "ResolveOrganizationEventIdResponseEvent",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           organizationSlug: S.String,
           projectSlug: S.String,
           groupId: S.String,
           eventId: S.String,
-          event: __S(861, __c107, 5),
+          event: __S(2739, __c171, 3),
         }),
       ).annotate({
         identifier: "ResolveOrganizationEventIdResponse",
       });
-    case 7:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           issue_id: S.String.pipe(T.Label()),
-          collapse: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          collapse: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -32734,11 +29123,7 @@ function __c107(j: number): any {
       ).annotate({
         identifier: "ResolveOrganizationShortIdRequest",
       });
-  }
-}
-function __c108(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           isUnhandled: S.optional(S.Boolean),
@@ -32746,7 +29131,7 @@ function __c108(j: number): any {
           userCount: S.optional(S.Number),
           firstSeen: S.optional(S.NullOr(S.String)),
           lastSeen: S.optional(S.NullOr(S.String)),
-          derivedData: S.optional(__S(279, __c34, 7)),
+          derivedData: S.optional(__S(5136, __c321, 0)),
           id: S.String,
           shareId: S.NullOr(S.String),
           shortId: S.String,
@@ -32756,7 +29141,7 @@ function __c108(j: number): any {
           logger: S.NullOr(S.String),
           level: S.String,
           status: S.String,
-          statusDetails: __S(615, __c76, 7),
+          statusDetails: __S(1393, __c87, 1),
           substatus: S.NullOr(S.String),
           isPublic: S.Boolean,
           platform: S.NullOr(S.String),
@@ -32765,35 +29150,39 @@ function __c108(j: number): any {
           seerFixabilityScore: S.NullOr(S.Number),
           seerAutofixLastTriggered: S.NullOr(S.String),
           seerExplorerAutofixLastTriggered: S.NullOr(S.String),
-          project: __S(283, __c35, 3),
+          project: __S(5138, __c321, 2),
           type: S.String,
           issueType: S.String,
           issueCategory: S.String,
-          metadata: __S(1, __c0, 1),
+          metadata: __S(4128, __c258, 0),
           numComments: S.Number,
-          assignedTo: S.NullOr(__S(111, __c13, 7)),
+          assignedTo: S.NullOr(__S(2080, __c130, 0)),
           isBookmarked: S.Boolean,
           isSubscribed: S.Boolean,
-          subscriptionDetails: S.NullOr(__S(284, __c35, 4)),
+          subscriptionDetails: S.NullOr(__S(5152, __c322, 0)),
           hasSeen: S.Boolean,
-          annotations: __S(286, __c35, 6),
+          annotations: __S(5140, __c321, 4),
         }),
       ).annotate({
         identifier: "ResolveOrganizationShortIdResponseGroup",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           organizationSlug: S.String,
           projectSlug: S.String,
           groupId: S.String,
-          group: __S(864, __c108, 0),
+          group: __S(2753, __c172, 1),
           shortId: S.String,
         }),
       ).annotate({
         identifier: "ResolveOrganizationShortIdResponse",
       });
-    case 2:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32819,7 +29208,11 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "StartOrganizationIssueAutofixRequest",
       });
-    case 3:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32836,25 +29229,29 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "UnlinkAnExternalIssueFromAnIssueRequest",
       });
-    case 4:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: __S(17, __c2, 1),
+          value: __S(4368, __c273, 0),
         }),
       ).annotate({
         identifier: "UpdateACustomInboundFilterRequestConditionsItem",
       });
-    case 5:
-      return S.Array(__S(868, __c108, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(2800, __c175, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           project_id_or_slug: S.String.pipe(T.Label()),
           filter_id: S.String.pipe(T.Label()),
           dataType: S.String,
-          conditions: __S(869, __c108, 5),
+          conditions: __S(2801, __c175, 1),
           name: S.optional(S.NullOr(S.String)),
           active: S.optional(S.Boolean),
         }).pipe(
@@ -32867,27 +29264,23 @@ function __c108(j: number): any {
       ).annotate({
         identifier: "UpdateACustomInboundFilterRequest",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: __S(17, __c2, 1),
+          value: __S(4368, __c273, 0),
         }),
       ).annotate({
         identifier: "UpdateACustomInboundFilterResponseConditionsItem",
       });
-  }
-}
-function __c109(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(871, __c108, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(2803, __c175, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           dataType: S.String,
-          conditions: __S(872, __c109, 0),
+          conditions: __S(2804, __c175, 4),
           dateCreated: S.String,
           dateUpdated: S.String,
           name: S.optional(S.NullOr(S.String)),
@@ -32896,14 +29289,18 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "UpdateACustomInboundFilterResponse",
       });
-    case 2:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           project_id_or_slug: S.String.pipe(T.Label()),
           hook_id: S.String.pipe(T.Label()),
           url: S.String,
-          events: __S(17, __c2, 1),
+          events: __S(4368, __c273, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -32914,7 +29311,11 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "UpdateAServiceHookRequest",
       });
-    case 3:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -32929,7 +29330,7 @@ function __c109(j: number): any {
           attachmentsRole: S.optional(S.String),
           debugFilesRole: S.optional(S.String),
           hasGranularReplayPermissions: S.optional(S.Boolean),
-          replayAccessMembers: S.optional(S.NullOr(__S(54, __c6, 6))),
+          replayAccessMembers: S.optional(S.NullOr(__S(768, __c48, 0))),
           avatarType: S.optional(S.String),
           avatar: S.optional(S.String),
           require2FA: S.optional(S.Boolean),
@@ -32940,11 +29341,11 @@ function __c109(j: number): any {
           allowJoinRequests: S.optional(S.Boolean),
           dataScrubber: S.optional(S.Boolean),
           dataScrubberDefaults: S.optional(S.Boolean),
-          sensitiveFields: S.optional(__S(17, __c2, 1)),
-          safeFields: S.optional(__S(17, __c2, 1)),
+          sensitiveFields: S.optional(__S(4368, __c273, 0)),
+          safeFields: S.optional(__S(4368, __c273, 0)),
           scrubIPAddresses: S.optional(S.Boolean),
           relayPiiConfig: S.optional(S.String),
-          trustedRelays: S.optional(__S(2, __c0, 2)),
+          trustedRelays: S.optional(__S(4064, __c254, 0)),
           relayDsnEndpoint: S.optional(S.NullOr(S.String)),
           issueAlertsThreadFlag: S.optional(S.Boolean),
           metricAlertsThreadFlag: S.optional(S.Boolean),
@@ -32960,7 +29361,7 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -32972,24 +29373,24 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationResponseTrustedRelaysItem",
       });
-    case 5:
-      return S.Array(__S(876, __c109, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2833, __c177, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          features: S.optional(__S(17, __c2, 1)),
-          extraOptions: S.optional(__S(740, __c92, 4)),
-          access: S.optional(__S(17, __c2, 1)),
-          onboardingTasks: S.optional(__S(741, __c92, 5)),
+          features: S.optional(__S(4368, __c273, 0)),
+          extraOptions: S.optional(__S(2032, __c127, 0)),
+          access: S.optional(__S(4368, __c273, 0)),
+          onboardingTasks: S.optional(__S(2033, __c127, 1)),
           id: S.String,
           slug: S.String,
-          status: __S(7, __c0, 7),
+          status: __S(3984, __c249, 0),
           name: S.String,
           dateCreated: S.String,
           isEarlyAdopter: S.Boolean,
           require2FA: S.Boolean,
-          avatar: __S(10, __c1, 2),
-          links: __S(145, __c18, 1),
+          avatar: __S(4144, __c259, 0),
+          links: __S(3329, __c208, 1),
           hasAuthProvider: S.Boolean,
           allowMemberInvite: S.Boolean,
           allowMemberProjectCreation: S.Boolean,
@@ -32998,7 +29399,7 @@ function __c109(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationResponseTeamsItemOrganization",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -33007,41 +29408,37 @@ function __c109(j: number): any {
           dateCreated: S.NullOr(S.String),
           isMember: S.Boolean,
           teamRole: S.NullOr(S.String),
-          flags: __S(1, __c0, 1),
-          access: __S(17, __c2, 1),
+          flags: __S(4128, __c258, 0),
+          access: __S(4368, __c273, 0),
           hasAccess: S.Boolean,
           isPending: S.Boolean,
           memberCount: S.Number,
-          avatar: __S(10, __c1, 2),
-          externalTeams: S.optional(__S(5, __c0, 5)),
-          organization: S.optional(__S(878, __c109, 6)),
-          projects: S.optional(__S(147, __c18, 3)),
+          avatar: __S(4144, __c259, 0),
+          externalTeams: S.optional(__S(4112, __c257, 0)),
+          organization: S.optional(__S(2835, __c177, 3)),
+          projects: S.optional(__S(3312, __c207, 0)),
         }),
       ).annotate({
         identifier: "UpdateOrganizationResponseTeamsItem",
       });
-  }
-}
-function __c110(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(879, __c109, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(2836, __c177, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          features: S.optional(__S(17, __c2, 1)),
-          extraOptions: S.optional(__S(245, __c30, 5)),
-          access: S.optional(__S(17, __c2, 1)),
-          onboardingTasks: S.optional(__S(144, __c18, 0)),
+          features: S.optional(__S(4368, __c273, 0)),
+          extraOptions: S.optional(__S(4928, __c308, 0)),
+          access: S.optional(__S(4368, __c273, 0)),
+          onboardingTasks: S.optional(__S(3344, __c209, 0)),
           id: S.String,
           slug: S.String,
-          status: __S(7, __c0, 7),
+          status: __S(3984, __c249, 0),
           name: S.String,
           dateCreated: S.String,
           isEarlyAdopter: S.Boolean,
           require2FA: S.Boolean,
-          avatar: __S(10, __c1, 2),
-          links: __S(145, __c18, 1),
+          avatar: __S(4144, __c259, 0),
+          links: __S(3329, __c208, 1),
           hasAuthProvider: S.Boolean,
           allowMemberInvite: S.Boolean,
           allowMemberProjectCreation: S.Boolean,
@@ -33052,18 +29449,18 @@ function __c110(j: number): any {
           samplingMode: S.optional(S.String),
           planSampleRate: S.optional(S.Number),
           desiredSampleRate: S.optional(S.Number),
-          experiments: __S(88, __c11, 0),
+          experiments: __S(1616, __c101, 0),
           isDefault: S.Boolean,
           defaultRole: S.String,
-          orgRoleList: __S(325, __c40, 5),
-          teamRoleList: __S(327, __c40, 7),
+          orgRoleList: __S(5345, __c334, 1),
+          teamRoleList: __S(5347, __c334, 3),
           openMembership: S.Boolean,
           allowSharedIssues: S.Boolean,
           enhancedPrivacy: S.Boolean,
           dataScrubber: S.Boolean,
           dataScrubberDefaults: S.Boolean,
-          sensitiveFields: __S(17, __c2, 1),
-          safeFields: __S(17, __c2, 1),
+          sensitiveFields: __S(4368, __c273, 0),
+          safeFields: __S(4368, __c273, 0),
           storeCrashReports: S.Number,
           attachmentsRole: S.String,
           debugFilesRole: S.String,
@@ -33074,7 +29471,7 @@ function __c110(j: number): any {
           allowJoinRequests: S.Boolean,
           relayPiiConfig: S.NullOr(S.String),
           relayDsnEndpoint: S.NullOr(S.String),
-          trustedRelays: __S(877, __c109, 5),
+          trustedRelays: __S(2834, __c177, 2),
           pendingAccessRequests: S.Number,
           hideAiFeatures: S.Boolean,
           aggregatedDataConsent: S.Boolean,
@@ -33090,14 +29487,18 @@ function __c110(j: number): any {
           defaultAutomatedRunStoppingPoint: S.String,
           autoEnableCodeReview: S.Boolean,
           autoOpenPrs: S.Boolean,
-          defaultCodeReviewTriggers: __S(17, __c2, 1),
-          teams: __S(880, __c110, 0),
-          projects: __S(649, __c81, 1),
+          defaultCodeReviewTriggers: __S(4368, __c273, 0),
+          teams: __S(2837, __c177, 5),
+          projects: __S(1568, __c98, 0),
         }),
       ).annotate({
         identifier: "UpdateOrganizationResponse",
       });
-    case 2:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           x: S.Number,
@@ -33109,43 +29510,43 @@ function __c110(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationDashboardRequestWidgetsItemLayout",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           title: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          thresholds: S.optional(S.NullOr(__S(1, __c0, 1))),
+          thresholds: S.optional(S.NullOr(__S(4128, __c258, 0))),
           display_type: S.optional(S.String),
           interval: S.optional(S.String),
-          queries: S.optional(__S(50, __c6, 2)),
+          queries: S.optional(__S(804, __c50, 4)),
           widget_type: S.optional(S.NullOr(S.String)),
           limit: S.optional(S.NullOr(S.Number)),
-          layout: S.optional(S.NullOr(__S(882, __c110, 2))),
+          layout: S.optional(S.NullOr(__S(2848, __c178, 0))),
           axis_range: S.optional(S.NullOr(S.String)),
           legend_type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "UpdateOrganizationDashboardRequestWidgetsItem",
       });
-    case 4:
-      return S.Array(__S(883, __c110, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2849, __c178, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           dashboard_id: S.Number.pipe(T.Label()),
           id: S.optional(S.String),
           title: S.optional(S.String),
-          widgets: S.optional(__S(884, __c110, 4)),
-          projects: S.optional(__S(54, __c6, 6)),
-          environment: S.optional(S.NullOr(__S(17, __c2, 1))),
+          widgets: S.optional(__S(2850, __c178, 2)),
+          projects: S.optional(__S(768, __c48, 0)),
+          environment: S.optional(S.NullOr(__S(4368, __c273, 0))),
           period: S.optional(S.NullOr(S.String)),
           start: S.optional(S.NullOr(S.String)),
           end: S.optional(S.NullOr(S.String)),
-          filters: S.optional(__S(1, __c0, 1)),
+          filters: S.optional(__S(4128, __c258, 0)),
           utc: S.optional(S.Boolean),
-          permissions: S.optional(S.NullOr(__S(56, __c7, 0))),
+          permissions: S.optional(S.NullOr(__S(805, __c50, 5))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33156,56 +29557,52 @@ function __c110(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationDashboardRequest",
       });
-    case 6:
+    case 4:
       return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(886, __c110, 6));
-  }
-}
-function __c111(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(2852, __c178, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          orderby: S.NullOr(__S(68, __c8, 4)),
-          equations: S.NullOr(__S(887, __c110, 7)),
-          selected_columns: __S(45, __c5, 5),
+          orderby: S.NullOr(__S(853, __c53, 5)),
+          equations: S.NullOr(__S(2853, __c178, 5)),
+          selected_columns: __S(816, __c51, 0),
         }),
       ).annotate({
         identifier: "UpdateOrganizationDashboardResponseWidgetsItemChangedReasonItem",
       });
-    case 1:
-      return S.Array(__S(888, __c111, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(2854, __c178, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
           description: S.NullOr(S.String),
           displayType: S.String,
-          thresholds: S.NullOr(__S(59, __c7, 3)),
+          thresholds: S.NullOr(__S(806, __c50, 6)),
           interval: S.String,
           dateCreated: S.String,
           dashboardId: S.String,
-          queries: __S(65, __c8, 1),
+          queries: __S(808, __c50, 8),
           limit: S.NullOr(S.Number),
           widgetType: S.NullOr(S.String),
-          layout: S.NullOr(__S(66, __c8, 2)),
+          layout: S.NullOr(__S(864, __c54, 0)),
           axisRange: S.NullOr(S.String),
           legendType: S.NullOr(S.String),
           datasetSource: S.NullOr(S.String),
-          exploreUrls: S.NullOr(__S(17, __c2, 1)),
-          changedReason: S.NullOr(__S(889, __c111, 1)),
+          exploreUrls: S.NullOr(__S(4368, __c273, 0)),
+          changedReason: S.NullOr(__S(2855, __c178, 7)),
         }),
       ).annotate({
         identifier: "UpdateOrganizationDashboardResponseWidgetsItem",
       });
-    case 3:
-      return S.Array(__S(890, __c111, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(2856, __c178, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(__S(17, __c2, 1)),
+          environment: S.optional(__S(4368, __c273, 0)),
           period: S.optional(S.String),
           utc: S.optional(S.String),
           expired: S.optional(S.Boolean),
@@ -33214,38 +29611,42 @@ function __c111(j: number): any {
           id: S.String,
           title: S.String,
           dateCreated: S.String,
-          createdBy: S.NullOr(__S(13, __c1, 5)),
-          widgets: __S(891, __c111, 3),
-          projects: __S(54, __c6, 6),
-          filters: __S(75, __c9, 3),
-          permissions: S.NullOr(__S(76, __c9, 4)),
+          createdBy: S.NullOr(__S(4048, __c253, 0)),
+          widgets: __S(2857, __c178, 9),
+          projects: __S(768, __c48, 0),
+          filters: __S(854, __c53, 6),
+          permissions: S.NullOr(__S(855, __c53, 7)),
           isFavorited: S.Boolean,
           prebuiltId: S.NullOr(S.Number),
         }),
       ).annotate({
         identifier: "UpdateOrganizationDashboardResponse",
       });
-    case 5:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           logic_type: S.String,
-          conditions: S.optional(__S(0, __c0, 0)),
+          conditions: S.optional(__S(3968, __c248, 0)),
         }),
       ).annotate({
         identifier: "UpdateOrganizationDetectorRequestConditionGroup",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           detector_id: S.Number.pipe(T.Label()),
           name: S.String,
           type: S.String,
-          workflow_ids: S.optional(__S(54, __c6, 6)),
-          data_sources: S.optional(__S(0, __c0, 0)),
-          config: S.optional(__S(1, __c0, 1)),
-          condition_group: S.optional(__S(893, __c111, 5)),
+          workflow_ids: S.optional(__S(768, __c48, 0)),
+          data_sources: S.optional(__S(3968, __c248, 0)),
+          config: S.optional(__S(4128, __c258, 0)),
+          condition_group: S.optional(__S(2864, __c179, 0)),
           owner: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
@@ -33259,23 +29660,23 @@ function __c111(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationDetectorRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          owner: S.optional(S.NullOr(__S(111, __c13, 7))),
+          owner: S.optional(S.NullOr(__S(2080, __c130, 0))),
           createdBy: S.optional(S.NullOr(S.String)),
-          latestGroup: S.optional(S.NullOr(__S(1, __c0, 1))),
+          latestGroup: S.optional(S.NullOr(__S(4128, __c258, 0))),
           description: S.optional(S.NullOr(S.String)),
           id: S.String,
           projectId: S.NullOr(S.String),
           name: S.String,
           type: S.String,
-          workflowIds: S.NullOr(__S(17, __c2, 1)),
+          workflowIds: S.NullOr(__S(4368, __c273, 0)),
           dateCreated: S.String,
           dateUpdated: S.String,
-          dataSources: S.NullOr(__S(2, __c0, 2)),
-          conditionGroup: S.NullOr(__S(1, __c0, 1)),
-          config: __S(1, __c0, 1),
+          dataSources: S.NullOr(__S(4064, __c254, 0)),
+          conditionGroup: S.NullOr(__S(4128, __c258, 0)),
+          config: __S(4128, __c258, 0),
           enabled: S.Boolean,
         }),
       ).annotate({
@@ -33283,7 +29684,194 @@ function __c111(j: number): any {
       });
   }
 }
-function __c112(j: number): any {
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          version: S.String,
+          projects: __S(3968, __c248, 0),
+          ref: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+          dateReleased: S.optional(S.NullOr(S.String)),
+          commits: S.optional(__S(2899, __c181, 3)),
+          status: S.optional(S.String),
+          owner: S.optional(S.String),
+          headCommits: S.optional(__S(2901, __c181, 5)),
+          refs: S.optional(__S(2903, __c181, 7)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/releases/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationReleaseRequest",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ref: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+          dateReleased: S.optional(S.NullOr(S.String)),
+          dateCreated: S.optional(S.NullOr(S.String)),
+          dateStarted: S.optional(S.NullOr(S.String)),
+          owner: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          lastCommit: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          lastDeploy: S.optional(S.NullOr(__S(2912, __c182, 0))),
+          firstEvent: S.optional(S.NullOr(S.String)),
+          lastEvent: S.optional(S.NullOr(S.String)),
+          currentProjectMeta: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          userAgent: S.optional(S.NullOr(S.String)),
+          adoptionStages: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          id: S.Number,
+          version: S.String,
+          newGroups: S.Number,
+          status: S.String,
+          shortVersion: S.String,
+          versionInfo: S.NullOr(__S(2913, __c182, 1)),
+          data: __S(4128, __c258, 0),
+          commitCount: S.Number,
+          deployCount: S.Number,
+          authors: __S(2881, __c180, 1),
+          projects: __S(2906, __c181, 10),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationReleaseResponse",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationReleaseRequestCommitsItemPatchSetItem",
+      });
+    case 1:
+      return S.Array(__S(2896, __c181, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          repository: S.optional(S.NullOr(S.String)),
+          message: S.optional(S.NullOr(S.String)),
+          author_name: S.optional(S.NullOr(S.String)),
+          author_email: S.optional(S.NullOr(S.String)),
+          timestamp: S.optional(S.NullOr(S.String)),
+          patch_set: S.optional(S.NullOr(__S(2897, __c181, 1))),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationReleaseRequestCommitsItem",
+      });
+    case 3:
+      return S.Array(__S(2898, __c181, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          currentId: S.String,
+          repository: S.String,
+          previousId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationReleaseRequestHeadCommitsItem",
+      });
+    case 5:
+      return S.Array(__S(2900, __c181, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          commit: S.String,
+          repository: S.String,
+          previousCommit: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationReleaseRequestRefsItem",
+      });
+    case 7:
+      return S.Array(__S(2902, __c181, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          durationP50: S.optional(S.NullOr(S.Number)),
+          durationP90: S.optional(S.NullOr(S.Number)),
+          crashFreeUsers: S.optional(S.NullOr(S.Number)),
+          crashFreeSessions: S.optional(S.NullOr(S.Number)),
+          totalUsers: S.optional(S.NullOr(S.Number)),
+          totalUsers24h: S.optional(S.NullOr(S.Number)),
+          totalProjectUsers24h: S.optional(S.NullOr(S.Number)),
+          totalSessions: S.optional(S.NullOr(S.Number)),
+          totalSessions24h: S.optional(S.NullOr(S.Number)),
+          totalProjectSessions24h: S.optional(S.NullOr(S.Number)),
+          adoption: S.optional(S.NullOr(S.Number)),
+          sessionsAdoption: S.optional(S.NullOr(S.Number)),
+          sessionsCrashed: S.Number,
+          sessionsErrored: S.Number,
+          hasHealthData: S.Boolean,
+          stats: __S(1104, __c69, 0),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationReleaseResponseProjectsItemHealthData",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          healthData: S.optional(S.NullOr(__S(2904, __c181, 8))),
+          dateReleased: S.optional(S.NullOr(S.String)),
+          dateCreated: S.optional(S.NullOr(S.String)),
+          dateStarted: S.optional(S.NullOr(S.String)),
+          id: S.Number,
+          slug: S.String,
+          name: S.String,
+          platform: S.NullOr(S.String),
+          platforms: S.NullOr(__S(4368, __c273, 0)),
+          hasHealthData: S.Boolean,
+          newGroups: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationReleaseResponseProjectsItem",
+      });
+    case 10:
+      return S.Array(__S(2905, __c181, 9));
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dateStarted: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          environment: S.String,
+          dateFinished: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationReleaseResponseLastDeploy",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          package: S.NullOr(S.String),
+          version: __S(4128, __c258, 0),
+          buildHash: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationReleaseResponseVersionInfo",
+      });
+  }
+}
+function __c183(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
@@ -33291,9 +29879,9 @@ function __c112(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          project: S.optional(__S(896, __c112, 0).pipe(T.Query())),
+          project: S.optional(__S(2928, __c183, 0).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(__S(54, __c6, 6).pipe(T.Query())),
+          id: S.optional(__S(768, __c48, 0).pipe(T.Query())),
           enabled: S.Boolean,
         }).pipe(
           T.Http({
@@ -33308,54 +29896,58 @@ function __c112(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          owner: S.optional(S.NullOr(__S(111, __c13, 7))),
+          owner: S.optional(S.NullOr(__S(2080, __c130, 0))),
           createdBy: S.optional(S.NullOr(S.String)),
-          latestGroup: S.optional(S.NullOr(__S(1, __c0, 1))),
+          latestGroup: S.optional(S.NullOr(__S(4128, __c258, 0))),
           description: S.optional(S.NullOr(S.String)),
           id: S.String,
           projectId: S.NullOr(S.String),
           name: S.String,
           type: S.String,
-          workflowIds: S.NullOr(__S(17, __c2, 1)),
+          workflowIds: S.NullOr(__S(4368, __c273, 0)),
           dateCreated: S.String,
           dateUpdated: S.String,
-          dataSources: S.NullOr(__S(2, __c0, 2)),
-          conditionGroup: S.NullOr(__S(1, __c0, 1)),
-          config: __S(1, __c0, 1),
+          dataSources: S.NullOr(__S(4064, __c254, 0)),
+          conditionGroup: S.NullOr(__S(4128, __c258, 0)),
+          config: __S(4128, __c258, 0),
           enabled: S.Boolean,
         }),
       ).annotate({
         identifier: "UpdateOrganizationDetectorsResponseBodyItem",
       });
     case 3:
-      return S.Array(__S(898, __c112, 2));
+      return S.Array(__S(2930, __c183, 2));
     case 4:
-      return S.suspend(() => __S(899, __c112, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2931, __c183, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateOrganizationDetectorsResponse",
       });
-    case 5:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           query_id: S.Number.pipe(T.Label()),
           name: S.String,
-          projects: S.optional(__S(54, __c6, 6)),
+          projects: S.optional(__S(768, __c48, 0)),
           queryDataset: S.optional(S.String),
           start: S.optional(S.NullOr(S.String)),
           end: S.optional(S.NullOr(S.String)),
           range: S.optional(S.NullOr(S.String)),
-          fields: S.optional(S.NullOr(__S(17, __c2, 1))),
+          fields: S.optional(S.NullOr(__S(4368, __c273, 0))),
           orderby: S.optional(S.NullOr(S.String)),
           rollup: S.optional(S.NullOr(S.Number)),
-          aggregations: S.optional(S.NullOr(__S(79, __c9, 7))),
-          groupby: S.optional(S.NullOr(__S(17, __c2, 1))),
-          conditions: S.optional(S.NullOr(__S(80, __c10, 0))),
+          aggregations: S.optional(S.NullOr(__S(1120, __c70, 0))),
+          groupby: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          conditions: S.optional(S.NullOr(__S(1121, __c70, 1))),
           limit: S.optional(S.NullOr(S.Number)),
           version: S.optional(S.NullOr(S.Number)),
-          environment: S.optional(S.NullOr(__S(17, __c2, 1))),
+          environment: S.optional(S.NullOr(__S(4368, __c273, 0))),
           query: S.optional(S.NullOr(S.String)),
-          widths: S.optional(S.NullOr(__S(17, __c2, 1))),
-          yAxis: S.optional(S.NullOr(__S(17, __c2, 1))),
+          widths: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          yAxis: S.optional(S.NullOr(__S(4368, __c273, 0))),
           display: S.optional(S.NullOr(S.String)),
           topEvents: S.optional(S.NullOr(S.Number)),
           interval: S.optional(S.NullOr(S.String)),
@@ -33369,7 +29961,11 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationDiscoverSavedQueryRequest",
       });
-    case 6:
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -33389,7 +29985,11 @@ function __c112(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationExternalUserRequest",
       });
-    case 7:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -33398,8 +29998,8 @@ function __c112(j: number): any {
           provider: S.String,
           is_enabled: S.optional(S.Boolean),
           enroll_new_projects: S.optional(S.Boolean),
-          config: S.optional(__S(88, __c11, 0)),
-          project_ids: S.optional(__S(54, __c6, 6)),
+          config: S.optional(__S(1616, __c101, 0)),
+          project_ids: S.optional(__S(768, __c48, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33412,40 +30012,44 @@ function __c112(j: number): any {
       });
   }
 }
-function __c113(j: number): any {
+function __c187(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          commit: S.String,
-          repository: S.String,
+          identities: S.optional(__S(1136, __c71, 0)),
+          avatar: S.optional(__S(4144, __c259, 0)),
+          authenticators: S.optional(__S(1088, __c68, 0)),
+          canReset2fa: S.optional(S.Boolean),
+          id: S.String,
+          name: S.String,
+          username: S.String,
+          email: S.String,
+          avatarUrl: S.String,
+          isActive: S.Boolean,
+          isSuspended: S.Boolean,
+          hasPasswordAuth: S.Boolean,
+          isManaged: S.Boolean,
+          dateJoined: S.String,
+          lastLogin: S.NullOr(S.String),
+          has2fa: S.Boolean,
+          lastActive: S.NullOr(S.String),
+          isSuperuser: S.Boolean,
+          isStaff: S.Boolean,
+          experiments: __S(1104, __c69, 0),
+          emails: __S(4016, __c251, 0),
         }),
       ).annotate({
-        identifier: "UpdateOrganizationIssueRequestStatusDetailsInCommit",
+        identifier: "CreateOrganizationReleaseResponseAuthorsItemCase0",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          inNextRelease: S.Boolean,
-          inRelease: S.String,
-          inCommit: S.optional(__S(904, __c113, 0)),
-          ignoreDuration: S.Number,
-          ignoreCount: S.Number,
-          ignoreWindow: S.Number,
-          ignoreUserCount: S.Number,
-          ignoreUserWindow: S.Number,
-        }),
-      ).annotate({
-        identifier: "UpdateOrganizationIssueRequestStatusDetails",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           issue_id: S.String.pipe(T.Label()),
           inbox: S.Boolean,
           status: S.String,
-          statusDetails: __S(905, __c113, 1),
+          statusDetails: __S(3009, __c188, 1),
           substatus: S.NullOr(S.String),
           hasSeen: S.Boolean,
           isBookmarked: S.Boolean,
@@ -33471,7 +30075,7 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationIssueRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ignoreCount: S.optional(S.Number),
@@ -33479,17 +30083,17 @@ function __c113(j: number): any {
           ignoreUserCount: S.optional(S.Number),
           ignoreUserWindow: S.optional(S.Number),
           ignoreWindow: S.optional(S.Number),
-          actor: S.optional(__S(133, __c16, 5)),
+          actor: S.optional(__S(2992, __c187, 0)),
           inNextRelease: S.optional(S.Boolean),
           inRelease: S.optional(S.String),
           inCommit: S.optional(S.String),
           pendingEvents: S.optional(S.Number),
-          info: S.optional(S.NullOr(__S(281, __c35, 1))),
+          info: S.optional(S.NullOr(__S(5137, __c321, 1))),
         }),
       ).annotate({
         identifier: "UpdateOrganizationIssueResponseStatusDetails",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           isUnhandled: S.optional(S.Boolean),
@@ -33497,7 +30101,7 @@ function __c113(j: number): any {
           userCount: S.optional(S.Number),
           firstSeen: S.optional(S.NullOr(S.String)),
           lastSeen: S.optional(S.NullOr(S.String)),
-          derivedData: S.optional(__S(279, __c34, 7)),
+          derivedData: S.optional(__S(5136, __c321, 0)),
           id: S.String,
           shareId: S.NullOr(S.String),
           shortId: S.String,
@@ -33507,7 +30111,7 @@ function __c113(j: number): any {
           logger: S.NullOr(S.String),
           level: S.String,
           status: S.String,
-          statusDetails: __S(907, __c113, 3),
+          statusDetails: __S(2994, __c187, 2),
           substatus: S.NullOr(S.String),
           isPublic: S.Boolean,
           platform: S.NullOr(S.String),
@@ -33516,31 +30120,63 @@ function __c113(j: number): any {
           seerFixabilityScore: S.NullOr(S.Number),
           seerAutofixLastTriggered: S.NullOr(S.String),
           seerExplorerAutofixLastTriggered: S.NullOr(S.String),
-          project: __S(283, __c35, 3),
+          project: __S(5138, __c321, 2),
           type: S.String,
           issueType: S.String,
           issueCategory: S.String,
-          metadata: __S(1, __c0, 1),
+          metadata: __S(4128, __c258, 0),
           numComments: S.Number,
-          assignedTo: S.NullOr(__S(111, __c13, 7)),
+          assignedTo: S.NullOr(__S(2080, __c130, 0)),
           isBookmarked: S.Boolean,
           isSubscribed: S.Boolean,
-          subscriptionDetails: S.NullOr(__S(284, __c35, 4)),
+          subscriptionDetails: S.NullOr(__S(5152, __c322, 0)),
           hasSeen: S.Boolean,
-          annotations: __S(286, __c35, 6),
+          annotations: __S(5140, __c321, 4),
         }),
       ).annotate({
         identifier: "UpdateOrganizationIssueResponse",
       });
-    case 5:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          commit: S.String,
+          repository: S.String,
+        }),
+      ).annotate({
+        identifier: "UpdateOrganizationIssueRequestStatusDetailsInCommit",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inNextRelease: S.Boolean,
+          inRelease: S.String,
+          inCommit: S.optional(__S(3008, __c188, 0)),
+          ignoreDuration: S.Number,
+          ignoreCount: S.Number,
+          ignoreWindow: S.Number,
+          ignoreUserCount: S.Number,
+          ignoreUserWindow: S.Number,
+        }),
+      ).annotate({
+        identifier: "UpdateOrganizationIssueRequestStatusDetails",
+      });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
-          environment: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          project: S.optional(__S(909, __c113, 5).pipe(T.Query())),
-          id: S.optional(__S(54, __c6, 6).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          project: S.optional(__S(3024, __c189, 0).pipe(T.Query())),
+          id: S.optional(__S(768, __c48, 0).pipe(T.Query())),
           statsPeriod: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
@@ -33550,7 +30186,7 @@ function __c113(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           inbox: S.Boolean,
           status: S.String,
-          statusDetails: __S(905, __c113, 1),
+          statusDetails: __S(3009, __c188, 1),
           substatus: S.NullOr(S.String),
           hasSeen: S.Boolean,
           isBookmarked: S.Boolean,
@@ -33576,25 +30212,21 @@ function __c113(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationIssuesRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String,
-          children: __S(17, __c2, 1),
+          children: __S(4368, __c273, 0),
         }),
       ).annotate({
         identifier: "UpdateOrganizationIssuesResponseMerge",
       });
-  }
-}
-function __c114(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           inNextRelease: S.optional(S.Boolean),
           inRelease: S.optional(S.String),
-          inCommit: S.optional(__S(904, __c113, 0)),
+          inCommit: S.optional(__S(3008, __c188, 0)),
           ignoreDuration: S.optional(S.Number),
           ignoreCount: S.optional(S.Number),
           ignoreWindow: S.optional(S.Number),
@@ -33604,34 +30236,38 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationIssuesResponseStatusDetails",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          assignedTo: S.optional(__S(111, __c13, 7)),
+          assignedTo: S.optional(__S(2080, __c130, 0)),
           discard: S.optional(S.Boolean),
           hasSeen: S.optional(S.Boolean),
           inbox: S.optional(S.Boolean),
           isBookmarked: S.optional(S.Boolean),
           isPublic: S.optional(S.Boolean),
           isSubscribed: S.optional(S.Boolean),
-          merge: S.optional(__S(911, __c113, 7)),
+          merge: S.optional(__S(3026, __c189, 2)),
           priority: S.optional(S.String),
           shareId: S.optional(S.String),
           status: S.optional(S.String),
-          statusDetails: S.optional(__S(912, __c114, 0)),
-          subscriptionDetails: S.optional(__S(284, __c35, 4)),
+          statusDetails: S.optional(__S(3027, __c189, 3)),
+          subscriptionDetails: S.optional(__S(5152, __c322, 0)),
           substatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateOrganizationIssuesResponse",
       });
-    case 2:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           member_id: S.String.pipe(T.Label()),
           orgRole: S.optional(S.String),
-          teamRoles: S.optional(S.NullOr(__S(2, __c0, 2))),
+          teamRoles: S.optional(S.NullOr(__S(4064, __c254, 0))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33642,7 +30278,11 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationMemberRequest",
       });
-    case 3:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -33659,7 +30299,7 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationMemberTeamRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           isActive: S.Boolean,
@@ -33668,19 +30308,23 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationMemberTeamResponse",
       });
-    case 5:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           monitor_id_or_slug: S.String.pipe(T.Label()),
           project: S.String,
           name: S.String,
-          config: __S(98, __c12, 2),
+          config: __S(2096, __c131, 0),
           slug: S.optional(S.String),
           status: S.optional(S.String),
           owner: S.optional(S.NullOr(S.String)),
           is_muted: S.optional(S.Boolean),
-          alert_rule: S.optional(__S(101, __c12, 5)),
+          alert_rule: S.optional(__S(2099, __c131, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33691,7 +30335,7 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationMonitorRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           schedule_type: S.String,
@@ -33706,28 +30350,28 @@ function __c114(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationMonitorResponseConfig",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          alertRule: S.optional(__S(105, __c13, 1)),
+          alertRule: S.optional(__S(2130, __c133, 2)),
           id: S.String,
           name: S.String,
           slug: S.String,
           status: S.String,
           isMuted: S.Boolean,
           isUpserting: S.Boolean,
-          config: __S(918, __c114, 6),
+          config: __S(3073, __c192, 1),
           dateCreated: S.String,
-          project: __S(107, __c13, 3),
-          environments: __S(110, __c13, 6),
-          owner: __S(111, __c13, 7),
+          project: __S(2112, __c132, 0),
+          environments: __S(2133, __c133, 5),
+          owner: __S(2080, __c130, 0),
         }),
       ).annotate({
         identifier: "UpdateOrganizationMonitorResponse",
       });
   }
 }
-function __c115(j: number): any {
+function __c193(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -33739,7 +30383,7 @@ function __c115(j: number): any {
           integration_id: S.optional(S.Number),
           target_identifier: S.optional(S.String),
           target_display: S.optional(S.String),
-          projects: S.optional(__S(17, __c2, 1)),
+          projects: S.optional(__S(4368, __c273, 0)),
           sentry_app_id: S.optional(S.Number),
           target_type: S.optional(S.String),
         }).pipe(
@@ -33752,7 +30396,53 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationNotificationsActionRequest",
       });
-    case 1:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          version: S.String.pipe(T.Label()),
+          environment: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+          dateStarted: S.optional(S.NullOr(S.String)),
+          dateFinished: S.optional(S.NullOr(S.String)),
+          projects: S.optional(__S(4368, __c273, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/releases/{version}/deploys/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationReleaseDeployRequest",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          environment: S.String,
+          dateStarted: S.NullOr(S.String),
+          dateFinished: S.String,
+          name: S.NullOr(S.String),
+          url: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationReleaseDeployResponse",
+      });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -33760,10 +30450,10 @@ function __c115(j: number): any {
           ref: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
           dateReleased: S.optional(S.NullOr(S.String)),
-          commits: S.optional(__S(125, __c15, 5)),
+          commits: S.optional(__S(2899, __c181, 3)),
           status: S.optional(S.String),
-          headCommits: S.optional(__S(127, __c15, 7)),
-          refs: S.optional(__S(129, __c16, 1)),
+          headCommits: S.optional(__S(2901, __c181, 5)),
+          refs: S.optional(__S(2903, __c181, 7)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33774,9 +30464,9 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationReleaseRequest",
       });
-    case 2:
+    case 1:
       return S.Array(S.Unknown);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ref: S.optional(S.NullOr(S.String)),
@@ -33784,30 +30474,34 @@ function __c115(j: number): any {
           dateReleased: S.optional(S.NullOr(S.String)),
           dateCreated: S.optional(S.NullOr(S.String)),
           dateStarted: S.optional(S.NullOr(S.String)),
-          owner: S.optional(S.NullOr(__S(1, __c0, 1))),
-          lastCommit: S.optional(S.NullOr(__S(1, __c0, 1))),
-          lastDeploy: S.optional(S.NullOr(__S(131, __c16, 3))),
+          owner: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          lastCommit: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          lastDeploy: S.optional(S.NullOr(__S(2912, __c182, 0))),
           firstEvent: S.optional(S.NullOr(S.String)),
           lastEvent: S.optional(S.NullOr(S.String)),
-          currentProjectMeta: S.optional(S.NullOr(__S(1, __c0, 1))),
+          currentProjectMeta: S.optional(S.NullOr(__S(4128, __c258, 0))),
           userAgent: S.optional(S.NullOr(S.String)),
-          adoptionStages: S.optional(S.NullOr(__S(1, __c0, 1))),
+          adoptionStages: S.optional(S.NullOr(__S(4128, __c258, 0))),
           id: S.Number,
           version: S.String,
           newGroups: S.Number,
           status: S.String,
           shortVersion: S.String,
-          versionInfo: S.NullOr(__S(132, __c16, 4)),
-          data: __S(1, __c0, 1),
+          versionInfo: S.NullOr(__S(2913, __c182, 1)),
+          data: __S(4128, __c258, 0),
           commitCount: S.Number,
           deployCount: S.Number,
-          authors: __S(922, __c115, 2),
-          projects: __S(137, __c17, 1),
+          authors: __S(3137, __c196, 1),
+          projects: __S(2906, __c181, 10),
         }),
       ).annotate({
         identifier: "UpdateOrganizationReleaseResponse",
       });
-    case 4:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -33824,25 +30518,29 @@ function __c115(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationReleaseFileRequest",
       });
-    case 5:
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           op: S.String,
-          value: S.optional(__S(1, __c0, 1)),
+          value: S.optional(__S(4128, __c258, 0)),
           path: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateOrganizationScimV2GroupRequestOperationsItem",
       });
-    case 6:
-      return S.Array(__S(925, __c115, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(3168, __c198, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           team_id_or_slug: S.String.pipe(T.Label()),
-          schemas: __S(17, __c2, 1),
-          Operations: __S(926, __c115, 6),
+          schemas: __S(4368, __c273, 0),
+          Operations: __S(3169, __c198, 1),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -33855,7 +30553,7 @@ function __c115(j: number): any {
       });
   }
 }
-function __c116(j: number): any {
+function __c199(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -33868,14 +30566,14 @@ function __c116(j: number): any {
         identifier: "UpdateOrganizationScimV2UserRequestOperationsItem",
       });
     case 1:
-      return S.Array(__S(928, __c116, 0));
+      return S.Array(__S(3184, __c199, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           member_id: S.String.pipe(T.Label()),
-          Operations: __S(929, __c116, 1),
-          schemas: S.optional(__S(17, __c2, 1)),
+          Operations: __S(3185, __c199, 1),
+          schemas: S.optional(__S(4368, __c273, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -33886,30 +30584,34 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationScimV2UserRequest",
       });
-    case 3:
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           logic_type: S.String,
-          conditions: S.optional(__S(0, __c0, 0)),
+          conditions: S.optional(__S(3968, __c248, 0)),
         }),
       ).annotate({
         identifier: "UpdateOrganizationWorkflowRequestTriggers",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           logic_type: S.String,
-          conditions: S.optional(__S(78, __c9, 6)),
-          actions: __S(150, __c18, 6),
+          conditions: S.optional(__S(1088, __c68, 0)),
+          actions: __S(3536, __c221, 0),
         }),
       ).annotate({
         identifier: "UpdateOrganizationWorkflowRequestActionFiltersItem",
       });
-    case 5:
-      return S.Array(__S(932, __c116, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(3201, __c200, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -33917,11 +30619,11 @@ function __c116(j: number): any {
           name: S.String,
           id: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          detector_ids: S.optional(__S(54, __c6, 6)),
-          config: S.optional(__S(1, __c0, 1)),
+          detector_ids: S.optional(__S(768, __c48, 0)),
+          config: S.optional(__S(4128, __c258, 0)),
           environment: S.optional(S.NullOr(S.String)),
-          triggers: S.optional(__S(931, __c116, 3)),
-          action_filters: S.optional(__S(933, __c116, 5)),
+          triggers: S.optional(__S(3200, __c200, 0)),
+          action_filters: S.optional(__S(3202, __c200, 2)),
           owner: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -33933,7 +30635,7 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationWorkflowRequest",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -33945,11 +30647,7 @@ function __c116(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationWorkflowResponseTriggers",
       });
-  }
-}
-function __c117(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -33961,9 +30659,9 @@ function __c117(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationWorkflowResponseActionFiltersItem",
       });
-    case 1:
-      return S.Array(__S(936, __c117, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(3205, __c200, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -33972,11 +30670,11 @@ function __c117(j: number): any {
           createdBy: S.NullOr(S.String),
           dateCreated: S.String,
           dateUpdated: S.String,
-          triggers: S.NullOr(__S(935, __c116, 7)),
-          actionFilters: S.NullOr(__S(937, __c117, 1)),
+          triggers: S.NullOr(__S(3204, __c200, 4)),
+          actionFilters: S.NullOr(__S(3206, __c200, 6)),
           environment: S.NullOr(S.String),
-          config: __S(1, __c0, 1),
-          detectorIds: S.NullOr(__S(17, __c2, 1)),
+          config: __S(4128, __c258, 0),
+          detectorIds: S.NullOr(__S(4368, __c273, 0)),
           enabled: S.Boolean,
           lastTriggered: S.NullOr(S.String),
           owner: S.NullOr(S.String),
@@ -33984,15 +30682,19 @@ function __c117(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationWorkflowResponse",
       });
-    case 3:
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           query: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(__S(54, __c6, 6).pipe(T.Query())),
-          project: S.optional(__S(939, __c117, 3).pipe(T.Query())),
+          id: S.optional(__S(768, __c48, 0).pipe(T.Query())),
+          project: S.optional(__S(3216, __c201, 0).pipe(T.Query())),
           enabled: S.Boolean,
         }).pipe(
           T.Http({
@@ -34004,7 +30706,7 @@ function __c117(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationWorkflowsRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -34016,7 +30718,7 @@ function __c117(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationWorkflowsResponseBodyItemTriggers",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -34028,13 +30730,9 @@ function __c117(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationWorkflowsResponseBodyItemActionFiltersItem",
       });
-    case 7:
-      return S.Array(__S(942, __c117, 6));
-  }
-}
-function __c118(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(3219, __c201, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -34043,11 +30741,11 @@ function __c118(j: number): any {
           createdBy: S.NullOr(S.String),
           dateCreated: S.String,
           dateUpdated: S.String,
-          triggers: S.NullOr(__S(941, __c117, 5)),
-          actionFilters: S.NullOr(__S(943, __c117, 7)),
+          triggers: S.NullOr(__S(3218, __c201, 2)),
+          actionFilters: S.NullOr(__S(3220, __c201, 4)),
           environment: S.NullOr(S.String),
-          config: __S(1, __c0, 1),
-          detectorIds: S.NullOr(__S(17, __c2, 1)),
+          config: __S(4128, __c258, 0),
+          detectorIds: S.NullOr(__S(4368, __c273, 0)),
           enabled: S.Boolean,
           lastTriggered: S.NullOr(S.String),
           owner: S.NullOr(S.String),
@@ -34055,13 +30753,17 @@ function __c118(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationWorkflowsResponseBodyItem",
       });
-    case 1:
-      return S.Array(__S(944, __c118, 0));
-    case 2:
-      return S.suspend(() => __S(945, __c118, 1).pipe(T.RawResponseRoot())).annotate({
+    case 6:
+      return S.Array(__S(3221, __c201, 5));
+    case 7:
+      return S.suspend(() => __S(3222, __c201, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateOrganizationWorkflowsResponse",
       });
-    case 3:
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -34070,9 +30772,9 @@ function __c118(j: number): any {
       ).annotate({
         identifier: "UpdateProjectRequestDynamicSamplingBiasesItem",
       });
-    case 4:
-      return S.Array(__S(947, __c118, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(3232, __c202, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -34085,9 +30787,9 @@ function __c118(j: number): any {
           autofixAutomationTuning: S.optional(S.String),
           seerScannerAutomation: S.optional(S.Boolean),
           preprodSizeStatusChecksEnabled: S.optional(S.Boolean),
-          preprodSizeStatusChecksRules: S.optional(__S(1, __c0, 1)),
+          preprodSizeStatusChecksRules: S.optional(__S(4128, __c258, 0)),
           preprodSizePrCommentsEnabled: S.optional(S.Boolean),
-          preprodSizePrCommentsRules: S.optional(__S(1, __c0, 1)),
+          preprodSizePrCommentsRules: S.optional(__S(4128, __c258, 0)),
           preprodSnapshotStatusChecksEnabled: S.optional(S.Boolean),
           preprodSnapshotStatusChecksFailOnAdded: S.optional(S.Boolean),
           preprodSnapshotStatusChecksFailOnRemoved: S.optional(S.Boolean),
@@ -34109,17 +30811,17 @@ function __c118(j: number): any {
           subjectPrefix: S.optional(S.String),
           subjectTemplate: S.optional(S.String),
           resolveAge: S.optional(S.NullOr(S.Number)),
-          highlightContext: S.optional(__S(1, __c0, 1)),
-          highlightTags: S.optional(__S(17, __c2, 1)),
+          highlightContext: S.optional(__S(4128, __c258, 0)),
+          highlightTags: S.optional(__S(4368, __c273, 0)),
           verifySSL: S.optional(S.Boolean),
           defaultEnvironment: S.optional(S.NullOr(S.String)),
           dataScrubber: S.optional(S.Boolean),
           dataScrubberDefaults: S.optional(S.Boolean),
-          sensitiveFields: S.optional(__S(17, __c2, 1)),
-          safeFields: S.optional(__S(17, __c2, 1)),
+          sensitiveFields: S.optional(__S(4368, __c273, 0)),
+          safeFields: S.optional(__S(4368, __c273, 0)),
           storeCrashReports: S.optional(S.NullOr(S.Number)),
           relayPiiConfig: S.optional(S.NullOr(S.String)),
-          builtinSymbolSources: S.optional(__S(17, __c2, 1)),
+          builtinSymbolSources: S.optional(__S(4368, __c273, 0)),
           symbolSources: S.optional(S.NullOr(S.String)),
           scrubIPAddresses: S.optional(S.Boolean),
           groupingConfig: S.optional(S.NullOr(S.String)),
@@ -34129,10 +30831,10 @@ function __c118(j: number): any {
           secondaryGroupingExpiry: S.optional(S.NullOr(S.Number)),
           scrapeJavaScript: S.optional(S.Boolean),
           enableAutoReleaseCreation: S.optional(S.Boolean),
-          allowedDomains: S.optional(__S(17, __c2, 1)),
+          allowedDomains: S.optional(__S(4368, __c273, 0)),
           copy_from_project: S.optional(S.Number),
           targetSampleRate: S.optional(S.Number),
-          dynamicSamplingBiases: S.optional(__S(948, __c118, 4)),
+          dynamicSamplingBiases: S.optional(__S(3233, __c202, 1)),
           tempestFetchScreenshots: S.optional(S.Boolean),
           scmSourceContextEnabled: S.optional(S.Boolean),
           debugFilesRole: S.optional(S.NullOr(S.String)),
@@ -34144,15 +30846,11 @@ function __c118(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateProjectRequest" });
-    case 6:
+    case 3:
       return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(950, __c118, 6));
-  }
-}
-function __c119(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(3235, __c202, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           stats: S.optional(S.Unknown),
@@ -34165,10 +30863,10 @@ function __c119(j: number): any {
           dateCreated: S.String,
           isBookmarked: S.Boolean,
           isMember: S.Boolean,
-          features: __S(17, __c2, 1),
+          features: __S(4368, __c273, 0),
           firstEvent: S.NullOr(S.String),
           firstTransactionEvent: S.Boolean,
-          access: __S(17, __c2, 1),
+          access: __S(4368, __c273, 0),
           hasAccess: S.Boolean,
           hasFeedbacks: S.Boolean,
           hasFlags: S.Boolean,
@@ -34192,23 +30890,23 @@ function __c119(j: number): any {
           hasTraceMetrics: S.Boolean,
           isInternal: S.Boolean,
           isPublic: S.Boolean,
-          avatar: __S(10, __c1, 2),
+          avatar: __S(4144, __c259, 0),
           color: S.String,
           status: S.String,
-          team: S.optional(__S(25, __c3, 1)),
-          teams: __S(26, __c3, 2),
-          latestRelease: S.NullOr(__S(117, __c14, 5)),
-          options: __S(1, __c0, 1),
+          team: S.optional(__S(4768, __c298, 0)),
+          teams: __S(4769, __c298, 1),
+          latestRelease: S.NullOr(__S(2512, __c157, 0)),
+          options: __S(4128, __c258, 0),
           digestsMinDelay: S.Number,
           digestsMaxDelay: S.Number,
           subjectPrefix: S.String,
-          allowedDomains: __S(17, __c2, 1),
+          allowedDomains: __S(4368, __c273, 0),
           resolveAge: S.Number,
           dataScrubber: S.Boolean,
           dataScrubberDefaults: S.Boolean,
-          safeFields: __S(17, __c2, 1),
+          safeFields: __S(4368, __c273, 0),
           storeCrashReports: S.NullOr(S.Number),
-          sensitiveFields: __S(17, __c2, 1),
+          sensitiveFields: __S(4368, __c273, 0),
           subjectTemplate: S.String,
           securityToken: S.String,
           securityTokenHeader: S.NullOr(S.String),
@@ -34216,22 +30914,22 @@ function __c119(j: number): any {
           scrubIPAddresses: S.Boolean,
           scrapeJavaScript: S.Boolean,
           enableAutoReleaseCreation: S.Boolean,
-          highlightTags: __S(17, __c2, 1),
-          highlightContext: __S(1, __c0, 1),
-          highlightPreset: __S(441, __c55, 1),
+          highlightTags: __S(4368, __c273, 0),
+          highlightContext: __S(4128, __c258, 0),
+          highlightPreset: __S(257, __c16, 1),
           groupingConfig: S.String,
           derivedGroupingEnhancements: S.String,
           groupingEnhancements: S.String,
           secondaryGroupingExpiry: S.Number,
           secondaryGroupingConfig: S.NullOr(S.String),
           fingerprintingRules: S.String,
-          organization: __S(442, __c55, 2),
-          platforms: __S(17, __c2, 1),
+          organization: __S(240, __c15, 0),
+          platforms: __S(4368, __c273, 0),
           processingIssues: S.Number,
           defaultEnvironment: S.NullOr(S.String),
           relayPiiConfig: S.NullOr(S.String),
-          builtinSymbolSources: __S(17, __c2, 1),
-          dynamicSamplingBiases: S.NullOr(__S(951, __c118, 7)),
+          builtinSymbolSources: __S(4368, __c273, 0),
+          dynamicSamplingBiases: S.NullOr(__S(3236, __c202, 4)),
           symbolSources: S.String,
           isDynamicallySampled: S.Boolean,
           tempestFetchScreenshots: S.Boolean,
@@ -34242,7 +30940,11 @@ function __c119(j: number): any {
           debugFilesRole: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "UpdateProjectResponse" });
-    case 1:
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -34260,12 +30962,12 @@ function __c119(j: number): any {
       ).annotate({
         identifier: "UpdateProjectCodeOwnersRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          codeMapping: S.optional(__S(162, __c20, 2)),
+          codeMapping: S.optional(__S(3617, __c226, 1)),
           ownershipSyntax: S.optional(S.String),
-          errors: S.optional(__S(163, __c20, 3)),
+          errors: S.optional(__S(3618, __c226, 2)),
           schema: S.optional(S.Unknown),
           codeOwnersUrl: S.optional(S.String),
           id: S.String,
@@ -34279,7 +30981,11 @@ function __c119(j: number): any {
       ).annotate({
         identifier: "UpdateProjectCodeOwnersResponse",
       });
-    case 3:
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -34296,14 +31002,18 @@ function __c119(j: number): any {
       ).annotate({
         identifier: "UpdateProjectEnvironmentRequest",
       });
-    case 4:
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
           project_id_or_slug: S.String.pipe(T.Label()),
           filter_id: S.String.pipe(T.Label()),
           active: S.optional(S.Boolean),
-          subfilters: S.optional(__S(20, __c2, 4)),
+          subfilters: S.optional(__S(4576, __c286, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -34314,7 +31024,116 @@ function __c119(j: number): any {
       ).annotate({
         identifier: "UpdateProjectFilterRequest",
       });
-    case 5:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          slug: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/teams/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationTeamRequest",
+      });
+    case 1:
+      return S.Record(S.String, __S(1104, __c69, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          features: S.optional(__S(4368, __c273, 0)),
+          extraOptions: S.optional(__S(3297, __c206, 1)),
+          access: S.optional(__S(4368, __c273, 0)),
+          onboardingTasks: S.optional(__S(3344, __c209, 0)),
+          id: S.String,
+          slug: S.String,
+          status: __S(3984, __c249, 0),
+          name: S.String,
+          dateCreated: S.String,
+          isEarlyAdopter: S.Boolean,
+          require2FA: S.Boolean,
+          avatar: __S(4144, __c259, 0),
+          links: __S(3329, __c208, 1),
+          hasAuthProvider: S.Boolean,
+          allowMemberInvite: S.Boolean,
+          allowMemberProjectCreation: S.Boolean,
+          allowSuperuserAccess: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationTeamResponseOrganization",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          slug: S.String,
+          name: S.String,
+          dateCreated: S.NullOr(S.String),
+          isMember: S.Boolean,
+          teamRole: S.NullOr(S.String),
+          flags: __S(4128, __c258, 0),
+          access: __S(4368, __c273, 0),
+          hasAccess: S.Boolean,
+          isPending: S.Boolean,
+          memberCount: S.Number,
+          avatar: __S(4144, __c259, 0),
+          externalTeams: S.optional(__S(4112, __c257, 0)),
+          organization: S.optional(__S(3298, __c206, 2)),
+          projects: S.optional(__S(3312, __c207, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationTeamResponse",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2112, __c132, 0));
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          task: S.NullOr(S.String),
+          status: S.String,
+          completionSeen: S.NullOr(S.String),
+          dateCompleted: S.String,
+          data: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationTeamResponseOrganizationOnboardingTasksItem",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organizationUrl: S.String,
+          regionUrl: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationTeamResponseOrganizationLinks",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3328, __c208, 0));
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           hasReplay: S.optional(S.Boolean),
@@ -34326,7 +31145,7 @@ function __c119(j: number): any {
       ).annotate({
         identifier: "UpdateProjectKeyRequestDynamicSdkLoaderOptions",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -34334,9 +31153,9 @@ function __c119(j: number): any {
           key_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           isActive: S.optional(S.Boolean),
-          rateLimit: S.optional(__S(171, __c21, 3)),
+          rateLimit: S.optional(__S(3696, __c231, 0)),
           browserSdkVersion: S.optional(S.String),
-          dynamicSdkLoaderOptions: S.optional(__S(957, __c119, 5)),
+          dynamicSdkLoaderOptions: S.optional(__S(3360, __c210, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -34345,7 +31164,11 @@ function __c119(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateProjectKeyRequest" });
-    case 7:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -34353,12 +31176,12 @@ function __c119(j: number): any {
           monitor_id_or_slug: S.String.pipe(T.Label()),
           project: S.String,
           name: S.String,
-          config: __S(98, __c12, 2),
+          config: __S(2096, __c131, 0),
           slug: S.optional(S.String),
           status: S.optional(S.String),
           owner: S.optional(S.NullOr(S.String)),
           is_muted: S.optional(S.Boolean),
-          alert_rule: S.optional(__S(101, __c12, 5)),
+          alert_rule: S.optional(__S(2099, __c131, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -34369,11 +31192,7 @@ function __c119(j: number): any {
       ).annotate({
         identifier: "UpdateProjectMonitorRequest",
       });
-  }
-}
-function __c120(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           schedule_type: S.String,
@@ -34388,26 +31207,30 @@ function __c120(j: number): any {
       ).annotate({
         identifier: "UpdateProjectMonitorResponseConfig",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          alertRule: S.optional(__S(105, __c13, 1)),
+          alertRule: S.optional(__S(2130, __c133, 2)),
           id: S.String,
           name: S.String,
           slug: S.String,
           status: S.String,
           isMuted: S.Boolean,
           isUpserting: S.Boolean,
-          config: __S(960, __c120, 0),
+          config: __S(3377, __c211, 1),
           dateCreated: S.String,
-          project: __S(107, __c13, 3),
-          environments: __S(110, __c13, 6),
-          owner: __S(111, __c13, 7),
+          project: __S(2112, __c132, 0),
+          environments: __S(2133, __c133, 5),
+          owner: __S(2080, __c130, 0),
         }),
       ).annotate({
         identifier: "UpdateProjectMonitorResponse",
       });
-    case 2:
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -34426,7 +31249,11 @@ function __c120(j: number): any {
       ).annotate({
         identifier: "UpdateProjectOwnershipRequest",
       });
-    case 3:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -34444,17 +31271,21 @@ function __c120(j: number): any {
       ).annotate({
         identifier: "UpdateProjectReleaseFileRequest",
       });
-    case 4:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          filetypes: S.optional(__S(20, __c2, 4)),
-          path_patterns: S.optional(__S(17, __c2, 1)),
+          filetypes: S.optional(__S(4576, __c286, 0)),
+          path_patterns: S.optional(__S(4368, __c273, 0)),
           requires_checksum: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "UpdateProjectSymbolSourceRequestFilters",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -34462,8 +31293,8 @@ function __c120(j: number): any {
           id: S.String.pipe(T.Query()),
           type: S.String,
           name: S.String,
-          layout: S.optional(__S(19, __c2, 3)),
-          filters: S.optional(__S(964, __c120, 4)),
+          layout: S.optional(__S(4560, __c285, 0)),
+          filters: S.optional(__S(3424, __c214, 0)),
           url: S.optional(S.String),
           username: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -34489,35 +31320,39 @@ function __c120(j: number): any {
       ).annotate({
         identifier: "UpdateProjectSymbolSourceRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateProjectSymbolSourceResponse",
       });
-    case 7:
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sentry_app_id_or_slug: S.String.pipe(T.Label()),
           name: S.String,
-          scopes: S.NullOr(__S(17, __c2, 1)),
+          scopes: S.NullOr(__S(4368, __c273, 0)),
           author: S.optional(S.NullOr(S.String)),
-          events: S.optional(S.NullOr(__S(17, __c2, 1))),
-          features: S.optional(S.NullOr(__S(0, __c0, 0))),
-          schema: S.optional(S.NullOr(__S(1, __c0, 1))),
+          events: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          features: S.optional(S.NullOr(__S(3968, __c248, 0))),
+          schema: S.optional(S.NullOr(__S(4128, __c258, 0))),
           webhookUrl: S.optional(S.NullOr(S.String)),
           redirectUrl: S.optional(S.NullOr(S.String)),
           isInternal: S.optional(S.Boolean),
           isAlertable: S.optional(S.Boolean),
           overview: S.optional(S.NullOr(S.String)),
           verifyInstall: S.optional(S.Boolean),
-          allowedOrigins: S.optional(__S(17, __c2, 1)),
-          webhookHeaders: S.optional(__S(17, __c2, 1)),
+          allowedOrigins: S.optional(__S(4368, __c273, 0)),
+          webhookHeaders: S.optional(__S(4368, __c273, 0)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/0/sentry-apps/{sentry_app_id_or_slug}/", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateSentryAppRequest" });
   }
 }
-function __c121(j: number): any {
+function __c216(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -34534,7 +31369,11 @@ function __c121(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTeamRequest" });
-    case 1:
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -34555,7 +31394,11 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "UpdateTeamExternalTeamRequest",
       });
-    case 2:
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -34563,7 +31406,7 @@ function __c121(j: number): any {
           file: S.String,
           name: S.optional(S.String),
           dist: S.optional(S.String),
-          header: S.optional(__S(17, __c2, 1)),
+          header: S.optional(__S(4368, __c273, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -34575,7 +31418,11 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "UploadOrganizationReleaseFileRequest",
       });
-    case 3:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -34590,7 +31437,7 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "UploadProjectPreprodArtifactSnapshotRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           artifactId: S.String,
@@ -34601,7 +31448,114 @@ function __c121(j: number): any {
       ).annotate({
         identifier: "UploadProjectPreprodArtifactSnapshotResponse",
       });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          logic_type: S.String,
+          conditions: S.optional(__S(3968, __c248, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationWorkflowRequestTriggers",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          logic_type: S.String,
+          conditions: S.optional(__S(1088, __c68, 0)),
+          actions: __S(3536, __c221, 0),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationWorkflowRequestActionFiltersItem",
+      });
+    case 2:
+      return S.Array(__S(3521, __c220, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          name: S.String,
+          id: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          detector_ids: S.optional(__S(768, __c48, 0)),
+          config: S.optional(__S(4128, __c258, 0)),
+          environment: S.optional(S.NullOr(S.String)),
+          triggers: S.optional(__S(3520, __c220, 0)),
+          action_filters: S.optional(__S(3522, __c220, 2)),
+          owner: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/workflows/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationWorkflowRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          organizationId: S.optional(S.String),
+          logicType: S.optional(S.String),
+          conditions: S.optional(S.Unknown),
+          actions: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationWorkflowResponseTriggers",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          organizationId: S.optional(S.String),
+          logicType: S.optional(S.String),
+          conditions: S.optional(S.Unknown),
+          actions: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationWorkflowResponseActionFiltersItem",
+      });
+    case 6:
+      return S.Array(__S(3525, __c220, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          organizationId: S.String,
+          createdBy: S.NullOr(S.String),
+          dateCreated: S.String,
+          dateUpdated: S.String,
+          triggers: S.NullOr(__S(3524, __c220, 4)),
+          actionFilters: S.NullOr(__S(3526, __c220, 6)),
+          environment: S.NullOr(S.String),
+          config: __S(4128, __c258, 0),
+          detectorIds: S.NullOr(__S(4368, __c273, 0)),
+          enabled: S.Boolean,
+          lastTriggered: S.NullOr(S.String),
+          owner: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateOrganizationWorkflowResponse",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1104, __c69, 0));
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id_or_slug: S.String.pipe(T.Label()),
@@ -34610,7 +31564,7 @@ function __c121(j: number): any {
           file: S.String,
           name: S.optional(S.String),
           dist: S.optional(S.String),
-          header: S.optional(__S(17, __c2, 1)),
+          header: S.optional(__S(4368, __c273, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -34624,7 +31578,4008 @@ function __c121(j: number): any {
       });
   }
 }
-
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+          issueId: S.Number,
+          webUrl: S.String,
+          project: S.String,
+          identifier: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/sentry-app-installations/{uuid}/external-issues/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrUpdateAnExternalIssueRequest",
+      });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          issueId: S.String,
+          serviceType: S.String,
+          displayName: S.String,
+          webUrl: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateOrUpdateAnExternalIssueResponse",
+      });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          raw: S.String,
+          codeMappingId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/codeowners/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectCodeOwnersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          codeMapping: S.optional(__S(3617, __c226, 1)),
+          ownershipSyntax: S.optional(S.String),
+          errors: S.optional(__S(3618, __c226, 2)),
+          schema: S.optional(S.Unknown),
+          codeOwnersUrl: S.optional(S.String),
+          id: S.String,
+          raw: S.String,
+          dateCreated: S.String,
+          dateUpdated: S.String,
+          dateSynced: S.NullOr(S.String),
+          codeMappingId: S.String,
+          provider: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectCodeOwnersResponse",
+      });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          slug: S.String,
+          name: S.String,
+          canAdd: S.Boolean,
+          canDisable: S.Boolean,
+          features: __S(4368, __c273, 0),
+          aspects: __S(4128, __c258, 0),
+        }),
+      ).annotate({
+        identifier: "CreateProjectCodeOwnersResponseCodeMappingProvider",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          projectId: S.String,
+          projectSlug: S.String,
+          repoId: S.String,
+          repoName: S.String,
+          integrationId: S.NullOr(S.String),
+          provider: S.NullOr(__S(3616, __c226, 0)),
+          stackRoot: S.String,
+          sourceRoot: S.String,
+          defaultBranch: S.NullOr(S.String),
+          automaticallyGenerated: S.Boolean,
+          hasCodeOwner: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateProjectCodeOwnersResponseCodeMapping",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          missing_user_emails: __S(4368, __c273, 0),
+          missing_external_users: __S(4368, __c273, 0),
+          missing_external_teams: __S(4368, __c273, 0),
+          teams_without_access: __S(4368, __c273, 0),
+          users_without_access: __S(4368, __c273, 0),
+        }),
+      ).annotate({
+        identifier: "CreateProjectCodeOwnersResponseErrors",
+      });
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          rateLimit: S.optional(__S(3696, __c231, 0)),
+          useCase: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/keys/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateProjectKeyRequest" });
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          window: S.Number,
+          count: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateProjectKeyResponseRateLimit",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          secret: S.String.pipe(T.SensitiveValue({})),
+          public: S.String,
+          csp: S.String,
+          security: S.String,
+          minidump: S.String,
+          nel: S.String,
+          unreal: S.String,
+          crons: S.String,
+          cdn: S.String,
+          playstation: S.String,
+          integration: S.String,
+          otlp_traces: S.String,
+          otlp_logs: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateProjectKeyResponseDsn",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          hasReplay: S.Boolean,
+          hasPerformance: S.Boolean,
+          hasDebug: S.Boolean,
+          hasFeedback: S.Boolean,
+          hasLogsAndMetrics: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateProjectKeyResponseDynamicSdkLoaderOptions",
+      });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4368, __c273, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          choices: __S(3664, __c229, 0),
+        }),
+      ).annotate({
+        identifier: "CreateProjectKeyResponseBrowserSdk",
+      });
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          label: S.String,
+          public: S.NullOr(S.String),
+          secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
+          projectId: S.Number,
+          isActive: S.Boolean,
+          rateLimit: S.NullOr(__S(3648, __c228, 0)),
+          dsn: __S(3649, __c228, 1),
+          browserSdkVersion: S.String,
+          browserSdk: __S(3665, __c229, 1),
+          dateCreated: S.NullOr(S.String),
+          dynamicSdkLoaderOptions: __S(3650, __c228, 2),
+          useCase: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateProjectKeyResponse" });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.NullOr(S.Number)),
+          window: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "CreateProjectKeyRequestRateLimit",
+      });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          sha: S.String,
+          repository: S.String,
+          provider: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/preprod/size-analysis/status-checks/skip/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectPreprodSizeAnalysisSkippedStatusCheckRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateProjectPreprodSizeAnalysisSkippedStatusCheckResponse",
+      });
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          sha: S.String,
+          repository: S.String,
+          provider: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/preprod/snapshots/status-checks/skip/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectPreprodSnapshotSkippedStatusCheckRequest",
+      });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateProjectPreprodSnapshotSkippedStatusCheckResponse",
+      });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rangeStart: S.String,
+          rangeEnd: S.String,
+          environments: __S(4368, __c273, 0),
+          query: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateProjectReplayDeletionJobRequestData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          data: __S(3760, __c235, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/replays/jobs/delete/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectReplayDeletionJobRequest",
+      });
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(3792, __c237, 0),
+        }),
+      ).annotate({
+        identifier: "CreateProjectReplayDeletionJobResponse",
+      });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          dateCreated: S.String,
+          dateUpdated: S.String,
+          rangeStart: S.String,
+          rangeEnd: S.String,
+          environments: __S(4368, __c273, 0),
+          status: S.String,
+          query: S.String,
+          countDeleted: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateProjectReplayDeletionJobResponseData",
+      });
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          team_id_or_slug: S.String.pipe(T.Label()),
+          team_id: S.Number,
+          external_name: S.String,
+          provider: S.String,
+          integration_id: S.Number,
+          external_id: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/teams/{organization_id_or_slug}/{team_id_or_slug}/external-teams/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTeamExternalTeamRequest",
+      });
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          team_id_or_slug: S.String.pipe(T.Label()),
+          name: S.String,
+          slug: S.optional(S.NullOr(S.String)),
+          platform: S.optional(S.NullOr(S.String)),
+          default_rules: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/teams/{organization_id_or_slug}/{team_id_or_slug}/projects/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateTeamProjectRequest" });
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          filter_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/custom-inbound-filters/{filter_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteACustomInboundFilterRequest",
+      });
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+          external_issue_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/sentry-app-installations/{uuid}/external-issues/{external_issue_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAnExternalIssueRequest",
+      });
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAnExternalIssueResponse",
+      });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          dashboard_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/dashboards/{dashboard_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationDashboardRequest",
+      });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          detector_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/detectors/{detector_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationDetectorRequest",
+      });
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project: S.optional(__S(3920, __c245, 0).pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          sortBy: S.optional(S.String.pipe(T.Query())),
+          id: S.optional(__S(768, __c48, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/detectors/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationDetectorsRequest",
+      });
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          query_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/discover/saved/{query_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationDiscoverSavedQueryRequest",
+      });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          email: S.String,
+          role: S.optional(S.String),
+          orgRole: S.optional(S.String),
+          teams: S.optional(__S(3968, __c248, 0)),
+          teamRoles: S.optional(S.NullOr(__S(4064, __c254, 0))),
+          sendInvite: S.optional(S.Boolean),
+          reinvite: S.optional(S.Boolean),
+          regenerate: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/members/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddOrganizationMemberRequest",
+      });
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "AddOrganizationMemberResponseUserIdentitiesItemProvider",
+      });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "AddOrganizationMemberResponseUserIdentitiesItemOrganization",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          organization: __S(4000, __c250, 0),
+          provider: __S(3984, __c249, 0),
+          dateVerified: S.String,
+          dateSynced: S.String,
+        }),
+      ).annotate({
+        identifier: "AddOrganizationMemberResponseUserIdentitiesItem",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          email: S.String,
+          is_verified: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "AddOrganizationMemberResponseUserEmailsItem",
+      });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4002, __c250, 2));
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4001, __c250, 1));
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identities: S.optional(__S(4032, __c252, 0)),
+          avatar: S.optional(__S(4144, __c259, 0)),
+          authenticators: S.optional(__S(3968, __c248, 0)),
+          canReset2fa: S.optional(S.Boolean),
+          id: S.String,
+          name: S.String,
+          username: S.String,
+          email: S.String,
+          avatarUrl: S.String,
+          isActive: S.Boolean,
+          isSuspended: S.Boolean,
+          hasPasswordAuth: S.Boolean,
+          isManaged: S.Boolean,
+          dateJoined: S.String,
+          lastLogin: S.NullOr(S.String),
+          has2fa: S.Boolean,
+          lastActive: S.NullOr(S.String),
+          isSuperuser: S.Boolean,
+          isStaff: S.Boolean,
+          experiments: __S(4128, __c258, 0),
+          emails: __S(4016, __c251, 0),
+        }),
+      ).annotate({
+        identifier: "AddOrganizationMemberResponseUser",
+      });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4128, __c258, 0));
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          externalId: S.optional(S.String),
+          userId: S.optional(S.String),
+          teamId: S.optional(S.String),
+          id: S.String,
+          provider: S.String,
+          externalName: S.String,
+          integrationId: S.String,
+        }),
+      ).annotate({
+        identifier: "AddOrganizationMemberResponseExternalUsersItem",
+      });
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          externalUsers: S.optional(__S(4112, __c257, 0)),
+          id: S.String,
+          email: S.String,
+          name: S.String,
+          user: S.NullOr(__S(4048, __c253, 0)),
+          orgRole: S.String,
+          pending: S.Boolean,
+          expired: S.Boolean,
+          flags: __S(4160, __c260, 0),
+          dateCreated: S.String,
+          inviteStatus: S.String,
+          inviterName: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "AddOrganizationMemberResponse",
+      });
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4080, __c255, 0));
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          avatarType: S.optional(S.String),
+          avatarUuid: S.optional(S.NullOr(S.String)),
+          avatarUrl: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "AddOrganizationMemberResponseUserAvatar",
+      });
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idp_provisioned: S.Boolean.pipe(T.Body("idp:provisioned")),
+          idp_role_restricted: S.Boolean.pipe(T.Body("idp:role-restricted")),
+          sso_linked: S.Boolean.pipe(T.Body("sso:linked")),
+          sso_invalid: S.Boolean.pipe(T.Body("sso:invalid")),
+          member_limit_restricted: S.Boolean.pipe(T.Body("member-limit:restricted")),
+          partnership_restricted: S.Boolean.pipe(T.Body("partnership:restricted")),
+        }),
+      ).annotate({
+        identifier: "AddOrganizationMemberResponseFlags",
+      });
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          external_user_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/external-users/{external_user_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationExternalUserRequest",
+      });
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          data_forwarder_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/forwarding/{data_forwarder_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationForwardingRequest",
+      });
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          integration_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/integrations/{integration_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationIntegrationRequest",
+      });
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          issue_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationIssueRequest",
+      });
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          issue_id: S.String.pipe(T.Label()),
+          external_issue_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/external-issues/{external_issue_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationIssueExternalIssueRequest",
+      });
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          project: S.optional(__S(4256, __c266, 0).pipe(T.Query())),
+          id: S.optional(__S(768, __c48, 0).pipe(T.Query())),
+          statsPeriod: S.optional(S.String.pipe(T.Query())),
+          start: S.optional(S.String.pipe(T.Query())),
+          end: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          viewId: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/issues/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationIssuesRequest",
+      });
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          member_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/members/{member_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationMemberRequest",
+      });
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          member_id: S.String.pipe(T.Label()),
+          team_id_or_slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/members/{member_id}/teams/{team_id_or_slug}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationMemberTeamRequest",
+      });
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          monitor_id_or_slug: S.String.pipe(T.Label()),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/monitors/{monitor_id_or_slug}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationMonitorRequest",
+      });
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          action_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/notifications/actions/{action_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationNotificationsActionRequest",
+      });
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          member_id: S.String.pipe(T.Label()),
+          team_id_or_slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/members/{member_id}/teams/{team_id_or_slug}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddOrganizationMemberTeamRequest",
+      });
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          slug: S.String,
+          name: S.String,
+          dateCreated: S.NullOr(S.String),
+          isMember: S.Boolean,
+          teamRole: S.NullOr(S.String),
+          flags: __S(4128, __c258, 0),
+          access: __S(4368, __c273, 0),
+          hasAccess: S.Boolean,
+          isPending: S.Boolean,
+          memberCount: S.Number,
+          avatar: __S(4144, __c259, 0),
+        }),
+      ).annotate({
+        identifier: "AddOrganizationMemberTeamResponse",
+      });
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          snapshot_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/preprodartifacts/snapshots/{snapshot_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationPreprodArtifactSnapshotRequest",
+      });
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          version: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/releases/{version}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationReleaseRequest",
+      });
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          version: S.String.pipe(T.Label()),
+          file_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/releases/{version}/files/{file_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationReleaseFileRequest",
+      });
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          team_id_or_slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/scim/v2/Groups/{team_id_or_slug}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationScimV2GroupRequest",
+      });
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          member_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/scim/v2/Users/{member_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationScimV2UserRequest",
+      });
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          workflow_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/workflows/{workflow_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationWorkflowRequest",
+      });
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          query: S.optional(S.String.pipe(T.Query())),
+          id: S.optional(__S(768, __c48, 0).pipe(T.Query())),
+          project: S.optional(__S(4480, __c280, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/workflows/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationWorkflowsRequest",
+      });
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteProjectRequest" });
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          codeowners_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/codeowners/{codeowners_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectCodeOwnersRequest",
+      });
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          key_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/keys/{key_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteProjectKeyRequest" });
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filetypes: S.optional(__S(4576, __c286, 0)),
+          path_patterns: S.optional(__S(4368, __c273, 0)),
+          requires_checksum: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AddProjectSymbolSourceRequestFilters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          type: S.String,
+          name: S.String,
+          id: S.optional(S.String),
+          layout: S.optional(__S(4560, __c285, 0)),
+          filters: S.optional(__S(4544, __c284, 0)),
+          url: S.optional(S.String),
+          username: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          bucket: S.optional(S.String),
+          region: S.optional(S.String),
+          access_key: S.optional(S.String),
+          secret_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          prefix: S.optional(S.String),
+          client_email: S.optional(S.String),
+          private_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          account: S.optional(S.String),
+          container: S.optional(S.String),
+          tenant_id: S.optional(S.String),
+          client_id: S.optional(S.String),
+          client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/symbol-sources/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddProjectSymbolSourceRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "AddProjectSymbolSourceResponse",
+      });
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          casing: S.String,
+        }),
+      ).annotate({
+        identifier: "AddProjectSymbolSourceRequestLayout",
+      });
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          monitor_id_or_slug: S.String.pipe(T.Label()),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/monitors/{monitor_id_or_slug}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectMonitorRequest",
+      });
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          version: S.String.pipe(T.Label()),
+          file_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/releases/{version}/files/{file_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectReleaseFileRequest",
+      });
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          replay_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/replays/{replay_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectReplayRequest",
+      });
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/symbol-sources/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectSymbolSourceRequest",
+      });
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          team_id_or_slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/teams/{team_id_or_slug}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteProjectTeamRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stats: S.optional(S.Unknown),
+          transactionStats: S.optional(S.Unknown),
+          sessionStats: S.optional(S.Unknown),
+          id: S.String,
+          slug: S.String,
+          name: S.String,
+          platform: S.NullOr(S.String),
+          dateCreated: S.String,
+          isBookmarked: S.Boolean,
+          isMember: S.Boolean,
+          features: __S(4368, __c273, 0),
+          firstEvent: S.NullOr(S.String),
+          firstTransactionEvent: S.Boolean,
+          access: __S(4368, __c273, 0),
+          hasAccess: S.Boolean,
+          hasFeedbacks: S.Boolean,
+          hasFlags: S.Boolean,
+          hasMinifiedStackTrace: S.Boolean,
+          hasMonitors: S.Boolean,
+          hasNewFeedbacks: S.Boolean,
+          hasProfiles: S.Boolean,
+          hasReplays: S.Boolean,
+          hasSessions: S.Boolean,
+          hasInsightsHttp: S.Boolean,
+          hasInsightsDb: S.Boolean,
+          hasInsightsAssets: S.Boolean,
+          hasInsightsAppStart: S.Boolean,
+          hasInsightsScreenLoad: S.Boolean,
+          hasInsightsVitals: S.Boolean,
+          hasInsightsCaches: S.Boolean,
+          hasInsightsQueues: S.Boolean,
+          hasInsightsAgentMonitoring: S.Boolean,
+          hasInsightsMCP: S.Boolean,
+          hasLogs: S.Boolean,
+          hasTraceMetrics: S.Boolean,
+          isInternal: S.Boolean,
+          isPublic: S.Boolean,
+          avatar: __S(4144, __c259, 0),
+          color: S.String,
+          status: S.String,
+          team: S.optional(__S(4768, __c298, 0)),
+          teams: __S(4769, __c298, 1),
+        }),
+      ).annotate({
+        identifier: "DeleteProjectTeamResponse",
+      });
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sentry_app_id_or_slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/sentry-apps/{sentry_app_id_or_slug}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSentryAppRequest" });
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          team_id_or_slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/teams/{organization_id_or_slug}/{team_id_or_slug}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTeamRequest" });
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          team_id_or_slug: S.String.pipe(T.Label()),
+          external_team_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/teams/{organization_id_or_slug}/{team_id_or_slug}/external-teams/{external_team_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteTeamExternalTeamRequest",
+      });
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          projects: __S(4368, __c273, 0),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/organizations/{organization_id_or_slug}/spike-protections/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableSpikeProtectionRequest",
+      });
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          projects: __S(4368, __c273, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/organizations/{organization_id_or_slug}/spike-protections/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableSpikeProtectionRequest",
+      });
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          team_id_or_slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/teams/{team_id_or_slug}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "AddProjectTeamRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stats: S.optional(S.Unknown),
+          transactionStats: S.optional(S.Unknown),
+          sessionStats: S.optional(S.Unknown),
+          id: S.String,
+          slug: S.String,
+          name: S.String,
+          platform: S.NullOr(S.String),
+          dateCreated: S.String,
+          isBookmarked: S.Boolean,
+          isMember: S.Boolean,
+          features: __S(4368, __c273, 0),
+          firstEvent: S.NullOr(S.String),
+          firstTransactionEvent: S.Boolean,
+          access: __S(4368, __c273, 0),
+          hasAccess: S.Boolean,
+          hasFeedbacks: S.Boolean,
+          hasFlags: S.Boolean,
+          hasMinifiedStackTrace: S.Boolean,
+          hasMonitors: S.Boolean,
+          hasNewFeedbacks: S.Boolean,
+          hasProfiles: S.Boolean,
+          hasReplays: S.Boolean,
+          hasSessions: S.Boolean,
+          hasInsightsHttp: S.Boolean,
+          hasInsightsDb: S.Boolean,
+          hasInsightsAssets: S.Boolean,
+          hasInsightsAppStart: S.Boolean,
+          hasInsightsScreenLoad: S.Boolean,
+          hasInsightsVitals: S.Boolean,
+          hasInsightsCaches: S.Boolean,
+          hasInsightsQueues: S.Boolean,
+          hasInsightsAgentMonitoring: S.Boolean,
+          hasInsightsMCP: S.Boolean,
+          hasLogs: S.Boolean,
+          hasTraceMetrics: S.Boolean,
+          isInternal: S.Boolean,
+          isPublic: S.Boolean,
+          avatar: __S(4144, __c259, 0),
+          color: S.String,
+          status: S.String,
+          team: S.optional(__S(4768, __c298, 0)),
+          teams: __S(4769, __c298, 1),
+        }),
+      ).annotate({ identifier: "AddProjectTeamResponse" });
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          slug: S.String,
+        }),
+      ).annotate({
+        identifier: "AddProjectTeamResponseTeam",
+      });
+    case 1:
+      return S.Array(__S(4768, __c298, 0));
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String.pipe(T.Label()),
+          expectedExternalIssueUrl: S.optional(S.String.pipe(T.Query())),
+          groupId: S.String,
+          action: S.String,
+          uri: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/0/sentry-app-installations/{uuid}/external-issue-actions/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ExecuteSentryAppInstallationExternalIssueActionRequest",
+      });
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          filter_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/custom-inbound-filters/{filter_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetACustomInboundFilterRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          value: __S(4368, __c273, 0),
+        }),
+      ).annotate({
+        identifier: "GetACustomInboundFilterResponseConditionsItem",
+      });
+    case 2:
+      return S.Array(__S(4801, __c300, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          dataType: S.String,
+          conditions: __S(4802, __c300, 2),
+          dateCreated: S.String,
+          dateUpdated: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          active: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetACustomInboundFilterResponse",
+      });
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          issue_id: S.String.pipe(T.Label()),
+          integration_id: S.String.pipe(T.Label()),
+          action: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/integrations/{integration_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAnIntegrationSIssueConfigForAnIssueRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          slug: S.String,
+          name: S.String,
+          canAdd: S.Boolean,
+          canDisable: S.Boolean,
+          features: __S(816, __c51, 0),
+          aspects: __S(1104, __c69, 0),
+        }),
+      ).annotate({
+        identifier: "GetAnIntegrationSIssueConfigForAnIssueResponseProvider",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          icon: S.NullOr(S.String),
+          domainName: S.NullOr(S.String),
+          accountType: S.NullOr(S.String),
+          scopes: S.NullOr(__S(4368, __c273, 0)),
+          outOfDate: S.NullOr(S.Boolean),
+          missingFeatures: S.NullOr(__S(4848, __c303, 0)),
+          status: S.String,
+          provider: __S(4817, __c301, 1),
+          linkIssueConfig: S.optional(__S(4832, __c302, 0)),
+          createIssueConfig: S.optional(__S(4832, __c302, 0)),
+        }),
+      ).annotate({
+        identifier: "GetAnIntegrationSIssueConfigForAnIssueResponse",
+      });
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1104, __c69, 0));
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4864, __c304, 0));
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          description: S.String,
+        }),
+      ).annotate({
+        identifier: "GetAnIntegrationSIssueConfigForAnIssueResponseMissingFeaturesItem",
+      });
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          hook_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/hooks/{hook_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetAServiceHookRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dateCreated: S.String,
+          events: __S(4368, __c273, 0),
+          id: S.String,
+          secret: S.String.pipe(T.SensitiveValue({})),
+          status: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "GetAServiceHookResponse" });
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          version: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/releases/{version}/commitfiles/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFilesChangedInAReleaseSCommitsRequest",
+      });
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          detailed: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetOrganizationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          features: S.optional(__S(4368, __c273, 0)),
+          extraOptions: S.optional(__S(4928, __c308, 0)),
+          access: S.optional(__S(4368, __c273, 0)),
+          onboardingTasks: S.optional(__S(3344, __c209, 0)),
+          id: S.String,
+          slug: S.String,
+          status: __S(3984, __c249, 0),
+          name: S.String,
+          dateCreated: S.String,
+          isEarlyAdopter: S.Boolean,
+          require2FA: S.Boolean,
+          avatar: __S(4144, __c259, 0),
+          links: __S(3329, __c208, 1),
+          hasAuthProvider: S.Boolean,
+          allowMemberInvite: S.Boolean,
+          allowMemberProjectCreation: S.Boolean,
+          allowSuperuserAccess: S.Boolean,
+        }),
+      ).annotate({ identifier: "GetOrganizationResponse" });
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(4128, __c258, 0));
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          conversation_id: S.String.pipe(T.Label()),
+          project: S.optional(__S(4944, __c309, 0).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          statsPeriod: S.optional(S.String.pipe(T.Query())),
+          start: S.optional(S.String.pipe(T.Query())),
+          end: S.optional(S.String.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/agents/conversations/{conversation_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationAIConversationRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          model: S.NullOr(S.String),
+          llmCalls: S.Number,
+          inputTokens: S.Number,
+          outputTokens: S.Number,
+          totalTokens: S.Number,
+          cacheReadTokens: S.Number,
+          cacheWriteTokens: S.Number,
+          reasoningTokens: S.Number,
+          inputCost: S.Number,
+          outputCost: S.Number,
+          totalCost: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationAIConversationResponseStatsUsageByModelItem",
+      });
+    case 3:
+      return S.Array(__S(4946, __c309, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          endTimestamp: S.Number,
+          generationDuration: S.Number,
+          inputTokens: S.Number,
+          llmCalls: S.Number,
+          outputTokens: S.Number,
+          startTimestamp: S.Number,
+          toolCalls: S.Number,
+          toolErrors: S.Number,
+          toolNames: __S(4368, __c273, 0),
+          totalCost: S.Number,
+          totalTokens: S.Number,
+          usageByModel: __S(4947, __c309, 3),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationAIConversationResponseStats",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          conversationId: S.String,
+          title: S.NullOr(S.String),
+          projects: __S(4961, __c310, 1),
+          webUrl: S.String,
+          spans: __S(4064, __c254, 0),
+          stats: __S(4948, __c309, 4),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationAIConversationResponse",
+      });
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          slug: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationAIConversationResponseProjectsItem",
+      });
+    case 1:
+      return S.Array(__S(4960, __c310, 0));
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          providerKey: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/config/integrations/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationConfigIntegrationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          slug: S.String,
+          name: S.String,
+          metadata: S.Unknown,
+          canAdd: S.Boolean,
+          canDisable: S.Boolean,
+          features: __S(816, __c51, 0),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationConfigIntegrationsResponseProvidersItem",
+      });
+    case 2:
+      return S.Array(__S(4977, __c311, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          providers: __S(4978, __c311, 2),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationConfigIntegrationsResponse",
+      });
+  }
+}
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          dashboard_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/dashboards/{dashboard_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationDashboardRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          preferredPolarity: S.optional(S.String),
+          timeWindow: S.optional(S.String),
+          max_values: __S(848, __c53, 0),
+          unit: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationDashboardResponseWidgetsItemThresholds",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          fields: __S(816, __c51, 0),
+          aggregates: __S(816, __c51, 0),
+          columns: __S(816, __c51, 0),
+          fieldAliases: __S(816, __c51, 0),
+          conditions: S.String,
+          orderby: S.String,
+          widgetId: S.String,
+          onDemand: __S(850, __c53, 2),
+          isHidden: S.Boolean,
+          selectedAggregate: S.NullOr(S.Number),
+          linkedDashboards: __S(852, __c53, 4),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationDashboardResponseWidgetsItemQueriesItem",
+      });
+    case 3:
+      return S.Array(__S(4994, __c312, 2));
+    case 4:
+      return S.Record(S.String, S.Unknown);
+    case 5:
+      return S.Array(__S(4996, __c312, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          orderby: S.NullOr(__S(853, __c53, 5)),
+          equations: S.NullOr(__S(4997, __c312, 5)),
+          selected_columns: __S(816, __c51, 0),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationDashboardResponseWidgetsItemChangedReasonItem",
+      });
+    case 7:
+      return S.Array(__S(4998, __c312, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+          description: S.NullOr(S.String),
+          displayType: S.String,
+          thresholds: S.NullOr(__S(4993, __c312, 1)),
+          interval: S.String,
+          dateCreated: S.String,
+          dashboardId: S.String,
+          queries: __S(4995, __c312, 3),
+          limit: S.NullOr(S.Number),
+          widgetType: S.NullOr(S.String),
+          layout: S.NullOr(__S(864, __c54, 0)),
+          axisRange: S.NullOr(S.String),
+          legendType: S.NullOr(S.String),
+          datasetSource: S.NullOr(S.String),
+          exploreUrls: S.NullOr(__S(4368, __c273, 0)),
+          changedReason: S.NullOr(__S(4999, __c312, 7)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationDashboardResponseWidgetsItem",
+      });
+    case 9:
+      return S.Array(__S(5000, __c312, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.optional(__S(4368, __c273, 0)),
+          period: S.optional(S.String),
+          utc: S.optional(S.String),
+          expired: S.optional(S.Boolean),
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+          id: S.String,
+          title: S.String,
+          dateCreated: S.String,
+          createdBy: S.NullOr(__S(4048, __c253, 0)),
+          widgets: __S(5001, __c312, 9),
+          projects: __S(768, __c48, 0),
+          filters: __S(854, __c53, 6),
+          permissions: S.NullOr(__S(855, __c53, 7)),
+          isFavorited: S.Boolean,
+          prebuiltId: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationDashboardResponse",
+      });
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          detector_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/detectors/{detector_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationDetectorRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.optional(S.NullOr(__S(2080, __c130, 0))),
+          createdBy: S.optional(S.NullOr(S.String)),
+          latestGroup: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          description: S.optional(S.NullOr(S.String)),
+          id: S.String,
+          projectId: S.NullOr(S.String),
+          name: S.String,
+          type: S.String,
+          workflowIds: S.NullOr(__S(4368, __c273, 0)),
+          dateCreated: S.String,
+          dateUpdated: S.String,
+          dataSources: S.NullOr(__S(4064, __c254, 0)),
+          conditionGroup: S.NullOr(__S(4128, __c258, 0)),
+          config: __S(4128, __c258, 0),
+          enabled: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationDetectorResponse",
+      });
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inRelease: S.optional(S.String),
+          inNextRelease: S.optional(S.Boolean),
+          inCommit: S.optional(S.String),
+          ignoreDuration: S.optional(S.Number),
+          ignoreCount: S.optional(S.Number),
+          ignoreWindow: S.optional(S.Number),
+          ignoreUserCount: S.optional(S.Number),
+          ignoreUserWindow: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "BulkMutateAListOfIssuesRequestStatusDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          id: S.optional(S.Number.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          statusDetails: S.optional(__S(5024, __c314, 0)),
+          ignoreDuration: S.optional(S.Number),
+          isPublic: S.optional(S.Boolean),
+          merge: S.optional(S.Boolean),
+          assignedTo: S.optional(S.String),
+          hasSeen: S.optional(S.Boolean),
+          isBookmarked: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/issues/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkMutateAListOfIssuesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          isPublic: S.Boolean,
+          status: S.String,
+          statusDetails: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "BulkMutateAListOfIssuesResponse",
+      });
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          query_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/discover/saved/{query_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationDiscoverSavedQueryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.optional(__S(4368, __c273, 0)),
+          query: S.optional(S.String),
+          fields: S.optional(__S(4368, __c273, 0)),
+          widths: S.optional(__S(4368, __c273, 0)),
+          conditions: S.optional(__S(4368, __c273, 0)),
+          aggregations: S.optional(__S(4368, __c273, 0)),
+          range: S.optional(S.String),
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+          orderby: S.optional(S.String),
+          limit: S.optional(S.String),
+          yAxis: S.optional(__S(4368, __c273, 0)),
+          display: S.optional(S.String),
+          topEvents: S.optional(S.Number),
+          interval: S.optional(S.String),
+          exploreQuery: S.optional(__S(4128, __c258, 0)),
+          lastVisited: S.optional(S.String),
+          starred: S.optional(S.Boolean),
+          position: S.optional(S.NullOr(S.Number)),
+          id: S.String,
+          name: S.String,
+          projects: __S(768, __c48, 0),
+          version: S.Number,
+          queryDataset: S.String,
+          datasetSource: S.String,
+          expired: S.Boolean,
+          dateCreated: S.String,
+          dateUpdated: S.String,
+          createdBy: __S(5056, __c316, 0),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationDiscoverSavedQueryResponse",
+      });
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identities: S.optional(__S(1136, __c71, 0)),
+          avatar: S.optional(__S(4144, __c259, 0)),
+          authenticators: S.optional(__S(1088, __c68, 0)),
+          canReset2fa: S.optional(S.Boolean),
+          id: S.String,
+          name: S.String,
+          username: S.String,
+          email: S.String,
+          avatarUrl: S.String,
+          isActive: S.Boolean,
+          isSuspended: S.Boolean,
+          hasPasswordAuth: S.Boolean,
+          isManaged: S.Boolean,
+          dateJoined: S.String,
+          lastLogin: S.NullOr(S.String),
+          has2fa: S.Boolean,
+          lastActive: S.NullOr(S.String),
+          isSuperuser: S.Boolean,
+          isStaff: S.Boolean,
+          experiments: __S(1104, __c69, 0),
+          emails: __S(4016, __c251, 0),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationDiscoverSavedQueryResponseCreatedBy",
+      });
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          integration_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/integrations/{integration_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationIntegrationRequest",
+      });
+    case 1:
+      return S.Array(__S(4864, __c304, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          icon: S.NullOr(S.String),
+          domainName: S.NullOr(S.String),
+          accountType: S.NullOr(S.String),
+          scopes: S.NullOr(__S(4368, __c273, 0)),
+          outOfDate: S.NullOr(S.Boolean),
+          missingFeatures: S.NullOr(__S(5073, __c317, 1)),
+          status: S.String,
+          provider: S.Unknown,
+          configOrganization: S.Unknown,
+          configData: S.Unknown,
+          externalId: S.String,
+          organizationId: S.Number,
+          organizationIntegrationStatus: S.String,
+          gracePeriodEnd: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIntegrationResponse",
+      });
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          issue_id: S.String.pipe(T.Label()),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          expand: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
+          collapse: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationIssueRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          identities: S.optional(__S(4032, __c252, 0)),
+          avatar: S.optional(__S(4144, __c259, 0)),
+          authenticators: S.optional(__S(1088, __c68, 0)),
+          canReset2fa: S.optional(S.Boolean),
+          id: S.String,
+          name: S.String,
+          username: S.String,
+          email: S.String,
+          avatarUrl: S.String,
+          isActive: S.Boolean,
+          isSuspended: S.Boolean,
+          hasPasswordAuth: S.Boolean,
+          isManaged: S.Boolean,
+          dateJoined: S.String,
+          lastLogin: S.NullOr(S.String),
+          has2fa: S.Boolean,
+          lastActive: S.NullOr(S.String),
+          isSuperuser: S.Boolean,
+          isStaff: S.Boolean,
+          experiments: __S(4128, __c258, 0),
+          emails: __S(4016, __c251, 0),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueResponseStatusDetailsActor",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ignoreCount: S.optional(S.Number),
+          ignoreUntil: S.optional(S.String),
+          ignoreUserCount: S.optional(S.Number),
+          ignoreUserWindow: S.optional(S.Number),
+          ignoreWindow: S.optional(S.Number),
+          actor: S.optional(__S(5089, __c318, 1)),
+          inNextRelease: S.optional(S.Boolean),
+          inRelease: S.optional(S.String),
+          inCommit: S.optional(S.String),
+          pendingEvents: S.optional(S.Number),
+          info: S.optional(S.NullOr(__S(5137, __c321, 1))),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueResponseStatusDetails",
+      });
+    case 3:
+      return S.Record(S.String, __S(5168, __c323, 0));
+    case 4:
+      return S.Array(__S(5122, __c320, 2));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          isUnhandled: S.optional(S.Boolean),
+          count: S.optional(S.String),
+          userCount: S.optional(S.Number),
+          firstSeen: S.optional(S.NullOr(S.String)),
+          lastSeen: S.optional(S.NullOr(S.String)),
+          derivedData: S.optional(__S(5136, __c321, 0)),
+          id: S.String,
+          shareId: S.NullOr(S.String),
+          shortId: S.String,
+          title: S.String,
+          culprit: S.NullOr(S.String),
+          permalink: S.String,
+          logger: S.NullOr(S.String),
+          level: S.String,
+          status: S.String,
+          statusDetails: __S(5090, __c318, 2),
+          substatus: S.NullOr(S.String),
+          isPublic: S.Boolean,
+          platform: S.NullOr(S.String),
+          priority: S.NullOr(S.String),
+          priorityLockedAt: S.NullOr(S.String),
+          seerFixabilityScore: S.NullOr(S.Number),
+          seerAutofixLastTriggered: S.NullOr(S.String),
+          seerExplorerAutofixLastTriggered: S.NullOr(S.String),
+          project: __S(5138, __c321, 2),
+          type: S.String,
+          issueType: S.String,
+          issueCategory: S.String,
+          metadata: __S(4128, __c258, 0),
+          numComments: S.Number,
+          assignedTo: S.NullOr(__S(2080, __c130, 0)),
+          isBookmarked: S.Boolean,
+          isSubscribed: S.Boolean,
+          subscriptionDetails: S.NullOr(__S(5152, __c322, 0)),
+          hasSeen: S.Boolean,
+          annotations: __S(5140, __c321, 4),
+          firstRelease: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          lastRelease: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          tags: S.optional(__S(4064, __c254, 0)),
+          stats: S.optional(__S(5091, __c318, 3)),
+          inbox: S.optional(S.NullOr(__S(5121, __c320, 1))),
+          owners: S.optional(S.NullOr(__S(5092, __c318, 4))),
+          forecast: S.optional(__S(4128, __c258, 0)),
+          integrationIssues: S.optional(__S(4064, __c254, 0)),
+          sentryAppIssues: S.optional(__S(5104, __c319, 0)),
+          latestEventHasAttachments: S.optional(S.Boolean),
+          activity: __S(4064, __c254, 0),
+          seenBy: __S(4064, __c254, 0),
+          userReportCount: S.Number,
+          participants: __S(4064, __c254, 0),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueResponse",
+      });
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3584, __c224, 0));
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          until: S.NullOr(S.String),
+          count: S.NullOr(S.Number),
+          window: S.NullOr(S.Number),
+          user_count: S.NullOr(S.Number),
+          user_window: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueResponseInboxReasonDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.Number,
+          reason_details: S.NullOr(__S(5120, __c320, 0)),
+          date_added: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueResponseInbox",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          owner: S.String,
+          date_added: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueResponseOwnersItem",
+      });
+  }
+}
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          blocker: S.String,
+          progress: S.String,
+          status: S.String,
+          viewCount: S.Number,
+          hasOpenFixPr: S.Boolean,
+          isAssigned: S.Boolean,
+          hasRootCause: S.Boolean,
+          lastCompletedAutofixStep: S.String,
+          lastProgressedAt: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueResponseDerivedData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dateCreated: S.String,
+          syncCount: S.Number,
+          totalEvents: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueResponseStatusDetailsInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          slug: S.String,
+          platform: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueResponseProject",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueResponseAnnotationsItem",
+      });
+    case 4:
+      return S.Array(__S(5139, __c321, 3));
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          disabled: S.optional(S.Boolean),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueResponseSubscriptionDetails",
+      });
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(768, __c48, 0));
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          issue_id: S.String.pipe(T.Label()),
+          llmFormat: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/autofix/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationIssueAutofixStateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          formatted: S.optional(__S(5200, __c325, 0)),
+          autofix: S.NullOr(__S(4128, __c258, 0)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueAutofixStateResponse",
+      });
+  }
+}
+function __c325(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.String,
+          content: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueAutofixStateResponseFormatted",
+      });
+  }
+}
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          issue_id: S.String.pipe(T.Label()),
+          event_id: S.String.pipe(T.Label()),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          llmFormat: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/events/{event_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          groupID: S.NullOr(S.String),
+          eventID: S.String,
+          projectID: S.String,
+          message: S.NullOr(S.String),
+          title: S.String,
+          location: S.NullOr(S.String),
+          user: S.NullOr(__S(5248, __c328, 0)),
+          tags: __S(5250, __c328, 2),
+          platform: S.String,
+          dateReceived: S.NullOr(S.String),
+          contexts: S.NullOr(__S(4128, __c258, 0)),
+          size: S.NullOr(S.Number),
+          entries: __S(3968, __c248, 0),
+          dist: S.NullOr(S.String),
+          sdk: S.NullOr(__S(5264, __c329, 0)),
+          context: S.NullOr(__S(4128, __c258, 0)),
+          packages: __S(4128, __c258, 0),
+          type: S.String,
+          metadata: __S(4128, __c258, 0),
+          errors: __S(5266, __c329, 2),
+          occurrence: S.NullOr(__S(5233, __c327, 1)),
+          _meta: __S(4128, __c258, 0),
+          crashFile: S.optional(S.NullOr(S.String)),
+          culprit: S.optional(S.NullOr(S.String)),
+          dateCreated: S.optional(S.String),
+          fingerprints: S.optional(__S(4368, __c273, 0)),
+          groupingConfig: S.optional(__S(5268, __c329, 4)),
+          startTimestamp: S.optional(S.Number),
+          endTimestamp: S.optional(S.Number),
+          measurements: S.optional(S.NullOr(__S(5270, __c329, 6))),
+          breakdowns: S.optional(S.NullOr(__S(5271, __c329, 7))),
+          release: S.NullOr(__S(5234, __c327, 2)),
+          userReport: S.NullOr(__S(5237, __c327, 5)),
+          sdkUpdates: __S(4064, __c254, 0),
+          resolvedWith: __S(4368, __c273, 0),
+          nextEventID: S.NullOr(S.String),
+          previousEventID: S.NullOr(S.String),
+          formatted: S.optional(__S(5200, __c325, 0)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponse",
+      });
+  }
+}
+function __c327(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5267, __c329, 3));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          projectId: S.Number,
+          eventId: S.String,
+          fingerprint: __S(4368, __c273, 0),
+          issueTitle: S.String,
+          subtitle: S.String,
+          resourceId: S.NullOr(S.String),
+          evidenceData: __S(4128, __c258, 0),
+          evidenceDisplay: __S(5232, __c327, 0),
+          type: S.Number,
+          detectionTime: S.Number,
+          level: S.NullOr(S.String),
+          culprit: S.NullOr(S.String),
+          assignee: S.NullOr(S.String),
+          priority: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponseOccurrence",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          commitCount: S.optional(S.Number),
+          data: S.optional(__S(4128, __c258, 0)),
+          dateCreated: S.optional(S.String),
+          dateReleased: S.optional(S.NullOr(S.String)),
+          deployCount: S.optional(S.Number),
+          ref: S.optional(S.NullOr(S.String)),
+          lastCommit: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          lastDeploy: S.optional(S.NullOr(__S(2912, __c182, 0))),
+          status: S.optional(S.String),
+          url: S.optional(S.NullOr(S.String)),
+          userAgent: S.optional(S.NullOr(S.String)),
+          version: S.optional(S.NullOr(S.String)),
+          versionInfo: S.optional(S.NullOr(__S(2913, __c182, 1))),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponseRelease",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          username: S.NullOr(S.String),
+          email: S.NullOr(S.String),
+          name: S.NullOr(S.String),
+          ipAddress: S.NullOr(S.String),
+          avatarUrl: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponseUserReportUser",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          eventID: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponseUserReportEvent",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          eventID: S.String,
+          name: S.NullOr(S.String),
+          email: S.NullOr(S.String),
+          comments: S.String,
+          dateCreated: S.String,
+          user: S.NullOr(__S(5235, __c327, 3)),
+          event: __S(5236, __c327, 4),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponseUserReport",
+      });
+  }
+}
+function __c328(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          username: S.optional(S.NullOr(S.String)),
+          ip_address: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          geo: S.optional(S.NullOr(__S(1616, __c101, 0))),
+          data: S.optional(S.NullOr(__S(4128, __c258, 0))),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponseUser",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String),
+          key: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponseTagsItem",
+      });
+    case 2:
+      return S.Array(__S(5249, __c328, 1));
+  }
+}
+function __c329(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.NullOr(S.String),
+          version: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponseSdk",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          message: S.String,
+          data: __S(4128, __c258, 0),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponseErrorsItem",
+      });
+    case 2:
+      return S.Array(__S(5265, __c329, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.String,
+          important: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponseOccurrenceEvidenceDisplayItem",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          enhancements: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponseGroupingConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.Number,
+          unit: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueEventResponseMeasurementsValue",
+      });
+    case 6:
+      return S.Record(S.String, __S(5269, __c329, 5));
+    case 7:
+      return S.Record(S.String, __S(5270, __c329, 6));
+  }
+}
+function __c330(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          issue_id: S.String.pipe(T.Label()),
+          key: S.String.pipe(T.Label()),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/issues/{issue_id}/tags/{key}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationIssueTagRequest",
+      });
+  }
+}
+function __c331(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.NullOr(S.String)),
+          key: S.String,
+          name: S.String,
+          value: S.NullOr(S.String),
+          count: S.NullOr(S.Number),
+          lastSeen: S.NullOr(S.String),
+          firstSeen: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueTagResponseTopValuesItem",
+      });
+    case 1:
+      return S.Array(__S(5296, __c331, 0));
+  }
+}
+function __c332(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueValues: S.optional(S.NullOr(S.Number)),
+          totalValues: S.optional(S.NullOr(S.Number)),
+          topValues: S.optional(S.NullOr(__S(5297, __c331, 1))),
+          key: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationIssueTagResponse",
+      });
+  }
+}
+function __c333(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          member_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/members/{member_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationMemberRequest",
+      });
+  }
+}
+function __c334(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          desc: S.String,
+          scopes: __S(4368, __c273, 0),
+          allowed: S.Boolean,
+          isAllowed: S.Boolean,
+          isRetired: S.Boolean,
+          isTeamRolesAllowed: S.Boolean,
+          is_global: S.Boolean,
+          isGlobal: S.Boolean,
+          minimumTeamRole: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationMemberResponseOrgRoleListItem",
+      });
+    case 1:
+      return S.Array(__S(5344, __c334, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          desc: S.String,
+          scopes: __S(4368, __c273, 0),
+          allowed: S.Boolean,
+          isAllowed: S.Boolean,
+          isRetired: S.Boolean,
+          isTeamRolesAllowed: S.Boolean,
+          isMinimumRoleFor: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationMemberResponseTeamRoleListItem",
+      });
+    case 3:
+      return S.Array(__S(5346, __c334, 2));
+  }
+}
+function __c335(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamSlug: S.String,
+          role: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationMemberResponseTeamRolesItem",
+      });
+    case 1:
+      return S.Array(__S(5360, __c335, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          externalUsers: S.optional(__S(4112, __c257, 0)),
+          role: S.optional(S.String),
+          roleName: S.optional(S.String),
+          id: S.String,
+          email: S.String,
+          name: S.String,
+          user: S.NullOr(__S(4048, __c253, 0)),
+          orgRole: S.String,
+          pending: S.Boolean,
+          expired: S.Boolean,
+          flags: __S(4160, __c260, 0),
+          dateCreated: S.String,
+          inviteStatus: S.String,
+          inviterName: S.NullOr(S.String),
+          teams: __S(4368, __c273, 0),
+          teamRoles: __S(5361, __c335, 1),
+          invite_link: S.NullOr(S.String),
+          isOnlyOwner: S.Boolean,
+          orgRoleList: __S(5345, __c334, 1),
+          teamRoleList: __S(5347, __c334, 3),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationMemberResponse",
+      });
+  }
+}
+function __c336(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          monitor_id_or_slug: S.String.pipe(T.Label()),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/monitors/{monitor_id_or_slug}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationMonitorRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          schedule_type: S.String,
+          schedule: S.Unknown,
+          checkin_margin: S.NullOr(S.Number),
+          max_runtime: S.NullOr(S.Number),
+          timezone: S.NullOr(S.String),
+          failure_issue_threshold: S.NullOr(S.Number),
+          recovery_threshold: S.NullOr(S.Number),
+          alert_rule_id: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationMonitorResponseConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          alertRule: S.optional(__S(2130, __c133, 2)),
+          id: S.String,
+          name: S.String,
+          slug: S.String,
+          status: S.String,
+          isMuted: S.Boolean,
+          isUpserting: S.Boolean,
+          config: __S(5377, __c336, 1),
+          dateCreated: S.String,
+          project: __S(2112, __c132, 0),
+          environments: __S(2133, __c133, 5),
+          owner: __S(2080, __c130, 0),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationMonitorResponse",
+      });
+  }
+}
+function __c337(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          action_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/notifications/actions/{action_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationNotificationsActionRequest",
+      });
+  }
+}
+function __c338(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          artifact_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/preprodartifacts/{artifact_id}/install-details/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactInstallDetailsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          buildId: S.String,
+          state: S.String,
+          appInfo: __S(5424, __c339, 0),
+          gitInfo: S.NullOr(__S(5425, __c339, 1)),
+          platform: S.NullOr(S.String),
+          projectId: S.String,
+          projectSlug: S.String,
+          buildConfiguration: S.NullOr(S.String),
+          isInstallable: S.Boolean,
+          installUrl: S.NullOr(S.String),
+          installUrlExpiresAt: S.NullOr(S.String),
+          downloadCount: S.Number,
+          releaseNotes: S.NullOr(S.String),
+          installGroups: S.NullOr(__S(816, __c51, 0)),
+          isCodeSignatureValid: S.NullOr(S.Boolean),
+          profileName: S.NullOr(S.String),
+          codesigningType: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactInstallDetailsResponse",
+      });
+  }
+}
+function __c339(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.NullOr(S.String),
+          name: S.NullOr(S.String),
+          version: S.NullOr(S.String),
+          buildNumber: S.NullOr(S.Number),
+          artifactType: S.NullOr(S.String),
+          dateAdded: S.NullOr(S.String),
+          dateBuilt: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactInstallDetailsResponseAppInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          headSha: S.NullOr(S.String),
+          baseSha: S.NullOr(S.String),
+          provider: S.NullOr(S.String),
+          headRepoName: S.NullOr(S.String),
+          baseRepoName: S.NullOr(S.String),
+          headRef: S.NullOr(S.String),
+          baseRef: S.NullOr(S.String),
+          prNumber: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactInstallDetailsResponseGitInfo",
+      });
+  }
+}
+function __c340(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project_id_or_slug: S.String.pipe(T.Label()),
+          id: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/0/projects/{organization_id_or_slug}/{project_id_or_slug}/issues/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkRemoveAListOfIssuesRequest",
+      });
+  }
+}
+function __c341(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BulkRemoveAListOfIssuesResponse",
+      });
+  }
+}
+function __c342(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          artifact_id: S.String.pipe(T.Label()),
+          baseArtifactId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/preprodartifacts/{artifact_id}/size-analysis/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSizeAnalysisRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          componentType: S.String,
+          name: S.String,
+          appId: S.String,
+          path: S.String,
+          downloadSize: S.Number,
+          installSize: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSizeAnalysisResponseAppComponentsItem",
+      });
+    case 2:
+      return S.Array(__S(5473, __c342, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          metricsArtifactType: S.String,
+          identifier: S.NullOr(S.String),
+          headInstallSize: S.Number,
+          headDownloadSize: S.Number,
+          baseInstallSize: S.Number,
+          baseDownloadSize: S.Number,
+        }),
+      ).annotate({
+        identifier:
+          "GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemSizeMetricDiff",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          sizeDiff: S.Number,
+          headSize: S.NullOr(S.Number),
+          baseSize: S.NullOr(S.Number),
+          path: S.String,
+          itemType: S.NullOr(S.String),
+          type: S.String,
+          diffItems: S.NullOr(__S(1088, __c68, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemDiffItemsItem",
+      });
+    case 5:
+      return S.Array(__S(5476, __c342, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          sizeDiff: S.Number,
+          headSize: S.NullOr(S.Number),
+          baseSize: S.NullOr(S.Number),
+          path: S.String,
+          itemType: S.NullOr(S.String),
+          type: S.String,
+          diffItems: S.NullOr(__S(1088, __c68, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItemFileDiffsItem",
+      });
+    case 7:
+      return S.Array(__S(5478, __c342, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          insightType: S.String,
+          status: S.String,
+          totalSavingsChange: S.Number,
+          fileDiffs: __S(5479, __c342, 7),
+          groupDiffs: __S(5479, __c342, 7),
+        }),
+      ).annotate({
+        identifier:
+          "GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItemInsightDiffItemsItem",
+      });
+    case 9:
+      return S.Array(__S(5480, __c342, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          metricsArtifactType: S.String,
+          identifier: S.NullOr(S.String),
+          state: S.String,
+          errorCode: S.NullOr(S.String),
+          errorMessage: S.NullOr(S.String),
+          sizeMetricDiff: S.NullOr(__S(5475, __c342, 3)),
+          diffItems: S.NullOr(__S(5477, __c342, 5)),
+          insightDiffItems: S.NullOr(__S(5481, __c342, 9)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSizeAnalysisResponseComparisonsItem",
+      });
+    case 11:
+      return S.Array(__S(5482, __c342, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          buildId: S.String,
+          state: S.String,
+          appInfo: __S(5424, __c339, 0),
+          gitInfo: S.NullOr(__S(5425, __c339, 1)),
+          errorCode: S.NullOr(S.String),
+          errorMessage: S.NullOr(S.String),
+          downloadSize: S.NullOr(S.Number),
+          installSize: S.NullOr(S.Number),
+          analysisDuration: S.NullOr(S.Number),
+          analysisVersion: S.NullOr(S.String),
+          baseBuildId: S.NullOr(S.String),
+          baseAppInfo: S.NullOr(__S(5424, __c339, 0)),
+          insights: S.NullOr(__S(4128, __c258, 0)),
+          appComponents: S.NullOr(__S(5474, __c342, 2)),
+          comparisons: S.NullOr(__S(5483, __c342, 11)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSizeAnalysisResponse",
+      });
+  }
+}
+function __c343(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          snapshot_id: S.String.pipe(T.Label()),
+          compact_metadata: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/preprodartifacts/snapshots/{snapshot_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          head_sha: S.optional(S.NullOr(S.String)),
+          base_sha: S.optional(S.NullOr(S.String)),
+          provider: S.optional(S.NullOr(S.String)),
+          head_repo_name: S.optional(S.NullOr(S.String)),
+          base_repo_name: S.optional(S.NullOr(S.String)),
+          head_ref: S.optional(S.NullOr(S.String)),
+          base_ref: S.optional(S.NullOr(S.String)),
+          pr_number: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotResponseVcsInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          display_name: S.optional(S.NullOr(S.String)),
+          group: S.optional(S.NullOr(S.String)),
+          image_file_name: S.optional(S.String),
+          width: S.optional(S.Number),
+          height: S.optional(S.Number),
+          canvas_theme: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotResponseImagesItem",
+      });
+    case 3:
+      return S.Array(__S(5490, __c343, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          display_name: S.optional(S.NullOr(S.String)),
+          group: S.optional(S.NullOr(S.String)),
+          image_file_name: S.optional(S.String),
+          width: S.optional(S.Number),
+          height: S.optional(S.Number),
+          canvas_theme: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotResponseAddedItem",
+      });
+    case 5:
+      return S.Array(__S(5492, __c343, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          display_name: S.optional(S.NullOr(S.String)),
+          group: S.optional(S.NullOr(S.String)),
+          image_file_name: S.optional(S.String),
+          width: S.optional(S.Number),
+          height: S.optional(S.Number),
+          canvas_theme: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotResponseRenamedItemBaseImage",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          base_image: S.optional(__S(5494, __c343, 6)),
+          head_image: S.optional(__S(5494, __c343, 6)),
+          diff_image_key: S.optional(S.NullOr(S.String)),
+          diff: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotResponseRenamedItem",
+      });
+    case 8:
+      return S.Array(__S(5495, __c343, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          username: S.optional(S.NullOr(S.String)),
+          avatar_url: S.optional(S.NullOr(S.String)),
+          approved_at: S.optional(S.NullOr(S.String)),
+          source: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotResponseApproversItem",
+      });
+    case 10:
+      return S.Array(__S(5497, __c343, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          head_artifact_id: S.optional(S.String),
+          base_artifact_id: S.optional(S.NullOr(S.String)),
+          project_id: S.optional(S.String),
+          comparison_type: S.optional(S.String),
+          state: S.optional(S.String),
+          vcs_info: S.optional(__S(5489, __c343, 1)),
+          app_id: S.optional(S.NullOr(S.String)),
+          is_selective: S.optional(S.Boolean),
+          images: S.optional(__S(5491, __c343, 3)),
+          image_count: S.optional(S.Number),
+          added: S.optional(__S(5493, __c343, 5)),
+          added_count: S.optional(S.Number),
+          removed: S.optional(__S(5491, __c343, 3)),
+          removed_count: S.optional(S.Number),
+          renamed: S.optional(__S(5496, __c343, 8)),
+          renamed_count: S.optional(S.Number),
+          changed: S.optional(__S(5496, __c343, 8)),
+          changed_count: S.optional(S.Number),
+          unchanged: S.optional(__S(5491, __c343, 3)),
+          unchanged_count: S.optional(S.Number),
+          errored: S.optional(__S(5496, __c343, 8)),
+          errored_count: S.optional(S.Number),
+          skipped: S.optional(__S(5491, __c343, 3)),
+          skipped_count: S.optional(S.Number),
+          diff_threshold: S.optional(S.NullOr(S.Number)),
+          comparison_state: S.optional(S.NullOr(S.String)),
+          approval_status: S.optional(S.NullOr(S.String)),
+          comparison_error_message: S.optional(S.NullOr(S.String)),
+          approvers: S.optional(__S(5498, __c343, 10)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotResponse",
+      });
+  }
+}
+function __c344(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          snapshot_id: S.String.pipe(T.Label()),
+          image_identifier: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/preprodartifacts/snapshots/{snapshot_id}/images/{image_identifier}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotImageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          display_name: S.optional(S.NullOr(S.String)),
+          group: S.optional(S.NullOr(S.String)),
+          image_file_name: S.optional(S.String),
+          width: S.optional(S.Number),
+          height: S.optional(S.Number),
+          canvas_theme: S.optional(S.NullOr(S.String)),
+          diff_threshold: S.optional(S.NullOr(S.Number)),
+          description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(784, __c49, 0))),
+          image_url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotImageResponseHeadImage",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          display_name: S.optional(S.NullOr(S.String)),
+          group: S.optional(S.NullOr(S.String)),
+          image_file_name: S.optional(S.String),
+          width: S.optional(S.Number),
+          height: S.optional(S.Number),
+          canvas_theme: S.optional(S.NullOr(S.String)),
+          diff_threshold: S.optional(S.NullOr(S.Number)),
+          description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(784, __c49, 0))),
+          image_url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotImageResponseBaseImage",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          image_file_name: S.optional(S.String),
+          comparison_status: S.optional(S.NullOr(S.String)),
+          head_image: S.optional(S.NullOr(__S(5505, __c344, 1))),
+          base_image: S.optional(S.NullOr(__S(5506, __c344, 2))),
+          diff_image_url: S.optional(S.NullOr(S.String)),
+          diff_percentage: S.optional(S.NullOr(S.Number)),
+          previous_image_file_name: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotImageResponse",
+      });
+  }
+}
+function __c345(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          app_id: S.String.pipe(T.Query()),
+          branch: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.Unknown.pipe(T.Query())),
+          compact_metadata: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/preprodartifacts/snapshots/latest-base/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotLatestBaseRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          display_name: S.optional(S.NullOr(S.String)),
+          group: S.optional(S.NullOr(S.String)),
+          image_file_name: S.optional(S.String),
+          width: S.optional(S.Number),
+          height: S.optional(S.Number),
+          canvas_theme: S.optional(S.NullOr(S.String)),
+          image_url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotLatestBaseResponseImagesItem",
+      });
+    case 2:
+      return S.Array(__S(5521, __c345, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          head_sha: S.optional(S.NullOr(S.String)),
+          base_sha: S.optional(S.NullOr(S.String)),
+          head_ref: S.optional(S.NullOr(S.String)),
+          base_ref: S.optional(S.NullOr(S.String)),
+          head_repo_name: S.optional(S.NullOr(S.String)),
+          pr_number: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotLatestBaseResponseVcsInfo",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          head_artifact_id: S.optional(S.String),
+          project_id: S.optional(S.String),
+          project_slug: S.optional(S.String),
+          app_id: S.optional(S.NullOr(S.String)),
+          image_count: S.optional(S.Number),
+          images: S.optional(__S(5522, __c345, 2)),
+          diff_threshold: S.optional(S.NullOr(S.Number)),
+          date_added: S.optional(S.String),
+          vcs_info: S.optional(__S(5523, __c345, 3)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationPreprodArtifactSnapshotLatestBaseResponse",
+      });
+  }
+}
+function __c346(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          project: S.optional(__S(5536, __c346, 0).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          statsPeriod: S.optional(S.String.pipe(T.Query())),
+          start: S.optional(S.String.pipe(T.Query())),
+          end: S.optional(S.String.pipe(T.Query())),
+          dataSource: S.optional(S.String.pipe(T.Query())),
+          fingerprint: S.optional(S.Number.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          expand: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/profiling/flamegraph/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationProfilingFlamegraphRequest",
+      });
+  }
+}
+function __c347(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(4128, __c258, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetOrganizationProfilingFlamegraphResponse",
+      });
+  }
+}
+function __c348(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          version: S.String.pipe(T.Label()),
+          project_id: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(S.Unknown.pipe(T.Query())),
+          health: S.optional(S.Boolean.pipe(T.Query())),
+          adoptionStages: S.optional(S.Boolean.pipe(T.Query())),
+          summaryStatsPeriod: S.optional(S.String.pipe(T.Query())),
+          healthStatsPeriod: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/releases/{version}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationReleaseRequest",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          durationP50: S.optional(S.NullOr(S.Number)),
+          durationP90: S.optional(S.NullOr(S.Number)),
+          crashFreeUsers: S.optional(S.NullOr(S.Number)),
+          crashFreeSessions: S.optional(S.NullOr(S.Number)),
+          totalUsers: S.optional(S.NullOr(S.Number)),
+          totalUsers24h: S.optional(S.NullOr(S.Number)),
+          totalProjectUsers24h: S.optional(S.NullOr(S.Number)),
+          totalSessions: S.optional(S.NullOr(S.Number)),
+          totalSessions24h: S.optional(S.NullOr(S.Number)),
+          totalProjectSessions24h: S.optional(S.NullOr(S.Number)),
+          adoption: S.optional(S.NullOr(S.Number)),
+          sessionsAdoption: S.optional(S.NullOr(S.Number)),
+          sessionsCrashed: S.Number,
+          sessionsErrored: S.Number,
+          hasHealthData: S.Boolean,
+          stats: __S(4128, __c258, 0),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationReleaseResponseProjectsItemHealthData",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          healthData: S.optional(S.NullOr(__S(5570, __c348, 2))),
+          dateReleased: S.optional(S.NullOr(S.String)),
+          dateCreated: S.optional(S.NullOr(S.String)),
+          dateStarted: S.optional(S.NullOr(S.String)),
+          id: S.Number,
+          slug: S.String,
+          name: S.String,
+          platform: S.NullOr(S.String),
+          platforms: S.NullOr(__S(4368, __c273, 0)),
+          hasHealthData: S.Boolean,
+          newGroups: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationReleaseResponseProjectsItem",
+      });
+    case 4:
+      return S.Array(__S(5571, __c348, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ref: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+          dateReleased: S.optional(S.NullOr(S.String)),
+          dateCreated: S.optional(S.NullOr(S.String)),
+          dateStarted: S.optional(S.NullOr(S.String)),
+          owner: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          lastCommit: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          lastDeploy: S.optional(S.NullOr(__S(2912, __c182, 0))),
+          firstEvent: S.optional(S.NullOr(S.String)),
+          lastEvent: S.optional(S.NullOr(S.String)),
+          currentProjectMeta: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          userAgent: S.optional(S.NullOr(S.String)),
+          adoptionStages: S.optional(S.NullOr(__S(4128, __c258, 0))),
+          id: S.Number,
+          version: S.String,
+          newGroups: S.Number,
+          status: S.String,
+          shortVersion: S.String,
+          versionInfo: S.NullOr(__S(2913, __c182, 1)),
+          data: __S(4128, __c258, 0),
+          commitCount: S.Number,
+          deployCount: S.Number,
+          authors: __S(5569, __c348, 1),
+          projects: __S(5572, __c348, 4),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationReleaseResponse",
+      });
+  }
+}
+function __c349(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          version: S.String.pipe(T.Label()),
+          file_id: S.String.pipe(T.Label()),
+          download: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/releases/{version}/files/{file_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationReleaseFileRequest",
+      });
+  }
+}
+function __c350(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          dist: S.NullOr(S.String),
+          headers: __S(4128, __c258, 0),
+          size: S.Number,
+          sha1: S.String,
+          dateCreated: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationReleaseFileResponse",
+      });
+  }
+}
+function __c351(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          replay_id: S.String.pipe(T.Label()),
+          statsPeriod: S.optional(S.String.pipe(T.Query())),
+          start: S.optional(S.String.pipe(T.Query())),
+          end: S.optional(S.String.pipe(T.Query())),
+          field: S.optional(__S(4576, __c286, 0).pipe(T.Query())),
+          project: S.optional(__S(5616, __c351, 0).pipe(T.Query())),
+          projectSlug: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          sortBy: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          queryReferrer: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/replays/{replay_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationReplayRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          project_id: S.optional(S.String),
+          trace_ids: S.optional(__S(4368, __c273, 0)),
+          error_ids: S.optional(__S(4368, __c273, 0)),
+          environment: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.Unknown),
+          user: S.optional(__S(5633, __c352, 1)),
+          sdk: S.optional(__S(5634, __c352, 2)),
+          os: S.optional(__S(5634, __c352, 2)),
+          browser: S.optional(__S(5634, __c352, 2)),
+          device: S.optional(__S(5635, __c352, 3)),
+          ota_updates: S.optional(__S(5636, __c352, 4)),
+          is_archived: S.optional(S.NullOr(S.Boolean)),
+          urls: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          segment_names: S.optional(S.NullOr(__S(4368, __c273, 0))),
+          clicks: S.optional(__S(4064, __c254, 0)),
+          count_dead_clicks: S.optional(S.NullOr(S.Number)),
+          count_rage_clicks: S.optional(S.NullOr(S.Number)),
+          count_errors: S.optional(S.NullOr(S.Number)),
+          duration: S.optional(S.NullOr(S.Number)),
+          finished_at: S.optional(S.NullOr(S.String)),
+          started_at: S.optional(S.NullOr(S.String)),
+          activity: S.optional(S.NullOr(S.Number)),
+          count_urls: S.optional(S.NullOr(S.Number)),
+          replay_type: S.optional(S.String),
+          count_segments: S.optional(S.NullOr(S.Number)),
+          platform: S.optional(S.NullOr(S.String)),
+          releases: S.optional(__S(4368, __c273, 0)),
+          dist: S.optional(S.NullOr(S.String)),
+          count_warnings: S.optional(S.NullOr(S.Number)),
+          count_infos: S.optional(S.NullOr(S.Number)),
+          has_viewed: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationReplayResponseData",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(5618, __c351, 2),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationReplayResponse",
+      });
+  }
+}
+function __c352(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          city: S.optional(S.NullOr(S.String)),
+          country_code: S.optional(S.NullOr(S.String)),
+          region: S.optional(S.NullOr(S.String)),
+          subdivision: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationReplayResponseDataUserGeo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          username: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          ip: S.optional(S.NullOr(S.String)),
+          display_name: S.optional(S.NullOr(S.String)),
+          geo: S.optional(__S(5632, __c352, 0)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationReplayResponseDataUser",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          version: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationReplayResponseDataSdk",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          brand: S.optional(S.NullOr(S.String)),
+          model: S.optional(S.NullOr(S.String)),
+          family: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationReplayResponseDataDevice",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.optional(S.NullOr(S.String)),
+          runtime_version: S.optional(S.NullOr(S.String)),
+          update_id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationReplayResponseDataOtaUpdates",
+      });
+  }
+}
+function __c353(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          query: S.String.pipe(T.Query()),
+          data_source: S.String.pipe(T.Query()),
+          environment: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          start: S.optional(S.String.pipe(T.Query())),
+          end: S.optional(S.String.pipe(T.Query())),
+          statsPeriod: S.optional(S.String.pipe(T.Query())),
+          project: S.optional(__S(5648, __c353, 0).pipe(T.Query())),
+          project_id_or_slug: S.optional(__S(4368, __c273, 0).pipe(T.Query())),
+          returnIds: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/replay-count/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationReplayCountRequest",
+      });
+    case 2:
+      return S.suspend(() => __S(864, __c54, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetOrganizationReplayCountResponse",
+      });
+  }
+}
+function __c354(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id_or_slug: S.String.pipe(T.Label()),
+          team_id_or_slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/0/organizations/{organization_id_or_slug}/scim/v2/Groups/{team_id_or_slug}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationScimV2GroupRequest",
+      });
+  }
+}
+function __c355(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationScimV2GroupResponseMeta",
+      });
+  }
+}
+function __c356(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          display: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationScimV2GroupResponseMembersItem",
+      });
+    case 1:
+      return S.Array(__S(5696, __c356, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          schemas: __S(4368, __c273, 0),
+          id: S.String,
+          displayName: S.String,
+          meta: __S(5680, __c355, 0),
+          members: S.optional(__S(5697, __c356, 1)),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationScimV2GroupResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

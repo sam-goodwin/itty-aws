@@ -626,7 +626,7 @@ export const createProduct: API.OperationMethod<
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateProductRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Product>,
+  output: __S(4, __c1, 0) as any as S.Schema<Product>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -640,8 +640,8 @@ export const getProduct: API.OperationMethod<
   GetProductError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetProductRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Product>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetProductRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<Product>,
   errors: [Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -655,8 +655,8 @@ export const listProducts: API.OperationMethod<
   ListProductsError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListProductsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ProductCollection>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListProductsRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<ProductCollection>,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -675,8 +675,8 @@ export const patchProduct: API.OperationMethod<
   PatchProductError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<PatchProductRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<PatchProductResponse>,
+  input: __S(22, __c5, 2) as any as S.Schema<PatchProductRequest>,
+  output: __S(23, __c5, 3) as any as S.Schema<PatchProductResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -699,17 +699,11 @@ function __c0(j: number): any {
           home_url: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/catalogs/products", code: 200 })),
       ).annotate({ identifier: "CreateProductRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.String,
-          rel: S.String,
-          method: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkDescription" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -721,16 +715,38 @@ function __c0(j: number): any {
           home_url: S.optional(S.String),
           create_time: S.optional(S.String),
           update_time: S.optional(S.String),
-          links: S.optional(__S(2, __c0, 2)),
+          links: S.optional(__S(9, __c2, 1)),
         }),
       ).annotate({ identifier: "Product" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.String,
+          rel: S.String,
+          method: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkDescription" });
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           product_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/catalogs/products/{product_id}", code: 200 })),
       ).annotate({ identifier: "GetProductRequest" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_size: S.optional(S.Number.pipe(T.Query())),
@@ -738,32 +754,32 @@ function __c0(j: number): any {
           total_required: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/catalogs/products", code: 200 })),
       ).annotate({ identifier: "ListProductsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
           create_time: S.optional(S.String),
-          links: S.optional(__S(2, __c0, 2)),
+          links: S.optional(__S(9, __c2, 1)),
         }),
       ).annotate({ identifier: "ProductCollectionElement" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(17, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(__S(7, __c0, 7)),
+          products: S.optional(__S(18, __c4, 2)),
           total_items: S.optional(S.Number),
           total_pages: S.optional(S.Number),
-          links: S.optional(__S(2, __c0, 2)),
+          links: S.optional(__S(9, __c2, 1)),
         }),
       ).annotate({ identifier: "ProductCollection" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           op: S.String,
@@ -772,22 +788,21 @@ function __c1(j: number): any {
           from: S.optional(S.String),
         }),
       ).annotate({ identifier: "Patch" });
+    case 1:
+      return S.Array(__S(20, __c5, 0));
     case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           product_id: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(21, __c5, 1).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/catalogs/products/{product_id}", code: 200 })),
       ).annotate({ identifier: "PatchProductRequest" });
-    case 4:
+    case 3:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PatchProductResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

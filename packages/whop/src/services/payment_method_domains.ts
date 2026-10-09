@@ -149,7 +149,7 @@ export const createPaymentMethodDomain: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreatePaymentMethodDomainRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PaymentMethodDomain>,
+  output: __S(4, __c1, 0) as any as S.Schema<PaymentMethodDomain>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -163,8 +163,8 @@ export const deletePaymentMethodDomain: API.OperationMethod<
   DeletePaymentMethodDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeletePaymentMethodDomainRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeletePaymentMethodDomainResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeletePaymentMethodDomainRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DeletePaymentMethodDomainResponse>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -178,8 +178,8 @@ export const getPaymentMethodDomain: API.OperationMethod<
   GetPaymentMethodDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetPaymentMethodDomainRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PaymentMethodDomain>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetPaymentMethodDomainRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PaymentMethodDomain>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -195,8 +195,8 @@ export const listPaymentMethodDomains: API.PaginatedOperationMethod<
   PaymentMethodDomain
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(5, __c0, 5) as any as S.Schema<ListPaymentMethodDomainsRequest>,
-    output: __S(8, __c1, 0) as any as S.Schema<ListPaymentMethodDomainsResponse>,
+    input: __S(16, __c4, 0) as any as S.Schema<ListPaymentMethodDomainsRequest>,
+    output: __S(19, __c4, 3) as any as S.Schema<ListPaymentMethodDomainsResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -225,8 +225,8 @@ export const verifyPaymentMethodDomain: API.OperationMethod<
   VerifyPaymentMethodDomainError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<VerifyPaymentMethodDomainRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PaymentMethodDomain>,
+  input: __S(20, __c5, 0) as any as S.Schema<VerifyPaymentMethodDomainRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PaymentMethodDomain>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -245,7 +245,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreatePaymentMethodDomainRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
@@ -257,7 +261,11 @@ function __c0(j: number): any {
           updated_at: S.String,
         }),
       ).annotate({ identifier: "PaymentMethodDomain" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -265,7 +273,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeletePaymentMethodDomainRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deleted: S.Boolean,
@@ -274,7 +282,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeletePaymentMethodDomainResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -282,7 +294,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPaymentMethodDomainRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -301,9 +317,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListPaymentMethodDomainsRequest",
       });
-    case 6:
-      return S.Array(__S(1, __c0, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -314,20 +330,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListPaymentMethodDomainsResponsePageInfo",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(6, __c0, 6),
-          page_info: __S(7, __c0, 7),
+          data: __S(17, __c4, 1),
+          page_info: __S(18, __c4, 2),
         }),
       ).annotate({
         identifier: "ListPaymentMethodDomainsResponse",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -338,7 +354,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

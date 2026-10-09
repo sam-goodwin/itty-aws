@@ -155,7 +155,7 @@ export interface AcceptInputDeviceTransferRequest {
 }
 export interface AcceptInputDeviceTransferResponse {}
 export type __listOf__string = string[];
-const __listOf__string = /*@__PURE__*/ __L.at(__c0, 2);
+const __listOf__string = /*@__PURE__*/ __L.at(__c15, 0);
 export interface BatchDeleteRequest {
   ChannelIds?: string[];
   InputIds?: string[];
@@ -169,14 +169,14 @@ export interface BatchFailedResultModel {
   Message?: string;
 }
 export type __listOfBatchFailedResultModel = BatchFailedResultModel[];
-const __listOfBatchFailedResultModel = /*@__PURE__*/ __L.at(__c0, 5);
+const __listOfBatchFailedResultModel = /*@__PURE__*/ __L.at(__c14, 1);
 export interface BatchSuccessfulResultModel {
   Arn?: string;
   Id?: string;
   State?: string;
 }
 export type __listOfBatchSuccessfulResultModel = BatchSuccessfulResultModel[];
-const __listOfBatchSuccessfulResultModel = /*@__PURE__*/ __L.at(__c0, 7);
+const __listOfBatchSuccessfulResultModel = /*@__PURE__*/ __L.at(__c14, 3);
 export interface BatchDeleteResponse {
   Failed?: BatchFailedResultModel[];
   Successful?: BatchSuccessfulResultModel[];
@@ -241,7 +241,7 @@ export interface PipelinePauseStateSettings {
   PipelineId?: PipelineId;
 }
 export type __listOfPipelinePauseStateSettings = PipelinePauseStateSettings[];
-const __listOfPipelinePauseStateSettings = /*@__PURE__*/ __L.at(__c2, 3);
+const __listOfPipelinePauseStateSettings = /*@__PURE__*/ __L.at(__c44, 8);
 export interface PauseStateScheduleActionSettings {
   Pipelines?: PipelinePauseStateSettings[];
 }
@@ -306,7 +306,7 @@ export interface Scte35Descriptor {
   Scte35DescriptorSettings?: Scte35DescriptorSettings;
 }
 export type __listOfScte35Descriptor = Scte35Descriptor[];
-const __listOfScte35Descriptor = /*@__PURE__*/ __L.at(__c3, 4);
+const __listOfScte35Descriptor = /*@__PURE__*/ __L.at(__c44, 17);
 export interface Scte35TimeSignalScheduleActionSettings {
   Scte35Descriptors?: Scte35Descriptor[];
 }
@@ -400,7 +400,7 @@ export interface ScheduleAction {
   ScheduleActionStartSettings?: ScheduleActionStartSettings;
 }
 export type __listOfScheduleAction = ScheduleAction[];
-const __listOfScheduleAction = /*@__PURE__*/ __L.at(__c5, 1);
+const __listOfScheduleAction = /*@__PURE__*/ __L.at(__c44, 29);
 export interface BatchScheduleActionCreateRequest {
   ScheduleActions?: ScheduleAction[];
 }
@@ -572,7 +572,7 @@ export interface MediaPackageOutputDestinationSettings {
   MediaPackageRegionName?: string;
 }
 export type __listOfMediaPackageOutputDestinationSettings = MediaPackageOutputDestinationSettings[];
-const __listOfMediaPackageOutputDestinationSettings = /*@__PURE__*/ __L.at(__c6, 3);
+const __listOfMediaPackageOutputDestinationSettings = /*@__PURE__*/ __L.at(__c57, 2);
 export interface MultiplexProgramChannelDestinationSettings {
   MultiplexId?: string;
   ProgramName?: string;
@@ -585,7 +585,7 @@ export interface OutputDestinationSettings {
   VirtualSourceAddress?: string;
 }
 export type __listOfOutputDestinationSettings = OutputDestinationSettings[];
-const __listOfOutputDestinationSettings = /*@__PURE__*/ __L.at(__c6, 6);
+const __listOfOutputDestinationSettings = /*@__PURE__*/ __L.at(__c57, 5);
 export type ConnectionMode = "CALLER" | "LISTENER" | (string & {});
 export type __integerMin1Max65535 = number;
 export interface SrtOutputDestinationSettings {
@@ -596,7 +596,7 @@ export interface SrtOutputDestinationSettings {
   ListenerPort?: number;
 }
 export type __listOfSrtOutputDestinationSettings = SrtOutputDestinationSettings[];
-const __listOfSrtOutputDestinationSettings = /*@__PURE__*/ __L.at(__c7, 0);
+const __listOfSrtOutputDestinationSettings = /*@__PURE__*/ __L.at(__c57, 7);
 export type MediaConnectRouterOutputEncryptionType =
   | "AUTOMATIC"
   | "SECRETS_MANAGER"
@@ -607,7 +607,7 @@ export interface MediaConnectRouterOutputDestinationSettings {
 }
 export type __listOfMediaConnectRouterOutputDestinationSettings =
   MediaConnectRouterOutputDestinationSettings[];
-const __listOfMediaConnectRouterOutputDestinationSettings = /*@__PURE__*/ __L.at(__c7, 2);
+const __listOfMediaConnectRouterOutputDestinationSettings = /*@__PURE__*/ __L.at(__c57, 9);
 export interface OutputDestination {
   Id?: string;
   MediaPackageSettings?: MediaPackageOutputDestinationSettings[];
@@ -618,7 +618,7 @@ export interface OutputDestination {
   MediaConnectRouterSettings?: MediaConnectRouterOutputDestinationSettings[];
 }
 export type __listOfOutputDestination = OutputDestination[];
-const __listOfOutputDestination = /*@__PURE__*/ __L.at(__c7, 4);
+const __listOfOutputDestination = /*@__PURE__*/ __L.at(__c57, 11);
 export type AudioNormalizationAlgorithm =
   | "ITU_1770_1"
   | "ITU_1770_2"
@@ -869,13 +869,13 @@ export interface InputChannelLevel {
   InputChannel?: number;
 }
 export type __listOfInputChannelLevel = InputChannelLevel[];
-const __listOfInputChannelLevel = /*@__PURE__*/ __L.at(__c9, 2);
+const __listOfInputChannelLevel = /*@__PURE__*/ __L.at(__c57, 14);
 export interface AudioChannelMapping {
   InputChannelLevels?: InputChannelLevel[];
   OutputChannel?: number;
 }
 export type __listOfAudioChannelMapping = AudioChannelMapping[];
-const __listOfAudioChannelMapping = /*@__PURE__*/ __L.at(__c9, 4);
+const __listOfAudioChannelMapping = /*@__PURE__*/ __L.at(__c57, 16);
 export type __integerMin1Max16 = number;
 export type __integerMin1Max8 = number;
 export interface RemixSettings {
@@ -895,7 +895,7 @@ export type DashRoleAudio =
   | "SUPPLEMENTARY"
   | (string & {});
 export type __listOfDashRoleAudio = DashRoleAudio[];
-const __listOfDashRoleAudio = /*@__PURE__*/ __L.at(__c9, 6);
+const __listOfDashRoleAudio = /*@__PURE__*/ __L.at(__c57, 18);
 export type DvbDashAccessibility =
   | "DVBDASH_1_VISUALLY_IMPAIRED"
   | "DVBDASH_2_HARD_OF_HEARING"
@@ -921,7 +921,7 @@ export interface AudioDescription {
   DvbDashAccessibility?: DvbDashAccessibility;
 }
 export type __listOfAudioDescription = AudioDescription[];
-const __listOfAudioDescription = /*@__PURE__*/ __L.at(__c10, 0);
+const __listOfAudioDescription = /*@__PURE__*/ __L.at(__c51, 12);
 export type AvailBlankingState = "DISABLED" | "ENABLED" | (string & {});
 export interface AvailBlanking {
   AvailBlankingImage?: InputLocation;
@@ -1155,7 +1155,7 @@ export interface CaptionDescription {
   DvbDashAccessibility?: DvbDashAccessibility;
 }
 export type __listOfCaptionDescription = CaptionDescription[];
-const __listOfCaptionDescription = /*@__PURE__*/ __L.at(__c12, 0);
+const __listOfCaptionDescription = /*@__PURE__*/ __L.at(__c51, 28);
 export type FeatureActivationsInputPrepareScheduleActions = "DISABLED" | "ENABLED" | (string & {});
 export type FeatureActivationsOutputStaticImageOverlayScheduleActions =
   | "DISABLED"
@@ -1266,7 +1266,7 @@ export interface CaptionLanguageMapping {
   LanguageDescription?: string;
 }
 export type __listOfCaptionLanguageMapping = CaptionLanguageMapping[];
-const __listOfCaptionLanguageMapping = /*@__PURE__*/ __L.at(__c14, 2);
+const __listOfCaptionLanguageMapping = /*@__PURE__*/ __L.at(__c52, 14);
 export type HlsCaptionLanguageSetting = "INSERT" | "NONE" | "OMIT" | (string & {});
 export type HlsClientCache = "DISABLED" | "ENABLED" | (string & {});
 export type HlsCodecSpecification = "RFC_4281" | "RFC_6381" | (string & {});
@@ -1411,9 +1411,9 @@ export interface MediaPackageAdditionalDestinations {
   Destination?: OutputLocationRef;
 }
 export type __listOfMediaPackageAdditionalDestinations = MediaPackageAdditionalDestinations[];
-const __listOfMediaPackageAdditionalDestinations = /*@__PURE__*/ __L.at(__c15, 4);
+const __listOfMediaPackageAdditionalDestinations = /*@__PURE__*/ __L.at(__c52, 24);
 export type __listOfOutputLocationRef = OutputLocationRef[];
-const __listOfOutputLocationRef = /*@__PURE__*/ __L.at(__c15, 5);
+const __listOfOutputLocationRef = /*@__PURE__*/ __L.at(__c52, 25);
 export type __doubleMin250Max5000 = number;
 export type __doubleMinNegative1Max5 = number;
 export type __doubleMin32Max46 = number;
@@ -1545,12 +1545,12 @@ export interface CmafIngestCaptionLanguageMapping {
   LanguageCode?: string;
 }
 export type __listOfCmafIngestCaptionLanguageMapping = CmafIngestCaptionLanguageMapping[];
-const __listOfCmafIngestCaptionLanguageMapping = /*@__PURE__*/ __L.at(__c16, 7);
+const __listOfCmafIngestCaptionLanguageMapping = /*@__PURE__*/ __L.at(__c53, 3);
 export interface AdditionalDestinations {
   Destination?: OutputLocationRef;
 }
 export type __listOfAdditionalDestinations = AdditionalDestinations[];
-const __listOfAdditionalDestinations = /*@__PURE__*/ __L.at(__c17, 1);
+const __listOfAdditionalDestinations = /*@__PURE__*/ __L.at(__c53, 5);
 export interface CmafIngestAbWatermarkerIrdetoSettings {
   AdditionalDestinationsAlternateDestinations?: OutputLocationRef[];
   AlternateDestination?: OutputLocationRef;
@@ -1904,14 +1904,14 @@ export interface Output {
   VideoDescriptionName?: string;
 }
 export type __listOfOutput = Output[];
-const __listOfOutput = /*@__PURE__*/ __L.at(__c21, 5);
+const __listOfOutput = /*@__PURE__*/ __L.at(__c54, 9);
 export interface OutputGroup {
   Name?: string;
   OutputGroupSettings?: OutputGroupSettings;
   Outputs?: Output[];
 }
 export type __listOfOutputGroup = OutputGroup[];
-const __listOfOutputGroup = /*@__PURE__*/ __L.at(__c21, 7);
+const __listOfOutputGroup = /*@__PURE__*/ __L.at(__c54, 11);
 export type TimecodeConfigSource = "EMBEDDED" | "SYSTEMCLOCK" | "ZEROBASED" | (string & {});
 export type __integerMin1Max1000000 = number;
 export interface TimecodeConfig {
@@ -2359,7 +2359,7 @@ export interface VideoDescription {
   Border?: number;
 }
 export type __listOfVideoDescription = VideoDescription[];
-const __listOfVideoDescription = /*@__PURE__*/ __L.at(__c24, 2);
+const __listOfVideoDescription = /*@__PURE__*/ __L.at(__c54, 29);
 export type ThumbnailState = "AUTO" | "DISABLED" | (string & {});
 export interface ThumbnailConfiguration {
   State?: ThumbnailState;
@@ -2371,7 +2371,7 @@ export interface ColorCorrection {
   Uri?: string;
 }
 export type __listOfColorCorrection = ColorCorrection[];
-const __listOfColorCorrection = /*@__PURE__*/ __L.at(__c24, 5);
+const __listOfColorCorrection = /*@__PURE__*/ __L.at(__c55, 0);
 export interface ColorCorrectionSettings {
   GlobalColorCorrections?: ColorCorrection[];
 }
@@ -2413,7 +2413,7 @@ export interface FailoverCondition {
   FailoverConditionSettings?: FailoverConditionSettings;
 }
 export type __listOfFailoverCondition = FailoverCondition[];
-const __listOfFailoverCondition = /*@__PURE__*/ __L.at(__c25, 5);
+const __listOfFailoverCondition = /*@__PURE__*/ __L.at(__c57, 25);
 export type InputPreference = "EQUAL_INPUT_PREFERENCE" | "PRIMARY_INPUT_PREFERRED" | (string & {});
 export interface AutomaticInputFailoverSettings {
   ErrorClearTimeMsec?: number;
@@ -2458,7 +2458,7 @@ export interface AudioPid {
   PremixSettings?: AudioPreMixerSettings;
 }
 export type __listOfAudioPid = AudioPid[];
-const __listOfAudioPid = /*@__PURE__*/ __L.at(__c26, 4);
+const __listOfAudioPid = /*@__PURE__*/ __L.at(__c58, 0);
 export interface AudioPidSelection {
   Pid?: number;
   Pids?: AudioPid[];
@@ -2468,7 +2468,7 @@ export interface AudioTrack {
   PremixSettings?: AudioPreMixerSettings;
 }
 export type __listOfAudioTrack = AudioTrack[];
-const __listOfAudioTrack = /*@__PURE__*/ __L.at(__c26, 7);
+const __listOfAudioTrack = /*@__PURE__*/ __L.at(__c58, 3);
 export interface AudioTrackSelection {
   Tracks?: AudioTrack[];
   DolbyEDecode?: AudioDolbyEDecode;
@@ -2484,7 +2484,7 @@ export interface AudioSelector {
   SelectorSettings?: AudioSelectorSettings;
 }
 export type __listOfAudioSelector = AudioSelector[];
-const __listOfAudioSelector = /*@__PURE__*/ __L.at(__c27, 3);
+const __listOfAudioSelector = /*@__PURE__*/ __L.at(__c58, 7);
 export interface AncillarySourceSettings {
   SourceAncillaryChannelNumber?: number;
 }
@@ -2548,7 +2548,7 @@ export interface CaptionSelector {
   SelectorSettings?: CaptionSelectorSettings;
 }
 export type __listOfCaptionSelector = CaptionSelector[];
-const __listOfCaptionSelector = /*@__PURE__*/ __L.at(__c28, 5);
+const __listOfCaptionSelector = /*@__PURE__*/ __L.at(__c58, 17);
 export type InputDeblockFilter = "DISABLED" | "ENABLED" | (string & {});
 export type InputDenoiseFilter = "DISABLED" | "ENABLED" | (string & {});
 export type InputFilter = "AUTO" | "DISABLED" | "FORCED" | (string & {});
@@ -2623,7 +2623,7 @@ export interface InputAttachment {
   LogicalInterfaceNames?: string[];
 }
 export type __listOfInputAttachment = InputAttachment[];
-const __listOfInputAttachment = /*@__PURE__*/ __L.at(__c30, 0);
+const __listOfInputAttachment = /*@__PURE__*/ __L.at(__c58, 28);
 export type InputCodec = "MPEG2" | "AVC" | "HEVC" | (string & {});
 export type InputMaximumBitrate = "MAX_10_MBPS" | "MAX_20_MBPS" | "MAX_50_MBPS" | (string & {});
 export type InputResolution = "SD" | "HD" | "UHD" | (string & {});
@@ -2677,7 +2677,7 @@ export interface AudioFeedInput {
   FeedInput?: string;
 }
 export type __listOfAudioFeedInput = AudioFeedInput[];
-const __listOfAudioFeedInput = /*@__PURE__*/ __L.at(__c31, 3);
+const __listOfAudioFeedInput = /*@__PURE__*/ __L.at(__c59, 0);
 export type EnrichmentMethod = "SCTE35_ELEMENTAL_INFERENCE_QUERY_PARAMS" | (string & {});
 export type __listOfEnrichmentMethod = EnrichmentMethod[];
 const __listOfEnrichmentMethod = __listOfDashRoleAudio as any as S.Schema<__listOfEnrichmentMethod>;
@@ -2712,7 +2712,7 @@ export interface ChannelEgressEndpoint {
   SourceIp?: string;
 }
 export type __listOfChannelEgressEndpoint = ChannelEgressEndpoint[];
-const __listOfChannelEgressEndpoint = /*@__PURE__*/ __L.at(__c31, 7);
+const __listOfChannelEgressEndpoint = /*@__PURE__*/ __L.at(__c59, 2);
 export interface MaintenanceStatus {
   MaintenanceDay?: MaintenanceDay;
   MaintenanceDeadline?: string;
@@ -2742,7 +2742,7 @@ export interface PipelineDetail {
   };
 }
 export type __listOfPipelineDetail = PipelineDetail[];
-const __listOfPipelineDetail = /*@__PURE__*/ __L.at(__c32, 5);
+const __listOfPipelineDetail = /*@__PURE__*/ __L.at(__c55, 6);
 export type ChannelState =
   | "CREATING"
   | "CREATE_FAILED"
@@ -3252,7 +3252,7 @@ export interface InterfaceMappingCreateRequest {
   NetworkId?: string;
 }
 export type __listOfInterfaceMappingCreateRequest = InterfaceMappingCreateRequest[];
-const __listOfInterfaceMappingCreateRequest = /*@__PURE__*/ __L.at(__c34, 4);
+const __listOfInterfaceMappingCreateRequest = /*@__PURE__*/ __L.at(__c68, 1);
 export interface ClusterNetworkSettingsCreateRequest {
   DefaultRoute?: string;
   InterfaceMappings?: InterfaceMappingCreateRequest[];
@@ -3270,7 +3270,7 @@ export interface InterfaceMapping {
   NetworkId?: string;
 }
 export type __listOfInterfaceMapping = InterfaceMapping[];
-const __listOfInterfaceMapping = /*@__PURE__*/ __L.at(__c35, 0);
+const __listOfInterfaceMapping = /*@__PURE__*/ __L.at(__c70, 1);
 export interface ClusterNetworkSettings {
   DefaultRoute?: string;
   InterfaceMappings?: InterfaceMapping[];
@@ -3298,7 +3298,7 @@ export interface EventBridgeRuleTemplateTarget {
   Arn?: string;
 }
 export type __listOfEventBridgeRuleTemplateTarget = EventBridgeRuleTemplateTarget[];
-const __listOfEventBridgeRuleTemplateTarget = /*@__PURE__*/ __L.at(__c35, 4);
+const __listOfEventBridgeRuleTemplateTarget = /*@__PURE__*/ __L.at(__c72, 1);
 export type EventBridgeRuleTemplateEventType =
   | "MEDIALIVE_MULTIPLEX_ALERT"
   | "MEDIALIVE_MULTIPLEX_STATE_CHANGE"
@@ -3357,7 +3357,7 @@ export interface InputRequestDestinationRoute {
   Gateway?: string;
 }
 export type __listOfInputRequestDestinationRoute = InputRequestDestinationRoute[];
-const __listOfInputRequestDestinationRoute = /*@__PURE__*/ __L.at(__c36, 1);
+const __listOfInputRequestDestinationRoute = /*@__PURE__*/ __L.at(__c75, 1);
 export interface InputDestinationRequest {
   StreamName?: string;
   Network?: string;
@@ -3365,24 +3365,24 @@ export interface InputDestinationRequest {
   StaticIpAddress?: string;
 }
 export type __listOfInputDestinationRequest = InputDestinationRequest[];
-const __listOfInputDestinationRequest = /*@__PURE__*/ __L.at(__c36, 3);
+const __listOfInputDestinationRequest = /*@__PURE__*/ __L.at(__c75, 3);
 export interface InputDeviceSettings {
   Id?: string;
 }
 export type __listOfInputDeviceSettings = InputDeviceSettings[];
-const __listOfInputDeviceSettings = /*@__PURE__*/ __L.at(__c36, 5);
+const __listOfInputDeviceSettings = /*@__PURE__*/ __L.at(__c77, 1);
 export interface MediaConnectFlowRequest {
   FlowArn?: string;
 }
 export type __listOfMediaConnectFlowRequest = MediaConnectFlowRequest[];
-const __listOfMediaConnectFlowRequest = /*@__PURE__*/ __L.at(__c36, 7);
+const __listOfMediaConnectFlowRequest = /*@__PURE__*/ __L.at(__c77, 3);
 export interface InputSourceRequest {
   PasswordParam?: string;
   Url?: string;
   Username?: string;
 }
 export type __listOfInputSourceRequest = InputSourceRequest[];
-const __listOfInputSourceRequest = /*@__PURE__*/ __L.at(__c37, 1);
+const __listOfInputSourceRequest = /*@__PURE__*/ __L.at(__c77, 5);
 export type InputType =
   | "UDP_PUSH"
   | "RTP_PUSH"
@@ -3418,7 +3418,7 @@ export interface SrtCallerSourceRequest {
   StreamId?: string;
 }
 export type __listOfSrtCallerSourceRequest = SrtCallerSourceRequest[];
-const __listOfSrtCallerSourceRequest = /*@__PURE__*/ __L.at(__c37, 5);
+const __listOfSrtCallerSourceRequest = /*@__PURE__*/ __L.at(__c75, 6);
 export interface SrtListenerDecryptionRequest {
   Algorithm?: Algorithm;
   PassphraseSecretArn?: string;
@@ -3438,7 +3438,7 @@ export interface MulticastSourceCreateRequest {
   Url?: string;
 }
 export type __listOfMulticastSourceCreateRequest = MulticastSourceCreateRequest[];
-const __listOfMulticastSourceCreateRequest = /*@__PURE__*/ __L.at(__c38, 1);
+const __listOfMulticastSourceCreateRequest = /*@__PURE__*/ __L.at(__c75, 10);
 export interface MulticastSettingsCreateRequest {
   Sources?: MulticastSourceCreateRequest[];
 }
@@ -3447,7 +3447,7 @@ export interface InputSdpLocation {
   SdpUrl?: string;
 }
 export type __listOfInputSdpLocation = InputSdpLocation[];
-const __listOfInputSdpLocation = /*@__PURE__*/ __L.at(__c38, 4);
+const __listOfInputSdpLocation = /*@__PURE__*/ __L.at(__c77, 7);
 export interface Smpte2110ReceiverGroupSdpSettings {
   AncillarySdps?: InputSdpLocation[];
   AudioSdps?: InputSdpLocation[];
@@ -3457,7 +3457,7 @@ export interface Smpte2110ReceiverGroup {
   SdpSettings?: Smpte2110ReceiverGroupSdpSettings;
 }
 export type __listOfSmpte2110ReceiverGroup = Smpte2110ReceiverGroup[];
-const __listOfSmpte2110ReceiverGroup = /*@__PURE__*/ __L.at(__c38, 7);
+const __listOfSmpte2110ReceiverGroup = /*@__PURE__*/ __L.at(__c77, 10);
 export interface Smpte2110ReceiverGroupSettings {
   Smpte2110ReceiverGroups?: Smpte2110ReceiverGroup[];
 }
@@ -3467,7 +3467,7 @@ export interface RouterDestinationSettings {
   AvailabilityZoneName?: string;
 }
 export type __listOfRouterDestinationSettings = RouterDestinationSettings[];
-const __listOfRouterDestinationSettings = /*@__PURE__*/ __L.at(__c39, 2);
+const __listOfRouterDestinationSettings = /*@__PURE__*/ __L.at(__c74, 2);
 export type RouterEncryptionType = "AUTOMATIC" | "SECRETS_MANAGER" | (string & {});
 export interface RouterSettings {
   Destinations?: RouterDestinationSettings[];
@@ -3502,7 +3502,7 @@ export interface InputDestinationRoute {
   Gateway?: string;
 }
 export type __listOfInputDestinationRoute = InputDestinationRoute[];
-const __listOfInputDestinationRoute = /*@__PURE__*/ __L.at(__c39, 7);
+const __listOfInputDestinationRoute = /*@__PURE__*/ __L.at(__c76, 1);
 export interface InputDestination {
   Ip?: string;
   Port?: string;
@@ -3512,7 +3512,7 @@ export interface InputDestination {
   NetworkRoutes?: InputDestinationRoute[];
 }
 export type __listOfInputDestination = InputDestination[];
-const __listOfInputDestination = /*@__PURE__*/ __L.at(__c40, 1);
+const __listOfInputDestination = /*@__PURE__*/ __L.at(__c77, 14);
 export type InputClass = "STANDARD" | "SINGLE_PIPELINE" | (string & {});
 export type InputSourceType = "STATIC" | "DYNAMIC" | (string & {});
 export interface MediaConnectFlow {
@@ -3547,7 +3547,7 @@ export interface SrtCallerSource {
   StreamId?: string;
 }
 export type __listOfSrtCallerSource = SrtCallerSource[];
-const __listOfSrtCallerSource = /*@__PURE__*/ __L.at(__c40, 4);
+const __listOfSrtCallerSource = /*@__PURE__*/ __L.at(__c77, 17);
 export interface SrtListenerDecryption {
   Algorithm?: Algorithm;
   PassphraseSecretArn?: string;
@@ -3566,7 +3566,7 @@ export interface MulticastSource {
   Url?: string;
 }
 export type __listOfMulticastSource = MulticastSource[];
-const __listOfMulticastSource = /*@__PURE__*/ __L.at(__c41, 0);
+const __listOfMulticastSource = /*@__PURE__*/ __L.at(__c77, 21);
 export interface MulticastSettings {
   Sources?: MulticastSource[];
 }
@@ -3575,7 +3575,7 @@ export interface RouterDestination {
   RouterOutputArn?: string;
 }
 export type __listOfRouterDestination = RouterDestination[];
-const __listOfRouterDestination = /*@__PURE__*/ __L.at(__c41, 3);
+const __listOfRouterDestination = /*@__PURE__*/ __L.at(__c77, 24);
 export interface RouterInputSettings {
   Destinations?: RouterDestination[];
   EncryptionType?: RouterEncryptionType;
@@ -3619,7 +3619,7 @@ export interface InputWhitelistRuleCidr {
   Cidr?: string;
 }
 export type __listOfInputWhitelistRuleCidr = InputWhitelistRuleCidr[];
-const __listOfInputWhitelistRuleCidr = /*@__PURE__*/ __L.at(__c42, 0);
+const __listOfInputWhitelistRuleCidr = /*@__PURE__*/ __L.at(__c80, 1);
 export interface CreateInputSecurityGroupRequest {
   Tags?: { [key: string]: string | undefined };
   WhitelistRules?: InputWhitelistRuleCidr[];
@@ -3666,7 +3666,7 @@ export interface MultiplexOutputDestination {
   MediaConnectSettings?: MultiplexMediaConnectOutputDestinationSettings;
 }
 export type __listOfMultiplexOutputDestination = MultiplexOutputDestination[];
-const __listOfMultiplexOutputDestination = /*@__PURE__*/ __L.at(__c43, 0);
+const __listOfMultiplexOutputDestination = /*@__PURE__*/ __L.at(__c85, 3);
 export type MultiplexState =
   | "CREATING"
   | "CREATE_FAILED"
@@ -3731,7 +3731,7 @@ export interface CreateMultiplexProgramRequest {
   RequestId?: string;
 }
 export type __listOf__integer = number[];
-const __listOf__integer = /*@__PURE__*/ __L.at(__c44, 0);
+const __listOf__integer = /*@__PURE__*/ __L.at(__c88, 0);
 export interface MultiplexProgramPacketIdentifiersMap {
   AudioPids?: number[];
   DvbSubPids?: number[];
@@ -3756,7 +3756,7 @@ export interface MultiplexProgramPipelineDetail {
   PipelineId?: string;
 }
 export type __listOfMultiplexProgramPipelineDetail = MultiplexProgramPipelineDetail[];
-const __listOfMultiplexProgramPipelineDetail = /*@__PURE__*/ __L.at(__c44, 3);
+const __listOfMultiplexProgramPipelineDetail = /*@__PURE__*/ __L.at(__c89, 5);
 export interface MultiplexProgram {
   ChannelId?: string;
   MultiplexProgramSettings?: MultiplexProgramSettings;
@@ -3833,7 +3833,7 @@ export interface NodeInterfaceMappingCreateRequest {
   PhysicalInterfaceName?: string;
 }
 export type __listOfNodeInterfaceMappingCreateRequest = NodeInterfaceMappingCreateRequest[];
-const __listOfNodeInterfaceMappingCreateRequest = /*@__PURE__*/ __L.at(__c45, 1);
+const __listOfNodeInterfaceMappingCreateRequest = /*@__PURE__*/ __L.at(__c92, 1);
 export type NodeRole = "BACKUP" | "ACTIVE" | (string & {});
 export interface CreateNodeRequest {
   ClusterId: string;
@@ -3851,7 +3851,7 @@ export interface NodeInterfaceMapping {
   PhysicalInterfaceIpAddresses?: string[];
 }
 export type __listOfNodeInterfaceMapping = NodeInterfaceMapping[];
-const __listOfNodeInterfaceMapping = /*@__PURE__*/ __L.at(__c45, 4);
+const __listOfNodeInterfaceMapping = /*@__PURE__*/ __L.at(__c93, 1);
 export type NodeState =
   | "CREATED"
   | "REGISTERING"
@@ -3954,7 +3954,7 @@ export interface MediaResourceNeighbor {
   Name?: string;
 }
 export type __listOfMediaResourceNeighbor = MediaResourceNeighbor[];
-const __listOfMediaResourceNeighbor = /*@__PURE__*/ __L.at(__c47, 1);
+const __listOfMediaResourceNeighbor = /*@__PURE__*/ __L.at(__c103, 1);
 export interface MediaResource {
   Destinations?: MediaResourceNeighbor[];
   Name?: string;
@@ -5029,7 +5029,7 @@ export interface InputDeviceUhdAudioChannelPairConfig {
   Profile?: InputDeviceUhdAudioChannelPairProfile;
 }
 export type __listOfInputDeviceUhdAudioChannelPairConfig = InputDeviceUhdAudioChannelPairConfig[];
-const __listOfInputDeviceUhdAudioChannelPairConfig = /*@__PURE__*/ __L.at(__c52, 2);
+const __listOfInputDeviceUhdAudioChannelPairConfig = /*@__PURE__*/ __L.at(__c135, 4);
 export interface InputDeviceUhdSettings {
   ActiveInput?: InputDeviceActiveInput;
   ConfiguredInput?: InputDeviceConfiguredInput;
@@ -5283,13 +5283,13 @@ export interface Thumbnail {
   TimeStamp?: Date;
 }
 export type __listOfThumbnail = Thumbnail[];
-const __listOfThumbnail = /*@__PURE__*/ __L.at(__c54, 7);
+const __listOfThumbnail = /*@__PURE__*/ __L.at(__c148, 2);
 export interface ThumbnailDetail {
   PipelineId?: string;
   Thumbnails?: Thumbnail[];
 }
 export type __listOfThumbnailDetail = ThumbnailDetail[];
-const __listOfThumbnailDetail = /*@__PURE__*/ __L.at(__c55, 1);
+const __listOfThumbnailDetail = /*@__PURE__*/ __L.at(__c148, 4);
 export interface DescribeThumbnailsResponse {
   ThumbnailDetails?: ThumbnailDetail[];
 }
@@ -5411,7 +5411,7 @@ export interface ChannelAlert {
   State?: ChannelAlertState;
 }
 export type __listOfChannelAlert = ChannelAlert[];
-const __listOfChannelAlert = /*@__PURE__*/ __L.at(__c56, 2);
+const __listOfChannelAlert = /*@__PURE__*/ __L.at(__c155, 1);
 export interface ListAlertsResponse {
   Alerts?: ChannelAlert[];
   NextToken?: string;
@@ -5431,7 +5431,7 @@ export interface DescribeChannelPlacementGroupSummary {
   State?: ChannelPlacementGroupState;
 }
 export type __listOfDescribeChannelPlacementGroupSummary = DescribeChannelPlacementGroupSummary[];
-const __listOfDescribeChannelPlacementGroupSummary = /*@__PURE__*/ __L.at(__c56, 5);
+const __listOfDescribeChannelPlacementGroupSummary = /*@__PURE__*/ __L.at(__c156, 1);
 export interface ListChannelPlacementGroupsResponse {
   ChannelPlacementGroups?: DescribeChannelPlacementGroupSummary[];
   NextToken?: string;
@@ -5441,7 +5441,7 @@ export interface ListChannelsRequest {
   NextToken?: string;
 }
 export type __listOfChannelEngineVersionResponse = ChannelEngineVersionResponse[];
-const __listOfChannelEngineVersionResponse = /*@__PURE__*/ __L.at(__c57, 0);
+const __listOfChannelEngineVersionResponse = /*@__PURE__*/ __L.at(__c158, 0);
 export interface ChannelSummary {
   Arn?: string;
   CdiInputSpecification?: CdiInputSpecification;
@@ -5467,7 +5467,7 @@ export interface ChannelSummary {
   InferenceSettings?: DescribeInferenceSettings;
 }
 export type __listOfChannelSummary = ChannelSummary[];
-const __listOfChannelSummary = /*@__PURE__*/ __L.at(__c57, 2);
+const __listOfChannelSummary = /*@__PURE__*/ __L.at(__c157, 2);
 export interface ListChannelsResponse {
   Channels?: (ChannelSummary & {
     InputAttachments: (InputAttachment & {
@@ -5560,7 +5560,7 @@ export interface CloudWatchAlarmTemplateGroupSummary {
   TemplateCount?: number;
 }
 export type __listOfCloudWatchAlarmTemplateGroupSummary = CloudWatchAlarmTemplateGroupSummary[];
-const __listOfCloudWatchAlarmTemplateGroupSummary = /*@__PURE__*/ __L.at(__c57, 6);
+const __listOfCloudWatchAlarmTemplateGroupSummary = /*@__PURE__*/ __L.at(__c160, 1);
 export interface ListCloudWatchAlarmTemplateGroupsResponse {
   CloudWatchAlarmTemplateGroups?: (CloudWatchAlarmTemplateGroupSummary & {
     Arn: __stringPatternArnMedialiveCloudwatchAlarmTemplateGroup;
@@ -5598,7 +5598,7 @@ export interface CloudWatchAlarmTemplateSummary {
   TreatMissingData?: CloudWatchAlarmTemplateTreatMissingData;
 }
 export type __listOfCloudWatchAlarmTemplateSummary = CloudWatchAlarmTemplateSummary[];
-const __listOfCloudWatchAlarmTemplateSummary = /*@__PURE__*/ __L.at(__c58, 1);
+const __listOfCloudWatchAlarmTemplateSummary = /*@__PURE__*/ __L.at(__c161, 1);
 export interface ListCloudWatchAlarmTemplatesResponse {
   CloudWatchAlarmTemplates?: (CloudWatchAlarmTemplateSummary & {
     Arn: __stringPatternArnMedialiveCloudwatchAlarmTemplate;
@@ -5635,7 +5635,7 @@ export interface ClusterAlert {
   State?: ClusterAlertState;
 }
 export type __listOfClusterAlert = ClusterAlert[];
-const __listOfClusterAlert = /*@__PURE__*/ __L.at(__c58, 5);
+const __listOfClusterAlert = /*@__PURE__*/ __L.at(__c162, 2);
 export interface ListClusterAlertsResponse {
   Alerts?: ClusterAlert[];
   NextToken?: string;
@@ -5655,7 +5655,7 @@ export interface DescribeClusterSummary {
   State?: ClusterState;
 }
 export type __listOfDescribeClusterSummary = DescribeClusterSummary[];
-const __listOfDescribeClusterSummary = /*@__PURE__*/ __L.at(__c59, 0);
+const __listOfDescribeClusterSummary = /*@__PURE__*/ __L.at(__c163, 1);
 export interface ListClustersResponse {
   Clusters?: DescribeClusterSummary[];
   NextToken?: string;
@@ -5708,7 +5708,7 @@ export interface EventBridgeRuleTemplateSummary {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfEventBridgeRuleTemplateSummary = EventBridgeRuleTemplateSummary[];
-const __listOfEventBridgeRuleTemplateSummary = /*@__PURE__*/ __L.at(__c59, 6);
+const __listOfEventBridgeRuleTemplateSummary = /*@__PURE__*/ __L.at(__c165, 2);
 export interface ListEventBridgeRuleTemplatesResponse {
   EventBridgeRuleTemplates?: (EventBridgeRuleTemplateSummary & {
     Arn: __stringPatternArnMedialiveEventbridgeRuleTemplate;
@@ -5744,7 +5744,7 @@ export interface InputDeviceSummary {
   OutputType?: InputDeviceOutputType;
 }
 export type __listOfInputDeviceSummary = InputDeviceSummary[];
-const __listOfInputDeviceSummary = /*@__PURE__*/ __L.at(__c60, 2);
+const __listOfInputDeviceSummary = /*@__PURE__*/ __L.at(__c166, 2);
 export interface ListInputDevicesResponse {
   InputDevices?: InputDeviceSummary[];
   NextToken?: string;
@@ -5762,7 +5762,7 @@ export interface TransferringInputDeviceSummary {
   TransferType?: InputDeviceTransferType;
 }
 export type __listOfTransferringInputDeviceSummary = TransferringInputDeviceSummary[];
-const __listOfTransferringInputDeviceSummary = /*@__PURE__*/ __L.at(__c60, 6);
+const __listOfTransferringInputDeviceSummary = /*@__PURE__*/ __L.at(__c167, 2);
 export interface ListInputDeviceTransfersResponse {
   InputDeviceTransfers?: TransferringInputDeviceSummary[];
   NextToken?: string;
@@ -5772,7 +5772,7 @@ export interface ListInputsRequest {
   NextToken?: string;
 }
 export type __listOfInput = Input[];
-const __listOfInput = /*@__PURE__*/ __L.at(__c61, 1);
+const __listOfInput = /*@__PURE__*/ __L.at(__c168, 1);
 export interface ListInputsResponse {
   Inputs?: (Input & {
     SrtSettings: SrtSettings & {
@@ -5789,7 +5789,7 @@ export interface ListInputSecurityGroupsRequest {
   NextToken?: string;
 }
 export type __listOfInputSecurityGroup = InputSecurityGroup[];
-const __listOfInputSecurityGroup = /*@__PURE__*/ __L.at(__c61, 4);
+const __listOfInputSecurityGroup = /*@__PURE__*/ __L.at(__c169, 1);
 export interface ListInputSecurityGroupsResponse {
   InputSecurityGroups?: InputSecurityGroup[];
   NextToken?: string;
@@ -5835,7 +5835,7 @@ export interface MultiplexSummary {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfMultiplexSummary = MultiplexSummary[];
-const __listOfMultiplexSummary = /*@__PURE__*/ __L.at(__c62, 3);
+const __listOfMultiplexSummary = /*@__PURE__*/ __L.at(__c171, 3);
 export interface ListMultiplexesResponse {
   Multiplexes?: MultiplexSummary[];
   NextToken?: string;
@@ -5850,7 +5850,7 @@ export interface MultiplexProgramSummary {
   ProgramName?: string;
 }
 export type __listOfMultiplexProgramSummary = MultiplexProgramSummary[];
-const __listOfMultiplexProgramSummary = /*@__PURE__*/ __L.at(__c62, 7);
+const __listOfMultiplexProgramSummary = /*@__PURE__*/ __L.at(__c172, 2);
 export interface ListMultiplexProgramsResponse {
   MultiplexPrograms?: MultiplexProgramSummary[];
   NextToken?: string;
@@ -5869,7 +5869,7 @@ export interface DescribeNetworkSummary {
   State?: NetworkState;
 }
 export type __listOfDescribeNetworkSummary = DescribeNetworkSummary[];
-const __listOfDescribeNetworkSummary = /*@__PURE__*/ __L.at(__c63, 2);
+const __listOfDescribeNetworkSummary = /*@__PURE__*/ __L.at(__c173, 1);
 export interface ListNetworksResponse {
   Networks?: DescribeNetworkSummary[];
   NextToken?: string;
@@ -5894,7 +5894,7 @@ export interface DescribeNodeSummary {
   SdiSourceMappings?: SdiSourceMapping[];
 }
 export type __listOfDescribeNodeSummary = DescribeNodeSummary[];
-const __listOfDescribeNodeSummary = /*@__PURE__*/ __L.at(__c63, 6);
+const __listOfDescribeNodeSummary = /*@__PURE__*/ __L.at(__c174, 2);
 export interface ListNodesResponse {
   NextToken?: string;
   Nodes?: DescribeNodeSummary[];
@@ -5927,7 +5927,7 @@ export interface Offering {
   UsagePrice?: number;
 }
 export type __listOfOffering = Offering[];
-const __listOfOffering = /*@__PURE__*/ __L.at(__c64, 1);
+const __listOfOffering = /*@__PURE__*/ __L.at(__c175, 1);
 export interface ListOfferingsResponse {
   NextToken?: string;
   Offerings?: Offering[];
@@ -5966,7 +5966,7 @@ export interface Reservation {
   UsagePrice?: number;
 }
 export type __listOfReservation = Reservation[];
-const __listOfReservation = /*@__PURE__*/ __L.at(__c64, 5);
+const __listOfReservation = /*@__PURE__*/ __L.at(__c176, 1);
 export interface ListReservationsResponse {
   NextToken?: string;
   Reservations?: Reservation[];
@@ -5985,7 +5985,7 @@ export interface SdiSourceSummary {
   Type?: SdiSourceType;
 }
 export type __listOfSdiSourceSummary = SdiSourceSummary[];
-const __listOfSdiSourceSummary = /*@__PURE__*/ __L.at(__c65, 0);
+const __listOfSdiSourceSummary = /*@__PURE__*/ __L.at(__c178, 1);
 export interface ListSdiSourcesResponse {
   NextToken?: string;
   SdiSources?: SdiSourceSummary[];
@@ -6008,7 +6008,7 @@ export interface SignalMapSummary {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfSignalMapSummary = SignalMapSummary[];
-const __listOfSignalMapSummary = /*@__PURE__*/ __L.at(__c65, 4);
+const __listOfSignalMapSummary = /*@__PURE__*/ __L.at(__c179, 2);
 export interface ListSignalMapsResponse {
   NextToken?: string;
   SignalMaps?: (SignalMapSummary & {
@@ -8304,7 +8304,7 @@ export interface ValidationError {
   ErrorMessage?: string;
 }
 export type __listOfValidationError = ValidationError[];
-const __listOfValidationError = /*@__PURE__*/ __L.at(__c72, 1);
+const __listOfValidationError = /*@__PURE__*/ __L.at(__c137, 1);
 export type AcceptInputDeviceTransferError =
   | BadGatewayException
   | BadRequestException
@@ -8326,7 +8326,7 @@ export const acceptInputDeviceTransfer: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AcceptInputDeviceTransferRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptInputDeviceTransferResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<AcceptInputDeviceTransferResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8362,8 +8362,8 @@ export const batchDelete: API.OperationMethod<
   BatchDeleteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BatchDeleteRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<BatchDeleteResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<BatchDeleteRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<BatchDeleteResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8398,8 +8398,8 @@ export const batchStart: API.OperationMethod<
   BatchStartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<BatchStartRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<BatchStartResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<BatchStartRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<BatchStartResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8434,8 +8434,8 @@ export const batchStop: API.OperationMethod<
   BatchStopError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<BatchStopRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<BatchStopResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<BatchStopRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<BatchStopResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8470,8 +8470,8 @@ export const batchUpdateSchedule: API.OperationMethod<
   BatchUpdateScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<BatchUpdateScheduleRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<BatchUpdateScheduleResponse>,
+  input: __S(1346, __c42, 2) as any as S.Schema<BatchUpdateScheduleRequest>,
+  output: __S(1347, __c42, 3) as any as S.Schema<BatchUpdateScheduleResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8507,8 +8507,8 @@ export const cancelInputDeviceTransfer: API.OperationMethod<
   CancelInputDeviceTransferError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CancelInputDeviceTransferRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelInputDeviceTransferResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<CancelInputDeviceTransferRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CancelInputDeviceTransferResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8544,8 +8544,8 @@ export const claimDevice: API.OperationMethod<
   ClaimDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ClaimDeviceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ClaimDeviceResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<ClaimDeviceRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<ClaimDeviceResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8581,8 +8581,8 @@ export const createChannel: API.OperationMethod<
   CreateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<CreateChannelRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<CreateChannelResponse>,
+  input: __S(1538, __c48, 2) as any as S.Schema<CreateChannelRequest>,
+  output: __S(1573, __c49, 5) as any as S.Schema<CreateChannelResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8617,8 +8617,8 @@ export const createChannelPlacementGroup: API.OperationMethod<
   CreateChannelPlacementGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<CreateChannelPlacementGroupRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<CreateChannelPlacementGroupResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<CreateChannelPlacementGroupRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<CreateChannelPlacementGroupResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8650,8 +8650,8 @@ export const createCloudWatchAlarmTemplate: API.OperationMethod<
   CreateCloudWatchAlarmTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<CreateCloudWatchAlarmTemplateRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<CreateCloudWatchAlarmTemplateResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<CreateCloudWatchAlarmTemplateRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<CreateCloudWatchAlarmTemplateResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -8682,8 +8682,8 @@ export const createCloudWatchAlarmTemplateGroup: API.OperationMethod<
   CreateCloudWatchAlarmTemplateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<CreateCloudWatchAlarmTemplateGroupRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<CreateCloudWatchAlarmTemplateGroupResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<CreateCloudWatchAlarmTemplateGroupRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<CreateCloudWatchAlarmTemplateGroupResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -8715,8 +8715,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<CreateClusterRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<CreateClusterResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<CreateClusterRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<CreateClusterResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8748,8 +8748,8 @@ export const createEventBridgeRuleTemplate: API.OperationMethod<
   CreateEventBridgeRuleTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<CreateEventBridgeRuleTemplateRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<CreateEventBridgeRuleTemplateResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<CreateEventBridgeRuleTemplateRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<CreateEventBridgeRuleTemplateResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -8780,8 +8780,8 @@ export const createEventBridgeRuleTemplateGroup: API.OperationMethod<
   CreateEventBridgeRuleTemplateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<CreateEventBridgeRuleTemplateGroupRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<CreateEventBridgeRuleTemplateGroupResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<CreateEventBridgeRuleTemplateGroupRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<CreateEventBridgeRuleTemplateGroupResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -8812,8 +8812,8 @@ export const createInput: API.OperationMethod<
   CreateInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<CreateInputRequest>,
-  output: __S(334, __c41, 6) as any as S.Schema<CreateInputResponse>,
+  input: __S(2372, __c74, 4) as any as S.Schema<CreateInputRequest>,
+  output: __S(2412, __c75, 12) as any as S.Schema<CreateInputResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8844,8 +8844,8 @@ export const createInputSecurityGroup: API.OperationMethod<
   CreateInputSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<CreateInputSecurityGroupRequest>,
-  output: __S(339, __c42, 3) as any as S.Schema<CreateInputSecurityGroupResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<CreateInputSecurityGroupRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<CreateInputSecurityGroupResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8878,8 +8878,8 @@ export const createMultiplex: API.OperationMethod<
   CreateMultiplexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<CreateMultiplexRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<CreateMultiplexResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<CreateMultiplexRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<CreateMultiplexResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8914,8 +8914,8 @@ export const createMultiplexProgram: API.OperationMethod<
   CreateMultiplexProgramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<CreateMultiplexProgramRequest>,
-  output: __S(357, __c44, 5) as any as S.Schema<CreateMultiplexProgramResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<CreateMultiplexProgramRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<CreateMultiplexProgramResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8949,8 +8949,8 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<CreateNetworkRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<CreateNetworkResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<CreateNetworkRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<CreateNetworkResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -8983,8 +8983,8 @@ export const createNode: API.OperationMethod<
   CreateNodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<CreateNodeRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<CreateNodeResponse>,
+  input: __S(2946, __c92, 2) as any as S.Schema<CreateNodeRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<CreateNodeResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9017,8 +9017,8 @@ export const createNodeRegistrationScript: API.OperationMethod<
   CreateNodeRegistrationScriptError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<CreateNodeRegistrationScriptRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<CreateNodeRegistrationScriptResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<CreateNodeRegistrationScriptRequest>,
+  output: __S(3073, __c96, 1) as any as S.Schema<CreateNodeRegistrationScriptResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9050,8 +9050,8 @@ export const createPartnerInput: API.OperationMethod<
   CreatePartnerInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<CreatePartnerInputRequest>,
-  output: __S(371, __c46, 3) as any as S.Schema<CreatePartnerInputResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<CreatePartnerInputRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<CreatePartnerInputResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9083,8 +9083,8 @@ export const createSdiSource: API.OperationMethod<
   CreateSdiSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<CreateSdiSourceRequest>,
-  output: __S(374, __c46, 6) as any as S.Schema<CreateSdiSourceResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<CreateSdiSourceRequest>,
+  output: __S(3168, __c99, 0) as any as S.Schema<CreateSdiSourceResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9116,8 +9116,8 @@ export const createSignalMap: API.OperationMethod<
   CreateSignalMapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<CreateSignalMapRequest>,
-  output: __S(382, __c47, 6) as any as S.Schema<CreateSignalMapResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<CreateSignalMapRequest>,
+  output: __S(3264, __c102, 0) as any as S.Schema<CreateSignalMapResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -9146,8 +9146,8 @@ export const createTags: API.OperationMethod<
   CreateTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<CreateTagsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<CreateTagsResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<CreateTagsRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<CreateTagsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9178,8 +9178,8 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<DeleteChannelRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<DeleteChannelResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<DeleteChannelRequest>,
+  output: __S(1792, __c56, 0) as any as S.Schema<DeleteChannelResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9214,8 +9214,8 @@ export const deleteChannelPlacementGroup: API.OperationMethod<
   DeleteChannelPlacementGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<DeleteChannelPlacementGroupRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<DeleteChannelPlacementGroupResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<DeleteChannelPlacementGroupRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DeleteChannelPlacementGroupResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9248,8 +9248,8 @@ export const deleteCloudWatchAlarmTemplate: API.OperationMethod<
   DeleteCloudWatchAlarmTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<DeleteCloudWatchAlarmTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteCloudWatchAlarmTemplateResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<DeleteCloudWatchAlarmTemplateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteCloudWatchAlarmTemplateResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -9280,8 +9280,8 @@ export const deleteCloudWatchAlarmTemplateGroup: API.OperationMethod<
   DeleteCloudWatchAlarmTemplateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<DeleteCloudWatchAlarmTemplateGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteCloudWatchAlarmTemplateGroupResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<DeleteCloudWatchAlarmTemplateGroupRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteCloudWatchAlarmTemplateGroupResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -9314,8 +9314,8 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9348,8 +9348,8 @@ export const deleteEventBridgeRuleTemplate: API.OperationMethod<
   DeleteEventBridgeRuleTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(389, __c48, 5) as any as S.Schema<DeleteEventBridgeRuleTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteEventBridgeRuleTemplateResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<DeleteEventBridgeRuleTemplateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteEventBridgeRuleTemplateResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -9380,8 +9380,8 @@ export const deleteEventBridgeRuleTemplateGroup: API.OperationMethod<
   DeleteEventBridgeRuleTemplateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390, __c48, 6) as any as S.Schema<DeleteEventBridgeRuleTemplateGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteEventBridgeRuleTemplateGroupResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<DeleteEventBridgeRuleTemplateGroupRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteEventBridgeRuleTemplateGroupResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -9414,8 +9414,8 @@ export const deleteInput: API.OperationMethod<
   DeleteInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<DeleteInputRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteInputResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<DeleteInputRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<DeleteInputResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9449,8 +9449,8 @@ export const deleteInputSecurityGroup: API.OperationMethod<
   DeleteInputSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<DeleteInputSecurityGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteInputSecurityGroupResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<DeleteInputSecurityGroupRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteInputSecurityGroupResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9484,8 +9484,8 @@ export const deleteMultiplex: API.OperationMethod<
   DeleteMultiplexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<DeleteMultiplexRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<DeleteMultiplexResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<DeleteMultiplexRequest>,
+  output: __S(2688, __c84, 0) as any as S.Schema<DeleteMultiplexResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9520,8 +9520,8 @@ export const deleteMultiplexProgram: API.OperationMethod<
   DeleteMultiplexProgramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<DeleteMultiplexProgramRequest>,
-  output: __S(395, __c49, 3) as any as S.Schema<DeleteMultiplexProgramResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<DeleteMultiplexProgramRequest>,
+  output: __S(3712, __c116, 0) as any as S.Schema<DeleteMultiplexProgramResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9556,8 +9556,8 @@ export const deleteNetwork: API.OperationMethod<
   DeleteNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396, __c49, 4) as any as S.Schema<DeleteNetworkRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<DeleteNetworkResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<DeleteNetworkRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<DeleteNetworkResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9592,8 +9592,8 @@ export const deleteNode: API.OperationMethod<
   DeleteNodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<DeleteNodeRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<DeleteNodeResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<DeleteNodeRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<DeleteNodeResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9628,8 +9628,8 @@ export const deleteReservation: API.OperationMethod<
   DeleteReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<DeleteReservationRequest>,
-  output: __S(401, __c50, 1) as any as S.Schema<DeleteReservationResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<DeleteReservationRequest>,
+  output: __S(3872, __c121, 0) as any as S.Schema<DeleteReservationResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9663,8 +9663,8 @@ export const deleteSchedule: API.OperationMethod<
   DeleteScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<DeleteScheduleRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteScheduleResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<DeleteScheduleRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<DeleteScheduleResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9698,8 +9698,8 @@ export const deleteSdiSource: API.OperationMethod<
   DeleteSdiSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<DeleteSdiSourceRequest>,
-  output: __S(374, __c46, 6) as any as S.Schema<DeleteSdiSourceResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<DeleteSdiSourceRequest>,
+  output: __S(3168, __c99, 0) as any as S.Schema<DeleteSdiSourceResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9732,8 +9732,8 @@ export const deleteSignalMap: API.OperationMethod<
   DeleteSignalMapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<DeleteSignalMapRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteSignalMapResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<DeleteSignalMapRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<DeleteSignalMapResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -9762,8 +9762,8 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<DeleteTagsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteTagsResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<DeleteTagsRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<DeleteTagsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9792,8 +9792,8 @@ export const describeAccountConfiguration: API.OperationMethod<
   DescribeAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<DescribeAccountConfigurationRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<DescribeAccountConfigurationResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<DescribeAccountConfigurationRequest>,
+  output: __S(4097, __c128, 1) as any as S.Schema<DescribeAccountConfigurationResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9825,8 +9825,8 @@ export const describeChannel: API.OperationMethod<
   DescribeChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<DescribeChannelRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<DescribeChannelResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<DescribeChannelRequest>,
+  output: __S(1792, __c56, 0) as any as S.Schema<DescribeChannelResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9859,8 +9859,8 @@ export const describeChannelPlacementGroup: API.OperationMethod<
   DescribeChannelPlacementGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<DescribeChannelPlacementGroupRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<DescribeChannelPlacementGroupResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<DescribeChannelPlacementGroupRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<DescribeChannelPlacementGroupResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9893,8 +9893,8 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<DescribeClusterRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<DescribeClusterResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<DescribeClusterRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<DescribeClusterResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9927,8 +9927,8 @@ export const describeInput: API.OperationMethod<
   DescribeInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<DescribeInputRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<DescribeInputResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<DescribeInputRequest>,
+  output: __S(2490, __c77, 26) as any as S.Schema<DescribeInputResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9961,8 +9961,8 @@ export const describeInputDevice: API.OperationMethod<
   DescribeInputDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<DescribeInputDeviceRequest>,
-  output: __S(420, __c52, 4) as any as S.Schema<DescribeInputDeviceResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<DescribeInputDeviceRequest>,
+  output: __S(4288, __c134, 0) as any as S.Schema<DescribeInputDeviceResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -9995,8 +9995,8 @@ export const describeInputDeviceThumbnail: API.OperationMethod<
   DescribeInputDeviceThumbnailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<DescribeInputDeviceThumbnailRequest>,
-  output: __S(422, __c52, 6) as any as S.Schema<DescribeInputDeviceThumbnailResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<DescribeInputDeviceThumbnailRequest>,
+  output: __S(4353, __c136, 1) as any as S.Schema<DescribeInputDeviceThumbnailResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10029,8 +10029,8 @@ export const describeInputSecurityGroup: API.OperationMethod<
   DescribeInputSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<DescribeInputSecurityGroupRequest>,
-  output: __S(424, __c53, 0) as any as S.Schema<DescribeInputSecurityGroupResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<DescribeInputSecurityGroupRequest>,
+  output: __S(4417, __c138, 1) as any as S.Schema<DescribeInputSecurityGroupResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10063,8 +10063,8 @@ export const describeMultiplex: API.OperationMethod<
   DescribeMultiplexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<DescribeMultiplexRequest>,
-  output: __S(426, __c53, 2) as any as S.Schema<DescribeMultiplexResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<DescribeMultiplexRequest>,
+  output: __S(4449, __c139, 1) as any as S.Schema<DescribeMultiplexResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10097,8 +10097,8 @@ export const describeMultiplexProgram: API.OperationMethod<
   DescribeMultiplexProgramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<DescribeMultiplexProgramRequest>,
-  output: __S(395, __c49, 3) as any as S.Schema<DescribeMultiplexProgramResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<DescribeMultiplexProgramRequest>,
+  output: __S(3712, __c116, 0) as any as S.Schema<DescribeMultiplexProgramResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10131,8 +10131,8 @@ export const describeNetwork: API.OperationMethod<
   DescribeNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<DescribeNetworkRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<DescribeNetworkResponse>,
+  input: __S(4512, __c141, 0) as any as S.Schema<DescribeNetworkRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<DescribeNetworkResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10165,8 +10165,8 @@ export const describeNode: API.OperationMethod<
   DescribeNodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<DescribeNodeRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<DescribeNodeResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<DescribeNodeRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<DescribeNodeResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10199,8 +10199,8 @@ export const describeOffering: API.OperationMethod<
   DescribeOfferingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<DescribeOfferingRequest>,
-  output: __S(431, __c53, 7) as any as S.Schema<DescribeOfferingResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<DescribeOfferingRequest>,
+  output: __S(4608, __c144, 0) as any as S.Schema<DescribeOfferingResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10233,8 +10233,8 @@ export const describeReservation: API.OperationMethod<
   DescribeReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<DescribeReservationRequest>,
-  output: __S(401, __c50, 1) as any as S.Schema<DescribeReservationResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<DescribeReservationRequest>,
+  output: __S(3872, __c121, 0) as any as S.Schema<DescribeReservationResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10268,8 +10268,8 @@ export const describeSchedule: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScheduleAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<DescribeScheduleRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<DescribeScheduleResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<DescribeScheduleRequest>,
+  output: __S(4673, __c146, 1) as any as S.Schema<DescribeScheduleResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10308,8 +10308,8 @@ export const describeSdiSource: API.OperationMethod<
   DescribeSdiSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<DescribeSdiSourceRequest>,
-  output: __S(436, __c54, 4) as any as S.Schema<DescribeSdiSourceResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<DescribeSdiSourceRequest>,
+  output: __S(4705, __c147, 1) as any as S.Schema<DescribeSdiSourceResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10343,8 +10343,8 @@ export const describeThumbnails: API.OperationMethod<
   DescribeThumbnailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<DescribeThumbnailsRequest>,
-  output: __S(442, __c55, 2) as any as S.Schema<DescribeThumbnailsResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<DescribeThumbnailsRequest>,
+  output: __S(4741, __c148, 5) as any as S.Schema<DescribeThumbnailsResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10376,8 +10376,8 @@ export const getCloudWatchAlarmTemplate: API.OperationMethod<
   GetCloudWatchAlarmTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<GetCloudWatchAlarmTemplateRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<GetCloudWatchAlarmTemplateResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<GetCloudWatchAlarmTemplateRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<GetCloudWatchAlarmTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10406,8 +10406,8 @@ export const getCloudWatchAlarmTemplateGroup: API.OperationMethod<
   GetCloudWatchAlarmTemplateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<GetCloudWatchAlarmTemplateGroupRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GetCloudWatchAlarmTemplateGroupResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<GetCloudWatchAlarmTemplateGroupRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<GetCloudWatchAlarmTemplateGroupResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10436,8 +10436,8 @@ export const getEventBridgeRuleTemplate: API.OperationMethod<
   GetEventBridgeRuleTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<GetEventBridgeRuleTemplateRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<GetEventBridgeRuleTemplateResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<GetEventBridgeRuleTemplateRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<GetEventBridgeRuleTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10466,8 +10466,8 @@ export const getEventBridgeRuleTemplateGroup: API.OperationMethod<
   GetEventBridgeRuleTemplateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<GetEventBridgeRuleTemplateGroupRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<GetEventBridgeRuleTemplateGroupResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<GetEventBridgeRuleTemplateGroupRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<GetEventBridgeRuleTemplateGroupResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10496,8 +10496,8 @@ export const getSignalMap: API.OperationMethod<
   GetSignalMapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<GetSignalMapRequest>,
-  output: __S(382, __c47, 6) as any as S.Schema<GetSignalMapResponse>,
+  input: __S(4896, __c153, 0) as any as S.Schema<GetSignalMapRequest>,
+  output: __S(3264, __c102, 0) as any as S.Schema<GetSignalMapResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10529,8 +10529,8 @@ export const listAlerts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChannelAlert
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<ListAlertsRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<ListAlertsResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<ListAlertsRequest>,
+  output: __S(4929, __c154, 1) as any as S.Schema<ListAlertsResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10569,8 +10569,8 @@ export const listChannelPlacementGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DescribeChannelPlacementGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<ListChannelPlacementGroupsRequest>,
-  output: __S(454, __c56, 6) as any as S.Schema<ListChannelPlacementGroupsResponse>,
+  input: __S(4992, __c156, 0) as any as S.Schema<ListChannelPlacementGroupsRequest>,
+  output: __S(4994, __c156, 2) as any as S.Schema<ListChannelPlacementGroupsResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10608,8 +10608,8 @@ export const listChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChannelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<ListChannelsRequest>,
-  output: __S(459, __c57, 3) as any as S.Schema<ListChannelsResponse>,
+  input: __S(5024, __c157, 0) as any as S.Schema<ListChannelsRequest>,
+  output: __S(5027, __c157, 3) as any as S.Schema<ListChannelsResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10646,8 +10646,8 @@ export const listCloudWatchAlarmTemplateGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CloudWatchAlarmTemplateGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<ListCloudWatchAlarmTemplateGroupsRequest>,
-  output: __S(463, __c57, 7) as any as S.Schema<ListCloudWatchAlarmTemplateGroupsResponse>,
+  input: __S(5088, __c159, 0) as any as S.Schema<ListCloudWatchAlarmTemplateGroupsRequest>,
+  output: __S(5089, __c159, 1) as any as S.Schema<ListCloudWatchAlarmTemplateGroupsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10683,8 +10683,8 @@ export const listCloudWatchAlarmTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CloudWatchAlarmTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<ListCloudWatchAlarmTemplatesRequest>,
-  output: __S(466, __c58, 2) as any as S.Schema<ListCloudWatchAlarmTemplatesResponse>,
+  input: __S(5152, __c161, 0) as any as S.Schema<ListCloudWatchAlarmTemplatesRequest>,
+  output: __S(5154, __c161, 2) as any as S.Schema<ListCloudWatchAlarmTemplatesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10722,8 +10722,8 @@ export const listClusterAlerts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterAlert
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<ListClusterAlertsRequest>,
-  output: __S(470, __c58, 6) as any as S.Schema<ListClusterAlertsResponse>,
+  input: __S(5184, __c162, 0) as any as S.Schema<ListClusterAlertsRequest>,
+  output: __S(5187, __c162, 3) as any as S.Schema<ListClusterAlertsResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10762,8 +10762,8 @@ export const listClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DescribeClusterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<ListClustersRequest>,
-  output: __S(473, __c59, 1) as any as S.Schema<ListClustersResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<ListClustersRequest>,
+  output: __S(5218, __c163, 2) as any as S.Schema<ListClustersResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10800,8 +10800,8 @@ export const listEventBridgeRuleTemplateGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventBridgeRuleTemplateGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<ListEventBridgeRuleTemplateGroupsRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<ListEventBridgeRuleTemplateGroupsResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<ListEventBridgeRuleTemplateGroupsRequest>,
+  output: __S(5249, __c164, 1) as any as S.Schema<ListEventBridgeRuleTemplateGroupsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10837,8 +10837,8 @@ export const listEventBridgeRuleTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventBridgeRuleTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(476, __c59, 4) as any as S.Schema<ListEventBridgeRuleTemplatesRequest>,
-  output: __S(479, __c59, 7) as any as S.Schema<ListEventBridgeRuleTemplatesResponse>,
+  input: __S(5280, __c165, 0) as any as S.Schema<ListEventBridgeRuleTemplatesRequest>,
+  output: __S(5283, __c165, 3) as any as S.Schema<ListEventBridgeRuleTemplatesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -10875,8 +10875,8 @@ export const listInputDevices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InputDeviceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<ListInputDevicesRequest>,
-  output: __S(483, __c60, 3) as any as S.Schema<ListInputDevicesResponse>,
+  input: __S(5312, __c166, 0) as any as S.Schema<ListInputDevicesRequest>,
+  output: __S(5315, __c166, 3) as any as S.Schema<ListInputDevicesResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10915,8 +10915,8 @@ export const listInputDeviceTransfers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TransferringInputDeviceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<ListInputDeviceTransfersRequest>,
-  output: __S(487, __c60, 7) as any as S.Schema<ListInputDeviceTransfersResponse>,
+  input: __S(5344, __c167, 0) as any as S.Schema<ListInputDeviceTransfersRequest>,
+  output: __S(5347, __c167, 3) as any as S.Schema<ListInputDeviceTransfersResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10955,8 +10955,8 @@ export const listInputs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Input
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<ListInputsRequest>,
-  output: __S(490, __c61, 2) as any as S.Schema<ListInputsResponse>,
+  input: __S(5376, __c168, 0) as any as S.Schema<ListInputsRequest>,
+  output: __S(5378, __c168, 2) as any as S.Schema<ListInputsResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -10994,8 +10994,8 @@ export const listInputSecurityGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InputSecurityGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(491, __c61, 3) as any as S.Schema<ListInputSecurityGroupsRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<ListInputSecurityGroupsResponse>,
+  input: __S(5408, __c169, 0) as any as S.Schema<ListInputSecurityGroupsRequest>,
+  output: __S(5410, __c169, 2) as any as S.Schema<ListInputSecurityGroupsResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11034,8 +11034,8 @@ export const listMultiplexAlerts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MultiplexAlert
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(494, __c61, 6) as any as S.Schema<ListMultiplexAlertsRequest>,
-  output: __S(495, __c61, 7) as any as S.Schema<ListMultiplexAlertsResponse>,
+  input: __S(5440, __c170, 0) as any as S.Schema<ListMultiplexAlertsRequest>,
+  output: __S(5441, __c170, 1) as any as S.Schema<ListMultiplexAlertsResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11074,8 +11074,8 @@ export const listMultiplexes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MultiplexSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<ListMultiplexesRequest>,
-  output: __S(500, __c62, 4) as any as S.Schema<ListMultiplexesResponse>,
+  input: __S(5472, __c171, 0) as any as S.Schema<ListMultiplexesRequest>,
+  output: __S(5476, __c171, 4) as any as S.Schema<ListMultiplexesResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11114,8 +11114,8 @@ export const listMultiplexPrograms: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MultiplexProgramSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(501, __c62, 5) as any as S.Schema<ListMultiplexProgramsRequest>,
-  output: __S(504, __c63, 0) as any as S.Schema<ListMultiplexProgramsResponse>,
+  input: __S(5504, __c172, 0) as any as S.Schema<ListMultiplexProgramsRequest>,
+  output: __S(5507, __c172, 3) as any as S.Schema<ListMultiplexProgramsResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11154,8 +11154,8 @@ export const listNetworks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DescribeNetworkSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<ListNetworksRequest>,
-  output: __S(507, __c63, 3) as any as S.Schema<ListNetworksResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<ListNetworksRequest>,
+  output: __S(5538, __c173, 2) as any as S.Schema<ListNetworksResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11193,8 +11193,8 @@ export const listNodes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DescribeNodeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(508, __c63, 4) as any as S.Schema<ListNodesRequest>,
-  output: __S(511, __c63, 7) as any as S.Schema<ListNodesResponse>,
+  input: __S(5568, __c174, 0) as any as S.Schema<ListNodesRequest>,
+  output: __S(5571, __c174, 3) as any as S.Schema<ListNodesResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11232,8 +11232,8 @@ export const listOfferings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Offering
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<ListOfferingsRequest>,
-  output: __S(514, __c64, 2) as any as S.Schema<ListOfferingsResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<ListOfferingsRequest>,
+  output: __S(5602, __c175, 2) as any as S.Schema<ListOfferingsResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11271,8 +11271,8 @@ export const listReservations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Reservation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(515, __c64, 3) as any as S.Schema<ListReservationsRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<ListReservationsResponse>,
+  input: __S(5632, __c176, 0) as any as S.Schema<ListReservationsRequest>,
+  output: __S(5634, __c176, 2) as any as S.Schema<ListReservationsResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11310,8 +11310,8 @@ export const listSdiSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SdiSourceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<ListSdiSourcesRequest>,
-  output: __S(521, __c65, 1) as any as S.Schema<ListSdiSourcesResponse>,
+  input: __S(5696, __c178, 0) as any as S.Schema<ListSdiSourcesRequest>,
+  output: __S(5698, __c178, 2) as any as S.Schema<ListSdiSourcesResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11348,8 +11348,8 @@ export const listSignalMaps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SignalMapSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(522, __c65, 2) as any as S.Schema<ListSignalMapsRequest>,
-  output: __S(525, __c65, 5) as any as S.Schema<ListSignalMapsResponse>,
+  input: __S(5728, __c179, 0) as any as S.Schema<ListSignalMapsRequest>,
+  output: __S(5731, __c179, 3) as any as S.Schema<ListSignalMapsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -11383,8 +11383,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(526, __c65, 6) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(527, __c65, 7) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(5760, __c180, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(5761, __c180, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -11415,8 +11415,8 @@ export const listVersions: API.OperationMethod<
   ListVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<ListVersionsRequest>,
-  output: __S(529, __c66, 1) as any as S.Schema<ListVersionsResponse>,
+  input: __S(5792, __c181, 0) as any as S.Schema<ListVersionsRequest>,
+  output: __S(5793, __c181, 1) as any as S.Schema<ListVersionsResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11451,8 +11451,8 @@ export const purchaseOffering: API.OperationMethod<
   PurchaseOfferingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<PurchaseOfferingRequest>,
-  output: __S(531, __c66, 3) as any as S.Schema<PurchaseOfferingResponse>,
+  input: __S(5824, __c182, 0) as any as S.Schema<PurchaseOfferingRequest>,
+  output: __S(5825, __c182, 1) as any as S.Schema<PurchaseOfferingResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11487,8 +11487,8 @@ export const rebootInputDevice: API.OperationMethod<
   RebootInputDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(532, __c66, 4) as any as S.Schema<RebootInputDeviceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<RebootInputDeviceResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<RebootInputDeviceRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<RebootInputDeviceResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11524,8 +11524,8 @@ export const rejectInputDeviceTransfer: API.OperationMethod<
   RejectInputDeviceTransferError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(533, __c66, 5) as any as S.Schema<RejectInputDeviceTransferRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RejectInputDeviceTransferResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<RejectInputDeviceTransferRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<RejectInputDeviceTransferResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11561,8 +11561,8 @@ export const restartChannelPipelines: API.OperationMethod<
   RestartChannelPipelinesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(534, __c66, 6) as any as S.Schema<RestartChannelPipelinesRequest>,
-  output: __S(535, __c66, 7) as any as S.Schema<RestartChannelPipelinesResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<RestartChannelPipelinesRequest>,
+  output: __S(129, __c4, 1) as any as S.Schema<RestartChannelPipelinesResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11597,8 +11597,8 @@ export const startChannel: API.OperationMethod<
   StartChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<StartChannelRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<StartChannelResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<StartChannelRequest>,
+  output: __S(1792, __c56, 0) as any as S.Schema<StartChannelResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11631,8 +11631,8 @@ export const startDeleteMonitorDeployment: API.OperationMethod<
   StartDeleteMonitorDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<StartDeleteMonitorDeploymentRequest>,
-  output: __S(538, __c67, 2) as any as S.Schema<StartDeleteMonitorDeploymentResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<StartDeleteMonitorDeploymentRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<StartDeleteMonitorDeploymentResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -11665,8 +11665,8 @@ export const startInputDevice: API.OperationMethod<
   StartInputDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<StartInputDeviceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<StartInputDeviceResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<StartInputDeviceRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<StartInputDeviceResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11701,8 +11701,8 @@ export const startInputDeviceMaintenanceWindow: API.OperationMethod<
   StartInputDeviceMaintenanceWindowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540, __c67, 4) as any as S.Schema<StartInputDeviceMaintenanceWindowRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StartInputDeviceMaintenanceWindowResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<StartInputDeviceMaintenanceWindowRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<StartInputDeviceMaintenanceWindowResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11735,8 +11735,8 @@ export const startMonitorDeployment: API.OperationMethod<
   StartMonitorDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<StartMonitorDeploymentRequest>,
-  output: __S(538, __c67, 2) as any as S.Schema<StartMonitorDeploymentResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<StartMonitorDeploymentRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<StartMonitorDeploymentResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -11769,8 +11769,8 @@ export const startMultiplex: API.OperationMethod<
   StartMultiplexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(542, __c67, 6) as any as S.Schema<StartMultiplexRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<StartMultiplexResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<StartMultiplexRequest>,
+  output: __S(2688, __c84, 0) as any as S.Schema<StartMultiplexResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11803,8 +11803,8 @@ export const startUpdateSignalMap: API.OperationMethod<
   StartUpdateSignalMapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(543, __c67, 7) as any as S.Schema<StartUpdateSignalMapRequest>,
-  output: __S(538, __c67, 2) as any as S.Schema<StartUpdateSignalMapResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<StartUpdateSignalMapRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<StartUpdateSignalMapResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -11837,8 +11837,8 @@ export const stopChannel: API.OperationMethod<
   StopChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<StopChannelRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<StopChannelResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<StopChannelRequest>,
+  output: __S(1792, __c56, 0) as any as S.Schema<StopChannelResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11873,8 +11873,8 @@ export const stopInputDevice: API.OperationMethod<
   StopInputDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c68, 1) as any as S.Schema<StopInputDeviceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<StopInputDeviceResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<StopInputDeviceRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<StopInputDeviceResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11909,8 +11909,8 @@ export const stopMultiplex: API.OperationMethod<
   StopMultiplexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546, __c68, 2) as any as S.Schema<StopMultiplexRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<StopMultiplexResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<StopMultiplexRequest>,
+  output: __S(2688, __c84, 0) as any as S.Schema<StopMultiplexResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11946,8 +11946,8 @@ export const transferInputDevice: API.OperationMethod<
   TransferInputDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547, __c68, 3) as any as S.Schema<TransferInputDeviceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<TransferInputDeviceResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<TransferInputDeviceRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<TransferInputDeviceResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -11982,8 +11982,8 @@ export const updateAccountConfiguration: API.OperationMethod<
   UpdateAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<UpdateAccountConfigurationRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<UpdateAccountConfigurationResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<UpdateAccountConfigurationRequest>,
+  output: __S(4097, __c128, 1) as any as S.Schema<UpdateAccountConfigurationResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12016,8 +12016,8 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(551, __c68, 7) as any as S.Schema<UpdateChannelRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<UpdateChannelResponse>,
+  input: __S(673, __c21, 1) as any as S.Schema<UpdateChannelRequest>,
+  output: __S(1573, __c49, 5) as any as S.Schema<UpdateChannelResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12052,8 +12052,8 @@ export const updateChannelClass: API.OperationMethod<
   UpdateChannelClassError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(552, __c69, 0) as any as S.Schema<UpdateChannelClassRequest>,
-  output: __S(553, __c69, 1) as any as S.Schema<UpdateChannelClassResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<UpdateChannelClassRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<UpdateChannelClassResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12089,8 +12089,8 @@ export const updateChannelPlacementGroup: API.OperationMethod<
   UpdateChannelPlacementGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(554, __c69, 2) as any as S.Schema<UpdateChannelPlacementGroupRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<UpdateChannelPlacementGroupResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<UpdateChannelPlacementGroupRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<UpdateChannelPlacementGroupResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12123,8 +12123,8 @@ export const updateCloudWatchAlarmTemplate: API.OperationMethod<
   UpdateCloudWatchAlarmTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(555, __c69, 3) as any as S.Schema<UpdateCloudWatchAlarmTemplateRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<UpdateCloudWatchAlarmTemplateResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<UpdateCloudWatchAlarmTemplateRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<UpdateCloudWatchAlarmTemplateResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -12155,8 +12155,8 @@ export const updateCloudWatchAlarmTemplateGroup: API.OperationMethod<
   UpdateCloudWatchAlarmTemplateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(556, __c69, 4) as any as S.Schema<UpdateCloudWatchAlarmTemplateGroupRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<UpdateCloudWatchAlarmTemplateGroupResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<UpdateCloudWatchAlarmTemplateGroupRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<UpdateCloudWatchAlarmTemplateGroupResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -12188,8 +12188,8 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(557, __c69, 5) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(558, __c69, 6) as any as S.Schema<UpdateClusterResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<UpdateClusterRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<UpdateClusterResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12221,8 +12221,8 @@ export const updateEventBridgeRuleTemplate: API.OperationMethod<
   UpdateEventBridgeRuleTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(559, __c69, 7) as any as S.Schema<UpdateEventBridgeRuleTemplateRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<UpdateEventBridgeRuleTemplateResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<UpdateEventBridgeRuleTemplateRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<UpdateEventBridgeRuleTemplateResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -12253,8 +12253,8 @@ export const updateEventBridgeRuleTemplateGroup: API.OperationMethod<
   UpdateEventBridgeRuleTemplateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c70, 0) as any as S.Schema<UpdateEventBridgeRuleTemplateGroupRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<UpdateEventBridgeRuleTemplateGroupResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<UpdateEventBridgeRuleTemplateGroupRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<UpdateEventBridgeRuleTemplateGroupResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -12286,8 +12286,8 @@ export const updateInput: API.OperationMethod<
   UpdateInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(561, __c70, 1) as any as S.Schema<UpdateInputRequest>,
-  output: __S(334, __c41, 6) as any as S.Schema<UpdateInputResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<UpdateInputRequest>,
+  output: __S(2412, __c75, 12) as any as S.Schema<UpdateInputResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12321,8 +12321,8 @@ export const updateInputDevice: API.OperationMethod<
   UpdateInputDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(563, __c70, 3) as any as S.Schema<UpdateInputDeviceRequest>,
-  output: __S(420, __c52, 4) as any as S.Schema<UpdateInputDeviceResponse>,
+  input: __S(1025, __c32, 1) as any as S.Schema<UpdateInputDeviceRequest>,
+  output: __S(4288, __c134, 0) as any as S.Schema<UpdateInputDeviceResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12356,8 +12356,8 @@ export const updateInputSecurityGroup: API.OperationMethod<
   UpdateInputSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(564, __c70, 4) as any as S.Schema<UpdateInputSecurityGroupRequest>,
-  output: __S(339, __c42, 3) as any as S.Schema<UpdateInputSecurityGroupResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<UpdateInputSecurityGroupRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<UpdateInputSecurityGroupResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12391,8 +12391,8 @@ export const updateMultiplex: API.OperationMethod<
   UpdateMultiplexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(566, __c70, 6) as any as S.Schema<UpdateMultiplexRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<UpdateMultiplexResponse>,
+  input: __S(1089, __c34, 1) as any as S.Schema<UpdateMultiplexRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<UpdateMultiplexResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12427,8 +12427,8 @@ export const updateMultiplexProgram: API.OperationMethod<
   UpdateMultiplexProgramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(567, __c70, 7) as any as S.Schema<UpdateMultiplexProgramRequest>,
-  output: __S(357, __c44, 5) as any as S.Schema<UpdateMultiplexProgramResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<UpdateMultiplexProgramRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<UpdateMultiplexProgramResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12462,8 +12462,8 @@ export const updateNetwork: API.OperationMethod<
   UpdateNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(568, __c71, 0) as any as S.Schema<UpdateNetworkRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<UpdateNetworkResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<UpdateNetworkRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<UpdateNetworkResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12496,8 +12496,8 @@ export const updateNode: API.OperationMethod<
   UpdateNodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(571, __c71, 3) as any as S.Schema<UpdateNodeRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<UpdateNodeResponse>,
+  input: __S(1186, __c37, 2) as any as S.Schema<UpdateNodeRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<UpdateNodeResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12531,8 +12531,8 @@ export const updateNodeState: API.OperationMethod<
   UpdateNodeStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(572, __c71, 4) as any as S.Schema<UpdateNodeStateRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<UpdateNodeStateResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<UpdateNodeStateRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<UpdateNodeStateResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12567,8 +12567,8 @@ export const updateReservation: API.OperationMethod<
   UpdateReservationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(573, __c71, 5) as any as S.Schema<UpdateReservationRequest>,
-  output: __S(574, __c71, 6) as any as S.Schema<UpdateReservationResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<UpdateReservationRequest>,
+  output: __S(1281, __c40, 1) as any as S.Schema<UpdateReservationResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12602,8 +12602,8 @@ export const updateSdiSource: API.OperationMethod<
   UpdateSdiSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(575, __c71, 7) as any as S.Schema<UpdateSdiSourceRequest>,
-  output: __S(374, __c46, 6) as any as S.Schema<UpdateSdiSourceResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<UpdateSdiSourceRequest>,
+  output: __S(3168, __c99, 0) as any as S.Schema<UpdateSdiSourceResponse>,
   errors: [
     BadGatewayException,
     BadRequestException,
@@ -12636,13 +12636,346 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AcceptInputDeviceTransferRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AcceptInputDeviceTransferResponse",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Force: S.optional(S.String),
+          InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")),
+        })
+          .pipe(S.encodeKeys({ Force: "force" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/prod/inputDevices/{InputDeviceId}/reboot" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "RebootInputDeviceRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/prod/inputDevices/{InputDeviceId}/reject" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RejectInputDeviceTransferRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelId: S.String.pipe(T.HttpLabel("ChannelId")),
+          PipelineIds: S.optional(__listOfChannelPipelineIdToRestart),
+        })
+          .pipe(S.encodeKeys({ PipelineIds: "pipelineIds" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/prod/channels/{ChannelId}/restartChannelPipelines" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "RestartChannelPipelinesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          CdiInputSpecification: S.optional(__S(1824, __c57, 0)),
+          ChannelClass: S.optional(S.String),
+          Destinations: S.optional(__listOfOutputDestination),
+          EgressEndpoints: S.optional(__listOfChannelEgressEndpoint),
+          EncoderSettings: S.optional(__S(1762, __c55, 2)),
+          Id: S.optional(S.String),
+          InputAttachments: S.optional(__listOfInputAttachment),
+          InputSpecification: S.optional(__S(1885, __c58, 29)),
+          LogLevel: S.optional(S.String),
+          Maintenance: S.optional(__S(1891, __c59, 3)),
+          MaintenanceStatus: S.optional(S.String),
+          Name: S.optional(S.String),
+          PipelineDetails: S.optional(__listOfPipelineDetail),
+          PipelinesRunningCount: S.optional(S.Number),
+          RoleArn: S.optional(S.String),
+          State: S.optional(S.String),
+          Tags: S.optional(__S(1600, __c50, 0)),
+          Vpc: S.optional(__S(1892, __c59, 4)),
+          AnywhereSettings: S.optional(__S(1886, __c58, 30)),
+          ChannelEngineVersion: S.optional(__S(1920, __c60, 0)),
+          LinkedChannelSettings: S.optional(__S(1895, __c59, 7)),
+          ChannelSecurityGroups: S.optional(__listOf__string),
+          InferenceSettings: S.optional(__S(1896, __c59, 8)),
+        }).pipe(
+          S.encodeKeys({
+            Arn: "arn",
+            CdiInputSpecification: "cdiInputSpecification",
+            ChannelClass: "channelClass",
+            Destinations: "destinations",
+            EgressEndpoints: "egressEndpoints",
+            EncoderSettings: "encoderSettings",
+            Id: "id",
+            InputAttachments: "inputAttachments",
+            InputSpecification: "inputSpecification",
+            LogLevel: "logLevel",
+            Maintenance: "maintenance",
+            MaintenanceStatus: "maintenanceStatus",
+            Name: "name",
+            PipelineDetails: "pipelineDetails",
+            PipelinesRunningCount: "pipelinesRunningCount",
+            RoleArn: "roleArn",
+            State: "state",
+            Tags: "tags",
+            Vpc: "vpc",
+            AnywhereSettings: "anywhereSettings",
+            ChannelEngineVersion: "channelEngineVersion",
+            LinkedChannelSettings: "linkedChannelSettings",
+            ChannelSecurityGroups: "channelSecurityGroups",
+            InferenceSettings: "inferenceSettings",
+          }),
+        ),
+      ).annotate({
+        identifier: "RestartChannelPipelinesResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ChannelId: S.String.pipe(T.HttpLabel("ChannelId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/prod/channels/{ChannelId}/start" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartChannelRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/prod/signal-maps/{Identifier}/monitor-deployment" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartDeleteMonitorDeploymentRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          CloudWatchAlarmTemplateGroupIds: S.optional(__listOf__stringMin7Max11PatternAws097),
+          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Description: S.optional(S.String),
+          DiscoveryEntryPointArn: S.optional(S.String),
+          ErrorMessage: S.optional(S.String),
+          EventBridgeRuleTemplateGroupIds: S.optional(__listOf__stringMin7Max11PatternAws097),
+          FailedMediaResourceMap: S.optional(__S(3299, __c103, 3)),
+          Id: S.optional(S.String),
+          LastDiscoveredAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          LastSuccessfulMonitorDeployment: S.optional(__S(3300, __c103, 4)),
+          MediaResourceMap: S.optional(__S(3299, __c103, 3)),
+          ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          MonitorChangesPendingDeployment: S.optional(S.Boolean),
+          MonitorDeployment: S.optional(__S(3301, __c103, 5)),
+          Name: S.optional(S.String),
+          Status: S.optional(S.String),
+          Tags: S.optional(__S(1600, __c50, 0)),
+        }).pipe(
+          S.encodeKeys({
+            Arn: "arn",
+            CloudWatchAlarmTemplateGroupIds: "cloudWatchAlarmTemplateGroupIds",
+            CreatedAt: "createdAt",
+            Description: "description",
+            DiscoveryEntryPointArn: "discoveryEntryPointArn",
+            ErrorMessage: "errorMessage",
+            EventBridgeRuleTemplateGroupIds: "eventBridgeRuleTemplateGroupIds",
+            FailedMediaResourceMap: "failedMediaResourceMap",
+            Id: "id",
+            LastDiscoveredAt: "lastDiscoveredAt",
+            LastSuccessfulMonitorDeployment: "lastSuccessfulMonitorDeployment",
+            MediaResourceMap: "mediaResourceMap",
+            ModifiedAt: "modifiedAt",
+            MonitorChangesPendingDeployment: "monitorChangesPendingDeployment",
+            MonitorDeployment: "monitorDeployment",
+            Name: "name",
+            Status: "status",
+            Tags: "tags",
+          }),
+        ),
+      ).annotate({
+        identifier: "StartDeleteMonitorDeploymentResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/prod/inputDevices/{InputDeviceId}/start" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartInputDeviceRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")) }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/prod/inputDevices/{InputDeviceId}/startInputDeviceMaintenanceWindow",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartInputDeviceMaintenanceWindowRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DryRun: S.optional(S.Boolean),
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+        })
+          .pipe(S.encodeKeys({ DryRun: "dryRun" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/prod/signal-maps/{Identifier}/monitor-deployment" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "StartMonitorDeploymentRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/prod/multiplexes/{MultiplexId}/start" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartMultiplexRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CloudWatchAlarmTemplateGroupIdentifiers: S.optional(__listOf__stringPatternS),
+          Description: S.optional(S.String),
+          DiscoveryEntryPointArn: S.optional(S.String),
+          EventBridgeRuleTemplateGroupIdentifiers: S.optional(__listOf__stringPatternS),
+          ForceRediscovery: S.optional(S.Boolean),
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          Name: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              CloudWatchAlarmTemplateGroupIdentifiers: "cloudWatchAlarmTemplateGroupIdentifiers",
+              Description: "description",
+              DiscoveryEntryPointArn: "discoveryEntryPointArn",
+              EventBridgeRuleTemplateGroupIdentifiers: "eventBridgeRuleTemplateGroupIdentifiers",
+              ForceRediscovery: "forceRediscovery",
+              Name: "name",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "PATCH", uri: "/prod/signal-maps/{Identifier}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "StartUpdateSignalMapRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelIds: S.optional(__listOf__string),
@@ -12669,7 +13002,11 @@ function __c0(j: number): any {
             ),
           ),
       ).annotate({ identifier: "BatchDeleteRequest" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -12678,9 +13015,9 @@ function __c0(j: number): any {
           Message: S.optional(S.String),
         }).pipe(S.encodeKeys({ Arn: "arn", Code: "code", Id: "id", Message: "message" })),
       ).annotate({ identifier: "BatchFailedResultModel" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -12690,20 +13027,351 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchSuccessfulResultModel",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(450, __c14, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Failed: S.optional(__listOfBatchFailedResultModel),
           Successful: S.optional(__listOfBatchSuccessfulResultModel),
         }).pipe(S.encodeKeys({ Failed: "failed", Successful: "successful" })),
       ).annotate({ identifier: "BatchDeleteResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ChannelId: S.String.pipe(T.HttpLabel("ChannelId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/prod/channels/{ChannelId}/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopChannelRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/prod/inputDevices/{InputDeviceId}/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopInputDeviceRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/prod/multiplexes/{MultiplexId}/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopMultiplexRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")),
+          TargetCustomerId: S.optional(S.String),
+          TargetRegion: S.optional(S.String),
+          TransferMessage: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              TargetCustomerId: "targetCustomerId",
+              TargetRegion: "targetRegion",
+              TransferMessage: "transferMessage",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/prod/inputDevices/{InputDeviceId}/transfer" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "TransferInputDeviceRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AccountConfiguration: S.optional(__S(4096, __c128, 0)) })
+          .pipe(S.encodeKeys({ AccountConfiguration: "accountConfiguration" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/accountConfiguration" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateAccountConfigurationRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaintenanceDay: S.optional(S.String),
+          MaintenanceScheduledDate: S.optional(S.String),
+          MaintenanceStartTime: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            MaintenanceDay: "maintenanceDay",
+            MaintenanceScheduledDate: "maintenanceScheduledDate",
+            MaintenanceStartTime: "maintenanceStartTime",
+          }),
+        ),
+      ).annotate({
+        identifier: "MaintenanceUpdateSettings",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CdiInputSpecification: S.optional(__S(1824, __c57, 0)),
+          ChannelId: S.String.pipe(T.HttpLabel("ChannelId")),
+          Destinations: S.optional(__listOfOutputDestination),
+          EncoderSettings: S.optional(__S(1762, __c55, 2)),
+          InputAttachments: S.optional(__listOfInputAttachment),
+          InputSpecification: S.optional(__S(1885, __c58, 29)),
+          LogLevel: S.optional(S.String),
+          Maintenance: S.optional(__S(672, __c21, 0)),
+          Name: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          ChannelEngineVersion: S.optional(__S(1568, __c49, 0)),
+          DryRun: S.optional(S.Boolean),
+          AnywhereSettings: S.optional(__S(1886, __c58, 30)),
+          LinkedChannelSettings: S.optional(__S(1571, __c49, 3)),
+          ChannelSecurityGroups: S.optional(__listOf__string),
+          InferenceSettings: S.optional(__S(1572, __c49, 4)),
+          SpecialRouterSettings: S.optional(__S(704, __c22, 0)),
+        })
+          .pipe(
+            S.encodeKeys({
+              CdiInputSpecification: "cdiInputSpecification",
+              Destinations: "destinations",
+              EncoderSettings: "encoderSettings",
+              InputAttachments: "inputAttachments",
+              InputSpecification: "inputSpecification",
+              LogLevel: "logLevel",
+              Maintenance: "maintenance",
+              Name: "name",
+              RoleArn: "roleArn",
+              ChannelEngineVersion: "channelEngineVersion",
+              DryRun: "dryRun",
+              AnywhereSettings: "anywhereSettings",
+              LinkedChannelSettings: "linkedChannelSettings",
+              ChannelSecurityGroups: "channelSecurityGroups",
+              InferenceSettings: "inferenceSettings",
+              SpecialRouterSettings: "specialRouterSettings",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/channels/{ChannelId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateChannelRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RouterArn: S.optional(S.String) }).pipe(
+          S.encodeKeys({ RouterArn: "routerArn" }),
+        ),
+      ).annotate({ identifier: "SpecialRouterSettings" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelClass: S.optional(S.String),
+          ChannelId: S.String.pipe(T.HttpLabel("ChannelId")),
+          Destinations: S.optional(__listOfOutputDestination),
+        })
+          .pipe(S.encodeKeys({ ChannelClass: "channelClass", Destinations: "destinations" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/channels/{ChannelId}/channelClass" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateChannelClassRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Channel: S.optional(__S(1792, __c56, 0)) }).pipe(
+          S.encodeKeys({ Channel: "channel" }),
+        ),
+      ).annotate({
+        identifier: "UpdateChannelClassResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelPlacementGroupId: S.String.pipe(T.HttpLabel("ChannelPlacementGroupId")),
+          ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
+          Name: S.optional(S.String),
+          Nodes: S.optional(__listOf__string),
+        })
+          .pipe(S.encodeKeys({ Name: "name", Nodes: "nodes" }))
+          .pipe(
+            T.all(
+              T.Http({
+                method: "PUT",
+                uri: "/prod/clusters/{ClusterId}/channelplacementgroups/{ChannelPlacementGroupId}",
+              }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateChannelPlacementGroupRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ComparisonOperator: S.optional(S.String),
+          DatapointsToAlarm: S.optional(S.Number),
+          Description: S.optional(S.String),
+          EvaluationPeriods: S.optional(S.Number),
+          GroupIdentifier: S.optional(S.String),
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          MetricName: S.optional(S.String),
+          Name: S.optional(S.String),
+          Period: S.optional(S.Number),
+          Statistic: S.optional(S.String),
+          TargetResourceType: S.optional(S.String),
+          Threshold: S.optional(S.Number),
+          TreatMissingData: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              ComparisonOperator: "comparisonOperator",
+              DatapointsToAlarm: "datapointsToAlarm",
+              Description: "description",
+              EvaluationPeriods: "evaluationPeriods",
+              GroupIdentifier: "groupIdentifier",
+              MetricName: "metricName",
+              Name: "name",
+              Period: "period",
+              Statistic: "statistic",
+              TargetResourceType: "targetResourceType",
+              Threshold: "threshold",
+              TreatMissingData: "treatMissingData",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "PATCH", uri: "/prod/cloudwatch-alarm-templates/{Identifier}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateCloudWatchAlarmTemplateRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Description: S.optional(S.String),
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+        })
+          .pipe(S.encodeKeys({ Description: "description" }))
+          .pipe(
+            T.all(
+              T.Http({
+                method: "PATCH",
+                uri: "/prod/cloudwatch-alarm-template-groups/{Identifier}",
+              }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateCloudWatchAlarmTemplateGroupRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelIds: S.optional(__listOf__string),
@@ -12721,7 +13389,377 @@ function __c1(j: number): any {
             ),
           ),
       ).annotate({ identifier: "BatchStartRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
+          Name: S.optional(S.String),
+          NetworkSettings: S.optional(__S(2178, __c68, 2)),
+        })
+          .pipe(S.encodeKeys({ Name: "name", NetworkSettings: "networkSettings" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/clusters/{ClusterId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateClusterRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          ChannelIds: S.optional(__listOf__string),
+          ClusterType: S.optional(S.String),
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          NetworkSettings: S.optional(__S(2242, __c70, 2)),
+          State: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Arn: "arn",
+            ChannelIds: "channelIds",
+            ClusterType: "clusterType",
+            Id: "id",
+            Name: "name",
+            NetworkSettings: "networkSettings",
+            State: "state",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateClusterResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Description: S.optional(S.String),
+          EventTargets: S.optional(__listOfEventBridgeRuleTemplateTarget),
+          EventType: S.optional(S.String),
+          GroupIdentifier: S.optional(S.String),
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+          Name: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              Description: "description",
+              EventTargets: "eventTargets",
+              EventType: "eventType",
+              GroupIdentifier: "groupIdentifier",
+              Name: "name",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "PATCH", uri: "/prod/eventbridge-rule-templates/{Identifier}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateEventBridgeRuleTemplateRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Description: S.optional(S.String),
+          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+        })
+          .pipe(S.encodeKeys({ Description: "description" }))
+          .pipe(
+            T.all(
+              T.Http({
+                method: "PATCH",
+                uri: "/prod/eventbridge-rule-template-groups/{Identifier}",
+              }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateEventBridgeRuleTemplateGroupRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Destinations: S.optional(__listOfInputDestinationRequest),
+          InputDevices: S.optional(__listOfInputDeviceRequest),
+          InputId: S.String.pipe(T.HttpLabel("InputId")),
+          InputSecurityGroups: S.optional(__listOf__string),
+          MediaConnectFlows: S.optional(__listOfMediaConnectFlowRequest),
+          Name: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          Sources: S.optional(__listOfInputSourceRequest),
+          SrtSettings: S.optional(__S(2408, __c75, 8)),
+          MulticastSettings: S.optional(__S(2411, __c75, 11)),
+          Smpte2110ReceiverGroupSettings: S.optional(__S(2475, __c77, 11)),
+          SdiSources: S.optional(InputSdiSources),
+          SpecialRouterSettings: S.optional(__S(704, __c22, 0)),
+        })
+          .pipe(
+            S.encodeKeys({
+              Destinations: "destinations",
+              InputDevices: "inputDevices",
+              InputSecurityGroups: "inputSecurityGroups",
+              MediaConnectFlows: "mediaConnectFlows",
+              Name: "name",
+              RoleArn: "roleArn",
+              Sources: "sources",
+              SrtSettings: "srtSettings",
+              MulticastSettings: "multicastSettings",
+              Smpte2110ReceiverGroupSettings: "smpte2110ReceiverGroupSettings",
+              SdiSources: "sdiSources",
+              SpecialRouterSettings: "specialRouterSettings",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/inputs/{InputId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateInputRequest" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfiguredInput: S.optional(S.String),
+          MaxBitrate: S.optional(S.Number),
+          LatencyMs: S.optional(S.Number),
+          Codec: S.optional(S.String),
+          MediaconnectSettings: S.optional(__S(4322, __c135, 2)),
+          AudioChannelPairs: S.optional(__listOfInputDeviceConfigurableAudioChannelPairConfig),
+          InputResolution: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ConfiguredInput: "configuredInput",
+            MaxBitrate: "maxBitrate",
+            LatencyMs: "latencyMs",
+            Codec: "codec",
+            MediaconnectSettings: "mediaconnectSettings",
+            AudioChannelPairs: "audioChannelPairs",
+            InputResolution: "inputResolution",
+          }),
+        ),
+      ).annotate({
+        identifier: "InputDeviceConfigurableSettings",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          HdDeviceSettings: S.optional(__S(1024, __c32, 0)),
+          InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")),
+          Name: S.optional(S.String),
+          UhdDeviceSettings: S.optional(__S(1024, __c32, 0)),
+          AvailabilityZone: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              HdDeviceSettings: "hdDeviceSettings",
+              Name: "name",
+              UhdDeviceSettings: "uhdDeviceSettings",
+              AvailabilityZone: "availabilityZone",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/inputDevices/{InputDeviceId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateInputDeviceRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          InputSecurityGroupId: S.String.pipe(T.HttpLabel("InputSecurityGroupId")),
+          Tags: S.optional(__S(1600, __c50, 0)),
+          WhitelistRules: S.optional(__listOfInputWhitelistRuleCidr),
+        })
+          .pipe(S.encodeKeys({ Tags: "tags", WhitelistRules: "whitelistRules" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/inputSecurityGroups/{InputSecurityGroupId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateInputSecurityGroupRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(2817, __c88, 1).pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")),
+          MultiplexSettings: S.optional(__S(2720, __c85, 0)),
+          Name: S.optional(S.String),
+          PacketIdentifiersMapping: S.optional(__S(1088, __c34, 0)),
+        })
+          .pipe(
+            S.encodeKeys({
+              MultiplexSettings: "multiplexSettings",
+              Name: "name",
+              PacketIdentifiersMapping: "packetIdentifiersMapping",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/multiplexes/{MultiplexId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateMultiplexRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")),
+          MultiplexProgramSettings: S.optional(__S(2851, __c89, 3)),
+          ProgramName: S.String.pipe(T.HttpLabel("ProgramName")),
+        })
+          .pipe(S.encodeKeys({ MultiplexProgramSettings: "multiplexProgramSettings" }))
+          .pipe(
+            T.all(
+              T.Http({
+                method: "PUT",
+                uri: "/prod/multiplexes/{MultiplexId}/programs/{ProgramName}",
+              }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateMultiplexProgramRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          IpPools: S.optional(__listOfIpPoolUpdateRequest),
+          Name: S.optional(S.String),
+          NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
+          Routes: S.optional(__listOfRouteUpdateRequest),
+        })
+          .pipe(S.encodeKeys({ IpPools: "ipPools", Name: "name", Routes: "routes" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/networks/{NetworkId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateNetworkRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CardNumber: S.optional(S.Number),
+          ChannelNumber: S.optional(S.Number),
+          SdiSource: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            CardNumber: "cardNumber",
+            ChannelNumber: "channelNumber",
+            SdiSource: "sdiSource",
+          }),
+        ),
+      ).annotate({
+        identifier: "SdiSourceMappingUpdateRequest",
+      });
+    case 1:
+      return S.Array(__S(1184, __c37, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
+          Name: S.optional(S.String),
+          NodeId: S.String.pipe(T.HttpLabel("NodeId")),
+          Role: S.optional(S.String),
+          SdiSourceMappings: S.optional(__S(1185, __c37, 1)),
+        })
+          .pipe(
+            S.encodeKeys({ Name: "name", Role: "role", SdiSourceMappings: "sdiSourceMappings" }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/clusters/{ClusterId}/nodes/{NodeId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateNodeRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelIds: S.optional(__listOf__string),
@@ -12739,7 +13777,151 @@ function __c1(j: number): any {
             ),
           ),
       ).annotate({ identifier: "BatchStopRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
+          NodeId: S.String.pipe(T.HttpLabel("NodeId")),
+          State: S.optional(S.String),
+        })
+          .pipe(S.encodeKeys({ State: "state" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/clusters/{ClusterId}/nodes/{NodeId}/state" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateNodeStateRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          RenewalSettings: S.optional(__S(3904, __c122, 0)),
+          ReservationId: S.String.pipe(T.HttpLabel("ReservationId")),
+        })
+          .pipe(S.encodeKeys({ Name: "name", RenewalSettings: "renewalSettings" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/reservations/{ReservationId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateReservationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Reservation: S.optional(__S(5664, __c177, 0)) }).pipe(
+          S.encodeKeys({ Reservation: "reservation" }),
+        ),
+      ).annotate({
+        identifier: "UpdateReservationResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Mode: S.optional(S.String),
+          Name: S.optional(S.String),
+          SdiSourceId: S.String.pipe(T.HttpLabel("SdiSourceId")),
+          Type: S.optional(S.String),
+        })
+          .pipe(S.encodeKeys({ Mode: "mode", Name: "name", Type: "type" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/sdiSources/{SdiSourceId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateSdiSourceRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ScheduleActions: S.optional(__listOfScheduleAction) }).pipe(
+          S.encodeKeys({ ScheduleActions: "scheduleActions" }),
+        ),
+      ).annotate({
+        identifier: "BatchScheduleActionCreateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ActionNames: S.optional(__listOf__string) }).pipe(
+          S.encodeKeys({ ActionNames: "actionNames" }),
+        ),
+      ).annotate({
+        identifier: "BatchScheduleActionDeleteRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelId: S.String.pipe(T.HttpLabel("ChannelId")),
+          Creates: S.optional(__S(1344, __c42, 0)),
+          Deletes: S.optional(__S(1345, __c42, 1)),
+        })
+          .pipe(S.encodeKeys({ Creates: "creates", Deletes: "deletes" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/prod/channels/{ChannelId}/schedule" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "BatchUpdateScheduleRequest",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Creates: S.optional(__S(1344, __c42, 0)),
+          Deletes: S.optional(__S(1344, __c42, 0)),
+        }).pipe(S.encodeKeys({ Creates: "creates", Deletes: "deletes" })),
+      ).annotate({
+        identifier: "BatchUpdateScheduleResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PasswordParam: S.optional(S.String),
+          Uri: S.optional(S.String),
+          Username: S.optional(S.String),
+        }).pipe(S.encodeKeys({ PasswordParam: "passwordParam", Uri: "uri", Username: "username" })),
+      ).annotate({ identifier: "InputLocation" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Tag: S.optional(S.String), Id3: S.optional(S.String) }).pipe(
           S.encodeKeys({ Tag: "tag", Id3: "id3" }),
@@ -12747,17 +13929,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "HlsId3SegmentTaggingScheduleActionSettings",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Id3: S.optional(S.String) }).pipe(S.encodeKeys({ Id3: "id3" })),
       ).annotate({
         identifier: "HlsTimedMetadataScheduleActionSettings",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({ Timecode: S.optional(S.String) }).pipe(S.encodeKeys({ Timecode: "timecode" })),
       ).annotate({ identifier: "StartTimecode" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           LastFrameClippingBehavior: S.optional(S.String),
@@ -12769,12 +13951,12 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopTimecode" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           InputTimecodeSource: S.optional(S.String),
-          StartTimecode: S.optional(__S(13, __c1, 5)),
-          StopTimecode: S.optional(__S(14, __c1, 6)),
+          StartTimecode: S.optional(__S(1410, __c44, 2)),
+          StopTimecode: S.optional(__S(1411, __c44, 3)),
         }).pipe(
           S.encodeKeys({
             InputTimecodeSource: "inputTimecodeSource",
@@ -12783,15 +13965,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InputClippingSettings" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           InputAttachmentNameReference: S.optional(S.String),
-          InputClippingSettings: S.optional(__S(15, __c1, 7)),
+          InputClippingSettings: S.optional(__S(1412, __c44, 4)),
           UrlPath: S.optional(__listOf__string),
         }).pipe(
           S.encodeKeys({
@@ -12803,7 +13981,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "InputPrepareScheduleActionSettings",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           Duration: S.optional(S.Number),
@@ -12821,7 +13999,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "MotionGraphicsActivateScheduleActionSettings",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({ PipelineId: S.optional(S.String) }).pipe(
           S.encodeKeys({ PipelineId: "pipelineId" }),
@@ -12829,9 +14007,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PipelinePauseStateSettings",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(1415, __c44, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({ Pipelines: S.optional(__listOfPipelinePauseStateSettings) }).pipe(
           S.encodeKeys({ Pipelines: "pipelines" }),
@@ -12839,7 +14017,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PauseStateScheduleActionSettings",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           InputAttachmentNameReference: S.optional(S.String),
@@ -12853,7 +14031,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "Scte35InputScheduleActionSettings",
       });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({ SpliceEventId: S.optional(S.Number) }).pipe(
           S.encodeKeys({ SpliceEventId: "spliceEventId" }),
@@ -12861,7 +14039,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "Scte35ReturnToNetworkScheduleActionSettings",
       });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({ Duration: S.optional(S.Number), SpliceEventId: S.optional(S.Number) }).pipe(
           S.encodeKeys({ Duration: "duration", SpliceEventId: "spliceEventId" }),
@@ -12869,11 +14047,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "Scte35SpliceInsertScheduleActionSettings",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           ArchiveAllowedFlag: S.optional(S.String),
@@ -12891,10 +14065,10 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "Scte35DeliveryRestrictions",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          DeliveryRestrictions: S.optional(__S(24, __c3, 0)),
+          DeliveryRestrictions: S.optional(__S(1421, __c44, 13)),
           SegmentNum: S.optional(S.Number),
           SegmentationCancelIndicator: S.optional(S.String),
           SegmentationDuration: S.optional(S.Number),
@@ -12923,10 +14097,10 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "Scte35SegmentationDescriptor",
       });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          SegmentationDescriptorScte35DescriptorSettings: S.optional(__S(25, __c3, 1)),
+          SegmentationDescriptorScte35DescriptorSettings: S.optional(__S(1422, __c44, 14)),
         }).pipe(
           S.encodeKeys({
             SegmentationDescriptorScte35DescriptorSettings:
@@ -12934,15 +14108,15 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Scte35DescriptorSettings" });
-    case 3:
+    case 16:
       return S.suspend(() =>
-        S.Struct({ Scte35DescriptorSettings: S.optional(__S(26, __c3, 2)) }).pipe(
+        S.Struct({ Scte35DescriptorSettings: S.optional(__S(1423, __c44, 15)) }).pipe(
           S.encodeKeys({ Scte35DescriptorSettings: "scte35DescriptorSettings" }),
         ),
       ).annotate({ identifier: "Scte35Descriptor" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 17:
+      return S.Array(__S(1424, __c44, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({ Scte35Descriptors: S.optional(__listOfScte35Descriptor) }).pipe(
           S.encodeKeys({ Scte35Descriptors: "scte35Descriptors" }),
@@ -12950,22 +14124,14 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "Scte35TimeSignalScheduleActionSettings",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          PasswordParam: S.optional(S.String),
-          Uri: S.optional(S.String),
-          Username: S.optional(S.String),
-        }).pipe(S.encodeKeys({ PasswordParam: "passwordParam", Uri: "uri", Username: "username" })),
-      ).annotate({ identifier: "InputLocation" });
-    case 7:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           Duration: S.optional(S.Number),
           FadeIn: S.optional(S.Number),
           FadeOut: S.optional(S.Number),
           Height: S.optional(S.Number),
-          Image: S.optional(__S(30, __c3, 6)),
+          Image: S.optional(__S(1376, __c43, 0)),
           ImageX: S.optional(S.Number),
           ImageY: S.optional(S.Number),
           Layer: S.optional(S.Number),
@@ -12988,11 +14154,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "StaticImageActivateScheduleActionSettings",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
       return S.suspend(() =>
         S.Struct({ FadeOut: S.optional(S.Number), Layer: S.optional(S.Number) }).pipe(
           S.encodeKeys({ FadeOut: "fadeOut", Layer: "layer" }),
@@ -13000,14 +14162,14 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StaticImageDeactivateScheduleActionSettings",
       });
-    case 1:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           Duration: S.optional(S.Number),
           FadeIn: S.optional(S.Number),
           FadeOut: S.optional(S.Number),
           Height: S.optional(S.Number),
-          Image: S.optional(__S(30, __c3, 6)),
+          Image: S.optional(__S(1376, __c43, 0)),
           ImageX: S.optional(S.Number),
           ImageY: S.optional(S.Number),
           Layer: S.optional(S.Number),
@@ -13032,7 +14194,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StaticImageOutputActivateScheduleActionSettings",
       });
-    case 2:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           FadeOut: S.optional(S.Number),
@@ -13042,7 +14204,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StaticImageOutputDeactivateScheduleActionSettings",
       });
-    case 3:
+    case 23:
       return S.suspend(() =>
         S.Struct({ Id3: S.optional(S.String), Tag: S.optional(S.String) }).pipe(
           S.encodeKeys({ Id3: "id3", Tag: "tag" }),
@@ -13050,26 +14212,26 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "Id3SegmentTaggingScheduleActionSettings",
       });
-    case 4:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          HlsId3SegmentTaggingSettings: S.optional(__S(11, __c1, 3)),
-          HlsTimedMetadataSettings: S.optional(__S(12, __c1, 4)),
-          InputPrepareSettings: S.optional(__S(16, __c2, 0)),
-          InputSwitchSettings: S.optional(__S(16, __c2, 0)),
-          MotionGraphicsImageActivateSettings: S.optional(__S(17, __c2, 1)),
-          MotionGraphicsImageDeactivateSettings: S.optional(__S(1, __c0, 1)),
-          PauseStateSettings: S.optional(__S(20, __c2, 4)),
-          Scte35InputSettings: S.optional(__S(21, __c2, 5)),
-          Scte35ReturnToNetworkSettings: S.optional(__S(22, __c2, 6)),
-          Scte35SpliceInsertSettings: S.optional(__S(23, __c2, 7)),
-          Scte35TimeSignalSettings: S.optional(__S(29, __c3, 5)),
-          StaticImageActivateSettings: S.optional(__S(31, __c3, 7)),
-          StaticImageDeactivateSettings: S.optional(__S(32, __c4, 0)),
-          StaticImageOutputActivateSettings: S.optional(__S(33, __c4, 1)),
-          StaticImageOutputDeactivateSettings: S.optional(__S(34, __c4, 2)),
-          Id3SegmentTaggingSettings: S.optional(__S(35, __c4, 3)),
-          TimedMetadataSettings: S.optional(__S(12, __c1, 4)),
+          HlsId3SegmentTaggingSettings: S.optional(__S(1408, __c44, 0)),
+          HlsTimedMetadataSettings: S.optional(__S(1409, __c44, 1)),
+          InputPrepareSettings: S.optional(__S(1413, __c44, 5)),
+          InputSwitchSettings: S.optional(__S(1413, __c44, 5)),
+          MotionGraphicsImageActivateSettings: S.optional(__S(1414, __c44, 6)),
+          MotionGraphicsImageDeactivateSettings: S.optional(__S(32, __c1, 0)),
+          PauseStateSettings: S.optional(__S(1417, __c44, 9)),
+          Scte35InputSettings: S.optional(__S(1418, __c44, 10)),
+          Scte35ReturnToNetworkSettings: S.optional(__S(1419, __c44, 11)),
+          Scte35SpliceInsertSettings: S.optional(__S(1420, __c44, 12)),
+          Scte35TimeSignalSettings: S.optional(__S(1426, __c44, 18)),
+          StaticImageActivateSettings: S.optional(__S(1427, __c44, 19)),
+          StaticImageDeactivateSettings: S.optional(__S(1428, __c44, 20)),
+          StaticImageOutputActivateSettings: S.optional(__S(1429, __c44, 21)),
+          StaticImageOutputDeactivateSettings: S.optional(__S(1430, __c44, 22)),
+          Id3SegmentTaggingSettings: S.optional(__S(1431, __c44, 23)),
+          TimedMetadataSettings: S.optional(__S(1409, __c44, 1)),
         }).pipe(
           S.encodeKeys({
             HlsId3SegmentTaggingSettings: "hlsId3SegmentTaggingSettings",
@@ -13092,13 +14254,13 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ScheduleActionSettings" });
-    case 5:
+    case 25:
       return S.suspend(() =>
         S.Struct({ Time: S.optional(S.String) }).pipe(S.encodeKeys({ Time: "time" })),
       ).annotate({
         identifier: "FixedModeScheduleActionStartSettings",
       });
-    case 6:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           FollowPoint: S.optional(S.String),
@@ -13109,12 +14271,12 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "FollowModeScheduleActionStartSettings",
       });
-    case 7:
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          FixedModeScheduleActionStartSettings: S.optional(__S(37, __c4, 5)),
-          FollowModeScheduleActionStartSettings: S.optional(__S(38, __c4, 6)),
-          ImmediateModeScheduleActionStartSettings: S.optional(__S(1, __c0, 1)),
+          FixedModeScheduleActionStartSettings: S.optional(__S(1433, __c44, 25)),
+          FollowModeScheduleActionStartSettings: S.optional(__S(1434, __c44, 26)),
+          ImmediateModeScheduleActionStartSettings: S.optional(__S(32, __c1, 0)),
         }).pipe(
           S.encodeKeys({
             FixedModeScheduleActionStartSettings: "fixedModeScheduleActionStartSettings",
@@ -13125,16 +14287,12 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ScheduleActionStartSettings",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           ActionName: S.optional(S.String),
-          ScheduleActionSettings: S.optional(__S(36, __c4, 4)),
-          ScheduleActionStartSettings: S.optional(__S(39, __c4, 7)),
+          ScheduleActionSettings: S.optional(__S(1432, __c44, 24)),
+          ScheduleActionStartSettings: S.optional(__S(1435, __c44, 27)),
         }).pipe(
           S.encodeKeys({
             ActionName: "actionName",
@@ -13143,55 +14301,13 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ScheduleAction" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ScheduleActions: S.optional(__listOfScheduleAction) }).pipe(
-          S.encodeKeys({ ScheduleActions: "scheduleActions" }),
-        ),
-      ).annotate({
-        identifier: "BatchScheduleActionCreateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ActionNames: S.optional(__listOf__string) }).pipe(
-          S.encodeKeys({ ActionNames: "actionNames" }),
-        ),
-      ).annotate({
-        identifier: "BatchScheduleActionDeleteRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelId: S.String.pipe(T.HttpLabel("ChannelId")),
-          Creates: S.optional(__S(42, __c5, 2)),
-          Deletes: S.optional(__S(43, __c5, 3)),
-        })
-          .pipe(S.encodeKeys({ Creates: "creates", Deletes: "deletes" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/channels/{ChannelId}/schedule" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "BatchUpdateScheduleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Creates: S.optional(__S(42, __c5, 2)),
-          Deletes: S.optional(__S(42, __c5, 2)),
-        }).pipe(S.encodeKeys({ Creates: "creates", Deletes: "deletes" })),
-      ).annotate({
-        identifier: "BatchUpdateScheduleResponse",
-      });
-    case 6:
+    case 29:
+      return S.Array(__S(1436, __c44, 28));
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")) }).pipe(
           T.all(
@@ -13206,7 +14322,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CancelInputDeviceTransferRequest",
       });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Id: S.optional(S.String) })
           .pipe(S.encodeKeys({ Id: "id" }))
@@ -13223,154 +14343,167 @@ function __c5(j: number): any {
       ).annotate({ identifier: "ClaimDeviceRequest" });
   }
 }
-function __c6(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ClaimDeviceResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Resolution: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Resolution: "resolution" }),
-        ),
-      ).annotate({ identifier: "CdiInputSpecification" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelId: S.optional(S.String),
-          ChannelGroup: S.optional(S.String),
-          ChannelName: S.optional(S.String),
-          ChannelEndpointId: S.optional(S.String),
-          MediaPackageRegionName: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ChannelId: "channelId",
-            ChannelGroup: "channelGroup",
-            ChannelName: "channelName",
-            ChannelEndpointId: "channelEndpointId",
-            MediaPackageRegionName: "mediaPackageRegionName",
-          }),
-        ),
-      ).annotate({
-        identifier: "MediaPackageOutputDestinationSettings",
-      });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ MultiplexId: S.optional(S.String), ProgramName: S.optional(S.String) }).pipe(
-          S.encodeKeys({ MultiplexId: "multiplexId", ProgramName: "programName" }),
-        ),
-      ).annotate({
-        identifier: "MultiplexProgramChannelDestinationSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          PasswordParam: S.optional(S.String),
-          StreamName: S.optional(S.String),
-          Url: S.optional(S.String),
-          Username: S.optional(S.String),
-          VirtualSourceAddress: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            PasswordParam: "passwordParam",
-            StreamName: "streamName",
-            Url: "url",
-            Username: "username",
-            VirtualSourceAddress: "virtualSourceAddress",
-          }),
-        ),
-      ).annotate({
-        identifier: "OutputDestinationSettings",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          EncryptionPassphraseSecretArn: S.optional(S.String),
-          StreamId: S.optional(S.String),
-          Url: S.optional(S.String),
-          ConnectionMode: S.optional(S.String),
-          ListenerPort: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            EncryptionPassphraseSecretArn: "encryptionPassphraseSecretArn",
-            StreamId: "streamId",
-            Url: "url",
-            ConnectionMode: "connectionMode",
-            ListenerPort: "listenerPort",
-          }),
-        ),
-      ).annotate({
-        identifier: "SrtOutputDestinationSettings",
-      });
   }
 }
-function __c7(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55, __c6, 7));
+      return S.suspend(() =>
+        S.Struct({
+          MaintenanceDay: S.optional(S.String),
+          MaintenanceStartTime: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            MaintenanceDay: "maintenanceDay",
+            MaintenanceStartTime: "maintenanceStartTime",
+          }),
+        ),
+      ).annotate({
+        identifier: "MaintenanceCreateSettings",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          EncryptionType: S.optional(S.String),
-          SecretArn: S.optional(S.String),
-        }).pipe(S.encodeKeys({ EncryptionType: "encryptionType", SecretArn: "secretArn" })),
-      ).annotate({
-        identifier: "MediaConnectRouterOutputDestinationSettings",
-      });
+          PublicAddressAllocationIds: S.optional(__listOf__string),
+          SecurityGroupIds: S.optional(__listOf__string),
+          SubnetIds: S.optional(__listOf__string),
+        }).pipe(
+          S.encodeKeys({
+            PublicAddressAllocationIds: "publicAddressAllocationIds",
+            SecurityGroupIds: "securityGroupIds",
+            SubnetIds: "subnetIds",
+          }),
+        ),
+      ).annotate({ identifier: "VpcOutputSettings" });
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.suspend(() =>
+        S.Struct({
+          CdiInputSpecification: S.optional(__S(1824, __c57, 0)),
+          ChannelClass: S.optional(S.String),
+          Destinations: S.optional(__listOfOutputDestination),
+          EncoderSettings: S.optional(__S(1762, __c55, 2)),
+          InputAttachments: S.optional(__listOfInputAttachment),
+          InputSpecification: S.optional(__S(1885, __c58, 29)),
+          LogLevel: S.optional(S.String),
+          Maintenance: S.optional(__S(1536, __c48, 0)),
+          Name: S.optional(S.String),
+          RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Reserved: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          Tags: S.optional(__S(1600, __c50, 0)),
+          Vpc: S.optional(__S(1537, __c48, 1)),
+          AnywhereSettings: S.optional(__S(1886, __c58, 30)),
+          ChannelEngineVersion: S.optional(__S(1568, __c49, 0)),
+          DryRun: S.optional(S.Boolean),
+          LinkedChannelSettings: S.optional(__S(1571, __c49, 3)),
+          ChannelSecurityGroups: S.optional(__listOf__string),
+          InferenceSettings: S.optional(__S(1572, __c49, 4)),
+        })
+          .pipe(
+            S.encodeKeys({
+              CdiInputSpecification: "cdiInputSpecification",
+              ChannelClass: "channelClass",
+              Destinations: "destinations",
+              EncoderSettings: "encoderSettings",
+              InputAttachments: "inputAttachments",
+              InputSpecification: "inputSpecification",
+              LogLevel: "logLevel",
+              Maintenance: "maintenance",
+              Name: "name",
+              RequestId: "requestId",
+              Reserved: "reserved",
+              RoleArn: "roleArn",
+              Tags: "tags",
+              Vpc: "vpc",
+              AnywhereSettings: "anywhereSettings",
+              ChannelEngineVersion: "channelEngineVersion",
+              DryRun: "dryRun",
+              LinkedChannelSettings: "linkedChannelSettings",
+              ChannelSecurityGroups: "channelSecurityGroups",
+              InferenceSettings: "inferenceSettings",
+            }),
+          )
+          .pipe(
+            T.all(T.Http({ method: "POST", uri: "/prod/channels" }), svc, auth, proto, ver, rules),
+          ),
+      ).annotate({ identifier: "CreateChannelRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Version: S.optional(S.String) }).pipe(S.encodeKeys({ Version: "version" })),
+      ).annotate({
+        identifier: "ChannelEngineVersionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          LinkedChannelType: S.optional(S.String),
+          PrimaryChannelArn: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            LinkedChannelType: "linkedChannelType",
+            PrimaryChannelArn: "primaryChannelArn",
+          }),
+        ),
+      ).annotate({ identifier: "FollowerChannelSettings" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ LinkedChannelType: S.optional(S.String) }).pipe(
+          S.encodeKeys({ LinkedChannelType: "linkedChannelType" }),
+        ),
+      ).annotate({ identifier: "PrimaryChannelSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Id: S.optional(S.String),
-          MediaPackageSettings: S.optional(__listOfMediaPackageOutputDestinationSettings),
-          MultiplexSettings: S.optional(__S(52, __c6, 4)),
-          Settings: S.optional(__listOfOutputDestinationSettings),
-          SrtSettings: S.optional(__listOfSrtOutputDestinationSettings),
-          LogicalInterfaceNames: S.optional(__listOf__string),
-          MediaConnectRouterSettings: S.optional(
-            __listOfMediaConnectRouterOutputDestinationSettings,
-          ),
+          FollowerChannelSettings: S.optional(__S(1569, __c49, 1)),
+          PrimaryChannelSettings: S.optional(__S(1570, __c49, 2)),
         }).pipe(
           S.encodeKeys({
-            Id: "id",
-            MediaPackageSettings: "mediaPackageSettings",
-            MultiplexSettings: "multiplexSettings",
-            Settings: "settings",
-            SrtSettings: "srtSettings",
-            LogicalInterfaceNames: "logicalInterfaceNames",
-            MediaConnectRouterSettings: "mediaConnectRouterSettings",
+            FollowerChannelSettings: "followerChannelSettings",
+            PrimaryChannelSettings: "primaryChannelSettings",
           }),
         ),
-      ).annotate({ identifier: "OutputDestination" });
+      ).annotate({ identifier: "LinkedChannelSettings" });
     case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          Algorithm: S.optional(S.String),
-          AlgorithmControl: S.optional(S.String),
-          TargetLkfs: S.optional(S.Number),
-          PeakCalculation: S.optional(S.String),
-          PeakLimiterThreshold: S.optional(S.Number),
+          FeedArn: S.optional(S.String),
+          AudioFeedInputs: S.optional(__listOfAudioFeedInput),
+          EnrichmentMethods: S.optional(__listOfEnrichmentMethod),
         }).pipe(
           S.encodeKeys({
-            Algorithm: "algorithm",
-            AlgorithmControl: "algorithmControl",
-            TargetLkfs: "targetLkfs",
-            PeakCalculation: "peakCalculation",
-            PeakLimiterThreshold: "peakLimiterThreshold",
+            FeedArn: "feedArn",
+            AudioFeedInputs: "audioFeedInputs",
+            EnrichmentMethods: "enrichmentMethods",
           }),
         ),
-      ).annotate({
-        identifier: "AudioNormalizationSettings",
-      });
-    case 6:
+      ).annotate({ identifier: "InferenceSettings" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Channel: S.optional(__S(1792, __c56, 0)) }).pipe(
+          S.encodeKeys({ Channel: "channel" }),
+        ),
+      ).annotate({ identifier: "CreateChannelResponse" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CbetCheckDigitString: S.optional(S.String),
@@ -13384,7 +14517,7 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "NielsenCBET" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CheckDigitString: S.optional(S.String),
@@ -13394,17 +14527,13 @@ function __c7(j: number): any {
           S.encodeKeys({ CheckDigitString: "checkDigitString", Sid: "sid", Timezone: "timezone" }),
         ),
       ).annotate({ identifier: "NielsenNaesIiNw" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          NielsenCbetSettings: S.optional(__S(62, __c7, 6)),
+          NielsenCbetSettings: S.optional(__S(1632, __c51, 0)),
           NielsenDistributionType: S.optional(S.String),
-          NielsenNaesIiNwSettings: S.optional(__S(63, __c7, 7)),
-          NielsenNwOnlySettings: S.optional(__S(63, __c7, 7)),
+          NielsenNaesIiNwSettings: S.optional(__S(1633, __c51, 1)),
+          NielsenNwOnlySettings: S.optional(__S(1633, __c51, 1)),
         }).pipe(
           S.encodeKeys({
             NielsenCbetSettings: "nielsenCbetSettings",
@@ -13416,13 +14545,13 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "NielsenWatermarksSettings",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ NielsenWatermarksSettings: S.optional(__S(64, __c8, 0)) }).pipe(
+        S.Struct({ NielsenWatermarksSettings: S.optional(__S(1634, __c51, 2)) }).pipe(
           S.encodeKeys({ NielsenWatermarksSettings: "nielsenWatermarksSettings" }),
         ),
       ).annotate({ identifier: "AudioWatermarkSettings" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Bitrate: S.optional(S.Number),
@@ -13448,7 +14577,7 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AacSettings" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Bitrate: S.optional(S.Number),
@@ -13472,7 +14601,7 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Ac3Settings" });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           Bitrate: S.optional(S.Number),
@@ -13494,7 +14623,7 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Eac3AtmosSettings" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           AttenuationControl: S.optional(S.String),
@@ -13542,7 +14671,7 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Eac3Settings" });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           Bitrate: S.optional(S.Number),
@@ -13552,7 +14681,7 @@ function __c8(j: number): any {
           S.encodeKeys({ Bitrate: "bitrate", CodingMode: "codingMode", SampleRate: "sampleRate" }),
         ),
       ).annotate({ identifier: "Mp2Settings" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           BitDepth: S.optional(S.Number),
@@ -13566,20 +14695,16 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WavSettings" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          AacSettings: S.optional(__S(66, __c8, 2)),
-          Ac3Settings: S.optional(__S(67, __c8, 3)),
-          Eac3AtmosSettings: S.optional(__S(68, __c8, 4)),
-          Eac3Settings: S.optional(__S(69, __c8, 5)),
-          Mp2Settings: S.optional(__S(70, __c8, 6)),
-          PassThroughSettings: S.optional(__S(48, __c6, 0)),
-          WavSettings: S.optional(__S(71, __c8, 7)),
+          AacSettings: S.optional(__S(1636, __c51, 4)),
+          Ac3Settings: S.optional(__S(1637, __c51, 5)),
+          Eac3AtmosSettings: S.optional(__S(1638, __c51, 6)),
+          Eac3Settings: S.optional(__S(1639, __c51, 7)),
+          Mp2Settings: S.optional(__S(1640, __c51, 8)),
+          PassThroughSettings: S.optional(__S(1504, __c47, 0)),
+          WavSettings: S.optional(__S(1641, __c51, 9)),
         }).pipe(
           S.encodeKeys({
             AacSettings: "aacSettings",
@@ -13592,57 +14717,19 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AudioCodecSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Gain: S.optional(S.Number), InputChannel: S.optional(S.Number) }).pipe(
-          S.encodeKeys({ Gain: "gain", InputChannel: "inputChannel" }),
-        ),
-      ).annotate({ identifier: "InputChannelLevel" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          InputChannelLevels: S.optional(__listOfInputChannelLevel),
-          OutputChannel: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            InputChannelLevels: "inputChannelLevels",
-            OutputChannel: "outputChannel",
-          }),
-        ),
-      ).annotate({ identifier: "AudioChannelMapping" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelMappings: S.optional(__listOfAudioChannelMapping),
-          ChannelsIn: S.optional(S.Number),
-          ChannelsOut: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            ChannelMappings: "channelMappings",
-            ChannelsIn: "channelsIn",
-            ChannelsOut: "channelsOut",
-          }),
-        ),
-      ).annotate({ identifier: "RemixSettings" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AudioNormalizationSettings: S.optional(__S(61, __c7, 5)),
+          AudioNormalizationSettings: S.optional(__S(1836, __c57, 12)),
           AudioSelectorName: S.optional(S.String),
           AudioType: S.optional(S.String),
           AudioTypeControl: S.optional(S.String),
-          AudioWatermarkingSettings: S.optional(__S(65, __c8, 1)),
-          CodecSettings: S.optional(__S(72, __c9, 0)),
+          AudioWatermarkingSettings: S.optional(__S(1635, __c51, 3)),
+          CodecSettings: S.optional(__S(1642, __c51, 10)),
           LanguageCode: S.optional(S.String),
           LanguageCodeControl: S.optional(S.String),
           Name: S.optional(S.String),
-          RemixSettings: S.optional(__S(77, __c9, 5)),
+          RemixSettings: S.optional(__S(1841, __c57, 17)),
           StreamName: S.optional(S.String),
           AudioDashRoles: S.optional(__listOfDashRoleAudio),
           DvbDashAccessibility: S.optional(S.String),
@@ -13664,20 +14751,16 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AudioDescription" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
+    case 12:
+      return S.Array(__S(1643, __c51, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          AvailBlankingImage: S.optional(__S(30, __c3, 6)),
+          AvailBlankingImage: S.optional(__S(1376, __c43, 0)),
           State: S.optional(S.String),
         }).pipe(S.encodeKeys({ AvailBlankingImage: "availBlankingImage", State: "state" })),
       ).annotate({ identifier: "AvailBlanking" });
-    case 2:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           AcquisitionPointId: S.optional(S.String),
@@ -13697,7 +14780,7 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Esam" });
-    case 3:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           AdAvailOffset: S.optional(S.Number),
@@ -13711,12 +14794,12 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Scte35SpliceInsert" });
-    case 4:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          Esam: S.optional(__S(82, __c10, 2)),
-          Scte35SpliceInsert: S.optional(__S(83, __c10, 3)),
-          Scte35TimeSignalApos: S.optional(__S(83, __c10, 3)),
+          Esam: S.optional(__S(1646, __c51, 14)),
+          Scte35SpliceInsert: S.optional(__S(1647, __c51, 15)),
+          Scte35TimeSignalApos: S.optional(__S(1647, __c51, 15)),
         }).pipe(
           S.encodeKeys({
             Esam: "esam",
@@ -13725,10 +14808,10 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AvailSettings" });
-    case 5:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          AvailSettings: S.optional(__S(84, __c10, 4)),
+          AvailSettings: S.optional(__S(1648, __c51, 16)),
           Scte35SegmentationScope: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -13737,12 +14820,12 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AvailConfiguration" });
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          BlackoutSlateImage: S.optional(__S(30, __c3, 6)),
+          BlackoutSlateImage: S.optional(__S(1376, __c43, 0)),
           NetworkEndBlackout: S.optional(S.String),
-          NetworkEndBlackoutImage: S.optional(__S(30, __c3, 6)),
+          NetworkEndBlackoutImage: S.optional(__S(1376, __c43, 0)),
           NetworkId: S.optional(S.String),
           State: S.optional(S.String),
         }).pipe(
@@ -13755,13 +14838,13 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BlackoutSlate" });
-    case 7:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           Alignment: S.optional(S.String),
           BackgroundColor: S.optional(S.String),
           BackgroundOpacity: S.optional(S.Number),
-          Font: S.optional(__S(30, __c3, 6)),
+          Font: S.optional(__S(1376, __c43, 0)),
           FontColor: S.optional(S.String),
           FontOpacity: S.optional(S.Number),
           FontResolution: S.optional(S.Number),
@@ -13801,11 +14884,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "BurnInDestinationSettings",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           CopyrightHolder: S.optional(S.String),
@@ -13827,7 +14906,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "EbuTtDDestinationSettings",
       });
-    case 1:
+    case 21:
       return S.suspend(() =>
         S.Struct({ YPositionLine: S.optional(S.Number) }).pipe(
           S.encodeKeys({ YPositionLine: "yPositionLine" }),
@@ -13835,16 +14914,16 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "EmbeddedCaptionPositionSettings",
       });
-    case 2:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          Position: S.optional(__S(89, __c11, 1)),
+          Position: S.optional(__S(1653, __c51, 21)),
           StyleControl: S.optional(S.String),
         }).pipe(S.encodeKeys({ Position: "position", StyleControl: "styleControl" })),
       ).annotate({
         identifier: "EmbeddedDestinationSettings",
       });
-    case 3:
+    case 23:
       return S.suspend(() =>
         S.Struct({ YPositionPercentage: S.optional(S.Number) }).pipe(
           S.encodeKeys({ YPositionPercentage: "yPositionPercentage" }),
@@ -13852,38 +14931,38 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "TextCaptionPositionSettings",
       });
-    case 4:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           StyleControl: S.optional(S.String),
-          Position: S.optional(__S(91, __c11, 3)),
+          Position: S.optional(__S(1655, __c51, 23)),
         }).pipe(S.encodeKeys({ StyleControl: "styleControl", Position: "position" })),
       ).annotate({ identifier: "TtmlDestinationSettings" });
-    case 5:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           StyleControl: S.optional(S.String),
-          Position: S.optional(__S(91, __c11, 3)),
+          Position: S.optional(__S(1655, __c51, 23)),
         }).pipe(S.encodeKeys({ StyleControl: "styleControl", Position: "position" })),
       ).annotate({
         identifier: "WebvttDestinationSettings",
       });
-    case 6:
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          AribDestinationSettings: S.optional(__S(48, __c6, 0)),
-          BurnInDestinationSettings: S.optional(__S(87, __c10, 7)),
-          DvbSubDestinationSettings: S.optional(__S(87, __c10, 7)),
-          EbuTtDDestinationSettings: S.optional(__S(88, __c11, 0)),
-          EmbeddedDestinationSettings: S.optional(__S(90, __c11, 2)),
-          EmbeddedPlusScte20DestinationSettings: S.optional(__S(1, __c0, 1)),
-          RtmpCaptionInfoDestinationSettings: S.optional(__S(1, __c0, 1)),
-          Scte20PlusEmbeddedDestinationSettings: S.optional(__S(1, __c0, 1)),
-          Scte27DestinationSettings: S.optional(__S(48, __c6, 0)),
-          SmpteTtDestinationSettings: S.optional(__S(48, __c6, 0)),
-          TeletextDestinationSettings: S.optional(__S(48, __c6, 0)),
-          TtmlDestinationSettings: S.optional(__S(92, __c11, 4)),
-          WebvttDestinationSettings: S.optional(__S(93, __c11, 5)),
+          AribDestinationSettings: S.optional(__S(1504, __c47, 0)),
+          BurnInDestinationSettings: S.optional(__S(1651, __c51, 19)),
+          DvbSubDestinationSettings: S.optional(__S(1651, __c51, 19)),
+          EbuTtDDestinationSettings: S.optional(__S(1652, __c51, 20)),
+          EmbeddedDestinationSettings: S.optional(__S(1654, __c51, 22)),
+          EmbeddedPlusScte20DestinationSettings: S.optional(__S(32, __c1, 0)),
+          RtmpCaptionInfoDestinationSettings: S.optional(__S(32, __c1, 0)),
+          Scte20PlusEmbeddedDestinationSettings: S.optional(__S(32, __c1, 0)),
+          Scte27DestinationSettings: S.optional(__S(1504, __c47, 0)),
+          SmpteTtDestinationSettings: S.optional(__S(1504, __c47, 0)),
+          TeletextDestinationSettings: S.optional(__S(1504, __c47, 0)),
+          TtmlDestinationSettings: S.optional(__S(1656, __c51, 24)),
+          WebvttDestinationSettings: S.optional(__S(1657, __c51, 25)),
         }).pipe(
           S.encodeKeys({
             AribDestinationSettings: "aribDestinationSettings",
@@ -13904,12 +14983,12 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CaptionDestinationSettings",
       });
-    case 7:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           Accessibility: S.optional(S.String),
           CaptionSelectorName: S.optional(S.String),
-          DestinationSettings: S.optional(__S(94, __c11, 6)),
+          DestinationSettings: S.optional(__S(1658, __c51, 26)),
           LanguageCode: S.optional(S.String),
           LanguageDescription: S.optional(S.String),
           Name: S.optional(S.String),
@@ -13928,13 +15007,9 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CaptionDescription" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 28:
+      return S.Array(__S(1659, __c51, 27));
+    case 29:
       return S.suspend(() =>
         S.Struct({
           InputPrepareScheduleActions: S.optional(S.String),
@@ -13946,12 +15021,12 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FeatureActivations" });
-    case 2:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           BlackFrameMsec: S.optional(S.Number),
           InputLossImageColor: S.optional(S.String),
-          InputLossImageSlate: S.optional(__S(30, __c3, 6)),
+          InputLossImageSlate: S.optional(__S(1376, __c43, 0)),
           InputLossImageType: S.optional(S.String),
           RepeatFrameMsec: S.optional(S.Number),
         }).pipe(
@@ -13964,13 +15039,17 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InputLossBehavior" });
-    case 3:
+    case 31:
       return S.suspend(() =>
         S.Struct({ CustomEpoch: S.optional(S.String), JamSyncTime: S.optional(S.String) }).pipe(
           S.encodeKeys({ CustomEpoch: "customEpoch", JamSyncTime: "jamSyncTime" }),
         ),
       ).annotate({ identifier: "EpochLockingSettings" });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PipelineLockingMethod: S.optional(S.String),
@@ -13982,18 +15061,18 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PipelineLockingSettings" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ CustomEpoch: S.optional(S.String) }).pipe(
           S.encodeKeys({ CustomEpoch: "customEpoch" }),
         ),
       ).annotate({ identifier: "DisabledLockingSettings" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          EpochLockingSettings: S.optional(__S(99, __c12, 3)),
-          PipelineLockingSettings: S.optional(__S(100, __c12, 4)),
-          DisabledLockingSettings: S.optional(__S(101, __c12, 5)),
+          EpochLockingSettings: S.optional(__S(1663, __c51, 31)),
+          PipelineLockingSettings: S.optional(__S(1664, __c52, 0)),
+          DisabledLockingSettings: S.optional(__S(1665, __c52, 1)),
         }).pipe(
           S.encodeKeys({
             EpochLockingSettings: "epochLockingSettings",
@@ -14002,16 +15081,16 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "OutputLockingSettings" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           InitialAudioGain: S.optional(S.Number),
           InputEndAction: S.optional(S.String),
-          InputLossBehavior: S.optional(__S(98, __c12, 2)),
+          InputLossBehavior: S.optional(__S(1662, __c51, 30)),
           OutputLockingMode: S.optional(S.String),
           OutputTimingSource: S.optional(S.String),
           SupportLowFramerateInputs: S.optional(S.String),
-          OutputLockingSettings: S.optional(__S(102, __c12, 6)),
+          OutputLockingSettings: S.optional(__S(1666, __c52, 2)),
         }).pipe(
           S.encodeKeys({
             InitialAudioGain: "initialAudioGain",
@@ -14024,21 +15103,17 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GlobalConfiguration" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
-        S.Struct({ HtmlMotionGraphicsSettings: S.optional(__S(48, __c6, 0)) }).pipe(
+        S.Struct({ HtmlMotionGraphicsSettings: S.optional(__S(1504, __c47, 0)) }).pipe(
           S.encodeKeys({ HtmlMotionGraphicsSettings: "htmlMotionGraphicsSettings" }),
         ),
       ).annotate({ identifier: "MotionGraphicsSettings" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           MotionGraphicsInsertion: S.optional(S.String),
-          MotionGraphicsSettings: S.optional(__S(104, __c13, 0)),
+          MotionGraphicsSettings: S.optional(__S(1668, __c52, 4)),
         }).pipe(
           S.encodeKeys({
             MotionGraphicsInsertion: "motionGraphicsInsertion",
@@ -14048,7 +15123,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "MotionGraphicsConfiguration",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           DistributorId: S.optional(S.String),
@@ -14060,29 +15135,29 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "NielsenConfiguration" });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({ CannedAcl: S.optional(S.String) }).pipe(
           S.encodeKeys({ CannedAcl: "cannedAcl" }),
         ),
       ).annotate({ identifier: "ArchiveS3Settings" });
-    case 4:
+    case 8:
       return S.suspend(() =>
-        S.Struct({ ArchiveS3Settings: S.optional(__S(107, __c13, 3)) }).pipe(
+        S.Struct({ ArchiveS3Settings: S.optional(__S(1671, __c52, 7)) }).pipe(
           S.encodeKeys({ ArchiveS3Settings: "archiveS3Settings" }),
         ),
       ).annotate({ identifier: "ArchiveCdnSettings" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({ DestinationRefId: S.optional(S.String) }).pipe(
           S.encodeKeys({ DestinationRefId: "destinationRefId" }),
         ),
       ).annotate({ identifier: "OutputLocationRef" });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          ArchiveCdnSettings: S.optional(__S(108, __c13, 4)),
-          Destination: S.optional(__S(109, __c13, 5)),
+          ArchiveCdnSettings: S.optional(__S(1672, __c52, 8)),
+          Destination: S.optional(__S(1673, __c52, 9)),
           RolloverInterval: S.optional(S.Number),
         }).pipe(
           S.encodeKeys({
@@ -14092,21 +15167,17 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ArchiveGroupSettings" });
-    case 7:
+    case 11:
       return S.suspend(() =>
-        S.Struct({ FrameCaptureS3Settings: S.optional(__S(107, __c13, 3)) }).pipe(
+        S.Struct({ FrameCaptureS3Settings: S.optional(__S(1671, __c52, 7)) }).pipe(
           S.encodeKeys({ FrameCaptureS3Settings: "frameCaptureS3Settings" }),
         ),
       ).annotate({ identifier: "FrameCaptureCdnSettings" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          Destination: S.optional(__S(109, __c13, 5)),
-          FrameCaptureCdnSettings: S.optional(__S(111, __c13, 7)),
+          Destination: S.optional(__S(1673, __c52, 9)),
+          FrameCaptureCdnSettings: S.optional(__S(1675, __c52, 11)),
         }).pipe(
           S.encodeKeys({
             Destination: "destination",
@@ -14116,7 +15187,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "FrameCaptureGroupSettings",
       });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           CaptionChannel: S.optional(S.Number),
@@ -14130,9 +15201,9 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CaptionLanguageMapping" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
+    case 14:
+      return S.Array(__S(1677, __c52, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           ConnectionRetryInterval: S.optional(S.Number),
@@ -14154,7 +15225,7 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HlsAkamaiSettings" });
-    case 4:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           ConnectionRetryInterval: S.optional(S.Number),
@@ -14170,7 +15241,7 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HlsBasicPutSettings" });
-    case 5:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           ConnectionRetryInterval: S.optional(S.Number),
@@ -14188,7 +15259,7 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HlsMediaStoreSettings" });
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           ConnectionRetryInterval: S.optional(S.Number),
@@ -14206,14 +15277,14 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HlsWebdavSettings" });
-    case 7:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          HlsAkamaiSettings: S.optional(__S(115, __c14, 3)),
-          HlsBasicPutSettings: S.optional(__S(116, __c14, 4)),
-          HlsMediaStoreSettings: S.optional(__S(117, __c14, 5)),
-          HlsS3Settings: S.optional(__S(107, __c13, 3)),
-          HlsWebdavSettings: S.optional(__S(118, __c14, 6)),
+          HlsAkamaiSettings: S.optional(__S(1679, __c52, 15)),
+          HlsBasicPutSettings: S.optional(__S(1680, __c52, 16)),
+          HlsMediaStoreSettings: S.optional(__S(1681, __c52, 17)),
+          HlsS3Settings: S.optional(__S(1671, __c52, 7)),
+          HlsWebdavSettings: S.optional(__S(1682, __c52, 18)),
         }).pipe(
           S.encodeKeys({
             HlsAkamaiSettings: "hlsAkamaiSettings",
@@ -14224,14 +15295,10 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HlsCdnSettings" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          KeyProviderServer: S.optional(__S(30, __c3, 6)),
+          KeyProviderServer: S.optional(__S(1376, __c43, 0)),
           StaticKeyValue: S.optional(SensitiveString),
         }).pipe(
           S.encodeKeys({
@@ -14240,13 +15307,13 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StaticKeySettings" });
-    case 1:
+    case 21:
       return S.suspend(() =>
-        S.Struct({ StaticKeySettings: S.optional(__S(120, __c15, 0)) }).pipe(
+        S.Struct({ StaticKeySettings: S.optional(__S(1684, __c52, 20)) }).pipe(
           S.encodeKeys({ StaticKeySettings: "staticKeySettings" }),
         ),
       ).annotate({ identifier: "KeyProviderSettings" });
-    case 2:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           AdMarkers: S.optional(__listOfHlsAdMarkers),
@@ -14259,11 +15326,11 @@ function __c15(j: number): any {
           ClientCache: S.optional(S.String),
           CodecSpecification: S.optional(S.String),
           ConstantIv: S.optional(S.String),
-          Destination: S.optional(__S(109, __c13, 5)),
+          Destination: S.optional(__S(1673, __c52, 9)),
           DirectoryStructure: S.optional(S.String),
           DiscontinuityTags: S.optional(S.String),
           EncryptionType: S.optional(S.String),
-          HlsCdnSettings: S.optional(__S(119, __c14, 7)),
+          HlsCdnSettings: S.optional(__S(1683, __c52, 19)),
           HlsId3SegmentTagging: S.optional(S.String),
           IFrameOnlyPlaylists: S.optional(S.String),
           IncompleteSegmentBehavior: S.optional(S.String),
@@ -14274,7 +15341,7 @@ function __c15(j: number): any {
           KeepSegments: S.optional(S.Number),
           KeyFormat: S.optional(S.String),
           KeyFormatVersions: S.optional(S.String),
-          KeyProviderSettings: S.optional(__S(121, __c15, 1)),
+          KeyProviderSettings: S.optional(__S(1685, __c52, 21)),
           ManifestCompression: S.optional(S.String),
           ManifestDurationFormat: S.optional(S.String),
           MinSegmentLength: S.optional(S.Number),
@@ -14340,19 +15407,19 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HlsGroupSettings" });
-    case 3:
+    case 23:
       return S.suspend(() =>
-        S.Struct({ Destination: S.optional(__S(109, __c13, 5)) }).pipe(
+        S.Struct({ Destination: S.optional(__S(1673, __c52, 9)) }).pipe(
           S.encodeKeys({ Destination: "destination" }),
         ),
       ).annotate({
         identifier: "MediaPackageAdditionalDestinations",
       });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
-      return S.Array(__S(109, __c13, 5));
-    case 6:
+    case 24:
+      return S.Array(__S(1687, __c52, 23));
+    case 25:
+      return S.Array(__S(1673, __c52, 9));
+    case 26:
       return S.suspend(() =>
         S.Struct({
           EmbeddingFrequency: S.optional(S.Number),
@@ -14368,12 +15435,12 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "AbWatermarkingCustomProfile",
       });
-    case 7:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           AdditionalDestinationsAlternateDestinations: S.optional(__listOfOutputLocationRef),
-          AlternateDestination: S.optional(__S(109, __c13, 5)),
-          CustomProfile: S.optional(__S(126, __c15, 6)),
+          AlternateDestination: S.optional(__S(1673, __c52, 9)),
+          CustomProfile: S.optional(__S(1690, __c52, 26)),
           License: S.optional(S.String),
           OperatorId: S.optional(S.Number),
           PolyPeriod: S.optional(S.Number),
@@ -14395,14 +15462,10 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "MediaPackageV2AbWatermarkerIrdetoSettings",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          MediaPackageV2AbWatermarkerIrdetoSettings: S.optional(__S(127, __c15, 7)),
+          MediaPackageV2AbWatermarkerIrdetoSettings: S.optional(__S(1691, __c52, 27)),
         }).pipe(
           S.encodeKeys({
             MediaPackageV2AbWatermarkerIrdetoSettings: "mediaPackageV2AbWatermarkerIrdetoSettings",
@@ -14411,7 +15474,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "MediaPackageV2WatermarkingSettings",
       });
-    case 1:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           CaptionLanguageMappings: S.optional(__listOfCaptionLanguageMapping),
@@ -14425,7 +15488,7 @@ function __c16(j: number): any {
           TimedMetadataId3Period: S.optional(S.Number),
           TimedMetadataPassthrough: S.optional(S.String),
           AdditionalDestinations: S.optional(__listOfMediaPackageAdditionalDestinations),
-          WatermarkingSettings: S.optional(__S(128, __c16, 0)),
+          WatermarkingSettings: S.optional(__S(1692, __c52, 28)),
         }).pipe(
           S.encodeKeys({
             CaptionLanguageMappings: "captionLanguageMappings",
@@ -14445,11 +15508,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "MediaPackageV2GroupSettings",
       });
-    case 2:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          Destination: S.optional(__S(109, __c13, 5)),
-          MediapackageV2GroupSettings: S.optional(__S(129, __c16, 1)),
+          Destination: S.optional(__S(1673, __c52, 9)),
+          MediapackageV2GroupSettings: S.optional(__S(1693, __c52, 29)),
         }).pipe(
           S.encodeKeys({
             Destination: "destination",
@@ -14459,14 +15522,14 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "MediaPackageGroupSettings",
       });
-    case 3:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           AcquisitionPointId: S.optional(S.String),
           AudioOnlyTimecodeControl: S.optional(S.String),
           CertificateMode: S.optional(S.String),
           ConnectionRetryInterval: S.optional(S.Number),
-          Destination: S.optional(__S(109, __c13, 5)),
+          Destination: S.optional(__S(1673, __c52, 9)),
           EventId: S.optional(S.String),
           EventIdMode: S.optional(S.String),
           EventStopBehavior: S.optional(S.String),
@@ -14505,7 +15568,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MsSmoothGroupSettings" });
-    case 4:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AdMarkers: S.optional(__listOfRtmpAdMarkers),
@@ -14529,7 +15596,7 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RtmpGroupSettings" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           InputLossAction: S.optional(S.String),
@@ -14543,7 +15610,7 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UdpGroupSettings" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({ CaptionChannel: S.optional(S.Number), LanguageCode: S.optional(S.String) }).pipe(
           S.encodeKeys({ CaptionChannel: "captionChannel", LanguageCode: "languageCode" }),
@@ -14551,24 +15618,20 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CmafIngestCaptionLanguageMapping",
       });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(1698, __c53, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ Destination: S.optional(__S(109, __c13, 5)) }).pipe(
+        S.Struct({ Destination: S.optional(__S(1673, __c52, 9)) }).pipe(
           S.encodeKeys({ Destination: "destination" }),
         ),
       ).annotate({ identifier: "AdditionalDestinations" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(1700, __c53, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          CmafIngestAbWatermarkerIrdetoSettings: S.optional(__S(127, __c15, 7)),
+          CmafIngestAbWatermarkerIrdetoSettings: S.optional(__S(1691, __c52, 27)),
         }).pipe(
           S.encodeKeys({
             CmafIngestAbWatermarkerIrdetoSettings: "cmafIngestAbWatermarkerIrdetoSettings",
@@ -14577,10 +15640,10 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CmafIngestWatermarkingSettings",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          Destination: S.optional(__S(109, __c13, 5)),
+          Destination: S.optional(__S(1673, __c52, 9)),
           NielsenId3Behavior: S.optional(S.String),
           Scte35Type: S.optional(S.String),
           SegmentLength: S.optional(S.Number),
@@ -14597,7 +15660,7 @@ function __c17(j: number): any {
           TimedMetadataId3Period: S.optional(S.Number),
           TimedMetadataPassthrough: S.optional(S.String),
           AdditionalDestinations: S.optional(__listOfAdditionalDestinations),
-          WatermarkingSettings: S.optional(__S(138, __c17, 2)),
+          WatermarkingSettings: S.optional(__S(1702, __c53, 6)),
         }).pipe(
           S.encodeKeys({
             Destination: "destination",
@@ -14621,13 +15684,13 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CmafIngestGroupSettings" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({ InputLossAction: S.optional(S.String) }).pipe(
           S.encodeKeys({ InputLossAction: "inputLossAction" }),
         ),
       ).annotate({ identifier: "SrtGroupSettings" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({ AvailabilityZones: S.optional(__listOf__string) }).pipe(
           S.encodeKeys({ AvailabilityZones: "availabilityZones" }),
@@ -14635,20 +15698,20 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "MediaConnectRouterGroupSettings",
       });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          ArchiveGroupSettings: S.optional(__S(110, __c13, 6)),
-          FrameCaptureGroupSettings: S.optional(__S(112, __c14, 0)),
-          HlsGroupSettings: S.optional(__S(122, __c15, 2)),
-          MediaPackageGroupSettings: S.optional(__S(130, __c16, 2)),
-          MsSmoothGroupSettings: S.optional(__S(131, __c16, 3)),
-          MultiplexGroupSettings: S.optional(__S(48, __c6, 0)),
-          RtmpGroupSettings: S.optional(__S(132, __c16, 4)),
-          UdpGroupSettings: S.optional(__S(133, __c16, 5)),
-          CmafIngestGroupSettings: S.optional(__S(139, __c17, 3)),
-          SrtGroupSettings: S.optional(__S(140, __c17, 4)),
-          MediaConnectRouterGroupSettings: S.optional(__S(141, __c17, 5)),
+          ArchiveGroupSettings: S.optional(__S(1674, __c52, 10)),
+          FrameCaptureGroupSettings: S.optional(__S(1676, __c52, 12)),
+          HlsGroupSettings: S.optional(__S(1686, __c52, 22)),
+          MediaPackageGroupSettings: S.optional(__S(1694, __c52, 30)),
+          MsSmoothGroupSettings: S.optional(__S(1695, __c52, 31)),
+          MultiplexGroupSettings: S.optional(__S(1504, __c47, 0)),
+          RtmpGroupSettings: S.optional(__S(1696, __c53, 0)),
+          UdpGroupSettings: S.optional(__S(1697, __c53, 1)),
+          CmafIngestGroupSettings: S.optional(__S(1703, __c53, 7)),
+          SrtGroupSettings: S.optional(__S(1704, __c53, 8)),
+          MediaConnectRouterGroupSettings: S.optional(__S(1705, __c53, 9)),
         }).pipe(
           S.encodeKeys({
             ArchiveGroupSettings: "archiveGroupSettings",
@@ -14665,7 +15728,7 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "OutputGroupSettings" });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           NetworkId: S.optional(S.Number),
@@ -14679,11 +15742,7 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DvbNitSettings" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           OutputSdt: S.optional(S.String),
@@ -14699,13 +15758,13 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DvbSdtSettings" });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({ RepInterval: S.optional(S.Number) }).pipe(
           S.encodeKeys({ RepInterval: "repInterval" }),
         ),
       ).annotate({ identifier: "DvbTdtSettings" });
-    case 2:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           AbsentInputAudioBehavior: S.optional(S.String),
@@ -14719,10 +15778,10 @@ function __c18(j: number): any {
           Bitrate: S.optional(S.Number),
           BufferModel: S.optional(S.String),
           CcDescriptor: S.optional(S.String),
-          DvbNitSettings: S.optional(__S(143, __c17, 7)),
-          DvbSdtSettings: S.optional(__S(144, __c18, 0)),
+          DvbNitSettings: S.optional(__S(1707, __c53, 11)),
+          DvbSdtSettings: S.optional(__S(1708, __c53, 12)),
           DvbSubPids: S.optional(S.String),
-          DvbTdtSettings: S.optional(__S(145, __c18, 1)),
+          DvbTdtSettings: S.optional(__S(1709, __c53, 13)),
           DvbTeletextPid: S.optional(S.String),
           Ebif: S.optional(S.String),
           EbpAudioInterval: S.optional(S.String),
@@ -14809,17 +15868,17 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "M2tsSettings" });
-    case 3:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          M2tsSettings: S.optional(__S(146, __c18, 2)),
-          RawSettings: S.optional(__S(48, __c6, 0)),
+          M2tsSettings: S.optional(__S(1710, __c53, 14)),
+          RawSettings: S.optional(__S(1504, __c47, 0)),
         }).pipe(S.encodeKeys({ M2tsSettings: "m2tsSettings", RawSettings: "rawSettings" })),
       ).annotate({ identifier: "ArchiveContainerSettings" });
-    case 4:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          ContainerSettings: S.optional(__S(147, __c18, 3)),
+          ContainerSettings: S.optional(__S(1711, __c53, 15)),
           Extension: S.optional(S.String),
           NameModifier: S.optional(S.String),
         }).pipe(
@@ -14830,7 +15889,7 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ArchiveOutputSettings" });
-    case 5:
+    case 17:
       return S.suspend(() =>
         S.Struct({ NameModifier: S.optional(S.String) }).pipe(
           S.encodeKeys({ NameModifier: "nameModifier" }),
@@ -14838,11 +15897,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "FrameCaptureOutputSettings",
       });
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           AudioGroupId: S.optional(S.String),
-          AudioOnlyImage: S.optional(__S(30, __c3, 6)),
+          AudioOnlyImage: S.optional(__S(1376, __c43, 0)),
           AudioTrackType: S.optional(S.String),
           SegmentType: S.optional(S.String),
         }).pipe(
@@ -14854,7 +15913,7 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AudioOnlyHlsSettings" });
-    case 7:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           AudioRenditionSets: S.optional(S.String),
@@ -14868,11 +15927,7 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Fmp4HlsSettings" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           AudioFramesPerPes: S.optional(S.Number),
@@ -14918,22 +15973,22 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "M3u8Settings" });
-    case 1:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           AudioRenditionSets: S.optional(S.String),
-          M3u8Settings: S.optional(__S(152, __c19, 0)),
+          M3u8Settings: S.optional(__S(1716, __c53, 20)),
         }).pipe(
           S.encodeKeys({ AudioRenditionSets: "audioRenditionSets", M3u8Settings: "m3u8Settings" }),
         ),
       ).annotate({ identifier: "StandardHlsSettings" });
-    case 2:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          AudioOnlyHlsSettings: S.optional(__S(150, __c18, 6)),
-          Fmp4HlsSettings: S.optional(__S(151, __c18, 7)),
-          FrameCaptureHlsSettings: S.optional(__S(48, __c6, 0)),
-          StandardHlsSettings: S.optional(__S(153, __c19, 1)),
+          AudioOnlyHlsSettings: S.optional(__S(1714, __c53, 18)),
+          Fmp4HlsSettings: S.optional(__S(1715, __c53, 19)),
+          FrameCaptureHlsSettings: S.optional(__S(1504, __c47, 0)),
+          StandardHlsSettings: S.optional(__S(1717, __c53, 21)),
         }).pipe(
           S.encodeKeys({
             AudioOnlyHlsSettings: "audioOnlyHlsSettings",
@@ -14943,11 +15998,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HlsSettings" });
-    case 3:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           H265PackagingType: S.optional(S.String),
-          HlsSettings: S.optional(__S(154, __c19, 2)),
+          HlsSettings: S.optional(__S(1718, __c53, 22)),
           NameModifier: S.optional(S.String),
           SegmentModifier: S.optional(S.String),
         }).pipe(
@@ -14959,7 +16014,7 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HlsOutputSettings" });
-    case 4:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           AudioGroupId: S.optional(S.String),
@@ -14979,17 +16034,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "MediaPackageV2DestinationSettings",
       });
-    case 5:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          MediaPackageV2DestinationSettings: S.optional(__S(156, __c19, 4)),
+          MediaPackageV2DestinationSettings: S.optional(__S(1720, __c53, 24)),
         }).pipe(
           S.encodeKeys({ MediaPackageV2DestinationSettings: "mediaPackageV2DestinationSettings" }),
         ),
       ).annotate({
         identifier: "MediaPackageOutputSettings",
       });
-    case 6:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           H265PackagingType: S.optional(S.String),
@@ -14998,7 +16053,7 @@ function __c19(j: number): any {
           S.encodeKeys({ H265PackagingType: "h265PackagingType", NameModifier: "nameModifier" }),
         ),
       ).annotate({ identifier: "MsSmoothOutputSettings" });
-    case 7:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           AbsentInputAudioBehavior: S.optional(S.String),
@@ -15034,33 +16089,29 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MultiplexM2tsSettings" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 28:
       return S.suspend(() =>
-        S.Struct({ MultiplexM2tsSettings: S.optional(__S(159, __c19, 7)) }).pipe(
+        S.Struct({ MultiplexM2tsSettings: S.optional(__S(1723, __c53, 27)) }).pipe(
           S.encodeKeys({ MultiplexM2tsSettings: "multiplexM2tsSettings" }),
         ),
       ).annotate({
         identifier: "MultiplexContainerSettings",
       });
-    case 1:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          Destination: S.optional(__S(109, __c13, 5)),
-          ContainerSettings: S.optional(__S(160, __c20, 0)),
+          Destination: S.optional(__S(1673, __c52, 9)),
+          ContainerSettings: S.optional(__S(1724, __c53, 28)),
         }).pipe(
           S.encodeKeys({ Destination: "destination", ContainerSettings: "containerSettings" }),
         ),
       ).annotate({ identifier: "MultiplexOutputSettings" });
-    case 2:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           CertificateMode: S.optional(S.String),
           ConnectionRetryInterval: S.optional(S.Number),
-          Destination: S.optional(__S(109, __c13, 5)),
+          Destination: S.optional(__S(1673, __c52, 9)),
           NumRetries: S.optional(S.Number),
         }).pipe(
           S.encodeKeys({
@@ -15071,13 +16122,17 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RtmpOutputSettings" });
-    case 3:
+    case 31:
       return S.suspend(() =>
-        S.Struct({ M2tsSettings: S.optional(__S(146, __c18, 2)) }).pipe(
+        S.Struct({ M2tsSettings: S.optional(__S(1710, __c53, 14)) }).pipe(
           S.encodeKeys({ M2tsSettings: "m2tsSettings" }),
         ),
       ).annotate({ identifier: "UdpContainerSettings" });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ColumnDepth: S.optional(S.Number),
@@ -15091,13 +16146,13 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FecOutputSettings" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BufferMsec: S.optional(S.Number),
-          ContainerSettings: S.optional(__S(163, __c20, 3)),
-          Destination: S.optional(__S(109, __c13, 5)),
-          FecOutputSettings: S.optional(__S(164, __c20, 4)),
+          ContainerSettings: S.optional(__S(1727, __c53, 31)),
+          Destination: S.optional(__S(1673, __c52, 9)),
+          FecOutputSettings: S.optional(__S(1728, __c54, 0)),
         }).pipe(
           S.encodeKeys({
             BufferMsec: "bufferMsec",
@@ -15107,18 +16162,18 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UdpOutputSettings" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({ NameModifier: S.optional(S.String) }).pipe(
           S.encodeKeys({ NameModifier: "nameModifier" }),
         ),
       ).annotate({ identifier: "CmafIngestOutputSettings" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           BufferMsec: S.optional(S.Number),
-          ContainerSettings: S.optional(__S(163, __c20, 3)),
-          Destination: S.optional(__S(109, __c13, 5)),
+          ContainerSettings: S.optional(__S(1727, __c53, 31)),
+          Destination: S.optional(__S(1673, __c52, 9)),
           EncryptionType: S.optional(S.String),
           Latency: S.optional(S.Number),
         }).pipe(
@@ -15131,11 +16186,7 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SrtOutputSettings" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({ Pipeline0: S.optional(S.String), Pipeline1: S.optional(S.String) }).pipe(
           S.encodeKeys({ Pipeline0: "pipeline0", Pipeline1: "pipeline1" }),
@@ -15143,20 +16194,20 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "MediaConnectRouterOutputConnectionMap",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
-        S.Struct({ M2tsSettings: S.optional(__S(146, __c18, 2)) }).pipe(
+        S.Struct({ M2tsSettings: S.optional(__S(1710, __c53, 14)) }).pipe(
           S.encodeKeys({ M2tsSettings: "m2tsSettings" }),
         ),
       ).annotate({
         identifier: "MediaConnectRouterContainerSettings",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          ConnectedRouterInputs: S.optional(__S(168, __c21, 0)),
-          ContainerSettings: S.optional(__S(169, __c21, 1)),
-          Destination: S.optional(__S(109, __c13, 5)),
+          ConnectedRouterInputs: S.optional(__S(1732, __c54, 4)),
+          ContainerSettings: S.optional(__S(1733, __c54, 5)),
+          Destination: S.optional(__S(1673, __c52, 9)),
         }).pipe(
           S.encodeKeys({
             ConnectedRouterInputs: "connectedRouterInputs",
@@ -15167,20 +16218,20 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "MediaConnectRouterOutputSettings",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          ArchiveOutputSettings: S.optional(__S(148, __c18, 4)),
-          FrameCaptureOutputSettings: S.optional(__S(149, __c18, 5)),
-          HlsOutputSettings: S.optional(__S(155, __c19, 3)),
-          MediaPackageOutputSettings: S.optional(__S(157, __c19, 5)),
-          MsSmoothOutputSettings: S.optional(__S(158, __c19, 6)),
-          MultiplexOutputSettings: S.optional(__S(161, __c20, 1)),
-          RtmpOutputSettings: S.optional(__S(162, __c20, 2)),
-          UdpOutputSettings: S.optional(__S(165, __c20, 5)),
-          CmafIngestOutputSettings: S.optional(__S(166, __c20, 6)),
-          SrtOutputSettings: S.optional(__S(167, __c20, 7)),
-          MediaConnectRouterOutputSettings: S.optional(__S(170, __c21, 2)),
+          ArchiveOutputSettings: S.optional(__S(1712, __c53, 16)),
+          FrameCaptureOutputSettings: S.optional(__S(1713, __c53, 17)),
+          HlsOutputSettings: S.optional(__S(1719, __c53, 23)),
+          MediaPackageOutputSettings: S.optional(__S(1721, __c53, 25)),
+          MsSmoothOutputSettings: S.optional(__S(1722, __c53, 26)),
+          MultiplexOutputSettings: S.optional(__S(1725, __c53, 29)),
+          RtmpOutputSettings: S.optional(__S(1726, __c53, 30)),
+          UdpOutputSettings: S.optional(__S(1729, __c54, 1)),
+          CmafIngestOutputSettings: S.optional(__S(1730, __c54, 2)),
+          SrtOutputSettings: S.optional(__S(1731, __c54, 3)),
+          MediaConnectRouterOutputSettings: S.optional(__S(1734, __c54, 6)),
         }).pipe(
           S.encodeKeys({
             ArchiveOutputSettings: "archiveOutputSettings",
@@ -15197,13 +16248,13 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "OutputSettings" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           AudioDescriptionNames: S.optional(__listOf__string),
           CaptionDescriptionNames: S.optional(__listOf__string),
           OutputName: S.optional(S.String),
-          OutputSettings: S.optional(__S(171, __c21, 3)),
+          OutputSettings: S.optional(__S(1735, __c54, 7)),
           VideoDescriptionName: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -15215,13 +16266,13 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Output" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 9:
+      return S.Array(__S(1736, __c54, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          OutputGroupSettings: S.optional(__S(142, __c17, 6)),
+          OutputGroupSettings: S.optional(__S(1706, __c53, 10)),
           Outputs: S.optional(__listOfOutput),
         }).pipe(
           S.encodeKeys({
@@ -15231,20 +16282,15 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "OutputGroup" });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
+      return S.Array(__S(1738, __c54, 10));
+    case 12:
       return S.suspend(() =>
-        S.Struct({
-          Source: S.optional(S.String),
-          SyncThreshold: S.optional(S.Number),
-        }).pipe(S.encodeKeys({ Source: "source", SyncThreshold: "syncThreshold" })),
+        S.Struct({ Source: S.optional(S.String), SyncThreshold: S.optional(S.Number) }).pipe(
+          S.encodeKeys({ Source: "source", SyncThreshold: "syncThreshold" }),
+        ),
       ).annotate({ identifier: "TimecodeConfig" });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           FontSize: S.optional(S.String),
@@ -15252,12 +16298,12 @@ function __c22(j: number): any {
           Prefix: S.optional(S.String),
         }).pipe(S.encodeKeys({ FontSize: "fontSize", Position: "position", Prefix: "prefix" })),
       ).annotate({ identifier: "TimecodeBurninSettings" });
-    case 2:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           CaptureInterval: S.optional(S.Number),
           CaptureIntervalUnits: S.optional(S.String),
-          TimecodeBurninSettings: S.optional(__S(177, __c22, 1)),
+          TimecodeBurninSettings: S.optional(__S(1741, __c54, 13)),
         }).pipe(
           S.encodeKeys({
             CaptureInterval: "captureInterval",
@@ -15266,12 +16312,12 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FrameCaptureSettings" });
-    case 3:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          ColorSpacePassthroughSettings: S.optional(__S(48, __c6, 0)),
-          Rec601Settings: S.optional(__S(48, __c6, 0)),
-          Rec709Settings: S.optional(__S(48, __c6, 0)),
+          ColorSpacePassthroughSettings: S.optional(__S(1504, __c47, 0)),
+          Rec601Settings: S.optional(__S(1504, __c47, 0)),
+          Rec709Settings: S.optional(__S(1504, __c47, 0)),
         }).pipe(
           S.encodeKeys({
             ColorSpacePassthroughSettings: "colorSpacePassthroughSettings",
@@ -15280,7 +16326,7 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "H264ColorSpaceSettings" });
-    case 4:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           PostFilterSharpening: S.optional(S.String),
@@ -15289,7 +16335,7 @@ function __c22(j: number): any {
           S.encodeKeys({ PostFilterSharpening: "postFilterSharpening", Strength: "strength" }),
         ),
       ).annotate({ identifier: "TemporalFilterSettings" });
-    case 5:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           PostFilterSharpening: S.optional(S.String),
@@ -15300,11 +16346,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "BandwidthReductionFilterSettings",
       });
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          TemporalFilterSettings: S.optional(__S(180, __c22, 4)),
-          BandwidthReductionFilterSettings: S.optional(__S(181, __c22, 5)),
+          TemporalFilterSettings: S.optional(__S(1744, __c54, 16)),
+          BandwidthReductionFilterSettings: S.optional(__S(1745, __c54, 17)),
         }).pipe(
           S.encodeKeys({
             TemporalFilterSettings: "temporalFilterSettings",
@@ -15312,7 +16358,7 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "H264FilterSettings" });
-    case 7:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           AdaptiveQuantization: S.optional(S.String),
@@ -15321,9 +16367,9 @@ function __c22(j: number): any {
           BufFillPct: S.optional(S.Number),
           BufSize: S.optional(S.Number),
           ColorMetadata: S.optional(S.String),
-          ColorSpaceSettings: S.optional(__S(179, __c22, 3)),
+          ColorSpaceSettings: S.optional(__S(1743, __c54, 15)),
           EntropyEncoding: S.optional(S.String),
-          FilterSettings: S.optional(__S(182, __c22, 6)),
+          FilterSettings: S.optional(__S(1746, __c54, 18)),
           FixedAfd: S.optional(S.String),
           FlickerAq: S.optional(S.String),
           ForceFieldPictures: S.optional(S.String),
@@ -15356,7 +16402,7 @@ function __c22(j: number): any {
           Syntax: S.optional(S.String),
           TemporalAq: S.optional(S.String),
           TimecodeInsertion: S.optional(S.String),
-          TimecodeBurninSettings: S.optional(__S(177, __c22, 1)),
+          TimecodeBurninSettings: S.optional(__S(1741, __c54, 13)),
           MinQp: S.optional(S.Number),
           MinBitrate: S.optional(S.Number),
         }).pipe(
@@ -15408,25 +16454,15 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "H264Settings" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ MaxCll: S.optional(S.Number), MaxFall: S.optional(S.Number) }).pipe(
-          S.encodeKeys({ MaxCll: "maxCll", MaxFall: "maxFall" }),
-        ),
-      ).annotate({ identifier: "Hdr10Settings" });
-    case 1:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          ColorSpacePassthroughSettings: S.optional(__S(48, __c6, 0)),
-          DolbyVision81Settings: S.optional(__S(48, __c6, 0)),
-          Hdr10Settings: S.optional(__S(184, __c23, 0)),
-          Rec601Settings: S.optional(__S(48, __c6, 0)),
-          Rec709Settings: S.optional(__S(48, __c6, 0)),
-          Hlg2020Settings: S.optional(__S(48, __c6, 0)),
+          ColorSpacePassthroughSettings: S.optional(__S(1504, __c47, 0)),
+          DolbyVision81Settings: S.optional(__S(1504, __c47, 0)),
+          Hdr10Settings: S.optional(__S(1843, __c57, 19)),
+          Rec601Settings: S.optional(__S(1504, __c47, 0)),
+          Rec709Settings: S.optional(__S(1504, __c47, 0)),
+          Hlg2020Settings: S.optional(__S(1504, __c47, 0)),
         }).pipe(
           S.encodeKeys({
             ColorSpacePassthroughSettings: "colorSpacePassthroughSettings",
@@ -15438,7 +16474,7 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "H265ColorSpaceSettings" });
-    case 2:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           AdaptiveQuantization: S.optional(S.String),
@@ -15447,8 +16483,8 @@ function __c23(j: number): any {
           Bitrate: S.optional(S.Number),
           BufSize: S.optional(S.Number),
           ColorMetadata: S.optional(S.String),
-          ColorSpaceSettings: S.optional(__S(185, __c23, 1)),
-          FilterSettings: S.optional(__S(182, __c22, 6)),
+          ColorSpaceSettings: S.optional(__S(1748, __c54, 20)),
+          FilterSettings: S.optional(__S(1746, __c54, 18)),
           FixedAfd: S.optional(S.String),
           FlickerAq: S.optional(S.String),
           FramerateDenominator: S.optional(S.Number),
@@ -15470,7 +16506,7 @@ function __c23(j: number): any {
           Slices: S.optional(S.Number),
           Tier: S.optional(S.String),
           TimecodeInsertion: S.optional(S.String),
-          TimecodeBurninSettings: S.optional(__S(177, __c22, 1)),
+          TimecodeBurninSettings: S.optional(__S(1741, __c54, 13)),
           MvOverPictureBoundaries: S.optional(S.String),
           MvTemporalPredictor: S.optional(S.String),
           TileHeight: S.optional(S.Number),
@@ -15530,13 +16566,13 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "H265Settings" });
-    case 3:
+    case 22:
       return S.suspend(() =>
-        S.Struct({ TemporalFilterSettings: S.optional(__S(180, __c22, 4)) }).pipe(
+        S.Struct({ TemporalFilterSettings: S.optional(__S(1744, __c54, 16)) }).pipe(
           S.encodeKeys({ TemporalFilterSettings: "temporalFilterSettings" }),
         ),
       ).annotate({ identifier: "Mpeg2FilterSettings" });
-    case 4:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           AdaptiveQuantization: S.optional(S.String),
@@ -15544,7 +16580,7 @@ function __c23(j: number): any {
           ColorMetadata: S.optional(S.String),
           ColorSpace: S.optional(S.String),
           DisplayAspectRatio: S.optional(S.String),
-          FilterSettings: S.optional(__S(187, __c23, 3)),
+          FilterSettings: S.optional(__S(1750, __c54, 22)),
           FixedAfd: S.optional(S.String),
           FramerateDenominator: S.optional(S.Number),
           FramerateNumerator: S.optional(S.Number),
@@ -15555,7 +16591,7 @@ function __c23(j: number): any {
           ScanType: S.optional(S.String),
           SubgopLength: S.optional(S.String),
           TimecodeInsertion: S.optional(S.String),
-          TimecodeBurninSettings: S.optional(__S(177, __c22, 1)),
+          TimecodeBurninSettings: S.optional(__S(1741, __c54, 13)),
         }).pipe(
           S.encodeKeys({
             AdaptiveQuantization: "adaptiveQuantization",
@@ -15578,14 +16614,14 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Mpeg2Settings" });
-    case 5:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          ColorSpacePassthroughSettings: S.optional(__S(48, __c6, 0)),
-          Hdr10Settings: S.optional(__S(184, __c23, 0)),
-          Rec601Settings: S.optional(__S(48, __c6, 0)),
-          Rec709Settings: S.optional(__S(48, __c6, 0)),
-          Hlg2020Settings: S.optional(__S(48, __c6, 0)),
+          ColorSpacePassthroughSettings: S.optional(__S(1504, __c47, 0)),
+          Hdr10Settings: S.optional(__S(1843, __c57, 19)),
+          Rec601Settings: S.optional(__S(1504, __c47, 0)),
+          Rec709Settings: S.optional(__S(1504, __c47, 0)),
+          Hlg2020Settings: S.optional(__S(1504, __c47, 0)),
         }).pipe(
           S.encodeKeys({
             ColorSpacePassthroughSettings: "colorSpacePassthroughSettings",
@@ -15596,12 +16632,12 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Av1ColorSpaceSettings" });
-    case 6:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           AfdSignaling: S.optional(S.String),
           BufSize: S.optional(S.Number),
-          ColorSpaceSettings: S.optional(__S(189, __c23, 5)),
+          ColorSpaceSettings: S.optional(__S(1752, __c54, 24)),
           FixedAfd: S.optional(S.String),
           FramerateDenominator: S.optional(S.Number),
           FramerateNumerator: S.optional(S.Number),
@@ -15615,7 +16651,7 @@ function __c23(j: number): any {
           ParNumerator: S.optional(S.Number),
           QvbrQualityLevel: S.optional(S.Number),
           SceneChangeDetect: S.optional(S.String),
-          TimecodeBurninSettings: S.optional(__S(177, __c22, 1)),
+          TimecodeBurninSettings: S.optional(__S(1741, __c54, 13)),
           Bitrate: S.optional(S.Number),
           RateControlMode: S.optional(S.String),
           MinBitrate: S.optional(S.Number),
@@ -15652,14 +16688,14 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Av1Settings" });
-    case 7:
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          FrameCaptureSettings: S.optional(__S(178, __c22, 2)),
-          H264Settings: S.optional(__S(183, __c22, 7)),
-          H265Settings: S.optional(__S(186, __c23, 2)),
-          Mpeg2Settings: S.optional(__S(188, __c23, 4)),
-          Av1Settings: S.optional(__S(190, __c23, 6)),
+          FrameCaptureSettings: S.optional(__S(1742, __c54, 14)),
+          H264Settings: S.optional(__S(1747, __c54, 19)),
+          H265Settings: S.optional(__S(1749, __c54, 21)),
+          Mpeg2Settings: S.optional(__S(1751, __c54, 23)),
+          Av1Settings: S.optional(__S(1753, __c54, 25)),
         }).pipe(
           S.encodeKeys({
             FrameCaptureSettings: "frameCaptureSettings",
@@ -15670,11 +16706,7 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VideoCodecSettings" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           Height: S.optional(S.Number),
@@ -15683,18 +16715,18 @@ function __c24(j: number): any {
           Y: S.optional(S.Number),
         }).pipe(S.encodeKeys({ Height: "height", Width: "width", X: "x", Y: "y" })),
       ).annotate({ identifier: "VideoPositionRectangle" });
-    case 1:
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          CodecSettings: S.optional(__S(191, __c23, 7)),
+          CodecSettings: S.optional(__S(1754, __c54, 26)),
           Height: S.optional(S.Number),
           Name: S.optional(S.String),
           RespondToAfd: S.optional(S.String),
           ScalingBehavior: S.optional(S.String),
           Sharpness: S.optional(S.Number),
           Width: S.optional(S.Number),
-          CropRectangle: S.optional(__S(192, __c24, 0)),
-          OutputPositionRectangle: S.optional(__S(192, __c24, 0)),
+          CropRectangle: S.optional(__S(1755, __c54, 27)),
+          OutputPositionRectangle: S.optional(__S(1755, __c54, 27)),
           Border: S.optional(S.Number),
         }).pipe(
           S.encodeKeys({
@@ -15711,13 +16743,13 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VideoDescription" });
-    case 2:
-      return S.Array(__S(193, __c24, 1));
-    case 3:
+    case 29:
+      return S.Array(__S(1756, __c54, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({ State: S.optional(S.String) }).pipe(S.encodeKeys({ State: "state" })),
       ).annotate({ identifier: "ThumbnailConfiguration" });
-    case 4:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           InputColorSpace: S.optional(S.String),
@@ -15731,31 +16763,35 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ColorCorrection" });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1759, __c54, 31));
+    case 1:
       return S.suspend(() =>
         S.Struct({ GlobalColorCorrections: S.optional(__listOfColorCorrection) }).pipe(
           S.encodeKeys({ GlobalColorCorrections: "globalColorCorrections" }),
         ),
       ).annotate({ identifier: "ColorCorrectionSettings" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           AudioDescriptions: S.optional(__listOfAudioDescription),
-          AvailBlanking: S.optional(__S(81, __c10, 1)),
-          AvailConfiguration: S.optional(__S(85, __c10, 5)),
-          BlackoutSlate: S.optional(__S(86, __c10, 6)),
+          AvailBlanking: S.optional(__S(1645, __c51, 13)),
+          AvailConfiguration: S.optional(__S(1649, __c51, 17)),
+          BlackoutSlate: S.optional(__S(1650, __c51, 18)),
           CaptionDescriptions: S.optional(__listOfCaptionDescription),
-          FeatureActivations: S.optional(__S(97, __c12, 1)),
-          GlobalConfiguration: S.optional(__S(103, __c12, 7)),
-          MotionGraphicsConfiguration: S.optional(__S(105, __c13, 1)),
-          NielsenConfiguration: S.optional(__S(106, __c13, 2)),
+          FeatureActivations: S.optional(__S(1661, __c51, 29)),
+          GlobalConfiguration: S.optional(__S(1667, __c52, 3)),
+          MotionGraphicsConfiguration: S.optional(__S(1669, __c52, 5)),
+          NielsenConfiguration: S.optional(__S(1670, __c52, 6)),
           OutputGroups: S.optional(__listOfOutputGroup),
-          TimecodeConfig: S.optional(__S(176, __c22, 0)),
+          TimecodeConfig: S.optional(__S(1740, __c54, 12)),
           VideoDescriptions: S.optional(__listOfVideoDescription),
-          ThumbnailConfiguration: S.optional(__S(195, __c24, 3)),
-          ColorCorrectionSettings: S.optional(__S(198, __c24, 6)),
+          ThumbnailConfiguration: S.optional(__S(1758, __c54, 30)),
+          ColorCorrectionSettings: S.optional(__S(1761, __c55, 1)),
         }).pipe(
           S.encodeKeys({
             AudioDescriptions: "audioDescriptions",
@@ -15775,670 +16811,7 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "EncoderSettings" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AudioSelectorName: S.optional(S.String),
-          AudioSilenceThresholdMsec: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            AudioSelectorName: "audioSelectorName",
-            AudioSilenceThresholdMsec: "audioSilenceThresholdMsec",
-          }),
-        ),
-      ).annotate({
-        identifier: "AudioSilenceFailoverSettings",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ InputLossThresholdMsec: S.optional(S.Number) }).pipe(
-          S.encodeKeys({ InputLossThresholdMsec: "inputLossThresholdMsec" }),
-        ),
-      ).annotate({
-        identifier: "InputLossFailoverSettings",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          BlackDetectThreshold: S.optional(S.Number),
-          VideoBlackThresholdMsec: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            BlackDetectThreshold: "blackDetectThreshold",
-            VideoBlackThresholdMsec: "videoBlackThresholdMsec",
-          }),
-        ),
-      ).annotate({
-        identifier: "VideoBlackFailoverSettings",
-      });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AudioSilenceSettings: S.optional(__S(200, __c25, 0)),
-          InputLossSettings: S.optional(__S(201, __c25, 1)),
-          VideoBlackSettings: S.optional(__S(202, __c25, 2)),
-        }).pipe(
-          S.encodeKeys({
-            AudioSilenceSettings: "audioSilenceSettings",
-            InputLossSettings: "inputLossSettings",
-            VideoBlackSettings: "videoBlackSettings",
-          }),
-        ),
-      ).annotate({
-        identifier: "FailoverConditionSettings",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ FailoverConditionSettings: S.optional(__S(203, __c25, 3)) }).pipe(
-          S.encodeKeys({ FailoverConditionSettings: "failoverConditionSettings" }),
-        ),
-      ).annotate({ identifier: "FailoverCondition" });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ErrorClearTimeMsec: S.optional(S.Number),
-          FailoverConditions: S.optional(__listOfFailoverCondition),
-          InputPreference: S.optional(S.String),
-          SecondaryInputId: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ErrorClearTimeMsec: "errorClearTimeMsec",
-            FailoverConditions: "failoverConditions",
-            InputPreference: "inputPreference",
-            SecondaryInputId: "secondaryInputId",
-          }),
-        ),
-      ).annotate({
-        identifier: "AutomaticInputFailoverSettings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ GroupId: S.optional(S.String), Name: S.optional(S.String) }).pipe(
-          S.encodeKeys({ GroupId: "groupId", Name: "name" }),
-        ),
-      ).annotate({
-        identifier: "AudioHlsRenditionSelection",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          LanguageCode: S.optional(S.String),
-          LanguageSelectionPolicy: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            LanguageCode: "languageCode",
-            LanguageSelectionPolicy: "languageSelectionPolicy",
-          }),
-        ),
-      ).annotate({ identifier: "AudioLanguageSelection" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ProgramSelection: S.optional(S.String) }).pipe(
-          S.encodeKeys({ ProgramSelection: "programSelection" }),
-        ),
-      ).annotate({ identifier: "AudioDolbyEDecode" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AudioNormalizationSettings: S.optional(__S(61, __c7, 5)),
-          Channels: S.optional(S.Number),
-          GainDb: S.optional(S.Number),
-          RemixSettings: S.optional(__S(77, __c9, 5)),
-        }).pipe(
-          S.encodeKeys({
-            AudioNormalizationSettings: "audioNormalizationSettings",
-            Channels: "channels",
-            GainDb: "gainDb",
-            RemixSettings: "remixSettings",
-          }),
-        ),
-      ).annotate({ identifier: "AudioPreMixerSettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DolbyEDecode: S.optional(__S(209, __c26, 1)),
-          Pid: S.optional(S.Number),
-          PremixSettings: S.optional(__S(210, __c26, 2)),
-        }).pipe(
-          S.encodeKeys({
-            DolbyEDecode: "dolbyEDecode",
-            Pid: "pid",
-            PremixSettings: "premixSettings",
-          }),
-        ),
-      ).annotate({ identifier: "AudioPid" });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Pid: S.optional(S.Number), Pids: S.optional(__listOfAudioPid) }).pipe(
-          S.encodeKeys({ Pid: "pid", Pids: "pids" }),
-        ),
-      ).annotate({ identifier: "AudioPidSelection" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Track: S.optional(S.Number),
-          PremixSettings: S.optional(__S(210, __c26, 2)),
-        }).pipe(S.encodeKeys({ Track: "track", PremixSettings: "premixSettings" })),
-      ).annotate({ identifier: "AudioTrack" });
-    case 7:
-      return S.Array(__S(214, __c26, 6));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Tracks: S.optional(__listOfAudioTrack),
-          DolbyEDecode: S.optional(__S(209, __c26, 1)),
-        }).pipe(S.encodeKeys({ Tracks: "tracks", DolbyEDecode: "dolbyEDecode" })),
-      ).annotate({ identifier: "AudioTrackSelection" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AudioHlsRenditionSelection: S.optional(__S(207, __c25, 7)),
-          AudioLanguageSelection: S.optional(__S(208, __c26, 0)),
-          AudioPidSelection: S.optional(__S(213, __c26, 5)),
-          AudioTrackSelection: S.optional(__S(216, __c27, 0)),
-        }).pipe(
-          S.encodeKeys({
-            AudioHlsRenditionSelection: "audioHlsRenditionSelection",
-            AudioLanguageSelection: "audioLanguageSelection",
-            AudioPidSelection: "audioPidSelection",
-            AudioTrackSelection: "audioTrackSelection",
-          }),
-        ),
-      ).annotate({ identifier: "AudioSelectorSettings" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          SelectorSettings: S.optional(__S(217, __c27, 1)),
-        }).pipe(S.encodeKeys({ Name: "name", SelectorSettings: "selectorSettings" })),
-      ).annotate({ identifier: "AudioSelector" });
-    case 3:
-      return S.Array(__S(218, __c27, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ SourceAncillaryChannelNumber: S.optional(S.Number) }).pipe(
-          S.encodeKeys({ SourceAncillaryChannelNumber: "sourceAncillaryChannelNumber" }),
-        ),
-      ).annotate({ identifier: "AncillarySourceSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ OcrLanguage: S.optional(S.String), Pid: S.optional(S.Number) }).pipe(
-          S.encodeKeys({ OcrLanguage: "ocrLanguage", Pid: "pid" }),
-        ),
-      ).annotate({ identifier: "DvbSubSourceSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Convert608To708: S.optional(S.String),
-          Scte20Detection: S.optional(S.String),
-          Source608ChannelNumber: S.optional(S.Number),
-          Source608TrackNumber: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            Convert608To708: "convert608To708",
-            Scte20Detection: "scte20Detection",
-            Source608ChannelNumber: "source608ChannelNumber",
-            Source608TrackNumber: "source608TrackNumber",
-          }),
-        ),
-      ).annotate({ identifier: "EmbeddedSourceSettings" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Convert608To708: S.optional(S.String),
-          Source608ChannelNumber: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            Convert608To708: "convert608To708",
-            Source608ChannelNumber: "source608ChannelNumber",
-          }),
-        ),
-      ).annotate({ identifier: "Scte20SourceSettings" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Height: S.optional(S.Number),
-          LeftOffset: S.optional(S.Number),
-          TopOffset: S.optional(S.Number),
-          Width: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            Height: "height",
-            LeftOffset: "leftOffset",
-            TopOffset: "topOffset",
-            Width: "width",
-          }),
-        ),
-      ).annotate({ identifier: "CaptionRectangle" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          OutputRectangle: S.optional(__S(224, __c28, 0)),
-          PageNumber: S.optional(S.String),
-        }).pipe(S.encodeKeys({ OutputRectangle: "outputRectangle", PageNumber: "pageNumber" })),
-      ).annotate({ identifier: "TeletextSourceSettings" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          CaptionSynchronizationMode: S.optional(S.String),
-          InferenceFeedOutput: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            CaptionSynchronizationMode: "captionSynchronizationMode",
-            InferenceFeedOutput: "inferenceFeedOutput",
-          }),
-        ),
-      ).annotate({
-        identifier: "SmartSubtitleSourceSettings",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AncillarySourceSettings: S.optional(__S(220, __c27, 4)),
-          AribSourceSettings: S.optional(__S(48, __c6, 0)),
-          DvbSubSourceSettings: S.optional(__S(221, __c27, 5)),
-          EmbeddedSourceSettings: S.optional(__S(222, __c27, 6)),
-          Scte20SourceSettings: S.optional(__S(223, __c27, 7)),
-          Scte27SourceSettings: S.optional(__S(221, __c27, 5)),
-          TeletextSourceSettings: S.optional(__S(225, __c28, 1)),
-          SmartSubtitleSourceSettings: S.optional(__S(226, __c28, 2)),
-        }).pipe(
-          S.encodeKeys({
-            AncillarySourceSettings: "ancillarySourceSettings",
-            AribSourceSettings: "aribSourceSettings",
-            DvbSubSourceSettings: "dvbSubSourceSettings",
-            EmbeddedSourceSettings: "embeddedSourceSettings",
-            Scte20SourceSettings: "scte20SourceSettings",
-            Scte27SourceSettings: "scte27SourceSettings",
-            TeletextSourceSettings: "teletextSourceSettings",
-            SmartSubtitleSourceSettings: "smartSubtitleSourceSettings",
-          }),
-        ),
-      ).annotate({ identifier: "CaptionSelectorSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          LanguageCode: S.optional(S.String),
-          Name: S.optional(S.String),
-          SelectorSettings: S.optional(__S(227, __c28, 3)),
-        }).pipe(
-          S.encodeKeys({
-            LanguageCode: "languageCode",
-            Name: "name",
-            SelectorSettings: "selectorSettings",
-          }),
-        ),
-      ).annotate({ identifier: "CaptionSelector" });
-    case 5:
-      return S.Array(__S(228, __c28, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Bandwidth: S.optional(S.Number),
-          BufferSegments: S.optional(S.Number),
-          Retries: S.optional(S.Number),
-          RetryInterval: S.optional(S.Number),
-          Scte35Source: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Bandwidth: "bandwidth",
-            BufferSegments: "bufferSegments",
-            Retries: "retries",
-            RetryInterval: "retryInterval",
-            Scte35Source: "scte35Source",
-          }),
-        ),
-      ).annotate({ identifier: "HlsInputSettings" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ SourceIpAddress: S.optional(S.String) }).pipe(
-          S.encodeKeys({ SourceIpAddress: "sourceIpAddress" }),
-        ),
-      ).annotate({ identifier: "MulticastInputSettings" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          HlsInputSettings: S.optional(__S(230, __c28, 6)),
-          ServerValidation: S.optional(S.String),
-          MulticastInputSettings: S.optional(__S(231, __c28, 7)),
-        }).pipe(
-          S.encodeKeys({
-            HlsInputSettings: "hlsInputSettings",
-            ServerValidation: "serverValidation",
-            MulticastInputSettings: "multicastInputSettings",
-          }),
-        ),
-      ).annotate({ identifier: "NetworkInputSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Hdr10Settings: S.optional(__S(184, __c23, 0)) }).pipe(
-          S.encodeKeys({ Hdr10Settings: "hdr10Settings" }),
-        ),
-      ).annotate({
-        identifier: "VideoSelectorColorSpaceSettings",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Pid: S.optional(S.Number) }).pipe(S.encodeKeys({ Pid: "pid" })),
-      ).annotate({ identifier: "VideoSelectorPid" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ProgramId: S.optional(S.Number) }).pipe(
-          S.encodeKeys({ ProgramId: "programId" }),
-        ),
-      ).annotate({ identifier: "VideoSelectorProgramId" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          VideoSelectorPid: S.optional(__S(234, __c29, 2)),
-          VideoSelectorProgramId: S.optional(__S(235, __c29, 3)),
-        }).pipe(
-          S.encodeKeys({
-            VideoSelectorPid: "videoSelectorPid",
-            VideoSelectorProgramId: "videoSelectorProgramId",
-          }),
-        ),
-      ).annotate({ identifier: "VideoSelectorSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ColorSpace: S.optional(S.String),
-          ColorSpaceSettings: S.optional(__S(233, __c29, 1)),
-          ColorSpaceUsage: S.optional(S.String),
-          SelectorSettings: S.optional(__S(236, __c29, 4)),
-        }).pipe(
-          S.encodeKeys({
-            ColorSpace: "colorSpace",
-            ColorSpaceSettings: "colorSpaceSettings",
-            ColorSpaceUsage: "colorSpaceUsage",
-            SelectorSettings: "selectorSettings",
-          }),
-        ),
-      ).annotate({ identifier: "VideoSelector" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AudioSelectors: S.optional(__listOfAudioSelector),
-          CaptionSelectors: S.optional(__listOfCaptionSelector),
-          DeblockFilter: S.optional(S.String),
-          DenoiseFilter: S.optional(S.String),
-          FilterStrength: S.optional(S.Number),
-          InputFilter: S.optional(S.String),
-          NetworkInputSettings: S.optional(__S(232, __c29, 0)),
-          Scte35Pid: S.optional(S.Number),
-          Smpte2038DataPreference: S.optional(S.String),
-          SourceEndBehavior: S.optional(S.String),
-          VideoSelector: S.optional(__S(237, __c29, 5)),
-        }).pipe(
-          S.encodeKeys({
-            AudioSelectors: "audioSelectors",
-            CaptionSelectors: "captionSelectors",
-            DeblockFilter: "deblockFilter",
-            DenoiseFilter: "denoiseFilter",
-            FilterStrength: "filterStrength",
-            InputFilter: "inputFilter",
-            NetworkInputSettings: "networkInputSettings",
-            Scte35Pid: "scte35Pid",
-            Smpte2038DataPreference: "smpte2038DataPreference",
-            SourceEndBehavior: "sourceEndBehavior",
-            VideoSelector: "videoSelector",
-          }),
-        ),
-      ).annotate({ identifier: "InputSettings" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AutomaticInputFailoverSettings: S.optional(__S(206, __c25, 6)),
-          InputAttachmentName: S.optional(S.String),
-          InputId: S.optional(S.String),
-          InputSettings: S.optional(__S(238, __c29, 6)),
-          LogicalInterfaceNames: S.optional(__listOf__string),
-        }).pipe(
-          S.encodeKeys({
-            AutomaticInputFailoverSettings: "automaticInputFailoverSettings",
-            InputAttachmentName: "inputAttachmentName",
-            InputId: "inputId",
-            InputSettings: "inputSettings",
-            LogicalInterfaceNames: "logicalInterfaceNames",
-          }),
-        ),
-      ).annotate({ identifier: "InputAttachment" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(239, __c29, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Codec: S.optional(S.String),
-          MaximumBitrate: S.optional(S.String),
-          Resolution: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Codec: "codec",
-            MaximumBitrate: "maximumBitrate",
-            Resolution: "resolution",
-          }),
-        ),
-      ).annotate({ identifier: "InputSpecification" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MaintenanceDay: S.optional(S.String),
-          MaintenanceStartTime: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            MaintenanceDay: "maintenanceDay",
-            MaintenanceStartTime: "maintenanceStartTime",
-          }),
-        ),
-      ).annotate({
-        identifier: "MaintenanceCreateSettings",
-      });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          PublicAddressAllocationIds: S.optional(__listOf__string),
-          SecurityGroupIds: S.optional(__listOf__string),
-          SubnetIds: S.optional(__listOf__string),
-        }).pipe(
-          S.encodeKeys({
-            PublicAddressAllocationIds: "publicAddressAllocationIds",
-            SecurityGroupIds: "securityGroupIds",
-            SubnetIds: "subnetIds",
-          }),
-        ),
-      ).annotate({ identifier: "VpcOutputSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelPlacementGroupId: S.optional(S.String),
-          ClusterId: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ChannelPlacementGroupId: "channelPlacementGroupId",
-            ClusterId: "clusterId",
-          }),
-        ),
-      ).annotate({ identifier: "AnywhereSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Version: S.optional(S.String) }).pipe(S.encodeKeys({ Version: "version" })),
-      ).annotate({
-        identifier: "ChannelEngineVersionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          LinkedChannelType: S.optional(S.String),
-          PrimaryChannelArn: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            LinkedChannelType: "linkedChannelType",
-            PrimaryChannelArn: "primaryChannelArn",
-          }),
-        ),
-      ).annotate({ identifier: "FollowerChannelSettings" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ LinkedChannelType: S.optional(S.String) }).pipe(
-          S.encodeKeys({ LinkedChannelType: "linkedChannelType" }),
-        ),
-      ).annotate({ identifier: "PrimaryChannelSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          FollowerChannelSettings: S.optional(__S(247, __c30, 7)),
-          PrimaryChannelSettings: S.optional(__S(248, __c31, 0)),
-        }).pipe(
-          S.encodeKeys({
-            FollowerChannelSettings: "followerChannelSettings",
-            PrimaryChannelSettings: "primaryChannelSettings",
-          }),
-        ),
-      ).annotate({ identifier: "LinkedChannelSettings" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ AudioSelectorName: S.optional(S.String), FeedInput: S.optional(S.String) }).pipe(
-          S.encodeKeys({ AudioSelectorName: "audioSelectorName", FeedInput: "feedInput" }),
-        ),
-      ).annotate({ identifier: "AudioFeedInput" });
-    case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          FeedArn: S.optional(S.String),
-          AudioFeedInputs: S.optional(__listOfAudioFeedInput),
-          EnrichmentMethods: S.optional(__listOfEnrichmentMethod),
-        }).pipe(
-          S.encodeKeys({
-            FeedArn: "feedArn",
-            AudioFeedInputs: "audioFeedInputs",
-            EnrichmentMethods: "enrichmentMethods",
-          }),
-        ),
-      ).annotate({ identifier: "InferenceSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          CdiInputSpecification: S.optional(__S(49, __c6, 1)),
-          ChannelClass: S.optional(S.String),
-          Destinations: S.optional(__listOfOutputDestination),
-          EncoderSettings: S.optional(__S(199, __c24, 7)),
-          InputAttachments: S.optional(__listOfInputAttachment),
-          InputSpecification: S.optional(__S(241, __c30, 1)),
-          LogLevel: S.optional(S.String),
-          Maintenance: S.optional(__S(242, __c30, 2)),
-          Name: S.optional(S.String),
-          RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Reserved: S.optional(S.String),
-          RoleArn: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
-          Vpc: S.optional(__S(244, __c30, 4)),
-          AnywhereSettings: S.optional(__S(245, __c30, 5)),
-          ChannelEngineVersion: S.optional(__S(246, __c30, 6)),
-          DryRun: S.optional(S.Boolean),
-          LinkedChannelSettings: S.optional(__S(249, __c31, 1)),
-          ChannelSecurityGroups: S.optional(__listOf__string),
-          InferenceSettings: S.optional(__S(252, __c31, 4)),
-        })
-          .pipe(
-            S.encodeKeys({
-              CdiInputSpecification: "cdiInputSpecification",
-              ChannelClass: "channelClass",
-              Destinations: "destinations",
-              EncoderSettings: "encoderSettings",
-              InputAttachments: "inputAttachments",
-              InputSpecification: "inputSpecification",
-              LogLevel: "logLevel",
-              Maintenance: "maintenance",
-              Name: "name",
-              RequestId: "requestId",
-              Reserved: "reserved",
-              RoleArn: "roleArn",
-              Tags: "tags",
-              Vpc: "vpc",
-              AnywhereSettings: "anywhereSettings",
-              ChannelEngineVersion: "channelEngineVersion",
-              DryRun: "dryRun",
-              LinkedChannelSettings: "linkedChannelSettings",
-              ChannelSecurityGroups: "channelSecurityGroups",
-              InferenceSettings: "inferenceSettings",
-            }),
-          )
-          .pipe(
-            T.all(T.Http({ method: "POST", uri: "/prod/channels" }), svc, auth, proto, ver, rules),
-          ),
-      ).annotate({ identifier: "CreateChannelRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ SourceIp: S.optional(S.String) }).pipe(S.encodeKeys({ SourceIp: "sourceIp" })),
-      ).annotate({ identifier: "ChannelEgressEndpoint" });
-    case 7:
-      return S.Array(__S(254, __c31, 6));
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          MaintenanceDay: S.optional(S.String),
-          MaintenanceDeadline: S.optional(S.String),
-          MaintenanceScheduledDate: S.optional(S.String),
-          MaintenanceStartTime: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            MaintenanceDay: "maintenanceDay",
-            MaintenanceDeadline: "maintenanceDeadline",
-            MaintenanceScheduledDate: "maintenanceScheduledDate",
-            MaintenanceStartTime: "maintenanceStartTime",
-          }),
-        ),
-      ).annotate({ identifier: "MaintenanceStatus" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ExpirationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Version: S.optional(S.String),
-        }).pipe(S.encodeKeys({ ExpirationDate: "expirationDate", Version: "version" })),
-      ).annotate({
-        identifier: "ChannelEngineVersionResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({ RouterInputArn: S.optional(S.String) }).pipe(
           S.encodeKeys({ RouterInputArn: "routerInputArn" }),
@@ -16446,9 +16819,9 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "MediaConnectRouterOutputConnection",
       });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(258, __c32, 2).pipe(S.optional));
     case 4:
+      return S.Record(S.String, /*@__PURE__*/ __S(1763, __c55, 3).pipe(S.optional));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           ActiveInputAttachmentName: S.optional(S.String),
@@ -16456,8 +16829,8 @@ function __c32(j: number): any {
           ActiveMotionGraphicsActionName: S.optional(S.String),
           ActiveMotionGraphicsUri: S.optional(S.String),
           PipelineId: S.optional(S.String),
-          ChannelEngineVersion: S.optional(__S(257, __c32, 1)),
-          MediaConnectRouterOutputConnectionMap: S.optional(__S(259, __c32, 3)),
+          ChannelEngineVersion: S.optional(__S(1920, __c60, 0)),
+          MediaConnectRouterOutputConnectionMap: S.optional(__S(1764, __c55, 4)),
         }).pipe(
           S.encodeKeys({
             ActiveInputAttachmentName: "activeInputAttachmentName",
@@ -16470,114 +16843,38 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PipelineDetail" });
-    case 5:
-      return S.Array(__S(260, __c32, 4));
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AvailabilityZones: S.optional(__listOf__string),
-          NetworkInterfaceIds: S.optional(__listOf__string),
-          SecurityGroupIds: S.optional(__listOf__string),
-          SubnetIds: S.optional(__listOf__string),
-        }).pipe(
-          S.encodeKeys({
-            AvailabilityZones: "availabilityZones",
-            NetworkInterfaceIds: "networkInterfaceIds",
-            SecurityGroupIds: "securityGroupIds",
-            SubnetIds: "subnetIds",
-          }),
-        ),
-      ).annotate({
-        identifier: "VpcOutputSettingsDescription",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          LinkedChannelType: S.optional(S.String),
-          PrimaryChannelArn: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            LinkedChannelType: "linkedChannelType",
-            PrimaryChannelArn: "primaryChannelArn",
-          }),
-        ),
-      ).annotate({
-        identifier: "DescribeFollowerChannelSettings",
-      });
+      return S.Array(__S(1765, __c55, 5));
   }
 }
-function __c33(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FollowingChannelArns: S.optional(__listOf__string),
-          LinkedChannelType: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            FollowingChannelArns: "followingChannelArns",
-            LinkedChannelType: "linkedChannelType",
-          }),
-        ),
-      ).annotate({
-        identifier: "DescribePrimaryChannelSettings",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          FollowerChannelSettings: S.optional(__S(263, __c32, 7)),
-          PrimaryChannelSettings: S.optional(__S(264, __c33, 0)),
-        }).pipe(
-          S.encodeKeys({
-            FollowerChannelSettings: "followerChannelSettings",
-            PrimaryChannelSettings: "primaryChannelSettings",
-          }),
-        ),
-      ).annotate({
-        identifier: "DescribeLinkedChannelSettings",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          FeedArn: S.optional(S.String),
-          AudioFeedInputs: S.optional(__listOfAudioFeedInput),
-          EnrichmentMethods: S.optional(__listOfEnrichmentMethod),
-        }).pipe(
-          S.encodeKeys({
-            FeedArn: "feedArn",
-            AudioFeedInputs: "audioFeedInputs",
-            EnrichmentMethods: "enrichmentMethods",
-          }),
-        ),
-      ).annotate({
-        identifier: "DescribeInferenceSettings",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           Arn: S.optional(S.String),
-          CdiInputSpecification: S.optional(__S(49, __c6, 1)),
+          CdiInputSpecification: S.optional(__S(1824, __c57, 0)),
           ChannelClass: S.optional(S.String),
           Destinations: S.optional(__listOfOutputDestination),
           EgressEndpoints: S.optional(__listOfChannelEgressEndpoint),
-          EncoderSettings: S.optional(__S(199, __c24, 7)),
+          EncoderSettings: S.optional(__S(1762, __c55, 2)),
           Id: S.optional(S.String),
           InputAttachments: S.optional(__listOfInputAttachment),
-          InputSpecification: S.optional(__S(241, __c30, 1)),
+          InputSpecification: S.optional(__S(1885, __c58, 29)),
           LogLevel: S.optional(S.String),
-          Maintenance: S.optional(__S(256, __c32, 0)),
+          Maintenance: S.optional(__S(1891, __c59, 3)),
           Name: S.optional(S.String),
           PipelineDetails: S.optional(__listOfPipelineDetail),
           PipelinesRunningCount: S.optional(S.Number),
           RoleArn: S.optional(S.String),
           State: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
-          Vpc: S.optional(__S(262, __c32, 6)),
-          AnywhereSettings: S.optional(__S(245, __c30, 5)),
-          ChannelEngineVersion: S.optional(__S(257, __c32, 1)),
-          LinkedChannelSettings: S.optional(__S(265, __c33, 1)),
+          Tags: S.optional(__S(1600, __c50, 0)),
+          Vpc: S.optional(__S(1892, __c59, 4)),
+          AnywhereSettings: S.optional(__S(1886, __c58, 30)),
+          ChannelEngineVersion: S.optional(__S(1920, __c60, 0)),
+          LinkedChannelSettings: S.optional(__S(1895, __c59, 7)),
           ChannelSecurityGroups: S.optional(__listOf__string),
-          InferenceSettings: S.optional(__S(266, __c33, 2)),
+          InferenceSettings: S.optional(__S(1896, __c59, 8)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -16606,20 +16903,790 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Channel" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Resolution: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Resolution: "resolution" }),
+        ),
+      ).annotate({ identifier: "CdiInputSpecification" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelId: S.optional(S.String),
+          ChannelGroup: S.optional(S.String),
+          ChannelName: S.optional(S.String),
+          ChannelEndpointId: S.optional(S.String),
+          MediaPackageRegionName: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ChannelId: "channelId",
+            ChannelGroup: "channelGroup",
+            ChannelName: "channelName",
+            ChannelEndpointId: "channelEndpointId",
+            MediaPackageRegionName: "mediaPackageRegionName",
+          }),
+        ),
+      ).annotate({
+        identifier: "MediaPackageOutputDestinationSettings",
+      });
+    case 2:
+      return S.Array(__S(1825, __c57, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ MultiplexId: S.optional(S.String), ProgramName: S.optional(S.String) }).pipe(
+          S.encodeKeys({ MultiplexId: "multiplexId", ProgramName: "programName" }),
+        ),
+      ).annotate({
+        identifier: "MultiplexProgramChannelDestinationSettings",
+      });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Channel: S.optional(__S(267, __c33, 3)) }).pipe(
-          S.encodeKeys({ Channel: "channel" }),
+        S.Struct({
+          PasswordParam: S.optional(S.String),
+          StreamName: S.optional(S.String),
+          Url: S.optional(S.String),
+          Username: S.optional(S.String),
+          VirtualSourceAddress: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            PasswordParam: "passwordParam",
+            StreamName: "streamName",
+            Url: "url",
+            Username: "username",
+            VirtualSourceAddress: "virtualSourceAddress",
+          }),
         ),
-      ).annotate({ identifier: "CreateChannelResponse" });
+      ).annotate({
+        identifier: "OutputDestinationSettings",
+      });
     case 5:
+      return S.Array(__S(1828, __c57, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EncryptionPassphraseSecretArn: S.optional(S.String),
+          StreamId: S.optional(S.String),
+          Url: S.optional(S.String),
+          ConnectionMode: S.optional(S.String),
+          ListenerPort: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            EncryptionPassphraseSecretArn: "encryptionPassphraseSecretArn",
+            StreamId: "streamId",
+            Url: "url",
+            ConnectionMode: "connectionMode",
+            ListenerPort: "listenerPort",
+          }),
+        ),
+      ).annotate({
+        identifier: "SrtOutputDestinationSettings",
+      });
+    case 7:
+      return S.Array(__S(1830, __c57, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          EncryptionType: S.optional(S.String),
+          SecretArn: S.optional(S.String),
+        }).pipe(S.encodeKeys({ EncryptionType: "encryptionType", SecretArn: "secretArn" })),
+      ).annotate({
+        identifier: "MediaConnectRouterOutputDestinationSettings",
+      });
+    case 9:
+      return S.Array(__S(1832, __c57, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          MediaPackageSettings: S.optional(__listOfMediaPackageOutputDestinationSettings),
+          MultiplexSettings: S.optional(__S(1827, __c57, 3)),
+          Settings: S.optional(__listOfOutputDestinationSettings),
+          SrtSettings: S.optional(__listOfSrtOutputDestinationSettings),
+          LogicalInterfaceNames: S.optional(__listOf__string),
+          MediaConnectRouterSettings: S.optional(
+            __listOfMediaConnectRouterOutputDestinationSettings,
+          ),
+        }).pipe(
+          S.encodeKeys({
+            Id: "id",
+            MediaPackageSettings: "mediaPackageSettings",
+            MultiplexSettings: "multiplexSettings",
+            Settings: "settings",
+            SrtSettings: "srtSettings",
+            LogicalInterfaceNames: "logicalInterfaceNames",
+            MediaConnectRouterSettings: "mediaConnectRouterSettings",
+          }),
+        ),
+      ).annotate({ identifier: "OutputDestination" });
+    case 11:
+      return S.Array(__S(1834, __c57, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          Algorithm: S.optional(S.String),
+          AlgorithmControl: S.optional(S.String),
+          TargetLkfs: S.optional(S.Number),
+          PeakCalculation: S.optional(S.String),
+          PeakLimiterThreshold: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            Algorithm: "algorithm",
+            AlgorithmControl: "algorithmControl",
+            TargetLkfs: "targetLkfs",
+            PeakCalculation: "peakCalculation",
+            PeakLimiterThreshold: "peakLimiterThreshold",
+          }),
+        ),
+      ).annotate({
+        identifier: "AudioNormalizationSettings",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({ Gain: S.optional(S.Number), InputChannel: S.optional(S.Number) }).pipe(
+          S.encodeKeys({ Gain: "gain", InputChannel: "inputChannel" }),
+        ),
+      ).annotate({ identifier: "InputChannelLevel" });
+    case 14:
+      return S.Array(__S(1837, __c57, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          InputChannelLevels: S.optional(__listOfInputChannelLevel),
+          OutputChannel: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            InputChannelLevels: "inputChannelLevels",
+            OutputChannel: "outputChannel",
+          }),
+        ),
+      ).annotate({ identifier: "AudioChannelMapping" });
+    case 16:
+      return S.Array(__S(1839, __c57, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelMappings: S.optional(__listOfAudioChannelMapping),
+          ChannelsIn: S.optional(S.Number),
+          ChannelsOut: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            ChannelMappings: "channelMappings",
+            ChannelsIn: "channelsIn",
+            ChannelsOut: "channelsOut",
+          }),
+        ),
+      ).annotate({ identifier: "RemixSettings" });
+    case 18:
+      return S.Array(S.String);
+    case 19:
+      return S.suspend(() =>
+        S.Struct({ MaxCll: S.optional(S.Number), MaxFall: S.optional(S.Number) }).pipe(
+          S.encodeKeys({ MaxCll: "maxCll", MaxFall: "maxFall" }),
+        ),
+      ).annotate({ identifier: "Hdr10Settings" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          AudioSelectorName: S.optional(S.String),
+          AudioSilenceThresholdMsec: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            AudioSelectorName: "audioSelectorName",
+            AudioSilenceThresholdMsec: "audioSilenceThresholdMsec",
+          }),
+        ),
+      ).annotate({
+        identifier: "AudioSilenceFailoverSettings",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({ InputLossThresholdMsec: S.optional(S.Number) }).pipe(
+          S.encodeKeys({ InputLossThresholdMsec: "inputLossThresholdMsec" }),
+        ),
+      ).annotate({
+        identifier: "InputLossFailoverSettings",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          BlackDetectThreshold: S.optional(S.Number),
+          VideoBlackThresholdMsec: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            BlackDetectThreshold: "blackDetectThreshold",
+            VideoBlackThresholdMsec: "videoBlackThresholdMsec",
+          }),
+        ),
+      ).annotate({
+        identifier: "VideoBlackFailoverSettings",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          AudioSilenceSettings: S.optional(__S(1844, __c57, 20)),
+          InputLossSettings: S.optional(__S(1845, __c57, 21)),
+          VideoBlackSettings: S.optional(__S(1846, __c57, 22)),
+        }).pipe(
+          S.encodeKeys({
+            AudioSilenceSettings: "audioSilenceSettings",
+            InputLossSettings: "inputLossSettings",
+            VideoBlackSettings: "videoBlackSettings",
+          }),
+        ),
+      ).annotate({
+        identifier: "FailoverConditionSettings",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({ FailoverConditionSettings: S.optional(__S(1847, __c57, 23)) }).pipe(
+          S.encodeKeys({ FailoverConditionSettings: "failoverConditionSettings" }),
+        ),
+      ).annotate({ identifier: "FailoverCondition" });
+    case 25:
+      return S.Array(__S(1848, __c57, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          ErrorClearTimeMsec: S.optional(S.Number),
+          FailoverConditions: S.optional(__listOfFailoverCondition),
+          InputPreference: S.optional(S.String),
+          SecondaryInputId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ErrorClearTimeMsec: "errorClearTimeMsec",
+            FailoverConditions: "failoverConditions",
+            InputPreference: "inputPreference",
+            SecondaryInputId: "secondaryInputId",
+          }),
+        ),
+      ).annotate({
+        identifier: "AutomaticInputFailoverSettings",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({ GroupId: S.optional(S.String), Name: S.optional(S.String) }).pipe(
+          S.encodeKeys({ GroupId: "groupId", Name: "name" }),
+        ),
+      ).annotate({
+        identifier: "AudioHlsRenditionSelection",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          LanguageCode: S.optional(S.String),
+          LanguageSelectionPolicy: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            LanguageCode: "languageCode",
+            LanguageSelectionPolicy: "languageSelectionPolicy",
+          }),
+        ),
+      ).annotate({ identifier: "AudioLanguageSelection" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({ ProgramSelection: S.optional(S.String) }).pipe(
+          S.encodeKeys({ ProgramSelection: "programSelection" }),
+        ),
+      ).annotate({ identifier: "AudioDolbyEDecode" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          AudioNormalizationSettings: S.optional(__S(1836, __c57, 12)),
+          Channels: S.optional(S.Number),
+          GainDb: S.optional(S.Number),
+          RemixSettings: S.optional(__S(1841, __c57, 17)),
+        }).pipe(
+          S.encodeKeys({
+            AudioNormalizationSettings: "audioNormalizationSettings",
+            Channels: "channels",
+            GainDb: "gainDb",
+            RemixSettings: "remixSettings",
+          }),
+        ),
+      ).annotate({ identifier: "AudioPreMixerSettings" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          DolbyEDecode: S.optional(__S(1853, __c57, 29)),
+          Pid: S.optional(S.Number),
+          PremixSettings: S.optional(__S(1854, __c57, 30)),
+        }).pipe(
+          S.encodeKeys({
+            DolbyEDecode: "dolbyEDecode",
+            Pid: "pid",
+            PremixSettings: "premixSettings",
+          }),
+        ),
+      ).annotate({ identifier: "AudioPid" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1855, __c57, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Pid: S.optional(S.Number), Pids: S.optional(__listOfAudioPid) }).pipe(
+          S.encodeKeys({ Pid: "pid", Pids: "pids" }),
+        ),
+      ).annotate({ identifier: "AudioPidSelection" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Track: S.optional(S.Number),
+          PremixSettings: S.optional(__S(1854, __c57, 30)),
+        }).pipe(S.encodeKeys({ Track: "track", PremixSettings: "premixSettings" })),
+      ).annotate({ identifier: "AudioTrack" });
+    case 3:
+      return S.Array(__S(1858, __c58, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Tracks: S.optional(__listOfAudioTrack),
+          DolbyEDecode: S.optional(__S(1853, __c57, 29)),
+        }).pipe(S.encodeKeys({ Tracks: "tracks", DolbyEDecode: "dolbyEDecode" })),
+      ).annotate({ identifier: "AudioTrackSelection" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AudioHlsRenditionSelection: S.optional(__S(1851, __c57, 27)),
+          AudioLanguageSelection: S.optional(__S(1852, __c57, 28)),
+          AudioPidSelection: S.optional(__S(1857, __c58, 1)),
+          AudioTrackSelection: S.optional(__S(1860, __c58, 4)),
+        }).pipe(
+          S.encodeKeys({
+            AudioHlsRenditionSelection: "audioHlsRenditionSelection",
+            AudioLanguageSelection: "audioLanguageSelection",
+            AudioPidSelection: "audioPidSelection",
+            AudioTrackSelection: "audioTrackSelection",
+          }),
+        ),
+      ).annotate({ identifier: "AudioSelectorSettings" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          SelectorSettings: S.optional(__S(1861, __c58, 5)),
+        }).pipe(S.encodeKeys({ Name: "name", SelectorSettings: "selectorSettings" })),
+      ).annotate({ identifier: "AudioSelector" });
+    case 7:
+      return S.Array(__S(1862, __c58, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({ SourceAncillaryChannelNumber: S.optional(S.Number) }).pipe(
+          S.encodeKeys({ SourceAncillaryChannelNumber: "sourceAncillaryChannelNumber" }),
+        ),
+      ).annotate({ identifier: "AncillarySourceSettings" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({ OcrLanguage: S.optional(S.String), Pid: S.optional(S.Number) }).pipe(
+          S.encodeKeys({ OcrLanguage: "ocrLanguage", Pid: "pid" }),
+        ),
+      ).annotate({ identifier: "DvbSubSourceSettings" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          Convert608To708: S.optional(S.String),
+          Scte20Detection: S.optional(S.String),
+          Source608ChannelNumber: S.optional(S.Number),
+          Source608TrackNumber: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            Convert608To708: "convert608To708",
+            Scte20Detection: "scte20Detection",
+            Source608ChannelNumber: "source608ChannelNumber",
+            Source608TrackNumber: "source608TrackNumber",
+          }),
+        ),
+      ).annotate({ identifier: "EmbeddedSourceSettings" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          Convert608To708: S.optional(S.String),
+          Source608ChannelNumber: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            Convert608To708: "convert608To708",
+            Source608ChannelNumber: "source608ChannelNumber",
+          }),
+        ),
+      ).annotate({ identifier: "Scte20SourceSettings" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          Height: S.optional(S.Number),
+          LeftOffset: S.optional(S.Number),
+          TopOffset: S.optional(S.Number),
+          Width: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            Height: "height",
+            LeftOffset: "leftOffset",
+            TopOffset: "topOffset",
+            Width: "width",
+          }),
+        ),
+      ).annotate({ identifier: "CaptionRectangle" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          OutputRectangle: S.optional(__S(1868, __c58, 12)),
+          PageNumber: S.optional(S.String),
+        }).pipe(S.encodeKeys({ OutputRectangle: "outputRectangle", PageNumber: "pageNumber" })),
+      ).annotate({ identifier: "TeletextSourceSettings" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          CaptionSynchronizationMode: S.optional(S.String),
+          InferenceFeedOutput: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            CaptionSynchronizationMode: "captionSynchronizationMode",
+            InferenceFeedOutput: "inferenceFeedOutput",
+          }),
+        ),
+      ).annotate({
+        identifier: "SmartSubtitleSourceSettings",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          AncillarySourceSettings: S.optional(__S(1864, __c58, 8)),
+          AribSourceSettings: S.optional(__S(1504, __c47, 0)),
+          DvbSubSourceSettings: S.optional(__S(1865, __c58, 9)),
+          EmbeddedSourceSettings: S.optional(__S(1866, __c58, 10)),
+          Scte20SourceSettings: S.optional(__S(1867, __c58, 11)),
+          Scte27SourceSettings: S.optional(__S(1865, __c58, 9)),
+          TeletextSourceSettings: S.optional(__S(1869, __c58, 13)),
+          SmartSubtitleSourceSettings: S.optional(__S(1870, __c58, 14)),
+        }).pipe(
+          S.encodeKeys({
+            AncillarySourceSettings: "ancillarySourceSettings",
+            AribSourceSettings: "aribSourceSettings",
+            DvbSubSourceSettings: "dvbSubSourceSettings",
+            EmbeddedSourceSettings: "embeddedSourceSettings",
+            Scte20SourceSettings: "scte20SourceSettings",
+            Scte27SourceSettings: "scte27SourceSettings",
+            TeletextSourceSettings: "teletextSourceSettings",
+            SmartSubtitleSourceSettings: "smartSubtitleSourceSettings",
+          }),
+        ),
+      ).annotate({ identifier: "CaptionSelectorSettings" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          LanguageCode: S.optional(S.String),
+          Name: S.optional(S.String),
+          SelectorSettings: S.optional(__S(1871, __c58, 15)),
+        }).pipe(
+          S.encodeKeys({
+            LanguageCode: "languageCode",
+            Name: "name",
+            SelectorSettings: "selectorSettings",
+          }),
+        ),
+      ).annotate({ identifier: "CaptionSelector" });
+    case 17:
+      return S.Array(__S(1872, __c58, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          Bandwidth: S.optional(S.Number),
+          BufferSegments: S.optional(S.Number),
+          Retries: S.optional(S.Number),
+          RetryInterval: S.optional(S.Number),
+          Scte35Source: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Bandwidth: "bandwidth",
+            BufferSegments: "bufferSegments",
+            Retries: "retries",
+            RetryInterval: "retryInterval",
+            Scte35Source: "scte35Source",
+          }),
+        ),
+      ).annotate({ identifier: "HlsInputSettings" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({ SourceIpAddress: S.optional(S.String) }).pipe(
+          S.encodeKeys({ SourceIpAddress: "sourceIpAddress" }),
+        ),
+      ).annotate({ identifier: "MulticastInputSettings" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          HlsInputSettings: S.optional(__S(1874, __c58, 18)),
+          ServerValidation: S.optional(S.String),
+          MulticastInputSettings: S.optional(__S(1875, __c58, 19)),
+        }).pipe(
+          S.encodeKeys({
+            HlsInputSettings: "hlsInputSettings",
+            ServerValidation: "serverValidation",
+            MulticastInputSettings: "multicastInputSettings",
+          }),
+        ),
+      ).annotate({ identifier: "NetworkInputSettings" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({ Hdr10Settings: S.optional(__S(1843, __c57, 19)) }).pipe(
+          S.encodeKeys({ Hdr10Settings: "hdr10Settings" }),
+        ),
+      ).annotate({
+        identifier: "VideoSelectorColorSpaceSettings",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({ Pid: S.optional(S.Number) }).pipe(S.encodeKeys({ Pid: "pid" })),
+      ).annotate({ identifier: "VideoSelectorPid" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({ ProgramId: S.optional(S.Number) }).pipe(
+          S.encodeKeys({ ProgramId: "programId" }),
+        ),
+      ).annotate({ identifier: "VideoSelectorProgramId" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          VideoSelectorPid: S.optional(__S(1878, __c58, 22)),
+          VideoSelectorProgramId: S.optional(__S(1879, __c58, 23)),
+        }).pipe(
+          S.encodeKeys({
+            VideoSelectorPid: "videoSelectorPid",
+            VideoSelectorProgramId: "videoSelectorProgramId",
+          }),
+        ),
+      ).annotate({ identifier: "VideoSelectorSettings" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          ColorSpace: S.optional(S.String),
+          ColorSpaceSettings: S.optional(__S(1877, __c58, 21)),
+          ColorSpaceUsage: S.optional(S.String),
+          SelectorSettings: S.optional(__S(1880, __c58, 24)),
+        }).pipe(
+          S.encodeKeys({
+            ColorSpace: "colorSpace",
+            ColorSpaceSettings: "colorSpaceSettings",
+            ColorSpaceUsage: "colorSpaceUsage",
+            SelectorSettings: "selectorSettings",
+          }),
+        ),
+      ).annotate({ identifier: "VideoSelector" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          AudioSelectors: S.optional(__listOfAudioSelector),
+          CaptionSelectors: S.optional(__listOfCaptionSelector),
+          DeblockFilter: S.optional(S.String),
+          DenoiseFilter: S.optional(S.String),
+          FilterStrength: S.optional(S.Number),
+          InputFilter: S.optional(S.String),
+          NetworkInputSettings: S.optional(__S(1876, __c58, 20)),
+          Scte35Pid: S.optional(S.Number),
+          Smpte2038DataPreference: S.optional(S.String),
+          SourceEndBehavior: S.optional(S.String),
+          VideoSelector: S.optional(__S(1881, __c58, 25)),
+        }).pipe(
+          S.encodeKeys({
+            AudioSelectors: "audioSelectors",
+            CaptionSelectors: "captionSelectors",
+            DeblockFilter: "deblockFilter",
+            DenoiseFilter: "denoiseFilter",
+            FilterStrength: "filterStrength",
+            InputFilter: "inputFilter",
+            NetworkInputSettings: "networkInputSettings",
+            Scte35Pid: "scte35Pid",
+            Smpte2038DataPreference: "smpte2038DataPreference",
+            SourceEndBehavior: "sourceEndBehavior",
+            VideoSelector: "videoSelector",
+          }),
+        ),
+      ).annotate({ identifier: "InputSettings" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          AutomaticInputFailoverSettings: S.optional(__S(1850, __c57, 26)),
+          InputAttachmentName: S.optional(S.String),
+          InputId: S.optional(S.String),
+          InputSettings: S.optional(__S(1882, __c58, 26)),
+          LogicalInterfaceNames: S.optional(__listOf__string),
+        }).pipe(
+          S.encodeKeys({
+            AutomaticInputFailoverSettings: "automaticInputFailoverSettings",
+            InputAttachmentName: "inputAttachmentName",
+            InputId: "inputId",
+            InputSettings: "inputSettings",
+            LogicalInterfaceNames: "logicalInterfaceNames",
+          }),
+        ),
+      ).annotate({ identifier: "InputAttachment" });
+    case 28:
+      return S.Array(__S(1883, __c58, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          Codec: S.optional(S.String),
+          MaximumBitrate: S.optional(S.String),
+          Resolution: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Codec: "codec",
+            MaximumBitrate: "maximumBitrate",
+            Resolution: "resolution",
+          }),
+        ),
+      ).annotate({ identifier: "InputSpecification" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelPlacementGroupId: S.optional(S.String),
+          ClusterId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ChannelPlacementGroupId: "channelPlacementGroupId",
+            ClusterId: "clusterId",
+          }),
+        ),
+      ).annotate({ identifier: "AnywhereSettings" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({ AudioSelectorName: S.optional(S.String), FeedInput: S.optional(S.String) }).pipe(
+          S.encodeKeys({ AudioSelectorName: "audioSelectorName", FeedInput: "feedInput" }),
+        ),
+      ).annotate({ identifier: "AudioFeedInput" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1887, __c58, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ SourceIp: S.optional(S.String) }).pipe(S.encodeKeys({ SourceIp: "sourceIp" })),
+      ).annotate({ identifier: "ChannelEgressEndpoint" });
+    case 2:
+      return S.Array(__S(1889, __c59, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          MaintenanceDay: S.optional(S.String),
+          MaintenanceDeadline: S.optional(S.String),
+          MaintenanceScheduledDate: S.optional(S.String),
+          MaintenanceStartTime: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            MaintenanceDay: "maintenanceDay",
+            MaintenanceDeadline: "maintenanceDeadline",
+            MaintenanceScheduledDate: "maintenanceScheduledDate",
+            MaintenanceStartTime: "maintenanceStartTime",
+          }),
+        ),
+      ).annotate({ identifier: "MaintenanceStatus" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AvailabilityZones: S.optional(__listOf__string),
+          NetworkInterfaceIds: S.optional(__listOf__string),
+          SecurityGroupIds: S.optional(__listOf__string),
+          SubnetIds: S.optional(__listOf__string),
+        }).pipe(
+          S.encodeKeys({
+            AvailabilityZones: "availabilityZones",
+            NetworkInterfaceIds: "networkInterfaceIds",
+            SecurityGroupIds: "securityGroupIds",
+            SubnetIds: "subnetIds",
+          }),
+        ),
+      ).annotate({
+        identifier: "VpcOutputSettingsDescription",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          LinkedChannelType: S.optional(S.String),
+          PrimaryChannelArn: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            LinkedChannelType: "linkedChannelType",
+            PrimaryChannelArn: "primaryChannelArn",
+          }),
+        ),
+      ).annotate({
+        identifier: "DescribeFollowerChannelSettings",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          FollowingChannelArns: S.optional(__listOf__string),
+          LinkedChannelType: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            FollowingChannelArns: "followingChannelArns",
+            LinkedChannelType: "linkedChannelType",
+          }),
+        ),
+      ).annotate({
+        identifier: "DescribePrimaryChannelSettings",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          FollowerChannelSettings: S.optional(__S(1893, __c59, 5)),
+          PrimaryChannelSettings: S.optional(__S(1894, __c59, 6)),
+        }).pipe(
+          S.encodeKeys({
+            FollowerChannelSettings: "followerChannelSettings",
+            PrimaryChannelSettings: "primaryChannelSettings",
+          }),
+        ),
+      ).annotate({
+        identifier: "DescribeLinkedChannelSettings",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          FeedArn: S.optional(S.String),
+          AudioFeedInputs: S.optional(__listOfAudioFeedInput),
+          EnrichmentMethods: S.optional(__listOfEnrichmentMethod),
+        }).pipe(
+          S.encodeKeys({
+            FeedArn: "feedArn",
+            AudioFeedInputs: "audioFeedInputs",
+            EnrichmentMethods: "enrichmentMethods",
+          }),
+        ),
+      ).annotate({
+        identifier: "DescribeInferenceSettings",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ExpirationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Version: S.optional(S.String),
+        }).pipe(S.encodeKeys({ ExpirationDate: "expirationDate", Version: "version" })),
+      ).annotate({
+        identifier: "ChannelEngineVersionResponse",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
           Name: S.optional(S.String),
           Nodes: S.optional(__listOf__string),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         })
           .pipe(
             S.encodeKeys({ Name: "name", Nodes: "nodes", RequestId: "requestId", Tags: "tags" }),
@@ -16637,7 +17704,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "CreateChannelPlacementGroupRequest",
       });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -16661,7 +17732,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "CreateChannelPlacementGroupResponse",
       });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ComparisonOperator: S.optional(S.String),
@@ -16673,7 +17748,7 @@ function __c33(j: number): any {
           Name: S.optional(S.String),
           Period: S.optional(S.Number),
           Statistic: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           TargetResourceType: S.optional(S.String),
           Threshold: S.optional(S.Number),
           TreatMissingData: S.optional(S.String),
@@ -16712,7 +17787,7 @@ function __c33(j: number): any {
       });
   }
 }
-function __c34(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16730,7 +17805,7 @@ function __c34(j: number): any {
           Name: S.optional(S.String),
           Period: S.optional(S.Number),
           Statistic: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           TargetResourceType: S.optional(S.String),
           Threshold: S.optional(S.Number),
           TreatMissingData: S.optional(S.String),
@@ -16758,12 +17833,16 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "CreateCloudWatchAlarmTemplateResponse",
       });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
           Name: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
         })
           .pipe(
@@ -16787,7 +17866,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "CreateCloudWatchAlarmTemplateGroupRequest",
       });
-    case 2:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -16796,7 +17879,7 @@ function __c34(j: number): any {
           Id: S.optional(S.String),
           ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Name: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -16811,39 +17894,19 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "CreateCloudWatchAlarmTemplateGroupResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          LogicalInterfaceName: S.optional(S.String),
-          NetworkId: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({ LogicalInterfaceName: "logicalInterfaceName", NetworkId: "networkId" }),
-        ),
-      ).annotate({
-        identifier: "InterfaceMappingCreateRequest",
-      });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DefaultRoute: S.optional(S.String),
-          InterfaceMappings: S.optional(__listOfInterfaceMappingCreateRequest),
-        }).pipe(
-          S.encodeKeys({ DefaultRoute: "defaultRoute", InterfaceMappings: "interfaceMappings" }),
-        ),
-      ).annotate({
-        identifier: "ClusterNetworkSettingsCreateRequest",
-      });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterType: S.optional(S.String),
           InstanceRoleArn: S.optional(S.String),
           Name: S.optional(S.String),
-          NetworkSettings: S.optional(__S(277, __c34, 5)),
+          NetworkSettings: S.optional(__S(2178, __c68, 2)),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         })
           .pipe(
             S.encodeKeys({
@@ -16859,7 +17922,11 @@ function __c34(j: number): any {
             T.all(T.Http({ method: "POST", uri: "/prod/clusters" }), svc, auth, proto, ver, rules),
           ),
       ).annotate({ identifier: "CreateClusterRequest" });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LogicalInterfaceName: S.optional(S.String),
@@ -16867,23 +17934,27 @@ function __c34(j: number): any {
         }).pipe(
           S.encodeKeys({ LogicalInterfaceName: "logicalInterfaceName", NetworkId: "networkId" }),
         ),
-      ).annotate({ identifier: "InterfaceMapping" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(279, __c34, 7));
+      ).annotate({
+        identifier: "InterfaceMappingCreateRequest",
+      });
     case 1:
+      return S.Array(__S(2176, __c68, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           DefaultRoute: S.optional(S.String),
-          InterfaceMappings: S.optional(__listOfInterfaceMapping),
+          InterfaceMappings: S.optional(__listOfInterfaceMappingCreateRequest),
         }).pipe(
           S.encodeKeys({ DefaultRoute: "defaultRoute", InterfaceMappings: "interfaceMappings" }),
         ),
-      ).annotate({ identifier: "ClusterNetworkSettings" });
-    case 2:
+      ).annotate({
+        identifier: "ClusterNetworkSettingsCreateRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -16892,7 +17963,7 @@ function __c35(j: number): any {
           Id: S.optional(S.String),
           InstanceRoleArn: S.optional(S.String),
           Name: S.optional(S.String),
-          NetworkSettings: S.optional(__S(281, __c35, 1)),
+          NetworkSettings: S.optional(__S(2242, __c70, 2)),
           State: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -16907,15 +17978,35 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateClusterResponse" });
-    case 3:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String) }).pipe(S.encodeKeys({ Arn: "arn" })),
-      ).annotate({
-        identifier: "EventBridgeRuleTemplateTarget",
-      });
-    case 4:
-      return S.Array(__S(283, __c35, 3));
-    case 5:
+        S.Struct({
+          LogicalInterfaceName: S.optional(S.String),
+          NetworkId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({ LogicalInterfaceName: "logicalInterfaceName", NetworkId: "networkId" }),
+        ),
+      ).annotate({ identifier: "InterfaceMapping" });
+    case 1:
+      return S.Array(__S(2240, __c70, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DefaultRoute: S.optional(S.String),
+          InterfaceMappings: S.optional(__listOfInterfaceMapping),
+        }).pipe(
+          S.encodeKeys({ DefaultRoute: "defaultRoute", InterfaceMappings: "interfaceMappings" }),
+        ),
+      ).annotate({ identifier: "ClusterNetworkSettings" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
@@ -16923,7 +18014,7 @@ function __c35(j: number): any {
           EventType: S.optional(S.String),
           GroupIdentifier: S.optional(S.String),
           Name: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
         })
           .pipe(
@@ -16950,7 +18041,19 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "CreateEventBridgeRuleTemplateRequest",
       });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.optional(S.String) }).pipe(S.encodeKeys({ Arn: "arn" })),
+      ).annotate({
+        identifier: "EventBridgeRuleTemplateTarget",
+      });
+    case 1:
+      return S.Array(__S(2304, __c72, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -16962,7 +18065,7 @@ function __c35(j: number): any {
           Id: S.optional(S.String),
           ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Name: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -16980,12 +18083,16 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "CreateEventBridgeRuleTemplateResponse",
       });
-    case 7:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
           Name: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
         })
           .pipe(
@@ -17011,194 +18118,15 @@ function __c35(j: number): any {
       });
   }
 }
-function __c36(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Cidr: S.optional(S.String), Gateway: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Cidr: "cidr", Gateway: "gateway" }),
-        ),
-      ).annotate({
-        identifier: "InputRequestDestinationRoute",
-      });
-    case 1:
-      return S.Array(__S(288, __c36, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          StreamName: S.optional(S.String),
-          Network: S.optional(S.String),
-          NetworkRoutes: S.optional(__listOfInputRequestDestinationRoute),
-          StaticIpAddress: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            StreamName: "streamName",
-            Network: "network",
-            NetworkRoutes: "networkRoutes",
-            StaticIpAddress: "staticIpAddress",
-          }),
-        ),
-      ).annotate({ identifier: "InputDestinationRequest" });
-    case 3:
-      return S.Array(__S(290, __c36, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Id: S.optional(S.String) }).pipe(S.encodeKeys({ Id: "id" })),
-      ).annotate({ identifier: "InputDeviceSettings" });
-    case 5:
-      return S.Array(__S(292, __c36, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ FlowArn: S.optional(S.String) }).pipe(S.encodeKeys({ FlowArn: "flowArn" })),
-      ).annotate({ identifier: "MediaConnectFlowRequest" });
-    case 7:
-      return S.Array(__S(294, __c36, 6));
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          PasswordParam: S.optional(S.String),
-          Url: S.optional(S.String),
-          Username: S.optional(S.String),
-        }).pipe(S.encodeKeys({ PasswordParam: "passwordParam", Url: "url", Username: "username" })),
-      ).annotate({ identifier: "InputSourceRequest" });
-    case 1:
-      return S.Array(__S(296, __c37, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           SecurityGroupIds: S.optional(__listOf__string),
           SubnetIds: S.optional(__listOf__string),
         }).pipe(S.encodeKeys({ SecurityGroupIds: "securityGroupIds", SubnetIds: "subnetIds" })),
       ).annotate({ identifier: "InputVpcRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Algorithm: S.optional(S.String),
-          PassphraseSecretArn: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({ Algorithm: "algorithm", PassphraseSecretArn: "passphraseSecretArn" }),
-        ),
-      ).annotate({
-        identifier: "SrtCallerDecryptionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Decryption: S.optional(__S(299, __c37, 3)),
-          MinimumLatency: S.optional(S.Number),
-          SrtListenerAddress: S.optional(S.String),
-          SrtListenerPort: S.optional(S.String),
-          StreamId: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Decryption: "decryption",
-            MinimumLatency: "minimumLatency",
-            SrtListenerAddress: "srtListenerAddress",
-            SrtListenerPort: "srtListenerPort",
-            StreamId: "streamId",
-          }),
-        ),
-      ).annotate({ identifier: "SrtCallerSourceRequest" });
-    case 5:
-      return S.Array(__S(300, __c37, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Decryption: S.optional(__S(299, __c37, 3)),
-          MinimumLatency: S.optional(S.Number),
-          StreamId: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Decryption: "decryption",
-            MinimumLatency: "minimumLatency",
-            StreamId: "streamId",
-          }),
-        ),
-      ).annotate({
-        identifier: "SrtListenerSettingsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          SrtCallerSources: S.optional(__listOfSrtCallerSourceRequest),
-          SrtListenerSettings: S.optional(__S(302, __c37, 6)),
-        }).pipe(
-          S.encodeKeys({
-            SrtCallerSources: "srtCallerSources",
-            SrtListenerSettings: "srtListenerSettings",
-          }),
-        ),
-      ).annotate({ identifier: "SrtSettingsRequest" });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ SourceIp: S.optional(S.String), Url: S.optional(S.String) }).pipe(
-          S.encodeKeys({ SourceIp: "sourceIp", Url: "url" }),
-        ),
-      ).annotate({
-        identifier: "MulticastSourceCreateRequest",
-      });
-    case 1:
-      return S.Array(__S(304, __c38, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Sources: S.optional(__listOfMulticastSourceCreateRequest) }).pipe(
-          S.encodeKeys({ Sources: "sources" }),
-        ),
-      ).annotate({
-        identifier: "MulticastSettingsCreateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ MediaIndex: S.optional(S.Number), SdpUrl: S.optional(S.String) }).pipe(
-          S.encodeKeys({ MediaIndex: "mediaIndex", SdpUrl: "sdpUrl" }),
-        ),
-      ).annotate({ identifier: "InputSdpLocation" });
-    case 4:
-      return S.Array(__S(307, __c38, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AncillarySdps: S.optional(__listOfInputSdpLocation),
-          AudioSdps: S.optional(__listOfInputSdpLocation),
-          VideoSdp: S.optional(__S(307, __c38, 3)),
-        }).pipe(
-          S.encodeKeys({
-            AncillarySdps: "ancillarySdps",
-            AudioSdps: "audioSdps",
-            VideoSdp: "videoSdp",
-          }),
-        ),
-      ).annotate({
-        identifier: "Smpte2110ReceiverGroupSdpSettings",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ SdpSettings: S.optional(__S(309, __c38, 5)) }).pipe(
-          S.encodeKeys({ SdpSettings: "sdpSettings" }),
-        ),
-      ).annotate({ identifier: "Smpte2110ReceiverGroup" });
-    case 7:
-      return S.Array(__S(310, __c38, 6));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Smpte2110ReceiverGroups: S.optional(__listOfSmpte2110ReceiverGroup) }).pipe(
-          S.encodeKeys({ Smpte2110ReceiverGroups: "smpte2110ReceiverGroups" }),
-        ),
-      ).annotate({
-        identifier: "Smpte2110ReceiverGroupSettings",
-      });
     case 1:
       return S.suspend(() =>
         S.Struct({ AvailabilityZoneName: S.optional(S.String) }).pipe(
@@ -17208,7 +18136,7 @@ function __c39(j: number): any {
         identifier: "RouterDestinationSettings",
       });
     case 2:
-      return S.Array(__S(313, __c39, 1));
+      return S.Array(__S(2369, __c74, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -17234,15 +18162,15 @@ function __c39(j: number): any {
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
           RoleArn: S.optional(S.String),
           Sources: S.optional(__listOfInputSourceRequest),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           Type: S.optional(S.String),
-          Vpc: S.optional(__S(298, __c37, 2)),
-          SrtSettings: S.optional(__S(303, __c37, 7)),
+          Vpc: S.optional(__S(2368, __c74, 0)),
+          SrtSettings: S.optional(__S(2408, __c75, 8)),
           InputNetworkLocation: S.optional(S.String),
-          MulticastSettings: S.optional(__S(306, __c38, 2)),
-          Smpte2110ReceiverGroupSettings: S.optional(__S(312, __c39, 0)),
+          MulticastSettings: S.optional(__S(2411, __c75, 11)),
+          Smpte2110ReceiverGroupSettings: S.optional(__S(2475, __c77, 11)),
           SdiSources: S.optional(InputSdiSources),
-          RouterSettings: S.optional(__S(315, __c39, 3)),
+          RouterSettings: S.optional(__S(2371, __c74, 3)),
         })
           .pipe(
             S.encodeKeys({
@@ -17269,7 +18197,200 @@ function __c39(j: number): any {
             T.all(T.Http({ method: "POST", uri: "/prod/inputs" }), svc, auth, proto, ver, rules),
           ),
       ).annotate({ identifier: "CreateInputRequest" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Cidr: S.optional(S.String), Gateway: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Cidr: "cidr", Gateway: "gateway" }),
+        ),
+      ).annotate({
+        identifier: "InputRequestDestinationRoute",
+      });
+    case 1:
+      return S.Array(__S(2400, __c75, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StreamName: S.optional(S.String),
+          Network: S.optional(S.String),
+          NetworkRoutes: S.optional(__listOfInputRequestDestinationRoute),
+          StaticIpAddress: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            StreamName: "streamName",
+            Network: "network",
+            NetworkRoutes: "networkRoutes",
+            StaticIpAddress: "staticIpAddress",
+          }),
+        ),
+      ).annotate({ identifier: "InputDestinationRequest" });
+    case 3:
+      return S.Array(__S(2402, __c75, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Algorithm: S.optional(S.String),
+          PassphraseSecretArn: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({ Algorithm: "algorithm", PassphraseSecretArn: "passphraseSecretArn" }),
+        ),
+      ).annotate({
+        identifier: "SrtCallerDecryptionRequest",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Decryption: S.optional(__S(2404, __c75, 4)),
+          MinimumLatency: S.optional(S.Number),
+          SrtListenerAddress: S.optional(S.String),
+          SrtListenerPort: S.optional(S.String),
+          StreamId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Decryption: "decryption",
+            MinimumLatency: "minimumLatency",
+            SrtListenerAddress: "srtListenerAddress",
+            SrtListenerPort: "srtListenerPort",
+            StreamId: "streamId",
+          }),
+        ),
+      ).annotate({ identifier: "SrtCallerSourceRequest" });
+    case 6:
+      return S.Array(__S(2405, __c75, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Decryption: S.optional(__S(2404, __c75, 4)),
+          MinimumLatency: S.optional(S.Number),
+          StreamId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Decryption: "decryption",
+            MinimumLatency: "minimumLatency",
+            StreamId: "streamId",
+          }),
+        ),
+      ).annotate({
+        identifier: "SrtListenerSettingsRequest",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          SrtCallerSources: S.optional(__listOfSrtCallerSourceRequest),
+          SrtListenerSettings: S.optional(__S(2407, __c75, 7)),
+        }).pipe(
+          S.encodeKeys({
+            SrtCallerSources: "srtCallerSources",
+            SrtListenerSettings: "srtListenerSettings",
+          }),
+        ),
+      ).annotate({ identifier: "SrtSettingsRequest" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({ SourceIp: S.optional(S.String), Url: S.optional(S.String) }).pipe(
+          S.encodeKeys({ SourceIp: "sourceIp", Url: "url" }),
+        ),
+      ).annotate({
+        identifier: "MulticastSourceCreateRequest",
+      });
+    case 10:
+      return S.Array(__S(2409, __c75, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({ Sources: S.optional(__listOfMulticastSourceCreateRequest) }).pipe(
+          S.encodeKeys({ Sources: "sources" }),
+        ),
+      ).annotate({
+        identifier: "MulticastSettingsCreateRequest",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({ Input: S.optional(__S(2490, __c77, 26)) }).pipe(
+          S.encodeKeys({ Input: "input" }),
+        ),
+      ).annotate({ identifier: "CreateInputResponse" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Cidr: S.optional(S.String), Gateway: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Cidr: "cidr", Gateway: "gateway" }),
+        ),
+      ).annotate({ identifier: "InputDestinationRoute" });
+    case 1:
+      return S.Array(__S(2432, __c76, 0));
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Id: S.optional(S.String) }).pipe(S.encodeKeys({ Id: "id" })),
+      ).annotate({ identifier: "InputDeviceSettings" });
+    case 1:
+      return S.Array(__S(2464, __c77, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ FlowArn: S.optional(S.String) }).pipe(S.encodeKeys({ FlowArn: "flowArn" })),
+      ).annotate({ identifier: "MediaConnectFlowRequest" });
+    case 3:
+      return S.Array(__S(2466, __c77, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          PasswordParam: S.optional(S.String),
+          Url: S.optional(S.String),
+          Username: S.optional(S.String),
+        }).pipe(S.encodeKeys({ PasswordParam: "passwordParam", Url: "url", Username: "username" })),
+      ).annotate({ identifier: "InputSourceRequest" });
+    case 5:
+      return S.Array(__S(2468, __c77, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ MediaIndex: S.optional(S.Number), SdpUrl: S.optional(S.String) }).pipe(
+          S.encodeKeys({ MediaIndex: "mediaIndex", SdpUrl: "sdpUrl" }),
+        ),
+      ).annotate({ identifier: "InputSdpLocation" });
+    case 7:
+      return S.Array(__S(2470, __c77, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          AncillarySdps: S.optional(__listOfInputSdpLocation),
+          AudioSdps: S.optional(__listOfInputSdpLocation),
+          VideoSdp: S.optional(__S(2470, __c77, 6)),
+        }).pipe(
+          S.encodeKeys({
+            AncillarySdps: "ancillarySdps",
+            AudioSdps: "audioSdps",
+            VideoSdp: "videoSdp",
+          }),
+        ),
+      ).annotate({
+        identifier: "Smpte2110ReceiverGroupSdpSettings",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({ SdpSettings: S.optional(__S(2472, __c77, 8)) }).pipe(
+          S.encodeKeys({ SdpSettings: "sdpSettings" }),
+        ),
+      ).annotate({ identifier: "Smpte2110ReceiverGroup" });
+    case 10:
+      return S.Array(__S(2473, __c77, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({ Smpte2110ReceiverGroups: S.optional(__listOfSmpte2110ReceiverGroup) }).pipe(
+          S.encodeKeys({ Smpte2110ReceiverGroups: "smpte2110ReceiverGroups" }),
+        ),
+      ).annotate({
+        identifier: "Smpte2110ReceiverGroupSettings",
+      });
+    case 12:
       return S.suspend(() =>
         S.Struct({
           AvailabilityZone: S.optional(S.String),
@@ -17281,25 +18402,13 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InputDestinationVpc" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Cidr: S.optional(S.String), Gateway: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Cidr: "cidr", Gateway: "gateway" }),
-        ),
-      ).annotate({ identifier: "InputDestinationRoute" });
-    case 7:
-      return S.Array(__S(318, __c39, 6));
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           Ip: S.optional(S.String),
           Port: S.optional(S.String),
           Url: S.optional(S.String),
-          Vpc: S.optional(__S(317, __c39, 5)),
+          Vpc: S.optional(__S(2476, __c77, 12)),
           Network: S.optional(S.String),
           NetworkRoutes: S.optional(__listOfInputDestinationRoute),
         }).pipe(
@@ -17313,9 +18422,9 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InputDestination" });
-    case 1:
-      return S.Array(__S(320, __c40, 0));
-    case 2:
+    case 14:
+      return S.Array(__S(2477, __c77, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           Algorithm: S.optional(S.String),
@@ -17324,10 +18433,10 @@ function __c40(j: number): any {
           S.encodeKeys({ Algorithm: "algorithm", PassphraseSecretArn: "passphraseSecretArn" }),
         ),
       ).annotate({ identifier: "SrtCallerDecryption" });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          Decryption: S.optional(__S(322, __c40, 2)),
+          Decryption: S.optional(__S(2479, __c77, 15)),
           MinimumLatency: S.optional(S.Number),
           SrtListenerAddress: S.optional(S.String),
           SrtListenerPort: S.optional(S.String),
@@ -17342,12 +18451,12 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SrtCallerSource" });
-    case 4:
-      return S.Array(__S(323, __c40, 3));
-    case 5:
+    case 17:
+      return S.Array(__S(2480, __c77, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          Decryption: S.optional(__S(322, __c40, 2)),
+          Decryption: S.optional(__S(2479, __c77, 15)),
           MinimumLatency: S.optional(S.Number),
           StreamId: S.optional(S.String),
         }).pipe(
@@ -17358,11 +18467,11 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SrtListenerSettings" });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           SrtCallerSources: S.optional(__listOfSrtCallerSource),
-          SrtListenerSettings: S.optional(__S(325, __c40, 5)),
+          SrtListenerSettings: S.optional(__S(2482, __c77, 18)),
         }).pipe(
           S.encodeKeys({
             SrtCallerSources: "srtCallerSources",
@@ -17370,25 +18479,21 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SrtSettings" });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({ SourceIp: S.optional(S.String), Url: S.optional(S.String) }).pipe(
           S.encodeKeys({ SourceIp: "sourceIp", Url: "url" }),
         ),
       ).annotate({ identifier: "MulticastSource" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(327, __c40, 7));
-    case 1:
+    case 21:
+      return S.Array(__S(2484, __c77, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({ Sources: S.optional(__listOfMulticastSource) }).pipe(
           S.encodeKeys({ Sources: "sources" }),
         ),
       ).annotate({ identifier: "MulticastSettings" });
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           AvailabilityZoneName: S.optional(S.String),
@@ -17400,9 +18505,9 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RouterDestination" });
-    case 3:
-      return S.Array(__S(330, __c41, 2));
-    case 4:
+    case 24:
+      return S.Array(__S(2487, __c77, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           Destinations: S.optional(__listOfRouterDestination),
@@ -17416,7 +18521,7 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RouterInputSettings" });
-    case 5:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -17433,14 +18538,14 @@ function __c41(j: number): any {
           SecurityGroups: S.optional(__listOf__string),
           Sources: S.optional(__listOfInputSource),
           State: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           Type: S.optional(S.String),
-          SrtSettings: S.optional(__S(326, __c40, 6)),
+          SrtSettings: S.optional(__S(2483, __c77, 19)),
           InputNetworkLocation: S.optional(S.String),
-          MulticastSettings: S.optional(__S(329, __c41, 1)),
-          Smpte2110ReceiverGroupSettings: S.optional(__S(312, __c39, 0)),
+          MulticastSettings: S.optional(__S(2486, __c77, 22)),
+          Smpte2110ReceiverGroupSettings: S.optional(__S(2475, __c77, 11)),
           SdiSources: S.optional(InputSdiSources),
-          RouterSettings: S.optional(__S(332, __c41, 4)),
+          RouterSettings: S.optional(__S(2489, __c77, 25)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -17468,24 +18573,14 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Input" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Input: S.optional(__S(333, __c41, 5)) }).pipe(S.encodeKeys({ Input: "input" })),
-      ).annotate({ identifier: "CreateInputResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Cidr: S.optional(S.String) }).pipe(S.encodeKeys({ Cidr: "cidr" })),
-      ).annotate({ identifier: "InputWhitelistRuleCidr" });
   }
 }
-function __c42(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(335, __c41, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           WhitelistRules: S.optional(__listOfInputWhitelistRuleCidr),
         })
           .pipe(S.encodeKeys({ Tags: "tags", WhitelistRules: "whitelistRules" }))
@@ -17502,14 +18597,40 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "CreateInputSecurityGroupRequest",
       });
-    case 2:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SecurityGroup: S.optional(__S(2592, __c81, 0)) }).pipe(
+          S.encodeKeys({ SecurityGroup: "securityGroup" }),
+        ),
+      ).annotate({
+        identifier: "CreateInputSecurityGroupResponse",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Cidr: S.optional(S.String) }).pipe(S.encodeKeys({ Cidr: "cidr" })),
+      ).annotate({ identifier: "InputWhitelistRuleCidr" });
+    case 1:
+      return S.Array(__S(2560, __c80, 0));
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           Id: S.optional(S.String),
           Inputs: S.optional(__listOf__string),
           State: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           WhitelistRules: S.optional(__listOfInputWhitelistRule),
           Channels: S.optional(__listOf__string),
         }).pipe(
@@ -17524,38 +18645,18 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InputSecurityGroup" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ SecurityGroup: S.optional(__S(338, __c42, 2)) }).pipe(
-          S.encodeKeys({ SecurityGroup: "securityGroup" }),
-        ),
-      ).annotate({
-        identifier: "CreateInputSecurityGroupResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MaximumVideoBufferDelayMilliseconds: S.optional(S.Number),
-          TransportStreamBitrate: S.optional(S.Number),
-          TransportStreamId: S.optional(S.Number),
-          TransportStreamReservedBitrate: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            MaximumVideoBufferDelayMilliseconds: "maximumVideoBufferDelayMilliseconds",
-            TransportStreamBitrate: "transportStreamBitrate",
-            TransportStreamId: "transportStreamId",
-            TransportStreamReservedBitrate: "transportStreamReservedBitrate",
-          }),
-        ),
-      ).annotate({ identifier: "MultiplexSettings" });
-    case 5:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AvailabilityZones: S.optional(__listOf__string),
-          MultiplexSettings: S.optional(__S(340, __c42, 4)),
+          MultiplexSettings: S.optional(__S(2720, __c85, 0)),
           Name: S.optional(S.String),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         })
           .pipe(
             S.encodeKeys({
@@ -17577,41 +18678,33 @@ function __c42(j: number): any {
             ),
           ),
       ).annotate({ identifier: "CreateMultiplexRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ EntitlementArn: S.optional(S.String) }).pipe(
-          S.encodeKeys({ EntitlementArn: "entitlementArn" }),
-        ),
-      ).annotate({
-        identifier: "MultiplexMediaConnectOutputDestinationSettings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          MediaConnectSettings: S.optional(__S(342, __c42, 6)),
-        }).pipe(S.encodeKeys({ MediaConnectSettings: "mediaConnectSettings" })),
-      ).annotate({
-        identifier: "MultiplexOutputDestination",
-      });
   }
 }
-function __c43(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(343, __c42, 7));
-    case 1:
+      return S.suspend(() =>
+        S.Struct({ Multiplex: S.optional(__S(2688, __c84, 0)) }).pipe(
+          S.encodeKeys({ Multiplex: "multiplex" }),
+        ),
+      ).annotate({ identifier: "CreateMultiplexResponse" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           AvailabilityZones: S.optional(__listOf__string),
           Destinations: S.optional(__listOfMultiplexOutputDestination),
           Id: S.optional(S.String),
-          MultiplexSettings: S.optional(__S(340, __c42, 4)),
+          MultiplexSettings: S.optional(__S(2720, __c85, 0)),
           Name: S.optional(S.String),
           PipelinesRunningCount: S.optional(S.Number),
           ProgramCount: S.optional(S.Number),
           State: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -17627,66 +18720,53 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Multiplex" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaximumVideoBufferDelayMilliseconds: S.optional(S.Number),
+          TransportStreamBitrate: S.optional(S.Number),
+          TransportStreamId: S.optional(S.Number),
+          TransportStreamReservedBitrate: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            MaximumVideoBufferDelayMilliseconds: "maximumVideoBufferDelayMilliseconds",
+            TransportStreamBitrate: "transportStreamBitrate",
+            TransportStreamId: "transportStreamId",
+            TransportStreamReservedBitrate: "transportStreamReservedBitrate",
+          }),
+        ),
+      ).annotate({ identifier: "MultiplexSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EntitlementArn: S.optional(S.String) }).pipe(
+          S.encodeKeys({ EntitlementArn: "entitlementArn" }),
+        ),
+      ).annotate({
+        identifier: "MultiplexMediaConnectOutputDestinationSettings",
+      });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Multiplex: S.optional(__S(345, __c43, 1)) }).pipe(
-          S.encodeKeys({ Multiplex: "multiplex" }),
-        ),
-      ).annotate({ identifier: "CreateMultiplexResponse" });
+        S.Struct({
+          MediaConnectSettings: S.optional(__S(2721, __c85, 1)),
+        }).pipe(S.encodeKeys({ MediaConnectSettings: "mediaConnectSettings" })),
+      ).annotate({
+        identifier: "MultiplexOutputDestination",
+      });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ ProviderName: S.optional(S.String), ServiceName: S.optional(S.String) }).pipe(
-          S.encodeKeys({ ProviderName: "providerName", ServiceName: "serviceName" }),
-        ),
-      ).annotate({
-        identifier: "MultiplexProgramServiceDescriptor",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MaximumBitrate: S.optional(S.Number),
-          MinimumBitrate: S.optional(S.Number),
-          Priority: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            MaximumBitrate: "maximumBitrate",
-            MinimumBitrate: "minimumBitrate",
-            Priority: "priority",
-          }),
-        ),
-      ).annotate({
-        identifier: "MultiplexStatmuxVideoSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ConstantBitrate: S.optional(S.Number),
-          StatmuxSettings: S.optional(__S(348, __c43, 4)),
-        }).pipe(
-          S.encodeKeys({ ConstantBitrate: "constantBitrate", StatmuxSettings: "statmuxSettings" }),
-        ),
-      ).annotate({ identifier: "MultiplexVideoSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          PreferredChannelPipeline: S.optional(S.String),
-          ProgramNumber: S.optional(S.Number),
-          ServiceDescriptor: S.optional(__S(347, __c43, 3)),
-          VideoSettings: S.optional(__S(349, __c43, 5)),
-        }).pipe(
-          S.encodeKeys({
-            PreferredChannelPipeline: "preferredChannelPipeline",
-            ProgramNumber: "programNumber",
-            ServiceDescriptor: "serviceDescriptor",
-            VideoSettings: "videoSettings",
-          }),
-        ),
-      ).annotate({ identifier: "MultiplexProgramSettings" });
-    case 7:
+      return S.Array(__S(2722, __c85, 2));
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")),
-          MultiplexProgramSettings: S.optional(__S(350, __c43, 6)),
+          MultiplexProgramSettings: S.optional(__S(2851, __c89, 3)),
           ProgramName: S.optional(S.String),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
         })
@@ -17712,7 +18792,37 @@ function __c43(j: number): any {
       });
   }
 }
-function __c44(j: number): any {
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelId: S.optional(S.String),
+          MultiplexProgramSettings: S.optional(__S(2851, __c89, 3)),
+          PacketIdentifiersMap: S.optional(__S(2817, __c88, 1)),
+          PipelineDetails: S.optional(__listOfMultiplexProgramPipelineDetail),
+          ProgramName: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ChannelId: "channelId",
+            MultiplexProgramSettings: "multiplexProgramSettings",
+            PacketIdentifiersMap: "packetIdentifiersMap",
+            PipelineDetails: "pipelineDetails",
+            ProgramName: "programName",
+          }),
+        ),
+      ).annotate({ identifier: "MultiplexProgram" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ MultiplexProgram: S.optional(__S(2784, __c87, 0)) }).pipe(
+          S.encodeKeys({ MultiplexProgram: "multiplexProgram" }),
+        ),
+      ).annotate({
+        identifier: "CreateMultiplexProgramResponse",
+      });
+  }
+}
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Number);
@@ -17760,7 +18870,60 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "MultiplexProgramPacketIdentifiersMap",
       });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ProviderName: S.optional(S.String), ServiceName: S.optional(S.String) }).pipe(
+          S.encodeKeys({ ProviderName: "providerName", ServiceName: "serviceName" }),
+        ),
+      ).annotate({
+        identifier: "MultiplexProgramServiceDescriptor",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MaximumBitrate: S.optional(S.Number),
+          MinimumBitrate: S.optional(S.Number),
+          Priority: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            MaximumBitrate: "maximumBitrate",
+            MinimumBitrate: "minimumBitrate",
+            Priority: "priority",
+          }),
+        ),
+      ).annotate({
+        identifier: "MultiplexStatmuxVideoSettings",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ConstantBitrate: S.optional(S.Number),
+          StatmuxSettings: S.optional(__S(2849, __c89, 1)),
+        }).pipe(
+          S.encodeKeys({ ConstantBitrate: "constantBitrate", StatmuxSettings: "statmuxSettings" }),
+        ),
+      ).annotate({ identifier: "MultiplexVideoSettings" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          PreferredChannelPipeline: S.optional(S.String),
+          ProgramNumber: S.optional(S.Number),
+          ServiceDescriptor: S.optional(__S(2848, __c89, 0)),
+          VideoSettings: S.optional(__S(2850, __c89, 2)),
+        }).pipe(
+          S.encodeKeys({
+            PreferredChannelPipeline: "preferredChannelPipeline",
+            ProgramNumber: "programNumber",
+            ServiceDescriptor: "serviceDescriptor",
+            VideoSettings: "videoSettings",
+          }),
+        ),
+      ).annotate({ identifier: "MultiplexProgramSettings" });
+    case 4:
       return S.suspend(() =>
         S.Struct({
           ActiveChannelPipeline: S.optional(S.String),
@@ -17774,42 +18937,20 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "MultiplexProgramPipelineDetail",
       });
-    case 3:
-      return S.Array(__S(354, __c44, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelId: S.optional(S.String),
-          MultiplexProgramSettings: S.optional(__S(350, __c43, 6)),
-          PacketIdentifiersMap: S.optional(__S(353, __c44, 1)),
-          PipelineDetails: S.optional(__listOfMultiplexProgramPipelineDetail),
-          ProgramName: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ChannelId: "channelId",
-            MultiplexProgramSettings: "multiplexProgramSettings",
-            PacketIdentifiersMap: "packetIdentifiersMap",
-            PipelineDetails: "pipelineDetails",
-            ProgramName: "programName",
-          }),
-        ),
-      ).annotate({ identifier: "MultiplexProgram" });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ MultiplexProgram: S.optional(__S(356, __c44, 4)) }).pipe(
-          S.encodeKeys({ MultiplexProgram: "multiplexProgram" }),
-        ),
-      ).annotate({
-        identifier: "CreateMultiplexProgramResponse",
-      });
-    case 6:
+      return S.Array(__S(2852, __c89, 4));
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IpPools: S.optional(__listOfIpPoolCreateRequest),
           Name: S.optional(S.String),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
           Routes: S.optional(__listOfRouteCreateRequest),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         })
           .pipe(
             S.encodeKeys({
@@ -17824,7 +18965,11 @@ function __c44(j: number): any {
             T.all(T.Http({ method: "POST", uri: "/prod/networks" }), svc, auth, proto, ver, rules),
           ),
       ).annotate({ identifier: "CreateNetworkRequest" });
-    case 7:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -17848,7 +18993,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "CreateNetworkResponse" });
   }
 }
-function __c45(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17867,7 +19012,7 @@ function __c45(j: number): any {
         identifier: "NodeInterfaceMappingCreateRequest",
       });
     case 1:
-      return S.Array(__S(360, __c45, 0));
+      return S.Array(__S(2944, __c92, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -17876,7 +19021,7 @@ function __c45(j: number): any {
           NodeInterfaceMappings: S.optional(__listOfNodeInterfaceMappingCreateRequest),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
           Role: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         })
           .pipe(
             S.encodeKeys({
@@ -17898,7 +19043,11 @@ function __c45(j: number): any {
             ),
           ),
       ).annotate({ identifier: "CreateNodeRequest" });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LogicalInterfaceName: S.optional(S.String),
@@ -17914,25 +19063,13 @@ function __c45(j: number): any {
           }),
         ),
       ).annotate({ identifier: "NodeInterfaceMapping" });
-    case 4:
-      return S.Array(__S(363, __c45, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          CardNumber: S.optional(S.Number),
-          ChannelNumber: S.optional(S.Number),
-          SdiSource: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            CardNumber: "cardNumber",
-            ChannelNumber: "channelNumber",
-            SdiSource: "sdiSource",
-          }),
-        ),
-      ).annotate({ identifier: "SdiSourceMapping" });
-    case 6:
-      return S.Array(__S(365, __c45, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(2976, __c93, 0));
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -17945,7 +19082,7 @@ function __c45(j: number): any {
           NodeInterfaceMappings: S.optional(__listOfNodeInterfaceMapping),
           Role: S.optional(S.String),
           State: S.optional(S.String),
-          SdiSourceMappings: S.optional(__S(366, __c45, 6)),
+          SdiSourceMappings: S.optional(__S(3041, __c95, 1)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -17964,7 +19101,27 @@ function __c45(j: number): any {
       ).annotate({ identifier: "CreateNodeResponse" });
   }
 }
-function __c46(j: number): any {
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CardNumber: S.optional(S.Number),
+          ChannelNumber: S.optional(S.Number),
+          SdiSource: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            CardNumber: "cardNumber",
+            ChannelNumber: "channelNumber",
+            SdiSource: "sdiSource",
+          }),
+        ),
+      ).annotate({ identifier: "SdiSourceMapping" });
+    case 1:
+      return S.Array(__S(3040, __c95, 0));
+  }
+}
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18006,12 +19163,16 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "CreateNodeRegistrationScriptResponse",
       });
-    case 2:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           InputId: S.String.pipe(T.HttpLabel("InputId")),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         })
           .pipe(S.encodeKeys({ RequestId: "requestId", Tags: "tags" }))
           .pipe(
@@ -18027,19 +19188,25 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "CreatePartnerInputRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Input: S.optional(__S(333, __c41, 5)) }).pipe(S.encodeKeys({ Input: "input" })),
+        S.Struct({ Input: S.optional(__S(2490, __c77, 26)) }).pipe(
+          S.encodeKeys({ Input: "input" }),
+        ),
       ).annotate({
         identifier: "CreatePartnerInputResponse",
       });
-    case 4:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Mode: S.optional(S.String),
           Name: S.optional(S.String),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           Type: S.optional(S.String),
         })
           .pipe(
@@ -18062,7 +19229,21 @@ function __c46(j: number): any {
             ),
           ),
       ).annotate({ identifier: "CreateSdiSourceRequest" });
-    case 5:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SdiSource: S.optional(__S(3200, __c100, 0)) }).pipe(
+          S.encodeKeys({ SdiSource: "sdiSource" }),
+        ),
+      ).annotate({ identifier: "CreateSdiSourceResponse" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -18084,13 +19265,11 @@ function __c46(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SdiSource" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ SdiSource: S.optional(__S(373, __c46, 5)) }).pipe(
-          S.encodeKeys({ SdiSource: "sdiSource" }),
-        ),
-      ).annotate({ identifier: "CreateSdiSourceResponse" });
-    case 7:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CloudWatchAlarmTemplateGroupIdentifiers: S.optional(__listOf__stringPatternS),
@@ -18098,7 +19277,7 @@ function __c46(j: number): any {
           DiscoveryEntryPointArn: S.optional(S.String),
           EventBridgeRuleTemplateGroupIdentifiers: S.optional(__listOf__stringPatternS),
           Name: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
         })
           .pipe(
@@ -18125,50 +19304,9 @@ function __c46(j: number): any {
       ).annotate({ identifier: "CreateSignalMapRequest" });
   }
 }
-function __c47(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Arn: "arn", Name: "name" }),
-        ),
-      ).annotate({ identifier: "MediaResourceNeighbor" });
-    case 1:
-      return S.Array(__S(376, __c47, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Destinations: S.optional(__listOfMediaResourceNeighbor),
-          Name: S.optional(S.String),
-          Sources: S.optional(__listOfMediaResourceNeighbor),
-        }).pipe(S.encodeKeys({ Destinations: "destinations", Name: "name", Sources: "sources" })),
-      ).annotate({ identifier: "MediaResource" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(378, __c47, 2).pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DetailsUri: S.optional(S.String),
-          Status: S.optional(S.String),
-        }).pipe(S.encodeKeys({ DetailsUri: "detailsUri", Status: "status" })),
-      ).annotate({
-        identifier: "SuccessfulMonitorDeployment",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DetailsUri: S.optional(S.String),
-          ErrorMessage: S.optional(S.String),
-          Status: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            DetailsUri: "detailsUri",
-            ErrorMessage: "errorMessage",
-            Status: "status",
-          }),
-        ),
-      ).annotate({ identifier: "MonitorDeployment" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -18178,17 +19316,17 @@ function __c47(j: number): any {
           DiscoveryEntryPointArn: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
           EventBridgeRuleTemplateGroupIds: S.optional(__listOf__stringMin7Max11PatternAws097),
-          FailedMediaResourceMap: S.optional(__S(379, __c47, 3)),
+          FailedMediaResourceMap: S.optional(__S(3299, __c103, 3)),
           Id: S.optional(S.String),
           LastDiscoveredAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          LastSuccessfulMonitorDeployment: S.optional(__S(380, __c47, 4)),
-          MediaResourceMap: S.optional(__S(379, __c47, 3)),
+          LastSuccessfulMonitorDeployment: S.optional(__S(3300, __c103, 4)),
+          MediaResourceMap: S.optional(__S(3299, __c103, 3)),
           ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           MonitorChangesPendingDeployment: S.optional(S.Boolean),
-          MonitorDeployment: S.optional(__S(381, __c47, 5)),
+          MonitorDeployment: S.optional(__S(3301, __c103, 5)),
           Name: S.optional(S.String),
           Status: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -18212,11 +19350,60 @@ function __c47(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSignalMapResponse" });
-    case 7:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Arn: "arn", Name: "name" }),
+        ),
+      ).annotate({ identifier: "MediaResourceNeighbor" });
+    case 1:
+      return S.Array(__S(3296, __c103, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Destinations: S.optional(__listOfMediaResourceNeighbor),
+          Name: S.optional(S.String),
+          Sources: S.optional(__listOfMediaResourceNeighbor),
+        }).pipe(S.encodeKeys({ Destinations: "destinations", Name: "name", Sources: "sources" })),
+      ).annotate({ identifier: "MediaResource" });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ __S(3298, __c103, 2).pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          DetailsUri: S.optional(S.String),
+          Status: S.optional(S.String),
+        }).pipe(S.encodeKeys({ DetailsUri: "detailsUri", Status: "status" })),
+      ).annotate({
+        identifier: "SuccessfulMonitorDeployment",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          DetailsUri: S.optional(S.String),
+          ErrorMessage: S.optional(S.String),
+          Status: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            DetailsUri: "detailsUri",
+            ErrorMessage: "errorMessage",
+            Status: "status",
+          }),
+        ),
+      ).annotate({ identifier: "MonitorDeployment" });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
@@ -18232,7 +19419,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "CreateTagsRequest" });
   }
 }
-function __c48(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18247,7 +19434,11 @@ function __c48(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteChannelRequest" });
-    case 1:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelPlacementGroupId: S.String.pipe(T.HttpLabel("ChannelPlacementGroupId")),
@@ -18268,7 +19459,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "DeleteChannelPlacementGroupRequest",
       });
-    case 2:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
           T.all(
@@ -18283,7 +19478,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "DeleteCloudWatchAlarmTemplateRequest",
       });
-    case 3:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
           T.all(
@@ -18301,7 +19500,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "DeleteCloudWatchAlarmTemplateGroupRequest",
       });
-    case 4:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClusterId: S.String.pipe(T.HttpLabel("ClusterId")) }).pipe(
           T.all(
@@ -18314,7 +19517,11 @@ function __c48(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteClusterRequest" });
-    case 5:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
           T.all(
@@ -18329,7 +19536,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "DeleteEventBridgeRuleTemplateRequest",
       });
-    case 6:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
           T.all(
@@ -18347,7 +19558,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "DeleteEventBridgeRuleTemplateGroupRequest",
       });
-    case 7:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ InputId: S.String.pipe(T.HttpLabel("InputId")) }).pipe(
           T.all(
@@ -18362,7 +19577,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "DeleteInputRequest" });
   }
 }
-function __c49(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18379,7 +19594,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "DeleteInputSecurityGroupRequest",
       });
-    case 1:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")) }).pipe(
           T.all(
@@ -18392,7 +19611,11 @@ function __c49(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteMultiplexRequest" });
-    case 2:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")),
@@ -18413,12 +19636,16 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "DeleteMultiplexProgramRequest",
       });
-    case 3:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelId: S.optional(S.String),
-          MultiplexProgramSettings: S.optional(__S(350, __c43, 6)),
-          PacketIdentifiersMap: S.optional(__S(353, __c44, 1)),
+          MultiplexProgramSettings: S.optional(__S(2851, __c89, 3)),
+          PacketIdentifiersMap: S.optional(__S(2817, __c88, 1)),
           PipelineDetails: S.optional(__listOfMultiplexProgramPipelineDetail),
           ProgramName: S.optional(S.String),
         }).pipe(
@@ -18433,7 +19660,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "DeleteMultiplexProgramResponse",
       });
-    case 4:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NetworkId: S.String.pipe(T.HttpLabel("NetworkId")) }).pipe(
           T.all(
@@ -18446,7 +19677,11 @@ function __c49(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteNetworkRequest" });
-    case 5:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
@@ -18462,7 +19697,11 @@ function __c49(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteNodeRequest" });
-    case 6:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ReservationId: S.String.pipe(T.HttpLabel("ReservationId")) }).pipe(
           T.all(
@@ -18475,18 +19714,9 @@ function __c49(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteReservationRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AutomaticRenewal: S.optional(S.String),
-          RenewalCount: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({ AutomaticRenewal: "automaticRenewal", RenewalCount: "renewalCount" }),
-        ),
-      ).annotate({ identifier: "RenewalSettings" });
   }
 }
-function __c50(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18514,7 +19744,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ReservationResourceSpecification",
       });
-    case 1:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -18529,12 +19763,12 @@ function __c50(j: number): any {
           OfferingId: S.optional(S.String),
           OfferingType: S.optional(S.String),
           Region: S.optional(S.String),
-          RenewalSettings: S.optional(__S(399, __c49, 7)),
+          RenewalSettings: S.optional(__S(3904, __c122, 0)),
           ReservationId: S.optional(S.String),
-          ResourceSpecification: S.optional(__S(400, __c50, 0)),
+          ResourceSpecification: S.optional(__S(3840, __c120, 0)),
           Start: S.optional(S.String),
           State: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           UsagePrice: S.optional(S.Number),
         }).pipe(
           S.encodeKeys({
@@ -18562,7 +19796,24 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "DeleteReservationResponse",
       });
-    case 2:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AutomaticRenewal: S.optional(S.String),
+          RenewalCount: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({ AutomaticRenewal: "automaticRenewal", RenewalCount: "renewalCount" }),
+        ),
+      ).annotate({ identifier: "RenewalSettings" });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ChannelId: S.String.pipe(T.HttpLabel("ChannelId")) }).pipe(
           T.all(
@@ -18575,7 +19826,11 @@ function __c50(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteScheduleRequest" });
-    case 3:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SdiSourceId: S.String.pipe(T.HttpLabel("SdiSourceId")) }).pipe(
           T.all(
@@ -18588,7 +19843,11 @@ function __c50(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteSdiSourceRequest" });
-    case 4:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
           T.all(
@@ -18601,7 +19860,11 @@ function __c50(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteSignalMapRequest" });
-    case 5:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
@@ -18617,7 +19880,11 @@ function __c50(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteTagsRequest" });
-    case 6:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -18632,23 +19899,27 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "DescribeAccountConfigurationRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ KmsKeyId: S.optional(S.String) }).pipe(S.encodeKeys({ KmsKeyId: "kmsKeyId" })),
-      ).annotate({ identifier: "AccountConfiguration" });
   }
 }
-function __c51(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AccountConfiguration: S.optional(__S(407, __c50, 7)) }).pipe(
+        S.Struct({ KmsKeyId: S.optional(S.String) }).pipe(S.encodeKeys({ KmsKeyId: "kmsKeyId" })),
+      ).annotate({ identifier: "AccountConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AccountConfiguration: S.optional(__S(4096, __c128, 0)) }).pipe(
           S.encodeKeys({ AccountConfiguration: "accountConfiguration" }),
         ),
       ).annotate({
         identifier: "DescribeAccountConfigurationResponse",
       });
-    case 1:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ChannelId: S.String.pipe(T.HttpLabel("ChannelId")) }).pipe(
           T.all(
@@ -18661,7 +19932,11 @@ function __c51(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeChannelRequest" });
-    case 2:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelPlacementGroupId: S.String.pipe(T.HttpLabel("ChannelPlacementGroupId")),
@@ -18682,7 +19957,11 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "DescribeChannelPlacementGroupRequest",
       });
-    case 3:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClusterId: S.String.pipe(T.HttpLabel("ClusterId")) }).pipe(
           T.all(
@@ -18695,7 +19974,11 @@ function __c51(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeClusterRequest" });
-    case 4:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ InputId: S.String.pipe(T.HttpLabel("InputId")) }).pipe(
           T.all(
@@ -18708,7 +19991,11 @@ function __c51(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeInputRequest" });
-    case 5:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")) }).pipe(
           T.all(
@@ -18723,135 +20010,26 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "DescribeInputDeviceRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ActiveInput: S.optional(S.String),
-          ConfiguredInput: S.optional(S.String),
-          DeviceState: S.optional(S.String),
-          Framerate: S.optional(S.Number),
-          Height: S.optional(S.Number),
-          MaxBitrate: S.optional(S.Number),
-          ScanType: S.optional(S.String),
-          Width: S.optional(S.Number),
-          LatencyMs: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            ActiveInput: "activeInput",
-            ConfiguredInput: "configuredInput",
-            DeviceState: "deviceState",
-            Framerate: "framerate",
-            Height: "height",
-            MaxBitrate: "maxBitrate",
-            ScanType: "scanType",
-            Width: "width",
-            LatencyMs: "latencyMs",
-          }),
-        ),
-      ).annotate({ identifier: "InputDeviceHdSettings" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DnsAddresses: S.optional(__listOf__string),
-          Gateway: S.optional(S.String),
-          IpAddress: S.optional(S.String),
-          IpScheme: S.optional(S.String),
-          SubnetMask: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            DnsAddresses: "dnsAddresses",
-            Gateway: "gateway",
-            IpAddress: "ipAddress",
-            IpScheme: "ipScheme",
-            SubnetMask: "subnetMask",
-          }),
-        ),
-      ).annotate({
-        identifier: "InputDeviceNetworkSettings",
-      });
   }
 }
-function __c52(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          FlowArn: S.optional(S.String),
-          RoleArn: S.optional(S.String),
-          SecretArn: S.optional(S.String),
-          SourceName: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            FlowArn: "flowArn",
-            RoleArn: "roleArn",
-            SecretArn: "secretArn",
-            SourceName: "sourceName",
-          }),
-        ),
-      ).annotate({
-        identifier: "InputDeviceMediaConnectSettings",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.optional(S.Number),
-          Profile: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Id: "id", Profile: "profile" })),
-      ).annotate({
-        identifier: "InputDeviceUhdAudioChannelPairConfig",
-      });
-    case 2:
-      return S.Array(__S(417, __c52, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ActiveInput: S.optional(S.String),
-          ConfiguredInput: S.optional(S.String),
-          DeviceState: S.optional(S.String),
-          Framerate: S.optional(S.Number),
-          Height: S.optional(S.Number),
-          MaxBitrate: S.optional(S.Number),
-          ScanType: S.optional(S.String),
-          Width: S.optional(S.Number),
-          LatencyMs: S.optional(S.Number),
-          Codec: S.optional(S.String),
-          MediaconnectSettings: S.optional(__S(416, __c52, 0)),
-          AudioChannelPairs: S.optional(__listOfInputDeviceUhdAudioChannelPairConfig),
-          InputResolution: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ActiveInput: "activeInput",
-            ConfiguredInput: "configuredInput",
-            DeviceState: "deviceState",
-            Framerate: "framerate",
-            Height: "height",
-            MaxBitrate: "maxBitrate",
-            ScanType: "scanType",
-            Width: "width",
-            LatencyMs: "latencyMs",
-            Codec: "codec",
-            MediaconnectSettings: "mediaconnectSettings",
-            AudioChannelPairs: "audioChannelPairs",
-            InputResolution: "inputResolution",
-          }),
-        ),
-      ).annotate({ identifier: "InputDeviceUhdSettings" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           ConnectionState: S.optional(S.String),
           DeviceSettingsSyncState: S.optional(S.String),
           DeviceUpdateStatus: S.optional(S.String),
-          HdDeviceSettings: S.optional(__S(414, __c51, 6)),
+          HdDeviceSettings: S.optional(__S(4320, __c135, 0)),
           Id: S.optional(S.String),
           MacAddress: S.optional(S.String),
           Name: S.optional(S.String),
-          NetworkSettings: S.optional(__S(415, __c51, 7)),
+          NetworkSettings: S.optional(__S(4321, __c135, 1)),
           SerialNumber: S.optional(S.String),
           Type: S.optional(S.String),
-          UhdDeviceSettings: S.optional(__S(419, __c52, 3)),
-          Tags: S.optional(__S(243, __c30, 3)),
+          UhdDeviceSettings: S.optional(__S(4325, __c135, 5)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           AvailabilityZone: S.optional(S.String),
           MedialiveInputArns: S.optional(__listOf__string),
           OutputType: S.optional(S.String),
@@ -18878,7 +20056,124 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "DescribeInputDeviceResponse",
       });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ActiveInput: S.optional(S.String),
+          ConfiguredInput: S.optional(S.String),
+          DeviceState: S.optional(S.String),
+          Framerate: S.optional(S.Number),
+          Height: S.optional(S.Number),
+          MaxBitrate: S.optional(S.Number),
+          ScanType: S.optional(S.String),
+          Width: S.optional(S.Number),
+          LatencyMs: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            ActiveInput: "activeInput",
+            ConfiguredInput: "configuredInput",
+            DeviceState: "deviceState",
+            Framerate: "framerate",
+            Height: "height",
+            MaxBitrate: "maxBitrate",
+            ScanType: "scanType",
+            Width: "width",
+            LatencyMs: "latencyMs",
+          }),
+        ),
+      ).annotate({ identifier: "InputDeviceHdSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DnsAddresses: S.optional(__listOf__string),
+          Gateway: S.optional(S.String),
+          IpAddress: S.optional(S.String),
+          IpScheme: S.optional(S.String),
+          SubnetMask: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            DnsAddresses: "dnsAddresses",
+            Gateway: "gateway",
+            IpAddress: "ipAddress",
+            IpScheme: "ipScheme",
+            SubnetMask: "subnetMask",
+          }),
+        ),
+      ).annotate({
+        identifier: "InputDeviceNetworkSettings",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          FlowArn: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          SecretArn: S.optional(S.String),
+          SourceName: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            FlowArn: "flowArn",
+            RoleArn: "roleArn",
+            SecretArn: "secretArn",
+            SourceName: "sourceName",
+          }),
+        ),
+      ).annotate({
+        identifier: "InputDeviceMediaConnectSettings",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.Number),
+          Profile: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Id: "id", Profile: "profile" })),
+      ).annotate({
+        identifier: "InputDeviceUhdAudioChannelPairConfig",
+      });
+    case 4:
+      return S.Array(__S(4323, __c135, 3));
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ActiveInput: S.optional(S.String),
+          ConfiguredInput: S.optional(S.String),
+          DeviceState: S.optional(S.String),
+          Framerate: S.optional(S.Number),
+          Height: S.optional(S.Number),
+          MaxBitrate: S.optional(S.Number),
+          ScanType: S.optional(S.String),
+          Width: S.optional(S.Number),
+          LatencyMs: S.optional(S.Number),
+          Codec: S.optional(S.String),
+          MediaconnectSettings: S.optional(__S(4322, __c135, 2)),
+          AudioChannelPairs: S.optional(__listOfInputDeviceUhdAudioChannelPairConfig),
+          InputResolution: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ActiveInput: "activeInput",
+            ConfiguredInput: "configuredInput",
+            DeviceState: "deviceState",
+            Framerate: "framerate",
+            Height: "height",
+            MaxBitrate: "maxBitrate",
+            ScanType: "scanType",
+            Width: "width",
+            LatencyMs: "latencyMs",
+            Codec: "codec",
+            MediaconnectSettings: "mediaconnectSettings",
+            AudioChannelPairs: "audioChannelPairs",
+            InputResolution: "inputResolution",
+          }),
+        ),
+      ).annotate({ identifier: "InputDeviceUhdSettings" });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")),
@@ -18896,7 +20191,7 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "DescribeInputDeviceThumbnailRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
@@ -18910,7 +20205,23 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "DescribeInputDeviceThumbnailResponse",
       });
-    case 7:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ElementPath: S.optional(S.String), ErrorMessage: S.optional(S.String) }).pipe(
+          S.encodeKeys({ ElementPath: "elementPath", ErrorMessage: "errorMessage" }),
+        ),
+      ).annotate({ identifier: "ValidationError" });
+    case 1:
+      return S.Array(__S(4384, __c137, 0));
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ InputSecurityGroupId: S.String.pipe(T.HttpLabel("InputSecurityGroupId")) }).pipe(
           T.all(
@@ -18925,18 +20236,14 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "DescribeInputSecurityGroupRequest",
       });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           Id: S.optional(S.String),
           Inputs: S.optional(__listOf__string),
           State: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           WhitelistRules: S.optional(__listOfInputWhitelistRule),
           Channels: S.optional(__listOf__string),
         }).pipe(
@@ -18953,7 +20260,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "DescribeInputSecurityGroupResponse",
       });
-    case 1:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")) }).pipe(
           T.all(
@@ -18966,19 +20277,19 @@ function __c53(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeMultiplexRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           AvailabilityZones: S.optional(__listOf__string),
           Destinations: S.optional(__listOfMultiplexOutputDestination),
           Id: S.optional(S.String),
-          MultiplexSettings: S.optional(__S(340, __c42, 4)),
+          MultiplexSettings: S.optional(__S(2720, __c85, 0)),
           Name: S.optional(S.String),
           PipelinesRunningCount: S.optional(S.Number),
           ProgramCount: S.optional(S.Number),
           State: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -18996,7 +20307,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "DescribeMultiplexResponse",
       });
-    case 3:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")),
@@ -19017,7 +20332,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "DescribeMultiplexProgramRequest",
       });
-    case 4:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NetworkId: S.String.pipe(T.HttpLabel("NetworkId")) }).pipe(
           T.all(
@@ -19030,7 +20349,11 @@ function __c53(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeNetworkRequest" });
-    case 5:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
@@ -19046,7 +20369,11 @@ function __c53(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeNodeRequest" });
-    case 6:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OfferingId: S.String.pipe(T.HttpLabel("OfferingId")) }).pipe(
           T.all(
@@ -19059,7 +20386,11 @@ function __c53(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeOfferingRequest" });
-    case 7:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -19071,7 +20402,7 @@ function __c53(j: number): any {
           OfferingId: S.optional(S.String),
           OfferingType: S.optional(S.String),
           Region: S.optional(S.String),
-          ResourceSpecification: S.optional(__S(400, __c50, 0)),
+          ResourceSpecification: S.optional(__S(3840, __c120, 0)),
           UsagePrice: S.optional(S.Number),
         }).pipe(
           S.encodeKeys({
@@ -19091,7 +20422,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "DescribeOfferingResponse" });
   }
 }
-function __c54(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19108,7 +20439,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "DescribeReservationRequest",
       });
-    case 1:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelId: S.String.pipe(T.HttpLabel("ChannelId")),
@@ -19125,14 +20460,18 @@ function __c54(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeScheduleRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           ScheduleActions: S.optional(__listOfScheduleAction),
         }).pipe(S.encodeKeys({ NextToken: "nextToken", ScheduleActions: "scheduleActions" })),
       ).annotate({ identifier: "DescribeScheduleResponse" });
-    case 3:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SdiSourceId: S.String.pipe(T.HttpLabel("SdiSourceId")) }).pipe(
           T.all(
@@ -19145,15 +20484,19 @@ function __c54(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeSdiSourceRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ SdiSource: S.optional(__S(373, __c46, 5)) }).pipe(
+        S.Struct({ SdiSource: S.optional(__S(3200, __c100, 0)) }).pipe(
           S.encodeKeys({ SdiSource: "sdiSource" }),
         ),
       ).annotate({
         identifier: "DescribeSdiSourceResponse",
       });
-    case 5:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelId: S.String.pipe(T.HttpLabel("ChannelId")),
@@ -19172,7 +20515,7 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "DescribeThumbnailsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Body: S.optional(S.String),
@@ -19188,22 +20531,18 @@ function __c54(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Thumbnail" });
-    case 7:
-      return S.Array(__S(438, __c54, 6));
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(4737, __c148, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           PipelineId: S.optional(S.String),
           Thumbnails: S.optional(__listOfThumbnail),
         }).pipe(S.encodeKeys({ PipelineId: "pipelineId", Thumbnails: "thumbnails" })),
       ).annotate({ identifier: "ThumbnailDetail" });
-    case 1:
-      return S.Array(__S(440, __c55, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(4739, __c148, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({ ThumbnailDetails: S.optional(__listOfThumbnailDetail) }).pipe(
           S.encodeKeys({ ThumbnailDetails: "thumbnailDetails" }),
@@ -19211,7 +20550,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DescribeThumbnailsResponse",
       });
-    case 3:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
           T.all(
@@ -19226,7 +20569,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetCloudWatchAlarmTemplateRequest",
       });
-    case 4:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
           T.all(
@@ -19241,7 +20588,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetCloudWatchAlarmTemplateGroupRequest",
       });
-    case 5:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
           T.all(
@@ -19256,7 +20607,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetEventBridgeRuleTemplateRequest",
       });
-    case 6:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
           T.all(
@@ -19271,7 +20626,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "GetEventBridgeRuleTemplateGroupRequest",
       });
-    case 7:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
           T.all(
@@ -19286,7 +20645,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "GetSignalMapRequest" });
   }
 }
-function __c56(j: number): any {
+function __c154(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19309,6 +20668,17 @@ function __c56(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          Alerts: S.optional(__listOfChannelAlert),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Alerts: "alerts", NextToken: "nextToken" })),
+      ).annotate({ identifier: "ListAlertsResponse" });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           AlertType: S.optional(S.String),
           ClearedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Id: S.optional(S.String),
@@ -19328,16 +20698,13 @@ function __c56(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ChannelAlert" });
-    case 2:
-      return S.Array(__S(449, __c56, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Alerts: S.optional(__listOfChannelAlert),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Alerts: "alerts", NextToken: "nextToken" })),
-      ).annotate({ identifier: "ListAlertsResponse" });
-    case 4:
+    case 1:
+      return S.Array(__S(4960, __c155, 0));
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
@@ -19356,9 +20723,9 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ListChannelPlacementGroupsRequest",
       });
-    case 5:
-      return S.Array(__S(270, __c33, 6));
-    case 6:
+    case 1:
+      return S.Array(__S(1984, __c62, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ChannelPlacementGroups: S.optional(__listOfDescribeChannelPlacementGroupSummary),
@@ -19372,7 +20739,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ListChannelPlacementGroupsResponse",
       });
-    case 7:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -19381,37 +20752,31 @@ function __c56(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/prod/channels" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListChannelsRequest" });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(257, __c32, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          CdiInputSpecification: S.optional(__S(49, __c6, 1)),
+          CdiInputSpecification: S.optional(__S(1824, __c57, 0)),
           ChannelClass: S.optional(S.String),
           Destinations: S.optional(__listOfOutputDestination),
           EgressEndpoints: S.optional(__listOfChannelEgressEndpoint),
           Id: S.optional(S.String),
           InputAttachments: S.optional(__listOfInputAttachment),
-          InputSpecification: S.optional(__S(241, __c30, 1)),
+          InputSpecification: S.optional(__S(1885, __c58, 29)),
           LogLevel: S.optional(S.String),
-          Maintenance: S.optional(__S(256, __c32, 0)),
+          Maintenance: S.optional(__S(1891, __c59, 3)),
           Name: S.optional(S.String),
           PipelinesRunningCount: S.optional(S.Number),
           RoleArn: S.optional(S.String),
           State: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
-          Vpc: S.optional(__S(262, __c32, 6)),
-          AnywhereSettings: S.optional(__S(245, __c30, 5)),
-          ChannelEngineVersion: S.optional(__S(257, __c32, 1)),
+          Tags: S.optional(__S(1600, __c50, 0)),
+          Vpc: S.optional(__S(1892, __c59, 4)),
+          AnywhereSettings: S.optional(__S(1886, __c58, 30)),
+          ChannelEngineVersion: S.optional(__S(1920, __c60, 0)),
           UsedChannelEngineVersions: S.optional(__listOfChannelEngineVersionResponse),
-          LinkedChannelSettings: S.optional(__S(265, __c33, 1)),
+          LinkedChannelSettings: S.optional(__S(1895, __c59, 7)),
           ChannelSecurityGroups: S.optional(__listOf__string),
-          InferenceSettings: S.optional(__S(266, __c33, 2)),
+          InferenceSettings: S.optional(__S(1896, __c59, 8)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -19440,7 +20805,7 @@ function __c57(j: number): any {
         ),
       ).annotate({ identifier: "ChannelSummary" });
     case 2:
-      return S.Array(__S(457, __c57, 1));
+      return S.Array(__S(5025, __c157, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -19448,7 +20813,17 @@ function __c57(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(S.encodeKeys({ Channels: "channels", NextToken: "nextToken" })),
       ).annotate({ identifier: "ListChannelsResponse" });
-    case 4:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1920, __c60, 0));
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -19468,7 +20843,25 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ListCloudWatchAlarmTemplateGroupsRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CloudWatchAlarmTemplateGroups: S.optional(__listOfCloudWatchAlarmTemplateGroupSummary),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            CloudWatchAlarmTemplateGroups: "cloudWatchAlarmTemplateGroups",
+            NextToken: "nextToken",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCloudWatchAlarmTemplateGroupsResponse",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -19477,7 +20870,7 @@ function __c57(j: number): any {
           Id: S.optional(S.String),
           ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Name: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           TemplateCount: S.optional(S.Number),
         }).pipe(
           S.encodeKeys({
@@ -19494,25 +20887,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "CloudWatchAlarmTemplateGroupSummary",
       });
-    case 6:
-      return S.Array(__S(461, __c57, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          CloudWatchAlarmTemplateGroups: S.optional(__listOfCloudWatchAlarmTemplateGroupSummary),
-          NextToken: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            CloudWatchAlarmTemplateGroups: "cloudWatchAlarmTemplateGroups",
-            NextToken: "nextToken",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCloudWatchAlarmTemplateGroupsResponse",
-      });
+    case 1:
+      return S.Array(__S(5120, __c160, 0));
   }
 }
-function __c58(j: number): any {
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19536,7 +20915,7 @@ function __c58(j: number): any {
         identifier: "ListCloudWatchAlarmTemplatesRequest",
       });
     case 1:
-      return S.Array(__S(272, __c34, 0));
+      return S.Array(__S(2048, __c64, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -19551,7 +20930,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "ListCloudWatchAlarmTemplatesResponse",
       });
-    case 3:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
@@ -19569,7 +20952,7 @@ function __c58(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListClusterAlertsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AlertType: S.optional(S.String),
@@ -19593,9 +20976,9 @@ function __c58(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ClusterAlert" });
-    case 5:
-      return S.Array(__S(468, __c58, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(5185, __c162, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Alerts: S.optional(__listOfClusterAlert),
@@ -19604,7 +20987,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "ListClusterAlertsResponse",
       });
-    case 7:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -19613,20 +21000,20 @@ function __c58(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/prod/clusters" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListClustersRequest" });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(282, __c35, 2));
     case 1:
+      return S.Array(__S(2208, __c69, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Clusters: S.optional(__listOfDescribeClusterSummary),
           NextToken: S.optional(S.String),
         }).pipe(S.encodeKeys({ Clusters: "clusters", NextToken: "nextToken" })),
       ).annotate({ identifier: "ListClustersResponse" });
-    case 2:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -19645,7 +21032,7 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ListEventBridgeRuleTemplateGroupsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EventBridgeRuleTemplateGroups: S.optional(__listOfEventBridgeRuleTemplateGroupSummary),
@@ -19659,7 +21046,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ListEventBridgeRuleTemplateGroupsResponse",
       });
-    case 4:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GroupIdentifier: S.optional(S.String).pipe(T.HttpQuery("groupIdentifier")),
@@ -19679,7 +21070,7 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ListEventBridgeRuleTemplatesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -19691,7 +21082,7 @@ function __c59(j: number): any {
           Id: S.optional(S.String),
           ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Name: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -19709,9 +21100,9 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "EventBridgeRuleTemplateSummary",
       });
-    case 6:
-      return S.Array(__S(477, __c59, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(5281, __c165, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           EventBridgeRuleTemplates: S.optional(__listOfEventBridgeRuleTemplateSummary),
@@ -19727,7 +21118,7 @@ function __c59(j: number): any {
       });
   }
 }
-function __c60(j: number): any {
+function __c166(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19745,15 +21136,15 @@ function __c60(j: number): any {
           ConnectionState: S.optional(S.String),
           DeviceSettingsSyncState: S.optional(S.String),
           DeviceUpdateStatus: S.optional(S.String),
-          HdDeviceSettings: S.optional(__S(414, __c51, 6)),
+          HdDeviceSettings: S.optional(__S(4320, __c135, 0)),
           Id: S.optional(S.String),
           MacAddress: S.optional(S.String),
           Name: S.optional(S.String),
-          NetworkSettings: S.optional(__S(415, __c51, 7)),
+          NetworkSettings: S.optional(__S(4321, __c135, 1)),
           SerialNumber: S.optional(S.String),
           Type: S.optional(S.String),
-          UhdDeviceSettings: S.optional(__S(419, __c52, 3)),
-          Tags: S.optional(__S(243, __c30, 3)),
+          UhdDeviceSettings: S.optional(__S(4325, __c135, 5)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           AvailabilityZone: S.optional(S.String),
           MedialiveInputArns: S.optional(__listOf__string),
           OutputType: S.optional(S.String),
@@ -19779,7 +21170,7 @@ function __c60(j: number): any {
         ),
       ).annotate({ identifier: "InputDeviceSummary" });
     case 2:
-      return S.Array(__S(481, __c60, 1));
+      return S.Array(__S(5313, __c166, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -19787,7 +21178,11 @@ function __c60(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(S.encodeKeys({ InputDevices: "inputDevices", NextToken: "nextToken" })),
       ).annotate({ identifier: "ListInputDevicesResponse" });
-    case 4:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -19806,7 +21201,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "ListInputDeviceTransfersRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -19824,9 +21219,9 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "TransferringInputDeviceSummary",
       });
-    case 6:
-      return S.Array(__S(485, __c60, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(5345, __c167, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           InputDeviceTransfers: S.optional(__listOfTransferringInputDeviceSummary),
@@ -19839,7 +21234,7 @@ function __c60(j: number): any {
       });
   }
 }
-function __c61(j: number): any {
+function __c168(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19851,14 +21246,18 @@ function __c61(j: number): any {
         ),
       ).annotate({ identifier: "ListInputsRequest" });
     case 1:
-      return S.Array(__S(333, __c41, 5));
+      return S.Array(__S(2490, __c77, 26));
     case 2:
       return S.suspend(() =>
         S.Struct({ Inputs: S.optional(__listOfInput), NextToken: S.optional(S.String) }).pipe(
           S.encodeKeys({ Inputs: "inputs", NextToken: "nextToken" }),
         ),
       ).annotate({ identifier: "ListInputsResponse" });
-    case 3:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -19876,9 +21275,9 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "ListInputSecurityGroupsRequest",
       });
-    case 4:
-      return S.Array(__S(338, __c42, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(2592, __c81, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           InputSecurityGroups: S.optional(__listOfInputSecurityGroup),
@@ -19889,7 +21288,11 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "ListInputSecurityGroupsResponse",
       });
-    case 6:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -19909,7 +21312,7 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "ListMultiplexAlertsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Alerts: S.optional(__listOfMultiplexAlert),
@@ -19920,7 +21323,7 @@ function __c61(j: number): any {
       });
   }
 }
-function __c62(j: number): any {
+function __c171(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19943,12 +21346,12 @@ function __c62(j: number): any {
           Arn: S.optional(S.String),
           AvailabilityZones: S.optional(__listOf__string),
           Id: S.optional(S.String),
-          MultiplexSettings: S.optional(__S(497, __c62, 1)),
+          MultiplexSettings: S.optional(__S(5473, __c171, 1)),
           Name: S.optional(S.String),
           PipelinesRunningCount: S.optional(S.Number),
           ProgramCount: S.optional(S.Number),
           State: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -19964,7 +21367,7 @@ function __c62(j: number): any {
         ),
       ).annotate({ identifier: "MultiplexSummary" });
     case 3:
-      return S.Array(__S(498, __c62, 2));
+      return S.Array(__S(5474, __c171, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -19972,7 +21375,11 @@ function __c62(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(S.encodeKeys({ Multiplexes: "multiplexes", NextToken: "nextToken" })),
       ).annotate({ identifier: "ListMultiplexesResponse" });
-    case 5:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -19991,19 +21398,15 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ListMultiplexProgramsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ChannelId: S.optional(S.String), ProgramName: S.optional(S.String) }).pipe(
           S.encodeKeys({ ChannelId: "channelId", ProgramName: "programName" }),
         ),
       ).annotate({ identifier: "MultiplexProgramSummary" });
-    case 7:
-      return S.Array(__S(502, __c62, 6));
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(5505, __c172, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           MultiplexPrograms: S.optional(__listOfMultiplexProgramSummary),
@@ -20012,7 +21415,11 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "ListMultiplexProgramsResponse",
       });
-    case 1:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -20021,16 +21428,20 @@ function __c63(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/prod/networks" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListNetworksRequest" });
+    case 1:
+      return S.Array(__S(2912, __c91, 0));
     case 2:
-      return S.Array(__S(359, __c44, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           Networks: S.optional(__listOfDescribeNetworkSummary),
           NextToken: S.optional(S.String),
         }).pipe(S.encodeKeys({ Networks: "networks", NextToken: "nextToken" })),
       ).annotate({ identifier: "ListNetworksResponse" });
-    case 4:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
@@ -20047,7 +21458,7 @@ function __c63(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListNodesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -20061,7 +21472,7 @@ function __c63(j: number): any {
           NodeInterfaceMappings: S.optional(__listOfNodeInterfaceMapping),
           Role: S.optional(S.String),
           State: S.optional(S.String),
-          SdiSourceMappings: S.optional(__S(366, __c45, 6)),
+          SdiSourceMappings: S.optional(__S(3041, __c95, 1)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -20079,9 +21490,9 @@ function __c63(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DescribeNodeSummary" });
-    case 6:
-      return S.Array(__S(509, __c63, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(5569, __c174, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
@@ -20090,7 +21501,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "ListNodesResponse" });
   }
 }
-function __c64(j: number): any {
+function __c175(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20112,14 +21523,18 @@ function __c64(j: number): any {
         ),
       ).annotate({ identifier: "ListOfferingsRequest" });
     case 1:
-      return S.Array(__S(431, __c53, 7));
+      return S.Array(__S(4608, __c144, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), Offerings: S.optional(__listOfOffering) }).pipe(
           S.encodeKeys({ NextToken: "nextToken", Offerings: "offerings" }),
         ),
       ).annotate({ identifier: "ListOfferingsResponse" });
-    case 3:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelClass: S.optional(S.String).pipe(T.HttpQuery("channelClass")),
@@ -20136,7 +21551,20 @@ function __c64(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/prod/reservations" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListReservationsRequest" });
-    case 4:
+    case 1:
+      return S.Array(__S(5664, __c177, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          Reservations: S.optional(__listOfReservation),
+        }).pipe(S.encodeKeys({ NextToken: "nextToken", Reservations: "reservations" })),
+      ).annotate({ identifier: "ListReservationsResponse" });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -20151,12 +21579,12 @@ function __c64(j: number): any {
           OfferingId: S.optional(S.String),
           OfferingType: S.optional(S.String),
           Region: S.optional(S.String),
-          RenewalSettings: S.optional(__S(399, __c49, 7)),
+          RenewalSettings: S.optional(__S(3904, __c122, 0)),
           ReservationId: S.optional(S.String),
-          ResourceSpecification: S.optional(__S(400, __c50, 0)),
+          ResourceSpecification: S.optional(__S(3840, __c120, 0)),
           Start: S.optional(S.String),
           State: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
           UsagePrice: S.optional(S.Number),
         }).pipe(
           S.encodeKeys({
@@ -20182,16 +21610,11 @@ function __c64(j: number): any {
           }),
         ),
       ).annotate({ identifier: "Reservation" });
-    case 5:
-      return S.Array(__S(516, __c64, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          Reservations: S.optional(__listOfReservation),
-        }).pipe(S.encodeKeys({ NextToken: "nextToken", Reservations: "reservations" })),
-      ).annotate({ identifier: "ListReservationsResponse" });
-    case 7:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -20200,20 +21623,20 @@ function __c64(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/prod/sdiSources" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListSdiSourcesRequest" });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(373, __c46, 5));
     case 1:
+      return S.Array(__S(3200, __c100, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           SdiSources: S.optional(__listOfSdiSourceSummary),
         }).pipe(S.encodeKeys({ NextToken: "nextToken", SdiSources: "sdiSources" })),
       ).annotate({ identifier: "ListSdiSourcesResponse" });
-    case 2:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CloudWatchAlarmTemplateGroupIdentifier: S.optional(S.String).pipe(
@@ -20228,7 +21651,7 @@ function __c65(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/prod/signal-maps" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListSignalMapsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -20239,7 +21662,7 @@ function __c65(j: number): any {
           MonitorDeploymentStatus: S.optional(S.String),
           Name: S.optional(S.String),
           Status: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -20254,16 +21677,20 @@ function __c65(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SignalMapSummary" });
-    case 4:
-      return S.Array(__S(523, __c65, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(5729, __c179, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           SignalMaps: S.optional(__listOfSignalMapSummary),
         }).pipe(S.encodeKeys({ NextToken: "nextToken", SignalMaps: "signalMaps" })),
       ).annotate({ identifier: "ListSignalMapsResponse" });
-    case 6:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
           T.all(
@@ -20278,15 +21705,15 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(243, __c30, 3)) }).pipe(S.encodeKeys({ Tags: "tags" })),
+        S.Struct({ Tags: S.optional(__S(1600, __c50, 0)) }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c66(j: number): any {
+function __c181(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20300,16 +21727,20 @@ function __c66(j: number): any {
           S.encodeKeys({ Versions: "versions" }),
         ),
       ).annotate({ identifier: "ListVersionsResponse" });
-    case 2:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Count: S.optional(S.Number),
           Name: S.optional(S.String),
           OfferingId: S.String.pipe(T.HttpLabel("OfferingId")),
-          RenewalSettings: S.optional(__S(399, __c49, 7)),
+          RenewalSettings: S.optional(__S(3904, __c122, 0)),
           RequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
           Start: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
+          Tags: S.optional(__S(1600, __c50, 0)),
         })
           .pipe(
             S.encodeKeys({
@@ -20332,1003 +21763,14 @@ function __c66(j: number): any {
             ),
           ),
       ).annotate({ identifier: "PurchaseOfferingRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Reservation: S.optional(__S(516, __c64, 4)) }).pipe(
+        S.Struct({ Reservation: S.optional(__S(5664, __c177, 0)) }).pipe(
           S.encodeKeys({ Reservation: "reservation" }),
         ),
       ).annotate({ identifier: "PurchaseOfferingResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Force: S.optional(S.String),
-          InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")),
-        })
-          .pipe(S.encodeKeys({ Force: "force" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/prod/inputDevices/{InputDeviceId}/reboot" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "RebootInputDeviceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/prod/inputDevices/{InputDeviceId}/reject" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "RejectInputDeviceTransferRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelId: S.String.pipe(T.HttpLabel("ChannelId")),
-          PipelineIds: S.optional(__listOfChannelPipelineIdToRestart),
-        })
-          .pipe(S.encodeKeys({ PipelineIds: "pipelineIds" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/prod/channels/{ChannelId}/restartChannelPipelines" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "RestartChannelPipelinesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          CdiInputSpecification: S.optional(__S(49, __c6, 1)),
-          ChannelClass: S.optional(S.String),
-          Destinations: S.optional(__listOfOutputDestination),
-          EgressEndpoints: S.optional(__listOfChannelEgressEndpoint),
-          EncoderSettings: S.optional(__S(199, __c24, 7)),
-          Id: S.optional(S.String),
-          InputAttachments: S.optional(__listOfInputAttachment),
-          InputSpecification: S.optional(__S(241, __c30, 1)),
-          LogLevel: S.optional(S.String),
-          Maintenance: S.optional(__S(256, __c32, 0)),
-          MaintenanceStatus: S.optional(S.String),
-          Name: S.optional(S.String),
-          PipelineDetails: S.optional(__listOfPipelineDetail),
-          PipelinesRunningCount: S.optional(S.Number),
-          RoleArn: S.optional(S.String),
-          State: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
-          Vpc: S.optional(__S(262, __c32, 6)),
-          AnywhereSettings: S.optional(__S(245, __c30, 5)),
-          ChannelEngineVersion: S.optional(__S(257, __c32, 1)),
-          LinkedChannelSettings: S.optional(__S(265, __c33, 1)),
-          ChannelSecurityGroups: S.optional(__listOf__string),
-          InferenceSettings: S.optional(__S(266, __c33, 2)),
-        }).pipe(
-          S.encodeKeys({
-            Arn: "arn",
-            CdiInputSpecification: "cdiInputSpecification",
-            ChannelClass: "channelClass",
-            Destinations: "destinations",
-            EgressEndpoints: "egressEndpoints",
-            EncoderSettings: "encoderSettings",
-            Id: "id",
-            InputAttachments: "inputAttachments",
-            InputSpecification: "inputSpecification",
-            LogLevel: "logLevel",
-            Maintenance: "maintenance",
-            MaintenanceStatus: "maintenanceStatus",
-            Name: "name",
-            PipelineDetails: "pipelineDetails",
-            PipelinesRunningCount: "pipelinesRunningCount",
-            RoleArn: "roleArn",
-            State: "state",
-            Tags: "tags",
-            Vpc: "vpc",
-            AnywhereSettings: "anywhereSettings",
-            ChannelEngineVersion: "channelEngineVersion",
-            LinkedChannelSettings: "linkedChannelSettings",
-            ChannelSecurityGroups: "channelSecurityGroups",
-            InferenceSettings: "inferenceSettings",
-          }),
-        ),
-      ).annotate({
-        identifier: "RestartChannelPipelinesResponse",
-      });
   }
 }
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ChannelId: S.String.pipe(T.HttpLabel("ChannelId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/prod/channels/{ChannelId}/start" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StartChannelRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/prod/signal-maps/{Identifier}/monitor-deployment" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "StartDeleteMonitorDeploymentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          CloudWatchAlarmTemplateGroupIds: S.optional(__listOf__stringMin7Max11PatternAws097),
-          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Description: S.optional(S.String),
-          DiscoveryEntryPointArn: S.optional(S.String),
-          ErrorMessage: S.optional(S.String),
-          EventBridgeRuleTemplateGroupIds: S.optional(__listOf__stringMin7Max11PatternAws097),
-          FailedMediaResourceMap: S.optional(__S(379, __c47, 3)),
-          Id: S.optional(S.String),
-          LastDiscoveredAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          LastSuccessfulMonitorDeployment: S.optional(__S(380, __c47, 4)),
-          MediaResourceMap: S.optional(__S(379, __c47, 3)),
-          ModifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          MonitorChangesPendingDeployment: S.optional(S.Boolean),
-          MonitorDeployment: S.optional(__S(381, __c47, 5)),
-          Name: S.optional(S.String),
-          Status: S.optional(S.String),
-          Tags: S.optional(__S(243, __c30, 3)),
-        }).pipe(
-          S.encodeKeys({
-            Arn: "arn",
-            CloudWatchAlarmTemplateGroupIds: "cloudWatchAlarmTemplateGroupIds",
-            CreatedAt: "createdAt",
-            Description: "description",
-            DiscoveryEntryPointArn: "discoveryEntryPointArn",
-            ErrorMessage: "errorMessage",
-            EventBridgeRuleTemplateGroupIds: "eventBridgeRuleTemplateGroupIds",
-            FailedMediaResourceMap: "failedMediaResourceMap",
-            Id: "id",
-            LastDiscoveredAt: "lastDiscoveredAt",
-            LastSuccessfulMonitorDeployment: "lastSuccessfulMonitorDeployment",
-            MediaResourceMap: "mediaResourceMap",
-            ModifiedAt: "modifiedAt",
-            MonitorChangesPendingDeployment: "monitorChangesPendingDeployment",
-            MonitorDeployment: "monitorDeployment",
-            Name: "name",
-            Status: "status",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({
-        identifier: "StartDeleteMonitorDeploymentResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/prod/inputDevices/{InputDeviceId}/start" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StartInputDeviceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")) }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/prod/inputDevices/{InputDeviceId}/startInputDeviceMaintenanceWindow",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "StartInputDeviceMaintenanceWindowRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DryRun: S.optional(S.Boolean),
-          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-        })
-          .pipe(S.encodeKeys({ DryRun: "dryRun" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/prod/signal-maps/{Identifier}/monitor-deployment" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "StartMonitorDeploymentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/prod/multiplexes/{MultiplexId}/start" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StartMultiplexRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          CloudWatchAlarmTemplateGroupIdentifiers: S.optional(__listOf__stringPatternS),
-          Description: S.optional(S.String),
-          DiscoveryEntryPointArn: S.optional(S.String),
-          EventBridgeRuleTemplateGroupIdentifiers: S.optional(__listOf__stringPatternS),
-          ForceRediscovery: S.optional(S.Boolean),
-          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          Name: S.optional(S.String),
-        })
-          .pipe(
-            S.encodeKeys({
-              CloudWatchAlarmTemplateGroupIdentifiers: "cloudWatchAlarmTemplateGroupIdentifiers",
-              Description: "description",
-              DiscoveryEntryPointArn: "discoveryEntryPointArn",
-              EventBridgeRuleTemplateGroupIdentifiers: "eventBridgeRuleTemplateGroupIdentifiers",
-              ForceRediscovery: "forceRediscovery",
-              Name: "name",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "PATCH", uri: "/prod/signal-maps/{Identifier}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "StartUpdateSignalMapRequest",
-      });
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ChannelId: S.String.pipe(T.HttpLabel("ChannelId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/prod/channels/{ChannelId}/stop" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StopChannelRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/prod/inputDevices/{InputDeviceId}/stop" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StopInputDeviceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/prod/multiplexes/{MultiplexId}/stop" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StopMultiplexRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")),
-          TargetCustomerId: S.optional(S.String),
-          TargetRegion: S.optional(S.String),
-          TransferMessage: S.optional(S.String),
-        })
-          .pipe(
-            S.encodeKeys({
-              TargetCustomerId: "targetCustomerId",
-              TargetRegion: "targetRegion",
-              TransferMessage: "transferMessage",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/prod/inputDevices/{InputDeviceId}/transfer" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "TransferInputDeviceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ AccountConfiguration: S.optional(__S(407, __c50, 7)) })
-          .pipe(S.encodeKeys({ AccountConfiguration: "accountConfiguration" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/accountConfiguration" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateAccountConfigurationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          MaintenanceDay: S.optional(S.String),
-          MaintenanceScheduledDate: S.optional(S.String),
-          MaintenanceStartTime: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            MaintenanceDay: "maintenanceDay",
-            MaintenanceScheduledDate: "maintenanceScheduledDate",
-            MaintenanceStartTime: "maintenanceStartTime",
-          }),
-        ),
-      ).annotate({
-        identifier: "MaintenanceUpdateSettings",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ RouterArn: S.optional(S.String) }).pipe(
-          S.encodeKeys({ RouterArn: "routerArn" }),
-        ),
-      ).annotate({ identifier: "SpecialRouterSettings" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          CdiInputSpecification: S.optional(__S(49, __c6, 1)),
-          ChannelId: S.String.pipe(T.HttpLabel("ChannelId")),
-          Destinations: S.optional(__listOfOutputDestination),
-          EncoderSettings: S.optional(__S(199, __c24, 7)),
-          InputAttachments: S.optional(__listOfInputAttachment),
-          InputSpecification: S.optional(__S(241, __c30, 1)),
-          LogLevel: S.optional(S.String),
-          Maintenance: S.optional(__S(549, __c68, 5)),
-          Name: S.optional(S.String),
-          RoleArn: S.optional(S.String),
-          ChannelEngineVersion: S.optional(__S(246, __c30, 6)),
-          DryRun: S.optional(S.Boolean),
-          AnywhereSettings: S.optional(__S(245, __c30, 5)),
-          LinkedChannelSettings: S.optional(__S(249, __c31, 1)),
-          ChannelSecurityGroups: S.optional(__listOf__string),
-          InferenceSettings: S.optional(__S(252, __c31, 4)),
-          SpecialRouterSettings: S.optional(__S(550, __c68, 6)),
-        })
-          .pipe(
-            S.encodeKeys({
-              CdiInputSpecification: "cdiInputSpecification",
-              Destinations: "destinations",
-              EncoderSettings: "encoderSettings",
-              InputAttachments: "inputAttachments",
-              InputSpecification: "inputSpecification",
-              LogLevel: "logLevel",
-              Maintenance: "maintenance",
-              Name: "name",
-              RoleArn: "roleArn",
-              ChannelEngineVersion: "channelEngineVersion",
-              DryRun: "dryRun",
-              AnywhereSettings: "anywhereSettings",
-              LinkedChannelSettings: "linkedChannelSettings",
-              ChannelSecurityGroups: "channelSecurityGroups",
-              InferenceSettings: "inferenceSettings",
-              SpecialRouterSettings: "specialRouterSettings",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/channels/{ChannelId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateChannelRequest" });
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelClass: S.optional(S.String),
-          ChannelId: S.String.pipe(T.HttpLabel("ChannelId")),
-          Destinations: S.optional(__listOfOutputDestination),
-        })
-          .pipe(S.encodeKeys({ ChannelClass: "channelClass", Destinations: "destinations" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/channels/{ChannelId}/channelClass" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateChannelClassRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Channel: S.optional(__S(267, __c33, 3)) }).pipe(
-          S.encodeKeys({ Channel: "channel" }),
-        ),
-      ).annotate({
-        identifier: "UpdateChannelClassResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelPlacementGroupId: S.String.pipe(T.HttpLabel("ChannelPlacementGroupId")),
-          ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
-          Name: S.optional(S.String),
-          Nodes: S.optional(__listOf__string),
-        })
-          .pipe(S.encodeKeys({ Name: "name", Nodes: "nodes" }))
-          .pipe(
-            T.all(
-              T.Http({
-                method: "PUT",
-                uri: "/prod/clusters/{ClusterId}/channelplacementgroups/{ChannelPlacementGroupId}",
-              }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateChannelPlacementGroupRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ComparisonOperator: S.optional(S.String),
-          DatapointsToAlarm: S.optional(S.Number),
-          Description: S.optional(S.String),
-          EvaluationPeriods: S.optional(S.Number),
-          GroupIdentifier: S.optional(S.String),
-          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          MetricName: S.optional(S.String),
-          Name: S.optional(S.String),
-          Period: S.optional(S.Number),
-          Statistic: S.optional(S.String),
-          TargetResourceType: S.optional(S.String),
-          Threshold: S.optional(S.Number),
-          TreatMissingData: S.optional(S.String),
-        })
-          .pipe(
-            S.encodeKeys({
-              ComparisonOperator: "comparisonOperator",
-              DatapointsToAlarm: "datapointsToAlarm",
-              Description: "description",
-              EvaluationPeriods: "evaluationPeriods",
-              GroupIdentifier: "groupIdentifier",
-              MetricName: "metricName",
-              Name: "name",
-              Period: "period",
-              Statistic: "statistic",
-              TargetResourceType: "targetResourceType",
-              Threshold: "threshold",
-              TreatMissingData: "treatMissingData",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "PATCH", uri: "/prod/cloudwatch-alarm-templates/{Identifier}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateCloudWatchAlarmTemplateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Description: S.optional(S.String),
-          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-        })
-          .pipe(S.encodeKeys({ Description: "description" }))
-          .pipe(
-            T.all(
-              T.Http({
-                method: "PATCH",
-                uri: "/prod/cloudwatch-alarm-template-groups/{Identifier}",
-              }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateCloudWatchAlarmTemplateGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
-          Name: S.optional(S.String),
-          NetworkSettings: S.optional(__S(277, __c34, 5)),
-        })
-          .pipe(S.encodeKeys({ Name: "name", NetworkSettings: "networkSettings" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/clusters/{ClusterId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateClusterRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          ChannelIds: S.optional(__listOf__string),
-          ClusterType: S.optional(S.String),
-          Id: S.optional(S.String),
-          Name: S.optional(S.String),
-          NetworkSettings: S.optional(__S(281, __c35, 1)),
-          State: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Arn: "arn",
-            ChannelIds: "channelIds",
-            ClusterType: "clusterType",
-            Id: "id",
-            Name: "name",
-            NetworkSettings: "networkSettings",
-            State: "state",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateClusterResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Description: S.optional(S.String),
-          EventTargets: S.optional(__listOfEventBridgeRuleTemplateTarget),
-          EventType: S.optional(S.String),
-          GroupIdentifier: S.optional(S.String),
-          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          Name: S.optional(S.String),
-        })
-          .pipe(
-            S.encodeKeys({
-              Description: "description",
-              EventTargets: "eventTargets",
-              EventType: "eventType",
-              GroupIdentifier: "groupIdentifier",
-              Name: "name",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "PATCH", uri: "/prod/eventbridge-rule-templates/{Identifier}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateEventBridgeRuleTemplateRequest",
-      });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Description: S.optional(S.String),
-          Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-        })
-          .pipe(S.encodeKeys({ Description: "description" }))
-          .pipe(
-            T.all(
-              T.Http({
-                method: "PATCH",
-                uri: "/prod/eventbridge-rule-template-groups/{Identifier}",
-              }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateEventBridgeRuleTemplateGroupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Destinations: S.optional(__listOfInputDestinationRequest),
-          InputDevices: S.optional(__listOfInputDeviceRequest),
-          InputId: S.String.pipe(T.HttpLabel("InputId")),
-          InputSecurityGroups: S.optional(__listOf__string),
-          MediaConnectFlows: S.optional(__listOfMediaConnectFlowRequest),
-          Name: S.optional(S.String),
-          RoleArn: S.optional(S.String),
-          Sources: S.optional(__listOfInputSourceRequest),
-          SrtSettings: S.optional(__S(303, __c37, 7)),
-          MulticastSettings: S.optional(__S(306, __c38, 2)),
-          Smpte2110ReceiverGroupSettings: S.optional(__S(312, __c39, 0)),
-          SdiSources: S.optional(InputSdiSources),
-          SpecialRouterSettings: S.optional(__S(550, __c68, 6)),
-        })
-          .pipe(
-            S.encodeKeys({
-              Destinations: "destinations",
-              InputDevices: "inputDevices",
-              InputSecurityGroups: "inputSecurityGroups",
-              MediaConnectFlows: "mediaConnectFlows",
-              Name: "name",
-              RoleArn: "roleArn",
-              Sources: "sources",
-              SrtSettings: "srtSettings",
-              MulticastSettings: "multicastSettings",
-              Smpte2110ReceiverGroupSettings: "smpte2110ReceiverGroupSettings",
-              SdiSources: "sdiSources",
-              SpecialRouterSettings: "specialRouterSettings",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/inputs/{InputId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateInputRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ConfiguredInput: S.optional(S.String),
-          MaxBitrate: S.optional(S.Number),
-          LatencyMs: S.optional(S.Number),
-          Codec: S.optional(S.String),
-          MediaconnectSettings: S.optional(__S(416, __c52, 0)),
-          AudioChannelPairs: S.optional(__listOfInputDeviceConfigurableAudioChannelPairConfig),
-          InputResolution: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ConfiguredInput: "configuredInput",
-            MaxBitrate: "maxBitrate",
-            LatencyMs: "latencyMs",
-            Codec: "codec",
-            MediaconnectSettings: "mediaconnectSettings",
-            AudioChannelPairs: "audioChannelPairs",
-            InputResolution: "inputResolution",
-          }),
-        ),
-      ).annotate({
-        identifier: "InputDeviceConfigurableSettings",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          HdDeviceSettings: S.optional(__S(562, __c70, 2)),
-          InputDeviceId: S.String.pipe(T.HttpLabel("InputDeviceId")),
-          Name: S.optional(S.String),
-          UhdDeviceSettings: S.optional(__S(562, __c70, 2)),
-          AvailabilityZone: S.optional(S.String),
-        })
-          .pipe(
-            S.encodeKeys({
-              HdDeviceSettings: "hdDeviceSettings",
-              Name: "name",
-              UhdDeviceSettings: "uhdDeviceSettings",
-              AvailabilityZone: "availabilityZone",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/inputDevices/{InputDeviceId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateInputDeviceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          InputSecurityGroupId: S.String.pipe(T.HttpLabel("InputSecurityGroupId")),
-          Tags: S.optional(__S(243, __c30, 3)),
-          WhitelistRules: S.optional(__listOfInputWhitelistRuleCidr),
-        })
-          .pipe(S.encodeKeys({ Tags: "tags", WhitelistRules: "whitelistRules" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/inputSecurityGroups/{InputSecurityGroupId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateInputSecurityGroupRequest",
-      });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(353, __c44, 1).pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")),
-          MultiplexSettings: S.optional(__S(340, __c42, 4)),
-          Name: S.optional(S.String),
-          PacketIdentifiersMapping: S.optional(__S(565, __c70, 5)),
-        })
-          .pipe(
-            S.encodeKeys({
-              MultiplexSettings: "multiplexSettings",
-              Name: "name",
-              PacketIdentifiersMapping: "packetIdentifiersMapping",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/multiplexes/{MultiplexId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateMultiplexRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          MultiplexId: S.String.pipe(T.HttpLabel("MultiplexId")),
-          MultiplexProgramSettings: S.optional(__S(350, __c43, 6)),
-          ProgramName: S.String.pipe(T.HttpLabel("ProgramName")),
-        })
-          .pipe(S.encodeKeys({ MultiplexProgramSettings: "multiplexProgramSettings" }))
-          .pipe(
-            T.all(
-              T.Http({
-                method: "PUT",
-                uri: "/prod/multiplexes/{MultiplexId}/programs/{ProgramName}",
-              }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateMultiplexProgramRequest",
-      });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          IpPools: S.optional(__listOfIpPoolUpdateRequest),
-          Name: S.optional(S.String),
-          NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
-          Routes: S.optional(__listOfRouteUpdateRequest),
-        })
-          .pipe(S.encodeKeys({ IpPools: "ipPools", Name: "name", Routes: "routes" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/networks/{NetworkId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateNetworkRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          CardNumber: S.optional(S.Number),
-          ChannelNumber: S.optional(S.Number),
-          SdiSource: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            CardNumber: "cardNumber",
-            ChannelNumber: "channelNumber",
-            SdiSource: "sdiSource",
-          }),
-        ),
-      ).annotate({
-        identifier: "SdiSourceMappingUpdateRequest",
-      });
-    case 2:
-      return S.Array(__S(569, __c71, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
-          Name: S.optional(S.String),
-          NodeId: S.String.pipe(T.HttpLabel("NodeId")),
-          Role: S.optional(S.String),
-          SdiSourceMappings: S.optional(__S(570, __c71, 2)),
-        })
-          .pipe(
-            S.encodeKeys({ Name: "name", Role: "role", SdiSourceMappings: "sdiSourceMappings" }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/clusters/{ClusterId}/nodes/{NodeId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateNodeRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ClusterId: S.String.pipe(T.HttpLabel("ClusterId")),
-          NodeId: S.String.pipe(T.HttpLabel("NodeId")),
-          State: S.optional(S.String),
-        })
-          .pipe(S.encodeKeys({ State: "state" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/clusters/{ClusterId}/nodes/{NodeId}/state" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateNodeStateRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          RenewalSettings: S.optional(__S(399, __c49, 7)),
-          ReservationId: S.String.pipe(T.HttpLabel("ReservationId")),
-        })
-          .pipe(S.encodeKeys({ Name: "name", RenewalSettings: "renewalSettings" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/reservations/{ReservationId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateReservationRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Reservation: S.optional(__S(516, __c64, 4)) }).pipe(
-          S.encodeKeys({ Reservation: "reservation" }),
-        ),
-      ).annotate({
-        identifier: "UpdateReservationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Mode: S.optional(S.String),
-          Name: S.optional(S.String),
-          SdiSourceId: S.String.pipe(T.HttpLabel("SdiSourceId")),
-          Type: S.optional(S.String),
-        })
-          .pipe(S.encodeKeys({ Mode: "mode", Name: "name", Type: "type" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/prod/sdiSources/{SdiSourceId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateSdiSourceRequest" });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ElementPath: S.optional(S.String), ErrorMessage: S.optional(S.String) }).pipe(
-          S.encodeKeys({ ElementPath: "elementPath", ErrorMessage: "errorMessage" }),
-        ),
-      ).annotate({ identifier: "ValidationError" });
-    case 1:
-      return S.Array(__S(576, __c72, 0));
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

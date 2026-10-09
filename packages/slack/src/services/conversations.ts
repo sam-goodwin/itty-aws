@@ -505,8 +505,8 @@ export const approveRequestSharedInvite: API.OperationMethod<
   ApproveRequestSharedInviteError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ApproveRequestSharedInviteRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ApproveRequestSharedInviteResponse>,
+  input: __S(5, __c1, 1) as any as S.Schema<ApproveRequestSharedInviteRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<ApproveRequestSharedInviteResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -520,8 +520,8 @@ export const approveSharedInvite: API.OperationMethod<
   ApproveSharedInviteError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ApproveSharedInviteRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ApproveSharedInviteResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<ApproveSharedInviteRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<ApproveSharedInviteResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -535,8 +535,8 @@ export const archiveConversation: API.OperationMethod<
   ArchiveConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ArchiveConversationRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ArchiveConversationResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<ArchiveConversationRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<ArchiveConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -550,8 +550,8 @@ export const conversationsClose: API.OperationMethod<
   ConversationsCloseError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ConversationsCloseRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ConversationsCloseResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<ConversationsCloseRequest>,
+  output: __S(101, __c25, 1) as any as S.Schema<ConversationsCloseResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -567,8 +567,8 @@ export const conversationsHistory: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(10, __c1, 2) as any as S.Schema<ConversationsHistoryRequest>,
-    output: __S(16, __c2, 0) as any as S.Schema<ConversationsHistoryResponse>,
+    input: __S(104, __c26, 0) as any as S.Schema<ConversationsHistoryRequest>,
+    output: __S(106, __c26, 2) as any as S.Schema<ConversationsHistoryResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -591,8 +591,8 @@ export const conversationsInfo: API.OperationMethod<
   ConversationsInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ConversationsInfoRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ConversationsInfoResponse>,
+  input: __S(124, __c31, 0) as any as S.Schema<ConversationsInfoRequest>,
+  output: __S(125, __c31, 1) as any as S.Schema<ConversationsInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -606,8 +606,8 @@ export const conversationsKick: API.OperationMethod<
   ConversationsKickError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ConversationsKickRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ConversationsKickResponse>,
+  input: __S(128, __c32, 0) as any as S.Schema<ConversationsKickRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<ConversationsKickResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -621,8 +621,8 @@ export const conversationsMark: API.OperationMethod<
   ConversationsMarkError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ConversationsMarkRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ConversationsMarkResponse>,
+  input: __S(132, __c33, 0) as any as S.Schema<ConversationsMarkRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<ConversationsMarkResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -638,8 +638,8 @@ export const conversationsMembers: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(21, __c2, 5) as any as S.Schema<ConversationsMembersRequest>,
-    output: __S(22, __c2, 6) as any as S.Schema<ConversationsMembersResponse>,
+    input: __S(136, __c34, 0) as any as S.Schema<ConversationsMembersRequest>,
+    output: __S(137, __c34, 1) as any as S.Schema<ConversationsMembersResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -662,8 +662,8 @@ export const conversationsOpen: API.OperationMethod<
   ConversationsOpenError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ConversationsOpenRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ConversationsOpenResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ConversationsOpenRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<ConversationsOpenResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -679,8 +679,8 @@ export const conversationsReplies: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(25, __c3, 1) as any as S.Schema<ConversationsRepliesRequest>,
-    output: __S(26, __c3, 2) as any as S.Schema<ConversationsRepliesResponse>,
+    input: __S(12, __c3, 0) as any as S.Schema<ConversationsRepliesRequest>,
+    output: __S(13, __c3, 1) as any as S.Schema<ConversationsRepliesResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -703,8 +703,8 @@ export const createCanvase: API.OperationMethod<
   CreateCanvaseError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateCanvaseRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateCanvaseResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<CreateCanvaseRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<CreateCanvaseResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -718,8 +718,8 @@ export const createConversation: API.OperationMethod<
   CreateConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateConversationRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CreateConversationResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<CreateConversationRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<CreateConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -733,8 +733,8 @@ export const inviteConversation: API.OperationMethod<
   InviteConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<InviteConversationRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<InviteConversationResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<InviteConversationRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<InviteConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -748,8 +748,8 @@ export const inviteDeclineShared: API.OperationMethod<
   InviteDeclineSharedError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<InviteDeclineSharedRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<InviteDeclineSharedResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<InviteDeclineSharedRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<InviteDeclineSharedResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -763,8 +763,8 @@ export const inviteShared: API.OperationMethod<
   InviteSharedError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<InviteSharedRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<InviteSharedResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<InviteSharedRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<InviteSharedResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -778,8 +778,8 @@ export const joinConversation: API.OperationMethod<
   JoinConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<JoinConversationRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<JoinConversationResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<JoinConversationRequest>,
+  output: __S(42, __c10, 2) as any as S.Schema<JoinConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -793,8 +793,8 @@ export const leaveConversation: API.OperationMethod<
   LeaveConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<LeaveConversationRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<LeaveConversationResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<LeaveConversationRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<LeaveConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -810,8 +810,8 @@ export const listConnectInvites: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(41, __c5, 1) as any as S.Schema<ListConnectInvitesRequest>,
-    output: __S(42, __c5, 2) as any as S.Schema<ListConnectInvitesResponse>,
+    input: __S(48, __c12, 0) as any as S.Schema<ListConnectInvitesRequest>,
+    output: __S(49, __c12, 1) as any as S.Schema<ListConnectInvitesResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -835,8 +835,8 @@ export const listConversations: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(43, __c5, 3) as any as S.Schema<ListConversationsRequest>,
-    output: __S(44, __c5, 4) as any as S.Schema<ListConversationsResponse>,
+    input: __S(60, __c15, 0) as any as S.Schema<ListConversationsRequest>,
+    output: __S(61, __c15, 1) as any as S.Schema<ListConversationsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -861,8 +861,8 @@ export const listRequestSharedInvite: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(45, __c5, 5) as any as S.Schema<ListRequestSharedInviteRequest>,
-    output: __S(46, __c5, 6) as any as S.Schema<ListRequestSharedInviteResponse>,
+    input: __S(64, __c16, 0) as any as S.Schema<ListRequestSharedInviteRequest>,
+    output: __S(65, __c16, 1) as any as S.Schema<ListRequestSharedInviteResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -885,8 +885,8 @@ export const renameConversation: API.OperationMethod<
   RenameConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<RenameConversationRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<RenameConversationResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<RenameConversationRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<RenameConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -900,8 +900,8 @@ export const requestSharedInviteDeny: API.OperationMethod<
   RequestSharedInviteDenyError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<RequestSharedInviteDenyRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<RequestSharedInviteDenyResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<RequestSharedInviteDenyRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<RequestSharedInviteDenyResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -915,8 +915,8 @@ export const setExternalInvitePermissions: API.OperationMethod<
   SetExternalInvitePermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<SetExternalInvitePermissionsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<SetExternalInvitePermissionsResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<SetExternalInvitePermissionsRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<SetExternalInvitePermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -930,8 +930,8 @@ export const setPurpose: API.OperationMethod<
   SetPurposeError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<SetPurposeRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<SetPurposeResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<SetPurposeRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<SetPurposeResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -945,8 +945,8 @@ export const setTopic: API.OperationMethod<
   SetTopicError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<SetTopicRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<SetTopicResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<SetTopicRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<SetTopicResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -960,8 +960,8 @@ export const unarchiveConversation: API.OperationMethod<
   UnarchiveConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<UnarchiveConversationRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UnarchiveConversationResponse>,
+  input: __S(92, __c23, 0) as any as S.Schema<UnarchiveConversationRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<UnarchiveConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -995,7 +995,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AcceptSharedInviteResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           text: S.String,
@@ -1004,20 +1008,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApproveRequestSharedInviteRequestMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           invite_id: S.String,
           is_external_limited: S.optional(S.Boolean),
           channel_id: S.optional(S.String),
-          message: S.optional(__S(2, __c0, 2)),
+          message: S.optional(__S(4, __c1, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/conversations.requestSharedInvite.approve", code: 200 }),
         ),
       ).annotate({
         identifier: "ApproveRequestSharedInviteRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -1028,7 +1032,245 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApproveRequestSharedInviteResponse",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.optional(S.NullOr(S.String)),
+          return_im: S.optional(S.Boolean),
+          users: S.optional(S.String),
+          prevent_creation: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/conversations.open", code: 200 })),
+      ).annotate({ identifier: "ConversationsOpenRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          already_open: S.optional(S.Boolean),
+          no_op: S.optional(S.Boolean),
+          channel: S.optional(S.Unknown),
+          app_home: S.optional(S.Unknown),
+          home_view: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({
+        identifier: "ConversationsOpenResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String.pipe(T.Query()),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          include_all_metadata: S.optional(S.Boolean.pipe(T.Query())),
+          inclusive: S.optional(S.Boolean.pipe(T.Query())),
+          latest: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          oldest: S.optional(S.String.pipe(T.Query())),
+          ts: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/conversations.replies", code: 200 })),
+      ).annotate({
+        identifier: "ConversationsRepliesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          has_more: S.optional(S.Boolean),
+          messages: __S(112, __c28, 0),
+          latest_updates: S.optional(__S(108, __c27, 0)),
+          unchanged_messages: S.optional(__S(116, __c29, 0)),
+          response_metadata: S.optional(__S(120, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "ConversationsRepliesResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String,
+          document_content: S.optional(S.Unknown),
+          title: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/conversations.canvases.create", code: 200 })),
+      ).annotate({ identifier: "CreateCanvaseRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          canvas_id: S.String,
+        }),
+      ).annotate({ identifier: "CreateCanvaseResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          is_private: S.optional(S.Boolean),
+          name: S.String,
+          team_id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/conversations.create", code: 200 })),
+      ).annotate({
+        identifier: "CreateConversationRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          channel: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateConversationResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+          force: S.optional(S.Boolean),
+          users: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/conversations.invite", code: 200 })),
+      ).annotate({
+        identifier: "InviteConversationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          channel: S.optional(S.Unknown),
+          group: S.optional(S.Unknown),
+          errors: S.optional(__S(112, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "InviteConversationResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          invite_id: S.String.pipe(T.Query()),
+          target_team: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/conversations.declineSharedInvite", code: 200 })),
+      ).annotate({
+        identifier: "InviteDeclineSharedRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+          emails: S.optional(__S(116, __c29, 0)),
+          user_ids: S.optional(__S(116, __c29, 0)),
+          external_limited: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/conversations.inviteShared", code: 200 })),
+      ).annotate({ identifier: "InviteSharedRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          url: S.optional(S.String),
+          invite_id: S.optional(S.String),
+          conf_code: S.optional(S.String),
+          is_legacy_shared_channel: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "InviteSharedResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/conversations.join", code: 200 })),
+      ).annotate({ identifier: "JoinConversationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          warnings: S.optional(__S(116, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "JoinConversationResponseResponseMetadata",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          channel: S.Unknown,
+          response_metadata: S.optional(__S(41, __c10, 1)),
+        }),
+      ).annotate({ identifier: "JoinConversationResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/conversations.leave", code: 200 })),
+      ).annotate({ identifier: "LeaveConversationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          not_in_channel: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "LeaveConversationResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.optional(S.String),
+          count: S.optional(S.Number),
+          cursor: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/conversations.listConnectInvites", code: 200 })),
+      ).annotate({
+        identifier: "ListConnectInvitesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          invites: __S(112, __c28, 0),
+          response_metadata: S.optional(__S(120, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "ListConnectInvitesResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invite_id: S.String,
@@ -1037,7 +1279,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApproveSharedInviteRequest",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -1045,7 +1291,159 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApproveSharedInviteResponse",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cursor: S.optional(S.String.pipe(T.Query())),
+          exclude_archived: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          team_id: S.optional(S.String.pipe(T.Query())),
+          types: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/conversations.list", code: 200 })),
+      ).annotate({ identifier: "ListConversationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          channels: __S(112, __c28, 0),
+          response_metadata: S.optional(__S(120, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "ListConversationsResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.optional(S.String),
+          include_expired: S.optional(S.Boolean),
+          include_approved: S.optional(S.Boolean),
+          include_denied: S.optional(S.Boolean),
+          invite_ids: S.optional(__S(116, __c29, 0)),
+          limit: S.optional(S.Number),
+          cursor: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/conversations.requestSharedInvite.list", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListRequestSharedInviteRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          invite_requests: __S(112, __c28, 0),
+          response_metadata: S.optional(__S(120, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "ListRequestSharedInviteResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/conversations.rename", code: 200 })),
+      ).annotate({
+        identifier: "RenameConversationRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          invite_id: S.String,
+          message: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/conversations.requestSharedInvite.deny", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RequestSharedInviteDenyRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+          target_team: S.String,
+          action: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/conversations.externalInvitePermissions.set",
+            code: 200,
+            contentType: "form-urlencoded",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetExternalInvitePermissionsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+          purpose: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/conversations.setPurpose", code: 200 })),
+      ).annotate({ identifier: "SetPurposeRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          channel: S.Unknown,
+        }),
+      ).annotate({ identifier: "SetPurposeResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+          topic: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/conversations.setTopic", code: 200 })),
+      ).annotate({ identifier: "SetTopicRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/conversations.unarchive", code: 200 })),
+      ).annotate({
+        identifier: "UnarchiveConversationRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
@@ -1055,7 +1453,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1075,7 +1473,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ConversationsCloseResponse",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.String.pipe(T.Query()),
@@ -1089,21 +1491,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ConversationsHistoryRequest",
       });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          next_cursor: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConversationsHistoryResponseResponseMetadata",
-      });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           latest: S.String,
@@ -1113,38 +1501,68 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ConversationsHistoryResponseMutationTimestamps",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          messages: __S(11, __c1, 3),
+          messages: __S(112, __c28, 0),
           has_more: S.Boolean,
           pin_count: S.optional(S.Number),
           channel_actions_ts: S.Unknown,
           channel_actions_count: S.Number,
-          response_metadata: S.optional(__S(12, __c1, 4)),
+          response_metadata: S.optional(__S(120, __c30, 0)),
           oldest: S.optional(S.String),
           is_limited: S.optional(S.Boolean),
           latest: S.optional(S.String),
           unread_count_display: S.optional(S.Number),
-          users: S.optional(__S(13, __c1, 5)),
-          deleted: S.optional(__S(14, __c1, 6)),
-          mutation_timestamps: S.optional(__S(15, __c1, 7)),
+          users: S.optional(__S(108, __c27, 0)),
+          deleted: S.optional(__S(116, __c29, 0)),
+          mutation_timestamps: S.optional(__S(105, __c26, 1)),
           deleted_overflow: S.optional(S.Boolean),
-          warnings: S.optional(__S(14, __c1, 6)),
+          warnings: S.optional(__S(116, __c29, 0)),
           next_ts: S.optional(S.Number),
-          latest_updates: S.optional(__S(13, __c1, 5)),
-          unchanged_messages: S.optional(__S(14, __c1, 6)),
+          latest_updates: S.optional(__S(108, __c27, 0)),
+          unchanged_messages: S.optional(__S(116, __c29, 0)),
           date_joined: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ConversationsHistoryResponse",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          next_cursor: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConversationsHistoryResponseResponseMetadata",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.String.pipe(T.Query()),
@@ -1152,7 +1570,7 @@ function __c2(j: number): any {
           include_num_members: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/conversations.info", code: 200 })),
       ).annotate({ identifier: "ConversationsInfoRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -1163,21 +1581,33 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ConversationsInfoResponse",
       });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
           user: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/conversations.kick", code: 200 })),
       ).annotate({ identifier: "ConversationsKickRequest" });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
           ts: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/conversations.mark", code: 200 })),
       ).annotate({ identifier: "ConversationsMarkRequest" });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.String.pipe(T.Query()),
@@ -1187,337 +1617,18 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ConversationsMembersRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          members: __S(14, __c1, 6),
-          response_metadata: S.optional(__S(12, __c1, 4)),
+          members: __S(116, __c29, 0),
+          response_metadata: S.optional(__S(120, __c30, 0)),
         }),
       ).annotate({
         identifier: "ConversationsMembersResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.optional(S.NullOr(S.String)),
-          return_im: S.optional(S.Boolean),
-          users: S.optional(S.String),
-          prevent_creation: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/conversations.open", code: 200 })),
-      ).annotate({ identifier: "ConversationsOpenRequest" });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          already_open: S.optional(S.Boolean),
-          no_op: S.optional(S.Boolean),
-          channel: S.optional(S.Unknown),
-          app_home: S.optional(S.Unknown),
-          home_view: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({
-        identifier: "ConversationsOpenResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String.pipe(T.Query()),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          include_all_metadata: S.optional(S.Boolean.pipe(T.Query())),
-          inclusive: S.optional(S.Boolean.pipe(T.Query())),
-          latest: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          oldest: S.optional(S.String.pipe(T.Query())),
-          ts: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/conversations.replies", code: 200 })),
-      ).annotate({
-        identifier: "ConversationsRepliesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          has_more: S.optional(S.Boolean),
-          messages: __S(11, __c1, 3),
-          latest_updates: S.optional(__S(13, __c1, 5)),
-          unchanged_messages: S.optional(__S(14, __c1, 6)),
-          response_metadata: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "ConversationsRepliesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String,
-          document_content: S.optional(S.Unknown),
-          title: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/conversations.canvases.create", code: 200 })),
-      ).annotate({ identifier: "CreateCanvaseRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          canvas_id: S.String,
-        }),
-      ).annotate({ identifier: "CreateCanvaseResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          is_private: S.optional(S.Boolean),
-          name: S.String,
-          team_id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/conversations.create", code: 200 })),
-      ).annotate({
-        identifier: "CreateConversationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          channel: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateConversationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-          force: S.optional(S.Boolean),
-          users: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/conversations.invite", code: 200 })),
-      ).annotate({
-        identifier: "InviteConversationRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          channel: S.optional(S.Unknown),
-          group: S.optional(S.Unknown),
-          errors: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "InviteConversationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          invite_id: S.String.pipe(T.Query()),
-          target_team: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/conversations.declineSharedInvite", code: 200 })),
-      ).annotate({
-        identifier: "InviteDeclineSharedRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-          emails: S.optional(__S(14, __c1, 6)),
-          user_ids: S.optional(__S(14, __c1, 6)),
-          external_limited: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/conversations.inviteShared", code: 200 })),
-      ).annotate({ identifier: "InviteSharedRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          url: S.optional(S.String),
-          invite_id: S.optional(S.String),
-          conf_code: S.optional(S.String),
-          is_legacy_shared_channel: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "InviteSharedResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/conversations.join", code: 200 })),
-      ).annotate({ identifier: "JoinConversationRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          warnings: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "JoinConversationResponseResponseMetadata",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          channel: S.Unknown,
-          response_metadata: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "JoinConversationResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/conversations.leave", code: 200 })),
-      ).annotate({ identifier: "LeaveConversationRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          not_in_channel: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "LeaveConversationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.optional(S.String),
-          count: S.optional(S.Number),
-          cursor: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/conversations.listConnectInvites", code: 200 })),
-      ).annotate({
-        identifier: "ListConnectInvitesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          invites: __S(11, __c1, 3),
-          response_metadata: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "ListConnectInvitesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cursor: S.optional(S.String.pipe(T.Query())),
-          exclude_archived: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          team_id: S.optional(S.String.pipe(T.Query())),
-          types: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/conversations.list", code: 200 })),
-      ).annotate({ identifier: "ListConversationsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          channels: __S(11, __c1, 3),
-          response_metadata: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "ListConversationsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.optional(S.String),
-          include_expired: S.optional(S.Boolean),
-          include_approved: S.optional(S.Boolean),
-          include_denied: S.optional(S.Boolean),
-          invite_ids: S.optional(__S(14, __c1, 6)),
-          limit: S.optional(S.Number),
-          cursor: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/conversations.requestSharedInvite.list", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListRequestSharedInviteRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          invite_requests: __S(11, __c1, 3),
-          response_metadata: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "ListRequestSharedInviteResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/conversations.rename", code: 200 })),
-      ).annotate({
-        identifier: "RenameConversationRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          invite_id: S.String,
-          message: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/conversations.requestSharedInvite.deny", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RequestSharedInviteDenyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-          target_team: S.String,
-          action: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/conversations.externalInvitePermissions.set",
-            code: 200,
-            contentType: "form-urlencoded",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetExternalInvitePermissionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-          purpose: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/conversations.setPurpose", code: 200 })),
-      ).annotate({ identifier: "SetPurposeRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          channel: S.Unknown,
-        }),
-      ).annotate({ identifier: "SetPurposeResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-          topic: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/conversations.setTopic", code: 200 })),
-      ).annotate({ identifier: "SetTopicRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/conversations.unarchive", code: 200 })),
-      ).annotate({
-        identifier: "UnarchiveConversationRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

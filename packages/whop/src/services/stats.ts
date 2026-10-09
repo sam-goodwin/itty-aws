@@ -352,8 +352,8 @@ export const getMetric: API.OperationMethod<
   GetMetricError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetMetricRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetMetricResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<GetMetricRequest>,
+  output: __S(14, __c0, 14) as any as S.Schema<GetMetricResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -367,8 +367,8 @@ export const listMetrics: API.OperationMethod<
   ListMetricsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListMetricsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListMetricsResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListMetricsRequest>,
+  output: __S(35, __c2, 3) as any as S.Schema<ListMetricsResponse>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -378,8 +378,6 @@ export const listMetrics: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           app_build_id: S.optional(S.String),
@@ -401,22 +399,22 @@ function __c0(j: number): any {
           variant: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunnelStep" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          _1: __S(1, __c0, 1).pipe(T.Body("1")),
-          _2: __S(1, __c0, 1).pipe(T.Body("2")),
-          _3: S.optional(__S(1, __c0, 1).pipe(T.Body("3"))),
-          _4: S.optional(__S(1, __c0, 1).pipe(T.Body("4"))),
-          _5: S.optional(__S(1, __c0, 1).pipe(T.Body("5"))),
-          _6: S.optional(__S(1, __c0, 1).pipe(T.Body("6"))),
-          _7: S.optional(__S(1, __c0, 1).pipe(T.Body("7"))),
-          _8: S.optional(__S(1, __c0, 1).pipe(T.Body("8"))),
-          _9: S.optional(__S(1, __c0, 1).pipe(T.Body("9"))),
-          _10: S.optional(__S(1, __c0, 1).pipe(T.Body("10"))),
+          _1: __S(0, __c0, 0).pipe(T.Body("1")),
+          _2: __S(0, __c0, 0).pipe(T.Body("2")),
+          _3: S.optional(__S(0, __c0, 0).pipe(T.Body("3"))),
+          _4: S.optional(__S(0, __c0, 0).pipe(T.Body("4"))),
+          _5: S.optional(__S(0, __c0, 0).pipe(T.Body("5"))),
+          _6: S.optional(__S(0, __c0, 0).pipe(T.Body("6"))),
+          _7: S.optional(__S(0, __c0, 0).pipe(T.Body("7"))),
+          _8: S.optional(__S(0, __c0, 0).pipe(T.Body("8"))),
+          _9: S.optional(__S(0, __c0, 0).pipe(T.Body("9"))),
+          _10: S.optional(__S(0, __c0, 0).pipe(T.Body("10"))),
         }),
       ).annotate({ identifier: "GetMetricRequestSteps" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           metric: S.String.pipe(T.Label()),
@@ -449,14 +447,14 @@ function __c0(j: number): any {
           access_level: S.optional(S.String.pipe(T.Query())),
           most_recent_action: S.optional(S.String.pipe(T.Query())),
           referred_user_id: S.optional(S.String.pipe(T.Query())),
-          ad_campaign_ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          ad_group_ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          ad_ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          ad_campaign_ids: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          ad_group_ids: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          ad_ids: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           snapshot_window: S.optional(S.String.pipe(T.Query())),
           event: S.optional(S.String.pipe(T.Query())),
           conversion_window: S.optional(S.String.pipe(T.Query())),
           mature_only: S.optional(S.Boolean.pipe(T.Query())),
-          steps: S.optional(__S(2, __c0, 2).pipe(T.Query())),
+          steps: S.optional(__S(1, __c0, 1).pipe(T.Query())),
           compare_to: S.optional(S.String.pipe(T.Query())),
           confidence_level: S.optional(S.Number.pipe(T.Query())),
           contactable: S.optional(S.Boolean.pipe(T.Query())),
@@ -488,7 +486,7 @@ function __c0(j: number): any {
           event_count_lte: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/stats/{metric}", code: 200 })),
       ).annotate({ identifier: "GetMetricRequest" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           conversion_rate: S.NullOr(S.Number),
@@ -496,81 +494,83 @@ function __c0(j: number): any {
           step: S.Number,
         }),
       ).annotate({ identifier: "FunnelStepResult" });
+    case 4:
+      return S.Array(__S(3, __c0, 3));
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          steps: S.optional(__S(5, __c0, 5)),
+          steps: S.optional(__S(4, __c0, 4)),
           value: S.NullOr(S.Number),
         }),
       ).annotate({
         identifier: "GetMetricResponseDataPointsItemBreakdownItem",
       });
+    case 6:
+      return S.Array(__S(5, __c0, 5));
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          breakdown: S.optional(__S(7, __c0, 7)),
-          steps: S.optional(__S(5, __c0, 5)),
+          breakdown: S.optional(__S(6, __c0, 6)),
+          steps: S.optional(__S(4, __c0, 4)),
           timestamp: S.Number,
           value: S.NullOr(S.Number),
         }),
       ).annotate({
         identifier: "GetMetricResponseDataPointsItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(7, __c0, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           lower: S.Number,
           upper: S.Number,
         }),
       ).annotate({ identifier: "FunnelConfidenceInterval" });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           baseline: S.String,
-          difference_confidence_interval: S.NullOr(__S(10, __c1, 2)),
+          difference_confidence_interval: S.NullOr(__S(9, __c0, 9)),
           difference_percentage_points: S.Number,
           relative_lift_percent: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "FunnelComparison" });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          comparison: S.optional(S.NullOr(__S(11, __c1, 3))),
-          confidence_interval: S.optional(S.NullOr(__S(10, __c1, 2))),
+          comparison: S.optional(S.NullOr(__S(10, __c0, 10))),
+          confidence_interval: S.optional(S.NullOr(__S(9, __c0, 9))),
           name: S.String,
-          steps: S.optional(__S(5, __c0, 5)),
+          steps: S.optional(__S(4, __c0, 4)),
           value: S.NullOr(S.Number),
         }),
       ).annotate({
         identifier: "GetMetricResponseDataTotalsItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(11, __c0, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           currency: S.optional(S.NullOr(S.String)),
-          points: __S(9, __c1, 1),
-          totals: S.optional(S.NullOr(__S(13, __c1, 5))),
+          points: __S(8, __c0, 8),
+          totals: S.optional(S.NullOr(__S(12, __c0, 12))),
         }),
       ).annotate({ identifier: "GetMetricResponseData" });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          data: __S(14, __c1, 6),
+          data: __S(13, __c0, 13),
         }),
       ).annotate({ identifier: "GetMetricResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
@@ -582,28 +582,27 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          breakdowns: S.optional(__S(0, __c0, 0)),
+          breakdowns: S.optional(__S(16, __c1, 0)),
           description: S.String,
           key: S.String,
           name: S.String,
-          properties: __S(0, __c0, 0),
+          properties: __S(16, __c1, 0),
           unit: S.String,
-          windows: S.optional(__S(0, __c0, 0)),
+          windows: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({
         identifier: "ListMetricsResponseDataItem",
       });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(33, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(18, __c2, 2),
+          data: __S(34, __c2, 2),
         }),
       ).annotate({ identifier: "ListMetricsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

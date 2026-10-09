@@ -113,8 +113,8 @@ export const createStream: API.OperationMethod<
   CreateStreamError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateStreamRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<StreamInfo>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateStreamRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<StreamInfo>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -128,8 +128,8 @@ export const deleteStream: API.OperationMethod<
   DeleteStreamError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteStreamRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteStreamResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteStreamRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<DeleteStreamResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -143,8 +143,8 @@ export const ensureStream: API.OperationMethod<
   EnsureStreamError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<EnsureStreamRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<StreamInfo>,
+  input: __S(16, __c4, 0) as any as S.Schema<EnsureStreamRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<StreamInfo>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -158,8 +158,8 @@ export const getStreamConfig: API.OperationMethod<
   GetStreamConfigError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetStreamConfigRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<StreamConfig>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetStreamConfigRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<StreamConfig>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -175,8 +175,8 @@ export const listStreams: API.PaginatedOperationMethod<
   StreamInfo
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(9, __c1, 1) as any as S.Schema<ListStreamsRequest>,
-    output: __S(11, __c1, 3) as any as S.Schema<ListStreamsResponse>,
+    input: __S(24, __c6, 0) as any as S.Schema<ListStreamsRequest>,
+    output: __S(26, __c6, 2) as any as S.Schema<ListStreamsResponse>,
     errors: [UnknownS2Error],
     protocol: S2Protocol,
     retry: Retry.Retry,
@@ -199,8 +199,8 @@ export const reconfigureStream: API.OperationMethod<
   ReconfigureStreamError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ReconfigureStreamRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<StreamConfig>,
+  input: __S(30, __c7, 2) as any as S.Schema<ReconfigureStreamRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<StreamConfig>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -208,6 +208,18 @@ export const reconfigureStream: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          s2RequestToken: S.optional(S.String.pipe(T.Header("s2-request-token"))),
+          config: S.optional(S.NullOr(__S(6, __c1, 2))),
+          stream: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/streams", code: 200 })),
+      ).annotate({ identifier: "CreateStreamRequest" });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -225,21 +237,17 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          delete_on_empty: S.optional(S.NullOr(__S(0, __c0, 0))),
+          delete_on_empty: S.optional(S.NullOr(__S(4, __c1, 0))),
           retention_policy: S.optional(S.NullOr(S.Unknown)),
           storage_class: S.optional(S.NullOr(S.String)),
-          timestamping: S.optional(S.NullOr(__S(1, __c0, 1))),
+          timestamping: S.optional(S.NullOr(__S(5, __c1, 1))),
         }),
       ).annotate({ identifier: "StreamConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          s2RequestToken: S.optional(S.String.pipe(T.Header("s2-request-token"))),
-          config: S.optional(S.NullOr(__S(2, __c0, 2))),
-          stream: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/streams", code: 200 })),
-      ).annotate({ identifier: "CreateStreamRequest" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cipher: S.optional(S.NullOr(S.String)),
@@ -248,26 +256,34 @@ function __c0(j: number): any {
           name: S.String,
         }),
       ).annotate({ identifier: "StreamInfo" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           stream: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/streams/{stream}", code: 200 })),
       ).annotate({ identifier: "DeleteStreamRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteStreamResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           stream: S.String.pipe(T.Label()),
-          body: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.HttpBody())),
+          body: S.optional(S.NullOr(__S(6, __c1, 2)).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/streams/{stream}", code: 200 })),
       ).annotate({ identifier: "EnsureStreamRequest" });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -275,7 +291,11 @@ function __c1(j: number): any {
           stream: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/streams/{stream}", code: 200 })),
       ).annotate({ identifier: "GetStreamConfigRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String.pipe(T.Query())),
@@ -283,16 +303,20 @@ function __c1(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/streams", code: 200 })),
       ).annotate({ identifier: "ListStreamsRequest" });
+    case 1:
+      return S.Array(__S(8, __c2, 0));
     case 2:
-      return S.Array(__S(4, __c0, 4));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           has_more: S.Boolean,
-          streams: __S(10, __c1, 2),
+          streams: __S(25, __c6, 1),
         }),
       ).annotate({ identifier: "ListStreamsResponse" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           min_age_secs: S.optional(S.NullOr(S.Number)),
@@ -300,7 +324,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteOnEmptyReconfiguration",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.NullOr(S.String)),
@@ -309,19 +333,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "TimestampingReconfiguration",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           stream: S.String.pipe(T.Label()),
-          delete_on_empty: S.optional(S.NullOr(__S(12, __c1, 4))),
+          delete_on_empty: S.optional(S.NullOr(__S(28, __c7, 0))),
           retention_policy: S.optional(S.NullOr(S.Unknown)),
           storage_class: S.optional(S.NullOr(S.String)),
-          timestamping: S.optional(S.NullOr(__S(13, __c1, 5))),
+          timestamping: S.optional(S.NullOr(__S(29, __c7, 1))),
         }).pipe(T.Http({ method: "PATCH", uri: "/streams/{stream}", code: 200 })),
       ).annotate({ identifier: "ReconfigureStreamRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

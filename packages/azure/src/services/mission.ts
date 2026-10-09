@@ -2640,8 +2640,8 @@ export const ApprovalCreateOrUpdate: API.OperationMethod<
   ApprovalCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ApprovalCreateOrUpdateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ApprovalCreateOrUpdateResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<ApprovalCreateOrUpdateRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ApprovalCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2655,8 +2655,8 @@ export const CheckCommunityAddressSpaceAvailability: API.OperationMethod<
   CheckCommunityAddressSpaceAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CheckCommunityAddressSpaceAvailabilityRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CheckAddressSpaceAvailabilityResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<CheckCommunityAddressSpaceAvailabilityRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<CheckAddressSpaceAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2670,8 +2670,8 @@ export const CommunityCreateOrUpdate: API.OperationMethod<
   CommunityCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CommunityCreateOrUpdateRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<CommunityCreateOrUpdateResponse>,
+  input: __S(337, __c21, 1) as any as S.Schema<CommunityCreateOrUpdateRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<CommunityCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2685,8 +2685,8 @@ export const CommunityEndpointsCreateOrUpdate: API.OperationMethod<
   CommunityEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CommunityEndpointsCreateOrUpdateRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CommunityEndpointsCreateOrUpdateResponse>,
+  input: __S(769, __c48, 1) as any as S.Schema<CommunityEndpointsCreateOrUpdateRequest>,
+  output: __S(803, __c50, 3) as any as S.Schema<CommunityEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2700,8 +2700,8 @@ export const CommunityEndpointsHandleApprovalCreation: API.OperationMethod<
   CommunityEndpointsHandleApprovalCreationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CommunityEndpointsHandleApprovalCreationRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<CommunityEndpointsHandleApprovalCreationRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2715,8 +2715,8 @@ export const CommunityEndpointsHandleApprovalDeletion: API.OperationMethod<
   CommunityEndpointsHandleApprovalDeletionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CommunityEndpointsHandleApprovalDeletionRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<CommunityEndpointsHandleApprovalDeletionRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2730,8 +2730,8 @@ export const DedicatedHubCreateOrUpdate: API.OperationMethod<
   DedicatedHubCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DedicatedHubCreateOrUpdateRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<DedicatedHubCreateOrUpdateResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<DedicatedHubCreateOrUpdateRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<DedicatedHubCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2745,8 +2745,8 @@ export const DeleteApproval: API.OperationMethod<
   DeleteApprovalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteApprovalRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteApprovalResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<DeleteApprovalRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteApprovalResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2760,8 +2760,8 @@ export const DeleteCommunity: API.OperationMethod<
   DeleteCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteCommunityRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteCommunityResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<DeleteCommunityRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2775,8 +2775,8 @@ export const DeleteCommunityEndpoint: API.OperationMethod<
   DeleteCommunityEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteCommunityEndpointRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeleteCommunityEndpointResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<DeleteCommunityEndpointRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<DeleteCommunityEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2790,8 +2790,8 @@ export const DeleteDedicatedHub: API.OperationMethod<
   DeleteDedicatedHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteDedicatedHubRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteDedicatedHubResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteDedicatedHubRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteDedicatedHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2805,8 +2805,8 @@ export const DeleteEnclaveConnection: API.OperationMethod<
   DeleteEnclaveConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteEnclaveConnectionRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DeleteEnclaveConnectionResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteEnclaveConnectionRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<DeleteEnclaveConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2820,8 +2820,8 @@ export const DeleteEnclaveEndpoint: API.OperationMethod<
   DeleteEnclaveEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteEnclaveEndpointRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteEnclaveEndpointResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteEnclaveEndpointRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteEnclaveEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2835,8 +2835,8 @@ export const DeleteTransitHub: API.OperationMethod<
   DeleteTransitHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteTransitHubRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteTransitHubResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteTransitHubRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteTransitHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2850,8 +2850,8 @@ export const DeleteVirtualEnclave: API.OperationMethod<
   DeleteVirtualEnclaveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteVirtualEnclaveRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteVirtualEnclaveResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteVirtualEnclaveRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteVirtualEnclaveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2865,8 +2865,8 @@ export const DeleteWorkload: API.OperationMethod<
   DeleteWorkloadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteWorkloadRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteWorkloadResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteWorkloadRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DeleteWorkloadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2880,8 +2880,8 @@ export const EnclaveConnectionCreateOrUpdate: API.OperationMethod<
   EnclaveConnectionCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<EnclaveConnectionCreateOrUpdateRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<EnclaveConnectionCreateOrUpdateResponse>,
+  input: __S(225, __c14, 1) as any as S.Schema<EnclaveConnectionCreateOrUpdateRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<EnclaveConnectionCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2895,8 +2895,8 @@ export const EnclaveConnectionHandleApprovalCreation: API.OperationMethod<
   EnclaveConnectionHandleApprovalCreationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<EnclaveConnectionHandleApprovalCreationRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<EnclaveConnectionHandleApprovalCreationRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2910,8 +2910,8 @@ export const EnclaveConnectionHandleApprovalDeletion: API.OperationMethod<
   EnclaveConnectionHandleApprovalDeletionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<EnclaveConnectionHandleApprovalDeletionRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<EnclaveConnectionHandleApprovalDeletionRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2925,8 +2925,8 @@ export const EnclaveEndpointsCreateOrUpdate: API.OperationMethod<
   EnclaveEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<EnclaveEndpointsCreateOrUpdateRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<EnclaveEndpointsCreateOrUpdateResponse>,
+  input: __S(289, __c18, 1) as any as S.Schema<EnclaveEndpointsCreateOrUpdateRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<EnclaveEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2940,8 +2940,8 @@ export const EnclaveEndpointsHandleApprovalCreation: API.OperationMethod<
   EnclaveEndpointsHandleApprovalCreationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<EnclaveEndpointsHandleApprovalCreationRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<EnclaveEndpointsHandleApprovalCreationRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2955,8 +2955,8 @@ export const EnclaveEndpointsHandleApprovalDeletion: API.OperationMethod<
   EnclaveEndpointsHandleApprovalDeletionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<EnclaveEndpointsHandleApprovalDeletionRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<EnclaveEndpointsHandleApprovalDeletionRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2970,8 +2970,8 @@ export const GetApproval: API.OperationMethod<
   GetApprovalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetApprovalRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GetApprovalResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetApprovalRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<GetApprovalResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2985,8 +2985,8 @@ export const GetCommunity: API.OperationMethod<
   GetCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetCommunityRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<GetCommunityResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetCommunityRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<GetCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3000,8 +3000,8 @@ export const GetCommunityEndpoint: API.OperationMethod<
   GetCommunityEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetCommunityEndpointRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetCommunityEndpointResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetCommunityEndpointRequest>,
+  output: __S(803, __c50, 3) as any as S.Schema<GetCommunityEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3015,8 +3015,8 @@ export const GetDedicatedHub: API.OperationMethod<
   GetDedicatedHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetDedicatedHubRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetDedicatedHubResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetDedicatedHubRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<GetDedicatedHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3030,8 +3030,8 @@ export const GetEnclaveConnection: API.OperationMethod<
   GetEnclaveConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetEnclaveConnectionRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GetEnclaveConnectionResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<GetEnclaveConnectionRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<GetEnclaveConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3045,8 +3045,8 @@ export const GetEnclaveEndpoint: API.OperationMethod<
   GetEnclaveEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetEnclaveEndpointRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<GetEnclaveEndpointResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetEnclaveEndpointRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<GetEnclaveEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3060,8 +3060,8 @@ export const GetTransitHub: API.OperationMethod<
   GetTransitHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetTransitHubRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<GetTransitHubResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetTransitHubRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<GetTransitHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3075,8 +3075,8 @@ export const GetVirtualEnclave: API.OperationMethod<
   GetVirtualEnclaveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetVirtualEnclaveRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<GetVirtualEnclaveResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetVirtualEnclaveRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<GetVirtualEnclaveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3090,8 +3090,8 @@ export const GetWorkload: API.OperationMethod<
   GetWorkloadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetWorkloadRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetWorkloadResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetWorkloadRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<GetWorkloadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3105,8 +3105,8 @@ export const ListApprovalByParent: API.OperationMethod<
   ListApprovalByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListApprovalByParentRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ApprovalResourceListResult>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListApprovalByParentRequest>,
+  output: __S(866, __c54, 2) as any as S.Schema<ApprovalResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3120,8 +3120,8 @@ export const ListCommunityByResourceGroup: API.OperationMethod<
   ListCommunityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListCommunityByResourceGroupRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<CommunityResourceListResult>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListCommunityByResourceGroupRequest>,
+  output: __S(897, __c56, 1) as any as S.Schema<CommunityResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3135,8 +3135,8 @@ export const ListCommunityBySubscription: API.OperationMethod<
   ListCommunityBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListCommunityBySubscriptionRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<CommunityResourceListResult>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListCommunityBySubscriptionRequest>,
+  output: __S(897, __c56, 1) as any as S.Schema<CommunityResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3150,8 +3150,8 @@ export const ListCommunityEndpointByCommunityResource: API.OperationMethod<
   ListCommunityEndpointByCommunityResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ListCommunityEndpointByCommunityResourceRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<CommunityEndpointResourceListResult>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListCommunityEndpointByCommunityResourceRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<CommunityEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3165,8 +3165,8 @@ export const ListCommunityEndpointBySubscription: API.OperationMethod<
   ListCommunityEndpointBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListCommunityEndpointBySubscriptionRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<CommunityEndpointResourceListResult>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListCommunityEndpointBySubscriptionRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<CommunityEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3180,8 +3180,8 @@ export const ListDedicatedHubByCommunityResource: API.OperationMethod<
   ListDedicatedHubByCommunityResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListDedicatedHubByCommunityResourceRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<DedicatedHubResourceListResult>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListDedicatedHubByCommunityResourceRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<DedicatedHubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3195,8 +3195,8 @@ export const ListDedicatedHubBySubscription: API.OperationMethod<
   ListDedicatedHubBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListDedicatedHubBySubscriptionRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<DedicatedHubResourceListResult>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListDedicatedHubBySubscriptionRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<DedicatedHubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3210,8 +3210,8 @@ export const ListEnclaveConnectionByResourceGroup: API.OperationMethod<
   ListEnclaveConnectionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListEnclaveConnectionByResourceGroupRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<EnclaveConnectionResourceListResult>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListEnclaveConnectionByResourceGroupRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<EnclaveConnectionResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3225,8 +3225,8 @@ export const ListEnclaveConnectionBySubscription: API.OperationMethod<
   ListEnclaveConnectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListEnclaveConnectionBySubscriptionRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<EnclaveConnectionResourceListResult>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListEnclaveConnectionBySubscriptionRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<EnclaveConnectionResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3240,8 +3240,8 @@ export const ListEnclaveEndpointByEnclaveResource: API.OperationMethod<
   ListEnclaveEndpointByEnclaveResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListEnclaveEndpointByEnclaveResourceRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<EnclaveEndpointResourceListResult>,
+  input: __S(1104, __c69, 0) as any as S.Schema<ListEnclaveEndpointByEnclaveResourceRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<EnclaveEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3255,8 +3255,8 @@ export const ListEnclaveEndpointBySubscription: API.OperationMethod<
   ListEnclaveEndpointBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListEnclaveEndpointBySubscriptionRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<EnclaveEndpointResourceListResult>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ListEnclaveEndpointBySubscriptionRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<EnclaveEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3270,8 +3270,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1156, __c72, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3285,8 +3285,8 @@ export const ListTransitHubByCommunityResource: API.OperationMethod<
   ListTransitHubByCommunityResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListTransitHubByCommunityResourceRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<TransitHubResourceListResult>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ListTransitHubByCommunityResourceRequest>,
+  output: __S(1185, __c74, 1) as any as S.Schema<TransitHubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3300,8 +3300,8 @@ export const ListTransitHubBySubscription: API.OperationMethod<
   ListTransitHubBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ListTransitHubBySubscriptionRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<TransitHubResourceListResult>,
+  input: __S(1200, __c75, 0) as any as S.Schema<ListTransitHubBySubscriptionRequest>,
+  output: __S(1185, __c74, 1) as any as S.Schema<TransitHubResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3315,8 +3315,8 @@ export const ListVirtualEnclaveByResourceGroup: API.OperationMethod<
   ListVirtualEnclaveByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListVirtualEnclaveByResourceGroupRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<EnclaveResourceListResult>,
+  input: __S(1216, __c76, 0) as any as S.Schema<ListVirtualEnclaveByResourceGroupRequest>,
+  output: __S(1234, __c77, 2) as any as S.Schema<EnclaveResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3330,8 +3330,8 @@ export const ListVirtualEnclaveBySubscription: API.OperationMethod<
   ListVirtualEnclaveBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ListVirtualEnclaveBySubscriptionRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<EnclaveResourceListResult>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListVirtualEnclaveBySubscriptionRequest>,
+  output: __S(1234, __c77, 2) as any as S.Schema<EnclaveResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3345,8 +3345,8 @@ export const ListWorkloadByEnclaveResource: API.OperationMethod<
   ListWorkloadByEnclaveResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListWorkloadByEnclaveResourceRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<WorkloadResourceListResult>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListWorkloadByEnclaveResourceRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<WorkloadResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3360,8 +3360,8 @@ export const ListWorkloadBySubscription: API.OperationMethod<
   ListWorkloadBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListWorkloadBySubscriptionRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<WorkloadResourceListResult>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListWorkloadBySubscriptionRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<WorkloadResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3375,8 +3375,8 @@ export const NotifyApprovalInitiator: API.OperationMethod<
   NotifyApprovalInitiatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<NotifyApprovalInitiatorRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<NotifyApprovalInitiatorRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3390,8 +3390,8 @@ export const TransitHubCreateOrUpdate: API.OperationMethod<
   TransitHubCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<TransitHubCreateOrUpdateRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<TransitHubCreateOrUpdateResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<TransitHubCreateOrUpdateRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<TransitHubCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3405,8 +3405,8 @@ export const UpdateApproval: API.OperationMethod<
   UpdateApprovalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<UpdateApprovalRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<UpdateApprovalResponse>,
+  input: __S(1378, __c86, 2) as any as S.Schema<UpdateApprovalRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<UpdateApprovalResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3420,8 +3420,8 @@ export const UpdateCommunity: API.OperationMethod<
   UpdateCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<UpdateCommunityRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<UpdateCommunityResponse>,
+  input: __S(1393, __c87, 1) as any as S.Schema<UpdateCommunityRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<UpdateCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3435,8 +3435,8 @@ export const UpdateCommunityEndpoint: API.OperationMethod<
   UpdateCommunityEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<UpdateCommunityEndpointRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpdateCommunityEndpointResponse>,
+  input: __S(1425, __c89, 1) as any as S.Schema<UpdateCommunityEndpointRequest>,
+  output: __S(803, __c50, 3) as any as S.Schema<UpdateCommunityEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3450,8 +3450,8 @@ export const UpdateDedicatedHub: API.OperationMethod<
   UpdateDedicatedHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<UpdateDedicatedHubRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<UpdateDedicatedHubResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<UpdateDedicatedHubRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<UpdateDedicatedHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3465,8 +3465,8 @@ export const UpdateEnclaveConnection: API.OperationMethod<
   UpdateEnclaveConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<UpdateEnclaveConnectionRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<UpdateEnclaveConnectionResponse>,
+  input: __S(1457, __c91, 1) as any as S.Schema<UpdateEnclaveConnectionRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<UpdateEnclaveConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3480,8 +3480,8 @@ export const UpdateEnclaveEndpoint: API.OperationMethod<
   UpdateEnclaveEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<UpdateEnclaveEndpointRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<UpdateEnclaveEndpointResponse>,
+  input: __S(1473, __c92, 1) as any as S.Schema<UpdateEnclaveEndpointRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<UpdateEnclaveEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3495,8 +3495,8 @@ export const UpdateTransitHub: API.OperationMethod<
   UpdateTransitHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<UpdateTransitHubRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<UpdateTransitHubResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<UpdateTransitHubRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<UpdateTransitHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3510,8 +3510,8 @@ export const UpdateVirtualEnclave: API.OperationMethod<
   UpdateVirtualEnclaveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<UpdateVirtualEnclaveRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<UpdateVirtualEnclaveResponse>,
+  input: __S(1505, __c94, 1) as any as S.Schema<UpdateVirtualEnclaveRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UpdateVirtualEnclaveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3525,8 +3525,8 @@ export const UpdateWorkload: API.OperationMethod<
   UpdateWorkloadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<UpdateWorkloadRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<UpdateWorkloadResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<UpdateWorkloadRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<UpdateWorkloadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3540,8 +3540,8 @@ export const VirtualEnclaveCreateOrUpdate: API.OperationMethod<
   VirtualEnclaveCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<VirtualEnclaveCreateOrUpdateRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<VirtualEnclaveCreateOrUpdateResponse>,
+  input: __S(1601, __c100, 1) as any as S.Schema<VirtualEnclaveCreateOrUpdateRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<VirtualEnclaveCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3555,8 +3555,8 @@ export const VirtualEnclaveHandleApprovalCreation: API.OperationMethod<
   VirtualEnclaveHandleApprovalCreationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<VirtualEnclaveHandleApprovalCreationRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<VirtualEnclaveHandleApprovalCreationRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3570,8 +3570,8 @@ export const VirtualEnclaveHandleApprovalDeletion: API.OperationMethod<
   VirtualEnclaveHandleApprovalDeletionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<VirtualEnclaveHandleApprovalDeletionRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ApprovalActionResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<VirtualEnclaveHandleApprovalDeletionRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<ApprovalActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3585,8 +3585,8 @@ export const WorkloadCreateOrUpdate: API.OperationMethod<
   WorkloadCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<WorkloadCreateOrUpdateRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<WorkloadCreateOrUpdateResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<WorkloadCreateOrUpdateRequest>,
+  output: __S(1649, __c103, 1) as any as S.Schema<WorkloadCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3598,40 +3598,21 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          approverEntraId: S.String,
-          actionPerformed: S.optional(S.String),
-          lastUpdatedAt: S.String,
-        }),
-      ).annotate({ identifier: "ApproverInput" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceAction: S.String,
-          approvalCallbackRoute: S.optional(S.String),
-          approvalCallbackPayload: S.optional(S.String),
-          approvalStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RequestMetadata" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           parentResourceId: S.optional(S.String),
           grandparentResourceId: S.optional(S.String),
-          approvers: S.optional(__S(1, __c0, 1)),
+          approvers: S.optional(__S(81, __c5, 1)),
           ticketId: S.optional(S.String),
           createdAt: S.optional(S.String),
           stateChangedAt: S.optional(S.String),
-          requestMetadata: __S(2, __c0, 2),
+          requestMetadata: __S(64, __c4, 0),
         }),
       ).annotate({ identifier: "ApprovalPropertiesInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           approvalName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3643,7 +3624,41 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApprovalCreateOrUpdateRequest",
       });
-    case 5:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(67, __c4, 3)),
+        }),
+      ).annotate({
+        identifier: "ApprovalCreateOrUpdateResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          approverEntraId: S.String,
+        }),
+      ).annotate({ identifier: "MandatoryApprover" });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -3654,86 +3669,65 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceAction: S.String,
+          approvalCallbackRoute: S.optional(S.String),
+          approvalCallbackPayload: S.optional(S.String),
+          approvalStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RequestMetadata" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           approverEntraId: S.String,
           actionPerformed: S.optional(S.String),
           lastUpdatedAt: S.String,
-          mandatoryApprovalGroupMembershipIds: S.optional(__S(6, __c0, 6)),
+          mandatoryApprovalGroupMembershipIds: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "Approver" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          approverEntraId: S.String,
-        }),
-      ).annotate({ identifier: "MandatoryApprover" });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(65, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           parentResourceId: S.optional(S.String),
           grandparentResourceId: S.optional(S.String),
-          approvers: S.optional(__S(8, __c1, 0)),
+          approvers: S.optional(__S(66, __c4, 2)),
           ticketId: S.optional(S.String),
           createdAt: S.optional(S.String),
           stateChangedAt: S.optional(S.String),
-          mandatoryApprovers: S.optional(__S(10, __c1, 2)),
+          mandatoryApprovers: S.optional(__S(17, __c1, 1)),
           minimumApproversRequired: S.optional(S.Number),
           approversApprovedCount: S.optional(S.Number),
           mandatoryApproversApprovedCount: S.optional(S.Number),
-          approvedByEntraIds: S.optional(__S(6, __c0, 6)),
-          requestMetadata: __S(2, __c0, 2),
+          approvedByEntraIds: S.optional(__S(32, __c2, 0)),
+          requestMetadata: __S(64, __c4, 0),
         }),
       ).annotate({ identifier: "ApprovalProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "ApprovalCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subnetName: S.String,
-          networkPrefixSize: S.Number,
-          subnetDelegation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SubnetConfigurationInput" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          networkName: S.optional(S.String),
-          networkSize: S.optional(S.String),
-          customCidrRange: S.optional(S.String),
-          subnetConfigurations: S.optional(__S(14, __c1, 6)),
-          allowSubnetCommunication: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "EnclaveVirtualNetworkModelInput",
-      });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          approverEntraId: S.String,
+          actionPerformed: S.optional(S.String),
+          lastUpdatedAt: S.String,
+        }),
+      ).annotate({ identifier: "ApproverInput" });
+    case 1:
+      return S.Array(__S(80, __c5, 0));
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3742,7 +3736,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           communityResourceId: S.String,
-          enclaveVirtualNetwork: __S(15, __c1, 7),
+          enclaveVirtualNetwork: __S(114, __c7, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3762,135 +3756,381 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CheckAddressSpaceAvailabilityResponse",
       });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceId: S.String,
-          option: S.optional(S.String),
-          enforcement: S.optional(S.String),
-          policyAction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GovernedServiceItemInput" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "Principal" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          roleDefinitionId: S.String,
-          principals: S.optional(__S(22, __c2, 6)),
-          condition: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RoleAssignmentItem" });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          approvalPolicy: S.optional(S.String),
-          minimumApproversRequired: S.optional(S.Number),
-          mandatoryApprovers: S.optional(__S(10, __c1, 2)),
+          subnetName: S.String,
+          networkPrefixSize: S.Number,
+          subnetDelegation: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ApprovalSettingConfiguration",
-      });
+      ).annotate({ identifier: "SubnetConfigurationInput" });
+    case 1:
+      return S.Array(__S(112, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          communityEndpointUpdate: S.optional(__S(25, __c3, 1)),
-          enclaveEndpointUpdate: S.optional(__S(25, __c3, 1)),
-          enclaveCreation: S.optional(__S(25, __c3, 1)),
-          connectionCreation: S.optional(__S(25, __c3, 1)),
-          connectionUpdate: S.optional(__S(25, __c3, 1)),
-          communityMaintenanceMode: S.optional(__S(25, __c3, 1)),
-          enclaveMaintenanceMode: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "ApprovalSettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.String,
-          principals: S.optional(__S(22, __c2, 6)),
-          justification: S.optional(S.String),
+          networkName: S.optional(S.String),
+          networkSize: S.optional(S.String),
+          customCidrRange: S.optional(S.String),
+          subnetConfigurations: S.optional(__S(113, __c7, 1)),
+          allowSubnetCommunication: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "MaintenanceModeConfigurationModel",
+        identifier: "EnclaveVirtualNetworkModelInput",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          destinationType: S.String,
-          customWorkspaceResourceId: S.optional(S.String),
-          diagnosticSettingsName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MonitoringDestination" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          diagnosticDestinations: S.optional(__S(29, __c3, 5)),
-          flowLogDestination: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "MonitoringSettingsModel" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          addressSpace: S.optional(S.String),
-          dnsServers: S.optional(__S(6, __c0, 6)),
-          governedServiceList: S.optional(__S(20, __c2, 4)),
-          policyOverride: S.optional(S.String),
-          communityRoleAssignments: S.optional(__S(24, __c3, 0)),
-          firewallSku: S.optional(S.String),
-          approvalSettings: S.optional(__S(26, __c3, 2)),
-          maintenanceModeConfiguration: S.optional(__S(27, __c3, 3)),
-          monitoringSettings: S.optional(__S(30, __c3, 6)),
-          addressSpaces: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "CommunityPropertiesInput" });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c4, 0)));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "CommunityCreateOrUpdateRequestIdentity",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
+          dedicatedHubName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs/{dedicatedHubName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDedicatedHubRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          enclaveConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections/{enclaveConnectionName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteEnclaveConnectionRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+          enclaveEndpointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints/{enclaveEndpointName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteEnclaveEndpointRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+          transitHubName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/transitHubs/{transitHubName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTransitHubRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteVirtualEnclaveRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+          workloadName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/workloads/{workloadName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteWorkloadRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          communityResourceId: S.String,
+          sourceResourceId: S.String,
+          sourceCidr: S.optional(S.String),
+          destinationEndpointId: S.String,
+        }),
+      ).annotate({
+        identifier: "EnclaveConnectionPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          enclaveConnectionName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(432, __c27, 0)),
           location: S.String,
-          properties: S.optional(__S(31, __c3, 7)),
-          identity: S.optional(__S(34, __c4, 2)),
+          properties: S.optional(__S(224, __c14, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections/{enclaveConnectionName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnclaveConnectionCreateOrUpdateRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          communityResourceId: S.String,
+          sourceResourceId: S.String,
+          sourceCidr: S.optional(S.String),
+          destinationEndpointId: S.String,
+          provisioningState: S.optional(S.String),
+          resourceCollection: S.optional(__S(32, __c2, 0)),
+          updateMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnclaveConnectionProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(240, __c15, 0)),
+        }),
+      ).annotate({
+        identifier: "EnclaveConnectionCreateOrUpdateResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          enclaveConnectionName: S.String.pipe(T.Label()),
+          resourceRequestAction: S.String,
+          approvalStatus: S.String,
+          approvalCallbackPayload: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections/{enclaveConnectionName}/handleApprovalCreation",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnclaveConnectionHandleApprovalCreationRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          enclaveConnectionName: S.String.pipe(T.Label()),
+          resourceRequestAction: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections/{enclaveConnectionName}/handleApprovalDeletion",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnclaveConnectionHandleApprovalDeletionRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ruleCollection: __S(305, __c19, 1),
+          updateMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnclaveEndpointPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+          enclaveEndpointName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(288, __c18, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints/{enclaveEndpointName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnclaveEndpointsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          protocols: S.optional(__S(784, __c49, 0)),
+          endpointRuleName: S.optional(S.String),
+          destination: S.optional(S.String),
+          ports: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnclaveEndpointDestinationRule",
+      });
+    case 1:
+      return S.Array(__S(304, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ruleCollection: __S(305, __c19, 1),
+          resourceCollection: S.optional(__S(32, __c2, 0)),
+          provisioningState: S.optional(S.String),
+          updateMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnclaveEndpointProperties",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(306, __c19, 2)),
+        }),
+      ).annotate({
+        identifier: "EnclaveEndpointsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          addressSpace: S.optional(S.String),
+          dnsServers: S.optional(__S(32, __c2, 0)),
+          governedServiceList: S.optional(__S(449, __c28, 1)),
+          policyOverride: S.optional(S.String),
+          communityRoleAssignments: S.optional(__S(387, __c24, 3)),
+          firewallSku: S.optional(S.String),
+          approvalSettings: S.optional(__S(416, __c26, 0)),
+          maintenanceModeConfiguration: S.optional(__S(389, __c24, 5)),
+          monitoringSettings: S.optional(__S(392, __c24, 8)),
+          addressSpaces: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "CommunityPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(336, __c21, 0)),
+          identity: S.optional(__S(481, __c30, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3902,23 +4142,118 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CommunityCreateOrUpdateRequest",
       });
-    case 4:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(417, __c26, 1)),
+          identity: S.optional(__S(397, __c24, 13)),
+        }),
+      ).annotate({
+        identifier: "CommunityCreateOrUpdateResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({ identifier: "DedicatedHubResource" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "MoboBrokerResource" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(368, __c23, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          moboBrokerResources: S.optional(__S(37, __c4, 5)),
+          moboBrokerResources: S.optional(__S(369, __c23, 1)),
         }),
       ).annotate({
         identifier: "CommunityPropertiesManagedOnBehalfOfConfiguration",
       });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "Principal" });
+    case 1:
+      return S.Array(__S(384, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          roleDefinitionId: S.String,
+          principals: S.optional(__S(385, __c24, 1)),
+          condition: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RoleAssignmentItem" });
+    case 3:
+      return S.Array(__S(386, __c24, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          approvalPolicy: S.optional(S.String),
+          minimumApproversRequired: S.optional(S.Number),
+          mandatoryApprovers: S.optional(__S(17, __c1, 1)),
+        }),
+      ).annotate({
+        identifier: "ApprovalSettingConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.String,
+          principals: S.optional(__S(385, __c24, 1)),
+          justification: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MaintenanceModeConfigurationModel",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          destinationType: S.String,
+          customWorkspaceResourceId: S.optional(S.String),
+          diagnosticSettingsName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MonitoringDestination" });
     case 7:
+      return S.Array(__S(390, __c24, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          diagnosticDestinations: S.optional(__S(391, __c24, 7)),
+          flowLogDestination: S.optional(__S(390, __c24, 6)),
+        }),
+      ).annotate({ identifier: "MonitoringSettingsModel" });
+    case 9:
       return S.suspend(() =>
         S.Struct({
           serviceId: S.String,
@@ -3926,16 +4261,99 @@ function __c4(j: number): any {
           option: S.optional(S.String),
           enforcement: S.optional(S.String),
           policyAction: S.optional(S.String),
-          initiatives: S.optional(__S(6, __c0, 6)),
+          initiatives: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "GovernedServiceItem" });
+    case 10:
+      return S.Array(__S(393, __c24, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 12:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(395, __c24, 11)));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(396, __c24, 12)),
+        }),
+      ).annotate({
+        identifier: "CommunityCreateOrUpdateResponseIdentity",
+      });
   }
 }
-function __c5(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
+      return S.Array(__S(352, __c22, 0));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          communityEndpointUpdate: S.optional(__S(388, __c24, 4)),
+          enclaveEndpointUpdate: S.optional(__S(388, __c24, 4)),
+          enclaveCreation: S.optional(__S(388, __c24, 4)),
+          connectionCreation: S.optional(__S(388, __c24, 4)),
+          connectionUpdate: S.optional(__S(388, __c24, 4)),
+          communityMaintenanceMode: S.optional(__S(388, __c24, 4)),
+          enclaveMaintenanceMode: S.optional(__S(388, __c24, 4)),
+        }),
+      ).annotate({ identifier: "ApprovalSettings" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          addressSpace: S.optional(S.String),
+          dnsServers: S.optional(__S(32, __c2, 0)),
+          provisioningState: S.optional(S.String),
+          resourceCollection: S.optional(__S(32, __c2, 0)),
+          managedResourceGroupName: S.optional(S.String),
+          managedOnBehalfOfConfiguration: S.optional(__S(370, __c23, 2)),
+          governedServiceList: S.optional(__S(394, __c24, 10)),
+          policyOverride: S.optional(S.String),
+          communityRoleAssignments: S.optional(__S(387, __c24, 3)),
+          firewallSku: S.optional(S.String),
+          approvalSettings: S.optional(__S(416, __c26, 0)),
+          maintenanceModeConfiguration: S.optional(__S(389, __c24, 5)),
+          dedicatedHubList: S.optional(__S(400, __c25, 0)),
+          monitoringSettings: S.optional(__S(392, __c24, 8)),
+          addressSpaces: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "CommunityProperties" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceId: S.String,
+          option: S.optional(S.String),
+          enforcement: S.optional(S.String),
+          policyAction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GovernedServiceItemInput" });
+    case 1:
+      return S.Array(__S(448, __c28, 0));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vHubResourceId: S.optional(S.String),
@@ -3945,63 +4363,98 @@ function __c5(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedHubProperties" });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(496, __c31, 0)));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "DedicatedHubResource" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          addressSpace: S.optional(S.String),
-          dnsServers: S.optional(__S(6, __c0, 6)),
-          provisioningState: S.optional(S.String),
-          resourceCollection: S.optional(__S(6, __c0, 6)),
-          managedResourceGroupName: S.optional(S.String),
-          managedOnBehalfOfConfiguration: S.optional(__S(38, __c4, 6)),
-          governedServiceList: S.optional(__S(40, __c5, 0)),
-          policyOverride: S.optional(S.String),
-          communityRoleAssignments: S.optional(__S(24, __c3, 0)),
-          firewallSku: S.optional(S.String),
-          approvalSettings: S.optional(__S(26, __c3, 2)),
-          maintenanceModeConfiguration: S.optional(__S(27, __c3, 3)),
-          dedicatedHubList: S.optional(__S(43, __c5, 3)),
-          monitoringSettings: S.optional(__S(30, __c3, 6)),
-          addressSpaces: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "CommunityProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(45, __c5, 5)));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(46, __c5, 6)),
+          userAssignedIdentities: S.optional(__S(480, __c30, 0)),
         }),
       ).annotate({
-        identifier: "CommunityCreateOrUpdateResponseIdentity",
+        identifier: "CommunityCreateOrUpdateRequestIdentity",
       });
   }
 }
-function __c6(j: number): any {
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+          enclaveEndpointName: S.String.pipe(T.Label()),
+          resourceRequestAction: S.String,
+          approvalStatus: S.String,
+          approvalCallbackPayload: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints/{enclaveEndpointName}/handleApprovalCreation",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnclaveEndpointsHandleApprovalCreationRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+          enclaveEndpointName: S.String.pipe(T.Label()),
+          resourceRequestAction: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints/{enclaveEndpointName}/handleApprovalDeletion",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnclaveEndpointsHandleApprovalDeletionRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          approvalName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.Mission/approvals/{approvalName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetApprovalRequest" });
+  }
+}
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4009,51 +4462,341 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(67, __c4, 3)),
+        }),
+      ).annotate({ identifier: "GetApprovalResponse" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetCommunityRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
           location: S.String,
-          properties: S.optional(__S(44, __c5, 4)),
-          identity: S.optional(__S(47, __c5, 7)),
+          properties: S.optional(__S(417, __c26, 1)),
+          identity: S.optional(__S(397, __c24, 13)),
         }),
-      ).annotate({
-        identifier: "CommunityCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          destinationType: S.optional(S.String),
-          protocols: S.optional(__S(49, __c6, 1)),
-          transitHubResourceId: S.optional(S.String),
-          endpointRuleName: S.optional(S.String),
-          destination: S.optional(S.String),
-          ports: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CommunityEndpointDestinationRule",
-      });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ruleCollection: __S(51, __c6, 3),
-          updateMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CommunityEndpointPropertiesInput",
-      });
-    case 5:
+      ).annotate({ identifier: "GetCommunityResponse" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           communityEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints/{communityEndpointName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCommunityEndpointRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+          dedicatedHubName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs/{dedicatedHubName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetDedicatedHubRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          enclaveConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections/{enclaveConnectionName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEnclaveConnectionRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+          enclaveEndpointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints/{enclaveEndpointName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEnclaveEndpointRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+          transitHubName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/transitHubs/{transitHubName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetTransitHubRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scaleUnits: S.optional(S.Number),
+          remoteVirtualNetworkId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TransitOptionParams" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          params: S.optional(__S(688, __c43, 0)),
+        }),
+      ).annotate({ identifier: "TransitOption" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          state: S.optional(S.String),
+          transitOption: S.optional(__S(689, __c43, 1)),
+          resourceCollection: S.optional(__S(32, __c2, 0)),
+          securityProvider: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TransitHubProperties" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
           location: S.String,
-          properties: S.optional(__S(52, __c6, 4)),
+          properties: S.optional(__S(690, __c43, 2)),
+        }),
+      ).annotate({ identifier: "GetTransitHubResponse" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetVirtualEnclaveRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subnetName: S.String,
+          subnetResourceId: S.optional(S.String),
+          networkPrefixSize: S.Number,
+          subnetDelegation: S.optional(S.String),
+          addressPrefix: S.optional(S.String),
+          networkSecurityGroupResourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubnetConfiguration" });
+    case 1:
+      return S.Array(__S(736, __c46, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          networkName: S.optional(S.String),
+          networkSize: S.optional(S.String),
+          customCidrRange: S.optional(S.String),
+          subnetConfigurations: S.optional(__S(737, __c46, 1)),
+          allowSubnetCommunication: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "EnclaveVirtualNetworkModel",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enclaveAddressSpace: S.optional(S.String),
+          managedAddressSpace: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnclaveAddressSpacesModel",
+      });
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          keyVaultResourceId: S.optional(S.String),
+          storageAccountResourceId: S.optional(S.String),
+          logAnalyticsResourceIdCollection: S.optional(__S(740, __c46, 4)),
+          diagnosticDestination: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnclaveDefaultSettingsModel",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          enclaveEndpointUpdate: S.optional(__S(388, __c24, 4)),
+          connectionCreation: S.optional(__S(388, __c24, 4)),
+          connectionUpdate: S.optional(__S(388, __c24, 4)),
+          enclaveMaintenanceMode: S.optional(__S(388, __c24, 4)),
+        }),
+      ).annotate({
+        identifier: "VirtualEnclaveApprovalSettings",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          enclaveVirtualNetwork: __S(738, __c46, 2),
+          enclaveAddressSpaces: S.optional(__S(739, __c46, 3)),
+          communityResourceId: S.String,
+          resourceCollection: S.optional(__S(32, __c2, 0)),
+          managedResourceGroupName: S.optional(S.String),
+          managedOnBehalfOfConfiguration: S.optional(__S(370, __c23, 2)),
+          bastionEnabled: S.optional(S.Boolean),
+          workloadResourceVisibility: S.optional(S.String),
+          rbacInheritance: S.optional(S.String),
+          enclaveRoleAssignments: S.optional(__S(387, __c24, 3)),
+          workloadRoleAssignments: S.optional(__S(387, __c24, 3)),
+          governedServiceList: S.optional(__S(394, __c24, 10)),
+          enclaveDefaultSettings: S.optional(__S(741, __c46, 5)),
+          maintenanceModeConfiguration: S.optional(__S(389, __c24, 5)),
+          dedicatedHubResourceId: S.optional(S.String),
+          approvalSettings: S.optional(__S(742, __c46, 6)),
+          monitoringSettings: S.optional(__S(392, __c24, 8)),
+        }),
+      ).annotate({ identifier: "VirtualEnclaveProperties" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(743, __c46, 7)),
+          identity: S.optional(__S(397, __c24, 13)),
+        }),
+      ).annotate({
+        identifier: "GetVirtualEnclaveResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ruleCollection: __S(801, __c50, 1),
+          updateMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CommunityEndpointPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+          communityEndpointName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(768, __c48, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4065,34 +4808,355 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CommunityEndpointsCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ruleCollection: __S(51, __c6, 3),
-          resourceCollection: S.optional(__S(6, __c0, 6)),
+          destinationType: S.optional(S.String),
+          protocols: S.optional(__S(784, __c49, 0)),
+          transitHubResourceId: S.optional(S.String),
+          endpointRuleName: S.optional(S.String),
+          destination: S.optional(S.String),
+          ports: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CommunityEndpointDestinationRule",
+      });
+    case 1:
+      return S.Array(__S(800, __c50, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ruleCollection: __S(801, __c50, 1),
+          resourceCollection: S.optional(__S(32, __c2, 0)),
           provisioningState: S.optional(S.String),
           updateMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CommunityEndpointProperties",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
           location: S.String,
-          properties: S.optional(__S(54, __c6, 6)),
+          properties: S.optional(__S(802, __c50, 2)),
         }),
       ).annotate({
         identifier: "CommunityEndpointsCreateOrUpdateResponse",
       });
   }
 }
-function __c7(j: number): any {
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+          workloadName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/workloads/{workloadName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetWorkloadRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(848, __c53, 0)),
+        }),
+      ).annotate({ identifier: "GetWorkloadResponse" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          resourceGroupCollection: S.optional(__S(32, __c2, 0)),
+          managedOnBehalfOfConfiguration: S.optional(__S(370, __c23, 2)),
+        }),
+      ).annotate({ identifier: "WorkloadProperties" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.Mission/approvals",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListApprovalByParentRequest",
+      });
+    case 1:
+      return S.Array(__S(560, __c35, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(865, __c54, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApprovalResourceListResult",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCommunityByResourceGroupRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(592, __c37, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(896, __c56, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CommunityResourceListResult",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/communities",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCommunityBySubscriptionRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCommunityEndpointByCommunityResourceRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(803, __c50, 3));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(944, __c59, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CommunityEndpointResourceListResult",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCommunityEndpointBySubscriptionRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedHubByCommunityResourceRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(400, __c25, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedHubResourceListResult",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDedicatedHubBySubscriptionRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEnclaveConnectionByResourceGroupRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(241, __c15, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1040, __c65, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnclaveConnectionResourceListResult",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/enclaveConnections",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEnclaveConnectionBySubscriptionRequest",
+      });
+  }
+}
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4115,13 +5179,332 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CommunityEndpointsHandleApprovalCreationRequest",
       });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
         }),
       ).annotate({ identifier: "ApprovalActionResponse" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEnclaveEndpointByEnclaveResourceRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(306, __c19, 2)),
+        }),
+      ).annotate({ identifier: "EnclaveEndpointResource" });
+    case 1:
+      return S.Array(__S(1120, __c70, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1121, __c70, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnclaveEndpointResourceListResult",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEnclaveEndpointBySubscriptionRequest",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Mission/operations",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(1153, __c72, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(1154, __c72, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1155, __c72, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/transitHubs",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListTransitHubByCommunityResourceRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(704, __c44, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1184, __c74, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TransitHubResourceListResult",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/communities/{communityName}/transitHubs",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListTransitHubBySubscriptionRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualEnclaveByResourceGroupRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(743, __c46, 7)),
+          identity: S.optional(__S(397, __c24, 13)),
+        }),
+      ).annotate({ identifier: "EnclaveResource" });
+    case 1:
+      return S.Array(__S(1232, __c77, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1233, __c77, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnclaveResourceListResult",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/virtualEnclaves",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualEnclaveBySubscriptionRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/workloads",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListWorkloadByEnclaveResourceRequest",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(832, __c52, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1280, __c80, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WorkloadResourceListResult",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          virtualEnclaveName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/workloads",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListWorkloadBySubscriptionRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          approvalName: S.String.pipe(T.Label()),
+          approvalStatus: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/{resourceUri+}/providers/Microsoft.Mission/approvals/{approvalName}/notifyInitiator",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "NotifyApprovalInitiatorRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4140,1247 +5523,20 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CommunityEndpointsHandleApprovalDeletionRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          designation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedHubPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-          dedicatedHubName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(59, __c7, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs/{dedicatedHubName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DedicatedHubCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "DedicatedHubCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          approvalName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{resourceUri+}/providers/Microsoft.Mission/approvals/{approvalName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteApprovalRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCommunityRequest" });
   }
 }
-function __c8(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-          communityEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints/{communityEndpointName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCommunityEndpointRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCommunityEndpointResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-          dedicatedHubName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs/{dedicatedHubName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDedicatedHubRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          enclaveConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections/{enclaveConnectionName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteEnclaveConnectionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-          enclaveEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints/{enclaveEndpointName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteEnclaveEndpointRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           transitHubName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/transitHubs/{transitHubName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTransitHubRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteVirtualEnclaveRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-          workloadName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/workloads/{workloadName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteWorkloadRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          communityResourceId: S.String,
-          sourceResourceId: S.String,
-          sourceCidr: S.optional(S.String),
-          destinationEndpointId: S.String,
-        }),
-      ).annotate({
-        identifier: "EnclaveConnectionPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          enclaveConnectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(432, __c27, 0)),
           location: S.String,
-          properties: S.optional(__S(72, __c9, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections/{enclaveConnectionName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnclaveConnectionCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          communityResourceId: S.String,
-          sourceResourceId: S.String,
-          sourceCidr: S.optional(S.String),
-          destinationEndpointId: S.String,
-          provisioningState: S.optional(S.String),
-          resourceCollection: S.optional(__S(6, __c0, 6)),
-          updateMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnclaveConnectionProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "EnclaveConnectionCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          enclaveConnectionName: S.String.pipe(T.Label()),
-          resourceRequestAction: S.String,
-          approvalStatus: S.String,
-          approvalCallbackPayload: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections/{enclaveConnectionName}/handleApprovalCreation",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnclaveConnectionHandleApprovalCreationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          enclaveConnectionName: S.String.pipe(T.Label()),
-          resourceRequestAction: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections/{enclaveConnectionName}/handleApprovalDeletion",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnclaveConnectionHandleApprovalDeletionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          protocols: S.optional(__S(49, __c6, 1)),
-          endpointRuleName: S.optional(S.String),
-          destination: S.optional(S.String),
-          ports: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnclaveEndpointDestinationRule",
-      });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ruleCollection: __S(79, __c9, 7),
-          updateMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnclaveEndpointPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-          enclaveEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(80, __c10, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints/{enclaveEndpointName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnclaveEndpointsCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ruleCollection: __S(79, __c9, 7),
-          resourceCollection: S.optional(__S(6, __c0, 6)),
-          provisioningState: S.optional(S.String),
-          updateMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnclaveEndpointProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({
-        identifier: "EnclaveEndpointsCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-          enclaveEndpointName: S.String.pipe(T.Label()),
-          resourceRequestAction: S.String,
-          approvalStatus: S.String,
-          approvalCallbackPayload: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints/{enclaveEndpointName}/handleApprovalCreation",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnclaveEndpointsHandleApprovalCreationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-          enclaveEndpointName: S.String.pipe(T.Label()),
-          resourceRequestAction: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints/{enclaveEndpointName}/handleApprovalDeletion",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnclaveEndpointsHandleApprovalDeletionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          approvalName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.Mission/approvals/{approvalName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetApprovalRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "GetApprovalResponse" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetCommunityRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(44, __c5, 4)),
-          identity: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "GetCommunityResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-          communityEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints/{communityEndpointName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCommunityEndpointRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-          dedicatedHubName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs/{dedicatedHubName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetDedicatedHubRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          enclaveConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections/{enclaveConnectionName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEnclaveConnectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-          enclaveEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints/{enclaveEndpointName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEnclaveEndpointRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-          transitHubName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/transitHubs/{transitHubName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetTransitHubRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scaleUnits: S.optional(S.Number),
-          remoteVirtualNetworkId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TransitOptionParams" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          params: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "TransitOption" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          state: S.optional(S.String),
-          transitOption: S.optional(__S(96, __c12, 0)),
-          resourceCollection: S.optional(__S(6, __c0, 6)),
-          securityProvider: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TransitHubProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({ identifier: "GetTransitHubResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetVirtualEnclaveRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subnetName: S.String,
-          subnetResourceId: S.optional(S.String),
-          networkPrefixSize: S.Number,
-          subnetDelegation: S.optional(S.String),
-          addressPrefix: S.optional(S.String),
-          networkSecurityGroupResourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SubnetConfiguration" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          networkName: S.optional(S.String),
-          networkSize: S.optional(S.String),
-          customCidrRange: S.optional(S.String),
-          subnetConfigurations: S.optional(__S(101, __c12, 5)),
-          allowSubnetCommunication: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "EnclaveVirtualNetworkModel",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enclaveAddressSpace: S.optional(S.String),
-          managedAddressSpace: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnclaveAddressSpacesModel",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          keyVaultResourceId: S.optional(S.String),
-          storageAccountResourceId: S.optional(S.String),
-          logAnalyticsResourceIdCollection: S.optional(__S(104, __c13, 0)),
-          diagnosticDestination: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnclaveDefaultSettingsModel",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enclaveEndpointUpdate: S.optional(__S(25, __c3, 1)),
-          connectionCreation: S.optional(__S(25, __c3, 1)),
-          connectionUpdate: S.optional(__S(25, __c3, 1)),
-          enclaveMaintenanceMode: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "VirtualEnclaveApprovalSettings",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          enclaveVirtualNetwork: __S(102, __c12, 6),
-          enclaveAddressSpaces: S.optional(__S(103, __c12, 7)),
-          communityResourceId: S.String,
-          resourceCollection: S.optional(__S(6, __c0, 6)),
-          managedResourceGroupName: S.optional(S.String),
-          managedOnBehalfOfConfiguration: S.optional(__S(38, __c4, 6)),
-          bastionEnabled: S.optional(S.Boolean),
-          workloadResourceVisibility: S.optional(S.String),
-          rbacInheritance: S.optional(S.String),
-          enclaveRoleAssignments: S.optional(__S(24, __c3, 0)),
-          workloadRoleAssignments: S.optional(__S(24, __c3, 0)),
-          governedServiceList: S.optional(__S(40, __c5, 0)),
-          enclaveDefaultSettings: S.optional(__S(105, __c13, 1)),
-          maintenanceModeConfiguration: S.optional(__S(27, __c3, 3)),
-          dedicatedHubResourceId: S.optional(S.String),
-          approvalSettings: S.optional(__S(106, __c13, 2)),
-          monitoringSettings: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "VirtualEnclaveProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(107, __c13, 3)),
-          identity: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({
-        identifier: "GetVirtualEnclaveResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-          workloadName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/workloads/{workloadName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetWorkloadRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          resourceGroupCollection: S.optional(__S(6, __c0, 6)),
-          managedOnBehalfOfConfiguration: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "WorkloadProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(110, __c13, 6)),
-        }),
-      ).annotate({ identifier: "GetWorkloadResponse" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.Mission/approvals",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListApprovalByParentRequest",
-      });
-    case 1:
-      return S.Array(__S(87, __c10, 7));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(113, __c14, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApprovalResourceListResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCommunityByResourceGroupRequest",
-      });
-    case 4:
-      return S.Array(__S(89, __c11, 1));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(116, __c14, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CommunityResourceListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/communities",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCommunityBySubscriptionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCommunityEndpointByCommunityResourceRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(120, __c15, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CommunityEndpointResourceListResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCommunityEndpointBySubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedHubByCommunityResourceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(43, __c5, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedHubResourceListResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDedicatedHubBySubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEnclaveConnectionByResourceGroupRequest",
-      });
-    case 7:
-      return S.Array(__S(75, __c9, 3));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(127, __c15, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnclaveConnectionResourceListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/enclaveConnections",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEnclaveConnectionBySubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEnclaveEndpointByEnclaveResourceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({ identifier: "EnclaveEndpointResource" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(132, __c16, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnclaveEndpointResourceListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEnclaveEndpointBySubscriptionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Mission/operations",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(136, __c17, 0)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(138, __c17, 2)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/transitHubs",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListTransitHubByCommunityResourceRequest",
-      });
-    case 5:
-      return S.Array(__S(98, __c12, 2));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(141, __c17, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TransitHubResourceListResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/communities/{communityName}/transitHubs",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListTransitHubBySubscriptionRequest",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualEnclaveByResourceGroupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(107, __c13, 3)),
-          identity: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "EnclaveResource" });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(146, __c18, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnclaveResourceListResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/virtualEnclaves",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualEnclaveBySubscriptionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/workloads",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListWorkloadByEnclaveResourceRequest",
-      });
-    case 6:
-      return S.Array(__S(111, __c13, 7));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(150, __c18, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WorkloadResourceListResult",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          virtualEnclaveName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/workloads",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListWorkloadBySubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          approvalName: S.String.pipe(T.Label()),
-          approvalStatus: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/{resourceUri+}/providers/Microsoft.Mission/approvals/{approvalName}/notifyInitiator",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "NotifyApprovalInitiatorRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          transitOption: S.optional(__S(96, __c12, 0)),
-          securityProvider: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TransitHubPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-          transitHubName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.String,
-          properties: S.optional(__S(154, __c19, 2)),
+          properties: S.optional(__S(1360, __c85, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5392,21 +5548,39 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "TransitHubCreateOrUpdateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
           location: S.String,
-          properties: S.optional(__S(97, __c12, 1)),
+          properties: S.optional(__S(690, __c43, 2)),
         }),
       ).annotate({
         identifier: "TransitHubCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          transitOption: S.optional(__S(689, __c43, 1)),
+          securityProvider: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TransitHubPropertiesInput",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceAction: S.optional(S.String),
@@ -5417,26 +5591,26 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "RequestMetadataUpdatableProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parentResourceId: S.optional(S.String),
           grandparentResourceId: S.optional(S.String),
-          approvers: S.optional(__S(1, __c0, 1)),
+          approvers: S.optional(__S(81, __c5, 1)),
           ticketId: S.optional(S.String),
           createdAt: S.optional(S.String),
           stateChangedAt: S.optional(S.String),
-          requestMetadata: S.optional(__S(157, __c19, 5)),
+          requestMetadata: S.optional(__S(1376, __c86, 0)),
         }),
       ).annotate({
         identifier: "ApprovalPatchPropertiesInput",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           approvalName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(158, __c19, 6)),
+          properties: S.optional(__S(1377, __c86, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5448,13 +5622,51 @@ function __c19(j: number): any {
       ).annotate({ identifier: "UpdateApprovalRequest" });
   }
 }
-function __c20(j: number): any {
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dnsServers: S.optional(__S(32, __c2, 0)),
+          governedServiceList: S.optional(__S(449, __c28, 1)),
+          policyOverride: S.optional(S.String),
+          communityRoleAssignments: S.optional(__S(387, __c24, 3)),
+          firewallSku: S.optional(S.String),
+          approvalSettings: S.optional(__S(416, __c26, 0)),
+          maintenanceModeConfiguration: S.optional(__S(1408, __c88, 0)),
+          monitoringSettings: S.optional(__S(1412, __c88, 4)),
+          addressSpaces: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "CommunityPatchPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1392, __c87, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
+          identity: S.optional(__S(1414, __c88, 6)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateCommunityRequest" });
+  }
+}
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
-          principals: S.optional(__S(22, __c2, 6)),
+          principals: S.optional(__S(385, __c24, 1)),
           justification: S.optional(S.String),
         }),
       ).annotate({
@@ -5471,7 +5683,7 @@ function __c20(j: number): any {
         identifier: "MonitoringDestinationPatchModel",
       });
     case 2:
-      return S.Array(__S(161, __c20, 1));
+      return S.Array(__S(1409, __c88, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5485,79 +5697,45 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          diagnosticDestinations: S.optional(__S(162, __c20, 2)),
-          flowLogDestination: S.optional(__S(163, __c20, 3)),
+          diagnosticDestinations: S.optional(__S(1410, __c88, 2)),
+          flowLogDestination: S.optional(__S(1411, __c88, 3)),
         }),
       ).annotate({
         identifier: "MonitoringSettingsPatchModel",
       });
     case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dnsServers: S.optional(__S(6, __c0, 6)),
-          governedServiceList: S.optional(__S(20, __c2, 4)),
-          policyOverride: S.optional(S.String),
-          communityRoleAssignments: S.optional(__S(24, __c3, 0)),
-          firewallSku: S.optional(S.String),
-          approvalSettings: S.optional(__S(26, __c3, 2)),
-          maintenanceModeConfiguration: S.optional(__S(160, __c20, 0)),
-          monitoringSettings: S.optional(__S(164, __c20, 4)),
-          addressSpaces: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "CommunityPatchPropertiesInput",
-      });
+      return S.Record(S.String, __S(496, __c31, 0));
     case 6:
-      return S.Record(S.String, __S(32, __c4, 0));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(166, __c20, 6)),
+          userAssignedIdentities: S.optional(__S(1413, __c88, 5)),
         }),
       ).annotate({
         identifier: "AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInput",
       });
   }
 }
-function __c21(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          communityName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(165, __c20, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          identity: S.optional(__S(167, __c20, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateCommunityRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ruleCollection: S.optional(__S(51, __c6, 3)),
+          ruleCollection: S.optional(__S(801, __c50, 1)),
           updateMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CommunityEndpointPatchProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           communityEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(169, __c21, 1)),
-          tags: S.optional(__S(18, __c2, 2)),
+          properties: S.optional(__S(1424, __c89, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5569,15 +5747,19 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateCommunityEndpointRequest",
       });
-    case 3:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           dedicatedHubName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(59, __c7, 3)),
-          tags: S.optional(__S(18, __c2, 2)),
+          properties: S.optional(__S(1584, __c99, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5589,7 +5771,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateDedicatedHubRequest",
       });
-    case 4:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceCidr: S.optional(S.String),
@@ -5597,14 +5783,14 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "EnclaveConnectionPatchProperties",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           enclaveConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(172, __c21, 4)),
-          tags: S.optional(__S(18, __c2, 2)),
+          properties: S.optional(__S(1456, __c91, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5616,24 +5802,28 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateEnclaveConnectionRequest",
       });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ruleCollection: S.optional(__S(79, __c9, 7)),
+          ruleCollection: S.optional(__S(305, __c19, 1)),
           updateMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnclaveEndpointPatchProperties",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           enclaveEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(174, __c21, 6)),
-          tags: S.optional(__S(18, __c2, 2)),
+          properties: S.optional(__S(1472, __c92, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5647,7 +5837,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5656,8 +5846,8 @@ function __c22(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           communityName: S.String.pipe(T.Label()),
           transitHubName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(154, __c19, 2)),
-          tags: S.optional(__S(18, __c2, 2)),
+          properties: S.optional(__S(1360, __c85, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5667,42 +5857,38 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTransitHubRequest" });
-    case 1:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          diagnosticDestination: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnclaveDefaultSettingsPatchModel",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enclaveVirtualNetwork: S.optional(__S(15, __c1, 7)),
+          enclaveVirtualNetwork: S.optional(__S(114, __c7, 2)),
           bastionEnabled: S.optional(S.Boolean),
           workloadResourceVisibility: S.optional(S.String),
           rbacInheritance: S.optional(S.String),
-          enclaveRoleAssignments: S.optional(__S(24, __c3, 0)),
-          workloadRoleAssignments: S.optional(__S(24, __c3, 0)),
-          governedServiceList: S.optional(__S(20, __c2, 4)),
-          enclaveDefaultSettings: S.optional(__S(177, __c22, 1)),
-          maintenanceModeConfiguration: S.optional(__S(160, __c20, 0)),
+          enclaveRoleAssignments: S.optional(__S(387, __c24, 3)),
+          workloadRoleAssignments: S.optional(__S(387, __c24, 3)),
+          governedServiceList: S.optional(__S(449, __c28, 1)),
+          enclaveDefaultSettings: S.optional(__S(1520, __c95, 0)),
+          maintenanceModeConfiguration: S.optional(__S(1408, __c88, 0)),
           dedicatedHubResourceId: S.optional(S.String),
-          approvalSettings: S.optional(__S(106, __c13, 2)),
-          monitoringSettings: S.optional(__S(164, __c20, 4)),
+          approvalSettings: S.optional(__S(742, __c46, 6)),
+          monitoringSettings: S.optional(__S(1412, __c88, 4)),
         }),
       ).annotate({
         identifier: "VirtualEnclavePatchPropertiesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(178, __c22, 2)),
-          identity: S.optional(__S(167, __c20, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
+          properties: S.optional(__S(1504, __c94, 0)),
+          identity: S.optional(__S(1414, __c88, 6)),
+          tags: S.optional(__S(432, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5714,21 +5900,31 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateVirtualEnclaveRequest",
       });
-    case 4:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceGroupCollection: S.optional(__S(6, __c0, 6)),
+          diagnosticDestination: S.optional(S.String),
         }),
-      ).annotate({ identifier: "WorkloadPatchProperties" });
-    case 5:
+      ).annotate({
+        identifier: "EnclaveDefaultSettingsPatchModel",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           workloadName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(180, __c22, 4)),
-          tags: S.optional(__S(18, __c2, 2)),
+          properties: S.optional(__S(1552, __c97, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5738,36 +5934,101 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkloadRequest" });
-    case 6:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          enclaveVirtualNetwork: __S(15, __c1, 7),
+          resourceGroupCollection: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "WorkloadPatchProperties" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+          dedicatedHubName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(1584, __c99, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs/{dedicatedHubName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DedicatedHubCreateOrUpdateRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          designation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedHubPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "DedicatedHubCreateOrUpdateResponse",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enclaveVirtualNetwork: __S(114, __c7, 2),
           communityResourceId: S.String,
           bastionEnabled: S.optional(S.Boolean),
           workloadResourceVisibility: S.optional(S.String),
           rbacInheritance: S.optional(S.String),
-          enclaveRoleAssignments: S.optional(__S(24, __c3, 0)),
-          workloadRoleAssignments: S.optional(__S(24, __c3, 0)),
-          governedServiceList: S.optional(__S(20, __c2, 4)),
-          enclaveDefaultSettings: S.optional(__S(177, __c22, 1)),
-          maintenanceModeConfiguration: S.optional(__S(27, __c3, 3)),
+          enclaveRoleAssignments: S.optional(__S(387, __c24, 3)),
+          workloadRoleAssignments: S.optional(__S(387, __c24, 3)),
+          governedServiceList: S.optional(__S(449, __c28, 1)),
+          enclaveDefaultSettings: S.optional(__S(1520, __c95, 0)),
+          maintenanceModeConfiguration: S.optional(__S(389, __c24, 5)),
           dedicatedHubResourceId: S.optional(S.String),
-          approvalSettings: S.optional(__S(106, __c13, 2)),
-          monitoringSettings: S.optional(__S(30, __c3, 6)),
+          approvalSettings: S.optional(__S(742, __c46, 6)),
+          monitoringSettings: S.optional(__S(392, __c24, 8)),
         }),
       ).annotate({
         identifier: "VirtualEnclavePropertiesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(432, __c27, 0)),
           location: S.String,
-          properties: S.optional(__S(182, __c22, 6)),
-          identity: S.optional(__S(34, __c4, 2)),
+          properties: S.optional(__S(1600, __c100, 0)),
+          identity: S.optional(__S(481, __c30, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5781,7 +6042,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5803,7 +6064,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "VirtualEnclaveHandleApprovalCreationRequest",
       });
-    case 1:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5821,16 +6086,20 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "VirtualEnclaveHandleApprovalDeletionRequest",
       });
-    case 2:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualEnclaveName: S.String.pipe(T.Label()),
           workloadName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(432, __c27, 0)),
           location: S.String,
-          properties: S.optional(__S(180, __c22, 4)),
+          properties: S.optional(__S(1552, __c97, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5842,23 +6111,89 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "WorkloadCreateOrUpdateRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(432, __c27, 0)),
           location: S.String,
-          properties: S.optional(__S(110, __c13, 6)),
+          properties: S.optional(__S(848, __c53, 0)),
         }),
       ).annotate({
         identifier: "WorkloadCreateOrUpdateResponse",
       });
   }
 }
-
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          approvalName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{resourceUri+}/providers/Microsoft.Mission/approvals/{approvalName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteApprovalRequest" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCommunityRequest" });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          communityName: S.String.pipe(T.Label()),
+          communityEndpointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints/{communityEndpointName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCommunityEndpointRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCommunityEndpointResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));
